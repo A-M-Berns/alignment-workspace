@@ -6,14 +6,17 @@ one this document exists to keep visible.
 
 ## 1. Trust audit
 
-Every claim of this monograph falls in exactly one of four classes.
+Every claim of this monograph falls in exactly one of five classes.
 
 **Machine-checked over a displayed finite instance — 17 claims.** A folder-local
 exact-rational program recomputes the displayed numbers. Passing is evidence for
 those instances and for nothing else: no generalization is implied, and where a
 claim's general form is proved, the proof and not the program is the evidence.
 
-**Hand-derived from folder-local definitions — 62 claims.** The proof in the
+**Hand-derived from folder-local definitions — 69 claims** (fifty proved, twelve
+necessity witnesses, and the seven conditional rows, whose conditions are listed
+in their rows and which belong to this class — a placement the first freeze left
+implicit). The proof in the
 theory part is the whole evidence. Every one of these is a finite argument from
 definitions stated in the same part; **no proof cites a tree file, a test, or a
 program as a proof step.** Where a program exists for the same object, it
@@ -27,6 +30,15 @@ definitions, and it is not a theorem of this package. It is retained because it
 is the only evidence about a non-trivial engine that exists, and it is labelled
 in its ledger row, in Theory 11 §7, and here. `NL-SI-X4` depends on it and
 inherits its standing.
+
+**Transcribed from the vendored source ledger — 93 claims.** The rows of
+Theories 7 through 10 carried over by the completing pass. Each carries the
+source's own hypotheses, conclusion, status and sharpness; its folder-local
+evidence is that displayed text together with the vendored source document its
+verification pointer names, frozen by digest under `vendor/source_theory/`.
+These rows are preserved and stated, not re-derived: transcription is not
+re-proof, and the ledger's verification column says so on every one of them.
+The classes sum: 17 + 69 + 1 + 93 = 180.
 
 **Assumed, and named — the two residues.** Procedural faithfulness on the
 empirical channel and checker soundness on the logical channel are axioms. They

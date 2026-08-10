@@ -206,7 +206,7 @@ with what a resolution would require.
 
 | row | obstacle | resolution would require |
 |---|---|---|
-| `CD-C1` canonical liability-key rule | recorded as a conjecture; the schema-rate result it would support is, in the source's own words, not implemented and not claimed | proving that result — new mathematics. The question is carried in the ranked open list as schema-level demand rates |
+| `CD-C1` canonical liability-key rule | an unadopted interface proposal; the schema-rate result it would support is, in the source's own words, not implemented and not claimed | proving that result — new mathematics. The question is carried in the ranked open list as schema-level demand rates |
 | `CM-C1` retention and collection criterion | recorded as a conjecture whose necessity direction the source itself records as blocked by the authorization-manufacture refutation | settling necessity; restating only sufficiency would promote a conjecture |
 | `ST-C1` proposed one-step interface revision | a proposal about a future interface, with compatibility against the migration and composition claims recorded upstream as unchecked | adopting the revision and checking that compatibility |
 
@@ -336,3 +336,20 @@ disposable, and nothing else in this report repairs that.
 **The workspace is not evidence.** It is green, but its greenness certifies only
 that the six retained modules behave as their tests say. Nothing in it is
 frozen, and nothing in it survives unless it is consolidated.
+
+## Corrections folded in — 2026-08-10
+
+Three review corrections, applied as the first commit after the freeze. In
+`DEVIATIONS_ANNEX.md` the three **Obstacle.** lines were rotated relative to
+their entries and are realigned, each now matching the status quoted in its own
+verbatim block. In the deviations table above, the `CD-C1` obstacle is restated
+as an unadopted interface proposal rather than a conjecture, matching that row's
+actual status. In `VERIFICATION.md` §1 the trust audit is completed: it counted
+four classes and 62 hand-derived claims, which described the package before the
+completing pass added 93 transcribed rows; it now names five classes, places the
+seven conditional rows explicitly in the hand-derived class, and adds the
+transcribed class, with the four counts summing to 180.
+
+**No claim, status, test, or vendored file changed.** The corrections touch three
+documents and this addendum; the ledger, the theory parts, both test tiers and
+every frozen digest are untouched.

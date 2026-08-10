@@ -17,7 +17,7 @@ section is the alternative.
 
 ### CM-C1 — retention and collection criterion
 
-**Obstacle.** the row is a coverage/comparison note whose content is a statement about the source tree's own file organization rather than a mathematical claim.
+**Obstacle.** the row records a CONJECTURE, and a conjecture is an open question rather than a claim; promoting it to a ledger row would violate the standing rule that open questions are not promoted.
 
 **Source row, verbatim:**
 
@@ -36,7 +36,7 @@ Dependencies: AM-X10, C-FIXED-KERNEL
 
 ### ST-C1 — proposed one-step interface revision
 
-**Obstacle.** the row is a coverage note about the source tree's enumeration scope, not a mathematical claim stated against definitions.
+**Obstacle.** the row records a PROPOSED interface revision — a proposal about a future interface, not a claim about this one; its compatibility with the migration and composition claims is recorded upstream as unchecked.
 
 **Source row, verbatim:**
 
@@ -55,7 +55,7 @@ Dependencies: AM-J0, CM-N1, ST-X6
 
 ### CD-C1 — canonical liability-key rule
 
-**Obstacle.** the row records a CONJECTURE, and a conjecture is an open question rather than a claim; promoting it to a ledger row would violate the standing rule that open questions are not promoted.
+**Obstacle.** the row records a PROPOSED interface revision, not a proved claim; and the schema-rate result it is designed to support is, in the source's own words, not implemented and not claimed.
 
 **Source row, verbatim:**
 
