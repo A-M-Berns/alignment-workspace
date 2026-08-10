@@ -1,0 +1,33 @@
+{
+  "algorithm": "sha256",
+  "generated": "2026-08-09",
+  "note": "Frozen inputs of consolidation_aug9: the previous consolidation vendored byte-for-byte as an archive, the four interface documents that form the reading-audit evidence base, and every vendored Lean source. These are never edited; the runner fails if any digest moves. The completing pass added vendor/source_theory/: the source tree's theory documents and complete ledger, vendored byte-for-byte as the authority for the transcribed rows and as quarantined witness material.",
+  "files": {
+    "lean/Aug8.lean": "e7227cb5b07f379a0c1b7c7ce748a0bc759d6727474dc1a8870869681a833085",
+    "lean/Joint.lean": "5767e9f237409d856289b2b8864bb529924ce22132c907c823ca0524033c9cd3",
+    "lean/Migration.lean": "ca44f9e7ddc318cb2058d4b017065b1ad9b206255df9f6d7e78bf4de72d540ea",
+    "lean/PhaseIVE.lean": "6dabf5cf57d38f0a9b92bc9467116b52ed04085cd05c935e6270d4edd90e97e0",
+    "vendor/SETTLEMENT_INTERFACE_v3.md": "a22652498f98786a697a62c240e7dbe4a8df446a94b4a0523d27a7eaa00530ff",
+    "vendor/SI_V3_CHANGELOG.md": "80f06cd202e10f9f9cdc4d8ed1a403f24e24b1cddd84f1675cdd6116acc8c134",
+    "vendor/WITNESS_AUDIT.md": "5ca147529c80e2b2e3fa4c7f0733a6549f2fa3bbc26e36260646988c5e8641d3",
+    "vendor/consolidation_aug8.zip": "a3027065e278c58f33711b25ef8e0d910791343b6b851b4eb6026768a36d18ce",
+    "vendor/source_theory/ANSWERABILITY_LEDGER.md": "29c348a33735b3fac804f379223b60285ccdfbde84725a7151279fe44108be31",
+    "vendor/source_theory/CASE_DOCKET.md": "cec26945f62167ed44285ea5c3b66161296635042cee00c416a2e0488598655e",
+    "vendor/source_theory/CASE_STREAM.md": "b71350e97416fb258e69239eb8dbddfa249934db3e7349bd4e17fd5b6a97c8cc",
+    "vendor/source_theory/COMPOSITION_THEORY.md": "0796ad7f2577835878e1aaa0ae41f9aa3e92bd06fe1056351cd077227e1a31c7",
+    "vendor/source_theory/DEVIATIONS.md": "5422df3f53000cb813dc63fbe15250e4768c35b466059a29222c4f426d2a8460",
+    "vendor/source_theory/GRAMMAR.md": "45d6898a311c121d6fac45f322a31fe031e46ff69d0280f022b31b7bb7146d19",
+    "vendor/source_theory/JOINT_THEORY.md": "0a228a10360c21f58583db6147588741816b7edd8c2d96044da04c048c38dd67",
+    "vendor/source_theory/LEDGER.md": "931c65605d842bbe188b3f2534ba2685db5b687a9d2ffb88379ae0376e2d5d2c",
+    "vendor/source_theory/LEVERAGE_INTERVAL.md": "a52546e8298a0f21ec94a375124566288005c20d408e5bf353e474a241604fea",
+    "vendor/source_theory/LOCAL_TO_GLOBAL.md": "9d45f5971caf7848b4e65546921ea1f680e0842999e21bb94a3cfb56fdb4d912",
+    "vendor/source_theory/MIGRATION_THEORY.md": "9c431f94b92a770e6d2734a1f0399b43c279d371b414cf00430cd5b911a398f1",
+    "vendor/source_theory/OPEN_PROBLEMS.md": "7a248ec056eacf9fa949d79d727616af67229e25cf83390f16d159a3dc90c761",
+    "vendor/source_theory/STANDING_TRANSPORT.md": "825ec097ff046e494497e934eae7ff2f548da8a0807e738b8f38b6893f423395",
+    "vendor/source_theory/DECISIONS_PROPOSED.md": "745d8d5140ef10c198c11a19e9370b5de7576244bf688bb3b2cc57c1592871b1",
+    "vendor/source_theory/FIX_REPORT.md": "cbeaceb363b01d183ac16d3238fec52cf3001d337afa2227b180862713a4f5f9",
+    "vendor/source_theory/MOVING_INTERFACE_MAP.md": "0bffacb77e47e9e3ffed957d6801ff0331388afeb950bb4ba8f261df5a6b9db3",
+    "vendor/source_theory/README.md": "daafe2dfefa0b69396005b5978e56492be0e19a2da1c0b21b042544f68a9f78a",
+    "vendor/source_theory/ROUND_REPORT.md": "dddc4e3b3e2c97723965f674e7dc8596da473912ab29e7e1f49ccc81794b9f7d"
+  }
+}
