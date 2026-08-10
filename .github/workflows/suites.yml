@@ -1,0 +1,18 @@
+name: suites
+
+on: [push, pull_request]
+
+jobs:
+  consolidation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tests/run.py
+        working-directory: consolidation_aug9
+
+  workspace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tests/run.py
+        working-directory: workspace
