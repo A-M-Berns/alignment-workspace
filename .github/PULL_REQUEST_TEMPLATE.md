@@ -5,9 +5,11 @@
 
 ## Claim class
 
-<!-- lean-proved / enumeration-verified / witness-checked / test-supported /
-     conjectured — or "none" if this PR adds no claim. The class is part of the
-     claim; there are no silent upgrades. -->
+<!-- lean-proved / enumeration-verified / witness-checked / contributor-checked /
+     test-supported / conjectured — or "none" if this PR adds no claim. Strongest
+     first. The class is part of the claim; there are no silent upgrades, and
+     contributor-checked is capped by the invocation path, not by what you
+     declare here. -->
 
 ## Ships a contrib checker
 
@@ -53,10 +55,12 @@ none
 ## Provenance entries added or updated
 
 <!-- Per AGENTS.md: each results directory carries a PROVENANCE.md declaring, per
-     file or glob, its origin class (human / llm-reviewed / llm-unreviewed), the
-     generator and date, the originating round under prompts/, and — if one
-     exists — the originating chat bundle in frozen/. List what you added or
-     changed, or write "none". -->
+     file or glob, its generator (a maintainer, a maintainer's round, or external
+     with a PR link), its review status (maintainer-reviewed / ci-only), the date,
+     the originating round under prompts/, and — if one exists — the originating
+     chat bundle in frozen/. A contribution from outside is ci-only until a
+     maintainer says otherwise; that is the expected state, not a demerit. List
+     what you added or changed, or write "none". -->
 
 none
 
@@ -76,6 +80,27 @@ none
 - [ ] Every commit is signed off (`git commit -s`), asserting the DCO in `DCO`
 
 <!-- Pseudonymous sign-offs are accepted. -->
+
+## Model attribution
+
+<!-- Required and CI-checked: this section must be present and non-empty. Pick
+     one and delete the rest.
+
+     Like the DCO section above, this records that an assertion was made. No gate
+     can tell whether it is true. -->
+
+- [ ] **Human-written** — no model produced the content of this pull request.
+- [ ] **Model:** <!-- e.g. Claude Opus 5 (Anthropic) — the executor -->
+- [ ] **Dispatched round** — **Prompt-author-model:** <!-- the model that wrote
+      the dispatch --> and **Model:** <!-- the executor -->
+- [ ] **unrecorded** — the executor is genuinely not known.
+
+<!-- `unrecorded` is the correct answer where the executor is genuinely unknown,
+     and it is a better answer than a plausible guess. An agent filling this in
+     self-identifies accurately.
+
+     If this pull request is squash-merged, carry this section into the squashed
+     commit message: otherwise the attribution never reaches main's history. -->
 
 ## Frozen inputs
 
