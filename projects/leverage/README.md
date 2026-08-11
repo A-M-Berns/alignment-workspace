@@ -42,7 +42,12 @@ two registers.
 `rounds/2026-08-11-phi-regret-applicability/` gives item 29 a **Near miss**
 verdict. It identifies Blum--Mansour Theorem 18 and the causal comparator shape,
 then exhibits the horizon-growing action union and callback-capture obstruction.
-Item 30 remains blocked on a fixed eight-label interface.
+
+`rounds/2026-08-11-phi-regret-bridge/` repairs that interface for the frozen
+environment. Eight semantic labels decode bijectively to canonical local
+responses, all nine declarative lawful programs factor through them, and exact
+charge and regret are preserved. Item 29 is closed-positive; item 30 is ready but
+has not been run.
 
 `deck-2026-08-10/` is the author-written presentation snapshot for the line. Its
 own origin record carries its date, digest, and per-frame attribution marks.

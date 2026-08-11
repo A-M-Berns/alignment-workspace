@@ -228,33 +228,34 @@ says which of its statements have a derivation and which have only a witness.
 Filed by that round within its dispatched scope, with
 `prompts/2026-08-11-phi-regret-prep/PROMPT.md` as the authorization.
 
-### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]** — *partially closed: Near miss*
+### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]** — *closed-positive: repaired in the frozen environment*
 
-Blum--Mansour (2007) Theorem 18 is the right theorem for the frozen item-30
-configuration. A lawful comparator is
-a fixed ex-ante program inducing history-indexed maps `F^t_phi(x_t):A_t -> A_t`;
-Theorem 18 explicitly permits modification rules to depend on history. Changing
-sets admit a regret-preserving retraction lemma, but the repository-native union
-does not have fixed size: `Response` contains occasion-specific ledger effects,
-so `N_T=3T+5`. The source bound becomes linear in `T`.
+Blum--Mansour (2007) Theorem 18 instantiates after a fixed semantic-action
+bridge. `Lambda` has exactly eight labels: two merits directions, default, and
+decline tolling zero through four dates. An occasion-local bijection decodes a
+label to the canonical repository response and derives its local ledger effect;
+noncanonical ledger effects are rejected rather than quotiented away.
 
-The applicable bound is `O(ell_max sqrt(T N log K))` for `N` encoded actions and
-`K` fixed programs, not the preparation round's conjectured
-`O(ell_max sqrt(T log K))`. The remaining acceptance shape is a fixed
-eight-label action type with an occasion-local decoder and a proof that decoding
-preserves maps, charge, and regret. All nine fixed programs must also be
-materialized and audited for causality and non-capture; arbitrary Python
-callbacks can bypass the argument seal. The bridge continues to require frozen
-filings, actual-prefix guards, no solvency coupling, and no post-hoc
-affordability filter.
+All nine fixed lawful programs are materialized as data, not arbitrary
+callbacks. Their induced maps close on `Lambda` and commute with decoding.
+Pointwise charge, expected mixed charge, cumulative counterfactual charge, and
+regret are preserved. A finite audit establishes non-capture for this exact
+nine-program/default-policy class; it makes no claim about the old arbitrary
+callback type.
 
-*Result:* `projects/leverage/rounds/2026-08-11-phi-regret-applicability/` gives
-the source audit, an abstract padding lemma, two decisive interface
-counterexamples, and exact finite checks. Nothing is registered or Lean-proved;
-item 29 is partially closed as a theorem-applicability near miss rather than a
-new regret theorem.
+The instantiation has `N=8`, `M=1`, `K=9` and gives a horizon-tuned learner with
+expected mixed-action charge regret `O(ell_max sqrt(8 T log 9))`. It requires
+frozen arrivals and reasons, actual strict-prefix guards, canonical responses,
+no suspension or solvency coupling, no post-hoc affordability deletion, and
+bounded full-information charge. It supplies no pathwise sampled-trajectory
+bound.
 
-### 30. A learner with sublinear Φ_law-regret, and what it retires — **[open, blocked by item 29]**
+*Result:* `projects/leverage/rounds/2026-08-11-phi-regret-bridge/` contains the
+derivation, exact finite checks, finite non-capture audit, and unregistered Lean
+proofs of the generic representation and recurrent-failure lemmas. Item 29 is
+closed; item 30 is now executable but unachieved.
+
+### 30. A learner with sublinear Φ_law-regret, and what it retires — **[open, ready]**
 
 The controlling question of the track.
 
@@ -263,16 +264,23 @@ The controlling question of the track.
 > guarantee implies retirement of every positive-rate uniformly remediable
 > failure pattern.
 
-Both halves. The second is one line given the first — a pattern recognised on
-`Ω(T)` occasions with a fixed admitted repair saving `δ > 0` would force
-`R_T(φ) ≥ ρδT − B` — and its content is entirely in the hypotheses, three of
-which the environment supplies and one of which is the bound.
+Both halves. The expected-loss consequence is one line given the first — total
+mixed-action mass `Ω(T)` on source labels with a fixed admitted repair saving
+`δ > 0` forces `R_T(φ) ≥ ρδT − B`. A density claim about one sampled path needs
+an additional sampling argument. The content is entirely in the hypotheses,
+three of which the environment supplies and one of which is the bound.
 
-Once item 29 supplies a uniform fixed action type, use Blum--Mansour Theorem
-18's row-conditioned weights over source actions and lawful programs, and its
-stationary distribution. Use the `sqrt(N log K)` dependence. Do not use the
-preparation spec's proposed plain exponential weights over nine transformations
-or report a `sqrt(log K)` bound.
+Use the fixed labels and nine programs in
+`projects/leverage/rounds/2026-08-11-phi-regret-bridge/`. Implement
+Blum--Mansour Theorem 18's row-conditioned weights over eight source labels and
+nine programs, and its stationary distribution. Measure expected mixed-action
+charge first. Use the `sqrt(8 log 9)` dependence; do not use plain exponential
+weights over nine transformations or report a `sqrt(log 9)` bound. A sampled
+trajectory requires a separately stated sampling result. Report whether the
+implementation is horizon-tuned or supplies a proved anytime schedule.
+If it retains the workspace's exact-rational execution discipline, also state
+how the source's optimized real parameter and stationary distribution are
+represented without silently changing the bound.
 
 **Report `|Φ_law|` and its contents alongside any regret number.** Sublinear
 regret against a nine-element class is a weak statement, and a report without the

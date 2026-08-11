@@ -91,12 +91,12 @@ which the adjacent impossibility results do not settle.
 **The learning track, constructed.** The consolidation reserves it by name. A
 finite substrate makes historical charge against lawful local edits executable,
 with a typed reasons-responsiveness interface whose unresolved parts are named
-parameters. The default certifier declares a footprint omitting charges and
-accounts. The applicability audit found that this is not yet a capability
-boundary for arbitrary Python callbacks: theorem-facing arguments can be
-sanitized, but a closure can capture the original schedule. Legality therefore
-remains an audited finite-program condition until a declarative rule language or
-equivalent non-capture boundary is constructed.
+parameters. The learning interface now uses a fixed eight-label action type and
+nine declarative comparator records. The records contain no callbacks and receive
+a strict public reason context without tariff, charge, account, future, or
+profitability fields. The default policy functions and legacy adapters have a
+complete finite non-capture audit for this class; arbitrary callback extensions
+remain outside the theorem.
 
 Two things were established and one expectation was corrected. A recurrent
 failure with a certified repair produces regret linear in the horizon, exhibited
@@ -108,8 +108,9 @@ not horizon-sized. The dispatch expected fencing to be the dividing line.
 
 **Aspirational.** A learner whose revisions stay answerable to its history and
 licensed by its live reasons nevertheless satisfies an online self-correction
-guarantee, with no fixed external normative target. Nothing establishes any part
-of it; `PRIORITIES.md` item 30 is the first test.
+guarantee, with no fixed external normative target. The theorem bridge now
+supplies the conditional online guarantee against the frozen nine-program class;
+item 30 must construct and test the learner and check its answerability.
 
 **Standing caution.** The deference line's ruling that competence may not be
 stated as a decision-regret bound does **not** reach this track, and the reason is
@@ -119,34 +120,41 @@ predicate that never mentions charge. A round that assumed low φ-regret in orde
 to derive that a learner is reasons-responsive would be repeating the deference
 line's error exactly.
 
-**Next controlling question.** Finish item 29's fixed-action interface. The
-applicability verdict is **Near miss**. Blum--Mansour (2007) Theorem 18 permits
-the causal history-indexed modification rules and gives the relevant
-`O(ell_max sqrt(T N log K))` form. But repository `Response` values contain
-occasion-specific ledger effects, making the union `N_T=3T+5`; the source bound
-is then linear. A fixed eight-label action type with a regret-preserving local
-decoder is missing. Arbitrary callback capture also means profit independence is
-audited for the finite defaults rather than enforced by the callback type.
+**Next controlling question.** Run item 30 on the constructed interface. The
+fixed alphabet has `N=8`, the always-on selector gives `M=1`, and the audited
+class has `K=9`. Blum--Mansour (2007) Theorem 18 therefore gives a horizon-tuned
+learner with expected mixed-action charge regret
+`O(ell_max sqrt(8 T log 9))` in the frozen environment.
+Item 30 must implement its row-conditioned weights and stationary distribution,
+measure expected mixed loss, and separately check that the learner remains
+answerable and within declared service work.
 
-**Constructed mathematical state.** The exact source theorem, causal comparator
-type, valid abstract padding lemma, replay/additive-loss bridge, and
-full-information loss interface are explicit. Exact counterexamples show that
-the current action encoding grows with the horizon and that callback closure can
-bypass the sealed arguments. **Explicit non-result:** no fixed-`N` applicability
-bridge, low Φ-regret result, or recurrent-failure retirement theorem exists.
-Item 29 remains interface/encoding debt; item 30 stays downstream.
+**Constructed mathematical state.** An occasion-local bijection decodes eight
+semantic labels to the canonical repository responses without carrying ledger
+identity in action equality. All nine fixed causal programs factor through it;
+exact pointwise, mixed, cumulative, and regret quantities are preserved. Generic
+preservation and recurrent-failure inequalities are Lean-proved and unregistered.
+The cited theorem yields the conditional expected regret bound above. **Explicit
+non-result:** no item-30 learner, sampled-path bound, measured regret curve,
+comparator-coverage result, anytime tuning, or integration proof has been
+constructed.
 
-**Constructed philosophical gloss.** Historically licensed repairs have the
-right causal comparator shape for an online charge-learning problem. The current
-representation does not yet connect them to a sublinear theorem. This preserves
-the separation of answerability, local legitimacy, and learning without claiming
-the learning component or normative correctness.
+**Constructed philosophical gloss.** Within the frozen class, historically
+licensed repairs are genuine online comparators and a learner can have sublinear
+expected charge regret against each. Such a learner cannot retain positive
+asymptotic expected mass on a represented, uniformly improving certified
+failure. This is learning relative to a nine-program charge class, not a result
+about normative correctness, coverage of important failures, or proof that the
+eventual learner's own updates
+remain answerable.
 
 **Deeper:** `projects/leverage/consolidation-aug9/`, cited by claim identifier;
 `projects/leverage/rounds/2026-08-11-phi-regret-prep/` for the learning track,
 whose `THEOREM_LEDGER.md` separates its two derived statements from its thirteen
 executable witnesses; `projects/leverage/rounds/2026-08-11-phi-regret-applicability/`
-for the theorem bridge. `projects/leverage/deck-2026-08-10/` is the line's own
+for the controlling negative audit; and
+`projects/leverage/rounds/2026-08-11-phi-regret-bridge/` for the repaired theorem
+interface. `projects/leverage/deck-2026-08-10/` is the line's own
 account of itself in the author's words and carries a qualified
 `maintainer-reviewed` provenance status; that review status does not adopt its
 research content.
