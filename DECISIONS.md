@@ -31,6 +31,56 @@ reconstructing the context.
   path into it, and the next leverage round is the first that would.
 ## Settled
 
+### 2026-08-11 — choice-level competence is retired; the certificate gates on self-assessed error
+
+Two decisions taken after Phase II's competence and prediction tracks returned and
+were verified.
+
+**Competence may not be stated as a regret bound.** Pointwise, average and
+selector-relative decision-regret assumptions are each *equivalent* to the
+delegation inequality they were meant to buy, not merely sufficient for it. The
+mechanism: decision regret is nonnegative, so there is no cancellation, and the
+supremum of the delegation deficit over credences is the maximum regret — making
+the weakest credence-free hypothesis implying the target uniformly **be** the
+target. Asking for the weakest assumption preserving the theorem is therefore
+ill-posed.
+
+The candidates are retired as a **statement shape**, not merely as parameter
+choices. They may not be rescued by tuning constants, nor by trading the pointwise
+form for a Cesàro or selector-relative one — the averaged forms fail worse, being
+invariant under changing finitely many decisions and so constraining no named
+decision at all.
+
+The equivalence depends on point masses being admissible credences, and that
+dependence is recorded rather than exploited: **the admissible credence class is
+not restricted away from point masses to evade the result.** Such a restriction
+would need independent motivation, and the fully-updated-deference theorem is meant
+to stay meaningful precisely as the agent becomes highly informed.
+
+Competence moves into a richer vocabulary — cardinal grade structure rather than
+which option was chosen — because a hypothesis in the conclusion's own vocabulary
+can only be the conclusion. The strongest non-circular candidate found,
+decisiveness-gated calibration, is preserved together with its unbounded
+near-indifference leakage term, and is **not** canonized pending the Phase II
+synthesis.
+
+**The certificate engine gates rather than eliminates.** Magnitude prediction error
+cannot be forced to zero: a trader's net worth is affine in the settlement vector
+and absolute value is not, so no instrument reaches it. Rather than assume the
+principal is approximately predictable, the certificate is reoriented onto the
+selective validity of low-error self-assessment — the agent prices a contract
+settling to its own error statistic, and the guarantee sought is that this claim is
+statistically trustworthy on the class where it licenses autonomous discretion. The
+criterion need not make the principal predictable; it should make the agent's claim
+that its prediction error is low trustworthy where that claim does work.
+Measurement and gating, not error elimination.
+
+An explicit principal-predictability assumption is retained only as a baseline
+corollary, never as the conceptual engine. The agent's self-measured indecision,
+which Phase II's exact squared-error decomposition supplies directly from its own
+prices, is retained as the canonical special case and the likeliest first Lean
+theorem.
+
 ### 2026-08-11 — the deference line's canonical documents, and `notes/` as specification space
 
 Four documents are canonical for the deference line:

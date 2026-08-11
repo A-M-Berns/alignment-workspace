@@ -108,6 +108,28 @@ enforced conformity depending on a choice not yet made.
 
 Fixed for the current architecture; a round may not quietly relax them.
 
+**Competence conditions instrumental endorsement, never authority.** An inability to
+prove that following the principal is instrumentally good must never disable the
+protected correction channel, and human authority is never conditional on the
+agent's assessment of human competence. A theorem that conditions authority on
+competence inverts fail-closed into *"human correction waits until the agent is
+satisfied the human deserves it"*.
+
+**Choice-level competence is circular.** A competence hypothesis stated as a bound
+on decision regret — pointwise, average, or selector-relative — is *equivalent* to
+the delegation inequality it was meant to buy, so it may not be used as a
+hypothesis. Competence must be stated in cardinal grade vocabulary, which the
+conclusion cannot see, and must therefore be strictly stronger than what it buys.
+That is not a defect; it is the only way for it to be a different statement.
+
+**The certificate gates on self-assessed error; it does not eliminate error.**
+Magnitude prediction error cannot be forced to zero by any market instrument,
+because trader net worth is affine in settlement and absolute value is not. The
+certificate therefore licenses autonomous discretion where the agent's own priced
+estimate of its error is low, and the guarantee sought is that such claims are
+statistically trustworthy on exactly the class where they license discretion. The
+criterion is not asked to make the principal predictable.
+
 **Categorical authority, quantitative autonomy.** These are two different things and
 the architecture keeps them apart. *Actual corrective authority is categorical and
 non-preemptive*: when the protected principal channel is invoked, its authority wins
