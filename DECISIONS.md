@@ -31,6 +31,47 @@ reconstructing the context.
   path into it, and the next leverage round is the first that would.
 ## Settled
 
+### 2026-08-11 — Stage IV: the future agent is still not in the model, and the reason is the signature
+
+Taken at the close of Stage IV, after an independent adversarial review found a
+conceptual collapse with no cheap repair. The round's positive reading is **withdrawn**.
+
+**The later agent is still derived.** It was given its own credence so that it would
+maximise its own expectation rather than the evaluator's. But its rule differs from the
+evaluator's conditional argmax by exactly one argument, and remains a total function of
+objects known at the earlier time. In the round's own headline instance the transferred
+arm's realisation is *constant*, so the evaluator knows the realised action — the property
+the round's gate existed to rule out. The check meant to catch that could not fail.
+
+**Jurisdiction does no mathematical work.** Setting the principal's credence to the later
+agent's, with the full-signal interface, makes the delegated arm **identical to the
+transferred arm at every one of 32,805 instances tested**. The transferred arm is a
+coordinate in the delegated arm's parameter space, and the jurisdiction assignment occurs
+in no formula.
+
+**The dominance result is the previous round's theorem with the arms swapped.** Stage III
+put the evaluator's argmax on the transferred side and the transferred side trivially won;
+Stage IV puts it on the delegated side and the delegated side trivially wins. Its scan is
+padding: 19,468 of 26,244 instances contain no fallible later agent at all.
+
+**The controlling finding, and the reason both rounds failed.** Two authorisation regimes
+that induce the same realisation map are the **same object** in a signature whose only
+outputs are such maps priced by one measure. This is a **type-level obstruction**, not a
+modelling slip: a jurisdiction assignment is exactly what that signature cannot express,
+and no additional parameter recovers it. The authorisation relation has to enter the type.
+
+**Consequences.** No FUD proof round is to be dispatched, and **no further comparator round
+of this shape**: two attempts have now failed at the same place from opposite directions.
+The claimed-gate harness is deleted rather than repaired; `diagnose_collapse.py` replaces
+it and every check in it records a defect. `FUTURE_AGENT_SPEC.md` is kept as a corrected,
+collapsed record and is **not a binding input**. Three further round claims — the
+advice-loss story, the interior requirement, and the fairness accounting — were checked and
+are false or overstated, and are corrected in place.
+
+**A repeated harness failure mode is recorded.** Stage III shipped four checks that could
+not fail; Stage IV shipped ten, including a literal `True` and an `or True`. A mechanical
+lint flagging any check whose condition is a constant or a type test would have caught both.
+
 ### 2026-08-11 — Stage III did not build a FUD comparator, and says so
 
 Taken at the close of Stage III, after an independent adversarial review overturned the
