@@ -1,0 +1,68 @@
+{
+  "_what_this_is": "The exact-rational shutdown/correction instance of the Track C certificate, as data. Every number is a string parsed as fractions.Fraction; no floats. `model` is the input over FINITE_MODEL_SKELETON.md v1 carriers; `derived` is what verify_certificate.py recomputes from it. Nothing here is registered: the house witness checker has no property form that recomputes V_n from a model, so a pass of `satisfies-linear-constraints` over `derived` would establish only that these numbers satisfy these inequalities, not that they are this model's. See REPORT.md sections 2 and 3.",
+  "_skeleton_version": "v1, frozen 2026-08-11",
+  "_round": "prompts/2026-08-11-deference-certificates",
+
+  "model": {
+    "B": "2",
+    "states": ["w1", "w2", "w3", "w4"],
+    "P_n": {"w1": "9/20", "w2": "1/20", "w3": "1/5", "w4": "3/10"},
+    "cells_at_t_n": [["w1", "w2"], ["w3", "w4"]],
+    "menu": ["c", "s"],
+    "vhat_plus": {
+      "w1": {"c": "3/2", "s": "-1/2"},
+      "w2": {"c": "3/2", "s": "-1/2"},
+      "w3": {"c": "1/4", "s": "1/2"},
+      "w4": {"c": "1/4", "s": "1/2"}
+    },
+    "v_plus": {
+      "w1": {"c": "3/2", "s": "-1/2"},
+      "w2": {"c": "-1/2", "s": "1"},
+      "w3": {"c": "1/2", "s": "1/4"},
+      "w4": {"c": "-1/12", "s": "1/2"}
+    },
+    "X": {
+      "w1": {"c": "1", "s": "-1"},
+      "w2": {"c": "-2", "s": "3/2"},
+      "w3": {"c": "1/2", "s": "0"},
+      "w4": {"c": "0", "s": "1/2"}
+    },
+    "certified": {"j": "c", "S": ["w1", "w2"], "theta": "2"}
+  },
+
+  "derived": {
+    "J_n":    {"w1": "c", "w2": "s", "w3": "c", "w4": "s"},
+    "Jhat_n": {"w1": "c", "w2": "c", "w3": "s", "w4": "s"},
+    "epsilon_n": "1/4",
+    "gamma_n_j": "2",
+    "rho_n_j": "1/2",
+    "M_S": "3/10",
+    "M_n": "3/8",
+    "override_mass": "1/20",
+    "override_bound_2eps_over_gamma": "1/4",
+    "defect_D_n_j": "3/40",
+    "defect_bound_4Beps_over_2Bplusgamma": "1/3",
+    "V_delegate": "31/40",
+    "V_act": "3/5",
+    "V_sim": "1/2",
+    "V_fixed_c": "9/20",
+    "V_fixed_s": "-9/40",
+    "P_Jhat_ne_J": "1/4",
+    "preemption_cost": "7/40",
+    "kappa": "14/15",
+    "support_floor_gamma_rho": "1",
+    "support_floor_threshold_2eps": "1/2",
+    "G_delegate": "39/40",
+    "G_act": "9/10",
+    "G_fixed_c": "29/40",
+    "G_fixed_s": "1/40",
+    "Gamma_s": "19/20",
+    "Gamma_c": "1/4",
+    "Gamma_hat_s": "1",
+    "Gamma_hat_c": "1/8",
+    "grade_threshold": "5/6",
+    "cert_V_fires": true,
+    "cert_G_fires_against_fixed_s": true,
+    "cert_G_fires_against_fixed_c": false
+  }
+}
