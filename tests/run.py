@@ -81,6 +81,7 @@ def lean_build() -> bool:
 
 if __name__ == "__main__":
     verify_frozen()
+    subprocess.run([sys.executable, "tests/contrib_hygiene.py"], cwd=ROOT, check=True)
     print(f"LEAN SORRY GATE: clean over {lean_sorry_gate()} files")
     print(f"LEAN AXIOM DISCIPLINE: every file carries `#print axioms`")
     print("PROJECTS:")

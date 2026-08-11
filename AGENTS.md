@@ -352,9 +352,30 @@ with reading.
 There is no kernel. The substitute is the certificate architecture: an untrusted
 prover, a small trusted judge, a certificate between them.
 
-**Contributors never ship verifiers for claims of record.** A contributed test
-file may support exploration; nothing a contributor wrote may be the thing that
-certifies a registered claim.
+**Contributors may ship a checker with a new claim** — it goes in
+`checkers/contrib/`, and the claim it certifies is registered
+`contributor-checked`. What contributors may **not** do is modify a house checker
+in `checkers/`, because that is retroactive: every claim it has already certified
+silently re-inherits the new logic, so a subtle weakening reaches backwards
+through the registry. Adding a checker for a new claim is prospective and
+contained — if it is wrong, the only thing not established is that contributor's
+own claim.
+
+That asymmetry is why one is gated and the other is merely labelled. Gating both
+would have made the maintainer write checkers for other people's contributions,
+which is not a contribution model.
+
+**Two ways out of `contributor-checked`.** The maintainer reads the checker, it
+moves to `checkers/` and becomes house, and every claim it certified upgrades in
+one batch to the class its verdict supports — review amortised over N claims
+rather than paid per claim. Or the claim is ported to Lean, its statement of
+record becomes the declaration, and the checker is mooted.
+
+**Standing guidance: new verification logic should go to Lean wherever it can.**
+Not ideology. On the Lean side the kernel is the judge, so a contributor can write
+arbitrarily much new content with no maintainer in the loop and no class penalty.
+The Python harness is deliberately small, and it stays small because growth
+pressure is routed to where the judge is free.
 
 Contribution format, by claim class:
 
@@ -379,8 +400,18 @@ provenance; and pointers to the problem item it answers and its documentation.
 
 Classes, in strength order:
 
-`lean-proved` > `enumeration-verified` > `witness-checked` > `test-supported` >
-`conjectured`
+`lean-proved` > `enumeration-verified` > `witness-checked` >
+`contributor-checked` > `test-supported` > `conjectured`
+
+**`contributor-checked`**: a claim certified by a checker that ships with the
+contribution rather than by the house harness. The certificate ran and passed;
+the logic that judged it has not been read by a maintainer. Citations carry the
+class like any other.
+
+The cap is **mechanical, not honour-system**: a statement of record invoking a
+checker under `checkers/contrib/` cannot be registered above
+`contributor-checked`, and the registry checker derives the ceiling from the
+invocation path rather than from what the pull request declares.
 
 **The class is part of the claim** — a citation carries it. **No silent
 upgrades**: a class change is a registry diff, and the registry is specification

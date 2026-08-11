@@ -18,8 +18,12 @@ import re
 from typing import Any
 
 CLASSES = ("lean-proved", "enumeration-verified", "witness-checked",
-           "test-supported", "conjectured")
-CHECKERS = ("witness", "enumeration")
+           "contributor-checked", "test-supported", "conjectured")
+HOUSE_CHECKERS = ("witness", "enumeration")
+CONTRIB_PREFIX = "contrib/"
+# A contributor-supplied checker caps the class it can certify. The ceiling is
+# derived from the invocation path, never from what the pull request declares.
+CONTRIB_CEILING = "contributor-checked"
 ENTRY = re.compile(r"^### (?P<id>[A-Za-z0-9][A-Za-z0-9._-]*)\s*$", re.M)
 
 
@@ -74,8 +78,27 @@ def check(registry: pathlib.Path, root: pathlib.Path) -> tuple[bool, list[str]]:
             if klass != "lean-proved":
                 problems.append(f"{cid}: a Lean statement of record must be class lean-proved")
         elif kind == "checker":
-            if record.get("checker") not in CHECKERS:
-                problems.append(f"{cid}: unknown checker {record.get('checker')!r}")
+            checker = record.get("checker", "")
+            if checker.startswith(CONTRIB_PREFIX):
+                module = checker[len(CONTRIB_PREFIX):]
+                path = root / "checkers" / "contrib" / f"{module}.py"
+                if not path.is_file():
+                    problems.append(f"{cid}: contrib checker {checker!r} does not exist "
+                                    f"at {path.relative_to(root)}")
+                if klass != CONTRIB_CEILING:
+                    problems.append(
+                        f"{cid}: statement of record invokes the contributor-supplied "
+                        f"checker {checker!r}, so its class cannot be {klass!r} — the "
+                        f"ceiling is {CONTRIB_CEILING!r}. The label is derived from the "
+                        "invocation path, not from what the pull request declares.")
+            elif checker not in HOUSE_CHECKERS:
+                problems.append(f"{cid}: unknown checker {checker!r}; house checkers are "
+                                f"{list(HOUSE_CHECKERS)}, contributor checkers are named "
+                                f"{CONTRIB_PREFIX}<module>")
+            elif klass == CONTRIB_CEILING:
+                problems.append(f"{cid}: class {CONTRIB_CEILING!r} names a house checker "
+                                f"{checker!r}; that class is for checkers under "
+                                "checkers/contrib/")
             if "parameters" not in record:
                 problems.append(f"{cid}: checker invocation has no parameters")
         else:

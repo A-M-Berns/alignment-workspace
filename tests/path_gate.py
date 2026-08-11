@@ -26,7 +26,7 @@ SPEC_PATHS = (
     "README.md", "PROVENANCE.md", "SETUP_REPORT.md", "GOVERNANCE_REPORT.md",
     "LICENSE", "LICENSE.*",
     ".github/**", ".gitattributes", ".gitignore",
-    "checkers/**",
+    "checkers/*.py", "checkers/README.md",
     "tests/**",
     "frozen/**",
     "prompts/**",
@@ -41,6 +41,10 @@ SPEC_PATHS = (
 
 # The proof layer. Open; anyone or anyone's agent.
 PROOF_PATHS = (
+    # Contributor-supplied checkers. Adding one is prospective and contained;
+    # modifying a house checker is retroactive, which is why only this
+    # subdirectory is open. See AGENTS.md.
+    "checkers/contrib/**",
     "lean/Workstudio/*/Contrib/**",
     "projects/*/contrib/**",
     "projects/*/rounds/**",
@@ -51,7 +55,15 @@ PROOF_PATHS = (
 MAINTAINERS = {"A-M-Berns", "abramdemski"}
 
 
+def is_proof(path: str) -> bool:
+    return any(fnmatch.fnmatch(path, pattern) for pattern in PROOF_PATHS)
+
+
 def is_spec(path: str) -> bool:
+    """Proof patterns win. `checkers/contrib/**` sits inside a specification
+    directory and must not be captured by it."""
+    if is_proof(path):
+        return False
     return any(fnmatch.fnmatch(path, pattern) for pattern in SPEC_PATHS)
 
 
