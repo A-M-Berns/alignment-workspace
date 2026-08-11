@@ -83,12 +83,12 @@ def self_test() -> bool:
     (tmp / "checkers" / "contrib").mkdir(parents=True)
     (tmp / "checkers" / "contrib" / "demo.py").write_text('"""d."""\ndef check(i, p):\n    return True, "ok"\n')
     (tmp / "lean" / "Workspace").mkdir(parents=True)
-    (tmp / "OPEN_PROBLEMS.md").write_text("### 1. item\n")
-    def registered_as(klass):
+    (tmp / "PRIORITIES.md").write_text("### 1. item\n")
+    def registered_as(klass, item="1"):
         body = {"class": klass,
                 "statement_of_record": {"kind": "checker", "checker": "contrib/demo",
                                         "parameters": {"property": "x"}},
-                "answers_item": "1",
+                "answers_item": item,
                 "provenance": {"generator": "external", "review_status": "ci-only"}}
         f = tmp / "CLAIMS.md"
         f.write_text("### demo.claim\n\n```json\n" + json.dumps(body) + "\n```\n")
@@ -98,6 +98,14 @@ def self_test() -> bool:
         (registered_as("enumeration-verified"), False, "contrib checker cannot claim enumeration-verified"),
         (registered_as("contributor-checked"), True, "contrib checker at its ceiling is accepted"),
     ]
+    # That the registry reads PRIORITIES.md at all. An unfiled item must fail,
+    # and so must a missing priorities file: the check used to default to an
+    # empty item set and skip itself, which looks exactly like a pass.
+    cases.append((registered_as("contributor-checked", item="99"), False,
+                  "claim answering an unfiled priorities item is rejected"))
+    (tmp / "PRIORITIES.md").unlink()
+    cases.append((registered_as("contributor-checked"), False,
+                  "missing PRIORITIES.md fails rather than skipping the check"))
     shutil.rmtree(tmp)
 
     ok = True

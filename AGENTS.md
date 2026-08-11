@@ -31,7 +31,7 @@ prompt restating them — and a round that violates one is wrong even if its pro
 did not mention the rule.
 
 Where a rule is machine-enforced, the gate is named. Where it is not, it is a
-review matter, and the table in §13 says which is which.
+review matter, and the table in §14 says which is which.
 
 ---
 
@@ -42,8 +42,8 @@ review matter, and the table in §13 says which is which.
 Cite it; never edit it. Frozen inputs are read-only, checksummed in
 `frozen/FROZEN_INPUT_CHECKSUMS.json`, and referenced by path. A frozen input that
 needed changing was not frozen: the honest move is a new dated entry beside the
-old one. **Gate 3** recomputes every tree digest and refuses any pull request
-touching `frozen/` that does not update `frozen/MANIFEST.md`.
+old one. The `frozen-integrity` job recomputes every tree digest and refuses any
+pull request touching `frozen/` that does not update `frozen/MANIFEST.md`.
 
 ### 2. Exact arithmetic
 
@@ -66,13 +66,13 @@ Sorry-free. `#print axioms` on everything. Results audit to
 Logical Induction facts, corpus results, anything from another body of work —
 enters as named hypotheses of the statement that uses it, never re-asserted as
 axioms.** An `axiom` declaration standing in for a citation is the specific
-failure this rule exists to prevent. **Gate 2** enforces all of it.
+failure this rule exists to prevent. The `lean` job enforces all of it.
 
 ### 5. Runners
 
 One command per project; one repo-level runner that runs them all. A project's
 runner is self-contained: it reaches outside its own directory only to read
-`frozen/`. **Gate 1.**
+`frozen/`. The `python` job.
 
 ### 6. No permanent naming
 
@@ -102,7 +102,7 @@ With the same care as what was. Every report carries a section saying what its
 work does **not** establish: which hypotheses are assumed, which evidence is
 weaker than it looks, which claim rests on a reading rather than a proof.
 
-### 9b. Reserved items are listed as outstanding actions
+### 10. Reserved items are listed as outstanding actions
 
 A report that reserves something to the maintainer ends with an **Outstanding
 maintainer actions** section listing it — numbered, each with the exact command
@@ -115,20 +115,20 @@ the settings-side repository rename to the maintainer and said so in prose. No
 list surfaced it, so it went unperformed while two files in the tree already
 pointed at the new name.
 
-### 10. Authoritative artifacts live on the author's machine
+### 11. Authoritative artifacts live on the author's machine
 
 Agents propose changes as diffs or prompts **unless the round explicitly grants
 write scope**. A round with write scope says so; without it, the deliverable is a
 proposal.
 
-### 11. Everything an agent generates is marked as such
+### 12. Everything an agent generates is marked as such
 
-Per the provenance discipline in §12. The round's `PROMPT.md` and `REPORT.md` are
+Per the provenance discipline in §13. The round's `PROMPT.md` and `REPORT.md` are
 committed under `prompts/<date>-<round>/`, with the prompt kept **verbatim as
 sent** — including anything it got wrong, since a report routinely corrects its
 own prompt and the correction is only legible against the original.
 
-### 12. Dual-register documentation, and provenance
+### 13. Dual-register documentation, and provenance
 
 Both are below, because both are conditions on what a deliverable *is*.
 
@@ -150,6 +150,39 @@ someone who will not read the first.
 
 The two registers are not redundancy. A result that cannot be stated precisely is
 not finished, and a result that cannot be explained plainly is not understood.
+
+---
+
+## Slop discipline
+
+Not a matter of taste. A reader who cannot tell which sentences carry content
+cannot audit; a document that restates itself three ways hides its own errors in
+the restatements; and volume inflates the cost of the maintainer review this
+whole architecture rests on. Padding is a correctness problem here.
+
+1. **Every sentence does work.** Cut restatement, throat-clearing, and previews
+   of what the document is about to say. Prefer the shortest form that keeps the
+   content.
+2. **No padding structure.** Headings, tables and lists are for material that is
+   genuinely sectioned, tabular or enumerable. A document that would be four
+   paragraphs is four paragraphs.
+3. **No inflated register.** No "comprehensive", "robust", "powerful",
+   "seamlessly", "leverage" as a verb. No assertion that a result matters in
+   place of stating the result.
+4. **Hedging is content or it is cut.** "May", "could", "arguably" are right when
+   they mark a real epistemic state — and the epistemic classes record that
+   precisely. Hedging that softens a claim the writer will not commit to has no
+   place in a record whose function is to say what is established.
+5. **No summary of a summary.** Each deliverable ships a verification register
+   and a human register; neither gets an executive summary, and reports do not
+   restate their findings in a closing section.
+6. **Empty results are reported as empty** — §9 already says this.
+7. **The maintainer may reject on these grounds alone.** A pull request whose
+   content is correct and whose prose is padded is a legitimate rejection, said
+   plainly rather than merged and cleaned up later.
+
+**Agent reports are deliverables under this rule.** A 900-line report for a
+40-line result is a round done badly.
 
 ---
 
@@ -267,8 +300,6 @@ pass.
 
 ---
 
----
-
 ## No negative ontologies
 
 **Living documents and structures describe the present ontology only.** History —
@@ -296,7 +327,7 @@ Every file belongs to exactly one layer.
 that means actually reading. It holds: definitions, statements of record,
 notation and typeclass instances on core types; the checker harness; CI
 workflows, toolchain files, the axiom allowance and the resource budgets; and
-the governance documents — this file, `CONTRIBUTING.md`, `OPEN_PROBLEMS.md`,
+the governance documents — this file, `CONTRIBUTING.md`, `PRIORITIES.md`,
 `DECISIONS.md`, `prompts/`, `frozen/`.
 
 **Proof layer — open.** Anyone, or anyone's agent. It holds: Lean proofs of
@@ -353,8 +384,7 @@ downstream of it.
 
 ## Lean regime
 
-Validity is kernel-adjudicated: sorry-free, `#print axioms` on everything, audit
-to the three allowed axioms (standard 4 above).
+Validity is kernel-adjudicated, on the terms of standard 4.
 
 **Nonvacuity witnesses.** Every theorem of record ships, alongside its proof, a
 Lean term inhabiting its full hypothesis package — a concrete instance satisfying
@@ -391,9 +421,8 @@ through the registry. Adding a checker for a new claim is prospective and
 contained — if it is wrong, the only thing not established is that contributor's
 own claim.
 
-That asymmetry is why one is gated and the other is merely labelled. Gating both
-would have made the maintainer write checkers for other people's contributions,
-which is not a contribution model.
+Gating both would have made the maintainer write checkers for other people's
+contributions, which is not a contribution model.
 
 **Two ways out of `contributor-checked`.** The maintainer reads the checker, it
 moves to `checkers/` and becomes house, and every claim it certified upgrades in
@@ -454,7 +483,7 @@ claim is.**
 
 ## Demand-gating
 
-**Nothing enters the registry except in answer to a filed `OPEN_PROBLEMS.md`
+**Nothing enters the registry except in answer to a filed `PRIORITIES.md`
 item.** The ledger is maintainer-owned. Contributors may *propose* items via
 issues; filing is a maintainer act.
 
@@ -502,22 +531,35 @@ non-maintainer, and no single class says that. The fields are defined once, in
 
 ## Which standards are gates
 
+The CI job is named, because required status checks match job names by exact
+string. `.github/branch-protection.json` is the source of truth for which are
+required.
+
 | standard | enforced by |
 |---|---|
-| 1, frozen immutability | **gate 3** — tree digests, and the manifest rule on pull requests |
-| 4, sorry-free | **gate 2** — the build, plus a textual scan |
-| 4, `#print axioms` present | **gate 2** — `tests/audit_axioms.py` |
-| 4, results audit to the three | **gate 2** — re-elaborates each file; also catches `sorryAx` |
-| 5, runners | **gate 1** — `tests/run.py` |
-| foundations stay verified | **gate 4** — the frozen consolidation's own runner, from a copy |
+| 1, frozen immutability | `frozen-integrity` — tree digests, and the manifest rule on pull requests |
+| 4, sorry-free | `lean` — the build, plus a textual scan |
+| 4, `#print axioms` present | `lean` — `tests/audit_axioms.py` |
+| 4, results audit to the three | `lean` — re-elaborates each file; also catches `sorryAx` |
+| 5, runners | `python` — `tests/run.py` |
+| foundations stay verified | `foundations-verification` — the frozen consolidation's own runner, from a copy |
+| the two layers | `path-gate` — a non-maintainer pull request touching a specification path fails |
+| conservativity | `conservativity` — no new axioms, specification shape unchanged |
+| the registry, and the `contributor-checked` ceiling | `checkers` — harness self-test, then every `CLAIMS.md` |
+| contributed checkers are stdlib-only and documented | `checkers` — `tests/contrib_hygiene.py` |
+| DCO sign-off | `dco` — `tests/dco.py`; that an assertion was made, not that it is true |
+| model attribution in the pull-request body | `dco` — `tests/attribution.py`; presence and non-emptiness only |
+| no personal names in prose | `python` — `tests/name_lint.py` |
 | 2, exact arithmetic | **not gated** — review; a float in theorem-bearing code is a finding |
 | 3, theorem ships as four things | **not gated** — review; the PR template asks for each |
 | 6, no permanent naming | **not gated** — review; the PR template asks |
 | 7, citation integrity | **not gated** — machine-checkable only against a checksummed tree, not in general |
 | 8, 9, deviations and not-shown | **not gated** — review |
-| 10, write scope | **not gated** — the round's dispatch says |
-| dual register | **not gated** — review; a heuristic presence check is a candidate, see `OPEN_PROBLEMS.md` |
+| 10, reserved items listed | **not gated** — review |
+| 11, write scope | **not gated** — the round's dispatch says |
+| dual register | **not gated** — review; a heuristic presence check is a candidate, see `PRIORITIES.md` |
+| slop discipline | **not gated** — review, and grounds for rejection on its own |
 | provenance | **not gated** — review; the PR template asks |
 
-Six gated standards decide correctness. The rest decide fit, and that is
-judgement rather than a script.
+Eight jobs decide correctness. The rest decide fit, and that is judgement rather
+than a script.

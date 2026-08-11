@@ -4,8 +4,8 @@
 
 If you have just arrived, five things.
 
-**1. Verify before you trust.** Four gates run in CI and all four run locally,
-with the commands in the next section. Every claim in this repository is either
+**1. Verify before you trust.** Eight gates run in CI and all eight run
+locally, with the commands in the next section. Every claim in this repository is either
 machine-checked by them or **explicitly labelled otherwise** — the frozen
 consolidation, for instance, separates machine-checked results from hand-derived
 ones from transcribed ones from a reading audit, and says which is which per
@@ -43,18 +43,24 @@ passes.
 ## Run everything locally first
 
 ```sh
-python3 tests/run.py                              # gate 1: every project's tests
-python3 -m checkers.run --self-test               # the house harness's own tests
-python3 -m checkers.run                           # every registered claim
-python3 tests/path_gate.py                        # which layer your files are in
-python3 tests/conservativity.py                   # no new axioms; spec shape held
-cd lean && lake exe cache get && lake build       # gate 2: Lean, sorry-free
-python3 tests/audit_axioms.py                     # gate 2: axiom audit
-python3 tests/check_frozen.py                     # gate 3: frozen integrity
-cd frozen/consolidation_aug9 && python3 tests/run.py   # gate 4: foundations
+python3 tests/run.py                              # python: every project's tests
+python3 tests/name_lint.py                        # python: no personal names in prose
+python3 -m checkers.run --self-test               # checkers: the harness's own tests
+python3 -m checkers.run                           # checkers: every registered claim
+python3 tests/contrib_hygiene.py                  # checkers: contributed checkers
+python3 tests/path_gate.py                        # path-gate: which layer your files are in
+python3 tests/conservativity.py                   # conservativity: no new axioms
+cd lean && lake exe cache get && lake build       # lean: sorry-free
+python3 tests/audit_axioms.py                     # lean: axiom audit
+python3 tests/check_frozen.py                     # frozen-integrity
+cd frozen/consolidation_aug9 && python3 tests/run.py   # foundations-verification
 ```
 
-CI runs exactly these. If they pass locally on a clean checkout, they pass in CI.
+The comment names the CI job each command belongs to. Two gates have no local
+form: `dco` reads your commits' sign-offs, and the attribution check reads the
+pull-request body, which does not exist until you open one.
+
+If these pass locally on a clean checkout, the rest is the pull request itself.
 
 ## What you can contribute
 
@@ -76,7 +82,7 @@ contributions are fine.
 
 ### Nothing enters the record unasked
 
-**Every registered claim answers a filed `OPEN_PROBLEMS.md` item.** Propose new
+**Every registered claim answers a filed `PRIORITIES.md` item.** Propose new
 items as issues; filing is a maintainer act. An unsolicited-but-correct
 contribution is not merged into the record — but the maintainer may file a
 matching item and then accept it, so good work is not wasted, only sequenced.
@@ -123,7 +129,6 @@ concrete instance satisfying all its hypotheses. A theorem whose hypotheses
 nothing satisfies is not false, it is empty, and that difference is invisible to
 the kernel.
 
-
 ## What a contribution must contain
 
 **A theorem** ships as four things:
@@ -151,7 +156,7 @@ is a counterexample" is not a witness; the counterexample is.
 
 ## Where to find work
 
-`OPEN_PROBLEMS.md`. It is the source of truth and it tags difficulty: **[entry]**
+`PRIORITIES.md`. It is the source of truth and it tags difficulty: **[entry]**
 items need no new mathematics, **[substantial]** items are scoped results,
 **[open]** items may be impossible. GitHub issues mirror that file, not the
 reverse — if the two disagree, the file is right.
@@ -200,9 +205,19 @@ verify a citation against the source it names, state the content directly and sa
 that the label did not check out — that has caught real errors here, including
 labels attributed to sources that do not contain them.
 
+## Prose
+
+`AGENTS.md` has the rule in full; the short form is that every sentence does
+work. No restatement, no padding structure, no inflated register, no hedging that
+is not a real epistemic state — the epistemic classes are where uncertainty gets
+recorded. This is not style policing: padding hides errors in the restatements,
+and it inflates the cost of the review this repository runs on. **A pull request
+whose content is correct and whose prose is padded can be rejected on that
+ground.**
+
 ## Review
 
 The author reviews everything (`CODEOWNERS`). The gates decide correctness; review
 decides fit, naming, provenance labelling, whether both documentation registers
-are present, and whether a result belongs in the program. A green PR is
+are present, prose, and whether a result belongs in the program. A green PR is
 not automatically merged, and a red one is not argued with.
