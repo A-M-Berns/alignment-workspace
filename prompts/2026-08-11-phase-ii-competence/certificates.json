@@ -1,0 +1,138 @@
+{
+  "C1-collapse-upper-bound": {
+    "params": {
+      "constraints": [
+        {
+          "coefficients": [
+            "0",
+            "-2"
+          ],
+          "rhs": "-2"
+        },
+        {
+          "coefficients": [
+            "-2",
+            "0"
+          ],
+          "rhs": "-2"
+        }
+      ],
+      "denominator": 60,
+      "dimension": 2,
+      "domain": "rational-simplex",
+      "property": "satisfies-linear-constraints"
+    },
+    "reading": "Delta_fixed(P) <= max_w R(w) = 2 for every rational credence at denominator 60"
+  },
+  "C2-pc4-leakage": {
+    "params": {
+      "constraints": [
+        {
+          "coefficients": [
+            "4",
+            "0"
+          ],
+          "rhs": "0"
+        },
+        {
+          "coefficients": [
+            "0",
+            "0"
+          ],
+          "rhs": "0"
+        }
+      ],
+      "denominator": 60,
+      "dimension": 2,
+      "domain": "rational-simplex",
+      "property": "satisfies-linear-constraints"
+    },
+    "reading": "Delta_fixed(P) <= 0 + 2B * P(gamma < 1) for every rational credence at denominator 60, with B = 2"
+  },
+  "C3-pc0-implies-regret": {
+    "params": {
+      "axes": [
+        {
+          "high": 6,
+          "low": 2
+        },
+        {
+          "high": 2,
+          "low": -2
+        },
+        {
+          "high": 2,
+          "low": -2
+        },
+        {
+          "high": 6,
+          "low": 2
+        }
+      ],
+      "constraints": [
+        {
+          "coefficients": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "rhs": "-1"
+        },
+        {
+          "coefficients": [
+            "1",
+            "-1",
+            "0",
+            "0"
+          ],
+          "rhs": "-1"
+        },
+        {
+          "coefficients": [
+            "0",
+            "0",
+            "-1",
+            "1"
+          ],
+          "rhs": "-1"
+        },
+        {
+          "coefficients": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "rhs": "-1"
+        }
+      ],
+      "denominator": 4,
+      "domain": "rational-grid",
+      "property": "satisfies-linear-constraints"
+    },
+    "reading": "over the PC-0 box at eta = 1/2, R(w) <= 2 eta = 1 at every w"
+  },
+  "C4-pc1-level-necessity": {
+    "params": {
+      "axes": [
+        {
+          "high": 15,
+          "low": 0
+        }
+      ],
+      "constraints": [
+        {
+          "coefficients": [
+            "1"
+          ],
+          "rhs": "4"
+        }
+      ],
+      "denominator": 4,
+      "domain": "rational-grid",
+      "property": "violates-at-least-one"
+    },
+    "reading": "in W4's model every eta in [0, 15/4] fails the pointwise regret bound R <= eta; the least admissible eta is 2B = 4"
+  }
+}

@@ -29,16 +29,266 @@ reconstructing the context.
   *Changing it* is one `git mv`, one file rename, and six prose references
   today; the cost rises with every round that lands work in the tree or cites a
   path into it, and the next leverage round is the first that would.
-- **Which deference documents are canonical.** `projects/deference/notes/` holds
-  a pointer and no documents, because seeding by guess would manufacture
-  provenance. *Deciding* means naming which of the candidates on the maintainer's
-  machine are canonical and under what names. *Not deciding* forecloses the
-  deference line: `projects/deference/kernel/` is reserved and empty, and a round
-  dispatched against that line has nothing in-repo to work from — it would have
-  to be given its inputs in the dispatch, which is the provenance gap this
-  convention exists to close.
-
 ## Settled
+
+### 2026-08-11 — Stage III did not build a FUD comparator, and says so
+
+Taken at the close of Stage III, after an independent adversarial review overturned the
+round's own first-draft conclusions. The round's positive reading is **withdrawn**.
+
+**The constructed transferred arm contains no future agent.** Its selection was defined as
+the argmax of the *evaluating agent's own objective under the evaluating agent's own
+credence*, which that agent can compute at the earlier time. So the arm confers no
+cognition the evaluator lacks, and no object representing a distinct future agent occurs
+anywhere in the model. What was compared is the principal's contingent plan against the
+**optimal later-measurable plan** — the envelope that the previous phase priced and
+recorded as explicitly *not* the fully-updated comparator. Skeleton v2 §4 declared that
+comparator a hole and warned that careless invention is how it collapses; the round
+invented carelessly in the way it had been warned against.
+
+**Three consequences, all recorded rather than repaired by assumption.** The dominance
+result carries no fairness hypothesis and is `∑ maxima ≥ ∑ anything`; its original
+docstring described a statement that did not exist. Its real driver is future-agent
+**infallibility**, not "epistemic improvement only" — a witness with every fairness
+condition intact, in which a better-informed but fallible future agent makes the gap
+strictly negative, is now carried. And the observation that no jurisdictional term appears
+in the arithmetic was guaranteed by construction: the specification waived the null effect
+and the whole execution layer, which the previous phase recorded as the place all of
+protection's valuation content sits.
+
+**Verdict: not well-posed as constructed.** No claim is made that fully updated deference
+is false, or that jurisdiction has low value; both were outside what the model could see.
+**A FUD proof round is not to be dispatched.** A successor needs two things, and they are
+the same two prerequisites the previous phase already named: a future agent with
+independent existence, so that *better-informed* and *correct* can come apart; and the
+execution layer reinstated with a declared null quantity, so that a jurisdiction
+assignment is something a valuation can price rather than a label on a selection.
+
+**What survives.** Fifteen kernel-checked theorems, renamed to `EnvelopeDominance` to match
+what they prove and reusable by any successor. The fairness apparatus and three confound
+witnesses, each now moving exactly one variable. The reduction: the gap *is* the delegation
+deficit against the later-measurable comparator class, so the credence collapse applies to
+the same object rather than by analogy, and any credence-free hypothesis bounding it is it.
+And the confirmation that **underwriting is absent from the engine**.
+
+**A repeated classification error is recorded.** The round's competence slot was labelled
+as the previous phase's credence-free hypothesis; it compares grades to a conditional
+expectation, so the credence occurs in it and it is a joint competence–credence hypothesis
+under skeleton v2 §2a. This is the same error the competence track caught for grade trust,
+made again. A mechanical check — does the hypothesis mention the credence? — would catch
+both.
+
+**The specification is kept, corrected, as a defective record** rather than withdrawn: its
+fairness apparatus is reusable and the defect is the round's main finding. It is marked as
+**not a binding input** to any proof attempt.
+
+### 2026-08-11 — the setup and scrub reports are removed from the root
+
+Maintainer instruction, taken during the Stage III round. Both were
+round-contemporaneous records that had outlived the root: the setup report
+described a toolchain and CI configuration now readable from the pinned files
+themselves, and the scrub report recorded the judgment calls of two scrub rounds
+whose own round records under `prompts/` survive.
+
+Four live pointers were repaired rather than left dangling, because a pointer that
+no longer resolves is a dead link and not history.
+
+- `tests/path_gate.py` listed the setup report as a specification path. Removed from
+  the enumeration. This is a **trust-chain file** and the edit is recorded here for
+  that reason; the entry it removes named a file that no longer exists, so the gate
+  is not weakened.
+- `GOVERNANCE_REPORT.md`'s specification-path listing is brought back into agreement
+  with the gate. The two must agree, and the gate is the source of truth.
+- `projects/leverage/CLAIMS.md` carried the setup report as the **verification
+  register of two registered `lean-proved` smoke claims** (`smoke.faf-asymp-refl`
+  and `smoke.chain-compiles`, both answering item 13). Deleting it would have left
+  two registered claims without half their required dual register, so both doc
+  pointers are repointed to `prompts/2026-08-10-repo-scaffolding/REPORT.md`, the
+  surviving round record that documents the same setup verification. **No claim
+  changed class and no statement of record moved.**
+- `PROVENANCE.md`'s row for the file is dropped; `PRIORITIES.md` item 10's context
+  pointer now names the round record.
+
+Two references are deliberately **not** repaired. `AGENTS.md`'s chat-dump section
+requires a collator to produce a `SCRUB_REPORT.md` alongside a bundle; that is a
+standing requirement on future dumps, not a pointer to the deleted file, and it
+stays as written. And `projects/deference/note-dump-2026-06-27/ORIGIN.md` names the
+root scrub report in its intake receipt; that tree is `agent-consolidated` and its
+receipt records what was true at intake, so it is not rewritten.
+
+References under `prompts/` are round records and keep what was true when they were
+written.
+
+### 2026-08-11 — skeleton v2 is installed; jurisdiction replaces authority in the canonical roadmap
+
+Taken at the Stage II closure pass, after Tracks H, I, K, L and M returned and were
+independently re-verified at `8c71ef9` (1843 build jobs, 142 axiom results across 10
+files, full suite green, Track L's harness reproducing all of its 71 checks, 1,574,640
+models and 1,443 refutations exactly).
+
+**The `FINITE_MODEL_SKELETON` execution clause is ruled on and installed as v2.** Track
+K's proposed §9.2 clause is adopted: reports, an authorization relation, a null effect,
+an execution map, and a derived per-report authorized menu. It is required because v1
+carries no capability structure, so fail-closed in its strong form — the agent *cannot
+execute* an unauthorized alternative — is not expressible in v1 at all. The patch is
+conservative: at the free instantiation every v1 statement is a v2 statement.
+
+**The quantity is indexed over interventions plus the null effect.** Required, and for a
+sharper reason than "protection needs a cost for refusal": under any protecting menu some
+conduct realizes the null effect, so without the extension the valuation is not a total
+function and every V-register statement over the execution layer is *ill-typed* rather
+than false. Its value is a declared per-instantiation modelling commitment with no
+default, because all of protection's valuation content sits in it and the sign of the
+result depends on the choice.
+
+**Correction to the closure dispatch.** That dispatch identified this amendment as
+required for the certificate's grade-register theorem to be a theorem over the skeleton.
+The amendment is required, but not for that: the grade-register theorem mentions no
+quantity at all, and is untouched. The real gap in its neighbourhood is that the
+amendment extends the quantity to the null effect while **nothing extends the principal's
+grades to it**, so the two registers have different domains. v2 therefore declares that
+the V-register scores *realizations* and the grade register scores *proposals*; a
+grade-register statement read over realizations is ill-typed, not false. Extending the
+grade register to the null effect is left open, because supplying it is a theory of what
+the principal's judgment says about refusal and no track has proposed one.
+
+**No promoted result is invalidated.** Everything the certificate rerun refuted or
+reinterpreted sits in the set the Lean promotion deliberately declined to port as resting
+on the uniform grade-to-quantity relation. The exclusion absorbed the entire impact, and
+the justification that arrived is stronger than the one given at the time.
+
+**Competence vocabulary is adopted; cross-decision aggregation is declined.** A
+competence hypothesis is a predicate of the principal/world pair alone; anything also
+mentioning the agent's credence is a joint competence–credence hypothesis and is declared
+as one. The cross-decision patch is declined on the competence track's own evidence: no
+aggregate condition constrains any named decision, so the patch buys nothing the finite
+kernel needs.
+
+**Terminology: jurisdiction.** The canonical roadmap now says *jurisdiction* — protected
+control over which process's authorization is constitutively required for an intervention
+to become executable. It is operational and capability-based: not moral legitimacy, not
+objective correctness, not preference alignment, not behavioural agreement, not epistemic
+superiority. No `HasRight` predicate is introduced and no token or cryptographic
+implementation is canonized. Historical records keep the word "authority" as written;
+this is a change of current terminology, not a retroactive rewrite.
+
+**The certificate governs the complement, not the surround.** "Categorical authority plus
+quantitative autonomy *around* it" is replaced by "categorical principal jurisdiction plus
+quantitative AI autonomy on the complement where that jurisdiction is waived". Forced by
+an exhaustive result: inside a live protected interface every authorized option other
+than the report's own designation is an override, so there is no third kind of option for
+a certificate to license. And certification cannot converge to jurisdiction — the whole
+valuation difference between the protected and unprotected architectures is bounded by
+the certificate's own bound, attained, so tightening it shrinks the distinction at the
+same rate and never reveals it.
+
+**Override-protection is bought; liveness is conceded.** Categorical protection against
+override and categorical liveness against obstruction cannot both hold while the agent
+retains any discretion. Fail-closed as written buys the first. Making refusal expensive is
+preference-relative and reintroduces underwriting, so a residual refusal mechanism may not
+become the conceptual explanation of corrigibility.
+
+**Correction to a verified Phase I record.** The certificate round's Theorem C(b) glosses
+its override bound as a strict-minority claim; it is not, with an exact counterexample at
+override mass three fifths of the certified credence. What the support-floor clause
+delivers is only that the certified act executes on positive mass. Recorded here rather
+than edited into that round's report, which is history under *no negative ontologies*.
+Source: `prompts/2026-08-11-phase-ii-certificate/REPORT.md` §4.
+
+### 2026-08-11 — choice-level competence is retired; the certificate gates on self-assessed error
+
+Two decisions taken after Phase II's competence and prediction tracks returned and
+were verified.
+
+**Competence may not be stated as a regret bound.** Pointwise, average and
+selector-relative decision-regret assumptions are each *equivalent* to the
+delegation inequality they were meant to buy, not merely sufficient for it. The
+mechanism: decision regret is nonnegative, so there is no cancellation, and the
+supremum of the delegation deficit over credences is the maximum regret — making
+the weakest credence-free hypothesis implying the target uniformly **be** the
+target. Asking for the weakest assumption preserving the theorem is therefore
+ill-posed.
+
+The candidates are retired as a **statement shape**, not merely as parameter
+choices. They may not be rescued by tuning constants, nor by trading the pointwise
+form for a Cesàro or selector-relative one — the averaged forms fail worse, being
+invariant under changing finitely many decisions and so constraining no named
+decision at all.
+
+The equivalence depends on point masses being admissible credences, and that
+dependence is recorded rather than exploited: **the admissible credence class is
+not restricted away from point masses to evade the result.** Such a restriction
+would need independent motivation, and the fully-updated-deference theorem is meant
+to stay meaningful precisely as the agent becomes highly informed.
+
+Competence moves into a richer vocabulary — cardinal grade structure rather than
+which option was chosen — because a hypothesis in the conclusion's own vocabulary
+can only be the conclusion. The strongest non-circular candidate found,
+decisiveness-gated calibration, is preserved together with its unbounded
+near-indifference leakage term, and is **not** canonized pending the Phase II
+synthesis.
+
+**The certificate engine gates rather than eliminates.** Magnitude prediction error
+cannot be forced to zero: a trader's net worth is affine in the settlement vector
+and absolute value is not, so no instrument reaches it. Rather than assume the
+principal is approximately predictable, the certificate is reoriented onto the
+selective validity of low-error self-assessment — the agent prices a contract
+settling to its own error statistic, and the guarantee sought is that this claim is
+statistically trustworthy on the class where it licenses autonomous discretion. The
+criterion need not make the principal predictable; it should make the agent's claim
+that its prediction error is low trustworthy where that claim does work.
+Measurement and gating, not error elimination.
+
+An explicit principal-predictability assumption is retained only as a baseline
+corollary, never as the conceptual engine. The agent's self-measured indecision,
+which Phase II's exact squared-error decomposition supplies directly from its own
+prices, is retained as the canonical special case and the likeliest first Lean
+theorem.
+
+### 2026-08-11 — the deference line's canonical documents, and `notes/` as specification space
+
+Four documents are canonical for the deference line:
+`projects/deference/notes/CORRIGIBILITY_ROADMAP.md` for current architecture and
+execution planning, `CORRIGIBILITY_PAPER_LEDGER.md` for human-readable research
+status, `DISPATCH_QUEUE.md` for what is dispatched and what may not yet be, and
+`FINITE_MODEL_SKELETON.md` for the frozen finite specification object a round's
+finite tracks bind to. Precedence: where roadmap and ledger disagree about whether
+something is established, the ledger wins; where prose and the claims registry
+disagree about what is established in this repository, the registry wins.
+
+The decision was made by the maintainer before the round was dispatched, and the
+round implemented it. It closes the stub that asked which deference documents are
+canonical — the answer is these four, at these paths, and the line no longer has to
+be given its inputs in a dispatch.
+
+**A gate correction went with it, and it is the part worth recording.** The round
+was authorized to create the four documents and found it could not honestly do so:
+`tests/path_gate.py` classifies with `fnmatch`, whose `*` crosses a path separator,
+so the enumeration protected `projects/*/README.md`, `CLAIMS.md`, `MODEL.md` and
+`THEOREMS.md` **by basename at any depth** — and nothing else under a line's
+`notes/`. A canonical document was therefore specification layer or not according to
+what it was called: `notes/README.md` was protected, `notes/ROADMAP.md` was in
+neither layer. The intended policy is that a line's `notes/` is maintainer working
+space, so `"projects/*/notes/**"` was added to the specification enumeration with
+three self-test cases, including the regression case that an arbitrary filename
+under a line's `notes/` classifies as specification. A contribution surface nested
+under `notes/` still resolves to the proof layer, because proof patterns win.
+
+This is a trust-chain change and was separately authorized as one. The failure
+direction is safe: adding a specification pattern only ever removes contributor
+write access and cannot grant a pass.
+
+**A second candidate correction was authorized conditionally and not made.** The
+same authorization covered `projects/*/FOR_HUMANS.md` *if* inspection confirmed
+`AGENTS.md` designates it a specification-side artifact. Inspection does not confirm
+it. `AGENTS.md` names `FOR_HUMANS.md` as the human-register *style* and, in the same
+document, assigns "dual-register documentation of contributed results" to the
+**proof** layer — while also requiring every substantive deliverable to ship both
+registers. Protecting the path would forbid a contributor from writing a register
+they are required to ship. The existing `projects/*/THEOREMS.md` protection has the
+same defect, and `projects/*/VERIFICATION.md` — named beside `THEOREMS.md` in the
+dual-register section — is not protected at all. The three are one question about
+where dual-register documentation lives, and it is left open rather than half-answered.
 
 ### 2026-08-11 — `frozen/` retired; received work becomes line content
 
