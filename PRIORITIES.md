@@ -228,30 +228,33 @@ says which of its statements have a derivation and which have only a witness.
 Filed by that round within its dispatched scope, with
 `prompts/2026-08-11-phi-regret-prep/PROMPT.md` as the authorization.
 
-### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]**
+### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]** — *partially closed: Near miss*
 
-The comparator class is a finite set of guarded swaps: where the guard fires and
-a lawful-edit certificate is admitted, the learner's response is replaced. Guards
-read the actual prefix and the current response, both available before the loss
-is revealed, so each comparator induces a map on distributions over responses at
-each occasion — which is the condition the Blum–Mansour fixed-point step needs.
-What the standard statement does not have to handle is a per-occasion action set
-that varies with the bound schedule.
+Blum--Mansour (2007) Theorem 18 is the right theorem for the frozen item-30
+configuration. A lawful comparator is
+a fixed ex-ante program inducing history-indexed maps `F^t_phi(x_t):A_t -> A_t`;
+Theorem 18 explicitly permits modification rules to depend on history. Changing
+sets admit a regret-preserving retraction lemma, but the repository-native union
+does not have fixed size: `Response` contains occasion-specific ledger effects,
+so `N_T=3T+5`. The source bound becomes linear in `T`.
 
-Settle whether the reduction applies, and if it does not, name the structural
-feature that obstructs it.
+The applicable bound is `O(ell_max sqrt(T N log K))` for `N` encoded actions and
+`K` fixed programs, not the preparation round's conjectured
+`O(ell_max sqrt(T log K))`. The remaining acceptance shape is a fixed
+eight-label action type with an occasion-local decoder and a proof that decoding
+preserves maps, charge, and regret. All nine fixed programs must also be
+materialized and audited for causality and non-capture; arbitrary Python
+callbacks can bypass the argument seal. The bridge continues to require frozen
+filings, actual-prefix guards, no solvency coupling, and no post-hoc
+affordability filter.
 
-*Deliverable shape:* `lean-proved` in `Workspace.Leverage.Contrib` for the
-reduction at whatever generality holds, with an inhabitation witness; or a
-`witness-checked` instance exhibiting the obstruction.
-*Acceptance check:* the `lean` gate builds and audits clean with a typechecking
-witness; or the `witness` checker accepts the obstructing instance.
-*Context:* `ONLINE_LEARNING_MAP.md` §7 and the reduction paragraph below it.
-*A solution ships:* the verdict, and the exact bound if positive.
-*Why it is first:* every other question about a regret bound is downstream of it,
-and it is the cheapest of the three to settle.
+*Result:* `projects/leverage/rounds/2026-08-11-phi-regret-applicability/` gives
+the source audit, an abstract padding lemma, two decisive interface
+counterexamples, and exact finite checks. Nothing is registered or Lean-proved;
+item 29 is partially closed as a theorem-applicability near miss rather than a
+new regret theorem.
 
-### 30. A learner with sublinear Φ_law-regret, and what it retires — **[open]**
+### 30. A learner with sublinear Φ_law-regret, and what it retires — **[open, blocked by item 29]**
 
 The controlling question of the track.
 
@@ -264,6 +267,12 @@ Both halves. The second is one line given the first — a pattern recognised on
 `Ω(T)` occasions with a fixed admitted repair saving `δ > 0` would force
 `R_T(φ) ≥ ρδT − B` — and its content is entirely in the hypotheses, three of
 which the environment supplies and one of which is the bound.
+
+Once item 29 supplies a uniform fixed action type, use Blum--Mansour Theorem
+18's row-conditioned weights over source actions and lawful programs, and its
+stationary distribution. Use the `sqrt(N log K)` dependence. Do not use the
+preparation spec's proposed plain exponential weights over nine transformations
+or report a `sqrt(log K)` bound.
 
 **Report `|Φ_law|` and its contents alongside any regret number.** Sublinear
 regret against a nine-element class is a weak statement, and a report without the
