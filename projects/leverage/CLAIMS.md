@@ -10,7 +10,7 @@ Schema: `### <id>` followed by one fenced `json` block with `class`,
 
 ## The frozen consolidation is not migrated into this registry
 
-`frozen/consolidation_aug9/` carries **180 claims** with their own statuses. They
+`projects/leverage/consolidation-aug9/` carries **180 claims** with their own statuses. They
 are **deliberately not re-registered here**, and the reason is not laziness.
 
 Their statements of record are theory-part prose plus a verifier **inside the

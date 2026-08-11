@@ -8,14 +8,14 @@ force.
 
 ## Where the authority is
 
-**The authoritative record for this line is frozen, and it is not here.** It is
-`frozen/consolidation_aug9/`, registered and checksummed in
-`frozen/MANIFEST.md`: six theory parts numbered 7 through 12, a ledger of 180
+**The authoritative record for this line is `consolidation-aug9/`.** It is
+`agent-consolidated` — done, cited rather than edited, with its intake digests in
+its own `ORIGIN.md`: six theory parts numbered 7 through 12, a ledger of 180
 claims with hypotheses, statuses, sharpness and dependencies, and its own
-vendored inputs frozen by digest. It verifies standalone:
+vendored inputs pinned by digest. It verifies standalone:
 
 ```sh
-cd ../../frozen/consolidation_aug9 && python3 tests/run.py
+cd ../../projects/leverage/consolidation-aug9 && python3 tests/run.py
 ```
 
 Cite results from it **by claim identifier** — `NL-SI-A3`, `CD-L1` — never by
@@ -26,8 +26,8 @@ consolidation vendored inside it, so the pair reads as one monograph.
 
 `forward/` — the forward tree: six source modules the next round builds
 on, their tests, a runner, and its own conventions note. Nothing in it is
-frozen, and nothing in it survives unless it is consolidated in turn. Its
-`CONSOLIDATION_REF.md` pins the frozen tree.
+consolidated, and nothing in it survives unless it is consolidated in turn. Its
+`CONSOLIDATION_REF.md` pins the tree it builds on.
 
 ```sh
 cd forward && python3 tests/run.py
@@ -37,7 +37,7 @@ New leverage rounds land in this directory.
 
 ## Open, ranked
 
-The frozen tree's `OPEN_PROBLEMS.md` is the list. The two that carry weight:
+The consolidation's own `OPEN_PROBLEMS.md` is the list. The two that carry weight:
 persistence of the certified core minimum as settlement contracts the region —
 the per-date check is a linear program, the infimum over time is open — and
 whether a computable coherence modulus exists, which is open in both directions

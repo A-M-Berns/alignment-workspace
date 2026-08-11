@@ -94,7 +94,7 @@ pin or the toolchain does, which is the right granularity.
    request it additionally fails any change under `frozen/` unless the same pull
    request updates `MANIFEST.md`; the author's sign-off then happens through
    required review.
-4. **foundations-verification** — copies `frozen/consolidation_aug9/` to the
+4. **foundations-verification** — copies `projects/leverage/consolidation-aug9/` to the
    runner temp directory and runs its own verifier there, then re-runs the
    frozen check to confirm the tree was not modified. Executing from a copy is
    the point: a gate that could mutate frozen content would drift the very digest
@@ -144,7 +144,7 @@ identical before one was registered.
    survive in the manifest as provenance.
 4. **The note-dump trees were flattened by one level.** Each archive contained a
    single top-level directory repeating its own name; the redundant level was
-   removed so paths cite as `frozen/deference-note-dump-2026-06-27/lean/AUDIT.md`
+   removed so paths cite as `projects/deference/note-dump-2026-06-27/lean/AUDIT.md`
    rather than with the name twice. The tree digest is over the flattened form,
    so it is what CI checks.
 5. **`PRIORITIES.md` has eleven items, not only the two sources' union.** Six

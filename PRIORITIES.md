@@ -29,7 +29,7 @@ be impossible.
 
 ## Leverage line
 
-Context for all six: `frozen/consolidation_aug9/`, whose `OPEN_PROBLEMS.md`
+Context for all six: `projects/leverage/consolidation-aug9/`, whose `OPEN_PROBLEMS.md`
 ranks them and whose theory parts state the surrounding results. Cite claims from
 it by identifier.
 
@@ -45,7 +45,7 @@ region. `NL-SI-A4` shows no finite family of per-date checks decides it, and
 *Deliverable shape:* `lean-proved` in `Workspace.Leverage.Contrib`, or `witness-checked` for the negative direction.
 *Acceptance check:* The Lean gate builds and audits clean; or the `witness` checker accepts the trajectory with the `violates-at-least-one` property.
 
-*Context:* `frozen/consolidation_aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §5.
+*Context:* `projects/leverage/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §5.
 *A solution ships:* either a proof that a positive minimum persists under stated
 conditions, with necessity witnesses for those conditions; or a displayed
 trajectory driving it to zero under conditions the interface permits.
@@ -65,7 +65,7 @@ question does not mention.
 *Deliverable shape:* `lean-proved`. Nothing weaker settles a question that is open in both directions.
 *Acceptance check:* The Lean gate builds and audits clean.
 
-*Context:* `frozen/consolidation_aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §3, §7.
+*Context:* `projects/leverage/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §3, §7.
 *A solution ships:* a modulus with its conformance proof, or an impossibility
 argument that does not route through Gaifman inductivity.
 
@@ -79,7 +79,7 @@ make a footprint declaration **unsound** rather than merely coarse.
 *Deliverable shape:* `enumeration-verified` — domain parameters for the house enumeration checker, covering all thirteen tables.
 *Acceptance check:* `python3 -m checkers.run` accepts the registered entry.
 
-*Context:* `frozen/consolidation_aug9/THEORY_7_OBJECTION_GRAMMAR.md` §4.
+*Context:* `projects/leverage/consolidation-aug9/THEORY_7_OBJECTION_GRAMMAR.md` §4.
 *A solution ships:* grounds exercising every registered table, the ablation run
 over all thirteen, and the result either way.
 *Why it is [entry]:* finite programme over a finite registry; no new mathematics.
@@ -94,7 +94,7 @@ the weakest sound one.
 *Deliverable shape:* `witness-checked` for the multi-coordinate instances; `lean-proved` for a sharpness result.
 *Acceptance check:* The `witness` checker accepts each instance; or the Lean gate is green.
 
-*Context:* `frozen/consolidation_aug9/THEORY_10_JOINT_COMPOSITION.md` §3, §6.
+*Context:* `projects/leverage/consolidation-aug9/THEORY_10_JOINT_COMPOSITION.md` §3, §6.
 *A solution ships:* the multi-coordinate instances with exact witnesses, and
 either a sharpness proof or a witness that the predicate is not weakest.
 
@@ -110,7 +110,7 @@ strongest.
 *Deliverable shape:* A construction in `Workspace.Leverage.Contrib` plus registry entries per clause it inhabits.
 *Acceptance check:* The Lean gate is green and each clause entry names a declaration that exists.
 
-*Context:* `frozen/consolidation_aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §7;
+*Context:* `projects/leverage/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §7;
 `VERIFICATION.md` §1.
 *A solution ships:* the construction, the predicates evaluated against it, and an
 honest statement of which clauses it does and does not inhabit.
@@ -123,13 +123,13 @@ stream results are stated over arrivals.
 *Deliverable shape:* `enumeration-verified` over a declared finite schema family, or `conjectured` with the statement made precise.
 *Acceptance check:* `python3 -m checkers.run` accepts the entry, or the registry records the class honestly as conjectured.
 
-*Context:* `frozen/consolidation_aug9/THEORY_9_PRACTICAL_DEMAND.md`.
+*Context:* `projects/leverage/consolidation-aug9/THEORY_9_PRACTICAL_DEMAND.md`.
 
 ---
 
 ## Deference line
 
-Context for all three: `frozen/deference-note-dump-2026-06-27/`, in particular
+Context for all three: `projects/deference/note-dump-2026-06-27/`, in particular
 `lean/AUDIT.md`, the development's own statement-level audit. Its §3 is titled
 "The concerning gaps"; the three below are its own findings, quoted by section.
 
@@ -143,7 +143,7 @@ nowhere in it, because the objects that inference is about are absent.
 *Deliverable shape:* `lean-proved` in `Workspace.Deference.Contrib`, with an inhabitation witness for the hypothesis package.
 *Acceptance check:* The Lean gate is green, the axiom audit is clean, and the nonvacuity witness typechecks.
 
-*Context:* `frozen/deference-note-dump-2026-06-27/lean/AUDIT.md` §3.1.
+*Context:* `projects/deference/note-dump-2026-06-27/lean/AUDIT.md` §3.1.
 *A solution ships:* a minimal market and trader model in
 `Workspace.Deference.*`, enough that the criterion's application is a proof
 rather than a hypothesis, with the axiom audit clean.
@@ -159,7 +159,7 @@ open".
 *Deliverable shape:* `lean-proved`, or `witness-checked` for a negative answer.
 *Acceptance check:* The Lean gate is green; or the `witness` checker accepts the separating instance.
 
-*Context:* `frozen/deference-note-dump-2026-06-27/lean/AUDIT.md` §3.2.
+*Context:* `projects/deference/note-dump-2026-06-27/lean/AUDIT.md` §3.2.
 *A solution ships:* a characterization of the class, or a witness that it is not
 characterizable in the intended terms.
 
@@ -172,7 +172,7 @@ contains its conclusion; it is not false, it is empty.
 *Deliverable shape:* `lean-proved` restatements whose hypotheses are strictly weaker than their conclusions, each with an inhabitation witness.
 *Acceptance check:* The Lean gate is green and each restated theorem ships a typechecking witness term.
 
-*Context:* `frozen/deference-note-dump-2026-06-27/lean/AUDIT.md` §3.3, and §5's
+*Context:* `projects/deference/note-dump-2026-06-27/lean/AUDIT.md` §3.3, and §5's
 severity ranking.
 *A solution ships:* restated theorems whose hypotheses are strictly weaker than
 their conclusions, with the gap displayed — or a demonstration that the squeeze
@@ -217,7 +217,7 @@ units: find the instance, display it, add the test.
 *Deliverable shape:* `witness-checked` entries, one per hypothesis given a witness.
 *Acceptance check:* The `witness` checker accepts each instance.
 
-*Context:* `frozen/consolidation_aug9/LEDGER.md`, the necessity/sharpness column.
+*Context:* `projects/leverage/consolidation-aug9/LEDGER.md`, the necessity/sharpness column.
 
 
 ---

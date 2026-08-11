@@ -37,13 +37,13 @@ review matter, and the table in §14 says which is which.
 
 ## The standards
 
-### 1. `frozen/` is immutable
+### 1. Consolidated work is treated as done
 
-Cite it; never edit it. Frozen inputs are read-only, checksummed in
-`frozen/FROZEN_INPUT_CHECKSUMS.json`, and referenced by path. A frozen input that
-needed changing was not frozen: the honest move is a new dated entry beside the
-old one. The `frozen-integrity` job recomputes every tree digest and refuses any
-pull request touching `frozen/` that does not update `frozen/MANIFEST.md`.
+A tree produced by a consolidation round, or received as a settled bundle, is
+`agent-consolidated`: ordinary content, cited by path, and **not tweaked**. Each
+carries an `ORIGIN.md` recording what it was at intake — archive digest, tree
+digest, date — so a reader can tell whether it has moved since. The status and
+what it permits are below.
 
 ### 2. Exact arithmetic
 
@@ -71,8 +71,7 @@ failure this rule exists to prevent. The `lean` job enforces all of it.
 ### 5. Runners
 
 One command per project; one repo-level runner that runs them all. A project's
-runner is self-contained: it reaches outside its own directory only to read
-`frozen/`. The `python` job.
+runner is self-contained. The `python` job.
 
 ### 6. No permanent naming
 
@@ -209,7 +208,7 @@ labelled, and **headline or flagship documents may not remain `ci-only`**.
 
 **Mechanics.** A `PROVENANCE.md` in each results directory, one line per file or
 glob, carrying: generator; review status; the date; the originating round under
-`prompts/`; and — where one exists — the originating chat bundle in `frozen/`.
+`prompts/`; and — where one exists — the originating chat bundle.
 The pull-request template asks for provenance entries added or updated alongside
 new names introduced.
 
@@ -262,8 +261,9 @@ When the author requests a dump, it is a bundle:
   artifacts/      files produced in the conversations, if not already in the repo
 ```
 
-Bundles are assembled **outside** the repository, reviewed, then enter `frozen/`
-like any other archive — checksummed and immutable.
+Bundles are assembled **outside** the repository, reviewed, then enter the
+research line they belong to as an `agent-consolidated` tree with its own
+`ORIGIN.md`.
 
 ### Scrubbing
 
@@ -328,7 +328,7 @@ that means actually reading. It holds: definitions, statements of record,
 notation and typeclass instances on core types; the checker harness; CI
 workflows, toolchain files, the axiom allowance and the resource budgets; and
 the governance documents — this file, `CONTRIBUTING.md`, `PRIORITIES.md`,
-`DECISIONS.md`, `prompts/`, `frozen/`.
+`DECISIONS.md`, `prompts/`, and the consolidated trees.
 
 **Proof layer — open.** Anyone, or anyone's agent. It holds: Lean proofs of
 specification-layer statements and of new lemmas in contribution namespaces;
@@ -503,6 +503,28 @@ Prose in a `MODEL.md` or a human-register document is documentation *of* the
 record. It is never the citable statement. **The registry invocation is what a
 claim is.**
 
+### `agent-consolidated` — a status, not a class
+
+Distinct from the classes above, and not comparable with them: the classes say
+what is *established*, this says how a document is *treated*.
+
+**`agent-consolidated`.** A tree produced by a consolidation round, or received
+as a settled bundle, and treated as done. It is ordinary content: editable,
+reviewable, and not machine-protected. The norm is that it is not tweaked. Edit
+it when there is a reason — a correction, a scrub, a supersession — state the
+reason in the commit, and record substantive edits in `DECISIONS.md`. Rewriting
+a consolidated tree to fit new work is not a reason; that work belongs in
+`forward/` or a new round directory, and the consolidated tree is superseded by
+a later one rather than rewritten into it.
+
+Each such tree carries an `ORIGIN.md` at its root: what it is, where it came
+from and when, the archive and tree digests **at intake**, what cites it, and any
+scrub or redistribution history. That is a **receipt**, not a gate — it lets a
+reader determine whether the tree has moved since it arrived; nothing prevents
+its moving. Contributors do not edit these trees at all: their paths are in the
+specification list in `tests/path_gate.py`, which is where the protection lives
+now — visible and reviewable rather than hash-enforced.
+
 ## Demand-gating
 
 **Nothing enters the registry except in answer to a filed `PRIORITIES.md`
@@ -559,12 +581,12 @@ required.
 
 | standard | enforced by |
 |---|---|
-| 1, frozen immutability | `frozen-integrity` — tree digests, and the manifest rule on pull requests |
+| 1, consolidated trees are not contributors' to edit | `path-gate` — the trees are specification paths |
 | 4, sorry-free | `lean` — the build, plus a textual scan |
 | 4, `#print axioms` present | `lean` — `tests/audit_axioms.py` |
 | 4, results audit to the three | `lean` — re-elaborates each file; also catches `sorryAx` |
 | 5, runners | `python` — `tests/run.py` |
-| foundations stay verified | `foundations-verification` — the frozen consolidation's own runner, from a copy |
+| the consolidation still verifies | `consolidation-verification` — its own runner, from a copy |
 | the two layers | `path-gate` — a non-maintainer pull request touching a specification path fails |
 | conservativity | `conservativity` — no new axioms, specification shape unchanged |
 | the registry, and the `contributor-checked` ceiling | `checkers` — harness self-test, then every `CLAIMS.md` |

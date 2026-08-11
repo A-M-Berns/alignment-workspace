@@ -14,8 +14,9 @@ checked.
 
 Scope, deliberately narrow:
 
-- Tracked Markdown only. `prompts/` is dispatch history kept verbatim and
-  `frozen/` is immutable, so both are out of scope by construction.
+- Tracked Markdown only. `prompts/` is dispatch history kept verbatim, and the
+  consolidated trees are received work whose own wording is not this
+  repository's to rewrite; both are out of scope.
 - `DECISIONS.md` is allowed. The ledger is where this repository keeps history,
   including the entry recording a maintainer joining, which cannot be written
   without a name.
@@ -40,7 +41,12 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 MAINTAINER_NAMES = ("Berns", "Demski", "Anson", "Abram")
 
-EXCLUDED_DIRS = ("prompts/", "frozen/")
+EXCLUDED_DIRS = ("prompts/",) + tuple(d + "/" for d in (
+    "projects/leverage/consolidation-aug9",
+    "projects/deference/note-dump-2026-06-27",
+    "projects/deference/dose-response-note-dump-2026-07-02",
+    "projects/deference/references-citations-2026-08-11",
+))
 ALLOWED_FILES = ("DECISIONS.md",)
 
 CODE_SPAN = re.compile(r"`[^`]*`")
@@ -93,7 +99,7 @@ def self_test() -> int:
         ("a second maintainer name is caught", scan("Ask Demski.\n") > 0, True),
         ("a handle in backticks is allowed", scan("See `A-M-Berns` on GitHub.\n"), 0),
         ("a path in backticks is allowed",
-         scan("Open `frozen/anson-notes/x.md`.\n"), 0),
+         scan("Open `projects/deference/note-dump-2026-06-27/x.md`.\n"), 0),
         ("a fenced block is allowed",
          scan("```\nSigned-off-by: A. M. Berns\n```\n"), 0),
         ("ordinary prose is clean", scan("The program is not named.\n"), 0),
@@ -130,7 +136,7 @@ def main() -> int:
         return 1
 
     print(f"NAME LINT: clean over {len(files)} Markdown files "
-          f"(prompts/ and frozen/ out of scope, DECISIONS.md exempt)")
+          f"(prompts/ and the consolidated trees out of scope, DECISIONS.md exempt)")
     return 0
 
 
