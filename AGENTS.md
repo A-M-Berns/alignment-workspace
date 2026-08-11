@@ -307,7 +307,14 @@ entry.
    `tests/audit_axioms.py`.
 4. The CI workflow definitions — `.github/workflows/`.
 5. The checker harness and the Python interpreter it runs on — `checkers/`.
-6. The resource budgets — the enumeration point cap in `checkers/enumeration.py`,
+6. **CI job names.** Required status checks match job names by **exact string**,
+   so renaming a job silently breaks enforcement in one of two directions: the
+   branch demands a check that no longer reports, blocking everything; or it stops
+   requiring the gate that still runs, and nothing announces it. **Any job rename
+   updates `.github/branch-protection.json` in the same pull request**, and that
+   file — not the workflow, and not this document — is the source of truth for the
+   required-check list.
+7. The resource budgets — the enumeration point cap in `checkers/enumeration.py`,
    the Lean build timeout in CI, and any `maxHeartbeats`-style option in a Lean
    file, which counts as a budget change.
 

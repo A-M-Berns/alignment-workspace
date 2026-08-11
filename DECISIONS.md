@@ -22,6 +22,34 @@ listed at the top of each round's report until they are closed.
 
 ## Settled
 
+### 2026-08-11 — branch protection: audited, staged, and what it is worth
+
+The payload for `main` is audited and committed; GitHub refuses to apply it while
+the repository is private on this plan, so it is staged behind
+`.github/apply-branch-protection.sh` and `FLIP_RUNBOOK.md`.
+
+**Required approvals: zero, deliberately.** GitHub forbids self-approval, so
+requiring even one approval would mechanically reinstate a two-human gate on every
+maintainer pull request — precisely what this ledger decided against earlier today.
+Enforcement lives in the eight required checks, not in required reviews. For the
+same reason `require_code_owner_reviews` is false: with both maintainers listed as
+code owners, requiring a code-owner review would reinstate the same gate by
+another route.
+
+**Enforce for administrators: on, understood as a latch and not a lock.** The
+repository owner can always disable protection in settings, so this does not stop
+deliberate bypass and does not pretend to. What it does is convert accidental or
+lazy bypass into a visible, deliberate settings change. That is the intended
+amount of self-binding, and it is the most a constitution can honestly claim
+against someone holding admin rights.
+
+**Force-pushes and branch deletion blocked**, which is what makes git history
+immutable in fact rather than by convention — the frozen discipline presumes it.
+
+**CI job names are now spec-layer values**, because required checks match them by
+exact string and a rename breaks enforcement silently in either direction.
+
+
 ### 2026-08-11 — licence: Apache-2.0, one licence for everything
 
 Apache-2.0 for all repository content, code and prose alike. Rationale: Mathlib

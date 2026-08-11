@@ -1,5 +1,5 @@
 {
-  "_comment": "Apply once the repository is public, or on GitHub Pro. Branch protection is unavailable on a private repository on the free plan; see SETUP_REPORT.md. Apply with: gh api -X PUT /repos/A-M-Berns/alignment-workstudio/branches/main/protection --input .github/branch-protection.json",
+  "_comment": "Branch protection for main. The required-check list is the SOURCE OF TRUTH and must match the CI job names in .github/workflows/ci.yml string-for-string; a job rename updates this file in the same pull request (AGENTS.md). Apply with: bash .github/apply-branch-protection.sh",
   "required_status_checks": {
     "strict": true,
     "contexts": [
@@ -13,11 +13,11 @@
       "python \u2014 project test runners"
     ]
   },
-  "enforce_admins": false,
+  "enforce_admins": true,
   "required_pull_request_reviews": {
-    "required_approving_review_count": 1,
-    "require_code_owner_reviews": true,
-    "dismiss_stale_reviews": true
+    "required_approving_review_count": 0,
+    "require_code_owner_reviews": false,
+    "dismiss_stale_reviews": false
   },
   "restrictions": null,
   "allow_force_pushes": false,
