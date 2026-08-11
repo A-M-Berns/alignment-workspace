@@ -25,7 +25,6 @@ earlier rows did not record at all.
 | `CONTRIBUTING.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same |
 | `DECISIONS.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same — **decisions are the author's; this file records them, and its wording is not the author's** |
 | `PRIORITIES.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same — items 1–6 restate the frozen consolidation's own list; 7–9 quote the deference audit's §3 by section; 10–11 are proposed by this round |
-| `SETUP_REPORT.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same |
 | `PROVENANCE.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same |
 | `.github/**` | Claude Opus 5 | `ci-only` | 2026-08-10 | same |
 | `tests/**` | Claude Opus 5 | `ci-only` | 2026-08-10 | same — the gate scripts; their behaviour is checked by CI, their design is not reviewed |
@@ -43,6 +42,7 @@ earlier rows did not record at all.
 | `lean/Workspace/Deference/Contrib/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | per-file rows in that directory's own `PROVENANCE.md` — **machine-checked**: builds against the pinned toolchain and audits to the three standard axioms, no `sorry`, no `axiom`. Reached by the default build target, which globs the library. Not registered. Two declarations remain `unverified-nonvacuous`, shipping no term inhabiting their full hypothesis package: `FaithfulAcceleration.weight_not_divergent` and `MagnitudePrediction.squaredError_bdd_of_sharpness_bdd` |
 | `prompts/2026-08-11-phase-ii-*/**`, `prompts/2026-08-11-corrigibility-phase-ii/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the five Stage II tracks and the parent round. **Two reports are not their track's own**: `phase-ii-certificate/REPORT.md` and `phase-ii-promotion/REPORT.md` are independent verification registers authored by the closure pass, because those executors persisted no report and no draft of their prose exists. Each says so at its head and distinguishes verified artifact from reconstructed statement |
 | `projects/deference/notes/FINITE_MODEL_SKELETON.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-corrigibility-phase-ii/` — **v2**, superseding v1; the amendment and the reasons are in `DECISIONS.md` |
+| `projects/deference/notes/FUD_COMPARATOR_SPEC.md`, `prompts/2026-08-11-stage-iii-fud/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the Stage III round. Its Track F adversarial review was run in a **separate Claude Opus 5 context** with no access to the round report, per the dispatch's independence requirement |
 
 ## No originating chat bundle
 
@@ -71,6 +71,7 @@ of thing this file exists to make visible.
 | `2026-08-11-deference-corrigibility` (wave 1) | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-corrigibility-phase-ii` and its five tracks | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-corrigibility-phase-ii` (Stage II closure and integration pass) | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
+| `2026-08-11-stage-iii-fud` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/leverage/consolidation-aug9/` — have

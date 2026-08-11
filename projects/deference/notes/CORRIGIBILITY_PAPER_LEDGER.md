@@ -215,6 +215,41 @@ not net this out is measuring the wrong thing.** Uniformly in the credence the l
 collapses and the competence requirement for a hindsight comparator is identical to that
 for `FIXED[π]`.
 
+**Stage III attempted the comparator and did not build one.** `FUD_COMPARATOR_SPEC.md` v1
+is kept as a **corrected, defective record**, marked not a binding input. Its transferred
+arm's selection is the argmax of the *evaluating agent's own objective under its own
+credence*, hence computable at `t(n)`: the arm confers no cognition `A_n` lacks, and no
+object representing a distinct `A_{g(n)}` occurs in the model. What was compared is the
+principal's plan against the **optimal later-measurable plan** — the envelope this ledger
+already recorded as upper-bounding every `FU[g]` and not being one. Both of the
+prerequisites named above remain undelivered.
+
+Three consequences, established by an independent adversarial review and accepted.
+
+- The dominance result carries **no fairness hypothesis** and is `∑ maxima ≥ ∑ anything`.
+- Its driver is future-agent **infallibility**, not "epistemic improvement only": a witness
+  with every fairness condition intact, in which a better-informed but *fallible* future
+  agent makes the gap strictly **negative**, is carried. The sign of the comparison is a
+  definitional artifact.
+- The absence of a jurisdictional term was **guaranteed by construction**: the
+  specification waived `⊥` and the whole execution layer, which Movement V records as the
+  place all of protection's valuation content sits.
+
+Status: **`open`, and not well-posed as attempted.** No claim is made that the movement's
+inequality is false, or that jurisdiction has low value; neither was visible to the model.
+
+What survives, and is reusable: fifteen kernel-checked theorems in `EnvelopeDominance`,
+named for what they prove; the fairness apparatus with three confound witnesses each moving
+exactly one variable; the confirmation that **underwriting is absent from the engine**; and
+one genuine reduction — the gap **is** the delegation deficit against the later-measurable
+comparator class, so Track I's collapse applies to the same object rather than by analogy,
+and any credence-free hypothesis bounding it is it. That reduction holds *a fortiori* for a
+genuine `FU[g]`, since the envelope upper-bounds it.
+
+A successor needs exactly two things, both already on the books: a future agent that can be
+better-informed **and wrong**, and skeleton v2's execution layer reinstated with a declared
+`X_{n,⊥}`.
+
 ## Movement V — certification and densification
 
 **Certificate.** The literal target — a certificate implying strict dominance over

@@ -49,7 +49,7 @@ problem rather than done by relabelling.
     "review_status": "ci-only"
   },
   "docs": {
-    "verification": "SETUP_REPORT.md",
+    "verification": "prompts/2026-08-10-repo-scaffolding/REPORT.md",
     "human": "README.md"
   },
   "note": "Reaches a real declaration in the pinned dependency. Certifies the chain, not mathematics."
@@ -71,7 +71,7 @@ problem rather than done by relabelling.
     "review_status": "ci-only"
   },
   "docs": {
-    "verification": "SETUP_REPORT.md",
+    "verification": "prompts/2026-08-10-repo-scaffolding/REPORT.md",
     "human": "README.md"
   },
   "note": "States a Mathlib limit in the dependency's own vocabulary, so it typechecks only if both halves of the chain agree."

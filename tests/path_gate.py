@@ -23,7 +23,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 # The specification layer. Proposed enumeration — AUTHOR CONFIRMS (DECISIONS.md).
 SPEC_PATHS = (
     "AGENTS.md", "CONTRIBUTING.md", "DECISIONS.md", "PRIORITIES.md",
-    "README.md", "PROVENANCE.md", "SETUP_REPORT.md", "GOVERNANCE_REPORT.md",
+    "README.md", "PROVENANCE.md", "GOVERNANCE_REPORT.md",
     "LICENSE", "LICENSE.*",
     ".github/**", ".gitattributes", ".gitignore",
     "checkers/*.py", "checkers/README.md",

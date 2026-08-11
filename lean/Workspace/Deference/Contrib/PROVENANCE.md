@@ -9,6 +9,7 @@
 | `CertificateBounds.lean` | `prompts/2026-08-11-phase-ii-promotion/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phase-ii-promotion/` | — |
 | `SubstitutionSeparation.lean` | `prompts/2026-08-11-phase-ii-promotion/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phase-ii-promotion/` | — |
 | `ExposureGeometry.lean` | `prompts/2026-08-11-phase-ii-promotion/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phase-ii-promotion/` | — |
+| `EnvelopeDominance.lean` | `prompts/2026-08-11-stage-iii-fud/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-iii-fud/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`; per-declaration
@@ -29,6 +30,20 @@ section in each docstring: `prompts/2026-08-11-deference-finite-kernel/REPORT.md
 `prompts/2026-08-11-deference-densification/REPORT.md` §1. Every declaration in the four is
 hypothesis-complete and every ported theorem ships a typechecking term inhabiting its full
 hypothesis package.
+
+`EnvelopeDominance.lean` is new in its round. It states that a per-cell maximiser of
+conditional value dominates any cell-measurable selection, decomposes the gap into per-cell
+regrets, and bounds that gap under a gated calibration hypothesis. Every declaration is
+hypothesis-complete, and both the dominance statement and the gated bound ship inhabitation
+witnesses at a non-degenerate instance where the two selections disagree.
+
+**Read its header before citing it.** The module was written for a fully-updated-deference
+comparison and does not deliver one: its maximiser is built from the evaluating agent's own
+credence and objective, so it is computable before the later information arrives and
+represents no distinct future agent. The dominance statement carries no fairness hypothesis
+and is `sum of maxima >= sum of anything`; the regret decomposition is distributivity. The
+round's report records this as the round's central defect, and the module is named for what
+it proves rather than for what it was written for.
 
 `MagnitudePrediction.lean` is new in its round. Its
 `squaredError_bdd_of_sharpness_bdd` is likewise not promotable — it carries an undischarged

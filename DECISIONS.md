@@ -31,6 +31,94 @@ reconstructing the context.
   path into it, and the next leverage round is the first that would.
 ## Settled
 
+### 2026-08-11 — Stage III did not build a FUD comparator, and says so
+
+Taken at the close of Stage III, after an independent adversarial review overturned the
+round's own first-draft conclusions. The round's positive reading is **withdrawn**.
+
+**The constructed transferred arm contains no future agent.** Its selection was defined as
+the argmax of the *evaluating agent's own objective under the evaluating agent's own
+credence*, which that agent can compute at the earlier time. So the arm confers no
+cognition the evaluator lacks, and no object representing a distinct future agent occurs
+anywhere in the model. What was compared is the principal's contingent plan against the
+**optimal later-measurable plan** — the envelope that the previous phase priced and
+recorded as explicitly *not* the fully-updated comparator. Skeleton v2 §4 declared that
+comparator a hole and warned that careless invention is how it collapses; the round
+invented carelessly in the way it had been warned against.
+
+**Three consequences, all recorded rather than repaired by assumption.** The dominance
+result carries no fairness hypothesis and is `∑ maxima ≥ ∑ anything`; its original
+docstring described a statement that did not exist. Its real driver is future-agent
+**infallibility**, not "epistemic improvement only" — a witness with every fairness
+condition intact, in which a better-informed but fallible future agent makes the gap
+strictly negative, is now carried. And the observation that no jurisdictional term appears
+in the arithmetic was guaranteed by construction: the specification waived the null effect
+and the whole execution layer, which the previous phase recorded as the place all of
+protection's valuation content sits.
+
+**Verdict: not well-posed as constructed.** No claim is made that fully updated deference
+is false, or that jurisdiction has low value; both were outside what the model could see.
+**A FUD proof round is not to be dispatched.** A successor needs two things, and they are
+the same two prerequisites the previous phase already named: a future agent with
+independent existence, so that *better-informed* and *correct* can come apart; and the
+execution layer reinstated with a declared null quantity, so that a jurisdiction
+assignment is something a valuation can price rather than a label on a selection.
+
+**What survives.** Fifteen kernel-checked theorems, renamed to `EnvelopeDominance` to match
+what they prove and reusable by any successor. The fairness apparatus and three confound
+witnesses, each now moving exactly one variable. The reduction: the gap *is* the delegation
+deficit against the later-measurable comparator class, so the credence collapse applies to
+the same object rather than by analogy, and any credence-free hypothesis bounding it is it.
+And the confirmation that **underwriting is absent from the engine**.
+
+**A repeated classification error is recorded.** The round's competence slot was labelled
+as the previous phase's credence-free hypothesis; it compares grades to a conditional
+expectation, so the credence occurs in it and it is a joint competence–credence hypothesis
+under skeleton v2 §2a. This is the same error the competence track caught for grade trust,
+made again. A mechanical check — does the hypothesis mention the credence? — would catch
+both.
+
+**The specification is kept, corrected, as a defective record** rather than withdrawn: its
+fairness apparatus is reusable and the defect is the round's main finding. It is marked as
+**not a binding input** to any proof attempt.
+
+### 2026-08-11 — the setup and scrub reports are removed from the root
+
+Maintainer instruction, taken during the Stage III round. Both were
+round-contemporaneous records that had outlived the root: the setup report
+described a toolchain and CI configuration now readable from the pinned files
+themselves, and the scrub report recorded the judgment calls of two scrub rounds
+whose own round records under `prompts/` survive.
+
+Four live pointers were repaired rather than left dangling, because a pointer that
+no longer resolves is a dead link and not history.
+
+- `tests/path_gate.py` listed the setup report as a specification path. Removed from
+  the enumeration. This is a **trust-chain file** and the edit is recorded here for
+  that reason; the entry it removes named a file that no longer exists, so the gate
+  is not weakened.
+- `GOVERNANCE_REPORT.md`'s specification-path listing is brought back into agreement
+  with the gate. The two must agree, and the gate is the source of truth.
+- `projects/leverage/CLAIMS.md` carried the setup report as the **verification
+  register of two registered `lean-proved` smoke claims** (`smoke.faf-asymp-refl`
+  and `smoke.chain-compiles`, both answering item 13). Deleting it would have left
+  two registered claims without half their required dual register, so both doc
+  pointers are repointed to `prompts/2026-08-10-repo-scaffolding/REPORT.md`, the
+  surviving round record that documents the same setup verification. **No claim
+  changed class and no statement of record moved.**
+- `PROVENANCE.md`'s row for the file is dropped; `PRIORITIES.md` item 10's context
+  pointer now names the round record.
+
+Two references are deliberately **not** repaired. `AGENTS.md`'s chat-dump section
+requires a collator to produce a `SCRUB_REPORT.md` alongside a bundle; that is a
+standing requirement on future dumps, not a pointer to the deleted file, and it
+stays as written. And `projects/deference/note-dump-2026-06-27/ORIGIN.md` names the
+root scrub report in its intake receipt; that tree is `agent-consolidated` and its
+receipt records what was true at intake, so it is not rewritten.
+
+References under `prompts/` are round records and keep what was true when they were
+written.
+
 ### 2026-08-11 — skeleton v2 is installed; jurisdiction replaces authority in the canonical roadmap
 
 Taken at the Stage II closure pass, after Tracks H, I, K, L and M returned and were

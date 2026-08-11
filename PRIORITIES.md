@@ -576,6 +576,46 @@ proposed admissibility conditions are now reclassified as architectural.
 *Why it is [open]:* recommended by the authority track and not performed by the closure
 pass, which was scoped to integration rather than new science.
 
+### 27. A fully-updated comparator with a fallible future agent — **[substantial]**
+
+Stage III attempted this comparator and produced something else. Its transferred arm's
+selection was the argmax of the *evaluating agent's own objective under its own credence*,
+computable before the later information arrives, so the arm contained no distinct future
+agent and the comparison was against the optimal later-measurable plan — the envelope the
+settlement work had already priced and recorded as not being the fully-updated comparator.
+The defect and its consequences are in `prompts/2026-08-11-stage-iii-fud/REPORT.md` §1.
+
+Two objects are required, and neither existed at the close of Stage III.
+
+**A future agent with independent existence.** Its own credence, or its own estimate of the
+value quantity, so that *better-informed* and *correct* can come apart. With an infallible
+future agent the comparison's sign is a definitional artifact — it is nonnegative because a
+maximum is at least as large as anything else. With a fallible one, Stage III's witness
+shows the gap can go strictly negative with every fairness condition intact. Until this
+exists there is no question being asked.
+
+**The execution layer, reinstated.** `FINITE_MODEL_SKELETON.md` v2 §4a — the authorization
+relation, the report map, the execution map, and the null effect with a **declared**
+`X_{n,⊥}`. Stage II recorded that all of protection's valuation content sits in the null
+quantity; a comparator that waives it and then reports no jurisdictional term has found a
+property of its own signature. This also makes the no-future-leak condition statable, which
+it is not without a jurisdiction mode as an actual variable.
+
+*Deliverable shape:* a versioned successor to `FUD_COMPARATOR_SPEC.md` carrying both
+objects, with the fairness conditions checkable and each confound witnessed; plus a verdict
+on whether the gap is signed for reasons that are **not** the definition of the transferred
+arm's selection.
+*Acceptance check:* the house `witness` checker accepts the confound and sign witnesses;
+or the `lean` gate builds and audits clean for any promoted statement.
+*Context:* `prompts/2026-08-11-stage-iii-fud/REPORT.md` §1 and §4;
+`prompts/2026-08-11-stage-iii-fud/REPORT-track-F.md`;
+`projects/deference/notes/FINITE_MODEL_SKELETON.md` §4a and §8.1.
+*A solution ships:* the successor spec, the sign verdict under a fallible future agent, and
+an explicit statement of which confounds remain scoped out rather than excluded.
+*Why it is [substantial]:* the objects are named and the failure mode is now documented, so
+this is construction against a known target rather than open search — but the sign question
+it exists to ask has no expected answer, and a negative is as likely as a positive.
+
 ---
 
 ## Infrastructure
@@ -590,8 +630,8 @@ contributed.
 *Deliverable shape:* A change to `.github/workflows/ci.yml` — **specification layer**, so a maintainer act; contributors propose via issue.
 *Acceptance check:* The `lean` job's wall time falls, measured across two consecutive pushes that change neither the pin nor the toolchain.
 
-*Context:* `.github/workflows/ci.yml`; `SETUP_REPORT.md` records the measured
-times.
+*Context:* `.github/workflows/ci.yml`; the measured times are recorded in
+`prompts/2026-08-10-repo-scaffolding/REPORT.md`.
 
 ### 11. A dual-register presence check in CI — **[entry]**
 

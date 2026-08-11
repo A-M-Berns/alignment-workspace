@@ -55,13 +55,30 @@ exactly where the prediction is wrong.
 smarter, and decide later? The centerpiece: *"I expect to know better later"* does
 not entail *"therefore I should ensure that I decide later."*
 
-Provisionally, "preempt now" is not best read as choosing the object-level intervention
-at `n`, but as transferring or reserving *future jurisdiction* from continuing `H⁺` to
-future `A_{g(n)}`. If that reading holds, the comparison is between jurisdiction
-assignments and execution structures rather than between extensional policies, and it
-must isolate the value of future-self jurisdiction rather than confound it with the value
-of waiting, of future information, or of continued deliberation — the last is already
-priced, and it is pure value of information having nothing to do with who decides.
+"Preempt now" is not choosing the object-level intervention at `n`, but transferring or
+reserving *future jurisdiction* from continuing `H⁺` to future `A_{g(n)}`. The comparison
+is between jurisdiction assignments, and it must isolate the value of future-self
+jurisdiction rather than confound it with the value of waiting, of future information, or
+of continued deliberation.
+
+A comparator was attempted (`FUD_COMPARATOR_SPEC.md`) and **is not one**: its transferred
+arm's selection is the argmax of the evaluating agent's own objective under its own
+credence, so it is computable before the information arrives and contains no future agent.
+The attempt compared the principal's plan against the optimal later-measurable plan — the
+envelope, which this program had already recorded as *not* the fully-updated comparator.
+The specification is kept as a corrected defective record and is **not** a binding input.
+
+**Two standing requirements follow, and a round may not proceed without them.** A future
+self must have independent existence — its own credence, or its own estimate of the
+quantity — so that *better-informed* and *correct* can come apart; with an infallible
+future self the comparison's sign is a definitional artifact, and with a fallible one it
+can go either way. And the execution layer must be present with a declared null quantity,
+because a comparator that deletes it has deleted the only carrier in which a jurisdiction
+assignment is something a valuation can price rather than a label on a selection.
+
+One reduction survives and is reusable: the comparator gap **is** the delegation deficit
+against the later-measurable comparator class, so the credence collapse applies to it
+directly, and any credence-free hypothesis bounding it is it.
 
 **V. Certification and densification** — does the relation hold *here*, and can safe
 discretion occur often enough to be useful?
