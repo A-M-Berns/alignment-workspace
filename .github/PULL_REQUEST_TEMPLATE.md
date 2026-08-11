@@ -39,7 +39,7 @@
 
 - [ ] `python3 tests/run.py` green locally
 - [ ] Lean builds and audits clean (or: this PR touches no Lean)
-- [ ] `python3 tests/check_frozen.py` green
+- [ ] `python3 -m checkers.run` green, if this PR touches a claims registry
 - [ ] Exact arithmetic throughout, or floats confined to marked exploration code
 - [ ] Necessity witnesses for each hypothesis, or a statement of why not feasible
 

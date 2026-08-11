@@ -31,7 +31,7 @@ prompt restating them — and a round that violates one is wrong even if its pro
 did not mention the rule.
 
 Where a rule is machine-enforced, the gate is named. Where it is not, it is a
-review matter, and the table in §14 says which is which.
+review matter, and the table in *Which standards are gates* says which is which.
 
 ---
 
@@ -114,6 +114,17 @@ the settings-side repository rename to the maintainer and said so in prose. No
 list surfaced it, so it went unperformed while two files in the tree already
 pointed at the new name.
 
+**The report's list is not the queue.** A round that reserves something also
+appends it to **`DECISIONS.md`'s *Awaiting the author*** — one line, with what
+deciding it costs now and what waiting costs. That section is the single standing
+answer to "what needs me?", and a queue spread across every round's report is one
+nobody can read in one sitting. An entry leaves it when the decision lands as a
+dated entry below it, and a round that finds a stale one says so.
+
+**The queue should normally be short.** If it is long, either the rounds are
+reserving things they could have decided, or something structural is generating
+decisions and belongs in `PRIORITIES.md` under *Workspace friction*.
+
 ### 11. Authoritative artifacts live on the author's machine
 
 Agents propose changes as diffs or prompts **unless the round explicitly grants
@@ -130,6 +141,22 @@ own prompt and the correction is only legible against the original.
 ### 13. Dual-register documentation, and provenance
 
 Both are below, because both are conditions on what a deliverable *is*.
+
+### 14. Structural defects are reported, not worked around
+
+A round that hits friction with the workspace itself — a pointer that no longer
+resolves, a status a document cannot express, a gate that cannot see what it is
+meant to check, a convention that would force a false statement — files it.
+Routing around it silently is how a defect becomes permanent: the round succeeds,
+nothing records what it cost, and the next round pays it again. Defects land in
+`PRIORITIES.md` under *Workspace friction*, and the round that found one names it
+in its report.
+
+**Reporting is the obligation; fixing is not.** Whether to change the structure
+is the maintainer's, and a round that repairs a structural defect it was not
+dispatched to repair has taken a decision that was not its to take. The exception
+is a dead pointer — a command naming a file that does not exist, a retired job
+name — which is a fact rather than a design question and is repaired in place.
 
 ---
 
@@ -176,7 +203,16 @@ whole architecture rests on. Padding is a correctness problem here.
    and a human register; neither gets an executive summary, and reports do not
    restate their findings in a closing section.
 6. **Empty results are reported as empty** — §9 already says this.
-7. **The maintainer may reject on these grounds alone.** A pull request whose
+7. **No rules-perseveration.** Follow the standards; do not narrate following
+   them. No restating a rule before obeying it, no "as required by §8", no
+   account of how the round went for the agent that wrote it, no commentary on
+   the writer's own care or process. **The test: is this a fact a later reader
+   needs about the work, or a fact about the writing of it?** The declarations
+   the standards *do* require — deviations, what was not shown, outstanding
+   actions, provenance — are the first kind and are not this. Compliance
+   narration is worse than ordinary padding, because it reads as evidence of
+   rigour and is not.
+8. **The maintainer may reject on these grounds alone.** A pull request whose
    content is correct and whose prose is padded is a legitimate rejection, said
    plainly rather than merged and cleaned up later.
 
@@ -201,10 +237,16 @@ maintainer has reviewed.
 Where the generator is a model, name the model. Where the prompt author and the
 executor differ, which is the normal case for a dispatched round, name both.
 
-`ci-only` **is allowed, honest, and expected to be common** — this is a working
-repository, and a scheme that made the label embarrassing would just make it
-lie. What CI checked, it checked; what no one read, no one read. But it must be
-labelled, and **headline or flagship documents may not remain `ci-only`**.
+`ci-only` **is the standing condition of almost everything here**, including the
+documents a reader meets first. This is a working repository whose maintainer
+attention is its scarcest input, and a scheme that made the label embarrassing
+would just make it lie. What CI checked, it checked; what no one read, no one
+read. The requirement is that it be **labelled**, everywhere, without exception.
+
+`maintainer-reviewed` is a rare and deliberate mark rather than a state material
+eventually reaches. Human judgment goes to what a thing shall be called and what
+is worth proving, which nothing else can supply; it does not go to reading prose
+for approval.
 
 **Mechanics.** A `PROVENANCE.md` in each results directory, one line per file or
 glob, carrying: generator; review status; the date; the originating round under
@@ -212,11 +254,20 @@ glob, carrying: generator; review status; the date; the originating round under
 The pull-request template asks for provenance entries added or updated alongside
 new names introduced.
 
-**External citation.** Nothing in this repository may be cited externally
-(papers, posts, talks) until it is maintainer-reviewed — or, for registered
-claims, until its epistemic class is one the citer is willing to print alongside
-the citation; external citation makes a thing flagship, and flagship content may
-not remain unreviewed.
+**External citation.** A **registered claim** is citable externally (papers,
+posts, talks) carrying its epistemic class, which is what the class is for.
+**Prose is not**, whatever label is attached to it — not the roadmaps, not the
+ledgers, not the round reports, not this document.
+
+Anyone wanting to cite prose from here **contacts the maintainers**. That is a
+message, not a review queue: it is cheap for the asker, it is the only point at
+which someone can say *that passage does not mean what you are taking it to
+mean*, and it costs nothing when nobody asks. A label cannot do that job — a
+citation that reproduces `ci-only` accurately can still be built on a reading the
+prose does not support, and the reader of the paper has no way to tell.
+
+This is the rule the repository can actually hold to. It gates on an act the
+citer performs rather than on a review that has to have happened first.
 
 **Model attribution.** Every commit whose content was substantially AI-generated
 carries a trailer naming the model — `Model: <family> <version> (<provider>)`.
@@ -238,7 +289,7 @@ the Model attribution section into the squashed message.** CI checks that the
 section exists and is non-empty; it cannot check that what it says is true.
 
 **The chat-bundle pointer is optional**, filled when a bundle exists and absent
-otherwise. No artifact, flagship or not, is required to have one.
+otherwise. Nothing is required to have one.
 
 ---
 
@@ -247,8 +298,9 @@ otherwise. No artifact, flagship or not, is required to have one.
 Research conversations can serve as first-class provenance. **Dumps are optional
 and are produced only on author request** — not a standing requirement. Making
 them standing would drag transcript overhead into every round; the value is in
-deliberately bundled trails for work that warrants them. Flagship results are the
-natural things to request one for, and nothing mandates it.
+deliberately bundled trails for work that warrants them. A result the author
+expects to defend in public is the natural thing to request one for, and nothing
+mandates it.
 
 When the author requests a dump, it is a bundle:
 
@@ -312,9 +364,21 @@ READMEs, directory structure, or documentation. A structure that carries its own
 past around forces every future reader to learn a history they did not need, and
 the residue compounds.
 
-**Distinguish residue from a live pointer.** A registry `superseded-by` link, or
-an errata entry, carries *current* epistemic content — which statement governs
-now — and stays. A label whose only function is memorialising a change goes.
+**The stronger form: do not define the present by narrating an absence.** Not
+just names — sentences. "We no longer do X", "this is not the old Y", "the
+previous scheme has been removed", a section explaining what a document is not
+because it once was. Each of those keeps the retired thing alive in the reader's
+head as the thing the current thing is measured against, which is the cost the
+rule exists to avoid, and it compounds faster than a name does because prose has
+no length limit. **Say what the thing is.**
+
+**The test.** Does the sentence work for a reader who has never heard of the
+absent thing? If it only works because they know what was there before, it is
+residue and it goes. Two cases pass the test and stay: disambiguating things that
+*both currently exist* — a term with two live senses — and a live pointer such as
+a registry `superseded-by` link or an errata entry, which carries current
+epistemic content about which statement governs now. A label or a passage whose
+only function is memorialising a change goes.
 
 Completed round records under `prompts/` are history and keep whatever names were
 true when they were written; so does git history. Neither is a living document.
@@ -506,7 +570,12 @@ claim is.**
 ### `agent-consolidated` — a status, not a class
 
 Distinct from the classes above, and not comparable with them: the classes say
-what is *established*, this says how a document is *treated*.
+what is *established*, this says how a document is *treated*. **It does not say
+whose judgment a document carries** — the leverage line's authoritative record is
+`agent-consolidated`, and so is a received note dump. Which document governs is a
+maintainer decision recorded in `DECISIONS.md`; whether anyone has read its
+contents is the review status in `PROVENANCE.md`; and `RESEARCH_STATE.md` is
+where those questions and this status are kept apart.
 
 **`agent-consolidated`.** A tree produced by a consolidation round, or received
 as a settled bundle, and treated as done. It is ordinary content: editable,
@@ -529,7 +598,19 @@ now — visible and reviewable rather than hash-enforced.
 
 **Nothing enters the registry except in answer to a filed `PRIORITIES.md`
 item.** The ledger is maintainer-owned. Contributors may *propose* items via
-issues; filing is a maintainer act.
+issues; filing is not theirs.
+
+**A maintainer-dispatched round may file items within its own scope**, with its
+`PROMPT.md` under `prompts/` as the authorization record and the filing named in
+its report. The demand structure is what a stranger's pull request must not set;
+it is not something the maintainer must retype once per item. One approval of a
+wave is the maintainer act, and a round that files outside what it was dispatched
+to do has exceeded its scope like any other overreach.
+
+**Naming is not relaxed with it.** A round still proposes provisional names and
+marks them; what a thing is finally called stays with the maintainer, because a
+name that ships is very hard to change and nothing about throughput makes that
+less true.
 
 Each item is a self-contained round specification an arbitrary agent could
 execute: precise statement; deliverable shape (which claim class, which checker
@@ -559,7 +640,10 @@ non-maintainer, and no single class says that. The fields are defined once, in
 
 - **CI holds zero secrets, permanently.** No workflow may be granted a token
   beyond read scope. **Raising this is prohibited** — it is not a maintenance
-  decision.
+  decision. This is why merging is automated through GitHub's own auto-merge
+  under branch protection rather than through a workflow: a bot that merges needs
+  write scope, and no result is worth the exception. A merge performed by GitHub
+  against the required-check list grants this repository nothing.
 - Contributed code executes only in sandboxed CI runners, without network access
   where the runner supports it. The checker harness itself never fetches
   anything.
@@ -606,5 +690,5 @@ required.
 | slop discipline | **not gated** — review, and grounds for rejection on its own |
 | provenance | **not gated** — review; the PR template asks |
 
-Eight jobs decide correctness. The rest decide fit, and that is judgement rather
+Seven jobs decide correctness. The rest decide fit, and that is judgement rather
 than a script.

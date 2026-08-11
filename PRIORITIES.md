@@ -15,7 +15,10 @@ witness ships as the exact instance and the check that verifies it.
 **Every item is a self-contained round specification** an arbitrary agent could
 execute: a precise statement, the deliverable shape, an acceptance check stated
 as something CI runs, a context pointer with exact paths, and a difficulty tag.
-Filing is a maintainer act — propose items as issues.
+
+Contributors propose items as issues and do not file them. A maintainer-dispatched
+round may file within its own scope, with its `PROMPT.md` as the authorization and
+the filing named in its report — see `AGENTS.md`, *Demand-gating*.
 
 **Standing item family: Lean ports.** Every `test-supported` or
 `enumeration-verified` registry entry is implicitly a port target; the maintainer
@@ -24,6 +27,77 @@ promotes selected ones to explicit items.
 Difficulty tags: **[entry]** — self-contained, needs no new mathematics.
 **[substantial]** — a real result, scoped. **[open]** — nobody knows, and it may
 be impossible.
+
+---
+
+## Where ingenuity is the bottleneck
+
+**A standing section, and the only part of this file that is not a work order.**
+Every numbered item below is a request for *execution*: a round specification an
+arbitrary agent could run against a stated acceptance check. These are requests
+for an *idea*. They are the places where the program knows what it wants and does
+not know what kind of statement would supply it — so dispatching a round would
+return the observation rather than the result.
+
+The section exists because that failure is invisible in a file of items. An
+`[open]` item still asserts that the target has a shape; a question here asserts
+that it does not yet, and says what killed the obvious shapes. **An entry
+graduates by becoming a numbered item** — which is what it means for the missing
+idea to have arrived. That has happened once already: the question of what
+quantity could price a jurisdiction assignment left this list when Stage IV
+sharpened it enough to file as item 28. The leverage line has nothing here for that reason: its
+hard problems are open, but their shapes are known and they are filed as items 1
+and 2.
+
+An entry states the question, why the obvious moves fail *with the evidence that
+killed them*, and what a good answer would let the program file next. Without the
+third part it is a wish, not a question.
+
+### Q1 — What kind of statement bounds the near-indifference leakage?
+
+Margin-gated calibration is the only non-circular competence candidate, and it
+asserts nothing where the principal is near-indifferent. The mass of that region
+is a fact about the **agent's credence**, not about the principal, so no
+strengthening of a competence hypothesis can reach it — and unbounded it makes
+the bound `2η + 2B`, which is vacuous. The one lead relocates the leakage into a
+decision-time observable and does not bound it.
+
+*What is missing:* a hypothesis shape that is neither a competence claim nor the
+conclusion. Item 25 asks for the verdict in the negative direction because that
+is the cheaper one; it does not know what a positive answer would look like.
+
+### Q2 — What disciplines the grade-to-quantity relation?
+
+Everything epistemic in the deference line rests on a relation between what the
+principal grades and what the intervention is worth. Assumed *uniformly* it makes
+the market dispensable — the conclusion follows in three lines with the bound
+attained — so the target has to be a statistical relation, derived. But the
+relation mentions only the principal and the world, never the agent's credence,
+so **no coherence or no-exploitability condition on the agent can establish it.**
+`DISPATCH_QUEUE.md` declines to file a round here for exactly that reason.
+
+*What is missing:* either a reformulation whose subject is something the agent's
+own dynamics can constrain — the candidate is discipline on the agent's
+*estimate* of the discrepancy once grades are themselves scored — or an argument
+that the residue is irreducibly a competence assumption and should be declared
+rather than derived.
+
+### Q3 — How is foreclosure expressible?
+
+The residue of the skeleton's `FU[g]` hole after items 27 and 28 took the rest.
+Item 27 names the two objects a successor comparator needs — a future agent that can be
+better-informed and wrong, and the execution layer reinstated with a declared
+`X_{n,⊥}` — so that part has a shape and is filed. Two holes beside it do not.
+
+No operation reassigns the authorization relation at a later index, and the
+movement's own statement is about exactly that reassignment. And the interface is
+one decision index deep, so **foreclosure — `A` removing the principal's *later*
+ability to correct — is not expressible at all**, which is arguably the failure
+mode corrigibility most needs to rule out.
+
+*What is missing:* the object, and possibly the depth. Both are model debt, and
+neither is blocked on labour. A skeleton that can state foreclosure is a bigger
+change than a version bump, which is why nobody has proposed one.
 
 ---
 
@@ -193,7 +267,16 @@ is a report, a matrix, a witness, a counterexample or a lower bound says so, and
 delivering exactly that is success. Registering a claim for one of them requires the
 claim to meet the ordinary registry requirements independently.
 
-### 14. Faithful acceleration: exact inherited status, and what ports — **[substantial]**
+**All seven have returned, and the marks in their headings say so.** *Returned*
+records dispatch history and nothing more: the track ran and its report is under
+`prompts/`. It does not say the item's science is settled, and several returned
+negative or partial — item 19's matrix left 11 of 15 rows unresolved. An item
+stays filed after returning, because the registry's demand rule means every
+claim answering it cites it, and because a later round may answer it better. The
+mark exists so that a reader picking work off this file can tell which items are
+awaiting a first attempt.
+
+### 14. Faithful acceleration: exact inherited status, and what ports — **[substantial]** — *returned wave 1*
 
 Determine exactly what the inherited deference development establishes about
 faithful acceleration, separating results that are algebraic consequences of named
@@ -220,7 +303,7 @@ classified as derived / cited / modelling substitution, the mapping onto the pin
 dependency's endpoints, and the exact residual market-trader gap.
 *Not permitted:* strengthening an inherited theorem to fit the current narrative.
 
-### 15. Finite settlement classification, and the local delegation bridge — **[substantial]**
+### 15. Finite settlement classification, and the local delegation bridge — **[substantial]** — *returned wave 1*
 
 Over the frozen finite skeleton, formalize grade/report settlement, world/outcome
 settlement, and underwriting/enforcement, and determine for each exactly what it
@@ -244,7 +327,7 @@ classification report. Constants must be derived, not asserted.
 inequality with its constants, and necessity or sharpness witnesses where feasible.
 *Not permitted:* assuming the local result from a global trust theorem.
 
-### 16. The certificate inequality, derived — **[substantial]**
+### 16. The certificate inequality, derived — **[substantial]** — *returned wave 1; rerun under skeleton v2*
 
 Over the same frozen skeleton as item 15, derive from first principles the local
 certificate licensing `A`'s discretion: the defect quantity, the support-floor
@@ -268,7 +351,7 @@ accepts the worked instance with its exact rational parameters.
 shutdown/correction case computed through, and an attack on the necessity of each
 assumption used.
 
-### 17. Simulator substitution: the divergence witness — **[substantial]**
+### 17. Simulator substitution: the divergence witness — **[substantial]** — *returned wave 1*
 
 Construct the smallest model in which `A`'s model of the principal agrees with the
 actual principal everywhere except one critical event, and in which the simulator
@@ -294,7 +377,7 @@ one excluding the witness, and whether private information is necessary, suffici
 or neither.
 *Not permitted:* canonizing a final definition. That is a maintainer act.
 
-### 18. Bounded densification study — **[open]**
+### 18. Bounded densification study — **[open]** — *returned wave 1*
 
 Whether exposure weights can be chosen so that outstanding delayed exposure stays
 bounded uniformly in time while the harvest against persistent defect diverges.
@@ -317,7 +400,7 @@ next round.
 *Why it is bounded:* the unbounded version is a full trader formalization, which is
 item 7 and a different project.
 
-### 19. Triangle compatibility audit — **[substantial]**
+### 19. Triangle compatibility audit — **[substantial]** — *returned wave 1*
 
 Whether the requirements the forward arrow imposes and the requirements the reverse
 arrow imposes can hold simultaneously. Audit timing, advisory access, information
@@ -338,7 +421,7 @@ exact condition.
 *Not permitted:* turning `unresolved` into `compatible by assumption`, or inventing
 reverse-arrow assumptions to close the table.
 
-### 20. Admissibility red team, including the proof machinery — **[open]**
+### 20. Admissibility red team, including the proof machinery — **[open]** — *returned wave 1; superseded by item 26*
 
 Attack candidate admissibility conditions. A usable condition must exclude the
 quote-responsive diagonal, retain ordinary realized-conduct policies, retain a
@@ -376,7 +459,7 @@ these follow the controlling questions it uncovered rather than opening new fron
 Context for all three: `prompts/2026-08-11-deference-corrigibility/REPORT.md` for what
 wave 1 established and `RECOMMENDATION.md` beside it for why these three.
 
-### 21. Signed versus magnitude control of grade error — **[open]**
+### 21. Signed versus magnitude control of grade error — **[open]** — *answered by Stage II; the magnitude target is retired — see item 24*
 
 Does the no-Dutch-book criterion force an agent's grade-model error to vanish *in
 magnitude*, or only *in signed average*? Concretely, for a logical inductor pricing
@@ -615,6 +698,91 @@ an explicit statement of which confounds remain scoped out rather than excluded.
 *Why it is [substantial]:* the objects are named and the failure mode is now documented, so
 this is construction against a known target rather than open search — but the sign question
 it exists to ask has no expected answer, and a negative is as likely as a positive.
+
+---
+
+## Workspace friction
+
+**Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
+round that hits friction with the workspace itself to file it here rather than
+route around it, because a defect worked around silently is one the next round
+pays for again. Entries are reports, not work orders; one graduates by becoming a
+numbered item or by being ruled on in `DECISIONS.md`. **Cite an entry by its
+title, not its number** — the list is renumbered as entries leave it, so numbers
+are positions rather than identifiers.
+
+### F1 — Nothing catches a documented command that names a deleted file
+
+`CONTRIBUTING.md` instructed readers to run `tests/check_frozen.py` for some time
+after the file was deleted, and three documents claimed eight gates where seven
+run. A gate is cheap and fits the existing null-input discipline: every
+`python3 tests/*.py` in a living document must name a file that exists, and every
+CI job name in prose must appear in `.github/branch-protection.json`. Both fail
+loudly on a stale reference and neither can pass vacuously.
+
+### F2 — No check that a root document lands in a layer
+
+An unlisted path defaults to the proof layer, which is the right default —
+deny-by-default would mean every new kind of file needs a maintainer decision
+before anyone can work — but it fails silently in the granting direction, and it
+just did: `RESEARCH_STATE.md` was contributor-editable with the gate green until
+someone noticed by hand. The default is confirmed and stays. What is missing is a
+check that every root-level `*.md` classifies into exactly one layer, which
+catches the miss without touching the default.
+
+Two adjacent checks belong with it, and one of them has already bitten twice: a
+count or a job name repeated in prose or in a script drifts from
+`.github/branch-protection.json` with nothing to catch it. The read-back in
+`.github/apply-branch-protection.sh` hardcoded `8` and would have reported
+correct protection as wrong; it now derives the number from the payload.
+
+### F3 — The deference line has no claims registry
+
+`lean/Workspace/Deference/Contrib/` holds 155 kernel-verified theorems, sorry-free
+and auditing clean, and none is registered. The registry is what a claim is, so by
+this repository's own standard the line has established nothing — which its own
+ledger states in its first line. The gap is bookkeeping rather than mathematics,
+and it is the largest single divergence between what the repository holds and what
+it can say it holds.
+
+### 28. Can any valuation price a jurisdiction assignment? — **[open]**
+
+The highest-value question the deference line has produced, and the only one whose answer
+would convert a repeated observation into a result.
+
+Two comparator rounds failed at the same place from opposite directions, and the cause is
+now believed structural: in a model whose only outputs are realisation maps
+`Ω → Π_n ⊔ {⊥}` priced by one measure, **two authorisation regimes that induce the same
+realisation map are the same object**. Stage III reported no jurisdictional term in a model
+that had waived the execution layer; Stage IV set the principal's credence to the later
+agent's and found the two arms identical at every one of 32,805 instances tested. A
+jurisdiction assignment appears in no formula in either.
+
+Decide whether that is a theorem. Two directions, and the negative is the cheaper:
+
+- **Impossibility.** Show that no functional of a realisation map, under any single pricing
+  measure, distinguishes two regimes agreeing on that map — and characterise exactly what
+  additional structure is needed. This would say jurisdiction is architectural **on
+  mathematical grounds** rather than by the programme's choice, which is a substantially
+  stronger claim than the certificate work's, and it would retire the search for a
+  valuation-shaped separator for good.
+- **Construction.** Exhibit a valuation-shaped object that does price the assignment, which
+  would refute the obstruction and reopen the comparator.
+
+*Deliverable shape:* `lean-proved` for the impossibility at whatever generality holds, with
+an inhabitation witness; or a `witness-checked` construction refuting it.
+*Acceptance check:* the `lean` gate builds and audits clean with a typechecking witness; or
+the `witness` checker accepts the separating instance.
+*Context:* `prompts/2026-08-11-stage-iv-future-agent/REPORT.md` §4;
+`prompts/2026-08-11-stage-iv-future-agent/REPORT-red-team.md`;
+`prompts/2026-08-11-stage-iii-fud/REPORT.md` §1;
+`projects/deference/notes/FINITE_MODEL_SKELETON.md` §4a.
+*A solution ships:* the verdict, and — if the impossibility holds — the exact statement of
+what a model must carry to express an authorisation regime, which is what item 27's
+successor comparator would then be built on.
+*Why it is [open]:* the obstruction is currently an argued structural observation with an
+exhaustive check over one parameterisation behind it. Nobody has tried to prove it, and it
+may be false.
 
 ---
 

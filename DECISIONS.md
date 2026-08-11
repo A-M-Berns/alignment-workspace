@@ -1,8 +1,9 @@
 # Decisions
 
 Dated decision ledger. Settled decisions are recorded here and are not
-re-litigated; anything awaiting the author is an explicit stub, and stubs are
-listed at the top of each round's report until they are closed.
+re-litigated. Anything awaiting the author is a stub in the section below, which
+is the single queue: a round that reserves something appends a line there rather
+than leaving it in its own report.
 
 **Settled entries are append-only in substance.** Identifiers within them — a
 renamed path, file, or namespace — are updated in place so the record keeps
@@ -14,22 +15,259 @@ it and not by editing the record of having made it.
 
 ## Awaiting the author
 
-Each carries what deciding it costs now, so it can be answered without
-reconstructing the context.
+**The single queue.** Everything reserved to the maintainer, anywhere in the
+repository, is listed here — a round that reserves something appends a line
+rather than leaving it in its own report, per `AGENTS.md` §10. Each carries what
+deciding it costs now, so it can be answered without reconstructing the context.
+An entry leaves when the decision lands as a dated entry below.
 
-- **Whether further leverage frozen trees are registered now or at the next
-  leverage round.** Four trees are registered. *Registering now* costs a digest
-  pass and makes the material citable by path and immutable from that moment.
-  *Waiting* costs nothing today and risks the material drifting on the
-  maintainer's machine before it is frozen, at which point what gets registered
-  is a later version than the one the current work was done against. Nothing is
-  blocked either way.
-- **The name of the leverage forward tree.** `projects/leverage/forward/` is in
-  place and its documents read in those terms. *Confirming* costs nothing.
-  *Changing it* is one `git mv`, one file rename, and six prose references
-  today; the cost rises with every round that lands work in the tree or cites a
-  path into it, and the next leverage round is the first that would.
+**It should normally be short.** If it grows long, either rounds are reserving
+what they could decide, or something structural is generating decisions and
+belongs in `PRIORITIES.md` under *Workspace friction*.
+
+- **Read `checkers/`.** Deferred once, deliberately, and kept here because
+  deferring it does not make it go away: three files and three docstrings are the
+  entire meaning of every Python claim this repository will make, and no
+  maintainer has read them. *Doing it* is one sitting — the harness is stdlib-only
+  and small on purpose, which is what makes it reviewable rather than what makes
+  it right. *Waiting* costs nothing today and leaves every `witness-checked` and
+  `enumeration-verified` claim resting on unread code. Nothing is blocked; the
+  claims are honestly labelled either way.
+
 ## Settled
+
+### 2026-08-11 — the governance report is removed, not relocated
+
+Superseding the relocation decided earlier the same day. The report was moved under
+`prompts/` as a round record; the maintainer's ruling is that it can go away, and it
+has. Nothing of it survives, including the `PROMPT.md` recording that its dispatch
+was never preserved.
+
+**What it contained is elsewhere and current.** The checker meaning statements are
+the docstrings in `checkers/` and the table in `checkers/README.md`; the resource
+budgets and the permissive path-gate default were confirmed as decisions below; the
+specification-path enumeration is `tests/path_gate.py`, which is the source of truth
+and was never the report; and its four open questions were answered before it was
+removed. It was a snapshot of a design that has since moved, kept at the root where
+it read as current.
+
+**One registered claim depended on it and was repointed first.**
+`simplex.rational-points-sum-to-one` named the report as **both** its verification
+and human register. Its documents are now `checkers/README.md` and
+`CONTRIBUTING.md` — live, maintained surfaces rather than a dated snapshot, which is
+what a claim's dual register should have been pointing at. **No claim changed class
+and no statement of record moved**, and the registry gate still adjudicates it. This
+is the second time a deletion at the root has come close to orphaning a registered
+claim's documentation, the setup report being the first; the pattern is that
+root-level reports get cited as registers because they are the only prose describing
+the machinery.
+
+**The round's attribution survives in `PROVENANCE.md`** and records that no round
+record exists. That is a real loss of provenance, accepted deliberately: the
+dispatch was already unrecoverable, so what was lost is a report whose content is
+superseded, not a trail anyone can follow.
+
+### 2026-08-11 — Stage IV: the future agent is still not in the model, and the reason is the signature
+
+Taken at the close of Stage IV, after an independent adversarial review found a
+conceptual collapse with no cheap repair. The round's positive reading is **withdrawn**.
+
+**The later agent is still derived.** It was given its own credence so that it would
+maximise its own expectation rather than the evaluator's. But its rule differs from the
+evaluator's conditional argmax by exactly one argument, and remains a total function of
+objects known at the earlier time. In the round's own headline instance the transferred
+arm's realisation is *constant*, so the evaluator knows the realised action — the property
+the round's gate existed to rule out. The check meant to catch that could not fail.
+
+**Jurisdiction does no mathematical work.** Setting the principal's credence to the later
+agent's, with the full-signal interface, makes the delegated arm **identical to the
+transferred arm at every one of 32,805 instances tested**. The transferred arm is a
+coordinate in the delegated arm's parameter space, and the jurisdiction assignment occurs
+in no formula.
+
+**The dominance result is the previous round's theorem with the arms swapped.** Stage III
+put the evaluator's argmax on the transferred side and the transferred side trivially won;
+Stage IV puts it on the delegated side and the delegated side trivially wins. Its scan is
+padding: 19,468 of 26,244 instances contain no fallible later agent at all.
+
+**The controlling finding, and the reason both rounds failed.** Two authorisation regimes
+that induce the same realisation map are the **same object** in a signature whose only
+outputs are such maps priced by one measure. This is a **type-level obstruction**, not a
+modelling slip: a jurisdiction assignment is exactly what that signature cannot express,
+and no additional parameter recovers it. The authorisation relation has to enter the type.
+
+**Consequences.** No FUD proof round is to be dispatched, and **no further comparator round
+of this shape**: two attempts have now failed at the same place from opposite directions.
+The claimed-gate harness is deleted rather than repaired; `diagnose_collapse.py` replaces
+it and every check in it records a defect. `FUTURE_AGENT_SPEC.md` is kept as a corrected,
+collapsed record and is **not a binding input**. Three further round claims — the
+advice-loss story, the interior requirement, and the fairness accounting — were checked and
+are false or overstated, and are corrected in place.
+
+**A repeated harness failure mode is recorded.** Stage III shipped four checks that could
+not fail; Stage IV shipped ten, including a literal `True` and an `or True`. A mechanical
+lint flagging any check whose condition is a constant or a type test would have caught both.
+
+### 2026-08-11 — green merges itself, and the judge ships unread
+
+The four questions carried over from the contribution-architecture round, answered.
+
+**Auto-merge on full green.** A pull request whose required checks all pass merges
+without a maintainer click. This is the architecture's own conclusion rather than a
+convenience: the gates decide correctness, and if they do, a person in the path adds
+delay and not a check. What review still decides — fit, naming, provenance
+labelling, whether both registers are present, whether a result belongs in the
+program — is judgment about work already merged, raised as an issue or a follow-up
+like anything else.
+
+Two existing gates make it safe rather than reckless, and neither was added for
+this. A non-maintainer pull request touching a specification path **cannot go
+green**, because `path-gate` fails it — so full green already means the change is
+confined to the open layer. And `conservativity` fails anything adding an axiom,
+changing specification shape, or altering the axiom output of an existing
+declaration.
+
+**It is GitHub's auto-merge, not a workflow, and that is forced.** A bot that merges
+needs write scope, and *CI holds zero secrets, permanently* is a rule this ledger
+does not get to spend on convenience. A merge performed by GitHub against the
+required-check list grants this repository nothing.
+`.github/apply-branch-protection.sh` now enables the setting and reads it back.
+
+**Applied in the same sitting and verified by read-back**: seven required checks,
+zero required approvals, code-owner reviews off, enforce-for-admins on,
+force-pushes and deletion blocked, auto-merge on, and the check count agreeing
+with the payload. The decision is live rather than recorded — which is the
+distinction the settings-side rename failure exists to remind this ledger of.
+
+**The checker harness ships unread, and the repository says so.** The maintainer
+declined the reading pass, and that is recorded as a decision rather than an
+omission: three files and three docstrings are the entire meaning of every Python
+claim this repository will make, and no maintainer has read them. Nothing changes
+in what is claimed — `witness-checked` and `enumeration-verified` already mean what
+the harness does, and the harness is `ci-only` in `PROVENANCE.md` like everything
+else. The entry stays in the queue because deferring it does not make it go away.
+
+**The resource budgets are confirmed as proposed** — 200,000 enumeration points per
+claim, 25 minutes of Lean build per pull request, no separate enumeration wall-time
+cap. They are calibrated guesses against measured build times rather than derived
+values, and a pull request needing more is a conversation and not an override.
+
+**The permissive default for unlisted paths is confirmed and stays.** A path
+matching neither layer is contributable, so a genuinely new kind of file does not
+need a maintainer before anyone can work. The cost is that it fails silently in the
+granting direction, which it just did — `RESEARCH_STATE.md` was contributor-editable
+until someone noticed by hand. The answer is a check that every root-level document
+classifies into exactly one layer, filed under *Workspace friction*, not a change of
+default. **The enumeration itself is not re-approved**: it has changed several times
+since it was proposed, and approving the version in that report would have approved
+a list that no longer exists.
+
+**A stale literal was found and fixed in the same pass.** The branch-protection
+read-back required exactly eight checks; the payload has carried seven since
+`frozen-integrity` was retired, so the script would have reported correct protection
+as wrong. It now counts what the payload declares. A verifier with a hardcoded
+expectation of the thing it verifies is a verifier that drifts, and this one drifted
+in the direction that cries wolf rather than granting a pass — which is the harmless
+direction, and still wrong.
+
+### 2026-08-11 — the queue is cleared: six rulings
+
+Taken in one sitting against the queue as the ethos pass had populated it.
+
+**External citation: prose is not citable, and asking is the mechanism.**
+Superseding the restatement in the entry below it, taken the same day. A
+registered claim is citable externally carrying its epistemic class, which is what
+the class is for. Prose is not — not the roadmaps, not the ledgers, not the round
+reports — whatever label is attached to it. Anyone wanting to cite prose contacts
+the maintainers.
+
+The reason a label does not suffice: a citation can reproduce `ci-only` perfectly
+and still rest on a reading the prose does not support, and the reader of the
+paper cannot tell. Contact is the only point at which someone can say *that
+passage does not mean what you are taking it to mean*. It is a message rather than
+a review queue, cheap for the asker, and free when nobody asks — which is the
+property the retired flagship rule lacked.
+
+**`RESEARCH_STATE.md` is specification layer.** Added to `SPEC_PATHS` in
+`tests/path_gate.py` with a self-test case. A trust-chain edit, recorded as one.
+It matched no pattern, and an unlisted path defaults to the proof layer, so a
+governance document was contributor-editable with the gate green. The failure
+direction is safe: a specification pattern only ever removes write access.
+
+**The governance report leaves the root.** It is a dated round record and was
+sitting at the root among living documents, where it read as current: it still
+named a retired CI job and carried its own competing *awaiting the author* list.
+It was moved under `prompts/` as a round record, with its four undecided questions
+carried into the queue above; the entry above supersedes that and removes it
+entirely.
+
+Two live pointers were repaired rather than left dangling, which is the same
+failure the deleted setup report nearly caused. `projects/leverage/CLAIMS.md`
+carried the file as **both dual-register documents** of the registered claim
+`simplex.rational-points-sum-to-one`; both are repointed, and **no claim changed
+class and no statement of record moved.** The identifier inside the settled
+2026-08-11 root-cleanup entry is updated in place, per this ledger's header.
+`GOVERNANCE_REPORT.md` is removed from the specification enumeration, which
+`prompts/**` now covers.
+
+**The deference line gets a terms table.** `projects/deference/notes/TERMS.md`,
+recording current meaning and owning document for the vocabulary that has changed
+under the mathematics — jurisdiction, the two competence vocabularies, the two
+registers, conduct as proposal-plus-realization, and the status classes. It is a
+**recording table and not a naming act**: every term stays provisional under
+standard 6, and where it and an owning document disagree the owning document wins.
+The line's canonical set is five documents rather than four.
+
+**The leverage forward tree keeps its name.** `projects/leverage/forward/` is
+confirmed. This was the cheapest moment to change it and it is not being changed.
+
+**Further leverage frozen trees are registered at the next leverage round**, not
+now. The accepted risk is stated rather than implied: material may drift on the
+maintainer's machine before it is frozen, in which case what gets registered is a
+later version than the one the current work was done against.
+
+### 2026-08-11 — maintainer attention is a design parameter, not a backlog
+
+Three rulings, taken together because they follow from one fact: the maintainer
+writes in few places and does not read most of what this repository produces.
+That is throughput, not neglect, and the constitution was written assuming
+otherwise in three places.
+
+**The flagship rule is retired.** "Headline or flagship documents may not remain
+`ci-only`" is gone from `AGENTS.md` and `PROVENANCE.md`. It named a state that
+nothing in the process could reach, and an unreachable requirement is worse than
+an honest label — it makes the label look provisional when it is in fact the
+standing condition. `ci-only` is now stated as what almost everything here is,
+including the documents a reader meets first, and `maintainer-reviewed` as a rare
+deliberate mark rather than a state material eventually reaches.
+
+**External citation is restated to stand on its own.** It previously routed
+through the flagship rule and so retired with it. What replaces it is weaker and
+attainable: anything cited externally carries the status it actually has — a
+registered claim its epistemic class, unreviewed prose as unreviewed. The failure
+it guards against is a citation silently upgrading `ci-only` prose into an
+assertion of record, which is something the citer does and the repository cannot
+gate. Whether that suffices for the maintainer's own citations is the one
+residual question, and it is in the queue above.
+
+**A maintainer-dispatched round may file `PRIORITIES.md` items within its own
+scope**, with its `PROMPT.md` as the authorization record and the filing named in
+its report. Demand-gating is kept: nothing enters the registry except in answer
+to a filed item, and contributors still do not file. What changes is that the
+maintainer act is one approval of a wave rather than one retyping per item — the
+demand structure is what a stranger's pull request must not set, not something
+that must pass through a person's hands twice.
+
+**Naming is deliberately not relaxed with it.** A round proposes provisional
+names and marks them; what a thing is finally called stays reserved. A name that
+ships is very hard to change, and nothing about throughput makes that less true —
+the two acts looked alike in the friction report and are not alike.
+
+**One queue.** `AGENTS.md` §10 now requires a round that reserves something to
+append it to *Awaiting the author* above, rather than leaving it in its own
+report. Four sources of reserved items existed and none was the answer to "what
+needs me?"; the ledger's own section was the closest and was not being fed. The
+section is populated as of this entry and should normally be short.
 
 ### 2026-08-11 — Stage III did not build a FUD comparator, and says so
 
@@ -97,7 +335,7 @@ no longer resolves is a dead link and not history.
   the enumeration. This is a **trust-chain file** and the edit is recorded here for
   that reason; the entry it removes named a file that no longer exists, so the gate
   is not weakened.
-- `GOVERNANCE_REPORT.md`'s specification-path listing is brought back into agreement
+- The contribution-architecture report's specification-path listing is brought back into agreement
   with the gate. The two must agree, and the gate is the source of truth.
 - `projects/leverage/CLAIMS.md` carried the setup report as the **verification
   register of two registered `lean-proved` smoke claims** (`smoke.faf-asymp-refl`

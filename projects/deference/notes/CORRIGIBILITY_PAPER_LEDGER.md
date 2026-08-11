@@ -12,7 +12,7 @@ not exist, so there is no statement of record, and `workspace-established` requi
 one.
 
 That is now a much narrower statement than it was. `lean/Workspace/Deference/Contrib/`
-holds **155 theorems across 10 files** that build against the pinned toolchain and audit
+holds **well over a hundred theorems** that build against the pinned toolchain and audit
 to the three standard axioms, with no `sorry` and no `axiom` declaration — 83 of them
 promoted in Stage II across four modules covering the finite kernel, the certificate
 bounds, the exposure geometry and the substitution separation. It is kernel-verified and
@@ -249,6 +249,34 @@ genuine `FU[g]`, since the envelope upper-bounds it.
 A successor needs exactly two things, both already on the books: a future agent that can be
 better-informed **and wrong**, and skeleton v2's execution layer reinstated with a declared
 `X_{n,⊥}`.
+
+**Stage IV attempted the first and failed, and the failure located the real obstruction.**
+It gave each process its own credence, so the later agent would maximise its own
+expectation rather than the evaluator's. That is not enough: the later rule differs from
+the evaluator's conditional argmax by one argument and is still a total function of objects
+known at the earlier time — and in the round's own instance the transferred arm's
+realisation is *constant*, so the evaluator knows the realised action. The dominance result
+is Movement IV's previous tautology with the arms swapped: the evaluator's argmax moved
+from the transferred side to the delegated side, and the delegated side now trivially wins.
+
+**The controlling finding is type-level, and it explains both failures at once.**
+
+> Two authorisation regimes that induce the same realisation map `Ω → Π_n ⊔ {⊥}` are the
+> **same object** in a signature whose only outputs are such maps priced by one measure.
+
+Verified concretely: setting the principal's credence to the later agent's, with the
+full-signal interface, makes the two arms identical at every one of 32,805 instances
+tested. The jurisdiction assignment occurs in no formula. So Stage III "found no
+jurisdictional term" in a model that had deleted the execution layer, and Stage IV found
+the arms extensionally identical after adding a credence — **neither was going to work, for
+the same reason**, and no further parameter repairs it. The authorisation relation has to
+enter the *type*.
+
+Status of the movement: **`open`, and now known to be blocked structurally rather than by
+unbuilt components.** The philosophical gloss available from this line remains only the
+deflationary one, and is if anything narrower: a valuation over realisation maps cannot
+distinguish who authorised an action, which is a claim about the register and not about
+jurisdiction.
 
 ## Movement V — certification and densification
 
