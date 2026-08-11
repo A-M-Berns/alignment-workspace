@@ -1,0 +1,14 @@
+{
+  "Delegation/Basic.lean": {
+    "instances": 0,
+    "notations": 0
+  },
+  "Leverage/Basic.lean": {
+    "instances": 0,
+    "notations": 0
+  },
+  "Smoke.lean": {
+    "instances": 0,
+    "notations": 0
+  }
+}

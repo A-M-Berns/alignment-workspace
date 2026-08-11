@@ -43,6 +43,10 @@ passes.
 
 ```sh
 python3 tests/run.py                              # gate 1: every project's tests
+python3 -m checkers.run --self-test               # the house harness's own tests
+python3 -m checkers.run                           # every registered claim
+python3 tests/path_gate.py                        # which layer your files are in
+python3 tests/conservativity.py                   # no new axioms; spec shape held
 cd lean && lake exe cache get && lake build       # gate 2: Lean, sorry-free
 python3 tests/audit_axioms.py                     # gate 2: axiom audit
 python3 tests/check_frozen.py                     # gate 3: frozen integrity
@@ -50,6 +54,51 @@ cd frozen/consolidation_aug9 && python3 tests/run.py   # gate 4: foundations
 ```
 
 CI runs exactly these. If they pass locally on a clean checkout, they pass in CI.
+
+## What you can contribute
+
+Every file in this repository belongs to exactly one layer, and which one decides
+what you may do to it.
+
+**The proof layer is open to you.** Lean proofs of statements of record and new
+lemmas in contribution namespaces; witnesses and domain parameters; documentation
+of contributed results.
+
+**The specification layer is not.** Definitions and statements of record, the
+checker harness, CI, toolchain pins, the axiom allowance, budgets, and the
+governance documents. A `path-gate` CI job fails any non-maintainer pull request
+that touches one. There is no trusted-contributor tier that bypasses it — if your
+work genuinely needs a specification change, open an issue proposing it.
+
+Identity is never a factor in a proof-layer verdict. Anonymous and pseudonymous
+contributions are fine.
+
+### Nothing enters the record unasked
+
+**Every registered claim answers a filed `OPEN_PROBLEMS.md` item.** Propose new
+items as issues; filing is a maintainer act. An unsolicited-but-correct
+contribution is not merged into the record — but the maintainer may file a
+matching item and then accept it, so good work is not wasted, only sequenced.
+
+### Submission format, by claim class
+
+| you are claiming | you submit | what adjudicates it |
+|---|---|---|
+| **a Lean theorem** | the proof, in a contribution namespace, plus a term inhabiting its full hypothesis package | the Lean kernel, the axiom audit, and the nonvacuity check |
+| **an existential, counterexample, sharpness or necessity witness** | **data** — the instance — plus the house checker id and the property parameters | `checkers/witness.py`, which you did not write and cannot change |
+| **a finite universal claim** | **domain parameters** only | `checkers/enumeration.py`, which generates the domain itself |
+| **anything over an infinite domain, or sampled** | the work, registered as `test-supported` or `conjectured` | nothing — it is **not citable as proven**, and its natural fate is a Lean port |
+
+**You never ship the verifier for a claim of record.** A test file of your own
+may support exploration, but the thing that certifies a registered claim is
+always a house checker. If a contributor supplied the enumeration, the
+contributor would be certifying the claim — the enumeration *is* the proof.
+
+A theorem also does not enter the record without an **inhabitation witness**: a
+concrete instance satisfying all its hypotheses. A theorem whose hypotheses
+nothing satisfies is not false, it is empty, and that difference is invisible to
+the kernel.
+
 
 ## What a contribution must contain
 

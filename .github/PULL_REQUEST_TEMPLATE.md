@@ -1,3 +1,25 @@
+## Layer touched
+
+- [ ] **Proof layer only** — required for non-maintainer pull requests
+- [ ] Specification layer (maintainers only; `path-gate` fails otherwise)
+
+## Claim class
+
+<!-- lean-proved / enumeration-verified / witness-checked / test-supported /
+     conjectured — or "none" if this PR adds no claim. The class is part of the
+     claim; there are no silent upgrades. -->
+
+## Statement of record
+
+<!-- The checker id plus its exact parameters, OR the fully-qualified Lean
+     declaration name. Never prose: prose documents the record, it is not the
+     record. Write "none" if this PR registers no claim. -->
+
+## OPEN_PROBLEMS item answered
+
+<!-- The item number. Nothing enters the registry except in answer to a filed
+     item; if none fits, propose one as an issue first. -->
+
 ## What this addresses
 
 <!-- The OPEN_PROBLEMS.md item, ledger claim identifier, or issue. If none, say
