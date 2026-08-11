@@ -1,24 +1,30 @@
-# Setup report — repo scaffolding round
+# Setup report — repo scaffolding round (v2)
 
-2026-08-10. What was built, what was verified, and what deviated from the
-dispatch.
+2026-08-10 / 11. The v2 dispatch superseded a v1 that had already been executed;
+both are in `prompts/2026-08-10-repo-scaffolding/`, and this report covers the
+delivered state.
 
 ## Awaiting the author
 
-These are stubs in `DECISIONS.md`, repeated here because the dispatch reserved
-them:
-
-1. **Visibility and license.** The repository is **private** — inherited from
-   its predecessor, not chosen for this scope — and carries no license file.
-2. **Whether the leverage frozen trees are registered now** or at the next
-   leverage round. `consolidation_aug9/` is registered; nothing else from that
-   line is.
-3. **Lean library and namespace names.** `Workstudio`, with
-   `Workstudio.Delegation.*` and `Workstudio.Leverage.*`, is what the dispatch
-   named and what this round built. Renaming is cheap now, expensive after the
-   first real development.
-4. **Which delegation documents are canonical.** `projects/delegation/notes/` is
-   seeded with a pointer, not with documents — see the deviation below.
+1. **License — confirm.** Apache-2.0 is recommended in the dispatch for the
+   patent grant. **No license file was written.** A license is a legal grant, the
+   dispatch reserves it to the author, and writing an unconfirmed one into a
+   repository that may go public is the wrong error to make. Absence means
+   default copyright; the README says so plainly rather than leaving a reader to
+   guess.
+2. **Repository visibility — and it is now load-bearing.** The repository is
+   **private**, per the author's instruction. **Branch protection cannot be
+   configured**: GitHub refuses it on a private repository on this account's
+   plan, returning "Upgrade to GitHub Pro or make this repository public to
+   enable this feature." So the contribution model's last enforcement layer is
+   pending a decision that was previously only about timing. See below.
+3. **NORMATIVE-LEARNER migration** — under `projects/leverage/` or an
+   externally-referenced repository. Its consolidation is already here, frozen;
+   the question is the live tree.
+4. **Namespace names.** `Workstudio`, `Workstudio.Delegation.*`,
+   `Workstudio.Leverage.*`. Cheap to change now, expensive later.
+5. **Frozen registration beyond the three archives.** Three registered; anything
+   else is a decision.
 
 ## Toolchain
 
@@ -26,8 +32,8 @@ them:
 |---|---|
 | Lean | 4.31.0 (`arm64-apple-darwin24.6.0`, commit `68218e876d2a`) |
 | Lake | 5.0.0-src+68218e8 |
-| `lean-toolchain` | `leanprover/lean4:v4.31.0` — matched to the dependency's exactly |
-| Python | 3.9.6 |
+| `lean-toolchain` | `leanprover/lean4:v4.31.0`, matched to the dependency's |
+| Python | 3.9.6 local; `python3` as shipped on `ubuntu-latest` in CI |
 
 ## The pin
 
@@ -37,128 +43,135 @@ them:
 | Foundation | `41d20b5158e9` (transitive) |
 | mathlib | `fabf563a7c95` (transitive) |
 
-`1fffea44` is the current `main` of
-https://github.com/A-M-Berns/Formalized-Agent-Foundations, and is the commit
-whose message is "Bump all pinned dependencies: Lean v4.31.0, upstream
-Foundation, vendored upstream ProvabilityLogic" — the unfork that made FAF
-pinnable. Only FAF is pinned directly; Mathlib and Foundation arrive through it,
-so this repository cannot disagree with its dependency about either.
+`1fffea44` is the current `main` of Formalized-Agent-Foundations — the commit
+"Bump all pinned dependencies: Lean v4.31.0, upstream Foundation, vendored
+upstream ProvabilityLogic", the unfork that made it pinnable. **Only FAF is
+pinned directly**; Mathlib and Foundation arrive through it, so this repository
+cannot disagree with its dependency about either.
 
-## Mathlib cache
+## Build and cache
 
-`lake update` ran the cache fetch itself: **"No files to download"**, then
-**8538 already-cached files decompressed** in 11.6s. The machine's Mathlib
-oleans were already warm from the FAF work, so nothing was downloaded. A cold
-machine will download them; `lake exe cache get` in `lean/` is the command, and
-the README says so.
+**Locally:** `lake update` 1m 22s, including the cache step, which found the
+machine's Mathlib oleans already warm — "No files to download", 8538 files
+decompressed in 11.6s. `lake build` 28.7s for 1714 jobs cold, 12.1s after adding
+the two namespace roots.
 
-## Build
+**In CI**, first run, cold `.lake` cache:
 
-| step | wall time | result |
-|---|---|---|
-| `lake update` (fetch + cache) | **1m 22s** | 16 packages resolved |
-| `lake build`, first full | **28.7s** | 1714 jobs, green — includes building the Foundation modules the smoke test reaches |
-| `lake build`, after adding the two namespace roots | **12.1s** | 1716 jobs, green |
+| gate | wall time |
+|---|---|
+| python — project test runners | 8s |
+| frozen-integrity — digests and the manifest rule | 5s |
+| foundations-verification — the consolidation re-proves itself | 6s |
+| **lean — build, sorry-free, axiom audit** | **5m 19s** |
+| total run | ~5m 30s (jobs run in parallel) |
 
-The smoke test's four results and both namespace placeholders audit as required:
+The Lean job dominates and that figure is the **cold** one: elan install, `lake
+exe cache get`, a full build, then the audit. `actions/cache` keys `lean/.lake`
+on `hashFiles('lean/lake-manifest.json', 'lean/lean-toolchain')`, so subsequent
+runs restore it and only rebuild what changed. The key changes exactly when the
+pin or the toolchain does, which is the right granularity.
 
-```
-'Workstudio.Smoke.faf_asympEq_refl'            [propext, Classical.choice, Quot.sound]
-'Workstudio.Smoke.faf_substrate_is_encodable'  [propext, Classical.choice, Quot.sound]
-'Workstudio.Smoke.mathlib_one_div_tendsto_zero' [propext, Classical.choice, Quot.sound]
-'Workstudio.Smoke.chain_compiles'              [propext, Classical.choice, Quot.sound]
-'Workstudio.Delegation.namespaceIsLive_holds'  does not depend on any axioms
-'Workstudio.Leverage.namespaceIsLive_holds'    does not depend on any axioms
-```
+## The four gates
 
-**What the smoke test actually certifies.** It reaches three declarations, not
-two: `LogicalInduction.AsympEq` and its reflexivity lemma from FAF;
-`LogicalInduction.Sentence`'s `Encodable` instance, which is FAF's wrapper over
-**Foundation**'s propositional formulas and so exercises that leg of the chain
-too; and `tendsto_one_div_add_atTop_nhds_zero_nat` from Mathlib. The last
-theorem, `chain_compiles`, states the Mathlib limit in FAF's own `ConvergesTo`
-vocabulary, so it typechecks only if both halves of the chain are present and
-agree. The declaration names were read out of the pinned sources before use, not
-recalled.
+1. **python** — `tests/run.py`, which aggregates each project's own runner and
+   also runs the textual Lean gates that need no toolchain.
+2. **lean** — `lake exe cache get`, `lake build`, then `tests/audit_axioms.py`.
+   The audit **re-elaborates every file with `lake env lean`** rather than
+   scraping the build log. This is deliberate and it matters: an incremental
+   build with nothing to do prints no `#print axioms` output at all, so a
+   log-scraping audit would pass silently on an unchanged tree. Re-elaboration
+   cannot be fooled that way. The audit fails on any axiom outside
+   `[propext, Classical.choice, Quot.sound]`, which is also how `sorryAx` is
+   caught, and on any file lacking a `#print axioms` line, and on a
+   `#print axioms` that reports nothing — that last case means the declaration
+   it names does not exist.
+3. **frozen-integrity** — `tests/check_frozen.py` recomputes the tree digest of
+   every registered input and fails on drift, on a registered input that has gone
+   missing, and on a directory under `frozen/` that is not registered. On a pull
+   request it additionally fails any change under `frozen/` unless the same pull
+   request updates `MANIFEST.md`; the author's sign-off then happens through
+   required review.
+4. **foundations-verification** — copies `frozen/consolidation_aug9/` to the
+   runner temp directory and runs its own verifier there, then re-runs the
+   frozen check to confirm the tree was not modified. Executing from a copy is
+   the point: a gate that could mutate frozen content would drift the very digest
+   the previous gate defends.
 
-## Python
+**All four green** on the first run: `31448389113`.
 
-The repo-level runner verifies the frozen digests, enforces the two Lean gates,
-and runs each project's runner:
+## Foundations-verification result
 
-```
-FROZEN INPUTS VERIFIED: 3
-LEAN SORRY GATE: clean over 3 files
-LEAN AXIOM DISCIPLINE: every file carries `#print axioms`
-PROJECTS:
-  PASS  projects/leverage/workspace
-ALL GREEN (1 project(s))
-```
-
-The leverage workspace runs 94 tests; the frozen consolidation runs 107 and 180
-ledger claims, and is exercised as its own CI job.
+The frozen consolidation re-proved itself inside CI: retired-name gate clean,
+sorry scan clean, **180 ledger claims with statuses agreeing between the theory
+parts and the ledger**, every claim-ID family expanded, **26 of its own internal
+frozen inputs verified**, 107 tests. So the repository checks two nested layers
+of digests — ours over the frozen trees, and the consolidation's own over what it
+vendors.
 
 ## Checksums registered
 
-Three, in `frozen/FROZEN_INPUT_CHECKSUMS.json` with rows in `frozen/MANIFEST.md`:
+Three inputs, each an **extracted tree** rather than an archive, so every claim
+is citable by path and line:
 
-| name | digest | contents |
+| name | tree sha256 | files |
 |---|---|---|
-| `consolidation_aug9/` | `a2ca95ad9d6cafca…` (tree digest) | 59 files |
-| `deference-note-dump-2026-06-27.zip` | `bc51a91b84241128…` | 50 files |
-| `dose-response-note-dump-2026-07-02.zip` | `a69f8a9876b24dd0…` | 13 files |
+| `consolidation_aug9/` | `a2ca95ad9d6cafca…` | 59 |
+| `deference-note-dump-2026-06-27/` | `69a23843a69576dc…` | 50 |
+| `dose-response-note-dump-2026-07-02/` | `d34afa3ce2888555…` | 13 |
 
-Both note dumps existed in several byte-identical copies on the machine; the
-copies were checked to be identical before one was registered, and that check is
-why the registration names a single canonical digest rather than a choice.
+`MANIFEST.md` records for each an archive digest as provenance *and* the tree
+digest CI recomputes, plus what cites it, and notes that `consolidation_aug9`
+vendors the August 8 consolidation internally. The two note-dump archives were
+each present in several byte-identical copies on the machine; they were verified
+identical before one was registered.
 
 ## Deviations from the dispatch
 
-1. **`consolidation_aug9` is registered as an unpacked tree, not an archive.**
-   It was already unpacked in the predecessor repository, so it was moved with
-   `git mv` — preserving its history and both freeze tags — rather than
-   re-imported as a zip. It is registered with a **reproducible tree digest**
-   (over sorted relative paths and file digests), and the manifest states the
-   recipe. This respects the intake rule that matters — frozen inputs are
-   referenced, never edited, and never unpacked *into `projects/`* — while
-   keeping it runnable as its own CI job.
-
-2. **`projects/delegation/notes/` is seeded with a pointer, not documents.** The
-   dispatch says to seed it with "any documents the author supplies", and none
-   were supplied with this round. Candidates exist on the machine — a deference
-   paper source, a frozen-deliberation document at v6, a dose-response audit —
-   but deciding which are canonical is a naming and provenance decision, which
-   convention 6 reserves to the author. Seeding by guess would manufacture
-   provenance. Flagged instead.
-
-3. **A `tests/` directory was added at the repo root**, which the dispatch's
-   layout did not list. Convention 3 requires a repo-level runner, and it needed
-   somewhere to live.
-
-4. **Two namespace root files were added** —
-   `Workstudio/Delegation/Basic.lean` and `Workstudio/Leverage/Basic.lean`. The
-   dispatch asks for per-line namespaces; git does not track empty directories,
-   so without a file the namespaces would have been documentation rather than
-   structure. Each holds one trivial declaration and its axiom print, and both
-   are in the build.
-
-5. **The repo-level runner does not compile Lean by default.** It runs the
-   sorry-free and `#print axioms` gates, which are textual and instant, but
-   `lake build` is opt-in behind `WORKSTUDIO_LEAN=1`. A default runner that
-   needs a toolchain and a warm cache is a runner people stop running. CI
-   likewise does not build Lean; that is a gap, recorded below.
-
-6. **CI has three jobs, not one.** The repo runner, the frozen consolidation's
-   own suite, and the leverage workspace's. The latter two predate this round
-   and were kept.
+1. **No `LICENSE` file.** Reserved to the author, and a legal grant is not
+   something to guess. Item 1 above.
+2. **Branch protection is not configured**, because it is unavailable on a
+   private repository on this plan. The full payload is committed at
+   `.github/branch-protection.json` with the four exact check names, so applying
+   it after the visibility or plan decision is one command:
+   `gh api -X PUT /repos/A-M-Berns/alignment-workstudio/branches/main/protection --input .github/branch-protection.json`.
+   This was previously a timing question; it is now a gating one, which is why it
+   is flagged rather than deferred.
+3. **The frozen archives were deleted after extraction.** The dispatch says "no
+   zips"; keeping both would have meant two sources of truth. Their digests
+   survive in the manifest as provenance.
+4. **The note-dump trees were flattened by one level.** Each archive contained a
+   single top-level directory repeating its own name; the redundant level was
+   removed so paths cite as `frozen/deference-note-dump-2026-06-27/lean/AUDIT.md`
+   rather than with the name twice. The tree digest is over the flattened form,
+   so it is what CI checks.
+5. **`OPEN_PROBLEMS.md` has eleven items, not only the two sources' union.** Six
+   come from the consolidation's ranked list, three from the deference audit's
+   own §3 "The concerning gaps" — quoted by section, since those are its findings
+   and not mine — and two are infrastructure items that are genuinely
+   contributable (build the Lean faster in CI; supply necessity witnesses where a
+   ledger row lacks one).
+6. **Two Lean namespace root files were added.** Git does not track empty
+   directories, so without a file the per-line namespaces would have been
+   documentation rather than structure. Each holds one trivial declaration and
+   its axiom print, and both are in the build and audited.
+7. **`CONVENTIONS.md` gained a table saying which conventions are gates and
+   which are reviewed.** Four are machine-enforced; five — exact arithmetic, the
+   four-part theorem shape, citation integrity, naming, dispatch provenance — are
+   review matters. A repository that invites strangers should not blur which is
+   which.
+8. **`projects/delegation/notes/` is seeded with a pointer, not documents.** No
+   documents were supplied with the round. Candidates exist in the frozen
+   deference dump — a paper ledger, a frozen-deliberation document at v6, a
+   self-referential-settlement-target note — but deciding which are canonical is
+   a provenance decision reserved to the author. Seeding by guess would
+   manufacture provenance, which convention 5 exists to prevent.
 
 ## Known gaps
 
-- **CI does not build the Lean.** Doing it properly needs an elan setup step and
-  a Mathlib cache restore, which is a real piece of workflow engineering rather
-  than a line of YAML; this round left it out rather than adding something that
-  would appear to check the Lean and not. Local `lake build` is green and timed
-  above.
-- **The delegation line has no ledger and no content**, by design: `kernel/` is
-  reserved and empty, and the first round supplies both.
-- **No license file**, pending the author's decision.
+- **No branch protection yet** — see above. Until it is applied, the gates run
+  but do not *block*: a direct push to `main` is possible.
+- **The delegation line has no ledger and no content.** `kernel/` is reserved and
+  empty; the first round supplies both.
+- **The Lean CI cache is unmeasured warm.** The 5m 19s figure is cold. The warm
+  figure will appear on the next push that does not change the pin.

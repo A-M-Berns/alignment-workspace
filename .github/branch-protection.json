@@ -1,0 +1,21 @@
+{
+  "_comment": "Apply once the repository is public, or on GitHub Pro. Branch protection is unavailable on a private repository on the free plan; see SETUP_REPORT.md. Apply with: gh api -X PUT /repos/A-M-Berns/alignment-workstudio/branches/main/protection --input .github/branch-protection.json",
+  "required_status_checks": {
+    "strict": true,
+    "contexts": [
+      "python — project test runners",
+      "lean — build, sorry-free, axiom audit",
+      "frozen-integrity — digests and the manifest rule",
+      "foundations-verification — the frozen consolidation re-proves itself"
+    ]
+  },
+  "enforce_admins": false,
+  "required_pull_request_reviews": {
+    "required_approving_review_count": 1,
+    "require_code_owner_reviews": true,
+    "dismiss_stale_reviews": true
+  },
+  "restrictions": null,
+  "allow_force_pushes": false,
+  "allow_deletions": false
+}
