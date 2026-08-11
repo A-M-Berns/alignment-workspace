@@ -1,7 +1,7 @@
 # Email thread — "Note Dump" (June 2026)
 
 *A working email exchange around this project, between **Abram Demski** and **Anson Berns**
-(cc **Roman Malov** and **Gurkenglass**), running 17–25 June 2026. It is the correspondence in
+(cc [scrubbed]), running 17–25 June 2026. It is the correspondence in
 which the note-dump bundles were shared and discussed: the frozen-vs-original target debate, the
 legitimacy-of-feedback worry, and a compact "no timely tower on the diagonal" obstruction.*
 
