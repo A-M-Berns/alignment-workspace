@@ -285,7 +285,7 @@ dispatched target. **No unacceptable strengthening was found.**
 
 | assumption | track | classification |
 |---|---|---|
-| grade trust `GT_𝒢(η)` | B | independently necessary, with witness; **imported** — a competence claim about the principal, containing no reference to `A`'s credence |
+| grade trust `GT_𝒢(η)` | B | independently necessary, with witness; **imported**. *Corrected 2026-08-11 by Phase II Track I §7.2:* this row originally read "a competence claim about the principal, containing no reference to `A`'s credence". That is false as written — `GT_𝒢(η)` mentions `P` twice, in `P(C) > 0` and in `E_P[X_π \| C]`. It is credence-free only at the discrete conditioning partition, where Track B's §1.1 records that it reduces to a pointwise bound. The distinction is load-bearing: Track I's Proposition 1 shows the credence-free / credence-dependent line is exactly the line between a circular hypothesis and a usable dial |
 | movement `(MV-M)` | C | independently necessary, with witness at the full `2B`; **modelling substitution**, and the dangerous one — it asserts what the dispatch's §14.2 says principal-report settlement does *not* deliver |
 | trust tolerance `(TR-ε)` | C | necessary in `L¹` form, with witness; **unearned**, and possibly the wrong shape — a signed, expectation-matching relation is provably insufficient |
 | one-shot pricing layer | B | proof-convenient / architectural — without some such layer "what does settlement yield" has no formal content in v1 |
