@@ -3,10 +3,13 @@
   "required_status_checks": {
     "strict": true,
     "contexts": [
-      "python — project test runners",
-      "lean — build, sorry-free, axiom audit",
-      "frozen-integrity — digests and the manifest rule",
-      "foundations-verification — the frozen consolidation re-proves itself"
+      "checkers \u2014 house harness self-test and the claims registries",
+      "conservativity \u2014 no new axioms, specification shape unchanged",
+      "foundations-verification \u2014 the frozen consolidation re-proves itself",
+      "frozen-integrity \u2014 digests and the manifest rule",
+      "lean \u2014 build, sorry-free, axiom audit",
+      "path-gate \u2014 proof-layer PRs may not touch the specification layer",
+      "python \u2014 project test runners"
     ]
   },
   "enforce_admins": false,
