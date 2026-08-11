@@ -55,9 +55,16 @@ Only FAF is pinned directly. Mathlib and Foundation arrive transitively through
 it. Pinning all three independently would let this repository and FAF disagree
 about Mathlib, which is the failure mode the single pin removes.
 
-### 2026-08-10 — house conventions adopted
+### 2026-08-10 — binding standards live in `AGENTS.md`
 
-The eight conventions in `CONVENTIONS.md`: exact arithmetic; what a theorem
+One document, read by agents and humans alike, replacing a separate conventions
+file: agent tooling reads that filename automatically, so every dispatched round
+inherits the standards without its prompt restating them. The reader-facing rules
+became the opening section of `CONTRIBUTING.md` rather than a separate document.
+
+Twelve standards, of which six are machine-enforced by the CI gates and the rest
+are review matters; `AGENTS.md` §13 says which is which, so nobody mistakes a norm
+for a gate. The standards: exact arithmetic; what a theorem
 ships as; runners; frozen inputs immutable; citation integrity; naming reserved
 to the author; dispatch provenance; and the Lean discipline — sorry-free,
 `#print axioms` per file, results auditing to

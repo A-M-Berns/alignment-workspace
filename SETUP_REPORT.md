@@ -1,7 +1,9 @@
-# Setup report — repo scaffolding round (v2)
+# Setup report — repo scaffolding round (v2 + addendum)
 
-2026-08-10 / 11. The v2 dispatch superseded a v1 that had already been executed;
-both are in `prompts/2026-08-10-repo-scaffolding/`, and this report covers the
+2026-08-10 / 11. Three dispatches, one round: a v1 that had already been
+executed, a v2 that superseded it, and an addendum that restructured the
+documentation and added the provenance, dual-register and chat-dump conventions.
+All are in `prompts/2026-08-10-repo-scaffolding/`; this report covers the
 delivered state.
 
 ## Awaiting the author
@@ -155,22 +157,74 @@ identical before one was registered.
    directories, so without a file the per-line namespaces would have been
    documentation rather than structure. Each holds one trivial declaration and
    its axiom print, and both are in the build and audited.
-7. **`CONVENTIONS.md` gained a table saying which conventions are gates and
+7. **`AGENTS.md` gained a table saying which conventions are gates and
    which are reviewed.** Four are machine-enforced; five — exact arithmetic, the
    four-part theorem shape, citation integrity, naming, dispatch provenance — are
    review matters. A repository that invites strangers should not blur which is
    which.
-8. **`projects/delegation/notes/` is seeded with a pointer, not documents.** No
+8. **Addendum: `CONVENTIONS.md` was deleted and its content moved into
+   `AGENTS.md`**, which now also carries the agent rules, the dual-register
+   requirement, the provenance classes and the chat-dump convention. The
+   reader-facing rules became the opening section of `CONTRIBUTING.md`. No
+   separate `HUMANS.md` was created. Every reference across the repository was
+   repointed; the verbatim dispatch files still say `CONVENTIONS.md`, and were
+   deliberately **not** edited, since a prompt is kept as sent.
+
+9. **Addendum: the two named bundles were already registered, byte-identical.**
+   The addendum names `deference-in-logical-induction-note-dump-2026-06-27__4_.zip`
+   and `dose-response-note-dump-2026-07-02__2_.zip`; their sha256 digests match
+   the copies registered earlier in the round exactly, so no re-intake was
+   performed and the tree hashes are unchanged. The digests are in
+   `frozen/MANIFEST.md`.
+
+10. **Addendum: third-party redistribution is flagged, and nothing was pruned.**
+    Both bundles carry published papers under `references/` — two papers with
+    PDFs and extracted text, plus the Logical Induction source. Whether the
+    repository may redistribute them is an author decision. The default applied
+    is the one the addendum specifies: keep the bundles intact, raise the flag,
+    do not prune. The repository being private is the safe state while it is
+    open.
+
+11. **A root `PROVENANCE.md` was added**, which the addendum did not ask for
+    directly. The provenance discipline calls for one per results directory; the
+    scaffolding round produced no results directory, but it produced most of the
+    repository, and leaving that unlabelled would have made the first artifacts
+    the only unlabelled ones. It classes essentially everything from this round
+    `llm-unreviewed`, which is the accurate label.
+
+12. **`projects/delegation/notes/` is seeded with a pointer, not documents.** No
    documents were supplied with the round. Candidates exist in the frozen
    deference dump — a paper ledger, a frozen-deliberation document at v6, a
    self-referential-settlement-target note — but deciding which are canonical is
    a provenance decision reserved to the author. Seeding by guess would
    manufacture provenance, which convention 5 exists to prevent.
 
+## What this round did not do
+
+- **It did not review its own output.** Everything generated here is
+  `llm-unreviewed` per `PROVENANCE.md`. The gates show the code runs and the Lean
+  compiles; they show nothing about whether the rules the gate scripts implement
+  are the rules intended, and nobody but the generator has read them with that
+  question in mind.
+- **It did not produce a chat dump.** None was requested; per `AGENTS.md` dumps
+  are optional and author-requested, so their absence is the expected state and
+  not an omission.
+- **It did not resolve any reserved decision**, by design. Five are listed at the
+  top, and two of them — the license and the redistribution question — are the
+  kind that should not be resolved by an agent at all.
+
 ## Known gaps
 
 - **No branch protection yet** — see above. Until it is applied, the gates run
-  but do not *block*: a direct push to `main` is possible.
+  but do not *block*: a direct push to `main` is possible. This is the single
+  largest gap between the delivered state and the dispatch's intent, since "a
+  stranger's PR is either verifiably correct or automatically rejected" depends
+  on the gates being *required*, not merely present.
+- **The dual-register presence check is not implemented in CI.** The addendum
+  permits leaving it to review, and this round did: a heuristic that each new
+  results directory contains both file kinds needs a definition of "results
+  directory" that the repository does not yet have, since it has no results
+  directories. It is filed as an open problem instead.
 - **The delegation line has no ledger and no content.** `kernel/` is reserved and
   empty; the first round supplies both.
 - **The Lean CI cache is unmeasured warm.** The 5m 19s figure is cold. The warm

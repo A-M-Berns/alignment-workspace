@@ -1,5 +1,39 @@
 # Contributing
 
+## For readers
+
+If you have just arrived, five things.
+
+**1. Verify before you trust.** Four gates run in CI and all four run locally,
+with the commands in the next section. Every claim in this repository is either
+machine-checked by them or **explicitly labelled otherwise** — the frozen
+consolidation, for instance, separates machine-checked results from hand-derived
+ones from transcribed ones from a reading audit, and says which is which per
+claim.
+
+**2. Read provenance before you cite.** Every artifact declares an origin class:
+`human`, `llm-reviewed`, or `llm-unreviewed`. The last one means exactly what it
+says — LLM-generated and not yet author-reviewed. It is allowed here, because
+this is a working repository and a label that lies is worse than an honest one,
+but it is never hidden. See `AGENTS.md`.
+
+**3. Documentation comes in two registers by design.** The verification register
+is precise and dense, for auditing and for agents. The human register explains
+what was shown and why it matters, in plain language. **If you are a person,
+start with the human-register document** — it is not a summary of the other one,
+it is a different account of the same work.
+
+**4. The two hard rules** are frozen-immutability and no-permanent-naming.
+Nothing under `frozen/` changes, ever; and names are the author's to set.
+
+**5. Disagreement is welcome, and it has a format.** Not an opinion: a
+counterexample, a failing test, or a precise objection filed as an issue against
+a named ledger item. That is not gatekeeping — it is the same standard the
+repository's own results are held to, and a good counterexample is worth more
+here than agreement.
+
+---
+
 **Quality here is enforced by machine-checkable gates, not by trust.** You do not
 need to be known to anyone to contribute. Your pull request either passes four
 gates or it does not, and the gates are the same ones the author's own work
@@ -51,6 +85,8 @@ reverse — if the two disagree, the file is right.
 
 ## The two hard rules
 
+*(Stated above for readers; here is what they mean for a pull request.)*
+
 **1. Nothing in `frozen/` changes.** Frozen inputs are read-only, checksummed,
 and cited by path. CI recomputes their digests and fails on drift, and refuses
 any pull request touching `frozen/` unless the same pull request updates
@@ -74,5 +110,6 @@ labels attributed to sources that do not contain them.
 ## Review
 
 The author reviews everything (`CODEOWNERS`). The gates decide correctness; review
-decides fit, naming, and whether a result belongs in the program. A green PR is
+decides fit, naming, provenance labelling, whether both documentation registers
+are present, and whether a result belongs in the program. A green PR is
 not automatically merged, and a red one is not argued with.

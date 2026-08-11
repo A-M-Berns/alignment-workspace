@@ -7,7 +7,7 @@ to land rather than a naming decision to make.
 
 External theory — Logical Induction facts, results from the frozen consolidation —
 enters as named hypotheses of the statements that use it, never as `axiom`
-declarations. See `CONVENTIONS.md` §8.
+declarations. See `AGENTS.md` §8.
 -/
 
 namespace Workstudio.Leverage

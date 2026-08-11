@@ -15,6 +15,24 @@ this file. That gate cannot be argued with, which is the point.
 | `deference-note-dump-2026-06-27/` | 2026-06-27 | `bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362` | `69a23843a69576dc449e7b8b9e353101a6c96684c6275c153be4b57d08d37b69` | 50 | The delegation line's recorded starting point: research notes across six versions, a statement-level Lean audit, and the Lean development (deference, self-referential target, frozen deliberation, faithful acceleration, tower and acceleration). | `projects/delegation/`; `OPEN_PROBLEMS.md` items 7–9 |
 | `dose-response-note-dump-2026-07-02/` | 2026-07-02 | `a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890` | `d34afa3ce288855517fb9d164adbbaa760aefe8fbf38897c130234a94ae00355` | 13 | Dose-response structure in the deference setting, with its own audit. | `projects/delegation/` |
 
+## Third-party material — AUTHOR-PENDING
+
+Both note-dump bundles contain published third-party papers under
+`references/`: two papers with their PDFs and extracted text, and the Logical
+Induction paper's own source. **Whether this repository may redistribute them is
+an author decision and is unresolved.**
+
+The default applied here, and it is deliberate: **keep the bundles intact and
+raise the flag.** The bundles are provenance — a note dump with its references
+removed is a different artifact, and pruning one unilaterally would both damage
+the record and make a copyright judgement that is not an agent's to make. The
+repository is currently **private**, which is the safe state while this is open.
+
+If it goes public before the question is resolved, the options are: confirm the
+papers are redistributable and leave them; replace them with citations and record
+the substitution as a new dated frozen entry, since editing a registered one is
+forbidden; or keep the repository private. Recorded in `DECISIONS.md`.
+
 ## Reading the digests
 
 `sha256_tree` is over relative paths and file digests in sorted order, excluding

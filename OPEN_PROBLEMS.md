@@ -154,7 +154,17 @@ contributed.
 *Context:* `.github/workflows/ci.yml`; `SETUP_REPORT.md` records the measured
 times.
 
-### 11. A necessity witness for every hypothesis that lacks one — **[entry]**
+### 11. A dual-register presence check in CI — **[entry]**
+
+`AGENTS.md` requires every substantive deliverable to ship both a verification
+register and a human register, and leaves enforcement to review. A heuristic gate
+— each new results directory contains both file kinds — is cheap once "results
+directory" is defined, which needs the repository to have some.
+
+*Context:* `AGENTS.md`, dual-register section; `.github/workflows/ci.yml`.
+*A solution ships:* the check, a passing case, and a failing case proving it bites.
+
+### 12. A necessity witness for every hypothesis that lacks one — **[entry]**
 
 Convention 2 asks for a necessity witness per hypothesis "where feasible". Rows
 in the frozen ledger that lack one, and where one is feasible, are contributable

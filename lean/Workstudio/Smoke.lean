@@ -7,7 +7,7 @@ mathematics. It reaches a real declaration from **Formalized-Agent-Foundations**
 through the first — the **Foundation** propositional substrate, and proves a
 trivial lemma against each.
 
-House discipline (see `CONVENTIONS.md`): every file ends with `#print axioms`
+House discipline (see `AGENTS.md`): every file ends with `#print axioms`
 lines, and results must audit to `[propext, Classical.choice, Quot.sound]`.
 -/
 import Mathlib.Analysis.SpecificLimits.Basic

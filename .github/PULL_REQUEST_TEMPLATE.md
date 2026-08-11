@@ -23,6 +23,22 @@
 
 none
 
+## Provenance entries added or updated
+
+<!-- Per AGENTS.md: each results directory carries a PROVENANCE.md declaring, per
+     file or glob, its origin class (human / llm-reviewed / llm-unreviewed), the
+     generator and date, the originating round under prompts/, and — if one
+     exists — the originating chat bundle in frozen/. List what you added or
+     changed, or write "none". -->
+
+none
+
+## Both documentation registers present
+
+- [ ] Verification register (exact statements, hypotheses, how to re-verify)
+- [ ] Human register (what was shown, why it matters, plain language)
+- [ ] Not applicable — this PR adds no results
+
 ## Anything the author must decide
 
 <!-- Naming, scope, whether a result belongs, anything you were unsure of.
