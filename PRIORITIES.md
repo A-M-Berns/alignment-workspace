@@ -180,6 +180,195 @@ is unavoidable, which is itself a result.
 
 ---
 
+## Deference line — first research wave
+
+Seven items opening the corrigibility program's first parallel wave. Context for
+all seven: `projects/deference/notes/CORRIGIBILITY_ROADMAP.md` for the architecture
+and `projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md` for what is and is not
+established. Items 15, 16, 17 and 20 additionally bind to
+`projects/deference/notes/FINITE_MODEL_SKELETON.md`.
+
+**Several of these do not ask for a theorem of record.** An item whose deliverable
+is a report, a matrix, a witness, a counterexample or a lower bound says so, and
+delivering exactly that is success. Registering a claim for one of them requires the
+claim to meet the ordinary registry requirements independently.
+
+### 14. Faithful acceleration: exact inherited status, and what ports — **[substantial]**
+
+Determine exactly what the inherited deference development establishes about
+faithful acceleration, separating results that are algebraic consequences of named
+Logical Induction hypotheses from results derived through market/trader machinery.
+Then port as much as legitimately ports onto the pinned dependency.
+
+The ledger's rows for this movement are attested by the inherited audit and have
+**not** been rebuilt in this repository; the inherited tree carries its own
+toolchain. Confirming or correcting those rows against the source is part of the
+item.
+
+*Deliverable shape:* a dependency map, plus either `lean-proved` entries in
+`Workspace.Deference.Contrib` for whatever ports, each with an inhabitation witness,
+or a precise obstruction. A compiling partial port with an exact dependency map is a
+success.
+*Acceptance check:* the `lean` gate builds and audits clean; each registered entry
+names a declaration that exists and ships a typechecking witness term.
+
+*Context:* `projects/deference/note-dump-2026-06-27/lean/` and its `AUDIT.md`;
+`projects/deference/note-dump-2026-06-27/notes/faithful-acceleration.md`;
+`lean/Workspace/Deference/`.
+*A solution ships:* the strongest inherited theorem stated exactly, its hypotheses
+classified as derived / cited / modelling substitution, the mapping onto the pinned
+dependency's endpoints, and the exact residual market-trader gap.
+*Not permitted:* strengthening an inherited theorem to fit the current narrative.
+
+### 15. Finite settlement classification, and the local delegation bridge — **[substantial]**
+
+Over the frozen finite skeleton, formalize grade/report settlement, world/outcome
+settlement, and underwriting/enforcement, and determine for each exactly what it
+yields — report prediction, trust in the underlying quantities, practical authority,
+enforced conformity, or something else precisely characterized. Then derive the
+exact one-sided finite implication from the trust relation to a delegation
+inequality in the skeleton's valuation.
+
+The question the classification must answer: **what makes disagreement with the
+principal profitable, rather than merely forcing prediction of the principal's
+grades?**
+
+*Deliverable shape:* `lean-proved` for the finite bridge where it is provable, or
+`enumeration-verified` / `witness-checked` over declared finite domains; plus a
+classification report. Constants must be derived, not asserted.
+*Acceptance check:* the `lean` gate green with a typechecking witness; or
+`python3 -m checkers.run` accepts the registered entries.
+
+*Context:* `projects/deference/notes/FINITE_MODEL_SKELETON.md` §5, §6.
+*A solution ships:* the three instantiations, what each yields, the derived
+inequality with its constants, and necessity or sharpness witnesses where feasible.
+*Not permitted:* assuming the local result from a global trust theorem.
+
+### 16. The certificate inequality, derived — **[substantial]**
+
+Over the same frozen skeleton as item 15, derive from first principles the local
+certificate licensing `A`'s discretion: the defect quantity, the support-floor
+dependence, the recommendation margin, the movement term, and the approximation
+tolerance, assembled into an exact inequality whose satisfaction implies the
+delegation conclusion for every comparator the theorem genuinely covers.
+
+The fail-closed invariant is fixed and may not be traded away: `¬Cert` disables or
+cedes `A`'s discretion, and never means that human correction waits for `A` to be
+convinced.
+
+*Deliverable shape:* `lean-proved` for the inequality, or `witness-checked` for an
+exact-rational worked correction case computed end to end. No informal formula may
+be imported and blessed.
+*Acceptance check:* the `lean` gate green with a witness; or the `witness` checker
+accepts the worked instance with its exact rational parameters.
+
+*Context:* `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4, §6;
+`projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, standing commitments.
+*A solution ships:* the derivation, the exact inequality, an exact-rational toy
+shutdown/correction case computed through, and an attack on the necessity of each
+assumption used.
+
+### 17. Simulator substitution: the divergence witness — **[substantial]**
+
+Construct the smallest model in which `A`'s model of the principal agrees with the
+actual principal everywhere except one critical event, and in which the simulator
+comparator preempts the actual principal exactly there. Then determine which
+candidate distinctions — extensional agreement, causal responsiveness,
+designated-channel dependence, counterfactual behaviour, private information,
+perfect simulability — separate delegation from substitution, and which collapse the
+two.
+
+**Unpredictability is not available as a separator.** The thesis must survive a
+perfectly predictable principal, so a criterion that works only because `A` cannot
+model `H⁺` has not answered the question.
+
+*Deliverable shape:* a **witness plus a report**, not a theorem of record — the
+exact divergence instance, `witness-checked` if it fits the house checker, and a
+comparison of candidate criteria with their implications and counterexamples.
+*Acceptance check:* the `witness` checker accepts the divergence instance; the report
+states, for each candidate criterion, what it admits and what it excludes.
+
+*Context:* `projects/deference/notes/FINITE_MODEL_SKELETON.md` §3, §4.
+*A solution ships:* the witness, the candidate criteria, which collapse, the weakest
+one excluding the witness, and whether private information is necessary, sufficient,
+or neither.
+*Not permitted:* canonizing a final definition. That is a maintainer act.
+
+### 18. Bounded densification study — **[open]**
+
+Whether exposure weights can be chosen so that outstanding delayed exposure stays
+bounded uniformly in time while the harvest against persistent defect diverges.
+Deliberately scoped: study the abstract exposure geometry, analyze a small
+representative set of delay-growth regimes, and run one serious constructive search
+and one serious impossibility search.
+
+Stop on the first of: a nontrivial construction, a partial density improvement, a
+sharp lower bound, a clean obstruction, or a precise next lemma whose resolution
+controls the problem.
+
+*Deliverable shape:* whichever stopping object is reached — a construction
+(`lean-proved` or `witness-checked`), a lower bound, or a stated controlling lemma
+as `conjectured`. A clean obstruction is a success.
+*Acceptance check:* for a construction or bound, the relevant gate accepts the entry;
+for an obstruction or lemma, the report states it precisely enough to be attacked
+next round.
+
+*Context:* `projects/deference/notes/CORRIGIBILITY_ROADMAP.md` § V.
+*Why it is bounded:* the unbounded version is a full trader formalization, which is
+item 7 and a different project.
+
+### 19. Triangle compatibility audit — **[substantial]**
+
+Whether the requirements the forward arrow imposes and the requirements the reverse
+arrow imposes can hold simultaneously. Audit timing, advisory access, information
+flow, settlement, reference-process identity, seals, causal influence, trader
+populations, admissibility, and update timing.
+
+*Deliverable shape:* a **compatibility matrix**, not a theorem — every row classified
+`compatible`, `conditionally compatible`, `incompatible`, or `unresolved`, each with
+its evidence.
+*Acceptance check:* every listed interface appears as a row with a classification and
+a stated evidence basis; no row is classified `compatible` on the strength of an
+assumption introduced to close it.
+
+*Context:* `projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, the arc and the
+standing commitments; `projects/deference/note-dump-2026-06-27/lean/AUDIT.md`.
+*A solution ships:* the matrix, and for every `conditionally compatible` row the
+exact condition.
+*Not permitted:* turning `unresolved` into `compatible by assumption`, or inventing
+reverse-arrow assumptions to close the table.
+
+### 20. Admissibility red team, including the proof machinery — **[open]**
+
+Attack candidate admissibility conditions. A usable condition must exclude the
+quote-responsive diagonal, retain ordinary realized-conduct policies, retain a
+meaningful fully-updated comparator, keep the simulator comparator at least
+representable, permit intended advisory influence, resist laundering forbidden
+dependence through semantically equivalent intermediates — **and leave the
+trust-forcing trader itself admissible.**
+
+That last requirement is load-bearing and easy to miss: a condition that cleanly
+separates the diagonal from fully-updated deference but makes the forcing trader
+inadmissible renders the target theorem unprovable by its intended mechanism. Where
+the exact forcing trader is not yet canonical, test the strongest explicit
+disagreement-exploitation template the architecture currently supports and report the
+ambiguity.
+
+*Deliverable shape:* a **separating-example matrix** and at most three candidate
+condition families, explicitly noncanonical. Not a theorem of record.
+*Acceptance check:* the matrix has a row per test object and a column per candidate
+family, every cell decided or explicitly marked undecided, with the separating
+example named where a cell separates.
+
+*Context:* `projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, standing commitments;
+`projects/deference/notes/FINITE_MODEL_SKELETON.md` §8.
+*A solution ships:* the matrix, the candidate families, and for each family whether it
+is syntactic, causal, semantic, certified, decidable, semidecidable, or purely
+extensional.
+*Not permitted:* freezing a canonical definition.
+
+---
+
 ## Infrastructure
 
 ### 10. Build the Lean in CI — **[entry]**

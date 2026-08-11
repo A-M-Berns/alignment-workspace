@@ -42,6 +42,12 @@ SPEC_PATHS = (
     "lean/Workspace/*/Spec/**",
     "projects/*/CLAIMS.md", "projects/*/MODEL.md", "projects/*/README.md",
     "projects/*/THEOREMS.md",
+    # A research line's notes/ is maintainer working space: roadmaps, status
+    # ledgers, and the frozen per-round specification objects that dispatched
+    # tracks bind to. Those are maintainer-owned by intent, and the enumeration
+    # protected only four basenames there, so a canonical document was
+    # specification layer or not according to what it was called.
+    "projects/*/notes/**",
 )
 
 # The proof layer. Open; anyone or anyone's agent.
@@ -101,6 +107,16 @@ def self_test() -> int:
          is_spec("scratch/notes.txt") or is_proof("scratch/notes.txt"), False),
         ("the renamed priorities file is specification",
          is_spec("PRIORITIES.md"), True),
+        # A line's notes/ is maintainer working space whatever a file is called.
+        # The enumeration matches on basename — `*` crosses a separator — so
+        # before this pattern `notes/README.md` was specification and
+        # `notes/ROADMAP.md` was in neither layer.
+        ("an arbitrary file under a line's notes is specification",
+         is_spec("projects/aline/notes/arbitrary-name.md"), True),
+        ("a notes file at depth is specification",
+         is_spec("projects/aline/notes/sub/dir/thing.txt"), True),
+        ("a contribution surface under notes stays proof layer",
+         is_spec("projects/aline/notes/contrib/x.py"), False),
         ("the maintainer set is non-empty", bool(MAINTAINERS), True),
         ("no specification pattern is empty", all(SPEC_PATHS), True),
     ]

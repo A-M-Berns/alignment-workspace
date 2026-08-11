@@ -36,6 +36,9 @@ earlier rows did not record at all.
 | the four consolidated trees | **`agent-consolidated`** | — | — | received or consolidated work that predates this repository; each carries its own `ORIGIN.md` with the digests at intake, and its own internal provenance |
 | `prompts/*/PROMPT*.md` | the maintainer, or a model in a maintainer-directed session | `maintainer-reviewed` — dispatched as written | 2026-08-10 | verbatim as dispatched, including anything they got wrong |
 | `prompts/*/REPORT.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same |
+| `projects/deference/notes/*.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-deference-corrigibility/` — the four canonical deference documents; the decision that they are canonical is the maintainer's, recorded in `DECISIONS.md` |
+| `tests/path_gate.py` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — one specification pattern and three self-test cases, on explicit maintainer authorization for this trust-chain file; the rest of the file predates the round |
+| `PRIORITIES.md` items 14–20 | Claude Opus 5 | `ci-only` | 2026-08-11 | same — filed at the maintainer's direction to authorize the first deference wave |
 
 ## No originating chat bundle
 

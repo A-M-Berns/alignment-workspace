@@ -29,16 +29,52 @@ reconstructing the context.
   *Changing it* is one `git mv`, one file rename, and six prose references
   today; the cost rises with every round that lands work in the tree or cites a
   path into it, and the next leverage round is the first that would.
-- **Which deference documents are canonical.** `projects/deference/notes/` holds
-  a pointer and no documents, because seeding by guess would manufacture
-  provenance. *Deciding* means naming which of the candidates on the maintainer's
-  machine are canonical and under what names. *Not deciding* forecloses the
-  deference line: `projects/deference/kernel/` is reserved and empty, and a round
-  dispatched against that line has nothing in-repo to work from — it would have
-  to be given its inputs in the dispatch, which is the provenance gap this
-  convention exists to close.
-
 ## Settled
+
+### 2026-08-11 — the deference line's canonical documents, and `notes/` as specification space
+
+Four documents are canonical for the deference line:
+`projects/deference/notes/CORRIGIBILITY_ROADMAP.md` for current architecture and
+execution planning, `CORRIGIBILITY_PAPER_LEDGER.md` for human-readable research
+status, `DISPATCH_QUEUE.md` for what is dispatched and what may not yet be, and
+`FINITE_MODEL_SKELETON.md` for the frozen finite specification object a round's
+finite tracks bind to. Precedence: where roadmap and ledger disagree about whether
+something is established, the ledger wins; where prose and the claims registry
+disagree about what is established in this repository, the registry wins.
+
+The decision was made by the maintainer before the round was dispatched, and the
+round implemented it. It closes the stub that asked which deference documents are
+canonical — the answer is these four, at these paths, and the line no longer has to
+be given its inputs in a dispatch.
+
+**A gate correction went with it, and it is the part worth recording.** The round
+was authorized to create the four documents and found it could not honestly do so:
+`tests/path_gate.py` classifies with `fnmatch`, whose `*` crosses a path separator,
+so the enumeration protected `projects/*/README.md`, `CLAIMS.md`, `MODEL.md` and
+`THEOREMS.md` **by basename at any depth** — and nothing else under a line's
+`notes/`. A canonical document was therefore specification layer or not according to
+what it was called: `notes/README.md` was protected, `notes/ROADMAP.md` was in
+neither layer. The intended policy is that a line's `notes/` is maintainer working
+space, so `"projects/*/notes/**"` was added to the specification enumeration with
+three self-test cases, including the regression case that an arbitrary filename
+under a line's `notes/` classifies as specification. A contribution surface nested
+under `notes/` still resolves to the proof layer, because proof patterns win.
+
+This is a trust-chain change and was separately authorized as one. The failure
+direction is safe: adding a specification pattern only ever removes contributor
+write access and cannot grant a pass.
+
+**A second candidate correction was authorized conditionally and not made.** The
+same authorization covered `projects/*/FOR_HUMANS.md` *if* inspection confirmed
+`AGENTS.md` designates it a specification-side artifact. Inspection does not confirm
+it. `AGENTS.md` names `FOR_HUMANS.md` as the human-register *style* and, in the same
+document, assigns "dual-register documentation of contributed results" to the
+**proof** layer — while also requiring every substantive deliverable to ship both
+registers. Protecting the path would forbid a contributor from writing a register
+they are required to ship. The existing `projects/*/THEOREMS.md` protection has the
+same defect, and `projects/*/VERIFICATION.md` — named beside `THEOREMS.md` in the
+dual-register section — is not protected at all. The three are one question about
+where dual-register documentation lives, and it is left open rather than half-answered.
 
 ### 2026-08-11 — `frozen/` retired; received work becomes line content
 
