@@ -11,3 +11,4 @@ rev = "1fffea44eece253cda1722568a3adfe34e822f03"
 
 [[lean_lib]]
 name = "Workspace"
+globs = ["Workspace.+"]
