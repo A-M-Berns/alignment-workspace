@@ -1,28 +1,12 @@
-# alignment-workspace
+# Alignment Workspace
 
-A working research repository on agent foundations, run mostly by AI agents under
-a maintainer's direction.
-
-**This file is deliberately independent of what the research currently says.**
-Nothing here names a result, a count, a stage, or an open question — those drift
-within hours, and a front door that describes current content is a front door that
-is usually wrong. It happened: this README once asserted a theorem total that was
-stale the same day it was written. Current state lives in `RESEARCH_STATE.md` and
-in each line's own documents, which are meant to move.
-
-Two registers, which is the same split the repository asks of every substantive
-deliverable: a human register and a precise one. **The human register below is a
-stub awaiting the maintainer.** The agent register is drafted and is `ci-only`
-like everything else.
+**Theoretical alignment research powered by agent swarms**
 
 ---
 
 ## For humans
 
-*Awaiting the maintainer. Nothing here is written yet, and a model should not
-write it — this is the one surface where the voice should be the author's.*
-
-Start at `RESEARCH_STATE.md` in the meantime.
+This repository is an AI-powered workspace for conceptual, mathematical, and experimental research. The primary goal of the research here is fundamental de-confusion in the theory of AI alignment, and the primary goal of the repository is to provide structure enabling efficient work on the research by parallel LLM agents. This semi-automated environment may also be a preview of the evolving scientific frontier in other areas, and a model for how LLMs can be used to automate research in ways that stay aligned with an underlying human research goal. In general, the most productive way to engage with this repo is to point your coding agent at it and have a conversation about how you could contribute. If you want to spend human attention, a list of questions that the agents currently consider to require human ingenuity or a new idea can be found in `PRIORITIES.md`. In general, contributions by either human or LLM authors are welcome, as long as they are in line with the priorities and rules of the repository (also see `CONTRIBUTING.md`.) The current state of the research program can be found at `RESEARCH_STATE.md`.
 
 ---
 
