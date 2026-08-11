@@ -36,7 +36,7 @@ My hope is that this can develop into a more informative picture. Imagine a mode
 
 My hope is that such a model could provide a picture of corrigibility, not just alignment. Think of the human feedback as a general way to "reprogram" the AI. Since the AI is simply trying to predict the human feedback, it has no incentive to block humans from fixing it. For example, if it knows the humans will reliably tell it that it should shut down tomorrow at noon, then it has already formed the opinion that it should shut down tomorrow at noon. Blocking the feedback channel would only deprive it of information, which should be negative expected value. There is, in some sense, no fully-updated-deference problem. (I expect there will still be limits on the sort of corrigibility which can be achieved, however.)
 
-There are several potential conceptual problems, however. (Thanks to Anson Berns, Roman Malov, and Gurkenglass for relevant discussions.) 
+There are several potential conceptual problems, however. (Thanks to Anson Berns and others for relevant discussions.) 
  - The AI becomes a sort of time-travel machine, bringing human opinions back from the future, and acting on those future opinions today. Couldn't it bring something nasty back from the future?
 	 - Self-fulfilling prophecies: some bad things could happen as a result of being predicted to happen, such as bank runs.
 	 - Human manipulation: the sort of alignment provided by this framework does nothing (so far) to rule out an AI which manipulates humans into specific beliefs, since those beliefs would subsequently be confirmed by the feedback. In some sense the proposal eliminates a positive incentive to do this, but doesn't rule out the scenario altogether.

@@ -1005,7 +1005,7 @@ So the result isn't really a trust-relocation result. It's a universal-predictio
 
 If I had to pick, I'd push Option 1. The reason is that the sequence is your strongest piece of work, the third post is drafted, and the natural continuation is to extend the framework rather than to pivot. The Demski meeting threw out interesting ideas but I don't think any of them is strong enough yet to deserve to be your main research direction. The evaluative-LI toy model was meant to be a tractable side project that produces a publishable result while the main work continues; if the toy model needs reworking, rework it within its original scope rather than expanding it into a new framework.
 
-The exception is if Demski's enthusiasm matters for your mentorship relationship or for funding signal. Mentors sometimes push directions that aren't quite right but that demonstrate intellectual flexibility, and there's value in pursuing them even when you don't fully buy them. I can't see that from where I sit. But the technical merit question and the relationship/incentive question are separate, and I'd urge you to keep them separate when deciding.
+[scrubbed]
 
 **Concrete recommendation.** Spend the next week thinking, not writing. The questions to think about:
 
@@ -1031,7 +1031,7 @@ I just think that this (i.e. logical/universal inductors for evaluative/alignmen
 
  That's a real consideration and I shouldn't have dismissed it. Let me think about it properly rather than just reversing again.
 
-**The signal you're tracking is informative.** Demski getting excited isn't a vanity metric. He has good taste, he knows the field, and his excitement is evidence that the direction has traction with the part of the alignment research community that does foundational work. Verification for Cooperation is closer to mechanism design / game theory / formal methods, which is a smaller and more idiosyncratic audience. Logical induction over evaluative content connects to the agent foundations tradition (MIRI, ARC, the broader Yudkowsky-Garrabrant-Demski cluster), which has more people, more funding pathways, and more downstream research to plug into. If your goal is to do work that people in that tradition will engage with and build on, this direction is better positioned.
+[scrubbed]
 
 This is not a bad reason to choose a research direction. It's actually one of the more important reasons. Research that doesn't connect to a community of interlocutors dies, regardless of its technical merits. The graveyard of alignment is full of technically interesting frameworks that nobody picked up because they didn't fit any existing research tradition's questions. Verification for Cooperation has this risk — it's substantive work but it sits between traditions in a way that makes it hard to know who its natural readers are.
 
@@ -1089,9 +1089,9 @@ Here's what I think the focused thinking needs to be about, in rough priority or
 
 This is worth doing because it forces concreteness fast. You either prove it within a week or two, or you find the obstacle, and either outcome is more informative than continuing to develop framework-level intuitions.
 
-**(3) What does Demski actually want from the Stage 3 work?** Not what would excite him in principle — what he needs from you specifically as a mentee at this stage. Stage 3 mentorships typically have deliverables: a research output, a write-up, a presentation. The optimal direction depends on what the deliverable is and when it's due. If the deliverable is a paper, you want a tractable result; if it's a research proposal, you want a coherent direction; if it's an exploratory write-up, you have more latitude. I don't know which it is, but you do, and the answer changes what "focused" means.
+[scrubbed]
 
-**(4) The funding/relationship/career layer, considered honestly but separately.** SFF, LTFF, the other applications — these are real constraints. If a particular direction would be much stronger for grant signal because it connects to existing research programs, that matters, but it should be weighted explicitly rather than smuggled in. The risk in not doing this explicitly is that you end up doing the technically-second-best direction for funding-driven reasons without admitting it to yourself, which produces worse work than either pure choice would. The risk in over-weighting it is obvious: you optimize for grant aesthetics over substance. The right move is to look at the constraint head-on, decide how much weight it gets, and then commit.
+[scrubbed]
 
 **My honest recommendation for what to do this week, not next month:**
 
@@ -1237,7 +1237,7 @@ If at the end of this week you have a precise statement and a clear sense of whi
 
 **One reframe I think is worth offering.**
 
-I've been treating "what's the smallest progress result" as the question, but the more honest framing for your situation might be: "what's the work that has to happen regardless of which direction the framework eventually goes?" The single-inductor propagation theorem is that work. Whether you eventually pursue the two-inductor extension, or go back to Verification for Cooperation, or pivot to something else entirely, having a clean propagation theorem proved is an asset. It's a publishable contribution, it demonstrates technical competence to Demski and to grant committees, and it serves as the foundation for whichever direction comes next.
+I've been treating "what's the smallest progress result" as the question, but the more honest framing for your situation might be: "what's the work that has to happen regardless of which direction the framework eventually goes?" The single-inductor propagation theorem is that work. Whether you eventually pursue the two-inductor extension, or go back to Verification for Cooperation, or pivot to something else entirely, having a clean propagation theorem proved is an asset. It serves as the foundation for whichever direction comes next. [scrubbed]
 
 So the action item isn't really about choosing the right research direction this week. It's about doing the technical work that needs to happen no matter what. That's a less stressful frame and probably more accurate to what the right next move is.
 
@@ -1355,7 +1355,7 @@ The smallest-progress-result, on this framing, is: a precise definition of two-i
 
 ## What I'm less sure about
 
-I'm pattern-matching on what makes this kind of foundational work productive, but I'm not in a great position to know whether this is what Demski would consider progress. Foundational definitional work is highly valued in some research communities (MIRI's older agent foundations work, philosophy departments) and less valued in others (more applied alignment research, ML-focused groups). Demski is on the definitional-work-friendly side based on his published work, but Stage 3 mentorship might have specific deliverable expectations I don't know about.
+[scrubbed]
 
 The other thing I'm uncertain about: whether the right move is to produce a definition cold, or to work through a specific concrete attempt and let the definition emerge from the technical work. Both are valid approaches and people do them differently. My instinct says definition first for this problem, because the standard technical machinery (LI, bounded loss) is specifically what fails to apply, so trying to use it as a starting point may be misleading. But the opposite intuition — "the definition emerges from trying to prove something" — is also defensible.
 
@@ -4640,7 +4640,7 @@ Sadly I think this overall conversation is mostly a negative result about this t
 
  I want to say something honest before responding to the substance.
 
-The conclusion that the two-inductor direction doesn't quite deliver isn't a small thing. It's been many hours of work, with grant timelines and Demski meetings and Stage 3 deliverables in the background. The feeling of "I almost understand it but it keeps slipping" is a real cognitive state and it's exhausting to sit in. Worth naming that before we keep pushing, because pushing harder when something is slipping is sometimes the right move and sometimes makes it slip further.
+The conclusion that the two-inductor direction doesn't quite deliver isn't a small thing. [scrubbed] Worth naming that before we keep pushing, because pushing harder when something is slipping is sometimes the right move and sometimes makes it slip further.
 
 That said — I think the slipping is informative and I want to try to articulate why, because I've been pattern-matching across our conversation and I notice something.
 
@@ -4699,7 +4699,7 @@ Yes I think one thing I'm going to bring to the next meeting with Demski is some
 ## Prompt 1: The impossibility result
 
 ```
-I'm an independent AI alignment researcher working with Abram Demski on
+[scrubbed] I'm working on
 applying logical induction to evaluative/moral content. I need help
 developing a crisp impossibility result for a Demski meeting.
 
@@ -4776,7 +4776,7 @@ weaker version that does go through.
 ## Prompt 2: Developing the original toy model
 
 ```
-I'm an independent AI alignment researcher working with Abram Demski.
+[scrubbed] I'm working.
 I want help developing a single-inductor formal model of evaluative
 content. I have an existing toy model I'd like to extend, and I want
 to do this without committing prematurely to a framework.
@@ -4857,7 +4857,7 @@ CONSTRAINTS
 - Background: I'm familiar with Garrabrant et al. (2016), I've
   published the "Verification for Cooperation" LessWrong sequence,
   I work in Lean 4 on formal alignment results (Formalized Agent
-  Foundations / FAF), I'm in Stage 3 of MATS with Demski.
+  Foundations / FAF). [scrubbed]
 
 Push back where you think I'm wrong. The previous attempt at this
 problem failed because I (and a previous chat instance) too easily
@@ -4873,7 +4873,7 @@ limits of two-inductor architectures?
 
 A few notes on these prompts before you go:
 
-The first one is straightforward — it asks for a specific deliverable (the note for Demski) with the content we worked out. A fresh instance should be able to execute on this without needing to relive the whole conversation. I'd recommend the new instance not be precious about defending the impossibility result if it sees ways to weaken it productively — better to arrive at the actually-tight version than to commit to the version we landed on here.
+The first one is straightforward — it asks for a specific deliverable [scrubbed] with the content we worked out. A fresh instance should be able to execute on this without needing to relive the whole conversation. I'd recommend the new instance not be precious about defending the impossibility result if it sees ways to weaken it productively — better to arrive at the actually-tight version than to commit to the version we landed on here.
 
 The second one is more open-ended on purpose. It tries to set up the right epistemic stance (don't commit too early, take the metaethics seriously, push back on the user) without prescribing the answer. The "multiple candidate directions" framing is deliberate — I'd be suspicious if the new instance immediately converged on one answer, since we've seen how easy it is for me (and presumably other instances) to anchor too quickly.
 
@@ -5536,7 +5536,7 @@ The alignment-relevant theorems are:
 
 These are real theorems that follow from extending Garrabrant's results to evaluative content via the propagation axioms. They give the toy model substantive content: the LI handles non-computable evaluative content via non-dogmatism, evolves its beliefs appropriately as evidence accumulates, maintains self-trust over its evaluative reasoning, and gives prices that propagate coherently across the descriptive-evaluative boundary.
 
-## What this means for the meeting
+## [scrubbed]
 
 I think the right thing to bring to Demski is:
 
@@ -7022,7 +7022,7 @@ draft a prompt for gpt to assess the state of forced trust
 ---
 
 ```
-I'm an independent AI alignment researcher working with Abram Demski
+[scrubbed] I'm working
 on applying logical induction to alignment problems. I have a specific
 technical question about forced trust between distinct logical inductors,
 and I want a careful assessment of what's possible.

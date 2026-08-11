@@ -12,7 +12,7 @@ this file. That gate cannot be argued with, which is the point.
 | name | date | archive sha256 | tree sha256 | files | description | cited by |
 |---|---|---|---|---|---|---|
 | `consolidation_aug9/` | 2026-08-09, corrections folded in 2026-08-10 | `5f3bf1bee88fdb8808b3d976358e32f2e21e93f4cb2041d79cc3e0c90f0ba0cc` | `a2ca95ad9d6cafcaecb77b7b4d7a0d75f9a33738e3ecb65437b50a56eb7a164a` | 59 | The consolidation of the leverage line: six theory parts numbered 7–12, a ledger of 180 claims with hypotheses, statuses, sharpness and dependencies, and a trust audit separating machine-checked from hand-derived from transcribed from reading-audit from assumed. **Vendors the August 8 consolidation internally**, at `vendor/consolidation_aug8.zip`, together with the settlement-interface documents and the source tree's own theory documents — all frozen by digest inside it. Verifies standalone. | `projects/leverage/`; `OPEN_PROBLEMS.md` items 1–6; CI's foundations-verification gate |
-| `deference-note-dump-2026-06-27/` | 2026-06-27 | `bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362` | `5a745dfc4e56f85956d0a17a7f9f0934c1b3ae807136a7a1bc6e24f4386ef193` | 41 | The delegation line's recorded starting point: research notes across six versions, a statement-level Lean audit, and the Lean development (deference, self-referential target, frozen deliberation, faithful acceleration, tower and acceleration). | `projects/delegation/`; `OPEN_PROBLEMS.md` items 7–9 |
+| `deference-note-dump-2026-06-27/` | 2026-06-27 | `bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362` | `722b687a49a7e5f5f2ff2b8e7674fb92697d9cbf30f4f9f8b155dbb0ca48cfc1` | 41 | The delegation line's recorded starting point: research notes across six versions, a statement-level Lean audit, and the Lean development (deference, self-referential target, frozen deliberation, faithful acceleration, tower and acceleration). | `projects/delegation/`; `OPEN_PROBLEMS.md` items 7–9 |
 | `references-citations-2026-08-11/` | 2026-08-11 | n/a — created in-repo | `268fbdba885f2d0645d8ea4d5f2887cf249f6ed3bd2fcd1a64f42bbff7bf291c` | 1 | Bibliographic entries and sha256 digests for the third-party papers removed from the two note dumps. Supersedes their `references/` payloads only. | `frozen/MANIFEST.md`; both note-dump entries |
 | `dose-response-note-dump-2026-07-02/` | 2026-07-02 | `a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890` | `d34afa3ce288855517fb9d164adbbaa760aefe8fbf38897c130234a94ae00355` | 13 | Dose-response structure in the deference setting, with its own audit. | `projects/delegation/` |
 
@@ -51,9 +51,12 @@ forbidden; or keep the repository private. Recorded in `DECISIONS.md`.
 ## Scrubbing — 2026-08-11
 
 `deference-note-dump-2026-06-27/` was scrubbed under the scrubbing rules in
-`AGENTS.md` before the maintainer's read-through. Two cuts, both category 3
-(candid assessment of a named person), marked inline as `[scrubbed]` with no
-category label. Its tree digest was recomputed in the same change.
+`AGENTS.md` before the maintainer's read-through. Round 1 made two cuts (candid assessment of a named person). Round 2, on the
+maintainer's read, reversed two round-1 judgment calls and widened the scrub to
+self and career material: non-consenting third parties, bio and credential
+recitals, funding and mentorship-management and morale passages. All cuts are
+marked inline as `[scrubbed]` with no category label, and the tree digest was
+recomputed in the same change.
 `SCRUB_REPORT.md` at the repository root lists every judgment call, including the
 ones decided in favour of keeping.
 
