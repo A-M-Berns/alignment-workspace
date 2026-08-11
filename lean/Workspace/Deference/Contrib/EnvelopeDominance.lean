@@ -134,7 +134,13 @@ Read `hd`. It says the authorising process is *optimal on what it knows*, which 
 strongest available competence assumption about that process, and exactly the shape the
 competence track showed is equivalent to the delegation conclusion rather than sufficient
 for it. Drop it — let the authorising process price with a different credence — and the
-conclusion fails; the round's harness exhibits an instance where transfer strictly wins. -/
+conclusion fails.
+
+**The round this was written for failed, and this statement is why.** Stage III put the
+evaluator's argmax on the transferred side and the transferred side trivially won; Stage IV
+put it on the delegated side, and this corollary is that win. It is the same tautology in
+the other arm, and it is **not** evidence for deference. Cite it only as what it is: an
+envelope fact about message-measurable selections. -/
 theorem recommendation_dominated {p : Ω → ℚ} {X : Ω → P → ℚ} {msg : Ω → C} {d f : C → P}
     (hd : IsCellMaximiser p X msg d) :
     valuation p X msg f ≤ valuation p X msg d := by

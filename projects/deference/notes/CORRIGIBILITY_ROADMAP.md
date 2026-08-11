@@ -80,6 +80,21 @@ One reduction survives and is reusable: the comparator gap **is** the delegation
 against the later-measurable comparator class, so the credence collapse applies to it
 directly, and any credence-free hypothesis bounding it is it.
 
+**A second attempt supplied the later agent a credence of its own and failed the same way.**
+Giving each process its own credence does not make the later one a distinct process: its
+rule still differs from the evaluator's conditional argmax by one argument, and is still
+computable from what is known at `n`. The standing requirement is therefore stronger than
+first stated — a later process must not be *any* argmax over objects the evaluator already
+holds, not merely not the evaluator's own argmax.
+
+**The obstruction is now known to be type-level, and it governs the whole movement.** Two
+authorisation regimes that induce the same realisation map are the same object in a
+signature whose only outputs are realisation maps priced by one measure; the jurisdiction
+assignment is precisely what such a signature cannot express. **No round may attempt this
+comparator again without first putting the authorisation relation into the type** — the
+execution layer of the shared skeleton is the right instinct, and adding parameters to the
+valuation is not.
+
 **V. Certification and densification** — does the relation hold *here*, and can safe
 discretion occur often enough to be useful?
 

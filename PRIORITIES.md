@@ -616,6 +616,45 @@ an explicit statement of which confounds remain scoped out rather than excluded.
 this is construction against a known target rather than open search — but the sign question
 it exists to ask has no expected answer, and a negative is as likely as a positive.
 
+### 28. Can any valuation price a jurisdiction assignment? — **[open]**
+
+The highest-value question the deference line has produced, and the only one whose answer
+would convert a repeated observation into a result.
+
+Two comparator rounds failed at the same place from opposite directions, and the cause is
+now believed structural: in a model whose only outputs are realisation maps
+`Ω → Π_n ⊔ {⊥}` priced by one measure, **two authorisation regimes that induce the same
+realisation map are the same object**. Stage III reported no jurisdictional term in a model
+that had waived the execution layer; Stage IV set the principal's credence to the later
+agent's and found the two arms identical at every one of 32,805 instances tested. A
+jurisdiction assignment appears in no formula in either.
+
+Decide whether that is a theorem. Two directions, and the negative is the cheaper:
+
+- **Impossibility.** Show that no functional of a realisation map, under any single pricing
+  measure, distinguishes two regimes agreeing on that map — and characterise exactly what
+  additional structure is needed. This would say jurisdiction is architectural **on
+  mathematical grounds** rather than by the programme's choice, which is a substantially
+  stronger claim than the certificate work's, and it would retire the search for a
+  valuation-shaped separator for good.
+- **Construction.** Exhibit a valuation-shaped object that does price the assignment, which
+  would refute the obstruction and reopen the comparator.
+
+*Deliverable shape:* `lean-proved` for the impossibility at whatever generality holds, with
+an inhabitation witness; or a `witness-checked` construction refuting it.
+*Acceptance check:* the `lean` gate builds and audits clean with a typechecking witness; or
+the `witness` checker accepts the separating instance.
+*Context:* `prompts/2026-08-11-stage-iv-future-agent/REPORT.md` §4;
+`prompts/2026-08-11-stage-iv-future-agent/REPORT-red-team.md`;
+`prompts/2026-08-11-stage-iii-fud/REPORT.md` §1;
+`projects/deference/notes/FINITE_MODEL_SKELETON.md` §4a.
+*A solution ships:* the verdict, and — if the impossibility holds — the exact statement of
+what a model must carry to express an authorisation regime, which is what item 27's
+successor comparator would then be built on.
+*Why it is [open]:* the obstruction is currently an argued structural observation with an
+exhaustive check over one parameterisation behind it. Nobody has tried to prove it, and it
+may be false.
+
 ---
 
 ## Infrastructure
