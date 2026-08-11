@@ -10,9 +10,10 @@
     },
     "deference-note-dump-2026-06-27": {
       "sha256_archive": "bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362",
-      "sha256_tree": "9d359e85fb619d6f76f16577e47014aec42b9dc792c229d2195aafaeb67b5806",
+      "sha256_tree": "5a745dfc4e56f85956d0a17a7f9f0934c1b3ae807136a7a1bc6e24f4386ef193",
       "files": 41,
-      "superseded_payload": "the references/ payload was removed 2026-08-11 and replaced by the citations entry references-citations-2026-08-11; conversations, notes and Lean content are unchanged"
+      "superseded_payload": "the references/ payload was removed 2026-08-11 and replaced by the citations entry references-citations-2026-08-11; conversations, notes and Lean content are unchanged",
+      "scrubbed": "scrubbed 2026-08-11 under the AGENTS.md scrubbing rules; two cuts marked [scrubbed] inline; see SCRUB_REPORT.md"
     },
     "dose-response-note-dump-2026-07-02": {
       "sha256_archive": "a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890",
