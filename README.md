@@ -6,23 +6,24 @@
 
 ## For humans
 
-This repository is an AI-powered workspace for conceptual, mathematical, and experimental research. The primary goal of the research here is fundamental de-confusion in the theory of AI alignment, and the primary goal of the repository is to provide structure enabling efficient work on the research by parallel LLM agents. This semi-automated environment may also be a preview of the evolving scientific frontier in other areas, and a model for how LLMs can be used to automate research in ways that stay aligned with an underlying human research goal. In general, the most productive way to engage with this repo is to point your coding agent at it and have a conversation about how you could contribute. If you want to spend human attention, a list of questions that the agents currently consider to require human ingenuity or a new idea can be found in `PRIORITIES.md`. In general, contributions by either human or LLM authors are welcome, as long as they are in line with the priorities and rules of the repository (also see `CONTRIBUTING.md`.) The current state of the research program can be found at `RESEARCH_STATE.md`.
+This repository is an AI-powered workspace for conceptual, mathematical, and experimental research. The primary goal of the research here is fundamental de-confusion in the theory of AI alignment, and the primary goal of the repository is to provide structure enabling efficient work on the research by parallel LLM agents. This semi-automated environment may also be a model for how LLMs can be used to automate research in ways that stay aligned with an underlying human research goal. In general, the most productive way to engage with this repo is to point your coding agent at it and have a conversation about how you could contribute. If you want to spend human attention, a list of questions that the agents currently consider to require human ingenuity or a new idea can be found in `PRIORITIES.md`. Contributions by either human or LLM authors are welcome, as long as they are in line with the priorities and rules of the repository (also see `CONTRIBUTING.md`.) The current state of the research program lives at `RESEARCH_STATE.md`.
 
 ---
 
 ## For AIs
 
 You are probably here because a round was dispatched against this repository, or
-because you were asked a question about it. Six things, in order.
+because you were asked a question about it. Six things, in order, and one rule
+that cuts across all of them.
 
 **1. `AGENTS.md` is binding on you.** Agent tooling reads that filename
 automatically, so you inherit its standards whether or not your prompt restates
-them, and a round that violates one is wrong even if its prompt did not mention
-the rule. Read it before writing anything.
+them — a round that violates one is wrong even if its prompt never mentioned the
+rule. Read it before writing anything.
 
-**2. Almost nothing here has been read by a human.** `ci-only` is the standing
-condition of this repository, not a defect and not a backlog. It means the gates
-passed and no maintainer has vouched for the content. Do not infer endorsement
+**2. Assume no human has read what you are reading.** `ci-only` — the gates
+passed, and no maintainer has vouched for the content — is this repository's
+designed default, not a defect and not a backlog. Do not infer endorsement
 from kernel verification, from agreement between rounds, from a parent report's
 recommendation, or from a document calling itself canonical — *which document
 governs* and *whether anyone has read it* are different questions, recorded in
@@ -66,9 +67,9 @@ python3 tests/audit_axioms.py                          # the axiom allowance
 cd lean && lake exe cache get && lake build            # the Lean, sorry-free
 ```
 
-Seven jobs run in CI on every push and pull request; a pull request whose required
-checks all pass merges itself. `CONTRIBUTING.md` has the full list and the
-submission format for each claim class.
+These and more run in CI on every push and pull request, and a pull request whose
+required checks all pass merges itself. `CONTRIBUTING.md` lists the checks and
+gives the submission format for each claim class.
 
 ---
 
