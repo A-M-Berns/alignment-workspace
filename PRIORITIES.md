@@ -228,30 +228,34 @@ says which of its statements have a derivation and which have only a witness.
 Filed by that round within its dispatched scope, with
 `prompts/2026-08-11-phi-regret-prep/PROMPT.md` as the authorization.
 
-### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]**
+### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]** — *closed-positive: repaired in the frozen environment*
 
-The comparator class is a finite set of guarded swaps: where the guard fires and
-a lawful-edit certificate is admitted, the learner's response is replaced. Guards
-read the actual prefix and the current response, both available before the loss
-is revealed, so each comparator induces a map on distributions over responses at
-each occasion — which is the condition the Blum–Mansour fixed-point step needs.
-What the standard statement does not have to handle is a per-occasion action set
-that varies with the bound schedule.
+Blum--Mansour (2007) Theorem 18 instantiates after a fixed semantic-action
+bridge. `Lambda` has exactly eight labels: two merits directions, default, and
+decline tolling zero through four dates. An occasion-local bijection decodes a
+label to the canonical repository response and derives its local ledger effect;
+noncanonical ledger effects are rejected rather than quotiented away.
 
-Settle whether the reduction applies, and if it does not, name the structural
-feature that obstructs it.
+All nine fixed lawful programs are materialized as data, not arbitrary
+callbacks. Their induced maps close on `Lambda` and commute with decoding.
+Pointwise charge, expected mixed charge, cumulative counterfactual charge, and
+regret are preserved. A finite audit establishes non-capture for this exact
+nine-program/default-policy class; it makes no claim about the old arbitrary
+callback type.
 
-*Deliverable shape:* `lean-proved` in `Workspace.Leverage.Contrib` for the
-reduction at whatever generality holds, with an inhabitation witness; or a
-`witness-checked` instance exhibiting the obstruction.
-*Acceptance check:* the `lean` gate builds and audits clean with a typechecking
-witness; or the `witness` checker accepts the obstructing instance.
-*Context:* `ONLINE_LEARNING_MAP.md` §7 and the reduction paragraph below it.
-*A solution ships:* the verdict, and the exact bound if positive.
-*Why it is first:* every other question about a regret bound is downstream of it,
-and it is the cheapest of the three to settle.
+The instantiation has `N=8`, `M=1`, `K=9` and gives a horizon-tuned learner with
+expected mixed-action charge regret `O(ell_max sqrt(8 T log 9))`. It requires
+frozen arrivals and reasons, actual strict-prefix guards, canonical responses,
+no suspension or solvency coupling, no post-hoc affordability deletion, and
+bounded full-information charge. It supplies no pathwise sampled-trajectory
+bound.
 
-### 30. A learner with sublinear Φ_law-regret, and what it retires — **[open]**
+*Result:* `projects/leverage/rounds/2026-08-11-phi-regret-bridge/` contains the
+derivation, exact finite checks, finite non-capture audit, and unregistered Lean
+proofs of the generic representation and recurrent-failure lemmas. Item 29 is
+closed; item 30 is now executable but unachieved.
+
+### 30. A learner with sublinear Φ_law-regret, and what it retires — **[open, ready]**
 
 The controlling question of the track.
 
@@ -260,10 +264,23 @@ The controlling question of the track.
 > guarantee implies retirement of every positive-rate uniformly remediable
 > failure pattern.
 
-Both halves. The second is one line given the first — a pattern recognised on
-`Ω(T)` occasions with a fixed admitted repair saving `δ > 0` would force
-`R_T(φ) ≥ ρδT − B` — and its content is entirely in the hypotheses, three of
-which the environment supplies and one of which is the bound.
+Both halves. The expected-loss consequence is one line given the first — total
+mixed-action mass `Ω(T)` on source labels with a fixed admitted repair saving
+`δ > 0` forces `R_T(φ) ≥ ρδT − B`. A density claim about one sampled path needs
+an additional sampling argument. The content is entirely in the hypotheses,
+three of which the environment supplies and one of which is the bound.
+
+Use the fixed labels and nine programs in
+`projects/leverage/rounds/2026-08-11-phi-regret-bridge/`. Implement
+Blum--Mansour Theorem 18's row-conditioned weights over eight source labels and
+nine programs, and its stationary distribution. Measure expected mixed-action
+charge first. Use the `sqrt(8 log 9)` dependence; do not use plain exponential
+weights over nine transformations or report a `sqrt(log 9)` bound. A sampled
+trajectory requires a separately stated sampling result. Report whether the
+implementation is horizon-tuned or supplies a proved anytime schedule.
+If it retains the workspace's exact-rational execution discipline, also state
+how the source's optimized real parameter and stationary distribution are
+represented without silently changing the bound.
 
 **Report `|Φ_law|` and its contents alongside any regret number.** Sublinear
 regret against a nine-element class is a weak statement, and a report without the

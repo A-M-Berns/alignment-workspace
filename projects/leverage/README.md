@@ -37,8 +37,17 @@ New leverage rounds land in this directory.
 
 `rounds/2026-08-11-phi-regret-prep/` is the current learning-track environment:
 the finite lawful-edit comparator substrate, exact-rational experiments, and its
-two registers. It establishes no φ-regret bound; `PRIORITIES.md` item 29 asks
-whether the standard reduction applies before item 30 tests a learner.
+two registers.
+
+`rounds/2026-08-11-phi-regret-applicability/` gives item 29 a **Near miss**
+verdict. It identifies Blum--Mansour Theorem 18 and the causal comparator shape,
+then exhibits the horizon-growing action union and callback-capture obstruction.
+
+`rounds/2026-08-11-phi-regret-bridge/` repairs that interface for the frozen
+environment. Eight semantic labels decode bijectively to canonical local
+responses, all nine declarative lawful programs factor through them, and exact
+charge and regret are preserved. Item 29 is closed-positive; item 30 is ready but
+has not been run.
 
 `deck-2026-08-10/` is the author-written presentation snapshot for the line. Its
 own origin record carries its date, digest, and per-frame attribution marks.
