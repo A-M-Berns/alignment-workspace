@@ -34,6 +34,30 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `enumeration-verified` claim resting on unread code. Nothing is blocked; the
   claims are honestly labelled either way.
 
+- **Confirm the deck's path-gate entry.** `projects/leverage/deck-2026-08-10/**`
+  was added to the specification enumeration in `tests/path_gate.py` by the
+  φ-regret preparation round, so that a contributor pull request touching the
+  author's own talk fails the gate. This is a trust-chain edit the round's
+  dispatch did not scope, and it is flagged rather than assumed. *Doing it* is
+  reading one line and one self-test case. *Waiting* leaves the entry in force;
+  reverting it makes the deck contributor-editable, which is the state the intake
+  was meant to avoid.
+
+- **Rule on the deck's review status.** `PROVENANCE.md` now carries the first
+  `maintainer-reviewed` research row in the leverage line, and it is qualified:
+  the deck marks its own frames, 22 as the author's language and two as still
+  model-drafted, so the row points at those marks rather than asserting a flat
+  label. Confirm that a self-marking artifact may carry a qualified review status,
+  or replace it with `ci-only` and lose the distinction the deck itself draws.
+  *Waiting* costs nothing; the marks are on the slides either way.
+
+- **Decide F4 — the answerability layer's code.** `PRIORITIES.md`, *Workspace
+  friction*. The theory is in the authoritative consolidation and the only
+  implementation is in a tree that declares itself deletable, so rounds building
+  on it must adapt rather than import. Three options are stated there; *doing it*
+  is choosing one. *Waiting* costs one reimplementation per round that touches the
+  layer, and the φ-regret preparation round has already paid it once.
+
 ## Settled
 
 ### 2026-08-11 — the governance report is removed, not relocated

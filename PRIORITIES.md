@@ -201,6 +201,99 @@ stream results are stated over arrivals.
 
 ---
 
+## Leverage line — the learning track
+
+The consolidation's `OPEN_PROBLEMS.md` closes with a pointer list it declines to
+treat, and *the learning and installation track* is on it. These three open it.
+Context for all three:
+`projects/leverage/rounds/2026-08-11-phi-regret-prep/`, whose
+`PHI_REGRET_TEST_SPEC.md` fixes the environment and whose `THEOREM_LEDGER.md`
+says which of its statements have a derivation and which have only a witness.
+
+Filed by that round within its dispatched scope, with
+`prompts/2026-08-11-phi-regret-prep/PROMPT.md` as the authorization.
+
+### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]**
+
+The comparator class is a finite set of guarded swaps: where the guard fires and
+a lawful-edit certificate is admitted, the learner's response is replaced. Guards
+read the actual prefix and the current response, both available before the loss
+is revealed, so each comparator induces a map on distributions over responses at
+each occasion — which is the condition the Blum–Mansour fixed-point step needs.
+What the standard statement does not have to handle is a per-occasion action set
+that varies with the bound schedule.
+
+Settle whether the reduction applies, and if it does not, name the structural
+feature that obstructs it.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Leverage.Contrib` for the
+reduction at whatever generality holds, with an inhabitation witness; or a
+`witness-checked` instance exhibiting the obstruction.
+*Acceptance check:* the `lean` gate builds and audits clean with a typechecking
+witness; or the `witness` checker accepts the obstructing instance.
+*Context:* `ONLINE_LEARNING_MAP.md` §7 and the reduction paragraph below it.
+*A solution ships:* the verdict, and the exact bound if positive.
+*Why it is first:* every other question about a regret bound is downstream of it,
+and it is the cheapest of the three to settle.
+
+### 30. A learner with sublinear Φ_law-regret, and what it retires — **[open]**
+
+The controlling question of the track.
+
+> Given the frozen finite comparator and replay environment, determine whether a
+> specified online learner achieves sublinear Φ_law-regret, and whether that
+> guarantee implies retirement of every positive-rate uniformly remediable
+> failure pattern.
+
+Both halves. The second is one line given the first — a pattern recognised on
+`Ω(T)` occasions with a fixed admitted repair saving `δ > 0` would force
+`R_T(φ) ≥ ρδT − B` — and its content is entirely in the hypotheses, three of
+which the environment supplies and one of which is the bound.
+
+**Report `|Φ_law|` and its contents alongside any regret number.** Sublinear
+regret against a nine-element class is a weak statement, and a report without the
+class is not a result.
+
+*Deliverable shape:* `enumeration-verified` over the declared finite environment
+at the four declared horizons, or `lean-proved` for the bound; the consequence as
+`lean-proved` with an inhabitation witness.
+*Acceptance check:* `python3 -m checkers.run` accepts the registered entry; or the
+`lean` gate is green.
+*Context:* `PHI_REGRET_TEST_SPEC.md` §§1–6 fixes the environment, the three
+baselines, the measured quantities and the order of work.
+*A solution ships:* the bound or its absence, at each horizon, against the
+declared class; and an honest statement of whether the successful learner is
+still answerable and inside its declared service work, which the spec calls S4
+and expects to be where the round spends its time.
+*Why it is [open]:* nobody has run it, and the environment's own preparation
+found one expectation already wrong.
+
+### 31. Does the objection grammar already represent a remediable-pattern filing? — **[entry]**
+
+A lawful-edit certificate, a recurrence count and a positive charge differential
+are the material of a public filing: *here is a repair your own record licensed,
+which you declined repeatedly, and here is what declining it cost.* The
+suggestive fact is that the certifier's footprint — occasions, responses,
+reasons, obligations — is a footprint the grammar can already declare, and
+`GR-J2` computes families from footprints rather than storing them.
+
+Audit whether the existing objection ontology represents such a filing with a
+generic typed filing, or whether a new primitive is genuinely required. **Do not
+redesign the docket to force the identity.**
+
+*Deliverable shape:* `enumeration-verified` — grounds instantiating the filing
+against the thirteen-table registry, with the footprint ablation run over it; or
+a documented negative naming the missing structure.
+*Acceptance check:* `python3 -m checkers.run` accepts the entry, or the registry
+records the negative honestly.
+*Context:* `REMEDIABLE_FAILURES.md`, last section;
+`projects/leverage/consolidation-aug9/THEORY_7_OBJECTION_GRAMMAR.md`.
+*Why it is [entry]:* a finite audit against a fixed registry; no new mathematics.
+It is adjacent to item 3, and a round doing both would exercise the registry
+harder than either alone.
+
+---
+
 ## Deference line
 
 Context for all three: `projects/deference/note-dump-2026-06-27/`, in particular
@@ -744,6 +837,27 @@ this repository's own standard the line has established nothing — which its ow
 ledger states in its first line. The gap is bookkeeping rather than mathematics,
 and it is the largest single divergence between what the repository holds and what
 it can say it holds.
+
+### F4 — A layer's theory is authoritative and its only code is in a disposable tree
+
+`projects/leverage/consolidation-aug9/` states the answerability ledger and the
+case docket in Theory 9 and carries their rows in its ledger. Its `src/` does not
+implement either. The only executable version of both is
+`projects/leverage/forward/src/`, whose own `FORWARD.md` says the tree "may be
+changed, rewritten, or deleted wholesale at any time without loss" and that
+"nothing here is evidence for anything."
+
+So a round building on that layer must either import from a tree declared
+deletable or reimplement it. The φ-regret preparation round reimplemented the
+obligation fields it needed and recorded the adapter as architected rather than
+verified, because no cross-check against the original is meaningful when the
+original is not evidence.
+
+Three ways out, all maintainer decisions: consolidate the two modules into a
+frozen tree; promote them to a stable path outside `forward/`; or rule that the
+theory rows stand without executable support and that adapters are the expected
+pattern. **The report is the obligation here; which of the three is not this
+round's to take.**
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]**
 
