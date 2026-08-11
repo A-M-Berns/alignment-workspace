@@ -1,44 +1,65 @@
-# normative-learning
+# alignment-workstudio
 
-Two directories, side by side.
+The working monorepo for the Berns–Demski research program: models, proofs, and
+dispatch provenance for two research lines, formalized against
+[Formalized-Agent-Foundations](https://github.com/A-M-Berns/Formalized-Agent-Foundations)
+as a pinned dependency.
 
-**`consolidation_aug9/`** — the frozen consolidation. Six theory parts
-numbered 7 through 12, a ledger of 180 claims with hypotheses, statuses,
-sharpness and dependencies, a trust audit separating machine-checked from
-hand-derived from transcribed from reading-audit from assumed, and — vendored
-and frozen by digest — the August 8 consolidation, the settlement-interface
-documents, and the source tree's own theory documents. Verify with
-`python3 tests/run.py` from inside it.
+This file points; it does not contain. Research content lives under `projects/`
+and `frozen/`.
 
-**`workspace/`** — the forward workspace. Six source modules, their tests, a
-runner, and three documents.
+## The two lines
 
-## Authority
+**Leverage** — the normativity and answerability program: what a record must
+show for a learner's normative state to be accountable, and what a world-channel
+must satisfy before its writings acquire operative force. Its authoritative
+record is frozen; new rounds land in the workspace.
+→ `projects/leverage/`
 
-**Annotated tags are freezes, and the current `freeze/*` tag is the sole
-authority** — presently `freeze/aug9-r2`. **`workspace/` is disposable:
-nothing in it is frozen, nothing in it is evidence, and nothing in it survives
-unless it is consolidated in turn.**
+**Delegation** — the deference and corrigibility program: when a bounded agent
+should defer, what deference costs, and what an agent's own deliberation must
+look like for deference to be safe rather than merely obedient. Its recorded
+starting point takes the Logical Induction theorems as named hypotheses; the
+leverage line and the pinned dependency sit on the other side of that gap, which
+is why both lines share this repository.
+→ `projects/delegation/`
 
-| tag | what it marks |
-|---|---|
-| `freeze/aug9` | the consolidation exactly as frozen, before review |
-| `freeze/aug9-r2` | three review corrections folded in — **current authority** |
+## Layout
 
-New work cites frozen results by claim identifier against the current tag,
-never by copying them into the workspace.
-
-## Verification
-
-```sh
-cd consolidation_aug9 && python3 tests/run.py   # documents, ledger, digests, both tiers
-cd workspace         && python3 tests/run.py   # vocabulary gate and tests
+```
+projects/     one directory per research line; rounds land here
+lean/         one Lake project, library Workstudio, per-line namespaces
+frozen/       immutable checksummed inputs, referenced and never edited
+prompts/      every round's prompt and report, committed with the work
+tests/        the repo-level runner
 ```
 
-Both run on stock Python 3 with no dependencies. Lean self-skips unless
-`MATHLIB_DIR` names a Mathlib-enabled Lake project; that is expected. CI runs
-both on every push and pull request.
+`CONVENTIONS.md` is the house standard — exact arithmetic, what a theorem ships
+as, frozen inputs, citation integrity, and the Lean discipline. `DECISIONS.md`
+is the dated decision ledger, with what is still awaiting the author at the top.
 
-`.gitattributes` sets `* -text` so git never rewrites line endings: the
-consolidation's checks are byte-level digests, and end-of-line translation
-would silently break them on another machine.
+## Running the tests
+
+```sh
+python3 tests/run.py                    # every project, frozen digests, Lean gates
+WORKSTUDIO_LEAN=1 python3 tests/run.py  # the above, plus `lake build`
+```
+
+The repo-level runner verifies the frozen-input digests, enforces the Lean
+sorry-free and `#print axioms` gates, and runs each project's own runner. Lean
+compilation is opt-in because it wants a toolchain and a warm cache.
+
+## Building the Lean
+
+```sh
+cd lean
+lake exe cache get     # Mathlib oleans
+lake build
+```
+
+One Lake project. Formalized-Agent-Foundations is pinned by commit in
+`lakefile.toml`; Mathlib and Foundation arrive through it, so the solver stack
+stays consistent rather than being pinned three times and drifting. The
+toolchain matches the dependency's exactly. `Workstudio/Smoke.lean` certifies
+the chain compiles by reaching a real declaration in each of the three and
+proving something trivial against it.

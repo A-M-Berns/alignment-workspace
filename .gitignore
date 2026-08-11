@@ -1,3 +1,6 @@
 __MACOSX/
 .DS_Store
 __pycache__/
+
+# Lean build artifacts
+lean/.lake/

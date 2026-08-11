@@ -3,16 +3,22 @@ name: suites
 on: [push, pull_request]
 
 jobs:
+  repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tests/run.py
+
   consolidation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: python3 tests/run.py
-        working-directory: consolidation_aug9
+        working-directory: frozen/consolidation_aug9
 
   workspace:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: python3 tests/run.py
-        working-directory: workspace
+        working-directory: projects/leverage/workspace

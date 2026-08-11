@@ -1,0 +1,13 @@
+name = "workstudio"
+defaultTargets = ["Workstudio"]
+
+# Formalized-Agent-Foundations, pinned to a specific commit.
+# Mathlib and Foundation arrive transitively through it, so this repo pins one
+# dependency and inherits a consistent solver stack rather than pinning three.
+[[require]]
+name = "agentFoundations"
+git = "https://github.com/A-M-Berns/Formalized-Agent-Foundations.git"
+rev = "1fffea44eece253cda1722568a3adfe34e822f03"
+
+[[lean_lib]]
+name = "Workstudio"
