@@ -35,6 +35,14 @@ cd forward && python3 tests/run.py
 
 New leverage rounds land in this directory.
 
+`rounds/2026-08-11-phi-regret-prep/` is the current learning-track environment:
+the finite lawful-edit comparator substrate, exact-rational experiments, and its
+two registers. It establishes no φ-regret bound; `PRIORITIES.md` item 29 asks
+whether the standard reduction applies before item 30 tests a learner.
+
+`deck-2026-08-10/` is the author-written presentation snapshot for the line. Its
+own origin record carries its date, digest, and per-frame attribution marks.
+
 ## Open, ranked
 
 The consolidation's own `OPEN_PROBLEMS.md` is the list. The two that carry weight:

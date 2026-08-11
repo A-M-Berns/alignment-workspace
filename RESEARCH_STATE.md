@@ -88,7 +88,48 @@ check is a linear program and the infimum over dates is open; and whether a
 computable coherence modulus exists, which is **open in both directions** and
 which the adjacent impossibility results do not settle.
 
-**Deeper:** `projects/leverage/consolidation-aug9/`, cited by claim identifier.
+**The learning track, opened.** The consolidation reserves it by name. What now
+exists is an environment, not a φ-regret result: a finite substrate on which it is well
+defined to ask whether a learner has low regret against a class of historically
+lawful local edits, with a typed reasons-responsiveness interface whose
+unresolved parts are named parameters rather than prose. Legitimacy is kept out
+of reach of profitability mechanically — the certifier reads through a declared
+footprint that omits the charge table — which is the objection grammar's own
+enforcement discipline reused.
+
+Two things were established and one expectation was corrected. A recurrent
+failure with a certified repair produces regret linear in the horizon, exhibited
+exactly. And bounded counterfactual influence is **sharply conditional**: fencing
+alone does not give it, because a fence containing a long run admits divergence
+growing with the horizon from one local edit; what gives it is the absence of a
+solvency coupling, or fences short enough that a stream's lifetime liability is
+not horizon-sized. The dispatch expected fencing to be the dividing line.
+
+**Aspirational.** A learner whose revisions stay answerable to its history and
+licensed by its live reasons nevertheless satisfies an online self-correction
+guarantee, with no fixed external normative target. Nothing establishes any part
+of it; `PRIORITIES.md` item 30 is the first test.
+
+**Standing caution.** The deference line's ruling that competence may not be
+stated as a decision-regret bound does **not** reach this track, and the reason is
+worth keeping visible. There the bound is a *hypothesis* that turns out to be the
+conclusion; here regret is a *conclusion*, against a class defined by a legality
+predicate that never mentions charge. A round that assumed low φ-regret in order
+to derive that a learner is reasons-responsive would be repeating the deference
+line's error exactly.
+
+**Next controlling question.** Whether the Blum–Mansour Φ-regret reduction
+instantiates on a comparator class of guarded swaps over a per-occasion action set
+that varies with the bound schedule (item 29). Every question about a bound is
+downstream of it and it is the cheapest to settle.
+
+**Deeper:** `projects/leverage/consolidation-aug9/`, cited by claim identifier;
+`projects/leverage/rounds/2026-08-11-phi-regret-prep/` for the learning track,
+whose `THEOREM_LEDGER.md` separates its two derived statements from its thirteen
+executable witnesses. `projects/leverage/deck-2026-08-10/` is the line's own
+account of itself in the author's words and carries a qualified
+`maintainer-reviewed` provenance status; that review status does not adopt its
+research content.
 
 ---
 
