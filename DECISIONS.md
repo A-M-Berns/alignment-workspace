@@ -22,11 +22,25 @@ listed at the top of each round's report until they are closed.
 
 ## Settled
 
-### 2026-08-11 — branch protection: audited, staged, and what it is worth
+### 2026-08-11 — public, and branch protection live
 
-The payload for `main` is audited and committed; GitHub refuses to apply it while
-the repository is private on this plan, so it is staged behind
-`.github/apply-branch-protection.sh` and `FLIP_RUNBOOK.md`.
+The repository is **public** as of 2026-08-11, and branch protection on `main`
+was applied in the same sitting and verified by read-back: the eight required
+checks, zero required approvals, code-owner reviews off, enforce-for-admins on,
+force-pushes and branch deletion blocked. Applied with
+`.github/apply-branch-protection.sh`, which reads back what GitHub stored rather
+than trusting the write.
+
+Direct pushes to `main` are now refused for everyone, maintainers included. All
+changes arrive as pull requests that pass the eight gates.
+
+**The flip was made at the maintainer's direction with the note-dump release gate
+undischarged.** The bundles' conversations had not been read through for release.
+A mechanical scan for emails, phone numbers, API keys and home paths came back
+clean across all 51 files, but that scan cannot see the two categories only a
+person can judge — personal-life passages, and candid remarks about named third
+parties. Recorded here rather than left implicit, because the ledger is where
+this repository keeps the things it decided to accept.
 
 **Required approvals: zero, deliberately.** GitHub forbids self-approval, so
 requiring even one approval would mechanically reinstate a two-human gate on every
