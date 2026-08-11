@@ -153,7 +153,8 @@ and “Frozen Lawful Φ-Regret Theorem” are provisional pending maintainer nam
     and leverage state/index/provenance reconciliation.
 16. **Research state:** item 29 closed-positive; item 30 open-ready; item 31 and
     F4 unchanged; no decision added.
-17. **Commit and PR:** recorded after publication.
+17. **Commit and PR:** scientific result commit `7dbab0a`; regular PR
+    <https://github.com/A-M-Berns/alignment-workspace/pull/20>.
 
 ## Outstanding maintainer actions
 
