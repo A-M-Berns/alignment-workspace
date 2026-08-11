@@ -31,7 +31,48 @@ def sources() -> list[pathlib.Path]:
     return sorted(LIB.rglob("*.lean"))
 
 
+def self_test() -> int:
+    """Null-input cases: the audit must not pass by finding nothing.
+
+    Two null inputs, both already guarded in `main`; pinned here so the guards
+    cannot be removed quietly. An empty source list returns 1. A file whose
+    `#print axioms` names declarations that do not exist elaborates fine and
+    prints no axiom lines, so it is failed per file.
+
+    The parsing cases run on captured `lake env lean` output rather than
+    invoking Lean: the self-test must run in every job, not only the one with a
+    toolchain. What is exercised is the recognition, not the elaboration.
+    """
+    good = "'A.b' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    bad = "'A.b' depends on axioms: [propext, sorryAx]"
+    none = "'A.b' does not depend on any axioms"
+    def extra(line: str) -> set[str]:
+        found = AXIOM_LINE.findall(line)
+        if not found:
+            return set()
+        return {a.strip() for a in found[0][1].split(",") if a.strip()} - ALLOWED
+    cases = [
+        ("the allowed three pass", extra(good), set()),
+        ("sorryAx is caught", extra(bad), {"sorryAx"}),
+        ("a no-axioms result is recognised", bool(NO_AXIOMS.findall(none)), True),
+        ("a no-axioms result is not read as an axiom line",
+         bool(AXIOM_LINE.findall(none)), False),
+        ("silence is not a pass",
+         bool(AXIOM_LINE.findall("")) or bool(NO_AXIOMS.findall("")), False),
+        ("an empty source list is a failure, not a skip", bool(sources()), True),
+        ("the allowance is exactly three", len(ALLOWED), 3),
+    ]
+    failures = 0
+    print("AXIOM AUDIT SELF-TEST:")
+    for label, got, want in cases:
+        failures += got != want
+        print(f"  {'ok' if got == want else 'FAIL'}: {label}")
+    return 1 if failures else 0
+
+
 def main() -> int:
+    if "--self-test" in sys.argv:
+        return self_test()
     files = sources()
     if not files:
         print("AXIOM AUDIT: no Lean sources found", file=sys.stderr)

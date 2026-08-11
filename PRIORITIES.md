@@ -1,9 +1,11 @@
-# Open problems
+# Priorities
 
-**The contribution funnel, and the source of truth.** GitHub issues mirror this
-file; this file does not mirror them. Each item states the problem precisely,
-points at the context, says what a solution must ship, and carries a difficulty
-tag.
+**What the program wants done next, in its own order.** This is not an inventory
+of everything unsolved — it is the maintainer's ranking of what would move the
+work, and an item's absence means nobody has asked for it, not that it is easy.
+GitHub issues mirror this file; this file does not mirror them. Each item states
+the problem precisely, points at the context, says what a solution must ship, and
+carries a difficulty tag.
 
 What a solution must ship is set by `CONTRIBUTING.md` and is the same for
 everyone: a theorem ships as statement + implementation + test + a necessity
@@ -219,8 +221,6 @@ units: find the instance, display it, add the test.
 
 
 ---
-
-## Infrastructure, continued
 
 ### 13. Scaffolding self-verification — **[entry]** — *satisfied, kept open*
 

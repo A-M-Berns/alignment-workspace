@@ -54,7 +54,7 @@ checker invocation or a fully-qualified Lean declaration — never prose. Three
 entries, and the demand rule proved itself immediately: the registry checker
 **rejected all three** until the item they answer was filed.
 
-**Demand-gating.** `OPEN_PROBLEMS.md` reformatted to the item schema — precise
+**Demand-gating.** `PRIORITIES.md` reformatted to the item schema — precise
 statement, deliverable shape, acceptance check stated as something CI runs,
 context pointer, difficulty. Thirteen items.
 
@@ -70,7 +70,7 @@ specification layer, so updating it is a maintainer act.
 ## The specification-path enumeration — proposed
 
 ```
-AGENTS.md  CONTRIBUTING.md  DECISIONS.md  OPEN_PROBLEMS.md  README.md
+AGENTS.md  CONTRIBUTING.md  DECISIONS.md  PRIORITIES.md  README.md
 PROVENANCE.md  SETUP_REPORT.md  GOVERNANCE_REPORT.md  LICENSE  LICENSE.*
 .github/**  .gitattributes  .gitignore
 checkers/**  tests/**  frozen/**  prompts/**

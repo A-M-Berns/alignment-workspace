@@ -24,7 +24,7 @@ earlier rows did not record at all.
 | `AGENTS.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same |
 | `CONTRIBUTING.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same |
 | `DECISIONS.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same — **decisions are the author's; this file records them, and its wording is not the author's** |
-| `OPEN_PROBLEMS.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same — items 1–6 restate the frozen consolidation's own list; 7–9 quote the deference audit's §3 by section; 10–11 are proposed by this round |
+| `PRIORITIES.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same — items 1–6 restate the frozen consolidation's own list; 7–9 quote the deference audit's §3 by section; 10–11 are proposed by this round |
 | `SETUP_REPORT.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same |
 | `PROVENANCE.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same |
 | `.github/**` | Claude Opus 5 | `ci-only` | 2026-08-10 | same |

@@ -44,9 +44,46 @@ def commits() -> list[str]:
     return [c for c in out.stdout.split() if c]
 
 
+def self_test() -> int:
+    """Null-input cases: the gate must not pass by matching nothing.
+
+    This gate has already shipped broken once — it counted GitHub's synthetic
+    merge commit and would have failed every pull request — and its other
+    failure direction is worse, because it is silent: an empty commit list
+    inside a pull request used to print "nothing to check" and pass.
+    """
+    signed = "Subject\n\nBody\n\nSigned-off-by: A Person <a@example.com>\n"
+    cases = [
+        ("a signed-off message is accepted", bool(SIGNOFF.search(signed)), True),
+        ("an unsigned message is rejected",
+         bool(SIGNOFF.search("Subject\n\nBody\n")), False),
+        ("a sign-off without an address is rejected",
+         bool(SIGNOFF.search("Subject\n\nSigned-off-by: A Person\n")), False),
+        ("a trailing-whitespace sign-off is still accepted",
+         bool(SIGNOFF.search("S\n\nSigned-off-by: A <a@b.c>  \n")), True),
+        ("an empty message is rejected", bool(SIGNOFF.search("")), False),
+    ]
+    failures = 0
+    print("DCO SELF-TEST:")
+    for label, got, want in cases:
+        failures += got != want
+        print(f"  {'ok' if got == want else 'FAIL'}: {label}")
+    return 1 if failures else 0
+
+
 def main() -> int:
+    if "--self-test" in sys.argv:
+        return self_test()
     shas = commits()
     if not shas:
+        if os.environ.get("GITHUB_BASE_REF"):
+            # The null input. A pull request has at least one non-merge commit,
+            # so an empty list means the fetch or rev-list failed. Passing here
+            # would check no sign-offs at all while reporting green.
+            print("DCO FAILED: in a pull request but no non-merge commits were "
+                  f"found against origin/{os.environ['GITHUB_BASE_REF']}. The gate "
+                  "cannot check sign-offs it cannot enumerate.", file=sys.stderr)
+            return 1
         print("DCO: no pull-request context; nothing to check")
         return 0
     missing = []

@@ -4,20 +4,93 @@ Dated decision ledger. Settled decisions are recorded here and are not
 re-litigated; anything awaiting the author is an explicit stub, and stubs are
 listed at the top of each round's report until they are closed.
 
+**Settled entries are append-only in substance.** Identifiers within them — a
+renamed path, file, or namespace — are updated in place so the record keeps
+resolving; anything else that changes lands as a new dated entry. This is what
+*no negative ontologies* requires of a ledger that is also the one place history
+is kept: a pointer that no longer resolves is not history, it is a dead link,
+while a decision that turned out wrong is corrected by the entry that supersedes
+it and not by editing the record of having made it.
+
 ## Awaiting the author
 
-- **Whether the leverage frozen trees are registered now or at the next leverage
-  round.** `consolidation_aug9/` is registered and checksummed; the question is
-  whether anything else from that line — earlier consolidations, the source
-  tree's archived material — should join it now.
+Each carries what deciding it costs now, so it can be answered without
+reconstructing the context.
+
+- **Whether further leverage frozen trees are registered now or at the next
+  leverage round.** Four trees are registered. *Registering now* costs a digest
+  pass and makes the material citable by path and immutable from that moment.
+  *Waiting* costs nothing today and risks the material drifting on the
+  maintainer's machine before it is frozen, at which point what gets registered
+  is a later version than the one the current work was done against. Nothing is
+  blocked either way.
 - **The name of the leverage forward tree.** `projects/leverage/forward/` is in
-  place and its documents read in those terms; the name was proposed in the
-  dispatch, not confirmed by the maintainer. It is one `git mv` and a handful of
-  references to change while the tree is still small.
-- **Which deference documents are canonical.** `projects/deference/notes/` is
-  seeded with a pointer rather than with documents; see the note there.
+  place and its documents read in those terms. *Confirming* costs nothing.
+  *Changing it* is one `git mv`, one file rename, and six prose references
+  today; the cost rises with every round that lands work in the tree or cites a
+  path into it, and the next leverage round is the first that would.
+- **Which deference documents are canonical.** `projects/deference/notes/` holds
+  a pointer and no documents, because seeding by guess would manufacture
+  provenance. *Deciding* means naming which of the candidates on the maintainer's
+  machine are canonical and under what names. *Not deciding* forecloses the
+  deference line: `projects/deference/kernel/` is reserved and empty, and a round
+  dispatched against that line has nothing in-repo to work from — it would have
+  to be given its inputs in the dispatch, which is the provenance gap this
+  convention exists to close.
 
 ## Settled
+
+### 2026-08-11 — the ledger is append-only in substance
+
+Settled entries are not edited except to keep their identifiers resolving. The
+rename round updated a settled entry in place, which *no negative ontologies*
+required and which the header did not authorise, so the ledger was neither
+append-only nor freely editable and the round's report recorded both readings
+without choosing. The header now states the rule; the wording is in the header
+rather than here so it is read before the entries are.
+
+One case it does not cover, recorded rather than legislated: removing something
+from a settled entry for privacy — a name, a personal detail — is neither an
+identifier update nor a thing a later entry can fix by appending. It has not
+arisen; this ledger is deliberately exempt from the name lint. If it does arise,
+the header needs a third clause rather than an improvisation.
+
+### 2026-08-11 — every gate ships a case proving it fails on nothing
+
+Two gates have reported green while checking nothing — the DCO gate counting a
+synthetic merge commit, the attribution gate accepting the pristine template.
+Both were caught by hand, which is not a mechanism. Each of the nine gates now
+carries a `--self-test` run in the same CI job as the gate, and four had real
+null-input holes closed in the same change: the path gate and the DCO gate
+passed on an empty file list inside a pull request, conservativity re-baselined
+itself when its shape file was missing, and the frozen check verified an empty
+registry. A gate that matches nothing is indistinguishable from a gate that
+works, and it fails in the direction that grants passes.
+
+### 2026-08-11 — the contribution funnel is `PRIORITIES.md`
+
+Renamed from the file that held it, and reframed with it. The document says what
+the program wants done next, in the maintainer's order — not an inventory of
+everything unsolved. An item's absence means nobody has asked for it. Difficulty
+tags are unchanged, and the frozen consolidation's own list keeps its name, since
+frozen trees are not renamed.
+
+Three code paths read the file — `checkers/registry.py`, `checkers/run.py`,
+`tests/path_gate.py`. The registry's lookup had the failure mode the rename was
+most likely to trigger: a missing file produced an empty item set and every
+`answers_item` check then skipped itself while the gate stayed green. It is now a
+hard failure, and both cases are permanent self-test cases.
+
+### 2026-08-11 — slop discipline is a standard, and grounds for rejection
+
+Padding is a correctness problem in a verification repository, not a matter of
+taste: a reader who cannot tell which sentences carry content cannot audit, a
+document that restates itself hides its errors in the restatements, and volume
+inflates the cost of the maintainer review the architecture rests on. The rule is
+in `AGENTS.md`, summarized in `CONTRIBUTING.md`. Agent reports are deliverables
+under it. **A pull request whose content is correct and whose prose is padded may
+be rejected on that ground**, said plainly rather than merged and cleaned up
+after.
 
 ### 2026-08-11 — provenance is two fields, superseding the three origin classes
 

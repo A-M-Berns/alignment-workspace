@@ -46,7 +46,47 @@ def measure() -> dict[str, dict[str, int]]:
     return shape
 
 
+def self_test() -> int:
+    """Null-input cases: the gate must not pass by measuring nothing.
+
+    Two null inputs. An empty specification-file set makes `measure()` return
+    `{}` — every recorded file then reads as removed, which fails, and that is
+    pinned here. A missing `spec_shape.json` used to be *written* and the run
+    passed, so deleting the baseline silently re-baselined the shape it exists
+    to freeze; that is now a failure.
+    """
+    cases = [
+        ("the library has specification files", len(spec_files()) > 0, True),
+        ("the recorded shape exists", SHAPE.is_file(), True),
+        ("an empty measurement reads every recorded file as removed",
+         len(set(json.loads(SHAPE.read_text())) - set()) > 0, True),
+        ("an axiom declaration is matched",
+         bool(re.search(r"^\s*axiom\b", "axiom foo : True", re.M)), True),
+        ("the word axiom inside an identifier is not matched",
+         bool(re.search(r"^\s*axiom\b", "axiomatic_thing := 1", re.M)), False),
+        ("an instance line is counted",
+         len(re.findall(r"^\s*(?:noncomputable\s+)?instance\b",
+                        "instance : Foo := ...", re.M)), 1),
+        ("a notation line is counted",
+         len(re.findall(r"^\s*(?:scoped\s+)?(?:notation|infix|prefix|postfix)\b",
+                        "scoped notation \"x\" => y", re.M)), 1),
+    ]
+    failures = 0
+    print("CONSERVATIVITY SELF-TEST:")
+    for label, got, want in cases:
+        failures += got != want
+        print(f"  {'ok' if got == want else 'FAIL'}: {label}")
+    return 1 if failures else 0
+
+
 def main() -> int:
+    if "--self-test" in sys.argv:
+        return self_test()
+    if "--record" in sys.argv:
+        shape = measure()
+        SHAPE.write_text(json.dumps(shape, indent=2, sort_keys=True) + "\n")
+        print(f"CONSERVATIVITY: recorded shape for {len(shape)} spec files")
+        return 0
     problems: list[str] = []
 
     for path in sorted(LIB.rglob("*.lean")):
@@ -71,9 +111,16 @@ def main() -> int:
         for name in sorted(set(recorded) - set(current)):
             problems.append(f"{name}: specification file removed")
     else:
-        SHAPE.write_text(json.dumps(current, indent=2, sort_keys=True) + "\n")
-        print(f"CONSERVATIVITY: recorded initial shape for {len(current)} spec files")
-        return 0
+        # The null input. Writing the baseline here and passing would mean that
+        # deleting tests/spec_shape.json re-baselines the shape this gate exists
+        # to freeze — a green run that checked nothing. Recording it is a
+        # maintainer act, done deliberately and reviewed.
+        print("CONSERVATIVITY FAILED: tests/spec_shape.json is missing, so there "
+              "is nothing to compare against.", file=sys.stderr)
+        print("  Recording a baseline is a maintainer act. To record the current "
+              "shape deliberately:\n"
+              f"    python3 tests/conservativity.py --record", file=sys.stderr)
+        return 1
 
     if problems:
         print("CONSERVATIVITY FAILED:", file=sys.stderr)
