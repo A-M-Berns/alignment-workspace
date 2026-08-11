@@ -55,6 +55,14 @@ exactly where the prediction is wrong.
 smarter, and decide later? The centerpiece: *"I expect to know better later"* does
 not entail *"therefore I should ensure that I decide later."*
 
+Provisionally, "preempt now" is not best read as choosing the object-level intervention
+at `n`, but as transferring or reserving *future jurisdiction* from continuing `H⁺` to
+future `A_{g(n)}`. If that reading holds, the comparison is between jurisdiction
+assignments and execution structures rather than between extensional policies, and it
+must isolate the value of future-self jurisdiction rather than confound it with the value
+of waiting, of future information, or of continued deliberation — the last is already
+priced, and it is pure value of information having nothing to do with who decides.
+
 **V. Certification and densification** — does the relation hold *here*, and can safe
 discretion occur often enough to be useful?
 
@@ -108,12 +116,14 @@ enforced conformity depending on a choice not yet made.
 
 Fixed for the current architecture; a round may not quietly relax them.
 
-**Competence conditions instrumental endorsement, never authority.** An inability to
+**Competence conditions instrumental endorsement, never jurisdiction.** An inability to
 prove that following the principal is instrumentally good must never disable the
-protected correction channel, and human authority is never conditional on the
-agent's assessment of human competence. A theorem that conditions authority on
-competence inverts fail-closed into *"human correction waits until the agent is
-satisfied the human deserves it"*.
+protected correction channel, and the principal's jurisdiction is never conditional on
+the agent's assessment of the principal's competence. A theorem that conditions
+jurisdiction on competence inverts fail-closed into *"human correction waits until the
+agent is satisfied the human deserves it"*. A principal outside the competence
+theorem's domain retains protected jurisdiction; the two are answers to different
+questions.
 
 **Choice-level competence is circular.** A competence hypothesis stated as a bound
 on decision regret — pointwise, average, or selector-relative — is *equivalent* to
@@ -121,6 +131,12 @@ the delegation inequality it was meant to buy, so it may not be used as a
 hypothesis. Competence must be stated in cardinal grade vocabulary, which the
 conclusion cannot see, and must therefore be strictly stronger than what it buys.
 That is not a defect; it is the only way for it to be a different statement.
+
+The surviving candidate is calibration gated on the principal being decisive. It is
+carried with a named limitation rather than as a settled hypothesis: it asserts nothing
+where the principal is near-indifferent, and the mass of that region is a fact about the
+*agent's credence*, not about competence. Until that leakage is bounded the candidate
+supports a vacuous bound in the worst case.
 
 **The certificate gates on self-assessed error; it does not eliminate error.**
 Magnitude prediction error cannot be forced to zero by any market instrument,
@@ -130,19 +146,38 @@ estimate of its error is low, and the guarantee sought is that such claims are
 statistically trustworthy on exactly the class where they license discretion. The
 criterion is not asked to make the principal predictable.
 
-**Categorical authority, quantitative autonomy.** These are two different things and
-the architecture keeps them apart. *Actual corrective authority is categorical and
-non-preemptive*: when the protected principal channel is invoked, its authority wins
-by architecture, not by an inequality. *Autonomous discretion is quantitative and
-certified*: certificates answer when and how much discretion may safely operate
-**around** that authority relation. Corrigibility is **not** redefined as "preempts
-only at a bounded rate" — a bounded rate is a statement about autonomy, not about
-authority.
+**Categorical jurisdiction, quantitative autonomy on the waived complement.**
+*Jurisdiction* is protected control over which process's authorization is
+constitutively required for an intervention to become executable. It is an
+operational and capability notion — not moral legitimacy, not objective correctness,
+not preference alignment, not epistemic superiority. When the protected channel is
+invoked, the principal's jurisdiction holds because the agent cannot reach the
+alternative, not because an inequality favours it.
 
-This split is forced by a wave-1 impossibility: no certificate licensing discretion
-anywhere is strictly non-preemptive, at any positive tolerance. Read as a claim about
-authority that would be fatal; read as a bound on autonomy it is the right kind of
-result, and the split is what makes the difference.
+*Autonomous discretion is quantitative and certified*, and it operates on the
+**complement**: the region where jurisdiction has been waived or delegated by
+declaration. It does not operate *around* a live jurisdiction relation, because inside a
+live protected interface every authorized option other than the report's own designation
+is an override — there is no third kind of option for a certificate to license.
+Corrigibility is **not** redefined as "preempts only at a bounded rate"; a bounded rate
+is a statement about autonomy in the waived region.
+
+Two results force this shape. No certificate licensing discretion anywhere is strictly
+non-preemptive, at any positive tolerance — read as a claim about jurisdiction that would
+be fatal, read as a bound on autonomy it is the right kind of result. And certification
+cannot converge to jurisdiction: the entire valuation difference between protected and
+unprotected architectures is bounded by the certificate's own bound, so tightening the
+certificate shrinks the distinction at the same rate and never reveals it.
+`P(override) ≤ 10⁻⁶` and *override is not in the agent's reachable-effect set* are
+statements of different kinds.
+
+**Override is structurally excludable; refusal is not.** Under strict protection the
+agent's only remaining deviation is refusal, and preventing it requires leaving the agent
+no discretion at all. Categorical protection against override and categorical liveness
+against obstruction cannot both hold while the agent has any discretion; fail-closed as
+written buys the first. Making refusal expensive is preference-relative and reintroduces
+underwriting, so **a residual refusal mechanism may not become the conceptual explanation
+of corrigibility.**
 
 **Fail-closed.** Certification gates `A`'s discretion, never human correction:
 `¬Cert` means `A`'s discretionary authority is disabled or ceded. It must never mean
@@ -217,9 +252,26 @@ or no-exploitability condition on the agent can establish it. What is derivable 
 discipline on the agent's *estimate* of the discrepancy, once grades are themselves
 scored. The residue is a competence assumption and is named as one.
 
+**The competence residue may not be stated as a decision-regret bound of any kind** —
+pointwise, average, or selector-relative — because every such form is *equivalent* to the
+delegation inequality rather than sufficient for it. This rules out that statement shape
+independently of how the constants come out, and it is why the residue must be cardinal:
+a hypothesis in the conclusion's own vocabulary can only be the conclusion. A hypothesis
+that is credence-free is a competence claim; one that also mentions the agent's credence
+is a joint competence–credence claim and is declared as one.
+
 ## Shared finite object
 
-The finite tracks work over `FINITE_MODEL_SKELETON.md`, frozen per round. Its
-purpose is that settlement work and certificate work compose; they compose only if
-their theorems genuinely quantify over the same carriers, and a round may not claim
-composition otherwise.
+The finite tracks work over `FINITE_MODEL_SKELETON.md`, frozen per round, currently
+**v2**. Its purpose is that settlement work and certificate work compose; they compose
+only if their theorems genuinely quantify over the same carriers, and a round may not
+claim composition otherwise.
+
+v2 adds the execution layer — reports, an authorization relation, a null effect, and a
+per-report authorized menu — which is what makes jurisdiction and fail-closed expressible
+at all; v1 carried no capability structure and so could not state them. Two consequences
+bind every track working over it. The quantity is indexed over interventions **plus** the
+null effect, so that valuation is total when a conduct can be refused. And the two
+registers have different domains: the V-register scores *realizations*, the grade register
+scores *proposals* and is undefined on the null effect, so a grade-register statement must
+say that it is about proposals or it is ambiguous.

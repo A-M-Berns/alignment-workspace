@@ -11,13 +11,18 @@ about what has been established *inside this repository*, the registry wins.
 not exist, so there is no statement of record, and `workspace-established` requires
 one.
 
-That is now a narrower statement than it was. `lean/Workspace/Deference/Contrib/`
-holds Lean that builds against the pinned toolchain and audits to the three standard
-axioms, covering six of the Movement-I rows below and replacing one of the inherited
-audit's modelling substitutions with a real application of the criterion. It is
-kernel-verified and unregistered, which are different things, and the registry is
-what a claim is. Promotion is additionally blocked on its own terms: the efficiency
-obligation is undischarged, so the headline is `unverified-nonvacuous`.
+That is now a much narrower statement than it was. `lean/Workspace/Deference/Contrib/`
+holds **155 theorems across 10 files** that build against the pinned toolchain and audit
+to the three standard axioms, with no `sorry` and no `axiom` declaration — 83 of them
+promoted in Stage II across four modules covering the finite kernel, the certificate
+bounds, the exposure geometry and the substitution separation. It is kernel-verified and
+unregistered, which are different things, and the registry is what a claim is.
+
+Two declarations are additionally blocked on their own terms, shipping no term
+inhabiting their full hypothesis package and so remaining `unverified-nonvacuous`:
+`FaithfulAcceleration.weight_not_divergent`, whose efficiency obligation is undischarged,
+and `MagnitudePrediction.squaredError_bdd_of_sharpness_bdd`, which carries an
+undischarged efficiency certificate.
 
 Everything else below is inherited, and inherited status is not repository status.
 
@@ -89,6 +94,46 @@ claim about the principal and that no mechanism in the skeleton produces. Labell
 that result enforcement rather than epistemic trust is a **`maintainer-decision`**,
 and it is the one the roadmap already said would be a result either way.
 
+**What the criterion supplies, Stage II, `workspace`-kernel-verified and unregistered.**
+The criterion forces **signed** calibration and cannot force magnitude accuracy. The
+signed error partial sum *is* a trader's net worth exactly, so the criterion has an
+instrument for it. Magnitude is not a trader payoff and cannot be made one: net worth is
+affine in the settlement vector and `|·|` is not, and the obstruction is intrinsic to
+cash settlement rather than an artefact of the feature grammar — adding contracts cannot
+escape it. The positive identity is an exact split of squared error into a
+trader-net-worth term and a market-indecision term; the criterion drives the first and
+has no instrument for the second. **The conceptual result is measurement, not control:** a
+self-referential magnitude contract does not force the underlying error small, it makes
+the *price* of that error calibrated. The retired target of global magnitude convergence
+is not to be reinstated absent a contradiction in this result.
+
+**What the criterion cannot supply, and the shape of the residue.** Choice-level
+competence is `closed`, negatively, and the stop condition fired. Every candidate stated
+as a decision-regret bound — pointwise, average, or selector-relative — is *equivalent*
+to the delegation inequality rather than sufficient for it, because decision regret is
+nonnegative and so the supremum of the delegation deficit over credences is the maximum
+regret, attained at a point mass. Averaged forms fail worse: a limsup condition is
+invariant under changing finitely many decisions and therefore constrains no named
+decision, witnessed by a principal perfect except at one index and maximally wrong there.
+The selector-relative form is a dichotomy with nothing between recovering the pointwise
+assumption and yielding nothing finite.
+
+The escape is richer vocabulary, not a weaker assumption: the conclusion is *ordinal* in
+the principal's grades, so any credence-free hypothesis that is also ordinal lives in the
+conclusion's vocabulary and collapses into it. The surviving candidate — calibration
+gated on the principal being decisive — is `architected`, **not canonized**: it is
+provably non-circular and strictly stronger than what it buys, and it carries an
+unresolved near-indifference leakage term that no competence hypothesis controls, because
+the mass of the near-indifferent region is a fact about the agent's credence rather than
+about the principal. Unbounded, the leakage makes the candidate's bound vacuous. The one
+partial lead relocates the leakage into a decision-time observable plus a Markov
+remainder; it does not bound it.
+
+**One classification correction.** Grade trust is *not* credence-free — the agent's
+credence occurs twice in it. It is credence-free only at the discrete conditioning
+partition, where it reduces to a pointwise bound. The distinction is load-bearing: the
+credence-free line is exactly the line between a circular hypothesis and a usable dial.
+
 ## Movement III — substitution (`π^SIM`)
 
 `open`, and wave 1 turned the open question into a **fence**. Three tracks
@@ -123,12 +168,52 @@ delegation *is*, whether ordinary behaviour lets anyone *infer* it, and whether 
 system can be *built* so the principal controls a capability prediction cannot
 substitute for. The impossibility governs the second only.
 
+**Stage II strengthened the impossibility and settled the third layer's shape.** Report-
+coordinate typing alone creates no protection; behavioural or source typing is inert if
+it does not change the realizable-effect structure; and even the *entire realized
+behaviour function* can fail to distinguish genuine delegation from an accurate
+simulator. Token responsiveness does not repair it, and no measure over tokens does.
+Explicit capability structure is **necessary** — if the concept is "the agent cannot
+bring this about", the capability form is forced and nothing weaker states it — and it
+is the weakest interface that states the concept.
+
+The load-bearing consequence, and the sentence that resolves the movement:
+
+> Protection does **not** restore identifiability. It removes the consequence of failing
+> to identify — simulation becomes insufficient to *obtain* the protected effect, because
+> prediction of an authorization does not confer the authorization.
+
+The principal may therefore be perfectly predictable, and private information is not
+required in principle. The guarantee lapses entirely if `A` can forge, bypass, rewrite or
+seize the protected channel, and that lapse belongs in the hypotheses of any theorem
+stated over it. Two further lapses are structural rather than adversarial: the report map
+itself may have been authored by `A`, which is Movement VI and undischarged; and the
+interface as modelled is one decision index deep, so foreclosure — `A` removing the
+principal's *later* ability to correct — is not yet expressible.
+
+Whether `Reach`-properness is the right formalization of "the principal has authority" is
+a reserved **`maintainer-decision`**: the theorem says the capability form is forced *if*
+the concept is inability, not that the concept is inability.
+
 ## Movement IV — fully updated deference (`π^{FU,g}`)
 
 `blocked` on WP-C and WP-D, and additionally `blocked` at the level of the finite
 model: the shared skeleton does not carry the time-indexed family of `A`-valuations
 that `π^{FU,g}` needs, and the round declined to invent one, because inventing it
-carelessly is how `π^{FU,g}` silently collapses into `π^SIM`.
+carelessly is how `π^{FU,g}` silently collapses into `π^SIM`. Skeleton v2 does not fill
+the hole either; it is carried forward as `v2 §8.1`.
+
+Stage II added one piece of the eventual statement and one piece of the eventual
+confound. The statement: if "preempt now" means transferring future *jurisdiction*
+rather than choosing the object-level intervention, the comparison is between execution
+structures, and the skeleton carries no operation that reassigns the authorization
+relation at a later index. That is a second hole, not a filled one. The confound is
+priced exactly: a comparator measurable at the later time gains
+`E_P[max_π X] − max_π E_P[X] ≥ 0`, reaching `2B(1 − 1/m)`, which is pure value of
+information and has nothing to do with who decides. **A `π^{FU,g}` comparison that does
+not net this out is measuring the wrong thing.** Uniformly in the credence the ladder
+collapses and the competence requirement for a hindsight comparator is identical to that
+for `FIXED[π]`.
 
 ## Movement V — certification and densification
 
@@ -142,18 +227,46 @@ certified event. Certified discretion with a bounded override rate, or no discre
 at all; there is no third option.
 
 That impossibility now reads as a **bound on autonomy rather than an objection to
-corrigibility**, under the roadmap's split between categorical authority and
-quantitative autonomy: authority is settled architecturally when the protected
-channel is invoked, and the certificate governs only the discretion operating around
-it. The same mathematics, answering a different question. Fail-closed was verified
-mechanically *within the finite model*; under a protected execution layer it becomes
-a new obligation — `¬Cert` must cede to the channel, and `A` must be unable to act
-without authorization — which a model with no capability structure cannot discharge.
+corrigibility**, under the roadmap's split between categorical jurisdiction and
+quantitative autonomy: jurisdiction is settled architecturally when the protected
+channel is invoked, and the certificate governs only the discretion operating on the
+waived complement. The same mathematics, answering a different question. Fail-closed was
+verified mechanically *within the finite model*; under a protected execution layer it
+becomes a new obligation — `¬Cert` must cede to the channel, and `A` must be unable to
+act without authorization — which a model with no capability structure cannot discharge.
 
-Which parts survive the reinterpretation: the margin, override, defect and advantage
-lemmas and the grade-register theorem depend only on `A`'s model error and are
-untouched. The comparator clause is load-bearing on the grade-to-quantity link and
-inherits that link's fate.
+**The reinterpretation was carried out over the v2 execution layer, and its result is
+asymmetric.** Jurisdiction comes out cleaner than Phase I's version: the clause becomes a
+hypothesis-free consequence of the interface, quantified over every conduct, with no
+tolerance, margin or budget, and the grade-to-quantity assumption drops out because the
+comparisons needing it become unstatable under protection. Autonomy deflates: every
+authorized option other than the report's own designation is an override — exhaustively,
+over all 512 protecting menus on a three-element intervention set — so there is no third
+kind of option for a certificate to license, and "around" resolves to "on the complement
+of".
+
+**The decisive negative.** The entire valuation difference between the protected and
+unprotected architectures is bounded by the certificate's own bound, and the bound is
+attained, so tightening the certificate shrinks the distinction at the same rate and
+never reveals it — exhibited at tolerance `10⁻⁶` with the worst per-state cost the
+carriers permit. Approximate certification therefore **cannot converge to architectural
+jurisdiction**.
+
+Which parts survive the reinterpretation: the margin, override and advantage lemmas are
+invariant, their inputs being computed from grades alone. The defect lemma survives as a
+statement about the grade-register defect, but its bound is **not** a bound on the
+protected valuation gap. The `FIXED` comparator of the delegation-advantage lemma is not
+realizable under protection and loses its consumer entirely. The settlement-loaded branch
+of the preemption bound is **false** under protection — 1443 refuting instances, not
+merely unproved — while the settlement-free branch survives. The comparator clause is
+load-bearing on the grade-to-quantity link and inherits that link's fate.
+
+All of the refuted and reinterpreted material fell inside the set the Lean promotion
+declined to port, so **no kernel-verified result is affected**. One further correction to
+previously verified material: the certificate theorem's "strict minority" gloss on its
+override clause is false, with an exact counterexample at override mass three fifths of
+the certified credence. What clause (iii) delivers is only that the certified act
+executes on positive mass.
 
 **Densification.** The exposure geometry is an exact identity: under a cap, total
 placeable weight by a deadline is the cap times the largest number of

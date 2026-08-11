@@ -506,6 +506,76 @@ from its prices and which may already suffice.
 estimate, which is the shape the admissibility red team flagged as most likely to
 reconstruct the diagonal. It may not work.
 
+### 25. Bound the near-indifference leakage, or show it cannot be bounded — **[open]**
+
+The controlling competence question after Stage II, and the one item that decides whether
+the surviving competence candidate has any finite consequence at all.
+
+Margin-gated calibration — *the principal's grades are calibrated where the principal is
+decisive* — is the only non-circular candidate found. It supports
+
+```
+Δ_𝒞  ≤  2η  +  2B · P(γ_n < γ̄)
+```
+
+and asserts nothing on `{γ_n < γ̄}` by construction. The second term is **not** a
+competence claim: it is the agent's credence mass on the principal's near-indifference
+region, a fact about a different object. Unbounded, it makes the bound `2η + 2B`, which
+is vacuous.
+
+Decide the question in the sharp negative shape, which is the cheaper direction: exhibit
+a family in which margin-gated calibration holds at `η = 0`, the decision-time margin
+estimate `γ̂_n ≥ γ̄ + 2s` on the certified event, the trust tolerance holds at `ε_n → 0`,
+and `Δ_{𝒞_fix} → 2B` anyway — or prove no such family exists.
+
+The one partial lead is a relocation, not a bound. Under the trust tolerance the gate is
+estimable at decision time — `|γ_n − γ̂_n| ≤ 2η_n` pointwise and attained — so
+`P(γ_n < γ̄) ≤ P(γ̂_n < γ̄ + 2s) + ε_n/s` for every rational `s > 0`, the first term
+computable at `t(n)` from the model's grades alone. Nothing bounds that first term, and
+whether relocating the leakage into a decision-time observable suffices **is** the
+question.
+
+*Deliverable shape:* the refuting family as a `witness-checked` instance with exact
+rationals; or a `lean-proved` bound on the leakage under a stated non-circular hypothesis,
+with an inhabitation witness.
+*Acceptance check:* the house `witness` checker accepts the instance; or the `lean` gate
+builds and audits clean with a typechecking witness.
+*Context:* `prompts/2026-08-11-phase-ii-competence/REPORT.md` §1.6, §4.3 and §10;
+`prompts/2026-08-11-corrigibility-phase-ii/REPORT.md` §9.
+*A solution ships:* the verdict, plus an explicit statement of whether the competence
+candidate survives it, plus — if the bound exists — whether the bounding hypothesis is
+itself credence-free or is a joint competence–credence hypothesis under skeleton v2 §2a.
+*Why it is [open]:* nothing in Stage II bounds it, and the term is not about competence,
+so no strengthening of the competence hypothesis can reach it.
+
+### 26. Admissibility red team, rerun under skeleton v2 — **[open]**
+
+The admissibility work bound to skeleton v1 and v2 changes what it is about. A restriction
+on the conduct set is now nameable as a capability assignment, so the red team's candidate
+families must be re-asked one question: **are they `κ`-statements in disguise?** A family
+that is really a capability restriction is not an admissibility criterion, and treating it
+as one hides an architectural assumption inside what looks like a legality condition.
+
+Carry the standing constraints unchanged: a candidate must exclude the quote-responsive
+diagonal, retain ordinary realized conduct and a meaningful fully-updated comparator,
+permit intended advisory influence, resist laundering through semantically equivalent
+intermediates, and leave the trust-forcing proof machinery itself admissible. The last is
+the one that bites. Wave 1's two-sortedness finding — settlements restricted differently
+from weights, selections and schedules — is the substantive content and should be re-tested
+against the execution layer rather than assumed to carry over.
+
+*Deliverable shape:* for each candidate family, a verdict on whether it is expressible as
+a capability assignment, with a witness either way; `witness-checked` or
+`enumeration-verified`.
+*Acceptance check:* the house checker accepts the submitted instances at the declared
+class.
+*Context:* `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4a and §8.2;
+`prompts/2026-08-11-phase-ii-authority/REPORT.md` §9.2; the wave-1 red-team round.
+*A solution ships:* the per-family verdicts, and an explicit statement of which previously
+proposed admissibility conditions are now reclassified as architectural.
+*Why it is [open]:* recommended by the authority track and not performed by the closure
+pass, which was scoped to integration rather than new science.
+
 ---
 
 ## Infrastructure

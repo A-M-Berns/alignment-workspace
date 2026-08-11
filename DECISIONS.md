@@ -31,6 +31,82 @@ reconstructing the context.
   path into it, and the next leverage round is the first that would.
 ## Settled
 
+### 2026-08-11 — skeleton v2 is installed; jurisdiction replaces authority in the canonical roadmap
+
+Taken at the Stage II closure pass, after Tracks H, I, K, L and M returned and were
+independently re-verified at `8c71ef9` (1843 build jobs, 142 axiom results across 10
+files, full suite green, Track L's harness reproducing all of its 71 checks, 1,574,640
+models and 1,443 refutations exactly).
+
+**The `FINITE_MODEL_SKELETON` execution clause is ruled on and installed as v2.** Track
+K's proposed §9.2 clause is adopted: reports, an authorization relation, a null effect,
+an execution map, and a derived per-report authorized menu. It is required because v1
+carries no capability structure, so fail-closed in its strong form — the agent *cannot
+execute* an unauthorized alternative — is not expressible in v1 at all. The patch is
+conservative: at the free instantiation every v1 statement is a v2 statement.
+
+**The quantity is indexed over interventions plus the null effect.** Required, and for a
+sharper reason than "protection needs a cost for refusal": under any protecting menu some
+conduct realizes the null effect, so without the extension the valuation is not a total
+function and every V-register statement over the execution layer is *ill-typed* rather
+than false. Its value is a declared per-instantiation modelling commitment with no
+default, because all of protection's valuation content sits in it and the sign of the
+result depends on the choice.
+
+**Correction to the closure dispatch.** That dispatch identified this amendment as
+required for the certificate's grade-register theorem to be a theorem over the skeleton.
+The amendment is required, but not for that: the grade-register theorem mentions no
+quantity at all, and is untouched. The real gap in its neighbourhood is that the
+amendment extends the quantity to the null effect while **nothing extends the principal's
+grades to it**, so the two registers have different domains. v2 therefore declares that
+the V-register scores *realizations* and the grade register scores *proposals*; a
+grade-register statement read over realizations is ill-typed, not false. Extending the
+grade register to the null effect is left open, because supplying it is a theory of what
+the principal's judgment says about refusal and no track has proposed one.
+
+**No promoted result is invalidated.** Everything the certificate rerun refuted or
+reinterpreted sits in the set the Lean promotion deliberately declined to port as resting
+on the uniform grade-to-quantity relation. The exclusion absorbed the entire impact, and
+the justification that arrived is stronger than the one given at the time.
+
+**Competence vocabulary is adopted; cross-decision aggregation is declined.** A
+competence hypothesis is a predicate of the principal/world pair alone; anything also
+mentioning the agent's credence is a joint competence–credence hypothesis and is declared
+as one. The cross-decision patch is declined on the competence track's own evidence: no
+aggregate condition constrains any named decision, so the patch buys nothing the finite
+kernel needs.
+
+**Terminology: jurisdiction.** The canonical roadmap now says *jurisdiction* — protected
+control over which process's authorization is constitutively required for an intervention
+to become executable. It is operational and capability-based: not moral legitimacy, not
+objective correctness, not preference alignment, not behavioural agreement, not epistemic
+superiority. No `HasRight` predicate is introduced and no token or cryptographic
+implementation is canonized. Historical records keep the word "authority" as written;
+this is a change of current terminology, not a retroactive rewrite.
+
+**The certificate governs the complement, not the surround.** "Categorical authority plus
+quantitative autonomy *around* it" is replaced by "categorical principal jurisdiction plus
+quantitative AI autonomy on the complement where that jurisdiction is waived". Forced by
+an exhaustive result: inside a live protected interface every authorized option other
+than the report's own designation is an override, so there is no third kind of option for
+a certificate to license. And certification cannot converge to jurisdiction — the whole
+valuation difference between the protected and unprotected architectures is bounded by
+the certificate's own bound, attained, so tightening it shrinks the distinction at the
+same rate and never reveals it.
+
+**Override-protection is bought; liveness is conceded.** Categorical protection against
+override and categorical liveness against obstruction cannot both hold while the agent
+retains any discretion. Fail-closed as written buys the first. Making refusal expensive is
+preference-relative and reintroduces underwriting, so a residual refusal mechanism may not
+become the conceptual explanation of corrigibility.
+
+**Correction to a verified Phase I record.** The certificate round's Theorem C(b) glosses
+its override bound as a strict-minority claim; it is not, with an exact counterexample at
+override mass three fifths of the certified credence. What the support-floor clause
+delivers is only that the certified act executes on positive mass. Recorded here rather
+than edited into that round's report, which is history under *no negative ontologies*.
+Source: `prompts/2026-08-11-phase-ii-certificate/REPORT.md` §4.
+
 ### 2026-08-11 — choice-level competence is retired; the certificate gates on self-assessed error
 
 Two decisions taken after Phase II's competence and prediction tracks returned and

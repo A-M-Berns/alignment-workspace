@@ -40,7 +40,9 @@ earlier rows did not record at all.
 | `tests/path_gate.py` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — one specification pattern and three self-test cases, on explicit maintainer authorization for this trust-chain file; the rest of the file predates the round |
 | `PRIORITIES.md` items 14–20 | Claude Opus 5 | `ci-only` | 2026-08-11 | same — filed at the maintainer's direction to authorize the first deference wave |
 | `prompts/2026-08-11-faithful-acceleration/**`, `-deference-finite-kernel/**`, `-deference-certificates/**`, `-deference-channel/**`, `-deference-densification/**`, `-deference-triangle/**`, `-deference-admissibility/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the seven wave-1 tracks, each dispatched by `prompts/2026-08-11-deference-corrigibility/`. Six executors were blocked by tooling from writing their own `.md` reports; those files are the executor's text placed by the orchestrator, and each report records it as a deviation. Where a human register was owed and the executor could not write it, the file is the **orchestrator's** text and says so at its head |
-| `lean/Workspace/Deference/Contrib/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-faithful-acceleration/` — **machine-checked**: builds against the pinned toolchain and audits to the three standard axioms. Not registered, and not promotable: its efficiency obligation is undischarged. Not reached by the default build target |
+| `lean/Workspace/Deference/Contrib/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | per-file rows in that directory's own `PROVENANCE.md` — **machine-checked**: builds against the pinned toolchain and audits to the three standard axioms, no `sorry`, no `axiom`. Reached by the default build target, which globs the library. Not registered. Two declarations remain `unverified-nonvacuous`, shipping no term inhabiting their full hypothesis package: `FaithfulAcceleration.weight_not_divergent` and `MagnitudePrediction.squaredError_bdd_of_sharpness_bdd` |
+| `prompts/2026-08-11-phase-ii-*/**`, `prompts/2026-08-11-corrigibility-phase-ii/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the five Stage II tracks and the parent round. **Two reports are not their track's own**: `phase-ii-certificate/REPORT.md` and `phase-ii-promotion/REPORT.md` are independent verification registers authored by the closure pass, because those executors persisted no report and no draft of their prose exists. Each says so at its head and distinguishes verified artifact from reconstructed statement |
+| `projects/deference/notes/FINITE_MODEL_SKELETON.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-corrigibility-phase-ii/` — **v2**, superseding v1; the amendment and the reasons are in `DECISIONS.md` |
 
 ## No originating chat bundle
 
@@ -66,6 +68,9 @@ of thing this file exists to make visible.
 | `2026-08-10-repo-scaffolding` (v1, v2, addendum) | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-10 – 2026-08-11 |
 | `2026-08-10-contribution-architecture` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-licensing-dco-citation` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-11 |
+| `2026-08-11-deference-corrigibility` (wave 1) | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
+| `2026-08-11-corrigibility-phase-ii` and its five tracks | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
+| `2026-08-11-corrigibility-phase-ii` (Stage II closure and integration pass) | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/leverage/consolidation-aug9/` — have
