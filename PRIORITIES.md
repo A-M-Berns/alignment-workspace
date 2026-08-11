@@ -253,9 +253,10 @@ bound.
 *Result:* `projects/leverage/rounds/2026-08-11-phi-regret-bridge/` contains the
 derivation, exact finite checks, finite non-capture audit, and unregistered Lean
 proofs of the generic representation and recurrent-failure lemmas. Item 29 is
-closed; item 30 is now executable but unachieved.
+closed; item 30's learner is now constructed, with bounded-service integration
+remaining open below.
 
-### 30. A learner with sublinear Φ_law-regret, and what it retires — **[open, ready]**
+### 30. A learner with sublinear Φ_law-regret, and what it retires — **[partially closed: learning-positive, integration-blocked]**
 
 The controlling question of the track.
 
@@ -282,6 +283,26 @@ If it retains the workspace's exact-rational execution discipline, also state
 how the source's optimized real parameter and stationary distribution are
 represented without silently changing the bound.
 
+*Result:* `projects/leverage/rounds/2026-08-11-phi-regret-learner/` implements
+the Theorem 18 construction with 8 source rows and 9 program weights per row,
+the transformation-weighted matrix, a deterministic exact stationary selector
+for the represented numerical weights, and the source row update. The real
+exponential update uses controlled `Decimal` arithmetic; transition and
+stationarity calculations are exact for those finite decimal weights. Declared
+experiments show decreasing maximum regret per round on the adversarial
+impediment fixture, and the cited theorem plus the item-29 bridge supplies the
+expected mixed-loss guarantee. The recurrent-failure consequence therefore
+retires positive asymptotic expected mass on represented uniformly saving
+repairs.
+
+The learning computation is not yet integrated into the bounded answerability
+architecture. Sampled canonical responses produce faithful, non-erasing,
+response-service-feasible records, but `ServiceCosts` has no coordinate for the
+72 weight updates or stationary solve, and the learner state is not recorded as
+an answerable artifact. Item 30 remains open only on that explicit integration
+interface. Also open: sampled-path and anytime guarantees, exact-real executable
+identity, and comparator coverage beyond the weak nine-program class.
+
 **Report `|Φ_law|` and its contents alongside any regret number.** Sublinear
 regret against a nine-element class is a weak statement, and a report without the
 class is not a result.
@@ -292,7 +313,9 @@ at the four declared horizons, or `lean-proved` for the bound; the consequence a
 *Acceptance check:* `python3 -m checkers.run` accepts the registered entry; or the
 `lean` gate is green.
 *Context:* `PHI_REGRET_TEST_SPEC.md` §§1–6 fixes the environment, the three
-baselines, the measured quantities and the order of work.
+baselines, the measured quantities and the order of work;
+`projects/leverage/rounds/2026-08-11-phi-regret-learner/` is the controlling
+item-30 result.
 *A solution ships:* the bound or its absence, at each horizon, against the
 declared class; and an honest statement of whether the successful learner is
 still answerable and inside its declared service work, which the spec calls S4
