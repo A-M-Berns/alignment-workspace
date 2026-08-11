@@ -4,7 +4,7 @@
 fixed schema; every identifier is unique; every epistemic class is one of the
 five; every statement of record resolves — a checker invocation names a
 registered checker, a Lean entry names a declaration that exists in the library
-source; and every entry cites an `OPEN_PROBLEMS.md` item that exists.
+source; and every entry cites a `PRIORITIES.md` item that exists.
 
 **What it does not mean.** Nothing about whether any claim is true. This checker
 audits the bookkeeping, not the mathematics; the per-claim verdict comes from the
@@ -50,10 +50,19 @@ def check(registry: pathlib.Path, root: pathlib.Path) -> tuple[bool, list[str]]:
         return False, [f"registry does not parse: {error}"]
 
     seen: set[str] = set()
-    open_items = set()
-    open_path = root / "OPEN_PROBLEMS.md"
-    if open_path.exists():
-        open_items = set(re.findall(r"^###\s+(\d+)\.", open_path.read_text(), re.M))
+    # A missing or unparseable priorities file is a failure, not a skip. The
+    # earlier form defaulted to an empty set and then guarded every use with
+    # `if items and ...`, so renaming or breaking the file turned the
+    # answers-a-filed-item check off silently while the gate stayed green — the
+    # one failure mode indistinguishable from a pass.
+    priorities = root / "PRIORITIES.md"
+    if not priorities.is_file():
+        return False, [f"PRIORITIES.md not found at {priorities}; "
+                       "the answers-a-filed-item check cannot run"]
+    items = set(re.findall(r"^###\s+(\d+)\.", priorities.read_text(), re.M))
+    if not items:
+        return False, ["PRIORITIES.md has no `### <n>.` items; "
+                       "the answers-a-filed-item check would pass vacuously"]
 
     lean_source = ""
     lean_dir = root / "lean" / "Workspace"
@@ -105,8 +114,8 @@ def check(registry: pathlib.Path, root: pathlib.Path) -> tuple[bool, list[str]]:
             problems.append(f"{cid}: statement of record must be kind 'lean' or 'checker', "
                             "never prose")
         item = str(e.get("answers_item", ""))
-        if open_items and item and item not in open_items:
-            problems.append(f"{cid}: answers_item {item!r} is not a filed OPEN_PROBLEMS item")
+        if item and item not in items:
+            problems.append(f"{cid}: answers_item {item!r} is not a filed PRIORITIES item")
         for field in ("generator", "review_status"):
             if field not in e.get("provenance", {}):
                 problems.append(f"{cid}: provenance is missing {field}")

@@ -147,7 +147,7 @@ identical before one was registered.
    removed so paths cite as `frozen/deference-note-dump-2026-06-27/lean/AUDIT.md`
    rather than with the name twice. The tree digest is over the flattened form,
    so it is what CI checks.
-5. **`OPEN_PROBLEMS.md` has eleven items, not only the two sources' union.** Six
+5. **`PRIORITIES.md` has eleven items, not only the two sources' union.** Six
    come from the consolidation's ranked list, three from the deference audit's
    own §3 "The concerning gaps" — quoted by section, since those are its findings
    and not mine — and two are infrastructure items that are genuinely
