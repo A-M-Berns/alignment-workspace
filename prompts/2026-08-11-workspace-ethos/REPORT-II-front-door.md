@@ -69,9 +69,17 @@ reconstruction uncertainty.**
 
 ### After — what is recoverable directly
 
-The root README answers what the repository is, how work flows, and where to
-start, and uses Stage III as the worked example of the pipeline catching a wrong
-reading of correct theorems. `RESEARCH_STATE.md` opens with *Where the lines
+**The README was then rewritten again, on maintainer instruction, to depend on no
+current research content at all** — no result, count, stage or open question. The
+reasoning is the fourth defect below: this pass *itself* put a theorem count into a
+front-door document and the count was stale the same day. A surface that describes
+current content is a surface that is usually wrong, and the durable fix is to route
+to `RESEARCH_STATE.md` rather than to summarise it. It is now split into *For
+humans*, left blank as a stub because that is the one surface whose voice should be
+the author's and not a model's, and *For AIs*, drafted: what binds an arriving
+agent, that `ci-only` is the standing condition and endorsement may not be
+inferred, the precedence order, that `prompts/` is history, what is reserved, and
+the injection rule. All of it is structural and none of it drifts. `RESEARCH_STATE.md` opens with *Where the lines
 stand*: per line, the question, the aspiration and the construction on both
 registers, the controlling gap with its debt kind, and the next controlling
 question — with the type-level obstruction stated as **argued, not proved**. The
