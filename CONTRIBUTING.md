@@ -86,8 +86,31 @@ matching item and then accept it, so good work is not wasted, only sequenced.
 |---|---|---|
 | **a Lean theorem** | the proof, in a contribution namespace, plus a term inhabiting its full hypothesis package | the Lean kernel, the axiom audit, and the nonvacuity check |
 | **an existential, counterexample, sharpness or necessity witness** | **data** — the instance — plus the house checker id and the property parameters | `checkers/witness.py`, which you did not write and cannot change |
+| **something the house checkers cannot express** | your own checker in `checkers/contrib/`, plus the claim | your checker — and the claim is capped at `contributor-checked` |
 | **a finite universal claim** | **domain parameters** only | `checkers/enumeration.py`, which generates the domain itself |
 | **anything over an infinite domain, or sampled** | the work, registered as `test-supported` or `conjectured` | nothing — it is **not citable as proven**, and its natural fate is a Lean port |
+
+### You may ship a checker with a new claim
+
+Put it in `checkers/contrib/` — that directory is open, and the path gate will
+let you add to it without a maintainer. Your claim is then registered
+**`contributor-checked`**: the certificate ran and passed, and the logic that
+judged it has not been read by a maintainer yet. The registry derives that
+ceiling from the invocation path, so there is nothing to remember and nothing to
+declare.
+
+**This is an invitation, not a consolation.** The class is honest rather than
+punitive, and there are two ways out of it: a maintainer reads your checker, it
+becomes house, and every claim it certified upgrades in one batch; or the claim
+is ported to Lean and the checker is mooted.
+
+**Prefer Lean where you can.** On the Lean side the kernel is the judge, so you
+can write arbitrarily much new content with no maintainer in the loop and no
+class penalty at all. The Python harness stays small on purpose.
+
+What you may **not** do is modify a house checker in `checkers/`. That is
+retroactive — every claim it has already certified would silently re-inherit your
+change — which is why one is gated and the other is merely labelled.
 
 **You never ship the verifier for a claim of record.** A test file of your own
 may support exploration, but the thing that certifies a registered claim is

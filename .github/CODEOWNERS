@@ -3,3 +3,8 @@
 # This list and the MAINTAINERS list in tests/path_gate.py must agree.
 # Changing one without the other is a defect; see AGENTS.md.
 * @A-M-Berns @abramdemski
+
+# Contributor-supplied checkers are proof layer: anyone may add one, and the
+# claim it certifies is registered `contributor-checked`. Modifying a house
+# checker in checkers/ remains maintainer-only, because that is retroactive.
+/checkers/contrib/

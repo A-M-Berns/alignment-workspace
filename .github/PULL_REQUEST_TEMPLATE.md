@@ -9,6 +9,11 @@
      conjectured — or "none" if this PR adds no claim. The class is part of the
      claim; there are no silent upgrades. -->
 
+## Ships a contrib checker
+
+- [ ] This PR adds a checker under `checkers/contrib/` (claims it certifies are
+      registered `contributor-checked`)
+
 ## Statement of record
 
 <!-- The checker id plus its exact parameters, OR the fully-qualified Lean

@@ -30,7 +30,13 @@ def run_registry(path: pathlib.Path) -> bool:
                   f"not here ({record['declaration']})")
             continue
         params = record["parameters"]
-        if record["checker"] == "witness":
+        name = record["checker"]
+        if name.startswith("contrib/"):
+            import importlib
+            module = importlib.import_module(f"checkers.contrib.{name[len('contrib/'):]}")
+            passed, detail = module.check(record.get("instance", {}), params)
+            detail = f"[contributor-checked] {detail}"
+        elif name == "witness":
             passed, detail = witness.check(record["instance"], params)
         else:
             passed, detail = enumeration.check(params)
@@ -70,6 +76,30 @@ def self_test() -> bool:
                             "axes": [{"low": 1, "high": 0}],
                             "property": "equals"})[0], False, "empty domain refused"),
     ]
+    # The contributor-checked ceiling is derived from the invocation path, so it
+    # is tested here rather than trusted.
+    import json, tempfile, shutil
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    (tmp / "checkers" / "contrib").mkdir(parents=True)
+    (tmp / "checkers" / "contrib" / "demo.py").write_text('"""d."""\ndef check(i, p):\n    return True, "ok"\n')
+    (tmp / "lean" / "Workstudio").mkdir(parents=True)
+    (tmp / "OPEN_PROBLEMS.md").write_text("### 1. item\n")
+    def registered_as(klass):
+        body = {"class": klass,
+                "statement_of_record": {"kind": "checker", "checker": "contrib/demo",
+                                        "parameters": {"property": "x"}},
+                "answers_item": "1",
+                "provenance": {"generator": "external", "review_status": "ci-only"}}
+        f = tmp / "CLAIMS.md"
+        f.write_text("### demo.claim\n\n```json\n" + json.dumps(body) + "\n```\n")
+        return registry.check(f, tmp)[0]
+    cases += [
+        (registered_as("witness-checked"), False, "contrib checker cannot claim witness-checked"),
+        (registered_as("enumeration-verified"), False, "contrib checker cannot claim enumeration-verified"),
+        (registered_as("contributor-checked"), True, "contrib checker at its ceiling is accepted"),
+    ]
+    shutil.rmtree(tmp)
+
     ok = True
     for got, want, name in cases:
         status = "ok" if got == want else "FAILED"
