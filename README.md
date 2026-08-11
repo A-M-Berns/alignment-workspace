@@ -7,10 +7,9 @@ frozen foundations they build on, and the record of every round that produced
 them.
 
 **Anyone can contribute, and quality is enforced by machine-checkable gates
-rather than by trust.** That is not a slogan about openness; it is what the
-house discipline is *for*. Exact rationals, a theorem shipping as statement +
-code + test + necessity witness, sorry-free Lean with axiom audits, checksummed
-frozen inputs, one-command verifiers — each of those makes a stranger's pull
+rather than by trust.** Exact rationals, a theorem shipping as statement + code +
+test + necessity witness, sorry-free Lean with axiom audits, checksummed frozen
+inputs, one-command verifiers — each of those is what makes a stranger's pull
 request adjudicable by a machine. See `CONTRIBUTING.md`.
 
 ## The two lines
@@ -45,7 +44,7 @@ cd lean && lake exe cache get && lake build            # the Lean, sorry-free
 Two more gates run in CI and locally: `python3 tests/audit_axioms.py` checks that
 every Lean result depends on nothing beyond `propext`, `Classical.choice` and
 `Quot.sound`, and `python3 tests/check_frozen.py` recomputes the digest of every
-frozen input. CI runs all four on every push and pull request, including
+frozen input. CI runs all eight on every push and pull request, including
 re-running the frozen consolidation's own verifier — so the repository
 continuously re-proves its own foundations rather than asserting them.
 
@@ -61,15 +60,14 @@ tests/        the repo-level runner and the gate scripts
 
 `AGENTS.md` is the binding standards document, read by agents and humans alike;
 every dispatched round inherits it. `DECISIONS.md` is the dated decision ledger,
-with what is awaiting the author at the top. `OPEN_PROBLEMS.md` is the
+with what is awaiting the author at the top. `PRIORITIES.md` is the
 contribution funnel and the source of truth for what needs doing — GitHub issues
-mirror it, not the reverse. `PROVENANCE.md` declares what in this repository was
-written by a person and what by a model, and which of the latter the author has
-reviewed.
+mirror it, not the reverse. `PROVENANCE.md` declares, per file, who generated it and
+whether a maintainer has reviewed it.
 
 ## Contributing
 
-Start at `OPEN_PROBLEMS.md`, which tags items **[entry]**, **[substantial]** and
+Start at `PRIORITIES.md`, which tags items **[entry]**, **[substantial]** and
 **[open]**. Then read `CONTRIBUTING.md`, whose opening section is for readers
 rather than contributors, and `AGENTS.md` for the standards a contribution is
 held to. The two hard rules: nothing in `frozen/` changes, and contributors do

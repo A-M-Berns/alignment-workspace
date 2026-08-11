@@ -19,6 +19,31 @@ listed at the top of each round's report until they are closed.
 
 ## Settled
 
+### 2026-08-11 — the contribution funnel is `PRIORITIES.md`
+
+Renamed from the file that held it, and reframed with it. The document says what
+the program wants done next, in the maintainer's order — not an inventory of
+everything unsolved. An item's absence means nobody has asked for it. Difficulty
+tags are unchanged, and the frozen consolidation's own list keeps its name, since
+frozen trees are not renamed.
+
+Three code paths read the file — `checkers/registry.py`, `checkers/run.py`,
+`tests/path_gate.py`. The registry's lookup had the failure mode the rename was
+most likely to trigger: a missing file produced an empty item set and every
+`answers_item` check then skipped itself while the gate stayed green. It is now a
+hard failure, and both cases are permanent self-test cases.
+
+### 2026-08-11 — slop discipline is a standard, and grounds for rejection
+
+Padding is a correctness problem in a verification repository, not a matter of
+taste: a reader who cannot tell which sentences carry content cannot audit, a
+document that restates itself hides its errors in the restatements, and volume
+inflates the cost of the maintainer review the architecture rests on. The rule is
+in `AGENTS.md`, summarized in `CONTRIBUTING.md`. Agent reports are deliverables
+under it. **A pull request whose content is correct and whose prose is padded may
+be rejected on that ground**, said plainly rather than merged and cleaned up
+after.
+
 ### 2026-08-11 — provenance is two fields, superseding the three origin classes
 
 `AGENTS.md` carried both schemes at once, so the repository did not have a
