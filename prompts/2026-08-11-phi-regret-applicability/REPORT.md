@@ -141,7 +141,7 @@ as tests and persisted in `RED_TEAM.md`; the shared-state status was changed to
 28. **Human review surfaces:** the taxonomy verdict, the choice to accept a
     finite program audit versus require a declarative rule language, and the
     unregistered evidence strength.
-29. **PR:** recorded after creation.
+29. **PR:** <https://github.com/A-M-Berns/alignment-workspace/pull/19>.
 
 ## Outstanding maintainer actions
 
