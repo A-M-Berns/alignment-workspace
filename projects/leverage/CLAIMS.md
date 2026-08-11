@@ -41,7 +41,7 @@ problem rather than done by relabelling.
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workstudio.Smoke.faf_asympEq_refl"
+    "declaration": "Workspace.Smoke.faf_asympEq_refl"
   },
   "answers_item": "13",
   "provenance": {
@@ -63,7 +63,7 @@ problem rather than done by relabelling.
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workstudio.Smoke.chain_compiles"
+    "declaration": "Workspace.Smoke.chain_compiles"
   },
   "answers_item": "13",
   "provenance": {

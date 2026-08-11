@@ -23,8 +23,8 @@ delivered state.
 3. **NORMATIVE-LEARNER migration** — under `projects/leverage/` or an
    externally-referenced repository. Its consolidation is already here, frozen;
    the question is the live tree.
-4. **Namespace names.** `Workstudio`, `Workstudio.Deference.*`,
-   `Workstudio.Leverage.*`. Cheap to change now, expensive later.
+4. **Namespace names.** `Workspace`, `Workspace.Deference.*`,
+   `Workspace.Leverage.*`. Cheap to change now, expensive later.
 5. **Frozen registration beyond the three archives.** Three registered; anything
    else is a decision.
 
@@ -136,7 +136,7 @@ identical before one was registered.
    private repository on this plan. The full payload is committed at
    `.github/branch-protection.json` with the four exact check names, so applying
    it after the visibility or plan decision is one command:
-   `gh api -X PUT /repos/A-M-Berns/alignment-workstudio/branches/main/protection --input .github/branch-protection.json`.
+   `gh api -X PUT /repos/A-M-Berns/alignment-workspace/branches/main/protection --input .github/branch-protection.json`.
    This was previously a timing question; it is now a gating one, which is why it
    is flagged rather than deferred.
 3. **The frozen archives were deleted after extraction.** The dispatch says "no

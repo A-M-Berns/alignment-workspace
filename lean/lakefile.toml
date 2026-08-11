@@ -1,5 +1,5 @@
-name = "workstudio"
-defaultTargets = ["Workstudio"]
+name = "workspace"
+defaultTargets = ["Workspace"]
 
 # Formalized-Agent-Foundations, pinned to a specific commit.
 # Mathlib and Foundation arrive transitively through it, so this repo pins one
@@ -10,4 +10,4 @@ git = "https://github.com/A-M-Berns/Formalized-Agent-Foundations.git"
 rev = "1fffea44eece253cda1722568a3adfe34e822f03"
 
 [[lean_lib]]
-name = "Workstudio"
+name = "Workspace"

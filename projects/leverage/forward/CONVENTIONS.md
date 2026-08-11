@@ -25,7 +25,7 @@ loss guarantees. A word appears in a live document only if it survives the gate;
 
 ## Status vocabulary
 
-Any claim this workspace produces, before it is consolidated, uses exactly:
+Any claim this tree produces, before it is consolidated, uses exactly:
 
 - `PROVED (single derivation)`
 - `MACHINE-CHECKED (stated finite scope)` — evidence for displayed finite

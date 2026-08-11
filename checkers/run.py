@@ -82,7 +82,7 @@ def self_test() -> bool:
     tmp = pathlib.Path(tempfile.mkdtemp())
     (tmp / "checkers" / "contrib").mkdir(parents=True)
     (tmp / "checkers" / "contrib" / "demo.py").write_text('"""d."""\ndef check(i, p):\n    return True, "ok"\n')
-    (tmp / "lean" / "Workstudio").mkdir(parents=True)
+    (tmp / "lean" / "Workspace").mkdir(parents=True)
     (tmp / "OPEN_PROBLEMS.md").write_text("### 1. item\n")
     def registered_as(klass):
         body = {"class": klass,

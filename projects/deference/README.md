@@ -27,8 +27,8 @@ repository and a Lean project.
   round.
 - `notes/` — documents for this line; see the pointer there for what is expected
   and what is not yet placed.
-- Lean for this line goes in `../../lean/Workstudio/Deference/`, under the
-  `Workstudio.Deference` namespace.
+- Lean for this line goes in `../../lean/Workspace/Deference/`, under the
+  `Workspace.Deference` namespace.
 
 ## Ledger
 

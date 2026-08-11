@@ -2,7 +2,7 @@
 
 **The `consolidation_aug9/` directory at tag `freeze/aug9-r2` is the sole
 authoritative record** of everything of
-retained mathematical value from the work preceding this workspace. It is
+retained mathematical value from the work preceding this tree. It is
 read-only by convention: nothing in this tree may edit it, and nothing in this
 tree re-freezes its own files.
 
@@ -23,7 +23,7 @@ for example "by `NL-SI-A3`, satisfiability of a declared core minimum at a date
 is a linear program". Never by reproducing the statement here, and never by
 copying its code or documents back into this tree. If a result is needed in a
 form the consolidation does not state, that is a new result and belongs in this
-workspace until it is consolidated in turn.
+tree until it is consolidated in turn.
 
 ## What it contains
 

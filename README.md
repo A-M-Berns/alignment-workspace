@@ -1,4 +1,4 @@
-# alignment-workstudio
+# alignment-workspace
 
 The working monorepo for the Berns–Demski research program. Two research lines,
 their models and proofs, the frozen foundations they build on, and the record of
@@ -52,7 +52,7 @@ continuously re-proves its own foundations rather than asserting them.
 ```
 projects/     one directory per research line; forward rounds land here
 frozen/       immutable checksummed foundations, cited by path, never edited
-lean/         one Lake project, library Workstudio, per-line namespaces
+lean/         one Lake project, library Workspace, per-line namespaces
 prompts/      every round's prompt and report, committed with the work
 tests/        the repo-level runner and the gate scripts
 ```

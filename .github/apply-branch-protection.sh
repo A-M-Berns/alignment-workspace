@@ -7,7 +7,7 @@
 # The payload is the source of truth for the required-check list.
 set -euo pipefail
 
-REPO="${REPO:-A-M-Berns/alignment-workstudio}"
+REPO="${REPO:-A-M-Berns/alignment-workspace}"
 PAYLOAD="$(dirname "$0")/branch-protection.json"
 
 echo "Applying branch protection to ${REPO}:main ..."

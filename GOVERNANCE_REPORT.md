@@ -16,7 +16,7 @@ either verifiably correct or automatically rejected.
 4. **The specification-path enumeration.** Proposed below; it lives in
    `tests/path_gate.py`.
 5. **Whether contribution namespaces are per-contributor, per-problem, or
-   pooled.** Installed as **pooled** — `Workstudio.<Line>.Contrib` and
+   pooled.** Installed as **pooled** — `Workspace.<Line>.Contrib` and
    `projects/<line>/contrib/` — because it is the option that is cheapest to
    change later. Per-problem namespaces need a naming scheme, and naming is
    reserved.
@@ -75,13 +75,13 @@ PROVENANCE.md  SETUP_REPORT.md  GOVERNANCE_REPORT.md  LICENSE  LICENSE.*
 .github/**  .gitattributes  .gitignore
 checkers/**  tests/**  frozen/**  prompts/**
 lean/lakefile.toml  lean/lean-toolchain  lean/lake-manifest.json
-lean/Workstudio.lean  lean/Workstudio/Smoke.lean
-lean/Workstudio/*/Basic.lean  lean/Workstudio/*/Spec/**
+lean/Workspace.lean  lean/Workspace/Smoke.lean
+lean/Workspace/*/Basic.lean  lean/Workspace/*/Spec/**
 projects/*/CLAIMS.md  projects/*/MODEL.md  projects/*/README.md
 projects/*/THEOREMS.md
 ```
 
-Proof layer: `lean/Workstudio/*/Contrib/**`, `projects/*/contrib/**`,
+Proof layer: `lean/Workspace/*/Contrib/**`, `projects/*/contrib/**`,
 `projects/*/rounds/**`.
 
 **The default is deliberate.** A path matching neither list is *not* specification
