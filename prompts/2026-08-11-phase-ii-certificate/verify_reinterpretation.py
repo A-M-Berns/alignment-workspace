@@ -386,9 +386,36 @@ def run_survival() -> None:
           gap_prot > bound_defect(mf.B, eps, g))
     M_S = mf.M(S)
     loaded = bound_defect(mf.B, eps, g) + 2 * M_S
-    check("L4's settlement-loaded branch is not violated here (it is loose), "
-          "so the refutation is carried by the enumeration in Sec 6",
+    check("L4's settlement-loaded branch is not violated in this family (it is "
+          "loose here); the refuting witness is the next check",
           gap_prot <= loaded)
+
+    # L4's settlement-loaded branch is FALSE under protection.  Full-support
+    # witness, the maximum-slack one in Sec 6's domain.
+    st = ["w1", "w2"]
+    wit = dict(states=st, P={"w1": Q(1, 4), "w2": Q(3, 4)}, menu=["a", "b"],
+               vplus={(w, pi): Q(1) for w in st for pi in ("a", "b")},
+               vhat={("w1", "a"): Q(0), ("w1", "b"): Q(1),
+                     ("w2", "a"): Q(0), ("w2", "b"): Q(1)},
+               X={(w, pi): Q(1) for w in st for pi in ("a", "b")}, B=Q(1))
+    wf = ProtModel(X_bot={w: Q(-1) for w in st}, kappa=free(["a", "b"]),
+                   cells=[st], **wit)
+    wp = ProtModel(X_bot={w: Q(-1) for w in st}, kappa=strict(["a", "b"]),
+                   cells=[st], **wit)
+    Sw, jw = wf.certified_set("b"), "b"
+    ew, gw, Mw = wf.epsilon(), wf.gamma(Sw), wf.M(Sw)
+    gpw = wp.V(wp.prop_delegate()) - wp.V(wp.prop_act(jw, Sw))
+    loaded_w = bound_defect(wf.B, ew, gw) + 2 * Mw
+    check("REFUTING WITNESS (full support): eps = 1, gamma = 1, M_S = 0, "
+          "gap_prot = 2 > 4/3 = 4B eps/(2B+gamma) + 2 M_S",
+          Sw == st and ew == Q(1) and gw == Q(1) and Mw == Q(0)
+          and gpw == Q(2) and loaded_w == Q(4, 3) and gpw > loaded_w,
+          "{} {} {} {} {}".format(Sw, ew, gw, gpw, loaded_w))
+    check("... while Track L's surviving branch 4B eps/gamma = 4 and the "
+          "Delta_bot form Delta_bot*min(1,2eps/gamma) = 2 both hold, the "
+          "second exactly attained",
+          gpw <= 4 * wf.B * ew / gw
+          and kappa_prot(wf.B, ew, gw, wp.delta_bot(Sw)) == Q(2))
     check("L4's settlement-free branch 4B eps/gamma = {} does bound gap_prot"
           .format(4 * mf.B * eps / g), gap_prot <= 4 * mf.B * eps / g)
 
@@ -518,6 +545,105 @@ def run_q4() -> None:
             worst = max(worst, abs(gf - gp) - 2 * mf.B * ovm)
     check("|gap_free - gap_prot| <= 2B * P(S and J != j) <= 4B eps/gamma "
           "on the whole grid", worst <= 0, "slack max = {}".format(worst))
+
+
+# --------------------------------------------------------------------------
+# 5b. Genuine coexistence: a non-strict kappa, and what its discretion is
+# --------------------------------------------------------------------------
+
+def whitelist_model(p: Q, kind: str):
+    """Three interventions, B = 1.  kappa(r) = {r, h, BOT}: the report's own
+    designation, a standing safe fallback h, and refusal.  This is the only
+    shape in which the authorized menu has two interventions at every state,
+    i.e. the only shape in which certified discretion and categorical authority
+    coexist at a state rather than partitioning the states between them."""
+    states = ["u", "wstar"]
+    P = {"u": 1 - p, "wstar": p}
+    menu = ["c", "s", "h"]
+    vhat = {(w, "c"): Q(-1, 2) for w in states}
+    vhat.update({(w, "s"): Q(-1, 2) for w in states})
+    vhat.update({(w, "h"): Q(1, 2) for w in states})
+    vplus = {("u", "c"): Q(-1, 2), ("u", "s"): Q(-1, 2), ("u", "h"): Q(1, 2),
+             ("wstar", "c"): Q(1, 4), ("wstar", "s"): Q(-1, 2),
+             ("wstar", "h"): Q(-1, 4)}
+    X = {("u", "c"): Q(0), ("u", "s"): Q(0), ("u", "h"): Q(0),
+         ("wstar", "c"): Q(1), ("wstar", "s"): Q(0), ("wstar", "h"): Q(-1)}
+    if kind == "whitelist":
+        kap = {r: frozenset({r, "h", BOT}) for r in menu}
+    elif kind == "strict":
+        kap = strict(menu)
+    else:
+        kap = free(menu)
+    return ProtModel(states, P, menu, vplus, vhat, X, Q(1),
+                     X_bot={w: Q(0) for w in states}, kappa=kap, cells=[states])
+
+
+def run_whitelist() -> None:
+    print("\n--- 5b. a non-strict kappa: where certified discretion lives ---")
+    p = Q(1, 10)
+    mw = whitelist_model(p, "whitelist")
+    ms = whitelist_model(p, "strict")
+    mf = whitelist_model(p, "free")
+    j, S = "h", mw.certified_set("h")
+    eps, g, r = mw.epsilon(), mw.gamma(S), mw.rho(S)
+    check("whitelist: S = Omega, Jhat = h with gamma = 1, eps = 3/40, rho = 1",
+          S == ["u", "wstar"] and g == Q(1) and eps == Q(3, 40) and r == Q(1),
+          "{} {} {}".format(g, eps, r))
+    check("whitelist: J(wstar) = c, so wstar is an override state for j = h",
+          mw.J("wstar") == "c" and mw.J("u") == "h")
+    # Proposition L6: every non-compliant element of the authorized menu is an
+    # override.  The whitelist enlarges the menu exactly at the states where
+    # taking the whitelisted intervention overrides the principal.
+    menus = {w: sorted(mw.kappa[mw.rho_n(w)] - {BOT}) for w in mw.states}
+    check("whitelist: the authorized menu is a singleton exactly where the "
+          "report already designates h, and has 2 elements elsewhere",
+          menus == {"u": ["h"], "wstar": ["c", "h"]}, str(menus))
+    # Proposition L6, checked over every capability assignment on this menu
+    # that protects and satisfies honesty, and every proposal:
+    #   realizing any authorized effect other than iota(rho(w)) changes the
+    #   realized effect away from DELEGATE's.  There is no third kind of option.
+    bad = 0
+    subsets = [frozenset(t) for k in range(len(mw.menu) + 1)
+               for t in combinations(mw.menu, k)]
+    for assign in product(subsets, repeat=len(mw.menu)):
+        kap = {r: assign[i] | {r, BOT} for i, r in enumerate(mw.menu)}
+        m = whitelist_model(p, "free")
+        m.kappa = {r: frozenset(v) for r, v in kap.items()}
+        for w in m.states:
+            dele = m.realize(m.prop_delegate(), w)
+            for pi in m.kappa[m.rho_n(w)]:
+                if pi == BOT:
+                    continue
+                got = m.realize(lambda x, c=pi: c, w)
+                if (got == dele) != (pi == m.J(w)):
+                    bad += 1
+    check("Proposition L6: over all {} protecting kappa on a 3-element menu, "
+          "an authorized effect equals DELEGATE's realization iff it is the "
+          "report's own designation -- every other authorized option is an "
+          "override".format(len(subsets) ** 3), bad == 0, str(bad))
+    check("whitelist: the report-independent menu is exactly {h} -- the "
+          "intervention subject to no authority relation",
+          sorted(set.intersection(*[set(mw.kappa[rr]) for rr in mw.menu]) - {BOT})
+          == ["h"])
+    # and a certificate for j = h overrides the principal at wstar
+    check("whitelist: ACT[h,S] realizes h at wstar, overriding J = c, at the "
+          "maximal per-state quantity gap 2B = 2",
+          mw.realize(mw.prop_act(j, S), "wstar") == "h"
+          and mw.X[("wstar", "c")] - mw.X[("wstar", "h")] == 2 * mw.B)
+    check("whitelist: the same conduct under strict protection realizes BOT",
+          ms.realize(ms.prop_act(j, S), "wstar") == BOT)
+    gw = mw.V(mw.prop_delegate()) - mw.V(mw.prop_act(j, S))
+    gs = ms.V(ms.prop_delegate()) - ms.V(ms.prop_act(j, S))
+    gf = mf.V(mf.prop_delegate()) - mf.V(mf.prop_act(j, S))
+    check("whitelist: gap under whitelist = gap under NO protection = {} , "
+          "twice the strict gap {}".format(gw, gs),
+          gw == gf == Q(1, 5) and gs == Q(1, 10))
+    check("whitelist: Theorem L(a)'s coarse bound 4B eps/gamma = {} holds for "
+          "all three architectures".format(4 * mw.B * eps / g),
+          max(gw, gs, gf) <= 4 * mw.B * eps / g)
+    print("    [a certificate whose j lies in the report-independent menu is")
+    print("     unconstrained by kappa: whitelist protection and no protection")
+    print("     give the identical valuation and the identical realization.]")
 
 
 # --------------------------------------------------------------------------
@@ -677,6 +803,7 @@ if __name__ == "__main__":
     run_survival()
     run_clause_iii()
     run_q4()
+    run_whitelist()
     run_enumeration()
     print("\n{} check(s) failed".format(len(FAILURES)))
     for f in FAILURES:
