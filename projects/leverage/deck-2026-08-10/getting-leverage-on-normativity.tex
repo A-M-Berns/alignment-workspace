@@ -1,0 +1,951 @@
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{stmaryrd}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{tikz}
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamersize{text margin left=0.95cm,text margin right=0.95cm}
+
+% High-contrast chalkboard palette
+\definecolor{Board}{HTML}{052B22}
+\definecolor{BoardDeep}{HTML}{031E18}
+\definecolor{Chalk}{HTML}{F8F2DF}
+\definecolor{SoftChalk}{HTML}{EFE6C9}
+\definecolor{BrightMint}{HTML}{D7FFD6}
+\definecolor{Sage}{HTML}{A8D5B3}
+\definecolor{GoldChalk}{HTML}{E3C173}
+\definecolor{Dust}{HTML}{C7D4C1}
+\definecolor{AlertGold}{HTML}{FFD06A}
+\definecolor{Auburn}{HTML}{A86B38}
+\definecolor{ChalkBlue}{HTML}{A9CEFF}
+\definecolor{ChalkPeach}{HTML}{FFC49B}
+\definecolor{ChalkRose}{HTML}{F0A8C0}
+\definecolor{ChalkLilac}{HTML}{C9B8F5}
+
+\setbeamercolor{background canvas}{bg=Board}
+\setbeamercolor{normal text}{fg=Chalk,bg=Board}
+\setbeamercolor{structure}{fg=BrightMint}
+\setbeamercolor{frametitle}{fg=Chalk,bg=Board}
+\setbeamercolor{title}{fg=Chalk}
+\setbeamercolor{subtitle}{fg=Sage}
+\setbeamercolor{author}{fg=SoftChalk}
+\setbeamercolor{date}{fg=SoftChalk}
+\setbeamercolor{math text}{fg=BrightMint}
+\setbeamercolor{math text displayed}{fg=BrightMint}
+\setbeamercolor{itemize item}{fg=GoldChalk}
+\setbeamercolor{itemize subitem}{fg=Sage}
+\setbeamercolor{aibox}{fg=Chalk,bg=BoardDeep}
+\setbeamercolor{userbox}{fg=Chalk,bg=BoardDeep}
+\setbeamercolor{warnbox}{fg=Chalk,bg=BoardDeep}
+
+\setbeamerfont{title}{series=\bfseries,size=\fontsize{30}{36}\selectfont}
+\setbeamerfont{author}{size=\fontsize{16}{20}\selectfont}
+\setbeamerfont{frametitle}{series=\bfseries,size=\fontsize{20}{24}\selectfont}
+\setbeamerfont{normal text}{size=\normalsize}
+
+\setbeamertemplate{frametitle}{%
+  \vspace{0.28cm}%
+  \insertframetitle\par%
+  \vspace{0.08cm}%
+  {\color{GoldChalk}\rule{0.22\paperwidth}{0.75pt}}%
+  \vspace{0.10cm}%
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.80\paperwidth,ht=2.35ex,dp=0.8ex,leftskip=1.2em]{normal text}%
+      \color{Sage}\scriptsize Getting leverage on normativity
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.20\paperwidth,ht=2.35ex,dp=0.8ex,rightskip=1.2em plus1fil]{normal text}%
+      \hfill\color{Sage}\scriptsize \insertframenumber/\inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+
+\newenvironment{aibox}{%
+  \begin{beamercolorbox}[rounded=true,shadow=false,wd=\textwidth,sep=0.65ex]{aibox}%
+  \fontsize{10.4}{12.4}\selectfont\color{Chalk}\textbf{\color{AlertGold}AI-draft scaffold}\par\vspace{0.15em}%
+}{\end{beamercolorbox}}
+
+\newenvironment{userbox}{%
+  \begin{beamercolorbox}[rounded=true,shadow=false,wd=\textwidth,sep=0.65ex]{userbox}%
+  \fontsize{10.4}{12.4}\selectfont\color{Chalk}\textbf{\color{BrightMint}From Anson draft / reviewed language}\par\vspace{0.15em}%
+}{\end{beamercolorbox}}
+
+\newenvironment{planbox}{%
+  \begin{beamercolorbox}[rounded=true,shadow=false,wd=\textwidth,sep=0.45ex]{aibox}%
+  \fontsize{8}{9.8}\selectfont\color{Dust}\textbf{\color{Auburn}AI scaffold --- reveal plan}\quad}{\end{beamercolorbox}}
+
+\newenvironment{ansonbox}[1]{%
+  \begin{beamercolorbox}[rounded=true,shadow=false,wd=\textwidth,sep=0.65ex]{userbox}%
+  \fontsize{13.2}{16.2}\selectfont\color{Chalk}\textbf{\color{SoftChalk}#1}\par\vspace{0.2em}%
+}{\end{beamercolorbox}}
+\newenvironment{plainbox}{%
+  \begin{beamercolorbox}[rounded=true,shadow=false,wd=\textwidth,sep=0.65ex]{userbox}%
+  \fontsize{13.2}{16.2}\selectfont\color{Chalk}%
+}{\end{beamercolorbox}}
+
+\makeatletter
+\newenvironment{outlinebox}[1]{%
+  \noindent\setlength{\fboxsep}{5pt}\setlength{\fboxrule}{1pt}%
+  \begin{lrbox}{\@tempboxa}\begin{minipage}{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}%
+  \fontsize{13.2}{16.2}\selectfont\color{Chalk}\textbf{\color{SoftChalk}#1}\par\vspace{0.25em}%
+}{\end{minipage}\end{lrbox}\fcolorbox{SoftChalk}{Board}{\usebox{\@tempboxa}}}
+\makeatother
+\makeatletter
+\newenvironment{outlineplain}{%
+  \noindent\setlength{\fboxsep}{6pt}\setlength{\fboxrule}{1pt}%
+  \begin{lrbox}{\@tempboxa}\begin{minipage}{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}%
+  \fontsize{13.2}{16.2}\selectfont\color{Chalk}%
+}{\end{minipage}\end{lrbox}\fcolorbox{SoftChalk}{Board}{\usebox{\@tempboxa}}}
+\makeatother
+\newcommand{\mintline}[1]{{\color{BrightMint}\bfseries #1}}
+\newlength{\levboxht}\setlength{\levboxht}{106pt}
+
+\newcommand{\keyline}[1]{{\color{GoldChalk}\bfseries #1}}
+\newcommand{\drafttag}{\textbf{\color{AlertGold}[AI-DRAFT]}}
+% Corner badge marking a frame whose on-slide text is currently LLM-written.
+% Delete the \llmtag line from a frame once the wording is Anson's.
+\newcommand{\llmtag}{%
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north east,xshift=-0.50cm,yshift=-0.34cm] at (current page.north east)
+{\setlength{\fboxsep}{2.8pt}\setlength{\fboxrule}{0.9pt}%
+\fcolorbox{AlertGold}{BoardDeep}{\scriptsize\bfseries\color{AlertGold}LLM-drafted text}};
+\end{tikzpicture}%
+\par\vspace*{-\baselineskip}}
+\newcommand{\eqtag}[1]{{\color{Sage}\text{#1}}}
+% Statics-recap pipeline connectives. Set per side so the *rendered ink*
+% gaps come out equal (glyph side bearings differ left vs right).
+\newcommand{\pipegapL}{21.76mu}
+\newcommand{\pipegapR}{5.29mu}
+\newcommand{\withgapL}{21.76mu}
+\newcommand{\withgapR}{7.15mu}
+
+\title{Getting Leverage on Normativity}
+\author{Anson Berns}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain,noframenumbering]
+  \vspace{1.55cm}
+  {\usebeamerfont{title}\color{Chalk}Getting Leverage on Normativity\par}
+  \vspace{0.28cm}
+  {\color{GoldChalk}\rule{0.38\paperwidth}{1.0pt}\par}
+  \vspace{0.58cm}
+  {\usebeamerfont{author}\color{SoftChalk}Anson Berns\par}
+  \vfill
+  {\color{Sage}\fontsize{13.5}{16}\selectfont Draft 8/26}
+\end{frame}
+
+\begin{frame}[t,shrink=2]{Motivation: Learning Normativity}
+\begin{ansonbox}{Learning Normativity desiderata\hfill{\normalfont\color{Dust}\small Demski 2020}}
+\begin{itemize}\setlength\itemsep{0.4em}
+  \item Whole-process, all-levels learning
+  \item The meaning of any feedback can later be reinterpreted
+  \item No final, immutable fact of the matter to discover
+\end{itemize}
+\end{ansonbox}
+\vspace{0.8em}
+\onslide<2->{{\large \textbf{\color{SoftChalk}Goal:} build a solution to these desiderata using logical induction as a key ingredient\par}}
+\end{frame}
+
+\begin{frame}[t]{The law}
+\begin{ansonbox}{A paradigm domain for Learning Normativity}
+\begin{itemize}\setlength\itemsep{0.4em}
+  \item Judicial decisions rule on all levels of legal reasoning
+  \item Rulings can always be appealed or overturned
+  \item Even the highest court might be wrong about a particular verdict
+\end{itemize}
+\end{ansonbox}
+\vspace{0.65em}
+\onslide<2->{%
+{\large It's not enough to predict human judges, we want to learn the underlying norm.\par}
+\vspace{0.45em}
+{\large\mbox{How should AI put a credence on \keyline{``John Smith should be found guilty''}?}\par}}
+\end{frame}
+
+\begin{frame}[t,shrink=2]{A middle way}
+\vspace{0.45cm}
+{\large Even though there's \keyline{no ``final answer''}, our judgments are \keyline{not arbitrary}.\par}
+\vspace{0.5cm}
+\begin{ansonbox}{Example}
+Reasoned disagreement is always possible about a legal case, but some judges are better than others
+\end{ansonbox}
+\vspace{0.75cm}
+\onslide<2->{{\large \mintline{Leverage}: how are normative beliefs \keyline{constrained}, without being pinned to a single number?\par}}
+\end{frame}
+
+\begin{frame}[t]{Two kinds of leverage}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.478\textwidth}
+\begin{ansonbox}{Coherence}
+\begin{minipage}[t][\levboxht][t]{\dimexpr\linewidth-6.5pt\relax}
+How do normative claims bear on each other?
+\onslide<2->{%
+\begin{itemize}\setlength\itemsep{0.25em}
+  \item Similar cases get similar verdicts
+  \item Doctrine and precedent
+  \item Internal logic of the law
+\end{itemize}
+\smallskip
+\onslide<3->{\mbox{\keyline{More than logical consistency}}}
+}
+\end{minipage}
+\end{ansonbox}
+\end{column}
+\begin{column}{0.478\textwidth}
+\begin{ansonbox}{Groundedness}
+\begin{minipage}[t][\levboxht][t]{\dimexpr\linewidth-6.5pt\relax}
+How do empirical claims bear on normative claims?
+\onslide<4->{%
+\begin{itemize}\setlength\itemsep{0.25em}
+  \item Physical evidence
+  \item Testimony
+  \item History and context of the legal code
+\end{itemize}
+}
+\end{minipage}
+\end{ansonbox}
+\end{column}
+\end{columns}
+\vspace{0.95em}
+\onslide<5->{{\large Particular coherence and groundedness claims are themselves up for debate\par}}
+\end{frame}
+
+\begin{frame}[t]{What logical induction is missing}
+\only<1-3>{%
+\vspace{0.55cm}
+{\fontsize{13.2}{16.8}\selectfont
+\begin{itemize}\setlength\itemsep{1.1em}
+  \item<1-> All the normative action happens with \keyline{never-settling} sentences, but settlement is what constrains prices in LI
+  \item<2-> The only kind of external \keyline{feedback} available to a vanilla logical inductor is immutable certainty from deduction
+  \item<3-> We are lacking a representation of \keyline{reasons}, the network of non-logical relationships between sentences
+\end{itemize}
+}
+}%
+\only<4>{%
+\vspace{1.5cm}
+\begin{center}
+{\fontsize{16}{22}\selectfont
+As a solution to the Learning Normativity desiderata, logical induction is missing an account of \keyline{leverage}.
+\par}
+\end{center}
+}%
+\end{frame}
+
+\begin{frame}[t]{An afoundationalist picture}
+\only<1>{%
+\vspace{0.35cm}
+\begin{outlinebox}{Foundationalist accounts}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item \textbf{\color{SoftChalk}Metaphor:} A layer of immutable bedrock underpinning every story of a tall building
+  \item Based on \keyline{self-justifying certainty}, deepest principles that can't be questioned
+\end{itemize}
+\end{outlinebox}
+}%
+\only<2->{%
+\vspace{0.25cm}
+{\fontsize{13.2}{16.8}\selectfont
+\begin{itemize}\setlength\itemsep{0.7em}
+  \item<2-> We need a new picture that's neither foundationalist nor flimsy
+  \item<3-> \textbf{\color{SoftChalk}Afoundationalist metaphor:} An impermanent seed that constrains the growth of the eventual tree without predetermining it
+  \item<3-> Based on \keyline{revisable pre-licensed entitlements}, an initial induction into the normative domain that can be questioned after learning
+  \item<4-> Defeasible bridge principles that let us go beyond coherentism
+\end{itemize}
+}
+}%
+\end{frame}
+
+\begin{frame}[t]{A bounded reasoner}
+\vspace*{0.10cm}
+{\fontsize{13.2}{16.8}\selectfont
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item<1-> Take a language $\mathcal L$, a set of logical, empirical, and normative sentences
+  \item<1-> For now, fix a time $t$ and the finite subset $\mathcal L_t\subset\mathcal L$ of currently relevant sentences
+  \item<2-> Let $\Omega_t$ be the possible worlds consistent with the settled record $D_t$ for the currently relevant sentences
+\end{itemize}
+}
+\vspace{0.05cm}
+\onslide<3->{%
+\begin{ansonbox}{Credence states}
+\smallskip
+\centering
+$\displaystyle \mu\in\Delta(\Omega_t)$
+\qquad\quad
+$\displaystyle \mu(\varphi)\;=\!\!\sum_{\substack{\omega\in\Omega_t\\ \text{with }\omega\models\varphi}}\!\!\mu(\omega)$
+\par
+\end{ansonbox}
+}
+\end{frame}
+
+\begin{frame}[t]{Warrants}
+\vspace{0.35cm}
+{\fontsize{13.2}{16.8}\selectfont
+\begin{itemize}\setlength\itemsep{0.6em}
+  \item<1-> \textbf{\color{SoftChalk}New primitive:} a \keyline{warrant} $\rho:\ \alpha(n)\rightsquigarrow\beta(n)$
+  \begin{itemize}\setlength\itemsep{0.45em}
+    \item<1-> ``$\alpha$ sentences provide support for $\beta$ sentences because of defeasible reason $\rho$''
+    \item<1-> One schema that applies to multiple cases, indexed by $n$
+  \end{itemize}
+  \vspace{0.55em}
+  \item<2-> Each warrant gets an \keyline{applicability sentence} $\mathsf{App}_\rho(n)$ in the language $\mathcal L$
+  \begin{itemize}\setlength\itemsep{0.45em}
+    \item<2-> ``Warrant $\rho$ really applies in case $n$''
+  \end{itemize}
+  \vspace{0.55em}
+  \item<3-> Warrants themselves are strengthless, numbers are going to enter contextually (soon)
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}[t]{Undercutting and rebuttal}
+\vspace{0.3cm}
+{\fontsize{13.2}{16.8}\selectfont
+This Horty-inspired setup distinguishes two kinds of \keyline{conflict} between reasons
+\par}
+\vspace{0.35cm}
+\begin{columns}[t]
+\begin{column}{0.478\textwidth}
+\begin{ansonbox}{Rebuttal}
+\centering
+$\rho:\ {\color{ChalkPeach}\alpha(n)}\rightsquigarrow{\color{ChalkBlue}\beta(n)}$
+\par\medskip
+$\rho':\ {\color{ChalkRose}\gamma(n)}\rightsquigarrow\lnot{\color{ChalkBlue}\beta(n)}$
+\par
+\end{ansonbox}
+\onslide<2->{%
+\vspace{0.6cm}
+{\fontsize{12}{15}\selectfont\centering
+\begin{tabular}{@{}c@{}}
+{\color{ChalkPeach}$\alpha$: ``Alice says she saw John do it''}\\[0.5em]
+{\color{ChalkBlue}$\beta$: ``John should be found guilty''}\\[0.5em]
+{\color{ChalkRose}$\gamma$: ``Bob says John was with him''}
+\end{tabular}\par}
+}
+\end{column}
+\begin{column}{0.478\textwidth}
+\begin{ansonbox}{Undercutting}
+\centering
+$\rho:\ {\color{ChalkPeach}\alpha(n)}\rightsquigarrow{\color{ChalkBlue}\beta(n)}$
+\par\medskip
+$\rho'':\ {\color{ChalkLilac}\delta(n)}\rightsquigarrow\lnot\mathsf{App}_\rho(n)$
+\par
+\end{ansonbox}
+\onslide<2->{%
+\vspace{0.6cm}
+{\fontsize{12}{15}\selectfont\centering
+\begin{tabular}{@{}c@{}}
+{\color{ChalkPeach}$\alpha$: ``Alice says she saw John do it''}\\[0.5em]
+{\color{ChalkBlue}$\beta$: ``John should be found guilty''}\\[0.5em]
+{\color{ChalkLilac}$\delta$: ``Alice was drunk''}
+\end{tabular}\par}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{Endorsements}
+\vspace{-0.4cm}
+{\fontsize{13.2}{16.8}\selectfont
+Now, let's add numbers:
+\par}
+\vspace{0.15cm}
+{\fontsize{13.2}{16.8}\selectfont
+\begin{itemize}\setlength\itemsep{0.6em}
+  \item<1-> An \keyline{endorsement} quantifies a warrant in a particular context
+  \item<2-> An inequality on credences like $\mu(\varphi\wedge\psi)\ge c\cdot\mu(\varphi)$, with $c\in[0,1]$, along with a \keyline{provenance} describing where this bound came from and how
+\end{itemize}
+}
+\vspace{0.32cm}
+\onslide<3->{%
+\begin{ansonbox}{Endorsed gambles\hfill{\normalfont\color{Dust}\footnotesize Desirable gambles: Walley 1991}}
+Equivalently: endorsing $E$ = accepting a \keyline{one-sided desirable gamble}
+\par\smallskip
+\centering
+$\mu(\varphi\wedge\psi)\ge c\cdot\mu(\varphi)
+\quad\Longleftrightarrow\quad
+\mu(g_E)\ge 0,
+\;\;
+g_E=\mathbf 1_{\varphi\wedge\psi}-c\cdot\mathbf 1_{\varphi}$
+\par\smallskip
+{\small\color{Dust}pay $c$ for a ticket worth $1$ if $\psi$, bet is called off unless $\varphi$ obtains}
+\par
+\end{ansonbox}
+}
+\vspace{0.02cm}
+\onslide<4->{%
+{\fontsize{13.2}{16.8}\selectfont
+The \keyline{endorsement book} $\mathcal E_t$ is the set of currently active endorsements\par}
+}
+\end{frame}
+
+\begin{frame}[t]{Three ways to endorse a warrant}
+\vspace{0.35cm}
+{\fontsize{13.2}{16.8}\selectfont
+Fix a $\rho$ and $n$ and abbreviate:\quad
+$X=\alpha(n)$\qquad $A=\mathsf{App}_\rho(n)$\qquad $Y=\beta(n)$
+\par}
+\vspace{0.55cm}
+\begin{ansonbox}{Three kinds of endorsements}
+\vspace*{-1.5em}{\makebox[\dimexpr\linewidth-6.5pt\relax][r]{\color{Dust}\footnotesize\alt<2->{division-free form}{conditional form}}\par}\vspace{0.1em}
+\smallskip
+\centering
+\begin{tabular}{@{}l@{\quad}l@{\qquad}c@{}}
+$(E_P)$ & premise & $\mu(X)\ge c_P$\\[0.8em]
+$(E_A)$ & applicability & \alt<2->{$\mu(X\wedge A)\ge c_A\cdot\mu(X)$}{$\mu(A\mid X)\ge c_A$}\\[0.8em]
+$(E_S)$ & strength & \alt<2->{$\mu(X\wedge A\wedge Y)\ge c_S\cdot\mu(X\wedge A)$}{$\mu(Y\mid X\wedge A)\ge c_S$}
+\end{tabular}
+\par
+\end{ansonbox}
+\end{frame}
+
+\begin{frame}[t]{Leverage propagation}
+\vspace{-0.5cm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.54\textwidth}
+\begin{plainbox}
+For every compatible credence state $\mu$:
+\par
+{\fontsize{13}{14.2}\selectfont
+\setlength\abovedisplayskip{1pt}\setlength\belowdisplayskip{1pt}
+\[
+\begin{aligned}
+\mu(Y)\;&\ge\; \mu(X\wedge A\wedge Y) &&{\color{Dust}\text{\small (monotonicity)}}\\[0.12em]
+\onslide<2->{&\ge\; c_S\,\mu(X\wedge A) &&{\color{Dust}(E_S)}}\\[0.12em]
+\onslide<3->{&\ge\; c_S\,c_A\,\mu(X) &&{\color{Dust}(E_A)}}\\[0.12em]
+\onslide<4->{&\ge\; c_S\,c_A\,c_P &&{\color{Dust}(E_P)}}
+\end{aligned}
+\]
+}
+\end{plainbox}
+\end{column}
+\begin{column}{0.38\textwidth}
+\begin{outlineplain}
+Suppose for some $\rho$ and $n$ we have all three endorsements:
+\par\vspace{2pt}
+\centering
+$\mu(X)\ge c_P$\par\vspace{2pt}
+$\mu(X\wedge A)\ge c_A\,\mu(X)$\par\vspace{2pt}
+$\mu(X\wedge A\wedge Y)\ge c_S\,\mu(X\wedge A)$
+\par
+\end{outlineplain}
+\end{column}
+\end{columns}
+\vspace{0.32cm}
+\onslide<5->{%
+{\centering\fontsize{13.2}{16.2}\selectfont
+Endorsements of warrants multiplicatively propagate numerical bounds from one sentence to another
+\par}
+}
+\end{frame}
+
+\begin{frame}[t]{Credal regions}
+\vspace{0.02cm}
+{\fontsize{13.2}{16.8}\selectfont
+\setlength\abovedisplayskip{4pt}\setlength\belowdisplayskip{2pt}
+What happens when endorsements act jointly?
+\onslide<2->{
+\[
+\mathcal C_t=\{\mu\in\Delta(\Omega_t):\ \mu(g_E)\ge0\ \text{for all }E\in\mathcal E_t\}
+\]}
+\par}
+\vspace{-10pt}
+\onslide<2->{%
+{\fontsize{13.2}{16.8}\selectfont
+``Every compatible credence state $\mu$'' means every $\mu\in\mathcal C_t$, distributions inside the \keyline{credal region} generated by the current endorsement book $\mathcal E_t$
+\par}
+}
+\vspace{0.12cm}
+\only<3>{%
+\begin{ansonbox}{Three levels of demandingness}
+\centering
+\begin{minipage}[t]{0.31\linewidth}\centering\small
+$\mathcal C_t=\Delta(\Omega_t)$\par\vspace{1.5pt}
+the book forces nothing
+\end{minipage}\hfill
+{\setlength\fboxsep{2.5pt}\setlength\fboxrule{0.8pt}\color{SoftChalk}%
+\fbox{\begin{minipage}[t]{\dimexpr0.34\linewidth-2\fboxsep-2\fboxrule\relax}\centering\small\color{Chalk}
+$\emptyset\ne\mathcal C_t\subsetneq\Delta(\Omega_t)$\par\vspace{1.5pt}
+constrained without being pinned
+\end{minipage}}}\hfill
+\begin{minipage}[t]{0.28\linewidth}\centering\small
+$\mathcal C_t=\emptyset$\par\vspace{1.5pt}
+the book demands irrationality\par\vspace{1.5pt}
+{\color{Dust}``sure loss''}
+\end{minipage}
+\par
+\end{ansonbox}
+}%
+\only<4->{%
+\vspace{0.12cm}
+\begin{outlineplain}
+As the intersection of finitely many halfspaces, $\mathcal C_t$ is a polytope, which lets us use the math of \keyline{linear programming}
+\end{outlineplain}
+}
+\end{frame}
+
+\begin{frame}[t]{Credal intervals}
+\vspace{-0.02cm}
+{\fontsize{13.2}{16.8}\selectfont
+Let's \textbf{\color{SoftChalk}project} onto a single sentence $\varphi$:
+\par}
+\vspace{0.12cm}
+\onslide<2->{%
+\begin{plainbox}
+Lower and upper probabilities:
+{\small\setlength\abovedisplayskip{3pt}\setlength\belowdisplayskip{2pt}
+\[
+\underline P_t(\varphi)=\min_{\mu\in\mathcal C_t}\mu(\varphi),
+\qquad
+\overline P_t(\varphi)=\max_{\mu\in\mathcal C_t}\mu(\varphi)
+\]}
+\vspace{0.55em}
+which gives a \keyline{credal interval}
+{\small\setlength\abovedisplayskip{3pt}\setlength\belowdisplayskip{0pt}
+\[
+\mu(\varphi)\in[\underline P_t(\varphi),\ \overline P_t(\varphi)]
+\]}
+\vspace{-0.6em}
+\par
+\end{plainbox}
+}
+\vspace{0.04cm}
+\onslide<3->{%
+{\fontsize{13.2}{16.8}\selectfont
+Each endpoint is the value of a finite linear program over $\mathcal C_t$, so the min and max are attained
+\par}
+}
+\end{frame}
+
+\begin{frame}[t]{Worked example}
+\vspace{-0.37cm}
+{\fontsize{11.2}{13.2}\selectfont
+At John's murder trial, he's accused of being seen in a bloody shirt:\ $\mathsf{Bloody}(\mathrm{John})\rightsquigarrow\mathsf{Guilty}(\mathrm{John})$
+\par}
+{\fontsize{11.0}{12.8}\selectfont
+\setlength\topsep{0pt}\setlength\partopsep{0pt}
+\begin{itemize}\setlength\itemsep{0.08em}
+  \item $(c_P)$ ``Was John actually bloody?''
+  \item $(c_A)$ ``Given that he was bloody, is that fact relevant to his guilt?''
+  \item $(c_S)$ ``Given that he was bloody without extenuating circumstances, how strong a reason is that for his guilt?''
+\end{itemize}
+}
+{\fontsize{12.2}{14.4}\selectfont
+Take $(c_P,c_A,c_S)=(0.9,\,0.9,\,0.9)$:
+\par}
+{\setlength\abovedisplayskip{0pt}\setlength\belowdisplayskip{0pt}
+\[
+{\small
+\mu(\mathsf{Guilty}(\mathrm{John}))\in[0,1]
+\;\overset{\text{\small endorsements}}{\Longrightarrow}\;
+\mu(\mathsf{Guilty}(\mathrm{John}))\in[\,0.729,\ 1\,]
+}
+\]}
+\onslide<2->{%
+\begin{ansonbox}{Remarks}
+{\footnotesize
+\begin{minipage}[t]{0.34\linewidth}
+\textbullet\ LP says $\mu=0.729$ is attained
+\end{minipage}\hfill
+\begin{minipage}[t]{0.62\linewidth}
+\textbullet\ A warrant like $X\rightsquigarrow\lnot Y$ can give us an upper bound below $1$
+\end{minipage}\par}
+\end{ansonbox}
+}
+\end{frame}
+
+\begin{frame}[t]{LP duality}
+\vspace{-0.3cm}
+\only<1-3>{%
+{\fontsize{12.8}{15.5}\selectfont
+Linear programming provides a \keyline{dual certificate} $(\lambda,h)$ for $\underline P_t(\varphi)$:
+\par}
+{\setlength\abovedisplayskip{3pt}\setlength\belowdisplayskip{3pt}
+\[
+{\small
+\mathbf 1_\varphi-{\color{ChalkPeach}c}\;=\;{\color{ChalkLilac}h}+\sum_{E\in\mathcal E_t}{\color{ChalkRose}\lambda_E}\,{\color{ChalkBlue}g_E},
+\qquad {\color{ChalkRose}\lambda_E}\ge0,\ {\color{ChalkLilac}h}\ge0
+}
+\]}
+{\footnotesize
+{\color{ChalkPeach}$c$: the floor being certified}\ \ \ {\color{ChalkBlue}$g_E$: accepted gambles}\ \ \ {\color{ChalkRose}$\lambda_E$: weights}\ \ \ {\color{ChalkLilac}$h$: slack}
+\par}
+{\small\centering ``In every world, $\varphi$ pays out exactly enough to cover $c$ in cash plus a bundle of bets the book already accepts, with $h$ left over.''\par}
+}%
+\only<2>{%
+\vspace{0.3cm}
+\begin{outlineplain}
+Apply $\mu\in\mathcal C_t$ to both sides:
+{\setlength\abovedisplayskip{3pt}\setlength\belowdisplayskip{3pt}
+\[
+{\small
+\mu(\varphi)-{\color{ChalkPeach}c}\;=\;\mu({\color{ChalkLilac}h})+\sum_{E\in\mathcal E_t}{\color{ChalkRose}\lambda_E}\,\mu({\color{ChalkBlue}g_E})\;\ge\;0
+}
+\]}
+A certificate demonstrates $\mu(\varphi)\ge c$ for every compatible $\mu$
+\end{outlineplain}
+}%
+\only<3>{%
+\vspace{0.3cm}
+\begin{ansonbox}{A place for whole-process feedback}
+The $E$ with $\lambda_E>0$ are the reasons cited; the dual solution is the written opinion
+\par\smallskip
+$\lambda_E$ lets us receive feedback about mixtures of lots of different reasons
+\end{ansonbox}
+}%
+\only<4->{%
+\vspace{1.1cm}
+\begin{ansonbox}{Off-the-shelf machinery\hfill{\normalfont\color{Dust}\small Lukasiewicz 2001}}
+\smallskip
+{\fontsize{12.5}{15.5}\selectfont
+\begin{itemize}\setlength\itemsep{0.5em}
+\item Our division-free bounds are \keyline{conditional constraints} $\mu(\psi\wedge\varphi)\ge\ell\cdot\mu(\varphi)$
+\begin{itemize}
+\item {\small An endorsement compiles to an already-understood object}
+\end{itemize}
+\item Two LPs compute $\underline P_t,\ \overline P_t$\qquad $\mathcal C_t\ne\emptyset\iff$ feasibility (Farkas' Lemma)
+\begin{itemize}
+\item {\small The natural problems come pre-solved}
+\end{itemize}
+\end{itemize}
+}
+\end{ansonbox}
+}
+\end{frame}
+
+\begin{frame}[t]{Statics recap}
+\only<1-4>{%
+\vspace{-0.4cm}
+{\setlength\abovedisplayskip{4pt}\setlength\belowdisplayskip{2pt}
+\[
+{\small
+\underbrace{\rho:\ \alpha(n)\rightsquigarrow\beta(n)}_{\color{Dust}\text{relevance}}
+\mskip\pipegapL\text{and}\mskip\pipegapR
+\underbrace{\mathcal E_t}_{\color{Dust}\text{strength}}
+\;\longrightarrow\;
+\underbrace{\mathcal C_t}_{\color{Dust}\text{geometry}}
+\;\longrightarrow\;
+\underbrace{[\,\underline P_t(\varphi),\ \overline P_t(\varphi)\,]}_{\color{Dust}\text{leverage}}
+\mskip\withgapL\text{with}\mskip\withgapR
+\underbrace{(\lambda,h)}_{\color{Dust}\text{justification}}
+}
+\]}
+\onslide<2->{%
+{\fontsize{13.2}{16.8}\selectfont
+Put in endorsed warrants, get out a justified credal interval
+\par}
+}
+\vspace{0.01cm}
+\onslide<3->{%
+{\fontsize{11.5}{13.8}\selectfont
+\setlength\topsep{1pt}
+\begin{itemize}\setlength\itemsep{0.25em}
+\item \textbf{\color{SoftChalk}``Middle way'' constraints:} real numerical constraints, not from settlement
+\item \textbf{\color{SoftChalk}Reasoned disagreement:} you can accept the whole book and still disagree
+\end{itemize}
+}
+}
+\vspace{0.22cm}
+\onslide<4->{%
+\begin{ansonbox}{Epistemic graphs\hfill{\normalfont\color{Dust}\small Hunter--Polberg--Thimm 2020}}
+{\fontsize{11}{13.5}\selectfont
+\setlength\topsep{1pt}
+\begin{itemize}\setlength\itemsep{0.15em}
+\item Linear constraints on credences in probabilistic argumentation
+\item Change over time only as one-shot belief revision: no settlement, no learning
+\end{itemize}
+}
+\end{ansonbox}
+}
+}%
+\only<5>{%
+\vspace{1.5cm}
+\begin{center}
+{\fontsize{16}{22}\selectfont
+Can we now move towards a \keyline{dynamics} of leverage?
+\par}
+\end{center}
+}%
+\end{frame}
+
+\begin{frame}[t]{Provenance matters}
+\vspace{-0.32cm}
+{\fontsize{12}{14.2}\selectfont
+Remember that every endorsement comes with a \keyline{provenance}, a ``paper trail'' identifying where the bound is coming from and what licensed it
+\par}
+\vspace{0.09cm}
+\onslide<2->{%
+{\fontsize{12}{14.2}\selectfont
+\textbf{\color{SoftChalk}Tempting but bad idea:} discard the provenance and just work with the quantitative credal geometry
+\par}
+}
+\vspace{0.28cm}
+\onslide<3->{%
+\begin{outlineplain}
+{\footnotesize Two warrants $\rho:\alpha(n)\rightsquigarrow\beta(n)$ and $\sigma:\gamma(n)\rightsquigarrow\beta(n)$, each endorsed at the same $(c_P,\,c_A,\,c_S)$:\par}
+\vspace{-9pt}
+{\setlength\abovedisplayskip{0pt}\setlength\belowdisplayskip{0pt}
+\[
+{\footnotesize
+\mu(\beta(n))\ge c_P\,c_A\,c_S\ \ {\color{Dust}\text{(via $\rho$)}}
+\qquad\qquad
+\mu(\beta(n))\ge c_P\,c_A\,c_S\ \ {\color{Dust}\text{(via $\sigma$)}}
+}
+\]}
+\vspace{-1.15em}
+\end{outlineplain}
+}
+\vspace{0.33cm}
+\only<4-5>{%
+\begin{minipage}[t]{0.475\linewidth}
+\onslide<4->{%
+\begin{ansonbox}{Conflict}
+{\footnotesize Undercutter: $\delta(n)\rightsquigarrow\lnot\mathsf{App}_\rho(n)$\par\vspace{1.5pt}
+The bound relaxes for $\rho$ and is unchanged for $\sigma$}
+\end{ansonbox}
+}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.475\linewidth}
+\onslide<5>{%
+\begin{ansonbox}{Accrual}
+{\footnotesize Should $\rho$ and $\sigma$ together mean a tighter bound than either alone?}
+\end{ansonbox}
+}
+\end{minipage}
+}%
+\only<6->{%
+\par\vspace*{0.55cm}
+{\fontsize{12.8}{15.5}\selectfont
+\textbf{\color{SoftChalk}Warrants with the same static geometry can have different dynamics}
+\par}
+}
+\end{frame}
+
+\begin{frame}[t]{Logical induction for normativity?}
+\vspace{0.3cm}
+{\fontsize{13.2}{16.8}\selectfont
+Let's connect back to our motivation:
+\par}
+\vspace{0.9cm}
+\onslide<2->{%
+\begin{outlineplain}
+{\fontsize{13.5}{17}\selectfont
+A sharpened \keyline{desideratum}: any LI-based solution to Learning Normativity must have prices that respond to \textbf{\color{SoftChalk}leverage}
+\par}
+\end{outlineplain}
+}
+\end{frame}
+
+\begin{frame}[t]{Warning}
+\begin{center}
+\vspace*{-0.10cm}
+\includegraphics[height=2.35cm]{warning_symbol_yellow_transparent.png}\par
+\vspace{0.60cm}
+{\fontsize{17.5}{21}\selectfont Claims from this point on rest on LLM-assisted work}\par
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Not so easy}
+\vspace{-0.26cm}
+{\fontsize{12.2}{14.8}\selectfont
+We want the price to respect the book:\ \ $p_t(\mathsf{Guilty}(\mathrm{John}))\ge 0.729$
+\par}
+\vspace{0.06cm}
+{\fontsize{11.2}{13.5}\selectfont
+\setlength\topsep{1pt}
+\begin{itemize}\setlength\itemsep{0.24em}
+\item<2-> Doesn't vanilla LI already do this? \textbf{\color{SoftChalk}Not in general: only settlement and logic force prices}
+\item<3-> Declare the sentence settled? \textbf{\color{SoftChalk}Goes against the whole point}
+\item<4-> Add a trader representing the bound? \textbf{\color{SoftChalk}They'll go broke}
+\item<5-> Make the trader rich? \textbf{\color{SoftChalk}The market can't tell wealth from evidence}
+\end{itemize}
+}
+\vspace{0.10cm}
+\onslide<6->{%
+\begin{ansonbox}{Where can force enter?\quad{\normalfont\fontsize{10.8}{13.2}\selectfont Three LI objects we could modify:}}
+{\fontsize{10.8}{13.2}\selectfont
+\begin{minipage}[t]{0.30\linewidth}\centering
+\textbf{\color{SoftChalk}Settlement}\\[0.25em]
+Abandons the phenomenon
+\end{minipage}\hfill
+\begin{minipage}[t]{0.28\linewidth}\centering
+\textbf{\color{SoftChalk}Traders}\\[0.25em]
+Needs unlimited external funding
+\end{minipage}\hfill
+{\setlength{\fboxsep}{5pt}\setlength{\fboxrule}{1pt}%
+\fcolorbox{SoftChalk}{BoardDeep}{\begin{minipage}[t]{0.26\linewidth}\centering
+\textbf{\color{SoftChalk}Market Maker}\\[0.25em]
+Most promising idea
+\end{minipage}}}\par
+\vspace{0.10em}}
+\end{ansonbox}
+\vspace{0.10cm}
+}
+\end{frame}
+
+\begin{frame}[t]{Modifying the market maker}
+\vspace{-0.16cm}
+{\fontsize{12.2}{14.8}\selectfont
+\textbf{\color{SoftChalk}New rule:}\ \ the market maker's quotes must respect the current book, $p_t\in\mathcal C_t$
+\par}
+\vspace{0.20cm}
+{\fontsize{11.8}{14.4}\selectfont
+Can traders exploit this modification?
+\par}
+\vspace{0.26cm}
+\onslide<2->{%
+% Display matches DECK_FACTS.md fact 2 / OF1_INDEPENDENT_AUDIT.md (packet, Aug 3).
+% Deck-local renames for obviousness, to propagate at consolidation: B -> R (risk budget), D_N -> M_N (movement meter).
+\begin{ansonbox}{Operative-Force Wealth Bound}
+\vspace{0.10em}
+{\centering
+{\fontsize{13}{16}\selectfont
+{\color{ChalkBlue}\textbf{winnings}}\;$\le$\;{\color{ChalkLilac}\textbf{slack}}\;$+$\;{\color{ChalkPeach}\textbf{rate}}\;$\times$\;({\color{SoftChalk}\textbf{risk}}\;$+$\;{\color{ChalkRose}\textbf{movement}})
+\par}
+\vspace{0.30em}
+{\fontsize{9.5}{11.5}\selectfont
+${\color{ChalkBlue}G_N(w)}\;\le\;{\color{ChalkLilac}\varepsilon_{1:N}}/{\color{ChalkPeach}\theta}\;+\;{\color{ChalkPeach}\bigl((1-\theta)/\theta\bigr)}\,\bigl({\color{SoftChalk}R}+{\color{ChalkRose}M_N}\bigr)$
+\par}
+\vspace{0.40em}
+{\fontsize{11.2}{13.8}\selectfont
+If the book always leaves the market maker at least a $\theta$-share of its freedom to quote, then it's not exploitable.
+\par}\vspace{0.10em}}
+\end{ansonbox}
+}
+\end{frame}
+
+\begin{frame}[t]{Answerability}
+\vspace{-0.06cm}
+{\fontsize{11.6}{14.2}\selectfont
+Now endorsements constrain prices, what constrains endorsements?
+\par}
+\vspace{0.20cm}
+\onslide<2->{%
+\begin{ansonbox}{Mechanism}
+\vspace{0.10em}
+{\fontsize{10.8}{13.4}\selectfont
+Challengers post a bond and issue \keyline{challenges} against particular commitments of the book, governed by checkable rules. The book pays \keyline{charges} to the challenger each period until it \keyline{answers}: refuting the challenge under the rules, or revising through an authorized route. A book is \keyline{answerable} if every challenge eventually ends, every revision travels an authorized route, and the total charges ever paid are finite.
+\par}\vspace{0.10em}
+\end{ansonbox}
+}
+\vspace{0.26cm}
+\onslide<3->{%
+{\centering\fontsize{11.8}{14.4}\selectfont
+\textbf{\color{SoftChalk}Diachronic criterion:} you must be answerable to your past self
+\par}
+}
+\end{frame}
+
+\begin{frame}[t]{Learning without ground truth}
+\vspace{-0.06cm}
+{\fontsize{11.6}{14.2}\selectfont
+What constitutes improvement when there is no objective standard?
+\par}
+\vspace{0.20cm}
+\onslide<2->{%
+\begin{ansonbox}{$\Phi$-regret\hfill{\normalfont\color{Dust}\small Greenwald--Jafari 2003}}
+\vspace{0.02em}
+{\fontsize{10.8}{13.4}\selectfont
+How much loss $\ell_t$ can be reduced from action $a_t$ within a single edit class $\Phi$:
+\par}
+{\setlength\abovedisplayskip{1pt}\setlength\belowdisplayskip{0pt}
+\[
+{\small
+R_T^{\Phi}\;=\;\sup_{\varphi\in\Phi}\ \sum_{t\le T}\bigl[\,\ell_t(a_t)-\ell_t(\varphi(a_t))\,\bigr]
+}
+\]}
+\end{ansonbox}
+}
+\vspace{0.20cm}
+\onslide<3->{%
+{\fontsize{10.9}{13.4}\selectfont
+Take $\ell_t$ = charges owed and $\Phi$ = the \keyline{lawful} edits of the book
+\par}
+\vspace{0.20cm}
+{\fontsize{10.9}{13.4}\selectfont
+\textbf{\color{SoftChalk}Lawfulness:} part global condition (\keyline{answerability}) and part local condition (\keyline{reasons-responsiveness})
+\par}
+}
+\end{frame}
+
+\begin{frame}[t]{Status of LLM work}
+\vspace{0.06cm}
+{\fontsize{10.6}{13.2}\selectfont
+\setlength\topsep{1pt}
+\begin{itemize}\setlength\itemsep{0.34em}
+\item \textbf{\color{SoftChalk}Force:} not exploitable while a core of quoting freedom is preserved
+\item \textbf{\color{SoftChalk}Answerability:} an explicit policy is answerable from any authorized start; minimum funding exact
+\item \textbf{\color{SoftChalk}Composition:} both pressures on one history; no interference as long as funding is kept separate
+\item \textbf{\color{SoftChalk}Identity:} obligations survive vocabulary change; nothing merges silently
+\item \textbf{\color{SoftChalk}Demand:} bounded liability forces rulings to track admitted arrivals
+\item \textbf{\color{SoftChalk}Settlement:} an interface world-reports must meet before they get force
+\item \textbf{\color{SoftChalk}Learning:} candidate criterion; staged proof plan
+\end{itemize}
+}
+\vspace{0.18cm}
+\onslide<2->{%
+\begin{ansonbox}{In the repo}
+\vspace{0.06em}
+{\fontsize{9.8}{12.2}\selectfont
+Finite models in Python; hand proofs of theorems; one script checks every claim
+\par}
+\end{ansonbox}
+}
+\end{frame}
+
+\begin{frame}[t]{Open questions}
+\vspace{0.12cm}
+{\fontsize{12.2}{15.4}\selectfont
+\setlength\topsep{1pt}
+\begin{itemize}\setlength\itemsep{1.25em}
+\item What precisely is ``reasons-responsiveness''?
+\item What's the real relationship to LI? Is this a new LI-like construction, or an extension of LI?
+\item What should demand optimize for? The existing \keyline{docket} story just gives a feasible region
+\item Where exactly do endorsements come from? Candidate answer: \keyline{inquiry}
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}[t]{Conclusion}
+\vspace{1.55cm}
+{\setlength{\fboxsep}{6pt}\setlength{\fboxrule}{1pt}%
+\centering
+\onslide<1->{\fcolorbox{SoftChalk}{Board}{\begin{minipage}[c]{\dimexpr0.26\linewidth-2\fboxsep-2\fboxrule\relax}
+{\fontsize{10.5}{13.2}\selectfont\color{Chalk}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000
+The \textbf{\color{SoftChalk}concept} of leverage is what's missing from logical induction for normativity\par}
+\end{minipage}}}%
+\onslide<2->{\ {\Large$\longrightarrow$}\ }%
+\onslide<2->{\fcolorbox{SoftChalk}{Board}{\begin{minipage}[c]{\dimexpr0.26\linewidth-2\fboxsep-2\fboxrule\relax}
+{\fontsize{10.5}{13.2}\selectfont\color{Chalk}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000
+The \textbf{\color{SoftChalk}statics} of leverage use known math for a concrete desideratum\par}
+\end{minipage}}}%
+\onslide<3->{\ {\Large$\longrightarrow$}\ }%
+\onslide<3->{\fcolorbox{SoftChalk}{Board}{\begin{minipage}[c]{\dimexpr0.26\linewidth-2\fboxsep-2\fboxrule\relax}
+{\fontsize{10.5}{13.2}\selectfont\color{Chalk}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000
+The \textbf{\color{SoftChalk}dynamics} of leverage give rise to hard, but tractable problems with open design questions\par}
+\end{minipage}}}\par}
+\end{frame}
+
+\begin{frame}[t]{References}
+\vspace{0.15cm}
+{\small
+\begin{itemize}\setlength\itemsep{0.45em}
+  \item A. Demski. \emph{Learning Normativity: A Research Agenda.} Alignment Forum, 2020.
+  \item A. Greenwald and A. Jafari. A general class of no-regret learning algorithms and game-theoretic equilibria. \emph{COLT}, 2003.
+  \item A. Hunter, S. Polberg, and M. Thimm. Epistemic graphs for representing and reasoning with positive and negative influences of arguments. \emph{Artificial Intelligence} 281:103236, 2020.
+  \item T. Lukasiewicz. Probabilistic logic programming with conditional constraints. \emph{ACM Transactions on Computational Logic} 2(3):289--339, 2001.
+  \item S. Nair and J. Horty. The logic of reasons. In D. Star (ed.), \emph{The Oxford Handbook of Reasons and Normativity}. Oxford University Press, 2018.
+  \item P. Walley. \emph{Statistical Reasoning with Imprecise Probabilities.} Chapman \& Hall, 1991.
+\end{itemize}
+}
+\end{frame}
+
+\end{document}

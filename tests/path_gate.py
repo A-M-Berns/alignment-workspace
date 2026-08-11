@@ -32,6 +32,7 @@ SPEC_PATHS = (
     # Consolidated trees. Ordinary content, but not contributors' to edit:
     # the protection that used to be a hash gate is this list plus review.
     "projects/leverage/consolidation-aug9/**",
+    "projects/leverage/deck-2026-08-10/**",
     "projects/deference/note-dump-2026-06-27/**",
     "projects/deference/dose-response-note-dump-2026-07-02/**",
     "projects/deference/references-citations-2026-08-11/**",
@@ -122,6 +123,14 @@ def self_test() -> int:
          is_spec("projects/aline/notes/sub/dir/thing.txt"), True),
         ("a contribution surface under notes stays proof layer",
          is_spec("projects/aline/notes/contrib/x.py"), False),
+        # Author-written material is enumerated like a received tree: a
+        # contributor may cite it and may not edit it. An unlisted path defaults
+        # to the proof layer, so the enumeration is the whole protection.
+        ("the author's deck is specification",
+         is_spec("projects/leverage/deck-2026-08-10/ORIGIN.md"), True),
+        ("a round output tree stays proof layer",
+         is_spec("projects/leverage/rounds/2026-08-11-phi-regret-prep/src/model.py"),
+         False),
         ("the maintainer set is non-empty", bool(MAINTAINERS), True),
         ("no specification pattern is empty", all(SPEC_PATHS), True),
     ]
