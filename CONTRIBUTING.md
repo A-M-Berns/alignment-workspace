@@ -11,11 +11,12 @@ consolidation, for instance, separates machine-checked results from hand-derived
 ones from transcribed ones from a reading audit, and says which is which per
 claim.
 
-**2. Read provenance before you cite.** Every artifact declares an origin class:
-`human`, `llm-reviewed`, or `llm-unreviewed`. The last one means exactly what it
-says — LLM-generated and not yet author-reviewed. It is allowed here, because
-this is a working repository and a label that lies is worse than an honest one,
-but it is never hidden. See `AGENTS.md`.
+**2. Read provenance before you cite.** Every artifact declares two things: its
+**generator** — a maintainer, a maintainer's round, or an external contributor —
+and its **review status**, `maintainer-reviewed` or `ci-only`. `ci-only` means
+exactly what it says: the gates passed and no maintainer has read it. It is
+allowed here, because this is a working repository and a label that lies is worse
+than an honest one, but it is never hidden. See `AGENTS.md`.
 
 **3. Documentation comes in two registers by design.** The verification register
 is precise and dense, for auditing and for agents. The human register explains

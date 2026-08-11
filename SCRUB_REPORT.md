@@ -134,11 +134,11 @@ standing, without rewriting to smooth the seam.
 | a conclusion that a direction does not deliver | the conclusion | the following sentences about grant timelines, meetings, deliverables, and the exhaustion of sitting in a stuck state |
 | a hand-off instruction to a fresh model instance | the technical instruction | the parenthetical identifying the deliverable as a note for his mentor |
 | a section heading reading "What this means for the meeting" | — | the heading, replaced by `[scrubbed]` |
-| "the thing I'd actually want you to say to Demski, because he's exactly the person who…" | the intellectual content that followed | the characterization of the person |
+| a passage naming a maintainer as "exactly the person who…" | the intellectual content that followed | the characterization of the person |
 
 ## Judged and kept — with reasons, so they can be reversed
 
-**"For the meeting with Demski: …" as an occasion frame.** Roughly a dozen
+**"For the meeting with …" as an occasion frame.** Roughly a dozen
 passages open this way and then deliver research content — what the negative
 result is, why option B is the direction, that the computability assumption was
 not actually relaxed. **I cut explicit mentorship management** — what the mentor

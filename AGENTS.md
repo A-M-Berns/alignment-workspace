@@ -102,6 +102,19 @@ With the same care as what was. Every report carries a section saying what its
 work does **not** establish: which hypotheses are assumed, which evidence is
 weaker than it looks, which claim rests on a reading rather than a proof.
 
+### 9b. Reserved items are listed as outstanding actions
+
+A report that reserves something to the maintainer ends with an **Outstanding
+maintainer actions** section listing it — numbered, each with the exact command
+or decision required. Prose is not enough. A reserved item mentioned only in the
+body of a report is one the maintainer will not act on, and the round will read
+as complete while its last step is undone.
+
+The standing example: the round that renamed everything in-repo correctly left
+the settings-side repository rename to the maintainer and said so in prose. No
+list surfaced it, so it went unperformed while two files in the tree already
+pointed at the new name.
+
 ### 10. Authoritative artifacts live on the author's machine
 
 Agents propose changes as diffs or prompts **unless the round explicitly grants
@@ -142,20 +155,27 @@ not finished, and a result that cannot be explained plainly is not understood.
 
 ## Provenance
 
-**Three origin classes**, declared per artifact:
+**Two fields**, declared per artifact. They are independent: who produced a
+thing and whether anyone has vouched for it are different questions, and
+collapsing them into one label loses the case this repository most needs to
+express — an external contributor's work, which no maintainer wrote and no
+maintainer has reviewed.
 
-| class | meaning |
+| field | values |
 |---|---|
-| `human` | author-written |
-| `llm-reviewed` | LLM-generated; the author has done a pass and stands behind it |
-| `llm-unreviewed` | LLM-generated, not yet author-reviewed |
+| **generator** | a maintainer; a maintainer's round, named by its directory under `prompts/`; or **external**, with a pull-request link |
+| **review status** | `maintainer-reviewed` — a maintainer has passed over it and stands behind it — or `ci-only` |
 
-`llm-unreviewed` **is allowed** — this is a working repository, and pretending
-otherwise would just make the labels lie. But it must be labelled, and
-**headline or flagship documents may not remain in that state**.
+Where the generator is a model, name the model. Where the prompt author and the
+executor differ, which is the normal case for a dispatched round, name both.
+
+`ci-only` **is allowed, honest, and expected to be common** — this is a working
+repository, and a scheme that made the label embarrassing would just make it
+lie. What CI checked, it checked; what no one read, no one read. But it must be
+labelled, and **headline or flagship documents may not remain `ci-only`**.
 
 **Mechanics.** A `PROVENANCE.md` in each results directory, one line per file or
-glob, carrying: origin class; generator and date; the originating round under
+glob, carrying: generator; review status; the date; the originating round under
 `prompts/`; and — where one exists — the originating chat bundle in `frozen/`.
 The pull-request template asks for provenance entries added or updated alongside
 new names introduced.
@@ -174,6 +194,16 @@ wrote the dispatch and `Model:` for the executor. An agent self-identifies
 accurately; guessing is worse than `unrecorded`. Each round directory under
 `prompts/` carries an attribution block in its report: prompt-author model,
 executor model, dates.
+
+Attribution is recorded at **both** levels — per commit as a trailer, and once
+in the pull-request body under **Model attribution**. The two are not
+redundant. A reviewer reads the pull request, not each commit in turn, so a
+trailer-only record is one nobody sees at the moment attribution matters. And a
+squash merge composes its message from the pull-request body: without the
+section, the squashed commit inherits whatever GitHub assembles, and the
+attribution silently disappears from `main`'s history. **When squashing, carry
+the Model attribution section into the squashed message.** CI checks that the
+section exists and is non-empty; it cannot check that what it says is true.
 
 **The chat-bundle pointer is optional**, filled when a bundle exists and absent
 otherwise. No artifact, flagship or not, is required to have one.
@@ -447,11 +477,10 @@ The proof layer accepts anonymous and pseudonymous contributions, and **identity
 is never a factor in a verdict there**. Any reputation mechanics apply only where
 human judgment is spent: specification proposals and problem proposals.
 
-Provenance records two fields per artifact: **generator** — maintainer,
-maintainer's round N, or external with a pull-request link — and **review
-status** — `maintainer-reviewed` or `ci-only`. `ci-only` is honest,
-representable, and expected to be common; flagship documents may not remain in
-it.
+This is why provenance records **generator** and **review status** separately
+rather than as one label: an external contribution is `ci-only` by a
+non-maintainer, and no single class says that. The fields are defined once, in
+*Provenance* above.
 
 ## Security
 

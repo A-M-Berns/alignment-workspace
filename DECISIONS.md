@@ -19,6 +19,62 @@ listed at the top of each round's report until they are closed.
 
 ## Settled
 
+### 2026-08-11 — provenance is two fields, superseding the three origin classes
+
+`AGENTS.md` carried both schemes at once, so the repository did not have a
+provenance scheme; it had two. Resolved to **generator** plus **review status**.
+
+The three-class scheme cannot express the case this repository is built for: an
+external contribution is neither `human` in the sense meant (a maintainer wrote
+it) nor `llm-reviewed` (nobody reviewed it), and calling it `llm-unreviewed`
+asserts a generator nobody knows. Who made a thing and whether anyone vouches for
+it are independent, and one label cannot carry both.
+
+`ci-only` replaces `llm-unreviewed` as the ordinary honest state. Dependent
+references were updated in `PROVENANCE.md`, `CONTRIBUTING.md`, `README.md` and
+the pull-request template. Completed round reports keep the vocabulary that was
+true when they were written; no script parsed the class names.
+
+### 2026-08-11 — model attribution is recorded at the pull request as well
+
+Trailers alone are invisible where attribution matters — a reviewer reads the
+pull-request body, not each commit — and a squash merge composes its message from
+that body, so a trailer-only record can vanish from `main` entirely. The template
+now carries a **Model attribution** section and CI checks it is present and
+non-empty. Like the DCO gate, it checks that an assertion was made, not that it is
+true. `unrecorded` is a correct answer; a guess is not.
+
+### 2026-08-11 — the program has no name, and a lint keeps it that way
+
+`README.md` described the work as a program named after its two maintainers,
+against the standing names-off posture. Rewritten as a description of what the
+program is. **The program is not named**, and naming it is reserved.
+
+`tests/name_lint.py` scans tracked Markdown outside `prompts/` and `frozen/` for
+maintainers' personal names, exempting this ledger and anything inside backticks.
+It exists because the licensing round's residue sweep reported clean while that
+README line sat in plain sight: the sweep searched for change-memorial phrasing
+and could not see a standing decision being violated. A decision that is only
+written down gets re-violated.
+
+**The 2026-08-10 name-and-scope entry below keeps its wording.** It is a dated
+record of a decision made before the names-off posture existed, no document
+depends on it, and the ledger is where history lives — which is why the lint
+exempts this file rather than this file being rewritten to satisfy the lint. Two
+passages in `SCRUB_REPORT.md` that the lint did catch were generalized.
+
+### 2026-08-11 — reserved items are listed, not mentioned
+
+A report that reserves something to the maintainer ends with **Outstanding
+maintainer actions**. Prose is not enough: the rename round left the settings-side
+repository rename to the maintainer, said so in the body of its report, and the
+rename went unperformed while the tree already pointed at the new name.
+
+Two round records missing from `prompts/` were reconstructed in the same round,
+marked as after-the-fact rather than presented as contemporaneous. One dispatch is
+unrecoverable and is recorded as unavailable rather than paraphrased into
+existence.
+
 ### 2026-08-11 — the repository, the Lean library, and the forward tree renamed
 
 Three names, settled together because they collide with each other.
