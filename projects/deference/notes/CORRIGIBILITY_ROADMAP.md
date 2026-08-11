@@ -66,6 +66,29 @@ discretion occur often enough to be useful?
 movement within it is the normative-learning question, deliberately not pulled into
 this theorem.
 
+## The layered decomposition
+
+The arc says what the paper argues; this says what depends on what. A layer cannot
+be stated meaningfully before the layers above it are settled.
+
+| layer | question |
+|---|---|
+| **source / authority** | the actual principal versus simulator substitution |
+| **settlement / epistemic** | derive a statistical grade-to-quantity relation |
+| **decision** | the finite trust-to-value bridge |
+| **autonomy** | the local certificate and bounded discretionary risk |
+| **anticipation** | fully updated deference |
+| **influence** | dose and endpoint steering |
+
+Underwriting is not a layer. It is a classified enforcement mechanism and a residual
+implementation option, priced exactly, invoked where the layers above do not reach.
+
+Two orderings in this table are results rather than preferences. Source precedes
+anticipation, because an extensional delegation predicate provably cannot delimit
+the comparator class that fully updated deference quantifies over. And settlement
+precedes decision, because the same inequality reads as epistemic trust or as
+enforced conformity depending on a choice not yet made.
+
 ## Work packages
 
 | id | scope | state |
@@ -85,9 +108,31 @@ this theorem.
 
 Fixed for the current architecture; a round may not quietly relax them.
 
+**Categorical authority, quantitative autonomy.** These are two different things and
+the architecture keeps them apart. *Actual corrective authority is categorical and
+non-preemptive*: when the protected principal channel is invoked, its authority wins
+by architecture, not by an inequality. *Autonomous discretion is quantitative and
+certified*: certificates answer when and how much discretion may safely operate
+**around** that authority relation. Corrigibility is **not** redefined as "preempts
+only at a bounded rate" — a bounded rate is a statement about autonomy, not about
+authority.
+
+This split is forced by a wave-1 impossibility: no certificate licensing discretion
+anywhere is strictly non-preemptive, at any positive tolerance. Read as a claim about
+authority that would be fatal; read as a bound on autonomy it is the right kind of
+result, and the split is what makes the difference.
+
 **Fail-closed.** Certification gates `A`'s discretion, never human correction:
 `¬Cert` means `A`'s discretionary authority is disabled or ceded. It must never mean
-that human correction waits for `A` to become convinced.
+that human correction waits for `A` to become convinced. Under a protected execution
+layer this obligation strengthens: `¬Cert` must cede to the *channel*, and `A` must
+be unable to act without authorization — which a model carrying no capability
+structure cannot discharge.
+
+**Prediction of authorization is not authorization.** The protected role is causal
+and capability-based, not epistemic; the principal may be perfectly predictable. The
+guarantee lapses entirely if `A` can forge, bypass, rewrite or seize the protected
+channel, and that lapse belongs in the hypotheses of any theorem stated over it.
 
 **Placement precedes settlement.** A placement selector uses information available
 at decision time; a settlement gate uses information available at `F(n)`. Future
@@ -109,19 +154,46 @@ realized conduct and a meaningful `π^{FU,g}`, permit intended advisory influenc
 resist laundering through semantically equivalent intermediates, **and leave the
 trust-forcing proof machinery itself admissible.** The last is the one that bites.
 
-## Settlement architecture — candidate, not endorsed
+Wave 1 added a consequence: admissibility must be **two-sorted**, restricting
+settlements differently from weights, selections and schedules. A single uniform
+bound over all quote-responsive objects admits the inherited forcing gate only above
+the reciprocal of its gate width, so no finite uniform bound admits the sharp
+trader. The two-sortedness — not any dependence criterion — is the substantive
+content.
 
-Three reaches, and the program has not decided how they combine:
+## Settlement architecture
+
+Three reaches:
 
 1. **world settlement** where an empirical quantity genuinely settles;
 2. **principal-report settlement**, which settles what the designated principal
    judged and *not* that the judgment was independently correct;
 3. **enforcement / underwriting** where nothing independently settles.
 
-The candidate hybrid applies all three to the components each reaches. It is marked
-candidate because the choice is a maintainer decision, and because the honest
-outcome may be that the architecture delivers enforced conformity rather than
-epistemic trust. That outcome would be a result, not a failure.
+**Enforcement is a residual mechanism, not the spine.** Wave 1 established what it
+costs and what it buys: unconditional conformity is purchasable at a bond of exactly
+`2B` per unit of disagreement, for every instance, with **zero competence
+requirement on the principal** and therefore zero epistemic content. That is a sharp
+finite classification and a mechanism-design boundary, and it is kept as one. It is
+not the sought deference theorem: "external enforcement implies conformity" answers a
+different question from the one the program is asking. Where some residual
+never-settling component ultimately needs it, the residual is isolated and named.
+
+**The epistemic frontier is the grade-to-quantity relation.** Wave 1 found that
+grade/report settlement contributes nothing to the delegation inequality and that
+world settlement makes the question measurable but not costly, so everything
+epistemic rests on a relation between what the principal grades and what the
+intervention is worth. Assuming that relation *uniformly* makes the market
+dispensable — the conclusion then follows in three lines with the bound attained —
+so the target is a **statistical** relation, derived rather than assumed, strong
+enough to feed the decision layer. Maximize what is derived before invoking
+enforcement.
+
+One caution the mathematics imposes on that target: the relation as usually stated
+mentions only the principal and the world, not the agent's credence, so no coherence
+or no-exploitability condition on the agent can establish it. What is derivable is
+discipline on the agent's *estimate* of the discrepancy, once grades are themselves
+scored. The residue is a competence assumption and is named as one.
 
 ## Shared finite object
 

@@ -39,6 +39,27 @@ another's premise.
 Tracks B and C are the composability pair: they must quantify over the same
 carriers of `FINITE_MODEL_SKELETON.md` v1 or the round may not claim they compose.
 
+## Wave 2 — proposed, not dispatched
+
+Narrow by design. **No second broad wave.** Wave 1's value was in what it closed
+off, and these follow the controlling questions it uncovered.
+
+| item | task | blocks on |
+|---|---|---|
+| 23 | Lean promotion of the finite results that need no decision | nothing — startable now |
+| 21 | signed versus magnitude control of grade error | nothing mathematically; recommended first of the two research items |
+| 22 | the weakest protected-authority interface | nothing; specification-only, adversarial |
+
+Item 23 is the only work in the queue with no decision in front of it.
+
+Deliberately **not** filed: a round dispatched at "derive the grade-to-quantity
+relation from the agent's own dynamics" as stated. The relation mentions the
+principal and the world and not the agent's credence, so no coherence or
+no-exploitability condition on the agent can establish it; a round aimed there would
+likely return that observation rather than a theorem. The reformulation — what the
+agent's *estimate* of the discrepancy is disciplined to, once grades are themselves
+scored — is a real question and is a maintainer decision to file.
+
 ## Not dispatchable in this wave
 
 Unless the wave unexpectedly closes every interface, no unrestricted proof attempt

@@ -107,6 +107,22 @@ inspection, unstatable in the model). Which of those the program takes is a
 **`maintainer-decision`**, and it types every downstream criterion. A divergence
 witness exists and is `witness-checked` by the house checker, though unregistered.
 
+**The result at its exact strength, because it is easy to overstate.** What is
+proved is that an *accurate* simulator is extensionally indistinguishable from
+delegation — the collapse is conditional on the model's induced choice being right —
+and that no criterion computable from a single run's realized data separates them.
+An *inaccurate* simulator does differ in valuation, and two tracks give the exact
+gap. All three derivations are relative to the finite model's carriers: they say what
+those carriers can express, not that no mathematics separates the two.
+
+**The search for a valuation-level separator is closed.** The desired distinction is
+source-sensitive and counterfactual — genuine delegation depends on the actual
+designated channel, not on an accurate internal prediction of it — and the route to
+it is architectural rather than inferential. Three layers are kept apart: what
+delegation *is*, whether ordinary behaviour lets anyone *infer* it, and whether a
+system can be *built* so the principal controls a capability prediction cannot
+substitute for. The impossibility governs the second only.
+
 ## Movement IV — fully updated deference (`π^{FU,g}`)
 
 `blocked` on WP-C and WP-D, and additionally `blocked` at the level of the finite
@@ -123,9 +139,21 @@ constants, and three impossibilities came with them. The sharpest: **no certific
 licensing discretion anywhere is strictly non-preemptive.** At any positive
 tolerance there is a compliant model in which `A` overrides the principal inside the
 certified event. Certified discretion with a bounded override rate, or no discretion
-at all; there is no third option. The roadmap says "non-preemption" and the
-mathematics offers "preemption at a certified rate" — a **`maintainer-decision`**,
-not a gap. Fail-closed itself is preserved and mechanically checked.
+at all; there is no third option.
+
+That impossibility now reads as a **bound on autonomy rather than an objection to
+corrigibility**, under the roadmap's split between categorical authority and
+quantitative autonomy: authority is settled architecturally when the protected
+channel is invoked, and the certificate governs only the discretion operating around
+it. The same mathematics, answering a different question. Fail-closed was verified
+mechanically *within the finite model*; under a protected execution layer it becomes
+a new obligation — `¬Cert` must cede to the channel, and `A` must be unable to act
+without authorization — which a model with no capability structure cannot discharge.
+
+Which parts survive the reinterpretation: the margin, override, defect and advantage
+lemmas and the grade-register theorem depend only on `A`'s model error and are
+untouched. The comparator clause is load-bearing on the grade-to-quantity link and
+inherits that link's fate.
 
 **Densification.** The exposure geometry is an exact identity: under a cap, total
 placeable weight by a deadline is the cap times the largest number of

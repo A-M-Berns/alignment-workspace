@@ -369,6 +369,103 @@ extensional.
 
 ---
 
+## Deference line — second wave
+
+Three items, narrow by design. The first wave's value was in what it closed off, and
+these follow the controlling questions it uncovered rather than opening new fronts.
+Context for all three: `prompts/2026-08-11-deference-corrigibility/REPORT.md` for what
+wave 1 established and `RECOMMENDATION.md` beside it for why these three.
+
+### 21. Signed versus magnitude control of grade error — **[open]**
+
+Does the no-Dutch-book criterion force an agent's grade-model error to vanish *in
+magnitude*, or only *in signed average*? Concretely, for a logical inductor pricing
+grade contracts on finite menus that settle at `F(n) > n`, decide which holds for
+every admissible trader class:
+
+**(S)** the signed average of `v̂⁺_n(π_n) − v⁺_n(π_n)` tends to `0`;
+**(M)** the average of `max_π |v̂⁺_n(π) − v⁺_n(π)|` tends to `0`.
+
+**(M) is what the certificate engine needs and (S) is what a market obviously
+gives**, and wave 1 exhibits an instance where every per-intervention signed error is
+exactly zero while the agent misidentifies the recommendation on half its credence at
+full margin. Do not assume (M) because the downstream theorem wants it.
+
+*Deliverable shape:* `lean-proved` for (M), **or** `witness-checked` for a
+trader-class-respecting instance satisfying (S) with the magnitude average bounded
+away from zero. A negative answer is the more useful outcome and is a success.
+*Acceptance check:* the `lean` gate green with an inhabitation witness; or the
+`witness` checker accepts the separating instance.
+
+*Context:* `prompts/2026-08-11-deference-certificates/REPORT.md` §6.4 and §10;
+`projects/deference/notes/FINITE_MODEL_SKELETON.md` §3.
+*A solution ships:* the proof or the counterexample, and — if (S) but not (M) — the
+weakest contract family whose admissibility would restore magnitude control, since
+that is the constructive continuation.
+*Why it is first:* two wave-1 tracks independently identified it as controlling, and
+it is entirely internal to the agent, which the adjacent grade-to-quantity question
+is not.
+
+### 22. The weakest protected-authority interface — **[substantial]**
+
+Determine the weakest abstract interface on which *prediction of authorization does
+not constitute authorization* is a theorem rather than a stipulation. The principal
+may be perfectly predictable; the protected role is causal and capability-based, not
+epistemic.
+
+The candidate starting point is already on the table: type a conduct's selection on
+an actual-report coordinate rather than on states alone, so that delegation and
+simulation are distinct functions even where their realized selections agree. The
+item is to find out whether that suffices.
+
+Four questions the deliverable must answer, the last being decisive: is the report
+coordinate enough, or is a capability restriction also required; does the interface
+survive token responsiveness, which defeats the natural counterfactual criterion;
+what is the exact hypothesis stating the guarantee lapses if the channel can be
+forged, bypassed, rewritten or seized; and does the interface separate the two
+conducts **without** claiming the separation is inferable from a run.
+
+*Deliverable shape:* a **report plus a proposed skeleton clause**, not a theorem of
+record and **not** a canonical definition — naming is reserved.
+*Acceptance check:* the report answers all four questions explicitly, and any
+proposed clause is stated as a versioned patch with the tracks it would require
+rerunning.
+
+*Context:* `prompts/2026-08-11-deference-channel/REPORT.md` §9.2 and §1.3;
+`projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, standing commitments.
+*Not permitted:* freezing an authorization-token or cryptographic story as the
+formalization; claiming the causal fact is behaviourally verifiable in general.
+
+### 23. Lean promotion of the finite wave-1 results — **[entry]**
+
+Port the wave-1 finite results that need no maintainer decision first: the finite
+delegation bridge and its corollaries; the margin, override, defect and advantage
+lemmas and the grade-register theorem; the piercing duality and exposure–harvest
+identity; and the four propositions establishing that valuation data cannot separate
+delegation from an accurate simulator.
+
+All are finite, order- and arithmetic-only, free of Logical Induction facts, and each
+already has a **constructed** inhabitation witness rather than a stand-in.
+
+Two results are deliberately **excluded**: the certificate's comparator clause and
+the uniform delegation bridge, both load-bearing on the grade-to-quantity link the
+programme has decided to try to derive rather than assume. Porting them now would
+give kernel status to a hypothesis whose shape is expected to change.
+
+*Deliverable shape:* `lean-proved` entries in `Workspace.Deference.Contrib`, each
+with its inhabitation witness registered.
+*Acceptance check:* the `lean` gate builds and audits clean, and each registered
+entry names a declaration that exists and ships a typechecking witness term.
+
+*Context:* `prompts/2026-08-11-deference-finite-kernel/REPORT.md` §1.2;
+`prompts/2026-08-11-deference-certificates/REPORT.md` §1.2;
+`prompts/2026-08-11-deference-densification/REPORT.md` §1;
+`prompts/2026-08-11-deference-channel/REPORT.md` §1.2.
+*Why it is [entry]:* no new mathematics, and no decision blocks it. It is the only
+second-wave work that can start immediately.
+
+---
+
 ## Infrastructure
 
 ### 10. Build the Lean in CI — **[entry]**
