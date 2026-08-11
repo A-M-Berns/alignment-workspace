@@ -23,6 +23,17 @@ jobs:
           fetch-depth: 0
       - run: python3 tests/path_gate.py
 
+  dco:
+    name: dco — every commit carries a sign-off
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 tests/dco.py
+
   checkers:
     name: checkers — house harness self-test and the claims registries
     runs-on: ubuntu-latest

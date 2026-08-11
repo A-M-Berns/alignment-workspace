@@ -148,6 +148,26 @@ mark it, and list it in the pull request's "new names introduced" field. This is
 not bureaucracy — a name that ships is very hard to change later, and the
 program's vocabulary has already been through one painful retirement.
 
+## Sign your commits
+
+Every commit carries a Developer Certificate of Origin sign-off:
+
+```sh
+git commit -s          # adds the Signed-off-by line
+git commit --amend -s  # fixes one you forgot
+```
+
+The sign-off asserts the DCO in [`DCO`](DCO) — that you have the right to submit
+the work under this repository's licence. CI checks every commit in a pull
+request.
+
+**Pseudonymous sign-offs are accepted.** The maintainers know that is a thinner
+assertion from a pseudonym than from a known person, and accept it deliberately:
+Apache-2.0 §5 is the primary rights mechanism and the DCO is the recorded
+assertion on top of it. Identity is not a factor in a proof-layer verdict, and
+this does not make it one — the gate checks that an assertion was made, not who
+made it.
+
 ## Citation integrity
 
 No unverified identifiers. Cite content inline, or cite a claim identifier

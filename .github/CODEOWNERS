@@ -1,2 +1,5 @@
-# The author owns everything initially.
-* @A-M-Berns
+# The maintainer set.
+#
+# This list and the MAINTAINERS list in tests/path_gate.py must agree.
+# Changing one without the other is a defect; see AGENTS.md.
+* @A-M-Berns @abramdemski

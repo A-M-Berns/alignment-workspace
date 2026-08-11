@@ -23,7 +23,7 @@ delivered state.
 3. **NORMATIVE-LEARNER migration** — under `projects/leverage/` or an
    externally-referenced repository. Its consolidation is already here, frozen;
    the question is the live tree.
-4. **Namespace names.** `Workstudio`, `Workstudio.Delegation.*`,
+4. **Namespace names.** `Workstudio`, `Workstudio.Deference.*`,
    `Workstudio.Leverage.*`. Cheap to change now, expensive later.
 5. **Frozen registration beyond the three archives.** Three registered; anything
    else is a decision.
@@ -192,7 +192,7 @@ identical before one was registered.
     the only unlabelled ones. It classes essentially everything from this round
     `llm-unreviewed`, which is the accurate label.
 
-12. **`projects/delegation/notes/` is seeded with a pointer, not documents.** No
+12. **`projects/deference/notes/` is seeded with a pointer, not documents.** No
    documents were supplied with the round. Candidates exist in the frozen
    deference dump — a paper ledger, a frozen-deliberation document at v6, a
    self-referential-settlement-target note — but deciding which are canonical is
@@ -225,7 +225,7 @@ identical before one was registered.
   results directory contains both file kinds needs a definition of "results
   directory" that the repository does not yet have, since it has no results
   directories. It is filed as an open problem instead.
-- **The delegation line has no ledger and no content.** `kernel/` is reserved and
+- **The deference line has no ledger and no content.** `kernel/` is reserved and
   empty; the first round supplies both.
 - **The Lean CI cache is unmeasured warm.** The 5m 19s figure is cold. The warm
   figure will appear on the next push that does not change the pin.

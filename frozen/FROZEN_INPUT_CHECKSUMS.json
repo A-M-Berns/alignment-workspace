@@ -10,13 +10,20 @@
     },
     "deference-note-dump-2026-06-27": {
       "sha256_archive": "bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362",
-      "sha256_tree": "69a23843a69576dc449e7b8b9e353101a6c96684c6275c153be4b57d08d37b69",
-      "files": 50
+      "sha256_tree": "9d359e85fb619d6f76f16577e47014aec42b9dc792c229d2195aafaeb67b5806",
+      "files": 41,
+      "superseded_payload": "the references/ payload was removed 2026-08-11 and replaced by the citations entry references-citations-2026-08-11; conversations, notes and Lean content are unchanged"
     },
     "dose-response-note-dump-2026-07-02": {
       "sha256_archive": "a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890",
       "sha256_tree": "d34afa3ce288855517fb9d164adbbaa760aefe8fbf38897c130234a94ae00355",
-      "files": 13
+      "files": 13,
+      "superseded_payload": "the references/ payload was removed 2026-08-11 and replaced by the citations entry references-citations-2026-08-11; conversations, notes and Lean content are unchanged"
+    },
+    "references-citations-2026-08-11": {
+      "sha256_archive": "n/a \u2014 created in-repo, not extracted from an archive",
+      "sha256_tree": "268fbdba885f2d0645d8ea4d5f2887cf249f6ed3bd2fcd1a64f42bbff7bf291c",
+      "files": 1
     }
   }
 }

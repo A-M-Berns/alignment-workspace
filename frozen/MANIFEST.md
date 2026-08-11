@@ -12,10 +12,25 @@ this file. That gate cannot be argued with, which is the point.
 | name | date | archive sha256 | tree sha256 | files | description | cited by |
 |---|---|---|---|---|---|---|
 | `consolidation_aug9/` | 2026-08-09, corrections folded in 2026-08-10 | `5f3bf1bee88fdb8808b3d976358e32f2e21e93f4cb2041d79cc3e0c90f0ba0cc` | `a2ca95ad9d6cafcaecb77b7b4d7a0d75f9a33738e3ecb65437b50a56eb7a164a` | 59 | The consolidation of the leverage line: six theory parts numbered 7–12, a ledger of 180 claims with hypotheses, statuses, sharpness and dependencies, and a trust audit separating machine-checked from hand-derived from transcribed from reading-audit from assumed. **Vendors the August 8 consolidation internally**, at `vendor/consolidation_aug8.zip`, together with the settlement-interface documents and the source tree's own theory documents — all frozen by digest inside it. Verifies standalone. | `projects/leverage/`; `OPEN_PROBLEMS.md` items 1–6; CI's foundations-verification gate |
-| `deference-note-dump-2026-06-27/` | 2026-06-27 | `bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362` | `69a23843a69576dc449e7b8b9e353101a6c96684c6275c153be4b57d08d37b69` | 50 | The delegation line's recorded starting point: research notes across six versions, a statement-level Lean audit, and the Lean development (deference, self-referential target, frozen deliberation, faithful acceleration, tower and acceleration). | `projects/delegation/`; `OPEN_PROBLEMS.md` items 7–9 |
+| `deference-note-dump-2026-06-27/` | 2026-06-27 | `bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362` | `9d359e85fb619d6f76f16577e47014aec42b9dc792c229d2195aafaeb67b5806` | 41 | The delegation line's recorded starting point: research notes across six versions, a statement-level Lean audit, and the Lean development (deference, self-referential target, frozen deliberation, faithful acceleration, tower and acceleration). | `projects/delegation/`; `OPEN_PROBLEMS.md` items 7–9 |
+| `references-citations-2026-08-11/` | 2026-08-11 | n/a — created in-repo | `268fbdba885f2d0645d8ea4d5f2887cf249f6ed3bd2fcd1a64f42bbff7bf291c` | 1 | Bibliographic entries and sha256 digests for the third-party papers removed from the two note dumps. Supersedes their `references/` payloads only. | `frozen/MANIFEST.md`; both note-dump entries |
 | `dose-response-note-dump-2026-07-02/` | 2026-07-02 | `a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890` | `d34afa3ce288855517fb9d164adbbaa760aefe8fbf38897c130234a94ae00355` | 13 | Dose-response structure in the deference setting, with its own audit. | `projects/delegation/` |
 
-## Third-party material — AUTHOR-PENDING
+## Third-party material — resolved 2026-08-11
+
+The note-dump bundles vendored published third-party papers under `references/`.
+**This repository has no redistribution rights to them**, so the payloads were
+removed and replaced by a citations entry that pins each removed file by sha256 —
+the frozen record still says exactly which document the conversations engaged
+with, without carrying it. Cite, do not vendor.
+
+This is the one sanctioned way frozen content changes: a new dated entry, the
+superseded entries annotated, digests recomputed, all in one change that requires
+maintainer review by construction. The bundles' conversations, notes and Lean
+content are untouched.
+
+One citation could not be verified against a publisher of record and is flagged
+as unverified inside the entry rather than reconstructed.
 
 Both note-dump bundles contain published third-party papers under
 `references/`: two papers with their PDFs and extracted text, and the Logical

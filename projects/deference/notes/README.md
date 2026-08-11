@@ -1,8 +1,8 @@
-# Notes — delegation
+# Notes — deference
 
 **Empty by decision, not by oversight.**
 
-This directory is for the delegation line's working documents: the paper ledger,
+This directory is for the deference line's working documents: the paper ledger,
 the triangle-compatibility statement, and prompts awaiting dispatch.
 
 None was supplied with the scaffolding round, so none was placed. Candidates

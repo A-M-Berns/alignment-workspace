@@ -66,6 +66,12 @@ none
 <!-- Naming, scope, whether a result belongs, anything you were unsure of.
      "Nothing" is a fine answer. -->
 
+## Developer Certificate of Origin
+
+- [ ] Every commit is signed off (`git commit -s`), asserting the DCO in `DCO`
+
+<!-- Pseudonymous sign-offs are accepted. -->
+
 ## Frozen inputs
 
 - [ ] This PR does not modify anything under `frozen/`

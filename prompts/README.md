@@ -14,7 +14,7 @@ prompts/YYYY-MM-DD-round-name/
 ```
 
 `YYYY-MM-DD` is the dispatch date. `round-name` is short, hyphenated, and
-descriptive of the work rather than of the line — `delegation-kernel`, not
+descriptive of the work rather than of the line — `deference-kernel`, not
 `round-7`.
 
 ## Why verbatim

@@ -46,7 +46,9 @@ PROOF_PATHS = (
     "projects/*/rounds/**",
 )
 
-MAINTAINERS = {"A-M-Berns"}
+# The maintainer set. This list and .github/CODEOWNERS must agree; changing one
+# without the other is a defect. Maintainers are co-equal — see AGENTS.md.
+MAINTAINERS = {"A-M-Berns", "abramdemski"}
 
 
 def is_spec(path: str) -> bool:

@@ -21,14 +21,14 @@ must meet before what it writes acquires force. The world cannot be argued with,
 so the program's move is to make the unarguable part as small and as explicitly
 labelled as possible and prove what follows. → `projects/leverage/`
 
-**Delegation** — the deference and corrigibility program. When should a bounded
+**Deference** — the deference and corrigibility program. When should a bounded
 agent defer to another, what does deference cost, and what must an agent's own
 deliberation look like for deference to be safe rather than merely obedient? The
 line's recorded starting point takes the Logical Induction theorems as named
 hypotheses. Its own audit names the complement as its largest gap: the market and
 traders are unmodelled. The leverage line and the pinned dependency sit on the
 other side of exactly that gap, which is why both lines share this repository.
-→ `projects/delegation/`
+→ `projects/deference/`
 
 ## Verification
 
@@ -79,7 +79,14 @@ and not yet passed over by the author. That is labelled per file in
 
 ## License
 
-**Not yet set.** No license file is present, which means default copyright: all
-rights reserved. A license is the author's decision and is the first item in
-`DECISIONS.md`. Until one is chosen, treat this repository as readable but not
-otherwise licensed.
+**Apache-2.0** — see [`LICENSE`](LICENSE). One license for everything in the
+repository: code, Lean, and prose alike.
+
+Contributions are accepted under the same license: Apache-2.0 §5 makes a
+contribution inbound-equals-outbound unless a contributor says otherwise in
+writing. On top of that, every commit carries a Developer Certificate of Origin
+sign-off — see [`DCO`](DCO) and `CONTRIBUTING.md`. Pseudonymous sign-offs are
+accepted.
+
+Upstream: Mathlib and Formalized-Agent-Foundations are Apache-2.0, and Foundation
+is Apache-2.0, so the whole solver stack is under one license.

@@ -5,6 +5,7 @@
     "contexts": [
       "checkers \u2014 house harness self-test and the claims registries",
       "conservativity \u2014 no new axioms, specification shape unchanged",
+      "dco \u2014 every commit carries a sign-off",
       "foundations-verification \u2014 the frozen consolidation re-proves itself",
       "frozen-integrity \u2014 digests and the manifest rule",
       "lean \u2014 build, sorry-free, axiom audit",

@@ -1,4 +1,4 @@
-# Delegation
+# Deference
 
 The deference and corrigibility program: when a bounded agent should defer to
 another, what deference costs, and what an agent's own deliberation has to look
@@ -23,12 +23,12 @@ repository and a Lean project.
 
 ## Where things go
 
-- `kernel/` — reserved, and deliberately empty, for the finite delegation kernel
+- `kernel/` — reserved, and deliberately empty, for the finite deference kernel
   round.
 - `notes/` — documents for this line; see the pointer there for what is expected
   and what is not yet placed.
-- Lean for this line goes in `../../lean/Workstudio/Delegation/`, under the
-  `Workstudio.Delegation` namespace.
+- Lean for this line goes in `../../lean/Workstudio/Deference/`, under the
+  `Workstudio.Deference` namespace.
 
 ## Ledger
 

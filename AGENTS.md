@@ -160,6 +160,21 @@ glob, carrying: origin class; generator and date; the originating round under
 The pull-request template asks for provenance entries added or updated alongside
 new names introduced.
 
+**External citation.** Nothing in this repository may be cited externally
+(papers, posts, talks) until it is maintainer-reviewed — or, for registered
+claims, until its epistemic class is one the citer is willing to print alongside
+the citation; external citation makes a thing flagship, and flagship content may
+not remain unreviewed.
+
+**Model attribution.** Every commit whose content was substantially AI-generated
+carries a trailer naming the model — `Model: <family> <version> (<provider>)`.
+Where prompt authorship and execution differ, which is the normal case for a
+dispatched round, both are recorded: `Prompt-author-model:` for the model that
+wrote the dispatch and `Model:` for the executor. An agent self-identifies
+accurately; guessing is worse than `unrecorded`. Each round directory under
+`prompts/` carries an attribution block in its report: prompt-author model,
+executor model, dates.
+
 **The chat-bundle pointer is optional**, filled when a bundle exists and absent
 otherwise. No artifact, flagship or not, is required to have one.
 
@@ -224,6 +239,25 @@ pass.
 
 ---
 
+## No negative ontologies
+
+**Living documents and structures describe the present ontology only.** History —
+renames, migrations, supersessions, what a thing used to be called or where it
+used to live — is recorded in exactly two places: **git history and
+`DECISIONS.md`**, and nowhere else.
+
+No "formerly known as", no "(previously X)", no "migrated from" residue in names,
+READMEs, directory structure, or documentation. A structure that carries its own
+past around forces every future reader to learn a history they did not need, and
+the residue compounds.
+
+**Distinguish residue from a live pointer.** A registry `superseded-by` link, or
+an errata entry, carries *current* epistemic content — which statement governs
+now — and stays. A label whose only function is memorialising a change goes.
+
+Completed round records under `prompts/` are history and keep whatever names were
+true when they were written; so does git history. Neither is a living document.
+
 ## The two layers
 
 Every file belongs to exactly one layer.
@@ -243,6 +277,17 @@ documentation of contributed results.
 `CODEOWNERS` marks every specification path and the `path-gate` CI job fails any
 pull request from a non-maintainer that touches one. The enumeration of
 specification paths lives in `tests/path_gate.py`.
+
+**Maintainers are co-equal.** Any maintainer's review satisfies a
+maintainer-review requirement, **including self-review**: a maintainer may
+self-merge a specification-layer change, with the dated `DECISIONS.md` entry
+serving as the review record. **There are no two-human gates anywhere in this
+constitution.** At this scale the ledger and git history are the accountability
+mechanism — and a repository owner's admin rights make a self-binding two-human
+rule unenforceable anyway, so the constitution does not pretend otherwise.
+
+The maintainer set is listed in two places that **must agree**: `CODEOWNERS` and
+the list in `tests/path_gate.py`. Changing one without the other is a defect.
 
 **There is no intermediate trust tier.** No "trusted contributor" role bypasses a
 gate. Verdicts come from the checkers or from the maintainer, and nothing in

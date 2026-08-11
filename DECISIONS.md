@@ -14,13 +14,107 @@ listed at the top of each round's report until they are closed.
   whether anything else from that line — earlier consolidations, the source
   tree's archived material — should join it now.
 - **Lean library and namespace names.** `Workstudio`, with
-  `Workstudio.Delegation.*` and `Workstudio.Leverage.*`, is what this round
+  `Workstudio.Deference.*` and `Workstudio.Leverage.*`, is what this round
   scaffolded because the prompt named it. Renaming later is cheap now and
   expensive after the first real development lands.
-- **Which delegation documents are canonical.** `projects/delegation/notes/` is
+- **Which deference documents are canonical.** `projects/deference/notes/` is
   seeded with a pointer rather than with documents; see the note there.
 
 ## Settled
+
+### 2026-08-11 — licence: Apache-2.0, one licence for everything
+
+Apache-2.0 for all repository content, code and prose alike. Rationale: Mathlib
+compatibility upstream; §5 makes contributions inbound-equals-outbound, which
+matters for anonymous contributors; split licensing rejected as a per-file
+question that never ends. No per-file headers — the root `LICENSE` governs. Any
+copyright line reads "the alignment-workstudio contributors", with no personal
+names.
+
+### 2026-08-11 — upstream Formalized-Agent-Foundations was already Apache-2.0
+
+**A correction, not an action.** This round was dispatched to license FAF on the
+report that it had none. That report was wrong: FAF's Apache-2.0 `LICENSE` was
+added on 2026-07-29, its README already carries a licence section, and the
+licensing commit is an **ancestor of the pinned commit** — so the pin has always
+pointed at licensed code. The earlier finding was a shell-glob artifact that
+reported absence without testing for the file.
+
+Consequences: nothing was changed in FAF; no pin bump was made, since bumping "to
+the licensing commit" would move the pin *backwards*. The pin stays at
+`1fffea44eece253cda1722568a3adfe34e822f03`. Foundation was read rather than
+assumed and is also Apache-2.0, so the whole solver stack is one licence.
+
+### 2026-08-11 — DCO over CLA, pseudonymous sign-off accepted
+
+Developer Certificate of Origin v1.1 at `DCO`; every commit signed off; CI gate 8
+checks it with a script rather than a third-party app, so the gate has no
+dependency the repository does not control. Pseudonymous sign-offs are accepted
+deliberately: Apache-2.0 §5 is the primary rights mechanism, and a CLA would buy
+little against anonymous contributors while costing every one of them a barrier.
+
+### 2026-08-11 — external-citation norm set
+
+Nothing may be cited externally until maintainer-reviewed, or — for registered
+claims — until its epistemic class is one the citer will print alongside the
+citation. External citation makes a thing flagship, and flagship content may not
+remain unreviewed.
+
+### 2026-08-11 — model attribution required
+
+Commits whose content is substantially AI-generated carry `Model:`, and where the
+prompt author differs from the executor, `Prompt-author-model:` as well. Round
+reports carry an attribution block. Applied retroactively without rewriting
+history: `PROVENANCE.md` was corrected instead — and the correction included a
+factual error, since earlier rows named the executor as "Claude Opus 4.6" when it
+was Claude Opus 5 throughout.
+
+### 2026-08-11 — second maintainer, and co-equality
+
+Abram Demski (`abramdemski`) joins the maintainer set, in `CODEOWNERS` and
+`tests/path_gate.py`, each pointing at the other with the rule that the two must
+agree. Maintainers are co-equal: any maintainer's review satisfies a
+maintainer-review requirement, **including self-review**, with the dated ledger
+entry as the review record. **No two-human gates anywhere.** At this scale the
+ledger and git history are the accountability mechanism, and a repository owner's
+admin rights make a self-binding two-human rule unenforceable anyway.
+
+This partially amends the names-off posture: maintainer handles are necessarily
+public in a public repository. Prose-level anonymity of the program is unchanged.
+
+### 2026-08-11 — the deference line carries its own name
+
+The line is **deference**, everywhere current: directory, Lean namespaces
+including `Workstudio.Deference.Kernel`, registries, path gate, problem pointers,
+prose. Completed round records keep the names that were true when written, as
+does git history — those are records, not living documents. Frozen trees were
+untouched and already carried the right name.
+
+### 2026-08-11 — no negative ontologies
+
+Living documents and structures describe the present ontology only. History lives
+in exactly two places — git history and this ledger — and nowhere else. No
+"formerly", no "(previously X)", no "migrated from" residue. A live pointer that
+carries current epistemic content, such as a registry `superseded-by` link, is
+not residue and stays.
+
+Applied retroactively in the same round: a sweep of living documents found **no
+genuine residue**. The only matches were the principle's own statement of itself
+and retired material under `attic/`, which is history by construction.
+
+### 2026-08-11 — the third-party reference payloads are cited, not vendored
+
+The note dumps' `references/` payloads were removed and replaced by the frozen
+entry `references-citations-2026-08-11`, which pins each removed file by sha256
+alongside its bibliographic entry. The repository has no redistribution rights to
+published papers; arXiv's default licence lets arXiv distribute and grants
+nothing to third parties. The bundles' conversations, notes and Lean content are
+untouched, and the change went through the sanctioned frozen procedure: new dated
+entry, superseded entries annotated, digests recomputed together.
+
+One citation could not be verified against a publisher of record. It is flagged
+as unverified inside the entry rather than reconstructed from memory.
+
 
 ### 2026-08-10 — repository name and scope
 
@@ -28,7 +122,7 @@ listed at the top of each round's report until they are closed.
 program. It holds multiple research lines, exact-arithmetic model work per line,
 one shared Lean project, frozen inputs, and dispatch provenance. Two lines at
 the outset: **leverage** (the normativity and answerability program) and
-**delegation** (the deference and corrigibility program).
+**deference** (the deference and corrigibility program).
 
 Created by renaming and repointing the existing repository rather than starting
 fresh, so its history is preserved: the August 9 consolidation and its two

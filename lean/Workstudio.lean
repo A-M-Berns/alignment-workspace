@@ -1,3 +1,3 @@
 import Workstudio.Smoke
-import Workstudio.Delegation.Basic
+import Workstudio.Deference.Basic
 import Workstudio.Leverage.Basic
