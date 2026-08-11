@@ -4,21 +4,22 @@ Dispatch: `PROMPT.md` beside this file, verbatim.
 
 ## Outstanding maintainer actions
 
-1. **Rename the repository on GitHub.**
-   `gh api -X PATCH repos/A-M-Berns/alignment-workstudio -f name=alignment-workspace`.
-   Still outstanding from PR #4 — the tree says `alignment-workspace`, GitHub says
-   otherwise. Attempted this round and refused by the executing environment's
-   permission classifier, which blocks repository-settings mutations. This is the
-   case that motivated the convention change below.
-2. **Supply the scrub round 2 dispatch.** Not recoverable from the repository;
+1. **Supply the scrub round 2 dispatch.** Not recoverable from the repository;
    `prompts/2026-08-11-scrub-round-2/PROMPT.md` records the gap. Pasting the
    original over that file closes it.
-3. **Supply the contributor-checkers dispatch.** Same gap, not in §D's scope:
+2. **Supply the contributor-checkers dispatch.** Same gap, not in §D's scope:
    `prompts/2026-08-11-contributor-checkers/` has a report and no prompt.
-4. **Decide whether the program gets a name.** The README now describes the work
+3. **Decide whether the program gets a name.** The README now describes the work
    instead of naming it. Naming is reserved.
-5. **Review `tests/name_lint.py`'s allowlist** if the maintainer set changes —
+4. **Review `tests/name_lint.py`'s allowlist** if the maintainer set changes —
    `MAINTAINER_NAMES` is the single place to edit.
+
+**Closed during this round:** the GitHub-side repository rename, outstanding from
+PR #4. The maintainer performed it; the repository is `alignment-workspace`. This
+round attempted it and was refused by the executing environment's permission
+classifier, which blocks repository-settings mutations — worth recording, because
+it means the settings-side half of any future rename is not something a round can
+finish on its own.
 
 ## A. Attribution at pull-request level
 
