@@ -12,7 +12,7 @@ not exist, so there is no statement of record, and `workspace-established` requi
 one.
 
 That is now a much narrower statement than it was. `lean/Workspace/Deference/Contrib/`
-holds **155 theorems across 10 files** that build against the pinned toolchain and audit
+holds **well over a hundred theorems** that build against the pinned toolchain and audit
 to the three standard axioms, with no `sorry` and no `axiom` declaration — 83 of them
 promoted in Stage II across four modules covering the finite kernel, the certificate
 bounds, the exposure geometry and the substitution separation. It is kernel-verified and

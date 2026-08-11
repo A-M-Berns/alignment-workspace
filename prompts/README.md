@@ -32,3 +32,13 @@ A report states what was done, what was verified and how, what deviated from the
 prompt and why, and what is awaiting the author. Where a round scored
 pre-registered predictions, the scores go in the report, including the ones that
 came out wrong.
+
+## Reports are evidence, not the current position
+
+A round record says what that round found at that time. Where a later ruling in
+`DECISIONS.md`, a registry entry, or a line's status ledger disagrees with it,
+the later document governs and the report is not edited — corrections to verified
+records land as dated ledger entries, because this directory is history. A report
+being newer than the ledger row it bears on does not reverse that; it means the
+row has not been updated yet, and the conflict is stated rather than resolved by
+seniority. `RESEARCH_STATE.md` has the precedence in full.

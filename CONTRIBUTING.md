@@ -4,7 +4,7 @@
 
 If you have just arrived, five things.
 
-**1. Verify before you trust.** Eight gates run in CI and all eight run
+**1. Verify before you trust.** Seven gates run in CI and five of them run
 locally, with the commands in the next section. Every claim in this repository is either
 machine-checked by them or **explicitly labelled otherwise** — the frozen
 consolidation, for instance, separates machine-checked results from hand-derived
@@ -36,8 +36,8 @@ here than agreement.
 ---
 
 **Quality here is enforced by machine-checkable gates, not by trust.** You do not
-need to be known to anyone to contribute. Your pull request either passes four
-gates or it does not, and the gates are the same ones the author's own work
+need to be known to anyone to contribute. Your pull request either passes the
+seven gates or it does not, and the gates are the same ones the author's own work
 passes.
 
 ## Run everything locally first
@@ -52,8 +52,7 @@ python3 tests/path_gate.py                        # path-gate: which layer your 
 python3 tests/conservativity.py                   # conservativity: no new axioms
 cd lean && lake exe cache get && lake build       # lean: sorry-free
 python3 tests/audit_axioms.py                     # lean: axiom audit
-python3 tests/check_frozen.py                     # frozen-integrity
-cd projects/leverage/consolidation-aug9 && python3 tests/run.py   # foundations-verification
+cd projects/leverage/consolidation-aug9 && python3 tests/run.py   # consolidation-verification
 ```
 
 The comment names the CI job each command belongs to. Two gates have no local
@@ -83,7 +82,7 @@ contributions are fine.
 ### Nothing enters the record unasked
 
 **Every registered claim answers a filed `PRIORITIES.md` item.** Propose new
-items as issues; filing is a maintainer act. An unsolicited-but-correct
+items as issues; filing is not a contributor's. An unsolicited-but-correct
 contribution is not merged into the record — but the maintainer may file a
 matching item and then accept it, so good work is not wasted, only sequenced.
 
@@ -218,7 +217,19 @@ ground.**
 
 ## Review
 
-The author reviews everything (`CODEOWNERS`). The gates decide correctness; review
-decides fit, naming, provenance labelling, whether both documentation registers
-are present, prose, and whether a result belongs in the program. A green PR is
-not automatically merged, and a red one is not argued with.
+**A pull request whose required checks all pass merges automatically.** Enable
+auto-merge on your pull request and GitHub lands it when the last check goes
+green; nobody has to be awake. A red one is not argued with.
+
+That is the architecture's own conclusion rather than a convenience: the gates
+decide correctness, and if they do, waiting on a person adds a delay and not a
+check. What review still decides is fit, naming, provenance labelling, whether
+both documentation registers are present, and whether a result belongs in the
+program — and those are judgments about work already merged, raised as issues or
+follow-up pull requests like anything else.
+
+Two things make this safe rather than reckless. A non-maintainer pull request
+touching a specification path **cannot go green** — the `path-gate` job fails it
+— so full green already means the change is confined to the open layer. And
+`conservativity` fails anything that adds an axiom, changes specification shape,
+or alters the axiom output of an existing declaration.

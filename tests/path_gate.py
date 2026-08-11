@@ -23,7 +23,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 # The specification layer. Proposed enumeration — AUTHOR CONFIRMS (DECISIONS.md).
 SPEC_PATHS = (
     "AGENTS.md", "CONTRIBUTING.md", "DECISIONS.md", "PRIORITIES.md",
-    "README.md", "PROVENANCE.md", "GOVERNANCE_REPORT.md",
+    "README.md", "PROVENANCE.md", "RESEARCH_STATE.md",
     "LICENSE", "LICENSE.*",
     ".github/**", ".gitattributes", ".gitignore",
     "checkers/*.py", "checkers/README.md",
@@ -107,6 +107,11 @@ def self_test() -> int:
          is_spec("scratch/notes.txt") or is_proof("scratch/notes.txt"), False),
         ("the renamed priorities file is specification",
          is_spec("PRIORITIES.md"), True),
+        # A root governance document matches no other pattern, and the default
+        # for an unlisted path is the proof layer. Enumerating it is the whole
+        # protection; nothing else would have caught its absence.
+        ("the research-state document is specification",
+         is_spec("RESEARCH_STATE.md"), True),
         # A line's notes/ is maintainer working space whatever a file is called.
         # The enumeration matches on basename — `*` crosses a separator — so
         # before this pattern `notes/README.md` was specification and

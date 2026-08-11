@@ -22,7 +22,7 @@ The frozen tree is immutable, so its own labels cannot be changed even if that
 were desirable.
 
 What holds instead: the tree is a **foundation**, verified continuously by CI's
-`foundations-verification` gate, which re-runs its own verifier on every push and
+`consolidation-verification` gate, which re-runs its own verifier on every push and
 confirms 180 claims with statuses agreeing between its theory parts and its
 ledger. Cite its claims by identifier against the frozen path, carrying the
 status the tree itself gives them.
@@ -102,8 +102,8 @@ problem rather than done by relabelling.
     "review_status": "ci-only"
   },
   "docs": {
-    "verification": "GOVERNANCE_REPORT.md",
-    "human": "GOVERNANCE_REPORT.md"
+    "verification": "checkers/README.md",
+    "human": "CONTRIBUTING.md"
   },
   "note": "A worked example of the schema, not a research result: the house enumeration checker generates the 28 rational simplex points at denominator six and confirms each sums to one. It exists so the registry, the checker and the CI job are exercised by something real before any research claim depends on them."
 }

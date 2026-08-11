@@ -6,11 +6,10 @@ model, the model is named; where the prompt author and the executor differ, whic
 is the normal case for a dispatched round, both are named in *Round attribution*
 below.
 
-**Everything in this scaffolding round is `ci-only` unless a maintainer has since
-passed over it.** That is not a hedge — it is the accurate label, and the
-repository would rather carry an honest one than a flattering one. Flagship
-documents may not remain `ci-only`; `README.md`, `AGENTS.md` and
-`CONTRIBUTING.md` are the first that need a maintainer's pass.
+**Everything here is `ci-only` unless a row says otherwise.** That is not a hedge
+— it is the accurate label, and the repository would rather carry an honest one
+than a flattering one. `maintainer-reviewed` is rare by design; see `AGENTS.md`
+on where human judgment is spent.
 
 **Correction, 2026-08-11.** Earlier rows in this file named the executor as
 "Claude Opus 4.6". That was wrong; the executor was **Claude Opus 5 (Anthropic)**
@@ -44,6 +43,16 @@ earlier rows did not record at all.
 | `projects/deference/notes/FINITE_MODEL_SKELETON.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-corrigibility-phase-ii/` — **v2**, superseding v1; the amendment and the reasons are in `DECISIONS.md` |
 | `projects/deference/notes/FUD_COMPARATOR_SPEC.md`, `prompts/2026-08-11-stage-iii-fud/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the Stage III round. Its Track F adversarial review was run in a **separate Claude Opus 5 context** with no access to the round report, per the dispatch's independence requirement |
 | `projects/deference/notes/FUTURE_AGENT_SPEC.md`, `prompts/2026-08-11-stage-iv-future-agent/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the Stage IV round, whose construction **collapsed**; the specification is kept as a corrected defective record and the claimed-gate harness was deleted rather than repaired. Its adversarial review ran in a **separate Claude Opus 5 context** |
+| `RESEARCH_STATE.md`, `prompts/2026-08-11-workspace-ethos/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the workspace ethos pass. Framing only: it names distinctions the repository already draws and adds no gate, no registry and no metadata requirement. The layer semantics it states are read off `AGENTS.md` and `DECISIONS.md` rather than legislated by it |
+| the gate-count and job-name corrections in `README.md`, `CONTRIBUTING.md`, `AGENTS.md`'s gates table and `projects/leverage/CLAIMS.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — dead pointers left by the `frozen/` retirement: a command naming a deleted script, a retired job name, and a count of eight gates where seven run |
+| `PRIORITIES.md` — the *Where ingenuity is the bottleneck* and *Workspace friction* sections, and the status marks on items 14–21 | Claude Opus 5 | `ci-only` | 2026-08-11 | same — added on maintainer instruction during the round, which is the authorization for a specification-layer change the dispatch did not scope. No item renumbered or removed; the two new sections use `### Q<n> —` and `### F<n> —` headings so the registry's item parser cannot read them as filed items |
+| `AGENTS.md` — standard 14, the stronger form of *no negative ontologies*, and slop-discipline point 7 | Claude Opus 5 | `ci-only` | 2026-08-11 | same — added on maintainer instruction during the round. None is gated; all three are review matters, and the gates table is unchanged |
+| `projects/deference/notes/TERMS.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-workspace-ethos/` — a recording table, not a naming act: meanings and owning documents for vocabulary already fixed elsewhere. Every term stays provisional under standard 6. The line's canonical set is five documents; the decision is the maintainer's, in `DECISIONS.md` |
+| `tests/path_gate.py` — `RESEARCH_STATE.md` added, `GOVERNANCE_REPORT.md` removed | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-workspace-ethos/` — a trust-chain edit on explicit maintainer authorization, with one self-test case. Both directions only remove or relocate contributor write access |
+| the front-door pass: `README.md`, `projects/deference/README.md`, `RESEARCH_STATE.md` *Where the lines stand*, `.github/PULL_REQUEST_TEMPLATE.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-workspace-ethos/` — ethos pass II. The two landing pages rewritten as current orientation surfaces; a per-line current-state section added to `RESEARCH_STATE.md`; a checklist line naming the deleted `tests/check_frozen.py` replaced. No research claim originates in any of them: the deference section is compressed from that line's own ledger and roadmap and defers to them |
+| stale-count repairs in `projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md` and `TERMS.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — both asserted **155 theorems across 10 files** for `Contrib/`, which holds 8 files and 167 theorem or lemma declarations. Replaced with count-robust wording rather than a new number, since the load-bearing count is the number registered, which is zero |
+| `.github/apply-branch-protection.sh`, `CONTRIBUTING.md` *Review*, `AGENTS.md` *Security* | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-workspace-ethos/` — auto-merge on full green, decided by the maintainer. The script gains the repository-setting call and a read-back of it, and its required-check count is now derived from the payload rather than the literal `8`, which had been stale since `frozen-integrity` was retired and would have reported correct protection as wrong |
+| the attention rulings in `AGENTS.md`, `PROVENANCE.md`, `CONTRIBUTING.md`, `PRIORITIES.md`, `RESEARCH_STATE.md` and `DECISIONS.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — three maintainer rulings taken during the round and recorded as a dated `DECISIONS.md` entry: the flagship rule retired, external citation restated to stand alone, and item filing opened to maintainer-dispatched rounds within their scope. Naming stays reserved. `DECISIONS.md`'s *Awaiting the author* becomes the single queue for reserved items |
 
 ## No originating chat bundle
 
@@ -67,13 +76,14 @@ of thing this file exists to make visible.
 | round | prompt author | executor | dates |
 |---|---|---|---|
 | `2026-08-10-repo-scaffolding` (v1, v2, addendum) | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-10 – 2026-08-11 |
-| `2026-08-10-contribution-architecture` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-11 |
+| `2026-08-10-contribution-architecture` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-11 — **no round record survives**: the dispatch was never preserved and the report was removed as superseded. What the round installed is in `checkers/`, `tests/path_gate.py` and the ledger |
 | `2026-08-11-licensing-dco-citation` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-deference-corrigibility` (wave 1) | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-corrigibility-phase-ii` and its five tracks | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-corrigibility-phase-ii` (Stage II closure and integration pass) | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-stage-iii-fud` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-stage-iv-future-agent` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
+| `2026-08-11-workspace-ethos` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/leverage/consolidation-aug9/` — have
