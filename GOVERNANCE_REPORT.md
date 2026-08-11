@@ -73,7 +73,7 @@ specification layer, so updating it is a maintainer act.
 AGENTS.md  CONTRIBUTING.md  DECISIONS.md  PRIORITIES.md  README.md
 PROVENANCE.md  SETUP_REPORT.md  GOVERNANCE_REPORT.md  LICENSE  LICENSE.*
 .github/**  .gitattributes  .gitignore
-checkers/**  tests/**  frozen/**  prompts/**
+checkers/**  tests/**  prompts/**  the consolidated trees
 lean/lakefile.toml  lean/lean-toolchain  lean/lake-manifest.json
 lean/Workspace.lean  lean/Workspace/Smoke.lean
 lean/Workspace/*/Basic.lean  lean/Workspace/*/Spec/**

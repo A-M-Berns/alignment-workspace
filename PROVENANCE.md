@@ -33,7 +33,7 @@ earlier rows did not record at all.
 | `lean/Workspace/**` | Claude Opus 5 | `ci-only` | 2026-08-10 | same — the smoke test and the two namespace roots; **machine-checked**: they build and audit to the three standard axioms |
 | `projects/*/README.md` | Claude Opus 5 | `ci-only` | 2026-08-10 | same |
 | `projects/leverage/forward/**` | mixed — predates this repository | `ci-only` | — | predates this round; carried over unchanged from the source tree |
-| `frozen/**` | **not applicable** | — | — | frozen inputs are third-party or predate this repository; their own provenance is internal to each and their digests are registered in `frozen/MANIFEST.md` |
+| the four consolidated trees | **`agent-consolidated`** | — | — | received or consolidated work that predates this repository; each carries its own `ORIGIN.md` with the digests at intake, and its own internal provenance |
 | `prompts/*/PROMPT*.md` | the maintainer, or a model in a maintainer-directed session | `maintainer-reviewed` — dispatched as written | 2026-08-10 | verbatim as dispatched, including anything they got wrong |
 | `prompts/*/REPORT.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same |
 
@@ -41,7 +41,8 @@ earlier rows did not record at all.
 
 The chat-bundle pointer is optional and none exists for this round: no dump has
 been requested or assembled. If one is later produced for this work, it enters
-`frozen/` under the release gate in `AGENTS.md` and this table gains the pointer.
+the line it belongs to under the release gate in `AGENTS.md`, as an
+`agent-consolidated` tree, and this table gains the pointer.
 
 ## What "machine-checked" does and does not cover here
 
@@ -62,7 +63,7 @@ of thing this file exists to make visible.
 | `2026-08-11-licensing-dco-citation` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
-completing passes now frozen under `frozen/consolidation_aug9/` — have
+completing passes now frozen under `projects/leverage/consolidation-aug9/` — have
 `executor: unrecorded` rather than a guess. Their prompts were maintainer-supplied
 and their reports state what was done; the model that executed them is not
 recorded in a form this file can honestly assert.

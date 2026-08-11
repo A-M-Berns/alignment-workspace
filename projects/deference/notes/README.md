@@ -12,5 +12,6 @@ under what names, is the author's to say. Seeding them by guess would manufactur
 provenance, which convention 5 exists to prevent, so the round flagged the
 question instead. See `DECISIONS.md`, "Awaiting the author".
 
-The frozen note dumps that record this line's starting point are registered in
-`frozen/MANIFEST.md` and are referenced from there, not copied here.
+The note dumps that record this line's starting point sit beside this
+directory, each with its own `ORIGIN.md`. Reference them by path; they are not
+copied here.

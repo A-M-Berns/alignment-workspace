@@ -7,7 +7,7 @@ like for deference to be safe rather than merely obedient.
 ## The arc
 
 The line's recorded starting point is the deference note dump of 2026-06-27,
-registered and checksummed in `frozen/MANIFEST.md` as
+carried in this directory as
 `deference-note-dump-2026-06-27.zip`: research notes, a statement-level audit,
 and a Lean development covering deference, a self-referential target, frozen
 deliberation, faithful acceleration, and a tower construction. A second dump of

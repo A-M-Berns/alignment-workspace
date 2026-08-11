@@ -24,8 +24,8 @@ what was shown and why it matters, in plain language. **If you are a person,
 start with the human-register document** — it is not a summary of the other one,
 it is a different account of the same work.
 
-**4. The two hard rules** are frozen-immutability and no-permanent-naming.
-Nothing under `frozen/` changes, ever; and names are the author's to set.
+**4. The two hard rules** are that consolidated work is not tweaked and that
+names are the author's to set.
 
 **5. Disagreement is welcome, and it has a format.** Not an opinion: a
 counterexample, a failing test, or a precise objection filed as an issue against
@@ -53,7 +53,7 @@ python3 tests/conservativity.py                   # conservativity: no new axiom
 cd lean && lake exe cache get && lake build       # lean: sorry-free
 python3 tests/audit_axioms.py                     # lean: axiom audit
 python3 tests/check_frozen.py                     # frozen-integrity
-cd frozen/consolidation_aug9 && python3 tests/run.py   # foundations-verification
+cd projects/leverage/consolidation-aug9 && python3 tests/run.py   # foundations-verification
 ```
 
 The comment names the CI job each command belongs to. Two gates have no local
@@ -165,11 +165,12 @@ reverse — if the two disagree, the file is right.
 
 *(Stated above for readers; here is what they mean for a pull request.)*
 
-**1. Nothing in `frozen/` changes.** Frozen inputs are read-only, checksummed,
-and cited by path. CI recomputes their digests and fails on drift, and refuses
-any pull request touching `frozen/` unless the same pull request updates
-`frozen/MANIFEST.md`. A frozen input that needed changing was not frozen: the
-honest move is a new dated entry beside the old one.
+**1. Consolidated trees are not yours to edit.** The consolidations and
+received bundles inside each research line are `agent-consolidated`: ordinary
+content, but the norm is that they are not tweaked, and the `path-gate` job puts
+them out of a contributor's reach. Cite them by path and by claim identifier.
+Work that needs a consolidated result to say something different is work that
+supersedes it with a later tree — not work that rewrites it.
 
 **2. Contributors do not coin permanent names.** Naming is the author's.
 If your work needs a name for something new, use an obviously provisional one,

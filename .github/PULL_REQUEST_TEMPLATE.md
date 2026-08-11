@@ -58,7 +58,7 @@ none
      file or glob, its generator (a maintainer, a maintainer's round, or external
      with a PR link), its review status (maintainer-reviewed / ci-only), the date,
      the originating round under prompts/, and — if one exists — the originating
-     chat bundle in frozen/. A contribution from outside is ci-only until a
+     chat bundle. A contribution from outside is ci-only until a
      maintainer says otherwise; that is the expected state, not a demerit. List
      what you added or changed, or write "none". -->
 
@@ -102,9 +102,11 @@ none
      If this pull request is squash-merged, carry this section into the squashed
      commit message: otherwise the attribution never reaches main's history. -->
 
-## Frozen inputs
+## Consolidated trees
 
-- [ ] This PR does not modify anything under `frozen/`
+- [ ] This PR does not modify a tree marked `agent-consolidated`
 
-<!-- If it does: say which entry and why, and update frozen/MANIFEST.md in this
-     same PR. CI fails otherwise. -->
+<!-- If it does: say which, and why. A correction, a scrub or a supersession is a
+     reason; reshaping a consolidated tree to fit new work is not. State the
+     reason in the commit, and record substantive edits in DECISIONS.md.
+     Contributors cannot touch these paths — path-gate refuses them. -->

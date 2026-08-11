@@ -2,8 +2,9 @@
 """Repo-level runner: gate 1, plus the parts of gates 2 and 3 that need no toolchain.
 
 Each project owns a self-contained runner; this one discovers and runs them, and
-reports a per-project verdict. It adds two repo-level checks the projects cannot
-do for themselves: the frozen-input digests, and the Lean sorry-free gate.
+reports a per-project verdict. It adds the repo-level checks the projects cannot
+do for themselves: every gate's null-input self-test, gate coverage, the name
+lint, contributor-checker hygiene, conservativity, and the Lean sorry-free gate.
 
 Lean compilation itself is not run here — it needs a toolchain and a warm cache,
 and it is the one check with a wall time measured in minutes. Run
@@ -45,8 +46,7 @@ def run_projects() -> list[tuple[str, bool]]:
 # Running them here as well as in CI means a local run cannot report green off a
 # gate that has quietly stopped matching anything.
 GATE_SELF_TESTS = ("path_gate", "dco", "attribution", "name_lint",
-                   "contrib_hygiene", "conservativity", "check_frozen",
-                   "audit_axioms")
+                   "contrib_hygiene", "conservativity", "audit_axioms")
 
 
 # Gates whose real form needs a pull request: they read the event payload or a
@@ -82,15 +82,6 @@ def coverage() -> None:
           f"({len(PULL_REQUEST_ONLY)} self-test only — no local form)")
 
 
-def verify_frozen() -> None:
-    """Delegate to the frozen-integrity gate rather than reimplement it.
-
-    One implementation of the digest rule, used by both the local runner and CI,
-    so the two cannot drift apart and disagree about what "frozen" means.
-    """
-    subprocess.run([sys.executable, "tests/check_frozen.py"], cwd=ROOT, check=True)
-
-
 def lean_sorry_gate() -> int:
     """No `sorry` reaches a committed Lean file."""
     sources = sorted((ROOT / "lean" / "Workspace").rglob("*.lean"))
@@ -124,7 +115,6 @@ def lean_build() -> bool:
 if __name__ == "__main__":
     coverage()
     self_tests()
-    verify_frozen()
     subprocess.run([sys.executable, "tests/name_lint.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/contrib_hygiene.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/conservativity.py"], cwd=ROOT, check=True)

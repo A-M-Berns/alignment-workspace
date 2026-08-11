@@ -40,6 +40,28 @@ reconstructing the context.
 
 ## Settled
 
+### 2026-08-11 — `frozen/` retired; received work becomes line content
+
+The four frozen trees move into the research lines they belong to and become
+`agent-consolidated`: ordinary content whose norm is that it is not tweaked.
+`tests/check_frozen.py` and the `frozen-integrity` job are retired.
+
+**The trade, so it is visible rather than implicit.** The freeze bought three
+things: a stable citable path, a record of what each tree was when received, and
+protection against an agent quietly rewriting the corpus. Only the third needed a
+wall — the first two need a receipt, which is what each tree's `ORIGIN.md` now
+is. What the wall cost was that every legitimate change, including both scrub
+rounds, had to go through a manifest procedure, and material that is the
+*starting point* of ongoing work was structurally forbidden from being worked on.
+The failure the wall aimed at is one that the path gate, review, and git history
+already make visible. Keep the receipts; drop the wall.
+
+The move changed no bytes: all four trees recomputed to their intake digests
+after `git mv`. The consolidation's self-verification job stays, retargeted and
+renamed `consolidation-verification` — it is the piece of the apparatus that
+carried real information, since it says whether the results still verify in a
+current environment.
+
 ### 2026-08-11 — the ledger is append-only in substance
 
 Settled entries are not edited except to keep their identifiers resolving. The

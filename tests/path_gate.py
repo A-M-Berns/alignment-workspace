@@ -28,8 +28,13 @@ SPEC_PATHS = (
     ".github/**", ".gitattributes", ".gitignore",
     "checkers/*.py", "checkers/README.md",
     "tests/**",
-    "frozen/**",
     "prompts/**",
+    # Consolidated trees. Ordinary content, but not contributors' to edit:
+    # the protection that used to be a hash gate is this list plus review.
+    "projects/leverage/consolidation-aug9/**",
+    "projects/deference/note-dump-2026-06-27/**",
+    "projects/deference/dose-response-note-dump-2026-07-02/**",
+    "projects/deference/references-citations-2026-08-11/**",
     "lean/lakefile.toml", "lean/lean-toolchain", "lean/lake-manifest.json",
     "lean/Workspace.lean",
     "lean/Workspace/Smoke.lean",
