@@ -180,6 +180,6 @@ working vocabulary; none is proposed for permanence.
 
 ## 10. Version
 
-`v1`, frozen 2026-08-11 at commit `3ad66b0`. A revision is a new version number,
-recorded here, with every track that consumed the previous version either rerun or
-explicitly reconciled.
+`v1`, frozen 2026-08-11. The wave-1 tracks were dispatched against repository
+commit `ec7d6cc`. A revision is a new version number, recorded here, with every
+track that consumed the previous version either rerun or explicitly reconciled.
