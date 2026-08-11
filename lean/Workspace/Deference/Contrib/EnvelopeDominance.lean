@@ -118,6 +118,30 @@ theorem agreement_gap_zero (p : Ω → ℚ) (X : Ω → P → ℚ) (cell : Ω �
   refine Finset.sum_eq_zero fun c _ => ?_
   rw [h c, sub_self]
 
+/-- **The recommendation corollary.** If the advising process's realisation is
+measurable with respect to the message, and the authorising process maximises over
+message-measurable selections under the pricing credence, then transferring
+authorisation to the adviser cannot help.
+
+Source: `prompts/2026-08-11-stage-iv-future-agent/REPORT.md` §3.
+
+**This is `envelope_dominates` again, with the cell map instantiated at the message
+partition rather than at an information partition.** It is stated separately only so that
+the Stage IV comparator's dominance result cannot be mistaken for a new theorem: it is
+the same one-line fact, and the substance is entirely in `hd`.
+
+Read `hd`. It says the authorising process is *optimal on what it knows*, which is the
+strongest available competence assumption about that process, and exactly the shape the
+competence track showed is equivalent to the delegation conclusion rather than sufficient
+for it. Drop it — let the authorising process price with a different credence — and the
+conclusion fails; the round's harness exhibits an instance where transfer strictly wins. -/
+theorem recommendation_dominated {p : Ω → ℚ} {X : Ω → P → ℚ} {msg : Ω → C} {d f : C → P}
+    (hd : IsCellMaximiser p X msg d) :
+    valuation p X msg f ≤ valuation p X msg d := by
+  have h := envelope_dominates (φ := d) (δ := f) hd
+  simp only [envelopeGap] at h
+  linarith
+
 /-! ## The competence bound, and where its leakage enters -/
 
 /-- On a cell where the selector's grades are calibrated to the conditional value
@@ -264,6 +288,7 @@ end WorkedCase
 #print axioms envelope_dominates
 #print axioms envelopeGap_eq_regret
 #print axioms agreement_gap_zero
+#print axioms recommendation_dominated
 #print axioms cellMass_nonneg
 #print axioms cell_regret_le_of_calibrated
 #print axioms cell_regret_le_of_bounded
