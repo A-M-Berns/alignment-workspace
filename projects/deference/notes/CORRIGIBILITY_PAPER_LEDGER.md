@@ -8,9 +8,18 @@ about what has been established *inside this repository*, the registry wins.
 ## The one-line status
 
 **Nothing on the deference line is `workspace-established`.** `../CLAIMS.md` does
-not yet exist, and `lean/Workspace/Deference/Basic.lean` holds a namespace
-placeholder and no mathematics. Every result below is inherited, and inherited
-status is not repository status.
+not exist, so there is no statement of record, and `workspace-established` requires
+one.
+
+That is now a narrower statement than it was. `lean/Workspace/Deference/Contrib/`
+holds Lean that builds against the pinned toolchain and audits to the three standard
+axioms, covering six of the Movement-I rows below and replacing one of the inherited
+audit's modelling substitutions with a real application of the criterion. It is
+kernel-verified and unregistered, which are different things, and the registry is
+what a claim is. Promotion is additionally blocked on its own terms: the efficiency
+obligation is undischarged, so the headline is `unverified-nonvacuous`.
+
+Everything else below is inherited, and inherited status is not repository status.
 
 ## Vocabulary
 
@@ -62,20 +71,41 @@ kernel. `PRIORITIES.md` items 7–9 are these three findings, filed.
 | result | status |
 |---|---|
 | cross-agent one-sided Total Trust | `open` — the major theorem |
-| finite trust-to-delegation bridge | `open`; first-wave target, item 15 |
-| settlement classification | `open`; first-wave target, item 15 |
-| contingent WP-D statement | `architected` at best; gated on the settlement decision |
+| finite trust-to-delegation bridge | derived, with sharp constants, **conditional on an imported hypothesis**; a proposal, not a result of record |
+| settlement classification | **done, and negative for the epistemic reading** — see below |
+| contingent WP-D statement | `architected`; stated in the round report, gated |
 
-The settlement interpretation is a **`maintainer-decision`**. A contingent theorem
-shape may be mathematically ready while interpretive endorsement remains blocked,
-and the two readinesses are kept apart.
+**The settlement classification, wave 1.** Grade/report settlement contributes
+*nothing* to the delegation inequality: the witness has `A` predicting the
+principal's grades perfectly, no grade contract profitable in any state, and
+deference still losing by the maximal `2B`. World settlement makes the question
+measurable, not costly. Enforcement delivers the conclusion unconditionally at a
+bond of exactly `2B`, for every instance regardless of the principal's competence,
+with **zero epistemic content**.
+
+So the inequality is available, and what makes it available is enforcement. The
+epistemic reading requires importing a grade-to-quantity link that is a competence
+claim about the principal and that no mechanism in the skeleton produces. Labelling
+that result enforcement rather than epistemic trust is a **`maintainer-decision`**,
+and it is the one the roadmap already said would be a result either way.
 
 ## Movement III — substitution (`π^SIM`)
 
-`open`; first-wave target, item 17. The distinction between deferring to the actual
-principal and predicting it is stated but not formalized. The program is committed
-to keeping the thesis compatible with a perfectly predictable principal, so
-unpredictability is not available as a cheap separator.
+`open`, and wave 1 turned the open question into a **fence**. Three tracks
+independently proved that the valuation cannot separate delegation from simulation:
+when `A`'s model of the principal is accurate the two conducts have equal selections
+and equal quantities, so every criterion computable from a single run's realized
+data admits both or neither. The one structural separator the finite model offers —
+that delegation's selection is not decision-time measurable — separates the two
+*exactly when the principal is unpredictable*, which the program has forbidden
+itself. Under a perfectly predictable principal the counterfactually faithful
+simulator **is** delegation, as a function.
+
+Separation therefore survives only in a variation register (statable in a thin
+formalism, unverifiable from a run) or an architectural register (verifiable by
+inspection, unstatable in the model). Which of those the program takes is a
+**`maintainer-decision`**, and it types every downstream criterion. A divergence
+witness exists and is `witness-checked` by the house checker, though unregistered.
 
 ## Movement IV — fully updated deference (`π^{FU,g}`)
 
@@ -86,9 +116,26 @@ carelessly is how `π^{FU,g}` silently collapses into `π^SIM`.
 
 ## Movement V — certification and densification
 
-Certificate inequality: `open`; first-wave target, item 16, to be derived rather
-than imported. Densification: `open`; first-wave target, item 18, deliberately
-bounded.
+**Certificate.** The literal target — a certificate implying strict dominance over
+every comparator — is **not derivable** over the finite model, shown comparator by
+comparator. Two theorems are derivable in its place, with derived and sharp
+constants, and three impossibilities came with them. The sharpest: **no certificate
+licensing discretion anywhere is strictly non-preemptive.** At any positive
+tolerance there is a compliant model in which `A` overrides the principal inside the
+certified event. Certified discretion with a bounded override rate, or no discretion
+at all; there is no third option. The roadmap says "non-preemption" and the
+mathematics offers "preemption at a certified rate" — a **`maintainer-decision`**,
+not a gap. Fail-closed itself is preserved and mechanically checked.
+
+**Densification.** The exposure geometry is an exact identity: under a cap, total
+placeable weight by a deadline is the cap times the largest number of
+pairwise-disjoint settlement windows before it. Adaptivity, overlapping positions
+and fractional sizing each buy exactly nothing. The literal target is therefore
+achievable in *every* delay regime, so the rate is the real question and the rate is
+pinned. Three necessity witnesses show every apparent escape is an accounting
+artifact. The item is under-specified until one **`maintainer-decision`** is taken:
+bounded outstanding gross exposure and the Logical Induction bounded-loss budget are
+different functionals and give different answers.
 
 ## Movement VI — non-authorship / dose
 

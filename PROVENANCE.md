@@ -39,6 +39,8 @@ earlier rows did not record at all.
 | `projects/deference/notes/*.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-deference-corrigibility/` — the four canonical deference documents; the decision that they are canonical is the maintainer's, recorded in `DECISIONS.md` |
 | `tests/path_gate.py` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — one specification pattern and three self-test cases, on explicit maintainer authorization for this trust-chain file; the rest of the file predates the round |
 | `PRIORITIES.md` items 14–20 | Claude Opus 5 | `ci-only` | 2026-08-11 | same — filed at the maintainer's direction to authorize the first deference wave |
+| `prompts/2026-08-11-faithful-acceleration/**`, `-deference-finite-kernel/**`, `-deference-certificates/**`, `-deference-channel/**`, `-deference-densification/**`, `-deference-triangle/**`, `-deference-admissibility/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the seven wave-1 tracks, each dispatched by `prompts/2026-08-11-deference-corrigibility/`. Six executors were blocked by tooling from writing their own `.md` reports; those files are the executor's text placed by the orchestrator, and each report records it as a deviation. Where a human register was owed and the executor could not write it, the file is the **orchestrator's** text and says so at its head |
+| `lean/Workspace/Deference/Contrib/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-faithful-acceleration/` — **machine-checked**: builds against the pinned toolchain and audits to the three standard axioms. Not registered, and not promotable: its efficiency obligation is undischarged. Not reached by the default build target |
 
 ## No originating chat bundle
 

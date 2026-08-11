@@ -4,7 +4,23 @@ What is dispatched, what is waiting, and what may not be dispatched yet. A track
 appears here only once a `PRIORITIES.md` item authorizes it; the item is the
 specification and this file is the schedule.
 
-## Wave 1 — dispatched 2026-08-11
+## Wave 1 — dispatched and returned 2026-08-11
+
+**All seven tracks returned and are integrated.** Reports sit in each track's
+directory under `prompts/`; the cross-track audit is
+`prompts/2026-08-11-deference-corrigibility/REPORT.md`. Every machine-checkable
+artifact was re-run by the orchestrator rather than accepted on report. No skeleton
+revision was issued: four tracks reported v1 deficiencies and each layered its own
+additions over the frozen object and declared them.
+
+What the wave produced, in one line each. **A** — six Movement-I statements now
+build and audit clean here, and the criterion's application to the trader is derived
+rather than assumed. **B** — the settlement classification, and the delegation
+inequality is available through enforcement. **C** — the literal certificate target
+is not derivable; preemption cannot be driven to zero. **D** — the divergence
+witness, and timing is the only extensional separator the model has. **E** — the
+exposure geometry is an exact identity. **F** — 11 of 15 triangle rows unresolved.
+**G** — the load-bearing admissibility row fails, twice, exactly.
 
 Round `prompts/2026-08-11-deference-corrigibility/`. Seven tracks against one
 frozen snapshot, run independently: one track's speculative report may not become
