@@ -6,21 +6,43 @@ listed at the top of each round's report until they are closed.
 
 ## Awaiting the author
 
-- **Repository visibility and license.** The repository is currently **private**,
-  inherited from its predecessor rather than chosen for this scope. No license
-  file is present. Both are the author's to set.
 - **Whether the leverage frozen trees are registered now or at the next leverage
   round.** `consolidation_aug9/` is registered and checksummed; the question is
   whether anything else from that line — earlier consolidations, the source
   tree's archived material — should join it now.
-- **Lean library and namespace names.** `Workstudio`, with
-  `Workstudio.Deference.*` and `Workstudio.Leverage.*`, is what this round
-  scaffolded because the prompt named it. Renaming later is cheap now and
-  expensive after the first real development lands.
+- **The name of the leverage forward tree.** `projects/leverage/forward/` is in
+  place and its documents read in those terms; the name was proposed in the
+  dispatch, not confirmed by the maintainer. It is one `git mv` and a handful of
+  references to change while the tree is still small.
 - **Which deference documents are canonical.** `projects/deference/notes/` is
   seeded with a pointer rather than with documents; see the note there.
 
 ## Settled
+
+### 2026-08-11 — the repository, the Lean library, and the forward tree renamed
+
+Three names, settled together because they collide with each other.
+
+The repository is **alignment-workspace** and the Lean library is
+**`Workspace`**, so that the two agree: namespaces are `Workspace.Leverage.*`
+and `Workspace.Deference.*`, the library root is `lean/Workspace.lean`, and the
+Lake package is `workspace`. This closes the naming stub the scaffolding round
+opened, and closes it at the cheapest moment — before any real development lands
+in the library.
+
+The leverage forward tree is **`projects/leverage/forward/`**, with
+`FORWARD.md` as its self-description. It could not keep its previous directory
+name once the repository took that word: a path whose last component matches the
+repository's own name is the near-collision this rename existed to remove. The
+new name says what the tree's own document already said it was — disposable,
+non-authoritative, consolidated or discarded. The name itself is still awaiting
+the maintainer; see the stub above.
+
+GitHub's redirect from the previous repository path is infrastructure and stays,
+so existing clones, links and the `origin` remote keep working. Nothing in the
+repository's living files records the previous names; the dispatches under
+`prompts/` are history and keep the names that were true when they were written,
+as does git history.
 
 ### 2026-08-11 — public, and branch protection live
 
@@ -70,7 +92,7 @@ Apache-2.0 for all repository content, code and prose alike. Rationale: Mathlib
 compatibility upstream; §5 makes contributions inbound-equals-outbound, which
 matters for anonymous contributors; split licensing rejected as a per-file
 question that never ends. No per-file headers — the root `LICENSE` governs. Any
-copyright line reads "the alignment-workstudio contributors", with no personal
+copyright line reads "the alignment-workspace contributors", with no personal
 names.
 
 ### 2026-08-11 — upstream Formalized-Agent-Foundations was already Apache-2.0
@@ -127,7 +149,7 @@ public in a public repository. Prose-level anonymity of the program is unchanged
 ### 2026-08-11 — the deference line carries its own name
 
 The line is **deference**, everywhere current: directory, Lean namespaces
-including `Workstudio.Deference.Kernel`, registries, path gate, problem pointers,
+including `Workspace.Deference.Kernel`, registries, path gate, problem pointers,
 prose. Completed round records keep the names that were true when written, as
 does git history — those are records, not living documents. Frozen trees were
 untouched and already carried the right name.
@@ -160,7 +182,7 @@ as unverified inside the entry rather than reconstructed from memory.
 
 ### 2026-08-10 — repository name and scope
 
-**alignment-workstudio**: the working monorepo for the Berns–Demski research
+**alignment-workspace**: the working monorepo for the Berns–Demski research
 program. It holds multiple research lines, exact-arithmetic model work per line,
 one shared Lean project, frozen inputs, and dispatch provenance. Two lines at
 the outset: **leverage** (the normativity and answerability program) and
@@ -179,7 +201,7 @@ made it pinnable. Toolchain matched to FAF's exactly: `leanprover/lean4:v4.31.0`
 
 ### 2026-08-10 — one Lake project, not one per line
 
-A single Lake project at `lean/`, library `Workstudio`, with per-line
+A single Lake project at `lean/`, library `Workspace`, with per-line
 namespaces. The alternative — a project per research line — would have meant a
 separate dependency pin and a separate toolchain per line, and the first time
 the two lines shared a definition it would have meant a fourth package to hold

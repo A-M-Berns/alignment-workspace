@@ -56,7 +56,7 @@ def check(registry: pathlib.Path, root: pathlib.Path) -> tuple[bool, list[str]]:
         open_items = set(re.findall(r"^###\s+(\d+)\.", open_path.read_text(), re.M))
 
     lean_source = ""
-    lean_dir = root / "lean" / "Workstudio"
+    lean_dir = root / "lean" / "Workspace"
     if lean_dir.exists():
         lean_source = "\n".join(p.read_text() for p in lean_dir.rglob("*.lean"))
 

@@ -7,7 +7,7 @@ do for themselves: the frozen-input digests, and the Lean sorry-free gate.
 
 Lean compilation itself is not run here — it needs a toolchain and a warm cache,
 and it is the one check with a wall time measured in minutes. Run
-`lake build` in `lean/`, or set `WORKSTUDIO_LEAN=1` to have this runner do it.
+`lake build` in `lean/`, or set `WORKSPACE_LEAN=1` to have this runner do it.
 """
 from __future__ import annotations
 
@@ -52,7 +52,7 @@ def verify_frozen() -> None:
 
 def lean_sorry_gate() -> int:
     """No `sorry` reaches a committed Lean file."""
-    sources = sorted((ROOT / "lean" / "Workstudio").rglob("*.lean"))
+    sources = sorted((ROOT / "lean" / "Workspace").rglob("*.lean"))
     offenders = [p.relative_to(ROOT).as_posix() for p in sources
                  if "sorry" in p.read_text()]
     if offenders:
@@ -63,7 +63,7 @@ def lean_sorry_gate() -> int:
 def lean_axiom_discipline() -> int:
     """Every committed Lean file ends with `#print axioms` lines."""
     missing = [p.relative_to(ROOT).as_posix()
-               for p in sorted((ROOT / "lean" / "Workstudio").rglob("*.lean"))
+               for p in sorted((ROOT / "lean" / "Workspace").rglob("*.lean"))
                if "#print axioms" not in p.read_text()]
     if missing:
         raise AssertionError(f"Lean file without `#print axioms`: {missing}")
@@ -71,8 +71,8 @@ def lean_axiom_discipline() -> int:
 
 
 def lean_build() -> bool:
-    if not os.environ.get("WORKSTUDIO_LEAN"):
-        print("LEAN BUILD SKIPPED: set WORKSTUDIO_LEAN=1 to run `lake build`")
+    if not os.environ.get("WORKSPACE_LEAN"):
+        print("LEAN BUILD SKIPPED: set WORKSPACE_LEAN=1 to run `lake build`")
         return False
     subprocess.run(["lake", "build"], cwd=ROOT / "lean", check=True)
     print("LEAN BUILD: green")

@@ -24,13 +24,13 @@ consolidation vendored inside it, so the pair reads as one monograph.
 
 ## What is here
 
-`workspace/` — the forward workspace: six source modules the next round builds
+`forward/` — the forward tree: six source modules the next round builds
 on, their tests, a runner, and its own conventions note. Nothing in it is
 frozen, and nothing in it survives unless it is consolidated in turn. Its
 `CONSOLIDATION_REF.md` pins the frozen tree.
 
 ```sh
-cd workspace && python3 tests/run.py
+cd forward && python3 tests/run.py
 ```
 
 New leverage rounds land in this directory.

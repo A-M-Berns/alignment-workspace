@@ -40,7 +40,7 @@ whether a declared minimum keeps being satisfiable as settlement contracts the
 region. `NL-SI-A4` shows no finite family of per-date checks decides it, and
 `NL-SI-A7` shows both outcomes occur on small instances.
 
-*Deliverable shape:* `lean-proved` in `Workstudio.Leverage.Contrib`, or `witness-checked` for the negative direction.
+*Deliverable shape:* `lean-proved` in `Workspace.Leverage.Contrib`, or `witness-checked` for the negative direction.
 *Acceptance check:* The Lean gate builds and audits clean; or the `witness` checker accepts the trajectory with the `violates-at-least-one` property.
 
 *Context:* `frozen/consolidation_aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §5.
@@ -105,7 +105,7 @@ pair, enough of a market over a declared process to evaluate the interface
 predicates against, would move that evidence from the weakest class to the
 strongest.
 
-*Deliverable shape:* A construction in `Workstudio.Leverage.Contrib` plus registry entries per clause it inhabits.
+*Deliverable shape:* A construction in `Workspace.Leverage.Contrib` plus registry entries per clause it inhabits.
 *Acceptance check:* The Lean gate is green and each clause entry names a declaration that exists.
 
 *Context:* `frozen/consolidation_aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §7;
@@ -138,12 +138,12 @@ development takes the Logical Induction theorems as named hypotheses and proves
 what follows; the inference from the criterion to the forcing inequality is
 nowhere in it, because the objects that inference is about are absent.
 
-*Deliverable shape:* `lean-proved` in `Workstudio.Deference.Contrib`, with an inhabitation witness for the hypothesis package.
+*Deliverable shape:* `lean-proved` in `Workspace.Deference.Contrib`, with an inhabitation witness for the hypothesis package.
 *Acceptance check:* The Lean gate is green, the axiom audit is clean, and the nonvacuity witness typechecks.
 
 *Context:* `frozen/deference-note-dump-2026-06-27/lean/AUDIT.md` §3.1.
 *A solution ships:* a minimal market and trader model in
-`Workstudio.Deference.*`, enough that the criterion's application is a proof
+`Workspace.Deference.*`, enough that the criterion's application is a proof
 rather than a hypothesis, with the axiom audit clean.
 *Why it matters:* this is the same gap the leverage line and the pinned
 dependency sit on the other side of. It is the most valuable single item in this

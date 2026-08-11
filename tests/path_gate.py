@@ -31,10 +31,10 @@ SPEC_PATHS = (
     "frozen/**",
     "prompts/**",
     "lean/lakefile.toml", "lean/lean-toolchain", "lean/lake-manifest.json",
-    "lean/Workstudio.lean",
-    "lean/Workstudio/Smoke.lean",
-    "lean/Workstudio/*/Basic.lean",
-    "lean/Workstudio/*/Spec/**",
+    "lean/Workspace.lean",
+    "lean/Workspace/Smoke.lean",
+    "lean/Workspace/*/Basic.lean",
+    "lean/Workspace/*/Spec/**",
     "projects/*/CLAIMS.md", "projects/*/MODEL.md", "projects/*/README.md",
     "projects/*/THEOREMS.md",
 )
@@ -45,7 +45,7 @@ PROOF_PATHS = (
     # modifying a house checker is retroactive, which is why only this
     # subdirectory is open. See AGENTS.md.
     "checkers/contrib/**",
-    "lean/Workstudio/*/Contrib/**",
+    "lean/Workspace/*/Contrib/**",
     "projects/*/contrib/**",
     "projects/*/rounds/**",
 )

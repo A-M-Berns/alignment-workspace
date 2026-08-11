@@ -14,7 +14,7 @@ import Mathlib.Analysis.SpecificLimits.Basic
 import LogicalInduction.Framework.Asymptotics
 import LogicalInduction.Framework.Foundations
 
-namespace Workstudio.Smoke
+namespace Workspace.Smoke
 
 open LogicalInduction
 
@@ -44,4 +44,4 @@ theorem chain_compiles :
 #print axioms mathlib_one_div_tendsto_zero
 #print axioms chain_compiles
 
-end Workstudio.Smoke
+end Workspace.Smoke

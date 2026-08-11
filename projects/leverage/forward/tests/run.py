@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Workspace runner: test discovery, the vocabulary gate, and optional Lean.
+"""Forward-tree runner: test discovery, the vocabulary gate, and optional Lean.
 
-This tree is a **disposable forward workspace**. It carries no freeze machinery:
+This tree is a **disposable forward tree**. It carries no freeze machinery:
 no checksum manifest, no rename roundtrip, no consolidation-locating logic, and
 no pinned path into pre-consolidation history. The completed consolidation is
-the sole authoritative record; see `WORKSPACE.md` and `CONSOLIDATION_REF.md`.
+the sole authoritative record; see `FORWARD.md` and `CONSOLIDATION_REF.md`.
 """
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ CLAIM_ID = re.compile(r"\b(?:C|NL|AM|CM|ST|CD|CS|GR|LG|AD)-[A-Z0-9-]+\b")
 
 
 def documents() -> list[pathlib.Path]:
-    """Live workspace documents. `attic/` is retired material and is not gated."""
+    """Live documents of this tree. `attic/` is retired material and is not gated."""
     return sorted(p for p in ROOT.rglob("*.md") if "attic" not in p.parts)
 
 
@@ -74,4 +74,4 @@ if __name__ == "__main__":
     if not result.wasSuccessful():
         sys.exit(1)
     run_lean()
-    print("WORKSPACE GREEN")
+    print("FORWARD GREEN")

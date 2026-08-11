@@ -22,7 +22,7 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-LIB = ROOT / "lean" / "Workstudio"
+LIB = ROOT / "lean" / "Workspace"
 SHAPE = ROOT / "tests" / "spec_shape.json"
 
 SPEC_GLOBS = ("Smoke.lean", "*/Basic.lean", "*/Spec/**/*.lean")

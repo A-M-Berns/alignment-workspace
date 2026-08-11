@@ -20,7 +20,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 LEAN = ROOT / "lean"
-LIB = LEAN / "Workstudio"
+LIB = LEAN / "Workspace"
 
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 AXIOM_LINE = re.compile(r"'([^']+)' depends on axioms: \[([^\]]*)\]")

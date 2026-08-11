@@ -33,9 +33,9 @@ earlier rows did not record at all.
 | `.github/**` | `llm-unreviewed` | Claude Opus 5 | 2026-08-10 | same |
 | `tests/**` | `llm-unreviewed` | Claude Opus 5 | 2026-08-10 | same — the gate scripts; their behaviour is checked by CI, their design is not reviewed |
 | `lean/lakefile.toml`, `lean/lean-toolchain` | `llm-unreviewed` | Claude Opus 5 | 2026-08-10 | same |
-| `lean/Workstudio/**` | `llm-unreviewed` | Claude Opus 5 | 2026-08-10 | same — the smoke test and the two namespace roots; **machine-checked**: they build and audit to the three standard axioms |
+| `lean/Workspace/**` | `llm-unreviewed` | Claude Opus 5 | 2026-08-10 | same — the smoke test and the two namespace roots; **machine-checked**: they build and audit to the three standard axioms |
 | `projects/*/README.md` | `llm-unreviewed` | Claude Opus 5 | 2026-08-10 | same |
-| `projects/leverage/workspace/**` | mixed | — | — | predates this round; carried over unchanged from the source tree |
+| `projects/leverage/forward/**` | mixed | — | — | predates this round; carried over unchanged from the source tree |
 | `frozen/**` | **not applicable** | — | — | frozen inputs are third-party or predate this repository; their own provenance is internal to each and their digests are registered in `frozen/MANIFEST.md` |
 | `prompts/*/PROMPT*.md` | `human` | the author | 2026-08-10 | verbatim as dispatched, including anything they got wrong |
 | `prompts/*/REPORT.md` | `llm-unreviewed` | Claude Opus 5 | 2026-08-11 | same |
