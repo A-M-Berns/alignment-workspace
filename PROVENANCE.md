@@ -43,6 +43,7 @@ earlier rows did not record at all.
 | `prompts/2026-08-11-phase-ii-*/**`, `prompts/2026-08-11-corrigibility-phase-ii/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the five Stage II tracks and the parent round. **Two reports are not their track's own**: `phase-ii-certificate/REPORT.md` and `phase-ii-promotion/REPORT.md` are independent verification registers authored by the closure pass, because those executors persisted no report and no draft of their prose exists. Each says so at its head and distinguishes verified artifact from reconstructed statement |
 | `projects/deference/notes/FINITE_MODEL_SKELETON.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-corrigibility-phase-ii/` — **v2**, superseding v1; the amendment and the reasons are in `DECISIONS.md` |
 | `projects/deference/notes/FUD_COMPARATOR_SPEC.md`, `prompts/2026-08-11-stage-iii-fud/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the Stage III round. Its Track F adversarial review was run in a **separate Claude Opus 5 context** with no access to the round report, per the dispatch's independence requirement |
+| `projects/deference/notes/FUTURE_AGENT_SPEC.md`, `prompts/2026-08-11-stage-iv-future-agent/**` | Claude Opus 5 | `ci-only` | 2026-08-11 | the Stage IV round, whose construction **collapsed**; the specification is kept as a corrected defective record and the claimed-gate harness was deleted rather than repaired. Its adversarial review ran in a **separate Claude Opus 5 context** |
 
 ## No originating chat bundle
 
@@ -72,6 +73,7 @@ of thing this file exists to make visible.
 | `2026-08-11-corrigibility-phase-ii` and its five tracks | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-corrigibility-phase-ii` (Stage II closure and integration pass) | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-stage-iii-fud` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
+| `2026-08-11-stage-iv-future-agent` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/leverage/consolidation-aug9/` — have
