@@ -95,6 +95,21 @@ comparator again without first putting the authorisation relation into the type*
 execution layer of the shared skeleton is the right instinct, and adding parameters to the
 valuation is not.
 
+**Stage V proves the exact evaluative form of that obstruction.** Any value functional
+explicitly factoring through price and realization is constant on architectures with equal
+projections. This is evaluative indistinguishability; literal identity follows only when the
+whole architecture type is that pair. Jurisdiction can matter only if authorization,
+capability, continuation or transition information reaches value before the factorization
+boundary.
+
+Putting the LI substrate back supplies a genuine temporal epistemic object: present-emittable
+sentences about later exact market prices, with criterion-derived no-expected-net-update and
+self-trust relations. It does **not** yet supply the required future self. FAF has no
+resource-indexed agent state proving the later result unavailable now, and no decision or
+authorization type. The strongest current construction is a quoted, fallible future
+recommendation fact. A successor therefore needs both a resource-separation certificate and
+a two-index execution/capability object before another comparator is well-posed.
+
 **V. Certification and densification** — does the relation hold *here*, and can safe
 discretion occur often enough to be useful?
 

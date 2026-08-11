@@ -46,6 +46,14 @@ All rows below are skeleton v2, and the skeleton is frozen per round.
 | **strict protection** | `κ_n(r) = {ι_n(r), ⊥}`. The opposite pole | skeleton §4a |
 | **`FU[g]`** | **has no definition here.** The skeleton carries no time-indexed family of `A`-valuations, and two rounds' worth of attempts to supply one are on the record as failures. Do not treat any construction as canonical | skeleton §8.1; `PRIORITIES.md` item 27 |
 
+## LI-native temporal vocabulary
+
+| term | current meaning | owned by |
+|---|---|---|
+| **computational futurity** | the intended resource-sensitive distinction between naming a later computation now and possessing its result now. FAF formalizes quotation of later computations, but not the resource separation itself | `LI_NATIVE_DEFERENCE.md` §4 |
+| **quoted future recommendation** | a Boolean or bounded-rational logical computation derived from later market prices and represented by FAF quotation machinery. It is not an action-selecting agent or an authorization | `LI_NATIVE_DEFERENCE.md` §5 |
+| **static view** | the selected pair of price and realization projections through which a value functional factors. Equality of this view forces value equality under that factorization; it need not force equality of architectures carrying more structure | `StaticViewFactorization.lean`; `LI_NATIVE_DEFERENCE.md` §8 |
+
 ## Status vocabulary
 
 The ledger's own classes, restated because they are easy to conflate with the
@@ -58,7 +66,7 @@ repository-wide epistemic classes in `AGENTS.md`.
 | `architected` | precise enough to organize work. Not established |
 | `open` | substantive mathematical uncertainty. Where the kind of uncertainty matters, `RESEARCH_STATE.md` has the debt vocabulary |
 | `blocked` | waiting on an upstream theorem, definition, or maintainer choice |
-| `maintainer-decision` | reserved. Three are live: which register the substitution separation takes, whether the settlement result is labelled enforcement or epistemic trust, and which reading of the fully-updated-deference gloss the paper claims |
+| `maintainer-decision` | reserved. Live decisions are listed only in `DECISIONS.md`'s *Awaiting the author* queue |
 
 ## Kernel-verified and unregistered
 

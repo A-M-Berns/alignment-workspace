@@ -34,6 +34,15 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `enumeration-verified` claim resting on unread code. Nothing is blocked; the
   claims are honestly labelled either way.
 
+- **Rule on the Stage V review surface.** Three linked candidate rulings:
+  accept item 28's exact static-view factorization theorem as the conditional
+  representation boundary, without adopting unrestricted jurisdiction invisibility;
+  mark item 7 partially rather than completely closed, with cross-process
+  emission/calibration as its residue; and retain Q3 as ingenuity-level model
+  debt. *Doing it* requires reading the statements and §§2–9 of
+  `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
+  leaves the current documents explicitly `ci-only` and unadopted.
+
 ## Settled
 
 ### 2026-08-11 — the governance report is removed, not relocated

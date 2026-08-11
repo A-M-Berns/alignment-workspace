@@ -10,6 +10,7 @@
 | `SubstitutionSeparation.lean` | `prompts/2026-08-11-phase-ii-promotion/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phase-ii-promotion/` | — |
 | `ExposureGeometry.lean` | `prompts/2026-08-11-phase-ii-promotion/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phase-ii-promotion/` | — |
 | `EnvelopeDominance.lean` | `prompts/2026-08-11-stage-iii-fud/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-iii-fud/` | — |
+| `StaticViewFactorization.lean` | `prompts/2026-08-11-stage-v-li-native/` (executor: GPT-5 Codex, OpenAI; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-v-li-native/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`; per-declaration
@@ -49,3 +50,12 @@ it proves rather than for what it was written for.
 `squaredError_bdd_of_sharpness_bdd` is likewise not promotable — it carries an undischarged
 `EfficientlyComputable` certificate and ships no term inhabiting its full hypothesis
 package. Every other declaration in that file is hypothesis-complete and ships a witness.
+
+Stage V adds `unitTrader_ec` and `signed_bddAbove_of_bddBelow_rpn` to
+`MagnitudePrediction.lean`. The first constructs the actual FAF efficient-emission
+certificate; the second invokes actual `IsLogicalInductor.noExploit` and retains only the
+substantive bounded-downside premise. The constant-tautology declarations inhabit that
+premise. `StaticViewFactorization.lean` answers item 28's conditional core with a
+polymorphic factorization theorem and a worked architecture pair whose toy jurisdiction
+label differs while its static view agrees. It does not establish unrestricted
+jurisdiction invisibility.

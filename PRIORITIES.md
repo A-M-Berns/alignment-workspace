@@ -207,7 +207,7 @@ Context for all three: `projects/deference/note-dump-2026-06-27/`, in particular
 `lean/AUDIT.md`, the development's own statement-level audit. Its §3 is titled
 "The concerning gaps"; the three below are its own findings, quoted by section.
 
-### 7. Model the market and the traders — **[substantial]**
+### 7. Model the market and the traders — **[substantial]** — *partially closed Stage V*
 
 The audit's §3.1 is "The market and traders are entirely unmodeled". The
 development takes the Logical Induction theorems as named hypotheses and proves
@@ -224,6 +224,14 @@ rather than a hypothesis, with the axiom audit clean.
 *Why it matters:* this is the same gap the leverage line and the pinned
 dependency sit on the other side of. It is the most valuable single item in this
 file.
+
+*Stage V status:* the actual FAF market, strategy, trader, net-worth and
+`IsLogicalInductor.noExploit` objects are now connected. The signed-error forcing
+chain derives trader efficiency from `RpnSentenceCodes`; faithful acceleration
+uses actual FAF wealth and criterion semantics. The residue is cross-process:
+polynomial emission for the other process's quote sequence, cross-market
+calibration, and generic deductive-process non-vacuity. See
+`projects/deference/notes/LI_NATIVE_DEFERENCE.md`.
 
 ### 8. The doubly-soft weight class — **[open]**
 
@@ -738,14 +746,14 @@ correct protection as wrong; it now derives the number from the payload.
 
 ### F3 — The deference line has no claims registry
 
-`lean/Workspace/Deference/Contrib/` holds 155 kernel-verified theorems, sorry-free
+`lean/Workspace/Deference/Contrib/` holds many kernel-verified results, sorry-free
 and auditing clean, and none is registered. The registry is what a claim is, so by
 this repository's own standard the line has established nothing — which its own
 ledger states in its first line. The gap is bookkeeping rather than mathematics,
 and it is the largest single divergence between what the repository holds and what
 it can say it holds.
 
-### 28. Can any valuation price a jurisdiction assignment? — **[open]**
+### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 
 The highest-value question the deference line has produced, and the only one whose answer
 would convert a repeated observation into a result.
@@ -780,9 +788,15 @@ the `witness` checker accepts the separating instance.
 *A solution ships:* the verdict, and — if the impossibility holds — the exact statement of
 what a model must carry to express an authorisation regime, which is what item 27's
 successor comparator would then be built on.
-*Why it is [open]:* the obstruction is currently an argued structural observation with an
-exhaustive check over one parameterisation behind it. Nobody has tried to prove it, and it
-may be false.
+*Stage V status:* `Workspace.Deference.Contrib.StaticViewFactorization.value_eq_of_price_realization_eq`
+proves the conditional static-view constancy direction for every
+functional explicitly factoring through price and realization. A worked case
+shows different jurisdiction with equal projections, and proves that a
+jurisdiction-reading functional does not factor through them. The result is
+kernel-verified and unregistered; it establishes evaluative indistinguishability,
+not unrestricted jurisdiction invisibility, literal architecture identity, or the
+value of jurisdiction. The conditional core of the item is answered; the item
+remains filed as the demand pointer for that unregistered theorem.
 
 ---
 
