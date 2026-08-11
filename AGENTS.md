@@ -407,6 +407,28 @@ unchanged.
 until the maintainer promotes them. Promotion is a specification-layer change,
 with reading.
 
+## Every gate fails on its null input
+
+**A gate ships a case proving it fails when given nothing to check** — the
+untouched template, the absent field, the empty match, the file that is not
+there. The case is wired into a `--self-test` the gate runs in CI, in the same
+job as the gate itself. Performed once at review, it is not a case; it is a
+memory.
+
+The reason is not hypothetical. This repository has shipped two gates that
+reported green while checking nothing: the DCO gate counted GitHub's synthetic
+merge commit and would have failed every pull request, and the attribution
+gate's first parse accepted the pristine template because each option carries
+its own label text. Both were found by hand. **A gate that matches nothing is
+indistinguishable from a gate that works**, and the failure is silent in the
+direction that matters — it grants passes.
+
+Two rules follow. A gate that discovers its own inputs treats *no inputs* as a
+failure when the context implies there must be some: an empty diff inside a pull
+request is a broken diff, not a clean branch. And a gate must never repair its
+own baseline — writing a missing checksum or shape file and passing turns
+deleting that file into a silent re-baselining of the thing the gate freezes.
+
 ## Python regime — certifying computation
 
 There is no kernel. The substitute is the certificate architecture: an untrusted
@@ -558,6 +580,7 @@ required.
 | 10, reserved items listed | **not gated** — review |
 | 11, write scope | **not gated** — the round's dispatch says |
 | dual register | **not gated** — review; a heuristic presence check is a candidate, see `PRIORITIES.md` |
+| every gate fails on its null input | each gate's own `--self-test`, in the same job; and `tests/run.py` locally |
 | slop discipline | **not gated** — review, and grounds for rejection on its own |
 | provenance | **not gated** — review; the PR template asks |
 

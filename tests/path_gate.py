@@ -78,10 +78,50 @@ def changed_files() -> list[str]:
     return [l for l in diff.stdout.splitlines() if l.strip()]
 
 
+def self_test() -> int:
+    """Null-input cases: the gate must not pass by matching nothing.
+
+    Per AGENTS.md, every gate ships a case proving it fails on its null input.
+    Here the null input is an empty changed-file list *inside* a pull request —
+    which used to print "no pull-request context" and pass, indistinguishable
+    from a gate that had classified the files and found them clean.
+    """
+    cases = [
+        ("a specification path is recognised", is_spec("AGENTS.md"), True),
+        ("a contributor checker is proof layer", is_proof("checkers/contrib/x.py"), True),
+        ("proof patterns beat spec patterns",
+         is_spec("checkers/contrib/x.py"), False),
+        ("a house checker stays specification", is_spec("checkers/witness.py"), True),
+        ("an unknown path is in neither layer",
+         is_spec("scratch/notes.txt") or is_proof("scratch/notes.txt"), False),
+        ("the renamed priorities file is specification",
+         is_spec("PRIORITIES.md"), True),
+        ("the maintainer set is non-empty", bool(MAINTAINERS), True),
+        ("no specification pattern is empty", all(SPEC_PATHS), True),
+    ]
+    failures = 0
+    print("PATH GATE SELF-TEST:")
+    for label, got, want in cases:
+        failures += got != want
+        print(f"  {'ok' if got == want else 'FAIL'}: {label}")
+    return 1 if failures else 0
+
+
 def main() -> int:
+    if "--self-test" in sys.argv:
+        return self_test()
     actor = os.environ.get("GITHUB_ACTOR", "")
     files = changed_files()
+    in_pull_request = bool(os.environ.get("GITHUB_BASE_REF"))
     if not files:
+        if in_pull_request:
+            # The null input. A pull request always changes something, so an
+            # empty list means the diff failed, not that the branch is clean —
+            # and passing here would gate nothing while reporting green.
+            print("PATH GATE FAILED: in a pull request but the diff against "
+                  f"origin/{os.environ.get('GITHUB_BASE_REF')} listed no files. "
+                  "The gate cannot classify what it cannot see.", file=sys.stderr)
+            return 1
         print("PATH GATE: no pull-request context; classification only")
         print(f"  specification patterns: {len(SPEC_PATHS)}")
         print(f"  proof patterns:         {len(PROOF_PATHS)}")

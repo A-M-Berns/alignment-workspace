@@ -70,7 +70,49 @@ def offences(path: str) -> list[str]:
     return found
 
 
+def self_test() -> int:
+    """Null-input cases: the lint must not pass by scanning nothing.
+
+    Its null input is an empty file list — which already fails — and a name it
+    cannot see. The backtick exemption is the deliberate hole (handles, paths,
+    URLs), so it is pinned here: if someone widens it, these cases say so.
+    """
+    import tempfile
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    def scan(text: str) -> int:
+        f = tmp / "sample.md"
+        f.write_text(text)
+        global ROOT
+        keep, ROOT = ROOT, tmp
+        try:
+            return len(offences("sample.md"))
+        finally:
+            ROOT = keep
+    cases = [
+        ("a maintainer name in prose is caught", scan("The Berns program.\n") > 0, True),
+        ("a second maintainer name is caught", scan("Ask Demski.\n") > 0, True),
+        ("a handle in backticks is allowed", scan("See `A-M-Berns` on GitHub.\n"), 0),
+        ("a path in backticks is allowed",
+         scan("Open `frozen/anson-notes/x.md`.\n"), 0),
+        ("a fenced block is allowed",
+         scan("```\nSigned-off-by: A. M. Berns\n```\n"), 0),
+        ("ordinary prose is clean", scan("The program is not named.\n"), 0),
+        ("the name list is non-empty", bool(MAINTAINER_NAMES), True),
+        ("an empty file list fails rather than passing",
+         len(markdown_files()) > 0, True),
+    ]
+    import shutil; shutil.rmtree(tmp)
+    failures = 0
+    print("NAME LINT SELF-TEST:")
+    for label, got, want in cases:
+        failures += got != want
+        print(f"  {'ok' if got == want else 'FAIL'}: {label}")
+    return 1 if failures else 0
+
+
 def main() -> int:
+    if "--self-test" in sys.argv:
+        return self_test()
     files = markdown_files()
     if not files:
         print("NAME LINT: no Markdown in scope", file=sys.stderr)

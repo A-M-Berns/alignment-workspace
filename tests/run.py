@@ -41,6 +41,47 @@ def run_projects() -> list[tuple[str, bool]]:
     return results
 
 
+# Every gate ships a case proving it fails on its null input — see AGENTS.md.
+# Running them here as well as in CI means a local run cannot report green off a
+# gate that has quietly stopped matching anything.
+GATE_SELF_TESTS = ("path_gate", "dco", "attribution", "name_lint",
+                   "contrib_hygiene", "conservativity", "check_frozen",
+                   "audit_axioms")
+
+
+# Gates whose real form needs a pull request: they read the event payload or a
+# base ref, so locally they can only run their self-test. Listed rather than
+# omitted, so the coverage check below can tell "no local form" from "forgotten".
+PULL_REQUEST_ONLY = ("path_gate", "dco", "attribution")
+
+
+def self_tests() -> None:
+    for gate in GATE_SELF_TESTS:
+        subprocess.run([sys.executable, f"tests/{gate}.py", "--self-test"],
+                       cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "-m", "checkers.run", "--self-test"],
+                   cwd=ROOT, check=True)
+
+
+def coverage() -> None:
+    """Every gate script in tests/ is accounted for by this runner.
+
+    A gate that exists and is never invoked is the same failure as a gate that
+    matches nothing: green here would mean less than it appears to. This fails
+    if someone adds a script to tests/ without wiring it in or declaring it
+    pull-request-only.
+    """
+    present = {p.stem for p in (ROOT / "tests").glob("*.py")} - {"run.py", "run"}
+    accounted = set(GATE_SELF_TESTS) | set(PULL_REQUEST_ONLY)
+    missing = sorted(present - accounted)
+    if missing:
+        raise AssertionError(
+            f"gate script(s) in tests/ that this runner never invokes: {missing}. "
+            "Wire them in, or add them to PULL_REQUEST_ONLY with a reason.")
+    print(f"GATE COVERAGE: {len(present)} gate scripts, all invoked "
+          f"({len(PULL_REQUEST_ONLY)} self-test only — no local form)")
+
+
 def verify_frozen() -> None:
     """Delegate to the frozen-integrity gate rather than reimplement it.
 
@@ -76,13 +117,17 @@ def lean_build() -> bool:
         return False
     subprocess.run(["lake", "build"], cwd=ROOT / "lean", check=True)
     print("LEAN BUILD: green")
+    subprocess.run([sys.executable, "tests/audit_axioms.py"], cwd=ROOT, check=True)
     return True
 
 
 if __name__ == "__main__":
+    coverage()
+    self_tests()
     verify_frozen()
     subprocess.run([sys.executable, "tests/name_lint.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/contrib_hygiene.py"], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "tests/conservativity.py"], cwd=ROOT, check=True)
     print(f"LEAN SORRY GATE: clean over {lean_sorry_gate()} files")
     print(f"LEAN AXIOM DISCIPLINE: every file carries `#print axioms`")
     print("PROJECTS:")

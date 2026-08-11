@@ -38,6 +38,13 @@ def tree_hash(directory: pathlib.Path) -> tuple[str, int]:
 
 def check_digests() -> int:
     manifest = json.loads((FROZEN / "FROZEN_INPUT_CHECKSUMS.json").read_text())
+    if not manifest.get("entries"):
+        # The null input. An empty registry verifies every one of its zero
+        # entries and reports green, which is what a wiped checksums file looks
+        # like from outside.
+        print("FROZEN INTEGRITY FAILED: FROZEN_INPUT_CHECKSUMS.json registers no "
+              "entries; there is nothing to verify.", file=sys.stderr)
+        sys.exit(1)
     failures = []
     for name, record in sorted(manifest["entries"].items()):
         target = FROZEN / name
@@ -89,6 +96,43 @@ def check_manifest_rule() -> None:
           "in the same pull request — author review decides")
 
 
+def self_test() -> int:
+    """Null-input cases: the gate must not pass by verifying nothing.
+
+    An empty registry, a wiped tree, and a digest that does not depend on
+    content are all indistinguishable from a clean run unless something checks.
+    """
+    import tempfile, shutil
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    (tmp / "a").mkdir()
+    (tmp / "a" / "f.txt").write_text("one")
+    first, count = tree_hash(tmp / "a")
+    (tmp / "a" / "f.txt").write_text("two")
+    second, _ = tree_hash(tmp / "a")
+    (tmp / "b").mkdir()
+    empty, zero = tree_hash(tmp / "b")
+    cases = [
+        ("a content change moves the digest", first != second, True),
+        ("the digest is stable for unchanged content",
+         tree_hash(tmp / "a")[0] == second, True),
+        ("file counts are reported", count, 1),
+        ("an empty tree hashes to something distinct", empty != first, True),
+        ("an empty tree counts zero files", zero, 0),
+        ("the live registry is non-empty",
+         bool(json.loads((FROZEN / "FROZEN_INPUT_CHECKSUMS.json").read_text())
+              .get("entries")), True),
+    ]
+    shutil.rmtree(tmp)
+    failures = 0
+    print("FROZEN SELF-TEST:")
+    for label, got, want in cases:
+        failures += got != want
+        print(f"  {'ok' if got == want else 'FAIL'}: {label}")
+    return 1 if failures else 0
+
+
 if __name__ == "__main__":
+    if "--self-test" in sys.argv:
+        sys.exit(self_test())
     print(f"FROZEN DIGESTS VERIFIED: {check_digests()} registered inputs")
     check_manifest_rule()
