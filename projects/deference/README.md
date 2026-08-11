@@ -15,6 +15,8 @@ established is negative, and the negative results are the substance.
 | what has and has not been established | `notes/CORRIGIBILITY_PAPER_LEDGER.md` |
 | what the program is trying to do, and in what order | `notes/CORRIGIBILITY_ROADMAP.md` |
 | what a term currently means, and which document owns it | `notes/TERMS.md` |
+| the actual FAF/LI interface, computational futurity, and jurisdiction boundary | `notes/LI_NATIVE_DEFERENCE.md` |
+| the Stage V result in plain language | `notes/LI_NATIVE_DEFERENCE_FOR_HUMANS.md` |
 | the frozen finite object a round's finite tracks bind to | `notes/FINITE_MODEL_SKELETON.md` |
 | what is dispatched, waiting, or not yet dispatchable | `notes/DISPATCH_QUEUE.md` |
 
@@ -77,5 +79,13 @@ the forcing inequality is nowhere in it. The leverage line and the pinned
 Formalized-Agent-Foundations development sit on the other side of exactly that
 gap, which is why the two lines share a repository and a Lean project. It is
 `PRIORITIES.md` item 7.
+
+Stage V partially closes that gap. A signed-error result now constructs an actual
+FAF trader's efficiency certificate and invokes the actual criterion; faithful
+acceleration already used actual FAF wealth and non-exploitability, but retains
+cross-process efficiency and calibration premises. FAF also supplies formal
+quotation and self-trust for later market prices. It supplies no bounded future
+decision-maker, jurisdiction or foreclosure type. The exact boundary and residue
+are in `notes/LI_NATIVE_DEFERENCE.md`.
 
 `kernel/` is reserved and empty.

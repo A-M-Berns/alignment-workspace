@@ -26,6 +26,11 @@ undischarged efficiency certificate.
 
 Everything else below is inherited, and inherited status is not repository status.
 
+Stage V adds two unregistered kernel results: a complete actual-FAF
+criterion-to-signed-forcing chain once bounded downside is supplied, with an
+inhabited tautology-contract instance; and the item-28 theorem that every value
+factoring through price and realization is constant on equal-view fibers.
+
 ## Vocabulary
 
 `inherited-established` — direct inspection of inherited material shows the result
@@ -352,9 +357,62 @@ individuation → actual-channel responsiveness → bounded shaping.
 
 `open`, downstream, untouched.
 
+## Stage V — LI-native futurity and the jurisdiction boundary
+
+**Market/trader gap: partially closed.** The signed-error trader's wealth was
+already actual FAF net worth. Stage V derives its `EfficientlyComputable`
+certificate from `RpnSentenceCodes` and invokes `IsLogicalInductor.noExploit`
+directly. Bounded downside remains an explicit premise, and a tautology-contract
+instance proves the package is inhabited. Faithful acceleration also already
+uses actual traders, wealth and LIC; its exact residue is polynomial emission for
+the exogenous cross-process quote sequence, cross-market calibration, and generic
+process non-vacuity.
+
+**Computational futurity: present as quotation, absent as a resource
+separation.** FAF can efficiently emit sentences about `P (f n)` and proves
+no-expected-net-update and self-trust relations for those quoted later prices.
+This is a genuine temporal logical object not present in the finite models. FAF
+does not define a resource-indexed agent state or prove that the day-`n` process
+cannot already compute the later result. A two-proposal future-price comparison
+can be quoted and can remain fallible, but it is a future recommendation fact,
+not an action-selecting future agent.
+
+**Future H⁺:** a total computable Boolean or bounded-rational report can be
+quoted and eventually settle as a logical computation. With the additional
+`FeedbackTruthComputation` deadline certificate, FAF can derive weighted signed
+unbiasedness for predictions of that report. It does not derive pointwise or
+magnitude accuracy, advice correctness, or authority.
+
+**Self-trust boundary:** FAF self-trust constrains prices and expectations only.
+An independent controller coordinate can vary while every self-trust premise,
+conclusion and trader wealth path stays fixed. Epistemic self-trust does not
+allocate practical sovereignty.
+
+**Item 28's conditional core: kernel-proved and unregistered.**
+`StaticViewFactorization.value_eq_of_price_realization_eq` proves that a
+value explicitly factoring through price and realization is constant on equal-
+view fibers. A worked architecture pair differs in jurisdiction while those
+projections agree; a jurisdiction-reading value distinguishes it and is proved
+not to factor through the static view. The result is elementary and exact. It
+does not establish unrestricted jurisdiction invisibility, say jurisdiction is
+valuable, forbid additional inputs, or give an approximate conclusion for nearby
+views.
+
+**Foreclosure:** still ingenuity-level model debt. A credible candidate needs at
+least two execution states and a transition/capability relation so identical
+immediate behavior can differ in future H⁺-controlled correction reachability.
+LI can price computable facts about such a structure but does not supply it.
+Preserved reachability has ordinary option value only under explicit assumptions;
+commitment refutes unconditional menu monotonicity.
+
+The live interface document and its human register are
+`LI_NATIVE_DEFERENCE.md` and `LI_NATIVE_DEFERENCE_FOR_HUMANS.md`.
+
 ## The standing gap
 
-One item explains most of the rest. Modelling the market and the traders converts
-"criterion ⇒ forcing inequality" from a named hypothesis into a theorem, and it is
-the same gap the leverage line and the pinned dependency sit on the other side of.
-It is `PRIORITIES.md` item 7 and the most valuable single item in that file.
+The market/trader gap is no longer one undifferentiated item. Actual FAF closes the
+criterion application for signed forcing and supplies the market semantics for
+faithful acceleration. The remaining high-value gap is cross-process: efficient
+emission and calibration of one inductor's later prices inside another's trader.
+Beyond it, the controlling model debt is a resource-indexed future process joined
+to a two-index authorization/capability transition structure.

@@ -66,6 +66,9 @@ theorem in this file is hypothesis-complete and ships a witness.
 -/
 import LogicalInduction.Framework.Criterion
 import LogicalInduction.Framework.Asymptotics
+import LogicalInduction.Framework.RpnEmission
+import LogicalInduction.Construction.LIACompiler
+import LogicalInduction.Construction.Witnesses.BitPrefixSyntax
 import Mathlib.Algebra.BigOperators.Fin
 
 namespace Workspace.Deference.Contrib.MagnitudePrediction
@@ -206,6 +209,15 @@ def unitTrader (φ : ℕ → Sentence) : Trader where
         subst hq
         simp }
 
+/-- A symbol-metered sentence stream makes the unit trader admissible for the actual
+Logical Induction Criterion.  The coefficient is the price-free constant `1`; all varying
+content is the sentence stream. -/
+theorem unitTrader_ec (φ : ℕ → Sentence) (hφ : RpnSentenceCodes φ) :
+    EfficientlyComputable (unitTrader φ) :=
+  EfficientlyComputable.ofSingleTradeBlocks _ (fun _ => .const 1) φ
+    (PolySegStream.ofTokenStream (PolyTokenStream.serialize_const 1))
+    (fun _ => trivial) hφ (fun _ => rfl)
+
 /-- **The signed error sum is literally a trader's net worth.** No approximation, no
 remainder term. -/
 theorem unitTrader_netWorth_eq (φ : ℕ → Sentence) (P : History) (v : PCWorld) (n : ℕ) :
@@ -221,6 +233,67 @@ theorem signed_bddAbove_of_bddBelow (φ : ℕ → Sentence) (P : History) (DP : 
     BddAbove ((unitTrader φ).plausibleAssessments P DP) := by
   by_contra habove
   exact hLI.noExploit _ hEC ⟨hbelow, habove⟩
+
+/-- The complete criterion-to-forcing chain for signed error.  Unlike
+`signed_bddAbove_of_bddBelow`, this statement does not take trader admissibility as a named
+hypothesis: `RpnSentenceCodes` supplies the actual FAF emission certificate, and
+`IsLogicalInductor.noExploit` rules out unbounded upside once bounded downside is given.
+
+The bounded-downside premise remains substantive.  The criterion does not supply it for a
+trader that buys one new contract every day. -/
+theorem signed_bddAbove_of_bddBelow_rpn (φ : ℕ → Sentence) (P : History)
+    (DP : DeductiveProcess) [IsLogicalInductor P DP] (hφ : RpnSentenceCodes φ)
+    (hbelow : BddBelow ((unitTrader φ).plausibleAssessments P DP)) :
+    BddAbove ((unitTrader φ).plausibleAssessments P DP) :=
+  signed_bddAbove_of_bddBelow φ P DP (unitTrader_ec φ hφ) hbelow
+
+/-! ### Inhabitation of the criterion chain -/
+
+/-- The constant tautology sequence is symbol-metered efficiently computable. -/
+theorem topSequence_rpn : RpnSentenceCodes (fun _ : ℕ => (⊤ : Sentence)) :=
+  RpnSentenceCodes.ofPolySentenceCodes
+    ⟨_, PolyFueled.const (Encodable.encode (⊤ : Sentence))⟩
+
+/-- Buying the tautology contract has bounded downside at every logical inductor: every
+world pays `1` and the criterion's market certificate puts every price in `[0,1]`.
+This inhabits the residual premise of `signed_bddAbove_of_bddBelow_rpn`. -/
+theorem top_unitTrader_bddBelow (P : History) (DP : DeductiveProcess)
+    [IsLogicalInductor P DP] :
+    BddBelow ((unitTrader (fun _ : ℕ => (⊤ : Sentence))).plausibleAssessments P DP) := by
+  refine ⟨0, ?_⟩
+  intro x hx
+  obtain ⟨n, v, _, rfl⟩ := hx
+  rw [unitTrader_netWorth_eq, signedSum]
+  refine Finset.sum_nonneg fun i hi => ?_
+  have hprice := IsLogicalInductor.price_mem_Icc (P := P) (DP := DP) i (⊤ : Sentence)
+  have htop : v.Holds (⊤ : Sentence) := fun h => h
+  rw [PCWorld.payout, if_pos htop]
+  linarith
+
+/-- A fully inhabited criterion-to-forcing instance: the actual LIC bounds the cumulative
+signed underpricing of the tautology sequence.  The generic deference-relevant statement
+above replaces tautologies by any efficiently named grade-contract sequence whose downside
+is bounded. -/
+theorem top_signed_bddAbove (P : History) (DP : DeductiveProcess)
+    [IsLogicalInductor P DP] :
+    BddAbove ((unitTrader (fun _ : ℕ => (⊤ : Sentence))).plausibleAssessments P DP) :=
+  signed_bddAbove_of_bddBelow_rpn _ P DP topSequence_rpn (top_unitTrader_bddBelow P DP)
+
+/-- The full hypothesis package at FAF's constructed LIA over its computable empty
+deductive process.  No market, process, efficiency, or downside premise remains. -/
+private lemma emptyBitDeductiveProcess_computable_for_chain :
+    ComputableDeductiveProcess emptyBitDeductiveProcess :=
+  ⟨Nat.Partrec.Code.const (Encodable.encode (∅ : Finset Sentence)), fun n => by
+    simp [emptyBitDeductiveProcess, Nat.Partrec.Code.eval_const]⟩
+
+theorem top_signed_chain_nonvacuous :
+    BddAbove
+      ((unitTrader (fun _ : ℕ => (⊤ : Sentence))).plausibleAssessments
+        (liaHistory emptyBitDeductiveProcess) emptyBitDeductiveProcess) := by
+  letI : IsLogicalInductor (liaHistory emptyBitDeductiveProcess) emptyBitDeductiveProcess :=
+    LIA_is_logical_inductor emptyBitDeductiveProcess
+      emptyBitDeductiveProcess_computable_for_chain
+  exact top_signed_bddAbove _ _
 
 /-! ## Layer 2 — the residual identity and the cheapest instrument -/
 
@@ -479,8 +552,14 @@ theorem signed_ne_magnitude :
 #print axioms CoherentMixture.netWorth_eq_zero
 #print axioms CoherentMixture.exists_netWorth_nonpos
 #print axioms magnitude_not_traderPayoff
+#print axioms unitTrader_ec
 #print axioms unitTrader_netWorth_eq
 #print axioms signed_bddAbove_of_bddBelow
+#print axioms signed_bddAbove_of_bddBelow_rpn
+#print axioms topSequence_rpn
+#print axioms top_unitTrader_bddBelow
+#print axioms top_signed_bddAbove
+#print axioms top_signed_chain_nonvacuous
 #print axioms sharpEF_rank
 #print axioms sharpEF_denote
 #print axioms payout_mul_self

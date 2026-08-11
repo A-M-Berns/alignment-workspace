@@ -11,6 +11,10 @@ below.
 than a flattering one. `maintainer-reviewed` is rare by design; see `AGENTS.md`
 on where human judgment is spent.
 
+Review status is orthogonal to adoption. A `maintainer-reviewed` prompt or report
+is not thereby a canonical research position; adoption requires an explicit dated
+ruling in `DECISIONS.md`.
+
 **Correction, 2026-08-11.** Earlier rows in this file named the executor as
 "Claude Opus 4.6". That was wrong; the executor was **Claude Opus 5 (Anthropic)**
 throughout, and the rows are corrected below. The prompts for every round were
@@ -54,6 +58,7 @@ earlier rows did not record at all.
 | stale-count repairs in `projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md` and `TERMS.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — both asserted **155 theorems across 10 files** for `Contrib/`, which holds 8 files and 167 theorem or lemma declarations. Replaced with count-robust wording rather than a new number, since the load-bearing count is the number registered, which is zero |
 | `.github/apply-branch-protection.sh`, `CONTRIBUTING.md` *Review*, `AGENTS.md` *Security* | Claude Opus 5 | `ci-only` | 2026-08-11 | `prompts/2026-08-11-workspace-ethos/` — auto-merge on full green, decided by the maintainer. The script gains the repository-setting call and a read-back of it, and its required-check count is now derived from the payload rather than the literal `8`, which had been stale since `frozen-integrity` was retired and would have reported correct protection as wrong |
 | the attention rulings in `AGENTS.md`, `PROVENANCE.md`, `CONTRIBUTING.md`, `PRIORITIES.md`, `RESEARCH_STATE.md` and `DECISIONS.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — three maintainer rulings taken during the round and recorded as a dated `DECISIONS.md` entry: the flagship rule retired, external citation restated to stand alone, and item filing opened to maintainer-dispatched rounds within their scope. Naming stays reserved. `DECISIONS.md`'s *Awaiting the author* becomes the single queue for reserved items |
+| `projects/deference/notes/LI_NATIVE_DEFERENCE*.md`, Stage V current-state edits, `lean/Workspace/Deference/Contrib/StaticViewFactorization.lean`, and the Stage V additions to `MagnitudePrediction.lean` | GPT-5 Codex (OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-v-li-native/`; prompt author GPT-5.6 Sol (OpenAI) |
 
 ## No originating chat bundle
 
@@ -85,6 +90,7 @@ of thing this file exists to make visible.
 | `2026-08-11-stage-iii-fud` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-stage-iv-future-agent` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
 | `2026-08-11-workspace-ethos` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-11 |
+| `2026-08-11-stage-v-li-native` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/leverage/consolidation-aug9/` — have

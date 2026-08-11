@@ -32,34 +32,36 @@ kernel-checked and unregistered; a settlement classification showing that grade
 settlement contributes nothing to the delegation inequality and that enforcement
 delivers it unconditionally at an exact bond with zero epistemic content; the
 result that the no-Dutch-book criterion forces *signed* calibration and provably
-cannot force magnitude accuracy; the finite certificate bounds with derived
-constants; confound witnesses; and two documented collapse diagnoses.
+cannot force magnitude accuracy; an actual-FAF efficient trader certificate and
+criterion-to-signed-forcing chain; a theorem that values factoring through price
+and realization are constant on equal-view fibers; the finite certificate bounds
+with derived constants; confound witnesses; and two documented collapse diagnoses.
 
-**Controlling gap — model debt, now known to be type-level.** There is no future
-agent in the model, no jurisdiction object, and therefore no comparator. Two
-rounds failed here from opposite directions, and the reason is structural: two
-authorisation regimes that induce the same realisation map are the *same object*
-in a signature whose only outputs are such maps priced by one measure. A
-successor must put the authorisation relation in the type or show that nothing
-can. **This is argued from an exhaustive check over one parameterisation, not
-proved.**
+**Controlling gap — model and interface debt.** FAF can name later market prices
+and derive self-trust relations, but it has no resource-indexed process state
+showing that the later computation is unavailable now, and no decision,
+authorization, capability or continuation type. The static part of the Stage IV
+diagnosis is now proved: a value factoring through price and realization cannot
+distinguish architectures agreeing on those projections. A successor needs both
+a bounded-futurity certificate and a two-index authorization/capability transition
+object before a comparator is well-posed.
 
 **Aspirational, philosophical.** Future cognitive superiority need not justify
 transferring final jurisdiction.
 
-**Constructed, philosophical.** Only this: a valuation over realisation maps
-cannot distinguish who authorised an action, so the question cannot be settled in
-that register. That is a claim about the register, **not** about jurisdiction.
-Nothing established bears on whether transferring jurisdiction is justified, and
-the deflationary reading is the only one available.
+**Constructed, philosophical.** Logical Induction can make later prices and
+computations rationally worth attending to while remaining silent about who
+controls execution. A valuation over price and realisation cannot distinguish who
+authorised an action. These are claims about the represented epistemic and
+evaluative registers, **not** claims that transferring or retaining jurisdiction
+is justified.
 
-**Next controlling question.** `PRIORITIES.md` item 28: whether *any* valuation
-over realisation maps can price a jurisdiction assignment. The negative is the
-cheaper direction and would say jurisdiction is architectural on mathematical
-grounds rather than by the programme's choice. Item 25 — whether the
-near-indifference leakage can be bounded — remains the controlling *competence*
-question and decides whether the surviving competence candidate has any finite
-consequence.
+**Next controlling questions.** Whether a minimal resource-indexed process can
+turn quoted later computation into genuine bounded futurity, and whether a
+two-index execution state can represent continuing correction without making
+option value an assumption. Item 25 — whether the near-indifference leakage can
+be bounded — remains the controlling *competence* question and decides whether
+the surviving competence candidate has any finite consequence.
 
 **Standing bar on the comparator.** No round may attempt the fully-updated
 comparator again without first putting the authorisation relation into the type.
@@ -98,7 +100,7 @@ which the adjacent impossibility results do not settle.
 |---|---|---|
 | **lab** | evidence and history; a round's own account of what it did | `prompts/*/REPORT.md`, `projects/leverage/forward/` and its `attic/`, the note dumps' notes, unregistered Lean under `Contrib/` |
 | **consolidated view** | the best current machine-produced synthesis of that evidence | the deference `notes/` documents, `projects/leverage/consolidation-aug9/`, `PRIORITIES.md`, and the claims registries |
-| **canonical** | what a maintainer has ruled on | dated entries in `DECISIONS.md`, and anything `PROVENANCE.md` marks `maintainer-reviewed` |
+| **canonical** | what a maintainer has explicitly ruled on or adopted | dated entries in `DECISIONS.md` |
 
 **A consolidated view is not endorsed by being consolidated.** The deference
 `notes/` documents are canonical *for their line* — the maintainer decided which
@@ -116,8 +118,10 @@ judgment"; here that is the review status, and the layer is the table above.
 **Adoption is a dated `DECISIONS.md` entry.** That is the whole mechanism and
 there is no other. An agent may propose a canonical change; it may not confer
 canonical status, and none of the following confers it: kernel verification,
-agreement between tracks, a recommendation in a parent report, or being newer
-than what it would replace.
+agreement between tracks, a recommendation in a parent report, being newer than
+what it would replace, or a `maintainer-reviewed` provenance mark. Review status
+records that a maintainer read and stands behind an artifact; it does not record
+adoption of the artifact's research content.
 
 **The canonical layer is small because attention is the scarce input.** The
 maintainer writes in few places and does not read most of what is produced here.

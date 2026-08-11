@@ -80,6 +80,21 @@ WP-F fully updated deference, blocked on WP-C and WP-D and on the skeleton's `FU
 hole. WP-I protected-reference composition. WP-J preservation. Movement VI
 non-authorship, whose inherited material has not been assessed.
 
+## Stage V — returned 2026-08-11
+
+Round `prompts/2026-08-11-stage-v-li-native/` executed item 7's market/trader gap
+and item 28 before exploring LI-native futurity. It produced an actual
+criterion-to-signed-forcing chain, proved static-view constancy under explicit
+factorization,
+mapped the pinned FAF interface, and stopped before another comparator.
+
+The exploratory verdict is narrow. FAF can quote later prices and computable H⁺
+reports and derive future-price/self-trust relations; it does not formalize that
+the present bounded process lacks the later result, and it has no decision,
+authorization or continuation type. No FUD proof round is dispatchable from this
+state. A successor first needs a resource-indexed futurity object and an accepted
+two-index capability/continuation interface.
+
 ## Discipline
 
 A dispatched track receives the round wrapper, the authorizing item, the roadmap,
