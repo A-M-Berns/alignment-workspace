@@ -7,11 +7,13 @@ like for deference to be safe rather than merely obedient.
 ## The arc
 
 The line's recorded starting point is the deference note dump of 2026-06-27,
-carried in this directory as
-`deference-note-dump-2026-06-27.zip`: research notes, a statement-level audit,
-and a Lean development covering deference, a self-referential target, frozen
-deliberation, faithful acceleration, and a tower construction. A second dump of
-2026-07-02 records dose-response structure in the same setting.
+carried beside this file as `note-dump-2026-06-27/`: research notes, a
+statement-level audit at `note-dump-2026-06-27/lean/AUDIT.md`, and a Lean
+development covering deference, a self-referential target, frozen deliberation,
+faithful acceleration, and a tower construction. `dose-response-note-dump-2026-07-02/`
+records dose-response structure in the same setting. Each carries its own
+`ORIGIN.md`. The papers those notes cite are pinned by checksum and bibliographic
+entry in `references-citations-2026-08-11/` rather than redistributed.
 
 **That development takes the Logical Induction theorems as named hypotheses and
 proves what follows from them.** Its own audit records the complement as its
