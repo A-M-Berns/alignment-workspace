@@ -1,0 +1,34 @@
+name = "lean_deference"
+defaultTargets = ["LeanDeference", "SelfReferentialTarget", "FrozenDeliberation", "FaithfulAcceleration", "TowerAndAcceleration", "Staleness", "StalenessDensity", "CenteredSqueeze", "StreamlinedSS"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.27.0"
+
+[[lean_lib]]
+name = "LeanDeference"
+
+[[lean_lib]]
+name = "SelfReferentialTarget"
+
+[[lean_lib]]
+name = "FrozenDeliberation"
+
+[[lean_lib]]
+name = "FaithfulAcceleration"
+
+[[lean_lib]]
+name = "TowerAndAcceleration"
+
+[[lean_lib]]
+name = "Staleness"
+
+[[lean_lib]]
+name = "StalenessDensity"
+
+[[lean_lib]]
+name = "CenteredSqueeze"
+
+[[lean_lib]]
+name = "StreamlinedSS"

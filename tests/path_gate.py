@@ -34,6 +34,7 @@ SPEC_PATHS = (
     "projects/leverage/consolidation-aug9/**",
     "projects/leverage/deck-2026-08-10/**",
     "projects/deference/note-dump-2026-06-27/**",
+    "projects/deference/note-dump-2026-08-11/**",
     "projects/deference/dose-response-note-dump-2026-07-02/**",
     "projects/deference/references-citations-2026-08-11/**",
     "lean/lakefile.toml", "lean/lean-toolchain", "lean/lake-manifest.json",

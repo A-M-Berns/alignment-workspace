@@ -1,0 +1,60 @@
+﻿==============================================================================
+PART 0: designed frame and the explicit long-edge failure witness
+==============================================================================
+pi_H = ['1/2', '1/4', '1/4']   pi_A = ['1/4', '1/2', '1/4']
+F_A = [[0], [1, 2]]   F_B = [[0, 1], [2]]   (non-nested, both non-trivial)
+P_A  = condExpert(pi_H, F_A) = [[1, 0, 0], [0, 1/2, 1/2], [0, 1/2, 1/2]]
+P_B  = condExpert(pi_A, F_B) = [[1/3, 2/3, 0], [1/3, 2/3, 0], [0, 0, 1]]
+P_B' = condExpert(pi_H, F_B) = [[2/3, 1/3, 0], [2/3, 1/3, 0], [0, 0, 1]]   (recovery frame)
+checks: pi_A != pi_H  OK;  P_B != condExpert(pi_H, F_B)  OK
+checks: all expert rows sum to 1  OK
+
+Long-edge witness: X = ['0', '1', '0'], s = 1/2
+  E_w(X) under P_B = ['2/3', '2/3', '0']   event {E>=s} = [0, 1]
+  TT inequality:  s*pi_H(event) = 3/8  <=?  E_piH(X*1_event) = 1/4
+  TT mass = -1/8  (gap = 1/8)
+  => long edge FAILS at this (X,s); exact rational gap 1/8.  OK
+
+==============================================================================
+PART 1: exact FM decision procedure; sanity check vs kernel-checked facts
+==============================================================================
+AntiExpert frame (LeanDeference L456-487): TT decided FAILS (violating event (0,))
+Identity expert on 2 worlds: TT decided HOLDS
+sanity checks passed.
+
+==============================================================================
+PART 2: the chain, decided EXACTLY (all X in Q^3, all s in Q)
+==============================================================================
+L1   TT(pi_H, P_A)  : HOLDS (exactly decided, all X,s)
+L2   TT(pi_A, P_B)  : HOLDS (exactly decided, all X,s)
+LONG TT(pi_H, P_B)  : FAILS (violating event (0, 1))
+REC  TT(pi_H, P_B') : HOLDS (exactly decided, all X,s)
+
+=> NON-TRANSITIVITY established at the exact predicate:
+   both short links HOLD for ALL (X,s); the long edge FAILS;
+   replacing pi_A by pi_H in P_B's construction restores the long edge.
+
+==============================================================================
+PART 3: exact characterization + EXHAUSTIVE family statistic (no sampling)
+==============================================================================
+Paper claim (proved in the writeup, kernel-checked in the Lean file):
+  for positive priors, TT(pi_H, condExpert(pi_A, F))  <=>
+  pi_H(.|C) = pi_A(.|C) on EVERY cell C of F.
+Cross-check the FM decision against this predicate over an exhaustive family.
+family: all 10 positive priors with denominator 6, all 10^2 ordered pairs, all 3 nontrivial partitions of 3 worlds
+  total long-edge decisions           : 300
+  characterization agreement           : 300/300 (FM == cellwise-conditional test)
+  long edge FAILS                      : 264  (22/25 = 0.8800 of the family)
+  direct witnesses (X=delta_v0, s=piA(v0|C)) verified mass<0 : 264/264
+  recovery (pi_A == pi_H) failures     : 0  (theorem: must be 0)
+  HOLDS with pi_A != pi_H              : 6  (prior identity is SUFFICIENT but NOT NECESSARY)
+
+Sharper witness: pi_H = ['1/6', '1/6', '2/3'], pi_A = ['1/3', '1/3', '1/3'], F_B = [[0, 1], [2]]
+  priors differ, but conditionals on {0,1} are (1/2,1/2) for both, and on {2} trivially agree
+  => TT(pi_H, condExpert(pi_A, F_B)) decided: HOLDS
+  run2's slogan 'the obstruction is prior mismatch' is imprecise: the exact
+  lever is CONDITIONAL mismatch on some cell of F_B.
+
+lemma-1 cross-check: TT(pi, condExpert(pi, F)) decided HOLDS for 30/30 (prior, partition) pairs in the family.
+
+ALL ASSERTIONS PASSED.
