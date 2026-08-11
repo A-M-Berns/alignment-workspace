@@ -11,6 +11,9 @@ recorded assertion on top of it. Identity is not a factor in a proof-layer
 verdict, and this gate does not make it one — it checks that an assertion was
 made, not who made it.
 
+Merge commits are excluded: on a pull request GitHub checks out a synthetic merge
+of the branch into its base, and that commit has no author who could sign it.
+
 No third-party app: this is a script, so the gate has no dependency the
 repository does not control.
 """
@@ -32,7 +35,11 @@ def commits() -> list[str]:
         return []
     subprocess.run(["git", "fetch", "--depth=50", "origin", base],
                    cwd=ROOT, capture_output=True)
-    out = subprocess.run(["git", "rev-list", f"origin/{base}..HEAD"],
+    # --no-merges is load-bearing, not tidiness. On a pull request GitHub checks
+    # out a synthetic merge of the branch into the base; that commit has no
+    # author to sign it and structurally cannot carry a sign-off. Counting it
+    # would fail every pull request the repository ever receives.
+    out = subprocess.run(["git", "rev-list", "--no-merges", f"origin/{base}..HEAD"],
                          cwd=ROOT, capture_output=True, text=True)
     return [c for c in out.stdout.split() if c]
 
