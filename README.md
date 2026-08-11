@@ -1,65 +1,77 @@
 # alignment-workstudio
 
-The working monorepo for the Berns–Demski research program: models, proofs, and
-dispatch provenance for two research lines, formalized against
-[Formalized-Agent-Foundations](https://github.com/A-M-Berns/Formalized-Agent-Foundations)
-as a pinned dependency.
+The working monorepo for the Berns–Demski research program. Two research lines,
+their models and proofs, the frozen foundations they build on, and the record of
+every round that produced them.
 
-This file points; it does not contain. Research content lives under `projects/`
-and `frozen/`.
+**Anyone can contribute, and quality is enforced by machine-checkable gates
+rather than by trust.** That is not a slogan about openness; it is what the
+house discipline is *for*. Exact rationals, a theorem shipping as statement +
+code + test + necessity witness, sorry-free Lean with axiom audits, checksummed
+frozen inputs, one-command verifiers — each of those makes a stranger's pull
+request adjudicable by a machine. See `CONTRIBUTING.md`.
 
 ## The two lines
 
-**Leverage** — the normativity and answerability program: what a record must
-show for a learner's normative state to be accountable, and what a world-channel
-must satisfy before its writings acquire operative force. Its authoritative
-record is frozen; new rounds land in the workspace.
-→ `projects/leverage/`
+**Leverage** — the normativity and answerability program. What must a record
+show for a learner's normative state to be accountable? The line works out an
+objection grammar, what survives when the vocabulary changes, what it costs to
+decline to answer, and a **settlement interface**: the conditions a world-channel
+must meet before what it writes acquires force. The world cannot be argued with,
+so the program's move is to make the unarguable part as small and as explicitly
+labelled as possible and prove what follows. → `projects/leverage/`
 
-**Delegation** — the deference and corrigibility program: when a bounded agent
-should defer, what deference costs, and what an agent's own deliberation must
-look like for deference to be safe rather than merely obedient. Its recorded
-starting point takes the Logical Induction theorems as named hypotheses; the
-leverage line and the pinned dependency sit on the other side of that gap, which
-is why both lines share this repository.
+**Delegation** — the deference and corrigibility program. When should a bounded
+agent defer to another, what does deference cost, and what must an agent's own
+deliberation look like for deference to be safe rather than merely obedient? The
+line's recorded starting point takes the Logical Induction theorems as named
+hypotheses. Its own audit names the complement as its largest gap: the market and
+traders are unmodelled. The leverage line and the pinned dependency sit on the
+other side of exactly that gap, which is why both lines share this repository.
 → `projects/delegation/`
+
+## Verification
+
+Clone, run these, and every claim in this repository is re-checked in front of
+you:
+
+```sh
+python3 tests/run.py                                   # the project test runners
+cd lean && lake exe cache get && lake build            # the Lean, sorry-free
+```
+
+Two more gates run in CI and locally: `python3 tests/audit_axioms.py` checks that
+every Lean result depends on nothing beyond `propext`, `Classical.choice` and
+`Quot.sound`, and `python3 tests/check_frozen.py` recomputes the digest of every
+frozen input. CI runs all four on every push and pull request, including
+re-running the frozen consolidation's own verifier — so the repository
+continuously re-proves its own foundations rather than asserting them.
 
 ## Layout
 
 ```
-projects/     one directory per research line; rounds land here
+projects/     one directory per research line; forward rounds land here
+frozen/       immutable checksummed foundations, cited by path, never edited
 lean/         one Lake project, library Workstudio, per-line namespaces
-frozen/       immutable checksummed inputs, referenced and never edited
 prompts/      every round's prompt and report, committed with the work
-tests/        the repo-level runner
+tests/        the repo-level runner and the gate scripts
 ```
 
-`CONVENTIONS.md` is the house standard — exact arithmetic, what a theorem ships
-as, frozen inputs, citation integrity, and the Lean discipline. `DECISIONS.md`
-is the dated decision ledger, with what is still awaiting the author at the top.
+`CONVENTIONS.md` is the house standard. `DECISIONS.md` is the dated decision
+ledger, with what is awaiting the author at the top. `OPEN_PROBLEMS.md` is the
+contribution funnel and the source of truth for what needs doing — GitHub issues
+mirror it, not the reverse.
 
-## Running the tests
+## Contributing
 
-```sh
-python3 tests/run.py                    # every project, frozen digests, Lean gates
-WORKSTUDIO_LEAN=1 python3 tests/run.py  # the above, plus `lake build`
-```
+Start at `OPEN_PROBLEMS.md`, which tags items **[entry]**, **[substantial]** and
+**[open]**. Then read `CONTRIBUTING.md` for what a contribution must contain and
+the two hard rules: nothing in `frozen/` changes, and contributors do not coin
+permanent names.
 
-The repo-level runner verifies the frozen-input digests, enforces the Lean
-sorry-free and `#print axioms` gates, and runs each project's own runner. Lean
-compilation is opt-in because it wants a toolchain and a warm cache.
+## License
 
-## Building the Lean
-
-```sh
-cd lean
-lake exe cache get     # Mathlib oleans
-lake build
-```
-
-One Lake project. Formalized-Agent-Foundations is pinned by commit in
-`lakefile.toml`; Mathlib and Foundation arrive through it, so the solver stack
-stays consistent rather than being pinned three times and drifting. The
-toolchain matches the dependency's exactly. `Workstudio/Smoke.lean` certifies
-the chain compiles by reaching a real declaration in each of the three and
-proving something trivial against it.
+**Not yet set.** No license file is present, which means default copyright: all
+rights reserved. A license is the author's decision and is the first item in
+`DECISIONS.md`. Until one is chosen, treat this repository as readable but not
+otherwise licensed.

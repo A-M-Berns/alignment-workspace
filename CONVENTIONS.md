@@ -1,5 +1,9 @@
 # Conventions
 
+House standards — and, since the repository is open to contribution, the
+specification the CI gates implement. A convention that is not machine-checked
+is marked as such below, so nobody mistakes a norm for a gate.
+
 House standards. These are not suggestions; a round that departs from one says
 so in its report and explains why.
 
@@ -79,3 +83,23 @@ the tree did not happen, as far as the repository is concerned.
 - One Lake project, `lean/`, library `Workstudio`, per-line namespaces.
   Formalized-Agent-Foundations is pinned by commit; Mathlib and Foundation
   arrive through it, so the stack stays consistent.
+
+
+## 9. Which conventions are gates
+
+| convention | enforced by |
+|---|---|
+| 3, runners | **gate 1** — `tests/run.py` in CI |
+| 4, frozen immutability | **gate 3** — `tests/check_frozen.py`: tree digests, plus a pull request touching `frozen/` without updating `MANIFEST.md` |
+| 8, sorry-free | **gate 2** — the build, plus a textual scan |
+| 8, `#print axioms` per file | **gate 2** — `tests/audit_axioms.py` fails on a file without one |
+| 8, results audit to the three | **gate 2** — the audit re-elaborates each file and fails on anything else, which also catches `sorryAx` |
+| foundations stay verified | **gate 4** — the frozen consolidation's own runner, from a copy |
+| 1, exact arithmetic | **not gated.** Reviewed. A float in theorem-bearing code is a review finding |
+| 2, theorem = statement + code + test + witness | **not gated.** Reviewed, and the pull-request template asks for each |
+| 5, citation integrity | **not gated.** Reviewed. Machine-checkable only against a checksummed tree, and not in general |
+| 6, naming reserved to the author | **not gated.** The template asks for new names; review decides |
+| 7, dispatch provenance | **not gated.** Review |
+
+The four gated ones decide correctness. The five reviewed ones decide fit, and
+that is the author's judgement rather than a script's.

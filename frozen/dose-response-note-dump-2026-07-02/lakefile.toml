@@ -1,0 +1,10 @@
+name = "dose_response"
+defaultTargets = ["DoseResponse"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.27.0"
+
+[[lean_lib]]
+name = "DoseResponse"

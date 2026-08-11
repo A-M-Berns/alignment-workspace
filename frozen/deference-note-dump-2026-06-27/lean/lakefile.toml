@@ -1,0 +1,22 @@
+name = "lean_deference"
+defaultTargets = ["LeanDeference", "SelfReferentialTarget", "FrozenDeliberation", "FaithfulAcceleration", "TowerAndAcceleration"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.27.0"
+
+[[lean_lib]]
+name = "LeanDeference"
+
+[[lean_lib]]
+name = "SelfReferentialTarget"
+
+[[lean_lib]]
+name = "FrozenDeliberation"
+
+[[lean_lib]]
+name = "FaithfulAcceleration"
+
+[[lean_lib]]
+name = "TowerAndAcceleration"

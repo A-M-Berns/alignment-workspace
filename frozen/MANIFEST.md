@@ -1,27 +1,37 @@
 # Frozen inputs
 
-Immutable. Everything here is read-only, checksummed in
-`FROZEN_INPUT_CHECKSUMS.json`, and referenced by path — never edited, and never
-unpacked into `projects/`. A round that needs a frozen result cites it by claim
-identifier against the tree named below.
+**Immutable.** Everything here is read-only, checksummed in
+`FROZEN_INPUT_CHECKSUMS.json`, and cited by path — never edited, and never
+unpacked into `projects/`. Each input is an **extracted tree**, not an archive,
+so it is browsable and every claim in it is citable by path and line.
 
-| name | date | sha256 | description | cited by |
-|---|---|---|---|---|
-| `consolidation_aug9/` | 2026-08-09, corrections folded in 2026-08-10 | `a2ca95ad9d6cafcaecb77b7b4d7a0d75f9a33738e3ecb65437b50a56eb7a164a` (tree digest over 59 files) | The August 9 consolidation of the leverage line: six theory parts numbered 7–12, a ledger of 180 claims, and its own vendored and digest-frozen inputs. Verifies standalone with `python3 tests/run.py`. | `projects/leverage/` — the authoritative record for that line; the workspace's `CONSOLIDATION_REF.md` pins it |
-| `deference-note-dump-2026-06-27.zip` | 2026-06-27 | `bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362` (50 files) | Note dump for the deference/corrigibility line, including the Lean development and its statement-level audit. | `projects/delegation/` — the arc it records is the delegation line's starting point |
-| `dose-response-note-dump-2026-07-02.zip` | 2026-07-02 | `a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890` (13 files) | Note dump on dose-response structure in the deference setting. | `projects/delegation/` |
+CI recomputes the tree hashes on every push and fails on drift, and refuses any
+pull request that touches this directory unless the same pull request updates
+this file. That gate cannot be argued with, which is the point.
 
-## Tree digests
+| name | date | archive sha256 | tree sha256 | files | description | cited by |
+|---|---|---|---|---|---|---|
+| `consolidation_aug9/` | 2026-08-09, corrections folded in 2026-08-10 | `5f3bf1bee88fdb8808b3d976358e32f2e21e93f4cb2041d79cc3e0c90f0ba0cc` | `a2ca95ad9d6cafcaecb77b7b4d7a0d75f9a33738e3ecb65437b50a56eb7a164a` | 59 | The consolidation of the leverage line: six theory parts numbered 7–12, a ledger of 180 claims with hypotheses, statuses, sharpness and dependencies, and a trust audit separating machine-checked from hand-derived from transcribed from reading-audit from assumed. **Vendors the August 8 consolidation internally**, at `vendor/consolidation_aug8.zip`, together with the settlement-interface documents and the source tree's own theory documents — all frozen by digest inside it. Verifies standalone. | `projects/leverage/`; `OPEN_PROBLEMS.md` items 1–6; CI's foundations-verification gate |
+| `deference-note-dump-2026-06-27/` | 2026-06-27 | `bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362` | `69a23843a69576dc449e7b8b9e353101a6c96684c6275c153be4b57d08d37b69` | 50 | The delegation line's recorded starting point: research notes across six versions, a statement-level Lean audit, and the Lean development (deference, self-referential target, frozen deliberation, faithful acceleration, tower and acceleration). | `projects/delegation/`; `OPEN_PROBLEMS.md` items 7–9 |
+| `dose-response-note-dump-2026-07-02/` | 2026-07-02 | `a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890` | `d34afa3ce288855517fb9d164adbbaa760aefe8fbf38897c130234a94ae00355` | 13 | Dose-response structure in the deference setting, with its own audit. | `projects/delegation/` |
 
-For an unpacked tree the recorded digest is over the relative path and content
-digest of every file, in sorted order, excluding bytecode artifacts. It is
-reproducible: the recipe is stated in the JSON manifest's note field, and
-`consolidation_aug9/` additionally carries its own internal digest manifest,
-which its runner verifies.
+## Reading the digests
+
+`sha256_tree` is over relative paths and file digests in sorted order, excluding
+bytecode artifacts and `.DS_Store`. It is what CI recomputes, and it is
+reproducible from the recipe in the JSON manifest's note field.
+
+`sha256_archive` is the digest of the archive each tree was extracted from,
+recorded as provenance. The archives themselves are **not kept**: frozen content
+is here to be read and cited, and a zip is neither.
+
+`consolidation_aug9/` additionally carries its own internal digest manifest over
+its vendored inputs, which its own runner verifies — so the foundations-
+verification gate checks a second, independent layer of digests inside the first.
 
 ## Registering something new
 
-Copy the archive here, add a row above and an entry to the JSON, and say in the
-row what cites it. Do not modify an entry that is already registered: a frozen
-input that needed changing was not frozen, and the honest move is a new dated
-entry beside the old one.
+Extract it here, add a row above and an entry to the JSON, and say in the row
+what cites it. **Do not modify an entry that is already registered.** A frozen
+input that needed changing was not frozen; the honest move is a new dated entry
+beside the old one.

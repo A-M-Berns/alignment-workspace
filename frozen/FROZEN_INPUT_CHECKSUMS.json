@@ -1,24 +1,22 @@
 {
   "algorithm": "sha256",
   "registered": "2026-08-10",
-  "note": "Frozen inputs are immutable: read-only, checksummed here, and referenced by path \u2014 never edited and never unpacked into projects/. The tree digest is over relative paths and file digests in sorted order, excluding bytecode artifacts.",
+  "note": "Frozen inputs are immutable: read-only, checksummed here, cited by path, never edited and never unpacked into projects/. sha256_tree is over relative paths and file digests in sorted order, excluding bytecode artifacts and .DS_Store; it is what CI recomputes. sha256_archive is the digest of the archive the tree was extracted from, recorded as provenance \u2014 the archives themselves are not kept, since frozen content is browsable by path.",
   "entries": {
-    "consolidation_aug9/": {
+    "consolidation_aug9": {
+      "sha256_archive": "5f3bf1bee88fdb8808b3d976358e32f2e21e93f4cb2041d79cc3e0c90f0ba0cc",
       "sha256_tree": "a2ca95ad9d6cafcaecb77b7b4d7a0d75f9a33738e3ecb65437b50a56eb7a164a",
-      "files": 59,
-      "kind": "unpacked tree"
+      "files": 59
     },
-    "deference-note-dump-2026-06-27.zip": {
-      "sha256": "bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362",
-      "files": 50,
-      "kind": "archive",
-      "bytes": 4835300
+    "deference-note-dump-2026-06-27": {
+      "sha256_archive": "bc51a91b84241128380286b1a8f052a5dde01a90876dc6359cf9b6e3c9aef362",
+      "sha256_tree": "69a23843a69576dc449e7b8b9e353101a6c96684c6275c153be4b57d08d37b69",
+      "files": 50
     },
-    "dose-response-note-dump-2026-07-02.zip": {
-      "sha256": "a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890",
-      "files": 13,
-      "kind": "archive",
-      "bytes": 67516
+    "dose-response-note-dump-2026-07-02": {
+      "sha256_archive": "a69f8a9876b24dd0a2cd0b609e294c53fef0b2596c79f0037812a6a47a60e890",
+      "sha256_tree": "d34afa3ce288855517fb9d164adbbaa760aefe8fbf38897c130234a94ae00355",
+      "files": 13
     }
   }
 }

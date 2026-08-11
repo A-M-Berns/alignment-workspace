@@ -1,0 +1,72 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    name: python — project test runners
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tests/run.py
+
+  lean:
+    name: lean — build, sorry-free, axiom audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install elan
+        run: |
+          curl -sSfL https://github.com/leanprover/elan/releases/latest/download/elan-x86_64-unknown-linux-gnu.tar.gz \
+            | tar xz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Cache .lake
+        uses: actions/cache@v4
+        with:
+          path: lean/.lake
+          key: lake-${{ runner.os }}-${{ hashFiles('lean/lake-manifest.json', 'lean/lean-toolchain') }}
+          restore-keys: lake-${{ runner.os }}-
+
+      - name: Mathlib oleans
+        working-directory: lean
+        run: lake exe cache get
+
+      - name: Build
+        working-directory: lean
+        run: lake build
+
+      - name: Axiom audit
+        working-directory: lean
+        run: python3 ../tests/audit_axioms.py
+
+  frozen-integrity:
+    name: frozen-integrity — digests and the manifest rule
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 tests/check_frozen.py
+
+  foundations-verification:
+    name: foundations-verification — the frozen consolidation re-proves itself
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Run from a copy: the gate must not be able to mutate frozen content,
+      # and a runner that writes anything would otherwise drift the tree hash.
+      - name: Verify the frozen consolidation, read-only
+        run: |
+          cp -R frozen/consolidation_aug9 "$RUNNER_TEMP/consolidation_aug9"
+          cd "$RUNNER_TEMP/consolidation_aug9"
+          python3 tests/run.py
+
+      - name: Confirm the frozen tree was not modified
+        run: python3 tests/check_frozen.py

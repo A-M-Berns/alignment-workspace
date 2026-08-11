@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Repo-level runner: every project's own runner, then the Lean gates.
+"""Repo-level runner: gate 1, plus the parts of gates 2 and 3 that need no toolchain.
 
 Each project owns a self-contained runner; this one discovers and runs them, and
 reports a per-project verdict. It adds two repo-level checks the projects cannot
@@ -41,26 +41,13 @@ def run_projects() -> list[tuple[str, bool]]:
     return results
 
 
-def verify_frozen() -> int:
-    """Frozen inputs are immutable; this is the check that says so."""
-    manifest = json.loads((ROOT / "frozen" / "FROZEN_INPUT_CHECKSUMS.json").read_text())
-    checked = 0
-    for name, record in sorted(manifest["entries"].items()):
-        target = ROOT / "frozen" / name
-        if record["kind"] == "archive":
-            if hashlib.sha256(target.read_bytes()).hexdigest() != record["sha256"]:
-                raise AssertionError(f"frozen input changed: {name}")
-        else:
-            digest = hashlib.sha256()
-            files = sorted(p for p in target.rglob("*") if p.is_file()
-                           and "__pycache__" not in p.parts and p.name != ".DS_Store")
-            for p in files:
-                digest.update(p.relative_to(target).as_posix().encode())
-                digest.update(hashlib.sha256(p.read_bytes()).digest())
-            if digest.hexdigest() != record["sha256_tree"]:
-                raise AssertionError(f"frozen tree changed: {name}")
-        checked += 1
-    return checked
+def verify_frozen() -> None:
+    """Delegate to the frozen-integrity gate rather than reimplement it.
+
+    One implementation of the digest rule, used by both the local runner and CI,
+    so the two cannot drift apart and disagree about what "frozen" means.
+    """
+    subprocess.run([sys.executable, "tests/check_frozen.py"], cwd=ROOT, check=True)
 
 
 def lean_sorry_gate() -> int:
@@ -93,7 +80,7 @@ def lean_build() -> bool:
 
 
 if __name__ == "__main__":
-    print(f"FROZEN INPUTS VERIFIED: {verify_frozen()}")
+    verify_frozen()
     print(f"LEAN SORRY GATE: clean over {lean_sorry_gate()} files")
     print(f"LEAN AXIOM DISCIPLINE: every file carries `#print axioms`")
     print("PROJECTS:")
