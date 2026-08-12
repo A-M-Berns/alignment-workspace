@@ -88,10 +88,12 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   index, and the interface is still one index deep. **A second candidate has since
   arrived from the line's source corpus** — a family of sealed deliberations indexed
   by the day the advisor's channel is cut, which supplies the time coordinate the
-  frames could not and supplies no authorization relation at all, so the two
-  candidates fail on complementary axes and neither composes with the other. That
-  strengthens the case for *not* graduating and sharpens what graduation would
-  require; the ruling is still the maintainers'. Two linked rulings: whether
+  frames could not and supplies no authorization relation at all. The two candidates
+  therefore fail on complementary axes, and as each is currently formulated neither
+  contains what the other supplies — though no combined object has been built and
+  nothing shows none exists. That sharpens what graduation would require (temporal
+  depth *and* authorization or capability structure, at once) rather than settling
+  it; the ruling is still the maintainers'. Two linked rulings: whether
   that is enough for Q3 to graduate, and whether to file the round's proposed next
   target, restating the Stage-V factorization theorem over a signature carrying a
   frame and the choice actually taken in place of a `jurisdiction` field — which is

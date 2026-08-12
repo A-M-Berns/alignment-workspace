@@ -65,7 +65,7 @@ the four.
 | `value_iff_totalTrust_asymptotic` | `inherited-established` | proved, both arrows | linearity; the audit records "neither hypothesis is the conclusion" |
 | `decomposition` | `inherited-established` | proved outright | pure linearity, no frame hypothesis |
 | `softmax_lower_bound` | `inherited-established` | proved outright | genuine `exp` analysis; was a hypothesis, became a theorem |
-| tower ⟹ Value, asymptotic and finite | `inherited-established` **conditionally, and the condition is sharper than it looks** | composition | genuinely chains named Logical Induction facts; the facts are named, not derived — and one of them is now known **false** on a nonempty class of menus. See below |
+| tower ⟹ Value, asymptotic and finite | `inherited-established` **conditionally, and the condition is sharper than it looks** | composition | genuinely chains named Logical Induction facts; the facts are named, not derived — and the arrow's hard-selector route is now **refuted** at full menu-quantifier strength. See below |
 | `soft_total_trust_doublysoft` | `inherited-established` **conditionally** | composition | support hypotheses discharged from the construction; calibration and criterion still named |
 | "the criterion *forces* the tower" | **`open`** | — | see below |
 
@@ -77,26 +77,32 @@ the corpus, because the market and the traders are unmodelled, so every appeal t
 arithmetic stub standing in for the arbitrage argument.
 
 **The tower ⟹ Value row, at its exact strength.** The source line's own adjudication
-now refutes that arrow at full menu-quantifier strength rather than leaving it
-unproved: on a selection-punishing menu — every option worth nothing if it is the
-one chosen — the tower holds while Value fails, so no hypothesis quantified over all
-bet sequences can deliver Value quantified over all menus, and a scope condition on
-the menus is *necessary* rather than stylistic. The step that fails is the expert's
-provable self-endorsement of its own selection, which every version of the theorem
-takes as an explicit hypothesis. **No Lean is wrong.** What changes is the reading:
-the hypothesis package is not merely undischarged, part of it is false in a regime
-nothing had excluded, and a theorem whose hypotheses nothing satisfies is empty by
-this repository's own standard.
+refutes the **hard-selector** route at full menu-quantifier strength rather than
+leaving it unproved: on a selection-punishing menu — every option worth nothing
+exactly when it is the one chosen — the tower holds while Value fails, so no
+hypothesis quantified over all bet sequences delivers Value quantified over all
+menus, and a scope condition on Value's own menu quantifier is *necessary* rather
+than stylistic. The step that fails there is **hard** self-endorsement: the expert's
+provable assignment of the max value to its own argmax selection. **No Lean is
+wrong** — that step enters the refuted route as an explicit hypothesis. What changes
+is the reading of this row: the arrow was carried as available with its facts merely
+underived, and at that strength it is not available.
 
-The row's two halves are in different positions. Only the asymptotic half is ported:
-`Workspace.Deference.Contrib.InheritedAlgebra.value_asymptotic`, whose followed
-strategy is the **soft** one — a normalized weighting over the menu with a vanishing
-gap, not the sharp selector. The source line reports the hedged strategy as
-surviving the punishing menu, which would place the port on the surviving side; that
-has not been checked in either direction, and the punishing menu is an exact finite
-instance available to check it. Filed as `PRIORITIES.md` item 34. The finite half is
-inherited only — nothing here ports it — and it carries the same correction with
-nothing in this repository to test it against.
+A **soft** route is a different construction with a different endorsement step, and
+the source line reports it as punishment-robust — proved modulo a
+feature-introspection step it files as open, with the robustness observation
+flagged same-session, unvetted and not machine-checked. That is a reported result
+at that grade, not a settled one.
+
+Only the asymptotic half of this row is ported, and it is soft:
+`Workspace.Deference.Contrib.InheritedAlgebra.value_asymptotic`, a vanishing-gap
+mixture over the menu rather than the sharp selector. So it is not the refuted
+route — and it is also not identical on its face to the source line's hedged
+construction, which uses a fixed gap where the port lets the gap vanish. **Nothing
+establishes that the port's hypotheses fail on the punishing menu, and nothing
+establishes that they hold.** Deciding it is `PRIORITIES.md` item 34, which is open
+in both directions. The finite half is inherited only — nothing here ports it — and
+carries the same correction with nothing in this repository to test it against.
 
 Until item 34 returns, the row is `inherited-established` for the composition and
 **open** for whether its hypotheses are jointly satisfiable at the strength the name

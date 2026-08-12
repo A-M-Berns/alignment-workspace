@@ -22,20 +22,29 @@ The workspace's ledger recorded "tower ⟹ Value" as an inherited result whose
 hypotheses were *named rather than derived* — the ordinary situation for everything
 inherited, and not alarming.
 
-The corpus now says that arrow is **refuted**, not merely unproved. There is a menu
-— every option worth nothing if you pick it and something if you don't — on which
-the tower holds and Value fails. So one of those named hypotheses is not just
-undischarged; it is *false* in a regime the workspace had no reason to think was
-excluded. Something in the assumption package always has to fail there, and nobody
-had said which.
+The corpus now says the **sharp** version of that arrow is refuted, not merely
+unproved. There is a menu — every option worth nothing if you pick it and something
+if you don't — on which the tower holds and Value fails. The step that breaks is the
+expert vouching for its own pick, and on that menu no amount of vouching helps,
+because picking a thing is what makes it worthless. So a restriction on which menus
+Value is claimed over is not tidiness; it is required.
 
-Two things stop this from being worse than it is. No Lean is wrong — every version
-of the theorem took the offending step as an explicit hypothesis, which is exactly
-what named-hypothesis discipline is for. And the workspace happens to have ported
-the *hedged* form of the statement, which the corpus says survives that menu, rather
-than the sharp form, which does not. Whether our particular port lands on the safe
-side is a genuinely open question with an exact finite counterexample now available
-to settle it, and that is filed as new work.
+Two things stop this from being worse than it is. No Lean is wrong — the broken step
+enters as an explicit hypothesis, which is exactly what named-hypothesis discipline
+is for. And what we ported is not the sharp version: ours spreads weight over the
+menu instead of committing to a single pick.
+
+But — and this is where I first overstated it — that is a family resemblance, not a
+match. The corpus's hedged construction spreads weight by a fixed margin; ours lets
+the margin shrink away as time goes on. The corpus does report its hedged version as
+surviving the punishing menu, and even that comes with caveats: the supporting lemma
+is only proved modulo a step the corpus files as open, and the survival claim itself
+is a same-session observation, unvetted and not machine-checked.
+
+So the honest position is that we do not know whether our port survives that menu.
+Not "probably fine because it's the hedged kind" — genuinely unknown, in both
+directions. Settling it is filed as new work, and it should not start from the
+assumption that we are safe.
 
 ## What is new and stays theirs
 
@@ -80,11 +89,13 @@ records**. Every quote, every piece of feedback, perfect apparent agreement in b
 So no test applied to the record can tell them apart, and whether the advice was
 legitimate is not a fact about what was written down.
 
-The workspace proved the same thing eleven days earlier about a different object.
-Two arrangements that differ in *who is authorized* to act, but produce the same
-actual behaviour, are the same object to any valuation that only sees behaviour.
-Same shape, different latent variable: theirs is how much influence flowed, ours is
-who held the authority.
+The workspace proved the same thing about a different object. Two arrangements that
+differ in *who is authorized* to act, but produce the same actual behaviour, are the
+same object to any valuation that only sees behaviour. Same shape, different latent
+variable: theirs is how much influence flowed, ours is who held the authority.
+
+Theirs came first, by about six weeks — early July against our mid-August — and
+neither derived the other, which is the only part that matters.
 
 Both lines drew the same moral — the missing thing has to go into the structure, not
 be recovered from the record — and then split on what to do about it. The corpus
@@ -123,8 +134,11 @@ while being about the wrong quantity.
 
 So we now have two candidate objects failing on complementary axes, which is more
 informative than either alone: whatever the right object is, it has to carry time
-*and* authority at once, and nothing on the table does. The ingenuity question stays
-open, better specified.
+*and* authority at once, and nothing on the table does. The obvious next thought is
+to graft one onto the other — frames indexed by time, or the sealed-deliberation
+picture given a notion of who is entitled to act — and nobody has tried it, so
+nothing here says it won't work. The ingenuity question stays open, better
+specified.
 
 No corrigibility theorem is ready to state, and the corpus does not make one ready.
 Its legitimacy material is explicitly conjecture-grade, its author names the two
@@ -133,12 +147,13 @@ claims whose failure would sink it, and neither is proved.
 ## What should we work on next?
 
 **1. Settle whether the punishing menu bites our port.** The corpus supplies an
-exact finite menu on which the sharp form of tower ⟹ Value fails. We hold the hedged
-form. Nobody has checked which side we are on, and the check is small, mechanical,
-and decisive either way — a necessity witness if it bites, a sharpening if it
-doesn't. It is the only place the new corpus creates work that is both cheap and
-load-bearing, and it is the difference between a ledger row that is honest and one
-that is merely not yet known to be wrong. Filed as item 34.
+exact finite menu on which the sharp form of tower ⟹ Value fails. Ours is a soft
+form, but not the same soft form the corpus reports as surviving it, so nobody has
+checked which side we are on. The check is small, mechanical, and decisive either
+way — a necessity witness if it bites, a sharpening if it doesn't. It is the only
+place the new corpus creates work that is both cheap and load-bearing, and it is the
+difference between a ledger row that is honest and one that is merely not yet known
+to be wrong. Filed as item 34, deliberately without a guess about which way it goes.
 
 **2. Test whether legitimacy is a foreclosure notion or only looks like one.** The
 sealed-sibling family is the first object anyone has put in front of this program

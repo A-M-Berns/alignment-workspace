@@ -135,10 +135,14 @@ Source: `projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md`
 `projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md` §3.
 
 So the entry now has two candidates whose defects are complementary — structure
-without time, time without authority — and neither composes with the other, because
-the second has no coordinate for the first to attach to. **That narrows what a good
-answer must do: carry both at once.** It is more than either candidate said alone,
-and it is still not the object.
+without time, time without authority — and as each is currently formulated neither
+contains the structure the other supplies. **No combined object has been built, and
+nothing establishes that none exists**: a time-indexed family of frames, or a
+sealed-deliberation model enriched with an authorization or capability relation, is
+the kind of thing this entry may turn out to need, and whether either enrichment
+works is open. What the pair does establish is what a good answer must carry —
+**temporal depth and explicit authorization or capability structure, at once**. That
+is more than either candidate said alone, and it is still not the object.
 
 ### Q4 — What certifies resource-separated computational futurity?
 
@@ -953,29 +957,39 @@ it exists to ask has no expected answer, and a negative is as likely as a positi
 
 ### 34. Does the selection-punishing menu bite the ported tower ⟹ Value chain? — **[entry]**
 
+The source line refutes the **hard-selector** tower ⟹ Value route on a
+selection-punishing menu — every option worth nothing exactly when it is the one
+chosen — where the tower holds and Value fails, so a scope condition on Value's own
+menu quantifier is necessary. It separately reports a **δ-hedged soft** route as
+punishment-robust, at a stated cost: proved modulo a feature-introspection step it
+files as open, with the robustness observation flagged same-session, unvetted and
+not machine-checked.
+
 `Workspace.Deference.Contrib.InheritedAlgebra.value_asymptotic`
-(`lean/Workspace/Deference/Contrib/InheritedAlgebra.lean`) concludes Value from a
-chain of named hypotheses, one of which — `hSoft`, the softmax bound standing in for
-the expert's endorsement of its own selection — the source line's own adjudication
-now reports **false** on selection-punishing menus, where Value itself is false. The
-source line also reports the *hedged* strategy as surviving those menus, and the
-port is the hedged form: its followed strategy is a normalized weighting over the
-menu with a vanishing gap, not the sharp selector.
+(`lean/Workspace/Deference/Contrib/InheritedAlgebra.lean`) is also a soft
+construction — a vanishing-gap mixture over the menu, with `hSoft` as the
+softmax-gap step of its chain — and is therefore **not** the refuted hard-selector
+route. But it is not identical on its face to the source's hedged construction
+either: that one is a ramp over the options within `2δ` of the top quote at a fixed
+`δ`, and the port carries `δ → 0`. Resemblance is not identification, and neither
+the survival nor the failure of the port's hypotheses on the punishment family has
+been established.
 
-So the question is exactly whether the port's hypothesis package is jointly
-satisfiable at the strength its name suggests, and there is now a concrete instance
-to decide it on: the menu `O^j := 1 − 1[the selection is j]` — every option worth
-nothing if it is the one chosen and one otherwise — which is a legal bet family
-because the selection is arithmetic on the published quotes.
+Instantiate the port's **full** hypothesis package on that family — at a fixed
+positive gap and at a gap shrinking with the day index — and determine whether the
+package is jointly satisfiable there and what conclusion it actually supports. Two
+outcomes, both successes:
 
-Instantiate the port's hypotheses on that menu at a fixed positive gap, and at a gap
-shrinking with the day index, and decide which of two holds:
+**(A) The port survives.** Ship an inhabitation witness, a precise statement of why
+the port lies on the surviving soft side, and any additional hypothesis the
+instantiation turns out to require.
+**(B) The port fails or goes vacuous.** Ship the counterexample as a necessity
+witness, name the exact hypothesis or combination that fails, and give the weakest
+defensible restriction restoring a nonvacuous statement.
 
-**(A)** the package is satisfiable and the conclusion true — the hedge survives, and
-the ledger row is sharpened by an inhabitation witness naming the menu it survives;
-**(B)** the package is unsatisfiable there — the menu is a **necessity witness** for
-whichever hypothesis fails, and the row's reach is bounded by an exact instance
-rather than by a reading.
+**Do not prejudge which hypothesis fails, and do not define success by importing
+the source line's own scope condition as a definition.** Whether that condition is
+the right restriction for this port is part of what the item asks.
 
 *Deliverable shape:* `witness-checked` or `enumeration-verified` over the declared
 finite menu, or `lean-proved` for the inhabitation term if (A); either way a named
@@ -987,17 +1001,16 @@ verdict per hypothesis.
 `value_asymptotic` block and its ported source
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`;
 `projects/deference/note-dump-2026-08-11/wiki/total-trust-implies-value.md`
-§"Necessity of the scope condition" for the menu and its arithmetic;
-`projects/deference/note-dump-2026-08-11/wiki/soft-self-endorsement.md`
-§"Robustness" for the claim that the hedge survives it;
+§"Necessity of the scope condition" for the menu, its arithmetic, and the
+hard-selector failure; `projects/deference/note-dump-2026-08-11/wiki/soft-self-endorsement.md`
+for the hedged construction, its robustness claim and the grade that claim carries;
 `projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md`, Movement I.
-*A solution ships:* the instantiation, the per-hypothesis verdict, and — if (B) —
-the weakest restriction on the menu quantifier that restores the package, stated
-without importing the source line's own scope condition as a definition.
+*A solution ships:* the instantiation and the per-hypothesis verdict, in whichever
+of the two outcomes it reaches.
 *Why it is [entry]:* no new mathematics. The theorem is ported and building, the
-counterexample is finite and exact, and the whole task is instantiating one against
-the other. **A negative answer is the more useful outcome** — a bounded theorem with
-a witness is worth more than an unbounded one with a reading.
+menu is finite and exact, and the task is instantiating one against the other.
+**Either outcome is worth having** — a bounded theorem with a witness and an
+unbounded one with a witness are both better than the present reading.
 
 ---
 

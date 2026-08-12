@@ -66,13 +66,14 @@ the surviving competence candidate has any finite consequence.
 **Where this line sits against its source corpus.** The line's source material has
 its own active research programme, and the two have now been compared in full. Three
 findings survive the comparison. The source line refutes an arrow this ledger
-carried as merely underived — the tower does not buy Value at full menu-quantifier
-strength — which corrects a status here without touching any Lean. The source line
-independently proved this line's own type-level diagnosis about a different latent
-variable: it cannot recover an advisor's influence from the observable record, as
-this line cannot recover an authorisation from the realisation map, and both drew
-the same moral about what has to enter the type. And the two split on the discharge
-— the source line certifies, staking the advisor on its own counterfactual, where
+carried as merely underived — the tower's hard-selector route does not buy Value at
+full menu-quantifier strength — which corrects a status here without touching any
+Lean. The two lines reached structurally analogous non-recoverability results about
+different latent variables, independently and roughly six weeks apart with the
+source line's earlier: it cannot recover an advisor's influence from the observable
+record, as this line cannot recover an authorisation from the realisation map, and
+both drew the same moral about what has to enter the type. And the two split on the
+discharge — the source line certifies, staking the advisor on its own counterfactual, where
 this line protects. The results here say why certification cannot reach jurisdiction
 and do **not** say it cannot reach influence, which is the sharpest available
 evidence that the two are separate objects rather than one word. The adjudication,

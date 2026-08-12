@@ -109,11 +109,13 @@ New: `prompts/2026-08-12-corpus-reconciliation/{PROMPT,REPORT}.md`,
    durable transfer — that a weighting may read less than a trader may — is the same
    conclusion the workspace's admissibility work reached from the authorization side,
    and is recorded as convergence rather than filed.
-5. **The two lines proved the same impossibility about different latent variables**,
-   independently, eleven days apart. The workspace cannot recover an authorization
-   from the realization map; the source line cannot recover an influence map from the
-   observable trace. Both concluded the missing structure must enter the type.
-   Recorded in `RESEARCH_STATE.md` and adjudicated in `RECONCILIATION.md` §2.1.
+5. **The two lines reached structurally analogous non-recoverability results about
+   different latent variables**, independently and roughly six weeks apart, the
+   source line's earlier (2026-07-01 against Stage V's 2026-08-11). The workspace
+   cannot recover an authorization from the realization map; the source line cannot
+   recover an influence map from the observable trace. Both concluded the missing
+   structure must enter the type. Recorded in `RESEARCH_STATE.md` and adjudicated in
+   `RECONCILIATION.md` §2.1.
 6. **The workspace's Movement V negative does not refute the source line's
    certificate program**, and the reason is that jurisdiction is a capability fact
    invisible to a valuation while the influence defect is a difference of two
@@ -121,7 +123,9 @@ New: `prompts/2026-08-12-corpus-reconciliation/{PROMPT,REPORT}.md`,
    and jurisdiction are two objects, and it is why no synthesis was forced.
 7. **Q3 does not graduate, and is better specified.** Two candidates now fail on
    complementary axes — structure without time, time without authority — which
-   constrains the missing object more than either did alone.
+   constrains the missing object more than either did alone: it must carry temporal
+   depth *and* explicit authorization or capability structure at once. No combined
+   object has been built and nothing shows none exists.
 8. **No corrigibility theorem is ready.** Four reasons, in `RECONCILIATION.md` §4,
    together with the sharpest statement of the target the evidence now supports.
 
@@ -132,27 +136,32 @@ New: `prompts/2026-08-12-corpus-reconciliation/{PROMPT,REPORT}.md`,
 with the gloss that its Logical Induction facts "are named, not derived" — the
 ordinary situation for every inherited row.
 
-The source line now refutes that arrow at full menu-quantifier strength. On a menu
-whose every option is worth nothing exactly when it is the one selected, the tower
-holds — by a paper theorem, in the self-trust instance — while Value fails. So no
-hypothesis quantified over all bet sequences implies Value quantified over all menus,
-and the failing step is the expert's provable endorsement of its own selection.
+The source line refutes that arrow's **hard-selector route** at full menu-quantifier
+strength. On a menu whose every option is worth nothing exactly when it is the one
+selected, the tower holds — by a paper theorem, in the self-trust instance — while
+Value fails. So no hypothesis quantified over all bet sequences implies Value
+quantified over all menus, and the step that fails there is **hard** self-endorsement:
+the expert's provable assignment of the max value to its own argmax selection.
 
 Three things bound the correction, and all three are in the ledger:
 
-- **No Lean is refuted.** Every version takes the failing step as an explicit
+- **No Lean is refuted.** That step enters the refuted route as an explicit
   hypothesis, which is what the named-hypothesis discipline exists for. The source
   line says so itself: the kernel check "is untouched — it always took the F1 carry
   as a named hypothesis."
-- **What changes is the reading.** The package is not merely undischarged; part of
-  it is false in a regime nothing had excluded. By this repository's own standard a
-  theorem whose hypotheses nothing satisfies is empty, and the difference is
-  invisible to the kernel.
-- **The workspace's port is the hedged form, which the source line reports as
-  surviving that menu.** `InheritedAlgebra.value_asymptotic` follows a normalized
-  weighting with a vanishing gap, not the sharp selector; the hard-argmax declaration
-  was never ported. Whether the port lands on the surviving side is **unchecked in
-  both directions** and is item 34.
+- **What changes is the reading of the row.** The arrow was carried as available
+  with its facts merely underived, and at full menu-quantifier strength it is not
+  available. A scope condition on Value's own menu quantifier is necessary.
+- **The port is soft, so it is not the refuted route — and that is where the
+  correction stops.** `InheritedAlgebra.value_asymptotic` is a vanishing-gap mixture
+  over the menu rather than the sharp selector, and the hard-argmax declaration was
+  never ported. The source line separately reports a *fixed*-gap hedged construction
+  as punishment-robust, at a stated grade — proved modulo an open
+  feature-introspection step, the robustness flagged same-session, unvetted and not
+  machine-checked. Resemblance between the two soft constructions is **not**
+  identification. Whether the port's full hypothesis package is jointly satisfiable
+  on that menu is **unestablished in both directions** and is item 34, which is
+  written not to prejudge which hypothesis would fail.
 
 The ledger row now reads `inherited-established` for the composition and open for
 whether its hypotheses are jointly satisfiable at the strength the name suggests.
@@ -338,8 +347,10 @@ be about what the principal can still *reach* rather than what it comes to *beli
 Each clause is purchased by a failure. We have two candidate objects for that type
 and they fail on complementary axes: Cartesian frames give structure with no time
 coordinate, the sealed-sibling family gives a genuine time coordinate with no notion
-of authority, and they do not compose, because the second has no coordinate for the
-first to attach to.
+of authority, and as each stands neither contains what the other supplies. Whether
+an enrichment carrying both works — frames given a temporal index, or the sealed
+family given an authorization or capability relation — is untried and open, and
+nothing here argues it is impossible.
 
 **The single next piece of research.** Build the two witnesses that decide whether
 endpoint-preservation is a foreclosure notion or only resembles one: a case where the
@@ -364,3 +375,95 @@ answer changes what the program does next in either direction.
 Item 34 is smaller and should be done first, because it is an afternoon and it
 decides whether a ledger row is honest. But it is hygiene. The witnesses are the
 research.
+
+---
+
+## Review corrections
+
+Three defects found in review of pull request #25 and corrected on the same branch.
+**None changes the round's substantive verdict**, and none touches the source trees,
+the priorities filed, the current-source decision, or the assessment that no
+corrigibility theorem is ready.
+
+### 1. Chronology of the two non-recoverability results
+
+*Said:* that the two results were proved "eleven days apart", and that the
+workspace's came first.
+
+*Why it was wrong:* both halves are false, and the round asserted them without
+checking either date. The source line's artifact is dated **2026-07-01**
+(`projects/deference/note-dump-2026-08-11/deference-trust-lab/run3/work/trace-nonrecoverability/trace-nonrecoverability.md`,
+header and compile line); the workspace's `StaticViewFactorization` landed with
+Stage V on **2026-08-11**. The gap is roughly six weeks and the source line's is
+the earlier.
+
+*Now says:* the two lines reached structurally analogous non-recoverability results
+about different latent variables, independently, roughly six weeks apart, with the
+source line's earlier — and no priority claim beyond what the dated artifacts
+support.
+
+*Verdict unchanged.* The finding was never about who was first; it was that neither
+derived the other, which is what makes the convergence evidence about the shape of
+the problem. Getting the direction backwards was careless and load-bearing for
+nothing.
+
+### 2. Hard-selector versus soft-hedge conflation
+
+*Said:* that the ported chain's `hSoft` is "the softmax bound standing in for the
+expert's endorsement of its own selection", which the source line "now reports
+**false** on selection-punishing menus" — and, in the ledger, that the failing step
+is one "every version of the theorem takes as an explicit hypothesis."
+
+*Why it was too strong:* it merged two different constructions. What the source line
+refutes is the **hard-selector** route, whose failing step is hard self-endorsement
+over a least-index argmax. The **soft** route is a different construction with a
+different endorsement step, which the source line reports as punishment-robust —
+and at a grade the round also failed to carry: proved modulo a feature-introspection
+step filed as open, with the robustness observation flagged same-session, unvetted
+and not machine-checked (`wiki/soft-self-endorsement.md` §"Status"). The port is
+soft, so it is not the refuted route; but the source's hedged construction uses a
+*fixed* gap where the port carries `δ → 0`, so the two are not identical on their
+face either. Asserting the port's hypothesis false was exactly the question item 34
+exists to answer, decided in advance and in the wrong direction.
+
+*Now says:* the refuted route and the reported-robust route are named separately,
+with the second's grade attached; the port is stated as soft and therefore not the
+refuted route, and as not identical to the source's hedged construction either; and
+both the survival and the failure of its hypotheses on the punishment family are
+stated as unestablished. Item 34 is rewritten around two symmetric outcomes — the
+port survives, or the package cannot be jointly instantiated — with an explicit
+instruction not to prejudge which hypothesis fails and not to define success by
+importing the source line's own scope condition.
+
+*Verdict unchanged.* The ledger row still moves from "available, facts underived" to
+"open at the strength the name suggests", and no Lean is refuted. What changes is
+that the round no longer answers item 34 while filing it.
+
+### 3. Non-composability overstatement
+
+*Said:* that the two candidate structures for the foreclosure object "do not
+compose", because "the second has no coordinate for the first to attach to."
+
+*Why it was too strong:* nothing in the round establishes it. The observation
+supporting it is that neither construction, **as currently formulated**, contains
+the structure the other supplies — which is a fact about two existing formulations,
+not an impossibility. A time-indexed family of frames, or a sealed-deliberation
+model enriched with an authorization or capability relation, is exactly the sort of
+object Q3 may require, and neither has been tried.
+
+*Now says:* the two fail on complementary axes; no combined object has been
+constructed; nothing shows none exists; whether an enrichment carrying both works is
+open.
+
+*Verdict unchanged.* Q3 still does not graduate, and what the correction sharpens is
+the requirement rather than the answer: the missing object must carry temporal depth
+**and** explicit authorization or capability structure at once.
+
+### What the three have in common
+
+All three are the same failure in different places — a real observation stated one
+notch stronger than its evidence. Two dates not checked, a resemblance reported as
+an identification, and a limitation of two formulations reported as a property of
+the objects. Each was cheap to avoid by inspection, and the round's own discipline
+section warns against exactly this: the second defect had the round pre-answering a
+question it was in the act of filing as open.

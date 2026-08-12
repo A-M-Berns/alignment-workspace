@@ -79,7 +79,7 @@ is unmodeled."
 | `value_iff_totalTrust_asymptotic` | ledger Movement I: `inherited-established`, both arrows, linearity, "neither hypothesis is the conclusion" | not disturbed by any August page | — | **unchanged** |
 | **tower ⟹ Value** | ledger Movement I: `inherited-established` **conditionally**, "genuinely chains named Logical Induction facts; the facts are named, not derived" | **arrow (a) is *refuted* at full menu-quantifier strength — not merely unproved.** The punishing menu kills Value while the tower holds by `cee` in the self-trust instance | `wiki/value-iff-mart.md` §"⚠ Update (2026-07-27)" second bullet; `wiki/total-trust-implies-value.md` §"Necessity of the scope condition"; `wiki/mart-implies-value.md` §"Remark: what F1 actually costs" ⚠ block | **corrected** |
 | unconditional argmax Value | not represented | **false**; a scope condition is *provably necessary*; the preferred one is mass-weighted conditional-stability | `wiki/total-trust-implies-value.md` (H3) and §Necessity | **newly added** |
-| the δ-hedged variant | the workspace's port `value_asymptotic` is the softmax form | the δ-hedged strategy needs no tie-break and **no scope condition — it survives punishing menus** | `wiki/soft-self-endorsement.md` §"Robustness" | **sharpened** |
+| the δ-hedged variant | the workspace's port `value_asymptotic` is a vanishing-gap soft mixture | the δ-hedged strategy needs no tie-break and no scope condition, and is **reported** punishment-robust — proved modulo a feature-introspection step, the robustness flagged same-session, unvetted and not machine-checked | `wiki/soft-self-endorsement.md` §"Robustness", §"Status" | **newly added, source-only** |
 | Mart ⟹ Value at large | ledger's row reads as an available implication | "**Mart ⟹ Value refuted**, not merely unproved" | `note-dump-2026-08-11/README.md` §3; `wiki/new-chats-2026-07.md` §"Part two" | **refuted** |
 | the triangle | not represented | TT ⟹ Value ⟹ Tower ⟹ TT closes with three direct arrows; at true-LI strength every full-strength entry into Total Trust factors through the fold (liar probe) | `wiki/value-implies-tower.md`, `wiki/tower-implies-total-trust.md`, `wiki/loop-direction.md` | **newly added, source-only** |
 | Total Trust ⟺ Mart, timely and cheap | not represented | the centred-bet squeeze; `lean-deference/CenteredSqueeze.lean` | `notes/centered-bet-squeeze.md`; `wiki/total-trust-implies-mart.md` | **newly added, source-only** |
@@ -90,24 +90,36 @@ the F1 carry as a named hypothesis — but the table's flat 'KERNEL-CHECKED' ove
 the arrow" (`wiki/value-iff-mart.md`). So:
 
 - No Lean, inherited or ported, is refuted.
-- What is refuted is the *reading* the ledger row carried: that the named
-  hypotheses are merely underived. One of them — F1, the expert's provable
-  self-endorsement of its own selection — is **false on selection-referencing
-  menus**, and on exactly those menus Value itself is false. The hypothesis package
-  is not just undischarged; part of it is known false in a nonempty regime.
+- What is refuted is the **hard-selector route** at full menu-quantifier strength,
+  and with it the *reading* the ledger row carried — that the arrow is available
+  and its Logical Induction facts are merely underived. The step that fails there
+  is hard self-endorsement: the expert's provable assignment of the max value to
+  its own least-index argmax selection. On selection-referencing menus that step
+  fails and Value itself is false, so a scope condition on Value's own menu
+  quantifier is necessary rather than stylistic.
+- **The soft route is a different construction with a different endorsement step**,
+  and the corpus reports it as punishment-robust — at a stated cost. Soft
+  self-endorsement is PROVED *modulo* a feature-introspection step the corpus files
+  as an open item; the punishment-robustness observation itself is flagged
+  same-session, unvetted, and not machine-checked
+  (`wiki/soft-self-endorsement.md` §"Robustness", §"Status"). It is a reported
+  result at that grade, not a settled one.
 - The workspace never ported the hard-argmax declaration. What it holds is
   `Workspace.Deference.Contrib.InheritedAlgebra.value_asymptotic`
   (`lean/Workspace/Deference/Contrib/InheritedAlgebra.lean:191`), ported from
   `DeferenceAsymp.value_asymptotic`
   (`projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean:150`), whose
-  followed strategy is the **softmax** `Ŝ = Σⱼ αⱼ Oⱼ` with a vanishing gap `δ`.
-  That is the family the corpus says survives punishment.
-- What nobody has checked, on either side, is whether the workspace's port
-  instantiates on the surviving side. `hSoft` is a hypothesis about the softmax
-  bound; `hδ : δ → 0` sharpens the weights toward the hard argmax as `n` grows, and
-  the corpus's punishment-robustness argument is stated for fixed `δ`. This is now
-  a decidable question with an exact finite instance available for it, and it is
-  filed as `PRIORITIES.md` item 34.
+  followed strategy is a vanishing-gap soft mixture `Ŝ = Σⱼ αⱼ Oⱼ` rather than the
+  sharp selector. Its `hSoft` is the softmax-gap step of that chain.
+- **That is a resemblance, not an identification.** The port is soft, and the
+  corpus's punishment-robust construction is soft, but they are not the same object
+  on their face: the corpus's hedged strategy is a normalized ramp over the options
+  within `2δ` of the top quote at a *fixed* `δ`, while the port carries `δ → 0`.
+  Nothing here establishes that the port's `hSoft` fails on the punishment family,
+  and nothing here establishes that it holds. Whether the port's **full** hypothesis
+  package is jointly satisfiable there, and what conclusion it then supports, is
+  open in both directions and is `PRIORITIES.md` item 34. This round deliberately
+  does not name which hypothesis would fail.
 
 ### 1.3 Varying-question deference
 
@@ -173,11 +185,16 @@ This is the part of the round with content beyond bookkeeping.
 | the diagnosis drawn | the authorization relation has to enter the **type** | legitimacy must be a **counterfactual/provenance** condition, never a trace predicate |
 | evidence | `CORRIGIBILITY_PAPER_LEDGER.md` Movement IV; `lean/Workspace/Deference/Contrib/StaticViewFactorization.lean` | `deference-trust-lab/run3/work/trace-nonrecoverability/`; `notes/legitimacy-theory-v1.md` §2.3 |
 
-Neither line knew about the other's result. The corpus notices the same shape
-*internally* — §2.3 remarks that its admissibility analysis and its
-non-recoverability theorem "are two instances of one moral," which it names the
-provenance principle. The workspace reached the third instance from the
-authorization side. **Class: independent rediscovery, both directions.**
+Neither line knew about the other's result, and they are roughly six weeks apart
+with the source line's earlier: its artifact is dated 2026-07-01
+(`deference-trust-lab/run3/work/trace-nonrecoverability/trace-nonrecoverability.md`),
+and the workspace's landed with Stage V on 2026-08-11. No priority claim is made
+beyond what those dates support, and none is needed — what matters is that neither
+derived the other. The corpus notices the same shape *internally* — §2.3 remarks
+that its admissibility analysis and its non-recoverability theorem "are two
+instances of one moral," which it names the provenance principle. The workspace
+reached a further instance from the authorization side. **Class: independent
+structural convergence.**
 
 Two consequences follow and are the reason this matters rather than being a
 coincidence worth noting:
@@ -261,11 +278,16 @@ index, and the interface is one decision index deep.
   relation, and `notes/legitimacy-theory-v1.md` does not claim one.
 
 **Adjudication.** Q3 does **not** graduate. What it gains is a second named
-candidate with a different failure mode from the first: the Cartesian-frames arms
+candidate failing on the axis complementary to the first: the Cartesian-frames arms
 supply structure with no time coordinate, the sealed-sibling family supplies a time
-coordinate with no authorization relation, and the union of the two is still not the
-object. That is worth writing into Q3 because it narrows what a good answer must do
-— carry both at once — and because two candidates failing on complementary axes is
+coordinate with no authorization relation, and as each is currently formulated
+neither contains what the other supplies. **No combined object has been
+constructed, and nothing here shows that none exists** — a time-indexed family of
+frames, or a sealed-sibling model enriched with an authorization or capability
+relation, is exactly the kind of thing Q3 may turn out to need, and whether either
+enrichment works is open. That is worth writing into Q3 because it sharpens what a
+good answer must carry — temporal depth *and* explicit authorization or capability
+structure, at once — and because two candidates failing on complementary axes is
 better evidence about the shape of the missing object than either alone.
 
 ## 4. The corrigibility target, as sharply as the evidence permits
