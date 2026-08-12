@@ -100,6 +100,23 @@ candidate to a two-index execution state with an authorization/capability relati
 a transition, and designated future corrective reachability; it does not construct
 or adopt that object. Both are model debt, and neither is blocked on labour.
 
+*A candidate object for the first hole, and nothing for the second.* The
+Cartesian-frames round represents the future principal's corrective situation as a frame
+and exhibits two structurally different ways of losing it: restriction, which is `Commit`
+with a proper additive subagency, and transfer, which is `External^{/}` with a
+multiplicative one, the two separated by whether the reachable worlds shrink. Both arms
+have Lean witnesses against the authoritative library.
+
+That is an object for **what is lost**. It is not an object for either hole this entry
+names. There is no operation reassigning anything at a later index, and the interface is
+still one index deep: a Cartesian frame has no time coordinate, and what makes the
+corrective frame "later" is the modeller saying so. The round also does not supply the
+*authorization* relation — it represents who counterfactually controls the correction, not
+who is entitled to make it — and its own adversarial review found that the transfer arm
+cannot say anything holds the transferred coordinate at all. Whether a candidate for what
+is lost is worth graduating on is in `DECISIONS.md`'s queue. Documented in
+`projects/deference/notes/CARTESIAN_FRAMES_DEFERENCE_BRIDGE.md`.
+
 ### Q4 — What certifies resource-separated computational futurity?
 
 FAF can name and quote a later market computation, but the current type has no
@@ -922,6 +939,36 @@ theory rows stand without executable support and that adapters are the expected
 pattern. **The report is the obligation here; which of the three is not this
 round's to take.**
 
+### F5 — Upstream work on a feature branch is unreachable without a trust-chain edit
+
+`lean/lakefile.toml` pins one Formalized-Agent-Foundations commit and inherits
+Mathlib and Foundation through it, which is the right shape and stays. It has no
+way to express a dependency on work that lives on an upstream *feature* branch. A
+round dispatched against such work — the Cartesian-frames round was — has four
+moves, and all four are bad: repin the trust chain to a branch commit that can be
+rebased under it, which is also a maintainer decision the round cannot take;
+vendor the library, which the dispatch forbade and which duplicates a maintained
+tree; mirror the fragment needed, which is a second definition of the same objects;
+or drop the dependency and answer nothing.
+
+That round mirrored ~200 lines and then compiled every result a second time
+against the authoritative definitions in a checkout of the upstream branch, which
+bounds the risk to zero at the cost of a check that CI cannot run. The cross-check
+sits under `prompts/2026-08-12-cartesian-frames/artifacts/` with its re-verification
+command, deliberately outside `lean/Workspace/` because the `lean` gate cannot
+import what the repository does not pin.
+
+The branch moved twice during the round — two commits, and then a merge to the upstream
+default branch — so the register's first recorded commit was stale within a day and the
+cross-check had to be re-verified. That is the concrete cost, and it is also the reason
+the specific case has now dissolved: the library is on `main`, so pinning it is an
+ordinary pin rather than a dependency on a rebaseable branch.
+
+The generalisable question survives the case. Is a second, explicitly *exploratory* pin —
+one whose breakage fails a non-required job rather than the required `lean` gate — worth
+the trust-chain complexity, or is mirror-plus-cross-check the expected pattern for upstream
+work in flight? **The report is the obligation; the decision is not this round's.**
+
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 
 The highest-value question the deference line has produced, and the only one whose answer
@@ -966,6 +1013,23 @@ kernel-verified and unregistered; it establishes evaluative indistinguishability
 not unrestricted jurisdiction invisibility, literal architecture identity, or the
 value of jurisdiction. The conditional core of the item is answered; the item
 remains filed as the demand pointer for that unregistered theorem.
+*Cartesian-frames status:* the worked case's hidden payload is a `jurisdiction` field no
+formula reads, and the round of 2026-08-12 offers a replacement. Two frames over one world
+type, agreeing on the realized play at every environment state, are proved not
+biextensionally equivalent, with the difference carried by whether the outcome varies with
+the agent coordinate.
+
+**That round's adversarial review refuted its first argument for why this is not another
+label**, and the corrected argument is weaker: `≃ᵇ`-invariance does not exclude labels —
+a controller coordinate in the world type passes that test — and what survives is that no
+world map retaining the executed action deletes the new separation, while the world map
+forgetting the label deletes the old one. A structural argument, not a proof.
+
+The item is not repaired. The separation lives in a counterfactual coordinate the current
+signature has already quotiented away, and it represents control rather than authorization.
+The successor target — the same factorization theorem over a signature carrying a frame and
+the choice actually taken — is a re-instantiation with a better inhabitation witness rather
+than a new theorem, and it is in `DECISIONS.md`'s queue rather than filed here.
 
 ---
 
