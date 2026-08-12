@@ -67,6 +67,34 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   is choosing one. *Waiting* costs one reimplementation per round that touches the
   layer, and the φ-regret preparation round has already paid it once.
 
+- **Rule on pinning the Cartesian Frames formalization.** `lean/lakefile.toml`
+  pins Formalized-Agent-Foundations at `1fffea44`, which predates
+  `CartesianFrames/`. That library was on an unmerged branch when the
+  Cartesian-frames round was dispatched, so the round mirrored the fragment it
+  needed and cross-checked every result against the authoritative definitions
+  rather than take a trust-chain edit. **It reached `main` during the round**, at
+  `e13dc5bd0117486b1947fbb5643045e14743e98d`, so the objection that made repinning
+  unattractive is gone. *Doing it* is repinning to a `main` commit and deleting the
+  mirror, which would put the cross-check's results inside the `lean` gate.
+  *Waiting* costs the mirror's maintenance and nothing else — both Lean surfaces
+  are green today.
+
+- **Rule on graduating Q3, and on the successor to item 28.** `PRIORITIES.md` Q3
+  asks how foreclosure is expressible and says what is missing is the object. The
+  Cartesian-frames round supplies a candidate with a Lean witness — `Commit` with
+  proper additive subagency for restriction, `External^{/}` with multiplicative
+  subagency for transfer, separated by `image`. It is a candidate for **what is
+  lost**, not for either hole Q3 names: no operation reassigns anything at a later
+  index, and the interface is still one index deep. Two linked rulings: whether
+  that is enough for Q3 to graduate, and whether to file the round's proposed next
+  target, restating the Stage-V factorization theorem over a signature carrying a
+  frame and the choice actually taken in place of a `jurisdiction` field — which is
+  a re-instantiation with a better inhabitation witness, not a new theorem. *Doing
+  it* requires reading §§4, 7 and 9 of
+  `projects/deference/notes/CARTESIAN_FRAMES_DEFERENCE_BRIDGE.md` and its red-team
+  report. *Waiting* blocks the successor round and leaves item 28's answer resting
+  on a worked case whose hidden payload no formula reads.
+
 ## Settled
 
 ### 2026-08-11 — the governance report is removed, not relocated

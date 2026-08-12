@@ -72,6 +72,7 @@ earlier rows did not record at all.
 | `tests/path_gate.py` — `projects/leverage/deck-2026-08-10/**` added, two self-test cases | Claude Opus 5 | `ci-only` | 2026-08-11 | same — a trust-chain edit the dispatch did not scope, made so that the author's own deck is not contributor-editable, and flagged in `DECISIONS.md`'s *Awaiting the author* for confirmation. It only removes contributor write access |
 | the attention rulings in `AGENTS.md`, `PROVENANCE.md`, `CONTRIBUTING.md`, `PRIORITIES.md`, `RESEARCH_STATE.md` and `DECISIONS.md` | Claude Opus 5 | `ci-only` | 2026-08-11 | same — three maintainer rulings taken during the round and recorded as a dated `DECISIONS.md` entry: the flagship rule retired, external citation restated to stand alone, and item filing opened to maintainer-dispatched rounds within their scope. Naming stays reserved. `DECISIONS.md`'s *Awaiting the author* becomes the single queue for reserved items |
 | `projects/deference/notes/LI_NATIVE_DEFERENCE*.md`, Stage V current-state edits, `lean/Workspace/Deference/Contrib/StaticViewFactorization.lean`, and the Stage V additions to `MagnitudePrediction.lean` | GPT-5 Codex (OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-v-li-native/`; prompt author GPT-5.6 Sol (OpenAI) |
+| `projects/deference/notes/CARTESIAN_FRAMES_DEFERENCE*.md`, `lean/Workspace/Deference/Contrib/CartesianFrameBridge.lean`, `prompts/2026-08-12-cartesian-frames/**`, `PRIORITIES.md` Q3 and item 28 status text and friction entry F5 | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-12 | `prompts/2026-08-12-cartesian-frames/`; prompt author GPT-5.6 Sol (OpenAI). §1 of the Lean file **copies fourteen definitions and three claims** from the Cartesian Frames formalization in Formalized-Agent-Foundations at `e13dc5bd0117486b1947fbb5643045e14743e98d`, which `lean/lakefile.toml` does not pin; the correspondence is in the file header and the same results are compiled against the authoritative definitions in the round's `artifacts/`. No item was filed and Q3 was not graduated; both are reserved in `DECISIONS.md`. The round's adversarial review ran in a **separate Claude Opus 5 context** with no access to the round's reasoning; it refuted the round's headline argument and all thirteen findings were accepted, so the deliverables state the corrected claims and `REPORT-red-team.md` states what changed |
 
 ## No originating chat bundle
 
@@ -106,6 +107,7 @@ of thing this file exists to make visible.
 | `2026-08-11-stage-v-li-native` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
 | `2026-08-11-phi-regret-bridge` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
 | `2026-08-11-phi-regret-learner` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
+| `2026-08-12-cartesian-frames` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | dispatched 2026-08-11, executed 2026-08-12 |
 | `2026-08-11-normative-learning-interface` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
