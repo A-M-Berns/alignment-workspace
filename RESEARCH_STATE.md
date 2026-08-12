@@ -106,12 +106,13 @@ growing with the horizon from one local edit; what gives it is the absence of a
 solvency coupling, or fences short enough that a stream's lifetime liability is
 not horizon-sized. The dispatch expected fencing to be the dividing line.
 
-**Aspirational.** A bounded learner whose revisions stay answerable to its
-history and licensed by its live reasons nevertheless satisfies an online self-
-correction guarantee, with no fixed external normative target. The learning
-construction now works against the frozen nine-program class; the remaining
-aspiration is to host its policy computation and state inside the declared
-answerability/service architecture.
+**Aspirational.** A general normative-learning interface theorem takes a bounded
+prospective public loss generator and a causal grammar of normatively compiled
+action transformations, then supplies low regret against the expressible
+repairs. A separate counterfactual-stability layer would control the difference
+between local loss comparison and full replay. None of these generalizations is
+proved. The eight-action, nine-program docket construction is the worked finite
+instantiation.
 
 **Standing caution.** The deference line's ruling that competence may not be
 stated as a decision-regret bound does **not** reach this track, and the reason is
@@ -121,12 +122,14 @@ predicate that never mentions charge. A round that assumed low φ-regret in orde
 to derive that a learner is reasons-responsive would be repeating the deference
 line's error exactly.
 
-**Next controlling question.** Put the constructed learner's computation and
-policy state inside the declared work/record interface. The action-level bridge
-passes: sampled canonical responses remain faithful, non-erasing, and within
-response service. The unresolved interface must price or explicitly abstract the
-72 weight updates and stationary solve, and must make learner-state evolution
-historically replayable without rewriting prior policy states.
+**Two next directions.** Integration must put the current learner's computation
+and policy state inside the declared work/record interface: sampled responses
+pass the action-level checks, while the 72 weight updates and stationary solve
+remain unpriced and policy-state evolution is not historically recorded.
+Generalization must extract an architecture-neutral bounded-loss interface and
+separate the causal transformation API required by online learning from the
+normative certificate that licenses compilation. Neither direction supersedes
+the other.
 
 **Constructed mathematical state.** An occasion-local bijection decodes eight
 semantic labels to the canonical repository responses without carrying ledger
@@ -160,6 +163,8 @@ for the controlling negative audit;
 `projects/leverage/rounds/2026-08-11-phi-regret-bridge/` for the repaired theorem
 interface; and `projects/leverage/rounds/2026-08-11-phi-regret-learner/` for the
 item-30 implementation, experiments, and integration audit.
+`projects/leverage/notes/NORMATIVE_LEARNING_INTERFACE.md` routes the finite
+result into the open general-interface theorem program.
 `projects/leverage/deck-2026-08-10/` is the line's own
 account of itself in the author's words and carries a qualified
 `maintainer-reviewed` provenance status; that review status does not adopt its

@@ -219,13 +219,13 @@ stream results are stated over arrivals.
 ## Leverage line — the learning track
 
 The consolidation's `OPEN_PROBLEMS.md` closes with a pointer list it declines to
-treat, and *the learning and installation track* is on it. These three open it.
-Context for all three:
+treat, and *the learning and installation track* is on it. Items 29–31 opened
+the track. Their shared context is:
 `projects/leverage/rounds/2026-08-11-phi-regret-prep/`, whose
 `PHI_REGRET_TEST_SPEC.md` fixes the environment and whose `THEOREM_LEDGER.md`
 says which of its statements have a derivation and which have only a witness.
 
-Filed by that round within its dispatched scope, with
+Items 29–31 were filed by that round within its dispatched scope, with
 `prompts/2026-08-11-phi-regret-prep/PROMPT.md` as the authorization.
 
 ### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]** — *closed-positive: repaired in the frozen environment*
@@ -320,8 +320,9 @@ item-30 result.
 declared class; and an honest statement of whether the successful learner is
 still answerable and inside its declared service work, which the spec calls S4
 and expects to be where the round spends its time.
-*Why it is [open]:* nobody has run it, and the environment's own preparation
-found one expectation already wrong.
+*Why it remains partially open:* the learning construction is complete, but the
+service model does not price its computation and the historical record does not
+contain learner-policy state.
 
 ### 31. Does the objection grammar already represent a remediable-pattern filing? — **[entry]**
 
@@ -346,6 +347,50 @@ records the negative honestly.
 *Why it is [entry]:* a finite audit against a fixed registry; no new mathematics.
 It is adjacent to item 3, and a round doing both would exercise the registry
 harder than either alone.
+
+### 32. Extract the bounded prospective loss interface — **[entry]**
+
+Parameterize the item-29 bridge and item-30 learner over the smallest public
+prospective loss interface they actually use. Docket liability remains one
+instance; this item does not select a final class of normative losses or add new
+penalties.
+
+*Deliverable shape:* a typed or executable loss-generator interface exposing a
+bounded full-information vector on the fixed semantic response space, with the
+existing docket generator factored through it.
+*Acceptance check:* exact tests reproduce every existing docket charge and
+regret quantity unchanged, and one synthetic bounded prospective generator runs
+through the same learner without importing docket, warrant, tolling, or ledger
+types. The report lists each former fixture assumption as interface-required or
+architecture-specific.
+*Context:* `projects/leverage/notes/NORMATIVE_LEARNING_INTERFACE.md`, Level A.
+*Why it is [entry]:* it extracts an interface already used by working code; it
+does not require choosing a richer regret theorem or substantive loss semantics.
+
+### 33. Separate causal transformation structure from normative certification — **[entry]**
+
+Extract the minimal transformation API required by the online-learning theorem:
+a fixed action domain, public pre-action state, causal total action map, and
+declared comparator identity. Keep the reasons-responsiveness certificate as a
+separate architecture-side judgment that authorizes compilation into that API.
+
+*Deliverable shape:* a typed or executable split between compiled
+transformations and normative compilation evidence, with adapters for all nine
+current declarative programs.
+*Acceptance check:* all nine programs induce the same action maps and regret
+quantities as before; the generic learner imports no reason, warrant, obligation,
+tariff, or profitability fields; and a negative test shows that an uncertified
+transformation cannot enter the declared lawful comparator collection through
+the normative adapter.
+*Context:* `projects/leverage/notes/NORMATIVE_LEARNING_INTERFACE.md`, Levels A
+and B.
+*Why it is [entry]:* the current bridge already contains both roles; this item
+separates their interfaces without enlarging the comparator grammar.
+
+Counterfactual stability remains a theorem-design direction rather than a filed
+item. The present candidate is a distortion term comparing local fixed-loss
+evaluation with full replay, potentially requiring `B_T(g) = o(T)`, but no
+accepted sufficient statement yet supplies an executable completion criterion.
 
 ---
 
