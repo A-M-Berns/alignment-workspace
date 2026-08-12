@@ -1,0 +1,11 @@
+﻿trace S1 == trace S2 : [(Fraction(1, 2), Fraction(1, 2)), (Fraction(5, 8), Fraction(5, 8)), (Fraction(3, 4), Fraction(3, 4)), (Fraction(3, 4), Fraction(3, 4))]
+perfect apparent tracking (a_n == Y_n) holds in both runs
+A-free run of S1: [Fraction(1, 2), Fraction(5, 8), Fraction(3, 4), Fraction(3, 4)]
+A-free run of S2: [Fraction(1, 2), Fraction(3, 8), Fraction(1, 4), Fraction(1, 4)]
+defect d(S1) = 0,  d(S2) = 1/2  (gamma = 1/2 > 0)
+no function of the trace can equal the defect on {S1, S2}: tr1 == tr2 but d1 != d2
+transparency near-miss: sep(trace+ S1) = False , sep(trace+ S2) = True  -- matches the legitimacy predicate d>0
+deletion test: trace(S2 with beta:=0) = [(Fraction(1, 2), Fraction(1, 2)), (Fraction(5, 8), Fraction(3, 8)), (Fraction(3, 4), Fraction(1, 4)), (Fraction(3, 4), Fraction(1, 4))]
+               differs from the shared trace at day 1: (Fraction(5, 8), Fraction(3, 8)) vs (Fraction(5, 8), Fraction(5, 8))
+sweep 9^3 = 729 constant-parameter systems: every hidden defect under a perfect-tracking trace has beta = 1 (72 such systems)
+ALL ASSERTS PASSED
