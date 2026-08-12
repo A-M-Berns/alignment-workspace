@@ -106,11 +106,13 @@ growing with the horizon from one local edit; what gives it is the absence of a
 solvency coupling, or fences short enough that a stream's lifetime liability is
 not horizon-sized. The dispatch expected fencing to be the dividing line.
 
-**Aspirational.** A learner whose revisions stay answerable to its history and
-licensed by its live reasons nevertheless satisfies an online self-correction
-guarantee, with no fixed external normative target. The theorem bridge now
-supplies the conditional online guarantee against the frozen nine-program class;
-item 30 must construct and test the learner and check its answerability.
+**Aspirational.** A general normative-learning interface theorem takes a bounded
+prospective public loss generator and a causal grammar of normatively compiled
+action transformations, then supplies low regret against the expressible
+repairs. A separate counterfactual-stability layer would control the difference
+between local loss comparison and full replay. None of these generalizations is
+proved. The eight-action, nine-program docket construction is the worked finite
+instantiation.
 
 **Standing caution.** The deference line's ruling that competence may not be
 stated as a decision-regret bound does **not** reach this track, and the reason is
@@ -120,41 +122,50 @@ predicate that never mentions charge. A round that assumed low φ-regret in orde
 to derive that a learner is reasons-responsive would be repeating the deference
 line's error exactly.
 
-**Next controlling question.** Run item 30 on the constructed interface. The
-fixed alphabet has `N=8`, the always-on selector gives `M=1`, and the audited
-class has `K=9`. Blum--Mansour (2007) Theorem 18 therefore gives a horizon-tuned
-learner with expected mixed-action charge regret
-`O(ell_max sqrt(8 T log 9))` in the frozen environment.
-Item 30 must implement its row-conditioned weights and stationary distribution,
-measure expected mixed loss, and separately check that the learner remains
-answerable and within declared service work.
+**Two next directions.** Integration must put the current learner's computation
+and policy state inside the declared work/record interface: sampled responses
+pass the action-level checks, while the 72 weight updates and stationary solve
+remain unpriced and policy-state evolution is not historically recorded.
+Generalization must extract an architecture-neutral bounded-loss interface and
+separate the causal transformation API required by online learning from the
+normative certificate that licenses compilation. Neither direction supersedes
+the other.
 
 **Constructed mathematical state.** An occasion-local bijection decodes eight
 semantic labels to the canonical repository responses without carrying ledger
 identity in action equality. All nine fixed causal programs factor through it;
 exact pointwise, mixed, cumulative, and regret quantities are preserved. Generic
 preservation and recurrent-failure inequalities are Lean-proved and unregistered.
-The cited theorem yields the conditional expected regret bound above. **Explicit
-non-result:** no item-30 learner, sampled-path bound, measured regret curve,
-comparator-coverage result, anytime tuning, or integration proof has been
-constructed.
+The Theorem 18 learner is now implemented with 8×9 row-conditioned weights, a
+transformation-weighted stochastic matrix, deterministic exact stationarity for
+the represented numerical weights, and the source update. The cited theorem
+yields horizon-tuned expected mixed charge regret
+`O(ell_max sqrt(8 T log 9))`; numerical experiments exercise all programs and
+declared horizons. **Explicit non-result:** no exact-real executable identity,
+sampled-path bound, anytime learner, rich-comparator coverage result, or bounded
+computation/learner-state integration theorem has been constructed.
 
-**Constructed philosophical gloss.** Within the frozen class, historically
-licensed repairs are genuine online comparators and a learner can have sublinear
-expected charge regret against each. Such a learner cannot retain positive
-asymptotic expected mass on a represented, uniformly improving certified
-failure. This is learning relative to a nine-program charge class, not a result
-about normative correctness, coverage of important failures, or proof that the
-eventual learner's own updates
-remain answerable.
+**Constructed philosophical gloss.** Within the frozen class, the implemented
+learning discipline prevents positive asymptotic expected mass from remaining on
+a represented, uniformly improving certified failure. Its sampled choices can
+be recorded without erasure and fit response service. This is learning relative
+to nine charge comparators, not normative correctness or broad coverage: an
+executable witness attains zero Φ regret while paying substantially more charge than
+action Hedge. Nor is the full bounded-answerability synthesis complete, because
+the learner computation itself is presently unpriced and its policy state is not
+in the historical record.
 
 **Deeper:** `projects/leverage/consolidation-aug9/`, cited by claim identifier;
 `projects/leverage/rounds/2026-08-11-phi-regret-prep/` for the learning track,
 whose `THEOREM_LEDGER.md` separates its two derived statements from its thirteen
 executable witnesses; `projects/leverage/rounds/2026-08-11-phi-regret-applicability/`
-for the controlling negative audit; and
+for the controlling negative audit;
 `projects/leverage/rounds/2026-08-11-phi-regret-bridge/` for the repaired theorem
-interface. `projects/leverage/deck-2026-08-10/` is the line's own
+interface; and `projects/leverage/rounds/2026-08-11-phi-regret-learner/` for the
+item-30 implementation, experiments, and integration audit.
+`projects/leverage/notes/NORMATIVE_LEARNING_INTERFACE.md` routes the finite
+result into the open general-interface theorem program.
+`projects/leverage/deck-2026-08-10/` is the line's own
 account of itself in the author's words and carries a qualified
 `maintainer-reviewed` provenance status; that review status does not adopt its
 research content.

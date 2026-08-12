@@ -11,6 +11,7 @@
 | `ExposureGeometry.lean` | `prompts/2026-08-11-phase-ii-promotion/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phase-ii-promotion/` | — |
 | `EnvelopeDominance.lean` | `prompts/2026-08-11-stage-iii-fud/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-iii-fud/` | — |
 | `StaticViewFactorization.lean` | `prompts/2026-08-11-stage-v-li-native/` (executor: GPT-5 Codex, OpenAI; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-v-li-native/` | — |
+| `CartesianFrameBridge.lean` | `prompts/2026-08-12-cartesian-frames/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-12 | `prompts/2026-08-12-cartesian-frames/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`; per-declaration
@@ -59,3 +60,26 @@ premise. `StaticViewFactorization.lean` answers item 28's conditional core with 
 polymorphic factorization theorem and a worked architecture pair whose toy jurisdiction
 label differs while its static view agrees. It does not establish unrestricted
 jurisdiction invisibility.
+
+`CartesianFrameBridge.lean` is new in its round. **Its §1 mirrors fourteen definitions and three
+claims of the Cartesian Frames formalization** in Formalized-Agent-Foundations, at
+commit `e13dc5bd0117486b1947fbb5643045e14743e98d` — which
+is not the commit `lean/lakefile.toml` pins, so the fragment is copied rather than imported.
+The file header carries the name-by-name correspondence and the two places the rendering
+differs from the authoritative one: composition is written in diagrammatic order, and `Iso`
+constrains only the agent components, which makes the mirrored `BiextEquiv` **weaker** than
+the authoritative `≃ᵇ` and every `¬ BiextEquiv` in the file correspondingly **stronger**.
+Only one direction of Claim 39 is mirrored, so the
+file's positive results are stated as homotopy equivalences; under the full Claim 39 they
+read as biextensional equivalences, and that reading is a citation.
+
+**Every result in it is compiled a second time against the authoritative definitions**, in
+`prompts/2026-08-12-cartesian-frames/artifacts/CFCrossCheck.lean`, where the real `≃ᵇ`,
+`◁`, `◁₊`, `◁ₓ`, `commit`, `externalQuot` and `image` are used and the positive results are
+genuine biextensional equivalences. That file imports a library this repository does not
+pin, so it is outside `lean/Workspace/` and outside the `lean` gate; the round's report
+carries the re-verification command. Nothing in `CartesianFrameBridge.lean` depends on it.
+
+Every declaration in the file is hypothesis-complete, and the constructed frames inhabit
+every statement. None is promotable to `CLAIMS.md` as it stands: the deference line has no
+registry, which is the standing friction entry rather than a defect of this file.
