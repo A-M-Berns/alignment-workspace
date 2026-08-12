@@ -105,6 +105,22 @@ registered nothing. It corrected one ledger row, repointed the item contexts tha
 named a superseded document, filed item 34, and left every other priority as it
 stood. Deliverables under `../rounds/2026-08-12-corpus-reconciliation/`.
 
+## Time-indexed corrective capability — returned 2026-08-12, `Mixed`
+
+Round `prompts/2026-08-12-time-indexed-corrective-capability/` attempted the combination
+Q3's two candidates suggested and did not close the representation gap. Its adversarial
+review, run in a separate context, refuted two of three headline claims; the refutations
+are theorems in the round's Lean rather than prose replies. What survives: endpoint
+preservation and corrective capability are independent, in both directions, as exact
+finite witnesses. What the round produced instead of the target is a precise requirement
+on any successor — the model must have dynamics that run without the advisor, or a
+cut-time index is a reindexing of time. Deliverables under
+`../rounds/2026-08-12-time-indexed-corrective-capability/`.
+
+**No successor is dispatchable from this state**, and none is filed. Whether to build the
+model with autonomous dynamics is a maintainer call: it is the same question as whether
+Q3's target is worth another attempt.
+
 ## Discipline
 
 A dispatched track receives the round wrapper, the authorizing item, the roadmap,

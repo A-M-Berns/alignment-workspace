@@ -144,6 +144,25 @@ works is open. What the pair does establish is what a good answer must carry —
 **temporal depth and explicit authorization or capability structure, at once**. That
 is more than either candidate said alone, and it is still not the object.
 
+*The combination was attempted and failed, informatively.* A round built the smallest
+product of the two — a fold of advisor actions over a state, with the counterfactual
+indexed by the step at which the advisor is silenced — and its adversarial review
+collapsed it: because the state has no dynamics of its own, silencing the advisor
+**freezes** the run rather than continuing it, so `cutRun π n k s = run π (min n k) s`
+and the family of "continuations" is the family of prefixes. The foreclosure predicate
+built on it reduces to a two-frame condition on a single trajectory. Both refutations
+are machine-checked in
+`lean/Workspace/Deference/Contrib/TimeIndexedCapability.lean` §10.
+
+**That failure sharpens the entry a third time, and this is the operative sentence:**
+a cut-time index carries counterfactual weight only if the model has dynamics that run
+*without* the advisor. An index over a system that stops when the advisor stops is a
+reindexing of time. Any future candidate for this entry must clear that bar before its
+temporal claims mean anything, and the bar is cheap to check. One result survived and is
+reusable — endpoint preservation and corrective capability are independent, in both
+directions, as exact finite witnesses. Round:
+`projects/deference/rounds/2026-08-12-time-indexed-corrective-capability/`.
+
 ### Q4 — What certifies resource-separated computational futurity?
 
 FAF can name and quote a later market computation, but the current type has no
