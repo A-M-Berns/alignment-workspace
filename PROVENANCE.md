@@ -65,6 +65,8 @@ earlier rows did not record at all.
 | `prompts/2026-08-11-phi-regret-bridge/**`, and the item-29/30 reconciliation in `PRIORITIES.md`, `RESEARCH_STATE.md`, and `projects/leverage/README.md` | GPT-5 Codex (OpenAI) | `ci-only` | 2026-08-11 | same. `DECISIONS.md` is unchanged because no new maintainer ruling is required |
 | `projects/leverage/rounds/2026-08-11-phi-regret-learner/**` | GPT-5 Codex (OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phi-regret-learner/`; prompt author GPT-5.6 Sol (OpenAI). Item 30 is learning-positive and integration-blocked; experiment curves are numerical, not theorem evidence |
 | `prompts/2026-08-11-phi-regret-learner/**`, and the item-30 reconciliation in `PRIORITIES.md`, `RESEARCH_STATE.md`, and `projects/leverage/README.md` | GPT-5 Codex (OpenAI) | `ci-only` | 2026-08-11 | same. `DECISIONS.md` is unchanged because the result identifies interface debt rather than requiring a new maintainer ruling |
+| `projects/leverage/notes/NORMATIVE_LEARNING_INTERFACE*.md`, `projects/leverage/notes/PROVENANCE.md` | GPT-5 Codex (OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-normative-learning-interface/`; prompt author GPT-5.6 Sol (OpenAI). Organizational routing only; no scientific result or claim-status change |
+| `prompts/2026-08-11-normative-learning-interface/**`, and the learning-track reconciliation in `PRIORITIES.md`, `RESEARCH_STATE.md`, and `projects/leverage/README.md` | GPT-5 Codex (OpenAI) | `ci-only` | 2026-08-11 | same. Items 32 and 33 were filed within the maintainer-dispatched scope; `DECISIONS.md`, deference, and the authoritative leverage consolidation are unchanged |
 | `prompts/2026-08-11-workspace-integration/**`, and its current-state reconciliation in `RESEARCH_STATE.md`, `PRIORITIES.md`, `DECISIONS.md`, `PROVENANCE.md`, and `projects/leverage/README.md` | GPT-5 Codex (OpenAI) | `ci-only` | 2026-08-11 | integration of current `main`'s Stage V state with PR #17's leverage delta; prompt author GPT-5.6 Sol (OpenAI). No scientific result originates in this row |
 | `PRIORITIES.md` items 29–31 and friction entry F4 | Claude Opus 5 | `ci-only` | 2026-08-11 | same — filed by the round within its dispatched scope, per *Demand-gating*. No existing item renumbered or removed |
 | `tests/path_gate.py` — `projects/leverage/deck-2026-08-10/**` added, two self-test cases | Claude Opus 5 | `ci-only` | 2026-08-11 | same — a trust-chain edit the dispatch did not scope, made so that the author's own deck is not contributor-editable, and flagged in `DECISIONS.md`'s *Awaiting the author* for confirmation. It only removes contributor write access |
@@ -106,6 +108,7 @@ of thing this file exists to make visible.
 | `2026-08-11-phi-regret-bridge` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
 | `2026-08-11-phi-regret-learner` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
 | `2026-08-12-cartesian-frames` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | dispatched 2026-08-11, executed 2026-08-12 |
+| `2026-08-11-normative-learning-interface` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/leverage/consolidation-aug9/` — have
