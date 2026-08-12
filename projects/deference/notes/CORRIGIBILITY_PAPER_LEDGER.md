@@ -43,13 +43,19 @@ reserved.
 
 ## Evidence caveat for every inherited row
 
-The rows below are attested by the inherited development's **own statement-level
-audit**, `../note-dump-2026-06-27/lean/AUDIT.md`, which classified each theorem by
-proof kind and hypothesis provenance. That audit is read as evidence; its Lean was
-**not** rebuilt in this round, and the inherited tree carries its own toolchain and
-lakefile rather than this repository's. A row saying `inherited-established` means
-*the audit attests it*, not *this repository has rechecked it*. Confirming those
-rows against the source is filed as `PRIORITIES.md` item 14.
+The rows below are attested by the source development's **own statement-level
+audit**, `../note-dump-2026-08-11/lean-deference/AUDIT.md`, which classified each
+theorem by proof kind and hypothesis provenance. That audit is read as evidence; its
+Lean was **not** rebuilt in this repository, and the source tree carries its own
+toolchain and lakefile. A row saying `inherited-established` means *the audit
+attests it*, not *this repository has rechecked it*. Confirming those rows against
+the source is filed as `PRIORITIES.md` item 14.
+
+**The audit reaches five of the source tree's nine modules.** It was written
+against the five that the line's recorded starting point contained, and the four
+added since carry no statement-level audit of the same kind — their own result
+pages' status blocks are what stands in its place. No row below depends on one of
+the four.
 
 ## Movement I — faithful acceleration (`H → A`)
 
@@ -59,7 +65,7 @@ rows against the source is filed as `PRIORITIES.md` item 14.
 | `value_iff_totalTrust_asymptotic` | `inherited-established` | proved, both arrows | linearity; the audit records "neither hypothesis is the conclusion" |
 | `decomposition` | `inherited-established` | proved outright | pure linearity, no frame hypothesis |
 | `softmax_lower_bound` | `inherited-established` | proved outright | genuine `exp` analysis; was a hypothesis, became a theorem |
-| tower ⟹ Value, asymptotic and finite | `inherited-established` **conditionally** | composition | genuinely chains named Logical Induction facts; the facts are named, not derived |
+| tower ⟹ Value, asymptotic and finite | `inherited-established` **conditionally, and the condition is sharper than it looks** | composition | genuinely chains named Logical Induction facts; the facts are named, not derived — and the arrow's hard-selector route is now **refuted** at full menu-quantifier strength. See below |
 | `soft_total_trust_doublysoft` | `inherited-established` **conditionally** | composition | support hypotheses discharged from the construction; calibration and criterion still named |
 | "the criterion *forces* the tower" | **`open`** | — | see below |
 
@@ -69,6 +75,38 @@ antecedents.** The algebra composes. The forcing does not follow from anything i
 the corpus, because the market and the traders are unmodelled, so every appeal to
 "the no-Dutch-book criterion forbids the exploit" is either a named hypothesis or an
 arithmetic stub standing in for the arbitrage argument.
+
+**The tower ⟹ Value row, at its exact strength.** The source line's own adjudication
+refutes the **hard-selector** route at full menu-quantifier strength rather than
+leaving it unproved: on a selection-punishing menu — every option worth nothing
+exactly when it is the one chosen — the tower holds while Value fails, so no
+hypothesis quantified over all bet sequences delivers Value quantified over all
+menus, and a scope condition on Value's own menu quantifier is *necessary* rather
+than stylistic. The step that fails there is **hard** self-endorsement: the expert's
+provable assignment of the max value to its own argmax selection. **No Lean is
+wrong** — that step enters the refuted route as an explicit hypothesis. What changes
+is the reading of this row: the arrow was carried as available with its facts merely
+underived, and at that strength it is not available.
+
+A **soft** route is a different construction with a different endorsement step, and
+the source line reports it as punishment-robust — proved modulo a
+feature-introspection step it files as open, with the robustness observation
+flagged same-session, unvetted and not machine-checked. That is a reported result
+at that grade, not a settled one.
+
+Only the asymptotic half of this row is ported, and it is soft:
+`Workspace.Deference.Contrib.InheritedAlgebra.value_asymptotic`, a vanishing-gap
+mixture over the menu rather than the sharp selector. So it is not the refuted
+route — and it is also not identical on its face to the source line's hedged
+construction, which uses a fixed gap where the port lets the gap vanish. **Nothing
+establishes that the port's hypotheses fail on the punishing menu, and nothing
+establishes that they hold.** Deciding it is `PRIORITIES.md` item 34, which is open
+in both directions. The finite half is inherited only — nothing here ports it — and
+carries the same correction with nothing in this repository to test it against.
+
+Until item 34 returns, the row is `inherited-established` for the composition and
+**open** for whether its hypotheses are jointly satisfiable at the strength the name
+suggests.
 
 The forcing headlines are the sharp case. The audit classifies the cross-process
 forcing suite as **squeezes over hypotheses equivalent to their conclusions** — a

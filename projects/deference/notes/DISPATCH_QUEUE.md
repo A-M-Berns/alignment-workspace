@@ -47,10 +47,12 @@ off, and these follow the controlling questions it uncovered.
 | item | task | blocks on |
 |---|---|---|
 | 23 | Lean promotion of the finite results that need no decision | nothing — startable now |
+| 34 | does the selection-punishing menu bite the ported tower ⟹ Value chain | nothing — startable now, and the smallest item on the line |
 | 21 | signed versus magnitude control of grade error | nothing mathematically; recommended first of the two research items |
 | 22 | the weakest protected-authority interface | nothing; specification-only, adversarial |
 
-Item 23 is the only work in the queue with no decision in front of it.
+Items 23 and 34 are the work in the queue with no decision in front of it. Item 34
+is the one whose answer changes a ledger row either way, and it is an afternoon.
 
 Deliberately **not** filed: a round dispatched at "derive the grade-to-quantity
 relation from the agent's own dynamics" as stated. The relation mentions the
@@ -94,6 +96,14 @@ the present bounded process lacks the later result, and it has no decision,
 authorization or continuation type. No FUD proof round is dispatchable from this
 state. A successor first needs a resource-indexed futurity object and an accepted
 two-index capability/continuation interface.
+
+## Corpus reconciliation — returned 2026-08-12
+
+Round `prompts/2026-08-12-corpus-reconciliation/` adjudicated the line's current
+source corpus against the canonical surfaces. It dispatched no proof work and
+registered nothing. It corrected one ledger row, repointed the item contexts that
+named a superseded document, filed item 34, and left every other priority as it
+stood. Deliverables under `../rounds/2026-08-12-corpus-reconciliation/`.
 
 ## Discipline
 

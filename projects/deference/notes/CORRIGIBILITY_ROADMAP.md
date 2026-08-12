@@ -121,6 +121,16 @@ discretion occur often enough to be useful?
 movement within it is the normative-learning question, deliberately not pulled into
 this theorem.
 
+Two live senses of the word, and they are not the same object. That one is the
+normative-learning question above. The other, current in the source corpus, is
+**endpoint-preservation**: an advisor's influence is legitimate when it changes the
+rate at which the principal's own deliberation converges and not the limit it
+converges to, measured as the gap between the principal's advised verdict and its
+unadvised counterfactual verdict on a shared past. That is a claim about belief,
+not about authority, and this arc's jurisdiction/autonomy split already separates
+the two kinds of statement. It is not an exit condition for this theorem and is not
+adopted as one; where it bears on the foreclosure question is `PRIORITIES.md` Q3.
+
 ## The layered decomposition
 
 The arc says what the paper argues; this says what depends on what. A layer cannot

@@ -117,6 +117,33 @@ cannot say anything holds the transferred coordinate at all. Whether a candidate
 is lost is worth graduating on is in `DECISIONS.md`'s queue. Documented in
 `projects/deference/notes/CARTESIAN_FRAMES_DEFERENCE_BRIDGE.md`.
 
+*A second candidate, failing on the complementary axis.* The source corpus
+represents the principal's unadvised counterfactual as a **family of sealed
+deliberations indexed by the day the advisor's channel is cut**, and measures
+influence as the gap at a fixed horizon between the advised run and the sealed one
+on a shared past. Two things follow. The time coordinate is real rather than
+stipulated — the index *is* when the cut happened, which is what the frames could
+not supply — and the construction carries an irreversibility of the right shape:
+influence admitted before the cut sits inside the baseline and no later measurement
+sees it, so displacement off the settling questions does not come back. What it
+does not carry is any authorization relation at all. It measures where the
+principal's deliberation *lands*, and the failure mode this entry needs ruled out is
+the principal's later ability to *reach* somewhere else — which this arc's
+jurisdiction/autonomy split already establishes are different kinds of statement.
+Source: `projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md`
+§§2.1, 7.1; adjudicated at
+`projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md` §3.
+
+So the entry now has two candidates whose defects are complementary — structure
+without time, time without authority — and as each is currently formulated neither
+contains the structure the other supplies. **No combined object has been built, and
+nothing establishes that none exists**: a time-indexed family of frames, or a
+sealed-deliberation model enriched with an authorization or capability relation, is
+the kind of thing this entry may turn out to need, and whether either enrichment
+works is open. What the pair does establish is what a good answer must carry —
+**temporal depth and explicit authorization or capability structure, at once**. That
+is more than either candidate said alone, and it is still not the object.
+
 ### Q4 — What certifies resource-separated computational futurity?
 
 FAF can name and quote a later market computation, but the current type has no
@@ -413,9 +440,16 @@ accepted sufficient statement yet supplies an executable completion criterion.
 
 ## Deference line
 
-Context for all three: `projects/deference/note-dump-2026-06-27/`, in particular
-`lean/AUDIT.md`, the development's own statement-level audit. Its §3 is titled
-"The concerning gaps"; the three below are its own findings, quoted by section.
+Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular
+`lean-deference/AUDIT.md`, the development's own statement-level audit. Its §3 is
+titled "The concerning gaps"; the three below are its own findings, quoted by
+section.
+
+**What that audit covers.** Five of the source tree's nine Lean modules — the five
+the line's recorded starting point contained. `CenteredSqueeze`, `Staleness`,
+`StalenessDensity` and `StreamlinedSS` postdate it and carry no audit of the same
+kind. None of the three items below depends on one of the four, and a round
+answering one should not assume the audit speaks for them.
 
 ### 7. Model the market and the traders — **[substantial]** — *partially closed Stage V*
 
@@ -427,7 +461,7 @@ nowhere in it, because the objects that inference is about are absent.
 *Deliverable shape:* `lean-proved` in `Workspace.Deference.Contrib`, with an inhabitation witness for the hypothesis package.
 *Acceptance check:* The Lean gate is green, the axiom audit is clean, and the nonvacuity witness typechecks.
 
-*Context:* `projects/deference/note-dump-2026-06-27/lean/AUDIT.md` §3.1.
+*Context:* `projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md` §3.1.
 *A solution ships:* a minimal market and trader model in
 `Workspace.Deference.*`, enough that the criterion's application is a proof
 rather than a hypothesis, with the axiom audit clean.
@@ -451,7 +485,7 @@ open".
 *Deliverable shape:* `lean-proved`, or `witness-checked` for a negative answer.
 *Acceptance check:* The Lean gate is green; or the `witness` checker accepts the separating instance.
 
-*Context:* `projects/deference/note-dump-2026-06-27/lean/AUDIT.md` §3.2.
+*Context:* `projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md` §3.2.
 *A solution ships:* a characterization of the class, or a witness that it is not
 characterizable in the intended terms.
 
@@ -464,7 +498,7 @@ contains its conclusion; it is not false, it is empty.
 *Deliverable shape:* `lean-proved` restatements whose hypotheses are strictly weaker than their conclusions, each with an inhabitation witness.
 *Acceptance check:* The Lean gate is green and each restated theorem ships a typechecking witness term.
 
-*Context:* `projects/deference/note-dump-2026-06-27/lean/AUDIT.md` §3.3, and §5's
+*Context:* `projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md` §3.3, and §5's
 severity ranking.
 *A solution ships:* restated theorems whose hypotheses are strictly weaker than
 their conclusions, with the gap displayed — or a demonstration that the squeeze
@@ -513,9 +547,13 @@ success.
 *Acceptance check:* the `lean` gate builds and audits clean; each registered entry
 names a declaration that exists and ships a typechecking witness term.
 
-*Context:* `projects/deference/note-dump-2026-06-27/lean/` and its `AUDIT.md`;
-`projects/deference/note-dump-2026-06-27/notes/faithful-acceleration.md`;
-`lean/Workspace/Deference/`.
+*Context:* `projects/deference/note-dump-2026-08-11/lean-deference/` and its
+`AUDIT.md`; `lean/Workspace/Deference/`. For the statement of the positive result,
+`projects/deference/note-dump-2026-08-11/wiki/faithful-acceleration-result.md` and
+`wiki/delay-and-visibility.md` — **not**
+`note-dump-2026-06-27/notes/faithful-acceleration.md`, whose §5 strength ladder the
+source line's own adjudication found wrong and two of whose lines it found false.
+That file is retained as history and is superseded for the statement.
 *A solution ships:* the strongest inherited theorem stated exactly, its hypotheses
 classified as derived / cited / modelling substitution, the mapping onto the pinned
 dependency's endpoints, and the exact residual market-trader gap.
@@ -633,7 +671,7 @@ a stated evidence basis; no row is classified `compatible` on the strength of an
 assumption introduced to close it.
 
 *Context:* `projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, the arc and the
-standing commitments; `projects/deference/note-dump-2026-06-27/lean/AUDIT.md`.
+standing commitments; `projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md`.
 *A solution ships:* the matrix, and for every `conditionally compatible` row the
 exact condition.
 *Not permitted:* turning `unresolved` into `compatible by assumption`, or inventing
@@ -917,6 +955,63 @@ an explicit statement of which confounds remain scoped out rather than excluded.
 this is construction against a known target rather than open search — but the sign question
 it exists to ask has no expected answer, and a negative is as likely as a positive.
 
+### 34. Does the selection-punishing menu bite the ported tower ⟹ Value chain? — **[entry]**
+
+The source line refutes the **hard-selector** tower ⟹ Value route on a
+selection-punishing menu — every option worth nothing exactly when it is the one
+chosen — where the tower holds and Value fails, so a scope condition on Value's own
+menu quantifier is necessary. It separately reports a **δ-hedged soft** route as
+punishment-robust, at a stated cost: proved modulo a feature-introspection step it
+files as open, with the robustness observation flagged same-session, unvetted and
+not machine-checked.
+
+`Workspace.Deference.Contrib.InheritedAlgebra.value_asymptotic`
+(`lean/Workspace/Deference/Contrib/InheritedAlgebra.lean`) is also a soft
+construction — a vanishing-gap mixture over the menu, with `hSoft` as the
+softmax-gap step of its chain — and is therefore **not** the refuted hard-selector
+route. But it is not identical on its face to the source's hedged construction
+either: that one is a ramp over the options within `2δ` of the top quote at a fixed
+`δ`, and the port carries `δ → 0`. Resemblance is not identification, and neither
+the survival nor the failure of the port's hypotheses on the punishment family has
+been established.
+
+Instantiate the port's **full** hypothesis package on that family — at a fixed
+positive gap and at a gap shrinking with the day index — and determine whether the
+package is jointly satisfiable there and what conclusion it actually supports. Two
+outcomes, both successes:
+
+**(A) The port survives.** Ship an inhabitation witness, a precise statement of why
+the port lies on the surviving soft side, and any additional hypothesis the
+instantiation turns out to require.
+**(B) The port fails or goes vacuous.** Ship the counterexample as a necessity
+witness, name the exact hypothesis or combination that fails, and give the weakest
+defensible restriction restoring a nonvacuous statement.
+
+**Do not prejudge which hypothesis fails, and do not define success by importing
+the source line's own scope condition as a definition.** Whether that condition is
+the right restriction for this port is part of what the item asks.
+
+*Deliverable shape:* `witness-checked` or `enumeration-verified` over the declared
+finite menu, or `lean-proved` for the inhabitation term if (A); either way a named
+verdict per hypothesis.
+*Acceptance check:* `python3 -m checkers.run` accepts the registered entry; or the
+`lean` gate is green and the inhabitation term typechecks.
+
+*Context:* `lean/Workspace/Deference/Contrib/InheritedAlgebra.lean`, the
+`value_asymptotic` block and its ported source
+`projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`;
+`projects/deference/note-dump-2026-08-11/wiki/total-trust-implies-value.md`
+§"Necessity of the scope condition" for the menu, its arithmetic, and the
+hard-selector failure; `projects/deference/note-dump-2026-08-11/wiki/soft-self-endorsement.md`
+for the hedged construction, its robustness claim and the grade that claim carries;
+`projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md`, Movement I.
+*A solution ships:* the instantiation and the per-hypothesis verdict, in whichever
+of the two outcomes it reaches.
+*Why it is [entry]:* no new mathematics. The theorem is ported and building, the
+menu is finite and exact, and the task is instantiating one against the other.
+**Either outcome is worth having** — a bounded theorem with a witness and an
+unbounded one with a witness are both better than the present reading.
+
 ---
 
 ## Workspace friction
@@ -1013,6 +1108,30 @@ The generalisable question survives the case. Is a second, explicitly *explorato
 one whose breakage fails a non-required job rather than the required `lean` gate — worth
 the trust-chain complexity, or is mirror-plus-cross-check the expected pattern for upstream
 work in flight? **The report is the obligation; the decision is not this round's.**
+
+### F6 — A pointer into a superseded source tree still resolves, and nothing says it is stale
+
+When a consolidated tree is superseded by a later one, every live pointer into the
+older tree keeps resolving. Nothing distinguishes a pointer that is still correct
+from one that now names a document the newer tree corrects, and no gate can see the
+difference, because both are files that exist. F1's check — every documented command
+names a file that exists — passes on both.
+
+The corpus-reconciliation round paid this by hand across seven pointers. Four turned
+out unchanged: the statement-level audit the deference items quote is byte-identical
+in both trees, which took a `diff` to learn and could not be assumed. One had
+materially changed: item 14's context named a document whose strength ladder the
+source line's own adjudication found wrong. The cost is that every superseding
+intake silently converts an unknown subset of live pointers into stale ones, and the
+only way to find out which is to re-read both trees.
+
+What would catch it is cheap and fits the existing discipline: a superseded tree
+declares its successor once, in its own `ORIGIN.md` — the August receipt already
+does — and a check flags every pointer from a living document into a tree that has
+declared one, so an intake produces a list to adjudicate rather than a silent
+inheritance. It does not decide anything; it makes the adjudication visible. The
+null-input case is a superseded tree with no inbound pointers, which must fail
+rather than report clean if the tree is cited anywhere.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 
