@@ -62,15 +62,21 @@ same realisation map are the same object in a signature whose only outputs are
 such maps. Neither round was going to work, and the second failure is what
 explains the first.
 
-## The starting point, and the standing gap
+## The source material, and the standing gap
 
-The line's recorded starting point is the note dump of 2026-06-27, carried beside
-this file, with a statement-level audit and a Lean development covering deference,
-a self-referential target, frozen deliberation, faithful acceleration, and a tower
-construction. `dose-response-note-dump-2026-07-02/` records dose-response
-structure in the same setting, and has not been assessed. Each carries its own
+The line's current source corpus is `note-dump-2026-08-11/`, carried beside this
+file: a wiki of record with per-result status labels, a nine-module Lean
+development, two research labs and thirteen curated transcripts. Its statement-level
+audit, `lean-deference/AUDIT.md`, covers the five modules of the line's recorded
+starting point — `note-dump-2026-06-27/`, also carried here — and not the four
+added since. `dose-response-note-dump-2026-07-02/` records dose-response structure
+in the same setting, and has not been assessed. Each tree carries its own
 `ORIGIN.md`. Cited papers are pinned by checksum and bibliographic entry in
 `references-citations-2026-08-11/` rather than redistributed.
+
+**None of it is registered here**, and its own receipt says so. Almost everything
+in it postdating June is unvetted by its authors, and its most recent material is
+same-day. Read it as evidence, at the status each page declares.
 
 **That development takes the Logical Induction theorems as named hypotheses and
 proves what follows from them.** Its own audit names the complement as its largest

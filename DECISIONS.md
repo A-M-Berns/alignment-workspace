@@ -85,7 +85,13 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   proper additive subagency for restriction, `External^{/}` with multiplicative
   subagency for transfer, separated by `image`. It is a candidate for **what is
   lost**, not for either hole Q3 names: no operation reassigns anything at a later
-  index, and the interface is still one index deep. Two linked rulings: whether
+  index, and the interface is still one index deep. **A second candidate has since
+  arrived from the line's source corpus** — a family of sealed deliberations indexed
+  by the day the advisor's channel is cut, which supplies the time coordinate the
+  frames could not and supplies no authorization relation at all, so the two
+  candidates fail on complementary axes and neither composes with the other. That
+  strengthens the case for *not* graduating and sharpens what graduation would
+  require; the ruling is still the maintainers'. Two linked rulings: whether
   that is enough for Q3 to graduate, and whether to file the round's proposed next
   target, restating the Stage-V factorization theorem over a signature carrying a
   frame and the choice actually taken in place of a `jurisdiction` field — which is
@@ -95,7 +101,61 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   report. *Waiting* blocks the successor round and leaves item 28's answer resting
   on a worked case whose hidden payload no formula reads.
 
+- **Rule on whether the source line's current frontier belongs in this line's
+  ledger.** `CORRIGIBILITY_PAPER_LEDGER.md` records what *this repository* holds,
+  and the corpus-reconciliation round declined to describe the source line's
+  corrected faithful-acceleration results there on that ground — they are recorded
+  only in the round's own reconciliation. The counter-case is that a reader of the
+  ledger's Movement I now has no way to learn that the source line's own statement
+  of that movement has moved on. *Doing it* is choosing between a one-line pointer
+  from Movement I to the corrected statement, a described-but-unadopted subsection,
+  and leaving it as it is. *Waiting* costs a reader of the ledger the knowledge that
+  a fuller account exists one directory away; it blocks nothing.
+
+- **Rule on whether endpoint-preservation is a target this program wants.** The
+  source corpus proposes that an advisor's influence is legitimate when it changes
+  how fast the principal's deliberation converges and not where it converges to.
+  It is conjecture-grade by its author's own declaration, it is a claim about belief
+  rather than authority, and this line's results say why certification can reach it
+  even though certification cannot reach jurisdiction. So it is a coherent adjacent
+  target rather than a component of the current one. *Doing it* is reading
+  `projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md` §§2, 6–7
+  and §§2–4 of
+  `projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`,
+  then saying whether this program pursues it, treats it as the source line's
+  business, or holds it until the foreclosure object exists. **This is *what is
+  worth proving*, which no round may decide.** *Waiting* costs nothing today and
+  leaves Q3 carrying a candidate the program has not said it wants.
+
 ## Settled
+
+### 2026-08-12 — the deference line's current source material is the 2026-08-11 tree
+
+Taken by the corpus-reconciliation round under its dispatched write scope. A *which
+document governs* ruling and nothing more: it adopts no content, registers nothing,
+and moves no row to `workspace-established`.
+
+`projects/deference/note-dump-2026-08-11/` is the line's **current source
+material**. `projects/deference/note-dump-2026-06-27/` remains the line's **recorded
+starting point**, is unmodified, and stays where the ported Lean's provenance
+points, because the port was made from it and provenance records what happened.
+Both trees stay specification layer.
+
+The August tree's own intake receipt reserved this: it recorded that the deference
+README and items 7–9 cite the June tree and that "whether and how they move to this
+one is the maintainers' call, not this receipt's." A maintainer-dispatched round
+whose dispatch asks for exactly that audit is that call. Pointers into the June tree
+that name a document the August tree corrects have been repointed; pointers whose
+target is unchanged have been repointed for currency, and the round's report records
+which was which.
+
+**What this does not settle.** Whether the source line's corrected
+faithful-acceleration frontier should be described in this line's ledger at all is
+in the queue above, unresolved. So is whether endpoint-preservation is a target this
+program wants.
+
+Source: `prompts/2026-08-12-corpus-reconciliation/REPORT.md`;
+`projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md` §0, §6.
 
 ### 2026-08-11 — the governance report is removed, not relocated
 

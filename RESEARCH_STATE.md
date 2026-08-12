@@ -63,6 +63,23 @@ option value an assumption. Item 25 — whether the near-indifference leakage ca
 be bounded — remains the controlling *competence* question and decides whether
 the surviving competence candidate has any finite consequence.
 
+**Where this line sits against its source corpus.** The line's source material has
+its own active research programme, and the two have now been compared in full. Three
+findings survive the comparison. The source line refutes an arrow this ledger
+carried as merely underived — the tower does not buy Value at full menu-quantifier
+strength — which corrects a status here without touching any Lean. The source line
+independently proved this line's own type-level diagnosis about a different latent
+variable: it cannot recover an advisor's influence from the observable record, as
+this line cannot recover an authorisation from the realisation map, and both drew
+the same moral about what has to enter the type. And the two split on the discharge
+— the source line certifies, staking the advisor on its own counterfactual, where
+this line protects. The results here say why certification cannot reach jurisdiction
+and do **not** say it cannot reach influence, which is the sharpest available
+evidence that the two are separate objects rather than one word. The adjudication,
+with what was adopted and what was not, is
+`projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`.
+Nothing from the corpus is registered here or promoted to `workspace-established`.
+
 **Standing bar on the comparator.** No round may attempt the fully-updated
 comparator again without first putting the authorisation relation into the type.
 Adding parameters to the valuation is ruled out by two rounds' evidence, and a
