@@ -46,8 +46,15 @@ then exhibits the horizon-growing action union and callback-capture obstruction.
 `rounds/2026-08-11-phi-regret-bridge/` repairs that interface for the frozen
 environment. Eight semantic labels decode bijectively to canonical local
 responses, all nine declarative lawful programs factor through them, and exact
-charge and regret are preserved. Item 29 is closed-positive; item 30 is ready but
-has not been run.
+charge and regret are preserved. Item 29 is closed-positive.
+
+`rounds/2026-08-11-phi-regret-learner/` executes item 30. It implements the
+Theorem 18 row-conditioned learner, exercises all nine programs at all declared
+horizons, and connects its expected regret guarantee to recurrent-failure
+retirement. Verdict: **Learning-positive, integration-blocked**. Canonical
+sampled responses preserve the existing record and response service, but the
+service schema does not price the learner's weight updates/stationary solve or
+record its policy state.
 
 `deck-2026-08-10/` is the author-written presentation snapshot for the line. Its
 own origin record carries its date, digest, and per-frame attribution marks.
