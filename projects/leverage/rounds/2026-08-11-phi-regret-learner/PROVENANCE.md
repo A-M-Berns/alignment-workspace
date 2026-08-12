@@ -1,7 +1,6 @@
 # Provenance
 
 - Date: 2026-08-11
-- Maintainer: A. M. Berns
 - Prompt author/model: GPT-5.6 Sol (OpenAI)
 - Executor: GPT-5 Codex (OpenAI)
 - Base: merged item-29 bridge, PR #20, commit `5f7895b816e6150fbe8c774509ef6cef72d78e70`
