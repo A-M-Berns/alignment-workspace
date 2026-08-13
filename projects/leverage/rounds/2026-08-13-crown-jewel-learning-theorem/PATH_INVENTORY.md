@@ -1,16 +1,28 @@
 # Path inventory
 
 What remains before this is the flagship normative-learning theorem.
-`BLOCKING` is reserved for what is needed to **state or justify** the theorem.
+
+Categories, sharpened after the refinement pass. The distinction that matters is
+between something the **abstract theorem** cannot be stated without, and something
+a **substantive instantiation** needs. The first pass conflated them and called
+three things blocking; on the corrected reading only one is.
+
+```
+BLOCKING THE ABSTRACT THEOREM        cannot state or prove it
+BLOCKING A SUBSTANTIVE INSTANTIATION theorem stands; application is empty without it
+PAPER-CRITICAL                       needed to write it up honestly
+FORMALIZATION                        kernel-checking
+OPTIONAL STRENGTHENING               strictly stronger, not required
+```
 
 ## Theorem-critical
 
 | item | status |
 |---|---|
 | bounded prospective loss interface | DONE for the fixture; **abstract parameterization OPEN** — the loss is one concrete defect count |
-| exposure / coverage condition | **BLOCKING** — stated as H6, not proved; `COVERAGE_INTERFACE.md` |
-| repair-language adequacy | **BLOCKING** — legitimate as a hypothesis, but a paper needs a generated grammar |
-| compiler soundness | **BLOCKING** — nothing connects a certificate's presence to normative appropriateness |
+| exposure / coverage condition | **BLOCKING A SUBSTANTIVE INSTANTIATION** — a legitimate theorem hypothesis, stated non-circularly against the learning scale. The theorem is provable with it; an application is empty without it |
+| repair-language adequacy | **BLOCKING A SUBSTANTIVE INSTANTIATION** — likewise a legitimate hypothesis (`for every failure class in the target family, some `g` repairs it`). Not a hole in the theorem |
+| compiler soundness | **BLOCKING THE ABSTRACT THEOREM** — the one that really is. Until `certified` means something stronger than "a certificate string exists", H4 quantifies over a set defined by a label, and the word `lawful` carries no weight |
 | source-action surgical compiler | DONE |
 | margin derivation | PARTIAL — derived for one schema, hypothesis for the class |
 | comparator complexity model | OPEN — `log K` is where it enters; unchosen |
@@ -36,14 +48,17 @@ What remains before this is the flagship normative-learning theorem.
 | regret measured against its own bound | OPEN |
 | learner computation cost | OPEN — unpriced, carried from the interface note |
 | learner-state answerability | OPEN — carried |
-| alternative non-fixed-point learner | **REQUIRES NEW IDEA** — the dynamics question |
+| a regenerating fixture that sustains coverage | **OPEN — now the first dynamics requirement.** A finite content set cannot keep a reason recurring with a positive margin |
+| alternative non-fixed-point learner | OPEN, and **downgraded** — with the coherence inference withdrawn there is no longer a reason to think the fixed point blocks the dynamics |
 
 ## Formalization
 
 | item | status |
 |---|---|
-| Lean port of the surgical lower bound | OPEN — short; the existing `recurrentFailure_lowerBound` takes the bound as a hypothesis rather than deriving it |
-| Lean port of the conditional-rate corollary | OPEN — one division on top of the above |
+| Lean port of the surgical lower bound | **DONE** — `SurgicalRepairBound.margin_mul_mass_le_regret`, `mass_le_regret_div_margin` |
+| Lean port of the conditional-rate corollary | **DONE** — `rate_le_bound_div_margin_mul_exposure` |
+| Lean inhabitation and necessity witnesses | **DONE** — `mass_bound_is_nonvacuous`, `margin_positivity_is_necessary` |
+| Lean port of the Blum–Mansour bound itself | NOT INTENDED — it enters as a hypothesis, which is where an external result belongs |
 
 ## Optional strengthening
 
@@ -55,25 +70,25 @@ What remains before this is the flagship normative-learning theorem.
 | coordinated drift | OPEN — a substrate limit, not a learning-theorem limit |
 | corrigibility supplying coverage | OPEN — shape match established, exercise rate missing |
 
-## The three blocking items, and why
+## What actually blocks what
 
-**Coverage.** Without it the theorem is conditional on being asked and is
-satisfiable by never being asked. This is the one to do first: it is where the
-merged corrigibility work plausibly composes, and the composition needs one extra
-assumption (an exercise rate) rather than a new formalism.
+**One item blocks the abstract theorem: compiler soundness.** H4 quantifies over a
+*certified* repair family. If `certified` means only that a string is present, the
+theorem is about an arbitrary finite family of surgical maps and the word
+`normative` is decoration. This is the item to do first, and it is smaller than it
+sounds — `COMPILER_SOUNDNESS.md` gives the signature and separates what relational
+scorekeeping already delivers from what remains an interface.
 
-**Repair-language adequacy.** Regret against a hand-built class is a theorem about
-that class. A paper needs a grammar, a complexity model, a stated adequacy
-hypothesis, and the recurrence check.
+**Two block a substantive instantiation, and are legitimate hypotheses.** Coverage
+and repair-language adequacy. A paper may state both and remain a paper; what it
+may not do is state them silently. Coverage additionally has a plausible external
+supplier — the corrigibility arc — which is why it is worth doing second.
 
-**Compiler soundness.** Until a certificate's presence implies something, "lawful"
-names a discipline this round imposed rather than a proved property. This is what
-makes the difference between normative learning and loss reduction with good
-manners.
+**One blocks the dynamics claim only:** a fixture that can sustain coverage. That
+does not touch levels 0–2.
 
 ## Sequencing
 
-Coverage, then compiler soundness, then the grammar — in that order, because the
-grammar's shape depends on what the first two turn out to demand. The Lean port is
-short and independent. The dynamics question is worth separating out entirely: it
-does not block the theorem, only the word.
+Compiler soundness, then coverage, then the grammar. The dynamics question needs a
+regenerating fixture before it can be asked at all, and is worth separating
+entirely: it does not block the theorem, only the word.

@@ -48,15 +48,20 @@ that it is not solving it.
 A second adequacy condition, not previously articulated, from
 `LEARNING_DYNAMICS.md`:
 
-> If every rule in the class points away from a mistake and nothing points back,
-> the targeted responses are transient in the rule-mixture chain and the
-> stationary construction gives them zero mass at every date the repair fires.
+> If every rule active at a selected date points away from the targeted response
+> and nothing points back, that response is transient in the rule-mixture chain
+> and the stationary construction gives it zero mass there.
 
 This does not damage the theorem — the conclusion holds in its strongest form.
 It means a generated grammar cannot be validated by checking coverage alone: a
 class can be adequate in the expressivity sense and still make its own conclusions
-vacuous in the dynamics sense. A naive "collect every repair" construction has
-exactly this shape.
+vacuous in the dynamics sense.
+
+**The condition is about the graph, not about coherence.** An earlier reading had
+it that any *normatively coherent* class must have this shape. That is false: a
+return route can be licensed by a different, independently defensible
+certificate active at the same date. So recurrence is achievable without an
+anti-repair, and a grammar has to be checked rather than reasoned about.
 
 ## Conflict is a compiler question, not a theorem question
 
@@ -73,6 +78,22 @@ Interaction the theorem does *not* control: one repair's effect on the actual
 trajectory can remove occasions relevant to another, since the process is
 endogenous. That changes `M_T` for the second repair, which the conditional rate
 already accounts for by dividing by it.
+
+**But modularity of the bounds is not modularity of the dynamics.** Adding an
+otherwise lawful competing repair changes the rule graph, and the graph decides
+which responses the stationary construction can put mass on at all. Adding the
+`defeated_applicability` return edge turns `hold` from transient to recurrent —
+the per-repair inequality for the first repair is untouched, and the learner's
+distribution is not.
+
+```
+individual theorem guarantees are modular
+learner dynamics are not
+```
+
+This matters for a generated grammar: a class cannot be validated repair by
+repair, because whether any of its conclusions are non-vacuous is a property of
+the whole active graph.
 
 ## What a paper-level class would need
 

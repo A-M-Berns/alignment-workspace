@@ -11,43 +11,70 @@ reads.
 | **P4** | lawful with no positive margin | a certified repair with margin `-2`. `bad_mass_bound` raises rather than returning a number, so no learning conclusion is available for it |
 | **P5** | margin derived | the acknowledge schema's side condition is a public predicate; where it holds the observed margin is `1/2`, equal to the certificate's weight. Where it fails, `None` is returned rather than a zero claimed |
 | **P6** | transience characterisation | one-way class: `{hold, disavow}` get zero mass. Add a return edge: only `{disavow}`. A 3-cycle: none. The condition is exactly the absence of a return route, and the identity self-loop does not rescue it |
-| **P7** | genuine-learning control | the coherent class **fails clause (1)** — no initial mass to shed. The cyclic class passes, including the no-information control. See below |
+| **P7** | genuine-learning control | **revised.** A *coherent* competing class passes clause (1) with `p_1 = 1/8`; clause (5) fails because the fixture cannot sustain a positive margin. No-information control exactly flat |
 | **P8** | coverage failure | with the reason never raised, zero selected occasions and zero bad mass; the conditional rate raises rather than reporting a perfect score |
 | **P9** | coverage algebra | `B_T/M_T` falls under dense exposure and is **constant** at the boundary `M_T = Theta(sqrt(T)) = Theta(B_T)`, so the condition is sharp |
 | **P10** | replay optional | replay gap `5, 13, 29, 61` while the local bound holds at every horizon, on the same runs |
 
-## 1. The construction complies rather than learns
+## 1. A claim withdrawn, and what replaces it
 
-The central weakness, and it is structural rather than a fixture accident.
+The first pass asserted that a *normatively coherent* repair class always leaves
+its targets transient, so the construction always complies immediately. **That is
+withdrawn.**
 
-For any repair class whose rules point away from mistakes with no return route
-active at the same date, the targeted response is transient in the rule-mixture
-chain at exactly the dates the repair fires. The stationary distribution gives it
-zero mass. `Q_T(g) = 0` identically, and the crown jewel is satisfied without the
-learner ever making the mistake.
+The inference was: a return route would have to say "there is an exposed burden,
+so having acknowledged, stop acknowledging", which is not a repair. The error is
+that a return route need not be licensed by the *same* reason. The `COMPETING`
+class supplies one from a different certificate — `defeated_applicability`,
+ordinary caution about not compounding an outstanding incoherence — and both
+certificates hold in a single public state. There `hold` is recurrent, and every
+edge stands on its own licence.
 
-A return route active at a selected date would have to say "there is an exposed
-burden, so having acknowledged, stop acknowledging". That is not a repair. So the
-better the repair grammar, the more completely the construction complies
-immediately.
+`INCOHERENT` and `COMPETING` produce the same graph, which is the decisive point:
+**recurrence is no evidence of incoherence**, so the inference cannot be run.
 
-What the round *can* show is that the engine is not merely hard-coded: on a class
-where the target is recurrent, the within-class share moves with feedback, freezes
-exactly when the margin goes to zero, and does not move at all when the loss is
-replaced by an uninformative one. Feedback-responsiveness is real; a coherent
-repair class removes the occasion for it.
+What survives is the graph theorem alone:
 
-There is a second, smaller limitation visible in the same run: with most actions
-absorbing the chain is reducible, its stationary distribution is not unique, and
-the implementation resolves the ambiguity from the initial uniform distribution.
-Mass redistributes within a recurrent class and never between classes. That is a
-property of this implementation, not of Theorem 18, and it caps how much movement
-any fixture of this shape could display.
+```
+b_g transient in the active repair graph  ->  p_t(b_g) = 0
+```
+
+Whether realistic grammars yield transient or recurrent targets is now an open
+structural question about grammars.
+
+The second, smaller limitation stands: with most actions absorbing the chain is
+reducible, its stationary distribution is not unique, and the implementation
+resolves the ambiguity from the initial uniform distribution. Mass redistributes
+within a recurrent class and not between classes. That is this implementation's
+solver, not Theorem 18.
+
+## 1b. And the dynamics question is still undecided
+
+With a coherent recurrent class the learner *does* start with mass on the target —
+clause (1) of the pre-registered criterion, which the first pass said was
+unreachable. But clause (5) fails: the mass rises rather than falls, because the
+fixture's finite content set exhausts the supply of exposable contents and the
+margin is positive on only 4–5 of 48 dates.
+
+So the reason stops recurring *with a positive gap*, which is coverage failing
+inside the fixture. **The dynamics question cannot be decided here**, and the
+requirement is a regenerating fixture rather than a different learner. The
+no-information control remains exactly flat, so what movement occurs is
+feedback-driven.
+
+## 1c. Modularity of bounds is not modularity of dynamics
+
+Adding an otherwise lawful competing repair leaves every per-repair inequality
+untouched — each reads only its own map — and changes which responses the learner
+can put mass on at all. A grammar therefore cannot be validated repair by repair.
 
 ## 2. The two load-bearing hypotheses are not proved
 
-`H4` (a repair class) and `H6` (coverage). Everything mathematical is downstream of
-them and neither is a regret question.
+`H4` (a *certified* repair class) and `H6` (coverage). Neither is a regret
+question. After the refinement they are no longer symmetric: H6 is a legitimate
+hypothesis with a plausible external supplier, while H4's word `certified` is the
+one thing that must be given content before the abstract theorem means what it
+says — `COMPILER_SOUNDNESS.md`.
 
 Coverage is the more serious. The theorem is conditional on being asked, and a
 reasoner that arranges to be asked nothing satisfies it vacuously — P8 displays

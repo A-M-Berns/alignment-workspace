@@ -14,9 +14,10 @@ An **answerability process** is a tuple `(S, A, G, T)`:
 - `G : S -> [0, L]^A` a bounded prospective loss generator;
 - `T : S x A x E -> S` a transition, so the process may be endogenous.
 
-At date `t` the state `S_t` is fixed before the learner acts, `ell_t = G(S_t)` is
-available in full, the learner plays a distribution `p^t`, an action is drawn, and
-`S_{t+1} = T(S_t, a_t, e_t)`.
+At date `t` the state `S_t` is fixed before the learner acts, the learner plays a
+distribution `p^t`, an action is drawn, and `S_{t+1} = T(S_t, a_t, e_t)`. When
+`ell_t` becomes available is a separate question, settled under *Information
+order* below.
 
 A **certified surgical repair** `g` is `(E_g, b_g, r_g, c_g)`:
 
@@ -28,16 +29,35 @@ A **certified surgical repair** `g` is `(E_g, b_g, r_g, c_g)`:
 
 inducing `F_g^t(b_g) = r_g(S_t)` where `E_g(S_t)`, and `F_g^t(a) = a` otherwise.
 
-**Counters.**
+**Register.** Let `H_t` be the strict history before date `t`. Then `S_t`, `p^t`
+and `E_g(S_t)` are `H_t`-measurable, and the action `a_t ~ p^t` is drawn after
+`p^t` is committed. Under genuine sampling the state depends on `a_t`, so **all
+the counters below are random variables**:
 
 ```
-M_T(g) = |{ t <= T : E_g(S_t) }|              occasions the reason was due
-Q_T(g) = sum_{t <= T : E_g(S_t)} p^t(b_g)     mass on the bad response there
+M_T(g) = sum_{t <= T} 1[E_g(S_t)]                     occasions the reason was due
+Q_T(g) = sum_{t <= T} 1[E_g(S_t)] * p^t(b_g)          mixed mass on the bad response
+N_T(g) = sum_{t <= T} 1[E_g(S_t)] * 1[a_t = b_g]      drawn bad responses
 R_T(g) = sum_t <p^t, ell_t> - sum_t <F_g^t(p^t), ell_t>
 ```
 
 `R_T(g)` scores the transformed distribution against **the same date's loss
 vector**. No comparator trajectory appears.
+
+**Information order.** Determination and observability are different, and the
+theorem needs both stated:
+
+```
+history H_t  ->  state S_t  ->  learner commits p^t
+                                      |
+                     ell_t = G(S_t) enters the update, not the choice
+                                      |
+                               draw a_t ~ p^t  ->  S_{t+1}
+```
+
+`ell_t` is *determined* when the date opens — that is what "prospective" means —
+but the learner does not read it when choosing `p^t`. It enters at the weight
+update. Checked directly against the implementation.
 
 ---
 
@@ -58,7 +78,10 @@ fixed before play.
 `ell_t(b_g) - ell_t(r_g(S_t)) >= delta_g` at selected dates. Derivable rather than
 assumed for a subclass — see below.
 
-**H6 Coverage.** `B_T(g) = o(M_T(g))`, where `B_T(g)` is the regret guarantee.
+**H6 Coverage.** `M_T(g)` outgrows the learning scale
+`L sqrt(T |A| log (M K_eff))`. Stated against the scale rather than against
+`B_T(g)`, so the hypothesis does not mention the learner's own output — which
+makes the absence of circularity checkable by inspection.
 
 **H4 and H6 are interfaces, not results.** They are where repair-language
 adequacy and inquiry enter, and the theorem states them rather than hiding them.
@@ -71,12 +94,19 @@ Blum–Mansour Theorem 18 over `A` with the `K` maps `F_g^t` and one time select
 Regret is a **conclusion** of the construction, not an assumption:
 
 ```
-R_T(g) <= B_T(g) = O( L * sqrt( T * |A| * log K ) )       for every g in Gcal
+R_T(g) <= B_T(g) = O( L * sqrt( T * |A| * log (M K_eff) ) )     for every g in Gcal
 ```
 
-simultaneously, from one learner. Nothing in its proof requires the loss sequence
-to be oblivious, frozen, or exogenous; the proof is a weight-potential argument on
-the realized `(p^t, ell_t)` pairs.
+with the counts stated exactly rather than asymptotically: `|A|` is the response
+count; `M = 1` time selector, since the selectors are folded into the rules;
+and **`K_eff = K + 1`** — the `K` repairs *plus the identity*, which the source's
+own internal-regret family includes and which the implementation passes as its
+first map. Writing `log K` would undercount by one rule.
+
+The bound holds for every `g` simultaneously, from one learner. Nothing in its
+proof requires the loss sequence to be oblivious, frozen, or exogenous; the proof
+is a weight-potential argument on the realized `(p^t, ell_t)` pairs, so it holds
+on every realized history.
 
 ---
 
@@ -103,15 +133,24 @@ Q_T(g) / M_T(g)  <=  B_T(g) / ( delta_g * M_T(g) )
 
 ## Asymptotic corollary
 
-Whenever `B_T(g) = o(M_T(g))`,
+Stated against the learning scale rather than against the learner's own output, so
+the hypothesis does not mention the conclusion's machinery:
+
+```
+M_T(g) / ( L * sqrt( T * |A| * log (M K_eff) ) )  ->  infinity
+```
+
+Whenever that holds — equivalently `B_T(g) = o(M_T(g))` —
 
 ```
 Q_T(g) / M_T(g)  ->  0.
 ```
 
-With `B_T = O(sqrt(T |A| log K))` this is `M_T(g) >> sqrt(T)` — **weaker than
+With the class and response set fixed this is `M_T(g) >> sqrt(T)` — **weaker than
 positive density.** A reason exposed on a vanishing fraction of dates still gets
 the conclusion, provided it is exposed often enough to outgrow the learning rate.
+The `sqrt(T)` form is the simplified reading; the exact condition is the displayed
+ratio, which carries `|A|` and `K_eff`.
 
 ---
 
@@ -165,8 +204,15 @@ sufficiently recurrent occasions.
   separate claim, and remains blocked.
 - Not protection against reasons never being raised. That is H6, and it is an
   assumption.
-- Not a pathwise statement. `Q_T` is mixed mass; `E[N_T] = Q_T`; almost-sure
-  frequency needs concentration not supplied here.
+- The **primary statement is pathwise**: the surgical inequality and Theorem 18's
+  bound both hold on every realized history, so `Q_T(g) <= B_T(g)/delta_g` is a
+  statement about each trajectory, not an average over them.
+- The sampled-action register is separate and weaker. `E[N_T] = E[Q_T]` — **not**
+  `E[N_T] = Q_T`, which is ill-typed because `Q_T` is itself random. Structurally
+  `N_T - Q_T` is a sum of martingale differences with conditional mean zero.
+  Almost-sure or high-probability control of `N_T/M_T` needs a concentration
+  argument not supplied here, and `M_T` random means `E[N_T]/M_T` is not a
+  well-formed quantity either.
 - Not an anytime guarantee: `beta` is horizon-tuned.
 
 ---
@@ -180,8 +226,10 @@ with a complexity model, plus the recurrence constraint below.
 **H6, coverage.** Stated, not proved. Nothing in the learner generates its own
 reasons, and it should not.
 
-**The construction is not a learning curve.** For any repair class whose rules
-point away from mistakes, the targeted response is transient in the rule-mixture
-chain at exactly the dates the repair fires, so the stationary construction gives
-`Q_T(g) = 0` identically. The theorem is satisfied by immediate compliance. See
-`LEARNING_DYNAMICS.md`.
+**The construction may or may not be a learning curve, and which is a property of
+the repair graph.** Where the targeted response is transient in the active graph
+the stationary construction gives `Q_T(g) = 0` identically and the theorem is
+satisfied by immediate compliance. Where a return route is active — which a
+*coherent* class can supply, via an independently certified competing reason — the
+learner does carry mass on the target. The first pass claimed coherence forced the
+first case; that claim is withdrawn. See `LEARNING_DYNAMICS.md`.

@@ -30,23 +30,60 @@ cannot reach `b` back. Tested directly:
 So it is not that repairs make things transient; it is the **absence of a return
 route** that does.
 
-## Why a coherent repair class always hits it
+## What survives, and what is withdrawn
 
-A repair fires exactly when its selector fires — which is exactly the set of dates
-`M_T(g)` counts. So at every selected date, `b_g` has an outgoing edge to
-`r_g`. Its mass is zero at those dates unless the class supplies a route back to
-`b_g` **active at that same date**.
+**Survives — the graph theorem.** A repair fires exactly when its selector fires,
+which is exactly the set of dates `M_T(g)` counts. So at every selected date
+`b_g` has an outgoing edge to `r_g`, and its mass is zero at those dates unless
+the class supplies a route back to `b_g` active at the same date.
 
-A return route active at a selected date is a rule sending a repair target back
-toward the bad response *while the reason is due*: "there is an exposed burden, so
-having acknowledged, stop acknowledging". That is not a repair.
+**Withdrawn — the coherence inference.** The first pass went on to claim that a
+*normatively coherent* class can never supply such a route, on the ground that it
+would have to say "there is an exposed burden, so having acknowledged, stop
+acknowledging". That inference was invalid, and this pass constructs the
+counterexample.
 
-Hence for a normatively coherent class, `Q_T(g) = 0` at every date, and the
-theorem's conclusion is reached without the learner ever making the mistake.
+A return route does not have to be licensed by the **same** reason. It can be
+licensed by a different consideration that happens to be active simultaneously.
+The `COMPETING` class uses two certificates that already existed in the merged
+model and were not invented for this purpose:
+
+```
+exposed_consequential_burden   a raised consequence is unanswered
+                               -> answer it rather than sit still
+
+defeated_applicability         a commitment is precluded and unsuspended
+                               -> do not take on further commitments while an
+                                  incoherence is outstanding; sit still
+```
+
+The second is ordinary normative caution, not an anti-repair. Both hold in one
+public state — an exposed burden together with a precluded commitment — and there
+the graph has a cycle through `hold`, which becomes recurrent.
+
+| class at that state | `hold` transient? | zero-mass set |
+|---|---|---|
+| `ONE_WAY` | yes | `{hold}` |
+| `INCOHERENT` (same certificate licenses the undoing) | no | `{}` |
+| `COMPETING` (different certificates) | **no** | `{}` |
+
+`INCOHERENT` and `COMPETING` behave identically, which is the point: **recurrence
+is no evidence of incoherence**, so the first pass's inference from one to the
+other cannot be run in either direction.
+
+**What replaces it.** Only the graph condition:
+
+```
+b_g transient in the active repair graph  ->  p_t(b_g) = 0
+```
+
+Whether a realistic normative grammar produces transient or recurrent targets is
+now an open structural question about grammars, not something settled by
+coherence. The construction above shows recurrent is reachable coherently.
 
 ## Measured
 
-Two classes on the same evolving fixture, driven by the repository's Theorem 18
+Three classes on the same evolving fixture, driven by the repository's Theorem 18
 learner.
 
 | class | `Q_T` at `T=64` | early mass | late mass |
@@ -70,42 +107,63 @@ unique, and the implementation resolves the ambiguity from the initial uniform
 distribution. The weights redistribute *within* a recurrent class and never
 between classes.
 
-## The pre-registered criterion
+## The pre-registered criterion, on the coherent competing class
 
-Fixed before looking, per the dispatch:
+Clause (1) is now **passed by a coherent class**, which the first pass said was
+impossible. Measured on `COMPETING` at `T = 48`, with the reason recurring:
 
-| clause | one-way class | cyclic class |
-|---|---|---|
-| (1) initial mass on the target `> 0` | **fails** — it is `0` | passes, `1/8` |
-| (2) the pattern recurs | passes | passes |
-| (3) updates depend on observed loss | passes | passes |
-| (4) cumulative bad mass sublinear | passes trivially | passes |
-| (5) late mass below early mass | vacuous | passes, narrowly |
-| (6) no adaptation without information | passes | passes — flat under the control |
+| clause | verdict |
+|---|---|
+| (1) initial mass on the target `> 0` | **passes** — `p_1(hold) = 1/8`, under a class every edge of which is independently certified |
+| (2) the pattern recurs | passes — the selector fires throughout |
+| (3) updates depend on observed loss | passes |
+| (4) cumulative bad mass sublinear | **not demonstrated** — see below |
+| (5) late mass below early mass | **fails** — mass *rises*, `0.146 -> 0.250` |
+| (6) no adaptation without information | passes — exactly flat at `0.125` under the uninformative control |
 
-The coherent class **fails at clause (1)**: there is nothing to shed. The cyclic
-class passes, and the cyclic class is normatively incoherent.
+Clause (5) fails for a reason that is not about the learner. The margin is
+positive on only 4–5 of the 48 dates: the fixture's vocabulary is finite, so the
+supply of fresh exposable contents runs out and the reason stops recurring *with
+a positive gap*. Once the gap is zero there is nothing to learn from, and mass
+drifts back as the targeted action stops being transient.
+
+**So the fixture cannot decide the dynamics question**, and this is a limitation
+of the fixture rather than a finding about the engine: a finite content set cannot
+sustain coverage. What the run does establish is clause (1) — a coherent class can
+leave the learner holding mass on the targeted response — and clause (6), that
+what movement there is tracks the signal.
 
 ## What this settles
 
-**The engine is capable of feedback-driven adaptation** — clause (6) is passed,
-and the freeze at zero margin shows the movement tracks the signal.
+**The graph theorem stands.** Transience decides zero mass, and the identity
+self-loop does not rescue a state.
 
-**A normatively coherent repair class removes the occasion for it.** The better
-the repair grammar, the more completely the construction complies immediately.
+**The coherence inference does not.** A coherent class *can* leave its target
+recurrent, via an independently certified competing reason. So "immediate
+compliance" is a property of one-way repair graphs, not of good repair grammars.
 
-That is not a defect in the theorem, and it is arguably the outcome one wants: a
-system that never persistently mishandles a reason is better than one that learns
-not to. But it is not a learning curve, and the project's own prose promises one.
+**The engine is capable of feedback-driven adaptation** — the no-information
+control is exactly flat, and where movement occurs it freezes when the margin
+does.
 
-## What would be needed for the diachronic version
+**The dynamics question is undecided on this fixture.** A finite content set
+cannot sustain a recurring reason with a positive margin, so clause (5) could not
+be tested properly. That is a fixture limitation and it is the thing to fix before
+the dynamics question is asked again.
 
-A no-regret learner against the same surgical class whose action distribution is
-**not** the fixed point of the current rule mixture. That is a real constraint: the
-fixed point is what makes swap-type regret self-consistent, and the internal-regret
-algorithms surveyed in the primary source all compute one. Whether an
-internal-regret minimiser exists that does not, and would still admit the surgical
-lower bound, is **open** and is the concrete question a dynamics round should ask.
+## What would be needed to decide it
+
+**A fixture with sustained coverage**, which this one cannot provide: an
+unbounded or regenerating content supply, so a reason can recur with a positive
+margin for the whole horizon. That is now the first requirement, and it is a
+fixture problem rather than a theory problem.
+
+Only if the dynamics still fail there does the learner question arise: whether a
+no-regret learner exists whose distribution is **not** the fixed point of the
+current rule mixture. The fixed point is what makes swap-type regret
+self-consistent, and the internal-regret algorithms in the audited source all
+compute one — but with the coherence inference withdrawn, there is no longer a
+reason to think the fixed point is what blocks the dynamics.
 
 Two things that would **not** count, and the criterion rules them out: uniform
 exploration, which manufactures a decay curve with no dependence on feedback

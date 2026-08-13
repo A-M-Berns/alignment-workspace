@@ -14,7 +14,8 @@ Every file in this directory:
 | `ASSUMPTION_AUDIT.md` | |
 | `COVERAGE_INTERFACE.md` | |
 | `REPAIR_LANGUAGE.md` | |
-| `LEARNING_DYNAMICS.md` | |
+| `LEARNING_DYNAMICS.md` | corrected by the refinement pass; the coherence inference is withdrawn |
+| `COMPILER_SOUNDNESS.md` | refinement pass |
 | `THEOREM_STRENGTH_LADDER.md` | |
 | `PROSECUTION.md` | |
 | `PATH_INVENTORY.md` | |
@@ -24,5 +25,8 @@ Every file in this directory:
 
 The Blum–Mansour source audit is not repeated here; it is the merged round's
 `SOURCE_AUDIT.md` and nothing in this round depends on a point it did not check.
+
+`lean/Workspace/Leverage/Contrib/SurgicalRepairBound.lean` carries the same
+generator and review status; it is listed in the Lean contrib provenance file.
 
 No originating chat bundle.

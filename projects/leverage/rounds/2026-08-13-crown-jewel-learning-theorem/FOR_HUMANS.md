@@ -54,35 +54,44 @@ itself checkable from the public record, and where it holds the improvement is n
 assumed, it is computed. We verified this: the predicted amount and the measured
 amount agree.
 
-## The part that does not work, stated plainly
+## A claim I got wrong, and the correction
 
-The theorem is true. The learner we have satisfies it. But it satisfies it by
-**never making the mistake in the first place**, and that is not learning.
+An earlier version of this said: the theorem is satisfied by a system that never
+makes the mistake at all, and that any *sensible* set of repairs forces this. The
+argument was that a route back to a bad response would have to say "there is an
+outstanding question, so stop answering it" — which is not a repair.
 
-The reason is worth understanding because it is not a bug. The algorithm works by
-finding a distribution over responses that no available repair can improve. If
-every repair points *away* from a bad response and nothing points back toward it,
-the algorithm's own construction drains that response to zero immediately, before
-observing anything at all.
+**That was wrong, and the correction is the more interesting result.**
 
-And "every repair points away from mistakes and nothing points back" is exactly
-what a *good* set of repairs looks like. To get the system to start out making the
-mistake, you would have to include a rule saying something like "when there is an
-outstanding question, stop answering it" — which is not a repair.
+A route back does not have to be licensed by the *same* consideration. It can be
+licensed by a different one that happens to apply at the same moment. Concretely:
+one rule says "there is an unanswered question, so answer it rather than sit
+still". Another says "you are currently holding something you cannot defend, so
+don't take on further commitments just now". Both are recognisable pieces of
+normative sense. Neither is an anti-rule. And they can both apply at once — at
+which point there *is* a route back, and the system does start out with some
+tendency toward the response we want it to lose.
 
-So: **the better the repertoire of repairs, the more completely the system just
-complies from the start.**
+So the earlier claim — that good repairs force immediate compliance — is
+withdrawn. What survives is a purely structural fact: whether the system can put
+any weight on a response at all is decided by the shape of the rule graph, and
+sensible rules can produce either shape. Whether real normative repertoires
+produce one or the other is now an open question, and it has to be checked rather
+than reasoned about.
 
-We did check that the machinery is capable of responding to experience: on a
-deliberately incoherent set of repairs, where the bad response *is* reachable, the
-system's weighting does shift with feedback, freezes precisely when the
-informative signal stops, and does not move at all when we replace the feedback
-with something uninformative. So it can learn. A sensible repertoire removes the
-need.
+## What I still could not show
 
-Whether that is a problem depends on what you wanted. If you wanted a system that
-never persistently mishandles a reason, this is *better* than learning. If you
-wanted to demonstrate learning, it is not a demonstration.
+With that corrected setup, the system *does* start out with weight on the
+mistake — the first thing a learning demonstration needs. But the weight doesn't
+then fall, and the reason is a limitation of the toy setup rather than of the
+system: it has a finite stock of things that can be raised, so after a handful of
+rounds the questions run out and there is nothing left to learn from.
+
+So the question "does it actually learn, or merely comply?" is **still open**, and
+what it needs first is a richer test environment rather than a different
+algorithm. I did confirm that whatever movement does occur tracks the feedback:
+replace the feedback with something uninformative and the system doesn't move at
+all.
 
 ## The two things that are genuinely missing
 
@@ -98,9 +107,19 @@ That is the right *shape* — but "can raise" is not "does raise often enough", 
 closing that gap needs one more assumption nobody has yet supplied.
 
 **Four repairs are not a repertoire.** The theorem says the system does well
-against the repairs you give it. Whether those repairs are the right ones is a
-separate question, entirely open, and it is the difference between this being
-*normative* learning and being tidy loss reduction.
+against the repairs you give it. Whether those are the right ones is a separate
+question, entirely open.
+
+**And "legitimate" needs to mean something.** This is the one thing that has to be
+fixed before the theorem is even properly stated. Right now a repair counts as
+legitimate because it carries a label saying so. Four things that label is
+supposed to guarantee can already be checked — the move is executable, the
+condition is read from the public record, it ignores whether the repair helps, and
+it can't be used to launder away a debt. Three cannot: that the stated reason is
+*why* the repair is apt rather than merely true at the same time; that it falls
+within the right authority; and that it lapses when its reason is defeated. Until
+those are pinned down, "legitimate repair" is doing less work than the word
+suggests.
 
 ## What this is not
 

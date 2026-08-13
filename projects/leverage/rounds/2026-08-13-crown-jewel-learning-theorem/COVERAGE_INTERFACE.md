@@ -19,6 +19,22 @@ fraction of dates.
 **This is the round's most useful structural gain.** Coverage need only dominate
 the learning rate, not occupy positive density.
 
+## Which register the condition lives in
+
+Four inequivalent forms, and the theorem needs the first:
+
+| form | statement | verdict |
+|---|---|---|
+| **pathwise** | on every realized trajectory in the target class, `M_T(g)` outgrows the learning scale | **what the theorem composes with** — the regret bound and the surgical lemma are both pathwise, so the whole chain stays on one realized history |
+| expected | `E[M_T(g)]` outgrows it | weaker and does not compose: a large expectation is compatible with trajectories on which the conclusion fails |
+| high probability | the realized count dominates with probability `1 - eta` | a corollary of the pathwise form plus a tail bound on exposure; not needed for the theorem |
+| policy-robust | for every advisor policy, some strategy forces enough exposures | **what a corrigibility theorem would supply** — it implies the pathwise form on the trajectories it governs |
+
+The layering is therefore: a corrigibility result would establish the
+**policy-robust** form; that yields **pathwise** coverage on the trajectories it
+covers; and the learning theorem consumes pathwise coverage. Sampling registers
+enter only in the sampled-action corollary, not here.
+
 ## Why the denominator is not optional
 
 Under a schedule exposing the reason on perfect squares, `M_T = Theta(sqrt(T))`.
@@ -52,9 +68,23 @@ questions from what the merged corrigibility work actually established:
    capability survives every advisor run. That is a statement about the capability
    persisting, not about it being *exercised* at any rate. Coverage needs
    occasions, not the standing possibility of one.
-3. **Is a service guarantee needed?** Yes, or a rate. Something of the form: the
-   principal exercises the channel on at least `M_T` occasions, or the environment
-   does. Neither arc currently supplies it.
+3. **Is a service guarantee needed?** Yes, or a rate. The exact interface the
+   deference line would have to supply:
+
+   ```
+   for every principal-recognizable challenge class g,
+   for every advisor policy pi_A,
+   there is a principal strategy sigma_H with
+
+       M_T(g) >= m_g(T)      on every trajectory of (sigma_H, pi_A)
+
+   and  m_g(T) / ( L sqrt(T |A| log (M K_eff)) ) -> infinity.
+   ```
+
+   Four things are distinct here and only the first is currently established:
+   *ability* to expose (the merged capability result), *opportunity* to expose,
+   *actual exercise*, and *mandatory service by the learner once exposed*. The
+   quantifier structure above is what would close the gap; nothing here proves it.
 4. **Universal over advisor policies?** Yes for the capability half, which the
    merged round has. The rate half is not a quantifier question; it is an extra
    assumption about the principal's behaviour.
