@@ -87,6 +87,19 @@ Adding parameters to the valuation is ruled out by two rounds' evidence, and a
 later process must not be *any* argmax over objects the evaluator already holds —
 not merely not the evaluator's own argmax.
 
+**Foreclosure is now expressible, and only that.** A finite multi-source transition
+system with separate principal, advisor and environment coordinates carries two advisor
+actions whose immediate realized behaviour is identical under every principal and
+environment choice, one of which leaves a principal-controlled correction reachable and
+the other of which removes it from every continuation; the difference appears two stages
+later, and corrective capability is defined by variation in the transition rather than by
+any state field. This is a representation result and nothing more — no authorization
+relation, no inequality, no bound, nothing registered. The construction's one structural
+premise is that the system keeps evolving when the advisor does not: with the advisor
+absent and the principal idle, the environment alone is what brings the corrective
+situation into being.
+`projects/deference/rounds/2026-08-12-reachable-corrective-control/`.
+
 **Deeper:** `projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md` for status,
 the roadmap beside it for architecture, `TERMS.md` for vocabulary.
 

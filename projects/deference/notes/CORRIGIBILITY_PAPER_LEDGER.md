@@ -31,6 +31,15 @@ criterion-to-signed-forcing chain once bounded downside is supplied, with an
 inhabited tautology-contract instance; and the item-28 theorem that every value
 factoring through price and realization is constant on equal-view fibers.
 
+A representation round adds a third, on the model side rather than the LI side: in a
+finite transition system with separate principal, advisor and environment coordinates,
+two advisor actions with identical immediate realization under every principal and
+environment choice induce different future principal-controlled reachable sets, one
+preserving a corrective path and the other removing it from all continuations. Corrective
+capability there is transition variation, not a field. It is `architected` and not
+established — a representation, with no inequality, no authorization relation and nothing
+registered. `../rounds/2026-08-12-reachable-corrective-control/REACHABLE_CORRECTIVE_CONTROL.md`.
+
 ## Vocabulary
 
 `inherited-established` — direct inspection of inherited material shows the result
