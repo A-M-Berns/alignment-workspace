@@ -67,6 +67,28 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   is choosing one. *Waiting* costs one reimplementation per round that touches the
   layer, and the φ-regret preparation round has already paid it once.
 
+- **Rule on the two readings of procedural legitimacy.** The sufficiency
+  prosecution found the target ambiguous between a *reasoner-relative* reading —
+  what settles a demand is what the machinery in force says settles it — and an
+  *environment-relative* one. The four conditions are refuted for the second by
+  six counterexamples and close to sufficient for the first by construction, so
+  the verdict on the architecture depends entirely on which is meant. *Doing it*
+  is reading one section,
+  `projects/leverage/rounds/2026-08-13-procedural-legitimacy/L_STAR.md`
+  §"Two readings", and saying which. *Waiting* leaves every future sufficiency
+  claim in this line ambiguous in the same way, and leaves item 43 unanswerable.
+
+- **Rule on disclosure versus prospectivity.** As the clause governing revisions
+  to a standard that already governs a live demand: prospectivity forbids the
+  revision from reaching backwards and, on the round's evidence, refuses the
+  positive control as well, because adding a new way to settle a demand is the
+  same operation whether the new way is better or worse. Disclosure requires the
+  revision to name the demand it reaches and refuses nothing legitimate. The
+  round recommends disclosure as a recording requirement rather than a
+  prohibition. *Doing it* is one decision over the table in that round's
+  `THEOREM_MAP.md` §5. *Waiting* costs nothing; the attacks are recorded either
+  way.
+
 - **Rule on the umbrella name for the leverage line.** The dispatch of
   2026-08-12 directs that `leverage` be deprecated as the umbrella term, and the
   round did that in the living documents while leaving four things alone: the

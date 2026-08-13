@@ -546,6 +546,101 @@ D12, which is a conjecture there and is cited as one.
 *Why it is [open]:* the resemblance may be an analogy. Establishing that it is
 not requires a common setting the two lines do not currently share.
 
+## Leverage line — procedural legitimacy
+
+Items 40–44 were filed by the procedural-legitimacy round within its dispatched
+scope, with `prompts/2026-08-13-procedural-legitimacy/PROMPT.md` as the
+authorization. Shared context:
+`projects/leverage/rounds/2026-08-13-procedural-legitimacy/`, whose
+`THEOREM_MAP.md` separates its two derivations from its sweeps and its six
+counterexamples, and `L_STAR.md`, which states the target they are adjudicated
+against.
+
+### 40. Lean the two inductions — **[entry]**
+
+*No authority amplification*: over a well-founded basis graph in which every
+root's scope is conferred and every derived ground's scope is contained in its
+parents', a valid ground's scope is contained in the union of its roots' grants.
+*Branching conservation*: over an append-only sequence of dispositions in which
+every live branch receives exactly one and terminal modes carry backing, every
+leaf of the descent forest is live, suspended with a route, or terminal with
+backing, and the three are exclusive.
+
+*Deliverable shape:* declarations in `Workspace.Leverage.Contrib`, sorry-free,
+auditing to the three axioms, each with an inhabitation witness.
+*Acceptance check:* the `lean` job is green, `tests/audit_axioms.py` passes, and
+the Python sweeps in the round directory are unchanged and still green.
+*Context:* `projects/leverage/rounds/2026-08-13-procedural-legitimacy/THEOREM_MAP.md`,
+PR-1 and DA-2.
+*Why it is [entry]:* both derivations are written out and neither needs new
+mathematics.
+
+### 41. Decide the scope bound — **[substantial]**
+
+A ground derived from two parents with disjoint scopes is admitted under the
+union reading with joint jurisdiction neither parent had, and refused under the
+intersection reading. The round displays the fork and does not resolve it.
+
+*Deliverable shape:* a determination of which reading the constraint requires,
+keyed to whether the constraint being licensed is coordinate-wise or joint, or a
+demonstration that the choice must be a parameter of the constraint rather than
+of the provenance system.
+*Acceptance check:* a witness for each reading — a licensing the union admits and
+the intersection refuses, and a legitimate derivation the intersection blocks —
+plus the no-amplification sweep re-run under whichever reading is adopted.
+*Context:* `THEOREM_MAP.md` PR-4, `src/provenance.py`.
+*Why it is [substantial]:* it is a question about what authority *is*, and both
+readings are defensible on the evidence the round has.
+
+### 42. A generated arrival process — **[substantial]**
+
+The environment declares its demands, so an advisor who controls what *arises*
+rather than what is generated from it remains outside the model. This is the
+attack one level below the one inquiry adequacy was introduced to catch.
+
+*Deliverable shape:* an arrival process the model generates from a case stream
+and a world state rather than declaring, with an entitlement predicate over
+arrivals.
+*Acceptance check:* the existing agenda and formulation attacks separate as they
+do now; a new pair separating suppression of an arrival from suppression of a
+filing is exhibited; and either a witness of a legitimate covering trajectory
+that still misses a generated arrival, or an argument that none exists.
+*Context:* `src/environment.py`, `src/conditions.py::generated`.
+*Why it is [substantial]:* the entitlement predicate is the difficulty, and it is
+the same shape as the consolidation's open registry-completeness problem.
+
+### 43. Is the reasoner-relative reading provable? — **[open]**
+
+The six counterexamples all turn on the reasoner's copy of a relation drifting
+from the environment's. On the reasoner-relative reading of the target — where
+"actually settles" means "settles by the machinery in force" — they evaporate by
+construction. That is a reason to suspect the four conditions are sufficient for
+*internal consistency*, and no proof is offered.
+
+*Deliverable shape:* either a sufficiency theorem for the reasoner-relative
+target with explicit hypotheses, or a counterexample to it.
+*Acceptance check:* if positive, a derivation plus an inhabitation witness for the
+hypothesis package; if negative, a finite trajectory satisfying all four and
+failing the reasoner-relative target.
+*Context:* `L_STAR.md` §"Two readings"; `THEOREM_MAP.md` SF-3.
+*Why it is [open]:* nobody has tried, and a sufficiency theorem here would be the
+first positive result the architecture has produced.
+
+### 44. The disclosure record's interface to a counterfactual condition — **[open]**
+
+Disclosure puts standard drift in the record. What consumes it is a condition of
+a different type — advisor influence, endpoint preservation, protected authority
+— supplied by the deference line.
+
+*Deliverable shape:* a specification of what a counterfactual condition would
+read off the disclosure record, and what it would have to add.
+*Acceptance check:* a candidate composition with its hypotheses separated into the
+two layers, and a witness that neither layer alone entails it.
+*Context:* `THEOREM_MAP.md` §7 and
+`projects/leverage/notes/LEGITIMACY_ARCHITECTURE.md` §11.
+*Why it is [open]:* it needs the deference line to have settled which
+counterfactual condition it validates, which it has not.
+
 ---
 
 ## Deference line
