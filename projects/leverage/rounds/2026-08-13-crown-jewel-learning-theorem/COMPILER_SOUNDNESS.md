@@ -1,7 +1,37 @@
 # Compiler soundness
 
-What `certified` has to mean before the crown jewel's H4 is more than a label.
-This is the one item that blocks the **abstract** theorem, and it is why.
+What `certified` has to mean, and — the verdict this pass owed — whether it blocks
+the abstract theorem or only a substantive instantiation.
+
+## The verdict
+
+**It does not block the abstract theorem.** The previous pass classified it as the
+one abstract blocker; that classification is now corrected.
+
+The theorem quantifies over a `Licensed` relation satisfying stated **interface
+discipline**: protocol-legal, causal, loss-blind, non-laundering. Those four are
+checkable requirements on any admitted implementation, and with them H4 is a
+hypothesis a reader can evaluate — the theorem is a genuine conditional result
+about any process supplying such a relation.
+
+**Substantive soundness** — reason-connection, scope-correctness,
+defeater-respect — is a property of a *particular* `Licensed`, and belongs to an
+instantiation theorem about a relational answerability model. It is the difference
+between "this repair carries a valid licence in a practice with these four
+properties" and "this practice's licences track the reasons they name".
+
+Why the earlier classification was wrong: it treated "the certificate might be
+decoration" as a defect in the theorem, when it is a defect in a *candidate
+instantiation*. The abstract theorem never claims its licences are apt; it claims
+that if they are admitted under the interface discipline, and have a margin, and
+the reason recurs, then the conditional rate vanishes. That conditional is not
+vacuous — the loss-blindness clause alone rules out the collapse that would make
+it so.
+
+What would make it vacuous is a `Licensed` that admits everything. The
+non-laundering and loss-blindness clauses prevent the two degenerate ways of doing
+that, and a family admitting every response makes the surgical maps non-surgical
+and loses the lower bound anyway.
 
 ## The problem, stated exactly
 
@@ -56,7 +86,8 @@ kept precisely so the two cannot be quietly identified.
 
 ## What this buys the theorem
 
-With a soundness predicate, H4 reads: *for any finite family sound at every state
-where its selectors fire*. That is a hypothesis a reader can evaluate, and it makes
-`normative` in "normative learning" carry the weight the four delivered clauses
-plus the three interfaces give it — no more, and no less.
+H4 reads: *for any finite family compiled from a `Licensed` relation meeting the
+interface discipline*. That is evaluable, and it makes `normative` in "normative
+response-learning" carry exactly the weight the four delivered clauses give it —
+no more, and no less. The three substantive clauses are what an instantiation must
+add, and naming them precisely is what this document is for.

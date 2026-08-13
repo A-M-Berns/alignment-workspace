@@ -5,6 +5,11 @@
 We do not hand the system the correct account of what it ought to do. Nobody has
 one to hand it.
 
+Three things have to come from somewhere else, and naming them separately is what
+this work finally settled: **when a question is owed an answer**, **which answers
+are admissible**, and **how badly the system is currently doing**. The theorem
+plugs into those three sockets; it does not try to build them.
+
 What we give it instead is a *practice*. Other participants can raise questions.
 Claims can be challenged. Some ways of responding are recognisable as legitimate —
 and recognisable **without looking at whether they happen to make the system's
@@ -79,19 +84,45 @@ sensible rules can produce either shape. Whether real normative repertoires
 produce one or the other is now an open question, and it has to be checked rather
 than reasoned about.
 
-## What I still could not show
+## And then it did learn
 
-With that corrected setup, the system *does* start out with weight on the
-mistake — the first thing a learning demonstration needs. But the weight doesn't
-then fall, and the reason is a limitation of the toy setup rather than of the
-system: it has a finite stock of things that can be raised, so after a handful of
-rounds the questions run out and there is nothing left to learn from.
+The remaining doubt was whether the system ever *starts out* getting things wrong
+and then improves, or whether it just complies from round one. Earlier attempts
+couldn't tell, because the toy setup had a finite stock of things to raise: the
+questions ran out after a handful of rounds and there was nothing left to learn
+from.
 
-So the question "does it actually learn, or merely comply?" is **still open**, and
-what it needs first is a richer test environment rather than a different
-algorithm. I did confirm that whatever movement does occur tracks the feedback:
-replace the feedback with something uninformative and the system doesn't move at
-all.
+So I built the smallest setup that doesn't run out. One kind of question, a fresh
+instance every round, two possible responses — answer it, or sit still. Answering
+clears it; sitting still leaves it outstanding and costs you.
+
+The system starts at **fifty-fifty** between answering and sitting still. Then:
+
+```
+round 0    0.500
+round 32   0.095
+round 64   0.006
+round 96   0.0003
+round 128  0.00002
+round 160+ 0
+```
+
+It sheds the bad response entirely. And the control settles what caused it: run
+exactly the same setup with the feedback made uninformative — both responses cost
+the same — and the system sits at fifty-fifty forever, unmoved. Nothing about the
+decay is built in; it is a response to what the system observes.
+
+The measured "how often does it still get it wrong, among the times it's asked"
+falls as expected too: 0.17, 0.08, 0.04, 0.02 as the run gets longer.
+
+So the answer to "does it learn, or merely comply?" is: **it learns**, when the
+situation gives it something to learn from. The earlier appearance of mere
+compliance was an artifact of the test, twice over — first a rule-set where the
+bad response was unreachable, then a world that ran out of questions.
+
+One honesty note: this is a demonstration on one process at four lengths, not a
+proof that the tendency always reaches zero. I have not proved convergence and do
+not claim it.
 
 ## The two things that are genuinely missing
 
@@ -110,16 +141,18 @@ closing that gap needs one more assumption nobody has yet supplied.
 against the repairs you give it. Whether those are the right ones is a separate
 question, entirely open.
 
-**And "legitimate" needs to mean something.** This is the one thing that has to be
-fixed before the theorem is even properly stated. Right now a repair counts as
-legitimate because it carries a label saying so. Four things that label is
-supposed to guarantee can already be checked — the move is executable, the
+**And "legitimate" needs to mean more than it currently does.** Four things the
+word is supposed to guarantee can already be checked — the move is executable, the
 condition is read from the public record, it ignores whether the repair helps, and
 it can't be used to launder away a debt. Three cannot: that the stated reason is
 *why* the repair is apt rather than merely true at the same time; that it falls
-within the right authority; and that it lapses when its reason is defeated. Until
-those are pinned down, "legitimate repair" is doing less work than the word
-suggests.
+within the right authority; and that it lapses when its reason is defeated.
+
+That is not a hole in the theorem, which is the correction this final pass made.
+The theorem says: *given* a practice whose licences meet the four checkable
+conditions, the learner stops making the mistake. Whether a particular practice's
+licences also track the reasons they name is a question about that practice, and
+it is the main thing left to work on.
 
 ## What this is not
 

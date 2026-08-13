@@ -11,7 +11,7 @@ with something strictly stronger.
 | **3** | expected sampled register | **ROUTINE EXTENSION**, once stated correctly: `E[N_T] = E[Q_T]`, since `Q_T` is random. `E[N_T]/M_T` is **not** well formed — `M_T` is random too |
 | **4** | one anytime learner over an infinite run | **ROUTINE EXTENSION** — standard doubling; not done here, no new idea needed |
 | **5** | almost-sure pathwise `N_T/M_T -> 0` | **OPEN** — needs a martingale concentration argument over the selected dates; no obstruction identified, but not free |
-| **6** | genuine within-run mass-shedding dynamics | **OPEN, and no longer for the reason first given.** A coherent class *can* leave the target recurrent (competing certificates), so the learner does hold mass on it. What blocks the demonstration is the fixture: a finite content set cannot sustain a recurring reason with a positive margin. Needs a regenerating fixture before any learner question arises |
+| **6** | genuine within-run mass-shedding dynamics | **WITNESSED** — on a regenerating fixture with a coherent irreducible repair graph, mass on the inferior response falls from `1/2` to below `10^-4` while a matched uninformative control stays exactly at `1/2`. A witness at four horizons, **not** a convergence theorem: `p_t(b) -> 0` is unproved |
 | **7** | counterfactual replay / policy-regret domination | **REFUTED UNDER CURRENT ASSUMPTIONS** — merged PR #29: distortion grows with the horizon for every non-identity comparator once its licensing condition recurs. Strictly stronger, and **not needed** for levels 0–5 |
 
 ## Reading the ladder
@@ -19,9 +19,10 @@ with something strictly stronger.
 Levels 0–2 are the theorem. Levels 3–4 are bookkeeping a paper would do. Level 5
 is a real but ordinary piece of probability.
 
-Level 6 is the only place the programme's *rhetoric* outruns its mathematics. The
-first pass located the obstruction in the construction; this pass relocates it to
-the fixture, which is a cheaper problem.
+Level 6 was where the programme's rhetoric outran its mathematics. The first pass
+located the obstruction in the construction; the refinement relocated it to the
+fixture; the final pass removed the fixture defect and the dynamics appeared. What
+remains at level 6 is a proof, not a phenomenon.
 
 Level 7 is settled and negative, and the crown jewel does not touch it. That is the
 main structural gain of the last two rounds: the flagship result was moved off the

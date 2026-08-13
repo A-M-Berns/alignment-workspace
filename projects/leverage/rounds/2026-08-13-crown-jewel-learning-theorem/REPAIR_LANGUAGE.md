@@ -95,6 +95,22 @@ This matters for a generated grammar: a class cannot be validated repair by
 repair, because whether any of its conclusions are non-vacuous is a property of
 the whole active graph.
 
+## Adequacy is an expressivity condition on `Licensed`
+
+Not a grammar problem to be solved here. The condition is:
+
+```
+for every failure class P in the target family,
+  some g compiled from Licensed represents an appropriate licensed alternative
+```
+
+A Brandomian scorekeeping practice, an argumentation-theoretic dialogue system, a
+legal-procedural model, or something else may generate such responses. The
+crown-jewel theorem **abstracts over those implementations** and should not be
+made to pick one. What it keeps is the complexity requirement, because the regret
+guarantee depends on the comparator family's effective size through
+`log(M K_eff)`.
+
 ## What a paper-level class would need
 
 1. a generative grammar over the five typed pieces;

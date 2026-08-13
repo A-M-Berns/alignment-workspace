@@ -19,15 +19,27 @@ distribution `p^t`, an action is drawn, and `S_{t+1} = T(S_t, a_t, e_t)`. When
 `ell_t` becomes available is a separate question, settled under *Information
 order* below.
 
-A **certified surgical repair** `g` is `(E_g, b_g, r_g, c_g)`:
+The theorem consumes three separate interfaces — `INTERFACES.md` has the
+architecture:
 
-- `E_g : S -> {0,1}` a public selector, a predicate of the state;
-- `b_g in A` one source response;
-- `r_g : S -> A` a replacement;
-- `c_g` a normative certificate, evaluated against public status and never given a
-  loss;
+```
+Due      : S -> D -> Prop        a public reason presently calls for an answer
+Licensed : S -> D -> A -> Prop   this response is admissible to that reason
+Loss     : S -> A -> [0, L]      answerability performance in the practice
+```
 
-inducing `F_g^t(b_g) = r_g(S_t)` where `E_g(S_t)`, and `F_g^t(a) = a` otherwise.
+A **compiled surgical repair** `g = (d_g, b_g, r_g)` is what the compiler
+produces from the first two, together with a target source response:
+
+```
+E_g(S)  =  Due(S, d_g)                       the selector
+licence :  Licensed(S, d_g, r_g)             admission to the class
+F_g^t(b_g) = r_g  where E_g(S_t),  F_g^t(a) = a otherwise
+```
+
+**A repair is not the primitive normative object.** It is the theorem-facing
+object handed to the online-learning engine after normative compilation, and the
+compiler consults `Due` and `Licensed` and never the loss.
 
 **Register.** Let `H_t` be the strict history before date `t`. Then `S_t`, `p^t`
 and `E_g(S_t)` are `H_t`-measurable, and the action `a_t ~ p^t` is drawn after
@@ -71,8 +83,14 @@ restricted.
 
 **H3 Full information.** The whole vector `ell_t` is observed.
 
-**H4 Certified class.** A finite class `Gcal` of `K` certified surgical repairs,
-fixed before play.
+**H4 Certified class.** A finite class `Gcal` of `K` repairs compiled from a
+`Licensed` relation satisfying the interface discipline of `INTERFACES.md`
+(protocol-legal, causal, loss-blind, non-laundering), fixed before play.
+
+The theorem quantifies over `Licensed`; it does not construct one. **Substantive
+soundness** — that a particular `Licensed` is reason-connected, scope-correct and
+defeater-respecting — is a property of an instantiation, and is what a relational
+answerability model would have to prove about its own implementation.
 
 **H5 Margin.** For each `g`, a `delta_g > 0` with
 `ell_t(b_g) - ell_t(r_g(S_t)) >= delta_g` at selected dates. Derivable rather than
@@ -83,8 +101,11 @@ assumed for a subclass — see below.
 `B_T(g)`, so the hypothesis does not mention the learner's own output — which
 makes the absence of circularity checkable by inspection.
 
-**H4 and H6 are interfaces, not results.** They are where repair-language
-adequacy and inquiry enter, and the theorem states them rather than hiding them.
+**H4 and H6 are interfaces, not results**, and this is the round's final
+structural claim: they are *typed sockets*, not gaps in the proof. The abstract
+theorem is a genuine conditional result about any process supplying them; a
+substantive instantiation theorem is separate work on `Due`, `Licensed` and
+performance.
 
 ---
 
@@ -226,10 +247,12 @@ with a complexity model, plus the recurrence constraint below.
 **H6, coverage.** Stated, not proved. Nothing in the learner generates its own
 reasons, and it should not.
 
-**The construction may or may not be a learning curve, and which is a property of
-the repair graph.** Where the targeted response is transient in the active graph
-the stationary construction gives `Q_T(g) = 0` identically and the theorem is
-satisfied by immediate compliance. Where a return route is active — which a
-*coherent* class can supply, via an independently certified competing reason — the
-learner does carry mass on the target. The first pass claimed coherence forced the
-first case; that claim is withdrawn. See `LEARNING_DYNAMICS.md`.
+**The construction does learn where the graph permits it.** Where the targeted
+response is transient in the active graph, the stationary construction gives
+`Q_T(g) = 0` identically and the theorem is satisfied by immediate compliance.
+Where a return route is active — which a coherent class supplies via an
+independently certified competing reason — the learner starts with mass on the
+target and sheds it under feedback. On a regenerating fixture with sustained
+coverage and a uniform margin, mass on the inferior response falls from `1/2` to
+below `10^-4`, while a matched uninformative control stays exactly at `1/2`. That
+is a **witness**, not a general convergence theorem. See `LEARNING_DYNAMICS.md`.

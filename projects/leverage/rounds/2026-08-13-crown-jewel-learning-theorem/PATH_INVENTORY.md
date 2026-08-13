@@ -22,7 +22,8 @@ OPTIONAL STRENGTHENING               strictly stronger, not required
 | bounded prospective loss interface | DONE for the fixture; **abstract parameterization OPEN** — the loss is one concrete defect count |
 | exposure / coverage condition | **BLOCKING A SUBSTANTIVE INSTANTIATION** — a legitimate theorem hypothesis, stated non-circularly against the learning scale. The theorem is provable with it; an application is empty without it |
 | repair-language adequacy | **BLOCKING A SUBSTANTIVE INSTANTIATION** — likewise a legitimate hypothesis (`for every failure class in the target family, some `g` repairs it`). Not a hole in the theorem |
-| compiler soundness | **BLOCKING THE ABSTRACT THEOREM** — the one that really is. Until `certified` means something stronger than "a certificate string exists", H4 quantifies over a set defined by a label, and the word `lawful` carries no weight |
+| compiler **interface discipline** (protocol-legal, causal, loss-blind, non-laundering) | **DONE** — stated, and checkable of any implementation |
+| compiler **substantive soundness** (reason-connected, scope-correct, defeater-respecting) | **BLOCKING A SUBSTANTIVE INSTANTIATION** — reclassified. It is a property of a particular `Licensed`, not a gap in the abstract theorem |
 | source-action surgical compiler | DONE |
 | margin derivation | PARTIAL — derived for one schema, hypothesis for the class |
 | comparator complexity model | OPEN — `log K` is where it enters; unchosen |
@@ -48,8 +49,10 @@ OPTIONAL STRENGTHENING               strictly stronger, not required
 | regret measured against its own bound | OPEN |
 | learner computation cost | OPEN — unpriced, carried from the interface note |
 | learner-state answerability | OPEN — carried |
-| a regenerating fixture that sustains coverage | **OPEN — now the first dynamics requirement.** A finite content set cannot keep a reason recurring with a positive margin |
-| alternative non-fixed-point learner | OPEN, and **downgraded** — with the coherence inference withdrawn there is no longer a reason to think the fixed point blocks the dynamics |
+| a regenerating fixture that sustains coverage | **DONE** — `src/regenerating.py` |
+| feedback-driven mass shedding | **WITNESSED** — mass `1/2 -> <10^-4`, control flat; a witness, not a convergence theorem |
+| alternative non-fixed-point learner | **NOT REQUIRED** on current evidence — the fixed point does not block the dynamics |
+| a convergence proof for `p_t(b) -> 0` | OPTIONAL STRENGTHENING — the witness is four horizons on one process |
 
 ## Formalization
 
@@ -72,23 +75,22 @@ OPTIONAL STRENGTHENING               strictly stronger, not required
 
 ## What actually blocks what
 
-**One item blocks the abstract theorem: compiler soundness.** H4 quantifies over a
-*certified* repair family. If `certified` means only that a string is present, the
-theorem is about an arbitrary finite family of surgical maps and the word
-`normative` is decoration. This is the item to do first, and it is smaller than it
-sounds — `COMPILER_SOUNDNESS.md` gives the signature and separates what relational
-scorekeeping already delivers from what remains an interface.
+**Nothing blocks the abstract theorem.** After the interface refactor, every
+remaining item is either a property of a substantive instantiation or an optional
+strengthening. `H4` and `H6` are typed sockets with stated discipline, not gaps.
 
-**Two block a substantive instantiation, and are legitimate hypotheses.** Coverage
-and repair-language adequacy. A paper may state both and remain a paper; what it
-may not do is state them silently. Coverage additionally has a plausible external
-supplier — the corrigibility arc — which is why it is worth doing second.
+**Three block a substantive instantiation**, and all three are properties of the
+three interfaces rather than of the regret machinery:
 
-**One blocks the dynamics claim only:** a fixture that can sustain coverage. That
-does not touch levels 0–2.
+- `Due` — a relational-answerability derivation, and with it coverage;
+- `Licensed` — substantive soundness: reason-connection, scope, defeater-respect;
+- the repair family's expressivity against a target family of failure classes.
+
+**None blocks the dynamics claim any more.** The regenerating fixture settled it
+as a witness.
 
 ## Sequencing
 
-Compiler soundness, then coverage, then the grammar. The dynamics question needs a
-regenerating fixture before it can be asked at all, and is worth separating
-entirely: it does not block the theorem, only the word.
+All three remaining items are upstream, in the normative interfaces rather than in
+the learning theory. That is the handoff: the next round should work on `Due`,
+`Licensed` and performance, and should not need to reopen the regret machinery.

@@ -133,6 +133,53 @@ sustain coverage. What the run does establish is clause (1) — a coherent class
 leave the learner holding mass on the targeted response — and clause (6), that
 what movement there is tracks the signal.
 
+## The regenerating fixture, and the decisive result
+
+Every earlier fixture exhausted: a finite content set runs out of things to raise,
+so the reason stopped recurring with a positive margin. `src/regenerating.py`
+removes that defect and nothing else.
+
+One demand type, regenerating each date. Two responses, so the active chain is
+**irreducible** — which also removes the second confound, the reducible chain
+whose stationary distribution the implementation had to disambiguate from the
+initial uniform. `answer` discharges the demand, `hold` leaves it; the loss is `w`
+if a demand is left outstanding, so the margin is exactly `w` at every date and
+the loss stays bounded. The return edge is `hold` licensed against a *standing
+incoherence* demand — a different reason, independently certified.
+
+| `T` | `p_1(hold)` | early share | late share | `Q_T` | `Q_T/M_T` | control early → late |
+|---|---|---|---|---|---|---|
+| 16 | 1/2 | 0.469 | 0.011 | 2.74 | 0.171 | 0.500 → 0.500 |
+| 64 | 1/2 | 0.394 | 0.000 | 5.23 | 0.082 | 0.500 → 0.500 |
+| 256 | 1/2 | 0.281 | 0.000 | 10.17 | 0.040 | 0.500 → 0.500 |
+| 1024 | 1/2 | 0.156 | 0.000 | 20.06 | 0.020 | 0.500 → 0.500 |
+
+Mass on the inferior response, sampled every 32 dates at `T = 256`:
+
+```
+0.5000, 0.0948, 0.0060, 0.00031, 0.00002, 0, 0, 0
+```
+
+Every clause of the pre-registered criterion is met. `p_1 = 1/2` is substantial;
+the reason recurs at every date (`M_T = T`); the margin is uniformly `1`; `Q_T`
+roughly doubles as `T` quadruples, the `sqrt(T)` shape; the conditional rate falls
+monotonically; and **the matched uninformative control does not move at all** —
+exactly `1/2` at both ends, at every horizon. No exploration schedule, no warm
+start, no graph change over time. The surgical bound holds with equality
+(`regret = delta * Q_T = 10.1727` at `T = 256`).
+
+## What the witness licenses, and what it does not
+
+Licensed:
+
+> There exist coherent recurrent answerability processes with sustained
+> positive-margin feedback on which the Blum–Mansour construction begins with
+> substantial mass on an inferior response and adaptively sheds it because of
+> informative feedback.
+
+**Not** licensed: `p_t(b) -> 0` as a theorem. The observed decay is a measurement
+on one process at four horizons, and no proof of convergence falls out of it.
+
 ## What this settles
 
 **The graph theorem stands.** Transience decides zero mass, and the identity
@@ -146,24 +193,22 @@ compliance" is a property of one-way repair graphs, not of good repair grammars.
 control is exactly flat, and where movement occurs it freezes when the margin
 does.
 
-**The dynamics question is undecided on this fixture.** A finite content set
-cannot sustain a recurring reason with a positive margin, so clause (5) could not
-be tested properly. That is a fixture limitation and it is the thing to fix before
-the dynamics question is asked again.
+**The dynamics question is answered, positively.** The earlier fixture could not
+sustain a recurring reason with a positive margin; the regenerating one can, and
+on it the learner sheds mass under feedback while the control stays flat. The
+obstruction was the fixture, exactly as the refinement pass predicted, and not the
+engine.
 
-## What would be needed to decide it
+## The alternative-learner question is closed for now
 
-**A fixture with sustained coverage**, which this one cannot provide: an
-unbounded or regenerating content supply, so a reason can recur with a positive
-margin for the whole horizon. That is now the first requirement, and it is a
-fixture problem rather than a theory problem.
+The refinement pass asked whether a no-regret learner is needed whose
+distribution is not the fixed point of the current rule mixture. On this evidence
+**no**: the fixed point does not block the dynamics. Both apparent obstructions
+were artefacts — one-way graphs, and reducible chains with pinned class mass — and
+neither survives a coherent irreducible graph with sustained coverage.
 
-Only if the dynamics still fail there does the learner question arise: whether a
-no-regret learner exists whose distribution is **not** the fixed point of the
-current rule mixture. The fixed point is what makes swap-type regret
-self-consistent, and the internal-regret algorithms in the audited source all
-compute one — but with the coherence inference withdrawn, there is no longer a
-reason to think the fixed point is what blocks the dynamics.
+What remains genuinely open is a *proof*: the witness is four horizons on one
+process, not a convergence theorem.
 
 Two things that would **not** count, and the criterion rules them out: uniform
 exploration, which manufactures a decay curve with no dependence on feedback

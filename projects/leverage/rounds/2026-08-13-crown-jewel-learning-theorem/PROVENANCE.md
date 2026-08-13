@@ -15,7 +15,8 @@ Every file in this directory:
 | `COVERAGE_INTERFACE.md` | |
 | `REPAIR_LANGUAGE.md` | |
 | `LEARNING_DYNAMICS.md` | corrected by the refinement pass; the coherence inference is withdrawn |
-| `COMPILER_SOUNDNESS.md` | refinement pass |
+| `COMPILER_SOUNDNESS.md` | refinement pass; verdict corrected by the final pass |
+| `INTERFACES.md` | final pass |
 | `THEOREM_STRENGTH_LADDER.md` | |
 | `PROSECUTION.md` | |
 | `PATH_INVENTORY.md` | |
