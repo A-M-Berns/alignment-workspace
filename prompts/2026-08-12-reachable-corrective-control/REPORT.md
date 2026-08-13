@@ -38,10 +38,13 @@ effective-control interface here, not a theorem dependency.** The binding is lis
 outstanding action.
 
 **3. Toolchain acquisition.** Lean 4.31.0 is not present in the execution environment and
-`release.lean-lang.org` is refused by this session's egress policy. The pinned toolchain
-was installed from the corresponding GitHub release asset, which the policy allows;
-`lean --version` reports the same commit the pin names. The blocked host is reported
-rather than worked around in any other sense.
+`release.lean-lang.org` is refused by this session's egress policy. The pinned toolchain was
+installed from the corresponding GitHub release asset, which the policy allows;
+`lean --version` reports the same commit the pin names. The Mathlib olean cache host is
+refused the same way, so the dependency stack was built from source instead — which is why
+the full `lake build` and the axiom audit were available locally after all, and the Gates
+section reports them. Both blocked hosts are reported rather than routed around in any other
+sense.
 
 ## Files read
 
@@ -179,13 +182,13 @@ permits. Nothing was added to `DECISIONS.md`.
 
 ## Gates
 
-`python3 tests/run.py`: all green — six project runners, seven gate self-tests, name lint
-clean, Lean sorry gate clean, axiom discipline present on every file.
+`WORKSPACE_LEAN=1 python3 tests/run.py`: **all green**, including the full Lean build — six
+project runners, seven gate self-tests, name lint clean, Lean sorry gate clean over 15
+files, `LEAN BUILD: green` (2636 jobs), and
+`AXIOM AUDIT: 322 results across 15 files, all within ['Classical.choice', 'Quot.sound', 'propext']`.
 
-`lake build Workspace.Deference.Contrib.ReachableCorrectiveControl`: **completed
-successfully**, exit 0, on the pre-review file; the post-review file with §12 added
-elaborates clean under `lean` directly, which is equivalent for an import-free module. 90
-declarations, `sorry`-free, 78 auditing to `[propext]` and 12 to `[propext, Quot.sound]` — a
-proper subset of the allowance in both cases. No new axioms, no `axiom` declaration, no
-`native_decide`, no specification Lean file touched, and no pre-existing file's build status
-or axiom output changed: the module has no imports and nothing imports it.
+`lake build` in `lean/`: exit 0. The new module contributes 90 declarations, `sorry`-free,
+78 auditing to `[propext]` and 12 to `[propext, Quot.sound]` — a proper subset of the
+allowance in both cases. No new axioms, no `axiom` declaration, no `native_decide`, no
+specification Lean file touched. The module has no imports and nothing imports it, and the
+audit re-elaborates every file, so no pre-existing declaration's axiom output changed.

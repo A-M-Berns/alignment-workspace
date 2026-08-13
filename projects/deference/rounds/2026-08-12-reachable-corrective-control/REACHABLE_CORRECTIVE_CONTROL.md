@@ -24,6 +24,10 @@ The module has **no imports**. It elaborates against the pinned toolchain alone:
 lean lean/Workspace/Deference/Contrib/ReachableCorrectiveControl.lean
 ```
 
+The repository gate, which builds the whole library and re-elaborates every file, is
+`WORKSPACE_LEAN=1 python3 tests/run.py`. It reports
+`AXIOM AUDIT: 322 results across 15 files, all within ['Classical.choice', 'Quot.sound', 'propext']`.
+
 90 `#print axioms` lines; 78 report `[propext]` and 12 report `[propext, Quot.sound]`, both
 proper subsets of the allowance. No `sorry`, no `axiom` declaration, no `native_decide`, no
 new instance or notation in a specification namespace — the instances the file introduces
