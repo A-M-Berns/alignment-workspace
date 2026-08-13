@@ -97,6 +97,23 @@ yourself, the second by the argument above.
 computed from someone else's books. The system can rewrite every rule it holds and
 the number does not move. That is the property the earlier version could not get.
 
+A second pass over this work found that claim was *almost* right and had a hole.
+One part of the measure — whether the system had permission for things it had
+committed to doing — was computed from a permissions list the system itself was
+allowed to edit. So it could clear that part of its debt by writing itself a
+permission slip, having answered nothing. That part has been taken out of the
+measure, and the hole is worth reporting for a reason beyond the bookkeeping: the
+very thing that keeps the *advisor* from seizing control — the principal holding
+authority over its own authority — is what let the *learner* cheat. One
+arrangement of one relation cannot do both jobs.
+
+The same pass fixed something subtler. The original measure charged the system for
+every consequence of everything it had said, whether or not anyone had raised it.
+That is not answerability, it is a demand for logical omniscience — nobody has
+thought through everything that follows from what they believe. Now a consequence
+becomes a debt when somebody actually raises it. Before that it is something a
+scorekeeper attributes and nobody is charged for.
+
 The round also found something about a technical obstruction the learning line had
 been stuck on, and the finding is that the obstruction was a mis-statement. There
 had been an argument that the class of permitted repairs collapses to "do
@@ -111,6 +128,39 @@ on never asked for that. It asks for a fixed *procedure*, which may look at the
 situation and act differently. Once that is the definition, the repairs come back,
 including the forbidden one — and the procedure still cannot see whether the
 repair helps its score, which is the property that stops it gaming.
+
+**The second pass then found where this stops working, and it is the most
+important thing in the round.** The first version tested the repairs against a
+situation that was reset to identical conditions each round. Reset like that, the
+arithmetic works out cleanly. But real situations carry forward: if you answer a
+question today, tomorrow's situation is different because you answered it.
+
+Tested that way, the accounting breaks. The gap between "how much this repair
+saves, measured locally each round" and "how much it actually saves once you
+follow the consequences through" grows the longer the run goes, for every repair
+in the set.
+
+It is worth saying how this was got wrong twice before it was got right, because
+both mistakes were tempting. First it looked as though one repair — answering a
+challenge — behaved well, with the gap staying at a constant forever. It did not:
+the test situation happened to contain exactly one challenge, so a repair that
+answers challenges could only ever be used once, and *of course* a thing you can
+do only once has a bounded effect. Put a steady supply of challenges in and it
+breaks like everything else. Second, the explanation written down was that
+acknowledging something changes what gets asked next. That is also wrong: replace
+the questioner with a fixed list that ignores the system entirely and the gap
+still grows.
+
+The real reason is simpler and more general. Answering something *sticks*. In the
+honest accounting, the version of the system that answered early gets the benefit
+every round afterwards; the local measurement keeps re-checking from a version
+where it never answered. Any system where fixes persist and problems keep arriving
+has this issue, and it has nothing to do with the scorekeeping idea being tested.
+
+That is the round's main negative result, and it moves the open problem rather than
+solving it: the question is no longer "what counts as a valid repair" — that looks
+answered — but "how do you compare a run where a fix was applied against one where
+it was not, when fixes have lasting effects".
 
 ## What this is not
 
@@ -131,8 +181,12 @@ not the right to dictate one.
 ## Where it falls short
 
 **It moves self-certification without abolishing it.** A reasoner cannot certify
-itself. Two parties who agree with each other can, and the model has no notion of
-collusion at all.
+itself. Two parties who agree with each other can — and the second pass built that
+case rather than leaving it as a worry. If the system and its critic both quietly
+change the same standard, the debt vanishes, with nothing in the public record
+altered. Neither could have done it alone. So the honest summary is: this blocks
+one party from letting itself off; it does not block two parties from drifting
+together.
 
 **The protection is arranged, not derived.** The advisor cannot seize authority
 because the setup does not give it the relevant permission. That is a modelling
@@ -146,9 +200,8 @@ how things are is not caught by anything here.
 
 **No learner was built.** The measure exists, the repairs exist, and the
 arithmetic showing a recurring failure costs you works out exactly. The algorithm
-that would exploit it was not written, and the situations were staged rather than
-allowed to unfold — which the round flags as the next real obstacle rather than a
-detail.
+that would exploit it was not written. The situations are now allowed to unfold
+rather than being reset — which is what produced the narrowing described above.
 
 **Nothing here is machine-checked in the strong sense.** These are exhaustive
 checks over a deliberately tiny setup: three participants, ten claims, short runs.

@@ -103,6 +103,7 @@ class LoadBearingInputs(unittest.TestCase):
         # Replace the critic's practice with an empty one and the defect goes to
         # zero. So the number is a function of that practice, not a constant.
         state = apply_move(base_state(), Move("assert", H, content=ALPHA))
+        state = apply_move(state, Move("challenge", C, other=H, content=Q, ground=R))
         self.assertGreater(defect(state, H, C), 0)
         blank = state.with_practice(C, Practice())
         self.assertEqual(defect(blank, H, C), 0)

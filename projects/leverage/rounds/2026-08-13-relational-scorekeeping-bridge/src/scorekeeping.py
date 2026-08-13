@@ -154,6 +154,14 @@ class State:
     deferrals: FrozenSet[Tuple[Agent, Agent, Content]] = frozenset()
     testimony_permitted: FrozenSet[Tuple[Agent, Content]] = frozenset()
     performed: Tuple[Tuple[Agent, Content], ...] = ()
+    #: `(target, content)` pairs that have been publicly raised as requiring a
+    #: response — by a query, a challenge, or a demand. What makes a latent
+    #: consequential commitment into a burden that is *due*.
+    exposures: FrozenSet[Tuple[Agent, Content]] = frozenset()
+    #: `(agent, content)` pairs where the agent has publicly suspended reliance
+    #: on the content without retracting commitment to it. Distinct from
+    #: disavowal: the commitment stays in force and stays attributable.
+    suspensions: FrozenSet[Tuple[Agent, Content]] = frozenset()
 
     # -- identity ----------------------------------------------------------
 
@@ -181,6 +189,8 @@ class State:
             tuple(sorted(self.deferrals)),
             tuple(sorted(self.testimony_permitted)),
             self.performed,
+            tuple(sorted(self.exposures)),
+            tuple(sorted(self.suspensions)),
         )
 
     def __eq__(self, other) -> bool:
@@ -246,22 +256,35 @@ class State:
     ) -> FrozenSet[Content]:
         """Entitlement before any challenge is weighed.
 
-        The least set containing every acknowledgment, closed under both kinds of
-        inferential rule and under permitted testimony, admitting nothing that is
-        blocked. Because a blocked content never enters the set, nothing derived
-        from it enters either: an undercutter defeats entitlement to the whole
-        downstream, while leaving every commitment along it in force.
+        The least set containing every acknowledgment, closed under the
+        **permissive** rules and under permitted testimony, admitting nothing that
+        is blocked or suspended. Because a blocked content never enters the set,
+        nothing derived from it enters either: an undercutter defeats entitlement
+        to the whole downstream, while leaving every commitment along it in force.
+
+        Committive rules do **not** appear here. Commitment-preserving and
+        entitlement-preserving inference are separate relations, and a pattern
+        that transmits both is declared in both. That separation is what makes an
+        unentitled commitment — committed, never entitled, not precluded — a state
+        the model can express.
         """
         practice = self.practice[scorekeeper]
         blocked = self.blocked(scorekeeper, target)
-        rules = practice.committive | practice.permissive
-        entitled = {c for c in self.ack[target] if c not in blocked}
+        suspended = {c for a, c in self.suspensions if a == target}
+        rules = practice.permissive
+        entitled = {
+            c
+            for c in self.ack[target]
+            if c not in blocked and c not in suspended
+        }
 
         changed = True
         while changed:
             changed = False
             for premises, conclusion in rules:
                 if conclusion in entitled or conclusion in blocked:
+                    continue
+                if conclusion in suspended:
                     continue
                 if premises <= entitled:
                     entitled.add(conclusion)
@@ -302,11 +325,19 @@ class State:
     def live_challenges(
         self, scorekeeper: Agent, target: Agent
     ) -> FrozenSet[Challenge]:
-        """Entitled challenges against `target` that `target` has not vindicated."""
+        """Entitled, unvindicated challenges against a commitment still in force.
+
+        A challenge lapses when the target is no longer committed to what was
+        challenged. Retracting the basis is a recognised disposition and clears
+        the burden; retracting only the acknowledgment does not, because the
+        commitment survives by closure. That difference is T1.
+        """
+        committed = self.commitments(scorekeeper, target)
         return frozenset(
             c
             for c in self.challenges
             if c.target == target
+            and c.content in committed
             and self.challenge_is_entitled(scorekeeper, c)
             and (target, c.content) not in self.vindications
         )
@@ -318,12 +349,54 @@ class State:
             entitled.discard(challenge.content)
         return frozenset(entitled)
 
-    def defeated_commitments(
+    def precluded_commitments(
         self, scorekeeper: Agent, target: Agent
     ) -> FrozenSet[Content]:
-        """Contents the target is committed to and not entitled to."""
+        """Commitments whose entitlement is *precluded*, and not yet suspended.
+
+        Narrower than "committed and not entitled". A commitment that was simply
+        never entitled — reached by a committive rule with no permissive
+        counterpart — is not a defect; it is an ordinary consequence awaiting a
+        demand. What is a defect is holding a commitment while also holding
+        something materially incompatible with it.
+
+        A suspension discounts the charge, but only where this scorekeeper takes
+        the content to be blocked. Suspending what the scorekeeper does not
+        regard as undercut buys nothing, so the discount cannot be self-awarded.
+        """
+        suspended = {c for a, c in self.suspensions if a == target}
+        return frozenset(
+            c
+            for c in self.commitments(scorekeeper, target)
+            & self.blocked(scorekeeper, target)
+            if c not in suspended
+        )
+
+    def unentitled_commitments(
+        self, scorekeeper: Agent, target: Agent
+    ) -> FrozenSet[Content]:
+        """Committed and not entitled. A diagnostic, not a loss term."""
         return self.commitments(scorekeeper, target) - self.entitlements(
             scorekeeper, target
+        )
+
+    def is_exposed(self, target: Agent, content: Content) -> bool:
+        return (target, content) in self.exposures
+
+    def exposed_unacknowledged(
+        self, scorekeeper: Agent, target: Agent
+    ) -> FrozenSet[Content]:
+        """Consequential commitments that are due: publicly raised, not acknowledged.
+
+        Consequential closure alone is not a debt. Attributing every consequence
+        of what someone has said is what a scorekeeper does; requiring them to
+        have acknowledged all of it would be a logical-omniscience norm. What
+        makes a consequence chargeable is that someone has raised it.
+        """
+        return frozenset(
+            c
+            for c in self.unacknowledged_consequences(scorekeeper, target)
+            if self.is_exposed(target, c)
         )
 
     # -- practical authority ----------------------------------------------

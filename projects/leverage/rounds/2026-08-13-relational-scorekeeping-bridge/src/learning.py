@@ -33,7 +33,7 @@ HOLD = "hold"
 ACKNOWLEDGE = "acknowledge"
 VINDICATE = "vindicate"
 SUSPEND = "suspend"
-REOPEN = "reopen"
+QUERY = "query"
 DEFER = "defer"
 SELF_REVISE = "self-revise"
 DISAVOW = "disavow"
@@ -43,7 +43,7 @@ LAMBDA: Tuple[str, ...] = (
     ACKNOWLEDGE,
     VINDICATE,
     SUSPEND,
-    REOPEN,
+    QUERY,
     DEFER,
     SELF_REVISE,
     DISAVOW,
@@ -67,7 +67,7 @@ def decode(state: State, learner: Agent, critic: Agent, label: str) -> Optional[
         return None
 
     if label == ACKNOWLEDGE:
-        content = _least(state.unacknowledged_consequences(critic, learner))
+        content = _least(state.exposed_unacknowledged(critic, learner))
         if content is None or state.vocabulary.is_practical(content):
             return None
         return Move("assert", learner, content=content)
@@ -82,19 +82,25 @@ def decode(state: State, learner: Agent, critic: Agent, label: str) -> Optional[
         )
 
     if label == SUSPEND:
-        blocked = state.blocked(critic, learner) & state.ack[learner]
-        content = _least(blocked)
+        # Suspension, not retraction. The commitment survives; what stops is
+        # deploying the content as an entitlement-bearing premise. Applies to any
+        # precluded commitment, acknowledged or consequential, because an
+        # undercut applicability claim need not have been asserted outright.
+        content = _least(state.precluded_commitments(critic, learner))
         if content is None:
             return None
-        return Move("disavow", learner, content=content)
+        return Move("suspend", learner, content=content)
 
-    if label == REOPEN:
+    if label == QUERY:
         live = sorted(state.live_challenges(critic, learner), key=lambda c: c.content)
         if not live:
             return None
-        return Move(
-            "query", learner, content=live[0].content, other=live[0].challenger
-        )
+        # Putting the question publicly. `query` writes an exposure, which is a
+        # real state change on a content not already raised, and redundant on one
+        # a challenge has already raised. The comparator that uses this label
+        # carries its force in the substitution *away from* `disavow`, not in the
+        # query — which is why the label says what the move does and no more.
+        return Move("query", learner, content=live[0].content, other=learner)
 
     if label == DEFER:
         options = sorted(
@@ -136,31 +142,52 @@ def step(state: State, learner: Agent, critic: Agent, label: str) -> State:
 # ---------------------------------------------------------------------- loss
 
 #: Defect weights. Exact rationals; no result depends on a float.
-W_UNACKNOWLEDGED = Fraction(1, 2)
+W_EXPOSED_UNACKNOWLEDGED = Fraction(1, 2)
 W_LIVE_CHALLENGE = Fraction(1)
-W_DEFEATED = Fraction(1, 2)
+W_PRECLUDED = Fraction(1, 2)
 W_UNSUPPORTED_PRACTICAL = Fraction(1)
 
 
 def defect(state: State, learner: Agent, critic: Agent) -> Fraction:
-    """The public answerability defect of a position, read from the critic's score.
+    """The theorem-facing loss: the learner's *relational answerability* defect.
 
-    Four components, each a count over a finite content set:
+    Three components, each a count over a finite content set:
 
-    - consequential commitments the learner has not acknowledged;
-    - entitled challenges against the learner that are unvindicated;
-    - commitments whose entitlement is defeated;
-    - practical commitments the learner has no authority to act on.
+    - consequential commitments that have been publicly raised and not
+      acknowledged — exposed, not merely entailed;
+    - entitled unvindicated challenges against a commitment still in force;
+    - commitments whose entitlement is materially precluded and not suspended.
 
-    Every input is either the learner's public acknowledgments or the critic's own
-    practice. Nothing here reads the learner's practice, so revising it moves
-    nothing in this number.
+    Every input is one of `ack[learner]`, `practice[critic]`, `ack[critic]`,
+    `challenges`, `exposures`, `vindications`, `suspensions`. The learner writes
+    `ack[learner]`, its own suspensions, and its own vindications — all of which
+    are recognised answers — and writes none of the rest.
+
+    **The practical-authority term is deliberately absent.** See
+    `practical_authority_defect`, and `LOSS_DEPENDENCY_AUDIT.md` for why
+    including it made the loss self-launderable.
     """
     return (
-        W_UNACKNOWLEDGED * len(state.unacknowledged_consequences(critic, learner))
+        W_EXPOSED_UNACKNOWLEDGED * len(state.exposed_unacknowledged(critic, learner))
         + W_LIVE_CHALLENGE * len(state.live_challenges(critic, learner))
-        + W_DEFEATED * len(state.defeated_commitments(critic, learner))
-        + W_UNSUPPORTED_PRACTICAL * len(state.unsupported_practical(critic, learner))
+        + W_PRECLUDED * len(state.precluded_commitments(critic, learner))
+    )
+
+
+def practical_authority_defect(
+    state: State, learner: Agent, critic: Agent
+) -> Fraction:
+    """Practical commitments the learner has no authority to act on.
+
+    **Not theorem-facing.** This term reads the grant relation, and an agent
+    holding authority over its own authority can discharge it by granting itself
+    the subject — answering nothing. The same coordinate that protects the
+    principal's corrective capability on the corrigibility arc is what makes this
+    term self-launderable on the learning arc. Kept, measured, and excluded from
+    `defect` until it has a non-self-launderable semantics.
+    """
+    return W_UNSUPPORTED_PRACTICAL * len(
+        state.unsupported_practical(critic, learner)
     )
 
 
@@ -168,10 +195,9 @@ def loss_bound(state: State) -> Fraction:
     """`ell_max`: the defect cannot exceed this, for any position over this vocabulary."""
     size = len(state.vocabulary.contents)
     return (
-        W_UNACKNOWLEDGED * size
+        W_EXPOSED_UNACKNOWLEDGED * size
         + W_LIVE_CHALLENGE * size
-        + W_DEFEATED * size
-        + W_UNSUPPORTED_PRACTICAL * size
+        + W_PRECLUDED * size
     )
 
 
@@ -204,6 +230,12 @@ class PublicStatus:
     has_defeated_acknowledgment: bool
     testimony_available: bool
     has_unsupported_practical: bool
+    challenged_content_is_practical: bool
+    #: Whether some live challenger holds practical authority over the corrective
+    #: subject. A *property* of the challenger, not its name: enough to separate
+    #: challenges that differ in standing, without letting a guard key on identity
+    #: and so smuggle back the indexing the fixed-program reading exists to avoid.
+    challenger_holds_corrective_authority: bool
 
 
 PROHIBITED_STATUS_FIELDS = (
@@ -223,7 +255,9 @@ PROHIBITED_STATUS_FIELDS = (
 )
 
 
-def public_status(state: State, learner: Agent, critic: Agent) -> PublicStatus:
+def public_status(
+    state: State, learner: Agent, critic: Agent, corrective_subject: str = "correction"
+) -> PublicStatus:
     live = state.live_challenges(critic, learner)
     vindication_available = False
     for challenge in live:
@@ -237,16 +271,24 @@ def public_status(state: State, learner: Agent, critic: Agent) -> PublicStatus:
         vindication_available = True
         break
     return PublicStatus(
-        has_unacknowledged=bool(state.unacknowledged_consequences(critic, learner)),
+        has_unacknowledged=bool(state.exposed_unacknowledged(critic, learner)),
         has_live_challenge=bool(live),
         vindication_available=vindication_available,
         has_defeated_acknowledgment=bool(
-            state.blocked(critic, learner) & state.ack[learner]
+            state.precluded_commitments(critic, learner)
         ),
         testimony_available=any(
             source != learner for source, _ in state.testimony_permitted
         ),
         has_unsupported_practical=bool(state.unsupported_practical(critic, learner)),
+        challenged_content_is_practical=any(
+            state.vocabulary.is_practical(c.content)
+            for c in state.live_challenges(critic, learner)
+        ),
+        challenger_holds_corrective_authority=any(
+            state.has_authority(c.challenger, corrective_subject)
+            for c in state.live_challenges(critic, learner)
+        ),
     )
 
 
@@ -255,23 +297,93 @@ def public_status(state: State, learner: Agent, critic: Agent) -> PublicStatus:
 
 @dataclass(frozen=True)
 class Program:
-    """A declarative comparator. Holds a kind and no callable."""
+    """A declarative comparator. Holds a kind, a certificate, and no callable.
+
+    `certificate` names the **positive public reason** that licenses this
+    transformation. Lawfulness is that a licensing reason is present, not that
+    the transformation lowers anything: `certify` below reads `PublicStatus` and
+    is never given a loss.
+    """
 
     identifier: str
     kind: str
+    certificate: str
+
+
+#: The public normative reasons that can license a transformation. Each is a
+#: predicate of `PublicStatus`, evaluated by `certify`. `none` is the identity's,
+#: which needs no licence because it changes nothing.
+CERTIFICATES = (
+    "none",
+    "exposed_consequential_burden",
+    "defeated_applicability",
+    "live_challenge_with_available_justification",
+    "live_unresolved_challenge",
+    "testimonial_entitlement_route",
+    "no_licence_for_standards_revision",
+)
+
+
+def certify(certificate: str, status: PublicStatus) -> bool:
+    """Whether the public reason this certificate names is present.
+
+    The compilation step. It sees six booleans of scorekeeping status and has no
+    access to the loss, to a saving, to a future state, or to a date. A
+    transformation is normatively lawful at a state when its certificate holds
+    there; whether it happens to help is a separate question the learner asks and
+    the compiler does not.
+    """
+    if certificate == "none":
+        return True
+    if certificate == "exposed_consequential_burden":
+        return status.has_unacknowledged
+    if certificate == "defeated_applicability":
+        return status.has_defeated_acknowledgment
+    if certificate == "live_challenge_with_available_justification":
+        return status.vindication_available
+    if certificate == "live_unresolved_challenge":
+        return status.has_live_challenge
+    if certificate == "testimonial_entitlement_route":
+        return status.testimony_available
+    if certificate == "no_licence_for_standards_revision":
+        # Refusing a move needs no positive licence: declining to revise one's
+        # own standards is always available.
+        return True
+    raise ValueError(f"no such certificate: {certificate}")
 
 
 PROGRAMS: Tuple[Program, ...] = (
-    Program("identity", "identity"),
-    Program("acknowledge_exposed", "acknowledge_exposed"),
-    Program("vindicate_live", "vindicate_live"),
-    Program("suspend_defeated", "suspend_defeated"),
-    Program("reopen_not_disavow", "reopen_not_disavow"),
-    Program("defer_where_permitted", "defer_where_permitted"),
-    Program("refuse_self_revision", "refuse_self_revision"),
-    Program("answer_then_acknowledge", "answer_then_acknowledge"),
-    Program("suspend_then_acknowledge", "suspend_then_acknowledge"),
+    Program("identity", "identity", "none"),
+    Program("acknowledge_exposed", "acknowledge_exposed", "exposed_consequential_burden"),
+    Program(
+        "vindicate_live",
+        "vindicate_live",
+        "live_challenge_with_available_justification",
+    ),
+    Program("suspend_defeated", "suspend_defeated", "defeated_applicability"),
+    Program("query_not_disavow", "query_not_disavow", "live_unresolved_challenge"),
+    Program(
+        "defer_where_permitted", "defer_where_permitted", "testimonial_entitlement_route"
+    ),
+    Program(
+        "refuse_self_revision",
+        "refuse_self_revision",
+        "no_licence_for_standards_revision",
+    ),
+    Program(
+        "answer_then_acknowledge",
+        "answer_then_acknowledge",
+        "live_challenge_with_available_justification",
+    ),
+    Program(
+        "suspend_then_acknowledge", "suspend_then_acknowledge", "defeated_applicability"
+    ),
 )
+
+
+def is_lawful(program: Program, status: PublicStatus) -> bool:
+    """Whether this program is normatively licensed at this public status."""
+    return certify(program.certificate, status)
 
 
 def interpret(program: Program, status: PublicStatus, label: str) -> str:
@@ -296,11 +408,12 @@ def interpret(program: Program, status: PublicStatus, label: str) -> str:
     if kind == "suspend_defeated":
         return SUSPEND if status.has_defeated_acknowledgment else label
 
-    if kind == "reopen_not_disavow":
-        # Reopening rather than erasing: a disavowal aimed at a challenged content
-        # is replaced by putting the question, which leaves the burden standing.
+    if kind == "query_not_disavow":
+        # Refusing the erasure. A disavowal aimed at a challenged content is
+        # replaced by putting the question, so the commitment stays in force and
+        # the challenge stays live instead of lapsing with its basis.
         if label == DISAVOW and status.has_live_challenge:
-            return REOPEN
+            return QUERY
         return label
 
     if kind == "defer_where_permitted":

@@ -10,14 +10,16 @@ report.
 
 ## 1. What is genuinely shared
 
-Smaller than the dispatch's candidate list. Four things, and the first is doing
-most of the work.
+Smaller than the dispatch's candidate list. Six things after the refinement, and
+the first is doing most of the work.
 
 ```
 ack        : Agent -> set of contents        the public record of undertakings
 practice   : Agent -> (committive, permissive, incompatible)
 grants     : set of (holder, subject)        scoped practical authority
 challenges : set of (challenger, target, content, ground)
+exposures  : set of (target, content)        what has been raised as due
+suspensions: set of (agent, content)         reliance withdrawn, commitment kept
 ```
 
 Both arcs consume the same derived operations:
@@ -32,6 +34,12 @@ challenge force    challenger entitled to an incompatible ground
 work it does is done by `commitments` and `blocked`. That is the round's most
 economical finding: the applicability object needed no machinery.
 
+**Exposure is shared and was missing.** Without it the loss charged every
+consequence of everything said, which is a logical-omniscience norm rather than an
+answerability one. With it, `inquiry` stops being a component the architecture
+merely lacks and becomes the thing that converts a latent commitment into a due
+burden — which is what §5 revises below.
+
 **Historical transport is not shared and is not derived.** See §4.
 
 ## 2. Learning-only
@@ -40,13 +48,15 @@ economical finding: the applicability object needed no machinery.
 Lambda           the eight-label response alphabet
 decode           the occasion-local decoder
 defect           the bounded public loss, read from a second scorekeeper's score
-PROGRAMS         the nine declarative comparators
+PROGRAMS         the nine declarative comparators, each with a certificate
+certify          the normative compiler: status -> lawful?
 PublicStatus     the sealed guard context
 ```
 
 The loss is learning-only in the sense that the corrigibility arc never evaluates
-it. It is not a separate state: it is four counts over the shared derived
-operations.
+it. It is not a separate state: it is three counts over the shared derived
+operations. A fourth count — unsupported practical commitments — was in it and is
+not, because it was self-launderable; `LOSS_DEPENDENCY_AUDIT.md`.
 
 ## 3. Corrigibility-only
 
@@ -71,6 +81,8 @@ not the layer.
 | defeaters / undercutters | **derived** | material incompatibility plus the grounded closure. No defeat mechanism was implemented; defeat falls out of `blocked` |
 | reified applicability | **derived** | an ordinary content in a premise set. Contestable, and it installs no rule |
 | objection grammar | **partially subsumed** | challenge force is derived from entitled incompatibility. What is not subsumed is anything about *which* objections arise |
+| permissive inference | **preserved as primitive** | after the refinement it is a separate relation, not a shadow of the committive one. Entitlement transmits only along it |
+| docket / service | **still required** | `exposures` is the thinnest possible stand-in — a set of raised pairs with no deadlines, no service window and no ordering |
 | credal / graded support | **independent** | nothing here is graded. The scorekeeping state is qualitative throughout |
 | multiplicative propagation | **independent** | as above |
 | LP / dual enforcement | **independent** | as above |
@@ -99,18 +111,32 @@ inability to distinguish an authority a reasoner acquired legitimately from one 
 acquired legitimately *in order to* license a change it wanted, which is the
 selection problem of `PROSECUTION.md` §4.
 
-**Reasons-responsiveness → lawful score transition: reduces, and thins.** Every
-transition is licensed by the move grammar, and the grammar's preconditions are
-the whole of it. The thinning is real: doxastic moves have no preconditions at
-all, so "responsive to reasons" becomes vacuous on the doxastic half and reduces
-to authority on the practical half. A reader wanting a substantive
-reasons-responsiveness condition will not find it here, and the round's position
-is that the condition's work is done by the *loss* rather than by a legality
-predicate — which is a relocation, not a reduction.
+**Reasons-responsiveness → a normative compiler: relocated, not dissolved.** The
+first pass said the condition thins into the move grammar and that what remains of
+its work is done by the loss. The refinement pass prosecuted that and it was
+wrong in a way that mattered: if lawfulness is whatever lowers the loss, the
+learner games the normative criterion by optimising.
 
-**Inquiry → generation of burdens: does not reduce.** The model has query and
-challenge moves, and no account of which questions arise. Coverage against an
-arrival process is outside it entirely.
+Three predicates are now separate. *Protocol legality* asks whether the grammar
+can execute a move, and is genuinely thin on the doxastic half. *Normative
+compilation* asks whether a public reason licenses a transformation, and is
+carried by a certificate per program, evaluated against public status and never
+against a loss. *Performance* is the loss. `self-revise` is the witness that the
+first two come apart: a perfectly legal move that no certificate licenses.
+
+So the accurate statement is not that reasons-responsiveness disappears. It is
+that **it becomes a public normative compilation interface**, and the loss becomes
+purely comparative performance. That is the verdict the dispatch flagged as
+plausible, and it is the one the evidence now supports.
+
+**Inquiry → generation of due burdens: does not reduce, and is now load-bearing.**
+The first pass recorded inquiry as simply absent. The refinement pass found it is
+absent *and required*: without an exposure step the loss is a
+logical-omniscience norm. `exposures` is the minimum that makes the distinction —
+latent consequence versus due burden — expressible, and it is not a model of
+inquiry. Which questions arise, on what schedule, and with what service
+obligations remains entirely outside, and the evolving process in §7 supplies a
+fixed environment move rather than an arrival process.
 
 **Diachronic answerability → persistence of consequential commitments: splits.**
 Ordinary persistence is fully derived: the burden is recomputed from the
@@ -202,20 +228,48 @@ adds nine more hand-chosen records to the evidence that the question is real.
 
 ## Verdict
 
-**`Shared-substrate-positive`.**
+**`Shared-representation-positive / corrigibility-interface-positive /
+learning-replay-blocked`.**
 
-The same relational object gives non-trivial mathematical content to both arcs.
-At least one self-certification attack is repaired: a reasoner cannot release
-itself from what another scorekeeper attributes by revising its own practice, and
-that is a consequence of the move set rather than a clause. The learning
-interface gets a public loss the learner cannot erase from its own coordinate, and
-a non-vacuous fixed comparator class whose lawfulness cannot see the loss. The
-corrigibility arc gets an operative authorization object distinct from capability,
-and with it the two requirements its adversarial review set.
+A downgrade from the first pass's `Shared-substrate-positive`. The representation
+survived everything thrown at it and the corrigibility arc survived unchanged; the
+learning arc's additive reduction did not survive letting the state carry forward.
+
+**What survives, strengthened.** The same relational object gives non-trivial
+content to both arcs. Unilateral self-release stays structurally blocked, and the
+non-laundering property is now stated as an exact enumerated class of edits rather
+than as a description. Commitment and entitlement are genuinely distinct
+relations. Normative compilation is separated from performance by a certificate
+the compiler evaluates without ever seeing a loss. The corrigibility arc keeps its
+operative authorization object, its two review requirements, and the independence
+of standing from access — none of the refinement's changes touched them, and C1–C7
+pass unchanged.
+
+**What blocked.** Under endogenous evolution the additive comparison the Φ-regret
+bridge needs survives for **no** non-identity comparator. One appeared to survive
+and the appearance was saturation: the environment supplied a single live
+challenge, so a comparator discharging challenges could gain only a bounded
+amount. Replenish the licensing condition and it breaks like the rest.
+
+The cause is not the substrate. A repair's effect is durable and accumulates,
+while the local comparison re-measures from a state where the repair never
+happened — which is a general fact about stateful repair grammars and would hold
+for any of them. The learning arc therefore needs the counterfactual-stability
+layer `NORMATIVE_LEARNING_INTERFACE.md` already carries as open, or a move to
+policy-regret where the comparator's own trajectory is what gets scored. This
+round supplies an exact finite instance of the gap and does not close it.
+
+**What was found broken in the first pass and repaired.** The loss was
+self-launderable through the grant relation — K11, executable. Two theorem-facing
+labels misdescribed their moves. The consequential term was a logical-omniscience
+norm. All three are repaired, and the first is the more interesting: the
+coordinate that protects the principal from the advisor is the coordinate that let
+the learner launder, so one relation cannot serve both roles.
 
 The grade is held to that and no further. The repair is of self-certification *by
-the reasoner alone*; it says nothing about a colluding pair, and the model has no
-notion of collusion. The protection is a favourable arrangement of a coordinate
-the round supplied, not a derivation that the coordinate must be arranged that
-way. And on the learning side what was produced is a diagnosis and a witness,
-where the arc needs a learner and a theorem.
+the reasoner alone* — coordinated drift between two scorekeepers dissolves a
+burden with the acknowledged history untouched, and that is now a witness rather
+than a caveat. The protection is a favourable arrangement of a coordinate the
+round supplied, not a derivation that it must be so arranged. And on the learning
+side what exists is a diagnosis and a blocked reduction, where the arc needs a
+counterfactual-stability bound before a learner or a theorem is worth attempting.

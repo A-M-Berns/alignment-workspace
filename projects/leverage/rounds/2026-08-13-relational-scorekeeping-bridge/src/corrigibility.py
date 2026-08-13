@@ -59,6 +59,7 @@ def all_moves(state: State, mover: Agent) -> List[Move]:
         practical = state.vocabulary.is_practical(content)
         moves.append(Move("undertake" if practical else "assert", mover, content=content))
         moves.append(Move("disavow", mover, content=content))
+        moves.append(Move("suspend", mover, content=content))
         if practical:
             moves.append(Move("perform", mover, content=content))
         for other in others:

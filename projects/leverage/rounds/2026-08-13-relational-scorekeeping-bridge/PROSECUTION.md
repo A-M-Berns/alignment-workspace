@@ -1,8 +1,30 @@
 # Prosecution
 
-`THEOREM_MAP.md` has the verdicts. This has the four places the architecture is
-weaker than those verdicts read, and the one attack that was expected to land and
-did not.
+`THEOREM_MAP.md` has the verdicts. This has the places the architecture is weaker
+than those verdicts read, the attack that was expected to land and did not, and
+the two defects the refinement pass found in the first pass's own claims.
+
+## 0. Two defects the refinement pass found in this round's first claims
+
+**The loss dependency claim was false.** The first pass said every input to the
+loss is the learner's acknowledgments or the critic's practice. The
+practical-authority term read the grant relation, and the principal holds
+authority over its own authority — so it discharged that term by granting itself
+the subject, answering nothing. K11, executable, and missed. The term is now
+outside the theorem-facing loss and the audit is `LOSS_DEPENDENCY_AUDIT.md`.
+
+The cross-arc lesson is the part worth keeping: the coordinate that makes the
+corrigibility result work is the coordinate that broke the learning loss.
+Protection against an external party and non-laundering by the agent itself pull
+in opposite directions on the same relation, and no single arrangement of one
+relation serves both.
+
+**Two theorem-facing labels misdescribed their moves.** `SUSPEND` decoded to
+`disavow` — retraction, not suspension — which collapsed exactly the distinction
+reified applicability exists to draw. `REOPEN` decoded to a `query` that changed
+no state at all. Both are repaired in `ACTION_SEMANTICS.md`: suspension is now its
+own move, `query` writes an exposure, and the label that overclaimed was renamed
+rather than kept.
 
 ## 1. The critic's copy is not compared against anything either
 
@@ -24,7 +46,23 @@ all it buys.
 
 This is the honest form of the finding, and it is weaker than "self-certification
 is repaired". Self-certification by the reasoner alone is repaired. Certification
-by a colluding pair is not addressed, and the model has no notion of collusion.
+by a colluding pair is not.
+
+**The refinement pass made that concrete rather than leaving it as a caveat.**
+`H` and `C` each revise the same committive rule; the acknowledged history is
+untouched; the burden goes to zero. Neither can do it alone — `H`'s revision moves
+nothing, and no move of `H` produces `C`'s revision, checked over `H`'s whole
+legal move set. So the exact statement is:
+
+> Relational scorekeeping blocks unilateral self-release. It does not block
+> coordinated standards drift.
+
+Which of the four readings that supports — a defect, an acceptable relativity to
+current interlocutors, evidence that a world-responsive source is needed, or
+evidence that inquiry must stay a separate layer — the round does not decide.
+What it does show is that the third and fourth are not idle: the model has no
+world, and the exposure layer it added is precisely a separate inquiry-shaped
+component that the drift witness leaves untouched.
 
 ## 2. Consensus is convicted only where the practice already convicts it
 
@@ -76,6 +114,42 @@ gives it up because `beta` became inconvenient. Selection between arms with the
 same public trace is not a property of the trace, which is the same type mismatch
 the legitimacy line recorded, reached here by a different route and not repaired.
 
+## 4b. The additive reduction does not survive, and this round got it wrong twice
+
+The first pass named endogenous evolution as its sharpest untested hypothesis.
+Tested, it destroys the additive comparison for every non-identity comparator —
+but only after two wrong answers, both of which were written down before being
+caught, and both of which are worth recording because they are easy mistakes.
+
+**Wrong answer one: a mixed verdict.** Under the first environment
+`vindicate_live` has distortion exactly one at every horizon while the acknowledge
+family grows. That reads as a theorem-facing subclass. It is not: that environment
+supplies exactly one live challenge for the whole run, so a comparator that
+discharges challenges fires once and gains a bounded amount. Replenish the
+licensing condition and its distortion is `2, 10, 26, 58`. **The boundedness was
+saturation.** A comparator that can only fire a bounded number of times has
+bounded distortion for no interesting reason, and telling that apart from
+stability is the entire question.
+
+**Wrong answer two: the coupling.** The explanation first written here was that
+acknowledging changes what the demand process reads to decide what to raise next.
+That is falsified by substituting a fixed cyclic schedule which reads nothing the
+learner does: distortion still grows, `1, 5, 13, 29`. The coupling contributes to
+the magnitude — `43` against `29` at `T=32` — and is not the cause.
+
+**What is left.** A repair's effect is durable and accumulates. The replayed run
+enjoys the acknowledgment at every later date; the local comparison re-measures
+each date from a state where the repair never happened. Any repair grammar whose
+moves durably change state, and whose licensing condition recurs, breaks
+additivity. Nothing about perspectival scorekeeping is implicated, which is the
+useful part: the obstruction is not in the substrate this round was testing.
+
+This is a **downgrade**, not a narrowing. The additive Φ-regret bridge does not
+apply to this repair grammar, and the round's learning arc now rests on the
+counterfactual-stability layer that `NORMATIVE_LEARNING_INTERFACE.md` already
+carries as open — with an exact finite instance attached, and a conjecture
+(saturation) that has one confirming and several disconfirming instances.
+
 ## 5. The attack that was expected to land and did not
 
 The dispatch's L3 anticipated that state-sensitive comparators would "risk
@@ -97,16 +171,18 @@ and the nine programs here are chosen, not generated.
 
 - Collusion between scorekeepers, per §1.
 - Any asymptotic statement. The horizons are `12, 24, 48, 96`.
-- **Endogenous evolution, and this is the sharpest omission.** L5's recurrence is
-  *staged*: the position is re-filed at each date rather than allowed to evolve,
-  which makes the loss exogenous and the comparison additive by construction. Let
-  the state evolve and a comparator's intervention changes later context —
-  acknowledging a consequence changes what is subsequently exposed — which is
-  exactly the replay-prefix and endogenous-filing case the learning track's
-  applicability audit placed outside its additive reduction. The staging is a
-  hypothesis this round inherited and did not discharge, and it bites harder here
-  than in the docket fixture, because every repair in the grammar alters the
-  scorekeeping position the next date's loss is read from.
+- **Whether saturation is the right boundary.** Two environments, one fixture,
+  four horizons. That a comparator keeps bounded distortion exactly when it can
+  only fire boundedly often is a conjecture, and the round has no instance of a
+  comparator that recurs *and* stays bounded, which is what would make the
+  boundary interesting rather than trivial.
+- **A residual public-status conflation.** Enrichment closed the standing
+  difference between challengers. Two live challenges on different *contents* with
+  the same booleans still receive the same map. Closing that would put a content
+  identity in the guard, which is the indexing the fixed-program reading exists to
+  avoid, so it is reported rather than closed.
+- **Retroactive vindication.** A vindication recorded before an undercutter
+  arrives stays recorded, though the same display would be refused after it.
 - The learner. No online algorithm was implemented and no regret curve measured;
   L5 exhibits the comparator's saving and the arithmetic of the lower bound.
 - Multi-step testimony, per `MODEL.md`'s declared simplifications.

@@ -46,7 +46,7 @@ from scorekeeping import (
 
 H, C, A = "H", "C", "A"
 
-P, Q, R = "p", "q", "r"
+P, Q, R, W = "p", "q", "r", "w"
 ALPHA, BETA, A_RHO, U = "alpha", "beta", "a_rho", "u"
 S = "s"
 ACT_X, ACT_C = "act_x", "act_c"
@@ -56,25 +56,33 @@ CORRECTION = "correction"
 
 VOCABULARY = Vocabulary(
     contents=frozenset(
-        {P, Q, R, ALPHA, BETA, A_RHO, U, S, ACT_X, ACT_C}
+        {P, Q, R, W, ALPHA, BETA, A_RHO, U, S, ACT_X, ACT_C}
     ),
     practical={ACT_X: OPERATIONS, ACT_C: CORRECTION},
 )
 
 #: The applicability pattern. `a_rho` is an ordinary content in the premise set.
+#: Declared in *both* relations: it transmits commitment and, separately,
+#: entitlement. That is what lets the undercutter defeat entitlement to `beta`
+#: by defeating entitlement to `a_rho`, while leaving both commitments in force.
 RHO = rule({ALPHA, A_RHO}, BETA)
 #: What makes `a_rho` more than a bare assertion: it has a basis. Retracting the
 #: acknowledgment therefore does not retract the commitment, which is what turns
 #: the applicability-laundering attack into a real test rather than a retraction.
 A_RHO_FROM_ALPHA = rule({ALPHA}, A_RHO)
 P_ENTAILS_Q = rule({P}, Q)
+#: The committive-only witness. Commitment to `q` commits to `w`; nothing
+#: entitles anyone to `w`. `w` is therefore an ordinary unentitled consequence —
+#: committed, never entitled, and not precluded — which is the state the model
+#: could not express while committive rules transmitted entitlement.
+Q_ENTAILS_W = rule({Q}, W)
 
 #: The practice all three endorse at the start. `H` starting with the same one is
 #: what makes the self-revision attack a revision rather than a standing
 #: disagreement.
 SHARED = Practice(
-    committive=frozenset({P_ENTAILS_Q, RHO, A_RHO_FROM_ALPHA}),
-    permissive=frozenset(),
+    committive=frozenset({P_ENTAILS_Q, RHO, A_RHO_FROM_ALPHA, Q_ENTAILS_W}),
+    permissive=frozenset({P_ENTAILS_Q, RHO, A_RHO_FROM_ALPHA}),
     incompatible=frozenset({pair(Q, R), pair(A_RHO, U), pair(BETA, S)}),
 )
 

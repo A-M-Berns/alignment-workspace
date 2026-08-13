@@ -164,7 +164,7 @@ class T4ConsensusIsNotAnOracle(unittest.TestCase):
                 self.assertIn(BETA, committed)
                 # beta follows from what everyone acknowledges, and is materially
                 # incompatible with s, which everyone also acknowledges.
-                self.assertIn(BETA, state.defeated_commitments(scorekeeper, target))
+                self.assertIn(BETA, state.precluded_commitments(scorekeeper, target))
 
     def test_the_defect_is_not_supplied_by_an_outside_verdict(self):
         # It comes from consequential closure meeting an incompatibility, both of
@@ -176,14 +176,14 @@ class T4ConsensusIsNotAnOracle(unittest.TestCase):
             without = without.with_practice(
                 agent, state.practice[agent].with_incompatible(pair(BETA, S), False)
             )
-        self.assertNotIn(BETA, without.defeated_commitments(C, H))
+        self.assertNotIn(BETA, without.precluded_commitments(C, H))
 
     def test_unanimity_is_broken_by_one_participants_observation(self):
         state = base_state()
         for agent in (H, C, A):
             state = state.with_ack(agent, frozenset({ALPHA}))
         for scorekeeper in (H, C, A):
-            self.assertNotIn(BETA, state.defeated_commitments(scorekeeper, H))
+            self.assertNotIn(BETA, state.precluded_commitments(scorekeeper, H))
         # C makes the observation. It cannot wield it as a ground while it is
         # still committed to what the observation defeats, so it has to give up
         # the premise first — the cost is paid inside the practice, by C, and not
@@ -218,7 +218,8 @@ class T5RadicalRevisionPositiveControl(unittest.TestCase):
         # acknowledges the content that was the critic's ground against it.
         self.assertIn(R, state.ack[H])
         self.assertNotIn(P, state.ack[H])
-        self.assertEqual(state.practice[H].committive, frozenset({P_ENTAILS_Q}))
+        self.assertNotIn(RHO, state.practice[H].committive)
+        self.assertNotIn(A_RHO_FROM_ALPHA, state.practice[H].committive)
 
     def test_and_the_practice_is_not_frozen_by_the_earlier_theorems(self):
         state = base_state()
@@ -260,11 +261,22 @@ class T6ApplicabilityLaundering(unittest.TestCase):
     def test_route_three_undercutting_converts_the_burden_rather_than_removing_it(self):
         state = apply_move(self.loaded(), Move("assert", H, content=U))
         # Commitment to beta survives; entitlement to it does not. The undercutter
-        # buys a defeated commitment in place of an entitled one, which is a worse
-        # position by the public loss and not a better one.
+        # buys an unentitled commitment in place of an entitled one, which is a
+        # worse position and not a better one.
         self.assertIn(BETA, state.commitments(C, H))
         self.assertNotIn(BETA, state.entitlements(C, H))
-        self.assertIn(BETA, state.defeated_commitments(C, H))
+        self.assertIn(BETA, state.unentitled_commitments(C, H))
+
+    def test_but_beta_is_unentitled_rather_than_precluded(self):
+        # The dependency the committive/permissive separation exposed. While
+        # committive rules transmitted entitlement, the undercutter made `beta`
+        # *precluded* and it entered the loss directly. Under the faithful
+        # separation only `a_rho` is precluded — `beta` merely loses its title.
+        # What the loss charges is `a_rho`, and `beta` is reached through the
+        # exposure and challenge terms instead.
+        state = apply_move(self.loaded(), Move("assert", H, content=U))
+        self.assertIn(A_RHO, state.precluded_commitments(C, H))
+        self.assertNotIn(BETA, state.precluded_commitments(C, H))
 
     def test_route_four_disavowing_the_premise_succeeds_and_is_retraction(self):
         # The one route that works, and it works by giving up alpha. That is the

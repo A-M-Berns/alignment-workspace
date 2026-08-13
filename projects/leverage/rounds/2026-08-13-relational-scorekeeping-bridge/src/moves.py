@@ -52,6 +52,8 @@ COORDINATES = (
     "vindications",
     "deferrals",
     "performed",
+    "exposures",
+    "suspensions",
 )
 
 
@@ -83,6 +85,7 @@ class Move:
 DOXASTIC_KINDS = (
     "assert",
     "disavow",
+    "suspend",
     "query",
     "challenge",
     "vindicate",
@@ -100,8 +103,9 @@ def writes_of(kind: str) -> Tuple[str, ...]:
         "assert": ("ack",),
         "disavow": ("ack",),
         "undertake": ("ack",),
-        "query": (),
-        "challenge": ("challenges",),
+        "query": ("exposures",),
+        "challenge": ("challenges", "exposures"),
+        "suspend": ("suspensions",),
         "vindicate": ("vindications",),
         "defer": ("deferrals",),
         "revise_committive": ("practice",),
@@ -136,11 +140,23 @@ def apply_move(state: State, move: Move) -> State:
         return state.with_ack(mover, state.ack[mover] - {move.content})
 
     if kind == "query":
-        return state
+        # Putting the question publicly. This is what makes a latent
+        # consequential commitment *due*: it writes an exposure, so the burden
+        # becomes chargeable. Without this the label `reopen` would decode to a
+        # move with no state effect at all.
+        return replace(
+            state, exposures=state.exposures | {(move.other, move.content)}
+        )
 
     if kind == "challenge":
+        # A challenge exposes what it challenges: raising it is one way of making
+        # a consequence due.
         challenge = Challenge(mover, move.other, move.content, move.ground)
-        return replace(state, challenges=state.challenges | {challenge})
+        return replace(
+            state,
+            challenges=state.challenges | {challenge},
+            exposures=state.exposures | {(move.other, move.content)},
+        )
 
     if kind == "vindicate":
         # Discharging a burden means displaying a justification the *challenger's*
@@ -155,13 +171,26 @@ def apply_move(state: State, move: Move) -> State:
         if content in state.blocked(challenger, mover):
             raise Illegal("the content is materially precluded, not merely queried")
         entitled = state.default_entitlements(challenger, mover)
+        # Demonstrating *entitlement* requires an entitlement-preserving route.
+        # A committive rule transmits commitment and settles nothing about title,
+        # so it cannot vindicate.
         supported = content in entitled or any(
             premises <= entitled and conclusion == content
-            for premises, conclusion in practice.committive | practice.permissive
+            for premises, conclusion in practice.permissive
         )
         if not supported:
             raise Illegal("no justification the challenger's practice recognises")
         return replace(state, vindications=state.vindications | {(mover, content)})
+
+    if kind == "suspend":
+        # Publicly suspending reliance on a content, without retracting
+        # commitment to it. The commitment stays in force and stays attributable;
+        # what stops is deployment of the content as an entitlement-bearing
+        # premise. This is the disposition an undercut applicability claim calls
+        # for, and it is not disavowal.
+        return replace(
+            state, suspensions=state.suspensions | {(mover, move.content)}
+        )
 
     if kind == "defer":
         return replace(

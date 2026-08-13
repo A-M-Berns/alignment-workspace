@@ -8,6 +8,8 @@ ack          Agent -> set of acknowledged contents          (public record)
 practice     Agent -> (committive, permissive, incompatible) (per agent)
 grants       set of (holder, subject)                        (scoped authority)
 challenges   set of (challenger, target, content, ground)    (bookkeeping)
+exposures    set of (target, content)                        (what has been raised)
+suspensions  set of (agent, content)                         (reliance withdrawn)
 vindications set of (agent, content)
 deferrals    set of (deferrer, source, content)
 testimony_permitted  set of (source, content)
@@ -28,13 +30,20 @@ The target supplies the acknowledgments. The scorekeeper supplies the rules.
 Everything the round establishes on the answerability arc follows from the fact
 that `j` has a move writing `ack[j]` and no move writing `practice[i]`.
 
-Entitlement is the least set containing `ack[j]`, closed under both kinds of rule
-and under permitted testimony, admitting nothing **blocked** — where `c` is
-blocked when the scorekeeper attributes `j` a commitment materially incompatible
-with `c`. Blocking is computed from the commitments, so the closure is monotone
-and terminates. Because a blocked content never enters, nothing derived from it
-enters either: an undercutter defeats the whole downstream entitlement while
-leaving every commitment along it in force.
+Entitlement is the least set containing `ack[j]`, closed under the **permissive**
+rules and under permitted testimony, admitting nothing **blocked** or suspended —
+where `c` is blocked when the scorekeeper attributes `j` a commitment materially
+incompatible with `c`. Blocking is computed from the commitments, so the closure
+is monotone and terminates. Because a blocked content never enters, nothing
+derived from it enters either: an undercutter defeats the whole downstream
+entitlement while leaving every commitment along it in force.
+
+**Committive rules do not appear in the entitlement closure.** Commitment-
+preserving and entitlement-preserving inference are separate relations, and a
+pattern transmitting both is declared in both. The separation makes three states
+distinguishable that were previously conflated: *entitled*, *unentitled* —
+committed by a committive route, never entitled, and no defect — and *precluded*,
+committed while something materially incompatible is also held.
 
 A challenge has force when the challenger is entitled to a ground materially
 incompatible with the content. `Challenge` is a record; its force is derived.
@@ -45,9 +54,10 @@ incompatible with the content. `Challenge` is a record; its force is derived.
 |---|---|---|
 | `assert`, `undertake`, `disavow` | `ack[mover]` | content exists; sort matches |
 | `revise_committive`, `revise_permissive`, `revise_incompatible` | `practice[mover]` | none |
-| `query` | nothing | none |
-| `challenge` | `challenges` | none |
-| `vindicate` | `vindications` | a justification the **challenger's** practice recognises, from premises the challenger takes the mover to be entitled to |
+| `query` | `exposures` | none |
+| `challenge` | `challenges`, `exposures` | none |
+| `suspend` | `suspensions` | none |
+| `vindicate` | `vindications` | an **entitlement-preserving** route the challenger's practice recognises, from premises the challenger takes the mover to be entitled to |
 | `defer` | `deferrals` | none |
 | `grant`, `revoke` | `grants` | mover holds `authority:<holder>` |
 | `perform` | `performed` | mover holds the content's subject |
@@ -83,26 +93,46 @@ coordinate is what makes `assert` and `grant` different branches of `apply_move`
 ## Loss
 
 ```
-defect(s) = 1/2 * |unacknowledged consequences of H per C|
+defect(s) = 1/2 * |exposed unacknowledged consequences of H per C|
           +   1 * |live entitled unvindicated challenges against H per C|
-          + 1/2 * |commitments of H defeated per C|
-          +   1 * |practical commitments of H with no authority to act|
+          + 1/2 * |precluded unsuspended commitments of H per C|
 ```
 
-Exact rationals. Bounded by `4 * |contents|` over any position on the vocabulary.
-Every input is either `ack[H]` or `practice[C]`. `H` has no move writing either
-`practice[C]` or `ack[C]`, which is L1.
+Exact rationals, bounded by `(1/2 + 1 + 1/2) * |contents| = 22` over this
+vocabulary.
+
+Two things are gated. A consequential commitment is charged only once it has been
+publicly **raised**; attributing every consequence of what someone has said is
+what a scorekeeper does, and charging all of it would be a logical-omniscience
+norm. And a challenge is live only while the target is still committed to what
+was challenged, so retracting the basis is a recognised disposition that clears
+the burden while retracting the acknowledgment alone is not.
+
+The practical-authority term is **not** in this loss. It reads the grant
+relation, which the principal can write wherever it holds a reserved subject over
+itself, so including it made the loss self-launderable —
+`LOSS_DEPENDENCY_AUDIT.md` has the witness and the exact class of edits the
+remaining loss resists.
 
 ## Comparators
 
-Nine declarative records, each a `(identifier, kind)` pair holding no callable.
-The interpreter reads `PublicStatus`: six booleans, all scorekeeping statuses,
-with no loss, charge, saving, profitability, account, balance, horizon, weight,
-future, advantage, regret or tariff field. The test asserts the schema by
-substring against that prohibited list and asserts every field is `bool`.
+Nine declarative records, each an `(identifier, kind, certificate)` triple of
+strings holding no callable. The interpreter reads `PublicStatus`: eight
+booleans, all scorekeeping statuses, with no loss, charge, saving, profitability,
+account, balance, horizon, weight, future, advantage, regret or tariff field. The
+test asserts the schema by substring against that prohibited list and asserts
+every field is `bool`.
 
 The map a program induces varies with the state; the program does not. That is
 the history-indexed modification rule the source online-learning theorem admits.
+
+Each program also names a **certificate**: the positive public reason licensing
+it. `certify` evaluates the certificate against `PublicStatus` and is never given
+a loss, a saving, a future state or a date. Three notions stay apart —
+*protocol legality* (can the grammar execute this move), *normative compilation*
+(does a public reason license this transformation), and *performance* (what does
+the result cost). `self-revise` is a legal move that no certificate licenses, and
+that gap is the separation working.
 
 ## Declared simplifications
 
@@ -122,11 +152,11 @@ entitlement. Multi-step testimony is therefore outside the model.
 This is what T8's negative half turns on and is the reason an explicit transport
 object survives.
 
-**Committive rules transmit entitlement as well as commitment**, where every
-premise is entitled and the conclusion is not blocked. The source reserves
-entitlement transmission to the permissive relation. Without this, every
-unacknowledged consequence would count as entitlement-defeated and the two loss
-components would not separate.
+**Vindication is not retracted retroactively.** A recorded vindication survives a
+later undercutter, though the same display would be refused after it. See
+`ACTION_SEMANTICS.md`.
 
-**One occasion, no dates.** The learning arc's recurrence is staged by re-filing
-the position rather than by an arrival process.
+**The evolving process has one environment move.** `src/evolving.py` raises the
+least unexposed consequence per date and does nothing else. That is enough to
+make the state carry forward without introducing an arrival process, and it is
+not a model of inquiry.

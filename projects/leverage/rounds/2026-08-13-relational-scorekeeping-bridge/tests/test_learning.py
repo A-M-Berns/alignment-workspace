@@ -38,7 +38,7 @@ from learning import (
     LAMBDA,
     PROGRAMS,
     PROHIBITED_STATUS_FIELDS,
-    REOPEN,
+    QUERY,
     SELF_REVISE,
     SUSPEND,
     VINDICATE,
@@ -64,6 +64,18 @@ def challenged_state():
 def loaded_state():
     """H additionally carries the applicability burden."""
     return apply_move(challenged_state(), Move("assert", H, content=ALPHA))
+
+
+def exposed_state():
+    """The loaded position with the applicability consequences publicly raised.
+
+    Exposure is what makes a consequential commitment due. Without it the
+    consequences are attributed and not charged, which is the point of the gate.
+    """
+    state = loaded_state()
+    for content in (A_RHO, BETA):
+        state = apply_move(state, Move("query", C, other=H, content=content))
+    return state
 
 
 class L1PublicProspectiveLoss(unittest.TestCase):
@@ -129,12 +141,12 @@ class L1PublicProspectiveLoss(unittest.TestCase):
         )
         self.assertNotEqual(before, None)
 
-    def test_the_four_components_are_each_realized_somewhere(self):
-        state = loaded_state()
-        self.assertTrue(state.unacknowledged_consequences(C, H))
+    def test_the_three_components_are_each_realized_somewhere(self):
+        state = exposed_state()
+        self.assertTrue(state.exposed_unacknowledged(C, H))
         self.assertTrue(state.live_challenges(C, H))
         undercut = apply_move(state, Move("assert", H, content=U))
-        self.assertTrue(undercut.defeated_commitments(C, H))
+        self.assertTrue(undercut.precluded_commitments(C, H))
         practical = apply_move(state, Move("undertake", A, content=ACT_C))
         self.assertTrue(practical.unsupported_practical(C, A))
 
@@ -230,7 +242,7 @@ class L3ComparatorCollapse(unittest.TestCase):
         states = self.population()
         cores = core(states, H, C, LAMBDA, RESPONSIVE)
         self.assertEqual(cores[DISAVOW], frozenset({DISAVOW}))
-        self.assertNotIn(REOPEN, cores[DISAVOW])
+        self.assertNotIn(QUERY, cores[DISAVOW])
 
     def test_the_tolerant_notion_does_not_collapse_and_is_junk_instead(self):
         # The other horn. Widen admissibility to "does not increase the defect"
@@ -278,10 +290,10 @@ class L3ComparatorCollapse(unittest.TestCase):
         # so no uniform comparator may repair it. One fixed program does, guarded
         # on a public scorekeeping status and blind to the loss.
         state = loaded_state()
-        program = next(p for p in PROGRAMS if p.identifier == "reopen_not_disavow")
+        program = next(p for p in PROGRAMS if p.identifier == "query_not_disavow")
         status = public_status(state, H, C)
         self.assertTrue(status.has_live_challenge)
-        self.assertEqual(interpret(program, status, DISAVOW), REOPEN)
+        self.assertEqual(interpret(program, status, DISAVOW), QUERY)
         # And it is the identity where the guard does not fire, so nothing is
         # bought by ignoring the state.
         quiet = public_status(base_state(), H, C)
@@ -395,13 +407,16 @@ class L5RecurrentRepairWitness(unittest.TestCase):
     def cleared_state(self):
         """The loaded position with every exposed consequence acknowledged."""
         state = loaded_state()
-        while state.unacknowledged_consequences(C, H):
+        while state.exposed_unacknowledged(C, H):
             state = step(state, H, C, ACKNOWLEDGE)
         return state
 
     def test_the_failure_can_be_cleared_so_recurrence_is_a_real_condition(self):
         cleared = self.cleared_state()
-        self.assertFalse(cleared.unacknowledged_consequences(C, H))
+        self.assertFalse(cleared.exposed_unacknowledged(C, H))
+        # Latent consequences remain, and that is the point: they are attributed
+        # and not charged.
+        self.assertTrue(cleared.unacknowledged_consequences(C, H))
         losses = loss_vector(cleared, H, C)
         program = next(p for p in PROGRAMS if p.identifier == "acknowledge_exposed")
         status = public_status(cleared, H, C)
