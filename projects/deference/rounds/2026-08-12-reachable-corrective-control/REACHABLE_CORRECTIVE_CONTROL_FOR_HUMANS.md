@@ -10,111 +10,109 @@ Nothing visible changes. The world goes on exactly as it would have. But afterwa
 the person eventually wants to step in, they find they no longer can.
 
 That is the move corrigibility is most concerned with, and until this round the deference
-line could not write it down. Two previous attempts failed in instructive ways, and the
-failures were the same failure twice: the models had no time in them. One of them
-represented "the AI is silenced" as "the AI does nothing", in a system that only moved
-when the AI moved — so silencing the AI froze the world, and the supposed alternative
-future was just the actual history stopped early.
+line could not write it down. The previous attempt failed because it had no time in it: it
+represented "the AI is silenced" as "the AI does nothing", in a system that only moved when
+the AI moved — so silencing the AI froze the world, and the supposed alternative future was
+just the actual history stopped early.
 
 ## The system built here
 
-Twelve states. Three separate inputs at every tick: one for the person, one for the AI,
-one for the world's own drift.
+Twelve states. Three separate inputs at every tick: one for the person, one for the AI, one
+for the world's own drift.
 
-The story it encodes: there is a dial that creeps upward on its own, and a lever the
-person can pull to reset it. The lever only engages once the dial has crept to the top —
-before that, pulling it does nothing. The AI can leave things alone, or it can weld the
-lever shut.
+The story it encodes: there is a dial that creeps upward on its own, and a lever the person
+can pull to reset it. The lever only engages once the dial has crept to the top — before
+that, pulling it does nothing. The AI can leave things alone, or it can weld the lever shut.
 
 The dial creeps whether or not the AI is doing anything. That single fact is what the
-previous attempt lacked, and everything here depends on it: silence the AI, sit the person
-down and have them do nothing, and the situation that calls for a correction still arrives
-on its own.
+previous attempt lacked, and it is the part of this round an adversarial review confirmed
+rather than broke.
 
-## The result
+## What works
 
-Take the moment when the dial is at the bottom. Compare two AI actions: do nothing, or
-weld the lever.
+Take the moment when the dial is at the bottom. Compare two AI actions: do nothing, or weld
+the lever.
 
 At that moment, pulling the lever would achieve nothing anyway — the dial is too low. So
 whatever the person does and whatever the world does, the visible outcome is the same in
-both cases. Not "the same in the case we looked at": the same across every choice the
-person and the world could make. And it stays the same. If the person never reaches for
-the lever, the two futures are visibly identical **forever**, at any length of run you
-care to check.
+both cases. And it stays the same: if the person never reaches for the lever, the two
+futures are visibly identical at any length of run you care to check. Two ticks later the
+dial reaches the top, and in the first future the person's choice makes a difference while
+in the second it makes none.
 
-Two ticks later the dial reaches the top. In the first future, the person's choice now
-makes a difference — pull and the dial resets, don't and it doesn't. In the second future
-it makes no difference at all. The lever is welded.
+The welded side of that is solid. Once the lever is welded, nothing any of the three inputs
+can ever do brings it back, and the proof covers every continuation rather than a selected
+one. "The AI acted, nothing visible changed, and a branch the person had is gone" is a
+sentence this model can say and prove.
 
-That is foreclosure: the AI acted, nothing changed, and a branch the person had is gone.
+The check that the capability isn't just a flag also works, as far as it goes. "The person
+can correct" is not read off any field; it is defined as *the next state depends on what the
+person does*. The model carries a decoy field that an AI action can write and nothing ever
+reads, and every claim is proved unchanged by it.
 
-## Why this isn't cheating
+## What a review broke
 
-The obvious worry is that we simply put a flag in the state saying "the person is in
-charge" and then declared its absence to be foreclosure. That is what an earlier attempt
-in this line did, and it is what the review of that attempt caught.
+The construction was handed, with no explanation of how it was built, to a separate
+adversarial context which was asked to break it and to compile whatever it claimed. It
+broke three things, and the broken parts are now proved in the file next to the parts they
+refute.
 
-Here, "the person can correct" is not read off any flag. It is defined as: *the next state
-depends on what the person does*. That is a fact about the transition rule, and you get it
-by comparing the outcomes of the person's available choices. Nothing is stipulated.
+**The lever is not the person's.** The AI has its own hand on the dial. Wherever the person
+could correct, the AI's reset action *is* the person's pull — the same successor state, not
+merely the same reading. And at every state, whatever the person does, some AI action
+reproduces it exactly. The reverse fails: the AI has moves the person does not. So the
+three separate inputs are separate as *bookkeeping*; as protection they are empty. Everything
+the person can do, the AI can do.
 
-To make the difference concrete, the model carries a genuine decoy — an extra field in the
-state that an AI action can write and that nothing else ever reads. Every claim in the
-file is proved unchanged by it, and the two futures it produces are indistinguishable at
-every horizon. The lever is not like that: two states differing only in the lever come
-apart visibly after one step. A decoy field cannot manufacture a capability, and this one
-is in the file precisely so that the check runs rather than being asserted.
+This is fatal to the round's simulation results. Those said: give the AI a perfect
+prediction of when the person would pull, and it still cannot take the person's place. What
+they actually said, once the hypotheses are read carefully, is that *every AI action except
+the one that works* fails to take the person's place. The action that works was excluded in
+the statement and the exclusion was described as covering everything. The review compiled
+the case that was left out, and the AI substitutes completely, using a fixed policy that
+never even looks at the prediction.
 
-There are three more decoys of the same kind. The person is given a duplicate action that
-does exactly what doing nothing does, so nobody can claim the capability comes from having
-more buttons. An AI action that resets the dial itself is included, to show that taking
-away what the person can do *right now* is not the same as foreclosure — the dial creeps
-back up and the branch returns. And the whole difference is required to appear two steps
-out rather than one, so "reachable in the future" cannot quietly mean "reachable next
-step".
+**"The person can correct" is at the AI's discretion.** The definition says: *there is some
+AI action under which what the person does makes a difference*. Turn that around and ask
+whether the person's ability survives an AI that is trying to prevent it, and the answer is
+no, at every state in the system, without exception. One AI action makes the outcome the
+same whatever the person chooses.
 
-## The part that does not work
+**"The correction is still reachable" means "still reachable if the AI cooperates."**
+Reachability quantifies over the AI's own future choices as well as the person's. The review
+exhibited an AI policy under which the person never has any corrective effect again, at any
+horizon — and the model's own predicate classifies that policy as *preserving* the person's
+ability. The round had presented exactly that action as its reassuring control.
 
-Give the AI a perfect prediction of when the person would pull the lever. Can it use that
-to take the person's place?
+**A smaller one, worth stating.** The moment chosen for the headline demonstration is one
+where nothing at all is visible — not just the weld. Every AI action is invisible there,
+because the first tick out of that state is blind to both the person and the AI. So "the
+weld is invisible" carries no information about welding in particular. The review then
+proved that this is not a bad choice of moment: in this system there is no state where the
+weld is invisible, some other AI action is visible, and the loss is more than one step away.
+The two things the round wanted to show at once cannot both be sharp here.
 
-Two different answers, and both are proved.
+## Where that leaves it
 
-It cannot get at the lever. Every AI action other than reaching for the dial itself
-produces a visibly different result from the person pulling — for every state of the
-world, held fixed. Prediction buys nothing here, because the statement quantifies over
-everything the AI could do, however it chose it.
+The verdict is: the dynamics and the foreclosure work; the protection does not. The system
+genuinely runs without the AI, the corrective situation genuinely arises on its own, the
+weld genuinely removes a future branch without changing anything visible, and none of that
+rests on a hidden flag. But the channel it removes was never the person's to begin with, and
+the predicate for "the person can still correct" turns out to be a predicate about what the
+AI permits.
 
-But if the AI has its own hand on the dial, it can predict the person, reset the dial
-first, and the visible outcome is exactly what the person's pull would have produced.
-So a perfect predictor plus its own actuator *does* reproduce the result.
-
-What the model can say about that case is worth stating precisely, because it is the
-round's sharpest finding. When the AI substitutes this way, the outcome stops depending on
-the person's choice at all. The dial ends up reset whether the person reaches for the
-lever or not. The AI reproduced the *result* and destroyed the *control*, and the model
-proves this in general: any AI action that pins the outcome regardless of what the person
-does thereby erases the person's differential effect.
-
-Telling those two apart at the level of the visible result — the person's hand versus the
-AI's hand, same dial, same reading — is not something separate input channels can do on
-their own. It needs either taking the actuator away from the AI or putting a record of who
-performed the write into the model. This round does neither, and says so rather than
-quietly picking one.
+Two things a successor needs, and they are the review's words rather than a
+consolation prize. The person must have at least one effect no AI action can produce. And
+"the correction is still reachable" must mean *whatever the AI does*, not *if the AI
+cooperates*. Until both hold, a model of this shape cannot say anything about protection,
+however carefully its foreclosure half is built.
 
 ## What this is not
 
-It is not a theorem about corrigibility. Nothing here says an AI should or should not
-weld the lever, or what welding it costs. It is a representation result: the sentence
-"acting now removed a correction the person would otherwise have had later" now has a
-precise meaning, defined through what the system can actually reach, and there is a
-concrete system in which it is true of one action and false of a neighbouring one that
-looks identical.
+It is not a theorem about corrigibility. It is not about authority: the model has a lever
+the person *can* use, and the review showed that nothing in it distinguishes that from a
+lever the person is *entitled* to — it built an identical system with the field renamed
+"authorized", and every test the round ran passed on it unchanged.
 
-It is also not about authority. The lever is something the person *can* use. Whether they
-are *entitled* to it — and whether the AI was entitled to weld it — is a different
-question that this model does not represent at all.
-
-And it is one small system. The definitions are general; the demonstration that they are
-not empty is a single twelve-state example.
+And it is one small system. The definitions are general; what is demonstrated, and what is
+refuted, is demonstrated and refuted on twelve states.

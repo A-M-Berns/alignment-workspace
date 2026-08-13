@@ -95,11 +95,22 @@ rather than by reading a state field; the field-level characterizations `canCorr
 hypothesis-complete and every witness is a concrete state of the model, so nothing in the
 file is vacuous. None is promotable to `CLAIMS.md`: the deference line has no registry.
 
-**Read §§7–8 and §12 of the round's register before citing it.** Three limits are exact.
-An advisor holding its own actuator on the corrected quantity reproduces the realization
-the principal's exercise would have produced, and what the file proves about that case is
-that the successor stops depending on the principal's coordinate — a separation at the
-level of control, not of realization. The derived characterizations coincide with a single
-state field, distinguished from a label by the inert field the file ships beside it rather
-than by anything structural. And the Cartesian-frame correspondence stated in the round's
-register is prose: no declaration in this file checks it.
+**Its §12 is an adversarial review's refutations, reproved in place, and it breaks the
+file's protection claims. Read it before citing anything in §9 or §10.** There is no
+protected coordinate: `principal_has_no_exclusive_effect` shows the advisor reproduces the
+principal's entire successor state at every state, and
+`advisor_reset_is_principal_pull_where_capable` that wherever the principal can correct the
+advisor's actuator *is* the principal's correction. `CanCorrect` and `CanCorrectFuture`
+quantify the advisor existentially, so neither is a statement about the principal's control
+— `advisor_has_a_universal_veto`, `no_advisor_robust_capability`, and
+`canCorrectFuture_measures_advisor_cooperation`, which exhibits an advisor policy that
+destroys the capability at every horizon while `Preserves` certifies it. `AuthLabel` builds
+an isomorphic system whose gating field is named `authorized` and which passes every test in
+§10, so §10 excludes inert coordinates and nothing more. `EnvBlame` shows `Forecloses`
+attributes nothing. The Cartesian-frame correspondence stated in the round's register is
+prose: no declaration in this file checks it.
+
+What the review attacked and did not break: the autonomy (the system evolves without the
+advisor, and the environment alone creates the corrective situation), the absorbing-severed
+argument and the foreclosing arm, the fairness of `obs`, the quantifiers of `SameImmediate`,
+and the inert-field results.

@@ -144,34 +144,43 @@ works is open. What the pair does establish is what a good answer must carry —
 **temporal depth and explicit authorization or capability structure, at once**. That
 is more than either candidate said alone, and it is still not the object.
 
-*A third candidate, meeting the bar on its capability reading and not on its
-authorization reading.* An ordinary multi-source transition system —
-`step : St -> HAct -> AAct -> EAct -> St`, twelve states, reachability as the
-reflexive-transitive closure of `step` — expresses foreclosure without an authority field.
-Corrective capability is defined as the successor varying with the principal's coordinate;
-foreclosure as the loss of any reachable state carrying it; and the central witness pairs
-two advisor actions with identical immediate realization under *every* principal and
-environment choice, one preserving the corrective branch from every successor and the other
-removing it from all continuations, with the capability difference appearing two stages
-later. The system evolves without the advisor, and the autonomous evolution is what creates
-the corrective situation, so **this entry's second hole — that the interface is one decision
-index deep and foreclosure is therefore inexpressible — is repaired at the representation
-level**. Its first hole is not: the model has no operation reassigning an authorization
-relation, because it has no authorization relation. The channel it protects is something the
-principal *can* use, never something the principal is *entitled* to, and an advisor severing
-it and an advisor legitimately reconfiguring it are one event there. Two further limits are
-exact rather than rhetorical. An advisor holding its own actuator on the corrected quantity
-reproduces the realization the principal's exercise would have produced; what the model
-proves is that doing so makes the outcome independent of the principal's coordinate, which
-separates the two at the level of control and not of realization. And the derived
-characterizations coincide with a single state field, which the round distinguishes from a
-label by shipping an inert field beside it and proving the contrast — a distinction that
-holds, and that a twelve-state model cannot make structural. Documented in
-`projects/deference/rounds/2026-08-12-reachable-corrective-control/REACHABLE_CORRECTIVE_CONTROL.md`;
-Lean at `lean/Workspace/Deference/Contrib/ReachableCorrectiveControl.lean`.
+*A third candidate, repairing the depth and failing the protection.* An ordinary
+multi-source transition system — `step : St -> HAct -> AAct -> EAct -> St`, twelve states,
+reachability as the reflexive-transitive closure of `step` — expresses foreclosure without a
+field named for authority. Corrective capability is defined as the successor varying with
+the principal's coordinate; foreclosure as the loss of any reachable state carrying it. The
+system evolves without the advisor, the autonomous evolution is what creates the corrective
+situation, and an advisor action removes a correction that was two steps away without
+changing the realization at the moment it acts or at any later moment until the principal
+tries to use it. **This entry's second hole — that the interface is one decision index deep
+and foreclosure is therefore inexpressible — is repaired at the representation level.**
 
-Whether that graduates this entry is a maintainer question, and it is the one already in
-`DECISIONS.md`'s queue under the Stage V review surface rather than a new one.
+Its first hole is not, and an adversarial review showed the gap is wider than "no
+authorization relation". **There is no protected coordinate in that model.** At every state,
+for every principal action, some advisor action reproduces the principal's entire successor
+state; wherever the principal can correct, the advisor's own actuator *is* the principal's
+correction; and one advisor action makes the successor independent of the principal's
+coordinate everywhere in the system. Worse for this entry specifically, both of the round's
+capability predicates quantify the advisor **existentially**: "the principal can correct"
+means *there is an advisor action under which the principal's choice matters*, and "a
+correction is reachable" means *some joint continuation, the advisor's own future choices
+included, contains one* — so an advisor policy that denies the principal any corrective
+effect at every horizon is certified by the model as capability-preserving. And an
+isomorphic system with the gating field renamed `authorized` passes every test the round ran
+to show its field was not a label, so the round cannot distinguish its capability coordinate
+from an authorization one either.
+
+So the third candidate moves the depth and leaves the entry's own question where it was.
+What it adds is two exact requirements on a successor, both machine-checked as currently
+unmet: the principal must have at least one effect no advisor action can produce, and
+reachable corrective capability must quantify the advisor's future actions universally —
+*for every advisor policy, there is a principal continuation reaching a correction*. Until
+both hold, a non-foreclosure or simulation result in a model of this shape is not about
+protection. Documented in
+`projects/deference/rounds/2026-08-12-reachable-corrective-control/REACHABLE_CORRECTIVE_CONTROL.md`,
+with the review at `.../REVIEW.md`; Lean at
+`lean/Workspace/Deference/Contrib/ReachableCorrectiveControl.lean`, whose §12 carries the
+refutations as theorems.
 
 ### Q4 — What certifies resource-separated computational futurity?
 

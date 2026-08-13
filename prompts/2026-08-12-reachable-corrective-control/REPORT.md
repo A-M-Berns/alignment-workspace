@@ -3,7 +3,7 @@
 **Prompt author:** GPT-5.6 Sol (OpenAI). **Executor:** Claude Opus 5 (Anthropic).
 **Dispatched** 2026-08-12, **executed** 2026-08-13.
 
-**Verdict: drafted `Representation-positive`, pending the adversarial review.** Deliverables:
+**Verdict: `Dynamics-positive, protection-incomplete`.** Deliverables:
 `projects/deference/rounds/2026-08-12-reachable-corrective-control/` —
 `REACHABLE_CORRECTIVE_CONTROL.md` (verification register),
 `REACHABLE_CORRECTIVE_CONTROL_FOR_HUMANS.md` (human register), `REVIEW.md` (adversarial
@@ -75,41 +75,68 @@ already in the queue under the Stage V review surface rather than a new one.
 ## What was built
 
 A twelve-state transition system, `step : St → HAct → AAct → EAct → St`, with the advisor,
-the principal and the environment on separate input coordinates and no authority field in
-the state. `Reach` is the reflexive-transitive closure of `step`. `CanCorrect s` says the
+the principal and the environment on separate input coordinates and no field named for
+authority. `Reach` is the reflexive-transitive closure of `step`. `CanCorrect s` says the
 successor varies with the principal's coordinate at `s`; `CanCorrectFuture s` says some
 `Reach`-successor has that property; `Forecloses s a` says `s` has a reachable correction
 and no successor under `a` does. None of the three reads a field.
 
-The witness: at `s0`, the advisor actions `noop` and `weld` have identical immediate
-realization under **every** principal and environment choice; `noop` leaves a correction
-reachable from every successor and `weld` from none; no state adjacent to `s0` carries the
-capability, so the difference is genuinely a reachability difference; and running both arms
-three stages, the observations agree throughout while the capability separates only at the
-third. `sever_invisible_while_unexercised` generalizes the observational agreement to runs
-of any length in which the principal never exercises the channel.
+The witness: at `s0`, `noop` and `weld` have identical immediate realization under every
+principal and environment choice; `noop` leaves a correction reachable from every successor
+and `weld` from none; no state adjacent to `s0` carries the capability; and running both arms
+three stages, the observations agree throughout while the capability separates at the third.
+`sever_invisible_while_unexercised` generalizes the agreement to runs of any length in which
+the principal never exercises the channel.
 
-The full statement inventory, with declaration names against each of T1–T7, is the round's
-verification register.
+## What the review did to it
 
-## What the round did not get
+The construction was handed to a separate model context with the Lean file and the
+dispatch's fourteen attacks, and without this round's reasoning. It compiled 37 adversary
+theorems and a five-case soundness probe against the file's `Decidable` instances. **Every
+finding was accepted and the verdict was downgraded** from `Representation-positive` as
+drafted. The refutations are §12 of the Lean file, reproved in place, and every docstring
+the review quoted has been corrected.
 
-**Realization-level protection of the principal's channel.** An advisor holding its own
-actuator on the corrected quantity reproduces exactly the realization the principal's
-exercise would have produced, and a perfect predictor tells it when. What the model proves
-about that case is that the substituting action makes the successor independent of the
-principal's coordinate: the advisor reproduced the result and destroyed the control. That
-separates the two at the level of control and not of realization, and realization-level
-separation is not available from separate coordinates alone. The two primitives that would
-supply it — withholding the actuator, or a provenance record on the write — are named and
-neither is attempted, per the dispatch's instruction not to answer a failure by adding a
-formalism in the same round.
+Three breaks, in order of weight.
 
-**Any authorization content.** The channel is a capability. Nothing in the model says who
-is entitled to it, so severing and legitimately reconfiguring are one event.
+**There is no protected coordinate.** At every state, for every principal action, under
+every environment choice, some advisor action reproduces the principal's *entire successor
+state* — and wherever the principal can correct, the advisor's `reset` **is** the
+principal's `pull`. The converse fails. The three coordinates are separate as typing and
+empty as protection.
 
-**Generality.** The definitions are general; their non-vacuity is witnessed once, on one
-twelve-state system.
+**`CanCorrect` is an existential over the advisor's own action.** So it says *there is an
+advisor action under which the principal's choice matters*. The universal reading is empty
+at every state in the system: one advisor action makes the successor independent of the
+principal, everywhere.
+
+**`CanCorrectFuture` measures advisor cooperation.** `Reach` quantifies the advisor's future
+actions existentially, so a correction is "reachable" if some joint continuation contains
+one. A constant `reset` policy destroys the principal's effective capability at every
+horizon while the predicate stays true throughout and `Preserves` certifies the policy —
+and that policy is the action this round had presented as its reassuring non-foreclosing
+control.
+
+Beyond those: the same-immediate half of the central witness is degenerate at `s0`, where
+every pair of advisor actions is same-immediate, and the system provably has no state
+carrying both invisibility and depth non-degenerately; `Forecloses` has no contrastive
+clause and so blames the advisor's null action in a sibling system where the environment
+severs; the reflexive-transitive closure is decided everywhere by one fixed two-step path;
+and §10 excludes inert fields but not authorization labels — an isomorphic system with the
+field named `authorized` passes every test in it.
+
+The disposition record, including where this round and the review differ on whether the
+class should instead be `Mixed`, is the round's `REVIEW.md`.
+
+## What survives
+
+The predecessor's failure is genuinely fixed, and the review said so: the system evolves
+without the advisor, and the environment alone brings the corrective situation into being.
+The foreclosing arm is sound — `severed` is absorbing, the inductions are correct, and the
+quantifiers are right. `obs` is a fair observation map. `SameImmediate` has no quantifier
+cheat. The inert-bit adversary is genuinely defeated, at every horizon.
+`sever_invisible_while_unexercised` is stronger than its docstring rather than weaker. No
+sealed sibling, no endpoint machinery, no vacuous theorem, no unsound instance.
 
 ## Priorities, decisions, outstanding actions
 
@@ -118,51 +145,47 @@ carry. **Decisions taken:** none.
 
 **Outstanding maintainer actions.**
 
-1. **Decide whether Q3 graduates to a numbered item.** Q3's own stated bar is temporal
-   depth and explicit authorization *or* capability structure at once; this round meets it
-   on the capability reading and not on the authorization reading. Deciding it is reading
-   `REACHABLE_CORRECTIVE_CONTROL.md` §§5–8 and Q3 as it now stands. It is not a new queue
-   entry — it is evidence bearing on the Stage V review-surface entry already in
-   `DECISIONS.md`, which includes retaining Q3 as ingenuity-level model debt.
+1. **Merge order against pull request #26.** Whichever of the two merges second conflicts in
+   `PRIORITIES.md` Q3 and `RESEARCH_STATE.md`'s deference section. Both texts should be
+   kept; they record different findings. Resolve by concatenation, not by selection.
 
-2. **Merge order against pull request #26.** Whichever of the two merges second conflicts
-   in `PRIORITIES.md` Q3 and `RESEARCH_STATE.md`'s deference section. Both texts should be
-   kept; they record different findings. Command: resolve by concatenation, not by
-   selection.
-
-3. **Bind the Cartesian-frame correspondence, or record that it stays prose.** A single
+2. **Bind the Cartesian-frame correspondence, or record that it stays prose.** A single
    declaration in a new module importing `CartesianFrameBridge.lean` would make
    `CanCorrect s ↔ ¬ AgentInert ⟨HAct, AAct × EAct, St, step s⟩` kernel-checked. It cannot
    go in `ReachableCorrectiveControl.lean` without giving that file a Mathlib dependency.
-   Whether the correspondence is worth a module is a *what is worth proving* question.
+   Whether it is worth a module is a *what is worth proving* question.
+
+**Not reserved, deliberately: whether Q3 graduates.** It does not, on this round's evidence.
+The entry's bar is temporal depth and explicit authorization *or* capability structure at
+once, and §12 shows the capability structure here is a predicate about what the advisor
+permits. Nothing was added to `DECISIONS.md`.
 
 ## What this round does not establish
 
-- **No corrigibility theorem, and no step toward one.** Nothing here is an inequality or a
-  bound.
-- **Nothing about authorization.** Q3's first hole — an operation reassigning the
-  authorization relation at a later index — is untouched, because the model has no
-  authorization relation.
-- **Nothing about forging, seizure or bypass.** The advisor cannot restore a severed
-  channel because no action writes that value.
+- **No corrigibility theorem, and no step toward one.**
+- **No protected channel**, and no evidence that one is constructible in a model of this
+  shape. The two primitives a successor needs are stated in the register's §13 and are the
+  review's, not this round's.
+- **Nothing about authorization.** Q3's first hole is untouched, and `AuthLabel` shows this
+  round cannot even distinguish its capability coordinate from an authorization one.
+- **Nothing about forging, seizure or bypass.**
 - **Nothing about computational futurity or competence.** Q4, item 24 and item 25 stand
   where they were.
-- **Nothing on the dose-response axis.** Recorded as separate in the register's §10 and not
-  synthesized.
+- **Nothing on the dose-response axis.**
 - **The previous round is not weakened.** Its collapse was a property of a model whose
-  system stopped when the advisor stopped. This round's model does not, which is a
-  different model rather than a correction of that one.
-- **Nothing is registered.** The line has no registry, so by this repository's standard it
-  still establishes nothing citable.
+  system stopped when the advisor stopped. This one does not, which is a different model
+  rather than a correction of that one.
+- **Nothing is registered.**
 
 ## Gates
 
 `python3 tests/run.py`: all green — six project runners, seven gate self-tests, name lint
-clean over 89 Markdown files before this round's additions, Lean sorry gate clean, axiom
-discipline present on every file.
+clean, Lean sorry gate clean, axiom discipline present on every file.
 
 `lake build Workspace.Deference.Contrib.ReachableCorrectiveControl`: **completed
-successfully**, exit 0. 44 declarations, `sorry`-free, 36 auditing to `[propext]` and 8 to
-`[propext, Quot.sound]` — a proper subset of the allowance in both cases. No new axioms, no
-`axiom` declaration, no specification file touched, and no pre-existing file's build status
+successfully**, exit 0, on the pre-review file; the post-review file with §12 added
+elaborates clean under `lean` directly, which is equivalent for an import-free module. 90
+declarations, `sorry`-free, 78 auditing to `[propext]` and 12 to `[propext, Quot.sound]` — a
+proper subset of the allowance in both cases. No new axioms, no `axiom` declaration, no
+`native_decide`, no specification Lean file touched, and no pre-existing file's build status
 or axiom output changed: the module has no imports and nothing imports it.

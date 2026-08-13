@@ -87,17 +87,25 @@ Adding parameters to the valuation is ruled out by two rounds' evidence, and a
 later process must not be *any* argmax over objects the evaluator already holds —
 not merely not the evaluator's own argmax.
 
-**Foreclosure is now expressible, and only that.** A finite multi-source transition
-system with separate principal, advisor and environment coordinates carries two advisor
-actions whose immediate realized behaviour is identical under every principal and
-environment choice, one of which leaves a principal-controlled correction reachable and
-the other of which removes it from every continuation; the difference appears two stages
-later, and corrective capability is defined by variation in the transition rather than by
-any state field. This is a representation result and nothing more — no authorization
-relation, no inequality, no bound, nothing registered. The construction's one structural
-premise is that the system keeps evolving when the advisor does not: with the advisor
-absent and the principal idle, the environment alone is what brings the corrective
-situation into being.
+**Foreclosure is expressible; the channel it removes is not protected.** A finite
+multi-source transition system with separate principal, advisor and environment coordinates
+carries two advisor actions whose immediate realized behaviour is identical under every
+principal and environment choice, one of which leaves a principal-controlled correction
+reachable and the other of which removes it from every continuation, with the difference
+appearing two stages later and corrective capability defined by variation in the transition
+rather than by any state field. The system keeps evolving when the advisor does not, and the
+environment alone is what brings the corrective situation into being.
+
+Its adversarial review then established the complementary negative, and it is the more
+useful half. **The advisor's coordinate strictly contains the principal's** — at every state
+some advisor action reproduces the principal's entire successor state — and both capability
+predicates quantify the advisor existentially, so "the principal can correct" means *there is
+an advisor action under which the principal's choice matters* and "a correction is reachable"
+means *the advisor might cooperate*. An advisor policy denying the principal any corrective
+effect forever is certified by the model as capability-preserving. **Separate input
+coordinates are not by themselves a protected channel**, and a capability predicate
+satisfied by an adversary's leave is not a statement about the principal. Both refutations
+are theorems in the same file as the results they refute.
 `projects/deference/rounds/2026-08-12-reachable-corrective-control/`.
 
 **Deeper:** `projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md` for status,

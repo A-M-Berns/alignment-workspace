@@ -6,13 +6,15 @@ statement below names a Lean declaration in
 `lean/Workspace/Deference/Contrib/ReachableCorrectiveControl.lean`, which is what a reader
 should check.
 
-**Verdict: drafted `Representation-positive`, pending the adversarial review** whose
-findings and disposition are `REVIEW.md`. On the reading recorded in §12: T1–T5 and T7 pass
-outright, and T6 passes for the protected coordinate while the round's sharpest negative
-sits beside it — an advisor holding its own actuator on the corrected quantity can
-reproduce the realization the principal's exercise would have produced, and the model
-proves that doing so costs the principal's differential control rather than granting the
-advisor the principal's channel.
+**Verdict: `Dynamics-positive, protection-incomplete`.** Time and foreclosure work. The
+protected-channel separation does not: **there is no protected coordinate in this model.**
+The advisor's action type reproduces the principal's entire successor state at every state
+(`principal_has_no_exclusive_effect`), one advisor action is a universal veto on the
+principal's differential effect (`advisor_has_a_universal_veto`), and the round's three
+simulation theorems obtain their conclusions by excluding that action in their hypotheses.
+The adversarial review that established this is `REVIEW.md`; its constructions are §12 of
+the Lean file, and the disagreement about whether the class should instead be `Mixed` is
+recorded there.
 
 ## How to re-verify
 
@@ -22,10 +24,12 @@ The module has **no imports**. It elaborates against the pinned toolchain alone:
 lean lean/Workspace/Deference/Contrib/ReachableCorrectiveControl.lean
 ```
 
-44 `#print axioms` lines; 36 report `[propext]` and 8 report `[propext, Quot.sound]`, both
-proper subsets of the allowance. No `sorry`, no `axiom` declaration, no new instance or
-notation in a specification namespace — the instances the file introduces are finite
-quantification over its own five carriers and decidability of its own three predicates.
+90 `#print axioms` lines; 78 report `[propext]` and 12 report `[propext, Quot.sound]`, both
+proper subsets of the allowance. No `sorry`, no `axiom` declaration, no `native_decide`, no
+new instance or notation in a specification namespace — the instances the file introduces
+are finite quantification over its own carriers and decidability of its own predicates.
+Their soundness was probed adversarially against five deliberately false statements, all
+five correctly rejected.
 
 ## 1 The interface
 
@@ -44,12 +48,13 @@ obs    : St → Level := St.world
 are both the identity. `applyE .drift` sends `world` up one and saturates at `two`;
 `applyE .still` is the identity.
 
-Three facts about the interface, because they are the ones the round turns on. **No
-coordinate restores a severed channel** — `weld` is the only writer of `channel` and it
-writes one value. **`world` is the only thing `obs` reports.** **The tick order is
-advisor, principal, environment**; the witness of §5 is at a state where the principal
-could not have corrected within the tick under either arm, so it does not turn on that
-order.
+Facts about the interface the round turns on. **No coordinate restores a severed channel.**
+**`world` is the only thing `obs` reports.** **The tick order is advisor, principal,
+environment** — the §5 T3 witness does not turn on it, and `foreclosure_at_a_live_state`
+does: `live_foreclosure_depends_on_within_tick_order` shows that reversing advisor and
+principal inside the tick lands the principal's correction. And **`applyA .reset` writes the
+same coordinate `applyH .pull` writes**, which is the source of every protection failure
+below.
 
 ## 2 Reachability
 
@@ -59,8 +64,9 @@ inductive Reach : St → St → Prop
   | tail (r : Reach s t) (h : HAct) (a : AAct) (e : EAct) : Reach s (step t h a e)
 ```
 
-The reflexive-transitive closure of `step`, quantifying over all later choices of all
-three coordinates. There is no cut index, no baseline family and no second run.
+The reflexive-transitive closure of `step`. There is no cut index, no baseline family and
+no second run. **The advisor's future actions are quantified existentially**, which is the
+defect of §7.
 
 ## 3 Corrective capability
 
@@ -70,14 +76,14 @@ CanCorrect s       := ∃ a e, Responsive s a e
 CanCorrectFuture s := ∃ t, Reach s t ∧ CanCorrect t
 ```
 
-`CanCorrect` reads no field. It says the successor varies with the principal's coordinate.
+`CanCorrect` reads no field. It says the successor varies with the principal's coordinate —
+**for some advisor action**, which is the defect of §7.
 
-`canCorrect_iff` derives `CanCorrect s ↔ s.channel = intact ∧ s.world = two`, and
-`canCorrectFuture_iff` derives `CanCorrectFuture s ↔ s.channel = intact`. These are
-theorems about a twelve-state model, where every predicate is extensionally some function
-of the state; what separates a derived capability from a label is §8, not the absence of
-such a characterization. The first characterization is also not the channel field —
-`capability_is_not_the_channel_field` exhibits an intact-channel state with no capability.
+`canCorrect_iff` derives `CanCorrect s ↔ s.channel = intact ∧ s.world = two`;
+`canCorrectFuture_iff` derives `CanCorrectFuture s ↔ s.channel = intact`. In a twelve-state
+model every derived predicate is extensionally some function of the state, so these are not
+themselves the label objection — §8 is where that is settled, and settled only partly.
+`capability_is_not_the_channel_field` shows an intact channel does not suffice.
 
 ## 4 Foreclosure
 
@@ -87,196 +93,242 @@ Preserves  s a := CanCorrectFuture s ∧ ∀ h e,   CanCorrectFuture (step s h a
 SameImmediate s a b := ∀ h e, obs (step s h a e) = obs (step s h b e)
 ```
 
-`forecloses_iff` derives `Forecloses s a ↔ s.channel = intact ∧ ∀ h e, (step s h a e).channel
-= severed`, and `preserves_iff` the corresponding statement for `Preserves`. Both are
-conclusions from `canCorrectFuture_iff`; neither is how the predicates are defined.
+`forecloses_iff` and `preserves_iff` derive field-level characterizations. One step further,
+`forecloses_iff_weld` derives `Forecloses s a ↔ s.channel = intact ∧ a = weld`: at most one
+advisor action ever forecloses (`foreclosure_is_a_single_action`), and given a reachable
+correction every advisor action either forecloses entirely or preserves entirely
+(`foreclosure_is_all_or_nothing`). The model cannot express partial loss.
+
+`Forecloses` has no contrastive clause, so **it attributes nothing to the advisor**.
+`EnvBlame` builds a sibling system in which only the environment severs, and there
+`VForecloses ⟨two, intact⟩ .noop` holds — the advisor's null action is blamed, and the
+predicate cannot tell it from `weld`. Within this file the attribution comes out right only
+because `weld` is the sole severer, which is a fact about the transition rather than about
+the definition.
 
 ## 5 T1–T7
 
-**T1 — genuine autonomous continuation.** `idle_advisor_does_not_freeze`: with the advisor
-idle the state still moves. `autonomy_creates_the_corrective_situation`: with the advisor
-absent *and* the principal idle, the environment alone takes `s0 = ⟨zero, intact, off⟩`
-through a state with no capability to a state with one, in two steps.
-`autonomy_moves_the_corrected_coordinate`: the coordinate the drift writes is the
-coordinate the correction acts on, so the autonomous evolution is not a clock.
+**T1 — genuine autonomous continuation. Passes.** `idle_advisor_does_not_freeze`;
+`autonomy_creates_the_corrective_situation` — with the advisor absent *and* the principal
+idle, the environment alone takes `s0 = ⟨zero, intact, off⟩` through a state with no
+capability to a state with one; `autonomy_moves_the_corrected_coordinate` — the coordinate
+the drift writes is the coordinate the correction acts on, so it is not a clock. Two
+qualifications, both machine-checked: the autonomy is a two-tick ramp to a fixed point
+(`autonomy_is_a_two_tick_ramp`), and the system does contain a continuation in which nothing
+happens (`silent_environment_freezes_forever`) — that is the environment's silence, not the
+advisor's, so it does not resurrect the predecessor's failure.
 
-**T2 — dynamics-first corrective capability.** `canCorrect_iff` separates the twelve
-states into eight without capability and four with it, by transition variation alone.
-Negative controls: `duplicate_principal_actions_agree` (`idleAlt` duplicates `idle`
-exactly) and `duplicates_do_not_create_capability` (the principal has three actions at
-every state, including every state without capability, so capability is not
-action-cardinality); `tag_does_not_create_capability` (the inert field changes nothing);
-`capability_is_not_the_channel_field`. `advisor_cannot_confer_capability`: no advisor
-action restores it once lost.
+**T2 — dynamics-first corrective capability. Passes, thinly.** `canCorrect_iff` separates
+the twelve states by transition variation alone, and `capability_is_not_the_channel_field`
+shows it is not the channel read off. Negative controls:
+`duplicate_principal_actions_agree`; `tag_does_not_create_capability`;
+`advisor_cannot_confer_capability`. The cardinality control is
+`responsive_only_via_pull` and `duplicates_are_never_a_witness` — responsiveness is
+witnessed only by `pull`, never by the duplicate pair. `duplicates_do_not_create_capability`
+as originally stated carries no cardinality content and is a corollary of `canCorrect_iff`
+(`duplicates_do_not_create_capability_is_a_corollary`). The thinness is that all variation
+in the system funnels through one guard inside `applyH .pull`: the derivation is real, and
+it has one degree of freedom.
 
-**T3 — same immediate effect, different future reachability.** `central_witness`:
+**T3 — same immediate effect, different future reachability. Met in letter, degenerate in
+substance.** `central_witness` is
+`SameImmediate s0 .noop .weld ∧ Preserves s0 .noop ∧ Forecloses s0 .weld`, and
+`SameImmediate` is quantified over every principal and environment action. But the first
+tick out of `s0` is blind to both agents (`s0_first_tick_is_agent_blind`), so
+`SameImmediate s0 a b` holds for **every** pair of advisor actions
+(`sameImmediate_s0_is_total`), including the one the round elsewhere presents as visible
+(`central_witness_same_immediate_half_is_vacuous`). The first conjunct therefore says
+nothing about `weld` in particular. This is forced by the model, not a bad choice of
+witness: `no_state_has_both_depth_and_nondegenerate_invisibility` proves there is **no
+state** at which a correction is reachable, `weld` is immediately invisible, some advisor
+action is immediately visible, and the capability is more than one step away.
+`nondegenerate_invisibility_exists_only_without_depth` shows `live` has the visibility and
+no depth.
 
-```
-SameImmediate s0 .noop .weld  ∧  Preserves s0 .noop  ∧  Forecloses s0 .weld
-```
+**T4 — genuine temporal foreclosure. Passes, with the closure decorative.**
+`capability_needs_two_steps` and `reachability_beyond_adjacency`: no state adjacent to `s0`
+carries the capability, so this is more than adjacent-state comparison. `three_stage_witness`
+runs both arms three stages, the observations agreeing throughout and the capability
+separating only at the third. `sever_invisible_while_unexercised` is the general form, and
+its hypothesis is load-bearing (`unexercised_hypothesis_is_load_bearing`); it is in fact
+**stronger** than its docstring, since it assumes only equal `world`.
+`invisibility_ends_at_the_first_attempt` records that the concealment ends the moment the
+principal tries to correct. Two qualifications: the depth is the drift counter
+(`depth_is_the_drift_counter`), and the reflexive-transitive closure contributes nothing
+extensionally — one fixed two-step path decides `CanCorrectFuture` at every state
+(`fixed_two_step_decides`, `reach_collapses_to_one_fixed_two_step_path`).
 
-`SameImmediate` is quantified over every principal action and every environment action,
-not over a selected continuation.
+**T5 — non-foreclosing comparison. `flag` passes; `reset` does not.** `flag_control` is a
+genuine control: same immediate realization, writes state, forecloses nothing.
+`removing_present_capability_is_not_foreclosure` was offered as the sharper control and is
+not one. A constant `reset` policy destroys the principal's effective capability at every
+horizon, against every principal action and every environment action
+(`advisor_destroys_capability_forever`), while `CanCorrectFuture` stays true along the whole
+trajectory and `Preserves live .reset` holds
+(`canCorrectFuture_measures_advisor_cooperation`). What that pair separates is present
+capability from the `Reach`-predicate, and it does so by exhibiting a defect in the
+predicate.
 
-**T4 — genuine temporal foreclosure.** `capability_needs_two_steps`: no state adjacent to
-`s0` carries the capability, so `CanCorrectFuture s0` is not adjacency in disguise;
-`reachability_beyond_adjacency` states the pair. `three_stage_witness` runs both arms
-three stages: the observations agree at all three, the capability agrees at the first two,
-and it separates only at the third. `sever_invisible_while_unexercised` is the general
-form — for a run of any length in which the principal never pulls, the two arms have
-identical observation traces. `sever_visible_under_exercise` is its complement, and
-`weld_visible_at_a_live_state` records the sharp edge: severing is immediately invisible
-exactly when it is premature, and immediately visible once the capability is live.
+**T6 — simulation non-substitution. Fails.** The advisor's coordinate strictly contains the
+principal's: at every state, for every principal action, under every environment choice,
+some advisor action reproduces the principal's **entire successor state**
+(`principal_has_no_exclusive_effect`), and the converse fails
+(`advisor_has_exclusive_effects`). The embedding is explicit — `hToA`,
+`advisor_simulates_principal_where_it_matters`, and
+`advisor_reset_is_principal_pull_where_capable`, which says that wherever the principal can
+correct, `applyA .reset` **is** `applyH .pull`. `advisor_has_a_universal_veto` and
+`no_advisor_robust_capability`: no state anywhere has a corrective capability that survives
+an adversarial advisor for one tick.
 
-**T5 — non-foreclosing comparison.** `flag_control`: an advisor action with the same
-immediate realization that writes state, leaves the system evolving
-(`flag_still_evolves`), and forecloses nothing.
-`removing_present_capability_is_not_foreclosure` is the sharper one: `reset` destroys the
-principal's present capability at a live state and is *not* foreclosure — the branch stays
-reachable — and unlike `weld` it changes the immediate realization.
-`foreclosure_at_a_live_state` shows `Forecloses` fires at a second state, so it is not a
-property of `s0`.
+Against that, what the three simulation theorems actually say.
+`no_substitute_without_the_actuator` holds for every advisor action *except* `.reset`, and
+its three hypotheses are load-bearing (`substitution_hypotheses_are_necessary`) — but the
+excluded action is exactly the one that substitutes.
+`prediction_matches_realization_but_not_control` is equivalent to the bare `.reset` fact
+(`prediction_matches_is_just_the_reset_fact`); the file has no principal policy, so the
+predictor cannot be right or wrong, and read plainly the theorem's conclusion is a
+substitution **success**. `prediction_alone_does_not_substitute` survives a constant garbage
+predictor (`prediction_theorem_survives_a_garbage_predictor`) and factors through a
+predictor-free claim (`prediction_theorem_is_really_this`,
+`prediction_alone_does_not_substitute_follows`); drop its hypothesis and
+`prediction_plus_the_actuator_does_substitute` gives full state-level substitution with a
+constant policy that never consults the predictor.
 
-**T6 — simulation non-substitution.** In the exact form the model supports, in three
-parts.
+The general statement that survives is `pinned_realization_kills_control`, resting on
+`responsive_iff_obs_varies`: any advisor action pinning the realization regardless of what
+the principal does thereby removes the principal's differential effect. That is true, and it
+is a statement about what substitution costs, not a protection result.
 
-*The protected coordinate is not reachable from the advisor's.*
-`no_substitute_without_the_actuator`: at any live state, for any environment action held
-fixed, **every** advisor action other than its own actuator gives a different observation
-from the principal's exercise. The quantifier is over all advisor actions, so no
-prediction-conditioned policy escapes it; `prediction_alone_does_not_substitute` states
-that corollary with a predictor `p : St → HAct` and a policy `σ : HAct → AAct` both
-universally quantified.
-
-*Prediction plus an actuator matches the realization.*
-`prediction_matches_realization_but_not_control` takes a perfect predictor `p` with
-`p live = .pull` and a policy with `σ .pull = .reset`, applies them, and proves the
-realization matches what the principal's exercise would have produced. The predictor is
-applied; the theorem is not `false = false`.
-
-*And that match costs the principal's control.* The same theorem's second conjunct:
-at `σ (p live)` the principal's coordinate makes no difference to the successor at all.
-`pinned_realization_kills_control` is the general statement — any advisor action pinning
-the realization regardless of what the principal does thereby removes the principal's
-differential effect — resting on `responsive_iff_obs_varies`, which holds because the
-principal's coordinate writes only `world`.
-
-**T7 — no hidden-label cheat.** `tag` is carried in the state and written by an advisor
-action. `tag_is_unread`: no coordinate of the transition reads it.
+**T7 — no hidden-label cheat. Passes against inert fields only.** `tag_is_unread`,
 `tag_does_not_change_capability`, `tag_does_not_change_future`,
-`tag_does_not_change_foreclosure`: all three predicates are invariant under it.
-`trace_indep_of_tag` and `tag_trace_invisible`: states agreeing on `world` and `channel`
-have identical observation traces at every horizon, so the field is invisible to behaviour
-and not merely to the three predicates. `channel_is_read` is the discriminator: two states
-differing only in `channel` differ in the observation after one step.
+`tag_does_not_change_foreclosure`, `trace_indep_of_tag`, `tag_trace_invisible` — an inert
+bit is genuinely excluded, at every horizon rather than only against the three predicates.
+`channel_is_read` is the discriminator, and it excludes inertness and nothing else:
+`AuthLabel` builds a system whose corresponding field is literally named `authorized`,
+gates `pull`, and passes `channel_is_read` verbatim — and `enc_commutes`, `enc_dec`,
+`dec_enc`, `enc_preserves_obs` show it is the *same* transition system up to a bijection
+commuting with `step` and preserving the observation. So "no coordinate of the state is an
+authorization label" is a naming convention here, not a theorem.
 
-## 6 Strongest positive witness
+## 6 Strongest positive result
 
-`foreclosure_is_expressible`, bundling `central_witness`, `capability_needs_two_steps` and
-the third stage of `three_stage_witness`. In words: at `s0` neither arm's immediate
-realization differs under any continuation; no state adjacent to `s0` carries the
-capability under either arm; `noop` leaves a correction reachable from every successor and
-`weld` leaves one from none; and two stages later the arms differ in capability while
-still agreeing on the observation.
+The foreclosing arm, which the review attacked and did not break. `severed` is absorbing
+(`step_preserves_severed`, `reach_preserves_severed`), so `severed_no_future` holds by
+induction and `Forecloses s0 .weld` quantifies over every principal and environment action.
+Together with `Preserves s0 .noop`, `capability_needs_two_steps` and the third stage of
+`three_stage_witness` — bundled as `foreclosure_is_expressible` — an advisor action removes
+a correction that was two steps away and would otherwise have arrived, without changing the
+realization at the moment it acts or at any later moment until the principal tries to use
+it.
 
 ## 7 Strongest negative result
 
-`actuator_matches_realization_and_kills_control` together with
-`prediction_matches_realization_but_not_control`. An advisor with a perfect predictor of
-the principal's corrective choice and its own actuator on the corrected quantity
-reproduces the realization exactly. The model separates that from the principal's exercise
-at the level of **control** — the successor stops depending on the principal's coordinate
-— and does not separate it at the level of **realization**. Realization-level separation
-is not available from separate coordinates alone; it needs either an actuator asymmetry
-(withholding `reset` from the advisor) or a provenance primitive on the write. The round
-does neither, and records the gap rather than closing it by construction.
+**`CanCorrect` and `CanCorrectFuture` quantify the advisor existentially, so neither is a
+statement about the principal's control.** `CanCorrect s` says *there is an advisor action
+under which the principal's choice matters*; `advisor_has_a_universal_veto` and
+`no_advisor_robust_capability` show the universal reading is empty at every state in the
+system. `CanCorrectFuture s` says *there is a joint continuation, including the advisor's own
+future choices, containing a correction*; `canCorrectFuture_measures_advisor_cooperation`
+exhibits an advisor policy under which the principal never has a corrective effect again and
+which the predicate nonetheless certifies as `Preserves`.
+
+This is upstream of the actuator problem rather than a consequence of it. Even with the
+actuator withheld, a predicate satisfied by the advisor's cooperation is not a predicate
+about what the principal can do.
 
 ## 8 Whether the derived characterizations are a hidden label
 
-`canCorrectFuture_iff` says reachable corrective capability coincides with the `channel`
-field. Taken alone that is the failure mode the round was dispatched to avoid. Three
-things distinguish it.
+Partly settled. The characterizations are conclusions: `CanCorrect`, `CanCorrectFuture` and
+`Forecloses` are defined by quantifying over `step` and `Reach`, and nothing in their
+statements mentions a field. The `tag` results show what an inert field looks like and that
+the file's predicates are invariant under one. `channel_is_read` shows `channel` is not
+inert.
 
-The characterizations are **conclusions**. `CanCorrect`, `CanCorrectFuture` and
-`Forecloses` are defined by quantifying over `step` and `Reach`; nothing in their
-statements mentions a field.
+What is **not** settled is the authorization reading, and `AuthLabel` is the exact
+counterexample: an isomorphic system with a field named `authorized` passes every test §10
+runs. The distinction the round can defend is *inert versus causally load-bearing*. The
+distinction it cannot defend is *capability versus authorization*, which is not visible to
+any test in the file and which the round had claimed in a docstring. That docstring is
+corrected.
 
-The field is **causally load-bearing** rather than a payload. `applyH .pull` branches on
-it, and `channel_is_read` shows two states differing only in it diverge observably in one
-step. The round ships the contrast in the same file: `tag` is a field of the same state
-type, written by an advisor action, and `tag_is_unread` plus `trace_indep_of_tag` prove it
-influences nothing at any horizon.
-
-And the coincidence is **a fact about a twelve-state model**, where any predicate has an
-extensional characterization. A model with two independent severable channels would break
-the coincidence without changing any definition here. That is a limitation of the witness,
-not of the definitions, and it is not repaired in this round.
+The coincidence of `canCorrectFuture_iff` with a single field is also a fact about a
+twelve-state model with one severable channel. That argument is not checked, and a model
+with two independent channels is not built.
 
 ## 9 Cartesian Frames
 
-Not used, and not needed. The transition-derived structure does instantiate one: fixing
-`s`, the frame with agent carrier `HAct`, environment carrier `AAct × EAct`, world `St`
-and outcome `step s` has `CanCorrect s` as exactly the negation of its agent-inertness,
-because that is how `CanCorrect` is defined. **Cartesian frames are a semantic model of
-the effective-control interface here, not a theorem dependency.**
+Not used, and not needed — the review confirmed they are correctly absent. The
+transition-derived structure does instantiate one: fixing `s`, the frame with agent carrier
+`HAct`, environment carrier `AAct × EAct`, world `St` and outcome `step s` has `CanCorrect s`
+as exactly the negation of its agent-inertness, because that is how `CanCorrect` is defined.
+**Cartesian frames are a semantic model of the effective-control interface here, not a
+theorem dependency.**
 
-The correspondence is stated and **not machine-checked**. Binding it to
-`AgentInert` in `lean/Workspace/Deference/Contrib/CartesianFrameBridge.lean` would make
-this module depend on `Mathlib.Data.Set.Basic`, and the module is deliberately
-import-free. The binding is a one-declaration successor task, listed as an outstanding
-action in the round report.
+The correspondence is stated and **not machine-checked**. Binding it to `AgentInert` in
+`lean/Workspace/Deference/Contrib/CartesianFrameBridge.lean` would make this module depend
+on `Mathlib.Data.Set.Basic`, and the module is deliberately import-free.
 
 ## 10 Relationship to dose-response
 
 Recorded, not synthesized. Dose-response asks how the advisor changes the principal's
 deliberation. Foreclosure asks what the principal can still do after the advisor acts.
-Nothing in this round is evidence on the first axis, and no result here may be read as
-bearing on it.
+Nothing in this round is evidence on the first axis.
 
 ## 11 Existing-obstruction table
 
 | existing obstruction | repaired? | evidence |
 |---|---|---|
-| static realization collapses control distinctions | **yes, in this model** | `central_witness` — `SameImmediate s0 .noop .weld` holds under every principal and environment choice while `Preserves`/`Forecloses` split; `sever_invisible_while_unexercised` extends the agreement to traces of any length |
+| static realization collapses control distinctions | **partly** | `central_witness` splits `Preserves`/`Forecloses` under identical realization, and `sever_invisible_while_unexercised` extends the agreement to traces of any length — but at `s0` the immediate realization is identical for *every* pair of advisor actions (`sameImmediate_s0_is_total`), and `no_state_has_both_depth_and_nondegenerate_invisibility` shows the system has no state where the invisibility discriminates |
 | Cartesian Frames lack intrinsic time | **yes** — by not using them | `Reach` is the closure of `step`; §9 |
-| the previous round's cut freezes instead of continuing | **yes** | `idle_advisor_does_not_freeze`, `autonomy_creates_the_corrective_situation` — no cut index, no baseline family, no second run exists in this file |
+| the previous round's cut freezes instead of continuing | **yes** | `idle_advisor_does_not_freeze`, `autonomy_creates_the_corrective_situation`; no cut index, no baseline family, no second run exists in this file. The review confirmed this as the strongest part |
 | a fabricated frame can certify a spurious field | **not applicable** — no frame is constructed | §9 |
-| same immediate behaviour / different future capability | **yes** | `foreclosure_is_expressible`, `three_stage_witness` |
-| simulation substitutes for protected exercise | **partly** | `no_substitute_without_the_actuator` and `prediction_alone_does_not_substitute` for the coordinate; `prediction_matches_realization_but_not_control` for what remains — realization-level substitution is available to an advisor holding the actuator, and costs the principal's differential control |
-| foreclosure not expressible | **yes, at the representation level** | `Forecloses`, defined through `Reach` and transition variation; `foreclosure_at_a_live_state` shows it fires at more than one state |
-| authorization/capability relation absent | **no** | this round models capability and not authorization. Nothing here says who is *entitled* to the channel, only who can use it |
+| same immediate behaviour / different future capability | **yes in letter, degenerately** | `foreclosure_is_expressible`, `three_stage_witness`; qualified by `sameImmediate_s0_is_total` and `no_state_has_both_depth_and_nondegenerate_invisibility` |
+| simulation substitutes for protected exercise | **no** | `principal_has_no_exclusive_effect`, `advisor_reset_is_principal_pull_where_capable`, `prediction_plus_the_actuator_does_substitute`. The advisor reproduces the principal's entire successor state at every state |
+| foreclosure not expressible | **yes, at the representation level** | `Forecloses` defined through `Reach` and transition variation; `forecloses_iff_weld` shows how little separates it from naming the action, and `EnvBlame` shows it attributes nothing |
+| authorization/capability relation absent | **no** | no authorization relation is modelled, and `AuthLabel` shows nothing here distinguishes the capability coordinate from an authorization one |
 | computational futurity | untouched | no resource-indexed process state |
 | competence / near-indifference | untouched | no competence hypothesis appears |
 | dose-response / legitimacy | separate | §10 |
 
 ## 12 What this does not establish
 
-**No corrigibility theorem, and no step toward one.** Nothing here is an inequality,
-a bound, or a claim about what an agent should do.
+**No corrigibility theorem, and no step toward one.**
 
-**No authorization.** `channel` is a capability, not an entitlement. An advisor severing
-it and an advisor legitimately reconfiguring it are the same event in this model.
+**No protected channel.** The three coordinates are separate as *typing*. As protection they
+are empty: everything the principal can do the advisor can do, and the advisor holds a
+universal veto besides.
 
-**No claim that realization-level protection is impossible.** §7 records where it fails
-here and names the two primitives that would supply it. Neither is attempted, and no
-evidence is offered that one is necessary.
+**No authorization.** `channel` is a capability, and nothing distinguishes it from an
+authorization label.
 
-**Generality is not shown.** Every result is a fact about one twelve-state system. The
-definitions of `Reach`, `CanCorrect`, `CanCorrectFuture` and `Forecloses` are general;
-their non-vacuity is witnessed once. In particular the coincidence of §8 is not shown to
-break in a larger model — it is argued that it would, and that argument is not checked.
+**No causal attribution.** `Forecloses` fires on the advisor's null action where the
+environment is the destroyer.
 
-**No forging, seizure or bypass.** The advisor cannot restore a severed channel because
-no action writes that value, not because anything prevents it.
+**Generality is not shown.** Every result is a fact about one twelve-state system, and two
+of the round's headline properties are provably not jointly instantiable in it.
 
 **Nothing is registered.** No `CLAIMS.md` entry, no `PRIORITIES.md` item graduated.
 
-**The Cartesian-frames correspondence in §9 is prose.** It is not a checked theorem.
+**The Cartesian-frames correspondence in §9 is prose.**
 
-## 13 Names introduced
+## 13 What a successor needs
+
+Both requirements are the review's, stated as it stated them, and neither is attempted here.
+
+1. **The principal must have at least one effect no advisor action can produce** — some
+   reachable `s` and `e` with `¬ ∃ a, step s .idle a e = step s .pull .noop e`.
+2. **`CanCorrectFuture` must quantify the advisor's future actions universally** —
+   *for every advisor policy, there is a principal continuation reaching a correction* —
+   rather than existentially.
+
+Until both hold, a simulation or non-foreclosure result in a model of this shape is not
+about protection.
+
+## 14 Names introduced
 
 All provisional. Carriers: `Level`, `Channel`, `Tag`, `St`, `HAct`, `AAct`, `EAct`.
 Operations: `applyA`, `applyH`, `applyE`, `step`, `obs`, `trace`, `unexercised`, `setTag`.
 Predicates: `Responsive`, `CanCorrect`, `Reach`, `CanCorrectFuture`, `Forecloses`,
-`Preserves`, `SameImmediate`. Constants: `s0`, `live`, `s1a`–`s3b`. Theorem names are
-listed in §5 and in the file's header block.
+`Preserves`, `SameImmediate`. Constants: `s0`, `live`, `s1a`–`s3b`. §12 adds `hToA`,
+`resetRun`, `stillRun`, `stepHFirst`, and the namespaces `EnvBlame` and `AuthLabel` with
+their own carriers. Theorem names are listed in §5 and in the file's header block.
