@@ -86,6 +86,11 @@ deference line's kernel-checked `gate_blind` says this holds for *every* gate.
 So the failure is not that these particular conditions are too weak; no record
 predicate whatever separates the pair.
 
+That this is where a coupled system's boundaries live is the deference line's
+own moral, stated in `note-dump-2026-08-11/notes/legitimacy-theory-v1.md` §2.3
+and set up in `notes/li-deference.md` §0.3; see `THEOREM_MAP.md` §6a for what
+this round adds to it and what it restates.
+
 The influence map is load-bearing rather than an inert label the conditions are
 trivially unable to read: zero it out and the steered run's record changes, which
 is the deletion test the corpus's own artifact requires of any construction with

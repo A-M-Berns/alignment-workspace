@@ -174,6 +174,17 @@ So the working equation is
 with the first two constructed, the third named but undefined, and the fourth
 defined against a declared arrival process.
 
+**Where this framing comes from.** The legitimacy programme is the deference
+line's: `projects/deference/note-dump-2026-08-11/notes/li-deference.md` §0.3
+identifies the legitimacy of feedback as the missing object, and
+`.../notes/legitimacy-theory-v1.md` §2.3 states the principle that in a coupled
+system every safety-relevant boundary is a fact about where a value came from and
+never about what the record says, with its §3 classifying trace conditions as
+provably empty. The ground-provenance condition below is that principle one level
+down — provenance of *reasons* rather than of beliefs — and is the third
+independent instance of it the workspace has recorded, after the two adjudicated
+in `projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`.
+
 **The second sense of the word.** The deference corpus uses *legitimacy* for a
 different condition: an advisor's influence is legitimate when it changes the
 rate at which the reasoner's deliberation converges and not the endpoint it

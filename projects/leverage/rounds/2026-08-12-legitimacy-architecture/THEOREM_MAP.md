@@ -311,6 +311,45 @@ generalize by itself.
 
 ---
 
+## 6a. Prior art, and what is a third instance rather than a first
+
+Two of this round's headline observations restate a moral the workspace already
+holds, and the round's other documents label them `CITED` without saying where
+the framing itself comes from. It comes from the deference line, and it is older
+than this round.
+
+**The legitimacy programme is not this round's idea.**
+`projects/deference/note-dump-2026-08-11/notes/li-deference.md` §0.3 — human-written
+notes, the deference line's motivation document — already concludes that the
+missing object is the legitimacy of feedback, that the training process is
+predicated on its own present non-corruption, and that the corruption modes to be
+excluded include human manipulation which "would subsequently be confirmed by the
+feedback." LEG-2 is an instance of that diagnosis, not an independent arrival at
+it.
+
+**The provenance principle is already stated.**
+`projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md` §2.3 names
+it: in a coupled system, every safety-relevant boundary is a fact about where a
+value came from, never a fact about what the record says. Its §3 hierarchy
+already classifies trace conditions as **provably empty**. So the corollary here —
+that two record predicates cannot reach endpoint corruption — is that
+classification applied to a new pair of predicates.
+
+**The workspace has already adjudicated one convergence on this shape.**
+`projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`
+records the corpus's non-recoverability result and the workspace's authorization
+result as *independent structural convergence* on one moral. This round's
+ground-provenance finding — that what the local condition cannot see is where a
+*ground* came from — is a **third instance**, from the reasons side rather than
+the influence or authorization sides.
+
+What is not a restatement: the conservation, non-laundering and composition
+results, which are the other line's and are proved in its frozen consolidation;
+NL-1 and NL-2; RR-2's allowance defect; and the observation that `ST-J2` already
+answers the composition question. Ontology shift in particular is named in
+`li-deference.md` §0.3 as something that line does **not** model, so the
+diachronic half is not duplicated work.
+
 ## 7. Deference
 
 **DEF-1. The interface.** `CONJECTURE`, stated in `INTERFACE_TO_DEFERENCE.md`.

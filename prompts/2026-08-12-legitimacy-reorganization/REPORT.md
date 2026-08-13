@@ -89,6 +89,27 @@ composition result the prompt's §V.5 asks for. It was filed as a result about
 migration. Reorganizing is what made it findable, which is the clearest single
 piece of evidence that the reorganization was worth doing.
 
+## Prior art the first draft under-cited
+
+Two headline observations restate a moral the workspace already holds, and the
+round's documents originally labelled them `CITED` without naming where the
+framing came from. `THEOREM_MAP.md` §6a now does.
+
+The legitimacy programme is the deference line's: `li-deference.md` §0.3, human
+notes by Abram Demski, already identifies the legitimacy of feedback as the
+missing object and names manipulation that the feedback subsequently confirms as
+a mode to exclude. The provenance principle is stated in `legitimacy-theory-v1.md`
+§2.3, whose §3 already classifies trace conditions as provably empty — so LEG-2 is
+that classification applied to a new pair of predicates rather than a new
+principle. And `RECONCILIATION.md` has already adjudicated one independent
+convergence on this shape; the ground-provenance finding here is a third
+instance, from the reasons side.
+
+What is not a restatement: the conservation, non-laundering and composition
+results; NL-1 and NL-2; the allowance defect; and the `ST-J2` observation.
+Ontology shift is named in `li-deference.md` §0.3 as something that line does not
+model, so the diachronic half is not duplicated work.
+
 ## Deviations
 
 1. **No Lean.** The execution environment has no Lean toolchain, so nothing could
