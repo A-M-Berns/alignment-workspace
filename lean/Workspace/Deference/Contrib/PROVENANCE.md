@@ -12,6 +12,7 @@
 | `EnvelopeDominance.lean` | `prompts/2026-08-11-stage-iii-fud/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-iii-fud/` | — |
 | `StaticViewFactorization.lean` | `prompts/2026-08-11-stage-v-li-native/` (executor: GPT-5 Codex, OpenAI; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-stage-v-li-native/` | — |
 | `CartesianFrameBridge.lean` | `prompts/2026-08-12-cartesian-frames/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-12 | `prompts/2026-08-12-cartesian-frames/` | — |
+| `ReachableCorrectiveControl.lean` | `prompts/2026-08-12-reachable-corrective-control/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-13 | `prompts/2026-08-12-reachable-corrective-control/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`; per-declaration
@@ -83,3 +84,33 @@ carries the re-verification command. Nothing in `CartesianFrameBridge.lean` depe
 Every declaration in the file is hypothesis-complete, and the constructed frames inhabit
 every statement. None is promotable to `CLAIMS.md` as it stands: the deference line has no
 registry, which is the standing friction entry rather than a defect of this file.
+
+`ReachableCorrectiveControl.lean` is new in its round and has **no imports**: it elaborates
+against the pinned toolchain alone, which is why nothing in it depends on the
+Cartesian-frames mirror above. It is a twelve-state transition system with separate
+principal, advisor and environment input coordinates, and it defines corrective capability,
+reachable corrective capability and foreclosure by quantifying over the transition relation
+rather than by reading a state field; the field-level characterizations `canCorrect_iff`,
+`canCorrectFuture_iff` and `forecloses_iff` are conclusions. Every declaration is
+hypothesis-complete and every witness is a concrete state of the model, so nothing in the
+file is vacuous. None is promotable to `CLAIMS.md`: the deference line has no registry.
+
+**Its §12 is an adversarial review's refutations, reproved in place, and it breaks the
+file's protection claims. Read it before citing anything in §9 or §10.** There is no
+protected coordinate: `principal_has_no_exclusive_effect` shows the advisor reproduces the
+principal's entire successor state at every state, and
+`advisor_reset_is_principal_pull_where_capable` that wherever the principal can correct the
+advisor's actuator *is* the principal's correction. `CanCorrect` and `CanCorrectFuture`
+quantify the advisor existentially, so neither is a statement about the principal's control
+— `advisor_has_a_universal_veto`, `no_advisor_robust_capability`, and
+`canCorrectFuture_measures_advisor_cooperation`, which exhibits an advisor policy that
+destroys the capability at every horizon while `Preserves` certifies it. `AuthLabel` builds
+an isomorphic system whose gating field is named `authorized` and which passes every test in
+§10, so §10 excludes inert coordinates and nothing more. `EnvBlame` shows `Forecloses`
+attributes nothing. The Cartesian-frame correspondence stated in the round's register is
+prose: no declaration in this file checks it.
+
+What the review attacked and did not break: the autonomy (the system evolves without the
+advisor, and the environment alone creates the corrective situation), the absorbing-severed
+argument and the foreclosing arm, the fairness of `obs`, the quantifiers of `SameImmediate`,
+and the inert-field results.
