@@ -81,6 +81,17 @@ with what was adopted and what was not, is
 `projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`.
 Nothing from the corpus is registered here or promoted to `workspace-established`.
 
+**A second standing bar, on time indices.** A round representing the loss of future
+corrective capability may not treat a cut-time or seal-time index as counterfactual
+unless the model has dynamics that run *without* the advisor. Cutting an advisor off in a
+system that only moves when the advisor acts freezes the run rather than continuing it,
+and the resulting family of "continuations" is the family of prefixes — proved, and
+machine-checked, in
+`lean/Workspace/Deference/Contrib/TimeIndexedCapability.lean` §10 after an adversarial
+review collapsed the round that assumed otherwise. One result from that round stands:
+preserving a principal's deliberative endpoint and preserving its corrective capability
+are independent in both directions.
+
 **Standing bar on the comparator.** No round may attempt the fully-updated
 comparator again without first putting the authorisation relation into the type.
 Adding parameters to the valuation is ruled out by two rounds' evidence, and a
