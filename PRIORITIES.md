@@ -436,6 +436,116 @@ item. The present candidate is a distortion term comparing local fixed-loss
 evaluation with full replay, potentially requiring `B_T(g) = o(T)`, but no
 accepted sufficient statement yet supplies an executable completion criterion.
 
+## Leverage line — the trajectory conditions
+
+Items 35–39 were filed by the legitimacy-architecture round within its dispatched
+scope, with `prompts/2026-08-12-legitimacy-reorganization/PROMPT.md` as the
+authorization. Their shared context is
+`projects/leverage/notes/LEGITIMACY_ARCHITECTURE.md` and the round directory
+`projects/leverage/rounds/2026-08-12-legitimacy-architecture/`, whose
+`THEOREM_MAP.md` says which statements have a derivation, which have an
+exhaustive finite check, and which have only a witness.
+
+### 35. Lean the conservation law and the comparator core — **[entry]**
+
+Two statements, both short, both currently resting on Python.
+
+The conservation statement: over an append-only sequence of dispositions in which
+every live liability receives exactly one, and terminal modes carry their backing,
+every liability live at the start has exactly one fate, and the fate of a
+concatenation is determined by the first segment's fate and the second segment.
+The comparator statement: for a finite response space `A` and a finite family `F`
+of subsets, the set of maps preserving every member of `F` is the product over
+`a` of the intersection of the members containing `a`; it is a singleton exactly
+when each such intersection is `{a}`.
+
+*Deliverable shape:* declarations in `Workspace.Leverage.Contrib`, sorry-free and
+auditing to the three axioms, each with an inhabitation witness for its full
+hypothesis package.
+*Acceptance check:* the `lean` job is green and `tests/audit_axioms.py` passes;
+the Python sweeps in the round directory are unchanged and still green.
+*Context:* `rounds/2026-08-12-legitimacy-architecture/THEOREM_MAP.md`, DA-1, DA-3
+and NL-1.
+*Why it is [entry]:* both derivations are given in that document and neither
+needs new mathematics; the work is encoding, not discovery.
+
+### 36. Make the magnitude allowance consumable — **[entry]**
+
+A declared allowance is compared against a single step's movement, so one
+impediment cited at `n` dates licenses `n` times its allowance while every step is
+admitted. Decide whether an allowance is a per-step bound or a budget, and if a
+budget, make it one.
+
+*Deliverable shape:* a revision to the magnitude clause in
+`rounds/2026-08-11-phi-regret-prep/src/certificates.py` or its successor, with
+the ledger of consumed allowance in the record rather than in the checker.
+*Acceptance check:* the existing certificate tests are unchanged and green; a new
+exact test shows the repeated-tolling trajectory refused at the date the budget is
+exhausted; and a necessity witness shows a trajectory the per-step reading admits
+and the budget reading refuses.
+*Context:* `rounds/2026-08-12-legitimacy-architecture/THEOREM_MAP.md`, RR-2, and
+`src/scenarios.py::repeated_tolling`.
+*Why it is [entry]:* the defect and its repair are both displayed; what is needed
+is a decision about which reading is intended and the bookkeeping to carry it.
+
+### 37. Define ground provenance so a clause can read it — **[substantial]**
+
+Three of the six attacks pass because no clause reads where a ground came from. A
+partition of the record's grounds into those the settlement channel wrote and
+those the reasoner or its advisor wrote is carried in the model as an unread
+field; the item is to make it load-bearing.
+
+*Deliverable shape:* a provenance-sensitive scope or licensing clause, with the
+version of the local condition that reads it, and the necessity witness that it
+does not simply forbid the reasoner from filing anything.
+*Acceptance check:* the self-filed-authority laundering trajectory is refused; the
+same trajectory with the authority ground written by the settlement channel is
+admitted; and the transformative-learning trajectory of the same round stays
+admitted, so the repair has not bought its result by forbidding conceptual change.
+*Context:* the round's `PROSECUTION.md`, attacks A and C, and `THEOREM_MAP.md`
+LEG-4.
+*Why it is [substantial]:* which filings a reasoner may make on its own account
+is a normative question, not a bookkeeping one, and the acceptance check above
+constrains the answer without supplying it.
+
+### 38. Coverage against a generated arrival process — **[substantial]**
+
+Coverage is currently a comparison against a declared list of demands. An advisor
+who controls what *arises* rather than what is *filed* is invisible to it, which
+is the attack one level below the one coverage was introduced to catch.
+
+*Deliverable shape:* an arrival process the model generates rather than declares,
+an entitlement predicate on arrivals, and a coverage condition stated against it.
+*Acceptance check:* the agenda-manipulation pair separates as it does now; a new
+pair separating a reasoner that suppresses an arrival from one that suppresses a
+filing is exhibited; and a witness shows a legitimate covering trajectory that
+still misses an arrival the process generated, or a proof that none exists.
+*Context:* the round's `src/scenarios.py::coverage` and `PROSECUTION.md`, attack
+D.
+*Why it is [substantial]:* the entitlement predicate is where the difficulty is,
+and it is the same shape as the consolidation's open registry-completeness
+problem.
+
+### 39. Is the constraint's non-transitivity the deference line's? — **[open]**
+
+The constraint does not compose, in two ways: an allowance that is never spent,
+and a later step licensed by standards an earlier step installed. The deference
+line's D12 conjectures that trust is not transitive under delegation, recoverable
+under an observability condition. Both are properties holding at each link and
+failing along the chain, with the repair in both cases a condition on what the
+intermediate step may supply.
+
+*Deliverable shape:* either a construction exhibiting one as an instance of the
+other, or a witness separating them — a chain non-transitive in one sense and
+transitive in the other.
+*Acceptance check:* exact and finite either way, with the separating witness
+displayed if that is the answer.
+*Context:* `THEOREM_MAP.md` RR-2 and RR-3;
+`projects/deference/note-dump-2026-08-11/deference-trust-lab/report/RESEARCH-REPORT.md`
+D12, which is a conjecture there and is cited as one.
+*Why it is [open]:* the resemblance may be an analogy. Establishing that it is
+not requires a common setting the two lines do not currently share.
+
 ---
 
 ## Deference line
@@ -1132,6 +1242,25 @@ declared one, so an intake produces a list to adjudicate rather than a silent
 inheritance. It does not decide anything; it makes the adjudication visible. The
 null-input case is a superseded tree with no inbound pointers, which must fail
 rather than report clean if the tree is cited anywhere.
+
+### F7 — A round with no Lean toolchain leaves no trace of why it shipped no Lean
+
+The standing guidance sends new verification logic to Lean. A round executing in an
+environment without a toolchain cannot follow it, and the repository has no way to
+express the difference between *no Lean was warranted* and *no Lean was possible*.
+Both look identical from the tree: Python results, a report, no declarations.
+
+The legitimacy-architecture round hit this and said so in its report, which is
+where the fact currently lives and where nobody will look for it. The cost is
+mis-priced port items: a statement whose derivation is written out and whose only
+obstacle was a missing toolchain is an hour's work, and one that was never derived
+is not, and the port item family cannot tell them apart.
+
+What would catch it is a field rather than a check — a round's `PROVENANCE.md`
+declaring whether the Lean gate was runnable in its environment, so that a port
+item can cite a derivation that exists and a reviewer can see which rounds owe
+Lean and which merely lack it. The null-input case is a round directory with no
+such declaration, which must fail rather than default to "warranted".
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 

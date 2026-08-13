@@ -1,10 +1,20 @@
-# Leverage
+# Normative constraint, legitimacy, and normative learning
 
-The normativity and answerability program: what a record must show for a
-learner's normative state to be accountable — objection grammar, diachronic
-identity across ontology migration, practical demand, joint composition, and the
-settlement interface a world-channel must meet before its writings get operative
-force.
+What makes a trajectory of a bounded reasoner legitimate, and when does movement
+through the space of legitimate trajectories constitute learning.
+
+Three layers, separately statable and separately open. **The statics** — what
+reasons, warrants, commitments, defeaters and the settled record permit: objection
+grammar, credal constraint and its propagation, feasibility, and the settlement
+interface a world-channel must meet before its writings get operative force.
+**The trajectory conditions** — reasons-responsiveness step by step, and
+answerability across changes of standard, vocabulary and ontology, with the
+conservation and composition results that follow. **The learning extension** —
+coverage of what arises, and an online performance criterion against comparators
+that would themselves have been legitimate.
+
+`notes/LEGITIMACY_ARCHITECTURE.md` is the entry point and states the architecture,
+what is proved under it, and what it is missing. Its terminology is provisional.
 
 ## Where the authority is
 
@@ -62,6 +72,15 @@ online-learning interface, normative compilation of public reasons, and the
 counterfactual-stability problem. The two live directions are independent:
 integrate the current learner's computation and policy state, and generalize the
 loss and transformation interfaces without importing docket-specific machinery.
+
+`rounds/2026-08-12-legitimacy-architecture/` states the trajectory conditions
+abstractly and prosecutes them. Three of six attacks pass, all through one gap —
+neither condition constrains what may be put on the record — and the fourth
+failure is inherited: two trajectories with identical records and influence
+defects `0` and `1/2` are both certified. It also computes the
+legitimacy-preserving comparator class exactly and shows it collapses to the
+identity on any trajectory whose constraint responds to the record, which is a
+negative result about the shape of the online-learning target.
 
 `deck-2026-08-10/` is the author-written presentation snapshot for the line. Its
 own origin record carries its date, digest, and per-frame attribution marks.

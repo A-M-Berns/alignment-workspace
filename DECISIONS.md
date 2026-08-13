@@ -67,6 +67,40 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   is choosing one. *Waiting* costs one reimplementation per round that touches the
   layer, and the φ-regret preparation round has already paid it once.
 
+- **Rule on the umbrella name for the leverage line.** The dispatch of
+  2026-08-12 directs that `leverage` be deprecated as the umbrella term, and the
+  round did that in the living documents while leaving four things alone: the
+  directory `projects/leverage/`, the claim identifiers, the frozen
+  consolidation's own text, and the deck's title. Three are frozen or load-bearing
+  for citation and the fourth is the author's own words. *Doing it* is confirming
+  the split, or directing the rename and paying the pointer churn. *Waiting*
+  leaves `RESEARCH_STATE.md` and the directory name disagreeing, which is the
+  state the round is proposing rather than assuming, and leaves the retention
+  recorded as technical debt here rather than settled.
+
+- **Rule on the two senses of `legitimacy`.** The deference note dump uses the
+  word for endpoint-preservation — an advisor changes the rate at which the
+  reasoner converges and not the limit. The leverage line now uses it for a
+  condition on a record. The two are provably independent: the second is a
+  function of the record and `gate_blind` exhibits a faithful and a steered run
+  with the same record. The round names them *record legitimacy* and *endpoint
+  legitimacy*, provisionally. *Doing it* is confirming the pair or renaming one.
+  *Waiting* leaves one word doing two jobs across two lines that have now been
+  wired together, which is the condition under which a reader takes a result from
+  one line as a result about the other.
+
+- **Rule on whether the architecture equation is four-part.** The dispatch
+  proposed that a legitimate trajectory is one that is reasons-responsive at every
+  step and answerable across its history. The round found the conjunction
+  insufficient — self-filed grounds relicense a laundered standard, and an
+  undocketed demand is invisible to conditions that quantify over the record — and
+  shipped an architecture with two further conditions, ground provenance and
+  coverage. *Doing it* is reading §6 of
+  `projects/leverage/notes/LEGITIMACY_ARCHITECTURE.md` and the attack table in the
+  round's `PROSECUTION.md`, then adopting or refusing the four-part reading.
+  *Waiting* blocks no proof; the architecture note stays a consolidated view and
+  items 37 and 38 stay filed either way.
+
 - **Rule on pinning the Cartesian Frames formalization.** `lean/lakefile.toml`
   pins Formalized-Agent-Foundations at `1fffea44`, which predates
   `CartesianFrames/`. That library was on an unmerged branch when the
