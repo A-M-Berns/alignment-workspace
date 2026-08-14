@@ -1,5 +1,7 @@
 # Cartesian frames and the deference representation boundary
 
+Human register: [Deference wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Deference).
+
 **Status:** `ci-only`; verification register for
 `prompts/2026-08-12-cartesian-frames/`. Names introduced here are provisional.
 
@@ -352,29 +354,6 @@ item 28.
 | delegation separated from accurate simulation | **negative result** — `simRead_not_biextEquiv_delegated` |
 | `≃ᵇ`-invariance certifies a separation as non-label | **negative result** — `labelledHuman_not_biextEquiv_labelledAgent` |
 | the world-map asymmetry as what survives that | structural argument, not a proof |
-| the frames as models of the architectures they are named for | architectural interpretation |
-| `mapWorlds p ∘ pin` as the current deference view | architectural interpretation |
-| the LI observables as functionals of the committed view | architectural interpretation |
 | Cartesian frames cannot express authorisation | structural argument, not a proof |
 | partial externalization behaves as the one-cell case does | open |
 | a graded invariant of corrective agency | open |
-
-## 9. Next target, and what it would close
-
-**Dispatchable, and it is a re-instantiation rather than a new theorem.** Restate the
-Stage-V factorization over a signature carrying a frame and the choice actually taken —
-`(price, C : Frame W, a₀ : C.Agent)` — in place of `(price, realization, jurisdiction)`.
-The statement is `value_eq_of_price_realization_eq` instantiated at
-`realization := fun A => mapWorlds p (pin A.C A.a₀)`, with `commitment_view_blind` as the
-inhabitation witness; both are already proved, so there is no new mathematical content.
-What changes is the witness: the hidden payload becomes a named structure that constrains
-something instead of a field no formula reads. Worth doing for that reason and not for a
-theorem.
-
-**Not yet dispatchable.** A graded `≃ᵇ`-invariant of corrective agency, and whether
-`Commit` and `External^{/}` move it monotonically. Q3-level: the shape is unknown.
-
-**Finite factored sets are not indicated.** The missing structure §7.3 names is an
-agent-side counterfactual coordinate in the deference signature, and Cartesian frames
-already supply it. Escalating to a second formalism before the signature change of the
-dispatchable target is tried would be reaching past an available answer.

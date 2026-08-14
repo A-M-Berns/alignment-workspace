@@ -114,7 +114,8 @@ def self_test() -> bool:
         if got != want:
             ok = False
         print(f"  {status}: {name}")
-    return ok
+    from checkers import workspace_state
+    return ok and workspace_state.self_test()
 
 
 if __name__ == "__main__":

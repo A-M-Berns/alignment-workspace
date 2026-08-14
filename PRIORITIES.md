@@ -45,7 +45,7 @@ that it does not yet, and says what killed the obvious shapes. **An entry
 graduates by becoming a numbered item** — which is what it means for the missing
 idea to have arrived. That has happened once already: the question of what
 quantity could price a jurisdiction assignment left this list when Stage IV
-sharpened it enough to file as item 28. The leverage line has nothing here for that reason: its
+sharpened it enough to file as item 28. The normativity line has nothing here for that reason: its
 hard problems are open, but their shapes are known and they are filed as items 1
 and 2.
 
@@ -74,7 +74,7 @@ the market dispensable — the conclusion follows in three lines with the bound
 attained — so the target has to be a statistical relation, derived. But the
 relation mentions only the principal and the world, never the agent's credence,
 so **no coherence or no-exploitability condition on the agent can establish it.**
-`DISPATCH_QUEUE.md` declines to file a round here for exactly that reason.
+No round is filed for that unresolved hypothesis shape.
 
 *What is missing:* either a reformulation whose subject is something the agent's
 own dynamics can constrain — the candidate is discipline on the agent's
@@ -198,9 +198,9 @@ precondition.
 
 ---
 
-## Leverage line
+## Normativity line
 
-Context for all six: `projects/leverage/consolidation-aug9/`, whose `OPEN_PROBLEMS.md`
+Context for all six: `projects/normativity/consolidation-aug9/`, whose `OPEN_PROBLEMS.md`
 ranks them and whose theory parts state the surrounding results. Cite claims from
 it by identifier.
 
@@ -213,10 +213,10 @@ whether a declared minimum keeps being satisfiable as settlement contracts the
 region. `NL-SI-A4` shows no finite family of per-date checks decides it, and
 `NL-SI-A7` shows both outcomes occur on small instances.
 
-*Deliverable shape:* `lean-proved` in `Workspace.Leverage.Contrib`, or `witness-checked` for the negative direction.
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`, or `witness-checked` for the negative direction.
 *Acceptance check:* The Lean gate builds and audits clean; or the `witness` checker accepts the trajectory with the `violates-at-least-one` property.
 
-*Context:* `projects/leverage/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §5.
+*Context:* `projects/normativity/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §5.
 *A solution ships:* either a proof that a positive minimum persists under stated
 conditions, with necessity witnesses for those conditions; or a displayed
 trajectory driving it to zero under conditions the interface permits.
@@ -236,7 +236,7 @@ question does not mention.
 *Deliverable shape:* `lean-proved`. Nothing weaker settles a question that is open in both directions.
 *Acceptance check:* The Lean gate builds and audits clean.
 
-*Context:* `projects/leverage/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §3, §7.
+*Context:* `projects/normativity/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §3, §7.
 *A solution ships:* a modulus with its conformance proof, or an impossibility
 argument that does not route through Gaifman inductivity.
 
@@ -250,7 +250,7 @@ make a footprint declaration **unsound** rather than merely coarse.
 *Deliverable shape:* `enumeration-verified` — domain parameters for the house enumeration checker, covering all thirteen tables.
 *Acceptance check:* `python3 -m checkers.run` accepts the registered entry.
 
-*Context:* `projects/leverage/consolidation-aug9/THEORY_7_OBJECTION_GRAMMAR.md` §4.
+*Context:* `projects/normativity/consolidation-aug9/THEORY_7_OBJECTION_GRAMMAR.md` §4.
 *A solution ships:* grounds exercising every registered table, the ablation run
 over all thirteen, and the result either way.
 *Why it is [entry]:* finite programme over a finite registry; no new mathematics.
@@ -265,23 +265,23 @@ the weakest sound one.
 *Deliverable shape:* `witness-checked` for the multi-coordinate instances; `lean-proved` for a sharpness result.
 *Acceptance check:* The `witness` checker accepts each instance; or the Lean gate is green.
 
-*Context:* `projects/leverage/consolidation-aug9/THEORY_10_JOINT_COMPOSITION.md` §3, §6.
+*Context:* `projects/normativity/consolidation-aug9/THEORY_10_JOINT_COMPOSITION.md` §3, §6.
 *A solution ships:* the multi-coordinate instances with exact witnesses, and
 either a sharpness proof or a witness that the predicate is not weakest.
 
 ### 5. Constructing rather than reading the audited pair — **[substantial]**
 
-The strongest evidence about a non-trivial engine in the leverage line is a
+The strongest evidence about a non-trivial engine in the normativity line is a
 **reading audit** — a clause-by-clause reading of a published source, labelled as
 the weakest evidence class in the package. Constructing a minimal instance of the
 pair, enough of a market over a declared process to evaluate the interface
 predicates against, would move that evidence from the weakest class to the
 strongest.
 
-*Deliverable shape:* A construction in `Workspace.Leverage.Contrib` plus registry entries per clause it inhabits.
+*Deliverable shape:* A construction in `Workspace.Normativity.Contrib` plus registry entries per clause it inhabits.
 *Acceptance check:* The Lean gate is green and each clause entry names a declaration that exists.
 
-*Context:* `projects/leverage/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §7;
+*Context:* `projects/normativity/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §7;
 `VERIFICATION.md` §1.
 *A solution ships:* the construction, the predicates evaluated against it, and an
 honest statement of which clauses it does and does not inhabit.
@@ -294,16 +294,16 @@ stream results are stated over arrivals.
 *Deliverable shape:* `enumeration-verified` over a declared finite schema family, or `conjectured` with the statement made precise.
 *Acceptance check:* `python3 -m checkers.run` accepts the entry, or the registry records the class honestly as conjectured.
 
-*Context:* `projects/leverage/consolidation-aug9/THEORY_9_PRACTICAL_DEMAND.md`.
+*Context:* `projects/normativity/consolidation-aug9/THEORY_9_PRACTICAL_DEMAND.md`.
 
 ---
 
-## Leverage line — the learning track
+## Normativity line — the learning track
 
 The consolidation's `OPEN_PROBLEMS.md` closes with a pointer list it declines to
 treat, and *the learning and installation track* is on it. Items 29–31 opened
 the track. Their shared context is:
-`projects/leverage/rounds/2026-08-11-phi-regret-prep/`, whose
+`projects/normativity/rounds/2026-08-11-phi-regret-prep/`, whose
 `PHI_REGRET_TEST_SPEC.md` fixes the environment and whose `THEOREM_LEDGER.md`
 says which of its statements have a derivation and which have only a witness.
 
@@ -332,7 +332,7 @@ no suspension or solvency coupling, no post-hoc affordability deletion, and
 bounded full-information charge. It supplies no pathwise sampled-trajectory
 bound.
 
-*Result:* `projects/leverage/rounds/2026-08-11-phi-regret-bridge/` contains the
+*Result:* `projects/normativity/rounds/2026-08-11-phi-regret-bridge/` contains the
 derivation, exact finite checks, finite non-capture audit, and unregistered Lean
 proofs of the generic representation and recurrent-failure lemmas. Item 29 is
 closed; item 30's learner is now constructed, with bounded-service integration
@@ -354,7 +354,7 @@ an additional sampling argument. The content is entirely in the hypotheses,
 three of which the environment supplies and one of which is the bound.
 
 Use the fixed labels and nine programs in
-`projects/leverage/rounds/2026-08-11-phi-regret-bridge/`. Implement
+`projects/normativity/rounds/2026-08-11-phi-regret-bridge/`. Implement
 Blum--Mansour Theorem 18's row-conditioned weights over eight source labels and
 nine programs, and its stationary distribution. Measure expected mixed-action
 charge first. Use the `sqrt(8 log 9)` dependence; do not use plain exponential
@@ -365,7 +365,7 @@ If it retains the workspace's exact-rational execution discipline, also state
 how the source's optimized real parameter and stationary distribution are
 represented without silently changing the bound.
 
-*Result:* `projects/leverage/rounds/2026-08-11-phi-regret-learner/` implements
+*Result:* `projects/normativity/rounds/2026-08-11-phi-regret-learner/` implements
 the Theorem 18 construction with 8 source rows and 9 program weights per row,
 the transformation-weighted matrix, a deterministic exact stationary selector
 for the represented numerical weights, and the source row update. The real
@@ -396,7 +396,7 @@ at the four declared horizons, or `lean-proved` for the bound; the consequence a
 `lean` gate is green.
 *Context:* `PHI_REGRET_TEST_SPEC.md` §§1–6 fixes the environment, the three
 baselines, the measured quantities and the order of work;
-`projects/leverage/rounds/2026-08-11-phi-regret-learner/` is the controlling
+`projects/normativity/rounds/2026-08-11-phi-regret-learner/` is the controlling
 item-30 result.
 *A solution ships:* the bound or its absence, at each horizon, against the
 declared class; and an honest statement of whether the successful learner is
@@ -425,7 +425,7 @@ a documented negative naming the missing structure.
 *Acceptance check:* `python3 -m checkers.run` accepts the entry, or the registry
 records the negative honestly.
 *Context:* `REMEDIABLE_FAILURES.md`, last section;
-`projects/leverage/consolidation-aug9/THEORY_7_OBJECTION_GRAMMAR.md`.
+`projects/normativity/consolidation-aug9/THEORY_7_OBJECTION_GRAMMAR.md`.
 *Why it is [entry]:* a finite audit against a fixed registry; no new mathematics.
 It is adjacent to item 3, and a round doing both would exercise the registry
 harder than either alone.
@@ -445,7 +445,7 @@ regret quantity unchanged, and one synthetic bounded prospective generator runs
 through the same learner without importing docket, warrant, tolling, or ledger
 types. The report lists each former fixture assumption as interface-required or
 architecture-specific.
-*Context:* `projects/leverage/notes/NORMATIVE_LEARNING_INTERFACE.md`, Level A.
+*Context:* `projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md`, Level A.
 *Why it is [entry]:* it extracts an interface already used by working code; it
 does not require choosing a richer regret theorem or substantive loss semantics.
 
@@ -464,7 +464,7 @@ quantities as before; the generic learner imports no reason, warrant, obligation
 tariff, or profitability fields; and a negative test shows that an uncertified
 transformation cannot enter the declared lawful comparator collection through
 the normative adapter.
-*Context:* `projects/leverage/notes/NORMATIVE_LEARNING_INTERFACE.md`, Levels A
+*Context:* `projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md`, Levels A
 and B.
 *Why it is [entry]:* the current bridge already contains both roles; this item
 separates their interfaces without enlarging the comparator grammar.
@@ -473,6 +473,8 @@ Counterfactual stability remains a theorem-design direction rather than a filed
 item. The present candidate is a distortion term comparing local fixed-loss
 evaluation with full replay, potentially requiring `B_T(g) = o(T)`, but no
 accepted sufficient statement yet supplies an executable completion criterion.
+
+### 35. End-to-end module pipeline round — **[maintainer-specified-later]**
 
 ---
 
@@ -503,7 +505,7 @@ nowhere in it, because the objects that inference is about are absent.
 *A solution ships:* a minimal market and trader model in
 `Workspace.Deference.*`, enough that the criterion's application is a proof
 rather than a hypothesis, with the axiom audit clean.
-*Why it matters:* this is the same gap the leverage line and the pinned
+*Why it matters:* this is the same gap the normativity line and the pinned
 dependency sit on the other side of. It is the most valuable single item in this
 file.
 
@@ -546,10 +548,9 @@ is unavoidable, which is itself a result.
 
 ## Deference line — first research wave
 
-Seven items opening the corrigibility program's first parallel wave. Context for
-all seven: `projects/deference/notes/CORRIGIBILITY_ROADMAP.md` for the architecture
-and `projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md` for what is and is not
-established. Items 15, 16, 17 and 20 additionally bind to
+Seven items opening the corrigibility program's first parallel wave. The dispatch
+and returned-track overview are in
+`prompts/2026-08-11-deference-corrigibility/REPORT.md`. Items 15, 16, 17 and 20 additionally bind to
 `projects/deference/notes/FINITE_MODEL_SKELETON.md`.
 
 **Several of these do not ask for a theorem of record.** An item whose deliverable
@@ -640,7 +641,7 @@ be imported and blessed.
 accepts the worked instance with its exact rational parameters.
 
 *Context:* `projects/deference/notes/FINITE_MODEL_SKELETON.md` §4, §6;
-`projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, standing commitments.
+`prompts/2026-08-11-phase-ii-certificate/REPORT.md`.
 *A solution ships:* the derivation, the exact inequality, an exact-rational toy
 shutdown/correction case computed through, and an attack on the necessity of each
 assumption used.
@@ -690,7 +691,7 @@ as `conjectured`. A clean obstruction is a success.
 for an obstruction or lemma, the report states it precisely enough to be attacked
 next round.
 
-*Context:* `projects/deference/notes/CORRIGIBILITY_ROADMAP.md` § V.
+*Context:* `prompts/2026-08-11-deference-densification/REPORT.md`.
 *Why it is bounded:* the unbounded version is a full trader formalization, which is
 item 7 and a different project.
 
@@ -708,8 +709,8 @@ its evidence.
 a stated evidence basis; no row is classified `compatible` on the strength of an
 assumption introduced to close it.
 
-*Context:* `projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, the arc and the
-standing commitments; `projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md`.
+*Context:* `prompts/2026-08-11-deference-triangle/REPORT.md`;
+`projects/deference/note-dump-2026-08-11/lean-deference/AUDIT.md`.
 *A solution ships:* the matrix, and for every `conditionally compatible` row the
 exact condition.
 *Not permitted:* turning `unresolved` into `compatible by assumption`, or inventing
@@ -737,7 +738,7 @@ condition families, explicitly noncanonical. Not a theorem of record.
 family, every cell decided or explicitly marked undecided, with the separating
 example named where a cell separates.
 
-*Context:* `projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, standing commitments;
+*Context:* `prompts/2026-08-11-deference-admissibility/REPORT.md`;
 `projects/deference/notes/FINITE_MODEL_SKELETON.md` §8.
 *A solution ships:* the matrix, the candidate families, and for each family whether it
 is syntactic, causal, semantic, certified, decidable, semidecidable, or purely
@@ -808,8 +809,7 @@ record and **not** a canonical definition — naming is reserved.
 proposed clause is stated as a versioned patch with the tracks it would require
 rerunning.
 
-*Context:* `prompts/2026-08-11-deference-channel/REPORT.md` §9.2 and §1.3;
-`projects/deference/notes/CORRIGIBILITY_ROADMAP.md`, standing commitments.
+*Context:* `prompts/2026-08-11-deference-channel/REPORT.md` §9.2 and §1.3.
 *Not permitted:* freezing an authorization-token or cryptographic story as the
 formalization; claiming the causal fact is behaviourally verifiable in general.
 
@@ -1042,7 +1042,7 @@ verdict per hypothesis.
 §"Necessity of the scope condition" for the menu, its arithmetic, and the
 hard-selector failure; `projects/deference/note-dump-2026-08-11/wiki/soft-self-endorsement.md`
 for the hedged construction, its robustness claim and the grade that claim carries;
-`projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md`, Movement I.
+`projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md` §1.
 *A solution ships:* the instantiation and the per-hypothesis verdict, in whichever
 of the two outcomes it reaches.
 *Why it is [entry]:* no new mathematics. The theorem is ported and building, the
@@ -1098,10 +1098,10 @@ it can say it holds.
 
 ### F4 — A layer's theory is authoritative and its only code is in a disposable tree
 
-`projects/leverage/consolidation-aug9/` states the answerability ledger and the
+`projects/normativity/consolidation-aug9/` states the answerability ledger and the
 case docket in Theory 9 and carries their rows in its ledger. Its `src/` does not
 implement either. The only executable version of both is
-`projects/leverage/forward/src/`, whose own `FORWARD.md` says the tree "may be
+`projects/normativity/forward/src/`, whose own `FORWARD.md` says the tree "may be
 changed, rewritten, or deleted wholesale at any time without loss" and that
 "nothing here is evidence for anything."
 
@@ -1250,17 +1250,16 @@ contributed.
 *Context:* `.github/workflows/ci.yml`; the measured times are recorded in
 `prompts/2026-08-10-repo-scaffolding/REPORT.md`.
 
-### 11. A dual-register presence check in CI — **[entry]**
+### 11. Verification-register presence check in CI — **[entry]**
 
-`AGENTS.md` requires every substantive deliverable to ship both a verification
-register and a human register, and leaves enforcement to review. A heuristic gate
-— each new results directory contains both file kinds — is cheap once "results
-directory" is defined, which needs the repository to have some.
+`AGENTS.md` requires every substantive deliverable to ship a verification
+register in the repository. A heuristic gate checking new results directories is
+cheap once "results directory" is defined.
 
 *Deliverable shape:* A change to `.github/workflows/ci.yml` and a check script — **specification layer**.
-*Acceptance check:* The check runs in CI, passes on a compliant directory and fails on one missing a register.
+*Acceptance check:* The check runs in CI, passes on a compliant directory and fails on one missing its verification register.
 
-*Context:* `AGENTS.md`, dual-register section; `.github/workflows/ci.yml`.
+*Context:* `AGENTS.md`, register statement; `.github/workflows/ci.yml`.
 *A solution ships:* the check, a passing case, and a failing case proving it bites.
 
 ### 12. A necessity witness for every hypothesis that lacks one — **[entry]**
@@ -1272,7 +1271,7 @@ units: find the instance, display it, add the test.
 *Deliverable shape:* `witness-checked` entries, one per hypothesis given a witness.
 *Acceptance check:* The `witness` checker accepts each instance.
 
-*Context:* `projects/leverage/consolidation-aug9/LEDGER.md`, the necessity/sharpness column.
+*Context:* `projects/normativity/consolidation-aug9/LEDGER.md`, the necessity/sharpness column.
 
 
 ---
@@ -1289,7 +1288,7 @@ results, and one `enumeration-verified` entry exercising the house enumeration
 checker.
 *Acceptance check:* the `lean` and `checkers` CI jobs both green, with the
 registered entries adjudicated by them.
-*Context:* `projects/leverage/CLAIMS.md`; `checkers/`; `.github/workflows/ci.yml`.
+*Context:* `projects/normativity/CLAIMS.md`; `checkers/`; `.github/workflows/ci.yml`.
 *Status:* satisfied by the scaffolding rounds. It stays filed because the
 registry's demand rule means every entry must answer an item, including these —
 and because a future change to the harness re-opens exactly this question.

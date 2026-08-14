@@ -24,6 +24,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 SPEC_PATHS = (
     "AGENTS.md", "CONTRIBUTING.md", "DECISIONS.md", "PRIORITIES.md",
     "README.md", "PROVENANCE.md", "RESEARCH_STATE.md",
+    "state/**",
     "LICENSE", "LICENSE.*",
     ".github/**", ".gitattributes", ".gitignore",
     "checkers/*.py", "checkers/README.md",
@@ -31,8 +32,8 @@ SPEC_PATHS = (
     "prompts/**",
     # Consolidated trees. Ordinary content, but not contributors' to edit:
     # the protection that used to be a hash gate is this list plus review.
-    "projects/leverage/consolidation-aug9/**",
-    "projects/leverage/deck-2026-08-10/**",
+    "projects/normativity/consolidation-aug9/**",
+    "projects/normativity/deck-2026-08-10/**",
     "projects/deference/note-dump-2026-06-27/**",
     "projects/deference/note-dump-2026-08-11/**",
     "projects/deference/dose-response-note-dump-2026-07-02/**",
@@ -114,6 +115,8 @@ def self_test() -> int:
         # protection; nothing else would have caught its absence.
         ("the research-state document is specification",
          is_spec("RESEARCH_STATE.md"), True),
+        ("structured workspace state is specification",
+         is_spec("state/projects.json"), True),
         # A line's notes/ is maintainer working space whatever a file is called.
         # The enumeration matches on basename — `*` crosses a separator — so
         # before this pattern `notes/README.md` was specification and
@@ -128,9 +131,9 @@ def self_test() -> int:
         # contributor may cite it and may not edit it. An unlisted path defaults
         # to the proof layer, so the enumeration is the whole protection.
         ("the author's deck is specification",
-         is_spec("projects/leverage/deck-2026-08-10/ORIGIN.md"), True),
+         is_spec("projects/normativity/deck-2026-08-10/ORIGIN.md"), True),
         ("a round output tree stays proof layer",
-         is_spec("projects/leverage/rounds/2026-08-11-phi-regret-prep/src/model.py"),
+         is_spec("projects/normativity/rounds/2026-08-11-phi-regret-prep/src/model.py"),
          False),
         ("the maintainer set is non-empty", bool(MAINTAINERS), True),
         ("no specification pattern is empty", all(SPEC_PATHS), True),

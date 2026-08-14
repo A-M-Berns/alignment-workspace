@@ -5,7 +5,7 @@
     "contexts": [
       "checkers — house harness self-test and the claims registries",
       "conservativity — no new axioms, specification shape unchanged",
-      "consolidation-verification — the leverage consolidation re-proves itself",
+      "consolidation-verification — the normativity consolidation re-proves itself",
       "dco — every commit carries a sign-off",
       "lean — build, sorry-free, axiom audit",
       "path-gate — proof-layer PRs may not touch the specification layer",

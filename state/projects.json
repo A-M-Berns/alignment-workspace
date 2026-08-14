@@ -1,0 +1,37 @@
+{
+  "projects": [
+    {
+      "id": "normativity",
+      "name": "Normativity",
+      "path": "projects/normativity",
+      "status": "active",
+      "parent": null,
+      "entry_points": ["projects/normativity/README.md", "projects/normativity/CLAIMS.md", "projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md"]
+    },
+    {
+      "id": "normativity.legitimacy",
+      "name": "Legitimacy",
+      "path": "projects/normativity/legitimacy",
+      "status": "active",
+      "parent": "normativity",
+      "entry_points": ["projects/normativity/legitimacy/README.md", "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/TWO_ARC_INTERFACE.md"]
+    },
+    {
+      "id": "deference",
+      "name": "Deference",
+      "path": "projects/deference",
+      "status": "active",
+      "parent": null,
+      "entry_points": ["projects/deference/README.md", "projects/deference/notes/LI_NATIVE_DEFERENCE.md", "projects/deference/notes/FINITE_MODEL_SKELETON.md"]
+    },
+    {
+      "id": "leverage",
+      "name": "Leverage",
+      "path": null,
+      "status": "deprecated",
+      "parent": null,
+      "replacement_project": "normativity",
+      "entry_points": []
+    }
+  ]
+}

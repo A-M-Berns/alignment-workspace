@@ -1,0 +1,22 @@
+{
+  "interface_id": "normativity.learning.current",
+  "project": "normativity",
+  "modules": [
+    {"id": "bridge.semantic-representation", "path": "projects/normativity/rounds/2026-08-11-phi-regret-bridge/src/semantic_bridge.py"},
+    {"id": "learner.phi", "path": "projects/normativity/rounds/2026-08-11-phi-regret-learner/src/phi_learner.py"},
+    {"id": "legitimacy.learning", "path": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/src/learning.py"},
+    {"id": "legitimacy.scorekeeping", "path": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/src/scorekeeping.py"},
+    {"id": "local-regret.integration", "path": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning/src/integration.py"},
+    {"id": "local-regret.theorem-target", "path": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning/THEOREM_TARGET.md"},
+    {"id": "local-regret.path-inventory", "path": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning/PATH_INVENTORY.md"}
+  ],
+  "objects": [
+    {"id": "response-space", "notation": "A", "producers": ["bridge.semantic-representation"], "consumers": ["learner.phi"], "soundness_claim_ids": [], "registered_status": null, "write_access": ["specification"], "statement_of_record": null},
+    {"id": "selector", "notation": "E_g", "producers": ["legitimacy.learning"], "consumers": ["local-regret.integration"], "soundness_claim_ids": [], "registered_status": null, "write_access": ["ecology"], "statement_of_record": null},
+    {"id": "transformation", "notation": "F_g", "producers": ["bridge.semantic-representation"], "consumers": ["learner.phi"], "soundness_claim_ids": [], "registered_status": null, "write_access": ["normative-compiler"], "statement_of_record": null},
+    {"id": "loss", "notation": "ℓ_t", "producers": ["legitimacy.scorekeeping"], "consumers": ["local-regret.integration"], "soundness_claim_ids": [], "registered_status": null, "write_access": ["learner-acknowledgments", "ecology-challenges", "scorekeeper-practice"], "excluded_from_loss": ["standing", "grants"], "statement_of_record": null},
+    {"id": "margin", "notation": "δ_g", "producers": [], "consumers": ["local-regret.theorem-target"], "soundness_claim_ids": [], "registered_status": null, "write_access": ["joint-hypothesis"], "statement_of_record": null},
+    {"id": "coverage", "notation": "coverage", "producers": [], "consumers": ["local-regret.path-inventory"], "soundness_claim_ids": [], "registered_status": null, "write_access": ["ecology"], "statement_of_record": null},
+    {"id": "due-selector-compilation", "notation": "Due → E_g", "producers": ["legitimacy.learning"], "consumers": ["local-regret.integration"], "soundness_claim_ids": [], "registered_status": null, "write_access": ["ecology", "normative-compiler"], "presentation_requirements": ["decidable", "record-computable", "prospective"], "statement_of_record": null}
+  ]
+}
