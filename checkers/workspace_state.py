@@ -16,47 +16,52 @@ from checkers import registry
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "state"
-PRIORITY = re.compile(r"^###\s+(\d+)\.\s+(.+?)\s*$", re.M)
-SPECIAL_PRIORITY = re.compile(r"^###\s+([QF]\d+)\s+—\s+(.+?)\s*$", re.M)
+PRIORITY = re.compile(r"^###\s+(?:(\d+)\.|([A-Z]\d+)\s+—)\s+(.+?)\s*$", re.M)
+PRIORITY_META = re.compile(
+    r"<!--\s*workspace-priority:\s*project=([a-z0-9.-]+|none);\s*"
+    r"dispatchable=(yes|no)\s*-->"
+)
+FOUNDATION_ROW = re.compile(r"^\|\s*([A-Z0-9][A-Z0-9-]*)\s*\|", re.M)
 
 
 def load_json(name: str) -> Any:
     return json.loads((STATE / name).read_text())
 
 
-def priority_project(identifier: str) -> str | None:
-    if identifier.startswith("Q"):
-        return "deference"
-    if identifier.startswith("F"):
-        return None
-    number = int(identifier)
-    if number in {*range(1, 7), *range(29, 34), 35}:
-        return "normativity"
-    if number in {*range(7, 10), *range(14, 29), 34}:
-        return "deference"
-    return None
-
-
-def priorities() -> list[dict[str, Any]]:
+def parse_priorities(text: str) -> list[dict[str, Any]]:
     items = []
-    text = (ROOT / "PRIORITIES.md").read_text()
-    matches = list(PRIORITY.finditer(text)) + list(SPECIAL_PRIORITY.finditer(text))
-    for match in sorted(matches, key=lambda item: item.start()):
-        identifier, heading = match.groups()
+    matches = list(PRIORITY.finditer(text))
+    for index, match in enumerate(matches):
+        identifier = match.group(1) or match.group(2)
+        heading = match.group(3)
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        metadata = PRIORITY_META.search(text, match.end(), end)
         marks = re.findall(r"\*\*\[([^]]+)\]\*\*", heading)
         title = re.sub(r"\s+—\s+\*\*\[[^]]+\]\*\*.*$", "", heading)
         items.append({
             "id": identifier,
-            "project": priority_project(identifier),
+            "project": (None if metadata and metadata.group(1) == "none"
+                        else metadata.group(1) if metadata else None),
             "title": title,
-            "state": (marks[0] if marks else
-                      "question" if identifier.startswith("Q") else
-                      "workspace-friction"),
+            "state": marks[0] if marks else "unclassified",
             "dependencies": [],
             "origin": "PRIORITIES.md",
-            "specified_enough_to_dispatch": not (identifier == "35" or identifier[0] in "QF"),
+            "specified_enough_to_dispatch": bool(metadata and metadata.group(2) == "yes"),
+            "metadata_present": metadata is not None,
         })
     return items
+
+
+def priorities() -> list[dict[str, Any]]:
+    return parse_priorities((ROOT / "PRIORITIES.md").read_text())
+
+
+def foundation_claim_count(path: pathlib.Path) -> int | None:
+    if not path.exists():
+        return None
+    ids = {identifier for identifier in FOUNDATION_ROW.findall(path.read_text())
+           if identifier != "ID"}
+    return len(ids)
 
 
 def current_state() -> dict[str, Any]:
@@ -64,6 +69,10 @@ def current_state() -> dict[str, Any]:
     round_data = load_json("rounds.json")["rounds"]
     vocabulary = load_json("vocabulary.json")["terms"]
     interface = load_json("theorem_interface.json")
+    foundations = load_json("foundations.json")["foundations"]
+    for foundation in foundations:
+        inventory = foundation["claim_inventory"]
+        foundation["claim_count"] = foundation_claim_count(ROOT / inventory["source"])
     registries = sorted(ROOT.glob("projects/*/CLAIMS.md"))
     claims = []
     for path in registries:
@@ -73,6 +82,7 @@ def current_state() -> dict[str, Any]:
     return {
         "projects": project_data,
         "claims": claims,
+        "foundations": foundations,
         "rounds": round_data,
         "vocabulary": vocabulary,
         "priorities": priorities(),
@@ -100,7 +110,8 @@ def validate(data: dict[str, Any]) -> list[str]:
 
     for kind, rows in (("project", data["projects"]), ("round", data["rounds"]),
                        ("claim", data["claims"]), ("term", data["vocabulary"]),
-                       ("priority", data["priorities"])):
+                       ("priority", data["priorities"]),
+                       ("foundation", data["foundations"])):
         repeated = duplicates([str(row["id"]) for row in rows])
         if repeated:
             problems.append(f"duplicate {kind} id(s): {sorted(repeated)}")
@@ -126,6 +137,9 @@ def validate(data: dict[str, Any]) -> list[str]:
     for round_ in data["rounds"]:
         if not (ROOT / round_["path"]).exists():
             problems.append(f"round {round_['id']}: path does not exist: {round_['path']}")
+        artifact_path = round_.get("artifact_path")
+        if artifact_path is not None and not (ROOT / artifact_path).exists():
+            problems.append(f"round {round_['id']}: artifact path does not exist: {artifact_path}")
         prompt = round_.get("prompt")
         if prompt is not None and not (ROOT / prompt).exists():
             problems.append(f"round {round_['id']}: prompt does not exist: {prompt}")
@@ -140,6 +154,23 @@ def validate(data: dict[str, Any]) -> list[str]:
                 if " ".join(verdict.split()) not in source:
                     problems.append(f"round {round_['id']}: verdict is not verbatim in "
                                     f"{verdict_source}: {verdict!r}")
+        for item in round_.get("verdicts", []):
+            source_path = item.get("source")
+            if not source_path or not (ROOT / source_path).exists():
+                problems.append(f"round {round_['id']}: verdict source does not exist: "
+                                f"{source_path}")
+            else:
+                source = " ".join((ROOT / source_path).read_text().replace("`", "").split())
+                if " ".join(item["value"].split()) not in source:
+                    problems.append(f"round {round_['id']}: verdict is not verbatim in "
+                                    f"{source_path}: {item['value']!r}")
+        superseded_by = round_.get("superseded_by")
+        if superseded_by is not None:
+            if superseded_by == round_["id"]:
+                problems.append(f"round {round_['id']}: superseded_by is self-referential")
+            elif superseded_by not in rounds:
+                problems.append(f"round {round_['id']}: superseded_by does not resolve: "
+                                f"{superseded_by}")
         project = round_.get("project")
         if project and (project not in projects or projects[project]["status"] != "active"):
             problems.append(f"round {round_['id']}: project is not active: {project}")
@@ -177,10 +208,34 @@ def validate(data: dict[str, Any]) -> list[str]:
                 problems.append(f"claim {claim['id']}: documentation path does not exist: {path}")
 
     for item in data["priorities"]:
+        if not item.get("metadata_present"):
+            problems.append(f"priority {item['id']}: missing workspace-priority metadata")
         project = item.get("project")
         if project is not None and (project not in projects or
                                     projects[project]["status"] != "active"):
             problems.append(f"priority {item['id']}: project is not active: {project}")
+
+    for foundation in data["foundations"]:
+        project = foundation.get("project")
+        if project not in projects or projects[project]["status"] != "active":
+            problems.append(f"foundation {foundation['id']}: project is not active: {project}")
+        if foundation.get("modern_registry") is not False:
+            problems.append(f"foundation {foundation['id']}: must be distinct from modern registry")
+        paths = (
+            ("path", foundation.get("path")),
+            ("ledger", foundation.get("authority", {}).get("ledger")),
+            ("status vocabulary", foundation.get("authority", {}).get("status_vocabulary")),
+            ("verifier", foundation.get("verification", {}).get("verifier")),
+            ("claim inventory", foundation.get("claim_inventory", {}).get("source")),
+        )
+        for label, path in paths:
+            if not path or not (ROOT / path).exists():
+                problems.append(f"foundation {foundation['id']}: {label} does not exist: {path}")
+        expected = foundation.get("claim_inventory", {}).get("expected_count")
+        actual = foundation.get("claim_count")
+        if actual is not None and actual != expected:
+            problems.append(f"foundation {foundation['id']}: claim inventory count "
+                            f"{actual} != expected {expected}")
 
     aliases: dict[tuple[str, str], list[str]] = {}
     for term in data["vocabulary"]:
@@ -198,6 +253,10 @@ def validate(data: dict[str, Any]) -> list[str]:
         if project not in projects or projects[project]["status"] != "active":
             problems.append(f"interface {interface['interface_id']}: project is not active: "
                             f"{project}")
+        research_round = interface.get("research_round")
+        if research_round and research_round not in rounds:
+            problems.append(f"interface {interface['interface_id']}: unknown research round "
+                            f"{research_round}")
         module_rows = interface.get("modules", [])
         if duplicates([module["id"] for module in module_rows]):
             problems.append(f"interface {interface['interface_id']}: duplicate module ids")
@@ -216,6 +275,10 @@ def validate(data: dict[str, Any]) -> list[str]:
             for claim_id in obj.get("soundness_claim_ids", []):
                 if claim_id not in claims:
                     problems.append(f"interface {obj['id']}: unknown claim {claim_id}")
+            for field in ("statement_of_record", "research_artifact"):
+                path = obj.get(field)
+                if path is not None and not (ROOT / path).exists():
+                    problems.append(f"interface {obj['id']}: {field} does not exist: {path}")
 
     for path, expected in render_handoffs(data).items():
         target = ROOT / path
@@ -240,6 +303,16 @@ def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
             parent=project.get("parent") or "—", path=project.get("path") or "—",
             entries="<br>".join(f"`{entry}`" for entry in project.get("entry_points", [])) or "—"))
 
+    paths.extend(["", "## Foundation claim sources", "",
+                  "| stable ID | project | kind | path | ledger | verifier | claims | modern registry |",
+                  "|---|---|---|---|---|---|---|---|"])
+    for foundation in data["foundations"]:
+        paths.append("| {id} | {project} | {kind} | `{path}` | `{ledger}` | `{verifier}` | {count} | {modern} |".format(
+            id=foundation["id"], project=foundation["project"], kind=foundation["kind"],
+            path=foundation["path"], ledger=foundation["authority"]["ledger"],
+            verifier=foundation["verification"]["verifier"],
+            count=foundation["claim_count"], modern=str(foundation["modern_registry"]).lower()))
+
     vocabulary = ["# Canonical vocabulary sheet", "",
                   f"Generated from `state/vocabulary.json` by `{command}`.", "",
                   "| stable ID | preferred | aliases | deprecated aliases | scope | repo identifiers |",
@@ -258,9 +331,11 @@ def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
               "| round ID | date | project | current path | verdict (verbatim) | registered classes | prompt | claim changes |",
               "|---|---|---|---|---|---|---|---|"]
     for round_ in data["rounds"]:
+        verdicts = [round_["verdict"]] if round_.get("verdict") else []
+        verdicts.extend(item["value"] for item in round_.get("verdicts", []))
         rounds.append("| {id} | {date} | {project} | `{path}` | {verdict} | {classes} | `{prompt}` | {claims} |".format(
             id=round_["id"], date=round_["date"], project=round_.get("project") or "workspace",
-            path=round_["path"], verdict=round_.get("verdict") or "—",
+            path=round_["path"], verdict="<br>".join(verdicts) or "—",
             classes=", ".join(round_.get("registered_classes", [])) or "—",
             prompt=round_.get("prompt") or "—",
             claims=", ".join(round_.get("claim_changes", [])) or "—"))
@@ -273,12 +348,54 @@ def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
 
 
 def self_test() -> bool:
+    cases: list[tuple[str, bool]] = []
+
     data = current_state()
     data["projects"][0]["entry_points"].append("missing/stale-path.md")
-    problems = validate(data)
-    passed = any("missing/stale-path.md" in problem for problem in problems)
+    cases.append(("stale registered path fails loudly",
+                  any("missing/stale-path.md" in p for p in validate(data))))
+
+    data = current_state()
+    data["projects"].append(dict(data["projects"][0]))
+    cases.append(("duplicate stable ID fails loudly",
+                  any("duplicate project id" in p for p in validate(data))))
+
+    data = current_state()
+    data["foundations"][0]["authority"]["ledger"] = "missing/foundation-ledger.md"
+    cases.append(("missing foundation source fails loudly",
+                  any("foundation-ledger.md" in p for p in validate(data))))
+
+    data = current_state()
+    data["foundations"][0]["claim_inventory"]["expected_count"] += 1
+    cases.append(("incorrect foundation count fails loudly",
+                  any("claim inventory count" in p for p in validate(data))))
+
+    fixture = ("### 947. Future item — **[open]**\n"
+               "<!-- workspace-priority: project=normativity; dispatchable=yes -->\n")
+    parsed = parse_priorities(fixture)
+    cases.append(("arbitrary future priority uses explicit metadata",
+                  len(parsed) == 1 and parsed[0]["id"] == "947" and
+                  parsed[0]["project"] == "normativity" and
+                  parsed[0]["specified_enough_to_dispatch"] is True))
+
+    data = current_state()
+    data["projects"][0]["path"] = "projects/leverage"
+    cases.append(("live projects/leverage current-state path fails loudly",
+                  any("active path does not exist" in p for p in validate(data))))
+
+    protection = json.loads((ROOT / ".github/branch-protection.json").read_text())
+    contexts_before = protection["required_status_checks"]["contexts"]
+    data = current_state()
+    data["projects"][0]["name"] = "Renamed Display Only"
+    contexts_after = protection["required_status_checks"]["contexts"]
+    cases.append(("project display rename leaves branch-protection identity stable",
+                  contexts_before == contexts_after and
+                  "consolidation-verification" in contexts_after))
+
+    passed = all(result for _, result in cases)
     print("WORKSPACE STATE SELF-TEST:")
-    print(f"  {'ok' if passed else 'FAILED'}: stale registered path fails loudly")
+    for label, result in cases:
+        print(f"  {'ok' if result else 'FAILED'}: {label}")
     return passed
 
 
@@ -310,7 +427,9 @@ def main(args: list[str]) -> int:
             print(f"  - {problem}")
         return 1
     print(f"WORKSPACE STATE: valid — {len(data['projects'])} projects, "
-          f"{len(data['claims'])} claims, {len(data['rounds'])} rounds, "
+          f"{len(data['claims'])} modern claims, {len(data['foundations'])} foundations, "
+          f"{sum(f['claim_count'] or 0 for f in data['foundations'])} foundation claims, "
+          f"{len(data['rounds'])} rounds, "
           f"{len(data['vocabulary'])} terms, {len(data['priorities'])} priorities, "
           f"{sum(len(i['objects']) for i in data['interfaces'])} interface objects")
     return 0

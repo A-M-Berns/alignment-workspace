@@ -6,7 +6,13 @@
       "path": "projects/normativity",
       "status": "active",
       "parent": null,
-      "entry_points": ["projects/normativity/README.md", "projects/normativity/CLAIMS.md", "projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md"]
+      "entry_points": [
+        "projects/normativity/README.md",
+        "projects/normativity/CLAIMS.md",
+        "projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md",
+        "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md",
+        "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md"
+      ]
     },
     {
       "id": "normativity.legitimacy",

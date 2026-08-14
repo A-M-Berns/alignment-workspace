@@ -141,6 +141,23 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
 
 ## Settled
 
+### 2026-08-14 — required checks use stable infrastructural identities
+
+The consolidation job's required context is `consolidation-verification`.
+Project names and explanatory prose may appear in step names and logs, but not in
+the external context branch protection matches. Renaming a research line must not
+change the identity of its gate.
+
+The workspace-state query distinguishes the sole modern claims registry from
+the inherited Normativity consolidation. The latter remains a 180-claim legacy
+foundation governed by its own ledger and status vocabulary; it is exposed as a
+claim source and is not migrated or translated into modern epistemic classes.
+Priority ownership and dispatchability are explicit metadata in `PRIORITIES.md`,
+not consequences of item numbers.
+
+Source: the maintainer-dispatched PR #32 reconciliation and machine-state
+hardening pass.
+
 ### 2026-08-13 — the repository is the lab; the wiki is the human register
 
 The repository holds experiment reports, priorities, contribution rules,

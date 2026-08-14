@@ -463,13 +463,13 @@ entry.
    `tests/audit_axioms.py`.
 4. The CI workflow definitions — `.github/workflows/`.
 5. The checker harness and the Python interpreter it runs on — `checkers/`.
-6. **CI job names.** Required status checks match job names by **exact string**,
-   so renaming a job silently breaks enforcement in one of two directions: the
-   branch demands a check that no longer reports, blocking everything; or it stops
-   requiring the gate that still runs, and nothing announces it. **Any job rename
-   updates `.github/branch-protection.json` in the same pull request**, and that
-   file — not the workflow, and not this document — is the source of truth for the
-   required-check list.
+6. **Stable CI identities.** Required status checks match job names by **exact
+   string**. Required job names are infrastructural identifiers, not project
+   prose: they stay stable when a project display name changes. Any intentional
+   required-context change updates `.github/branch-protection.json` in the same
+   pull request and is migrated only after a branch has emitted the new context.
+   That file — not the workflow, and not this document — is the source of truth
+   for the required-check list.
 7. The resource budgets — the enumeration point cap in `checkers/enumeration.py`,
    the Lean build timeout in CI, and any `maxHeartbeats`-style option in a Lean
    file, which counts as a budget change.
@@ -690,9 +690,9 @@ non-maintainer, and no single class says that. The fields are defined once, in
 
 ## Which standards are gates
 
-The CI job is named, because required status checks match job names by exact
-string. `.github/branch-protection.json` is the source of truth for which are
-required.
+Required CI jobs have stable external names because branch protection matches
+them by exact string. `.github/branch-protection.json` is the source of truth for
+which are required.
 
 | standard | enforced by |
 |---|---|

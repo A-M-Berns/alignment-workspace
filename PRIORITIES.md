@@ -54,6 +54,7 @@ killed them*, and what a good answer would let the program file next. Without th
 third part it is a wish, not a question.
 
 ### Q1 — What kind of statement bounds the near-indifference leakage?
+<!-- workspace-priority: project=deference; dispatchable=no -->
 
 Margin-gated calibration is the only non-circular competence candidate, and it
 asserts nothing where the principal is near-indifferent. The mass of that region
@@ -67,6 +68,7 @@ conclusion. Item 25 asks for the verdict in the negative direction because that
 is the cheaper one; it does not know what a positive answer would look like.
 
 ### Q2 — What disciplines the grade-to-quantity relation?
+<!-- workspace-priority: project=deference; dispatchable=no -->
 
 Everything epistemic in the deference line rests on a relation between what the
 principal grades and what the intervention is worth. Assumed *uniformly* it makes
@@ -83,6 +85,7 @@ that the residue is irreducibly a competence assumption and should be declared
 rather than derived.
 
 ### Q3 — How is foreclosure expressible?
+<!-- workspace-priority: project=deference; dispatchable=no -->
 
 The residue of the skeleton's `FU[g]` hole after items 27 and 28 took the rest.
 Item 27 names the two objects a successor comparator needs — a future agent that can be
@@ -183,6 +186,7 @@ with the review at `.../REVIEW.md`; Lean at
 refutations as theorems.
 
 ### Q4 — What certifies resource-separated computational futurity?
+<!-- workspace-priority: project=deference; dispatchable=no -->
 
 FAF can name and quote a later market computation, but the current type has no
 resource-indexed process state and proves no separation between present naming and
@@ -205,6 +209,7 @@ ranks them and whose theory parts state the surrounding results. Cite claims fro
 it by identifier.
 
 ### 1. Persistence of the certified core minimum — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Containment of the core homothet is linear in the reference at fixed
 coefficient, so whether a declared core minimum is satisfiable *at a date* is one
@@ -224,6 +229,7 @@ trajectory driving it to zero under conditions the interface permits.
 composite from an unconditional enforcement commitment.
 
 ### 2. A computable coherence modulus, or a proof there is none — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Does a given engine admit a computable tolerance schedule tending to zero, with
 its prices provably conforming at every finite date? Open **in both directions**.
@@ -241,6 +247,7 @@ question does not mention.
 argument that does not route through Gaifman inductivity.
 
 ### 3. Registry completeness for the objection grammar — **[entry]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The per-table ablation programme gives witnesses for the tables the displayed
 grounds exercise, out of thirteen registered. Completeness — that no judge needs
@@ -256,6 +263,7 @@ over all thirteen, and the result either way.
 *Why it is [entry]:* finite programme over a finite registry; no new mathematics.
 
 ### 4. Higher-dimensional sharpness for the movement cap — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Everything verified numerically in the joint layer is the one-coordinate fixture.
 The vertex formulation is stated for general finite regions but only the scalar
@@ -270,6 +278,7 @@ the weakest sound one.
 either a sharpness proof or a witness that the predicate is not weakest.
 
 ### 5. Constructing rather than reading the audited pair — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The strongest evidence about a non-trivial engine in the normativity line is a
 **reading audit** — a clause-by-clause reading of a published source, labelled as
@@ -287,6 +296,7 @@ strongest.
 honest statement of which clauses it does and does not inhabit.
 
 ### 6. Schema-level demand rates — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 How demand scales with the schema set rather than with the arrival stream. The
 stream results are stated over arrivals.
@@ -311,6 +321,7 @@ Items 29–31 were filed by that round within its dispatched scope, with
 `prompts/2026-08-11-phi-regret-prep/PROMPT.md` as the authorization.
 
 ### 29. Does the Φ-regret reduction instantiate on this substrate? — **[substantial]** — *closed-positive: repaired in the frozen environment*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Blum--Mansour (2007) Theorem 18 instantiates after a fixed semantic-action
 bridge. `Lambda` has exactly eight labels: two merits directions, default, and
@@ -339,6 +350,7 @@ closed; item 30's learner is now constructed, with bounded-service integration
 remaining open below.
 
 ### 30. A learner with sublinear Φ_law-regret, and what it retires — **[partially closed: learning-positive, integration-blocked]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The controlling question of the track.
 
@@ -407,6 +419,7 @@ service model does not price its computation and the historical record does not
 contain learner-policy state.
 
 ### 31. Does the objection grammar already represent a remediable-pattern filing? — **[entry]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 A lawful-edit certificate, a recurrence count and a positive charge differential
 are the material of a public filing: *here is a repair your own record licensed,
@@ -431,6 +444,7 @@ It is adjacent to item 3, and a round doing both would exercise the registry
 harder than either alone.
 
 ### 32. Extract the bounded prospective loss interface — **[entry]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Parameterize the item-29 bridge and item-30 learner over the smallest public
 prospective loss interface they actually use. Docket liability remains one
@@ -450,6 +464,7 @@ architecture-specific.
 does not require choosing a richer regret theorem or substantive loss semantics.
 
 ### 33. Separate causal transformation structure from normative certification — **[entry]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Extract the minimal transformation API required by the online-learning theorem:
 a fixed action domain, public pre-action state, causal total action map, and
@@ -475,6 +490,7 @@ evaluation with full replay, potentially requiring `B_T(g) = o(T)`, but no
 accepted sufficient statement yet supplies an executable completion criterion.
 
 ### 35. End-to-end module pipeline round — **[maintainer-specified-later]**
+<!-- workspace-priority: project=normativity; dispatchable=no -->
 
 ---
 
@@ -492,6 +508,7 @@ kind. None of the three items below depends on one of the four, and a round
 answering one should not assume the audit speaks for them.
 
 ### 7. Model the market and the traders — **[substantial]** — *partially closed Stage V*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The audit's §3.1 is "The market and traders are entirely unmodeled". The
 development takes the Logical Induction theorems as named hypotheses and proves
@@ -518,6 +535,7 @@ calibration, and generic deductive-process non-vacuity. See
 `projects/deference/notes/LI_NATIVE_DEFERENCE.md`.
 
 ### 8. The doubly-soft weight class — **[open]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The audit's §3.2 is "The doubly-soft weight: one leak closed, the class still
 open".
@@ -530,6 +548,7 @@ open".
 characterizable in the intended terms.
 
 ### 9. Forcing headlines that are squeezes — **[substantial]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The audit's §3.3 is "The forcing headlines are squeezes over hypotheses
 equivalent to their conclusions". A squeeze is a theorem whose hypothesis already
@@ -568,6 +587,7 @@ mark exists so that a reader picking work off this file can tell which items are
 awaiting a first attempt.
 
 ### 14. Faithful acceleration: exact inherited status, and what ports — **[substantial]** — *returned wave 1*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Determine exactly what the inherited deference development establishes about
 faithful acceleration, separating results that are algebraic consequences of named
@@ -599,6 +619,7 @@ dependency's endpoints, and the exact residual market-trader gap.
 *Not permitted:* strengthening an inherited theorem to fit the current narrative.
 
 ### 15. Finite settlement classification, and the local delegation bridge — **[substantial]** — *returned wave 1*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Over the frozen finite skeleton, formalize grade/report settlement, world/outcome
 settlement, and underwriting/enforcement, and determine for each exactly what it
@@ -623,6 +644,7 @@ inequality with its constants, and necessity or sharpness witnesses where feasib
 *Not permitted:* assuming the local result from a global trust theorem.
 
 ### 16. The certificate inequality, derived — **[substantial]** — *returned wave 1; rerun under skeleton v2*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Over the same frozen skeleton as item 15, derive from first principles the local
 certificate licensing `A`'s discretion: the defect quantity, the support-floor
@@ -647,6 +669,7 @@ shutdown/correction case computed through, and an attack on the necessity of eac
 assumption used.
 
 ### 17. Simulator substitution: the divergence witness — **[substantial]** — *returned wave 1*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Construct the smallest model in which `A`'s model of the principal agrees with the
 actual principal everywhere except one critical event, and in which the simulator
@@ -673,6 +696,7 @@ or neither.
 *Not permitted:* canonizing a final definition. That is a maintainer act.
 
 ### 18. Bounded densification study — **[open]** — *returned wave 1*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Whether exposure weights can be chosen so that outstanding delayed exposure stays
 bounded uniformly in time while the harvest against persistent defect diverges.
@@ -696,6 +720,7 @@ next round.
 item 7 and a different project.
 
 ### 19. Triangle compatibility audit — **[substantial]** — *returned wave 1*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Whether the requirements the forward arrow imposes and the requirements the reverse
 arrow imposes can hold simultaneously. Audit timing, advisory access, information
@@ -717,6 +742,7 @@ exact condition.
 reverse-arrow assumptions to close the table.
 
 ### 20. Admissibility red team, including the proof machinery — **[open]** — *returned wave 1; superseded by item 26*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Attack candidate admissibility conditions. A usable condition must exclude the
 quote-responsive diagonal, retain ordinary realized-conduct policies, retain a
@@ -755,6 +781,7 @@ Context for all three: `prompts/2026-08-11-deference-corrigibility/REPORT.md` fo
 wave 1 established and `RECOMMENDATION.md` beside it for why these three.
 
 ### 21. Signed versus magnitude control of grade error — **[open]** — *answered by Stage II; the magnitude target is retired — see item 24*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Does the no-Dutch-book criterion force an agent's grade-model error to vanish *in
 magnitude*, or only *in signed average*? Concretely, for a logical inductor pricing
@@ -785,6 +812,7 @@ it is entirely internal to the agent, which the adjacent grade-to-quantity quest
 is not.
 
 ### 22. The weakest protected-authority interface — **[substantial]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Determine the weakest abstract interface on which *prediction of authorization does
 not constitute authorization* is a theorem rather than a stipulation. The principal
@@ -814,6 +842,7 @@ rerunning.
 formalization; claiming the causal fact is behaviourally verifiable in general.
 
 ### 23. Lean promotion of the finite wave-1 results — **[entry]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Port the wave-1 finite results that need no maintainer decision first: the finite
 delegation bridge and its corollaries; the margin, override, defect and advantage
@@ -842,6 +871,7 @@ entry names a declaration that exists and ships a typechecking witness term.
 second-wave work that can start immediately.
 
 ### 24. Selective validity of low-error self-assessment — **[open]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The controlling next theorem, replacing the retired magnitude-control target. The
 criterion cannot force the agent's prediction error to vanish; the question is
@@ -884,6 +914,7 @@ estimate, which is the shape the admissibility red team flagged as most likely t
 reconstruct the diagonal. It may not work.
 
 ### 25. Bound the near-indifference leakage, or show it cannot be bounded — **[open]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The controlling competence question after Stage II, and the one item that decides whether
 the surviving competence candidate has any finite consequence at all.
@@ -926,6 +957,7 @@ itself credence-free or is a joint competence–credence hypothesis under skelet
 so no strengthening of the competence hypothesis can reach it.
 
 ### 26. Admissibility red team, rerun under skeleton v2 — **[open]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The admissibility work bound to skeleton v1 and v2 changes what it is about. A restriction
 on the conduct set is now nameable as a capability assignment, so the red team's candidate
@@ -954,6 +986,7 @@ proposed admissibility conditions are now reclassified as architectural.
 pass, which was scoped to integration rather than new science.
 
 ### 27. A fully-updated comparator with a fallible future agent — **[substantial]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 Stage III attempted this comparator and produced something else. Its transferred arm's
 selection was the argmax of the *evaluating agent's own objective under its own credence*,
@@ -994,6 +1027,7 @@ this is construction against a known target rather than open search — but the 
 it exists to ask has no expected answer, and a negative is as likely as a positive.
 
 ### 34. Does the selection-punishing menu bite the ported tower ⟹ Value chain? — **[entry]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The source line refutes the **hard-selector** tower ⟹ Value route on a
 selection-punishing menu — every option worth nothing exactly when it is the one
@@ -1063,6 +1097,7 @@ title, not its number** — the list is renumbered as entries leave it, so numbe
 are positions rather than identifiers.
 
 ### F1 — Nothing catches a documented command that names a deleted file
+<!-- workspace-priority: project=none; dispatchable=no -->
 
 `CONTRIBUTING.md` instructed readers to run `tests/check_frozen.py` for some time
 after the file was deleted, and three documents claimed eight gates where seven
@@ -1072,6 +1107,7 @@ CI job name in prose must appear in `.github/branch-protection.json`. Both fail
 loudly on a stale reference and neither can pass vacuously.
 
 ### F2 — No check that a root document lands in a layer
+<!-- workspace-priority: project=none; dispatchable=no -->
 
 An unlisted path defaults to the proof layer, which is the right default —
 deny-by-default would mean every new kind of file needs a maintainer decision
@@ -1088,6 +1124,7 @@ count or a job name repeated in prose or in a script drifts from
 correct protection as wrong; it now derives the number from the payload.
 
 ### F3 — The deference line has no claims registry
+<!-- workspace-priority: project=none; dispatchable=no -->
 
 `lean/Workspace/Deference/Contrib/` holds many kernel-verified results, sorry-free
 and auditing clean, and none is registered. The registry is what a claim is, so by
@@ -1097,6 +1134,7 @@ and it is the largest single divergence between what the repository holds and wh
 it can say it holds.
 
 ### F4 — A layer's theory is authoritative and its only code is in a disposable tree
+<!-- workspace-priority: project=none; dispatchable=no -->
 
 `projects/normativity/consolidation-aug9/` states the answerability ledger and the
 case docket in Theory 9 and carries their rows in its ledger. Its `src/` does not
@@ -1118,6 +1156,7 @@ pattern. **The report is the obligation here; which of the three is not this
 round's to take.**
 
 ### F5 — Upstream work on a feature branch is unreachable without a trust-chain edit
+<!-- workspace-priority: project=none; dispatchable=no -->
 
 `lean/lakefile.toml` pins one Formalized-Agent-Foundations commit and inherits
 Mathlib and Foundation through it, which is the right shape and stays. It has no
@@ -1148,6 +1187,7 @@ the trust-chain complexity, or is mirror-plus-cross-check the expected pattern f
 work in flight? **The report is the obligation; the decision is not this round's.**
 
 ### F6 — A pointer into a superseded source tree still resolves, and nothing says it is stale
+<!-- workspace-priority: project=none; dispatchable=no -->
 
 When a consolidated tree is superseded by a later one, every live pointer into the
 older tree keeps resolving. Nothing distinguishes a pointer that is still correct
@@ -1172,6 +1212,7 @@ null-input case is a superseded tree with no inbound pointers, which must fail
 rather than report clean if the tree is cited anywhere.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
 
 The highest-value question the deference line has produced, and the only one whose answer
 would convert a repeated observation into a result.
@@ -1238,6 +1279,7 @@ than a new theorem, and it is in `DECISIONS.md`'s queue rather than filed here.
 ## Infrastructure
 
 ### 10. Build the Lean in CI — **[entry]**
+<!-- workspace-priority: project=none; dispatchable=yes -->
 
 The Lean gate compiles in CI with a cached `.lake/`; if that cache proves too
 slow or too large for the runner, the gate needs restructuring rather than
@@ -1251,6 +1293,7 @@ contributed.
 `prompts/2026-08-10-repo-scaffolding/REPORT.md`.
 
 ### 11. Verification-register presence check in CI — **[entry]**
+<!-- workspace-priority: project=none; dispatchable=yes -->
 
 `AGENTS.md` requires every substantive deliverable to ship a verification
 register in the repository. A heuristic gate checking new results directories is
@@ -1263,6 +1306,7 @@ cheap once "results directory" is defined.
 *A solution ships:* the check, a passing case, and a failing case proving it bites.
 
 ### 12. A necessity witness for every hypothesis that lacks one — **[entry]**
+<!-- workspace-priority: project=none; dispatchable=yes -->
 
 Convention 2 asks for a necessity witness per hypothesis "where feasible". Rows
 in the frozen ledger that lack one, and where one is feasible, are contributable
@@ -1277,6 +1321,7 @@ units: find the instance, display it, add the test.
 ---
 
 ### 13. Scaffolding self-verification — **[entry]** — *satisfied, kept open*
+<!-- workspace-priority: project=none; dispatchable=yes -->
 
 The repository's own machinery must be exercised by something real before any
 research claim depends on it: the Lean chain must compile and audit, and the

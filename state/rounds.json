@@ -422,6 +422,75 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-13-crown-jewel-learning-theorem",
+      "date": "2026-08-13",
+      "project": "normativity",
+      "path": "prompts/2026-08-13-crown-jewel-learning-theorem",
+      "artifact_path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem",
+      "verdict": "CROWN-JEWEL-PATH-POSITIVE / DYNAMICS-STRENGTHENING-OPEN",
+      "verdict_source": "prompts/2026-08-13-crown-jewel-learning-theorem/REPORT.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem/PROMPT.md",
+      "claim_changes": [],
+      "superseded_by": "2026-08-13-crown-jewel-learning-theorem-refinement"
+    },
+    {
+      "id": "2026-08-13-crown-jewel-learning-theorem-refinement",
+      "date": "2026-08-13",
+      "project": "normativity",
+      "path": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement",
+      "artifact_path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem",
+      "verdict": null,
+      "verdicts": [
+        {
+          "kind": "theorem",
+          "value": "CROWN-JEWEL-THEOREM-POSITIVE-WITH-INTERFACE-HYPOTHESES",
+          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
+        },
+        {
+          "kind": "dynamics",
+          "value": "BM-DYNAMICS-CONDITIONALLY-POSITIVE",
+          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
+        }
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/PROMPT.md",
+      "claim_changes": [],
+      "superseded_by": "2026-08-13-crown-jewel-learning-theorem-final"
+    },
+    {
+      "id": "2026-08-13-crown-jewel-learning-theorem-final",
+      "date": "2026-08-13",
+      "project": "normativity",
+      "path": "prompts/2026-08-13-crown-jewel-learning-theorem-final",
+      "artifact_path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem",
+      "verdict": null,
+      "verdicts": [
+        {
+          "kind": "theorem",
+          "value": "NORMATIVE-RESPONSE-LEARNING-THEOREM-SETTLED",
+          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-final/REPORT.md"
+        },
+        {
+          "kind": "dynamics",
+          "value": "BM-FEEDBACK-DYNAMICS-WITNESSED",
+          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-final/REPORT.md"
+        }
+      ],
+      "governs_artifact_status": true,
+      "status_components": [
+        {"id": "abstract-theorem", "status": "settled-at-conditional-interface-level"},
+        {"id": "feedback-dynamics", "status": "witness-strength"},
+        {"id": "due", "status": "no-satisfactory-substantive-instantiation"},
+        {"id": "licensed", "status": "interface-discipline-available; substantive-soundness-open"},
+        {"id": "performance-loss", "status": "fixture-success; general-theory-open"},
+        {"id": "coverage", "status": "hypothesis; not-delivered-conclusion"}
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-final/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-13-wikification-and-normativity",
       "date": "2026-08-13",
       "project": null,

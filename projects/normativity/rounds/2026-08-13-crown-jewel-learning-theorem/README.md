@@ -28,7 +28,7 @@ python3 tests/run.py     # 72 tests
 | `THEOREM_STRENGTH_LADDER.md` | levels 0–7 with what each costs |
 | `PROSECUTION.md` | P1–P10 and the three weaknesses |
 | `PATH_INVENTORY.md` | what remains; three blocking items |
-| `FOR_HUMANS.md` | the human register |
+| [Normative Response Learning wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Normative-Response-Learning) | the maintained human register |
 
 Two headline changes. The **denominator**: the theorem is about `Q_T(g)/M_T(g)`,
 the bad-response rate *among occasions where the reason was due*, which makes
@@ -37,7 +37,7 @@ certified surgical repair is what the compiler *produces* from `Due` and
 `Licensed`, not the primitive normative object — so what remains open is upstream
 of the learning theory rather than inside it.
 
-`lean/Workspace/Leverage/Contrib/SurgicalRepairBound.lean` kernel-checks the
+`lean/Workspace/Normativity/Contrib/SurgicalRepairBound.lean` kernel-checks the
 bridge: the surgical lower bound, the mass bound, the conditional rate, an
 inhabitation witness and a necessity witness. Blum–Mansour enters as a hypothesis
 and is not reproved.

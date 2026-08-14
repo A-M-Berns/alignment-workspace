@@ -1,71 +1,43 @@
-# Normative-learning interface
+# Normative-response-learning interface
 
-Status: **ASPIRATIONAL / OPEN specification note.** This note defines the
-interface map and fixture assumptions consumed by future rounds. It adds no
-theorem and changes no result status.
+Status: **OPEN specification note.** The machine-readable projection is
+`state/theorem_interface.json`; validate it with
+`python3 -m checkers.workspace_state --check`. The crown-jewel round is current
+research evidence and is not a promoted workspace claim.
 
-## Theorem-facing interface
+## The three primitive interfaces
 
-The current finite construction exposes:
+The current conditional theorem consumes:
 
-- a horizon-independent finite response space `A`;
-- a public pre-action state `s_t`;
-- a bounded prospective loss vector `ℓ_t ∈ [0,L]^A`;
-- a finite family of causal transformations `F_g : A → A` selected by `E_g`;
-- a declared positive margin `δ_g` for the certified response under comparison;
-- an eventual route-coverage quantity.
+- `Due : S → D → Prop`, determined from the public pre-action record;
+- `Licensed : S → D → A → Prop`, a response licence independent of performance;
+- `Loss : S → A → [0,L]`, the bounded prospective performance vector.
 
-For the current family, Blum--Mansour (2007), Theorem 18 supplies the
-online-learning reduction once the transformations and the full bounded loss
-vector are available. A normative adapter separately certifies which public
-reasons authorize each transformation. The learner consumes the resulting
-transformations and does not inspect warrants, defeaters, commitments, or
-objections.
+`A` is a finite response space. The normative compiler turns a due burden and a
+licensed response into a surgical response map. The compiler is protocol-legal,
+causal, loss-blind, non-laundering, and identity away from its targeted source
+response. `CertifiedSurgicalRepair` is this compiler output, not a primitive
+normative relation.
 
-## Interface map
+## Independent hypotheses
 
-| generic role | current fixture | status |
-|---|---|---|
-| response space `A` | eight semantic labels | constructed |
-| selector `E_g` | failure-pattern test over the strict public prefix | constructed, fixture-specific |
-| transformation `F_g` | nine declarative lawful programs | constructed, fixture-specific |
-| loss `ℓ_t` | prospective docket charge vector | constructed, fixture-specific |
-| margin `δ_g` | certified loss improvement | joint hypothesis of answerability, response, and performance modules |
-| coverage | eventual route coverage | assumed by the trajectory-level criterion |
-| compilation evidence | reasons-responsiveness checks plus decoder bridge | partial, architecture-specific |
-| learner | Blum--Mansour Theorem 18 construction | constructed |
-| counterfactual stability | frozen filings/reasons; no suspension or solvency coupling | assumption, not generalized |
-| learner-state auditability | no repository-native policy-state record | blocking |
-| computation budget | no service cost for updates or stationary solve | blocking |
+A positive margin is a joint licence/performance hypothesis; licence does not
+imply lower loss. Coverage is a quantitative property of `Due` along the actual
+trajectory, not a fourth primitive interface and not a conclusion supplied by
+the normativity layer. A theorem-facing selector requires `Due` to have a
+decidable, record-computable, prospective presentation.
 
-The fixed action type, bounded full-information losses, causal transformations,
-finite comparator family, and stationary construction are theorem-interface
-inputs. Historical grounds, defeaters, authority, scope, burden preservation,
-replacement support, and profit-independent lawfulness are compilation
-evidence. A transformation admitted by the generic learner is normatively
-licensed only when the separate compilation judgment certifies it.
+The current fixtures supply bounded loss and demonstrate the learning dynamics.
+They do not supply a satisfactory substantive `Due`, substantive soundness for
+`Licensed`, a general performance theory, or coverage.
 
-## Fixture assumptions
+## Verification pointers
 
-The current result assumes:
+- Interface boundary: `../rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md`
+- Compiler discipline: `../rounds/2026-08-13-crown-jewel-learning-theorem/COMPILER_SOUNDNESS.md`
+- Conditional theorem: `../rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md`
+- Coverage hypothesis: `../rounds/2026-08-13-crown-jewel-learning-theorem/COVERAGE_INTERFACE.md`
+- Dynamics witness: `../rounds/2026-08-13-crown-jewel-learning-theorem/LEARNING_DYNAMICS.md`
 
-- eight canonical response labels and occasion-local decoding;
-- exactly nine programs and the finite non-capture audit;
-- one occasion per date and `service_window = 4`;
-- frozen arrivals, schedules, filings, and relevant reasons;
-- actual strict-prefix guards;
-- full charge-vector feedback and `ell_max = 2`;
-- no suspension, solvency coupling, or post-hoc affordability deletion;
-- horizon-tuned learning and controlled numerical real arithmetic.
-
-Future interface work must classify each assumption as theorem-required or
-architecture-specific. This document does not discharge or weaken any of them.
-
-## Current fixture verdict
-
-The controlling verdict is **Learning-positive, integration-blocked**. The
-round record and statements of record remain authoritative for the exact scope:
-`../rounds/2026-08-11-phi-regret-learner/`.
-
-Program interpretation and proposed theorem arcs live in the
-[Normativity wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Normativity).
+Conceptual exposition lives in the
+[Normative Response Learning wiki page](https://github.com/A-M-Berns/alignment-workspace/wiki/Normative-Response-Learning).

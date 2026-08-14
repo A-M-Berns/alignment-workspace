@@ -107,6 +107,10 @@ corresponding structured state in the same pull request. Check it with
 `python3 -m checkers.workspace_state --check`; inspect it with
 `python3 -m checkers.workspace_state --json`.
 
+The query reports modern registered claims and inherited foundation claim sets
+separately. A foundation keeps its own ledger and status vocabulary; its results
+are not silently translated into the modern registry's epistemic classes.
+
 ### Submission format, by claim class
 
 | you are claiming | you submit | what adjudicates it |

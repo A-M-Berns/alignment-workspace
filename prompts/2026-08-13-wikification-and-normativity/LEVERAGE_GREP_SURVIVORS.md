@@ -6,6 +6,7 @@ Audit command: `rg -l -i leverage --hidden --glob '!.git/**'`.
 |---|---|
 | `DECISIONS.md` | historical |
 | `PROVENANCE.md` | historical |
+| `checkers/workspace_state.py` | historical |
 | `projects/deference/dose-response-note-dump-2026-07-02/AUDIT.md` | historical |
 | `projects/deference/note-dump-2026-06-27/anson-notes/trust-between-inductors-chats/02_2026-06-18_rational-human-trust.md` | historical |
 | `projects/deference/note-dump-2026-06-27/anson-notes/trust-between-inductors-chats/03_2026-06-10_channel-p-repair.md` | historical |
@@ -114,12 +115,15 @@ Audit command: `rg -l -i leverage --hidden --glob '!.git/**'`.
 | `prompts/2026-08-11-workspace-integration/REPORT.md` | historical |
 | `prompts/2026-08-12-cartesian-frames/PROMPT.md` | historical |
 | `prompts/2026-08-12-cartesian-frames/REPORT.md` | historical |
+| `prompts/2026-08-13-crown-jewel-learning-theorem-final/PROMPT.md` | historical |
+| `prompts/2026-08-13-crown-jewel-learning-theorem/PROMPT.md` | historical |
 | `prompts/2026-08-13-local-regret-normative-learning/PROMPT.md` | historical |
 | `prompts/2026-08-13-relational-scorekeeping-bridge/PROMPT.md` | historical |
 | `prompts/2026-08-13-relational-scorekeeping-refinement/PROMPT.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/FINAL_PATH_MAP.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/LEVERAGE_GREP_SURVIVORS.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/PROMPT-machine-state-addendum.md` | historical |
+| `prompts/2026-08-13-wikification-and-normativity/PROMPT-pr32-reconciliation-editorial.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/PROMPT.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/REPORT.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/VOCABULARY_SHEET.md` | historical |

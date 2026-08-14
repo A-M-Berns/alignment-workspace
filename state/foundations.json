@@ -1,0 +1,24 @@
+{
+  "foundations": [
+    {
+      "id": "normativity.consolidation-aug9",
+      "project": "normativity",
+      "kind": "legacy-claim-set",
+      "path": "projects/normativity/consolidation-aug9",
+      "authority": {
+        "ledger": "projects/normativity/consolidation-aug9/LEDGER.md",
+        "status_vocabulary": "projects/normativity/consolidation-aug9/VERIFICATION.md"
+      },
+      "verification": {
+        "command": "python3 projects/normativity/consolidation-aug9/tests/run.py",
+        "verifier": "projects/normativity/consolidation-aug9/tests/run.py"
+      },
+      "modern_registry": false,
+      "claim_inventory": {
+        "source": "projects/normativity/consolidation-aug9/LEDGER.md",
+        "format": "markdown-ledger-id-column",
+        "expected_count": 180
+      }
+    }
+  ]
+}

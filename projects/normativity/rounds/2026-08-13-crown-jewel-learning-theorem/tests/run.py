@@ -10,7 +10,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parents[1]
 ROUNDS = HERE.parent
 LOCAL = ROUNDS / "2026-08-13-local-regret-normative-learning"
-BRIDGE = ROUNDS / "2026-08-13-relational-scorekeeping-bridge"
+BRIDGE = HERE.parents[1] / "legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge"
 LEARNER = ROUNDS / "2026-08-11-phi-regret-learner"
 sys.path[:0] = [
     str(HERE / "src"),

@@ -20,14 +20,16 @@ Every file in this directory:
 | `THEOREM_STRENGTH_LADDER.md` | |
 | `PROSECUTION.md` | |
 | `PATH_INVENTORY.md` | |
-| `FOR_HUMANS.md` | human register |
 | `src/*.py` | imports the two merged rounds and the item-30 learner by path; copies neither |
 | `tests/*.py` | |
 
 The Blum–Mansour source audit is not repeated here; it is the merged round's
 `SOURCE_AUDIT.md` and nothing in this round depends on a point it did not check.
 
-`lean/Workspace/Leverage/Contrib/SurgicalRepairBound.lean` carries the same
+The retired `FOR_HUMANS.md` remains in git history; its maintained successor is
+the [Normative Response Learning wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Normative-Response-Learning).
+
+`lean/Workspace/Normativity/Contrib/SurgicalRepairBound.lean` carries the same
 generator and review status; it is listed in the Lean contrib provenance file.
 
 No originating chat bundle.
