@@ -1,9 +1,6 @@
 # Wikification and normativity round report
 
-Repo-piece verdict: `repo-consolidated / wiki-pending / machine-state-valid / 0 drift-risk files remaining`.
-
-The final combined verdict replaces `wiki-pending` after the separate wiki
-repository passes its link and citation checks.
+Verdict: `repo-consolidated / wiki-live / machine-state-valid / 0 drift-risk files remaining`.
 
 ## Attribution
 
@@ -77,6 +74,10 @@ Machine-state inconsistencies: **0**.
   corrigibility.
 - CI, protection payload, path-gate patterns, tests, namespace-shape fixture,
   claims paths, priorities, and live entry points use the post-rename paths.
+- GitHub's live `main` protection was updated after the first repo commit was
+  pushed. Read-back confirms the required context is
+  `consolidation-verification — the normativity consolidation re-proves itself`,
+  with all seven required checks and the remaining protection settings intact.
 - The deference roadmap, paper-arc ledger, prose term table, and dispatch queue
   are pointers; exact specifications and verification notes remain in the lab.
 - `RESEARCH_STATE.md` is reduced to the canonical state query and wiki pointer.
@@ -174,10 +175,38 @@ instruction source.
 
 ## Wiki-piece completion
 
-To be filled by the coordinated wiki piece: page tree, internal-link audit,
-commit-pinned repo citations, cross-repo consistency counts, external sources,
-and final `wiki-live` verdict.
+The wiki is live at commit
+`4da6aa8d6aa774d980e2d24806af01fb6ee0e022`. Its 22-page tree comprises Home;
+Architecture; Roadmap; Glossary; Sources; the Normativity overview, statics,
+quantitative, learning, Legitimacy, answerability/auditability/efficacy, and
+write-access/laundering pages; and the Deference overview plus focused pages on
+Logical Induction, *Deference Done Better*, the corrigibility program,
+delegation versus simulation, prediction versus authorization, corrective
+reachability and foreclosure, competence and calibration, and current
+boundaries/open questions.
+
+All 26 repository citations are pinned to repo commit
+`6d3bb2b49f0419bc90943f9cfad3be4a2c7bf147`. The local handshake reports:
+
+```text
+CROSS-REPO STATE: valid — 21 repo pointers, 65 internal wiki links, 26 pinned repo citations, 0 Established claims, 35 vocabulary terms, 7 interface objects
+```
+
+Unresolved repo-to-wiki pointers: **0**. Unresolved wiki
+Established-claim-to-registry references: **0**. Total cross-repo
+inconsistencies: **0**. The Established spot-check list is empty: no substantive
+research claim is registered, so the wiki has zero Established claims rather
+than manufacturing the requested ten. All substantive research interpretations
+are `Open — unregistered`; Roadmap content is Aspirational.
+
+The Sources page gives full entries for the external works actually used:
+Brandom; Garrabrant et al.; Blum and Mansour; Williams; Walley; Lorenzen and
+Lorenz; Prakken; Hunter, Polberg, and Thimm; Fischer and Ravizza; and Dorst,
+Levinstein, Salow, Husic, and Fitelson.
 
 ## Outstanding maintainer actions
 
 1. Decide the “admission” vocabulary collision recorded in `DECISIONS.md`.
+2. Decide in a later naming round whether code identifiers and test names should
+   be aligned with answerability/auditability/efficacy; this round deliberately
+   left them unchanged.
