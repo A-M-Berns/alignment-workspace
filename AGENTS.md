@@ -695,10 +695,18 @@ non-maintainer, and no single class says that. The fields are defined once, in
      job added to that file does not inherit it.
 
   **The jobs holding write scope are named here**, and a job absent from this
-  list holding it is a defect: `wiki-sync` in
-  `.github/workflows/wiki-sync.yml`, which force-pushes `wiki/` to the hosted
-  wiki. `PRIORITIES.md` carries the item for a check that would enforce the four
-  conditions and this list; today they are review matters.
+  list holding it is a defect:
+
+  <!-- write-scope: job=wiki-sync; workflow=.github/workflows/wiki-sync.yml -->
+  - `wiki-sync`, which force-pushes `wiki/` to the hosted wiki.
+
+  `tests/workflow_scope.py` reads that list from this section and enforces
+  conditions 1, 3 and 4 over every workflow, along with both of the
+  enumeration's failure directions — a write grant absent from the list, and an
+  entry naming a job no workflow defines. **Condition 2 is checked only in the
+  form a script can see**: that a write-granting job's context is not a required
+  check, so nothing merges on its verdict. That no registry or protected setting
+  is downstream of what it writes stays a review matter.
 - Contributed code executes only in sandboxed CI runners, without network access
   where the runner supports it. The checker harness itself never fetches
   anything.
@@ -734,6 +742,7 @@ which are required.
 | model attribution in the pull-request body | `dco` — `tests/attribution.py`; presence and non-emptiness only |
 | no personal names in prose | `python` — `tests/name_lint.py`, `wiki/` included |
 | the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
+| CI write scope is enumerated and conditioned; no stored secrets | `python` — `tests/workflow_scope.py` |
 | 2, exact arithmetic | **not gated** — review; a float in theorem-bearing code is a finding |
 | 3, theorem ships as four things | **not gated** — review; the PR template asks for each |
 | 6, no permanent naming | **not gated** — review; the PR template asks |

@@ -52,6 +52,7 @@ python3 -m checkers.run                           # checkers: every registered c
 python3 tests/contrib_hygiene.py                  # checkers: contributed checkers
 python3 -m checkers.wiki_links                    # checkers: wiki links resolve and are pinned
 python3 tests/path_gate.py                        # path-gate: which layer your files are in
+python3 tests/workflow_scope.py                   # python: CI write scope is enumerated
 python3 tests/conservativity.py                   # conservativity: no new axioms
 cd lean && lake exe cache get && lake build       # lean: sorry-free
 python3 tests/audit_axioms.py                     # lean: axiom audit

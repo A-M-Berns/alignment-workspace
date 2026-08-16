@@ -225,17 +225,48 @@ scope under four conditions, with the jobs holding it enumerated by name. The
 dated entry is in `DECISIONS.md`; the stub left *Awaiting the author* and the
 friction entry left *Workspace friction*, both as those sections prescribe.
 
-Two things the ruling does not settle, and they are why item 38 was filed rather
-than the check written. The conditions are review matters until something reads
-them, and this repository's own record is that a rule which is only written down
-is one that gets re-violated — the personal-name lint exists because a standing
-decision was breached in a document's third line while a hand sweep reported
-clean. And the enumeration can go stale in the granting direction: a job added to
-`wiki-sync.yml` inherits nothing today because the grant is on the job, but
-nothing checks that it stays that way. Item 38 states both as its acceptance
-cases.
+The amendment turned an absolute prohibition into a conditional permission, and
+a condition nothing reads is the failure this repository has already paid for:
+the residue sweep reported clean while `README.md`'s third line violated a
+standing decision, which is why the naming rule became a lint. So on the
+maintainer's instruction the check was written in the same round —
+`tests/workflow_scope.py`, item 38, answered.
+
+**What it checks.** Conditions 1, 3 and 4 over every workflow: a write-granting
+job triggers on `push` restricted to a protected branch and never on
+`pull_request` or `pull_request_target`; no workflow names any secret but
+`GITHUB_TOKEN`; and no workflow's top-level `permissions:` grants write, so a job
+added beside an existing one inherits nothing. Plus both of the enumeration's
+failure directions: a write grant absent from it, and an entry naming a job no
+workflow defines. The enumeration is read from `write-scope` markers in
+`AGENTS.md` rather than copied into the gate, so the list a reader sees is the
+list the gate enforces.
+
+**What it does not check.** Condition 2 — publishes rather than adjudicates — in
+the one form a script can see: that a write-granting job's context is not a
+required check, so nothing merges on its verdict. That no registry or protected
+setting is downstream of what such a job *writes* is not machine-readable, and
+both `AGENTS.md` and the item say so rather than implying otherwise. The parse is
+line-oriented, since YAML is not in the standard library; it understands the
+indentation these workflows are written in and would need extending for a form
+they do not use. It is `.github/workflows/*.yml` only — a workflow living
+elsewhere is invisible to it, and GitHub reads none.
+
+Beyond its twenty-one self-test cases, the gate was run against the real
+`wiki-sync.yml` mutated five ways, each reverted:
+
+| mutation | result |
+|---|---|
+| `pull_request:` added to its triggers | `job 'wiki-sync' grants write scope in a workflow triggered by ['pull_request'] — reachable by what a contributor submits` |
+| the grant moved to the workflow default | `the workflow's default permissions: grants write` |
+| `secrets.GITHUB_TOKEN` → `secrets.WIKI_DEPLOY_PAT` | `names stored secret(s) ['WIKI_DEPLOY_PAT']` |
+| the job renamed to `publisher` | `job 'publisher' grants write scope and is not named in AGENTS.md's Security section` |
+| the `write-scope` marker deleted from `AGENTS.md` | `AGENTS.md declares no write-scope entries … a missing marker is a lost grant, not an empty one` |
+
+It runs in the `python` job, so no required-check identity changed and
+`.github/branch-protection.json` is still untouched.
 
 The ruling was taken as a maintainer act on a trust-chain document, which
-`AGENTS.md` reserves to the maintainer and which self-review satisfies, with this
-entry and the ledger as the review record. The wording of the amendment is this
-round's and is `ci-only`; the decision it records is not.
+`AGENTS.md` reserves to the maintainer and which self-review satisfies, with the
+ledger entry as the review record. The wording of the amendment and the gate are
+this round's and are `ci-only`; the decision they record is not.

@@ -177,9 +177,12 @@ same reason.
 `wiki-sync` is the first such job. Nothing else in the repository holds write
 scope, and merging stays with GitHub's auto-merge under branch protection.
 
-`PRIORITIES.md` item 38 asks for the check that would enforce the conditions and
-the list. Until it exists these are review matters, which is what the previous
-absolute wording was standing in for.
+`tests/workflow_scope.py` enforces it, in the `python` job: conditions 1, 3 and
+4 over every workflow, both of the enumeration's failure directions, and
+condition 2 in the one form a script can see — a write-granting job's context is
+not a required check. That nothing consequential is downstream of what such a job
+writes stays a review matter, and the section says so rather than implying the
+gate reads intent.
 
 Source: the maintainer's ruling during the wiki-in-repo and sync round, on the
 conflict that round filed rather than absorbed.

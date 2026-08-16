@@ -1403,7 +1403,7 @@ a `state/` it cannot read — fails rather than reports clean.
 *Why it is [entry]:* the machinery exists on both sides; what is new is the rule
 for deciding which numbers are in scope.
 
-### 38. Enforce the write-scope conditions and the job enumeration — **[entry]**
+### 38. Enforce the write-scope conditions and the job enumeration — **[entry]** — *answered by the wiki-in-repo round*
 <!-- workspace-priority: project=none; dispatchable=yes -->
 
 `AGENTS.md`'s *Security* section permits a job to hold write scope under four
@@ -1435,3 +1435,7 @@ fails rather than reports clean.
 enumeration-as-protection gate and its self-test.
 *Why it is [entry]:* no new mathematics and no new judgment — the rule is
 written; this reads it.
+*Status:* answered by `tests/workflow_scope.py`. It stays filed because the
+registry's demand rule means the work must answer an item, and because condition
+2 is checked only by its required-check proxy — a fuller reading of "publishes
+rather than adjudicates" re-opens exactly this item.

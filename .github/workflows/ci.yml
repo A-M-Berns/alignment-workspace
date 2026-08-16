@@ -76,6 +76,8 @@ jobs:
       - uses: actions/checkout@v4
       - run: python3 tests/name_lint.py --self-test
       - run: python3 tests/name_lint.py
+      - run: python3 tests/workflow_scope.py --self-test
+      - run: python3 tests/workflow_scope.py
       - run: python3 tests/run.py
 
   lean:
