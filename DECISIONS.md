@@ -141,6 +141,14 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
 
 ## Settled
 
+### 2026-08-16 — the wiki carries interpretation and philosophical gloss
+
+The GitHub wiki is the maintainer-written home for interpretation, conceptual
+synthesis, and philosophical gloss. The repository remains the verification
+surface and lab.
+
+Source: direct maintainer instruction during the PR #27 research-extraction pass.
+
 ### 2026-08-14 — required checks use stable infrastructural identities
 
 The consolidation job's required context is `consolidation-verification`.

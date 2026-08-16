@@ -1,6 +1,6 @@
 # Cartesian frames and the deference representation boundary
 
-Human register: [Deference wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Deference).
+Interpretation and philosophical gloss: [Deference wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Deference).
 
 **Status:** `ci-only`; verification register for
 `prompts/2026-08-12-cartesian-frames/`. Names introduced here are provisional.

@@ -64,10 +64,11 @@ none
 
 none
 
-## Both documentation registers present
+## Documentation surfaces
 
 - [ ] Verification register (exact statements, hypotheses, how to re-verify)
-- [ ] Human register (what was shown, why it matters, plain language)
+- [ ] Interpretation or philosophical gloss proposed in the PR description for
+      maintainer consideration
 - [ ] Not applicable — this PR adds no results
 
 ## Anything the author must decide
