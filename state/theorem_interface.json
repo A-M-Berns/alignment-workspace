@@ -1,0 +1,179 @@
+{
+  "interface_id": "normativity.learning.current",
+  "project": "normativity",
+  "research_round": "2026-08-13-crown-jewel-learning-theorem-final",
+  "registered_status": null,
+  "research_status": "current-unregistered",
+  "modules": [
+    {
+      "id": "substrate.relational-answerability",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/TWO_ARC_INTERFACE.md"
+    },
+    {
+      "id": "interface.normative",
+      "path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md"
+    },
+    {
+      "id": "compiler.surgical",
+      "path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/src/interfaces.py"
+    },
+    {
+      "id": "engine.blum-mansour",
+      "path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/src/dynamics.py"
+    },
+    {
+      "id": "theorem.response-learning",
+      "path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md"
+    },
+    {
+      "id": "interface.coverage",
+      "path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COVERAGE_INTERFACE.md"
+    },
+    {
+      "id": "audit.compiler-soundness",
+      "path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COMPILER_SOUNDNESS.md"
+    },
+    {
+      "id": "witness.learning-dynamics",
+      "path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/LEARNING_DYNAMICS.md"
+    }
+  ],
+  "objects": [
+    {
+      "id": "due",
+      "notation": "Due : S → D → Prop",
+      "kind": "primitive-normative-interface",
+      "producers": ["substrate.relational-answerability", "interface.normative"],
+      "consumers": ["compiler.surgical", "interface.coverage"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "open-substantive-instantiation",
+      "write_access": ["public-pre-action-record"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md"
+    },
+    {
+      "id": "licensed",
+      "notation": "Licensed : S → D → A → Prop",
+      "kind": "primitive-normative-interface",
+      "producers": ["interface.normative"],
+      "consumers": ["compiler.surgical"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "interface-discipline-only; substantive-soundness-open",
+      "write_access": ["public-pre-action-record", "normative-practice"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COMPILER_SOUNDNESS.md"
+    },
+    {
+      "id": "performance-loss",
+      "notation": "Loss : S → A → [0, L]",
+      "kind": "primitive-performance-interface",
+      "producers": ["interface.normative"],
+      "consumers": ["engine.blum-mansour", "theorem.response-learning", "witness.learning-dynamics"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "fixture-supported; general-theory-open",
+      "write_access": ["learner-acknowledgments", "ecology-challenges", "scorekeeper-practice"],
+      "excluded_from_loss": ["standing", "grants"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md"
+    },
+    {
+      "id": "response-space",
+      "notation": "A",
+      "kind": "finite-theorem-interface",
+      "producers": ["interface.normative"],
+      "consumers": ["compiler.surgical", "engine.blum-mansour", "theorem.response-learning"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "current-unregistered",
+      "write_access": ["specification"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md"
+    },
+    {
+      "id": "due-selector-compilation",
+      "notation": "Due → selector",
+      "kind": "compiler-interface",
+      "producers": ["interface.normative", "compiler.surgical"],
+      "consumers": ["engine.blum-mansour"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "current-unregistered",
+      "write_access": ["public-pre-action-record", "normative-compiler"],
+      "presentation_requirements": ["decidable", "record-computable", "prospective"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md"
+    },
+    {
+      "id": "compiled-surgical-repairs",
+      "notation": "CertifiedSurgicalRepair",
+      "kind": "compiler-output",
+      "producers": ["compiler.surgical"],
+      "consumers": ["engine.blum-mansour", "theorem.response-learning"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "current-unregistered",
+      "write_access": ["normative-compiler"],
+      "constraints": ["protocol-legal", "causal", "loss-blind", "non-laundering", "surgical"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/REPAIR_LANGUAGE.md"
+    },
+    {
+      "id": "blum-mansour-engine",
+      "notation": "Blum–Mansour engine",
+      "kind": "learning-engine",
+      "producers": ["engine.blum-mansour"],
+      "consumers": ["theorem.response-learning", "witness.learning-dynamics"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "external-bound-assumed; fixture-dynamics-witnessed",
+      "write_access": ["learner-policy"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/LEARNING_DYNAMICS.md"
+    },
+    {
+      "id": "positive-margin",
+      "notation": "δ_g > 0",
+      "kind": "joint-performance-hypothesis",
+      "producers": ["interface.normative"],
+      "consumers": ["theorem.response-learning"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "hypothesis; fixture-derived-only",
+      "write_access": ["joint-licensed-response-and-performance"],
+      "not_implied_by": ["licensed"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/ASSUMPTION_AUDIT.md"
+    },
+    {
+      "id": "coverage",
+      "notation": "coverage(Due)",
+      "kind": "quantitative-property-of-due",
+      "producers": ["interface.coverage"],
+      "consumers": ["theorem.response-learning"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "hypothesis-open",
+      "write_access": ["ecology-trajectory"],
+      "not_a_primitive_interface": true,
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COVERAGE_INTERFACE.md"
+    },
+    {
+      "id": "compiler-loss-blindness",
+      "notation": "compiler ⟂ Loss",
+      "kind": "compiler-discipline",
+      "producers": ["audit.compiler-soundness", "compiler.surgical"],
+      "consumers": ["theorem.response-learning"],
+      "soundness_claim_ids": [],
+      "registered_status": null,
+      "research_status": "test-supported-unregistered",
+      "write_access": ["compiler-input-boundary"],
+      "forbidden_inputs": ["performance-loss", "current-loss-advantage"],
+      "statement_of_record": null,
+      "research_artifact": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem/COMPILER_SOUNDNESS.md"
+    }
+  ]
+}

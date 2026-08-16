@@ -42,7 +42,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 MAINTAINER_NAMES = ("Berns", "Demski", "Anson", "Abram")
 
 EXCLUDED_DIRS = ("prompts/",) + tuple(d + "/" for d in (
-    "projects/leverage/consolidation-aug9",
+    "projects/normativity/consolidation-aug9",
     "projects/deference/note-dump-2026-06-27",
     "projects/deference/note-dump-2026-08-11",
     "projects/deference/dose-response-note-dump-2026-07-02",
@@ -51,6 +51,7 @@ EXCLUDED_DIRS = ("prompts/",) + tuple(d + "/" for d in (
 ALLOWED_FILES = ("DECISIONS.md",)
 
 CODE_SPAN = re.compile(r"`[^`]*`")
+LINK_TARGET = re.compile(r"\]\([^)]*\)")
 FENCE = re.compile(r"^\s*```")
 
 
@@ -58,7 +59,8 @@ def markdown_files() -> list[str]:
     out = subprocess.run(["git", "ls-files", "*.md"], cwd=ROOT,
                          capture_output=True, text=True, check=True)
     return [f for f in out.stdout.split("\n")
-            if f and not f.startswith(EXCLUDED_DIRS) and f not in ALLOWED_FILES]
+            if f and (ROOT / f).is_file() and
+            not f.startswith(EXCLUDED_DIRS) and f not in ALLOWED_FILES]
 
 
 def offences(path: str) -> list[str]:
@@ -70,7 +72,7 @@ def offences(path: str) -> list[str]:
             continue
         if in_fence:
             continue
-        line = CODE_SPAN.sub("", raw)
+        line = LINK_TARGET.sub("]()", CODE_SPAN.sub("", raw))
         for name in MAINTAINER_NAMES:
             if re.search(rf"\b{re.escape(name)}\b", line):
                 found.append(f"{path}:{number}: {name!r} in prose — {raw.strip()[:80]}")
@@ -99,6 +101,8 @@ def self_test() -> int:
         ("a maintainer name in prose is caught", scan("The Berns program.\n") > 0, True),
         ("a second maintainer name is caught", scan("Ask Demski.\n") > 0, True),
         ("a handle in backticks is allowed", scan("See `A-M-Berns` on GitHub.\n"), 0),
+        ("a handle in a Markdown link target is allowed",
+         scan("See [the wiki](https://example.test/A-M-Berns/wiki).\n"), 0),
         ("a path in backticks is allowed",
          scan("Open `projects/deference/note-dump-2026-06-27/x.md`.\n"), 0),
         ("a fenced block is allowed",

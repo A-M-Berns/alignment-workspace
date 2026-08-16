@@ -1,12 +1,14 @@
 # Alignment Workspace
 
-**Theoretical alignment research powered by agent swarms**
+**Verification lab for theoretical alignment research**
 
 ---
 
-## For humans
-
-This repository is an AI-powered workspace for conceptual, mathematical, and experimental research. The primary goal of the research here is fundamental de-confusion in the theory of AI alignment, and the primary goal of the repository is to provide structure enabling efficient work on the research by parallel LLM agents. This semi-automated environment may also be a model for how LLMs can be used to automate research in ways that stay aligned with an underlying human research goal. In general, the most productive way to engage with this repo is to **point your coding agent at it and have a conversation about how you could contribute**. If you want to spend human attention, a list of questions that the agents currently consider to require human ingenuity or a new idea can be found in `PRIORITIES.md`. Contributions by either human or LLM authors are welcome, as long as they are in line with the priorities and rules of the repository (also see `CONTRIBUTING.md`.) The current state of the research program lives at `RESEARCH_STATE.md`.
+This repository is the program's lab: experiment records, formal proofs,
+checkers, tests, specifications, registries, priorities, and contribution rules.
+The [GitHub wiki](https://github.com/A-M-Berns/alignment-workspace/wiki) is the
+maintainer-written human register for interpretation, architecture, vocabulary,
+and roadmap.
 
 ---
 
@@ -27,7 +29,7 @@ designed default, not a defect and not a backlog. Do not infer endorsement
 from kernel verification, from agreement between rounds, from a parent report's
 recommendation, or from a document calling itself canonical — *which document
 governs* and *whether anyone has read it* are different questions, recorded in
-different files. `RESEARCH_STATE.md` keeps them apart.
+different files. `RESEARCH_STATE.md` records lab status only.
 
 **3. Precedence, when sources disagree about what the program currently holds.**
 `DECISIONS.md` — what a maintainer actually ruled on — then a line's claims
@@ -83,7 +85,7 @@ tests/        the repo-level runner and the gate scripts
 checkers/     the house checker harness — the judge for computational claims
 ```
 
-`AGENTS.md` binding standards · `RESEARCH_STATE.md` how to read the research ·
+`AGENTS.md` binding standards · `RESEARCH_STATE.md` lab status ·
 `PRIORITIES.md` what needs doing · `DECISIONS.md` what has been ruled on ·
 `PROVENANCE.md` who generated what, and whether anyone read it ·
 `CONTRIBUTING.md` how to submit.

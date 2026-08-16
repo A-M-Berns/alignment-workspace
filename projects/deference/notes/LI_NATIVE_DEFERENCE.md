@@ -1,5 +1,7 @@
 # LI-native deference — Stage V interface and boundary
 
+Human register: [Deference wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Deference).
+
 **Status:** `ci-only`; verification register for
 `prompts/2026-08-11-stage-v-li-native/`. Names introduced here are provisional.
 All FAF references are to the pinned commit
@@ -160,7 +162,7 @@ about the later state without placing that later quote in a day-`n` EF. What FAF
 does not establish is that current `A` lacks the resources to compute the quoted
 result already.
 
-## 6. Expectations, self-trust and sovereignty
+## 6. Expectations and self-trust interface
 
 `LUV` is a family of threshold sentences, not a decision variable
 (`Framework/Expectations.lean:54`). `LUV.expect` is a finite sum of threshold
@@ -173,17 +175,8 @@ explicit representation objects `FuturePriceQuote`,
 constructed arithmetic LIA include `lic_self_trust_closed`
 (`QuoteCodeOfMarket.lean:967`).
 
-These are asymptotic, fuzzy price/expectation relations. They do not say the
-future market is correct, choose an action, or possess authority. Adjoining an
-independent controller coordinate leaves every FAF premise and conclusion
-unchanged. Two architectures can therefore share the complete inhabited
-self-trust instance, the immediate realized action, and every trader wealth path
-while assigning final control differently. This is the item-28 factorization
-boundary applied to the FAF view:
-
-```text
-epistemic self-trust does not allocate practical sovereignty.
-```
+These are asymptotic, fuzzy price/expectation relations. They contain no action,
+authorization, capability, or controller field.
 
 ## 7. Future H⁺ as computation
 
@@ -256,50 +249,3 @@ preemption. A controller can remove correction exactly as anticipated, with the
 capability sentence correctly priced; all FAF wealth paths remain coherent. An
 exploit requires an added security connecting execution histories to payouts and
 a systematic pricing gap. The gap, not preemption, supplies the arbitrage.
-
-The smallest credible foreclosure candidate has at least two indices: an
-execution state with an authorization/capability relation, a transition producing
-the next state and immediate effect, and a designated future H⁺-controlled
-correction transition. Two paths may share the immediate effect while the
-correction is reachable in one later state and absent in the other. LI can index
-and price computable facts about this object; it does not furnish the object.
-
-Preserved reachability has ordinary option value only under explicit conditions:
-costless optionality, identical other continuations, no menu externalities, and
-appropriate future choice. Commitment cost or a fallible future chooser refutes
-unconditional “more options is better.” Q3 remains ingenuity-level model debt.
-
-## 10. Registers, debt and next target
-
-- **LI-native:** signed forcing through actual trader admissibility and LIC;
-  future-price quotation; no-expected-net-update and self-trust price relations.
-- **ordinary dynamic decision theory:** conditional value of a preserved future
-  correction option.
-- **architectural:** who controls correction, which transitions are reachable,
-  and whether an authorization is constitutively required.
-
-Moving inside LI does not derive the grade-to-quantity relation. If a relation
-mentions only principal grades and world quantities, coherence of the agent's own
-prices cannot manufacture it. LI can discipline an agent-priced estimate of such
-an error; competence/domain structure remains independent.
-
-**The theorem target replacing the failed comparator:** no new FUD comparator is
-ready. The immediate formal targets are (i) a resource-indexed quotation boundary
-showing a named later computation is unavailable at the current resource bound,
-and (ii) a typed two-index continuation/capability object, if the maintainer adopts
-one. Only after both exist can a future recommendation and jurisdiction inhabit one
-model without collapse.
-
-Debt after Stage V:
-
-| kind | residue |
-|---|---|
-| model | no bounded process-state semantics; no continuation/capability type |
-| theorem | no resource-separation theorem; no FUD theorem |
-| assumption | cross-process calibration, competence, and near-indifference leakage |
-| interface | quoted future facts do not compose with decisions or authorization |
-| formalization | future recommendation schema and controller-parametric self-trust boundary are documented, not promoted |
-| verification | new Lean results are kernel-checked but unregistered |
-| interpretation | self-trust licenses listening, not control; no stronger claim |
-| scope | external information arrival remains outside computational futurity |
-| compression | this document is the consolidated Stage V surface |

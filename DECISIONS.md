@@ -25,6 +25,16 @@ An entry leaves when the decision lands as a dated entry below.
 what they could decide, or something structural is generating decisions and
 belongs in `PRIORITIES.md` under *Workspace friction*.
 
+- **Choose vocabulary for “admission.”** The normativity material uses the same
+  family for at least three objects: the date a docket item enters the record,
+  a certificate verdict permitting a lawful edit, and membership in a
+  state-indexed admissible response set. *Doing it* is choosing which sense keeps
+  “admission” and naming the others after reading
+  `projects/normativity/rounds/2026-08-11-phi-regret-prep/PHI_REGRET_OBJECTIVE.md`,
+  `src/certificates.py`, and the legitimacy bridge's `src/collapse.py`.
+  *Waiting* leaves the wiki Glossary collision explicit and risks readers
+  confusing record entry with normative certification.
+
 - **Read `checkers/`.** Deferred once, deliberately, and kept here because
   deferring it does not make it go away: three files and three docstrings are the
   entire meaning of every Python claim this repository will make, and no
@@ -43,7 +53,7 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
   leaves the current documents explicitly `ci-only` and unadopted.
 
-- **Confirm the deck's path-gate entry.** `projects/leverage/deck-2026-08-10/**`
+- **Confirm the deck's path-gate entry.** `projects/normativity/deck-2026-08-10/**`
   was added to the specification enumeration in `tests/path_gate.py` by the
   φ-regret preparation round, so that a contributor pull request touching the
   author's own talk fails the gate. This is a trust-chain edit the round's
@@ -53,7 +63,7 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   was meant to avoid.
 
 - **Rule on the deck's review status.** `PROVENANCE.md` now carries the first
-  `maintainer-reviewed` research row in the leverage line, and it is qualified:
+  `maintainer-reviewed` research row in the normativity line, and it is qualified:
   the deck marks its own frames, 22 as the author's language and two as still
   model-drafted, so the row points at those marks rather than asserting a flat
   label. Confirm that the qualified review status is appropriate; it records
@@ -130,6 +140,88 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   leaves Q3 carrying a candidate the program has not said it wants.
 
 ## Settled
+
+### 2026-08-14 — required checks use stable infrastructural identities
+
+The consolidation job's required context is `consolidation-verification`.
+Project names and explanatory prose may appear in step names and logs, but not in
+the external context branch protection matches. Renaming a research line must not
+change the identity of its gate.
+
+The workspace-state query distinguishes the sole modern claims registry from
+the inherited Normativity consolidation. The latter remains a 180-claim legacy
+foundation governed by its own ledger and status vocabulary; it is exposed as a
+claim source and is not migrated or translated into modern epistemic classes.
+Priority ownership and dispatchability are explicit metadata in `PRIORITIES.md`,
+not consequences of item numbers.
+
+Source: the maintainer-dispatched PR #32 reconciliation and machine-state
+hardening pass.
+
+### 2026-08-13 — the repository is the lab; the wiki is the human register
+
+The repository holds experiment reports, priorities, contribution rules,
+checkers, CI, specifications, and registries. Program interpretation,
+architecture, vocabulary, and roadmap live in the GitHub wiki. The wiki is
+maintainer-register content: contributors and dispatched agents neither read it
+for instructions nor write it without a direct dispatch. The maintainer's
+dispatch of the wikification round authorizes the wiki edits in that round.
+
+Per-deliverable `FOR_HUMANS.md` files are removed after their usable content is
+mined for the wiki; each affected round README points to the corresponding wiki
+section. The agent-consolidated `consolidation-aug9/FOR_HUMANS.md` and
+`INTERPRETATION.md` remain intact with a `superseded-by` pointer. That pointer is
+the only edit to their content, made because a live epistemic pointer is permitted
+for agent-consolidated records and prevents the frozen interpretation from
+presenting as current.
+
+The deference roadmap, prose vocabulary table, paper-arc ledger, and dispatch
+queue are reduced to live pointers. Their exact specifications and statements of
+record remain in the lab; interpretation and sequencing move to the wiki, while
+registered state and filed priorities are queried from the repository's
+structured state. This edits documents previously designated to govern the line
+because that designation would otherwise make them competing living views.
+
+Source: the maintainer-dispatched wikification and normativity round.
+
+### 2026-08-13 — the project line is normativity
+
+The project directory is `projects/normativity/` and its Lean namespace is
+`Workspace.Normativity`. The word “leverage” names the technical measure or
+operative-force quantity inside mathematical content; it is not the project
+name. Completed round records, prompts, and consolidated internal text retain
+the names true when written.
+
+Source: the maintainer-dispatched wikification and normativity round.
+
+### 2026-08-13 — legitimacy is a normativity subproject
+
+`projects/normativity/legitimacy/` is the bridge between normativity and
+deference. It owns the shared relational representation, write-separation
+results, and the protection-versus-laundering tension. The relational
+scorekeeping bridge round lives under its `rounds/` directory. Deference remains
+a separate line and includes corrigibility.
+
+Source: the maintainer-dispatched wikification and normativity round.
+
+### 2026-08-13 — answerability, auditability, and efficacy are distinct names
+
+**Answerability** is the relational status in which another participant with
+standing attributes consequences under their practice and may raise a challenge
+one owes an answer to. **Auditability** is the record property that every
+liability has exactly one record-computable fate: discharged, mooted by
+authorized revision, suspended, or open and charging. Loss of identity across a
+retired vocabulary is an **audit discontinuity**. **Efficacy** is the
+model-relative transition-system property that exercising a normative power
+reaches its object under every policy of the other party.
+
+Efficacy is named but not fully analyzed. Current mathematical support is limited
+to the bridge fixture's C7 independence result and corrigibility theorems that
+consume the grant invariant. Code identifiers and test names are deferred to a
+later round.
+
+Source: `projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/TWO_ARC_INTERFACE.md`
+§6; the maintainer's answerability-naming addendum to the wikification round.
 
 ### 2026-08-12 — the deference line's current source material is the 2026-08-11 tree
 
@@ -325,7 +417,7 @@ carried into the queue above; the entry above supersedes that and removes it
 entirely.
 
 Two live pointers were repaired rather than left dangling, which is the same
-failure the deleted setup report nearly caused. `projects/leverage/CLAIMS.md`
+failure the deleted setup report nearly caused. `projects/normativity/CLAIMS.md`
 carried the file as **both dual-register documents** of the registered claim
 `simplex.rational-points-sum-to-one`; both are repointed, and **no claim changed
 class and no statement of record moved.** The identifier inside the settled
@@ -341,7 +433,7 @@ registers, conduct as proposal-plus-realization, and the status classes. It is a
 standard 6, and where it and an owning document disagree the owning document wins.
 The line's canonical set is five documents rather than four.
 
-**The leverage forward tree keeps its name.** `projects/leverage/forward/` is
+**The leverage forward tree keeps its name.** `projects/normativity/forward/` is
 confirmed. This was the cheapest moment to change it and it is not being changed.
 
 **Further leverage frozen trees are registered at the next leverage round**, not
@@ -460,7 +552,7 @@ no longer resolves is a dead link and not history.
   is not weakened.
 - The contribution-architecture report's specification-path listing is brought back into agreement
   with the gate. The two must agree, and the gate is the source of truth.
-- `projects/leverage/CLAIMS.md` carried the setup report as the **verification
+- `projects/normativity/CLAIMS.md` carried the setup report as the **verification
   register of two registered `lean-proved` smoke claims** (`smoke.faf-asymp-refl`
   and `smoke.chain-compiles`, both answering item 13). Deleting it would have left
   two registered claims without half their required dual register, so both doc
@@ -786,13 +878,13 @@ existence.
 Three names, settled together because they collide with each other.
 
 The repository is **alignment-workspace** and the Lean library is
-**`Workspace`**, so that the two agree: namespaces are `Workspace.Leverage.*`
+**`Workspace`**, so that the two agree: namespaces are `Workspace.Normativity.*`
 and `Workspace.Deference.*`, the library root is `lean/Workspace.lean`, and the
 Lake package is `workspace`. This closes the naming stub the scaffolding round
 opened, and closes it at the cheapest moment — before any real development lands
 in the library.
 
-The leverage forward tree is **`projects/leverage/forward/`**, with
+The leverage forward tree is **`projects/normativity/forward/`**, with
 `FORWARD.md` as its self-description. It could not keep its previous directory
 name once the repository took that word: a path whose last component matches the
 repository's own name is the near-collision this rename existed to remove. The

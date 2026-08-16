@@ -18,11 +18,11 @@ exactly what it says: the gates passed and no maintainer has read it. It is
 allowed here, because this is a working repository and a label that lies is worse
 than an honest one, but it is never hidden. See `AGENTS.md`.
 
-**3. Documentation comes in two registers by design.** The verification register
-is precise and dense, for auditing and for agents. The human register explains
-what was shown and why it matters, in plain language. **If you are a person,
-start with the human-register document** — it is not a summary of the other one,
-it is a different account of the same work.
+**3. Verification lives here; interpretation lives in the wiki.** Repository
+deliverables state claims, hypotheses, checks, and local consequences plainly.
+The maintainer-written GitHub wiki is the human register. Contributors do not
+read it as instructions or edit it; interpretation they believe is warranted
+goes in the pull-request description for maintainer consideration.
 
 **4. The two hard rules** are that consolidated work is not tweaked and that
 names are the author's to set.
@@ -52,7 +52,7 @@ python3 tests/path_gate.py                        # path-gate: which layer your 
 python3 tests/conservativity.py                   # conservativity: no new axioms
 cd lean && lake exe cache get && lake build       # lean: sorry-free
 python3 tests/audit_axioms.py                     # lean: axiom audit
-cd projects/leverage/consolidation-aug9 && python3 tests/run.py   # consolidation-verification
+cd projects/normativity/consolidation-aug9 && python3 tests/run.py   # consolidation-verification
 ```
 
 The comment names the CI job each command belongs to. Two gates have no local
@@ -79,12 +79,37 @@ work genuinely needs a specification change, open an issue proposing it.
 Identity is never a factor in a proof-layer verdict. Anonymous and pseudonymous
 contributions are fine.
 
+### Minimal glossing
+
+Repository contributions explain what was tested and what the result means for
+the claim under test. Roadmaps, narrative framing, and broader philosophical
+positioning belong in the maintainer-written wiki. Padding remains a sufficient
+reason to reject a contribution even when its local gloss is accurate.
+
 ### Nothing enters the record unasked
 
 **Every registered claim answers a filed `PRIORITIES.md` item.** Propose new
 items as issues; filing is not a contributor's. An unsolicited-but-correct
 contribution is not merged into the record — but the maintainer may file a
 matching item and then accept it, so good work is not wasted, only sequenced.
+
+### Research output is not registered state
+
+A completed round supplies candidate evidence. A result becomes consumable as
+current workspace state only through:
+
+`round artifact → statement of record → registered claim/status → current workspace state`
+
+The presence of a proof, witness, experiment, criticism, conjecture, or report in
+a completed round does not itself promote a claim. Changes to registered claims,
+project status, vocabulary, priorities, or theorem-facing interfaces update the
+corresponding structured state in the same pull request. Check it with
+`python3 -m checkers.workspace_state --check`; inspect it with
+`python3 -m checkers.workspace_state --json`.
+
+The query reports modern registered claims and inherited foundation claim sets
+separately. A foundation keeps its own ledger and status vocabulary; its results
+are not silently translated into the modern registry's epistemic classes.
 
 ### Submission format, by claim class
 

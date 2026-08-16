@@ -3,7 +3,8 @@
 
 Provisional namespace and provisional names (`AGENTS.md` §6).
 
-`projects/deference/notes/CORRIGIBILITY_PAPER_LEDGER.md` records Movement I's rows as
+`projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`
+records Movement I's rows as
 `inherited-established` **on the strength of the inherited development's own audit**, with
 its own toolchain, and states that confirming them against the source is
 `PRIORITIES.md` item 14. This file discharges part of that: the ledger's top rows,

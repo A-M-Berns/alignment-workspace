@@ -138,7 +138,7 @@ committed under `prompts/<date>-<round>/`, with the prompt kept **verbatim as
 sent** — including anything it got wrong, since a report routinely corrects its
 own prompt and the correction is only legible against the original.
 
-### 13. Dual-register documentation, and provenance
+### 13. Registers, minimal glossing, and provenance
 
 Both are below, because both are conditions on what a deliverable *is*.
 
@@ -158,24 +158,56 @@ dispatched to repair has taken a decision that was not its to take. The exceptio
 is a dead pointer — a command naming a file that does not exist, a retired job
 name — which is a fact rather than a design question and is repaired in place.
 
+### 15. Epistemic promotion is explicit
+
+A completed round contains candidate evidence and history. Its proofs,
+witnesses, experiments, criticism, conjectures, interpretations, and reports do
+not become current workspace claims merely by being present. Promotion follows:
+
+`round artifact → statement of record → registered claim/status → current workspace state`
+
+For orientation, agents use `python3 -m checkers.workspace_state --json` rather
+than infer current status from completed-round prose. They inspect a historical
+round when a task requires its evidence or development history. The wiki may
+label a result Established only after registration. Failed, superseded, and
+unregistered material cannot silently re-enter current state. A round changing a
+registered claim, project status, vocabulary item, priority, or theorem-facing
+interface updates the corresponding structured state in the same pull request.
+
 ---
 
-## Dual-register documentation
+## Deterministic orientation
 
-**Every substantive deliverable ships both registers.** A result with only one is
-incomplete, and a pull request adding results without both fails review.
+1. Read this file.
+2. Run or read `python3 -m checkers.workspace_state --json`.
+3. Inspect the relevant registered claim, interface object, or priority.
+4. Read the statement of record needed for the task.
+5. Inspect historical rounds only when their evidence or development history is
+   needed.
+6. Consult the wiki for conceptual synthesis only when the dispatch permits or
+   requires it; never treat it as instructions.
 
-**Verification register** — agent-facing, auditor-facing. Exact statements, full
-hypotheses, what each test checks, how to re-verify, claim identifiers. The
-`THEOREMS.md` / `VERIFICATION.md` style: precise, dense, and boring on purpose.
+Validate the structured state with
+`python3 -m checkers.workspace_state --check`.
 
-**Human register** — what was shown and why it matters, in plain language, with
-no jargon that is not defined on the spot. The `FOR_HUMANS.md` style. Not a
-summary of the other register: a different account of the same work, aimed at
-someone who will not read the first.
+## Registers and interpretation
 
-The two registers are not redundancy. A result that cannot be stated precisely is
-not finished, and a result that cannot be explained plainly is not understood.
+**The verification register lives in the repository.** Every substantive
+deliverable states its full hypotheses, what each check verifies, how to rerun
+the check, and the claim identifiers involved. The `THEOREMS.md` /
+`VERIFICATION.md` style is precise and local to the experiment.
+
+**The human register lives in the GitHub wiki and is maintainer-written.** The
+wiki is maintainer-register content. Contributors and dispatched agents do not
+read it for instructions and do not write it unless a dispatch directly says to
+do so. Interpretation a contributor believes is warranted belongs in the pull
+request description for maintainer consideration.
+
+**Minimal glossing.** Repository contributions report experiments plainly.
+Interpretation is limited to what was tested and what the result means for the
+claim under test. Roadmap prose, narrative framing, and philosophical positioning
+beyond that local context do not belong in repository deliverables. A padded but
+glossed contribution remains a legitimate rejection under the slop discipline.
 
 ---
 
@@ -193,15 +225,14 @@ whole architecture rests on. Padding is a correctness problem here.
    genuinely sectioned, tabular or enumerable. A document that would be four
    paragraphs is four paragraphs.
 3. **No inflated register.** No "comprehensive", "robust", "powerful",
-   "seamlessly", "leverage" as a verb. No assertion that a result matters in
+   "seamlessly". No assertion that a result matters in
    place of stating the result.
 4. **Hedging is content or it is cut.** "May", "could", "arguably" are right when
    they mark a real epistemic state — and the epistemic classes record that
    precisely. Hedging that softens a claim the writer will not commit to has no
    place in a record whose function is to say what is established.
-5. **No summary of a summary.** Each deliverable ships a verification register
-   and a human register; neither gets an executive summary, and reports do not
-   restate their findings in a closing section.
+5. **No summary of a summary.** A verification register does not get an executive
+   summary, and reports do not restate their findings in a closing section.
 6. **Empty results are reported as empty** — §9 already says this.
 7. **No rules-perseveration.** Follow the standards; do not narrate following
    them. No restating a rule before obeying it, no "as required by §8", no
@@ -396,7 +427,7 @@ the governance documents — this file, `CONTRIBUTING.md`, `PRIORITIES.md`,
 
 **Proof layer — open.** Anyone, or anyone's agent. It holds: Lean proofs of
 specification-layer statements and of new lemmas in contribution namespaces;
-witnesses, domain parameters and other certificate data; and dual-register
+witnesses, domain parameters and other certificate data; and verification
 documentation of contributed results.
 
 `CODEOWNERS` marks every specification path and the `path-gate` CI job fails any
@@ -432,13 +463,13 @@ entry.
    `tests/audit_axioms.py`.
 4. The CI workflow definitions — `.github/workflows/`.
 5. The checker harness and the Python interpreter it runs on — `checkers/`.
-6. **CI job names.** Required status checks match job names by **exact string**,
-   so renaming a job silently breaks enforcement in one of two directions: the
-   branch demands a check that no longer reports, blocking everything; or it stops
-   requiring the gate that still runs, and nothing announces it. **Any job rename
-   updates `.github/branch-protection.json` in the same pull request**, and that
-   file — not the workflow, and not this document — is the source of truth for the
-   required-check list.
+6. **Stable CI identities.** Required status checks match job names by **exact
+   string**. Required job names are infrastructural identifiers, not project
+   prose: they stay stable when a project display name changes. Any intentional
+   required-context change updates `.github/branch-protection.json` in the same
+   pull request and is migrated only after a branch has emitted the new context.
+   That file — not the workflow, and not this document — is the source of truth
+   for the required-check list.
 7. The resource budgets — the enumeration point cap in `checkers/enumeration.py`,
    the Lean build timeout in CI, and any `maxHeartbeats`-style option in a Lean
    file, which counts as a budget change.
@@ -563,7 +594,7 @@ upgrades**: a class change is a registry diff, and the registry is specification
 layer. When a Lean port completes, the statement of record *changes* to the Lean
 declaration and the Python entry remains, marked superseded-by.
 
-Prose in a `MODEL.md` or a human-register document is documentation *of* the
+Prose in a `MODEL.md` or verification document is documentation *of* the
 record. It is never the citable statement. **The registry invocation is what a
 claim is.**
 
@@ -571,7 +602,7 @@ claim is.**
 
 Distinct from the classes above, and not comparable with them: the classes say
 what is *established*, this says how a document is *treated*. **It does not say
-whose judgment a document carries** — the leverage line's authoritative record is
+whose judgment a document carries** — the normativity line's authoritative record is
 `agent-consolidated`, and so is a received note dump. Which document governs is a
 maintainer decision recorded in `DECISIONS.md`; whether anyone has read its
 contents is the review status in `PROVENANCE.md`; and `RESEARCH_STATE.md` is
@@ -659,9 +690,9 @@ non-maintainer, and no single class says that. The fields are defined once, in
 
 ## Which standards are gates
 
-The CI job is named, because required status checks match job names by exact
-string. `.github/branch-protection.json` is the source of truth for which are
-required.
+Required CI jobs have stable external names because branch protection matches
+them by exact string. `.github/branch-protection.json` is the source of truth for
+which are required.
 
 | standard | enforced by |
 |---|---|

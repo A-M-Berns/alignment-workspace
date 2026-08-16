@@ -114,7 +114,8 @@ jobs:
           python3 ../tests/audit_axioms.py
 
   consolidation-verification:
-    name: consolidation-verification — the leverage consolidation re-proves itself
+    # Required-check identity is deliberately independent of project prose.
+    name: consolidation-verification
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -122,8 +123,8 @@ jobs:
       # Run from a copy. The consolidated tree is ordinary content now, so
       # nothing stops a runner writing into it — which is exactly why this job
       # does not give it the chance.
-      - name: Verify the leverage consolidation, read-only
+      - name: Verify the normativity consolidation, read-only
         run: |
-          cp -R projects/leverage/consolidation-aug9 "$RUNNER_TEMP/consolidation"
+          cp -R projects/normativity/consolidation-aug9 "$RUNNER_TEMP/consolidation"
           cd "$RUNNER_TEMP/consolidation"
           python3 tests/run.py
