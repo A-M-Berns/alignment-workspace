@@ -1211,24 +1211,7 @@ inheritance. It does not decide anything; it makes the adjudication visible. The
 null-input case is a superseded tree with no inbound pointers, which must fail
 rather than report clean if the tree is cited anywhere.
 
-### F7 — A workflow that publishes needs a scope the constitution forbids outright
-<!-- workspace-priority: project=none; dispatchable=no -->
-
-`AGENTS.md`'s *Security* section says no workflow may be granted a token beyond
-read scope and that raising it is prohibited rather than a maintenance decision.
-The reason it gives is that no verdict may be forgeable by anything a contributor
-can submit. Publishing is not a verdict, and the wiki sync job needs
-`contents: write` to push at all — so the first workflow this repository has that
-writes anything sits outside a rule whose stated reason it does not violate.
-
-The general shape: the section conflates *what CI holds permanently* with *what
-scope a job runs at*, and those come apart for any job that runs after merge on a
-protected branch. A round dispatched to add such a job has no move that is both
-compliant and functional, and the failure mode is that it quietly picks
-functional. This one filed instead, and the ruling is in `DECISIONS.md`'s
-*Awaiting the author*.
-
-### F8 — A generated view of live state lives inside a completed round's directory
+### F7 — A generated view of live state lives inside a completed round's directory
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 `checkers.workspace_state --check` fails unless three files under
@@ -1419,3 +1402,36 @@ a `state/` it cannot read — fails rather than reports clean.
 `checkers/workspace_state.py`; `checkers/wiki_links.py` for the house shape.
 *Why it is [entry]:* the machinery exists on both sides; what is new is the rule
 for deciding which numbers are in scope.
+
+### 38. Enforce the write-scope conditions and the job enumeration — **[entry]**
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+`AGENTS.md`'s *Security* section permits a job to hold write scope under four
+conditions and enumerates the jobs holding it. Nothing checks either. A
+conditional permission that no gate reads is the shape this repository has
+already been bitten by twice — a decision that is only written down is one that
+gets re-violated, which is why the personal-name rule became a lint.
+
+The check reads `.github/workflows/*.yml` and fails when a job grants
+`contents: write` (or any `write` scope, or `permissions: write-all`) and either
+is absent from the enumeration in `AGENTS.md`, or is reachable from a
+`pull_request` trigger, or takes its scope from the workflow default rather than
+the job. It fails equally on a job named in the enumeration that no longer exists
+— a stale entry reads as a reviewed grant and is not one.
+
+*Deliverable shape:* a stdlib-only house check under `tests/`, wired into
+`tests/run.py` and a CI job — **specification layer**, and on the trust chain,
+since it is what stands between the enumeration and drift. YAML is not in the
+standard library; a line-oriented parse over the workflow files is sufficient and
+is what the other gates do.
+*Acceptance check:* it passes on the current tree; it fails on each of four
+crafted workflows — a write grant on an unlisted job, a write grant on a workflow
+whose triggers include `pull_request`, a workflow-level `permissions: contents:
+write` with jobs inheriting it, and an enumeration naming a job no file defines.
+Its null input — no workflow file matched, or the enumeration parsed empty —
+fails rather than reports clean.
+*Context:* `AGENTS.md`, *Security*, and the trust chain's item 4;
+`.github/workflows/wiki-sync.yml`; `tests/path_gate.py` for the shape of an
+enumeration-as-protection gate and its self-test.
+*Why it is [entry]:* no new mathematics and no new judgment — the rule is
+written; this reads it.

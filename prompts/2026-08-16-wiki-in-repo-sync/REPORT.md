@@ -121,9 +121,11 @@ the maintainer's, per the dispatch. It is listed below.
    that triggers only on push to `main`, so it creates no permanent secret and
    nothing a contributor submits reaches it — which satisfies the reason the
    section gives while contradicting the sentence it gives it for. Absorbing that
-   silently is the failure `AGENTS.md` §8 names, so it is filed as a stub, as
-   `PRIORITIES.md` F7, and in a comment in the workflow itself. The workflow was
-   installed as dispatched.
+   silently is the failure `AGENTS.md` §8 names, so it was filed as a stub, as a
+   friction entry, and in a comment in the workflow itself. The workflow was
+   installed as dispatched. **The maintainer ruled on it during the round** — see
+   the addendum, which is why neither the stub nor the friction entry is in the
+   tree this pull request ships.
 
 2. **Three documentation edits beyond Deliverable 5's list**, all accuracy rather
    than content: a gates-table row in `AGENTS.md` for the new checker, `wiki/` in
@@ -132,7 +134,9 @@ the maintainer's, per the dispatch. It is listed below.
    command belongs to.
 
 3. **Two friction entries filed that the dispatch did not scope**, under the
-   §14 obligation. F7 is the scope conflict above. F8: `workspace_state --check`
+   §14 obligation. One was the scope conflict above, ruled on and graduated
+   before merge. The other — *A generated view of live state lives inside a
+   completed round's directory* — stands: `workspace_state --check`
    requires three generated views under
    `prompts/2026-08-13-wikification-and-normativity/` to match what
    `--write-handoff` renders, so filing a `state/rounds.json` entry edits a
@@ -181,8 +185,11 @@ The token question above is the largest. Beyond it:
 - `PRIORITIES.md` item 36 — this round's own demand item, marked answered by it.
 - `PRIORITIES.md` item 37 — the volatile-state consistency checker for `wiki/`,
   open and dispatchable.
-- `PRIORITIES.md` F7, F8 — the two friction entries above.
-- `DECISIONS.md` — one dated entry, and two *Awaiting the author* stubs.
+- `PRIORITIES.md` item 38 — a check enforcing the write-scope conditions and the
+  job enumeration, filed on the maintainer's ruling below.
+- `PRIORITIES.md` *A generated view of live state lives inside a completed
+  round's directory* — the friction entry that stands.
+- `DECISIONS.md` — two dated entries, and one *Awaiting the author* stub.
 
 Empty findings, reported as empty: no page in `wiki/` had a dangling link, an
 unpinned repository link, or a personal name in prose at intake. The checkers
@@ -197,18 +204,38 @@ crafted input before being believed.
    with git's exact error. This is the acceptance criterion the round could not
    check.
 2. **If the token is refused, decide the fallback.** Do not add a personal access
-   token to make the job pass; the choice is between amending `AGENTS.md`'s
-   *Security* section, publishing the wiki by hand, and dropping the outward
-   sync. `DECISIONS.md`, *Awaiting the author*, carries the same question for the
-   case where the token works.
-3. **Rule on the sync job's write scope** — `DECISIONS.md`, *Awaiting the
-   author*. Either amend *Security* to state the exception and its conditions, or
-   delete the workflow. Deciding it is reading one paragraph and one workflow
-   file; waiting leaves the constitution and a live workflow in contradiction.
-4. **Decide the identity a wiki pull request is opened under** — `DECISIONS.md`,
+   token to make the job pass; the choice is between publishing the wiki by hand
+   and dropping the outward sync. The write-scope question itself is settled —
+   `DECISIONS.md`, 2026-08-16 — and a refusal is about what the token can reach,
+   not about what the constitution permits.
+3. **Decide the identity a wiki pull request is opened under** — `DECISIONS.md`,
    *Awaiting the author*. Until then, only a pull request whose `GITHUB_ACTOR` is
    in `MAINTAINERS` can touch `wiki/` and pass `path-gate`.
-5. **Confirm `wiki/**`'s path-gate entry**, as the deck's entry was confirmed:
+4. **Confirm `wiki/**`'s path-gate entry**, as the deck's entry was confirmed:
    this round added a pattern to `tests/path_gate.py`, a trust-chain file. The
    dispatch scoped it, so it is not flagged as an overreach — it is listed
    because a specification-enumeration change is a maintainer's to hold.
+
+## Addendum — the write-scope ruling, 2026-08-16
+
+The maintainer ruled on deviation 1 while the pull request was open, before
+merge: amend *Security*. `AGENTS.md` now separates the absolute rule — no stored
+credential, anywhere — from what a job's run token may do, and permits write
+scope under four conditions, with the jobs holding it enumerated by name. The
+dated entry is in `DECISIONS.md`; the stub left *Awaiting the author* and the
+friction entry left *Workspace friction*, both as those sections prescribe.
+
+Two things the ruling does not settle, and they are why item 38 was filed rather
+than the check written. The conditions are review matters until something reads
+them, and this repository's own record is that a rule which is only written down
+is one that gets re-violated — the personal-name lint exists because a standing
+decision was breached in a document's third line while a hand sweep reported
+clean. And the enumeration can go stale in the granting direction: a job added to
+`wiki-sync.yml` inherits nothing today because the grant is on the job, but
+nothing checks that it stays that way. Item 38 states both as its acceptance
+cases.
+
+The ruling was taken as a maintainer act on a trust-chain document, which
+`AGENTS.md` reserves to the maintainer and which self-review satisfies, with this
+entry and the ledger as the review record. The wording of the amendment is this
+round's and is `ci-only`; the decision it records is not.

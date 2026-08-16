@@ -153,22 +153,38 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   means a wiki pull request opened under any other identity fails the gate with
   nothing wrong with its content.
 
-- **Rule on the sync job's write scope.** `AGENTS.md`'s *Security* section says
-  no workflow may be granted a token beyond read scope, and that raising it is
-  prohibited rather than a maintenance decision.
-  `.github/workflows/wiki-sync.yml` grants `contents: write` to one job, because
-  the round's dispatch specified it and a push to the wiki remote cannot be made
-  with less. What was granted is the ephemeral run token, expiring with the run;
-  no permanent secret exists, and the job triggers only on push to `main`, so
-  nothing a contributor submits reaches it. That satisfies the reason the section
-  gives and contradicts the sentence it gives it for. *Doing it* is either
-  amending *Security* to state the exception and the conditions that bound it, or
-  deleting the workflow and mirroring the wiki by hand. *Waiting* leaves the
-  constitution and a live workflow in contradiction — which is the state the
-  absolute wording exists to keep the repository from reaching quietly, so it is
-  filed loudly.
-
 ## Settled
+
+### 2026-08-16 — write scope is enumerated and conditioned, not forbidden
+
+`AGENTS.md`'s *Security* section stated one rule where the repository needs two.
+What must be absolute is that **no credential is stored** — not in the
+repository, its settings, or an environment. What a job's *run token* may do is a
+separate question, and collapsing the two forbade every job that writes anything
+while protecting nothing extra: the reason the section gives is that a verdict
+must not be forgeable by what a contributor submits, and a job that fires only
+after merge and publishes prose is not reachable by that.
+
+Write scope is therefore permitted under four conditions, all four required:
+`push` to a protected branch and never `pull_request`; publishing rather than
+adjudicating, with no required check, registry, protected setting or claim class
+downstream; the run token rather than a stored credential; and the grant written
+on the job rather than as the workflow default. The jobs holding it are
+enumerated in that section, and the enumeration is the protection — the same
+shape as the specification list in `tests/path_gate.py`, and reviewable for the
+same reason.
+
+`wiki-sync` is the first such job. Nothing else in the repository holds write
+scope, and merging stays with GitHub's auto-merge under branch protection.
+
+`PRIORITIES.md` item 38 asks for the check that would enforce the conditions and
+the list. Until it exists these are review matters, which is what the previous
+absolute wording was standing in for.
+
+Source: the maintainer's ruling during the wiki-in-repo and sync round, on the
+conflict that round filed rather than absorbed.
+
+
 
 ### 2026-08-16 — the wiki's source is `wiki/`; the hosted wiki is a mirror
 

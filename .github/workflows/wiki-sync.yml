@@ -20,11 +20,11 @@ jobs:
   wiki-sync:
     name: wiki-sync
     runs-on: ubuntu-latest
-    # The one write scope in this repository, and the narrowest form of it: the
-    # ephemeral workflow token, expiring with the run, scoped to this job.
-    # AGENTS.md's Security section states the scope rule absolutely; the round
-    # that added this recorded the conflict rather than reading past it. See
-    # DECISIONS.md, `Awaiting the author`.
+    # The one job in this repository holding write scope, enumerated by name in
+    # AGENTS.md's Security section, which is where the four conditions on such a
+    # grant are stated: push-only trigger, publishes rather than adjudicates, the
+    # run token rather than a stored credential, and the grant on the job so a
+    # second job added here does not inherit it.
     permissions:
       contents: write
     steps:

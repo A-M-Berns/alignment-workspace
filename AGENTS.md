@@ -671,12 +671,34 @@ non-maintainer, and no single class says that. The fields are defined once, in
 
 ## Security
 
-- **CI holds zero secrets, permanently.** No workflow may be granted a token
-  beyond read scope. **Raising this is prohibited** — it is not a maintenance
-  decision. This is why merging is automated through GitHub's own auto-merge
-  under branch protection rather than through a workflow: a bot that merges needs
-  write scope, and no result is worth the exception. A merge performed by GitHub
-  against the required-check list grants this repository nothing.
+- **CI holds zero secrets, permanently.** No credential is stored in the
+  repository, in its settings, or in an environment. Every job runs with the
+  token GitHub mints for that run and revokes when it ends, and **storing a
+  credential is prohibited** — it is not a maintenance decision.
+- **Read scope is the default; write scope is enumerated, and the enumeration is
+  the protection.** Anything a verdict depends on runs at `contents: read`. This
+  is why merging is automated through GitHub's own auto-merge under branch
+  protection rather than through a workflow: a bot that merges needs write scope,
+  and no result is worth the exception. A merge performed by GitHub against the
+  required-check list grants this repository nothing.
+
+  A job may hold write scope only when **all four** hold, and the reason each is
+  load-bearing is that dropping it puts the scope back within reach of something
+  a contributor can influence:
+
+  1. It triggers on `push` to a protected branch and **never** on
+     `pull_request`, so nothing a contributor submits executes inside it.
+  2. It **publishes rather than adjudicates**: no required check, registry,
+     protected setting or claim class is downstream of what it writes.
+  3. The scope is the run token, so there is nothing to leak past the run.
+  4. The grant is written on the job, not as the workflow default, so a second
+     job added to that file does not inherit it.
+
+  **The jobs holding write scope are named here**, and a job absent from this
+  list holding it is a defect: `wiki-sync` in
+  `.github/workflows/wiki-sync.yml`, which force-pushes `wiki/` to the hosted
+  wiki. `PRIORITIES.md` carries the item for a check that would enforce the four
+  conditions and this list; today they are review matters.
 - Contributed code executes only in sandboxed CI runners, without network access
   where the runner supports it. The checker harness itself never fetches
   anything.
