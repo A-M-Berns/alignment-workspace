@@ -25,6 +25,9 @@ SPEC_PATHS = (
     "AGENTS.md", "CONTRIBUTING.md", "DECISIONS.md", "PRIORITIES.md",
     "README.md", "PROVENANCE.md", "RESEARCH_STATE.md",
     "state/**",
+    # The wiki's source. The hosted wiki is a mirror of it, so a contributor
+    # able to edit here would be able to publish to the human register.
+    "wiki/**",
     "LICENSE", "LICENSE.*",
     ".github/**", ".gitattributes", ".gitignore",
     "checkers/*.py", "checkers/README.md",
@@ -81,6 +84,15 @@ def is_spec(path: str) -> bool:
     return any(fnmatch.fnmatch(path, pattern) for pattern in SPEC_PATHS)
 
 
+def rejects(actor: str, files: list[str]) -> bool:
+    """The gate's verdict, separated from where it reads its inputs.
+
+    A non-maintainer touching a specification path fails; everyone else passes.
+    Folded into `main` it was untestable, so the enumeration had cases and the
+    ruling on it had none."""
+    return any(is_spec(f) for f in files) and actor not in MAINTAINERS
+
+
 def changed_files() -> list[str]:
     base = os.environ.get("GITHUB_BASE_REF")
     if not base:
@@ -135,6 +147,15 @@ def self_test() -> int:
         ("a round output tree stays proof layer",
          is_spec("projects/normativity/rounds/2026-08-11-phi-regret-prep/src/model.py"),
          False),
+        # The wiki's source is maintainer-owned, and the hosted wiki mirrors it.
+        ("a wiki page is specification", is_spec("wiki/Home.md"), True),
+        ("the wiki's sidebar is specification", is_spec("wiki/_Sidebar.md"), True),
+        ("a contributor pull request touching the wiki is rejected",
+         rejects("a-contributor", ["wiki/Home.md"]), True),
+        ("a maintainer pull request touching the wiki is not",
+         rejects("A-M-Berns", ["wiki/Home.md"]), False),
+        ("a contributor pull request touching only the proof layer is not rejected",
+         rejects("a-contributor", ["checkers/contrib/x.py"]), False),
         ("the maintainer set is non-empty", bool(MAINTAINERS), True),
         ("no specification pattern is empty", all(SPEC_PATHS), True),
     ]
@@ -169,7 +190,7 @@ def main() -> int:
     if not touched_spec:
         print(f"PATH GATE: {len(files)} file(s) changed, none in the specification layer")
         return 0
-    if actor in MAINTAINERS:
+    if not rejects(actor, files):
         print(f"PATH GATE: {len(touched_spec)} specification path(s) touched by "
               f"maintainer {actor!r} — allowed, and requires a review that means "
               "actually reading")

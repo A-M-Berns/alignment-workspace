@@ -201,7 +201,9 @@ the check, and the claim identifiers involved. The `THEOREMS.md` /
 wiki is maintainer-register content. Contributors and dispatched agents do not
 read it for instructions and do not write it unless a dispatch directly says to
 do so. Interpretation a contributor believes is warranted belongs in the pull
-request description for maintainer consideration.
+request description for maintainer consideration. Its source is `wiki/` in this
+repository, from which the hosted wiki is force-pushed; contributors do not
+touch that directory unless a `PRIORITIES.md` item directs it.
 
 **Minimal glossing.** Repository contributions report experiments plainly.
 Interpretation is limited to what was tested and what the result means for the
@@ -423,7 +425,7 @@ that means actually reading. It holds: definitions, statements of record,
 notation and typeclass instances on core types; the checker harness; CI
 workflows, toolchain files, the axiom allowance and the resource budgets; and
 the governance documents — this file, `CONTRIBUTING.md`, `PRIORITIES.md`,
-`DECISIONS.md`, `prompts/`, and the consolidated trees.
+`DECISIONS.md`, `prompts/`, `wiki/`, and the consolidated trees.
 
 **Proof layer — open.** Anyone, or anyone's agent. It holds: Lean proofs of
 specification-layer statements and of new lemmas in contribution namespaces;
@@ -708,7 +710,8 @@ which are required.
 | contributed checkers are stdlib-only and documented | `checkers` — `tests/contrib_hygiene.py` |
 | DCO sign-off | `dco` — `tests/dco.py`; that an assertion was made, not that it is true |
 | model attribution in the pull-request body | `dco` — `tests/attribution.py`; presence and non-emptiness only |
-| no personal names in prose | `python` — `tests/name_lint.py` |
+| no personal names in prose | `python` — `tests/name_lint.py`, `wiki/` included |
+| the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
 | 2, exact arithmetic | **not gated** — review; a float in theorem-bearing code is a finding |
 | 3, theorem ships as four things | **not gated** — review; the PR template asks for each |
 | 6, no permanent naming | **not gated** — review; the PR template asks |

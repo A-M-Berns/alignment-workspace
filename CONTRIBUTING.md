@@ -22,7 +22,9 @@ than an honest one, but it is never hidden. See `AGENTS.md`.
 deliverables state claims, hypotheses, checks, and local consequences plainly.
 The maintainer-written GitHub wiki is the human register. Contributors do not
 read it as instructions or edit it; interpretation they believe is warranted
-goes in the pull-request description for maintainer consideration.
+goes in the pull-request description for maintainer consideration. Its source is
+`wiki/` here, and contributors do not touch that directory unless a
+`PRIORITIES.md` item directs it.
 
 **4. The two hard rules** are that consolidated work is not tweaked and that
 names are the author's to set.
@@ -48,6 +50,7 @@ python3 tests/name_lint.py                        # python: no personal names in
 python3 -m checkers.run --self-test               # checkers: the harness's own tests
 python3 -m checkers.run                           # checkers: every registered claim
 python3 tests/contrib_hygiene.py                  # checkers: contributed checkers
+python3 -m checkers.wiki_links                    # checkers: wiki links resolve and are pinned
 python3 tests/path_gate.py                        # path-gate: which layer your files are in
 python3 tests/conservativity.py                   # conservativity: no new axioms
 cd lean && lake exe cache get && lake build       # lean: sorry-free

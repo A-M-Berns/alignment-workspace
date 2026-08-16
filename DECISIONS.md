@@ -139,7 +139,59 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   worth proving*, which no round may decide.** *Waiting* costs nothing today and
   leaves Q3 carrying a candidate the program has not said it wants.
 
+- **Decide the identity a wiki pull request is opened under.** `wiki/` is
+  specification layer, so `path-gate` passes a pull request touching it only when
+  `GITHUB_ACTOR` is in `MAINTAINERS`, and the maintainer's AI collaborator is who
+  drafts those pull requests. Three options: open them with a token belonging to
+  the maintainer's own account, with the executing model recorded in `Model:`
+  trailers and the pull-request attribution block, which is the current scheme
+  extended to a new surface; add an allowlisted machine account to `MAINTAINERS`
+  and `CODEOWNERS`, which is honest about who pushed and creates a second
+  maintainer identity that no human is behind; or drop `wiki/` from the
+  specification list, which makes the register contributor-editable and gives up
+  what the entry above just established. *Doing it* is choosing one. *Waiting*
+  means a wiki pull request opened under any other identity fails the gate with
+  nothing wrong with its content.
+
+- **Rule on the sync job's write scope.** `AGENTS.md`'s *Security* section says
+  no workflow may be granted a token beyond read scope, and that raising it is
+  prohibited rather than a maintenance decision.
+  `.github/workflows/wiki-sync.yml` grants `contents: write` to one job, because
+  the round's dispatch specified it and a push to the wiki remote cannot be made
+  with less. What was granted is the ephemeral run token, expiring with the run;
+  no permanent secret exists, and the job triggers only on push to `main`, so
+  nothing a contributor submits reaches it. That satisfies the reason the section
+  gives and contradicts the sentence it gives it for. *Doing it* is either
+  amending *Security* to state the exception and the conditions that bound it, or
+  deleting the workflow and mirroring the wiki by hand. *Waiting* leaves the
+  constitution and a live workflow in contradiction — which is the state the
+  absolute wording exists to keep the repository from reaching quietly, so it is
+  filed loudly.
+
 ## Settled
+
+### 2026-08-16 — the wiki's source is `wiki/`; the hosted wiki is a mirror
+
+The pages of the human register live in `wiki/` and change through pull requests
+that pass the gates. The hosted wiki is a build artifact: a merge to `main`
+touching `wiki/` force-pushes the directory to `alignment-workspace.wiki.git` as
+a single commit naming the source commit, and the job then re-clones the remote
+and fails unless what it serves matches what was pushed. **Editing the hosted
+wiki directly is unsupported and the edit will be overwritten without a record.**
+
+`wiki/` is specification layer: it is enumerated in `tests/path_gate.py` and
+owned in `CODEOWNERS`, so a contributor pull request touching it fails the gate.
+Two files there are not pages and are not published — `ORIGIN.md`, the intake
+receipt, and `CONVENTIONS.md`, which states what the register is for. The
+exclusion is read from `checkers/wiki_links.py` by the sync job rather than
+duplicated, so a file cannot be a link target the checker accepts and a page the
+wiki does not have.
+
+`checkers/wiki_links.py` requires every link between pages to resolve and every
+link into this repository to carry a 40-hex commit SHA. It runs in the
+`checkers` job, whose required-check identity is unchanged.
+
+Source: the maintainer-dispatched wiki-in-repo and sync round.
 
 ### 2026-08-14 — required checks use stable infrastructural identities
 

@@ -1,0 +1,35 @@
+name: wiki-sync
+
+# The repository holds the wiki's source; the hosted wiki is the build product.
+# This runs after a merge, never on a pull request, so nothing a contributor can
+# submit reaches it — a pull-request event would hand the write scope below to
+# whatever a fork's branch contains.
+on:
+  push:
+    branches: [main]
+    paths: ['wiki/**']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wiki-sync
+  cancel-in-progress: false
+
+jobs:
+  wiki-sync:
+    name: wiki-sync
+    runs-on: ubuntu-latest
+    # The one write scope in this repository, and the narrowest form of it: the
+    # ephemeral workflow token, expiring with the run, scoped to this job.
+    # AGENTS.md's Security section states the scope rule absolutely; the round
+    # that added this recorded the conflict rather than reading past it. See
+    # DECISIONS.md, `Awaiting the author`.
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish wiki/ to the hosted wiki and verify it landed
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash .github/wiki-sync.sh

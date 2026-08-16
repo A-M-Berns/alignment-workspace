@@ -499,6 +499,16 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-wikification-and-normativity/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-16-wiki-in-repo-sync",
+      "date": "2026-08-16",
+      "project": null,
+      "path": "prompts/2026-08-16-wiki-in-repo-sync",
+      "verdict": null,
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-16-wiki-in-repo-sync/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
