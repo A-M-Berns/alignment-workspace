@@ -12,6 +12,43 @@ do is destroy the no-exploitation guarantee.
 **Verdict: 2 — one natural additional clause is needed, and it already exists in
 the corpus in another context.**
 
+## 0. The chain, arrow by arrow
+
+Every arrow the application rests on, with what actually establishes it. Nothing
+below is stronger than the weakest arrow in the path that uses it.
+
+| # | arrow | evidence |
+|---|---|---|
+| A1 | market-maker contract + force declaration ⟹ `Σ_j β_j g_j(P_t)² ≤ ε_t + C_t`, hence `g_j(P_t) ≤ δ_t` | **lean-proved** — `TraderizedEnforcement.weighted_square_le_slack_add_volume` |
+| A2 | the compiled position is a legal day-`t` `Strategy n` | **derived** — exhibited in the source's feature grammar, not written as a term |
+| A3 | liability identity: `L_t(ω) ≤ Σ_j β_{t,j} g_j(P_t) d_j(ω)` | **lean-proved** — `weighted_square_sub_deficit_le_pair` |
+| A4 | substituting the promise and the intensity: `L_t(ω) ≤ (ε_t + C_t)·‖d_t(ω)‖₁ / δ_t` | **derived** from A1 and A3 |
+| **A5** | **outflow protocol with capital `B` ⟹ `Σ_t charge_t ≤ B` ⟹ `Σ_{t≤n} E_t(ω) ≥ −B` for all `n` and all `ω ∈ Ω_n^live`** | **derived**, this pass — §7–8; the second step is conservative, see below |
+| A6 | `B < ∞` ⟹ no efficiently computable trader exploits the modified market, and assessed net worth is at most `1 + B` | **derived**, conditional on A7 |
+| A7 | the generalized live-world Budgeter/TradingFirm lift | **derived and unformalized** — the paper's only conditional, `PAPER_RECONCILIATION.md` |
+| A8 | settlement rows contribute zero deficit; core rows carry `max(0, r − m_c)`, independent of `θ` | **derived** — §1–2 |
+| A9 | settlement monotonicity makes the depth non-increasing | **derived** — `NL-SI-C4`; necessary, not sufficient |
+
+**Where the new arrow sits.** A5 is the arrow this pass adds, and it enters
+*before* bounded liability rather than restating it. Its inputs — `ε_t` from the
+market, `C_t` a declared volume bound, `δ_t` the tolerance about to be promised,
+`d_t` from the semantic/settlement state — are all available at or before the
+moment force is emitted, which is what makes it a protocol rather than a
+hypothesis. Its output is exactly A6's hypothesis.
+
+**The one inexactness in A5**, stated rather than buried: `Σ_t charge_t ≤ B` is
+*strictly stronger* than the criterion needs. The criterion picks one world at
+horizon `n` and follows it; the charge maximizes over live worlds independently
+at each date. So a diverging certificate establishes only that this route does not
+certify safety — §4's contrast additionally exhibits realized divergence at a
+followed world, which is the stronger statement and is what makes it a genuine
+failure rather than a proof gap.
+
+**What the chain does not contain.** Any claim that bounded liability is
+*necessary* (`PRIORITIES.md` item 40), any exhibited exploiting trader for the
+failing fixture, and any unconditional statement — every path through A6 inherits
+A7's conditionality.
+
 ## 1. The motivating region, and its two families
 
 At date `t`: a post-settlement simplex, an endorsed region inside it, a declared
