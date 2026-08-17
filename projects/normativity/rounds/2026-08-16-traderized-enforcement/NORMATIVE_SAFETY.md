@@ -23,11 +23,12 @@ below is stronger than the weakest arrow in the path that uses it.
 | A2 | the compiled position is a legal day-`t` `Strategy n` | **derived** — exhibited in the source's feature grammar, not written as a term |
 | A3 | liability identity: `L_t(ω) ≤ Σ_j β_{t,j} g_j(P_t) d_j(ω)` | **lean-proved** — `weighted_square_sub_deficit_le_pair` |
 | A4 | substituting the promise and the intensity: `L_t(ω) ≤ (ε_t + C_t)·‖d_t(ω)‖₁ / δ_t` | **derived** from A1 and A3 |
-| **A5** | **outflow protocol with capital `B` ⟹ `Σ_t q_t ≤ B` ⟹ `Σ_{t≤n} E_t(ω) ≥ −B` for all `n` and all `ω ∈ Ω_n^live`**, with `q_t = (ε_t + C_t)·D_t/δ_t` and `D_t = sup_{ω ∈ Ω_t^live} Σ_j d_{t,j}(ω)` | **derived** — §7–8, and the aggregate is certified rather than supplied |
+| **A5** | **outflow protocol with capital `B` ⟹ `Σ_t q_t ≤ B` ⟹ `Σ_{t≤n} E_t(ω) ≥ −B` for all `n` and all `ω ∈ Ω_n^live`**, with `q_t = (ε_t + C_t)·D_t/δ_t` and `D_t = sup_{ω ∈ Ω_t^live} Σ_j d_{t,j}(ω)` | **derived** — §7–8, §13a |
+| **A5′** | **the `D_t` that was certified is the `D_t` of the position that was emitted** | **derived** — §7a; enforced by construction in `compile_safe_force`, and by a binding check in the lower-level path |
 | A6 | `B < ∞` ⟹ no efficiently computable trader exploits the modified market, and assessed net worth is at most `1 + B` | **derived**, conditional on A7 |
 | A7 | the generalized live-world Budgeter/TradingFirm lift | **derived and unformalized** — the paper's only conditional, `PAPER_RECONCILIATION.md` |
 | A8 | settlement rows contribute zero deficit; core rows carry `max(0, r − m_c)`, independent of `θ` | **derived** — §1–2 |
-| A9 | settlement monotonicity makes the depth non-increasing | **derived** — `NL-SI-C4`; necessary, not sufficient |
+| A9 | settlement monotonicity makes the depth non-increasing for a fixed endorsement under irreversible settlement | **derived** — `NL-SI-C4`; **helpful, and neither necessary nor sufficient**. Not sufficient because non-increasing is not summable; not necessary because the cost product can be summable while the depth rises on some dates, so long as pressure or tolerance compensate |
 
 **Where the new arrow sits.** A5 is the arrow this pass adds, and it enters
 *before* bounded liability rather than restating it. Its inputs — `ε_t` from the
@@ -175,15 +176,60 @@ cleanly — the charge is computable *before* the trade is emitted, from the
 market's slack, a declared volume bound, the tolerance the mechanism is about to
 promise, and the deficit vector the semantic/settlement state supplies.
 
-**Allocation.** `allocate` reserves capital per endorsement against global
-capital and refuses when it is short. Summability is then imposed at admission
-rather than hoped for in the limit, and §6's counterexample dies at the fourth
-admission rather than running forever.
+**Caps, not reserves.** `cap` promises capital to an endorsement against global
+capital and refuses when it is short, and `spend` enforces `spent_e ≤ B_e`. Both
+`Σ_e B_e ≤ B` and the per-endorsement bound hold, which is everything the safety
+theorem needs, and §6's counterexample dies at the fourth admission rather than
+running forever. It is deliberately **not** ring-fencing: capital promised to an
+endorsement and not yet spent remains available to unallocated charges. The word
+is *cap* because the behaviour is a cap, and true reservation would be a stricter
+discipline nothing here requires.
 
 **Additivity.** The certificate is exactly additive over rows and identically
 zero on settlement rows, so per-endorsement charging is well defined. It is
 *conservative*: realized liability of a sum can be smaller than the sum of
 component liabilities, because positions cancel in price space.
+
+## 7a. The certificate binds to the request, or it certifies nothing
+
+A charge is only a safety quantity if the thing whose deficit was certified is the
+thing whose trader is emitted. It was not, and the gap was exploitable rather than
+theoretical.
+
+**The substitution.** Take `K_easy = {p ≥ 0}`, which nothing in the cube can
+violate, so its live-world aggregate is honestly `0` and a `verified` certificate
+says so. Hand that certificate to the funded entry point while asking it to
+enforce `K_hard = {p ≥ ½}`. The account is charged **nothing**, the position is
+emitted anyway, and at the live world `p = 0` against a contract-satisfying price
+of `1/4` it really loses. Repeat and the cumulative liability diverges while the
+holder quotes a finite `B`.
+
+**What a certificate now carries.** Four identities, because the proposition
+mentions all four:
+
+| bound | why it is operative |
+|---|---|
+| exact **row presentation** | the round chose Option A; duplicates and order change the emitted position |
+| exact **support** | `(0,1,0)` means nothing without which sentence sits where |
+| exact **date** | the live set shrinks, so a later certificate is cheaper and must not fund earlier force |
+| exact **live-world set** | two assessment processes can disagree at one date |
+
+The enumeration order of the live worlds is *not* operative and is sorted out of
+the key; row order *is*, and is kept, because nothing has been proved about
+reordering.
+
+**Three structural consequences.**
+
+1. `LiveDeficitCertificate` is constructed only by `by_enumeration`; the
+   initializer requires a module-private witness, so the verified state cannot be
+   filled in by a caller.
+2. A bound a caller asserts is a **`LiveDeficitClaim`** — a different type, not a
+   flag. It can price a request and cannot certify one. A reason string is not a
+   proof and the type no longer pretends it is.
+3. `compile_safe_force` computes the certificate from the **same `Region`
+   instance** it is about to enforce, so there is no separate object to mismatch.
+   The lower-level `compile_funded_force` still accepts a certificate and checks
+   `binds`, reporting which field differs.
 
 ## 8. Safety theorem
 
@@ -269,7 +315,7 @@ substantive constraint on what kind of normative content this covers.
 
 **Quarantine** withholds force and spends nothing; the endorsement keeps its
 normative standing and loses operative effect. **Relaxation** buys the tightest
-affordable promise. **Refusal at admission** is `allocate` failing. **Tolling**,
+affordable promise. **Refusal at admission** is `cap` failing. **Tolling**,
 if force is withheld for account reasons, is the behaviour that fits the existing
 answerability architecture — a deadline should not count a failure the substrate
 caused — and it is a constitutional choice, recorded as one and not made here.
@@ -403,6 +449,29 @@ largest violation the row can attain in the cube, `V_max = r − Σ_i min(c_i, 0
 force is nonvacuous when `δ_t ≤ α·V_max` for a declared `α < 1`. Every claim in
 §9 about "meaningful" force is to be read at a fixed `α`, and the corrected
 limitative theorem's tolerance ceiling `δ̄` is where that enters.
+
+## 13c. The end-to-end proposition
+
+Putting the binding and the horizon argument together, this is what a holder of a
+`SafetyCertifiedForce` may assert.
+
+**Proposition.** Let `F_t` be produced by `compile_safe_force` from an exact row
+presentation `R_t` over support `S_t`, at date `t`, against live worlds `L_t`,
+with declared `ε_t`, `C_t` and tolerance `δ_t`. Then the emitted position `E_t` is
+the trader compiled from `R_t`, and
+
+    for every ω ∈ L_t:   E_t(ω)  ≥  −(ε_t + C_t)·D_t/δ_t  =  −q_t ,
+
+where `D_t = max_{ω ∈ L_t} Σ_j d_j(ω)` was computed by enumerating `L_t` against
+`R_t` — the same presentation, the same support, the same date. That exact `q_t`
+has been debited from an account whose total lifetime capital is at most `B`.
+
+Hence, for a nested assessment process, `Σ_t q_t ≤ B` gives
+`Σ_{t≤n} E_t(ω) ≥ −B` for every `n` and every `ω ∈ L_n`, by §13a. Conditional on
+the generalized TradingFirm lift, nonexploitability follows.
+
+The load-bearing word is **exact**, four times over. Before the binding, each of
+those four could differ between the certified object and the emitted one.
 
 ## 14. What is not established
 

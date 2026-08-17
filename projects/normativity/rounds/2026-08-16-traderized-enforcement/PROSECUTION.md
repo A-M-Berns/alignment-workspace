@@ -380,3 +380,34 @@ distinct type; the unaffordable path cannot produce a certificate at all.
 `replenish` is bounded by a lifetime ceiling declared at construction and refuses
 by default, because the bound a caller may quote is the ceiling rather than the
 initial capital.
+
+
+## Attacks 34–39: laundering the hypothesis through the API
+
+**34. Certify an easy region, enforce a hard one.** *Landed, now closed.* A
+`verified` certificate for `p ≥ 0` has aggregate zero honestly. Paid against
+`p ≥ ½` it charged nothing while the emitted position lost at a live world.
+Certificates now carry the exact row presentation, and `compile_safe_force`
+computes the deficit from the region it enforces.
+`test_outflow.CertificateSubstitution`.
+
+**35. Certify a duplicated presentation, enforce the deduplicated one.**
+*Landed, now closed.* Duplicates change the emitted position, so they change the
+identity, and the presentation key preserves them.
+
+**36. Permute the sentence coordinates.** *Landed, now closed.* The world vectors
+are unchanged and what they mean is not; the support key is part of the binding.
+
+**37. Reuse a later certificate earlier.** *Landed, now closed.* Live sets shrink,
+so a later aggregate is smaller — on the displayed instance, zero against `1/2`.
+Date and live-world set are both bound.
+
+**38. Fill in `verified=True`.** *Landed, now closed.* The initializer requires a
+module-private witness; asserted bounds are a separate type that cannot reach the
+safety-certified path at all.
+
+**39. Ask for loose force and be given tight force.** *Landed, now closed.* The
+relax policy bought the tightest tolerance the allowance could afford, so a
+request for `1/2` against an account affording `1/10` got force five times
+stronger than asked for and spent the whole allowance. Relaxation now moves
+tolerance in one direction only. `test_outflow.RelaxOnlyLoosens`.

@@ -83,8 +83,131 @@ def compile_force(rows: Sequence[tuple[Sequence[Fraction], Fraction]],
     return ForceCertificate(ForceDeclaration(region, volume, slack, tolerance))
 
 
+class SafetyCertifiedForce(ForceCertificate):
+    """Force whose charge came from a **verified certificate bound to this request**.
+
+    The proposition a holder may quote is exact:
+
+        for every omega live at date t under this assessment state,
+            -E_t(omega)  <=  q_t  =  (eps_t + C_t) * D_t / delta_t ,
+
+    where `E_t` is *this* position, compiled from *this* row presentation over
+    *this* support, and `D_t` was computed by enumerating *those* live worlds.
+    A holder may quote the account's lifetime ceiling as the safety bound `B`,
+    because the charge is debited from that account before the position exists.
+
+    Nothing weaker produces one of these. A caller with only an asserted bound
+    gets a `LiveDeficitClaim` and no certified force; that is the whole reason
+    the types are separate.
+    """
+
+    def __init__(self, declaration, certificate, charged, account, relaxed,
+                 policy) -> None:
+        super().__init__(declaration)
+        self.deficit_certificate = certificate
+        self.charged = charged
+        self.date = certificate.date
+        self.support = certificate.support
+        self.presentation = certificate.presentation
+        self.assessment = certificate.live_worlds
+        self.deficit_bound = certificate.aggregate
+        self.deficit_basis = certificate.basis
+        self.slack = declaration.slack
+        self.volume = declaration.volume
+        self.remaining = account.remaining
+        self.safety_bound = account.lifetime_ceiling
+        self.relaxed = relaxed
+        self.policy = policy
+
+    @property
+    def deficit_is_verified(self) -> bool:
+        return True
+
+    def ingredients(self) -> dict:
+        """Everything the certified proposition depends on, for a reader."""
+        return {"date": self.date, "support": self.support,
+                "presentation": self.presentation,
+                "assessment": self.assessment,
+                "deficit_bound": self.deficit_bound,
+                "deficit_basis": self.deficit_basis,
+                "slack": self.slack, "volume": self.volume,
+                "tolerance": self.tolerance, "charge": self.charged,
+                "safety_bound": self.safety_bound,
+                "remaining": self.remaining, "policy": self.policy}
+
+
+def compile_safe_force(rows, dimension: int, support, date: int,
+                       live_worlds, slack: Fraction, volume: Fraction,
+                       tolerance: Fraction, feasibility: Sequence[Fraction],
+                       account, policy: str = "refuse",
+                       label: str = "", ceiling: Fraction = None):
+    """The safety-bearing entry point. Certifies, charges, then emits.
+
+    The deficit is computed **from the same `Region` instance that is about to
+    be enforced**, over the live worlds the caller supplies, so the certificate
+    cannot describe a different force request than the one emitted. That is the
+    hole this function closes: previously a caller could hand in a certificate
+    for `p >= 0` — aggregate zero, honestly verified — and have enforcement of
+    `p >= 1/2` funded for nothing while the emitted position really lost at a
+    live world.
+
+    Order matters and is not an implementation detail: feasibility, then
+    certification, then charge, then debit, then position. An unaffordable
+    request never reaches the last step, and a provenance mismatch cannot arise
+    because there is no separate certificate to mismatch.
+
+    `policy` is `refuse`, `quarantine`, or `relax`, and relaxation only ever
+    loosens the requested tolerance.
+    """
+    from outflow import (Insufficient, LiveDeficitCertificate, charge,
+                         relax as _relax)
+
+    ceiling = ONE if ceiling is None else Fraction(ceiling)
+    region = Region(dimension, [Row(c, r) for c, r in rows])
+    witness = tuple(Fraction(x) for x in feasibility)
+    if len(witness) != dimension:
+        raise ValueError("the feasibility witness has the wrong dimension")
+    if not region.contains(witness):
+        raise ValueError("the feasibility witness is not in the region")
+
+    certificate = LiveDeficitCertificate.by_enumeration(
+        date, region, support, live_worlds)
+
+    if policy == "relax":
+        granted = _relax(account, slack, volume, certificate, tolerance, label,
+                         ceiling)
+        if granted is None:
+            return None
+        return SafetyCertifiedForce(
+            ForceDeclaration(region, volume, slack, granted), certificate,
+            charge(slack, volume, granted, certificate), account,
+            granted != Fraction(tolerance), policy)
+
+    try:
+        paid = account.spend(slack, volume, tolerance, certificate, label)
+    except Insufficient:
+        if policy == "quarantine":
+            return None
+        raise
+    return SafetyCertifiedForce(
+        ForceDeclaration(region, volume, slack, tolerance), certificate, paid,
+        account, False, policy)
+
+
 class FundedForceCertificate(ForceCertificate):
-    """A force certificate whose safety charge has already been paid.
+    """**Paid**, and not necessarily safety-certified.
+
+    Retained as the lower-level path for a caller that already holds a verified
+    certificate and wants to pass it rather than have one computed. The
+    certificate must bind to this exact request — date, support and row
+    presentation — and an unverified claim is refused outright, because a
+    holder of this type is entitled to quote the account bound and an asserted
+    number does not earn that.
+
+    New callers should use `compile_safe_force`, which removes the possibility
+    of a mismatch by computing the certificate from the region it enforces.
+
+    A force certificate whose safety charge has already been paid.
 
     The distinction from `ForceCertificate` is the whole point of this type.
     `ForceCertificate` promises conformance and *emits an obligation*: the
@@ -111,8 +234,9 @@ class FundedForceCertificate(ForceCertificate):
         return self.deficit_certificate.verified
 
 
-def compile_funded_force(rows, dimension: int, slack: Fraction,
-                         volume: Fraction, tolerance: Fraction,
+def compile_funded_force(rows, dimension: int, support, date: int,
+                         slack: Fraction, volume: Fraction,
+                         tolerance: Fraction,
                          feasibility: Sequence[Fraction],
                          account, deficit_certificate,
                          policy: str = "refuse",
@@ -150,9 +274,17 @@ def compile_funded_force(rows, dimension: int, slack: Fraction,
     if not region.contains(witness):
         raise ValueError("the feasibility witness is not in the region")
 
+    if not getattr(deficit_certificate, "verified", False):
+        raise TypeError(
+            "funded force needs a verified certificate; a LiveDeficitClaim "
+            "prices a request and cannot certify one")
+    mismatch = deficit_certificate.binds(date, region, support)
+    if mismatch is not None:
+        raise ValueError(f"certificate does not bind to this request: {mismatch}")
+
     if policy == "relax":
-        granted = _relax(account, slack, volume, deficit_certificate, label,
-                         ceiling)
+        granted = _relax(account, slack, volume, deficit_certificate, tolerance,
+                         label, ceiling)
         if granted is None:
             return None
         return FundedForceCertificate(

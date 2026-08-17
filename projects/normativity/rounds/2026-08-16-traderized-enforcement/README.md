@@ -45,7 +45,8 @@ determine `C_t`.
 safety *conditionally* discharged.** The motivating statics split into settlement
 rows, which carry zero liability always, and core rows, whose worst deficit is
 `max(0, r − m_c)` — independent of the declared core minimum. Settlement
-monotonicity makes that non-increasing; it does not make it summable. One clause
+monotonicity makes that non-increasing for a fixed endorsement under irreversible
+settlement; it does not make it summable, and it is not necessary either. One clause
 is needed, and the corpus already adopted it for the same failure in another
 context: a limit on cumulative net outflow. `NORMATIVE_SAFETY.md`.
 
@@ -89,14 +90,21 @@ its world process refutes.
 | `NORMATIVE_SAFETY.md` | whether the motivating statics discharge bounded enforcement liability: the outflow account, the three-factor cost product, the withdrawn depth-only theorem, and presentation dependence |
 | `SEMANTIC_PROJECTION.md` | `C_t`, `π_t`, `K_t`, fibre saturation, and the support loss under projection |
 | `PAPER_RECONCILIATION.md` | the two constructions, the live-world lift with its three hypotheses, deductive recovery, and the paper spine |
-| `PROSECUTION.md` | thirty-three attacks, with a current verdict: what landed, what was withdrawn, what is open |
+| `PROSECUTION.md` | thirty-nine attacks, with a current verdict: what landed, what was withdrawn, what is open |
 
 ## The safety verdict
 
 **Safety is implemented at the emission path, and its cost is a product of three
-factors.** `compile_funded_force` pays the account before it constructs the
-position, so an unaffordable request cannot produce a certificate; the low-level
-`compile_force` promises conformance only and returns a different type. Force is
+factors.** `compile_safe_force` computes the live-world deficit from the very
+region it is about to enforce, charges the account, and only then constructs the
+position — so neither an unaffordable request nor a certificate about a different
+request can produce a safety-certified object. The low-level `compile_force`
+promises conformance only and returns a different type.
+
+The binding matters because the gap was exploitable: a `verified` certificate for
+`p ≥ 0` — honestly zero, since nothing can violate it — funded enforcement of
+`p ≥ ½` for nothing, while the emitted position really lost at a live world.
+`NORMATIVE_SAFETY.md` §7a. Force is
 purchased out of a finite global account at `(ε_t + C_t)·D_t/δ_t` per date — a
 charge computable before the trade is emitted — and the account's discipline
 implies the bounded-liability hypothesis rather than assuming it. Inverting the

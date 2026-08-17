@@ -57,71 +57,169 @@ class Insufficient(Exception):
     """Raised when a force request cannot be funded out of remaining capital."""
 
 
-class LiveDeficitCertificate:
-    """`D_t`, and what establishes that it covers every live world.
+def _exact(x: Fraction) -> tuple[int, int]:
+    """A rational as an immutable, hashable, exact pair. No floats anywhere."""
+    f = Fraction(x)
+    return (f.numerator, f.denominator)
 
-    The account is only as sound as this number. A charge computed from deficits
-    a caller happened to pass in certifies nothing: the preservation theorem
-    quantifies over **all** worlds live at the date, so the aggregate must
-    dominate
 
-        D_t  =  sup over live omega of  sum_j d_{t,j}(omega) ,
+def presentation_key(region: Region) -> tuple:
+    """The exact identity of a **row presentation**, not of an admissible set.
 
-    and a certificate records how that supremum was established rather than
-    asserting the number bare.
+    The round chose Option A — the presentation is part of the force request —
+    so this is what a safety certificate must bind to. Duplicates are preserved
+    because duplicates change the emitted position; row order is preserved
+    because the compiler walks the rows in order and nothing has been proved
+    about reordering.
 
-    Two aggregates are available and they are not equal. The **sharp** one is the
-    supremum of the row sum; the **rowwise** one sums each row's own worst world.
-    The second is larger whenever different rows are worst at different worlds —
-    `p >= 1/2` and `p <= 1/2` over the two worlds of one sentence give `1/2`
-    against `1`, a clean factor of two — and using it where the sharp one is
-    available overcharges the account and buys nothing.
+    Transparent rather than hashed: a reader can see what was bound, and a
+    mismatch reports which field differs. A digest would buy nothing here — the
+    threat is a caller wiring the wrong object, not an adversary forging bytes.
+    """
+    return (region.dimension,
+            tuple((tuple(_exact(c) for c in row.c), _exact(row.r))
+                  for row in region.rows))
+
+
+def support_key(support: Sequence[str]) -> tuple:
+    """Which sentence occupies which coordinate.
+
+    A valuation `(0,1,0)` means nothing without this. Two fragments over the
+    same names in a different order give different keys, because they give
+    different worlds.
+    """
+    return tuple(str(s) for s in support)
+
+
+def live_world_key(date: int, support: Sequence[str],
+                   worlds: Sequence[Sequence[Fraction]]) -> tuple:
+    """The exact assessment state a certificate was computed against.
+
+    Date alone is not enough: two assessment processes can disagree at the same
+    date, and the live set shrinks over time, so a later certificate is cheaper
+    and must not fund earlier force. Sorting makes the key independent of the
+    order the caller happened to enumerate in, which is not operative.
+    """
+    return (int(date), support_key(support),
+            tuple(sorted(tuple(_exact(x) for x in w) for w in worlds)))
+
+
+_VERIFIED = object()          # module-private witness; not exported
+
+
+class LiveDeficitClaim:
+    """An aggregate deficit a caller takes responsibility for.
+
+    Legitimate — a caller may have a proof the account cannot reproduce — and a
+    **different type** from a certificate, because the difference is exactly
+    whether anything checked it. A claim can price a request and cannot produce
+    a safety-certified position; `compile_funded_force` refuses it.
+
+    A reason string is not a proof and this type does not pretend otherwise. It
+    is a claim with an author.
     """
 
-    def __init__(self, date: int, aggregate: Fraction, basis: str,
-                 rowwise: Fraction | None = None, verified: bool = True) -> None:
-        self.date = date
+    verified = False
+
+    def __init__(self, date: int, aggregate: Fraction, reason: str) -> None:
+        if not reason:
+            raise ValueError("a claim states who is making it and why")
+        self.date = int(date)
         self.aggregate = Fraction(aggregate)
-        self.rowwise = self.aggregate if rowwise is None else Fraction(rowwise)
-        self.basis = basis
-        self.verified = verified
+        self.rowwise = self.aggregate
+        self.reason = reason
         if self.aggregate < 0:
             raise ValueError("an aggregate deficit is nonnegative")
 
+    @property
+    def basis(self) -> str:
+        return f"claimed: {self.reason}"
+
+
+class LiveDeficitCertificate:
+    """`D_t` for **one exact force request**, and what establishes it.
+
+    The proposition it certifies is
+
+        for every omega live at date t,  sum_j d_{t,j}(omega)  <=  aggregate ,
+
+    where `d_{t,j}` are the deficits of *these* rows, over *these* worlds, with
+    *these* sentences in *these* coordinates, at *this* date. All four are
+    carried, because a certificate that binds only a number can be paid against
+    a different force request — and before this type existed, one could be: a
+    certificate for `p >= 0` (aggregate zero) funded enforcement of `p >= 1/2`
+    for nothing, while the emitted position really lost at a live world.
+
+    Only `by_enumeration` constructs one. The initializer requires a
+    module-private witness, so a caller cannot assert the verified state by
+    filling in fields.
+    """
+
+    verified = True
+
+    def __init__(self, witness, date, aggregate, rowwise, presentation,
+                 support, live_worlds, basis) -> None:
+        if witness is not _VERIFIED:
+            raise TypeError(
+                "a verified certificate is constructed by enumeration; use "
+                "LiveDeficitCertificate.by_enumeration, or LiveDeficitClaim "
+                "for a bound you are asserting")
+        self.date = int(date)
+        self.aggregate = Fraction(aggregate)
+        self.rowwise = Fraction(rowwise)
+        self.presentation = presentation
+        self.support = support
+        self.live_worlds = live_worlds
+        self.basis = basis
+
     @classmethod
     def by_enumeration(cls, date: int, region: Region,
+                       support: Sequence[str],
                        live_worlds: Sequence[Sequence[Fraction]]
                        ) -> "LiveDeficitCertificate":
         """Compute both aggregates exactly, by walking the live worlds.
 
         Available whenever the live process is finitely presented at the date,
-        which is what `(L2)` effective finite restriction buys. This is the only
-        constructor that produces a `verified` certificate.
+        which is what `(L2)` effective finite restriction buys.
+
+        The **sharp** aggregate is the supremum of the row sum; the **rowwise**
+        one sums each row's own worst world and is larger whenever different
+        rows are worst at different worlds — `p >= 1/2` and `p <= 1/2` over the
+        two worlds of one sentence give `1/2` against `1`. The sharp one is
+        billed; the rowwise one is kept because a per-row account must use it.
         """
-        rows = list(region.rows)
         worlds = [tuple(Fraction(x) for x in w) for w in live_worlds]
+        if any(len(w) != region.dimension for w in worlds):
+            raise ValueError("a world carries one value per priced coordinate")
+        if len(support) != region.dimension:
+            raise ValueError("the support names one sentence per coordinate")
         if not worlds:
-            return cls(date, ZERO, "no live worlds", ZERO, True)
-        deficits = [world_deficit(region, w) for w in worlds]
-        sharp = max(sum(d, ZERO) for d in deficits)
-        rowwise = sum((max(d[j] for d in deficits) for j in range(len(rows))),
-                      ZERO)
-        return cls(date, sharp, f"enumeration over {len(worlds)} live worlds",
-                   rowwise, True)
+            sharp = rowwise = ZERO
+            basis = "no live worlds"
+        else:
+            deficits = [world_deficit(region, w) for w in worlds]
+            sharp = max(sum(d, ZERO) for d in deficits)
+            rowwise = sum((max(d[j] for d in deficits)
+                           for j in range(len(region.rows))), ZERO)
+            basis = f"enumeration over {len(worlds)} live worlds"
+        return cls(_VERIFIED, date, sharp, rowwise, presentation_key(region),
+                   support_key(support), live_world_key(date, support, worlds),
+                   basis)
 
-    @classmethod
-    def asserted(cls, date: int, bound: Fraction, reason: str
-                 ) -> "LiveDeficitCertificate":
-        """An upper bound the caller takes responsibility for.
+    def binds(self, date: int, region: Region,
+              support: Sequence[str]) -> str | None:
+        """`None` when this certificate is about that exact request; else why not.
 
-        Legitimate — a caller may have a proof the account cannot reproduce — and
-        marked `verified = False` so that nothing downstream can mistake an
-        obligation for a discharge. `reason` is required, because an unexplained
-        number is exactly what this type exists to prevent.
+        Returns the mismatching field rather than a bare boolean, because the
+        useful failure message names what was wired wrong.
         """
-        if not reason:
-            raise ValueError("an asserted bound states what establishes it")
-        return cls(date, bound, f"asserted: {reason}", None, False)
+        if int(date) != self.date:
+            return f"date {date} against certified date {self.date}"
+        if support_key(support) != self.support:
+            return f"support {support_key(support)} against {self.support}"
+        if presentation_key(region) != self.presentation:
+            return "row presentation"
+        return None
 
 
 def charge(slack: Fraction, volume: Fraction, tolerance: Fraction,
@@ -170,14 +268,47 @@ def affordable_tolerance(slack: Fraction, volume: Fraction,
     return (Fraction(slack) + Fraction(volume)) * total / allowance
 
 
+class OutflowEntry:
+    """One debit, with enough provenance to audit what consumed the account.
+
+    A constitutional mechanism whose ledger says only `(label, cost)` cannot
+    answer *which force request spent this*. These fields can.
+    """
+
+    __slots__ = ("label", "cost", "date", "presentation", "assessment",
+                 "basis", "verified", "remaining")
+
+    def __init__(self, label, cost, date, presentation, assessment, basis,
+                 verified, remaining) -> None:
+        self.label = label
+        self.cost = cost
+        self.date = date
+        self.presentation = presentation
+        self.assessment = assessment
+        self.basis = basis
+        self.verified = verified
+        self.remaining = remaining
+
+    def __repr__(self) -> str:
+        mark = "verified" if self.verified else "claimed"
+        return (f"OutflowEntry({self.label!r}, cost={self.cost}, "
+                f"date={self.date}, {mark}, remaining={self.remaining})")
+
+
 class OutflowAccount:
     """Finite lifetime capital, spent down as force is emitted.
 
     The account is **global over the whole enforcement channel**, not per source
-    and not per endorsement. `allocate` carves a summable decomposition out of it
-    for sources that want modular budgets, and refuses an allocation the capital
-    cannot cover — which is the operative content of summability, imposed at
-    admission rather than checked in the limit.
+    and not per endorsement. `cap` carves a summable decomposition out of it for
+    sources that want modular budgets, and refuses one the capital cannot cover —
+    which is the operative content of summability, imposed at admission rather
+    than checked in the limit.
+
+    Endorsement budgets are **caps, not reserves**. `sum_e B_e <= B` and
+    `spent_e <= B_e` both hold, which is everything the safety theorem needs, but
+    an unallocated charge may still spend capital an endorsement has been
+    promised and not yet used. Ring-fencing would be a different and stricter
+    discipline; the prose says cap because the behaviour is a cap.
     """
 
     def __init__(self, capital: Fraction,
@@ -191,7 +322,7 @@ class OutflowAccount:
         if self.lifetime_ceiling < capital:
             raise ValueError("the lifetime ceiling is at least the initial capital")
         self.spent = ZERO
-        self.ledger: list[tuple[str, Fraction]] = []
+        self.ledger: list[OutflowEntry] = []
         self.allocations: dict[str, Fraction] = {}
         self.charged: dict[str, Fraction] = {}
 
@@ -229,36 +360,36 @@ class OutflowAccount:
 
     # --- modular allocation -------------------------------------------------
 
-    def allocate(self, endorsement: str, budget: Fraction) -> None:
-        """Reserve `budget` for one endorsement, refusing if capital is short.
+    def cap(self, endorsement: str, budget: Fraction) -> None:
+        """Cap one endorsement's lifetime spending, refusing if capital is short.
 
-        Two things at once, and they are worth separating. As **admission
-        control** it stops the fresh-endorsement counterexample: each admission
-        consumes global capital, so admissions are finitely many at any positive
-        budget and `sum_e B_e <= B` holds because it is checked. As a
-        **subaccount** it caps what that endorsement may spend — enforced in
-        `spend`, which refuses a labelled charge that would take an endorsement
-        past its own reservation.
+        Two things at once. As **admission control** it stops the
+        fresh-endorsement counterexample: each admission consumes global capital,
+        so admissions are finitely many at any positive budget and
+        `sum_e B_e <= B` holds because it is checked. As a **spending cap** it
+        bounds what that endorsement may ever spend, enforced in `spend`.
 
-        An endorsement with no allocation is not forbidden; it simply spends
-        against global capital only.
+        It does **not** ring-fence: capital promised here and not yet spent
+        remains available to unallocated charges. An endorsement with no cap
+        spends against global capital only.
         """
         budget = Fraction(budget)
         if budget < 0:
             raise ValueError("a budget is nonnegative")
-        reserved = sum(self.allocations.values(), ZERO)
-        if reserved + budget > self.lifetime_ceiling:
+        promised = sum(self.allocations.values(), ZERO)
+        if promised + budget > self.lifetime_ceiling:
             raise Insufficient(
-                f"allocating {budget} to {endorsement} would reserve "
-                f"{reserved + budget} against capital {self.lifetime_ceiling}")
+                f"capping {endorsement} at {budget} would promise "
+                f"{promised + budget} against capital {self.lifetime_ceiling}")
         self.allocations[endorsement] = (
             self.allocations.get(endorsement, ZERO) + budget)
 
-    def reserved(self) -> Fraction:
+    def capped(self) -> Fraction:
+        """Total capital promised to named endorsements."""
         return sum(self.allocations.values(), ZERO)
 
     def remaining_for(self, endorsement: str) -> Fraction:
-        """What an endorsement may still spend: its own reservation, and global."""
+        """What an endorsement may still spend: its own cap, and global capital."""
         spent = self.charged.get(endorsement, ZERO)
         if endorsement in self.allocations:
             return min(self.allocations[endorsement] - spent, self.remaining)
@@ -295,11 +426,15 @@ class OutflowAccount:
             already = self.charged.get(label, ZERO)
             if already + cost > self.allocations[label]:
                 raise Insufficient(
-                    f"{label} would spend {already + cost} against its "
-                    f"reservation {self.allocations[label]}")
+                    f"{label} would spend {already + cost} against its cap "
+                    f"{self.allocations[label]}")
         self.spent += cost
         self.charged[label] = self.charged.get(label, ZERO) + cost
-        self.ledger.append((label, cost))
+        self.ledger.append(OutflowEntry(
+            label, cost, certificate.date,
+            getattr(certificate, "presentation", None),
+            getattr(certificate, "live_worlds", None),
+            certificate.basis, certificate.verified, self.remaining))
         return cost
 
 
@@ -322,24 +457,33 @@ def quarantine(account: OutflowAccount, slack: Fraction, volume: Fraction,
 
 
 def relax(account: OutflowAccount, slack: Fraction, volume: Fraction,
-          certificate: LiveDeficitCertificate, label: str = "",
+          certificate, requested: Fraction, label: str = "",
           ceiling: Fraction = ONE,
           allowance: Fraction | None = None) -> Fraction | None:
-    """Loosen the tolerance until the force fits, or withhold it.
+    """Emit the requested tolerance if affordable; otherwise loosen it.
 
-    Returns the tightest affordable tolerance, or `None` when even the ceiling
-    is unaffordable — a date at which the only affordable promise is one that
-    says nothing.
+    **Relaxing must not strengthen.** An earlier version computed the tightest
+    tolerance the allowance could buy and emitted that, so a caller asking for
+    `1/2` against an account that could afford `1/10` got `1/10` — force five
+    times stronger than requested, and the whole allowance spent on it. The
+    policy is *relax if necessary*, and it moves tolerance in one direction
+    only.
 
-    `allowance` is this date's share. Omitting it lets the date draw on the
-    entire remaining account, which is a legitimate policy and a bad one: the
-    first excluded world empties the capital and every later date is quarantined.
-    A schedule, or `proportional` below, is what keeps force available.
+    Returns the tolerance granted, or `None` when even `ceiling` is unaffordable
+    — a date at which the only affordable promise is one that says nothing.
     """
-    needed = account.afford(slack, volume, certificate, allowance)
+    requested = Fraction(requested)
+    room = account.remaining if allowance is None else Fraction(allowance)
+    wanted = charge(slack, volume, requested, certificate)
+    if wanted <= room:
+        account.spend(slack, volume, requested, certificate, label)
+        return requested
+    needed = account.afford(slack, volume, certificate, room)
     if needed is None:                       # nothing excluded: force is free
-        account.ledger.append((label, ZERO))
-        return ceiling
+        account.spend(slack, volume, requested, certificate, label)
+        return requested
+    if needed < requested:                   # cannot happen; guard the invariant
+        raise AssertionError("relaxation would strengthen the request")
     if needed > ceiling:
         return None
     account.spend(slack, volume, needed, certificate, label)
@@ -347,7 +491,7 @@ def relax(account: OutflowAccount, slack: Fraction, volume: Fraction,
 
 
 def proportional(account: OutflowAccount, slack: Fraction, volume: Fraction,
-                 certificate: LiveDeficitCertificate, share: Fraction = ONE / 2,
+                 certificate, requested: Fraction, share: Fraction = ONE / 2,
                  label: str = "", ceiling: Fraction = ONE) -> Fraction | None:
     """Spend at most a fixed share of what remains, and never exhaust.
 
@@ -366,7 +510,7 @@ def proportional(account: OutflowAccount, slack: Fraction, volume: Fraction,
     share = Fraction(share)
     if not (ZERO < share <= ONE):
         raise ValueError("a share lies in (0, 1]")
-    return relax(account, slack, volume, certificate, label, ceiling,
+    return relax(account, slack, volume, certificate, requested, label, ceiling,
                  allowance=account.remaining * share)
 
 
@@ -412,18 +556,33 @@ def maximum_violation(region: Region) -> Fraction:
     return worst
 
 
+def automatically_satisfied(region: Region) -> bool:
+    """Whether no price in the cube can violate any row.
+
+    Distinct from a tolerance being meaningful, and previously conflated with
+    it: `is_nonvacuous` returned `True` here, which said an unviolatable region
+    was meaningfully constraining. It is the opposite — enforcement is
+    unnecessary, and a caller should skip it rather than promise anything.
+    """
+    return maximum_violation(region) == 0
+
+
 def is_nonvacuous(region: Region, tolerance: Fraction,
                   share: Fraction = ONE / 2) -> bool:
-    """Whether a promised tolerance constrains the price at all, to scale.
+    """Whether a promised tolerance constrains the price beyond what is automatic.
 
     `delta <= share * V_max`. A tolerance at or above the maximum attainable
     violation promises nothing — every price already satisfies it — and one just
     under it promises almost nothing. `share` is where a caller draws the line,
     and it is a declared judgement rather than a theorem.
+
+    `False` when the region is automatically satisfied: there the promise is
+    true and empty, which is exactly the case this predicate exists to catch.
+    Ask `automatically_satisfied` for that condition by name.
     """
     ceiling = maximum_violation(region)
     if ceiling == 0:
-        return True                      # nothing to violate: force is free
+        return False
     return Fraction(tolerance) <= Fraction(share) * ceiling
 
 

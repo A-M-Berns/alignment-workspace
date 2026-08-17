@@ -155,8 +155,11 @@ a bound. For the settlement/core statics that motivate this work:
   right-hand sides are minima over the assessed worlds;
 - **endorsement rows carry `max(0, r − m_c)`** — how far the demand exceeds the
   worst assessed world — **independent of the declared core minimum**;
-- settlement monotonicity makes that quantity non-increasing, which is necessary
-  and not sufficient;
+- settlement monotonicity makes that quantity non-increasing for a fixed
+  endorsement under irreversible settlement, which is **helpful and neither
+  necessary nor sufficient** — not sufficient because non-increasing is not
+  summable, and not necessary because pressure or tolerance can compensate for a
+  depth that rises;
 - **finite gating is not enough**, and neither are per-endorsement finite caps:
   a source obeying both can drive the aggregate to infinity with fresh
   endorsements, one live at a time;

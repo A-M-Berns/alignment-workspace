@@ -7,18 +7,24 @@ from enforcement import EnforcementTrader, Region, Row
 from market import ONE, ZERO, dot, holdings_value
 from contract import ForceDeclaration, certified_intensity
 from deduction import world_deficit
-from force_api import compile_force, compile_funded_force
-from outflow import (Insufficient, LiveDeficitCertificate, OutflowAccount,
-                     affordable_tolerance, charge, charge_is_conservative,
-                     cumulative_certificate, is_nonvacuous,
-                     maximum_violation, meaningful_dates_are_finite,
-                     positive_floor_dates, proportional, quarantine, raw_charge,
-                     relax)
+from force_api import compile_force, compile_funded_force, compile_safe_force
+from force_api import compile_safe_force
+from outflow import (Insufficient, LiveDeficitCertificate, LiveDeficitClaim,
+                     OutflowAccount, affordable_tolerance,
+                     automatically_satisfied, charge, charge_is_conservative,
+                     cumulative_certificate, is_nonvacuous, maximum_violation,
+                     meaningful_dates_are_finite, positive_floor_dates,
+                     presentation_key, proportional, quarantine, raw_charge,
+                     relax, support_key)
 
 
 def cert(total, date=0):
-    """A caller-asserted aggregate, for tests about the account's arithmetic."""
-    return LiveDeficitCertificate.asserted(date, F(total), "fixture")
+    """A claimed aggregate, for tests about the account's arithmetic alone."""
+    return LiveDeficitClaim(date, F(total), "fixture")
+
+
+def verified(region, worlds, support=("A",), date=0):
+    return LiveDeficitCertificate.by_enumeration(date, region, support, worlds)
 
 
 class PerEndorsementCapsDoNotAggregate(unittest.TestCase):
@@ -54,7 +60,7 @@ class PerEndorsementCapsDoNotAggregate(unittest.TestCase):
         admitted = 0
         for e in range(400):
             try:
-                account.allocate(f"e{e}", F(2))
+                account.cap(f"e{e}", F(2))
                 account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), f"e{e}")
                 admitted += 1
             except Insufficient:
@@ -85,7 +91,7 @@ class SummableAllocationsGiveAFiniteCertificate(unittest.TestCase):
     def test_geometric_allocation_fits_inside_capital(self):
         account = OutflowAccount(F(1))
         for e in range(12):
-            account.allocate(f"e{e}", F(1, 2 ** (e + 1)))
+            account.cap(f"e{e}", F(1, 2 ** (e + 1)))
         self.assertEqual(sum(account.allocations.values(), ZERO),
                          F(1) - F(1, 2 ** 12))
 
@@ -93,7 +99,7 @@ class SummableAllocationsGiveAFiniteCertificate(unittest.TestCase):
         account = OutflowAccount(F(1))
         with self.assertRaises(Insufficient):
             for e in range(100):
-                account.allocate(f"e{e}", F(1, 10))
+                account.cap(f"e{e}", F(1, 10))
 
     def test_the_account_cannot_be_overspent(self):
         account = OutflowAccount(F(5))
@@ -127,7 +133,8 @@ class AffordableTolerance(unittest.TestCase):
         self.assertEqual(needed, F(8))
         self.assertGreater(needed, ONE)
         self.assertIsNone(relax(OutflowAccount(F(100)), F(1, 8), F(7, 8),
-                                cert(F(4)), ceiling=ONE, allowance=F(1, 2)))
+                                cert(F(4)), F(1, 1000), ceiling=ONE,
+                                allowance=F(1, 2)))
 
 
 class ExhaustionBehaviour(unittest.TestCase):
@@ -140,7 +147,7 @@ class ExhaustionBehaviour(unittest.TestCase):
 
     def test_relaxation_buys_the_tightest_affordable_promise(self):
         account = OutflowAccount(F(4))
-        granted = relax(account, F(1, 8), F(7, 8), cert(F(1)), ceiling=ONE)
+        granted = relax(account, F(1, 8), F(7, 8), cert(F(1)), F(1, 100), ceiling=ONE)
         self.assertEqual(granted, F(1, 4))
         self.assertEqual(account.remaining, ZERO)
 
@@ -179,7 +186,7 @@ class ProportionalSpendingNeverExhausts(unittest.TestCase):
     def test_the_capital_never_runs_out(self):
         account = OutflowAccount(F(1))
         for t in range(60):
-            proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)),
+            proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)), F(1, 10 ** 9),
                          share=F(1, 2), ceiling=F(10 ** 9))
         self.assertLess(account.spent, F(1))
         self.assertGreater(account.remaining, ZERO)
@@ -187,14 +194,14 @@ class ProportionalSpendingNeverExhausts(unittest.TestCase):
     def test_but_the_promise_it_buys_goes_vacuous_anyway(self):
         """Never exhausting is not the same as keeping force available."""
         account = OutflowAccount(F(1))
-        granted = [proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)),
+        granted = [proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)), F(1, 10 ** 9),
                                 share=F(1, 2), ceiling=ONE) for t in range(30)]
         # with capital 1 against this deficit, not even date 0 is affordable
         self.assertEqual([t for t, g in enumerate(granted) if g is not None], [])
 
     def test_the_promise_it_buys_degrades(self):
         account = OutflowAccount(F(1))
-        granted = [proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)),
+        granted = [proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)), F(1, 10 ** 9),
                                 share=F(1, 2), ceiling=F(10 ** 9))
                    for t in range(20)]
         self.assertLess(granted[0], granted[10])
@@ -204,7 +211,7 @@ class ProportionalSpendingNeverExhausts(unittest.TestCase):
     def test_remaining_capital_decays_geometrically(self):
         account = OutflowAccount(F(1))
         for t in range(8):
-            proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)),
+            proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)), F(1, 10 ** 9),
                          share=F(1, 2), ceiling=F(10 ** 6))
         self.assertEqual(account.remaining, F(1, 256))
 
@@ -531,7 +538,7 @@ class SharpAndRowwiseAggregates(unittest.TestCase):
     worlds = [(ZERO,), (F(1),)]
 
     def certificate(self):
-        return LiveDeficitCertificate.by_enumeration(0, self.region, self.worlds)
+        return LiveDeficitCertificate.by_enumeration(0, self.region, ("A",), self.worlds)
 
     def test_the_gap_is_a_clean_factor_of_two(self):
         c = self.certificate()
@@ -547,10 +554,10 @@ class SharpAndRowwiseAggregates(unittest.TestCase):
         self.assertTrue(self.certificate().verified)
         self.assertIn("enumeration", self.certificate().basis)
 
-    def test_an_asserted_bound_is_marked_unverified_and_needs_a_reason(self):
-        self.assertFalse(LiveDeficitCertificate.asserted(0, F(1), "why").verified)
+    def test_a_claim_is_a_different_type_and_needs_an_author(self):
+        self.assertFalse(LiveDeficitClaim(0, F(1), "why").verified)
         with self.assertRaises(ValueError):
-            LiveDeficitCertificate.asserted(0, F(1), "")
+            LiveDeficitClaim(0, F(1), "")
 
 
 class FundedForceCannotBypassTheAccount(unittest.TestCase):
@@ -565,17 +572,18 @@ class FundedForceCannotBypassTheAccount(unittest.TestCase):
     region = Region(1, [Row([F(1)], F(1, 2))])
     worlds = [(ZERO,), (F(1),)]
 
-    def certificate(self):
-        return LiveDeficitCertificate.by_enumeration(0, self.region, self.worlds)
+    def safe(self, account, tolerance=F(1, 2), **kw):
+        return compile_safe_force(self.rows, 1, ("A",), 0, self.worlds,
+                                  F(1, 8), F(7, 8), tolerance, (F(1),),
+                                  account, **kw)
 
     def test_raw_compile_force_carries_no_charge_and_says_so(self):
         c = compile_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2), (F(1),))
         self.assertFalse(hasattr(c, "charged"))
 
-    def test_funded_force_pays_before_it_emits(self):
+    def test_safe_force_pays_before_it_emits(self):
         account = OutflowAccount(F(10))
-        c = compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
-                                 (F(1),), account, self.certificate())
+        c = self.safe(account)
         self.assertEqual(c.charged, F(1))
         self.assertEqual(account.remaining, F(9))
         self.assertTrue(c.deficit_is_verified)
@@ -583,47 +591,49 @@ class FundedForceCannotBypassTheAccount(unittest.TestCase):
     def test_an_unaffordable_request_refuses_by_default(self):
         account = OutflowAccount(F(1, 100))
         with self.assertRaises(Insufficient):
-            compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
-                                 (F(1),), account, self.certificate())
+            self.safe(account)
         self.assertEqual(account.spent, ZERO)
 
     def test_quarantine_returns_nothing_and_spends_nothing(self):
         account = OutflowAccount(F(1, 100))
-        self.assertIsNone(
-            compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
-                                 (F(1),), account, self.certificate(),
-                                 policy="quarantine"))
+        self.assertIsNone(self.safe(account, policy="quarantine"))
         self.assertEqual(account.spent, ZERO)
 
     def test_relaxation_emits_at_the_affordable_tolerance(self):
         account = OutflowAccount(F(4))
-        c = compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 100),
-                                 (F(1),), account, self.certificate(),
-                                 policy="relax")
+        c = self.safe(account, tolerance=F(1, 100), policy="relax")
         self.assertEqual(c.tolerance, F(1, 8))
         self.assertTrue(c.relaxed)
         self.assertEqual(account.remaining, ZERO)
 
-    def test_an_asserted_deficit_is_carried_through_as_unverified(self):
+    def test_the_certificate_is_computed_from_the_region_it_enforces(self):
         account = OutflowAccount(F(10))
-        c = compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
-                                 (F(1),), account,
-                                 LiveDeficitCertificate.asserted(0, F(1, 1000),
-                                                                 "caller proof"))
-        self.assertFalse(c.deficit_is_verified)
+        c = self.safe(account)
+        self.assertEqual(c.presentation,
+                         presentation_key(Region(1, [Row([F(1)], F(1, 2))])))
+        self.assertEqual(c.support, support_key(("A",)))
+        self.assertIn("enumeration", c.deficit_basis)
+
+    def test_it_exposes_its_proof_ingredients(self):
+        account = OutflowAccount(F(10))
+        keys = set(self.safe(account).ingredients())
+        self.assertLessEqual({"date", "support", "presentation", "assessment",
+                              "deficit_bound", "deficit_basis", "slack",
+                              "volume", "tolerance", "charge", "safety_bound",
+                              "remaining", "policy"}, keys)
 
     def test_the_feasibility_witness_is_still_checked(self):
         account = OutflowAccount(F(10))
         with self.assertRaises(ValueError):
-            compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
-                                 (ZERO,), account, self.certificate())
+            compile_safe_force(self.rows, 1, ("A",), 0, self.worlds, F(1, 8),
+                               F(7, 8), F(1, 2), (ZERO,), account)
 
 
 class Subaccounts(unittest.TestCase):
 
     def test_an_endorsement_cannot_spend_past_its_reservation(self):
         account = OutflowAccount(F(100))
-        account.allocate("e1", F(4))
+        account.cap("e1", F(4))
         account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e1")
         account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e1")
         with self.assertRaises(Insufficient):
@@ -632,8 +642,8 @@ class Subaccounts(unittest.TestCase):
 
     def test_one_endorsement_cannot_spend_anothers_reservation(self):
         account = OutflowAccount(F(8))
-        account.allocate("e1", F(4))
-        account.allocate("e2", F(4))
+        account.cap("e1", F(4))
+        account.cap("e2", F(4))
         for _ in range(2):
             account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e1")
         with self.assertRaises(Insufficient):
@@ -690,6 +700,178 @@ class ZeroDisturbanceIntensity(unittest.TestCase):
         self.assertEqual(certified_intensity(F(1, 8), F(7, 8), F(1, 2)), F(4))
 
 
+class CertificateSubstitution(unittest.TestCase):
+    """The attack this pass exists to close, and the binding that closes it.
+
+    Before the repair, a `verified` certificate computed for `p >= 0` — whose
+    live-world aggregate is honestly zero, because nothing can violate it — could
+    be paid against enforcement of `p >= 1/2`. The account was charged nothing,
+    the position was emitted anyway, and it really lost at a live world. Repeat
+    forever and the cumulative liability diverges while the holder quotes a
+    finite `B`.
+    """
+
+    worlds = [(ZERO,), (F(1),)]
+    easy = Region(1, [Row([F(1)], ZERO)])
+    hard_rows = [([F(1)], F(1, 2))]
+    hard = Region(1, [Row([F(1)], F(1, 2))])
+
+    def easy_certificate(self, date=0, support=("A",)):
+        return LiveDeficitCertificate.by_enumeration(date, self.easy, support,
+                                                     self.worlds)
+
+    def test_the_easy_certificate_is_honestly_zero_and_verified(self):
+        c = self.easy_certificate()
+        self.assertEqual(c.aggregate, ZERO)
+        self.assertTrue(c.verified)
+
+    def test_the_emitted_position_really_loses_at_a_live_world(self):
+        """What made the substitution an undercharge rather than a mislabel."""
+        account = OutflowAccount(F(10))
+        force = compile_safe_force(self.hard_rows, 1, ("A",), 0, self.worlds,
+                                   F(1, 8), F(7, 8), F(1, 2), (F(1),), account)
+        price = (F(1, 4),)
+        self.assertLess(holdings_value(force.position(price), price, (ZERO,)),
+                        ZERO)
+
+    def test_a_certificate_for_another_region_cannot_fund_this_one(self):
+        account = OutflowAccount(F(10))
+        with self.assertRaises(ValueError) as caught:
+            compile_funded_force(self.hard_rows, 1, ("A",), 0, F(1, 8), F(7, 8),
+                                 F(1, 2), (F(1),), account,
+                                 self.easy_certificate())
+        self.assertIn("presentation", str(caught.exception))
+        self.assertEqual(account.spent, ZERO)
+
+    def test_a_duplicated_presentation_cannot_fund_a_deduplicated_one(self):
+        """Duplicates change the emitted force, so they change the identity."""
+        account = OutflowAccount(F(100))
+        doubled = Region(1, [Row([F(1)], F(1, 2))] * 2)
+        c = LiveDeficitCertificate.by_enumeration(0, doubled, ("A",),
+                                                  self.worlds)
+        self.assertIsNone(c.binds(0, doubled, ("A",)))
+        self.assertIsNotNone(c.binds(0, self.hard, ("A",)))
+        with self.assertRaises(ValueError):
+            compile_funded_force(self.hard_rows, 1, ("A",), 0, F(1, 8), F(7, 8),
+                                 F(1, 2), (F(1),), account, c)
+
+    def test_row_order_is_operative_and_bound(self):
+        a, b = Row([F(1), F(0)], F(1, 2)), Row([F(0), F(1)], F(1, 4))
+        forward, backward = Region(2, [a, b]), Region(2, [b, a])
+        worlds = [(ZERO, ZERO), (F(1), F(1))]
+        c = LiveDeficitCertificate.by_enumeration(0, forward, ("A", "B"), worlds)
+        self.assertIsNone(c.binds(0, forward, ("A", "B")))
+        self.assertIsNotNone(c.binds(0, backward, ("A", "B")))
+
+    def test_permuting_the_support_invalidates_the_certificate(self):
+        """The world vectors are unchanged; what they mean is not."""
+        region = Region(2, [Row([F(1), F(0)], F(1, 2))])
+        worlds = [(ZERO, F(1)), (F(1), ZERO)]
+        c = LiveDeficitCertificate.by_enumeration(0, region, ("A", "B"), worlds)
+        self.assertIsNone(c.binds(0, region, ("A", "B")))
+        self.assertIsNotNone(c.binds(0, region, ("B", "A")))
+
+    def test_a_later_certificate_cannot_fund_earlier_force(self):
+        """Live sets shrink, so a later certificate is cheaper."""
+        later = LiveDeficitCertificate.by_enumeration(5, self.hard, ("A",),
+                                                      [(F(1),)])
+        early = LiveDeficitCertificate.by_enumeration(0, self.hard, ("A",),
+                                                      self.worlds)
+        self.assertEqual(later.aggregate, ZERO)
+        self.assertGreater(early.aggregate, ZERO)
+        self.assertIsNotNone(later.binds(0, self.hard, ("A",)))
+        account = OutflowAccount(F(10))
+        with self.assertRaises(ValueError):
+            compile_funded_force(self.hard_rows, 1, ("A",), 0, F(1, 8), F(7, 8),
+                                 F(1, 2), (F(1),), account, later)
+        self.assertEqual(account.spent, ZERO)
+
+    def test_a_different_assessment_at_the_same_date_is_a_different_key(self):
+        wide = LiveDeficitCertificate.by_enumeration(0, self.hard, ("A",),
+                                                     self.worlds)
+        narrow = LiveDeficitCertificate.by_enumeration(0, self.hard, ("A",),
+                                                       [(F(1),)])
+        self.assertNotEqual(wide.live_worlds, narrow.live_worlds)
+        self.assertNotEqual(wide.aggregate, narrow.aggregate)
+
+    def test_the_enumeration_order_of_live_worlds_is_not_operative(self):
+        one = LiveDeficitCertificate.by_enumeration(0, self.hard, ("A",),
+                                                    self.worlds)
+        other = LiveDeficitCertificate.by_enumeration(
+            0, self.hard, ("A",), list(reversed(self.worlds)))
+        self.assertEqual(one.live_worlds, other.live_worlds)
+
+    def test_verified_cannot_be_forged_by_the_ordinary_constructor(self):
+        with self.assertRaises(TypeError):
+            LiveDeficitCertificate(None, 0, ZERO, ZERO, (), (), (), "forged")
+
+    def test_a_claim_cannot_produce_safety_certified_force(self):
+        account = OutflowAccount(F(10))
+        with self.assertRaises(TypeError):
+            compile_funded_force(self.hard_rows, 1, ("A",), 0, F(1, 8), F(7, 8),
+                                 F(1, 2), (F(1),), account,
+                                 LiveDeficitClaim(0, F(1, 1000), "my proof"))
+        self.assertEqual(account.spent, ZERO)
+
+    def test_a_claim_may_still_price_a_request(self):
+        """Planning is legitimate; only certifying is not."""
+        self.assertEqual(charge(F(1, 8), F(7, 8), F(1, 2),
+                                LiveDeficitClaim(0, F(1), "planning")), F(2))
+
+
+class RelaxOnlyLoosens(unittest.TestCase):
+    """Relaxation must not strengthen force the caller did not ask for."""
+
+    worlds = [(ZERO,), (F(1),)]
+    rows = [([F(1)], F(1, 2))]
+
+    def test_an_affordable_request_is_emitted_as_requested(self):
+        account = OutflowAccount(F(100))
+        c = compile_safe_force(self.rows, 1, ("A",), 0, self.worlds, F(1, 8),
+                               F(7, 8), F(1, 2), (F(1),), account,
+                               policy="relax")
+        self.assertEqual(c.tolerance, F(1, 2))
+        self.assertFalse(c.relaxed)
+        self.assertEqual(c.charged, F(1))
+        self.assertEqual(account.remaining, F(99))
+
+    def test_it_does_not_spend_the_whole_allowance_on_an_affordable_request(self):
+        account = OutflowAccount(F(100))
+        compile_safe_force(self.rows, 1, ("A",), 0, self.worlds, F(1, 8),
+                           F(7, 8), F(1, 2), (F(1),), account, policy="relax")
+        self.assertGreater(account.remaining, F(98))
+
+    def test_an_unaffordable_request_is_loosened_and_never_tightened(self):
+        account = OutflowAccount(F(4))
+        c = compile_safe_force(self.rows, 1, ("A",), 0, self.worlds, F(1, 8),
+                               F(7, 8), F(1, 100), (F(1),), account,
+                               policy="relax")
+        self.assertGreater(c.tolerance, F(1, 100))
+        self.assertTrue(c.relaxed)
+
+
+class LedgerIsAuditable(unittest.TestCase):
+
+    def test_entries_identify_the_force_that_consumed_the_account(self):
+        account = OutflowAccount(F(10))
+        compile_safe_force([([F(1)], F(1, 2))], 1, ("A",), 3,
+                           [(ZERO,), (F(1),)], F(1, 8), F(7, 8), F(1, 2),
+                           (F(1),), account, label="e1")
+        entry, = account.ledger
+        self.assertEqual(entry.label, "e1")
+        self.assertEqual(entry.date, 3)
+        self.assertTrue(entry.verified)
+        self.assertEqual(entry.cost, F(1))
+        self.assertEqual(entry.remaining, F(9))
+        self.assertEqual(entry.presentation,
+                         presentation_key(Region(1, [Row([F(1)], F(1, 2))])))
+
+    def test_a_claimed_charge_is_recorded_as_claimed(self):
+        account = OutflowAccount(F(10))
+        account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "planning")
+        self.assertFalse(account.ledger[0].verified)
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -722,5 +904,17 @@ class MeaningfulForceIsScaleRelative(unittest.TestCase):
             self.assertTrue(is_nonvacuous(region, lam * F(1, 8)))
             self.assertFalse(is_nonvacuous(region, lam * F(1, 2)))
 
-    def test_a_region_nothing_can_violate_makes_force_free(self):
-        self.assertTrue(is_nonvacuous(Region(1, [Row([F(1)], ZERO)]), ONE))
+    def test_an_automatically_satisfied_region_is_not_nonvacuous(self):
+        """Two concepts, no longer sharing one boolean.
+
+        `p >= 0` cannot be violated anywhere in the cube. The promise "your
+        violation is at most delta" is true and empty there, so the honest
+        answer is that no tolerance is meaningful and enforcement is
+        unnecessary — not that every tolerance is meaningful, which is what the
+        predicate used to say.
+        """
+        free = Region(1, [Row([F(1)], ZERO)])
+        self.assertTrue(automatically_satisfied(free))
+        self.assertFalse(is_nonvacuous(free, ONE))
+        self.assertFalse(is_nonvacuous(free, F(1, 1000)))
+        self.assertFalse(automatically_satisfied(Region(1, [Row([F(1)], F(1, 2))])))
