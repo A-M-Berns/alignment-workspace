@@ -45,9 +45,15 @@ under `tests/`. `witness` — a single displayed instance. `conjecture`.
 | 21d | a coherence relation cuts a segment in no proper face, and a cancellable band survives every intensity | — | `test_regressions.CoherenceSegmentIsStillHard`, half-width `C/(2 beta)` | witness |
 | 21e | face-solidity: exactness is available iff `K` has nonempty interior relative to the smallest cube face containing it | — | theorem in one dimension for convex `K`; delimited by 21c/21d above | conjecture |
 | 22 | ~~settlement equalities and coherence polytopes both have no interior, hence both hard~~ | — | **misleading**: the interior claim is true, the inference is not — see 21b/21c | withdrawn |
-| 27 | `Omega^live = PC(D_t)` for the coherence-polytope constraint | fragment as displayed | `test_live_worlds.DeductiveRecovery`, four stages of sizes 4/2/2/1 | derived |
-| 28 | the source construction lifts to any nested, effectively presented, nonempty live-world process | reading of `lem:budgeter`.1–3 and `lem:tfdom` | `PAPER_RECONCILIATION.md` §2; hypotheses checked in `test_live_worlds.LiftHypotheses` | derived |
-| 29 | live worlds derived from `K_t` alone make the liability identically zero | — | `test_live_worlds.DerivedLiveWorldsLaunderTheLiability`; Model A convicts the same region at `-5/8` | witness |
+| 27 | `Omega^live = PC(D_t)` for `K^D = pi(Delta(PC(D_t)))`, both directions | fragment as displayed | `test_semantics.DeductiveRecoveryUnderSupport`, stages of sizes 4/2/2/1 | derived |
+| 28 | the source construction lifts to any nested, effectively presented, nonempty live-world process | reading of `lem:budgeter`.1–3 and `lem:tfdom` | `PAPER_RECONCILIATION.md` §2; hypotheses in `test_semantics.LiftHypotheses` | derived |
+| 29 | ~~live worlds derived from `K_t` alone make the liability identically zero~~ | — | **FALSE**, the definition was Dirac rather than support; `test_regressions.DiracLiveWorldsAreNotLiveWorlds` | withdrawn |
+| 30 | `theta_t(omega) = max { mu(omega) : mu in C_t }` is computed exactly by vertex enumeration, and liveness is `theta > 0` | finite world space | `test_semantics`; `K = {p(A)=1/2}` gives capacities `1/2, 1/2` where the Dirac reading gives none | test-supported |
+| 31 | `E_mu[E_t] >= sum_j beta_j g_j^2` for every admitted credence, while a live world can have negative value | — | `test_semantics.ExpectationIsNotWorldwise`; expectation `1/40`, worldwise `-9/40` | derived |
+| 32 | support bridge: `E_t(omega) >= (a - (1-theta) U)/theta` with `U = max_gain` | `theta > 0`, `U` an upper bound at the other worlds | `test_semantics.TheSupportBridge`, over a price grid | derived |
+| 33 | small support capacity coexists with large worldwise loss under nonnegative expectation | — | `test_semantics.SmallSupportHidesLargeLoss`, capacities `1/4`, `1/20`, `1/100` | witness |
+| 34 | `C_{t+1} subset C_t` implies live-set nesting; an enlarging revision breaks both | — | `test_semantics.Nesting` | derived |
+| 35 | total removal `theta_t(omega) = 0` is distinct from small support | — | `test_semantics.GenuineRemoval` | witness |
 | 23 | the `theta`-admissible polytope compiles to a legal trader, and enforcement delivers core-admissible prices | endorsement priceable | `test_core`; agrees with `NL-SI-A5`'s closed form and with the definition pointwise | test-supported |
 | 24 | an unpriceable endorsement is detected and refused | — | `test_core.Priceability` | test-supported |
 | 25 | a market maker constrained to display `P in K` can have no solution | the displayed date | `test_contract.ConstrainedMakerNeedsAnExistenceTheorem` | witness |
@@ -59,27 +65,36 @@ under `tests/`. `witness` — a single displayed instance. `conjecture`.
 ## The paper's intended theorem spine
 
 Against the generalized-Logical-Induction outline this round was asked to
-reconcile with. `PAPER_RECONCILIATION.md` carries the reasoning.
+reconcile with, restated after the support-semantic repair.
+`PAPER_RECONCILIATION.md` carries the reasoning.
 
-| # | intended step | status |
-|---|---|---|
-| 1 | generalized live-world definition | **survives with new statement** — `Omega_t^live` = the `{0,1}` vertices of `S_t = Pi_t ∩ K_t` |
-| 2 | live-world TradingFirm lift | **survives**, with three hypotheses made explicit: nested, effectively presented, nonempty |
-| 3 | deductive recovery | **survives** — `derived`, and `test-supported` on a displayed fragment |
-| 4 | criterion recovery `LIC_D` | **survives**, immediate from 3 |
-| 5 | support-invariance / two-channel necessity | **replaced by a stronger theorem** — three independent obstructions, the sharpest being that the collapsed mechanism can fail to exist |
-| 6 | constraint-to-trade compiler | **survives**, with priceability added as a precondition |
-| 7 | approximate conformance | **survives** — `lean-proved`, with the modulus and an adaptive intensity rule |
-| 8 | exact / buffered enforcement | **replaced by a weaker and case-split theorem** — available for face-solid regions, unavailable for regions strictly inside the cube with empty interior, and it costs the safety property |
-| 9 | bounded-liability preservation | **survives** — `derived`, bound `1 + B`, and the round's most robust result |
-| 10 | sufficient conditions for bounded liability | **survives with new statement** — the withdrawn ceiling is replaced by `(eps_t + C_t)·‖d_t(W)‖_1/delta_t` |
-| 11 | Coverage–Liability theorem | **open, and reformulated** — Liability is settled and is what the proof consumes; Coverage's job is to make the criterion non-vacuous, and its statement is missing |
-| 12 | converse / necessity | **open** — item 40 |
-| 13 | deductive safety as a strong special case | **survives** — zero depth, zero liability |
-| 14 | normative-static instantiation | **open** — blocked on item 39, the missing map from a normative record to a region |
+| # | step | status | note |
+|---|---|---|---|
+| 1 | generalized credal semantics — `C_t = π_t⁻¹(K_t)` over `Δ(Ω_t)` | **derived** | types kept apart: world, credence, price vector, pricing map |
+| 2 | support-live-world definition — `ω` live iff some `μ ∈ C_t` has `μ(ω) > 0` | **derived** | the definition an earlier draft got wrong; regression pinned |
+| 3 | nesting lemma — `C_{t+1} ⊆ C_t ⟹ Ω_{t+1}^live ⊆ Ω_t^live` | **derived** | immediate; revisable constraints that enlarge `K_t` break the hypothesis, verified |
+| 4 | live-world TradingFirm lift, under nested / effective / nonempty | **derived** | read off `lem:budgeter`.1–3 and `lem:tfdom`; not formalized |
+| 5 | deductive recovery `Ω_t^live = PC(D_t)`, both directions | **derived** | `test_semantics.DeductiveRecoveryUnderSupport`; reverse direction needs `K^D` as an image, not a row system |
+| 6 | `LIC` recovery from 5 | **derived** | immediate |
+| 7 | two-channel necessity | **derived** | three independent obstructions; the sharpest is that the collapsed mechanism can fail to exist |
+| 8 | constraint-to-trade compiler | **test-supported** | expressibility and legality argued, not proved |
+| 9 | conformance theorem `∑_j β_j g_j² ≤ ε_t + C_t` | **proved** | `weighted_square_le_slack_add_volume`, kernel-checked |
+| 10 | exactness case analysis | **proved (one dimension) + conjecture (face-solidity)** | `le_pair_of_contract_zero` kernel-checked for the slack-free case; `ENFORCEMENT.md` §5 for the case split |
+| 11 | bounded-liability preservation, bound `1 + B` | **derived** | composes `lem:mm` and `lem:tfdom`, both taken as hypotheses |
+| 12 | quantitative support bridge `E_t(ω) ≥ −(1−θ)U_t/θ` | **derived** | `U_t` named as the cube maximum gain, not smuggled; `test_semantics.TheSupportBridge` |
+| 13 | Coverage–Liability synthesis | **open** | not attempted as an equivalence; Coverage is one sufficient route among two |
+| 14 | converse / necessity of either bridge | **open** | item 40 |
+| 15 | deductive safety as a strong special case | **derived** | zero deficit, zero liability |
+| 16 | normative-static instantiation | **open** | item 39 |
 
-Nine survive, two survive restated, one is strengthened, one is weakened and
-case-split, and three are open. The one that blocks the narrative is 11.
+Sixteen steps: **10 derived, 2 proved, 1 test-supported, 3 open** — which sums to
+sixteen. Step 10 additionally carries a higher-dimensional conjecture alongside its
+one-dimensional theorem; that conjecture is not counted again. Nothing on this
+table is registered, and the three open steps are items 39, 40 and the synthesis.
+
+**Withdrawn since the previous draft of this table:** the vertex/Dirac reading
+of step 2, and with it the claim that step 11 is vacuous under the generalized
+semantics. Both are regressions in `tests/test_regressions.py`.
 
 ## What carries the weight
 

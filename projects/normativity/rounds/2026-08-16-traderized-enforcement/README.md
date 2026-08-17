@@ -6,8 +6,8 @@ costs, and whether it can take the role a specially constrained market maker was
 meant to take.
 
 Verdict: traderization can carry the force layer, the constrained market maker is
-retired from it, and the condition that would make the generalized criterion
-non-vacuous is missing.
+retired from it, and the generalized architecture coheres once live worlds are
+defined by support rather than by admissibility of their own price.
 
 **Force-story verdict: yes.** Compiling a row presentation into one trading
 strategy gives a validated region operative force, with a certified conformance
@@ -29,20 +29,23 @@ per-date bound is `(ε_t + C_t)·‖d_t(W)‖₁/δ_t`, the intensity does **not
 and conformance and liability are traded against each other. A region excluding a
 live world at every date can still be enforced forever and safely.
 
-**Paper-fit verdict: the force channel fits; the semantic channel has a hole.**
-If the live worlds are read off `S_t = Π_t ∩ K_t`, the enforcement position is
-worth at least zero at every live world by construction, so the safety theorem
-becomes vacuous for exactly the constraints whose safety is in question. A
-constraint source could discharge its own obligation by declaring the worlds it
-loses money in inadmissible. `PAPER_RECONCILIATION.md` exhibits it.
+**Paper-fit verdict: the architecture coheres.** A world is live when *some*
+admitted credence gives it positive mass — not when its own price vector is
+admissible. Under that definition deductive recovery holds in both directions, the
+live-world lift has three explicit hypotheses, and the safety condition keeps its
+content. What remains is an ordinary gap rather than a hole: the enforcement
+inequality controls **expectations** under admitted credences while the criterion
+is **worldwise**, and two sufficient bridges are given.
 
 ```sh
 python3 tests/run.py     # 122 tests, exact rationals
 ```
 
-Two claims from earlier passes are withdrawn, each with its counterexample kept
+Three claims from earlier passes are withdrawn, each with its counterexample kept
 as a regression in `tests/test_regressions.py`: an intensity-free liability
-ceiling, and an exactness impossibility stated for every empty-interior region.
+ceiling; an exactness impossibility stated for every empty-interior region; and
+the reading of a live world as one whose own price vector is admissible, together
+with the laundering conclusion that depended on it.
 
 | file | what it is |
 |---|---|
@@ -55,7 +58,7 @@ ceiling, and an exactness impossibility stated for every empty-interior region.
 | `DEDUCTION_SPECIAL_CASE.md` | deduction as the calibration case; presentation cost; the four equivalence relations |
 | `INTEGRATION_MAP.md` | objects touched and untouched, the four vocabulary collisions, Legitimacy and Deference |
 | `THEOREM_MAP.md` | every result with its evidence class, and the named future Lean port target |
-| `PAPER_RECONCILIATION.md` | the two assessment models, the live-world lift, deductive recovery, and the hole |
+| `PAPER_RECONCILIATION.md` | credal semantics, support-live worlds, the live-world lift, deductive recovery, and the expectation/worldwise bridge |
 | `PROSECUTION.md` | seventeen attacks; the worst of them is the round's own |
 
 ## The other verdicts

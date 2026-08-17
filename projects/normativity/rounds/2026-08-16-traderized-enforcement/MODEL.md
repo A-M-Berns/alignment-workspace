@@ -146,6 +146,37 @@ other four and checks conformance squarewise so no root is needed.
 what the market prices. `core.priceable_coefficients`, which returns nothing
 rather than approximating.
 
+## 7a. The semantic layer, and four types that must not collapse
+
+The constraint lives in **price** space. What it admits is a set of **credences**.
+What the criterion assesses is **worlds**. The pricing map is what joins them, and
+reading a credence as a price vector is the error that cost this round its
+laundering conclusion.
+
+    world  ω ∈ Ω_t          a `{0,1}` vector over the priced fragment
+    credence  μ ∈ Δ(Ω_t)    a distribution over worlds
+    price  P ∈ [0,1]^Φ      what the market displays
+    pricing map  π_t(μ) = Σ_ω μ(ω)·ω
+
+    compatible credences   C_t = π_t⁻¹(K_t)
+    support-live worlds    Ω_t^live = { ω : ∃ μ ∈ C_t, μ(ω) > 0 }
+    support capacity       θ_t(ω) = max { μ(ω) : μ ∈ C_t }
+
+`semantics.py` carries all of them, and `dirac_live` is kept — computable and
+marked as *not* the definition — so the withdrawn reading stays on the record and
+under test.
+
+Liveness and the quantitative coverage hypothesis are the same number at two
+thresholds: `ω` is live exactly when `θ_t(ω) > 0`, and coverage asks for
+`θ_t(ω) ≥ θ` uniformly. `θ_t` is computed exactly by vertex enumeration of `C_t`,
+which is combinatorial in the world count and is why the fixtures stay small.
+
+**The distinction the types enforce.** The enforcement inequality bounds the
+position's value at price vectors in `K_t`, and `E_μ[E_t]` is precisely its value
+at `π_t(μ)`. So it delivers a bound on **expectations** under admitted credences,
+and nothing at any individual world. Bridging to a worldwise bound needs a
+hypothesis, and `FUNDING_AND_SAFETY.md` §4a gives two.
+
 ## 8. What this model is not
 
 It has no market maker in it. The market maker enters only as the **contract**

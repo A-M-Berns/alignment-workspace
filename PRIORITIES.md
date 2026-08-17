@@ -587,43 +587,61 @@ already carry a recursion and a search.
 criterion's application to be a proof rather than a hypothesis, and this is that
 application for one modified market.
 
-### 44. What anchors the assessment set when the constraint also defines it? — **[open]**
+### 44. What governs removing a world from support altogether? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
-The generalized picture lets a time-indexed constraint determine which worlds a
-bounded reasoner is assessed against, with ordinary deduction recovered as the
-case where the constraint is the coherence polytope of the deductive stage. That
-recovery works. What does not work is safety on top of it.
+Under the support reading of live worlds — a world is live when some credence the
+constraint admits gives it positive mass — a constraint cannot quietly drop a
+world it merely disfavours. `p(A) <= 1/2` keeps `A` live at capacity `1/2`. What
+it *can* do is set the capacity to zero outright, as `p(A) = 0` does, and then the
+world leaves the assessment set entirely and the enforcement channel may lose
+there for free.
 
-The enforcement position is the violation-weighted combination of the region's own
-row normals, so by the enforcement inequality it is worth at least zero at every
-point of the region — in particular at every world the region admits. Read the
-assessment set off the constraint and the enforcement liability is identically
-zero, and the safety theorem holds by construction for exactly the constraints
-whose safety was in question. The traderized-enforcement round exhibits a region
-that the deductive assessment set convicts at `-5/8` and the derived set reports
-clean.
+That is the narrow residue of a laundering worry the round first stated far too
+broadly and has withdrawn. It is also settlement-shaped: setting a world's
+capacity to zero is the constraint *entailing* that world impossible, which is
+what a settlement event does, and the settlement interface already has write-once,
+no-claw-back and answerability machinery for exactly that act.
 
-The item is a condition on the live-world process that makes the generalized
-criterion non-vacuous. Three candidate anchors are named in that round's
-`PAPER_RECONCILIATION.md` §6 — a deductive floor, eventual vindication by
-deduction, and answerability for removals — and none is proved to do the job. The
-first keeps the deductive process in a role the generalization was meant to
-remove; the second makes a normative constraint a prediction, which costs
-`Licensed` its performance-independence.
+The item is whether that machinery covers it, or whether a source can remove a
+world by an ambient constraint without incurring a settlement's obligations. If
+the second, state the condition that closes the route.
 
-*Deliverable shape:* a stated condition with a proof that it excludes the
-displayed laundering witness and does not exclude the deductive instance; or a
-proof that no condition on the live-world process alone suffices, which would say
-the anchor must be external.
-*Acceptance check:* the round's laundering fixture fails the condition and its
-deductive-recovery fixture passes it.
-*Context:* `.../2026-08-16-traderized-enforcement/PAPER_RECONCILIATION.md` §§5-6;
-`tests/test_live_worlds.py`.
-*Why it matters:* it is the single step blocking the generalized paper's theorem
-spine. Everything else in that spine survives, is restated, or is a named open
-question of ordinary size; this one decides whether the generalized criterion
-means anything.
+*Deliverable shape:* a stated condition, with the round's `p(A) = 0` fixture
+failing it and its deductive-recovery fixtures passing; or an argument that the
+settlement interface's existing clauses already bind the act.
+*Acceptance check:* `test_semantics.GenuineRemoval` distinguishes total removal
+from small support; a solution must say which of the two the constraint performed.
+*Context:* `.../2026-08-16-traderized-enforcement/PAPER_RECONCILIATION.md` §7,
+question 3; `consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §§1, 4.
+*Why it matters:* it is the only remaining place where a constraint source can
+affect what it is answerable to, and it is now small enough to be answered.
+
+### 45. Is either liability bridge necessary? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The safety theorem consumes bounded cumulative enforcement liability over the
+assessment worlds. Two sufficient routes to it are available and neither
+dominates: the deficit bound `L_t(w) <= sum_j beta_j g_j d_j(w)`, which needs no
+hypothesis about credal support; and the support bridge
+`E_t(w) >= -(1 - theta) U_t / theta`, which needs a uniform positive support
+capacity and an upper bound `U_t` on the position's value elsewhere — taken as the
+cube maximum gain.
+
+The item is whether either is necessary, and whether a third route dominates both.
+A negative answer for both would mean the round's sufficient conditions are
+strictly stronger than the criterion needs, which is worth knowing before either
+is written into a paper as *the* hypothesis.
+
+*Deliverable shape:* `witness-checked` for a trajectory violating both bridges
+whose market is nonetheless inexploitable; or a proof that one implies liability
+control in a stated class.
+*Acceptance check:* the round's existing safety fixtures run against the proposed
+condition.
+*Context:* `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §4a.
+*Relation to item 40:* item 40 asks the converse of the safety theorem; this asks
+the converse of its sufficient conditions. They are different questions and both
+are open.
 
 ### 43. A compiler that is both exact and safe, or a proof there is none — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->

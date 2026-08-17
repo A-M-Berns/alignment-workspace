@@ -109,12 +109,21 @@ cuts, and how tightly the mechanism has promised to enforce. A source may exclud
 live worlds permanently and still be safe, provided that quantity stays summable
 over time. Not agreement with deduction, then; convergence on it, at a rate.
 
-An open question sits underneath all of this, and it is worth stating rather than
-smoothing over. If a constraint is also allowed to determine which worlds the
-reasoner is assessed against — which is the natural way to generalize, since that
-is what deduction does — then it can discharge its own safety obligation by
-declaring the worlds it loses money in inadmissible. What stops that is not yet
-known.
+There is a subtlety underneath all of this that took the work some effort to get
+right. If a constraint also determines which worlds the reasoner is assessed
+against — the natural way to generalize, since that is what deduction does — then
+one has to say carefully what makes a world count. The answer is not that the
+world's own state is permitted by the constraint. It is that *some* distribution
+the constraint permits gives that world positive weight. A constraint saying "no
+more than even odds on `A`" does not thereby stop `A` from being possible; it
+permits the even-odds distribution, which takes `A` seriously.
+
+That distinction matters because the enforcement mechanism's guarantee is about
+*averages* under permitted distributions, while the resistance-to-being-pumped
+condition is about *individual* worlds. Bridging the two takes a further
+assumption — either about how far the constraint's demands sit from the world in
+question, or about how much weight the world can carry. Which assumption is the
+right one is open.
 
 ### Force, and what force costs
 

@@ -10,6 +10,7 @@ import unittest
 from fractions import Fraction as F
 
 from contract import ForceDeclaration, volume_times_depth
+from semantics import dirac_live, support_capacity, support_live
 from deduction import world_deficit
 from enforcement import EnforcementTrader, Region, Row, grid
 from exactness import min_max_gain, strict_interior_point
@@ -164,6 +165,44 @@ class CoherenceSegmentIsStillHard(unittest.TestCase):
                    if min_max_gain(trader.coefficients(p), p, self.BUDGET) <= 0
                    and not self.REGION.contains(p)]
         self.assertEqual(escapes, [])
+
+
+class DiracLiveWorldsAreNotLiveWorlds(unittest.TestCase):
+    """**Withdrawn:** live worlds are the `{0,1}` worlds whose own price vector
+    lies in the admissible region, and therefore a constraint launders its own
+    liability by excluding them.
+
+    Both halves fail. A world is live when *some* admitted credence gives it
+    positive mass, which does not require its point mass to be admitted. Under
+    the Dirac reading `K = {p(A) = 1/2}` has **no** live worlds at all; under the
+    correct one both worlds are live at capacity `1/2`. And the laundering witness
+    does not launder: under `K = {p(A) <= 1/2}` the true world keeps capacity
+    `1/2`, stays live, and the enforcement position still loses there.
+
+    What survives is the distinction the error concealed: the enforcement
+    inequality bounds *expectations* under admitted credences, not worldwise
+    payoffs.
+    """
+
+    WORLDS = [(F(0),), (F(1),)]
+
+    def test_the_dirac_reading_empties_the_midpoint_constraint(self):
+        region = Region(1, [Row([F(1)], F(1, 2)), Row([F(-1)], F(-1, 2))])
+        self.assertEqual(dirac_live(self.WORLDS, region), [])
+        self.assertEqual(support_live(self.WORLDS, region), self.WORLDS)
+
+    def test_the_laundering_witness_keeps_its_world(self):
+        region = Region(1, [Row([F(-1)], F(-1, 2))])
+        self.assertEqual(dirac_live(self.WORLDS, region), [(F(0),)])
+        self.assertEqual(support_capacity(self.WORLDS, region, 1), F(1, 2))
+        self.assertIn((F(1),), support_live(self.WORLDS, region))
+
+    def test_the_enforcement_position_still_loses_at_that_world(self):
+        region = Region(1, [Row([F(-1)], F(-1, 2))])
+        trader = EnforcementTrader(region, F(10))
+        price = (F(11, 20),)
+        self.assertEqual(
+            holdings_value(trader.coefficients(price), price, (F(1),)), F(-9, 40))
 
 
 if __name__ == "__main__":

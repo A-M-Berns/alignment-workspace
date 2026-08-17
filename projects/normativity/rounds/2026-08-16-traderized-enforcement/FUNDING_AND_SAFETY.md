@@ -136,6 +136,42 @@ the criterion, follows from
 A region containing every plausible world gives every deficit zero. That is one
 way for the sum to converge and **not** the boundary.
 
+### 4a. Expectation is not worldwise, and two bridges
+
+The enforcement inequality bounds the position's value at price vectors in `K_t`.
+An admitted credence's expectation is exactly that value at `π_t(μ)`, so what the
+inequality delivers is
+
+    E_μ[ E_t ]  ≥  ∑_j β_j g_j(P_t)²  ≥  0     for every μ ∈ C_t ,
+
+and **nothing at any individual world**. Exhibited: under `K = {p(A) ≤ 1/2}` at
+price `11/20` every admitted credence gives expectation at least zero — the
+half-half credence gives `1/40` — while the live world `A = true` is worth
+`−9/40` (`test_semantics.ExpectationIsNotWorldwise`).
+
+Two sufficient bridges to a worldwise bound, and neither dominates.
+
+**The deficit bridge**, which needs no support hypothesis and is what §4 already
+gives: `L_t(ω) ≤ ∑_j β_j g_j(P_t) d_j(ω)`, valid at any world.
+
+**The support bridge.** From `E_μ[X] ≥ a`, `μ(ω) ≥ θ` and an upper bound `U` on
+`X` at the other worlds, `X(ω) ≥ (a − (1−θ)U)/θ`. With `a = 0` and `U` the
+position's cube maximum gain — **named, not smuggled**, and computable from
+declared quantities —
+
+    E_t(ω)  ≥  − (1 − θ_t(ω)) · max_gain(ζ_{E,t}, P_t) / θ_t(ω) .
+
+`θ_t(ω) = max { μ(ω) : μ ∈ C_t }` is the support capacity, computed exactly by
+vertex enumeration. The bound degrades as the capacity shrinks, which is the
+failure mode it exists to control: with `K = {p(A) ≤ c}` for `c` running `1/4`,
+`1/20`, `1/100`, the expectation stays nonnegative while the worldwise loss grows
+monotonically (`test_semantics.SmallSupportHidesLargeLoss`).
+
+**Coverage is therefore a route, not a requirement.** The safety theorem consumes
+bounded liability; the deficit bridge supplies it with no coverage hypothesis at
+all. Quantitative support coverage is the alternative route, useful when the
+deficits are not what is known. Nothing here shows either is necessary.
+
 **Theorem 13 (a region excluding a live world at every date, enforced forever,
 safely).** One sentence, settled true, so the sole plausible world is `W = 1`. A
 source reserving against full certainty: `K_t = {P ≤ 1 − 2^{-t}}`, which excludes
