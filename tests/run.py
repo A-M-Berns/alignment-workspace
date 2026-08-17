@@ -46,7 +46,8 @@ def run_projects() -> list[tuple[str, bool]]:
 # Running them here as well as in CI means a local run cannot report green off a
 # gate that has quietly stopped matching anything.
 GATE_SELF_TESTS = ("path_gate", "dco", "attribution", "name_lint",
-                   "contrib_hygiene", "conservativity", "audit_axioms")
+                   "contrib_hygiene", "conservativity", "audit_axioms",
+                   "workflow_scope")
 
 
 # Gates whose real form needs a pull request: they read the event payload or a
@@ -60,6 +61,8 @@ def self_tests() -> None:
         subprocess.run([sys.executable, f"tests/{gate}.py", "--self-test"],
                        cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.run", "--self-test"],
+                   cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "-m", "checkers.wiki_links", "--self-test"],
                    cwd=ROOT, check=True)
 
 
@@ -118,8 +121,10 @@ if __name__ == "__main__":
     subprocess.run([sys.executable, "tests/name_lint.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/contrib_hygiene.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/conservativity.py"], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "tests/workflow_scope.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.workspace_state", "--check"],
                    cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "-m", "checkers.wiki_links"], cwd=ROOT, check=True)
     print(f"LEAN SORRY GATE: clean over {lean_sorry_gate()} files")
     print(f"LEAN AXIOM DISCIPLINE: every file carries `#print axioms`")
     print("PROJECTS:")

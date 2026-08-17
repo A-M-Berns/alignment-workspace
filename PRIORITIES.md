@@ -1211,6 +1211,22 @@ inheritance. It does not decide anything; it makes the adjudication visible. The
 null-input case is a superseded tree with no inbound pointers, which must fail
 rather than report clean if the tree is cited anywhere.
 
+### F7 — A generated view of live state lives inside a completed round's directory
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+`checkers.workspace_state --check` fails unless three files under
+`prompts/2026-08-13-wikification-and-normativity/` match what
+`--write-handoff` currently renders. They are honest — each says it is generated
+and names the command — but `prompts/README.md` states that a round record is
+history and is not edited, so every round that files a `state/rounds.json` entry
+now edits an earlier round's directory to stay green. This one did.
+
+Nothing is wrong with the check; the views are where a handoff round put them and
+nobody has moved them since. What is missing is a home for generated views that
+is not a history directory — `state/views/`, or the query's output on demand with
+no file at all. The cost is one confusing line in the diff of every future round,
+which is small and compounds.
+
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -1337,3 +1353,89 @@ registered entries adjudicated by them.
 *Status:* satisfied by the scaffolding rounds. It stays filed because the
 registry's demand rule means every entry must answer an item, including these —
 and because a future change to the harness re-opens exactly this question.
+
+### 36. The wiki's source in the repository, synced outward — **[entry]** — *answered by the wiki-in-repo round*
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+The human register's pages exist only in the hosted wiki, which has no gates, no
+review, and no path gate: anyone the wiki is open to edits the register directly,
+and the repository's own rules about pinning, naming and volatile numbers reach
+none of it. Move the source into `wiki/`, make the hosted wiki a force-pushed
+mirror, and put the directory behind the gates everything else passes.
+
+*Deliverable shape:* a `wiki/` directory with an intake receipt; a push-triggered
+workflow that publishes and then verifies; `wiki/**` in the specification
+enumeration and in `CODEOWNERS`; a link checker in `checkers/` — **specification
+layer** throughout.
+*Acceptance check:* the gate suite green with the new checker and its failing
+fixtures; `path-gate` rejecting a simulated contributor pull request that touches
+`wiki/`; and the sync job's own verification step green after a merge, or a clean
+stop-and-report if the workflow token is refused.
+*Context:* `prompts/2026-08-16-wiki-in-repo-sync/`; `wiki/ORIGIN.md`;
+`DECISIONS.md`, the 2026-08-16 entry.
+*Status:* answered by that round. The one part it could not perform is the
+post-merge verification, which runs on merge and not before.
+
+### 37. Volatile quantities in `wiki/` cite the structured state or do not appear — **[entry]**
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+`wiki/CONVENTIONS.md` states the rule in prose and nothing checks it. A number
+that moves when work lands — registered-claim counts, round tallies, pull-request
+numbers, "N of M closed" — is wrong on a date nobody notices, and the register is
+the surface least likely to be re-read when it moves. The check reads the numbers
+a page asserts and requires each either to match the corresponding value derived
+from `state/*.json` or to be absent.
+
+Defining *volatile* is most of the work and the item's real content. A count of
+registered claims is volatile; a dimension in a theorem statement is not; the
+number of research lines is somewhere between. A first cut worth trying: a number
+adjacent to a term the structured state has a field for is volatile, and a page
+declares its source inline where it is.
+
+*Deliverable shape:* a stdlib-only house checker beside `checkers/wiki_links.py`,
+wired into the `checkers` job — **specification layer**.
+*Acceptance check:* the checker passes on the current `wiki/`, and fails on a
+crafted page asserting a claim count that disagrees with
+`checkers.workspace_state`. Its null input — a page set with no numbers in it, or
+a `state/` it cannot read — fails rather than reports clean.
+*Context:* `wiki/CONVENTIONS.md`, *Volatile quantities*;
+`checkers/workspace_state.py`; `checkers/wiki_links.py` for the house shape.
+*Why it is [entry]:* the machinery exists on both sides; what is new is the rule
+for deciding which numbers are in scope.
+
+### 38. Enforce the write-scope conditions and the job enumeration — **[entry]** — *answered by the wiki-in-repo round*
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+`AGENTS.md`'s *Security* section permits a job to hold write scope under four
+conditions and enumerates the jobs holding it. Nothing checks either. A
+conditional permission that no gate reads is the shape this repository has
+already been bitten by twice — a decision that is only written down is one that
+gets re-violated, which is why the personal-name rule became a lint.
+
+The check reads `.github/workflows/*.yml` and fails when a job grants
+`contents: write` (or any `write` scope, or `permissions: write-all`) and either
+is absent from the enumeration in `AGENTS.md`, or is reachable from a
+`pull_request` trigger, or takes its scope from the workflow default rather than
+the job. It fails equally on a job named in the enumeration that no longer exists
+— a stale entry reads as a reviewed grant and is not one.
+
+*Deliverable shape:* a stdlib-only house check under `tests/`, wired into
+`tests/run.py` and a CI job — **specification layer**, and on the trust chain,
+since it is what stands between the enumeration and drift. YAML is not in the
+standard library; a line-oriented parse over the workflow files is sufficient and
+is what the other gates do.
+*Acceptance check:* it passes on the current tree; it fails on each of four
+crafted workflows — a write grant on an unlisted job, a write grant on a workflow
+whose triggers include `pull_request`, a workflow-level `permissions: contents:
+write` with jobs inheriting it, and an enumeration naming a job no file defines.
+Its null input — no workflow file matched, or the enumeration parsed empty —
+fails rather than reports clean.
+*Context:* `AGENTS.md`, *Security*, and the trust chain's item 4;
+`.github/workflows/wiki-sync.yml`; `tests/path_gate.py` for the shape of an
+enumeration-as-protection gate and its self-test.
+*Why it is [entry]:* no new mathematics and no new judgment — the rule is
+written; this reads it.
+*Status:* answered by `tests/workflow_scope.py`. It stays filed because the
+registry's demand rule means the work must answer an item, and because condition
+2 is checked only by its required-check proxy — a fuller reading of "publishes
+rather than adjudicates" re-opens exactly this item.

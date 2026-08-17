@@ -17,6 +17,8 @@ Scope, deliberately narrow:
 - Tracked Markdown only. `prompts/` is dispatch history kept verbatim, and the
   consolidated trees are received work whose own wording is not this
   repository's to rewrite; both are out of scope.
+- `wiki/` is in scope. It is the source of the published human register, which
+  is the prose most likely to name people and the prose a stranger reads first.
 - `DECISIONS.md` is allowed. The ledger is where this repository keeps history,
   including the entry recording a maintainer joining, which cannot be written
   without a name.
@@ -88,13 +90,14 @@ def self_test() -> int:
     """
     import tempfile
     tmp = pathlib.Path(tempfile.mkdtemp())
-    def scan(text: str) -> int:
-        f = tmp / "sample.md"
+    def scan(text: str, path: str = "sample.md") -> int:
+        f = tmp / path
+        f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(text)
         global ROOT
         keep, ROOT = ROOT, tmp
         try:
-            return len(offences("sample.md"))
+            return len(offences(path))
         finally:
             ROOT = keep
     cases = [
@@ -111,6 +114,16 @@ def self_test() -> int:
         ("the name list is non-empty", bool(MAINTAINER_NAMES), True),
         ("an empty file list fails rather than passing",
          len(markdown_files()) > 0, True),
+        # The wiki's source is in scope by construction — it matches no
+        # exclusion — which is exactly the kind of coverage that disappears
+        # when someone adds an exclusion later. Both halves are pinned: that
+        # the files are scanned, and that a name in one of them is caught.
+        ("the wiki's pages are scanned",
+         any(f.startswith("wiki/") for f in markdown_files()), True),
+        ("a maintainer name in a wiki page is caught",
+         scan("Written up by Demski.\n", "wiki/Home.md") > 0, True),
+        ("no exclusion covers the wiki",
+         "wiki/Home.md".startswith(EXCLUDED_DIRS), False),
     ]
     import shutil; shutil.rmtree(tmp)
     failures = 0

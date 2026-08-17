@@ -8,3 +8,7 @@
 # claim it certifies is registered `contributor-checked`. Modifying a house
 # checker in checkers/ remains maintainer-only, because that is retroactive.
 /checkers/contrib/
+
+# The wiki's source. The hosted wiki is force-pushed from it, so a merge here
+# publishes; ownership is stated rather than inherited from the rule above.
+/wiki/ @A-M-Berns @abramdemski

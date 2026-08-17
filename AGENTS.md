@@ -423,7 +423,7 @@ that means actually reading. It holds: definitions, statements of record,
 notation and typeclass instances on core types; the checker harness; CI
 workflows, toolchain files, the axiom allowance and the resource budgets; and
 the governance documents — this file, `CONTRIBUTING.md`, `PRIORITIES.md`,
-`DECISIONS.md`, `prompts/`, and the consolidated trees.
+`DECISIONS.md`, `prompts/`, `wiki/`, and the consolidated trees.
 
 **Proof layer — open.** Anyone, or anyone's agent. It holds: Lean proofs of
 specification-layer statements and of new lemmas in contribution namespaces;
@@ -669,12 +669,42 @@ non-maintainer, and no single class says that. The fields are defined once, in
 
 ## Security
 
-- **CI holds zero secrets, permanently.** No workflow may be granted a token
-  beyond read scope. **Raising this is prohibited** — it is not a maintenance
-  decision. This is why merging is automated through GitHub's own auto-merge
-  under branch protection rather than through a workflow: a bot that merges needs
-  write scope, and no result is worth the exception. A merge performed by GitHub
-  against the required-check list grants this repository nothing.
+- **CI holds zero secrets, permanently.** No credential is stored in the
+  repository, in its settings, or in an environment. Every job runs with the
+  token GitHub mints for that run and revokes when it ends, and **storing a
+  credential is prohibited** — it is not a maintenance decision.
+- **Read scope is the default; write scope is enumerated, and the enumeration is
+  the protection.** Anything a verdict depends on runs at `contents: read`. This
+  is why merging is automated through GitHub's own auto-merge under branch
+  protection rather than through a workflow: a bot that merges needs write scope,
+  and no result is worth the exception. A merge performed by GitHub against the
+  required-check list grants this repository nothing.
+
+  A job may hold write scope only when **all four** hold, and the reason each is
+  load-bearing is that dropping it puts the scope back within reach of something
+  a contributor can influence:
+
+  1. It triggers on `push` to a protected branch and **never** on
+     `pull_request`, so nothing a contributor submits executes inside it.
+  2. It **publishes rather than adjudicates**: no required check, registry,
+     protected setting or claim class is downstream of what it writes.
+  3. The scope is the run token, so there is nothing to leak past the run.
+  4. The grant is written on the job, not as the workflow default, so a second
+     job added to that file does not inherit it.
+
+  **The jobs holding write scope are named here**, and a job absent from this
+  list holding it is a defect:
+
+  <!-- write-scope: job=wiki-sync; workflow=.github/workflows/wiki-sync.yml -->
+  - `wiki-sync`, which force-pushes `wiki/` to the hosted wiki.
+
+  `tests/workflow_scope.py` reads that list from this section and enforces
+  conditions 1, 3 and 4 over every workflow, along with both of the
+  enumeration's failure directions — a write grant absent from the list, and an
+  entry naming a job no workflow defines. **Condition 2 is checked only in the
+  form a script can see**: that a write-granting job's context is not a required
+  check, so nothing merges on its verdict. That no registry or protected setting
+  is downstream of what it writes stays a review matter.
 - Contributed code executes only in sandboxed CI runners, without network access
   where the runner supports it. The checker harness itself never fetches
   anything.
@@ -708,7 +738,9 @@ which are required.
 | contributed checkers are stdlib-only and documented | `checkers` — `tests/contrib_hygiene.py` |
 | DCO sign-off | `dco` — `tests/dco.py`; that an assertion was made, not that it is true |
 | model attribution in the pull-request body | `dco` — `tests/attribution.py`; presence and non-emptiness only |
-| no personal names in prose | `python` — `tests/name_lint.py` |
+| no personal names in prose | `python` — `tests/name_lint.py`, `wiki/` included |
+| the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
+| CI write scope is enumerated and conditioned; no stored secrets | `python` — `tests/workflow_scope.py` |
 | 2, exact arithmetic | **not gated** — review; a float in theorem-bearing code is a finding |
 | 3, theorem ships as four things | **not gated** — review; the PR template asks for each |
 | 6, no permanent naming | **not gated** — review; the PR template asks |

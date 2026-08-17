@@ -139,6 +139,20 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   worth proving*, which no round may decide.** *Waiting* costs nothing today and
   leaves Q3 carrying a candidate the program has not said it wants.
 
+- **Decide the identity a wiki pull request is opened under.** `wiki/` is
+  specification layer, so `path-gate` passes a pull request touching it only when
+  `GITHUB_ACTOR` is in `MAINTAINERS`, and the maintainer's AI collaborator is who
+  drafts those pull requests. Three options: open them with a token belonging to
+  the maintainer's own account, with the executing model recorded in `Model:`
+  trailers and the pull-request attribution block, which is the current scheme
+  extended to a new surface; add an allowlisted machine account to `MAINTAINERS`
+  and `CODEOWNERS`, which is honest about who pushed and creates a second
+  maintainer identity that no human is behind; or drop `wiki/` from the
+  specification list, which makes the register contributor-editable and gives up
+  what the entry above just established. *Doing it* is choosing one. *Waiting*
+  means a wiki pull request opened under any other identity fails the gate with
+  nothing wrong with its content.
+
 ## Settled
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss

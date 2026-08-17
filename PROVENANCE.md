@@ -116,6 +116,7 @@ of thing this file exists to make visible.
 | `2026-08-11-normative-learning-interface` | GPT-5.6 Sol (OpenAI) | GPT-5 Codex (OpenAI) | 2026-08-11 |
 | `2026-08-12-corpus-reconciliation` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-12 |
 | `2026-08-12-reachable-corrective-control` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | dispatched 2026-08-12, executed 2026-08-13 |
+| `2026-08-16-wiki-in-repo-sync` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-16 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have
