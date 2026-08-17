@@ -35,6 +35,73 @@ Rows C through L run under both the `repetition` and the `salience`
 susceptibility. Rows 9, 10 and 10c are three arms of one fixture; 13 and 14 are
 three-policy classes whose sub-classes are what the witness turns on.
 
+Clause 1 is read over the role-defined protected object throughout. Every verdict
+above is unchanged when it is, and `TheProcessObjectKeepsTheFirstPassResults`
+checks that rather than asserting it.
+
+## The continuation's rows
+
+Coverage is the fourth clause; `legitimacy.clauses` reports all four separately.
+
+| | scenario | `L*` | answerability | coverage | access | non-capture |
+|---|---|---|---|---|---|---|
+| 15 | universal deprivation of one due reason | **fails** | silent | **fires** | silent | silent |
+| 16 | transient capture, restored before the horizon | **fails** | silent | silent | silent | **fires** on the process object, silent on the endpoint |
+| 17 | the advisor writes a field no question reads | holds | silent | silent | silent | silent |
+| 18 | the advisor creates the circumstances | **fails** on the arm where nothing arises | silent | **fires** | **fires** | not statable |
+| 19 | autonomous error under full inquiry | **fails** | silent | silent | silent | silent |
+| 20 | persuasion under full inquiry | holds | silent | silent | silent | silent |
+| 21 | a novel reason that was not antecedently due | holds | silent | silent | silent | silent |
+| 22 | the advisor buys its own trust premise | **fails** | silent | silent | silent | **fires** |
+| 23 | the grade reads a field outside the object | holds | silent | silent | silent | silent |
+
+Rows 15 and 16 are the continuation's two kill tests and both landed. Rows 17,
+19, 20, 21 and 23 are the controls that stop the new clauses from being fitted to
+them. Row 22 is the composition witness.
+
+**15 — universal deprivation.** Every policy in the class withholds the same due
+reason, so the delivered due streams are identical and access is satisfied. The
+process never receives what it was owed and the target fails. Anti-selection and
+adequacy are two properties, and the round keeps them apart rather than widening
+`access` until this case fails: `access` is a relation between policies,
+`coverage` a relation between one run and what was due. The two arms are
+indistinguishable, so coverage detects the deprivation and does not attribute it
+— the same non-attribution the round already reports, arriving on the access
+side.
+
+**16 — transient capture.** The advisor narrows the adequacy relation, the
+principal closes a liability under the narrowed standard, and the advisor puts
+the relation back before the horizon. The endpoint machinery is identical to the
+uninfluenced arm's and the liability's fate is not. Endpoint non-capture passes;
+non-capture over the response function along the run fires. This is what makes
+the protected object a sequence, and it is also the evidence against any
+endpoint-preservation formulation — `LEGITIMACY_TO_TRUST_INTERFACE.md` §6.
+
+**17 and 23 — the two directions of "which fields".** In 17 the advisor writes
+`noise`, a field no normative question reads: `writable_fields` differs across
+the arms, the response function does not, and no clause fires. In 23 the
+principal's grade reads that same field, and grade trust flips while every clause
+stays silent. Together they say the protected object is settled by what the
+process answers, and that a downstream theorem consuming a grade must say the
+grade factors through it.
+
+**18 — creating circumstances.** The model carries one channel for suppressing
+and for creating an occasion, and does not separate them; the arm where nothing
+arises fails coverage and the pair is uncoupled either way. Reported rather than
+patched, because separating them needs an account of what the process was owed
+independently of the advisor, which is the same object `due_pool` stands in for.
+
+**19, 20, 21 — the controls the new clauses could have been fitted to.**
+Coverage must not fire on a principal that reasons badly with everything
+delivered, on a licensed reason landing under full inquiry, or on a reason the
+advisor originated and was under no obligation to supply. It fires on none of
+them.
+
+**22 — the composition.** In `LEGITIMACY_TO_TRUST_INTERFACE.md` §3. Every
+record-internal condition holds in both arms, grade trust is false in the
+uninfluenced arm and true in the influenced one, `delegation_bridge`'s inequality
+fails and then holds with it, and non-capture is what fires.
+
 ## The six, and what changed
 
 Each is the procedural round's attack with the revision caused by advisor

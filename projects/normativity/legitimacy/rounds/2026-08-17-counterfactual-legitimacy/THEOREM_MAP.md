@@ -107,3 +107,56 @@ missing for the same reason it is missing there.
 No Lean. Nothing here is representation-independent enough for a port to sharpen
 it, and encoding a provisional normative ontology in Lean would have made the
 result look more settled than it is.
+
+---
+
+## 8. Continuation witnesses and checks
+
+| # | statement | class | check |
+|---|---|---|---|
+| W16 | A class every member of which withholds the same due reason satisfies access, fails coverage, and fails the target with every record-internal condition holding. | witness | `UniversalDeprivation` |
+| W17 | Coverage does not attribute: the two arms of that class are indistinguishable. | witness | `test_coverage_does_not_attribute` |
+| W18 | Push-then-restore leaves every endpoint projection identical, changes a liability's fate, and fails the target. Endpoint non-capture passes; process non-capture fires. | witness | `TransientCapture` |
+| W19 | A writable field answering no normative question is outside the protected object: `writable_fields` differs, the response function does not, no clause fires. | witness | `test_a_writable_field_answering_nothing_is_outside` |
+| W20 | The five-coordinate presentation is finer than the object it presents — off the alphabet it separates machineries no question separates. | witness | `test_the_coordinate_list_is_finer_than_the_object_it_presents` |
+| W21 | The advisor can make `GradeTrust` true at zero by replacing the principal's adequacy relation, with every record-internal condition holding; the bridge's inequality fails without it and holds with it; delegation then selects what the environment convicts. | witness, exact rationals | `GradeTrustIsBuyable` |
+| W22 | A grade reading a field outside the protected object flips grade trust with every legitimacy clause silent. | witness | `TheFactorizationHypothesisIsLoadBearing` |
+| W23 | Coverage fires on none of: autonomous error under full inquiry, persuasion under full inquiry, an advisor-originated reason that was not due. | witness | `CoverageDoesNotForbidLegitimateBehaviour` |
+
+| # | statement | domain | check |
+|---|---|---|---|
+| E6 | Agreement on the five coordinates implies agreement on every answer. | 16 machineries, 256 pairs | `test_agreement_on_the_five_implies_agreement_on_every_answer` |
+| E7 | The protected object is equivariant under a bijection of the alphabet, at every step of every arm. | 2 policies, all steps | `RepresentationIndependence` |
+| E8 | Every first-pass verdict is unchanged when clause 1 is read over the role-defined object. | 6 attacks, 5 controls | `TheProcessObjectKeepsTheFirstPassResults` |
+| E9 | All four clauses together reject exactly the twelve scenarios where the target fails through something the interface reaches, and accept the nine where it does not. | 21 scenarios | `TheJointInterface` |
+
+## 9. Continuation claims
+
+**C6 (witnessed).** Anti-selection of access and adequacy of access are distinct
+properties. W16 gives one separation; the selective-withholding attack gives the
+other.
+
+**C7 (witnessed).** The protected object cannot be an endpoint. W18.
+
+**C8 (checked, not proved).** Where non-capture holds and the grade factors
+through the protected object, the grade — and therefore `GradeTrust` — takes one
+value across the advisor's residual latitude. Verified over every scenario in
+`GradeInvarianceUnderNonCapture` rather than formalized; it is a one-line
+consequence of the definitions and its content is the factorization hypothesis,
+whose necessity is W22.
+
+**C9 (open, and the round's answer to what blocks a deference theorem).** Whether
+the principal's grade tracks the quantity that matters is declared absent by the
+finite skeleton itself — `FINITE_MODEL_SKELETON.md` §8.5, "the relation between
+`v⁺` and `X` — none". No legitimacy work supplies it.
+
+## 10. Continuation open questions
+
+6. Whether an alphabet can be derived rather than declared in general. Here it is
+   read off the fixture's own keys; the faithfulness of any presentation is
+   relative to it.
+7. Whether creating an occasion and suppressing one can be separated. The model
+   carries one channel for both.
+8. Whether coverage can be stated without an exogenous due-reason supply. It
+   inherits `due_pool`, and W15 shows that supply is not the environment-relative
+   target.

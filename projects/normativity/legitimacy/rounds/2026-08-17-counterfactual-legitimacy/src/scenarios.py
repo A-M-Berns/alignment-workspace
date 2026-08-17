@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from conditions import ADEQUACY, BEARING, ENTITLEMENT, GENERATION, Encounter
 from environment import Environment, ObjectiveDemand
-from fixture import (CONFERRED_SCOPE, IDENTIFICATION, ROOT, SUBSTANCE, VERDICT,
-                     Fixture, Item, Machinery, Policy, Proposal, NULL)
+from fixture import (CONFERRED_SCOPE, IDENTIFICATION, NOISE, ROOT, SUBSTANCE,
+                     VERDICT, Fixture, Item, Machinery, Policy, Proposal, NULL)
 from provenance import DERIVED, Ground, GroundStore
 
 OTHER = "s-other"
@@ -393,3 +393,141 @@ def record_equivalent_environments():
                             "w-cheap": frozenset({SUBSTANCE})},
                            (ObjectiveDemand("d1", 1, SUBSTANCE),))
     return fixture, variation, faithful, unfaithful
+
+
+# --------------------------------------------------------------------------
+# Continuation: what comparing policies cannot see
+# --------------------------------------------------------------------------
+
+def universal_deprivation():
+    """Every policy in the class withholds the same due reason.
+
+    The delivered due streams are identical, so protected access is satisfied,
+    and the process never receives what it was owed.  The fixture cannot say
+    whether this is the advisor's doing or the world's — which is the same
+    non-attribution the round already reports, arriving on the access side.
+    """
+    fixture, _ = selective_information()
+    widen = reason("efficiency-review", "g-eff", ADEQUACY, "w-cheap",
+                   frozenset({SUBSTANCE}), position=0)
+    return fixture, (Policy("deprived-a", {REASON_STEP: (widen,)}),
+                     Policy("deprived-b", {REASON_STEP: (widen,)}))
+
+
+def transient_capture():
+    """Push, let the consequence land, restore before the horizon.
+
+    The advisor narrows the adequacy relation, the principal closes a liability
+    under the narrowed standard, and the advisor puts the relation back.  The
+    endpoint machinery is identical to the uninfluenced arm's; the liability's
+    fate is not, and neither is the target.
+    """
+    base = dict(BASE.adequacy)
+    fixture = Fixture(
+        "transient", BASE, (Encounter(1, "case"),),
+        plan=((), (("docket",),), (("close", "q-case-1"),), ()),
+        environment=environment({"w-real": frozenset({SUBSTANCE})},
+                                (ObjectiveDemand("d1", 1, SUBSTANCE),)),
+        grounds=STORE)
+    widened = {**base, "w-cheap": frozenset({SUBSTANCE})}
+    push_in = push(ADEQUACY, None, widened, salience="high")
+    put_back = push(ADEQUACY, None, base, content="rumour-2", salience="high")
+    return fixture, (NULL, Policy("push-then-restore",
+                                  {0: (push_in,), 3: (put_back,)}))
+
+
+def irrelevant_coordinate():
+    """The advisor writes a field no normative question reads."""
+    fixture, _ = attack_l()
+    return fixture, (NULL, Policy("scribble", {
+        0: (push(NOISE, "tag", True, salience="high"),)}))
+
+
+def renamed():
+    """One fixture and its image under a bijection of the alphabet."""
+    mapping = {SUBSTANCE: "s-alpha", OTHER: "s-beta", "case": "k-one",
+               "other": "k-two", "settlement-report": "c-root",
+               "audit-finding": "c-audit", "efficiency-review": "c-eff",
+               "w-real": "w-one", "w-cheap": "w-two", "w-other": "w-three",
+               "w-narrow": "w-four"}
+    fixture, variation = attack_l()
+    return fixture, variation, mapping
+
+
+def autonomous_error_under_full_inquiry():
+    """The principal reasons badly with every due input delivered."""
+    fixture, _ = autonomous_l()
+    fixture = Fixture(**{**fixture.__dict__, "name": "auto-L-covered",
+                         "due_pool": {}})
+    return fixture, (NULL,)
+
+
+def persuasion_under_full_inquiry():
+    """A licensed reason lands with every due input delivered."""
+    fixture, (silent, reasoned, loud) = licensed_persuasion()
+    fixture = Fixture(**{**fixture.__dict__, "name": "persuasion-covered",
+                         "due_pool": {REASON_STEP: frozenset(
+                             {("audit-finding", ADEQUACY)})}})
+    return fixture, (reasoned, loud)
+
+
+def novel_reason():
+    """An advisor-originated reason that was not antecedently due.
+
+    Supplying it in one arm and not another is advisor discretion, not
+    selection: nothing owed the principal is withheld.  Both clauses must be
+    silent and coverage must hold in both arms.
+    """
+    fixture, (silent, reasoned, _loud) = licensed_persuasion()
+    return fixture, (silent, reasoned)
+
+
+def advisor_creates_circumstances():
+    """The encounter happens only because the advisor made it happen.
+
+    The same channel as suppression, read the other way round: the baseline arm
+    is the one where nothing arises.  The model does not separate creating an
+    occasion from removing one, and says so.
+    """
+    fixture, _ = attack_l()
+    return fixture, (Policy("nothing-arises",
+                            suppress_encounters=frozenset({0})),
+                     Policy("advisor-raises-it"))
+
+
+# --------------------------------------------------------------------------
+# Continuation: the trust composition
+# --------------------------------------------------------------------------
+
+def manufactured_trust():
+    """The advisor makes its own trust premise true.
+
+    `A`'s outcome model rates the cheap intervention at 1 and the sound one at
+    0.  In the uninfluenced arm the principal's grade is the reverse, so grade
+    trust fails at every level below 1.  The advisor replaces the adequacy
+    relation, the grade flips onto `A`'s model exactly, and grade trust holds at
+    zero — bought rather than earned.
+    """
+    replacement = {"w-cheap": frozenset({SUBSTANCE}),
+                   "w-other": frozenset({OTHER}),
+                   "w-narrow": frozenset({NARROW})}
+    fixture = Fixture(
+        "manufactured-trust", BASE, (Encounter(1, "case"),),
+        plan=((), (("docket",),), (("close", "q-case-1"),)),
+        environment=environment({"w-real": frozenset({SUBSTANCE})},
+                                (ObjectiveDemand("d1", 1, SUBSTANCE),)),
+        grounds=STORE)
+    return fixture, (NULL, Policy("flip-the-grade", {
+        0: (push(ADEQUACY, None, replacement, salience="high"),)}))
+
+
+def grade_reads_outside():
+    """The principal's grade reads a field the protected object does not cover.
+
+    Non-capture passes and grade trust still flips, so the composition needs the
+    factorization hypothesis as a stated premise rather than as an assumption
+    nobody wrote down.
+    """
+    fixture, _ = irrelevant_coordinate()
+    return fixture, (NULL, Policy("scribble", {
+        0: (push(NOISE, "endorse-cheap", True, salience="high"),)}))

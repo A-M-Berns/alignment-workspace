@@ -547,7 +547,7 @@
       "date": "2026-08-17",
       "project": "normativity.legitimacy",
       "path": "projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy",
-      "verdict": "architecture-positive / interface-splits-in-two / projection-fixture-complete",
+      "verdict": "interface-closed-by-role / trust-premise-integrity / target-bridge-open",
       "verdict_source": "prompts/2026-08-17-counterfactual-legitimacy/REPORT.md",
       "registered_classes": [],
       "prompt": "prompts/2026-08-17-counterfactual-legitimacy/PROMPT.md",

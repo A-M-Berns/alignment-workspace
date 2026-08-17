@@ -22,8 +22,14 @@ relation licenses it. That is what lets one advisor policy produce a different
 trajectory from the same algorithm without the advisor writing anything into the
 record itself.
 
-Determinism throughout; no randomness, and no arithmetic beyond integer
-repetition counts.
+Determinism throughout; no randomness. The only arithmetic is integer repetition
+counts and, on the deference side, exact `fractions.Fraction` rationals mirroring
+the Lean file's rational carriers.
+
+A run records the machinery **before every step and after the last**, not only
+its endpoint. That is forced by transient capture: an advisor that moves a
+standard, lets a liability close under it and restores the standard is invisible
+to any endpoint object.
 
 ## The two channels
 
@@ -63,6 +69,12 @@ does not claim it is the general form.
 
 ## The protected state
 
+The object is defined by role in `LEGITIMACY_INTERFACE.md` §1 and implemented in
+`src/response.py`: the normative response function, taken along the run.
+
+Two presentations are kept alongside it because the round's results are about the
+difference between them.
+
 `ProtectedNormativeProjection` — provisional — is the tuple
 
 ```
@@ -71,17 +83,24 @@ does not claim it is the general form.
 
 The first four are the dispatch's starting point: every attack that survived the
 procedural round operates through them, and its positive control legitimately
-changes most of them. `identification` — which merge licences the practice
-accepts — is what attack I forces, and the counterexample is displayed rather
-than assumed. It is also not a field the procedural round's `State` carries, so
-none of the four record-internal conditions could have read it either.
+changes most of them. `identification` is what attack I forces, and the
+counterexample is displayed rather than assumed; it is also not a field the
+procedural round's `State` carries, so none of the four record-internal
+conditions could have read it either.
+
+`writable_fields` adds `noise`, a field the model carries so that a test can show
+"every mutable coordinate" is the wrong object: the advisor writes it freely,
+nothing it changes is an answer, and no clause fires.
+
+The five-coordinate presentation is **sound and not complete**. Agreement on the
+five implies agreement on every answer, over a generated family of sixteen
+machineries; the converse fails off the alphabet, so a condition stated over the
+coordinate list forbids changes that alter nothing the process answers. That is
+the "too broad" direction the first pass looked for and could not see from
+scenarios alone.
 
 Practical authority and grants are not in it. No experiment here gave a reason to
 include them.
-
-The projection was not found too broad. No control needs a coordinate dropped,
-and each of the other five attacks is caught by the four-coordinate projection
-alone.
 
 ## The licensed-reason trace
 

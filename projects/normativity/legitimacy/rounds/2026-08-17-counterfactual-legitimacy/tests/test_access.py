@@ -5,8 +5,8 @@ from __future__ import annotations
 import unittest
 
 import scenarios as S
-from noncapture import (Z_FIVE, access, legitimate, non_capture,
-                        uncoupled_pairs, withheld)
+from legitimacy import legitimate as composed, target_holds
+from noncapture import (Z_FIVE, access, non_capture, uncoupled_pairs, withheld)
 
 
 class SelectionAmongLicensedReasons(unittest.TestCase):
@@ -101,26 +101,38 @@ class AccessDoesNotImportTheTarget(unittest.TestCase):
 
 
 class TheJointInterface(unittest.TestCase):
-    """Both clauses together, against every scenario the round builds.
+    """All four clauses, against every scenario the round builds.
 
     Rejection is the correct verdict where the environment-relative target
-    fails through advisor influence; acceptance is correct everywhere else,
-    including where the target fails through the principal's own error.
+    fails through something the interface is meant to reach; acceptance is
+    correct everywhere else, including where the target fails through the
+    principal's own error under full inquiry.
     """
 
-    REJECTED = ("C", "E", "G", "H", "I", "L", "selective", "arises")
-    ACCEPTED = ("autonomous-L", "autonomous-G", "K", "persuasion", "no-effect")
+    REJECTED = ("C", "E", "G", "H", "I", "L", "selective", "arises",
+                "transient", "deprivation", "creates", "manufactured-trust")
+    ACCEPTED = ("autonomous-L", "autonomous-G", "K", "persuasion", "no-effect",
+                "novel-reason", "irrelevant-coordinate",
+                "autonomous-L-covered", "persuasion-covered")
 
     def scenarios(self):
         built = {name: builder() for name, builder in S.ATTACKS.items()}
         built.update({
             "selective": S.selective_information(),
             "arises": S.controls_what_arises(),
+            "transient": S.transient_capture(),
+            "deprivation": S.universal_deprivation(),
+            "creates": S.advisor_creates_circumstances(),
+            "manufactured-trust": S.manufactured_trust(),
             "autonomous-L": S.autonomous_l(),
             "autonomous-G": S.autonomous_g(),
             "K": S.autonomous_k(),
             "persuasion": S.licensed_persuasion(),
             "no-effect": S.no_effect(),
+            "novel-reason": S.novel_reason(),
+            "irrelevant-coordinate": S.irrelevant_coordinate(),
+            "autonomous-L-covered": S.autonomous_error_under_full_inquiry(),
+            "persuasion-covered": S.persuasion_under_full_inquiry(),
         })
         return built
 
@@ -129,8 +141,21 @@ class TheJointInterface(unittest.TestCase):
         self.assertEqual(sorted(built), sorted(self.REJECTED + self.ACCEPTED))
         for name, (fixture, variation) in built.items():
             with self.subTest(scenario=name):
-                self.assertEqual(legitimate(fixture, variation, Z_FIVE),
+                self.assertEqual(composed(fixture, variation),
                                  name in self.ACCEPTED)
+
+    def test_the_target_and_the_interface_disagree_in_exactly_one_direction(self):
+        """Legitimate-and-failing-the-target is the intended case; the reverse —
+        illegitimate while the target holds on every arm — occurs in no scenario
+        here, and the round does not claim it cannot occur."""
+        for name, (fixture, variation) in self.scenarios().items():
+            with self.subTest(scenario=name):
+                if not composed(fixture, variation):
+                    continue
+                if target_holds(fixture, variation):
+                    continue
+                self.assertIn(name, ("autonomous-L", "autonomous-G",
+                                     "autonomous-L-covered"))
 
 
 if __name__ == "__main__":

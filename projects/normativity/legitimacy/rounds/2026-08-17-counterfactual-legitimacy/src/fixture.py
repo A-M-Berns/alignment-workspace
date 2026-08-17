@@ -47,8 +47,12 @@ SUBSTANCE = "s-harm"
 #: `State`, and no condition there reads it; attack I is what forces it.
 IDENTIFICATION = "identification"
 
+#: A writable field that answers no normative question.  See `Machinery.noise`.
+NOISE = "noise"
+
 MACHINERY_FIVE = (GENERATION, ENTITLEMENT, BEARING, ADEQUACY, IDENTIFICATION)
 MACHINERY_FOUR = (GENERATION, ENTITLEMENT, BEARING, ADEQUACY)
+MACHINERY_ALL = MACHINERY_FIVE + (NOISE,)
 
 #: Deterministic closure order.  Cheap witnesses are tried first, which is what
 #: makes a widened adequacy relation bite without the advisor writing a
@@ -179,11 +183,15 @@ class Machinery:
     bearing: Mapping[str, frozenset[str]]
     adequacy: Mapping[str, frozenset[str]]
     identification: frozenset[str]
+    #: A mutable field no normative question reads.  It exists so a test can
+    #: show the protected object is defined by what the process answers rather
+    #: than by which fields happen to be writable.
+    noise: frozenset[str] = frozenset()
 
     def get(self, coordinate: str):
         return {GENERATION: self.generation, ENTITLEMENT: self.entitlement,
                 BEARING: self.bearing, ADEQUACY: self.adequacy,
-                IDENTIFICATION: self.identification}[coordinate]
+                IDENTIFICATION: self.identification, NOISE: self.noise}[coordinate]
 
 
 def apply_proposal(machinery: Machinery, proposal: Proposal) -> Machinery:
@@ -247,6 +255,9 @@ def _first_adequate(machinery: Machinery, substance: str) -> str | None:
 class Run:
     trajectory: Trajectory
     machinery: Machinery
+    #: The machinery before every step, and after the last.  The protected
+    #: object is a property of this sequence, not of its final element.
+    states: tuple[Machinery, ...]
     ltrace: tuple[frozenset[tuple[str, str]], ...]
     ltrace_fine: tuple[frozenset[tuple], ...]
     delivered: tuple[frozenset[tuple[str, str]], ...]
@@ -305,6 +316,7 @@ class Fixture:
         machinery = self.machinery
         encounters = tuple(e for index, e in enumerate(self.encounters)
                            if index not in policy.suppress_encounters)
+        states: list[Machinery] = []
         origin: dict[str, str] = {}
         liabilities: dict[str, frozenset[str]] = {}
         closed: set[str] = set()
@@ -314,6 +326,7 @@ class Fixture:
         delivered: list[frozenset[tuple[str, str]]] = []
 
         for step in range(len(self.plan)):
+            states.append(machinery)
             before = machinery
             items = policy.items(step)
             delivered.append(frozenset(i.key() for i in items))
@@ -327,13 +340,13 @@ class Fixture:
                     admitted.add(item.key())
                     admitted_fine.add(item.fine_key())
                     machinery = apply_proposal(machinery, item.proposal)
-                    if item.proposal.coordinate != IDENTIFICATION:
+                    if item.proposal.coordinate not in (IDENTIFICATION, NOISE):
                         cited.append((item.ground_id, item.proposal.coordinate))
                         moved.add(item.proposal.coordinate)
                 elif residual_pressure(self.rule, item):
                     proposal = self.content_blind or item.proposal
                     machinery = apply_proposal(machinery, proposal)
-                    if proposal.coordinate != IDENTIFICATION:
+                    if proposal.coordinate not in (IDENTIFICATION, NOISE):
                         cited.append(("g-root", proposal.coordinate))
                         moved.add(proposal.coordinate)
             ltrace.append(frozenset(admitted))
@@ -409,7 +422,7 @@ class Fixture:
                 elif kind == "revise":
                     proposal = action[1]
                     machinery = apply_proposal(machinery, proposal)
-                    if proposal.coordinate != IDENTIFICATION:
+                    if proposal.coordinate not in (IDENTIFICATION, NOISE):
                         cited.append(("g-root", proposal.coordinate))
                         moved.add(proposal.coordinate)
                 else:
@@ -427,5 +440,7 @@ class Fixture:
                         self.machinery.entitlement, {})
         trajectory = Trajectory(initial, tuple(edits), encounters,
                                 self.grounds, capacity=self.capacity)
-        return Run(trajectory, machinery, tuple(ltrace), tuple(ltrace_fine),
-                   tuple(delivered), encounters, self.environment)
+        states.append(machinery)
+        return Run(trajectory, machinery, tuple(states), tuple(ltrace),
+                   tuple(ltrace_fine), tuple(delivered), encounters,
+                   self.environment)

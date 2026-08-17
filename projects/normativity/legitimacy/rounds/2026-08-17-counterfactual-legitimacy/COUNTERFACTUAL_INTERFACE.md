@@ -96,3 +96,23 @@ would also have fired on autonomous bad revision, on the radical-transformation
 control, and on persuasion; it fires on none of them. And it fails to fire on
 selection among licensed reasons and cannot be stated against control of arising,
 neither of which is obviously outside its reach until the fixture is built.
+
+---
+
+## The protected object, after the continuation
+
+`Z` above is read over the role-defined object of `LEGITIMACY_INTERFACE.md` §1 —
+the normative response function taken along the run — not over a coordinate list.
+Three things change and no verdict in `PROSECUTION.md` does.
+
+Transient capture is caught: an advisor that moves a standard, lets a liability
+close under it and restores the standard before the horizon leaves every endpoint
+projection identical.
+
+A writable field answering no normative question is outside, so "every mutable
+coordinate" is not the object; and the five-coordinate presentation is sound but
+not complete, so a condition stated over it over-protects.
+
+The clause count is four, not two. `access` compares policies and `coverage`
+compares a run to what was due, and a class every member of which withholds the
+same due reason satisfies the first and fails the second.

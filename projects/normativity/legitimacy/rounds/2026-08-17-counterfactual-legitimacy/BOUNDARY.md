@@ -101,3 +101,43 @@ two behind it.
 That last row is the practical residue of the whole round. A counterfactual
 legitimacy condition is a good standard and a bad test, and the deference
 argument that uses it has to say which of the three is supplying the assurance.
+
+---
+
+## After the continuation
+
+**A fourth notion.** *Adequacy of access* is not *anti-selection of access*, and
+neither is *non-capture*. Universal deprivation separates the first two; the
+selective-withholding attack separates them the other way. The interface is four
+clauses because nothing in the prosecution let one absorb another.
+
+**What is now established about the protected object.** It is closed by role
+rather than enumerated: a field is protected exactly when changing it changes an
+answer the process gives. That is checked in both directions — a writable field
+answering nothing is outside, and the five-coordinate presentation is sound but
+incomplete, so a coordinate list over-protects. It is equivariant under renaming,
+and it has time in it, because an advisor that captures a process and hands it
+back is invisible to any endpoint object.
+
+**What is now established about trust.** `GradeTrust`, the workspace's operative
+trust-facing hypothesis, can be satisfied from either side — a model tracking a
+fixed grade, or a grade moved onto a fixed model — and `delegation_bridge`
+consumes it either way. Legitimacy closes the second route, given that the grade
+factors through the protected object. That factorization is a stated premise with
+its own necessity witness, not a free assumption.
+
+**What is still not established.** That the composition is
+`Legit + EpistemicAdequacy ⟹ Trust`. What the round has is
+`Legit ⟹ the trust hypothesis is not manufacturable`, which is weaker and is the
+honest statement. Grade trust remains assumed; legitimacy makes it an honest
+assumption rather than an advisor's arrangement.
+
+That the delegation inequality is the right target. Whether the principal's grade
+tracks the quantity that matters is declared open by the finite skeleton itself,
+and that is the single missing bridge between this interface and a deference
+theorem. It is deference mathematics, not vagueness in legitimacy.
+
+That `A` can come to know any of this. Both counterfactual clauses remain outside
+what one realized record determines, so *legitimacy holds* and *`A` knows
+legitimacy holds* stay apart. Coverage is the exception and the only clause an
+ordinary audit reaches.

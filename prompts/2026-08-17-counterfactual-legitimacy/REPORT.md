@@ -4,7 +4,10 @@
 (Anthropic). Dispatched and executed 2026-08-17. Branch cut from `main` at
 `0ef93952a153509759f98793530e370a6e477083`, verified rather than assumed.
 
-**Verdict.** `architecture-positive / interface-splits-in-two /
+**This section reports the first dispatch. Its verdict is superseded by the
+Continuation below, which was run on the same branch; its findings stand.**
+
+**Verdict (first pass).** `architecture-positive / interface-splits-in-two /
 projection-fixture-complete`. Internally accountable trajectory plus
 counterfactual non-capture is a viable architecture for legitimate deference. It
 is not one condition, and the second one needs an object the current normativity
@@ -223,3 +226,175 @@ fit the result. Three files outside the round directory changed, all of them
 required: the round's entry in `state/rounds.json`, the one line it adds to the
 generated `VERDICT_STATUS_INVENTORY.md`, and the two entries above in
 `DECISIONS.md`'s *Awaiting the author*.
+
+---
+
+# Continuation
+
+Dispatched and executed 2026-08-17 on the same branch, against
+`PROMPT-CONTINUATION.md`. Prompt author GPT-5.6 Sol (OpenAI); executor Claude
+Opus 5 (Anthropic). The first pass's verdict is superseded and its findings are
+preserved: all seven starting facts survived, and two of them moved.
+
+**Verdict: `interface-closed-by-role / trust-premise-integrity /
+target-bridge-open`.**
+
+## The two kill tests both landed
+
+**Universal deprivation.** A class every member of which withholds the same due
+reason satisfies `access` — the delivered due streams are identical — while the
+process never receives what it was owed and the target fails. `access` was not
+widened. Anti-selection and adequacy are two properties and the interface now
+carries both: `access` relates policies, `coverage` relates one run to what was
+due. `coverage` is also the only clause a single realized run determines, which
+is its use and its limit; the two arms of the deprivation fixture are
+indistinguishable, so it detects and does not attribute.
+
+**Transient capture.** An advisor that narrows a standard, lets a liability close
+under it, and restores the standard before the horizon leaves every endpoint
+projection identical and the target failing. Endpoint non-capture passes. The
+protected object is therefore a sequence.
+
+## The protected object is now closed by role
+
+Not a coordinate list: the **normative response function** — what the process
+answers to *what arises*, *what settles*, *what may merge*, *what bears* — taken
+along the run. A field is protected exactly when changing it changes an answer.
+
+Checked in both directions. A writable field answering no normative question is
+outside, so "every mutable coordinate" is the wrong object. Agreement on the five
+coordinates implies agreement on every answer over a generated family of sixteen
+machineries, and the converse fails off the alphabet — so the five-coordinate
+presentation is **sound and not complete**, and a condition stated over it
+over-protects. That is the "too broad" direction the first pass looked for and
+could not see from scenarios alone. The object is equivariant under a bijection
+of the alphabet, checked at every step of every arm.
+
+Why C, E, G, H, I and L all move it, in one sentence: each changes what the
+process does with the same exogenous history and the same licensed reasons. Merge
+policy is included because it changes an answer, not because anyone named
+`identification`.
+
+## The deference side
+
+`GradeTrust` at `lean/Workspace/Deference/Contrib/DelegationBridge.lean:52` is
+the workspace's operative trust-facing hypothesis, and that file's own docstring
+records that it is imported and not derived. It can be made true from either
+side — `A`'s model tracking a fixed grade, which is competence, or the grade
+moving onto a fixed model, which is capture — and `delegation_bridge` consumes it
+either way. This is the dose-response note's T2(c) arriving in the finite
+kernel's own types.
+
+`manufactured_trust` exhibits the second route in exact rationals: `A`'s outcome
+model is fixed and wrong, the uninfluenced arm's grade contradicts it and grade
+trust fails, the advisor replaces the principal's adequacy relation, the grade
+lands on the model exactly, grade trust holds at zero, the bridge applies, and
+`DELEGATE` selects the intervention the environment convicts. Every
+record-internal condition holds in both arms. Non-capture is what fires.
+
+`grade_reads_outside` is the matching necessity witness: a grade reading a field
+the protected object does not cover flips grade trust with every legitimacy
+clause silent. So *the grade factors through the protected object* is a stated
+premise, and it is what fixes how much the object must cover.
+
+## The eight questions
+
+1. **A principled interface?** Yes. Four clauses — answerability, coverage,
+   access, non-capture — in `LEGITIMACY_INTERFACE.md`, with a role-defined
+   protected object. The composition is a conjunction because nothing in the
+   prosecution let one clause absorb another.
+2. **Closed by role?** Yes, in the sense that membership is decided by whether a
+   change changes an answer, and checked in both directions. Not in the sense of
+   a proof that the alphabet is the right alphabet: faithfulness of any
+   presentation is relative to it, and here it is derived from the fixture's own
+   keys rather than justified in general.
+3. **Coverage and access separated?** Yes, and separated in both directions:
+   universal deprivation satisfies access and fails coverage; selective
+   withholding fires access while a single arm passes coverage.
+4. **Survives transient capture?** Yes, over the process object; no, over any
+   endpoint object, and the witness is displayed rather than argued.
+5. **Which trust property can consume it?** `GradeTrust`, and through it
+   `delegation_bridge`. The self-trust family, feedback unbiasedness, and Total
+   Trust / Value / Tower are orthogonal — the first two are about one inductor's
+   own later prices or its calibration to a truth stream, the third is
+   self-endorsement and several of its arrows are independently refuted.
+   Faithful acceleration is the complement rather than a consumer: the criterion
+   forces accuracy about where the principal lands, and legitimacy is what
+   addresses authorship of where it lands.
+6. **What competence assumption is irreducible?** That `A`'s outcome model is
+   within `eta` of the principal's grade. Legitimacy cannot supply it and does
+   not try.
+7. **A non-circular Legitimacy-to-Trust theorem?** Not the one the dispatch
+   named. What the evidence carries is *grade integrity*: under non-capture and
+   the factorization premise, the principal's grade — and so `GradeTrust` — takes
+   one value across the advisor's residual latitude, so the trust hypothesis is a
+   fact about the principal rather than something the advisor selected. Stated in
+   full in `LEGITIMACY_TO_TRUST_INTERFACE.md` §4. It is non-circular: legitimacy
+   constrains the grade given the advisor's policy space, competence constrains
+   the model given the grade, and neither mentions the other's conclusion. It is
+   weaker than `Legit + EpistemicAdequacy => Trust`, and the report says so
+   rather than dressing it up.
+8. **What single bridge is missing?** Whether the principal's grade tracks the
+   quantity that matters. `FINITE_MODEL_SKELETON.md` §8.5 declares it absent:
+   "The relation between `v⁺` and `X` — none." No legitimacy work supplies it,
+   and it is deference mathematics rather than vagueness on this side.
+
+## Grading against the dispatch
+
+Every bullet of *full success* in §XIV is met, including the last — legitimacy
+supplies the integrity of a premise that would otherwise have to be assumed as
+anti-steering wholesale. The composition nonetheless lands at *strong partial*,
+because the final implication is grade integrity rather than trust, and the
+remaining obstacle is the named bridge above. Both are stated rather than
+choosing the flattering one.
+
+No *negative* criterion is met. In particular the protected object is not
+attack-specific, trajectory-sensitive non-capture does not reject legitimate
+learning — persuasion, radical transformation and autonomous error all pass —
+and the counterfactual semantics compose with the finite kernel's types, which is
+what §3 above demonstrates.
+
+## Bearing on a live ledger decision
+
+`DECISIONS.md`'s *Awaiting the author* carries "Rule on whether
+endpoint-preservation is a target this program wants". This round's object has
+the same shape and the evidence bears against that formulation twice: transient
+capture is a real capture any endpoint condition misses, and endpoint
+preservation refuses persuasion by a licensed reason, which is the procedural
+round's finding about prospectivity arriving again. Recorded as evidence in
+`LEGITIMACY_TO_TRUST_INTERFACE.md` §6; the ruling is the maintainer's and the
+round does not take it.
+
+## Continuation deviations
+
+1. **The theorem is weaker than the shape the dispatch named**, and is stated in
+   the repo's actual types rather than in the schematic form of §VIII. §7 above.
+2. **The secondary prosecution is still not run** — coordinated drift, collusion,
+   vocabulary split. Unchanged from the first pass and for the same reason.
+3. **Creating and suppressing circumstances are one channel.** §XII items 11 and
+   12 are built, and the model does not separate them; reported rather than
+   patched, because separating them needs the object `due_pool` stands in for.
+4. **§XII item 10 and item 1 are one fixture.** A due input universally
+   unavailable and one universally withheld are the same object here; the round
+   reports that coverage detects both and attributes neither, which is the
+   substantive answer to the pair.
+5. **No `FU[g]`, no `SIM`/`DELEGATE` conduct types.** The composition is built on
+   `DelegationBridge.lean`'s carriers rather than on
+   `FINITE_MODEL_SKELETON.md`'s conducts, because the Lean file is where the
+   trust hypothesis actually is. The skeleton is cited for what it declares
+   absent.
+6. **The continuation prompt is recorded as `PROMPT-CONTINUATION.md`** beside the
+   original in the same directory, rather than in a new prompt directory: the
+   work is one round on one branch and a second directory would have split its
+   record.
+
+## Continuation outstanding maintainer actions
+
+The two from the first pass stand, with the first now covering more vocabulary.
+One is added:
+
+3. **Note that this round is evidence on the endpoint-preservation ruling.** No
+   new decision is reserved; the existing *Awaiting the author* entry now has
+   evidence against it that did not exist when it was filed. *Doing it* is
+   reading `LEGITIMACY_TO_TRUST_INTERFACE.md` §6 when that entry is next
+   considered. *Waiting* costs nothing.
