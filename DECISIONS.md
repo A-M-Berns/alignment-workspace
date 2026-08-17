@@ -153,6 +153,24 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   means a wiki pull request opened under any other identity fails the gate with
   nothing wrong with its content.
 
+- **Decide the counterfactual-legitimacy vocabulary.** The round at
+  `projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy/`
+  introduces reason-mediated non-capture, protected access, the licensed-reason
+  trace, `ProtectedNormativeProjection` and its `identification` coordinate, the
+  reason and residual channels, and the variation class — all marked provisional
+  and listed in the round's report §9. *Doing it* is one sitting over
+  `COUNTERFACTUAL_INTERFACE.md` and `MODEL.md`. *Waiting* costs little now and
+  more once a second round builds on the terms.
+
+- **Decide whether the counterfactual-legitimacy round's open questions become
+  ledger items.** Five, in that round's `THEOREM_MAP.md` §6; the load-bearing one
+  is whether a scorekeeping practice can produce a `Due` whose extension an
+  advisor cannot select within, which is what the round's second clause needs and
+  does not derive. The round filed none: it was not dispatched to file, and
+  nothing in it enters the registry. *Doing it* is reading §6 and choosing which,
+  if any, to file. *Waiting* leaves the questions recorded only inside a
+  completed round.
+
 ## Settled
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
