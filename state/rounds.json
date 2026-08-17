@@ -379,6 +379,17 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-12-legitimacy-reorganization",
+      "date": "2026-08-12",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-12-legitimacy-architecture",
+      "verdict": "partial success",
+      "verdict_source": "prompts/2026-08-12-legitimacy-reorganization/REPORT.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-12-legitimacy-reorganization/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-12-reachable-corrective-control",
       "date": "2026-08-12",
       "project": "deference",
@@ -387,6 +398,17 @@
       "verdict_source": "projects/deference/rounds/2026-08-12-reachable-corrective-control/REACHABLE_CORRECTIVE_CONTROL.md",
       "registered_classes": [],
       "prompt": "prompts/2026-08-12-reachable-corrective-control/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-13-procedural-legitimacy",
+      "date": "2026-08-13",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy",
+      "verdict": "four-condition sufficiency is REFUTED",
+      "verdict_source": "prompts/2026-08-13-procedural-legitimacy/REPORT.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-procedural-legitimacy/PROMPT.md",
       "claim_changes": []
     },
     {

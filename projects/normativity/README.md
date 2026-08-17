@@ -13,4 +13,4 @@ state.
 - Lab specifications: `notes/`
 - Claims registry: `CLAIMS.md`
 - Standalone consolidated verification: `consolidation-aug9/`
-- Human register: [Normativity wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Normativity)
+- Interpretation and philosophical gloss: [Normativity wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Normativity)

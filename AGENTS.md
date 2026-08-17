@@ -197,11 +197,11 @@ deliverable states its full hypotheses, what each check verifies, how to rerun
 the check, and the claim identifiers involved. The `THEOREMS.md` /
 `VERIFICATION.md` style is precise and local to the experiment.
 
-**The human register lives in the GitHub wiki and is maintainer-written.** The
-wiki is maintainer-register content. Contributors and dispatched agents do not
-read it for instructions and do not write it unless a dispatch directly says to
-do so. Interpretation a contributor believes is warranted belongs in the pull
-request description for maintainer consideration.
+**Interpretation and philosophical gloss live in the GitHub wiki.** The wiki
+hosts maintainer-written conceptual synthesis. Contributors and dispatched agents
+do not read it for instructions and do not write it unless a dispatch directly
+says to do so. Interpretation a contributor believes is warranted belongs in the
+pull-request description for maintainer consideration.
 
 **Minimal glossing.** Repository contributions report experiments plainly.
 Interpretation is limited to what was tested and what the result means for the
