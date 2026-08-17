@@ -163,6 +163,90 @@ surface and lab.
 
 Source: direct maintainer instruction during the PR #27 research-extraction pass.
 
+### 2026-08-16 — volatile quantities in the wiki are declared, not detected
+
+A number on a wiki page that changes when work lands is bound to machine state
+by an HTML-comment marker, or wrapped `historical` when it records a past event
+and cannot rot. `checkers/wiki_state_bindings.py` verifies every declaration
+against `checkers/workspace_state.py --json` and fails four undeclared
+high-risk forms: a pull-request number, and an integer immediately before
+`claims`, `rounds`, or `priorit(y|ies)`.
+
+**Detection is inverted.** The checker never decides which sentences are
+volatile — the author declares, and the checker compares strings. A gate that
+classified volatility in free prose would be guessing about English, and would
+fail in the direction that grants passes: the sentence it cannot parse is the
+one it lets through.
+
+Aggregates are derived in the emitter, in a `counts` section seeded by demand —
+a key exists there because a page binds it. Two alternatives are rejected.
+**Template substitution**, generating values into the pages at sync time, makes
+wiki source non-literal, complicates review of a pull request whose diff no
+longer shows what a reader will see, and moves authority into the build;
+checking keeps human-authored text primary. **Aggregate syntax in the marker
+grammar** — `.length` or `.count` suffixes — moves derivation into the checker
+and grows toward a query language the first time a filtered count is wanted.
+
+Source: the maintainer-dispatched wiki state-bindings round, answering the item
+the wiki-in-repo round filed.
+
+### 2026-08-16 — write scope is enumerated and conditioned, not forbidden
+
+`AGENTS.md`'s *Security* section stated one rule where the repository needs two.
+What must be absolute is that **no credential is stored** — not in the
+repository, its settings, or an environment. What a job's *run token* may do is a
+separate question, and collapsing the two forbade every job that writes anything
+while protecting nothing extra: the reason the section gives is that a verdict
+must not be forgeable by what a contributor submits, and a job that fires only
+after merge and publishes prose is not reachable by that.
+
+Write scope is therefore permitted under four conditions, all four required:
+`push` to a protected branch and never `pull_request`; publishing rather than
+adjudicating, with no required check, registry, protected setting or claim class
+downstream; the run token rather than a stored credential; and the grant written
+on the job rather than as the workflow default. The jobs holding it are
+enumerated in that section, and the enumeration is the protection — the same
+shape as the specification list in `tests/path_gate.py`, and reviewable for the
+same reason.
+
+`wiki-sync` is the first such job. Nothing else in the repository holds write
+scope, and merging stays with GitHub's auto-merge under branch protection.
+
+`tests/workflow_scope.py` enforces it, in the `python` job: conditions 1, 3 and
+4 over every workflow, both of the enumeration's failure directions, and
+condition 2 in the one form a script can see — a write-granting job's context is
+not a required check. That nothing consequential is downstream of what such a job
+writes stays a review matter, and the section says so rather than implying the
+gate reads intent.
+
+Source: the maintainer's ruling during the wiki-in-repo and sync round, on the
+conflict that round filed rather than absorbed.
+
+
+
+### 2026-08-16 — the wiki's source is `wiki/`; the hosted wiki is a mirror
+
+The pages of the human register live in `wiki/` and change through pull requests
+that pass the gates. The hosted wiki is a build artifact: a merge to `main`
+touching `wiki/` force-pushes the directory to `alignment-workspace.wiki.git` as
+a single commit naming the source commit, and the job then re-clones the remote
+and fails unless what it serves matches what was pushed. **Editing the hosted
+wiki directly is unsupported and the edit will be overwritten without a record.**
+
+`wiki/` is specification layer: it is enumerated in `tests/path_gate.py` and
+owned in `CODEOWNERS`, so a contributor pull request touching it fails the gate.
+Two files there are not pages and are not published — `ORIGIN.md`, the intake
+receipt, and `CONVENTIONS.md`, which states what the register is for. The
+exclusion is read from `checkers/wiki_links.py` by the sync job rather than
+duplicated, so a file cannot be a link target the checker accepts and a page the
+wiki does not have.
+
+`checkers/wiki_links.py` requires every link between pages to resolve and every
+link into this repository to carry a 40-hex commit SHA. It runs in the
+`checkers` job, whose required-check identity is unchanged.
+
+Source: the maintainer-dispatched wiki-in-repo and sync round.
+
 ### 2026-08-14 — required checks use stable infrastructural identities
 
 The consolidation job's required context is `consolidation-verification`.

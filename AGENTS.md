@@ -740,6 +740,7 @@ which are required.
 | model attribution in the pull-request body | `dco` — `tests/attribution.py`; presence and non-emptiness only |
 | no personal names in prose | `python` — `tests/name_lint.py`, `wiki/` included |
 | the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
+| volatile quantities in the wiki are declared and match machine state | `checkers` — `checkers/wiki_state_bindings.py` |
 | CI write scope is enumerated and conditioned; no stored secrets | `python` — `tests/workflow_scope.py` |
 | 2, exact arithmetic | **not gated** — review; a float in theorem-bearing code is a finding |
 | 3, theorem ships as four things | **not gated** — review; the PR template asks for each |

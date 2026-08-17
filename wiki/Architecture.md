@@ -55,11 +55,11 @@ hypothesis. Coverage measures how often the relevant `Due` occasions appear
 relative to the learning scale.
 
 > **Current status — Open / unregistered.** The abstract theorem and dynamics
-> witness are current research results with exact round verdicts, but PR #31
-> registered no workspace claim. `Due` has no satisfactory substantive
-> instantiation; `Licensed` has interface discipline but not substantive
-> soundness; performance is successful only for the fixtures; coverage remains
-> a hypothesis.
+> witness are current research results with exact round verdicts, but
+> <!--historical-->PR #31 registered no workspace claim<!--/historical-->.
+> `Due` has no satisfactory substantive instantiation; `Licensed` has interface
+> discipline but not substantive soundness; performance is successful only for
+> the fixtures; coverage remains a hypothesis.
 
 ## Hypothesis ledger
 

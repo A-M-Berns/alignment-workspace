@@ -29,12 +29,37 @@ link to another page here resolves to a page that exists.
 
 ## Volatile quantities
 
-Claim counts, pull-request numbers, round tallies, "N of M items closed" — a
-number that changes when work lands **either cites `state/*.json` as its source
-or does not appear on the page**. Prose that names a number is prose that is
-wrong on a date nobody notices, and the wiki is the register least likely to be
-re-read when the number moves. Say what kind of thing there is and point at the
-structured state for how many.
+A number that changes when work lands — a claim count, a pull-request number, a
+round tally — **is declared, or it does not appear.** Declaring it is two HTML
+comments, invisible in the rendered page, and `checkers/wiki_state_bindings.py`
+compares what you wrote against what the workspace says today.
 
-Nothing checks this yet; `PRIORITIES.md` carries the item for a checker that
-would.
+**Bind a live quantity** to a dotted path into the state emission:
+
+```
+The consolidation is a separate
+<!--state:workspace:counts.foundation_claims-->180<!--/state-->-claim foundation.
+```
+
+`workspace` is `python3 -m checkers.workspace_state --json`, this repository's
+one adjudicator; `python3 -m checkers.wiki_state_bindings --sections` lists the
+sections it offers. Aggregates live in its `counts` section, because deriving
+them here would make the wiki a second judge of what the workspace holds. A path
+that has no key is a request to the maintainer to grow the emitter, not a licence
+to write the number bare.
+
+**Mark a past event historical** when the statement cannot rot:
+
+```
+<!--historical-->PR #31 registered no workspace claim<!--/historical-->
+```
+
+Nothing inside is verified, which is why it is capped at three lines: it marks a
+statement, not a section.
+
+**Four forms fail unless declared** — a pull-request number, and an integer
+immediately before `claims`, `rounds`, or `priorit(y|ies)`. That list is a
+backstop for what gets written without thinking, not a definition of volatility;
+nothing here reads free prose to guess. **A hit is not a complaint about the
+sentence.** It asks where the number came from, and the remedy is to bind it or
+mark it historical. Growing the list is a maintainer act.
