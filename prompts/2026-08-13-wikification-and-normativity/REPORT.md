@@ -10,10 +10,10 @@ Verdict: `repo-consolidated / wiki-live / machine-state-valid / 0 drift-risk fil
 
 ## Durable handoff
 
-- Path map: `FINAL_PATH_MAP.md`, generated from `state/projects.json`.
-- Vocabulary sheet: `VOCABULARY_SHEET.md`, generated from
+- Path map: `state/views/FINAL_PATH_MAP.md`, generated from `state/projects.json`.
+- Vocabulary sheet: `state/views/VOCABULARY_SHEET.md`, generated from
   `state/vocabulary.json`.
-- Verdict/status inventory: `VERDICT_STATUS_INVENTORY.md`, generated from
+- Verdict/status inventory: `state/views/VERDICT_STATUS_INVENTORY.md`, generated from
   `state/rounds.json` and the sole claims registry.
 - Regeneration: `python3 -m checkers.workspace_state --write-handoff`.
 

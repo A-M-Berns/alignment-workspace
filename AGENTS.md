@@ -730,6 +730,7 @@ which are required.
 | 4, sorry-free | `lean` — the build, plus a textual scan |
 | 4, `#print axioms` present | `lean` — `tests/audit_axioms.py` |
 | 4, results audit to the three | `lean` — re-elaborates each file; also catches `sorryAx` |
+| the Lean gate runs whenever a change can reach it | `lean` — `tests/lean_scope.py`, which fails closed |
 | 5, runners | `python` — `tests/run.py` |
 | the consolidation still verifies | `consolidation-verification` — its own runner, from a copy |
 | the two layers | `path-gate` — a non-maintainer pull request touching a specification path fails |
@@ -742,6 +743,7 @@ which are required.
 | the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
 | volatile quantities in the wiki are declared and match machine state | `checkers` — `checkers/wiki_state_bindings.py` |
 | CI write scope is enumerated and conditioned; no stored secrets | `python` — `tests/workflow_scope.py` |
+| a round's record and its provenance row land together | `python` — `tests/round_records.py` |
 | 2, exact arithmetic | **not gated** — review; a float in theorem-bearing code is a finding |
 | 3, theorem ships as four things | **not gated** — review; the PR template asks for each |
 | 6, no permanent naming | **not gated** — review; the PR template asks |

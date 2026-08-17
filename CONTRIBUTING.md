@@ -53,8 +53,10 @@ python3 -m checkers.wiki_links                    # checkers: wiki links resolve
 python3 -m checkers.wiki_state_bindings           # checkers: wiki quantities are declared
 python3 tests/path_gate.py                        # path-gate: which layer your files are in
 python3 tests/workflow_scope.py                   # python: CI write scope is enumerated
+python3 tests/round_records.py --self-test        # python: a round lands with its provenance row
 python3 tests/conservativity.py                   # conservativity: no new axioms
 cd lean && lake exe cache get && lake build       # lean: sorry-free
+python3 tests/lean_scope.py --self-test           # lean: does this change reach the gate
 python3 tests/audit_axioms.py                     # lean: axiom audit
 cd projects/normativity/consolidation-aug9 && python3 tests/run.py   # consolidation-verification
 ```
