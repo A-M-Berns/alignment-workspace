@@ -53,6 +53,18 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
   leaves the current documents explicitly `ci-only` and unadopted.
 
+- **Decide where a second theorem-facing interface lives in structured state.**
+  `state/theorem_interface.json` holds one interface object and
+  `checkers/workspace_state.py` wraps it as a one-element list, so the force
+  interface is absent from the state emission while its living note sits in
+  `projects/normativity/notes/`. The round declined both available workarounds —
+  editing a trust-chain checker, and overloading `normativity.learning.current`
+  with an unrelated object, which would put two meanings of "the current
+  Normativity interface" in one record. *Doing it* is either a small emitter edit
+  or a ruling that the file is reserved for the response-learning theorem, said in
+  `RESEARCH_STATE.md`. *Waiting* leaves a reader orienting from the state emission
+  unable to find the force interface at all. Filed as `PRIORITIES.md` F10.
+
 - **Confirm the traderized force interface as a living note.** The round
   installed `projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md` — the force
   layer's input type, its conformance theorem, the liability obligation it emits

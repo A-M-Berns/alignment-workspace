@@ -38,21 +38,30 @@ information, not about mechanism convenience. Force consumes `K_t`; it does not
 determine `C_t`.
 
 **Paper verdict: the core generalized-LI paper is available conditional on one
-named theorem** — the live-world TradingFirm lift, which is read off the source
-proofs and not formalized. Everything else on the spine is derived, proved,
-witnessed, or an explicitly downstream application.
+named theorem** — the live-world Budgeter/TradingFirm lift, stated with its three
+hypotheses in `PAPER_RECONCILIATION.md` §2, read off the source proofs and not
+formalized. Everything else on the spine is derived, proved, witnessed, or an
+explicitly downstream application.
+
+**Construction verdict: the generalized construction is not the ordinary one.**
+The world process feeds the `Budgeter`, not only the criterion, so `TF^live + E`
+and `TF^D + E` are different functions of the same belief history — scaling `1/5`
+against two worlds, `1` against one, on a displayed fixture. They coincide exactly
+when `Ω^live = PC(D_t)`, which is the deductive case.
 
 ```sh
-python3 tests/run.py     # 158 tests, exact rationals
+python3 tests/run.py     # 168 tests, exact rationals
 ```
 
-Four claims from earlier passes are withdrawn, each with its counterexample kept
-as a regression in `tests/test_regressions.py`: an intensity-free liability
+Five claims from earlier passes are withdrawn, each with its counterexample kept
+as a regression in `tests/test_regressions.py` or `tests/test_budgeter.py`: an intensity-free liability
 ceiling; an exactness impossibility stated for every empty-interior region; the
 reading of a live world as one whose own price vector is admissible, with the
 laundering conclusion that depended on it; and the reading of semantic
 admissibility off a price region by preimage, with the deductive recovery that
-depended on *that*.
+depended on *that*; and the claim that the generalized construction is the
+ordinary one under a different criterion, which the Budgeter's own dependence on
+its world process refutes.
 
 | file | what it is |
 |---|---|
@@ -65,8 +74,9 @@ depended on *that*.
 | `DEDUCTION_SPECIAL_CASE.md` | deduction as the calibration case; presentation cost; the four equivalence relations |
 | `INTEGRATION_MAP.md` | objects touched and untouched, the four vocabulary collisions, Legitimacy and Deference |
 | `THEOREM_MAP.md` | every result with its evidence class, and the named future Lean port target |
-| `PAPER_RECONCILIATION.md` | credal semantics, support-live worlds, the live-world lift, deductive recovery, and the expectation/worldwise bridge |
-| `PROSECUTION.md` | seventeen attacks; the worst of them is the round's own |
+| `SEMANTIC_PROJECTION.md` | `C_t`, `π_t`, `K_t`, fibre saturation, and the support loss under projection |
+| `PAPER_RECONCILIATION.md` | the two constructions, the live-world lift with its three hypotheses, deductive recovery, and the paper spine |
+| `PROSECUTION.md` | twenty-two attacks, with a current verdict: what landed, what was withdrawn, what is open |
 
 ## The other verdicts
 

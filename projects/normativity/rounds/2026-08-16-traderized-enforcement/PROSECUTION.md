@@ -1,15 +1,17 @@
 # Prosecution
 
-Sixteen attacks. Four land, one lands partially, and the rest are answered. The
-four that land are in the report and in the pull-request description.
+Twenty-two attacks — sixteen from the opening dispatch and six raised by later
+passes, three of those against the round's own claims. The current verdict is at
+the foot of the file; two earlier verdicts are withdrawn there.
 
 ## W1 — Fake enforcement: the trader profits but the price does not move
 
-**Answered, and sharpened by the exactness fork.** For a region with an interior
-the answer is now outright: the interior-anchored compiler forces membership
-against every disturbance in the declared class, so nothing survives outside.
-For a region without an interior no continuous trader does, and what is delivered
-instead is a declared tolerance — which the constitutional interface is built to
+**Answered, and sharpened by the exactness case analysis.** In the dimensions
+tested, an interior-anchored compiler on a region with an interior forces
+membership against every disturbance in the declared class, so nothing survives
+outside — `test-supported`, not general. For a one-sentence region strictly
+inside `(0,1)` no continuous trader does, which is derived. What is delivered in
+that case is a declared tolerance, which the constitutional interface is built to
 consume. The old answer follows.
 
 **Answered.** The profit and the price constraint are the same inequality. At a
@@ -160,11 +162,14 @@ can consume, and the round says so rather than assuming an oracle.
 **Answered, with a split, and the split is now quantitative.** Every enforcement
 statement is per date and consumes no stability whatever: Theorems 2, 3 and 4
 hold at each date independently, so `K_n` may vary arbitrarily. The *safety*
-statements do not, and the follow-up says exactly how much variation they need:
-`∑_t C_t · max_j d_j(W) < ∞`. A region that moves is safe when it moves *towards*
-admitting the worlds that stay live, fast enough to beat the growth in ordinary
-volume, and unsafe when it holds a fixed exclusion. Both are displayed
-(`test_contract`). Time-variation is not the enemy; a non-decaying exclusion is.
+statements do not. What they need is bounded cumulative enforcement liability,
+for which the surviving sufficient bound is
+`∑_t (ε_t + C_t)·‖d_t(ω)‖₁ / δ_t < ∞` — intensity-dependent, since the
+intensity-free ceiling was withdrawn (W18). A region that moves is safe when it
+moves *towards* admitting the worlds that stay live fast enough for that sum to
+converge, and the fixed-exclusion case makes it diverge. Both are displayed
+(`test_contract`). Time-variation is not the enemy; a non-decaying exclusion
+against growing volume is.
 
 ## W14 — Vocabulary collision
 
@@ -179,10 +184,14 @@ interface's downside limit — each with the reason the objects differ, in
 **Answered by a stated separation.** Operative force is cheap: any nonempty
 region with a computable rational row presentation gets it, at any positive
 intensity. The mechanism is indifferent to whether the region is right, and W11
-shows it will hold a singleton just as readily. The one thing the market itself
-checks about a source is deductive consistency — a source that persistently
-excludes a settled fact makes the market exploitable (W5's fixture) — and that is
-not legitimacy. `README.md` states the separation and the report repeats it.
+shows it will hold a singleton just as readily.
+
+An earlier draft added that the market "checks deductive consistency" of a
+source. **Withdrawn as an overclaim.** The market checks its own price contract.
+What is true is that a source generating unbounded cumulative enforcement
+liability breaks the preservation theorem's hypothesis, and that in one displayed
+shape an explicit trader exploits (W5). That is a witness, not a soundness check,
+and neither is legitimacy.
 
 ## W16 — Deduction overclaim: a toy arbitrage described as replacing `D`
 
@@ -264,14 +273,45 @@ The repair is to make `C_t` primitive and `K_t = π_t(C_t)` its image, and to na
 the reverse direction a lift wherever a source supplies only a region.
 `test_semantics.ProjectionLosesSupport`.
 
-## What lands
+## Current verdict
 
-W3 against the naive construction, which is why the round uses the full row
-system. W5 in its price-channel form. W9, which downgrades the deduction claim
-from replacement to addition. W12, which prices the deduction case honestly.
-**W11a, exactness and safety bought from the same account.** W18 and W19, the two
-review counterexamples, each retracting a claim of the second pass. **W20, which
-is the deepest: the generalized semantics can be chosen to satisfy its own safety
-condition.** W11 lands partially, as a fact about what the mechanism means rather
-than whether it holds. W17 was raised by the first pass and withdrawn by the
-second.
+### Landed criticisms
+
+**W3** — a single separating hyperplane enforces one half-space and overshoots;
+the round uses the full row system.
+**W5** — the price channel is a real transfer route, and a source can make
+ordinary traders unboundedly rich through it.
+**W9** — the traderized process does not do what `D` does; deduction is recovered,
+not replaced.
+**W11a** — exactness and safety are bought from the same account, and the round
+produces no compiler that is both.
+**W12** — enforcing coherence exactly is computable and not efficiently so.
+**W18, W19, W21** — the round's own three counterexamples, each retracting a claim
+it had made.
+
+### Withdrawn criticisms
+
+**W17** — the disturbance bound was read as an unattributable third cause; it is a
+declared assumption, and attribution stays total and exclusive.
+**W20** — the generalized assessment set was said to launder liability
+automatically. It rested on the Dirac reading of a live world, which is not the
+definition; under support the disfavoured world stays live and the position still
+loses there.
+
+### Remaining open attacks
+
+**Is either liability bridge necessary?** (item 45). **What governs removing a
+world from support altogether?** (item 44) — settlement-shaped, and the narrow
+residue of W20. **Does a compiler exist that is both exact and safe?** (item 43).
+**Is face-solidity the right exactness condition?** — conjectural, with witnesses
+on both sides.
+
+### The exactness picture, at its earned levels
+
+Exactness at zero slack against the violation-proportional compiler is
+kernel-checked. The interior-anchored construction is test-supported in one and
+two dimensions. Impossibility for a one-sentence region strictly inside `(0,1)`
+is derived. Cube-face settlement pinning is enforced exactly, witnessed in one and
+two dimensions — **it is the easy case, not the hard one**. The general
+`face-solidity` condition is a conjecture. No claim is made that every
+empty-interior region is hard.

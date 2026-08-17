@@ -57,25 +57,50 @@ every earlier date, so the cumulative sum is a sum of nonnegative terms and
 
 ## 3. The safety theorem
 
-**Theorem 9 (sufficiency).** Let the modified algorithm be
+The preservation result is two steps, and separating them matters because the
+force layer must not appear to obtain a generalized criterion by quoting an
+ordinary lemma about a construction it is not using.
 
-    P_n := MarketMaker_n( TradingFirm^D_n(P_{<n}) + E_n , P_{<n} ) .
+**Step 1 — the generalized trading-firm theorem.** Under (L1)–(L3) of
+`PAPER_RECONCILIATION.md` §2, `TF^live` dominates every efficiently computable
+trader relative to the `L`-criterion: if some such trader exploits the market
+relative to `L`, so does `TF^live`. This is `lem:tfdom` with `PC(D_t)` replaced
+throughout, and it is **derived and unformalized** — the round's one load-bearing
+step of that kind.
 
-If the enforcement liability is bounded by some finite `B`, then no efficiently
-computable trader exploits `P`, and every such trader's plausible net worth is at
-most `1 + B`.
+**Theorem 9 (enforcement preservation).** Let the modified algorithm be
 
-*Proof.* The market-maker lemma applies to the priced aggregate, so
-`W(∑_{i≤n}(TF_i + E_i)) < 1` for every world and date. Subtracting,
-`W(∑_{i≤n} TF_i) < 1 + B` for every date and plausible world, so `TradingFirm`'s
-plausible assessments are bounded above and it does not exploit. Trading-firm
-dominance is untouched by the modification — it relates `TradingFirm`'s plausible
-net worth to a component's, given the market — so no efficiently computable
-trader exploits either. ∎
+    P_n := MarketMaker_n( TF^live_n(P_{<n}) + E_n , P_{<n} ) ,
 
-**Corollary 10.** A world-inclusive presentation gives `B = 0` and the bound `1`,
-which is the unmodified market's own bound. Enforcement onto such a region costs
-the criterion nothing.
+and suppose
+
+    inf over n and ω ∈ Ω_n^live  of  ω( ∑_{t≤n} E_t )  ≥  −B .
+
+Then no efficiently computable trader exploits `P` relative to `Ω^live`, and every
+such trader's assessed net worth is at most `1 + B`.
+
+*Proof, composed.*
+(i) The market maker's contract bounds the **combined** aggregate: for every world
+and date, `ω(∑_{i≤n}(TF^live_i + E_i)) ≤ ∑_{i≤n} 2^{-i} < 1`. The `1` is the
+source's geometric error budget and nothing else; a different per-date schedule
+changes the constant and not the shape.
+(ii) The enforcement trader contributes at least `−B` at every assessed world, by
+hypothesis.
+(iii) Subtracting, `ω(∑_{i≤n} TF^live_i) < 1 + B` for every date and assessed
+world, so `TF^live`'s assessed values are bounded above and it does not exploit.
+(iv) By Step 1, no efficiently computable trader exploits either. ∎
+
+**Theorem 9 is conditional on Step 1.** The force layer supplies (ii) and nothing
+else; it does not supply a generalized criterion on its own, and the living note
+says so.
+
+*(The deductive instance is the case `Ω^live = PC(D_t)`, where Step 1 is the
+source's own `lem:tfdom` and Theorem 9 is unconditional.)*
+
+**Corollary 10.** A region containing every assessed world gives `B = 0` and the
+bound `1`. That is **sufficient for zero liability and not necessary for safety**:
+§4 displays a trajectory excluding an assessed world at every date whose
+cumulative liability is nonetheless bounded.
 
 `test_safety.SafeCase` runs a four-date stage sequence with a world-inclusive
 region and an ordinary aggregate positioned against the enforcement trader, and

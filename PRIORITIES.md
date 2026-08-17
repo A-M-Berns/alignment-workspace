@@ -527,12 +527,16 @@ part is not the type: a normative constraint exists to exclude states deduction
 permits, and the round's safety conditions then charge for that exclusion, so a
 nontrivial answer must come with the liability its regions induce.
 
-*Deliverable shape:* `test-supported` at minimum — a constructed map on the
-relational fixture, with the induced price projection, the live worlds it implies,
-and the enforcement liability computed exactly — or a displayed obstruction.
-*Acceptance check:* the round's runner passes with the constructed region checked
-for nonemptiness and priceability, and its liability computed over the live worlds
-the map implies.
+*Deliverable shape:* `test-supported` at minimum, and the round must ship all of:
+one nontrivial normative fixture; the `C_t` and/or `K_t` it generates; a
+feasibility witness; a rational row presentation the force API accepts; the
+resulting enforcement position; its conformance at a declared tolerance; the
+live-world enforcement liability if a semantic `C_t` exists; and a statement of
+whether the construction respects the settlement, provenance and answerability
+constraints the normativity line already carries.
+*Acceptance check:* `compile_force` accepts the presentation with the supplied
+witness and returns a certificate whose conformance holds at the fixture's prices,
+and the liability is computed exactly over the implied live worlds.
 *Context:* `projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md`;
 `.../2026-08-16-traderized-enforcement/SEMANTIC_PROJECTION.md` §4;
 `INTEGRATION_MAP.md` §4.
@@ -1469,6 +1473,34 @@ edits into ordinary appends; or check that every round directory under
 `prompts/` has a `PROVENANCE.md` row and, where its report claims a dated
 `DECISIONS.md` entry, that the entry exists. The state-bindings round restored
 all seven verbatim and filed this.
+
+### F10 — The structured state can hold exactly one theorem-facing interface
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+`state/theorem_interface.json` is a single interface object, and
+`checkers/workspace_state.py` wraps it as `"interfaces": [interface]`. The schema
+has no room for a second, and the emitter is a house checker on the trust chain,
+so a round cannot add one.
+
+The traderized-enforcement round produced a second theorem-facing interface — the
+force layer, with a living note at
+`projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md` — and left it out of
+the structured state rather than either editing the checker or overloading
+`normativity.learning.current` with an unrelated object. Overloading would have
+created two meanings of "the current Normativity interface" inside one record.
+
+So the machine-readable state currently says the workspace has one theorem-facing
+interface and the repository has two. A reader orienting from
+`python3 -m checkers.workspace_state --json` will not find the force interface at
+all.
+
+Two cheap moves, neither this round's to choose: make the emitter read a list of
+interface files, which is a small maintainer edit to a trust-chain file; or rule
+that `theorem_interface.json` is reserved for the response-learning theorem and
+say so in `RESEARCH_STATE.md`, so the absence is a documented policy rather than
+a gap. The round that hit this documented the choice in its report and filed
+this.
 
 ### F9 — Agent worktrees live inside the repository and nothing ignores them
 

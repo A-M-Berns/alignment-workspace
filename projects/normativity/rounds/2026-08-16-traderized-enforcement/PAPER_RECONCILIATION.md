@@ -30,12 +30,27 @@ world is live when *some* admissible credence gives it positive mass; it need no
 be admissible as a point mass. When a source supplies only a price region, the
 semantics is a **named lift** and not a derivation — `SEMANTIC_PROJECTION.md` §4.
 
-**They are not different algorithms.** The market maker, the trading firm, the
-budgeter and the enforcement trader are the same objects doing the same things in
-both; the price sequence is identical. What differs is the **criterion** — which
-worlds a trader's net worth is assessed in. That is the whole of the difference,
-and it is worth stating plainly because it makes the choice between them an
-editorial and conceptual decision rather than a mathematical fork.
+**They are different constructions, and an earlier draft of this note said
+otherwise.** The world process is not consumed only by the criterion: Logical
+Induction's `Budgeter` quantifies over it twice, in the shutoff test and in the
+scaling factor, so a construction assessed against `Ω_t^live` must use
+
+    TF^live + E     rather than     TF^D + E ,
+
+and these are different functions of the same belief history. One sentence, a
+unit buy at `1/2`, budget `1/10`: the scaling is `1/5` against `{A false, A true}`
+and `1` against `{A true}` alone, because the dropped world is exactly where the
+buy loses (`test_budgeter`). Different scaling, different aggregate, different
+prices.
+
+They **coincide in the deductive special case**, and only there: `C_t^D =
+Δ(PC(D_t))` gives `Ω_t^live = PC(D_t)`, whereupon the generalized Budgeter *is*
+the ordinary Budgeter. That specialization is checked across stages in
+`test_budgeter.DeductiveSpecialization`.
+
+So "same algorithm, different criterion" is available only under that explicit
+hypothesis, and the choice between the two models is a mathematical fork rather
+than an editorial one.
 
 **Generalized exploitation (Model B).** A trader `T` exploits `P` relative to a
 live-world process `Ω^live` when
@@ -53,26 +68,47 @@ an instance. §3 proves the recovery.
 
 ## 2. The live-world lift
 
-The source construction can be lifted off `PC(D_t)`. Reading the proofs for what
-they actually use:
+**Theorem (statement).** Let `L_t` be an **assessment-world process**: a sequence
+of sets of worlds satisfying
 
-| source object | what it needs of the assessment set |
+- **(L1) nesting.** `L_{t+1} ⊆ L_t`.
+- **(L2) uniformly effective restriction.** There is a total computable function
+  which, given `t` and a finite sentence set `S`, returns the finite list of
+  restrictions to `S` of the worlds in `L_t`. Equivalently for the source's use:
+  membership in `L_t` is decidable on a finite support, uniformly in `t`.
+- **(L3) nonemptiness.** `L_t ≠ ∅` for every `t`.
+
+Then the `Budgeter` and `TradingFirm` of `arXiv:1609.03543` §5, with `PC(D_t)`
+replaced by `L_t` throughout, are well defined and computable, and the analogues
+of `lem:budgeter`.1–3 and `lem:tfdom` hold with exploitation read relative to
+`L`.
+
+**What each hypothesis pays for**, from the source proofs:
+
+| source step | what it consumes |
 |---|---|
-| `lem:mm` | **nothing** — it quantifies over all worlds, so any assessment set inherits its bound |
-| `Budgeter` computability | finite on a finite support, and decidable uniformly in `n` |
-| `lem:budgeter`.1 | the same |
-| `lem:budgeter`.2 | **nested**: its induction needs a world live at `n` to have been live at `n-1` |
-| `lem:budgeter`.3 | only the exploitation definition |
-| `lem:tfdom` | `.2` and `.3` |
+| `Budgeter` computability | (L2): the shutoff test and the infimum both range over a finite, decidable restriction |
+| `lem:budgeter`.1 | (L2) only |
+| `lem:budgeter`.2 | **(L1)**: its induction needs a world assessed at `t` to have been assessed at `t-1` |
+| `lem:budgeter`.3 | the exploitation definition alone |
+| `lem:tfdom` | `.2` and `.3`, plus the source's `ℓ¹` bound on strategies, which is about the traders and not the world process |
+| `lem:mm` | **nothing** — it quantifies over all worlds, so any assessment process inherits its bound |
+| (L3) | not used by the algebra; without it the infimum in `Budgeter` is over an empty set and the criterion is vacuous |
 
-So the lift hypotheses are exactly three: the live-world process is **nested**,
-**effectively presented and finite on finite supports**, and **nonempty**.
-`PC(D_t)` is one instance. `test_live_worlds.LiftHypotheses` checks all three on
-the deductive instance, including that an inconsistent stage is empty and must
-therefore be refused upstream rather than passed to the construction.
+`PC(D_t)` satisfies all three: nesting because `D_t` is nested and propositional
+consistency is antitone in the stage; effective restriction because `D_t` is
+computable and propositional consistency on a finite support is decidable;
+nonemptiness for a consistent theory.
 
-This is a genuine lift and it is the paper step most clearly worth keeping. It is
-**derived** — read off the source proofs — and not formalized here.
+`Ω_t^live` satisfies (L1) when `C_{t+1} ⊆ C_t`, and the containment of credal
+sets is sufficient but not necessary — two credal sets can have the same live
+worlds with neither containing the other (`test_semantics.Nesting`). So the
+hypothesis to carry is nesting **of the live sets**, which is weaker.
+
+**Evidence: `derived`, and not formalized.** It is read off the source proofs, and
+it is the round's one load-bearing unformalized step. `THEOREM_MAP.md` says so and
+names it as the next formalization target. A later round has no ambiguity about
+the target: the statement above, instantiated at `L_t = Ω_t^live`.
 
 ## 3. Deductive recovery
 

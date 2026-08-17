@@ -16,7 +16,7 @@ A **price-space region** at date `t`, presented as finitely many rational rows
 
     K_t = { P ∈ [0,1]^{Φ_t} : ⟪c_j, P⟫ ≥ r_j,  j ∈ J_t } ,
 
-together with five declarations:
+together with six declarations:
 
 | declaration | what it is | who supplies it |
 |---|---|---|
@@ -43,7 +43,8 @@ an expressible feature and therefore a legal day-`t` trading strategy. It enters
 the aggregate the market maker prices against; it does **not** modify the market
 maker, which is why the maker's totality and every theorem about it survive.
 
-**The conformance guarantee.** At any price meeting the market maker's contract,
+**The conformance guarantee**, `lean-proved`. At any price meeting the market
+maker's contract,
 
     Σ_j β_{t,j} · g_j(P_t)²  ≤  ε_t + C_t^{vol}      hence   g_j(P_t) ≤ δ_t .
 
@@ -63,8 +64,16 @@ with `d_j(ω) = max(0, r_j − ⟪c_j,ω⟫)` the exclusion deficit and
 **The preservation theorem the obligation feeds.** If the cumulative liability
 over the assessment worlds is bounded by `B`, no efficiently computable trader
 exploits the modified market, and every such trader's assessed net worth is at
-most `1 + B`. Derived, composing two Logical Induction lemmas taken as
-hypotheses; not formalized.
+most `1 + B`.
+
+**This is conditional on the generalized live-world Budgeter/TradingFirm lift**,
+which is `derived` and unformalized. The force layer supplies the liability
+bound and nothing else; it does **not** independently supply a generalized
+Logical Induction criterion, and a caller reading a conformance certificate as
+one has misread this note.
+
+The compiler's legality as a source-side `Strategy n` is likewise `derived` — the
+embedding is exhibited in the source's feature grammar, not written as a term.
 
 ## What force does not determine
 
@@ -78,12 +87,20 @@ has misread this note.
 
 ## Boundaries of the guarantee
 
-**Exactness is not promised, and is sometimes unavailable.** The conformance
-tolerance can be made any positive rational; exact membership is available for
-regions with an interior and for regions on a cube face — settlement pinning is
-the easy case — and unavailable for a region strictly inside the open cube with
-empty interior, which is where a coherence relation lands. The general condition
-is conjectural.
+**Exact enforcement is not part of this API.** The stable guarantee is
+conformance to a declared tolerance; the default compiler is the
+violation-proportional one. What is known about exactness, at its earned levels:
+
+| statement | evidence |
+|---|---|
+| exactness at zero slack against the violation-proportional compiler | `lean-proved` |
+| interior-anchored exactness against a positive disturbance budget | `test-supported`, one and two dimensions only |
+| impossibility for a one-sentence region strictly inside `(0,1)` | `derived` |
+| cube-face settlement pinning enforced exactly | `witness`, one and two dimensions |
+| `face-solidity` as the general condition | `conjecture` |
+
+A caller wanting exactness is outside this interface and should read
+`ENFORCEMENT.md` §5 rather than assume any of the above generalizes.
 
 **A compiler that is both exact and safe is not known.** The interior-anchored
 compiler achieves exactness and loses the nonnegativity property; the

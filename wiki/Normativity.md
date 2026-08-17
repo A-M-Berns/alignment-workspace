@@ -159,12 +159,19 @@ And there is a trade the mechanism cannot presently escape. A participant whose
 position shrinks as the violation does is safe — it never loses where the region
 is right — but it can be neutralised by ordinary traders near the boundary, so
 what it delivers is conformance to a declared tolerance rather than exact
-membership. A participant that holds a floor outside the region delivers exact
+membership. A participant that holds a floor outside the region can deliver exact
 membership, and pays for it by holding positions where nothing is wrong, which is
-where its losses come from. Whether one participant can do both is open. For the
-regions that matter most — those pinned by a settled fact — exactness turns out to
-be unavailable to *any* such participant, and tolerance is what the surrounding
-machinery was built to consume anyway.
+where its losses come from. Whether one participant can do both is open.
+
+Where exactness is available turns on geometry, and not in the way one might
+guess. A constraint that pins a sentence to certainty — the shape a settled fact
+takes — is the **easy** case: it sits on a face of the space of possible prices,
+and a participant pushing outward from that face costs nothing to leave in place.
+The hard case is a constraint sitting strictly inside, of the kind a relation
+between sentences produces, where the participant must change direction as the
+price crosses it and continuity leaves a band it cannot hold. The general
+characterisation is not settled, and tolerance is what the surrounding machinery
+was built to consume anyway.
 
 ### Where it sits
 

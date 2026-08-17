@@ -52,23 +52,29 @@ class ForceCertificate:
 
 def compile_force(rows: Sequence[tuple[Sequence[Fraction], Fraction]],
                   dimension: int, slack: Fraction, volume: Fraction,
-                  tolerance: Fraction) -> ForceCertificate:
+                  tolerance: Fraction,
+                  feasibility: Sequence[Fraction]) -> ForceCertificate:
     """Compile a price-space row system into a certified enforcement position.
 
-    `rows` are `(coefficients, right-hand side)` pairs meaning
-    `⟪c, P⟫ ≥ r`. The caller supplies the market maker's slack, a bound on the
-    ordinary aggregate's realised position, and the tolerance it wants promised.
+    `rows` are `(coefficients, right-hand side)` pairs meaning `⟪c, P⟫ ≥ r`. The
+    caller supplies the market maker's slack, a bound on the ordinary aggregate's
+    realised position, and the tolerance it wants promised.
 
-    Raises when the region is empty on the cube's rational corners, which is the
-    cheapest nonemptiness screen and **not** a full feasibility certificate: that
-    is the adapter's job, upstream.
+    **Nonemptiness is the caller's precondition, discharged by a witness.**
+    `feasibility` is a point of the region — the cheapest certificate that says
+    what it means — and it is checked exactly. Nothing here searches for one: a
+    search over a rational grid is unsound as a screen, because a region can be
+    nonempty and miss every grid point. `K = {p = 1/3}` is the standing example.
+
+    Producing the witness is the feasibility adapter's job, upstream. The
+    settlement interface already decides nonemptiness of an admissible-reference
+    polytope by one linear program (`NL-SI-A3`), which is exactly this
+    obligation.
     """
     region = Region(dimension, [Row(c, r) for c, r in rows])
-    if not _plausibly_nonempty(region, dimension):
-        raise ValueError("region appears empty; run the feasibility adapter")
+    witness = tuple(Fraction(x) for x in feasibility)
+    if len(witness) != dimension:
+        raise ValueError("the feasibility witness has the wrong dimension")
+    if not region.contains(witness):
+        raise ValueError("the feasibility witness is not in the region")
     return ForceCertificate(ForceDeclaration(region, volume, slack, tolerance))
-
-
-def _plausibly_nonempty(region: Region, dimension: int) -> bool:
-    from enforcement import grid
-    return any(region.contains(p) for p in grid(dimension, 4))

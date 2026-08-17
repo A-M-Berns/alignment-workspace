@@ -64,57 +64,64 @@ under `tests/`. `witness` — a single displayed instance. `conjecture`.
 
 ## The paper's theorem spine
 
-Rebuilt after the semantic repair. Statements are in
-`PAPER_RECONCILIATION.md` and `SEMANTIC_PROJECTION.md`; this table is the
-evidence ledger. **Nothing here is registered.**
+Rebuilt after the semantic repair and the construction correction. Statements are
+in `PAPER_RECONCILIATION.md`, `SEMANTIC_PROJECTION.md` and `ENFORCEMENT.md`; this
+table is the evidence ledger. **Nothing here is registered.**
 
-| # | statement | evidence class | source | paper depends |
-|---|---|---|---|---|
-| 1 | generalized semantic state: `C_t ⊆ Δ(Ω_t)`, primitive | **derived** | `semantics.CredalSet`; `MODEL.md` §7a | yes |
-| 2 | support-live worlds `Ω_t^live = { ω : ∃ μ ∈ C_t, μ(ω) > 0 }` | **derived** | definition; `test_semantics` | yes |
-| 3 | projection `K_t = π_t(C_t)`, and `C ⊆ π⁻¹(π(C))` with equality iff `C` is fibre-saturated | **derived** | `SEMANTIC_PROJECTION.md` §2, Props 1–3 | yes |
-| 4 | the saturation is strict: `Δ({00,11})` vs the anticorrelated mixture | **witness** | `test_semantics.ProjectionLosesSupport` | yes |
-| 5 | world separation does not imply credal-set separation | **witness** | `test_semantics.FibreSaturation`; `π` injective on four worlds, saturation still strict | yes |
-| 6 | two credal sets, same projection, different live worlds and capacities | **witness** | `test_semantics.SamePriceProjectionDifferentLiveWorlds` | yes |
-| 7 | nesting: `C_{t+1} ⊆ C_t ⟹ Ω_{t+1}^live ⊆ Ω_t^live`; live-set nesting is strictly weaker | **derived** | `test_semantics.Nesting` | yes |
-| 8 | live-world TradingFirm lift, under nested / effectively presented / nonempty | **derived** | reading of `lem:budgeter`.1–3 and `lem:tfdom`; **not formalized** | yes — load-bearing |
-| 9 | deductive semantic recovery `C_t^D = Δ(PC(D_t)) ⟹ Ω_t^live = PC(D_t)`, both directions, no hypothesis on `π` | **derived** | `test_semantics.DeductiveSemanticRecovery` | yes |
-| 10 | criterion recovery to `LIC_D` | **derived** | immediate from 9 | yes |
-| 11 | constraint-to-trade compiler is a legal expressible strategy | **test-supported** | `enforcement.py`; expressibility argued, not proved | yes |
-| 12 | conformance: `Σ_j β_j g_j² ≤ ε_t + C_t` | **lean-proved** | `weighted_square_le_slack_add_volume` | yes |
-| 13 | enforcement inequality and its nonnegativity reading | **lean-proved** | `weighted_square_le_pair`, `pair_nonneg_of_mem` | yes |
-| 14 | liability identity with deficits | **lean-proved** | `weighted_square_sub_deficit_le_pair`, witness at nonzero deficit | yes |
-| 15 | exactness at slack zero | **lean-proved** | `le_pair_of_contract_zero` | yes |
-| 16 | exactness case analysis: interior, cube face, empty interior inside the cube | **derived + witness** | `ENFORCEMENT.md` §5; `test_regressions` | yes |
-| 17 | face-solidity as the general exactness condition | **conjecture** | one-dimensional theorem; witnesses on both sides | no |
-| 18 | constrained market maker can have no solution | **witness** | `test_contract.ConstrainedMakerNeedsAnExistenceTheorem` | yes |
-| 19 | bounded-liability preservation, bound `1 + B` | **derived** | composes `lem:mm` and `lem:tfdom`, taken as hypotheses | yes — load-bearing |
-| 20 | declared-quantity liability bound `(ε_t + C_t)‖d_t(ω)‖₁/δ_t` | **derived** | from 14; `test_contract.LiabilityCeiling` | yes |
-| 21 | support bridge `E_t(ω) ≥ (a − (1−θ)U)/θ`, `U` named | **derived** | `test_semantics.SupportBridge` | yes |
-| 22 | expectation control coexists with large worldwise loss at small capacity | **witness** | `test_semantics.SmallSupportHidesLargeLoss` | yes |
-| 23 | a region excluding a live world at every date, enforced forever, safely | **witness** | `test_contract.SafeWithoutWorldInclusiveness` | no |
-| 24 | necessity of either liability bridge | **open** | item 45 | no |
-| 25 | what governs removing a world from support | **open** | item 44 | no |
-| 26 | normative-static instantiation: a source producing `C_t` or `K_t` | **open** | item 39 | no |
+| # | statement | hypotheses | class | source | paper | API |
+|---|---|---|---|---|---|---|
+| 1 | semantic state `C_t ⊆ Δ(Ω_t)`, primitive | — | **derived** | `semantics.CredalSet`; `MODEL.md` §7a | yes | yes |
+| 2 | `Ω_t^live = { ω : ∃ μ ∈ C_t, μ(ω) > 0 }` | — | **derived** | definition; `test_semantics` | yes | yes |
+| 3 | `C ⊆ π⁻¹(π(C))`, equality iff `C` is fibre-saturated | — | **derived** | `SEMANTIC_PROJECTION.md` Props 1–3 | yes | no |
+| 4 | the saturation is strict: `Δ({00,11})` and the anticorrelated mixture | two priced sentences | **witness** | `test_semantics.ProjectionLosesSupport` | yes | no |
+| 5 | world separation does not imply credal-set separation | same fixture | **witness** | `test_semantics.FibreSaturation` | yes | no |
+| 6 | same projection, different live worlds and capacities | same fixture | **witness** | `test_semantics.SamePriceProjectionDifferentLiveWorlds` | yes | no |
+| 7 | `C_{t+1} ⊆ C_t ⟹ Ω_{t+1}^live ⊆ Ω_t^live`; live-set nesting is strictly weaker | — | **derived** | `test_semantics.Nesting` | yes | no |
+| 8 | **live-world Budgeter/TradingFirm lift**: under (L1) nesting, (L2) uniformly effective restriction, (L3) nonemptiness, the source construction runs over `L_t` | (L1)–(L3) | **derived** | `PAPER_RECONCILIATION.md` §2; **not formalized** | **yes — the paper's one conditional** | yes |
+| 9 | the generalized Budgeter is a different function: scaling `1/5` vs `1` on a displayed fixture | — | **witness** | `test_budgeter.TheWorldProcessChangesTheScaling` | yes | no |
+| 10 | deductive specialization: `Ω^live = PC(D_t)` ⟹ generalized Budgeter = ordinary Budgeter | `C_t = Δ(PC(D_t))` | **test-supported** | `test_budgeter.DeductiveSpecialization` | yes | no |
+| 11 | deductive semantic recovery `C_t^D = Δ(PC(D_t)) ⟹ Ω_t^live = PC(D_t)`, both directions, no hypothesis on `π` | — | **derived** | `test_semantics.DeductiveSemanticRecovery` | yes | no |
+| 12 | criterion recovery to `LIC_D` | 11 and 10 | **derived** | immediate | yes | no |
+| 13 | the compiled position is a source-side `Strategy n` | rows computable at date `t` | **derived** | `MODEL.md` §5; grammar exhibited, term not written | yes | yes |
+| 14 | conformance `Σ_j β_j g_j² ≤ ε_t + C_t` | market-maker contract | **lean-proved** | `weighted_square_le_slack_add_volume` | yes | yes |
+| 15 | enforcement inequality and its nonnegativity reading | `β_j ≥ 0` | **lean-proved** | `weighted_square_le_pair`, `pair_nonneg_of_mem` | yes | no |
+| 16 | liability identity with deficits | — | **lean-proved** | `weighted_square_sub_deficit_le_pair` + witness at nonzero deficit | yes | yes |
+| 17 | exactness at zero slack, no opposing volume | `K ≠ ∅`, `β_j > 0` | **lean-proved** | `le_pair_of_contract_zero` | no | no |
+| 18 | interior-anchored exactness against a positive disturbance budget | interior anchor | **test-supported** | one and two dimensions only | no | no |
+| 19 | impossibility for a one-sentence region strictly inside `(0,1)` | `C > 0`, continuous strategy | **derived** | `ENFORCEMENT.md` §5 | no | no |
+| 20 | cube-face settlement pinning is enforced exactly | `λ > C` | **witness** | `test_regressions`, one and two dimensions | no | no |
+| 21 | `face-solidity` as the general exactness condition | — | **conjecture** | one-dimensional theorem; witnesses both sides | no | no |
+| 22 | a constrained market maker can have no solution | displayed date | **witness** | `test_contract.ConstrainedMakerNeedsAnExistenceTheorem` | yes | no |
+| 23 | **enforcement preservation**: liability `≥ −B` over `Ω^live` ⟹ no efficient exploitation, bound `1 + B` | **conditional on 8** | **derived** | `FUNDING_AND_SAFETY.md` §3 | **yes** | yes |
+| 24 | declared-quantity liability bound `(ε_t + C_t)‖d_t(ω)‖₁/δ_t` | the certified declaration | **derived** | from 16; `test_contract.LiabilityCeiling` | yes | yes |
+| 25 | support bridge `E_t(ω) ≥ (a − (1−θ)U)/θ`, `U` named | `θ > 0` | **derived** | `test_semantics.SupportBridge` | yes | yes |
+| 26 | expectation control coexists with large worldwise loss at small capacity | — | **witness** | `test_semantics.SmallSupportHidesLargeLoss` | yes | no |
+| 27 | a region excluding a live world at every date, enforced forever, safely | displayed trajectory | **witness** | `test_contract.SafeWithoutWorldInclusiveness` | no | no |
+| 28 | necessity of either liability bridge | — | **open** | item 45 | no | no |
+| 29 | what governs removing a world from support | — | **open** | item 44 | no | no |
+| 30 | normative statics producing `C_t` or `K_t` | — | **open** | item 39 | no | no |
 
-26 entries: 10 derived, 6 witness, 4 lean-proved, 3 open, 1 conjecture, 1 derived + witness, 1 test-supported. The counts sum to 26.
+30 entries: 12 derived, 8 witness, 4 lean-proved, 3 open, 2 test-supported, 1 conjecture. The counts sum to 30.
 
-**Four rows are kernel-checked** — 12 through 15, carrying five Lean theorems and
-two inhabitation witnesses between them — and all four are force algebra. **Two are load-bearing and unformalized**: the live-world
-TradingFirm lift (8) and bounded-liability preservation (19). If one thing is
-formalized next it should be 8 — it is the step that makes the generalized
-criterion a theorem rather than an analogy, and it is read off source proofs
-rather than proved here.
+**Four rows are kernel-checked** — 14 through 17, carrying five Lean theorems and
+two inhabitation witnesses — and all four are force algebra.
 
-**No conjecture is hidden inside a derived row.** Entry 17 is the only
-conjecture and is labelled as one; entry 16 is split into its derived and
-witnessed halves.
+**One row is the paper's conditional.** Entry 8, the live-world lift, is `derived`
+and unformalized, and entry 23 depends on it. Formalizing 8 is the single
+highest-value next piece of work: it is what makes the generalized criterion a
+theorem rather than an analogy, and `PAPER_RECONCILIATION.md` §2 states it with
+its three hypotheses and what each pays for, so a formalization round has an
+unambiguous target.
 
-**Withdrawn across the round, each with a regression:** the intensity-free
-liability ceiling; exactness impossibility for every empty-interior region;
-the Dirac live-world reading and its laundering conclusion; and the
-preimage reading of deductive recovery. `tests/test_regressions.py`.
+**No conjecture is hidden in a derived row.** Entry 21 is the only conjecture.
+Exactness is split across 17–21 at four different evidence levels rather than
+summarised as one claim.
 
+**Withdrawn across the round, each with a regression in `tests/test_regressions.py`:**
+the intensity-free liability ceiling; exactness impossibility for every
+empty-interior region; the Dirac live-world reading and its laundering
+conclusion; the preimage reading of deductive recovery; and the claim that the
+generalized construction is the ordinary one under a different criterion.
 ## What carries the weight
 
 Results 2, 3, 4, 7b and 8 are one inequality and four of its readings, and they

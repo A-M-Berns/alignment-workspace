@@ -127,10 +127,14 @@ facet system of the coherence polytope, whose cost is stated in
 `DEDUCTION_SPECIAL_CASE.md` §4. A source that delivers a set without a
 presentation delivers nothing the compiler can consume.
 
-The second amendment: the diagram is safe exactly when the source's rows do not
-exclude a still-plausible world. That is a condition on the *source*, expressible
-in the diagram's own vocabulary, and it is what makes deduction the well-behaved
-special case rather than one instance among equals.
+The second amendment: the diagram preserves the generalized criterion when
+**cumulative enforcement liability over the live-world process is bounded**, which
+is the abstract condition and the only one the proof consumes. Three sufficient
+routes are known — a region containing every assessed world, giving zero
+liability; summability of the declared-quantity deficit bound; and the
+support-capacity bridge together with a summable bound on the position's cube
+maximum gain. **None is claimed necessary.** Deduction is the well-behaved case
+because it takes the first route with nothing to pay.
 
 ## 7. Legitimacy and Deference
 
@@ -152,12 +156,15 @@ zero a singleton region determines `P_n` exactly (`PROSECUTION.md` W11). Control
 of the constraint source is therefore complete control of the credal state, and
 traderized enforcement is a *steering channel* before it is anything else.
 
-**What the market itself checks about a source.** Exactly one thing: deductive
-consistency. A source that persistently excludes a still-plausible world makes
-the market exploitable, with an explicit exploiting trader
-(`FUNDING_AND_SAFETY.md` §4). That is a real constraint on sources and it is not
-legitimacy — it rules out sources that contradict what deduction has settled, and
-says nothing about sources that are merely wrong, partial, or captured.
+**What the market itself checks about a source.** Less than an earlier draft
+claimed. The market checks its own price contract and nothing else; it does not
+verify deductive consistency of a constraint source. What is true is weaker and
+still useful: a source generating **unbounded cumulative enforcement liability**
+breaks the preservation theorem's hypothesis, and in one displayed shape — a fixed
+exclusion depth against growing ordinary volume — an explicit efficiently
+computable trader exploits. That is a witness at one trajectory, not a general
+soundness check, and it says nothing about sources that are merely wrong, partial,
+or captured.
 
 **Deference.** A future-human or trusted-process constraint can be made operative
 this way whenever it is presentable as a computable rational row system at date

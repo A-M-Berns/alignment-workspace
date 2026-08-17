@@ -18,7 +18,8 @@ class AConsumerSuppliesRowsAndGetsACertificate(unittest.TestCase):
         # a caller's constraint: p(A) >= 1/2 and p(A) <= 3/4
         self.certificate = compile_force(
             rows=[([F(1)], F(1, 2)), ([F(-1)], F(-3, 4))],
-            dimension=1, slack=F(1, 8), volume=F(2), tolerance=F(1, 10))
+            dimension=1, slack=F(1, 8), volume=F(2), tolerance=F(1, 10),
+            feasibility=(F(5, 8),))
 
     def test_the_intensity_follows_the_declaration(self):
         self.assertEqual(self.certificate.intensity, (F(1, 8) + F(2)) / F(1, 100))
@@ -43,11 +44,31 @@ class AConsumerSuppliesRowsAndGetsACertificate(unittest.TestCase):
         self.assertEqual(self.certificate.liability_ceiling((F(0), F(0))), F(0))
         self.assertGreater(self.certificate.liability_ceiling((F(1, 2), F(0))), 0)
 
-    def test_an_empty_region_is_refused(self):
+    def test_a_region_off_every_coarse_grid_point_compiles(self):
+        """`K = {p = 1/3}` is nonempty and misses every denominator-four grid
+        point. A grid screen would have rejected it; a witness does not."""
+        certificate = compile_force(
+            rows=[([F(1)], F(1, 3)), ([F(-1)], F(-1, 3))],
+            dimension=1, slack=F(1, 8), volume=F(2), tolerance=F(1, 10),
+            feasibility=(F(1, 3),))
+        self.assertEqual(certificate.position((F(1, 3),)), (F(0),))
+        self.assertTrue(certificate.conformance_holds((F(1, 3),)))
+        for numerator in range(5):
+            self.assertNotEqual(F(numerator, 4), F(1, 3))
+
+    def test_an_empty_region_cannot_produce_a_witness(self):
+        """Rejection happens because no witness exists, not because a search
+        failed — the caller cannot supply one for an empty region."""
         with self.assertRaises(ValueError):
             compile_force(rows=[([F(1)], F(3, 4)), ([F(-1)], F(-1, 4))],
                           dimension=1, slack=F(1, 8), volume=F(2),
-                          tolerance=F(1, 10))
+                          tolerance=F(1, 10), feasibility=(F(1, 2),))
+
+    def test_a_wrong_shaped_witness_is_refused(self):
+        with self.assertRaises(ValueError):
+            compile_force(rows=[([F(1)], F(1, 2))], dimension=1, slack=F(1, 8),
+                          volume=F(2), tolerance=F(1, 10),
+                          feasibility=(F(1, 2), F(1, 2)))
 
 
 if __name__ == "__main__":

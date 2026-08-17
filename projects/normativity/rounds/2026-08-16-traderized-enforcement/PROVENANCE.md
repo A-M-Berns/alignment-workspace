@@ -6,7 +6,7 @@ Every file in this directory:
   its follow-up, executed by Claude Opus 5 (Anthropic) against dispatches
   written by GPT-5.6 Sol (OpenAI)
 - **review status** — `ci-only`
-- **date** — 2026-08-16 (first pass), 2026-08-17 (second through fifth passes)
+- **date** — 2026-08-16 (first pass), 2026-08-17 (second through sixth passes)
 
 | path | notes |
 |---|---|
@@ -16,6 +16,7 @@ Every file in this directory:
 | `FORCE_INTERFACE.md` | second pass; corrected in the third |
 | `PAPER_RECONCILIATION.md` | third pass; rewritten in the fourth and fifth as the semantics was corrected twice |
 | `SEMANTIC_PROJECTION.md` | fifth pass; the projection obstruction and its witness |
+| `src/budgeter.py`, `tests/test_budgeter.py` | sixth pass; why the generalized construction is not the ordinary one |
 | `CORE_CONDITION.md` | second pass |
 | `ENFORCEMENT.md` | the round's central artifact |
 | `FUNDING_AND_SAFETY.md` | |
