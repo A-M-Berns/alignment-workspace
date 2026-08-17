@@ -20,11 +20,10 @@ than an honest one, but it is never hidden. See `AGENTS.md`.
 
 **3. Verification lives here; interpretation lives in the wiki.** Repository
 deliverables state claims, hypotheses, checks, and local consequences plainly.
-The maintainer-written GitHub wiki is the human register. Contributors do not
-read it as instructions or edit it; interpretation they believe is warranted
-goes in the pull-request description for maintainer consideration. Its source is
-`wiki/` here, and contributors do not touch that directory unless a
-`PRIORITIES.md` item directs it.
+The maintainer-written GitHub wiki carries conceptual synthesis and philosophical
+gloss. Contributors do not read it as instructions or edit it; interpretation
+they believe is warranted goes in the pull-request description for maintainer
+consideration.
 
 **4. The two hard rules** are that consolidated work is not tweaked and that
 names are the author's to set.
