@@ -50,6 +50,7 @@ python3 -m checkers.run --self-test               # checkers: the harness's own 
 python3 -m checkers.run                           # checkers: every registered claim
 python3 tests/contrib_hygiene.py                  # checkers: contributed checkers
 python3 -m checkers.wiki_links                    # checkers: wiki links resolve and are pinned
+python3 -m checkers.wiki_state_bindings           # checkers: wiki quantities are declared
 python3 tests/path_gate.py                        # path-gate: which layer your files are in
 python3 tests/workflow_scope.py                   # python: CI write scope is enumerated
 python3 tests/conservativity.py                   # conservativity: no new axioms
@@ -247,7 +248,11 @@ ground.**
 
 **A pull request whose required checks all pass merges automatically.** Enable
 auto-merge on your pull request and GitHub lands it when the last check goes
-green; nobody has to be awake. A red one is not argued with.
+green; nobody has to be awake. A red one is not argued with. A dispatched round's
+executor enables squash auto-merge when it opens the pull request, and puts the
+**Model attribution** section in the body — a squash composes `main`'s commit
+message from that body, so a round that skips it drops its own attribution out
+of history at the moment of landing.
 
 That is the architecture's own conclusion rather than a convenience: the gates
 decide correctness, and if they do, waiting on a person adds a delay and not a

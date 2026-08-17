@@ -1227,6 +1227,35 @@ is not a history directory — `state/views/`, or the query's output on demand w
 no file at all. The cost is one confusing line in the diff of every future round,
 which is small and compounds.
 
+### F8 — A merge can drop a ledger entry while every other file lands
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+The wiki-in-repo round's two `DECISIONS.md` entries and five `PROVENANCE.md`
+rows are absent from `main`, while everything else that round wrote arrived: `AGENTS.md` carries the amended
+*Security* section, `tests/workflow_scope.py` enforces it, `PRIORITIES.md` has
+item 38, and the round's own *Awaiting the author* stub — a stub in the same
+file, a hundred lines above — survived. So the constitution states a rule whose
+decision the ledger does not record, three new trust-chain files have no
+provenance row, and a round report under `prompts/` points at entries that are
+not there.
+
+Every loss is an insertion at a shared anchor — the head of `## Settled`, the
+end of a Markdown table — where another pull request had inserted at the same
+anchor in between. Whether the
+resolution dropped them or a squash composed a tree without them is not
+recoverable from what is visible now, and the mechanism matters less than the
+shape: **the ledger has one insertion point, every round writes to it, and a
+loss there is invisible in a green build.** Nothing checks that a decision an
+`AGENTS.md` clause depends on is recorded, and nothing checks that a report's
+claim to have filed one is true.
+
+Two cheap moves, neither this round's to choose: append new entries beneath the
+last same-dated one rather than at the section head, which turns same-anchor
+edits into ordinary appends; or check that every round directory under
+`prompts/` has a `PROVENANCE.md` row and, where its report claims a dated
+`DECISIONS.md` entry, that the entry exists. The state-bindings round restored
+all seven verbatim and filed this.
+
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -1376,7 +1405,7 @@ stop-and-report if the workflow token is refused.
 *Status:* answered by that round. The one part it could not perform is the
 post-merge verification, which runs on merge and not before.
 
-### 37. Volatile quantities in `wiki/` cite the structured state or do not appear — **[entry]**
+### 37. Volatile quantities in `wiki/` cite the structured state or do not appear — **[entry]** — *answered by the wiki state-bindings round*
 <!-- workspace-priority: project=none; dispatchable=yes -->
 
 `wiki/CONVENTIONS.md` states the rule in prose and nothing checks it. A number
@@ -1402,6 +1431,12 @@ a `state/` it cannot read — fails rather than reports clean.
 `checkers/workspace_state.py`; `checkers/wiki_links.py` for the house shape.
 *Why it is [entry]:* the machinery exists on both sides; what is new is the rule
 for deciding which numbers are in scope.
+*Status:* answered by `checkers/wiki_state_bindings.py`. The item asked for a
+rule deciding which numbers are in scope; the answer was to stop deciding — the
+author declares and the checker compares, with a four-pattern denylist as the
+backstop. It stays filed because the denylist and the emitter's `counts` section
+are both seeded by demand, so a page citing a quantity neither covers re-opens
+it.
 
 ### 38. Enforce the write-scope conditions and the job enumeration — **[entry]** — *answered by the wiki-in-repo round*
 <!-- workspace-priority: project=none; dispatchable=yes -->

@@ -79,7 +79,7 @@ def current_state() -> dict[str, Any]:
         for claim in registry.parse(path):
             claim["registry"] = path.relative_to(ROOT).as_posix()
             claims.append(claim)
-    return {
+    state = {
         "projects": project_data,
         "claims": claims,
         "foundations": foundations,
@@ -87,6 +87,28 @@ def current_state() -> dict[str, Any]:
         "vocabulary": vocabulary,
         "priorities": priorities(),
         "interfaces": [interface],
+    }
+    state["counts"] = derived_counts(state)
+    return state
+
+
+def derived_counts(state: dict[str, Any]) -> dict[str, Any]:
+    """Aggregates, so a wiki page can bind one by a plain dotted path.
+
+    The sections above are flat lists, and an aggregate over a list is not
+    addressable by a path. Deriving it here rather than in the grammar keeps one
+    adjudicator: `checkers/wiki_state_bindings.py` compares strings and computes
+    nothing.
+
+    **Seeded by demand.** A key exists here because a page in `wiki/` binds it;
+    a count nothing binds is a number with no reader and one more thing to keep
+    true. Each key states its derivation.
+    """
+    return {
+        # Every claim in every inherited foundation claim source, counted from
+        # each source's own ledger. One source today; a second changes this
+        # total, and the binding that reads it fails rather than drifts.
+        "foundation_claims": sum(f["claim_count"] for f in state["foundations"]),
     }
 
 

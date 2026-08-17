@@ -54,3 +54,4 @@ Registered classes are classes actually promoted by the round; an empty cell mea
 | 2026-08-13-crown-jewel-learning-theorem-final | 2026-08-13 | normativity | `prompts/2026-08-13-crown-jewel-learning-theorem-final` | NORMATIVE-RESPONSE-LEARNING-THEOREM-SETTLED<br>BM-FEEDBACK-DYNAMICS-WITNESSED | — | `prompts/2026-08-13-crown-jewel-learning-theorem-final/PROMPT.md` | — |
 | 2026-08-13-wikification-and-normativity | 2026-08-13 | workspace | `prompts/2026-08-13-wikification-and-normativity` | — | — | `prompts/2026-08-13-wikification-and-normativity/PROMPT.md` | — |
 | 2026-08-16-wiki-in-repo-sync | 2026-08-16 | workspace | `prompts/2026-08-16-wiki-in-repo-sync` | — | — | `prompts/2026-08-16-wiki-in-repo-sync/PROMPT.md` | — |
+| 2026-08-16-wiki-state-bindings | 2026-08-16 | workspace | `prompts/2026-08-16-wiki-state-bindings` | — | — | `prompts/2026-08-16-wiki-state-bindings/PROMPT.md` | — |

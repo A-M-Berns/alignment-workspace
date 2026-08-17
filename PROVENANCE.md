@@ -78,7 +78,13 @@ earlier rows did not record at all.
 | `README.md` tagline and *For humans* section | the maintainer | `maintainer-reviewed` — author-written | 2026-08-16 | restored verbatim from `c49a7317be30d9c8ab2fd78b7c15d4e5722e0701` on direct maintainer instruction |
 | `projects/normativity/legitimacy/rounds/2026-08-12-legitimacy-architecture/**`, `projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy/**` | Claude Opus 5 (Anthropic); extraction edits by GPT-5 (OpenAI) | `ci-only` | 2026-08-16 | research artifacts extracted from closed PR #27; original prompts authored by GPT-5.6 Sol (OpenAI); no claim promotion |
 | wiki-scope wording in `AGENTS.md`, `CONTRIBUTING.md`, `.github/PULL_REQUEST_TEMPLATE.md`, project entry points, and deference notes; the 2026-08-16 `DECISIONS.md` entry | GPT-5 (OpenAI), recording direct maintainer instructions | `ci-only` | 2026-08-16 | the wiki is described by its interpretive and philosophical function |
-
+| `wiki/**` | the maintainer's wikification round for the pages; Claude Opus 5 for `ORIGIN.md`, `CONVENTIONS.md`, and one sentence in `Home.md`'s *Wiki and lab* section | `ci-only` | 2026-08-16 | `prompts/2026-08-16-wiki-in-repo-sync/`; prompt author Claude Fable 5 (Anthropic). Imported at wiki commit `d86c9d7` with the digest and method in `wiki/ORIGIN.md`. **No page content was revised on import** beyond the one sentence named |
+| `checkers/wiki_links.py`, `.github/workflows/wiki-sync.yml`, `.github/wiki-sync.sh`, `.github/wiki_tree_digest.py` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-16 | same — a trust-chain change on the dispatch's authorization: one new house checker, and the first workflow in this repository granted write scope. The grant is filed in `DECISIONS.md`'s *Awaiting the author* and in `PRIORITIES.md` F7 rather than absorbed |
+| `tests/workflow_scope.py`, and the `write-scope` markers in `AGENTS.md` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-16 | same — the gate for the amended rule, on the trust chain: it is what stands between the enumeration and drift. Runs in the `python` job |
+| `AGENTS.md` *Security*, the write-scope conditions and the job enumeration | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-16 | same — the wording is this round's; **the decision is the maintainer's**, ruled during the round and recorded in `DECISIONS.md`. A trust-chain document |
+| `tests/path_gate.py` — `wiki/**` enumerated, the verdict split out of `main`, five self-test cases; `tests/name_lint.py` — three self-test cases pinning `wiki/` in scope | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-16 | same — trust-chain files. Both directions only remove contributor write access or pin existing coverage |
+| `checkers/wiki_state_bindings.py`; the `counts` section in `checkers/workspace_state.py`; the markers in `wiki/Architecture.md` and `wiki/Normativity.md`; `wiki/CONVENTIONS.md` *Volatile quantities* | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-16 | `prompts/2026-08-16-wiki-state-bindings/`; prompt author Claude Fable 5 (Anthropic). A maintainer-only modification of an existing house checker, performed inside a dispatched maintainer round. **No wiki prose was changed**: every page is word-identical once markers are stripped |
+| the two `DECISIONS.md` entries and five `PROVENANCE.md` rows restored from the wiki-in-repo round | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-16 | same — recovered verbatim from that round's branch after they failed to reach `main` with the rest of its work; filed as `PRIORITIES.md` F8 |
 ## No originating chat bundle
 
 The chat-bundle pointer is optional and none exists for this round: no dump has
@@ -117,6 +123,7 @@ of thing this file exists to make visible.
 | `2026-08-12-corpus-reconciliation` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | 2026-08-12 |
 | `2026-08-12-reachable-corrective-control` | GPT-5.6 Sol (OpenAI) | Claude Opus 5 (Anthropic) | dispatched 2026-08-12, executed 2026-08-13 |
 | `2026-08-16-wiki-in-repo-sync` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-16 |
+| `2026-08-16-wiki-state-bindings` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-16 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have

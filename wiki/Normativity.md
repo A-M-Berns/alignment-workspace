@@ -42,7 +42,8 @@ coverage for the relevant burdens to recur.
 ## Current status
 
 > **Open / unregistered research.** The frozen consolidation is a separate
-> 180-claim foundation with its own ledger and status vocabulary. The modern
+> <!--state:workspace:counts.foundation_claims-->180<!--/state-->-claim
+> foundation with its own ledger and status vocabulary. The modern
 > workspace registry does not translate or promote those claims. The current
 > response-learning theorem and dynamics witness are likewise unregistered.
 
