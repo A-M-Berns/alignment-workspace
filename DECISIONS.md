@@ -53,6 +53,33 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
   leaves the current documents explicitly `ci-only` and unadopted.
 
+- **Rule on nine provisional names from the traderized-enforcement round.**
+  `enforcement trader`, `enforcement intensity`, `enforcement liability`,
+  `violation-proportional position`, `world-inclusive region`, `support-function
+  presentation`, `constraint-to-trade compiler`, `market-maker contract`,
+  `enforcement inequality`. They are deliberately absent from
+  `state/vocabulary.json`, whose generated sheet is headed *canonical*. *Doing it*
+  is one reading of that round's `MODEL.md` §§4–6, after which the survivors enter
+  the sheet. *Waiting* leaves nine names live in one round's prose and nowhere
+  else, which is cheap now and expensive once a second round uses them.
+
+- **Decide whether `world-inclusive region` and `coverage(Due)` are related.**
+  The traderized-enforcement round asserts they are not — different spaces,
+  different quantifiers — and exhibits no map, so nothing was written into
+  `state/theorem_interface.json`. *Doing it* is reading that round's
+  `INTEGRATION_MAP.md` §3 against `COVERAGE_INTERFACE.md`. *Waiting* risks the two
+  being silently identified by a later round, which is the specific collision the
+  dispatch that produced them warned about.
+
+- **Decide whether the traderized-enforcement inequalities are worth
+  registering.** Four kernel-checked, axiom-clean results in
+  `Workspace.Normativity.Contrib.TraderizedEnforcement`, none answering a filed
+  item, so none registered. *Doing it* is filing an item they answer, or ruling
+  that they stay unregistered because what they state is an inequality about an
+  abstract pairing whose connection to Logical Induction is a reading rather than
+  a proof. *Waiting* costs nothing; the file is green and honestly labelled either
+  way.
+
 - **Confirm the deck's path-gate entry.** `projects/normativity/deck-2026-08-10/**`
   was added to the specification enumeration in `tests/path_gate.py` by the
   φ-regret preparation round, so that a contributor pull request touching the

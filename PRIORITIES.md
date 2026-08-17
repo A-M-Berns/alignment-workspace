@@ -1376,6 +1376,29 @@ edits into ordinary appends; or check that every round directory under
 `DECISIONS.md` entry, that the entry exists. The state-bindings round restored
 all seven verbatim and filed this.
 
+### F9 — Agent worktrees live inside the repository and nothing ignores them
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+`.claude/worktrees/` holds one checkout per concurrent agent session, inside the
+repository and untracked. `git add -A` therefore stages another session's
+worktree as an embedded repository, and git says so in a hint rather than an
+error. The traderized-enforcement round did exactly this and caught it only by
+reading the commit's file list afterwards.
+
+The failure is quiet in the direction that matters. A commit carrying an embedded
+repository passes every gate here — the path gate sees a path outside the
+specification list, the name lint sees no Markdown, and the Lean and Python jobs
+see nothing new — so the first sign is a clone that is missing a directory it
+appears to contain.
+
+Two cheap moves, neither this round's to choose: a `.gitignore` entry for
+`.claude/`, which costs nothing and is a one-line specification-layer edit; or a
+check that no commit adds a gitlink outside a declared submodule list, which also
+catches the case where the directory moves. The round that hit this removed the
+entry from its own commit and filed this rather than editing `.gitignore`, since
+which paths the repository ignores is a specification decision.
+
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
