@@ -5,10 +5,12 @@ import unittest
 from itertools import product
 from fractions import Fraction as F
 
-from core import indicator, maximal_theta, priceable_coefficients
+from core import (compile_core_row, indicator, maximal_theta,
+                  priceable_coefficients)
 from deduction import world_deficit
 from enforcement import EnforcementTrader, Region
 from market import ZERO, Fragment, holdings_value
+from force_api import SafetyCertifiedForce, compile_safe_force
 from outflow import LiveDeficitClaim, OutflowAccount
 from normative import (Endorsement, family_deficits, force_region,
                        liability_bound_at_date)
@@ -307,3 +309,100 @@ class StaticsGenerateAForeverUnvindicatedTrajectory(unittest.TestCase):
                           "e")
         self.assertLess(account.spent, F(9, 8))
         self.assertGreater(account.remaining, ZERO)
+
+
+class MotivatingTrajectoriesRunThroughTheSafeAPI(unittest.TestCase):
+    """End to end: real normative rows, the public entry point, the real account.
+
+    The other motivating fixtures compute charges directly, which tests the
+    arithmetic and not the path. These call `compile_safe_force` with the actual
+    compiled core row, the actual support, the actual live worlds and a real
+    feasibility witness — so what is demonstrated is the installed safety path
+    rather than a calculation resembling it.
+    """
+
+    rhs = F(3, 4)
+    slack, volume, tolerance = F(1, 8), F(1), F(1, 2)
+
+    # --- the affine, never-vindicated trajectory ---------------------------
+
+    def stage(self, t, width=3):
+        n = max(width, t + 2)
+        names = tuple(f"A{k}" for k in range(1, n + 1)) + ("B", "C")
+        fragment = Fragment(names)
+        worlds = [tuple(F(b) for b in bits)
+                  for bits in product((0, 1), repeat=n + 2)
+                  if bits[n] == 1 and all(bits[k] == 1 for k in range(t))]
+        coefficient = tuple(
+            F(1, 2) * w[n] + F(1, 4) * w[n + 1]
+            + sum((F(1, 2 ** (k + 3)) * w[k] for k in range(n)), ZERO)
+            for w in worlds)
+        return fragment, worlds, coefficient
+
+    def compiled(self, t):
+        fragment, worlds, c = self.stage(t)
+        theta = maximal_theta(c, self.rhs, worlds) / 2
+        row = compile_core_row(c, self.rhs, theta, fragment, worlds)
+        witness = max(worlds, key=lambda w: sum(x * y for x, y in zip(row.c, w)))
+        return fragment, worlds, row, witness
+
+    def test_the_safe_api_certifies_the_closed_form_deficit(self):
+        for t in range(4):
+            fragment, worlds, row, witness = self.compiled(t)
+            account = OutflowAccount(F(9, 8))
+            force = compile_safe_force(
+                [(row.c, row.r)], fragment.dimension, fragment.names, t, worlds,
+                self.slack, self.volume, self.tolerance, witness, account,
+                label="affine")
+            self.assertIsInstance(force, SafetyCertifiedForce)
+            self.assertEqual(force.deficit_bound, F(1, 2 ** (t + 2)))
+
+    def test_the_safe_api_charge_agrees_with_the_closed_form(self):
+        factor = (self.slack + self.volume) / self.tolerance
+        for t in range(4):
+            fragment, worlds, row, witness = self.compiled(t)
+            account = OutflowAccount(F(9, 8))
+            force = compile_safe_force(
+                [(row.c, row.r)], fragment.dimension, fragment.names, t, worlds,
+                self.slack, self.volume, self.tolerance, witness, account)
+            self.assertEqual(force.charged, factor * F(1, 2 ** (t + 2)))
+
+    def test_a_prefix_of_the_trajectory_fits_inside_the_closed_form_bound(self):
+        """The finite prefix through the API; the infinite bound is proved above."""
+        account = OutflowAccount(F(9, 8))
+        for t in range(5):
+            fragment, worlds, row, witness = self.compiled(t)
+            compile_safe_force(
+                [(row.c, row.r)], fragment.dimension, fragment.names, t, worlds,
+                self.slack, self.volume, self.tolerance, witness, account,
+                label="affine")
+        self.assertLess(account.spent, F(9, 8))
+        self.assertGreater(account.remaining, ZERO)
+        self.assertTrue(all(e.verified for e in account.ledger))
+
+    # --- the sentence-shaped, finitely vindicated trajectory ---------------
+
+    def test_a_vindicated_endorsement_stops_costing_anything(self):
+        """The other witness: force becomes free once the record catches up."""
+        fragment = Fragment(("A", "B"))
+        endorsement = Endorsement("A", F(1, 2))
+        account = OutflowAccount(F(10))
+        charges = []
+        for t, settled in enumerate(({}, {"B": True}, {"A": True})):
+            worlds = fragment.pc_worlds(settled)
+            c = endorsement.coefficient(fragment, worlds)
+            theta = maximal_theta(c, endorsement.rhs, worlds)
+            # `None` once `A` is settled: the coefficient is constant and
+            # satisfied, so every core minimum works and the row is vacuous.
+            usable = F(1, 2) if theta is None or theta == 0 else theta / 2
+            row = compile_core_row(c, endorsement.rhs, usable, fragment, worlds)
+            witness = max(worlds,
+                          key=lambda w: sum(x * y for x, y in zip(row.c, w)))
+            force = compile_safe_force(
+                [(row.c, row.r)], fragment.dimension, fragment.names, t, worlds,
+                self.slack, self.volume, self.tolerance, witness, account,
+                label="sentence")
+            charges.append(force.charged)
+        self.assertGreater(charges[0], ZERO)
+        self.assertEqual(charges[-1], ZERO)
+        self.assertEqual(account.spent, sum(charges, ZERO))

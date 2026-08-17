@@ -205,7 +205,10 @@ class FundedForceCertificate(ForceCertificate):
     number does not earn that.
 
     New callers should use `compile_safe_force`, which removes the possibility
-    of a mismatch by computing the certificate from the region it enforces.
+    of a mismatch by computing the certificate from the region it enforces. This
+    path exists for a caller that already holds a certificate; it takes the same
+    four identities so it can check all four, and returns the same type only
+    because it enforces the same invariant.
 
     A force certificate whose safety charge has already been paid.
 
@@ -235,6 +238,7 @@ class FundedForceCertificate(ForceCertificate):
 
 
 def compile_funded_force(rows, dimension: int, support, date: int,
+                         live_worlds,
                          slack: Fraction, volume: Fraction,
                          tolerance: Fraction,
                          feasibility: Sequence[Fraction],
@@ -278,7 +282,7 @@ def compile_funded_force(rows, dimension: int, support, date: int,
         raise TypeError(
             "funded force needs a verified certificate; a LiveDeficitClaim "
             "prices a request and cannot certify one")
-    mismatch = deficit_certificate.binds(date, region, support)
+    mismatch = deficit_certificate.binds(date, region, support, live_worlds)
     if mismatch is not None:
         raise ValueError(f"certificate does not bind to this request: {mismatch}")
 

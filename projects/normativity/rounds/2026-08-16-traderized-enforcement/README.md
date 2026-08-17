@@ -90,7 +90,7 @@ its world process refutes.
 | `NORMATIVE_SAFETY.md` | whether the motivating statics discharge bounded enforcement liability: the outflow account, the three-factor cost product, the withdrawn depth-only theorem, and presentation dependence |
 | `SEMANTIC_PROJECTION.md` | `C_t`, `π_t`, `K_t`, fibre saturation, and the support loss under projection |
 | `PAPER_RECONCILIATION.md` | the two constructions, the live-world lift with its three hypotheses, deductive recovery, and the paper spine |
-| `PROSECUTION.md` | thirty-nine attacks, with a current verdict: what landed, what was withdrawn, what is open |
+| `PROSECUTION.md` | forty-one attacks, with a current verdict: what landed, what was withdrawn, what is open |
 
 ## The safety verdict
 
@@ -101,10 +101,17 @@ position — so neither an unaffordable request nor a certificate about a differ
 request can produce a safety-certified object. The low-level `compile_force`
 promises conformance only and returns a different type.
 
-The binding matters because the gap was exploitable: a `verified` certificate for
-`p ≥ 0` — honestly zero, since nothing can violate it — funded enforcement of
-`p ≥ ½` for nothing, while the emitted position really lost at a live world.
-`NORMATIVE_SAFETY.md` §7a. Force is
+The binding matters because the gap was exploitable twice over: a `verified`
+certificate for `p ≥ 0` — honestly zero, since nothing can violate it — funded
+enforcement of `p ≥ ½` for nothing; and, with the region held fixed, a certificate
+from a narrower assessment state funded a wider one for nothing.
+`NORMATIVE_SAFETY.md` §7a.
+
+**And its boundary.** Safety is certified *relative to the live worlds the caller
+supplies*. That those are the live worlds of the intended semantic process is
+upstream and unproved — `PRIORITIES.md` item 39. The force layer closes
+certificate substitution within itself; it does not authenticate the semantics
+handed to it. §7b. Force is
 purchased out of a finite global account at `(ε_t + C_t)·D_t/δ_t` per date — a
 charge computable before the trade is emitted — and the account's discipline
 implies the bounded-liability hypothesis rather than assuming it. Inverting the

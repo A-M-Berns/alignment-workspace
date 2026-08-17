@@ -411,3 +411,21 @@ relax policy bought the tightest tolerance the allowance could afford, so a
 request for `1/2` against an account affording `1/10` got force five times
 stronger than asked for and spent the whole allowance. Relaxation now moves
 tolerance in one direction only. `test_outflow.RelaxOnlyLoosens`.
+
+
+## Attacks 40–41: the last two mismatches
+
+**40. Certify a narrow assessment, enforce against a wide one.** *Landed, now
+closed.* With date, support and row presentation all held fixed, `binds` still
+accepted a certificate computed against a different live set. `{A = 1}` has
+aggregate `0` where `{A = 0, A = 1}` has `1/2`, so the wide request was funded for
+nothing. All four identities are now checked, and the lower-level entry point
+takes the live worlds precisely so that it can check the fourth.
+`test_outflow.CertificateSubstitution.test_a_certificate_from_another_assessment_cannot_fund_this_request`.
+
+**41. Reorder the rows.** *Fails, and the round had claimed it landed.* The
+compiled position and the certified aggregate are both sums over rows at uniform
+intensity, so permutation permutes summands and moves nothing — verified across
+all six permutations of a three-row system. The presentation key now canonicalizes
+order and keeps multiplicity. The prose saying row order changes force was wrong.
+`test_outflow.RowPermutationIsInvariant`.

@@ -1,6 +1,7 @@
 """The outflow account, prosecuted before it is believed."""
 import unittest
 from fractions import Fraction as F
+from itertools import permutations
 
 from contract import declared_liability_bound
 from enforcement import EnforcementTrader, Region, Row
@@ -734,13 +735,36 @@ class CertificateSubstitution(unittest.TestCase):
         self.assertLess(holdings_value(force.position(price), price, (ZERO,)),
                         ZERO)
 
+    def funded(self, account, certificate, worlds=None):
+        return compile_funded_force(
+            self.hard_rows, 1, ("A",), 0,
+            self.worlds if worlds is None else worlds,
+            F(1, 8), F(7, 8), F(1, 2), (F(1),), account, certificate)
+
     def test_a_certificate_for_another_region_cannot_fund_this_one(self):
         account = OutflowAccount(F(10))
         with self.assertRaises(ValueError) as caught:
-            compile_funded_force(self.hard_rows, 1, ("A",), 0, F(1, 8), F(7, 8),
-                                 F(1, 2), (F(1),), account,
-                                 self.easy_certificate())
+            self.funded(account, self.easy_certificate())
         self.assertIn("presentation", str(caught.exception))
+        self.assertEqual(account.spent, ZERO)
+
+    def test_a_certificate_from_another_assessment_cannot_fund_this_request(self):
+        """The fourth identity, which `binds` did not check.
+
+        Same date, same support, same row presentation — and a different live
+        set. The narrow assessment `{A = 1}` has aggregate `0` where the wide
+        one has `1/2`, so substituting it funded the wide request for nothing.
+        """
+        narrow = LiveDeficitCertificate.by_enumeration(0, self.hard, ("A",),
+                                                       [(F(1),)])
+        self.assertEqual(narrow.aggregate, ZERO)
+        self.assertIsNone(narrow.binds(0, self.hard, ("A",), [(F(1),)]))
+        self.assertEqual(narrow.binds(0, self.hard, ("A",), self.worlds),
+                         "live-world assessment state")
+        account = OutflowAccount(F(10))
+        with self.assertRaises(ValueError) as caught:
+            self.funded(account, narrow)
+        self.assertIn("assessment", str(caught.exception))
         self.assertEqual(account.spent, ZERO)
 
     def test_a_duplicated_presentation_cannot_fund_a_deduplicated_one(self):
@@ -749,27 +773,32 @@ class CertificateSubstitution(unittest.TestCase):
         doubled = Region(1, [Row([F(1)], F(1, 2))] * 2)
         c = LiveDeficitCertificate.by_enumeration(0, doubled, ("A",),
                                                   self.worlds)
-        self.assertIsNone(c.binds(0, doubled, ("A",)))
-        self.assertIsNotNone(c.binds(0, self.hard, ("A",)))
+        self.assertIsNone(c.binds(0, doubled, ("A",), self.worlds))
+        self.assertIsNotNone(c.binds(0, self.hard, ("A",), self.worlds))
         with self.assertRaises(ValueError):
-            compile_funded_force(self.hard_rows, 1, ("A",), 0, F(1, 8), F(7, 8),
-                                 F(1, 2), (F(1),), account, c)
+            self.funded(account, c)
 
-    def test_row_order_is_operative_and_bound(self):
+    def test_row_order_is_not_operative_and_binds_across_permutations(self):
+        """Corrected: permutation only permutes summands, so it is canonicalized.
+
+        The compiled position is `Σ_j β_j g_j(P) c_j` at uniform intensity and
+        the certified aggregate is `sup_ω Σ_j d_j(ω)`. Both are sums over rows.
+        An earlier version bound row order and called it operative.
+        """
         a, b = Row([F(1), F(0)], F(1, 2)), Row([F(0), F(1)], F(1, 4))
         forward, backward = Region(2, [a, b]), Region(2, [b, a])
         worlds = [(ZERO, ZERO), (F(1), F(1))]
         c = LiveDeficitCertificate.by_enumeration(0, forward, ("A", "B"), worlds)
-        self.assertIsNone(c.binds(0, forward, ("A", "B")))
-        self.assertIsNotNone(c.binds(0, backward, ("A", "B")))
+        self.assertIsNone(c.binds(0, forward, ("A", "B"), worlds))
+        self.assertIsNone(c.binds(0, backward, ("A", "B"), worlds))
 
     def test_permuting_the_support_invalidates_the_certificate(self):
         """The world vectors are unchanged; what they mean is not."""
         region = Region(2, [Row([F(1), F(0)], F(1, 2))])
         worlds = [(ZERO, F(1)), (F(1), ZERO)]
         c = LiveDeficitCertificate.by_enumeration(0, region, ("A", "B"), worlds)
-        self.assertIsNone(c.binds(0, region, ("A", "B")))
-        self.assertIsNotNone(c.binds(0, region, ("B", "A")))
+        self.assertIsNone(c.binds(0, region, ("A", "B"), worlds))
+        self.assertIsNotNone(c.binds(0, region, ("B", "A"), worlds))
 
     def test_a_later_certificate_cannot_fund_earlier_force(self):
         """Live sets shrink, so a later certificate is cheaper."""
@@ -779,11 +808,10 @@ class CertificateSubstitution(unittest.TestCase):
                                                       self.worlds)
         self.assertEqual(later.aggregate, ZERO)
         self.assertGreater(early.aggregate, ZERO)
-        self.assertIsNotNone(later.binds(0, self.hard, ("A",)))
+        self.assertIsNotNone(later.binds(0, self.hard, ("A",), self.worlds))
         account = OutflowAccount(F(10))
         with self.assertRaises(ValueError):
-            compile_funded_force(self.hard_rows, 1, ("A",), 0, F(1, 8), F(7, 8),
-                                 F(1, 2), (F(1),), account, later)
+            self.funded(account, later)
         self.assertEqual(account.spent, ZERO)
 
     def test_a_different_assessment_at_the_same_date_is_a_different_key(self):
@@ -808,9 +836,7 @@ class CertificateSubstitution(unittest.TestCase):
     def test_a_claim_cannot_produce_safety_certified_force(self):
         account = OutflowAccount(F(10))
         with self.assertRaises(TypeError):
-            compile_funded_force(self.hard_rows, 1, ("A",), 0, F(1, 8), F(7, 8),
-                                 F(1, 2), (F(1),), account,
-                                 LiveDeficitClaim(0, F(1, 1000), "my proof"))
+            self.funded(account, LiveDeficitClaim(0, F(1, 1000), "my proof"))
         self.assertEqual(account.spent, ZERO)
 
     def test_a_claim_may_still_price_a_request(self):
@@ -870,6 +896,55 @@ class LedgerIsAuditable(unittest.TestCase):
         account = OutflowAccount(F(10))
         account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "planning")
         self.assertFalse(account.ledger[0].verified)
+
+
+class RowPermutationIsInvariant(unittest.TestCase):
+    """Derived, and now canonicalized in the presentation key.
+
+    `E(P) = Σ_j β_j g_j(P) c_j` at uniform intensity and
+    `D = sup_ω Σ_j d_j(ω)` are both sums over rows, so a permutation permutes
+    summands and moves neither. Multiplicity is a different matter and is kept.
+    """
+
+    rows = [Row([F(1), F(0)], F(1, 2)), Row([F(0), F(1)], F(1, 4)),
+            Row([F(1), F(1)], F(1, 3))]
+    price, world = (F(1, 8), F(1, 8)), (ZERO, ZERO)
+    worlds = [(ZERO, ZERO), (F(1), ZERO), (ZERO, F(1)), (F(1), F(1))]
+
+    def test_position_and_liability_are_identical_across_permutations(self):
+        seen = set()
+        for order in permutations(self.rows):
+            d = ForceDeclaration(Region(2, list(order)), F(7, 8), F(1, 8),
+                                 F(1, 2))
+            seen.add((d.trader().coefficients(self.price),
+                      d.budget_consumed(self.price),
+                      d.liability_bound(self.price, self.world)))
+        self.assertEqual(len(seen), 1)
+
+    def test_the_certified_aggregate_is_identical_across_permutations(self):
+        seen = set()
+        for order in permutations(self.rows):
+            c = LiveDeficitCertificate.by_enumeration(
+                0, Region(2, list(order)), ("A", "B"), self.worlds)
+            seen.add((c.aggregate, c.rowwise))
+        self.assertEqual(len(seen), 1)
+
+    def test_the_presentation_key_is_permutation_invariant(self):
+        keys = {presentation_key(Region(2, list(order)))
+                for order in permutations(self.rows)}
+        self.assertEqual(len(keys), 1)
+
+    def test_but_multiplicity_still_distinguishes(self):
+        one = presentation_key(Region(1, [Row([F(1)], F(1, 2))]))
+        two = presentation_key(Region(1, [Row([F(1)], F(1, 2))] * 2))
+        self.assertNotEqual(one, two)
+
+    def test_a_certificate_binds_after_a_pure_permutation(self):
+        forward = Region(2, list(self.rows))
+        backward = Region(2, list(reversed(self.rows)))
+        c = LiveDeficitCertificate.by_enumeration(0, forward, ("A", "B"),
+                                                  self.worlds)
+        self.assertIsNone(c.binds(0, backward, ("A", "B"), self.worlds))
 
 
 if __name__ == "__main__":

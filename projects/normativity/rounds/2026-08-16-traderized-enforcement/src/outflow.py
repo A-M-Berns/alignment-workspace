@@ -64,21 +64,28 @@ def _exact(x: Fraction) -> tuple[int, int]:
 
 
 def presentation_key(region: Region) -> tuple:
-    """The exact identity of a **row presentation**, not of an admissible set.
+    """The identity of a row presentation: the **multiset** of exact rows.
 
     The round chose Option A — the presentation is part of the force request —
-    so this is what a safety certificate must bind to. Duplicates are preserved
-    because duplicates change the emitted position; row order is preserved
-    because the compiler walks the rows in order and nothing has been proved
-    about reordering.
+    so this is what a safety certificate binds to. What it identifies, exactly:
 
-    Transparent rather than hashed: a reader can see what was bound, and a
-    mismatch reports which field differs. A digest would buy nothing here — the
-    threat is a caller wiring the wrong object, not an adversary forging bytes.
+    * **duplicates are preserved.** `k` copies of a row scale the emitted
+      position and the charge by `k`, so a deduplicated request is a different
+      request.
+    * **row order is not.** The compiled position is `sum_j beta_j g_j(P) c_j`
+      with a uniform intensity, and the certified aggregate is
+      `sup_omega sum_j d_j(omega)`. Both are sums over rows, so a permutation
+      only permutes summands and neither quantity moves. Sorting the rows out of
+      the key is therefore sound, and an earlier version of this docstring was
+      wrong to say ordering changes force.
+
+    What it does **not** identify: the polytope `K`; a duplicate-free set; a class
+    under redundant inequalities; a class under positive rescaling. Those are
+    `PRIORITIES.md` item 46 and are deliberately not normalized here.
     """
     return (region.dimension,
-            tuple((tuple(_exact(c) for c in row.c), _exact(row.r))
-                  for row in region.rows))
+            tuple(sorted((tuple(_exact(c) for c in row.c), _exact(row.r))
+                         for row in region.rows)))
 
 
 def support_key(support: Sequence[str]) -> tuple:
@@ -206,9 +213,16 @@ class LiveDeficitCertificate:
                    support_key(support), live_world_key(date, support, worlds),
                    basis)
 
-    def binds(self, date: int, region: Region,
-              support: Sequence[str]) -> str | None:
+    def binds(self, date: int, region: Region, support: Sequence[str],
+              live_worlds: Sequence[Sequence[Fraction]]) -> str | None:
         """`None` when this certificate is about that exact request; else why not.
+
+        All **four** identities, and the fourth is not optional. An earlier
+        version checked only date, support and presentation, which left the
+        assessment state free: at one date, over one support, for one
+        presentation, a certificate computed against the narrow live set
+        `{A = 1}` has aggregate `0` where the wide set `{A = 0, A = 1}` has
+        `1/2`. Substituting the first funded the second for nothing.
 
         Returns the mismatching field rather than a bare boolean, because the
         useful failure message names what was wired wrong.
@@ -219,6 +233,8 @@ class LiveDeficitCertificate:
             return f"support {support_key(support)} against {self.support}"
         if presentation_key(region) != self.presentation:
             return "row presentation"
+        if live_world_key(date, support, live_worlds) != self.live_worlds:
+            return "live-world assessment state"
         return None
 
 

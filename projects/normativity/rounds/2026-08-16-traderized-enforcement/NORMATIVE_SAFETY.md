@@ -212,11 +212,16 @@ mentions all four:
 | exact **row presentation** | the round chose Option A; duplicates and order change the emitted position |
 | exact **support** | `(0,1,0)` means nothing without which sentence sits where |
 | exact **date** | the live set shrinks, so a later certificate is cheaper and must not fund earlier force |
-| exact **live-world set** | two assessment processes can disagree at one date |
+| exact **live-world set** | two assessment processes can disagree at one date; at one date, support and presentation, the narrow set `{A=1}` has aggregate `0` where the wide `{A=0,A=1}` has `1/2` |
 
-The enumeration order of the live worlds is *not* operative and is sorted out of
-the key; row order *is*, and is kept, because nothing has been proved about
-reordering.
+Neither the enumeration order of the live worlds nor the order of the rows is
+operative, and both are sorted out of the key. Row permutation is *derived*
+invariant: the compiled position `Σ_j β_j g_j(P)·c_j` and the certified aggregate
+`sup_ω Σ_j d_j(ω)` are both sums over rows at a uniform intensity, so a
+permutation permutes summands. Row **multiplicity** is a different matter and is
+kept, since `k` copies scale position and charge by `k`. So the presentation
+identity is the **multiset of exact rational rows** — not the polytope `K`, not a
+duplicate-free set, and not a class under redundancy or rescaling.
 
 **Three structural consequences.**
 
@@ -228,8 +233,28 @@ reordering.
    proof and the type no longer pretends it is.
 3. `compile_safe_force` computes the certificate from the **same `Region`
    instance** it is about to enforce, so there is no separate object to mismatch.
-   The lower-level `compile_funded_force` still accepts a certificate and checks
-   `binds`, reporting which field differs.
+   The lower-level `compile_funded_force` accepts a certificate and checks
+   `binds` on all four identities, reporting which field differs. It takes the
+   live worlds precisely so it *can* check the fourth — an earlier version
+   checked three and left the assessment state free, which was the substitution
+   above with the region held fixed.
+
+## 7b. What `compile_safe_force` does not certify
+
+The boundary is worth stating plainly, because the phrase *safety-certified* can
+be read as more than it is.
+
+    supplied live worlds L_t   ⟹   safe **relative to** L_t .
+
+That is the force layer's business and the whole of it. What it does **not**
+establish is that the supplied `L_t` are the live worlds of the intended semantic
+process — that the normative record really yields `C_t`, and that `C_t` really has
+support `L_t`. That arrow is `PRIORITIES.md` item 39 and no code here touches it.
+
+So: **`compile_safe_force` closes certificate substitution inside the force layer.
+It does not authenticate the normative semantics supplied to it.** A caller
+feeding it the wrong assessment state gets a sound certificate about the wrong
+question, and nothing in this round can detect that.
 
 ## 8. Safety theorem
 
@@ -472,6 +497,37 @@ the generalized TradingFirm lift, nonexploitability follows.
 
 The load-bearing word is **exact**, four times over. Before the binding, each of
 those four could differ between the certified object and the emitted one.
+
+## 13d. The motivating application, stated precisely
+
+**Proposition.** The settlement/core statics admit priceable rational row
+presentations that are feasible, and therefore compile through the traderized
+force interface; the resulting force meets its declared finite-time tolerance.
+For the displayed settlement trajectories the statics also generate live-world
+deficit schedules whose full certified cost `Σ_t (ε_t + C_t)·D_t/δ_t` is finite.
+Hence the installed outflow protocol yields bounded cumulative enforcement
+liability, and therefore — conditional on the generalized live-world TradingFirm
+lift — preserves nonexploitability.
+
+**Two witnesses, and they are different in kind.**
+
+*Eventual vindication is safe.* A sentence-shaped endorsement `P(A) ≥ ½`: the
+depth holds at `½` while an `A = 0` world survives and drops to `0` when none
+does. Force costs something, then costs nothing.
+
+*Permanent unresolved force can also be safe.* The single global affine
+endorsement `c = ½B + ¼C + Σ_j 2^-(j+2)A_j` at `r = ¾`, with
+`m_t = ¾ − 2^-(t+2)` and `D_t = 2^-(t+2) > 0` at every finite `t`. Never
+vindicated, positive core minimum throughout, and `Σ_t q_t = 9/8` exactly at the
+displayed market parameters.
+
+Both run end to end through `compile_safe_force`, with the certified `D_t` equal
+to the closed form and the charge equal to `q_t`.
+
+**What is not claimed.** That every trajectory of the statics is safe. The claim
+is that **the statics admit natural trajectories satisfying the sufficient
+condition** — and the round separately carries one that does not, whose realized
+liability at a followed world diverges.
 
 ## 14. What is not established
 
