@@ -10,7 +10,7 @@ import unittest
 from fractions import Fraction as F
 
 from contract import ForceDeclaration, volume_times_depth
-from semantics import dirac_live, support_capacity, support_live
+from semantics import dirac_live, preimage_live, saturated_lift
 from deduction import world_deficit
 from enforcement import EnforcementTrader, Region, Row, grid
 from exactness import min_max_gain, strict_interior_point
@@ -189,13 +189,14 @@ class DiracLiveWorldsAreNotLiveWorlds(unittest.TestCase):
     def test_the_dirac_reading_empties_the_midpoint_constraint(self):
         region = Region(1, [Row([F(1)], F(1, 2)), Row([F(-1)], F(-1, 2))])
         self.assertEqual(dirac_live(self.WORLDS, region), [])
-        self.assertEqual(support_live(self.WORLDS, region), self.WORLDS)
+        self.assertEqual(preimage_live(self.WORLDS, region), self.WORLDS)
 
     def test_the_laundering_witness_keeps_its_world(self):
         region = Region(1, [Row([F(-1)], F(-1, 2))])
         self.assertEqual(dirac_live(self.WORLDS, region), [(F(0),)])
-        self.assertEqual(support_capacity(self.WORLDS, region, 1), F(1, 2))
-        self.assertIn((F(1),), support_live(self.WORLDS, region))
+        self.assertEqual(
+            saturated_lift(self.WORLDS, region).support_capacity(1), F(1, 2))
+        self.assertIn((F(1),), preimage_live(self.WORLDS, region))
 
     def test_the_enforcement_position_still_loses_at_that_world(self):
         region = Region(1, [Row([F(-1)], F(-1, 2))])

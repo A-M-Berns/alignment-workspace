@@ -10,6 +10,7 @@ state.
 - Current response-learning interface: `rounds/2026-08-13-crown-jewel-learning-theorem/INTERFACES.md`
 - Conditional theorem statement: `rounds/2026-08-13-crown-jewel-learning-theorem/CROWN_JEWEL_THEOREM.md`
 - Legitimacy experiments: `legitimacy/rounds/`
+- Traderized force interface: `notes/TRADERIZED_FORCE_INTERFACE.md`
 - Lab specifications: `notes/`
 - Claims registry: `CLAIMS.md`
 - Standalone consolidated verification: `consolidation-aug9/`

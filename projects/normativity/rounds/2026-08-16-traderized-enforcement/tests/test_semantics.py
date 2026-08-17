@@ -1,144 +1,236 @@
-"""Support-based live worlds, and the expectation/worldwise gap."""
+"""Semantic credal sets, price projections, and what projection loses."""
 from __future__ import annotations
 
 import unittest
 from fractions import Fraction as F
 
-from deduction import support_rows
+from deduction import in_convex_hull, support_rows
 from enforcement import EnforcementTrader, Region, Row, grid
-from market import Fragment, cube_vertices, holdings_value, max_gain
-from semantics import (compatible, compatible_vertices, credal_nesting,
-                       dirac_live, expected_value, price_of, support_bridge_bound,
-                       support_capacity, support_live)
+from market import Fragment, holdings_value, max_gain
+from semantics import (CredalSet, delta_of, dirac_live, expected_value,
+                       is_fibre_saturated, preimage_live, price_of,
+                       saturated_lift, saturation_witnesses,
+                       support_bridge_bound)
 
-BOOLEAN = [(F(0),), (F(1),)]          #: `A` false, `A` true
+#: Two priced sentences, four worlds.
+PAIR = [(F(0), F(0)), (F(0), F(1)), (F(1), F(0)), (F(1), F(1))]
+#: Deduction admits only the correlated worlds.
+CORRELATED = [PAIR[0], PAIR[3]]
+#: Their price projection: `{p_A = p_B}`.
+DIAGONAL = Region(2, [Row([F(1), F(-1)], F(0)), Row([F(-1), F(1)], F(0))])
 
-
-def midpoint() -> Region:
-    return Region(1, [Row([F(1)], F(1, 2)), Row([F(-1)], F(-1, 2))])
+BOOLEAN = [(F(0),), (F(1),)]          #: one sentence: `A` false, `A` true
 
 
 def at_most_half() -> Region:
     return Region(1, [Row([F(-1)], F(-1, 2))])
 
 
-def pinned_false() -> Region:
-    return Region(1, [Row([F(1)], F(0)), Row([F(-1)], F(0))])
+def midpoint() -> Region:
+    return Region(1, [Row([F(1)], F(1, 2)), Row([F(-1)], F(-1, 2))])
 
 
-class TheDiracReadingIsWrong(unittest.TestCase):
-    """The canonical regression for the semantic distinction."""
+class ProjectionLosesSupport(unittest.TestCase):
+    """The minimal witness that `π` is not injective on credal sets."""
 
-    def test_the_midpoint_constraint_has_no_dirac_admissible_world(self):
+    def test_the_projection_is_the_diagonal(self):
+        semantic = delta_of(PAIR, CORRELATED)
+        for world in PAIR:
+            self.assertEqual(DIAGONAL.contains(world),
+                             in_convex_hull(world, CORRELATED), world)
+        for price in semantic.price_vertices():
+            self.assertTrue(DIAGONAL.contains(price), price)
+
+    def test_the_anticorrelated_mixture_projects_into_it(self):
+        mu = [F(0), F(1, 2), F(1, 2), F(0)]
+        self.assertEqual(price_of(mu, PAIR), (F(1, 2), F(1, 2)))
+        self.assertTrue(DIAGONAL.contains(price_of(mu, PAIR)))
+
+    def test_but_its_whole_support_is_deductively_impossible(self):
+        mu = [F(0), F(1, 2), F(1, 2), F(0)]
+        support = [PAIR[i] for i, m in enumerate(mu) if m > 0]
+        self.assertEqual(support, [PAIR[1], PAIR[2]])
+        for world in support:
+            self.assertNotIn(world, CORRELATED)
+
+    def test_the_preimage_reading_returns_every_world(self):
+        """Which is why price-space membership does not recover the semantics."""
+        self.assertEqual(sorted(preimage_live(PAIR, DIAGONAL)), sorted(PAIR))
+        self.assertNotEqual(sorted(preimage_live(PAIR, DIAGONAL)),
+                            sorted(CORRELATED))
+
+
+class SamePriceProjectionDifferentLiveWorlds(unittest.TestCase):
+    """Two semantic states a market cannot tell apart."""
+
+    def setUp(self):
+        self.tight = delta_of(PAIR, CORRELATED)
+        self.loose = saturated_lift(PAIR, DIAGONAL)
+
+    def test_the_projections_agree(self):
+        for price in self.tight.price_vertices():
+            self.assertTrue(self.loose.projects_to(price), price)
+        for price in self.loose.price_vertices():
+            self.assertTrue(self.tight.projects_to(price), price)
+
+    def test_the_live_worlds_do_not(self):
+        self.assertEqual(self.tight.live_worlds(), CORRELATED)
+        self.assertEqual(sorted(self.loose.live_worlds()), sorted(PAIR))
+
+    def test_the_capacities_do_not(self):
+        self.assertEqual([self.tight.support_capacity(i) for i in range(4)],
+                         [F(1), F(0), F(0), F(1)])
+        self.assertEqual([self.loose.support_capacity(i) for i in range(4)],
+                         [F(1), F(1, 2), F(1, 2), F(1)])
+
+
+class FibreSaturation(unittest.TestCase):
+    """`C ⊆ π⁻¹(π(C))`, with equality exactly when `C` is saturated."""
+
+    def test_a_deductive_constraint_is_not_saturated(self):
+        semantic = delta_of(PAIR, CORRELATED)
+        self.assertFalse(is_fibre_saturated(semantic, 4))
+        self.assertIn((F(0), F(1, 2), F(1, 2), F(0)),
+                      saturation_witnesses(semantic, 2))
+
+    def test_a_price_lift_is_saturated_by_construction(self):
+        self.assertTrue(is_fibre_saturated(saturated_lift(PAIR, DIAGONAL), 4))
+        self.assertEqual(saturation_witnesses(saturated_lift(PAIR, DIAGONAL), 3),
+                         [])
+
+    def test_containment_always_holds(self):
+        semantic = delta_of(PAIR, CORRELATED)
+        for vertex in semantic.vertices():
+            self.assertTrue(semantic.saturation_contains(vertex), vertex)
+
+    def test_separating_worlds_is_not_enough(self):
+        """The pricing map is injective on the four *worlds* here and still
+        loses the semantic set: separating points is not separating mixtures."""
+        images = [price_of([F(1) if k == i else F(0) for k in range(4)], PAIR)
+                  for i in range(4)]
+        self.assertEqual(len(set(images)), 4)
+        self.assertFalse(is_fibre_saturated(delta_of(PAIR, CORRELATED), 4))
+
+
+class DeductiveSemanticRecovery(unittest.TestCase):
+    """`C^D = Δ(PC(D))` gives `Ω^live = PC(D)`, with no hypothesis on `π`."""
+
+    FRAGMENT = Fragment(("phi", "notphi", "psi"), [lambda w: w[0] + w[1] == 1])
+    STAGES = ({}, {"phi": 1}, {"phi": 0}, {"phi": 1, "psi": 1})
+
+    def test_recovery_on_the_correlated_pair(self):
+        self.assertEqual(delta_of(PAIR, CORRELATED).live_worlds(), CORRELATED)
+
+    def test_recovery_across_stages(self):
+        worlds = self.FRAGMENT.worlds()
+        for settled in self.STAGES:
+            admitted = self.FRAGMENT.pc_worlds(settled)
+            self.assertEqual(delta_of(worlds, admitted).live_worlds(),
+                             admitted, settled)
+
+    def test_forward_direction_is_the_dirac_credence(self):
+        worlds = self.FRAGMENT.worlds()
+        admitted = self.FRAGMENT.pc_worlds({"phi": 1})
+        semantic = delta_of(worlds, admitted)
+        for target in admitted:
+            mu = [F(1) if w == target else F(0) for w in worlds]
+            self.assertTrue(semantic.contains(mu), target)
+
+    def test_reverse_direction_is_the_definition_of_support(self):
+        worlds = self.FRAGMENT.worlds()
+        admitted = self.FRAGMENT.pc_worlds({"phi": 1})
+        semantic = delta_of(worlds, admitted)
+        for index, world in enumerate(worlds):
+            if world not in admitted:
+                self.assertEqual(semantic.support_capacity(index), F(0), world)
+
+    def test_the_stages_genuinely_differ(self):
+        sizes = [len(self.FRAGMENT.pc_worlds(s)) for s in self.STAGES]
+        self.assertEqual(sizes, [4, 2, 2, 1])
+
+    def test_the_price_projection_is_the_coherence_polytope(self):
+        worlds = self.FRAGMENT.worlds()
+        admitted = self.FRAGMENT.pc_worlds({"phi": 1})
+        semantic = delta_of(worlds, admitted)
+        region = Region(3, support_rows(self.FRAGMENT, {"phi": 1}))
+        for price in semantic.price_vertices():
+            self.assertTrue(region.contains(price), price)
+
+
+class CapacityComesFromTheSemanticSet(unittest.TestCase):
+    """Computing `θ` from the projection's preimage is a different number."""
+
+    def test_the_two_disagree_on_the_correlated_pair(self):
+        self.assertEqual(delta_of(PAIR, CORRELATED).support_capacity(1), F(0))
+        self.assertEqual(saturated_lift(PAIR, DIAGONAL).support_capacity(1),
+                         F(1, 2))
+
+    def test_a_dead_world_is_dead_in_the_semantic_set(self):
+        self.assertNotIn(PAIR[1], delta_of(PAIR, CORRELATED).live_worlds())
+        self.assertIn(PAIR[1], saturated_lift(PAIR, DIAGONAL).live_worlds())
+
+
+class PriceOnlyConstraintsLiftByChoice(unittest.TestCase):
+    """When a source supplies only a region, the semantics is a named choice."""
+
+    def test_the_lift_is_saturated(self):
+        self.assertTrue(
+            is_fibre_saturated(saturated_lift(BOOLEAN, at_most_half()), 8))
+
+    def test_the_midpoint_constraint_keeps_both_worlds_live(self):
+        lifted = saturated_lift(BOOLEAN, midpoint())
+        self.assertEqual(lifted.live_worlds(), BOOLEAN)
+        self.assertEqual([lifted.support_capacity(i) for i in range(2)],
+                         [F(1, 2), F(1, 2)])
+
+    def test_the_dirac_reading_would_have_returned_nothing(self):
         self.assertEqual(dirac_live(BOOLEAN, midpoint()), [])
 
-    def test_both_worlds_are_support_live(self):
-        self.assertEqual(support_live(BOOLEAN, midpoint()), BOOLEAN)
-
-    def test_the_witnessing_credence_is_exhibited(self):
-        mu = [F(1, 2), F(1, 2)]
-        self.assertTrue(compatible(mu, BOOLEAN, midpoint()))
-        self.assertEqual(price_of(mu, BOOLEAN), (F(1, 2),))
-        self.assertTrue(all(m > 0 for m in mu))
-
-    def test_the_capacities_are_exact(self):
-        self.assertEqual([support_capacity(BOOLEAN, midpoint(), i)
-                          for i in range(2)], [F(1, 2), F(1, 2)])
-
-
-class TheLaunderingWitnessDoesNotLaunder(unittest.TestCase):
-    """Recomputed under the correct semantics: the world stays live."""
-
-    def test_the_true_world_remains_live(self):
-        region = at_most_half()
-        self.assertEqual(support_capacity(BOOLEAN, region, 1), F(1, 2))
-        self.assertIn((F(1),), support_live(BOOLEAN, region))
-
-    def test_the_dirac_reading_dropped_it(self):
-        self.assertEqual(dirac_live(BOOLEAN, at_most_half()), [(F(0),)])
-
-    def test_the_enforcement_position_loses_at_a_live_world(self):
-        region = at_most_half()
-        trader = EnforcementTrader(region, F(10))
-        price = (F(11, 20),)
-        position = trader.coefficients(price)
-        self.assertEqual(holdings_value(position, price, (F(1),)), F(-9, 40))
-
-    def test_liability_is_therefore_not_automatically_zero(self):
-        region = at_most_half()
-        trader = EnforcementTrader(region, F(10))
-        price = (F(11, 20),)
-        worst = min(holdings_value(trader.coefficients(price), price, w)
-                    for w in support_live(BOOLEAN, region))
-        self.assertLess(worst, 0)
+    def test_a_disfavoured_world_stays_live(self):
+        lifted = saturated_lift(BOOLEAN, at_most_half())
+        self.assertEqual(lifted.support_capacity(1), F(1, 2))
+        self.assertIn((F(1),), lifted.live_worlds())
 
 
 class ExpectationIsNotWorldwise(unittest.TestCase):
-    """Where the withdrawn proof of automatic zero liability failed."""
+    """The distinction the safety story rests on."""
 
     def setUp(self):
         self.region = at_most_half()
         self.trader = EnforcementTrader(self.region, F(10))
         self.price = (F(11, 20),)
         self.position = self.trader.coefficients(self.price)
+        self.lifted = saturated_lift(BOOLEAN, self.region)
 
-    def test_every_admitted_credence_gives_nonnegative_expectation(self):
-        for weights in range(0, 21):
-            mu = [F(20 - weights, 20), F(weights, 20)]
-            if compatible(mu, BOOLEAN, self.region):
+    def test_admissible_expectations_are_nonnegative(self):
+        for k in range(21):
+            mu = [F(20 - k, 20), F(k, 20)]
+            if self.lifted.contains(mu):
                 self.assertGreaterEqual(
                     expected_value(self.position, self.price, mu, BOOLEAN), 0, mu)
 
-    def test_but_a_live_world_has_negative_value(self):
+    def test_a_live_world_is_negative(self):
         self.assertEqual(
             holdings_value(self.position, self.price, (F(1),)), F(-9, 40))
 
-    def test_the_two_are_related_by_the_pricing_map(self):
-        """`E_μ[X]` is the position's value at `π(μ)`, which is why a bound at
-        region points is a bound on expectations and nothing more."""
+    def test_expectation_is_the_value_at_the_projected_price(self):
         mu = [F(1, 2), F(1, 2)]
         self.assertEqual(
             expected_value(self.position, self.price, mu, BOOLEAN),
             holdings_value(self.position, self.price, price_of(mu, BOOLEAN)))
 
 
-class SmallSupportHidesLargeLoss(unittest.TestCase):
-    """Expectation control coexists with a large worldwise loss when the support
-    capacity is small — which is what a quantitative condition has to exclude."""
-
-    def region(self, cap):
-        return Region(1, [Row([F(-1)], -cap)])          # p(A) <= cap
-
-    def test_capacity_matches_the_bound(self):
-        for cap in (F(1, 4), F(1, 20), F(1, 100)):
-            self.assertEqual(support_capacity(BOOLEAN, self.region(cap), 1), cap)
-
-    def test_the_loss_grows_as_the_capacity_shrinks(self):
-        losses = []
-        for cap in (F(1, 4), F(1, 20), F(1, 100)):
-            region = self.region(cap)
-            trader = EnforcementTrader(region, F(4))
-            price = (cap + F(1, 4),)
-            position = trader.coefficients(price)
-            self.assertGreaterEqual(
-                expected_value(position, price,
-                               [F(1) - cap, cap], BOOLEAN), 0)
-            losses.append(holdings_value(position, price, (F(1),)))
-        self.assertTrue(all(x < 0 for x in losses))
-        self.assertLess(losses[1], losses[0])
-        self.assertLess(losses[2], losses[1])
-
-
-class TheSupportBridge(unittest.TestCase):
-    """`X(ω) >= (a - (1-θ)U)/θ`, with `U` named rather than smuggled."""
+class SupportBridge(unittest.TestCase):
+    """One of two sufficient routes from expectations to worldwise bounds."""
 
     def test_the_bound_holds_at_every_live_world(self):
         region = at_most_half()
+        lifted = saturated_lift(BOOLEAN, region)
         trader = EnforcementTrader(region, F(10))
         for price in grid(1, 20):
             position = trader.coefficients(price)
             for index, world in enumerate(BOOLEAN):
-                capacity = support_capacity(BOOLEAN, region, index)
+                capacity = lifted.support_capacity(index)
                 if capacity <= 0:
                     continue
                 self.assertGreaterEqual(
@@ -146,7 +238,7 @@ class TheSupportBridge(unittest.TestCase):
                     support_bridge_bound(position, price, capacity),
                     (price, world))
 
-    def test_the_upper_bound_is_the_cube_maximum_gain(self):
+    def test_the_upper_bound_is_named(self):
         region = at_most_half()
         trader = EnforcementTrader(region, F(10))
         price = (F(11, 20),)
@@ -157,8 +249,8 @@ class TheSupportBridge(unittest.TestCase):
 
     def test_it_degrades_as_the_capacity_shrinks(self):
         position, price = (F(-1, 2),), (F(1, 2),)
-        bounds = [support_bridge_bound(position, price, cap)
-                  for cap in (F(1, 2), F(1, 10), F(1, 100))]
+        bounds = [support_bridge_bound(position, price, c)
+                  for c in (F(1, 2), F(1, 10), F(1, 100))]
         self.assertLess(bounds[1], bounds[0])
         self.assertLess(bounds[2], bounds[1])
 
@@ -167,100 +259,75 @@ class TheSupportBridge(unittest.TestCase):
             support_bridge_bound((F(1),), (F(1, 2),), F(0))
 
 
-class GenuineRemoval(unittest.TestCase):
-    """Support vanishing entirely is a different thing from small support."""
+class SmallSupportHidesLargeLoss(unittest.TestCase):
+    """What a quantitative support condition has to exclude."""
 
-    def test_a_pinning_constraint_removes_a_world(self):
-        region = pinned_false()
-        self.assertEqual(support_capacity(BOOLEAN, region, 1), F(0))
-        self.assertEqual(support_live(BOOLEAN, region), [(F(0),)])
+    def region(self, cap):
+        return Region(1, [Row([F(-1)], -cap)])
 
-    def test_small_support_is_not_removal(self):
-        region = Region(1, [Row([F(-1)], F(-1, 1000))])
-        self.assertEqual(support_capacity(BOOLEAN, region, 1), F(1, 1000))
-        self.assertIn((F(1),), support_live(BOOLEAN, region))
+    def test_capacity_matches_the_bound(self):
+        for cap in (F(1, 4), F(1, 20), F(1, 100)):
+            self.assertEqual(
+                saturated_lift(BOOLEAN, self.region(cap)).support_capacity(1), cap)
 
-
-class DeductiveRecoveryUnderSupport(unittest.TestCase):
-    """Both directions, on a fragment with a relation."""
-
-    FRAGMENT = Fragment(("phi", "notphi", "psi"), [lambda w: w[0] + w[1] == 1])
-    STAGES = ({}, {"phi": 1}, {"phi": 0}, {"phi": 1, "psi": 1})
-
-    def test_live_worlds_equal_the_plausible_worlds(self):
-        for settled in self.STAGES:
-            worlds = self.FRAGMENT.worlds()
-            region = Region(3, support_rows(self.FRAGMENT, settled))
-            live = support_live(worlds, region)
-            self.assertEqual(sorted(live),
-                             sorted(self.FRAGMENT.pc_worlds(settled)), settled)
-
-    def test_forward_direction_uses_the_dirac_credence(self):
-        """A plausible world's point mass is compatible, so it is live."""
-        settled = {"phi": 1}
-        worlds = self.FRAGMENT.worlds()
-        region = Region(3, support_rows(self.FRAGMENT, settled))
-        for target in self.FRAGMENT.pc_worlds(settled):
-            mu = [F(1) if w == target else F(0) for w in worlds]
-            self.assertTrue(compatible(mu, worlds, region), target)
-
-    def test_reverse_direction_removes_the_implausible_worlds(self):
-        settled = {"phi": 1}
-        worlds = self.FRAGMENT.worlds()
-        region = Region(3, support_rows(self.FRAGMENT, settled))
-        implausible = [w for w in worlds
-                       if w not in self.FRAGMENT.pc_worlds(settled)]
-        self.assertTrue(implausible)
-        for index, world in enumerate(worlds):
-            if world in implausible:
-                self.assertEqual(support_capacity(worlds, region, index), F(0),
-                                 world)
+    def test_the_loss_grows_as_the_capacity_shrinks(self):
+        losses = []
+        for cap in (F(1, 4), F(1, 20), F(1, 100)):
+            region = self.region(cap)
+            trader = EnforcementTrader(region, F(4))
+            price = (cap + F(1, 4),)
+            position = trader.coefficients(price)
+            self.assertGreaterEqual(
+                expected_value(position, price, [F(1) - cap, cap], BOOLEAN), 0)
+            losses.append(holdings_value(position, price, (F(1),)))
+        self.assertTrue(all(x < 0 for x in losses))
+        self.assertLess(losses[1], losses[0])
+        self.assertLess(losses[2], losses[1])
 
 
 class Nesting(unittest.TestCase):
-    """`C_{t+1} ⊆ C_t` implies the live sets nest; revision need not."""
+    """Live-set nesting is what the lift needs; credal nesting implies it."""
 
     def test_shrinking_credal_sets_shrink_the_live_set(self):
-        earlier, later = at_most_half(), pinned_false()
-        self.assertTrue(credal_nesting(BOOLEAN, earlier, later, 24))
-        self.assertTrue(set(support_live(BOOLEAN, later))
-                        <= set(support_live(BOOLEAN, earlier)))
-
-    def test_an_enlarging_revision_breaks_nesting(self):
-        earlier, later = pinned_false(), at_most_half()
-        self.assertFalse(credal_nesting(BOOLEAN, earlier, later, 24))
-        self.assertFalse(set(support_live(BOOLEAN, later))
-                         <= set(support_live(BOOLEAN, earlier)))
-
-    def test_accumulating_settlement_nests(self):
-        fragment = DeductiveRecoveryUnderSupport.FRAGMENT
+        fragment = DeductiveSemanticRecovery.FRAGMENT
         worlds = fragment.worlds()
         stages = [{}, {"phi": 1}, {"phi": 1, "psi": 1}]
-        regions = [Region(3, support_rows(fragment, s)) for s in stages]
-        for earlier, later in zip(regions, regions[1:]):
-            self.assertTrue(set(support_live(worlds, later))
-                            <= set(support_live(worlds, earlier)))
+        sets = [delta_of(worlds, fragment.pc_worlds(s)) for s in stages]
+        for earlier, later in zip(sets, sets[1:]):
+            for vertex in later.vertices():
+                self.assertTrue(earlier.contains(vertex), vertex)
+            self.assertTrue(set(later.live_worlds()) <= set(earlier.live_worlds()))
+
+    def test_an_enlarging_revision_breaks_it(self):
+        tight = delta_of(PAIR, [PAIR[0]])
+        loose = delta_of(PAIR, CORRELATED)
+        self.assertFalse(set(loose.live_worlds()) <= set(tight.live_worlds()))
+
+    def test_live_set_nesting_is_weaker_than_credal_nesting(self):
+        """Two credal sets with the same live worlds and neither contained in the
+        other: the lift's hypothesis is about supports, not about the sets."""
+        one = CredalSet(BOOLEAN, [([F(1), F(0)], F(1, 4))])     # μ(false) >= 1/4
+        two = CredalSet(BOOLEAN, [([F(0), F(1)], F(1, 4))])     # μ(true)  >= 1/4
+        self.assertEqual(one.live_worlds(), BOOLEAN)
+        self.assertEqual(two.live_worlds(), BOOLEAN)
+        self.assertFalse(all(one.contains(v) for v in two.vertices()))
+        self.assertFalse(all(two.contains(v) for v in one.vertices()))
 
 
 class LiftHypotheses(unittest.TestCase):
     """What a live-world process must supply for the source construction."""
 
-    def test_the_deductive_process_is_nested(self):
-        """The budgeter's induction needs a world plausible now to have been
-        plausible before."""
-        stages = [{}, {"phi": 1}, {"phi": 1, "psi": 1}]
-        sets = [set(DeductiveRecoveryUnderSupport.FRAGMENT.pc_worlds(s)) for s in stages]
-        for earlier, later in zip(sets, sets[1:]):
-            self.assertTrue(later <= earlier)
+    FRAGMENT = DeductiveSemanticRecovery.FRAGMENT
 
     def test_each_stage_is_finite_and_nonempty(self):
         for settled in ({}, {"phi": 1}, {"phi": 1, "psi": 1}):
-            worlds = DeductiveRecoveryUnderSupport.FRAGMENT.pc_worlds(settled)
+            worlds = self.FRAGMENT.pc_worlds(settled)
             self.assertTrue(worlds)
             self.assertLess(len(worlds), 2 ** 3 + 1)
 
     def test_an_inconsistent_stage_is_empty_and_must_be_refused(self):
-        self.assertEqual(DeductiveRecoveryUnderSupport.FRAGMENT.pc_worlds({"phi": 1, "notphi": 1}), [])
+        self.assertEqual(self.FRAGMENT.pc_worlds({"phi": 1, "notphi": 1}), [])
+
 
 if __name__ == "__main__":
     unittest.main()

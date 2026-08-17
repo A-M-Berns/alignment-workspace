@@ -1,39 +1,44 @@
-"""Credal semantics: worlds, compatible credences, and support-live worlds.
+"""Semantic credal constraints, their price projections, and what projection loses.
 
-Four types, kept apart, because collapsing them is what produced the round's
-worst error:
+Two objects, and the whole architecture turns on not confusing them.
 
-* a **world** `ω` — an element of the finite world space, carrying a `{0,1}`
-  vector over the priced fragment;
-* a **credence** `μ ∈ Δ(Ω)` — a distribution over worlds;
-* a **price vector** `P ∈ [0,1]^Φ` — what the market displays;
-* the **pricing map** `π(μ) = Σ_ω μ(ω) · ω`, which sends a credence to the price
-  vector it induces. A world's own vector is `π(δ_ω)`.
+The **semantic** object is a credal set `C_t ⊆ Δ(Ω_t)`: which probabilistic states
+over worlds are admissible. It determines the live worlds, and therefore the
+generalized exploitation criterion:
 
-An ambient constraint `K` lives in **price** space. The credences it admits are
-`C = π⁻¹(K)`, and a world is **live** when some admitted credence gives it
-positive mass:
+    Ω_t^live  =  { ω : ∃ μ ∈ C_t, μ(ω) > 0 } .
 
-    Ω^live  =  { ω : ∃ μ ∈ C, μ(ω) > 0 } .
+The **price-visible** object is its image under the pricing map,
+`K_t = π_t(C_t)`, where `π_t(μ) = Σ_ω μ(ω)·ω` reads off the priced marginals.
+That is all a trader can see, and all a trader can enforce.
 
-A world need not be admissible as a point mass to be live. Under `K = {p(A)=1/2}`
-neither world's Dirac price is in `K` and both are live, which is the smallest
-case separating this from the Dirac reading — see `test_semantics`.
+Projection loses information. `π_t⁻¹(π_t(C))` — the **fibre saturation** of `C` —
+contains `C` and is generally larger, so price-space membership does not
+reconstruct semantic admissibility. The minimal witness is two priced sentences
+with deduction admitting only `00` and `11`: the projection is `{p_A = p_B}`, and
+the anticorrelated mixture `½·01 + ½·10` projects into it while putting all its
+mass on deductively impossible worlds.
+
+That is why semantics and force are two channels rather than one, and it is a
+reason about information rather than about mechanism convenience.
+
+Four types, never blurred: worlds, credences, price vectors, and the map between
+the last two.
 """
 from __future__ import annotations
 
 from fractions import Fraction
-from itertools import combinations
+from itertools import combinations, product
 from typing import Sequence
 
-from deduction import _solve
-from enforcement import Region
+from deduction import _solve, in_convex_hull
+from enforcement import Region, Row
 from market import ONE, ZERO, Vector, dot, holdings_value, max_gain
 
 
 def price_of(credence: Sequence[Fraction],
              worlds: Sequence[Sequence[Fraction]]) -> Vector:
-    """`π(μ)`: the price vector a credence induces, coordinate by coordinate."""
+    """`π(μ)`: the priced marginals a credence induces."""
     if len(credence) != len(worlds):
         raise ValueError("one weight per world")
     return tuple(sum((m * w[i] for m, w in zip(credence, worlds)), ZERO)
@@ -44,76 +49,157 @@ def is_credence(credence: Sequence[Fraction]) -> bool:
     return all(x >= 0 for x in credence) and sum(credence, ZERO) == ONE
 
 
-def compatible(credence: Sequence[Fraction],
-               worlds: Sequence[Sequence[Fraction]],
-               region: Region) -> bool:
-    """`μ ∈ C = π⁻¹(K)`."""
-    return is_credence(credence) and region.contains(price_of(credence, worlds))
+class CredalSet:
+    """`C ⊆ Δ(Ω)`, cut out of the simplex by rational rows in credence space.
 
-
-def compatible_vertices(worlds: Sequence[Sequence[Fraction]],
-                        region: Region) -> list[Vector]:
-    """The vertices of `C = π⁻¹(K) ∩ Δ(Ω)`, exactly.
-
-    `C` is cut out of the simplex by one row per region row, pulled back through
-    the pricing map: `⟪c_j, π(μ)⟫ = Σ_ω μ(ω) ⟪c_j, ω⟫`. Its vertices solve square
-    subsystems, so they are found by enumerating which constraints are tight and
-    solving exactly. Combinatorial in the world count, which is why the fixtures
-    keep the fragment small.
+    Rows are `⟪a, μ⟫ ≥ b` with `a` indexed by **worlds**, not by sentences. A
+    constraint stated in price space becomes such a row by pulling back through
+    the pricing map — `saturated_lift` does that, and names the choice, because
+    the pullback is a lift and not the only one.
     """
-    count = len(worlds)
-    inequalities: list[tuple[list[Fraction], Fraction]] = []
-    for i in range(count):
-        inequalities.append(([ONE if k == i else ZERO for k in range(count)], ZERO))
+
+    def __init__(self, worlds: Sequence[Sequence[Fraction]],
+                 rows: Sequence[tuple[Sequence[Fraction], Fraction]] = ()) -> None:
+        self.worlds = [tuple(Fraction(x) for x in w) for w in worlds]
+        self.rows = [(tuple(Fraction(x) for x in a), Fraction(b)) for a, b in rows]
+
+    @property
+    def size(self) -> int:
+        return len(self.worlds)
+
+    def contains(self, credence: Sequence[Fraction]) -> bool:
+        return is_credence(credence) and all(
+            dot(a, credence) >= b for a, b in self.rows)
+
+    def vertices(self) -> list[Vector]:
+        """The vertices of `C`, exactly, by enumerating tight subsystems."""
+        count = self.size
+        inequalities: list[tuple[list[Fraction], Fraction]] = [
+            ([ONE if k == i else ZERO for k in range(count)], ZERO)
+            for i in range(count)]
+        inequalities += [(list(a), b) for a, b in self.rows]
+        found: list[Vector] = []
+        for pick in combinations(range(len(inequalities)), count - 1):
+            matrix = [inequalities[i][0] for i in pick] + [[ONE] * count]
+            target = [inequalities[i][1] for i in pick] + [ONE]
+            solution = _solve(matrix, target)
+            if solution is None or any(x < 0 for x in solution):
+                continue
+            if any(sum((c * s for c, s in zip(coefficients, solution)), ZERO) < right
+                   for coefficients, right in inequalities):
+                continue
+            candidate = tuple(solution)
+            if candidate not in found:
+                found.append(candidate)
+        return found
+
+    def support_capacity(self, index: int) -> Fraction:
+        """`θ(ω) = max { μ(ω) : μ ∈ C }`, from `C` and not from any projection."""
+        return max((v[index] for v in self.vertices()), default=ZERO)
+
+    def live_worlds(self) -> list[Vector]:
+        """`Ω^live`: the worlds some admissible credence gives positive mass."""
+        return [w for i, w in enumerate(self.worlds)
+                if self.support_capacity(i) > 0]
+
+    def price_vertices(self) -> list[Vector]:
+        """`π(vertices)`, whose convex hull is `π(C)` since `π` is linear."""
+        out: list[Vector] = []
+        for v in self.vertices():
+            image = price_of(v, self.worlds)
+            if image not in out:
+                out.append(image)
+        return out
+
+    def projects_to(self, price: Sequence[Fraction]) -> bool:
+        """Whether a price vector is in `π(C)`."""
+        return in_convex_hull(price, self.price_vertices())
+
+    def saturation_contains(self, credence: Sequence[Fraction]) -> bool:
+        """Whether `μ ∈ π⁻¹(π(C))` — admissible *as far as prices can tell*."""
+        return is_credence(credence) and self.projects_to(
+            price_of(credence, self.worlds))
+
+
+def delta_of(worlds: Sequence[Sequence[Fraction]],
+             admitted: Sequence[Sequence[Fraction]]) -> CredalSet:
+    """`Δ(S)`: every credence supported on a subset of the worlds.
+
+    The deductive semantic constraint is this with `S = PC(D_t)`, and that is why
+    deductive recovery needs no hypothesis about the pricing map: the live worlds
+    of `Δ(S)` are `S` by the definition of support, in both directions.
+    """
+    rows = []
+    for i, w in enumerate(worlds):
+        if tuple(w) not in [tuple(a) for a in admitted]:
+            basis = [ONE if k == i else ZERO for k in range(len(worlds))]
+            rows.append(([-x for x in basis], ZERO))       # μ_i <= 0
+    return CredalSet(worlds, rows)
+
+
+def saturated_lift(worlds: Sequence[Sequence[Fraction]],
+                   region: Region) -> CredalSet:
+    """`π⁻¹(K)`: the credal set a **price-space** demand lifts to.
+
+    A named choice, not a derivation. A source that supplies only a price-space
+    region `K` has said nothing about which credences are admissible, and this is
+    the largest lift consistent with what it did say. It is fibre-saturated by
+    construction, so it is exactly the semantic state that price observations
+    cannot distinguish from.
+    """
+    rows = []
     for row in region.rows:
-        inequalities.append(([dot(row.c, w) for w in worlds], row.r))
-    found: list[Vector] = []
-    for pick in combinations(range(len(inequalities)), count - 1):
-        matrix = [inequalities[i][0] for i in pick] + [[ONE] * count]
-        target = [inequalities[i][1] for i in pick] + [ONE]
-        solution = _solve(matrix, target)
-        if solution is None or any(x < 0 for x in solution):
-            continue
-        if any(sum((a * s for a, s in zip(coefficients, solution)), ZERO) < right
-               for coefficients, right in inequalities):
-            continue
-        candidate = tuple(solution)
-        if candidate not in found:
-            found.append(candidate)
-    return found
+        rows.append(([dot(row.c, w) for w in worlds], row.r))
+    return CredalSet(worlds, rows)
 
 
-def support_capacity(worlds: Sequence[Sequence[Fraction]], region: Region,
-                     index: int) -> Fraction:
-    """`θ(ω) = max { μ(ω) : μ ∈ C }`, exactly.
+def is_fibre_saturated(credal: CredalSet, denominator: int) -> bool:
+    """Whether `C = π⁻¹(π(C))` on a rational grid of the simplex.
 
-    Liveness and the quantitative support condition are the same number at
-    different thresholds: `ω` is live exactly when `θ(ω) > 0`, and the coverage
-    hypothesis of `FUNDING_AND_SAFETY.md` asks for `θ(ω) ≥ θ` uniformly. The
-    maximum is attained at a vertex because the objective is linear.
+    A grid check, and labelled as one: it exhibits failures exactly and
+    establishes equality only over the points it visited.
     """
-    return max((v[index] for v in compatible_vertices(worlds, region)),
-               default=ZERO)
+    for weights in product(range(denominator + 1), repeat=credal.size):
+        if sum(weights) != denominator:
+            continue
+        mu = [Fraction(w, denominator) for w in weights]
+        if credal.saturation_contains(mu) and not credal.contains(mu):
+            return False
+    return True
 
 
-def support_live(worlds: Sequence[Sequence[Fraction]],
-                 region: Region) -> list[Vector]:
-    """`Ω^live`: the worlds some admitted credence gives positive mass."""
-    return [tuple(w) for i, w in enumerate(worlds)
-            if support_capacity(worlds, region, i) > 0]
+def saturation_witnesses(credal: CredalSet, denominator: int) -> list[Vector]:
+    """Credences in `π⁻¹(π(C))` but not in `C` — the projection's blind spot."""
+    out = []
+    for weights in product(range(denominator + 1), repeat=credal.size):
+        if sum(weights) != denominator:
+            continue
+        mu = tuple(Fraction(w, denominator) for w in weights)
+        if credal.saturation_contains(mu) and not credal.contains(mu):
+            out.append(mu)
+    return out
 
 
 def dirac_live(worlds: Sequence[Sequence[Fraction]],
                region: Region) -> list[Vector]:
-    """The worlds whose **own price vector** lies in the region.
+    """Worlds whose **own price vector** lies in the region.
 
-    **Not the live-world definition.** It was used as one, and the error is
-    recorded rather than deleted: it makes `Ω^live` empty for `K = {p(A)=1/2}`,
-    and it drops a world from the assessment set whenever the region excludes its
-    Dirac price — which is what made a safety condition stated over it look
-    vacuous. Kept computable so `test_semantics` can pin the difference.
+    **Not a live-world definition**, and recorded rather than deleted: it makes
+    `Ω^live` empty for `K = {p(A)=1/2}`. Kept computable for the regressions.
     """
     return [tuple(w) for w in worlds if region.contains(w)]
+
+
+def preimage_live(worlds: Sequence[Sequence[Fraction]],
+                  region: Region) -> list[Vector]:
+    """The live worlds of the saturated lift `π⁻¹(K)`.
+
+    Correct as the live worlds *of that credal set*, and **wrong as a recovery of
+    a semantic constraint from its projection**: with deduction admitting only
+    `00` and `11`, the projection is `{p_A = p_B}` and this returns all four
+    worlds. Use `CredalSet.live_worlds` on the semantic object instead.
+    """
+    return saturated_lift(worlds, region).live_worlds()
 
 
 # --- expectation against worldwise ------------------------------------------
@@ -121,12 +207,11 @@ def dirac_live(worlds: Sequence[Sequence[Fraction]],
 def expected_value(position: Sequence[Fraction], prices: Sequence[Fraction],
                    credence: Sequence[Fraction],
                    worlds: Sequence[Sequence[Fraction]]) -> Fraction:
-    """`E_μ[X]` for a realised position — which equals its value at `π(μ)`.
+    """`E_μ[X]`, which is the position's value at `π(μ)`.
 
-    This identity is the whole of the confusion the round had to unpick: the
-    enforcement inequality bounds the position's value at *price vectors* in the
-    region, so what it delivers is a bound on the **expectation** under every
-    admitted credence, and not a bound at any individual world.
+    The identity the round had to unpick: the enforcement inequality bounds the
+    position at *price vectors* in the region, so it bounds **expectations** under
+    admissible credences and nothing at any individual world.
     """
     return holdings_value(position, prices, price_of(credence, worlds))
 
@@ -135,39 +220,13 @@ def support_bridge_bound(position: Sequence[Fraction],
                          prices: Sequence[Fraction],
                          capacity: Fraction,
                          expectation_floor: Fraction = ZERO) -> Fraction:
-    """The worldwise floor a support lower bound buys.
+    """`X(ω) ≥ (a - (1-θ)U)/θ`, with `U` named as the cube maximum gain.
 
-    From `E_μ[X] ≥ a` and `μ(ω) ≥ θ`, with `U` an upper bound on `X` at the
-    other worlds,
-
-        X(ω)  ≥  ( a - (1 - θ) U ) / θ .
-
-    `U` is **named, not smuggled**: for a realised position it is the cube maximum
-    gain `max_gain(position, prices)`, which is exactly the largest value the
-    position takes in any world. Returns the bound; a caller with a sharper `U`
-    can inline the formula instead.
+    One of two sufficient routes from an expectation bound to a worldwise one.
+    The other is the deficit bound, which needs no support hypothesis.
     """
     capacity = Fraction(capacity)
     if capacity <= 0:
         raise ValueError("a live world has positive support capacity")
-    upper = max_gain(position, prices)
-    return (Fraction(expectation_floor) - (ONE - capacity) * upper) / capacity
-
-
-def credal_nesting(worlds: Sequence[Sequence[Fraction]],
-                   earlier: Region, later: Region,
-                   denominator: int) -> bool:
-    """Whether `C_later ⊆ C_earlier` on a rational grid of the simplex.
-
-    A grid check, and labelled as one: it witnesses failures exactly and
-    establishes containment only over the points it visited.
-    """
-    from itertools import product as _product
-    count = len(worlds)
-    for weights in _product(range(denominator + 1), repeat=count):
-        if sum(weights) != denominator:
-            continue
-        mu = [Fraction(w, denominator) for w in weights]
-        if compatible(mu, worlds, later) and not compatible(mu, worlds, earlier):
-            return False
-    return True
+    return (Fraction(expectation_floor)
+            - (ONE - capacity) * max_gain(position, prices)) / capacity

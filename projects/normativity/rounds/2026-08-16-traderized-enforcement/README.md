@@ -5,9 +5,9 @@ force by a distinguished trader that trades against violations of it, what that
 costs, and whether it can take the role a specially constrained market maker was
 meant to take.
 
-Verdict: traderization can carry the force layer, the constrained market maker is
-retired from it, and the generalized architecture coheres once live worlds are
-defined by support rather than by admissibility of their own price.
+Verdict: the semantic state is a credal set, the price-visible object is its
+projection, and that projection loses information. Traderized force acts on the
+projection and is installed as a living interface; the semantics is not.
 
 **Force-story verdict: yes.** Compiling a row presentation into one trading
 strategy gives a validated region operative force, with a certified conformance
@@ -29,23 +29,30 @@ per-date bound is `(ε_t + C_t)·‖d_t(W)‖₁/δ_t`, the intensity does **not
 and conformance and liability are traded against each other. A region excluding a
 live world at every date can still be enforced forever and safely.
 
-**Paper-fit verdict: the architecture coheres.** A world is live when *some*
-admitted credence gives it positive mass — not when its own price vector is
-admissible. Under that definition deductive recovery holds in both directions, the
-live-world lift has three explicit hypotheses, and the safety condition keeps its
-content. What remains is an ordinary gap rather than a hole: the enforcement
-inequality controls **expectations** under admitted credences while the criterion
-is **worldwise**, and two sufficient bridges are given.
+**Architectural verdict: two objects, not one.** The semantic state is a credal
+set `C_t ⊆ Δ(Ω_t)`; the live worlds are read off it by support; the price-visible
+object is its projection `K_t = π_t(C_t)`, and that projection **loses
+information** — `Δ({00,11})` and its fibre saturation share a projection and have
+different live worlds. So semantics and force are two channels for a reason about
+information, not about mechanism convenience. Force consumes `K_t`; it does not
+determine `C_t`.
+
+**Paper verdict: the core generalized-LI paper is available conditional on one
+named theorem** — the live-world TradingFirm lift, which is read off the source
+proofs and not formalized. Everything else on the spine is derived, proved,
+witnessed, or an explicitly downstream application.
 
 ```sh
-python3 tests/run.py     # 122 tests, exact rationals
+python3 tests/run.py     # 158 tests, exact rationals
 ```
 
-Three claims from earlier passes are withdrawn, each with its counterexample kept
+Four claims from earlier passes are withdrawn, each with its counterexample kept
 as a regression in `tests/test_regressions.py`: an intensity-free liability
-ceiling; an exactness impossibility stated for every empty-interior region; and
-the reading of a live world as one whose own price vector is admissible, together
-with the laundering conclusion that depended on it.
+ceiling; an exactness impossibility stated for every empty-interior region; the
+reading of a live world as one whose own price vector is admissible, with the
+laundering conclusion that depended on it; and the reading of semantic
+admissibility off a price region by preimage, with the deductive recovery that
+depended on *that*.
 
 | file | what it is |
 |---|---|

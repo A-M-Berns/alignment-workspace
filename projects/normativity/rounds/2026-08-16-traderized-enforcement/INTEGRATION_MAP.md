@@ -48,15 +48,26 @@ price vectors in `[0,1]^{Φ_n}` are displayable. There is no shared object, no
 shared quantifier, and no shared trajectory index. The two mechanisms could both
 run on one agent without interacting.
 
-**B — traderization implements Normativity's statics: open, and blocked on a
-missing object.** For a normative record to generate `K_t` there must be a map
-
-    normative record  ⟶  admissible region in price space ,
-
-and no such object exists in the workspace. `Due` is a burden on an occasion;
+**B — traderization implements Normativity's statics: open, and the missing
+object now has two possible shapes.** `Due` is a burden on an occasion;
 `Licensed` is a permission on a response; neither is a constraint on a credal
-state. Constructing that map is a research item, filed. Until it exists, B is a
-hypothesis with no arrow in it.
+state, and neither supplies the arrow. What a normative practice would have to
+produce is one of:
+
+**B1 — a semantic credal constraint `C_t ⊆ Δ(Ω_t)`.** Then live worlds, the
+generalized criterion, and the support capacities all follow, and force consumes
+the projection `π_t(C_t)`. This is the strong form.
+
+**B2 — a price-space demand `K_t` only.** Then force applies unchanged and makes
+the demand operative, but **no semantic interpretation follows**: the live worlds
+are not determined, because reading them off `K_t` by preimage is a *lift* and not
+a derivation, and a different lift gives a different criterion. A source in this
+shape has to declare its lift separately or accept that its constraint has force
+without semantics.
+
+The distinction is not cosmetic. `SEMANTIC_PROJECTION.md` §2 exhibits two credal
+sets with the same projection and different live worlds, so B2 genuinely underdetermines B1. Filed as item 39, which now asks for whichever of the two is
+achievable and a proof if only the weaker is.
 
 **C — traderization instantiates a current open interface: refused.** The
 tempting reading is that world-inclusivity instantiates the coverage requirement.
@@ -83,7 +94,10 @@ accommodate, and aesthetics are not grounds.
 | endorsement + `theta_min` ⟶ row ⟶ trader (`P1`) | force | **constructed**, `test-supported`; agrees with `NL-SI-A5`'s closed form and with the core condition pointwise |
 | `NL-SI-A3` feasibility program ⟶ compiler precondition | upstream | **identified**, not implemented here: the adapter already exists and is what the compiler needs |
 | exclusion depth `d_t` ⟶ cumulative liability ⟶ criterion | safety | **`lean-proved`** for the per-date bound (`weighted_square_sub_deficit_le_pair`); the ceiling and the summability condition are `test-supported` |
-| normative record ⟶ `K_t` | constraint source | **absent**; filed as a research item |
+| normative record ⟶ `C_t` (semantic) | constraint source | **absent**; item 39, strong form |
+| normative record ⟶ `K_t` (price demand only) | constraint source | **absent**; item 39, weak form — gives force without semantics |
+| `C_t` ⟶ `Ω_t^live` ⟶ generalized criterion | semantics | **derived**; `test_semantics` |
+| `C_t` ⟶ `π_t(C_t)` = `K_t` | projection | **derived**, and not invertible — `SEMANTIC_PROJECTION.md` |
 
 ## 6. Where the round would sit
 

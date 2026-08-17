@@ -109,21 +109,39 @@ cuts, and how tightly the mechanism has promised to enforce. A source may exclud
 live worlds permanently and still be safe, provided that quantity stays summable
 over time. Not agreement with deduction, then; convergence on it, at a rate.
 
-There is a subtlety underneath all of this that took the work some effort to get
-right. If a constraint also determines which worlds the reasoner is assessed
-against — the natural way to generalize, since that is what deduction does — then
-one has to say carefully what makes a world count. The answer is not that the
-world's own state is permitted by the constraint. It is that *some* distribution
-the constraint permits gives that world positive weight. A constraint saying "no
-more than even odds on `A`" does not thereby stop `A` from being possible; it
-permits the even-odds distribution, which takes `A` seriously.
+### What a constraint is, and what a market can see of it
 
-That distinction matters because the enforcement mechanism's guarantee is about
-*averages* under permitted distributions, while the resistance-to-being-pumped
-condition is about *individual* worlds. Bridging the two takes a further
-assumption — either about how far the constraint's demands sit from the world in
-question, or about how much weight the world can carry. Which assumption is the
-right one is open.
+Underneath this sits a distinction that took the work several attempts to state
+correctly, and getting it right turned out to improve the picture rather than
+merely repair it.
+
+A constraint of this kind is really a restriction on **distributions** over
+possible worlds, not on any single world and not on prices. Which worlds still
+count as possible is then read off by asking which ones some permitted
+distribution takes seriously — gives positive weight to. A constraint saying "no
+more than even odds on `A`" does not make `A` impossible; it permits the
+even-odds distribution, which takes `A` perfectly seriously.
+
+What a market sees is much less than that. Prices record only the *averages* a
+distribution induces on the sentences being priced. And averages do not determine
+the distribution: two quite different restrictions can produce exactly the same
+prices while disagreeing about which worlds are possible at all. The smallest
+example needs two sentences and says that deduction has established they agree —
+prices then pin `p(A) = p(B)`, and the distribution that is certain they *disagree*,
+half one way and half the other, produces exactly those prices while being ruled
+out entirely.
+
+So prices are enough to push a reasoner around and not enough to say what it
+believes. That is the reason this direction has two channels rather than one, and
+it is a fact about information rather than an awkwardness of mechanism. The
+enforcement mechanism works on the prices; what the reasoner is answerable to is
+the constraint the prices only partly reveal.
+
+It also sharpens what remains open. The mechanism's guarantee is about averages;
+being resistant to a pump is about individual worlds. Bridging the two takes a
+further assumption — about how far the constraint's demands sit from the world in
+question, or about how much weight that world can carry — and which assumption is
+right is not settled.
 
 ### Force, and what force costs
 

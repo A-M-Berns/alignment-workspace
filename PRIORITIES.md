@@ -502,35 +502,43 @@ context is `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, who
 `THEOREM_MAP.md` says which of its results are kernel-checked, which are derived
 from source lemmas taken as hypotheses, and which are single witnesses.
 
-### 39. What maps a normative record to an admissible region? — **[open]**
+### 39. Does normative statics produce a credal constraint, or only a price demand? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
-Traderized enforcement consumes a region in price space and gives it operative
-force. The normative line produces `Due`, a burden on an occasion, and
-`Licensed`, a permission on a response. Neither is a constraint on a credal
-state, so the reading under which enforcement supplies force to *normative*
-constraints has no arrow in it — the round refused to assert one and the gap is
-the reason.
+The traderized-force interface consumes a price-space region and gives it
+operative force. What the normativity line does not have is the arrow into it.
+`Due` is a burden on an occasion and `Licensed` is a permission on a response;
+neither is a constraint on a credal state, and neither is a demand on prices.
 
-The item is to construct the missing object or show it cannot exist: a map from a
-normative record to a nonempty region of `[0,1]^Φ`, presented by rational rows,
-that respects the write-access boundaries the learning interface already fixes.
-The hard part is not the type. It is that a normative constraint's whole point is
-to exclude states deduction permits, and the round's safety condition says
-excluding a still-plausible world is exactly what costs the criterion its bound.
-So a nontrivial map is one whose regions are provably *not* world-inclusive, and
-the item must say what replaces the safety guarantee there.
+The item has two possible answers and they are not equivalent.
+
+**Strong.** A reasons/warrants/settlement structure yields a semantic credal
+constraint `C_t ⊆ Δ(Ω_t)`. Then the live worlds, the generalized criterion and the
+support capacities all follow, and force consumes the projection `π_t(C_t)`.
+
+**Weak.** It yields only a price-space demand `K_t`. Force still applies, but no
+semantics follows: reading live worlds off `K_t` by preimage is a *lift*, not a
+derivation, and different lifts give different criteria. The round exhibits two
+credal sets with the same projection and different live worlds, so the weak form
+genuinely underdetermines the strong one.
+
+Deliver whichever is achievable, and a proof if only the weak one is. The hard
+part is not the type: a normative constraint exists to exclude states deduction
+permits, and the round's safety conditions then charge for that exclusion, so a
+nontrivial answer must come with the liability its regions induce.
 
 *Deliverable shape:* `test-supported` at minimum — a constructed map on the
-relational fixture, with the enforcement liability it induces computed exactly —
-or a displayed obstruction.
-*Acceptance check:* the round's runner passes with the map's regions checked for
-nonemptiness and for the liability they induce over a stated trajectory.
-*Context:* `.../2026-08-16-traderized-enforcement/INTEGRATION_MAP.md` §4;
-`projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md`;
-`state/theorem_interface.json`.
-*Why it matters:* without it, the mechanism is a result about deduction wearing a
-general name.
+relational fixture, with the induced price projection, the live worlds it implies,
+and the enforcement liability computed exactly — or a displayed obstruction.
+*Acceptance check:* the round's runner passes with the constructed region checked
+for nonemptiness and priceability, and its liability computed over the live worlds
+the map implies.
+*Context:* `projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md`;
+`.../2026-08-16-traderized-enforcement/SEMANTIC_PROJECTION.md` §4;
+`INTEGRATION_MAP.md` §4.
+*Why it matters:* the force interface is installed and consumable; this is the one
+arrow between it and the normativity line, and without it traderized force is a
+result about deduction wearing a general name.
 
 ### 40. Is the depth-summability condition necessary? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->

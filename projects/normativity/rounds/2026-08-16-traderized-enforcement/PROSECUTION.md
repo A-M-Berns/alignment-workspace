@@ -238,16 +238,31 @@ half-width `C/(2β)` survives every intensity.
 
 ## W20 — The generalized assessment set can be chosen to satisfy the safety condition
 
-**Lands, and it is the deepest problem the round has.** If the live worlds are
-derived from `S_t = Π_t ∩ K_t`, the enforcement position is worth at least zero at
-every one of them by the enforcement inequality, so the liability is identically
-zero and the safety theorem holds by construction. The region the deductive
-assessment set convicts at `−5/8` is reported clean.
-`test_live_worlds.DerivedLiveWorldsLaunderTheLiability`.
+**Raised, then withdrawn twice over.** The attack was that live worlds derived
+from the constraint make the liability identically zero. It rested on reading a
+live world as one whose own price vector is admissible, which is not the
+definition; under support the disfavoured world stays live and the position still
+loses there.
 
-No condition stated over the derived set can see this, because the set is chosen
-by the party the condition binds. This is where the round stops, and
-`PAPER_RECONCILIATION.md` §6 names three candidate anchors, none proved.
+What survives is much narrower and is `PRIORITIES.md` item 44: a constraint can
+set a world's support capacity to **zero**, and then that world genuinely leaves
+the assessment set. That act is what a settlement performs, so the question is
+whether the settlement interface's write-once and no-claw-back clauses bind it.
+`test_semantics.CapacityComesFromTheSemanticSet` and
+`test_regressions.DiracLiveWorldsAreNotLiveWorlds`.
+
+## W21 — Price-space membership read back as semantic admissibility
+
+**Lands, and it is the pass's own finding.** Defining the semantics as
+`π⁻¹(K_t)` is not a derivation from `K_t`; it is the largest lift consistent with
+it. With deduction admitting only `{00, 11}`, the projection is `{p_A = p_B}` and
+the preimage makes **all four** worlds live — including two whose entire
+combination is deductively impossible. Deductive recovery fails outright under
+that reading.
+
+The repair is to make `C_t` primitive and `K_t = π_t(C_t)` its image, and to name
+the reverse direction a lift wherever a source supplies only a region.
+`test_semantics.ProjectionLosesSupport`.
 
 ## What lands
 

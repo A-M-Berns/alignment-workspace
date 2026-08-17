@@ -53,6 +53,16 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
   leaves the current documents explicitly `ci-only` and unadopted.
 
+- **Confirm the traderized force interface as a living note.** The round
+  installed `projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md` — the force
+  layer's input type, its conformance theorem, the liability obligation it emits
+  rather than discharges, and its explicit non-responsibilities. It is installed
+  because the force results survived four passes of semantic revision without a
+  retraction, while every withdrawn claim in the round was semantic. *Doing it* is
+  reading one short note and deciding whether a research round may leave a living
+  specification behind at all. *Waiting* leaves it as an unadopted note that a
+  later round may or may not treat as current.
+
 - **Rule on the two-channel architecture, the Coverage–Liability names, and
   where traderized force is published.** Three linked rulings from the
   traderized-enforcement round's reconciliation pass. *(a)* Whether

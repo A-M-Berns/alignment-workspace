@@ -158,24 +158,33 @@ laundering conclusion.
     price  P ∈ [0,1]^Φ      what the market displays
     pricing map  π_t(μ) = Σ_ω μ(ω)·ω
 
-    compatible credences   C_t = π_t⁻¹(K_t)
+    semantic constraint    C_t ⊆ Δ(Ω_t)          — primitive
     support-live worlds    Ω_t^live = { ω : ∃ μ ∈ C_t, μ(ω) > 0 }
     support capacity       θ_t(ω) = max { μ(ω) : μ ∈ C_t }
+    price projection       K_t = π_t(C_t)        — what force consumes
 
-`semantics.py` carries all of them, and `dirac_live` is kept — computable and
-marked as *not* the definition — so the withdrawn reading stays on the record and
-under test.
+`C_t` is the primitive and `K_t` is its image. The reverse does not hold: `π_t` is
+not injective on credal sets, so `π_t⁻¹(K_t)` is generally strictly larger than
+`C_t` and has different live worlds. `SEMANTIC_PROJECTION.md` carries the witness.
+
+`semantics.py` keeps two withdrawn readings computable and marked as *not*
+definitions — `dirac_live`, the worlds whose own price is admissible, and
+`preimage_live`, the live worlds of `π_t⁻¹(K_t)` — so both stay on the record and
+under test. `saturated_lift` names the price-to-credal lift as a **choice**,
+available to a source that supplies only a region.
 
 Liveness and the quantitative coverage hypothesis are the same number at two
 thresholds: `ω` is live exactly when `θ_t(ω) > 0`, and coverage asks for
 `θ_t(ω) ≥ θ` uniformly. `θ_t` is computed exactly by vertex enumeration of `C_t`,
 which is combinatorial in the world count and is why the fixtures stay small.
 
-**The distinction the types enforce.** The enforcement inequality bounds the
-position's value at price vectors in `K_t`, and `E_μ[E_t]` is precisely its value
-at `π_t(μ)`. So it delivers a bound on **expectations** under admitted credences,
-and nothing at any individual world. Bridging to a worldwise bound needs a
-hypothesis, and `FUNDING_AND_SAFETY.md` §4a gives two.
+**Two distinctions the types enforce.** First, the enforcement inequality bounds
+the position's value at price vectors in `K_t`, and `E_μ[E_t]` is precisely its
+value at `π_t(μ)` — so it delivers a bound on **expectations** under admissible
+credences and nothing at any individual world. Bridging to a worldwise bound needs
+a hypothesis, and `FUNDING_AND_SAFETY.md` §4a gives two. Second, `θ_t` is computed
+from `C_t`; computing it from `π_t⁻¹(K_t)` gives a different number, `0` against
+`½` on the projection witness.
 
 ## 8. What this model is not
 

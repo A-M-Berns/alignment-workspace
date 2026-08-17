@@ -144,6 +144,37 @@ a source may exclude live worlds permanently, provided the depth of exclusion
 decays against the growth of ordinary volume. Deduction is the degenerate member
 of that family, at depth identically zero.
 
+## 6b. Two recoveries, not one
+
+The round's earlier drafts ran deductive recovery through the price region and
+needed a hypothesis on the pricing map. Split into two statements, neither needs
+one.
+
+**Semantic recovery.** `C_t^D = Δ(PC(D_t))` gives `Ω_t^live = PC(D_t)` in both
+directions, by the definition of support: a plausible world's point mass is
+admissible, and every admissible credence is supported inside `PC(D_t)`. The
+generalized criterion therefore specializes to `LIC_D`. No property of `π_t` is
+used.
+
+**Force recovery.** `K_t^D = π_t(C_t^D)` is the ordinary finite coherence
+polytope, and it is what the compiled trader acts on. Enforcing it gives
+finite-date coherence at a declared tolerance.
+
+What is recovered, itemised, because the two were being run together:
+
+| object | recovered |
+|---|---|
+| semantic criterion | **yes**, exactly |
+| price-space coherence target | **yes**, as the projection |
+| operative-force role of deduction | **yes**, generalized |
+| the original finite-time prices | **no** — they differ |
+| the algorithmic use of `D` in `Budgeter` | **no** |
+| the `TradingFirm` construction | **no** — lifted, not removed |
+
+Deduction is **recovered** under those two named relations. It is not
+*replaced*: `SOURCE_AUDIT.md` §3 shows `D` is load-bearing in the construction as
+well as the criterion, and nothing here removes it.
+
 ## 7. What it would close upstream
 
 `THEORY_11_SETTLEMENT_INTERFACE.md` §7 lists `D3` as an open sub-problem: either
