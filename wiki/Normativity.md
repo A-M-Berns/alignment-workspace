@@ -229,12 +229,23 @@ saying, because both look sufficient and neither is: capping each endorsement
 separately fails, since finitely many caps need not sum, and capping how many
 constraints are live per date fails, since nothing bounds the number of dates.
 
-The account also has a limit that reads as a claim about normativity rather than
-about markets. No finite account can fund meaningful force at infinitely many
-dates against a demand that stays a fixed distance from what the record supports.
-What it *can* fund forever is a demand that is never vindicated but whose distance
-from the record closes — so safety does not require that normative disagreement
-be settled, only that unresolved disagreement be resisted with diminishing force.
+What a date of force costs is a product of three quantities — how much ordinary
+market pressure it must push against, how far its demand outruns what the record
+supports, and how much error it tolerates — and the account holds whenever that
+product is summable. None of the three has to shrink on its own. A demand can stay
+exactly as far from the record as it ever was, forever, and remain affordable if
+the market pressure it faces decays; only when pressure and distance are both
+pinned and the tolerance is capped does the account necessarily run out.
+
+An earlier reading of this said the normative distance itself had to close. It
+does not, and the difference matters for what the picture claims: safety does not
+require that disagreement be settled, nor that it narrow — only that resisting it
+get cheaper by some route.
+
+The motivating statics do produce a demand that is never vindicated and stays
+affordable indefinitely, though not from every kind of demand: a constraint on a
+single sentence holds its distance and then closes it in one step, while a graded
+demand sitting at the value the record approaches can be enforced forever.
 
 Evidence: [the traderized-enforcement round](https://github.com/A-M-Berns/alignment-workspace/tree/46032abe26be325218cec51f857b86be377108ab/projects/normativity/rounds/2026-08-16-traderized-enforcement).
 

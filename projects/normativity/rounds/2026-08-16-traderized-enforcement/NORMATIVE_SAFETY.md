@@ -23,7 +23,7 @@ below is stronger than the weakest arrow in the path that uses it.
 | A2 | the compiled position is a legal day-`t` `Strategy n` | **derived** — exhibited in the source's feature grammar, not written as a term |
 | A3 | liability identity: `L_t(ω) ≤ Σ_j β_{t,j} g_j(P_t) d_j(ω)` | **lean-proved** — `weighted_square_sub_deficit_le_pair` |
 | A4 | substituting the promise and the intensity: `L_t(ω) ≤ (ε_t + C_t)·‖d_t(ω)‖₁ / δ_t` | **derived** from A1 and A3 |
-| **A5** | **outflow protocol with capital `B` ⟹ `Σ_t charge_t ≤ B` ⟹ `Σ_{t≤n} E_t(ω) ≥ −B` for all `n` and all `ω ∈ Ω_n^live`** | **derived**, this pass — §7–8; the second step is conservative, see below |
+| **A5** | **outflow protocol with capital `B` ⟹ `Σ_t q_t ≤ B` ⟹ `Σ_{t≤n} E_t(ω) ≥ −B` for all `n` and all `ω ∈ Ω_n^live`**, with `q_t = (ε_t + C_t)·D_t/δ_t` and `D_t = sup_{ω ∈ Ω_t^live} Σ_j d_{t,j}(ω)` | **derived** — §7–8, and the aggregate is certified rather than supplied |
 | A6 | `B < ∞` ⟹ no efficiently computable trader exploits the modified market, and assessed net worth is at most `1 + B` | **derived**, conditional on A7 |
 | A7 | the generalized live-world Budgeter/TradingFirm lift | **derived and unformalized** — the paper's only conditional, `PAPER_RECONCILIATION.md` |
 | A8 | settlement rows contribute zero deficit; core rows carry `max(0, r − m_c)`, independent of `θ` | **derived** — §1–2 |
@@ -94,7 +94,7 @@ Finite gating (`P3`) bounds how many rows are live per date, hence the length of
 the deficit vector.
 
 **That is monotonicity and a bounded row count. It is not summability**, and the
-declared-quantity ceiling `(ε_t + C_t)·‖d_t‖₁/δ_t` has `C_t` — a bound on
+declared-quantity ceiling `(ε_t + C_t)·D_t/δ_t` has `C_t` — a bound on
 cumulative ordinary trading volume — growing in the numerator.
 
 ## 4. Two trajectories
@@ -167,7 +167,7 @@ into an allocation that is *summable* rather than merely finite termwise.
 
 `src/outflow.py`. Finite lifetime capital `B`, spent down as force is emitted.
 
-**The charge.** A date's force costs `(ε_t + C_t)·‖d_t‖₁ / δ_t` — the
+**The charge.** A date's force costs `(ε_t + C_t)·D_t / δ_t` — the
 declared-quantity liability ceiling, renamed. That rename is the move: a quantity
 the safety analysis could previously only report after the fact becomes a price
 paid in advance. It uses no realized price, so §6's timing question answers
@@ -201,40 +201,69 @@ rather than hiding it. This is the price of a certificate computable in advance.
 Conditional on the live-world Budgeter/TradingFirm lift, `B < ∞` then gives
 nonexploitability with assessed net worth at most `1 + B`.
 
-## 9. Force is purchased, and some force cannot be bought
+## 9. What force costs, and the three ways it stays affordable
 
-Inverting the charge against a per-date allowance `b_t` gives the pass's central
-relation:
+The charge is a product of three factors and the condition is that the product be
+summable:
 
-    δ_t  ≥  (ε_t + C_t)·‖d_t‖₁ / b_t .
+    q_t = (ε_t + C_t)·D_t / δ_t ,        Σ_t q_t < ∞ .
 
-So the system stops being "pick `δ_t`, hope safety holds" and becomes "the
-remaining account determines how tightly the reasoner may be forced". A free date
-— nothing live excluded — is reported as free rather than as zero tolerance, and
-a required `δ_t > 1` is reported as unaffordable rather than rounded down.
+Ordinary aggregate pressure, normative exclusion depth, tolerated error. **No one
+of them is privileged.** Indefinite force stays affordable if the depth decays, or
+if the pressure decays, or if the tolerance loosens, or any combination.
 
-**And there is a hard limit.** A date whose promise says anything needs
-`δ_t ≤ 1`, so it costs at least `‖d_t‖₁`. If the exclusion deficit never falls
-below a positive floor, those charges are bounded away from zero and finitely
-many fit in finite capital:
+Inverting against a per-date allowance `b_t` gives the affordability relation
 
-> **No finite account funds meaningful operative force at infinitely many dates
-> against an endorsement whose exclusion deficit does not decay to zero.**
+    δ_t ≥ (ε_t + C_t)·D_t / b_t ,
 
-Against every protocol, not against one policy — `meaningful_dates_are_finite`.
-The `proportional` policy makes the shape vivid: spending a fixed share of what
-remains never exhausts the capital, and the tolerance it buys still diverges, so
-force goes vacuous anyway. Never running out is not the same as keeping force
-available.
+which is one reading of the same equation: the remaining account determines how
+tightly the reasoner may be forced, given the other two factors.
 
-**What survives is weaker than settlement.** An endorsement need never be
-vindicated. Its *depth* must close. `test_outflow.ForeverUnvindicatedAndSafe`:
-deficit `2^-t`, ordinary volume `t+1` growing without bound, a fixed nonvacuous
-tolerance `1/2` at every date forever, total charge under the closed form `17/2`.
-The endorsement is never settled and never fully satisfied, and the account holds.
-That is the conceptual payoff — safety does not demand that normative
-disagreement be deductively resolved, only that unresolved disagreement be
-resisted with summably decreasing force.
+**A withdrawn theorem.** A previous version of this note claimed that a date whose
+promise says anything costs at least `D_t`, and so that persistent positive depth
+exhausted any finite account. The step is wrong: `δ_t ≤ 1` gives only
+`q_t ≥ (ε_t + C_t)·D_t`, and the dropped factor is not bounded below.
+`test_outflow.DepthOnlyImpossibilityIsWithdrawn` carries the counterexample —
+`D_t = 1/2` and `δ_t = 1` forever against `ε_t + C_t = 2^-t` sums to under `1`, so
+the normative distance never closes at all and force is affordable forever.
+`meaningful_dates_are_finite` now raises rather than answering.
+
+**The corrected limitative theorem** needs floors on two factors and a ceiling on
+the third:
+
+    D_t ≥ d > 0,  ε_t + C_t ≥ c > 0,  δ_t ≤ δ̄   ⟹   q_t ≥ cd/δ̄ > 0 ,
+
+so finitely many such dates fit in finite capital — at most `B·δ̄/(cd)`. All three
+hypotheses are load-bearing and `positive_floor_dates` refuses to run without
+them. What it does **not** say is that any factor must decay; it says that if none
+of them moves, the account runs out.
+
+**Two witnesses, and they are different objects.** The abstract one stipulates
+`D_t = 2^-t` against volume `t+1` at fixed tolerance `1/2`, total under `17/2` —
+that shows the *mechanism* admits indefinite nonvacuous force. Whether the
+motivating *statics* generate such a trajectory is a separate question, and §9a
+answers it.
+
+## 9a. Do the motivating statics generate one?
+
+**Not from sentence-indicator endorsements.** `P(A) ≥ r` has world coefficients in
+`{0,1}`, so its worst live delivery is `0` while any `A = 0` world survives and `1`
+once none does. The depth holds at `r` and drops to zero in a single step; there is
+no gradual closure available from this shape.
+`test_normative.BooleanEndorsementsJumpToZero`.
+
+**Yes from affine ones.** Take a priceable affine functional of priced sentences
+whose demand sits at exactly the value the settled record *approaches*: settlement
+establishes `A_1, A_2, …` in turn, each raising the worst surviving delivery
+halfway to `r`, while the growing fragment keeps a world below it alive. Then the
+endorsement is never vindicated at any date, a positive core minimum is admissible
+at every date (`θ_max` rises from `63/127`), the depth halves from `1/4`, and the
+cumulative charge converges.
+`test_normative.StaticsGenerateAForeverUnvindicatedTrajectory`.
+
+So the statics do produce forever-unresolved-but-affordable normative force — but
+the endorsement has to be an affine demand rather than a sentence, which is a
+substantive constraint on what kind of normative content this covers.
 
 ## 10. What happens at exhaustion, and what does not help
 
@@ -253,19 +282,41 @@ it was. A protocol answering exhaustion by weakening the core has paid nothing �
 
 ## 11. Presentation
 
-A half-space has many presentations, and if the account were presentation-
-dependent a source could buy the same constraint cheaply by rescaling. It is not:
+The account bills a row presentation, and presentations of the same admissible set
+are not interchangeable. A previous version of this note claimed they were. It
+tested a compiler retuned for the occasion — dividing the intensity by the row
+count — where the installed `ForceDeclaration` uses a uniform
+`β_j = (ε + C)/δ²` for every row, so the retuning *was* the result.
 
-> At a fixed **actual** conformance target, the compiled position and the charge
-> are identical across row rescalings and row duplications.
+**What the installed compiler actually does**, at a fixed declared tolerance:
 
-Rescaling by `λ` multiplies the violation and the deficit by `λ` and divides the
-intensity by `λ²`; duplication into `k` copies divides the intensity by `k`. Both
-cancel exactly. What *is* presentation-dependent is a fixed **declared** `δ`,
-because `δ` is a promise about the violation in the presentation's own units. The
-force API must therefore state tolerance against a normalized row or against an
-actual conformance target — and having done so, no rescaling or duplication buys
-stronger force for the same account. `test_outflow.LiabilityIsInvariantUnderRowPresentation`.
+| operation | position | realized liability | charge |
+|---|---|---|---|
+| `k` duplicate rows | `× k` | `× k` | `× k` |
+| rescaling by `λ` | `× λ²` | `× λ²` | `× λ²` |
+| one redundant non-duplicate row | `× 3` on the displayed instance | changes | changes |
+
+**What survives.** Rescaling is a genuine reparametrization: a row scaled by `λ`
+measures its violation in units `λ` times finer, so declaring `λ·η` asks for the
+same actual conformance `η`, and at matched targets the position, the realized
+liability and the charge all agree. A source gains nothing by rescaling.
+
+**What does not.** Duplication is redundancy and it is billed. Even at matched
+actual conformance — available only at square `k`, since `k` copies give
+`δ/√k` — the position and realized liability agree while the charge does not,
+because the certificate sums the same deficit once per copy. And redundancy is
+general: `p_A ≥ ½` and `p_B ≥ ½` already imply `p_A + p_B ≥ 1`, and adding the
+implied row leaves the admissible set exactly where it was and triples the emitted
+position.
+
+**So the answer to "is safety cost a property of `K_t` or of how it is asked
+for?"** is: of how it is asked for. The round takes **Option A** — the
+presentation is part of the force request, `(K_t, presentation)` is what force
+consumes — with one normalization result on top: scalar rescaling need not be
+normalized because the compiler already handles it. Duplicate and redundant rows
+are *not* normalized, and a constitutional layer wanting presentation-independent
+cost must either deduplicate, weight, or minimize over presentations. That is
+`PRIORITIES.md` item 46 and is deliberately not decided here.
 
 ## 12. Where the clause belongs
 
@@ -316,7 +367,48 @@ supply no lower bound on live-world support capacity and no summable bound on
 `U_t`, so this route is **not** discharged by them; it remains available to a
 source that supplies those quantities. Nothing shows it necessary either.
 
+## 13a. Why the per-date charge gives the horizon quantifier
+
+The one step worth writing out, since the certificate and the criterion quantify
+differently.
+
+**Proposition.** Let `q_t = sup_{ω ∈ Ω_t^live} L_t(ω)` where `L_t(ω)` is the
+date-`t` liability ceiling of A4, and suppose `Σ_t q_t ≤ B`. Then for every
+horizon `n` and every `ω ∈ Ω_n^live`, `Σ_{t≤n} E_t(ω) ≥ −B`.
+
+*Proof.* Fix `n` and `ω ∈ Ω_n^live`. The live process is nested, so `ω ∈ Ω_t^live`
+for every `t ≤ n`. Hence `L_t(ω) ≤ q_t` for each such `t`, by the definition of
+`q_t` as a supremum over a set containing `ω`. Summing, and using
+`E_t(ω) ≥ −L_t(ω)` from A3–A4, gives
+`Σ_{t≤n} E_t(ω) ≥ −Σ_{t≤n} L_t(ω) ≥ −Σ_{t≤n} q_t ≥ −B`. ∎
+
+Nesting is exactly what the proof consumes, and it is hypothesis `(L1)` of the
+live-world lift — so this proposition is not an extra assumption, it reuses one
+already made. The conservatism is visible in the second inequality: the criterion
+follows one world, the certificate takes a supremum at each date independently,
+and `charge_is_conservative` checks the domination on a trajectory.
+
+**Which aggregate is billed.** `D_t` is the **sharp** `sup_ω Σ_j d_j(ω)`, not the
+rowwise `Σ_j sup_ω d_j(ω)`. They differ: two rows pinning one price from opposite
+sides are worst at opposite worlds and cannot be violated together at any world,
+giving `1/2` against `1`. `LiveDeficitCertificate` computes both by enumeration
+over the live worlds and bills the sharp one by default, because the rowwise one
+overcharges and buys nothing.
+
+## 13b. What counts as meaningful force
+
+`δ_t ≤ 1` is **not** a presentation-independent notion, because scaling a row by
+`λ` scales its violations by `λ`. The invariant statement is relative to the
+largest violation the row can attain in the cube, `V_max = r − Σ_i min(c_i, 0)`:
+force is nonvacuous when `δ_t ≤ α·V_max` for a declared `α < 1`. Every claim in
+§9 about "meaningful" force is to be read at a fixed `α`, and the corrected
+limitative theorem's tolerance ceiling `δ̄` is where that enters.
+
 ## 14. What is not established
+
+**Presentation-independent cost.** The account bills a presentation, duplicate
+and redundant rows cost more, and the round chose Option A — presentation is part
+of the force request — rather than solving it. `PRIORITIES.md` item 46.
 
 That the account is necessary (`PRIORITIES.md` item 40). That the deficit route is
 the best available. That the charge is anywhere near tight — it is a worst-case

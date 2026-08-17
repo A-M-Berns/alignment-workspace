@@ -573,8 +573,8 @@ is strictly stronger than the criterion needs and the round's formulation is not
 the canonical one.
 
 Note what the item is *not*. It is not about the declared-quantity **certificate**
-`Σ_t (ε_t + C_t)·‖d_t‖₁/δ_t`, which is a conservative sufficient upper bound —
-it maximizes over the live worlds independently at each date, where the criterion
+`Σ_t (ε_t + C_t)·D_t/δ_t`, which is a conservative sufficient upper bound — it
+maximizes over the live worlds independently at each date, where the criterion
 follows a single world across dates. A certificate that diverges establishes only
 that the current proof does not certify safety. The round carries a fixture where
 the realized liability at one followed world diverges too, which is the stronger
@@ -589,6 +589,42 @@ efficiently-computable trader class.
 *Why it matters:* the constitutional layer is being asked to install a finite
 account on the strength of this hypothesis, and installing a discipline stronger
 than the criterion needs would restrict normative force for no safety gain.
+
+### 46. Should force cost depend on the row presentation? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The traderized compiler consumes a row system, not an admissible set, and the two
+are not interchangeable. Under the installed `ForceDeclaration` at a fixed
+declared tolerance, `k` duplicate rows scale the emitted position and the safety
+charge by `k`; rescaling a row by `λ` scales them by `λ²`; and a redundant
+non-duplicate row — `p_A ≥ ½` and `p_B ≥ ½` already imply `p_A + p_B ≥ 1` — changes
+the emitted force while leaving the admissible set exactly where it was.
+
+Rescaling is the benign case: it is a genuine reparametrization, and at a matched
+*actual* conformance target the position, realized liability and charge all agree.
+Duplication and redundancy are not.
+
+The round takes **Option A** — the presentation is part of the force request — and
+records it as a choice rather than a result. Three alternatives are open:
+
+- **canonical normalization**, which must state exactly which equivalence class it
+  normalizes; scalar rescaling and literal duplicates are tractable, general
+  H-presentation redundancy is not obviously so;
+- **a weighted compiler**, where redundant rows carry declared weights summing to
+  one, which would need the conformance theorem re-derived at the wrapper level;
+- **minimization over equivalent presentations**, which is theoretically the right
+  answer for "the cost of enforcing `K`" and is expensive.
+
+*Deliverable shape:* `derived` for a normalization theorem with its equivalence
+class stated; `witness-checked` for a construction; or a reasoned decision to keep
+Option A.
+*Acceptance check:* the round's presentation fixtures run against the chosen
+architecture, and the interface note's table is either derived or deleted.
+*Context:* `.../2026-08-16-traderized-enforcement/NORMATIVE_SAFETY.md` §11;
+`test_outflow.PresentationChangesTheInstalledCompiler`.
+*Why it matters:* it decides whether a normative source can buy stronger force, or
+the same force more cheaply, by restating its constraint — which is a
+manipulability question about the constitutional layer, not a presentational one.
 
 ### 41. The safety theorem against the dependency's own construction — **[substantial]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->

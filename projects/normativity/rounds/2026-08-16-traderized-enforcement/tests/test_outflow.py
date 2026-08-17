@@ -5,10 +5,20 @@ from fractions import Fraction as F
 from contract import declared_liability_bound
 from enforcement import EnforcementTrader, Region, Row
 from market import ONE, ZERO, dot, holdings_value
-from outflow import (Insufficient, OutflowAccount, affordable_tolerance,
-                     charge, charge_is_conservative, cumulative_certificate,
-                     meaningful_dates_are_finite, proportional, quarantine,
+from contract import ForceDeclaration, certified_intensity
+from deduction import world_deficit
+from force_api import compile_force, compile_funded_force
+from outflow import (Insufficient, LiveDeficitCertificate, OutflowAccount,
+                     affordable_tolerance, charge, charge_is_conservative,
+                     cumulative_certificate, is_nonvacuous,
+                     maximum_violation, meaningful_dates_are_finite,
+                     positive_floor_dates, proportional, quarantine, raw_charge,
                      relax)
+
+
+def cert(total, date=0):
+    """A caller-asserted aggregate, for tests about the account's arithmetic."""
+    return LiveDeficitCertificate.asserted(date, F(total), "fixture")
 
 
 class PerEndorsementCapsDoNotAggregate(unittest.TestCase):
@@ -23,16 +33,16 @@ class PerEndorsementCapsDoNotAggregate(unittest.TestCase):
 
     def dates(self, n):
         return [dict(slack=F(1, 8), volume=F(7, 8), tolerance=F(1, 2),
-                     deficits=(F(1),)) for _ in range(n)]
+                     certificate=cert(F(1))) for _ in range(n)]
 
     def test_each_endorsement_spends_a_finite_amount(self):
         # endorsement e is live only at date e, and spends this much, ever
-        per_endorsement = charge(F(1, 8), F(7, 8), F(1, 2), (F(1),))
+        per_endorsement = charge(F(1, 8), F(7, 8), F(1, 2), cert(F(1)))
         self.assertEqual(per_endorsement, F(2))
 
     def test_finite_gating_is_obeyed(self):
         for d in self.dates(20):
-            self.assertEqual(len(d["deficits"]), 1)
+            self.assertEqual(d["certificate"].aggregate, F(1))
 
     def test_the_aggregate_diverges(self):
         for n in (4, 40, 400):
@@ -45,7 +55,7 @@ class PerEndorsementCapsDoNotAggregate(unittest.TestCase):
         for e in range(400):
             try:
                 account.allocate(f"e{e}", F(2))
-                account.spend(F(1, 8), F(7, 8), F(1, 2), (F(1),), f"e{e}")
+                account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), f"e{e}")
                 admitted += 1
             except Insufficient:
                 break
@@ -64,8 +74,9 @@ class GatingIsNotALifetimeBound(unittest.TestCase):
     def test_bounded_rows_per_date_unbounded_total(self):
         rows_per_date = 3
         dates = [dict(slack=F(1, 8), volume=F(7, 8), tolerance=F(1, 2),
-                      deficits=(F(1),) * rows_per_date) for _ in range(100)]
-        self.assertTrue(all(len(d["deficits"]) <= rows_per_date for d in dates))
+                      certificate=cert(F(rows_per_date))) for _ in range(100)]
+        self.assertTrue(all(d["certificate"].aggregate <= rows_per_date
+                            for d in dates))
         self.assertEqual(cumulative_certificate(dates), 600)
 
 
@@ -86,10 +97,10 @@ class SummableAllocationsGiveAFiniteCertificate(unittest.TestCase):
 
     def test_the_account_cannot_be_overspent(self):
         account = OutflowAccount(F(5))
-        account.spend(F(1, 8), F(7, 8), F(1, 2), (F(2),))     # costs 4
+        account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(2)))     # costs 4
         self.assertEqual(account.remaining, F(1))
         with self.assertRaises(Insufficient):
-            account.spend(F(1, 8), F(7, 8), F(1, 2), (F(1),))  # would cost 2
+            account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)))  # would cost 2
         self.assertEqual(account.remaining, F(1))              # and did not
 
 
@@ -100,12 +111,12 @@ class AffordableTolerance(unittest.TestCase):
         slack, volume, deficits, allowance = F(1, 8), F(7, 8), (F(3),), F(6)
         delta = affordable_tolerance(slack, volume, deficits, allowance)
         self.assertEqual(delta, F(1, 2))
-        self.assertEqual(charge(slack, volume, delta, deficits), allowance)
+        self.assertEqual(raw_charge(slack, volume, delta, deficits), allowance)
 
     def test_tighter_tolerance_costs_more(self):
         args = (F(1, 8), F(7, 8), (F(1),))
-        self.assertGreater(charge(*args[:2], F(1, 100), args[2]),
-                           charge(*args[:2], F(1, 2), args[2]))
+        self.assertGreater(raw_charge(*args[:2], F(1, 100), args[2]),
+                           raw_charge(*args[:2], F(1, 2), args[2]))
 
     def test_a_free_date_is_reported_as_free_not_as_zero_tolerance(self):
         self.assertIsNone(affordable_tolerance(F(1, 8), F(7, 8), (ZERO,), F(1)))
@@ -116,7 +127,7 @@ class AffordableTolerance(unittest.TestCase):
         self.assertEqual(needed, F(8))
         self.assertGreater(needed, ONE)
         self.assertIsNone(relax(OutflowAccount(F(100)), F(1, 8), F(7, 8),
-                                (F(4),), ceiling=ONE, allowance=F(1, 2)))
+                                cert(F(4)), ceiling=ONE, allowance=F(1, 2)))
 
 
 class ExhaustionBehaviour(unittest.TestCase):
@@ -124,12 +135,12 @@ class ExhaustionBehaviour(unittest.TestCase):
     def test_quarantine_withholds_force_and_spends_nothing(self):
         account = OutflowAccount(F(1))
         self.assertIsNone(
-            quarantine(account, F(1, 8), F(7, 8), F(1, 2), (F(1),)))
+            quarantine(account, F(1, 8), F(7, 8), F(1, 2), cert(F(1))))
         self.assertEqual(account.spent, ZERO)
 
     def test_relaxation_buys_the_tightest_affordable_promise(self):
         account = OutflowAccount(F(4))
-        granted = relax(account, F(1, 8), F(7, 8), (F(1),), ceiling=ONE)
+        granted = relax(account, F(1, 8), F(7, 8), cert(F(1)), ceiling=ONE)
         self.assertEqual(granted, F(1, 4))
         self.assertEqual(account.remaining, ZERO)
 
@@ -152,7 +163,7 @@ class ExhaustionBehaviour(unittest.TestCase):
             row = compile_core_row(c, F(1, 2), theta, fragment, worlds)
             region = Region(2, [row])
             worst = max(sum(world_deficit(region, w), ZERO) for w in worlds)
-            charges.add(charge(F(1, 8), F(7, 8), F(1, 2), (worst,)))
+            charges.add(raw_charge(F(1, 8), F(7, 8), F(1, 2), (worst,)))
         self.assertEqual(len(charges), 1)
 
 
@@ -168,7 +179,7 @@ class ProportionalSpendingNeverExhausts(unittest.TestCase):
     def test_the_capital_never_runs_out(self):
         account = OutflowAccount(F(1))
         for t in range(60):
-            proportional(account, F(1, 8), F(t + 1), (F(1, 2),),
+            proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)),
                          share=F(1, 2), ceiling=F(10 ** 9))
         self.assertLess(account.spent, F(1))
         self.assertGreater(account.remaining, ZERO)
@@ -176,14 +187,14 @@ class ProportionalSpendingNeverExhausts(unittest.TestCase):
     def test_but_the_promise_it_buys_goes_vacuous_anyway(self):
         """Never exhausting is not the same as keeping force available."""
         account = OutflowAccount(F(1))
-        granted = [proportional(account, F(1, 8), F(t + 1), (F(1, 2),),
+        granted = [proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)),
                                 share=F(1, 2), ceiling=ONE) for t in range(30)]
         # with capital 1 against this deficit, not even date 0 is affordable
         self.assertEqual([t for t, g in enumerate(granted) if g is not None], [])
 
     def test_the_promise_it_buys_degrades(self):
         account = OutflowAccount(F(1))
-        granted = [proportional(account, F(1, 8), F(t + 1), (F(1, 2),),
+        granted = [proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)),
                                 share=F(1, 2), ceiling=F(10 ** 9))
                    for t in range(20)]
         self.assertLess(granted[0], granted[10])
@@ -193,49 +204,120 @@ class ProportionalSpendingNeverExhausts(unittest.TestCase):
     def test_remaining_capital_decays_geometrically(self):
         account = OutflowAccount(F(1))
         for t in range(8):
-            proportional(account, F(1, 8), F(t + 1), (F(1, 2),),
+            proportional(account, F(1, 8), F(t + 1), cert(F(1, 2)),
                          share=F(1, 2), ceiling=F(10 ** 6))
         self.assertEqual(account.remaining, F(1, 256))
 
 
-class NoAccountSubsidizesAPersistentDeficit(unittest.TestCase):
-    """The limitative theorem, against every protocol rather than one policy.
+class DepthOnlyImpossibilityIsWithdrawn(unittest.TestCase):
+    """The theorem this round asserted and had to withdraw.
 
-    A date at which force says anything costs at least `D_t / ceiling`. If the
-    exclusion deficit never decays below a positive floor, those charges are
-    bounded away from zero and finitely many fit in finite capital. So the
-    account does not merely fail to fund a persistent deficit under some
-    particular policy — no finite account funds one under any policy.
+    It read: a date whose promise says anything needs `delta <= 1`, so it costs
+    at least the exclusion deficit; hence a deficit bounded away from zero
+    exhausts any finite account. The step is wrong. The charge is
+
+        q_t = (eps_t + C_t) * D_t / delta_t ,
+
+    and `delta_t <= 1` gives only `q_t >= (eps_t + C_t) * D_t`. The dropped
+    factor is not bounded below, so persistent positive depth is affordable
+    forever whenever ordinary aggregate pressure decays.
     """
 
-    def test_finitely_many_meaningful_dates(self):
-        self.assertEqual(meaningful_dates_are_finite(F(100), F(1, 2)), 200)
-        self.assertEqual(meaningful_dates_are_finite(F(10 ** 6), F(1, 1000)),
-                         10 ** 9)
+    def test_the_counterexample_sums_to_less_than_one(self):
+        """`D_t = 1/2`, `delta_t = 1`, `eps_t + C_t = 2^-t`, forever."""
+        total = ZERO
+        for t in range(200):
+            total += charge(ZERO, F(1, 2 ** t), ONE, cert(F(1, 2)))
+        self.assertLess(total, ONE)
+        self.assertGreater(total, F(99, 100))
 
-    def test_a_looser_ceiling_buys_proportionally_more_dates(self):
-        self.assertEqual(
-            meaningful_dates_are_finite(F(100), F(1, 2), ceiling=F(10)),
-            10 * meaningful_dates_are_finite(F(100), F(1, 2), ceiling=ONE))
+    def test_the_normative_distance_never_closes_in_it(self):
+        for t in range(200):
+            self.assertEqual(cert(F(1, 2)).aggregate, F(1, 2))
 
-    def test_the_theorem_needs_the_deficit_to_be_bounded_away_from_zero(self):
-        with self.assertRaises(ValueError):
-            meaningful_dates_are_finite(F(1), ZERO)
+    def test_a_finite_account_funds_it_forever(self):
+        account = OutflowAccount(ONE)
+        for t in range(200):
+            account.spend(ZERO, F(1, 2 ** t), ONE, cert(F(1, 2)))
+        self.assertGreater(account.remaining, ZERO)
 
-    def test_it_agrees_with_the_realized_policy(self):
-        """The bound is not vacuous: a real run stops within it."""
+    def test_the_withdrawn_function_refuses_to_answer(self):
+        with self.assertRaises(NotImplementedError):
+            meaningful_dates_are_finite(F(1), F(1, 2))
+
+
+class PositiveFloorsOnTwoFactorsDoBound(unittest.TestCase):
+    """The corrected limitative theorem. All three hypotheses are load-bearing.
+
+    A floor on the depth, a floor on the ordinary aggregate pressure, and a
+    ceiling on the tolerance together put a positive floor `c*d/delta_bar` under
+    every date's charge, and finitely many of those fit in finite capital. Drop
+    any one and the bound is gone.
+    """
+
+    def test_the_count_is_capital_times_ceiling_over_the_product(self):
+        self.assertEqual(positive_floor_dates(F(100), F(1, 2), ONE, ONE), 200)
+        self.assertEqual(positive_floor_dates(F(100), F(1, 2), ONE, F(2)), 400)
+
+    def test_it_agrees_with_a_realized_run(self):
         account, funded = OutflowAccount(F(9)), 0
         while True:
             try:
-                account.spend(F(1, 8), F(7, 8), ONE, (F(1, 2),))
+                account.spend(F(1, 8), F(7, 8), ONE, cert(F(1, 2)))
                 funded += 1
             except Insufficient:
                 break
-        self.assertLessEqual(funded, meaningful_dates_are_finite(F(9), F(1, 2)))
+        self.assertLessEqual(funded,
+                             positive_floor_dates(F(9), F(1, 2), ONE, ONE))
+
+    def test_dropping_the_pressure_floor_breaks_it(self):
+        with self.assertRaises(ValueError):
+            positive_floor_dates(F(1), F(1, 2), ZERO, ONE)
+
+    def test_dropping_the_depth_floor_breaks_it(self):
+        with self.assertRaises(ValueError):
+            positive_floor_dates(F(1), ZERO, ONE, ONE)
+
+    def test_a_looser_tolerance_ceiling_buys_proportionally_more_dates(self):
+        self.assertEqual(positive_floor_dates(F(100), F(1, 2), ONE, F(10)),
+                         10 * positive_floor_dates(F(100), F(1, 2), ONE, ONE))
+
+
+class PersistentDepthAgainstDecayingPressure(unittest.TestCase):
+    """The third route to indefinite affordability, and the one that was missed.
+
+    Normative distance stays exactly where it is, forever. The tolerance stays
+    at its tightest meaningful value, forever. And the account holds, because
+    ordinary aggregate pressure decays. Named regression against the withdrawn
+    depth-only theorem.
+    """
+
+    def dates(self, n):
+        return [dict(slack=ZERO, volume=F(1, 2 ** t), tolerance=ONE,
+                     certificate=cert(F(1, 2))) for t in range(n)]
+
+    def test_depth_and_tolerance_are_both_pinned(self):
+        for d in self.dates(50):
+            self.assertEqual(d["certificate"].aggregate, F(1, 2))
+            self.assertEqual(d["tolerance"], ONE)
+
+    def test_the_certificate_stays_under_one_at_every_horizon(self):
+        for n in (10, 100, 400):
+            self.assertLess(cumulative_certificate(self.dates(n)), ONE)
 
 
 class ForeverUnvindicatedAndSafe(unittest.TestCase):
-    """The fixture that separates safety from deductive resolution.
+    """An **abstract force-source witness**: the deficit schedule is stipulated.
+
+    What it establishes is that the force/safety mechanism admits a trajectory
+    with indefinite nonvacuous force and finite cost. It does **not** establish
+    that the motivating settlement/core statics generate one — that is a separate
+    question, answered affirmatively by
+    `test_normative.StaticsGenerateAForeverUnvindicatedTrajectory`, and answered
+    negatively for sentence-indicator endorsements by
+    `test_normative.BooleanEndorsementsJumpToZero`.
+
+    The fixture that separates safety from deductive resolution.
 
     The endorsement is never vindicated: its exclusion deficit is positive at
     every date, forever. It receives force at a fixed nonvacuous tolerance,
@@ -249,10 +331,10 @@ class ForeverUnvindicatedAndSafe(unittest.TestCase):
 
     def dates(self, n):
         return [dict(slack=F(1, 8), volume=F(t + 1), tolerance=F(1, 2),
-                     deficits=(F(1, 2 ** t),)) for t in range(n)]
+                     certificate=cert(F(1, 2 ** t))) for t in range(n)]
 
     def test_the_deficit_never_reaches_zero(self):
-        self.assertTrue(all(d["deficits"][0] > 0 for d in self.dates(50)))
+        self.assertTrue(all(d["certificate"].aggregate > 0 for d in self.dates(50)))
 
     def test_the_tolerance_is_nonvacuous_and_constant(self):
         self.assertTrue(all(d["tolerance"] == F(1, 2) for d in self.dates(50)))
@@ -285,7 +367,7 @@ class PersistentDeficitDefeatsTheCertificate(unittest.TestCase):
 
     def test_the_certificate_diverges(self):
         dates = [dict(slack=F(1, 8), volume=F(t + 1), tolerance=F(1, 2),
-                      deficits=(F(1, 2),)) for t in range(60)]
+                      certificate=cert(F(1, 2))) for t in range(60)]
         totals = [cumulative_certificate(dates[:n]) for n in (10, 20, 40)]
         self.assertLess(totals[0], totals[1])
         self.assertLess(totals[1], totals[2])
@@ -310,7 +392,7 @@ class PersistentDeficitDefeatsTheCertificate(unittest.TestCase):
         account = OutflowAccount(F(1000))
         with self.assertRaises(Insufficient):
             for t in range(60):
-                account.spend(F(1, 8), F(t + 1), F(1, 2), (F(1, 2),))
+                account.spend(F(1, 8), F(t + 1), F(1, 2), cert(F(1, 2)))
 
 
 class ChargeIsAdditiveOverRowsAndConservativeOverWorlds(unittest.TestCase):
@@ -318,18 +400,18 @@ class ChargeIsAdditiveOverRowsAndConservativeOverWorlds(unittest.TestCase):
     def test_the_certificate_decomposes_additively_over_rows(self):
         slack, volume, delta = F(1, 8), F(7, 8), F(1, 2)
         deficits = (F(1), F(2), F(3))
-        merged = charge(slack, volume, delta, deficits)
-        parts = sum(charge(slack, volume, delta, (d,)) for d in deficits)
+        merged = raw_charge(slack, volume, delta, deficits)
+        parts = sum(raw_charge(slack, volume, delta, (d,)) for d in deficits)
         self.assertEqual(merged, parts)
 
     def test_settlement_rows_contribute_nothing(self):
         slack, volume, delta = F(1, 8), F(7, 8), F(1, 2)
-        self.assertEqual(charge(slack, volume, delta, (F(1), ZERO, ZERO)),
-                         charge(slack, volume, delta, (F(1),)))
+        self.assertEqual(raw_charge(slack, volume, delta, (F(1), ZERO, ZERO)),
+                         raw_charge(slack, volume, delta, (F(1),)))
 
     def test_the_charge_dominates_a_followed_world(self):
         dates = [dict(slack=F(1, 8), volume=F(7, 8), tolerance=F(1, 2),
-                      deficits=(F(1, 2),)) for _ in range(10)]
+                      certificate=cert(F(1, 2))) for _ in range(10)]
         region = Region(1, [Row([F(1)], F(1, 2))])
         beta = (F(1, 8) + F(7, 8)) / F(1, 2) ** 2
         price, world = (F(1, 4),), (ZERO,)
@@ -340,7 +422,7 @@ class ChargeIsAdditiveOverRowsAndConservativeOverWorlds(unittest.TestCase):
     def test_the_certificate_is_strictly_conservative(self):
         """It maximizes over live worlds per date; the criterion follows one."""
         dates = [dict(slack=F(1, 8), volume=F(7, 8), tolerance=F(1, 2),
-                      deficits=(F(1, 2),)) for _ in range(10)]
+                      certificate=cert(F(1, 2))) for _ in range(10)]
         region = Region(1, [Row([F(1)], F(1, 2))])
         beta = (F(1, 8) + F(7, 8)) / F(1, 2) ** 2
         price, world = (F(1, 4),), (ZERO,)
@@ -349,47 +431,296 @@ class ChargeIsAdditiveOverRowsAndConservativeOverWorlds(unittest.TestCase):
         self.assertLess(-10 * step, cumulative_certificate(dates))
 
 
-class LiabilityIsInvariantUnderRowPresentation(unittest.TestCase):
-    """Rescaling and duplication do not change what force costs.
+class PresentationChangesTheInstalledCompiler(unittest.TestCase):
+    """What the installed `ForceDeclaration` actually does to row presentation.
 
-    A half-space has many presentations. Under a fixed *declared* tolerance the
-    compiled position does move, because the symbol `delta` is a promise about
-    the violation in the presentation's own units. Held to a fixed **actual**
-    conformance target, the position and the charge are identical across
-    presentations — so a source cannot buy stronger force cheaply by rescaling
-    its rows, and duplicating a row is not a way to launder intensity.
+    A previous version of this class claimed invariance under rescaling *and*
+    duplication. It tested a compiler retuned for the occasion — dividing the
+    intensity by the row count — where the installed one uses a uniform
+    `beta_j = (eps + C) / delta^2` for every row. The retuning was the whole
+    content of the result, so the claim was about a compiler nobody calls.
+
+    Held to the installed compiler at a **fixed declared tolerance**, neither
+    operation is neutral.
     """
 
-    slack, volume = F(1, 8), F(2)
-    price, world, target = (F(1, 4),), (ZERO,), F(1, 10)
+    slack, volume = F(1, 8), F(7, 8)
+    price, world = (F(1, 4),), (ZERO,)
+    base = Row([F(1)], F(1, 2))
 
-    def compiled(self, rows, scale):
-        """Position and charge at a tolerance meaning `target` in base units."""
-        delta = self.target * scale
-        beta = (self.slack + self.volume) / delta ** 2 / len(rows)
-        position = EnforcementTrader(Region(1, rows), beta).coefficients(self.price)
-        cost = sum(beta * r.violation(self.price)
-                   * max(ZERO, r.r - dot(r.c, self.world)) for r in rows)
-        return position, cost
+    def emitted(self, rows, tolerance):
+        d = ForceDeclaration(Region(1, rows), self.volume, self.slack, tolerance)
+        return (d.trader().coefficients(self.price)[0],
+                d.liability_bound(self.price, self.world),
+                raw_charge(self.slack, self.volume, tolerance,
+                           world_deficit(Region(1, rows), self.world)))
 
-    def test_rescaling_changes_nothing(self):
-        results = {self.compiled([Row([lam], lam * F(1, 2))], lam)
-                   for lam in (F(1), F(2), F(10), F(1, 3))}
-        self.assertEqual(len(results), 1)
+    def test_duplication_scales_position_and_charge_linearly(self):
+        one = self.emitted([self.base], F(1, 2))
+        two = self.emitted([self.base] * 2, F(1, 2))
+        four = self.emitted([self.base] * 4, F(1, 2))
+        self.assertEqual(one, (F(1), F(1, 2), F(1)))
+        self.assertEqual(two, (F(2), F(1), F(2)))
+        self.assertEqual(four, (F(4), F(2), F(4)))
 
-    def test_duplication_changes_nothing(self):
-        results = {self.compiled([Row([F(1)], F(1, 2))] * k, F(1))
-                   for k in (1, 2, 5)}
-        self.assertEqual(len(results), 1)
+    def test_rescaling_scales_position_and_liability_quadratically(self):
+        one = self.emitted([self.base], F(1, 2))
+        two = self.emitted([Row([F(2)], F(1))], F(1, 2))
+        self.assertEqual(one[0], F(1))
+        self.assertEqual(two[0], F(4))
+        self.assertEqual(two[1], 4 * one[1])
 
-    def test_a_fixed_declared_tolerance_is_presentation_dependent(self):
-        """The half that does move, recorded so the API can say which is which."""
-        beta = (self.slack + self.volume) / F(1, 10) ** 2
-        positions = {EnforcementTrader(
-            Region(1, [Row([lam], lam * F(1, 2))]), beta).coefficients(self.price)
-            for lam in (F(1), F(2))}
-        self.assertEqual(len(positions), 2)
+    def test_a_redundant_nonduplicate_row_also_changes_the_force(self):
+        """Presentation dependence is general, not an artifact of duplication.
+
+        `p_A >= 1/2` and `p_B >= 1/2` already imply `p_A + p_B >= 1`. Adding the
+        implied row leaves the admissible set exactly where it was and triples
+        the emitted position.
+        """
+        a = Row([F(1), F(0)], F(1, 2))
+        b = Row([F(0), F(1)], F(1, 2))
+        implied = Row([F(1), F(1)], F(1))
+        price = (F(1, 4), F(1, 4))
+        without = ForceDeclaration(Region(2, [a, b]), self.volume, self.slack,
+                                   F(1, 2))
+        with_ = ForceDeclaration(Region(2, [a, b, implied]), self.volume,
+                                 self.slack, F(1, 2))
+        self.assertEqual(without.region.contains((F(1, 2), F(1, 2))),
+                         with_.region.contains((F(1, 2), F(1, 2))))
+        self.assertEqual(without.trader().coefficients(price), (F(1), F(1)))
+        self.assertEqual(with_.trader().coefficients(price), (F(3), F(3)))
+
+    def test_rescaling_is_neutral_at_a_matched_actual_conformance_target(self):
+        """The half that survives: rescaling is a genuine reparametrization.
+
+        A row scaled by `lambda` measures its own violation in units `lambda`
+        times finer, so declaring `lambda * eta` asks for the same actual
+        conformance `eta`. At matched targets the position, the realized
+        liability and the charge all agree — so a source gains nothing by
+        rescaling, provided the tolerance is read in the row's own units.
+        """
+        plain = self.emitted([self.base], F(1, 4))
+        scaled = self.emitted([Row([F(2)], F(1))], F(1, 2))
+        self.assertEqual(plain, scaled)
+
+    def test_duplication_is_not_neutral_even_at_matched_conformance(self):
+        """The half that does not: duplication is redundancy and it is billed.
+
+        `k` copies make the weighted square `k` times larger, so the actual
+        conformance is `delta / sqrt(k)` — matched only at square `k`, and then
+        the position and realized liability agree while the **charge** does not,
+        because the certificate sums the same deficit once per copy.
+        """
+        one = self.emitted([self.base], F(1, 4))
+        four = self.emitted([self.base] * 4, F(1, 2))
+        self.assertEqual(one[0], four[0])            # position agrees
+        self.assertEqual(one[1], four[1])            # realized liability agrees
+        self.assertEqual(four[2], 2 * one[2])        # the charge does not
+        self.assertGreaterEqual(four[2], four[1])    # still sound, just dearer
+
+
+class SharpAndRowwiseAggregates(unittest.TestCase):
+    """`sup_w sum_j d_j(w)` against `sum_j sup_w d_j(w)`, which differ.
+
+    Two rows pinning a single price from opposite sides are worst at opposite
+    worlds and cannot be violated together at any world. The rowwise aggregate
+    charges as though they could.
+    """
+
+    region = Region(1, [Row([F(1)], F(1, 2)), Row([F(-1)], F(-1, 2))])
+    worlds = [(ZERO,), (F(1),)]
+
+    def certificate(self):
+        return LiveDeficitCertificate.by_enumeration(0, self.region, self.worlds)
+
+    def test_the_gap_is_a_clean_factor_of_two(self):
+        c = self.certificate()
+        self.assertEqual(c.aggregate, F(1, 2))
+        self.assertEqual(c.rowwise, F(1))
+
+    def test_billing_rowwise_costs_twice_as_much(self):
+        c = self.certificate()
+        self.assertEqual(charge(F(1, 8), F(7, 8), F(1, 2), c, sharp=False),
+                         2 * charge(F(1, 8), F(7, 8), F(1, 2), c, sharp=True))
+
+    def test_enumeration_marks_the_certificate_verified(self):
+        self.assertTrue(self.certificate().verified)
+        self.assertIn("enumeration", self.certificate().basis)
+
+    def test_an_asserted_bound_is_marked_unverified_and_needs_a_reason(self):
+        self.assertFalse(LiveDeficitCertificate.asserted(0, F(1), "why").verified)
+        with self.assertRaises(ValueError):
+            LiveDeficitCertificate.asserted(0, F(1), "")
+
+
+class FundedForceCannotBypassTheAccount(unittest.TestCase):
+    """The integration the account was missing.
+
+    `compile_force` promises conformance and emits an obligation. Until the
+    funded entry point existed, nothing in the API made it hard to read the
+    first as the second.
+    """
+
+    rows = [([F(1)], F(1, 2))]
+    region = Region(1, [Row([F(1)], F(1, 2))])
+    worlds = [(ZERO,), (F(1),)]
+
+    def certificate(self):
+        return LiveDeficitCertificate.by_enumeration(0, self.region, self.worlds)
+
+    def test_raw_compile_force_carries_no_charge_and_says_so(self):
+        c = compile_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2), (F(1),))
+        self.assertFalse(hasattr(c, "charged"))
+
+    def test_funded_force_pays_before_it_emits(self):
+        account = OutflowAccount(F(10))
+        c = compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
+                                 (F(1),), account, self.certificate())
+        self.assertEqual(c.charged, F(1))
+        self.assertEqual(account.remaining, F(9))
+        self.assertTrue(c.deficit_is_verified)
+
+    def test_an_unaffordable_request_refuses_by_default(self):
+        account = OutflowAccount(F(1, 100))
+        with self.assertRaises(Insufficient):
+            compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
+                                 (F(1),), account, self.certificate())
+        self.assertEqual(account.spent, ZERO)
+
+    def test_quarantine_returns_nothing_and_spends_nothing(self):
+        account = OutflowAccount(F(1, 100))
+        self.assertIsNone(
+            compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
+                                 (F(1),), account, self.certificate(),
+                                 policy="quarantine"))
+        self.assertEqual(account.spent, ZERO)
+
+    def test_relaxation_emits_at_the_affordable_tolerance(self):
+        account = OutflowAccount(F(4))
+        c = compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 100),
+                                 (F(1),), account, self.certificate(),
+                                 policy="relax")
+        self.assertEqual(c.tolerance, F(1, 8))
+        self.assertTrue(c.relaxed)
+        self.assertEqual(account.remaining, ZERO)
+
+    def test_an_asserted_deficit_is_carried_through_as_unverified(self):
+        account = OutflowAccount(F(10))
+        c = compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
+                                 (F(1),), account,
+                                 LiveDeficitCertificate.asserted(0, F(1, 1000),
+                                                                 "caller proof"))
+        self.assertFalse(c.deficit_is_verified)
+
+    def test_the_feasibility_witness_is_still_checked(self):
+        account = OutflowAccount(F(10))
+        with self.assertRaises(ValueError):
+            compile_funded_force(self.rows, 1, F(1, 8), F(7, 8), F(1, 2),
+                                 (ZERO,), account, self.certificate())
+
+
+class Subaccounts(unittest.TestCase):
+
+    def test_an_endorsement_cannot_spend_past_its_reservation(self):
+        account = OutflowAccount(F(100))
+        account.allocate("e1", F(4))
+        account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e1")
+        account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e1")
+        with self.assertRaises(Insufficient):
+            account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e1")
+        self.assertEqual(account.spent, F(4))
+
+    def test_one_endorsement_cannot_spend_anothers_reservation(self):
+        account = OutflowAccount(F(8))
+        account.allocate("e1", F(4))
+        account.allocate("e2", F(4))
+        for _ in range(2):
+            account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e1")
+        with self.assertRaises(Insufficient):
+            account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e1")
+        account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "e2")
+
+    def test_an_unallocated_label_spends_against_global_capital_only(self):
+        account = OutflowAccount(F(4))
+        account.spend(F(1, 8), F(7, 8), F(1, 2), cert(F(1)), "anonymous")
+        self.assertEqual(account.remaining_for("anonymous"), F(2))
+
+
+class Replenishment(unittest.TestCase):
+    """Unbounded refilling voids the theorem, so the API does not offer it."""
+
+    def test_the_default_account_refuses_replenishment(self):
+        with self.assertRaises(Insufficient):
+            OutflowAccount(F(10)).replenish(F(1))
+
+    def test_a_declared_ceiling_bounds_total_capital(self):
+        account = OutflowAccount(F(10), lifetime_ceiling=F(12))
+        account.replenish(F(2))
+        self.assertEqual(account.capital, F(12))
+        with self.assertRaises(Insufficient):
+            account.replenish(F(1))
+
+    def test_repeated_replenishment_cannot_reach_infinity(self):
+        account = OutflowAccount(F(1), lifetime_ceiling=F(2))
+        for _ in range(50):
+            try:
+                account.replenish(F(1, 10))
+            except Insufficient:
+                break
+        self.assertLessEqual(account.capital, F(2))
+
+    def test_a_ceiling_below_the_initial_capital_is_refused(self):
+        with self.assertRaises(ValueError):
+            OutflowAccount(F(10), lifetime_ceiling=F(5))
+
+
+class ZeroDisturbanceIntensity(unittest.TestCase):
+    """`eps = C = 0` made the certified intensity zero, which enforces nothing."""
+
+    def test_the_intensity_is_positive(self):
+        self.assertEqual(certified_intensity(ZERO, ZERO, F(1, 2)), ONE)
+
+    def test_it_forces_exact_conformance_rather_than_the_declared_tolerance(self):
+        d = ForceDeclaration(Region(1, [Row([F(1)], F(1, 2))]), ZERO, ZERO,
+                             F(1, 2))
+        self.assertGreater(d.budget_consumed((F(1, 4),)), ZERO)
+        self.assertEqual(d.budget_consumed((F(1, 2),)), ZERO)
+
+    def test_a_positive_disturbance_is_unaffected(self):
+        self.assertEqual(certified_intensity(F(1, 8), F(7, 8), F(1, 2)), F(4))
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MeaningfulForceIsScaleRelative(unittest.TestCase):
+    """`delta <= 1` is not presentation-independent, so it cannot define vacuity.
+
+    Scaling a row by `lambda` scales its violations by `lambda`. A tolerance of
+    `1` against `p >= 1/2` is vacuous — no price can violate that row by more
+    than `1/2` — and against `2p >= 20` it is tight. The invariant notion is
+    relative to the largest violation the row can attain.
+    """
+
+    def test_the_cube_maximum_violation(self):
+        self.assertEqual(maximum_violation(Region(1, [Row([F(1)], F(1, 2))])),
+                         F(1, 2))
+        self.assertEqual(maximum_violation(Region(1, [Row([F(2)], F(1))])), F(1))
+        self.assertEqual(
+            maximum_violation(Region(1, [Row([F(-1)], F(-1, 2))])), F(1, 2))
+
+    def test_tolerance_one_is_vacuous_on_the_plain_row(self):
+        self.assertFalse(is_nonvacuous(Region(1, [Row([F(1)], F(1, 2))]), ONE))
+
+    def test_the_same_tolerance_is_meaningful_on_a_scaled_row(self):
+        self.assertTrue(is_nonvacuous(Region(1, [Row([F(10)], F(5))]), ONE))
+
+    def test_the_judgement_scales_with_the_presentation(self):
+        for lam in (F(1), F(2), F(10)):
+            region = Region(1, [Row([lam], lam * F(1, 2))])
+            self.assertTrue(is_nonvacuous(region, lam * F(1, 8)))
+            self.assertFalse(is_nonvacuous(region, lam * F(1, 2)))
+
+    def test_a_region_nothing_can_violate_makes_force_free(self):
+        self.assertTrue(is_nonvacuous(Region(1, [Row([F(1)], ZERO)]), ONE))

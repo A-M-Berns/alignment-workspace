@@ -328,12 +328,14 @@ be global or summably allocated. `test_outflow.PerEndorsementCapsDoNotAggregate`
 per date and says nothing about the number of dates.
 `test_outflow.GatingIsNotALifetimeBound`.
 
-**25. Buy stronger force by restating the rows.** *Fails.* Rescaling a row by `λ`
-scales violation and deficit by `λ` and the intensity by `λ⁻²`; duplication into
-`k` copies scales the intensity by `k⁻¹`. Both cancel exactly, so at a fixed
-actual conformance target the position and the charge are unchanged. The API must
-still say that a fixed *declared* `δ` is presentation-dependent.
-`test_outflow.LiabilityIsInvariantUnderRowPresentation`.
+**25. Buy stronger force by restating the rows.** *Lands, and the first verdict
+here was wrong.* The refutation divided the intensity by the row count; the
+installed `ForceDeclaration` does not, so the refutation was about a compiler
+nobody calls. Under the installed one, `k` duplicates scale position and charge by
+`k`, rescaling by `λ` scales them by `λ²`, and a redundant non-duplicate row
+changes the emitted force while leaving the admissible set fixed. Only rescaling
+is neutral at a matched actual conformance target.
+`test_outflow.PresentationChangesTheInstalledCompiler`, `PRIORITIES.md` item 46.
 
 **26. Answer exhaustion by weakening the core minimum.** *Fails to help.* The
 worst deficit `max(0, r − m_c)` contains no `θ`, so the charge is unchanged. The
@@ -350,3 +352,31 @@ Unbounded replenishment destroys the guarantee outright, and it is precisely the
 failure `NL-SI-P1` names — an outside source replenishing every paid loss while
 only current positions are tracked. Any implementation must bound replenishment
 globally or confine it to a new era with its own finite allocation.
+
+
+## Attacks 29–33: the cost product
+
+**29. Persistent normative distance exhausts any account.** *Fails, and this round
+asserted it.* The argument dropped the `(ε_t + C_t)` factor: `δ_t ≤ 1` gives
+`q_t ≥ (ε_t + C_t)D_t`, not `q_t ≥ D_t`. With pressure `2^-t`, a depth fixed at
+`1/2` at tolerance `1` sums to under `1` forever.
+`test_outflow.DepthOnlyImpossibilityIsWithdrawn`.
+
+**30. Then nothing bounds the account.** *Fails.* Floors on depth **and** pressure
+with a ceiling on tolerance bound the funded dates by `B·δ̄/(cd)`. All three are
+load-bearing and `positive_floor_dates` refuses without them.
+
+**31. Pay the account with deficits you like.** *Landed, now closed.* `charge`
+took an arbitrary list. It now takes a `LiveDeficitCertificate` that records how
+the aggregate was established, and `raw_charge` — the uncertified arithmetic — says
+in its own docstring that paying with it proves nothing about any world.
+
+**32. Emit force without paying.** *Landed, now closed.* `compile_force` returns a
+conformance certificate and nothing stopped a caller reading it as a safety one.
+`compile_funded_force` pays before constructing the position and returns a
+distinct type; the unaffordable path cannot produce a certificate at all.
+
+**33. Refill the account.** *Landed, now closed.* There is no `add_capital`.
+`replenish` is bounded by a lifetime ceiling declared at construction and refuses
+by default, because the bound a caller may quote is the ceiling rather than the
+initial capital.

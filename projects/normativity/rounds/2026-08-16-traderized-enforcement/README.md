@@ -5,9 +5,9 @@ force by a distinguished trader that trades against violations of it, what that
 costs, and whether it can take the role a specially constrained market maker was
 meant to take.
 
-Verdict: force is purchased out of a finite account: the outflow discipline
-implies bounded enforcement liability rather than assuming it, and no account
-funds meaningful force forever against a deficit that does not decay.
+Verdict: force is purchased out of a finite account, and what it costs is the
+product of ordinary aggregate pressure, normative exclusion depth and tolerated
+error — no one of the three has to decay for indefinite force to stay affordable.
 
 The semantic state is a credal set, the price-visible object is its projection,
 and that projection loses information. Traderized force acts on the projection
@@ -86,29 +86,38 @@ its world process refutes.
 | `DEDUCTION_SPECIAL_CASE.md` | deduction as the calibration case; presentation cost; the four equivalence relations |
 | `INTEGRATION_MAP.md` | objects touched and untouched, the four vocabulary collisions, Legitimacy and Deference |
 | `THEOREM_MAP.md` | every result with its evidence class, and the named future Lean port target |
-| `NORMATIVE_SAFETY.md` | whether the motivating statics discharge bounded enforcement liability: the outflow account, its counterexamples, the affordability relation, and the limit on what any account can buy |
+| `NORMATIVE_SAFETY.md` | whether the motivating statics discharge bounded enforcement liability: the outflow account, the three-factor cost product, the withdrawn depth-only theorem, and presentation dependence |
 | `SEMANTIC_PROJECTION.md` | `C_t`, `π_t`, `K_t`, fibre saturation, and the support loss under projection |
 | `PAPER_RECONCILIATION.md` | the two constructions, the live-world lift with its three hypotheses, deductive recovery, and the paper spine |
-| `PROSECUTION.md` | twenty-eight attacks, with a current verdict: what landed, what was withdrawn, what is open |
+| `PROSECUTION.md` | thirty-three attacks, with a current verdict: what landed, what was withdrawn, what is open |
 
 ## The safety verdict
 
-**Safety is implemented, and the implementation has a hard limit.** Force is
-purchased out of a finite global account at `(ε_t + C_t)·‖d_t‖₁/δ_t` per date — a
+**Safety is implemented at the emission path, and its cost is a product of three
+factors.** `compile_funded_force` pays the account before it constructs the
+position, so an unaffordable request cannot produce a certificate; the low-level
+`compile_force` promises conformance only and returns a different type. Force is
+purchased out of a finite global account at `(ε_t + C_t)·D_t/δ_t` per date — a
 charge computable before the trade is emitted — and the account's discipline
 implies the bounded-liability hypothesis rather than assuming it. Inverting the
-charge gives the affordability relation `δ_t ≥ (ε_t + C_t)·‖d_t‖₁/b_t`: the
+charge gives the affordability relation `δ_t ≥ (ε_t + C_t)·D_t/b_t`: the
 remaining account determines how tightly the reasoner may be forced.
 
-Two negative results shape it. **Per-endorsement finite caps and finite gating are
-both insufficient** — a source obeying both, with one row live per date, drives the
-aggregate to infinity by admitting fresh endorsements. And **no finite account
-funds meaningful force at infinitely many dates** against a deficit that stays
-above a positive floor, under any protocol. What an account *can* subsidize
-forever is an endorsement that is never vindicated but whose depth decays:
-`NORMATIVE_SAFETY.md` §9 carries one, funded within `17/2` against unboundedly
-growing ordinary volume. Safety does not demand that normative disagreement be
-deductively resolved.
+**Per-endorsement finite caps and finite gating are both insufficient** — a source
+obeying both, with one row live per date, drives the aggregate to infinity by
+admitting fresh endorsements.
+
+The condition is `Σ_t (ε_t + C_t)·D_t/δ_t < ∞`, and **three routes keep it finite**:
+the exclusion depth decays, the ordinary aggregate pressure decays, or the
+tolerance loosens. A previous version of this round asserted that the first was
+required — that persistent positive depth alone exhausted any account. That is
+false, and `NORMATIVE_SAFETY.md` §9 carries the counterexample: depth fixed at
+`1/2` and tolerance fixed at `1` forever, against pressure `2^-t`, sums to under
+`1`. The corrected limitative statement needs floors on **two** of the three
+factors and a ceiling on the third.
+
+Safety does not demand that normative disagreement be deductively resolved, and it
+does not demand that the disagreement shrink either.
 
 ## The other verdicts
 

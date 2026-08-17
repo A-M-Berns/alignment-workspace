@@ -19,7 +19,7 @@ from typing import Sequence
 
 from deduction import world_deficit
 from enforcement import EnforcementTrader, Region
-from market import ZERO
+from market import ONE, ZERO
 
 
 def certified_intensity(slack: Fraction, volume: Fraction,
@@ -35,7 +35,23 @@ def certified_intensity(slack: Fraction, volume: Fraction,
     tolerance = Fraction(tolerance)
     if tolerance <= 0:
         raise ValueError("tolerance is positive")
-    return (Fraction(slack) + Fraction(volume)) / tolerance ** 2
+    disturbance = Fraction(slack) + Fraction(volume)
+    if disturbance < 0:
+        raise ValueError("slack and volume are nonnegative")
+    if disturbance == 0:
+        # An undisturbed market makes the formula return zero intensity, and a
+        # zero intensity enforces nothing: `beta * g^2 <= 0` with `beta = 0` is
+        # `0 <= 0`, which constrains no violation, so the conformance promise
+        # would be derived from a vacuous inequality. Any positive intensity
+        # instead forces `g = 0` exactly, which is a *stronger* guarantee than
+        # the declared tolerance and is what the enforcement inequality actually
+        # gives here. One is as good as any other; `1` is the choice.
+        #
+        # In the source market this branch is unreachable — `eps_n = 2^-n > 0`
+        # at every date — so it is a guard against a caller declaring a market
+        # the paper does not have, not a case the mechanism must live in.
+        return ONE
+    return disturbance / tolerance ** 2
 
 
 class ForceDeclaration:

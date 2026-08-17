@@ -109,19 +109,31 @@ violation-proportional compiler keeps it and does not achieve exactness.
 **Conformance and liability trade against each other**, and the trade is now an
 equation rather than a warning. Against a per-date liability allowance `b_t`,
 
-    δ_t  ≥  (ε_t + C_t^{vol}) · ‖d_t‖₁ / b_t .
+    δ_t  ≥  (ε_t + C_t^{vol}) · D_t / b_t ,     D_t = sup over live ω of Σ_j d_j(ω).
 
 Force is bought, not promised: the caller does not pick a tolerance and hope, it
 learns which tolerances its remaining account affords. There is no intensity-free
 ceiling; that claim was made and withdrawn.
 
-**Tolerance must be declared against a normalized presentation.** At a fixed
-*actual* conformance target the compiled position and the liability charge are
-invariant under row rescaling and row duplication — so no source buys stronger
-force cheaply by restating its rows. A fixed *declared* `δ` is presentation-
-dependent, because `δ` promises something about the violation in the
-presentation's own units. Callers stating `δ` against unnormalized rows are
-promising something other than what they think.
+**Force consumes a presentation, not just a set.** `(K_t, presentation)` is the
+argument. Equivalent descriptions of the same admissible set do **not** in general
+receive the same force or cost the same:
+
+| operation | position, liability, charge |
+|---|---|
+| `k` duplicate rows | `× k` |
+| rescaling by `λ` | `× λ²` |
+| a redundant non-duplicate row | changes |
+
+Rescaling is the one that is really a reparametrization — declare `λ·η` to ask for
+actual conformance `η` and everything agrees — so it needs no normalization.
+Duplication and redundancy are billed. A caller wanting cost to depend only on the
+admissible set must deduplicate, weight, or minimize over presentations upstream;
+this interface does not.
+
+**"Meaningful" tolerance is scale-relative.** `δ ≤ 1` says nothing
+presentation-independent. Use `δ_t ≤ α·V_max` with `V_max = r − Σ_i min(c_i, 0)`
+the largest violation the row can attain in the cube.
 
 ## Verification pointers
 
@@ -149,17 +161,33 @@ a bound. For the settlement/core statics that motivate this work:
   a source obeying both can drive the aggregate to infinity with fresh
   endorsements, one live at a time;
 - what discharges it is a **finite global account** out of which force is
-  purchased at `(ε_t + C_t^{vol})·‖d_t‖₁/δ_t` per date, with allocation checked
+  purchased at `(ε_t + C_t^{vol})·D_t/δ_t` per date, with allocation checked
   at admission so that `Σ_e B_e ≤ B` holds rather than being hoped for.
 
-Two consequences a caller must plan around. **No finite account funds meaningful
-force at infinitely many dates** against an endorsement whose exclusion deficit
-stays above a positive floor — the account can subsidize unresolved disagreement
-indefinitely only when the *depth* of the disagreement decays. And **exhaustion
-needs a declared behaviour**: quarantine, tolerance relaxation, refusal at
-admission, or tolling. Weakening the declared core minimum is not one of them —
-the worst deficit `max(0, r − m_c)` has no `θ` in it, so weakening the core buys
-nothing.
+**What force costs is a product of three factors**, and none of them is
+privileged:
+
+    q_t = (ε_t + C_t^{vol})·D_t / δ_t ,     the condition is   Σ_t q_t < ∞ .
+
+Indefinite force stays affordable if the exclusion depth decays, **or** if the
+ordinary aggregate pressure decays, **or** if the tolerance loosens. Only when
+depth and pressure both stay above positive floors *and* the tolerance stays under
+a ceiling does the account necessarily run out, and then after at most `B·δ̄/(cd)`
+dates.
+
+`D_t` is the **certified** aggregate `sup_{ω ∈ Ω_t^live} Σ_j d_{t,j}(ω)` — the
+sharp supremum of the row sum, not the rowwise sum of per-row worst cases, which
+is larger. Supply it as a `LiveDeficitCertificate`; a bound the caller asserts is
+carried through marked unverified.
+
+**Exhaustion needs a declared behaviour**: quarantine, tolerance relaxation,
+refusal at admission, or tolling. Weakening the declared core minimum is not one
+of them — the worst deficit `max(0, r − m_c)` has no `θ` in it, so weakening the
+core buys nothing.
+
+**Replenishment must be bounded.** An account that may be refilled without limit
+certifies nothing. Declare a lifetime ceiling; the bound a caller may quote is
+that ceiling, not the initial capital.
 
 `../rounds/2026-08-16-traderized-enforcement/NORMATIVE_SAFETY.md` carries the
 account, the type comparison against `P2`, a safe trajectory whose bound is

@@ -105,17 +105,26 @@ table is the evidence ledger. **Nothing here is registered.**
 | 27g | per-endorsement finite caps do **not** bound lifetime outflow, under finite gating with one live row per date | — | witness | `test_outflow.PerEndorsementCapsDoNotAggregate` | yes | no |
 | 27h | finite gating alone does not bound lifetime outflow | — | witness | `test_outflow.GatingIsNotALifetimeBound` | yes | no |
 | 27i | a global account with checked allocation gives `sum_e B_e <= B`, and the certificate is additive over rows and zero on settlement rows | — | derived | `test_outflow.SummableAllocationsGiveAFiniteCertificate`, `.ChargeIsAdditiveOverRowsAndConservativeOverWorlds` | yes | no |
-| 27j | affordable tolerance: `delta_t >= (eps_t + C_t)*‖d_t‖₁ / b_t`, inverting the charge exactly | — | derived | `test_outflow.AffordableTolerance` | yes | no |
-| 27k | **no finite account** funds meaningful force at infinitely many dates when the exclusion deficit stays above a positive floor — against every protocol, not one policy | `delta_t <= 1` for a nonvacuous promise | derived | `test_outflow.NoAccountSubsidizesAPersistentDeficit` | yes | no |
+| 27j | affordable tolerance: `delta_t >= (eps_t + C_t)*D_t / b_t`, inverting the charge exactly | — | derived | `test_outflow.AffordableTolerance` | yes | no |
+| 27k | ~~no finite account funds meaningful force at infinitely many dates when the exclusion deficit stays above a positive floor~~ | — | — | **withdrawn**: the step `delta_t <= 1` implies `q_t >= D_t` drops the `(eps_t + C_t)` factor, which is not bounded below. Counterexample `test_outflow.DepthOnlyImpossibilityIsWithdrawn`. |
+| 27k' | **corrected limitative theorem**: floors on exclusion depth *and* ordinary aggregate pressure, plus a ceiling on tolerance, bound the number of funded dates by `B·δ̄/(c·d)` | all three hypotheses load-bearing | derived | `test_outflow.PositiveFloorsOnTwoFactorsDoBound` | yes | no |
+| 27k'' | persistent depth at pinned tolerance is affordable forever when ordinary aggregate pressure is summable | `D_t = 1/2`, `δ_t = 1`, `ε_t + C_t = 2^-t` | witness | `test_outflow.PersistentDepthAgainstDecayingPressure` | yes | no |
 | 27l | a forever-unvindicated endorsement receives nonvacuous force at every date within finite capital when its deficit decays geometrically against linearly growing volume; closed-form bound `17/2` | deficit `2^-t`, `C_t = t+1`, `delta = 1/2` | witness | `test_outflow.ForeverUnvindicatedAndSafe` | yes | no |
-| 27m | the liability certificate is **invariant** under row rescaling and duplication at a fixed actual conformance target; a fixed *declared* tolerance is presentation-dependent | — | derived | `test_outflow.LiabilityIsInvariantUnderRowPresentation` | yes | no |
+| 27m | ~~the liability certificate is invariant under row rescaling **and duplication**~~ | — | — | **withdrawn**: tested a compiler retuned by `1/k`, where the installed `ForceDeclaration` uses uniform `β_j`. Replaced by 27m′–27m″. |
+| 27m' | under the **installed** compiler at fixed declared tolerance, duplication scales position and charge by `k`, rescaling by `λ²`, and a redundant non-duplicate row also changes the emitted force | — | derived | `test_outflow.PresentationChangesTheInstalledCompiler` | yes | no |
+| 27m'' | rescaling **is** neutral at a matched actual conformance target; duplication is not — position and realized liability agree, the charge does not | — | derived | same | yes | no |
+| 27o | the sharp aggregate `sup_ω Σ_j d_j(ω)` and the rowwise `Σ_j sup_ω d_j(ω)` differ by a factor of two on two rows pinning one price from opposite sides | — | witness | `test_outflow.SharpAndRowwiseAggregates` | yes | no |
+| 27p | funded force pays the account before emitting; raw `compile_force` carries no charge | — | derived | `test_outflow.FundedForceCannotBypassTheAccount` | yes | no |
+| 27q | sentence-indicator endorsements have depth that holds then jumps to zero, so they cannot generate gradual closure | — | witness | `test_normative.BooleanEndorsementsJumpToZero` | yes | no |
+| 27r | the motivating statics **do** generate a never-vindicated trajectory with halving depth: an affine priceable endorsement whose demand sits at the value settlement approaches | growing fragment, `θ_max` positive at every date | witness | `test_normative.StaticsGenerateAForeverUnvindicatedTrajectory` | yes | no |
+| 27s | zero declared disturbance made the certified intensity zero, which enforces nothing; positive intensity forces exact conformance there | unreachable in the source market, `ε_n = 2^-n > 0` | derived | `test_outflow.ZeroDisturbanceIntensity` | yes | no |
 | 27n | weakening the declared core minimum does not reduce the charge | `max(0, r − m_c)` has no `theta` in it | derived | `test_outflow.ExhaustionBehaviour` | yes | no |
 | 27f | `P2` does not cover enforcement liability: its declared means are refusal and bounded participant budgets, both of which the enforcement trader is exempt from | — | derived | `NORMATIVE_SAFETY.md` §5 | yes | no |
 | 28 | necessity of either liability bridge | — | **open** | item 45 | no | no |
 | 29 | what governs removing a world from support | — | **open** | item 44 | no | no |
 | 30 | normative statics producing `C_t` or `K_t` | — | **open** | item 39 | no | no |
 
-30 entries: 12 derived, 8 witness, 4 lean-proved, 3 open, 2 test-supported, 1 conjecture. The counts sum to 30.
+Counts are deliberately not stated here. They were maintained by hand, went stale within one pass, and the table is the record — `tests/run.py` is what certifies the fixtures behind it.
 
 **Four rows are kernel-checked** — 14 through 17, carrying five Lean theorems and
 two inhabitation witnesses — and all four are force algebra.
