@@ -47,13 +47,14 @@ def run_projects() -> list[tuple[str, bool]]:
 # gate that has quietly stopped matching anything.
 GATE_SELF_TESTS = ("path_gate", "dco", "attribution", "name_lint",
                    "contrib_hygiene", "conservativity", "audit_axioms",
-                   "workflow_scope", "lean_scope")
+                   "workflow_scope", "lean_scope", "round_records")
 
 
 # Gates whose real form needs a pull request: they read the event payload or a
 # base ref, so locally they can only run their self-test. Listed rather than
 # omitted, so the coverage check below can tell "no local form" from "forgotten".
-PULL_REQUEST_ONLY = ("path_gate", "dco", "attribution", "lean_scope")
+PULL_REQUEST_ONLY = ("path_gate", "dco", "attribution", "lean_scope",
+                     "round_records")
 
 
 def self_tests() -> None:

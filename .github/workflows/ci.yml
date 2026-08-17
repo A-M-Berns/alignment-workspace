@@ -75,7 +75,13 @@ jobs:
     permissions:
       contents: read
     steps:
+      # Full history: round_records compares against the previous commit on
+      # `main` when a merge lands, which is where a lost record shows up.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 tests/round_records.py --self-test
+      - run: python3 tests/round_records.py
       - run: python3 tests/name_lint.py --self-test
       - run: python3 tests/name_lint.py
       - run: python3 tests/workflow_scope.py --self-test

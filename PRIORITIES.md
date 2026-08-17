@@ -1096,34 +1096,28 @@ numbered item or by being ruled on in `DECISIONS.md`. **Cite an entry by its
 title, not its number** — the list is renumbered as entries leave it, so numbers
 are positions rather than identifiers.
 
-### F1 — Nothing catches a documented command that names a deleted file
+### F1 — One check for whether the repository's own documents still resolve
 <!-- workspace-priority: project=none; dispatchable=no -->
 
-`CONTRIBUTING.md` instructed readers to run `tests/check_frozen.py` for some time
-after the file was deleted, and three documents claimed eight gates where seven
-run. A gate is cheap and fits the existing null-input discipline: every
-`python3 tests/*.py` in a living document must name a file that exists, and every
-CI job name in prose must appear in `.github/branch-protection.json`. Both fail
-loudly on a stale reference and neither can pass vacuously.
+Two entries were filed separately and are one piece of work. A documented command
+can name a file that was deleted — `CONTRIBUTING.md` instructed readers to run a
+script that no longer existed, and three documents claimed eight gates where seven
+ran. And an unlisted root-level document defaults to the proof layer, which is the
+right default and fails silently in the granting direction: `RESEARCH_STATE.md` was
+contributor-editable with every gate green until someone noticed by hand.
 
-### F2 — No check that a root document lands in a layer
-<!-- workspace-priority: project=none; dispatchable=no -->
+One check covers both: every `python3 tests/*.py` and `python3 -m checkers.*` in a
+living document names a file that exists; every CI job name in prose appears in
+`.github/branch-protection.json`; every root-level `*.md` classifies into exactly
+one layer. Each fails loudly and none can pass vacuously.
 
-An unlisted path defaults to the proof layer, which is the right default —
-deny-by-default would mean every new kind of file needs a maintainer decision
-before anyone can work — but it fails silently in the granting direction, and it
-just did: `RESEARCH_STATE.md` was contributor-editable with the gate green until
-someone noticed by hand. The default is confirmed and stays. What is missing is a
-check that every root-level `*.md` classifies into exactly one layer, which
-catches the miss without touching the default.
+**Audited by hand on 2026-08-17 and clean** — zero dead command pointers, required
+contexts matching job names seven for seven, every root document classified. So
+this is insurance rather than a repair, and it is filed at that priority: worth
+building alongside other work in the same area, not on its own. A gate built with
+no failing case to try it against is the kind this repository is suspicious of.
 
-Two adjacent checks belong with it, and one of them has already bitten twice: a
-count or a job name repeated in prose or in a script drifts from
-`.github/branch-protection.json` with nothing to catch it. The read-back in
-`.github/apply-branch-protection.sh` hardcoded `8` and would have reported
-correct protection as wrong; it now derives the number from the payload.
-
-### F3 — The deference line has no claims registry
+### F2 — The deference line has no claims registry
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 `lean/Workspace/Deference/Contrib/` holds many kernel-verified results, sorry-free
@@ -1133,7 +1127,7 @@ ledger states in its first line. The gap is bookkeeping rather than mathematics,
 and it is the largest single divergence between what the repository holds and what
 it can say it holds.
 
-### F4 — A layer's theory is authoritative and its only code is in a disposable tree
+### F3 — A layer's theory is authoritative and its only code is in a disposable tree
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 `projects/normativity/consolidation-aug9/` states the answerability ledger and the
@@ -1155,38 +1149,7 @@ theory rows stand without executable support and that adapters are the expected
 pattern. **The report is the obligation here; which of the three is not this
 round's to take.**
 
-### F5 — Upstream work on a feature branch is unreachable without a trust-chain edit
-<!-- workspace-priority: project=none; dispatchable=no -->
-
-`lean/lakefile.toml` pins one Formalized-Agent-Foundations commit and inherits
-Mathlib and Foundation through it, which is the right shape and stays. It has no
-way to express a dependency on work that lives on an upstream *feature* branch. A
-round dispatched against such work — the Cartesian-frames round was — has four
-moves, and all four are bad: repin the trust chain to a branch commit that can be
-rebased under it, which is also a maintainer decision the round cannot take;
-vendor the library, which the dispatch forbade and which duplicates a maintained
-tree; mirror the fragment needed, which is a second definition of the same objects;
-or drop the dependency and answer nothing.
-
-That round mirrored ~200 lines and then compiled every result a second time
-against the authoritative definitions in a checkout of the upstream branch, which
-bounds the risk to zero at the cost of a check that CI cannot run. The cross-check
-sits under `prompts/2026-08-12-cartesian-frames/artifacts/` with its re-verification
-command, deliberately outside `lean/Workspace/` because the `lean` gate cannot
-import what the repository does not pin.
-
-The branch moved twice during the round — two commits, and then a merge to the upstream
-default branch — so the register's first recorded commit was stale within a day and the
-cross-check had to be re-verified. That is the concrete cost, and it is also the reason
-the specific case has now dissolved: the library is on `main`, so pinning it is an
-ordinary pin rather than a dependency on a rebaseable branch.
-
-The generalisable question survives the case. Is a second, explicitly *exploratory* pin —
-one whose breakage fails a non-required job rather than the required `lean` gate — worth
-the trust-chain complexity, or is mirror-plus-cross-check the expected pattern for upstream
-work in flight? **The report is the obligation; the decision is not this round's.**
-
-### F6 — A pointer into a superseded source tree still resolves, and nothing says it is stale
+### F4 — A pointer into a superseded source tree still resolves, and nothing says it is stale
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 When a consolidated tree is superseded by a later one, every live pointer into the
@@ -1210,51 +1173,6 @@ declared one, so an intake produces a list to adjudicate rather than a silent
 inheritance. It does not decide anything; it makes the adjudication visible. The
 null-input case is a superseded tree with no inbound pointers, which must fail
 rather than report clean if the tree is cited anywhere.
-
-### F7 — A generated view of live state lives inside a completed round's directory
-<!-- workspace-priority: project=none; dispatchable=no -->
-
-`checkers.workspace_state --check` fails unless three files under
-`prompts/2026-08-13-wikification-and-normativity/` match what
-`--write-handoff` currently renders. They are honest — each says it is generated
-and names the command — but `prompts/README.md` states that a round record is
-history and is not edited, so every round that files a `state/rounds.json` entry
-now edits an earlier round's directory to stay green. This one did.
-
-Nothing is wrong with the check; the views are where a handoff round put them and
-nobody has moved them since. What is missing is a home for generated views that
-is not a history directory — `state/views/`, or the query's output on demand with
-no file at all. The cost is one confusing line in the diff of every future round,
-which is small and compounds.
-
-### F8 — A merge can drop a ledger entry while every other file lands
-<!-- workspace-priority: project=none; dispatchable=no -->
-
-The wiki-in-repo round's two `DECISIONS.md` entries and five `PROVENANCE.md`
-rows are absent from `main`, while everything else that round wrote arrived: `AGENTS.md` carries the amended
-*Security* section, `tests/workflow_scope.py` enforces it, `PRIORITIES.md` has
-item 38, and the round's own *Awaiting the author* stub — a stub in the same
-file, a hundred lines above — survived. So the constitution states a rule whose
-decision the ledger does not record, three new trust-chain files have no
-provenance row, and a round report under `prompts/` points at entries that are
-not there.
-
-Every loss is an insertion at a shared anchor — the head of `## Settled`, the
-end of a Markdown table — where another pull request had inserted at the same
-anchor in between. Whether the
-resolution dropped them or a squash composed a tree without them is not
-recoverable from what is visible now, and the mechanism matters less than the
-shape: **the ledger has one insertion point, every round writes to it, and a
-loss there is invisible in a green build.** Nothing checks that a decision an
-`AGENTS.md` clause depends on is recorded, and nothing checks that a report's
-claim to have filed one is true.
-
-Two cheap moves, neither this round's to choose: append new entries beneath the
-last same-dated one rather than at the section head, which turns same-anchor
-edits into ordinary appends; or check that every round directory under
-`prompts/` has a `PROVENANCE.md` row and, where its report claims a dated
-`DECISIONS.md` entry, that the entry exists. The state-bindings round restored
-all seven verbatim and filed this.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->

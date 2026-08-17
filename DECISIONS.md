@@ -13,6 +13,14 @@ is kept: a pointer that no longer resolves is not history, it is a dead link,
 while a decision that turned out wrong is corrected by the entry that supersedes
 it and not by editing the record of having made it.
 
+**A new entry goes beneath the last entry sharing its date**, not at the head of
+*Settled*. Newest-first still holds between dates; within a date the order is
+arrival. This is a merge convention rather than a stylistic one: two rounds open
+at once both wrote to the section head, and a resolution kept one side's text and
+dropped the other's while every other file from that round landed. Appending
+beneath a same-dated entry turns the collision into an ordinary append. The same
+applies to `PROVENANCE.md`: new rows go at the end of the table they belong to.
+
 ## Awaiting the author
 
 **The single queue.** Everything reserved to the maintainer, anywhere in the
@@ -70,8 +78,9 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   review/provenance and does not adopt the deck's research content. *Waiting*
   costs nothing; the marks are on the slides either way.
 
-- **Decide F4 — the answerability layer's code.** `PRIORITIES.md`, *Workspace
-  friction*. The theory is in the authoritative consolidation and the only
+- **Decide where the answerability layer's code lives.** `PRIORITIES.md`,
+  *Workspace friction*, *A layer's theory is authoritative and its only code is
+  in a disposable tree*. The theory is in the authoritative consolidation and the only
   implementation is in a tree that declares itself deletable, so rounds building
   on it must adapt rather than import. Three options are stated there; *doing it*
   is choosing one. *Waiting* costs one reimplementation per round that touches the
@@ -154,6 +163,47 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   nothing wrong with its content.
 
 ## Settled
+
+### 2026-08-17 — five workspace-friction rulings
+
+**The ledger takes new entries beneath the last same-dated one**, and
+`PROVENANCE.md` takes new rows at the end of their table. Two rounds open at once
+both wrote to the section head; a resolution kept one side and dropped the other,
+and a pull request's two ledger entries and five provenance rows never reached
+`main` while every other file it wrote did. The convention is in this file's
+preamble.
+
+**`tests/round_records.py` checks what a change adds**, not what the repository
+contains: a change landing `prompts/<round>/REPORT.md` must also carry a
+`PROVENANCE.md` row citing `prompts/<round>/`. It runs on pull requests against
+the base branch and on pushes to `main` against the previous commit — the second
+is where the loss occurred, since the pull request had its rows and the merge did
+not. The whole-tree form was measured and rejected: 30 of 49 completed rounds
+carry no such citation, because early rounds are covered by globs and the
+per-round convention arrived later, and a check needing a thirty-entry allowlist
+matches nothing.
+
+**Generated views move to `state/views/`.** They render from live state and were
+kept inside a completed round's directory, so every round that indexed itself
+edited an older round's folder to stay green — against the rule that a round
+record is history. Pointers into the old location are repaired in place as dead
+pointers.
+
+**The feature-branch pin question is closed, and mirror-plus-cross-check is the
+expected pattern** for upstream work in flight. The round that hit it mirrored the
+fragment it needed and cross-checked every result by hand against the
+authoritative definitions; the concrete case dissolves with the repin ruling, and
+the pattern is the answer rather than a workaround. A second exploratory pin is
+not added.
+
+**The documented-command check and the root-document layer check are one entry**,
+built when other work is in that area rather than on its own. Both were audited by
+hand on this date and are clean: no dead command pointer, required contexts
+matching job names seven for seven, every root-level document in exactly one
+layer. A gate with no failing case to try it against is not yet worth having.
+
+Source: the maintainer's rulings on the friction list, taken in conversation
+during the CI-scope round.
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
 

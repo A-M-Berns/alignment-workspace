@@ -313,7 +313,11 @@ def validate(data: dict[str, Any]) -> list[str]:
 
 
 def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
-    base = "prompts/2026-08-13-wikification-and-normativity"
+    # Generated views of live state. They live beside the state they are
+    # rendered from, not inside a round's directory: a round record is history
+    # and is not edited, so a view kept there made every round that indexed
+    # itself edit an older round's folder to stay green.
+    base = "state/views"
     command = "python3 -m checkers.workspace_state --write-handoff"
 
     paths = ["# Final path map", "", f"Generated from `state/projects.json` by `{command}`.", "",
