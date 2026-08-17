@@ -315,3 +315,38 @@ is derived. Cube-face settlement pinning is enforced exactly, witnessed in one a
 two dimensions — **it is the easy case, not the hard one**. The general
 `face-solidity` condition is a conjecture. No claim is made that every
 empty-interior region is hard.
+
+
+## Attacks 23–28: the outflow account
+
+**23. Charge each endorsement separately.** *Lands.* Finite per-endorsement caps
+do not sum. One endorsement live per date, each spending `2` and then retiring,
+gives `2n` after `n` dates while obeying finite gating everywhere. The clause must
+be global or summably allocated. `test_outflow.PerEndorsementCapsDoNotAggregate`.
+
+**24. Let finite gating carry the lifetime bound.** *Lands.* Gating bounds rows
+per date and says nothing about the number of dates.
+`test_outflow.GatingIsNotALifetimeBound`.
+
+**25. Buy stronger force by restating the rows.** *Fails.* Rescaling a row by `λ`
+scales violation and deficit by `λ` and the intensity by `λ⁻²`; duplication into
+`k` copies scales the intensity by `k⁻¹`. Both cancel exactly, so at a fixed
+actual conformance target the position and the charge are unchanged. The API must
+still say that a fixed *declared* `δ` is presentation-dependent.
+`test_outflow.LiabilityIsInvariantUnderRowPresentation`.
+
+**26. Answer exhaustion by weakening the core minimum.** *Fails to help.* The
+worst deficit `max(0, r − m_c)` contains no `θ`, so the charge is unchanged. The
+exhaustion behaviour that looks cheapest buys nothing.
+
+**27. Spend a fixed share of the remaining account, and never exhaust it.**
+*Lands against the policy, not against the account.* Proportional spending really
+does never run out — `R_t = R_0(1−ρ)^t` — and the tolerance it affords diverges,
+so force goes vacuous anyway. Never exhausting is not keeping force available,
+and `meaningful_dates_are_finite` shows no protocol does better.
+
+**28. Replenish the account from outside.** *Lands, and is the one to watch.*
+Unbounded replenishment destroys the guarantee outright, and it is precisely the
+failure `NL-SI-P1` names — an outside source replenishing every paid loss while
+only current positions are tracked. Any implementation must bound replenishment
+globally or confine it to a new era with its own finite allocation.

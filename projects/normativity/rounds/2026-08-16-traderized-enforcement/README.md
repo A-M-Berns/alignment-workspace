@@ -5,9 +5,13 @@ force by a distinguished trader that trades against violations of it, what that
 costs, and whether it can take the role a specially constrained market maker was
 meant to take.
 
-Verdict: the semantic state is a credal set, the price-visible object is its
-projection, and that projection loses information. Traderized force acts on the
-projection and is installed as a living interface; the semantics is not.
+Verdict: force is purchased out of a finite account: the outflow discipline
+implies bounded enforcement liability rather than assuming it, and no account
+funds meaningful force forever against a deficit that does not decay.
+
+The semantic state is a credal set, the price-visible object is its projection,
+and that projection loses information. Traderized force acts on the projection
+and is installed as a living interface; the semantics is not.
 
 **Force-story verdict: yes.** Compiling a row presentation into one trading
 strategy gives a validated region operative force, with a certified conformance
@@ -82,10 +86,29 @@ its world process refutes.
 | `DEDUCTION_SPECIAL_CASE.md` | deduction as the calibration case; presentation cost; the four equivalence relations |
 | `INTEGRATION_MAP.md` | objects touched and untouched, the four vocabulary collisions, Legitimacy and Deference |
 | `THEOREM_MAP.md` | every result with its evidence class, and the named future Lean port target |
-| `NORMATIVE_SAFETY.md` | whether the motivating statics discharge bounded enforcement liability, with a safe and an unsafe trajectory |
+| `NORMATIVE_SAFETY.md` | whether the motivating statics discharge bounded enforcement liability: the outflow account, its counterexamples, the affordability relation, and the limit on what any account can buy |
 | `SEMANTIC_PROJECTION.md` | `C_t`, `π_t`, `K_t`, fibre saturation, and the support loss under projection |
 | `PAPER_RECONCILIATION.md` | the two constructions, the live-world lift with its three hypotheses, deductive recovery, and the paper spine |
-| `PROSECUTION.md` | twenty-two attacks, with a current verdict: what landed, what was withdrawn, what is open |
+| `PROSECUTION.md` | twenty-eight attacks, with a current verdict: what landed, what was withdrawn, what is open |
+
+## The safety verdict
+
+**Safety is implemented, and the implementation has a hard limit.** Force is
+purchased out of a finite global account at `(ε_t + C_t)·‖d_t‖₁/δ_t` per date — a
+charge computable before the trade is emitted — and the account's discipline
+implies the bounded-liability hypothesis rather than assuming it. Inverting the
+charge gives the affordability relation `δ_t ≥ (ε_t + C_t)·‖d_t‖₁/b_t`: the
+remaining account determines how tightly the reasoner may be forced.
+
+Two negative results shape it. **Per-endorsement finite caps and finite gating are
+both insufficient** — a source obeying both, with one row live per date, drives the
+aggregate to infinity by admitting fresh endorsements. And **no finite account
+funds meaningful force at infinitely many dates** against a deficit that stays
+above a positive floor, under any protocol. What an account *can* subsidize
+forever is an endorsement that is never vindicated but whose depth decays:
+`NORMATIVE_SAFETY.md` §9 carries one, funded within `17/2` against unboundedly
+growing ordinary volume. Safety does not demand that normative disagreement be
+deductively resolved.
 
 ## The other verdicts
 

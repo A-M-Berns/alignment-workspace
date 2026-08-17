@@ -106,9 +106,22 @@ A caller wanting exactness is outside this interface and should read
 compiler achieves exactness and loses the nonnegativity property; the
 violation-proportional compiler keeps it and does not achieve exactness.
 
-**Conformance and liability trade against each other.** A tighter `δ_t` needs a
-larger intensity, which permits a larger position, which raises the liability
-ceiling. There is no intensity-free ceiling; that claim was made and withdrawn.
+**Conformance and liability trade against each other**, and the trade is now an
+equation rather than a warning. Against a per-date liability allowance `b_t`,
+
+    δ_t  ≥  (ε_t + C_t^{vol}) · ‖d_t‖₁ / b_t .
+
+Force is bought, not promised: the caller does not pick a tolerance and hope, it
+learns which tolerances its remaining account affords. There is no intensity-free
+ceiling; that claim was made and withdrawn.
+
+**Tolerance must be declared against a normalized presentation.** At a fixed
+*actual* conformance target the compiled position and the liability charge are
+invariant under row rescaling and row duplication — so no source buys stronger
+force cheaply by restating its rows. A fixed *declared* `δ` is presentation-
+dependent, because `δ` promises something about the violation in the
+presentation's own units. Callers stating `δ` against unnormalized rows are
+promising something other than what they think.
 
 ## Verification pointers
 
@@ -132,13 +145,27 @@ a bound. For the settlement/core statics that motivate this work:
   worst assessed world — **independent of the declared core minimum**;
 - settlement monotonicity makes that quantity non-increasing, which is necessary
   and not sufficient;
-- what remains is a **limit on cumulative net outflow** for the compiled
-  enforcement position, which is a discipline the corpus already adopted for the
-  same failure in another context.
+- **finite gating is not enough**, and neither are per-endorsement finite caps:
+  a source obeying both can drive the aggregate to infinity with fresh
+  endorsements, one live at a time;
+- what discharges it is a **finite global account** out of which force is
+  purchased at `(ε_t + C_t^{vol})·‖d_t‖₁/δ_t` per date, with allocation checked
+  at admission so that `Σ_e B_e ≤ B` holds rather than being hoped for.
 
-`../rounds/2026-08-16-traderized-enforcement/NORMATIVE_SAFETY.md` carries the type
-comparison against `P2`, a safe trajectory whose bound is constant across
-horizons, and an unsafe one whose bound grows quadratically.
+Two consequences a caller must plan around. **No finite account funds meaningful
+force at infinitely many dates** against an endorsement whose exclusion deficit
+stays above a positive floor — the account can subsidize unresolved disagreement
+indefinitely only when the *depth* of the disagreement decays. And **exhaustion
+needs a declared behaviour**: quarantine, tolerance relaxation, refusal at
+admission, or tolling. Weakening the declared core minimum is not one of them —
+the worst deficit `max(0, r − m_c)` has no `θ` in it, so weakening the core buys
+nothing.
+
+`../rounds/2026-08-16-traderized-enforcement/NORMATIVE_SAFETY.md` carries the
+account, the type comparison against `P2`, a safe trajectory whose bound is
+constant across horizons, a forever-unvindicated trajectory funded within a
+closed-form `17/2`, and a bounded-liability failure whose realized loss at one
+followed world diverges.
 
 The missing arrow — from a normative record to a semantic credal constraint or a
 price-visible region, **together with its liability certificate** — is

@@ -53,6 +53,18 @@ consistent ones: the acceptance predicate `MarketMakerAccepts` ranges over
 `b : ↥T.support → Bool` (`MarketMaker.lean:776`), and `def:world` says
 explicitly that worlds need not be consistent.
 
+**[settled]** The representation question is closed and should not be reopened.
+Worlds are **total** valuations over a fixed space; `PC(D_t)` is a shrinking
+*subset* of it, so `PC(D_{t+1}) ⊆ PC(D_t)` is literal set inclusion and nesting
+needs no coherence between differently-typed objects. What varies with the date is
+which finite **support** the Budgeter queries — its own proof fixes
+`S' = ⋃ support(T_i)` and works over restrictions to `S'`. So the assessment
+process is one process over a fixed space exposing `restrict(t, S)` as a
+computability interface, and restriction consistency is a *lemma* (restriction
+composes) rather than a hypothesis. The hypotheses actually needed are nesting,
+effective finite restriction, and nonemptiness — `(L1)–(L3)`, and no source proof
+consulted in this round requires more. `src/assessment.py`.
+
 **[source]** What is finite at a date versus uniformly bounded over time:
 
 - The bound `ε_n` is per date. The cumulative bound is `∑ 2^-i < 1`, uniform over

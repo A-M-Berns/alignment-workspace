@@ -49,26 +49,47 @@ def priceable_coefficients(coefficient: Sequence[Fraction],
     """
     names = fragment.names
     columns = [indicator(fragment, s, worlds) for s in names]
-    rows = [[columns[j][i] for j in range(len(names))] for i in range(len(worlds))]
-    target = [Fraction(x) for x in coefficient]
-    from itertools import combinations
-    size = min(len(names), len(worlds))
-    # Underdetermined and overdetermined systems both occur once settlement
-    # shrinks the world list, so search square subsystems over both axes and
-    # verify any candidate against every row.
-    for cols in combinations(range(len(names)), size):
-        for pick in combinations(range(len(worlds)), size):
-            sub = [[rows[i][j] for j in cols] for i in pick]
-            solution = _solve(sub, [target[i] for i in pick])
-            if solution is None:
-                continue
-            full = [ZERO] * len(names)
-            for slot, j in enumerate(cols):
-                full[j] = solution[slot]
-            if all(sum((full[j] * rows[i][j] for j in range(len(names))), ZERO)
-                   == target[i] for i in range(len(worlds))):
-                return tuple(full)
-    return None
+    matrix = [[columns[j][i] for j in range(len(names))] + [Fraction(coefficient[i])]
+              for i in range(len(worlds))]
+    return _particular_solution(matrix, len(names))
+
+
+def _particular_solution(augmented: list[list[Fraction]],
+                         unknowns: int) -> Vector | None:
+    """Exact Gauss-Jordan on an augmented system; any particular solution.
+
+    Rank deficiency is ordinary here — settlement shrinks the world list, and
+    several priced sentences can agree on the surviving worlds — so the solver
+    must return a solution when the system is consistent and underdetermined,
+    and `None` only when it is genuinely inconsistent. Free variables are set to
+    zero.
+    """
+    rows = [row[:] for row in augmented]
+    pivots: list[int] = []
+    row_index = 0
+    for column in range(unknowns):
+        pivot = next((r for r in range(row_index, len(rows)) if rows[r][column] != 0),
+                     None)
+        if pivot is None:
+            continue
+        rows[row_index], rows[pivot] = rows[pivot], rows[row_index]
+        inverse = ONE / rows[row_index][column]
+        rows[row_index] = [x * inverse for x in rows[row_index]]
+        for r in range(len(rows)):
+            if r != row_index and rows[r][column] != 0:
+                factor = rows[r][column]
+                rows[r] = [x - factor * y for x, y in zip(rows[r], rows[row_index])]
+        pivots.append(column)
+        row_index += 1
+        if row_index == len(rows):
+            break
+    for r in range(row_index, len(rows)):
+        if all(x == 0 for x in rows[r][:unknowns]) and rows[r][unknowns] != 0:
+            return None                      # inconsistent
+    solution = [ZERO] * unknowns
+    for r, column in enumerate(pivots):
+        solution[column] = rows[r][unknowns]
+    return tuple(solution)
 
 
 def core_row_in_credal_space(coefficient: Sequence[Fraction], rhs: Fraction,
@@ -106,8 +127,15 @@ def compile_core_row(coefficient: Sequence[Fraction], rhs: Fraction,
         raise ValueError("endorsement is not priceable in this fragment")
     _, right = core_row_in_credal_space(coefficient, rhs, theta, worlds)
     scale = ONE - Fraction(theta)
-    if scale == 0:                       # theta = 1: the row is on the minimum
-        return Row(tuple(ZERO for _ in a), ZERO) if right <= 0 else Row(a, right)
+    if scale == 0:
+        # theta = 1 collapses the condition to `0 >= r - m`. Satisfied by every
+        # reference when `r <= m`, and satisfied by none when `r > m` — which is
+        # an infeasible request, not a price row. Declining is the feasibility
+        # adapter's business and the compiler must not manufacture a satisfiable
+        # row out of an unsatisfiable condition.
+        if right <= 0:
+            return Row(tuple(ZERO for _ in a), ZERO)
+        raise ValueError("the core condition is unsatisfiable at this coefficient")
     return Row(tuple(scale * x for x in a), right)
 
 
@@ -149,8 +177,8 @@ def maximal_theta(coefficient: Sequence[Fraction], rhs: Fraction,
     if len(c) != len(worlds):
         raise ValueError("the endorsement is indexed by worlds")
     lo, hi = min(c), max(c)
-    if hi == lo:
-        return None
     if hi < Fraction(rhs):
-        return ZERO
+        return ZERO                      # no reference supports any coefficient
+    if hi == lo:
+        return None                      # constant and satisfied: every theta works
     return (hi - Fraction(rhs)) / (hi - lo)

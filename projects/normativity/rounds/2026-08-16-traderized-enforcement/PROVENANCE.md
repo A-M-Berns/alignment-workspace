@@ -19,6 +19,7 @@ Every file in this directory:
 | `src/budgeter.py`, `tests/test_budgeter.py` | sixth pass; why the generalized construction is not the ordinary one |
 | `src/assessment.py`, `tests/test_assessment.py` | seventh pass; the assessment process at the type the Budgeter consumes |
 | `NORMATIVE_SAFETY.md`, `src/normative.py`, `tests/test_normative.py` | seventh pass; whether the motivating statics discharge safety |
+| `src/outflow.py`, `tests/test_outflow.py` | eighth pass; the account, its counterexamples and its limit |
 | `CORE_CONDITION.md` | second pass |
 | `ENFORCEMENT.md` | the round's central artifact |
 | `FUNDING_AND_SAFETY.md` | |

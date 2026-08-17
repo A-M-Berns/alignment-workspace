@@ -218,6 +218,24 @@ downstream, not a solution — a trusted process's constraint can be made operat
 this way while authorization, corrective control and futurity remain exactly as
 open as before.
 
+Force also turns out to be **bought rather than granted**. Giving a constraint
+operative force means running an externally funded trader against violations, and
+an externally funded trader is exactly what Logical Induction's no-exploitation
+guarantee is not built to survive. What rescues it is a finite cumulative account:
+each date's force costs `(slack + ordinary volume) × exclusion depth ÷ tolerance`,
+charged before the trade is emitted, and the remaining account is what determines
+how tightly the reasoner may be forced. Two things the account is *not* is worth
+saying, because both look sufficient and neither is: capping each endorsement
+separately fails, since finitely many caps need not sum, and capping how many
+constraints are live per date fails, since nothing bounds the number of dates.
+
+The account also has a limit that reads as a claim about normativity rather than
+about markets. No finite account can fund meaningful force at infinitely many
+dates against a demand that stays a fixed distance from what the record supports.
+What it *can* fund forever is a demand that is never vindicated but whose distance
+from the record closes — so safety does not require that normative disagreement
+be settled, only that unresolved disagreement be resisted with diminishing force.
+
 Evidence: [the traderized-enforcement round](https://github.com/A-M-Berns/alignment-workspace/tree/46032abe26be325218cec51f857b86be377108ab/projects/normativity/rounds/2026-08-16-traderized-enforcement).
 
 ## Evidence and deeper reading

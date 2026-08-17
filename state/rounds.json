@@ -565,10 +565,10 @@
       "date": "2026-08-16",
       "project": "normativity",
       "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
-      "verdict": "the semantic state is a credal set, the price-visible object is its projection, and that projection loses information.",
+      "verdict": "force is purchased out of a finite account: the outflow discipline implies bounded enforcement liability rather than assuming it, and no account funds meaningful force forever against a deficit that does not decay.",
       "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/README.md",
       "registered_classes": [],
-      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT.md",
+      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-outflow-account.md",
       "claim_changes": []
     }
   ]

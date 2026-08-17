@@ -554,32 +554,41 @@ normative region without addressing the outflow account has not answered this it
 arrow between it and the normativity line, and without it traderized force is a
 result about deduction wearing a general name.
 
-### 40. Is the depth-summability condition necessary? — **[open]**
+### 40. Is bounded cumulative enforcement liability necessary? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
-The round's safety condition is `sum_t C_t * max_j d_j(W) < infinity`: ordinary
-volume times how deep the region excludes a world still plausible. It is
-sufficient, the per-date ceiling is intensity-free, and a region excluding a live
-world at *every* date is displayed satisfying it. Its converse is not proved, and
-one direction of the converse is known to fail — weak enforcement has zero
-liability while excluding plausible worlds outright.
+The preservation theorem's hypothesis is that the enforcement position's
+cumulative value over the assessed worlds is bounded below:
+
+    for every n and every ω ∈ Ω_n^live,   Σ_{t≤n} E_t(ω) ≥ −B .
+
+That is sufficient. Its converse is not proved, and one direction of the converse
+is known to fail — weak enforcement has zero liability while excluding live worlds
+outright, so unbounded liability is not implied by aggressive enforcement.
 
 The item is the necessity direction, or its refutation. If a trajectory can
-violate the summability condition with no efficiently computable trader able to
-harvest it, that counterexample is the more valuable outcome, because it would
-mean the condition is strictly stronger than the criterion needs and the round's
-formulation is not the canonical one.
+violate the bound with no efficiently computable trader able to harvest it, that
+counterexample is the more valuable outcome, because it would mean the hypothesis
+is strictly stronger than the criterion needs and the round's formulation is not
+the canonical one.
 
-*Deliverable shape:* `witness-checked` for a refutation; `lean-proved` or
-`test-supported` for a proof restricted to a stated class of trajectories.
-*Acceptance check:* for a refutation, a finite trajectory with divergent bound
-over a stated horizon and a proof that a named trader class cannot exploit it.
-*Context:* `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §4;
-`arXiv:1609.03543` `def:exploitation`.
-*Why it is [open]:* the direction of the argument is not known, and the round's
-own evidence points both ways.
-*History:* this item was filed against world-inclusiveness, which the round's
-second pass demoted to the zero-depth special case.
+Note what the item is *not*. It is not about the declared-quantity **certificate**
+`Σ_t (ε_t + C_t)·‖d_t‖₁/δ_t`, which is a conservative sufficient upper bound —
+it maximizes over the live worlds independently at each date, where the criterion
+follows a single world across dates. A certificate that diverges establishes only
+that the current proof does not certify safety. The round carries a fixture where
+the realized liability at one followed world diverges too, which is the stronger
+statement and the one this item's converse would have to engage.
+
+*Deliverable shape:* `witness-checked` for a refutation; `derived` or better for
+necessity.
+*Acceptance check:* the trajectory is exhibited in exact rationals with a stated
+efficiently-computable trader class.
+*Context:* `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md`,
+`NORMATIVE_SAFETY.md` §5; `src/outflow.py`.
+*Why it matters:* the constitutional layer is being asked to install a finite
+account on the strength of this hypothesis, and installing a discipline stronger
+than the criterion needs would restrict normative force for no safety gain.
 
 ### 41. The safety theorem against the dependency's own construction — **[substantial]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -680,8 +689,11 @@ expressible strategy whose position has a floor outside the region and vanishes
 on it. Those pull against each other — a continuous position that vanishes on a
 closed region is small just outside it — so a clean impossibility is the expected
 outcome and would be worth as much as a construction. Note the two-sided shape:
-for a region with empty interior exactness is already impossible, so the question
-is only live where the region is full-dimensional.
+interior-anchored exactness is proved only for regions with a strict interior, so
+the construction question is posed there. Regions with empty interior are **not**
+excluded: cube-face settlement pinning is enforced exactly by a constant position,
+so a general impossibility claim must not lean on empty interior. Only the earned
+geometry is available here.
 
 *Deliverable shape:* `test-supported` for a construction, with the safety and
 exactness fixtures both green on it; `witness-checked` or `lean-proved` for an

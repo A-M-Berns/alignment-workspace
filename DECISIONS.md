@@ -25,6 +25,42 @@ An entry leaves when the decision lands as a dated entry below.
 what they could decide, or something structural is generating decisions and
 belongs in `PRIORITIES.md` under *Workspace friction*.
 
+- **Who owns the enforcement outflow account.** The safety theorem needs only
+  that total capital be finite; it is indifferent between a **source-owned**
+  account, where a book budgets the cost of its own endorsements and an
+  endorsement that persistently outruns the record eventually loses operative
+  force, and a **market-owned** allowance, where the substrate grants every
+  privileged force channel a fixed finite allotment regardless of authorship. The
+  first makes safety a form of answerability; the second makes it architectural.
+  *Cost of deciding now:* low — one paragraph in the clause, no code change.
+  *Cost of not deciding:* the constitutional prose cannot say who breaches when
+  the account is exhausted. `.../NORMATIVE_SAFETY.md` §12.
+
+- **Whether the outflow clause broadens `P2`, sits beside it, or both sit under a
+  shared principle.** The quantifier structure matches `P2` exactly — worldwise,
+  cumulative, uniform in horizon — and the bearer, holdings and means do not: `P2`
+  bounds the engine's downside on book holdings through refusal and bounded
+  participant budgets, and the enforcement trader is exempt from both. The round
+  recommends a **sibling clause** under the shared principle *every privileged
+  channel that can impose losses unavailable to ordinary bounded participants
+  carries a finite cumulative downside account*, and reserves whether to state
+  that principle. *Cost of deciding now:* low. *Cost of not deciding:* two clauses
+  that look like restatements of each other. `.../NORMATIVE_SAFETY.md` §12.
+
+- **The exhaustion behaviour.** Quarantine, tolerance relaxation, refusal at
+  admission and tolling are all implementable and are not equivalent; tolling
+  interacts with answerability deadlines and is the one the round cannot settle
+  alone. Weakening the declared core minimum is *not* an option — the worst
+  deficit has no `θ` in it. *Cost of deciding now:* low. *Cost of not deciding:*
+  `src/outflow.py` exposes four policies and the architecture endorses none.
+
+- **Whether the account may be replenished.** Unbounded outside replenishment
+  destroys the guarantee outright and is exactly the failure `NL-SI-P1` names.
+  The options are: never; bounded globally; or only on a new constitutional era
+  with its own finite allocation. *Cost of deciding now:* low. *Cost of not
+  deciding:* an implementer may add replenishment as an obvious convenience and
+  silently void the safety theorem. This is the highest-risk item in the queue.
+
 - **Choose vocabulary for “admission.”** The normativity material uses the same
   family for at least three objects: the date a docket item enters the record,
   a certificate verdict permitting a lawful edit, and membership in a

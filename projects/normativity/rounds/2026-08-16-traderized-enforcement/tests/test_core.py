@@ -117,3 +117,94 @@ class CompiledRowIsTheCoreCondition(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class BoundaryCoefficient(unittest.TestCase):
+    """`theta = 1` collapses the core condition to `0 >= r - m`.
+
+    The compiler must not manufacture a satisfiable price row out of the
+    unsatisfiable branch. It is the one place where declining is the correct
+    output and a row would be a silent lie.
+    """
+
+    fragment = Fragment(("A", "B"))
+    worlds = [(F(0), F(0)), (F(1), F(0)), (F(0), F(1)), (F(1), F(1))]
+
+    def coefficient(self):
+        return tuple(w[0] for w in self.worlds)          # min 0, max 1
+
+    def test_satisfiable_branch_is_the_vacuous_row(self):
+        row = compile_core_row(self.coefficient(), F(0), F(1),
+                               self.fragment, self.worlds)
+        self.assertEqual(row.r, F(0))
+        self.assertTrue(all(x == 0 for x in row.c))
+        for w in self.worlds:                            # satisfied everywhere
+            self.assertEqual(row.violation(w), F(0))
+
+    def test_unsatisfiable_branch_is_declined(self):
+        with self.assertRaises(ValueError):
+            compile_core_row(self.coefficient(), F(1, 2), F(1),
+                             self.fragment, self.worlds)
+
+
+class ConstantEndorsement(unittest.TestCase):
+    """`M = m`: the endorsement is a constant on the simplex.
+
+    Then no coefficient changes anything, and the two branches are opposite:
+    automatically satisfied, or impossible. `maximal_theta` must not report
+    "every theta works" for the impossible one.
+    """
+
+    worlds = [(F(0), F(0)), (F(1), F(1))]
+
+    def test_constant_and_satisfied_admits_every_coefficient(self):
+        self.assertIsNone(maximal_theta((F(1, 2), F(1, 2)), F(1, 3), self.worlds))
+
+    def test_constant_and_impossible_admits_none(self):
+        self.assertEqual(maximal_theta((F(1, 2), F(1, 2)), F(3, 4), self.worlds),
+                         F(0))
+
+
+class RankDeficientPriceability(unittest.TestCase):
+    """Settlement shrinks the world list, and the linear system stops being square.
+
+    A consistent but rank-deficient system has a solution, and rejecting it would
+    call a priceable endorsement unpriceable — declining to enforce something the
+    market can in fact express. An inconsistent one must still be refused.
+    """
+
+    def test_underdetermined_consistent_system_solves(self):
+        fragment = Fragment(("A", "B", "C"))
+        worlds = [(F(0), F(0), F(0)), (F(1), F(1), F(1))]   # 2 worlds, 3 names
+        a = priceable_coefficients((F(0), F(5)), fragment, worlds)
+        self.assertIsNotNone(a)
+        for i, w in enumerate(worlds):
+            self.assertEqual(sum(x * v for x, v in zip(a, w)),
+                             (F(0), F(5))[i])
+
+    def test_rank_deficient_consistent_system_solves(self):
+        """Two priced sentences agreeing on every surviving world."""
+        fragment = Fragment(("A", "B"))
+        worlds = [(F(0), F(0)), (F(1), F(1))]               # A and B coincide
+        a = priceable_coefficients((F(0), F(3)), fragment, worlds)
+        self.assertIsNotNone(a)
+        for i, w in enumerate(worlds):
+            self.assertEqual(sum(x * v for x, v in zip(a, w)), (F(0), F(3))[i])
+
+    def test_rank_deficient_inconsistent_system_is_refused(self):
+        fragment = Fragment(("A", "B"))
+        worlds = [(F(0), F(0)), (F(1), F(1))]
+        # every combination of indicators is 0 at world 00; demanding 1 is not
+        # a functional of the priced sentences on these worlds
+        self.assertIsNone(priceable_coefficients((F(1), F(3)), fragment, worlds))
+
+    def test_overdetermined_consistent_system_solves(self):
+        fragment = Fragment(("A",))
+        worlds = [(F(0),), (F(1),), (F(1),)]
+        a = priceable_coefficients((F(0), F(2), F(2)), fragment, worlds)
+        self.assertEqual(a, (F(2),))
+
+    def test_overdetermined_inconsistent_system_is_refused(self):
+        fragment = Fragment(("A",))
+        worlds = [(F(1),), (F(1),)]
+        self.assertIsNone(priceable_coefficients((F(2), F(3)), fragment, worlds))
