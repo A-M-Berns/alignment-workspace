@@ -587,6 +587,44 @@ already carry a recursion and a search.
 criterion's application to be a proof rather than a hypothesis, and this is that
 application for one modified market.
 
+### 44. What anchors the assessment set when the constraint also defines it? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The generalized picture lets a time-indexed constraint determine which worlds a
+bounded reasoner is assessed against, with ordinary deduction recovered as the
+case where the constraint is the coherence polytope of the deductive stage. That
+recovery works. What does not work is safety on top of it.
+
+The enforcement position is the violation-weighted combination of the region's own
+row normals, so by the enforcement inequality it is worth at least zero at every
+point of the region — in particular at every world the region admits. Read the
+assessment set off the constraint and the enforcement liability is identically
+zero, and the safety theorem holds by construction for exactly the constraints
+whose safety was in question. The traderized-enforcement round exhibits a region
+that the deductive assessment set convicts at `-5/8` and the derived set reports
+clean.
+
+The item is a condition on the live-world process that makes the generalized
+criterion non-vacuous. Three candidate anchors are named in that round's
+`PAPER_RECONCILIATION.md` §6 — a deductive floor, eventual vindication by
+deduction, and answerability for removals — and none is proved to do the job. The
+first keeps the deductive process in a role the generalization was meant to
+remove; the second makes a normative constraint a prediction, which costs
+`Licensed` its performance-independence.
+
+*Deliverable shape:* a stated condition with a proof that it excludes the
+displayed laundering witness and does not exclude the deductive instance; or a
+proof that no condition on the live-world process alone suffices, which would say
+the anchor must be external.
+*Acceptance check:* the round's laundering fixture fails the condition and its
+deductive-recovery fixture passes it.
+*Context:* `.../2026-08-16-traderized-enforcement/PAPER_RECONCILIATION.md` §§5-6;
+`tests/test_live_worlds.py`.
+*Why it matters:* it is the single step blocking the generalized paper's theorem
+spine. Everything else in that spine survives, is restated, or is a named open
+question of ordinary size; this one decides whether the generalized criterion
+means anything.
+
 ### 43. A compiler that is both exact and safe, or a proof there is none — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 

@@ -6,7 +6,8 @@ costs, and whether it can take the role a specially constrained market maker was
 meant to take.
 
 Verdict: traderization can carry the force layer, the constrained market maker is
-retired from it, and the safety boundary is not world-inclusiveness.
+retired from it, and the condition that would make the generalized criterion
+non-vacuous is missing.
 
 **Force-story verdict: yes.** Compiling a row presentation into one trading
 strategy gives a validated region operative force, with a certified conformance
@@ -21,38 +22,52 @@ grounding, feasibility, breach stack and answerability are untouched and stay
 upstream. What traderization replaces is the *mechanism* that was to make prices
 respect a region.
 
-**Safety verdict: bounded cumulative enforcement liability, and
-world-inclusiveness is only its `B = 0` case.** The per-date ceiling is
-`C_t · max_j d_j(W)` — ordinary volume times how deep the region excludes a live
-world — and the intensities cancel out of it. A region excluding a live world at
-*every* date can be enforced forever and safely, provided the depth decays
-against the growth in volume.
+**Safety verdict: bounded cumulative enforcement liability, with bound `1 + B`.**
+That abstract theorem is the round's most robust result. The *sufficient
+conditions* for bounding `B` are weaker than a previous pass claimed: the
+per-date bound is `(ε_t + C_t)·‖d_t(W)‖₁/δ_t`, the intensity does **not** cancel,
+and conformance and liability are traded against each other. A region excluding a
+live world at every date can still be enforced forever and safely.
+
+**Paper-fit verdict: the force channel fits; the semantic channel has a hole.**
+If the live worlds are read off `S_t = Π_t ∩ K_t`, the enforcement position is
+worth at least zero at every live world by construction, so the safety theorem
+becomes vacuous for exactly the constraints whose safety is in question. A
+constraint source could discharge its own obligation by declaring the worlds it
+loses money in inadmissible. `PAPER_RECONCILIATION.md` exhibits it.
 
 ```sh
-python3 tests/run.py     # 99 tests, exact rationals
+python3 tests/run.py     # 122 tests, exact rationals
 ```
+
+Two claims from earlier passes are withdrawn, each with its counterexample kept
+as a regression in `tests/test_regressions.py`: an intensity-free liability
+ceiling, and an exactness impossibility stated for every empty-interior region.
 
 | file | what it is |
 |---|---|
 | `SOURCE_AUDIT.md` | where `D` enters Logical Induction, the market maker's contract, what breaks and where, and why constraining the maker costs its totality |
 | `MODEL.md` | the objects, and which assumptions on the region the proofs consume |
-| `ENFORCEMENT.md` | Theorems 1–9: the contract resolved, the enforcement inequality, the modulus, and the exactness fork resolved |
+| `ENFORCEMENT.md` | Theorems 1–9: the contract resolved, the enforcement inequality, the modulus, and the exactness case split |
 | `FORCE_INTERFACE.md` | the mechanism-neutral force contract, the two implementations, and the responsibility table |
 | `CORE_CONDITION.md` | `P1`'s depth condition compiled to a trader, worked end to end |
-| `FUNDING_AND_SAFETY.md` | the liability identity, the intensity-free ceiling, and the safety condition below world-inclusiveness |
+| `FUNDING_AND_SAFETY.md` | the liability identity, the withdrawn ceiling and what replaced it, and the safety condition |
 | `DEDUCTION_SPECIAL_CASE.md` | deduction as the calibration case; presentation cost; the four equivalence relations |
 | `INTEGRATION_MAP.md` | objects touched and untouched, the four vocabulary collisions, Legitimacy and Deference |
 | `THEOREM_MAP.md` | every result with its evidence class, and the named future Lean port target |
+| `PAPER_RECONCILIATION.md` | the two assessment models, the live-world lift, deductive recovery, and the hole |
 | `PROSECUTION.md` | seventeen attacks; the worst of them is the round's own |
 
 ## The other verdicts
 
-**Exact enforcement:** resolved into cases. Achievable by an interior-anchored
-trader against a positive disturbance budget when the region has an interior;
-**impossible for any continuous trader** when it does not — which covers every
-settlement equality and every coherence polytope over a fragment with a
-propositional relation. In that second case arbitrary finite tolerance is
-available and exactness only as a limit.
+**Exact enforcement:** case-split by geometry, and the split is *not* interior
+versus empty interior. Available for regions with an interior, and also for
+regions sitting on a cube face — a settlement pinning a sentence to probability
+one is enforced exactly by a constant trader. Unavailable for a region strictly
+inside the open cube with empty interior, which is where a coherence relation
+lands. The proved theorem is one-dimensional; the general condition
+(*face-solidity*: nonempty interior relative to the smallest cube face containing
+the region) is a conjecture delimited by witnesses on both sides.
 
 **And exactness costs the safety property.** The compiler that achieves it does
 not vanish on the region, so it holds positions where there is no violation, and
@@ -68,8 +83,10 @@ and coarser nets see none of it.
 
 **Constitution boundary:** construction of `K_t`, legitimacy, priceability,
 effective presentation, nonemptiness, persistence, and the depth of any exclusion
-stay upstream. `FORCE_INTERFACE.md` §3 assigns each one. Bounded liability is the
-*source's* obligation, because the mechanism cannot change the ceiling.
+stay upstream. `FORCE_INTERFACE.md` §3 assigns each one. Bounded liability is
+**shared** — the source sets the exclusion depth, the mechanism sets the promised
+tolerance, and the surviving bound carries both. Which worlds the bound is
+assessed over is the open question.
 
 **Traderized deduction:** an addition, not a replacement — unchanged from the
 first pass, and still false under relations R1 and R4 of `SOURCE_AUDIT.md` §4.
@@ -88,7 +105,8 @@ in `INTEGRATION_MAP.md` §3.
 
 `test-supported` for the fixtures; `lean-proved` and **unregistered** for the five
 inequalities in `lean/Workspace/Normativity/Contrib/TraderizedEnforcement.lean`;
-`derived` for the safety theorem and the exactness impossibility, which compose
-source lemmas taken as hypotheses. Nothing is registered in `CLAIMS.md`, and the
-round adds no living specification note — `FORCE_INTERFACE.md` is a proposal for
-one, not one.
+`derived` for the safety theorem, the liability bound, the live-world lift, the
+deductive recovery and the one-dimensional exactness theorem. Nothing is
+registered in `CLAIMS.md`, and the round adds no living specification note —
+`FORCE_INTERFACE.md` and `PAPER_RECONCILIATION.md` are proposals for one, not
+one.

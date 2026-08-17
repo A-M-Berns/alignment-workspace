@@ -167,10 +167,10 @@ every grid price. The interior-anchored position is worth `−1/2` at six of the
 including at `P = (0, 1/2)`, which is **inside** `K` with every row violation
 zero. ∎
 
-**Theorem 9 (exactness is impossible for a region with no interior).** Let one
-sentence be priced, `K ⊆ (0,1)` nonempty and closed, and `ζ_E` any continuous
-strategy. If no price outside `K` is displayable against disturbances of mass
-`C > 0`, then `K` has nonempty interior.
+**Theorem 9 (exactness needs an interior, for a region strictly inside the open
+interval).** Let one sentence be priced, `K ⊆ (0,1)` nonempty and closed, and
+`ζ_E` any continuous strategy. If no price outside `K` is displayable against
+disturbances of mass `C > 0`, then `K` has nonempty interior.
 
 *Proof.* `P = 0` is outside `K`, and there the contract charges nothing for a
 short position, so excluding it requires `ζ_E(0) > C`. Symmetrically
@@ -178,20 +178,43 @@ short position, so excluding it requires `ζ_E(0) > C`. Symmetrically
 `P₀ ∈ (0,1)`, and by continuity `|ζ_E| < C` on a neighbourhood of `P₀`. Every
 price there is displayable, so all of it lies in `K`. ∎
 
-The regions with no interior are not exotic. A settlement equality is one. So is
-the coherence polytope of any fragment carrying a propositional relation —
-`test_exactness` confirms neither admits a strictly interior point. **So exact
-enforcement of coherence is impossible for any continuous trader against any
-positive disturbance**, and the round's earlier exact-enforcement results (Theorem
-3) are exactly the disturbance-free case `C = 0`.
+**The hypothesis `K ⊆ (0,1)` is load-bearing, and an earlier draft of this
+section dropped it.** A region touching a cube face is not covered, and is not
+covered because the theorem is false there: `K = {0}` is enforced exactly by the
+*constant* strategy `ζ_E ≡ −λ` for any `λ > C`. At `P = 0` a short position costs
+the disturbance nothing to leave, so the contract charges zero; at every `P > 0`
+the aggregate stays short by at least `λ − C` and the cube maximum gain is
+`(λ−C)P > 0`. The feasible set is exactly `{0}`
+(`test_regressions.EmptyInteriorDoesNotImplyImpossibility`).
 
-What survives there is tolerance at any level: for `ζ_E(P) = s(c − P)` the
-displayable interval around `c` has width exactly `2C/s`, positive for every
-finite `s` and shrinking without limit. So the fork resolves as **A for regions
-with an interior, at a cost; B for regions without one; C as the asymptotics in
-that second case.** Whether that matters is `D`, and `FORCE_INTERFACE.md` §1
-answers it: the constitutional interface consumes a declared tolerance schedule,
-not exactness.
+**Settlement is therefore the easy case, not the hard one.** Pinning a sentence
+to probability one is `K = {P : P_φ = 1}`, a cube face, and a constant long
+position enforces it exactly — verified in one and two dimensions. Any statement
+that settlement equalities are generically unenforceable is withdrawn.
+
+What is genuinely hard is a region that lies in **no proper cube face** and has
+empty relative interior. The coherence polytope of a fragment carrying a
+propositional relation is one: `p(φ) + p(¬φ) = 1` cuts a segment through the open
+cube, an enforcement position must be long above it and short below it, and
+continuity puts a cancellable band across it at every finite intensity — half-width
+`C/(2β)`, exhibited exactly because a grid coarser than that reports none
+(`test_regressions.CoherenceSegmentIsStillHard`).
+
+**Conjecture (face-solidity).** Exact enforcement against a positive disturbance
+budget is available exactly when `K` has nonempty interior *relative to the
+smallest cube face containing it*. It is a theorem in one dimension for convex
+`K = [a,b]`, where the three cases are: `a < b`, possible; `a = b ∈ {0,1}`,
+possible; `a = b ∈ (0,1)`, impossible. In higher dimensions it is a conjecture
+delimited by the witnesses above — settlement faces on the possible side, the
+coherence segment on the impossible side — and nothing here proves it.
+
+What survives on the impossible side is tolerance at any level: for
+`ζ_E(P) = s(c − P)` the displayable interval around `c` has width exactly `2C/s`,
+positive for every finite `s` and shrinking without limit. So the fork resolves as
+**A for face-solid regions, at a cost; B for regions that are not; C as the
+asymptotics in that second case.** Whether that matters is `D`, and
+`FORCE_INTERFACE.md` §1 answers it: the constitutional interface consumes a
+declared tolerance schedule, not exactness.
 
 ## What this section does not establish
 

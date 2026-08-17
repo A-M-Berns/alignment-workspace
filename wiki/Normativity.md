@@ -103,13 +103,18 @@ are read against rather than one instance among equals.
 
 What a normative constraint does differently is exclude states deduction permits
 — that is what it is for — and excluding a world that is still live is what makes
-the enforcing participant lose. But the cost is not a wall. It is a quantity:
-roughly, how much ordinary trading pressure there is, multiplied by how deep the
-exclusion cuts. A source may exclude live worlds permanently and still be safe,
-provided the depth of the exclusion shrinks against the growth in that pressure.
-Not agreement with deduction, then; convergence on it, at a rate — and that is a
-demand on the *source*, because nothing the enforcement mechanism chooses changes
-the quantity.
+the enforcing participant lose. But the cost is not a wall. It is a quantity,
+depending on how much ordinary trading pressure there is, how deep the exclusion
+cuts, and how tightly the mechanism has promised to enforce. A source may exclude
+live worlds permanently and still be safe, provided that quantity stays summable
+over time. Not agreement with deduction, then; convergence on it, at a rate.
+
+An open question sits underneath all of this, and it is worth stating rather than
+smoothing over. If a constraint is also allowed to determine which worlds the
+reasoner is assessed against — which is the natural way to generalize, since that
+is what deduction does — then it can discharge its own safety obligation by
+declaring the worlds it loses money in inadmissible. What stops that is not yet
+known.
 
 ### Force, and what force costs
 

@@ -53,6 +53,21 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
   leaves the current documents explicitly `ci-only` and unadopted.
 
+- **Rule on the two-channel architecture, the Coverage–Liability names, and
+  where traderized force is published.** Three linked rulings from the
+  traderized-enforcement round's reconciliation pass. *(a)* Whether
+  `what counts as admissible ≠ how finite prices are pushed toward admissibility`
+  is adopted as the generalized paper's architecture — the round recommends it and
+  gives three independent obstructions to collapsing the two. *(b)* Whether
+  Coverage–Liability stays the terminology now that Coverage's job is known to be
+  non-vacuity of the criterion rather than support for the non-exploitation proof,
+  which is a different role from the one the name was chosen for. *(c)* Whether
+  traderized force is a section of that paper or a separately consumable module —
+  the round recommends one paper with force as a liftable module, on theorem
+  dependency. *Doing it* is one reading of that round's `PAPER_RECONCILIATION.md`.
+  *Waiting* leaves the paper spine's blocking step, item 44, without a settled
+  frame to be solved inside.
+
 - **Rule on whether `P1` should name an obligation rather than a mechanism.**
   The settlement interface's enforcement clause certifies a core minimum *of an
   engine*. The traderized-enforcement round compiles the same condition from

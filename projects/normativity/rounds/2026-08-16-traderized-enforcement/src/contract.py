@@ -85,24 +85,51 @@ class ForceDeclaration:
 
 
 def volume_times_depth(volume: Fraction, deficits: Sequence[Fraction]) -> Fraction:
-    """`C * max_j d_j(W)`: the intensity-free reading of the liability ceiling.
+    """`C * max_j d_j(W)`. **This is not a bound on the liability.**
 
-    The bound of `ForceDeclaration.liability_bound` carries the intensities, but
-    they cancel against the conformance they buy. What is left is the ordinary
-    volume times how deep the region excludes the world — so a mechanism cannot
-    make its liability smaller by enforcing harder, and cannot make it larger
-    either. Checked against the exact ledger in `test_contract`.
+    It was claimed as one, on the reasoning that the enforcement position offsets
+    the ordinary one at equilibrium and so has size `C` whatever the intensity.
+    That holds only where the contract forces the aggregate to vanish. Positive
+    market-maker slack does not force it, and
+    `test_regressions.IntensityFreeCeilingIsFalse` exhibits a date where the
+    ordinary position is zero, the contract holds, conformance holds, and the
+    liability is thirteen times this quantity.
+
+    Kept computable so the regression can pin it. Use `declared_liability_bound`.
     """
     return Fraction(volume) * max(deficits, default=ZERO)
 
 
-def cumulative_liability_bound(schedule: Sequence[tuple[Fraction, Sequence[Fraction]]]
-                               ) -> Fraction:
-    """Sum of `volume * depth` over dates: the safety condition's left side.
+def declared_liability_bound(slack: Fraction, volume: Fraction,
+                             tolerance: Fraction,
+                             deficits: Sequence[Fraction]) -> Fraction:
+    """`(slack + volume) * sum_j d_j(W) / tolerance`.
+
+    What survives, in declared quantities. It follows from the kernel-checked
+    identity — the liability is at most `sum_j beta_j g_j d_j` — by substituting
+    the promised conformance `g_j <= tolerance` and the prescribed intensity.
+
+    The intensity does **not** cancel, and the direction is the opposite of the
+    withdrawn claim: a tighter promised tolerance needs a larger intensity, which
+    permits a larger position, which raises the ceiling. Conformance and
+    liability are traded against each other rather than independent.
+    """
+    tolerance = Fraction(tolerance)
+    if tolerance <= 0:
+        raise ValueError("tolerance is positive")
+    return ((Fraction(slack) + Fraction(volume))
+            * sum(deficits, ZERO) / tolerance)
+
+
+def cumulative_liability_bound(
+        schedule: Sequence[tuple[Fraction, Fraction, Fraction, Sequence[Fraction]]]
+) -> Fraction:
+    """Sum of `declared_liability_bound` over dates: the safety condition's left
+    side, in the corrected form.
 
     Finite here is sufficient for the criterion to survive, by the safety
-    theorem. World-inclusiveness is the case where every depth is zero, which is
-    one way for this sum to converge and not the only one.
+    theorem. A region containing every live world gives every deficit zero, which
+    is one way for this sum to converge and not the only one.
     """
-    return sum((volume_times_depth(volume, deficits)
-                for volume, deficits in schedule), ZERO)
+    return sum((declared_liability_bound(slack, volume, tolerance, deficits)
+                for slack, volume, tolerance, deficits in schedule), ZERO)

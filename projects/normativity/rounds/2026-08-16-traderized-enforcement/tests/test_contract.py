@@ -5,12 +5,12 @@ import unittest
 from fractions import Fraction as F
 
 from contract import (ForceDeclaration, certified_intensity,
-                      cumulative_liability_bound, volume_times_depth)
+                      cumulative_liability_bound, declared_liability_bound)
 from deduction import (incoherence_upper, net_rows, world_deficit,
                        world_inclusive)
 from enforcement import EnforcementTrader, Region, Row, grid
 from funding import FundingLedger, exploitation_bound
-from market import Fragment, holdings_value
+from market import Fragment, holdings_value, max_gain
 
 WORLD = (F(1),)          #: the one world still plausible once `phi` is settled
 
@@ -44,30 +44,40 @@ class Declaration(unittest.TestCase):
 
 
 class LiabilityCeiling(unittest.TestCase):
-    """Intensity cancels: the ceiling is volume times exclusion depth."""
+    """The corrected bound, and the trade-off it exposes."""
 
-    def test_the_bound_is_intensity_free_at_equilibrium(self):
+    def test_the_pointwise_bound_holds_wherever_the_contract_does(self):
         depth, volume, slack = F(1, 4), F(2), F(1, 16)
         region = reserving_region(depth)
-        for tolerance in (F(1, 5), F(1, 20), F(1, 200)):
+        for tolerance in (F(1, 5), F(1, 20)):
             declaration = ForceDeclaration(region, volume, slack, tolerance)
-            violation = volume / declaration.intensity
-            price = (F(1) - depth + violation,)
-            self.assertTrue(declaration.conformance_holds(price))
-            self.assertEqual(declaration.liability_bound(price, WORLD),
-                             volume * depth)
+            trader = declaration.trader()
+            for price in grid(1, 40):
+                position = trader.coefficients(price)
+                if max_gain(position, price) > slack + volume:
+                    continue
+                self.assertLessEqual(
+                    -holdings_value(position, price, WORLD),
+                    declaration.liability_bound(price, WORLD), (tolerance, price))
 
-    def test_it_matches_the_volume_times_depth_reading(self):
+    def test_a_tighter_tolerance_raises_the_declared_ceiling(self):
+        """The direction the withdrawn claim got backwards: conformance and
+        liability are traded against each other."""
         region = reserving_region(F(1, 4))
-        self.assertEqual(volume_times_depth(F(2), world_deficit(region, WORLD)),
-                         F(1, 2))
+        deficits = world_deficit(region, WORLD)
+        ceilings = [declared_liability_bound(F(1, 16), F(2), tolerance, deficits)
+                    for tolerance in (F(1, 5), F(1, 20), F(1, 200))]
+        self.assertEqual(ceilings, [F(165, 64), F(165, 16), F(825, 8)])
+        self.assertLess(ceilings[0], ceilings[1])
+        self.assertLess(ceilings[1], ceilings[2])
 
     def test_a_world_inclusive_region_has_depth_zero(self):
         region = Region(1, [Row([F(1)], F(0))])
         self.assertTrue(world_inclusive(region, [WORLD]))
         self.assertEqual(world_deficit(region, WORLD), (F(0),))
-        self.assertEqual(volume_times_depth(F(1000), world_deficit(region, WORLD)),
-                         F(0))
+        self.assertEqual(
+            declared_liability_bound(F(1, 8), F(1000), F(1, 1000),
+                                     world_deficit(region, WORLD)), F(0))
 
 
 class SafeWithoutWorldInclusiveness(unittest.TestCase):
@@ -76,17 +86,20 @@ class SafeWithoutWorldInclusiveness(unittest.TestCase):
 
     DATES = 14
 
+    TOLERANCE = F(1, 10)
+
     def trajectory(self):
         ledger, schedule = FundingLedger(), []
         for n in range(1, self.DATES + 1):
             depth, volume, slack = F(1, 2 ** n), F(n), F(1, 2 ** (n + 1))
             region = reserving_region(depth)
-            declaration = ForceDeclaration(region, volume, slack, F(1, 10))
+            declaration = ForceDeclaration(region, volume, slack, self.TOLERANCE)
             violation = volume / declaration.intensity
             price = (F(1) - depth + violation,)
             assert declaration.conformance_holds(price)
             ledger.record(n, declaration.trader().coefficients(price), price)
-            schedule.append((volume, world_deficit(region, WORLD)))
+            schedule.append((slack, volume, self.TOLERANCE,
+                             world_deficit(region, WORLD)))
         return ledger, schedule
 
     def test_no_date_is_world_inclusive(self):
@@ -100,17 +113,17 @@ class SafeWithoutWorldInclusiveness(unittest.TestCase):
     def test_cumulative_liability_stays_under_its_bound(self):
         ledger, schedule = self.trajectory()
         realised = ledger.liability({d: [WORLD] for d in ledger.dates})
-        bound = cumulative_liability_bound(schedule)
-        self.assertLessEqual(realised, bound)
-        # sum_{n=1}^{N} n / 2^n  =  2 - (N + 2) / 2^N
-        self.assertEqual(bound, F(2) - F(self.DATES + 2, 2 ** self.DATES))
+        self.assertLessEqual(realised, cumulative_liability_bound(schedule))
 
     def test_the_bound_converges(self):
-        """`sum_n n / 2^n = 2`, so the criterion survives at every horizon."""
-        _, schedule = self.trajectory()
-        self.assertLess(cumulative_liability_bound(schedule), F(2))
-        self.assertLess(exploitation_bound(cumulative_liability_bound(schedule)),
-                        F(3))
+        """`10 * sum_n n/2^n + 10 * sum_n 4^-n/2 = 20 + 5/3`, so the criterion
+        survives at every horizon. The constant is larger than the withdrawn
+        claim gave; convergence is what the safety theorem needs."""
+        for dates in (7, 14, 21):
+            self.DATES = dates
+            _, schedule = self.trajectory()
+            self.assertLess(cumulative_liability_bound(schedule), F(22))
+        self.DATES = 14
 
     def test_the_liability_is_real_not_an_artefact(self):
         """Every date does show a plausible loss; the sum is what converges."""
@@ -123,11 +136,12 @@ class UnsafeWhenDepthDoesNotDecay(unittest.TestCase):
     """The contrast case: fixed depth, growing volume, divergent bound."""
 
     def test_the_bound_grows_without_limit(self):
-        schedule = [(F(n), (F(1, 2),)) for n in range(1, 21)]
+        schedule = [(F(1, 2 ** (n + 1)), F(n), F(1, 10), (F(1, 2),))
+                    for n in range(1, 21)]
         partial = [cumulative_liability_bound(schedule[:k]) for k in (5, 10, 20)]
-        self.assertEqual(partial, [F(15, 2), F(55, 2), F(105)])
         self.assertLess(partial[0], partial[1])
         self.assertLess(partial[1], partial[2])
+        self.assertGreater(partial[2], F(500))
 
 
 class ConstrainedMakerNeedsAnExistenceTheorem(unittest.TestCase):

@@ -99,32 +99,42 @@ on the same row**: a live violation, and a right-hand side that excludes `W`.
 Kernel-checked as `weighted_square_sub_deficit_le_pair`, with an inhabitation
 witness at a nonzero deficit.
 
-**Theorem 11 (the liability ceiling is intensity-free).** Under the certified
-declaration of `FORCE_INTERFACE.md` §1 — intensity `(ε_t + C_t)/δ_t²` against
-ordinary volume `C_t` — the per-date liability ceiling is
+**Theorem 11 is withdrawn.** It claimed the per-date liability ceiling is
+`C_t · max_j d_j(W)`, independent of the intensity, on the reasoning that at
+equilibrium the enforcement position offsets the ordinary one and so has size
+`C_t` whatever the intensity.
 
-    L_t(W)  ≤  C_t · max_j d_j(W) ,
+That reasoning holds only where the contract forces the aggregate to vanish.
+Positive market-maker slack does not force it: the contract bounds the
+aggregate's cube maximum gain, and at an interior price that leaves room for
+residual enforcement demand which nothing cancels. The counterexample has the
+ordinary position at **zero**: `K = {P ≤ 1/2}`, `C = 1/100`, `ε = 1/8`,
+`δ = 1/10`, so the prescribed intensity is `27/2`. At `P = 51/100` the violation
+is `1/100`, the position is `27/200` short — thirteen and a half times the
+declared volume bound — the contract holds at `1377/20000 ≤ 1/8`, conformance
+holds, and the liability in the still-plausible world `W = 1` is `1323/20000`
+against a claimed ceiling of `1/200`. `test_regressions.IntensityFreeCeilingIsFalse`
+pins every one of those rationals.
 
-with no dependence on the intensity or the tolerance.
+**Theorem 11′ (the declared-quantity bound).** What survives, from the
+kernel-checked identity by substituting the promised conformance `g_j ≤ δ_t` and
+the prescribed intensity:
 
-*Why.* At the equilibrium the enforcement position offsets the ordinary one, so
-its size is `C_t` whatever the intensity; the intensity only decides how small a
-violation that offsetting position corresponds to. Raising `β` shrinks `g` and
-raises `β` in exact compensation. Checked at three tolerances spanning two orders
-of magnitude in `test_contract.LiabilityCeiling`, where the ceiling is the same
-rational each time.
+    L_t(W)  ≤  ∑_j β_j g_j(P_t) · d_j(W)  ≤  (ε_t + C_t) · ‖d_t(W)‖₁ / δ_t .
 
-This corrects the first pass, which read the fixture's rising per-date losses as
-sharper enforcement costing more. They rise **towards** the ceiling and stop
-there.
+The intensity does **not** cancel, and the direction is the opposite of the
+withdrawn claim: a tighter promised tolerance needs a larger intensity, which
+permits a larger position, which raises the ceiling. **Conformance and liability
+are traded against each other.** On the counterexample the pointwise form gives
+`27/400` against an actual `1323/20000` — tight — and the declared form `27/40`.
 
-**Corollary 12 (the safety condition).** Bounded cumulative liability, and hence
+**Corollary 12′ (the safety condition).** Bounded cumulative liability, and hence
 the criterion, follows from
 
-    ∑_t  C_t · max_j d_j(W)  <  ∞    for every world plausible at every date.
+    ∑_t  (ε_t + C_t) · ‖d_t(W)‖₁ / δ_t  <  ∞    for every world plausible at every date.
 
-World-inclusiveness is the case where every depth is zero. It is one way for that
-sum to converge and **not** the boundary.
+A region containing every plausible world gives every deficit zero. That is one
+way for the sum to converge and **not** the boundary.
 
 **Theorem 13 (a region excluding a live world at every date, enforced forever,
 safely).** One sentence, settled true, so the sole plausible world is `W = 1`. A
@@ -133,15 +143,15 @@ source reserving against full certainty: `K_t = {P ≤ 1 − 2^{-t}}`, which exc
 tolerance `1/10`.
 
 Conformance holds at every date; the region is world-inclusive at no date; every
-date shows a real plausible loss; and the cumulative liability is bounded by
-`∑_t t · 2^{-t} = 2`. So the criterion survives at every horizon, with the
-exploitation bound under `3`. `test_contract.SafeWithoutWorldInclusiveness`
-computes the whole trajectory exactly, including the closed form
-`2 − (N+2)/2^N` for the partial sums. ∎
+date shows a real plausible loss; and the cumulative liability is bounded, under
+the corrected `12′`, by `10·∑_t t·2^{-t} + 10·∑_t 4^{-t}/2 = 20 + 5/3`. So the
+criterion survives at every horizon. `test_contract.SafeWithoutWorldInclusiveness`
+computes the whole trajectory exactly. **This result survives the retraction** —
+the constant is larger and intensity-dependent; convergence is what the safety
+theorem needs, and it converges. ∎
 
-The contrast is the same construction with the depth held fixed: `∑_t C_t · d`
-diverges, and the partial bounds `15/2`, `55/2`, `105` grow without limit
-(`test_contract.UnsafeWhenDepthDoesNotDecay`).
+The contrast is the same construction with the depth held fixed: the bound
+diverges (`test_contract.UnsafeWhenDepthDoesNotDecay`).
 
 **The reading.** A constraint source may permanently exclude states deduction
 permits — which is what a normative constraint is for — provided the depth of the
@@ -150,9 +160,11 @@ required to agree with deduction; it is required to *converge* on admitting what
 stays live, at a rate. That is a substantive and checkable demand on a source,
 and it is weaker than the one the first pass reported.
 
-**What it does not say.** That the condition is necessary; that `C_t · max_j d_j`
-is the tightest ceiling; or that a source producing normative content can meet
-it. The first is item 40, the third is item 39.
+**What it does not say.** That the condition is necessary; that `12′` is the
+tightest ceiling; or that a source producing normative content can meet it. The
+first is item 40, the third is item 39. And it says nothing about *which* worlds
+the sum ranges over — `PAPER_RECONCILIATION.md` §5 shows that reading the
+assessment set off the constraint makes the whole condition vacuous.
 
 ## 5. Necessity: how much converse survives
 
@@ -175,8 +187,8 @@ ordinary aggregate of mass `1/2` buying `φ`. Then:
 | `100` | `101/200` | `1/200` | `-99/400` |
 | `1000` | `1001/2000` | `1/2000` | `-999/4000` |
 
-Sharper enforcement approaches — and never exceeds — the ceiling
-`M · d(W) = 1/4` of §4. Over eight dates the enforcement liability is `9/5`, so
+Sharper enforcement rises here towards `M · d(W) = 1/4`, which is a fact about
+this fixture and **not** a general ceiling — see the retraction in §4. Over eight dates the enforcement liability is `9/5`, so
 Theorem 9's bound would be `1 + 9/5 = 14/5`; the trader that buys one share of
 `φ` on each date it has verified `φ` settled has plausible net worth `18/5`,
 bounded below by zero and growing linearly. It exploits.
@@ -215,11 +227,14 @@ each date, unbounded over dates, with the per-date draw constant
 
 Settled: bounded enforcement liability is sufficient for the criterion, with an
 explicit bound; the identity that says exactly where a liability comes from and
-that both its factors are needed; the intensity-free ceiling `C_t · max_j d_j(W)`
-and the summability condition it gives; a region that excludes a live world at
-every date and is safe anyway; a world-inclusive presentation as the `d ≡ 0`
-special case of that; and a worked case where a fixed-depth exclusion against
-growing volume produces a real exploiting trader.
+that both its factors are needed; the declared-quantity bound `11′` and the
+summability condition `12′`; a region that excludes a live world at every date and
+is safe anyway; a world-inclusive presentation as the `d ≡ 0` special case of
+that; and a worked case where a fixed-depth exclusion against growing volume
+produces a real exploiting trader.
+
+Withdrawn: the intensity-free ceiling `C_t · max_j d_j(W)`, with its
+counterexample kept as a regression.
 
 Not settled: whether unbounded enforcement liability *always* produces an
 exploiting efficiently computable trader. **[conjecture]** it does when the

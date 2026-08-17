@@ -6,14 +6,15 @@ Every file in this directory:
   its follow-up, executed by Claude Opus 5 (Anthropic) against dispatches
   written by GPT-5.6 Sol (OpenAI)
 - **review status** — `ci-only`
-- **date** — 2026-08-16 (first pass), 2026-08-17 (second pass)
+- **date** — 2026-08-16 (first pass), 2026-08-17 (second and third passes)
 
 | path | notes |
 |---|---|
 | `README.md` | |
 | `SOURCE_AUDIT.md` | read against the paper source and Lean of the pinned dependency at `1fffea44eece253cda1722568a3adfe34e822f03`; every paper label cited was checked to exist in that tree |
 | `MODEL.md` | |
-| `FORCE_INTERFACE.md` | second pass; the follow-up's central artifact |
+| `FORCE_INTERFACE.md` | second pass; corrected in the third |
+| `PAPER_RECONCILIATION.md` | third pass; the reconciliation's central artifact |
 | `CORE_CONDITION.md` | second pass |
 | `ENFORCEMENT.md` | the round's central artifact |
 | `FUNDING_AND_SAFETY.md` | |
@@ -22,7 +23,7 @@ Every file in this directory:
 | `THEOREM_MAP.md` | |
 | `PROSECUTION.md` | |
 | `src/*.py` | self-contained; imports no other round |
-| `tests/*.py` | |
+| `tests/*.py` | `test_regressions.py` pins the two counterexamples that retracted claims of the second pass |
 
 `lean/Workspace/Normativity/Contrib/TraderizedEnforcement.lean` carries the same
 generator and review status; it is listed in the Lean contrib provenance file.

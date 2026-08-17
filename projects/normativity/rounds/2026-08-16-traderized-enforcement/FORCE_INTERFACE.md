@@ -78,7 +78,9 @@ implementation that is total dominates one that is not known to be.
 | quarantine when `K_t` is empty | | ✓ | | ✓ |
 | persistence of a positive coefficient (`D1`) | ✓ | ✓ per date | | |
 | exclusion depth `d_t(W)` | ✓ | ✓ measures | | |
-| bounded cumulative liability | ✓ | | | ✓ charges |
+| **choice of assessment set** | ✓ | | | **unresolved — see `PAPER_RECONCILIATION.md` §5** |
+| exclusion depth in the liability bound | ✓ | | | ✓ charges |
+| declared tolerance in the liability bound | | | ✓ | ✓ charges |
 | declaring `C_t`, `ε_t`, intensities, `δ_t` | | | ✓ | |
 | conformance to `δ_t` | | | ✓ | |
 | breach attribution | | | contract output | ✓ |
@@ -95,12 +97,17 @@ which layer runs the check. The settlement interface already has that layer:
 linear program and declares quarantine of operative force when it is empty. That
 is exactly the precondition the compiler needs, and it is already built.
 
-**Bounded liability is the source's, not the mechanism's.** This is the
-substantive reassignment, and it follows from the arithmetic rather than from
-taste: the per-date liability ceiling is `C_t × d_t(W)`, the intensities cancel,
-and `d_t` — how deep the region excludes a still-live world — is set entirely by
-the constraint source. A force mechanism cannot lower it by enforcing more
-gently, and cannot raise it by enforcing harder.
+**Bounded liability is shared, and the split is not clean.** An earlier draft
+put it wholly on the source, on the strength of a ceiling `C_t × d_t(W)` in which
+the intensities cancelled. That ceiling is false — the counterexample is in
+`FUNDING_AND_SAFETY.md` §4 — and the surviving bound
+`(ε_t + C_t)·‖d_t(W)‖₁/δ_t` carries the mechanism's own declared tolerance.
+
+So both layers contribute. The **source** sets the exclusion depth `d_t`; the
+**mechanism** sets the tolerance `δ_t`, and a tighter promise raises the ceiling.
+The two are traded against each other, and neither can discharge the obligation
+alone. That is a worse factorization than the one this section originally
+claimed, and it is the true one.
 
 ## 4. What this does to the attribution objection
 
@@ -149,9 +156,10 @@ explicit conformance modulus, and a resolved account of when exactness is and is
 not available.
 
 **Safety** — when applying force preserves the surrounding non-exploitation
-guarantee. Bounded cumulative liability suffices; the ceiling is
-`∑_t C_t · d_t(W)`; and world-inclusiveness is the case where every depth is
-zero, not the boundary.
+guarantee. Bounded cumulative liability suffices; the surviving bound is
+`∑_t (ε_t + C_t)·‖d_t(W)‖₁/δ_t`; and a region containing every live world is the
+zero-depth case, not the boundary. **Which worlds the sum ranges over is open**,
+and `PAPER_RECONCILIATION.md` §5 shows why it cannot be read off the constraint.
 
 **Learning** — untouched, and in a different space.
 

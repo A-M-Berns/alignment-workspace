@@ -206,12 +206,57 @@ still cannot certify is the tolerance being sound and not working, which is `T1`
 existing distinction. Three cases, one respondent each.
 `FORCE_INTERFACE.md` §4.
 
+## W18 — The liability ceiling assumed the aggregate vanishes
+
+**Lands, and the claim is withdrawn.** The second pass asserted an
+intensity-free ceiling `C_t · max_j d_j(W)`, reasoning that the enforcement
+position offsets the ordinary one at equilibrium. Positive market-maker slack
+does not force the aggregate to vanish, so there is residual enforcement demand
+nothing cancels. With the ordinary position at **zero**, a declared volume bound
+of `1/100`, slack `1/8` and tolerance `1/10`, the prescribed intensity is `27/2`,
+the position at `P = 51/100` is `27/200` short, and the liability is `1323/20000`
+against a claimed ceiling of `1/200`. Contract and conformance both hold.
+`test_regressions.IntensityFreeCeilingIsFalse`.
+
+What replaces it carries the intensity, and reverses the direction: a tighter
+promised tolerance raises the ceiling.
+
+## W19 — Empty interior was read as impossibility
+
+**Lands, and the generalization is withdrawn.** The proved theorem hypothesises a
+one-sentence region strictly inside `(0,1)`; the prose applied it to every region
+with empty interior, and drew from that the conclusion that settlement equalities
+are unenforceable. `K = {0}` is enforced exactly by the constant strategy
+`ζ_E ≡ −λ` for any `λ > C`: a short position at a zero price costs the
+disturbance nothing to leave, so the contract charges zero there and `(λ−C)P > 0`
+everywhere else. Settlement pinning is the **easy** case.
+`test_regressions.EmptyInteriorDoesNotImplyImpossibility`.
+
+The case the generalization got right is isolated and kept: a coherence relation
+cuts a segment meeting the open cube, in no proper face, and a cancellable band of
+half-width `C/(2β)` survives every intensity.
+
+## W20 — The generalized assessment set can be chosen to satisfy the safety condition
+
+**Lands, and it is the deepest problem the round has.** If the live worlds are
+derived from `S_t = Π_t ∩ K_t`, the enforcement position is worth at least zero at
+every one of them by the enforcement inequality, so the liability is identically
+zero and the safety theorem holds by construction. The region the deductive
+assessment set convicts at `−5/8` is reported clean.
+`test_live_worlds.DerivedLiveWorldsLaunderTheLiability`.
+
+No condition stated over the derived set can see this, because the set is chosen
+by the party the condition binds. This is where the round stops, and
+`PAPER_RECONCILIATION.md` §6 names three candidate anchors, none proved.
+
 ## What lands
 
 W3 against the naive construction, which is why the round uses the full row
 system. W5 in its price-channel form. W9, which downgrades the deduction claim
 from replacement to addition. W12, which prices the deduction case honestly.
-**W11a, which is the follow-up's own worst finding: exactness and safety are
-bought from the same account.** W11 lands partially, as a fact about what the
-mechanism means rather than whether it holds. W17 was raised by the first pass
-and is withdrawn by the second.
+**W11a, exactness and safety bought from the same account.** W18 and W19, the two
+review counterexamples, each retracting a claim of the second pass. **W20, which
+is the deepest: the generalized semantics can be chosen to satisfy its own safety
+condition.** W11 lands partially, as a fact about what the mechanism means rather
+than whether it holds. W17 was raised by the first pass and withdrawn by the
+second.
