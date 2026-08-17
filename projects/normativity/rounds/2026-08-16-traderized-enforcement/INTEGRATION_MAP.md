@@ -79,13 +79,28 @@ accommodate, and aesthetics are not grounds.
 | bounded enforcement liability ⟶ the modified market satisfies the criterion | safety | **derived**, from two source lemmas taken as hypotheses; not in Lean, not registered |
 | unbounded enforcement liability ⟶ an exploiting trader | necessity | **witness only**, one fixture, `test-supported` |
 | deductive stage ⟶ world-inclusive presentation | constraint source | **constructed** (`support_rows`), `test-supported` |
-| traderized coherence ⟶ `THEORY_11` `D3(a)` | upstream | **candidate route, not taken**; §7 of `DEDUCTION_SPECIAL_CASE.md` lists three things it would additionally need |
+| traderized coherence ⟶ `THEORY_11` `D3(a)` | upstream | **candidate route**; the incoherence bridge of `FORCE_INTERFACE.md` §1 closes the measure gap, the presentation cost remains |
+| endorsement + `theta_min` ⟶ row ⟶ trader (`P1`) | force | **constructed**, `test-supported`; agrees with `NL-SI-A5`'s closed form and with the core condition pointwise |
+| `NL-SI-A3` feasibility program ⟶ compiler precondition | upstream | **identified**, not implemented here: the adapter already exists and is what the compiler needs |
+| exclusion depth `d_t` ⟶ cumulative liability ⟶ criterion | safety | **`lean-proved`** for the per-date bound (`weighted_square_sub_deficit_le_pair`); the ceiling and the summability condition are `test-supported` |
 | normative record ⟶ `K_t` | constraint source | **absent**; filed as a research item |
 
-## 6. Where the round would sit if it stabilises
+## 6. Where the round would sit
 
-Under Normativity, as a mechanism layer beneath the statics rather than beside the
-learning theorem:
+Under Normativity, as the **force layer** beneath the statics rather than beside
+the learning theorem. This is stronger than the first pass's placement, and the
+reason is `FORCE_INTERFACE.md` §2: the alternative implementation of the same
+contract — a market maker constrained to display a price inside the region — is
+not known to be a total function, and there is a date where it demonstrably is
+not. An implementation that inherits Brouwer dominates one with no existence
+theorem, so traderization is the **preferred** implementation of the enforcement
+column rather than a second engine to audit alongside it.
+
+What it is not is a replacement for the settlement interface. That distinction is
+the whole of this round's second pass: the constrained *market maker* is what is
+retired; reports, timing, persistence, grounding, feasibility, breach and
+answerability are untouched and stay upstream. `FORCE_INTERFACE.md` §3 assigns
+each of them.
 
 ```text
 constraint source  →  K_t  →  constraint-to-trade compiler  →  enforcement trader  →  P_t ∈ K_t

@@ -5,6 +5,13 @@ four that land are in the report and in the pull-request description.
 
 ## W1 — Fake enforcement: the trader profits but the price does not move
 
+**Answered, and sharpened by the exactness fork.** For a region with an interior
+the answer is now outright: the interior-anchored compiler forces membership
+against every disturbance in the declared class, so nothing survives outside.
+For a region without an interior no continuous trader does, and what is delivered
+instead is a declared tolerance — which the constitutional interface is built to
+consume. The old answer follows.
+
 **Answered.** The profit and the price constraint are the same inequality. At a
 contract-satisfying price, `∑_j β_j g_j² ≤ ε_n + M_n` (Theorem 4), so a violation
 that survives is a violation the contract has paid for out of the slack and the
@@ -107,6 +114,20 @@ hypothesis the criterion is not merely unproved — W5's fixture breaks it. The 
 that breaks is localized to one lemma application,
 `liaTrader_not_exploited` (`Construction/LIA.lean:96`).
 
+## W11a — Exactness bought at the safety property's expense
+
+**Lands, and it is the follow-up's sharpest finding.** The compiler that achieves
+exact enforcement does not vanish on the region: inside the collar it holds a
+position against no violation at all. So the enforcement inequality's
+nonnegativity reading does not apply to it, and on a world-inclusive region where
+the violation-proportional position never loses in a plausible world, the
+interior-anchored one is worth `-1/2` — at a price **inside** the region with
+every row violation zero (`test_exactness.ExactnessCostsSafety`).
+
+The two compilers are therefore not ordered. One is safe and approximate; the
+other is exact and unsafe. Nothing in the round produces one that is both, and
+whether such a thing exists is open.
+
 ## W11 — Trivial constraint: the region hard-codes the answer
 
 **Lands as a limitation on what the mechanism means, not on whether it works.**
@@ -136,12 +157,14 @@ can consume, and the round says so rather than assuming an oracle.
 
 ## W13 — Time-varying escape: the region moves and the trader chases
 
-**Answered, with a split.** Every enforcement statement is per date and consumes
-no stability whatever: Theorems 2, 3 and 4 hold at each date independently, so
-`K_n` may vary arbitrarily. The *safety* statements do not survive that — the
-liability is cumulative, and the necessity witness needs the exclusion to persist.
-So arbitrary time-variation is free for enforcement and is exactly what makes
-liability hard to bound.
+**Answered, with a split, and the split is now quantitative.** Every enforcement
+statement is per date and consumes no stability whatever: Theorems 2, 3 and 4
+hold at each date independently, so `K_n` may vary arbitrarily. The *safety*
+statements do not, and the follow-up says exactly how much variation they need:
+`∑_t C_t · max_j d_j(W) < ∞`. A region that moves is safe when it moves *towards*
+admitting the worlds that stay live, fast enough to beat the growth in ordinary
+volume, and unsafe when it holds a fixed exclusion. Both are displayed
+(`test_contract`). Time-variation is not the enemy; a non-decaying exclusion is.
 
 ## W14 — Vocabulary collision
 
@@ -168,10 +191,27 @@ composition they illustrate is labelled `derived`; no outcome theorem about the
 modified algorithm is claimed beyond Theorem 9, whose hypotheses are named. The
 claim that would be an overclaim is refused explicitly in W9.
 
-## The four that land
+## W17 — The force mechanism escapes attribution by naming a disturbance bound
+
+**Answered, and this reverses the first pass's own finding.** The earlier reading
+was that `∑_j β_j g_j² ≤ ε_t + C_t` makes ordinary traders partly responsible for
+a violation, which would break `NL-SI-T4`'s total-and-exclusive attribution.
+
+`C_t` is a *declared assumption*, not a suffered cause, and the trading-firm
+construction computes a bound on its own volume from the belief history — so the
+mechanism can name it before the price is set. Realised volume within `C_t` and a
+price outside `δ_t` is the implementation's failure; realised volume above `C_t`
+is a false declaration, detectable after the fact; a conforming price the docket
+still cannot certify is the tolerance being sound and not working, which is `T1`'s
+existing distinction. Three cases, one respondent each.
+`FORCE_INTERFACE.md` §4.
+
+## What lands
 
 W3 against the naive construction, which is why the round uses the full row
-system. W5 in its price-channel form, which is the round's central negative
-result. W9, which downgrades the deduction claim from replacement to addition.
-W12, which prices the deduction case honestly. W11 lands partially, as a fact
-about what the mechanism means rather than whether it holds.
+system. W5 in its price-channel form. W9, which downgrades the deduction claim
+from replacement to addition. W12, which prices the deduction case honestly.
+**W11a, which is the follow-up's own worst finding: exactness and safety are
+bought from the same account.** W11 lands partially, as a fact about what the
+mechanism means rather than whether it holds. W17 was raised by the first pass
+and is withdrawn by the second.

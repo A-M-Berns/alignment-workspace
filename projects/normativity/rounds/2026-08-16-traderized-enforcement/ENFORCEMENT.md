@@ -114,6 +114,9 @@ Theorems 4 and 6 agree: the bound gives `g ≤ sqrt(M/β)` and the truth is
 `g = M/β`, which is smaller for `β > M`. The bound is not tight; it is
 sufficient, computable, and enough for the safety argument.
 
+Theorems 5 and 6 are about **this compiler**. Whether some other legal trader
+does better is §5, and the answer is not the same for every region.
+
 ## 4. Finite-time prices differ
 
 Theorem 3 forces `P_n ∈ K_n` for every choice of positive intensity, and an
@@ -125,6 +128,70 @@ after `φ` is settled leaves exactly one feasible price vector, `(1, 0)`, where 
 unmodified market at that date is free to price `φ` anywhere. So relation R1 of
 `SOURCE_AUDIT.md` §4 is false, and no argument in this round depends on it being
 true.
+
+## 5. The exactness fork
+
+Take the disturbance class seriously: every ordinary realised position of `ℓ¹`
+mass at most `C`. A price is displayable when some disturbance in that class
+brings the aggregate inside the contract, so the mechanism enforces exactly when
+**no** price outside `K` is displayable. `exactness.min_max_gain` computes the
+disturbance's best play — greedily, and checked against brute force.
+
+One fact organises the answer. At an interior price the contract at slack zero
+forces the aggregate to vanish, so a price is displayable exactly when
+`‖ζ_E(P)‖₁ ≤ C`. Exact enforcement therefore demands `‖ζ_E‖₁ > C` on the whole
+interior complement of `K` — a **floor**, which the violation-proportional
+position cannot have because it vanishes as the violation does.
+
+**Theorem 7 (exactness, for a region with an interior).** If `K` has a strictly
+interior point `z`, the interior-anchored position
+
+    ζ_E(P) = λ · ramp(γ(P)) · (z − P) ,
+
+with `γ` the Minkowski gauge of `K` about `z` written from the rows, is a legal
+expressible strategy and enforces `P ∈ K` exactly against every disturbance of
+mass at most `C`, for `λ` large enough.
+
+*Evidence.* `test_exactness.GaugeTraderIsExact`, in one and two dimensions: the
+whole contract-feasible set lies inside `K` where the violation-proportional
+trader's does not. `test-supported`, not proved in general.
+
+**Theorem 8 (exactness costs the safety property).** The interior-anchored
+position does not vanish on `K`, so it holds a position where there is no
+violation, and Theorem 2 does not apply to it.
+
+*Witness.* Two mutually exclusive sentences; `K` the convex hull of the three
+plausible worlds, which is world-inclusive and full-dimensional. The
+violation-proportional position is worth at least `0` in every plausible world at
+every grid price. The interior-anchored position is worth `−1/2` at six of them —
+including at `P = (0, 1/2)`, which is **inside** `K` with every row violation
+zero. ∎
+
+**Theorem 9 (exactness is impossible for a region with no interior).** Let one
+sentence be priced, `K ⊆ (0,1)` nonempty and closed, and `ζ_E` any continuous
+strategy. If no price outside `K` is displayable against disturbances of mass
+`C > 0`, then `K` has nonempty interior.
+
+*Proof.* `P = 0` is outside `K`, and there the contract charges nothing for a
+short position, so excluding it requires `ζ_E(0) > C`. Symmetrically
+`ζ_E(1) < −C`. By the intermediate value theorem `ζ_E(P₀) = 0` for some
+`P₀ ∈ (0,1)`, and by continuity `|ζ_E| < C` on a neighbourhood of `P₀`. Every
+price there is displayable, so all of it lies in `K`. ∎
+
+The regions with no interior are not exotic. A settlement equality is one. So is
+the coherence polytope of any fragment carrying a propositional relation —
+`test_exactness` confirms neither admits a strictly interior point. **So exact
+enforcement of coherence is impossible for any continuous trader against any
+positive disturbance**, and the round's earlier exact-enforcement results (Theorem
+3) are exactly the disturbance-free case `C = 0`.
+
+What survives there is tolerance at any level: for `ζ_E(P) = s(c − P)` the
+displayable interval around `c` has width exactly `2C/s`, positive for every
+finite `s` and shrinking without limit. So the fork resolves as **A for regions
+with an interior, at a cost; B for regions without one; C as the asymptotics in
+that second case.** Whether that matters is `D`, and `FORCE_INTERFACE.md` §1
+answers it: the constitutional interface consumes a declared tolerance schedule,
+not exactness.
 
 ## What this section does not establish
 

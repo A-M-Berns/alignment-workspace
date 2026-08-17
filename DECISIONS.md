@@ -53,11 +53,24 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
   leaves the current documents explicitly `ci-only` and unadopted.
 
-- **Rule on nine provisional names from the traderized-enforcement round.**
+- **Rule on whether `P1` should name an obligation rather than a mechanism.**
+  The settlement interface's enforcement clause certifies a core minimum *of an
+  engine*. The traderized-enforcement round compiles the same condition from
+  `NL-SI-A2`'s admissible-reference polytope into a trader, and proposes that the
+  clause instead require a declared conformance of whatever signs a force
+  contract. *Doing it* is deciding whether the clause names a mechanism or an
+  obligation, after reading that round's `CORE_CONDITION.md` §3 — the frozen
+  consolidation is untouched either way. *Waiting* leaves the round's `P1` result
+  readable and unadopted, and leaves two mechanisms with no common statement to be
+  compared against.
+
+- **Rule on fourteen provisional names from the traderized-enforcement round.**
   `enforcement trader`, `enforcement intensity`, `enforcement liability`,
-  `violation-proportional position`, `world-inclusive region`, `support-function
-  presentation`, `constraint-to-trade compiler`, `market-maker contract`,
-  `enforcement inequality`. They are deliberately absent from
+  `violation-proportional position`, `interior-anchored position`, `exclusion
+  depth`, `world-inclusive region`, `support-function presentation`,
+  `constraint-to-trade compiler`, `market-maker contract`, `enforcement
+  inequality`, `force contract`, `force declaration`, `priceable endorsement`.
+  They are deliberately absent from
   `state/vocabulary.json`, whose generated sheet is headed *canonical*. *Doing it*
   is one reading of that round's `MODEL.md` §§4–6, after which the survivors enter
   the sheet. *Waiting* leaves nine names live in one round's prose and nowhere

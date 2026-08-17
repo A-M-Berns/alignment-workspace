@@ -127,7 +127,26 @@ External funding is tracked separately, in `funding.FundingLedger`, as cumulativ
 worst-case exposure `F_T = ∑_{n ≤ T} worstloss(ζ_{E,n}, P_n)`: finite at every
 finite date by construction, with no uniform bound imposed over dates.
 
-## 7. What this model is not
+## 7. Objects the exactness and safety questions needed
+
+**Exclusion depth** `d_j(W) = max(0, r_j - ⟪c_j, W⟫)` — how far a row's
+right-hand side excludes a point. Zero on every row exactly when the region
+contains it, and the second factor in the liability identity.
+
+**Interior-anchored position** — the compiler that achieves exactness where the
+violation-proportional one cannot, at the cost of not vanishing on the region.
+`exactness.GaugeTrader`, and it refuses an anchor that is not strictly interior,
+which is the same test as whether the region has an interior at all.
+
+**Force declaration** — `(rows, C_t, ε_t, intensities, δ_t)`, the five things a
+force mechanism signs. `contract.ForceDeclaration` derives the intensity from the
+other four and checks conformance squarewise so no root is needed.
+
+**Priceability** — whether a constraint stated over worlds is a functional of
+what the market prices. `core.priceable_coefficients`, which returns nothing
+rather than approximating.
+
+## 8. What this model is not
 
 It has no market maker in it. The market maker enters only as the **contract**
 `maxgain(ζ, P) ≤ ε_n` on the realised aggregate `ζ = ζ_E + τ`, taken as a

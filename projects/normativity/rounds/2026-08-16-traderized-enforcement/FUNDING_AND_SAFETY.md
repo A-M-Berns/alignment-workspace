@@ -86,7 +86,75 @@ computes liability `0` and bound `1` exactly.
 step of the LIA capstone that the modification breaks, and re-establishing it is
 the whole content of the safety claim.
 
-## 4. Necessity: how much converse survives
+## 4. The safety condition, below world-inclusiveness
+
+The identity of Theorem 7 gives more than the `d ≡ 0` corollary the first pass
+read off it. Rearranged, the enforcement position's value in a world `W` is at
+least
+
+    ∑_j β_j g_j(P)²  −  ∑_j β_j g_j(P) · d_j(W) ,
+
+so the date's liability is at most the second sum, and **both factors are needed
+on the same row**: a live violation, and a right-hand side that excludes `W`.
+Kernel-checked as `weighted_square_sub_deficit_le_pair`, with an inhabitation
+witness at a nonzero deficit.
+
+**Theorem 11 (the liability ceiling is intensity-free).** Under the certified
+declaration of `FORCE_INTERFACE.md` §1 — intensity `(ε_t + C_t)/δ_t²` against
+ordinary volume `C_t` — the per-date liability ceiling is
+
+    L_t(W)  ≤  C_t · max_j d_j(W) ,
+
+with no dependence on the intensity or the tolerance.
+
+*Why.* At the equilibrium the enforcement position offsets the ordinary one, so
+its size is `C_t` whatever the intensity; the intensity only decides how small a
+violation that offsetting position corresponds to. Raising `β` shrinks `g` and
+raises `β` in exact compensation. Checked at three tolerances spanning two orders
+of magnitude in `test_contract.LiabilityCeiling`, where the ceiling is the same
+rational each time.
+
+This corrects the first pass, which read the fixture's rising per-date losses as
+sharper enforcement costing more. They rise **towards** the ceiling and stop
+there.
+
+**Corollary 12 (the safety condition).** Bounded cumulative liability, and hence
+the criterion, follows from
+
+    ∑_t  C_t · max_j d_j(W)  <  ∞    for every world plausible at every date.
+
+World-inclusiveness is the case where every depth is zero. It is one way for that
+sum to converge and **not** the boundary.
+
+**Theorem 13 (a region excluding a live world at every date, enforced forever,
+safely).** One sentence, settled true, so the sole plausible world is `W = 1`. A
+source reserving against full certainty: `K_t = {P ≤ 1 − 2^{-t}}`, which excludes
+`W` at every date. Ordinary volume `C_t = t`, market slack `2^{-(t+1)}`, promised
+tolerance `1/10`.
+
+Conformance holds at every date; the region is world-inclusive at no date; every
+date shows a real plausible loss; and the cumulative liability is bounded by
+`∑_t t · 2^{-t} = 2`. So the criterion survives at every horizon, with the
+exploitation bound under `3`. `test_contract.SafeWithoutWorldInclusiveness`
+computes the whole trajectory exactly, including the closed form
+`2 − (N+2)/2^N` for the partial sums. ∎
+
+The contrast is the same construction with the depth held fixed: `∑_t C_t · d`
+diverges, and the partial bounds `15/2`, `55/2`, `105` grow without limit
+(`test_contract.UnsafeWhenDepthDoesNotDecay`).
+
+**The reading.** A constraint source may permanently exclude states deduction
+permits — which is what a normative constraint is for — provided the depth of the
+exclusion decays against the growth of ordinary trading volume. It is not
+required to agree with deduction; it is required to *converge* on admitting what
+stays live, at a rate. That is a substantive and checkable demand on a source,
+and it is weaker than the one the first pass reported.
+
+**What it does not say.** That the condition is necessary; that `C_t · max_j d_j`
+is the tightest ceiling; or that a source producing normative content can meet
+it. The first is item 40, the third is item 39.
+
+## 5. Necessity: how much converse survives
 
 **Not the general converse.** The proof of Theorem 9 runs one way only, and there
 is a structural reason. In this framework traders do not trade with each other: a
@@ -107,27 +175,29 @@ ordinary aggregate of mass `1/2` buying `φ`. Then:
 | `100` | `101/200` | `1/200` | `-99/400` |
 | `1000` | `1001/2000` | `1/2000` | `-999/4000` |
 
-Sharper enforcement costs strictly more, converging on `M · dist(K, W)`. Over
-eight dates the enforcement liability is `9/5`, so Theorem 9's bound would be
-`1 + 9/5 = 14/5`; the trader that buys one share of `φ` on each date it has
-verified `φ` settled has plausible net worth `18/5`, bounded below by zero and
-growing linearly. It exploits. `test_safety.SupportCoverageFailure` computes
-every number in that paragraph exactly.
+Sharper enforcement approaches — and never exceeds — the ceiling
+`M · d(W) = 1/4` of §4. Over eight dates the enforcement liability is `9/5`, so
+Theorem 9's bound would be `1 + 9/5 = 14/5`; the trader that buys one share of
+`φ` on each date it has verified `φ` settled has plausible net worth `18/5`,
+bounded below by zero and growing linearly. It exploits.
+`test_safety.SupportCoverageFailure` computes every number in that paragraph
+exactly.
 
-So in this shape the failure of world-inclusivity is not merely a lost bound: it
-is an actual exploitation, by a trader whose construction is explicit. That is
-one direction of the necessity question answered by a witness, not a theorem —
-the witness fixes `K`, the opposing volume, and the persistence of the settled
-fact, and none of those is shown to be removable.
+What makes this shape unsafe is not that the region excludes a live world. It is
+that the exclusion **persists at a fixed depth while the ordinary volume grows**,
+so `∑_t C_t · d_t(W)` diverges. §4 gives the general condition and a region that
+excludes a live world at every date and is safe anyway.
 
-**Where the converse is known to fail.** Weak enforcement is free. At `β = 1` in
+## 6. Where the converse is known to fail
+
+**Weak enforcement is free.** At `β = 1` in
 the same fixture the enforced price is `1` — enforcement has failed entirely — and
 the enforcement liability is exactly zero. So bounded liability does not imply
 world-inclusivity; it implies the enforcement trader was never made to hold a
 position against a plausible world. Bounded liability and world-inclusivity are
 therefore not equivalent, and the round claims no equivalence.
 
-## 5. Liability laundering does not work
+## 7. Liability laundering does not work
 
 Moving the enforcement position onto fresh coordinates each date keeps every
 single-date exposure at a constant `9/40` while the cumulative plausible loss
@@ -141,12 +211,15 @@ The same fixture is the funding trajectory the model asks for: credit finite at
 each date, unbounded over dates, with the per-date draw constant
 (`test_safety.FundingTrajectory`).
 
-## 6. What is settled and what is not
+## 8. What is settled and what is not
 
 Settled: bounded enforcement liability is sufficient for the criterion, with an
-explicit bound; a world-inclusive presentation gives liability zero
-unconditionally; the identity that says exactly where a liability comes from; and
-a worked case where losing world-inclusivity produces a real exploiting trader.
+explicit bound; the identity that says exactly where a liability comes from and
+that both its factors are needed; the intensity-free ceiling `C_t · max_j d_j(W)`
+and the summability condition it gives; a region that excludes a live world at
+every date and is safe anyway; a world-inclusive presentation as the `d ≡ 0`
+special case of that; and a worked case where a fixed-depth exclusion against
+growing volume produces a real exploiting trader.
 
 Not settled: whether unbounded enforcement liability *always* produces an
 exploiting efficiently computable trader. **[conjecture]** it does when the

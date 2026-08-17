@@ -157,6 +157,26 @@ demand*, not *project onto an admissible region*. Those differ, and the
 difference is what makes a single separating hyperplane insufficient
 (`PROSECUTION.md` W3).
 
+## 6a. Totality, and what it costs to constrain the maker instead
+
+**[source]** `MarketMaker` is total. `lem:fpl` gives a fixed point for whatever
+`n`-strategy it is handed, the acceptance predicate is decidable over a finite
+Boolean table, and the brute-force search therefore terminates
+(`MarketMaker.lean:1184`).
+
+**[derived]** A market maker additionally required to display a price inside
+`K_n` is not known to be. It must satisfy the contract *and* membership, and the
+source construction supplies no joint solution — nor could it, because the two
+demands can be jointly infeasible. One priced sentence, `K = {P ≤ 1/2}`, an
+ordinary aggregate buying one share flat: the contract forces `P = 1`, the region
+forbids it, and every price in the region leaves the aggregate a gain of at least
+`1/2`.
+
+**[reading]** This is the asymmetry that decides the implementation question.
+Adding a strategy to the priced aggregate changes only the input to a total
+function; constraining the maker changes the function, and the new one has no
+existence theorem. See `FORCE_INTERFACE.md` §2.
+
 ## 7. Does a privileged or funded trader violate the exploitation proofs?
 
 **[derived]** Not by being funded. Nothing in the framework caps a trader's

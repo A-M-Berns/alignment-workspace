@@ -565,7 +565,7 @@
       "date": "2026-08-16",
       "project": "normativity",
       "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
-      "verdict": "the mechanism is real and its safety condition is sharp.",
+      "verdict": "traderization can carry the force layer, the constrained market maker is retired from it, and the safety boundary is not world-inclusiveness.",
       "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/README.md",
       "registered_classes": [],
       "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT.md",

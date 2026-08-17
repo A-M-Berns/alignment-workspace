@@ -87,34 +87,66 @@ is no evidence of legitimacy, and this direction supplies no legitimacy result.
 It sharpens the question by separating it cleanly from a mechanism it might
 otherwise be confused with.
 
-### Deduction as the well-behaved case
+### Deduction as the calibration case
 
 Ordinary deduction fits. What a deductive process has settled by a given date
 determines the credal states some distribution over the still-possible worlds
 reproduces, and enforcing membership in *that* region is a finite-date version of
 a coherence property logical inductors otherwise obtain only in the limit.
 
-It is also the case where enforcement is free. The enforcement trader's position
-is worth nothing lost in any world the region contains — so where the region
-contains every world the deductive process has not ruled out, the trader never
-shows a loss any live world would recognise, and the market's resistance to being
-exploited survives untouched. Deduction has that property by construction.
+It is also the free case. The enforcing participant's position is worth nothing
+lost in any world the region contains, so where the region admits every world
+deduction has not ruled out, it never shows a loss a live world would recognise
+and the market's resistance to being pumped survives untouched. Deduction has
+that property by construction, which makes it the instrument the other sources
+are read against rather than one instance among equals.
 
-That is the dividing line the direction is organised around, and it cuts against
-the ambition rather than for it. A normative constraint's whole point is usually
-to exclude states that deduction alone permits. Excluding a world that is still
-live is exactly what makes the enforcement trader lose to ordinary traders, and
-those losses are what buy the ordinary traders unbounded winnings. So the
-mechanism is self-financing precisely where it adds least, and costly precisely
-where it would add most — with the cost measured not in money, of which the
-framework demands none, but in the guarantee that nobody can pump the reasoner
-indefinitely.
+What a normative constraint does differently is exclude states deduction permits
+— that is what it is for — and excluding a world that is still live is what makes
+the enforcing participant lose. But the cost is not a wall. It is a quantity:
+roughly, how much ordinary trading pressure there is, multiplied by how deep the
+exclusion cuts. A source may exclude live worlds permanently and still be safe,
+provided the depth of the exclusion shrinks against the growth in that pressure.
+Not agreement with deduction, then; convergence on it, at a rate — and that is a
+demand on the *source*, because nothing the enforcement mechanism chooses changes
+the quantity.
+
+### Force, and what force costs
+
+Two things about this mechanism are worth separating from the idea that motivated
+it.
+
+It leaves the reasoner's own price-setting alone. That matters more than it
+sounds: the alternative way to make a region operative is to constrain the
+price-setting directly, and a price-setter required to respect a region can be
+handed demands it cannot jointly meet. Adding a participant instead changes only
+what the existing machinery is responding to, and everything already known about
+that machinery keeps applying.
+
+And there is a trade the mechanism cannot presently escape. A participant whose
+position shrinks as the violation does is safe — it never loses where the region
+is right — but it can be neutralised by ordinary traders near the boundary, so
+what it delivers is conformance to a declared tolerance rather than exact
+membership. A participant that holds a floor outside the region delivers exact
+membership, and pays for it by holding positions where nothing is wrong, which is
+where its losses come from. Whether one participant can do both is open. For the
+regions that matter most — those pinned by a settled fact — exactness turns out to
+be unavailable to *any* such participant, and tolerance is what the surrounding
+machinery was built to consume anyway.
 
 ### Where it sits
 
-This is a layer *beneath* the statics rather than a rival to them. The
-[response-learning interface](Normative-Response-Learning) governs how an agent
-learns among responses; enforcement governs which credal states it may display.
+This is a layer *beneath* the statics rather than a rival to them, and it is one
+layer among several. Which sources may define admissible regions is a question of
+constitution and legitimacy; whether a requested region is coherent and non-empty
+is feasibility; who may write, revise, object or be held to account is
+answerability; and how an agent improves among the responses it is permitted is
+learning. Force is only the question of how a region, once validated, reaches
+behaviour at all — and keeping the five apart is most of what this direction has
+so far established.
+
+The [response-learning interface](Normative-Response-Learning) governs how an
+agent learns among responses; force governs which credal states it may display.
 Nothing yet connects them: no object in the workspace maps a normative record to
 a region in price space, and until one exists the general reading is a hope with
 deduction as its only instance. For [Deference](Deference) the direction is

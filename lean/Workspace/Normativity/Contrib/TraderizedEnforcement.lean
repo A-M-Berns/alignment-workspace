@@ -10,11 +10,16 @@ position is the violation-weighted combination of the row normals,
 
     ζ k = ∑ i, β i * g i * c i k.
 
-Everything the round claims about enforcement, about exact enforcement, and
-about the enforcement trader's value in a world the region contains is this one
-inequality: for any `x` the region contains,
+Two inequalities carry the round's conformance and safety claims, and the second
+contains the first.  For any point `x`,
 
-    ⟪ζ, x - p⟫ ≥ ∑ i, β i * (g i)^2.
+    ⟪ζ, x - p⟫ ≥ ∑ i, β i * (g i)^2 - ∑ i, β i * g i * d i,
+
+where `d i = max 0 (r i - ⟪c i, x⟫)` is how far row `i` excludes `x`.  When the
+region contains `x` every deficit is zero and the second sum drops, which is the
+form the conformance results use.  When it does not, the deficits are exactly the
+liability, and a date costs the trader something only where a live violation and
+an excluded point meet on one row.
 
 Logical Induction is **not** formalized here.  The market maker's contract enters
 as a hypothesis — a bound on the aggregate position's value at a region point —
@@ -124,6 +129,47 @@ theorem weighted_square_le_pair
     _ = β i * violation coords (c i) (r i) p
           * pair coords (c i) (fun k => x k - p k) := by ring
 
+/-- How far a row's right-hand side excludes a point.  Zero on every row exactly
+when the region contains it. -/
+def deficit (coords : Finset κ) (c : κ → ℚ) (r : ℚ) (x : κ → ℚ) : ℚ :=
+  max 0 (r - pair coords c x)
+
+theorem deficit_nonneg (coords : Finset κ) (c : κ → ℚ) (r : ℚ) (x : κ → ℚ) :
+    0 ≤ deficit coords c r x := le_max_left _ _
+
+theorem sub_deficit_le_pair (coords : Finset κ) (c : κ → ℚ) (r : ℚ) (x : κ → ℚ) :
+    r - deficit coords c r x ≤ pair coords c x := by
+  have := le_max_right 0 (r - pair coords c x)
+  rw [← deficit] at this
+  linarith
+
+/-- **The liability bound.**  Against a point the region need *not* contain, the
+compiled position is worth at least the intensity-weighted squared violation less
+the violation-weighted deficits.
+
+Two factors, and a date costs the enforcement trader something only where both
+are present on one row: a live violation, and a right-hand side that excludes the
+point.  Setting every deficit to zero recovers `pair_nonneg_of_mem`. -/
+theorem weighted_square_sub_deficit_le_pair
+    (hβ : ∀ i ∈ rows, 0 ≤ β i) :
+    (∑ i ∈ rows, β i * violation coords (c i) (r i) p ^ 2)
+      - (∑ i ∈ rows, β i * violation coords (c i) (r i) p
+            * deficit coords (c i) (r i) x)
+      ≤ pair coords (position rows coords c r β p) (fun k => x k - p k) := by
+  rw [pair_position, ← Finset.sum_sub_distrib]
+  refine Finset.sum_le_sum fun i hi => ?_
+  have hgnn := violation_nonneg coords (c i) (r i) p
+  have hgap : r i - deficit coords (c i) (r i) x - pair coords (c i) p
+      ≤ pair coords (c i) (fun k => x k - p k) := by
+    rw [pair_sub]; linarith [sub_deficit_le_pair coords (c i) (r i) x]
+  have hstep : violation coords (c i) (r i) p ^ 2
+        - violation coords (c i) (r i) p * deficit coords (c i) (r i) x
+      ≤ violation coords (c i) (r i) p * pair coords (c i) (fun k => x k - p k) := by
+    have := mul_le_mul_of_nonneg_left hgap hgnn
+    nlinarith [violation_mul_gap coords (c i) (r i) p]
+  have := mul_le_mul_of_nonneg_left hstep (hβ i hi)
+  nlinarith [hβ i hi]
+
 /-- **Plausible value is nonnegative.**  In any world the region contains, the
 enforcement position is worth at least nothing — the enforcement trader is not
 subsidised there, whatever the ordinary traders did. -/
@@ -188,10 +234,28 @@ theorem enforcement_inequality_is_nonvacuous :
           fun _ => 1 / 2, ?_, ?_, ?_, ?_, ?_⟩ <;>
     simp [pair, position, violation] <;> norm_num
 
+/-- Inhabitation for the liability bound at a **nonzero** deficit, so it is not
+witnessed only in the case where it reduces to the previous theorem.  One row,
+one priced sentence, a violated price and an excluded point; the bound is an
+equality and its value is negative, which is what a liability is. -/
+theorem liability_bound_is_nonvacuous :
+    ∃ (rows coords : Finset ℕ) (c : ℕ → ℕ → ℚ) (r β p x : ℕ → ℚ),
+      (∀ i ∈ rows, 0 ≤ β i) ∧
+      (∑ i ∈ rows, β i * violation coords (c i) (r i) p ^ 2 = 1 / 16) ∧
+      (∑ i ∈ rows, β i * violation coords (c i) (r i) p
+          * deficit coords (c i) (r i) x = 1 / 8) ∧
+      pair coords (position rows coords c r β p) (fun k => x k - p k) = -(1 / 16) ∧
+      ¬ (r 0 ≤ pair coords (c 0) x) := by
+  refine ⟨{0}, {0}, fun _ _ => 1, fun _ => 1 / 2, fun _ => 1, fun _ => 1 / 4,
+          fun _ => 0, ?_, ?_, ?_, ?_, ?_⟩ <;>
+    simp [pair, position, violation, deficit] <;> norm_num
+
 end Workspace.Normativity.Contrib.TraderizedEnforcement
 
 #print axioms Workspace.Normativity.Contrib.TraderizedEnforcement.weighted_square_le_pair
 #print axioms Workspace.Normativity.Contrib.TraderizedEnforcement.pair_nonneg_of_mem
+#print axioms Workspace.Normativity.Contrib.TraderizedEnforcement.weighted_square_sub_deficit_le_pair
 #print axioms Workspace.Normativity.Contrib.TraderizedEnforcement.weighted_square_le_slack_add_volume
 #print axioms Workspace.Normativity.Contrib.TraderizedEnforcement.le_pair_of_contract_zero
 #print axioms Workspace.Normativity.Contrib.TraderizedEnforcement.enforcement_inequality_is_nonvacuous
+#print axioms Workspace.Normativity.Contrib.TraderizedEnforcement.liability_bound_is_nonvacuous

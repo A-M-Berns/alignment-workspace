@@ -532,31 +532,32 @@ nonemptiness and for the liability they induce over a stated trajectory.
 *Why it matters:* without it, the mechanism is a result about deduction wearing a
 general name.
 
-### 40. Does unbounded enforcement liability always produce an exploiting trader? — **[open]**
+### 40. Is the depth-summability condition necessary? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
-The round proves that bounded enforcement liability is sufficient for the
-criterion, and witnesses one shape in which unbounded liability produces an
-explicit exploiting trader — a persistently excluded plausible world, a settled
-sentence, and constant opposing volume. It does not prove the converse, and it
-shows the converse fails in one direction: weak enforcement has zero liability
-without containing the plausible worlds.
+The round's safety condition is `sum_t C_t * max_j d_j(W) < infinity`: ordinary
+volume times how deep the region excludes a world still plausible. It is
+sufficient, the per-date ceiling is intensity-free, and a region excluding a live
+world at *every* date is displayed satisfying it. Its converse is not proved, and
+one direction of the converse is known to fail — weak enforcement has zero
+liability while excluding plausible worlds outright.
 
-The item is the general converse or its refutation. If unbounded liability can be
-arranged with no efficiently computable trader able to harvest it, that
-counterexample is the more valuable outcome, because it would mean the safety
-condition is strictly stronger than the criterion needs and the round's
+The item is the necessity direction, or its refutation. If a trajectory can
+violate the summability condition with no efficiently computable trader able to
+harvest it, that counterexample is the more valuable outcome, because it would
+mean the condition is strictly stronger than the criterion needs and the round's
 formulation is not the canonical one.
 
 *Deliverable shape:* `witness-checked` for a refutation; `lean-proved` or
 `test-supported` for a proof restricted to a stated class of trajectories.
-*Acceptance check:* for a refutation, a finite trajectory with unbounded
-liability over a stated horizon and a proof that a named trader class cannot
-exploit it.
+*Acceptance check:* for a refutation, a finite trajectory with divergent bound
+over a stated horizon and a proof that a named trader class cannot exploit it.
 *Context:* `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §4;
 `arXiv:1609.03543` `def:exploitation`.
 *Why it is [open]:* the direction of the argument is not known, and the round's
 own evidence points both ways.
+*History:* this item was filed against world-inclusiveness, which the round's
+second pass demoted to the zero-depth special case.
 
 ### 41. The safety theorem against the dependency's own construction — **[substantial]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -585,6 +586,35 @@ already carry a recursion and a search.
 *Relation to item 7:* the same gap seen from the other line — item 7 wants the
 criterion's application to be a proof rather than a hypothesis, and this is that
 application for one modified market.
+
+### 43. A compiler that is both exact and safe, or a proof there is none — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Two compilers, and they are not ordered. The violation-proportional position
+never loses in a world its region contains, and cannot force exact membership
+against bounded opposing volume. The interior-anchored position forces exact
+membership when the region has an interior, and loses in a plausible world at a
+price *inside* a world-inclusive region, because it holds positions where there
+is no violation at all.
+
+The item is whether the two properties can be had together: a continuous
+expressible strategy whose position has a floor outside the region and vanishes
+on it. Those pull against each other — a continuous position that vanishes on a
+closed region is small just outside it — so a clean impossibility is the expected
+outcome and would be worth as much as a construction. Note the two-sided shape:
+for a region with empty interior exactness is already impossible, so the question
+is only live where the region is full-dimensional.
+
+*Deliverable shape:* `test-supported` for a construction, with the safety and
+exactness fixtures both green on it; `witness-checked` or `lean-proved` for an
+impossibility.
+*Acceptance check:* the round's existing exactness and safety sweeps, run against
+the new compiler, both pass.
+*Context:* `.../2026-08-16-traderized-enforcement/ENFORCEMENT.md` §5, Theorems 7
+through 9; `src/exactness.py`.
+*Why it matters:* it is the one place the force layer currently forces a choice
+between conformance and non-exploitation, and the constitutional layer would have
+to make that choice without guidance.
 
 ### 42. An efficiently presentable sufficient row family for coherence — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->

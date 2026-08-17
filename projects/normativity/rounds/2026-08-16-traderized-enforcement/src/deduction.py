@@ -180,6 +180,51 @@ def liability_identity(trader, region: Region, p: Sequence[Fraction],
     return total
 
 
+def net_rows(worlds: Sequence[Sequence[Fraction]], dimension: int,
+             denominator: int) -> list[Row]:
+    """The support-function presentation over a rational net of the `l1` ball.
+
+    The settlement interface measures a price's failure by its **incoherence**,
+    the least sup-norm deviation from a credal state, and certifies it with a
+    signed weight vector of total absolute mass at most one. Duality makes those
+    the same object: the incoherence is the largest row violation over all such
+    weight vectors. So enforcing a *net* of them is enforcing incoherence, up to
+    how fine the net is — and a net too coarse to carry the tight certificate
+    reports no violation at all, which `test_contract` displays.
+    """
+    axis = [Fraction(i, denominator) for i in range(-denominator, denominator + 1)]
+    rows: list[Row] = []
+    from itertools import product as _product
+    for c in _product(axis, repeat=dimension):
+        if all(x == 0 for x in c) or sum(abs(x) for x in c) > ONE:
+            continue
+        rows.append(Row(c, min(dot(c, w) for w in worlds)))
+    return rows
+
+
+def incoherence_upper(price: Sequence[Fraction],
+                      worlds: Sequence[Sequence[Fraction]],
+                      denominator: int) -> Fraction:
+    """An upper bound on the incoherence, from credal states on a rational grid.
+
+    Exact when the minimising credal state is on the grid, which it is for the
+    instances used here; a bound and labelled as one otherwise.
+    """
+    from itertools import product as _product
+    best = None
+    count = len(worlds)
+    for weights in _product(range(denominator + 1), repeat=count):
+        if sum(weights) != denominator:
+            continue
+        lam = [Fraction(x, denominator) for x in weights]
+        realised = tuple(sum((l * w[i] for l, w in zip(lam, worlds)), ZERO)
+                         for i in range(len(price)))
+        deviation = max(abs(a - b) for a, b in zip(price, realised))
+        if best is None or deviation < best:
+            best = deviation
+    return best if best is not None else ZERO
+
+
 def deductive_region(fragment: Fragment, settled: dict[str, int]) -> Region:
     """The admissible region traderized deduction enforces at one date."""
     return Region(fragment.dimension,

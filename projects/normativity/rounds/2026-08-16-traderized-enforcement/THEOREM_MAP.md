@@ -31,13 +31,28 @@ under `tests/`. `witness` — a single displayed instance. `conjecture`.
 | 15 | intensity does not set position size; opposing volume does | the §4 fixture | `test_safety.IntensityIsNotFunding`; position `-1/2` across `β ∈ {10,100,1000}` | witness |
 | 16 | the enforcement position does not enter an ordinary trader's net worth | — | `test_safety.SubsidyHarvesting` | test-supported |
 | 17 | enforcement leaves no residue at the next date; settlement does | — | `test_deduction.SettlementIsNotEnforcement` | witness |
+| 7b | the liability bound with deficits: value `>= sum beta g^2 - sum beta g d(W)` | `beta_j >= 0` | `weighted_square_sub_deficit_le_pair`, with `liability_bound_is_nonvacuous` at a nonzero deficit | lean-proved |
+| 11b | the liability ceiling `C_t * max_j d_j(W)` is intensity-free | the certified declaration | `test_contract.LiabilityCeiling`, three tolerances, same rational | test-supported |
+| 12b | a region excluding a live world at every date, enforced forever, with bounded cumulative liability | the displayed trajectory | `test_contract.SafeWithoutWorldInclusiveness`; bound `2 - (N+2)/2^N < 2` | witness |
+| 12c | fixed-depth exclusion against growing volume diverges | — | `test_contract.UnsafeWhenDepthDoesNotDecay` | witness |
+| 18 | the disturbance's optimal cancellation is greedy | — | `test_exactness.DisturbanceOptimum`, against brute force | test-supported |
+| 19 | the interior-anchored position enforces exactly against a positive disturbance budget | `K` has a strictly interior point | `test_exactness.GaugeTraderIsExact`, one and two dimensions | test-supported |
+| 20 | exactness costs the safety property | world-inclusive full-dimensional `K` | `test_exactness.ExactnessCostsSafety`; value `-1/2` at a price *inside* `K` with every violation zero | witness |
+| 21 | exactness is impossible for a one-sentence region with empty interior | `C > 0`, `zeta_E` continuous | proof in `ENFORCEMENT.md` §5; ingredients in `test_exactness.ExactnessImpossibleWithoutAnInterior` | derived |
+| 22 | settlement equalities and coherence polytopes have no interior | — | `test_exactness`, both cases | test-supported |
+| 23 | the `theta`-admissible polytope compiles to a legal trader, and enforcement delivers core-admissible prices | endorsement priceable | `test_core`; agrees with `NL-SI-A5`'s closed form and with the definition pointwise | test-supported |
+| 24 | an unpriceable endorsement is detected and refused | — | `test_core.Priceability` | test-supported |
+| 25 | a market maker constrained to display `P in K` can have no solution | the displayed date | `test_contract.ConstrainedMakerNeedsAnExistenceTheorem` | witness |
+| 26 | row violations bound the interface's incoherence, at the net's resolution | net presentation | `test_contract.IncoherenceBridge`; recovers `NL-SI-C5`'s `4/15`, and coarser nets see nothing | test-supported |
 | — | unbounded enforcement liability always produces an exploiting efficiently computable trader | — | none | conjecture |
+| — | the interior-anchored construction generalises to every full-dimensional region | — | two dimensions only | conjecture |
 | — | the modified algorithm is a computable belief sequence for every effectively presented region | — | argued in `MODEL.md` §5 | conjecture |
 
 ## What carries the weight
 
-Results 2, 3, 4 and 8 are one inequality and three of its readings, and they are
-the only things in the round that are kernel-checked. Result 9 is the round's
+Results 2, 3, 4, 7b and 8 are one inequality and four of its readings, and they
+are the only things in the round that are kernel-checked. 7b is the general form
+and 8 is its `d = 0` corollary. Result 9 is the round's
 central claim about safety and is **not** in Lean: it composes two source lemmas
 about objects — the market maker and the trading firm — that this round does not
 formalize, and formalizing it means formalizing the modified algorithm inside the

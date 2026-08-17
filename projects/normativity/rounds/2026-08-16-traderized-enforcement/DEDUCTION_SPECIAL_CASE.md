@@ -122,6 +122,28 @@ deductive process.** The phrase "the traderized deductive process is equivalent 
 the original" is false under R1 and R4 and true under R2 and R3, and is not used
 in this round without one of those labels attached.
 
+## 6a. Deduction as the calibration case, not the generalisation
+
+The round is not trying to remove `D` from Logical Induction, and §6 says why it
+cannot. What deduction is here is the constraint source for which force is
+cleanest, and that makes it the instrument against which other sources are read:
+
+```text
+deduction              →  coherence region        →  same force mechanism  →  depth 0, liability 0
+normative endorsement  →  possibly narrower region →  same force mechanism  →  depth > 0, liability to be bounded
+```
+
+One mechanism, two sources, different safety obligations — and the obligation
+falls on the *source*, because the per-date liability ceiling `C_t · d_t(W)`
+depends on nothing the mechanism chooses. That is the generalisation the round
+actually earns: not that every constraint is enforced alike, but that every
+constraint is enforced by the same thing and charged differently for it.
+
+The reading that makes normative sources tractable is `FUNDING_AND_SAFETY.md` §4:
+a source may exclude live worlds permanently, provided the depth of exclusion
+decays against the growth of ordinary volume. Deduction is the degenerate member
+of that family, at depth identically zero.
+
 ## 7. What it would close upstream
 
 `THEORY_11_SETTLEMENT_INTERFACE.md` §7 lists `D3` as an open sub-problem: either
@@ -133,8 +155,13 @@ choosing, with per-date conformance, for the enforced market.
 **This does not close `D3`.** `D3` is a statement about the candidate engine
 audited there — the pair consisting of a declared deductive process and a market
 over it — and this round changes the market by adding a participant. Whether the
-modified pair still inhabits the rest of that interface is not examined, the
-incoherence functional there is a supremum-norm quantity whose conversion from
-row violations needs the presented system's Hoffman constant, and enforcing the
-facet system is the cost of §4. It is a candidate route to `D3(a)` and is filed
-as one (`INTEGRATION_MAP.md` §5).
+modified pair still inhabits the rest of that interface is not examined.
+
+The measure gap *is* now closed. The incoherence functional is a supremum-norm
+quantity and the round's modulus is on row violations; by duality the incoherence
+is the largest row violation over signed weight vectors of total mass at most
+one, so a rational net of those rows converts one to the other up to the net's
+resolution — verified on the interface's own displayed instance, where a net at
+denominator three recovers `4/15` exactly (`FORCE_INTERFACE.md` §1). What remains
+is the presentation cost of §4 and the inhabitation question. It is a candidate
+route to `D3(a)` and is filed as one (`INTEGRATION_MAP.md` §5).
