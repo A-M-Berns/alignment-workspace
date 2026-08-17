@@ -730,6 +730,7 @@ which are required.
 | 4, sorry-free | `lean` — the build, plus a textual scan |
 | 4, `#print axioms` present | `lean` — `tests/audit_axioms.py` |
 | 4, results audit to the three | `lean` — re-elaborates each file; also catches `sorryAx` |
+| the Lean gate runs whenever a change can reach it | `lean` — `tests/lean_scope.py`, which fails closed |
 | 5, runners | `python` — `tests/run.py` |
 | the consolidation still verifies | `consolidation-verification` — its own runner, from a copy |
 | the two layers | `path-gate` — a non-maintainer pull request touching a specification path fails |

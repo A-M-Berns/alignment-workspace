@@ -55,6 +55,7 @@ python3 tests/path_gate.py                        # path-gate: which layer your 
 python3 tests/workflow_scope.py                   # python: CI write scope is enumerated
 python3 tests/conservativity.py                   # conservativity: no new axioms
 cd lean && lake exe cache get && lake build       # lean: sorry-free
+python3 tests/lean_scope.py --self-test           # lean: does this change reach the gate
 python3 tests/audit_axioms.py                     # lean: axiom audit
 cd projects/normativity/consolidation-aug9 && python3 tests/run.py   # consolidation-verification
 ```

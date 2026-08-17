@@ -1323,7 +1323,7 @@ than a new theorem, and it is in `DECISIONS.md`'s queue rather than filed here.
 
 ## Infrastructure
 
-### 10. Build the Lean in CI — **[entry]**
+### 10. Build the Lean in CI — **[entry]** — *partially answered: the gate is scoped*
 <!-- workspace-priority: project=none; dispatchable=yes -->
 
 The Lean gate compiles in CI with a cached `.lake/`; if that cache proves too
@@ -1336,6 +1336,10 @@ contributed.
 
 *Context:* `.github/workflows/ci.yml`; the measured times are recorded in
 `prompts/2026-08-10-repo-scaffolding/REPORT.md`.
+*Status:* `tests/lean_scope.py` skips the build's work when no changed file can
+reach the Lean verdict, and fails closed on every unknown. That removes the cost
+from pull requests touching no Lean; it does not improve the build itself, which
+is what this item's acceptance check measures, so the item stays open.
 
 ### 11. Verification-register presence check in CI — **[entry]**
 <!-- workspace-priority: project=none; dispatchable=yes -->
