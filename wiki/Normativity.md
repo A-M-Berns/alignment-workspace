@@ -143,6 +143,31 @@ further assumption — about how far the constraint's demands sit from the world
 question, or about how much weight that world can carry — and which assumption is
 right is not settled.
 
+### What a norm has to promise in exchange for force
+
+The question that decides whether any of this is usable is not whether prices can
+be pushed exactly onto a demand. It is whether pushing them destroys the property
+that made the reasoner worth having: that nobody can pump it indefinitely.
+
+Splitting the demand helps. The part that merely records what has been settled
+costs nothing to enforce — no still-possible world disagrees with it, so the
+participant enforcing it never loses to anyone. The part where a norm genuinely
+outruns the record is where the cost lives, and the cost is governed by one
+quantity: how far the norm's demand exceeds what the least favourable
+still-possible world delivers. Notably it does *not* depend on how hard the norm
+is enforced.
+
+Settlement pushes that quantity down and never back up, which helps and is not
+enough on its own. What is missing is an account: the practice has to be willing
+to say in advance how much its norms are allowed to cost while they run ahead of
+what has been established, and to stop when that is spent. The line's existing
+work already imposes exactly that discipline on a different object, for the same
+reason — a claim can survive any number of tests if someone keeps quietly paying
+for its losses.
+
+So the shape is: one clause says what force a norm gets, and another says how much
+damage granting it may do.
+
 ### Force, and what force costs
 
 Two things about this mechanism are worth separating from the idea that motivated

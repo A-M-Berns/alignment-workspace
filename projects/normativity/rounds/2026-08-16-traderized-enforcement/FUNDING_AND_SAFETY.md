@@ -15,10 +15,13 @@ every finite date by construction, with no uniform bound over dates.
 
 **Enforcement liability** `B` *(provisional)* — the least bound with
 
-    W( ∑_{i ≤ n} E_i(P) )  ≥  -B    for every date `n` and every `W ∈ PC(D_n)` .
+    W( ∑_{i ≤ n} E_i(P) )  ≥  -B    for every date `n` and every `W ∈ Ω_n^live` ,
 
-Only the third is visible to the criterion, because `def:exploitation` assesses
-net worth in worlds propositionally consistent with the stage. **The scarce
+where `Ω^live` is the generalized assessment process. **Ordinary deduction
+specializes this to `PC(D_n)`**, which is the case `C_t = Δ(PC(D_t))`.
+
+Only the third is visible to the criterion, because exploitation is assessed in
+the worlds the process holds live at the assessing date. **The scarce
 resource is not funding.** Logical Induction imposes no budget on traders at all
 (`SOURCE_AUDIT.md` §2), so unbounded external credit is free; what is not free is
 showing a loss in a world that is still plausible.
@@ -42,8 +45,8 @@ Read off the identity: a date costs the enforcement trader something only where 
 **live violation** `g_j(P) > 0` and an **excluded world** `⟪c_j, W⟫ < r_j` meet on
 the same row. Either factor alone is free, and both halves are exhibited.
 
-**Theorem 8 (world-inclusive regions are liability-free).** If every
-`W ∈ PC(D_n)` satisfies every row of `K_n`, then
+**Theorem 8 (regions containing the assessed worlds are liability-free).** If
+every `W ∈ Ω_n^live` satisfies every row of `K_n`, then
 
     W( E_n(P) )  ≥  ∑_j β_j g_j(P)²  ≥  0    for every plausible `W` .
 
@@ -51,7 +54,7 @@ the same row. Either factor alone is free, and both halves are exhibited.
 
 Kernel-checked as `pair_nonneg_of_mem`. No hypothesis about the market maker, the
 ordinary traders, or the funding enters: it is a fact about the position and the
-price. Since stages are nested, a world plausible at date `n` was plausible at
+price. Since the process is nested, a world assessed at date `n` was assessed at
 every earlier date, so the cumulative sum is a sum of nonnegative terms and
 `B = 0`.
 
@@ -214,12 +217,16 @@ theorem needs, and it converges. ∎
 The contrast is the same construction with the depth held fixed: the bound
 diverges (`test_contract.UnsafeWhenDepthDoesNotDecay`).
 
-**The reading.** A constraint source may permanently exclude states deduction
-permits — which is what a normative constraint is for — provided the depth of the
-exclusion decays against the growth of ordinary trading volume. It is not
-required to agree with deduction; it is required to *converge* on admitting what
-stays live, at a rate. That is a substantive and checkable demand on a source,
-and it is weaker than the one the first pass reported.
+**The reading.** One *sufficient* discipline for a constraint source is that the
+depth of its exclusions decay quickly enough for the liability bound to be
+summable. That is not a requirement on sources: nothing here proves that a source
+failing it is unsafe, only that the round's route to safety no longer applies.
+The converse
+
+    unbounded enforcement liability  ⟹?  efficient exploitation
+
+is **open** (item 40), and the persistent fixed-depth fixture is a witness at one
+trajectory rather than a theorem.
 
 **What it does not say.** That the condition is necessary; that `12′` is the
 tightest ceiling; or that a source producing normative content can meet it. The

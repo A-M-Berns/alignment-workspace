@@ -540,6 +540,16 @@ and the liability is computed exactly over the implied live worlds.
 *Context:* `projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md`;
 `.../2026-08-16-traderized-enforcement/SEMANTIC_PROJECTION.md` §4;
 `INTEGRATION_MAP.md` §4.
+**Success requires both force generation and safety discharge.** Producing `C_t`
+or `K_t` is half the item. The source must also either supply a certificate that
+cumulative enforcement liability over the assessed worlds is bounded, or supply
+the quantities from which the force layer derives one. The round's
+`NORMATIVE_SAFETY.md` shows the settlement/core statics get partway — settlement
+rows are liability-free and monotonicity makes the endorsement gap non-increasing
+— and names the missing clause as a limit on cumulative net outflow, which the
+corpus already adopted for the same failure elsewhere. A round that compiles a
+normative region without addressing the outflow account has not answered this item.
+
 *Why it matters:* the force interface is installed and consumable; this is the one
 arrow between it and the normativity line, and without it traderized force is a
 result about deduction wearing a general name.

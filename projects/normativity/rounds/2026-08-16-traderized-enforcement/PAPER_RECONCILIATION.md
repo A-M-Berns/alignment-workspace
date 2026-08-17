@@ -66,49 +66,72 @@ stays primitive and the constraint is an add-on. Model B recovers it by making
 `K_t` the deductive constraint, which is the right direction: deduction becomes
 an instance. §3 proves the recovery.
 
-## 2. The live-world lift
+## 2. The live-world lift, at the type the Budgeter consumes
 
-**Theorem (statement).** Let `L_t` be an **assessment-world process**: a sequence
-of sets of worlds satisfying
+**The typing question, and the source's answer.** When the priced fragment grows,
+what does the generalized construction quantify over? A sequence of world sets on
+growing domains does not admit literal nesting: a valuation on `Φ_t` is not a
+valuation on `Φ_{t+1}`.
 
-- **(L1) nesting.** `L_{t+1} ⊆ L_t`.
-- **(L2) uniformly effective restriction.** There is a total computable function
-  which, given `t` and a finite sentence set `S`, returns the finite list of
-  restrictions to `S` of the worlds in `L_t`. Equivalently for the source's use:
-  membership in `L_t` is decidable on a finite support, uniformly in `t`.
-- **(L3) nonemptiness.** `L_t ≠ ∅` for every `t`.
+The source does not have this problem, because its worlds are **total**. A world
+is a truth assignment `W : Sentences → 𝔹` (`def:world`), so the world space is
+fixed and `PC(D_{t+1}) ⊆ PC(D_t)` is ordinary subset inclusion. What varies is the
+finite **support** the computation touches: the `Budgeter` proof fixes
+`S' = ⋃_{i≤n} support(T_i)` and observes that every quantity it needs — the
+shutoff test and the scaling infimum alike — depends only on a world's restriction
+to `S'`, a finite set.
 
-Then the `Budgeter` and `TradingFirm` of `arXiv:1609.03543` §5, with `PC(D_t)`
-replaced by `L_t` throughout, are well defined and computable, and the analogues
-of `lem:budgeter`.1–3 and `lem:tfdom` hold with exploitation read relative to
-`L`.
+So the generalized object is one process over a fixed world space, exposing
+
+    restrict(t, S)  =  { W|_S : W ∈ L_t } ,     finite for finite S.
+
+The priced fragment growing changes which supports are queried; it does not change
+the type of anything. `src/assessment.py` is that interface.
+
+**Theorem (statement).** Let `L` be an **assessment process** over a fixed world
+space, satisfying
+
+- **(L1) temporal nesting.** `L_{t+1} ⊆ L_t`.
+- **(L2) effective finite restriction.** A total computable function returning,
+  for each date `t` and finite sentence support `S`, the finite set
+  `restrict(t, S)`.
+- **(L3) nonemptiness.** `L_t ≠ ∅`, on the supports actually queried.
+
+Then `Budgeter` and `TradingFirm` of `arXiv:1609.03543` §5, with `PC(D_t)|_S`
+replaced by `restrict(t, S)` throughout, are well defined and computable, and the
+analogues of `lem:budgeter`.1–3 and `lem:tfdom` hold with exploitation read
+relative to `L`.
+
+**Restriction consistency is a lemma, not a hypothesis.** Restriction composes, so
+for `S ⊆ S'` the restrictions of `restrict(t, S')` to `S` are exactly
+`restrict(t, S)`. It is checked in `test_assessment` so a hand-built process
+cannot quietly violate it, but nothing assumes it.
+
+**Nesting is checked on common supports.** `restrict(t+1, S) ⊆ restrict(t, S)` is
+the computable shadow of (L1); global nesting implies it, and the converse holds
+for processes closed in the product topology — which `PC(D_t)` is — though nothing
+here relies on the converse. `test_assessment.TheFailureCaseIsRejected` displays a
+process failing it, on both a small and a large support.
 
 **What each hypothesis pays for**, from the source proofs:
 
 | source step | what it consumes |
 |---|---|
-| `Budgeter` computability | (L2): the shutoff test and the infimum both range over a finite, decidable restriction |
+| `Budgeter` computability | (L2): the shutoff test and the infimum both range over `restrict(m, S')`, finite and decidable |
 | `lem:budgeter`.1 | (L2) only |
-| `lem:budgeter`.2 | **(L1)**: its induction needs a world assessed at `t` to have been assessed at `t-1` |
+| `lem:budgeter`.2 | **(L1)**: its induction needs a world assessed at `t` to have been assessed at `t-1`, pointwise on total worlds |
 | `lem:budgeter`.3 | the exploitation definition alone |
-| `lem:tfdom` | `.2` and `.3`, plus the source's `ℓ¹` bound on strategies, which is about the traders and not the world process |
+| `lem:tfdom` | `.2` and `.3`, plus the source's `ℓ¹` bound on strategies, which is about traders and not worlds |
 | `lem:mm` | **nothing** — it quantifies over all worlds, so any assessment process inherits its bound |
-| (L3) | not used by the algebra; without it the infimum in `Budgeter` is over an empty set and the criterion is vacuous |
+| (L3) | not used by the algebra; without it the infimum is over an empty set and the criterion is vacuous |
 
-`PC(D_t)` satisfies all three: nesting because `D_t` is nested and propositional
-consistency is antitone in the stage; effective restriction because `D_t` is
-computable and propositional consistency on a finite support is decidable;
-nonemptiness for a consistent theory.
-
-`Ω_t^live` satisfies (L1) when `C_{t+1} ⊆ C_t`, and the containment of credal
-sets is sufficient but not necessary — two credal sets can have the same live
-worlds with neither containing the other (`test_semantics.Nesting`). So the
-hypothesis to carry is nesting **of the live sets**, which is weaker.
+`PC(D_t)` satisfies all three. `Ω_t^live` satisfies (L1) when `C_{t+1} ⊆ C_t`,
+which is sufficient and not necessary — two credal sets can have the same live
+worlds with neither containing the other (`test_semantics.Nesting`).
 
 **Evidence: `derived`, and not formalized.** It is read off the source proofs, and
-it is the round's one load-bearing unformalized step. `THEOREM_MAP.md` says so and
-names it as the next formalization target. A later round has no ambiguity about
-the target: the statement above, instantiated at `L_t = Ω_t^live`.
+it is the round's one load-bearing unformalized step. A formalization round has an
+unambiguous target: the statement above, instantiated at `L_t = Ω_t^live`.
 
 ## 3. Deductive recovery
 
@@ -156,9 +179,12 @@ kinds.
 2. **Slack.** The actual maker's contract bounds the aggregate's cube maximum
    gain by `2^-n` rather than forcing it to zero, so what it delivers is
    conformance, not projection.
-3. **Geometry.** For a region lying in no proper cube face and having empty
-   relative interior, no continuous trader achieves exact membership against a
-   positive disturbance budget.
+3. **Geometry.** Exactness is not always available. For a one-sentence region
+   strictly inside `(0,1)` no continuous trader achieves exact membership against
+   a positive disturbance budget (`derived`); a coherence relation in two
+   dimensions leaves a surviving cancellable band (`witness`); and the general
+   condition is conjectural. `ENFORCEMENT.md` §5 keeps the four evidence levels
+   apart.
 
 So the two-channel split is defensible, and the clean statement is
 

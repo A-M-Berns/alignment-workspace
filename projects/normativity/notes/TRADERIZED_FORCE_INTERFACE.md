@@ -59,7 +59,7 @@ Two sufficient routes to bounding it, neither dominating and neither necessary:
     support route:  E_t(ω) ≥ −(1 − θ_t(ω)) · U_t / θ_t(ω)         U_t = the position's cube maximum gain
 
 with `d_j(ω) = max(0, r_j − ⟪c_j,ω⟫)` the exclusion deficit and
-`θ_t(ω) = max{ μ(ω) : μ ∈ C_t }` the support capacity of the **semantic** set.
+`θ_t(ω) = max{ μ(ω) : μ ∈ C_t }` the support capacity of the **semantic** set. The assessment worlds are the generalized process `Ω_t^live`; ordinary deduction specializes them to `PC(D_t)`.
 
 **The preservation theorem the obligation feeds.** If the cumulative liability
 over the assessment worlds is bounded by `B`, no efficiently computable trader
@@ -120,5 +120,26 @@ ceiling. There is no intensity-free ceiling; that claim was made and withdrawn.
 - The core-condition compilation: `CORE_CONDITION.md`
 - Lean: `lean/Workspace/Normativity/Contrib/TraderizedEnforcement.lean`
 
+## What a source must do to discharge the obligation
+
+Producing a region is half of it. The source must also bound the cumulative
+enforcement liability, or supply the quantities from which the force layer derives
+a bound. For the settlement/core statics that motivate this work:
+
+- **settlement and coherence rows are liability-free**, always, because their
+  right-hand sides are minima over the assessed worlds;
+- **endorsement rows carry `max(0, r − m_c)`** — how far the demand exceeds the
+  worst assessed world — **independent of the declared core minimum**;
+- settlement monotonicity makes that quantity non-increasing, which is necessary
+  and not sufficient;
+- what remains is a **limit on cumulative net outflow** for the compiled
+  enforcement position, which is a discipline the corpus already adopted for the
+  same failure in another context.
+
+`../rounds/2026-08-16-traderized-enforcement/NORMATIVE_SAFETY.md` carries the type
+comparison against `P2`, a safe trajectory whose bound is constant across
+horizons, and an unsafe one whose bound grows quadratically.
+
 The missing arrow — from a normative record to a semantic credal constraint or a
-price-visible region — is `PRIORITIES.md` item 39 and is deliberately absent here.
+price-visible region, **together with its liability certificate** — is
+`PRIORITIES.md` item 39 and is deliberately absent here.

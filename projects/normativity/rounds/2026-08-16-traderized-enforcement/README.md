@@ -37,6 +37,14 @@ different live worlds. So semantics and force are two channels for a reason abou
 information, not about mechanism convenience. Force consumes `K_t`; it does not
 determine `C_t`.
 
+**Normativity application verdict: force-compilable, tolerance-enforceable,
+safety *conditionally* discharged.** The motivating statics split into settlement
+rows, which carry zero liability always, and core rows, whose worst deficit is
+`max(0, r − m_c)` — independent of the declared core minimum. Settlement
+monotonicity makes that non-increasing; it does not make it summable. One clause
+is needed, and the corpus already adopted it for the same failure in another
+context: a limit on cumulative net outflow. `NORMATIVE_SAFETY.md`.
+
 **Paper verdict: the core generalized-LI paper is available conditional on one
 named theorem** — the live-world Budgeter/TradingFirm lift, stated with its three
 hypotheses in `PAPER_RECONCILIATION.md` §2, read off the source proofs and not
@@ -50,7 +58,7 @@ against two worlds, `1` against one, on a displayed fixture. They coincide exact
 when `Ω^live = PC(D_t)`, which is the deductive case.
 
 ```sh
-python3 tests/run.py     # 168 tests, exact rationals
+python3 tests/run.py     # 200 tests, exact rationals
 ```
 
 Five claims from earlier passes are withdrawn, each with its counterexample kept
@@ -74,6 +82,7 @@ its world process refutes.
 | `DEDUCTION_SPECIAL_CASE.md` | deduction as the calibration case; presentation cost; the four equivalence relations |
 | `INTEGRATION_MAP.md` | objects touched and untouched, the four vocabulary collisions, Legitimacy and Deference |
 | `THEOREM_MAP.md` | every result with its evidence class, and the named future Lean port target |
+| `NORMATIVE_SAFETY.md` | whether the motivating statics discharge bounded enforcement liability, with a safe and an unsafe trajectory |
 | `SEMANTIC_PROJECTION.md` | `C_t`, `π_t`, `K_t`, fibre saturation, and the support loss under projection |
 | `PAPER_RECONCILIATION.md` | the two constructions, the live-world lift with its three hypotheses, deductive recovery, and the paper spine |
 | `PROSECUTION.md` | twenty-two attacks, with a current verdict: what landed, what was withdrawn, what is open |

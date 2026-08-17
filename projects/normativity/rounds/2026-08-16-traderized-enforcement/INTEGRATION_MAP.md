@@ -117,7 +117,7 @@ answerability are untouched and stay upstream. `FORCE_INTERFACE.md` §3 assigns
 each of them.
 
 ```text
-constraint source  →  K_t  →  constraint-to-trade compiler  →  enforcement trader  →  P_t ∈ K_t
+constraint source  →  K_t  →  constraint-to-trade compiler  →  enforcement trader  →  max_j g_j(P_t) ≤ δ_t
 ```
 
 The diagram survives the constructions with one amendment the research forced: the
@@ -150,10 +150,16 @@ at any positive intensity, and the mechanism will hold a singleton region exactl
 as readily as a defensible one. So a constraint being operative is no evidence
 that it is legitimate, and this round supplies no legitimacy result.
 
-**Does the mechanism make manipulation easier?** Yes, and the answer is sharp
-rather than hedged. Whoever writes the rows sets the displayed price: at slack
-zero a singleton region determines `P_n` exactly (`PROSECUTION.md` W11). Control
-of the constraint source is therefore complete control of the credal state, and
+**Does the mechanism make manipulation easier?** Yes, and the accurate statement
+is a little weaker than an earlier draft's. Control of the source supplies a
+powerful steering channel: under the stable compiler it can force arbitrarily
+tight finite-price conformance, `max_j g_j(P_t) ≤ δ_t` for any positive rational
+`δ_t`, at a liability cost that rises as `δ_t` falls. Exact determination of the
+price is available only under named exactness hypotheses — zero slack and no
+opposing volume, or an interior-anchored compiler in the tested dimensions — and
+not in the ordinary positive-slack setting. Control of the constraint source is
+therefore near-complete steering of the credal state rather than literal
+determination of it, and
 traderized enforcement is a *steering channel* before it is anything else.
 
 **What the market itself checks about a source.** Less than an earlier draft

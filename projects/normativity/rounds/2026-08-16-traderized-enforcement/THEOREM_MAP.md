@@ -97,6 +97,11 @@ table is the evidence ledger. **Nothing here is registered.**
 | 25 | support bridge `E_t(ω) ≥ (a − (1−θ)U)/θ`, `U` named | `θ > 0` | **derived** | `test_semantics.SupportBridge` | yes | yes |
 | 26 | expectation control coexists with large worldwise loss at small capacity | — | **witness** | `test_semantics.SmallSupportHidesLargeLoss` | yes | no |
 | 27 | a region excluding a live world at every date, enforced forever, safely | displayed trajectory | **witness** | `test_contract.SafeWithoutWorldInclusiveness` | no | no |
+| 27b | the motivating region splits into settlement rows with zero deficit and core rows carrying `max(0, r − m_c)`, independent of `θ` | the settlement/core statics | derived | `test_normative.TheTwoRowFamiliesDiffer` | yes | no |
+| 27c | settlement monotonicity makes the exclusion depth non-increasing | `NL-SI-C4`, `NL-SI-P1` | derived | `test_normative.SettlementDrivesTheGapDown` | yes | no |
+| 27d | a safe motivating trajectory: bound `135/8`, constant across horizons | endorsement vindicated after finitely many dates | witness | `test_normative.SafeMotivatingTrajectory` | yes | no |
+| 27e | an unsafe contrast: bound `52.3 → 182.5 → 392.5`, and the position really loses at an assessed world | endorsement never vindicated, `C_t = t` | witness | `test_normative.UnsafeContrastTrajectory` | yes | no |
+| 27f | `P2` does not cover enforcement liability: its declared means are refusal and bounded participant budgets, both of which the enforcement trader is exempt from | — | derived | `NORMATIVE_SAFETY.md` §5 | yes | no |
 | 28 | necessity of either liability bridge | — | **open** | item 45 | no | no |
 | 29 | what governs removing a world from support | — | **open** | item 44 | no | no |
 | 30 | normative statics producing `C_t` or `K_t` | — | **open** | item 39 | no | no |

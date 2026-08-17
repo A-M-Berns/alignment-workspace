@@ -51,20 +51,23 @@ def priceable_coefficients(coefficient: Sequence[Fraction],
     columns = [indicator(fragment, s, worlds) for s in names]
     rows = [[columns[j][i] for j in range(len(names))] for i in range(len(worlds))]
     target = [Fraction(x) for x in coefficient]
-    # Solve the (possibly overdetermined) system exactly by trying square
-    # subsystems and verifying the candidate against every row.
     from itertools import combinations
-    if len(names) > len(worlds):
-        picks = [tuple(range(len(worlds)))]
-    else:
-        picks = list(combinations(range(len(worlds)), len(names)))
-    for pick in picks:
-        solution = _solve([rows[i] for i in pick], [target[i] for i in pick])
-        if solution is None:
-            continue
-        if all(sum((solution[j] * rows[i][j] for j in range(len(names))), ZERO)
-               == target[i] for i in range(len(worlds))):
-            return tuple(solution)
+    size = min(len(names), len(worlds))
+    # Underdetermined and overdetermined systems both occur once settlement
+    # shrinks the world list, so search square subsystems over both axes and
+    # verify any candidate against every row.
+    for cols in combinations(range(len(names)), size):
+        for pick in combinations(range(len(worlds)), size):
+            sub = [[rows[i][j] for j in cols] for i in pick]
+            solution = _solve(sub, [target[i] for i in pick])
+            if solution is None:
+                continue
+            full = [ZERO] * len(names)
+            for slot, j in enumerate(cols):
+                full[j] = solution[slot]
+            if all(sum((full[j] * rows[i][j] for j in range(len(names))), ZERO)
+                   == target[i] for i in range(len(worlds))):
+                return tuple(full)
     return None
 
 
@@ -73,18 +76,21 @@ def core_row_in_credal_space(coefficient: Sequence[Fraction], rhs: Fraction,
                              worlds: Sequence[Sequence[Fraction]]) -> tuple[Vector, Fraction]:
     """The admissible-reference row for one endorsement at coefficient `theta`.
 
-    The endorsement is `<c, q> >= r`; the post-settlement simplex has the point
-    masses on plausible worlds as its vertices, so the minimum of `<c, .>` over
-    it is the minimum over those worlds. The admissible references are then
+    The endorsement is `<c, q> >= r` with `c` indexed by **worlds**. The
+    post-settlement simplex has the point masses as its vertices, and the value at
+    a point mass is `<c, delta_w> = c_w`, so the minimum over the simplex is the
+    minimum *entry* of `c` — not a dot product against a world's sentence vector,
+    which is a different space. The admissible references are then
 
-        (1 - theta) <c, q>  >=  r - theta * m ,     m = min_w <c, w> .
+        (1 - theta) <c, q>  >=  r - theta * m ,     m = min_w c_w .
     """
     c = tuple(Fraction(x) for x in coefficient)
     theta = Fraction(theta)
     if not (ZERO < theta <= ONE):
         raise ValueError("theta lies in (0, 1]")
-    minimum = min(dot(c, w) for w in worlds)
-    return c, (Fraction(rhs) - theta * minimum)
+    if len(c) != len(worlds):
+        raise ValueError("the endorsement is indexed by worlds")
+    return c, (Fraction(rhs) - theta * min(c))
 
 
 def compile_core_row(coefficient: Sequence[Fraction], rhs: Fraction,
@@ -127,8 +133,8 @@ def satisfies_core_condition(price: Sequence[Fraction],
     endorsed = dot(tuple(Fraction(x) for x in priced),
                    tuple(Fraction(x) for x in price))
     c = tuple(Fraction(x) for x in coefficient)
-    return all((ONE - theta) * endorsed + theta * dot(c, w) >= Fraction(rhs)
-               for w in worlds)
+    return all((ONE - theta) * endorsed + theta * value >= Fraction(rhs)
+               for value in c)
 
 
 def maximal_theta(coefficient: Sequence[Fraction], rhs: Fraction,
@@ -140,8 +146,9 @@ def maximal_theta(coefficient: Sequence[Fraction], rhs: Fraction,
     coefficient at all.
     """
     c = tuple(Fraction(x) for x in coefficient)
-    values = [dot(c, w) for w in worlds]
-    lo, hi = min(values), max(values)
+    if len(c) != len(worlds):
+        raise ValueError("the endorsement is indexed by worlds")
+    lo, hi = min(c), max(c)
     if hi == lo:
         return None
     if hi < Fraction(rhs):
