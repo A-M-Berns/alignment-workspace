@@ -494,6 +494,126 @@ accepted sufficient statement yet supplies an executable completion criterion.
 
 ---
 
+## Normativity line — traderized enforcement
+
+Items 39–42 were filed by `prompts/2026-08-16-traderized-enforcement/` within its
+dispatched scope, with that round's `PROMPT.md` as the authorization. Their shared
+context is `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, whose
+`THEOREM_MAP.md` says which of its results are kernel-checked, which are derived
+from source lemmas taken as hypotheses, and which are single witnesses.
+
+### 39. What maps a normative record to an admissible region? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Traderized enforcement consumes a region in price space and gives it operative
+force. The normative line produces `Due`, a burden on an occasion, and
+`Licensed`, a permission on a response. Neither is a constraint on a credal
+state, so the reading under which enforcement supplies force to *normative*
+constraints has no arrow in it — the round refused to assert one and the gap is
+the reason.
+
+The item is to construct the missing object or show it cannot exist: a map from a
+normative record to a nonempty region of `[0,1]^Φ`, presented by rational rows,
+that respects the write-access boundaries the learning interface already fixes.
+The hard part is not the type. It is that a normative constraint's whole point is
+to exclude states deduction permits, and the round's safety condition says
+excluding a still-plausible world is exactly what costs the criterion its bound.
+So a nontrivial map is one whose regions are provably *not* world-inclusive, and
+the item must say what replaces the safety guarantee there.
+
+*Deliverable shape:* `test-supported` at minimum — a constructed map on the
+relational fixture, with the enforcement liability it induces computed exactly —
+or a displayed obstruction.
+*Acceptance check:* the round's runner passes with the map's regions checked for
+nonemptiness and for the liability they induce over a stated trajectory.
+*Context:* `.../2026-08-16-traderized-enforcement/INTEGRATION_MAP.md` §4;
+`projects/normativity/notes/NORMATIVE_LEARNING_INTERFACE.md`;
+`state/theorem_interface.json`.
+*Why it matters:* without it, the mechanism is a result about deduction wearing a
+general name.
+
+### 40. Does unbounded enforcement liability always produce an exploiting trader? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The round proves that bounded enforcement liability is sufficient for the
+criterion, and witnesses one shape in which unbounded liability produces an
+explicit exploiting trader — a persistently excluded plausible world, a settled
+sentence, and constant opposing volume. It does not prove the converse, and it
+shows the converse fails in one direction: weak enforcement has zero liability
+without containing the plausible worlds.
+
+The item is the general converse or its refutation. If unbounded liability can be
+arranged with no efficiently computable trader able to harvest it, that
+counterexample is the more valuable outcome, because it would mean the safety
+condition is strictly stronger than the criterion needs and the round's
+formulation is not the canonical one.
+
+*Deliverable shape:* `witness-checked` for a refutation; `lean-proved` or
+`test-supported` for a proof restricted to a stated class of trajectories.
+*Acceptance check:* for a refutation, a finite trajectory with unbounded
+liability over a stated horizon and a proof that a named trader class cannot
+exploit it.
+*Context:* `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §4;
+`arXiv:1609.03543` `def:exploitation`.
+*Why it is [open]:* the direction of the argument is not known, and the round's
+own evidence points both ways.
+
+### 41. The safety theorem against the dependency's own construction — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The round's central safety claim composes two source lemmas about objects it does
+not formalize. Its Lean file states the algebra over an abstract pairing; the
+composition stays on paper.
+
+The item is to define the modified market inside the pinned dependency's types —
+`MarketMaker` applied to `TradingFirm DP` plus an enforcement strategy — and prove
+`¬ Tr.Exploits` of it for every efficiently computable `Tr`, from a hypothesis
+bounding the enforcement trader's plausible cumulative value. The step to
+reproduce is `liaTrader_not_exploited`, `Construction/LIA.lean:96`, which is where
+the modification breaks: the market-maker lemma bounds the aggregate and the
+capstone needs the trading firm alone.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`, with an
+inhabitation witness for the hypothesis package.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and the
+nonvacuity witness typechecks.
+*Context:* `.../2026-08-16-traderized-enforcement/THEOREM_MAP.md`, *Named future
+port target*; `SOURCE_AUDIT.md` §5.
+*Why it is [substantial]:* the objects exist in the dependency and the argument is
+three lines on paper; the work is stating the modified history in types that
+already carry a recursion and a search.
+*Relation to item 7:* the same gap seen from the other line — item 7 wants the
+criterion's application to be a proof rather than a hypothesis, and this is that
+application for one modified market.
+
+### 42. An efficiently presentable sufficient row family for coherence — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Enforcing the coherence polytope of a deductive stage needs its facet system,
+whose vertex set is the plausible worlds of the priced fragment — up to `2^|Φ|`
+of them. The cheap alternative, the affine relations among priced sentences, is
+strictly weaker: on a four-sentence Boolean fragment it admits twenty-four
+incoherent grid points at denominator three, one of which prices a conjunction
+above a conjunct.
+
+The item is the gap between them. Is there a row family, computable in time
+polynomial in the fragment, whose region is strictly between the affine relations
+and the coherence polytope and whose residual incoherence admits a bound? A
+negative answer — that any polynomially presentable family leaves a violation
+bounded away from zero — is equally wanted and would say that finite-date
+coherence is intrinsically expensive.
+
+*Deliverable shape:* `enumeration-verified` over a stated fragment family for a
+positive answer; `witness-checked` for a negative one.
+*Acceptance check:* the house enumeration checker generates the fragment's
+plausible worlds and confirms the claimed containment pointwise.
+*Context:* `.../2026-08-16-traderized-enforcement/DEDUCTION_SPECIAL_CASE.md`
+§§3–4, and its `src/deduction.py`.
+*Why it matters:* it prices the deduction special case, which is the round's
+evidence that the abstraction is more than a name.
+
+---
+
 ## Deference line
 
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular

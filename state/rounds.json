@@ -501,12 +501,30 @@
       ],
       "governs_artifact_status": true,
       "status_components": [
-        {"id": "abstract-theorem", "status": "settled-at-conditional-interface-level"},
-        {"id": "feedback-dynamics", "status": "witness-strength"},
-        {"id": "due", "status": "no-satisfactory-substantive-instantiation"},
-        {"id": "licensed", "status": "interface-discipline-available; substantive-soundness-open"},
-        {"id": "performance-loss", "status": "fixture-success; general-theory-open"},
-        {"id": "coverage", "status": "hypothesis; not-delivered-conclusion"}
+        {
+          "id": "abstract-theorem",
+          "status": "settled-at-conditional-interface-level"
+        },
+        {
+          "id": "feedback-dynamics",
+          "status": "witness-strength"
+        },
+        {
+          "id": "due",
+          "status": "no-satisfactory-substantive-instantiation"
+        },
+        {
+          "id": "licensed",
+          "status": "interface-discipline-available; substantive-soundness-open"
+        },
+        {
+          "id": "performance-loss",
+          "status": "fixture-success; general-theory-open"
+        },
+        {
+          "id": "coverage",
+          "status": "hypothesis; not-delivered-conclusion"
+        }
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-final/PROMPT.md",
@@ -540,6 +558,17 @@
       "verdict": null,
       "registered_classes": [],
       "prompt": "prompts/2026-08-16-wiki-state-bindings/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-16-traderized-enforcement",
+      "date": "2026-08-16",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
+      "verdict": "the mechanism is real and its safety condition is sharp.",
+      "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/README.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT.md",
       "claim_changes": []
     }
   ]
