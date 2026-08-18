@@ -1,5 +1,10 @@
 # Proof closure
 
+**Verdict.** Logical Induction generalizes past deduction: the assessment-process lift of Budgeter and TradingFirm is kernel-checked against the pinned implementation, a compiled price-region trader gives finite-time force, and preservation follows from finite assessed risk capital — which is exactly zero for deduction, so traderized deduction keeps the original criterion and adds finite-time approximate coherence.
+
+Two links in the arc are not kernel-checked and are named in *Conditional* below: the
+first-order erasure that makes the modified market a program, and `DistanceComplete`.
+
 Every load-bearing step of the generalized-Logical-Induction / traderized-force arc,
 with what it rests on. Where a step is kernel-checked the declaration is named;
 where it is not, what is missing is named instead.

@@ -501,30 +501,12 @@
       ],
       "governs_artifact_status": true,
       "status_components": [
-        {
-          "id": "abstract-theorem",
-          "status": "settled-at-conditional-interface-level"
-        },
-        {
-          "id": "feedback-dynamics",
-          "status": "witness-strength"
-        },
-        {
-          "id": "due",
-          "status": "no-satisfactory-substantive-instantiation"
-        },
-        {
-          "id": "licensed",
-          "status": "interface-discipline-available; substantive-soundness-open"
-        },
-        {
-          "id": "performance-loss",
-          "status": "fixture-success; general-theory-open"
-        },
-        {
-          "id": "coverage",
-          "status": "hypothesis; not-delivered-conclusion"
-        }
+        {"id": "abstract-theorem", "status": "settled-at-conditional-interface-level"},
+        {"id": "feedback-dynamics", "status": "witness-strength"},
+        {"id": "due", "status": "no-satisfactory-substantive-instantiation"},
+        {"id": "licensed", "status": "interface-discipline-available; substantive-soundness-open"},
+        {"id": "performance-loss", "status": "fixture-success; general-theory-open"},
+        {"id": "coverage", "status": "hypothesis; not-delivered-conclusion"}
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-final/PROMPT.md",
@@ -565,10 +547,21 @@
       "date": "2026-08-16",
       "project": "normativity",
       "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
-      "verdict": "force is purchased out of a finite account, and what it costs is the product of ordinary aggregate pressure, normative exclusion depth and tolerated error \u2014 no one of the three has to decay for indefinite force to stay affordable.",
-      "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/README.md",
+      "verdict": "Logical Induction generalizes past deduction: the assessment-process lift of Budgeter and TradingFirm is kernel-checked against the pinned implementation, a compiled price-region trader gives finite-time force, and preservation follows from finite assessed risk capital \u2014 which is exactly zero for deduction, so traderized deduction keeps the original criterion and adds finite-time approximate coherence.",
+      "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md",
       "registered_classes": [],
-      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-final-correctness.md",
+      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-proof-closure.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-17-counterfactual-legitimacy",
+      "date": "2026-08-17",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy",
+      "verdict": "interface-closed-by-role / trust-premise-integrity / target-bridge-open",
+      "verdict_source": "prompts/2026-08-17-counterfactual-legitimacy/REPORT.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-17-counterfactual-legitimacy/PROMPT.md",
       "claim_changes": []
     }
   ]
