@@ -220,7 +220,7 @@ python3 projects/deference/rounds/2026-08-18-principal-mediated-delegation/tests
 
 The Lean gate is unchanged and untouched: this round adds no Lean file. The
 sorry gate and axiom-discipline checks in the repo-level runner report clean over
-the same 16 files as before.
+the same 16 files as before, and CI's `lean` job is green on the branch.
 
 Registering the round in `state/rounds.json` made
 `python3 -m checkers.workspace_state --check` fail on a stale generated view, and
