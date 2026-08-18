@@ -61,36 +61,36 @@ theorem exploits_gate {L : Assessment} (Tr : Trader) (P : History)
 Only `BudgeterAt` changes; the weights, cutoff and enumeration are the source's. -/
 
 /-- The finite list of explicitly retained positive-budget components. -/
-noncomputable def budgetComponents (L : Assessment) (Q : ℕ → Sentence → ℚ)
+def budgetComponents (L : Assessment) (Q : ℕ → Sentence → ℚ)
     (n j : ℕ) : List (Strategy n) :=
   (List.range (tradingFirmCutoff n)).map fun r =>
     (AssessmentProcess.BudgeterAt L (firmRawTrader j) (r + 1) Q n).scaleConst
       (tradingFirmWeight j (r + 1))
 
 /-- One enumerated trader's exact finite day contribution. -/
-noncomputable def componentAt (L : Assessment) (Q : ℕ → Sentence → ℚ)
+def componentAt (L : Assessment) (Q : ℕ → Sentence → ℚ)
     (n j : ℕ) : Strategy n :=
   Strategy.join (budgetComponents L Q n j ++
     [((firmRawTrader j).strat n).scaleConst
       (tradingFirmWeight j (tradingFirmCutoff n))])
 
 /-- `def:tradingfirm` over an assessment process. -/
-noncomputable def TradingFirmAt (L : Assessment) (Q : ℕ → Sentence → ℚ)
+def TradingFirmAt (L : Assessment) (Q : ℕ → Sentence → ℚ)
     (n : ℕ) : Strategy n :=
   Strategy.join ((List.range (n + 1)).map fun j => componentAt L Q n j)
 
 /-- Static realization against a supplied complete rational market table. -/
-noncomputable def tradingFirmTrader (L : Assessment) (Q : ℕ → Sentence → ℚ) :
+def tradingFirmTrader (L : Assessment) (Q : ℕ → Sentence → ℚ) :
     Trader where
   strat n := TradingFirmAt L Q n
 
 /-- One gated enumeration index's contribution to the realized firm. -/
-noncomputable def componentTrader (L : Assessment) (Q : ℕ → Sentence → ℚ)
+def componentTrader (L : Assessment) (Q : ℕ → Sentence → ℚ)
     (j : ℕ) : Trader where
   strat n := if j ≤ n then componentAt L Q n j else Trader.zero.strat n
 
 /-- Adaptive form consumed by the recursive construction. -/
-noncomputable def TradingFirm (L : Assessment) : AdaptiveTrader where
+def TradingFirm (L : Assessment) : AdaptiveTrader where
   action n past := TradingFirmAt L (rationalHistory past) n
 
 lemma budgetComponents_eq_of_eq_prefix (L : Assessment) (Q R : ℕ → Sentence → ℚ)

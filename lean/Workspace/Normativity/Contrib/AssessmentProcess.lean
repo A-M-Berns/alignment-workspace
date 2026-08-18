@@ -18,8 +18,11 @@ Three things are deliberately *not* hypotheses.
 * Nonemptiness. It is not used: the scaling infimum over an empty list is `1`,
   and every conclusion quantified over live worlds is vacuous.  What
   nonemptiness buys is nonvacuity of the criterion, not the lift.
-* Global nesting `Live (n+1) ⊆ Live n`. Only its support-local shadow is used,
-  and that is strictly weaker — `liveIsNotDeductive` below separates them.
+* Global nesting `Live (n+1) ⊆ Live n`. Only its support-local shadow is used, and
+  that is strictly weaker: `lateAllTrueLive_not_globally_nested` satisfies the whole
+  interface with `Live 1 ⊆ Live 0` false.  The two coincide exactly for families
+  determined by their finite restrictions — `live_subset_of_finiteDetermined` — which
+  is what `PC(D_n)` is.
 * Computability. The Budgeter lemmas need the restriction lists to be finite, not
   to be computable; computability is what makes the market a program and is
   tracked separately.
@@ -466,7 +469,7 @@ lemma budgetScaleFeature_denote_le_one (L : Assessment) (Tr : Trader) (b : ℕ)
   exact EF.listMin_denote_le_one _ P
 
 /-- `def:budgeter` over an assessment process. -/
-noncomputable def BudgeterAt (L : Assessment) (Tr : Trader) (b : ℕ)
+def BudgeterAt (L : Assessment) (Tr : Trader) (b : ℕ)
     (Q : ℕ → Sentence → ℚ) (n : ℕ) : Strategy n :=
   if priorBudgetBreach L Tr b Q n then
     ⟨[], by simp⟩
@@ -492,7 +495,7 @@ lemma BudgeterAt_support_subset (L : Assessment) (Tr : Trader) (b : ℕ)
     exact ⟨q, hq, rfl⟩
 
 /-- The realized budgeted trader against a fixed rational market table. -/
-noncomputable def budgetedTrader (L : Assessment) (Tr : Trader) (b : ℕ)
+def budgetedTrader (L : Assessment) (Tr : Trader) (b : ℕ)
     (Q : ℕ → Sentence → ℚ) : Trader where
   strat n := BudgeterAt L Tr b Q n
 
@@ -1001,6 +1004,144 @@ theorem assessment_is_nonvacuous :
     rw [hnil] at hw
     exact absurd hw (by simp)
 
+/-! ## Support-local nesting against global nesting
+
+The construction consumes only the support-local shadow of `L_{t+1} ⊆ L_t`.  That is
+strictly weaker, and exactly one condition closes the gap: being determined by finite
+restrictions, which is what `PC(D_n)` is and what the limit-semantics properties of
+the source's §4 need. -/
+
+/-- Payouts see a sentence only through the atoms it mentions. -/
+lemma ratPayout_congr_of_atoms {v v' : PCWorld} {φ : Sentence}
+    (h : ∀ a ∈ Sentence.atoms φ, (v a ↔ v' a)) : ratPayout v φ = ratPayout v' φ := by
+  have hagree : ∀ a ∈ Sentence.atoms φ, decide (v a) = decide (v' a) := by
+    intro a ha
+    have hiff := h a ha
+    by_cases hva : v a
+    · have : v' a := hiff.mp hva
+      simp [hva, this]
+    · have : ¬ v' a := fun hc => hva (hiff.mpr hc)
+      simp [hva, this]
+  have hb := sentenceBool_congr_of_atoms (u := fun a => decide (v a))
+    (v := fun a => decide (v' a)) (φ := φ) hagree
+  have hv : v.Holds φ ↔ v'.Holds φ := by
+    rw [← sentenceBool_decide_world v φ, ← sentenceBool_decide_world v' φ, hb]
+  unfold ratPayout
+  by_cases hh : v.Holds φ
+  · simp [hh, hv.mp hh]
+  · have : ¬ v'.Holds φ := fun hc => hh (hv.mpr hc)
+    simp [hh, this]
+
+/-- A world set is **finitely determined** when membership is forced by having every
+finite restriction realised inside it.  `PC(D)` is: its membership condition reads
+finitely many sentences. -/
+def FiniteDetermined (S : PCWorld → Prop) : Prop :=
+  ∀ v : PCWorld,
+    (∀ A : Finset Sentence, ∃ u, S u ∧ ∀ φ ∈ A, ratPayout u φ = ratPayout v φ) → S v
+
+lemma finiteDetermined_consistentWith (D : Finset Sentence) :
+    FiniteDetermined (fun v => v.ConsistentWith D) := by
+  intro v h
+  obtain ⟨u, hu, hagree⟩ := h D
+  intro φ hφ
+  have hpay := hagree φ hφ
+  have : ratPayout u φ = 1 := by unfold ratPayout; simp [hu φ hφ]
+  rw [this] at hpay
+  unfold ratPayout at hpay
+  by_contra hv
+  simp [hv] at hpay
+
+/-- **Closedness closes the gap.**  For a finitely-determined family, support-local
+nesting gives global nesting. -/
+theorem Assessment.live_subset_of_finiteDetermined (L : Assessment) (n : ℕ)
+    (hdet : FiniteDetermined (L.Live n)) {v : PCWorld} (hv : L.Live (n + 1) v) :
+    L.Live n v := by
+  apply hdet v
+  intro A
+  obtain ⟨u, hu, hagree⟩ := L.nested n A v hv
+  exact ⟨u, hu, hagree⟩
+
+/-- A fresh atom for a finite set of sentences. -/
+private def freshAtom (A : Finset Sentence) : ℕ :=
+  (A.biUnion Sentence.atoms).sup id + 1
+
+private lemma freshAtom_not_mem (A : Finset Sentence) {φ : Sentence} (hφ : φ ∈ A) :
+    freshAtom A ∉ Sentence.atoms φ := by
+  intro hmem
+  have hle := Finset.le_sup (f := id)
+    (Finset.mem_biUnion.mpr ⟨φ, hφ, hmem⟩)
+  simp only [id_eq, freshAtom] at hle
+  omega
+
+/-- Falsifying a fresh atom does not change any payout on the given finite set. -/
+private lemma ratPayout_flipFresh (A : Finset Sentence) (v : PCWorld) {φ : Sentence}
+    (hφ : φ ∈ A) :
+    ratPayout (fun a => v a ∧ a ≠ freshAtom A) φ = ratPayout v φ := by
+  apply ratPayout_congr_of_atoms
+  intro a ha
+  have hne : a ≠ freshAtom A := fun hEq => freshAtom_not_mem A hφ (hEq ▸ ha)
+  exact ⟨fun h => h.1, fun h => ⟨h, hne⟩⟩
+
+/-- The assessment process that is *everything but the all-true world* at date `0` and
+`{allTrue}` from date `1` on. -/
+noncomputable def lateAllTrueLive : Assessment where
+  Live n v := match n with
+    | 0 => ∃ a, ¬ v a
+    | _ + 1 => ∀ a, v a
+  tables n S := match n with
+    | 0 => deductiveRestrict emptyProcess 0 S
+    | _ + 1 => [ratPayout allTrue]
+  tables_sound := by
+    intro n S w hw
+    match n with
+    | 0 =>
+        obtain ⟨u, _, hagree⟩ := deductiveRestrict_sound emptyProcess 0 S w hw
+        refine ⟨fun a => u a ∧ a ≠ freshAtom S, ⟨freshAtom S, by simp⟩, ?_⟩
+        intro φ hφ
+        rw [hagree φ hφ, ← ratPayout_flipFresh S u hφ]
+    | _ + 1 =>
+        simp only [List.mem_singleton] at hw
+        exact ⟨allTrue, fun _ => trivial, fun φ _ => by rw [hw]⟩
+  tables_complete := by
+    intro n S v hv
+    match n with
+    | 0 =>
+        exact deductiveRestrict_complete emptyProcess 0 S v
+          (fun φ hφ => absurd hφ (by simp [emptyProcess]))
+    | _ + 1 =>
+        refine ⟨ratPayout allTrue, List.mem_singleton_self _, fun φ _ => ?_⟩
+        have hveq : v = allTrue :=
+          funext fun a => propext ⟨fun _ => trivial, fun _ => hv a⟩
+        rw [hveq]
+  nested := by
+    intro n S v hv
+    match n with
+    | 0 =>
+        refine ⟨fun a => v a ∧ a ≠ freshAtom S, ⟨freshAtom S, by simp⟩, ?_⟩
+        intro φ hφ
+        exact ratPayout_flipFresh S v hφ
+    | _ + 1 =>
+        exact ⟨v, hv, fun _ _ => rfl⟩
+
+/-- **Support-local nesting is strictly weaker than global nesting.**  `lateAllTrueLive`
+satisfies the interface — so the whole lift applies to it — while `Live 1 ⊆ Live 0`
+fails. -/
+theorem lateAllTrueLive_not_globally_nested :
+    ¬ (∀ (v : PCWorld), lateAllTrueLive.Live 1 v → lateAllTrueLive.Live 0 v) := by
+  intro h
+  obtain ⟨a, ha⟩ := h allTrue (fun _ => trivial)
+  exact ha trivial
+
+/-- And it is not finitely determined at date `0`, which is consistent with
+`live_subset_of_finiteDetermined`. -/
+theorem lateAllTrueLive_not_finiteDetermined :
+    ¬ FiniteDetermined (lateAllTrueLive.Live 0) := by
+  intro hdet
+  have := lateAllTrueLive.live_subset_of_finiteDetermined 0 hdet
+    (v := allTrue) (fun _ => trivial)
+  obtain ⟨a, ha⟩ := this
+  exact ha trivial
+
 end Workspace.Normativity.Contrib.AssessmentProcess
 
 #print axioms Workspace.Normativity.Contrib.AssessmentProcess.payout_eq_ratPayout
@@ -1028,3 +1169,9 @@ end Workspace.Normativity.Contrib.AssessmentProcess
 #print axioms Workspace.Normativity.Contrib.AssessmentProcess.allTrueLive
 #print axioms Workspace.Normativity.Contrib.AssessmentProcess.allTrueLive_not_deductive
 #print axioms Workspace.Normativity.Contrib.AssessmentProcess.assessment_is_nonvacuous
+#print axioms Workspace.Normativity.Contrib.AssessmentProcess.ratPayout_congr_of_atoms
+#print axioms Workspace.Normativity.Contrib.AssessmentProcess.finiteDetermined_consistentWith
+#print axioms Workspace.Normativity.Contrib.AssessmentProcess.Assessment.live_subset_of_finiteDetermined
+#print axioms Workspace.Normativity.Contrib.AssessmentProcess.lateAllTrueLive
+#print axioms Workspace.Normativity.Contrib.AssessmentProcess.lateAllTrueLive_not_globally_nested
+#print axioms Workspace.Normativity.Contrib.AssessmentProcess.lateAllTrueLive_not_finiteDetermined

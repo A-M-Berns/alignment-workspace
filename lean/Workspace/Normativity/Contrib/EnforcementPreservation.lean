@@ -216,6 +216,52 @@ theorem netWorth_nonneg_of_day_nonneg (E : AdaptiveTrader) (L : Assessment)
         ((realizedEnforcer L E).strat (m + 1)).value (history L E) v.payout
       linarith
 
+
+/-! ## What computability of the modified market still needs
+
+`isLogicalInductor_of_computableMarket` takes `ComputableMarket (history L E)` as its
+one remaining hypothesis, which is exactly the shape of the dependency's own
+`lia_isLogicalInductor_of_computableMarket`.  Three of the four things a compiler
+for it needs are already here or in the dependency.
+
+* **The emission side is executable.**  `AssessmentProcess.BudgeterAt`,
+  `AssessmentFirm.TradingFirmAt` and `EnforcementStrategy.enforcementStrategy` are
+  `def`s, not `noncomputable def`s: given the assessment process's restriction lists
+  and the presentation as data, Lean compiles the day-`n` strategy term.  The
+  dependency's `BudgeterAt` and `TradingFirmAt` have the same status.
+* **The search side is generic in the strategy.**
+  `LogicalInduction.marketMakerSearchUpTo` is an executable bounded search and
+  `LogicalInduction.MarketMaker_search_clock` says it returns the market maker's
+  answer at a finite clock, for *every* `Strategy n`.  Nothing about the aggregate
+  enters.
+* **The recursion is prefix-determined**, which is what lets a clocked emitter exist:
+  the day-`n` aggregate depends on the first `n` belief states only, and that is
+  `aggregateAt_eq_of_eq_prefix` below.
+
+What is *not* here is the erasure: the first-order, `Nat`-and-`List`-valued
+presentation of the whole recursion that the dependency's
+`Construction/LIACompiler.lean` builds for its own aggregate.  That is transcription
+against a large file rather than a mathematical gap, and this pass does not do it.
+Note also the distinction the theorem needs and the paper does not:
+`EfficientlyComputable` is required of the traders the criterion quantifies over,
+and the enforcement trader is not one of them -- it may be computable without being
+efficiently computable, and presenting a coherence polytope may cost exponentially
+in the priced fragment. -/
+
+/-- The day-`n` aggregate depends on the market prefix and nothing later.  The
+enforcement trader's own prefix-invariance is a hypothesis because an arbitrary
+`AdaptiveTrader` need not have it. -/
+theorem aggregateAt_eq_of_eq_prefix (L : Assessment) (E : AdaptiveTrader) (n : ℕ)
+    (past past' : List RationalBeliefState)
+    (hE : E.action n past = E.action n past')
+    (h : ∀ day, day < n → ∀ φ,
+      rationalHistory past day φ = rationalHistory past' day φ) :
+    aggregateAt L E n past = aggregateAt L E n past' := by
+  have hfirm : (TradingFirm L).action n past = (TradingFirm L).action n past' :=
+    AssessmentFirm.TradingFirmAt_eq_of_eq_prefix L _ _ n h
+  unfold aggregateAt
+  rw [hE, hfirm]
+
 end Workspace.Normativity.Contrib.EnforcementPreservation
 
 #print axioms Workspace.Normativity.Contrib.EnforcementPreservation.states_eq_marketMakerStates
@@ -227,3 +273,4 @@ end Workspace.Normativity.Contrib.EnforcementPreservation
 #print axioms Workspace.Normativity.Contrib.EnforcementPreservation.isLogicalInductor_of_computableMarket
 #print axioms Workspace.Normativity.Contrib.EnforcementPreservation.no_efficient_trader_exploits_of_nonneg
 #print axioms Workspace.Normativity.Contrib.EnforcementPreservation.netWorth_nonneg_of_day_nonneg
+#print axioms Workspace.Normativity.Contrib.EnforcementPreservation.aggregateAt_eq_of_eq_prefix

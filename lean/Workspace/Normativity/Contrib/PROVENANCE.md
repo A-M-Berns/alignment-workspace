@@ -5,7 +5,7 @@
 | `PhiRegretBridge.lean` | `prompts/2026-08-11-phi-regret-bridge/` (executor: GPT-5 Codex, OpenAI; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phi-regret-bridge/` | — |
 | `SurgicalRepairBound.lean` | `prompts/2026-08-13-crown-jewel-learning-theorem-refinement/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-13 | `prompts/2026-08-13-crown-jewel-learning-theorem-refinement/` | — |
 | `TraderizedEnforcement.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-16/17 | `prompts/2026-08-16-traderized-enforcement/` | — |
-| `AssessmentProcess.lean`, `AssessmentFirm.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-16-traderized-enforcement/` | — |
+| `AssessmentProcess.lean`, `AssessmentFirm.lean`, `AssessmentProperties.lean`, `EnforcementStrategy.lean`, `EnforcementPreservation.lean`, `DeductiveEnforcement.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-16-traderized-enforcement/` | — |
 
 `PhiRegretBridge.lean` proves the eight-element cardinality, a generic
 finite-horizon regret-preservation lemma, and the recurrent-failure lower bound.
@@ -37,3 +37,20 @@ generalized criterion, that the deductive instance recovers the source's Budgete
 value at every date and world, and that some assessment process is the deductive
 instance of no deductive process. Logical Induction's `lem:mm` is used as the
 dependency's theorem, not restated.
+
+`EnforcementStrategy.lean` exhibits the compiled enforcement position as a
+`LogicalInduction.Strategy n` and proves its exact rational value against a payout
+table is the quantity `TraderizedEnforcement.lean`'s inequalities bound, together
+with the rank, support and continuity facts that make it legal, and the per-row
+tolerance corollary.
+
+`EnforcementPreservation.lean` and `DeductiveEnforcement.lean` build the recursions
+pricing the generalized firm plus one added trader and the source firm plus one
+added trader, split the aggregate, and conclude the generalized and the original
+criterion respectively from a bound on the added trader's assessed cumulative
+liability. `DeductiveEnforcement.lean` also derives that bound as zero for a
+presentation every deductively plausible world satisfies.
+
+`AssessmentProperties.lean` generalizes two of the source's property families to an
+assessment process, and recovers their deductive instances, exhibiting the shape
+every family's hypotheses take.
