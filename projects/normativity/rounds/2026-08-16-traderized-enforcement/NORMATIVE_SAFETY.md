@@ -19,11 +19,11 @@ below is stronger than the weakest arrow in the path that uses it.
 
 | # | arrow | evidence |
 |---|---|---|
-| A1 | market-maker contract + force declaration ⟹ `Σ_j β_j g_j(P_t)² ≤ ε_t + C_t`, hence `g_j(P_t) ≤ δ_t` | **lean-proved** — `TraderizedEnforcement.weighted_square_le_slack_add_volume` |
+| A1 | market-maker contract + force declaration ⟹ `Σ_j β_j g_j(P_t)² ≤ ε_t + M_t`, hence `g_j(P_t) ≤ δ_t` | **lean-proved** — `TraderizedEnforcement.weighted_square_le_slack_add_volume` |
 | A2 | the compiled position is a legal day-`t` `Strategy n` | **derived** — exhibited in the source's feature grammar, not written as a term |
 | A3 | liability identity: `L_t(ω) ≤ Σ_j β_{t,j} g_j(P_t) d_j(ω)` | **lean-proved** — `weighted_square_sub_deficit_le_pair` |
-| A4 | substituting the promise and the intensity: `L_t(ω) ≤ (ε_t + C_t)·‖d_t(ω)‖₁ / δ_t` | **derived** from A1 and A3 |
-| **A5** | **outflow protocol with capital `B` ⟹ `Σ_t q_t ≤ B` ⟹ `Σ_{t≤n} E_t(ω) ≥ −B` for all `n` and all `ω ∈ Ω_n^live`**, with `q_t = (ε_t + C_t)·D_t/δ_t` and `D_t = sup_{ω ∈ Ω_t^live} Σ_j d_{t,j}(ω)` | **derived** — §7–8, §13a |
+| A4 | substituting the promise and the intensity: `L_t(ω) ≤ (ε_t + M_t)·‖d_t(ω)‖₁ / δ_t` | **derived** from A1 and A3 |
+| **A5** | **outflow protocol with capital `B` ⟹ `Σ_t q_t ≤ B` ⟹ `Σ_{t≤n} E_t(ω) ≥ −B` for all `n` and all `ω ∈ Ω_n^live`**, with `q_t = (ε_t + M_t)·D_t/δ_t` and `D_t = sup_{ω ∈ Ω_t^live} Σ_j d_{t,j}(ω)` | **derived** — §7–8, §13a |
 | **A5′** | **the `D_t` that was certified is the `D_t` of the position that was emitted** | **derived** — §7a; enforced by construction in `compile_safe_force`, and by a binding check in the lower-level path |
 | A6 | `B < ∞` ⟹ no efficiently computable trader exploits the modified market, and assessed net worth is at most `1 + B` | **derived**, conditional on A7 |
 | A7 | the generalized live-world Budgeter/TradingFirm lift | **derived and unformalized** — the paper's only conditional, `PAPER_RECONCILIATION.md` |
@@ -32,7 +32,7 @@ below is stronger than the weakest arrow in the path that uses it.
 
 **Where the new arrow sits.** A5 is the arrow this pass adds, and it enters
 *before* bounded liability rather than restating it. Its inputs — `ε_t` from the
-market, `C_t` a declared volume bound, `δ_t` the tolerance about to be promised,
+market, `M_t` a declared volume bound, `δ_t` the tolerance about to be promised,
 `d_t` from the semantic/settlement state — are all available at or before the
 moment force is emitted, which is what makes it a protocol rather than a
 hypothesis. Its output is exactly A6's hypothesis.
@@ -95,7 +95,7 @@ Finite gating (`P3`) bounds how many rows are live per date, hence the length of
 the deficit vector.
 
 **That is monotonicity and a bounded row count. It is not summability**, and the
-declared-quantity ceiling `(ε_t + C_t)·D_t/δ_t` has `C_t` — a bound on
+declared-quantity ceiling `(ε_t + M_t)·D_t/δ_t` has `M_t` — a bound on
 cumulative ordinary trading volume — growing in the numerator.
 
 ## 4. Two trajectories
@@ -106,7 +106,7 @@ and 12** — finitely many dates carry any deficit at all, so `B < ∞` is disch
 outright.
 
 **Unsafe.** Minimally altered: nothing ever settles, the deficit stays `1/2`, and
-`C_t = t`. Cumulative bound `52.3 → 182.5 → 392.5` at the same horizons, growing
+`M_t = t`. Cumulative bound `52.3 → 182.5 → 392.5` at the same horizons, growing
 quadratically. And it is not only the bound: the compiled position is short the
 endorsement's direction at a world the record still permits, so the loss is real.
 
@@ -147,7 +147,7 @@ bound on the cumulative outflow of its own compiled position. It fails, and the
 failure is not subtle.
 
 Let endorsement `e` be live at date `e` alone, with exclusion deficit `1`, at
-tolerance `1/2` against `ε + C = 1`. Its whole-lifetime outflow is `2`, finite.
+tolerance `1/2` against `ε + M = 1`. Its whole-lifetime outflow is `2`, finite.
 Exactly one row is live at every date, so finite gating is obeyed everywhere. And
 the aggregate certificate after `n` dates is exactly `2n`.
 
@@ -168,7 +168,7 @@ into an allocation that is *summable* rather than merely finite termwise.
 
 `src/outflow.py`. Finite lifetime capital `B`, spent down as force is emitted.
 
-**The charge.** A date's force costs `(ε_t + C_t)·D_t / δ_t` — the
+**The charge.** A date's force costs `(ε_t + M_t)·D_t / δ_t` — the
 declared-quantity liability ceiling, renamed. That rename is the move: a quantity
 the safety analysis could previously only report after the fact becomes a price
 paid in advance. It uses no realized price, so §6's timing question answers
@@ -277,7 +277,7 @@ nonexploitability with assessed net worth at most `1 + B`.
 The charge is a product of three factors and the condition is that the product be
 summable:
 
-    q_t = (ε_t + C_t)·D_t / δ_t ,        Σ_t q_t < ∞ .
+    q_t = (ε_t + M_t)·D_t / δ_t ,        Σ_t q_t < ∞ .
 
 Ordinary aggregate pressure, normative exclusion depth, tolerated error. **No one
 of them is privileged.** Indefinite force stays affordable if the depth decays, or
@@ -285,7 +285,7 @@ if the pressure decays, or if the tolerance loosens, or any combination.
 
 Inverting against a per-date allowance `b_t` gives the affordability relation
 
-    δ_t ≥ (ε_t + C_t)·D_t / b_t ,
+    δ_t ≥ (ε_t + M_t)·D_t / b_t ,
 
 which is one reading of the same equation: the remaining account determines how
 tightly the reasoner may be forced, given the other two factors.
@@ -293,16 +293,16 @@ tightly the reasoner may be forced, given the other two factors.
 **A withdrawn theorem.** A previous version of this note claimed that a date whose
 promise says anything costs at least `D_t`, and so that persistent positive depth
 exhausted any finite account. The step is wrong: `δ_t ≤ 1` gives only
-`q_t ≥ (ε_t + C_t)·D_t`, and the dropped factor is not bounded below.
+`q_t ≥ (ε_t + M_t)·D_t`, and the dropped factor is not bounded below.
 `test_outflow.DepthOnlyImpossibilityIsWithdrawn` carries the counterexample —
-`D_t = 1/2` and `δ_t = 1` forever against `ε_t + C_t = 2^-t` sums to under `1`, so
+`D_t = 1/2` and `δ_t = 1` forever against `ε_t + M_t = 2^-t` sums to under `1`, so
 the normative distance never closes at all and force is affordable forever.
 `meaningful_dates_are_finite` now raises rather than answering.
 
 **The corrected limitative theorem** needs floors on two factors and a ceiling on
 the third:
 
-    D_t ≥ d > 0,  ε_t + C_t ≥ c > 0,  δ_t ≤ δ̄   ⟹   q_t ≥ cd/δ̄ > 0 ,
+    D_t ≥ d > 0,  ε_t + M_t ≥ c > 0,  δ_t ≤ δ̄   ⟹   q_t ≥ cd/δ̄ > 0 ,
 
 so finitely many such dates fit in finite capital — at most `B·δ̄/(cd)`. All three
 hypotheses are load-bearing and `positive_floor_dates` refuses to run without
@@ -357,7 +357,7 @@ The account bills a row presentation, and presentations of the same admissible s
 are not interchangeable. A previous version of this note claimed they were. It
 tested a compiler retuned for the occasion — dividing the intensity by the row
 count — where the installed `ForceDeclaration` uses a uniform
-`β_j = (ε + C)/δ²` for every row, so the retuning *was* the result.
+`β_j = (ε + M)/δ²` for every row, so the retuning *was* the result.
 
 **What the installed compiler actually does**, at a fixed declared tolerance:
 
@@ -429,7 +429,7 @@ The choice is constitutional and is reserved.
 
 ## 13. Two sufficient trajectory conditions, neither necessary
 
-**Deficit route.** `Σ_t (ε_t + C_t)·‖d_t(ω)‖₁ / δ_t < ∞`. Satisfied by the safe
+**Deficit route.** `Σ_t (ε_t + M_t)·‖d_t(ω)‖₁ / δ_t < ∞`. Satisfied by the safe
 fixture with finitely many nonzero terms, and by the forever-unvindicated fixture
 with infinitely many. Nothing shows it necessary.
 
@@ -482,10 +482,10 @@ Putting the binding and the horizon argument together, this is what a holder of 
 
 **Proposition.** Let `F_t` be produced by `compile_safe_force` from an exact row
 presentation `R_t` over support `S_t`, at date `t`, against live worlds `L_t`,
-with declared `ε_t`, `C_t` and tolerance `δ_t`. Then the emitted position `E_t` is
+with declared `ε_t`, `M_t` and tolerance `δ_t`. Then the emitted position `E_t` is
 the trader compiled from `R_t`, and
 
-    for every ω ∈ L_t:   E_t(ω)  ≥  −(ε_t + C_t)·D_t/δ_t  =  −q_t ,
+    for every ω ∈ L_t:   E_t(ω)  ≥  −(ε_t + M_t)·D_t/δ_t  =  −q_t ,
 
 where `D_t = max_{ω ∈ L_t} Σ_j d_j(ω)` was computed by enumerating `L_t` against
 `R_t` — the same presentation, the same support, the same date. That exact `q_t`
@@ -504,7 +504,7 @@ those four could differ between the certified object and the emitted one.
 presentations that are feasible, and therefore compile through the traderized
 force interface; the resulting force meets its declared finite-time tolerance.
 For the displayed settlement trajectories the statics also generate live-world
-deficit schedules whose full certified cost `Σ_t (ε_t + C_t)·D_t/δ_t` is finite.
+deficit schedules whose full certified cost `Σ_t (ε_t + M_t)·D_t/δ_t` is finite.
 Hence the installed outflow protocol yields bounded cumulative enforcement
 liability, and therefore — conditional on the generalized live-world TradingFirm
 lift — preserves nonexploitability.

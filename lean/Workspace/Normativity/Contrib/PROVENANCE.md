@@ -5,7 +5,7 @@
 | `PhiRegretBridge.lean` | `prompts/2026-08-11-phi-regret-bridge/` (executor: GPT-5 Codex, OpenAI; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-11 | `prompts/2026-08-11-phi-regret-bridge/` | — |
 | `SurgicalRepairBound.lean` | `prompts/2026-08-13-crown-jewel-learning-theorem-refinement/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-13 | `prompts/2026-08-13-crown-jewel-learning-theorem-refinement/` | — |
 | `TraderizedEnforcement.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-16/17 | `prompts/2026-08-16-traderized-enforcement/` | — |
-| `AssessmentProcess.lean`, `AssessmentFirm.lean`, `AssessmentProperties.lean`, `EnforcementStrategy.lean`, `EnforcementPreservation.lean`, `DeductiveEnforcement.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-16-traderized-enforcement/` | — |
+| `AssessmentProcess.lean`, `AssessmentFirm.lean`, `AssessmentProperties.lean`, `EnforcementStrategy.lean`, `EnforcementPreservation.lean`, `DeductiveEnforcement.lean`, `CoherenceModulus.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-16-traderized-enforcement/` | — |
 
 `PhiRegretBridge.lean` proves the eight-element cardinality, a generic
 finite-horizon regret-preservation lemma, and the recurrent-failure lower bound.
@@ -54,3 +54,12 @@ presentation every deductively plausible world satisfies.
 `AssessmentProperties.lean` generalizes two of the source's property families to an
 assessment process, and recovers their deductive instances, exhibiting the shape
 every family's hypotheses take.
+
+`CoherenceModulus.lean` proves the modulus that turns presentation-relative row
+conformance into a coherence measure: conformance at tolerance `delta` on an
+`l1`-net of mesh `m` bounds the support gap of every coefficient vector in the unit
+ball by `delta + m`, with the Hoelder step supplying the constant. The
+identification of that supremum with the sup-norm distance to the convex hull is
+ordinary convex duality, cited rather than reproved; the negative half -- that an
+arbitrary presentation of the same region bounds no distance -- is a witness in the
+round's `test_deduction.PresentationRelativeConformance`.

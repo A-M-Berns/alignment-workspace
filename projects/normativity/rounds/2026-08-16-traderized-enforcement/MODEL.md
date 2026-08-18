@@ -66,14 +66,14 @@ support coverage; it is not identified with `coverage(Due)` and the two have
 different types (see `INTEGRATION_MAP.md` §3).
 
 One presentation makes it automatic. The **support-function presentation**
-*(provisional)* takes a finite family `C` of rational coefficient vectors and
+*(provisional)* takes a finite family `N` of rational coefficient vectors and
 sets
 
-    K_n(C)  =  { x ∈ cube : ⟪c, x⟫ ≥ min over W ∈ PC(D_n) of ⟪c, W⟫,  for c ∈ C } .
+    K_n(N)  =  { x ∈ cube : ⟪c, x⟫ ≥ min over W ∈ PC(D_n) of ⟪c, W⟫,  for c ∈ N } .
 
 Reading the right-hand side off the plausible worlds makes world-inclusivity hold
-by construction, makes `K_n(C)` contain the coherence polytope
-`conv(PC(D_n))`, and makes it equal that polytope once `C` carries the polytope's
+by construction, makes `K_n(N)` contain the coherence polytope
+`conv(PC(D_n))`, and makes it equal that polytope once `N` carries the polytope's
 facet normals. `deduction.support_rows` builds it; a test confirms both the
 inclusion property and, on a Boolean fragment, the equality.
 
@@ -115,7 +115,7 @@ each of the six questions has an answer:
 | computable from the price history? | yes, given the rows are computable at date `n` |
 | continuous in the current price? | yes — `max` and linear operations only, which is what `lem:fpl`'s Brouwer step needs |
 | rows available at the date? | **a declared assumption**, the effective-presentation obligation |
-| dependence on `ε_t`, `C_t`, `δ_t` legal? | yes: `β` is a rational constant computed from `p_{≤n-1}` before the strategy is emitted, and enters as `const` |
+| dependence on `ε_t`, `M_t`, `δ_t` legal? | yes: `β` is a rational constant computed from `p_{≤n-1}` before the strategy is emitted, and enters as `const` |
 | does exemption from efficient computability suffice? | yes for the criterion, which quantifies over efficiently computable traders; the market must still be a **computable** belief sequence, so `E` must be computable |
 | does it need a source-side wrapper? | it needs a `Strategy n` term, and the grammar above supplies one |
 
@@ -158,7 +158,7 @@ violation-proportional one cannot, at the cost of not vanishing on the region.
 `exactness.GaugeTrader`, and it refuses an anchor that is not strictly interior,
 which is the same test as whether the region has an interior at all.
 
-**Force declaration** — `(rows, C_t, ε_t, intensities, δ_t)`, the five things a
+**Force declaration** — `(rows, M_t, ε_t, intensities, δ_t)`, the five things a
 force mechanism signs. `contract.ForceDeclaration` derives the intensity from the
 other four and checks conformance squarewise so no root is needed.
 

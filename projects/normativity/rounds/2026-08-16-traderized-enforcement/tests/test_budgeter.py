@@ -69,9 +69,11 @@ class DeductiveSpecialization(unittest.TestCase):
 
 class Preconditions(unittest.TestCase):
 
-    def test_an_empty_process_is_refused(self):
-        with self.assertRaises(ValueError):
-            scaling((F(1),), (F(1, 2),), {}, F(1), [])
+    def test_an_empty_process_gives_the_neutral_scaling(self):
+        """The source's `EF.listMin []` is `EF.const 1`, so the Budgeter scales by
+        one when nothing is assessed. Nonemptiness is not a precondition of the
+        construction; it is what makes the floor theorem non-vacuous."""
+        self.assertEqual(scaling((F(1),), (F(1, 2),), {}, F(1), []), F(1))
 
     def test_the_shutoff_reads_the_dates_process(self):
         """Nesting is what lets a world live now count as live then."""

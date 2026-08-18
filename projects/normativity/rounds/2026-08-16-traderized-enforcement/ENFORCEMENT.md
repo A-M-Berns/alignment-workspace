@@ -78,10 +78,10 @@ Kernel-checked as `weighted_square_le_slack_add_volume`. Consequences, per row:
 
     g_j(P_n)  ≤  sqrt( (ε_n + M_n) / β_j ) .
 
-`M_n` is available: `SOURCE_AUDIT.md` §2 derives `M_n ≤ C_n`, the computable
-volume bound the `TradingFirm` construction already produces from the belief
-history. So the intensities can be chosen **adaptively at date `n`** — set
-`β_j = (ε_n + C_n)/δ_n²` for any schedule `δ_n` and every row violation is at
+`M_n` is available: `SOURCE_AUDIT.md` §2 derives `M_n ≤ C^{tf}_n`, the source's own computable
+volume bound (the paper's `C_n`), which the `TradingFirm` construction already
+produces from the belief history. So the intensities can be chosen **adaptively at date `n`** — set
+`β_j = (ε_n + C^{tf}_n)/δ_n²` for any schedule `δ_n` and every row violation is at
 most `δ_n`. What cannot be done is choosing `β` from the observed violation: the
 enforcement trader is a strategy, a function of prices, and its intensities are
 fixed before the market maker picks a price.
@@ -132,14 +132,14 @@ true.
 ## 5. The exactness fork
 
 Take the disturbance class seriously: every ordinary realised position of `ℓ¹`
-mass at most `C`. A price is displayable when some disturbance in that class
+mass at most `M`. A price is displayable when some disturbance in that class
 brings the aggregate inside the contract, so the mechanism enforces exactly when
 **no** price outside `K` is displayable. `exactness.min_max_gain` computes the
 disturbance's best play — greedily, and checked against brute force.
 
 One fact organises the answer. At an interior price the contract at slack zero
 forces the aggregate to vanish, so a price is displayable exactly when
-`‖ζ_E(P)‖₁ ≤ C`. Exact enforcement therefore demands `‖ζ_E‖₁ > C` on the whole
+`‖ζ_E(P)‖₁ ≤ M`. Exact enforcement therefore demands `‖ζ_E‖₁ > M` on the whole
 interior complement of `K` — a **floor**, which the violation-proportional
 position cannot have because it vanishes as the violation does.
 
@@ -150,7 +150,7 @@ interior point `z`, the interior-anchored position
 
 with `γ` the Minkowski gauge of `K` about `z` written from the rows, is a legal
 expressible strategy and enforces `P ∈ K` exactly against every disturbance of
-mass at most `C`, for `λ` large enough.
+mass at most `M`, for `λ` large enough.
 
 *Evidence.* `test_exactness.GaugeTraderIsExact`, in one and two dimensions: the
 whole contract-feasible set lies inside `K` where the violation-proportional
@@ -170,21 +170,21 @@ zero. ∎
 **Theorem 9 (exactness needs an interior, for a region strictly inside the open
 interval).** Let one sentence be priced, `K ⊆ (0,1)` nonempty and closed, and
 `ζ_E` any continuous strategy. If no price outside `K` is displayable against
-disturbances of mass `C > 0`, then `K` has nonempty interior.
+disturbances of mass `M > 0`, then `K` has nonempty interior.
 
 *Proof.* `P = 0` is outside `K`, and there the contract charges nothing for a
-short position, so excluding it requires `ζ_E(0) > C`. Symmetrically
-`ζ_E(1) < −C`. By the intermediate value theorem `ζ_E(P₀) = 0` for some
-`P₀ ∈ (0,1)`, and by continuity `|ζ_E| < C` on a neighbourhood of `P₀`. Every
+short position, so excluding it requires `ζ_E(0) > M`. Symmetrically
+`ζ_E(1) < −M`. By the intermediate value theorem `ζ_E(P₀) = 0` for some
+`P₀ ∈ (0,1)`, and by continuity `|ζ_E| < M` on a neighbourhood of `P₀`. Every
 price there is displayable, so all of it lies in `K`. ∎
 
 **The hypothesis `K ⊆ (0,1)` is load-bearing, and an earlier draft of this
 section dropped it.** A region touching a cube face is not covered, and is not
 covered because the theorem is false there: `K = {0}` is enforced exactly by the
-*constant* strategy `ζ_E ≡ −λ` for any `λ > C`. At `P = 0` a short position costs
+*constant* strategy `ζ_E ≡ −λ` for any `λ > M`. At `P = 0` a short position costs
 the disturbance nothing to leave, so the contract charges zero; at every `P > 0`
-the aggregate stays short by at least `λ − C` and the cube maximum gain is
-`(λ−C)P > 0`. The feasible set is exactly `{0}`
+the aggregate stays short by at least `λ − M` and the cube maximum gain is
+`(λ−M)P > 0`. The feasible set is exactly `{0}`
 (`test_regressions.EmptyInteriorDoesNotImplyImpossibility`).
 
 **Settlement is therefore the easy case, not the hard one.** Pinning a sentence
@@ -197,7 +197,7 @@ empty relative interior. The coherence polytope of a fragment carrying a
 propositional relation is one: `p(φ) + p(¬φ) = 1` cuts a segment through the open
 cube, an enforcement position must be long above it and short below it, and
 continuity puts a cancellable band across it at every finite intensity — half-width
-`C/(2β)`, exhibited exactly because a grid coarser than that reports none
+`M/(2β)`, exhibited exactly because a grid coarser than that reports none
 (`test_regressions.CoherenceSegmentIsStillHard`).
 
 **Conjecture (face-solidity).** Exact enforcement against a positive disturbance
@@ -209,7 +209,7 @@ delimited by the witnesses above — settlement faces on the possible side, the
 coherence segment on the impossible side — and nothing here proves it.
 
 What survives on the impossible side is tolerance at any level: for
-`ζ_E(P) = s(c − P)` the displayable interval around `c` has width exactly `2C/s`,
+`ζ_E(P) = s(c − P)` the displayable interval around `c` has width exactly `2M/s`,
 positive for every finite `s` and shrinking without limit. So the fork resolves as
 **A for face-solid regions, at a cost; B for regions that are not; C as the
 asymptotics in that second case.** Whether that matters is `D`, and
@@ -220,7 +220,7 @@ declared tolerance schedule, not exactness.
 
 That any market maker realises the contract. `MarketMaker` is read as delivering
 it in `SOURCE_AUDIT.md` §2 and it enters every theorem here as a hypothesis. That
-`M_n = C_n` is the tightest available bound — it is the one the source
+`M_n = C^{tf}_n` is the tightest available bound — it is the one the source
 construction already computes, and nothing here shows it cannot be improved. That
 the enforced prices are *good*: enforcement onto a region says nothing about
 whether the region is the right one, which is the whole of §VII of the report.

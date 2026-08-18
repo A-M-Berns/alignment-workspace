@@ -32,9 +32,15 @@ def scaling(position: Sequence[Fraction], prices: Sequence[Fraction],
     `prior_value` maps a world (as a tuple) to the trader's cumulative value
     there before this date. `budget` is the source's `b`. Returns a rational in
     `(0, 1]`.
+
+    An empty assessment set returns `1`, which is the source's own behaviour:
+    `budgetScaleFeature` is `EF.listMin` over the plausible worlds and
+    `EF.listMin [] = EF.const 1`. Nonemptiness is therefore not a precondition of
+    the Budgeter -- it is what makes the floor theorem say something, since the
+    theorem quantifies over assessed worlds and there are none.
     """
     if not assessment_worlds:
-        raise ValueError("an empty assessment process leaves the infimum undefined")
+        return ONE                           # the source's neutral fallback
     best = None
     for world in assessment_worlds:
         key = tuple(world)

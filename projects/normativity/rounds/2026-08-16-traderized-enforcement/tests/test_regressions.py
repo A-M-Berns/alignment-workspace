@@ -206,5 +206,82 @@ class DiracLiveWorldsAreNotLiveWorlds(unittest.TestCase):
             holdings_value(trader.coefficients(price), price, (F(1),)), F(-9, 40))
 
 
+class PerRowToleranceNeedsPositiveDisturbance(unittest.TestCase):
+    """**Narrowed:** `beta_j >= (eps + M)/delta^2` does not by itself force
+    `g_j <= delta`.
+
+    The step is `beta*g^2 <= eps + M <= beta*delta^2`, and dividing by `beta`
+    needs `beta > 0`. At `eps + M = 0` the intensity condition is satisfied by
+    `beta = 0`, and then the conformance bound `sum_j beta_j g_j^2 <= 0` holds at
+    every price, so no row is constrained at all. The Lean statement
+    `EnforcementStrategy.rowViolation_le_of_intensity_ge` therefore carries
+    `0 < eps + M`, which is automatic in the source market: the market maker's
+    slack is `2^-(n+1)` at every date, so the disturbance is never zero.
+    """
+
+    def test_at_zero_disturbance_the_intensity_condition_is_empty(self):
+        disturbance, tolerance = F(0), F(1, 10)
+        self.assertEqual(disturbance / tolerance ** 2, F(0))
+        # beta = 0 meets it, and then the weighted square is zero at any price
+        for violation in (F(1, 2), F(1), F(3, 4)):
+            self.assertLessEqual(F(0) * violation ** 2, disturbance)
+            self.assertGreater(violation, tolerance)
+
+    def test_with_positive_disturbance_the_bound_bites(self):
+        """The same arithmetic with `eps + M > 0`: the intensity is forced
+        positive, and the violation is forced under the tolerance."""
+        disturbance, tolerance = F(1, 8), F(1, 10)
+        beta = disturbance / tolerance ** 2
+        self.assertEqual(beta, F(25, 2))
+        self.assertGreater(beta, 0)
+        # beta * g^2 <= disturbance and beta * delta^2 = disturbance force g <= delta
+        self.assertEqual(beta * tolerance ** 2, disturbance)
+        for violation in (F(1, 10), F(1, 20), F(0)):
+            self.assertLessEqual(beta * violation ** 2, disturbance)
+        for violation in (F(11, 100), F(1, 5)):
+            self.assertGreater(beta * violation ** 2, disturbance)
+
+
+class IntensityIsFixedBeforeThePrice(unittest.TestCase):
+    """The intensities are not a response to the violation the maker realises.
+
+    Structural rather than numerical: `certified_intensity` is a function of the
+    declared slack, the declared volume bound and the promised tolerance, none of
+    which is a price; and the compiled trader carries the same intensities to
+    every price it is evaluated at. In the Lean term this is not an argument at
+    all -- the intensities are `EF.const` leaves of a term whose arguments are the
+    presentation and the date, and the rank bound is what says the coefficients
+    read no price later than day `n`.
+    """
+
+    REGION = Region(1, [Row((F(1),), F(1, 2))])
+    DECLARATION = ForceDeclaration(REGION, volume=F(1, 4), slack=F(1, 8),
+                                   tolerance=F(1, 10))
+
+    def test_the_intensity_does_not_take_a_price(self):
+        from contract import certified_intensity
+        self.assertEqual(self.DECLARATION.intensity,
+                         certified_intensity(F(1, 8), F(1, 4), F(1, 10)))
+
+    def test_the_same_intensity_is_carried_to_every_price(self):
+        trader = EnforcementTrader(self.REGION, self.DECLARATION.intensity)
+        betas = trader.betas
+        for price in ((F(0),), (F(1, 4),), (F(1, 2),), (F(1),)):
+            trader.coefficients(price)
+            self.assertEqual(trader.betas, betas, price)
+
+    def test_a_larger_realised_violation_does_not_raise_it(self):
+        trader = EnforcementTrader(self.REGION, self.DECLARATION.intensity)
+        small = self.REGION.violations((F(2, 5),))
+        large = self.REGION.violations((F(0),))
+        self.assertLess(small[0], large[0])
+        self.assertEqual(trader.betas, trader.betas)
+        # the position scales with the violation; the intensity does not
+        self.assertEqual(trader.coefficients((F(0),))[0],
+                         trader.betas[0] * large[0])
+        self.assertEqual(trader.coefficients((F(2, 5),))[0],
+                         trader.betas[0] * small[0])
+
+
 if __name__ == "__main__":
     unittest.main()

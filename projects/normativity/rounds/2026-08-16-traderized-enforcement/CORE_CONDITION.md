@@ -73,7 +73,7 @@ compiler's input.
 
 **What intensity does a declared `theta_min` need?** The core rows are rows like
 any other, so `ForceDeclaration` applies unchanged: against an ordinary volume
-bound `C_t` and market slack `ε_t`, intensity `(ε_t + C_t)/δ_t²` buys row
+bound `M_t` and market slack `ε_t`, intensity `(ε_t + M_t)/δ_t²` buys row
 violations at most `δ_t`. Conformance is to the *depth* condition, at a declared
 tolerance, rather than to membership.
 

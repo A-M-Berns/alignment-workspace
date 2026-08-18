@@ -336,7 +336,7 @@ the recovery theorem, and whatever Coverage turns out to be.
 5. **Traderized force enforces the projection.** The compiled position makes
    prices outside `K_t` carry positive cube-maximum gain, so the market maker
    cannot display them beyond a declared tolerance `δ_t`, at intensity
-   `(ε_t + C_t)/δ_t²`.
+   `(ε_t + M_t)/δ_t²`.
 6. **The preservation theorem**: if the enforcement position's cumulative value
    over the live worlds is bounded below by `−B`, no efficiently computable trader
    exploits the modified market, and every such trader's assessed net worth is at

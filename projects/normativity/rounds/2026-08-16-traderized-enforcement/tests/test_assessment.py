@@ -134,6 +134,110 @@ class BudgeterConsumesTheRestriction(unittest.TestCase):
             F(1, 5))
 
 
+class NonemptinessIsNotAPrecondition(unittest.TestCase):
+    """What (L3) buys is non-vacuity, not the construction.
+
+    The source's scaling infimum is `EF.listMin` over the plausible worlds and
+    `EF.listMin [] = EF.const 1`, so an empty assessment set scales by one. What
+    goes empty with it is the set of plausible assessments, which is what the
+    floor theorem and the exploitation criterion quantify over.
+    """
+
+    PROCESS = explicit([[]])
+
+    def test_the_restriction_is_empty(self):
+        self.assertEqual(self.PROCESS.restrict(0, PHI1), [])
+        self.assertFalse(self.PROCESS.nonempty(0, PHI1))
+
+    def test_the_scaling_is_neutral_rather_than_undefined(self):
+        self.assertEqual(
+            budgeter_scaling_on_support({"A": F(1)}, {"A": F(1, 2)}, {}, F(1, 10),
+                                        self.PROCESS, 0, PHI1),
+            F(1))
+
+    def test_nesting_holds_vacuously(self):
+        self.assertTrue(self.PROCESS.temporally_nested([0, 1], PHI1))
+
+
+class ResurrectionBreaksTheFloor(unittest.TestCase):
+    """Why nesting is load-bearing, at the quantity it is load-bearing for.
+
+    The Budgeter's floor `-b` is proved by induction on the date, and the step
+    needs a world assessed now to have been assessed before, so that the prior
+    safety bound applies to it. Resurrect a world and the step fails: the trader
+    is scaled by one at date `0` because the losing world is not assessed there,
+    and the resurrected world then values the accumulated position below `-b`.
+    """
+
+    #: `A` false is dead at date 0 and alive again at date 1.
+    PROCESS = explicit([
+        [(F(1), F(0))],                        # date 0: only `A` true
+        [(F(0), F(0)), (F(1), F(0))],          # date 1: `A` false resurrected
+    ])
+    POSITION = {"A": F(1)}                     # buy one share of `A`
+    PRICES = {"A": F(1, 2)}
+    BUDGET = F(1, 10)
+
+    def test_the_process_fails_temporal_nesting(self):
+        self.assertFalse(self.PROCESS.temporally_nested([0, 1], PHI1))
+
+    def test_the_scaling_is_one_at_the_first_date(self):
+        """Nothing assessed at date 0 loses on the buy, so nothing is scaled."""
+        self.assertEqual(
+            budgeter_scaling_on_support(self.POSITION, self.PRICES, {},
+                                        self.BUDGET, self.PROCESS, 0, PHI1),
+            F(1))
+
+    def test_the_resurrected_world_is_below_the_budget(self):
+        """Two dates of unscaled buying lose `1/2` each at `A` false, which is
+        past `-b = -1/10` — the floor the source's part 2 asserts."""
+        loss_per_date = F(0) - self.PRICES["A"]          # payout minus price
+        self.assertEqual(loss_per_date, F(-1, 2))
+        cumulative = 2 * loss_per_date
+        self.assertEqual(cumulative, F(-1))
+        self.assertLess(cumulative, -self.BUDGET)
+        self.assertIn((F(0),), self.PROCESS.restrict(1, PHI1))
+
+
+class SupportLocalNestingIsWeakerThanGlobal(unittest.TestCase):
+    """The interface the lift consumes is the support-local shadow, and it is
+    strictly weaker than `L_{t+1} subset L_t`.
+
+    Ambient names `A`, `B`; the priced fragment is `{A}`. At date `0` the live
+    worlds are those with `B` false; at date `1` they are those with `B` true.
+    Global nesting fails outright. But every restriction to the priced fragment
+    is matched, because `B` is not priced — which is exactly the situation the
+    Lean witness `lateAllTrueLive` generalizes: a fresh unpriced coordinate
+    absorbs the difference.
+    """
+
+    PROCESS = explicit([
+        [(F(0), F(0)), (F(1), F(0))],          # date 0: `B` false
+        [(F(0), F(1)), (F(1), F(1))],          # date 1: `B` true
+    ])
+
+    def test_global_nesting_fails(self):
+        self.assertFalse(set(self.PROCESS.live(1)) <= set(self.PROCESS.live(0)))
+
+    def test_support_local_nesting_holds_on_the_priced_fragment(self):
+        self.assertTrue(self.PROCESS.temporally_nested([0, 1], PHI1))
+        self.assertEqual(self.PROCESS.restrict(0, PHI1),
+                         self.PROCESS.restrict(1, PHI1))
+
+    def test_and_fails_once_the_unpriced_name_is_priced(self):
+        """The shadow is relative to the queried support: price `B` and the
+        difference is visible again. So the interface is genuinely weaker only
+        for supports the construction does not query."""
+        self.assertFalse(self.PROCESS.temporally_nested([0, 1], PHI2))
+
+    def test_the_budgeter_cannot_tell_the_difference(self):
+        for date in (0, 1):
+            self.assertEqual(
+                budgeter_scaling_on_support({"A": F(1)}, {"A": F(1, 2)}, {},
+                                            F(1, 10), self.PROCESS, date, PHI1),
+                F(1, 5), date)
+
+
 class DeductiveInstance(unittest.TestCase):
     """Deduction supplies the interface over two growing fragments."""
 

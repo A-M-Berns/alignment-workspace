@@ -131,9 +131,9 @@ def budgeter_scaling_on_support(position: dict, prices: dict,
     exactly why the restriction is the right finite object.
     """
     worlds = process.restrict(date, support)
-    if not worlds:
-        raise ValueError("no assessed world on this support")
     one = Fraction(1)
+    if not worlds:
+        return one                           # the source's neutral fallback
     best = None
     for world in worlds:
         value = sum((position[name] * (world[i] - prices[name])

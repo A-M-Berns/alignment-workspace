@@ -268,7 +268,7 @@ def raw_charge(slack: Fraction, volume: Fraction, tolerance: Fraction,
 def affordable_tolerance(slack: Fraction, volume: Fraction,
                          deficits: Sequence[Fraction],
                          allowance: Fraction) -> Fraction | None:
-    """The tightest conformance an allowance buys: `(eps + C)*||d||_1 / b`.
+    """The tightest conformance an allowance buys: `(eps + M)*||d||_1 / b`.
 
     `None` when the date is free — no live world is excluded, so no tolerance is
     unaffordable and the caller may promise whatever it likes. The returned value

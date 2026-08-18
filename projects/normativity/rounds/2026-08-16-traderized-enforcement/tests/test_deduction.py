@@ -6,8 +6,8 @@ import unittest
 from fractions import Fraction as F
 
 from deduction import (coherence_membership, deductive_region,
-                       in_convex_hull, liability_identity,
-                       persistent_gap_trader_worth, relation_rows,
+                       in_convex_hull, incoherence_upper, liability_identity,
+                       net_rows, persistent_gap_trader_worth, relation_rows,
                        support_rows, world_deficit, world_inclusive)
 from enforcement import (EnforcementTrader, Region, Row,
                          contract_feasible_prices, grid)
@@ -195,6 +195,61 @@ class EffectivePresentation(unittest.TestCase):
     def test_an_inconsistent_stage_has_no_presentation(self):
         with self.assertRaises(ValueError):
             support_rows(NEGATION, {"phi": 1, "notphi": 1})
+
+
+class PresentationRelativeConformance(unittest.TestCase):
+    """Row conformance is a fact about the displayed rows, not about the region.
+
+    Two near-parallel rows, `B >= e*A` and `B <= -e*A`, cut the single point
+    `(0,0)` out of the cube. At the price `(1/2, 0)` each row is violated by
+    `e/2` while the sup-norm distance to the region is `1/2`, so the ratio is
+    `1/e` and diverges as the rows close up. That is the Hoffman constant showing
+    itself: a distance claim needs a constant that depends on the coefficient
+    matrix, and no presentation-free reading of `g_j <= delta` gives one.
+
+    The support-function presentation of the *same* region does give one: its rows
+    are indexed by a net of the unit `l1` ball with right-hand sides read off the
+    worlds, and the largest violation is the distance itself. This is the pair of
+    facts behind `CoherenceModulus.gap_le_of_net_cover`.
+    """
+
+    PRICE = (F(1, 2), F(0))
+    WORLDS = [(F(0), F(0))]
+
+    @staticmethod
+    def near_parallel(e):
+        """`B >= e*A` and `-e*A - B >= 0`, whose intersection in the cube is the
+        origin alone."""
+        return Region(2, [Row((-e, F(1)), F(0)), Row((-e, F(-1)), F(0))])
+
+    def test_the_region_is_the_origin_alone(self):
+        region = self.near_parallel(F(1, 100))
+        self.assertTrue(region.contains((F(0), F(0))))
+        for point in region.grid_points(4):
+            self.assertEqual(point, (F(0), F(0)))
+
+    def test_rowwise_violation_shrinks_while_the_distance_does_not(self):
+        for e, violation in ((F(1, 10), F(1, 20)),
+                             (F(1, 100), F(1, 200)),
+                             (F(1, 1000), F(1, 2000))):
+            region = self.near_parallel(e)
+            self.assertEqual(region.violations(self.PRICE), (violation, violation))
+            self.assertEqual(incoherence_upper(self.PRICE, self.WORLDS, 1), F(1, 2))
+            ratio = F(1, 2) / violation
+            self.assertEqual(ratio, 1 / e)
+
+    def test_the_support_function_presentation_reports_the_distance(self):
+        rows = net_rows(self.WORLDS, 2, 1)
+        self.assertEqual(max(row.violation(self.PRICE) for row in rows), F(1, 2))
+        self.assertEqual(incoherence_upper(self.PRICE, self.WORLDS, 1), F(1, 2))
+
+    def test_both_presentations_are_world_inclusive(self):
+        """So the difference is not that one of them is unsafe. Both contain every
+        plausible world; only one of them measures the distance."""
+        for region in (self.near_parallel(F(1, 100)),
+                       Region(2, net_rows(self.WORLDS, 2, 1))):
+            for world in self.WORLDS:
+                self.assertTrue(region.contains(world), world)
 
 
 if __name__ == "__main__":

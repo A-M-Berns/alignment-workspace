@@ -101,10 +101,10 @@ class ForceDeclaration:
 
 
 def volume_times_depth(volume: Fraction, deficits: Sequence[Fraction]) -> Fraction:
-    """`C * max_j d_j(W)`. **This is not a bound on the liability.**
+    """`M * max_j d_j(W)`. **This is not a bound on the liability.**
 
     It was claimed as one, on the reasoning that the enforcement position offsets
-    the ordinary one at equilibrium and so has size `C` whatever the intensity.
+    the ordinary one at equilibrium and so has size `M` whatever the intensity.
     That holds only where the contract forces the aggregate to vanish. Positive
     market-maker slack does not force it, and
     `test_regressions.IntensityFreeCeilingIsFalse` exhibits a date where the

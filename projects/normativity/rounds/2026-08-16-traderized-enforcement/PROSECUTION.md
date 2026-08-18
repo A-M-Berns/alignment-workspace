@@ -164,7 +164,7 @@ statement is per date and consumes no stability whatever: Theorems 2, 3 and 4
 hold at each date independently, so `K_n` may vary arbitrarily. The *safety*
 statements do not. What they need is bounded cumulative enforcement liability,
 for which the surviving sufficient bound is
-`∑_t (ε_t + C_t)·‖d_t(ω)‖₁ / δ_t < ∞` — intensity-dependent, since the
+`∑_t (ε_t + M_t)·‖d_t(ω)‖₁ / δ_t < ∞` — intensity-dependent, since the
 intensity-free ceiling was withdrawn (W18). A region that moves is safe when it
 moves *towards* admitting the worlds that stay live fast enough for that sum to
 converge, and the fixed-exclusion case makes it diverge. Both are displayed
@@ -203,13 +203,13 @@ claim that would be an overclaim is refused explicitly in W9.
 ## W17 — The force mechanism escapes attribution by naming a disturbance bound
 
 **Answered, and this reverses the first pass's own finding.** The earlier reading
-was that `∑_j β_j g_j² ≤ ε_t + C_t` makes ordinary traders partly responsible for
+was that `∑_j β_j g_j² ≤ ε_t + M_t` makes ordinary traders partly responsible for
 a violation, which would break `NL-SI-T4`'s total-and-exclusive attribution.
 
-`C_t` is a *declared assumption*, not a suffered cause, and the trading-firm
+`M_t` is a *declared assumption*, not a suffered cause, and the trading-firm
 construction computes a bound on its own volume from the belief history — so the
-mechanism can name it before the price is set. Realised volume within `C_t` and a
-price outside `δ_t` is the implementation's failure; realised volume above `C_t`
+mechanism can name it before the price is set. Realised volume within `M_t` and a
+price outside `δ_t` is the implementation's failure; realised volume above `M_t`
 is a false declaration, detectable after the fact; a conforming price the docket
 still cannot certify is the tolerance being sound and not working, which is `T1`'s
 existing distinction. Three cases, one respondent each.
@@ -218,7 +218,7 @@ existing distinction. Three cases, one respondent each.
 ## W18 — The liability ceiling assumed the aggregate vanishes
 
 **Lands, and the claim is withdrawn.** The second pass asserted an
-intensity-free ceiling `C_t · max_j d_j(W)`, reasoning that the enforcement
+intensity-free ceiling `M_t · max_j d_j(W)`, reasoning that the enforcement
 position offsets the ordinary one at equilibrium. Positive market-maker slack
 does not force the aggregate to vanish, so there is residual enforcement demand
 nothing cancels. With the ordinary position at **zero**, a declared volume bound
@@ -236,14 +236,14 @@ promised tolerance raises the ceiling.
 one-sentence region strictly inside `(0,1)`; the prose applied it to every region
 with empty interior, and drew from that the conclusion that settlement equalities
 are unenforceable. `K = {0}` is enforced exactly by the constant strategy
-`ζ_E ≡ −λ` for any `λ > C`: a short position at a zero price costs the
-disturbance nothing to leave, so the contract charges zero there and `(λ−C)P > 0`
+`ζ_E ≡ −λ` for any `λ > M`: a short position at a zero price costs the
+disturbance nothing to leave, so the contract charges zero there and `(λ−M)P > 0`
 everywhere else. Settlement pinning is the **easy** case.
 `test_regressions.EmptyInteriorDoesNotImplyImpossibility`.
 
 The case the generalization got right is isolated and kept: a coherence relation
 cuts a segment meeting the open cube, in no proper face, and a cancellable band of
-half-width `C/(2β)` survives every intensity.
+half-width `M/(2β)` survives every intensity.
 
 ## W20 — The generalized assessment set can be chosen to satisfy the safety condition
 
@@ -357,8 +357,8 @@ globally or confine it to a new era with its own finite allocation.
 ## Attacks 29–33: the cost product
 
 **29. Persistent normative distance exhausts any account.** *Fails, and this round
-asserted it.* The argument dropped the `(ε_t + C_t)` factor: `δ_t ≤ 1` gives
-`q_t ≥ (ε_t + C_t)D_t`, not `q_t ≥ D_t`. With pressure `2^-t`, a depth fixed at
+asserted it.* The argument dropped the `(ε_t + M_t)` factor: `δ_t ≤ 1` gives
+`q_t ≥ (ε_t + M_t)D_t`, not `q_t ≥ D_t`. With pressure `2^-t`, a depth fixed at
 `1/2` at tolerance `1` sums to under `1` forever.
 `test_outflow.DepthOnlyImpossibilityIsWithdrawn`.
 

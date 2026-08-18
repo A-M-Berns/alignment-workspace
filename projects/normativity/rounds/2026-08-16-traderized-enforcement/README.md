@@ -29,7 +29,7 @@ respect a region.
 **Safety verdict: bounded cumulative enforcement liability, with bound `1 + B`.**
 That abstract theorem is the round's most robust result. The *sufficient
 conditions* for bounding `B` are weaker than a previous pass claimed: the
-per-date bound is `(ε_t + C_t)·‖d_t(W)‖₁/δ_t`, the intensity does **not** cancel,
+per-date bound is `(ε_t + M_t)·‖d_t(W)‖₁/δ_t`, the intensity does **not** cancel,
 and conformance and liability are traded against each other. A region excluding a
 live world at every date can still be enforced forever and safely.
 
@@ -112,17 +112,17 @@ supplies*. That those are the live worlds of the intended semantic process is
 upstream and unproved — `PRIORITIES.md` item 39. The force layer closes
 certificate substitution within itself; it does not authenticate the semantics
 handed to it. §7b. Force is
-purchased out of a finite global account at `(ε_t + C_t)·D_t/δ_t` per date — a
+purchased out of a finite global account at `(ε_t + M_t)·D_t/δ_t` per date — a
 charge computable before the trade is emitted — and the account's discipline
 implies the bounded-liability hypothesis rather than assuming it. Inverting the
-charge gives the affordability relation `δ_t ≥ (ε_t + C_t)·D_t/b_t`: the
+charge gives the affordability relation `δ_t ≥ (ε_t + M_t)·D_t/b_t`: the
 remaining account determines how tightly the reasoner may be forced.
 
 **Per-endorsement finite caps and finite gating are both insufficient** — a source
 obeying both, with one row live per date, drives the aggregate to infinity by
 admitting fresh endorsements.
 
-The condition is `Σ_t (ε_t + C_t)·D_t/δ_t < ∞`, and **three routes keep it finite**:
+The condition is `Σ_t (ε_t + M_t)·D_t/δ_t < ∞`, and **three routes keep it finite**:
 the exclusion depth decays, the ordinary aggregate pressure decays, or the
 tolerance loosens. A previous version of this round asserted that the first was
 required — that persistent positive depth alone exhausted any account. That is

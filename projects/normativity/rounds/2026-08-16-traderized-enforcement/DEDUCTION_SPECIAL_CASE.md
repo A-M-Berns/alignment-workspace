@@ -134,7 +134,7 @@ normative endorsement  →  possibly narrower region →  same force mechanism  
 ```
 
 One mechanism, two sources, different safety obligations — and the obligation
-falls on the *source*, because the per-date liability ceiling `C_t · d_t(W)`
+falls on the *source*, because the per-date liability ceiling `M_t · d_t(W)`
 depends on nothing the mechanism chooses. That is the generalisation the round
 actually earns: not that every constraint is enforced alike, but that every
 constraint is enforced by the same thing and charged differently for it.
@@ -180,7 +180,7 @@ well as the criterion, and nothing here removes it.
 `THEORY_11_SETTLEMENT_INTERFACE.md` §7 lists `D3` as an open sub-problem: either
 a computable tolerance schedule tending to zero with prices provably conforming at
 every finite date, or a weakening to eventually-coherent-rateless. Theorem 4 with
-`β_j = (ε_n + C_n)/δ_n²` produces a computable schedule `δ_n` of the round's own
+`β_j = (ε_n + M_n)/δ_n²` produces a computable schedule `δ_n` of the round's own
 choosing, with per-date conformance, for the enforced market.
 
 **This does not close `D3`.** `D3` is a statement about the candidate engine

@@ -128,15 +128,15 @@ Kernel-checked as `weighted_square_sub_deficit_le_pair`, with an inhabitation
 witness at a nonzero deficit.
 
 **Theorem 11 is withdrawn.** It claimed the per-date liability ceiling is
-`C_t · max_j d_j(W)`, independent of the intensity, on the reasoning that at
+`M_t · max_j d_j(W)`, independent of the intensity, on the reasoning that at
 equilibrium the enforcement position offsets the ordinary one and so has size
-`C_t` whatever the intensity.
+`M_t` whatever the intensity.
 
 That reasoning holds only where the contract forces the aggregate to vanish.
 Positive market-maker slack does not force it: the contract bounds the
 aggregate's cube maximum gain, and at an interior price that leaves room for
 residual enforcement demand which nothing cancels. The counterexample has the
-ordinary position at **zero**: `K = {P ≤ 1/2}`, `C = 1/100`, `ε = 1/8`,
+ordinary position at **zero**: `K = {P ≤ 1/2}`, `M = 1/100`, `ε = 1/8`,
 `δ = 1/10`, so the prescribed intensity is `27/2`. At `P = 51/100` the violation
 is `1/100`, the position is `27/200` short — thirteen and a half times the
 declared volume bound — the contract holds at `1377/20000 ≤ 1/8`, conformance
@@ -148,7 +148,7 @@ pins every one of those rationals.
 kernel-checked identity by substituting the promised conformance `g_j ≤ δ_t` and
 the prescribed intensity:
 
-    L_t(W)  ≤  ∑_j β_j g_j(P_t) · d_j(W)  ≤  (ε_t + C_t) · ‖d_t(W)‖₁ / δ_t .
+    L_t(W)  ≤  ∑_j β_j g_j(P_t) · d_j(W)  ≤  (ε_t + M_t) · ‖d_t(W)‖₁ / δ_t .
 
 The intensity does **not** cancel, and the direction is the opposite of the
 withdrawn claim: a tighter promised tolerance needs a larger intensity, which
@@ -159,7 +159,7 @@ are traded against each other.** On the counterexample the pointwise form gives
 **Corollary 12′ (the safety condition).** Bounded cumulative liability, and hence
 the criterion, follows from
 
-    ∑_t  (ε_t + C_t) · ‖d_t(W)‖₁ / δ_t  <  ∞    for every world plausible at every date.
+    ∑_t  (ε_t + M_t) · ‖d_t(W)‖₁ / δ_t  <  ∞    for every world plausible at every date.
 
 A region containing every plausible world gives every deficit zero. That is one
 way for the sum to converge and **not** the boundary.
@@ -203,7 +203,7 @@ deficits are not what is known. Nothing here shows either is necessary.
 **Theorem 13 (a region excluding a live world at every date, enforced forever,
 safely).** One sentence, settled true, so the sole plausible world is `W = 1`. A
 source reserving against full certainty: `K_t = {P ≤ 1 − 2^{-t}}`, which excludes
-`W` at every date. Ordinary volume `C_t = t`, market slack `2^{-(t+1)}`, promised
+`W` at every date. Ordinary volume `M_t = t`, market slack `2^{-(t+1)}`, promised
 tolerance `1/10`.
 
 Conformance holds at every date; the region is world-inclusive at no date; every
@@ -265,7 +265,7 @@ exactly.
 
 What makes this shape unsafe is not that the region excludes a live world. It is
 that the exclusion **persists at a fixed depth while the ordinary volume grows**,
-so `∑_t C_t · d_t(W)` diverges. §4 gives the general condition and a region that
+so `∑_t M_t · d_t(W)` diverges. §4 gives the general condition and a region that
 excludes a live world at every date and is safe anyway.
 
 ## 6. Where the converse is known to fail
@@ -301,7 +301,7 @@ is safe anyway; a world-inclusive presentation as the `d ≡ 0` special case of
 that; and a worked case where a fixed-depth exclusion against growing volume
 produces a real exploiting trader.
 
-Withdrawn: the intensity-free ceiling `C_t · max_j d_j(W)`, with its
+Withdrawn: the intensity-free ceiling `M_t · max_j d_j(W)`, with its
 counterexample kept as a regression.
 
 Not settled: whether unbounded enforcement liability *always* produces an

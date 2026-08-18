@@ -12,7 +12,7 @@ Force is one contract, signed at each date, in quantities an outside party can
 check.
 
 > **Force contract.** Given a region `K_t` presented by a finite rational row
-> system, a declared bound `C_t` on the ordinary aggregate's realised position,
+> system, a declared bound `M_t` on the ordinary aggregate's realised position,
 > the market maker's slack `ε_t`, and a declared tolerance `δ_t`, the mechanism
 > guarantees `g_j(P_t) ≤ δ_t` for every row `j`.
 
@@ -60,8 +60,8 @@ both.** `test_contract.ConstrainedMakerNeedsAnExistenceTheorem` displays it.
 The traderized compiler changes only the *input* to a function already proved
 total, so it inherits existence, `lem:mm`, `lem:tfdom` and the shape of
 `thm:lia`. At the same date it has a solution, and what it then owes is
-conformance rather than membership: at intensity `β` against volume `C` the
-displayed price sits `C/β` outside the region, which is a declared tolerance.
+conformance rather than membership: at intensity `β` against volume `M` the
+displayed price sits `M/β` outside the region, which is a declared tolerance.
 
 This is a proof-level asymmetry, not a preference. Whatever else is true, an
 implementation that is total dominates one that is not known to be.
@@ -81,7 +81,7 @@ implementation that is total dominates one that is not known to be.
 | **choice of assessment set** | ✓ | | | **unresolved — see `PAPER_RECONCILIATION.md` §5** |
 | exclusion depth in the liability bound | ✓ | | | ✓ charges |
 | declared tolerance in the liability bound | | | ✓ | ✓ charges |
-| declaring `C_t`, `ε_t`, intensities, `δ_t` | | | ✓ | |
+| declaring `M_t`, `ε_t`, intensities, `δ_t` | | | ✓ | |
 | conformance to `δ_t` | | | ✓ | |
 | breach attribution | | | contract output | ✓ |
 | settlement reports, timing, persistence | ✓ | | | |
@@ -98,10 +98,10 @@ linear program and declares quarantine of operative force when it is empty. That
 is exactly the precondition the compiler needs, and it is already built.
 
 **Bounded liability is shared, and the split is not clean.** An earlier draft
-put it wholly on the source, on the strength of a ceiling `C_t × d_t(W)` in which
+put it wholly on the source, on the strength of a ceiling `M_t × d_t(W)` in which
 the intensities cancelled. That ceiling is false — the counterexample is in
 `FUNDING_AND_SAFETY.md` §4 — and the surviving bound
-`(ε_t + C_t)·‖d_t(W)‖₁/δ_t` carries the mechanism's own declared tolerance.
+`(ε_t + M_t)·‖d_t(W)‖₁/δ_t` carries the mechanism's own declared tolerance.
 
 So both layers contribute. The **source** sets the exclusion depth `d_t`; the
 **mechanism** sets the tolerance `δ_t`, and a tighter promise raises the ceiling.
@@ -111,20 +111,20 @@ claimed, and it is the true one.
 
 ## 4. What this does to the attribution objection
 
-The earlier reading was that `∑_j β_j g_j² ≤ ε_t + C_t` makes ordinary traders
+The earlier reading was that `∑_j β_j g_j² ≤ ε_t + M_t` makes ordinary traders
 partly responsible for a price sitting outside the region, which would put an
 unaccountable third party inside the answerability system and break the
 settlement interface's rule that attribution is total and exclusive.
 
-That reading was wrong, and the declaration is why. `C_t` is not a cause the
+That reading was wrong, and the declaration is why. `M_t` is not a cause the
 mechanism suffers; it is an **assumption the mechanism names in advance and
 promises conformance relative to**. The trading-firm construction already
-computes a bound on its own realised volume from the belief history, so `C_t` is
+computes a bound on its own realised volume from the belief history, so `M_t` is
 available before the price is set. Three cases, and each has one respondent:
 
-- realised volume within `C_t` and the price outside `δ_t` — the force
+- realised volume within `M_t` and the price outside `δ_t` — the force
   implementation has failed its own promise;
-- realised volume above `C_t` — a declared assumption is false, which is a
+- realised volume above `M_t` — a declared assumption is false, which is a
   detectable fact about the environment and is the adapter's to report;
 - price within `δ_t` and the docket still unable to certify — the tolerance is
   sound and not *working*, which is the interface's existing `T1` distinction and
@@ -157,7 +157,7 @@ not available.
 
 **Safety** — when applying force preserves the surrounding non-exploitation
 guarantee. Bounded cumulative liability suffices; the surviving bound is
-`∑_t (ε_t + C_t)·‖d_t(W)‖₁/δ_t`; and a region containing every live world is the
+`∑_t (ε_t + M_t)·‖d_t(W)‖₁/δ_t`; and a region containing every live world is the
 zero-depth case, not the boundary. **Which worlds the sum ranges over is open**,
 and `PAPER_RECONCILIATION.md` §5 shows why it cannot be read off the constraint.
 
