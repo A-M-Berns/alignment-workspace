@@ -1,8 +1,17 @@
 # Report — proof-closing pass
 
-Starting head `5fc434dc0440c757616cb68b98e9fdb51bbaaa53`. Ending head recorded in the
-pull-request body. Branch `traderized-enforcement`; no new pull request; `main` not
-merged.
+Starting head `5fc434dc0440c757616cb68b98e9fdb51bbaaa53`. Branch
+`traderized-enforcement`; no new pull request; `main` not merged. Seven commits:
+
+    26e4392  the live-world Budgeter/TradingFirm lift against the source types
+    d8189e5  the enforcement Strategy term, the composition, traderized deduction
+    6dde749  the two nesting notions separated; two property families generalized
+    4655c66  the coherence modulus; the C_t notation collision; five regressions
+    3bbbcc9  the exact dual-distance presentation, eliminating the mesh term
+    0590360  the theorem ledger, the closure document, the prompt and this report
+    (this commit)  the commit list and the ending head
+
+The ending head is this commit; `gh pr view 38` reports it as the branch head.
 
 ## What the pass closed
 
