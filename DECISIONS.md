@@ -171,6 +171,39 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   if any, to file. *Waiting* leaves the questions recorded only inside a
   completed round.
 
+- **Rule on whether the choice-channel coordinate is item 22's skeleton clause.**
+  `PRIORITIES.md` item 22 asks for the weakest interface on which *prediction of
+  authorization does not constitute authorization* is a theorem rather than a
+  stipulation, and names the report coordinate as the candidate starting point.
+  The round at
+  `projects/deference/rounds/2026-08-18-principal-mediated-delegation/` builds it
+  and answers the item's four questions: the report coordinate alone is not
+  enough, a restriction on preparations is also required, the interface survives
+  token responsiveness only when the efficacy clause is quantified over cells of
+  the advisor's information, and the separation is explicitly not inferable from
+  a run. *Doing it* is reading that round's `MODEL.md` §1 and
+  `PRINCIPAL_MEDIATION.md` §§2–3 and saying whether the coordinate is adopted;
+  adoption is a `FINITE_MODEL_SKELETON.md` version bump, so every track that
+  consumed v2 would need rerunning or reconciling. *Waiting* blocks no proof and
+  leaves item 22 answered in a round and unadopted.
+
+- **Decide the principal-mediation vocabulary.** That round introduces `channel`,
+  `mediates`, `residual`, cellwise efficacy, the acceleration class,
+  `foreclosure_premium`, `eps_acc`, `eps_over` and `price_of_the_norm`, all
+  marked provisional. *Doing it* is one sitting over `MODEL.md` and
+  `REPAIR_LEMMA.md`. *Waiting* costs little now and more once a second round
+  builds on the terms.
+
+- **Decide whether two items are filed.** A two-index successor carrying
+  `FINITE_MODEL_SKELETON.md` §4a's execution layer, which that round argues is
+  the next investigation because foreclosure of a *later* correction is where the
+  corrigibility target lives and is inexpressible at one index; and the
+  price-weighted mixture repair of its `LI_PREDICTION_INTERFACE.md` §4, which is
+  the only route found by which the prediction quantity the repair consumes could
+  become one the pinned machinery is the right shape for. The round filed
+  neither: it was not dispatched to file. *Doing it* is reading that round's
+  report §6. *Waiting* leaves both recorded only inside a completed round.
+
 ## Settled
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
