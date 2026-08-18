@@ -68,8 +68,10 @@ ordinary lemma about a construction it is not using.
 `PAPER_RECONCILIATION.md` §2, `TF^live` dominates every efficiently computable
 trader relative to the `L`-criterion: if some such trader exploits the market
 relative to `L`, so does `TF^live`. This is `lem:tfdom` with `PC(D_t)` replaced
-throughout, and it is **derived and unformalized** — the round's one load-bearing
-step of that kind.
+throughout, and it is **`lean-proved`** as
+`AssessmentFirm.trading_firm_dominance`, under hypotheses weaker than (L1)–(L3):
+support-local nesting and finite sound-and-complete restrictions, with nonemptiness and
+effectiveness unused. `PROOF_CLOSURE.md` §II.
 
 **Theorem 9 (enforcement preservation).** Let the modified algorithm be
 

@@ -590,7 +590,7 @@ efficiently-computable trader class.
 account on the strength of this hypothesis, and installing a discipline stronger
 than the criterion needs would restrict normative force for no safety gain.
 
-### 46. Should force cost depend on the row presentation? — **[open]**
+### 46. Should force cost depend on the row presentation? — **[open]** — *partially answered by the proof-closing pass*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The traderized compiler consumes a row system, not an admissible set, and the two
@@ -626,12 +626,33 @@ architecture, and the interface note's table is either derived or deleted.
 the same force more cheaply, by restating its constraint — which is a
 manipulability question about the constitutional layer, not a presentational one.
 
-### 41. The safety theorem against the dependency's own construction — **[substantial]**
+*Partially answered:* the *intrinsic target* is presentation-independent and the
+*compiled trader* is not, and the proof-closing pass separated the two. The exact
+dual-distance family depends on `K` alone — a generator inside the hull of the others
+contributes an implied constraint, so redundant generators and generator order change
+nothing (`test_coherence.TheExactFamilyIsCanonical`) — while duplication and rescaling
+of an arbitrary presentation do change the emitted position and the charge
+(`test_outflow.PresentationChangesTheInstalledCompiler`). What is still open is whether
+the *cost* can be made canonical, which is a question about the charge and not about the
+metric.
+
+### 41. The safety theorem against the dependency's own construction — **[substantial]** — *answered by the proof-closing pass*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
-The round's central safety claim composes two source lemmas about objects it does
-not formalize. Its Lean file states the algebra over an abstract pairing; the
-composition stays on paper.
+**Answered.** `Workspace.Normativity.Contrib.DeductiveEnforcement` defines the
+modified market inside the dependency's own types — `MarketMaker` applied to
+`TradingFirm DP` joined with an enforcement strategy — and
+`no_efficient_trader_exploits` proves `¬ Tr.Exploits` of it for every efficiently
+computable `Tr`, from a hypothesis bounding the added trader's plausible cumulative
+value. `witness_market_not_exploited` inhabits the whole package at a process revealing
+one atom, with the liability bound **derived** from `pair_nonneg_of_mem` rather than
+assumed, and `witnessPres_is_violable` shows the compiled position is not the zero
+trader. `EnforcementPreservation.no_efficient_trader_exploits` is the same composition
+over an arbitrary assessment process. The Lean gate and the axiom audit are green.
+
+The item as originally filed read: the round's central safety claim composes two source
+lemmas about objects it does not formalize; its Lean file states the algebra over an
+abstract pairing; the composition stays on paper.
 
 The item is to define the modified market inside the pinned dependency's types —
 `MarketMaker` applied to `TradingFirm DP` plus an enforcement strategy — and prove
@@ -742,7 +763,7 @@ through 9; `src/exactness.py`.
 between conformance and non-exploitation, and the constitutional layer would have
 to make that choice without guidance.
 
-### 42. An efficiently presentable sufficient row family for coherence — **[open]**
+### 42. An efficiently presentable sufficient row family for coherence — **[open]** — *narrowed by the proof-closing pass*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 Enforcing the coherence polytope of a deductive stage needs its facet system,
@@ -765,6 +786,17 @@ positive answer; `witness-checked` for a negative one.
 plausible worlds and confirms the claimed containment pointwise.
 *Context:* `.../2026-08-16-traderized-enforcement/DEDUCTION_SPECIAL_CASE.md`
 §§3–4, and its `src/deduction.py`.
+*Narrowed:* the proof-closing pass removed the *approximation* half of the question.
+The **exact dual-distance presentation** — `src/coherence.py`, `PROOF_CLOSURE.md` §V —
+is a finite rational row family, computable from the fragment's plausible worlds and
+independent of the price, whose largest violation *is* `dist_∞(P, K)`, with no mesh and
+no Hoffman constant; it is world-inclusive by construction, so it costs nothing in
+liability however large it is. What remains is exactly the complexity question: that
+family is `computable`, and nothing bounds it better than
+`binom(2^{|Φ|} + |V|, |Φ|+1)`, against observed counts of 11 at `|Φ| = 3` and 17 at
+`|Φ| = 4`. So a positive answer must now beat a *known-exact* baseline rather than
+compete with an approximation, and a negative answer must rule out polynomial
+presentability of that baseline.
 *Why it matters:* it prices the deduction special case, which is the round's
 evidence that the abstraction is more than a name.
 

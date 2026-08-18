@@ -143,6 +143,49 @@ price, whose largest violation *is* the sup-norm distance.
 4. **Nothing to register.** No `CLAIMS.md` entry was added or changed, and no epistemic
    class was upgraded.
 
+## Closure pass
+
+A separate dispatch closed the round out for merge: integration, proof-status hygiene
+and paper handoff, not further theorem discovery. Recorded here rather than in its own
+report because it changed no result.
+
+**Merged `main`.** Three conflicts, all append-to-a-shared-list: the `DECISIONS.md`
+queue, `state/rounds.json`, and the generated verdict/status inventory. Kept both sides
+in each; regenerated the inventory with
+`checkers.workspace_state --write-handoff` rather than hand-merging it. The round's
+entry in `state/rounds.json` now names the proof-closing dispatch and a verdict that
+says what the round concluded, with `PROOF_CLOSURE.md` as `verdict_source` — where the
+sentence appears verbatim, as that checker requires.
+
+**Stale status corrected in five files.** `PAPER_RECONCILIATION.md` §2,
+`FUNDING_AND_SAFETY.md` §3, `NORMATIVE_SAFETY.md` (twice),
+`INTEGRATION_MAP.md` (four rows) and the round `README.md` all still called the
+live-world lift `derived and unformalized` and, in two places, "the paper's one
+conditional". They now say `lean-proved`, name the declarations, and record that the
+hypotheses are weaker than the (L1)–(L3) those documents state.
+`projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md` said the same of the lift and
+of the compiler's legality as a `Strategy n`; both are corrected.
+
+**One theorem closed.** `PRIORITIES.md` item 41 asked for the safety theorem against the
+dependency's own construction, `lean-proved`, *with an inhabitation witness for the
+hypothesis package*. The theorem was proved in the main pass; the witness was not.
+`DeductiveEnforcement.witness_market_not_exploited` supplies it at a process revealing
+one atom, with the liability bound derived rather than assumed and the presentation
+violable at a legal price, so the witness is not the zero trader. Item 41 is marked
+answered; items 42 and 46 are marked narrowed and partially answered, with what changed
+stated in each.
+
+**Paper handoff.** `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md`: the
+arc, six candidate theorem statements each carrying exactly one of *exactly
+kernel-supported* / *ready after named formalization debt* / *application*, a proposed
+seven-file companion artifact, and the two debts — `DistanceComplete`, and the
+first-order erasure — with an explicit recommendation not to attempt the second inside
+this round.
+
+**What the closure pass did not do.** It did not attempt either debt. It did not touch
+the wiki, which is maintainer-owned and contained no false status claim. It registered
+nothing.
+
 ## Model attribution
 
 - **Prompt-author-model:** unrecorded — the dispatch and its addendum were written

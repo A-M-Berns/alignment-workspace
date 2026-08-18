@@ -3,7 +3,9 @@
 Status: **OPEN specification note**, provisional names throughout. The research
 round behind it is
 `../rounds/2026-08-16-traderized-enforcement/`, and nothing here is a registered
-claim.
+claim. For which of its statements are kernel-checked, read that round's
+`PROOF_CLOSURE.md`; for the paper-facing theorem spine and the two remaining
+formalization debts, `GENERALIZED_LI_PAPER_HANDOFF.md` beside this file.
 
 This note exists so that a later component can answer *"I have an admissibility
 constraint; how do I make it operatively affect a bounded reasoner?"* without
@@ -66,14 +68,20 @@ over the assessment worlds is bounded by `B`, no efficiently computable trader
 exploits the modified market, and every such trader's assessed net worth is at
 most `1 + B`.
 
-**This is conditional on the generalized live-world Budgeter/TradingFirm lift**,
-which is `derived` and unformalized. The force layer supplies the liability
-bound and nothing else; it does **not** independently supply a generalized
-Logical Induction criterion, and a caller reading a conformance certificate as
-one has misread this note.
+**The generalized live-world Budgeter/TradingFirm lift it rests on is
+`lean-proved`** — `AssessmentFirm.trading_firm_dominance` and
+`no_efficient_trader_exploits`, against the pinned dependency's own types, under
+hypotheses weaker than (L1)–(L3). What remains conditional is the modified market's
+computability, a transcription obligation recorded in the round's `PROOF_CLOSURE.md`
+§VII. The force layer supplies the liability bound and nothing else; it does **not**
+independently supply a generalized Logical Induction criterion, and a caller reading a
+conformance certificate as one has misread this note.
 
-The compiler's legality as a source-side `Strategy n` is likewise `derived` — the
-embedding is exhibited in the source's feature grammar, not written as a term.
+The compiler's legality as a source-side `Strategy n` is `lean-proved` too:
+`EnforcementStrategy.enforcementStrategy` is the term, with `coefficientFeature_rank_le`,
+`enforcementStrategy_support` and `coefficientFeature_continuous` its legality, and
+`marketValueRat_enforcementStrategy` the identity saying the force algebra is about
+it.
 
 ## What force does not determine
 

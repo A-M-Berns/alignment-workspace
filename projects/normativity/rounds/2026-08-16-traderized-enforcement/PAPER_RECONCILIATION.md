@@ -129,9 +129,18 @@ process failing it, on both a small and a large support.
 which is sufficient and not necessary — two credal sets can have the same live
 worlds with neither containing the other (`test_semantics.Nesting`).
 
-**Evidence: `derived`, and not formalized.** It is read off the source proofs, and
-it is the round's one load-bearing unformalized step. A formalization round has an
-unambiguous target: the statement above, instantiated at `L_t = Ω_t^live`.
+**Evidence: `lean-proved`.** The proof-closing pass formalized it against the pinned
+dependency's own `Budgeter`, `TradingFirm`, `Strategy n`, `Trader` and `MarketMaker`:
+`BudgeterAt_value_eq_of_safe`, `budgetedTrader_netWorth_floor`,
+`exists_budgetedTrader_exploits`, `AssessmentFirm.trading_firm_dominance` and
+`AssessmentFirm.no_efficient_trader_exploits`.
+
+**And the hypotheses are weaker than (L1)–(L3).** The formalization uses none of
+global nesting, nonemptiness or effectiveness: only support-local nesting and finite
+sound-and-complete restrictions. The table above is superseded on two rows — nesting is
+consumed by `lem:budgeter`.1 as well as `.2`, and (L3) is a nonvacuity condition on the
+§4 properties rather than a hypothesis of the construction. `PROOF_CLOSURE.md` §II
+carries the corrected account and the witnesses separating the two nestings.
 
 ## 3. Deductive recovery
 

@@ -230,6 +230,102 @@ theorem no_efficient_trader_exploits_of_worldInclusive (DP : DeductiveProcess)
   no_efficient_trader_exploits DP E 0
     (fun n v hv => by simpa using enforcement_netWorth_nonneg DP E hday n v hv) Tr hTr
 
+/-! ## Inhabitation of the hypothesis package
+
+`AGENTS.md`'s Lean regime asks a theorem of record for a term inhabiting its full
+hypothesis package.  The package here is a deductive process, an added trader, and a
+bound on that trader's assessed cumulative value; the witness below supplies all
+three, and derives the third from the force algebra rather than assuming it.
+
+The process reveals one atom at every date, so the plausible worlds are exactly those
+affirming it.  The presentation is that atom priced at `1`, which every plausible world
+satisfies and which the displayed price can violate — so the region is world-inclusive,
+the liability is zero, and the compiled position is not the zero trader. -/
+
+/-- The priced sentence the witness enforces. -/
+def witnessSentence : Sentence := .atom 0
+
+/-- The witness process reveals `witnessSentence` at every date. -/
+def witnessProcess : DeductiveProcess where
+  D _ := {witnessSentence}
+  mono _ := Finset.Subset.refl _
+
+/-- The single row `⟪1, P⟫ ≥ 1` on the priced atom. -/
+def witnessRow : Row where
+  coeff _ := 1
+  rhs := 1
+  intensity := 1
+  intensity_nonneg := by norm_num
+
+/-- One priced atom, one row, unit intensity. -/
+def witnessPres : Presentation where
+  coordList := [witnessSentence]
+  coord_nodup := List.nodup_singleton _
+  rows := [witnessRow]
+
+/-- The added trader that plays the compiled position every day. -/
+def witnessEnforcer : AdaptiveTrader where
+  action n _ := enforcementStrategy witnessPres n
+
+lemma witnessPres_coords : witnessPres.coords = {witnessSentence} := by
+  simp [Presentation.coords, witnessPres]
+
+lemma witnessPres_rowAt (i : Fin witnessPres.rows.length) :
+    witnessPres.rowAt i = witnessRow := by
+  have h : witnessPres.rowAt i ∈ witnessPres.rows := List.get_mem _ i
+  simpa [witnessPres] using h
+
+/-- Every world the process leaves plausible satisfies the row: it affirms the atom, so
+the pairing is `1`. -/
+lemma witnessPres_rows_hold (v : PCWorld) (hv : v.ConsistentWith (witnessProcess.D 0)) :
+    ∀ i ∈ witnessPres.rowIndex,
+      witnessPres.rhss i ≤
+        pair witnessPres.coords (witnessPres.normals i) (ratPayout v) := by
+  intro i _
+  have hholds : v.Holds witnessSentence := hv witnessSentence (by simp [witnessProcess])
+  have hrow := witnessPres_rowAt i
+  simp only [Presentation.rhss, Presentation.normals, hrow, witnessPres_coords, pair,
+    Finset.sum_singleton, witnessRow, ratPayout, if_pos hholds]
+  norm_num
+
+/-- The process is constant, so plausibility at one date is plausibility at every date. -/
+lemma witnessProcess_consistent_iff (v : PCWorld) (n : ℕ) :
+    v.ConsistentWith (witnessProcess.D n) ↔ v.ConsistentWith (witnessProcess.D 0) :=
+  Iff.rfl
+
+/-- **The liability bound is discharged, not assumed.** -/
+theorem witness_liability_is_zero :
+    ∀ n (v : PCWorld), v.ConsistentWith (witnessProcess.D n) →
+      0 ≤ (realizedEnforcer witnessProcess witnessEnforcer).netWorth
+        (history witnessProcess witnessEnforcer) v n := by
+  apply enforcement_netWorth_nonneg
+  intro n v hv
+  have hstrat : (realizedEnforcer witnessProcess witnessEnforcer).strat n =
+      enforcementStrategy witnessPres n := rfl
+  rw [hstrat]
+  exact enforcement_day_value_nonneg witnessPres n
+    (history witnessProcess witnessEnforcer) (quote witnessProcess witnessEnforcer)
+    (history_eq_quote_cast witnessProcess witnessEnforcer) v
+    (witnessPres_rows_hold v ((witnessProcess_consistent_iff v n).mp hv))
+
+/-- **The witness market satisfies the original criterion**, with the liability bound
+discharged rather than hypothesised.  This is what `PRIORITIES.md` item 41 asks for,
+at an instance: the modified market is defined inside the dependency's own types and
+`¬ Tr.Exploits` is proved of it for every efficiently computable `Tr`. -/
+theorem witness_market_not_exploited (Tr : Trader) (hTr : EfficientlyComputable Tr) :
+    ¬ Tr.Exploits (history witnessProcess witnessEnforcer) witnessProcess :=
+  no_efficient_trader_exploits witnessProcess witnessEnforcer 0
+    (fun n v hv => by simpa using witness_liability_is_zero n v hv) Tr hTr
+
+/-- The witness is not the zero trader: the row is violated at any displayed price below
+one, so the compiled position is nonzero there. -/
+theorem witnessPres_is_violable :
+    witnessPres.rowViolation ⟨0, by simp [witnessPres]⟩ (fun _ => 1 / 2) = 1 / 2 := by
+  simp only [Presentation.rowViolation, Presentation.normals, Presentation.rhss,
+    witnessPres_rowAt, witnessPres_coords, violation, pair, Finset.sum_singleton,
+    witnessRow]
+  norm_num
+
 end Workspace.Normativity.Contrib.DeductiveEnforcement
 
 #print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.states_eq_marketMakerStates
@@ -241,3 +337,9 @@ end Workspace.Normativity.Contrib.DeductiveEnforcement
 #print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.enforcement_day_value_nonneg
 #print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.enforcement_netWorth_nonneg
 #print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.no_efficient_trader_exploits_of_worldInclusive
+#print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.witnessProcess
+#print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.witnessPres
+#print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.witnessPres_rows_hold
+#print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.witness_liability_is_zero
+#print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.witness_market_not_exploited
+#print axioms Workspace.Normativity.Contrib.DeductiveEnforcement.witnessPres_is_violable

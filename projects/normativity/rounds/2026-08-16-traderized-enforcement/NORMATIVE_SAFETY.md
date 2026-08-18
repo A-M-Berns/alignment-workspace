@@ -26,7 +26,7 @@ below is stronger than the weakest arrow in the path that uses it.
 | **A5** | **outflow protocol with capital `B` ⟹ `Σ_t q_t ≤ B` ⟹ `Σ_{t≤n} E_t(ω) ≥ −B` for all `n` and all `ω ∈ Ω_n^live`**, with `q_t = (ε_t + M_t)·D_t/δ_t` and `D_t = sup_{ω ∈ Ω_t^live} Σ_j d_{t,j}(ω)` | **derived** — §7–8, §13a |
 | **A5′** | **the `D_t` that was certified is the `D_t` of the position that was emitted** | **derived** — §7a; enforced by construction in `compile_safe_force`, and by a binding check in the lower-level path |
 | A6 | `B < ∞` ⟹ no efficiently computable trader exploits the modified market, and assessed net worth is at most `1 + B` | **derived**, conditional on A7 |
-| A7 | the generalized live-world Budgeter/TradingFirm lift | **derived and unformalized** — the paper's only conditional, `PAPER_RECONCILIATION.md` |
+| A7 | the generalized live-world Budgeter/TradingFirm lift | **lean-proved** — `AssessmentFirm.trading_firm_dominance` and `no_efficient_trader_exploits`, under hypotheses weaker than (L1)–(L3); `PROOF_CLOSURE.md` §II |
 | A8 | settlement rows contribute zero deficit; core rows carry `max(0, r − m_c)`, independent of `θ` | **derived** — §1–2 |
 | A9 | settlement monotonicity makes the depth non-increasing for a fixed endorsement under irreversible settlement | **derived** — `NL-SI-C4`; **helpful, and neither necessary nor sufficient**. Not sufficient because non-increasing is not summable; not necessary because the cost product can be summable while the depth rises on some dates, so long as pressure or tolerance compensate |
 
@@ -546,5 +546,7 @@ Whether a revisable normative practice keeps the depth non-increasing at all:
 **it need not** — revision can raise `r` or reopen `m_c` — and revision is outside
 the live-world lift's nesting hypothesis for the same reason.
 
-And the whole chain is conditional on the live-world Budgeter/TradingFirm lift,
-which is `derived` and unformalized.
+The live-world Budgeter/TradingFirm lift the chain runs on is no longer conditional:
+it is `lean-proved`, under hypotheses weaker than (L1)–(L3). What the chain *is* still
+conditional on is the modified market's computability, which is a transcription
+obligation — `PROOF_CLOSURE.md` §VII.

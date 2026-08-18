@@ -2,7 +2,9 @@
 
 The evidence ledger, sorted by what a reader needs to know first: what is settled,
 what is conditional and on exactly what, what is open, and what was refuted.
-`PROOF_CLOSURE.md` is the same content as an argument; this is the index.
+`PROOF_CLOSURE.md` is the same content as an argument; this is the index. The
+paper-facing theorem spine and the two remaining formalization debts are
+`projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md`.
 
 **Nothing here is registered in `CLAIMS.md`.**
 
@@ -111,6 +113,7 @@ a mathematical gap. `open`. `false`.
 | D6 | the deductive presentation is computable from the finite atom context | exhaustive-finite | `test_coherence.TheDeductivePresentationIsComputable` |
 | D7 | traderized deduction changes finite prices somewhere | witness | `ENFORCEMENT.md` §4 |
 | D8 | settlement leaves residue at the next date; enforcement does not | witness | `test_deduction.SettlementIsNotEnforcement` |
+| D9 | the whole hypothesis package is inhabited: a process, an added trader, and the liability bound **derived** rather than assumed, at a presentation the price can violate | lean-proved | `DeductiveEnforcement.witness_market_not_exploited`, `witness_liability_is_zero`, `witnessPres_is_violable` |
 
 ### Architecture
 

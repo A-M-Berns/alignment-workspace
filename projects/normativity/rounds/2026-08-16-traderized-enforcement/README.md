@@ -50,11 +50,15 @@ settlement; it does not make it summable, and it is not necessary either. One cl
 is needed, and the corpus already adopted it for the same failure in another
 context: a limit on cumulative net outflow. `NORMATIVE_SAFETY.md`.
 
-**Paper verdict: the core generalized-LI paper is available conditional on one
-named theorem** — the live-world Budgeter/TradingFirm lift, stated with its three
-hypotheses in `PAPER_RECONCILIATION.md` §2, read off the source proofs and not
-formalized. Everything else on the spine is derived, proved, witnessed, or an
-explicitly downstream application.
+**Paper verdict: the core generalized-LI spine is kernel-checked.** The live-world
+Budgeter/TradingFirm lift is `lean-proved` against the pinned dependency's own
+`Budgeter`, `TradingFirm`, `Strategy n`, `Trader` and `MarketMaker`, under hypotheses
+*weaker* than the three the round first proposed — support-local nesting and finite
+sound-and-complete restrictions, with nonemptiness and effectiveness unused. Two links
+in the arc remain uncheckable by the kernel and are named rather than glossed: the
+first-order erasure that makes the modified market a program, and the exactness half of
+the distance duality (`DistanceComplete`). `PROOF_CLOSURE.md` is the arrow-by-arrow
+account and `THEOREM_MAP.md` the ledger.
 
 **Construction verdict: the generalized construction is not the ordinary one.**
 The world process feeds the `Budgeter`, not only the criterion, so `TF^live + E`
@@ -180,10 +184,14 @@ in `INTEGRATION_MAP.md` §3.
 
 ## Status
 
-`test-supported` for the fixtures; `lean-proved` and **unregistered** for the five
-inequalities in `lean/Workspace/Normativity/Contrib/TraderizedEnforcement.lean`;
-`derived` for the safety theorem, the liability bound, the live-world lift, the
-deductive recovery and the one-dimensional exactness theorem. Nothing is
-registered in `CLAIMS.md`, and the round adds no living specification note —
-`FORCE_INTERFACE.md` and `PAPER_RECONCILIATION.md` are proposals for one, not
-one.
+`lean-proved` and **unregistered** across nine files under
+`lean/Workspace/Normativity/Contrib/`: the assessment-process lift and its deductive
+specialization, the enforcement strategy and the force inequalities, preservation under
+bounded assessed liability, traderized deduction's zero liability and its preservation
+of the original criterion, and the coherence modulus. `derived` plus
+`exhaustive-finite` for the exact dual-distance presentation. `test-supported` for the
+fixtures. `blocked` for market computability. `open` for safety necessity and for the
+normative-record bridge. `THEOREM_MAP.md` sorts all of it; `PROOF_CLOSURE.md` argues it.
+
+Nothing is registered in `CLAIMS.md`, and the round adds no living specification note —
+`FORCE_INTERFACE.md` and `PAPER_RECONCILIATION.md` are proposals for one, not one.

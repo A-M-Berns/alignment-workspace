@@ -83,20 +83,20 @@ accommodate, and aesthetics are not grounds.
 
 | arrow | direction | status |
 |---|---|---|
-| row presentation of `K_n` ⟶ day-`n` trading strategy | compiler | **constructed**; expressibility argued, legality argued, `test-supported` |
+| row presentation of `K_n` ⟶ day-`n` trading strategy | compiler | **`lean-proved`, unregistered** — `EnforcementStrategy.enforcementStrategy` is the term; rank, support and continuity are proved, and `marketValueRat_enforcementStrategy` says the force algebra is about it |
 | market-maker contract at slack `0` + `K_n ≠ ∅` ⟶ `P_n ∈ K_n` | enforcement | **`lean-proved`, unregistered** (`le_pair_of_contract_zero`) |
 | contract at slack `ε_n` + volume `M_n` ⟶ `∑_j β_j g_j² ≤ ε_n + M_n` | enforcement | **`lean-proved`, unregistered** (`weighted_square_le_slack_add_volume`) |
 | world-inclusive `K_n` ⟶ enforcement liability `0` | safety | **`lean-proved`, unregistered** (`pair_nonneg_of_mem`) |
-| bounded enforcement liability ⟶ the modified market satisfies the criterion | safety | **derived**, from two source lemmas taken as hypotheses; not in Lean, not registered |
+| bounded enforcement liability ⟶ the modified market satisfies the criterion | safety | **`lean-proved`, unregistered** — `EnforcementPreservation.no_efficient_trader_exploits`; the source's market-maker lemma is used as its theorem rather than as a hypothesis |
 | unbounded enforcement liability ⟶ an exploiting trader | necessity | **witness only**, one fixture, `test-supported` |
 | deductive stage ⟶ world-inclusive presentation | constraint source | **constructed** (`support_rows`), `test-supported` |
-| traderized coherence ⟶ `THEORY_11` `D3(a)` | upstream | **candidate route**; the incoherence bridge of `FORCE_INTERFACE.md` §1 closes the measure gap, the presentation cost remains |
+| traderized coherence ⟶ `THEORY_11` `D3(a)` | upstream | **candidate route**; the measure gap is closed exactly — the exact dual-distance presentation reports `dist_∞` with no error term (`PROOF_CLOSURE.md` §V) — and the presentation cost remains |
 | endorsement + `theta_min` ⟶ row ⟶ trader (`P1`) | force | **constructed**, `test-supported`; agrees with `NL-SI-A5`'s closed form and with the core condition pointwise |
 | `NL-SI-A3` feasibility program ⟶ compiler precondition | upstream | **identified**, not implemented here: the adapter already exists and is what the compiler needs |
 | exclusion depth `d_t` ⟶ cumulative liability ⟶ criterion | safety | **`lean-proved`** for the per-date bound (`weighted_square_sub_deficit_le_pair`); the ceiling and the summability condition are `test-supported` |
 | normative record ⟶ `C_t` (semantic) | constraint source | **absent**; item 39, strong form |
 | normative record ⟶ `K_t` (price demand only) | constraint source | **absent**; item 39, weak form — gives force without semantics |
-| `C_t` ⟶ `Ω_t^live` ⟶ generalized criterion | semantics | **derived**; `test_semantics` |
+| `C_t` ⟶ `Ω_t^live` ⟶ generalized criterion | semantics | **`lean-proved`** for the criterion half (`AssessmentFirm.no_efficient_trader_exploits`); `derived` for `C_t ⟶ Ω_t^live` itself, `test_semantics` |
 | `C_t` ⟶ `π_t(C_t)` = `K_t` | projection | **derived**, and not invertible — `SEMANTIC_PROJECTION.md` |
 
 ## 6. Where the round would sit

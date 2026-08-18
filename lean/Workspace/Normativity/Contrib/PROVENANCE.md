@@ -71,3 +71,9 @@ every priced coordinate, with no mesh and no presentation-dependent constant. Th
 distance-completeness of the exact dual-distance family is the arc's one
 unformalized link -- established on paper and by exhaustive verification over
 rational grids in the round's `tests/test_coherence.py`.
+
+The closure pass added the inhabitation witness the round's theorems of record were
+missing: `DeductiveEnforcement.witness_market_not_exploited` instantiates the whole
+hypothesis package at a deductive process revealing one atom, with the liability bound
+derived from the force algebra rather than assumed, and `witnessPres_is_violable` shows
+the compiled position is not the zero trader. This answers `PRIORITIES.md` item 41.
