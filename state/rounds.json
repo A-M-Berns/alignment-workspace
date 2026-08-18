@@ -541,6 +541,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-16-wiki-state-bindings/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-17-counterfactual-legitimacy",
+      "date": "2026-08-17",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy",
+      "verdict": "interface-closed-by-role / trust-premise-integrity / target-bridge-open",
+      "verdict_source": "prompts/2026-08-17-counterfactual-legitimacy/REPORT.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-17-counterfactual-legitimacy/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
