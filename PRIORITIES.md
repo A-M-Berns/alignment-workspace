@@ -494,6 +494,314 @@ accepted sufficient statement yet supplies an executable completion criterion.
 
 ---
 
+## Normativity line — traderized enforcement
+
+Items 39–42 were filed by `prompts/2026-08-16-traderized-enforcement/` within its
+dispatched scope, with that round's `PROMPT.md` as the authorization. Their shared
+context is `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, whose
+`THEOREM_MAP.md` says which of its results are kernel-checked, which are derived
+from source lemmas taken as hypotheses, and which are single witnesses.
+
+### 39. Does normative statics produce a credal constraint, or only a price demand? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The traderized-force interface consumes a price-space region and gives it
+operative force. What the normativity line does not have is the arrow into it.
+`Due` is a burden on an occasion and `Licensed` is a permission on a response;
+neither is a constraint on a credal state, and neither is a demand on prices.
+
+The item has two possible answers and they are not equivalent.
+
+**Strong.** A reasons/warrants/settlement structure yields a semantic credal
+constraint `C_t ⊆ Δ(Ω_t)`. Then the live worlds, the generalized criterion and the
+support capacities all follow, and force consumes the projection `π_t(C_t)`.
+
+**Weak.** It yields only a price-space demand `K_t`. Force still applies, but no
+semantics follows: reading live worlds off `K_t` by preimage is a *lift*, not a
+derivation, and different lifts give different criteria. The round exhibits two
+credal sets with the same projection and different live worlds, so the weak form
+genuinely underdetermines the strong one.
+
+Deliver whichever is achievable, and a proof if only the weak one is. The hard
+part is not the type: a normative constraint exists to exclude states deduction
+permits, and the round's safety conditions then charge for that exclusion, so a
+nontrivial answer must come with the liability its regions induce.
+
+*Deliverable shape:* `test-supported` at minimum, and the round must ship all of:
+one nontrivial normative fixture; the `C_t` and/or `K_t` it generates; a
+feasibility witness; a rational row presentation the force API accepts; the
+resulting enforcement position; its conformance at a declared tolerance; the
+live-world enforcement liability if a semantic `C_t` exists; and a statement of
+whether the construction respects the settlement, provenance and answerability
+constraints the normativity line already carries.
+*Acceptance check:* `compile_force` accepts the presentation with the supplied
+witness and returns a certificate whose conformance holds at the fixture's prices,
+and the liability is computed exactly over the implied live worlds.
+*Context:* `projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md`;
+`.../2026-08-16-traderized-enforcement/SEMANTIC_PROJECTION.md` §4;
+`INTEGRATION_MAP.md` §4.
+**Success requires both force generation and safety discharge.** Producing `C_t`
+or `K_t` is half the item. The source must also either supply a certificate that
+cumulative enforcement liability over the assessed worlds is bounded, or supply
+the quantities from which the force layer derives one. The round's
+`NORMATIVE_SAFETY.md` shows the settlement/core statics get partway — settlement
+rows are liability-free and monotonicity makes the endorsement gap non-increasing
+— and names the missing clause as a limit on cumulative net outflow, which the
+corpus already adopted for the same failure elsewhere. A round that compiles a
+normative region without addressing the outflow account has not answered this item.
+
+*Why it matters:* the force interface is installed and consumable; this is the one
+arrow between it and the normativity line, and without it traderized force is a
+result about deduction wearing a general name.
+
+### 40. Is bounded cumulative enforcement liability necessary? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The preservation theorem's hypothesis is that the enforcement position's
+cumulative value over the assessed worlds is bounded below:
+
+    for every n and every ω ∈ Ω_n^live,   Σ_{t≤n} E_t(ω) ≥ −B .
+
+That is sufficient. Its converse is not proved, and one direction of the converse
+is known to fail — weak enforcement has zero liability while excluding live worlds
+outright, so unbounded liability is not implied by aggressive enforcement.
+
+The item is the necessity direction, or its refutation. If a trajectory can
+violate the bound with no efficiently computable trader able to harvest it, that
+counterexample is the more valuable outcome, because it would mean the hypothesis
+is strictly stronger than the criterion needs and the round's formulation is not
+the canonical one.
+
+Note what the item is *not*. It is not about the declared-quantity **certificate**
+`Σ_t (ε_t + C_t)·D_t/δ_t`, which is a conservative sufficient upper bound — it
+maximizes over the live worlds independently at each date, where the criterion
+follows a single world across dates. A certificate that diverges establishes only
+that the current proof does not certify safety. The round carries a fixture where
+the realized liability at one followed world diverges too, which is the stronger
+statement and the one this item's converse would have to engage.
+
+*Deliverable shape:* `witness-checked` for a refutation; `derived` or better for
+necessity.
+*Acceptance check:* the trajectory is exhibited in exact rationals with a stated
+efficiently-computable trader class.
+*Context:* `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md`,
+`NORMATIVE_SAFETY.md` §5; `src/outflow.py`.
+*Why it matters:* the constitutional layer is being asked to install a finite
+account on the strength of this hypothesis, and installing a discipline stronger
+than the criterion needs would restrict normative force for no safety gain.
+
+### 46. Should force cost depend on the row presentation? — **[open]** — *partially answered by the proof-closing pass*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The traderized compiler consumes a row system, not an admissible set, and the two
+are not interchangeable. Under the installed `ForceDeclaration` at a fixed
+declared tolerance, `k` duplicate rows scale the emitted position and the safety
+charge by `k`; rescaling a row by `λ` scales them by `λ²`; and a redundant
+non-duplicate row — `p_A ≥ ½` and `p_B ≥ ½` already imply `p_A + p_B ≥ 1` — changes
+the emitted force while leaving the admissible set exactly where it was.
+
+Rescaling is the benign case: it is a genuine reparametrization, and at a matched
+*actual* conformance target the position, realized liability and charge all agree.
+Duplication and redundancy are not.
+
+The round takes **Option A** — the presentation is part of the force request — and
+records it as a choice rather than a result. Three alternatives are open:
+
+- **canonical normalization**, which must state exactly which equivalence class it
+  normalizes; scalar rescaling and literal duplicates are tractable, general
+  H-presentation redundancy is not obviously so;
+- **a weighted compiler**, where redundant rows carry declared weights summing to
+  one, which would need the conformance theorem re-derived at the wrapper level;
+- **minimization over equivalent presentations**, which is theoretically the right
+  answer for "the cost of enforcing `K`" and is expensive.
+
+*Deliverable shape:* `derived` for a normalization theorem with its equivalence
+class stated; `witness-checked` for a construction; or a reasoned decision to keep
+Option A.
+*Acceptance check:* the round's presentation fixtures run against the chosen
+architecture, and the interface note's table is either derived or deleted.
+*Context:* `.../2026-08-16-traderized-enforcement/NORMATIVE_SAFETY.md` §11;
+`test_outflow.PresentationChangesTheInstalledCompiler`.
+*Why it matters:* it decides whether a normative source can buy stronger force, or
+the same force more cheaply, by restating its constraint — which is a
+manipulability question about the constitutional layer, not a presentational one.
+
+*Partially answered:* the *intrinsic target* is presentation-independent and the
+*compiled trader* is not, and the proof-closing pass separated the two. The exact
+dual-distance family depends on `K` alone — a generator inside the hull of the others
+contributes an implied constraint, so redundant generators and generator order change
+nothing (`test_coherence.TheExactFamilyIsCanonical`) — while duplication and rescaling
+of an arbitrary presentation do change the emitted position and the charge
+(`test_outflow.PresentationChangesTheInstalledCompiler`). What is still open is whether
+the *cost* can be made canonical, which is a question about the charge and not about the
+metric.
+
+### 41. The safety theorem against the dependency's own construction — **[substantial]** — *answered by the proof-closing pass*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered.** `Workspace.Normativity.Contrib.DeductiveEnforcement` defines the
+modified market inside the dependency's own types — `MarketMaker` applied to
+`TradingFirm DP` joined with an enforcement strategy — and
+`no_efficient_trader_exploits` proves `¬ Tr.Exploits` of it for every efficiently
+computable `Tr`, from a hypothesis bounding the added trader's plausible cumulative
+value. `witness_market_not_exploited` inhabits the whole package at a process revealing
+one atom, with the liability bound **derived** from `pair_nonneg_of_mem` rather than
+assumed, and `witnessPres_is_violable` shows the compiled position is not the zero
+trader. `EnforcementPreservation.no_efficient_trader_exploits` is the same composition
+over an arbitrary assessment process. The Lean gate and the axiom audit are green.
+
+The item as originally filed read: the round's central safety claim composes two source
+lemmas about objects it does not formalize; its Lean file states the algebra over an
+abstract pairing; the composition stays on paper.
+
+The item is to define the modified market inside the pinned dependency's types —
+`MarketMaker` applied to `TradingFirm DP` plus an enforcement strategy — and prove
+`¬ Tr.Exploits` of it for every efficiently computable `Tr`, from a hypothesis
+bounding the enforcement trader's plausible cumulative value. The step to
+reproduce is `liaTrader_not_exploited`, `Construction/LIA.lean:96`, which is where
+the modification breaks: the market-maker lemma bounds the aggregate and the
+capstone needs the trading firm alone.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`, with an
+inhabitation witness for the hypothesis package.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and the
+nonvacuity witness typechecks.
+*Context:* `.../2026-08-16-traderized-enforcement/THEOREM_MAP.md`, *Named future
+port target*; `SOURCE_AUDIT.md` §5.
+*Why it is [substantial]:* the objects exist in the dependency and the argument is
+three lines on paper; the work is stating the modified history in types that
+already carry a recursion and a search.
+*Relation to item 7:* the same gap seen from the other line — item 7 wants the
+criterion's application to be a proof rather than a hypothesis, and this is that
+application for one modified market.
+
+### 44. What governs removing a world from support altogether? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Under the support reading of live worlds — a world is live when some credence the
+constraint admits gives it positive mass — a constraint cannot quietly drop a
+world it merely disfavours. `p(A) <= 1/2` keeps `A` live at capacity `1/2`. What
+it *can* do is set the capacity to zero outright, as `p(A) = 0` does, and then the
+world leaves the assessment set entirely and the enforcement channel may lose
+there for free.
+
+That is the narrow residue of a laundering worry the round first stated far too
+broadly and has withdrawn. It is also settlement-shaped: setting a world's
+capacity to zero is the constraint *entailing* that world impossible, which is
+what a settlement event does, and the settlement interface already has write-once,
+no-claw-back and answerability machinery for exactly that act.
+
+The item is whether that machinery covers it, or whether a source can remove a
+world by an ambient constraint without incurring a settlement's obligations. If
+the second, state the condition that closes the route.
+
+*Deliverable shape:* a stated condition, with the round's `p(A) = 0` fixture
+failing it and its deductive-recovery fixtures passing; or an argument that the
+settlement interface's existing clauses already bind the act.
+*Acceptance check:* `test_semantics.GenuineRemoval` distinguishes total removal
+from small support; a solution must say which of the two the constraint performed.
+*Context:* `.../2026-08-16-traderized-enforcement/PAPER_RECONCILIATION.md` §7,
+question 3; `consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md` §§1, 4.
+*Why it matters:* it is the only remaining place where a constraint source can
+affect what it is answerable to, and it is now small enough to be answered.
+
+### 45. Is either liability bridge necessary? — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The safety theorem consumes bounded cumulative enforcement liability over the
+assessment worlds. Two sufficient routes to it are available and neither
+dominates: the deficit bound `L_t(w) <= sum_j beta_j g_j d_j(w)`, which needs no
+hypothesis about credal support; and the support bridge
+`E_t(w) >= -(1 - theta) U_t / theta`, which needs a uniform positive support
+capacity and an upper bound `U_t` on the position's value elsewhere — taken as the
+cube maximum gain.
+
+The item is whether either is necessary, and whether a third route dominates both.
+A negative answer for both would mean the round's sufficient conditions are
+strictly stronger than the criterion needs, which is worth knowing before either
+is written into a paper as *the* hypothesis.
+
+*Deliverable shape:* `witness-checked` for a trajectory violating both bridges
+whose market is nonetheless inexploitable; or a proof that one implies liability
+control in a stated class.
+*Acceptance check:* the round's existing safety fixtures run against the proposed
+condition.
+*Context:* `.../2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md` §4a.
+*Relation to item 40:* item 40 asks the converse of the safety theorem; this asks
+the converse of its sufficient conditions. They are different questions and both
+are open.
+
+### 43. A compiler that is both exact and safe, or a proof there is none — **[open]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Two compilers, and they are not ordered. The violation-proportional position
+never loses in a world its region contains, and cannot force exact membership
+against bounded opposing volume. The interior-anchored position forces exact
+membership when the region has an interior, and loses in a plausible world at a
+price *inside* a world-inclusive region, because it holds positions where there
+is no violation at all.
+
+The item is whether the two properties can be had together: a continuous
+expressible strategy whose position has a floor outside the region and vanishes
+on it. Those pull against each other — a continuous position that vanishes on a
+closed region is small just outside it — so a clean impossibility is the expected
+outcome and would be worth as much as a construction. Note the two-sided shape:
+interior-anchored exactness is proved only for regions with a strict interior, so
+the construction question is posed there. Regions with empty interior are **not**
+excluded: cube-face settlement pinning is enforced exactly by a constant position,
+so a general impossibility claim must not lean on empty interior. Only the earned
+geometry is available here.
+
+*Deliverable shape:* `test-supported` for a construction, with the safety and
+exactness fixtures both green on it; `witness-checked` or `lean-proved` for an
+impossibility.
+*Acceptance check:* the round's existing exactness and safety sweeps, run against
+the new compiler, both pass.
+*Context:* `.../2026-08-16-traderized-enforcement/ENFORCEMENT.md` §5, Theorems 7
+through 9; `src/exactness.py`.
+*Why it matters:* it is the one place the force layer currently forces a choice
+between conformance and non-exploitation, and the constitutional layer would have
+to make that choice without guidance.
+
+### 42. An efficiently presentable sufficient row family for coherence — **[open]** — *narrowed by the proof-closing pass*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Enforcing the coherence polytope of a deductive stage needs its facet system,
+whose vertex set is the plausible worlds of the priced fragment — up to `2^|Φ|`
+of them. The cheap alternative, the affine relations among priced sentences, is
+strictly weaker: on a four-sentence Boolean fragment it admits twenty-four
+incoherent grid points at denominator three, one of which prices a conjunction
+above a conjunct.
+
+The item is the gap between them. Is there a row family, computable in time
+polynomial in the fragment, whose region is strictly between the affine relations
+and the coherence polytope and whose residual incoherence admits a bound? A
+negative answer — that any polynomially presentable family leaves a violation
+bounded away from zero — is equally wanted and would say that finite-date
+coherence is intrinsically expensive.
+
+*Deliverable shape:* `enumeration-verified` over a stated fragment family for a
+positive answer; `witness-checked` for a negative one.
+*Acceptance check:* the house enumeration checker generates the fragment's
+plausible worlds and confirms the claimed containment pointwise.
+*Context:* `.../2026-08-16-traderized-enforcement/DEDUCTION_SPECIAL_CASE.md`
+§§3–4, and its `src/deduction.py`.
+*Narrowed:* the proof-closing pass removed the *approximation* half of the question.
+The **exact dual-distance presentation** — `src/coherence.py`, `PROOF_CLOSURE.md` §V —
+is a finite rational row family, computable from the fragment's plausible worlds and
+independent of the price, whose largest violation *is* `dist_∞(P, K)`, with no mesh and
+no Hoffman constant; it is world-inclusive by construction, so it costs nothing in
+liability however large it is. What remains is exactly the complexity question: that
+family is `computable`, and nothing bounds it better than
+`binom(2^{|Φ|} + |V|, |Φ|+1)`, against observed counts of 11 at `|Φ| = 3` and 17 at
+`|Φ| = 4`. So a positive answer must now beat a *known-exact* baseline rather than
+compete with an approximation, and a negative answer must rule out polynomial
+presentability of that baseline.
+*Why it matters:* it prices the deduction special case, which is the round's
+evidence that the abstraction is more than a name.
+
+---
+
 ## Deference line
 
 Context for all three: `projects/deference/note-dump-2026-08-11/`, in particular
@@ -1255,6 +1563,57 @@ edits into ordinary appends; or check that every round directory under
 `prompts/` has a `PROVENANCE.md` row and, where its report claims a dated
 `DECISIONS.md` entry, that the entry exists. The state-bindings round restored
 all seven verbatim and filed this.
+
+### F10 — The structured state can hold exactly one theorem-facing interface
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+`state/theorem_interface.json` is a single interface object, and
+`checkers/workspace_state.py` wraps it as `"interfaces": [interface]`. The schema
+has no room for a second, and the emitter is a house checker on the trust chain,
+so a round cannot add one.
+
+The traderized-enforcement round produced a second theorem-facing interface — the
+force layer, with a living note at
+`projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md` — and left it out of
+the structured state rather than either editing the checker or overloading
+`normativity.learning.current` with an unrelated object. Overloading would have
+created two meanings of "the current Normativity interface" inside one record.
+
+So the machine-readable state currently says the workspace has one theorem-facing
+interface and the repository has two. A reader orienting from
+`python3 -m checkers.workspace_state --json` will not find the force interface at
+all.
+
+Two cheap moves, neither this round's to choose: make the emitter read a list of
+interface files, which is a small maintainer edit to a trust-chain file; or rule
+that `theorem_interface.json` is reserved for the response-learning theorem and
+say so in `RESEARCH_STATE.md`, so the absence is a documented policy rather than
+a gap. The round that hit this documented the choice in its report and filed
+this.
+
+### F9 — Agent worktrees live inside the repository and nothing ignores them
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+`.claude/worktrees/` holds one checkout per concurrent agent session, inside the
+repository and untracked. `git add -A` therefore stages another session's
+worktree as an embedded repository, and git says so in a hint rather than an
+error. The traderized-enforcement round did exactly this and caught it only by
+reading the commit's file list afterwards.
+
+The failure is quiet in the direction that matters. A commit carrying an embedded
+repository passes every gate here — the path gate sees a path outside the
+specification list, the name lint sees no Markdown, and the Lean and Python jobs
+see nothing new — so the first sign is a clone that is missing a directory it
+appears to contain.
+
+Two cheap moves, neither this round's to choose: a `.gitignore` entry for
+`.claude/`, which costs nothing and is a one-line specification-layer edit; or a
+check that no commit adds a gitlink outside a declared submodule list, which also
+catches the case where the directory moves. The round that hit this removed the
+entry from its own commit and filed this rather than editing `.gitignore`, since
+which paths the repository ignores is a specification decision.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->

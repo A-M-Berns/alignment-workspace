@@ -543,6 +543,17 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-16-traderized-enforcement",
+      "date": "2026-08-16",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
+      "verdict": "Logical Induction generalizes past deduction: the assessment-process lift of Budgeter and TradingFirm is kernel-checked against the pinned implementation, a compiled price-region trader gives finite-time force, and preservation follows from finite assessed risk capital \u2014 which is exactly zero for deduction, so traderized deduction keeps the original criterion and adds finite-time approximate coherence.",
+      "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-proof-closure.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-17-counterfactual-legitimacy",
       "date": "2026-08-17",
       "project": "normativity.legitimacy",

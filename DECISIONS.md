@@ -25,6 +25,42 @@ An entry leaves when the decision lands as a dated entry below.
 what they could decide, or something structural is generating decisions and
 belongs in `PRIORITIES.md` under *Workspace friction*.
 
+- **Who owns the enforcement outflow account.** The safety theorem needs only
+  that total capital be finite; it is indifferent between a **source-owned**
+  account, where a book budgets the cost of its own endorsements and an
+  endorsement that persistently outruns the record eventually loses operative
+  force, and a **market-owned** allowance, where the substrate grants every
+  privileged force channel a fixed finite allotment regardless of authorship. The
+  first makes safety a form of answerability; the second makes it architectural.
+  *Cost of deciding now:* low — one paragraph in the clause, no code change.
+  *Cost of not deciding:* the constitutional prose cannot say who breaches when
+  the account is exhausted. `.../NORMATIVE_SAFETY.md` §12.
+
+- **Whether the outflow clause broadens `P2`, sits beside it, or both sit under a
+  shared principle.** The quantifier structure matches `P2` exactly — worldwise,
+  cumulative, uniform in horizon — and the bearer, holdings and means do not: `P2`
+  bounds the engine's downside on book holdings through refusal and bounded
+  participant budgets, and the enforcement trader is exempt from both. The round
+  recommends a **sibling clause** under the shared principle *every privileged
+  channel that can impose losses unavailable to ordinary bounded participants
+  carries a finite cumulative downside account*, and reserves whether to state
+  that principle. *Cost of deciding now:* low. *Cost of not deciding:* two clauses
+  that look like restatements of each other. `.../NORMATIVE_SAFETY.md` §12.
+
+- **The exhaustion behaviour.** Quarantine, tolerance relaxation, refusal at
+  admission and tolling are all implementable and are not equivalent; tolling
+  interacts with answerability deadlines and is the one the round cannot settle
+  alone. Weakening the declared core minimum is *not* an option — the worst
+  deficit has no `θ` in it. *Cost of deciding now:* low. *Cost of not deciding:*
+  `src/outflow.py` exposes four policies and the architecture endorses none.
+
+- **Whether the account may be replenished.** Unbounded outside replenishment
+  destroys the guarantee outright and is exactly the failure `NL-SI-P1` names.
+  The options are: never; bounded globally; or only on a new constitutional era
+  with its own finite allocation. *Cost of deciding now:* low. *Cost of not
+  deciding:* an implementer may add replenishment as an obvious convenience and
+  silently void the safety theorem. This is the highest-risk item in the queue.
+
 - **Choose vocabulary for “admission.”** The normativity material uses the same
   family for at least three objects: the date a docket item enters the record,
   a certificate verdict permitting a lawful edit, and membership in a
@@ -52,6 +88,83 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   debt. *Doing it* requires reading the statements and §§2–9 of
   `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
   leaves the current documents explicitly `ci-only` and unadopted.
+
+- **Decide where a second theorem-facing interface lives in structured state.**
+  `state/theorem_interface.json` holds one interface object and
+  `checkers/workspace_state.py` wraps it as a one-element list, so the force
+  interface is absent from the state emission while its living note sits in
+  `projects/normativity/notes/`. The round declined both available workarounds —
+  editing a trust-chain checker, and overloading `normativity.learning.current`
+  with an unrelated object, which would put two meanings of "the current
+  Normativity interface" in one record. *Doing it* is either a small emitter edit
+  or a ruling that the file is reserved for the response-learning theorem, said in
+  `RESEARCH_STATE.md`. *Waiting* leaves a reader orienting from the state emission
+  unable to find the force interface at all. Filed as `PRIORITIES.md` F10.
+
+- **Confirm the traderized force interface as a living note.** The round
+  installed `projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md` — the force
+  layer's input type, its conformance theorem, the liability obligation it emits
+  rather than discharges, and its explicit non-responsibilities. It is installed
+  because the force results survived four passes of semantic revision without a
+  retraction, while every withdrawn claim in the round was semantic. *Doing it* is
+  reading one short note and deciding whether a research round may leave a living
+  specification behind at all. *Waiting* leaves it as an unadopted note that a
+  later round may or may not treat as current.
+
+- **Rule on the two-channel architecture, the Coverage–Liability names, and
+  where traderized force is published.** Three linked rulings from the
+  traderized-enforcement round's reconciliation pass. *(a)* Whether
+  `what counts as admissible ≠ how finite prices are pushed toward admissibility`
+  is adopted as the generalized paper's architecture — the round recommends it and
+  gives three independent obstructions to collapsing the two. *(b)* Whether
+  Coverage–Liability stays the terminology now that Coverage's job is known to be
+  non-vacuity of the criterion rather than support for the non-exploitation proof,
+  which is a different role from the one the name was chosen for. *(c)* Whether
+  traderized force is a section of that paper or a separately consumable module —
+  the round recommends one paper with force as a liftable module, on theorem
+  dependency. *Doing it* is one reading of that round's `PAPER_RECONCILIATION.md`.
+  *Waiting* leaves the paper spine's blocking step, item 44, without a settled
+  frame to be solved inside.
+
+- **Rule on whether `P1` should name an obligation rather than a mechanism.**
+  The settlement interface's enforcement clause certifies a core minimum *of an
+  engine*. The traderized-enforcement round compiles the same condition from
+  `NL-SI-A2`'s admissible-reference polytope into a trader, and proposes that the
+  clause instead require a declared conformance of whatever signs a force
+  contract. *Doing it* is deciding whether the clause names a mechanism or an
+  obligation, after reading that round's `CORE_CONDITION.md` §3 — the frozen
+  consolidation is untouched either way. *Waiting* leaves the round's `P1` result
+  readable and unadopted, and leaves two mechanisms with no common statement to be
+  compared against.
+
+- **Rule on fourteen provisional names from the traderized-enforcement round.**
+  `enforcement trader`, `enforcement intensity`, `enforcement liability`,
+  `violation-proportional position`, `interior-anchored position`, `exclusion
+  depth`, `world-inclusive region`, `support-function presentation`,
+  `constraint-to-trade compiler`, `market-maker contract`, `enforcement
+  inequality`, `force contract`, `force declaration`, `priceable endorsement`.
+  They are deliberately absent from
+  `state/vocabulary.json`, whose generated sheet is headed *canonical*. *Doing it*
+  is one reading of that round's `MODEL.md` §§4–6, after which the survivors enter
+  the sheet. *Waiting* leaves nine names live in one round's prose and nowhere
+  else, which is cheap now and expensive once a second round uses them.
+
+- **Decide whether `world-inclusive region` and `coverage(Due)` are related.**
+  The traderized-enforcement round asserts they are not — different spaces,
+  different quantifiers — and exhibits no map, so nothing was written into
+  `state/theorem_interface.json`. *Doing it* is reading that round's
+  `INTEGRATION_MAP.md` §3 against `COVERAGE_INTERFACE.md`. *Waiting* risks the two
+  being silently identified by a later round, which is the specific collision the
+  dispatch that produced them warned about.
+
+- **Decide whether the traderized-enforcement inequalities are worth
+  registering.** Four kernel-checked, axiom-clean results in
+  `Workspace.Normativity.Contrib.TraderizedEnforcement`, none answering a filed
+  item, so none registered. *Doing it* is filing an item they answer, or ruling
+  that they stay unregistered because what they state is an inequality about an
+  abstract pairing whose connection to Logical Induction is a reading rather than
+  a proof. *Waiting* costs nothing; the file is green and honestly labelled either
+  way.
 
 - **Confirm the deck's path-gate entry.** `projects/normativity/deck-2026-08-10/**`
   was added to the specification enumeration in `tests/path_gate.py` by the
@@ -170,6 +283,38 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   nothing in it enters the registry. *Doing it* is reading §6 and choosing which,
   if any, to file. *Waiting* leaves the questions recorded only inside a
   completed round.
+
+- **Whether to file the two named formalization obligations the proof-closing pass
+  left.** Both are `blocked` rather than open questions: the first-order erasure of
+  `MarketMaker(TF^L + E)`, which the pinned dependency does for its own aggregate in
+  `Construction/LIACompiler.lean`, and the kernel proof of `DistanceComplete` — convex
+  duality for a finite rational polytope, for which Mathlib carries neither a finite
+  minimax theorem nor a usable sup-norm separation over `Fin d → ℝ`. Each is a
+  self-contained round specification. *Cost of deciding now:* low — two
+  `PRIORITIES.md` items, or a decision that neither is worth the transcription.
+  *Cost of not deciding:* the two conditionals in
+  `.../2026-08-16-traderized-enforcement/THEOREM_MAP.md` stay conditional with no
+  queue entry pointing at them, which is how a `blocked` item becomes a permanent
+  one.
+
+- **Name the assessment-process vocabulary.** The proof-closing pass introduced
+  provisional names for objects that will be hard to rename once cited:
+  `Assessment` and its `tables`/`nested` fields, `ofDeductiveProcess`,
+  `FiniteDetermined`, `Presentation` and `enforcementStrategy`, `DistanceComplete`,
+  and the phrase **exact dual-distance presentation** for the finite row family whose
+  largest violation is the sup-norm distance. *Doing it* is reading
+  `.../PROOF_CLOSURE.md` §§II and V and choosing. *Waiting* costs nothing today and
+  leaves nine Lean files carrying names marked provisional under `AGENTS.md` §6.
+
+- **Whether the per-commit `Model:` trailer is enforced.** `AGENTS.md`'s provenance
+  section requires attribution at both levels, per commit as a trailer and once in the
+  pull-request body, and says the two are not redundant. The `dco` job checks the
+  pull-request section only. The `traderized-enforcement` branch's earlier commits
+  carry `Signed-off-by` and no `Model:` trailer; the proof-closing pass's commits carry
+  both. *Cost of deciding now:* low — either add the trailer check to `tests/dco.py`,
+  or drop the per-commit requirement from `AGENTS.md` and keep the pull-request body as
+  the single record. *Cost of not deciding:* a stated requirement that nothing checks
+  and that history does not uniformly satisfy.
 
 ## Settled
 
