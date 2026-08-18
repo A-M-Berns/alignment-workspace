@@ -552,6 +552,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-17-counterfactual-legitimacy/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-18-principal-mediated-corrigibility",
+      "date": "2026-08-18",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-08-18-principal-mediated-delegation",
+      "verdict": "repair-positive / override-irreducible / mediation-costs-predictability",
+      "verdict_source": "prompts/2026-08-18-principal-mediated-corrigibility/REPORT.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-18-principal-mediated-corrigibility/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
