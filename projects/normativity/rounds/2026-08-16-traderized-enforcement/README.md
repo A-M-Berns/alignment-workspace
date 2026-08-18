@@ -86,7 +86,8 @@ its world process refutes.
 | `FUNDING_AND_SAFETY.md` | the liability identity, the withdrawn ceiling and what replaced it, and the safety condition |
 | `DEDUCTION_SPECIAL_CASE.md` | deduction as the calibration case; presentation cost; the four equivalence relations |
 | `INTEGRATION_MAP.md` | objects touched and untouched, the four vocabulary collisions, Legitimacy and Deference |
-| `THEOREM_MAP.md` | every result with its evidence class, and the named future Lean port target |
+| `THEOREM_MAP.md` | every result with its evidence class, sorted settled / conditional / open / refuted |
+| `PROOF_CLOSURE.md` | the arc arrow by arrow with what each rests on; which Logical Induction property families generalize; the kill questions answered |
 | `NORMATIVE_SAFETY.md` | whether the motivating statics discharge bounded enforcement liability: the outflow account, the three-factor cost product, the withdrawn depth-only theorem, and presentation dependence |
 | `SEMANTIC_PROJECTION.md` | `C_t`, `π_t`, `K_t`, fibre saturation, and the support loss under projection |
 | `PAPER_RECONCILIATION.md` | the two constructions, the live-world lift with its three hypotheses, deductive recovery, and the paper spine |

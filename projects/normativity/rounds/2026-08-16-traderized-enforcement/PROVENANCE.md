@@ -6,7 +6,9 @@ Every file in this directory:
   its follow-up, executed by Claude Opus 5 (Anthropic) against dispatches
   written by GPT-5.6 Sol (OpenAI)
 - **review status** — `ci-only`
-- **date** — 2026-08-16 (first pass), 2026-08-17 (second through seventh passes)
+- **date** — 2026-08-16 (first pass), 2026-08-17 (second through eleventh
+  passes), 2026-08-18 (proof-closing pass; its dispatch's author model is
+  unrecorded)
 
 | path | notes |
 |---|---|
@@ -26,13 +28,16 @@ Every file in this directory:
 | `FUNDING_AND_SAFETY.md` | |
 | `DEDUCTION_SPECIAL_CASE.md` | |
 | `INTEGRATION_MAP.md` | |
-| `THEOREM_MAP.md` | |
+| `THEOREM_MAP.md` | rewritten in the proof-closing pass into settled / conditional / open / refuted |
+| `PROOF_CLOSURE.md` | proof-closing pass; the arc arrow by arrow, the property-family classification, and the kill questions |
+| `src/coherence.py`, `tests/test_coherence.py` | proof-closing pass; the exact dual-distance presentation, and the independent distance program it is checked against |
 | `PROSECUTION.md` | |
 | `src/*.py` | self-contained; imports no other round |
 | `tests/*.py` | `test_regressions.py` pins the two counterexamples that retracted claims of the second pass |
 
 `lean/Workspace/Normativity/Contrib/TraderizedEnforcement.lean` carries the same
-generator and review status; it is listed in the Lean contrib provenance file.
+generator and review status, as do the eight Lean files the proof-closing pass added;
+all nine are listed in the Lean contrib provenance file.
 
 The literature check in `SOURCE_AUDIT.md` §8 was three targeted searches, and each
 item's influence on the construction is stated where it is cited. Two of the three

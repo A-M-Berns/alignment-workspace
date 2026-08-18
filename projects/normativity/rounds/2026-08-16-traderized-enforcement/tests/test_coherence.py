@@ -213,5 +213,78 @@ class TheLipschitzConstantIsOne(unittest.TestCase):
         self.assertEqual(gap, linf_distance_to_hull(p, worlds))
 
 
+class TheExactFamilyIsCanonical(unittest.TestCase):
+    """The dual polyhedron depends on the region, not on how it was presented.
+
+    `D = {(c, nu) : ||c||_1 <= 1, nu <= <c,v> for every v in V}`. A generator inside
+    the hull of the others contributes a constraint that is already implied, since
+    its pairing is at least the minimum while `nu` is already below that minimum. So
+    `D` is unchanged by redundant generators and the exact row family is a function
+    of `K` alone. That is as much presentation-canonicality as this round claims: the
+    *intrinsic* target is canonical, the compiled trader is not, and liability for a
+    general region can still depend on the rows.
+    """
+
+    SQUARE = [(F(0), F(0)), (F(1), F(0)), (F(0), F(1)), (F(1), F(1))]
+
+    def rows_of(self, worlds):
+        return sorted((tuple(r.c), r.r) for r in exact_dual_rows(worlds, 2))
+
+    def test_a_redundant_generator_changes_nothing(self):
+        redundant = self.SQUARE + [(F(1, 2), F(1, 2))]
+        self.assertEqual(self.rows_of(self.SQUARE), self.rows_of(redundant))
+
+    def test_several_redundant_generators_change_nothing(self):
+        redundant = self.SQUARE + [(F(1, 2), F(1, 2)), (F(1, 4), F(3, 4)),
+                                   (F(1), F(1, 3))]
+        self.assertEqual(self.rows_of(self.SQUARE), self.rows_of(redundant))
+
+    def test_generator_order_changes_nothing(self):
+        self.assertEqual(self.rows_of(self.SQUARE),
+                         self.rows_of(list(reversed(self.SQUARE))))
+
+    def test_and_the_distance_is_unaffected(self):
+        redundant = self.SQUARE + [(F(1, 2), F(1, 2))]
+        for p in product([F(i, 2) for i in range(3)], repeat=2):
+            self.assertEqual(linf_distance_to_hull(p, self.SQUARE),
+                             linf_distance_to_hull(p, redundant), p)
+
+
+class TheDeductivePresentationIsComputable(unittest.TestCase):
+    """`V_t = PC(D_t)|_Phi` is computed from the finite atom context, and the rows
+    from `V_t` alone — so the family is available before the market maker chooses a
+    price.
+
+    Row counts are small in practice and the only proved bound is crude: the dual
+    polyhedron has `2^|Phi|` sign facets and `|V_t|` support facets in dimension
+    `|Phi| + 1`. Computable; not claimed efficient.
+    """
+
+    def setUp(self):
+        from market import Fragment
+        self.fragment = Fragment(("phi", "psi", "and", "or"),
+                                 [lambda w: w[2] == min(w[0], w[1]),
+                                  lambda w: w[3] == max(w[0], w[1])])
+
+    def test_the_stages_shrink_and_the_rows_stay_world_inclusive(self):
+        counts = []
+        for settled in ({}, {"phi": 1}, {"phi": 1, "psi": 0}):
+            worlds = self.fragment.pc_worlds(settled)
+            rows = exact_dual_rows(worlds, 4)
+            counts.append((len(worlds), len(rows)))
+            for w in worlds:
+                self.assertEqual(largest_violation(rows, w), F(0), (settled, w))
+        self.assertEqual([c[0] for c in counts], [4, 2, 1])
+        for _, n in counts:
+            self.assertGreater(n, 0)
+
+    def test_the_rows_report_the_distance_on_a_settled_stage(self):
+        worlds = self.fragment.pc_worlds({"phi": 1})
+        rows = exact_dual_rows(worlds, 4)
+        for p in product([F(i, 2) for i in range(3)], repeat=4):
+            self.assertEqual(largest_violation(rows, p),
+                             linf_distance_to_hull(p, worlds), p)
+
+
 if __name__ == "__main__":
     unittest.main()

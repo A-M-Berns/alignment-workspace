@@ -266,6 +266,38 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   means a wiki pull request opened under any other identity fails the gate with
   nothing wrong with its content.
 
+- **Whether to file the two named formalization obligations the proof-closing pass
+  left.** Both are `blocked` rather than open questions: the first-order erasure of
+  `MarketMaker(TF^L + E)`, which the pinned dependency does for its own aggregate in
+  `Construction/LIACompiler.lean`, and the kernel proof of `DistanceComplete` — convex
+  duality for a finite rational polytope, for which Mathlib carries neither a finite
+  minimax theorem nor a usable sup-norm separation over `Fin d → ℝ`. Each is a
+  self-contained round specification. *Cost of deciding now:* low — two
+  `PRIORITIES.md` items, or a decision that neither is worth the transcription.
+  *Cost of not deciding:* the two conditionals in
+  `.../2026-08-16-traderized-enforcement/THEOREM_MAP.md` stay conditional with no
+  queue entry pointing at them, which is how a `blocked` item becomes a permanent
+  one.
+
+- **Name the assessment-process vocabulary.** The proof-closing pass introduced
+  provisional names for objects that will be hard to rename once cited:
+  `Assessment` and its `tables`/`nested` fields, `ofDeductiveProcess`,
+  `FiniteDetermined`, `Presentation` and `enforcementStrategy`, `DistanceComplete`,
+  and the phrase **exact dual-distance presentation** for the finite row family whose
+  largest violation is the sup-norm distance. *Doing it* is reading
+  `.../PROOF_CLOSURE.md` §§II and V and choosing. *Waiting* costs nothing today and
+  leaves nine Lean files carrying names marked provisional under `AGENTS.md` §6.
+
+- **Whether the per-commit `Model:` trailer is enforced.** `AGENTS.md`'s provenance
+  section requires attribution at both levels, per commit as a trailer and once in the
+  pull-request body, and says the two are not redundant. The `dco` job checks the
+  pull-request section only. The `traderized-enforcement` branch's earlier commits
+  carry `Signed-off-by` and no `Model:` trailer; the proof-closing pass's commits carry
+  both. *Cost of deciding now:* low — either add the trailer check to `tests/dco.py`,
+  or drop the per-commit requirement from `AGENTS.md` and keep the pull-request body as
+  the single record. *Cost of not deciding:* a stated requirement that nothing checks
+  and that history does not uniformly satisfy.
+
 ## Settled
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
