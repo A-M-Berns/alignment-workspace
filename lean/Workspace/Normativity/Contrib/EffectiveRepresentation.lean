@@ -1057,4 +1057,104 @@ lemma systemOf_eq {d : ℕ} (K : RationalPolytope d) (k : Fin d) (S T : List ℕ
   · exact (map_finRange_eq (nv K) _ _ fun i => (conVertGeOf_eq K S i).symm).symm
   · exact (map_finRange_eq (nf K) _ _ fun i => (conUpperOf_eq K k T i).symm).symm
 
+/-! ## The family, the representation and the compiler
+
+With the system in hand the rest is assembly.  The one step needing care is that
+`projectorRep` indexes its groups by `Fin (family).length` and reads the family back with
+`List.get`, while the raw form maps over the family itself; `repOfList_map` and
+`groupOfList_map` are what reconcile the two, and `List.ofFn_get` is what says the family is
+its own indexed enumeration. -/
+
+/-- The candidate `(support, upper set)` pairs, raw. -/
+def candidatePairsOf (verts : List (List ℚ)) : List (List ℕ × List ℕ) :=
+  (List.range verts.length).sublists.flatMap fun S =>
+    (List.range (faceListOf verts).length).sublists.map fun T => (S, T)
+
+lemma candidatePairsOf_eq {d : ℕ} (K : RationalPolytope d) :
+    candidatePairsOf (K.verts.map List.ofFn) = candidatePairs K := by
+  rw [candidatePairsOf, candidatePairs, length_vertexData, length_faceListOf]
+
+/-- **The computed family, raw.** -/
+def projectorFamilyOf (d : ℕ) (verts : List (List ℚ)) (k : ℕ) : List (List ℕ) :=
+  ((candidatePairsOf verts).filter fun ST =>
+      feasible (d + verts.length + 1) (systemOf d verts k ST.1 ST.2)).map Prod.snd
+
+lemma projectorFamilyOf_eq {d : ℕ} (K : RationalPolytope d) (k : Fin d) :
+    projectorFamilyOf d (K.verts.map List.ofFn) (k : ℕ) = projectorFamily K k := by
+  have hpred : (fun ST : List ℕ × List ℕ =>
+        feasible (d + (K.verts.map List.ofFn).length + 1)
+          (systemOf d (K.verts.map List.ofFn) (k : ℕ) ST.1 ST.2))
+      = fun ST : List ℕ × List ℕ => feasible (d + nv K + 1) (system K k ST.1 ST.2) := by
+    funext ST
+    rw [length_vertexData, systemOf_eq]
+  rw [projectorFamilyOf, projectorFamily, hpred, candidatePairsOf_eq]
+
+/-- Filtering a range by membership is filtering the indexed enumeration. -/
+private lemma filter_range_map_val (n : ℕ) (T : List ℕ) :
+    (List.range n).filter (fun i => decide (i ∈ T))
+      = ((List.finRange n).filter fun i : Fin n => decide ((i : ℕ) ∈ T)).map Fin.val := by
+  rw [← map_val_finRange n]
+  generalize (List.finRange n) = l
+  induction l with
+  | nil => rfl
+  | cons a t ih =>
+    by_cases h : (a : ℕ) ∈ T <;> simp [List.filter_cons, h, ih]
+
+/-- The index list of an upper set, raw. -/
+def idxListOf (verts : List (List ℚ)) (T : List ℕ) : List ℕ :=
+  (List.range (faceListOf verts).length).filter fun i => decide (i ∈ T)
+
+lemma idxListOf_eq {d : ℕ} (K : RationalPolytope d) (T : List ℕ) :
+    idxListOf (K.verts.map List.ofFn) T = (idxList K T).map Fin.val := by
+  rw [idxListOf, idxList, length_faceListOf, filter_range_map_val]
+
+lemma groupOfList_map {ι κ : Type*} (A : κ → ProjectionCompiler.AffineForm) (f : ι → κ)
+    (l : List ι) : groupOfList A (l.map f) = groupOfList (fun i => A (f i)) l := by
+  cases l with
+  | nil => rfl
+  | cons a t => simp [groupOfList, List.map_map, Function.comp_def]
+
+lemma repOfList_map {ι κ : Type*} (G : κ → ProjectionCompiler.Group) (f : ι → κ)
+    (l : List ι) : repOfList G (l.map f) = repOfList (fun i => G (f i)) l := by
+  cases l with
+  | nil => rfl
+  | cons a t => simp [repOfList, List.map_map, Function.comp_def]
+
+/-- A list is its own indexed enumeration. -/
+private lemma self_eq_map_get {α : Type*} (l : List α) :
+    l = (List.finRange l.length).map l.get := by
+  conv_lhs => rw [← List.ofFn_get l]
+  rw [List.ofFn_eq_map]
+
+/-- **The computed representation, raw.** -/
+def projectorRepOf (d : ℕ) (verts : List (List ℚ)) (k : ℕ) : ProjectionCompiler.Rep :=
+  repOfList
+    (fun T : List ℕ => groupOfList (fun i : ℕ => compOf d verts k i) (idxListOf verts T))
+    (projectorFamilyOf d verts k)
+
+/-- **The raw representation is the structured one.** -/
+lemma projectorRepOf_eq (F : ProjectionCompiler.Fragment)
+    (K : RationalPolytope F.coords.length)
+    (k : Fin F.coords.length) :
+    projectorRepOf F.coords.length (K.verts.map List.ofFn) (k : ℕ) = projectorRep F K k := by
+  have hgroup : ∀ T : List ℕ,
+      groupOfList (fun i : ℕ => compOf F.coords.length (K.verts.map List.ofFn) (k : ℕ) i)
+          (idxListOf (K.verts.map List.ofFn) T)
+        = groupOfList (compForm F K k) (idxList K T) := by
+    intro T
+    rw [idxListOf_eq, groupOfList_map]
+    refine congrArg (fun A => groupOfList A (idxList K T)) ?_
+    funext i
+    exact compOf_eq K k i
+  rw [projectorRepOf, projectorRep, projectorFamilyOf_eq]
+  conv_lhs => rw [self_eq_map_get (projectorFamily K k)]
+  rw [repOfList_map]
+  exact congrArg (fun G => repOfList G (List.finRange (projectorFamily K k).length))
+    (funext fun j => hgroup _)
+
+/-- **The compiler.**  One representation per priced sentence, in the fragment's order. -/
+def compileOf (coords : List Sentence) (verts : List (List ℚ)) :
+    List ProjectionCompiler.Rep :=
+  (List.range coords.length).map fun k => projectorRepOf coords.length verts k
+
 end Workspace.Normativity.Contrib.EffectiveRepresentation
