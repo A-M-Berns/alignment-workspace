@@ -95,6 +95,41 @@ The witness objects for the negative result are `wAtom`, `wFrag`, `wHistory`, `w
 | §8.3 **(the paper-facing budget)** `−Σ_{k≤n}(ρ_k/δ_k)·d₂(w,K_k)` | `cumValue_ge_of_calibrated` |
 | §8.1 zero risk capital, calibrated | `cumValue_nonneg_of_calibrated` |
 
+## `ProjectionCore.lean` — the homothetic-core refinement
+
+The preservation hierarchy, in order of strength of hypothesis:
+
+1. **Preservation under bounded plausible downside** — the abstract criterion
+   (`DeductiveEnforcement.no_efficient_trader_exploits`, merged).
+2. **Generic projection liability** — arbitrary convex `K_n`, calibrated enforcement, charge
+   `(ρ_n/δ_n)·d₂(w, K_n)` (`ProjectionCalibrated.cumValue_ge_of_calibrated`).
+3. **Homothetic-core refinement** — `K_n` retains an `α_n`-fraction of every live
+   direction, charge `((1−α_n)/α_n)·ρ_n`, **no tolerance penalty** (below).
+4. **World-inclusive / deductive** — every live restriction lies in `K_n`, liability
+   exactly zero (`ProjectionBudget.cumValue_nonneg_of_forall_mem`). This is the `α = 1`
+   case of 3.
+
+| paper | Lean |
+| --- | --- |
+| the affine interpolation step, with no Logical Induction machinery | `interpolated_lower_bound` |
+| a strategy's value is affine along the segment | `ip_interpolate`, `value_interpolate` |
+| the anchor's value is capped by market resistance, for *any* joined strategy | `value_le_resistance` |
+| `K` retains an `α`-fraction of every live direction from the anchor `c` | `HomotheticCore` |
+| at `α = 1` the condition is exactly world-inclusivity | `homotheticCore_one_iff` |
+| **the homothetic-core liability theorem**, `Val_w ≥ −((1−α)/α)ρ_n`, no `δ_n` | `core_day_value_ge` |
+| the same with the anchor's cube-membership discharged and the charge against `ρ_n` | `core_day_value_ge_calibrated` |
+| the cumulative sum of core charges | `core_cumValue_ge` |
+| preservation **from a uniform bound on the partial sums**, which a positive core does not supply | `core_netWorth_ge_of_summable` |
+| `μ(φ) ≥ 1/2` has a `1/2`-core against `P = [0,1]`, so the charge is `ρ_n` | `halfSpace_hasCore`, `halfSpace_core_factor` |
+| `μ(φ) = 1/2` has **no** positive core against the same `P` | `equalityRegion_hasNoCore` |
+
+Four conditions the theorem deliberately keeps apart, since they are not equivalent: a
+pointwise core at each live world (what `core_day_value_ge` consumes, and the weakest); a
+core relative to the convex hull of the live restrictions (implied by the pointwise one on
+extreme points when `K` is convex); an ambient interior condition (neither implies nor is
+implied by either); and a cumulative bounded-liability condition (strictly more than any of
+them — `core_netWorth_ge_of_summable` takes it as a hypothesis).
+
 ## `EnforcedComputation.lean` — Debt B, reduced to the source's own boundary
 
 | paper | Lean |

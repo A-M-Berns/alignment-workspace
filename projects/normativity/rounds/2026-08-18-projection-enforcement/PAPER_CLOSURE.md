@@ -34,6 +34,9 @@ except where a hypothesis is named as external.
 | 17 | **the theorem of record**: source-original LIC + per-date Euclidean conformance + the `ℓ^∞` form | `ProjectionEnforcer.ProjectionSchedule.end_to_end` |
 | 18 | eventual coherence on every fixed finite set | `ProjectionEnforcer.ProjectionSchedule.eventual_coherence` |
 | 19 | `ℓ^∞` follows from Euclidean at the same tolerance | `ProjectionForce.sup_conformance_of_dist2` |
+| 20 | **homothetic core**: an `α_n`-fraction of every live direction gives `Val_w ≥ −((1−α_n)/α_n)ρ_n`, with **no tolerance penalty** | `ProjectionCore.core_day_value_ge`, `core_day_value_ge_calibrated` |
+| 21 | `α = 1` is exactly world-inclusivity, so the hierarchy is continuous | `ProjectionCore.homotheticCore_one_iff` |
+| 22 | an inequality constraint can have a positive core; an equality constraint cannot | `ProjectionCore.halfSpace_hasCore`, `equalityRegion_hasNoCore` |
 
 Line 17 is the paper's headline. Its conclusion is the source's `IsLogicalInductor`, not
 the generalized criterion.
@@ -109,6 +112,44 @@ statement, and its docstring says so. The general free-`λ` theorem
 (`ProjectionBudget.cumValue_ge_of_projection`) is retained as a supporting result and is
 not weakened.
 
+## 4b. The preservation hierarchy
+
+The paper should present four levels, in order of strength of hypothesis. The point of the
+progression is that it is a continuum between an arbitrary convex constraint and the
+zero-liability deductive case.
+
+1. **Preservation under bounded plausible downside** — the abstract criterion. Any added
+   trader whose cumulative assessed value is bounded below leaves the criterion intact.
+2. **Generic projection liability** — for arbitrary convex `K_n`, calibrated enforcement
+   charges `(ρ_n/δ_n)·d₂(W|_{Φ_n}, K_n)` per date. This measures *how strongly the
+   constraint excludes possibilities that remain live*, and it deteriorates like `1/δ_n`
+   as tighter enforcement is demanded.
+3. **Homothetic-core refinement** — if there are `c_n ∈ K_n` and `0 < α_n ≤ 1` with
+   `c_n + α_n(P_n − c_n) ⊆ K_n`, where `P_n` is the live possibility region on `Φ_n`, then
+
+   ```
+   Val_W(E_n) ≥ − ((1 − α_n)/α_n) · ρ_n      for every live W,
+   ```
+
+   **independently of `δ_n`.** This measures *whether the constraint retains a uniformly
+   positive amount of movement toward every live possibility*. A positive core therefore
+   makes arbitrarily precise enforcement possible with no precision-dependent increase in
+   the per-date certificate.
+4. **World-inclusive / deductive** — if every live world's restriction is itself admitted,
+   the liability is exactly zero. This is the `α_n = 1` case of 3.
+
+**What 3 does not give.** A positive core at every date does **not** bound cumulative
+liability: `Σ_n ((1−α_n)/α_n)ρ_n` is free to diverge. Indefinite preservation still needs
+a separate summability or uniform-bound argument, and
+`ProjectionCore.core_netWorth_ge_of_summable` takes that bound as a hypothesis rather than
+deriving it. Nor does 3 say that half-spaces automatically get a core depending only on
+dimension: `α_n` measures actual geometric slack against the possibility region.
+
+Four conditions that must be kept apart, since they are not equivalent: a pointwise core at
+each live world; a core relative to the convex hull of the live restrictions; an ambient
+full-dimensional interior condition; and a cumulative bounded-liability condition. The Lean
+theorem consumes the first, which is the weakest.
+
 ## 5. Computational cost, stated
 
 Effective, not efficient, and the honest form is weaker than "exponential in the fragment
@@ -128,13 +169,13 @@ the exact rational quote program. What remains is one object,
 `EnforcedBoundedEvaluatorCompiler` — precisely the analogue of the source's own
 `LIABoundedEvaluatorCompiler`.
 
-It is not discharged because three lemmas needed for it are `private` in the pinned
-dependency's `LIACompiler.lean`: `marketMakerSearchUpToTradeList_prim` (4804),
-`tradingFirmTradesFromStageTradeLists_prim` (6960), `efAbsBound_prim` (6254). The route to
-closure is an upstream change — give the erased recurrence a `Primrec₂` trade-list hook,
-of which ordinary LIA is the empty instance — after which the remaining work on this side
-is `Primrec₂ S.enforcer.trades`, which is mechanical. **The obstruction is module
-visibility and assembly, not mathematics.** `COMPUTABILITY.md §7` has the exact ask.
+It was not discharged because three lemmas needed for it were `private` in the pinned
+dependency. **That is fixed.** The dependency is now pinned to a revision whose only delta
+is a purely additive public section in `LIACompiler.lean` re-exporting those ingredients;
+each has been typechecked from this repository against the new pin. What remains is the
+downstream `Primrec` assembly — `Primrec₂ S.enforcer.trades`, and from it the compiler —
+which is transcription against public lemmas, not mathematics. `COMPUTABILITY.md §7` has
+the state.
 
 ## 7. Re-check of the whole chain
 

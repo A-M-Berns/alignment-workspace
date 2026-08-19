@@ -7,9 +7,10 @@ description, what is now proved, and exactly what is left.
 effective source data — a computable deductive process, a fragment schedule, a positive
 rational tolerance schedule, and a finite representation of each day's projector — plus
 one bounded-evaluator compiler, which is the same boundary the pinned source isolates for
-its own recurrence. That compiler is **not** discharged here, and §7 says precisely why:
-the lemmas needed to discharge it are `private` in the pinned dependency. The obstruction
-is module visibility and assembly, not mathematics.
+its own recurrence. **The upstream obstruction to discharging that compiler has been
+removed**: the ingredients were `private` in `LIACompiler.lean`, and the dependency is now
+pinned to a revision that re-exports them publicly. What remains is the downstream
+`Primrec` assembly. §7 has the state.
 
 ## 1. The region and its piecewise-affine projector
 
@@ -142,6 +143,16 @@ exploit the market, not the enforcement trader added to it, so the cost conflict
 hypothesis — but no claim of an efficient intrinsic enforcer is supported, and none is
 made.
 
+## 6b. The homothetic-core refinement introduces no effective assumptions
+
+`ProjectionCore` is a semantic refinement of the liability certificate: the core condition
+is a geometric hypothesis about the region and the live possibility set, consumed only in
+the budget, and it never reaches the compiled trader. The enforcer, the schedule, the
+intensity and the bounded evaluator are unchanged. Nothing in §§1–6 above is affected, and
+no new computation is required to *use* the refinement — though of course *checking* that a
+given region has an `α`-core is its own finite question, which this pass does not address
+beyond the two one-dimensional witnesses.
+
 ## 7. Debt B: what is closed, and what is left
 
 **Closed.** `ComputableMarket` is gone as a premise.
@@ -150,66 +161,31 @@ made.
 `IsLogicalInductor (S.market DP) DP` — the source's *original* criterion — from effective
 data plus one bounded-evaluator compiler.
 
-**Left.** Exactly one object:
+**Closed upstream.** The three ingredients needed to discharge that compiler were `private`
+in the pinned dependency's `LIACompiler.lean`. They are now public. The dependency is
+pinned to `d89817bc15d23c663d0520e3a854d6d02374074d`, which branches from the previous pin
+`1fffea44` and adds exactly one purely additive section — public names for existing private
+lemmas, no definition, statement or proof changed:
 
-```lean
-structure EnforcedBoundedEvaluatorCompiler (process) (E) where
-  computable : Computable₂ (enfEncodedQuoteNatAtFuel process E)
-```
+| exported | what it gives |
+| --- | --- |
+| `efConst_primrec`, `efPrice_primrec`, `efAdd_primrec`, `efMul_primrec`, `efMax_primrec` | the expressible-feature constructors are primitive recursive |
+| `efAbsBound_primrec` | `EF.absBound`, hence the calibrated intensity's input |
+| `marketMakerError_primrec` | the day error schedule |
+| `rationalBeliefStateQuote_primrec` | the belief state's exact rational quote |
+| `processStagePrefixAtFuel_primrec` | the bounded deductive-stage prefix decoder |
+| `tradingFirmTradesFromStageTradeLists_primrec` | the firm's day trade list |
+| `marketMakerSearchUpToTradeList_primrec` | the bounded MarketMaker search over a raw trade list |
 
-This is the same boundary `LIAComputation.LIABoundedEvaluatorCompiler` states for ordinary
-LIA, and which `LIACompiler.lean` discharges there in 7366 lines.
+The recurrence itself was deliberately *not* exported: a downstream construction states and
+proves its own, which is where its soundness obligation belongs — and this development
+already has that (`enfPrefixFromStagesAtFuel_sound`).
 
-**Why it is not discharged here.** The three lemmas the discharge needs are `private` in
-the pinned dependency:
+**Left.** The downstream `Primrec` assembly: `Primrec₂ S.enforcer.trades`, and from it
+`Computable₂ (enfEncodedQuoteNatAtFuel process E)`. Both are transcriptions against the
+now-public ingredients — the second is the source's own recurrence proof with one extra
+list append. No mathematics remains, and no premise is hidden: the boundary is a named
+structure with a named field, and instantiating it is a matter of writing the plumbing.
 
-| lemma | file:line | what it gives |
-| --- | --- | --- |
-| `marketMakerSearchUpToTradeList_prim` | `LIACompiler.lean:4804` | the day's bounded market-maker search is primitive recursive in a raw trade list |
-| `tradingFirmTradesFromStageTradeLists_prim` | `LIACompiler.lean:6960` | the firm's day-`n` trade list is primitive recursive in the decoded stages |
-| `efAbsBound_prim` | `LIACompiler.lean:6254` | `EF.absBound` is primitive recursive |
-
-`LIACompiler.lean` carries 398 private declarations, and the two recurrence-level entry
-points sit on top of most of them; the whole erased recurrence
-`liaPrefixFromTradeListsAtFuel_prim` is private as well. Re-deriving them downstream would
-mean re-doing the bulk of that file, which is neither feasible in one pass nor the right
-engineering.
-
-Public and therefore already usable: `Primcodable` for `Sentence`, `ℚ`,
-`RationalBeliefState`, `EF`, `Strategy n`, `Finset Sentence`, plus the rational arithmetic
-lemmas and `EF.priceQueries`.
-
-**Route to closure — smallest change.** Upstream, in `Formalized-Agent-Foundations`, give
-the erased recurrence a trade-list hook:
-
-```lean
-def liaPrefixFromTradeListsAtFuel (D) (hook : ℕ → List (EF × Sentence) → List (EF × Sentence))
-    (fuel) : ℕ → Option (List RationalBeliefState)
-```
-
-appending `hook n firmTrades` to the day's trade list, and prove
-`liaPrefixFromTradeListsAtFuel_prim` under a `Primrec₂ hook` hypothesis. Ordinary LIA is
-the instance `hook = fun _ _ => []`, so `LIA_is_logical_inductor` is unchanged; this
-market is the instance `hook = S.enforcer.trades`. Then expose a public constructor for
-the bounded-evaluator compiler. A cruder alternative is simply to drop `private` from the
-three lemmas above.
-
-**What remains on this side after that unlock.** `Primrec₂ S.enforcer.trades` — that the
-compiled trade list is primitive recursive in the date and the ordinary trade list. That
-needs `Primrec` for `repAt` (list zip and lookup), for the `EF` construction in
-`affineEF`/`groupEF`/`repEF`/`coefEF` (structural recursion over lists, against the public
-`efPrimcodable`), and for `Strategy.tradeListAbsBound` (a list map and sum over
-`EF.absBound`). Mechanical; no new mathematics.
-
-**Classification.** Formalization engineering plus one upstream visibility change. **Not
-mathematical.**
-
-### On Aristotle
-
-The formalization-orchestration harness's prover backend was not used in this pass, and
-the reason is worth recording rather than hiding: every remaining goal here is stated
-against the pinned dependency's internal machinery — `Primrec` of specific `private`
-definitions in `LIACompiler.lean` — rather than against mathlib, so none of them can be
-extracted as the self-contained statement an offload needs. The Aristotle-shaped work in
-this line of research is the representation theorem of §1, which is being attempted
-separately.
+**Verification that the unlock is usable.** Each re-exported lemma has been typechecked
+from this repository against the new pin.

@@ -91,6 +91,20 @@ rational polytope in `[0,1]^{Φ_t}` — a property of the set, not of a chosen
 description. **Action: weaken the obligation and note that any finite rational
 presentation or vertex list exhibits it.**
 
+### §8 should present four levels, not two
+
+The draft has §8.1 (world-inclusive, zero cost) and §8.2/§8.3 (excludes live worlds, costs
+a distance-based charge). Between them sits a level worth stating, because it is where
+arbitrarily precise enforcement becomes affordable: if `K_n` retains an `α_n`-fraction of
+every live direction from some anchor, the per-date charge is `((1−α_n)/α_n)·ρ_n` with **no
+`δ_n`**. `α_n = 1` is exactly §8.1. **Action: state the four-level hierarchy of
+`PAPER_CLOSURE.md §4b`**, and carry the two one-dimensional witnesses —
+`μ(φ) ≥ 1/2` has a `1/2`-core, `μ(φ) = 1/2` has none — because they make the
+inequality/equality distinction legible in one line each.
+
+Guard the statement in two ways the draft would otherwise invite: a positive core does not
+bound *cumulative* liability, and half-spaces do not get a core from dimension alone.
+
 ## Improvable, given what this pass proved
 
 ### §9 should be demoted, not finished and not deleted

@@ -278,20 +278,55 @@ inspect the day's price (its arguments are the date and a trade list), and `absB
 therefore computed before the day's fixed point.
 
 **What is left** is one object, `EnforcedBoundedEvaluatorCompiler` — the analogue of the
-source's own `LIABoundedEvaluatorCompiler`. It is not discharged because three lemmas
-needed for it are `private` in the pinned dependency: `marketMakerSearchUpToTradeList_prim`
-(`LIACompiler.lean:4804`), `tradingFirmTradesFromStageTradeLists_prim` (6960), and
-`efAbsBound_prim` (6254); that file has 398 private declarations and the recurrence-level
-entry points sit on top of most of them. The route to closure is an upstream change — give
-the erased recurrence a `Primrec₂` trade-list hook, of which ordinary LIA is the empty
-instance — after which the remaining work here is `Primrec₂ S.enforcer.trades`, which is
-mechanical. **The obstruction is module visibility and assembly, not mathematics.**
-`COMPUTABILITY.md §7` carries the exact ask.
+source's own `LIABoundedEvaluatorCompiler`. It was blocked because three lemmas needed for
+it were `private` in the pinned dependency. **That block is gone**: the dependency is
+pinned to a revision that adds a public section re-exporting them, purely additively, and
+each re-export has been typechecked from here. What remains is the downstream `Primrec`
+assembly — `Primrec₂ S.enforcer.trades`, and from it the compiler — which is transcription
+against public lemmas. **No mathematics remains in Debt B.** `COMPUTABILITY.md §7` has the
+state.
 
 **Cost.** Effective, not efficient. The honest form is weaker than "exponential in the
 fragment": vertex enumeration, active-set enumeration and max–min expansion each blow up
 and compound, and getting an inequality description from a vertex list is facet
 enumeration. No single closed-form bound over the composite is claimed.
+
+## The homothetic-core refinement (addendum, 2026-08-18)
+
+**Proved, and the sketch survived checking against the actual definitions.**
+
+The generic calibrated charge `(ρ_n/δ_n)·d₂(w, K_n)` deteriorates like `1/δ_n`. That is an
+artefact of assuming nothing but convexity. If `K` retains an `α`-fraction of the move from
+some anchor `c ∈ K` toward every live possibility — `c + α(P − c) ⊆ K` — then the day's
+liability at every live assessment is at most `((1−α)/α)·ρ_n`, **with no `δ_n` in it**.
+
+The proof is exactly the sketched one and needs no extra hypothesis beyond those already
+in the development: `Val` is affine in the assessment point
+(`ProjectionCore.value_interpolate`, from `Realizes`); the core puts `(1−α)c + αw` in `K`
+so the value there is nonnegative (`day_value_nonneg`); and the market maker's cube
+contract caps `Val(c)` by `ρ_n` (`ProjectionCore.value_le_resistance`, which needs nothing
+about the nearest point). The anchor must be a legal cube point, which the calibrated form
+discharges through the same `extend` device.
+
+Two things it does **not** say, and the Lean keeps them apart on purpose:
+
+* it does **not** bound cumulative liability — `Σ_n ((1−α_n)/α_n)ρ_n` may diverge, and
+  `core_netWorth_ge_of_summable` takes the uniform bound as a hypothesis;
+* it does **not** give half-spaces a dimension-only core — `α` measures actual geometric
+  slack against the live region.
+
+At `α = 1` the condition *is* world-inclusivity and the bound is zero
+(`homotheticCore_one_iff`), so the four preservation levels form a continuum. Two witnesses
+make the qualitative distinction exact: `μ(φ) ≥ 1/2` has a `1/2`-core against `P = [0,1]`,
+giving charge `ρ_n`; `μ(φ) = 1/2` has **no** positive core against the same `P`, because
+the equality collapses the degree of freedom the half-space retains.
+
+*Interpretation, for internal notes only.* The generic distance bound measures how strongly
+the constraint excludes possibilities that remain live; the core property measures whether
+it retains a uniformly positive amount of movement toward every live possibility. That is a
+candidate mathematical notion of retaining residual responsiveness to possibilities the
+reasoner still acknowledges — a forward reference to later normativity work, not a claim
+this paper makes.
 
 ## G. Projection versus rows
 
