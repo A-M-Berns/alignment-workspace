@@ -133,7 +133,8 @@ there and unspoiled.
 ## 8. What the next step is
 
 Rewrite §§6, 8.3, 9 and 10.6 of the paper against `PAPER_AUDIT.md`, in that order, and
-regenerate §12 from `THEOREM_MAP.md`. The two changes that are *corrections* rather
-than improvements — the cube extension behind §6.4's contract, and the per-date
-quantifier in §8.1 — should go in first, because they are load-bearing for both
-constructions and the row version of the paper is wrong without them.
+regenerate §12 from `THEOREM_MAP.md`. The two changes that close gaps rather
+than strengthen results — the cube extension that discharges §6.4's contract
+hypothesis, and the per-date quantifier in §8.1 — should go in first, because they are
+load-bearing for both constructions. Neither statement in the draft is false; the chain
+simply does not currently discharge what it assumes.

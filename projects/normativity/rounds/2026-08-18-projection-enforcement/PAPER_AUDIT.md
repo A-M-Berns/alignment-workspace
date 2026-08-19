@@ -3,26 +3,34 @@
 Read against the draft of 2026-08-18
 (`generalizing_and_strengthening_logical_induction_katex.md`, 1396 lines). This pass
 does not rewrite the paper; this file records what a rewrite would have to fix, ranked
-by whether the current text is *wrong*, *under-justified*, or merely *improvable*.
+by how much it costs to leave alone. Nothing in the draft is *false*; what the ranking
+separates is an undischarged step in the spine from hypotheses that are simply stronger
+than the proofs need.
 
-## Wrong, or missing a hypothesis it needs
+## Under-justified where it matters most
 
-### §6.4 assumes the market maker's contract at a point of `K`, which is not a world
+### §6.4's contract hypothesis is never discharged, and cannot be without an argument
 
 Theorem 6.4 opens: "Suppose the MarketMaker contract gives
-`⟨τ(P) + ζ_E(P), x − P⟩ ≤ ε` for some `x ∈ K`". The source's contract is stated at
-**propositionally consistent worlds** — `{0,1}` valuations — and `x ∈ K` is a general
-point of `[0,1]^d`. As written the theorem borrows a guarantee it has not been given.
+`⟨τ(P) + ζ_E(P), x − P⟩ ≤ ε` for some `x ∈ K`". As a conditional the theorem is fine —
+the clause is an explicit hypothesis. The problem is downstream: the source's contract
+is stated at **propositionally consistent worlds** — `{0,1}` valuations — and `x ∈ K` is
+a general point of `[0,1]^d`, so nothing in the paper entitles Theorem 10.6 to discharge
+the hypothesis when it instantiates 6.4. The chain has an undischarged step even though
+no individual statement in it is false.
 
-The gap is real and it is closable, and both routes need the same fix: a strategy's
+The gap is closable, and both routes need the same fix: a strategy's
 value is affine in the assessment point (`Strategy.value_eq_sum_support`), the cube is
 the convex hull of the `{0,1}` assignments on the traded support, so the vertex bound
 extends to every cube point. Kernel-checked here as
 `ProjectionMarket.value_le_of_forall_bitWorld` and
 `ProjectionMarket.marketMaker_day_value_le_cube`.
 
-**Action: state the cube extension as a lemma before §6.4 and cite it there.** It is
-one line of text and it removes an unproved step from the current spine.
+**Action: state the cube extension as a lemma before §6.4 and cite it where 10.6
+discharges the hypothesis.** It is one line of text and it removes an undischarged
+step from the current spine.
+
+## Stated more narrowly, or more strongly, than the proof needs
 
 ### §6.4's `M` is an assumed constant that does not need to be assumed
 
@@ -35,8 +43,6 @@ history lies in the cube — which the market's own prices do.
 is an improvement to the *row* theorem as much as to the projection one; it is not a
 consequence of changing constructions. Kernel-checked as
 `ProjectionMarket.sqDist_le_slack_add_absBound`.
-
-## Under-justified, or stated more narrowly than the proof needs
 
 ### §8.1 requires global nesting where per-date admission suffices
 

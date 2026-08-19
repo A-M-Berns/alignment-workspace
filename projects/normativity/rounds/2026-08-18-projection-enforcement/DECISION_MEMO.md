@@ -269,7 +269,10 @@ constraint at a time and then summed; the sum is what loses intrinsicness.
 
 ## H. The rest of the paper
 
-See `PAPER_AUDIT.md`. Summary of what this pass changes and what it leaves:
+See `PAPER_AUDIT.md`. Nothing in the draft is false; what the audit separates is an
+undischarged step in the spine — §6.4's contract hypothesis, which §10.6 instantiates
+and nothing discharges — from hypotheses that are simply stronger than the proofs need.
+Summary of what this pass changes and what it leaves:
 
 * §9.1 (presentation dependence) — keep, and it is now *motivation for the projection*
   rather than motivation for the dual construction. Exact witness in

@@ -328,16 +328,18 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   described as primary in different documents, which is the state the paper is
   currently in.
 
-- **Rule on the two corrections the audit found in the paper as drafted.** §6.4 applies
-  the market maker's contract at a point of `K`, which is not a world, without
-  justifying the extension; and §8.1 derives zero risk capital from world-inclusivity
-  plus global nesting where the proof needs per-date admission. Both are now
+- **Rule on the two gaps the audit found in the paper as drafted.** §6.4 assumes the
+  market maker's contract at a point of `K`, which is not a world, and nothing in the
+  paper discharges that hypothesis where §10.6 instantiates it; and §8.1 derives zero
+  risk capital from world-inclusivity plus global nesting where the proof needs only
+  per-date admission. Neither statement is false; the chain does not close. Both are now
   kernel-checked here (`ProjectionMarket.marketMaker_day_value_le_cube`,
   `ProjectionBudget.cumValue_nonneg_of_forall_mem`, with
   `ProjectionBudget.late_admission_is_not_enough` showing the weakening is false), and
   both bear on the **row** version of the paper as much as the projection one. *Cost of
   deciding now:* low — they are two paragraphs of paper text. *Cost of not deciding:*
-  the drafted spine has an unproved step in it regardless of which construction wins.
+  the drafted spine has an undischarged step in it regardless of which construction
+  wins.
 
 - **Rule on six provisional names from the projection round.** `projection enforcement
   trader`, `projection position`, `intrinsic Euclidean conformance`, `per-date
