@@ -164,6 +164,24 @@ them — `core_netWorth_ge_of_summable` takes it as a hypothesis).
 | the same with the representation hypothesis made definitional | `ProjectionSchedule.end_to_end_canonical` |
 | §13 eventual coherence on every fixed finite set | `ProjectionSchedule.eventual_coherence` |
 
+## `EnforcedCompiler.lean` — the bounded evaluator, built
+
+| paper | Lean |
+| --- | --- |
+| the enforcer's syntax-to-syntax map is effective | `EffectiveEnforcerComputation` |
+| the fully erased modified recurrence | `enfPrefixFromTradeListsAtFuel` |
+| it is the proof-carrying recurrence already proved sound | `enfAggregateFromStages_trades`, `enfPrefixFromTradeListsAtFuel_eq` |
+| **the bounded evaluator is computable** | `compiler` |
+| §12 Debt B: **the modified market is computable**, no premise | `computableMarket` |
+| §10.5 traderized deduction with an effective enforcer is a logical inductor, in the source's *original* sense | `isLogicalInductor` |
+| §10.6 **the theorem of record, from effective data alone** | `ProjectionSchedule.end_to_end_effective` |
+
+Built against the pinned dependency's public computability interface
+(`efAbsBound_primrec`, `tradingFirmTradesFromStageTradeLists_primrec`,
+`marketMakerSearchUpToTradeList_primrec`, `marketMakerError_primrec`,
+`processStagePrefixAtFuel_primrec`, `rationalBeliefStateQuote_primrec`), which the pin
+`d89817bc` adds purely additively.
+
 ## What is reused unchanged from the merged row work
 
 `no_efficient_trader_exploits_of_projection` is

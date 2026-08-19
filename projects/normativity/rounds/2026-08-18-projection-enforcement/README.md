@@ -6,7 +6,7 @@ paper *Generalizing and Strengthening Logical Induction*.
 
 The round was allowed to kill the idea. It does not.
 
-Verdict: The intrinsic projection trader is the paper's construction — force, the calibrated budget with no free intensity, the per-date quantifiers and the deductive end-to-end theorem are kernel-checked; the ComputableMarket premise is gone, reduced to the same bounded-evaluator boundary the source isolates for ordinary LIA and blocked only by three private lemmas upstream; expressibility rests on a cited representation theorem rather than an axiom; and the paper's ℓ∞ conclusion follows from the Euclidean one at the same tolerance, which takes Debt A off the critical path.
+Verdict: The intrinsic projection trader is the paper's construction and the market is computable: force, the calibrated budget with no free intensity, the homothetic-core refinement that removes the tolerance penalty, and the deductive end-to-end theorem are kernel-checked; ComputableMarket is gone as a premise and the bounded-evaluator compiler that replaced it is built, after an additive upstream change re-exporting three private lemmas; expressibility rests on a cited representation theorem rather than an axiom; and the paper's ℓ∞ conclusion follows from the Euclidean one at the same tolerance, which takes Debt A off the critical path.
 
 ## What is here
 
@@ -22,13 +22,15 @@ Verdict: The intrinsic projection trader is the paper's construction — force, 
 
 Lean, all in `lean/Workspace/Normativity/Contrib/`:
 `ProjectionForce`, `ProjectionMarket`, `ProjectionCompiler`, `ProjectionBudget`,
-`ProjectionCalibrated`, `EnforcedComputation`, `ProjectionEnforcer`.
+`ProjectionCalibrated`, `ProjectionCore`, `EnforcedComputation`, `ProjectionEnforcer`,
+`EnforcedCompiler`.
 
 ## The theorem of record
 
-`ProjectionEnforcer.ProjectionSchedule.end_to_end`. From a computable deductive process, a
-fragment schedule, a positive rational tolerance schedule, a finite representation of each
-day's projector, and one bounded-evaluator compiler:
+`EnforcedCompiler.ProjectionSchedule.end_to_end_effective`. From a computable deductive
+process, a fragment schedule, a positive rational tolerance schedule, a finite
+representation of each day's projector, and the schedule's effectiveness — **no
+`ComputableMarket` premise and no compiler object**:
 
 * the market is a logical inductor **in the source's original sense** — `IsLogicalInductor`,
   not the generalized criterion;
@@ -63,8 +65,8 @@ vector to within that slack.
 
 5. **The market is computable without assuming it.** The enforcer is finite data; the
    modified recurrence is the source's own architecture with one extra trade list; and the
-   remaining obligation is the boundary the source itself isolates.
-   `EnforcedComputation.EnforcedBoundedEvaluatorCompiler.toComputableMarket`.
+   bounded evaluator that closes it is built, not assumed.
+   `EnforcedCompiler.computableMarket`, `EnforcedCompiler.isLogicalInductor`.
 
 ## What is not unconditional
 
@@ -75,9 +77,20 @@ vector to within that slack.
   the piecewise affinity of the polyhedral projector is the standard active-set argument,
   written out in `COMPUTABILITY.md §1`. The Lean takes the representation as **data** and
   its correctness as a **hypothesis** — not an axiom, not a `sorry`.
-* **The bounded-evaluator compiler.** Blocked on three `private` lemmas in the pinned
-  dependency's `LIACompiler.lean`. Module visibility and assembly, not mathematics;
-  `COMPUTABILITY.md §7` carries the exact upstream ask.
+* **`Primrec₂` for the projection schedule's trade map.** The general theorem is
+  unconditional for any effective enforcer; establishing effectiveness for *this* enforcer
+  is mechanical and bounded. `COMPUTABILITY.md §7` says what it needs. The upstream
+  visibility block that used to sit here is gone: the dependency is pinned to a revision
+  that re-exports the three lemmas, purely additively.
+
+## The preservation hierarchy
+
+Four levels, a continuum from an arbitrary convex constraint to the deductive case:
+the abstract bounded-downside criterion; the generic charge `(ρ_n/δ_n)·d₂(w, K_n)`; the
+**homothetic-core** refinement `((1−α_n)/α_n)·ρ_n` **with no tolerance penalty**
+(`ProjectionCore.core_day_value_ge`); and zero liability when every live restriction is
+admitted, which is the `α = 1` case. `μ(φ) ≥ 1/2` has a `1/2`-core against `P = [0,1]`;
+`μ(φ) = 1/2` has none.
 
 ## Two negative results
 

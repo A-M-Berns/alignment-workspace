@@ -6,11 +6,11 @@ description, what is now proved, and exactly what is left.
 **Summary.** `ComputableMarket` is no longer a premise. The end-to-end theorem takes
 effective source data — a computable deductive process, a fragment schedule, a positive
 rational tolerance schedule, and a finite representation of each day's projector — plus
-one bounded-evaluator compiler, which is the same boundary the pinned source isolates for
-its own recurrence. **The upstream obstruction to discharging that compiler has been
-removed**: the ingredients were `private` in `LIACompiler.lean`, and the dependency is now
-pinned to a revision that re-exports them publicly. What remains is the downstream
-`Primrec` assembly. §7 has the state.
+one bounded-evaluator compiler — **and that compiler is now built**. The ingredients were
+`private` in `LIACompiler.lean`; the dependency is pinned to a revision that re-exports
+them publicly, and `EnforcedCompiler` runs the source's own primitive-recursion argument
+with one extra list append. Debt B is discharged for any enforcer given as effective data.
+§7 has the state and the one narrow item that remains.
 
 ## 1. The region and its piecewise-affine projector
 
@@ -153,23 +153,26 @@ no new computation is required to *use* the refinement — though of course *che
 given region has an `α`-core is its own finite question, which this pass does not address
 beyond the two one-dimensional witnesses.
 
-## 7. Debt B: what is closed, and what is left
+## 7. Debt B: discharged
 
-**Closed.** `ComputableMarket` is gone as a premise.
-`EnforcedComputation.isLogicalInductor_of_compiler` and
-`ProjectionEnforcer.ProjectionSchedule.end_to_end` conclude
-`IsLogicalInductor (S.market DP) DP` — the source's *original* criterion — from effective
-data plus one bounded-evaluator compiler.
+**The premise is gone and the compiler is built.**
 
-**Closed upstream.** The three ingredients needed to discharge that compiler were `private`
-in the pinned dependency's `LIACompiler.lean`. They are now public. The dependency is
-pinned to `d89817bc15d23c663d0520e3a854d6d02374074d`, which branches from the previous pin
-`1fffea44` and adds exactly one purely additive section — public names for existing private
-lemmas, no definition, statement or proof changed:
+| claim | statement of record |
+| --- | --- |
+| the modified market is computable | `EnforcedCompiler.computableMarket` |
+| traderized deduction with an effective enforcer is a logical inductor, in the source's *original* sense, with no computability premise | `EnforcedCompiler.isLogicalInductor` |
+| the projection market's theorem of record, from effective data alone | `EnforcedCompiler.ProjectionSchedule.end_to_end_effective` |
+
+### How
+
+The upstream ingredients were `private`. The dependency is now pinned to
+`d89817bc15d23c663d0520e3a854d6d02374074d`, which branches from the previous pin
+`1fffea44` and adds exactly one purely additive section — public names for existing
+private lemmas, no definition, statement or proof changed:
 
 | exported | what it gives |
 | --- | --- |
-| `efConst_primrec`, `efPrice_primrec`, `efAdd_primrec`, `efMul_primrec`, `efMax_primrec` | the expressible-feature constructors are primitive recursive |
+| `efConst_primrec`, `efPrice_primrec`, `efAdd_primrec`, `efMul_primrec`, `efMax_primrec` | the expressible-feature constructors |
 | `efAbsBound_primrec` | `EF.absBound`, hence the calibrated intensity's input |
 | `marketMakerError_primrec` | the day error schedule |
 | `rationalBeliefStateQuote_primrec` | the belief state's exact rational quote |
@@ -179,13 +182,43 @@ lemmas, no definition, statement or proof changed:
 
 The recurrence itself was deliberately *not* exported: a downstream construction states and
 proves its own, which is where its soundness obligation belongs — and this development
-already has that (`enfPrefixFromStagesAtFuel_sound`).
+already had that (`EnforcedComputation.enfPrefixFromStagesAtFuel_sound`).
 
-**Left.** The downstream `Primrec` assembly: `Primrec₂ S.enforcer.trades`, and from it
-`Computable₂ (enfEncodedQuoteNatAtFuel process E)`. Both are transcriptions against the
-now-public ingredients — the second is the source's own recurrence proof with one extra
-list append. No mathematics remains, and no premise is hidden: the boundary is a named
-structure with a named field, and instantiating it is a matter of writing the plumbing.
+`EnforcedCompiler` then supplies the erased recurrence
+(`enfPrefixFromTradeListsAtFuel`), identifies it with the proof-carrying one through the
+source's two bridging lemmas (`enfPrefixFromTradeListsAtFuel_eq`), and runs the
+primitive-recursion argument up through the bounded quote evaluator.
 
-**Verification that the unlock is usable.** Each re-exported lemma has been typechecked
-from this repository against the new pin.
+### The one hypothesis that remains, and why it is not a hidden premise
+
+`EffectiveEnforcerComputation E`, whose single field is `Primrec₂ E.trades`. This is the
+definition of "the enforcer is given as effective data", and it sits exactly where
+`DeductiveProcessComputation` sits upstream: the construction is computable *given* that
+its inputs are. An `EffectiveEnforcer`'s type already forbids it from seeing the day's
+price; this says its syntax-to-syntax map is effective.
+
+### What is genuinely still open
+
+`Primrec₂ S.enforcer.trades` for the **projection schedule specifically** — that the
+compiled trade list is primitive recursive in the date and the ordinary trade list. Every
+ingredient is now public and mathlib has the list combinators (`list_map`, `list_foldr`,
+`list_idxOf`, `list_getD`, `list_append`); `repAt` has been rewritten positionally so that
+it, too, is reachable. What is needed is `Primrec` for the `EF` construction in
+`affineEF`/`groupEF`/`repEF`/`coefEF` and for `Strategy.tradeListAbsBound`, plus a finite
+presentation of `affineEF` that does not route through `AffineForm.coeff` (a function on
+sentences, hence not `Primcodable`). Mechanical, and bounded; no mathematics.
+
+### Verification
+
+Each re-exported lemma typechecks from this repository against the new pin, and CI's `lean`
+job builds the whole tree against it in 3m17s against a 25-minute budget. That build is
+itself the check that the new pin is in force: `EnforcedCompiler.lean` names the new public
+lemmas, so a build against the old revision would fail on unknown identifiers.
+
+### On Aristotle
+
+Not used in this pass. Every goal here is stated against the pinned dependency's own
+machinery rather than against mathlib, so none of it can be extracted as the self-contained
+statement an offload needs — and once the visibility block was lifted, the recurrence proof
+went through on the first attempt. The Aristotle-shaped work in this line was the
+representation theorem of §1, pursued separately.

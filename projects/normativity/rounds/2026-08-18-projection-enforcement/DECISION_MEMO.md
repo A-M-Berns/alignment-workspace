@@ -277,14 +277,17 @@ Two facts fall out of the *type* rather than needing an argument: the enforcer c
 inspect the day's price (its arguments are the date and a trade list), and `absBound` is
 therefore computed before the day's fixed point.
 
-**What is left** is one object, `EnforcedBoundedEvaluatorCompiler` — the analogue of the
-source's own `LIABoundedEvaluatorCompiler`. It was blocked because three lemmas needed for
-it were `private` in the pinned dependency. **That block is gone**: the dependency is
-pinned to a revision that adds a public section re-exporting them, purely additively, and
-each re-export has been typechecked from here. What remains is the downstream `Primrec`
-assembly — `Primrec₂ S.enforcer.trades`, and from it the compiler — which is transcription
-against public lemmas. **No mathematics remains in Debt B.** `COMPUTABILITY.md §7` has the
-state.
+**What is left is nothing mathematical, and nothing at all for a general effective
+enforcer.** The compiler is built (`EnforcedCompiler.compiler`), after an upstream change
+that re-exports, purely additively, the three ingredients that were `private` in the pinned
+dependency. `EnforcedCompiler.isLogicalInductor` and
+`EnforcedCompiler.ProjectionSchedule.end_to_end_effective` therefore carry no computability
+premise at all.
+
+The single standing hypothesis, `Primrec₂ E.trades` (`EffectiveEnforcerComputation`), is the
+definition of "the enforcer is given as effective data" and sits where
+`DeductiveProcessComputation` sits upstream. Discharging it for the *projection schedule*
+specifically is mechanical and bounded; `COMPUTABILITY.md §7` names what it needs.
 
 **Cost.** Effective, not efficient. The honest form is weaker than "exponential in the
 fragment": vertex enumeration, active-set enumeration and max–min expansion each blow up

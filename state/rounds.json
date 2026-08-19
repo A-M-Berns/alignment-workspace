@@ -569,7 +569,7 @@
       "date": "2026-08-18",
       "project": "normativity",
       "path": "projects/normativity/rounds/2026-08-18-projection-enforcement",
-      "verdict": "The intrinsic projection trader is the paper's construction — force, the calibrated budget with no free intensity, the per-date quantifiers and the deductive end-to-end theorem are kernel-checked; the ComputableMarket premise is gone, reduced to the same bounded-evaluator boundary the source isolates for ordinary LIA and blocked only by three private lemmas upstream; expressibility rests on a cited representation theorem rather than an axiom; and the paper's ℓ∞ conclusion follows from the Euclidean one at the same tolerance, which takes Debt A off the critical path.",
+      "verdict": "The intrinsic projection trader is the paper's construction and the market is computable: force, the calibrated budget with no free intensity, the homothetic-core refinement that removes the tolerance penalty, and the deductive end-to-end theorem are kernel-checked; ComputableMarket is gone as a premise and the bounded-evaluator compiler that replaced it is built, after an additive upstream change re-exporting three private lemmas; expressibility rests on a cited representation theorem rather than an axiom; and the paper's ℓ∞ conclusion follows from the Euclidean one at the same tolerance, which takes Debt A off the critical path.",
       "verdict_source": "projects/normativity/rounds/2026-08-18-projection-enforcement/README.md",
       "registered_classes": [],
       "prompt": "prompts/2026-08-18-projection-enforcement/PROMPT.md",

@@ -326,18 +326,15 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   `.../2026-08-18-projection-enforcement/THEOREM_MAP.md`. *Waiting* costs nothing today
   and leaves seven Lean files carrying names marked provisional under `AGENTS.md` §6.
 
-- **Rule on the upstream change that closes Debt B.** The modified market's computability
-  now reduces to one `Computable₂` statement about a bounded evaluator, and discharging it
-  needs three lemmas that are `private` in the pinned `Formalized-Agent-Foundations`:
-  `marketMakerSearchUpToTradeList_prim` (`LIACompiler.lean:4804`),
-  `tradingFirmTradesFromStageTradeLists_prim` (6960), `efAbsBound_prim` (6254). The clean
-  fix is upstream: give the erased recurrence `liaPrefixFromTradeListsAtFuel` a
-  `Primrec₂` trade-list hook, of which ordinary LIA is the empty instance, so
-  `LIA_is_logical_inductor` is unaffected. *Doing it* is a small pull request against that
-  repository plus a pin bump in `lean/lakefile.toml` — both maintainer acts, which is why
-  this is here and not done. *Waiting* leaves Debt B open at a boundary that is no longer
-  mathematical. `.../2026-08-18-projection-enforcement/COMPUTABILITY.md` §7 has the exact
-  ask.
+- **Merge the upstream pull request, or rule against it.**
+  `A-M-Berns/Formalized-Agent-Foundations` #2 adds a public section to `LIACompiler.lean`
+  re-exporting eleven existing private lemmas; it is branched from the old pin, so the
+  dependency delta is exactly that. `lean/lakefile.toml` is already bumped to
+  `d89817bc15d23c663d0520e3a854d6d02374074d` and CI builds the whole tree against it in
+  3m17s of a 25-minute budget. *Doing it* is merging #2, after which the pin can move to a
+  descendant of `main` at leisure. *Waiting* leaves this repository pinned to a branch
+  rather than to a merged commit, which is the only irregularity in the arrangement — the
+  code itself is already load-bearing here.
 
 - **Decide whether the projection results are worth registering as claims.** Ninety-nine
   kernel-checked, axiom-clean results across seven files, plus twelve exact-arithmetic
@@ -347,6 +344,25 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   map is honest about the one external hypothesis.
 
 ## Settled
+
+### 2026-08-18 — the modified market's computability is discharged, via an additive upstream export
+
+`ComputableMarket` is no longer a premise of the traderized-deduction chain, and the object
+that replaced it is constructed rather than assumed. The blocker was module visibility:
+`marketMakerSearchUpToTradeList_prim`, `tradingFirmTradesFromStageTradeLists_prim` and
+`efAbsBound_prim` are `private` in the pinned dependency's `LIACompiler.lean`, and that file
+carries 398 private declarations, so re-deriving them downstream would have meant
+re-deriving the file.
+
+The resolution is an upstream section that re-exports those ingredients publicly and changes
+nothing else — no definition, statement or proof above it is touched, so nothing that built
+before can break. The recurrence itself is deliberately *not* exported: a downstream
+construction states and proves its own, which is where its soundness obligation belongs.
+
+Statements of record: `Workspace.Normativity.Contrib.EnforcedCompiler.computableMarket`,
+`.isLogicalInductor`, `.ProjectionSchedule.end_to_end_effective`. The one standing
+hypothesis, `Primrec₂ E.trades` (`EffectiveEnforcerComputation`), is the definition of an
+effective enforcer and sits where `DeductiveProcessComputation` sits upstream.
 
 ### 2026-08-18 — projection is the paper's traderization construction
 

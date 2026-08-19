@@ -30,8 +30,9 @@ except where a hypothesis is named as external.
 | 13 | the paper-facing budget: `−Σ_{k≤n} (ρ_k/δ_k)·d₂(w,K_k)`, no free intensity, no nesting | `ProjectionCalibrated.cumValue_ge_of_calibrated` |
 | 14 | per-date admission gives zero risk capital; admission at the last date does not | `ProjectionCalibrated.cumValue_nonneg_of_calibrated`, `ProjectionBudget.late_admission_is_not_enough` |
 | 15 | the modified recurrence's bounded evaluator is sound and complete | `EnforcedComputation.enfPrefixFromStagesAtFuel_sound`, `exists_enfPrefixAtFuel` |
-| 16 | **the modified market is computable** — no `ComputableMarket` premise | `EnforcedComputation.EnforcedBoundedEvaluatorCompiler.toComputableMarket` |
-| 17 | **the theorem of record**: source-original LIC + per-date Euclidean conformance + the `ℓ^∞` form | `ProjectionEnforcer.ProjectionSchedule.end_to_end` |
+| 16 | **the modified market is computable** — no `ComputableMarket` premise | `EnforcedCompiler.computableMarket` |
+| 16b | traderized deduction with an effective enforcer is a logical inductor, in the source's *original* sense, with no computability premise | `EnforcedCompiler.isLogicalInductor` |
+| 17 | **the theorem of record**, from effective data alone: source-original LIC + per-date Euclidean conformance + the `ℓ^∞` form | `EnforcedCompiler.ProjectionSchedule.end_to_end_effective` |
 | 18 | eventual coherence on every fixed finite set | `ProjectionEnforcer.ProjectionSchedule.eventual_coherence` |
 | 19 | `ℓ^∞` follows from Euclidean at the same tolerance | `ProjectionForce.sup_conformance_of_dist2` |
 | 20 | **homothetic core**: an `α_n`-fraction of every live direction gives `Val_w ≥ −((1−α_n)/α_n)ρ_n`, with **no tolerance penalty** | `ProjectionCore.core_day_value_ge`, `core_day_value_ge_calibrated` |
@@ -52,8 +53,9 @@ the generalized criterion.
   global nesting. Strictly weaker hypothesis, same conclusion.
 * **The prospective charge.** Presentation-free, and with the draft's unspecified
   "temporal compatibility" side condition removed rather than restated. See §4.
-* **The computability premise.** Gone. Reduced to a bounded-evaluator compiler — the same
-  boundary the source isolates for ordinary LIA. See §6.
+* **The computability premise.** Gone, and the compiler that replaced it is built. The
+  paper can state Theorem 10.6 with effective source data and no `ComputableMarket`
+  hypothesis. See §6.
 * **The cube hypothesis.** Discharged rather than assumed, from the region lying in the
   cube on the fragment plus the market's own prices lying in the cube.
 
@@ -74,7 +76,7 @@ Neither is an axiom. The Lean development takes the representation as **data** a
 correctness as a **hypothesis** (`hrep` in `ProjectionSchedule.end_to_end`), and proves
 everything on this side of it.
 
-**One engineering item.** The bounded-evaluator compiler; see §6.
+**No engineering item remains in Debt B.** The bounded-evaluator compiler is built; see §6.
 
 ## 4. The cleanest trader-budget statement
 
@@ -160,22 +162,25 @@ What the paper needs is computability. Details in `COMPUTABILITY.md §6`.
 
 ## 6. Debt B
 
-**Reduced to the source's own boundary, and not closed.**
+**Discharged.**
 
-`ComputableMarket` is no longer a premise anywhere in the chain.
-`EnforcedComputation` builds the modified bounded recurrence, proves it sound and
-complete against the semantic construction, minimizes over the fuel clock, and produces
-the exact rational quote program. What remains is one object,
-`EnforcedBoundedEvaluatorCompiler` — precisely the analogue of the source's own
-`LIABoundedEvaluatorCompiler`.
+`ComputableMarket` is no longer a premise anywhere in the chain, and the object that
+replaced it — `EnforcedBoundedEvaluatorCompiler`, the analogue of the source's own
+`LIABoundedEvaluatorCompiler` — is now constructed rather than assumed
+(`EnforcedCompiler.compiler`). The blocker was that three ingredients were `private` in the
+pinned dependency; the dependency is now pinned to a revision that re-exports them in a
+purely additive public section, and `EnforcedCompiler` runs the source's own
+primitive-recursion argument with one extra list append.
 
-It was not discharged because three lemmas needed for it were `private` in the pinned
-dependency. **That is fixed.** The dependency is now pinned to a revision whose only delta
-is a purely additive public section in `LIACompiler.lean` re-exporting those ingredients;
-each has been typechecked from this repository against the new pin. What remains is the
-downstream `Primrec` assembly — `Primrec₂ S.enforcer.trades`, and from it the compiler —
-which is transcription against public lemmas, not mathematics. `COMPUTABILITY.md §7` has
-the state.
+What the paper may therefore state, with no computability hypothesis: for a computable
+deductive process and an enforcer given as effective data, the modified market is computable
+and is a logical inductor **in the source's original sense**.
+
+One hypothesis remains and it is not a hidden premise: `Primrec₂ E.trades`, carried by
+`EffectiveEnforcerComputation`. That is the definition of "effective enforcer", sitting
+exactly where `DeductiveProcessComputation` sits upstream. Establishing it for the
+*projection* schedule specifically is the one bounded, mechanical item still open;
+`COMPUTABILITY.md §7` says exactly what it needs.
 
 ## 7. Re-check of the whole chain
 

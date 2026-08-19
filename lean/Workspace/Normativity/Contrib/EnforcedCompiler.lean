@@ -22,7 +22,7 @@ Names are provisional (`AGENTS.md` standard 6).
 -/
 
 import LogicalInduction.Construction.LIACompiler
-import Workspace.Normativity.Contrib.EnforcedComputation
+import Workspace.Normativity.Contrib.ProjectionEnforcer
 
 namespace Workspace.Normativity.Contrib.EnforcedCompiler
 
@@ -296,9 +296,43 @@ theorem isLogicalInductor {DP : DeductiveProcess}
     IsLogicalInductor (history DP (E.adaptive DP)) DP :=
   isLogicalInductor_of_compiler_of_worldInclusive process E (compiler process hE) hday
 
+/-! ## The projection market, from effective data alone
+
+`ProjectionSchedule.end_to_end` takes the bounded-evaluator compiler as an argument
+because it was stated before the compiler could be built.  It can be built now, so the
+paper-facing form takes the schedule's effectiveness instead. -/
+
+open Workspace.Normativity.Contrib.ProjectionForce
+open Workspace.Normativity.Contrib.ProjectionCompiler
+open Workspace.Normativity.Contrib.ProjectionCalibrated
+open Workspace.Normativity.Contrib.ProjectionEnforcer
+
+/-- **The theorem of record, from effective data alone.**  Given a computable deductive
+process, a schedule whose enforcement trade map is effective, regions that are fragment-local
+and admit every plausible world, and correct representations: the market is a logical
+inductor **in the source's original sense**, is within the requested tolerance of the day's
+region in the intrinsic Euclidean distance at every date, and satisfies the paper's
+sup-norm form.  No `ComputableMarket` premise and no compiler object. -/
+theorem ProjectionSchedule.end_to_end_effective (S : ProjectionSchedule)
+    {DP : DeductiveProcess} (process : DeductiveProcessComputation DP)
+    (hE : EffectiveEnforcerComputation S.enforcer)
+    {K : ℕ → (Sentence → ℝ) → Prop} {q : ℕ → Sentence → ℝ}
+    (hlocal : ∀ n, FragmentLocal (S.fragment n).toFinset (K n))
+    (hKcube : ∀ n y, K n y → ∀ φ ∈ (S.fragment n).toFinset, 0 ≤ y φ ∧ y φ ≤ 1)
+    (hq : ∀ n, IsNearestPoint (S.fragment n).toFinset (K n) (S.market DP n) (q n))
+    (hrep : ∀ n, ∀ φ ∈ S.coords n,
+      repEval (S.fragment n) (S.rep n φ) (S.market DP n) = q n φ)
+    (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) → K n v.payout) :
+    IsLogicalInductor (S.market DP) DP ∧
+      (∀ n, dist2 (S.fragment n).toFinset (S.market DP n) (q n) ≤ ((S.tol n : ℚ) : ℝ)) ∧
+      ∀ n, K n (q n) ∧ ∀ φ ∈ (S.fragment n).toFinset,
+        |S.market DP n φ - q n φ| ≤ ((S.tol n : ℚ) : ℝ) :=
+  S.end_to_end process (compiler process hE) hlocal hKcube hq hrep hadm
+
 end Workspace.Normativity.Contrib.EnforcedCompiler
 
 #print axioms Workspace.Normativity.Contrib.EnforcedCompiler.enfPrefixFromTradeListsAtFuel_eq
 #print axioms Workspace.Normativity.Contrib.EnforcedCompiler.compiler
 #print axioms Workspace.Normativity.Contrib.EnforcedCompiler.computableMarket
 #print axioms Workspace.Normativity.Contrib.EnforcedCompiler.isLogicalInductor
+#print axioms Workspace.Normativity.Contrib.EnforcedCompiler.ProjectionSchedule.end_to_end_effective
