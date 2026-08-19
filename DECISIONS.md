@@ -321,7 +321,7 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   Ovchinnikov's theorem in the kernel, which is the second of the two external facts
   `ProjectionCompiler.lean` cites on the `projection-enforcement` branch. Three linked
   items: whether the names (`IsPiecewiseAffineOn`, `exists_maxMin_representation`,
-  `exists_le_and_le`, `exists_le_of_le_of_forall_selects`, namespace `MaxMin`) are
+  `exists_le_and_le`, `exists_le_of_le_of_forall_selects`, the namespace) are
   confirmed or renamed; whether the result is promoted to a statement of record with a
   registered claim, which needs a `PRIORITIES.md` item since nothing enters the
   registry unasked; and who writes the adapter from `Finset.sup'`/`Finset.inf'` to

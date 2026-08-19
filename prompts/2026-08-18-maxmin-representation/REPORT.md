@@ -101,7 +101,7 @@ resisted.
 
 ## New names introduced
 
-All provisional, `AGENTS.md` §6. Namespace `Workspace.Normativity.Contrib.MaxMin`;
+All provisional, `AGENTS.md` §6. Namespace `Workspace.Normativity.Contrib.MaxMinRepresentation`;
 file `MaxMinRepresentation.lean`; definitions `IsPiecewiseAffineOn`, `negLine`,
 `absComponent`, `absPiece`; theorems `affine_apply_eq_slope`, `affine_eq_of_ne`,
 `affine_le_of_lt_of_le`, `exists_forall_eq_of_isPreconnected`,

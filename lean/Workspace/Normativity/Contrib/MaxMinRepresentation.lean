@@ -50,7 +50,7 @@ import Mathlib.Topology.Order.DenselyOrdered
 import Mathlib.Topology.LocallyFinite
 import Mathlib.Tactic.LinearCombination
 
-namespace Workspace.Normativity.Contrib.MaxMin
+namespace Workspace.Normativity.Contrib.MaxMinRepresentation
 
 open Set
 
@@ -529,20 +529,20 @@ theorem maxMin_hypotheses_nonvacuous :
       IsPiecewiseAffineOn (univ : Set ℝ) (fun x => |x|) absComponent :=
   ⟨convex_univ, univ_nonempty, abs_isPiecewiseAffineOn⟩
 
-end Workspace.Normativity.Contrib.MaxMin
+end Workspace.Normativity.Contrib.MaxMinRepresentation
 
-#print axioms Workspace.Normativity.Contrib.MaxMin.affine_apply_eq_slope
-#print axioms Workspace.Normativity.Contrib.MaxMin.affine_eq_of_ne
-#print axioms Workspace.Normativity.Contrib.MaxMin.affine_le_of_lt_of_le
-#print axioms Workspace.Normativity.Contrib.MaxMin.exists_forall_eq_of_isPreconnected
-#print axioms Workspace.Normativity.Contrib.MaxMin.exists_le_of_le_of_forall_selects
-#print axioms Workspace.Normativity.Contrib.MaxMin.isPiecewiseAffineOn_of_finite
-#print axioms Workspace.Normativity.Contrib.MaxMin.continuousOn_of_isPiecewiseAffineOn
-#print axioms Workspace.Normativity.Contrib.MaxMin.exists_le_and_le
-#print axioms Workspace.Normativity.Contrib.MaxMin.exists_maxMin_representation
-#print axioms Workspace.Normativity.Contrib.MaxMin.isPiecewiseAffineOn_maxMin
-#print axioms Workspace.Normativity.Contrib.MaxMin.abs_isPiecewiseAffineOn
-#print axioms Workspace.Normativity.Contrib.MaxMin.maxMin_hypotheses_nonvacuous
-#print axioms Workspace.Normativity.Contrib.MaxMin.segmentComponent_zero
-#print axioms Workspace.Normativity.Contrib.MaxMin.segmentComponent_one
-#print axioms Workspace.Normativity.Contrib.MaxMin.segment_hypotheses
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.affine_apply_eq_slope
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.affine_eq_of_ne
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.affine_le_of_lt_of_le
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.exists_forall_eq_of_isPreconnected
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.exists_le_of_le_of_forall_selects
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.isPiecewiseAffineOn_of_finite
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.continuousOn_of_isPiecewiseAffineOn
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.exists_le_and_le
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.exists_maxMin_representation
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.isPiecewiseAffineOn_maxMin
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.abs_isPiecewiseAffineOn
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.maxMin_hypotheses_nonvacuous
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.segmentComponent_zero
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.segmentComponent_one
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.segment_hypotheses
