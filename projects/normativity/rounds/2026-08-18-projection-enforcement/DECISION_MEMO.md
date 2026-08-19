@@ -90,6 +90,15 @@ nothing is evaluated before it is defined.
 `K` must be nonempty, closed, convex, and contained in the cube; nonemptiness and
 cube-containment are explicit hypotheses (`hqcube`), not assumed away.
 
+One detail worth stating because it looks like a hidden falsifier and is not.
+`hqcube` asks `0 ≤ q φ ≤ 1` at **every** sentence, not only on the fragment, because the
+ordinary aggregate's support need not sit inside the fragment and `Strategy.abs_value_le`
+is applied at `q` over that whole support. It is satisfiable: `q` is pinned on `Φ` by the
+nearest-point condition and free off it, so taking `q = P` off `Φ` puts `q` in the cube,
+and `K` — being a condition on the `Φ`-coordinates, which is what `π_Φ(C_t)` is — admits
+that extension. The hypothesis is real and it is cheap; it is not vacuous and it is not
+unmeetable.
+
 ## B. Eliminating the external bound `M_n`
 
 **Proved.** `ρ_n = ε_n + A_n`, where `ε_n = marketMakerError n` is the market maker's
