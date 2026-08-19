@@ -76,11 +76,30 @@ take `d` explicitly, and `Sat` reads it off the point `x : Fin d → ℝ`.
 
 ## Computability
 
-`feasible_primrec` certifies that, at each fixed dimension, `feasible` is primitive
-recursive in the constraint list.  `LinCon` is an `abbrev` for `List ℚ × ℚ × Bool`
-precisely so that `Primcodable` is inherited and the accessors are literal projections;
-the induction on the dimension then unrolls into a fixed composition of primitive
-recursive list operations.
+`feasible_primrec₂ : Primrec₂ fun d cs => feasible d cs` is the headline certificate, and
+the quantifier order is the point.  A family `∀ d, Primrec (feasible d)` cannot be used by
+a caller whose ambient dimension is computed from its own arguments — which is exactly the
+downstream compiler's situation, where the dimension is a fragment length plus a vertex
+count, both read off the inputs and both varying by date.  `feasible_primrec` is the fixed
+dimension specialisation, derived from it in one line and kept as a separate statement
+because most call sites want that form.
+
+`LinCon` is an `abbrev` for `List ℚ × ℚ × Bool` precisely so that `Primcodable` is
+inherited and the accessors are literal projections.
+
+Two things need care to get the uniform version.  First, `Primrec.listFilter` fixes its
+predicate once and for all, and the elimination's sign test depends on the dimension; the
+parametrised replacement here goes through `Primrec.listFilterMap`, which is already
+parametrised.  Second, and more substantially, `feasible` is **not** an iteration of a
+single function of the constraint list: unrolled it is
+
+    feasible d cs = base (elim 0 (elim 1 (⋯ (elim (d-1) cs))))
+
+with the eliminated dimension counting *down*.  The fix is to iterate on the pair
+`(current dimension, current system)`, so that one map `elimStep` — decrement and
+eliminate — does the whole descent as `elimStep^[d]` applied to `(d, cs)`.  That is a
+plain `Primrec.nat_iterate`, and `feasible_eq_iterate` is the unrolling lemma that
+licenses it.
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
@@ -499,57 +518,6 @@ private lemma ratSub_primrec : Primrec₂ fun q r : ℚ => q - r := by
     ratAdd_prim.comp Primrec.fst (ratMul_prim.comp (Primrec.const (-1)) Primrec.snd)
   exact h.to₂.of_eq fun q r => by ring
 
-private lemma lastCoeff_primrec (d : ℕ) : Primrec (lastCoeff d) :=
-  (Primrec.list_getD (0 : ℚ)).comp coeffs_primrec (Primrec.const d)
-
-private lemma getD_primrec {α : Type*} [Primcodable α] {f : α → LinCon}
-    (hf : Primrec f) {g : α → ℕ} (hg : Primrec g) :
-    Primrec fun a => (f a).coeffs.getD (g a) 0 :=
-  (Primrec.list_getD (0 : ℚ)).comp (coeffs_primrec.comp hf) hg
-
-private lemma comboCoeffs_primrec (d : ℕ) :
-    Primrec fun z : LinCon × LinCon => comboCoeffs d (lastCoeff d z.2) (lastCoeff d z.1)
-      z.1.coeffs z.2.coeffs := by
-  have hstep : Primrec₂ fun (z : LinCon × LinCon) (i : ℕ) =>
-      lastCoeff d z.2 * z.1.coeffs.getD i 0 - lastCoeff d z.1 * z.2.coeffs.getD i 0 :=
-    ratSub_primrec.comp
-      (ratMul_prim.comp ((lastCoeff_primrec d).comp (Primrec.snd.comp Primrec.fst))
-        (getD_primrec (Primrec.fst.comp Primrec.fst) Primrec.snd))
-      (ratMul_prim.comp ((lastCoeff_primrec d).comp (Primrec.fst.comp Primrec.fst))
-        (getD_primrec (Primrec.snd.comp Primrec.fst) Primrec.snd))
-  exact Primrec.list_map (Primrec.const (List.range d)) hstep
-
-private lemma combine_primrec (d : ℕ) : Primrec fun z : LinCon × LinCon => combine d z.1 z.2 := by
-  have hconst : Primrec fun z : LinCon × LinCon =>
-      lastCoeff d z.2 * z.1.const - lastCoeff d z.1 * z.2.const :=
-    ratSub_primrec.comp
-      (ratMul_prim.comp ((lastCoeff_primrec d).comp Primrec.snd) (const_primrec.comp Primrec.fst))
-      (ratMul_prim.comp ((lastCoeff_primrec d).comp Primrec.fst) (const_primrec.comp Primrec.snd))
-  have hstrict : Primrec fun z : LinCon × LinCon => (z.1.strict || z.2.strict) :=
-    Primrec.or.comp (strict_primrec.comp Primrec.fst) (strict_primrec.comp Primrec.snd)
-  exact (comboCoeffs_primrec d).pair (hconst.pair hstrict)
-
-private lemma elim_primrec (d : ℕ) : Primrec (elim d) := by
-  have hzero : PrimrecPred fun c : LinCon => lastCoeff d c = 0 :=
-    Primrec.eq.comp (lastCoeff_primrec d) (Primrec.const 0)
-  have hneg : PrimrecPred fun c : LinCon => lastCoeff d c < 0 :=
-    (PrimrecPred.not (ratLE_prim.comp (Primrec.const 0) (lastCoeff_primrec d))).of_eq
-      fun c => by simp [not_le]
-  have hpos : PrimrecPred fun c : LinCon => 0 < lastCoeff d c :=
-    (PrimrecPred.not (ratLE_prim.comp (lastCoeff_primrec d) (Primrec.const 0))).of_eq
-      fun c => by simp [not_le]
-  have hZ : Primrec fun cs : List LinCon =>
-      cs.filter (fun c => decide (lastCoeff d c = 0)) := Primrec.listFilter hzero
-  have hL : Primrec fun cs : List LinCon =>
-      cs.filter (fun c => decide (lastCoeff d c < 0)) := Primrec.listFilter hneg
-  have hU : Primrec fun cs : List LinCon =>
-      cs.filter (fun c => decide (0 < lastCoeff d c)) := Primrec.listFilter hpos
-  have hinner : Primrec₂ fun (cs : List LinCon) (cl : LinCon) =>
-      (cs.filter (fun c => decide (0 < lastCoeff d c))).map fun cu => combine d cl cu :=
-    Primrec.list_map (hU.comp Primrec.fst)
-      ((combine_primrec d).comp ((Primrec.snd.comp Primrec.fst).pair Primrec.snd))
-  exact Primrec.list_append.comp hZ (Primrec.list_flatMap hL hinner)
-
 /-- `List.all` is a `foldr`, which is the shape `Primrec.list_foldr` provides. -/
 private lemma all_eq_foldr {α : Type*} (p : α → Bool) :
     ∀ l : List α, l.foldr (fun a b => p a && b) true = l.all p
@@ -569,22 +537,158 @@ private lemma ratLtDec_prim : Primrec₂ fun q r : ℚ => decide (q < r) := by
     · simp [hqr, not_le.mpr hqr]
     · simp [hqr, not_lt.mp hqr]
 
-/-- **The decision procedure is primitive recursive** at each fixed dimension. -/
-theorem feasible_primrec : ∀ d : ℕ, Primrec fun cs : List LinCon => feasible d cs
-  | 0 => by
-      have hstep : Primrec fun c : LinCon =>
-          cond c.strict (decide ((0 : ℚ) < c.const)) (decide ((0 : ℚ) ≤ c.const)) :=
-        Primrec.cond strict_primrec
-          (ratLtDec_prim.comp (Primrec.const 0) const_primrec)
-          (ratLeDec_prim.comp (Primrec.const 0) const_primrec)
-      have hfold : Primrec fun cs : List LinCon => cs.foldr
-          (fun c b =>
-            cond c.strict (decide ((0 : ℚ) < c.const)) (decide ((0 : ℚ) ≤ c.const)) && b) true :=
-        Primrec.list_foldr Primrec.id (Primrec.const true)
-          (Primrec.and.comp (hstep.comp (Primrec.fst.comp Primrec.snd))
-            (Primrec.snd.comp Primrec.snd)).to₂
-      exact hfold.of_eq fun cs => all_eq_foldr _ cs
-  | d + 1 => ((feasible_primrec d).comp (elim_primrec d)).of_eq fun cs => rfl
+private lemma ratEqDec_prim : Primrec₂ fun q r : ℚ => decide (q = r) :=
+  PrimrecRel.decide Primrec.eq
+
+/-- `Primrec.listFilter` takes a predicate fixed once and for all, which is no use once the
+dimension is an argument: the sign test the elimination filters on depends on it.  This is
+the parametrised form, routed through `Primrec.listFilterMap`, which is already
+parametrised. -/
+private lemma list_filter_primrec {α β : Type*} [Primcodable α] [Primcodable β]
+    {f : α → List β} {g : α → β → Bool} (hf : Primrec f) (hg : Primrec₂ g) :
+    Primrec fun a => (f a).filter (g a) := by
+  have h : Primrec fun a => (f a).filterMap fun b => bif g a b then some b else none :=
+    Primrec.listFilterMap hf
+      (Primrec.cond hg (Primrec.option_some.comp Primrec.snd) (Primrec.const none))
+  refine h.of_eq fun a => ?_
+  generalize f a = l
+  induction l with
+  | nil => rfl
+  | cons b t ih => cases hb : g a b <;> simp [hb, ih]
+
+/-! ### Uniform in the dimension
+
+Everything below takes the dimension as an *argument* rather than fixing it.  This is the
+form the downstream compiler needs: it works at an ambient dimension read off its own
+inputs, so a family `∀ d, Primrec (feasible d)` cannot be applied there. -/
+
+private lemma lastCoeff_primrec₂ : Primrec₂ fun (d : ℕ) (c : LinCon) => lastCoeff d c :=
+  (Primrec.list_getD (0 : ℚ)).comp (coeffs_primrec.comp Primrec.snd) Primrec.fst
+
+private lemma comboCoeffs_primrec₂ :
+    Primrec fun z : ℕ × LinCon × LinCon =>
+      comboCoeffs z.1 (lastCoeff z.1 z.2.2) (lastCoeff z.1 z.2.1) z.2.1.coeffs z.2.2.coeffs := by
+  -- Projections out of `((d, cl, cu), i)`.
+  have hd : Primrec fun w : (ℕ × LinCon × LinCon) × ℕ => w.1.1 :=
+    Primrec.fst.comp Primrec.fst
+  have hcl : Primrec fun w : (ℕ × LinCon × LinCon) × ℕ => w.1.2.1 :=
+    Primrec.fst.comp (Primrec.snd.comp Primrec.fst)
+  have hcu : Primrec fun w : (ℕ × LinCon × LinCon) × ℕ => w.1.2.2 :=
+    Primrec.snd.comp (Primrec.snd.comp Primrec.fst)
+  have hstep : Primrec₂ fun (z : ℕ × LinCon × LinCon) (i : ℕ) =>
+      lastCoeff z.1 z.2.2 * z.2.1.coeffs.getD i 0
+        - lastCoeff z.1 z.2.1 * z.2.2.coeffs.getD i 0 :=
+    ratSub_primrec.comp
+      (ratMul_prim.comp (lastCoeff_primrec₂.comp hd hcu)
+        ((Primrec.list_getD (0 : ℚ)).comp (coeffs_primrec.comp hcl) Primrec.snd))
+      (ratMul_prim.comp (lastCoeff_primrec₂.comp hd hcl)
+        ((Primrec.list_getD (0 : ℚ)).comp (coeffs_primrec.comp hcu) Primrec.snd))
+  exact Primrec.list_map (Primrec.list_range.comp Primrec.fst) hstep
+
+private lemma combine_primrec₂ :
+    Primrec fun z : ℕ × LinCon × LinCon => combine z.1 z.2.1 z.2.2 := by
+  have hd : Primrec fun z : ℕ × LinCon × LinCon => z.1 := Primrec.fst
+  have hcl : Primrec fun z : ℕ × LinCon × LinCon => z.2.1 := Primrec.fst.comp Primrec.snd
+  have hcu : Primrec fun z : ℕ × LinCon × LinCon => z.2.2 := Primrec.snd.comp Primrec.snd
+  have hconst : Primrec fun z : ℕ × LinCon × LinCon =>
+      lastCoeff z.1 z.2.2 * z.2.1.const - lastCoeff z.1 z.2.1 * z.2.2.const :=
+    ratSub_primrec.comp
+      (ratMul_prim.comp (lastCoeff_primrec₂.comp hd hcu) (const_primrec.comp hcl))
+      (ratMul_prim.comp (lastCoeff_primrec₂.comp hd hcl) (const_primrec.comp hcu))
+  have hstrict : Primrec fun z : ℕ × LinCon × LinCon => (z.2.1.strict || z.2.2.strict) :=
+    Primrec.or.comp (strict_primrec.comp hcl) (strict_primrec.comp hcu)
+  exact comboCoeffs_primrec₂.pair (hconst.pair hstrict)
+
+/-- **The elimination step is primitive recursive uniformly in the dimension.** -/
+theorem elim_primrec₂ : Primrec₂ fun (d : ℕ) (cs : List LinCon) => elim d cs := by
+  -- The sign tests, as `Bool`-valued functions of `((d, cs), c)`.
+  have hlast : Primrec fun w : (ℕ × List LinCon) × LinCon => lastCoeff w.1.1 w.2 :=
+    lastCoeff_primrec₂.comp (Primrec.fst.comp Primrec.fst) Primrec.snd
+  have hzeroB : Primrec₂ fun (z : ℕ × List LinCon) (c : LinCon) =>
+      decide (lastCoeff z.1 c = 0) := ratEqDec_prim.comp hlast (Primrec.const 0)
+  have hnegB : Primrec₂ fun (z : ℕ × List LinCon) (c : LinCon) =>
+      decide (lastCoeff z.1 c < 0) := ratLtDec_prim.comp hlast (Primrec.const 0)
+  have hposB : Primrec₂ fun (z : ℕ × List LinCon) (c : LinCon) =>
+      decide (0 < lastCoeff z.1 c) := ratLtDec_prim.comp (Primrec.const 0) hlast
+  have hZ := list_filter_primrec (Primrec.snd (α := ℕ) (β := List LinCon)) hzeroB
+  have hL := list_filter_primrec (Primrec.snd (α := ℕ) (β := List LinCon)) hnegB
+  have hU := list_filter_primrec (Primrec.snd (α := ℕ) (β := List LinCon)) hposB
+  have hinner : Primrec₂ fun (z : ℕ × List LinCon) (cl : LinCon) =>
+      (z.2.filter fun c => decide (0 < lastCoeff z.1 c)).map fun cu => combine z.1 cl cu :=
+    Primrec.list_map (hU.comp Primrec.fst)
+      (combine_primrec₂.comp
+        ((Primrec.fst.comp (Primrec.fst.comp Primrec.fst)).pair
+          ((Primrec.snd.comp Primrec.fst).pair Primrec.snd)))
+  exact Primrec.list_append.comp hZ (Primrec.list_flatMap hL hinner)
+
+/-! ### The descent as an iteration of one map
+
+`feasible d cs = base (elim 0 (elim 1 (⋯ (elim (d-1) cs))))`: the eliminated dimension
+*counts down* as the recursion descends, so this is not an iteration of a single function
+of the constraint list alone.  Carrying the pair `(current dimension, current system)` as
+the state fixes that — `elimStep` decrements and eliminates in one move, and then the whole
+descent is `elimStep^[d]` applied to `(d, cs)`, which `Primrec.nat_iterate` handles. -/
+
+/-- The dimension-zero verdict, named so the unrolling below can refer to it. -/
+private def baseVerdict (cs : List LinCon) : Bool :=
+  cs.all fun c => cond c.strict (decide (0 < c.const)) (decide (0 ≤ c.const))
+
+/-- One step of the descent, on the state `(current dimension, current system)`. -/
+private def elimStep (s : ℕ × List LinCon) : ℕ × List LinCon := (s.1 - 1, elim (s.1 - 1) s.2)
+
+private lemma baseVerdict_primrec : Primrec baseVerdict := by
+  have hstep : Primrec fun c : LinCon =>
+      cond c.strict (decide ((0 : ℚ) < c.const)) (decide ((0 : ℚ) ≤ c.const)) :=
+    Primrec.cond strict_primrec
+      (ratLtDec_prim.comp (Primrec.const 0) const_primrec)
+      (ratLeDec_prim.comp (Primrec.const 0) const_primrec)
+  have hfold : Primrec fun cs : List LinCon => cs.foldr
+      (fun c b =>
+        cond c.strict (decide ((0 : ℚ) < c.const)) (decide ((0 : ℚ) ≤ c.const)) && b) true :=
+    Primrec.list_foldr Primrec.id (Primrec.const true)
+      (Primrec.and.comp (hstep.comp (Primrec.fst.comp Primrec.snd))
+        (Primrec.snd.comp Primrec.snd)).to₂
+  exact hfold.of_eq fun cs => all_eq_foldr _ cs
+
+private lemma elimStep_primrec : Primrec elimStep := by
+  have hpred : Primrec fun s : ℕ × List LinCon => s.1 - 1 :=
+    Primrec.nat_sub.comp Primrec.fst (Primrec.const 1)
+  exact hpred.pair (elim_primrec₂.comp hpred Primrec.snd)
+
+/-- The descent, unrolled: `feasible` is `elimStep` iterated `d` times from the state
+`(d, cs)`, read out by the dimension-zero verdict. -/
+private lemma feasible_eq_iterate : ∀ (d : ℕ) (cs : List LinCon),
+    feasible d cs = baseVerdict (elimStep^[d] (d, cs)).2
+  | 0, _ => rfl
+  | d + 1, cs => by
+      have h1 : feasible (d + 1) cs = feasible d (elim d cs) := rfl
+      have h2 : elimStep (d + 1, cs) = (d, elim d cs) := by simp [elimStep]
+      rw [h1, feasible_eq_iterate d (elim d cs), Function.iterate_succ_apply, h2]
+
+/-- **The decision procedure is primitive recursive uniformly in the dimension.**  This is
+the form a caller whose ambient dimension is computed from its own arguments can use. -/
+theorem feasible_primrec₂ : Primrec₂ fun (d : ℕ) (cs : List LinCon) => feasible d cs := by
+  have hiter : Primrec fun z : ℕ × List LinCon => elimStep^[z.1] z :=
+    Primrec.nat_iterate Primrec.fst Primrec.id (elimStep_primrec.comp Primrec.snd)
+  refine (baseVerdict_primrec.comp (Primrec.snd.comp hiter)).of_eq fun z => ?_
+  obtain ⟨d, cs⟩ := z
+  exact (feasible_eq_iterate d cs).symm
+
+/-- **The decision procedure is primitive recursive** at each fixed dimension.  A
+specialisation of `feasible_primrec₂`, kept as a separate statement because it is the form
+most call sites want. -/
+theorem feasible_primrec : ∀ d : ℕ, Primrec fun cs : List LinCon => feasible d cs :=
+  fun d => feasible_primrec₂.comp (Primrec.const d) Primrec.id
+
+/-- The form a caller actually applies: **both** the dimension and the system are computed
+from the caller's own argument.  A caller whose ambient dimension is, say,
+`dim a = frag a + verts a + 1` supplies a `Primrec dim` built from its own projections and
+gets the certificate at that dimension — which is precisely what a family indexed by a
+fixed `d` cannot provide. -/
+theorem feasible_primrec_comp {α : Type*} [Primcodable α] {dim : α → ℕ}
+    {sys : α → List LinCon} (hdim : Primrec dim) (hsys : Primrec sys) :
+    Primrec fun a => feasible (dim a) (sys a) :=
+  feasible_primrec₂.comp hdim hsys
 
 /-! ## Witnesses
 
@@ -666,7 +770,10 @@ end Workspace.Normativity.Contrib.FourierMotzkin
 #print axioms Workspace.Normativity.Contrib.FourierMotzkin.combine
 #print axioms Workspace.Normativity.Contrib.FourierMotzkin.elim_sat_iff
 #print axioms Workspace.Normativity.Contrib.FourierMotzkin.feasible_iff
+#print axioms Workspace.Normativity.Contrib.FourierMotzkin.elim_primrec₂
+#print axioms Workspace.Normativity.Contrib.FourierMotzkin.feasible_primrec₂
 #print axioms Workspace.Normativity.Contrib.FourierMotzkin.feasible_primrec
+#print axioms Workspace.Normativity.Contrib.FourierMotzkin.feasible_primrec_comp
 #print axioms Workspace.Normativity.Contrib.FourierMotzkin.wClosed_sat
 #print axioms Workspace.Normativity.Contrib.FourierMotzkin.wOpen_unsat
 #print axioms Workspace.Normativity.Contrib.FourierMotzkin.feasible_wClosed
