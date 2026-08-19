@@ -69,6 +69,7 @@ import Workspace.Normativity.Contrib.ProjectorGenerator
 namespace Workspace.Normativity.Contrib.EffectiveRepresentation
 
 open LogicalInduction
+open Workspace.Normativity.Contrib.FourierMotzkin
 open Workspace.Normativity.Contrib.ProjectorGenerator
 
 /-! ## Sums over an initial segment
@@ -779,5 +780,116 @@ lemma compOf_primrec {α : Type} [Primcodable α] {d : α → ℕ} {verts : α �
   have hface : Primrec fun a => (faceListOf (verts a)).getD (i a) ([], []) :=
     (Primrec.list_getD ([], [])).comp (faceListOf_primrec.comp hv) hi
   exact pieceOf_primrec hd (Primrec.fst.comp hface) (Primrec.snd.comp hface) hk
+
+
+/-! ## The constraint system on raw data
+
+`mkCon` lays the ambient coefficient vector out through `coeffFn`, a three-way `dite` on
+the position.  The raw form mirrors that `dite` over `List.range` rather than concatenating
+three blocks: the positional shape is what `coeffFn` itself has, so the agreement lemma is
+`ofFn_eq_map_range` applied to a case split, with no index arithmetic across appends. -/
+
+/-- The ambient coefficient vector, raw, mirroring `coeffFn` position by position. -/
+def coeffListOf (d m : ℕ) (xf lf : List ℚ) (cc : ℚ) : List ℚ :=
+  (List.range (d + m + 1)).map fun t =>
+    if t < d then xf.getD t 0 else if t < d + m then lf.getD (t - d) 0 else cc
+
+/-- A constraint of the ambient system, raw. -/
+def mkConOf (d m : ℕ) (xf lf : List ℚ) (cc b : ℚ) (s : Bool) : LinCon :=
+  LinCon.of (coeffListOf d m xf lf cc) b s
+
+/-- **The raw layout is the structured one.** -/
+lemma coeffListOf_eq (d m : ℕ) (xf : Fin d → ℚ) (lf : Fin m → ℚ) (cc : ℚ) :
+    coeffListOf d m (List.ofFn xf) (List.ofFn lf) cc
+      = List.ofFn (coeffFn d m xf lf cc) := by
+  simp only [coeffListOf]
+  refine (ofFn_eq_map_range _ _ fun t => ?_).symm
+  rw [coeffFn]
+  by_cases h : (t : ℕ) < d
+  · rw [dif_pos h, if_pos h, getD_ofFn _ _ h]
+  · rw [dif_neg h, if_neg h]
+    by_cases h' : (t : ℕ) < d + m
+    · rw [dif_pos h', if_pos h', getD_ofFn _ _ (by omega)]
+    · rw [dif_neg h', if_neg h']
+
+/-- **The raw constraint is the structured one.** -/
+lemma mkConOf_eq (d m : ℕ) (xf : Fin d → ℚ) (lf : Fin m → ℚ) (cc b : ℚ) (s : Bool) :
+    mkConOf d m (List.ofFn xf) (List.ofFn lf) cc b s = mkCon d m xf lf cc b s := by
+  rw [mkConOf, mkCon, coeffListOf_eq]
+
+lemma coeffListOf_primrec {α : Type} [Primcodable α] {d m : α → ℕ} {xf lf : α → List ℚ}
+    {cc : α → ℚ} (hd : Primrec d) (hm : Primrec m) (hx : Primrec xf) (hl : Primrec lf)
+    (hc : Primrec cc) :
+    Primrec fun a => coeffListOf (d a) (m a) (xf a) (lf a) (cc a) := by
+  refine map_range_primrec
+    (Primrec.nat_add.comp (Primrec.nat_add.comp hd hm) (Primrec.const 1)) ?_
+  have h : Primrec fun q : α × ℕ =>
+      if q.2 < d q.1 then (xf q.1).getD q.2 0
+      else if q.2 < d q.1 + m q.1 then (lf q.1).getD (q.2 - d q.1) 0 else cc q.1 := by
+    refine Primrec.ite (Primrec.nat_lt.comp Primrec.snd (hd.comp Primrec.fst))
+      ((Primrec.list_getD (0 : ℚ)).comp (hx.comp Primrec.fst) Primrec.snd) ?_
+    refine Primrec.ite
+      (Primrec.nat_lt.comp Primrec.snd
+        (Primrec.nat_add.comp (hd.comp Primrec.fst) (hm.comp Primrec.fst)))
+      ?_ (hc.comp Primrec.fst)
+    exact (Primrec.list_getD (0 : ℚ)).comp (hl.comp Primrec.fst)
+      (Primrec.nat_sub.comp Primrec.snd (hd.comp Primrec.fst))
+  exact h.to₂
+
+lemma mkConOf_primrec {α : Type} [Primcodable α] {d m : α → ℕ} {xf lf : α → List ℚ}
+    {cc b : α → ℚ} {sg : α → Bool} (hd : Primrec d) (hm : Primrec m) (hx : Primrec xf)
+    (hl : Primrec lf) (hc : Primrec cc) (hb : Primrec b) (hs : Primrec sg) :
+    Primrec fun a => mkConOf (d a) (m a) (xf a) (lf a) (cc a) (b a) (sg a) :=
+  (coeffListOf_primrec hd hm hx hl hc).pair (hb.pair hs)
+
+/-! ### The blocks
+
+The zero and unit coefficient blocks are `List.range` maps, so `map_range_primrec` carries
+them; both membership tests are decided by `mem_natList_prim`. -/
+
+/-- The all-zero block of length `n`. -/
+def zeroBlock (n : ℕ) : List ℚ := (List.range n).map fun _ => 0
+
+lemma zeroBlock_eq (n : ℕ) : zeroBlock n = List.ofFn (0 : Fin n → ℚ) :=
+  (ofFn_eq_map_range _ _ fun _ => rfl).symm
+
+lemma zeroBlock_primrec {α : Type} [Primcodable α] {n : α → ℕ} (hn : Primrec n) :
+    Primrec fun a => zeroBlock (n a) :=
+  map_range_primrec hn ((Primrec.const (0 : ℚ)).to₂)
+
+/-- The `j`-th vertex, raw. -/
+def vtxOf (verts : List (List ℚ)) (j : ℕ) : List ℚ := verts.getD j []
+
+lemma vtxOf_eq {d : ℕ} (K : RationalPolytope d) (j : Fin (nv K)) :
+    vtxOf (K.verts.map List.ofFn) (j : ℕ) = List.ofFn (vtx K j) := by
+  rw [vtxOf, getD_map _ _ _ (by simpa using j.isLt)]
+  rfl
+
+lemma vtxOf_primrec {α : Type} [Primcodable α] {verts : α → List (List ℚ)} {j : α → ℕ}
+    (hv : Primrec verts) (hj : Primrec j) : Primrec fun a => vtxOf (verts a) (j a) :=
+  (Primrec.list_getD ([] : List ℚ)).comp hv hj
+
+/-- The Gram constant, raw. -/
+def gramOf (d : ℕ) (verts : List (List ℚ)) (j i : ℕ) : ℚ :=
+  ((List.range d).map fun a => (vtxOf verts j).getD a 0 * (vtxOf verts i).getD a 0).sum
+
+lemma gramOf_eq {d : ℕ} (K : RationalPolytope d) (j i : Fin (nv K)) :
+    gramOf d (K.verts.map List.ofFn) (j : ℕ) (i : ℕ) = gram K j i := by
+  rw [gramOf, gram]
+  refine sum_range_eq_univ _ _ fun a => ?_
+  rw [vtxOf_eq, vtxOf_eq, getD_ofFn _ _ a.isLt, getD_ofFn _ _ a.isLt]
+
+lemma gramOf_primrec {α : Type} [Primcodable α] {d : α → ℕ} {verts : α → List (List ℚ)}
+    {j i : α → ℕ} (hd : Primrec d) (hv : Primrec verts) (hj : Primrec j)
+    (hi : Primrec i) : Primrec fun a => gramOf (d a) (verts a) (j a) (i a) := by
+  refine sum_range_primrec hd ?_
+  have h : Primrec fun q : α × ℕ =>
+      (vtxOf (verts q.1) (j q.1)).getD q.2 0 * (vtxOf (verts q.1) (i q.1)).getD q.2 0 :=
+    ratMul_prim.comp
+      ((Primrec.list_getD (0 : ℚ)).comp
+        (vtxOf_primrec (hv.comp Primrec.fst) (hj.comp Primrec.fst)) Primrec.snd)
+      ((Primrec.list_getD (0 : ℚ)).comp
+        (vtxOf_primrec (hv.comp Primrec.fst) (hi.comp Primrec.fst)) Primrec.snd)
+  exact h.to₂
 
 end Workspace.Normativity.Contrib.EffectiveRepresentation
