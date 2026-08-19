@@ -326,6 +326,39 @@ shows the structure is inhabited and the gap is not a disguised impossibility. I
 its `compile` is constant in both arguments and the enumeration the general case needs is
 absent. What is missing is uniformity, and a constant witness cannot supply it.
 
+## `DeductiveRegion.lean` (additions) — the enumeration, generalised
+
+| paper | Lean |
+| --- | --- |
+| the patterns against an arbitrary covering atom list | `patternsFrom` |
+| soundness needs no coverage; completeness needs only that the list covers | `patternsFrom_sound`, `patternsFrom_complete` |
+| **membership is a statement about worlds, not about the atom list** | `mem_patternsFrom_iff`, `mem_patternsFrom_congr` |
+| the kernel-facing instance, a filtered range | `admissiblePatterns`, `contextList_covers` |
+| the certified instance, the dependency's sorted list | `contextAtoms`, `contextAtoms_covers`, `admissiblePatternsEff` |
+| the two agree on membership | `mem_admissiblePatternsEff_iff_mem_admissiblePatterns` |
+
+`contextList` is deliberately a filtered range rather than a `Finset.sort`: the
+`decide +kernel` witnesses at the foot of the file have to reduce, and a sort does not.
+The dependency's certified list is a sort. Generalising over the atom list lets each be
+used where it belongs instead of forcing one to give way.
+
+## `DeductiveEffective.lean` — deductive coherence, effectively
+
+| paper | Lean |
+| --- | --- |
+| the enumeration is primitive recursive in the stage and the fragment | `admissiblePatternsEff_primrec` |
+| the day's region, and its vertex data is the enumeration itself | `deductivePolytopeEff`, `vertexData_deductivePolytopeEff` |
+| the day's representation, computed | `deductiveReps`, `deductiveReps_primrec` |
+| it evaluates to the projection onto the day's region | `repEval_deductiveReps` |
+| the region *is* the deductive region | `carrier_deductivePolytopeEff`, `mem_carrier_iff_deductiveRegion` |
+| the representation's value is the region's nearest point | `isNearestPoint_deductiveReps` |
+| the effective deductive schedule and its computability | `deductiveProjectionSchedule`, `deductiveScheduleComputation` |
+| **§10 the theorem of record for deductive coherence** | `deductive_end_to_end` |
+
+`deductive_end_to_end` assumes nothing about the deductive process beyond the pinned
+source's own `DeductiveProcessComputation`. `FINAL_FORMALIZATION_STATUS.md` §2 records why
+the extra effective-stage hypothesis that looked necessary is not.
+
 ## What is reused unchanged from the merged row work
 
 `no_efficient_trader_exploits_of_projection` is

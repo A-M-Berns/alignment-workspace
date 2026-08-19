@@ -88,3 +88,60 @@ missing: `DeductiveEnforcement.witness_market_not_exploited` instantiates the wh
 hypothesis package at a deductive process revealing one atom, with the liability bound
 derived from the force algebra rather than assumed, and `witnessPres_is_violable` shows
 the compiled position is not the zero trader. This answers `PRIORITIES.md` item 41.
+
+## The projection-enforcement pass (2026-08-18/19)
+
+The row-wise enforcement of the earlier arc is replaced by an intrinsic **projection
+trader**, `E_n(p) = λ_n (q(p) − p)` with `q = proj_K(p)`. `ProjectionForce` carries the
+algebra with no market, trader or presentation in sight: the variational inequality and
+four consequences. `ProjectionMarket` licenses choosing the comparison point after the
+price, by extending the market maker's contract from the cube's vertices to the cube.
+`ProjectionCalibrated` fixes the intensity at `λ_n = ρ_n/δ_n²` with `ρ_n = ε_n + A_n`, at
+which — and only at which — the day charge is `(ρ_n/δ_n)·d₂`. `ProjectionCore` adds the
+`α`-homothetic-core refinement, whose liability bound is independent of `δ_n`; a positive
+core does **not** by itself bound cumulative liability, and nothing here claims it does.
+
+`RationalPolytope`, `PolyhedralProjection` and `PolyhedralCoverage` present the region by
+its vertices rather than its facets. That is a deliberate call: the deductive region
+arrives as a vertex list, so no facet enumeration is needed, and the nearest-point
+certificate reduces to the vertices by convexity, so no Farkas lemma is needed.
+`PolyhedralCoverage` establishes a **cover** only — not disjoint interiors, not normal
+cones, not full-dimensionality — which is exactly what `IsPiecewiseAffineOn` asks.
+
+`MaxMinRepresentation` is Ovchinnikov's Theorem 4.1, with an errata witness for the
+uniqueness gap in the source's Definition 2.1. `maxMin_of_family` restates 4.1(a) with the
+index family *supplied*, because the original builds it as a filter over an existential on
+an infinite domain and no algorithm can evaluate that.
+
+`FourierMotzkin` decides rational linear feasibility, `feasible_iff` in both directions,
+with `≤` and `<` kept distinct — the strict form is load-bearing, since `λ_j > 0` is what
+separates a support from a face containing it. `feasible_primrec₂` is uniform in the
+dimension, which the fixed-dimension form is not and which the compiler needs.
+
+`ProjectorGenerator` is the executable generator. Its system is linear because introducing
+the barycentric weights together with **one auxiliary scalar** `c := ⟪x − q, q⟫` cancels
+both quadratic terms at once; `c` is a free variable of the system and is *forced* rather
+than assumed, which `cOf_eq_of_holds` proves by summing the support's residual equations
+against the weights. The construction is **doubly exponential in the fragment dimension**
+and no better bound is claimed.
+
+`EffectiveRepresentation` writes the whole pipeline a second time over raw, proof-free,
+non-dependent data. This was necessary because `projectorRep` takes a `Fragment` and a
+dependently-indexed `RationalPolytope`, neither of which is `Primcodable`: the obstruction
+was never that the generator is ineffective, but that its *type* is not one a computability
+statement can mention.
+
+`DeductiveRegion`, `DeductiveSchedule` and `DeductiveEffective` specialise to deductive
+coherence. The pass's last question was whether an extra effective-stage hypothesis is
+needed, since `DeductiveProcessComputation` gives a partial recursive program that merely
+*eventually* emits the stage, not `Primrec DP.D`. It is not. The compiler already carries
+the stage table as finite data — `decodedStageTable stages n = stages.getD n ∅` — and the
+source's own Trading Firm reads it that way; letting the enforcer's trade map and the
+schedule's representation read the day's stage too removes the need entirely.
+`deductive_end_to_end` therefore assumes nothing about the deductive process beyond the
+pinned source's own certificate.
+
+Upstream, `LIACompiler` gained a purely additive public section: twenty exported
+declarations, none of which changes an existing one, stated in the already-public
+`Sentence.atoms` / `sentenceBool` / `tableConsistent` / `supportSentenceList` vocabulary so
+that no caller has to rebuild the strong-recursion tower over the formula encoding.

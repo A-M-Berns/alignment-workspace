@@ -212,40 +212,25 @@ predicted.
 
 ### What is genuinely still open
 
-Two things, in different states.
+**Nothing that blocks the theorems of record.** Both items this section previously listed
+are closed.
 
-**1. An executable generator for the projector's max–min representation.** This is the one
-headline-blocking item; `FINAL_FORMALIZATION_STATUS.md` is the authority on it. The route
-is settled and the pieces are landing:
+*An executable generator for the projector's representation.* Closed.
+`MaxMinRepresentation.maxMin_of_family` takes the index family as an argument;
+`FourierMotzkin` decides rational linear feasibility in both directions and uniformly in
+the dimension; `ProjectorGenerator` builds the family and emits the `Rep`; and
+`EffectiveRepresentation` writes the pipeline a second time over raw data so that a
+`Primrec` statement can mention it. `compileOf_primrec` is the certificate.
 
-* `MaxMinRepresentation.maxMin_of_family` restates Ovchinnikov 4.1(a) with the index family
-  **supplied**, replacing the internal `Finset.univ.filter (fun T => ∃ y ∈ Γ, up y = T)`
-  that no primitive recursive function can evaluate.
-* `FourierMotzkin.lean` decides rational linear feasibility: `feasible_iff` in both
-  directions, with `<` and `≤` genuinely distinguished — the strict form is load-bearing,
-  since `λ_j > 0` is what separates a support from a face containing it. Equalities encode
-  as two non-strict constraints.
-* `feasible_primrec₂` gives the certificate **uniform in the dimension**. This matters and
-  the fixed-dimension form does not suffice: the compiler must be `Primrec₂` in
-  `(fragment, vertex data)`, and the ambient dimension `d + m + 1` is read off those
-  arguments. `feasible_primrec_comp` is the shape a caller applies.
-* What remains is the generator itself — building the constraint systems, deciding them,
-  and emitting `Rep`.
+*`Primrec` for the deductive region's enumeration.* Closed, and without the extra
+hypothesis it appeared to need. The five ingredients that were `private` upstream are now
+part of a purely additive public section, and `admissiblePatternsEff_primrec` uses them.
+The apparent need for `Primrec (fun n => DP.D n)` was an artifact of two of our own
+interfaces indexing by the date; the compiler already holds the stage table as finite data,
+and the source's own Trading Firm reads it that way.
 
-**2. `Primrec` for the deductive region's vertex enumeration.** Needed only for the
-*deductive specialization*'s computability, not for the generic headline. It reduces to
-`Primrec fun n => admissiblePatterns (DP.D n) (coords n)`, and thence to `Primrec` for
-`Sentence.atoms`, `sentenceBool` and `tableConsistent`. The pinned dependency proves
-precisely these at `LIACompiler.lean` 5279–5560 — `atomListTable_prim`,
-`formulaBoolStep_prim`, `formulaBoolDecoded_prim`, `sentenceBoolFromAtomList_prim`,
-`tableConsistentFromAtomList_prim` — and **all five are `private`**.
-
-This is the same category of blocker as Debt B: module visibility, not mathematics. Debt B
-was resolved by a purely additive public re-export upstream (`d89817bc`), and the identical
-remedy applies here. Note also that `Primcodable (Finset Sentence)` already exists
-(`LIACompiler.lean:2224`), so `Primrec DP.D` is directly statable; what
-`DeductiveProcessComputation` supplies is weaker, and that mismatch is recorded in
-`FINAL_FORMALIZATION_STATUS.md` §8.
+What remains is cost, not correctness: the generator is **doubly exponential in the
+fragment dimension**, which is stated rather than omitted.
 
 ### Verification
 
