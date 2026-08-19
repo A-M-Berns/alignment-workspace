@@ -41,6 +41,8 @@ open Workspace.Normativity.Contrib.ProjectionEnforcer
 open Workspace.Normativity.Contrib.DeductiveRegion
 open Workspace.Normativity.Contrib.RationalPolytope
 open Workspace.Normativity.Contrib.DeductiveSchedule
+open Workspace.Normativity.Contrib.EnforcedComputation
+open Workspace.Normativity.Contrib.EnforcedCompiler
 open Workspace.Normativity.Contrib.EffectiveRepresentation
 
 /-! ## The enumeration is primitive recursive
@@ -236,4 +238,103 @@ theorem isNearestPoint_deductiveReps (D : Finset Sentence) (coords : List Senten
           ip_congr (fun φ hφ => by rw [hval φ hφ]) (fun φ hφ => by rw [hval φ hφ])
       _ ≤ 0 := hbase.2 y hy'
 
+
+/-! ## The effective deductive schedule
+
+Everything the construction needs, from data the caller actually has: which sentences are
+priced, how closely, that each stage is propositionally satisfiable, and that the fragment
+and tolerance schedules are computable.  The *region* is not supplied — it is enumerated
+from the day's stage — and no computability assumption about the deductive process beyond
+the pinned source's own `DeductiveProcessComputation` appears anywhere. -/
+
+/-- **The effective deductive schedule.** -/
+def deductiveProjectionSchedule (coords : ℕ → List Sentence)
+    (nodup : ∀ n, (coords n).Nodup) (tol : ℕ → ℚ) (tol_pos : ∀ n, 0 < tol n) :
+    ProjectionSchedule where
+  coords := coords
+  nodup := nodup
+  tol := tol
+  tol_pos := tol_pos
+  reps := fun n D => deductiveReps D (coords n)
+  dflt := default
+
+/-- **Its effectiveness, from the fragment and tolerance schedules alone.**  The
+representation's computability is `deductiveReps_primrec`; nothing is assumed about the
+deductive process. -/
+def deductiveScheduleComputation (coords : ℕ → List Sentence)
+    (nodup : ∀ n, (coords n).Nodup) (tol : ℕ → ℚ) (tol_pos : ∀ n, 0 < tol n)
+    (hcoords : Primrec coords) (htol : Primrec tol) :
+    ProjectionScheduleComputation
+      (deductiveProjectionSchedule coords nodup tol tol_pos) where
+  coordsComputable := hcoords
+  tolComputable := htol
+  repsComputable := by
+    have h : Primrec fun z : ℕ × Finset Sentence => deductiveReps z.2 (coords z.1) :=
+      deductiveReps_primrec.comp Primrec.snd (hcoords.comp Primrec.fst)
+    exact h.to₂
+
+/-- **The theorem of record for deductive coherence.**
+
+The hypotheses are exactly: a deductive process carrying the pinned source's own
+computability certificate; a computable fragment schedule with no repeats; a computable
+schedule of strictly positive tolerances; and that every stage is propositionally
+satisfiable.  No region is supplied, no representation is supplied, and there is no
+computability assumption about the deductive process beyond `DeductiveProcessComputation`.
+
+The conclusion is the pinned source's own `IsLogicalInductor`, together with finite-time
+conformance at **every** date to the day's deductive region. -/
+theorem deductive_end_to_end (coords : ℕ → List Sentence)
+    (nodup : ∀ n, (coords n).Nodup) (tol : ℕ → ℚ) (tol_pos : ∀ n, 0 < tol n)
+    (hcoords : Primrec coords) (htol : Primrec tol)
+    {DP : DeductiveProcess} (process : DeductiveProcessComputation DP)
+    (hsat : ∀ n, ∃ v : PCWorld, v.ConsistentWith (DP.D n)) :
+    IsLogicalInductor
+        ((deductiveProjectionSchedule coords nodup tol tol_pos).market DP) DP ∧
+      ∀ n, dist2 ((deductiveProjectionSchedule coords nodup tol tol_pos).fragment n).toFinset
+          ((deductiveProjectionSchedule coords nodup tol tol_pos).market DP n)
+          (fun φ => ProjectionCompiler.repEval
+            ((deductiveProjectionSchedule coords nodup tol tol_pos).fragment n)
+            ((deductiveProjectionSchedule coords nodup tol tol_pos).rep n (DP.D n) φ)
+            ((deductiveProjectionSchedule coords nodup tol tol_pos).market DP n))
+        ≤ ((tol n : ℚ) : ℝ) := by
+  classical
+  set S := deductiveProjectionSchedule coords nodup tol tol_pos with hS
+  set q : ℕ → Sentence → ℝ := fun n φ =>
+    ProjectionCompiler.repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n) with hq
+  have hE : EffectiveEnforcerComputation S.enforcer :=
+    ProjectionEffective.effectiveEnforcer S
+      (deductiveScheduleComputation coords nodup tol tol_pos hcoords htol)
+  obtain ⟨hli, hconf, _⟩ :=
+    ProjectionSchedule.end_to_end_effective S process hE
+      (K := fun n y => DeductiveRegion.deductiveRegion (DP.D n) (coords n) y) (q := q)
+      (fun n u v huv hu =>
+        (DeductiveRegion.deductiveRegion_fragmentLocal (DP.D n) (coords n)
+          (fun φ hφ => huv φ (List.mem_toFinset.mpr hφ))).mp hu)
+      (fun n y hy φ hφ => by
+        have hmem : φ ∈ coords n := List.mem_toFinset.mp hφ
+        obtain ⟨i, hi⟩ := List.mem_iff_get.mp hmem
+        have h := DeductiveRegion.deductiveRegion_subset_cube (DP.D n) (coords n) hy i
+        have hval : DeductiveRegion.restrictTo (coords n) y i = y φ := by
+          rw [← hi]
+          rfl
+        rw [hval] at h
+        exact ⟨h.1, h.2⟩)
+      (fun n => isNearestPoint_deductiveReps (DP.D n) (coords n) (nodup n) (hsat n)
+        (S.market DP n))
+      (fun _ _ _ => rfl)
+      (fun n v hv =>
+        DeductiveRegion.payout_mem_deductiveRegion (DP.D n) (coords n) v hv)
+  exact ⟨hli, hconf⟩
+
 end Workspace.Normativity.Contrib.DeductiveEffective
+
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.contextAtoms_primrec
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.admissiblePatternsEff_primrec
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.vertexData_deductivePolytopeEff
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.deductiveReps_primrec
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.repEval_deductiveReps
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.carrier_deductivePolytopeEff
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.mem_carrier_iff_deductiveRegion
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.isNearestPoint_deductiveReps
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.deductiveScheduleComputation
+#print axioms Workspace.Normativity.Contrib.DeductiveEffective.deductive_end_to_end
