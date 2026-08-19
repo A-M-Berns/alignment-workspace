@@ -62,10 +62,13 @@ def FinGroup.toGroup (coords : List Sentence) (g : FinGroup) : Group :=
 def FinRep.toRep (coords : List Sentence) (r : FinRep) : Rep :=
   (FinGroup.toGroup coords r.1, r.2.map (FinGroup.toGroup coords))
 
-/-- The representation attached to a priced sentence by its position in the fragment. -/
+/-- The representation attached to a priced sentence by its position in the fragment.
+Positional rather than by association list: `List.idxOf` and `List.getD` both have
+primitive-recursive certificates, which an association lookup does not, and on a
+duplicate-free fragment with aligned data the two agree. -/
 def repAt (coords : List Sentence) (reps : List FinRep) (dflt : FinRep) :
     Sentence → Rep :=
-  fun φ => FinRep.toRep coords (((coords.zip reps).lookup φ).getD dflt)
+  fun φ => FinRep.toRep coords (reps.getD (coords.idxOf φ) dflt)
 
 /-! ## The schedule
 
