@@ -316,7 +316,124 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   the single record. *Cost of not deciding:* a stated requirement that nothing checks
   and that history does not uniformly satisfy.
 
+- **Rule on the provisional names from the projection round.** `projection enforcement
+  trader`, `projection position`, `intrinsic Euclidean conformance`, `per-date
+  admission`, `cube extension of the market-maker contract`, **`market resistance`** for
+  `ρ_n = ε_n + A_n`, and **`calibrated intensity`** for `λ_n = ρ_n/δ_n²`; plus the Lean
+  names `IsNearestPoint`, `Realizes`, `Fragment`, `cumValue`, `FragmentLocal`, `extend`,
+  `EffectiveEnforcer`, `ProjectionSchedule`, `FinAffine`. They are deliberately absent
+  from `state/vocabulary.json`. *Doing it* is reading
+  `.../2026-08-18-projection-enforcement/THEOREM_MAP.md`. *Waiting* costs nothing today
+  and leaves seven Lean files carrying names marked provisional under `AGENTS.md` §6.
+
+- **Merge the upstream pull request, or rule against it.**
+  `A-M-Berns/Formalized-Agent-Foundations` #2 adds a public section to `LIACompiler.lean`
+  re-exporting eleven existing private lemmas; it is branched from the old pin, so the
+  dependency delta is exactly that. `lean/lakefile.toml` is already bumped to
+  `d89817bc15d23c663d0520e3a854d6d02374074d` and CI builds the whole tree against it in
+  3m17s of a 25-minute budget. *Doing it* is merging #2, after which the pin can move to a
+  descendant of `main` at leisure. *Waiting* leaves this repository pinned to a branch
+  rather than to a merged commit, which is the only irregularity in the arrangement — the
+  code itself is already load-bearing here.
+
+- **Decide whether the projection results are worth registering as claims.** Ninety-nine
+  kernel-checked, axiom-clean results across seven files, plus twelve exact-arithmetic
+  Python tests, none answering a filed `PRIORITIES.md` item, so none registered — the
+  same posture as the traderized-enforcement inequalities above. *Doing it* is filing
+  the item they answer. *Waiting* costs nothing; the files are green and the theorem
+  map is honest about the one external hypothesis.
+
+- **Whether the deductive coherence region's vertex construction is registered, and
+  against which item.** `lean/Workspace/Normativity/Contrib/DeductiveRegion.lean`
+  proves the day-`n` region of a stage is a computable finite rational vertex list,
+  sound and complete about worlds, with the exact satisfiability hypothesis for
+  nonemptiness. It is `lean-proved` material sitting in a contribution namespace and
+  registered nowhere, because nothing enters the registry unasked. Item 42 is
+  adjacent but is *not* answered by it — that item asks for a polynomially
+  presentable row family, and this supplies the vertex set its baseline is computed
+  from. *Cost of deciding now:* low — either file an item and register the
+  declarations, or leave it as round evidence. *Cost of not deciding:* a kernel-checked
+  result that downstream work cannot cite as a registered claim.
+  `projects/normativity/rounds/2026-08-19-deductive-region/README.md`.
+
+- **Names for the deductive region's constructions.** Provisional under standard 6:
+  `admissiblePatterns`, `deductiveRegion`, `deductiveVertices`, `regionContext`,
+  `contextList`, `fragmentAtoms`, `tableOf`, `restrictTo`, `vertex`, `extend`. The
+  one worth a ruling is `admissiblePatterns` — the objects are the region's vertices,
+  and "pattern" was chosen to keep the `{0,1}` reading visible at the fragment.
+  *Cost of deciding now:* low, nothing downstream cites them yet. *Cost of not
+  deciding:* they harden as soon as something does.
+
+- **Whether the max–min development is promoted, and how it reaches the projection
+  compiler.** `lean/Workspace/Normativity/Contrib/MaxMinRepresentation.lean` closes
+  Ovchinnikov's theorem in the kernel, which is the second of the two external facts
+  `ProjectionCompiler.lean` cites on the `projection-enforcement` branch. Three linked
+  items: whether the names (`IsPiecewiseAffineOn`, `exists_maxMin_representation`,
+  `exists_le_and_le`, `exists_le_of_le_of_forall_selects`, the namespace) are
+  confirmed or renamed; whether the result is promoted to a statement of record with a
+  registered claim, which needs a `PRIORITIES.md` item since nothing enters the
+  registry unasked; and who writes the adapter from `Finset.sup'`/`Finset.inf'` to
+  `ProjectionCompiler.Rep`'s nested lists, since that edit belongs to the projection
+  branch, which this round was scoped out of. *Cost of deciding now:* low — a naming
+  ruling plus a sequencing call between two open pull requests. *Cost of not deciding:*
+  the projection compiler keeps carrying as a hypothesis something that is proved two
+  files away, and the theorem sits unregistered in a contribution namespace.
+
 ## Settled
+
+### 2026-08-18 — the modified market's computability is discharged, via an additive upstream export
+
+`ComputableMarket` is no longer a premise of the traderized-deduction chain, and the object
+that replaced it is constructed rather than assumed. The blocker was module visibility:
+`marketMakerSearchUpToTradeList_prim`, `tradingFirmTradesFromStageTradeLists_prim` and
+`efAbsBound_prim` are `private` in the pinned dependency's `LIACompiler.lean`, and that file
+carries 398 private declarations, so re-deriving them downstream would have meant
+re-deriving the file.
+
+The resolution is an upstream section that re-exports those ingredients publicly and changes
+nothing else — no definition, statement or proof above it is touched, so nothing that built
+before can break. The recurrence itself is deliberately *not* exported: a downstream
+construction states and proves its own, which is where its soundness obligation belongs.
+
+Statements of record: `Workspace.Normativity.Contrib.EnforcedCompiler.computableMarket`,
+`.isLogicalInductor`, `.ProjectionSchedule.end_to_end_effective`. The one standing
+hypothesis, `Primrec₂ E.trades` (`EffectiveEnforcerComputation`), is the definition of an
+effective enforcer and sits where `DeductiveProcessComputation` sits upstream.
+
+### 2026-08-18 — projection is the paper's traderization construction
+
+Enforcement of a quantitative price region is by the **projection trader**, which holds
+`λ_n(proj_{K_n}(P_n) − P_n)` on the day's fragment. The row construction is retained as
+the simpler special case, as the comparison, and as the source of the
+presentation-dependence observation; nothing about it is deleted or weakened, and for a
+single halfspace the two are the same trader. `DistanceComplete` and the `d_∞` dual route
+leave the critical path, because the paper's `ℓ^∞` conclusion follows from the Euclidean
+one at the same tolerance.
+
+Three consequences settled with it.
+
+**The canonical intensity is calibrated, not merely bounded below.** The construction uses
+`ρ_n = ε_n + A_n` and `λ_n = ρ_n/δ_n²` exactly, so the paper-facing budget carries no free
+parameter and its day charge is `(ρ_n/δ_n)·d₂(W|_{Φ_n}, K_n)`. The identity
+`λ_nδ_n = ρ_n/δ_n` holds only at that value; the general free-`λ` theorem is kept as a
+supporting result.
+
+**The cube-extension correction is accepted.** The market maker's day contract is applied
+at a point of the region, which is not a world; that extension is justified by affineness
+of a strategy's value together with the cube being the convex hull of the `{0,1}`
+assignments on the traded support. The point actually fed to the contract is the fragment
+target extended off the fragment by the displayed prices — a device for one inequality,
+not a credence. The credal conclusion concerns the fragment projection only.
+
+**The per-date-admission correction is accepted.** Zero risk capital follows from
+admission by every region up to the horizon, not from world-inclusivity plus global
+nesting; global nesting is a sufficient condition for it. The weakening to admission at
+the final date is false, and there is a witness.
+
+Statements of record: `Workspace.Normativity.Contrib.Projection{Force,Market,Compiler,
+Budget,Calibrated,Enforcer}` and `Workspace.Normativity.Contrib.EnforcedComputation`.
+Round: `projects/normativity/rounds/2026-08-18-projection-enforcement`.
+
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
 
