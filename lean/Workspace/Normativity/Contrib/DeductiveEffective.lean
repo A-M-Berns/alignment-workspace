@@ -115,6 +115,11 @@ def deductivePolytopeEff (D : Finset Sentence) (coords : List Sentence)
     refine (admissiblePatternsEff_ne_nil_iff D coords).mpr hD ?_
     simpa using h
 
+@[simp] lemma verts_deductivePolytopeEff (D : Finset Sentence) (coords : List Sentence)
+    (hD : ∃ v : PCWorld, v.ConsistentWith D) :
+    (deductivePolytopeEff D coords hD).verts
+      = (admissiblePatternsEff D coords).map (ratVertex coords) := rfl
+
 /-- **The vertex data is the enumeration itself.** -/
 theorem vertexData_deductivePolytopeEff (D : Finset Sentence) (coords : List Sentence)
     (hD : ∃ v : PCWorld, v.ConsistentWith D) :
@@ -150,5 +155,85 @@ theorem repEval_deductiveReps (D : Finset Sentence) (coords : List Sentence)
           ⟨coords.idxOf φ, List.idxOf_lt_length_of_mem hφ⟩ := by
   have h := repEval_compileOf ⟨coords, nodup⟩ (deductivePolytopeEff D coords hD) hφ p
   rwa [vertexData_deductivePolytopeEff D coords hD] at h
+
+
+/-! ## The region is the deductive region
+
+The effective enumeration and the kernel-facing one have the same members, so the polytopes
+they build have the same vertex set and hence the same carrier.  Membership in that carrier
+is `DeductiveRegion.deductiveRegion`, which is what `DeductiveSchedule` already established
+for the kernel-facing polytope. -/
+
+theorem vertexSet_deductivePolytopeEff (D : Finset Sentence) (coords : List Sentence)
+    (hD hD' : ∃ v : PCWorld, v.ConsistentWith D) :
+    (deductivePolytopeEff D coords hD).vertexSet
+      = (DeductiveSchedule.deductivePolytope D coords hD').vertexSet := by
+  unfold RationalPolytope.vertexSet
+  congr 1
+  ext v
+  simp only [Set.mem_setOf_eq, verts_deductivePolytopeEff,
+    DeductiveSchedule.verts_deductivePolytope, List.mem_map]
+  constructor
+  · rintro ⟨w, hw, rfl⟩
+    exact ⟨w, (mem_admissiblePatternsEff_iff_mem_admissiblePatterns D coords).mp hw, rfl⟩
+  · rintro ⟨w, hw, rfl⟩
+    exact ⟨w, (mem_admissiblePatternsEff_iff_mem_admissiblePatterns D coords).mpr hw, rfl⟩
+
+theorem carrier_deductivePolytopeEff (D : Finset Sentence) (coords : List Sentence)
+    (hD hD' : ∃ v : PCWorld, v.ConsistentWith D) :
+    (deductivePolytopeEff D coords hD).carrier
+      = (DeductiveSchedule.deductivePolytope D coords hD').carrier := by
+  unfold RationalPolytope.carrier
+  rw [vertexSet_deductivePolytopeEff D coords hD hD']
+
+/-- **Membership in the day's region is the deductive region.** -/
+theorem mem_carrier_iff_deductiveRegion (D : Finset Sentence) (coords : List Sentence)
+    (nodup : coords.Nodup) (hD : ∃ v : PCWorld, v.ConsistentWith D) (p : Sentence → ℝ) :
+    ProjectionBridge.restrict ⟨coords, nodup⟩ p ∈ (deductivePolytopeEff D coords hD).carrier
+      ↔ DeductiveRegion.deductiveRegion D coords p := by
+  rw [carrier_deductivePolytopeEff D coords hD hD]
+  exact DeductiveSchedule.toLp_mem_carrier_iff D coords hD (DeductiveRegion.restrictTo coords p)
+
+/-- Both slots of the fragment inner product read only the fragment. -/
+private lemma ip_congr {Φ : Finset Sentence} {u u' v v' : Sentence → ℝ}
+    (hu : ∀ φ ∈ Φ, u φ = u' φ) (hv : ∀ φ ∈ Φ, v φ = v' φ) :
+    ip Φ u v = ip Φ u' v' :=
+  Finset.sum_congr rfl fun φ hφ => by rw [hu φ hφ, hv φ hφ]
+
+/-- **The representation's value is the region's nearest point.** -/
+theorem isNearestPoint_deductiveReps (D : Finset Sentence) (coords : List Sentence)
+    (nodup : coords.Nodup) (hD : ∃ v : PCWorld, v.ConsistentWith D) (p : Sentence → ℝ) :
+    IsNearestPoint (⟨coords, nodup⟩ : ProjectionCompiler.Fragment).toFinset
+      (fun y => DeductiveRegion.deductiveRegion D coords y) p
+      (fun φ => ProjectionCompiler.repEval ⟨coords, nodup⟩
+        (repAt coords (deductiveReps D coords) default φ) p) := by
+  classical
+  set F : ProjectionCompiler.Fragment := ⟨coords, nodup⟩ with hF
+  set K := deductivePolytopeEff D coords hD with hK
+  set q' : Sentence → ℝ := fun φ =>
+    ProjectionCompiler.repEval F (repAt coords (deductiveReps D coords) default φ) p with hq'
+  have hval : ∀ φ ∈ F.toFinset, q' φ = ConstraintSchedule.target F K p φ := by
+    intro φ hφ
+    have hmem : φ ∈ F.coords := List.mem_toFinset.mp hφ
+    show ProjectionCompiler.repEval F
+      (repAt coords (deductiveReps D coords) default φ) p = _
+    rw [repEval_deductiveReps D coords nodup hD hmem p]
+    exact (ConstraintSchedule.target_mem F K p hmem).symm
+  have hbase := ConstraintSchedule.isNearestPoint_target F K p
+  refine ⟨?_, ?_⟩
+  · have h1 : ProjectionBridge.restrict F q' = ProjectionBridge.restrict F
+        (ConstraintSchedule.target F K p) := ConstraintSchedule.restrict_congr hval
+    refine (mem_carrier_iff_deductiveRegion D coords nodup hD q').mp ?_
+    rw [h1]
+    exact hbase.1
+  · intro y hy
+    have hy' : ConstraintSchedule.regionPred F K y :=
+      (mem_carrier_iff_deductiveRegion D coords nodup hD y).mpr hy
+    refine le_of_le_of_eq ?_ (rfl : (0 : ℝ) = 0)
+    calc ip F.toFinset (fun φ => p φ - q' φ) (fun φ => y φ - q' φ)
+        = ip F.toFinset (fun φ => p φ - ConstraintSchedule.target F K p φ)
+            (fun φ => y φ - ConstraintSchedule.target F K p φ) :=
+          ip_congr (fun φ hφ => by rw [hval φ hφ]) (fun φ hφ => by rw [hval φ hφ])
+      _ ≤ 0 := hbase.2 y hy'
 
 end Workspace.Normativity.Contrib.DeductiveEffective
