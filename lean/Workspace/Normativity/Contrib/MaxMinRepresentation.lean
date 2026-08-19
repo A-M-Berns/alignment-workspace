@@ -532,6 +532,7 @@ theorem maxMin_hypotheses_nonvacuous :
 
 end Workspace.Normativity.Contrib.MaxMin
 
+#print axioms Workspace.Normativity.Contrib.MaxMin.affine_apply_eq_slope
 #print axioms Workspace.Normativity.Contrib.MaxMin.affine_eq_of_ne
 #print axioms Workspace.Normativity.Contrib.MaxMin.affine_le_of_lt_of_le
 #print axioms Workspace.Normativity.Contrib.MaxMin.exists_forall_eq_of_isPreconnected

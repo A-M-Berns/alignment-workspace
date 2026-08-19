@@ -38,7 +38,7 @@ Hypotheses of the main theorem: `Convex ℝ Γ`, `Γ.Nonempty`,
 `IsPiecewiseAffineOn Γ f g`, `Finite ι`. Nothing else.
 
 Re-verify: `cd lean && lake build`, then `python3 tests/audit_axioms.py`. Each
-declaration's `#print axioms` line is at the foot of the file; all fourteen audit to
+declaration's `#print axioms` line is at the foot of the file; all fifteen audit to
 `[propext, Classical.choice, Quot.sound]`.
 
 ## How the proof differs from the source
