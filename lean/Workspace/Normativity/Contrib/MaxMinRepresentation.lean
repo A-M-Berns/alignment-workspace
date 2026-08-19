@@ -376,6 +376,67 @@ theorem exists_maxMin_representation [Finite ι] {Γ : Set E} {f : E → ℝ}
     exact (Finset.inf'_le _ hiS).trans hix
 
 
+/-! ## The representation from a supplied family
+
+`exists_maxMin_representation` builds its index family internally as
+`Finset.univ.filter (fun T => ∃ y ∈ Γ, up y = T)`, an existential over the whole domain.
+That is fine for an existence statement and fatal for an algorithm: nothing primitive
+recursive can evaluate it.  The theorem below is the same result with the family taken as
+an argument, so that a generator which *computes* a family and *proves* the two conditions
+below obtains the representation without the internal filter.
+
+The two conditions are exactly what the proof of `exists_maxMin_representation` used, and
+they are weaker than `S j = up y` in opposite directions — which is what makes them
+checkable.  Writing `up y = {i | f y ≤ g i y}`:
+
+* `hsound` asks each `S j` to *contain* some realised `up y`.  Enlarging `S j` shrinks its
+  `inf'`, so this is the direction that keeps the max below `f`.
+* `hcomplete` asks that every point of the domain be *covered* by some `S j` contained in
+  its own `up x`.  Shrinking `S j` raises its `inf'`, so this is the direction that lifts
+  the max up to `f`.
+
+Neither condition mentions attainment, and `S j = up y_j` for a family of points meeting
+every realised value satisfies both.  Nonemptiness of each `S j` is a hypothesis rather
+than a consequence because `inf'` needs it. -/
+
+/-- **Theorem 4.1(a) with the index family supplied.**  Any family satisfying the two
+containment conditions represents `f` as a maximum of minima of its components. -/
+theorem maxMin_of_family [Finite ι] {Γ : Set E} {f : E → ℝ} {g : ι → E →ᵃ[ℝ] ℝ}
+    (hΓ : Convex ℝ Γ) (hf : IsPiecewiseAffineOn Γ f g)
+    {m : ℕ} (S : Fin (m + 1) → Finset ι) (hS : ∀ j, (S j).Nonempty)
+    (hsound : ∀ j, ∃ y ∈ Γ, ∀ i, f y ≤ g i y → i ∈ S j)
+    (hcomplete : ∀ x ∈ Γ, ∃ j, ∀ i ∈ S j, f x ≤ g i x) :
+    ∀ x ∈ Γ, f x = Finset.univ.sup' Finset.univ_nonempty
+      fun j => (S j).inf' (hS j) fun i => g i x := by
+  classical
+  intro x hx
+  refine le_antisymm ?_ ?_
+  · obtain ⟨j, hj⟩ := hcomplete x hx
+    refine le_trans ?_ (Finset.le_sup'
+      (fun j => (S j).inf' (hS j) fun i => g i x) (Finset.mem_univ j))
+    exact Finset.le_inf' _ _ fun i hi => hj i hi
+  · refine Finset.sup'_le _ _ fun j _ => ?_
+    obtain ⟨y, hy, hyj⟩ := hsound j
+    obtain ⟨i, hix, hiy⟩ := exists_le_and_le hΓ hf hx hy
+    exact (Finset.inf'_le _ (hyj i hiy)).trans hix
+
+/-- **The internal family satisfies the two conditions.**  Stated so that a generator can
+be checked against the existence proof: taking `S j` to be a realised `up y` discharges
+`hsound` by `rfl` and `hcomplete` at `x` by exhibiting the index whose set is `up x`. -/
+theorem maxMin_of_upSets [Finite ι] {Γ : Set E} {f : E → ℝ} {g : ι → E →ᵃ[ℝ] ℝ}
+    [DecidableEq ι] [Fintype ι] (hΓ : Convex ℝ Γ) (hf : IsPiecewiseAffineOn Γ f g)
+    {m : ℕ} (y : Fin (m + 1) → E) (hy : ∀ j, y j ∈ Γ)
+    (hS : ∀ j, (Finset.univ.filter fun i => f (y j) ≤ g i (y j)).Nonempty)
+    (hcov : ∀ x ∈ Γ, ∃ j, ∀ i, f (y j) ≤ g i (y j) → f x ≤ g i x) :
+    ∀ x ∈ Γ, f x = Finset.univ.sup' Finset.univ_nonempty
+      fun j => (Finset.univ.filter fun i => f (y j) ≤ g i (y j)).inf' (hS j)
+        fun i => g i x :=
+  maxMin_of_family hΓ hf _ hS
+    (fun j => ⟨y j, hy j, fun i hi => Finset.mem_filter.mpr ⟨Finset.mem_univ i, hi⟩⟩)
+    (fun x hx => by
+      obtain ⟨j, hj⟩ := hcov x hx
+      exact ⟨j, fun i hi => hj i (Finset.mem_filter.mp hi).2⟩)
+
 /-! ## The converse
 
 Theorem 4.1(b).  Proved by Aristotle (Harmonic) from the statement and outline in
@@ -540,6 +601,8 @@ end Workspace.Normativity.Contrib.MaxMinRepresentation
 #print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.continuousOn_of_isPiecewiseAffineOn
 #print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.exists_le_and_le
 #print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.exists_maxMin_representation
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.maxMin_of_family
+#print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.maxMin_of_upSets
 #print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.isPiecewiseAffineOn_maxMin
 #print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.abs_isPiecewiseAffineOn
 #print axioms Workspace.Normativity.Contrib.MaxMinRepresentation.maxMin_hypotheses_nonvacuous

@@ -182,6 +182,150 @@ Built against the pinned dependency's public computability interface
 `processStagePrefixAtFuel_primrec`, `rationalBeliefStateQuote_primrec`), which the pin
 `d89817bc` adds purely additively.
 
+## `ProjectionPrimrec.lean` — the compiler's syntax is primitive recursive
+
+Positional reimplementations of the compiler's constructors, each proved equal to the
+original by `rfl` and then proved `Primrec`. The `_eq` lemmas are what keep the semantic
+development and the effective one from drifting apart.
+
+| paper | Lean |
+| --- | --- |
+| the derived `EF` constructors are effective | `efNeg_primrec`, `efMin_primrec` |
+| the day's absolute bound is effective | `tradeListAbsBound_primrec` |
+| the resistance and the calibrated intensity are effective | `resistance_primrec`, `calibratedIntensity_primrec` |
+| an affine form, a group, a representation and a coefficient compile effectively | `affineEFof_primrec`, `groupEFof_primrec`, `repEFof_primrec`, `coefEFof_primrec` |
+| each positional form is the original | `affineEFof_eq`, `groupEFof_eq`, `repEFof_eq`, `coefEFof_eq` |
+
+## `ProjectionEffective.lean` — the enforcer's effectiveness, derived not assumed
+
+| paper | Lean |
+| --- | --- |
+| the schedule's enforcer is effective, from the schedule's own computability | `scheduleTrades_primrec` |
+| the certificate `EnforcedCompiler` consumes | `effectiveEnforcer` |
+| the modified market of a computable schedule is computable, with no leftover premise | `computableMarket_of_schedule` |
+| the theorem of record with the enforcer's effectiveness discharged | `end_to_end_of_computation` |
+
+## `RationalPolytope.lean` — the region as vertex data
+
+The V-representation is chosen deliberately: the deductive region arrives as a vertex
+list, so no facet enumeration is needed, and the nearest-point certificate reduces to the
+vertices by convexity, so no Farkas lemma is needed. `COMPARISON.md` records the call.
+
+| paper | Lean |
+| --- | --- |
+| a region presented by finitely many rational vertices | `RationalPolytope`, `vertexSet`, `carrier` |
+| it is nonempty, convex, compact and complete | `carrier_nonempty`, `carrier_convex`, `carrier_isCompact`, `carrier_isComplete` |
+| the nearest point exists | `exists_nearest`, `proj_mem`, `proj_norm_eq_iInf` |
+| the variational inequality | `proj_variational` |
+| **checking the vertices suffices** — what replaces Farkas | `forall_carrier_of_forall_vertexSet`, `eq_proj_of_vertexSet` |
+| a region of credences stays in the cube | `carrier_mem_cube` |
+
+## `PolyhedralProjection.lean` — the projector's affine pieces, computably
+
+`gramInvQ` is written as `det⁻¹ • adjugate` rather than through `Ring.inverse` precisely
+so that the piece stays a computable rational matrix.
+
+| paper | Lean |
+| --- | --- |
+| a face, its direction span and its Gram matrix | `Face`, `dirQ`, `gramQ`, `gram_eq_map` |
+| the face is regular exactly when its directions are independent | `Regular`, `regular_of_linearIndependent` |
+| the rational inverse Gram matrix | `gramInvQ`, `gramInvQ_mul`, `coefQ` |
+| **the affine piece attached to a face** | `piece`, `candidate`, `candidate_apply_eq` |
+| it is the unique point of the face's affine hull with the right inner products | `candidate_unique`, `gramInv_mul_gram_real` |
+| active weights force orthogonality — only positivity is used, not affine independence | `inner_eq_zero_of_active` |
+| the cell where the piece *is* the projection, defined by its certificate | `cell`, `candidate_eq_proj_of_mem_cell`, `isClosed_cell` |
+
+## `MaxMinRepresentation.lean` — Ovchinnikov Theorem 4.1
+
+| paper | Lean |
+| --- | --- |
+| piecewise affine, with the components taken as data | `IsPiecewiseAffineOn` |
+| such a function is continuous — the source asserts this without proof | `continuousOn_of_isPiecewiseAffineOn` |
+| Lemma 4.1 | `exists_le_and_le` |
+| **Theorem 4.1(a)**: a max of mins of the components | `exists_maxMin_representation` |
+| Theorem 4.1(b), the converse | `isPiecewiseAffineOn_maxMin` |
+| **4.1(a) with the index family supplied** — the form an algorithm can use | `maxMin_of_family`, `maxMin_of_upSets` |
+| the source's Definition 2.1 uniqueness gap, with a witness | `segment_hypotheses` |
+
+`maxMin_of_family` exists because `exists_maxMin_representation` builds its family as
+`Finset.univ.filter (fun T => ∃ y ∈ Γ, up y = T)`, an existential over the whole domain
+that nothing primitive recursive can evaluate. It replaces that filter with two
+containment conditions on a supplied family, weaker than `S j = up y` in opposite
+directions and therefore checkable.
+
+## `PolyhedralCoverage.lean` — the projector is piecewise affine
+
+| paper | Lean |
+| --- | --- |
+| every point lies in some regular face's cell | `exists_face_mem_cell`, `exists_face_sublist_mem_cell` |
+| the enumerated faces, as a computable list | `faceList`, `mem_faceList` |
+| **the projector is piecewise affine in the sense Theorem 4.1 needs** | `isPiecewiseAffineOn_proj` |
+| hence each coordinate is a max of mins of rational affine forms | `exists_maxMin_proj` |
+| the cover is not vacuous | `coverage_nonvacuous`, `faceList_unitSegment_ne_nil` |
+
+This establishes a **cover** only: not disjoint interiors, not normal cones, not
+full-dimensionality. `IsPiecewiseAffineOn` asks for a finite closed cover with agreement
+on each piece, which is exactly what is proved, but a reader wanting "the projection's
+linearity regions" does not get them here.
+
+## `DeductiveRegion.lean` — the region from the source data
+
+| paper | Lean |
+| --- | --- |
+| the `{0,1}` patterns a stage leaves plausible, as an explicit finite list | `admissiblePatterns` (a `def`, brute-force, no `native_decide`) |
+| every listed pattern is a real world's payout | `admissiblePatterns_sound` |
+| every plausible world's payout is listed | `admissiblePatterns_complete` |
+| the list is nonempty exactly when the stage is satisfiable | `admissiblePatterns_ne_nil_iff`, `admissiblePatterns_nonempty` |
+| the patterns are cube-valued and fragment-length | `admissiblePatterns_mem_cube`, `admissiblePatterns_length` |
+| the deductive coherence region | `deductiveVertices`, `deductiveRegion` |
+| **§10.4 every deductively plausible world is admitted** — what buys zero liability | `payout_mem_deductiveRegion` |
+| the region is fragment-local and inside the cube | `deductiveRegion_fragmentLocal`, `deductiveRegion_subset_cube` |
+| it is the convex hull of the listed patterns | `deductiveRegion_eq_convexHull` |
+
+## `ProjectionBridge.lean` — geometry into compiler syntax
+
+| paper | Lean |
+| --- | --- |
+| a price vector as a point of the fragment's coordinate space | `restrict`, `restrict_apply` |
+| the geometry's affine form as the compiler's | `ofGeom`, `coeff_ofGeom`, `evalR_ofGeom` |
+| the compiler's fold agrees with the lattice operations | `foldr_min_eq_inf'`, `foldr_max_eq_sup'` |
+| a max–min in the compiler's `Rep` syntax | `groupOf`, `repOf`, `groupEval_groupOf`, `repEval_repOf` |
+| **a correct representation exists, per coordinate and uniformly** | `exists_rep_repEval`, `exists_repMap`, `exists_repMap_mem` |
+| the bridge is not vacuous | `unitFragment`, `bridge_nonvacuous` |
+
+`exists_repMap_mem` is an existence statement built with `choose`; its output is **not**
+computable data. That is the one break in the chain, and `FINAL_FORMALIZATION_STATUS.md`
+§3 locates it exactly.
+
+## `ConstraintSchedule.lean` — the paper-facing input interface
+
+The input is a schedule of regions and nothing else. The region predicate, the target,
+the nearest-point property, the cube bound and the fragment-locality are all *derived*.
+
+| paper | Lean |
+| --- | --- |
+| the fragment inner product is the Euclidean one | `ip_eq_inner` |
+| a schedule of rational convex constraints — the whole input | `RationalConstraintSchedule` |
+| the region as a constraint on prices, fragment-local and cube-valued | `regionPred`, `fragmentLocal_regionPred`, `regionPred_mem_cube` |
+| the day's target is *defined* as the projection, not supplied | `target`, `isNearestPoint_target` |
+| the region as flat data a `Primrec` statement can mention | `vertexData`, `Computation` |
+| a correct max–min representation of the projectors | `RegionRepresentation` |
+| **it exists for every schedule** | `exists_representation`, `canonicalRepresentation` |
+| the one implementation artifact: that it is *computed* | `RegionRepresentation.Effective` |
+| **§10.6 conformance, with no hypotheses at all** | `conformance_of_constraints` |
+| **§10.6 the criterion, with no hypotheses at all** | `criterion_of_constraints` |
+| §11 eventual coherence, needing no effectiveness | `eventual_coherence_of_constraints` |
+| **the theorem of record from constraint data** | `end_to_end_of_constraints` |
+| the hypotheses are satisfiable, degenerately and not | `hypotheses_nonvacuous`, `hypotheses_nonvacuous_nondegenerate` |
+
+`intervalSchedule` / `intervalRepresentation` / `intervalEffective` are a worked
+one-dimensional instance in which `Effective` **is** discharged, by `clampRep` — the
+representation of `max 0 (min 1 x)`, which is exactly the projection onto `[0,1]`. It
+shows the structure is inhabited and the gap is not a disguised impossibility. It does
+**not** show the general case is within reach: that schedule's region never changes, so
+its `compile` is constant in both arguments and the enumeration the general case needs is
+absent. What is missing is uniformity, and a constant witness cannot supply it.
+
 ## What is reused unchanged from the merged row work
 
 `no_efficient_trader_exploits_of_projection` is
