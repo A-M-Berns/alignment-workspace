@@ -6,6 +6,17 @@
 | `SurgicalRepairBound.lean` | `prompts/2026-08-13-crown-jewel-learning-theorem-refinement/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-13 | `prompts/2026-08-13-crown-jewel-learning-theorem-refinement/` | — |
 | `TraderizedEnforcement.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-16/17 | `prompts/2026-08-16-traderized-enforcement/` | — |
 | `AssessmentProcess.lean`, `AssessmentFirm.lean`, `AssessmentProperties.lean`, `EnforcementStrategy.lean`, `EnforcementPreservation.lean`, `DeductiveEnforcement.lean`, `CoherenceModulus.lean`, `IntrinsicCoherence.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-16-traderized-enforcement/` | — |
+| `MaxMinRepresentation.lean` | `prompts/2026-08-18-maxmin-representation/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-18-maxmin-representation/` | — |
+
+`MaxMinRepresentation.lean` proves Ovchinnikov's max–min representation theorem
+(Beiträge zur Algebra und Geometrie 43 (2002) 297–302, Theorem 4.1) for a piecewise
+affine function on a nonempty convex subset of a topological real vector space, in
+both directions, together with its Lemma 4.1, the continuity of a piecewise affine
+function on a closed domain, and an inhabitation witness. It is the only file here
+that formalizes an external theorem rather than taking one as a hypothesis. One
+declaration in it, `isPiecewiseAffineOn_maxMin` (the converse direction), was proved
+by Harmonic's Aristotle from a statement and proof outline written here, then
+reviewed and rebuilt locally; every other proof in the file is the executor's.
 
 `PhiRegretBridge.lean` proves the eight-element cardinality, a generic
 finite-horizon regret-preservation lemma, and the recurrent-failure lower bound.
