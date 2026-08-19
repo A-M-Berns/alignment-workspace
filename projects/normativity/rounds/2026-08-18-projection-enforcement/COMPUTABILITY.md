@@ -197,16 +197,55 @@ definition of "the enforcer is given as effective data", and it sits exactly whe
 its inputs are. An `EffectiveEnforcer`'s type already forbids it from seeing the day's
 price; this says its syntax-to-syntax map is effective.
 
+### What that section used to say, and why it no longer says it
+
+An earlier draft listed `Primrec₂ S.enforcer.trades` for the projection schedule as open,
+pending `Primrec` certificates for the `EF` construction and a presentation of `affineEF`
+not routed through `AffineForm.coeff` (a function on sentences, hence not `Primcodable`).
+**That is now closed.** `ProjectionPrimrec.lean` supplies positional reimplementations —
+`affineEFof`, `groupEFof`, `repEFof`, `coefEFof` — each proved equal to the original by
+`rfl` and then proved `Primrec`, together with `tradeListAbsBound_primrec`,
+`resistance_primrec` and `calibratedIntensity_primrec`. `ProjectionEffective.lean` then
+proves `scheduleTrades_primrec`: the schedule's enforcer is effective as a *consequence* of
+the schedule's own computability, not as a hypothesis. It was mechanical and bounded, as
+predicted.
+
 ### What is genuinely still open
 
-`Primrec₂ S.enforcer.trades` for the **projection schedule specifically** — that the
-compiled trade list is primitive recursive in the date and the ordinary trade list. Every
-ingredient is now public and mathlib has the list combinators (`list_map`, `list_foldr`,
-`list_idxOf`, `list_getD`, `list_append`); `repAt` has been rewritten positionally so that
-it, too, is reachable. What is needed is `Primrec` for the `EF` construction in
-`affineEF`/`groupEF`/`repEF`/`coefEF` and for `Strategy.tradeListAbsBound`, plus a finite
-presentation of `affineEF` that does not route through `AffineForm.coeff` (a function on
-sentences, hence not `Primcodable`). Mechanical, and bounded; no mathematics.
+Two things, in different states.
+
+**1. An executable generator for the projector's max–min representation.** This is the one
+headline-blocking item; `FINAL_FORMALIZATION_STATUS.md` is the authority on it. The route
+is settled and the pieces are landing:
+
+* `MaxMinRepresentation.maxMin_of_family` restates Ovchinnikov 4.1(a) with the index family
+  **supplied**, replacing the internal `Finset.univ.filter (fun T => ∃ y ∈ Γ, up y = T)`
+  that no primitive recursive function can evaluate.
+* `FourierMotzkin.lean` decides rational linear feasibility: `feasible_iff` in both
+  directions, with `<` and `≤` genuinely distinguished — the strict form is load-bearing,
+  since `λ_j > 0` is what separates a support from a face containing it. Equalities encode
+  as two non-strict constraints.
+* `feasible_primrec₂` gives the certificate **uniform in the dimension**. This matters and
+  the fixed-dimension form does not suffice: the compiler must be `Primrec₂` in
+  `(fragment, vertex data)`, and the ambient dimension `d + m + 1` is read off those
+  arguments. `feasible_primrec_comp` is the shape a caller applies.
+* What remains is the generator itself — building the constraint systems, deciding them,
+  and emitting `Rep`.
+
+**2. `Primrec` for the deductive region's vertex enumeration.** Needed only for the
+*deductive specialization*'s computability, not for the generic headline. It reduces to
+`Primrec fun n => admissiblePatterns (DP.D n) (coords n)`, and thence to `Primrec` for
+`Sentence.atoms`, `sentenceBool` and `tableConsistent`. The pinned dependency proves
+precisely these at `LIACompiler.lean` 5279–5560 — `atomListTable_prim`,
+`formulaBoolStep_prim`, `formulaBoolDecoded_prim`, `sentenceBoolFromAtomList_prim`,
+`tableConsistentFromAtomList_prim` — and **all five are `private`**.
+
+This is the same category of blocker as Debt B: module visibility, not mathematics. Debt B
+was resolved by a purely additive public re-export upstream (`d89817bc`), and the identical
+remedy applies here. Note also that `Primcodable (Finset Sentence)` already exists
+(`LIACompiler.lean:2224`), so `Primrec DP.D` is directly statable; what
+`DeductiveProcessComputation` supplies is weaker, and that mismatch is recorded in
+`FINAL_FORMALIZATION_STATUS.md` §8.
 
 ### Verification
 

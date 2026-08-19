@@ -182,29 +182,38 @@ doubly-exponential bound is stated rather than omitted.
 
 **Not headline-blocking.**
 
-- The deductive specialization is not yet instantiated, and its two halves are in
-  different states. The **semantic** half is assembly: `DeductiveRegion` supplies the vertex
-  list, `admissiblePatterns_ne_nil_iff` supplies nonemptiness from stage satisfiability, and
-  `payout_mem_deductiveRegion` discharges `hadm`, so `conformance_of_constraints` and
-  `criterion_of_constraints` specialize to the deductive region with no computability
-  hypothesis at all. The **effective** half meets a genuine interface mismatch, recorded
-  here because it is easy to miss: the pinned source's `DeductiveProcessComputation` is
+- **The deductive specialization's semantic half is now closed.**
+  `DeductiveSchedule.lean` builds a `RationalConstraintSchedule` from a deductive process,
+  a fragment schedule and a tolerance schedule, and proves
+  `regionPred_eq_deductiveRegion` — the constraint schedule's region predicate *is*
+  `DeductiveRegion.deductiveRegion`, transported through `WithLp.toLp` by
+  `IsLinearMap.image_convexHull`. From it, `hadm_of_deductive` discharges admissibility
+  from `payout_mem_deductiveRegion`, and `conformance_of_deductive` and
+  `criterion_of_deductive` specialize the two hypothesis-free theorems to the deductive
+  region with their conclusions unchanged.
 
-      ⟨code : Nat.Partrec.Code, code_spec : ∀ n, Encodable.encode (DP.D n) ∈ code.eval n⟩
+- **The deductive specialization's effective half is blocked, and the obstruction is the
+  same one Debt B had.** `RationalConstraintSchedule.Computation` reduces to
+  `Primrec fun n => admissiblePatterns (DP.D n) (coords n)`. Two corrections to what this
+  document said earlier:
 
-  — a partial recursive program that *eventually* emits the stage — and this does **not**
-  give `Primrec (fun n => DP.D n)`, which is what `RationalConstraintSchedule.Computation`
-  needs in order to carry the region into the enforcer's trade list. The source absorbs its
-  own weaker assumption by fuel search (`processStagePrefixAtFuel_primrec`); the region
-  cannot, because `EffectiveEnforcerComputation` asks for `Primrec₂ E.trades` in the date and
-  the ordinary aggregate only, with no stage data passed in.
+  * `Primcodable (Finset Sentence)` **does** exist in the pinned dependency
+    (`LIACompiler.lean:2224`), so `Primrec DP.D` is directly statable and no
+    list-of-sentences workaround is needed. `DeductiveProcessComputation` still does not
+    supply it, so the interface mismatch recorded above stands unchanged.
+  * The remaining work is **not** composition. It needs `Primrec` for `Sentence.atoms`,
+    for `sentenceBool` and hence `tableConsistent` — a strong-recursion tower over the
+    formula encoding. The dependency proves exactly these, at `LIACompiler.lean`
+    5279–5560: `atomListTable_prim`, `formulaBoolStep_prim`, `formulaBoolDecoded_prim`,
+    `sentenceBoolFromAtomList_prim`, `tableConsistentFromAtomList_prim`. **All five are
+    `private`**, so none is reachable from this repository.
 
-  The honest resolution is to state the deductive specialization with an explicit primitive
-  recursive stage presentation. That is **weaker than the source paper's own hypothesis** —
-  arXiv:1609.03543 requires the deductive process to be *efficiently* computable, which
-  implies primitive recursive — and stronger than the pinned formalization's generalization
-  of it. It should be stated, not hidden, and the paper should say which of the two it is
-  assuming.
+  This is module visibility, not mathematics — the identical situation that blocked Debt B,
+  which was resolved by a purely additive public re-export section upstream (commit
+  `d89817bc`, FAF PR #2). The same remedy applies, and until it is made, no deductive
+  specialization of `end_to_end_of_constraints` is claimed. No axiom was introduced and
+  `Computation` was not weakened.
+
 - No complexity bound is claimed. `faceList K` has `|verts| · 2^{|verts|}` entries, most with
   empty cells; vertex enumeration, face enumeration, feasibility checking and max–min
   expansion may compound. **The safe claim is that the construction is finite and effective
