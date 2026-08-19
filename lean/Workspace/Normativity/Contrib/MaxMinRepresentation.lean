@@ -107,8 +107,8 @@ theorem exists_forall_eq_of_isPreconnected {ι : Type*} [Finite ι] {J : Set ℝ
   classical
   obtain ⟨t₀, ht₀⟩ := hJne
   obtain ⟨i₀, hi₀⟩ : ∃ i, t₀ ∈ D i := mem_iUnion.mp (hcov ht₀)
-  set U : Set ℝ := ⋃ j ∈ {j | ∀ s, h i₀ s = h j s}, D j with hU
-  set V : Set ℝ := ⋃ j ∈ {j | ¬ ∀ s, h i₀ s = h j s}, D j with hV
+  set U : Set ℝ := ⋃ j ∈ {j | ∀ s, h i₀ s = h j s}, D j
+  set V : Set ℝ := ⋃ j ∈ {j | ¬ ∀ s, h i₀ s = h j s}, D j
   have hUc : IsClosed U := (toFinite _).isClosed_biUnion fun j _ => hDc j
   have hVc : IsClosed V := (toFinite _).isClosed_biUnion fun j _ => hDc j
   have hcovUV : J ⊆ U ∪ V := by
@@ -167,7 +167,6 @@ theorem exists_le_of_le_of_forall_selects {ι : Type*} (h : ι → ℝ →ᵃ[�
     by_cases hfil : (B.filter (fun t => t ∈ Ioo a b)).Nonempty
     · set t₁ := (B.filter (fun t => t ∈ Ioo a b)).min' hfil with ht₁def
       have ht₁mem : t₁ ∈ B.filter (fun t => t ∈ Ioo a b) := Finset.min'_mem _ _
-      have ht₁B : t₁ ∈ B := (Finset.mem_filter.mp ht₁mem).1
       have ht₁io : t₁ ∈ Ioo a b := (Finset.mem_filter.mp ht₁mem).2
       have hno : ∀ t ∈ B, t ∉ Ioo a t₁ := by
         intro t htB htio
@@ -253,7 +252,7 @@ theorem exists_le_and_le [Finite ι] {Γ : Set E} {f : E → ℝ} {g : ι → E 
   have hLmem : ∀ t ∈ Icc (0 : ℝ) 1, L t ∈ Γ := fun t ht => hΓ.lineMap_mem hx hy ht
   set h : ι → ℝ →ᵃ[ℝ] ℝ := fun i => (g i).comp L with hh
   set φ : ℝ → ℝ := fun t => f (L t) with hφ
-  set D : ι → Set ℝ := fun i => ⋃ l ∈ {l | c l = i}, L ⁻¹' Q l with hD
+  set D : ι → Set ℝ := fun i => ⋃ l ∈ {l | c l = i}, L ⁻¹' Q l
   have hDc : ∀ i, IsClosed (D i) :=
     fun i => (toFinite _).isClosed_biUnion fun l _ => (hQc l).preimage hLcont
   have hDcov : Icc (0 : ℝ) 1 ⊆ ⋃ i, D i := by
