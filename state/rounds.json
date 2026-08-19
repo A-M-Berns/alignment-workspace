@@ -585,6 +585,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-19-deductive-region/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-18-maxmin-representation",
+      "date": "2026-08-18",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-18-maxmin-representation",
+      "verdict": "Ovchinnikov's max\u2013min theorem is kernel-checked for any nonempty convex domain, with no full-dimensionality, no continuity and no finite-dimension hypothesis, by replacing the source's hyperplane arrangement and tope-graph induction with a one-dimensional induction along the segment joining the two points \u2014 which also removes the genericity step the source states without proof.",
+      "verdict_source": "projects/normativity/rounds/2026-08-18-maxmin-representation/README.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-18-maxmin-representation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

@@ -364,6 +364,21 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   *Cost of deciding now:* low, nothing downstream cites them yet. *Cost of not
   deciding:* they harden as soon as something does.
 
+- **Whether the max–min development is promoted, and how it reaches the projection
+  compiler.** `lean/Workspace/Normativity/Contrib/MaxMinRepresentation.lean` closes
+  Ovchinnikov's theorem in the kernel, which is the second of the two external facts
+  `ProjectionCompiler.lean` cites on the `projection-enforcement` branch. Three linked
+  items: whether the names (`IsPiecewiseAffineOn`, `exists_maxMin_representation`,
+  `exists_le_and_le`, `exists_le_of_le_of_forall_selects`, the namespace) are
+  confirmed or renamed; whether the result is promoted to a statement of record with a
+  registered claim, which needs a `PRIORITIES.md` item since nothing enters the
+  registry unasked; and who writes the adapter from `Finset.sup'`/`Finset.inf'` to
+  `ProjectionCompiler.Rep`'s nested lists, since that edit belongs to the projection
+  branch, which this round was scoped out of. *Cost of deciding now:* low — a naming
+  ruling plus a sequencing call between two open pull requests. *Cost of not deciding:*
+  the projection compiler keeps carrying as a hypothesis something that is proved two
+  files away, and the theorem sits unregistered in a contribution namespace.
+
 ## Settled
 
 ### 2026-08-18 — the modified market's computability is discharged, via an additive upstream export
