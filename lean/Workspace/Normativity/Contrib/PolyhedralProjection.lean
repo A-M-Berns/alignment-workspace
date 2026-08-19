@@ -279,6 +279,126 @@ theorem candidate_unique (h : F.Regular) (p x : Pt d) (c : Fin F.dim → ℝ)
 
 end Face
 
+
+/-! ## Orthogonality on the active set
+
+If the projection is a convex combination of vertices, then the directions between any two
+vertices carrying **positive** weight are orthogonal to `p − proj p`: shifting a little
+weight from one to the other stays inside the region, and the variational inequality then
+bites in both directions.  This is the whole geometric content of coverage. -/
+
+/-- Shifting weight `t` from `z` to `y` moves a convex combination by `t • (y - z)`. -/
+private lemma sum_update_shift (Vf : Finset (Pt d)) (w : Pt d → ℝ) (y z : Pt d)
+    (hy : y ∈ Vf) (hz : z ∈ Vf) (hyz : y ≠ z) (t : ℝ) :
+    ∑ v ∈ Vf, (if v = y then w v + t else if v = z then w v - t else w v) • v
+      = (∑ v ∈ Vf, w v • v) + t • (y - z) := by
+  classical
+  have hpt : ∀ v ∈ Vf,
+      (if v = y then w v + t else if v = z then w v - t else w v) • v
+        = w v • v + ((if v = y then t else 0) • v - (if v = z then t else 0) • v) := by
+    intro v _
+    by_cases hvy : v = y
+    · subst hvy
+      rw [if_pos rfl, if_pos rfl, if_neg hyz]
+      module
+    · by_cases hvz : v = z
+      · subst hvz
+        rw [if_neg hvy, if_pos rfl, if_neg hvy, if_pos rfl]
+        module
+      · rw [if_neg hvy, if_neg hvz, if_neg hvy, if_neg hvz]
+        module
+  rw [Finset.sum_congr rfl hpt, Finset.sum_add_distrib, Finset.sum_sub_distrib]
+  have h1 : ∑ v ∈ Vf, (if v = y then t else 0) • v = t • y := by
+    rw [Finset.sum_eq_single y]
+    · rw [if_pos rfl]
+    · intro b _ hb; rw [if_neg hb, zero_smul]
+    · intro hy'; exact absurd hy hy'
+  have h2 : ∑ v ∈ Vf, (if v = z then t else 0) • v = t • z := by
+    rw [Finset.sum_eq_single z]
+    · rw [if_pos rfl]
+    · intro b _ hb; rw [if_neg hb, zero_smul]
+    · intro hz'; exact absurd hz hz'
+  rw [h1, h2, smul_sub]
+
+/-- The perturbed combination is still in the region. -/
+private lemma shifted_mem_carrier (K : RationalPolytope d) {w : Pt d → ℝ}
+    (hw : ∀ v ∈ K.vertexSet, 0 ≤ w v)
+    (hsum : ∑ v ∈ K.vertexSet_finite.toFinset, w v = 1)
+    {y z : Pt d} (hy : y ∈ K.vertexSet_finite.toFinset)
+    (hz : z ∈ K.vertexSet_finite.toFinset) (hyz : y ≠ z) {t : ℝ} (ht0 : 0 ≤ t)
+    (htz : t ≤ w z) :
+    (∑ v ∈ K.vertexSet_finite.toFinset, w v • v) + t • (y - z) ∈ K.carrier := by
+  classical
+  have hnonneg : ∀ v ∈ K.vertexSet,
+      0 ≤ (if v = y then w v + t else if v = z then w v - t else w v) := by
+    intro v hv
+    have hbase := hw v hv
+    by_cases hvy : v = y
+    · rw [if_pos hvy]; linarith
+    · rw [if_neg hvy]
+      by_cases hvz : v = z
+      · subst hvz; rw [if_pos rfl]; linarith
+      · rw [if_neg hvz]; exact hbase
+  have hsum' : ∑ v ∈ K.vertexSet_finite.toFinset,
+      (if v = y then w v + t else if v = z then w v - t else w v) = 1 := by
+    have hpt : ∀ v ∈ K.vertexSet_finite.toFinset,
+        (if v = y then w v + t else if v = z then w v - t else w v)
+          = w v + ((if v = y then t else 0) - (if v = z then t else 0)) := by
+      intro v _
+      by_cases hvy : v = y
+      · subst hvy
+        rw [if_pos rfl, if_pos rfl, if_neg hyz]; ring
+      · by_cases hvz : v = z
+        · subst hvz
+          rw [if_neg hvy, if_pos rfl, if_neg hvy, if_pos rfl]; ring
+        · rw [if_neg hvy, if_neg hvz, if_neg hvy, if_neg hvz]; ring
+    rw [Finset.sum_congr rfl hpt, Finset.sum_add_distrib, hsum, Finset.sum_sub_distrib]
+    have e1 : ∑ v ∈ K.vertexSet_finite.toFinset, (if v = y then t else 0) = t := by
+      rw [Finset.sum_eq_single y]
+      · rw [if_pos rfl]
+      · intro b _ hb; rw [if_neg hb]
+      · intro hy'; exact absurd hy hy'
+    have e2 : ∑ v ∈ K.vertexSet_finite.toFinset, (if v = z then t else 0) = t := by
+      rw [Finset.sum_eq_single z]
+      · rw [if_pos rfl]
+      · intro b _ hb; rw [if_neg hb]
+      · intro hz'; exact absurd hz hz'
+    rw [e1, e2, sub_self, add_zero]
+  have hmem : (∑ v ∈ K.vertexSet_finite.toFinset, w v • v) + t • (y - z)
+      ∈ convexHull ℝ K.vertexSet := by
+    rw [K.vertexSet_finite.convexHull_eq]
+    refine ⟨fun v => if v = y then w v + t else if v = z then w v - t else w v,
+      hnonneg, hsum', ?_⟩
+    rw [Finset.centerMass_eq_of_sum_1 _ _ hsum']
+    exact sum_update_shift _ w y z hy hz hyz t
+  exact hmem
+
+/-- **Orthogonality on the active set.** -/
+theorem inner_eq_zero_of_active (K : RationalPolytope d) (p : Pt d) {w : Pt d → ℝ}
+    (hw : ∀ v ∈ K.vertexSet, 0 ≤ w v)
+    (hsum : ∑ v ∈ K.vertexSet_finite.toFinset, w v = 1)
+    (hq : ∑ v ∈ K.vertexSet_finite.toFinset, w v • v = K.proj p)
+    {y z : Pt d} (hy : y ∈ K.vertexSet_finite.toFinset)
+    (hz : z ∈ K.vertexSet_finite.toFinset) (hwy : 0 < w y) (hwz : 0 < w z) :
+    ⟪p - K.proj p, y - z⟫ = 0 := by
+  classical
+  by_cases hyz : y = z
+  · subst hyz; simp
+  have key : ∀ a b : Pt d, a ∈ K.vertexSet_finite.toFinset →
+      b ∈ K.vertexSet_finite.toFinset → a ≠ b → 0 < w b →
+      ⟪p - K.proj p, a - b⟫ ≤ 0 := by
+    intro a b ha hb hab hwb
+    have hmem := shifted_mem_carrier K hw hsum ha hb hab (le_of_lt hwb) (le_refl (w b))
+    rw [hq] at hmem
+    have hvi := K.proj_variational p hmem
+    rw [add_sub_cancel_left, real_inner_smul_right] at hvi
+    nlinarith [hvi, hwb]
+  have h1 := key y z hy hz hyz hwz
+  have h2 := key z y hz hy (Ne.symm hyz) hwy
+  have hflip : (z : Pt d) - y = -(y - z) := by abel
+  rw [hflip, inner_neg_right] at h2
+  linarith
+
 /-! ## Cells
 
 The cell of a face is where its candidate passes the polytope's own nearest-point
@@ -321,5 +441,6 @@ end Workspace.Normativity.Contrib.PolyhedralProjection
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.gramInvQ_mul
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate_apply_eq
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate_unique
+#print axioms Workspace.Normativity.Contrib.PolyhedralProjection.inner_eq_zero_of_active
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.candidate_eq_proj_of_mem_cell
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.isClosed_cell
