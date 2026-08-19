@@ -114,75 +114,10 @@ lemma tableOf_map (atoms : List ℕ) (f : ℕ → Bool) {a : ℕ} (ha : a ∈ at
 /-! ## The vertex list
 
 One entry per assignment to the context atoms that satisfies the whole stage, read off
-on the fragment.  `dedup` keeps the list a set of vertices rather than a multiset; every
-statement below is about membership, so the deduplication is free. -/
-
-/-- The `{0,1}` patterns on `coords` realised by a propositionally consistent world
-satisfying `D`, as an explicit finite list of rational vectors. -/
-def admissiblePatterns (D : Finset Sentence) (coords : List Sentence) : List (List ℚ) :=
-  let atoms := contextList D coords
-  (((allBoolLists atoms.length).filter fun xs =>
-      tableConsistent (tableOf atoms xs) D).map fun xs =>
-        coords.map (boolPayoutRat (tableOf atoms xs))).dedup
-
-/-- **Soundness.**  Every listed pattern is the payout table of an actual
-propositionally consistent world satisfying `D`, read on `coords`. -/
-theorem admissiblePatterns_sound (D : Finset Sentence) (coords : List Sentence)
-    {w : List ℚ} (hw : w ∈ admissiblePatterns D coords) :
-    ∃ v : PCWorld, v.ConsistentWith D ∧ w = coords.map (ratPayout v) := by
-  rw [admissiblePatterns, List.mem_dedup, List.mem_map] at hw
-  obtain ⟨xs, hxs, rfl⟩ := hw
-  rw [List.mem_filter] at hxs
-  refine ⟨boolPCWorld (tableOf (contextList D coords) xs), ?_, ?_⟩
-  · exact (tableConsistent_eq_true_iff _ D).mp hxs.2
-  · exact List.map_congr_left fun φ _ => boolPayoutRat_eq_ratPayout _ φ
-
-open Classical in
-/-- The world's own atom table agrees with the enumerated one on every sentence the
-context covers.  This is where "only the context atoms matter" is discharged.
-
-`open Classical` is scoped to this lemma and to completeness below rather than taken for
-the file: a world is `ℕ → Prop`, so reading it as bits is classical, while the enumerator
-itself must keep computable instances to reduce in the kernel. -/
-lemma sentenceBool_tableOf_iff (D : Finset Sentence) (coords : List Sentence) (v : PCWorld)
-    {φ : Sentence} (hsub : φ.atoms ⊆ regionContext D coords) :
-    sentenceBool (tableOf (contextList D coords)
-      ((contextList D coords).map fun a => decide (v a))) φ = true ↔ v.Holds φ := by
-  rw [sentenceBool_congr_of_atoms (v := fun a => decide (v a)) fun a ha =>
-    tableOf_map _ _ ((mem_contextList D coords).mpr (hsub ha))]
-  exact sentenceBool_decide_world v φ
-
-open Classical in
-/-- **Completeness.**  Every propositionally consistent world satisfying `D` has its
-restriction to `coords` in the list. -/
-theorem admissiblePatterns_complete (D : Finset Sentence) (coords : List Sentence)
-    (v : PCWorld) (hv : v.ConsistentWith D) :
-    coords.map (ratPayout v) ∈ admissiblePatterns D coords := by
-  have hmemxs : (contextList D coords).map (fun a => decide (v a))
-      ∈ allBoolLists (contextList D coords).length :=
-    mem_allBoolLists_iff.mpr (by simp)
-  have hcons : tableConsistent
-      (tableOf (contextList D coords)
-        ((contextList D coords).map fun a => decide (v a))) D = true :=
-    (tableConsistent_eq_true_iff _ D).mpr fun φ hφ =>
-      (sentenceBool_eq_true_iff _ φ).mp
-        ((sentenceBool_tableOf_iff D coords v
-          (atoms_subset_regionContext_of_mem_stage hφ)).mpr (hv φ hφ))
-  have hmap : coords.map (boolPayoutRat (tableOf (contextList D coords)
-      ((contextList D coords).map fun a => decide (v a))))
-      = coords.map (ratPayout v) := by
-    refine List.map_congr_left fun φ hφ => ?_
-    have hiff := sentenceBool_tableOf_iff D coords v
-      (atoms_subset_regionContext_of_mem_coords (coords := coords) hφ)
-    unfold boolPayoutRat ratPayout
-    by_cases hh : v.Holds φ
-    · simp [hiff.mpr hh, hh]
-    · have hne : sentenceBool (tableOf (contextList D coords)
-          ((contextList D coords).map fun a => decide (v a))) φ ≠ true := fun h => hh (hiff.mp h)
-      simp [hne, hh]
-  rw [admissiblePatterns, List.mem_dedup, List.mem_map]
-  exact ⟨_, List.mem_filter.mpr ⟨hmemxs, hcons⟩, hmap⟩
-
+on the fragment.  The list is not deduplicated: every statement about it is about
+membership, and a polytope's carrier is the convex hull of its vertex list, so repeats are
+harmless.  Leaving them also spares the effective path a `Primrec` certificate for
+`List.dedup`, which would be a recursion with a membership test and no gain. -/
 
 lemma ratPayout_eq_zero_or_one (v : PCWorld) (φ : Sentence) :
     ratPayout v φ = 0 ∨ ratPayout v φ = 1 := by
@@ -208,15 +143,15 @@ one describe the same region. -/
 /-- The `{0,1}` patterns on `coords` enumerated against a given atom list. -/
 def patternsFrom (atoms : List ℕ) (D : Finset Sentence) (coords : List Sentence) :
     List (List ℚ) :=
-  (((allBoolLists atoms.length).filter fun xs =>
+  ((allBoolLists atoms.length).filter fun xs =>
       tableConsistent (tableOf atoms xs) D).map fun xs =>
-        coords.map (boolPayoutRat (tableOf atoms xs))).dedup
+        coords.map (boolPayoutRat (tableOf atoms xs))
 
 /-- **Soundness**, for any atom list: no coverage is needed in this direction. -/
 theorem patternsFrom_sound (atoms : List ℕ) (D : Finset Sentence) (coords : List Sentence)
     {w : List ℚ} (hw : w ∈ patternsFrom atoms D coords) :
     ∃ v : PCWorld, v.ConsistentWith D ∧ w = coords.map (ratPayout v) := by
-  rw [patternsFrom, List.mem_dedup, List.mem_map] at hw
+  rw [patternsFrom, List.mem_map] at hw
   obtain ⟨xs, hxs, rfl⟩ := hw
   rw [List.mem_filter] at hxs
   refine ⟨boolPCWorld (tableOf atoms xs), ?_, ?_⟩
@@ -257,7 +192,7 @@ theorem patternsFrom_complete (atoms : List ℕ) (D : Finset Sentence)
     · have hne : sentenceBool (tableOf atoms (atoms.map fun a => decide (v a))) φ ≠ true :=
         fun h => hh (hiff.mp h)
       simp [hne, hh]
-  rw [patternsFrom, List.mem_dedup, List.mem_map]
+  rw [patternsFrom, List.mem_map]
   exact ⟨_, List.mem_filter.mpr ⟨hmemxs, hcons⟩, hmap⟩
 
 /-- **The characterisation.**  Membership is a statement about worlds, not about the atom
@@ -313,9 +248,34 @@ theorem contextList_covers (D : Finset Sentence) (coords : List Sentence) :
     ∀ a ∈ regionContext D coords, a ∈ contextList D coords :=
   fun _ ha => (mem_contextList D coords).mpr ha
 
+/-- The `{0,1}` patterns on `coords` realised by a propositionally consistent world
+satisfying `D`, as an explicit finite list of rational vectors.
+
+The atom list is `contextList`, a filtered range, so that the `decide +kernel` witnesses at
+the foot of this file reduce.  `admissiblePatternsEff` is the same enumeration against the
+atom list whose computability the dependency certifies; `mem_patternsFrom_iff` says the two
+have the same members, which is all any statement here asks. -/
+def admissiblePatterns (D : Finset Sentence) (coords : List Sentence) : List (List ℚ) :=
+  patternsFrom (contextList D coords) D coords
+
 @[simp] lemma admissiblePatterns_eq_patternsFrom (D : Finset Sentence)
     (coords : List Sentence) :
     admissiblePatterns D coords = patternsFrom (contextList D coords) D coords := rfl
+
+/-- **Soundness.**  Every listed pattern is the payout table of an actual
+propositionally consistent world satisfying `D`, read on `coords`. -/
+theorem admissiblePatterns_sound (D : Finset Sentence) (coords : List Sentence)
+    {w : List ℚ} (hw : w ∈ admissiblePatterns D coords) :
+    ∃ v : PCWorld, v.ConsistentWith D ∧ w = coords.map (ratPayout v) :=
+  patternsFrom_sound _ D coords hw
+
+/-- **Completeness.**  Every propositionally consistent world satisfying `D` has its
+restriction to `coords` in the list. -/
+theorem admissiblePatterns_complete (D : Finset Sentence) (coords : List Sentence)
+    (v : PCWorld) (hv : v.ConsistentWith D) :
+    coords.map (ratPayout v) ∈ admissiblePatterns D coords :=
+  patternsFrom_complete _ D coords (contextList_covers D coords) v hv
+
 
 /-- Every listed pattern has one entry per fragment coordinate. -/
 theorem admissiblePatterns_length (D : Finset Sentence) (coords : List Sentence)
@@ -352,6 +312,75 @@ consistent world satisfies `D`. -/
 theorem admissiblePatterns_nonempty (D : Finset Sentence) (coords : List Sentence)
     (hD : ∃ v : PCWorld, v.ConsistentWith D) : admissiblePatterns D coords ≠ [] :=
   (admissiblePatterns_ne_nil_iff D coords).mpr hD
+
+
+/-! ## The enumeration the compiler runs
+
+`contextList` is a filtered range so that `decide +kernel` can reduce it, and the
+dependency's certified atom list is a `Finset.sort`, which does not reduce.  Both cover the
+stage and the fragment, so by `mem_patternsFrom_iff` they enumerate the same patterns, and
+each can be used where it belongs: the range for the kernel witnesses, the sorted list for
+the compiler. -/
+
+lemma mem_fragmentAtoms {coords : List Sentence} {a : ℕ} :
+    a ∈ fragmentAtoms coords ↔ ∃ φ ∈ coords, a ∈ φ.atoms := by
+  induction coords with
+  | nil => simp [fragmentAtoms]
+  | cons φ rest ih =>
+      simp only [fragmentAtoms, Finset.mem_union, ih, List.mem_cons]
+      constructor
+      · rintro (h | ⟨ψ, hψ, ha⟩)
+        · exact ⟨φ, Or.inl rfl, h⟩
+        · exact ⟨ψ, Or.inr hψ, ha⟩
+      · rintro ⟨ψ, rfl | hψ, ha⟩
+        · exact Or.inl ha
+        · exact Or.inr ⟨ψ, hψ, ha⟩
+
+/-- The context atoms, in the form whose computability the dependency certifies. -/
+def contextAtoms (D : Finset Sentence) (coords : List Sentence) : List ℕ :=
+  sentenceListAtoms (supportSentenceList D ++ coords)
+
+theorem contextAtoms_covers (D : Finset Sentence) (coords : List Sentence) :
+    ∀ a ∈ regionContext D coords, a ∈ contextAtoms D coords := by
+  intro a ha
+  rw [contextAtoms, mem_sentenceListAtoms]
+  rw [regionContext, Finset.mem_union] at ha
+  rcases ha with h | h
+  · obtain ⟨φ, hφ, ha'⟩ := Finset.mem_biUnion.mp h
+    exact ⟨φ, List.mem_append_left _ (by simpa [supportSentenceList] using hφ), ha'⟩
+  · obtain ⟨φ, hφ, ha'⟩ := mem_fragmentAtoms.mp h
+    exact ⟨φ, List.mem_append_right _ hφ, ha'⟩
+
+/-- **The enumeration the compiler runs.** -/
+def admissiblePatternsEff (D : Finset Sentence) (coords : List Sentence) : List (List ℚ) :=
+  patternsFrom (contextAtoms D coords) D coords
+
+theorem mem_admissiblePatternsEff_iff (D : Finset Sentence) (coords : List Sentence)
+    {w : List ℚ} :
+    w ∈ admissiblePatternsEff D coords ↔
+      ∃ v : PCWorld, v.ConsistentWith D ∧ w = coords.map (ratPayout v) :=
+  mem_patternsFrom_iff _ D coords (contextAtoms_covers D coords)
+
+/-- **The two enumerations agree on membership**, which is all any statement about the
+region asks of them. -/
+theorem mem_admissiblePatternsEff_iff_mem_admissiblePatterns (D : Finset Sentence)
+    (coords : List Sentence) {w : List ℚ} :
+    w ∈ admissiblePatternsEff D coords ↔ w ∈ admissiblePatterns D coords := by
+  rw [mem_admissiblePatternsEff_iff, admissiblePatterns_eq_patternsFrom,
+    mem_patternsFrom_iff _ D coords (contextList_covers D coords)]
+
+theorem admissiblePatternsEff_length (D : Finset Sentence) (coords : List Sentence)
+    {w : List ℚ} (hw : w ∈ admissiblePatternsEff D coords) : w.length = coords.length :=
+  patternsFrom_length _ D coords hw
+
+theorem admissiblePatternsEff_mem_cube (D : Finset Sentence) (coords : List Sentence)
+    {w : List ℚ} (hw : w ∈ admissiblePatternsEff D coords) {x : ℚ} (hx : x ∈ w) :
+    x = 0 ∨ x = 1 :=
+  patternsFrom_mem_cube _ D coords hw hx
+
+theorem admissiblePatternsEff_ne_nil_iff (D : Finset Sentence) (coords : List Sentence) :
+    admissiblePatternsEff D coords ≠ [] ↔ ∃ v : PCWorld, v.ConsistentWith D :=
+  patternsFrom_ne_nil_iff _ D coords (contextAtoms_covers D coords)
 
 /-! ## The region on price vectors
 

@@ -1236,7 +1236,7 @@ lemma projectorRepOf_eq_L (d : ℕ) (verts : List (List ℚ)) (k : ℕ) :
 
 /-- Filtering by a predicate that depends on the argument.  `Primrec.listFilter` fixes its
 predicate, so it is unusable here; `Primrec.listFilterMap` is parametrised. -/
-private lemma list_filter_prim {α β : Type*} [Primcodable α] [Primcodable β]
+lemma list_filter_prim {α β : Type*} [Primcodable α] [Primcodable β]
     {l : α → List β} {q : α → β → Bool} (hl : Primrec l) (hq : Primrec₂ q) :
     Primrec fun a => (l a).filter (q a) := by
   have hfm : Primrec fun a =>
