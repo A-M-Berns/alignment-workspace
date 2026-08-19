@@ -33,6 +33,7 @@ Names are provisional (`AGENTS.md` standard 6).  Logical Induction's own results
 used as the pinned dependency's theorems, not restated as axioms.
 -/
 
+import LogicalInduction.Construction.LIACompiler
 import Workspace.Normativity.Contrib.AssessmentProcess
 import Mathlib.Analysis.Convex.Hull
 import Mathlib.Analysis.Convex.Combination
@@ -89,15 +90,26 @@ lemma mem_contextList (D : Finset Sentence) (coords : List Sentence) {a : ℕ} :
   refine ⟨fun h => h.2, fun h => ⟨?_, h⟩⟩
   exact Nat.lt_succ_of_le (Finset.le_sup (f := id) h)
 
-/-- A bit vector read as an atom table against a list of atoms, `false` off the list. -/
+/-- A bit vector read as an atom table against a list of atoms, `false` off the list.
+
+This is the dependency's own `atomTableFromList`, not a private copy.  Taking it verbatim
+is what lets the effective enumeration reuse the dependency's computability certificate
+for `tableConsistent` and `sentenceBool` at this table, rather than rebuilding the
+strong-recursion tower over the formula encoding here. -/
 def tableOf (atoms : List ℕ) (xs : List Bool) : ℕ → Bool :=
-  fun a => xs.getD (atoms.idxOf a) false
+  atomTableFromList atoms xs
+
+lemma tableOf_apply (atoms : List ℕ) (xs : List Bool) (a : ℕ) :
+    tableOf atoms xs a =
+      if a ∈ atoms then xs.getD (atoms.idxOf a) false else false :=
+  atomTableFromList_apply atoms xs a
 
 lemma tableOf_map (atoms : List ℕ) (f : ℕ → Bool) {a : ℕ} (ha : a ∈ atoms) :
     tableOf atoms (atoms.map f) a = f a := by
   have hlt : atoms.idxOf a < atoms.length := List.idxOf_lt_length_of_mem ha
   have hlt' : atoms.idxOf a < (atoms.map f).length := by simpa using hlt
-  rw [tableOf, List.getD_eq_getElem _ _ hlt', List.getElem_map, List.getElem_idxOf hlt]
+  rw [tableOf_apply, if_pos ha, List.getD_eq_getElem _ _ hlt', List.getElem_map,
+    List.getElem_idxOf hlt]
 
 /-! ## The vertex list
 
@@ -171,11 +183,6 @@ theorem admissiblePatterns_complete (D : Finset Sentence) (coords : List Sentenc
   rw [admissiblePatterns, List.mem_dedup, List.mem_map]
   exact ⟨_, List.mem_filter.mpr ⟨hmemxs, hcons⟩, hmap⟩
 
-/-- Every listed pattern has one entry per fragment coordinate. -/
-theorem admissiblePatterns_length (D : Finset Sentence) (coords : List Sentence)
-    {w : List ℚ} (hw : w ∈ admissiblePatterns D coords) : w.length = coords.length := by
-  obtain ⟨v, _, rfl⟩ := admissiblePatterns_sound D coords hw
-  simp
 
 lemma ratPayout_eq_zero_or_one (v : PCWorld) (φ : Sentence) :
     ratPayout v φ = 0 ∨ ratPayout v φ = 1 := by
@@ -183,6 +190,139 @@ lemma ratPayout_eq_zero_or_one (v : PCWorld) (φ : Sentence) :
   by_cases hh : v.Holds φ
   · exact Or.inr (if_pos hh)
   · exact Or.inl (if_neg hh)
+
+/-! ## The enumeration against an arbitrary covering atom list
+
+`admissiblePatterns` enumerates against `contextList`, which is built by filtering a range
+precisely so that the kernel can reduce it.  The effective development needs to enumerate
+against a *different* list — one whose computability the pinned dependency certifies — and
+the two lists are not equal.
+
+They do not have to be.  What the enumeration depends on is only that the atom list
+**covers** the stage and the fragment, and `mem_patternsFrom_iff` below says so: membership
+is the purely semantic condition "some consistent world has this payout vector on the
+fragment", with no mention of the atom list at all.  Any two covering lists therefore
+enumerate the same patterns, which is what lets the effective schedule and the kernel-facing
+one describe the same region. -/
+
+/-- The `{0,1}` patterns on `coords` enumerated against a given atom list. -/
+def patternsFrom (atoms : List ℕ) (D : Finset Sentence) (coords : List Sentence) :
+    List (List ℚ) :=
+  (((allBoolLists atoms.length).filter fun xs =>
+      tableConsistent (tableOf atoms xs) D).map fun xs =>
+        coords.map (boolPayoutRat (tableOf atoms xs))).dedup
+
+/-- **Soundness**, for any atom list: no coverage is needed in this direction. -/
+theorem patternsFrom_sound (atoms : List ℕ) (D : Finset Sentence) (coords : List Sentence)
+    {w : List ℚ} (hw : w ∈ patternsFrom atoms D coords) :
+    ∃ v : PCWorld, v.ConsistentWith D ∧ w = coords.map (ratPayout v) := by
+  rw [patternsFrom, List.mem_dedup, List.mem_map] at hw
+  obtain ⟨xs, hxs, rfl⟩ := hw
+  rw [List.mem_filter] at hxs
+  refine ⟨boolPCWorld (tableOf atoms xs), ?_, ?_⟩
+  · exact (tableConsistent_eq_true_iff _ D).mp hxs.2
+  · exact List.map_congr_left fun φ _ => boolPayoutRat_eq_ratPayout _ φ
+
+open Classical in
+/-- The enumerated table agrees with the world on every sentence the list covers. -/
+lemma sentenceBool_tableOf_cover (atoms : List ℕ) (v : PCWorld) {φ : Sentence}
+    (hsub : ∀ a ∈ φ.atoms, a ∈ atoms) :
+    sentenceBool (tableOf atoms (atoms.map fun a => decide (v a))) φ = true ↔ v.Holds φ := by
+  rw [sentenceBool_congr_of_atoms (v := fun a => decide (v a)) fun a ha =>
+    tableOf_map _ _ (hsub a ha)]
+  exact sentenceBool_decide_world v φ
+
+open Classical in
+/-- **Completeness**, for any atom list covering the stage and the fragment. -/
+theorem patternsFrom_complete (atoms : List ℕ) (D : Finset Sentence)
+    (coords : List Sentence)
+    (hcov : ∀ a ∈ regionContext D coords, a ∈ atoms)
+    (v : PCWorld) (hv : v.ConsistentWith D) :
+    coords.map (ratPayout v) ∈ patternsFrom atoms D coords := by
+  have hmemxs : atoms.map (fun a => decide (v a)) ∈ allBoolLists atoms.length :=
+    mem_allBoolLists_iff.mpr (by simp)
+  have hcons : tableConsistent (tableOf atoms (atoms.map fun a => decide (v a))) D = true :=
+    (tableConsistent_eq_true_iff _ D).mpr fun φ hφ =>
+      (sentenceBool_eq_true_iff _ φ).mp
+        ((sentenceBool_tableOf_cover atoms v
+          (fun a ha => hcov a (atoms_subset_regionContext_of_mem_stage hφ ha))).mpr (hv φ hφ))
+  have hmap : coords.map (boolPayoutRat (tableOf atoms (atoms.map fun a => decide (v a))))
+      = coords.map (ratPayout v) := by
+    refine List.map_congr_left fun φ hφ => ?_
+    have hiff := sentenceBool_tableOf_cover atoms v
+      (fun a ha => hcov a (atoms_subset_regionContext_of_mem_coords (coords := coords) hφ ha))
+    unfold boolPayoutRat ratPayout
+    by_cases hh : v.Holds φ
+    · simp [hiff.mpr hh, hh]
+    · have hne : sentenceBool (tableOf atoms (atoms.map fun a => decide (v a))) φ ≠ true :=
+        fun h => hh (hiff.mp h)
+      simp [hne, hh]
+  rw [patternsFrom, List.mem_dedup, List.mem_map]
+  exact ⟨_, List.mem_filter.mpr ⟨hmemxs, hcons⟩, hmap⟩
+
+/-- **The characterisation.**  Membership is a statement about worlds, not about the atom
+list, so any two covering lists enumerate the same patterns. -/
+theorem mem_patternsFrom_iff (atoms : List ℕ) (D : Finset Sentence)
+    (coords : List Sentence) (hcov : ∀ a ∈ regionContext D coords, a ∈ atoms)
+    {w : List ℚ} :
+    w ∈ patternsFrom atoms D coords ↔
+      ∃ v : PCWorld, v.ConsistentWith D ∧ w = coords.map (ratPayout v) := by
+  refine ⟨patternsFrom_sound atoms D coords, ?_⟩
+  rintro ⟨v, hv, rfl⟩
+  exact patternsFrom_complete atoms D coords hcov v hv
+
+/-- Two covering atom lists enumerate patterns with the same membership. -/
+theorem mem_patternsFrom_congr {atoms atoms' : List ℕ} (D : Finset Sentence)
+    (coords : List Sentence) (hcov : ∀ a ∈ regionContext D coords, a ∈ atoms)
+    (hcov' : ∀ a ∈ regionContext D coords, a ∈ atoms') {w : List ℚ} :
+    w ∈ patternsFrom atoms D coords ↔ w ∈ patternsFrom atoms' D coords := by
+  rw [mem_patternsFrom_iff atoms D coords hcov, mem_patternsFrom_iff atoms' D coords hcov']
+
+/-- Every enumerated pattern has one entry per fragment coordinate. -/
+theorem patternsFrom_length (atoms : List ℕ) (D : Finset Sentence)
+    (coords : List Sentence) {w : List ℚ} (hw : w ∈ patternsFrom atoms D coords) :
+    w.length = coords.length := by
+  obtain ⟨v, _, rfl⟩ := patternsFrom_sound atoms D coords hw
+  simp
+
+/-- **Cube-valued.** -/
+theorem patternsFrom_mem_cube (atoms : List ℕ) (D : Finset Sentence)
+    (coords : List Sentence) {w : List ℚ} (hw : w ∈ patternsFrom atoms D coords)
+    {x : ℚ} (hx : x ∈ w) : x = 0 ∨ x = 1 := by
+  obtain ⟨v, _, rfl⟩ := patternsFrom_sound atoms D coords hw
+  rw [List.mem_map] at hx
+  obtain ⟨φ, _, rfl⟩ := hx
+  exact ratPayout_eq_zero_or_one v φ
+
+/-- **Nonemptiness**, under the same satisfiability condition. -/
+theorem patternsFrom_ne_nil_iff (atoms : List ℕ) (D : Finset Sentence)
+    (coords : List Sentence) (hcov : ∀ a ∈ regionContext D coords, a ∈ atoms) :
+    patternsFrom atoms D coords ≠ [] ↔ ∃ v : PCWorld, v.ConsistentWith D := by
+  constructor
+  · intro h
+    obtain ⟨w, hw⟩ := List.exists_mem_of_ne_nil _ h
+    obtain ⟨v, hv, _⟩ := patternsFrom_sound atoms D coords hw
+    exact ⟨v, hv⟩
+  · rintro ⟨v, hv⟩ hnil
+    have := patternsFrom_complete atoms D coords hcov v hv
+    rw [hnil] at this
+    exact absurd this (by simp)
+
+/-- `contextList` covers, which is what makes `admissiblePatterns` an instance. -/
+theorem contextList_covers (D : Finset Sentence) (coords : List Sentence) :
+    ∀ a ∈ regionContext D coords, a ∈ contextList D coords :=
+  fun _ ha => (mem_contextList D coords).mpr ha
+
+@[simp] lemma admissiblePatterns_eq_patternsFrom (D : Finset Sentence)
+    (coords : List Sentence) :
+    admissiblePatterns D coords = patternsFrom (contextList D coords) D coords := rfl
+
+/-- Every listed pattern has one entry per fragment coordinate. -/
+theorem admissiblePatterns_length (D : Finset Sentence) (coords : List Sentence)
+    {w : List ℚ} (hw : w ∈ admissiblePatterns D coords) : w.length = coords.length := by
+  obtain ⟨v, _, rfl⟩ := admissiblePatterns_sound D coords hw
+  simp
+
 
 /-- **Cube-valued.**  Every entry of every listed pattern is `0` or `1`. -/
 theorem admissiblePatterns_mem_cube (D : Finset Sentence) (coords : List Sentence)

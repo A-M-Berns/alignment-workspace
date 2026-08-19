@@ -167,7 +167,7 @@ What the paper needs is computability. Details in `COMPUTABILITY.md §6`.
 `ComputableMarket` is no longer a premise anywhere in the chain, and the object that
 replaced it — `EnforcedBoundedEvaluatorCompiler`, the analogue of the source's own
 `LIABoundedEvaluatorCompiler` — is now constructed rather than assumed
-(`EnforcedCompiler.compiler`). The blocker was that three ingredients were `private` in the
+(`EnforcedCompiler.compiler`). The blocker was that the ingredients were `private` in the
 pinned dependency; the dependency is now pinned to a revision that re-exports them in a
 purely additive public section, and `EnforcedCompiler` runs the source's own
 primitive-recursion argument with one extra list append.

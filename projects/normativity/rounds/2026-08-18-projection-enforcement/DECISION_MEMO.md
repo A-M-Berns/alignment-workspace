@@ -279,7 +279,7 @@ therefore computed before the day's fixed point.
 
 **What is left is nothing mathematical, and nothing at all for a general effective
 enforcer.** The compiler is built (`EnforcedCompiler.compiler`), after an upstream change
-that re-exports, purely additively, the three ingredients that were `private` in the pinned
+that re-exports, purely additively, the ingredients that were `private` in the pinned
 dependency. `EnforcedCompiler.isLogicalInductor` and
 `EnforcedCompiler.ProjectionSchedule.end_to_end_effective` therefore carry no computability
 premise at all.
@@ -387,7 +387,7 @@ Summary of what this pass changes and what it leaves:
    and was not attempted here.
 2. **Debt B, the remaining sliver.** The bounded-evaluator compiler. Reduced from "assume
    the market is computable" to one `Computable₂` statement about a bounded evaluator,
-   blocked on three `private` lemmas upstream. Engineering, not mathematics — see §F.
+   blocked on `private` lemmas upstream. Engineering, not mathematics — see §F.
 3. **Efficiency.** Nothing here says the enforcement trader is efficient, and the cost
    analysis says it is not. If a paper claim needs an efficient intrinsic enforcer, that
    claim is not supported.

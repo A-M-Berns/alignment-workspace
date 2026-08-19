@@ -141,7 +141,7 @@ hand.**
 
 **Both debts change.** Debt A leaves the critical path entirely. Debt B is no longer
 "retain `ComputableMarket` as a premise or transcribe the compiler": the premise is gone,
-and what remains is one bounded-evaluator compiler blocked on three `private` lemmas
+and what remains is one bounded-evaluator compiler blocked on `private` lemmas
 upstream. §12 should state that boundary and the upstream hook that closes it — see
 `COMPUTABILITY.md §7`.
 
