@@ -1152,10 +1152,18 @@ lemma projectorRepOf_eq (F : ProjectionCompiler.Fragment)
   exact congrArg (fun G => repOfList G (List.finRange (projectorFamily K k).length))
     (funext fun j => hgroup _)
 
+/-- The compiler, indexed by the fragment's *length* rather than by the fragment.  Only the
+length is ever read, and carrying it as a `ℕ` keeps the effectiveness proof from
+elaborating the whole chain at `List Sentence × List (List ℚ)`, where synthesising
+`Primcodable` over the four-deep nest that `Rep` unfolds to is what exhausted the
+elaborator. -/
+def compileLen (len : ℕ) (verts : List (List ℚ)) : List ProjectionCompiler.Rep :=
+  (List.range len).map fun k => projectorRepOf len verts k
+
 /-- **The compiler.**  One representation per priced sentence, in the fragment's order. -/
 def compileOf (coords : List Sentence) (verts : List (List ℚ)) :
     List ProjectionCompiler.Rep :=
-  (List.range coords.length).map fun k => projectorRepOf coords.length verts k
+  compileLen coords.length verts
 
 /-! ## The representation a constraint schedule determines
 
@@ -1178,7 +1186,7 @@ def effectiveRepresentation (C : RationalConstraintSchedule) : RegionRepresentat
       List.idxOf_lt_length_of_mem hφ
     have hrep : repAt (C.coords n) (compileOf (C.coords n) (C.vertexData n)) default φ
         = projectorRepOf (C.coords n).length (C.vertexData n) ((C.coords n).idxOf φ) := by
-      rw [repAt, compileOf, getD_map_range _ _ _ hlt]
+      rw [repAt, compileOf, compileLen, getD_map_range _ _ _ hlt]
     have hgen : projectorRepOf (C.coords n).length (C.vertexData n) ((C.coords n).idxOf φ)
         = projectorRep (C.fragment n) (C.region n) ⟨(C.coords n).idxOf φ, hlt⟩ :=
       projectorRepOf_eq (C.fragment n) (C.region n) ⟨(C.coords n).idxOf φ, hlt⟩
@@ -1187,5 +1195,289 @@ def effectiveRepresentation (C : RationalConstraintSchedule) : RegionRepresentat
 
 @[simp] lemma reps_effectiveRepresentation (C : RationalConstraintSchedule) (n : ℕ) :
     (effectiveRepresentation C).reps n = compileOf (C.coords n) (C.vertexData n) := rfl
+
+/-! ## Effectiveness
+
+`groupOfList` and `repOfList` take a *function* as their first argument, and a function is
+not `Primcodable`, so neither can appear directly in a `Primrec` statement.  Both are
+however a `List.map` followed by a head/tail split, and that split is what the certificate
+goes through. -/
+
+/-- The head/tail split a group is. -/
+def groupOfListL (L : List ProjectionCompiler.AffineForm) : ProjectionCompiler.Group :=
+  ((L.head?).getD ([], 0), L.tail)
+
+/-- The head/tail split a representation is. -/
+def repOfListL (L : List ProjectionCompiler.Group) : ProjectionCompiler.Rep :=
+  ((L.head?).getD (([], 0), []), L.tail)
+
+lemma groupOfList_eq_L {ι : Type*} (A : ι → ProjectionCompiler.AffineForm) (l : List ι) :
+    groupOfList A l = groupOfListL (l.map A) := by
+  cases l <;> rfl
+
+lemma repOfList_eq_L {ι : Type*} (G : ι → ProjectionCompiler.Group) (l : List ι) :
+    repOfList G l = repOfListL (l.map G) := by
+  cases l <;> rfl
+
+lemma groupOfListL_primrec : Primrec groupOfListL :=
+  (Primrec.option_getD.comp Primrec.list_head? (Primrec.const _)).pair Primrec.list_tail
+
+lemma repOfListL_primrec : Primrec repOfListL :=
+  (Primrec.option_getD.comp Primrec.list_head? (Primrec.const _)).pair Primrec.list_tail
+
+/-- **The representation, as a map and two splits.**  The form the certificate consumes. -/
+lemma projectorRepOf_eq_L (d : ℕ) (verts : List (List ℚ)) (k : ℕ) :
+    projectorRepOf d verts k
+      = repOfListL ((projectorFamilyOf d verts k).map fun T =>
+          groupOfListL ((idxListOf verts T).map fun i => compOf d verts k i)) := by
+  rw [projectorRepOf, repOfList_eq_L]
+  exact congrArg repOfListL (List.map_congr_left fun T _ => groupOfList_eq_L _ _)
+
+/-- Filtering by a predicate that depends on the argument.  `Primrec.listFilter` fixes its
+predicate, so it is unusable here; `Primrec.listFilterMap` is parametrised. -/
+private lemma list_filter_prim {α β : Type*} [Primcodable α] [Primcodable β]
+    {l : α → List β} {q : α → β → Bool} (hl : Primrec l) (hq : Primrec₂ q) :
+    Primrec fun a => (l a).filter (q a) := by
+  have hfm : Primrec fun a =>
+      (l a).filterMap fun b => bif q a b then some b else none := by
+    refine Primrec.listFilterMap hl ?_
+    exact Primrec.cond hq (Primrec.option_some.comp₂ Primrec₂.right) (Primrec.const none)
+  refine hfm.of_eq fun a => ?_
+  induction l a with
+  | nil => rfl
+  | cons b t ih =>
+    rw [List.filter_cons, List.filterMap_cons]
+    cases hqb : q a b <;> simp [hqb, ih]
+
+/-! ### The blocks are effective -/
+
+lemma conSumLeOf_primrec {α : Type} [Primcodable α] {d m : α → ℕ}
+    (hd : Primrec d) (hm : Primrec m) : Primrec fun a => conSumLeOf (d a) (m a) :=
+  mkConOf_primrec hd hm (zeroBlock_primrec hd)
+    (map_range_primrec hm ((Primrec.const (1 : ℚ)).to₂)) (Primrec.const 0)
+    (Primrec.const 1) (Primrec.const false)
+
+lemma conSumGeOf_primrec {α : Type} [Primcodable α] {d m : α → ℕ}
+    (hd : Primrec d) (hm : Primrec m) : Primrec fun a => conSumGeOf (d a) (m a) :=
+  mkConOf_primrec hd hm (zeroBlock_primrec hd)
+    (map_range_primrec hm ((Primrec.const (-1 : ℚ)).to₂)) (Primrec.const 0)
+    (Primrec.const (-1)) (Primrec.const false)
+
+/-- The unit block `fun j' => if j' = j then c else 0`, effective in `j`. -/
+private lemma unitBlock_primrec {α : Type} [Primcodable α] {m : α → ℕ} {j : α → ℕ}
+    (c : ℚ) (hm : Primrec m) (hj : Primrec j) :
+    Primrec fun a => (List.range (m a)).map fun j' => if j' = j a then c else 0 := by
+  refine map_range_primrec hm ?_
+  have h : Primrec fun q : α × ℕ => if q.2 = j q.1 then c else (0 : ℚ) :=
+    Primrec.ite (Primrec.eq.comp Primrec.snd (hj.comp Primrec.fst))
+      (Primrec.const c) (Primrec.const 0)
+  exact h.to₂
+
+lemma conNonnegOf_primrec {α : Type} [Primcodable α] {d m j : α → ℕ}
+    (hd : Primrec d) (hm : Primrec m) (hj : Primrec j) :
+    Primrec fun a => conNonnegOf (d a) (m a) (j a) :=
+  mkConOf_primrec hd hm (zeroBlock_primrec hd) (unitBlock_primrec (-1) hm hj)
+    (Primrec.const 0) (Primrec.const 0) (Primrec.const false)
+
+lemma conSupportOf_primrec {α : Type} [Primcodable α] {d m j : α → ℕ}
+    {S : α → List ℕ} (hd : Primrec d) (hm : Primrec m) (hS : Primrec S)
+    (hj : Primrec j) : Primrec fun a => conSupportOf (d a) (m a) (S a) (j a) := by
+  refine Primrec.ite (mem_natList_prim.comp hj hS) ?_ ?_
+  · exact mkConOf_primrec hd hm (zeroBlock_primrec hd) (unitBlock_primrec (-1) hm hj)
+      (Primrec.const 0) (Primrec.const 0) (Primrec.const true)
+  · exact mkConOf_primrec hd hm (zeroBlock_primrec hd) (unitBlock_primrec 1 hm hj)
+      (Primrec.const 0) (Primrec.const 0) (Primrec.const false)
+
+lemma conVertLeOf_primrec {α : Type} [Primcodable α] {d : α → ℕ}
+    {verts : α → List (List ℚ)} {i : α → ℕ} (hd : Primrec d) (hv : Primrec verts)
+    (hi : Primrec i) : Primrec fun a => conVertLeOf (d a) (verts a) (i a) := by
+  have hlen : Primrec fun a => (verts a).length := Primrec.list_length.comp hv
+  refine mkConOf_primrec hd hlen (vtxOf_primrec hv hi) ?_ (Primrec.const (-1))
+    (Primrec.const 0) (Primrec.const false)
+  refine map_range_primrec hlen ?_
+  have h : Primrec fun q : α × ℕ => -gramOf (d q.1) (verts q.1) q.2 (i q.1) :=
+    ratNeg_prim.comp (gramOf_primrec (hd.comp Primrec.fst) (hv.comp Primrec.fst)
+      Primrec.snd (hi.comp Primrec.fst))
+  exact h.to₂
+
+lemma conVertGeOf_primrec {α : Type} [Primcodable α] {d : α → ℕ}
+    {verts : α → List (List ℚ)} {S : α → List ℕ} {i : α → ℕ} (hd : Primrec d)
+    (hv : Primrec verts) (hS : Primrec S) (hi : Primrec i) :
+    Primrec fun a => conVertGeOf (d a) (verts a) (S a) (i a) := by
+  have hlen : Primrec fun a => (verts a).length := Primrec.list_length.comp hv
+  refine Primrec.ite (mem_natList_prim.comp hi hS) ?_ ?_
+  · refine mkConOf_primrec hd hlen ?_ ?_ (Primrec.const 1) (Primrec.const 0)
+      (Primrec.const false)
+    · exact Primrec.list_map (vtxOf_primrec hv hi) (ratNeg_prim.comp₂ Primrec₂.right)
+    · refine map_range_primrec hlen ?_
+      have h : Primrec fun q : α × ℕ => gramOf (d q.1) (verts q.1) q.2 (i q.1) :=
+        gramOf_primrec (hd.comp Primrec.fst) (hv.comp Primrec.fst) Primrec.snd
+          (hi.comp Primrec.fst)
+      exact h.to₂
+  · exact mkConOf_primrec hd hlen (zeroBlock_primrec hd) (zeroBlock_primrec hlen)
+      (Primrec.const 0) (Primrec.const 0) (Primrec.const false)
+
+lemma conUpperOf_primrec {α : Type} [Primcodable α] {d : α → ℕ}
+    {verts : α → List (List ℚ)} {k : α → ℕ} {T : α → List ℕ} {i : α → ℕ}
+    (hd : Primrec d) (hv : Primrec verts) (hk : Primrec k) (hT : Primrec T)
+    (hi : Primrec i) : Primrec fun a => conUpperOf (d a) (verts a) (k a) (T a) (i a) := by
+  have hlen : Primrec fun a => (verts a).length := Primrec.list_length.comp hv
+  have hcomp : Primrec fun a => compOf (d a) (verts a) (k a) (i a) :=
+    compOf_primrec hd hv hk hi
+  have hvk : Primrec fun a =>
+      (List.range (verts a).length).map fun j => (vtxOf (verts a) j).getD (k a) 0 := by
+    refine map_range_primrec hlen ?_
+    have h : Primrec fun q : α × ℕ => (vtxOf (verts q.1) q.2).getD (k q.1) 0 :=
+      (Primrec.list_getD (0 : ℚ)).comp
+        (vtxOf_primrec (hv.comp Primrec.fst) Primrec.snd) (hk.comp Primrec.fst)
+    exact h.to₂
+  have hvkneg : Primrec fun a =>
+      (List.range (verts a).length).map fun j => -(vtxOf (verts a) j).getD (k a) 0 := by
+    refine map_range_primrec hlen ?_
+    have h : Primrec fun q : α × ℕ => -(vtxOf (verts q.1) q.2).getD (k q.1) 0 :=
+      ratNeg_prim.comp ((Primrec.list_getD (0 : ℚ)).comp
+        (vtxOf_primrec (hv.comp Primrec.fst) Primrec.snd) (hk.comp Primrec.fst))
+    exact h.to₂
+  refine Primrec.ite (mem_natList_prim.comp hi hT) ?_ ?_
+  · exact mkConOf_primrec hd hlen
+      (Primrec.list_map (Primrec.fst.comp hcomp) (ratNeg_prim.comp₂ Primrec₂.right))
+      hvk (Primrec.const 0) (Primrec.snd.comp hcomp) (Primrec.const false)
+  · exact mkConOf_primrec hd hlen (Primrec.fst.comp hcomp) hvkneg (Primrec.const 0)
+      (ratNeg_prim.comp (Primrec.snd.comp hcomp)) (Primrec.const true)
+
+/-- **The system is effective.** -/
+lemma systemOf_primrec {α : Type} [Primcodable α] {d : α → ℕ}
+    {verts : α → List (List ℚ)} {k : α → ℕ} {S T : α → List ℕ} (hd : Primrec d)
+    (hv : Primrec verts) (hk : Primrec k) (hS : Primrec S) (hT : Primrec T) :
+    Primrec fun a => systemOf (d a) (verts a) (k a) (S a) (T a) := by
+  have hlen : Primrec fun a => (verts a).length := Primrec.list_length.comp hv
+  have hnf : Primrec fun a => (faceListOf (verts a)).length :=
+    Primrec.list_length.comp (faceListOf_primrec.comp hv)
+  have h1 : Primrec fun a => (List.range (verts a).length).map
+      (conNonnegOf (d a) (verts a).length) :=
+    map_range_primrec hlen (conNonnegOf_primrec (hd.comp Primrec.fst)
+      (hlen.comp Primrec.fst) Primrec.snd).to₂
+  have h2 : Primrec fun a => (List.range (verts a).length).map
+      (conSupportOf (d a) (verts a).length (S a)) :=
+    map_range_primrec hlen (conSupportOf_primrec (hd.comp Primrec.fst)
+      (hlen.comp Primrec.fst) (hS.comp Primrec.fst) Primrec.snd).to₂
+  have h3 : Primrec fun a => (List.range (verts a).length).map
+      (conVertLeOf (d a) (verts a)) :=
+    map_range_primrec hlen (conVertLeOf_primrec (hd.comp Primrec.fst)
+      (hv.comp Primrec.fst) Primrec.snd).to₂
+  have h4 : Primrec fun a => (List.range (verts a).length).map
+      (conVertGeOf (d a) (verts a) (S a)) :=
+    map_range_primrec hlen (conVertGeOf_primrec (hd.comp Primrec.fst)
+      (hv.comp Primrec.fst) (hS.comp Primrec.fst) Primrec.snd).to₂
+  have h5 : Primrec fun a => (List.range (faceListOf (verts a)).length).map
+      (conUpperOf (d a) (verts a) (k a) (T a)) :=
+    map_range_primrec hnf (conUpperOf_primrec (hd.comp Primrec.fst)
+      (hv.comp Primrec.fst) (hk.comp Primrec.fst) (hT.comp Primrec.fst) Primrec.snd).to₂
+  exact Primrec.list_cons.comp (conSumLeOf_primrec hd hlen)
+    (Primrec.list_cons.comp (conSumGeOf_primrec hd hlen)
+      (Primrec.list_append.comp (Primrec.list_append.comp
+        (Primrec.list_append.comp (Primrec.list_append.comp h1 h2) h3) h4) h5))
+
+/-! ### The family and the compiler are effective -/
+
+lemma candidatePairsOf_primrec : Primrec candidatePairsOf := by
+  have houter : Primrec fun verts : List (List ℚ) => (List.range verts.length).sublists :=
+    sublists_primrec.comp (Primrec.list_range.comp Primrec.list_length)
+  have hinner : Primrec₂ fun (verts : List (List ℚ)) (S : List ℕ) =>
+      (List.range (faceListOf verts).length).sublists.map fun T => (S, T) := by
+    have h : Primrec fun q : List (List ℚ) × List ℕ =>
+        (List.range (faceListOf q.1).length).sublists.map fun T => (q.2, T) :=
+      Primrec.list_map
+        (sublists_primrec.comp (Primrec.list_range.comp
+          (Primrec.list_length.comp (faceListOf_primrec.comp Primrec.fst))))
+        ((Primrec.snd.comp Primrec.fst).pair Primrec.snd).to₂
+    exact h.to₂
+  exact Primrec.list_flatMap houter hinner
+
+lemma projectorFamilyOf_primrec {α : Type} [Primcodable α] {d : α → ℕ}
+    {verts : α → List (List ℚ)} {k : α → ℕ} (hd : Primrec d) (hv : Primrec verts)
+    (hk : Primrec k) : Primrec fun a => projectorFamilyOf (d a) (verts a) (k a) := by
+  have hlen : Primrec fun a => (verts a).length := Primrec.list_length.comp hv
+  have hq : Primrec₂ fun (a : α) (ST : List ℕ × List ℕ) =>
+      feasible (d a + (verts a).length + 1)
+        (systemOf (d a) (verts a) (k a) ST.1 ST.2) := by
+    have hdim : Primrec fun q : α × (List ℕ × List ℕ) =>
+        d q.1 + (verts q.1).length + 1 :=
+      Primrec.nat_add.comp
+        (Primrec.nat_add.comp (hd.comp Primrec.fst) (hlen.comp Primrec.fst))
+        (Primrec.const 1)
+    have hsys : Primrec fun q : α × (List ℕ × List ℕ) =>
+        systemOf (d q.1) (verts q.1) (k q.1) q.2.1 q.2.2 :=
+      systemOf_primrec (hd.comp Primrec.fst) (hv.comp Primrec.fst) (hk.comp Primrec.fst)
+        (Primrec.fst.comp Primrec.snd) (Primrec.snd.comp Primrec.snd)
+    exact (feasible_primrec_comp hdim hsys).to₂
+  exact Primrec.list_map (list_filter_prim (candidatePairsOf_primrec.comp hv) hq)
+    (Primrec.snd.comp₂ Primrec₂.right)
+
+lemma idxListOf_primrec {α : Type} [Primcodable α] {verts : α → List (List ℚ)}
+    {T : α → List ℕ} (hv : Primrec verts) (hT : Primrec T) :
+    Primrec fun a => idxListOf (verts a) (T a) := by
+  refine list_filter_prim
+    (Primrec.list_range.comp
+      (Primrec.list_length.comp (faceListOf_primrec.comp hv))) ?_
+  have h : Primrec fun q : α × ℕ =>
+      if (T q.1).idxOf q.2 < (T q.1).length then true else false :=
+    Primrec.ite
+      (Primrec.nat_lt.comp
+        (Primrec.list_idxOf.comp Primrec.snd (hT.comp Primrec.fst))
+        (Primrec.list_length.comp (hT.comp Primrec.fst)))
+      (Primrec.const true) (Primrec.const false)
+  refine Primrec₂.of_eq h.to₂ fun a i => ?_
+  by_cases hm : i ∈ T a
+  · rw [if_pos (List.idxOf_lt_length_iff.mpr hm)]
+    simp [hm]
+  · rw [if_neg fun hc => hm (List.idxOf_lt_length_iff.mp hc)]
+    simp [hm]
+
+set_option maxHeartbeats 4000000 in
+lemma projectorRepOf_primrec {α : Type} [Primcodable α] {d : α → ℕ}
+    {verts : α → List (List ℚ)} {k : α → ℕ} (hd : Primrec d) (hv : Primrec verts)
+    (hk : Primrec k) : Primrec fun a => projectorRepOf (d a) (verts a) (k a) := by
+  have hbody : Primrec₂ fun (a : α) (T : List ℕ) =>
+      groupOfListL ((idxListOf (verts a) T).map
+        fun i => compOf (d a) (verts a) (k a) i) := by
+    have h : Primrec fun q : α × List ℕ =>
+        groupOfListL ((idxListOf (verts q.1) q.2).map
+          fun i => compOf (d q.1) (verts q.1) (k q.1) i) := by
+      refine groupOfListL_primrec.comp (Primrec.list_map
+        (idxListOf_primrec (hv.comp Primrec.fst) Primrec.snd) ?_)
+      exact (compOf_primrec (hd.comp (Primrec.fst.comp Primrec.fst))
+        (hv.comp (Primrec.fst.comp Primrec.fst))
+        (hk.comp (Primrec.fst.comp Primrec.fst)) Primrec.snd).to₂
+    exact h.to₂
+  refine (repOfListL_primrec.comp
+    (Primrec.list_map (projectorFamilyOf_primrec hd hv hk) hbody)).of_eq fun a => ?_
+  exact (projectorRepOf_eq_L (d a) (verts a) (k a)).symm
+
+set_option maxHeartbeats 4000000 in
+/-- **The length-indexed compiler is primitive recursive.** -/
+theorem compileLen_primrec : Primrec₂ compileLen := by
+  have hproj : Primrec₂ fun (q : ℕ × List (List ℚ)) (k : ℕ) =>
+      projectorRepOf q.1 q.2 k :=
+    (projectorRepOf_primrec
+      (Primrec.fst.comp Primrec.fst)
+      (Primrec.snd.comp Primrec.fst) Primrec.snd).to₂
+  have h : Primrec fun q : ℕ × List (List ℚ) =>
+      (List.range q.1).map fun k => projectorRepOf q.1 q.2 k :=
+    map_range_primrec Primrec.fst hproj
+  exact h.to₂
+
+/-- **The compiler is primitive recursive.**  The certificate
+`RegionRepresentation.Effective` asks for, and the last one outstanding. -/
+theorem compileOf_primrec : Primrec₂ compileOf :=
+  compileLen_primrec.comp (Primrec.list_length.comp Primrec.fst) Primrec.snd
+
+/-- **The representation is effective.**  This discharges what had been the one
+implementation artifact left in the theorem of record. -/
+def effectiveRepresentation_effective (C : RationalConstraintSchedule) :
+    (effectiveRepresentation C).Effective where
+  compile := compileOf
+  compileComputable := compileOf_primrec
+  reps_eq := fun _ => rfl
 
 end Workspace.Normativity.Contrib.EffectiveRepresentation
