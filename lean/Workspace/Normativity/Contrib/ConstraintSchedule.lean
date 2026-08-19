@@ -572,6 +572,151 @@ theorem hypotheses_nonvacuous :
   ⟨emptySchedule, emptyComputation, emptySchedule.canonicalRepresentation, emptyEffective,
     emptySchedule_admits⟩
 
+/-! ## A non-degenerate witness
+
+The degenerate witness above certifies consistency and nothing more.  This one prices a
+sentence, constrains it to a genuine region, and exhibits an *effective* representation of
+that region's projector — so it certifies that `RegionRepresentation.Effective` is not an
+empty assumption, and that the compiler interface can be met by a real algorithm on a real
+polytope.
+
+The region is the unit interval in the single priced coordinate.  That is the weakest
+genuine constraint, which is exactly what makes `hadm` provable: every world's payout is in
+`[0,1]`, so every world is admitted, and the schedule buys zero liability.  The projector is
+the clamp, and the clamp is `max 0 (min 1 x)` — already a max of mins of rational affine
+forms, so its `Rep` is written down rather than searched for.
+
+`proj_unitSegment` was proved by Aristotle (Harmonic) from the statement and outline
+recorded in this round's report; it is reviewed, refactored into the two pieces used below,
+and rebuilt here. -/
+
+lemma unitSegment_vertexSet :
+    PolyhedralCoverage.unitSegment.vertexSet
+      = {toPt (fun _ => (0 : ℚ)), toPt (fun _ => (1 : ℚ))} := by
+  ext x
+  simp [RationalPolytope.vertexSet, PolyhedralCoverage.unitSegment, Set.mem_image, eq_comm]
+
+/-- Every point of the unit interval lies in the segment's carrier. -/
+lemma mem_unitSegment_carrier {c : ℝ} (hc0 : 0 ≤ c) (hc1 : c ≤ 1) :
+    (WithLp.toLp 2 fun _ => c : Pt 1) ∈ PolyhedralCoverage.unitSegment.carrier := by
+  rw [RationalPolytope.carrier, unitSegment_vertexSet, convexHull_pair]
+  refine ⟨1 - c, c, by linarith, hc0, by ring, ?_⟩
+  ext i
+  fin_cases i
+  simp [toPt]
+
+/-- **The projection onto the unit segment is the clamp.** -/
+theorem proj_unitSegment (p : Pt 1) :
+    PolyhedralCoverage.unitSegment.proj p 0 = max 0 (min 1 (p 0)) := by
+  set c : ℝ := max 0 (min 1 (p 0)) with hcdef
+  have hc0 : (0 : ℝ) ≤ c := le_max_left _ _
+  have hc1 : c ≤ 1 := max_le zero_le_one (min_le_left _ _)
+  set q : Pt 1 := WithLp.toLp 2 (fun _ => c) with hqdef
+  have hq0 : q 0 = c := rfl
+  have hkey : ∀ v ∈ PolyhedralCoverage.unitSegment.vertexSet, ⟪p - q, v - q⟫ ≤ 0 := by
+    intro v hvmem
+    have hinner : ⟪p - q, v - q⟫ = (p 0 - c) * (v 0 - c) := by
+      simp [PiLp.inner_apply, hq0, mul_comm]
+    rw [unitSegment_vertexSet] at hvmem
+    have hcases : v 0 = 0 ∨ v 0 = 1 := by
+      rcases hvmem with h | h <;> subst h <;> [left; right] <;> simp [toPt]
+    have hp : c = max 0 (min 1 (p 0)) := hcdef
+    rw [hinner]
+    rcases hcases with h | h <;> rw [h] <;>
+      rcases le_total (p 0) 0 with h0 | h0 <;>
+      rcases le_total (p 0) 1 with h1 | h1 <;>
+      simp [hp, h0, h1]
+  have hqeq := PolyhedralCoverage.unitSegment.eq_proj_of_vertexSet
+    (mem_unitSegment_carrier hc0 hc1) hkey
+  rw [← hqeq, hq0]
+
+/-- The sentence the witness prices. -/
+def atom0 : Sentence := LO.Propositional.Formula.atom 0
+
+/-- **The unit-interval schedule**: one sentence priced at every date, constrained to the
+whole unit interval in its coordinate. -/
+def intervalSchedule : RationalConstraintSchedule where
+  coords := fun _ => [atom0]
+  nodup := fun _ => List.nodup_singleton _
+  tol := fun _ => 1
+  tol_pos := fun _ => one_pos
+  region := fun _ => PolyhedralCoverage.unitSegment
+  region_in_cube := fun _ v hv i => by
+    simp only [PolyhedralCoverage.unitSegment, List.mem_cons, List.not_mem_nil, or_false]
+      at hv
+    rcases hv with rfl | rfl <;> norm_num
+
+/-- The clamp `max 0 (min 1 x)` as a max–min representation: one group `min (x, 1)`, one
+group the constant `0`, and the maximum of the two. -/
+def clampRep : Rep := ((([1], 0), [([], 1)]), [(([], 0), [])])
+
+/-- The unit-interval schedule is computable. -/
+def intervalComputation : intervalSchedule.Computation where
+  coordsComputable := Primrec.const _
+  tolComputable := Primrec.const _
+  vertsComputable := (Primrec.const [[(0 : ℚ)], [(1 : ℚ)]]).of_eq fun _ => rfl
+
+/-- **The clamp representation is correct**, at every date and every price vector. -/
+def intervalRepresentation : RegionRepresentation intervalSchedule where
+  reps := fun _ => [clampRep]
+  dflt := default
+  reps_eval := by
+    intro n φ hφ p
+    have hφ' : φ = atom0 := by simpa [intervalSchedule] using hφ
+    subst hφ'
+    have hlt : 0 < (intervalSchedule.fragment n).coords.length := by
+      simp [RationalConstraintSchedule.fragment, intervalSchedule]
+    have htarget : intervalSchedule.targetAt n p atom0 = max 0 (min 1 (p atom0)) := by
+      have h := target_get (intervalSchedule.fragment n) (intervalSchedule.region n) p ⟨0, hlt⟩
+      have e : (intervalSchedule.fragment n).coords.get ⟨0, hlt⟩ = atom0 := rfl
+      rw [e] at h
+      show target (intervalSchedule.fragment n) (intervalSchedule.region n) p atom0
+        = max 0 (min 1 (p atom0))
+      rw [h]
+      -- the index `⟨0, hlt⟩` is `(0 : Fin 1)` and the region is the segment, both by `rfl`
+      exact proj_unitSegment _
+    rw [htarget]
+    simp [repAt, clampRep, repEval, groupEval, AffineForm.evalR, AffineForm.coeff,
+      Fragment.toFinset, RationalConstraintSchedule.fragment, intervalSchedule, atom0]
+
+/-- **The clamp representation is effective**: a constant compiler returns it. -/
+def intervalEffective : intervalRepresentation.Effective where
+  compile := fun _ _ => [clampRep]
+  compileComputable := (Primrec.const _).to₂
+  reps_eq := fun _ => rfl
+
+/-- **The unit interval admits every world**, because every payout is a credence. -/
+theorem intervalSchedule_admits (DP : DeductiveProcess) (n : ℕ) (v : PCWorld) :
+    v.ConsistentWith (DP.D n) → intervalSchedule.regionPred n v.payout := by
+  intro _
+  have hbound : 0 ≤ v.payout atom0 ∧ v.payout atom0 ≤ 1 := by
+    unfold PCWorld.payout
+    split <;> norm_num
+  have hres : restrict (intervalSchedule.fragment n) v.payout
+      = WithLp.toLp 2 fun _ => v.payout atom0 := by
+    unfold restrict
+    congr 1
+    funext i
+    fin_cases i
+    rfl
+  show restrict (intervalSchedule.fragment n) v.payout ∈
+    (intervalSchedule.region n).carrier
+  rw [hres]
+  exact mem_unitSegment_carrier hbound.1 hbound.2
+
+/-- **The hypothesis package is inhabited non-degenerately.**  A sentence is priced, the
+constraint on it is a genuine region, and the representation of that region's projector is
+effective — so `RegionRepresentation.Effective` is not an assumption that only the empty
+fragment can meet. -/
+theorem hypotheses_nonvacuous_nondegenerate :
+    ∃ (C : RationalConstraintSchedule) (_ : C.Computation) (R : RegionRepresentation C)
+      (_ : R.Effective),
+      (∀ n, C.coords n ≠ []) ∧
+        ∀ (DP : DeductiveProcess) n (v : PCWorld),
+          v.ConsistentWith (DP.D n) → C.regionPred n v.payout :=
+  ⟨intervalSchedule, intervalComputation, intervalRepresentation, intervalEffective,
+    fun _ => List.cons_ne_nil _ _, intervalSchedule_admits⟩
+
 end Workspace.Normativity.Contrib.ConstraintSchedule
 
 #print axioms Workspace.Normativity.Contrib.ConstraintSchedule.ip_eq_inner
@@ -599,3 +744,9 @@ end Workspace.Normativity.Contrib.ConstraintSchedule
 #print axioms Workspace.Normativity.Contrib.ConstraintSchedule.end_to_end_of_constraints
 #print axioms Workspace.Normativity.Contrib.ConstraintSchedule.eventual_coherence_of_constraints
 #print axioms Workspace.Normativity.Contrib.ConstraintSchedule.hypotheses_nonvacuous
+#print axioms Workspace.Normativity.Contrib.ConstraintSchedule.mem_unitSegment_carrier
+#print axioms Workspace.Normativity.Contrib.ConstraintSchedule.proj_unitSegment
+#print axioms Workspace.Normativity.Contrib.ConstraintSchedule.intervalRepresentation
+#print axioms Workspace.Normativity.Contrib.ConstraintSchedule.intervalSchedule_admits
+#print axioms
+  Workspace.Normativity.Contrib.ConstraintSchedule.hypotheses_nonvacuous_nondegenerate
