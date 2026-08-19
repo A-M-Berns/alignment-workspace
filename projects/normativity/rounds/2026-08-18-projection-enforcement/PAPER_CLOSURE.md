@@ -225,3 +225,34 @@ discharges §6.4's contract hypothesis, and the per-date quantifier in §8.1. Th
 becomes §4 above, §9 is demoted, §10.6 is restated over `d₂` with the `ℓ^∞` form as a
 corollary, §12's Debt A is removed and Debt B is restated as the upstream hook, and §12's
 theorem surface is regenerated from `THEOREM_MAP.md`.
+
+
+---
+
+## 10. Closure audit — every hypothesis of the current headline theorem
+
+The closure pass is graded against this list. For each hypothesis of
+`EnforcedCompiler.ProjectionSchedule.end_to_end_effective`, one of three verdicts:
+**(1)** mathematical input the paper genuinely intends to assume; **(2)** an implementation
+witness that ought to be constructed; **(3)** a missing theorem wearing a hypothesis as a
+disguise. Categories 2 and 3 must not survive into the final paper-facing theorem.
+
+| hypothesis | verdict | disposition |
+| --- | --- | --- |
+| `process : DeductiveProcessComputation DP` | **(1)** | keep — the paper assumes a computable deductive process |
+| `hE : EffectiveEnforcerComputation S.enforcer` | **(2)** | construct from the schedule's computability |
+| `K : ℕ → (Sentence → ℝ) → Prop` (free region family) | **(2)** | define from `region n : RationalPolytope` |
+| `hlocal : FragmentLocal …` | **(2)** | becomes a theorem about the defined region |
+| `hKcube : K n y → … ∈ [0,1]` | **(2)** | becomes a theorem, from the polytope's cube containment |
+| `q : ℕ → Sentence → ℝ` (free target family) | **(2)** | define as `proj_{K n}(P_n)` |
+| `hq : IsNearestPoint …` | **(2)** | becomes a theorem — nearest-point existence and uniqueness |
+| `hrep : repEval … = q n φ` | **(3)** | **this is the disguise.** It asserts that the supplied max–min representation computes the projector, which *is* the polyhedral-projection theorem plus the max–min theorem. Discharged only by formalizing both and generating the representation. |
+| `hadm : plausible worlds are admitted` | **(1)** generic, **(2)** deductive | keep in the generic theorem — it is the real assumption that buys zero liability; discharge in the deductive corollary, where the region is defined as the hull of the plausible restrictions |
+
+The schedule's own `reps : ℕ → List FinRep` field is likewise **(2)**: supplying the
+compiled representation as data is the artifact §IV removes, replaced by
+`region : ℕ → RationalPolytope`.
+
+**Score at the start of the closure pass:** one hypothesis in category (1) unconditionally,
+one in (1) for the generic theorem only, six in (2), and one in (3). The single category-(3)
+item is `hrep`, and it is the reason the pass exists.
