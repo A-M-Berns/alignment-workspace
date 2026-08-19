@@ -199,6 +199,84 @@ lemma candidate_apply_eq (p : Pt d) (i : Fin d) :
   push_cast
   linarith [hsplit, hmain]
 
+/-! ## Uniqueness: the candidate is the only solution of the face's system -/
+
+lemma inner_dir (l j : Fin F.dim) : ⟪F.dir l, F.dir j⟫ = (F.gramQ l j : ℝ) := by
+  rw [PiLp.inner_apply]
+  simp only [gramQ, Matrix.of_apply]
+  push_cast
+  exact Finset.sum_congr rfl fun i _ => by
+    simp only [RCLike.inner_apply, dir, toPt, WithLp.ofLp_toLp, starRingEnd_apply,
+      star_trivial]
+    ring
+
+lemma gramInv_mul_gram (h : F.Regular) (j k : Fin F.dim) :
+    ∑ l, F.gramInvQ j l * F.gramQ l k = if j = k then 1 else 0 := by
+  have hone : (F.gramInvQ * F.gramQ) j k
+      = (1 : Matrix (Fin F.dim) (Fin F.dim) ℚ) j k := by rw [F.gramInvQ_mul h]
+  rwa [Matrix.mul_apply, Matrix.one_apply] at hone
+
+lemma gramInv_mul_gram_real (h : F.Regular) (j k : Fin F.dim) :
+    ∑ l, (F.gramInvQ j l : ℝ) * (F.gramQ l k : ℝ) = if j = k then (1 : ℝ) else 0 := by
+  have hq := F.gramInv_mul_gram h j k
+  have hcast : ((∑ l, F.gramInvQ j l * F.gramQ l k : ℚ) : ℝ)
+      = ∑ l, (F.gramInvQ j l : ℝ) * (F.gramQ l k : ℝ) := by push_cast; ring
+  split_ifs with hjk
+  · rw [if_pos hjk] at hq
+    rw [← hcast, hq]; norm_num
+  · rw [if_neg hjk] at hq
+    rw [← hcast, hq]; norm_num
+
+/-- **Uniqueness.**  A point of the face's affine span whose displacement from `p` is
+orthogonal to the face is the candidate.  This is the only place the Gram inverse is used,
+and the only place regularity is needed. -/
+theorem candidate_unique (h : F.Regular) (p x : Pt d) (c : Fin F.dim → ℝ)
+    (hx : ∀ i, x i = (F.base i : ℝ) + ∑ j, (F.dirQ j i : ℝ) * c j)
+    (horth : ∀ l, ⟪F.dir l, p - x⟫ = 0) :
+    x = F.candidate p := by
+  have hxb : ∀ l, ⟪F.dir l, x - toPt F.base⟫ = ∑ j, c j * (F.gramQ l j : ℝ) := by
+    intro l
+    have hL : ⟪F.dir l, x - toPt F.base⟫
+        = ∑ i, (F.dirQ l i : ℝ) * ∑ j, (F.dirQ j i : ℝ) * c j := by
+      rw [PiLp.inner_apply]
+      refine Finset.sum_congr rfl fun i _ => ?_
+      simp only [RCLike.inner_apply, dir, toPt, WithLp.ofLp_toLp, PiLp.sub_apply,
+        starRingEnd_apply, star_trivial, hx i]
+      ring
+    have hR : ∑ j, c j * (F.gramQ l j : ℝ)
+        = ∑ j, ∑ i, c j * ((F.dirQ l i : ℝ) * (F.dirQ j i : ℝ)) := by
+      refine Finset.sum_congr rfl fun j _ => ?_
+      simp only [gramQ, Matrix.of_apply]
+      push_cast
+      rw [Finset.mul_sum]
+      try exact Finset.sum_congr rfl fun i _ => by ring
+    rw [hL, hR, Finset.sum_comm]
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [Finset.mul_sum]
+    exact Finset.sum_congr rfl fun j _ => by ring
+  have hrhs : ∀ l, F.rhs p l = ∑ j, c j * (F.gramQ l j : ℝ) := by
+    intro l
+    rw [F.rhs_eq_inner p l, ← hxb l]
+    have hdec : (p : Pt d) - toPt F.base = (p - x) + (x - toPt F.base) := by abel
+    rw [hdec, inner_add_right, horth l, zero_add]
+  have hcoord : ∀ j, F.coord p j = c j := by
+    intro j
+    simp only [coord, hrhs]
+    have hswap : ∑ l, (F.gramInvQ j l : ℝ) * ∑ k, c k * (F.gramQ l k : ℝ)
+        = ∑ k, c k * ∑ l, (F.gramInvQ j l : ℝ) * (F.gramQ l k : ℝ) := by
+      simp only [Finset.mul_sum]
+      rw [Finset.sum_comm]
+      exact Finset.sum_congr rfl fun k _ => Finset.sum_congr rfl fun l _ => by ring
+    rw [hswap]
+    simp only [F.gramInv_mul_gram_real h]
+    rw [Finset.sum_eq_single j]
+    · simp
+    · intro k _ hk; simp [Ne.symm hk]
+    · intro hj; exact absurd (Finset.mem_univ j) hj
+  ext i
+  rw [hx i, F.candidate_apply_eq p i]
+  exact congrArg _ (Finset.sum_congr rfl fun j _ => by rw [hcoord j])
+
 end Face
 
 /-! ## Cells
@@ -241,5 +319,7 @@ end Workspace.Normativity.Contrib.PolyhedralProjection
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.gram_eq_map
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.regular_of_linearIndependent
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.gramInvQ_mul
+#print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate_apply_eq
+#print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate_unique
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.candidate_eq_proj_of_mem_cell
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.isClosed_cell
