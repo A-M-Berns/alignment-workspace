@@ -2,15 +2,15 @@
 # The projection enforcer as finite data
 
 `EnforcedComputation` asks for an enforcer presented as finite syntax.  The compiler in
-`ProjectionCompiler` takes its representations as `Sentence → Rep`, and `AffineForm`
-carries `coeff : Sentence → ℚ` — both are *functions*, which is the right shape for the
-algebra and the wrong one for a computability claim: a function on sentences is not finite
-data and cannot be an input to a primitive-recursive evaluator.
+`ProjectionCompiler` takes its representations as `Sentence → Rep`, which is a *function*
+on sentences: the right shape for the algebra and the wrong one for a computability claim,
+since a function on sentences is not finite data and cannot be an input to a
+primitive-recursive evaluator.
 
-This file supplies the finite presentation.  A `FinAffine` is a list of rationals in the
-fragment's own order together with a constant; a `ProjectionSchedule` is a computable
-fragment schedule, a computable positive rational tolerance schedule, and one finite
-representation list per date.  From that data alone the day-`n` enforcement trade list is
+`ProjectionCompiler.AffineForm` now carries its coefficients as a `List ℚ` in the
+fragment's own order, so the compiler's own representations are already finite data.  A
+`ProjectionSchedule` is a computable fragment schedule, a computable positive rational
+tolerance schedule, and one representation list per date.  From that data alone the day-`n` enforcement trade list is
 computed, with the intensity calibrated from the ordinary aggregate's `absBound` — so the
 enforcer is an `EffectiveEnforcer` and the whole modified market is the one
 `EnforcedComputation` evaluates.
@@ -35,40 +35,34 @@ open Workspace.Normativity.Contrib.ProjectionCalibrated
 open Workspace.Normativity.Contrib.DeductiveEnforcement
 open Workspace.Normativity.Contrib.EnforcedComputation
 
-/-! ## Finitely presented affine forms -/
+/-! ## The compiler's representations are finite data
 
-/-- An affine form as finite data: the coefficients, positionally aligned with the
-fragment's coordinate list, and the constant term.  An `abbrev` of a product of standard
-types rather than a structure, so that the schedule below is `Primcodable` with no new
-instances — which is the whole point of the finite presentation. -/
-abbrev FinAffine : Type := List ℚ × ℚ
+`AffineForm` carries a `List ℚ` and a `ℚ`, so it is `Primcodable` by transport along the
+obvious equivalence; `Group` and `Rep` are then `Primcodable` for free, being products and
+lists.  This is what lets a schedule be an input to a primitive-recursive evaluator. -/
 
-/-- A nonempty finite group of finitely presented affine forms. -/
-abbrev FinGroup : Type := FinAffine × List FinAffine
+/-- `AffineForm` is a product of standard types in disguise. -/
+def affineFormEquivProd : AffineForm ≃ List ℚ × ℚ where
+  toFun a := (a.coeffs, a.const)
+  invFun p := ⟨p.1, p.2⟩
+  left_inv _ := rfl
+  right_inv _ := rfl
 
-/-- A nonempty finite max–min representation, as finite data. -/
-abbrev FinRep : Type := FinGroup × List FinGroup
+instance : Primcodable AffineForm := Primcodable.ofEquiv _ affineFormEquivProd
 
-/-- Read a finitely presented affine form against a coordinate list. -/
-def FinAffine.toAffineForm (coords : List Sentence) (a : FinAffine) : AffineForm where
-  coeff := fun φ => (((coords.zip a.1).lookup φ).getD 0)
-  const := a.2
+/-! ## The representation attached to a priced sentence
 
-/-- Read a finitely presented group against a coordinate list. -/
-def FinGroup.toGroup (coords : List Sentence) (g : FinGroup) : Group :=
-  (FinAffine.toAffineForm coords g.1, g.2.map (FinAffine.toAffineForm coords))
-
-/-- Read a finitely presented representation against a coordinate list. -/
-def FinRep.toRep (coords : List Sentence) (r : FinRep) : Rep :=
-  (FinGroup.toGroup coords r.1, r.2.map (FinGroup.toGroup coords))
+`ProjectionCompiler.AffineForm` is now itself finite data — a `List ℚ` of coefficients
+positionally aligned with the fragment, plus a constant — so there is no second
+representation to maintain and no conversion to prove correct.  All that is left is to say
+which representation belongs to which priced sentence. -/
 
 /-- The representation attached to a priced sentence by its position in the fragment.
 Positional rather than by association list: `List.idxOf` and `List.getD` both have
 primitive-recursive certificates, which an association lookup does not, and on a
 duplicate-free fragment with aligned data the two agree. -/
-def repAt (coords : List Sentence) (reps : List FinRep) (dflt : FinRep) :
-    Sentence → Rep :=
-  fun φ => FinRep.toRep coords (reps.getD (coords.idxOf φ) dflt)
+def repAt (coords : List Sentence) (reps : List Rep) (dflt : Rep) : Sentence → Rep :=
+  fun φ => reps.getD (coords.idxOf φ) dflt
 
 /-! ## The schedule
 
@@ -87,9 +81,9 @@ structure ProjectionSchedule where
   /-- Tolerances are strictly positive; a zero tolerance buys nothing. -/
   tol_pos : ∀ n, 0 < tol n
   /-- The day-`n` max–min representations, positionally aligned with `coords n`. -/
-  reps : ℕ → List FinRep
+  reps : ℕ → List Rep
   /-- The value used where a lookup fails; it never occurs in a well-formed schedule. -/
-  dflt : FinRep
+  dflt : Rep
 
 /-- **The effectiveness requirement on a schedule**, and the whole of it: its three
 components are computable functions of the date.  Every type involved is `Primcodable`
