@@ -146,6 +146,59 @@ lemma candidate_apply (p : Pt d) (i : Fin d) :
 lemma continuous_candidate : Continuous F.candidate := by
   exact (PiLp.continuous_toLp 2 _).comp (continuous_pi fun i => (F.piece i).continuous_eval)
 
+/-! ## The candidate solves the face's Gram system -/
+
+/-- The right-hand side of the face's linear system at `p`. -/
+def rhs (p : Pt d) (l : Fin F.dim) : ℝ :=
+  ∑ a, (F.dirQ l a : ℝ) * (p a - (F.base a : ℝ))
+
+/-- The barycentric coefficients the candidate uses. -/
+def coord (p : Pt d) (j : Fin F.dim) : ℝ :=
+  ∑ l, (F.gramInvQ j l : ℝ) * F.rhs p l
+
+lemma rhs_eq_inner (p : Pt d) (l : Fin F.dim) :
+    F.rhs p l = ⟪F.dir l, p - toPt F.base⟫ := by
+  rw [PiLp.inner_apply]
+  refine Finset.sum_congr rfl fun a _ => ?_
+  simp only [RCLike.inner_apply, dir, toPt, WithLp.ofLp_toLp, PiLp.sub_apply,
+    starRingEnd_apply, star_trivial]
+  ring
+
+/-- The candidate, written through its barycentric coefficients. -/
+lemma candidate_apply_eq (p : Pt d) (i : Fin d) :
+    (F.candidate p) i = (F.base i : ℝ) + ∑ j, (F.dirQ j i : ℝ) * F.coord p j := by
+  have hsplit : ∑ a, (F.coefQ i a : ℝ) * (p a - (F.base a : ℝ))
+      = ∑ a, (F.coefQ i a : ℝ) * p a - ∑ a, (F.coefQ i a : ℝ) * (F.base a : ℝ) := by
+    rw [← Finset.sum_sub_distrib]
+    exact Finset.sum_congr rfl fun a _ => by ring
+  have hL : ∑ a, (F.coefQ i a : ℝ) * (p a - (F.base a : ℝ))
+      = ∑ a, ∑ j, ∑ l,
+        ((F.dirQ j i : ℝ) * (F.gramInvQ j l : ℝ) * (F.dirQ l a : ℝ))
+          * (p a - (F.base a : ℝ)) := by
+    refine Finset.sum_congr rfl fun a _ => ?_
+    simp only [coefQ]
+    push_cast
+    rw [Finset.sum_mul]
+    refine Finset.sum_congr rfl fun j _ => ?_
+    rw [Finset.mul_sum, Finset.sum_mul]
+    exact Finset.sum_congr rfl fun l _ => by ring
+  have hR : ∑ j, (F.dirQ j i : ℝ) * F.coord p j
+      = ∑ j, ∑ l, ∑ a,
+        ((F.dirQ j i : ℝ) * (F.gramInvQ j l : ℝ) * (F.dirQ l a : ℝ))
+          * (p a - (F.base a : ℝ)) := by
+    refine Finset.sum_congr rfl fun j _ => ?_
+    simp only [coord, rhs, Finset.mul_sum]
+    refine Finset.sum_congr rfl fun l _ => ?_
+    exact Finset.sum_congr rfl fun a _ => by ring
+  have hmain : ∑ a, (F.coefQ i a : ℝ) * (p a - (F.base a : ℝ))
+      = ∑ j, (F.dirQ j i : ℝ) * F.coord p j := by
+    rw [hL, hR, Finset.sum_comm]
+    refine Finset.sum_congr rfl fun j _ => ?_
+    exact Finset.sum_comm
+  rw [candidate_apply, piece, AffineForm.eval]
+  push_cast
+  linarith [hsplit, hmain]
+
 end Face
 
 /-! ## Cells
