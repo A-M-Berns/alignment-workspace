@@ -316,48 +316,72 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   the single record. *Cost of not deciding:* a stated requirement that nothing checks
   and that history does not uniformly satisfy.
 
-- **Rule on whether the paper's spine switches to the projection trader.** The
-  projection round recommends foregrounding
-  `Workspace.Normativity.Contrib.Projection{Force,Market,Compiler,Budget}` and demoting
-  §9's `d_∞` route, on the grounds that the paper's own `ℓ^∞` conclusion follows from
-  the Euclidean one at the same tolerance
-  (`ProjectionForce.sup_conformance_of_dist2`), which takes Debt A off the critical
-  path. The row work is untouched and no theorem about it is weakened. *Doing it* is
-  reading `.../2026-08-18-projection-enforcement/DECISION_MEMO.md` and
-  `PAPER_CLOSURE.md` §§1–3 and ruling. *Waiting* leaves two constructions both
-  described as primary in different documents, which is the state the paper is
-  currently in.
-
-- **Rule on the two gaps the audit found in the paper as drafted.** §6.4 assumes the
-  market maker's contract at a point of `K`, which is not a world, and nothing in the
-  paper discharges that hypothesis where §10.6 instantiates it; and §8.1 derives zero
-  risk capital from world-inclusivity plus global nesting where the proof needs only
-  per-date admission. Neither statement is false; the chain does not close. Both are now
-  kernel-checked here (`ProjectionMarket.marketMaker_day_value_le_cube`,
-  `ProjectionBudget.cumValue_nonneg_of_forall_mem`, with
-  `ProjectionBudget.late_admission_is_not_enough` showing the weakening is false), and
-  both bear on the **row** version of the paper as much as the projection one. *Cost of
-  deciding now:* low — they are two paragraphs of paper text. *Cost of not deciding:*
-  the drafted spine has an undischarged step in it regardless of which construction
-  wins.
-
-- **Rule on six provisional names from the projection round.** `projection enforcement
+- **Rule on the provisional names from the projection round.** `projection enforcement
   trader`, `projection position`, `intrinsic Euclidean conformance`, `per-date
-  admission`, `cube extension of the market-maker contract`, and the Lean names
-  `IsNearestPoint`, `Realizes`, `Fragment`, `cumValue`. They are deliberately absent
+  admission`, `cube extension of the market-maker contract`, **`market resistance`** for
+  `ρ_n = ε_n + A_n`, and **`calibrated intensity`** for `λ_n = ρ_n/δ_n²`; plus the Lean
+  names `IsNearestPoint`, `Realizes`, `Fragment`, `cumValue`, `FragmentLocal`, `extend`,
+  `EffectiveEnforcer`, `ProjectionSchedule`, `FinAffine`. They are deliberately absent
   from `state/vocabulary.json`. *Doing it* is reading
   `.../2026-08-18-projection-enforcement/THEOREM_MAP.md`. *Waiting* costs nothing today
-  and leaves four more Lean files carrying names marked provisional under
-  `AGENTS.md` §6.
+  and leaves seven Lean files carrying names marked provisional under `AGENTS.md` §6.
 
-- **Decide whether the projection results are worth registering as claims.** Twenty-six
-  kernel-checked, axiom-clean theorems across four files, plus twelve exact-arithmetic
+- **Rule on the upstream change that closes Debt B.** The modified market's computability
+  now reduces to one `Computable₂` statement about a bounded evaluator, and discharging it
+  needs three lemmas that are `private` in the pinned `Formalized-Agent-Foundations`:
+  `marketMakerSearchUpToTradeList_prim` (`LIACompiler.lean:4804`),
+  `tradingFirmTradesFromStageTradeLists_prim` (6960), `efAbsBound_prim` (6254). The clean
+  fix is upstream: give the erased recurrence `liaPrefixFromTradeListsAtFuel` a
+  `Primrec₂` trade-list hook, of which ordinary LIA is the empty instance, so
+  `LIA_is_logical_inductor` is unaffected. *Doing it* is a small pull request against that
+  repository plus a pin bump in `lean/lakefile.toml` — both maintainer acts, which is why
+  this is here and not done. *Waiting* leaves Debt B open at a boundary that is no longer
+  mathematical. `.../2026-08-18-projection-enforcement/COMPUTABILITY.md` §7 has the exact
+  ask.
+
+- **Decide whether the projection results are worth registering as claims.** Ninety-nine
+  kernel-checked, axiom-clean results across seven files, plus twelve exact-arithmetic
   Python tests, none answering a filed `PRIORITIES.md` item, so none registered — the
   same posture as the traderized-enforcement inequalities above. *Doing it* is filing
   the item they answer. *Waiting* costs nothing; the files are green and the theorem
   map is honest about the one external hypothesis.
 
 ## Settled
+
+### 2026-08-18 — projection is the paper's traderization construction
+
+Enforcement of a quantitative price region is by the **projection trader**, which holds
+`λ_n(proj_{K_n}(P_n) − P_n)` on the day's fragment. The row construction is retained as
+the simpler special case, as the comparison, and as the source of the
+presentation-dependence observation; nothing about it is deleted or weakened, and for a
+single halfspace the two are the same trader. `DistanceComplete` and the `d_∞` dual route
+leave the critical path, because the paper's `ℓ^∞` conclusion follows from the Euclidean
+one at the same tolerance.
+
+Three consequences settled with it.
+
+**The canonical intensity is calibrated, not merely bounded below.** The construction uses
+`ρ_n = ε_n + A_n` and `λ_n = ρ_n/δ_n²` exactly, so the paper-facing budget carries no free
+parameter and its day charge is `(ρ_n/δ_n)·d₂(W|_{Φ_n}, K_n)`. The identity
+`λ_nδ_n = ρ_n/δ_n` holds only at that value; the general free-`λ` theorem is kept as a
+supporting result.
+
+**The cube-extension correction is accepted.** The market maker's day contract is applied
+at a point of the region, which is not a world; that extension is justified by affineness
+of a strategy's value together with the cube being the convex hull of the `{0,1}`
+assignments on the traded support. The point actually fed to the contract is the fragment
+target extended off the fragment by the displayed prices — a device for one inequality,
+not a credence. The credal conclusion concerns the fragment projection only.
+
+**The per-date-admission correction is accepted.** Zero risk capital follows from
+admission by every region up to the horizon, not from world-inclusivity plus global
+nesting; global nesting is a sufficient condition for it. The weakening to admission at
+the final date is false, and there is a witness.
+
+Statements of record: `Workspace.Normativity.Contrib.Projection{Force,Market,Compiler,
+Budget,Calibrated,Enforcer}` and `Workspace.Normativity.Contrib.EnforcedComputation`.
+Round: `projects/normativity/rounds/2026-08-18-projection-enforcement`.
+
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
 

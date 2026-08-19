@@ -21,6 +21,23 @@ kernel rather than argued:
 Point 4 is the one that changes the paper: **Debt A is no longer on the critical
 path.**
 
+**Closeout pass, 2026-08-18.** The author has settled the direction: projection is the
+paper's main construction, rows are the secondary special case, `DistanceComplete` is off
+the critical path, and the canonical construction uses the *calibrated* intensity
+`λ_n = ρ_n/δ_n²` rather than any larger value. Three things changed as a result.
+
+* The paper-facing budget now carries no free intensity: the day charge is
+  `(ρ_n/δ_n)·d₂(W|_{Φ_n}, K_n)` (`ProjectionCalibrated.cumValue_ge_of_calibrated`). The
+  identity `λ_nδ_n = ρ_n/δ_n` holds **only** at the calibrated value, which an earlier
+  draft of `PAPER_CLOSURE.md` got wrong; the correction is recorded there.
+* The cube extension is explicit. The point fed to the market maker's contract is the
+  fragment target extended off the fragment by the displayed prices; it is a device for one
+  inequality and not a credence, and the credal conclusion is about the fragment
+  projection only. Making it explicit *discharges* the cube hypothesis rather than
+  assuming it.
+* **Debt B is reduced to the source's own boundary.** `ComputableMarket` is no longer a
+  premise anywhere in the chain. See §F.
+
 Classification of every question the dispatch asked. The four grades are used
 literally: *proved* = kernel-checked here with no `sorry` and no axioms beyond
 `propext`, `Classical.choice`, `Quot.sound`; *proved conditional on a named standard
@@ -235,25 +252,46 @@ the projection route. The row route's theorems still hold.
 
 ## F. Computability of the modified construction
 
-**Proved for the new parts; unchanged and still open for the old part.**
+**Reduced to the source's own boundary; not closed.**
 
-Computable: the fragment schedule; the region as a rational polytope read off the
-finite deductive state restricted to the fragment; the max–min representation, by
-enumerating active sets; `ε_n = marketMakerError n` and `A_n = absBound`, both
-`ℚ`-valued computable functions in the pinned source; hence `λ_n = (ε_n + A_n)/δ_n²`;
-hence the compiled `EF`, which is a `def`; and its exact evaluation at the displayed
-rational prices by `EF.denoteRat`.
+`ComputableMarket` has been removed as a premise. `EnforcedComputation` introduces an
+`EffectiveEnforcer` — a function from the date and the ordinary aggregate's *trade list*
+to its own trade list — builds the modified bounded recurrence exactly as the source
+builds its own, and proves it monotone in the fuel, satisfiable at some fuel, and **sound**
+(every successful bounded run is the semantic construction). Minimizing over the fuel
+clock produces the exact rational quote program, so:
 
-Not closed, and **not made worse by the projection**: `ComputableMarket (history DP E)`
-remains an explicit premise, exactly as in the row route. This is the paper's Debt B,
-and the projection changes nothing about it — the modified market's computability is a
-statement about the market maker's fixed point, not about which trader was added.
+| claim | Lean |
+| --- | --- |
+| the modified market is computable | `EnforcedComputation.EnforcedBoundedEvaluatorCompiler.toComputableMarket` |
+| the deductive market is a logical inductor **in the source's original sense**, with no computability premise | `EnforcedComputation.isLogicalInductor_of_compiler_of_worldInclusive` |
+| from effective data: source-original LIC + Euclidean conformance + the `ℓ^∞` form | `ProjectionEnforcer.ProjectionSchedule.end_to_end` |
+| eventual coherence on every fixed finite set | `ProjectionEnforcer.ProjectionSchedule.eventual_coherence` |
 
-`EfficientlyComputable` constrains the traders that attempt exploitation, not the
-enforcement trader, so the exponential piece count does not conflict with any
-hypothesis of the criterion. It does mean the modified market is computable and not
-efficiently computable, which is the paper's own §10.2 disclaimer and is now attached
-to a specific exponential rather than to a general worry.
+`ProjectionEnforcer` supplies the effective input interface: `FinAffine = List ℚ × ℚ`
+rather than a function on sentences, so the schedule is finite data and every type in it is
+`Primcodable` from the pinned dependency's public instances.
+`ProjectionScheduleComputation` states the requirement and typechecks.
+
+Two facts fall out of the *type* rather than needing an argument: the enforcer cannot
+inspect the day's price (its arguments are the date and a trade list), and `absBound` is
+therefore computed before the day's fixed point.
+
+**What is left** is one object, `EnforcedBoundedEvaluatorCompiler` — the analogue of the
+source's own `LIABoundedEvaluatorCompiler`. It is not discharged because three lemmas
+needed for it are `private` in the pinned dependency: `marketMakerSearchUpToTradeList_prim`
+(`LIACompiler.lean:4804`), `tradingFirmTradesFromStageTradeLists_prim` (6960), and
+`efAbsBound_prim` (6254); that file has 398 private declarations and the recurrence-level
+entry points sit on top of most of them. The route to closure is an upstream change — give
+the erased recurrence a `Primrec₂` trade-list hook, of which ordinary LIA is the empty
+instance — after which the remaining work here is `Primrec₂ S.enforcer.trades`, which is
+mechanical. **The obstruction is module visibility and assembly, not mathematics.**
+`COMPUTABILITY.md §7` carries the exact ask.
+
+**Cost.** Effective, not efficient. The honest form is weaker than "exponential in the
+fragment": vertex enumeration, active-set enumeration and max–min expansion each blow up
+and compound, and getting an inequality description from a vertex list is facet
+enumeration. No single closed-form bound over the composite is claimed.
 
 ## G. Projection versus rows
 
@@ -309,9 +347,15 @@ Summary of what this pass changes and what it leaves:
    the projector is standard and written out but not formalized. A Lean proof of
    either is a substantial development (polyhedral geometry, hyperplane arrangements)
    and was not attempted here.
-2. **Debt B.** `ComputableMarket` for the modified recursive market. Unchanged by this
-   pass.
-3. **Efficiency.** Nothing here says the enforcement trader is efficient, and the
-   piece count says it is not. If a paper claim needs an efficient intrinsic enforcer,
-   that claim is not supported.
+2. **Debt B, the remaining sliver.** The bounded-evaluator compiler. Reduced from "assume
+   the market is computable" to one `Computable₂` statement about a bounded evaluator,
+   blocked on three `private` lemmas upstream. Engineering, not mathematics — see §F.
+3. **Efficiency.** Nothing here says the enforcement trader is efficient, and the cost
+   analysis says it is not. If a paper claim needs an efficient intrinsic enforcer, that
+   claim is not supported.
+
+5. **Nonemptiness of the deductive region.** The Lean never needs it separately, because
+   `IsNearestPoint` carries `K q`. The paper does: `Q_t^D = conv(PC(D_t)|_{Φ_t})` is a
+   region only if `PC(D_t) ≠ ∅`. That should be a standing hypothesis on `D` rather than
+   left implicit.
 4. **Theorem 9.3's separation direction.** Still open, and now optional.

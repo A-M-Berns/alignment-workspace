@@ -114,15 +114,36 @@ position `λ_t(proj_{Q_t^D}(P_t) − P_t)` with `λ_t ≥ (ε_t + A_t)/δ_t²`".
 `∃μ_t ∈ Δ(PC(D_t)) ∀φ ∈ Φ_t : |P_t(φ) − Pr_{μ_t}(φ)| ≤ δ_t` survives verbatim, and is
 now a corollary rather than the primitive statement.
 
-### §12's suggested file list and theorem surface are stale
+### §12's suggested file list, theorem surface and debts are stale
 
-`IntrinsicDistance.lean` in the suggested layout is the `d_∞` route. If the projection
-becomes the spine, the companion artifact's modules are the five in this round plus the
+`IntrinsicDistance.lean` in the suggested layout is the `d_∞` route. With the projection
+as the spine, the companion artifact's modules are the seven in this round plus the
 existing row modules, and the public surface gains
-`deductive_projection_end_to_end`, `cumValue_ge_of_projection`,
-`cumValue_nonneg_of_forall_mem`, `late_admission_is_not_enough`,
-`sup_conformance_of_dist2`. **Action: regenerate §12 from `THEOREM_MAP.md` rather than
-by hand.**
+`ProjectionSchedule.end_to_end`, `ProjectionSchedule.eventual_coherence`,
+`EnforcedBoundedEvaluatorCompiler.toComputableMarket`, `cumValue_ge_of_calibrated`,
+`cumValue_nonneg_of_calibrated`, `late_admission_is_not_enough`,
+`sup_conformance_of_dist2`. **Action: regenerate §12 from `THEOREM_MAP.md` rather than by
+hand.**
+
+**Both debts change.** Debt A leaves the critical path entirely. Debt B is no longer
+"retain `ComputableMarket` as a premise or transcribe the compiler": the premise is gone,
+and what remains is one bounded-evaluator compiler blocked on three `private` lemmas
+upstream. §12 should state that boundary and the upstream hook that closes it — see
+`COMPUTABILITY.md §7`.
+
+### §6.4's `M`, §8.3's charge and §10.6's intensity should all be calibrated
+
+The paper should fix `λ_t = ρ_t/δ_t²` rather than bound it below, because the day charge
+`(ρ_t/δ_t)·d₂(·)` is an identity only at that value. Stating §6.4 with `λ_t ≥ ρ_t/δ_t²`
+and then writing the budget as if equality held is the one arithmetic slip to avoid; this
+round made it and corrected it (`PAPER_CLOSURE.md §4`).
+
+### §10.6 needs a standing consistency hypothesis on `D`
+
+`Q_t^D = conv(PC(D_t)|_{Φ_t})` is a region only if `PC(D_t) ≠ ∅`. Nothing in the Lean
+needs it separately — `IsNearestPoint` carries `K q` — but the paper asserts the region
+exists before projecting onto it. **Action: state consistency of the stages as a standing
+hypothesis on the deductive process.**
 
 ## Notation and naming
 

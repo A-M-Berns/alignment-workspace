@@ -79,6 +79,55 @@ for the exact statements and `COMPUTABILITY.md §1` for the active-set derivatio
 The witness objects for the negative result are `wAtom`, `wFrag`, `wHistory`, `wWorld`,
 `wRegion`, `wProj`, `wLam`, `wTrader` with `wRealizes`, `wLam_nonneg`, `wNearest`.
 
+## `ProjectionCalibrated.lean` — the cube extension and the calibrated construction
+
+| paper | Lean |
+| --- | --- |
+| a region constrains only the fragment's coordinates | `FragmentLocal` |
+| the fragment target extended off the fragment by the displayed prices — a device for one inequality, **not** a credence | `extend`, `extend_of_mem`, `extend_of_not_mem` |
+| the extension changes neither the distance nor what the trader trades | `sqDist_extend`, `dist2_extend`, `ip_extend`, `realizes_extend` |
+| the extension is a legal cube point, so the cube hypothesis is discharged | `extend_mem_cube` |
+| extending a nearest point leaves it a nearest point | `isNearestPoint_extend` |
+| §6.4 market resistance `ρ_n = ε_n + A_n` | `resistance`, `resistance_pos` |
+| the calibrated intensity `λ_n = ρ_n/δ_n²` | `calibratedIntensity`, `calibratedIntensity_pos` |
+| the day charge identity `λ_n δ_n = ρ_n/δ_n` — **only at the calibrated value** | `calibratedIntensity_mul` |
+| §6.4/§10.6 the calibrated tolerance theorem, cube hypothesis discharged | `dist2_le_of_calibrated` |
+| §8.3 **(the paper-facing budget)** `−Σ_{k≤n}(ρ_k/δ_k)·d₂(w,K_k)` | `cumValue_ge_of_calibrated` |
+| §8.1 zero risk capital, calibrated | `cumValue_nonneg_of_calibrated` |
+
+## `EnforcedComputation.lean` — Debt B, reduced to the source's own boundary
+
+| paper | Lean |
+| --- | --- |
+| an enforcer presented as finite syntax | `EffectiveEnforcer`, `EffectiveEnforcer.strategy` |
+| the same enforcer as an `AdaptiveTrader`, so the preservation chain applies unchanged | `EffectiveEnforcer.adaptive` |
+| the day's aggregate from a decoded stage table | `enfAggregateFromStages`, `enfAggregateFromStages_eq_aggregateAt` |
+| the modified bounded recurrence | `enfPrefixFromStagesAtFuel`, `enfPrefixAtFuel` |
+| more fuel never loses a successful run | `enfPrefixFromStagesAtFuel_mono_success`, `enfPrefixAtFuel_mono_success` |
+| some fuel always suffices | `exists_enfPrefixFromStagesAtFuel`, `exists_enfPrefixAtFuel` |
+| every successful bounded run **is** the semantic construction | `enfPrefixFromStagesAtFuel_sound`, `enfPrefixAtFuel_sound` |
+| the bounded exact rational quote evaluator | `enfEncodedQuote`, `enfEncodedQuoteAtFuel`, `enfEncodedQuoteAtFuel_sound` |
+| **the one remaining boundary** | `EnforcedBoundedEvaluatorCompiler` |
+| minimization over the fuel clock | `EnforcedBoundedEvaluatorCompiler.quote_computable`, `exists_quote_code` |
+| §12 Debt B: **the modified market is computable** | `EnforcedBoundedEvaluatorCompiler.toComputableMarket` |
+| §10.5 the criterion with no computability premise | `isLogicalInductor_of_compiler`, `isLogicalInductor_of_compiler_of_worldInclusive` |
+
+## `ProjectionEnforcer.lean` — the effective input interface
+
+| paper | Lean |
+| --- | --- |
+| an affine form as finite data | `FinAffine` (`List ℚ × ℚ`), `FinGroup`, `FinRep` |
+| reading finite data against a coordinate list | `FinAffine.toAffineForm`, `FinGroup.toGroup`, `FinRep.toRep`, `repAt` |
+| §10.6's effective inputs: fragment schedule, tolerance schedule, representation schedule | `ProjectionSchedule` |
+| the effectiveness requirement, and the whole of it | `ProjectionScheduleComputation` |
+| the calibrated intensity, read off the ordinary aggregate's syntax | `ProjectionSchedule.intensity` |
+| §6.2 **the enforcement trader, as effective data** | `ProjectionSchedule.enforcer` |
+| its support is the day's fragment | `ProjectionSchedule.enforcer_support` |
+| the compiled trades are the projection position | `ProjectionSchedule.enforcer_realizes` |
+| §10.6 per-date Euclidean conformance for the schedule's market | `ProjectionSchedule.dist2_le_tol` |
+| §10.6 **the theorem of record** — source-original LIC, Euclidean conformance, `ℓ^∞` form | `ProjectionSchedule.end_to_end` |
+| §13 eventual coherence on every fixed finite set | `ProjectionSchedule.eventual_coherence` |
+
 ## What is reused unchanged from the merged row work
 
 `no_efficient_trader_exploits_of_projection` is
