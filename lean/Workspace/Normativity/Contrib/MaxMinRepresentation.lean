@@ -439,6 +439,60 @@ theorem isPiecewiseAffineOn_maxMin [Finite ι] {Γ : Set E} {g : ι → E →ᵃ
     · rw [if_neg hgood] at hxQ
       exact absurd hxQ (Set.notMem_empty x)
 
+/-! ## The source's arrangement can be empty
+
+Section 2 of the source asserts that the arrangement `H` — the hyperplanes
+`{gᵢ = gⱼ}` meeting `interior Γ` — is nonempty as soon as `f` has two distinct
+components, and the proof of Theorem 4.1(a) ends by density of the union of the
+regions of `H` in `Γ`.  On a closed convex domain with empty interior no hyperplane
+meets `interior Γ`, so `H` is empty, the family of regions is empty, and its union
+is not dense.  Here is such a domain carrying a piecewise affine function with two
+distinct components; `exists_maxMin_representation` applies to it unchanged. -/
+
+/-- The segment `[0,1] × {0}` in the plane. -/
+def segmentDomain : Set (ℝ × ℝ) := Icc 0 1 ×ˢ {0}
+
+/-- Two distinct affine functions on the plane, `x₁ - 1/2` and `1/2 - x₁`. -/
+noncomputable def segmentComponent : Fin 2 → ((ℝ × ℝ) →ᵃ[ℝ] ℝ) := fun l =>
+  if l = 0 then (LinearMap.fst ℝ ℝ ℝ).toAffineMap - AffineMap.const ℝ (ℝ × ℝ) (1 / 2)
+  else AffineMap.const ℝ (ℝ × ℝ) (1 / 2) - (LinearMap.fst ℝ ℝ ℝ).toAffineMap
+
+theorem segmentComponent_zero (p : ℝ × ℝ) : segmentComponent 0 p = p.1 - 1 / 2 := by
+  simp [segmentComponent]
+
+theorem segmentComponent_one (p : ℝ × ℝ) : segmentComponent 1 p = 1 / 2 - p.1 := by
+  simp [segmentComponent]
+
+theorem segment_hypotheses :
+    Convex ℝ segmentDomain ∧ IsClosed segmentDomain ∧ segmentDomain.Nonempty ∧
+      interior segmentDomain = ∅ ∧ segmentComponent 0 ≠ segmentComponent 1 ∧
+      IsPiecewiseAffineOn segmentDomain (fun p => |p.1 - 1 / 2|) segmentComponent := by
+  refine ⟨(convex_Icc 0 1).prod (convex_singleton 0), isClosed_Icc.prod isClosed_singleton,
+    ⟨(0, 0), by norm_num [segmentDomain]⟩, ?_, ?_, ?_⟩
+  · simp [segmentDomain, interior_prod_eq]
+  · intro hcon
+    have hval := congrArg (fun a => a ((1 : ℝ), (0 : ℝ))) hcon
+    rw [segmentComponent_zero, segmentComponent_one] at hval
+    norm_num at hval
+  · refine ⟨2, fun l => if l = 0 then Ici (1 / 2) ×ˢ univ else Iic (1 / 2) ×ˢ univ, id,
+      fun l => ?_, fun p hp => ?_, fun l p hp => ?_⟩
+    · by_cases h : l = 0 <;>
+        simp [h, isClosed_Ici.prod isClosed_univ, isClosed_Iic.prod isClosed_univ]
+    · rcases le_total (1 / 2 : ℝ) p.1 with h | h
+      · exact mem_iUnion.mpr ⟨0, by simpa using h⟩
+      · exact mem_iUnion.mpr ⟨1, by simpa using h⟩
+    · by_cases h : l = 0
+      · subst h
+        have hp1 : (1 / 2 : ℝ) ≤ p.1 := by simpa using hp.1
+        show |p.1 - 1 / 2| = segmentComponent 0 p
+        rw [segmentComponent_zero, abs_of_nonneg (by linarith : (0 : ℝ) ≤ p.1 - 1 / 2)]
+      · have hl : l = 1 := by omega
+        subst hl
+        have hp1 : p.1 ≤ (1 / 2 : ℝ) := by simpa using hp.1
+        show |p.1 - 1 / 2| = segmentComponent 1 p
+        rw [segmentComponent_one, abs_of_nonpos (by linarith : p.1 - 1 / 2 ≤ (0 : ℝ))]
+        ring
+
 /-! ## A nonvacuity witness
 
 A term inhabiting the full hypothesis package of `exists_maxMin_representation`:
@@ -489,3 +543,6 @@ end Workspace.Normativity.Contrib.MaxMin
 #print axioms Workspace.Normativity.Contrib.MaxMin.isPiecewiseAffineOn_maxMin
 #print axioms Workspace.Normativity.Contrib.MaxMin.abs_isPiecewiseAffineOn
 #print axioms Workspace.Normativity.Contrib.MaxMin.maxMin_hypotheses_nonvacuous
+#print axioms Workspace.Normativity.Contrib.MaxMin.segmentComponent_zero
+#print axioms Workspace.Normativity.Contrib.MaxMin.segmentComponent_one
+#print axioms Workspace.Normativity.Contrib.MaxMin.segment_hypotheses

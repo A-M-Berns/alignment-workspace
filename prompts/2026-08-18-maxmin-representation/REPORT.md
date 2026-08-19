@@ -60,8 +60,11 @@ Theorem 4.1(b).
   adapter from `Finset.sup'`/`Finset.inf'` to `ProjectionCompiler.Rep`'s nested
   lists exists. The conversion is routine; it is also an edit to a file this round
   was scoped away from.
-- **Erratum 1's counterexample is hand-checked, not formalized.** That
-  `interior ([0,1] × {0}) = ∅` in `ℝ²` is not proved in Lean here.
+- **Erratum 1 is formalized only in part.** `segment_hypotheses` proves that the
+  domain is closed, convex, nonempty, has empty interior and carries a piecewise
+  affine function with two distinct components. The step from there to "the
+  source's `H` is empty" is a reading: the arrangement `H` is not defined in Lean,
+  because nothing in this proof needs it.
 - **Nothing is registered.** No claim, no statement of record, no `PRIORITIES.md`
   item; the file sits in a contribution namespace, `ci-only`.
 

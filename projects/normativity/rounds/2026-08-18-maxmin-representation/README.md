@@ -32,12 +32,13 @@ index type, components `g : ι → E →ᵃ[ℝ] ℝ`.
 | `exists_maxMin_representation` | **Theorem 4.1(a)**: `∃ m (S : Fin (m+1) → Finset ι) (hS : ∀ j, (S j).Nonempty), ∀ x ∈ Γ, f x = ⨆ j, ⨅ i ∈ S j, g i x` (as `Finset.sup'`/`Finset.inf'`) |
 | `isPiecewiseAffineOn_maxMin` | **Theorem 4.1(b)**: a max of mins of continuous affine functions is piecewise affine on any domain (proved by Aristotle; reviewed and rebuilt here) |
 | `abs_isPiecewiseAffineOn`, `maxMin_hypotheses_nonvacuous` | inhabitation witness: `|·|` on `ℝ` with components `x`, `-x` and pieces `Ici 0`, `Iic 0` |
+| `segment_hypotheses` | errata witness: `[0,1] × {0} ⊂ ℝ²` is closed, convex, nonempty, has empty interior, and carries a piecewise affine function with two distinct components — so the source's arrangement `H` is empty there |
 
 Hypotheses of the main theorem: `Convex ℝ Γ`, `Γ.Nonempty`,
 `IsPiecewiseAffineOn Γ f g`, `Finite ι`. Nothing else.
 
 Re-verify: `cd lean && lake build`, then `python3 tests/audit_axioms.py`. Each
-declaration's `#print axioms` line is at the foot of the file; all eleven audit to
+declaration's `#print axioms` line is at the foot of the file; all fourteen audit to
 `[propext, Classical.choice, Quot.sound]`.
 
 ## How the proof differs from the source
@@ -80,7 +81,10 @@ whose genericity argument the source omits.
    `g₂ = 1/2 - x₁`. These are distinct, `Γ` is a closed convex set, and
    `interior Γ = ∅`, so no hyperplane meets `interior Γ` and `H = ∅`. Then `T = ∅`
    and `∪T = ∅` is not dense in `Γ`, so the final step of the Theorem 4.1(a) proof
-   fails. (Hand-checked; not formalized.)
+   fails. Kernel-checked as `segment_hypotheses`, except for the reading of `H`
+   itself, which is not defined in Lean: what is proved is that this domain is
+   closed, convex, nonempty, has empty interior, and carries a piecewise affine
+   function with two distinct components.
 2. **The statement survives that defect; the proof does not.** Theorem 4.1(a) is
    true for this `Γ` — `f = g₁ ∨ g₂` there — and is proved here for every nonempty
    convex `Γ`. So the missing hypothesis is a defect of the source's *proof*, not
