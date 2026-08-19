@@ -316,6 +316,45 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   the single record. *Cost of not deciding:* a stated requirement that nothing checks
   and that history does not uniformly satisfy.
 
+- **Rule on whether the paper's spine switches to the projection trader.** The
+  projection round recommends foregrounding
+  `Workspace.Normativity.Contrib.Projection{Force,Market,Compiler,Budget}` and demoting
+  §9's `d_∞` route, on the grounds that the paper's own `ℓ^∞` conclusion follows from
+  the Euclidean one at the same tolerance
+  (`ProjectionForce.sup_conformance_of_dist2`), which takes Debt A off the critical
+  path. The row work is untouched and no theorem about it is weakened. *Doing it* is
+  reading `.../2026-08-18-projection-enforcement/DECISION_MEMO.md` and
+  `PAPER_CLOSURE.md` §§1–3 and ruling. *Waiting* leaves two constructions both
+  described as primary in different documents, which is the state the paper is
+  currently in.
+
+- **Rule on the two corrections the audit found in the paper as drafted.** §6.4 applies
+  the market maker's contract at a point of `K`, which is not a world, without
+  justifying the extension; and §8.1 derives zero risk capital from world-inclusivity
+  plus global nesting where the proof needs per-date admission. Both are now
+  kernel-checked here (`ProjectionMarket.marketMaker_day_value_le_cube`,
+  `ProjectionBudget.cumValue_nonneg_of_forall_mem`, with
+  `ProjectionBudget.late_admission_is_not_enough` showing the weakening is false), and
+  both bear on the **row** version of the paper as much as the projection one. *Cost of
+  deciding now:* low — they are two paragraphs of paper text. *Cost of not deciding:*
+  the drafted spine has an unproved step in it regardless of which construction wins.
+
+- **Rule on six provisional names from the projection round.** `projection enforcement
+  trader`, `projection position`, `intrinsic Euclidean conformance`, `per-date
+  admission`, `cube extension of the market-maker contract`, and the Lean names
+  `IsNearestPoint`, `Realizes`, `Fragment`, `cumValue`. They are deliberately absent
+  from `state/vocabulary.json`. *Doing it* is reading
+  `.../2026-08-18-projection-enforcement/THEOREM_MAP.md`. *Waiting* costs nothing today
+  and leaves four more Lean files carrying names marked provisional under
+  `AGENTS.md` §6.
+
+- **Decide whether the projection results are worth registering as claims.** Twelve
+  kernel-checked, axiom-clean results across four files, plus twelve exact-arithmetic
+  Python tests, none answering a filed `PRIORITIES.md` item, so none registered — the
+  same posture as the traderized-enforcement inequalities above. *Doing it* is filing
+  the item they answer. *Waiting* costs nothing; the files are green and the theorem
+  map is honest about the one external hypothesis.
+
 ## Settled
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
