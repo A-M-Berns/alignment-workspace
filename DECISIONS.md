@@ -348,8 +348,8 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   and leaves four more Lean files carrying names marked provisional under
   `AGENTS.md` §6.
 
-- **Decide whether the projection results are worth registering as claims.** Twelve
-  kernel-checked, axiom-clean results across four files, plus twelve exact-arithmetic
+- **Decide whether the projection results are worth registering as claims.** Twenty-six
+  kernel-checked, axiom-clean theorems across four files, plus twelve exact-arithmetic
   Python tests, none answering a filed `PRIORITIES.md` item, so none registered — the
   same posture as the traderized-enforcement inequalities above. *Doing it* is filing
   the item they answer. *Waiting* costs nothing; the files are green and the theorem
