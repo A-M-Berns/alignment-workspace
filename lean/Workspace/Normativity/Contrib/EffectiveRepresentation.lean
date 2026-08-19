@@ -1157,4 +1157,35 @@ def compileOf (coords : List Sentence) (verts : List (List ℚ)) :
     List ProjectionCompiler.Rep :=
   (List.range coords.length).map fun k => projectorRepOf coords.length verts k
 
+/-! ## The representation a constraint schedule determines
+
+`compileOf` is a total function of raw data, so it gives a `RegionRepresentation` for
+*every* schedule, with no choice anywhere on its definitional path.  That is the whole
+difference from `RationalConstraintSchedule.canonicalRepresentation`, which is
+`noncomputable` because `ProjectionBridge.exists_repMap_mem` is an existence proof. -/
+
+open ConstraintSchedule
+open Workspace.Normativity.Contrib.ProjectionEnforcer
+
+/-- **The representation a schedule's own data determines.**  A genuine construction:
+`Classical.choose` appears nowhere on the path from `C` to this term. -/
+def effectiveRepresentation (C : RationalConstraintSchedule) : RegionRepresentation C where
+  reps := fun n => compileOf (C.coords n) (C.vertexData n)
+  dflt := default
+  reps_eval := by
+    intro n φ hφ p
+    have hlt : (C.coords n).idxOf φ < (C.coords n).length :=
+      List.idxOf_lt_length_of_mem hφ
+    have hrep : repAt (C.coords n) (compileOf (C.coords n) (C.vertexData n)) default φ
+        = projectorRepOf (C.coords n).length (C.vertexData n) ((C.coords n).idxOf φ) := by
+      rw [repAt, compileOf, getD_map_range _ _ _ hlt]
+    have hgen : projectorRepOf (C.coords n).length (C.vertexData n) ((C.coords n).idxOf φ)
+        = projectorRep (C.fragment n) (C.region n) ⟨(C.coords n).idxOf φ, hlt⟩ :=
+      projectorRepOf_eq (C.fragment n) (C.region n) ⟨(C.coords n).idxOf φ, hlt⟩
+    rw [hrep, hgen, repEval_projectorRep]
+    exact (ConstraintSchedule.target_mem (C.fragment n) (C.region n) p hφ).symm
+
+@[simp] lemma reps_effectiveRepresentation (C : RationalConstraintSchedule) (n : ℕ) :
+    (effectiveRepresentation C).reps n = compileOf (C.coords n) (C.vertexData n) := rfl
+
 end Workspace.Normativity.Contrib.EffectiveRepresentation
