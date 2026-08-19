@@ -239,6 +239,29 @@ theorem ProjectionSchedule.end_to_end (S : ProjectionSchedule) {DP : DeductivePr
   exact ⟨isLogicalInductor_of_compiler_of_worldInclusive process S.enforcer compiler hday,
     hconf, fun n => sup_conformance_of_dist2 (hq n) (hconf n)⟩
 
+/-- **The canonical instantiation.**  Taking the target to *be* what the day's
+representation computes makes the representation hypothesis definitional, so the whole
+content of the construction sits in one place: that the represented point is the nearest
+point of the day's region.  There is no freedom left in `q`. -/
+theorem ProjectionSchedule.end_to_end_canonical (S : ProjectionSchedule)
+    {DP : DeductiveProcess} (process : DeductiveProcessComputation DP)
+    (compiler : EnforcedBoundedEvaluatorCompiler process S.enforcer)
+    {K : ℕ → (Sentence → ℝ) → Prop}
+    (hlocal : ∀ n, FragmentLocal (S.fragment n).toFinset (K n))
+    (hKcube : ∀ n y, K n y → ∀ φ ∈ (S.fragment n).toFinset, 0 ≤ y φ ∧ y φ ≤ 1)
+    (hq : ∀ n, IsNearestPoint (S.fragment n).toFinset (K n) (S.market DP n)
+      (fun φ => repEval (S.fragment n) (S.rep n φ) (S.market DP n)))
+    (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) → K n v.payout) :
+    IsLogicalInductor (S.market DP) DP ∧
+      (∀ n, dist2 (S.fragment n).toFinset (S.market DP n)
+        (fun φ => repEval (S.fragment n) (S.rep n φ) (S.market DP n))
+          ≤ ((S.tol n : ℚ) : ℝ)) ∧
+      ∀ n, K n (fun φ => repEval (S.fragment n) (S.rep n φ) (S.market DP n)) ∧
+        ∀ φ ∈ (S.fragment n).toFinset,
+          |S.market DP n φ - repEval (S.fragment n) (S.rep n φ) (S.market DP n)|
+            ≤ ((S.tol n : ℚ) : ℝ) :=
+  S.end_to_end process compiler hlocal hKcube hq (fun _ _ _ => rfl) hadm
+
 /-- **Eventual coherence on every fixed finite set.**  If the fragment schedule exhausts
 the sentences and the tolerances vanish, then for every finite set of sentences and every
 positive slack, from some date on the displayed prices agree with an admitted price vector
@@ -265,4 +288,5 @@ end Workspace.Normativity.Contrib.ProjectionEnforcer
 #print axioms Workspace.Normativity.Contrib.ProjectionEnforcer.ProjectionSchedule.enforcer_realizes
 #print axioms Workspace.Normativity.Contrib.ProjectionEnforcer.ProjectionSchedule.dist2_le_tol
 #print axioms Workspace.Normativity.Contrib.ProjectionEnforcer.ProjectionSchedule.end_to_end
+#print axioms Workspace.Normativity.Contrib.ProjectionEnforcer.ProjectionSchedule.end_to_end_canonical
 #print axioms Workspace.Normativity.Contrib.ProjectionEnforcer.ProjectionSchedule.eventual_coherence

@@ -126,6 +126,7 @@ The witness objects for the negative result are `wAtom`, `wFrag`, `wHistory`, `w
 | the compiled trades are the projection position | `ProjectionSchedule.enforcer_realizes` |
 | §10.6 per-date Euclidean conformance for the schedule's market | `ProjectionSchedule.dist2_le_tol` |
 | §10.6 **the theorem of record** — source-original LIC, Euclidean conformance, `ℓ^∞` form | `ProjectionSchedule.end_to_end` |
+| the same with the representation hypothesis made definitional | `ProjectionSchedule.end_to_end_canonical` |
 | §13 eventual coherence on every fixed finite set | `ProjectionSchedule.eventual_coherence` |
 
 ## What is reused unchanged from the merged row work
