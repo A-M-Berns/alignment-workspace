@@ -99,34 +99,39 @@ def ProjectionSchedule.intensity (S : ProjectionSchedule) (n : ℕ)
   calibratedIntensity n (Strategy.tradeListAbsBound ord) (S.tol n)
 
 /-- **The projection enforcer, as effective data.**  A `def`: given the schedule, the
-day-`n` trade list is finite syntax computed from finite syntax. -/
+day-`n` trade list is finite syntax computed from finite syntax.
+
+The day's deductive stage is available and *not* used: this schedule carries its own
+representation, so its region does not depend on the stage.  An enforcer whose region is
+read off the stage — the deductive schedule of `DeductiveSchedule` — is what the argument
+exists for. -/
 def ProjectionSchedule.enforcer (S : ProjectionSchedule) : EffectiveEnforcer where
-  trades n ord :=
+  trades n _ ord :=
     (projectionStrategy (S.fragment n) n (S.intensity n ord) (S.rep n)).trades
-  rank_le n ord p hp :=
+  rank_le n _ ord p hp :=
     (projectionStrategy (S.fragment n) n (S.intensity n ord) (S.rep n)).rank_le p hp
 
 lemma ProjectionSchedule.enforcer_strategy (S : ProjectionSchedule) (n : ℕ)
-    (ord : Strategy n) :
-    S.enforcer.strategy n ord =
+    (D : Finset Sentence) (ord : Strategy n) :
+    S.enforcer.strategy n D ord =
       projectionStrategy (S.fragment n) n (S.intensity n ord.trades) (S.rep n) := rfl
 
 /-- The traded support is exactly the day's fragment. -/
 theorem ProjectionSchedule.enforcer_support (S : ProjectionSchedule) (n : ℕ)
-    (ord : Strategy n) :
-    (S.enforcer.strategy n ord).support = (S.fragment n).toFinset := by
-  rw [S.enforcer_strategy n ord]
+    (D : Finset Sentence) (ord : Strategy n) :
+    (S.enforcer.strategy n D ord).support = (S.fragment n).toFinset := by
+  rw [S.enforcer_strategy n D ord]
   exact projectionStrategy_support (S.fragment n) n (S.intensity n ord.trades) (S.rep n)
 
 /-- **The bridge.**  When the schedule's day-`n` representations evaluate to the target's
 coordinates at the day's prices, the compiled trades are the projection position at the
 calibrated intensity — so the force algebra applies to them. -/
 theorem ProjectionSchedule.enforcer_realizes (S : ProjectionSchedule) (n : ℕ)
-    (ord : Strategy n) (V : History) (q : Sentence → ℝ)
+    (D : Finset Sentence) (ord : Strategy n) (V : History) (q : Sentence → ℝ)
     (hrep : ∀ φ ∈ S.coords n, repEval (S.fragment n) (S.rep n φ) (V n) = q φ) :
     Realizes (S.fragment n).toFinset
-      ((S.intensity n ord.trades : ℚ) : ℝ) q (S.enforcer.strategy n ord) V := by
-  rw [S.enforcer_strategy n ord]
+      ((S.intensity n ord.trades : ℚ) : ℝ) q (S.enforcer.strategy n D ord) V := by
+  rw [S.enforcer_strategy n D ord]
   exact projectionStrategy_realizes (S.fragment n) n (S.intensity n ord.trades)
     (S.rep n) V q hrep
 
@@ -152,7 +157,8 @@ lemma ProjectionSchedule.aggregate_join (S : ProjectionSchedule) (DP : Deductive
 lemma ProjectionSchedule.realizedEnforcer_strat (S : ProjectionSchedule)
     (DP : DeductiveProcess) (n : ℕ) :
     (realizedEnforcer DP (S.enforcer.adaptive DP)).strat n =
-      S.enforcer.strategy n ((realizedFirm DP (S.enforcer.adaptive DP)).strat n) := rfl
+      S.enforcer.strategy n (DP.D n)
+        ((realizedFirm DP (S.enforcer.adaptive DP)).strat n) := rfl
 
 /-- **Finite-time Euclidean conformance for the schedule's market.**  At every date the
 displayed price is within the requested tolerance of the day's region, in the intrinsic
@@ -172,7 +178,7 @@ theorem ProjectionSchedule.dist2_le_tol (S : ProjectionSchedule) (DP : Deductive
       ((calibratedIntensity n (Strategy.tradeListAbsBound ord.trades) (S.tol n) : ℚ) : ℝ) q
       ((realizedEnforcer DP (S.enforcer.adaptive DP)).strat n) (marketMakerHistory Tr) := by
     rw [S.realizedEnforcer_strat DP n, ← hord, ← hmarket]
-    exact S.enforcer_realizes n ord (S.market DP) q hrep
+    exact S.enforcer_realizes n (DP.D n) ord (S.market DP) q hrep
   rw [hmarket] at hq hrep ⊢
   exact dist2_le_of_calibrated Tr n ord
     ((realizedEnforcer DP (S.enforcer.adaptive DP)).strat n)
@@ -216,7 +222,8 @@ theorem ProjectionSchedule.end_to_end (S : ProjectionSchedule) {DP : DeductivePr
         (S.market DP) v.payout := by
     intro n v hv
     refine day_value_nonneg (Φ := (S.fragment n).toFinset) (K := K n)
-      (S.enforcer_realizes n ((realizedFirm DP (S.enforcer.adaptive DP)).strat n)
+      (S.enforcer_realizes n (DP.D n)
+        ((realizedFirm DP (S.enforcer.adaptive DP)).strat n)
         (S.market DP) (q n) (hrep n)) (hlam n) (hq n) v.payout (hadm n v hv)
   exact ⟨isLogicalInductor_of_compiler_of_worldInclusive process S.enforcer compiler hday,
     hconf, fun n => sup_conformance_of_dist2 (hq n) (hconf n)⟩

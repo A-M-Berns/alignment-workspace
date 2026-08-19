@@ -32,23 +32,27 @@ open Workspace.Normativity.Contrib.EnforcedComputation
 
 /-- The enforcer is an effective function of the date and the ordinary trade list. -/
 structure EffectiveEnforcerComputation (E : EffectiveEnforcer) where
-  /-- The day's enforcement trade list is primitive recursive in the date and the ordinary
-  aggregate's trade list. -/
-  tradesComputable : Primrec₂ E.trades
+  /-- The day's enforcement trade list is primitive recursive in the date, the day's
+  deductive stage and the ordinary aggregate's trade list.  The stage is finite data the
+  compiler already holds, so admitting it here costs nothing and is what spares the caller
+  a `Primrec (fun n => DP.D n)` hypothesis. -/
+  tradesComputable : Primrec fun z : (ℕ × Finset Sentence) × List (EF × Sentence) =>
+    E.trades z.1.1 z.1.2 z.2
 
 /-! ## The fully erased recurrence -/
 
 /-- The modified recurrence over raw trade lists: the firm's day trade list with the
 enforcer's appended.  Same shape as the source's erased recurrence. -/
 def enfPrefixFromTradeListsAtFuel (D : ℕ → Finset Sentence)
-    (hook : ℕ → List (EF × Sentence) → List (EF × Sentence)) (fuel : ℕ) :
+    (hook : ℕ → Finset Sentence → List (EF × Sentence) → List (EF × Sentence))
+    (fuel : ℕ) :
     ℕ → Option (List RationalBeliefState)
   | 0 => some []
   | n + 1 => do
       let past ← enfPrefixFromTradeListsAtFuel D hook fuel n
       let state ← marketMakerSearchUpToTradeList
         (tradingFirmTradesFromStageTradeLists D (rationalHistory past) n ++
-          hook n (tradingFirmTradesFromStageTradeLists D (rationalHistory past) n))
+          hook n (D n) (tradingFirmTradesFromStageTradeLists D (rationalHistory past) n))
         n past (marketMakerError n) fuel
       some (past ++ [state])
 
@@ -56,7 +60,7 @@ lemma enfAggregateFromStages_trades (D : ℕ → Finset Sentence) (E : Effective
     (Q : ℕ → Sentence → ℚ) (n : ℕ) :
     (enfAggregateFromStages D E Q n).trades =
       tradingFirmTradesFromStageTradeLists D Q n ++
-        E.trades n (tradingFirmTradesFromStageTradeLists D Q n) := by
+        E.trades n (D n) (tradingFirmTradesFromStageTradeLists D Q n) := by
   have hfirm : tradingFirmTradesFromStageTradeLists D Q n =
       (TradingFirmAtFromStages D Q n).trades := by
     rw [tradingFirmTradesFromStageTradeLists_eq, TradingFirmAtFromStageLists_eq]
@@ -82,7 +86,9 @@ attribute [local irreducible] Nat.sqrt enfPrefixFromTradeListsAtFuel
   tradingFirmTradesFromStageTradeLists marketMakerSearchUpToTradeList
 
 private lemma enfPrefixFromTradeListsAtFuel_prim
-    {hook : ℕ → List (EF × Sentence) → List (EF × Sentence)} (hhook : Primrec₂ hook) :
+    {hook : ℕ → Finset Sentence → List (EF × Sentence) → List (EF × Sentence)}
+    (hhook : Primrec fun z : (ℕ × Finset Sentence) × List (EF × Sentence) =>
+      hook z.1.1 z.1.2 z.2) :
     Primrec fun p : (List (Finset Sentence) × ℕ) × ℕ =>
       enfPrefixFromTradeListsAtFuel (decodedStageTable p.1.1) hook p.1.2 p.2 := by
   let C := List (Finset Sentence) × ℕ
@@ -95,7 +101,8 @@ private lemma enfPrefixFromTradeListsAtFuel_prim
         (marketMakerSearchUpToTradeList
           (tradingFirmTradesFromStageTradeLists
             (decodedStageTable ctx.1) (rationalHistory past) ni.1 ++
-            hook ni.1 (tradingFirmTradesFromStageTradeLists
+            hook ni.1 (decodedStageTable ctx.1 ni.1)
+              (tradingFirmTradesFromStageTradeLists
               (decodedStageTable ctx.1) (rationalHistory past) ni.1))
           ni.1 past (marketMakerError ni.1) ctx.2).bind fun state =>
             some (past ++ [state]) := by
@@ -114,8 +121,9 @@ private lemma enfPrefixFromTradeListsAtFuel_prim
         marketMakerSearchUpToTradeList
           (tradingFirmTradesFromStageTradeLists
             (decodedStageTable x.1.1) (rationalHistory past) x.2.1 ++
-            hook x.2.1 (tradingFirmTradesFromStageTradeLists
-              (decodedStageTable x.1.1) (rationalHistory past) x.2.1))
+            hook x.2.1 (decodedStageTable x.1.1 x.2.1)
+              (tradingFirmTradesFromStageTradeLists
+                (decodedStageTable x.1.1) (rationalHistory past) x.2.1))
           x.2.1 past (marketMakerError x.2.1) x.1.2 := by
       have hord : Primrec fun z : X × List RationalBeliefState =>
           tradingFirmTradesFromStageTradeLists
@@ -125,15 +133,21 @@ private lemma enfPrefixFromTradeListsAtFuel_prim
         Primrec.fst.comp (Primrec.snd.comp Primrec.fst)
       have hpast : Primrec fun z : X × List RationalBeliefState => z.2 :=
         Primrec.snd
+      have hstage : Primrec fun z : X × List RationalBeliefState =>
+          decodedStageTable z.1.1.1 z.1.2.1 :=
+        (Primrec.list_getD (∅ : Finset Sentence)).comp
+          (Primrec.fst.comp (Primrec.fst.comp Primrec.fst)) hn
       have hhk : Primrec fun z : X × List RationalBeliefState =>
-          hook z.1.2.1 (tradingFirmTradesFromStageTradeLists
-            (decodedStageTable z.1.1.1) (rationalHistory z.2) z.1.2.1) :=
-        hhook.comp hn hord
+          hook z.1.2.1 (decodedStageTable z.1.1.1 z.1.2.1)
+            (tradingFirmTradesFromStageTradeLists
+              (decodedStageTable z.1.1.1) (rationalHistory z.2) z.1.2.1) :=
+        hhook.comp ((hn.pair hstage).pair hord)
       have htrades : Primrec fun z : X × List RationalBeliefState =>
           tradingFirmTradesFromStageTradeLists
             (decodedStageTable z.1.1.1) (rationalHistory z.2) z.1.2.1 ++
-            hook z.1.2.1 (tradingFirmTradesFromStageTradeLists
-              (decodedStageTable z.1.1.1) (rationalHistory z.2) z.1.2.1) :=
+            hook z.1.2.1 (decodedStageTable z.1.1.1 z.1.2.1)
+              (tradingFirmTradesFromStageTradeLists
+                (decodedStageTable z.1.1.1) (rationalHistory z.2) z.1.2.1) :=
         Primrec.list_append.comp hord hhk
       have hepsilon : Primrec fun z : X × List RationalBeliefState =>
           marketMakerError z.1.2.1 :=
@@ -143,8 +157,9 @@ private lemma enfPrefixFromTradeListsAtFuel_prim
       have hinput : Primrec fun z : X × List RationalBeliefState =>
           ((((tradingFirmTradesFromStageTradeLists
               (decodedStageTable z.1.1.1) (rationalHistory z.2) z.1.2.1 ++
-              hook z.1.2.1 (tradingFirmTradesFromStageTradeLists
-                (decodedStageTable z.1.1.1) (rationalHistory z.2) z.1.2.1),
+              hook z.1.2.1 (decodedStageTable z.1.1.1 z.1.2.1)
+                (tradingFirmTradesFromStageTradeLists
+                  (decodedStageTable z.1.1.1) (rationalHistory z.2) z.1.2.1),
             z.1.2.1), z.2), marketMakerError z.1.2.1),
               z.1.1.2) := (((htrades.pair hn).pair hpast).pair hepsilon).pair hfuel
       exact (marketMakerSearchUpToTradeList_primrec.comp hinput).to₂
@@ -159,8 +174,9 @@ private lemma enfPrefixFromTradeListsAtFuel_prim
         (marketMakerSearchUpToTradeList
           (tradingFirmTradesFromStageTradeLists
             (decodedStageTable x.1.1) (rationalHistory past) x.2.1 ++
-            hook x.2.1 (tradingFirmTradesFromStageTradeLists
-              (decodedStageTable x.1.1) (rationalHistory past) x.2.1))
+            hook x.2.1 (decodedStageTable x.1.1 x.2.1)
+              (tradingFirmTradesFromStageTradeLists
+                (decodedStageTable x.1.1) (rationalHistory past) x.2.1))
           x.2.1 past (marketMakerError x.2.1) x.1.2).bind fun state =>
             some (past ++ [state]) :=
       (Primrec.option_bind (hsearch.comp Primrec.fst Primrec.snd) hout).to₂

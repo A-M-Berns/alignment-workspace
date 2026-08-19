@@ -38,49 +38,48 @@ private lemma pair₂ {α β γ δ : Type} [Primcodable α] [Primcodable β] [Pr
 recursive in the date and the ordinary aggregate's trade list, given that the schedule's
 own three components are computable. -/
 theorem scheduleTrades_primrec (S : ProjectionSchedule)
-    (hS : ProjectionScheduleComputation S) : Primrec₂ S.enforcer.trades := by
-  have hcoords : Primrec fun a : ℕ × List (EF × Sentence) => S.coords a.1 :=
-    hS.coordsComputable.comp Primrec.fst
-  have hn : Primrec fun a : ℕ × List (EF × Sentence) => a.1 := Primrec.fst
-  have hreps : Primrec fun a : ℕ × List (EF × Sentence) => S.reps a.1 :=
-    hS.repsComputable.comp Primrec.fst
-  have hlam : Primrec fun a : ℕ × List (EF × Sentence) =>
-      calibratedIntensity a.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1) := by
-    have hin : Primrec fun a : ℕ × List (EF × Sentence) =>
-        ((a.1, Strategy.tradeListAbsBound a.2), S.tol a.1) :=
-      (Primrec.fst.pair (tradeListAbsBound_primrec.comp Primrec.snd)).pair
-        (hS.tolComputable.comp Primrec.fst)
+    (hS : ProjectionScheduleComputation S) :
+    Primrec fun z : (ℕ × Finset Sentence) × List (EF × Sentence) =>
+      S.enforcer.trades z.1.1 z.1.2 z.2 := by
+  have hcoords : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) =>
+      S.coords a.1.1 :=
+    hS.coordsComputable.comp (Primrec.fst.comp Primrec.fst)
+  have hn : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) => a.1.1 :=
+    Primrec.fst.comp Primrec.fst
+  have hreps : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) =>
+      S.reps a.1.1 :=
+    hS.repsComputable.comp (Primrec.fst.comp Primrec.fst)
+  have hlam : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) =>
+      calibratedIntensity a.1.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1.1) := by
+    have hin : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) =>
+        ((a.1.1, Strategy.tradeListAbsBound a.2), S.tol a.1.1) :=
+      ((Primrec.fst.comp Primrec.fst).pair
+          (tradeListAbsBound_primrec.comp Primrec.snd)).pair
+        (hS.tolComputable.comp (Primrec.fst.comp Primrec.fst))
     exact calibratedIntensity_primrec.comp hin
-  have hrep : Primrec₂ fun (a : ℕ × List (EF × Sentence)) (φ : Sentence) =>
-      (S.reps a.1).getD ((S.coords a.1).idxOf φ) S.dflt := by
-    have hidx : Primrec₂ fun (a : ℕ × List (EF × Sentence)) (φ : Sentence) =>
-        (S.coords a.1).idxOf φ :=
+  have hrep : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
+      (S.reps a.1.1).getD ((S.coords a.1.1).idxOf φ) S.dflt := by
+    have hidx : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
+        (S.coords a.1.1).idxOf φ :=
       Primrec.list_idxOf.comp₂ Primrec₂.right (hcoords.comp₂ Primrec₂.left)
     exact (Primrec.list_getD S.dflt).comp₂ (hreps.comp₂ Primrec₂.left) hidx
-  have hbody : Primrec₂ fun (a : ℕ × List (EF × Sentence)) (φ : Sentence) =>
-      (coefEFof (S.coords a.1) a.1
-        (calibratedIntensity a.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1))
-        ((S.reps a.1).getD ((S.coords a.1).idxOf φ) S.dflt) φ, φ) := by
-    have hef : Primrec₂ fun (a : ℕ × List (EF × Sentence)) (φ : Sentence) =>
-        coefEFof (S.coords a.1) a.1
-          (calibratedIntensity a.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1))
-          ((S.reps a.1).getD ((S.coords a.1).idxOf φ) S.dflt) φ := by
-      have hin : Primrec₂ fun (a : ℕ × List (EF × Sentence)) (φ : Sentence) =>
-          ((((S.coords a.1), a.1),
-            calibratedIntensity a.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1)),
-            ((S.reps a.1).getD ((S.coords a.1).idxOf φ) S.dflt, φ)) :=
+  have hbody : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
+      (coefEFof (S.coords a.1.1) a.1.1
+        (calibratedIntensity a.1.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1.1))
+        ((S.reps a.1.1).getD ((S.coords a.1.1).idxOf φ) S.dflt) φ, φ) := by
+    have hef : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
+        coefEFof (S.coords a.1.1) a.1.1
+          (calibratedIntensity a.1.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1.1))
+          ((S.reps a.1.1).getD ((S.coords a.1.1).idxOf φ) S.dflt) φ := by
+      have hin : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
+          ((((S.coords a.1.1), a.1.1),
+            calibratedIntensity a.1.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1.1)),
+            ((S.reps a.1.1).getD ((S.coords a.1.1).idxOf φ) S.dflt, φ)) :=
         pair₂ (pair₂ (pair₂ (hcoords.comp₂ Primrec₂.left) (hn.comp₂ Primrec₂.left))
           (hlam.comp₂ Primrec₂.left)) (pair₂ hrep Primrec₂.right)
       exact coefEFof_primrec.comp₂ hin
     exact pair₂ hef Primrec₂.right
-  have hmap : Primrec₂ fun (n : ℕ) (ord : List (EF × Sentence)) =>
-      (S.coords n).map fun φ =>
-        (coefEFof (S.coords n) n
-          (calibratedIntensity n (Strategy.tradeListAbsBound ord) (S.tol n))
-          ((S.reps n).getD ((S.coords n).idxOf φ) S.dflt) φ, φ) := by
-    have := Primrec.list_map hcoords hbody
-    exact this.to₂
-  exact hmap.of_eq fun n ord => rfl
+  exact (Primrec.list_map hcoords hbody).of_eq fun a => rfl
 
 /-- The effectiveness certificate `EnforcedCompiler` consumes. -/
 def effectiveEnforcer (S : ProjectionSchedule)

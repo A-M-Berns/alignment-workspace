@@ -41,39 +41,54 @@ open Workspace.Normativity.Contrib.DeductiveEnforcement
 
 /-! ## Enforcers given as effective data
 
-The enforcement trade list is computed from the day and the ordinary aggregate's trade
-list.  That is enough: the day-`n` intensity needs the ordinary aggregate's `absBound`,
-which is a function of its trade list, and nothing else the enforcer needs depends on the
-market's own state. -/
+The enforcement trade list is computed from the day, **the day's deductive stage**, and the
+ordinary aggregate's trade list.  The day-`n` intensity needs the ordinary aggregate's
+`absBound`, which is a function of its trade list; and an enforcer whose constraint is a
+*region derived from the deductive state* needs the stage.
 
-/-- An enforcement trader presented as finite syntax: given the day and the ordinary
-aggregate's trades, it emits its own trades. -/
+The stage argument is what keeps the construction free of an extra computability
+hypothesis, so it is worth saying why.  A region read off the day's stage would otherwise
+force `Primrec (fun n => DP.D n)` on the caller, and the pinned source's
+`DeductiveProcessComputation` does **not** supply that: it is a partial recursive program
+that merely *eventually* emits the stage.  But the compiler already carries the stage table
+as finite data — `enfPrefixFromTradeListsAtFuel` runs against an explicit
+`D : ℕ → Finset Sentence`, instantiated at `decodedStageTable`, which is
+`fun stages n => stages.getD n ∅` and so primitive recursive outright.  The source's own
+Trading Firm reads stages exactly this way.  Letting the enforcer read them too costs
+nothing and removes the hypothesis; refusing to would have been an artifact of this
+interface rather than a fact about the mathematics.
+
+An enforcer that does not need the stage simply ignores the argument. -/
+
+/-- An enforcement trader presented as finite syntax: given the day, the day's deductive
+stage and the ordinary aggregate's trades, it emits its own trades. -/
 structure EffectiveEnforcer where
-  /-- The day-`n` enforcement trades, as a function of the ordinary aggregate's trades. -/
-  trades : ℕ → List (EF × Sentence) → List (EF × Sentence)
+  /-- The day-`n` enforcement trades, as a function of the day's stage and the ordinary
+  aggregate's trades. -/
+  trades : ℕ → Finset Sentence → List (EF × Sentence) → List (EF × Sentence)
   /-- Every emitted coefficient is a legal day-`n` expressible feature. -/
-  rank_le : ∀ (n : ℕ) (ord : List (EF × Sentence)) (p : EF × Sentence),
-    p ∈ trades n ord → p.1.rank ≤ n
+  rank_le : ∀ (n : ℕ) (D : Finset Sentence) (ord : List (EF × Sentence))
+    (p : EF × Sentence), p ∈ trades n D ord → p.1.rank ≤ n
 
-/-- The day-`n` enforcement strategy against a given ordinary aggregate. -/
-def EffectiveEnforcer.strategy (E : EffectiveEnforcer) (n : ℕ) (ord : Strategy n) :
-    Strategy n where
-  trades := E.trades n ord.trades
-  rank_le := fun p hp => E.rank_le n ord.trades p hp
+/-- The day-`n` enforcement strategy against a given stage and ordinary aggregate. -/
+def EffectiveEnforcer.strategy (E : EffectiveEnforcer) (n : ℕ) (D : Finset Sentence)
+    (ord : Strategy n) : Strategy n where
+  trades := E.trades n D ord.trades
+  rank_le := fun p hp => E.rank_le n D ord.trades p hp
 
 /-- The same enforcer as an `AdaptiveTrader`, so that every preservation theorem in
 `DeductiveEnforcement` — all of which are generic in the added trader — applies to it
 unchanged. -/
 noncomputable def EffectiveEnforcer.adaptive (E : EffectiveEnforcer)
     (DP : DeductiveProcess) : AdaptiveTrader where
-  action n past := E.strategy n ((TradingFirm DP).action n past)
+  action n past := E.strategy n (DP.D n) ((TradingFirm DP).action n past)
 
 /-- The day-`n` aggregate built from a decoded stage table: the source firm's action
 joined with the enforcer's. -/
 def enfAggregateFromStages (D : ℕ → Finset Sentence) (E : EffectiveEnforcer)
     (Q : ℕ → Sentence → ℚ) (n : ℕ) : Strategy n :=
   Strategy.join [TradingFirmAtFromStages D Q n,
-    E.strategy n (TradingFirmAtFromStages D Q n)]
+    E.strategy n (D n) (TradingFirmAtFromStages D Q n)]
 
 lemma enfAggregateFromStages_eq_aggregateAt (DP : DeductiveProcess)
     (E : EffectiveEnforcer) (D : ℕ → Finset Sentence)
@@ -82,7 +97,7 @@ lemma enfAggregateFromStages_eq_aggregateAt (DP : DeductiveProcess)
     enfAggregateFromStages D E (rationalHistory past) n
       = aggregateAt DP (E.adaptive DP) n past := by
   unfold enfAggregateFromStages aggregateAt EffectiveEnforcer.adaptive
-  rw [TradingFirmAtFromStages_eq_of_eq_prefix DP D _ n hD]
+  rw [TradingFirmAtFromStages_eq_of_eq_prefix DP D _ n hD, hD n le_rfl]
   rfl
 
 /-! ## The bounded recurrence -/
