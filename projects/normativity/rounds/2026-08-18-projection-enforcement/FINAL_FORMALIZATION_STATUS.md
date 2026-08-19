@@ -2,225 +2,173 @@
 
 ## 1. Final verdict
 
-**NOT CLOSED.**
+**CLOSED.**
 
-One implementation artifact remains on the headline path, and it is named exactly:
-`ConstraintSchedule.RegionRepresentation.Effective` — the certificate that the max–min
-representation of the projector is produced by an algorithm rather than merely known to
-exist. Everything else the pass set out to discharge is discharged.
-
-The gap is not mathematical. `ConstraintSchedule.exists_representation` proves a correct
-representation exists for **every** schedule, kernel-checked and unconditionally. What is
-missing is a uniform computable function producing one, and the reason is precise:
-Ovchinnikov's index sets are cut out by `Finset.univ.filter (fun T => ∃ y ∈ Γ, up y = T)`,
-an existential over an infinite domain, so `ConstraintSchedule.canonicalRepresentation` is
-built by `choose` and is `noncomputable`.
-
-## 2. Strongest paper-facing theorems today
-
-Two, and the distinction between them is the whole story.
-
-**Conformance, with no hypotheses at all:**
+No implementation artifact remains on the headline path. The theorem of record is
 
 ```lean
-theorem ConstraintSchedule.conformance_of_constraints
-    (C : RationalConstraintSchedule) (DP : DeductiveProcess) (n : ℕ) :
-    dist2 (C.fragment n).toFinset (C.market C.canonicalRepresentation DP n)
-        (C.target C.canonicalRepresentation DP n) ≤ ((C.tol n : ℚ) : ℝ)
-```
-
-A constraint schedule and a deductive process, and nothing else. This holds because
-finite-time conformance is a *semantic* statement about the market the recursion produces;
-it never asks whether the enforcer's syntax was computed or chosen.
-
-**The criterion, which does need effectiveness:**
-
-```lean
-theorem ConstraintSchedule.end_to_end_of_constraints
-    (C : RationalConstraintSchedule) (hC : C.Computation)
-    (R : RegionRepresentation C) (hR : R.Effective) {DP : DeductiveProcess}
+theorem EffectiveRepresentation.end_to_end_of_constraints_effective
+    (C : RationalConstraintSchedule) (hC : C.Computation) {DP : DeductiveProcess}
     (process : DeductiveProcessComputation DP)
     (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) → C.regionPred n v.payout) :
-    IsLogicalInductor (C.market R DP) DP ∧
-      (∀ n, dist2 (C.fragment n).toFinset (C.market R DP n) (C.target R DP n)
-        ≤ ((C.tol n : ℚ) : ℝ)) ∧
-      ∀ n, C.regionPred n (C.target R DP n) ∧
+    IsLogicalInductor (C.market (effectiveRepresentation C) DP) DP ∧
+      (∀ n, dist2 (C.fragment n).toFinset
+          (C.market (effectiveRepresentation C) DP n)
+          (C.target (effectiveRepresentation C) DP n) ≤ ((C.tol n : ℚ) : ℝ)) ∧
+      ∀ n, C.regionPred n (C.target (effectiveRepresentation C) DP n) ∧
         ∀ φ ∈ (C.fragment n).toFinset,
-          |C.market R DP n φ - C.target R DP n φ| ≤ ((C.tol n : ℚ) : ℝ)
+          |C.market (effectiveRepresentation C) DP n φ
+            - C.target (effectiveRepresentation C) DP n φ| ≤ ((C.tol n : ℚ) : ℝ)
 ```
 
-The conclusion is the source's `IsLogicalInductor`, not a weakened or new criterion.
+Its inputs are a schedule of rational convex constraints, the computability of that
+schedule, the computability of the deductive process, and the admissibility of the
+constraint. The conclusion is the pinned source's own `IsLogicalInductor`, unweakened.
+
+`RegionRepresentation.Effective` — the certificate this document previously named as the one
+thing outstanding — is discharged by `effectiveRepresentation_effective`, available for
+every schedule.
+
+## 2. What closed it
+
+`ConstraintSchedule.canonicalRepresentation` was `noncomputable` because
+`ProjectionBridge.exists_repMap_mem` is an existence proof: Ovchinnikov's index sets are cut
+out by `Finset.univ.filter (fun T => ∃ y ∈ Γ, up y = T)`, an existential over an infinite
+domain that no primitive recursive function can evaluate. Four things replaced it.
+
+1. **`MaxMinRepresentation.maxMin_of_family`** — Theorem 4.1(a) with the index family
+   *supplied* rather than built by the internal filter, subject to two containment
+   conditions weaker than `S j = up y` in opposite directions and therefore checkable by a
+   generator.
+
+2. **`FourierMotzkin`** — rational linear feasibility, decided and verified. `feasible_iff`
+   holds in both directions; `<` and `≤` are kept distinct, because `λ_j > 0` is what
+   separates a support from a face containing it and the complement of an upper set is a
+   strict condition. Equalities encode as two non-strict constraints. `feasible_primrec₂`
+   gives the certificate **uniform in the dimension**, which the fixed-dimension form could
+   not: the compiler's ambient dimension `d + m + 1` is read off its own arguments.
+
+3. **`ProjectorGenerator`** — `projectorFamily`, `projectorRep` and `projectorRepMap` as
+   `def`s, with `repEval_projectorRepMap` matching `exists_repMap_mem`'s conclusion exactly.
+   The construction turns on two points. The certificate cells are quadratic in `x`, and
+   introducing the barycentric weights `λ` together with the auxiliary scalar
+   `c := ⟪x − q, q⟫` removes both quadratic terms at once, since every `⟪v_j, v_i⟫` is a
+   rational constant. `c` is a free variable of the system rather than a definition, so it
+   had to be *forced*: `cOf_eq_of_holds` proves it is, by summing the support's residual
+   equations against `λ`. With `λ` present the projector's own value `Σ_j λ_j (v_j)_k` is
+   already linear, so no active-face index enters the system and none of `Regular`,
+   `gramInvQ` or `candidate_eq_proj_of_mem_cell` is used by it — faces supply only the
+   affine components.
+
+4. **`EffectiveRepresentation`** — the same pipeline a second time over raw, proof-free,
+   non-dependent data, with an agreement lemma at every step. This was necessary because
+   `projectorRep` takes a `Fragment` (a list bundled with a `Nodup` proof) and a
+   `RationalPolytope F.coords.length` (vertices in a type depending on the fragment), and
+   neither is `Primcodable`. The obstruction was never that the generator is ineffective,
+   but that its *type* is not one a computability statement can mention.
 
 ## 3. Dependency chain
 
-| arrow | names | constructive | kernel-checked | classical use |
-| --- | --- | --- | --- | --- |
-| deductive source data → finite rational polytope | `DeductiveRegion.admissiblePatterns`, `_sound`, `_complete`, `_ne_nil_iff`, `_mem_cube` | **yes** (`def`, brute-force search, no `native_decide`) | yes | none |
-| polytope → nearest point and certificate | `RationalPolytope.proj`, `proj_variational`, `eq_proj_of_vertexSet` | `proj` is `noncomputable` — proof-only, see §6 | yes | choice in `proj`, off the executable path |
-| polytope → rational affine pieces | `PolyhedralProjection.Face.piece`, `candidate`, `gramInvQ` | **yes** (`det⁻¹ • adjugate`, deliberately not `Ring.inverse`) | yes | none |
-| pieces → piecewise affinity | `PolyhedralCoverage.exists_face_mem_cell`, `isPiecewiseAffineOn_proj` | existence | yes | none on the executable path |
-| piecewise affinity → max–min | `MaxMinRepresentation.exists_maxMin_representation`, `PolyhedralCoverage.exists_maxMin_proj` | **no — existence only** | yes | `filter` over an infinite existential |
-| max–min → compiler `Rep` | `ProjectionBridge.evalR_ofGeom`, `exists_repMap_mem` | **no — `choose`** | yes | this is the gap |
-| `Rep` → EF trader | `ProjectionCompiler.projectionStrategy`, `_realizes`, `repEF_denoteRat` | **yes** (`def`) | yes | none |
-| trader → effective enforcer | `ProjectionEnforcer.ProjectionSchedule.enforcer`, `ProjectionEffective.scheduleTrades_primrec` | **yes** | yes | none |
-| enforcer → computable market | `EnforcedCompiler.compiler`, `.computableMarket`, `ProjectionEffective.computableMarket_of_schedule` | **yes** | yes | none |
-| market → finite-time conformance | `ProjectionCalibrated.dist2_le_of_calibrated`, `ConstraintSchedule.conformance_of_constraints` | semantic | yes | none |
-| admission → zero liability | `ProjectionBudget.cumValue_nonneg_of_forall_mem`, `DeductiveRegion.payout_mem_deductiveRegion` | semantic | yes | none |
-| all → original LIC | `EnforcedCompiler.isLogicalInductor`, `ConstraintSchedule.end_to_end_of_constraints` | — | yes | none |
+| arrow | names | constructive | kernel-checked |
+| --- | --- | --- | --- |
+| deductive source data → finite rational polytope | `DeductiveRegion.admissiblePatterns`, `_sound`, `_complete`, `_ne_nil_iff`, `_mem_cube` | **yes** | yes |
+| polytope → nearest point and certificate | `RationalPolytope.proj`, `proj_variational`, `eq_proj_of_vertexSet` | proof-only, see §6 | yes |
+| polytope → rational affine pieces | `PolyhedralProjection.Face.piece`, `gramInvQ` | **yes** | yes |
+| pieces → piecewise affinity | `PolyhedralCoverage.exists_face_mem_cell`, `isPiecewiseAffineOn_proj` | existence | yes |
+| piecewise affinity → max–min, family supplied | `MaxMinRepresentation.maxMin_of_family` | **yes** | yes |
+| rational feasibility | `FourierMotzkin.feasible`, `feasible_iff`, `feasible_primrec₂` | **yes** | yes |
+| feasibility → index family → `Rep` | `ProjectorGenerator.projectorFamily`, `projectorRep`, `repEval_projectorRep` | **yes** | yes |
+| structured `Rep` → raw compiler | `EffectiveRepresentation.compileOf`, `projectorRepOf_eq` | **yes** | yes |
+| raw compiler → `Primrec₂` | `compileLen_primrec`, `compileOf_primrec` | **yes** | yes |
+| compiler → `RegionRepresentation` + `Effective` | `effectiveRepresentation`, `effectiveRepresentation_effective` | **yes** | yes |
+| `Rep` → EF trader | `ProjectionCompiler.projectionStrategy`, `_realizes` | **yes** | yes |
+| trader → effective enforcer | `ProjectionEffective.scheduleTrades_primrec` | **yes** | yes |
+| enforcer → computable market | `EnforcedCompiler.computableMarket` | **yes** | yes |
+| all → original LIC | `end_to_end_of_constraints_effective` | — | yes |
 
-**The chain breaks in exactly one link:** max–min → `Rep`. Every arrow after it is
-constructive and every arrow before it is either constructive or proof-only.
+**The chain no longer breaks.** Every arrow is constructive or proof-only.
 
 ## 4. Hypotheses of the headline, classified
 
 | hypothesis | classification |
 | --- | --- |
 | `C : RationalConstraintSchedule` | the input itself — regions as rational polytopes, no compiled syntax |
-| `hC : C.Computation` | **intended mathematical assumption** — the schedule is effectively presented. All three fields are consumed |
+| `hC : C.Computation` | **intended** — the schedule is effectively presented. All three fields consumed |
 | `process : DeductiveProcessComputation DP` | **intended** — the source's own computability assumption |
-| `hadm` | **intended** — the constraint admits every plausible world. This is what buys zero liability and is not derivable in the generic theorem |
-| `R : RegionRepresentation C` | **not a substantive hypothesis** — `exists_representation` inhabits it for every `C`. It is a parameter only because the market's *syntax* depends on which representation is used, so `market` cannot quantify over it. No correctness is assumed of it |
-| `hR : R.Effective` | **implementation artifact — the only one** |
-
-Since one implementation artifact remains, the verdict is NOT CLOSED. That is the criterion,
-and it is not softened here.
+| `hadm` | **intended** — the constraint admits every plausible world. This buys zero liability, and is the paper's normative input |
+| — | no implementation artifact remains |
 
 ## 5. Explicit answers
 
 | question | answer |
 | --- | --- |
-| Is any `Rep` supplied by the caller? | **No.** `RegionRepresentation` is inhabited by `exists_representation` for every schedule; correctness is a theorem (`reps_eval`), not an assumption |
-| Is any representation-correctness theorem assumed? | **No.** `hrep` was the single category-(3) hypothesis of the earlier audit and is now derived from `ProjectionBridge.exists_repMap_mem` |
+| Is any `Rep` supplied by the caller? | **No.** `effectiveRepresentation C` is constructed from `C` |
+| Is any representation-correctness theorem assumed? | **No.** `reps_eval` is proved from `repEval_projectorRep` |
 | Is any projector supplied? | **No.** `C.target` is *defined* as the projection of the day's price |
 | Is any `ComputableMarket` supplied? | **No.** Produced by `EnforcedCompiler.computableMarket` |
-| Is any enforcer-computability premise supplied? | **No.** Derived by `ProjectionEffective.scheduleTrades_primrec` from the schedule's own computability |
-| Does any `Classical.choose` determine executable syntax? | **Yes — this is the gap.** `canonicalRepresentation` is `noncomputable` and built by `choose`; `R.Effective` exists precisely to demand an algorithm instead |
-| Is rational feasibility itself executable and verified? | **Not yet.** In progress; mathlib has none (its Fourier–Motzkin is `linarith` meta code, and its Farkas material is dual-cone theory, not a procedure) |
+| Is any enforcer-computability premise supplied? | **No.** Derived by `ProjectionEffective.scheduleTrades_primrec` |
+| Does any `Classical.choose` determine executable syntax? | **No.** `effectiveRepresentation` and `compileOf` are plain `def`s. Lean refuses to compile a `def` whose data uses `Classical.choice` without a `noncomputable` marker, so the build succeeding *is* the check |
+| Is rational feasibility itself executable and verified? | **Yes.** `FourierMotzkin.feasible`, with `feasible_iff` both ways and `feasible_primrec₂` |
 
-## 6. `noncomputable` on the path, and why each is admissible
+## 6. `noncomputable` on the path
 
-- `RationalPolytope.proj` — the mathematical nearest point. Proof-only: no executable
-  definition calls it. The trader's syntax comes from `projectionStrategy`, which is a `def`.
-- `ConstraintSchedule.target`, `targetAt` — defined *through* `proj`; they appear only in
-  statements.
-- `ConstraintSchedule.market` — `noncomputable` because it is the semantic recursion
-  (`marketMakerStates`), exactly as the pinned source's own `liaStates` is. Its computability
-  is the separate `ComputableMarket` certificate, which is proved.
-- `canonicalRepresentation` — **not admissible**, and is the gap.
+`RationalPolytope.proj`, `ConstraintSchedule.target`/`targetAt` and
+`ConstraintSchedule.market` remain `noncomputable`, and all are admissible: the first three
+are proof-only — no executable definition calls them, the trader's syntax coming from
+`projectionStrategy` — and `market` is the semantic recursion, exactly as the pinned
+source's own `liaStates` is, with its computability the separate `ComputableMarket`
+certificate that is proved.
 
-Axiom cleanliness does not establish computability, so this section is checked separately
-from the audit and by inspection of every `noncomputable def` in the chain.
+`canonicalRepresentation` is still present and still `noncomputable`. It is no longer on the
+headline path, and is retained only because `conformance_of_constraints` and
+`criterion_of_constraints` are stated at it.
 
 ## 7. Build, test, audit
 
 ```
-lake build                    Build completed successfully (2969 jobs)
-tests/audit_axioms.py         621 results across 43 files,
-                              all within [Classical.choice, Quot.sound, propext]
-tests/run.py                  ALL GREEN (14 projects)
-checkers.workspace_state      valid
-grep -r "sorry"               none in committed Lean
+lake build                    Build completed successfully (2973 jobs)
+#print axioms                 all 25 declarations of EffectiveRepresentation within
+                              [propext, Classical.choice, Quot.sound]
+grep -c sorry                 0 in the new file; none in committed Lean
+noncomputable in new file     none
 ```
+
+`Classical.choice` in the axiom list is unavoidable and does not compromise computational
+content: mathlib reaches `Mul ℚ` through structures with classical proof fields, so even
+`def t (p q : ℚ) := p * q` reports it. `Classical.choose` appears nowhere.
 
 ## 8. Remaining debt relevant to the paper
 
-**Headline-blocking (one item).**
+**None blocking the headline.**
 
-*An executable generator for the projector's max–min representation.* The route is settled
-and in progress:
+- **Cost.** The generator enumerates pairs of subsets over an already-exponential face list,
+  and the raw determinant adds a factorial factor on top. **The construction is doubly
+  exponential in the fragment dimension, and this is stated rather than omitted.** It closes
+  the theorem; it is not a practical algorithm. A singly-exponential construction plainly
+  exists — the realised upper sets are cells of a hyperplane arrangement — but needs
+  arrangement-vertex enumeration not formalized here.
 
-1. **Verified rational linear feasibility.** Fourier–Motzkin over `ℚ` with an explicit
-   strictness flag. `≤` and `<` are **not** identified: the strict form is genuinely
-   required, because `λ_j > 0` is what distinguishes a support from a face containing it,
-   and because the complement of an upper set is a strict condition. Equalities encode as
-   two non-strict constraints. Satisfaction is stated over `ℝ` with rational coefficients,
-   which is what lets a rational feasibility decision certify a real witness.
+- **The deductive specialization's effective half.** `DeductiveSchedule` closes the semantic
+  half: `regionPred_eq_deductiveRegion` identifies the constraint schedule's region with
+  `DeductiveRegion.deductiveRegion`, `hadm_of_deductive` discharges admissibility, and
+  conformance and criterion specialize with conclusions unchanged. Instantiating
+  `end_to_end_of_constraints_effective` at a deductive schedule additionally needs
+  `Primrec fun n => admissiblePatterns (DP.D n) (coords n)`, which reduces to `Primrec` for
+  `Sentence.atoms`, `sentenceBool` and `tableConsistent`. The pinned dependency proves
+  exactly these at `LIACompiler.lean` 5279–5560 — `atomListTable_prim`,
+  `formulaBoolStep_prim`, `formulaBoolDecoded_prim`, `sentenceBoolFromAtomList_prim`,
+  `tableConsistentFromAtomList_prim` — and **all five are `private`**. This is module
+  visibility, not mathematics: the same blocker Debt B had, resolved then by a purely
+  additive public re-export upstream (`d89817bc`), and the same remedy applies. Note also
+  that `DeductiveProcessComputation` supplies a partial recursive code, not `Primrec DP.D`,
+  so the deductive specialization will need an explicit primitive-recursive stage
+  presentation — weaker than arXiv:1609.03543's own "efficiently computable" hypothesis,
+  stronger than the pinned formalization's generalization of it, and to be stated rather
+  than hidden.
 
-2. **The system is linear after introducing barycentric weights and one scalar.** The
-   certificate cells are quadratic in `x`, because `⟪x − q, v − q⟫` multiplies two affine
-   functions of the unknowns; feeding them to a linear checker would be a category error.
-   Introducing the weights `λ` **and** the auxiliary scalar `c := ⟪x − q, q⟫` removes the
-   quadratic terms, since `−⟪x,q⟫ + ⟪q,q⟫ = −c` collapses both offending products at once
-   and every `⟪v_j, v_i⟫` is a rational constant. No H-representation and no facet
-   enumeration are needed.
+- `PolyhedralCoverage` establishes a **cover** only — not disjoint interiors, not normal
+  cones, not full-dimensionality. That is exactly what `IsPiecewiseAffineOn` needs, but a
+  reader wanting "the projection's linearity regions" does not get them here.
 
-   `c` is a free variable of the system, not a definition, so it must be *forced* rather
-   than assumed. It is: summing the support's equality constraints against `λ` gives
-   `⟪x − q, q⟫ = c` identically. The relaxation is therefore exact, and this is the step
-   the construction turns on.
-
-3. **The active piece drops out.** With `λ` present, the projector's own value is
-   `f(x) = Σ_j λ_j (v_j)_k` — already linear. So the system needs no active-face index, and
-   none of `Regular`, `gramInvQ` or `candidate_eq_proj_of_mem_cell` enters it. Faces are
-   needed only to supply the affine *components* `g_i` that the max–min ranges over. The
-   family is indexed by pairs (support `S`, upper set `T`), and the system is
-
-       Σ_j λ_j = 1;  λ_j = 0 for j ∉ S;  λ_j > 0 for j ∈ S
-       ⟪x, v_i⟫ − Σ_j λ_j ⟪v_j, v_i⟫ − c ≤ 0   for every vertex i
-       ⟪x, v_i⟫ − Σ_j λ_j ⟪v_j, v_i⟫ − c = 0   for i ∈ S
-       Σ_j λ_j (v_j)_k ≤ g_i(x)                 for i ∈ T
-       g_i(x) < Σ_j λ_j (v_j)_k                 for i ∉ T
-
-   all linear in `(x, λ, c)`.
-
-4. **Correctness reuses what is already kernel-checked.** Feasibility of `(S,T)` yields a
-   witness `x` whose `q := Σ λ_j v_j` lies in `K` and satisfies the variational inequality
-   at every vertex, so `q = proj_K(x)` by `RationalPolytope.eq_proj_of_vertexSet` — the
-   lemma that replaced Farkas — and then `T` is exactly the upper set at `x`. Conversely
-   any `x` yields a feasible pair via a barycentric representation of `proj_K(x)`. The
-   family is then fed to `MaxMinRepresentation.maxMin_of_family`, so none of Ovchinnikov's
-   geometry is reproved constructively.
-
-**Honest cost.** The enumeration ranges over pairs of subsets, and `faceList` is itself
-exponential in the vertex count, so the candidate count is **doubly exponential in the
-fragment dimension**. This closes the theorem and is not a practical algorithm. A
-singly-exponential construction plainly exists — the realised upper sets are cells of a
-hyperplane arrangement, of which there are polynomially many for fixed dimension — but it
-needs arrangement-vertex enumeration and general-position arguments that are not
-formalized here. No complexity claim beyond "finite and effective" is made, and the
-doubly-exponential bound is stated rather than omitted.
-
-**Not headline-blocking.**
-
-- **The deductive specialization's semantic half is now closed.**
-  `DeductiveSchedule.lean` builds a `RationalConstraintSchedule` from a deductive process,
-  a fragment schedule and a tolerance schedule, and proves
-  `regionPred_eq_deductiveRegion` — the constraint schedule's region predicate *is*
-  `DeductiveRegion.deductiveRegion`, transported through `WithLp.toLp` by
-  `IsLinearMap.image_convexHull`. From it, `hadm_of_deductive` discharges admissibility
-  from `payout_mem_deductiveRegion`, and `conformance_of_deductive` and
-  `criterion_of_deductive` specialize the two hypothesis-free theorems to the deductive
-  region with their conclusions unchanged.
-
-- **The deductive specialization's effective half is blocked, and the obstruction is the
-  same one Debt B had.** `RationalConstraintSchedule.Computation` reduces to
-  `Primrec fun n => admissiblePatterns (DP.D n) (coords n)`. Two corrections to what this
-  document said earlier:
-
-  * `Primcodable (Finset Sentence)` **does** exist in the pinned dependency
-    (`LIACompiler.lean:2224`), so `Primrec DP.D` is directly statable and no
-    list-of-sentences workaround is needed. `DeductiveProcessComputation` still does not
-    supply it, so the interface mismatch recorded above stands unchanged.
-  * The remaining work is **not** composition. It needs `Primrec` for `Sentence.atoms`,
-    for `sentenceBool` and hence `tableConsistent` — a strong-recursion tower over the
-    formula encoding. The dependency proves exactly these, at `LIACompiler.lean`
-    5279–5560: `atomListTable_prim`, `formulaBoolStep_prim`, `formulaBoolDecoded_prim`,
-    `sentenceBoolFromAtomList_prim`, `tableConsistentFromAtomList_prim`. **All five are
-    `private`**, so none is reachable from this repository.
-
-  This is module visibility, not mathematics — the identical situation that blocked Debt B,
-  which was resolved by a purely additive public re-export section upstream (commit
-  `d89817bc`, FAF PR #2). The same remedy applies, and until it is made, no deductive
-  specialization of `end_to_end_of_constraints` is claimed. No axiom was introduced and
-  `Computation` was not weakened.
-
-- No complexity bound is claimed. `faceList K` has `|verts| · 2^{|verts|}` entries, most with
-  empty cells; vertex enumeration, face enumeration, feasibility checking and max–min
-  expansion may compound. **The safe claim is that the construction is finite and effective
-  and that no useful polynomial or singly-exponential bound is asserted.**
-- `PolyhedralCoverage` establishes a cover only — not disjoint interiors, not normal cones,
-  not full-dimensionality. `IsPiecewiseAffineOn` asks only for a finite closed cover with
-  agreement on each piece, so this suffices, but a reader wanting "the projection's linearity
-  regions" does not have them.
-- Two round `REPORT.md` files were not written by their agents (harness restriction) and the
-  provisional names of six rounds await a ruling. Both are recorded in `DECISIONS.md`.
+- FAF PR #2 is pinned at a branch commit rather than a merged one. This is the one
+  administrative irregularity.
