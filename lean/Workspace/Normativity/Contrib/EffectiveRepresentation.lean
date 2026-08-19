@@ -1172,6 +1172,7 @@ def compileOf (coords : List Sentence) (verts : List (List ℚ)) :
 difference from `RationalConstraintSchedule.canonicalRepresentation`, which is
 `noncomputable` because `ProjectionBridge.exists_repMap_mem` is an existence proof. -/
 
+open Workspace.Normativity.Contrib.ProjectionForce
 open ConstraintSchedule
 open Workspace.Normativity.Contrib.ProjectionEnforcer
 
@@ -1480,4 +1481,57 @@ def effectiveRepresentation_effective (C : RationalConstraintSchedule) :
   compileComputable := compileOf_primrec
   reps_eq := fun _ => rfl
 
+/-! ## The theorem of record, with nothing supplied
+
+`ConstraintSchedule.end_to_end_of_constraints` took a `RegionRepresentation` and an
+`Effective` certificate as arguments.  Both are now built from the schedule itself, so the
+theorem below takes only the schedule, its computability, the deductive process's
+computability, and the admissibility of the constraint — and the last of those is the
+paper's own normative hypothesis, not an implementation artifact.
+
+The conclusion is copied unchanged, `IsLogicalInductor` included; nothing is weakened. -/
+
+/-- **The theorem of record, from constraint data alone.**  Same conclusion as
+`ConstraintSchedule.end_to_end_of_constraints`; the supplied representation is gone. -/
+theorem end_to_end_of_constraints_effective (C : RationalConstraintSchedule)
+    (hC : C.Computation) {DP : DeductiveProcess}
+    (process : DeductiveProcessComputation DP)
+    (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) → C.regionPred n v.payout) :
+    IsLogicalInductor (C.market (effectiveRepresentation C) DP) DP ∧
+      (∀ n, dist2 (C.fragment n).toFinset
+          (C.market (effectiveRepresentation C) DP n)
+          (C.target (effectiveRepresentation C) DP n) ≤ ((C.tol n : ℚ) : ℝ)) ∧
+      ∀ n, C.regionPred n (C.target (effectiveRepresentation C) DP n) ∧
+        ∀ φ ∈ (C.fragment n).toFinset,
+          |C.market (effectiveRepresentation C) DP n φ
+            - C.target (effectiveRepresentation C) DP n φ| ≤ ((C.tol n : ℚ) : ℝ) :=
+  ConstraintSchedule.end_to_end_of_constraints C hC (effectiveRepresentation C)
+    (effectiveRepresentation_effective C) process hadm
+
 end Workspace.Normativity.Contrib.EffectiveRepresentation
+
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.detOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.faceListOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.faceListOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.compOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.compOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.coeffListOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.mkConOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.mkConOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.vtxOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.gramOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.systemOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.systemOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.candidatePairsOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.projectorFamilyOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.projectorFamilyOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.idxListOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.idxListOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.projectorRepOf_eq
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.projectorRepOf_eq_L
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.projectorRepOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.compileLen_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.compileOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.effectiveRepresentation
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.effectiveRepresentation_effective
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.end_to_end_of_constraints_effective
