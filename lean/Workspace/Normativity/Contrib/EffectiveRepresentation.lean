@@ -707,4 +707,77 @@ lemma pieceOf_primrec {α : Type} [Primcodable α] {d : α → ℕ} {b : α → 
   exact Primrec.pair hcoeff
     (ratSub_prim.comp ((Primrec.list_getD (0 : ℚ)).comp hb hi) hsum)
 
+
+/-! ## The face enumeration on raw data
+
+`PolyhedralCoverage.faceList` pairs each vertex with each sublist of the vertex list.  The
+raw form is the same enumeration one level down, over `List (List ℚ)`, and the two agree
+once the vertices are flattened.  `List.sublists_map` is the whole of the bridge: taking
+sublists commutes with flattening each vertex. -/
+
+/-- The enumerated faces, as raw base/rest pairs. -/
+def faceListOf (verts : List (List ℚ)) : List (List ℚ × List (List ℚ)) :=
+  (verts.map fun b => verts.sublists.map fun r => (b, r)).flatten
+
+/-- **The raw enumeration is the structured one, flattened.** -/
+lemma faceListOf_eq {d : ℕ} (K : RationalPolytope d) :
+    faceListOf (K.verts.map List.ofFn)
+      = (PolyhedralCoverage.faceList K).map fun Φ => (faceBase Φ, faceRest Φ) := by
+  rw [faceListOf, PolyhedralCoverage.faceList, List.map_flatten, List.sublists_map,
+    List.map_map, List.map_map]
+  refine congrArg List.flatten (List.map_congr_left fun b _ => ?_)
+  simp only [Function.comp_apply, List.map_map]
+  rfl
+
+/-- The raw enumeration has one entry per enumerated face. -/
+lemma length_faceListOf {d : ℕ} (K : RationalPolytope d) :
+    (faceListOf (K.verts.map List.ofFn)).length = nf K := by
+  rw [faceListOf_eq, List.length_map]
+
+/-- Reading back the `i`-th raw face. -/
+lemma getD_faceListOf {d : ℕ} (K : RationalPolytope d) (i : Fin (nf K)) :
+    (faceListOf (K.verts.map List.ofFn)).getD (i : ℕ) ([], [])
+      = (faceBase ((PolyhedralCoverage.faceList K).get i),
+          faceRest ((PolyhedralCoverage.faceList K).get i)) := by
+  rw [faceListOf_eq]
+  have hlt : (i : ℕ) < ((PolyhedralCoverage.faceList K).map
+      fun Φ => (faceBase Φ, faceRest Φ)).length := by simpa using i.isLt
+  rw [List.getD_eq_getElem _ _ hlt, List.getElem_map]
+  rfl
+
+lemma faceListOf_primrec : Primrec faceListOf := by
+  have hinner : Primrec₂ fun (v : List (List ℚ)) (b : List ℚ) =>
+      v.sublists.map fun r => (b, r) := by
+    have h : Primrec fun z : List (List ℚ) × List ℚ =>
+        z.1.sublists.map fun r => (z.2, r) :=
+      Primrec.list_map (sublists_primrec.comp Primrec.fst)
+        ((Primrec.snd.comp Primrec.fst).pair Primrec.snd).to₂
+    exact h.to₂
+  exact Primrec.list_flatten.comp (Primrec.list_map Primrec.id hinner)
+
+/-! ## The affine components on raw data
+
+`ProjectorGenerator.comp K k i` is the `k`-th piece of the `i`-th enumerated face, and
+`ProjectionBridge.ofGeom` is what puts it in the compiler's syntax.  Since `pieceOf` already
+returns that syntax, the raw component is a lookup followed by `pieceOf`. -/
+
+/-- The `i`-th affine component of the `k`-th coordinate, on raw data. -/
+def compOf (d : ℕ) (verts : List (List ℚ)) (k i : ℕ) : ProjectionCompiler.AffineForm :=
+  pieceOf d ((faceListOf verts).getD i ([], [])).1
+    ((faceListOf verts).getD i ([], [])).2 k
+
+/-- **The raw component is the structured one.** -/
+lemma compOf_eq {d : ℕ} (K : RationalPolytope d) (k : Fin d) (i : Fin (nf K)) :
+    compOf d (K.verts.map List.ofFn) (k : ℕ) (i : ℕ)
+      = (List.ofFn (comp K k i).coeff, (comp K k i).const) := by
+  rw [compOf, getD_faceListOf]
+  exact pieceOf_eq ((PolyhedralCoverage.faceList K).get i) k
+
+lemma compOf_primrec {α : Type} [Primcodable α] {d : α → ℕ} {verts : α → List (List ℚ)}
+    {k i : α → ℕ} (hd : Primrec d) (hv : Primrec verts) (hk : Primrec k) (hi : Primrec i) :
+    Primrec fun a => compOf (d a) (verts a) (k a) (i a) := by
+  have hface : Primrec fun a => (faceListOf (verts a)).getD (i a) ([], []) :=
+    (Primrec.list_getD ([], [])).comp (faceListOf_primrec.comp hv) hi
+  exact pieceOf_primrec hd (Primrec.fst.comp hface) (Primrec.snd.comp hface) hk
+
 end Workspace.Normativity.Contrib.EffectiveRepresentation
