@@ -892,4 +892,169 @@ lemma gramOf_primrec {α : Type} [Primcodable α] {d : α → ℕ} {verts : α �
         (vtxOf_primrec (hv.comp Primrec.fst) (hi.comp Primrec.fst)) Primrec.snd)
   exact h.to₂
 
+/-! ### The six blocks, raw
+
+Each block is the structured constraint with `List.ofFn` pushed inside, so each agreement
+lemma is `mkConOf_eq` preceded by rewriting the two coefficient functions.  The strict flags
+are copied verbatim: `conSupportOf` is strict on the support and `conUpperOf` is strict off
+the upper set, exactly as in `ProjectorGenerator`. -/
+
+/-- `Σ_j λ_j ≤ 1`, raw. -/
+def conSumLeOf (d m : ℕ) : LinCon :=
+  mkConOf d m (zeroBlock d) ((List.range m).map fun _ => 1) 0 1 false
+
+/-- `−Σ_j λ_j ≤ −1`, raw. -/
+def conSumGeOf (d m : ℕ) : LinCon :=
+  mkConOf d m (zeroBlock d) ((List.range m).map fun _ => -1) 0 (-1) false
+
+/-- `−λ_j ≤ 0`, raw. -/
+def conNonnegOf (d m : ℕ) (j : ℕ) : LinCon :=
+  mkConOf d m (zeroBlock d)
+    ((List.range m).map fun j' => if j' = j then -1 else 0) 0 0 false
+
+/-- The support block, raw: strict on the support. -/
+def conSupportOf (d m : ℕ) (S : List ℕ) (j : ℕ) : LinCon :=
+  if j ∈ S then
+    mkConOf d m (zeroBlock d)
+      ((List.range m).map fun j' => if j' = j then -1 else 0) 0 0 true
+  else
+    mkConOf d m (zeroBlock d)
+      ((List.range m).map fun j' => if j' = j then 1 else 0) 0 0 false
+
+/-- The residual upper bound at vertex `i`, raw. -/
+def conVertLeOf (d : ℕ) (verts : List (List ℚ)) (i : ℕ) : LinCon :=
+  mkConOf d verts.length (vtxOf verts i)
+    ((List.range verts.length).map fun j => -gramOf d verts j i) (-1) 0 false
+
+/-- The reverse residual bound on the support, raw. -/
+def conVertGeOf (d : ℕ) (verts : List (List ℚ)) (S : List ℕ) (i : ℕ) : LinCon :=
+  if i ∈ S then
+    mkConOf d verts.length ((vtxOf verts i).map fun q => -q)
+      ((List.range verts.length).map fun j => gramOf d verts j i) 1 0 false
+  else
+    mkConOf d verts.length (zeroBlock d) (zeroBlock verts.length) 0 0 false
+
+/-- The upper-set block, raw: strict off the upper set. -/
+def conUpperOf (d : ℕ) (verts : List (List ℚ)) (k : ℕ) (T : List ℕ) (i : ℕ) : LinCon :=
+  if i ∈ T then
+    mkConOf d verts.length ((compOf d verts k i).1.map fun q => -q)
+      ((List.range verts.length).map fun j => (vtxOf verts j).getD k 0) 0
+      (compOf d verts k i).2 false
+  else
+    mkConOf d verts.length (compOf d verts k i).1
+      ((List.range verts.length).map fun j => -(vtxOf verts j).getD k 0) 0
+      (-(compOf d verts k i).2) true
+
+/-- **The system, raw.** -/
+def systemOf (d : ℕ) (verts : List (List ℚ)) (k : ℕ) (S T : List ℕ) : List LinCon :=
+  conSumLeOf d verts.length :: conSumGeOf d verts.length ::
+    ((List.range verts.length).map (conNonnegOf d verts.length) ++
+      (List.range verts.length).map (conSupportOf d verts.length S) ++
+      (List.range verts.length).map (conVertLeOf d verts) ++
+      (List.range verts.length).map (conVertGeOf d verts S) ++
+      (List.range (faceListOf verts).length).map (conUpperOf d verts k T))
+
+/-! ### Agreement -/
+
+lemma length_vertexData {d : ℕ} (K : RationalPolytope d) :
+    (K.verts.map List.ofFn).length = nv K := by simp
+
+lemma map_neg_vtxOf {d : ℕ} (K : RationalPolytope d) (i : Fin (nv K)) :
+    (vtxOf (K.verts.map List.ofFn) (i : ℕ)).map (fun q => -q)
+      = List.ofFn fun a => -vtx K i a := by
+  rw [vtxOf_eq]
+  exact List.map_ofFn
+
+lemma conSumLeOf_eq {d : ℕ} (K : RationalPolytope d) :
+    conSumLeOf d (nv K) = conSumLe d (nv K) := by
+  rw [conSumLeOf, conSumLe, zeroBlock_eq,
+    show ((List.range (nv K)).map fun _ : ℕ => (1 : ℚ)) = List.ofFn (fun _ : Fin (nv K) => (1 : ℚ))
+      from (ofFn_eq_map_range _ _ fun _ => rfl).symm, mkConOf_eq]
+
+lemma conSumGeOf_eq {d : ℕ} (K : RationalPolytope d) :
+    conSumGeOf d (nv K) = conSumGe d (nv K) := by
+  rw [conSumGeOf, conSumGe, zeroBlock_eq,
+    show ((List.range (nv K)).map fun _ : ℕ => (-1 : ℚ))
+        = List.ofFn (fun _ : Fin (nv K) => (-1 : ℚ))
+      from (ofFn_eq_map_range _ _ fun _ => rfl).symm, mkConOf_eq]
+
+lemma conNonnegOf_eq {d : ℕ} (K : RationalPolytope d) (j : Fin (nv K)) :
+    conNonnegOf d (nv K) (j : ℕ) = conNonneg d (nv K) j := by
+  rw [conNonnegOf, conNonneg, zeroBlock_eq,
+    show ((List.range (nv K)).map fun j' => if j' = (j : ℕ) then (-1 : ℚ) else 0)
+        = List.ofFn (fun j' : Fin (nv K) => if j' = j then (-1 : ℚ) else 0)
+      from (ofFn_eq_map_range _ _ fun j' => by
+        by_cases h : j' = j
+        · rw [if_pos h, if_pos (congrArg Fin.val h)]
+        · rw [if_neg h, if_neg (fun hc => h (Fin.ext hc))]).symm, mkConOf_eq]
+
+lemma conSupportOf_eq {d : ℕ} (K : RationalPolytope d) (S : List ℕ) (j : Fin (nv K)) :
+    conSupportOf d (nv K) S (j : ℕ) = conSupport d (nv K) S j := by
+  rw [conSupportOf, conSupport]
+  by_cases h : (j : ℕ) ∈ S
+  · rw [if_pos h, if_pos h, zeroBlock_eq,
+      show ((List.range (nv K)).map fun j' => if j' = (j : ℕ) then (-1 : ℚ) else 0)
+          = List.ofFn (fun j' : Fin (nv K) => if j' = j then (-1 : ℚ) else 0)
+        from (ofFn_eq_map_range _ _ fun j' => by
+          by_cases hj : j' = j
+          · rw [if_pos hj, if_pos (congrArg Fin.val hj)]
+          · rw [if_neg hj, if_neg (fun hc => hj (Fin.ext hc))]).symm, mkConOf_eq]
+  · rw [if_neg h, if_neg h, zeroBlock_eq,
+      show ((List.range (nv K)).map fun j' => if j' = (j : ℕ) then (1 : ℚ) else 0)
+          = List.ofFn (fun j' : Fin (nv K) => if j' = j then (1 : ℚ) else 0)
+        from (ofFn_eq_map_range _ _ fun j' => by
+          by_cases hj : j' = j
+          · rw [if_pos hj, if_pos (congrArg Fin.val hj)]
+          · rw [if_neg hj, if_neg (fun hc => hj (Fin.ext hc))]).symm, mkConOf_eq]
+
+lemma conVertLeOf_eq {d : ℕ} (K : RationalPolytope d) (i : Fin (nv K)) :
+    conVertLeOf d (K.verts.map List.ofFn) (i : ℕ) = conVertLe K i := by
+  rw [conVertLeOf, conVertLe, length_vertexData, vtxOf_eq,
+    show ((List.range (nv K)).map fun j => -gramOf d (K.verts.map List.ofFn) j (i : ℕ))
+        = List.ofFn (fun j : Fin (nv K) => -gram K j i)
+      from (ofFn_eq_map_range _ _ fun j => by rw [gramOf_eq]).symm, mkConOf_eq]
+
+lemma conVertGeOf_eq {d : ℕ} (K : RationalPolytope d) (S : List ℕ) (i : Fin (nv K)) :
+    conVertGeOf d (K.verts.map List.ofFn) S (i : ℕ) = conVertGe K S i := by
+  rw [conVertGeOf, conVertGe, length_vertexData]
+  by_cases h : (i : ℕ) ∈ S
+  · rw [if_pos h, if_pos h, map_neg_vtxOf,
+      show ((List.range (nv K)).map fun j => gramOf d (K.verts.map List.ofFn) j (i : ℕ))
+          = List.ofFn (fun j : Fin (nv K) => gram K j i)
+        from (ofFn_eq_map_range _ _ fun j => by rw [gramOf_eq]).symm, mkConOf_eq]
+  · rw [if_neg h, if_neg h, zeroBlock_eq, zeroBlock_eq, mkConOf_eq]
+
+lemma conUpperOf_eq {d : ℕ} (K : RationalPolytope d) (k : Fin d) (T : List ℕ)
+    (i : Fin (nf K)) :
+    conUpperOf d (K.verts.map List.ofFn) (k : ℕ) T (i : ℕ) = conUpper K k T i := by
+  have hc := compOf_eq K k i
+  rw [conUpperOf, conUpper, length_vertexData, hc]
+  by_cases h : (i : ℕ) ∈ T
+  · rw [if_pos h, if_pos h,
+      show (List.ofFn (comp K k i).coeff).map (fun q => -q)
+          = List.ofFn (fun a => -(comp K k i).coeff a) from List.map_ofFn,
+      show ((List.range (nv K)).map fun j => (vtxOf (K.verts.map List.ofFn) j).getD (k : ℕ) 0)
+          = List.ofFn (fun j : Fin (nv K) => vtx K j k)
+        from (ofFn_eq_map_range _ _ fun j => by
+          rw [vtxOf_eq, getD_ofFn _ _ k.isLt]).symm, mkConOf_eq]
+  · rw [if_neg h, if_neg h,
+      show ((List.range (nv K)).map fun j =>
+            -(vtxOf (K.verts.map List.ofFn) j).getD (k : ℕ) 0)
+          = List.ofFn (fun j : Fin (nv K) => -vtx K j k)
+        from (ofFn_eq_map_range _ _ fun j => by
+          rw [vtxOf_eq, getD_ofFn _ _ k.isLt]).symm, mkConOf_eq]
+
+/-- **The raw system is the structured one.** -/
+lemma systemOf_eq {d : ℕ} (K : RationalPolytope d) (k : Fin d) (S T : List ℕ) :
+    systemOf d (K.verts.map List.ofFn) (k : ℕ) S T = system K k S T := by
+  rw [systemOf, system, length_vertexData, length_faceListOf]
+  refine congrArg₂ List.cons (conSumLeOf_eq K) (congrArg₂ List.cons (conSumGeOf_eq K) ?_)
+  refine congrArg₂ (· ++ ·) (congrArg₂ (· ++ ·) (congrArg₂ (· ++ ·)
+    (congrArg₂ (· ++ ·) ?_ ?_) ?_) ?_) ?_
+  · exact (map_finRange_eq (nv K) _ _ fun j => (conNonnegOf_eq K j).symm).symm
+  · exact (map_finRange_eq (nv K) _ _ fun j => (conSupportOf_eq K S j).symm).symm
+  · exact (map_finRange_eq (nv K) _ _ fun i => (conVertLeOf_eq K i).symm).symm
+  · exact (map_finRange_eq (nv K) _ _ fun i => (conVertGeOf_eq K S i).symm).symm
+  · exact (map_finRange_eq (nf K) _ _ fun i => (conUpperOf_eq K k T i).symm).symm
+
 end Workspace.Normativity.Contrib.EffectiveRepresentation
