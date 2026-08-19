@@ -337,7 +337,7 @@ theorem ProjectionSchedule.end_to_end_effective (S : ProjectionSchedule)
     (hKcube : ∀ n y, K n y → ∀ φ ∈ (S.fragment n).toFinset, 0 ≤ y φ ∧ y φ ≤ 1)
     (hq : ∀ n, IsNearestPoint (S.fragment n).toFinset (K n) (S.market DP n) (q n))
     (hrep : ∀ n, ∀ φ ∈ S.coords n,
-      repEval (S.fragment n) (S.rep n φ) (S.market DP n) = q n φ)
+      repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n) = q n φ)
     (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) → K n v.payout) :
     IsLogicalInductor (S.market DP) DP ∧
       (∀ n, dist2 (S.fragment n).toFinset (S.market DP n) (q n) ≤ ((S.tol n : ℚ) : ℝ)) ∧

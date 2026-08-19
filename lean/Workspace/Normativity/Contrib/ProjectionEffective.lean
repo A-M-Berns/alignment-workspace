@@ -47,8 +47,8 @@ theorem scheduleTrades_primrec (S : ProjectionSchedule)
   have hn : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) => a.1.1 :=
     Primrec.fst.comp Primrec.fst
   have hreps : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) =>
-      S.reps a.1.1 :=
-    hS.repsComputable.comp (Primrec.fst.comp Primrec.fst)
+      S.reps a.1.1 a.1.2 :=
+    hS.repsComputable.comp (Primrec.fst.comp Primrec.fst) (Primrec.snd.comp Primrec.fst)
   have hlam : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) =>
       calibratedIntensity a.1.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1.1) := by
     have hin : Primrec fun a : (ℕ × Finset Sentence) × List (EF × Sentence) =>
@@ -58,7 +58,7 @@ theorem scheduleTrades_primrec (S : ProjectionSchedule)
         (hS.tolComputable.comp (Primrec.fst.comp Primrec.fst))
     exact calibratedIntensity_primrec.comp hin
   have hrep : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
-      (S.reps a.1.1).getD ((S.coords a.1.1).idxOf φ) S.dflt := by
+      (S.reps a.1.1 a.1.2).getD ((S.coords a.1.1).idxOf φ) S.dflt := by
     have hidx : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
         (S.coords a.1.1).idxOf φ :=
       Primrec.list_idxOf.comp₂ Primrec₂.right (hcoords.comp₂ Primrec₂.left)
@@ -66,15 +66,15 @@ theorem scheduleTrades_primrec (S : ProjectionSchedule)
   have hbody : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
       (coefEFof (S.coords a.1.1) a.1.1
         (calibratedIntensity a.1.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1.1))
-        ((S.reps a.1.1).getD ((S.coords a.1.1).idxOf φ) S.dflt) φ, φ) := by
+        ((S.reps a.1.1 a.1.2).getD ((S.coords a.1.1).idxOf φ) S.dflt) φ, φ) := by
     have hef : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
         coefEFof (S.coords a.1.1) a.1.1
           (calibratedIntensity a.1.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1.1))
-          ((S.reps a.1.1).getD ((S.coords a.1.1).idxOf φ) S.dflt) φ := by
+          ((S.reps a.1.1 a.1.2).getD ((S.coords a.1.1).idxOf φ) S.dflt) φ := by
       have hin : Primrec₂ fun (a : (ℕ × Finset Sentence) × List (EF × Sentence)) (φ : Sentence) =>
           ((((S.coords a.1.1), a.1.1),
             calibratedIntensity a.1.1 (Strategy.tradeListAbsBound a.2) (S.tol a.1.1)),
-            ((S.reps a.1.1).getD ((S.coords a.1.1).idxOf φ) S.dflt, φ)) :=
+            ((S.reps a.1.1 a.1.2).getD ((S.coords a.1.1).idxOf φ) S.dflt, φ)) :=
         pair₂ (pair₂ (pair₂ (hcoords.comp₂ Primrec₂.left) (hn.comp₂ Primrec₂.left))
           (hlam.comp₂ Primrec₂.left)) (pair₂ hrep Primrec₂.right)
       exact coefEFof_primrec.comp₂ hin
@@ -104,7 +104,7 @@ theorem end_to_end_of_computation (S : ProjectionSchedule) {DP : DeductiveProces
     (hKcube : ∀ n y, K n y → ∀ φ ∈ (S.fragment n).toFinset, 0 ≤ y φ ∧ y φ ≤ 1)
     (hq : ∀ n, ProjectionForce.IsNearestPoint (S.fragment n).toFinset (K n) (S.market DP n) (q n))
     (hrep : ∀ n, ∀ φ ∈ S.coords n,
-      repEval (S.fragment n) (S.rep n φ) (S.market DP n) = q n φ)
+      repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n) = q n φ)
     (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) → K n v.payout) :
     IsLogicalInductor (S.market DP) DP ∧
       (∀ n, dist2 (S.fragment n).toFinset (S.market DP n) (q n)

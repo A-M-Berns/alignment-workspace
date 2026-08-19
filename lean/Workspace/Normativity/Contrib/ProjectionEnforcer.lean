@@ -65,8 +65,12 @@ structure ProjectionSchedule where
   tol : ℕ → ℚ
   /-- Tolerances are strictly positive; a zero tolerance buys nothing. -/
   tol_pos : ∀ n, 0 < tol n
-  /-- The day-`n` max–min representations, positionally aligned with `coords n`. -/
-  reps : ℕ → List Rep
+  /-- The day-`n` max–min representations, positionally aligned with `coords n`, as a
+  function of the day's deductive stage.  A schedule whose region does not depend on the
+  stage ignores the argument; a schedule whose region is *read off* the stage — the
+  deductive one — is why the argument is there, and is what spares its caller a
+  `Primrec (fun n => DP.D n)` hypothesis the pinned source cannot supply. -/
+  reps : ℕ → Finset Sentence → List Rep
   /-- The value used where a lookup fails; it never occurs in a well-formed schedule. -/
   dflt : Rep
 
@@ -80,16 +84,17 @@ structure ProjectionScheduleComputation (S : ProjectionSchedule) where
   coordsComputable : Primrec S.coords
   /-- The tolerance schedule is computable. -/
   tolComputable : Primrec S.tol
-  /-- The representation schedule is computable. -/
-  repsComputable : Primrec S.reps
+  /-- The representation schedule is computable in the date and the day's stage. -/
+  repsComputable : Primrec₂ S.reps
 
 /-- The day-`n` fragment of a schedule. -/
 def ProjectionSchedule.fragment (S : ProjectionSchedule) (n : ℕ) : Fragment :=
   ⟨S.coords n, S.nodup n⟩
 
-/-- The day-`n` representation map of a schedule. -/
-def ProjectionSchedule.rep (S : ProjectionSchedule) (n : ℕ) : Sentence → Rep :=
-  repAt (S.coords n) (S.reps n) S.dflt
+/-- The day-`n` representation map of a schedule, against the day's stage. -/
+def ProjectionSchedule.rep (S : ProjectionSchedule) (n : ℕ) (D : Finset Sentence) :
+    Sentence → Rep :=
+  repAt (S.coords n) (S.reps n D) S.dflt
 
 /-- The day-`n` calibrated intensity, read off the ordinary aggregate's trade list.  It is
 computed before the day's price exists, because `tradeListAbsBound` looks only at
@@ -106,34 +111,34 @@ representation, so its region does not depend on the stage.  An enforcer whose r
 read off the stage — the deductive schedule of `DeductiveSchedule` — is what the argument
 exists for. -/
 def ProjectionSchedule.enforcer (S : ProjectionSchedule) : EffectiveEnforcer where
-  trades n _ ord :=
-    (projectionStrategy (S.fragment n) n (S.intensity n ord) (S.rep n)).trades
-  rank_le n _ ord p hp :=
-    (projectionStrategy (S.fragment n) n (S.intensity n ord) (S.rep n)).rank_le p hp
+  trades n D ord :=
+    (projectionStrategy (S.fragment n) n (S.intensity n ord) (S.rep n D)).trades
+  rank_le n D ord p hp :=
+    (projectionStrategy (S.fragment n) n (S.intensity n ord) (S.rep n D)).rank_le p hp
 
 lemma ProjectionSchedule.enforcer_strategy (S : ProjectionSchedule) (n : ℕ)
     (D : Finset Sentence) (ord : Strategy n) :
     S.enforcer.strategy n D ord =
-      projectionStrategy (S.fragment n) n (S.intensity n ord.trades) (S.rep n) := rfl
+      projectionStrategy (S.fragment n) n (S.intensity n ord.trades) (S.rep n D) := rfl
 
 /-- The traded support is exactly the day's fragment. -/
 theorem ProjectionSchedule.enforcer_support (S : ProjectionSchedule) (n : ℕ)
     (D : Finset Sentence) (ord : Strategy n) :
     (S.enforcer.strategy n D ord).support = (S.fragment n).toFinset := by
   rw [S.enforcer_strategy n D ord]
-  exact projectionStrategy_support (S.fragment n) n (S.intensity n ord.trades) (S.rep n)
+  exact projectionStrategy_support (S.fragment n) n (S.intensity n ord.trades) (S.rep n D)
 
 /-- **The bridge.**  When the schedule's day-`n` representations evaluate to the target's
 coordinates at the day's prices, the compiled trades are the projection position at the
 calibrated intensity — so the force algebra applies to them. -/
 theorem ProjectionSchedule.enforcer_realizes (S : ProjectionSchedule) (n : ℕ)
     (D : Finset Sentence) (ord : Strategy n) (V : History) (q : Sentence → ℝ)
-    (hrep : ∀ φ ∈ S.coords n, repEval (S.fragment n) (S.rep n φ) (V n) = q φ) :
+    (hrep : ∀ φ ∈ S.coords n, repEval (S.fragment n) (S.rep n D φ) (V n) = q φ) :
     Realizes (S.fragment n).toFinset
       ((S.intensity n ord.trades : ℚ) : ℝ) q (S.enforcer.strategy n D ord) V := by
   rw [S.enforcer_strategy n D ord]
   exact projectionStrategy_realizes (S.fragment n) n (S.intensity n ord.trades)
-    (S.rep n) V q hrep
+    (S.rep n D) V q hrep
 
 /-! ## The modified deductive market from a schedule -/
 
@@ -169,7 +174,7 @@ theorem ProjectionSchedule.dist2_le_tol (S : ProjectionSchedule) (DP : Deductive
     (hKcube : ∀ y, K y → ∀ φ ∈ (S.fragment n).toFinset, 0 ≤ y φ ∧ y φ ≤ 1)
     (hq : IsNearestPoint (S.fragment n).toFinset K (S.market DP n) q)
     (hrep : ∀ φ ∈ S.coords n,
-      repEval (S.fragment n) (S.rep n φ) (S.market DP n) = q φ) :
+      repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n) = q φ) :
     dist2 (S.fragment n).toFinset (S.market DP n) q ≤ ((S.tol n : ℚ) : ℝ) := by
   set Tr := realizedAggregate DP (S.enforcer.adaptive DP) with hTr
   set ord := (realizedFirm DP (S.enforcer.adaptive DP)).strat n with hord
@@ -198,7 +203,7 @@ theorem ProjectionSchedule.end_to_end (S : ProjectionSchedule) {DP : DeductivePr
     (hKcube : ∀ n y, K n y → ∀ φ ∈ (S.fragment n).toFinset, 0 ≤ y φ ∧ y φ ≤ 1)
     (hq : ∀ n, IsNearestPoint (S.fragment n).toFinset (K n) (S.market DP n) (q n))
     (hrep : ∀ n, ∀ φ ∈ S.coords n,
-      repEval (S.fragment n) (S.rep n φ) (S.market DP n) = q n φ)
+      repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n) = q n φ)
     (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) → K n v.payout) :
     IsLogicalInductor (S.market DP) DP ∧
       (∀ n, dist2 (S.fragment n).toFinset (S.market DP n) (q n) ≤ ((S.tol n : ℚ) : ℝ)) ∧
@@ -239,15 +244,15 @@ theorem ProjectionSchedule.end_to_end_canonical (S : ProjectionSchedule)
     (hlocal : ∀ n, FragmentLocal (S.fragment n).toFinset (K n))
     (hKcube : ∀ n y, K n y → ∀ φ ∈ (S.fragment n).toFinset, 0 ≤ y φ ∧ y φ ≤ 1)
     (hq : ∀ n, IsNearestPoint (S.fragment n).toFinset (K n) (S.market DP n)
-      (fun φ => repEval (S.fragment n) (S.rep n φ) (S.market DP n)))
+      (fun φ => repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n)))
     (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) → K n v.payout) :
     IsLogicalInductor (S.market DP) DP ∧
       (∀ n, dist2 (S.fragment n).toFinset (S.market DP n)
-        (fun φ => repEval (S.fragment n) (S.rep n φ) (S.market DP n))
+        (fun φ => repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n))
           ≤ ((S.tol n : ℚ) : ℝ)) ∧
-      ∀ n, K n (fun φ => repEval (S.fragment n) (S.rep n φ) (S.market DP n)) ∧
+      ∀ n, K n (fun φ => repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n)) ∧
         ∀ φ ∈ (S.fragment n).toFinset,
-          |S.market DP n φ - repEval (S.fragment n) (S.rep n φ) (S.market DP n)|
+          |S.market DP n φ - repEval (S.fragment n) (S.rep n (DP.D n) φ) (S.market DP n)|
             ≤ ((S.tol n : ℚ) : ℝ) :=
   S.end_to_end process compiler hlocal hKcube hq (fun _ _ _ => rfl) hadm
 

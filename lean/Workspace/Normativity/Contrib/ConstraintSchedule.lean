@@ -386,13 +386,13 @@ def schedule : ProjectionSchedule where
   nodup := C.nodup
   tol := C.tol
   tol_pos := C.tol_pos
-  reps := R.reps
+  reps := fun n _ => R.reps n
   dflt := R.dflt
 
 @[simp] lemma schedule_fragment (n : ℕ) : (C.schedule R).fragment n = C.fragment n := rfl
 
-@[simp] lemma schedule_rep (n : ℕ) (φ : Sentence) :
-    (C.schedule R).rep n φ = repAt (C.coords n) (R.reps n) R.dflt φ := rfl
+@[simp] lemma schedule_rep (n : ℕ) (D : Finset Sentence) (φ : Sentence) :
+    (C.schedule R).rep n D φ = repAt (C.coords n) (R.reps n) R.dflt φ := rfl
 
 /-- **The derived market**: the source deductive firm priced together with the enforcer the
 schedule's own regions generate. -/
@@ -407,7 +407,7 @@ noncomputable def target (DP : DeductiveProcess) (n : ℕ) : Sentence → ℝ :=
 hypothesis of every upstream statement, discharged. -/
 lemma repEval_market (DP : DeductiveProcess) (n : ℕ) :
     ∀ φ ∈ (C.schedule R).coords n,
-      repEval ((C.schedule R).fragment n) ((C.schedule R).rep n φ)
+      repEval ((C.schedule R).fragment n) ((C.schedule R).rep n (DP.D n) φ)
         ((C.schedule R).market DP n) = C.target R DP n φ :=
   fun φ hφ => R.reps_eval n φ hφ (C.market R DP n)
 
@@ -418,8 +418,8 @@ def scheduleComputation (hC : C.Computation) (hR : R.Effective) :
   coordsComputable := hC.coordsComputable
   tolComputable := hC.tolComputable
   repsComputable :=
-    (hR.compileComputable.comp hC.coordsComputable hC.vertsComputable).of_eq
-      fun n => (hR.reps_eq n).symm
+    ((hR.compileComputable.comp hC.coordsComputable hC.vertsComputable).comp
+      Primrec.fst).to₂.of_eq fun n _ => (hR.reps_eq n).symm
 
 /-! ## The payoff -/
 
