@@ -79,33 +79,31 @@ lemma Fragment.sum_eqQ (F : Fragment) (f : Sentence → ℚ) :
 
 /-! ## Rational affine forms on a fragment -/
 
-/-- An affine form in the day-`n` prices of a fragment, with rational data. -/
-structure AffineForm where
-  /-- The coefficients, positionally aligned with the fragment's coordinate list.  Finite
-  data rather than a function on sentences: a function on sentences is not `Primcodable`,
-  so it could never be an input to a primitive-recursive evaluator. -/
-  coeffs : List ℚ
-  /-- The constant term. -/
-  const : ℚ
+/-- An affine form on the fragment: the coefficients, positionally aligned with the
+fragment's coordinate list, paired with the constant term.  A product of standard types
+rather than a structure, so that it and everything built from it are `Primcodable` with no
+instances to write — and finite data rather than a function on sentences, which could never
+be an input to a primitive-recursive evaluator. -/
+abbrev AffineForm : Type := List ℚ × ℚ
 
 /-- The coefficient the form puts on a priced sentence: positional lookup against the
 fragment, `0` outside it.  `List.idxOf` and `List.getD` both have primitive-recursive
 certificates, which an association lookup does not. -/
 def AffineForm.coeff (F : Fragment) (a : AffineForm) (φ : Sentence) : ℚ :=
-  a.coeffs.getD (F.coords.idxOf φ) 0
+  a.1.getD (F.coords.idxOf φ) 0
 
 /-- The real value of an affine form at a price vector. -/
 def AffineForm.evalR (F : Fragment) (a : AffineForm) (p : Sentence → ℝ) : ℝ :=
-  (a.const : ℝ) + ∑ φ ∈ F.toFinset, (a.coeff F φ : ℝ) * p φ
+  (a.2 : ℝ) + ∑ φ ∈ F.toFinset, (a.coeff F φ : ℝ) * p φ
 
 /-- The exact rational value of an affine form at a rational price vector. -/
 def AffineForm.evalQ (F : Fragment) (a : AffineForm) (p : Sentence → ℚ) : ℚ :=
-  a.const + ∑ φ ∈ F.toFinset, a.coeff F φ * p φ
+  a.2 + ∑ φ ∈ F.toFinset, a.coeff F φ * p φ
 
 /-- The affine form, as an expressible feature of rank `n`. -/
 def affineEF (F : Fragment) (n : ℕ) (a : AffineForm) : EF :=
   ROIBudget.sumFeatures
-    (EF.const a.const :: F.coords.map fun φ => EF.mul (EF.const (a.coeff F φ)) (EF.price φ n))
+    (EF.const a.2 :: F.coords.map fun φ => EF.mul (EF.const (a.coeff F φ)) (EF.price φ n))
 
 lemma affineEF_rank_le (F : Fragment) (n : ℕ) (a : AffineForm) :
     (affineEF F n a).rank ≤ n := by

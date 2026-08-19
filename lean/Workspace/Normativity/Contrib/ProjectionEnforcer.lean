@@ -35,21 +35,6 @@ open Workspace.Normativity.Contrib.ProjectionCalibrated
 open Workspace.Normativity.Contrib.DeductiveEnforcement
 open Workspace.Normativity.Contrib.EnforcedComputation
 
-/-! ## The compiler's representations are finite data
-
-`AffineForm` carries a `List ℚ` and a `ℚ`, so it is `Primcodable` by transport along the
-obvious equivalence; `Group` and `Rep` are then `Primcodable` for free, being products and
-lists.  This is what lets a schedule be an input to a primitive-recursive evaluator. -/
-
-/-- `AffineForm` is a product of standard types in disguise. -/
-def affineFormEquivProd : AffineForm ≃ List ℚ × ℚ where
-  toFun a := (a.coeffs, a.const)
-  invFun p := ⟨p.1, p.2⟩
-  left_inv _ := rfl
-  right_inv _ := rfl
-
-instance : Primcodable AffineForm := Primcodable.ofEquiv _ affineFormEquivProd
-
 /-! ## The representation attached to a priced sentence
 
 `ProjectionCompiler.AffineForm` is now itself finite data — a `List ℚ` of coefficients
