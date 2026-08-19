@@ -343,6 +343,27 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   the item they answer. *Waiting* costs nothing; the files are green and the theorem
   map is honest about the one external hypothesis.
 
+- **Whether the deductive coherence region's vertex construction is registered, and
+  against which item.** `lean/Workspace/Normativity/Contrib/DeductiveRegion.lean`
+  proves the day-`n` region of a stage is a computable finite rational vertex list,
+  sound and complete about worlds, with the exact satisfiability hypothesis for
+  nonemptiness. It is `lean-proved` material sitting in a contribution namespace and
+  registered nowhere, because nothing enters the registry unasked. Item 42 is
+  adjacent but is *not* answered by it — that item asks for a polynomially
+  presentable row family, and this supplies the vertex set its baseline is computed
+  from. *Cost of deciding now:* low — either file an item and register the
+  declarations, or leave it as round evidence. *Cost of not deciding:* a kernel-checked
+  result that downstream work cannot cite as a registered claim.
+  `projects/normativity/rounds/2026-08-19-deductive-region/README.md`.
+
+- **Names for the deductive region's constructions.** Provisional under standard 6:
+  `admissiblePatterns`, `deductiveRegion`, `deductiveVertices`, `regionContext`,
+  `contextList`, `fragmentAtoms`, `tableOf`, `restrictTo`, `vertex`, `extend`. The
+  one worth a ruling is `admissiblePatterns` — the objects are the region's vertices,
+  and "pattern" was chosen to keep the `{0,1}` reading visible at the fragment.
+  *Cost of deciding now:* low, nothing downstream cites them yet. *Cost of not
+  deciding:* they harden as soon as something does.
+
 ## Settled
 
 ### 2026-08-18 — the modified market's computability is discharged, via an additive upstream export
