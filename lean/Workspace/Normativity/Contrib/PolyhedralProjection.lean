@@ -113,9 +113,80 @@ lemma regular_of_linearIndependent (h : LinearIndependent ℝ F.dir) : F.Regular
   rw [← hmap] at hdet
   exact isUnit_iff_ne_zero.mpr (by exact_mod_cast hdet)
 
+/-! ## The candidate map of a face
+
+Solving the face's linear system gives an explicit affine map with rational coefficients.
+The inverse is written out as `det⁻¹ • adjugate` rather than through `Ring.inverse`, so the
+whole thing stays a computable `def`. -/
+
+/-- The inverse of the face's Gram matrix, written so as to stay computable. -/
+def gramInvQ : Matrix (Fin F.dim) (Fin F.dim) ℚ :=
+  (F.gramQ.det)⁻¹ • F.gramQ.adjugate
+
+lemma gramInvQ_mul (h : F.Regular) : F.gramInvQ * F.gramQ = 1 := by
+  have hdet : F.gramQ.det ≠ 0 := isUnit_iff_ne_zero.mp h
+  rw [gramInvQ, Matrix.smul_mul, Matrix.adjugate_mul, smul_smul,
+    inv_mul_cancel₀ hdet, one_smul]
+
+/-- The `(i, a)` entry of the linear part of the face's candidate map. -/
+def coefQ (i a : Fin d) : ℚ :=
+  ∑ j, F.dirQ j i * ∑ l, F.gramInvQ j l * F.dirQ l a
+
+/-- The face's candidate affine form for coordinate `i`. -/
+def piece (i : Fin d) : AffineForm d where
+  coeff := fun a => F.coefQ i a
+  const := F.base i - ∑ a, F.coefQ i a * F.base a
+
+/-- The face's candidate point: the coordinatewise value of its pieces. -/
+def candidate (p : Pt d) : Pt d := WithLp.toLp 2 fun i => (F.piece i).eval p
+
+lemma candidate_apply (p : Pt d) (i : Fin d) :
+    (F.candidate p) i = (F.piece i).eval p := rfl
+
+lemma continuous_candidate : Continuous F.candidate := by
+  exact (PiLp.continuous_toLp 2 _).comp (continuous_pi fun i => (F.piece i).continuous_eval)
+
 end Face
+
+/-! ## Cells
+
+The cell of a face is where its candidate passes the polytope's own nearest-point
+certificate.  Correctness on the cell is then immediate from uniqueness, and no fact about
+which faces are degenerate is ever needed. -/
+
+/-- The cell of a face: the points at which its candidate is certified as the nearest
+point. -/
+def cell (K : RationalPolytope d) (F : Face d) : Set (Pt d) :=
+  {p | F.candidate p ∈ K.carrier ∧
+    ∀ v ∈ K.vertexSet, ⟪p - F.candidate p, v - F.candidate p⟫ ≤ 0}
+
+/-- On its cell, a face's candidate **is** the projection. -/
+theorem candidate_eq_proj_of_mem_cell (K : RationalPolytope d) (F : Face d) {p : Pt d}
+    (hp : p ∈ cell K F) : F.candidate p = K.proj p :=
+  K.eq_proj_of_vertexSet hp.1 hp.2
+
+lemma isClosed_cell (K : RationalPolytope d) (F : Face d) : IsClosed (cell K F) := by
+  have hc := F.continuous_candidate
+  have h1 : IsClosed {p : Pt d | F.candidate p ∈ K.carrier} :=
+    K.carrier_isCompact.isClosed.preimage hc
+  have h2 : ∀ v ∈ K.vertexSet,
+      IsClosed {p : Pt d | ⟪p - F.candidate p, v - F.candidate p⟫ ≤ 0} := by
+    intro v _
+    have : Continuous fun p : Pt d => ⟪p - F.candidate p, v - F.candidate p⟫ :=
+      continuous_inner.comp ((continuous_id.sub hc).prodMk (continuous_const.sub hc))
+    exact isClosed_le this continuous_const
+  have hEq : cell K F = {p : Pt d | F.candidate p ∈ K.carrier} ∩
+      ⋂ v ∈ K.vertexSet, {p : Pt d | ⟪p - F.candidate p, v - F.candidate p⟫ ≤ 0} := by
+    ext p
+    simp only [cell, Set.mem_setOf_eq, Set.mem_inter_iff, Set.mem_iInter]
+  rw [hEq]
+  exact h1.inter (isClosed_biInter h2)
+
 
 end Workspace.Normativity.Contrib.PolyhedralProjection
 
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.gram_eq_map
 #print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.regular_of_linearIndependent
+#print axioms Workspace.Normativity.Contrib.PolyhedralProjection.Face.gramInvQ_mul
+#print axioms Workspace.Normativity.Contrib.PolyhedralProjection.candidate_eq_proj_of_mem_cell
+#print axioms Workspace.Normativity.Contrib.PolyhedralProjection.isClosed_cell
