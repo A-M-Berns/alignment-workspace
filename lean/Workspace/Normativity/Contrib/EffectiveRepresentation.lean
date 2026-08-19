@@ -1176,6 +1176,24 @@ open Workspace.Normativity.Contrib.ProjectionForce
 open ConstraintSchedule
 open Workspace.Normativity.Contrib.ProjectionEnforcer
 
+/-- **The compiler is correct, standalone.**  The content of `effectiveRepresentation`'s
+`reps_eval`, stated for a bare fragment and polytope so that a caller which is not a
+`RationalConstraintSchedule` — the deductive schedule, whose region comes from the stage —
+can use it too. -/
+theorem repEval_compileOf (F : ProjectionCompiler.Fragment)
+    (K : RationalPolytope F.coords.length) {φ : Sentence} (hφ : φ ∈ F.coords)
+    (p : Sentence → ℝ) :
+    ProjectionCompiler.repEval F
+        (repAt F.coords (compileOf F.coords (K.verts.map List.ofFn)) default φ) p
+      = K.proj (ProjectionBridge.restrict F p)
+          ⟨F.coords.idxOf φ, List.idxOf_lt_length_of_mem hφ⟩ := by
+  have hlt : F.coords.idxOf φ < F.coords.length := List.idxOf_lt_length_of_mem hφ
+  have hrep : repAt F.coords (compileOf F.coords (K.verts.map List.ofFn)) default φ
+      = projectorRepOf F.coords.length (K.verts.map List.ofFn) (F.coords.idxOf φ) := by
+    rw [repAt, compileOf, compileLen, getD_map_range _ _ _ hlt]
+  rw [hrep, projectorRepOf_eq F K ⟨F.coords.idxOf φ, hlt⟩, repEval_projectorRep]
+
+
 /-- **The representation a schedule's own data determines.**  A genuine construction:
 `Classical.choose` appears nowhere on the path from `C` to this term. -/
 def effectiveRepresentation (C : RationalConstraintSchedule) : RegionRepresentation C where
@@ -1532,6 +1550,7 @@ end Workspace.Normativity.Contrib.EffectiveRepresentation
 #print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.projectorRepOf_primrec
 #print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.compileLen_primrec
 #print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.compileOf_primrec
+#print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.repEval_compileOf
 #print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.effectiveRepresentation
 #print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.effectiveRepresentation_effective
 #print axioms Workspace.Normativity.Contrib.EffectiveRepresentation.end_to_end_of_constraints_effective

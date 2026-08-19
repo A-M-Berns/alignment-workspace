@@ -39,6 +39,8 @@ open Workspace.Normativity.Contrib.ProjectionForce
 open Workspace.Normativity.Contrib.ProjectionCompiler
 open Workspace.Normativity.Contrib.ProjectionEnforcer
 open Workspace.Normativity.Contrib.DeductiveRegion
+open Workspace.Normativity.Contrib.RationalPolytope
+open Workspace.Normativity.Contrib.DeductiveSchedule
 open Workspace.Normativity.Contrib.EffectiveRepresentation
 
 /-! ## The enumeration is primitive recursive
@@ -96,5 +98,57 @@ lemma admissiblePatternsEff_primrec :
       Primrec.list_map (Primrec.snd.comp Primrec.fst) hentry
     exact h.to₂
   exact Primrec.list_map hfilter hrow
+
+
+/-! ## The day's region and its representation
+
+The region is the deductive polytope built from the *effective* enumeration.  Its vertex
+data is that enumeration back again — `List.ofFn (ratVertex coords w) = w` whenever `w` has
+one entry per coordinate, which `patternsFrom_length` supplies — so the compiler's input is
+exactly what the enumeration produced, with no re-encoding in between. -/
+
+/-- The day's region, from the effective enumeration. -/
+def deductivePolytopeEff (D : Finset Sentence) (coords : List Sentence)
+    (hD : ∃ v : PCWorld, v.ConsistentWith D) : RationalPolytope coords.length where
+  verts := (admissiblePatternsEff D coords).map (ratVertex coords)
+  verts_ne := fun h => by
+    refine (admissiblePatternsEff_ne_nil_iff D coords).mpr hD ?_
+    simpa using h
+
+/-- **The vertex data is the enumeration itself.** -/
+theorem vertexData_deductivePolytopeEff (D : Finset Sentence) (coords : List Sentence)
+    (hD : ∃ v : PCWorld, v.ConsistentWith D) :
+    (deductivePolytopeEff D coords hD).verts.map List.ofFn = admissiblePatternsEff D coords := by
+  show ((admissiblePatternsEff D coords).map (ratVertex coords)).map List.ofFn = _
+  rw [List.map_map]
+  refine Eq.trans (List.map_congr_left (g := id) fun w hw => ?_) (List.map_id _)
+  have hlen : w.length = coords.length := admissiblePatternsEff_length D coords hw
+  show List.ofFn (ratVertex coords w) = w
+  refine List.ext_getElem (by simp [hlen]) fun i h1 h2 => ?_
+  simp only [List.getElem_ofFn, ratVertex]
+  exact List.getD_eq_getElem _ _ h2
+
+/-- **The day's representation**, computed from the stage and the fragment. -/
+def deductiveReps (D : Finset Sentence) (coords : List Sentence) : List Rep :=
+  compileOf coords (admissiblePatternsEff D coords)
+
+/-- **It is primitive recursive in both**, and in nothing else. -/
+theorem deductiveReps_primrec : Primrec₂ deductiveReps := by
+  have h : Primrec fun p : Finset Sentence × List Sentence =>
+      compileOf p.2 (admissiblePatternsEff p.1 p.2) :=
+    compileOf_primrec.comp Primrec.snd admissiblePatternsEff_primrec
+  exact h.to₂
+
+/-- **The representation is correct**: it evaluates to the projection of the displayed
+price onto the day's deductive region. -/
+theorem repEval_deductiveReps (D : Finset Sentence) (coords : List Sentence)
+    (nodup : coords.Nodup) (hD : ∃ v : PCWorld, v.ConsistentWith D)
+    {φ : Sentence} (hφ : φ ∈ coords) (p : Sentence → ℝ) :
+    repEval ⟨coords, nodup⟩ (repAt coords (deductiveReps D coords) default φ) p
+      = (deductivePolytopeEff D coords hD).proj
+          (ProjectionBridge.restrict ⟨coords, nodup⟩ p)
+          ⟨coords.idxOf φ, List.idxOf_lt_length_of_mem hφ⟩ := by
+  have h := repEval_compileOf ⟨coords, nodup⟩ (deductivePolytopeEff D coords hD) hφ p
+  rwa [vertexData_deductivePolytopeEff D coords hD] at h
 
 end Workspace.Normativity.Contrib.DeductiveEffective
