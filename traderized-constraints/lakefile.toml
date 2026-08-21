@@ -1,0 +1,9 @@
+name = "traderizedConstraints"
+defaultTargets = ["TraderizedConstraints"]
+
+[[require]]
+name = "workspace"
+path = "../lean"
+
+[[lean_lib]]
+name = "TraderizedConstraints"

@@ -596,6 +596,16 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-18-maxmin-representation/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-21-traderized-constraints-paper",
+      "date": "2026-08-21",
+      "project": "normativity",
+      "path": "traderized-constraints",
+      "verdict": null,
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-21-traderized-constraints-paper/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
