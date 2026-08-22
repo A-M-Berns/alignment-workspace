@@ -596,6 +596,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-18-maxmin-representation/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-21-internal-answerability",
+      "date": "2026-08-21",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability",
+      "verdict": "Adopt after four repairs, and only as an internal answerability core.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability/MEMO.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-21-internal-answerability/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

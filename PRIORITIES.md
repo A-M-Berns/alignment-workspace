@@ -554,6 +554,16 @@ normative region without addressing the outflow account has not answered this it
 arrow between it and the normativity line, and without it traderized force is a
 result about deduction wearing a general name.
 
+*Narrowed by the internal-answerability prosecution:* prefix-closed trace safety
+does not supply nonemptiness, closure, convexity or an effective presentation of
+the current credal set. An existential current-time extraction also need not
+preserve conjunction: two constraints can admit the same visible credence using
+incompatible hidden event witnesses. A solution must therefore compose the joint
+liability semantics before extraction, or prove a canonical-event/fibre-saturation
+condition, and still discharge the geometric and liability-certificate premises.
+See `projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability/MEMO.md`
+§7.
+
 ### 40. Is bounded cumulative enforcement liability necessary? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
