@@ -4,15 +4,21 @@ import unittest
 
 from role_kernel import (
     Certificate,
+    CommitmentContextState,
+    CommitmentOp,
     Event,
     Liability,
+    OperationPolicy,
     PublicState,
     ReasonViews,
     Rewrite,
+    SocialCommitment,
     StandingWrapper,
+    TypedOperation,
     adjudicate,
     answerable_to,
     basis_losses,
+    check_commitment_operation,
     check_rewrite,
     derivative,
     factorizes,
@@ -262,3 +268,180 @@ class SeparationAndEquivarianceCases(unittest.TestCase):
         old, _, rewrite, public = closure_case("request", "Bob", move, "p-no")
         self.assertEqual(check_rewrite(old, {}, rewrite, public), ())
         self.assertNotEqual(move.kind, "agree")
+
+
+class SinghCommitmentOperationCases(unittest.TestCase):
+    def commitment(
+        self,
+        ident: str,
+        debtor: str,
+        creditor: str,
+        discharge: Event,
+        *traces,
+    ) -> SocialCommitment:
+        return SocialCommitment(
+            ident,
+            debtor,
+            creditor,
+            "Forum",
+            discharge,
+            safety_language(*traces),
+        )
+
+    def typed_closure(
+        self,
+        kind: CommitmentOp,
+        source: SocialCommitment,
+        move: Event,
+        witness: str,
+    ) -> TypedOperation:
+        rewrite = Rewrite(
+            move,
+            Certificate(f"p-{kind.value}", move),
+            ((source.ident, ()),),
+            ((source.ident, witness),),
+        )
+        return TypedOperation(kind, rewrite)
+
+    def test_discharge_and_release_have_different_account_proofs(self):
+        satisfy = Event("Bob", "deliver", "Alice")
+        release = Event("Alice", "release", "Bob")
+        source = self.commitment(
+            "c", "Bob", "Alice", satisfy, (satisfy,), (release,)
+        )
+        discharged = self.typed_closure(
+            CommitmentOp.DISCHARGE, source, satisfy, "condition-obtained"
+        )
+        released = self.typed_closure(
+            CommitmentOp.RELEASE, source, release, "creditor-release"
+        )
+        discharge_state = CommitmentContextState("Forum", frozenset({"p-discharge"}))
+        release_state = CommitmentContextState(
+            "Forum",
+            frozenset({"p-release"}),
+            frozenset(
+                {OperationPolicy("Alice", CommitmentOp.RELEASE, "c")}
+            ),
+        )
+        self.assertEqual(
+            check_commitment_operation({"c": source}, {}, discharged, discharge_state),
+            (),
+        )
+        self.assertEqual(
+            check_commitment_operation({"c": source}, {}, released, release_state),
+            (),
+        )
+        self.assertNotEqual(discharged.rewrite.closed, released.rewrite.closed)
+
+    def test_context_policy_distinguishes_cancellation_from_deletion(self):
+        cancel = Event("Bob", "cancel", "Alice")
+        satisfy = Event("Bob", "deliver", "Alice")
+        source = self.commitment("c", "Bob", "Alice", satisfy, (cancel,))
+        operation = self.typed_closure(
+            CommitmentOp.CANCEL, source, cancel, "policy-cancellation"
+        )
+        no_power = CommitmentContextState("Forum", frozenset({"p-cancel"}))
+        with_power = CommitmentContextState(
+            "Forum",
+            frozenset({"p-cancel"}),
+            frozenset({OperationPolicy("Bob", CommitmentOp.CANCEL, "c")}),
+        )
+        self.assertIn(
+            "power.cancel_missing",
+            check_commitment_operation({"c": source}, {}, operation, no_power),
+        )
+        self.assertEqual(
+            check_commitment_operation({"c": source}, {}, operation, with_power),
+            (),
+        )
+
+    def test_delegate_and_assign_change_different_directed_roles(self):
+        delegate = Event("Forum", "delegate", "Carol")
+        assign = Event("Alice", "assign", "Dana")
+        done = Event("World", "task-done")
+
+        source_d = self.commitment("c-d", "Bob", "Alice", done, (delegate, done))
+        child_d = self.commitment("c-d2", "Carol", "Alice", done, (done,))
+        rewrite_d = Rewrite(
+            delegate,
+            Certificate("p-delegate", delegate),
+            (("c-d", ("c-d2",)),),
+        )
+        op_d = TypedOperation(CommitmentOp.DELEGATE, rewrite_d, "Carol")
+        state_d = CommitmentContextState(
+            "Forum",
+            frozenset({"p-delegate"}),
+            frozenset(
+                {OperationPolicy("Forum", CommitmentOp.DELEGATE, "c-d", "Carol")}
+            ),
+        )
+
+        source_a = self.commitment("c-a", "Bob", "Alice", done, (assign, done))
+        child_a = self.commitment("c-a2", "Bob", "Dana", done, (done,))
+        rewrite_a = Rewrite(
+            assign,
+            Certificate("p-assign", assign),
+            (("c-a", ("c-a2",)),),
+        )
+        op_a = TypedOperation(CommitmentOp.ASSIGN, rewrite_a, "Dana")
+        state_a = CommitmentContextState(
+            "Forum",
+            frozenset({"p-assign"}),
+            frozenset(
+                {OperationPolicy("Alice", CommitmentOp.ASSIGN, "c-a", "Dana")}
+            ),
+        )
+
+        self.assertEqual(
+            check_commitment_operation(
+                {"c-d": source_d}, {"c-d2": child_d}, op_d, state_d
+            ),
+            (),
+        )
+        self.assertEqual(
+            check_commitment_operation(
+                {"c-a": source_a}, {"c-a2": child_a}, op_a, state_a
+            ),
+            (),
+        )
+        self.assertEqual(child_d.creditor, source_d.creditor)
+        self.assertEqual(child_a.debtor, source_a.debtor)
+
+    def test_context_can_be_creditor_of_an_impersonal_ought(self):
+        file_report = Event("Office", "file-report", "Forum")
+        ought = self.commitment(
+            "public-duty", "Office", "Forum", file_report, (file_report,)
+        )
+        operation = self.typed_closure(
+            CommitmentOp.DISCHARGE, ought, file_report, "report-filed"
+        )
+        state = CommitmentContextState("Forum", frozenset({"p-discharge"}))
+        self.assertEqual(
+            check_commitment_operation({"public-duty": ought}, {}, operation, state),
+            (),
+        )
+        self.assertEqual(ought.creditor, ought.context)
+
+    def test_policy_power_not_action_permission_changes_the_relation(self):
+        cancel = Event("Bob", "say-cancel", "Alice")
+        satisfy = Event("Bob", "deliver", "Alice")
+        source = self.commitment("c", "Bob", "Alice", satisfy, (cancel,))
+        operation = self.typed_closure(
+            CommitmentOp.CANCEL, source, cancel, "recognized-cancel"
+        )
+        # Bob can utter the event in either state.  Only the context policy makes
+        # the utterance an operative fact that closes the commitment.
+        permission_only = CommitmentContextState("Forum", frozenset({"p-cancel"}))
+        power = CommitmentContextState(
+            "Forum",
+            frozenset({"p-cancel"}),
+            frozenset({OperationPolicy("Bob", CommitmentOp.CANCEL, "c")}),
+        )
+        self.assertIn(
+            "power.cancel_missing",
+            check_commitment_operation({"c": source}, {}, operation, permission_only),
+        )
+        self.assertEqual(
+            check_commitment_operation({"c": source}, {}, operation, power),
+            (),
+        )

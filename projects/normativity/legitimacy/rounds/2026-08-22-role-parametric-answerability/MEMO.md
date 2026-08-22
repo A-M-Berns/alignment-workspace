@@ -6,8 +6,11 @@ not Lean theorems or registry claims.
 
 ## Verdict
 
-**UNIFIED WITH WRAPPER.** There is one useful mathematical account kernel, but
-not one undifferentiated notion of answerability.
+Registered round verdict: **UNIFIED WITH WRAPPER.** Revised architectural
+recommendation: **B. SINGH-INFORMED WRAPPER.** There is one useful mathematical
+account kernel, but not one undifferentiated notion of answerability. Singh's
+social-commitment ontology substantially simplifies the interpersonal wrapper;
+it does not replace the account kernel.
 
 The common kernel says that a reified standing liability cannot be consumed
 without a certified, lineage-linked, per-input semantically adequate account.
@@ -23,14 +26,23 @@ and a challenge/adjudication transition. Private reason states alone do not
 determine `BasisLost`. A challenge merely raised is not a defeater; an admitted
 challenge that changes the recognized standing state is.
 
-The minimal common primitive is therefore **a respondent is answerable for a
-standing liability in a named answerability context**. A claimant is not a core
-field. `answerable-to(x,ell)` is derived from a context-specific relation giving
-`x` standing to demand, inspect, contest, accept, waive, or represent the claim.
-Source, beneficiary, holder, and audience cannot safely be collapsed into one
-claimant role.
+The minimal common primitive is **a respondent is answerable for a standing
+liability**. A creditor is not a field of that conservation theorem, but it is
+constitutive of Singh's *social commitment* instantiation. Thus the repaired
+type distinction is:
 
-Three repairs to the naïve unification are load-bearing.
+```
+account occurrence:       respondent owes ell
+social commitment:        C(id, debtor, creditor, G, discharge-condition)
+interpersonal reading:    debtor is answerable to creditor in G for ell.
+```
+
+Source, beneficiary, creditor, and evidentiary audience still cannot safely be
+collapsed. The earlier categorical sentence “claimant is not fundamental” was
+too coarse: creditor is nonfundamental to account conservation and fundamental
+to a directed social commitment.
+
+Four repairs to the naïve unification are load-bearing.
 
 1. `respondent` is role-parametric but not inert metadata. Personal performance,
    authority to rewrite, and transfer conditions can depend on it.
@@ -40,6 +52,10 @@ Three repairs to the naïve unification are load-bearing.
 3. Delegation is not ordinary content transport. It is an account rewrite plus
    a separately certified change of respondent jurisdiction; whether the old
    respondent remains secondarily liable is part of the rewrite semantics.
+4. Context recognition licenses and effects normative operations; it does not by
+   itself establish objective semantic adequacy. Singh expressly separates the
+   semantics of commitments from their pragmatics and leaves a formal
+   model-theoretic semantics open.
 
 This does not produce cooperation, obedience, benevolence, competence,
 environment-relative correctness, non-capture, or corrective control.
@@ -64,6 +80,41 @@ round allows several participants to attribute different commitments without an
 oracle. Conversely, the deference line shows that a jurisdiction label which no
 transition reads is decorative. Roles must be included exactly where they change
 authorization or semantics, and nowhere else.
+
+### 1.1 Singh source comparison
+
+Source read: Munindar P. Singh, “An Ontology for Commitments in Multiagent
+Systems: Toward a Unification of Normative Concepts,” *Artificial Intelligence
+and Law* 7 (1999), 97–113. The claims attributed to Singh below are confined to
+that paper; statements about account DAGs, trace semantics, certified reasons,
+and basis-loss reopening are this round's extrapolations.
+
+Singh defines a named social commitment `C(x,y,G,p)`, with debtor `x`, creditor
+`y`, context group `G`, and objectively evaluated discharge condition `p`
+(Definition 1 and section 2.1). `G` contains the participants, carries relevant
+norms/conventions, and is described as the court of appeals. The paper names six
+operations—Create, Discharge, Cancel, Release, Delegate, Assign—and uses social
+policies, sometimes themselves higher-order commitments, to govern operations.
+It distinguishes explicit from implicit commitments, social from internal
+commitments, semantics from pragmatics, and creditor from beneficiary. It gives
+informal constraints rather than a formal semantics and says model-theoretic
+semantics remains future work.
+
+| Singh object | PR #46 object | Fit | Exact boundary |
+|---|---|---|---|
+| debtor `x` | respondent | **exact in the social instantiation** | the bare account theorem needs a respondent but no social creditor |
+| creditor `y` | holder/claimant | **approximate** | creditor is the directed recipient; Singh says creditor need not be beneficiary; evidentiary audience is separate |
+| context group `G` | recognized answerability context `kappa` | **too weak alone** | `G` supplies the named social/normative locus and putative appeals forum, but the paper supplies no time-indexed record, admission rule, or challenge transition |
+| discharge condition `p` | liability `Spec` | **too weak** | `p` says what satisfies the commitment; `Spec` must also evaluate revision, release, cancellation, suspension, and other account paths |
+| named commitment | immutable liability occurrence ID | **approximate** | both reify and name; Singh allows reference but does not require immutable occurrences and a lineage DAG across transformations |
+| social policy | `Licensed(move)` / operation jurisdiction | **approximate** | a policy can enable an operation; it is not a proof-relevant undertaken certificate and may be nonnormative |
+| higher-order commitment | rule governing first-order liabilities | **approximate** | it can make an operation policy normative; it does not by itself provide checker-version dependencies or meta-revision accounts |
+| explicit commitment | docketed occurrence | **approximate, not exact** | Singh means explicitly represented by one or more agents, not necessarily entered in a shared recognized ledger |
+| implicit commitment | derived/undocketed standing | **approximate** | Singh's implicit commitments may be unrepresented group habits; the account theorem must materialize an occurrence before it can guarantee complete coverage |
+
+The current wrapper was partly reimplementing `G`, creditor direction, and
+operation-specific powers. It was not reimplementing a formal adjudication
+protocol, because the paper does not give one.
 
 ## 2. The common invariant
 
@@ -148,39 +199,81 @@ removed from the kernel:
 Consent can be one jurisdictional route to authority, but institutional office,
 statute, prior contract, or court order can be others.
 
-### 3.2 Interpersonal standing wrapper
+### 3.2 Singh-informed social wrapper
+
+The old wrapper had nine loosely related fields. The smaller source-informed
+interface is:
 
 ```
-StandingContext kappa
-recognizedState : kappa x Time -> RecognizedState
-holdsStanding   : kappa x Party x Occurrence -> Prop
-audience        : kappa x Party x Occurrence -> Prop
-canInspect      : kappa x Party x RecordObject -> Prop
-mayChallenge    : kappa x Party x Occurrence -> Prop
-admitChallenge  : kappa x Challenge x RecognizedState -> RecognizedState
-mayDispose      : kappa x Party x Occurrence x Disposition -> Prop
-mayTransfer     : kappa x Occurrence x Party x Party -> Prop
-meaningVersion  : kappa x Occurrence -> SemanticVersion
+SocialCommitment(id, debtor, creditor, G, dischargeCondition)
+ContextState     : G x Time -> State
+authorizedOp     : State x Actor x Operation x Commitment x Args -> Prop
+evidenceAccess   : State x Creditor x AccountRecord -> Prop
+contest          : State x Creditor x Challenge -> State x Result -> Prop
+denotationReceipt: Commitment -> Spec x SemanticVersion
+
+Operation := Create | Discharge | Cancel | Release | Delegate | Assign
 ```
 
-`answerableTo(kappa,x,ell)` is derived when `x` is a holder or authorized
-audience and the context gives a real route to inspect and contest the alleged
-account. The challenger need not personally run the checker; an authorized
-representative or forum can do so. A nominal challenge right with no transition
-by which a successful challenge changes standing is not enough.
+`authorizedOp` is the extension of the context's social policies and powers. A
+Hohfeldian-style power is not another primitive here: it is witnessed when an
+authorized performative/request effects an operation in `ContextState`. Mere
+permission to utter or act does not imply that power. `contest` is retained
+because Singh describes `G` as an appeals locus but does not formalize challenges
+or adjudication. `evidenceAccess` is also retained: a named commitment can exist
+without the creditor seeing the certificate/account, as the lost-letter example
+in Singh and executable case 4 both show.
 
-This wrapper is not an oracle. It states whose verdict is constitutive **within
-this relation**. Environment-relative adequacy remains a further theorem. If two
-institutions recognize different standing states, the correct model has two
-contexts `kappa_1,kappa_2`, not one secretly privileged private reason state.
+Old-to-new compression:
+
+| Old field | New location / reason |
+|---|---|
+| `recognizedState` | `ContextState(G,t)` |
+| `holdsStanding` | live `SocialCommitment` plus its creditor field |
+| `audience` | removed from creditor-answerability core; optional observer/representative policy |
+| `canInspect` | `evidenceAccess` |
+| `mayChallenge`, `admitChallenge` | one consequential transition relation `contest` |
+| `mayDispose`, `mayTransfer` | `authorizedOp` over typed operations |
+| `meaningVersion` | immutable occurrence-bound `denotationReceipt`, checked by the account layer |
+
+Set `kappa := (G, ContextState protocol)`, not `kappa := G`. The named group and
+its norms substantially solve the *location* of recognized standing, but the
+time-indexed record and transition rules are a strict enrichment. This wrapper
+still is not an oracle: context-recognized operation and objective/environmental
+adequacy remain separate judgments.
+
+### 3.3 Hohfeldian compression without extra primitives
+
+Singh maps a claim to a directed commitment and analyzes power as a
+higher-order commitment by the context to effect a requested alteration of a
+legal relation. That usefully decomposes the old giant word “standing”:
+
+- the creditor has a **claim** against the debtor by occupying the creditor slot;
+- a party has **power** only when an operative act/request changes the context's
+  commitment state;
+- an endpoint has **immunity** against a proposed alteration when the other
+  party lacks such power under the applicable policies.
+
+The checker need not add `Claim`, `Power`, and `Immunity` as stored predicates.
+Claim is projected from a live commitment; power is derived from
+`authorizedOp` plus the transition semantics; immunity is a policy-level
+non-power claim and requires care in open-world implementations. This removes
+`holdsStanding`, `mayDispose`, and `mayTransfer` without cargo-culting the full
+legal vocabulary. Evidentiary access and consequential contest remain separate:
+neither follows from the four-place commitment relation in the paper.
 
 ## 4. Is a claimant fundamental?
 
-No, for three independent reasons.
+The old yes/no question was ill-typed. **No** for the common account kernel;
+**yes, as creditor,** for a Singh-style directed social commitment.
 
 First, a constitution can impose a reporting or preservation liability on an
-office without granting one person sovereign ownership of it. The finite witness
-`constitutional-duty` passes account conservation with an empty holder relation.
+office without granting one person sovereign ownership of it. The original
+finite witness `constitutional-duty` passes account conservation with an empty
+holder relation. If the duty is to be represented as a *social commitment*,
+Singh's cleaner rendering is `C(Office,G,G,file-report)`: the institution/context
+is creditor. The new witness checks that rendering. These are alternative
+instantiations, not proof that every bare liability secretly has a creditor.
 
 Second, one interpersonal claim can separate four roles:
 
@@ -198,17 +291,18 @@ Third, the diachronic source is often an earlier transition, not a sovereign pas
 self. The later reasoner owes an account **for** what remains standing; it does
 not owe obedience **to** the temporal stage that first recorded it.
 
-The primitive `Claim(Alice,ell,Bob)` is a valid interpersonal presentation only
-when the context makes Alice both holder and audience. It is not the common
-mathematical core.
+The primitive `Claim(Alice,ell,Bob)` is a valid interpersonal presentation when
+Alice is creditor in the relevant context. It does not automatically make Alice
+the beneficiary, source, public audience, adjudicator, or sovereign semantic
+authority. It is not the common mathematical core.
 
-Holder transfer is normally a wrapper transition: replace the authorized holder
-edge while leaving `ell`, its respondent, and its meaning fixed. Beneficiary
+Creditor transfer is Singh's typed `Assign`, represented by a successor
+occurrence with the creditor changed and an account lineage edge. Beneficiary
 transfer is different when the beneficiary occurs in the specification (for
 example, “pay Alice”); it then needs semantic transport as well. Institutional
-succession at both endpoints is the composition of a holder/audience transition
-and an authorized respondent-changing account rewrite. A single undifferentiated
-claimant field cannot state these three cases without ambiguity.
+succession at both endpoints composes `Assign` with `Delegate` (or a context-
+specific combined operation) while retaining per-input lineage. A single
+undifferentiated claimant field cannot state these cases without ambiguity.
 
 ## 5. Respondent identity is not metadata
 
@@ -292,16 +386,17 @@ For `Alice --ell--> Bob`, the core makes Bob the current respondent and keeps
 `ell`'s old meaning immutable during the rewrite check. This is enough for an
 internally coherent Bob-led account. It is not yet answerability to Alice.
 
-The smallest additional conditions are:
+The smaller Singh-informed additional conditions are:
 
-1. `ell` is a shared identifier in context `kappa`;
-2. Alice is a holder or authorized audience for it;
-3. Alice or her forum can inspect the certificate, dependency receipt, incidence
-   edge, and adequacy witness allegedly answering `ell`;
-4. the old meaning and checker version cannot be changed by Bob unilaterally;
-5. there is a challenge protocol whose successful branch changes recognized
-   standing or disposition status; and
-6. jurisdiction states who may waive, settle, novate, transfer, or adjudicate.
+1. a live named `C(ell,Bob,Alice,G,p)` makes Alice the creditor in context `G`;
+2. an immutable denotation receipt binds that occurrence to the old account
+   specification/checker version;
+3. Alice or her forum has evidentiary access to the certificate, dependency
+   receipt, incidence edge, and adequacy witness allegedly answering `ell`;
+4. `ContextState(G,t)` exposes typed operation policies/powers, so Bob cannot
+   unilaterally release, assign, delegate, cancel, or redefine the commitment;
+5. a consequential contest transition distinguishes raised, failed, and
+   standing-changing challenges.
 
 The executable uninspectable-certificate case passes the core checker and fails
 `answerable_to(Alice,ell)`. Therefore the interpersonal case is not obtained by
@@ -404,9 +499,37 @@ This is a relational adequacy problem, but it does not change derivative,
 incidence, or per-input transport. It supplies the interpretation those core
 operations consume.
 
-## 12. Delegation and role-changing rewrites
+## 12. Typed commitment operations and account rewrites
 
-Suppose `Alice --ell--> Bob` and Bob proposes Carol as successor respondent.
+Singh's operation vocabulary should replace the wrapper's generic
+`mayDispose`/`mayTransfer` vocabulary, but it should compile into the generic
+account rewrite rather than enlarge the account theorem with six constructors.
+
+| Operation | Resource/account shape | Role/content effect | Required account evidence |
+|---|---|---|---|
+| Create | `0 -> 1` fresh occurrence | instantiate debtor, creditor, `G`, condition | context policy/role basis and undertaken certificate; no old account input |
+| Discharge | `1 -> 0` closed | roles unchanged; discharge condition obtains | condition-obtained witness; semantic residual is top |
+| Cancel | `1 -> 0` closed | debtor revokes under cancellation policy | debtor/context operation power plus a distinct cancellation disposition; not satisfaction |
+| Release | `1 -> 0` closed | creditor or context lets debtor off | release power and release disposition; neither success nor failure |
+| Delegate | `1 -> 1` | debtor changes; creditor and context remain | operation power, role-sensitive transport, old/new lineage |
+| Assign | `1 -> 1` | creditor changes; debtor and context remain | operation power, role-sensitive transport, old/new lineage |
+
+The same absence of a live successor after Discharge and Release does not make
+the histories equal. The executable witness closes both, but records
+`condition-obtained` versus `creditor-release`. A silent deletion has neither.
+Similarly, Delegate and Assign are distinct even when their underlying task
+condition is unchanged: one changes the respondent read by the account gate; the
+other changes the social endpoint with power to demand/release/assign.
+
+For Cancel and Release, institutional authorization is not by itself semantic
+adequacy. Either the old full `Spec` already admits that operative event as a
+valid disposition, or a separate norm/environment theorem must justify the
+closure. This is why Singh's discharge condition `p` cannot simply replace our
+full account specification.
+
+### 12.1 Delegation after Singh
+
+Suppose `Alice --ell--> Bob` and Carol is proposed as successor respondent.
 Lineage plus semantic transport is insufficient. The minimal accepted form is:
 
 ```
@@ -416,7 +539,7 @@ ell_Bob --delegate(Carol), q--> ell'_Carol
 where:
 
 - `q` is standing and licenses this transfer under `kappa`;
-- `mayTransfer(kappa,ell,Bob,Carol)` holds;
+- `authorizedOp(ContextState(G,t),actor,Delegate,ell,Carol)` holds;
 - Carol's successor specification refines the derivative of `ell` after the
   delegation event; and
 - the account says whether Bob is novated out or remains a secondary respondent.
@@ -426,25 +549,34 @@ it passes; without the grant it fails `role.transfer_unauthorized`. A personal
 apology counterexample fails even with generic delegation authority because the
 old semantics does not admit Carol's performance.
 
+One source correction matters: Singh's O5 says Delegate can be performed by the
+**new debtor or the context**, not simply by the old debtor. Thus the prompt's
+“Bob delegates” and PR #46's old witness are not licensed by Singh merely because
+Bob is current debtor. A context policy may empower Bob, but that is an extension
+that must be stated. The new typed witness uses the context as actor.
+
 Stress-test results:
 
 | Case | Account consequence |
 |---|---|
 | Bob disappears | valid only under authorized novation and a delegable old specification |
-| Bob remains secondary | retain a Bob branch and link Carol's performance branch; no weakening |
-| Alice consents | consent can witness `mayTransfer`; it is sufficient only in a context granting Alice that jurisdiction |
+| Bob remains secondary | retain a Bob branch and link Carol's performance branch; Singh's O5 does not specify this extension |
+| Alice consents | consent can satisfy a Delegate policy; it is sufficient only in a context granting Alice that operation power |
 | Alice does not consent | invalid unless another recognized authority already permits delegation |
 | Carol less capable | not detected unless competence/service is in `Spec`; otherwise outside answerability |
 | Carol more capable, manipulative selection | may pass account safety and fail authorship/non-capture |
 | one branch delegated | only that split occurrence changes respondent |
 | Carol delegates onward | ordinary proof substitution, with a fresh transfer authorization at every edge |
-| Alice replaced by successor institution | usually a wrapper holder/audience transfer; if beneficiary-sensitive meaning changes, also an account rewrite |
+| Alice replaced by successor institution | typed Assign; if beneficiary-sensitive meaning changes, also semantic transport |
 
 Thus target claim E is false as worded if “ordinary” means semantic transport
 alone, and true after adding explicit role-change jurisdiction. This is a real
 connection to AI delegation at the level of authority and obligation lineage.
 It does not import the deference line's epistemic trust, competence, or corrective
-control theorems.
+control theorems. Singh's state-level Delegate does not specify retained
+secondary liability, per-occurrence lineage, or the composition invariant for
+onward delegation; the account DAG adds those distinctions. Assign receives the
+same lineage treatment on the creditor endpoint.
 
 ## 13. Shared response, merge, and mutuality
 
@@ -528,9 +660,11 @@ workspace.
 | Candidate claim | Status | Minimal assumptions | Witness / proof idea |
 |---|---|---|---|
 | One kernel covers diachronic + interagent | **yes for account conservation; full verdict requires wrapper** | role-equivariant checker/semantics; context-indexed standing | party-bijection induction; executable case 16 |
-| Claimant is a necessary primitive | **false** | respondent, occurrence, standing context | constitutional duty with no holder; source/beneficiary/audience can differ |
+| Claimant is a necessary common-kernel primitive | **false** | respondent and occurrence | claimantless account witness |
+| Creditor is constitutive of a social commitment | **yes by Singh's type** | `C(debtor,creditor,G,p)` | context-held ought uses `creditor=G`; creditor still differs from beneficiary/audience |
 | Respondent identity is metadata only | **false** | — | Bob/Carol personal-apology traces become equal only after unsound role erasure |
-| Interpersonal case only needs contestability wrapper | **false if read narrowly; repaired yes** | standing, shared IDs, visibility, non-unilateral semantics, adjudication, jurisdiction | Bob's invisible certificate and unilateral `pay-or-skip` restatement |
+| Singh ontology replaces the whole interpersonal wrapper | **false** | — | `G` has no formal time-indexed state, visibility, challenge, or adjudication transition |
+| Singh-informed wrapper is smaller | **yes provisionally** | named commitment, context state, typed operation policy, evidence access, contest, denotation receipt | old holder/standing/dispose/transfer/version predicates derive or move layers |
 | Basis loss can use a single public standing state | **yes per named context, not globally** | recognized state and checker version fixed by `kappa` | Alice/Bob private disagreement has no unindexed verdict |
 | Successful challenge = diachronic defeater formally | **yes after recognition** | admission changes recognized dependency/standing | both become the same true-to-false edge; raised/failed challenges do not |
 | Delegation is ordinary account transport | **false** | — | semantic transport passes without a transfer grant; role gate rejects |
@@ -540,6 +674,7 @@ workspace.
 | Reason-guided control implies answerability | **false** | — | deterministic reason-mediated policy silently deletes an old liability |
 | Answerability is sufficient for cooperation | **false** | — | adequate certified refusal |
 | Common kernel proves objective adequacy | **false** | — | two recognized contexts may interpret/check the claim differently |
+| Context authorization proves semantic adequacy | **false** | — | an operative Release/Cancel can be recognized while failing an external or stronger normative standard |
 
 ## 17. Adversarial microcases
 
@@ -564,7 +699,16 @@ workspace.
 
 Additional witnesses show an institutional duty with no claimant, authorship
 without account conservation, a reason-backed refusal without cooperation, and
-role erasure equating Bob's and Carol's personal performance.
+role erasure equating Bob's and Carol's personal performance. Five
+source-driven witnesses additionally show:
+
+| # | Singh-driven case | Result |
+|---|---|---|
+| 21 | Discharge and Release both leave no live successor | both accepted, with distinct condition-obtained/release proofs |
+| 22 | context-policy cancellation versus identical unilateral deletion | only the powered Cancel is recognized |
+| 23 | Delegate versus Assign | debtor and creditor changes are distinct typed rewrites |
+| 24 | impersonal/context-held duty | `C(Office,G,G,p)` works without a privileged natural-person claimant |
+| 25 | permission to utter cancellation versus power to alter the relation | only the operation policy effects closure |
 
 Run them with:
 
@@ -578,7 +722,7 @@ python3 projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answer
 |---|---|---|
 | respondent | persistent reasoner/office implemented by current stage | Bob or another present party |
 | source | prior event/stage; normally no current sovereignty | promise, institution, event, or party |
-| holder/audience | often the current reasoner or institutional record; can be implicit | must be stated to obtain `answerable-to` |
+| creditor/evidentiary audience | usually absent from the core or represented by the persistent institution | creditor is constitutive of the social commitment; noncreditor audiences are optional policies |
 | recognized state | current adopted normative record | public/contractual/institutional record indexed by context |
 | private disagreement | proposal for self-revision | challenge from one participant |
 | standing change | admitted self-revision | successful adjudicated challenge |
@@ -587,6 +731,72 @@ python3 projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answer
 
 The account DAG, per-input transport, basis receipts, and review minting do not
 change. The route by which facts acquire recognized standing does.
+
+### 18.1 What Singh supplies, and what the account kernel adds
+
+| Candidate addition | In Singh (1999)? | Conservative comparison |
+|---|---|---|
+| named first-class identity | **yes, weaker analogue** | commitments have names and may self/cross-reference; immutable occurrence identity through arbitrary transformations is not required |
+| per-old-input lineage/account | **no** | operations alter commitments, but no account DAG proves what answers each consumed occurrence |
+| per-input semantic transport | **no** | the paper states informal constraints and explicitly leaves formal model-theoretic semantics open |
+| undertaken reason certificate | **no; policy analogue** | policies can enable operations, but no immutable proof-relevant basis receipt is recorded |
+| basis-loss reopening | **no** | revocation and recovery matter, but later defeat of an operation's historical basis is not linked to a minted review liability |
+| local-to-global composition | **no** | no conservation theorem over arbitrary operation histories is stated |
+| diachronic self-revision instance | **no** | assumption A3 insists social commitments are not definitionally reducible to internal commitments |
+
+The clean source boundary is therefore:
+
+> Singh supplies the directed social object, its context, and a typed vocabulary
+> of powers/operations. The account kernel adds proof-relevant historical
+> conservation, per-input anti-laundering semantics, certified undertaken bases,
+> compositional lineage, and reason-sensitive reopening. Together they yield an
+> accountable lifecycle for social commitments, not a complete social or legal
+> theory.
+
+### 18.2 Semantics, policies, and metacommitments
+
+Singh's assumptions A7–A8 strengthen the split already needed here:
+
+```
+certificate / context policy:  why operation op was institutionally licensed
+account semantics:             whether op actually answers this old occurrence
+environmental adequacy:        whether the recognized semantics is faithful
+```
+
+The first cannot define the second without semantic laundering. `G` may
+recognize a release or cancellation as legally operative while being wrong about
+an external condition, or while a broader normative standard condemns the
+policy. Conversely, objective satisfaction of `p` can discharge without the
+debtor privately believing it. The recognized checker therefore decides which
+state transition occurs in the institutional record; it does not manufacture
+truth.
+
+Social policies can supply premises for `Licensed(op)`. When a policy is itself
+a higher-order commitment, it can also be docketed as an account occurrence.
+Revision of that policy then uses the same generic rewrite, and later loss of the
+revision certificate mints review at the meta-level. This avoids a special
+metapolicy mechanism but does not end regress: some current context state and
+transition gate remain parameters. The gain is accountable movement of the
+boundary, not self-grounding authority.
+
+### 18.3 Three-layer architecture
+
+The smallest surviving organization is:
+
+1. **Commitment/standing:** the institution supplies live liabilities; the
+   social instance uses `C(id,debtor,creditor,G,p)`, typed operations, and
+   context policies/powers. A diachronic constitutional instance may use a bare
+   respondent-indexed occurrence without inventing a past-self creditor.
+2. **Answerability:** every nonfresh transformation has a standing undertaken
+   certificate, input-scoped lineage, per-input semantic transport or typed
+   closure witness, and basis-loss reopening.
+3. **Optional downstream properties:** service, learning, non-capture,
+   cooperation, enforcement, and environment-relative correctness.
+
+This makes the unification better scoped, not stronger in extension. Social
+commitment theory supplies relational standing; answerability theory supplies
+the historical proof obligation on changes to whatever standing the first layer
+recognizes.
 
 ## 19. Boundaries and workspace implications
 
@@ -613,83 +823,116 @@ an interface diagnosis, not a promoted replacement architecture.
 
 ## 20. Remaining mathematical blockers
 
-1. A typed recognized-standing transition system showing when a private reason or
-   challenge is admitted without assuming an oracle.
-2. A nonvacuous interpersonal visibility/contestability definition allowing
+1. A formal lifecycle semantics for `ContextState`, typed operations, and social
+   policies; Singh (1999) explicitly does not provide a model-theoretic semantics.
+2. A typed contest transition showing when a private reason or challenge is
+   admitted without assuming an oracle.
+3. A nonvacuous interpersonal visibility/contestability definition allowing
    authorized representatives and privacy-preserving verification.
-3. A semantic theory of respondent-sensitive and beneficiary-sensitive
+4. A semantic theory of respondent-, creditor-, and beneficiary-sensitive
    liabilities, including exactly when novation is possible.
-4. Composition of role-changing rewrites with secondary liability, split
+5. Composition of role-changing rewrites with secondary liability, split
    delegation, and holder succession.
-5. Conflict/feasibility conditions for interacting mutual ledgers.
-6. Environment-relative adequacy or a principled plural-context result; the
+6. Conflict/feasibility conditions for interacting mutual ledgers.
+7. Environment-relative adequacy or a principled plural-context result; the
    wrapper supplies constitutive standing, not truth.
-7. Lean statements for party-equivariance and context-indexed No Forgotten Basis
+8. Lean statements for party-equivariance and context-indexed No Forgotten Basis
    Loss if the interface is selected for promotion.
-8. Any theorem connecting account-safe delegation to epistemic deference,
+9. Any theorem connecting account-safe delegation to epistemic deference,
    competence, cooperation, or effective corrective control.
+
+### Next sources, ranked
+
+No more than three are warranted before selecting a standing interface.
+
+1. **Herrestad and Krogh (1995), “Obligations Directed from Bearers to
+   Counterparties.”** It directly tests the unresolved semantic question whether
+   creditor direction requires a counterparty preference/acceptance condition;
+   Singh rejects that requirement as pragmatics rather than semantics.
+2. **Hohfeld (1919), *Fundamental Legal Conceptions as Applied in Judicial
+   Reasoning*.** Read specifically for operative facts and the power/liability,
+   immunity/disability pairs before treating `authorizedOp` as a faithful formal
+   power rather than mere permission. This also matches the workspace's warning
+   that jurisdiction labels must change reachable transitions.
+3. **Singh (1997), “Commitments among Autonomous Agents in Information-Rich
+   Environments.”** Singh (1999) identifies it as the preceding operational
+   commitment work; it is the most source-local next check on lifecycle and
+   revocation before importing later protocol machinery.
+
+These recommendations come from Singh's reference map and the workspace's
+jurisdiction/relational-scorekeeping gaps, not from a claim that the three papers
+already solve formal adjudication or account conservation.
 
 ## 21. Recommendation
 
-### Direct answers
+Choose **B. SINGH-INFORMED WRAPPER** while retaining the round-level verdict
+**UNIFIED WITH WRAPPER**.
 
-1. **One concept?** Yes at the level of certified account conservation;
-   interpersonal answerability-to has an additional irreducibly relational
-   standing institution.
-2. **Common kernel?** A respondent may change or close a standing liability only
-   by a standing undertaken certificate, explicit old-input lineage, and an
-   account that refines that old input's residual semantics; recognized later
-   basis loss mints a linked review.
-3. **What changes?** The account algebra does not. Holder/audience standing,
-   visibility, adjudication, and role-transfer jurisdiction become explicit.
-4. **Merely standing plus contestability?** No if that phrase omits shared IDs,
-   inspectability, non-unilateral meaning, and consequential adjudication. Yes
-   when those are included in the wrapper.
-5. **Public standing state?** A single recognized state is required per
-   non-perspectival answerability context; no globally privileged public state is
-   required or justified.
-6. **Claimant fundamental?** No. `answerable for` is core; `answerable to` is
-   derived from holder/audience rights in a context.
-7. **Delegation?** Yes as respondent-changing account preservation, but only
-   with transfer jurisdiction and delegable semantics; semantic inclusion alone
-   is insufficient.
-8. **Legitimacy/deference/corrigibility payoff?** Real but narrow: it supplies a
-   common obligation-lineage and jurisdiction interface for delegation and
-   review. Connections to trust, competence, cooperation, and effective
-   corrective authority remain unproved.
+The resulting division is smaller and better scoped:
 
-Adopt **UNIFIED WITH WRAPPER** as the provisional research verdict.
+```
+COMMITMENT / STANDING
+  live C(id, debtor, creditor, G, p)
+  + ContextState(G,t)
+  + typed operation policies/powers
+  + evidence access and consequential contest
 
-Adopt as common:
+ANSWERABILITY
+  certified undertaken transformation
+  + per-input lineage
+  + per-input semantic transport / typed closure proof
+  + recognized basis-loss review
 
-- certified undertaken moves;
-- respondent-indexed liability occurrences;
-- explicit lineage and scoped account proofs;
-- per-old-liability semantic transport;
-- context-indexed basis-loss reopening; and
-- role-equivariance under coherent relabeling.
+OPTIONAL DOWNSTREAM
+  service, learning, non-capture, cooperation, enforcement
+```
 
-Add for interpersonal `answerable-to`:
+### Source-boundary answers
 
-- a recognized standing/adjudication context;
-- holder/audience and shared-identifier relations;
-- inspectability and a consequential challenge route;
-- non-unilateral semantic/checker versioning; and
-- explicit disposition and transfer jurisdiction.
+1. **What did PR #46 reinvent?** A named social context, directed debtor/creditor
+   roles, operation-specific jurisdiction, context-held impersonal oughts, and a
+   power-like distinction between an act and an act that alters a normative
+   relation.
+2. **What remains ours?** Immutable occurrence lineage, per-old-input accounts,
+   semantic anti-laundering, undertaken reason receipts, basis-loss reopening,
+   and local-to-global composition. Singh has at most weaker analogues for names
+   and policies and explicitly lacks formal semantics.
+3. **Is creditor fundamental?** Yes to `C(x,y,G,p)`; no to the generic account
+   theorem. Creditor still need not be beneficiary, source, or audience.
+4. **Does `G` solve recognized standing?** Substantially but incompletely. It
+   supplies the social carrier, norms, and appeals locus. A time-indexed record,
+   evidence interface, and actual adjudication transition must enrich it.
+5. **Do six operations replace bespoke vocabulary?** Yes at the social wrapper.
+   They compile to generic fresh/rewrite/closure account shapes; they do not need
+   six new conservation rules.
+6. **Do Hohfeldian powers improve `holdsStanding`?** Yes. Live commitment gives
+   the claim; operation policy plus effective state change gives power. Immunity
+   is absence of the relevant power, subject to closed-world care. This is more
+   precise than one giant standing predicate.
+7. **Can policies source `Licensed`?** Yes as premises or derivations, and
+   normative policies may be higher-order commitments. They do not replace the
+   immutable undertaken certificate or eliminate meta-revision regress.
+8. **What is new relative to Singh?** Reason-sensitive, proof-relevant
+   conservation across arbitrary diachronic transformation, especially
+   per-input anti-laundering and reopening when an undertaken basis later loses
+   standing.
+9. **Effect on unification?** Better scoped, neither extensionally stronger nor
+   weakened: the account theorem remains common, while the social direction is
+   acknowledged as genuinely social rather than a relabeled temporal stage.
+10. **What next?** Herrestad–Krogh on directedness, Hohfeld on operative power,
+    then Singh (1997) on operational lifecycle; section 20 states the exact
+    question for each.
 
-Reject:
+Reject `kappa = G` as a mere rename, creditor as a universal liability field,
+context recognition as objective adequacy, old-debtor delegation by default,
+and any attempt to derive evidence access or challenge procedure from
+`C(x,y,G,p)` alone.
 
-- claimant as a universal core primitive;
-- private Bob-relative or Alice-relative standing as the unqualified trigger;
-- respondent identity as decorative metadata;
-- delegation by semantic transport alone;
-- challenge-raised as equivalent to challenge-successful;
-- answerability as cooperation, correctness, authorship, or control.
+The high-level story now survives pressure:
 
-The central invariant survives, but only in its `answerable for` form. The
-irreducibly interpersonal ingredient is not a different conservation calculus;
-it is the institution of **who has standing to see, contest, and authoritatively
-alter the recognized account**.
+> Social commitment theory says what relational standing is. Answerability
+> theory says what a reason-sensitive process owes when it changes that standing
+> through time.
 
 ## What this memo does not establish
 
@@ -699,4 +942,7 @@ normative truth, competence, bargaining, enforcement, learning, or market force.
 Its safety languages are finite. Its party-equivariance test is one minimal
 history, while the general result is a paper induction. The memo does not prove
 that any real institution has legitimate standing, that every challenge is heard,
-that review terminates, or that authorized delegation is wise.
+that review terminates, or that authorized delegation is wise. It does not supply
+the model-theoretic commitment semantics Singh (1999) leaves open, and its typed
+operation compiler is an extrapolation rather than an implementation claimed by
+that paper.

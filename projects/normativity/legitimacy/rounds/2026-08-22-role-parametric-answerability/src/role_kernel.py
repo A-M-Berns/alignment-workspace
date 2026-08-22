@@ -6,6 +6,7 @@ the account checker smaller than the interpersonal standing wrapper.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+from enum import Enum
 from typing import Callable, Iterable, Mapping
 
 
@@ -134,6 +135,182 @@ def check_rewrite(
 
     if sponsored != set(new):
         errors.append("lineage.unsponsored_output")
+    return tuple(errors)
+
+
+class CommitmentOp(str, Enum):
+    """Singh's six commitment operations, kept distinct at the wrapper."""
+
+    CREATE = "create"
+    DISCHARGE = "discharge"
+    CANCEL = "cancel"
+    RELEASE = "release"
+    DELEGATE = "delegate"
+    ASSIGN = "assign"
+
+
+@dataclass(frozen=True)
+class SocialCommitment:
+    """A named Singh-style commitment occurrence plus account semantics.
+
+    ``discharge_condition`` is Singh's p. ``specification`` is deliberately
+    richer: it also says which typed exits/revisions count as adequate accounts.
+    The source paper does not supply this trace semantics.
+    """
+
+    ident: LiabilityId
+    debtor: Party
+    creditor: Party
+    context: Party
+    discharge_condition: Event
+    specification: Language
+
+    def as_liability(self) -> Liability:
+        return Liability(self.ident, self.debtor, self.specification)
+
+
+@dataclass(frozen=True)
+class OperationPolicy:
+    """A context-recognized power to effect one commitment operation."""
+
+    actor: Party
+    operation: CommitmentOp
+    commitment: LiabilityId
+    target: Party | None = None
+
+
+@dataclass(frozen=True)
+class CommitmentContextState:
+    context: Party
+    standing_certificates: frozenset[CertificateId]
+    policies: frozenset[OperationPolicy] = frozenset()
+
+
+@dataclass(frozen=True)
+class TypedOperation:
+    operation: CommitmentOp
+    rewrite: Rewrite
+    target: Party | None = None
+
+
+def check_commitment_operation(
+    old: Mapping[LiabilityId, SocialCommitment],
+    new: Mapping[LiabilityId, SocialCommitment],
+    operation: TypedOperation,
+    context: CommitmentContextState,
+) -> tuple[str, ...]:
+    """Check typed social-role effects, then reuse the common account checker.
+
+    The policy relation represents institutional power: a successful operation
+    changes the recognized commitment relation. Mere permission to perform a
+    physical or communicative act is intentionally not an input here.
+    """
+    errors: list[str] = []
+    rewrite = operation.rewrite
+    old_ids = tuple(old)
+    new_ids = tuple(new)
+
+    if any(item.context != context.context for item in (*old.values(), *new.values())):
+        errors.append("context.mismatch")
+
+    if operation.operation is CommitmentOp.CREATE:
+        if old_ids or len(new_ids) != 1:
+            errors.append("operation.create_shape")
+            return tuple(errors)
+        child = new[new_ids[0]]
+        grant = OperationPolicy(rewrite.move.actor, CommitmentOp.CREATE, child.ident)
+        if grant not in context.policies:
+            errors.append("power.create_missing")
+        if rewrite.certificate.ident not in context.standing_certificates:
+            errors.append("certificate.not_standing")
+        if rewrite.certificate.move != rewrite.move:
+            errors.append("certificate.move_mismatch")
+        return tuple(errors)
+
+    if len(old_ids) != 1:
+        errors.append("operation.single_source_required")
+        return tuple(errors)
+    source = old[old_ids[0]]
+    grant = OperationPolicy(
+        rewrite.move.actor, operation.operation, source.ident, operation.target
+    )
+
+    if operation.operation is CommitmentOp.DISCHARGE:
+        if new_ids or rewrite.move != source.discharge_condition:
+            errors.append("operation.discharge_not_satisfied")
+    elif operation.operation in (CommitmentOp.CANCEL, CommitmentOp.RELEASE):
+        if new_ids:
+            errors.append("operation.closure_shape")
+        if operation.operation is CommitmentOp.CANCEL and rewrite.move.actor != source.debtor:
+            errors.append("operation.cancel_actor")
+        if operation.operation is CommitmentOp.RELEASE and rewrite.move.actor not in {
+            source.creditor,
+            source.context,
+        }:
+            errors.append("operation.release_actor")
+        if grant not in context.policies:
+            errors.append(f"power.{operation.operation.value}_missing")
+    elif operation.operation is CommitmentOp.DELEGATE:
+        if len(new_ids) != 1 or operation.target is None:
+            errors.append("operation.delegate_shape")
+        else:
+            child = new[new_ids[0]]
+            if (
+                child.debtor != operation.target
+                or child.creditor != source.creditor
+                or child.context != source.context
+                or child.discharge_condition != source.discharge_condition
+            ):
+                errors.append("operation.delegate_roles")
+        if rewrite.move.actor not in {operation.target, source.context}:
+            errors.append("operation.delegate_actor")
+        if grant not in context.policies:
+            errors.append("power.delegate_missing")
+    elif operation.operation is CommitmentOp.ASSIGN:
+        if len(new_ids) != 1 or operation.target is None:
+            errors.append("operation.assign_shape")
+        else:
+            child = new[new_ids[0]]
+            if (
+                child.creditor != operation.target
+                or child.debtor != source.debtor
+                or child.context != source.context
+                or child.discharge_condition != source.discharge_condition
+            ):
+                errors.append("operation.assign_roles")
+        if rewrite.move.actor not in {source.creditor, source.context}:
+            errors.append("operation.assign_actor")
+        if grant not in context.policies:
+            errors.append("power.assign_missing")
+
+    transfer_grants = frozenset()
+    if operation.operation is CommitmentOp.DELEGATE and operation.target is not None:
+        transfer_grants = (
+            frozenset({(source.ident, source.debtor, operation.target)})
+            if grant in context.policies
+            else frozenset()
+        )
+    automatic_discharge = (
+        operation.operation is CommitmentOp.DISCHARGE
+        and rewrite.move == source.discharge_condition
+    )
+    rewrite_grants = (
+        frozenset({(source.ident, rewrite.move.actor)})
+        if (grant in context.policies or automatic_discharge)
+        and rewrite.move.actor != source.debtor
+        else frozenset()
+    )
+    public = PublicState(
+        context.standing_certificates, transfer_grants, rewrite_grants
+    )
+    errors.extend(
+        check_rewrite(
+            {key: item.as_liability() for key, item in old.items()},
+            {key: item.as_liability() for key, item in new.items()},
+            rewrite,
+            public,
+        )
+    )
     return tuple(errors)
 
 

@@ -280,3 +280,54 @@ cannot disappear or change without a reason-backed, lineage-linked,
 substantively adequate account, regardless of whether the inheritor is a future
 self or another agent—or whether answerability to another contains an
 irreducibly interpersonal mathematical ingredient.
+
+---
+
+# Continuation: Singh-informed wrapper prosecution
+
+Continue on the existing PR #46 and branch; do not open a new PR or round.
+Read `/Users/anson/Downloads/ai+law-final.pdf` in full: Munindar P. Singh, “An
+Ontology for Commitments in Multiagent Systems: Toward a Unification of
+Normative Concepts,” *Artificial Intelligence and Law* 7 (1999), 97–113.
+
+Test whether Singh's `C(x,y,G,p)` social-commitment ontology can replace most of
+the bespoke interpersonal wrapper while the PR #45/#46 account machinery remains
+the proof-relevant diachronic addition. Precisely compare debtor, creditor,
+context, discharge condition, named/explicit/implicit commitments, policies, and
+higher-order commitments to the current objects. Mark each mapping exact,
+approximate, too strong, too weak, or different.
+
+In particular:
+
+- determine whether `G` supplies the recognized-standing/adjudicative locus or
+  whether the time-indexed `kappa` state needs more;
+- revisit whether claimant is nonfundamental, distinguishing the bare account
+  kernel from directed social commitments and creditor from beneficiary/source/
+  audience;
+- compile Create, Discharge, Cancel, Release, Delegate, and Assign into account
+  resource shapes and state exactly who authorizes each;
+- identify which parts Singh already has and which of persistent lineage,
+  per-input transport, undertaken reasons, basis-loss review, and composition
+  are genuinely additional;
+- preserve Singh's semantics/pragmatics and world/private-state distinctions,
+  and do not let context recognition imply objective adequacy;
+- test whether Hohfeldian claims/powers/immunities and social policies compress
+  `holdsStanding`, `mayDispose`, `mayTransfer`, and related predicates;
+- stress policy self-revision, delegation, assignment, retained secondary
+  liability, personal performance, and the diachronic instantiation without a
+  fake past-self creditor;
+- propose the smallest old-wrapper to new-wrapper map and a three-layer
+  commitment/standing, answerability, optional-downstream architecture;
+- answer ten explicit source-boundary questions and recommend at most three next
+  sources ranked by unresolved mathematical question.
+
+Update only this round's memo, witnesses/tests, provenance, README, prompt/report,
+and PR #46 description. Add only decisive finite witnesses: Singh-style
+commitment, discharge/release, delegate/assign, powered cancel versus deletion,
+context-held duty, permission versus power, policy licensing/meta-revision, and
+parallel social/diachronic instantiations where useful. Keep the round
+unregistered.
+
+Choose one revised recommendation: KEEP CURRENT WRAPPER, SINGH-INFORMED WRAPPER,
+COMMITMENT-THEORETIC REFRAME, or UNIFICATION WEAKENED. Prefer the smallest
+source-supported architecture.
