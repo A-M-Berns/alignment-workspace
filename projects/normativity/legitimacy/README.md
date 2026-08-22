@@ -9,4 +9,5 @@ current fixture results. Future legitimacy rounds land under `rounds/`.
 - Legitimacy architecture: `rounds/2026-08-12-legitimacy-architecture/`
 - Procedural sufficiency prosecution: `rounds/2026-08-13-procedural-legitimacy/`
 - Internal-answerability kernel prosecution: `rounds/2026-08-21-internal-answerability/`
+- Role-parametric answerability prosecution: `rounds/2026-08-22-role-parametric-answerability/`
 - Interpretation and philosophical gloss: [Legitimacy wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Legitimacy)
