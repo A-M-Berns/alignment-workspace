@@ -607,6 +607,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-21-internal-answerability/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-22-role-parametric-answerability",
+      "date": "2026-08-22",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability",
+      "verdict": "UNIFIED WITH WRAPPER.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability/MEMO.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-22-role-parametric-answerability/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
