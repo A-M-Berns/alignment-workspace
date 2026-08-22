@@ -9,6 +9,11 @@ The executor worked from live `origin/main` at
 `76252ffbd6b384f78ccf2d2d27f76354af1f5a16`, which includes merged PR #45.
 The Singh-informed continuation was performed on the existing PR #46 branch at
 commit `75d21df` and updates these same artifacts in place.
+The final consolidation was performed on the same branch after commit `bcbbeab`;
+it reread the cited PDF passages for every attribution, decomposed the opaque
+`Spec` into substantive content plus a pinned lifecycle/semantic receipt, added
+typed disposition and operation-linked review witnesses, and compressed the memo
+without changing the registered verdict.
 
 ## External source note
 
@@ -43,3 +48,5 @@ Round extrapolations, not claims attributed to Singh:
 - compilation of the six operations into generic resource rewrites;
 - evidence-access and consequential-contest interfaces; and
 - retained secondary liability or compositional delegation chains.
+- pinned lifecycle/semantic receipts and the abstract `ValidDisposition`
+  interface.

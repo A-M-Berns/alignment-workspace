@@ -331,3 +331,32 @@ unregistered.
 Choose one revised recommendation: KEEP CURRENT WRAPPER, SINGH-INFORMED WRAPPER,
 COMMITMENT-THEORETIC REFRAME, or UNIFICATION WEAKENED. Prefer the smallest
 source-supported architecture.
+
+---
+
+# Final consolidation and merge dispatch
+
+Continue on existing branch and PR #46 only. Resolve the remaining ambiguity
+between substantive satisfaction and authorized normative disposition. Test
+whether opaque `Spec` can be replaced by substantive content plus versioned
+lifecycle rules, while preserving the record/environment gap and preventing
+`authorized => adequate` collapse.
+
+Compile Singh's six operations into generic `0 -> 1`, `1 -> 0`, and `1 -> 1`
+account shapes while retaining typed disposition proofs. In particular,
+Discharge and Release may share an empty live frontier but must retain different
+histories; Delegate and Assign alter different roles. Add only lifecycle-deciding
+witnesses, including operation-linked later basis loss.
+
+Compress the memo to two boxes: standing determines what is owed and which
+operations have normative effect; answerability requires an undertaken reason,
+per-input lineage, a valid disposition, and basis-loss review. State the minimal
+No Silent Disposition theorem and the narrow role-parametric unification without
+reducing social commitments to internal commitments. Audit every Singh
+attribution against the PDF and state novelty only as “not supplied in this
+paper.” Remove obsolete wrapper machinery and freeze a small vocabulary.
+
+Run the full non-Lean-appropriate repository gates, synchronize with current
+main semantically, update the existing PR description, and merge PR #46 if it is
+mergeable with no substantive or repository-required blocker. Do not claim a
+declaration-level axiom audit that did not complete.

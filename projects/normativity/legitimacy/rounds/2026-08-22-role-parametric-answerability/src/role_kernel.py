@@ -79,7 +79,7 @@ class Rewrite:
     # Each pair is (old liability id, successor liability ids).  An empty tuple
     # is a closure and therefore also needs a separately scoped witness.
     coverage: tuple[tuple[LiabilityId, tuple[LiabilityId, ...]], ...]
-    closed: tuple[tuple[LiabilityId, str], ...] = ()
+    closed: tuple[tuple[LiabilityId, object], ...] = ()
 
 
 def check_rewrite(
@@ -149,24 +149,38 @@ class CommitmentOp(str, Enum):
     ASSIGN = "assign"
 
 
+class DispositionKind(str, Enum):
+    PERFORMANCE = "performance"
+    RELEASE = "release"
+    CANCELLATION = "cancellation"
+
+
+@dataclass(frozen=True)
+class DispositionWitness:
+    kind: DispositionKind
+    evidence: str
+    lifecycle_version: str
+
+
 @dataclass(frozen=True)
 class SocialCommitment:
     """A named Singh-style commitment occurrence plus account semantics.
 
-    ``discharge_condition`` is Singh's p. ``specification`` is deliberately
-    richer: it also says which typed exits/revisions count as adequate accounts.
-    The source paper does not supply this trace semantics.
+    ``substantive_condition`` is Singh's p. ``answer_language`` is the finite
+    denotation derived in these witnesses from that condition and the pinned
+    lifecycle version. The source paper does not supply this trace semantics.
     """
 
     ident: LiabilityId
     debtor: Party
     creditor: Party
     context: Party
-    discharge_condition: Event
-    specification: Language
+    substantive_condition: Event
+    answer_language: Language
+    lifecycle_version: str = "v1"
 
     def as_liability(self) -> Liability:
-        return Liability(self.ident, self.debtor, self.specification)
+        return Liability(self.ident, self.debtor, self.answer_language)
 
 
 @dataclass(frozen=True)
@@ -177,6 +191,7 @@ class OperationPolicy:
     operation: CommitmentOp
     commitment: LiabilityId
     target: Party | None = None
+    lifecycle_version: str = "v1"
 
 
 @dataclass(frozen=True)
@@ -218,7 +233,12 @@ def check_commitment_operation(
             errors.append("operation.create_shape")
             return tuple(errors)
         child = new[new_ids[0]]
-        grant = OperationPolicy(rewrite.move.actor, CommitmentOp.CREATE, child.ident)
+        grant = OperationPolicy(
+            rewrite.move.actor,
+            CommitmentOp.CREATE,
+            child.ident,
+            lifecycle_version=child.lifecycle_version,
+        )
         if grant not in context.policies:
             errors.append("power.create_missing")
         if rewrite.certificate.ident not in context.standing_certificates:
@@ -232,11 +252,15 @@ def check_commitment_operation(
         return tuple(errors)
     source = old[old_ids[0]]
     grant = OperationPolicy(
-        rewrite.move.actor, operation.operation, source.ident, operation.target
+        rewrite.move.actor,
+        operation.operation,
+        source.ident,
+        operation.target,
+        source.lifecycle_version,
     )
 
     if operation.operation is CommitmentOp.DISCHARGE:
-        if new_ids or rewrite.move != source.discharge_condition:
+        if new_ids or rewrite.move != source.substantive_condition:
             errors.append("operation.discharge_not_satisfied")
     elif operation.operation in (CommitmentOp.CANCEL, CommitmentOp.RELEASE):
         if new_ids:
@@ -259,7 +283,7 @@ def check_commitment_operation(
                 child.debtor != operation.target
                 or child.creditor != source.creditor
                 or child.context != source.context
-                or child.discharge_condition != source.discharge_condition
+                or child.substantive_condition != source.substantive_condition
             ):
                 errors.append("operation.delegate_roles")
         if rewrite.move.actor not in {operation.target, source.context}:
@@ -275,13 +299,28 @@ def check_commitment_operation(
                 child.creditor != operation.target
                 or child.debtor != source.debtor
                 or child.context != source.context
-                or child.discharge_condition != source.discharge_condition
+                or child.substantive_condition != source.substantive_condition
             ):
                 errors.append("operation.assign_roles")
         if rewrite.move.actor not in {source.creditor, source.context}:
             errors.append("operation.assign_actor")
         if grant not in context.policies:
             errors.append("power.assign_missing")
+
+    expected_closure_kind = {
+        CommitmentOp.DISCHARGE: DispositionKind.PERFORMANCE,
+        CommitmentOp.RELEASE: DispositionKind.RELEASE,
+        CommitmentOp.CANCEL: DispositionKind.CANCELLATION,
+    }.get(operation.operation)
+    if expected_closure_kind is not None:
+        witness = dict(rewrite.closed).get(source.ident)
+        if not isinstance(witness, DispositionWitness):
+            errors.append("disposition.untyped")
+        elif (
+            witness.kind is not expected_closure_kind
+            or witness.lifecycle_version != source.lifecycle_version
+        ):
+            errors.append("disposition.kind_or_version")
 
     transfer_grants = frozenset()
     if operation.operation is CommitmentOp.DELEGATE and operation.target is not None:
@@ -292,7 +331,7 @@ def check_commitment_operation(
         )
     automatic_discharge = (
         operation.operation is CommitmentOp.DISCHARGE
-        and rewrite.move == source.discharge_condition
+        and rewrite.move == source.substantive_condition
     )
     rewrite_grants = (
         frozenset({(source.ident, rewrite.move.actor)})
@@ -382,6 +421,23 @@ def basis_losses(
     before: ReasonViews, after: ReasonViews, used: frozenset[CertificateId]
 ) -> frozenset[CertificateId]:
     return frozenset((before.recognized - after.recognized) & used)
+
+
+@dataclass(frozen=True, order=True)
+class HistoricalUse:
+    liability: LiabilityId
+    operation: CommitmentOp
+    certificate: CertificateId
+
+
+def review_liabilities(
+    before: ReasonViews,
+    after: ReasonViews,
+    uses: Iterable[HistoricalUse],
+) -> frozenset[HistoricalUse]:
+    """Return the operation-linked review docket induced by recognized loss."""
+    lost = before.recognized - after.recognized
+    return frozenset(use for use in uses if use.certificate in lost)
 
 
 def private_basis_verdicts(

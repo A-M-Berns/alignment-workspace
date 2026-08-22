@@ -12,10 +12,17 @@ substantially replace the bespoke social-standing predicates. Evidentiary access
 consequential contest/adjudication, immutable denotation receipts, and the full
 proof-relevant account machinery remain additional.
 
+**Final consolidation.** The common theorem now abstracts over an old-input-
+indexed `ValidDisposition`. A social occurrence's full answer semantics is
+derived from substantive content plus a pinned lifecycle/semantic receipt. This
+blocks retroactive widening by later policy changes while keeping finite safety
+languages as an implementation rather than an unexplained primitive.
+
 The research memo is
 `projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability/MEMO.md`.
-Twenty-five finite tests reproduce the original microcases and five decisive
-Singh-style operation distinctions.
+Twenty-seven finite tests reproduce the original microcases, typed Singh-style
+operation distinctions, pinned lifecycle-version protection, and operation-
+linked basis-loss review.
 
 ## Findings
 
@@ -47,10 +54,17 @@ Singh-style operation distinctions.
     operation institutionally effective without establishing environmental or
     stronger normative correctness.
 12. Singh provides named directed commitments, contexts, operations, and policy/
-    metacommitment structure. He does not provide immutable account lineage,
-    per-input semantic transport, undertaken basis receipts, basis-loss
-    reopening, or a composition theorem; his conclusion leaves model-theoretic
+    metacommitment structure. Not supplied in this paper are immutable account
+    lineage, per-input semantic transport, undertaken basis receipts, basis-loss
+    reopening, or a composition theorem; its conclusion leaves model-theoretic
     semantics for future work.
+13. Substantive content plus a pointer to current context rules is insufficient:
+    a two-version self-release policy can retroactively widen an old liability.
+    Pinning the lifecycle version, or explicitly migrating the old occurrence,
+    is necessary.
+14. Identical live frontiers do not identify account histories. Performance
+    Discharge and authorized Release both close `1 -> 0`, but retain different
+    typed disposition proofs.
 
 ## Deviations
 
@@ -73,9 +87,10 @@ DAG, and basis-loss bridge are our extrapolations, not claims from Singh (1999).
 ## Provisional names introduced
 
 `role-parametric answerability`, `recognized answerability state`,
-`Singh-informed wrapper`, `role-changing rewrite`, `denotation receipt`, and
+`Singh-informed wrapper`, `valid disposition`, `meaning receipt`, and
 `answerability for` versus `answerability to`.
 
 ## Outstanding maintainer actions
 
-None. Interface adoption, naming, and any Lean promotion remain future decisions.
+None required for this research-round PR. Formal lifecycle compilation, naming,
+and any Lean promotion remain future work rather than merge blockers.

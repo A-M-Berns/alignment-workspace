@@ -6,7 +6,10 @@ from role_kernel import (
     Certificate,
     CommitmentContextState,
     CommitmentOp,
+    DispositionKind,
+    DispositionWitness,
     Event,
+    HistoricalUse,
     Liability,
     OperationPolicy,
     PublicState,
@@ -28,6 +31,7 @@ from role_kernel import (
     relabel_liability,
     relabel_public,
     relabel_rewrite,
+    review_liabilities,
     safety_language,
 )
 
@@ -295,11 +299,23 @@ class SinghCommitmentOperationCases(unittest.TestCase):
         move: Event,
         witness: str,
     ) -> TypedOperation:
+        disposition_kind = {
+            CommitmentOp.DISCHARGE: DispositionKind.PERFORMANCE,
+            CommitmentOp.RELEASE: DispositionKind.RELEASE,
+            CommitmentOp.CANCEL: DispositionKind.CANCELLATION,
+        }[kind]
         rewrite = Rewrite(
             move,
             Certificate(f"p-{kind.value}", move),
             ((source.ident, ()),),
-            ((source.ident, witness),),
+            (
+                (
+                    source.ident,
+                    DispositionWitness(
+                        disposition_kind, witness, source.lifecycle_version
+                    ),
+                ),
+            ),
         )
         return TypedOperation(kind, rewrite)
 
@@ -332,6 +348,14 @@ class SinghCommitmentOperationCases(unittest.TestCase):
             (),
         )
         self.assertNotEqual(discharged.rewrite.closed, released.rewrite.closed)
+        self.assertEqual(
+            dict(discharged.rewrite.closed)["c"].kind,
+            DispositionKind.PERFORMANCE,
+        )
+        self.assertEqual(
+            dict(released.rewrite.closed)["c"].kind,
+            DispositionKind.RELEASE,
+        )
 
     def test_context_policy_distinguishes_cancellation_from_deletion(self):
         cancel = Event("Bob", "cancel", "Alice")
@@ -443,5 +467,66 @@ class SinghCommitmentOperationCases(unittest.TestCase):
         )
         self.assertEqual(
             check_commitment_operation({"c": source}, {}, operation, power),
+            (),
+        )
+
+    def test_basis_loss_reopens_release_cancel_and_delegate_history(self):
+        uses = frozenset(
+            {
+                HistoricalUse("c-release", CommitmentOp.RELEASE, "p-release"),
+                HistoricalUse("c-cancel", CommitmentOp.CANCEL, "p-cancel"),
+                HistoricalUse("c-delegate", CommitmentOp.DELEGATE, "p-delegate"),
+            }
+        )
+        before = ReasonViews(
+            private=(),
+            recognized=frozenset({use.certificate for use in uses}),
+        )
+        after = ReasonViews(private=(), recognized=frozenset())
+        self.assertEqual(review_liabilities(before, after, uses), uses)
+
+    def test_current_policy_version_cannot_retroactively_widen_old_lifecycle(self):
+        cancel = Event("Bob", "self-release", "Alice")
+        satisfy = Event("Bob", "deliver", "Alice")
+        source = SocialCommitment(
+            "old-c",
+            "Bob",
+            "Alice",
+            "Forum",
+            satisfy,
+            safety_language((cancel,)),
+            lifecycle_version="v0",
+        )
+        operation = self.typed_closure(
+            CommitmentOp.CANCEL, source, cancel, "old-rule-application"
+        )
+        current_only = CommitmentContextState(
+            "Forum",
+            frozenset({"p-cancel"}),
+            frozenset(
+                {
+                    OperationPolicy(
+                        "Bob", CommitmentOp.CANCEL, "old-c", lifecycle_version="v1"
+                    )
+                }
+            ),
+        )
+        pinned_rule = CommitmentContextState(
+            "Forum",
+            frozenset({"p-cancel"}),
+            frozenset(
+                {
+                    OperationPolicy(
+                        "Bob", CommitmentOp.CANCEL, "old-c", lifecycle_version="v0"
+                    )
+                }
+            ),
+        )
+        self.assertIn(
+            "power.cancel_missing",
+            check_commitment_operation({"old-c": source}, {}, operation, current_only),
+        )
+        self.assertEqual(
+            check_commitment_operation({"old-c": source}, {}, operation, pinned_rule),
             (),
         )
