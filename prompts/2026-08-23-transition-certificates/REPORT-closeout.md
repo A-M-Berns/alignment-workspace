@@ -38,10 +38,13 @@ without either being developed here. Sixty-seven tests, all green.
    endorsement, a valid certificate, basis loss, and the provenance
    manifest, without any change to the stance type.
 5. The provenance manifest gives the frontier its settled-versus-defeasible
-   split: `(ReceiptDeps, ClaimDeps)` with internally supplied targets closed
-   off — syntactic, computable, and exactly what the two-sorted source
-   structure was for. Fundability and settlement safety are explicitly not
-   claimed.
+   split: `(ReceiptDeps, DirectClaimDeps)`, the plain unions of receipt and
+   claim sources over the cited set — syntactic, computable, and exactly
+   what the two-sorted source structure was for. Fundability and settlement
+   safety are explicitly not claimed. (As first shipped, the manifest
+   subtracted cited targets, which quietly imported the
+   support-implies-endorsement closure the substrate forbids; the cleanup
+   pass repaired it, with chained and circular regression fixtures.)
 6. The notebook/stance/diary split survived all three attempted collapses
    with minimal witnesses: pruning the ledger to enabled reasoning makes a
    reliance loss unreportable exactly when it matters; deriving the stance
@@ -82,6 +85,31 @@ fixture. Nothing is registered or kernel-checked.
 1. Rule on the round's vocabulary and on enacting the freeze — the single
    `DECISIONS.md` queue entry now covers both, with the two entries from the
    #48 round still open above it.
+
+## Final cleanup
+
+A cleanup-and-closeout dispatch repaired four inconsistencies in the frozen
+handoff; none reopened the representation.
+
+```text
+- frontier dependency closure bug: repaired — the manifest no longer
+  subtracts cited targets; DirectClaimDeps is the plain union, with chained
+  and circular regression fixtures, and the discharge notion
+  OpenClaimDeps(X, N, B̂) is recorded as a frontier-side open problem
+- Explain/spec mismatch: repaired — the implementation now returns
+  (sources, target, applied_as) as the frozen contract promises, with a test
+- certificate constitutive receipt: repaired — the frozen receipt now
+  carries applied_as via Explain, and a fixture shows later reclassification
+  cannot alter it
+- genealogy locality: repaired — certificate checking validates only the
+  cited license's ancestral closure (ancestral_errors); the global invariant
+  genealogy_errors remains the record layer's, and an
+  unrelated malformed authority act no longer fails a sound certificate
+- reason-state interface changed?: no — the frozen types and queries are
+  untouched; Explain was brought into conformance with the already-frozen
+  contract, and the manifest is a library convenience outside the freeze
+- freeze verdict: FROZEN-PROVISIONALLY
+```
 
 ## Recommended next pass
 

@@ -77,8 +77,9 @@ non-laundering axiom.
 4. **Applicability-in-source was unenforceable.** PR #48 stated it as a
    convention the types could not see, because *which* schema an occurrence
    presents itself as applying was recorded nowhere structural. Repair:
-   occurrences carry a constitutive `instantiates` declaration — frozen
-   provenance, like sources — and minting refuses a declared instantiation
+   occurrences carry a constitutive schema-use declaration — frozen
+   provenance, like sources; the continuation names it `applied_as` (§10.1)
+   — and minting refuses a declared schema use
    whose staged `App` claim is missing from the sources. The check is
    grammar: it never judges whether the schema applies, only that the
    occurrence says what its application depends on. The unconditional form
@@ -87,23 +88,30 @@ non-laundering axiom.
    contain undeclared occurrences is record-side policy. A joint declaration
    of several schemas depends on all its `App` claims; independence is
    minted as separate occurrences.
-5. **Occurrences had no birth index**, so "this occurrence predates the
-   transition" — the load-bearing clause of the whole certificate discipline
-   — was inexpressible. `born` is now constitutive.
+5. **The temporal prefix was inexpressible**: nothing could say "this
+   occurrence predates the transition" — the load-bearing clause of the
+   whole certificate discipline. A birth index was added here and placed at
+   its correct layer by the continuation: ledger provenance behind
+   `ExistedBefore`, not a field on the occurrence (§10.1).
 
 ## 3. Final reason-state interface
 
+The frozen form, as settled by the continuation (§10) and stated
+authoritatively in `REASON_STATE_INTERFACE.md`:
+
 ```text
 V     ::= Atom | Neg V (canonical, no ¬¬) | App(σ,c,n) | Inst(e,σ) | Incomp(S), |S| ≥ 2
-E     :   e = (id, s(e) ⊆_fin V ⊎ L, t(e) ∈ V, born(e) ∈ ℕ, inst(e) ⊆_fin Σ×C×ℕ)
-          append-only; identities never reused; all five components constitutive
-          well-formedness: (σ,c,n) ∈ inst(e) ⟹ App(σ,c,n) ∈ s(e)
+E     :   e = (id, s(e) ⊆_fin V ⊎ L, t(e) ∈ V, applied_as(e) ⊆_fin Σ×C×ℕ)
+          append-only; identities never reused; all components constitutive;
+          temporal provenance is the ledger's, asked through ExistedBefore
+          well-formedness: (σ,c,n) ∈ applied_as(e) ⟹ App(σ,c,n) ∈ s(e)
 Σ, C  :   bare identities
 views :   View(c,n) = case-restricted arrival prefix; external; App keeps (σ,c,n) identity
-queries (total, stateless, mandatory):
-  Enabled_B(e), Reasons_B(v), Dependents(x), Explain(e), LostBasis_B(log)
-conflict (derived, stance-relative):
-  Conflict_B(S); incompatible = Conflict on pairs; joint_conflicts over live targets;
+queries (total, stateless, frozen):
+  Enabled_B(e), Reasons_B(v), Dependents(x), Explain(e) = (s, t, applied_as),
+  ExistedBefore(e,n), LostBasis_B(log), Conflict_B(S)
+conflict conveniences (derived, stance-relative):
+  incompatible = Conflict on pairs; joint_conflicts over live targets;
   criticizable(B) = Conflict_B(B)
 ```
 
@@ -117,7 +125,7 @@ KINDS   = belief-revision | practical-undertaking | schema-reclassification
 Act     = (id, index, seed?, license_parents, scope ⊆ KINDS)   [record-side stand-in]
 
 check(𝓡, Acts, Commitments, cert, B_pre, arrivals) — every clause explanatory:
-  basis     nonempty; each cited e exists, born(e) < n, Enabled under
+  basis     nonempty; each cited e exists, ExistedBefore(e, n), Enabled under
             (B_pre, {r : arrival(r) < n}); failure names the occurrence and a
             missing source
   license   cited act exists, index < n, kind ∈ scope, genealogy seed-terminating
@@ -301,8 +309,9 @@ queries *without inspecting representation internals or adding hidden
 semantic fields* — which is how this round in fact ran, since the
 certificate checker consumes only `Enabled`, the constitutive lookups, and
 record-side objects. Under that criterion the verdict must also record that
-this round itself *forced two constitutive additions* (`born`,
-`instantiates`) before its consumer could be served: the boundary was found
+this round itself *forced two constitutive additions* — the temporal
+prefix and the schema-use declaration, placed at their final layers in
+§10.1 — before its consumer could be served: the boundary was found
 by pressure, not assumed.
 
 ### 9.2 Prosecution by subtraction
@@ -324,7 +333,8 @@ exists.
 
 The characterization audit: "append-only identity-bearing directed
 multi-hypergraph plus a stance marking" is accurate **as a labeled
-structure** — `E` carries constitutive labels (`born`, `instantiates`)
+structure** — `E` carries the constitutive label `applied_as` (and, per
+§10.1, temporal provenance held by the ledger)
 beyond `(s, t)`, sources split over two sorts, and `B` is a separate finite
 marking of `V`, not a component of the graph. "Multi" and "hyper" are both
 essential (first two rows above); schemas and cases are correctly external
@@ -360,7 +370,7 @@ already provides. None is `GENUINELY MISSING PRIMITIVE`.
 |---|---|---|---|
 | normative learner | bearing, conflicts against a candidate stance, hypothetical enabledness, organization open to reasons | `Reasons`/`bearing`; `Conflict`/`joint_conflicts`/`criticizable`; same queries at `B'`; `Inst`/`App` as targets | no |
 | historical answerability | exact relied-on occurrence, its sources later, loss detection, alternative-vs-original | identity + `Explain`; `LostBasis` over frozen citations (substitute support never silences, tested) | no |
-| `Licensed` | particular occurrences, applicability dependencies, case/stage, pre-state enabledness; authorization record-side | certificate `basis` + derived `ApplicabilityProvenance` + `App` arguments + strict pre-state check; license as a separate record sort | no — but it *did* force `born` and `instantiates` during this round, now part of the interface |
+| `Licensed` | particular occurrences, applicability dependencies, case/stage, pre-state enabledness; authorization record-side | certificate `basis` + derived `ApplicabilityProvenance` + `App` arguments + strict pre-state check; license as a separate record sort | no — but it *did* force the temporal prefix and `applied_as` during this round, placed at their layers in §10.1 |
 | inquiry | occurred-during versus taken-to-bear versus docketable trouble | `T` non-evidential; relevance/`App` claims; `Conflict` and `LostBasis` reports as docketable conditions | no |
 | operative compiler | endorsed content, bearing, cited bases, applicability, organization, case/stage, reliance | `B` vs `Reasons`; certificates; `Inst` claims + provenance; `App` args; record `UsedAt` | no |
 
@@ -403,8 +413,9 @@ Verdict: CLOSED-PROVISIONALLY
 
 Core representation:
   V ::= Atom | Neg V (canonical) | App(σ,c,n) | Inst(e,σ) | Incomp(S), |S| ≥ 2
-  E : e = (id, s(e) ⊆_fin V ⊎ L, t(e) ∈ V, born, instantiates) — append-only,
-      constitutive, well-formed iff declared instantiations cite their App
+  E : e = (id, s(e) ⊆_fin V ⊎ L, t(e) ∈ V, applied_as) — append-only,
+      constitutive, well-formed iff declared schema uses cite their App;
+      temporal provenance is the ledger's, via ExistedBefore (§10.1)
   Σ, C bare identity sorts; L monotone receipts; B ⊆_fin V a separate stance
   Queries: Enabled, Reasons, Dependents, Explain, LostBasis;
   Conflict / joint_conflicts / criticizable as public derived queries
@@ -423,7 +434,8 @@ Negative boundary — what is deliberately outside: §9.3 — attack relations,
 
 Consumer-completeness result: all five known consumers served through the
   public interface with no new primitive (§9.4). This round's own consumer
-  forced born and instantiates before closing — the criterion's clause 5
+  forced the temporal prefix and the schema-use declaration before
+  closing — the criterion's clause 5
   operated once, and now holds.
 
 Remaining representation-open blockers: none known.

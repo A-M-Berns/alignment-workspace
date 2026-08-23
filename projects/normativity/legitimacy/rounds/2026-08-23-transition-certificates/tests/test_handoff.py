@@ -17,6 +17,7 @@ from reason_state import (
     bearing,
     conflict,
     enabled,
+    explain,
     lost_basis,
     neg,
     provenance_manifest,
@@ -37,6 +38,16 @@ class TestTemporalProvenanceLayer(unittest.TestCase):
         self.assertEqual(
             set(occ.__dataclass_fields__), {"ident", "sources", "target", "applied_as"}
         )
+
+    def test_explain_returns_all_constitutive_data(self):
+        # The frozen contract promises sources, target, and schema-use
+        # provenance; the implementation must not return less.
+        state = ReasonState()
+        state.mint_schema_use("e", {Atom("g")}, "s", "c", 1, Atom("t"), at=1)
+        sources, target, applied = explain(state, "e")
+        self.assertEqual(sources, frozenset({Atom("g"), App("s", "c", 1)}))
+        self.assertEqual(target, Atom("t"))
+        self.assertEqual(applied, frozenset({("s", "c", 1)}))
 
     def test_prefix_query_answers_the_temporal_question(self):
         state = ReasonState()
@@ -163,17 +174,38 @@ class TestRightHandoff(unittest.TestCase):
             frozenset({Atom("frontal-pattern"), App("frequency-inference", "c", 3)}),
         )
 
-    def test_manifest_frontier_excludes_supplied_targets(self):
-        # Chained citation: a cited occurrence's target is not an open claim
-        # dependency of the set that supplies it.
+    def test_citing_a_supporter_does_not_discharge_the_dependency(self):
+        # Regression for the dependency-closure bug: e1 : {g} ⇝ v and
+        # e2 : {v} ⇝ q. Citing both exposes support for v, but the ledger
+        # has no support-implies-endorsement closure, so v remains a live
+        # stance dependency of e2 and must stay in the manifest. The
+        # notebook can expose support for a premise; only the diary can
+        # establish that the premise was actually adopted.
         self.state.mint_schema_use(
             "act-on-it", {self.v}, "decision", "c", 4, Atom("respond:carry-umbrella"),
             at=4,
         )
         receipts, claims = provenance_manifest(self.state, ("freq", "act-on-it"))
         self.assertEqual(receipts, frozenset({"station-log"}))
-        self.assertNotIn(self.v, claims)
+        self.assertIn(self.v, claims)
         self.assertIn(App("decision", "c", 4), claims)
+        # The dependency is real: without v in the stance, the consuming
+        # occurrence is disabled no matter what is cited.
+        without_v = frozenset({App("decision", "c", 4)})
+        self.assertFalse(enabled(self.state, "act-on-it", without_v, frozenset()))
+
+    def test_circular_citation_has_no_empty_frontier(self):
+        # Kill case: e1 : {q} ⇝ p and e2 : {p} ⇝ q. Subtracting cited
+        # targets would report no claim dependencies at all — a circle of
+        # reasons certifying itself into groundedness. The direct manifest
+        # keeps both dependencies open.
+        state = ReasonState()
+        p, q = Atom("p"), Atom("q")
+        state.mint("e1", {q}, p, at=1)
+        state.mint("e2", {p}, q, at=1)
+        receipts, claims = provenance_manifest(state, ("e1", "e2"))
+        self.assertEqual(receipts, frozenset())
+        self.assertEqual(claims, frozenset({p, q}))
 
 
 class TestNotebookStanceDiarySplit(unittest.TestCase):

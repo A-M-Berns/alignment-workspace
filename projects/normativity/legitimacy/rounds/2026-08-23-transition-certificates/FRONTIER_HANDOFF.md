@@ -43,31 +43,49 @@ purpose seen from the right.
 For a cited occurrence set `X`:
 
 ```text
-Deps(X) = (ReceiptDeps(X), ClaimDeps(X))
-ReceiptDeps(X) = ⋃_{e ∈ X} s_L(e)
-ClaimDeps(X)   = ⋃_{e ∈ X} s_V(e)  minus  { t(e) : e ∈ X }
+Deps(X) = (ReceiptDeps(X), DirectClaimDeps(X))
+ReceiptDeps(X)     = ⋃_{e ∈ X} s_L(e)
+DirectClaimDeps(X) = ⋃_{e ∈ X} s_V(e)
 ```
 
-— every settled receipt the cited reasoning rests on, and the frontier of
-revisable claims it still openly depends on, with internally supplied
-targets closed off. Syntactic, computable, and exercised on a quantitative
-fixture (`test_handoff.TestRightHandoff`): a content
-`P(rain|front) ≥ 4/5` carried as ordinary `Atom` payload, with a reason
-bearing on it from a station-log receipt under a frequency-inference schema,
-a valid certified belief revision citing it, basis loss detected after the
+— every settled receipt the cited reasoning rests on, and every revisable
+claim it directly depends on. Cited targets are deliberately **not**
+subtracted. A cited occurrence targeting `v` exposes support for `v`; it
+does not put `v` into any stance, and the ledger has no
+support-implies-endorsement closure, so `v` remains a live stance
+dependency of every cited occurrence that consumes it. The regression and
+circular kill fixtures (`test_handoff.TestRightHandoff`) pin this:
+`e₁ : {g} ⇝ v, e₂ : {v} ⇝ q` cited together still report `v` open, and a
+citation circle `e₁ : {q} ⇝ p, e₂ : {p} ⇝ q` does not certify itself into
+an empty frontier.
+
+The conceptual lesson: **the notebook can expose support for a premise, but
+it cannot certify that the premise was actually adopted. Discharging a
+stance dependency requires record-side evidence of an accountable
+endorsement transition, not merely another reason pointing at that
+content.** A closed notion `OpenClaimDeps(X, N, B̂)` — direct dependencies
+minus those discharged by certified diary-bound endorsements — is a
+frontier-side open problem over the diary, deliberately not implemented in
+the ledger.
+
+The quantitative fixture exercises the manifest end to end: a content
+`P(rain|front) ≥ 4/5` carried as ordinary `Atom` payload, a reason bearing
+on it from a station-log receipt under a frequency-inference schema, a valid
+certified belief revision citing it, basis loss detected after the
 applicability is withdrawn, and the manifest splitting
 `({station-log}, {frontal-pattern, App(frequency-inference, c, 3)})`.
 
-This is exactly the settled-versus-defeasible split the compiler needs the
-waist to hand over; what the compiler does with it — joint semantics before
-projection, nonemptiness, convexity, funding — remains the open right-side
-program.
+This is the settled-versus-defeasible split the compiler needs the waist to
+hand over; what the compiler does with it — dependency discharge against
+the diary, joint semantics before projection, nonemptiness, convexity,
+funding — remains the open right-side program.
 
 ## What stays open on the right
 
-Defining `B̂_n` (which record events bind a stance member); the joint
-semantics of endorsed quantitative contents; compilation to a nonempty
-closed convex credal set with an effective presentation (priority item 39);
-the enforcement-liability certificate; and everything the traderized-force
+Defining `B̂_n` (which record events bind a stance member); the discharge
+notion `OpenClaimDeps(X, N, B̂)` over the diary; the joint semantics of
+endorsed quantitative contents; compilation to a nonempty closed convex
+credal set with an effective presentation (priority item 39); the
+enforcement-liability certificate; and everything the traderized-force
 interface already lists as its inputs. None of these requires a new
 reason-state primitive; each consumes the exposures above.

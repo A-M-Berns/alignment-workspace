@@ -261,9 +261,11 @@ def dependents(state: ReasonState, source: SourceRef) -> tuple[str, ...]:
     return tuple(occ.ident for occ in state.occurrences() if source in occ.sources)
 
 
-def explain(state: ReasonState, ident: str) -> tuple[frozenset, Claim]:
+def explain(state: ReasonState, ident: str) -> tuple:
+    """All constitutive occurrence data, as the frozen contract promises:
+    sources, target, and schema-use provenance."""
     occ = state.occurrence(ident)
-    return occ.sources, occ.target
+    return occ.sources, occ.target, occ.applied_as
 
 
 # Conflict is the set-level notion; binary incompatibility is its two-element
@@ -347,19 +349,19 @@ def lost_basis(
 
 
 def provenance_manifest(state: ReasonState, cited: Iterable[str]) -> tuple:
-    """The two-sorted dependency frontier of a cited occurrence set.
+    """The two-sorted direct dependencies of a cited occurrence set.
 
-    Returns `(receipt_deps, claim_deps)`: every receipt source of a cited
-    occurrence, and every claim source that is not itself the target of a
-    cited occurrence. This is what the two-sorted source structure buys a
-    future operative compiler: the first component is settled support, the
-    second is the revisable/defeasible support the content still rests on.
-    Purely syntactic and computable; it claims nothing about fundability or
-    settlement safety."""
+    Returns `(receipt_deps, direct_claim_deps)`: every receipt source and
+    every claim source of a cited occurrence. Cited targets are deliberately
+    NOT subtracted: a cited occurrence targeting `v` exposes support for `v`
+    but does not put `v` into any stance, so `v` remains a live stance
+    dependency of every cited occurrence that consumes it — subtracting it
+    would import the support-implies-endorsement closure the substrate
+    forbids. Discharging a claim dependency requires record-side evidence of
+    an accountable endorsement transition, which is a frontier-side notion
+    over the diary, not a ledger computation. Purely syntactic and
+    computable; it claims nothing about fundability or settlement safety."""
     cited_set = frozenset(cited)
-    supplied = frozenset(
-        state.occurrence(i).target for i in cited_set if state.has(i)
-    )
     receipts: set = set()
     claims: set = set()
     for ident in cited_set:
@@ -367,5 +369,5 @@ def provenance_manifest(state: ReasonState, cited: Iterable[str]) -> tuple:
             continue
         occ = state.occurrence(ident)
         receipts |= set(occ.receipt_sources())
-        claims |= set(occ.claim_sources()) - supplied
+        claims |= set(occ.claim_sources())
     return frozenset(receipts), frozenset(claims)

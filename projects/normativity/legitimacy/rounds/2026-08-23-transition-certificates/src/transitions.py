@@ -14,7 +14,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Mapping
 
-from reason_state import App, ReasonState, enabled
+from reason_state import App, ReasonState, enabled, explain
 
 
 KINDS = (
@@ -42,10 +42,26 @@ class AuthorityAct:
 
 def genealogy_errors(acts: Mapping[str, AuthorityAct]) -> tuple:
     """Seed-only roots and strictly earlier license parents, after the
-    afoundational-inquiry discipline. With no errors, every maximal backward
-    license path terminates at a seed."""
+    afoundational-inquiry discipline, over an entire authority record. With
+    no errors, every maximal backward license path terminates at a seed.
+    This is the record layer's global invariant; certificate checking uses
+    the ancestral form below, so an unrelated malformed act cannot fail an
+    otherwise sound certificate."""
+    return ancestral_errors(acts, tuple(acts))
+
+
+def ancestral_errors(acts: Mapping[str, AuthorityAct], roots) -> tuple:
+    """The genealogy discipline restricted to the ancestral closure of the
+    given acts: the acts a certificate's cited license actually rests on."""
     errors = []
-    for act in acts.values():
+    seen: set = set()
+    frontier = [r for r in roots if r in acts]
+    while frontier:
+        ident = frontier.pop()
+        if ident in seen:
+            continue
+        seen.add(ident)
+        act = acts[ident]
         if act.seed:
             if act.license_parents:
                 errors.append(f"seed-with-parents:{act.ident}")
@@ -57,6 +73,8 @@ def genealogy_errors(acts: Mapping[str, AuthorityAct]) -> tuple:
                 errors.append(f"unknown-parent:{act.ident}:{parent_id}")
             elif parent.index >= act.index:
                 errors.append(f"non-prior-parent:{act.ident}:{parent_id}")
+            else:
+                frontier.append(parent_id)
     return tuple(errors)
 
 
@@ -138,7 +156,11 @@ def check_certificate(
             failures.append(("posterior-license", cert.license))
         if cert.kind not in act.scope:
             failures.append(("license-scope", (cert.license, cert.kind)))
-        for err in genealogy_errors(acts):
+        # Locality: only the cited license's ancestral closure is validated.
+        # An unrelated malformed authority act elsewhere in the record is the
+        # record layer's problem (its global invariant is genealogy_errors),
+        # never a local certificate failure.
+        for err in ancestral_errors(acts, (cert.license,)):
             failures.append(("license-genealogy", err))
 
     for ident in cert.consumed:
@@ -147,8 +169,13 @@ def check_certificate(
         elif commitments[ident] >= cert.index:
             failures.append(("posterior-lineage", ident))
 
+    # The receipt freezes every constitutive fact about each cited
+    # occurrence — sources, target, and schema-use provenance — so what the
+    # certificate relied on is reproducible later without consulting any
+    # revisable interpretation. Reclassification moves Inst claims only; it
+    # cannot reach this snapshot.
     receipt = frozenset(
-        (ident, state.occurrence(ident).sources, state.occurrence(ident).target)
+        (ident,) + explain(state, ident)
         for ident in cert.basis
         if state.has(ident)
     )

@@ -80,6 +80,25 @@ pairwise-decomposed conflict semantics.
 - **Undeclared occurrences**: permitted; whether a cited basis may contain
   them is record-side policy.
 
+## The controlled reflective language
+
+The object language is reflectively expressive enough for the learner to
+reason about the applicability and organization of its own reasons —
+`App(σ,c,n)` and `Inst(e,σ)` are ordinary revisable targets — without
+making the historical structure itself stance-relative. The boundary runs:
+constitutive history stays structural (identity, sources, target,
+`applied_as`, ledger order); revisable judgments about applicability and
+organization live in the object language; mechanically derived facts stay
+queries. Full self-description is not attempted, and no query is reified as
+content.
+
+The same boundary settles what citation can and cannot do: the notebook can
+expose support for a premise, but it cannot certify that the premise was
+adopted — `Reasons_B(v) ≠ ∅` never puts `v` into `B`, and dependency
+queries such as the provenance manifest report direct dependencies without
+subtracting internally supported ones. Discharging a stance dependency is
+record-side business.
+
 ## The negative boundary
 
 Deliberately outside the waist, with their homes: stance revision, conflict

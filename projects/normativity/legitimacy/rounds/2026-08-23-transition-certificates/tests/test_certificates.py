@@ -86,6 +86,38 @@ class TestOrdinaryCertificate(unittest.TestCase):
         ).receipt
         self.assertEqual(before, after)
 
+    def test_receipt_freezes_all_constitutive_data_beyond_reclassification(self):
+        # The receipt carries the schema-use provenance, and a later
+        # reclassification — Inst claims moving in the stance — cannot reach
+        # it: applied_as is constitutive, Inst is revisable.
+        result = check_certificate(
+            self.state, self.acts, {}, self.cert, self.pre_stance, self.arrivals
+        )
+        (entry,) = result.receipt
+        ident, sources, target, applied = entry
+        self.assertEqual(ident, "e1")
+        self.assertEqual(applied, frozenset({("testimony", "c", 2)}))
+        reclassified = self.pre_stance | {
+            neg(Inst("e1", "testimony")), Inst("e1", "tau")
+        }
+        again = check_certificate(
+            self.state, self.acts, {}, self.cert, reclassified, self.arrivals
+        )
+        self.assertEqual(result.receipt, again.receipt)
+
+    def test_unrelated_malformed_authority_does_not_fail_the_certificate(self):
+        # Genealogy locality: only the cited license's ancestral closure is
+        # validated. A malformed act elsewhere is the record layer's global
+        # problem, reported by genealogy_errors, never a local certificate
+        # failure.
+        acts = dict(self.acts)
+        acts["rogue"] = AuthorityAct("rogue", 7, scope=frozenset({"inquiry-launch"}))
+        self.assertIn("new-root:rogue", genealogy_errors(acts))
+        result = check_certificate(
+            self.state, acts, {}, self.cert, self.pre_stance, self.arrivals
+        )
+        self.assertTrue(result.valid, result.failures)
+
 
 class TestCitationNecessity(unittest.TestCase):
     """Dispatch fixtures 4 and 5: particular occurrences, not conclusions."""
