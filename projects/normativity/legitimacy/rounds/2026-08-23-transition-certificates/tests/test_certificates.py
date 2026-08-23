@@ -47,8 +47,8 @@ class TestOrdinaryCertificate(unittest.TestCase):
             "e1",
             {Atom("witness"), App("testimony", "c", 2), Receipt("r1")},
             Atom("liable"),
-            born=2,
-            instantiates={("testimony", "c", 2)},
+            at=2,
+            applied_as={("testimony", "c", 2)},
         )
         self.acts = standard_acts()
         self.arrivals = {"r1": 1}
@@ -80,7 +80,7 @@ class TestOrdinaryCertificate(unittest.TestCase):
         before = check_certificate(
             self.state, self.acts, {}, self.cert, self.pre_stance, self.arrivals
         ).receipt
-        self.state.mint("later", {Atom("new")}, Atom("other"), born=9)
+        self.state.mint("later", {Atom("new")}, Atom("other"), at=9)
         after = check_certificate(
             self.state, self.acts, {}, self.cert, self.pre_stance, self.arrivals
         ).receipt
@@ -93,10 +93,10 @@ class TestCitationNecessity(unittest.TestCase):
     def setUp(self):
         self.state = ReasonState()
         src = {Atom("witness"), App("testimony", "c", 2)}
-        self.state.mint("e1", src, Atom("liable"), born=2,
-                        instantiates={("testimony", "c", 2)})
-        self.state.mint("e2", src, Atom("liable"), born=3,
-                        instantiates={("testimony", "c", 2)})
+        self.state.mint("e1", src, Atom("liable"), at=2,
+                        applied_as={("testimony", "c", 2)})
+        self.state.mint("e2", src, Atom("liable"), at=3,
+                        applied_as={("testimony", "c", 2)})
         self.acts = standard_acts()
         self.cert = Certificate("m1", "belief-revision", 5, ("e1",), "a3")
 
@@ -113,8 +113,8 @@ class TestCitationNecessity(unittest.TestCase):
             "alt",
             {Atom("forensics"), App("forensic", "c", 7)},
             Atom("liable"),
-            born=7,
-            instantiates={("forensic", "c", 7)},
+            at=7,
+            applied_as={("forensic", "c", 7)},
         )
         now = frozenset({Atom("witness"), Atom("forensics"), App("forensic", "c", 7)})
         # Conclusion-level monitoring sees nothing wrong: a live reason for
@@ -133,7 +133,7 @@ class TestPreStateDiscipline(unittest.TestCase):
         self.acts = standard_acts()
 
     def test_transition_cannot_mint_its_own_basis(self):
-        self.state.mint("fresh", {Atom("p")}, Atom("q"), born=5)
+        self.state.mint("fresh", {Atom("p")}, Atom("q"), at=5)
         cert = Certificate("m", "belief-revision", 5, ("fresh",), "a3")
         result = check_certificate(
             self.state, self.acts, {}, cert, frozenset({Atom("p")}), {}
@@ -142,7 +142,7 @@ class TestPreStateDiscipline(unittest.TestCase):
         self.assertIn(("posterior-basis", "fresh"), result.failures)
 
     def test_transition_cannot_mint_its_own_license(self):
-        self.state.mint("e", {Atom("p")}, Atom("q"), born=1)
+        self.state.mint("e", {Atom("p")}, Atom("q"), at=1)
         acts = dict(self.acts)
         acts["self"] = AuthorityAct("self", 5, license_parents=("s0",),
                                     scope=frozenset({"belief-revision"}))
@@ -152,7 +152,7 @@ class TestPreStateDiscipline(unittest.TestCase):
         self.assertIn(("posterior-license", "self"), result.failures)
 
     def test_mutual_licensing_is_refused_by_strict_priority(self):
-        self.state.mint("e", {Atom("p")}, Atom("q"), born=1)
+        self.state.mint("e", {Atom("p")}, Atom("q"), at=1)
         acts = {
             "s0": AuthorityAct("s0", 0, seed=True),
             "b1": AuthorityAct("b1", 5, license_parents=("b2",),
@@ -171,7 +171,7 @@ class TestPreStateDiscipline(unittest.TestCase):
         # Postulate collapse: the checker has no dedicated self-grounding
         # rule; every self-certification attack dies on strict priority or
         # genealogy. The failure codes prove which clause did the work.
-        self.state.mint("fresh", {Atom("p")}, Atom("q"), born=5)
+        self.state.mint("fresh", {Atom("p")}, Atom("q"), at=5)
         cert = Certificate("m", "belief-revision", 5, ("fresh",), "a3")
         result = check_certificate(
             self.state, self.acts, {}, cert, frozenset({Atom("p")}), {}
@@ -181,7 +181,7 @@ class TestPreStateDiscipline(unittest.TestCase):
 
     def test_pre_state_transcript_is_strict(self):
         self.state.mint(
-            "e", {Atom("p"), Receipt("late")}, Atom("q"), born=2
+            "e", {Atom("p"), Receipt("late")}, Atom("q"), at=2
         )
         arrivals = {"late": 7}
         early = Certificate("m", "belief-revision", 5, ("e",), "a3")
@@ -201,7 +201,7 @@ class TestPreStateDiscipline(unittest.TestCase):
         # The check is a function of the frozen pre-state inputs; a receipt
         # arriving later, or a richer current stance, does not flip the old
         # verdict on re-derivation.
-        self.state.mint("e", {Atom("p"), Receipt("late")}, Atom("q"), born=2)
+        self.state.mint("e", {Atom("p"), Receipt("late")}, Atom("q"), at=2)
         cert = Certificate("m", "belief-revision", 5, ("e",), "a3")
         pre = frozenset({Atom("p")})
         first = check_certificate(self.state, self.acts, {}, cert, pre, {"late": 7})
@@ -220,8 +220,8 @@ class TestGroundsVersusLicense(unittest.TestCase):
             "e1",
             {Atom("witness"), App("testimony", "c", 2)},
             Atom("liable"),
-            born=2,
-            instantiates={("testimony", "c", 2)},
+            at=2,
+            applied_as={("testimony", "c", 2)},
         )
         self.acts = standard_acts()
         self.pre = frozenset({Atom("witness"), App("testimony", "c", 2)})
@@ -280,8 +280,8 @@ class TestBasisLossAfterCertification(unittest.TestCase):
             "e1",
             {Atom("witness"), App("testimony", "c", 3)},
             Atom("liable"),
-            born=3,
-            instantiates={("testimony", "c", 3)},
+            at=3,
+            applied_as={("testimony", "c", 3)},
         )
         self.acts = standard_acts()
         self.pre = frozenset({Atom("witness"), App("testimony", "c", 3)})
@@ -315,8 +315,8 @@ class TestBasisLossAfterCertification(unittest.TestCase):
             "resolve",
             {clash, App("conflict-resolution", "c", 4)},
             Atom("respond:decline-m2"),
-            born=4,
-            instantiates={("conflict-resolution", "c", 4)},
+            at=4,
+            applied_as={("conflict-resolution", "c", 4)},
         )
         pre = frozenset({clash, App("conflict-resolution", "c", 4)})
         cert = Certificate("m2", "practical-undertaking", 5, ("resolve",), "a2")
@@ -339,8 +339,8 @@ class TestCheckerDoesNotAdjudicate(unittest.TestCase):
             "e",
             {Atom("invited"), App("invitation", "c", 1)},
             Atom("respond:attend-m2"),
-            born=1,
-            instantiates={("invitation", "c", 1)},
+            at=1,
+            applied_as={("invitation", "c", 1)},
         )
         acts = standard_acts()
         clash = Incomp(frozenset({Atom("respond:attend-m1"), Atom("respond:attend-m2")}))
@@ -357,8 +357,8 @@ class TestFrozenCitationLocality(unittest.TestCase):
     def test_sweep(self):
         state = ReasonState()
         a, b, w = Atom("a"), Atom("b"), App("sigma", "c", 1)
-        state.mint("e1", {a, w}, Atom("t1"), born=1, instantiates={("sigma", "c", 1)})
-        state.mint("e2", {b}, Atom("t2"), born=1)
+        state.mint("e1", {a, w}, Atom("t1"), at=1, applied_as={("sigma", "c", 1)})
+        state.mint("e2", {b}, Atom("t2"), at=1)
         cert = Certificate("m", "belief-revision", 3, ("e1", "e2"), "a3")
         universe = [a, b, w, Atom("noise")]
         for mask in range(1 << len(universe)):
@@ -378,7 +378,7 @@ class TestIndependenceWitnesses(unittest.TestCase):
 
     def test_without_strict_priority_self_certification_passes(self):
         state = ReasonState()
-        state.mint("fresh", {Atom("p")}, Atom("q"), born=5)
+        state.mint("fresh", {Atom("p")}, Atom("q"), at=5)
         acts = standard_acts()
         cert = Certificate("m", "belief-revision", 5, ("fresh",), "a3")
 
@@ -399,9 +399,9 @@ class TestIndependenceWitnesses(unittest.TestCase):
         # substitution in TestCitationNecessity; restated here as the
         # continuation principle's witness.
         state = ReasonState()
-        state.mint("e1", {Atom("w"), App("s", "c", 1)}, Atom("t"), born=1,
-                   instantiates={("s", "c", 1)})
-        state.mint("alt", {Atom("f")}, Atom("t"), born=2)
+        state.mint("e1", {Atom("w"), App("s", "c", 1)}, Atom("t"), at=1,
+                   applied_as={("s", "c", 1)})
+        state.mint("alt", {Atom("f")}, Atom("t"), at=2)
         now = frozenset({Atom("f")})
         self.assertEqual(reasons(state, Atom("t"), now, frozenset()), ("alt",))
         cert = Certificate("m", "belief-revision", 3, ("e1",), "a3")

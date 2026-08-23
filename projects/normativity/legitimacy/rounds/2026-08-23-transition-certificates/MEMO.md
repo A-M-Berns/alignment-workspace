@@ -458,20 +458,143 @@ Minimal evidence that would reopen the interface: a concrete microhistory
 Future work should stop touching the reason representation and build
 revision, authorization, and legitimacy above it.
 
+## 10. Continuation: finishing and freezing the waist
+
+A continuation dispatch on this pull request asked for a stricter end state:
+finish the waist, freeze it, and leave contracts to both sides without
+solving either side. The frozen contract is stated in
+`REASON_STATE_INTERFACE.md`; the two consumer contracts are
+`INQUIRY_HANDOFF.md` (left) and `FRONTIER_HANDOFF.md` (right). This section
+records the decisions and their prosecution.
+
+### 10.1 The two late-added fields, placed
+
+**`born` is removed from the occurrence.** The deciding question — does any
+consumer need *when it entered* as a fact about the reason object, or only
+prefix existence — came out uniformly on the prefix side: the certificate
+checker, the only consumer of birth, needs exactly `e existed strictly
+before n`. Temporal provenance therefore belongs to the append-only ledger,
+whose own history carries it; the public temporal fact is the query
+`ExistedBefore(e, n)`, and `Explain` no longer returns a stamp. The
+subtraction witness transfers from the field to the capability: without any
+temporal prefix access, the self-minted-basis attack passes (the lax-checker
+witness); with the prefix query, it is refused as before (retested). The
+minting stamp survives inside the implementation, which the freeze
+deliberately does not cover.
+
+**`instantiates` is renamed `applied_as` and stays constitutive on the
+occurrence.** The distinction it carries against `Inst` is now stated in the
+contract: *minted as an application of σ to `c@n`* (historical fact) versus
+*correctly classified under σ* (revisable judgment). It cannot move to the
+record without letting occurrence and registry drift apart — the
+well-formedness check is local to minting — and it cannot be dropped,
+because schema-use is not recoverable from sources: an occurrence may cite
+an `App` claim as an ordinary premise without being that schema's
+application. The typed-constructor option was adopted *in addition*:
+`mint_schema_use` inserts the staged `App` source and the provenance
+together, so the load-bearing invariant is enforced twice — by construction
+on the convenient path and by well-formedness on the general one (both
+tested, including their agreement).
+
+### 10.2 The public API, minimized
+
+Frozen queries: `Enabled`, `Reasons`, `Dependents`, `Explain`,
+`ExistedBefore`, `LostBasis`, `Conflict` — of which `Enabled`, `Explain`,
+`ExistedBefore`, and `Conflict` are a generating basis; the other three are
+frozen because consumers cite them by name. `Conflict` is frozen despite
+being derivable precisely so no consumer reinvents the pairwise-decomposed
+semantics this round repaired. `bearing`, `undercuts`, `rebuts`,
+`joint_conflicts`, `criticizable`, `case_view`, and `provenance_manifest`
+are library conveniences outside the freeze.
+
+### 10.3 Quantitative content, qualitative stance
+
+The waist must not restrict contents to Boolean propositions, and does not:
+`Atom` payloads are opaque, so a content like `P(rain|front) ≥ 4/5` rides as
+ordinary content — reasons bear on it, a stance endorses it by membership,
+a certificate cites reliance on it, and the manifest hands its provenance
+over, all on one fixture (`test_handoff.TestRightHandoff`). The coefficients
+live inside the content; endorsement remains membership. The quantitative
+book itself stays downstream.
+
+### 10.4 The notebook, the stance, and the diary
+
+The human-facing picture: **the notebook (`𝓡`) remembers particular reasons
+and their dependencies; the current view (`B`) records what is presently
+endorsed; the diary (`N`) binds what was actually undertaken, relied on,
+licensed, and accounted for. A reason state is a reason ledger, not a
+reasoner.** Each attempted collapse of the three has a minimal failure
+witness (`test_handoff.TestNotebookStanceDiarySplit`): folding the ledger
+into the stance deletes disabled reasons and makes a reliance loss
+unreportable exactly when it matters; folding the stance into the diary
+makes every hypothetical query need a fake record event; folding endorsement
+into the graph makes support imply endorsement, which is the closure policy
+the substrate exists to refuse. The split stands as an architecture
+decision, and it carries the frontier design constraint stated in the right
+contract: arbitrary stance may be queried; only diary-bound stance may
+acquire operative force.
+
+### 10.5 Freeze verdict
+
+```text
+Verdict: FROZEN-PROVISIONALLY
+
+1. every public primitive has an explicit subtraction witness       yes (§9.2, §10.1)
+2. born and schema-use provenance placed at the correct layer       yes (§10.1)
+3. applicability-in-source mechanically enforced, twice             yes (§10.1)
+4. quantitative content expressible, stance stays qualitative       yes (§10.3)
+5. no known inquiry consumer needs a new reason primitive           yes (INQUIRY_HANDOFF)
+6. no known frontier consumer needs a new reason primitive          yes (FRONTIER_HANDOFF)
+7. notebook/stance/diary split survives attempted collapse          yes (§10.4)
+8. remaining gaps classify cleanly by downstream area               yes (§10.6)
+
+Reopening rule: the interface may be changed only upon presentation of a
+concrete microhistory or downstream consumer requirement that cannot be
+expressed through the frozen types and queries without importing response
+policy, authorization semantics, or rewriting historical provenance.
+```
+
+### 10.6 Open problems, by area
+
+```text
+representation:                  none known
+inquiry/coverage:                exposure norms, interpretation norms,
+                                 docketing thresholds, service under load,
+                                 defeater-uptake completeness
+revision/reflective integrity:   stance revision policy, conflict resolution,
+                                 priority and strength, persistence adoption,
+                                 review disposition
+authorization:                   the May-rule-to-scope compiler; substantive
+                                 standing beyond the AuthorityAct stand-in
+frontier compilation:            defining the record-accounted stance B̂_n;
+                                 joint semantics of endorsed quantitative
+                                 contents; the credal compiler (item 39)
+operative force:                 unchanged — consumes the compiler's output
+                                 under its existing liability interface
+```
+
 ## Naming
 
 Provisional, for the ruling: **transition certificate**, `basis`, `license`,
 `consumed`, `kind`, `KINDS`, **authority act**, `scope`, `Conflict`,
-`joint_conflicts`, `criticizable`, `case_view`, `born`, `instantiates`, the
-failure-code vocabulary, and the three principle names **strict pre-state
-citation**, **constitutive immutability**, **answerability continuation**.
+`joint_conflicts`, `criticizable`, `case_view`, `applied_as`,
+`ExistedBefore`, `mint_schema_use`, `provenance_manifest`, the
+failure-code vocabulary, the three principle names **strict pre-state
+citation**, **constitutive immutability**, **answerability continuation**,
+the freeze statuses (`FROZEN-PROVISIONALLY` family), and the human-facing
+triple **notebook / current view / diary** with the sentence *a reason state
+is a reason ledger, not a reasoner*.
 
 ## What is not established
 
-No claim is registered or kernel-checked. The closure verdict is a
-research-engineering status indexed to the five known consumers and the
-accumulated fixture corpus; it is not a uniqueness, minimality, or
-completeness theorem, and the reopening clause is part of the verdict. The
+No claim is registered or kernel-checked. The closure and freeze verdicts
+are research-engineering statuses indexed to the known consumers and the
+accumulated fixture corpus; neither is a uniqueness, minimality, or
+completeness theorem, and the reopening clause is part of both. The freeze
+itself is a recommendation — enacting it is the maintainer's. The
+handoff contracts constrain future layers; they do not build them, and the
+frontier constraint on diary-bound stance is a design rule, not a theorem.
+The
 boxed implication in §5 is a
 paper derivation whose clauses are individually finite-test-supported; only
 the frozen-citation locality clause is exhaustively checked, and only on a

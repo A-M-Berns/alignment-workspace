@@ -393,15 +393,20 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   wiki and the reason state in the dispatch, which a later round may silently
   identify — the collision the dispatch itself flags.
 
-- **Rule on the transition-certificate vocabulary.** The successor round to
-  the reason-state prosecution introduces, all provisional: `transition
-  certificate` with fields `basis`/`license`/`consumed`/`kind`, `authority
-  act` and `scope`, `Conflict`, `joint_conflicts`, `criticizable`,
-  `case_view`, `born`, `instantiates`, the checker failure-code vocabulary,
-  and the three principle names `strict pre-state citation`, `constitutive
-  immutability`, `answerability continuation`. *Doing it* is one reading of
-  that round's `MEMO.md` §§4–5 and Naming. *Waiting* costs little until the
-  `Licensed`-facing round consumes the terms, which its dispatch would do
+- **Rule on the transition-certificate vocabulary and the freeze.** The
+  successor round to the reason-state prosecution introduces, all
+  provisional: `transition certificate` with fields
+  `basis`/`license`/`consumed`/`kind`, `authority act` and `scope`,
+  `Conflict`, `joint_conflicts`, `criticizable`, `case_view`, `applied_as`,
+  `ExistedBefore`, `mint_schema_use`, `provenance_manifest`, the checker
+  failure-code vocabulary, the three principle names `strict pre-state
+  citation`, `constitutive immutability`, `answerability continuation`, and
+  the human-facing `notebook / current view / diary` triple. Its
+  continuation also recommends enacting the `FROZEN-PROVISIONALLY` freeze of
+  the reason-state interface in `REASON_STATE_INTERFACE.md` — a maintainer
+  act, not the round's. *Doing it* is one reading of that round's `MEMO.md`
+  §§4–5, 10 and the interface note. *Waiting* costs little until the next
+  round consumes the terms, which any successor dispatch would do
   immediately.
 
 - **Decide whether the recommended reason-state interface becomes a living

@@ -80,14 +80,14 @@ class TestNaryConflict(unittest.TestCase):
         stance = frozenset({self.a, self.b, self.c, self.triple})
         self.assertTrue(criticizable(stance))
         state = ReasonState()
-        state.mint("e", {self.a}, Atom("z"), born=0)
+        state.mint("e", {self.a}, Atom("z"), at=0)
         self.assertTrue(enabled(state, "e", stance, frozenset()))
 
     def test_practical_nary_conflict_exposed_only_jointly(self):
         state = ReasonState()
         targets = [Atom(f"respond:m{i}") for i in range(3)]
         for i, t in enumerate(targets):
-            state.mint(f"r{i}", {Atom(f"invited-m{i}")}, t, born=0)
+            state.mint(f"r{i}", {Atom(f"invited-m{i}")}, t, at=0)
         stance = frozenset(
             {Atom("invited-m0"), Atom("invited-m1"), Atom("invited-m2"),
              Incomp(frozenset(targets))}
@@ -131,8 +131,8 @@ class TestCaseViews(unittest.TestCase):
             "correct",
             {Receipt("r2"), App("late-evidence-defeat", "c", 9)},
             neg(App("sigma", "c", 2)),
-            born=9,
-            instantiates={("late-evidence-defeat", "c", 9)},
+            at=9,
+            applied_as={("late-evidence-defeat", "c", 9)},
         )
         stance = frozenset({App("late-evidence-defeat", "c", 9)})
         self.assertEqual(
@@ -157,15 +157,15 @@ class TestApplicabilityInSource(unittest.TestCase):
                 "e",
                 {Atom("bird")},
                 Atom("flies"),
-                born=1,
-                instantiates={("sigma", "c", 1)},
+                at=1,
+                applied_as={("sigma", "c", 1)},
             )
         state.mint(
             "e",
             {Atom("bird"), App("sigma", "c", 1)},
             Atom("flies"),
-            born=1,
-            instantiates={("sigma", "c", 1)},
+            at=1,
+            applied_as={("sigma", "c", 1)},
         )
 
     def test_multiple_schemas_declare_multiple_apps(self):
@@ -174,21 +174,21 @@ class TestApplicabilityInSource(unittest.TestCase):
             "e",
             {Atom("p"), App("sigma", "c", 1), App("tau", "c", 1)},
             Atom("q"),
-            born=1,
-            instantiates={("sigma", "c", 1), ("tau", "c", 1)},
+            at=1,
+            applied_as={("sigma", "c", 1), ("tau", "c", 1)},
         )
         # A joint application depends on both applicability judgments;
         # independence requires minting separate occurrences.
         stance = frozenset({Atom("p"), App("sigma", "c", 1)})
         self.assertFalse(enabled(state, "e", stance, frozenset()))
-        self.assertEqual(len(occ.instantiates), 2)
+        self.assertEqual(len(occ.applied_as), 2)
 
     def test_undeclared_occurrences_are_permitted(self):
         # A seed or brute reason instantiates nothing; requiring declaration
         # everywhere would be too strong. Whether a cited basis may contain
         # undeclared occurrences is record-side policy.
         state = ReasonState()
-        state.mint("seed-reason", {Atom("induction")}, Atom("q"), born=0)
+        state.mint("seed-reason", {Atom("induction")}, Atom("q"), at=0)
 
     def test_persistence_schema_declares_its_own_applicability(self):
         state = ReasonState()
@@ -196,8 +196,8 @@ class TestApplicabilityInSource(unittest.TestCase):
             "persist",
             {App("sigma", "c", 3), App("persistence", "c", 4)},
             App("sigma", "c", 4),
-            born=4,
-            instantiates={("persistence", "c", 4)},
+            at=4,
+            applied_as={("persistence", "c", 4)},
         )
         stance = frozenset({App("sigma", "c", 3), App("persistence", "c", 4)})
         self.assertEqual(reasons(state, App("sigma", "c", 4), stance, frozenset()), ("persist",))
@@ -213,8 +213,8 @@ class TestApplicabilityInSource(unittest.TestCase):
                 f"persist-{case}",
                 {App("sigma", case, 0), App("persistence", case, 1)},
                 App("sigma", case, 1),
-                born=1,
-                instantiates={("persistence", case, 1)},
+                at=1,
+                applied_as={("persistence", case, 1)},
             )
         stance = frozenset(
             {App("sigma", "c1", 0), App("sigma", "c2", 0), App("persistence", "c1", 1)}
@@ -229,11 +229,11 @@ class TestApplicabilityInSource(unittest.TestCase):
             "e",
             {Atom("p"), App("sigma", "c", 1)},
             Atom("q"),
-            born=1,
-            instantiates={("sigma", "c", 1)},
+            at=1,
+            applied_as={("sigma", "c", 1)},
         )
         with self.assertRaises(dataclasses.FrozenInstanceError):
-            occ.instantiates = frozenset({("tau", "c", 1)})
+            occ.applied_as = frozenset({("tau", "c", 1)})
         with self.assertRaises(dataclasses.FrozenInstanceError):
             occ.sources = frozenset()
 
@@ -245,8 +245,8 @@ class TestApplicabilityInSource(unittest.TestCase):
             "e",
             {Atom("p"), App("sigma", "c", 1)},
             Atom("q"),
-            born=1,
-            instantiates={("sigma", "c", 1)},
+            at=1,
+            applied_as={("sigma", "c", 1)},
         )
         stance = frozenset(
             {Atom("p"), App("sigma", "c", 1), Inst("e", "sigma"), Inst("e", "tau")}
@@ -254,7 +254,7 @@ class TestApplicabilityInSource(unittest.TestCase):
         self.assertTrue(enabled(state, "e", stance, frozenset()))
         without = stance - {Inst("e", "sigma"), Inst("e", "tau")}
         self.assertTrue(enabled(state, "e", without, frozenset()))
-        self.assertEqual(occ.instantiates, frozenset({("sigma", "c", 1)}))
+        self.assertEqual(occ.applied_as, frozenset({("sigma", "c", 1)}))
 
 
 if __name__ == "__main__":

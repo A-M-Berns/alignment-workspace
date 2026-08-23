@@ -88,20 +88,26 @@ SourceRef = Union[Claim, Receipt]
 class Occurrence:
     """A particular reason application.
 
-    `born` is the record index at minting. `instantiates` is the constitutive
-    declaration of which schema applications this occurrence presents itself
-    as; it is provenance, never revised, and the well-formedness condition
-    below ties it to the sources. Undeclared occurrences are permitted — a
-    seed or brute reason instantiates nothing — but an undeclared occurrence
-    has no schema-mediated defeasibility, and whether a practice accepts
-    undeclared reasons in a cited basis is record-side policy, not grammar.
+    `applied_as` is constitutive schema-use provenance: the historical fact
+    that this occurrence was minted as an application of these schemas to
+    these staged case views. It is distinct from the revisable classification
+    claim `Inst(e, σ)` and never revised; the well-formedness condition below
+    ties it to the sources. It cannot be recovered from the sources alone —
+    an occurrence may cite an `App` claim as an ordinary premise without
+    presenting itself as that schema's application — which is why it is data
+    rather than a derived view. Occurrences with empty `applied_as` are
+    permitted (a seed or brute reason applies no schema); whether a cited
+    basis may contain them is record-side policy, not grammar.
+
+    When an occurrence entered the practice is deliberately *not* a field:
+    temporal provenance belongs to the append-only ledger, and consumers ask
+    the prefix question through `ReasonState.existed_before`.
     """
 
     ident: str
     sources: frozenset  # frozenset[SourceRef]
     target: Claim
-    born: int
-    instantiates: frozenset  # frozenset[tuple[schema, case, stage]]
+    applied_as: frozenset  # frozenset[tuple[schema, case, stage]]
 
     def claim_sources(self) -> frozenset:
         return frozenset(s for s in self.sources if not isinstance(s, Receipt))
@@ -111,10 +117,18 @@ class Occurrence:
 
 
 class ReasonState:
-    """Append-only store of occurrences and schema identities."""
+    """Append-only ledger of occurrences and schema identities.
+
+    The ledger's own history carries temporal provenance: each minting is
+    stamped with the record index at which it happened, held by the store
+    rather than the occurrence. The public temporal query is the prefix
+    predicate `existed_before`; the stamp itself is an implementation detail
+    outside the frozen interface.
+    """
 
     def __init__(self) -> None:
         self._occurrences: dict[str, Occurrence] = {}
+        self._minted_at: dict[str, int] = {}
         self._schemas: set[str] = set()
 
     def add_schema(self, ident: str) -> None:
@@ -128,36 +142,62 @@ class ReasonState:
         ident: str,
         sources: Iterable[SourceRef],
         target: Claim,
-        born: int,
-        instantiates: Iterable = (),
+        at: int,
+        applied_as: Iterable = (),
     ) -> Occurrence:
         if ident in self._occurrences:
             raise ValueError(f"occurrence identifier reused: {ident}")
         if isinstance(target, Receipt):
             raise TypeError("targets are claims; receipts cannot be targets")
-        occ = Occurrence(
-            ident, frozenset(sources), target, born, frozenset(instantiates)
-        )
+        occ = Occurrence(ident, frozenset(sources), target, frozenset(applied_as))
         # Applicability-in-source, enforced as well-formedness: every declared
-        # instantiation names its staged applicability claim among the
-        # sources. The check is grammar — it never judges whether the schema
-        # in fact applies, only that the occurrence says what its application
-        # depends on.
-        for schema, case, stage in occ.instantiates:
+        # schema use names its staged applicability claim among the sources.
+        # The check is grammar — it never judges whether the schema in fact
+        # applies, only that the occurrence says what its application depends
+        # on.
+        for schema, case, stage in occ.applied_as:
             if App(schema, case, stage) not in occ.claim_sources():
                 raise ValueError(
-                    f"occurrence {ident} declares instance of {schema} at "
+                    f"occurrence {ident} is applied as {schema} at "
                     f"{case}@{stage} but does not carry App({schema},{case},"
                     f"{stage}) among its sources"
                 )
         self._occurrences[ident] = occ
+        self._minted_at[ident] = at
         return occ
+
+    def mint_schema_use(
+        self,
+        ident: str,
+        grounds: Iterable[SourceRef],
+        schema: str,
+        case: str,
+        stage: int,
+        target: Claim,
+        at: int,
+    ) -> Occurrence:
+        """The enforcing constructor for schema applications: the staged
+        applicability source and the schema-use provenance cannot come apart
+        because both are inserted here."""
+        return self.mint(
+            ident,
+            frozenset(grounds) | {App(schema, case, stage)},
+            target,
+            at,
+            applied_as={(schema, case, stage)},
+        )
 
     def occurrence(self, ident: str) -> Occurrence:
         return self._occurrences[ident]
 
     def has(self, ident: str) -> bool:
         return ident in self._occurrences
+
+    def existed_before(self, ident: str, index: int) -> bool:
+        """Whether the occurrence entered the practice strictly before the
+        given record index. The prefix question is the public temporal fact;
+        consumers never read a birth stamp off the occurrence."""
+        return ident in self._minted_at and self._minted_at[ident] < index
 
     def occurrences(self) -> tuple[Occurrence, ...]:
         return tuple(self._occurrences.values())
@@ -304,3 +344,28 @@ def lost_basis(
         for entry in log
         if not enabled(state, entry.occurrence, stance, transcript)
     )
+
+
+def provenance_manifest(state: ReasonState, cited: Iterable[str]) -> tuple:
+    """The two-sorted dependency frontier of a cited occurrence set.
+
+    Returns `(receipt_deps, claim_deps)`: every receipt source of a cited
+    occurrence, and every claim source that is not itself the target of a
+    cited occurrence. This is what the two-sorted source structure buys a
+    future operative compiler: the first component is settled support, the
+    second is the revisable/defeasible support the content still rests on.
+    Purely syntactic and computable; it claims nothing about fundability or
+    settlement safety."""
+    cited_set = frozenset(cited)
+    supplied = frozenset(
+        state.occurrence(i).target for i in cited_set if state.has(i)
+    )
+    receipts: set = set()
+    claims: set = set()
+    for ident in cited_set:
+        if not state.has(ident):
+            continue
+        occ = state.occurrence(ident)
+        receipts |= set(occ.receipt_sources())
+        claims |= set(occ.claim_sources()) - supplied
+    return frozenset(receipts), frozenset(claims)

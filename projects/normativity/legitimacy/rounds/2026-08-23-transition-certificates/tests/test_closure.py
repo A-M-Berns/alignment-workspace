@@ -36,8 +36,8 @@ class TestSubtractionWitnesses(unittest.TestCase):
         # extensional key is identical while the identities differ.
         state = ReasonState()
         src = {Atom("w"), App("s", "c", 1)}
-        e1 = state.mint("e1", src, Atom("t"), born=1, instantiates={("s", "c", 1)})
-        e2 = state.mint("e2", src, Atom("t"), born=4, instantiates={("s", "c", 1)})
+        e1 = state.mint("e1", src, Atom("t"), at=1, applied_as={("s", "c", 1)})
+        e2 = state.mint("e2", src, Atom("t"), at=4, applied_as={("s", "c", 1)})
         self.assertEqual((e1.sources, e1.target), (e2.sources, e2.target))
         self.assertNotEqual(e1, e2)
 
@@ -49,10 +49,10 @@ class TestSubtractionWitnesses(unittest.TestCase):
         # them synchronized would be a hidden bookkeeping policy.
         a, b, conj = Atom("a"), Atom("b"), Atom("a-and-b")
         original = ReasonState()
-        original.mint("e", {a, b}, Atom("t"), born=1)
+        original.mint("e", {a, b}, Atom("t"), at=1)
         compiled = ReasonState()
-        compiled.mint("intro", {a, b}, conj, born=1)
-        compiled.mint("main", {conj}, Atom("t"), born=1)
+        compiled.mint("intro", {a, b}, conj, at=1)
+        compiled.mint("main", {conj}, Atom("t"), at=1)
         stance = frozenset({a, b})
         self.assertTrue(enabled(original, "e", stance, frozenset()))
         self.assertFalse(enabled(compiled, "main", stance, frozenset()))
@@ -69,7 +69,7 @@ class TestSubtractionWitnesses(unittest.TestCase):
         self.assertTrue(incompatible(early, neg(early), frozenset()))
         stance = frozenset({early, neg(early)})
         state = ReasonState()
-        state.mint("e", {early}, Atom("q"), born=1)
+        state.mint("e", {early}, Atom("q"), at=1)
         self.assertTrue(enabled(state, "e", stance, frozenset()))
 
 
@@ -84,15 +84,15 @@ class TestMicrohistorySweep(unittest.TestCase):
             "hear-a",
             {Atom("a-reports"), App("testimony-a", "c", 1), Receipt("r1")},
             Atom("b-said-q"),
-            born=1,
-            instantiates={("testimony-a", "c", 1)},
+            at=1,
+            applied_as={("testimony-a", "c", 1)},
         )
         state.mint(
             "trust-b",
             {Atom("b-said-q"), App("testimony-b", "c", 1)},
             Atom("q"),
-            born=1,
-            instantiates={("testimony-b", "c", 1)},
+            at=1,
+            applied_as={("testimony-b", "c", 1)},
         )
         stance = frozenset({Atom("a-reports"), App("testimony-a", "c", 1)})
         self.assertEqual(reasons(state, Atom("b-said-q"), stance, frozenset({"r1"})), ("hear-a",))
@@ -109,15 +109,15 @@ class TestMicrohistorySweep(unittest.TestCase):
             "base",
             {Atom("b-said-q"), App("testimony-b", "c", 1)},
             Atom("q"),
-            born=1,
-            instantiates={("testimony-b", "c", 1)},
+            at=1,
+            applied_as={("testimony-b", "c", 1)},
         )
         state.mint(
             "doubt",
             {Atom("track-record"), App("reliability-audit", "c", 2)},
             Atom("source-b-unreliable"),
-            born=2,
-            instantiates={("reliability-audit", "c", 2)},
+            at=2,
+            applied_as={("reliability-audit", "c", 2)},
         )
         stance = frozenset(
             {Atom("b-said-q"), App("testimony-b", "c", 1), Atom("track-record"),
@@ -130,8 +130,8 @@ class TestMicrohistorySweep(unittest.TestCase):
             "bridge",
             {Atom("source-b-unreliable"), App("unreliability-defeat", "c", 2)},
             neg(App("testimony-b", "c", 1)),
-            born=2,
-            instantiates={("unreliability-defeat", "c", 2)},
+            at=2,
+            applied_as={("unreliability-defeat", "c", 2)},
         )
         wider = stance | {Atom("source-b-unreliable"), App("unreliability-defeat", "c", 2)}
         self.assertTrue(undercuts(state, "bridge", "base", wider, frozenset()))
@@ -139,15 +139,15 @@ class TestMicrohistorySweep(unittest.TestCase):
     def test_circular_and_mutual_structures_are_total(self):
         state = ReasonState()
         p, q = Atom("p"), Atom("q")
-        state.mint("pq", {p}, q, born=1)
-        state.mint("qp", {q}, p, born=1)
+        state.mint("pq", {p}, q, at=1)
+        state.mint("qp", {q}, p, at=1)
         state.mint(
             "u1", {Atom("g1"), App("s1", "c", 1)}, neg(App("s2", "c", 1)),
-            born=1, instantiates={("s1", "c", 1)},
+            at=1, applied_as={("s1", "c", 1)},
         )
         state.mint(
             "u2", {Atom("g2"), App("s2", "c", 1)}, neg(App("s1", "c", 1)),
-            born=1, instantiates={("s2", "c", 1)},
+            at=1, applied_as={("s2", "c", 1)},
         )
         both = frozenset({Atom("g1"), Atom("g2"), App("s1", "c", 1), App("s2", "c", 1)})
         self.assertTrue(undercuts(state, "u1", "u2", both, frozenset()))
@@ -165,15 +165,15 @@ class TestMicrohistorySweep(unittest.TestCase):
             "merge-reason",
             {Atom("shared-parties"), App("identity-analysis", "c9", 3)},
             same,
-            born=3,
-            instantiates={("identity-analysis", "c9", 3)},
+            at=3,
+            applied_as={("identity-analysis", "c9", 3)},
         )
         state.mint(
             "unmerge-reason",
             {Atom("distinct-contracts"), App("identity-analysis", "c9", 7)},
             neg(same),
-            born=7,
-            instantiates={("identity-analysis", "c9", 7)},
+            at=7,
+            applied_as={("identity-analysis", "c9", 7)},
         )
         stance = frozenset(
             {Atom("shared-parties"), Atom("distinct-contracts"),
@@ -188,15 +188,15 @@ class TestMicrohistorySweep(unittest.TestCase):
             "for-c1",
             {Receipt("lab"), App("contamination", "c1", 2)},
             Atom("sample-tainted:c1"),
-            born=2,
-            instantiates={("contamination", "c1", 2)},
+            at=2,
+            applied_as={("contamination", "c1", 2)},
         )
         state.mint(
             "for-c2",
             {Receipt("lab"), App("alibi", "c2", 2)},
             Atom("absent:c2"),
-            born=2,
-            instantiates={("alibi", "c2", 2)},
+            at=2,
+            applied_as={("alibi", "c2", 2)},
         )
         stance = frozenset({App("contamination", "c1", 2)})
         self.assertEqual(
@@ -210,8 +210,8 @@ class TestMicrohistorySweep(unittest.TestCase):
         # different derived conflict at no representational cost.
         state = ReasonState()
         a, b = Atom("respond:x"), Atom("respond:y")
-        state.mint("ra", {Atom("ga")}, a, born=1)
-        state.mint("rb", {Atom("gb")}, b, born=1)
+        state.mint("ra", {Atom("ga")}, a, at=1)
+        state.mint("rb", {Atom("gb")}, b, at=1)
         clash = Incomp(frozenset({a, b}))
         strict = frozenset({Atom("ga"), Atom("gb"), clash})
         permissive = frozenset({Atom("ga"), Atom("gb")})

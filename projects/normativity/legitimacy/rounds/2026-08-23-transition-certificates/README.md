@@ -16,18 +16,26 @@ is a theorem, not a postulate.
 
 A late-stage addendum ran a closure phase: prosecution by subtraction and by
 addition, a consumer-completeness table, a policy audit, and a microhistory
-sweep. **Closure verdict: `CLOSED-PROVISIONALLY`** — no known
-representation-open blocker remains, the negative boundary is explicit, and
-the freeze recommendation with its reopening clause is in the memo's final
-section.
+sweep — closure verdict `CLOSED-PROVISIONALLY`. A continuation dispatch then
+finished and froze the waist: `born` moved from the occurrence to ledger
+provenance behind a prefix query, `instantiates` became constitutive
+`applied_as` with an enforcing `mint_schema_use` constructor, quantitative
+contents were exercised under a qualitative stance, the notebook/stance/
+diary split survived attempted collapse, and both consumer contracts were
+written. **Freeze verdict: `FROZEN-PROVISIONALLY`**, with the reopening rule
+in `REASON_STATE_INTERFACE.md`.
 
 - `MEMO.md` — prosecution, repairs, the final interfaces, postulate
-  independence, the Licensed verdict with its three named blockers, and the
-  narrow-waist closure verdict.
-- `src/reason_state.py` — repaired substrate.
+  independence, the Licensed verdict with its three named blockers, the
+  closure verdict, and the continuation's freeze verdict.
+- `REASON_STATE_INTERFACE.md` — the frozen public contract.
+- `INQUIRY_HANDOFF.md` / `FRONTIER_HANDOFF.md` — the left and right
+  consumer contracts.
+- `src/reason_state.py` — the frozen waist's reference implementation.
 - `src/transitions.py` — certificate, authority stand-in, checker.
-- `tests/` — 52 adversarial checks covering the dispatch's fifteen required
-  fixtures plus the closure witnesses and microhistory sweep.
+- `tests/` — 67 adversarial checks covering the dispatch's fifteen required
+  fixtures, the closure witnesses and microhistory sweep, and the
+  continuation's layer-move, handoff, and collapse fixtures.
 - `PROVENANCE.md` — artifact provenance.
 
 Run:

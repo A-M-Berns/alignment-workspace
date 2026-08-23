@@ -120,7 +120,7 @@ def check_certificate(
             failures.append(("unknown-basis", ident))
             continue
         occ = state.occurrence(ident)
-        if occ.born >= cert.index:
+        if not state.existed_before(ident, cert.index):
             failures.append(("posterior-basis", ident))
         if not enabled(state, ident, pre_stance, transcript):
             missing_claims = occ.claim_sources() - pre_stance
