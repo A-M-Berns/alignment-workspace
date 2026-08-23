@@ -190,17 +190,22 @@ receipts are persistent while interpretations are defeasible; a
 schema-mediated reason explicitly depends on its staged applicability
 judgment, which is why undercutting is ordinary reasoning rather than a
 special attack mechanism; and staging separates *I was wrong that it applied
-then* from *it applied then and things changed*. Inquiry acts on the left by
+then* from *it applied then and things changed*. The object language is
+reflectively expressive enough for the learner to reason about the
+applicability and organization of its own reasons, without making the
+historical structure itself stance-relative. Inquiry acts on the left by
 supplying receipts and new reasons; frontier compilation acts on the right
 by selecting record-accounted contents for operative realization — an
 arbitrary stance may be queried, but only a diary-bound stance is a
-candidate for force. Evidence:
-[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/2e1bf4932039bd5d8e9e86c7793b9b49f511d20c/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates),
-its [frozen interface](https://github.com/A-M-Berns/alignment-workspace/blob/2e1bf4932039bd5d8e9e86c7793b9b49f511d20c/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/REASON_STATE_INTERFACE.md),
+candidate for force. And the three books do not substitute for one another:
+a reason can support an endorsement, but only the diary can establish that
+the endorsement actually occurred. Evidence:
+[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates),
+its [frozen interface](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/REASON_STATE_INTERFACE.md),
 and its consumer contracts for
-[inquiry](https://github.com/A-M-Berns/alignment-workspace/blob/2e1bf4932039bd5d8e9e86c7793b9b49f511d20c/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/INQUIRY_HANDOFF.md)
+[inquiry](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/INQUIRY_HANDOFF.md)
 and the
-[frontier](https://github.com/A-M-Berns/alignment-workspace/blob/2e1bf4932039bd5d8e9e86c7793b9b49f511d20c/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/FRONTIER_HANDOFF.md).
+[frontier](https://github.com/A-M-Berns/alignment-workspace/blob/245e4b22e30d54a8a3918452de141694fd7573ef/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/FRONTIER_HANDOFF.md).
 
 ## Grounds, license, and account lineage
 
