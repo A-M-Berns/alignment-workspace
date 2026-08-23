@@ -501,12 +501,30 @@
       ],
       "governs_artifact_status": true,
       "status_components": [
-        {"id": "abstract-theorem", "status": "settled-at-conditional-interface-level"},
-        {"id": "feedback-dynamics", "status": "witness-strength"},
-        {"id": "due", "status": "no-satisfactory-substantive-instantiation"},
-        {"id": "licensed", "status": "interface-discipline-available; substantive-soundness-open"},
-        {"id": "performance-loss", "status": "fixture-success; general-theory-open"},
-        {"id": "coverage", "status": "hypothesis; not-delivered-conclusion"}
+        {
+          "id": "abstract-theorem",
+          "status": "settled-at-conditional-interface-level"
+        },
+        {
+          "id": "feedback-dynamics",
+          "status": "witness-strength"
+        },
+        {
+          "id": "due",
+          "status": "no-satisfactory-substantive-instantiation"
+        },
+        {
+          "id": "licensed",
+          "status": "interface-discipline-available; substantive-soundness-open"
+        },
+        {
+          "id": "performance-loss",
+          "status": "fixture-success; general-theory-open"
+        },
+        {
+          "id": "coverage",
+          "status": "hypothesis; not-delivered-conclusion"
+        }
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-final/PROMPT.md",
@@ -580,7 +598,7 @@
       "date": "2026-08-19",
       "project": "normativity",
       "path": "projects/normativity/rounds/2026-08-19-deductive-region",
-      "verdict": "the deductive coherence region on a finite fragment is a computable finite rational vertex list — admissiblePatterns is a def that decides which {0,1} patterns extend to a propositionally consistent world satisfying the stage, sound and complete about worlds rather than atom assignments, nonempty exactly when the stage is propositionally satisfiable, and kernel-checked on instances including an unsatisfiable stage and a fragment whose two sentences constrain the same atom.",
+      "verdict": "the deductive coherence region on a finite fragment is a computable finite rational vertex list \u2014 admissiblePatterns is a def that decides which {0,1} patterns extend to a propositionally consistent world satisfying the stage, sound and complete about worlds rather than atom assignments, nonempty exactly when the stage is propositionally satisfiable, and kernel-checked on instances including an unsatisfiable stage and a fragment whose two sentences constrain the same atom.",
       "verdict_source": "projects/normativity/rounds/2026-08-19-deductive-region/README.md",
       "registered_classes": [],
       "prompt": "prompts/2026-08-19-deductive-region/PROMPT.md",
@@ -628,6 +646,17 @@
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry/MEMO.md",
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-afoundational-inquiry/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-23-reason-representation",
+      "date": "2026-08-23",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-23-reason-representation",
+      "verdict": "Survives after two structural additions and two conventions; the TMS framing is discarded rather than refined.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-reason-representation/MEMO.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-23-reason-representation/PROMPT.md",
       "claim_changes": []
     }
   ]
