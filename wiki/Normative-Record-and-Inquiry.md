@@ -175,8 +175,32 @@ interface: prosecution by subtraction and by addition and a
 consumer-completeness pass found no missing representational kind, so a new
 primitive now requires a concrete inexpressibility counterexample, and the
 remaining open work is semantics, authorization, and policy above the
-substrate. Evidence:
-[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/4979133a82495ef195bb2262f4840851543e7b3d/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates).
+substrate.
+
+The human-facing picture of the frozen architecture is three books. The
+**notebook** is the reason ledger: it remembers particular reasons — who
+cited what, resting on which receipts and which revisable interpretations —
+and never forgets one because it was later defeated. The **current view** is
+the stance: the finite set of contents presently endorsed, including
+quantitative constraints, whose endorsement is membership rather than
+weight. The **diary** is the normative record: what was actually undertaken,
+relied on, licensed, and accounted for. A reason state is a reason ledger,
+not a reasoner: having a reason for a conclusion is not endorsing it;
+receipts are persistent while interpretations are defeasible; a
+schema-mediated reason explicitly depends on its staged applicability
+judgment, which is why undercutting is ordinary reasoning rather than a
+special attack mechanism; and staging separates *I was wrong that it applied
+then* from *it applied then and things changed*. Inquiry acts on the left by
+supplying receipts and new reasons; frontier compilation acts on the right
+by selecting record-accounted contents for operative realization — an
+arbitrary stance may be queried, but only a diary-bound stance is a
+candidate for force. Evidence:
+[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/2e1bf4932039bd5d8e9e86c7793b9b49f511d20c/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates),
+its [frozen interface](https://github.com/A-M-Berns/alignment-workspace/blob/2e1bf4932039bd5d8e9e86c7793b9b49f511d20c/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/REASON_STATE_INTERFACE.md),
+and its consumer contracts for
+[inquiry](https://github.com/A-M-Berns/alignment-workspace/blob/2e1bf4932039bd5d8e9e86c7793b9b49f511d20c/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/INQUIRY_HANDOFF.md)
+and the
+[frontier](https://github.com/A-M-Berns/alignment-workspace/blob/2e1bf4932039bd5d8e9e86c7793b9b49f511d20c/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/FRONTIER_HANDOFF.md).
 
 ## Grounds, license, and account lineage
 
