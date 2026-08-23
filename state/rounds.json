@@ -640,6 +640,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-reason-representation/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-23-transition-certificates",
+      "date": "2026-08-23",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates",
+      "verdict": "The transition interface closes: three principles do the work of the five proposed postulates, and Licensed becomes record-internally substantive.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/MEMO.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-23-transition-certificates/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
