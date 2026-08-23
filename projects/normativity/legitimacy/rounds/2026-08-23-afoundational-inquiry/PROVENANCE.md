@@ -4,6 +4,7 @@
 |---|---|---|---|---|---|
 | `README.md`, `MEMO.md`, `THEOREM_MAP.md` | GPT-5.6 Sol (OpenAI) | `ci-only` | 2026-08-23 | `prompts/2026-08-23-afoundational-inquiry/` | — |
 | `src/inquiry_kernel.py`, `tests/` | GPT-5.6 Sol (OpenAI) | `ci-only` | 2026-08-23 | `prompts/2026-08-23-afoundational-inquiry/` | — |
+| `wiki/Normative-Record-and-Inquiry.md`, `wiki/Legitimacy.md`, `wiki/Sources.md`, `wiki/_Sidebar.md` | GPT-5.6 Sol (OpenAI) | `ci-only` | 2026-08-23 | `prompts/2026-08-23-afoundational-inquiry/` | — |
 
 The executor worked from live `origin/main` at
 `e5de4b9d4f0054faf41fe82eb3103e9aa63bc75c`, the merge commit for the

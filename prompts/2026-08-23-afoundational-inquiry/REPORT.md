@@ -14,7 +14,9 @@ The round is at
 `projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry/`.
 Twenty-one finite tests attack authority roots, temporal accrual, coverage,
 versioned certified service, overload, and the restricted scheduler bridges.
-No claim is registered.
+The wiki's new `Normative Record and Inquiry` page carries the conceptual
+architecture, court analogy, literature orientation, pipeline boundary, and open
+questions. No claim is registered.
 
 ## Findings
 

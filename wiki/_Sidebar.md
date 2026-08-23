@@ -13,6 +13,7 @@
 **Legitimacy**
 
 - [The Bridge](Legitimacy)
+  - [Normative Record and Inquiry](Normative-Record-and-Inquiry)
 
 **Deference**
 
