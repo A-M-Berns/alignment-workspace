@@ -379,6 +379,30 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   the projection compiler keeps carrying as a hypothesis something that is proved two
   files away, and the theorem sits unregistered in a contribution namespace.
 
+- **Rule on the reason-state/record naming split, and the round's vocabulary.**
+  The reason-representation round's dispatch proposes `𝓡_n` for the *reason
+  state* — the current structure of particular reason occurrences, schemas, and
+  staged applicability — against `N_{≤n}` for the *normative record*, while the
+  wiki writes the record as `Rₙ` throughout. The round did not rename anything;
+  its memo and the wiki carry the distinction in prose with both readings
+  stated. Also provisional: `occurrence`, `schema`, `case view` (`c@n`),
+  `stance`, `contradiction floor`, `applicability-in-source`, `persistence
+  schema`, `applicability frame problem`, `Enabled`, `Reasons`, `Dependents`,
+  `Explain`, `LostBasis`, `Incomp`. *Doing it* is one reading of that round's
+  `MEMO.md` §§13–14. *Waiting* leaves the same letter naming the record on the
+  wiki and the reason state in the dispatch, which a later round may silently
+  identify — the collision the dispatch itself flags.
+
+- **Decide whether the recommended reason-state interface becomes a living
+  note.** The round leaves a concise provisional interface in `MEMO.md` §13:
+  five constructors, two source sorts, five mandatory stateless queries, and
+  the policy-layer boundary. The precedent cut both ways: the traderized force
+  interface was installed as a living note in `projects/normativity/notes/` and
+  is itself still awaiting confirmation above. *Doing it* is reading §13 and
+  either installing the note or ruling that rounds' interfaces stay in their
+  memos until a second round consumes them. *Waiting* costs the next
+  reason-consuming round an orientation pass through a completed round's memo.
+
 ## Settled
 
 ### 2026-08-18 — the modified market's computability is discharged, via an additive upstream export

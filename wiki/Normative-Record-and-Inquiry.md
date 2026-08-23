@@ -136,6 +136,28 @@ result. The current three constructors do not expose all information used by
 the checker, but the round does not prove that accrual, review, or due tokens
 cannot be compiled faithfully into a differently typed smaller calculus.
 
+## The reason state beneath the record
+
+This page's `R` is the record: the append-only history of normative acts. A
+research round now prosecutes a separate object beneath it — the practice's
+*current reason structure*, provisionally the **reason state**. Its candidate
+form: particular reason applications are identity-bearing hyperedges whose
+sources cite both revisable claims and transcript receipts; schema membership
+and staged applicability are themselves ordinary contents (`Inst(e,σ)`,
+`App(σ,c@n)`), so undercutting a reason is an ordinary reason against its
+applicability, and reorganizing schemas is reason-guided revision rather than
+external clustering. The substrate stores no belief statuses and runs no
+update rule: it answers which reasons are enabled under a candidate stance and
+what depends on what, while adjudication — what to retain, adopt, suspend, or
+investigate when live reasons conflict — belongs to the normative learner.
+Two demands survived prosecution: contents need a constitutive contradiction
+floor, and applicability must be staged, with persistence across stages earned
+by defeasible schemas rather than granted by the substrate.
+
+The dispatch proposes writing the reason state `𝓡_n` against the record
+`N_{≤n}`; this page keeps `R` for the record until the naming is ruled on.
+Evidence: [the reason-representation round](https://github.com/A-M-Berns/alignment-workspace/tree/11b4d47f4e97130b78f644964652e6db4169f42c/projects/normativity/legitimacy/rounds/2026-08-23-reason-representation).
+
 ## Grounds, license, and account lineage
 
 | Relation | What it answers | Typical inputs |

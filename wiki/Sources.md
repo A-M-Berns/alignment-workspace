@@ -18,6 +18,12 @@ These works supply inspiration, mathematical tools, or nearby prior art. They do
 - Daniel Golovin and Andreas Krause. “Adaptive Submodularity: Theory and Applications in Active Learning and Stochastic Optimization.” *Journal of Artificial Intelligence Research* 42 (2011): 427–486. [Primary paper](https://arxiv.org/abs/1003.3967). Supplies adaptive coverage, self-certification, and diminishing-returns tractability conditions under a fixed realization model and prior; adaptive submodularity is not treated as legitimacy.
 - Andrew Guillory and Jeff Bilmes. “Interactive Submodular Set Cover.” In *Proceedings of ICML 2010*, 415–422. [Primary paper](https://arxiv.org/abs/1002.3345). Supplies a worst-case finite query/response coverage class with pointwise-submodular objectives; it does not validate the hypothesis class or service objective.
 
+## Reason maintenance and default reasons
+
+- Jon Doyle. “A Truth Maintenance System.” *Artificial Intelligence* 12 (1979): 231–272. [Publisher page and DOI](https://doi.org/10.1016/0004-3702(79)90008-0). Supplies the justification/node architecture, in/out statuses, non-monotonic justifications, and dependency-directed backtracking that the reason-state work compares against; its conflation of dependency recording with belief choice is what that work rejects.
+- Johan de Kleer. “An Assumption-based TMS.” *Artificial Intelligence* 28 (1986): 127–162. [Publisher page and DOI](https://doi.org/10.1016/0004-3702(86)90080-9). Supplies assumption environments, labels over multiple simultaneous contexts, and nogood recording, read here as cached hypothetical-support queries under a fixed incompatibility structure.
+- John F. Horty. *Reasons as Defaults*. Draft #2, August 16, 2006. [Author page](https://www.umiacs.umd.edu/users/horty). Supplies triggered/conflicted/defeated defaults, reasons as premises of triggered defaults, and variable-priority default theories with priorities in the object language; its proper-scenario theory occupies the stance-selection seat this program assigns to the normative learner.
+
 ## Imprecise probability and argumentation
 
 - Peter M. Williams. “Notes on Conditional Previsions.” Technical report, University of Sussex, 1975; revised in *International Journal of Approximate Reasoning* 44, no. 3 (2007): 366–383. [DOI](https://doi.org/10.1016/j.ijar.2006.07.019). Background for coherent conditional previsions and desirable-gamble readings.
