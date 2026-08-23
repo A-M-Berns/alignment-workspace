@@ -170,8 +170,13 @@ detected at the frozen citation even when a substitute reason stands —
 refusals that fall out of the principles rather than from dedicated
 anti-laundering rules. What a valid certificate establishes is that the act
 was licensed within the current accountable practice, not that the practice
-is apt. Evidence:
-[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/3f042ea60ce03a9c64dca5c6307bf77fcf613259/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates).
+is apt. The round closes with a provisional freeze of the reason-state
+interface: prosecution by subtraction and by addition and a
+consumer-completeness pass found no missing representational kind, so a new
+primitive now requires a concrete inexpressibility counterexample, and the
+remaining open work is semantics, authorization, and policy above the
+substrate. Evidence:
+[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/4979133a82495ef195bb2262f4840851543e7b3d/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates).
 
 ## Grounds, license, and account lineage
 
