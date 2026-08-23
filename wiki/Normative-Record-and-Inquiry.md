@@ -158,6 +158,21 @@ The dispatch proposes writing the reason state `𝓡_n` against the record
 `N_{≤n}`; this page keeps `R` for the record until the naming is ruled on.
 Evidence: [the reason-representation round](https://github.com/A-M-Berns/alignment-workspace/tree/11b4d47f4e97130b78f644964652e6db4169f42c/projects/normativity/legitimacy/rounds/2026-08-23-reason-representation).
 
+A successor round derives the boundary above the substrate: a normative
+transition carries a certificate citing its grounds — particular reason
+occurrences — its license — a prior, scoped authority act — and its lineage —
+the commitments it answers — as separate sorts, all checked strictly against
+the pre-state. Three principles carry the discipline: strict pre-state
+citation, constitutive immutability, and answerability continuation. Under
+them, a transition cannot mint its own reasons or authority, its claimed
+historical basis cannot be rewritten, and losing a relied-on basis is
+detected at the frozen citation even when a substitute reason stands —
+refusals that fall out of the principles rather than from dedicated
+anti-laundering rules. What a valid certificate establishes is that the act
+was licensed within the current accountable practice, not that the practice
+is apt. Evidence:
+[the transition-certificates round](https://github.com/A-M-Berns/alignment-workspace/tree/3f042ea60ce03a9c64dca5c6307bf77fcf613259/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates).
+
 ## Grounds, license, and account lineage
 
 | Relation | What it answers | Typical inputs |
