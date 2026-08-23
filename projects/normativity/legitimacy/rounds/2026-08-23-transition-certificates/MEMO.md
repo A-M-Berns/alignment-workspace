@@ -284,6 +284,180 @@ record accrues, reviews, and accounts.
 | `Licensed` witness | crown-jewel `Licensed(S,d,r)` interface slot |
 | omitted policy layer | PR #48's `support_closure`/labels/nogoods — unchanged there |
 
+## 9. Narrow-waist closure phase
+
+A late-stage addendum to the dispatch asks a stricter question than whether
+the representation handles the examples: is the interface now stable enough
+that future work should occur above it? Closure here is a
+research-engineering status indexed to the known consumers and the
+accumulated fixture corpus of both rounds, not a uniqueness or minimality
+theorem.
+
+### 9.1 Criterion
+
+The addendum's five-clause criterion is adopted with one tightening of
+clause 2: consumers must obtain what they need through the public types and
+queries *without inspecting representation internals or adding hidden
+semantic fields* — which is how this round in fact ran, since the
+certificate checker consumes only `Enabled`, the constitutive lookups, and
+record-side objects. Under that criterion the verdict must also record that
+this round itself *forced two constitutive additions* (`born`,
+`instantiates`) before its consumer could be served: the boundary was found
+by pressure, not assumed.
+
+### 9.2 Prosecution by subtraction
+
+Each surviving primitive was attacked by removal; each removal has a
+concrete loss, witnessed in `tests/test_closure.py` where a finite witness
+exists.
+
+| Primitive | Removal attempt | Loss |
+|---|---|---|
+| occurrence identity | identify by `(sources, target)` | two historically distinct applications collapse; reliance logs and basis-loss reports become ambiguous (witnessed; also `TestCitationNecessity`) |
+| hyper-sources | compile `{a,b}` through a conjunction vertex | nonconservative: the compiled edge waits on a claim the learner never adopted, and the compilation invents reason applications the practice never performed — keeping them synced is hidden bookkeeping policy (witnessed) |
+| two source sorts | mirror receipts as claims | either transcript facts become withdrawable, breaking settlement, or an indefeasible-claim subtype appears that *is* the receipt sort renamed — a relabeling, not a reduction |
+| `App` constructor | encode as ordinary atoms; attack edges; case-indexed schemas; negative dependencies | atoms are expressible but grammar-invisible: applicability-in-source and `ApplicabilityProvenance` become naming conventions nothing can check; attack edges and outlists move policy into structure (round 1); case-indexed schemas destroy cross-case schema learning and still need staging |
+| `Inst` | recover organization from `instantiates` provenance | provenance is frozen, so the learner could not disagree with a classification without rewriting history; the revisable half is exactly what `Inst` carries (round 1 example 5) |
+| stage index | unstaged `App`, or any unordered replacement | corrected-belief and changed-world collapse; any adequate replacement orders applicability claims by record position, which is a stage index up to isomorphism |
+| contradiction floor | make all incompatibility revisable | at the empty stance nothing marks a correction as a correction: `App` versus `¬App` would conflict only under an adopted norm, so the reflective language could not state its own corrections (witnessed). The floor is representational — it fixes what the tilde means and generates criticism-content; it obliges no response, and floor-violating stances stay representable |
+| `Incomp` | ordinary atoms or feasibility predicates | atoms lose the typed member set that `Conflict` computes containment over; feasibility is downstream semantics. The constructor survives with the §2 repair |
+
+The characterization audit: "append-only identity-bearing directed
+multi-hypergraph plus a stance marking" is accurate **as a labeled
+structure** — `E` carries constitutive labels (`born`, `instantiates`)
+beyond `(s, t)`, sources split over two sorts, and `B` is a separate finite
+marking of `V`, not a component of the graph. "Multi" and "hyper" are both
+essential (first two rows above); schemas and cases are correctly external
+identity sorts reached only through reflective constructors. A bare
+`(V,E,s,t)` reading is lossy and should not be used.
+
+### 9.3 Prosecution by addition — the negative boundary
+
+Every plausible missing primitive classifies as something the interface
+already provides. None is `GENUINELY MISSING PRIMITIVE`.
+
+| Candidate | Class | Reason |
+|---|---|---|
+| `Undercuts` | derived query | `¬App` target meeting a source, under enabledness |
+| `Rebuts` | derived query | `Conflict` on a target pair; incomplete for n-ary conflict by design |
+| `Priority` | existing content | ordinary revisable claims (Horty variable-priority precedent); their *consumption* is learner policy |
+| `Reliability` | existing content | ordinary claims about sources/schemas; distinct from applicability (tested) |
+| `EvidentialRelevance` | existing content | relevance claims, plausibly `App` of evidential schemas |
+| `Hold` / `Do` | existing record fact | commitment contents in the record's occurrence machinery |
+| `May` / `Must` | existing record fact | versioned rule modes; their compilation into scopes is the named downstream gap |
+| `Supported` / `Live` | derived query | `Reasons` / `Enabled`, asked rather than asserted |
+| `Defeated` | derived query | undercut-or-rebutted at `B`; the priority-weighing sense is learner policy |
+| `Assumption` | learner policy | a withdrawability label on stance members — de Kleer's observation that assumption-status is context-dependent, resolved by making it the policy's label |
+| `Context` / `Environment` | derived query | cached hypothetical-support queries (round 1's policy layer) |
+| `CaseView` | derived query | the case-restricted arrival prefix, computed from record and transcript |
+| `SameCase` | existing content | revisable identity judgments (tested); acting on one is a record act |
+| `SchemaSuccessor` | existing content | continuity judgments; the split/merge act is a record fact |
+| `ReasonStrength` | learner policy | graded weighing; strength *judgments* could ride as content, but a strength primitive in structure would smuggle the weighing conception into the substrate |
+
+### 9.4 Consumer-completeness
+
+| Consumer | Needs | Supplied by | Needs new primitive? |
+|---|---|---|---|
+| normative learner | bearing, conflicts against a candidate stance, hypothetical enabledness, organization open to reasons | `Reasons`/`bearing`; `Conflict`/`joint_conflicts`/`criticizable`; same queries at `B'`; `Inst`/`App` as targets | no |
+| historical answerability | exact relied-on occurrence, its sources later, loss detection, alternative-vs-original | identity + `Explain`; `LostBasis` over frozen citations (substitute support never silences, tested) | no |
+| `Licensed` | particular occurrences, applicability dependencies, case/stage, pre-state enabledness; authorization record-side | certificate `basis` + derived `ApplicabilityProvenance` + `App` arguments + strict pre-state check; license as a separate record sort | no — but it *did* force `born` and `instantiates` during this round, now part of the interface |
+| inquiry | occurred-during versus taken-to-bear versus docketable trouble | `T` non-evidential; relevance/`App` claims; `Conflict` and `LostBasis` reports as docketable conditions | no |
+| operative compiler | endorsed content, bearing, cited bases, applicability, organization, case/stage, reliance | `B` vs `Reasons`; certificates; `Inst` claims + provenance; `App` args; record `UsedAt` | no |
+
+### 9.5 Representation-versus-policy audit
+
+Every checker and invariant shipped by the two rounds, audited against
+"well-formedness or response-adjudication": identifier uniqueness,
+receipt-not-target, `Incomp` arity, canonical negation, declared-implies-
+cited, and every certificate clause are grammar over structure and
+citations. The one honest borderline is the certificate's nonempty-basis
+clause: it does not oblige transitions to have reasons — it defines what a
+*reason-accounted* transition is, and an unreasoned transition simply has no
+certificate, which the record may then criticize. Stance consistency,
+closure, conflict resolution, priority, persistence adoption, undercutter
+uptake, mandatory review, strength, and schema choice are enforced nowhere;
+criticizable and even floor-violating stances stay total
+(`TestCheckerDoesNotAdjudicate`, closure witnesses). No shipped invariant
+rules out behavior that later legitimacy theory is supposed to criticize.
+
+### 9.6 Microhistory search
+
+The addendum's nineteen classes, asked only as "is the content and
+dependency structure expressible": fourteen were already fixtured across the
+two rounds; the five genuinely new ones are now tested — testimony about
+testimony (chained applications), a reason that a source is unreliable *but
+not inapplicable* (bears on the reliability claim; a separate mintable
+bridge carries it to `¬App`), circular support and mutual undercutting
+(total, exposed, unresolved), case-merge judgments and their retraction, and
+one receipt bearing differently on two cases. Permissions versus positive
+reasons is the certificate's grounds/license separation itself; reasons to
+investigate ride as inquiry-launch contents; priority change is revisable
+content; scorekeeper conflict is free because every query is
+stance-parametric (tested). Nothing in the sweep required a new
+representational kind.
+
+## Narrow-waist closure verdict
+
+```text
+Verdict: CLOSED-PROVISIONALLY
+
+Core representation:
+  V ::= Atom | Neg V (canonical) | App(σ,c,n) | Inst(e,σ) | Incomp(S), |S| ≥ 2
+  E : e = (id, s(e) ⊆_fin V ⊎ L, t(e) ∈ V, born, instantiates) — append-only,
+      constitutive, well-formed iff declared instantiations cite their App
+  Σ, C bare identity sorts; L monotone receipts; B ⊆_fin V a separate stance
+  Queries: Enabled, Reasons, Dependents, Explain, LostBasis;
+  Conflict / joint_conflicts / criticizable as public derived queries
+
+Why each primitive survives: §9.2 — every removal loses a fixtured
+  distinction: identity → answerability; hyper-sources → conservativity;
+  two sorts → settlement; App → checkable reflective criticism; Inst →
+  revisable organization without history rewrite; stages → correction vs
+  change; floor → statable correction; Incomp → typed n-ary conflict.
+
+Negative boundary — what is deliberately outside: §9.3 — attack relations,
+  Supported/Live/Defeated, contexts and environments as derived queries;
+  priority, reliability, relevance, same-case and schema-continuity as
+  ordinary content; Hold/Do/May/Must as record facts; assumptions and
+  strength as learner policy. No candidate classified as missing.
+
+Consumer-completeness result: all five known consumers served through the
+  public interface with no new primitive (§9.4). This round's own consumer
+  forced born and instantiates before closing — the criterion's clause 5
+  operated once, and now holds.
+
+Remaining representation-open blockers: none known.
+
+Remaining semantics-open questions: truth conditions of App against the
+  case view (the view fixes the situation; schema semantics is open);
+  whether views need docket events beyond receipts; the typed content
+  language refining Atom; Incomp member typing for action contents.
+
+Remaining policy/theory-open questions: stance revision, conflict
+  resolution, priority, persistence adoption, review disposition,
+  defeater-uptake completeness, the May-rule-to-scope compiler, Due,
+  and the learning connection.
+
+Freeze recommendation: freeze the public types and queries listed above.
+  A new primitive or breaking change requires a minimal counterexample
+  showing some required reason structure cannot be expressed through the
+  existing interface without importing learner policy or rewriting
+  constitutive provenance. Provisional (frozen in role, revisable in
+  content): applicability-in-source scope, persistence-by-schema,
+  record-time staging, view semantics, undeclared-occurrence basis policy.
+  Explicitly outside the freeze: the certificate layer (one round old),
+  the AuthorityAct stand-in, the policy layer, caching strategies, and
+  all implementation choices.
+
+Minimal evidence that would reopen the interface: a concrete microhistory
+  whose reason-dependency structure cannot be expressed via contents,
+  occurrences, record facts, or derived queries — with the artifact, not
+  an intuition — or a consumer whose required fact is unqueryable.
+```
+
+Future work should stop touching the reason representation and build
+revision, authorization, and legitimacy above it.
+
 ## Naming
 
 Provisional, for the ruling: **transition certificate**, `basis`, `license`,
@@ -294,7 +468,11 @@ citation**, **constitutive immutability**, **answerability continuation**.
 
 ## What is not established
 
-No claim is registered or kernel-checked. The boxed implication in §5 is a
+No claim is registered or kernel-checked. The closure verdict is a
+research-engineering status indexed to the five known consumers and the
+accumulated fixture corpus; it is not a uniqueness, minimality, or
+completeness theorem, and the reopening clause is part of the verdict. The
+boxed implication in §5 is a
 paper derivation whose clauses are individually finite-test-supported; only
 the frozen-citation locality clause is exhaustively checked, and only on a
 small universe. The round does not construct: the rule-to-scope compiler; a

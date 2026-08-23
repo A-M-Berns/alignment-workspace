@@ -14,12 +14,20 @@ self-certification and laundering attack dies on strict pre-state citation
 plus immutability, with no dedicated non-laundering axiom. No-self-grounding
 is a theorem, not a postulate.
 
+A late-stage addendum ran a closure phase: prosecution by subtraction and by
+addition, a consumer-completeness table, a policy audit, and a microhistory
+sweep. **Closure verdict: `CLOSED-PROVISIONALLY`** — no known
+representation-open blocker remains, the negative boundary is explicit, and
+the freeze recommendation with its reopening clause is in the memo's final
+section.
+
 - `MEMO.md` — prosecution, repairs, the final interfaces, postulate
-  independence, and the Licensed verdict with its three named blockers.
+  independence, the Licensed verdict with its three named blockers, and the
+  narrow-waist closure verdict.
 - `src/reason_state.py` — repaired substrate.
 - `src/transitions.py` — certificate, authority stand-in, checker.
-- `tests/` — 43 adversarial checks covering the dispatch's fifteen required
-  fixtures.
+- `tests/` — 52 adversarial checks covering the dispatch's fifteen required
+  fixtures plus the closure witnesses and microhistory sweep.
 - `PROVENANCE.md` — artifact provenance.
 
 Run:

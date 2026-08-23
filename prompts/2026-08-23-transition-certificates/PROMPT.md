@@ -422,3 +422,468 @@ and say exactly what is still missing before the transition system can be called
 A particularly good outcome would be discovering that a small set of certificate invariants simultaneously explains the existing conservation, prior-authorization, non-laundering, and basis-loss-review conditions rather than treating them as unrelated rules.
 
 If that compression fails, demonstrate why with minimal counterexamples rather than adding machinery until it works.
+
+---
+
+*Sent mid-round, before the pull request was opened:*
+
+Use this as a **late-stage addendum**, not a replacement for the existing prompt. I’d make it explicitly ask for a closure decision rather than another representation brainstorm.
+
+> ## ADDENDUM — try to close the reason-representation narrow waist
+>
+> Do not restart or rewrite the primary pass. Complete its existing investigations, then add a final **narrow-waist closure phase** before the PR is finalized.
+>
+> The purpose of this addendum is to answer a stricter question than “does the current representation handle the examples?”:
+>
+> [
+> \boxed{
+> \text{Is the reason-state interface now stable enough that future work should occur above it?}
+> }
+> ]
+>
+> Treat “closed” as a research-engineering status, not a mathematical uniqueness claim. We do **not** need to prove that no alternative representation exists or that this ontology is formally minimal. We do need enough evidence that new primitives should henceforth require a concrete failure of the interface.
+>
+> ---
+>
+> # 1. State an explicit closure criterion
+>
+> Before drawing a verdict, formulate the criterion you are using.
+>
+> A candidate:
+>
+> > The reason-representation narrow waist is provisionally closed iff:
+> >
+> > 1. the known adversarial microhistories are representable without hidden stance policy;
+> > 2. the currently known downstream consumers can obtain what they need through the public interface;
+> > 3. the remaining open questions concern semantics, policy, authorization, learning, or implementation rather than missing representational kinds;
+> > 4. attempts to remove any surviving primitive produce a concrete loss of expressive capacity or a collapse of an important distinction;
+> > 5. attempts to add plausible new primitives can instead be represented using existing contents, occurrences, record facts, or derived queries.
+>
+> Improve this criterion if prosecution suggests a better one.
+>
+> The closure verdict should be one of:
+>
+> ```text
+> CLOSED-PROVISIONALLY
+> NOT-CLOSED — specific missing primitive/interface
+> INDETERMINATE — specific unresolved kill test
+> ```
+>
+> Do not use “closed” merely because all current tests pass.
+>
+> ---
+>
+> # 2. Prosecute the ontology by subtraction
+>
+> For every surviving primitive/type distinction, try to remove it.
+>
+> At minimum attack:
+>
+> ### Identity-bearing reason occurrences
+>
+> Can reasons instead be identified extensionally by `(sources,target)`?
+>
+> Kill this with historical reliance, repeated independent occurrences, different cases, or another minimal example—or conclude identity is unnecessary.
+>
+> ### Hyperedges rather than ordinary edges
+>
+> Can conjunction of sources be compiled into ordinary intermediate claim vertices without loss?
+>
+> Ask whether doing so invents reason occurrences/commitments the learner never actually had, changes historical basis identity, or otherwise makes the compilation semantically nonconservative.
+>
+> Be precise about whether “multi-hypergraph” is essential ontology or merely convenient presentation.
+>
+> ### Separate receipt and claim sources
+>
+> Try seriously to collapse
+>
+> [
+> V\sqcup L
+> ]
+>
+> into one source sort.
+>
+> Determine whether this inevitably makes transcript facts defeasible, introduces an “indefeasible claim” subtype equivalent to the receipt sort, or actually yields a cleaner representation.
+>
+> ### `App`
+>
+> Try to eliminate explicit applicability as content.
+>
+> Alternatives to prosecute:
+>
+> * applicability encoded into the occurrence identity;
+> * applicability encoded into source claims without a dedicated constructor;
+> * attack/undercut relation instead;
+> * case-indexed schemas;
+> * negative dependencies/default absence.
+>
+> Ask whether any alternative preserves nested undercutting and reflective criticism without moving normative policy into structure.
+>
+> ### `Inst`
+>
+> Try to eliminate schema-membership claims.
+>
+> Can schema organization be recovered from provenance or occurrence metadata? If so, can the learner still reason that its old classification was mistaken without rewriting history?
+>
+> ### Staged applicability
+>
+> Try to remove the stage index or replace it with some other object.
+>
+> The representation must distinguish:
+>
+> [
+> \text{“I was wrong that it applied then”}
+> ]
+>
+> from
+>
+> [
+> \text{“it applied then and no longer applies now.”}
+> ]
+>
+> Determine the minimum structure necessary for that distinction.
+>
+> ### Constitutive contradiction floor
+>
+> Try to make all incompatibility revisable.
+>
+> Does that make `p` and `¬p`, or `App` and `¬App`, jointly acceptable except by a further learned norm? If yes, state exactly why a minimal logical floor is representational rather than substantive normativity.
+>
+> ### `Incomp`
+>
+> Try to eliminate the dedicated constructor in favor of ordinary atoms, typed feasibility predicates, or another mechanism.
+>
+> Distinguish:
+>
+> [
+> \text{logical contradiction}
+> ]
+>
+> from
+>
+> [
+> \text{learned finite substantive incompatibility}.
+> ]
+>
+> If `Incomp` survives, ensure genuinely n-ary conflict is represented without inducing false pairwise conflict.
+>
+> ---
+>
+> # 3. Prosecute the ontology by addition
+>
+> Construct a list of plausible primitives that someone might reasonably think are missing:
+>
+> ```text
+> Undercuts
+> Rebuts
+> Priority
+> Reliability
+> EvidentialRelevance
+> Hold
+> Do
+> May
+> Must
+> Supported
+> Live
+> Defeated
+> Assumption
+> Context
+> Environment
+> CaseView
+> SameCase
+> SchemaSuccessor
+> ReasonStrength
+> ```
+>
+> For each, classify it as exactly one of:
+>
+> ```text
+> EXISTING CONTENT
+> EXISTING RECORD FACT
+> DERIVED QUERY
+> LEARNER POLICY
+> DOWNSTREAM NORMATIVE SEMANTICS
+> GENUINELY MISSING PRIMITIVE
+> ```
+>
+> Give a one- or two-sentence reason.
+>
+> The point is to test whether the interface has acquired a genuine **negative boundary**:
+>
+> [
+> \boxed{
+> \text{we know not only what belongs inside, but what belongs outside}.
+> }
+> ]
+>
+> Any item classified `GENUINELY MISSING PRIMITIVE` blocks closure.
+>
+> ---
+>
+> # 4. Consumer-completeness test
+>
+> This is the most important part of the addendum.
+>
+> Treat the reason state as an abstract module. Downstream code may use only its public types/queries plus the normative record and transcript. It may **not inspect representation internals** or invent hidden semantic fields.
+>
+> Test the known consumers one by one:
+>
+> ### Normative learner
+>
+> Can it determine:
+>
+> * what reasons currently bear on a content;
+> * what reasons oppose or conflict with a candidate stance;
+> * what would cease to bear under a hypothetical stance change;
+> * what organizational/applicability judgments are themselves open to reasons?
+>
+> without the substrate deciding what to adopt?
+>
+> ### Historical answerability
+>
+> Can the record:
+>
+> * cite the exact occurrence actually relied upon;
+> * recover its constitutive sources later;
+> * detect loss of that basis;
+> * distinguish alternative current support from original historical reliance?
+>
+> ### `Licensed`
+>
+> Can a transition certificate cite:
+>
+> * particular reason occurrences;
+> * their applicability dependencies;
+> * relevant case/stage;
+> * the pre-state in which they were enabled;
+>
+> while keeping normative authorization/genealogy record-side?
+>
+> This current pass is already developing `Licensed`; explicitly note whether it **forces any new reason-representation primitive**. If it does, closure fails until that is resolved.
+>
+> ### Inquiry
+>
+> Can inquiry generation distinguish:
+>
+> * a receipt merely occurring during work on a case;
+> * a reason taking that receipt to bear on an issue;
+> * unresolved conflict or basis loss worth docketing?
+>
+> ### Operative compiler
+>
+> Without solving `R → O`, can a future compiler at least recover all representation-level information it plausibly needs:
+>
+> * endorsed content;
+> * current bearing;
+> * exact cited bases;
+> * applicability;
+> * schema organization;
+> * case/stage;
+> * historical reliance?
+>
+> If any consumer needs a representational fact that cannot be expressed or queried, identify the missing fact exactly.
+>
+> End this section with a table:
+>
+> | Consumer | Needs | Supplied by | Needs new primitive? |
+> | -------- | ----- | ----------- | -------------------- |
+>
+> Closure requires every currently known consumer to answer “no” in the last column.
+>
+> ---
+>
+> # 5. Representation vs policy audit
+>
+> For every proposed checker or invariant in the round, ask:
+>
+> [
+> \boxed{
+> \text{Does this make a structure well-formed, or does it decide how a reasoner ought to respond?}
+> }
+> ]
+>
+> In particular prosecute:
+>
+> * stance consistency;
+> * closure under supported conclusions;
+> * conflict resolution;
+> * priority;
+> * persistence of applicability;
+> * treatment of undercutters;
+> * whether review must occur;
+> * which reason is stronger;
+> * which schema should organize a case.
+>
+> The narrow waist should remain total on **criticizable states** whenever possible.
+>
+> A stance being irrational, conflicted, unresponsive, or normatively bad should usually not make it unrepresentable.
+>
+> If some proposed representational invariant rules out exactly the bad behavior later legitimacy theory is supposed to criticize, presume it is in the wrong layer and prosecute it hard.
+>
+> ---
+>
+> # 6. Test the “multi-hypergraph + stance” characterization
+>
+> Determine whether the following is now an accurate mathematical compression:
+>
+> [
+> H=(V,E,s,t)
+> ]
+>
+> is an append-only identity-bearing directed multi-hypergraph, with
+>
+> [
+> s:E\to\mathcal P_{\mathrm{fin}}(V\sqcup L),
+> \qquad
+> t:E\to V,
+> ]
+>
+> and
+>
+> [
+> B\subseteq V
+> ]
+>
+> is a separate stance/marking.
+>
+> The currently enabled slice is
+>
+> [
+> E_{B,L}
+> =======
+>
+> {e:s_V(e)\subseteq B,;s_L(e)\subseteq L}.
+> ]
+>
+> Ask:
+>
+> * Is “multi” genuinely required?
+> * Is “hyper” genuinely required?
+> * Is the stance accurately modeled as a marking/subset of claim vertices?
+> * Are schemas/cases best modeled as external identity sorts referenced by reflective claim constructors?
+> * Is anything important lost by describing the substrate this way?
+>
+> Give an explicit verdict. If the language is merely mnemonic and the actual type is importantly different, say so.
+>
+> ---
+>
+> # 7. Attempt a representation-completeness counterexample search
+>
+> Do not attempt an impossible general theorem over all future normative reasoning. Instead search systematically for **classes of microhistory not already represented**.
+>
+> At minimum generate examples involving:
+>
+> * testimony about testimony;
+> * reasons about the reliability of a reason source;
+> * several independently sufficient bases;
+> * jointly necessary sources;
+> * circular support;
+> * self-undercutting;
+> * mutual undercutting;
+> * reasons about incompatibility;
+> * reasons that a schema was previously misapplied;
+> * reasons that two cases should be merged;
+> * reasons that a previous merge was mistaken;
+> * delayed evidence about an old case;
+> * evidence relevant to several cases differently;
+> * practical resource conflicts;
+> * permissions versus positive reasons to act;
+> * reasons to investigate rather than conclude;
+> * a reason whose importance/priority changes;
+> * a reason that another reason is unreliable but not inapplicable;
+> * conflict between normative practices or scorekeepers.
+>
+> For each ask only:
+>
+> > Can the representational content and dependency structure be expressed?
+>
+> Do not require the substrate to decide the correct response.
+>
+> If these all fit by composition of existing primitives, record that as evidence for closure.
+>
+> ---
+>
+> # 8. Distinguish three kinds of remaining open problem
+>
+> At the end, classify every unresolved issue into:
+>
+> ### Representation-open
+>
+> We still do not know how to express some necessary reason fact/dependency.
+>
+> ### Semantics-open
+>
+> The representation is adequate, but some constructor needs a fuller interpretation—e.g. exact semantics of `c@n`.
+>
+> ### Policy/theory-open
+>
+> The representation exposes the situation, but we do not know the legitimate response—e.g. conflict resolution, priority, review, `Licensed`, learning.
+>
+> This distinction matters for closure.
+>
+> A narrow waist can be called provisionally closed with substantial **semantics-open** and **policy-open** work remaining.
+>
+> It cannot be closed with a known **representation-open** blocker.
+>
+> ---
+>
+> # 9. Freeze recommendation
+>
+> If the verdict is `CLOSED-PROVISIONALLY`, propose an explicit freeze rule:
+>
+> > Future work treats the reason-state public interface as fixed. A new primitive or breaking change requires a minimal counterexample showing that some required reason structure cannot be represented through the existing interface without importing learner policy or rewriting historical provenance.
+>
+> List:
+>
+> 1. the frozen public types;
+> 2. the frozen public queries;
+> 3. semantic conventions that remain provisional;
+> 4. downstream objects explicitly excluded from the freeze.
+>
+> In particular, do **not** freeze implementation choices or caching strategies.
+>
+> If the verdict is not closed, give the **smallest next round** capable of deciding the blocker. Do not propose another broad representation survey.
+>
+> ---
+>
+> # Required final section in `MEMO.md`
+>
+> Add:
+>
+> ## Narrow-waist closure verdict
+>
+> containing:
+>
+> ```text
+> Verdict:
+>
+> Core representation:
+>
+> Why each primitive survives:
+>
+> Negative boundary — what is deliberately outside:
+>
+> Consumer-completeness result:
+>
+> Remaining representation-open blockers:
+>
+> Remaining semantics-open questions:
+>
+> Remaining policy/theory-open questions:
+>
+> Freeze recommendation:
+>
+> Minimal evidence that would reopen the interface:
+> ```
+>
+> The goal is to leave the next researcher knowing whether they should continue designing the reason representation or **stop touching it and work on revision/legitimacy above it**.
+>
+> The preferred result is not “the representation is elegant.” It is:
+>
+> [
+> \boxed{
+> \text{we have tried both removing and adding structure, tested its consumers, and now know where the abstraction boundary is.}
+> }
+> ]
+>
+> If that conclusion is not warranted, say exactly why.

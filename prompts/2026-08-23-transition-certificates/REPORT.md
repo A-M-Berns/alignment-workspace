@@ -9,11 +9,20 @@ merged nor promoted by this round.
 OF THE FIVE PROPOSED POSTULATES, AND LICENSED BECOMES RECORD-INTERNALLY
 SUBSTANTIVE.`
 
+A late-stage addendum, sent mid-round before the pull request was opened,
+added a narrow-waist closure phase. Its verdict: `CLOSED-PROVISIONALLY` —
+prosecution by subtraction and by addition, a consumer-completeness table
+over the five known consumers, a policy audit of every shipped invariant,
+and a nineteen-class microhistory sweep found no representation-open
+blocker; the freeze recommendation and its reopening clause are in
+`MEMO.md`'s final section.
+
 The round is at
 `projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/`.
-Forty-three finite tests cover the dispatch's fifteen required fixtures plus
-kill tests for conflation, retroactive interpretation, persistence
-laundering, and checker neutrality.
+Fifty-two finite tests cover the dispatch's fifteen required fixtures, kill
+tests for conflation, retroactive interpretation, persistence laundering,
+and checker neutrality, and the closure phase's subtraction witnesses and
+microhistory sweep.
 
 ## Findings
 
@@ -72,6 +81,25 @@ laundering, and checker neutrality.
    transition into a criticizable stance is accepted and left to the
    criticism machinery, since refusing it would smuggle a norm into the
    gate.
+10. Closure phase, subtraction: every surviving primitive's removal loses a
+    fixtured distinction — notably, compiling hyper-sources through
+    conjunction vertices is nonconservative (it invents claims the learner
+    never adopted and reason applications the practice never performed),
+    and removing the floor makes a correction unstatable as a correction.
+    The multi-hypergraph-plus-stance characterization is accurate only as a
+    labeled structure carrying `born` and `instantiates`.
+11. Closure phase, addition: all nineteen candidate primitives classify as
+    existing content, record facts, derived queries, or learner policy —
+    none as genuinely missing — so the interface has a negative boundary.
+    All five consumers answer through the public interface; the one honest
+    qualification is that this round's own consumer forced `born` and
+    `instantiates` before closing.
+12. Every remaining open problem classifies as semantics-open (App truth
+    conditions against the view, view completeness, content typing) or
+    policy/theory-open (revision, priority, uptake, the rule-to-scope
+    compiler, `Due`, learning); none is representation-open. Freeze
+    recommended, with reopening gated on a concrete inexpressibility
+    artifact.
 
 ## Deviations
 
@@ -85,10 +113,16 @@ laundering, and checker neutrality.
 - The pull request is opened against the PR #48 branch rather than `main`,
   so its diff shows only this round; it should merge after #48 or be
   retargeted onto `main` once #48 lands.
+- The addendum arrived mid-round; `PROMPT.md` carries both dispatch messages
+  verbatim, separated by an italic one-line marker noting when the second
+  was sent — an editorial insertion, declared here.
 
 ## What was not shown
 
-No claim is registered or kernel-checked. The boxed implication in `MEMO.md`
+No claim is registered or kernel-checked. The closure verdict is a
+research-engineering status indexed to the known consumers and fixture
+corpus, not a uniqueness or completeness theorem. The boxed implication in
+`MEMO.md`
 §5 is a paper derivation whose clauses are individually finite-test-supported;
 only frozen-citation locality is exhaustively checked, and only over a small
 universe. The round does not construct the rule-to-scope compiler, a burden
