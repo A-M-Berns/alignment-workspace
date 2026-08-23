@@ -50,6 +50,13 @@ Later empirical experience may supply nearly all the grounds for a current
 judgment. Seed ancestry says why the judgment belongs to this continuing
 practice; it does not say the seed substantively entails or justifies it.
 
+`S₀` is an initialization interface, not an explanation of normative
+bootstrapping. A future theory might instead factor the start as
+`I₀ --Uptake--> R₀`, where `I₀` is an ordinary empirical, social, or practical
+induction history and `Uptake` spends only a minimal primitive participation
+license. The present architecture does not determine whether this factorization
+works or what normative structure the uptake operation must contain.
+
 The fixed checker sits at an important boundary. Ideally it enforces only the
 grammar of pre-state authority, version binding, scope, and accountable
 disposition. Any substantive norm hardcoded into that checker is another
@@ -103,14 +110,15 @@ docketed as `Do(investigate …)`, the existing answerability machinery supplies
 stable identity, split and merge, delegation, suspension, explicit release,
 basis-loss review, successor obligations, and typed terminal dispositions.
 
-This is only a partial collapse. A **due token** is the historical receipt that
-a standing rule fired. A **coverage debt** records that the token has not yet
-become an identity-bearing commitment or received an explicit terminal account.
+This is only a partial unification under the tested representation. There, a
+**due token** is the historical receipt that a standing rule fired. A
+**coverage debt** records that the token has not yet become an identity-bearing
+commitment or received an explicit terminal account.
 Equal content does not identify occurrences. Two identical investigations may
 share evidence or one physical action, but both old identities require their own
 adequacy and account edges.
 
-The smallest surviving event family is larger than
+The finite implementation therefore uses an event family larger than
 `Root`/`Undertake`/`Account`:
 
 ```text
@@ -122,6 +130,11 @@ Accrue(due token, rule version, receipt, service specification)
 Account(inputs, disposition, successors, certificate)
 BasisLost(historical use, epoch, review occurrence)
 ```
+
+That operational distinction is not a representation-theoretic minimality
+result. The current three constructors do not expose all information used by
+the checker, but the round does not prove that accrual, review, or due tokens
+cannot be compiled faithfully into a differently typed smaller calculus.
 
 ## Grounds, license, and account lineage
 
@@ -265,7 +278,11 @@ hypotheses. It does not validate the record.
 
 ## Open questions
 
-- How small can the seed be while bootstrapping revision and challenge?
+- Can the seed be factored into an ordinary induction history plus a minimal
+  primitive uptake or participation license, and what normative structure must
+  that uptake operation contain?
+- Is there a semantics-preserving smaller event calculus for accrual, review,
+  and due-token history, or an obstruction to one?
 - Which checker clauses are grammar, and which spend substantive normativity?
 - What finite trigger language avoids hidden logical omniscience?
 - When should delayed evidence use current rules versus world-time rules?
@@ -279,8 +296,8 @@ hypotheses. It does not validate the record.
 ## Evidence and sources
 
 - [Afoundational inquiry round and status map](https://github.com/A-M-Berns/alignment-workspace/tree/226de9c690f7879cfb17ab07f13277773757de22/projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry)
-- [Internal-answerability kernel](https://github.com/A-M-Berns/alignment-workspace/blob/e5de4b9d4f0054faf41fe82eb3103e9aa63bc75c/projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability/MEMO.md)
-- [Role-parametric answerability wrapper](https://github.com/A-M-Berns/alignment-workspace/blob/e5de4b9d4f0054faf41fe82eb3103e9aa63bc75c/projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability/MEMO.md)
+- [Internal-answerability kernel](https://github.com/A-M-Berns/alignment-workspace/blob/e5de4b9c03730961154eec555153a59ec3e7462a/projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability/MEMO.md)
+- [Role-parametric answerability wrapper](https://github.com/A-M-Berns/alignment-workspace/blob/e5de4b9c03730961154eec555153a59ec3e7462a/projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability/MEMO.md)
 - [Set Cover with Delay](https://doi.org/10.4230/LIPIcs.ESA.2020.8)
 - [Adaptive Submodularity](https://arxiv.org/abs/1003.3967)
 - [Minimum Latency Submodular Cover](https://doi.org/10.1145/2987751)

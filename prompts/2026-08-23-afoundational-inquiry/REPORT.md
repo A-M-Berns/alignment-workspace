@@ -2,17 +2,20 @@
 
 **Attribution.** Prompt author: user, model not stated. Executor: GPT-5.6 Sol
 (OpenAI). Dispatched and executed 2026-08-23. Branch cut from live `origin/main`
-at `e5de4b9d4f0054faf41fe82eb3103e9aa63bc75c`.
+at `e5de4b9c03730961154eec555153a59ec3e7462a`.
 
 **Verdict.** `PARTIAL UNIFICATION AFTER TEMPORAL AND SCHEDULING REPAIRS`.
-Inquiry tasks reuse the role-parametric answerability account law. Due tokens and
-coverage debts do not collapse into liabilities, and `Root`/`Undertake`/`Account`
-is not a sufficient event language. Authority ancestry is seed-terminating under
-strict pre-state licensing without implying substantive seed entailment.
+Inquiry tasks reuse the role-parametric answerability account law. Under the
+tested representation, due tokens and coverage debts remain operationally
+distinct from liabilities, and the current typing of
+`Root`/`Undertake`/`Account` does not expose all required history. This is not an
+impossibility or minimality theorem about alternate representations. Authority
+ancestry is seed-terminating under strict pre-state licensing without implying
+substantive seed entailment.
 
 The round is at
 `projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry/`.
-Twenty-one finite tests attack authority roots, temporal accrual, coverage,
+Twenty-six finite tests attack authority roots, temporal accrual, coverage,
 versioned certified service, overload, and the restricted scheduler bridges.
 The wiki's new `Normative Record and Inquiry` page carries the conceptual
 architecture, court analogy, literature orientation, pipeline boundary, and open
@@ -26,17 +29,19 @@ questions. No claim is registered.
    mutual license. Finite accepted ancestry terminates at seed occurrences.
 3. The checker grammar remains an extra-model primitive. Substantive permissions
    embedded there would be additional normative roots in effect.
-4. `Hold`/`Do` is a useful occurrence-level narrow waist. Due tokens remain
-   historical trigger receipts until docketed; atomic coverage debts expose the
-   gap.
+4. `Hold`/`Do` is a useful occurrence-level narrow waist. In the tested
+   representation, due tokens remain historical trigger receipts until
+   docketed; atomic coverage debts expose the operational gap. Whether these
+   compile into a smaller event calculus remains open.
 5. Event-time accrual needs receipt/accrual/amendment micro-order. Later repeal
    cannot erase a token, but may explicitly account for it.
 6. Docket coverage is safety-like with atomic coverage debt. Bounded and eventual
    docketing require processor capacity/fairness. Service is separate liveness.
 7. Service specifications must be pinned. A shared investigation can support
    multiple obligations only through one adequacy/account edge per old input.
-8. The deterministic dynamic inquiry fragment is definitionally Set Cover with
-   Delay and preserves purchase plus delay objective term by term.
+8. The deterministic dynamic inquiry fragment has an objective-preserving paper
+   translation to Set Cover with Delay. Independently implemented inquiry and
+   translated objectives agree on multiple nontrivial finite examples.
 9. Competitive service plus divergent delay does not imply nonstarvation under
    unbounded background load. The repaired statement needs a uniformly bounded
    comparator or marginal guarantee.
@@ -63,11 +68,13 @@ legitimacy README was made.
 
 ## What was not shown
 
-The round does not justify the seed, prove environmental adequacy, construct a
-complete trigger/checker language, guarantee service under overload, establish
-that real inquiry objectives are submodular, validate a Bayesian prior or finite
-hypothesis class, prove non-capture, or close `R -> O`. Literature reductions do
-not transfer scheduler approximation guarantees outside their exact hypotheses.
+The round does not explain normative bootstrapping beneath `S_0`, justify the
+seed, prove a minimal event representation, prove environmental adequacy,
+construct a complete trigger/checker language, guarantee service under overload,
+establish that real inquiry objectives are submodular, validate a Bayesian prior
+or finite hypothesis class, prove non-capture, or close `R -> O`. Literature
+reductions do not transfer scheduler approximation guarantees outside their
+exact hypotheses.
 
 ## Provisional names introduced
 

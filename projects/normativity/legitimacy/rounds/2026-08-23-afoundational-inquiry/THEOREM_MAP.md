@@ -7,7 +7,7 @@ registered or Lean-checked.
 
 | Item | Exact statement and hypotheses | Status | Smallest failure or repair | Registration |
 |---|---|---|---|---|
-| A. No New Normative Roots | In a finite accepted record, every post-seed authority act has at least one strictly earlier normative-license parent; only index-zero seed acts may lack one. Every maximal license path terminates at a seed. | `SINGLE DERIVATION`; `FINITE WITNESS` | Roots, self-license, same-index mutual license, and empirical-only license are rejected. Fixed checker semantics remain outside the graph. | not warranted; formal type not frozen |
+| A. No New Normative Roots | In a finite accepted record, every post-seed authority act has at least one strictly earlier normative-license parent; only index-zero seed acts may lack one. Every maximal license path terminates at a seed. | `SINGLE DERIVATION`; `FINITE WITNESS` | Roots, self-license, same-index mutual license, and empirical-only license are rejected. Convergent DAG ancestry is accepted and repeated seed identities are deduplicated. Fixed checker semantics remain outside the graph. | not warranted; formal type not frozen |
 | B. No Retroactive Evasion | Due tokens are append-only occurrences; removing a standing rule does not remove tokens already emitted by that rule. A token leaves the current docket only through a typed account. | `SINGLE DERIVATION`; `FINITE WITNESS` | Same-step ambiguity is repaired by receipt, accrual, then amendment micro-order. | not warranted |
 | C. Docket Completeness | Atomically generating a token and coverage debt ensures every token has a linked liability, open coverage debt, or terminal coverage account. Eventual/bounded docketing additionally assumes processor fairness/capacity or a deadline. | safety form `SINGLE DERIVATION`; liveness conditional | Arrival rate two and capacity one produces linear backlog. | not warranted |
 | D. No Forgotten Inquiry | Once docketed as `Do(task)`, an inquiry occurrence has a lineage-linked live/suspended frontier or typed terminal account under the existing No Forgotten Liability hypotheses. | inherited conditional derivation; finite identity witnesses | Equal task content does not contract occurrence identities. | formalization may reuse the existing target after types stabilize |
@@ -22,21 +22,21 @@ registered or Lean-checked.
 
 | Component | Status |
 |---|---|
-| afoundational seed semantics | proposed interface; one pre-licensed initialization only |
+| afoundational seed semantics | proposed initialization interface; bootstrapping beneath `S_0` remains open |
 | no-new-root property | single derivation; finite adversarial witnesses; unregistered |
 | empirical transcript `L_n` | append-only interface; normatively thin by construction |
-| minimal `NormativeRecord` event type | three-constructor proposal false; repaired event family proposed |
+| minimal `NormativeRecord` event type | current three-constructor typing is insufficient; implemented event family is a witness, not proven minimal |
 | grounds/license/account separation | required interface; finite independence witnesses |
-| commitment/liability narrow waist | partial unification: `Hold`/`Do` contents share account identity; due tokens remain distinct |
+| commitment/liability narrow waist | partial unification under tested representation: `Hold`/`Do` contents share account identity; due tokens are operationally distinct; alternate compilations remain open |
 | `May`/`Must` rule interface | useful typed interface; not a complete rule semantics |
-| due-token semantics | repaired interface; immutable occurrence with rule, receipt, time, task, and service-spec versions |
+| due-token semantics | repaired tested interface; immutable occurrence with rule, receipt, time, task, and service-spec versions; representation minimality open |
 | event-time accrual | repaired by explicit micro-order; delayed recognition remains policy-relative |
 | docket coverage | safety invariant available; bounded/eventual forms need processor assumptions |
 | service coverage | conditional liveness only; unconditional bounded form false under overload |
 | service certification | version-pinned, input-scoped interface; finite witnesses |
 | versioned service specifications | necessary; finite rewrite attack |
-| Set Cover with Delay bridge | exact restricted reduction; general scheduler fit conditional |
-| submodular ranking / MLSC bridge | exact restricted fixed-docket reduction; complementarity counterexample |
+| Set Cover with Delay bridge | objective-preserving paper derivation; independent finite computations agree; general scheduler fit conditional |
+| submodular ranking / MLSC bridge | objective-preserving restricted paper derivation; independent unit-metric computations agree; complementarity counterexample |
 | adaptive stochastic inquiry | tractable special class; fixed realization/prior/objective hypotheses |
 | external evaluator role | meta-theoretic benchmark; finite disagreement witness |
 | counterfactual non-capture | separate / out of scope |

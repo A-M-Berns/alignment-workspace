@@ -6,17 +6,20 @@ specification or theorem.
 
 ## Verdict
 
-**Partial unification after temporal and scheduling repairs.** The role-parametric answerability kernel is
-the correct account layer for inquiry liabilities. The proposed collapse is not
-total. A due token is a historical trigger receipt before it becomes a
-commitment, and an undocketed token needs a visible coverage debt. Rules,
-service specifications, and tasks can share the identity-bearing commitment
-machinery through tagged `Hold` and `Do` contents, but their semantic checkers
-remain typed.
+**Partial unification after temporal and scheduling repairs.** This is a partial
+unification under the tested representation, not a representation-minimality
+result. The role-parametric answerability kernel is the correct account layer
+for inquiry liabilities. In the implemented representation, a
+due token is a historical trigger receipt before it becomes a commitment, and
+an undocketed token needs a visible coverage debt. Rules, service
+specifications, and tasks can share the identity-bearing commitment machinery
+through tagged `Hold` and `Do` contents, but their semantic checkers remain
+typed.
 
-The three proposed record constructors are insufficient. `Root`, `Undertake`,
-and `Account` omit empirical receipts, trigger accrual, service-specification
-versions, and basis-loss events. The smallest surviving division is:
+The three proposed record constructors as currently typed are insufficient.
+`Root`, `Undertake`, and `Account` do not themselves expose empirical receipts,
+trigger accrual, service-specification versions, or basis-loss events. The
+finite implementation therefore uses this operational division:
 
 ```text
 L event: Observe(receipt, time)
@@ -32,6 +35,11 @@ R event:
 `R_n` and `L_n` are append-only histories. `View(R_n,L_n)` supplies standing
 rules, current commitments, open issues, suspended items, coverage debts, and
 the scheduler snapshot. Mutable-looking state is not rewritten history.
+
+This is not a minimality theorem. The round neither proves `Accrue` or
+`BasisLost` irreducible nor rules out a semantics-preserving compilation of due
+tokens, review, and receipts into a smaller calculus. Finding such a
+representation theorem—or its obstruction—remains an open narrow-waist problem.
 
 ## 1. Record boundary
 
@@ -75,6 +83,10 @@ licensing. An empirical receipt listed only among grounds leaves a post-seed act
 unlicensed. A rule installation cannot use the rule being installed because its
 parent is not in the pre-state.
 
+License ancestry may converge: two parents can share an earlier parent or the
+same seed. Strictly decreasing indices rule out cycles in an accepted record;
+convergent paths do not create a cycle, and repeated roots denote one occurrence.
+
 This theorem is genealogical conservation. It does not derive present content
 from the seed. The grounds of a current act may consist entirely of later
 receipts and revised judgments. It also leaves the checker grammar outside the
@@ -83,6 +95,13 @@ primitive normative expenditure and must be declared as such. The preferred
 fixed checker enforces shape, version binding, scope composition, and account
 grammar; substantive trigger and disposition rules remain versioned objects in
 `R`.
+
+`S_0` is the current positive model's initialization interface, not a theory of
+where normative induction comes from. A future account might factor the start
+as `I_0 --Uptake--> R_0`, with an ordinary empirical, social, or practical
+induction history `I_0` and a thinner primitive uptake or participation license.
+This round does not construct that account or determine what normative
+structure `Uptake` must contain.
 
 ## 3. Commitments, rules, and due tokens
 
@@ -105,7 +124,7 @@ dependencies. `May` licenses an act. `Must` emits a due token when its trigger
 fires. The modes organize reason-responsiveness and inquiry generation without
 requiring semantic closure under all implications.
 
-A due token is not yet the owed commitment:
+In the tested representation, a due token is not yet the owed commitment:
 
 ```text
 DueToken(id, ruleVersion, receiptId, accruedAt, task, serviceSpecVersion)
@@ -318,7 +337,11 @@ unchanged; market force establishes neither genealogy nor inquiry adequacy.
 
 No claim is registered or kernel-checked. The general authority, accrual,
 coverage, and embedding results are paper derivations with finite executable
-witnesses. The round does not construct a substantively sound seed, complete
+witnesses. The independently implemented inquiry and translated SCD/MLSC
+objectives agree on the tested finite examples; that evidence does not promote
+the paper derivations. The round does not construct a theory of normative
+bootstrapping beneath `S_0`, a substantively sound seed, a representation
+theorem for the event calculus, a complete
 trigger language, fair scheduler under general load, service-specification
 compiler, adaptive-submodular inquiry domain, counterfactual non-capture proof,
 credal compiler, or end-to-end normative learner. It does not show that

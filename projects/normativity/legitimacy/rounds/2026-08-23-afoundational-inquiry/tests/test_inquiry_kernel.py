@@ -19,6 +19,7 @@ from inquiry_kernel import (
     authority_roots,
     certified_service,
     complementarity_progress,
+    compile_scd,
     evaluator_internal_disagreement,
     fixed_docket_latency,
     inquiry_delay_objective,
@@ -63,6 +64,29 @@ class AuthorityCases(unittest.TestCase):
     def test_empirical_ground_is_not_a_normative_license(self):
         act = NormativeAct("move", 1, "do", grounds=("receipt",))
         self.assertEqual(authority_errors((self.seed, act)), ("new_root:move",))
+
+    def test_two_license_parents_may_share_one_seed(self):
+        left = NormativeAct("left", 1, "hold", license_parents=("seed",))
+        right = NormativeAct("right", 1, "hold", license_parents=("seed",))
+        act = NormativeAct("act", 2, "do", license_parents=("left", "right"))
+        record = (self.seed, left, right, act)
+        self.assertEqual(authority_errors(record), ())
+        self.assertEqual(authority_roots(record, "act"), frozenset({"seed"}))
+
+    def test_deeper_diamond_convergence_deduplicates_root_identity(self):
+        base = NormativeAct("base", 1, "hold", license_parents=("seed",))
+        left = NormativeAct("left", 2, "hold", license_parents=("base",))
+        right = NormativeAct("right", 2, "hold", license_parents=("base",))
+        act = NormativeAct("act", 3, "do", license_parents=("left", "right"))
+        record = (self.seed, base, left, right, act)
+        self.assertEqual(authority_errors(record), ())
+        self.assertEqual(authority_roots(record, "act"), frozenset({"seed"}))
+
+    def test_malformed_same_index_cycle_fails_before_root_traversal(self):
+        left = NormativeAct("left", 1, "hold", license_parents=("right",))
+        right = NormativeAct("right", 1, "hold", license_parents=("left",))
+        with self.assertRaisesRegex(ValueError, "invalid authority record"):
+            authority_roots((self.seed, left, right), "right")
 
 
 class AccrualAndCoverageCases(unittest.TestCase):
@@ -149,16 +173,45 @@ class SchedulerBridgeCases(unittest.TestCase):
             InquiryRequest("d1", "a", 0, delay),
             InquiryRequest("d2", "b", 1, delay),
         )
-        purchases = ((2, ask_ab), (4, ask_b))
-        self.assertEqual(
-            inquiry_delay_objective(purchases, requests, 5),
-            scd_objective(purchases, requests, 5),
+        inquiry_purchases = ((2, ask_ab), (4, ask_b))
+        sets, translated_requests = compile_scd((ask_ab, ask_b), requests)
+        by_id = {item.ident: item for item in sets}
+        scd_purchases = tuple(
+            (time, by_id[action.ident]) for time, action in inquiry_purchases
         )
-        self.assertEqual(scd_objective(purchases, requests, 5), Fraction(9))
+        self.assertEqual(
+            inquiry_delay_objective(inquiry_purchases, requests, 5),
+            scd_objective(scd_purchases, translated_requests, 5),
+        )
+        self.assertEqual(scd_objective(scd_purchases, translated_requests, 5), Fraction(9))
+
+    def test_scd_translation_handles_overlap_repurchase_and_future_arrival(self):
+        ask_ab = InquiryAction("q-ab", frozenset({"a", "b"}), Fraction(2))
+        ask_bc = InquiryAction("q-bc", frozenset({"b", "c"}), Fraction(3))
+        requests = (
+            InquiryRequest("a0", "a", 0, lambda age: Fraction(age)),
+            InquiryRequest("b1", "b", 1, lambda age: Fraction(2 * age)),
+            InquiryRequest("a3", "a", 3, lambda age: Fraction(age * age)),
+            InquiryRequest("c2", "c", 2, lambda age: Fraction(3 * age)),
+        )
+        inquiry_purchases = ((2, ask_ab), (3, ask_bc), (5, ask_ab))
+        sets, translated_requests = compile_scd((ask_ab, ask_bc), requests)
+        by_id = {item.ident: item for item in sets}
+        scd_purchases = tuple(
+            (time, by_id[action.ident]) for time, action in inquiry_purchases
+        )
+        self.assertEqual(
+            inquiry_delay_objective(inquiry_purchases, requests, 6),
+            scd_objective(scd_purchases, translated_requests, 6),
+        )
+        self.assertEqual(
+            scd_objective(scd_purchases, translated_requests, 6), Fraction(18)
+        )
 
     def test_finite_terminal_delay_allows_permanent_nonservice(self):
         request = InquiryRequest("d", "a", 0, lambda age: Fraction(min(age, 2)))
-        self.assertEqual(scd_objective((), (request,), 50), Fraction(2))
+        _sets, translated = compile_scd((), (request,))
+        self.assertEqual(scd_objective((), translated, 50), Fraction(2))
 
     def test_global_competitiveness_alone_does_not_prevent_starvation(self):
         for horizon in range(1, 20):
@@ -176,6 +229,23 @@ class SchedulerBridgeCases(unittest.TestCase):
             fixed_docket_latency(("a", "b"), objectives),
             mlsc_unit_metric_objective(("a", "b"), objectives),
         )
+
+    def test_unit_metric_mlsc_translation_on_overlapping_objectives(self):
+        any_a = lambda chosen: Fraction(1) if "a" in chosen else Fraction(0)
+        any_bc = lambda chosen: Fraction(1) if chosen & {"b", "c"} else Fraction(0)
+        two_of_three = lambda chosen: Fraction(min(len(chosen), 2), 2)
+        objectives = (any_a, any_bc, two_of_three)
+        expected = {
+            ("a", "b", "c"): 5,
+            ("c", "b", "a"): 6,
+            ("b", "a", "c"): 5,
+        }
+        for order, value in expected.items():
+            self.assertEqual(
+                fixed_docket_latency(order, objectives),
+                mlsc_unit_metric_objective(order, objectives),
+            )
+            self.assertEqual(mlsc_unit_metric_objective(order, objectives), value)
 
     def test_complementarity_breaks_submodular_bridge(self):
         self.assertFalse(monotone_submodular(("a", "b"), complementarity_progress))

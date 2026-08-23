@@ -7,7 +7,7 @@
 | `wiki/Normative-Record-and-Inquiry.md`, `wiki/Legitimacy.md`, `wiki/Sources.md`, `wiki/_Sidebar.md` | GPT-5.6 Sol (OpenAI) | `ci-only` | 2026-08-23 | `prompts/2026-08-23-afoundational-inquiry/` | — |
 
 The executor worked from live `origin/main` at
-`e5de4b9d4f0054faf41fe82eb3103e9aa63bc75c`, the merge commit for the
+`e5de4b9c03730961154eec555153a59ec3e7462a`, the merge commit for the
 role-parametric answerability round.
 
 ## External sources inspected

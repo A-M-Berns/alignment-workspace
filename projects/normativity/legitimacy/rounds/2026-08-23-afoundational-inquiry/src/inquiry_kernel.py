@@ -66,15 +66,20 @@ def authority_errors(acts: Sequence[NormativeAct]) -> tuple[str, ...]:
 
 
 def authority_roots(acts: Sequence[NormativeAct], ident: str) -> frozenset[str]:
+    errors = authority_errors(acts)
+    if errors:
+        raise ValueError(f"invalid authority record: {', '.join(errors)}")
     by_id = {act.ident: act for act in acts}
+    if ident not in by_id:
+        raise ValueError(f"unknown authority act: {ident}")
     roots: set[str] = set()
     frontier = [ident]
-    seen: set[str] = set()
+    expanded: set[str] = set()
     while frontier:
         current = frontier.pop()
-        if current in seen:
-            raise ValueError("authorization cycle")
-        seen.add(current)
+        if current in expanded:
+            continue
+        expanded.add(current)
         act = by_id[current]
         if act.seed:
             roots.add(current)
@@ -227,6 +232,35 @@ class InquiryRequest:
     delay: Callable[[int], Fraction]
 
 
+@dataclass(frozen=True)
+class SCDSet:
+    ident: str
+    elements: frozenset[str]
+    price: Fraction
+
+
+@dataclass(frozen=True)
+class SCDRequest:
+    ident: str
+    element: str
+    released_at: int
+    accumulated_delay: Callable[[int], Fraction]
+
+
+def compile_scd(
+    actions: Sequence[InquiryAction], requests: Sequence[InquiryRequest]
+) -> tuple[tuple[SCDSet, ...], tuple[SCDRequest, ...]]:
+    return (
+        tuple(SCDSet(action.ident, action.covers, action.cost) for action in actions),
+        tuple(
+            SCDRequest(
+                request.ident, request.element, request.arrival, request.delay
+            )
+            for request in requests
+        ),
+    )
+
+
 def service_times(
     purchases: Sequence[tuple[int, InquiryAction]], requests: Iterable[InquiryRequest]
 ) -> dict[str, int | None]:
@@ -262,12 +296,22 @@ def inquiry_delay_objective(
 
 
 def scd_objective(
-    purchases: Sequence[tuple[int, InquiryAction]],
-    requests: Sequence[InquiryRequest],
+    purchases: Sequence[tuple[int, SCDSet]],
+    requests: Sequence[SCDRequest],
     horizon: int,
 ) -> Fraction:
-    """The restricted SCD objective after the identity translation in MEMO.md."""
-    return inquiry_delay_objective(purchases, requests, horizon)
+    """Compute the translated SCD objective independently of the inquiry view."""
+    purchase_cost = sum((item.price for _time, item in purchases), Fraction(0))
+    delay_cost = Fraction(0)
+    for request in requests:
+        service_time = None
+        for time, bought_set in purchases:
+            if time >= request.released_at and request.element in bought_set.elements:
+                service_time = time
+                break
+        endpoint = horizon if service_time is None else service_time
+        delay_cost += request.accumulated_delay(endpoint - request.released_at)
+    return purchase_cost + delay_cost
 
 
 def starvation_despite_two_competitiveness(horizon: int) -> tuple[Fraction, Fraction]:
@@ -301,8 +345,26 @@ def fixed_docket_latency(order: Sequence[str], objectives: Sequence[Progress]) -
 
 
 def mlsc_unit_metric_objective(order: Sequence[str], objectives: Sequence[Progress]) -> int:
-    """MLSC on the unit path metric: distance traveled equals list position."""
-    return fixed_docket_latency(order, objectives)
+    """Compute translated unit-metric MLSC cover times independently."""
+    uncovered = set(range(len(objectives)))
+    visited: set[str] = set()
+    elapsed = 0
+    previous = "__root__"
+    total = 0
+    for vertex in order:
+        elapsed += 0 if vertex == previous else 1
+        previous = vertex
+        visited.add(vertex)
+        newly_covered = {
+            index
+            for index in uncovered
+            if objectives[index](frozenset(visited)) == 1
+        }
+        total += elapsed * len(newly_covered)
+        uncovered -= newly_covered
+    if uncovered:
+        raise ValueError("path does not cover every MLSC objective")
+    return total
 
 
 def monotone_submodular(ground: Sequence[str], progress: Progress) -> bool:
