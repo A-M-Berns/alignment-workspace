@@ -651,6 +651,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-transition-certificates/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-24-enforcement-affordability",
+      "date": "2026-08-24",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-24-enforcement-affordability",
+      "verdict": "Proposition 6.1's divergence is an artifact of per-day worst-case accounting for margined contested schedules, and real exactly where the taxonomy's two defect classes say it is.",
+      "verdict_source": "projects/normativity/rounds/2026-08-24-enforcement-affordability/MEMO.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-24-enforcement-affordability/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

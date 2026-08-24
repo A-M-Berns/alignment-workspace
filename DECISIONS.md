@@ -393,6 +393,19 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   wiki and the reason state in the dispatch, which a later round may silently
   identify — the collision the dispatch itself flags.
 
+- **Name the enforcement-affordability vocabulary.** The dispatch asked for
+  names in three places, and the round adds three working terms it could not
+  avoid; all provisional: **plausibility margin** (distance from the day's
+  region to the plausible payoff patterns it excludes, in relative geometry,
+  with deductive containment — the margin notion of that round's T3);
+  **opposition war chest** (the aggregate budget of the components trading
+  against the enforcer); the trichotomy regimes **absorbed /
+  war-chest-affordable / criterion-forced**; and **set-gap path
+  functional**, **vindication recharge**, **exact-touch shutoff**. *Doing
+  it* is one reading of that round's `MEMO.md` Parts I–III and Naming.
+  *Waiting* costs little until the skeleton's §6 adopts the trichotomy
+  prose, which would harden the regime names on publication.
+
 - **Rule on the transition-certificate vocabulary and the freeze.** The
   successor round to the reason-state prosecution introduces, all
   provisional: `transition certificate` with fields
