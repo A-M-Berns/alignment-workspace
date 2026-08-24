@@ -10,19 +10,22 @@ Core object under prosecution (provisional names throughout):
 - `Gamma(h, a)` is the nonempty set of responses the environment may
   return after history `h` to action `a`.
 - `Sigma` is a family of pinned service specifications
-  `sigma = (C_sigma, Check_sigma, Admit_sigma)`: a citation-local judge
-  of historical certificates, plus a present-time closure-admissibility
-  predicate. Provers that discover certificates are attached
-  algorithms, not spec content. Hidden world state is not a parameter
-  of the interface; where an instance carries one (fixed realizations),
-  it is analytic structure used to state soundness relations, not core
-  structure. `Gamma` is the epistemic response relation — the responses
-  possible given the public history — not a claim about true hidden
-  dynamics.
+  `sigma = (C_sigma, Check_sigma)`: a certificate type and a
+  citation-local judge of historical certificates. Provers that
+  discover certificates are attached algorithms, not spec content.
+  Whether a valid certificate presently DISCHARGES an obligation is a
+  record-side accounting question outside this module (see
+  `composition.py` for the boundary stubs). Hidden world state is not
+  a parameter of the interface; where an instance carries one (fixed
+  realizations), it is analytic structure used to state soundness
+  relations, not core structure. `Gamma` is the epistemic response
+  relation — the responses possible given the public history — not a
+  claim about true hidden dynamics.
 
 Costs are annotations on optimization problems over the core, supplied
-by the instance, not core structure. Liabilities are supplied externally
-by the upstream record.
+by the instance, not core structure. Obligations live upstream; the
+service layer sees only `InquiryRequest` (an obligation reference plus
+its pinned spec) and produces certificates — it closes nothing.
 
 Everything here is exact: `fractions.Fraction`, exhaustive enumeration.
 Finite tests support, and do not replace, the paper derivations in the
@@ -53,18 +56,18 @@ def transcript_of(history: tuple) -> tuple[Receipt, ...]:
 
 
 @dataclass(frozen=True)
-class Certificate:
-    """Finite record-visible witness of service: the spec it addresses,
-    the receipt indices it cites, and optional spec-typed data."""
+class ServiceCertificate:
+    """Finite record-visible witness of historical service: the spec
+    it addresses, the receipts it cites, and optional spec-typed data.
+    Citations here are transcript indices — the finite reference
+    model's representation of stable, immutable ReceiptIds."""
     spec_id: str
     cited: tuple[int, ...]
     data: object = None
 
 
 class ServiceSpec:
-    """A pinned service specification: sigma = (C_sigma, Check, Admit).
-
-    Three predicates with distinct semantics:
+    """A pinned service specification: sigma = (C_sigma, Check_sigma).
 
     - `check(transcript, cert)` — ValidCert: the citation-local judge.
       It reads only the receipts the certificate cites (observation
@@ -74,36 +77,29 @@ class ServiceSpec:
       stays valid under every extension; the induced existential
       predicate Certifiable (below) is therefore extension-closed — a
       theorem of the core, not a capability.
-    - `admissible(transcript, cert, now)` — MayClose: whether this
-      certificate is presently admissible for discharging a still-open
-      liability. Deliberately not citation-local (it may read the
-      current time), so it can lapse; lapsing does not make the
-      historical certificate false.
     - `prove(transcript)` — an attached certificate-discovery
       algorithm. NOT constitutive: a prover returning None says
       nothing about whether a valid certificate exists.
+
+    Whether a valid certificate presently discharges an obligation is
+    NOT judged here: that predicate belongs to the record-side account
+    layer, which may impose freshness or other lapse conditions
+    without touching historical validity.
     """
 
-    def __init__(self, spec_id: str, check_cited, prover=None, admit=None):
+    def __init__(self, spec_id: str, check_cited, prover=None):
         self.spec_id = spec_id
         self._check_cited = check_cited     # (cited receipts, data) -> bool
-        self._prover = prover               # transcript -> Certificate | None
-        self._admit = admit                 # (now, cert, cited) -> bool
+        self._prover = prover               # transcript -> cert | None
 
-    def check(self, transcript: tuple[Receipt, ...], cert: Certificate) -> bool:
+    def check(self, transcript: tuple[Receipt, ...],
+              cert: ServiceCertificate) -> bool:
         if cert.spec_id != self.spec_id:
             return False
         if any(i >= len(transcript) or i < 0 for i in cert.cited):
             return False
         cited = tuple(transcript[i] for i in cert.cited)
         return bool(self._check_cited(cited, cert.data))
-
-    def admissible(self, transcript, cert: Certificate, now=None) -> bool:
-        if self._admit is None:
-            return True
-        now = len(transcript) if now is None else now
-        cited = tuple(transcript[i] for i in cert.cited)
-        return bool(self._admit(now, cert, cited))
 
     def prove(self, transcript: tuple[Receipt, ...]):
         return self._prover(transcript) if self._prover else None
@@ -132,19 +128,21 @@ def certifiable(spec: ServiceSpec, transcript, max_cited=3,
         for cited in itertools.product(idxs, repeat=k):
             for data in tuple(datas) + cited:
                 if spec.check(transcript,
-                              Certificate(spec.spec_id, cited, data)):
+                              ServiceCertificate(spec.spec_id, cited, data)):
                     return True
     return False
 
 
 @dataclass(frozen=True)
-class Liability:
-    """Externally supplied, identity-bearing. Distinct ids with equal
-    task content remain distinct. The spec is pinned at accrual."""
-    lid: str
-    accrued_at: int
+class InquiryRequest:
+    """The minimal service-facing request: an identity-bearing
+    obligation reference and its pinned specification. Distinct
+    obligations with equal content remain distinct via obligation_id.
+    Origin, accrual grounds, discharge rules, and every other
+    record-side fact stay upstream — excluded by TYPE, not by
+    convention: there is no field to smuggle them through."""
+    obligation_id: str
     spec_id: str
-    origin: str = "unspecified"
 
 
 # ---------------------------------------------------------------------------
@@ -197,9 +195,9 @@ class Monitor:
     """Finite-state service monitor: an implementation of HISTORICAL
     certifiability. Accepting states are absorbing because Certifiable
     is extension-closed (the core theorem); the monitor records that
-    certifiability has occurred. Present closure admissibility, which
-    can lapse, would need a separate live monitor and is not what the
-    serviceability solver targets."""
+    certifiability has occurred. Present dischargeability, which can
+    lapse under record-side policy, would need a separate live monitor
+    and is not what the serviceability solver targets."""
 
     def __init__(self, states, m0, step, accepting):
         self.states = frozenset(states)

@@ -25,6 +25,15 @@ An entry leaves when the decision lands as a dated entry below.
 what they could decide, or something structural is generating decisions and
 belongs in `PRIORITIES.md` under *Workspace friction*.
 
+- **Merge PR #51 (certified interactive service).** The round's
+  closeout verdict is `READY-TO-MERGE`
+  (`projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service/CLOSEOUT.md`);
+  merging was reserved to the author by all three dispatches. *Cost of
+  deciding now:* low — a merge click, carrying the PR body's Model
+  attribution into the squash message. *Cost of not deciding:* the
+  inquiry-service interface later rounds build against stays on an
+  unmerged branch.
+
 - **Who owns the enforcement outflow account.** The safety theorem needs only
   that total capital be finite; it is indifferent between a **source-owned**
   account, where a book budgets the cost of its own endorsements and an

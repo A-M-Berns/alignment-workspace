@@ -6,13 +6,13 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 
-from service_core import (Certificate, FiniteStateEnv, Monitor, ServiceSpec,
+from service_core import (ServiceCertificate, FiniteStateEnv, Monitor, ServiceSpec,
                           certifiable, fixed_realization_family,
                           forced_reach, jointly_servable, prover_certified,
                           servable, transcript_of)
 
 
-def cite_spec(spec_id, want_action, prover=None, admit=None):
+def cite_spec(spec_id, want_action, prover=None):
     """Spec: valid certificate cites one receipt whose action is
     `want_action`. Default prover scans forward; alternatives model
     incomplete provers."""
@@ -22,9 +22,9 @@ def cite_spec(spec_id, want_action, prover=None, admit=None):
     def default_prover(transcript):
         for r in transcript:
             if r.action == want_action:
-                return Certificate(spec_id, (r.index,))
+                return ServiceCertificate(spec_id, (r.index,))
         return None
-    return ServiceSpec(spec_id, check, prover or default_prover, admit)
+    return ServiceSpec(spec_id, check, prover or default_prover)
 
 
 class TestCertificationLaws(unittest.TestCase):
@@ -60,23 +60,26 @@ class TestCertificationLaws(unittest.TestCase):
             for ext in exts:
                 self.assertTrue(certifiable(spec, transcript_of(base + ext)))
 
-    def test_freshness_lives_in_admissibility_not_validity(self):
-        # The same certificate remains historically valid while
-        # becoming inadmissible for closing an open liability once the
-        # cited receipt is older than the freshness window: MayClose
-        # lapses; ValidCert does not.
-        spec = cite_spec("d", "a",
-                         admit=lambda now, cert, cited:
-                         now - cited[0].index <= 2)
+    def test_lapsed_certificate_remains_valid(self):
+        # Freshness is record-side DISCHARGE policy, not spec content:
+        # the same certificate remains historically valid while a
+        # record-side MayClose refuses it once the cited receipt is
+        # older than the freshness window. Discharge behavior itself is
+        # exercised in test_composition; here: validity never lapses.
+        from composition import freshness_close
+        spec = cite_spec("d", "a")
+        may_close = freshness_close(window=2)
         h = (("a", "y"),)
         t1 = transcript_of(h)
         cert = spec.prove(t1)
         self.assertTrue(spec.check(t1, cert))
-        self.assertTrue(spec.admissible(t1, cert))
+        cited1 = tuple(t1[i] for i in cert.cited)
+        self.assertTrue(may_close(len(t1), cert, cited1, None))
         t2 = transcript_of(h + (("b", "z"),) * 5)
-        self.assertTrue(spec.check(t2, cert))        # history stands
-        self.assertFalse(spec.admissible(t2, cert))  # closure lapsed
-        self.assertTrue(certifiable(spec, t2))       # and stays certifiable
+        cited2 = tuple(t2[i] for i in cert.cited)
+        self.assertTrue(spec.check(t2, cert))              # history stands
+        self.assertFalse(may_close(len(t2), cert, cited2, None))
+        self.assertTrue(certifiable(spec, t2))             # still certifiable
 
     def test_prover_incompleteness_is_not_nonexistence(self):
         # A prover that only inspects the last receipt fails to
@@ -84,7 +87,7 @@ class TestCertificationLaws(unittest.TestCase):
         # holds, exhibited by exhaustive search.
         def lazy_prover(transcript):
             if transcript and transcript[-1].action == "a":
-                return Certificate("d", (transcript[-1].index,))
+                return ServiceCertificate("d", (transcript[-1].index,))
             return None
         spec = cite_spec("d", "a", prover=lazy_prover)
         t = transcript_of((("a", "y"), ("b", "z")))
@@ -110,24 +113,26 @@ class TestCertificationLaws(unittest.TestCase):
         # and prover-supplied data, never the present transcript
         # length, so any data-encoded claim about nowness is
         # unverifiable and the existential predicate stays monotone
-        # (previous test). The intended semantics is expressed as
-        # closure admissibility instead:
-        spec = cite_spec("d", "probe",
-                         admit=lambda now, cert, cited:
-                         cited[0].index == now - 1)
+        # (previous test). The intended semantics is a record-side
+        # discharge condition over (now, cert):
+        spec = cite_spec("d", "probe")
+        def is_current(now, cert, cited, obligation):
+            return cited[0].index == now - 1
         h = (("probe", "y"),)
         t1 = transcript_of(h)
         cert = spec.prove(t1)
-        self.assertTrue(spec.admissible(t1, cert))
+        self.assertTrue(is_current(len(t1), cert,
+                                   tuple(t1[i] for i in cert.cited), None))
         t2 = transcript_of(h + (("other", "y"),))
-        self.assertFalse(spec.admissible(t2, cert))
+        self.assertFalse(is_current(len(t2), cert,
+                                    tuple(t2[i] for i in cert.cited), None))
         self.assertTrue(spec.check(t2, cert))
 
     def test_certificate_citing_missing_receipt_rejected(self):
         spec = cite_spec("d", "a")
         t = transcript_of((("a", "y"),))
-        self.assertFalse(spec.check(t, Certificate("d", (5,))))
-        self.assertFalse(spec.check(t, Certificate("other", (0,))))
+        self.assertFalse(spec.check(t, ServiceCertificate("d", (5,))))
+        self.assertFalse(spec.check(t, ServiceCertificate("other", (0,))))
 
 
 class TestServiceabilityGames(unittest.TestCase):

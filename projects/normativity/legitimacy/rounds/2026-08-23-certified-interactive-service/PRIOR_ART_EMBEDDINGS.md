@@ -106,8 +106,9 @@ certificate is exactly Definition 7 — quota under every consistent
 realization, a finite record-visible check. In the cleaned
 vocabulary: Definition 7 is the existential learner-visible predicate
 `Certifiable` (monotone, per the core theorem, under monotone `f` with
-the quota objective), and GK instances are `LapseFree` — closure never
-lapses. The paper's own remark that
+the quota objective), and GK instances pair with `LapseFree`
+discharge — no record-side window ever refuses a valid certificate.
+The paper's own remark that
 "it is not enough that a policy achieves value Q for the true
 realization; in order to terminate it also requires a proof of this
 fact" (their Section 5.2) is precisely the core's L1.
@@ -225,9 +226,9 @@ This is NOT another nested subclass. Findings:
 
 In the cleaned vocabulary, the RR condition corresponds to EVENTUAL
 HISTORICAL SERVICE per coalesced occurrence (every opening eventually
-answered) — not timely closure; the paper's waiting-time value is a
-latency annotation on the same historical notion, and admissibility
-has no RR counterpart.
+answered) — not record-side discharge; the paper's waiting-time value
+is a latency annotation on the same historical notion, and discharge
+policy has no RR counterpart.
 
 **Verdict: overlapping abstractions.** RR games are the finite-state,
 recurrent, qualitative, *coalescing* fragment; identity-bearing

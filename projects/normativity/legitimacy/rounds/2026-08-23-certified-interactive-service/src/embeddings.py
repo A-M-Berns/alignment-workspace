@@ -23,7 +23,7 @@ import itertools
 from dataclasses import dataclass
 from fractions import Fraction
 
-from service_core import Certificate, Env, ServiceSpec, transcript_of
+from service_core import ServiceCertificate, Env, ServiceSpec, transcript_of
 
 
 # ---------------------------------------------------------------------------
@@ -110,7 +110,7 @@ def scd_spec(inst: SCDInstance, req: SCDRequest) -> ServiceSpec:
             if (r.action[0] == "buy"
                     and req.element in inst.sets[r.action[1]]
                     and r.index >= req.arrival):
-                return Certificate(req.rid, (r.index,))
+                return ServiceCertificate(req.rid, (r.index,))
         return None
 
     return ServiceSpec(req.rid, check, make)
@@ -190,7 +190,7 @@ def mlsc_spec(inst: MLSCInstance, fname) -> ServiceSpec:
             cited = tuple(range(k))
             if f(frozenset({inst.root}
                            | {transcript[i].action for i in cited})) == 1:
-                return Certificate(fname, cited)
+                return ServiceCertificate(fname, cited)
         return None
 
     return ServiceSpec(fname, check, make)

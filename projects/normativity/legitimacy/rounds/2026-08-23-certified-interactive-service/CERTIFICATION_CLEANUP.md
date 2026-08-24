@@ -4,6 +4,12 @@ Status: **research memo; unregistered**. Follow-up prosecution of the
 round's certification, timing, and boundary semantics. Labels as in
 the other round documents.
 
+Governing types: `CLOSEOUT.md`. This memo's `Admit_sigma` component,
+introduced here inside the spec, was factored out by the closeout
+pass to the record-side account layer (`MayClose` over `(N, L, o, c,
+now)`); the prosecution below, and everything it establishes about
+validity, monotonicity, and lapse, is unchanged by that move.
+
 ## A. Certification verdict: `SPLIT-VALIDITY-AND-CLOSURE`
 
 The original memo conflated three predicates and drew one wrong
@@ -45,14 +51,14 @@ extension-closed" is withdrawn.
 What the retracted example was reaching for is real and lands in
 `MayClose`: a freshness condition (`now - receipt index <= k`) makes a
 certificate lapse as a closure instrument without falsifying the
-historical record (`test_freshness_lives_in_admissibility_not_validity`).
+historical record (`test_lapsed_certificate_remains_valid`).
 
 Required adversarial cases (all in `tests/test_interface.py` and
 `tests/test_composition.py`):
 
 1. valid at `t` stays valid at `t+10` — `test_certificate_persists_under_extension`;
 2. same certificate lapses for closure after a freshness deadline —
-   `test_freshness_lives_in_admissibility_not_validity`;
+   `test_lapsed_certificate_remains_valid`;
 3. prover incompleteness does not witness nonexistence —
    `test_prover_incompleteness_is_not_nonexistence` (lazy prover
    fails; exhaustive `certifiable` succeeds);
@@ -157,7 +163,7 @@ bounded-latency             quantitative annotation on any of these
   (`test_unservable_when_adversary_can_evade` — some run certifies,
   none is forced).
 - forceable vs timely-closable: deadline-in-`Admit` overload
-  (`test_deadline_in_admit_defeats_timely_closure_only` — every
+  (`test_deadline_in_discharge_defeats_timely_closure_only` — every
   occurrence eventually certifiable, later ones never admissible).
 - The solver's `Monitor.accepting` targets HISTORICAL certifiability
   (correct after the split; absorbing = the monotonicity theorem).

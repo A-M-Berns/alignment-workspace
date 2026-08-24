@@ -6,32 +6,38 @@ and no fairness assumption; refinements are noted where they matter.
 
 ## The notion lattice
 
-After the validity/closure split (`CERTIFICATION_CLEANUP.md`), the
-word "service" is retired in favor of:
+After the validity/discharge split (`CERTIFICATION_CLEANUP.md`,
+`CLOSEOUT.md`), the word "service" is retired, and the notions are
+typed by layer:
 
 ```text
-ever-certifiable(d, h)      some continuation reaches Certifiable
-forceable(d, h)             = Servable: a policy forces Certifiable
-                            against every permitted response
-timely-closable(d, h)       a policy forces reaching a moment where
-                            some certificate is valid AND admissible
-eventually-closed(d, rho)   on the actual run, the upstream record
-                            performed the closure account
-bounded-latency             quantitative annotation on any of these
+CIS side:
+  ever-certifiable(d, h)      some continuation reaches Certifiable
+  forceable(d, h)             = Servable: a policy forces Certifiable
+                              against every permitted response
+record/account side:
+  timely-closable(d, h)       a policy forces reaching a moment where
+                              some valid certificate is presently
+                              dischargeable under the record's policy
+  eventually-closed(d, rho)   on the actual run, the record minted the
+                              ServiceEvent
+quantitative annotations:
+  bounded latency, cost       on any of the above
 ```
 
 Separations: ever vs forceable —
 `test_unservable_when_adversary_can_evade` (some run certifies, none
 forced); forceable vs timely-closable —
-`test_deadline_in_admit_defeats_timely_closure_only`; timely-closable
-vs eventually-closed — closure is an upstream act the layer cannot
-perform (boundary, `HANDOFF.md`). For `LapseFree` specs, forceable
-and timely-closable coincide, which is why the distinction was
-invisible in the prior-art embeddings.
+`test_deadline_in_discharge_defeats_timely_closure_only`;
+timely-closable vs eventually-closed — the ServiceEvent is an
+upstream act the layer cannot perform (boundary, `HANDOFF.md`). For
+`LapseFree` discharge policies, forceable certifiability and timely
+closability coincide, which is why the distinction was invisible in
+the prior-art embeddings.
 
 ## Individual serviceability
 
-DEFINITION. For liability `d` at history `h`:
+DEFINITION. For obligation reference `d` at history `h`:
 
 ```text
 Servable(d, h)  iff  exists policy pi such that every Gamma-run
@@ -40,10 +46,10 @@ with ValidCert(sigma_d, rho<=t, c).
 ```
 
 `Servable` targets HISTORICAL certifiability — the monitors' absorbing
-acceptance is the monotonicity theorem in implementation form — not
-present closure admissibility; for freshness-windowed `Admit` the two
-differ and timely closability would need admissibility-aware monitors
-(noted, not built).
+acceptance is the monotonicity theorem in implementation form — never
+"the record will close the obligation"; for freshness-windowed
+discharge policies the two differ, and timely closability would need
+discharge-aware monitors on the record side (noted, not built).
 
 For finite environments and finite-state monitors this is forced
 reachability in the environment x monitor product (`forced_reach`), so
@@ -102,17 +108,17 @@ what overload defeats depends on where the deadline is typed:
   horizon (`test_deadline_in_check_defeats_certifiability`).
   COUNTEREXAMPLE.
 
-- Deadline in `Admit` (freshness-windowed closure): overload defeats
-  TIMELY CLOSABILITY while every occurrence remains eventually
-  certifiable — late historical service is real service history, just
-  not a discharge instrument
-  (`test_deadline_in_admit_defeats_timely_closure_only`).
+- Deadline in the record-side DISCHARGE policy (freshness-windowed
+  `MayClose`): overload defeats TIMELY CLOSABILITY while every
+  occurrence remains eventually certifiable — late historical service
+  is real service history, just not a discharge instrument
+  (`test_deadline_in_discharge_defeats_timely_closure_only`).
   COUNTEREXAMPLE for the timely notion, POSITIVE for the historical
   one.
 
-So "unconditional dynamic liveness" is false exactly when specs carry
-deadlines, and which liveness notion fails is fixed by the deadline's
-type — which is why none of this can be a core law.
+So "unconditional dynamic liveness" is false exactly when deadlines
+are present, and which liveness notion fails is fixed by the layer the
+deadline is typed at — which is why none of this can be a core law.
 
 - Low cost and low latency are further independent axes: the SCD
   translation carries both cost kinds, and the predecessor round's

@@ -3,13 +3,13 @@
 Genuine remainders only.
 
 1. **Sharp schedulability condition.** Under overload, deadline-free
-   specs keep eventual certifiability, Check-windowed specs lose
-   forceable certifiability, Admit-windowed specs lose timely
-   closability. The load bound relative to spec windows under which
-   `Schedulable(A_class, Gamma, capacity)` holds for each notion — a
-   real-time scheduling question in this vocabulary — is open, as is
-   a solver for timely closability (admissibility-aware monitors are
-   specified but not built).
+   instances keep eventual certifiability, Check-windowed specs lose
+   forceable certifiability, discharge-windowed record policies lose
+   timely closability. The load bound relative to the windows under
+   which `Schedulable(A_class, Gamma, capacity)` holds for each
+   notion — a real-time scheduling question in this vocabulary — is
+   open, as is a solver for timely closability (discharge-aware
+   monitors are specified but not built).
 
 2. **Between coalescing RR and unbounded multiplicity.** Same-type
    open-occurrence counts are unbounded counters. Whether a decidable

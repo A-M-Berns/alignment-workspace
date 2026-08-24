@@ -9,7 +9,7 @@ from fractions import Fraction
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 
-from service_core import (Certificate, Env, FiniteStateEnv, Liability,
+from service_core import (ServiceCertificate, Env, FiniteStateEnv, InquiryRequest,
                           Monitor, ServiceSpec, fixed_realization_family,
                           is_submodular, jointly_servable,
                           order_irrelevant, prover_certified,
@@ -27,7 +27,7 @@ def visited_set_spec(spec_id, predicate):
         for k in range(len(transcript) + 1):
             cited = tuple(range(k))
             if predicate(frozenset(transcript[i].action for i in cited)):
-                return Certificate(spec_id, cited)
+                return ServiceCertificate(spec_id, cited)
         return None
     return ServiceSpec(spec_id, check, make)
 
@@ -109,8 +109,8 @@ class TestSharedEvidence(unittest.TestCase):
     # 4. One receipt appears in certificates for two distinct
     # liabilities; the liabilities stay distinct.
     def test_one_receipt_two_liabilities(self):
-        d1 = Liability("d1", 0, "sigma1", origin="answerability")
-        d2 = Liability("d2", 0, "sigma2", origin="decision-relevance")
+        d1 = InquiryRequest("d1", "sigma1")
+        d2 = InquiryRequest("d2", "sigma2")
         self.assertNotEqual(d1, d2)
 
         def make_spec(sid):
@@ -120,7 +120,7 @@ class TestSharedEvidence(unittest.TestCase):
             def make(transcript):
                 for r in transcript:
                     if r.action == "measure":
-                        return Certificate(sid, (r.index,))
+                        return ServiceCertificate(sid, (r.index,))
                 return None
             return ServiceSpec(sid, check, make)
 
@@ -142,7 +142,7 @@ class TestSameTypeMultiplicity(unittest.TestCase):
         def make(transcript):
             for r in transcript:
                 if r.action == "measure":
-                    return Certificate(sid, (r.index,))
+                    return ServiceCertificate(sid, (r.index,))
             return None
         return ServiceSpec(sid, check, make)
 
@@ -199,9 +199,9 @@ class TestOverload(unittest.TestCase):
     # typed: a deadline in Check (receipt index within a window of
     # accrual — citation-local, so the induced Certifiable is still
     # monotone, just time-barred) defeats forceable certifiability
-    # itself; a deadline in Admit defeats timely closure while late
-    # historical certification remains achievable; with no deadline,
-    # only bounded latency fails.
+    # itself; a deadline in the record-side DISCHARGE policy defeats
+    # timely closure while late historical certification remains
+    # achievable; with no deadline, only bounded latency fails.
     def test_deadline_in_check_defeats_certifiability(self):
         # Two occurrences accrue per step, one action per step, and a
         # VALID certificate requires its receipt within 1 step of
@@ -223,23 +223,23 @@ class TestOverload(unittest.TestCase):
             ok = len(served) == len(occurrences)
             self.assertFalse(ok)
 
-    def test_deadline_in_admit_defeats_timely_closure_only(self):
-        # Same overload, but the window is closure admissibility, not
-        # validity: a dedicated receipt at any time makes the
-        # occurrence historically certifiable, while only a receipt
-        # within 1 step of accrual is admissible for closing it. Under
+    def test_deadline_in_discharge_defeats_timely_closure_only(self):
+        # Same overload, but the window is record-side discharge
+        # policy, not validity: a dedicated receipt at any time makes
+        # the occurrence historically certifiable, while the record
+        # only discharges on a receipt within 1 step of accrual. Under
         # FIFO every occurrence is eventually certifiable, yet from
-        # some occurrence on, none is ever admissible at any moment:
+        # some occurrence on, none ever has a dischargeable moment:
         # overload defeats timely closure, not historical service.
         arrivals = {f"d{n}": n // 2 for n in range(12)}   # 2 per step
         service = {f"d{n}": n for n in range(12)}         # FIFO, capacity 1
         for lid, acc in arrivals.items():
             self.assertGreaterEqual(service[lid], acc)    # certifiable
-        admissible = [lid for lid, acc in arrivals.items()
-                      if service[lid] <= acc + 1]
+        dischargeable = [lid for lid, acc in arrivals.items()
+                         if service[lid] <= acc + 1]
         stranded = [lid for lid, acc in arrivals.items()
                     if service[lid] > acc + 1]
-        self.assertEqual(admissible, ["d0", "d1", "d2"])
+        self.assertEqual(dischargeable, ["d0", "d1", "d2"])
         self.assertGreater(len(stranded), 0)
 
     def test_fifo_eventual_service_with_diverging_wait(self):
@@ -267,7 +267,7 @@ class TestOrderSensitivity(unittest.TestCase):
             for k in range(len(transcript) + 1):
                 cited = tuple(range(k))
                 if check(tuple(transcript[i] for i in cited), None):
-                    return Certificate("ordered", cited)
+                    return ServiceCertificate("ordered", cited)
             return None
         spec = ServiceSpec("ordered", check, make)
         self.assertTrue(prover_certified(spec, 
@@ -284,7 +284,7 @@ class TestRepetitionSensitivity(unittest.TestCase):
         spec_twice = ServiceSpec(
             "replicate",
             lambda cited, data: sum(r.action == "a" for r in cited) >= 2,
-            lambda transcript: Certificate(
+            lambda transcript: ServiceCertificate(
                 "replicate", tuple(r.index for r in transcript
                                    if r.action == "a"))
             if sum(r.action == "a" for r in transcript) >= 2 else None)

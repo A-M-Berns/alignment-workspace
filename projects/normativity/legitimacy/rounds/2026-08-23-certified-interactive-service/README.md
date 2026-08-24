@@ -23,15 +23,17 @@ liabilities external and costs demoted to objective annotations:
    `Gamma` denotes the epistemically possible responses given the
    public history, not true hidden dynamics;
 3. `cost` is structure on optimization problems over the core;
-4. certification splits into historical validity and closure
-   admissibility: the existential predicate `Certifiable` is
+4. certification splits into historical validity and present
+   discharge: the existential predicate `Certifiable` is
    extension-closed as a THEOREM of citation locality plus
-   append-only receipts, and freshness conditions live in
-   `Admit_sigma` (the follow-up pass retracted this round's earlier
-   "recency" counterexample as a prover artifact —
-   `CERTIFICATION_CLEANUP.md`);
-5. external, identity-bearing liabilities are confirmed against
-   internalization by the multiplicity microcase.
+   append-only receipts, and freshness/lapse conditions are
+   record-side discharge policy (`MayClose`), not spec structure —
+   CIS produces certificates and closes nothing
+   (`CERTIFICATION_CLEANUP.md`, `CLOSEOUT.md`);
+5. external, identity-bearing obligations are confirmed against
+   internalization by the multiplicity microcase; the service-facing
+   request type carries only the obligation reference and pinned
+   spec.
 
 The core laws (finite witness; citation persistence; observation
 locality; pinned specification; interpretation separation) are typing
@@ -43,6 +45,8 @@ bare object is deliberately weak: it is a waist, not a theory.
 
 ## Map
 
+- `CLOSEOUT.md` — the final surviving interface and full-stack
+  contract, stated without narrative, with the closeout verdict.
 - `INTERACTIVE_SERVICE_INTERFACE.md` — types, subtraction analysis,
   laws, capability taxonomy with layer typing.
 - `CERTIFICATION_CLEANUP.md` — the follow-up prosecution: the
@@ -58,13 +62,13 @@ bare object is deliberately weak: it is a waist, not a theory.
   serviceability; the overload results separating eventual service
   from bounded latency, and their spec-relativity.
 - `HANDOFF.md` — the upstream/downstream contract.
-- `src/`, `tests/` — executable reference model: 60 exact finite
+- `src/`, `tests/` — executable reference model: 63 exact finite
   tests covering all ten mandatory microcases, the five embeddings
   (including the RR paper's Example 2 value `56/10` reproduced
-  exactly), the RR compilation correspondence, the certification
-  split, the online-timing counterexample and repair, and the
-  canonical three-provenance boundary fixture. Run
-  `python3 tests/run.py`.
+  exactly), the RR compilation correspondence, the
+  validity/discharge split with record-side stubs, the online-timing
+  counterexample and repair, and the canonical three-provenance
+  boundary fixture. Run `python3 tests/run.py`.
 - `OPEN_QUESTIONS.md`, `PROVENANCE.md`.
 
 ## The ten dispatch questions
@@ -90,7 +94,7 @@ bare object is deliberately weak: it is a waist, not a theory.
    must be repaired to be learner-usable, and GK's own coverage
    definition already is it.
 7. Hidden environment state is not part of the public interface.
-8. Weakest useful law set: L1-L5 plus the validity/closure split
+8. Weakest useful law set: L1-L5 plus the validity/discharge split
    L2'' as typing/boundary disciplines, with extension-closure of
    `Certifiable` a theorem rather than a law or capability.
 9. Guarantee-to-capability attribution: the taxonomy table in

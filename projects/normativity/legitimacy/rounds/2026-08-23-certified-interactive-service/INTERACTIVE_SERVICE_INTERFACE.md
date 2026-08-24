@@ -20,11 +20,9 @@ Gamma        : H x A -> P+(Y), the permitted-response relation: the
              responses EPISTEMICALLY POSSIBLE given the public
              history, not a claim about true hidden dynamics
 Sigma        a family of pinned service specifications
-             sigma = (C_sigma, Check_sigma, Admit_sigma):
-             a certificate type; a judge Check_sigma reading only the
-             receipts a certificate cites (ValidCert); and a closure-
-             admissibility predicate Admit_sigma over the present
-             time (MayClose), trivially true by default
+             sigma = (C_sigma, Check_sigma): a certificate type and a
+             judge Check_sigma reading only the receipts a
+             certificate cites (ValidCert)
 ```
 
 Provers that discover certificates are attached algorithms, never
@@ -35,11 +33,16 @@ Certifiable(sigma, L) = exists c, ValidCert(sigma, L, c)
 ```
 
 which is extension-closed — a theorem, see `CERTIFICATION_CLEANUP.md`.
+Whether a valid certificate presently DISCHARGES an obligation
+(`MayClose`) is a record-side accounting predicate, not spec
+structure; the service layer produces certificates and closes nothing
+(`CLOSEOUT.md`).
 
-Liability occurrences `d = (id, accruedAt, sigma_d, origin...)` are
-supplied externally by the normative record and are opaque data to the
-service layer. Costs are annotations on optimization problems stated
-over `I`, not components of `I`.
+Obligations live in the normative record; the service layer receives
+only their projections `InquiryRequest(obligation_id, spec_id)` —
+identity-bearing, and by type carrying nothing else. Costs are
+annotations on optimization problems stated over `I`, not components
+of `I`.
 
 Reference model: `src/service_core.py`. Boundary fixture:
 `src/composition.py`, `tests/test_composition.py`.
@@ -119,35 +122,40 @@ cost)` with optional hidden world state. Each component was attacked.
   the latter; that example distinguished only an incomplete prover
   from the existential predicate and is retracted
   (`CERTIFICATION_CLEANUP.md`). What it was reaching for lives in
-  L2'': freshness conditions belong to closure admissibility.
+  L2'': freshness conditions belong to record-side discharge.
 
-- **L2'' (validity/closure split).** DEFINITION. `Admit_sigma` judges
-  whether a valid certificate is PRESENTLY admissible for discharging
-  a still-open liability; it may read the current time, so it can
-  lapse without falsifying the historical record
-  (`test_freshness_lives_in_admissibility_not_validity`). Acceptance
-  semantics that genuinely depends on the present ("the probe is the
-  current last step") is inexpressible as a citation-local `Check` —
-  the judge never sees the transcript's length — and is typed as
-  admissibility instead
+- **L2'' (validity/discharge split).** DEFINITION. Whether a valid
+  certificate PRESENTLY discharges a still-open obligation
+  (`MayClose`) is judged by the record-side account layer, which may
+  read the current time, so discharge can lapse without falsifying
+  the historical record (`test_lapsed_certificate_remains_valid`,
+  `test_record_refuses_when_may_close_false`). Acceptance semantics
+  that genuinely depends on the present ("the probe is the current
+  last step") is inexpressible as a citation-local `Check` — the
+  judge never sees the transcript's length — and is typed as a
+  discharge condition instead
   (`test_context_dependent_acceptance_is_inexpressible_in_check`).
-  Citation locality is not weakened.
+  Citation locality is not weakened, and no discharge structure sits
+  inside the service spec: the split is also a LAYER boundary
+  (historical service validity is CIS; present obligation discharge
+  is the record's).
 
 - **L3 (observation locality).** DEFINITION, enforced by typing:
   `Check` has no hidden-state parameter to consult. An "omniscient
   checker" is ill-typed rather than illegal.
 
-- **L4 (pinned specification).** Boundary rule: `d` is judged against
-  `sigma_d` bound at accrual; migration is an upstream record act. The
-  service layer cannot express rebinding
-  (`Liability` is frozen; `run_service` looks up `d.spec_id` only).
+- **L4 (pinned specification).** Boundary rule: an obligation is
+  judged against the spec bound at accrual; migration is an upstream
+  record act. The service layer cannot express rebinding
+  (`InquiryRequest` is frozen; `serve` looks up its `spec_id` only).
 
 - **L5 (interpretation separation).** Boundary rule, enforced by
-  typing: the service layer's output is a `ServiceOutcome` (liability
-  id, certificate, cited receipts); there is no channel through which
-  it could assert object-language claims or mutate a stance. The
-  vocabulary scan in `test_service_sources_do_not_touch_upstream_or_downstream`
-  checks the reference implementation honors this.
+  typing: the service layer's output is a `ServiceCertificate` per
+  obligation reference — there is no channel through which it could
+  close an obligation, assert object-language claims, or mutate a
+  stance. The identifier scan in
+  `test_service_core_blind_to_record_and_downstream` checks the
+  reference implementation honors this.
 
 Attacks tried and survived: L1 against self-certifying instances
 (where truth does imply a certificate — that is a capability, and the
@@ -173,8 +181,9 @@ it as the narrow waist those theories restrict.
 ## Capability taxonomy
 
 Properties of instances, not subtypes, each typed at its layer (spec
-family, environment presentation, objective annotation, closure
-policy, or upstream minting policy — never the prover). Compressions
+family, environment presentation, objective annotation, record-side
+discharge policy, or upstream minting policy — never the prover, and
+discharge policy is not spec structure). Compressions
 performed: GK realizations and ISSC hypothesis classes are one
 capability (`FixedRealization`); order- and repetition-irrelevance
 conjoin to set-factorization; "coalescing" covers the RR waiting-time
@@ -198,7 +207,7 @@ core, not a capability, so it has no row here
 | `SelfCertifying` | instance-analytic | GK Definition 8: semantic success implies certifiability | GK instances, exact learning | stop-on-success | 6 |
 | `ConsistentAdversarialResponses` | environment presentation | responses consistent with some fixed member | ISSC | worst-case greedy guarantee | 3 |
 | `CoalescingRequests` | upstream minting policy | open same-type accruals mint nothing | RR | finite waiting-time state, RR compilation | 5 |
-| `LapseFree` | closure policy | `Admit_sigma` trivially true | SCD, SR/MLSC, GK, ISSC, RR | close-anytime semantics; Servable = timely-closable | freshness-windowed closure (`test_freshness_lives_in_admissibility_not_validity`) |
+| `LapseFree` | record-side discharge policy (NOT spec structure) | `MayClose` trivially true | SCD, SR/MLSC, GK, ISSC, RR | discharge-anytime semantics; forceable certifiability = timely closability | freshness-windowed discharge (`test_lapsed_certificate_remains_valid`) |
 
 ## Intentionally excluded
 

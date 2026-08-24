@@ -189,3 +189,68 @@ provisional; the author decides.
 
 None required; PR #51 is left open for the author's closeout review,
 per the dispatch's do-not-merge instruction.
+
+# Final report: closeout pass
+
+**Attribution.** Prompt author: user, model not stated
+(`PROMPT-closeout.md`, verbatim). Executor: Claude Fable 5
+(Anthropic). Executed 2026-08-23 on the PR #51 branch.
+
+**Verdict: `READY-TO-MERGE`** (recorded in the round's `CLOSEOUT.md`,
+which states the final interface without narrative).
+
+## Findings
+
+- Discharge factored out of CIS. `ServiceSpec` is now
+  `(C_sigma, Check_sigma)`; `MayClose` is a record-side discharge
+  predicate over `(N, L, o, c, now)`; freshness windows are discharge
+  policy, never spec structure. No admissibility rule was found that
+  genuinely belongs to a service standard: every candidate (freshness,
+  currency) reads the present time, which is exactly what
+  citation-local validity cannot and discharge policy must.
+- CIS produces certificates, closes nothing. The fixture is now
+  `InquiryRequest -> serve -> ServiceCertificate`, then record-side
+  `record_service` mints a `ServiceEvent` iff ValidCert AND MayClose,
+  and assessment consumes the recorded event
+  (`test_assessment_requires_recorded_event`). `ServiceOutcome` is
+  gone.
+- The service-facing request is minimal by type:
+  `InquiryRequest(obligation_id, spec_id)` — origin and accrual data
+  cannot cross the boundary because no field exists for them
+  (`test_origin_excluded_by_type`); the service core is scanned at
+  the AST level for record-side and downstream identifiers.
+- The certification theorem, tick convention, notion lattice (now
+  typed by side: certifiability CIS-side, closability/closure
+  record-side), capability lattice (`LapseFree` re-typed as discharge
+  policy), three-provenance fixture, and `V ⊔ L` sufficiency all
+  survive unchanged in substance; prior-art edits were two wording
+  qualifications (GK lapse-free discharge; RR vs discharge policy).
+- Round suite: 63 tests green; repository runner green; CI green on
+  the closeout commit.
+
+## Deviations
+
+None from the closeout prompt's requirements.
+
+## What was not shown
+
+Unchanged from the previous passes: the monotonicity theorem and the
+compilation/embedding generalities are paper derivations with finite
+witnesses, not kernel-checked; `record_service` and the assessment
+consumer are stubs demonstrating the boundary, not a normative-record
+implementation; the reason-waist sufficiency verdict covers the
+dispatched cases.
+
+## Provisional names introduced by this pass
+
+`InquiryRequest`, `ServiceCertificate` (renaming the reference
+model's certificate type), `ServiceEvent`, `record_service`,
+`DischargePolicy`/`may_close`, `CLOSEOUT.md`'s notion labels. All
+provisional; the author decides.
+
+## Outstanding maintainer actions
+
+1. Merge PR #51 if the closeout is accepted — the round's verdict is
+   `READY-TO-MERGE` and merging was explicitly reserved to the
+   author. Command: merge via GitHub with the PR body's Model
+   attribution section carried into the squash message.
