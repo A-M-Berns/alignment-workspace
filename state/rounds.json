@@ -651,6 +651,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-transition-certificates/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-23-certified-interactive-service",
+      "date": "2026-08-23",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service",
+      "verdict": "REQUIRES-REVISION — the object survives as an arena plus finite-witness certification, its laws typing disciplines, its content in the capability lattice.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service/README.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-23-certified-interactive-service/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
