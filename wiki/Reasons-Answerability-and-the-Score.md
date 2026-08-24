@@ -17,6 +17,14 @@ consequences are this program's. Structured argumentation and epistemic-graph
 work provide nearby formal comparisons, not this project's statics; see
 [Sources](Sources).
 
+A candidate substrate-level representation for these relations now exists:
+identity-bearing reason occurrences whose staged applicability is contestable
+content, with rebuttal derived from a contradiction floor plus learnable
+incompatibility claims, and with the substrate confined to reporting enabled
+reasons and dependencies rather than resolving conflicts. See
+[Normative Record and Inquiry](Normative-Record-and-Inquiry) and
+[the reason-representation round](https://github.com/A-M-Berns/alignment-workspace/blob/11b4d47f4e97130b78f644964652e6db4169f42c/projects/normativity/legitimacy/rounds/2026-08-23-reason-representation/MEMO.md).
+
 ## A perspectival score
 
 Let participant `j` supply public acknowledgments and participant `i` supply the

@@ -12,6 +12,9 @@
 - Supply an auditability transport object for burdens stated across vocabulary change.
 - Record and budget learner computation and policy state.
 - Supply a substantive relational instantiation of `Due`.
+- Freeze the reason-state interface: a checker for the applicability-in-source
+  convention, an account of which applicabilities persist across stages, and a
+  citation discipline connecting `Licensed` certificates to reason occurrences.
 - Prove substantive soundness for a useful `Licensed` relation without deriving
   licence from performance.
 - Develop a general bounded performance interface and a separate coverage

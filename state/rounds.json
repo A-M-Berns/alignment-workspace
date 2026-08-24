@@ -629,6 +629,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-afoundational-inquiry/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-23-reason-representation",
+      "date": "2026-08-23",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-23-reason-representation",
+      "verdict": "Survives after two structural additions and two conventions; the TMS framing is discarded rather than refined.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-reason-representation/MEMO.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-23-reason-representation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
