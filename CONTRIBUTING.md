@@ -119,7 +119,7 @@ are not silently translated into the modern registry's epistemic classes.
 
 | you are claiming | you submit | what adjudicates it |
 |---|---|---|
-| **a Lean theorem** | the proof, in a contribution namespace, plus a term inhabiting its full hypothesis package | the Lean kernel, the axiom audit, and the nonvacuity check |
+| **a Lean theorem** | the proof, in a contribution namespace, plus a term inhabiting its full hypothesis package — and, if it is a result you present as a headline, its `CLAIMS.md` entry in the same pull request | the Lean kernel, the axiom audit, and the nonvacuity check |
 | **an existential, counterexample, sharpness or necessity witness** | **data** — the instance — plus the house checker id and the property parameters | `checkers/witness.py`, which you did not write and cannot change |
 | **something the house checkers cannot express** | your own checker in `checkers/contrib/`, plus the claim | your checker — and the claim is capped at `contributor-checked` |
 | **a finite universal claim** | **domain parameters** only | `checkers/enumeration.py`, which generates the domain itself |
@@ -260,6 +260,11 @@ check. What review still decides is fit, naming, provenance labelling, whether
 both documentation registers are present, and whether a result belongs in the
 program — and those are judgments about work already merged, raised as issues or
 follow-up pull requests like anything else.
+
+**Merging is a fact about a pull request, not a decision to be queued.** A
+dispatch either leaves auto-merge on or says on the pull request that the merge is
+the maintainer's; either way the merge never becomes an entry in `DECISIONS.md`'s
+*Awaiting the author*.
 
 Two things make this safe rather than reckless. A non-maintainer pull request
 touching a specification path **cannot go green** — the `path-gate` job fails it
