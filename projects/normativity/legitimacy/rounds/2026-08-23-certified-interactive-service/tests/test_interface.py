@@ -7,61 +7,121 @@ import unittest
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 
 from service_core import (Certificate, FiniteStateEnv, Monitor, ServiceSpec,
-                          fixed_realization_family, forced_reach,
-                          jointly_servable, servable, transcript_of)
+                          certifiable, fixed_realization_family,
+                          forced_reach, jointly_servable, prover_certified,
+                          servable, transcript_of)
 
 
-def cite_spec(spec_id, want_action):
-    """Spec: certified by citing one receipt whose action is
-    `want_action`."""
+def cite_spec(spec_id, want_action, prover=None, admit=None):
+    """Spec: valid certificate cites one receipt whose action is
+    `want_action`. Default prover scans forward; alternatives model
+    incomplete provers."""
     def check(cited, data):
         return len(cited) == 1 and cited[0].action == want_action
 
-    def make(transcript):
+    def default_prover(transcript):
         for r in transcript:
             if r.action == want_action:
                 return Certificate(spec_id, (r.index,))
         return None
-    return ServiceSpec(spec_id, check, make)
+    return ServiceSpec(spec_id, check, prover or default_prover, admit)
 
 
 class TestCertificationLaws(unittest.TestCase):
     def test_certificate_persists_under_extension(self):
-        # L2: a check depends only on cited receipts; the transcript is
-        # append-only, so a valid certificate stays a valid record of
-        # the historical service event under any extension.
+        # ValidCert reads only cited receipts; the transcript is
+        # append-only; so a valid certificate stays a valid record of
+        # the historical service event under any extension (here: ten
+        # further steps).
         spec = cite_spec("d", "a")
         h1 = (("a", "y"),)
         t1 = transcript_of(h1)
-        cert = spec.make_cert(t1)
+        cert = spec.prove(t1)
         self.assertTrue(spec.check(t1, cert))
-        for ext in [(("b", "z"),), (("b", "z"), ("c", "w"))]:
-            t2 = transcript_of(h1 + ext)
+        for n in (1, 2, 10):
+            t2 = transcript_of(h1 + (("b", "z"),) * n)
             self.assertTrue(spec.check(t2, cert))
 
-    def test_certified_predicate_need_not_be_extension_closed(self):
-        # Counterexample demoting blanket prefix persistence to a
-        # capability: a recency-bounded spec ("the probe is the last
-        # step") is certified at h and not at an extension, while the
-        # historical certificate from h remains valid at the extension.
-        def check(cited, data):
-            return (len(cited) == 1 and cited[0].action == "probe"
-                    and data == cited[0].index)
+    def test_certifiable_is_extension_closed(self):
+        # The core theorem: the existential predicate
+        # Certifiable(sigma, L) = exists c ValidCert(sigma, L, c) is
+        # monotone under extension, for EVERY citation-local spec —
+        # including the recency-flavored one below whose data field
+        # tries to talk about position.
+        specs = [cite_spec("d", "a"),
+                 ServiceSpec("fresh",
+                             lambda cited, data: (len(cited) == 1
+                                                  and cited[0].action == "a"
+                                                  and data == cited[0].index))]
+        base = (("a", "y"),)
+        exts = [(), (("b", "z"),), (("b", "z"), ("c", "w"))]
+        for spec in specs:
+            self.assertTrue(certifiable(spec, transcript_of(base)))
+            for ext in exts:
+                self.assertTrue(certifiable(spec, transcript_of(base + ext)))
 
-        def make(transcript):
-            if transcript and transcript[-1].action == "probe":
-                i = transcript[-1].index
-                return Certificate("fresh", (i,), i)
+    def test_freshness_lives_in_admissibility_not_validity(self):
+        # The same certificate remains historically valid while
+        # becoming inadmissible for closing an open liability once the
+        # cited receipt is older than the freshness window: MayClose
+        # lapses; ValidCert does not.
+        spec = cite_spec("d", "a",
+                         admit=lambda now, cert, cited:
+                         now - cited[0].index <= 2)
+        h = (("a", "y"),)
+        t1 = transcript_of(h)
+        cert = spec.prove(t1)
+        self.assertTrue(spec.check(t1, cert))
+        self.assertTrue(spec.admissible(t1, cert))
+        t2 = transcript_of(h + (("b", "z"),) * 5)
+        self.assertTrue(spec.check(t2, cert))        # history stands
+        self.assertFalse(spec.admissible(t2, cert))  # closure lapsed
+        self.assertTrue(certifiable(spec, t2))       # and stays certifiable
+
+    def test_prover_incompleteness_is_not_nonexistence(self):
+        # A prover that only inspects the last receipt fails to
+        # rediscover the certificate; the existential predicate still
+        # holds, exhibited by exhaustive search.
+        def lazy_prover(transcript):
+            if transcript and transcript[-1].action == "a":
+                return Certificate("d", (transcript[-1].index,))
             return None
-        spec = ServiceSpec("fresh", check, make)
+        spec = cite_spec("d", "a", prover=lazy_prover)
+        t = transcript_of((("a", "y"), ("b", "z")))
+        self.assertFalse(prover_certified(spec, t))
+        self.assertTrue(certifiable(spec, t))
 
+    def test_contradictory_receipt_does_not_rewrite_history(self):
+        # A later receipt contradicting the serviced finding leaves the
+        # historical service certificate valid; what it may generate is
+        # upstream review (exercised in test_composition), never
+        # in-layer invalidation.
+        spec = cite_spec("d", "measure")
+        t1 = transcript_of((("measure", "v=1"),))
+        cert = spec.prove(t1)
+        self.assertTrue(spec.check(t1, cert))
+        t2 = transcript_of((("measure", "v=1"), ("measure", "v=0")))
+        self.assertTrue(spec.check(t2, cert))
+        self.assertTrue(certifiable(spec, t2))
+
+    def test_context_dependent_acceptance_is_inexpressible_in_check(self):
+        # "The cited probe is the CURRENT last step" cannot be a
+        # citation-local validity condition: check sees cited receipts
+        # and prover-supplied data, never the present transcript
+        # length, so any data-encoded claim about nowness is
+        # unverifiable and the existential predicate stays monotone
+        # (previous test). The intended semantics is expressed as
+        # closure admissibility instead:
+        spec = cite_spec("d", "probe",
+                         admit=lambda now, cert, cited:
+                         cited[0].index == now - 1)
         h = (("probe", "y"),)
         t1 = transcript_of(h)
-        cert = spec.make_cert(t1)
-        self.assertTrue(spec.check(t1, cert))
+        cert = spec.prove(t1)
+        self.assertTrue(spec.admissible(t1, cert))
         t2 = transcript_of(h + (("other", "y"),))
-        self.assertIsNone(spec.make_cert(t2))       # not certified *at* t2
-        self.assertTrue(spec.check(t2, cert))       # the history stands
+        self.assertFalse(spec.admissible(t2, cert))
+        self.assertTrue(spec.check(t2, cert))
 
     def test_certificate_citing_missing_receipt_rejected(self):
         spec = cite_spec("d", "a")

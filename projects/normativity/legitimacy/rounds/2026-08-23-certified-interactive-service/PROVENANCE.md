@@ -4,6 +4,7 @@
 |---|---|---|---|---|---|
 | `README.md`, `INTERACTIVE_SERVICE_INTERFACE.md`, `PRIOR_ART_EMBEDDINGS.md`, `SERVICEABILITY.md`, `HANDOFF.md`, `OPEN_QUESTIONS.md` | Claude Fable 5 (Anthropic) | `ci-only` | 2026-08-23 | `prompts/2026-08-23-certified-interactive-service/` | — |
 | `src/`, `tests/` | Claude Fable 5 (Anthropic) | `ci-only` | 2026-08-23 | `prompts/2026-08-23-certified-interactive-service/` | — |
+| `CERTIFICATION_CLEANUP.md`, cleanup revisions to the above files, `tests/test_timing.py` | Claude Fable 5 (Anthropic) | `ci-only` | 2026-08-23 | `prompts/2026-08-23-certified-interactive-service/PROMPT-cleanup.md` | — |
 
 The executor worked from live `origin/main` at
 `299fbd1` (merge of the transition-certificates round), in an isolated

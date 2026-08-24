@@ -9,12 +9,16 @@ Core object under prosecution (provisional names throughout):
   append-only list of identity-bearing receipts, one per step.
 - `Gamma(h, a)` is the nonempty set of responses the environment may
   return after history `h` to action `a`.
-- `Sigma` is a family of pinned service specifications. A specification
-  judges finite certificates against the observable transcript only:
-  `check(transcript, cert) -> bool`, where a certificate cites receipt
-  indices. Hidden world state is not a parameter of the interface;
-  where an instance carries one (fixed realizations), it is analytic
-  structure used to state soundness relations, not core structure.
+- `Sigma` is a family of pinned service specifications
+  `sigma = (C_sigma, Check_sigma, Admit_sigma)`: a citation-local judge
+  of historical certificates, plus a present-time closure-admissibility
+  predicate. Provers that discover certificates are attached
+  algorithms, not spec content. Hidden world state is not a parameter
+  of the interface; where an instance carries one (fixed realizations),
+  it is analytic structure used to state soundness relations, not core
+  structure. `Gamma` is the epistemic response relation — the responses
+  possible given the public history — not a claim about true hidden
+  dynamics.
 
 Costs are annotations on optimization problems over the core, supplied
 by the instance, not core structure. Liabilities are supplied externally
@@ -58,18 +62,33 @@ class Certificate:
 
 
 class ServiceSpec:
-    """A pinned service specification.
+    """A pinned service specification: sigma = (C_sigma, Check, Admit).
 
-    `check(transcript, cert)` must depend only on the receipts the
-    certificate cites (observation locality is enforced by the type:
-    there is no hidden-state parameter to consult). `make_cert` is the
-    untrusted prover side; `check` is the judge.
+    Three predicates with distinct semantics:
+
+    - `check(transcript, cert)` — ValidCert: the citation-local judge.
+      It reads only the receipts the certificate cites (observation
+      locality is enforced by the type: no hidden-state parameter, no
+      access to the transcript beyond the citations). Receipts are
+      immutable and the transcript append-only, so a valid certificate
+      stays valid under every extension; the induced existential
+      predicate Certifiable (below) is therefore extension-closed — a
+      theorem of the core, not a capability.
+    - `admissible(transcript, cert, now)` — MayClose: whether this
+      certificate is presently admissible for discharging a still-open
+      liability. Deliberately not citation-local (it may read the
+      current time), so it can lapse; lapsing does not make the
+      historical certificate false.
+    - `prove(transcript)` — an attached certificate-discovery
+      algorithm. NOT constitutive: a prover returning None says
+      nothing about whether a valid certificate exists.
     """
 
-    def __init__(self, spec_id: str, check_cited, make_cert=None):
+    def __init__(self, spec_id: str, check_cited, prover=None, admit=None):
         self.spec_id = spec_id
         self._check_cited = check_cited     # (cited receipts, data) -> bool
-        self._make_cert = make_cert         # transcript -> Certificate | None
+        self._prover = prover               # transcript -> Certificate | None
+        self._admit = admit                 # (now, cert, cited) -> bool
 
     def check(self, transcript: tuple[Receipt, ...], cert: Certificate) -> bool:
         if cert.spec_id != self.spec_id:
@@ -79,12 +98,43 @@ class ServiceSpec:
         cited = tuple(transcript[i] for i in cert.cited)
         return bool(self._check_cited(cited, cert.data))
 
-    def make_cert(self, transcript: tuple[Receipt, ...]):
-        return self._make_cert(transcript) if self._make_cert else None
+    def admissible(self, transcript, cert: Certificate, now=None) -> bool:
+        if self._admit is None:
+            return True
+        now = len(transcript) if now is None else now
+        cited = tuple(transcript[i] for i in cert.cited)
+        return bool(self._admit(now, cert, cited))
 
-    def certified(self, transcript: tuple[Receipt, ...]) -> bool:
-        cert = self.make_cert(transcript)
-        return cert is not None and self.check(transcript, cert)
+    def prove(self, transcript: tuple[Receipt, ...]):
+        return self._prover(transcript) if self._prover else None
+
+
+def prover_certified(spec: ServiceSpec, transcript) -> bool:
+    """The attached prover finds a certificate the judge accepts: a
+    statement about the prover, not the spec. False does not imply
+    `not certifiable(...)`."""
+    cert = spec.prove(transcript)
+    return cert is not None and spec.check(transcript, cert)
+
+
+def certifiable(spec: ServiceSpec, transcript, max_cited=3,
+                datas=(None,)) -> bool:
+    """Decision procedure for the existential semantic predicate
+
+        Certifiable(sigma, L) = exists c, ValidCert(sigma, L, c),
+
+    by exhaustive search over citation tuples of size <= max_cited with
+    data drawn from `datas` plus each citation's own index (covering
+    index-typed data fields). Complete exactly for specs whose valid
+    certificates fit that search space."""
+    idxs = tuple(range(len(transcript)))
+    for k in range(max_cited + 1):
+        for cited in itertools.product(idxs, repeat=k):
+            for data in tuple(datas) + cited:
+                if spec.check(transcript,
+                              Certificate(spec.spec_id, cited, data)):
+                    return True
+    return False
 
 
 @dataclass(frozen=True)
@@ -144,9 +194,12 @@ class FiniteStateEnv(Env):
 
 
 class Monitor:
-    """Finite-state service monitor: an implementation of a service
-    spec whose accepting states are absorbing (certification is a
-    historical event; the monitor records that it has occurred)."""
+    """Finite-state service monitor: an implementation of HISTORICAL
+    certifiability. Accepting states are absorbing because Certifiable
+    is extension-closed (the core theorem); the monitor records that
+    certifiability has occurred. Present closure admissibility, which
+    can lapse, would need a separate live monitor and is not what the
+    serviceability solver targets."""
 
     def __init__(self, states, m0, step, accepting):
         self.states = frozenset(states)
@@ -261,23 +314,26 @@ def is_monotone(f, ground) -> bool:
 
 
 def order_irrelevant(spec: ServiceSpec, histories: Iterable[tuple]) -> bool:
-    """Certification depends only on the multiset of steps, over the
-    supplied finite probe set."""
+    """Certifiability depends only on the multiset of steps, over the
+    supplied finite probe set. Testing helper: probes the existential
+    predicate via the attached prover, so it presumes a prover complete
+    on the probe set (every spec used in this round qualifies)."""
     by_multiset = {}
     for h in histories:
         key = frozenset((step, h.count(step)) for step in h)
-        val = spec.certified(transcript_of(h))
+        val = prover_certified(spec, transcript_of(h))
         if by_multiset.setdefault(key, val) != val:
             return False
     return True
 
 
 def repetition_irrelevant(spec: ServiceSpec, histories: Iterable[tuple]) -> bool:
-    """Certification depends only on the set of steps, over the probe set."""
+    """Certifiability depends only on the set of steps, over the probe
+    set. Same prover-completeness caveat as `order_irrelevant`."""
     by_set = {}
     for h in histories:
         key = frozenset(h)
-        val = spec.certified(transcript_of(h))
+        val = prover_certified(spec, transcript_of(h))
         if by_set.setdefault(key, val) != val:
             return False
     return True

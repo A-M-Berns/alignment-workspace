@@ -16,12 +16,25 @@ Y            response space
 H            = (A x Y)*, finite observable histories; the transcript
              is the append-only sequence of identity-bearing receipts
              (index, action, response)
-Gamma        : H x A -> P+(Y), the permitted-response relation
-Sigma        a family of pinned service specifications; each sigma
-             carries a certificate type C_sigma and a judge
-             Check_sigma : Receipts* x C_sigma -> Bool that reads only
-             the receipts the certificate cites
+Gamma        : H x A -> P+(Y), the permitted-response relation: the
+             responses EPISTEMICALLY POSSIBLE given the public
+             history, not a claim about true hidden dynamics
+Sigma        a family of pinned service specifications
+             sigma = (C_sigma, Check_sigma, Admit_sigma):
+             a certificate type; a judge Check_sigma reading only the
+             receipts a certificate cites (ValidCert); and a closure-
+             admissibility predicate Admit_sigma over the present
+             time (MayClose), trivially true by default
 ```
+
+Provers that discover certificates are attached algorithms, never
+spec content; the extensional acceptance predicate is
+
+```text
+Certifiable(sigma, L) = exists c, ValidCert(sigma, L, c)
+```
+
+which is extension-closed — a theorem, see `CERTIFICATION_CLEANUP.md`.
 
 Liability occurrences `d = (id, accruedAt, sigma_d, origin...)` are
 supplied externally by the normative record and are opaque data to the
@@ -68,15 +81,18 @@ cost)` with optional hidden world state. Each component was attacked.
    every qualitative statement to carry a vacuous component.
 
 4. **Proof-relevant certification stays, for one reason only.**
-   Extensionally, `sigma` induces the certified-history set
-   `L_sigma = { h : exists c, Check_sigma(h, c) }`, an arbitrary
-   predicate on `H` — so certificates add nothing to expressive power.
-   They are retained because the *record* needs a finite, storable,
-   re-checkable object: the certificate is what the upstream record
-   files against the liability, and re-checking it later must not
-   require re-running inquiry. A `ServiceSpec` is extensionally an
-   accepting language of finite traces; a finite-state monitor is one
-   implementation (`Monitor`), not interface structure.
+   Extensionally, `Check_sigma` induces the acceptance predicate
+   `Certifiable(sigma, L) = exists c, ValidCert(sigma, L, c)` — an
+   extension-closed language of finite traces (the monotonicity
+   theorem) — so certificates add nothing to expressive power over
+   monotone languages. They are retained because the *record* needs a
+   finite, storable, re-checkable object: the certificate is what the
+   upstream record files against the liability, and re-checking it
+   later must not require re-running inquiry. A finite-state monitor
+   implements the acceptance language (`Monitor`, absorbing acceptance
+   = the theorem), not interface structure. Certificate-DISCOVERY
+   (`prove`) is an attached algorithm and never defines semantics
+   (`test_prover_incompleteness_is_not_nonexistence`).
 
 5. **Liabilities stay external.** Confirmed by the multiplicity
    microcase: two occurrences with extensionally identical specs must
@@ -95,17 +111,27 @@ cost)` with optional hidden world state. Each component was attacked.
 
 - **L2 (citation persistence).** DERIVED. `Check` reads only cited
   receipts; the transcript is append-only; therefore a valid
-  certificate remains a valid record of its historical service event
-  under every trace extension
-  (`test_certificate_persists_under_extension`).
+  certificate remains valid under every trace extension
+  (`test_certificate_persists_under_extension`) — and consequently
+  the existential predicate `Certifiable` is itself extension-closed
+  (`test_certifiable_is_extension_closed`). An earlier version of
+  this memo offered a "recency-bounded spec" as a counterexample to
+  the latter; that example distinguished only an incomplete prover
+  from the existential predicate and is retracted
+  (`CERTIFICATION_CLEANUP.md`). What it was reaching for lives in
+  L2'': freshness conditions belong to closure admissibility.
 
-- **L2' is rejected as a law.** COUNTEREXAMPLE. Blanket prefix
-  persistence of the *predicate* `Certified_sigma` — `Certified(h) =>
-  Certified(hh')` — fails for legitimate recency-bounded specs
-  ("the probe is current"), while the occurrence-relative record from
-  L2 stands (`test_certified_predicate_need_not_be_extension_closed`).
-  Extension-closure of `L_sigma` is the capability `MonotoneEvidence`,
-  not a law.
+- **L2'' (validity/closure split).** DEFINITION. `Admit_sigma` judges
+  whether a valid certificate is PRESENTLY admissible for discharging
+  a still-open liability; it may read the current time, so it can
+  lapse without falsifying the historical record
+  (`test_freshness_lives_in_admissibility_not_validity`). Acceptance
+  semantics that genuinely depends on the present ("the probe is the
+  current last step") is inexpressible as a citation-local `Check` —
+  the judge never sees the transcript's length — and is typed as
+  admissibility instead
+  (`test_context_dependent_acceptance_is_inexpressible_in_check`).
+  Citation locality is not weakened.
 
 - **L3 (observation locality).** DEFINITION, enforced by typing:
   `Check` has no hidden-state parameter to consult. An "omniscient
@@ -146,28 +172,33 @@ it as the narrow waist those theories restrict.
 
 ## Capability taxonomy
 
-Properties of instances, not subtypes. Compressions performed:
-GK realizations and ISSC hypothesis classes are one capability
-(`FixedRealization`); order- and repetition-irrelevance conjoin to
-set-factorization; "coalescing" covers the RR waiting-time semantics.
+Properties of instances, not subtypes, each typed at its layer (spec
+family, environment presentation, objective annotation, closure
+policy, or upstream minting policy — never the prover). Compressions
+performed: GK realizations and ISSC hypothesis classes are one
+capability (`FixedRealization`); order- and repetition-irrelevance
+conjoin to set-factorization; "coalescing" covers the RR waiting-time
+semantics. Extension-closure of `Certifiable` is a theorem of the
+core, not a capability, so it has no row here
+(`CERTIFICATION_CLEANUP.md`).
 
-| capability | definition | assumed by | unlocks | violated by microcase |
-|---|---|---|---|---|
-| `ResponseIrrelevant` | spec progress independent of responses | SCD, SR/MLSC | offline analysis of schedules | 2, 10 |
-| `OrderIrrelevant` | `L_sigma` closed under permuting steps | SR/MLSC, GK, ISSC | set-function methods | 8 |
-| `RepetitionIrrelevant` | `L_sigma` factors through step sets | SR/MLSC, GK | ground-set arguments | 9 |
-| `FixedIncidence` | static action -> covered-task relation | SCD | covering LPs, delay analysis | 3 |
-| `MonotoneProgress` | progress function nondecreasing | SR/MLSC, GK, ISSC | greedy well-defined | — (`MonotoneEvidence` analog fails for recency specs) |
-| `SubmodularProgress` | progress submodular | SR/MLSC | ln-factor greedy, SR/MLSC algorithms | 1 |
-| `FiniteStateEnvironment` | `Gamma` presented by finite `(S, s0, delta)` | RR | game solving, decidability | — (analysis limit, not a microcase) |
-| `FiniteStateServiceMonitor` | `L_sigma` regular, monitor-presented | RR fragment | reachability/RR compilation | unbounded-certificate specs |
-| `FixedRealization` | `Gamma` presented by a response-function family | GK, ISSC | posterior/version-space reasoning | 3 |
-| `KnownPrior` | distribution over the family | GK | expected-cost objectives, adaptive greedy | 10 (adversarial) |
-| `AdaptiveMonotone` / `AdaptiveSubmodular` | GK Definitions 2-3 | GK | adaptive greedy guarantees | 1 (synergy) |
-| `SelfCertifying` | GK Definition 8: semantic success implies certificate | GK instances, exact learning | stop-on-success | 6 |
-| `ConsistentAdversarialResponses` | responses consistent with some fixed member | ISSC | worst-case greedy guarantee | 3 |
-| `CoalescingRequests` | open same-type accruals mint nothing | RR | finite waiting-time state, RR compilation | 5 |
-| `MonotoneEvidence` | `Certified_sigma` extension-closed | SCD, SR/MLSC, GK, ISSC | close-once semantics | recency-bounded specs |
+| capability | layer | definition | assumed by | unlocks | violated by microcase |
+|---|---|---|---|---|---|
+| `ResponseIrrelevant` | spec family | spec progress independent of responses | SCD, SR/MLSC | offline analysis of schedules | 2, 10 |
+| `OrderIrrelevant` | spec family | `Certifiable` closed under permuting steps | SR/MLSC, GK, ISSC | set-function methods | 8 |
+| `RepetitionIrrelevant` | spec family | `Certifiable` factors through step sets | SR/MLSC, GK | ground-set arguments | 9 |
+| `FixedIncidence` | spec family | static action -> covered-task relation | SCD | covering LPs, delay analysis | 3 |
+| `MonotoneProgress` | objective annotation | progress function nondecreasing | SR/MLSC, GK, ISSC | greedy well-defined | — (none of the ten; a retraction-modeling progress annotation would) |
+| `SubmodularProgress` | objective annotation | progress submodular | SR/MLSC | ln-factor greedy, SR/MLSC algorithms | 1 |
+| `FiniteStateEnvironment` | environment presentation | `Gamma` presented by finite `(S, s0, delta)` | RR | game solving, decidability | — (analysis limit, not a microcase) |
+| `FiniteStateServiceMonitor` | spec family | `Certifiable` regular, monitor-presented | RR fragment | reachability/RR compilation | unbounded-certificate specs |
+| `FixedRealization` | environment presentation | `Gamma` presented by a response-function family | GK, ISSC | posterior/version-space reasoning | 3 |
+| `KnownPrior` | environment/objective annotation | distribution over the family | GK | expected-cost objectives, adaptive greedy | 10 (adversarial) |
+| `AdaptiveMonotone` / `AdaptiveSubmodular` | instance-analytic | GK Definitions 2-3 | GK | adaptive greedy guarantees | 1 (synergy) |
+| `SelfCertifying` | instance-analytic | GK Definition 8: semantic success implies certifiability | GK instances, exact learning | stop-on-success | 6 |
+| `ConsistentAdversarialResponses` | environment presentation | responses consistent with some fixed member | ISSC | worst-case greedy guarantee | 3 |
+| `CoalescingRequests` | upstream minting policy | open same-type accruals mint nothing | RR | finite waiting-time state, RR compilation | 5 |
+| `LapseFree` | closure policy | `Admit_sigma` trivially true | SCD, SR/MLSC, GK, ISSC, RR | close-anytime semantics; Servable = timely-closable | freshness-windowed closure (`test_freshness_lives_in_admissibility_not_validity`) |
 
 ## Intentionally excluded
 

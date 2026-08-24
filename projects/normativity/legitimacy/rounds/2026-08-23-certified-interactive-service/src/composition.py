@@ -50,8 +50,13 @@ def run_service(docket, specs, env, policy, horizon):
     outcomes, unserviced = [], []
     for d in docket:
         spec = specs[d.spec_id]
-        cert = spec.make_cert(transcript)
-        if cert is not None and spec.check(transcript, cert):
+        cert = spec.prove(transcript)
+        if (cert is not None and spec.check(transcript, cert)
+                and spec.admissible(transcript, cert)):
+            # Closure handoff requires BOTH a valid historical
+            # certificate and present admissibility; a valid but
+            # lapsed certificate stays a true record without
+            # discharging the open liability.
             cited = tuple(transcript[i] for i in cert.cited)
             outcomes.append(ServiceOutcome(d.lid, cert, cited))
         else:

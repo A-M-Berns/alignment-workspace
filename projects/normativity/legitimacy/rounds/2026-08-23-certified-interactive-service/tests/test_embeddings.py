@@ -18,7 +18,8 @@ from embeddings import (GKInstance, ISSCInstance, MLSCInstance, RRGame,
                         rr_occurrences, rr_play_winning, rr_value_periodic,
                         rr_wt_vector, scd_generic_objective, scd_objective,
                         scd_service_time)
-from service_core import is_monotone, is_submodular, transcript_of
+from service_core import (is_monotone, is_submodular,
+                          prover_certified, transcript_of)
 
 
 class TestSetCoverWithDelay(unittest.TestCase):
@@ -117,8 +118,8 @@ class TestSubmodularRankingMLSC(unittest.TestCase):
         spec = mlsc_spec(inst, "f2")
         t1 = transcript_of((("u", "ok"), ("v", "ok")))
         t2 = transcript_of((("u", "ok"), ("u", "ok"), ("v", "ok")))
-        self.assertTrue(spec.certified(t1))
-        self.assertTrue(spec.certified(t2))
+        self.assertTrue(prover_certified(spec, t1))
+        self.assertTrue(prover_certified(spec, t2))
 
 
 class TestAdaptiveSubmodularity(unittest.TestCase):

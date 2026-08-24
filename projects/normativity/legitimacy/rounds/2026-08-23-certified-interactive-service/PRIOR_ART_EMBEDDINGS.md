@@ -37,9 +37,23 @@ infinity`. The translation itself does not depend on the discretization
 — both sides' objectives are functions of arrival and purchase times
 only.
 
-**Verdict: honest generalization.** Every SCD instance is an instance
-of the generic object; the generic object does not transfer any SCD
-competitive guarantee outside these restrictions.
+**Event-order convention (required for online fidelity).** The
+fixed-schedule preservation above does not by itself preserve the
+online problem: SCD lets the decision at time `t` see arrivals up to
+and including `t`, and the naive one-step encoding (act, then receive
+the step's arrivals in the response) provably changes the achievable
+online cost profiles (`test_naive_encoding_changes_the_online_problem`,
+a finite counterexample). The embedding therefore uses the TICK
+convention — one source time step is an observation action whose
+response carries that step's arrivals, followed by the decision —
+which restores the source protocol's policy class exactly
+(`test_tick_convention_restores_the_source_protocol`). See
+`CERTIFICATION_CLEANUP.md`, verdict B.
+
+**Verdict: honest generalization** under the tick convention. Every
+SCD instance is an instance of the generic object; the generic object
+does not transfer any SCD competitive guarantee outside these
+restrictions.
 
 ## B. Submodular Ranking / Minimum Latency Submodular Cover
 
@@ -89,7 +103,11 @@ Translation (`GKInstance`, `gk_env`, `gk_certified`): histories are
 partial realizations with order and (idempotent) repetition forgotten;
 `Gamma(h, e) = { phi(e) : phi consistent with psi(h) }`; the generic
 certificate is exactly Definition 7 — quota under every consistent
-realization, a finite record-visible check. The paper's own remark that
+realization, a finite record-visible check. In the cleaned
+vocabulary: Definition 7 is the existential learner-visible predicate
+`Certifiable` (monotone, per the core theorem, under monotone `f` with
+the quota objective), and GK instances are `LapseFree` — closure never
+lapses. The paper's own remark that
 "it is not enough that a policy achieves value Q for the true
 realization; in order to terminate it also requires a proof of this
 fact" (their Section 5.2) is precisely the core's L1.
@@ -204,6 +222,12 @@ This is NOT another nested subclass. Findings:
    states reduce to plain reachability (`forced_reach`). RR/Buechi
    enter only for recurrent liability generation. DERIVED;
    `TestServiceabilityGames`.
+
+In the cleaned vocabulary, the RR condition corresponds to EVENTUAL
+HISTORICAL SERVICE per coalesced occurrence (every opening eventually
+answered) — not timely closure; the paper's waiting-time value is a
+latency annotation on the same historical notion, and admissibility
+has no RR counterpart.
 
 **Verdict: overlapping abstractions.** RR games are the finite-state,
 recurrent, qualitative, *coalescing* fragment; identity-bearing

@@ -37,6 +37,11 @@ from service_core import Certificate, Env, ServiceSpec, transcript_of
 # sum of d_j(u) for u in [r_j, tau); unserved requests accrue delay to
 # the (finite) evaluation horizon, which understates the paper's
 # tau = infinity — stated as a restriction, not a claim.
+#
+# `scd_generic_history` below is the one-step encoding, adequate for
+# FIXED-schedule objective preservation only. Online fidelity needs the
+# tick convention — observe a source step's arrivals before deciding —
+# per the counterexample and repair in tests/test_timing.py.
 
 @dataclass(frozen=True)
 class SCDRequest:
@@ -123,7 +128,7 @@ def scd_generic_objective(inst: SCDInstance, schedule):
     service_times = {}
     for req in inst.requests:
         spec = scd_spec(inst, req)
-        cert = spec.make_cert(transcript)
+        cert = spec.prove(transcript)
         if cert is not None and spec.check(transcript, cert):
             tau = cert.cited[0]
             service_times[req.rid] = tau
@@ -205,7 +210,7 @@ def mlsc_generic_cover_times(inst: MLSCInstance, path):
     out = {}
     for fname in inst.functions:
         spec = mlsc_spec(inst, fname)
-        cert = spec.make_cert(transcript)
+        cert = spec.prove(transcript)
         if cert is None or not spec.check(transcript, cert):
             out[fname] = None
         else:

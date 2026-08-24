@@ -12,8 +12,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "src"))
 from service_core import (Certificate, Env, FiniteStateEnv, Liability,
                           Monitor, ServiceSpec, fixed_realization_family,
                           is_submodular, jointly_servable,
-                          order_irrelevant, repetition_irrelevant, servable,
-                          transcript_of)
+                          order_irrelevant, prover_certified,
+                          repetition_irrelevant, servable, transcript_of)
 from embeddings import GKInstance, gk_certified, gk_self_certifying, \
     gk_semantic
 
@@ -37,9 +37,9 @@ class TestComplementarity(unittest.TestCase):
     def test_valid_service_but_not_submodular(self):
         spec = visited_set_spec("both", lambda s: {"a", "b"} <= s)
         t = transcript_of((("a", "."), ("b", ".")))
-        self.assertTrue(spec.certified(t))
+        self.assertTrue(prover_certified(spec, t))
         for h in [(("a", "."),), (("b", "."),)]:
-            self.assertFalse(spec.certified(transcript_of(h)))
+            self.assertFalse(prover_certified(spec, transcript_of(h)))
         # Progress 1 iff both present is not submodular.
         f = lambda s: Fraction(1) if {"a", "b"} <= s else Fraction(0)
         self.assertFalse(is_submodular(f, ("a", "b")))
@@ -102,7 +102,7 @@ class TestIntervention(unittest.TestCase):
         h = (("a", "done"), ("b", "1"))
         self.assertEqual(env.responses((("a", "done"),), "b"),
                          frozenset({"1"}))
-        self.assertTrue(spec.certified(transcript_of(h)))
+        self.assertTrue(prover_certified(spec, transcript_of(h)))
 
 
 class TestSharedEvidence(unittest.TestCase):
@@ -125,8 +125,8 @@ class TestSharedEvidence(unittest.TestCase):
             return ServiceSpec(sid, check, make)
 
         t = transcript_of((("measure", "v"),))
-        c1 = make_spec("sigma1").make_cert(t)
-        c2 = make_spec("sigma2").make_cert(t)
+        c1 = make_spec("sigma1").prove(t)
+        c2 = make_spec("sigma2").prove(t)
         self.assertEqual(c1.cited, c2.cited)          # shared receipt
         self.assertNotEqual(c1.spec_id, c2.spec_id)   # separate closures
 
@@ -154,8 +154,8 @@ class TestSameTypeMultiplicity(unittest.TestCase):
 
     def test_sharing_spec_closes_both(self):
         t = transcript_of((("measure", "v"),))
-        c1 = self.sharing_spec("occ1").make_cert(t)
-        c2 = self.sharing_spec("occ2").make_cert(t)
+        c1 = self.sharing_spec("occ1").prove(t)
+        c2 = self.sharing_spec("occ2").prove(t)
         self.assertTrue(self.sharing_spec("occ1").check(t, c1))
         self.assertTrue(self.sharing_spec("occ2").check(t, c2))
 
@@ -195,16 +195,20 @@ class TestHiddenSuccessWithoutCertification(unittest.TestCase):
 
 class TestOverload(unittest.TestCase):
     # 7. Every arrival individually serviceable; arrivals outpace
-    # capacity. Deadline-bearing specs then defeat every policy
-    # (pigeonhole); deadline-free specs keep eventual service under
-    # FIFO while waiting times diverge.
-    def test_perishable_specs_defeat_every_policy(self):
+    # capacity. What overload defeats depends on where the deadline is
+    # typed: a deadline in Check (receipt index within a window of
+    # accrual — citation-local, so the induced Certifiable is still
+    # monotone, just time-barred) defeats forceable certifiability
+    # itself; a deadline in Admit defeats timely closure while late
+    # historical certification remains achievable; with no deadline,
+    # only bounded latency fails.
+    def test_deadline_in_check_defeats_certifiability(self):
         # Two occurrences accrue per step, one action per step, and a
-        # certificate is valid only if its receipt lands within 1 step
-        # of accrual. Horizon 3: 6 occurrences, at most 3 receipts, and
-        # each receipt can certify at most one occurrence (exclusive
-        # evidence): every policy strands someone even inside deadline
-        # arithmetic. Checked exhaustively over all action schedules.
+        # VALID certificate requires its receipt within 1 step of
+        # accrual (an index constraint, citation-local). Horizon 3: 6
+        # occurrences, at most 3 receipts, each certifying at most one
+        # occurrence (exclusive evidence): every policy strands
+        # someone. Checked exhaustively over all action schedules.
         horizon = 3
         occurrences = [(f"d{t}{i}", t) for t in range(horizon)
                        for i in range(2)]
@@ -218,6 +222,25 @@ class TestOverload(unittest.TestCase):
                     served.add(target)
             ok = len(served) == len(occurrences)
             self.assertFalse(ok)
+
+    def test_deadline_in_admit_defeats_timely_closure_only(self):
+        # Same overload, but the window is closure admissibility, not
+        # validity: a dedicated receipt at any time makes the
+        # occurrence historically certifiable, while only a receipt
+        # within 1 step of accrual is admissible for closing it. Under
+        # FIFO every occurrence is eventually certifiable, yet from
+        # some occurrence on, none is ever admissible at any moment:
+        # overload defeats timely closure, not historical service.
+        arrivals = {f"d{n}": n // 2 for n in range(12)}   # 2 per step
+        service = {f"d{n}": n for n in range(12)}         # FIFO, capacity 1
+        for lid, acc in arrivals.items():
+            self.assertGreaterEqual(service[lid], acc)    # certifiable
+        admissible = [lid for lid, acc in arrivals.items()
+                      if service[lid] <= acc + 1]
+        stranded = [lid for lid, acc in arrivals.items()
+                    if service[lid] > acc + 1]
+        self.assertEqual(admissible, ["d0", "d1", "d2"])
+        self.assertGreater(len(stranded), 0)
 
     def test_fifo_eventual_service_with_diverging_wait(self):
         # Without deadlines, FIFO services every occurrence at a finite
@@ -247,9 +270,9 @@ class TestOrderSensitivity(unittest.TestCase):
                     return Certificate("ordered", cited)
             return None
         spec = ServiceSpec("ordered", check, make)
-        self.assertTrue(spec.certified(
+        self.assertTrue(prover_certified(spec, 
             transcript_of((("a", "."), ("b", ".")))))
-        self.assertFalse(spec.certified(
+        self.assertFalse(prover_certified(spec, 
             transcript_of((("b", "."), ("a", ".")))))
         self.assertFalse(order_irrelevant(
             spec, [(("a", "."), ("b", ".")), (("b", "."), ("a", "."))]))
@@ -267,8 +290,8 @@ class TestRepetitionSensitivity(unittest.TestCase):
             if sum(r.action == "a" for r in transcript) >= 2 else None)
         once = transcript_of((("a", "."),))
         twice = transcript_of((("a", "."), ("a", ".")))
-        self.assertFalse(spec_twice.certified(once))
-        self.assertTrue(spec_twice.certified(twice))
+        self.assertFalse(prover_certified(spec_twice, once))
+        self.assertTrue(prover_certified(spec_twice, twice))
         self.assertFalse(repetition_irrelevant(
             spec_twice, [(("a", "."),), (("a", "."), ("a", "."))]))
 

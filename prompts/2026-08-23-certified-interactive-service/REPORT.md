@@ -97,3 +97,95 @@ decides.
 
 None required for this research-round PR. Naming and any promotion
 remain future decisions rather than merge blockers.
+
+# Follow-up report: certification cleanup pass
+
+**Attribution.** Prompt author: user, model not stated
+(`PROMPT-cleanup.md`, verbatim). Executor: Claude Fable 5 (Anthropic).
+Executed 2026-08-23 on the open PR #51 branch; no concurrent branch
+consumed; the reason interface used for the compatibility audit is the
+stipulated frozen summary in the prompt, not any live branch.
+
+**Verdicts** (full statements in the round's
+`CERTIFICATION_CLEANUP.md`): A. `SPLIT-VALIDITY-AND-CLOSURE`.
+B. `CURRENT-TURN-MODEL-SUFFICIENT-WITH-CONVENTION`.
+C. `CLEAN-COMPOSITION`. D. `REQUIRES-REVISION — SURVIVES`, with the
+revision now including the validity/closure split.
+
+## Findings
+
+- The dispatch's central charge is confirmed: the original memo's
+  "recency-bounded" counterexample to prefix persistence
+  distinguished only an incomplete prover from the existential
+  predicate. It is retracted. `Certifiable = exists c ValidCert` is
+  extension-closed as a theorem of citation locality plus append-only
+  receipts; `MonotoneEvidence` is deleted from the capability
+  lattice; freshness lives in a new closure-admissibility component
+  `Admit_sigma` (`MayClose`), which may lapse without falsifying
+  history. Context-dependent acceptance ("the probe is the current
+  last step") is INEXPRESSIBLE as a citation-local Check — the judge
+  never sees the transcript length — and is typed as admissibility;
+  citation locality is not weakened.
+- The implementation separates semantics from procedure:
+  `ServiceSpec = (C, Check, Admit)` constitutive; `prove` an attached
+  prover; `certifiable(...)` a bounded exhaustive decision procedure;
+  `prover_certified(...)` explicitly prover-relative; absorbing
+  monitors justified by the theorem.
+- Online timing: a finite counterexample shows the naive one-step SCD
+  encoding changes the achievable online cost profiles; the tick
+  convention (an observation action exposing arrivals before the
+  decision) restores the source protocol's policy class exactly. No
+  new step type added; the convention binds embeddings.
+- `Gamma` is stated explicitly as the epistemic response relation;
+  the ISSC consistency-adversary lesson is generalized:
+  whole-history-consistency presentations preserve adversarial
+  strategy semantics against fixed hidden configurations.
+- Serviceability is retyped as a notion lattice (ever-certifiable /
+  forceable / timely-closable / eventually-closed / bounded-latency),
+  every retained distinction separated by a test. Overload defeats
+  forceable certifiability under Check-windows, timely closability
+  under Admit-windows, and only bounded latency with no windows.
+- Reason-waist audit: on all five dispatch cases the frozen `V ⊔ L`
+  source sorts suffice; a reason never cites the ServiceCertificate;
+  protocol-compliance claims are ordinary contents supported by
+  receipts. The three-provenance microhistory is the canonical
+  composition fixture. No blocking interface issue.
+- Prior-art deltas were conservative: SCD gains the tick convention;
+  GK Definition 7 is worded as the existential learner-visible
+  `Certifiable` with GK instances lapse-free; ISSC unchanged; RR is
+  eventual historical service under coalescing, with waiting-time
+  value a latency annotation, not admissibility.
+
+The round suite grew from 47 to 60 tests, all green; the repo-level
+runner is green.
+
+## Deviations
+
+None from the cleanup prompt's requirements. The reason-occurrence
+stubs live in the round's test file rather than `src/`, because the
+service sources are vocabulary-scanned against downstream terms; the
+prompt's fixture is unaffected.
+
+## What was not shown
+
+The monotonicity theorem is a paper derivation with finite witnesses,
+not kernel-checked. `certifiable(...)` is complete only on bounded
+certificate spaces (sufficient for every spec in the round). The
+tick-convention equivalence is proved by exhaustive policy
+enumeration on one two-scenario instance and argued generally; a
+general protocol-equivalence theorem is not stated. Timely
+closability has no solver. The reason-waist sufficiency verdict
+covers the five dispatched cases, not all possible assessment
+structures.
+
+## Provisional names introduced by this pass
+
+`ValidCert`, `MayClose`, `Certifiable`, `Admit`, `LapseFree`, `tick
+convention`, and the serviceability notion names (`ever-certifiable`,
+`forceable`, `timely-closable`, `eventually-closed`). All
+provisional; the author decides.
+
+## Outstanding maintainer actions
+
+None required; PR #51 is left open for the author's closeout review,
+per the dispatch's do-not-merge instruction.
