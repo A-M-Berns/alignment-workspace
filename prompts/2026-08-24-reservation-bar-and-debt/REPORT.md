@@ -272,17 +272,18 @@ squash-merge remnants (24): `admin/cleanup`, `agent/legitimacy-research-findings
    the ground that the round that raised it proposed a specific assignment, so
    R4's "cannot choose between two candidates" does not apply.
 
-3. **The Lean build did not run, and neither did the axiom audit.** The
-   resource guard reported `LOADED` (swap at a 92% high-water mark) and
-   `safe-lake.sh` refused after its full 900-second wait. Running `lake`
-   directly is what the machine-load rule forbids, and the attempt was refused
-   by the permission classifier, correctly. The substitutes: this branch changes
-   no file under `lean/`, so the build status is whatever `main`'s required
-   `lean` job established; the registry checker confirms every registered
-   declaration resolves in the library source; and a separate pass confirmed all
-   twenty-four appear in full in a `#print axioms` line, so each is covered by
-   the audit that will run in CI. A built `lean/.lake` is seeded in the worktree
-   (gitignored) if the maintainer wants to run it locally.
+3. **The Lean build did not run locally; it ran in CI.** The resource guard
+   reported `LOADED` (swap at a 92% high-water mark) and `safe-lake.sh` refused
+   after its full 900-second wait. Running `lake` directly is what the
+   machine-load rule forbids, and the attempt was refused by the permission
+   classifier, correctly. CI ran it instead: the `lean` job on pull request #52
+   built and audited green in 4m38s, and the scope decision this round landed is
+   what sent it to build — `.github/workflows/ci.yml` reaches the gate. Three
+   further checks stand behind it: this branch changes no file under `lean/`; the
+   registry checker confirms every registered declaration resolves in the library
+   source; and a separate pass confirmed all twenty-four appear in full in a
+   `#print axioms` line, so each is one the audit re-elaborates. A built
+   `lean/.lake` is seeded in the worktree (gitignored) for a local run.
 
 4. **The Aug-12 standing item about new harness property forms does not
    exist.** R7 asks for it to be retired as a goal; nothing in `PRIORITIES.md`,
@@ -385,7 +386,9 @@ this round emptied it, not because the rules prevented it from growing.
 against a round that disagrees with them, and the first genuine test is a round
 that would rather reserve something than adopt it.
 
-**The Lean build did not run here.** §6.3 states what was checked instead, and
-what was not: no declaration was re-elaborated in this round, and the axiom
-audit's verdict on the twenty-four registered declarations is inherited from
-`main` rather than reproduced.
+**The Lean verdict is CI's, not this executor's.** The build and the axiom audit
+ran on the pull request and are green; no declaration was re-elaborated on this
+machine, and §6.3 says why. What that verdict establishes is that the twenty-four
+registered names resolve and audit to the three allowed axioms — not that any of
+the twenty-four statements is the one the paper should make, which is a reading
+no gate performs.
