@@ -41,17 +41,29 @@ coverage for the relevant burdens to recur.
 
 ## Current status
 
+> **Established — `lean-proved`.** The traderization arc is the line's registered
+> result: Logical Induction generalized from a deductive process to an assessment
+> process, the enforcement position as a legal strategy with its conformance
+> algebra, preservation of the criterion under bounded assessed liability, and —
+> for deduction — the original criterion together with finite-date coherence, from
+> a compiled market that assumes nothing about the deductive process beyond the
+> pinned source's own certificate. The
+> <!--state:workspace:counts.registered_claims-->27<!--/state--> entries in the
+> modern registry each name a Lean declaration and the priority item it answers.
+
 > **Open / unregistered research.** The frozen consolidation is a separate
 > <!--state:workspace:counts.foundation_claims-->180<!--/state-->-claim
 > foundation with its own ledger and status vocabulary. The modern
 > workspace registry does not translate or promote those claims. The current
-> response-learning theorem and dynamics witness are likewise unregistered.
+> response-learning theorem and dynamics witness remain unregistered.
 
 The abstract response-learning theorem is settled at its stated conditional
 interface level. The normative content remains open: there is no satisfactory
 substantive `Due`, no proof of substantive soundness for `Licensed`, no general
 performance theory, and no delivered coverage conclusion. An audit transport
-object for liabilities stated across vocabulary change is also absent.
+object for liabilities stated across vocabulary change is also absent. What the
+registered results establish is force, not legitimacy: nothing yet maps a
+normative record to a region a market can be made to respect.
 
 ## A current research direction: operative force
 

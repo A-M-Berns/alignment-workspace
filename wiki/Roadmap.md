@@ -4,9 +4,12 @@
 
 ## Normativity
 
-- Give a clearer account of the market-maker modification construction.
+A constraint acquires operative force through a trader added to the pinned
+source's own market recursion. That construction supersedes the modified
+market-maker route, and it is stated over the infinite market at every date rather
+than over a finite model.
+
 - Extract the clearest abstract theorems from the finite models.
-- Move toward an infinite construction.
 - Run an end-to-end pipeline round: instantiate the module representation, discharge each module's hypotheses separately, and include negative controls. The maintainer will specify the round later.
 - Develop a repair-language coverage account rich enough to support the interpretation of immanent self-correction.
 - Supply an auditability transport object for burdens stated across vocabulary change.

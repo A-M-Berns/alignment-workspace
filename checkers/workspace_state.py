@@ -152,6 +152,11 @@ def derived_counts(state: dict[str, Any]) -> dict[str, Any]:
         # each source's own ledger. One source today; a second changes this
         # total, and the binding that reads it fails rather than drifts.
         "foundation_claims": sum(f["claim_count"] for f in state["foundations"]),
+        # Active entries in the modern registry, whatever their class. A wiki
+        # page saying how much of a line is registered binds this rather than
+        # counting rows itself, which would make the page a second judge.
+        "registered_claims": sum(1 for c in state["claims"]
+                                 if c.get("status") == "active"),
     }
 
 

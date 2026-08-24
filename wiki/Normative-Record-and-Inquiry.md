@@ -170,12 +170,11 @@ detected at the frozen citation even when a substitute reason stands —
 refusals that fall out of the principles rather than from dedicated
 anti-laundering rules. What a valid certificate establishes is that the act
 was licensed within the current accountable practice, not that the practice
-is apt. The round closes with a provisional freeze of the reason-state
-interface: prosecution by subtraction and by addition and a
-consumer-completeness pass found no missing representational kind, so a new
-primitive now requires a concrete inexpressibility counterexample, and the
-remaining open work is semantics, authorization, and policy above the
-substrate.
+is apt. The reason-state interface is a living note under a freeze: prosecution
+by subtraction and by addition and a consumer-completeness pass found no missing
+representational kind, so a new primitive now requires a concrete
+inexpressibility counterexample, and the remaining open work is semantics,
+authorization, and policy above the substrate.
 
 The human-facing picture of the frozen architecture is three books. The
 **notebook** is the reason ledger: it remembers particular reasons — who

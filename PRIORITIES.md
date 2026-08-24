@@ -502,6 +502,12 @@ context is `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, who
 `THEOREM_MAP.md` says which of its results are kernel-checked, which are derived
 from source lemmas taken as hypotheses, and which are single witnesses.
 
+Items 47–51 were filed by `prompts/2026-08-24-reservation-bar-and-debt/` within its
+dispatched scope, as the demand the arc's registered claims answer. Four of the five
+are marked answered on filing: a kernel-checked headline registers against a filed
+item, and the item is where *what is worth proving* was decided, so it is filed with
+the answer rather than before it.
+
 ### 39. Does normative statics produce a credal constraint, or only a price demand? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -810,6 +816,139 @@ presentability of that baseline.
 *Why it matters:* it prices the deduction special case, which is the round's
 evidence that the abstraction is more than a name.
 
+### 47. Logical Induction over an assessment process — **[substantial]** — *answered by the traderized-enforcement round*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered.** An **assessment process** is a family `L_t` of propositionally
+consistent worlds carrying, for each date and each finite sentence set, a finite
+sound-and-complete list of the payout tables its worlds realise, with
+support-local temporal nesting. `Workspace.Normativity.Contrib.AssessmentProcess`
+and `.AssessmentFirm` substitute it for `PC(D_t)` inside the pinned dependency's
+own `Budgeter` and `TradingFirm`, and prove the analogues of `lem:budgeter` 1–3
+and `lem:tfdom` against the dependency's real `Strategy`, `Trader`, `EF`,
+`PCWorld` and `MarketMaker`. The registered declarations are
+`BudgeterAt_value_eq_of_safe`, `budgetedTrader_netWorth_floor`,
+`exists_budgetedTrader_exploits`, `AssessmentFirm.trading_firm_dominance` and
+`AssessmentFirm.no_efficient_trader_exploits`.
+
+The item as it would have been filed: the construction of `arXiv:1609.03543` is
+stated over a deductive process, but what it consumes is the evolving family of
+plausible worlds, which enters at exactly two places — the exploitation criterion
+and `Budgeter`. Whether the criterion survives replacing that family by an
+arbitrary one is the question the whole generalization rests on.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`, with an
+inhabitation witness.
+*Acceptance check:* the Lean gate is green and the axiom audit is clean.
+*Context:* `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md` §B,
+Theorem 1; `.../2026-08-16-traderized-enforcement/THEOREM_MAP.md`, the live-world
+lift.
+*Three strengthenings the answer carries*, each stated because the obvious form
+of the theorem does not have them: nonemptiness of `L_t` is not a hypothesis, the
+scaling infimum over an empty plausible set being `1`; global nesting is not one
+either, only its support-local shadow, and the two coincide exactly for families
+determined by their finite restrictions; and effectiveness of the restriction
+lists is unused by the algebra. `allTrueLive_not_deductive` shows the
+generalization is proper.
+
+### 48. The modified market as a computable belief sequence — **[substantial]** — *answered by the projection arc*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered.** The traderized construction's criterion theorems took
+`ComputableMarket` as a hypothesis, exactly as the pinned source takes it for its
+own aggregate, and the missing piece was the first-order erasure that
+`Construction/LIACompiler.lean` performs upstream in some 7300 lines. It is now
+constructed rather than assumed, through an additive upstream public section and
+a downstream compiler that states and proves its own recurrence. The registered
+declarations are
+`EnforcedCompiler.ProjectionSchedule.end_to_end_effective`,
+`EffectiveRepresentation.end_to_end_of_constraints_effective` and
+`DeductiveEffective.deductive_end_to_end`, the last of which assumes nothing
+about the deductive process beyond the source's own certificate.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and no
+headline declaration carries a supplied market, region or representation.
+*Context:* `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md` §C, debt
+2; `.../2026-08-18-projection-enforcement/FINAL_FORMALIZATION_STATUS.md`.
+*What the answer does not buy:* efficiency. The generator is doubly exponential
+in the fragment dimension, and the arc says so rather than omitting it.
+
+### 49. A kernel proof of `DistanceComplete` for the exact dual-distance family — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The exactness half of intrinsic conformance: from conformance on the exact
+dual-distance rows, produce an admissible mixture within `δ`. This is convex
+duality for a finite rational polytope — equivalently a finite minimax theorem.
+Mathlib carries neither a von Neumann minimax theorem nor a convenient
+`ℓ^∞`/`ℓ¹` separation over `Fin d → ℝ`, so the work is either proving the duality
+directly through `geometric_hahn_banach_point_closed` — which needs
+`f x = Σ_i c_i x_i` from the finite basis, `sup_{‖y‖_∞ ≤ 1}⟪c,y⟫ = ‖c‖₁`, and
+closedness of `K + δ'B_∞` — or proving a finite minimax theorem and specializing.
+
+The interface is already in place and cannot be met vacuously:
+`CoherenceModulus.DistanceComplete`, `gap_le_of_distanceComplete`, and the
+composition `IntrinsicCoherence.exists_credence_of_contract` waiting on it. The
+statement is currently `derived` plus exhaustive verification over stated
+rational grids in `tests/test_coherence.py`, against an independently computed
+distance.
+
+*Deliverable shape:* `lean-proved`, discharging the `DistanceComplete` hypothesis
+of `exists_credence_of_contract` at the exact dual-distance family.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and the
+composition typechecks with no `DistanceComplete` argument supplied by the
+caller.
+*Context:* `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md` §C, debt
+1; `.../2026-08-16-traderized-enforcement/PROOF_CLOSURE.md` §V.
+*Why it is [substantial] rather than [open]:* the statement is known, the route is
+named twice over, and the obstruction is Mathlib coverage rather than
+mathematics.
+
+### 50. The piecewise-affine facts the projection compiler cites — **[substantial]** — *answered by the max–min round*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered for the max–min half.** `ProjectionCompiler.lean` cited two classical
+facts. The second — that a piecewise affine function on a nonempty convex set is
+a max of mins of its affine components — is Ovchinnikov's Theorem 4.1
+(Beiträge zur Algebra und Geometrie 43 (2002) 297–302), now kernel-checked in
+both directions with an inhabitation witness. The registered declarations are
+`MaxMinRepresentation.exists_maxMin_representation` and
+`isPiecewiseAffineOn_maxMin`. The first fact — that Euclidean projection onto a
+polyhedron is piecewise affine — is established by
+`PolyhedralCoverage.isPiecewiseAffineOn_proj`, which establishes a **cover**
+only: not disjoint interiors, not normal cones, not full-dimensionality, which is
+what `IsPiecewiseAffineOn` asks and no more.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`, with an
+inhabitation witness.
+*Acceptance check:* the Lean gate is green and the axiom audit is clean.
+*Context:* `.../2026-08-18-maxmin-representation/README.md`, which carries the
+errata against the source's Definition 2.1 and its `H ≠ ∅` claim.
+*What the answer does not establish:* that `IsPiecewiseAffineOn` is equivalent to
+the source's Definition 2.1. The implication that matters holds by inspection of
+the two definitions and is not formalized; the definition used here is weaker in
+three stated respects.
+
+### 51. The deductive coherence region as a computable rational vertex list — **[substantial]** — *answered by the deductive-region round*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered.** The day-`n` coherence region of a deductive stage, restricted to a
+finite priced fragment, is the convex hull of a computable finite list of
+rational `{0,1}` vertices, sound and complete about the plausible worlds, with
+the exact satisfiability hypothesis for nonemptiness. The registered declarations
+are `DeductiveRegion.admissiblePatterns_sound`, `admissiblePatterns_complete`,
+`admissiblePatterns_ne_nil_iff` and `deductiveRegion_eq_convexHull`. The
+enumerator is a computable `def` whose worked instances are proved by
+`decide +kernel`.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and the
+nonemptiness hypothesis is shown exact rather than merely sufficient.
+*Context:* `prompts/2026-08-19-deductive-region/REPORT.md`.
+*Relation to item 42:* this is the vertex set item 42's exact baseline is computed
+from, and it answers nothing item 42 asks. The complexity question is untouched
+and the enumerator is `2^k` in the atoms the stage and fragment mention.
+
 ---
 
 ## Deference line
@@ -880,6 +1019,30 @@ severity ranking.
 *A solution ships:* restated theorems whose hypotheses are strictly weaker than
 their conclusions, with the gap displayed — or a demonstration that the squeeze
 is unavoidable, which is itself a result.
+
+### 52. Import the Cartesian-frames definitions and delete the mirror — **[entry]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+`lean/Workspace/Deference/Contrib/CartesianFrameBridge.lean` mirrors about two
+hundred lines of the upstream `CartesianFrames/` library, because the round that
+needed it was dispatched while that library was on an unmerged upstream branch
+and the pin could not reach it. The pin is now `c0d885bf`, a commit on the
+upstream default branch that carries `CartesianFrames/`, so the mirror is a
+second definition of objects the trust chain already supplies.
+
+The item is to import the authoritative definitions, delete the mirror, and check
+that every result the bridge states still holds against them — which puts inside
+the `lean` gate the cross-check that round could only run by hand, and is the
+concrete value of doing it.
+
+*Deliverable shape:* the existing declarations, unchanged in statement, over the
+upstream types.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and
+`CartesianFrameBridge.lean` defines no frame type of its own.
+*Context:* `prompts/2026-08-12-cartesian-frames/` and its `artifacts/`, which
+carry the hand-run cross-check and its re-verification command.
+*Why it is [entry]:* no new mathematics. The round that wrote the mirror already
+compiled every result a second time against the authoritative definitions.
 
 ---
 
