@@ -328,6 +328,17 @@ squash-merge remnants (24): `admin/cleanup`, `agent/legitimacy-research-findings
     a one-line ignore rule with no null-input case, which is not *contained* as
     R10 defines it, so the entry stays filed rather than half-taken.
 
+11. **The trailer check shipped matching nothing, and was fixed before the
+    pull request was reviewed.** Its body-declaration pattern was anchored to
+    the start of a line; the pull-request template's dispatched-round option puts
+    `Model:` on a continuation line after `and`, so the check would have skipped
+    the very pull request that introduced it and reported green. Found by running
+    the gate against the actual body rather than against its own fixtures — which
+    is the failure mode `AGENTS.md`'s null-input section says this repository has
+    already shipped twice. The pattern now finds the label anywhere on a line and
+    excludes a backticked mention, so prose about the gate is not read as a
+    declaration, and two self-test cases pin both directions.
+
 ## 7. What this does not establish
 
 **Recording a dependency pays no debt.** `rests_on` says the
