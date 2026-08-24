@@ -1,9 +1,7 @@
 # Decisions
 
 Dated decision ledger. Settled decisions are recorded here and are not
-re-litigated. Anything awaiting the author is a stub in the section below, which
-is the single queue: a round that reserves something appends a line there rather
-than leaving it in its own report.
+re-litigated. What is still the maintainer's to decide is the queue below.
 
 **Settled entries are append-only in substance.** Identifiers within them — a
 renamed path, file, or namespace — are updated in place so the record keeps
@@ -25,404 +23,293 @@ applies to `PROVENANCE.md`: new rows go at the end of the table they belong to.
 
 **The single queue.** Everything reserved to the maintainer, anywhere in the
 repository, is listed here — a round that reserves something appends a line
-rather than leaving it in its own report, per `AGENTS.md` §10. Each carries what
-deciding it costs now, so it can be answered without reconstructing the context.
-An entry leaves when the decision lands as a dated entry below.
+rather than leaving it in its own report, per `AGENTS.md` §10. An entry leaves
+when the decision lands as a dated entry below.
 
-**It should normally be short.** If it grows long, either rounds are reserving
-what they could decide, or something structural is generating decisions and
-belongs in `PRIORITIES.md` under *Workspace friction*.
+**An entry names what the decision turns on**, in one line: the taste, the idea
+nobody has yet, or the external knowledge the round lacks and the maintainer has.
+An entry without that line is a recommendation the round declined to adopt, and
+is rejected at review — the round adopts it instead, as a dated entry marked
+agent-decided and reversible.
 
-- **Merge PR #51 (certified interactive service).** The round's
-  closeout verdict is `READY-TO-MERGE`
-  (`projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service/CLOSEOUT.md`);
-  merging was reserved to the author by all three dispatches. *Cost of
-  deciding now:* low — a merge click, carrying the PR body's Model
-  attribution into the squash message. *Cost of not deciding:* the
-  inquiry-service interface later rounds build against stays on an
-  unmerged branch.
+**A merge is never an entry.** Merging is a fact about a pull request: a dispatch
+either leaves auto-merge on or says on the pull request that the merge is the
+maintainer's.
 
-- **Who owns the enforcement outflow account.** The safety theorem needs only
-  that total capital be finite; it is indifferent between a **source-owned**
-  account, where a book budgets the cost of its own endorsements and an
-  endorsement that persistently outruns the record eventually loses operative
-  force, and a **market-owned** allowance, where the substrate grants every
-  privileged force channel a fixed finite allotment regardless of authorship. The
-  first makes safety a form of answerability; the second makes it architectural.
-  *Cost of deciding now:* low — one paragraph in the clause, no code change.
-  *Cost of not deciding:* the constitutional prose cannot say who breaches when
-  the account is exhausted. `.../NORMATIVE_SAFETY.md` §12.
+**A ruling taken in conversation is in force only once it is a dated entry
+below.** The next round dispatched from that conversation lands it as its first
+commit.
 
-- **Whether the outflow clause broadens `P2`, sits beside it, or both sit under a
-  shared principle.** The quantifier structure matches `P2` exactly — worldwise,
-  cumulative, uniform in horizon — and the bearer, holdings and means do not: `P2`
-  bounds the engine's downside on book holdings through refusal and bounded
-  participant budgets, and the enforcement trader is exempt from both. The round
-  recommends a **sibling clause** under the shared principle *every privileged
-  channel that can impose losses unavailable to ordinary bounded participants
-  carries a finite cumulative downside account*, and reserves whether to state
-  that principle. *Cost of deciding now:* low. *Cost of not deciding:* two clauses
-  that look like restatements of each other. `.../NORMATIVE_SAFETY.md` §12.
+- **Where the answerability layer's code lives.** The theory is authoritative in
+  `projects/normativity/consolidation-aug9/` and the only implementation is in
+  `projects/normativity/forward/`, whose own `FORWARD.md` says the tree may be
+  deleted wholesale at any time. Three options, their costs, and the round that
+  has already paid one of them: `PRIORITIES.md`, *Workspace friction*.
+  *Turns on:* whether the program means to keep building on that layer.
+  Promoting the code to a stable path earns its maintenance only if it will be
+  imported again, and nothing in the repository says whether it will be.
 
-- **The exhaustion behaviour.** Quarantine, tolerance relaxation, refusal at
-  admission and tolling are all implementable and are not equivalent; tolling
-  interacts with answerability deadlines and is the one the round cannot settle
-  alone. Weakening the declared core minimum is *not* an option — the worst
-  deficit has no `θ` in it. *Cost of deciding now:* low. *Cost of not deciding:*
-  `src/outflow.py` exposes four policies and the architecture endorses none.
+- **Whether Q3 graduates, and what succeeds item 28.** Two candidate objects for
+  what foreclosure loses — Cartesian frames with `Commit` and `External^{/}`
+  separated by `image`, and the source corpus's family of sealed deliberations
+  indexed by the day the advisor's channel is cut — fail on complementary axes,
+  and nothing shows that no object supplying both exists. Read §§4, 7 and 9 of
+  `projects/deference/notes/CARTESIAN_FRAMES_DEFERENCE_BRIDGE.md` and its
+  red-team report. *Turns on:* whether the missing idea has arrived. A round can
+  exhibit candidates and cannot say they are enough, which is the judgment
+  *Where ingenuity is the bottleneck* exists to hold.
 
-- **Whether the account may be replenished.** Unbounded outside replenishment
-  destroys the guarantee outright and is exactly the failure `NL-SI-P1` names.
-  The options are: never; bounded globally; or only on a new constitutional era
-  with its own finite allocation. *Cost of deciding now:* low. *Cost of not
-  deciding:* an implementer may add replenishment as an obvious convenience and
-  silently void the safety theorem. This is the highest-risk item in the queue.
-
-- **Choose vocabulary for “admission.”** The normativity material uses the same
-  family for at least three objects: the date a docket item enters the record,
-  a certificate verdict permitting a lawful edit, and membership in a
-  state-indexed admissible response set. *Doing it* is choosing which sense keeps
-  “admission” and naming the others after reading
-  `projects/normativity/rounds/2026-08-11-phi-regret-prep/PHI_REGRET_OBJECTIVE.md`,
-  `src/certificates.py`, and the legitimacy bridge's `src/collapse.py`.
-  *Waiting* leaves the wiki Glossary collision explicit and risks readers
-  confusing record entry with normative certification.
-
-- **Read `checkers/`.** Deferred once, deliberately, and kept here because
-  deferring it does not make it go away: three files and three docstrings are the
-  entire meaning of every Python claim this repository will make, and no
-  maintainer has read them. *Doing it* is one sitting — the harness is stdlib-only
-  and small on purpose, which is what makes it reviewable rather than what makes
-  it right. *Waiting* costs nothing today and leaves every `witness-checked` and
-  `enumeration-verified` claim resting on unread code. Nothing is blocked; the
-  claims are honestly labelled either way.
-
-- **Rule on the Stage V review surface.** Three linked candidate rulings:
-  accept item 28's exact static-view factorization theorem as the conditional
-  representation boundary, without adopting unrestricted jurisdiction invisibility;
-  mark item 7 partially rather than completely closed, with cross-process
-  emission/calibration as its residue; and retain Q3 as ingenuity-level model
-  debt. *Doing it* requires reading the statements and §§2–9 of
-  `projects/deference/notes/LI_NATIVE_DEFERENCE.md`. *Waiting* blocks no proof and
-  leaves the current documents explicitly `ci-only` and unadopted.
-
-- **Decide where a second theorem-facing interface lives in structured state.**
-  `state/theorem_interface.json` holds one interface object and
-  `checkers/workspace_state.py` wraps it as a one-element list, so the force
-  interface is absent from the state emission while its living note sits in
-  `projects/normativity/notes/`. The round declined both available workarounds —
-  editing a trust-chain checker, and overloading `normativity.learning.current`
-  with an unrelated object, which would put two meanings of "the current
-  Normativity interface" in one record. *Doing it* is either a small emitter edit
-  or a ruling that the file is reserved for the response-learning theorem, said in
-  `RESEARCH_STATE.md`. *Waiting* leaves a reader orienting from the state emission
-  unable to find the force interface at all. Filed as `PRIORITIES.md` F10.
-
-- **Confirm the traderized force interface as a living note.** The round
-  installed `projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md` — the force
-  layer's input type, its conformance theorem, the liability obligation it emits
-  rather than discharges, and its explicit non-responsibilities. It is installed
-  because the force results survived four passes of semantic revision without a
-  retraction, while every withdrawn claim in the round was semantic. *Doing it* is
-  reading one short note and deciding whether a research round may leave a living
-  specification behind at all. *Waiting* leaves it as an unadopted note that a
-  later round may or may not treat as current.
-
-- **Rule on the two-channel architecture, the Coverage–Liability names, and
-  where traderized force is published.** Three linked rulings from the
-  traderized-enforcement round's reconciliation pass. *(a)* Whether
-  `what counts as admissible ≠ how finite prices are pushed toward admissibility`
-  is adopted as the generalized paper's architecture — the round recommends it and
-  gives three independent obstructions to collapsing the two. *(b)* Whether
-  Coverage–Liability stays the terminology now that Coverage's job is known to be
-  non-vacuity of the criterion rather than support for the non-exploitation proof,
-  which is a different role from the one the name was chosen for. *(c)* Whether
-  traderized force is a section of that paper or a separately consumable module —
-  the round recommends one paper with force as a liftable module, on theorem
-  dependency. *Doing it* is one reading of that round's `PAPER_RECONCILIATION.md`.
-  *Waiting* leaves the paper spine's blocking step, item 44, without a settled
-  frame to be solved inside.
-
-- **Rule on whether `P1` should name an obligation rather than a mechanism.**
-  The settlement interface's enforcement clause certifies a core minimum *of an
-  engine*. The traderized-enforcement round compiles the same condition from
-  `NL-SI-A2`'s admissible-reference polytope into a trader, and proposes that the
-  clause instead require a declared conformance of whatever signs a force
-  contract. *Doing it* is deciding whether the clause names a mechanism or an
-  obligation, after reading that round's `CORE_CONDITION.md` §3 — the frozen
-  consolidation is untouched either way. *Waiting* leaves the round's `P1` result
-  readable and unadopted, and leaves two mechanisms with no common statement to be
-  compared against.
-
-- **Rule on fourteen provisional names from the traderized-enforcement round.**
-  `enforcement trader`, `enforcement intensity`, `enforcement liability`,
-  `violation-proportional position`, `interior-anchored position`, `exclusion
-  depth`, `world-inclusive region`, `support-function presentation`,
-  `constraint-to-trade compiler`, `market-maker contract`, `enforcement
-  inequality`, `force contract`, `force declaration`, `priceable endorsement`.
-  They are deliberately absent from
-  `state/vocabulary.json`, whose generated sheet is headed *canonical*. *Doing it*
-  is one reading of that round's `MODEL.md` §§4–6, after which the survivors enter
-  the sheet. *Waiting* leaves nine names live in one round's prose and nowhere
-  else, which is cheap now and expensive once a second round uses them.
-
-- **Decide whether `world-inclusive region` and `coverage(Due)` are related.**
-  The traderized-enforcement round asserts they are not — different spaces,
-  different quantifiers — and exhibits no map, so nothing was written into
-  `state/theorem_interface.json`. *Doing it* is reading that round's
-  `INTEGRATION_MAP.md` §3 against `COVERAGE_INTERFACE.md`. *Waiting* risks the two
-  being silently identified by a later round, which is the specific collision the
-  dispatch that produced them warned about.
-
-- **Decide whether the traderized-enforcement inequalities are worth
-  registering.** Four kernel-checked, axiom-clean results in
-  `Workspace.Normativity.Contrib.TraderizedEnforcement`, none answering a filed
-  item, so none registered. *Doing it* is filing an item they answer, or ruling
-  that they stay unregistered because what they state is an inequality about an
-  abstract pairing whose connection to Logical Induction is a reading rather than
-  a proof. *Waiting* costs nothing; the file is green and honestly labelled either
-  way.
-
-- **Confirm the deck's path-gate entry.** `projects/normativity/deck-2026-08-10/**`
-  was added to the specification enumeration in `tests/path_gate.py` by the
-  φ-regret preparation round, so that a contributor pull request touching the
-  author's own talk fails the gate. This is a trust-chain edit the round's
-  dispatch did not scope, and it is flagged rather than assumed. *Doing it* is
-  reading one line and one self-test case. *Waiting* leaves the entry in force;
-  reverting it makes the deck contributor-editable, which is the state the intake
-  was meant to avoid.
-
-- **Rule on the deck's review status.** `PROVENANCE.md` now carries the first
-  `maintainer-reviewed` research row in the normativity line, and it is qualified:
-  the deck marks its own frames, 22 as the author's language and two as still
-  model-drafted, so the row points at those marks rather than asserting a flat
-  label. Confirm that the qualified review status is appropriate; it records
-  review/provenance and does not adopt the deck's research content. *Waiting*
-  costs nothing; the marks are on the slides either way.
-
-- **Decide F4 — the answerability layer's code.** `PRIORITIES.md`, *Workspace
-  friction*. The theory is in the authoritative consolidation and the only
-  implementation is in a tree that declares itself deletable, so rounds building
-  on it must adapt rather than import. Three options are stated there; *doing it*
-  is choosing one. *Waiting* costs one reimplementation per round that touches the
-  layer, and the φ-regret preparation round has already paid it once.
-
-- **Rule on pinning the Cartesian Frames formalization.** `lean/lakefile.toml`
-  pins Formalized-Agent-Foundations at `1fffea44`, which predates
-  `CartesianFrames/`. That library was on an unmerged branch when the
-  Cartesian-frames round was dispatched, so the round mirrored the fragment it
-  needed and cross-checked every result against the authoritative definitions
-  rather than take a trust-chain edit. **It reached `main` during the round**, at
-  `e13dc5bd0117486b1947fbb5643045e14743e98d`, so the objection that made repinning
-  unattractive is gone. *Doing it* is repinning to a `main` commit and deleting the
-  mirror, which would put the cross-check's results inside the `lean` gate.
-  *Waiting* costs the mirror's maintenance and nothing else — both Lean surfaces
-  are green today.
-
-- **Rule on graduating Q3, and on the successor to item 28.** `PRIORITIES.md` Q3
-  asks how foreclosure is expressible and says what is missing is the object. The
-  Cartesian-frames round supplies a candidate with a Lean witness — `Commit` with
-  proper additive subagency for restriction, `External^{/}` with multiplicative
-  subagency for transfer, separated by `image`. It is a candidate for **what is
-  lost**, not for either hole Q3 names: no operation reassigns anything at a later
-  index, and the interface is still one index deep. **A second candidate has since
-  arrived from the line's source corpus** — a family of sealed deliberations indexed
-  by the day the advisor's channel is cut, which supplies the time coordinate the
-  frames could not and supplies no authorization relation at all. The two candidates
-  therefore fail on complementary axes, and as each is currently formulated neither
-  contains what the other supplies — though no combined object has been built and
-  nothing shows none exists. That sharpens what graduation would require (temporal
-  depth *and* authorization or capability structure, at once) rather than settling
-  it; the ruling is still the maintainers'. Two linked rulings: whether
-  that is enough for Q3 to graduate, and whether to file the round's proposed next
-  target, restating the Stage-V factorization theorem over a signature carrying a
-  frame and the choice actually taken in place of a `jurisdiction` field — which is
-  a re-instantiation with a better inhabitation witness, not a new theorem. *Doing
-  it* requires reading §§4, 7 and 9 of
-  `projects/deference/notes/CARTESIAN_FRAMES_DEFERENCE_BRIDGE.md` and its red-team
-  report. *Waiting* blocks the successor round and leaves item 28's answer resting
-  on a worked case whose hidden payload no formula reads.
-
-- **Rule on whether the source line's current frontier belongs in this line's
-  ledger.** `CORRIGIBILITY_PAPER_LEDGER.md` records what *this repository* holds,
-  and the corpus-reconciliation round declined to describe the source line's
-  corrected faithful-acceleration results there on that ground — they are recorded
-  only in the round's own reconciliation. The counter-case is that a reader of the
-  ledger's Movement I now has no way to learn that the source line's own statement
-  of that movement has moved on. *Doing it* is choosing between a one-line pointer
-  from Movement I to the corrected statement, a described-but-unadopted subsection,
-  and leaving it as it is. *Waiting* costs a reader of the ledger the knowledge that
-  a fuller account exists one directory away; it blocks nothing.
-
-- **Rule on whether endpoint-preservation is a target this program wants.** The
-  source corpus proposes that an advisor's influence is legitimate when it changes
-  how fast the principal's deliberation converges and not where it converges to.
-  It is conjecture-grade by its author's own declaration, it is a claim about belief
-  rather than authority, and this line's results say why certification can reach it
-  even though certification cannot reach jurisdiction. So it is a coherent adjacent
-  target rather than a component of the current one. *Doing it* is reading
-  `projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md` §§2, 6–7
-  and §§2–4 of
-  `projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`,
-  then saying whether this program pursues it, treats it as the source line's
-  business, or holds it until the foreclosure object exists. **This is *what is
-  worth proving*, which no round may decide.** *Waiting* costs nothing today and
-  leaves Q3 carrying a candidate the program has not said it wants.
-
-- **Decide the counterfactual-legitimacy vocabulary.** The round at
-  `projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy/`
-  introduces reason-mediated non-capture, protected access, the licensed-reason
-  trace, `ProtectedNormativeProjection` and its `identification` coordinate, the
-  reason and residual channels, and the variation class — all marked provisional
-  and listed in the round's report §9. *Doing it* is one sitting over
-  `COUNTERFACTUAL_INTERFACE.md` and `MODEL.md`. *Waiting* costs little now and
-  more once a second round builds on the terms.
-
-- **Decide whether the counterfactual-legitimacy round's open questions become
-  ledger items.** Five, in that round's `THEOREM_MAP.md` §6; the load-bearing one
-  is whether a scorekeeping practice can produce a `Due` whose extension an
-  advisor cannot select within, which is what the round's second clause needs and
-  does not derive. The round filed none: it was not dispatched to file, and
-  nothing in it enters the registry. *Doing it* is reading §6 and choosing which,
-  if any, to file. *Waiting* leaves the questions recorded only inside a
-  completed round.
-
-- **Whether to file the two named formalization obligations the proof-closing pass
-  left.** Both are `blocked` rather than open questions: the first-order erasure of
-  `MarketMaker(TF^L + E)`, which the pinned dependency does for its own aggregate in
-  `Construction/LIACompiler.lean`, and the kernel proof of `DistanceComplete` — convex
-  duality for a finite rational polytope, for which Mathlib carries neither a finite
-  minimax theorem nor a usable sup-norm separation over `Fin d → ℝ`. Each is a
-  self-contained round specification. *Cost of deciding now:* low — two
-  `PRIORITIES.md` items, or a decision that neither is worth the transcription.
-  *Cost of not deciding:* the two conditionals in
-  `.../2026-08-16-traderized-enforcement/THEOREM_MAP.md` stay conditional with no
-  queue entry pointing at them, which is how a `blocked` item becomes a permanent
-  one.
-
-- **Name the assessment-process vocabulary.** The proof-closing pass introduced
-  provisional names for objects that will be hard to rename once cited:
-  `Assessment` and its `tables`/`nested` fields, `ofDeductiveProcess`,
-  `FiniteDetermined`, `Presentation` and `enforcementStrategy`, `DistanceComplete`,
-  and the phrase **exact dual-distance presentation** for the finite row family whose
-  largest violation is the sup-norm distance. *Doing it* is reading
-  `.../PROOF_CLOSURE.md` §§II and V and choosing. *Waiting* costs nothing today and
-  leaves nine Lean files carrying names marked provisional under `AGENTS.md` §6.
-
-- **Whether the per-commit `Model:` trailer is enforced.** `AGENTS.md`'s provenance
-  section requires attribution at both levels, per commit as a trailer and once in the
-  pull-request body, and says the two are not redundant. The `dco` job checks the
-  pull-request section only. The `traderized-enforcement` branch's earlier commits
-  carry `Signed-off-by` and no `Model:` trailer; the proof-closing pass's commits carry
-  both. *Cost of deciding now:* low — either add the trailer check to `tests/dco.py`,
-  or drop the per-commit requirement from `AGENTS.md` and keep the pull-request body as
-  the single record. *Cost of not deciding:* a stated requirement that nothing checks
-  and that history does not uniformly satisfy.
-
-- **Rule on the provisional names from the projection round.** `projection enforcement
-  trader`, `projection position`, `intrinsic Euclidean conformance`, `per-date
-  admission`, `cube extension of the market-maker contract`, **`market resistance`** for
-  `ρ_n = ε_n + A_n`, and **`calibrated intensity`** for `λ_n = ρ_n/δ_n²`; plus the Lean
-  names `IsNearestPoint`, `Realizes`, `Fragment`, `cumValue`, `FragmentLocal`, `extend`,
-  `EffectiveEnforcer`, `ProjectionSchedule`, `FinAffine`. They are deliberately absent
-  from `state/vocabulary.json`. *Doing it* is reading
-  `.../2026-08-18-projection-enforcement/THEOREM_MAP.md`. *Waiting* costs nothing today
-  and leaves seven Lean files carrying names marked provisional under `AGENTS.md` §6.
-
-- **Merge the upstream pull request, or rule against it.**
-  `A-M-Berns/Formalized-Agent-Foundations` #2 adds a public section to `LIACompiler.lean`
-  re-exporting eleven existing private lemmas; it is branched from the old pin, so the
-  dependency delta is exactly that. `lean/lakefile.toml` is already bumped to
-  `d89817bc15d23c663d0520e3a854d6d02374074d` and CI builds the whole tree against it in
-  3m17s of a 25-minute budget. *Doing it* is merging #2, after which the pin can move to a
-  descendant of `main` at leisure. *Waiting* leaves this repository pinned to a branch
-  rather than to a merged commit, which is the only irregularity in the arrangement — the
-  code itself is already load-bearing here.
-
-- **Decide whether the projection results are worth registering as claims.** Ninety-nine
-  kernel-checked, axiom-clean results across seven files, plus twelve exact-arithmetic
-  Python tests, none answering a filed `PRIORITIES.md` item, so none registered — the
-  same posture as the traderized-enforcement inequalities above. *Doing it* is filing
-  the item they answer. *Waiting* costs nothing; the files are green and the theorem
-  map is honest about the one external hypothesis.
-
-- **Whether the deductive coherence region's vertex construction is registered, and
-  against which item.** `lean/Workspace/Normativity/Contrib/DeductiveRegion.lean`
-  proves the day-`n` region of a stage is a computable finite rational vertex list,
-  sound and complete about worlds, with the exact satisfiability hypothesis for
-  nonemptiness. It is `lean-proved` material sitting in a contribution namespace and
-  registered nowhere, because nothing enters the registry unasked. Item 42 is
-  adjacent but is *not* answered by it — that item asks for a polynomially
-  presentable row family, and this supplies the vertex set its baseline is computed
-  from. *Cost of deciding now:* low — either file an item and register the
-  declarations, or leave it as round evidence. *Cost of not deciding:* a kernel-checked
-  result that downstream work cannot cite as a registered claim.
-  `projects/normativity/rounds/2026-08-19-deductive-region/README.md`.
-
-- **Names for the deductive region's constructions.** Provisional under standard 6:
-  `admissiblePatterns`, `deductiveRegion`, `deductiveVertices`, `regionContext`,
-  `contextList`, `fragmentAtoms`, `tableOf`, `restrictTo`, `vertex`, `extend`. The
-  one worth a ruling is `admissiblePatterns` — the objects are the region's vertices,
-  and "pattern" was chosen to keep the `{0,1}` reading visible at the fragment.
-  *Cost of deciding now:* low, nothing downstream cites them yet. *Cost of not
-  deciding:* they harden as soon as something does.
-
-- **Whether the max–min development is promoted, and how it reaches the projection
-  compiler.** `lean/Workspace/Normativity/Contrib/MaxMinRepresentation.lean` closes
-  Ovchinnikov's theorem in the kernel, which is the second of the two external facts
-  `ProjectionCompiler.lean` cites on the `projection-enforcement` branch. Three linked
-  items: whether the names (`IsPiecewiseAffineOn`, `exists_maxMin_representation`,
-  `exists_le_and_le`, `exists_le_of_le_of_forall_selects`, the namespace) are
-  confirmed or renamed; whether the result is promoted to a statement of record with a
-  registered claim, which needs a `PRIORITIES.md` item since nothing enters the
-  registry unasked; and who writes the adapter from `Finset.sup'`/`Finset.inf'` to
-  `ProjectionCompiler.Rep`'s nested lists, since that edit belongs to the projection
-  branch, which this round was scoped out of. *Cost of deciding now:* low — a naming
-  ruling plus a sequencing call between two open pull requests. *Cost of not deciding:*
-  the projection compiler keeps carrying as a hypothesis something that is proved two
-  files away, and the theorem sits unregistered in a contribution namespace.
-
-- **Rule on the reason-state/record naming split, and the round's vocabulary.**
-  The reason-representation round's dispatch proposes `𝓡_n` for the *reason
-  state* — the current structure of particular reason occurrences, schemas, and
-  staged applicability — against `N_{≤n}` for the *normative record*, while the
-  wiki writes the record as `Rₙ` throughout. The round did not rename anything;
-  its memo and the wiki carry the distinction in prose with both readings
-  stated. Also provisional: `occurrence`, `schema`, `case view` (`c@n`),
-  `stance`, `contradiction floor`, `applicability-in-source`, `persistence
-  schema`, `applicability frame problem`, `Enabled`, `Reasons`, `Dependents`,
-  `Explain`, `LostBasis`, `Incomp`. *Doing it* is one reading of that round's
-  `MEMO.md` §§13–14. *Waiting* leaves the same letter naming the record on the
-  wiki and the reason state in the dispatch, which a later round may silently
-  identify — the collision the dispatch itself flags.
-
-- **Rule on the transition-certificate vocabulary and the freeze.** The
-  successor round to the reason-state prosecution introduces, all
-  provisional: `transition certificate` with fields
-  `basis`/`license`/`consumed`/`kind`, `authority act` and `scope`,
-  `Conflict`, `joint_conflicts`, `criticizable`, `case_view`, `applied_as`,
-  `ExistedBefore`, `mint_schema_use`, `provenance_manifest`, the checker
-  failure-code vocabulary, the three principle names `strict pre-state
-  citation`, `constitutive immutability`, `answerability continuation`, and
-  the human-facing `notebook / current view / diary` triple. Its
-  continuation also recommends enacting the `FROZEN-PROVISIONALLY` freeze of
-  the reason-state interface in `REASON_STATE_INTERFACE.md` — a maintainer
-  act, not the round's. *Doing it* is one reading of that round's `MEMO.md`
-  §§4–5, 10 and the interface note. *Waiting* costs little until the next
-  round consumes the terms, which any successor dispatch would do
-  immediately.
-
-- **Decide whether the recommended reason-state interface becomes a living
-  note.** The round leaves a concise provisional interface in `MEMO.md` §13:
-  five constructors, two source sorts, five mandatory stateless queries, and
-  the policy-layer boundary. The precedent cut both ways: the traderized force
-  interface was installed as a living note in `projects/normativity/notes/` and
-  is itself still awaiting confirmation above. *Doing it* is reading §13 and
-  either installing the note or ruling that rounds' interfaces stay in their
-  memos until a second round consumes them. *Waiting* costs the next
-  reason-consuming round an orientation pass through a completed round's memo.
+- **Whether endpoint-preservation is a target this program wants.** The source
+  corpus proposes that an advisor's influence is legitimate when it changes how
+  fast the principal's deliberation converges and not where it converges to. It
+  is conjecture-grade by its author's own declaration and is a claim about belief
+  rather than authority, so it is a coherent adjacent target rather than a
+  component of the current one. Read
+  `projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md` §§2,
+  6–7 and §§2–4 of
+  `projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`.
+  *Turns on:* where the program is going — this is *what is worth proving*, which
+  no round decides.
 
 ## Settled
+
+### 2026-08-24 — the reservation bar and epistemic debt
+
+Two defects in the workspace's epistemic machinery, both in the rules rather than
+in anyone's effort. *Awaiting the author* held thirty-seven entries against its
+own "should normally be short", because `AGENTS.md` §10 governed how a reserved
+item is *listed* and nothing governed what may be *reserved*; and the queue also
+held decisions taken in conversation that never landed. Meanwhile epistemic debt
+was accumulating in three shapes: free to pay and unpaid — kernel-checked
+theorems unregistered, a handoff note describing a superseded theorem; untracked
+— rounds consuming earlier `ci-only` results as hypotheses with nothing recording
+the chain; and compounding — residual-blocker lists carried forward inside report
+prose and growing round over round.
+
+Ten rules, taken together. The rationale lives here and the rules live where a
+reader would look for them.
+
+**The reservation bar.** An entry enters the queue only when the round is
+genuinely low-confidence in its own recommendation *and* can name what the
+maintainer has that it lacks: taste, an idea nobody has yet, or external
+knowledge — what a collaborator will accept, what a paper needs, where the
+program is going. The entry says in one line what the decision turns on. An entry
+that cannot say it is a recommendation the round declined to adopt. The retired
+field is instructive: every rejected entry carried *cost of deciding now: low*,
+which was true of all of them and therefore selected nothing. Cheapness is a
+symptom, not a criterion.
+
+**Recommend and adopt.** A round holding a recommendation lands it, marked
+agent-decided and reversible, naming the rejected alternative. The asymmetry that
+makes this safe is *no negative ontologies*: only the live entry survives a
+re-ruling, so reversal costs the maintainer one entry and adoption costs nothing
+if it is wrong. Deferring, by contrast, costs every later round the same
+reconstruction.
+
+**Merge is never a decision.** It is a fact about a pull request, and the
+existing convention — auto-merge on unless a dispatch says otherwise — already
+decides it. A merge in the queue is a queue entry that no reading can retire.
+
+**Naming ships.** Rounds choose names, mark them provisional and list them. The
+queue takes a naming item only when the name is about to propagate into Lean
+identifiers or wiki vocabulary *and* the round genuinely cannot choose between
+two candidates. Naming authority is not weakened; it is exercised as a periodic
+batched **naming audit** instead of one entry per round, because a name-by-name
+queue converts a single afternoon of judgment into thirty interruptions.
+
+**Lean headlines register at merge.** A round shipping a Lean theorem it presents
+as its result files the registry entry in the same pull request, and the merge is
+the registration. "Whether X is worth registering" was never a decision: the
+theorem is kernel-checked either way, and leaving it unregistered means the
+repository holds a result it cannot say it holds. *What is worth proving* stays
+reserved, and is exercised where it already was — in the priority items a
+dispatch grants scope to file.
+
+**Chat rulings land or are not in force.** A ruling made in conversation binds
+nothing until it is a dated entry, and the next round dispatched from that
+conversation lands it as its first commit. Two rulings had been in force in the
+maintainer's head and nowhere else for a week, while the queue still carried the
+questions they answered.
+
+**`test-supported` is the ceiling for finite-model work.** A finite Python model
+carries its round verdict and that class — or `witness-checked` or
+`enumeration-verified` where the house harness actually adjudicates the instance
+or generates the domain — and that is the class vocabulary working rather than a
+defect for a bigger harness to repair. Growing the harness to raise a finite
+model's class would move the judge inside the thing being judged. A finite result
+becomes load-bearing by Lean port, and the dependency view below is how ports get
+prioritized. New property forms stay permitted where a round needs one.
+
+**Closed means a statement of record.** A component is **closed** only when a
+Lean declaration or a checker invocation stands for it and its reopening
+condition, where one exists, is a checkable event. Otherwise it is **open** or a
+**living note**. "Closed provisionally" is retired: it reads as closed in every
+summary and as open in every audit, which is the worst of both.
+
+**Consumption is recorded.** Every round record carries `depends_on` — the rounds
+whose results it takes as hypotheses, not the ones it cites — and the emitter
+derives from it, per round, the transitive set of `ci-only` rounds that round
+rests on. This makes the debt countable. It pays none of it.
+
+**Contained friction is fixed by the round that hits it.** Non-retroactive, one
+gate or one document, with its own null-input case: that fix belongs to the round
+that hit it, recorded as agent-decided. Only friction whose fix would change a
+spec-layer rule waits, and then it waits under the bar above. Reporting-without-
+fixing was right when the concern was rounds redesigning the workspace around
+themselves; the bar now catches that case directly, and the old rule was
+converting ten-line repairs into permanent queue entries.
+
+**What is not decided here.** Nothing about the research. The bar changes who
+decides, not what is true, and every entry the triage below adopts remains
+reversible by a later ruling.
+
+### 2026-08-24 — the queue is triaged: the rulings the rounds recommended
+
+Every adoption below is **agent-decided, reversible** under the bar above, taken
+on the recommending round's own reasoning rather than on this round's independent
+judgment of the mathematics. Each names what it rejects.
+
+**The enforcement outflow account is market-owned.** The substrate grants the
+privileged force channel one finite allowance, and `OutflowAccount.cap` carves
+per-source budgets out of it for sources that want modular answerability. The
+safety theorem needs only that the total be finite; a global account is what
+`src/outflow.py` already implements, and it makes safety architectural rather
+than contingent on who authored a constraint. *Rejected:* a source-owned account
+per book, which makes the guarantee depend on every author's own budgeting.
+
+**The outflow clause is a sibling of `P2`, under a stated shared principle.**
+*Every privileged channel that can impose losses unavailable to ordinary bounded
+participants carries a finite cumulative downside account* — of which `P2` and
+traderized force are two instances with different bearers, holdings and means.
+*Rejected:* broadening `P2`, whose declared means are refusal and bounded
+participant budgets and from both of which the enforcement trader is exempt by
+construction.
+
+**At exhaustion the endorsement is quarantined and its deadline tolled.** Force
+is withheld, the endorsement keeps its normative standing, and an answerability
+deadline does not count a failure the substrate caused — which is the round's own
+reading of what fits the existing architecture. Relaxation stays available as an
+explicit request, because it buys a weaker promise than the source asked for.
+*Rejected:* refusal at admission as the standing behaviour, which makes an
+exhausted account an error rather than a state. Weakening the declared core
+minimum was never an option: the worst deficit has no `θ` in it.
+
+**The account is never replenished.** That is the option the safety theorem is
+proved for, and it is the one an implementer is most likely to relax as an
+obvious convenience — replenishment without limit is exactly the failure
+`NL-SI-P1` names. A new constitutional era gets a new account with its own finite
+allocation and its own bound, not a top-up of the old one. *Rejected:* bounded
+global replenishment, and new-era allocation into the same account, both of which
+leave a caller quoting a bound the account no longer has.
+
+**`P1` names an obligation.** The settlement interface's enforcement clause
+requires a declared conformance of whatever signs a force contract, rather than
+certifying a core minimum of one named engine. The traderized-enforcement round
+compiles the same condition out of `NL-SI-A2`'s admissible-reference polytope
+into a trader, so two mechanisms now meet the clause and a clause naming one of
+them cannot compare them. *Rejected:* the clause naming a mechanism. The frozen
+consolidation is untouched either way.
+
+**The two-channel architecture is adopted**: *what counts as admissible* and *how
+finite prices are pushed toward admissibility* are separate, on the three
+independent obstructions to collapsing them in that round's
+`PAPER_RECONCILIATION.md`. Traderized force is a liftable module of one paper
+rather than a separately consumable artifact, on theorem dependency. Coverage and
+Liability keep their names, marked provisional, and go to the naming audit.
+*Rejected:* one channel, and a separate force paper.
+
+**`world-inclusive region` and `coverage(Due)` are not related.** Different
+spaces, different quantifiers, and no map exhibited. A later round identifying
+them must supply the map first. *Rejected:* leaving the question open, which is
+how the two get silently identified.
+
+**The reason state is `𝓡_n` and the normative record is `N_{≤n}`.** The wiki
+writes the record as `Rₙ`; both senses are live, so the disambiguation is
+required rather than optional. This round is scoped out of wiki content, so the
+page edit is the next round to touch it. *Rejected:* keeping one letter for both,
+which the dispatch that raised it flagged as a collision a later round would
+resolve by identifying them.
+
+**"admission" keeps the docket-intake sense.** It is the oldest use and the one
+the objection grammar reads. The certificate verdict becomes **admissible edit**
+and the state-indexed response set becomes **response class**, both provisional.
+*Rejected:* giving the term to the certificate verdict, which would leave record
+entry needing a new name in the frozen consolidation's own vocabulary.
+
+**The reason-state interface is a living note, frozen provisionally**, at
+`projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/REASON_STATE_INTERFACE.md`,
+and so is the traderized force interface at
+`projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md`. A research round may
+leave a living specification behind. The freeze's reopening condition is the
+round's own and is checkable: a concrete microhistory whose reason-dependency
+structure cannot be expressed through contents, occurrences, record facts or
+derived queries — the artifact, not an intuition. *Rejected:* holding an
+interface in its round's memo until a second round consumes it, which makes the
+second round's orientation pass the price of the first round's caution.
+
+**The Stage V review surface is accepted as it stands.** Item 28's exact
+static-view factorization theorem is the conditional representation boundary,
+without unrestricted jurisdiction invisibility; item 7 is partially closed with
+cross-process emission and calibration as its residue; Q3 stays ingenuity-level
+model debt. All three are already how `PRIORITIES.md` marks them. *Rejected:*
+adopting unrestricted jurisdiction invisibility, and marking item 7 completely
+closed.
+
+**The deck's path-gate entry stands.** `projects/normativity/deck-2026-08-10/**`
+is a specification path, so a contributor pull request touching the maintainer's
+own talk fails the gate. *Rejected:* reverting it, which makes the deck
+contributor-editable — the state the intake was performed to avoid.
+
+**Review status takes exactly two values.** The deck's row is
+`maintainer-reviewed`, which follows from the maintainer having written it, and
+the qualification — which frames are still model-drafted — moves to the notes
+column where every other nuance lives. *Rejected:* a third, qualified value in a
+two-valued field, which would make the label unreadable by anything that reads
+labels.
+
+**The source line's corrected frontier gets a one-line pointer** from
+`CORRIGIBILITY_PAPER_LEDGER.md`'s Movement I to the corrected statement one
+directory away. The ledger records what this repository holds, and a pointer says
+where a fuller account is without adopting it. *Rejected:* a
+described-but-unadopted subsection, which is adoption in everything but the
+label.
+
+**The per-commit `Model:` trailer is enforced**, in the form that changes no
+rule: where a pull request's body declares a model, every non-merge commit it
+adds carries a `Model:` trailer. A human-written pull request declaring no model
+is asked for nothing new. *Rejected:* dropping the per-commit requirement and
+keeping the pull-request body as the single record, which loses attribution on
+every merge that is not a squash.
+
+**The structured state holds a list of theorem-facing interfaces.**
+`checkers/workspace_state.py` reads every `state/theorem_interface*.json`, so a
+second interface is a new file rather than a trust-chain edit. *Rejected:* ruling
+`theorem_interface.json` reserved for the response-learning theorem, which
+documents the gap instead of closing it. The force interface's structured object
+is not authored here; it stays a living note until a round consumes it.
+
+**Removed as already done:** merging PR #51, which merged at `3ebd33b`; merging
+upstream `Formalized-Agent-Foundations` #2, which merged at `c0d885bf` and is the
+commit `lean/lakefile.toml` now pins; and the Cartesian-frames repin, since that
+pin is a commit on the upstream default branch carrying `CartesianFrames/`.
+Deleting the mirror in `CartesianFrameBridge.lean` is now ordinary Lean work and
+is filed as an item.
+
+**Removed as not a decision:** reading `checkers/`. Maintainer reading is not a
+queued item. `ci-only` is this repository's designed default, and its review
+mechanism for a consumed result is a second executor's audit or a Lean port —
+neither of which a queue entry can schedule. The harness stays honestly labelled
+either way.
+
+**Removed as registrations rather than decisions**, under the headline rule: the
+traderized-enforcement inequalities, the projection results, the deductive
+coherence region, and the max–min development. **Removed to the naming audit:**
+the fourteen traderized-enforcement names, the assessment-process vocabulary, the
+projection round's names, the deductive region's constructions, the
+counterfactual-legitimacy vocabulary, and the transition-certificate vocabulary.
+**Removed as filings:** the two formalization obligations the proof-closing pass
+left — the erasure, discharged and registered; `DistanceComplete`, filed open —
+and the counterfactual-legitimacy round's open questions.
 
 ### 2026-08-18 — the modified market's computability is discharged, via an additive upstream export
 
