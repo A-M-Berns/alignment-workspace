@@ -59,7 +59,7 @@ needs them.
 ## Joint serviceability
 
 DEFINITION. `JointlyServable(D, h)`: one policy forces eventual
-certification of every occurrence in the finite multiset `D`. With
+certifiability of every occurrence in the finite multiset `D`. With
 absorbing acceptance this is again plain reachability in the product
 (`jointly_servable`).
 

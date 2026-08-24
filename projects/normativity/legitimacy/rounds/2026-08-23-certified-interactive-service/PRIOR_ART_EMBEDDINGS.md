@@ -196,7 +196,7 @@ This is NOT another nested subclass. Findings:
    coalescing (a type open mints nothing) => product arena whose RR
    pairs are the monitor-open and monitor-accept vertex sets
    (`compile_to_rr`). Play-level correspondence — RR condition
-   satisfied iff every coalesced occurrence is eventually certified —
+   satisfied iff every coalesced occurrence is eventually certifiable —
    checked on every simple lasso of the compiled arena, with both
    verdicts realized (`test_play_level_correspondence...`).
    FINITE-TEST-SUPPORTED; the general statement is CONJECTURE at the
