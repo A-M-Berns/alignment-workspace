@@ -6,6 +6,7 @@
       "project": null,
       "path": "prompts/2026-08-10-repo-scaffolding",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [
         "lean-proved"
       ],
@@ -21,6 +22,7 @@
       "project": null,
       "path": "prompts/2026-08-11-admin-cleanup",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-admin-cleanup/PROMPT.md",
       "claim_changes": []
@@ -31,6 +33,7 @@
       "project": null,
       "path": "prompts/2026-08-11-attribution-provenance-names",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-attribution-provenance-names/PROMPT.md",
       "claim_changes": []
@@ -41,6 +44,7 @@
       "project": null,
       "path": "prompts/2026-08-11-branch-protection",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-branch-protection/PROMPT.md",
       "claim_changes": []
@@ -51,6 +55,7 @@
       "project": null,
       "path": "prompts/2026-08-11-corrigibility-phase-ii",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-corrigibility-phase-ii/PROMPT.md",
       "claim_changes": []
@@ -61,6 +66,7 @@
       "project": null,
       "path": "prompts/2026-08-11-contributor-checkers",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": null,
       "claim_changes": []
@@ -71,6 +77,7 @@
       "project": null,
       "path": "prompts/2026-08-11-deference-admissibility",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-deference-admissibility/PROMPT.md",
       "claim_changes": []
@@ -81,6 +88,7 @@
       "project": null,
       "path": "prompts/2026-08-11-deference-certificates",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-deference-certificates/PROMPT.md",
       "claim_changes": []
@@ -91,6 +99,7 @@
       "project": null,
       "path": "prompts/2026-08-11-deference-channel",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-deference-channel/PROMPT.md",
       "claim_changes": []
@@ -101,6 +110,7 @@
       "project": null,
       "path": "prompts/2026-08-11-deference-corrigibility",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-deference-corrigibility/PROMPT.md",
       "claim_changes": []
@@ -111,6 +121,7 @@
       "project": null,
       "path": "prompts/2026-08-11-deference-densification",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-deference-densification/PROMPT.md",
       "claim_changes": []
@@ -121,6 +132,7 @@
       "project": null,
       "path": "prompts/2026-08-11-deference-finite-kernel",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-deference-finite-kernel/PROMPT.md",
       "claim_changes": []
@@ -131,6 +143,7 @@
       "project": null,
       "path": "prompts/2026-08-11-deference-triangle",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-deference-triangle/PROMPT.md",
       "claim_changes": []
@@ -141,6 +154,7 @@
       "project": null,
       "path": "prompts/2026-08-11-faithful-acceleration",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-faithful-acceleration/PROMPT.md",
       "claim_changes": []
@@ -151,6 +165,7 @@
       "project": null,
       "path": "prompts/2026-08-11-licensing-dco-citation",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-licensing-dco-citation/PROMPT.md",
       "claim_changes": []
@@ -161,6 +176,7 @@
       "project": null,
       "path": "prompts/2026-08-11-normative-learning-interface",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-normative-learning-interface/PROMPT.md",
       "claim_changes": []
@@ -171,6 +187,7 @@
       "project": null,
       "path": "prompts/2026-08-11-phase-ii-authority",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phase-ii-authority/PROMPT.md",
       "claim_changes": []
@@ -181,6 +198,7 @@
       "project": null,
       "path": "prompts/2026-08-11-phase-ii-certificate",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phase-ii-certificate/PROMPT.md",
       "claim_changes": []
@@ -191,6 +209,7 @@
       "project": null,
       "path": "prompts/2026-08-11-phase-ii-competence",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phase-ii-competence/PROMPT.md",
       "claim_changes": []
@@ -201,6 +220,7 @@
       "project": null,
       "path": "prompts/2026-08-11-phase-ii-prediction",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phase-ii-prediction/PROMPT.md",
       "claim_changes": []
@@ -211,6 +231,7 @@
       "project": null,
       "path": "prompts/2026-08-11-phase-ii-promotion",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phase-ii-promotion/PROMPT.md",
       "claim_changes": []
@@ -222,6 +243,7 @@
       "path": "projects/normativity/rounds/2026-08-11-phi-regret-applicability",
       "verdict": "Near miss.",
       "verdict_source": "projects/normativity/rounds/2026-08-11-phi-regret-applicability/PHI_REGRET_APPLICABILITY.md",
+      "depends_on": ["2026-08-11-phi-regret-prep"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phi-regret-applicability/PROMPT.md",
       "claim_changes": []
@@ -233,6 +255,7 @@
       "path": "projects/normativity/rounds/2026-08-11-phi-regret-bridge",
       "verdict": "repaired for the frozen item-30 environment.",
       "verdict_source": "projects/normativity/rounds/2026-08-11-phi-regret-bridge/README.md",
+      "depends_on": ["2026-08-11-phi-regret-prep", "2026-08-11-phi-regret-applicability"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phi-regret-bridge/PROMPT.md",
       "claim_changes": []
@@ -244,6 +267,7 @@
       "path": "projects/normativity/rounds/2026-08-11-phi-regret-learner",
       "verdict": "Learning-positive, integration-blocked.",
       "verdict_source": "projects/normativity/rounds/2026-08-11-phi-regret-learner/README.md",
+      "depends_on": ["2026-08-11-phi-regret-prep", "2026-08-11-phi-regret-bridge"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phi-regret-learner/PROMPT.md",
       "claim_changes": []
@@ -254,6 +278,7 @@
       "project": "normativity",
       "path": "projects/normativity/rounds/2026-08-11-phi-regret-prep",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-phi-regret-prep/PROMPT.md",
       "claim_changes": []
@@ -264,6 +289,7 @@
       "project": null,
       "path": "prompts/2026-08-11-priorities-and-slop",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-priorities-and-slop/PROMPT.md",
       "claim_changes": []
@@ -274,6 +300,7 @@
       "project": null,
       "path": "prompts/2026-08-11-public-flip-and-scrub",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-public-flip-and-scrub/PROMPT.md",
       "claim_changes": []
@@ -284,6 +311,7 @@
       "project": null,
       "path": "prompts/2026-08-11-rename-alignment-workspace",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-rename-alignment-workspace/PROMPT.md",
       "claim_changes": []
@@ -294,6 +322,7 @@
       "project": null,
       "path": "prompts/2026-08-11-retire-frozen",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-retire-frozen/PROMPT.md",
       "claim_changes": []
@@ -304,6 +333,7 @@
       "project": null,
       "path": "prompts/2026-08-11-scrub-round-2",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-scrub-round-2/PROMPT.md",
       "claim_changes": []
@@ -314,6 +344,7 @@
       "project": null,
       "path": "prompts/2026-08-11-stage-iii-fud",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-stage-iii-fud/PROMPT.md",
       "claim_changes": []
@@ -324,6 +355,7 @@
       "project": null,
       "path": "prompts/2026-08-11-stage-iv-future-agent",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-stage-iv-future-agent/PROMPT.md",
       "claim_changes": []
@@ -334,6 +366,7 @@
       "project": null,
       "path": "prompts/2026-08-11-stage-v-li-native",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-stage-v-li-native/PROMPT.md",
       "claim_changes": []
@@ -344,6 +377,7 @@
       "project": null,
       "path": "prompts/2026-08-11-workspace-ethos",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-workspace-ethos/PROMPT.md",
       "claim_changes": []
@@ -354,6 +388,7 @@
       "project": null,
       "path": "prompts/2026-08-11-workspace-integration",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-11-workspace-integration/PROMPT.md",
       "claim_changes": []
@@ -364,6 +399,7 @@
       "project": null,
       "path": "prompts/2026-08-12-cartesian-frames",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-12-cartesian-frames/PROMPT.md",
       "claim_changes": []
@@ -374,6 +410,7 @@
       "project": "deference",
       "path": "projects/deference/rounds/2026-08-12-corpus-reconciliation",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-12-corpus-reconciliation/PROMPT.md",
       "claim_changes": []
@@ -385,6 +422,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-12-legitimacy-architecture",
       "verdict": "partial success",
       "verdict_source": "prompts/2026-08-12-legitimacy-reorganization/REPORT.md",
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-12-legitimacy-reorganization/PROMPT.md",
       "claim_changes": []
@@ -396,6 +434,7 @@
       "path": "projects/deference/rounds/2026-08-12-reachable-corrective-control",
       "verdict": "Dynamics-positive, protection-incomplete.",
       "verdict_source": "projects/deference/rounds/2026-08-12-reachable-corrective-control/REACHABLE_CORRECTIVE_CONTROL.md",
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-12-reachable-corrective-control/PROMPT.md",
       "claim_changes": []
@@ -407,6 +446,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy",
       "verdict": "four-condition sufficiency is REFUTED",
       "verdict_source": "prompts/2026-08-13-procedural-legitimacy/REPORT.md",
+      "depends_on": ["2026-08-12-legitimacy-reorganization"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-procedural-legitimacy/PROMPT.md",
       "claim_changes": []
@@ -418,6 +458,7 @@
       "path": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning",
       "verdict": "LOCAL-THEOREM-POSITIVE / NORMATIVE-INTERPRETATION-OPEN",
       "verdict_source": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning/README.md",
+      "depends_on": ["2026-08-13-relational-scorekeeping-bridge"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-local-regret-normative-learning/PROMPT.md",
       "claim_changes": []
@@ -429,6 +470,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge",
       "verdict": "Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/README.md",
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-relational-scorekeeping-bridge/PROMPT.md",
       "claim_changes": []
@@ -439,6 +481,7 @@
       "project": null,
       "path": "prompts/2026-08-13-relational-scorekeeping-refinement",
       "verdict": null,
+      "depends_on": ["2026-08-13-relational-scorekeeping-bridge"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-relational-scorekeeping-refinement/PROMPT.md",
       "claim_changes": []
@@ -451,6 +494,7 @@
       "artifact_path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem",
       "verdict": "CROWN-JEWEL-PATH-POSITIVE / DYNAMICS-STRENGTHENING-OPEN",
       "verdict_source": "prompts/2026-08-13-crown-jewel-learning-theorem/REPORT.md",
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem/PROMPT.md",
       "claim_changes": [],
@@ -475,6 +519,7 @@
           "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
         }
       ],
+      "depends_on": ["2026-08-13-crown-jewel-learning-theorem"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/PROMPT.md",
       "claim_changes": [],
@@ -508,6 +553,10 @@
         {"id": "performance-loss", "status": "fixture-success; general-theory-open"},
         {"id": "coverage", "status": "hypothesis; not-delivered-conclusion"}
       ],
+      "depends_on": [
+        "2026-08-13-crown-jewel-learning-theorem",
+        "2026-08-13-crown-jewel-learning-theorem-refinement"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-final/PROMPT.md",
       "claim_changes": []
@@ -518,6 +567,7 @@
       "project": null,
       "path": "prompts/2026-08-13-wikification-and-normativity",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-wikification-and-normativity/PROMPT.md",
       "claim_changes": []
@@ -528,6 +578,7 @@
       "project": null,
       "path": "prompts/2026-08-16-wiki-in-repo-sync",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-16-wiki-in-repo-sync/PROMPT.md",
       "claim_changes": []
@@ -538,6 +589,7 @@
       "project": null,
       "path": "prompts/2026-08-16-wiki-state-bindings",
       "verdict": null,
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-16-wiki-state-bindings/PROMPT.md",
       "claim_changes": []
@@ -549,6 +601,7 @@
       "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
       "verdict": "Logical Induction generalizes past deduction: the assessment-process lift of Budgeter and TradingFirm is kernel-checked against the pinned implementation, a compiled price-region trader gives finite-time force, and preservation follows from finite assessed risk capital \u2014 which is exactly zero for deduction, so traderized deduction keeps the original criterion and adds finite-time approximate coherence.",
       "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md",
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-proof-closure.md",
       "claim_changes": []
@@ -560,6 +613,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy",
       "verdict": "interface-closed-by-role / trust-premise-integrity / target-bridge-open",
       "verdict_source": "prompts/2026-08-17-counterfactual-legitimacy/REPORT.md",
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-17-counterfactual-legitimacy/PROMPT.md",
       "claim_changes": []
@@ -571,6 +625,7 @@
       "path": "projects/normativity/rounds/2026-08-18-projection-enforcement",
       "verdict": "The intrinsic projection trader is the paper's construction, the market is computable, the representation the construction needs is generated rather than assumed, and the deductive specialization closes from the source's own assumptions: force, the calibrated budget with no free intensity, the homothetic-core refinement that removes the tolerance penalty, and the deductive end-to-end theorem are kernel-checked; ComputableMarket is gone as a premise and the bounded-evaluator compiler that replaced it is built, against a purely additive upstream public section of twenty exported declarations; the paper-facing input is a schedule of rational convex constraints from which the region predicate, the target and its nearest-point property are all derived, and against which finite-time conformance and the criterion hold with no hypotheses whatever; rational linear feasibility is decided and verified with strict and non-strict constraints kept distinct and uniformly in the dimension, which drives an executable generator for the projector's max-min representation; and deductive_end_to_end yields source-original IsLogicalInductor together with every-date conformance to the day's deductive region from a computable fragment schedule, a computable positive tolerance schedule, propositional satisfiability of each stage, and the source's own DeductiveProcessComputation and nothing more -- the extra effective-stage hypothesis that appeared necessary was an artifact of two interfaces indexing by the date, since the compiler already carries the stage table as finite data and the source's own Trading Firm reads it that way. The generator is doubly exponential in the fragment dimension and no better bound is claimed.",
       "verdict_source": "projects/normativity/rounds/2026-08-18-projection-enforcement/README.md",
+      "depends_on": ["2026-08-16-traderized-enforcement"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-18-projection-enforcement/PROMPT.md",
       "claim_changes": []
@@ -582,6 +637,7 @@
       "path": "projects/normativity/rounds/2026-08-19-deductive-region",
       "verdict": "the deductive coherence region on a finite fragment is a computable finite rational vertex list — admissiblePatterns is a def that decides which {0,1} patterns extend to a propositionally consistent world satisfying the stage, sound and complete about worlds rather than atom assignments, nonempty exactly when the stage is propositionally satisfiable, and kernel-checked on instances including an unsatisfiable stage and a fragment whose two sentences constrain the same atom.",
       "verdict_source": "projects/normativity/rounds/2026-08-19-deductive-region/README.md",
+      "depends_on": ["2026-08-16-traderized-enforcement"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-19-deductive-region/PROMPT.md",
       "claim_changes": []
@@ -593,6 +649,7 @@
       "path": "projects/normativity/rounds/2026-08-18-maxmin-representation",
       "verdict": "Ovchinnikov's max\u2013min theorem is kernel-checked for any nonempty convex domain, with no full-dimensionality, no continuity and no finite-dimension hypothesis, by replacing the source's hyperplane arrangement and tope-graph induction with a one-dimensional induction along the segment joining the two points \u2014 which also removes the genericity step the source states without proof.",
       "verdict_source": "projects/normativity/rounds/2026-08-18-maxmin-representation/README.md",
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-18-maxmin-representation/PROMPT.md",
       "claim_changes": []
@@ -604,6 +661,14 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability",
       "verdict": "Adopt after four repairs, and only as an internal answerability core.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-21-internal-answerability/MEMO.md",
+      "depends_on": [
+        "2026-08-13-procedural-legitimacy",
+        "2026-08-13-relational-scorekeeping-bridge",
+        "2026-08-13-crown-jewel-learning-theorem",
+        "2026-08-16-traderized-enforcement",
+        "2026-08-17-counterfactual-legitimacy",
+        "2026-08-18-projection-enforcement"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-21-internal-answerability/PROMPT.md",
       "claim_changes": []
@@ -615,6 +680,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability",
       "verdict": "UNIFIED WITH WRAPPER.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-22-role-parametric-answerability/MEMO.md",
+      "depends_on": ["2026-08-21-internal-answerability"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-22-role-parametric-answerability/PROMPT.md",
       "claim_changes": []
@@ -626,6 +692,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry",
       "verdict": "Partial unification after temporal and scheduling repairs.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-afoundational-inquiry/MEMO.md",
+      "depends_on": ["2026-08-22-role-parametric-answerability"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-afoundational-inquiry/PROMPT.md",
       "claim_changes": []
@@ -637,6 +704,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-23-reason-representation",
       "verdict": "Survives after two structural additions and two conventions; the TMS framing is discarded rather than refined.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-reason-representation/MEMO.md",
+      "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-reason-representation/PROMPT.md",
       "claim_changes": []
@@ -648,6 +716,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates",
       "verdict": "The transition interface closes: three principles do the work of the five proposed postulates, and Licensed becomes record-internally substantive.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/MEMO.md",
+      "depends_on": ["2026-08-21-internal-answerability", "2026-08-23-reason-representation"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-transition-certificates/PROMPT.md",
       "claim_changes": []
@@ -659,6 +728,7 @@
       "path": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service",
       "verdict": "REQUIRES-REVISION — the object survives as an arena plus finite-witness certification, its laws typing disciplines, its content in the capability lattice.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service/README.md",
+      "depends_on": ["2026-08-23-afoundational-inquiry"],
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-certified-interactive-service/PROMPT.md",
       "claim_changes": []
