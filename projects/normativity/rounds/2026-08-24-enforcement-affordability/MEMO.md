@@ -455,7 +455,7 @@ Status: **research memo; unregistered**. Executed 2026-08-25 against the round
 above, whose grades and text are unchanged. Same model, same pinned inputs;
 the skeleton v44 checksum and the `Contrib` file/line citations of §0 were
 re-verified against this branch and all resolve. Fixtures added in
-`tests/test_continuation.py`; the round's suite is 45 fixtures.
+`tests/test_continuation.py`; the round's suite is 46 fixtures.
 
 The adopted split for the traderization paper puts the general affordability
 characterization — trichotomy, diachronic functionals, recharge — in a
