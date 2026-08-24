@@ -259,7 +259,7 @@ carries a theorem in this round.
 | object | status after cleanup |
 |---|---|
 | `ServiceSpec.check` | semantic definition (ValidCert) |
-| `ServiceSpec.admissible` | semantic definition (MayClose component) |
+| discharge predicates (`may_close` in `composition.py`) | semantic definition, record-side (MayClose component) |
 | `ServiceSpec.prove` | attached algorithm, non-constitutive |
 | `certifiable(...)` | decision procedure for the existential predicate, complete on this round's certificate spaces |
 | `prover_certified(...)` | explicitly prover-relative testing helper |
