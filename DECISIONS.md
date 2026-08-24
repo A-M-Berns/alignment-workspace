@@ -13,6 +13,14 @@ is kept: a pointer that no longer resolves is not history, it is a dead link,
 while a decision that turned out wrong is corrected by the entry that supersedes
 it and not by editing the record of having made it.
 
+**A new entry goes beneath the last entry sharing its date**, not at the head of
+*Settled*. Newest-first still holds between dates; within a date the order is
+arrival. This is a merge convention rather than a stylistic one: two rounds open
+at once both wrote to the section head, and a resolution kept one side's text and
+dropped the other's while every other file from that round landed. Appending
+beneath a same-dated entry turns the collision into an ordinary append. The same
+applies to `PROVENANCE.md`: new rows go at the end of the table they belong to.
+
 ## Awaiting the author
 
 **The single queue.** Everything reserved to the maintainer, anywhere in the
@@ -261,20 +269,6 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   worth proving*, which no round may decide.** *Waiting* costs nothing today and
   leaves Q3 carrying a candidate the program has not said it wants.
 
-- **Decide the identity a wiki pull request is opened under.** `wiki/` is
-  specification layer, so `path-gate` passes a pull request touching it only when
-  `GITHUB_ACTOR` is in `MAINTAINERS`, and the maintainer's AI collaborator is who
-  drafts those pull requests. Three options: open them with a token belonging to
-  the maintainer's own account, with the executing model recorded in `Model:`
-  trailers and the pull-request attribution block, which is the current scheme
-  extended to a new surface; add an allowlisted machine account to `MAINTAINERS`
-  and `CODEOWNERS`, which is honest about who pushed and creates a second
-  maintainer identity that no human is behind; or drop `wiki/` from the
-  specification list, which makes the register contributor-editable and gives up
-  what the entry above just established. *Doing it* is choosing one. *Waiting*
-  means a wiki pull request opened under any other identity fails the gate with
-  nothing wrong with its content.
-
 - **Decide the counterfactual-legitimacy vocabulary.** The round at
   `projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy/`
   introduces reason-mediated non-capture, protected access, the licensed-reason
@@ -483,6 +477,74 @@ Statements of record: `Workspace.Normativity.Contrib.Projection{Force,Market,Com
 Budget,Calibrated,Enforcer}` and `Workspace.Normativity.Contrib.EnforcedComputation`.
 Round: `projects/normativity/rounds/2026-08-18-projection-enforcement`.
 
+
+### 2026-08-17 — five workspace-friction rulings
+
+**The ledger takes new entries beneath the last same-dated one**, and
+`PROVENANCE.md` takes new rows at the end of their table. Two rounds open at once
+both wrote to the section head; a resolution kept one side and dropped the other,
+and a pull request's two ledger entries and five provenance rows never reached
+`main` while every other file it wrote did. The convention is in this file's
+preamble.
+
+**A round's report and its provenance row land together**, checked over what a
+change adds rather than over what the repository contains: a change landing
+`prompts/<round>/REPORT.md` must also carry a `PROVENANCE.md` row citing
+`prompts/<round>/`. The whole-tree form was measured and rejected — most completed
+rounds carry no such citation, because early rounds are covered by globs and the
+per-round convention arrived later, and a check needing a thirty-entry allowlist
+matches nothing.
+
+**Generated views live beside the state they render from**, in `state/views/`.
+They were kept inside a completed round's directory, so every round that indexed
+itself edited an older round's folder to stay green — against the rule that a round
+record is history.
+
+**The feature-branch pin question is closed, and mirror-plus-cross-check is the
+expected pattern** for upstream work in flight. The round that hit it mirrored the
+fragment it needed and cross-checked every result by hand against the
+authoritative definitions; the concrete case dissolved with the repin, and the
+pattern is the answer rather than a workaround. No second exploratory pin is
+added.
+
+**The documented-command check and the root-document layer check are one entry**,
+built alongside other work in that area rather than on their own. Both were
+audited by hand on this date and are clean: no dead command pointer, required
+contexts matching job names seven for seven, every root-level document in exactly
+one layer. A gate with no failing case to try it against is not yet worth having.
+
+Source: the maintainer's rulings on the friction list, taken in conversation
+during the CI-scope round, and landed here by
+`prompts/2026-08-24-reservation-bar-and-debt/` under the rule that a ruling made
+in conversation is in force only once it is a dated entry.
+
+### 2026-08-16 — Claude's wiki pull requests open under a token on the maintainer's account
+
+`wiki/` is specification layer, so `path-gate` passes a pull request touching it
+only when `GITHUB_ACTOR` is in `MAINTAINERS`, and the maintainer's AI collaborator
+is who drafts those pull requests.
+
+They are opened with a **fine-grained personal access token on the maintainer's own
+account**: scoped to this repository alone, contents and pull-requests write and
+nothing else, an expiry measured in days, minted per session, and never stored in
+the repository, in its settings, or in any environment — which is *CI holds zero
+secrets* applying to a human's credential as well as to a job's. That is the
+existing attribution scheme extended to a new surface: the executing model is named
+in the `Model:` trailers and in the pull-request body, so who pushed and what wrote
+it stay separate facts.
+
+**Squash auto-merge is off for a wiki pull request drafted on the chat surface.**
+The register is prose a maintainer is the only judge of, and the gates check links,
+pins and declared quantities rather than whether a page is right.
+
+Rejected: adding an allowlisted machine account to `MAINTAINERS` and `CODEOWNERS`,
+which is honest about who pushed and creates a second maintainer identity no human
+is behind; and dropping `wiki/` from the specification list, which makes the
+register contributor-editable and gives up what its own entry had just
+established.
+
+Source: the maintainer's ruling, taken in conversation on 2026-08-16, landed here
+by `prompts/2026-08-24-reservation-bar-and-debt/`.
 
 ### 2026-08-16 — the wiki carries interpretation and philosophical gloss
 
