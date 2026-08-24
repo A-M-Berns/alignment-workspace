@@ -287,6 +287,15 @@ second interface is a new file rather than a trust-chain edit. *Rejected:* rulin
 documents the gap instead of closing it. The force interface's structured object
 is not authored here; it stays a living note until a round consumes it.
 
+**The `round/2026-08-17-lean-gate-scope` branch is landed rather than dropped.**
+Its two commits carried `tests/lean_scope.py`, `tests/round_records.py`, the
+generated views' move to `state/views/` and the ledger's append convention; all of
+it passes the suite on current `main`, so the files are taken verbatim, their
+self-tests re-run here, and both gates wired into `ci.yml` and `tests/run.py`. The
+branch's own `PRIORITIES.md` renumbering is not taken, because two friction entries
+were filed after it was cut and the list is renumbered here against the current
+one. Its draft pull request is closed as landed, not as abandoned.
+
 **Removed as already done:** merging PR #51, which merged at `3ebd33b`; merging
 upstream `Formalized-Agent-Foundations` #2, which merged at `c0d885bf` and is the
 commit `lean/lakefile.toml` now pins; and the Cartesian-frames repin, since that
