@@ -44,13 +44,20 @@ INDENTED = re.compile(r"^\s+\S")
 
 # A body that names a model, and a commit that names one. The body form allows
 # the `Prompt-author-model:` variant and the template's bold markers; the trailer
-# form is the `Model:` line `AGENTS.md` asks each commit to carry. Emphasis
-# asterisks are skipped on both sides of the colon rather than counted as a
-# value: `- [x] **Model:**` with the name still inside the template's comment
-# names nobody, and reading `**` as content would let a ticked empty option pass.
-DECLARES_MODEL = re.compile(r"^[^\S\n]*(?:[-*][^\S\n]*)?(?:\[[xX ]\][^\S\n]*)?"
-                            r"\**(?:Prompt-author-)?Model\**[^\S\n]*:[\t *]*[^\s*]",
-                            re.I | re.M)
+# form is the `Model:` line `AGENTS.md` asks each commit to carry.
+#
+# Two things the body form is deliberate about, both found by running it against
+# a real pull request. It is **not** anchored to the start of a line: the
+# template's dispatched-round option puts `Model:` on a continuation line after
+# `and`, and an anchored pattern skipped the check on the very pull request that
+# introduced it — a gate matching nothing. And a backticked `` `Model:` `` is
+# excluded, because prose *about* this gate would otherwise read as a
+# declaration. Emphasis asterisks are skipped on both sides of the colon rather
+# than counted as a value: `- [x] **Model:**` with the name still inside the
+# template's comment names nobody, and reading `**` as content would let a ticked
+# empty option pass.
+DECLARES_MODEL = re.compile(r"(?<!`)\**(?:Prompt-author-)?Model\**[^\S\n]*"
+                            r":[\t *]*[^\s*`]", re.I)
 TRAILER = re.compile(r"^Model:[^\S\n]*\S", re.M)
 
 
@@ -193,6 +200,15 @@ def self_test() -> int:
         ("the template's model option, ticked but unfilled, declares no model",
          declares_model(section(template.replace("- [ ] **Model:**",
                                                  "- [x] **Model:**", 1)) or ""), False),
+        # The dispatched-round option, filled in as the template lays it out.
+        # This is the shape that slipped past an anchored pattern.
+        ("a declaration on a continuation line is seen",
+         declares_model("- [x] **Dispatched round** — **Prompt-author-model:** "
+                        "Claude Fable 5\n      and **Model:** Claude Opus 5\n"),
+         True),
+        ("prose about a `Model:` trailer is not a declaration",
+         declares_model("This gate requires a `Model:` trailer on each commit.\n"),
+         False),
         ("a trailered message passes",
          TRAILER.search("Subject\n\nModel: Claude Opus 5 (Anthropic)\n") is not None,
          True),
