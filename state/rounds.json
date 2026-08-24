@@ -732,6 +732,45 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-23-certified-interactive-service/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-24-reservation-bar-and-debt",
+      "date": "2026-08-24",
+      "project": null,
+      "path": "prompts/2026-08-24-reservation-bar-and-debt",
+      "verdict": "Rules landed and applied once: the queue goes from thirty-seven entries to three, and twenty-four kernel-checked headlines enter the registry.",
+      "verdict_source": "prompts/2026-08-24-reservation-bar-and-debt/REPORT.md",
+      "depends_on": [],
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-08-24-reservation-bar-and-debt/PROMPT.md",
+      "claim_changes": [
+        "li.assessment.budgeter-value",
+        "li.assessment.budgeter-floor",
+        "li.assessment.budgeter-exploits",
+        "li.assessment.firm-dominance",
+        "li.assessment.criterion",
+        "force.strategy-value",
+        "force.row-tolerance",
+        "force.preservation",
+        "force.deductive-day-nonneg",
+        "force.deductive-cumulative-nonneg",
+        "force.deductive-criterion",
+        "force.deductive-inductor",
+        "force.deductive-witness",
+        "coherence.modulus-soundness",
+        "coherence.modulus-net-cover",
+        "compiler.schedule-end-to-end",
+        "compiler.constraints-end-to-end",
+        "compiler.deductive-end-to-end",
+        "maxmin.representation",
+        "maxmin.converse",
+        "region.patterns-sound",
+        "region.patterns-complete",
+        "region.patterns-nonempty-iff",
+        "region.hull"
+      ]
     }
   ]
 }
