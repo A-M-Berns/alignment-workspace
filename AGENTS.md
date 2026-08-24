@@ -356,7 +356,10 @@ squash merge composes its message from the pull-request body: without the
 section, the squashed commit inherits whatever GitHub assembles, and the
 attribution silently disappears from `main`'s history. **When squashing, carry
 the Model attribution section into the squashed message.** CI checks that the
-section exists and is non-empty; it cannot check that what it says is true.
+section exists and is non-empty, and — where it names a model — that every
+non-merge commit the pull request adds carries a `Model:` trailer. A
+human-written pull request naming no model is asked for no trailer. Nothing
+checks that what any of it says is true.
 
 **The chat-bundle pointer is optional**, filled when a bundle exists and absent
 otherwise. Nothing is required to have one.
@@ -786,7 +789,7 @@ which are required.
 | the registry, and the `contributor-checked` ceiling | `checkers` — harness self-test, then every `CLAIMS.md` |
 | contributed checkers are stdlib-only and documented | `checkers` — `tests/contrib_hygiene.py` |
 | DCO sign-off | `dco` — `tests/dco.py`; that an assertion was made, not that it is true |
-| model attribution in the pull-request body | `dco` — `tests/attribution.py`; presence and non-emptiness only |
+| model attribution, in the pull-request body and in each commit's trailer where the body names a model | `dco` — `tests/attribution.py`; presence and non-emptiness only |
 | no personal names in prose | `python` — `tests/name_lint.py`, `wiki/` included |
 | the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
 | volatile quantities in the wiki are declared and match machine state | `checkers` — `checkers/wiki_state_bindings.py` |

@@ -589,10 +589,15 @@ class FundedForceCannotBypassTheAccount(unittest.TestCase):
         self.assertEqual(account.remaining, F(9))
         self.assertTrue(c.deficit_is_verified)
 
-    def test_an_unaffordable_request_refuses_by_default(self):
+    def test_an_unaffordable_request_is_quarantined_by_default(self):
+        account = OutflowAccount(F(1, 100))
+        self.assertIsNone(self.safe(account))
+        self.assertEqual(account.spent, ZERO)
+
+    def test_refusal_is_available_on_request(self):
         account = OutflowAccount(F(1, 100))
         with self.assertRaises(Insufficient):
-            self.safe(account)
+            self.safe(account, policy="refuse")
         self.assertEqual(account.spent, ZERO)
 
     def test_quarantine_returns_nothing_and_spends_nothing(self):

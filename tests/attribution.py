@@ -29,6 +29,7 @@ import json
 import os
 import pathlib
 import re
+import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -40,6 +41,17 @@ UNCHECKED = re.compile(r"^\s*[-*]\s*\[\s*\]")
 CHECKED = re.compile(r"^\s*[-*]\s*\[[xX]\]", re.M)
 BULLET = re.compile(r"^\s*[-*]\s")
 INDENTED = re.compile(r"^\s+\S")
+
+# A body that names a model, and a commit that names one. The body form allows
+# the `Prompt-author-model:` variant and the template's bold markers; the trailer
+# form is the `Model:` line `AGENTS.md` asks each commit to carry. Emphasis
+# asterisks are skipped on both sides of the colon rather than counted as a
+# value: `- [x] **Model:**` with the name still inside the template's comment
+# names nobody, and reading `**` as content would let a ticked empty option pass.
+DECLARES_MODEL = re.compile(r"^[^\S\n]*(?:[-*][^\S\n]*)?(?:\[[xX ]\][^\S\n]*)?"
+                            r"\**(?:Prompt-author-)?Model\**[^\S\n]*:[\t *]*[^\s*]",
+                            re.I | re.M)
+TRAILER = re.compile(r"^Model:[^\S\n]*\S", re.M)
 
 
 def body() -> str | None:
@@ -64,33 +76,72 @@ def section(text: str) -> str | None:
     return rest[:following.start()] if following else rest
 
 
-def asserted(content: str) -> bool:
-    """Something was actually filled in.
+def evidence(content: str) -> str:
+    """What the section actually says, once the template is subtracted.
 
-    Template comments and unchecked boxes do not count: an untouched template is
-    non-empty as a string while asserting nothing, and treating that as a pass
-    would make the gate ceremonial. A ticked box counts, and so does free prose —
-    a contributor who writes `Model: X` without ticking anything has attributed.
+    Template comments and unchecked boxes assert nothing: an untouched template
+    is non-empty as a string, and treating that as a pass would make the gate
+    ceremonial. Dropping an unchecked option means dropping the whole option,
+    not just its `- [ ]` marker — the template's options carry their own label
+    text, and stripping the marker alone would leave "Human-written — no model
+    produced…" behind and read an untouched template as an assertion.
     """
-    stripped = COMMENT.sub("", content)
-    if CHECKED.search(stripped):
-        return True
-    leftover: list[str] = []
+    kept: list[str] = []
     dropping = False
-    for line in stripped.splitlines():
+    for line in COMMENT.sub("", content).splitlines():
         if UNCHECKED.match(line):
-            # Drop the whole option, not just its `- [ ]` marker: the template's
-            # options carry their own label text, and stripping the marker alone
-            # would leave "Human-written — no model produced…" behind and read an
-            # untouched template as an assertion.
             dropping = True
             continue
         if dropping and (INDENTED.match(line) or not line.strip()):
             continue
         dropping = False
         if not BULLET.match(line) or line.strip():
-            leftover.append(line)
-    return bool("".join(leftover).strip())
+            kept.append(line)
+    return "\n".join(kept)
+
+
+def asserted(content: str) -> bool:
+    """Something was actually filled in.
+
+    A ticked box counts, and so does free prose — a contributor who writes
+    `Model: X` without ticking anything has attributed.
+    """
+    if CHECKED.search(COMMENT.sub("", content)):
+        return True
+    return bool(evidence(content).strip())
+
+
+def declares_model(content: str) -> bool:
+    """The section names a model, rather than declaring the work human-written."""
+    return bool(DECLARES_MODEL.search(evidence(content)))
+
+
+def commits() -> list[str]:
+    """The non-merge commits this pull request adds, or [] outside one.
+
+    Merges are excluded for the reason `tests/dco.py` excludes them: GitHub
+    checks out a synthetic merge of the branch into its base, and that commit has
+    no author who could have written a trailer on it.
+    """
+    base = os.environ.get("GITHUB_BASE_REF")
+    if not base:
+        return []
+    subprocess.run(["git", "fetch", "--depth=50", "origin", base],
+                   cwd=ROOT, capture_output=True)
+    out = subprocess.run(["git", "rev-list", "--no-merges", f"origin/{base}..HEAD"],
+                         cwd=ROOT, capture_output=True, text=True)
+    return [c for c in out.stdout.split() if c]
+
+
+def untrailered(shas: list[str]) -> list[str]:
+    missing = []
+    for sha in shas:
+        message = subprocess.run(["git", "log", "-1", "--format=%B", sha],
+                                 cwd=ROOT, capture_output=True, text=True).stdout
+        if not TRAILER.search(message):
+            subject = message.strip().splitlines()[0] if message.strip() else "(empty)"
+            missing.append(f"{sha[:9]}  {subject[:70]}")
+    return missing
 
 
 def self_test() -> int:
@@ -118,6 +169,40 @@ def self_test() -> int:
     for label, text, want in cases:
         content = section(text)
         got = content is not None and asserted(content)
+        failures += got != want
+        print(f"  {'ok' if got == want else 'FAIL'}: {label}")
+
+    # The per-commit half. It fires only where the body names a model, so a
+    # human-written pull request is asked for nothing new; the null input is a
+    # body that names one against a commit list that does not.
+    trailer_cases = [
+        ("a body naming an executor declares a model",
+         declares_model("Model: Claude Opus 5 (Anthropic)\n"), True),
+        ("a bulleted, bolded declaration is seen",
+         declares_model("- **Model:** Claude Opus 5\n"), True),
+        ("a ticked model box with a value is seen",
+         declares_model("- [x] **Model:** Claude Opus 5 (Anthropic)\n"), True),
+        ("a prompt-author declaration is seen",
+         declares_model("Prompt-author-model: Claude Fable 5\n"), True),
+        ("a ticked human-written box declares no model",
+         declares_model("- [x] **Human-written** — no model produced it\n"), False),
+        ("an empty section declares no model", declares_model(""), False),
+        ("a label with no value declares no model", declares_model("Model:\n"), False),
+        ("the pristine template declares no model",
+         declares_model(section(template) or ""), False),
+        ("the template's model option, ticked but unfilled, declares no model",
+         declares_model(section(template.replace("- [ ] **Model:**",
+                                                 "- [x] **Model:**", 1)) or ""), False),
+        ("a trailered message passes",
+         TRAILER.search("Subject\n\nModel: Claude Opus 5 (Anthropic)\n") is not None,
+         True),
+        ("a message with only a sign-off is caught",
+         TRAILER.search("Subject\n\nSigned-off-by: A <a@b.c>\n") is not None, False),
+        ("a prompt-author trailer alone is not the executor trailer",
+         TRAILER.search("Subject\n\nPrompt-author-model: X\n") is not None, False),
+        ("an empty message is caught", TRAILER.search("") is not None, False),
+    ]
+    for label, got, want in trailer_cases:
         failures += got != want
         print(f"  {'ok' if got == want else 'FAIL'}: {label}")
     return 1 if failures else 0
@@ -151,8 +236,45 @@ def main() -> int:
               file=sys.stderr)
         return 1
 
-    print("ATTRIBUTION: the pull request declares model attribution "
-          "(asserted, not verified)")
+    if not DECLARES_MODEL.search(content):
+        print("ATTRIBUTION: the pull request declares model attribution "
+              "(asserted, not verified); it names no model, so no commit trailer "
+              "is required")
+        return 0
+
+    shas = commits()
+    if not shas:
+        if os.environ.get("GITHUB_BASE_REF"):
+            # The null input. A pull request has at least one non-merge commit,
+            # so an empty list means the enumeration failed, and passing here
+            # would check no trailers at all while reporting green.
+            print("ATTRIBUTION FAILED: the body names a model, but no non-merge "
+                  f"commit was found against origin/{os.environ['GITHUB_BASE_REF']}. "
+                  "The gate cannot check trailers it cannot enumerate.",
+                  file=sys.stderr)
+            return 1
+        print("ATTRIBUTION: the pull request declares model attribution "
+              "(asserted, not verified); no commit context, so trailers are "
+              "unchecked")
+        return 0
+
+    missing = untrailered(shas)
+    if missing:
+        print("ATTRIBUTION FAILED: the body names a model and these commits "
+              "carry no `Model:` trailer:", file=sys.stderr)
+        for m in missing:
+            print(f"  - {m}", file=sys.stderr)
+        print("\n  Attribution is recorded at both levels, and they are not "
+              "redundant: the body is what a reviewer reads and what a squash "
+              "composes `main`'s message from, and the trailer is what survives a "
+              "merge that is not a squash. Amend with a `Model:` line, or "
+              "`unrecorded` where the executor is genuinely unknown.",
+              file=sys.stderr)
+        return 1
+
+    print(f"ATTRIBUTION: the pull request declares model attribution "
+          f"(asserted, not verified), and all {len(shas)} commit(s) carry a "
+          "`Model:` trailer")
     return 0
 
 

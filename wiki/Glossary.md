@@ -95,6 +95,12 @@ Definitions remain the human-authored exposition above.
 | `notation.loss` | `ℓ_t` | — | `ell_t` |
 | `notation.margin` | `δ_g` | — | `delta_g` |
 
-## Collision awaiting a decision
+## Three senses of admission, kept apart
 
-**Open.** “Admission” currently names the adopted intake-queue event, but historical mathematical material also uses “bare admission” for an unrelated geometric membership test. The intake meaning remains clear; the second usage needs a maintainer-selected replacement before it becomes living vocabulary.
+| term | meaning |
+|---|---|
+| **admission** | The intake event: the date a docketed item enters the record. This is the sense the word keeps, being the oldest and the one the objection grammar reads. |
+| **admissible edit** | The certificate verdict that a proposed change to the book is lawful. It is not bare geometric membership: a change whose region contains the incumbent reference can still cut that reference's core, so a retention test on membership alone certifies a zero charge where a charge is owed. |
+| **response class** | Membership in the state-indexed set of responses a practice permits at a given time. |
+
+The frozen consolidation keeps its own labels, including “bare admission” for the geometric test, and is cited by claim identifier against its path rather than retranslated.

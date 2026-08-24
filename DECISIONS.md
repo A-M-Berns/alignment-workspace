@@ -267,12 +267,11 @@ column where every other nuance lives. *Rejected:* a third, qualified value in a
 two-valued field, which would make the label unreadable by anything that reads
 labels.
 
-**The source line's corrected frontier gets a one-line pointer** from
-`CORRIGIBILITY_PAPER_LEDGER.md`'s Movement I to the corrected statement one
-directory away. The ledger records what this repository holds, and a pointer says
-where a fuller account is without adopting it. *Rejected:* a
-described-but-unadopted subsection, which is adoption in everything but the
-label.
+**The source line's frontier question no longer has a referent.**
+`CORRIGIBILITY_PAPER_LEDGER.md` was compressed from 471 lines to five by the
+consolidation round of 2026-08-15; it now points at the wiki's Deference page for
+the human account and at the state emission for what is registered, and has no
+Movement I from which a pointer could hang. Removed as stale rather than decided.
 
 **The per-commit `Model:` trailer is enforced**, in the form that changes no
 rule: where a pull request's body declares a model, every non-merge commit it
