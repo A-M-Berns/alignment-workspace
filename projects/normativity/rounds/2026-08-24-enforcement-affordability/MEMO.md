@@ -433,3 +433,464 @@ Run the checks with:
 ```sh
 python3 tests/run.py
 ```
+
+---
+---
+
+# Continuation: paper-1 material (C0–C3)
+
+## Verdict
+
+**The one-coordinate affordability theorem is true and needs a fourth
+hypothesis the parent round did not state: a component recycling the
+enforcer's own losses from an unconstrained coordinate makes a static,
+perfectly-margined peg's liability compound geometrically.** C1's fork lands
+on the negative side — the self-financing inequality does not close, and the
+parameterized-chest fallback does not rescue it, because recycling refills the
+war chest faster than the chest draws down. C0 is therefore stated with an
+explicit no-cross-coordinate-subsidy hypothesis, and each of its four
+hypotheses carries a necessity witness.
+
+Status: **research memo; unregistered**. Executed 2026-08-25 against the round
+above, whose grades and text are unchanged. Same model, same pinned inputs;
+the skeleton v44 checksum and the `Contrib` file/line citations of §0 were
+re-verified against this branch and all resolve. Fixtures added in
+`tests/test_continuation.py`; the round's suite is 45 fixtures.
+
+The adopted split for the traderization paper puts the general affordability
+characterization — trichotomy, diachronic functionals, recharge — in a
+follow-up. Paper 1 keeps the liability interface, one real nonzero-liability
+theorem, and one criterion-forced impossibility. This continuation produces
+those two, the lemma the first of them needs, and the two secondary remarks.
+
+| Target | Grade |
+|---|---|
+| C1 aggregate-chest closure (channels a, b) | proved-in-model |
+| C1 self-referential channel (c) | **fork: does not close** — `refuted (witness)` for the closed form |
+| C0 one-coordinate bound under (H1)–(H4) | proved-in-model (bound); four necessity witnesses |
+| C0 hypothesis necessity, each of (H1)–(H4) | proved-in-model (witness each) |
+| C0′ criterion-forced impossibility | bound-with-argument (Thm 4.4 contrapositive, cited) |
+| C2 Appendix D severance | proved-in-model |
+| C3 converse of Theorem 4.6, qualitative | proved-in-model |
+| C3 quantitative floor `m²/4(1−m)` | bound-with-argument (12 configurations) |
+| Non-deductive nested spot-check | **open** — not exhibitable at finite support; see `FOLLOWUP_STOCK.md` |
+
+## C-0. Spot-checks of the parent round
+
+`TestParentSpotChecks`. The parent's `lifetime_liability` reads the enforcer's
+deficit at the **final horizon**; Definition 4.1 takes the supremum over
+**every** horizon `N` and every world live at `N`, so the parent's upper bounds
+do not transfer by definition. They transfer in fact: on every parent fixture
+re-run here — the T2 family at all three tolerances, T1 at two, the `{1/2}`
+point peg at three — the two quantities are **exactly equal**, and a scan over
+region, flow size, side and budget produced no separating instance. The
+enforcer's cumulative worth is monotone along every run this model produces.
+Every continuation fixture below uses the Definition 4.1 measure. No parent
+grade changes; the definitional gap is real and undeveloped, and is recorded in
+`FOLLOWUP_STOCK.md`.
+
+## C1. The self-financing lemma
+
+A component's wealth is global. Its throttle on the constrained coordinate
+reads `b + prior worth at the binding live table`, and *prior worth* counts
+everything the component has done, on every sentence. C0's bound is honest
+only if the income channels into that quantity are closed or parameterized.
+
+The channels, and what each is worth:
+
+- **(a) MarketMaker slack.** Bounded by `Σ 2^-n < 1` in total, by Lemma 3.2
+  summed over days. Enters every bound as the additive allowance term.
+- **(b) Other budgeted components.** Bounded by the paying component's own
+  floor, `−b_k` (`AssessmentFirm.lean:266`). Recycling through this channel
+  **redistributes** the aggregate war chest; it cannot mint.
+- **(c) The enforcement trader's own losses** — the quantity being bounded.
+  This is the self-referential channel, and it is the one that decides the
+  shape of C0.
+
+**Channel (b) is real and defeats the per-component reading**
+(`test_patsy_income_breaks_the_per_component_chest`). Two sentences, `ψ`
+settled false and unconstrained, `φ` pegged at `[2/5, 3/5]`. A patsy component
+with budget `b_B` holds a downward-sloping demand for `ψ`; the attacker, with
+budget `b_A = 1` **throughout**, sells `ψ` into it at the clearing price `2/5`
+a day and spends the proceeds shorting `φ` at half capital. With `b_B = 64`
+over 56 days the realized liability is **11.74**, against **8.50** for the T2
+bound instantiated at the attacker's own war chest — the per-component form
+fails — and against **0.44** for the same attacker with the harvest switched
+off, a factor of 27. The patsy pays for all of it inside its own floor.
+
+**Channel (b) closes in the aggregate**
+(`test_aggregate_nominal_chest_still_caps_patsy_recycling`). At
+`b_B ∈ {8, 32, 64}` the liability stays inside `(b_A + b_B)·C + slack` at every
+horizon. What caps a subsidised attack is the sum of the war chests of every
+component that pays into it — the parent's G2 finding, extended from
+simultaneous spreading to sequential transfer.
+
+**Channel (c) does not close, and no schedule-local bound survives it**
+(`test_self_referential_recycling_compounds_and_closes_nothing`). One
+component, budget `b_A = 1`, no patsy. The enforcer holds a **static,
+perfectly-margined** peg `[2/5, 3/5]` on `φ` and a **moving** peg on `ψ`
+alternating between `[1/10, 1/5]` and `[4/5, 9/10]`. The component pumps the
+`ψ` gap for world-uniform cash — the parent's W3 engine — and spends an eighth
+of its capital a day shorting `φ`. Over eight cycles:
+
+| cycle | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|
+| war chest | 0.301 | 0.645 | 1.078 | 1.621 | 2.302 | 3.155 | 4.226 | 5.567 |
+| `φ` flow | 0.755 | 0.959 | 1.212 | 1.530 | 1.928 | 2.427 | 3.054 | 3.839 |
+| `φ`-coordinate liability | 0.137 | 0.515 | 0.998 | 1.607 | 2.374 | 3.341 | 4.557 | 6.085 |
+
+The cycle-on-cycle flow ratio stays between 1.257 and 1.270 across all seven
+steps: the growth is **geometric**, not linear, and it does not decay over the
+run. The component is never shut off and never breaches
+its `−1` floor. The `φ` peg satisfies every geometric hypothesis one could ask
+of it — constant, interior, margin `2/5`, contained in the deductive region —
+and its liability is unbounded, funded entirely by the enforcer's losses on a
+sentence the `φ` schedule never mentions.
+
+**The parameterized-chest form does not rescue it as stated.** Reading `W` off
+the opposition's realized cumulative drawdown at the throttling world gives
+`W = 0.42`, while the liability is 21.91: recycling refills the chest faster
+than it draws down, so the drawdown never sees the flow it funds. The
+unconditionally true parameterization is by the **gross** capacity — budget
+plus all income received at the throttling world — and under channel (c) that
+quantity is itself unbounded, so the statement is true and empty.
+
+**The discriminator**
+(`test_the_discriminator_is_the_enforcers_sign_at_the_throttling_world`). The
+recycling coefficient `κ` is zero exactly when the enforcement trader's
+cumulative value is **nonnegative at the world that throttles the opposition**.
+On a static interior peg under one-sided flow this holds structurally and is
+asserted daily: the throttle binds at `W(φ) = 1` on every day of the 22-day
+run, and the enforcer's cumulative value there is `≥ 0` at every horizon
+(`test_throttle_binds_where_the_enforcer_profits`). The projection trade takes
+the side opposite the flow, so it profits exactly where the flow loses — the
+enforcer funds nothing at the world where funding would relax the throttle. On
+the pumped schedule the enforcer is a net payer at a throttling world through
+the `ψ` coordinate, and that is precisely where closure fails.
+
+**The lemma, as the evidence supports it.** Let `q` be the opposition's
+cumulative net position on `φ` and `m` the margin. Then
+`q ≤ (Σ_j b_j + I)/m`, where `I` is the cumulative income the opposition
+receives at the throttling world from outside its own budgets. `I ≤ Σ 2^-n`
+when the opposing components trade only `φ` **and** the enforcer's value at
+that world is nonnegative; `I` is unbounded otherwise. The schematic
+`L ≤ (chest + slack + κ·L)/m` closes when `κ < m` and channel (c) is what
+makes `κ` large — not by a little, but without bound.
+
+**No repair was attempted.** Closing channel (c) requires either fencing a
+component's per-coordinate capital — which contradicts the pinned Budgeter,
+whose scale is one scalar over the whole day trade
+(`AssessmentProcess.lean:392`, `budgetScaleFeature`) — or restricting the
+schedule to firms that trade nothing else. The second is hypothesis (H4)
+below; the first is a modification of the construction and out of scope.
+
+## C0. One-coordinate affordability
+
+*Paper-facing prose for skeleton §6; the maintainer may adapt. Conditional on
+the model results above; nothing here is registered.*
+
+> **Theorem (one-coordinate affordability).** Let `D̄` be a deductive process
+> and `(Φ̄, K̄, δ̄)` a constraint schedule with `Φ_n = {φ}` for every `n`. Write
+> `V_n := {W(φ) : W ∈ PC(D_n)} ⊆ {0,1}` for the day-`n` plausible values and
+> `K^D_n = conv V_n` for the deductive region of Definition 5.1. Call day `n`
+> *contested* when `V_n ⊄ K_n`. Set
+> `Ē := ConstraintCompiler^D̄(Φ̄, K̄, δ̄)` and let `P` be the pricing sequence
+> of the recursion `P_n = MarketMaker_n(TradingFirm^D̄_n(P_{≤n−1}) + E_n, P_{≤n−1})`.
+> Assume:
+>
+> - **(H1) Containment.** `K_n ⊆ K^D_n` for every `n`.
+> - **(H2) Margin.** There is `m > 0` with `dist(K_n, V_n \ K_n) ≥ m` on every
+>   contested day.
+> - **(H3) Stationary interior peg.** There are rationals `0 < lo ≤ hi < 1`
+>   with `K_n = [lo, hi]` on every contested day.
+> - **(H4) No cross-coordinate subsidy.** Every budgeted component of
+>   `TradingFirm^D̄` whose day strategies are not identically zero against `Ē`
+>   has support contained in `{φ}`.
+>
+> Then `Ē` has bounded lifetime liability relative to `D̄`:
+>
+> `B ≤ W · C(lo, hi) + c·Σ_n 2^-n`,  `C(lo, hi) = max( hi/(1−hi), (1−lo)/lo )`,
+>
+> where `W` is the aggregate budget of the opposing components — at worst the
+> TradingFirm's uniform `2` of Remark 4.2 — and `c` is an absolute constant.
+> **No term mentions `δ̄`.** In margin form, `C(lo, hi) ≤ (1−m)/m`, so the
+> bound degrades as `1/m` and in no other way.
+
+Under (H1) a single sentence that has settled forces `K_n = K^D_n = {the
+settled value}`, so that day is uncontested; (H1) and (H3) together therefore
+say **`φ` is undecided on every contested day, and the peg is interior**. That
+is the whole content of "regions contained in the day's deductive region" in
+one coordinate, and it is what separates this theorem from the impossibility
+below.
+
+### Proof sketch, step by step
+
+Each step carries the fixture that verifies it in the model and the `Contrib`
+lemma a Lean promotion would compose from.
+
+1. **Day accounting.** By Lemma 3.2 the combined day-`n` strategy
+   `TradingFirm_n + E_n` has value at most `2^-n` at every `[0,1]`-valuation on
+   the finite support, not merely at every world.
+   *Fixture:* the model's `solve_day` verifies this exactly at every vertex of
+   the support cube on every day of every run; a violation raises.
+   *Lean:* **none in `Contrib`** — cited from the source MarketMaker.
+
+2. **Flow–inventory identity.** Let `c_n` be the opposition's realized `φ`-share
+   coefficient on day `n` and `e_n` the enforcement coefficient. At the verified
+   fixed point `|e_n + c_n| ≤ c·2^-n`. The enforcer's cumulative inventory is
+   therefore the negative of the opposition's cumulative position, up to
+   `Σ 2^-n`. This is the step that makes the theorem true: the *available*
+   intensity `λ_n = ρ_n/δ_n²` never appears, only *realized* flow.
+   *Fixture:* `TestT2ContestedInteriorPeg.test_i_maximal_flow_short`;
+   `TestT2viPointPegAdjudication.test_center_point_peg_is_affordable_uniformly_in_delta`.
+   *Lean:* **none.**
+
+3. **Throttle conversion.** Each opposing component `j` is a budgeted trader
+   with budget `b_j`, whose cumulative net worth at every world live on every
+   day is at least `−b_j`. Under (H1)+(H3) the world `W(φ) = 1` is live on every
+   contested day. A component holding `q_j` shares short, acquired at prices at
+   most `hi`, has value at most `−q_j(1−hi)` there. Hence
+   `q_j ≤ b_j/(1−hi)`. Symmetrically for long flow with `lo` and `W(φ) = 0`.
+   *Fixture:* `TestC1SelfFinancing.test_throttle_binds_where_the_enforcer_profits`;
+   `TestG2Aggregation`.
+   *Lean:* `AssessmentProcess.lean:704` (`budgetedTrader_netWorth_floor`) for
+   the global floor; `:653` (`BudgeterAt_value_ge_neg_available`) for the
+   per-day form; `:628` (`budgetScaleFeature_denote_le_lossCap`) for the scale.
+
+4. **Aggregation without netting.** Summing step 3 over components gives
+   `q ≤ W/(1−hi)` with `W = Σ_j b_j`, independent of how the flow is spread,
+   because each component's scale reads only its own realized ledger.
+   *Fixture:* `TestG2Aggregation.test_floors_sum_independent_of_spread`,
+   `test_confederate_gains_cannot_relax_the_throttle`.
+   *Lean:* `AssessmentFirm.lean:127`
+   (`tradingFirmTrader_netWorth_eq_component_sum`), `:266`
+   (`componentTrader_netWorth_floor`), `:293`
+   (`tradingFirmTrader_netWorth_floor`).
+
+5. **Billing.** By step 2 the enforcer's inventory is long `q`, acquired at
+   prices at most `hi`. At the billing world `W(φ) = 0` its cumulative value is
+   at least `−q·hi`, hence at least `−W·hi/(1−hi)` by step 4.
+   *Fixture:* `TestT2ContestedInteriorPeg` (i)–(v);
+   `TestC0ParameterizedBound.test_bound_holds_and_is_tolerance_free_under_self_containment`.
+   *Lean:* **none.**
+
+6. **Allowance.** Accumulating step 1's per-day slack gives the additive
+   `Σ 2^-n` term. Near a vertex at price `p` the day-`n` guarantee tolerates a
+   net imbalance of `2^-n/p`, so the allowance itself is billed at `1/margin`.
+   *Fixture:*
+   `TestT2viPointPegAdjudication.test_near_vertex_point_pegs_blow_up_at_rate_one_over_margin`;
+   `TestC0ParameterizedBound.test_margin_controls_the_bound`.
+   *Lean:* **none.**
+
+7. **Closure of the income channels (C1).** By (H4) the opposition trades only
+   `φ`, so its only income at the throttling world is from `Ē`'s own `φ`
+   position and the day allowance. By step 2 that position is opposite the
+   flow, hence nonnegative at the throttling world. The `b_j` of step 3 are
+   therefore the nominal budgets, not budgets-plus-income.
+   *Fixture:* `TestC1SelfFinancing.test_throttle_binds_where_the_enforcer_profits`,
+   `test_the_discriminator_is_the_enforcers_sign_at_the_throttling_world`,
+   `test_aggregate_nominal_chest_still_caps_patsy_recycling`.
+   *Lean:* **none** — the sign fact is a property of the projection trade, not
+   of the Budgeter.
+
+8. **Tolerance-freedom.** `δ̄` enters only through `λ_n`, which step 2 shows is
+   an available and not a realized quantity. No term of the bound mentions it.
+   *Fixture:* `TestT2ContestedInteriorPeg.test_v_tolerance_independence`;
+   `TestC0ParameterizedBound.test_bound_holds_and_is_tolerance_free_under_self_containment`.
+   *Lean:* **none.**
+
+**Steps with no existing Lean support: 1, 2, 5, 6, 7, 8.** Everything the
+`Contrib` modules currently carry is the budgeting side — steps 3 and 4. The
+market side (the MarketMaker guarantee, the projection trade and Lemma 2.3,
+the fixed-point flow–inventory identity, the billing geometry) has no
+counterpart there, and a Lean promotion of this theorem would have to build it.
+Step 2 is the load-bearing gap: it is the only step that is not either pure
+convex geometry or an instance of a floor lemma, and it is the one the paper's
+own §6 accounting most needs stated as a lemma.
+
+### Necessity of each hypothesis
+
+Each is witnessed, so none is decoration.
+
+| dropped | witness | what happens |
+|---|---|---|
+| (H1) | `TestW1AntiSettlement` (parent) | peg excludes the settled value; riskless flow no plausible world bills; linear divergence |
+| (H2) | `TestT2viPointPegAdjudication.test_near_vertex_point_pegs_blow_up_at_rate_one_over_margin` (parent) | `K = {ε}` inside `K^D`; liability at rate `1/margin` |
+| (H3) | `TestW3RevisionPump` (parent) | region motion pumped at the set-gap rate; compounding |
+| (H4) | `TestC1SelfFinancing.test_self_referential_recycling_compounds_and_closes_nothing` (this continuation) | static perfectly-margined peg; liability geometric in the cycle count |
+
+### The impossibility half
+
+*Paper-facing; promotes the parent's W1 witness to a skeleton-facing statement.*
+
+> **Proposition (criterion-forced divergence).** Let `D̄` decide `φ` true at
+> stage `n₀`, and suppose the schedule satisfies `K_n ⊆ [0, 1−μ]` for all
+> `n ≥ n₀`, with `μ > 0`, and `δ_n ≤ μ/2` for all large `n` — that is, `K_n`
+> persistently excludes the settled value by a margin, violating (H1). Let `T`
+> be the trader buying one `φ`-share on each day `n ≥ n₀`. Then for every `N`
+> and every `W ∈ PC(D_N)`,
+>
+> `W(Σ_{n≤N} T_n(P)) ≥ (μ/2)(N − n₀) − c₀`,
+>
+> bounded below and unbounded above, so `T` — which is efficiently computable —
+> exploits `P` relative to `D̄`. By the contrapositive of Theorem 4.4, `Ē`
+> does **not** have bounded lifetime liability, for **any** enforcement trader
+> realizing the schedule. Divergence here is a property of the schedule, not a
+> defect of `ConstraintCompiler`.
+
+*Proof sketch.* After `n₀` the only plausible world has `W(φ) = 1`. Theorem 3.4
+gives `dist(P_n|_{Φ_n}, K_n) ≤ δ_n`, so `P_n(φ) ≤ 1 − μ + δ_n ≤ 1 − μ/2`. Each
+day's trade has value `1 − P_n(φ) ≥ μ/2` at that world, and the same at every
+world plausible at any later stage, since `D̄` is nested. Summing gives the
+displayed bound; boundedness below is the finite prefix before `n₀`. ∎
+
+*Fixture:* `TestW1AntiSettlement.test_linear_divergence_and_exploitation_shape`
+(parent) — the exploiter is exhibited, never throttled, never shut off, with
+enforcer liability at least `days/2 − 2` and the exploitation shape asserted
+directly. *Lean:* `AssessmentProcess.lean:217` (`exploits_ofDeductiveProcess`)
+identifies the generalized criterion's assessment set with LI exploitation
+relative to `D̄`, so the exploitation shape is stated in the right terms;
+Theorem 4.4 itself has **no** `Contrib` counterpart and is cited.
+
+### The worked example pair
+
+For the section's illustration, two point pegs on an undecided `φ`, both with
+`K_n ⊆ K^D_n = [0,1]`, differing only in where the point sits.
+
+**`K = {1/2}` is affordable, uniformly in the tolerance.** Against maximal
+short flow with war chest `1` over sixteen days, the realized lifetime
+liability is `15/64`, `0` and `35/64` at `δ_n = 1/2`, `1/n` and `2^-n` — all
+inside the `Σ2^-n` allowance of one another, against a homothetic-core
+prediction growing like `4^16`. The margin is `1/2`, `C = 1`, and the bound is
+`W + slack`. *Fixture:*
+`TestT2viPointPegAdjudication.test_center_point_peg_is_affordable_uniformly_in_delta`.
+What the homothetic core detects at the centre is a **revenue** property, not a
+solvency one: against matched churn the interval `[2/5, 3/5]` earns its width
+as spread and the point peg earns nothing, and neither goes insolvent
+(`test_zero_width_earns_no_spread_against_churn`).
+
+**`K = {ε}` blows up as `1/margin`.** Same construction, buyer flow `1`, war
+chest `1/4`, tolerance `1/16`:
+
+| `ε` | realized liability | `B(1−ε)/ε` |
+|---|---|---|
+| 1/4 | 1.119 | 0.750 |
+| 1/8 | 4.770 | 1.750 |
+| 1/16 | 10.939 | 3.750 |
+
+Each halving of `ε` better than doubles the liability; the excess over the
+war-chest term is accounted exactly by the allowance term `Σ2^-n/ε`, which is
+the second place the margin is billed. *Fixture:*
+`TestT2viPointPegAdjudication.test_near_vertex_point_pegs_blow_up_at_rate_one_over_margin`
+and `TestC0ParameterizedBound.test_margin_controls_the_bound`.
+
+The pair isolates the disagreement between the two accounts to the centre of
+the interval, which is where the parent round adjudicated it, and shows the
+`1/m` rate of the theorem's `C(lo, hi) ≤ (1−m)/m` at the vertex.
+
+## C2. Appendix D: what Theorem D.1's hypothesis buys
+
+*A self-contained subsection the maintainer may adapt into Appendix D.*
+
+Theorem D.1 replaces `PC(D_n)` by a sequence `L̄ = (L_1, L_2, …)` of world
+sets under two hypotheses: each `L_n` lists exactly the restrictions it
+realizes on each finite support, and **every world in `L_{n+1}` agrees, on
+every finite support, with some world in `L_n`**. The second is not
+bookkeeping. It is what keeps liability and exploitation the same question.
+
+Without it the correspondence severs, and the witness is explicit
+(`TestC2AppendixD.test_day_uniform_income_never_becomes_horizon_upside`; the
+parent's `TestTier4Identity.test_non_nested_live_sets_break_the_per_day_quantifier`
+is the same construction). Take a single undecided sentence, `K = {1/2}`, and
+let the live sets alternate between the two singletons: `L_n = {W(φ) = 0}` on
+odd days and `{W(φ) = 1}` on even. A trader that sells on odd days and buys on
+even banks a positive income on **every** day, uniform on that day's live set
+by triviality — at least `1/8` a day, so at least `2` over sixteen days — while
+its cumulative worth at every horizon's live world stays within `1` of zero and
+the enforcer's liability stays inside `1 + Σ2^-n`. Day-uniform income never
+becomes horizon upside. A liability bound therefore certifies nothing about
+exploitation, and the criterion-preservation argument of Theorem 4.4 has
+nothing to bite on.
+
+The agreement condition is exactly what this violates, and the model checks it
+directly: on the alternating sequence it fails at every day
+(`test_alternating_singletons_violate_the_agreement_condition`), and on a
+nested settlement schedule over three sentences it holds at every day
+(`test_the_settlement_stream_satisfies_it`), both by exhaustive enumeration
+over sub-supports. Under the condition the live sets can only shrink on each
+finite support, so a day trade whose value is constant on the day's live
+restrictions has that same value on every later horizon's — and the ledger
+conservation inequality then caps every coalition's upside by the enforcer's
+downside plus slack. For a deductive process the condition is free: `D_n ⊆ D_{n+1}`
+gives `PC(D_{n+1}) ⊆ PC(D_n)` outright.
+
+So the one paragraph the appendix needs: **nesting is what makes bounded
+liability a statement about exploitation rather than about arithmetic.** It
+buys the promotion of per-day uniformity to horizon uniformity, and that
+promotion is the only route from a downside bound on one trader to the absence
+of upside for every trader.
+
+## C3. Converse of Theorem 4.6
+
+Theorem 4.6 gives zero lifetime liability when every plausible world's payoff
+vector lies in `K_n`. The flow-quantified converse holds in the model.
+
+> **Remark.** For a single-sentence schedule on an undecided `φ` with
+> `K_n = [lo, hi]` constant, the enforcement trader has zero lifetime liability
+> against **every** budgeted opposing component if and only if every plausible
+> payoff pattern lies in `K_n`. The forward direction is Theorem 4.6; for the
+> converse, an excluded plausible value at distance `m` from `K_n` is extracted
+> by any sustained budgeted flow toward it, forcing liability at least
+> `(absorbed inventory)·m > 0`.
+
+Both directions are checked. Absorption gives **exactly** zero — not merely
+small — at every flow size tested, both for `K = [0,1]` with `φ` undecided and
+for `K = [0,1/2]` with `φ` settled false
+(`TestC3ConverseOfTheorem46.test_absorbed_patterns_give_exactly_zero_liability`,
+`test_absorbed_after_settlement_gives_exactly_zero`). Exclusion forces strictly
+positive liability in all twelve configurations tested — margins
+`m ∈ {1/5, 3/10, 2/5, 1/2}` against flows `F ∈ {1/8, 1/4, 1/2}` — and the loss
+is `(inventory)·m` to within the slack
+(`test_an_excluded_plausible_pattern_forces_positive_liability`,
+`test_the_forced_loss_is_inventory_times_margin`).
+
+The quantitative floor is **uniform in the flow size**: every configuration
+satisfies `L ≥ m²/4(1−m)`. That the floor does not improve with flow is not an
+artifact — liability *decreases* in `F` across the scan, because a larger flow
+trips the budgeter's throttle sooner and buys less total inventory. The
+qualitative biconditional is `proved-in-model`; the particular closed form
+`m²/4(1−m)` is fitted to twelve points and is graded `bound-with-argument`.
+
+## What this continuation does not establish
+
+Nothing here is registered or kernel-checked, and no Lean statement was
+attempted; six of C0's eight steps have no `Contrib` support at all, and the
+promotion table says which. C0 is proved in the model for the specific attacker
+classes of the parent round plus this continuation's two recycling families, on
+one- and two-coordinate fixtures with a stationary rational interval peg; the
+general statement over arbitrary budgeted ecologies and arbitrary rational
+polytopes is not given. (H4) is stated as a hypothesis because C1 shows it
+cannot be removed, not because the general cross-subsidy behaviour is
+understood — the multi-coordinate joint-margin question is the follow-up
+paper's, and this round did not develop it. C0′ rests on Theorem 4.4, cited and
+not re-proved, and on Theorem 3.4 for the price bound; the model realizes a
+much tighter price than `δ_n` there and the proposition does not use that. C3's
+converse is checked over twelve configurations at one peg family, and its
+closed-form floor is a fit. The Appendix D subsection establishes the severance
+and the agreement condition's role by witness and by exhaustive check on two
+schedules; it does not prove Theorem D.1. The non-deductive spot-check C2
+allowed for was **not performed and is not performable in this model** — at
+finite propositional support every finite table list is the plausible-world set
+of some finite sentence set, so the deductive and Appendix D cases cannot be
+separated by the live sets themselves; the separation lives in the *sequence*
+condition, which is what the alternating witness exercises. That is recorded,
+undeveloped, in `FOLLOWUP_STOCK.md`.
+
+## Naming
+
+Provisional, queued in `DECISIONS.md`, additional to the parent round's list:
+**self-financing lemma** (the C1 statement), **recycling coefficient** (the
+`κ` of the schematic bound), **cross-coordinate subsidy** (hypothesis (H4)'s
+negation), **throttling world** and **billing world** (the two worlds of the
+step-3/step-5 accounting), and **gross capacity** (budget plus income received
+at the throttling world).

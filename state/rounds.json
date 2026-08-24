@@ -662,6 +662,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-24-enforcement-affordability/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-25-enforcement-affordability-continuation",
+      "date": "2026-08-25",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-24-enforcement-affordability",
+      "verdict": "The one-coordinate affordability theorem is true and needs a fourth hypothesis the parent round did not state: a component recycling the enforcer's own losses from an unconstrained coordinate makes a static, perfectly-margined peg's liability compound geometrically.",
+      "verdict_source": "projects/normativity/rounds/2026-08-24-enforcement-affordability/MEMO.md",
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-25-enforcement-affordability-continuation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

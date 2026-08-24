@@ -4,9 +4,14 @@
 |---|---|---|---|---|---|
 | `README.md`, `MEMO.md`, `THEOREM_MAP.md` | Claude Fable 5 (Anthropic) | `ci-only` | 2026-08-24 | `prompts/2026-08-24-enforcement-affordability/` | — |
 | `src/`, `tests/` | Claude Fable 5 (Anthropic) | `ci-only` | 2026-08-24 | `prompts/2026-08-24-enforcement-affordability/` | — |
+| `MEMO.md` continuation sections C-0/C0–C3, `THEOREM_MAP.md` continuation sections, `FOLLOWUP_STOCK.md`, `tests/test_continuation.py`, `README.md` file list | Claude Fable 5 (Anthropic) | `ci-only` | 2026-08-25 | `prompts/2026-08-25-enforcement-affordability-continuation/` | — |
 
 The executor worked from live `origin/main` at
-`299fbd1` (the merge of PR #49).
+`299fbd1` (the merge of PR #49). The continuation executor worked from the
+parent round's branch head `1042c8b`, and wrote **only** the files in its own
+row: the parent round's grades, prose and fixtures are unchanged, apart from
+the `README.md` fixture count, which the continuation corrects because it
+became false.
 
 ## Pinned inputs
 
@@ -32,4 +37,12 @@ The executor worked from live `origin/main` at
 
 The affordability mechanism, the taxonomy adjudication, the set-gap
 functional, and the repaired identity are this round's constructions, not
-claims attributed to those sources.
+claims attributed to those sources. The self-financing lemma, the
+one-coordinate theorem's hypothesis set and its necessity witnesses, the
+Appendix D packaging and the Theorem 4.6 converse are the continuation's, on
+the same terms.
+
+The continuation re-verified both pinned inputs against the branch it worked
+from: the skeleton PDF's sha256 matches the digest above, and every
+`Contrib` file/line citation in `MEMO.md` §0 resolves to the declaration it
+names.

@@ -406,6 +406,23 @@ belongs in `PRIORITIES.md` under *Workspace friction*.
   *Waiting* costs little until the skeleton's §6 adopts the trichotomy
   prose, which would harden the regime names on publication.
 
+- **Name the enforcement-affordability continuation vocabulary, and rule on
+  the paper-1 split.** The continuation round adds, all provisional:
+  **self-financing lemma** (the statement bounding opposing flow by chest plus
+  recycled income over the margin), **recycling coefficient** `κ`,
+  **cross-coordinate subsidy** (what hypothesis (H4) forbids), **throttling
+  world** and **billing world** (the two worlds of the liability accounting),
+  and **gross capacity** (budget plus income received at the throttling world).
+  Two substantive decisions ride with them: whether the one-coordinate theorem
+  and the anti-settlement impossibility go into skeleton §6 as written (both
+  are marked paper-facing), and whether §6's affordability claim carries the
+  no-cross-coordinate-subsidy hypothesis explicitly — the continuation shows it
+  cannot be dropped, so a §6 stated without it would be false as stated.
+  *Doing it* is one reading of that round's `MEMO.md` continuation sections C1
+  and C0. *Waiting* costs little for the names and rather more for the
+  hypothesis, which is a correctness matter in the paper rather than a
+  presentational one.
+
 - **Rule on the transition-certificate vocabulary and the freeze.** The
   successor round to the reason-state prosecution introduces, all
   provisional: `transition certificate` with fields

@@ -35,3 +35,54 @@ Lean file/line citations are to this repository's
 - **Untouched:** Sections 5 and 7; Theorem 5.3 and its corollaries;
   Appendices A, C, D (Appendix D is referenced as the natural home of the
   non-nested identity attack, not modified).
+
+---
+
+## Continuation: paper-1 targets (C0–C3)
+
+| Model object / statement | Skeleton | Lean |
+|---|---|---|
+| C1 self-financing lemma: `q ≤ (Σ_j b_j + I)/m`, with `I` the income received at the throttling world | new; the missing side condition of Proposition 6.1's accounting | budgeting side only: `AssessmentProcess.lean:704,653,628`; `AssessmentFirm.lean:127,266,293` |
+| C1 channel (c) witness: static perfectly-margined peg, liability geometric in the cycle count | **bounds the scope of any §6 affordability claim**: no schedule-local bound survives cross-coordinate subsidy | — |
+| C0 one-coordinate bound under (H1)–(H4) | **the paper-1 nonzero-liability theorem**; refines Proposition 6.1 for stationary margined interior pegs, and instantiates Theorem 4.5's hypothesis | steps 3–4 only (table below) |
+| C0 hypothesis necessity (H1)/(H2)/(H3)/(H4) | Remark 3.9 made quantitative; Remark 6.2 demoted (parent) | — |
+| C0′ criterion-forced divergence for anti-settlement schedules | **the paper-1 impossibility**; Theorem 4.4 contrapositive + Theorem 3.4 | `AssessmentProcess.lean:217` (`exploits_ofDeductiveProcess`) for the exploitation shape; Theorem 4.4 has no `Contrib` counterpart |
+| C2 agreement-condition check; day-uniform income never becomes horizon upside | **Appendix D, Theorem D.1's second hypothesis** shown load-bearing, not bookkeeping | `AssessmentProcess.lean:88` (`Assessment.nested`), `:205`, `:217` |
+| C3 flow-quantified biconditional at a stationary interval peg | **converse of Theorem 4.6**, as a §6 remark | — |
+
+### Lean-promotion table for C0
+
+Composition targets for each proof step, and the named gaps.
+
+| step | content | composes from | gap |
+|---|---|---|---|
+| 1 | MarketMaker day bound at fractional valuations | — | **entire step**: Lemma 3.2 has no `Contrib` counterpart; the source MarketMaker lemmas would have to be lifted |
+| 2 | flow–inventory identity at the fixed point | — | **entire step**, and the load-bearing one: needs the fixed point itself, which `Contrib` does not model |
+| 3 | throttle conversion `q_j ≤ b_j/(1−hi)` | `AssessmentProcess.lean:704` (`budgetedTrader_netWorth_floor`), `:653` (`BudgeterAt_value_ge_neg_available`), `:628` (`budgetScaleFeature_denote_le_lossCap`) | the geometric step from "worth `≥ −b_j`" to "`q_j(1−hi) ≤ b_j`" — needs entry prices bounded by `hi`, which is step 2's output |
+| 4 | aggregation without netting | `AssessmentFirm.lean:127`, `:266`, `:293` | none — this step is available now |
+| 5 | billing at `W(φ)=0` | — | **entire step**: convex geometry of the projection trade; Lemma 2.3 has no `Contrib` counterpart |
+| 6 | allowance term, `2^-n/p` near a vertex | — | **entire step** |
+| 7 | income-channel closure (C1) | — | **entire step**: the sign of the projection trade at the throttling world |
+| 8 | tolerance-freedom | — | **entire step**, immediate from step 2 |
+
+**Step 4 is the only step that promotes today.** Steps 3 and 7 are one lemma
+each away once step 2 exists; steps 1, 2, 5, 6 require modelling the
+MarketMaker fixed point and the projection trade in `Contrib`, which no
+existing module begins. A Lean port of this theorem is therefore a
+market-side project, not a budgeting-side one — the opposite of where the
+existing `Contrib` investment sits.
+
+### Skeleton results: continuation deltas
+
+- **Newly cited, relied on:** Theorem 3.4 (for C0′'s price bound); Definition
+  5.1 and Theorem D.1's hypotheses (for C2); Theorem 4.5 (C0 instantiates its
+  bounded-liability hypothesis).
+- **Strengthened / refined by this continuation (model evidence,
+  unregistered):** Proposition 6.1, further — the affordability claim is
+  sound only under a no-cross-coordinate-subsidy side condition, which the
+  parent round's T2 did not need to state because its fixtures were
+  single-coordinate; Theorem 4.6, which gains a converse at a stationary
+  interval peg; Appendix D, whose second hypothesis is shown to carry the
+  liability–exploitation correspondence.
+- **Still untouched:** Sections 5 and 7; Theorem 5.3 and its corollaries;
+  Appendices A and C.
