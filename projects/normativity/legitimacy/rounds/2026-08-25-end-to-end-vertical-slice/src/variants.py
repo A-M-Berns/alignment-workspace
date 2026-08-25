@@ -8,6 +8,7 @@ but where.
 from __future__ import annotations
 
 from fractions import Fraction
+from functools import lru_cache
 from typing import Optional
 
 import li
@@ -168,6 +169,7 @@ def self_inconsistent_injunction() -> Injunction:
 # ------------------------------------------------------------ conflicts
 
 
+@lru_cache(maxsize=None)
 def empty_intersection(day: int = 2):
     """Two individually satisfiable injunctions with no common price."""
     X = x0()
@@ -178,6 +180,7 @@ def empty_intersection(day: int = 2):
     return run_day(day, base_stage(X), _std([("s:low", low), ("s:high", high)]))
 
 
+@lru_cache(maxsize=None)
 def incompatible_with_deduction(day: int = 2):
     """A satisfiable region whose intersection with `K^D` is empty.
 
@@ -195,6 +198,7 @@ def incompatible_with_deduction(day: int = 2):
     return run_day(day, stage, _std([("s:cap", J)]))
 
 
+@lru_cache(maxsize=None)
 def unsatisfiable_stage(day: int = 2):
     """A stage no world satisfies, from two settlements that conflict.
 
@@ -215,6 +219,7 @@ def unsatisfiable_stage(day: int = 2):
     return run_day(day, stage, _std([("s:cap", J)])), stage
 
 
+@lru_cache(maxsize=None)
 def settlement_against_deduction(day: int = 2):
     """A settlement whose content contradicts the deductive channel.
 
@@ -266,6 +271,7 @@ def rewriting_a_settlement() -> Exception:
     raise AssertionError("a settlement denotation was rewritten")
 
 
+@lru_cache(maxsize=None)
 def unrelated_language_extension(day: int = 1):
     """Growth of the LI language away from the fragment changes nothing.
 
@@ -321,6 +327,7 @@ def reflective_luv() -> CertifiedLUV:
         origin=("reflect", "P_{n+1}(phi)"))
 
 
+@lru_cache(maxsize=None)
 def reflective_injunction(day: int = 1):
     """A frozen injunction over a reflective LUV, run like any other."""
     X = reflective_luv()
@@ -332,6 +339,7 @@ def reflective_injunction(day: int = 1):
 # ------------------------------------------------- traderization boundary
 
 
+@lru_cache(maxsize=None)
 def syntactically_fine_but_inadmissible(day: int = 1):
     """A payload that passes every syntactic check and fails admissibility.
 
@@ -344,6 +352,7 @@ def syntactically_fine_but_inadmissible(day: int = 1):
     return run_day(day, base_stage(X), _std([("s:ord", J)]))
 
 
+@lru_cache(maxsize=None)
 def inert_injunction(day: int = 1):
     """An injunction that every stage-consistent world already satisfies.
 
@@ -357,6 +366,7 @@ def inert_injunction(day: int = 1):
     return run_day(day, base_stage(X), _std([("s:inert", J)]))
 
 
+@lru_cache(maxsize=None)
 def frozen_injunction_across_days(days=(0, 1, 2, 3)):
     """One frozen payload, compiled at several days.
 

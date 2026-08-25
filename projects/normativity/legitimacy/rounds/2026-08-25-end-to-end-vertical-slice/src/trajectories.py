@@ -23,6 +23,7 @@ source anyone should believe in.
 from __future__ import annotations
 
 from fractions import Fraction
+from functools import lru_cache
 from typing import Optional, Sequence
 
 import li
@@ -57,9 +58,16 @@ def stage_with(X, days: Sequence[int], settled: Optional[tuple] = None) -> Stage
     return Stage.of(chain, sem.entries(["l:pin"]))
 
 
+
+#: The builders below are memoized. Each drives several days of exponential
+#: geometry and the suite asks for the same trajectory from several tests; the
+#: cache changes what a run costs and not what it returns, because a built
+#: trajectory is only ever read.
+
 # ----------------------------------------------- A. fixed-request monotonicity
 
 
+@lru_cache(maxsize=None)
 def fixed_request_two_assessments(day: int = 2):
     """One compiled request, two nested live-world sets.
 
@@ -87,6 +95,7 @@ def _at_most_half(X) -> tuple:
     return (li.Neg(X.luv.gt(Q(1, 2))), li.Neg(X.luv.gt(Q(2, 3))))
 
 
+@lru_cache(maxsize=None)
 def mesh_counterexample():
     """`D` rises from day 1 to day 2 on one frozen injunction and one stage.
 
@@ -109,6 +118,7 @@ def mesh_counterexample():
     return X, J, {n: run_day(n, stage, view) for n in days}
 
 
+@lru_cache(maxsize=None)
 def mesh_counterexample_with_growth():
     """The same, with the day-2 stage strictly larger than the day-1 stage.
 
@@ -149,6 +159,7 @@ def _run_schedule(X, J, days, stage_at, slack_at, volume_at, tolerance_at,
     return out
 
 
+@lru_cache(maxsize=None)
 def settlement_closes_the_gap(days=(0, 1, 2, 3), settle_from: int = 2,
                               capital: Q = Q(100)):
     """Settlement removes every excluded world from day `settle_from` on.
@@ -175,6 +186,7 @@ def settlement_closes_the_gap(days=(0, 1, 2, 3), settle_from: int = 2,
             "charges": [r.charged for r in runs]}
 
 
+@lru_cache(maxsize=None)
 def pressure_decays(days=(0, 1, 2, 3, 4), capital: Q = Q(100)):
     """The ordinary aggregate's bound decays; the deficit does not.
 
@@ -194,6 +206,7 @@ def pressure_decays(days=(0, 1, 2, 3, 4), capital: Q = Q(100)):
             "charges": [r.charged for r in runs]}
 
 
+@lru_cache(maxsize=None)
 def nothing_decays(days=(0, 1, 2, 3, 4), capital: Q = Q(12)):
     """Every factor is constant, so the charge is constant and the sum diverges.
 
@@ -212,6 +225,7 @@ def nothing_decays(days=(0, 1, 2, 3, 4), capital: Q = Q(12)):
             "charges": [r.charged for r in runs]}
 
 
+@lru_cache(maxsize=None)
 def tolerance_route(days=(0, 1, 2, 3, 4, 5), capital: Q = Q(1000)):
     """Loosening the tolerance, and where that route stops.
 
