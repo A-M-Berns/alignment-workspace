@@ -1,5 +1,8 @@
 # The end-to-end vertical slice
 
+`ARCHITECTURE.md` is this round's canonical account of the objects; this
+document assumes it.
+
 Status: **specification and reference model; unregistered.** All names are
 provisional under `AGENTS.md` §6. Nothing here is Lean-checked or registered.
 The statements are paper derivations exercised by finite exact histories in

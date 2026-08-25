@@ -53,6 +53,49 @@ from outflow import (Insufficient, LiveDeficitCertificate,  # noqa: E402
 ZERO = Fraction(0)
 
 
+@dataclass(frozen=True)
+class ForceRequest:
+    """What the safety layer is actually stated about.
+
+    Not a region. `LiveDeficitCertificate.binds` checks four identities — date,
+    row presentation, support, live worlds — and the charge adds three declared
+    quantities. So the theorem-facing object is a *presentation together with an
+    assessment*, and two requests enforcing the same set of prices are different
+    requests if their rows differ.
+
+    That is not a defect to be canonicalised away here. `test_composition.py`
+    shows a demand stated twice enforcing the same prices at twice the charge,
+    which means any canonical form would have to choose a preferred row system
+    for a region and defend the choice. Recorded as a frontier rather than
+    solved; nothing in this round needs it solved.
+    """
+
+    date: int
+    support: tuple                     # one sentence name per coordinate
+    rows: tuple                        # tuple[(coefficients, rhs), ...]
+    live_worlds: tuple
+    slack: Fraction                    # eps_t
+    volume: Fraction                   # M_t
+    tolerance: Fraction                # delta_t
+
+    @property
+    def dimension(self) -> int:
+        return len(self.support)
+
+    def region(self) -> Region:
+        return Region(self.dimension, [Row(c, r) for c, r in self.rows])
+
+    @staticmethod
+    def of(compiled, live_worlds, date: int, slack: Fraction,
+           volume: Fraction, tolerance: Fraction) -> "ForceRequest":
+        return ForceRequest(
+            date=date, support=support_of(compiled),
+            rows=tuple((row.coefficients, row.rhs) for row in compiled.rows),
+            live_worlds=tuple(tuple(w) for w in live_worlds),
+            slack=Fraction(slack), volume=Fraction(volume),
+            tolerance=Fraction(tolerance))
+
+
 def region_of(compiled) -> Region:
     """The compiled rows as the enforcement layer's own `Region`.
 
@@ -82,6 +125,7 @@ class Charged:
     tolerance: Fraction               # delta_t
     live_worlds: int
     certificate: object = None
+    request: Optional["ForceRequest"] = None
     force: object = None              # SafetyCertifiedForce, or None
     account_remaining: Optional[Fraction] = None
     safety_bound: Optional[Fraction] = None
@@ -136,6 +180,8 @@ def charge_force(compiled, live_worlds: Sequence, date: int,
     rows = [(row.coefficients, row.rhs) for row in compiled.rows]
     dimension = len(compiled.coords)
     support = support_of(compiled)
+    request = ForceRequest.of(compiled, live_worlds, date, slack, volume,
+                              tolerance)
     cert = certify(compiled, live_worlds, date)
     q = charge(slack, volume, tolerance, cert)
 
@@ -146,13 +192,13 @@ def charge_force(compiled, live_worlds: Sequence, date: int,
     if force is None:
         return Charged(date, cert.aggregate, cert.rowwise, q, Fraction(slack),
                        Fraction(volume), Fraction(tolerance), len(live_worlds),
-                       certificate=cert, force=None,
+                       request=request, certificate=cert, force=None,
                        account_remaining=account.remaining,
                        safety_bound=account.lifetime_ceiling,
                        withheld="the account cannot fund this date's charge")
     return Charged(date, cert.aggregate, cert.rowwise, q, Fraction(slack),
                    Fraction(volume), Fraction(tolerance), len(live_worlds),
-                   certificate=cert, force=force,
+                   request=request, certificate=cert, force=force,
                    account_remaining=account.remaining,
                    safety_bound=account.lifetime_ceiling)
 

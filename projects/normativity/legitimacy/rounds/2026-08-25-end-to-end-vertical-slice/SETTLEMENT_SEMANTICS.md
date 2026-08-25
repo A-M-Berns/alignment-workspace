@@ -1,5 +1,8 @@
 # The settlement ledger as a source for the LI epistemic substrate
 
+`ARCHITECTURE.md` is this round's canonical account of the objects; this
+document assumes it.
+
 Status: **audit; unregistered.** Names provisional.
 
 The hypothesis under audit:
@@ -126,13 +129,13 @@ Neither wins. Threshold coherence is deductive, so a reading affirming
 holds over a process with an unsatisfiable stage, because every quantifier in the
 criterion ranges over consistent worlds. So a contradictory ledger does **not**
 break the guarantees — it empties them. Admissibility becomes vacuously true and
-the exclusion depth vacuously zero, and an architecture reading those numbers
+the live-world deficit vacuously zero, and an architecture reading those numbers
 without checking satisfiability would read maximal safety off a contradiction.
 The pipeline reports `D-stage-unsatisfiable` before any obligation is evaluated.
 
 **Conservative extension after old settlements.** New atoms, new stage
 sentences about them and a new settlement mentioning only them leave the day's
-coordinates, rows, `K^D`, `K` and exclusion depth identical.
+coordinates, rows, `K^D`, `K` and live-world deficit identical.
 
 **Rigidity of old denotations.** `SettlementSemantics.admit` refuses a second
 reading for an id. An old settlement's denotation is unchanged by later language

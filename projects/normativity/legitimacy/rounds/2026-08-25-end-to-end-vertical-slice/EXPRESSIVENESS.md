@@ -1,5 +1,8 @@
 # Where rich normative forms land
 
+`ARCHITECTURE.md` is this round's canonical account of the objects; this
+document assumes it.
+
 Each row classifies one expressiveness case against the two waists. The
 classification is a design argument supported by the finite witnesses named in
 the last column; no row is a theorem.
@@ -128,7 +131,7 @@ Two halves, and they separate cleanly.
 
 **Growth of the language away from the fragment** changes nothing: new atoms,
 new stage sentences and a new settlement about them leave coordinates, rows,
-`K^D`, `K` and exclusion depth identical. Verified.
+`K^D`, `K` and live-world deficit identical. Verified.
 
 **Revision of what a quantity means** is not available and should not be. A LUV
 is a threshold family, and the family is determined by the specification and

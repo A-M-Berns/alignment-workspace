@@ -48,6 +48,13 @@ injunction standing is untouched and still compiles to `v0`'s thresholds.
 
 ## Contents
 
+**Start with `ARCHITECTURE.md`.** It is the canonical account of what the round
+built — the four kinds of thing, the reason multihypergraph, the settlement
+projection into the LI substrate, the reflective schema loop, the three waists,
+the charged boundary, and the minimal persistent state. The documents below
+defer to it for what the objects *are*.
+
+- `ARCHITECTURE.md` — the canonical architecture, with one signature block.
 - `VERTICAL_SLICE.md` — the specification. §7 is the compiler, §11 is the
   traderization boundary and the inertness dichotomy, §13 is what is not shown.
 - `FINDINGS.md` — the research report. §6 is the central result, §10 is
@@ -61,7 +68,7 @@ injunction standing is untouched and still compiles to `v0`'s thresholds.
   installation), `conflict.py` (Fourier-Motzkin with Farkas provenance),
   `geometry.py`, `safety.py` (the charged branch, on the canonical objects),
   `pipeline.py`, `toy.py`, `variants.py`, `trajectories.py`, `trace.py`.
-- `tests/` — 135 cases. `python3 tests/run.py`.
+- `tests/` — 170 cases. `python3 tests/run.py`.
 
 ## What the tests cover
 
@@ -75,6 +82,7 @@ injunction standing is untouched and still compiles to `v0`'s thresholds.
 | `test_safety.py` | the billed quantity is the canonical sharp aggregate and not a clone; fixed-request monotonicity; the cross-day counterexample; four charged trajectories |
 | `test_settlement.py` | `Sigma` as a legal `DeductiveProcess`; `sem_L` total and rigid; raw outcomes removing no world; contradictions attributed not repaired; unrelated growth changing nothing |
 | `test_toy.py` | RI holds at every state; value revision is not operative revision; explicit operative revision; the full provenance chain; deterministic replay against the committed trace |
+| `test_architecture.py` | the reason substrate is a multihypergraph whose edges carry identity; schema revision is ordinary supersession, including a schema retiring its own standing; the three graphs are disjoint; the persistent state is three components; the charged object is a presentation |
 
 ## What this does not establish
 

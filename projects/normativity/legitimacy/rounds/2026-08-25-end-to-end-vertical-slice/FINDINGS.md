@@ -1,5 +1,8 @@
 # Findings
 
+`ARCHITECTURE.md` is this round's canonical account of the objects; this
+document assumes it.
+
 Status: **round report; unregistered.** Names provisional.
 
 ## 1. Repository map, as consumed

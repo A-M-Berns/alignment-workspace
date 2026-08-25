@@ -124,7 +124,7 @@ class AnEmptyWorldSetSilencesRatherThanBreaks(unittest.TestCase):
     `isLogicalInductor_of_stage_unsatisfiable` in the pinned dependency makes
     the criterion hold over a process with an unsatisfiable stage, because every
     quantifier in it ranges over consistent worlds. So admissibility is
-    vacuously true and the exclusion depth is vacuously zero, and an
+    vacuously true and the live-world deficit is vacuously zero, and an
     architecture that read those numbers without checking satisfiability would
     read maximal safety off a contradiction.
     """
