@@ -139,7 +139,7 @@ class SafetyCertifiedForce(ForceCertificate):
 def compile_safe_force(rows, dimension: int, support, date: int,
                        live_worlds, slack: Fraction, volume: Fraction,
                        tolerance: Fraction, feasibility: Sequence[Fraction],
-                       account, policy: str = "refuse",
+                       account, policy: str = "quarantine",
                        label: str = "", ceiling: Fraction = None):
     """The safety-bearing entry point. Certifies, charges, then emits.
 
@@ -156,8 +156,13 @@ def compile_safe_force(rows, dimension: int, support, date: int,
     request never reaches the last step, and a provenance mismatch cannot arise
     because there is no separate certificate to mismatch.
 
-    `policy` is `refuse`, `quarantine`, or `relax`, and relaxation only ever
-    loosens the requested tolerance.
+    `policy` is `quarantine`, `refuse`, or `relax`. **Quarantine is the default**
+    and is the constitution's adopted exhaustion behaviour: force is withheld,
+    nothing is spent, the endorsement keeps its normative standing, and the
+    answerability deadline it would otherwise miss is tolled. `refuse` raises
+    instead, for a caller that cannot proceed without the tolerance it named;
+    `relax` emits at the tightest affordable tolerance and only ever loosens the
+    request.
     """
     from outflow import (Insufficient, LiveDeficitCertificate, charge,
                          relax as _relax)
@@ -243,7 +248,7 @@ def compile_funded_force(rows, dimension: int, support, date: int,
                          tolerance: Fraction,
                          feasibility: Sequence[Fraction],
                          account, deficit_certificate,
-                         policy: str = "refuse",
+                         policy: str = "quarantine",
                          label: str = "",
                          ceiling: Fraction = None):
     """Compile force **and pay for it**, or decline to emit it.
@@ -255,13 +260,15 @@ def compile_funded_force(rows, dimension: int, support, date: int,
     position is constructed, so an unaffordable request cannot produce a
     certificate at all.
 
-    `policy` selects the exhaustion behaviour, and the choice is the caller's
-    because it is constitutional rather than mathematical:
+    `policy` selects the exhaustion behaviour. The constitution adopts
+    `quarantine`, which is the default; the other two stay available because a
+    caller may have a reason the clause does not cover.
 
+    * `quarantine` — return `None`. The endorsement keeps its normative standing,
+      receives no operative force at this date, and its answerability deadline is
+      tolled by the layer above.
     * `refuse` — raise. The request was for force at a stated tolerance and the
       account cannot fund it.
-    * `quarantine` — return `None`. The endorsement keeps its normative standing
-      and receives no operative force at this date.
     * `relax` — emit force at the tightest affordable tolerance, up to `ceiling`,
       and return `None` if even that is unaffordable.
 

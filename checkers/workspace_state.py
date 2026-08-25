@@ -64,11 +64,22 @@ def foundation_claim_count(path: pathlib.Path) -> int | None:
     return len(ids)
 
 
+def interfaces() -> list[dict[str, Any]]:
+    """Every theorem-facing interface, one file each.
+
+    A list rather than the single `theorem_interface.json` this once wrapped: the
+    repository grew a second theorem-facing interface while the schema had room
+    for one, and the alternatives were editing this file per interface or
+    overloading one object's identifier with an unrelated one.
+    """
+    return [json.loads(path.read_text())
+            for path in sorted(STATE.glob("theorem_interface*.json"))]
+
+
 def current_state() -> dict[str, Any]:
     project_data = load_json("projects.json")["projects"]
     round_data = load_json("rounds.json")["rounds"]
     vocabulary = load_json("vocabulary.json")["terms"]
-    interface = load_json("theorem_interface.json")
     foundations = load_json("foundations.json")["foundations"]
     for foundation in foundations:
         inventory = foundation["claim_inventory"]
@@ -86,10 +97,42 @@ def current_state() -> dict[str, Any]:
         "rounds": round_data,
         "vocabulary": vocabulary,
         "priorities": priorities(),
-        "interfaces": [interface],
+        "interfaces": interfaces(),
     }
+    state["rests_on"] = rests_on(round_data)
     state["counts"] = derived_counts(state)
     return state
+
+
+def rests_on(rounds: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Per round, the `ci-only` rounds it transitively takes as hypotheses.
+
+    Derived from `depends_on`, which records consumption rather than citation.
+    Every round here is `ci-only` — that is this repository's designed default —
+    so the set is the transitive closure of `depends_on` and the count is its
+    size. **This measures the debt and pays none of it.** A round resting on
+    twenty unreviewed rounds is not thereby wrong; it is a round whose
+    hypotheses nobody has read, which is a fact the emission should be able to
+    state.
+
+    Emitted and bound to nothing, per the wiki-bindings decision that a derived
+    quantity is seeded by demand. A cycle would not terminate, so `validate`
+    refuses one before this runs.
+    """
+    edges = {r["id"]: list(r.get("depends_on", [])) for r in rounds}
+    view = []
+    for round_ in rounds:
+        seen: set[str] = set()
+        frontier = list(edges.get(round_["id"], []))
+        while frontier:
+            current = frontier.pop()
+            if current in seen or current not in edges:
+                continue
+            seen.add(current)
+            frontier.extend(edges[current])
+        view.append({"round": round_["id"], "ci_only_rounds": sorted(seen),
+                     "count": len(seen)})
+    return view
 
 
 def derived_counts(state: dict[str, Any]) -> dict[str, Any]:
@@ -109,11 +152,46 @@ def derived_counts(state: dict[str, Any]) -> dict[str, Any]:
         # each source's own ledger. One source today; a second changes this
         # total, and the binding that reads it fails rather than drifts.
         "foundation_claims": sum(f["claim_count"] for f in state["foundations"]),
+        # Active entries in the modern registry, whatever their class. A wiki
+        # page saying how much of a line is registered binds this rather than
+        # counting rows itself, which would make the page a second judge.
+        "registered_claims": sum(1 for c in state["claims"]
+                                 if c.get("status") == "active"),
     }
 
 
 def duplicates(values: list[str]) -> set[str]:
     return {value for value in values if values.count(value) > 1}
+
+
+def dependency_cycles(rounds: list[dict[str, Any]]) -> list[str]:
+    """`depends_on` is consumption, so a cycle is a round resting on itself.
+
+    Checked before `rests_on` walks the graph, which would otherwise not
+    terminate. Unresolvable ids are reported per round elsewhere; here they are
+    simply not followed.
+    """
+    edges = {r["id"]: [c for c in r.get("depends_on", []) if c != r["id"]]
+             for r in rounds}
+    colour: dict[str, int] = {}
+    found: list[str] = []
+
+    def walk(node: str, path: list[str]) -> None:
+        colour[node] = 1
+        for nxt in edges.get(node, []):
+            if nxt not in edges:
+                continue
+            if colour.get(nxt) == 1:
+                found.append("depends_on cycle: "
+                             + " -> ".join(path[path.index(nxt):] + [nxt]))
+            elif colour.get(nxt, 0) == 0:
+                walk(nxt, path + [nxt])
+        colour[node] = 2
+
+    for identifier in edges:
+        if colour.get(identifier, 0) == 0:
+            walk(identifier, [identifier])
+    return found
 
 
 def validate(data: dict[str, Any]) -> list[str]:
@@ -141,6 +219,13 @@ def validate(data: dict[str, Any]) -> list[str]:
     registries = sorted(ROOT.glob("projects/*/CLAIMS.md"))
     if len(registries) != 1:
         problems.append(f"expected exactly one authoritative CLAIMS.md; found {len(registries)}")
+
+    if not data["interfaces"]:
+        problems.append("no theorem-facing interface found; the emitter globs "
+                        "state/theorem_interface*.json and an empty match is a "
+                        "missing file, not a workspace with no interfaces")
+
+    problems.extend(dependency_cycles(data["rounds"]))
 
     for project in data["projects"]:
         if project["status"] == "active":
@@ -186,6 +271,15 @@ def validate(data: dict[str, Any]) -> list[str]:
                 if " ".join(item["value"].split()) not in source:
                     problems.append(f"round {round_['id']}: verdict is not verbatim in "
                                     f"{source_path}: {item['value']!r}")
+        if "depends_on" not in round_:
+            problems.append(f"round {round_['id']}: no depends_on field; an empty "
+                            "list is the statement that it consumes nothing")
+        for consumed in round_.get("depends_on", []):
+            if consumed == round_["id"]:
+                problems.append(f"round {round_['id']}: depends_on is self-referential")
+            elif consumed not in rounds:
+                problems.append(f"round {round_['id']}: depends_on does not resolve: "
+                                f"{consumed}")
         superseded_by = round_.get("superseded_by")
         if superseded_by is not None:
             if superseded_by == round_["id"]:
@@ -313,7 +407,11 @@ def validate(data: dict[str, Any]) -> list[str]:
 
 
 def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
-    base = "prompts/2026-08-13-wikification-and-normativity"
+    # Generated views of live state. They live beside the state they render
+    # from, not inside a round's directory: a round record is history and is not
+    # edited, so a view kept there made every round that indexed itself edit an
+    # older round's folder to stay green.
+    base = "state/views"
     command = "python3 -m checkers.workspace_state --write-handoff"
 
     paths = ["# Final path map", "", f"Generated from `state/projects.json` by `{command}`.", "",
@@ -404,6 +502,50 @@ def self_test() -> bool:
     data["projects"][0]["path"] = "projects/leverage"
     cases.append(("live projects/leverage current-state path fails loudly",
                   any("active path does not exist" in p for p in validate(data))))
+
+    # `depends_on`, and the null inputs for it. The dangerous direction is a
+    # dependency that silently does not resolve: `rests_on` would then report a
+    # smaller debt than the round actually carries, which is the one error the
+    # view exists to prevent.
+    data = current_state()
+    data["rounds"][-1]["depends_on"] = ["2026-08-11-no-such-round"]
+    cases.append(("an unresolvable depends_on id fails loudly",
+                  any("depends_on does not resolve" in p for p in validate(data))))
+
+    data = current_state()
+    data["rounds"][-1]["depends_on"] = [data["rounds"][-1]["id"]]
+    cases.append(("a self-referential depends_on fails loudly",
+                  any("depends_on is self-referential" in p for p in validate(data))))
+
+    data = current_state()
+    first, second = data["rounds"][0], data["rounds"][1]
+    first["depends_on"] = [second["id"]]
+    second["depends_on"] = [first["id"]]
+    cases.append(("a depends_on cycle fails loudly",
+                  any("depends_on cycle" in p for p in validate(data))))
+
+    data = current_state()
+    del data["rounds"][-1]["depends_on"]
+    cases.append(("a round record with no depends_on fails loudly",
+                  any("no depends_on field" in p for p in validate(data))))
+
+    data = current_state()
+    data["interfaces"] = []
+    cases.append(("no theorem-facing interface fails loudly",
+                  any("no theorem-facing interface" in p for p in validate(data))))
+
+    chain = [{"id": "a", "depends_on": ["b"]}, {"id": "b", "depends_on": ["c"]},
+             {"id": "c", "depends_on": []}]
+    derived = {row["round"]: row for row in rests_on(chain)}
+    cases.append(("rests_on is transitive and counts what it lists",
+                  derived["a"]["ci_only_rounds"] == ["b", "c"] and
+                  derived["a"]["count"] == 2 and derived["c"]["count"] == 0))
+
+    emitted = current_state()["rests_on"]
+    cases.append(("rests_on emits one row per round",
+                  len(emitted) == len(emitted and current_state()["rounds"]) and
+                  {row["round"] for row in emitted} ==
+                  {r["id"] for r in current_state()["rounds"]}))
 
     protection = json.loads((ROOT / ".github/branch-protection.json").read_text())
     contexts_before = protection["required_status_checks"]["contexts"]

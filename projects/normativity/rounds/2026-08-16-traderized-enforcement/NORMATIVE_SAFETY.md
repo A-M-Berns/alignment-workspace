@@ -343,7 +343,8 @@ normative standing and loses operative effect. **Relaxation** buys the tightest
 affordable promise. **Refusal at admission** is `cap` failing. **Tolling**,
 if force is withheld for account reasons, is the behaviour that fits the existing
 answerability architecture — a deadline should not count a failure the substrate
-caused — and it is a constitutional choice, recorded as one and not made here.
+caused. Quarantine plus tolling is the adopted behaviour and the API's default;
+§12 carries the clause and `DECISIONS.md` the ruling.
 
 **Weakening the core minimum does not help.** The worst deficit is
 `max(0, r − m_c)`, in which `θ` does not appear. Lowering the declared core
@@ -402,30 +403,41 @@ re-litigation of what was settled."* An externally funded enforcement trader
 propping up an endorsement the record never vindicates **is** an outside source
 replenishing every paid loss while only current positions are tracked.
 
-**Not a rename of `P2`.** `P2` bounds the engine's downside on book holdings; its
-declared means are refusal and bounded participant budgets, and the enforcement
-trader is exempt from both by construction. The quantifier structure matches
-exactly — worldwise, cumulative, uniform in horizon — but the bearer, holdings
-and means do not. The correct move is a **sibling clause under a shared
-principle**, not a broadening of `P2`:
+**A sibling clause of `P2`, under a stated shared principle.** `P2` bounds the
+engine's downside on book holdings; its declared means are refusal and bounded
+participant budgets, and the enforcement trader is exempt from both by
+construction. The quantifier structure matches exactly — worldwise, cumulative,
+uniform in horizon — but the bearer, holdings and means do not, so the clause
+sits beside `P2` rather than broadening it, and both are instances of:
 
 > Every privileged channel that can impose losses unavailable to ordinary bounded
 > participants carries a finite cumulative downside account.
 
-That covers `P2` and traderized force as two instances with different bearers.
-Whether to state the shared principle, or only the sibling, is reserved.
+**The account is never replenished.** A finite account proves nothing if an
+outside source may refill it, and unbounded refilling is exactly the failure
+`NL-SI-P1` names; a bounded global top-up leaves a caller quoting a lifetime
+bound the account no longer has. A new constitutional era therefore opens a new
+account with its own finite allocation, and accounts for the transition, rather
+than raising an existing one. `OutflowAccount` refuses replenishment by default
+and this is what the safety theorem is proved for.
 
-**Replenishment is the load-bearing detail.** If an outside source may top the
-account up without limit, the guarantee is gone — that is exactly the failure
-`NL-SI-P1` names. Replenishment must be bounded globally, or admitted only under
-a new constitutional era with its own finite allocation. This is the one place
-where a plausible-looking implementation choice silently destroys the theorem.
+**The account is market-owned.** The substrate grants the privileged force
+channel one finite allowance regardless of who authored the constraint, which
+makes safety architectural rather than contingent on each author's own
+budgeting. Answerability is not given up: `OutflowAccount.cap` carves a summable
+per-endorsement decomposition out of the same capital, so a source that wants a
+modular budget declares one and is refused at admission if the capital cannot
+cover it.
 
-**Source-owned or market-owned.** Source-owned budgeting makes an endorsement's
-persistence its author's responsibility and fits answerability; market-owned
-allowance makes safety architectural and independent of who authored the
-constraint. The theorem is indifferent — it needs only that the total be finite.
-The choice is constitutional and is reserved.
+**At exhaustion the endorsement is quarantined and its deadline tolled.** Force
+is withheld and nothing is spent; the endorsement keeps its normative standing
+and loses operative effect; and an answerability deadline does not count a
+failure the substrate caused. Relaxation stays available as an explicit request,
+because the tightest affordable promise is a weaker promise than the source
+asked for, and refusal stays available as an explicit request, because a caller
+that cannot proceed without the tolerance it named should see the error.
+
+Adopted in `DECISIONS.md`, 2026-08-24, as agent-decided and reversible.
 
 ## 13. Two sufficient trajectory conditions, neither necessary
 

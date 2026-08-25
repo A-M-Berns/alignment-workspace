@@ -96,6 +96,13 @@ coupled runs.
 > limits. None is registered. Efficacy and counterfactual non-capture remain
 > separate from the actual-run record.
 
+> **Living note.** The reason-state interface is frozen with a stated reopening
+> condition: a concrete microhistory whose reason-dependency structure cannot be
+> expressed through contents, occurrences, record facts or derived queries — the
+> artifact, not an intuition. Nothing above it is closed; the line's components
+> are open or living notes, and a component becomes closed when a Lean
+> declaration or a checker invocation stands for it.
+
 There is no end-to-end composition. The normative-record-to-operative compiler
 remains open, as do general service under bounded resources and the composition
 of actual-run answerability with counterfactual non-capture.

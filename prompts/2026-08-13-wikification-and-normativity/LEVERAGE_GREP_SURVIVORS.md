@@ -120,12 +120,12 @@ Audit command: `rg -l -i leverage --hidden --glob '!.git/**'`.
 | `prompts/2026-08-13-local-regret-normative-learning/PROMPT.md` | historical |
 | `prompts/2026-08-13-relational-scorekeeping-bridge/PROMPT.md` | historical |
 | `prompts/2026-08-13-relational-scorekeeping-refinement/PROMPT.md` | historical |
-| `prompts/2026-08-13-wikification-and-normativity/FINAL_PATH_MAP.md` | historical |
+| `state/views/FINAL_PATH_MAP.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/LEVERAGE_GREP_SURVIVORS.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/PROMPT-machine-state-addendum.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/PROMPT-pr32-reconciliation-editorial.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/PROMPT.md` | historical |
 | `prompts/2026-08-13-wikification-and-normativity/REPORT.md` | historical |
-| `prompts/2026-08-13-wikification-and-normativity/VOCABULARY_SHEET.md` | historical |
+| `state/views/VOCABULARY_SHEET.md` | historical |
 | `state/projects.json` | historical |
 | `state/vocabulary.json` | historical |

@@ -11,7 +11,11 @@ The governing standard for the companion artifact:
 > essentially the same hypotheses and conclusion, machine-checked in the companion
 > artifact.
 
-Two obligations stand between today's tree and that standard, and they are named in §C.
+One obligation stands between today's tree and that standard, and it is named in §C.
+
+Every declaration named below is registered in `projects/normativity/CLAIMS.md` as
+`lean-proved`, against the `PRIORITIES.md` item each answers. The registry is what
+a claim is; this note states the theorems in the form the paper would.
 
 ---
 
@@ -87,8 +91,9 @@ carries exactly one class.
 > market `MarketMaker(TF^L)` is not exploited by any efficiently computable trader
 > relative to `L`.
 
-`READY FOR PAPER: exactly kernel-supported`, with the market-computability premise
-carried in the criterion form exactly as the source carries it for itself.
+`READY FOR PAPER: exactly kernel-supported`. The criterion form's
+market-computability premise is discharged for the schedules the paper actually
+presents — see Theorem 5 and §C.
 
 Companion declarations: `AssessmentProcess.Assessment`,
 `BudgeterAt_value_eq_of_safe`, `budgetedTrader_netWorth_floor`,
@@ -211,14 +216,25 @@ risk-account certificate `q_t = (ε_t + M_t)D_t/δ_t` with `Σ_t q_t ≤ B` is a
 > over `D`; and at every date some `μ_t ∈ Δ(PC(D_t))` has
 > `max_{φ ∈ Φ_t}|P_t(φ) − E_{μ_t}[1_φ]| ≤ δ_t`.
 
-`READY AFTER NAMED FORMALIZATION DEBT` — the criterion half and the zero risk capital
-are kernel-supported; the coherence conclusion inherits debt 1, and the "computable
-market" clause inherits debt 2.
+`READY FOR PAPER: exactly kernel-supported`, stated as
+`DeductiveEffective.deductive_end_to_end`: for any primitive recursive fragment and
+tolerance schedules, and any deductive process whose stages are propositionally
+satisfiable, the compiled market satisfies the pinned source's own
+`IsLogicalInductor` over `D` **and** meets the day-`n` tolerance at every date. It
+takes no `ComputableMarket`, no supplied region and no supplied representation, and
+it assumes nothing about the deductive process beyond the source's own certificate;
+the effective-stage hypothesis that looked necessary is not, because the compiler
+carries the stage table as finite data and the source's own Trading Firm reads it
+that way. The `ℓ^∞` conclusion follows from the Euclidean one at the same tolerance,
+so this statement does not route through debt 1.
 
-Companion declarations: `DeductiveEnforcement.enforcement_day_value_nonneg`,
-`enforcement_netWorth_nonneg`, `no_efficient_trader_exploits`,
-`no_efficient_trader_exploits_of_worldInclusive`,
-`isLogicalInductor_of_computableMarket`, `witness_market_not_exploited`.
+Companion declarations: `DeductiveEffective.deductive_end_to_end`;
+`EnforcedCompiler.ProjectionSchedule.end_to_end_effective` and
+`EffectiveRepresentation.end_to_end_of_constraints_effective` for the two schedule
+levels above it; `DeductiveEnforcement.enforcement_day_value_nonneg`,
+`enforcement_netWorth_nonneg`, `no_efficient_trader_exploits_of_worldInclusive`,
+`isLogicalInductor_of_computableMarket`, `witness_market_not_exploited` for the zero
+risk capital and the criterion half.
 
 **Three points the paper should not soften.** The dominance step is the *source's* own
 `trading_firm_dominance` at its own `DeductiveProcess`, so the conclusion is `def:lic`
@@ -269,9 +285,9 @@ GeneralizedLI/
 `Main.lean` is the API: exactly the theorems the paper states unqualified, in the
 paper's own phrasing, with no auxiliary hypotheses hidden in a namespace. Everything
 today lives in `lean/Workspace/Normativity/Contrib/`, which is the research surface;
-extraction is mostly mechanical, and the two things that are not are below.
+extraction is mostly mechanical, and the one thing that is not is below.
 
-### Debt 1 — `DistanceComplete`
+### Debt 1 — `DistanceComplete`, `PRIORITIES.md` item 49
 
 The exactness half of Theorem 3(b): from conformance on the exact family, produce an
 admissible mixture within `δ`. This is convex duality for a finite rational polytope —
@@ -290,32 +306,34 @@ Currently `derived` plus `exhaustive-finite` — `tests/test_coherence.py` verif
 every point of stated rational grids against an independently computed distance.
 **Estimated small-to-medium and self-contained.** Worth doing in the artifact PR.
 
-### Debt 2 — computability of the modified market
+### Computability of the modified market — discharged
 
-`isLogicalInductor_of_computableMarket` takes `ComputableMarket` as its one hypothesis,
-exactly as the dependency's own `lia_isLogicalInductor_of_computableMarket` does. Three
-of the four pieces a compiler needs are present:
+`EnforcedCompiler.computableMarket` constructs what
+`isLogicalInductor_of_computableMarket` used to take as a hypothesis. The four pieces
+a compiler needs are all present: the emission side is executable, since `BudgeterAt`,
+`TradingFirmAt` and `enforcementStrategy` are `def`s rather than `noncomputable def`s
+and the build enforces it; the search side is generic in the strategy, through
+`LogicalInduction.marketMakerSearchUpTo` with `MarketMaker_search_clock`; the
+recursion is prefix-determined, by
+`EnforcementPreservation.aggregateAt_eq_of_eq_prefix`; and the erasure — the
+first-order `ℕ`/`List` presentation of the recursion — is supplied by an additive
+public section upstream in `Construction/LIACompiler.lean` plus a downstream compiler
+that states and proves its own recurrence rather than importing one.
 
-* the emission side is executable — `BudgeterAt`, `TradingFirmAt` and
-  `enforcementStrategy` are `def`s, not `noncomputable def`s, and the build enforces it;
-* the search side is generic in the strategy —
-  `LogicalInduction.marketMakerSearchUpTo` with `MarketMaker_search_clock`;
-* the recursion is prefix-determined —
-  `EnforcementPreservation.aggregateAt_eq_of_eq_prefix`.
-
-Absent is the erasure: the first-order `ℕ`/`List` presentation of the whole recursion
-that `Construction/LIACompiler.lean` builds for the dependency's own aggregate in ~7300
-lines. **Do not attempt this to make a handoff prettier.** Either the paper states
-Theorem 1 and Theorem 5 with the computability premise explicit — which is what the
-source does for itself, and is defensible — or a dedicated pass transcribes the compiler.
-Recommendation: state the premise, and file the transcription separately.
+So Theorem 5 is stated unqualified, which is a stronger claim than the source makes
+for itself. What it costs is efficiency: the projector generator is **doubly
+exponential in the fragment dimension**, stated rather than omitted. A singly
+exponential construction plainly exists — the realised upper sets are cells of a
+hyperplane arrangement — and needs arrangement-vertex enumeration nobody has
+formalized here.
 
 ### Everything else
 
-No other obligation stands between the current declarations and the spine above. The
-remaining `open` items (safety necessity, the normative-record bridge, presentation-cost
-canonicality, a tight size bound, the universal-semimeasure property family) are
-discussion-section material, not debts against a stated theorem.
+Debt 1 is the only obligation standing between the current declarations and the spine
+above, and it is filed as `PRIORITIES.md` item 49. The remaining `open` items —
+safety necessity, the normative-record bridge, presentation-cost canonicality, a
+tight size bound, the universal-semimeasure property family — are discussion-section
+material, not debts against a stated theorem.
 
 ---
 
@@ -341,5 +359,7 @@ the core narrative.
 ## Provenance
 
 Generator `prompts/2026-08-16-traderized-enforcement/` (closure pass; executor Claude
-Opus 5, Anthropic; dispatch author unrecorded). Review status `ci-only`. Names marked
-provisional under `AGENTS.md` §6 and queued in `DECISIONS.md`.
+Opus 5, Anthropic; dispatch author unrecorded), reconciled against the registered
+declarations by `prompts/2026-08-24-reservation-bar-and-debt/` (executor Claude Opus 5,
+Anthropic; prompt author Claude Fable 5, Anthropic). Review status `ci-only`. Names
+marked provisional under `AGENTS.md` §6, for the naming audit.

@@ -48,9 +48,10 @@ to the underlying evidence.
 - **Aspirational** describes a research direction and claims no mathematical
   backing.
 
-The substantive results discussed here are currently unregistered. Their exact
-round verdicts and evidence strengths are preserved, but the wiki does not
-upgrade them to Established.
+The normativity line's traderization results are registered and carry
+`lean-proved`. Everything else discussed here is open or unregistered research:
+its round verdicts and evidence strengths are preserved, and the wiki does not
+upgrade any of it to Established.
 
 ## Wiki and lab
 

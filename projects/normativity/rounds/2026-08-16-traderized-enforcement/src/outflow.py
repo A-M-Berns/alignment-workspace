@@ -315,10 +315,12 @@ class OutflowAccount:
     """Finite lifetime capital, spent down as force is emitted.
 
     The account is **global over the whole enforcement channel**, not per source
-    and not per endorsement. `cap` carves a summable decomposition out of it for
-    sources that want modular budgets, and refuses one the capital cannot cover —
-    which is the operative content of summability, imposed at admission rather
-    than checked in the limit.
+    and not per endorsement — the market-owned form the clause adopts, so that
+    safety is architectural rather than contingent on each author's budgeting.
+    `cap` carves a summable decomposition out of it for sources that want modular
+    budgets, and refuses one the capital cannot cover — which is the operative
+    content of summability, imposed at admission rather than checked in the
+    limit, and is where answerability for an endorsement's persistence lives.
 
     Endorsement budgets are **caps, not reserves**. `sum_e B_e <= B` and
     `spent_e <= B_e` both hold, which is everything the safety theorem needs, but
@@ -358,11 +360,14 @@ class OutflowAccount:
         tracked. The preservation theorem then uses `lifetime_ceiling`, not the
         initial capital, so the bound a caller may quote is the ceiling.
 
-        Default behaviour is **no replenishment**: `lifetime_ceiling` defaults to
-        the initial capital, so the first call raises. A caller wanting a new
-        allowance under a new constitutional era constructs a new account and
-        accounts for the transition, rather than pretending the old lifetime
-        bound survived.
+        **The constitution adopts no replenishment**, which is the default:
+        `lifetime_ceiling` defaults to the initial capital, so the first call
+        raises. A caller wanting a new allowance under a new constitutional era
+        constructs a new account and accounts for the transition, rather than
+        pretending the old lifetime bound survived. A declared ceiling above the
+        initial capital is a bounded global top-up, which the clause rejects and
+        which is retained here only so that the rejected shape has an executable
+        form to test against.
         """
         amount = Fraction(amount)
         if amount < 0:

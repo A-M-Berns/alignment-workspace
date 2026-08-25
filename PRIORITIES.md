@@ -502,6 +502,12 @@ context is `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, who
 `THEOREM_MAP.md` says which of its results are kernel-checked, which are derived
 from source lemmas taken as hypotheses, and which are single witnesses.
 
+Items 47–51 were filed by `prompts/2026-08-24-reservation-bar-and-debt/` within its
+dispatched scope, as the demand the arc's registered claims answer. Four of the five
+are marked answered on filing: a kernel-checked headline registers against a filed
+item, and the item is where *what is worth proving* was decided, so it is filed with
+the answer rather than before it.
+
 ### 39. Does normative statics produce a credal constraint, or only a price demand? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -553,6 +559,15 @@ normative region without addressing the outflow account has not answered this it
 *Why it matters:* the force interface is installed and consumable; this is the one
 arrow between it and the normativity line, and without it traderized force is a
 result about deduction wearing a general name.
+
+*Narrowed by the reason-state prosecution:* the compiler now has a typed left
+input. Its source is the reason state `𝓡_n` — occurrences, schemas and staged
+applicability — and the credal fragment enters through the claims the compiler
+selects, so what was "compile the record" is now "select from a stated structure".
+The problem is unchanged in difficulty and this is the arrow the legitimacy line
+calls `R → O`. See
+`projects/normativity/legitimacy/rounds/2026-08-23-reason-representation/MEMO.md`
+§5.
 
 *Narrowed by the internal-answerability prosecution:* prefix-closed trace safety
 does not supply nonemptiness, closure, convexity or an effective presentation of
@@ -810,6 +825,315 @@ presentability of that baseline.
 *Why it matters:* it prices the deduction special case, which is the round's
 evidence that the abstraction is more than a name.
 
+### 47. Logical Induction over an assessment process — **[substantial]** — *answered by the traderized-enforcement round*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered.** An **assessment process** is a family `L_t` of propositionally
+consistent worlds carrying, for each date and each finite sentence set, a finite
+sound-and-complete list of the payout tables its worlds realise, with
+support-local temporal nesting. `Workspace.Normativity.Contrib.AssessmentProcess`
+and `.AssessmentFirm` substitute it for `PC(D_t)` inside the pinned dependency's
+own `Budgeter` and `TradingFirm`, and prove the analogues of `lem:budgeter` 1–3
+and `lem:tfdom` against the dependency's real `Strategy`, `Trader`, `EF`,
+`PCWorld` and `MarketMaker`. The registered declarations are
+`BudgeterAt_value_eq_of_safe`, `budgetedTrader_netWorth_floor`,
+`exists_budgetedTrader_exploits`, `AssessmentFirm.trading_firm_dominance` and
+`AssessmentFirm.no_efficient_trader_exploits`.
+
+The item as it would have been filed: the construction of `arXiv:1609.03543` is
+stated over a deductive process, but what it consumes is the evolving family of
+plausible worlds, which enters at exactly two places — the exploitation criterion
+and `Budgeter`. Whether the criterion survives replacing that family by an
+arbitrary one is the question the whole generalization rests on.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`, with an
+inhabitation witness.
+*Acceptance check:* the Lean gate is green and the axiom audit is clean.
+*Context:* `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md` §B,
+Theorem 1; `.../2026-08-16-traderized-enforcement/THEOREM_MAP.md`, the live-world
+lift.
+*Three strengthenings the answer carries*, each stated because the obvious form
+of the theorem does not have them: nonemptiness of `L_t` is not a hypothesis, the
+scaling infimum over an empty plausible set being `1`; global nesting is not one
+either, only its support-local shadow, and the two coincide exactly for families
+determined by their finite restrictions; and effectiveness of the restriction
+lists is unused by the algebra. `allTrueLive_not_deductive` shows the
+generalization is proper.
+
+### 48. The modified market as a computable belief sequence — **[substantial]** — *answered by the projection arc*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered.** The traderized construction's criterion theorems took
+`ComputableMarket` as a hypothesis, exactly as the pinned source takes it for its
+own aggregate, and the missing piece was the first-order erasure that
+`Construction/LIACompiler.lean` performs upstream in some 7300 lines. It is now
+constructed rather than assumed, through an additive upstream public section and
+a downstream compiler that states and proves its own recurrence. The registered
+declarations are
+`EnforcedCompiler.ProjectionSchedule.end_to_end_effective`,
+`EffectiveRepresentation.end_to_end_of_constraints_effective` and
+`DeductiveEffective.deductive_end_to_end`, the last of which assumes nothing
+about the deductive process beyond the source's own certificate.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and no
+headline declaration carries a supplied market, region or representation.
+*Context:* `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md` §C, debt
+2; `.../2026-08-18-projection-enforcement/FINAL_FORMALIZATION_STATUS.md`.
+*What the answer does not buy:* efficiency. The generator is doubly exponential
+in the fragment dimension, and the arc says so rather than omitting it.
+
+### 49. A kernel proof of `DistanceComplete` for the exact dual-distance family — **[substantial]**
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The exactness half of intrinsic conformance: from conformance on the exact
+dual-distance rows, produce an admissible mixture within `δ`. This is convex
+duality for a finite rational polytope — equivalently a finite minimax theorem.
+Mathlib carries neither a von Neumann minimax theorem nor a convenient
+`ℓ^∞`/`ℓ¹` separation over `Fin d → ℝ`, so the work is either proving the duality
+directly through `geometric_hahn_banach_point_closed` — which needs
+`f x = Σ_i c_i x_i` from the finite basis, `sup_{‖y‖_∞ ≤ 1}⟪c,y⟫ = ‖c‖₁`, and
+closedness of `K + δ'B_∞` — or proving a finite minimax theorem and specializing.
+
+The interface is already in place and cannot be met vacuously:
+`CoherenceModulus.DistanceComplete`, `gap_le_of_distanceComplete`, and the
+composition `IntrinsicCoherence.exists_credence_of_contract` waiting on it. The
+statement is currently `derived` plus exhaustive verification over stated
+rational grids in `tests/test_coherence.py`, against an independently computed
+distance.
+
+*Deliverable shape:* `lean-proved`, discharging the `DistanceComplete` hypothesis
+of `exists_credence_of_contract` at the exact dual-distance family.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and the
+composition typechecks with no `DistanceComplete` argument supplied by the
+caller.
+*Context:* `projects/normativity/notes/GENERALIZED_LI_PAPER_HANDOFF.md` §C, debt
+1; `.../2026-08-16-traderized-enforcement/PROOF_CLOSURE.md` §V.
+*Why it is [substantial] rather than [open]:* the statement is known, the route is
+named twice over, and the obstruction is Mathlib coverage rather than
+mathematics.
+
+### 50. The piecewise-affine facts the projection compiler cites — **[substantial]** — *answered by the max–min round*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered for the max–min half.** `ProjectionCompiler.lean` cited two classical
+facts. The second — that a piecewise affine function on a nonempty convex set is
+a max of mins of its affine components — is Ovchinnikov's Theorem 4.1
+(Beiträge zur Algebra und Geometrie 43 (2002) 297–302), now kernel-checked in
+both directions with an inhabitation witness. The registered declarations are
+`MaxMinRepresentation.exists_maxMin_representation` and
+`isPiecewiseAffineOn_maxMin`. The first fact — that Euclidean projection onto a
+polyhedron is piecewise affine — is established by
+`PolyhedralCoverage.isPiecewiseAffineOn_proj`, which establishes a **cover**
+only: not disjoint interiors, not normal cones, not full-dimensionality, which is
+what `IsPiecewiseAffineOn` asks and no more.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`, with an
+inhabitation witness.
+*Acceptance check:* the Lean gate is green and the axiom audit is clean.
+*Context:* `.../2026-08-18-maxmin-representation/README.md`, which carries the
+errata against the source's Definition 2.1 and its `H ≠ ∅` claim.
+*What the answer does not establish:* that `IsPiecewiseAffineOn` is equivalent to
+the source's Definition 2.1. The implication that matters holds by inspection of
+the two definitions and is not formalized; the definition used here is weaker in
+three stated respects.
+
+### 51. The deductive coherence region as a computable rational vertex list — **[substantial]** — *answered by the deductive-region round*
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+**Answered.** The day-`n` coherence region of a deductive stage, restricted to a
+finite priced fragment, is the convex hull of a computable finite list of
+rational `{0,1}` vertices, sound and complete about the plausible worlds, with
+the exact satisfiability hypothesis for nonemptiness. The registered declarations
+are `DeductiveRegion.admissiblePatterns_sound`, `admissiblePatterns_complete`,
+`admissiblePatterns_ne_nil_iff` and `deductiveRegion_eq_convexHull`. The
+enumerator is a computable `def` whose worked instances are proved by
+`decide +kernel`.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Normativity.Contrib`.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and the
+nonemptiness hypothesis is shown exact rather than merely sufficient.
+*Context:* `prompts/2026-08-19-deductive-region/REPORT.md`.
+*Relation to item 42:* this is the vertex set item 42's exact baseline is computed
+from, and it answers nothing item 42 asks. The complexity question is untouched
+and the enumerator is `2^k` in the atoms the stage and fragment mention.
+
+---
+
+## Normativity line — legitimacy
+
+Items 53–59 are the residual blockers the legitimacy prosecutions of 2026-08-21
+through 2026-08-23 left behind, filed by
+`prompts/2026-08-24-reservation-bar-and-debt/` within its dispatched scope. Each
+names the round that would consume the answer, because a blocker nobody is waiting
+on is a note rather than a demand. Their shared context is
+`projects/normativity/legitimacy/rounds/`, whose memos state what each prosecution
+tested and where it stopped.
+
+Two blockers those rounds named are not here. The `R → O` compiler — from the
+reason state to a price-space region — is item 39 seen from the reason side, and is
+recorded there rather than duplicated. Lean statements of the transition
+principles are a port target under the standing Lean-port family.
+
+### 53. The `May`-rule-to-scope compiler — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+A transition certificate cites an `AuthorityAct` carrying a `scope`, and `scope` is
+a stand-in. The real object is the record's versioned `May` rules, and nothing
+compiles those into scopes a certificate checker can test a cited act against. This
+is where substantive authorization content actually lives: with a stand-in scope,
+the certificate layer's guarantees are about citation discipline and say nothing
+about what the authority permitted.
+
+*Deliverable shape:* `test-supported` at minimum — a compiler from a versioned
+`May` rule set to certificate-checkable scopes, with a soundness statement and its
+counterexamples.
+*Acceptance check:* the transition round's certificate fixtures run against
+compiled scopes rather than declared ones, and every self-certification and
+laundering attack in that round's suite still fails.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/MEMO.md`
+§6 (i), §8.
+*Consumed by:* the successor to the transition-certificates round, which cannot
+state what a licensed act was licensed *to do* without it.
+
+### 54. Defeater-uptake completeness — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+`LostBasis` detects that a relied-on occurrence is no longer enabled, at the frozen
+citation, even when a substitute reason stands. It cannot see a defeater the
+practice has not yet taken up into its stance: an unprocessed defeater is not an
+absent one, and the substrate reports nothing about it.
+
+So detection-completeness is not a certificate property. It is an obligation on the
+record — what a practice owes by way of processing new defeaters into the stance so
+that `LostBasis` sees them — and it is the residue of the internal-answerability
+kernel's finite-invalidation-key axiom rather than a discharge of it.
+
+*Deliverable shape:* a stated uptake obligation with the finite witness that a
+practice meeting it detects every defeater a practice violating it misses.
+*Acceptance check:* a microhistory in which an unprocessed defeater is invisible to
+`LostBasis`, and the same history under the obligation in which it is not.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/MEMO.md`
+§6 (ii), §8; `INQUIRY_HANDOFF.md`.
+*Consumed by:* any round claiming the certificate layer detects defeat, which it
+does only for defeaters already in the stance.
+
+### 55. The `Due` connection: token, docket item, certified response — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+`Due` is untouched by the certificate and reason-state layers, and deliberately:
+the reason state supplies no burden calculus and must not, since hardwiring `Due`
+into the dependency graph was the failure the reason-state dispatch flagged. The
+record generates it, through due tokens and docket coverage.
+
+The item is one closed loop on one fixture: a standing rule fires and mints a due
+token, the token is docketed as an identity-bearing task, a response is performed,
+and a service certification discharges it against the task's pinned specification —
+with the reason-state queries carrying the dependency at each step.
+
+*Deliverable shape:* `test-supported` — one fixture running end to end, with the
+negative controls that distinguish discharge from expiry and from mooting.
+*Acceptance check:* the fixture runs in the legitimacy line's runner, and a variant
+that skips docketing leaves a visible coverage debt rather than passing.
+*Context:*
+`.../2026-08-23-transition-certificates/MEMO.md` §6 (iii), §8;
+`.../2026-08-23-afoundational-inquiry/MEMO.md`;
+`.../2026-08-23-certified-interactive-service/SERVICEABILITY.md`.
+*Consumed by:* the round that closes the response-learning loop, which needs a
+`Due` its learner can be answerable to.
+
+### 56. A citation discipline for `Licensed`, and its transport — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The reason state narrows the internal-answerability kernel's `Licensed` blocker to
+something small and specific. A licensing certificate can cite the occurrence
+identities it relies on; those occurrences' applicability sources are exactly the
+finite defeasible keys the kernel's invalidation axiom asks for; and defeat of a
+licence is then basis loss of a cited applicability claim.
+
+What is left is to pick the discipline — which occurrences a certificate must cite,
+and whether an undeclared occurrence may sit in a basis — and prove the transport:
+that a licence whose cited basis survives a record transition is still a licence
+after it.
+
+*Deliverable shape:* a stated citation discipline plus a transport statement, with
+the counterexample showing a weaker discipline fails.
+*Acceptance check:* the transition round's laundering suite runs against the
+discipline, and a certificate citing less than it requires is refused with a named
+failure code.
+*Context:* `.../2026-08-23-reason-representation/MEMO.md` §13–14;
+`.../2026-08-21-internal-answerability/MEMO.md`, blocker 1.
+*Consumed by:* any round claiming `Licensed` is record-internally substantive
+rather than a typing discipline.
+
+### 57. A checker for the applicability-in-source convention — **[entry]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+An occurrence applying a schema to a case view must carry the applicability claim
+among its sources. The reason state depends on it: with the convention, an
+undercutter is an ordinary reason against the applicability claim and needs no
+attack primitive; without it, the enabling relation is wrong in a way the substrate
+cannot report.
+
+The convention is stated and nothing enforces it. A checker over a reason ledger
+that fails an occurrence whose sources omit its own applicability claim is small,
+prospective, and exactly the shape `checkers/contrib/` is open for.
+
+*Deliverable shape:* a checker plus the claim it certifies, registered
+`contributor-checked`, or a house checker if the maintainer reads it.
+*Acceptance check:* `python3 -m checkers.run` accepts the entry, and the checker
+fails on a ledger containing one violating occurrence and on an empty ledger it was
+told to check.
+*Context:* `.../2026-08-23-reason-representation/MEMO.md`, Convention 1;
+`.../2026-08-23-transition-certificates/README.md`.
+*Consumed by:* any round treating applicability-in-source as enforced rather than
+declared. The transition round's certificate layer already does.
+
+### 58. Composition of the reason state with the record calculus — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The reason state is designed to compose with the record calculus — occurrences and
+their sources on one side, undertaken liabilities and their accounts on the other —
+and the composition is not verified. The two carry the same shape in different
+vocabularies: the account DAG the answerability kernel uses for liabilities is the
+dependency structure the reason ledger uses for occurrences, and nothing shows that
+a query answered in one is the query answered in the other.
+
+*Deliverable shape:* a composition statement with a finite model of both sides, and
+the counterexample distinguishing it from a claim that the two structures are the
+same object.
+*Acceptance check:* both lines' existing fixtures run against the composed model,
+and a basis-loss event on the reason side produces exactly the record-side review
+the calculus specifies.
+*Context:* `.../2026-08-23-reason-representation/MEMO.md`, *What is not
+established*; `.../2026-08-21-internal-answerability/MEMO.md` §6.
+*Consumed by:* any end-to-end legitimacy round, which needs both layers at once and
+currently has to assume they compose.
+
+### 59. A `Due` an advisor cannot select within — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The counterfactual-legitimacy round's second clause needs a scorekeeping practice
+that produces a `Due` whose extension an advisor cannot select within, and does not
+derive one. Without it, reason-mediated non-capture is a condition on an object
+nobody has exhibited: an advisor that can choose which of several equally-due
+responses the principal faces has shaped the outcome while every certificate and
+account stays internally valid.
+
+*Deliverable shape:* a practice with the non-selection property and its witness, or
+an argument that no practice with the round's other properties has it.
+*Acceptance check:* the round's projection fixture runs against the practice, and a
+selecting advisor is distinguished from a non-selecting one by the coupled-run
+condition rather than by inspection.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-17-counterfactual-legitimacy/THEOREM_MAP.md`
+§6.
+*Consumed by:* any round composing actual-run answerability with counterfactual
+non-capture, which is the composition the legitimacy line's status block names as
+open.
+
 ---
 
 ## Deference line
@@ -880,6 +1204,30 @@ severity ranking.
 *A solution ships:* restated theorems whose hypotheses are strictly weaker than
 their conclusions, with the gap displayed — or a demonstration that the squeeze
 is unavoidable, which is itself a result.
+
+### 52. Import the Cartesian-frames definitions and delete the mirror — **[entry]**
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+`lean/Workspace/Deference/Contrib/CartesianFrameBridge.lean` mirrors about two
+hundred lines of the upstream `CartesianFrames/` library, because the round that
+needed it was dispatched while that library was on an unmerged upstream branch
+and the pin could not reach it. The pin is now `c0d885bf`, a commit on the
+upstream default branch that carries `CartesianFrames/`, so the mirror is a
+second definition of objects the trust chain already supplies.
+
+The item is to import the authoritative definitions, delete the mirror, and check
+that every result the bridge states still holds against them — which puts inside
+the `lean` gate the cross-check that round could only run by hand, and is the
+concrete value of doing it.
+
+*Deliverable shape:* the existing declarations, unchanged in statement, over the
+upstream types.
+*Acceptance check:* the Lean gate is green, the axiom audit is clean, and
+`CartesianFrameBridge.lean` defines no frame type of its own.
+*Context:* `prompts/2026-08-12-cartesian-frames/` and its `artifacts/`, which
+carry the hand-run cross-check and its re-verification command.
+*Why it is [entry]:* no new mathematics. The round that wrote the mirror already
+compiled every result a second time against the authoritative definitions.
 
 ---
 
@@ -1414,34 +1762,28 @@ numbered item or by being ruled on in `DECISIONS.md`. **Cite an entry by its
 title, not its number** — the list is renumbered as entries leave it, so numbers
 are positions rather than identifiers.
 
-### F1 — Nothing catches a documented command that names a deleted file
+### F1 — One check for whether the repository's own documents still resolve
 <!-- workspace-priority: project=none; dispatchable=no -->
 
-`CONTRIBUTING.md` instructed readers to run `tests/check_frozen.py` for some time
-after the file was deleted, and three documents claimed eight gates where seven
-run. A gate is cheap and fits the existing null-input discipline: every
-`python3 tests/*.py` in a living document must name a file that exists, and every
-CI job name in prose must appear in `.github/branch-protection.json`. Both fail
-loudly on a stale reference and neither can pass vacuously.
+Two entries were filed separately and are one piece of work. A documented command
+can name a file that was deleted — `CONTRIBUTING.md` instructed readers to run a
+script that no longer existed, and three documents claimed eight gates where seven
+ran. And an unlisted root-level document defaults to the proof layer, which is the
+right default and fails silently in the granting direction: `RESEARCH_STATE.md` was
+contributor-editable with every gate green until someone noticed by hand.
 
-### F2 — No check that a root document lands in a layer
-<!-- workspace-priority: project=none; dispatchable=no -->
+One check covers both: every `python3 tests/*.py` and `python3 -m checkers.*` in a
+living document names a file that exists; every CI job name in prose appears in
+`.github/branch-protection.json`; every root-level `*.md` classifies into exactly
+one layer. Each fails loudly and none can pass vacuously.
 
-An unlisted path defaults to the proof layer, which is the right default —
-deny-by-default would mean every new kind of file needs a maintainer decision
-before anyone can work — but it fails silently in the granting direction, and it
-just did: `RESEARCH_STATE.md` was contributor-editable with the gate green until
-someone noticed by hand. The default is confirmed and stays. What is missing is a
-check that every root-level `*.md` classifies into exactly one layer, which
-catches the miss without touching the default.
+**Audited by hand on 2026-08-17 and clean** — zero dead command pointers, required
+contexts matching job names seven for seven, every root document classified. So
+this is insurance rather than a repair, and it is filed at that priority: worth
+building alongside other work in the same area, not on its own. A gate built with
+no failing case to try it against is the kind this repository is suspicious of.
 
-Two adjacent checks belong with it, and one of them has already bitten twice: a
-count or a job name repeated in prose or in a script drifts from
-`.github/branch-protection.json` with nothing to catch it. The read-back in
-`.github/apply-branch-protection.sh` hardcoded `8` and would have reported
-correct protection as wrong; it now derives the number from the payload.
-
-### F3 — The deference line has no claims registry
+### F2 — The deference line has no claims registry
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 `lean/Workspace/Deference/Contrib/` holds many kernel-verified results, sorry-free
@@ -1451,7 +1793,11 @@ ledger states in its first line. The gap is bookkeeping rather than mathematics,
 and it is the largest single divergence between what the repository holds and what
 it can say it holds.
 
-### F4 — A layer's theory is authoritative and its only code is in a disposable tree
+Since the headline rule, a Lean result its round presents as a headline registers
+in the pull request that ships it. This entry is the backlog that rule does not
+reach: results already merged, whose rounds are history.
+
+### F3 — A layer's theory is authoritative and its only code is in a disposable tree
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 `projects/normativity/consolidation-aug9/` states the answerability ledger and the
@@ -1467,44 +1813,13 @@ obligation fields it needed and recorded the adapter as architected rather than
 verified, because no cross-check against the original is meaningful when the
 original is not evidence.
 
-Three ways out, all maintainer decisions: consolidate the two modules into a
-frozen tree; promote them to a stable path outside `forward/`; or rule that the
-theory rows stand without executable support and that adapters are the expected
-pattern. **The report is the obligation here; which of the three is not this
-round's to take.**
+Three ways out: consolidate the two modules into a frozen tree; promote them to a
+stable path outside `forward/`; or rule that the theory rows stand without
+executable support and that adapters are the expected pattern. The choice turns on
+whether the program means to keep building on that layer, which is why it is in
+`DECISIONS.md`'s queue rather than taken here.
 
-### F5 — Upstream work on a feature branch is unreachable without a trust-chain edit
-<!-- workspace-priority: project=none; dispatchable=no -->
-
-`lean/lakefile.toml` pins one Formalized-Agent-Foundations commit and inherits
-Mathlib and Foundation through it, which is the right shape and stays. It has no
-way to express a dependency on work that lives on an upstream *feature* branch. A
-round dispatched against such work — the Cartesian-frames round was — has four
-moves, and all four are bad: repin the trust chain to a branch commit that can be
-rebased under it, which is also a maintainer decision the round cannot take;
-vendor the library, which the dispatch forbade and which duplicates a maintained
-tree; mirror the fragment needed, which is a second definition of the same objects;
-or drop the dependency and answer nothing.
-
-That round mirrored ~200 lines and then compiled every result a second time
-against the authoritative definitions in a checkout of the upstream branch, which
-bounds the risk to zero at the cost of a check that CI cannot run. The cross-check
-sits under `prompts/2026-08-12-cartesian-frames/artifacts/` with its re-verification
-command, deliberately outside `lean/Workspace/` because the `lean` gate cannot
-import what the repository does not pin.
-
-The branch moved twice during the round — two commits, and then a merge to the upstream
-default branch — so the register's first recorded commit was stale within a day and the
-cross-check had to be re-verified. That is the concrete cost, and it is also the reason
-the specific case has now dissolved: the library is on `main`, so pinning it is an
-ordinary pin rather than a dependency on a rebaseable branch.
-
-The generalisable question survives the case. Is a second, explicitly *exploratory* pin —
-one whose breakage fails a non-required job rather than the required `lean` gate — worth
-the trust-chain complexity, or is mirror-plus-cross-check the expected pattern for upstream
-work in flight? **The report is the obligation; the decision is not this round's.**
-
-### F6 — A pointer into a superseded source tree still resolves, and nothing says it is stale
+### F4 — A pointer into a superseded source tree still resolves, and nothing says it is stale
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 When a consolidated tree is superseded by a later one, every live pointer into the
@@ -1529,81 +1844,7 @@ inheritance. It does not decide anything; it makes the adjudication visible. The
 null-input case is a superseded tree with no inbound pointers, which must fail
 rather than report clean if the tree is cited anywhere.
 
-### F7 — A generated view of live state lives inside a completed round's directory
-<!-- workspace-priority: project=none; dispatchable=no -->
-
-`checkers.workspace_state --check` fails unless three files under
-`prompts/2026-08-13-wikification-and-normativity/` match what
-`--write-handoff` currently renders. They are honest — each says it is generated
-and names the command — but `prompts/README.md` states that a round record is
-history and is not edited, so every round that files a `state/rounds.json` entry
-now edits an earlier round's directory to stay green. This one did.
-
-Nothing is wrong with the check; the views are where a handoff round put them and
-nobody has moved them since. What is missing is a home for generated views that
-is not a history directory — `state/views/`, or the query's output on demand with
-no file at all. The cost is one confusing line in the diff of every future round,
-which is small and compounds.
-
-### F8 — A merge can drop a ledger entry while every other file lands
-<!-- workspace-priority: project=none; dispatchable=no -->
-
-The wiki-in-repo round's two `DECISIONS.md` entries and five `PROVENANCE.md`
-rows are absent from `main`, while everything else that round wrote arrived: `AGENTS.md` carries the amended
-*Security* section, `tests/workflow_scope.py` enforces it, `PRIORITIES.md` has
-item 38, and the round's own *Awaiting the author* stub — a stub in the same
-file, a hundred lines above — survived. So the constitution states a rule whose
-decision the ledger does not record, three new trust-chain files have no
-provenance row, and a round report under `prompts/` points at entries that are
-not there.
-
-Every loss is an insertion at a shared anchor — the head of `## Settled`, the
-end of a Markdown table — where another pull request had inserted at the same
-anchor in between. Whether the
-resolution dropped them or a squash composed a tree without them is not
-recoverable from what is visible now, and the mechanism matters less than the
-shape: **the ledger has one insertion point, every round writes to it, and a
-loss there is invisible in a green build.** Nothing checks that a decision an
-`AGENTS.md` clause depends on is recorded, and nothing checks that a report's
-claim to have filed one is true.
-
-Two cheap moves, neither this round's to choose: append new entries beneath the
-last same-dated one rather than at the section head, which turns same-anchor
-edits into ordinary appends; or check that every round directory under
-`prompts/` has a `PROVENANCE.md` row and, where its report claims a dated
-`DECISIONS.md` entry, that the entry exists. The state-bindings round restored
-all seven verbatim and filed this.
-
-### F10 — The structured state can hold exactly one theorem-facing interface
-
-<!-- workspace-priority: project=none; dispatchable=no -->
-
-`state/theorem_interface.json` is a single interface object, and
-`checkers/workspace_state.py` wraps it as `"interfaces": [interface]`. The schema
-has no room for a second, and the emitter is a house checker on the trust chain,
-so a round cannot add one.
-
-The traderized-enforcement round produced a second theorem-facing interface — the
-force layer, with a living note at
-`projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md` — and left it out of
-the structured state rather than either editing the checker or overloading
-`normativity.learning.current` with an unrelated object. Overloading would have
-created two meanings of "the current Normativity interface" inside one record.
-
-So the machine-readable state currently says the workspace has one theorem-facing
-interface and the repository has two. A reader orienting from
-`python3 -m checkers.workspace_state --json` will not find the force interface at
-all.
-
-Two cheap moves, neither this round's to choose: make the emitter read a list of
-interface files, which is a small maintainer edit to a trust-chain file; or rule
-that `theorem_interface.json` is reserved for the response-learning theorem and
-say so in `RESEARCH_STATE.md`, so the absence is a documented policy rather than
-a gap. The round that hit this documented the choice in its report and filed
-this.
-
-### F9 — Agent worktrees live inside the repository and nothing ignores them
-
+### F5 — Agent worktrees live inside the repository and nothing ignores them
 <!-- workspace-priority: project=none; dispatchable=no -->
 
 `.claude/worktrees/` holds one checkout per concurrent agent session, inside the
@@ -1618,12 +1859,11 @@ specification list, the name lint sees no Markdown, and the Lean and Python jobs
 see nothing new — so the first sign is a clone that is missing a directory it
 appears to contain.
 
-Two cheap moves, neither this round's to choose: a `.gitignore` entry for
-`.claude/`, which costs nothing and is a one-line specification-layer edit; or a
-check that no commit adds a gitlink outside a declared submodule list, which also
-catches the case where the directory moves. The round that hit this removed the
-entry from its own commit and filed this rather than editing `.gitignore`, since
-which paths the repository ignores is a specification decision.
+Two cheap moves: a `.gitignore` entry for `.claude/`, which costs nothing and is a
+one-line specification-layer edit; or a check that no commit adds a gitlink outside
+a declared submodule list, which also catches the case where the directory moves.
+Which paths the repository ignores is a specification decision, and the second move
+is the one with a null-input case, so this is filed rather than taken.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->

@@ -191,14 +191,17 @@ sharp supremum of the row sum, not the rowwise sum of per-row worst cases, which
 is larger. Supply it as a `LiveDeficitCertificate`; a bound the caller asserts is
 carried through marked unverified.
 
-**Exhaustion needs a declared behaviour**: quarantine, tolerance relaxation,
-refusal at admission, or tolling. Weakening the declared core minimum is not one
-of them — the worst deficit `max(0, r − m_c)` has no `θ` in it, so weakening the
-core buys nothing.
+**At exhaustion the endorsement is quarantined and its deadline tolled**, which
+is the API's default: force is withheld, nothing is spent, normative standing is
+kept, and an answerability deadline does not count a failure the substrate
+caused. Tolerance relaxation and refusal stay available on request. Weakening the
+declared core minimum is not among them — the worst deficit `max(0, r − m_c)` has
+no `θ` in it, so weakening the core buys nothing.
 
-**Replenishment must be bounded.** An account that may be refilled without limit
-certifies nothing. Declare a lifetime ceiling; the bound a caller may quote is
-that ceiling, not the initial capital.
+**The account is never replenished**, and is market-owned: one finite allowance
+for the whole force channel, out of which `cap` carves per-endorsement budgets.
+The bound a caller may quote is the capital the account was opened with. A new
+constitutional era opens a new account with its own allocation.
 
 `../rounds/2026-08-16-traderized-enforcement/NORMATIVE_SAFETY.md` carries the
 account, the type comparison against `P2`, a safe trajectory whose bound is

@@ -73,12 +73,18 @@ failure this rule exists to prevent. The `lean` job enforces all of it.
 One command per project; one repo-level runner that runs them all. A project's
 runner is self-contained. The `python` job.
 
-### 6. No permanent naming
+### 6. Names ship provisional
 
-Propose names; flag them; **the author decides**. A round needing a name for
-something new uses an obviously provisional one, marks it, and lists it in the
-round's report and in the pull request's "new names introduced" field. A name
-that ships is very hard to change later.
+A round needing a name for something new chooses one, marks it provisional, and
+lists it in the round's report and in the pull request's "new names introduced"
+field. A name that ships is very hard to change later, which is what the mark is
+for.
+
+Naming reaches `DECISIONS.md`'s queue only when a name is about to propagate into
+Lean identifiers or wiki vocabulary **and** the round cannot choose between two
+candidates. The maintainer's naming authority is exercised as a periodic **naming
+audit** — one batched pass over the outstanding marks, run when wanted — rather
+than as an item per round.
 
 ### 7. Citation integrity
 
@@ -101,6 +107,12 @@ With the same care as what was. Every report carries a section saying what its
 work does **not** establish: which hypotheses are assumed, which evidence is
 weaker than it looks, which claim rests on a reading rather than a proof.
 
+**Closed means a statement of record.** A round may report a component as
+**closed** only when the thing closed has a Lean declaration or a checker
+invocation standing for it, and its reopening condition, where one exists, is
+stated as a checkable event. Anything else is **open** or a **living note**, and
+those are the only other two verdict forms a component takes.
+
 ### 10. Reserved items are listed as outstanding actions
 
 A report that reserves something to the maintainer ends with an **Outstanding
@@ -115,15 +127,27 @@ list surfaced it, so it went unperformed while two files in the tree already
 pointed at the new name.
 
 **The report's list is not the queue.** A round that reserves something also
-appends it to **`DECISIONS.md`'s *Awaiting the author*** — one line, with what
-deciding it costs now and what waiting costs. That section is the single standing
-answer to "what needs me?", and a queue spread across every round's report is one
-nobody can read in one sitting. An entry leaves it when the decision lands as a
-dated entry below it, and a round that finds a stale one says so.
+appends it to **`DECISIONS.md`'s *Awaiting the author***. That section is the
+single standing answer to "what needs me?", and a queue spread across every
+round's report is one nobody can read in one sitting. An entry leaves it when the
+decision lands as a dated entry below it, and a round that finds a stale one says
+so.
 
-**The queue should normally be short.** If it is long, either the rounds are
-reserving things they could have decided, or something structural is generating
-decisions and belongs in `PRIORITIES.md` under *Workspace friction*.
+**What may be reserved.** An entry enters the queue only when the round is
+genuinely low-confidence in its own recommendation **and** can name what the
+maintainer has that the round lacks: taste, an idea nobody has yet, or external
+knowledge — what a collaborator will accept, what a paper needs, where the program
+is going. The entry states in one line what the decision turns on. An entry that
+cannot state that is a recommendation the round declined to adopt, and is rejected
+at review.
+
+**Otherwise the round adopts its own recommendation**, as a dated `DECISIONS.md`
+entry marked **agent-decided, reversible**, naming the rejected alternative in one
+line. The maintainer reverses by re-ruling. Under *no negative ontologies* only
+the live entry survives, so reversal is cheap and adoption is the default.
+
+**Merging is a pull-request fact.** A dispatch either leaves auto-merge on or
+reserves the merge as a note on the pull request. A merge never enters the queue.
 
 ### 11. Authoritative artifacts live on the author's machine
 
@@ -152,11 +176,13 @@ nothing records what it cost, and the next round pays it again. Defects land in
 `PRIORITIES.md` under *Workspace friction*, and the round that found one names it
 in its report.
 
-**Reporting is the obligation; fixing is not.** Whether to change the structure
-is the maintainer's, and a round that repairs a structural defect it was not
-dispatched to repair has taken a decision that was not its to take. The exception
-is a dead pointer — a command naming a file that does not exist, a retired job
-name — which is a fact rather than a design question and is repaired in place.
+**A contained fix belongs to the round that hits it.** Contained means
+non-retroactive, confined to one gate or one document, and shipped with its own
+null-input case — a dead pointer is the smallest instance and a new gate the
+largest. The round takes it and records it as agent-decided. Friction whose fix
+would change a spec-layer rule is reported and left to the maintainer under §10's
+bar; a round that rewrites a rule it was not dispatched to rewrite has taken a
+decision that was not its to take.
 
 ### 15. Epistemic promotion is explicit
 
@@ -173,6 +199,12 @@ label a result Established only after registration. Failed, superseded, and
 unregistered material cannot silently re-enter current state. A round changing a
 registered claim, project status, vocabulary item, priority, or theorem-facing
 interface updates the corresponding structured state in the same pull request.
+
+**A residual blocker is filed, not narrated.** Where a round leaves something a
+later round must answer before the work composes, it files a `PRIORITIES.md` item
+naming the round that would consume it. A blocker carried only in report prose is
+one the next report restates, and the list grows round over round with nothing
+that can retire an entry.
 
 ---
 
@@ -285,6 +317,13 @@ glob, carrying: generator; review status; the date; the originating round under
 The pull-request template asks for provenance entries added or updated alongside
 new names introduced.
 
+**What a round consumed.** Every round record in `state/rounds.json` carries
+`depends_on`: the round ids whose results it takes as hypotheses, as against the
+ones it merely cites. `workspace_state.py --check` fails on an id that does not
+resolve and on a cycle, and the emitter derives from it, per round, the set of
+`ci-only` rounds that round transitively rests on. That is the debt made
+countable; nothing about recording it pays any of it.
+
 **External citation.** A **registered claim** is citable externally (papers,
 posts, talks) carrying its epistemic class, which is what the class is for.
 **Prose is not**, whatever label is attached to it — not the roadmaps, not the
@@ -317,7 +356,10 @@ squash merge composes its message from the pull-request body: without the
 section, the squashed commit inherits whatever GitHub assembles, and the
 attribution silently disappears from `main`'s history. **When squashing, carry
 the Model attribution section into the squashed message.** CI checks that the
-section exists and is non-empty; it cannot check that what it says is true.
+section exists and is non-empty, and — where it names a model — that every
+non-merge commit the pull request adds carries a `Model:` trailer. A
+human-written pull request naming no model is asked for no trailer. Nothing
+checks that what any of it says is true.
 
 **The chat-bundle pointer is optional**, filled when a bundle exists and absent
 otherwise. Nothing is required to have one.
@@ -598,6 +640,21 @@ Prose in a `MODEL.md` or verification document is documentation *of* the
 record. It is never the citable statement. **The registry invocation is what a
 claim is.**
 
+**A Lean headline registers at merge.** A round shipping a Lean theorem it
+presents as its result files the entry — `kind: lean`, class `lean-proved` — in
+the same pull request, and the maintainer's merge is the registration. Whether a
+kernel-checked headline is worth registering is not a decision; *what is worth
+proving* is, and it is exercised through the priority items a dispatch grants
+scope to file.
+
+**`test-supported` is the ceiling for finite-model work.** A finite Python model
+carries its round verdict and that class — or `witness-checked` or
+`enumeration-verified` where the house harness actually adjudicates the instance
+or generates the domain. That ceiling is the class vocabulary working, not a
+defect for a bigger harness to repair: a finite model becomes load-bearing by
+Lean port, and `depends_on` is what says which later work is waiting on one. A
+round needing a property form the harness does not have may still add one.
+
 ### `agent-consolidated` — a status, not a class
 
 Distinct from the classes above, and not comparable with them: the classes say
@@ -637,11 +694,6 @@ its report. The demand structure is what a stranger's pull request must not set;
 it is not something the maintainer must retype once per item. One approval of a
 wave is the maintainer act, and a round that files outside what it was dispatched
 to do has exceeded its scope like any other overreach.
-
-**Naming is not relaxed with it.** A round still proposes provisional names and
-marks them; what a thing is finally called stays with the maintainer, because a
-name that ships is very hard to change and nothing about throughput makes that
-less true.
 
 Each item is a self-contained round specification an arbitrary agent could
 execute: precise statement; deliverable shape (which claim class, which checker
@@ -730,6 +782,7 @@ which are required.
 | 4, sorry-free | `lean` — the build, plus a textual scan |
 | 4, `#print axioms` present | `lean` — `tests/audit_axioms.py` |
 | 4, results audit to the three | `lean` — re-elaborates each file; also catches `sorryAx` |
+| the Lean gate runs whenever a change can reach it | `lean` — `tests/lean_scope.py`, which fails closed |
 | 5, runners | `python` — `tests/run.py` |
 | the consolidation still verifies | `consolidation-verification` — its own runner, from a copy |
 | the two layers | `path-gate` — a non-maintainer pull request touching a specification path fails |
@@ -737,14 +790,15 @@ which are required.
 | the registry, and the `contributor-checked` ceiling | `checkers` — harness self-test, then every `CLAIMS.md` |
 | contributed checkers are stdlib-only and documented | `checkers` — `tests/contrib_hygiene.py` |
 | DCO sign-off | `dco` — `tests/dco.py`; that an assertion was made, not that it is true |
-| model attribution in the pull-request body | `dco` — `tests/attribution.py`; presence and non-emptiness only |
+| model attribution, in the pull-request body and in each commit's trailer where the body names a model | `dco` — `tests/attribution.py`; presence and non-emptiness only |
 | no personal names in prose | `python` — `tests/name_lint.py`, `wiki/` included |
 | the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
 | volatile quantities in the wiki are declared and match machine state | `checkers` — `checkers/wiki_state_bindings.py` |
 | CI write scope is enumerated and conditioned; no stored secrets | `python` — `tests/workflow_scope.py` |
+| a round's record and its provenance row land together | `python` — `tests/round_records.py`, over what a change adds |
 | 2, exact arithmetic | **not gated** — review; a float in theorem-bearing code is a finding |
 | 3, theorem ships as four things | **not gated** — review; the PR template asks for each |
-| 6, no permanent naming | **not gated** — review; the PR template asks |
+| 6, names ship marked provisional | **not gated** — review; the PR template asks |
 | 7, citation integrity | **not gated** — machine-checkable only against a checksummed tree, not in general |
 | 8, 9, deviations and not-shown | **not gated** — review |
 | 10, reserved items listed | **not gated** — review |

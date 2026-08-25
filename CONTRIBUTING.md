@@ -53,15 +53,18 @@ python3 -m checkers.wiki_links                    # checkers: wiki links resolve
 python3 -m checkers.wiki_state_bindings           # checkers: wiki quantities are declared
 python3 tests/path_gate.py                        # path-gate: which layer your files are in
 python3 tests/workflow_scope.py                   # python: CI write scope is enumerated
+python3 tests/round_records.py --self-test        # python: a round lands with its provenance row
 python3 tests/conservativity.py                   # conservativity: no new axioms
 cd lean && lake exe cache get && lake build       # lean: sorry-free
+python3 tests/lean_scope.py --self-test           # lean: does this change reach the gate
 python3 tests/audit_axioms.py                     # lean: axiom audit
 cd projects/normativity/consolidation-aug9 && python3 tests/run.py   # consolidation-verification
 ```
 
-The comment names the CI job each command belongs to. Two gates have no local
-form: `dco` reads your commits' sign-offs, and the attribution check reads the
-pull-request body, which does not exist until you open one.
+The comment names the CI job each command belongs to. Five gates read a diff or a
+pull-request payload, so locally they can only run their self-test: `path-gate`,
+`dco` and the attribution check, plus the two above that take `--self-test` in the
+list.
 
 If these pass locally on a clean checkout, the rest is the pull request itself.
 
@@ -119,7 +122,7 @@ are not silently translated into the modern registry's epistemic classes.
 
 | you are claiming | you submit | what adjudicates it |
 |---|---|---|
-| **a Lean theorem** | the proof, in a contribution namespace, plus a term inhabiting its full hypothesis package | the Lean kernel, the axiom audit, and the nonvacuity check |
+| **a Lean theorem** | the proof, in a contribution namespace, plus a term inhabiting its full hypothesis package — and, if it is a result you present as a headline, its `CLAIMS.md` entry in the same pull request | the Lean kernel, the axiom audit, and the nonvacuity check |
 | **an existential, counterexample, sharpness or necessity witness** | **data** — the instance — plus the house checker id and the property parameters | `checkers/witness.py`, which you did not write and cannot change |
 | **something the house checkers cannot express** | your own checker in `checkers/contrib/`, plus the claim | your checker — and the claim is capped at `contributor-checked` |
 | **a finite universal claim** | **domain parameters** only | `checkers/enumeration.py`, which generates the domain itself |
@@ -260,6 +263,11 @@ check. What review still decides is fit, naming, provenance labelling, whether
 both documentation registers are present, and whether a result belongs in the
 program — and those are judgments about work already merged, raised as issues or
 follow-up pull requests like anything else.
+
+**Merging is a fact about a pull request, not a decision to be queued.** A
+dispatch either leaves auto-merge on or says on the pull request that the merge is
+the maintainer's; either way the merge never becomes an entry in `DECISIONS.md`'s
+*Awaiting the author*.
 
 Two things make this safe rather than reckless. A non-maintainer pull request
 touching a specification path **cannot go green** — the `path-gate` job fails it
