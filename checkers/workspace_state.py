@@ -478,7 +478,7 @@ def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
             repo=", ".join(term.get("repo_identifiers", [])) or "—"))
 
     rounds = ["# Verdict/status inventory", "",
-              f"Generated from `state/rounds.json` and the sole claims registry by `{command}`.", "",
+              f"Generated from `state/rounds.json` and every project's claims registry by `{command}`.", "",
               "Registered classes are classes actually promoted by the round; an empty cell means no claim was registered.", "",
               "| round ID | date | project | current path | verdict (verbatim) | registered classes | prompt | claim changes |",
               "|---|---|---|---|---|---|---|---|"]
@@ -496,7 +496,140 @@ def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
         f"{base}/FINAL_PATH_MAP.md": "\n".join(paths) + "\n",
         f"{base}/VOCABULARY_SHEET.md": "\n".join(vocabulary) + "\n",
         f"{base}/VERDICT_STATUS_INVENTORY.md": "\n".join(rounds) + "\n",
+        f"{base}/NAMING_AUDIT.md": render_naming_audit(data, command),
     }
+
+
+LEAN_DEF = re.compile(r"^(?:noncomputable\s+)?(?:private\s+)?"
+                      r"(def|structure|inductive|abbrev|class)\s+([A-Za-z_][\w.']*)")
+LEAN_NS = re.compile(r"^namespace\s+(\S+)")
+LEAN_END = re.compile(r"^end\s+(\S+)")
+
+
+def lean_definitions() -> list[dict[str, str]]:
+    """Vocabulary-bearing Lean identifiers: definitions, not theorem names.
+
+    A theorem name describes a statement and is cheap to change. A `def`,
+    `structure`, `inductive`, `abbrev` or `class` names an *object* that other
+    files, other rounds and eventually a paper have to spell, which is what a
+    naming audit is about.
+    """
+    found = []
+    for path in sorted((ROOT / "lean" / "Workspace").rglob("*.lean")):
+        stack: list[str] = []
+        for line in path.read_text().splitlines():
+            opened = LEAN_NS.match(line)
+            if opened:
+                stack.append(opened.group(1))
+                continue
+            closed = LEAN_END.match(line)
+            if closed and stack and (stack[-1].split(".")[-1]
+                                     == closed.group(1).split(".")[-1]):
+                stack.pop()
+                continue
+            declared = LEAN_DEF.match(line)
+            if declared:
+                found.append({
+                    "kind": declared.group(1), "name": declared.group(2),
+                    "declaration": ".".join(stack + [declared.group(2)]),
+                    "file": path.relative_to(ROOT).as_posix(),
+                })
+    return found
+
+
+def naming_rounds() -> dict[str, str]:
+    """Lean file -> originating round, from each namespace's own PROVENANCE.md."""
+    origin: dict[str, str] = {}
+    for provenance in (ROOT / "lean" / "Workspace").rglob("PROVENANCE.md"):
+        for line in provenance.read_text().splitlines():
+            if not line.startswith("|"):
+                continue
+            rounds = re.findall(r"`(prompts/[^`]+)`", line)
+            for name in re.findall(r"`([A-Za-z]\w*\.lean)`", line):
+                if rounds:
+                    origin.setdefault(name, rounds[0].rstrip("/").split("/")[-1])
+    return origin
+
+
+def render_naming_audit(data: dict[str, Any], command: str) -> str:
+    """The sheet the maintainer's batched naming audit reads. No recommendations.
+
+    Propagation is matched on a backticked, word-bounded occurrence: a substring
+    match reports `Hom` as having reached the wiki because the wiki has a page
+    called Home, and a sheet that cries wolf is one nobody finishes reading.
+    """
+    registered = {claim["statement_of_record"].get("declaration")
+                  for claim in data["claims"]
+                  if claim.get("statement_of_record", {}).get("kind") == "lean"}
+    surfaces = {
+        "registry": "",  # handled by `registered`
+        "wiki": " ".join(p.read_text() for p in sorted(ROOT.glob("wiki/*.md"))),
+        "note": " ".join(p.read_text()
+                         for p in sorted(ROOT.glob("projects/*/notes/*.md"))),
+        "prose": (ROOT / "PRIORITIES.md").read_text()
+                 + (ROOT / "DECISIONS.md").read_text(),
+    }
+    origin = naming_rounds()
+
+    lines = ["# Naming audit sheet", "",
+             f"Generated from the Lean library and the live documents by `{command}`.",
+             "",
+             "**Input to the maintainer's batched naming audit, and nothing else.**",
+             "Every name here ships marked provisional under `AGENTS.md` §6. This sheet",
+             "says what each one is, which round introduced it, and how far it has",
+             "spread. It carries no recommendation, and no round rules on any of it.",
+             "",
+             "*Propagates* is where a name is spelled outside the file defining it.",
+             "`registry` means it is a statement of record, so renaming it is a registry",
+             "diff; `wiki` means it has reached the human register; `note` a living note;",
+             "`prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to",
+             "change, and the count of those is the size of the free choice remaining.",
+             ""]
+
+    # Registered theorem names belong here even though a theorem name is
+    # ordinarily cheap: once a declaration is a statement of record, renaming it
+    # is a registry diff and a citation someone may already have made. These are
+    # the most expensive names in the repository, so the audit sees them first.
+    entries = lean_definitions()
+    by_declaration = {e["declaration"] for e in entries}
+    for claim in data["claims"]:
+        record = claim.get("statement_of_record", {})
+        if record.get("kind") != "lean":
+            continue
+        declaration = record["declaration"]
+        if declaration in by_declaration:
+            continue
+        entries.append({
+            "kind": "theorem", "name": declaration.rsplit(".", 1)[-1],
+            "declaration": declaration,
+            "file": f"lean/Workspace/{'Deference' if '.Deference.' in declaration else 'Normativity'}/",
+            "round": claim.get("origin_round") or "unrecorded",
+        })
+
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for entry in entries:
+        line = "deference" if "/Deference/" in entry["file"] else "normativity"
+        spread = ["registry"] if entry["declaration"] in registered else []
+        for surface, text in surfaces.items():
+            if surface == "registry":
+                continue
+            if re.search(rf"`[^`\n]*\b{re.escape(entry['name'])}\b[^`\n]*`", text):
+                spread.append(surface)
+        entry["propagates"] = ", ".join(spread) or "Lean only"
+        entry.setdefault("round",
+                         origin.get(entry["file"].split("/")[-1], "unrecorded"))
+        grouped.setdefault(line, []).append(entry)
+
+    for line in sorted(grouped):
+        rows = sorted(grouped[line], key=lambda e: (e["file"], e["name"]))
+        free = sum(1 for e in rows if e["propagates"] == "Lean only")
+        lines += [f"## {line} — {len(rows)} names, {free} of them Lean only", "",
+                  "| name | kind | round | propagates | declaration |",
+                  "|---|---|---|---|---|"]
+        lines += [f"| `{e['name']}` | {e['kind']} | {e['round']} | {e['propagates']} "
+                  f"| `{e['declaration']}` |" for e in rows]
+        lines.append("")
+    return "\n".join(lines) + "\n"
 
 
 def self_test() -> bool:

@@ -1,6 +1,6 @@
 # Verdict/status inventory
 
-Generated from `state/rounds.json` and the sole claims registry by `python3 -m checkers.workspace_state --write-handoff`.
+Generated from `state/rounds.json` and every project's claims registry by `python3 -m checkers.workspace_state --write-handoff`.
 
 Registered classes are classes actually promoted by the round; an empty cell means no claim was registered.
 

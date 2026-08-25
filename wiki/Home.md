@@ -16,7 +16,7 @@ The program has two research lines and one bridge:
 - **[Normativity](Normativity)** asks when a reasoner counts as responding
   appropriately to reasons and improving within a public practice.
 - **[Deference](Deference)** asks when a more capable reasoner can safely trust
-  and preserve a future human-guided process.
+  and preserve a future human-guided process. **Paused**, on two decisions.
 - **[Legitimacy](Legitimacy)** asks what must remain true of that process so
   deference does not merely preserve manipulation, self-authorization, or
   corruption.
@@ -48,10 +48,14 @@ to the underlying evidence.
 - **Aspirational** describes a research direction and claims no mathematical
   backing.
 
-The normativity line's traderization results are registered and carry
-`lean-proved`. Everything else discussed here is open or unregistered research:
-its round verdicts and evidence strengths are preserved, and the wiki does not
-upgrade any of it to Established.
+- **Paused** describes a line that is not being worked, with what it is waiting
+  on named.
+
+The normativity line's traderization results and the deference line's finite
+results are registered and carry `lean-proved`. Everything else discussed here is
+open, a living note, or unregistered research: its round verdicts and evidence
+strengths are preserved, and the wiki does not upgrade any of it to Established.
+**Deference is paused** on two decisions; normativity is where the work is.
 
 ## Wiki and lab
 

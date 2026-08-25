@@ -87,6 +87,51 @@ evolution while every certificate and account is internally valid. The
 counterfactual legitimacy interface remains a separate hyperproperty over
 coupled runs.
 
+## What a reason is, and what a transition may cite
+
+Three components sit under the record, each fixing something the one before it
+could not express. All three are **living notes**: finite prosecutions with
+executable witnesses, none registered and none kernel-checked.
+
+**The reason state** is the substrate. It is an identity-bearing hypergraph of
+reason occurrences over schemas and cases, and it stores no labels, contexts or
+statuses: it answers five total stateless queries — what is enabled, what bears
+on what, what depends on a thing, why an occurrence holds, and what has lost its
+basis — and everything a truth-maintenance system does beyond that is one
+nameable stance policy plus caching. Two things it was forced to add: a
+constitutive contradiction floor, without which an undercutter is unstatable; and
+a second sort of source, so that transcript receipts can enter a reason without
+the transcript's content becoming defeasible. It consumes nothing from the rounds
+below it. Its freeze reopens on a concrete microhistory whose reason-dependency
+structure cannot be expressed through contents, occurrences, record facts or
+derived queries — the artifact, not an intuition.
+
+**Transition certificates** say what makes a change to the record lawful. A
+certificate cites its grounds, its licence and its lineage as separate sorts, and
+three principles do the work five proposed postulates were meant to: strict
+pre-state citation, constitutive immutability, and answerability continuation.
+Under them a transition cannot mint its own reasons or authority, its claimed
+historical basis cannot be rewritten, and losing a relied-on basis is detected at
+the frozen citation even when a substitute reason stands — so no-self-grounding
+is a theorem rather than a postulate, and every laundering attack dies without a
+dedicated anti-laundering rule. It consumes the reason state and the
+answerability kernel. What a valid certificate establishes is that the act was
+licensed within the current accountable practice, not that the practice is apt.
+
+**Certified interactive service** is the arena in which a docketed task is
+discharged. The object survives as a set of actions, response events, an
+epistemically-possible-response map over public histories, and a certification
+relation; costs demote to annotations on optimization problems over it, and
+liabilities stay external. Certification splits into historical validity and
+present discharge, and blanket prefix persistence is refuted by a
+recency-bounded specification. It consumes the afoundational inquiry interface.
+Its laws are typing disciplines and prove no theorems; the mathematical content
+is in the capability lattice above it.
+
+**What none of them supplies** is the arrow out. Nothing here compiles a record
+into a region a market can be made to respect — that is `PRIORITIES.md` item 39 —
+and nothing here generates a burden, which is item 55.
+
 ## Current status
 
 > **Open / unregistered research.** The bridge fixtures provide finite evidence

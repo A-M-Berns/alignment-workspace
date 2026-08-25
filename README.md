@@ -67,7 +67,9 @@ file containing a string.
 ### Verifying rather than believing
 
 ```sh
-python3 tests/run.py                                   # the project test runners
+python3 tests/run.py                                   # the project runners and every gate's self-test
+python3 -m checkers.run                                # every registered claim
+python3 -m checkers.workspace_state --check            # the structured state
 python3 tests/audit_axioms.py                          # the axiom allowance
 cd lean && lake exe cache get && lake build            # the Lean, sorry-free
 ```
@@ -81,17 +83,24 @@ gives the submission format for each claim class.
 ## Layout
 
 ```
-projects/     one directory per research line
+projects/     one directory per research line, each with its own CLAIMS.md
 lean/         one Lake project, library Workspace, per-line namespaces
 prompts/      every round's prompt and report, committed with the work
 tests/        the repo-level runner and the gate scripts
 checkers/     the house checker harness — the judge for computational claims
+state/        the structured current state, and generated views of it
+wiki/         the source of the human-facing register; the hosted wiki mirrors it
 ```
 
 `AGENTS.md` binding standards · `RESEARCH_STATE.md` lab status ·
 `PRIORITIES.md` what needs doing · `DECISIONS.md` what has been ruled on ·
 `PROVENANCE.md` who generated what, and whether anyone read it ·
 `CONTRIBUTING.md` how to submit.
+
+Two research lines. **Normativity** is where the work is, and its traderized
+enforcement results are registered. **Deference** is **paused** on two maintainer
+decisions; its finite results are registered and the wiki says what it is waiting
+on.
 
 ## License
 
