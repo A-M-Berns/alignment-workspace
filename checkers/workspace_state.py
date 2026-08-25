@@ -152,11 +152,20 @@ def derived_counts(state: dict[str, Any]) -> dict[str, Any]:
         # each source's own ledger. One source today; a second changes this
         # total, and the binding that reads it fails rather than drifts.
         "foundation_claims": sum(f["claim_count"] for f in state["foundations"]),
-        # Active entries in the modern registry, whatever their class. A wiki
-        # page saying how much of a line is registered binds this rather than
-        # counting rows itself, which would make the page a second judge.
+        # Active entries in the modern registries, whatever their class. A wiki
+        # page saying how much of a line is registered binds one of these rather
+        # than counting rows itself, which would make the page a second judge.
+        # Per project as well as in total, because a line's own page speaks about
+        # its own line and the total moved under it when a second line got a
+        # registry.
         "registered_claims": sum(1 for c in state["claims"]
                                  if c.get("status") == "active"),
+        "registered_claims_by_project": {
+            project["id"]: sum(1 for c in state["claims"]
+                               if c.get("status") == "active"
+                               and c.get("project") == project["id"])
+            for project in state["projects"] if project["status"] == "active"
+        },
     }
 
 
@@ -216,9 +225,21 @@ def validate(data: dict[str, Any]) -> list[str]:
         if repeated:
             problems.append(f"duplicate {kind} id(s): {sorted(repeated)}")
 
+    # One registry per line, and each at its own project's path. The earlier form
+    # required exactly one, which was a fact about the workspace rather than a
+    # rule about it: the normativity line had a registry and the deference line
+    # did not. What has to hold is that a registry belongs to an active project
+    # and that at least one exists, so an empty glob cannot read as clean.
     registries = sorted(ROOT.glob("projects/*/CLAIMS.md"))
-    if len(registries) != 1:
-        problems.append(f"expected exactly one authoritative CLAIMS.md; found {len(registries)}")
+    if not registries:
+        problems.append("no claims registry found under projects/*/CLAIMS.md; "
+                        "an empty match is a broken glob, not a workspace with "
+                        "nothing registered")
+    for registry_path in registries:
+        owner = registry_path.parent.name
+        if owner not in projects or projects[owner]["status"] != "active":
+            problems.append(f"registry {registry_path.relative_to(ROOT).as_posix()}: "
+                            f"owner is not an active project: {owner}")
 
     if not data["interfaces"]:
         problems.append("no theorem-facing interface found; the emitter globs "
@@ -274,6 +295,17 @@ def validate(data: dict[str, Any]) -> list[str]:
         if "depends_on" not in round_:
             problems.append(f"round {round_['id']}: no depends_on field; an empty "
                             "list is the statement that it consumes nothing")
+        # Where a report says nothing and the dispatch does, the dispatch is
+        # still part of the round's record — and the two are worth telling
+        # apart, because a dispatch says what a round was told to build on and a
+        # report says what it did. `prompt` marks the weaker reading.
+        source = round_.get("depends_on_source")
+        if source is not None and source not in ("report", "prompt"):
+            problems.append(f"round {round_['id']}: depends_on_source must be "
+                            f"'report' or 'prompt', not {source!r}")
+        if source is not None and not round_.get("depends_on"):
+            problems.append(f"round {round_['id']}: depends_on_source is set but "
+                            "depends_on is empty; there is no reading to source")
         for consumed in round_.get("depends_on", []):
             if consumed == round_["id"]:
                 problems.append(f"round {round_['id']}: depends_on is self-referential")
@@ -528,6 +560,25 @@ def self_test() -> bool:
     del data["rounds"][-1]["depends_on"]
     cases.append(("a round record with no depends_on fails loudly",
                   any("no depends_on field" in p for p in validate(data))))
+
+    data = current_state()
+    data["rounds"][-1]["depends_on_source"] = "guessed"
+    cases.append(("an unknown depends_on_source fails loudly",
+                  any("depends_on_source must be" in p for p in validate(data))))
+
+    data = current_state()
+    data["rounds"][-1]["depends_on_source"] = "prompt"
+    data["rounds"][-1]["depends_on"] = []
+    cases.append(("a depends_on_source with nothing to source fails loudly",
+                  any("there is no reading to source" in p for p in validate(data))))
+
+    data = current_state()
+    for round_ in data["rounds"]:
+        if round_.get("depends_on"):
+            round_["depends_on_source"] = "prompt"
+            break
+    cases.append(("a sourced dependency list is accepted",
+                  not any("depends_on_source" in p for p in validate(data))))
 
     data = current_state()
     data["interfaces"] = []

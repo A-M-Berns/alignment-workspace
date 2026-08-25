@@ -1693,6 +1693,42 @@ an explicit statement of which confounds remain scoped out rather than excluded.
 this is construction against a known target rather than open search — but the sign question
 it exists to ask has no expected answer, and a negative is as likely as a positive.
 
+### 60. A transition model of reachable corrective capability — **[substantial]** — *answered, negatively, by the reachable-corrective-control round*
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+**Answered.** `Workspace.Deference.Contrib.ReachableCorrectiveControl` is a
+twelve-state transition system with separate principal, advisor and environment
+input coordinates. Corrective capability, reachable corrective capability and
+foreclosure are defined by quantifying over the transition relation rather than by
+reading a state field, and the field-level characterisations `canCorrect_iff`,
+`canCorrectFuture_iff` and `forecloses_iff` are conclusions rather than
+definitions. The file has no imports: it elaborates against the pinned toolchain
+alone.
+
+**What it establishes is mostly negative, and that is the result.** An adversarial
+review's refutations are reproved in the file and break its own protection claims:
+`principal_has_no_exclusive_effect` shows the advisor reproduces the principal's
+entire successor state at every state; `advisor_has_a_universal_veto` and
+`canCorrectFuture_measures_advisor_cooperation` show that capability quantifies the
+advisor existentially, the second by exhibiting an advisor policy that destroys the
+capability at every horizon while the preservation predicate certifies it. There is
+no protected coordinate in the model. The round's verdict is
+`Dynamics-positive, protection-incomplete`, and the dynamics half — the system
+evolves without the advisor, the environment alone creates the corrective
+situation, the absorbing-severed argument, the fairness of the observation map — is
+what survived the review.
+
+*Deliverable shape:* `lean-proved` in `Workspace.Deference.Contrib`, with every
+witness a concrete state of the model.
+*Acceptance check:* the `lean` gate builds and audits clean, and no declaration is
+vacuous.
+*Context:* `prompts/2026-08-12-reachable-corrective-control/REPORT.md`;
+`lean/Workspace/Deference/Contrib/PROVENANCE.md`, which carries the review's
+findings in full.
+*Relation to item 22:* item 22 asks for the weakest interface on which protection
+is a theorem. This model shows one candidate interface is not it, which is what
+that item's fourth question wanted decided.
+
 ### 34. Does the selection-punishing menu bite the ported tower ⟹ Value chain? — **[entry]**
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
