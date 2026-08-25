@@ -392,3 +392,75 @@ machine, and §6.3 says why. What that verdict establishes is that the twenty-fo
 registered names resolve and audit to the three allowed axioms — not that any of
 the twenty-four statements is the one the paper should make, which is a reading
 no gate performs.
+
+## 8. Closeout
+
+Merged as `bd16ecf`, squashed, with the Model attribution section and a `Model:`
+trailer in the squash message. The maintainer's closeout dispatch confirms the
+fifteen adoptions and the twenty-four registrations stand, and rules that
+*headline* in the registry means what this round read it to mean: every
+kernel-checked theorem a round's report presents as a result. A shorter list, if
+one is ever wanted, is a flag on entries rather than a narrower registry.
+
+`round/2026-08-17-lean-gate-scope`'s draft pull request, #37, is closed with a
+comment recording that its two commits landed verbatim here.
+
+**Forty-two branches deleted on `origin`**: the thirteen fast-forwardable into
+`main`, the twenty-eight squash remnants, and `round/2026-08-17-lean-gate-scope`
+last, after its pull request was closed.
+
+**Two count errors in §5**, found while acting on it. The squash-remnant
+paragraph names twenty-eight branches and says twenty-four; the not-remnants
+sentence names five branches plus a three-branch range and says six. The lists
+were right and the arithmetic was not, and the closeout dispatch repeated both
+numbers back. Deletion followed the lists.
+
+**Nine branches remain**, none of them a remnant: `A-M-Berns-patch-1` through
+`-3`, `claude/for-ais-refinement`, `feat/traderized-constraints-paper` (#44),
+`round/2026-08-18-principal-mediated-corrigibility` (#40),
+`round/2026-08-24-enforcement-affordability` (#50), and this round's own branch,
+which the squash made a remnant and which the dispatch did not authorize
+deleting.
+
+**No worktree was removed.** The dispatch asks for `git status --porcelain` in
+each worktree holding a remnant branch, and this session is worktree-isolated:
+the harness refuses any git operation redirected at another worktree, so the
+check cannot be run and the removal cannot be performed from here. Ten worktrees
+hold branches that were just deleted on `origin` —
+`.claude/worktrees/agent-a147ee8f2141ba783`, `-a5d0eb479c63a58b2`,
+`-a70b42885580eaaac`, `-a882fed6663f281f1`, `-ac67f74b7d7940c82`,
+`-ad40cda47720fca48`, `-aea0b0bc98031f4ed`, `.claude/worktrees/pr38-proof-closing`,
+`~/Desktop/alignment-workspace-internal-answerability`, and
+`~/Projects/alignment-workspace-afoundational` — and their local branches are
+untouched, so nothing in them is lost. The main checkout at
+`~/Projects/alignment-workspace` is on `round/2026-08-17-counterfactual-legitimacy`
+and is a working tree rather than a removable worktree. Three further worktrees
+hold `claude/effective-representation`, `claude/polyhedral-projection` and
+`claude/stage-aware-enforcer`, which have no remote counterpart and were not in
+scope. Removing any of them is a maintainer action from a session that is not
+worktree-isolated, and each is worth a `git status` first: a clean worktree at
+the moment of checking may still belong to a session mid-task.
+
+The round record's `verdict` is unchanged; it already states what the round did.
+
+**A second gate shipped matching the wrong thing, and this closeout is what
+found it.** `tests/round_records.py` treated *no added files* as a broken diff.
+That premise is false: a pull request that modifies files and adds none is an
+ordinary change, and the closeout — one modified file, nothing added — is the
+first such pull request the gate saw. It failed, and would have failed every
+modify-only pull request against `main` from the moment #52 landed.
+
+The gate came verbatim from `round/2026-08-17-lean-gate-scope`, and §5 above
+records that both scripts passed their self-tests unmodified. That was true and
+insufficient: the self-test exercised `landed_rounds` and `unrecorded` and never
+the branch that fired, because `main()` mixed the decision into the git plumbing
+where nothing could reach it. The decision is now `verdict()`, a pure function of
+the changed list, the added list and the provenance text; the null input is a
+diff listing **no files at all**; and five cases pin it, the first being the
+modify-only pull request the gate got wrong. Repaired in this closeout rather
+than filed, under §14: one document, non-retroactive, with its null-input case.
+
+Two gates in two days, both shipping green while checking the wrong thing, both
+caught by running them against a real pull request rather than against their own
+fixtures. The pattern is worth naming: a self-test written beside a gate tests
+what its author already believed.

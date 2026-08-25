@@ -75,16 +75,50 @@ def diff_range() -> tuple[str, str] | None:
     return None
 
 
-def added_files() -> tuple[list[str] | None, str]:
-    window = diff_range()
-    if window is None:
-        return None, "no pull-request or push context"
-    span, description = window
-    diff = subprocess.run(["git", "diff", "--diff-filter=A", "--name-only", span],
+def _names(span: str, *filters: str) -> list[str] | None:
+    diff = subprocess.run(["git", "diff", *filters, "--name-only", span],
                           cwd=ROOT, capture_output=True, text=True)
     if diff.returncode != 0:
-        return [], f"{description} (git diff failed: {diff.stderr.strip()[:120]})"
-    return [l for l in diff.stdout.splitlines() if l.strip()], description
+        return None
+    return [l for l in diff.stdout.splitlines() if l.strip()]
+
+
+def changed_and_added() -> tuple[list[str] | None, list[str] | None, str]:
+    """(every changed path, the added ones, a description of the window).
+
+    Both are needed, and conflating them was a bug this gate shipped with. The
+    null input is a change that touches **nothing** — inside a pull request or a
+    push that means the diff is broken, and passing would gate nothing. A change
+    that modifies files without adding any is an ordinary change: it lands no
+    round record, so there is nothing here to check, and failing it made every
+    modify-only pull request red.
+    """
+    window = diff_range()
+    if window is None:
+        return None, None, "no pull-request or push context"
+    span, description = window
+    changed = _names(span)
+    if changed is None:
+        return [], [], f"{description} (git diff failed)"
+    return changed, _names(span, "--diff-filter=A") or [], description
+
+
+def verdict(changed: list[str] | None, added: list[str] | None,
+            provenance: str) -> tuple[bool, str]:
+    """The decision, separated from git so the null inputs are testable."""
+    if changed is None:
+        return True, "no pull-request or push context; nothing to compare"
+    if not changed:
+        return False, ("the diff listed no files at all, which is a broken diff "
+                       "and not a clean change")
+    rounds = landed_rounds(added or [])
+    if not rounds:
+        return True, f"{len(changed)} changed file(s) land no round record"
+    missing = unrecorded(rounds, provenance)
+    if missing:
+        return False, "a round arrived without its provenance row: " + ", ".join(
+            f"prompts/{r}/ is cited nowhere in PROVENANCE.md" for r in missing)
+    return True, f"{len(rounds)} round(s) landed, each cited in PROVENANCE.md"
 
 
 def self_test() -> int:
@@ -121,6 +155,23 @@ def self_test() -> int:
         ("the provenance file exists", PROVENANCE.is_file(), True),
         ("the live provenance file cites at least one round",
          "prompts/2026-08-16-wiki-state-bindings/" in PROVENANCE.read_text(), True),
+        # `verdict`, and the null input that decides whether this gate is usable.
+        # The first case is the one it shipped wrong: a modify-only pull request
+        # adds nothing and is perfectly ordinary, and failing it made every such
+        # pull request red. The second is the real null input.
+        ("a change that modifies files and adds none is not a broken diff",
+         verdict(["AGENTS.md", "wiki/Home.md"], [], "")[0], True),
+        ("a diff listing no files at all fails",
+         verdict([], [], "")[0], False),
+        ("outside a pull request or push there is nothing to compare",
+         verdict(None, None, "")[0], True),
+        ("a landed round without its provenance row fails",
+         verdict(["prompts/2026-08-17-x/REPORT.md"],
+                 ["prompts/2026-08-17-x/REPORT.md"], "")[0], False),
+        ("a landed round with its provenance row passes",
+         verdict(["prompts/2026-08-17-x/REPORT.md"],
+                 ["prompts/2026-08-17-x/REPORT.md"],
+                 "cites prompts/2026-08-17-x/ here")[0], True),
     ]
     failures = 0
     print("ROUND RECORDS SELF-TEST:")
@@ -133,33 +184,18 @@ def self_test() -> int:
 def main() -> int:
     if "--self-test" in sys.argv:
         return self_test()
-    added, description = added_files()
-    if added is None:
-        print("ROUND RECORDS: no pull-request or push context; nothing to compare")
+    changed, added, description = changed_and_added()
+    ok, message = verdict(changed, added, PROVENANCE.read_text())
+    where = "" if changed is None else f"{description}: "
+    if ok:
+        print(f"ROUND RECORDS: {where}{message}")
         return 0
-    if not added and diff_range() is not None and os.environ.get("GITHUB_ACTIONS"):
-        # The null input. A pull request or a push that adds no file at all is a
-        # broken diff, not a clean change, and passing here would gate nothing.
-        print(f"ROUND RECORDS FAILED: {description} listed no added files. "
-              "The check cannot see what it is meant to check.", file=sys.stderr)
-        return 1
-    rounds = landed_rounds(added)
-    if not rounds:
-        print(f"ROUND RECORDS: {description} lands no round record")
-        return 0
-    missing = unrecorded(rounds, PROVENANCE.read_text())
-    if missing:
-        print("ROUND RECORDS FAILED: a round arrived without its provenance row:",
-              file=sys.stderr)
-        for r in missing:
-            print(f"  - prompts/{r}/ is cited nowhere in PROVENANCE.md", file=sys.stderr)
-        print("\n  A round's report and its provenance row land together or the "
-              "record is wrong in the direction nobody notices. If this fired on "
-              "a merge rather than on the pull request, the row was written and "
-              "lost — recover it rather than rewriting it.", file=sys.stderr)
-        return 1
-    print(f"ROUND RECORDS: {len(rounds)} round(s) landed, each cited in PROVENANCE.md")
-    return 0
+    print(f"ROUND RECORDS FAILED: {where}{message}", file=sys.stderr)
+    print("\n  A round's report and its provenance row land together or the "
+          "record is wrong in the direction nobody notices. If this fired on "
+          "a merge rather than on the pull request, the row was written and "
+          "lost — recover it rather than rewriting it.", file=sys.stderr)
+    return 1
 
 
 if __name__ == "__main__":
