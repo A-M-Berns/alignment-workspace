@@ -421,6 +421,25 @@ Preserved by the step types rather than by discipline:
 pressure ≠ inquiry ≠ service ≠ assessment ≠ reason ≠ NormEvent
 ```
 
+**The loop is now built, and it consumed no new ontology.**
+`INQUIRY_INTEGRATION.md` runs it end to end: a need derived from the real
+charged result, an ordinary action through `Gamma`, a raw outcome read into the
+existing settlement seam, a service certificate citing `SettleId`s, an
+assessment checker over a proposed `ReasonOcc`, and an ordinary licensed
+`NormEvent`. No `InquiryEvent`, `ServiceEvent`, `AssessmentEvent` or
+`PressureEvent` was needed, and the record the loop produces is byte-identical
+to the canonical Stage B — same `tau`s, same minted ids.
+
+Two things it added, both outside `MachineState_t`. The environment side gains
+an `InteractionLog` that `Gamma` and a policy read and Reflective Integrity
+never does. And `SettlementReading` gains one frozen field,
+`(outcome_id, action, receipt_index)`, which is the **narrowest provenance
+bridge** that lets a service judge tell "this was settled" from "this was
+settled by the designated procedure". `sem_L` does not read it, no world reads
+it, and `PC(Σ_n)` is still a function of the sentences alone — which is exactly
+why service does **not** factor through `PC(Σ_n)`, demonstrated by two ledgers
+with identical `Σ` and opposite service verdicts.
+
 `Std_t` changes only through `applyEffect` on a well-formed `Norm` step, so a
 certificate cannot become force without an event.
 

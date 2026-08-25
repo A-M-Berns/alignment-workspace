@@ -91,6 +91,16 @@ class SettlementReading:
     of_outcome: str
     sentences: tuple = ()
     note: str = ""
+    #: `(outcome_id, action, receipt_index)`, frozen with the reading, or
+    #: `None` for a settlement that did not arise from a designated action.
+    #:
+    #: **The narrow provenance seam.** `sem_L` does not read this and neither
+    #: does any world; `PC(Sigma_n)` is a function of the sentences alone. It
+    #: exists so that a *service* judge can tell "this was settled" from "this
+    #: was settled by the designated procedure" without the epistemic substrate
+    #: acquiring an opinion about actions. Frozen at admission like the rest of
+    #: the reading, so procedural provenance is as rigid as denotation.
+    provenance: object = None
 
     @property
     def exposes(self) -> bool:
