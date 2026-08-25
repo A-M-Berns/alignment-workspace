@@ -12,11 +12,11 @@ one-time initialization
   afoundational seed S₀ ──pre-licensed induction──▶ normative record R₀
 
 recurrent learning loop
-  (Rₙ, Lₙ) ──inquiry──▶ world ──receipts──▶ Lₙ₊₁
-      └────────────────reasoned uptake────────────▶ Rₙ₊₁
+  (N_{≤n}, Lₙ) ──inquiry──▶ world ──receipts──▶ Lₙ₊₁
+      └────────────────reasoned uptake────────────▶ N_{≤n+1}
 
 normative realization
-  Rₙ ──authorization──▶ Oₙ ──credal interpretation──▶ Cₙ
+  N_{≤n} ──authorization──▶ Oₙ ──credal interpretation──▶ Cₙ
      ──price realization──▶ Kₙ ──traderization──▶ Eₙ
 ```
 
@@ -72,14 +72,14 @@ inside the positive model.
 `Lₙ` is the permanent empirical and logical transcript. It records what was
 received or done and when. An interpretation of an observation—what it
 indicates, whether it defeats a warrant, what it calls for—is a revisable
-judgment in `Rₙ`.
+judgment in `N_{≤n}`.
 
-`Rₙ` is the append-only history of normative acts: commitments, rules,
+`N_{≤n}` is the append-only history of normative acts: commitments, rules,
 undertaken reasons, due tokens, accounts, and reviews. The current standing
 state is a derived view:
 
 ```text
-Vₙ = View(Rₙ, Lₙ).
+Vₙ = View(N_{≤n}, Lₙ).
 ```
 
 The closest analogy is a self-amending court with an immutable transcript.
@@ -154,8 +154,9 @@ Two demands survived prosecution: contents need a constitutive contradiction
 floor, and applicability must be staged, with persistence across stages earned
 by defeasible schemas rather than granted by the substrate.
 
-The dispatch proposes writing the reason state `𝓡_n` against the record
-`N_{≤n}`; this page keeps `R` for the record until the naming is ruled on.
+The reason state is `𝓡_n` and the normative record is `N_{≤n}`; the two are
+different objects and the ledger settled the split so that one letter cannot name
+both.
 Evidence: [the reason-representation round](https://github.com/A-M-Berns/alignment-workspace/tree/11b4d47f4e97130b78f644964652e6db4169f42c/projects/normativity/legitimacy/rounds/2026-08-23-reason-representation).
 
 A successor round derives the boundary above the substrate: a normative
@@ -335,7 +336,7 @@ it was unmanipulated. Non-capture remains a hyperproperty over coupled runs.
 
 ## Hand-off to the normative compiler
 
-The current view of `Rₙ` should tell an operative compiler which liabilities
+The current view of `N_{≤n}` should tell an operative compiler which liabilities
 stand, which are applicable, which are authorized to exert a kind of force, and
 which have credal-bearing content. That is the input boundary to `R → O`.
 

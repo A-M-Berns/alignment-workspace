@@ -152,11 +152,20 @@ def derived_counts(state: dict[str, Any]) -> dict[str, Any]:
         # each source's own ledger. One source today; a second changes this
         # total, and the binding that reads it fails rather than drifts.
         "foundation_claims": sum(f["claim_count"] for f in state["foundations"]),
-        # Active entries in the modern registry, whatever their class. A wiki
-        # page saying how much of a line is registered binds this rather than
-        # counting rows itself, which would make the page a second judge.
+        # Active entries in the modern registries, whatever their class. A wiki
+        # page saying how much of a line is registered binds one of these rather
+        # than counting rows itself, which would make the page a second judge.
+        # Per project as well as in total, because a line's own page speaks about
+        # its own line and the total moved under it when a second line got a
+        # registry.
         "registered_claims": sum(1 for c in state["claims"]
                                  if c.get("status") == "active"),
+        "registered_claims_by_project": {
+            project["id"]: sum(1 for c in state["claims"]
+                               if c.get("status") == "active"
+                               and c.get("project") == project["id"])
+            for project in state["projects"] if project["status"] == "active"
+        },
     }
 
 
@@ -216,9 +225,21 @@ def validate(data: dict[str, Any]) -> list[str]:
         if repeated:
             problems.append(f"duplicate {kind} id(s): {sorted(repeated)}")
 
+    # One registry per line, and each at its own project's path. The earlier form
+    # required exactly one, which was a fact about the workspace rather than a
+    # rule about it: the normativity line had a registry and the deference line
+    # did not. What has to hold is that a registry belongs to an active project
+    # and that at least one exists, so an empty glob cannot read as clean.
     registries = sorted(ROOT.glob("projects/*/CLAIMS.md"))
-    if len(registries) != 1:
-        problems.append(f"expected exactly one authoritative CLAIMS.md; found {len(registries)}")
+    if not registries:
+        problems.append("no claims registry found under projects/*/CLAIMS.md; "
+                        "an empty match is a broken glob, not a workspace with "
+                        "nothing registered")
+    for registry_path in registries:
+        owner = registry_path.parent.name
+        if owner not in projects or projects[owner]["status"] != "active":
+            problems.append(f"registry {registry_path.relative_to(ROOT).as_posix()}: "
+                            f"owner is not an active project: {owner}")
 
     if not data["interfaces"]:
         problems.append("no theorem-facing interface found; the emitter globs "
@@ -274,6 +295,17 @@ def validate(data: dict[str, Any]) -> list[str]:
         if "depends_on" not in round_:
             problems.append(f"round {round_['id']}: no depends_on field; an empty "
                             "list is the statement that it consumes nothing")
+        # Where a report says nothing and the dispatch does, the dispatch is
+        # still part of the round's record — and the two are worth telling
+        # apart, because a dispatch says what a round was told to build on and a
+        # report says what it did. `prompt` marks the weaker reading.
+        source = round_.get("depends_on_source")
+        if source is not None and source not in ("report", "prompt"):
+            problems.append(f"round {round_['id']}: depends_on_source must be "
+                            f"'report' or 'prompt', not {source!r}")
+        if source is not None and not round_.get("depends_on"):
+            problems.append(f"round {round_['id']}: depends_on_source is set but "
+                            "depends_on is empty; there is no reading to source")
         for consumed in round_.get("depends_on", []):
             if consumed == round_["id"]:
                 problems.append(f"round {round_['id']}: depends_on is self-referential")
@@ -446,7 +478,7 @@ def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
             repo=", ".join(term.get("repo_identifiers", [])) or "—"))
 
     rounds = ["# Verdict/status inventory", "",
-              f"Generated from `state/rounds.json` and the sole claims registry by `{command}`.", "",
+              f"Generated from `state/rounds.json` and every project's claims registry by `{command}`.", "",
               "Registered classes are classes actually promoted by the round; an empty cell means no claim was registered.", "",
               "| round ID | date | project | current path | verdict (verbatim) | registered classes | prompt | claim changes |",
               "|---|---|---|---|---|---|---|---|"]
@@ -464,7 +496,140 @@ def render_handoffs(data: dict[str, Any]) -> dict[str, str]:
         f"{base}/FINAL_PATH_MAP.md": "\n".join(paths) + "\n",
         f"{base}/VOCABULARY_SHEET.md": "\n".join(vocabulary) + "\n",
         f"{base}/VERDICT_STATUS_INVENTORY.md": "\n".join(rounds) + "\n",
+        f"{base}/NAMING_AUDIT.md": render_naming_audit(data, command),
     }
+
+
+LEAN_DEF = re.compile(r"^(?:noncomputable\s+)?(?:private\s+)?"
+                      r"(def|structure|inductive|abbrev|class)\s+([A-Za-z_][\w.']*)")
+LEAN_NS = re.compile(r"^namespace\s+(\S+)")
+LEAN_END = re.compile(r"^end\s+(\S+)")
+
+
+def lean_definitions() -> list[dict[str, str]]:
+    """Vocabulary-bearing Lean identifiers: definitions, not theorem names.
+
+    A theorem name describes a statement and is cheap to change. A `def`,
+    `structure`, `inductive`, `abbrev` or `class` names an *object* that other
+    files, other rounds and eventually a paper have to spell, which is what a
+    naming audit is about.
+    """
+    found = []
+    for path in sorted((ROOT / "lean" / "Workspace").rglob("*.lean")):
+        stack: list[str] = []
+        for line in path.read_text().splitlines():
+            opened = LEAN_NS.match(line)
+            if opened:
+                stack.append(opened.group(1))
+                continue
+            closed = LEAN_END.match(line)
+            if closed and stack and (stack[-1].split(".")[-1]
+                                     == closed.group(1).split(".")[-1]):
+                stack.pop()
+                continue
+            declared = LEAN_DEF.match(line)
+            if declared:
+                found.append({
+                    "kind": declared.group(1), "name": declared.group(2),
+                    "declaration": ".".join(stack + [declared.group(2)]),
+                    "file": path.relative_to(ROOT).as_posix(),
+                })
+    return found
+
+
+def naming_rounds() -> dict[str, str]:
+    """Lean file -> originating round, from each namespace's own PROVENANCE.md."""
+    origin: dict[str, str] = {}
+    for provenance in (ROOT / "lean" / "Workspace").rglob("PROVENANCE.md"):
+        for line in provenance.read_text().splitlines():
+            if not line.startswith("|"):
+                continue
+            rounds = re.findall(r"`(prompts/[^`]+)`", line)
+            for name in re.findall(r"`([A-Za-z]\w*\.lean)`", line):
+                if rounds:
+                    origin.setdefault(name, rounds[0].rstrip("/").split("/")[-1])
+    return origin
+
+
+def render_naming_audit(data: dict[str, Any], command: str) -> str:
+    """The sheet the maintainer's batched naming audit reads. No recommendations.
+
+    Propagation is matched on a backticked, word-bounded occurrence: a substring
+    match reports `Hom` as having reached the wiki because the wiki has a page
+    called Home, and a sheet that cries wolf is one nobody finishes reading.
+    """
+    registered = {claim["statement_of_record"].get("declaration")
+                  for claim in data["claims"]
+                  if claim.get("statement_of_record", {}).get("kind") == "lean"}
+    surfaces = {
+        "registry": "",  # handled by `registered`
+        "wiki": " ".join(p.read_text() for p in sorted(ROOT.glob("wiki/*.md"))),
+        "note": " ".join(p.read_text()
+                         for p in sorted(ROOT.glob("projects/*/notes/*.md"))),
+        "prose": (ROOT / "PRIORITIES.md").read_text()
+                 + (ROOT / "DECISIONS.md").read_text(),
+    }
+    origin = naming_rounds()
+
+    lines = ["# Naming audit sheet", "",
+             f"Generated from the Lean library and the live documents by `{command}`.",
+             "",
+             "**Input to the maintainer's batched naming audit, and nothing else.**",
+             "Every name here ships marked provisional under `AGENTS.md` §6. This sheet",
+             "says what each one is, which round introduced it, and how far it has",
+             "spread. It carries no recommendation, and no round rules on any of it.",
+             "",
+             "*Propagates* is where a name is spelled outside the file defining it.",
+             "`registry` means it is a statement of record, so renaming it is a registry",
+             "diff; `wiki` means it has reached the human register; `note` a living note;",
+             "`prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to",
+             "change, and the count of those is the size of the free choice remaining.",
+             ""]
+
+    # Registered theorem names belong here even though a theorem name is
+    # ordinarily cheap: once a declaration is a statement of record, renaming it
+    # is a registry diff and a citation someone may already have made. These are
+    # the most expensive names in the repository, so the audit sees them first.
+    entries = lean_definitions()
+    by_declaration = {e["declaration"] for e in entries}
+    for claim in data["claims"]:
+        record = claim.get("statement_of_record", {})
+        if record.get("kind") != "lean":
+            continue
+        declaration = record["declaration"]
+        if declaration in by_declaration:
+            continue
+        entries.append({
+            "kind": "theorem", "name": declaration.rsplit(".", 1)[-1],
+            "declaration": declaration,
+            "file": f"lean/Workspace/{'Deference' if '.Deference.' in declaration else 'Normativity'}/",
+            "round": claim.get("origin_round") or "unrecorded",
+        })
+
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for entry in entries:
+        line = "deference" if "/Deference/" in entry["file"] else "normativity"
+        spread = ["registry"] if entry["declaration"] in registered else []
+        for surface, text in surfaces.items():
+            if surface == "registry":
+                continue
+            if re.search(rf"`[^`\n]*\b{re.escape(entry['name'])}\b[^`\n]*`", text):
+                spread.append(surface)
+        entry["propagates"] = ", ".join(spread) or "Lean only"
+        entry.setdefault("round",
+                         origin.get(entry["file"].split("/")[-1], "unrecorded"))
+        grouped.setdefault(line, []).append(entry)
+
+    for line in sorted(grouped):
+        rows = sorted(grouped[line], key=lambda e: (e["file"], e["name"]))
+        free = sum(1 for e in rows if e["propagates"] == "Lean only")
+        lines += [f"## {line} — {len(rows)} names, {free} of them Lean only", "",
+                  "| name | kind | round | propagates | declaration |",
+                  "|---|---|---|---|---|"]
+        lines += [f"| `{e['name']}` | {e['kind']} | {e['round']} | {e['propagates']} "
+                  f"| `{e['declaration']}` |" for e in rows]
+        lines.append("")
+    return "\n".join(lines) + "\n"
 
 
 def self_test() -> bool:
@@ -528,6 +693,25 @@ def self_test() -> bool:
     del data["rounds"][-1]["depends_on"]
     cases.append(("a round record with no depends_on fails loudly",
                   any("no depends_on field" in p for p in validate(data))))
+
+    data = current_state()
+    data["rounds"][-1]["depends_on_source"] = "guessed"
+    cases.append(("an unknown depends_on_source fails loudly",
+                  any("depends_on_source must be" in p for p in validate(data))))
+
+    data = current_state()
+    data["rounds"][-1]["depends_on_source"] = "prompt"
+    data["rounds"][-1]["depends_on"] = []
+    cases.append(("a depends_on_source with nothing to source fails loudly",
+                  any("there is no reading to source" in p for p in validate(data))))
+
+    data = current_state()
+    for round_ in data["rounds"]:
+        if round_.get("depends_on"):
+            round_["depends_on_source"] = "prompt"
+            break
+    cases.append(("a sourced dependency list is accepted",
+                  not any("depends_on_source" in p for p in validate(data))))
 
     data = current_state()
     data["interfaces"] = []

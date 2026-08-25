@@ -48,10 +48,15 @@ provides a general theory of efficacy.
 
 ## Current status
 
-> **Open / unregistered research.** The exact reachable-control verdict is
-> `Dynamics-positive, protection-incomplete.` The finite dynamics and
-> foreclosure witnesses are current research evidence; robust protected
-> corrective authority is not established or registered.
+> **Established — `lean-proved`, and mostly negative.** The reachable-control
+> verdict is `Dynamics-positive, protection-incomplete.` The model and its
+> refutations are registered as `corrective.*` in the deference registry: there is
+> no protected coordinate, and reachable capability measures advisor cooperation
+> rather than principal control. Robust protected corrective authority is not
+> established, and the model shows one candidate interface is not where it lives.
+
+> **Paused.** This is part of the deference line, which is not being worked; see
+> that page for the two decisions it is waiting on.
 
 A satisfactory composition still needs temporal depth, separately typed
 authorization and capability, a principal-exclusive effect, robustness to the

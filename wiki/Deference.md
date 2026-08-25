@@ -36,17 +36,36 @@ cannot launder a failure by self-authorization.
 
 ## Current status
 
-> **Open / unregistered research.** The line has finite witnesses, conditional
-> interfaces, Lean contributions, and adversarial audits, but the modern claims
-> registry contains no substantive deference claim.
+> **Paused.** The line is not being worked. What it holds is registered and what
+> it is waiting on is a decision, not a proof.
 
-Logical-Induction-native work supplies bounded belief and forcing tools under
-explicit assumptions, but not a resource-indexed proof that the quoted future
-process is unavailable now. Decision-based deference retains useful finite
-identities and a soft route with unresolved assumptions; a hard-selector route
-does not survive the relevant punishment menus. The corrigibility line has a
-finite dynamics vocabulary and witnesses of foreclosure, but not robust
-protected corrective authority.
+> **Established — `lean-proved`.** The
+> <!--state:workspace:counts.registered_claims_by_project.deference-->31<!--/state-->
+> entries in this line's registry are its finite results: the delegation bridge
+> and the certificate, exposure and substitution lemmas; the signed-versus-magnitude
+> separation; the static-view factorization; and the corrective-control model. Each
+> names a Lean declaration and the priority item it answers.
+
+**The strongest results here are impossibilities, and they are the line's
+companion findings rather than an aside.** The magnitude functional is not a
+trader payoff and cannot be made one — every trader averages to zero over a
+coherent mixture, because net worth is affine in the payout vector and the
+absolute value is not — so the magnitude target is retired rather than open. The
+corrective-control model has no protected coordinate: the advisor reproduces the
+principal's entire successor state, and reachable capability turns out to measure
+advisor cooperation. A hard-selector route to Value does not survive the relevant
+punishment menus, while a classwise, domain-relative route does; which of the two
+the line's target should be is live as items 14 and 34.
+
+**What the pause is on.** Two decisions sit in `DECISIONS.md`'s *Awaiting the
+author*: whether the two candidate objects for what foreclosure loses are enough
+for that question to graduate, and what succeeds item 28; and whether
+endpoint-preservation is a target this program wants at all, which is *what is
+worth proving* and no round's to decide. Until those are answered, the remaining
+work is specified and not started: Logical-Induction-native work supplies bounded
+belief and forcing tools under explicit assumptions but no resource-indexed proof
+that the quoted future process is unavailable now, and the corrigibility model
+needs temporal depth and an authorization relation at once.
 
 ## Evidence and deeper reading
 

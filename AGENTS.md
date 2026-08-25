@@ -796,6 +796,7 @@ which are required.
 | volatile quantities in the wiki are declared and match machine state | `checkers` — `checkers/wiki_state_bindings.py` |
 | CI write scope is enumerated and conditioned; no stored secrets | `python` — `tests/workflow_scope.py` |
 | a round's record and its provenance row land together | `python` — `tests/round_records.py`, over what a change adds |
+| the live documents' pointers resolve, and a pointer into a disposable or superseded tree says which | `python` — `tests/dead_pointers.py` |
 | 2, exact arithmetic | **not gated** — review; a float in theorem-bearing code is a finding |
 | 3, theorem ships as four things | **not gated** — review; the PR template asks for each |
 | 6, names ship marked provisional | **not gated** — review; the PR template asks |

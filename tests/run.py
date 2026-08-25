@@ -47,7 +47,8 @@ def run_projects() -> list[tuple[str, bool]]:
 # gate that has quietly stopped matching anything.
 GATE_SELF_TESTS = ("path_gate", "dco", "attribution", "name_lint",
                    "contrib_hygiene", "conservativity", "audit_axioms",
-                   "workflow_scope", "lean_scope", "round_records")
+                   "workflow_scope", "lean_scope", "round_records",
+                   "dead_pointers")
 
 
 # Gates whose real form needs a pull request: they read the event payload or a

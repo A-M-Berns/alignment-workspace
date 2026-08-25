@@ -1,6 +1,6 @@
 # Verdict/status inventory
 
-Generated from `state/rounds.json` and the sole claims registry by `python3 -m checkers.workspace_state --write-handoff`.
+Generated from `state/rounds.json` and every project's claims registry by `python3 -m checkers.workspace_state --write-handoff`.
 
 Registered classes are classes actually promoted by the round; an empty cell means no claim was registered.
 
@@ -67,3 +67,4 @@ Registered classes are classes actually promoted by the round; an empty cell mea
 | 2026-08-23-transition-certificates | 2026-08-23 | normativity.legitimacy | `projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates` | The transition interface closes: three principles do the work of the five proposed postulates, and Licensed becomes record-internally substantive. | — | `prompts/2026-08-23-transition-certificates/PROMPT.md` | — |
 | 2026-08-23-certified-interactive-service | 2026-08-23 | normativity.legitimacy | `projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service` | REQUIRES-REVISION — the object survives as an arena plus finite-witness certification, its laws typing disciplines, its content in the capability lattice. | — | `prompts/2026-08-23-certified-interactive-service/PROMPT.md` | — |
 | 2026-08-24-reservation-bar-and-debt | 2026-08-24 | workspace | `prompts/2026-08-24-reservation-bar-and-debt` | Rules landed and applied once: the queue goes from thirty-seven entries to three, and twenty-four kernel-checked headlines enter the registry. | lean-proved | `prompts/2026-08-24-reservation-bar-and-debt/PROMPT.md` | li.assessment.budgeter-value, li.assessment.budgeter-floor, li.assessment.budgeter-exploits, li.assessment.firm-dominance, li.assessment.criterion, force.strategy-value, force.row-tolerance, force.preservation, force.deductive-day-nonneg, force.deductive-cumulative-nonneg, force.deductive-criterion, force.deductive-inductor, force.deductive-witness, coherence.modulus-soundness, coherence.modulus-net-cover, compiler.schedule-end-to-end, compiler.constraints-end-to-end, compiler.deductive-end-to-end, maxmin.representation, maxmin.converse, region.patterns-sound, region.patterns-complete, region.patterns-nonempty-iff, region.hull |
+| 2026-08-24-cleanup-and-compress | 2026-08-24 | workspace | `prompts/2026-08-24-cleanup-and-compress` | The live documents say what is current, the deference line has a registry, and two friction entries close as gates. | lean-proved | `prompts/2026-08-24-cleanup-and-compress/PROMPT.md` | — |

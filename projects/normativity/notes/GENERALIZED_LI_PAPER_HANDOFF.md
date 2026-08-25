@@ -302,7 +302,8 @@ theorem nor a convenient `ℓ^∞`/`ℓ¹` separation over `Fin d → ℝ`, so t
 Interface already in place: `CoherenceModulus.DistanceComplete`,
 `gap_le_of_distanceComplete` (the interface cannot be met vacuously),
 `IntrinsicCoherence.exists_credence_of_contract` (the composition, waiting on it).
-Currently `derived` plus `exhaustive-finite` — `tests/test_coherence.py` verifies it at
+Currently `derived` plus `exhaustive-finite` —
+`projects/normativity/rounds/2026-08-16-traderized-enforcement/tests/test_coherence.py` verifies it at
 every point of stated rational grids against an independently computed distance.
 **Estimated small-to-medium and self-contained.** Worth doing in the artifact PR.
 

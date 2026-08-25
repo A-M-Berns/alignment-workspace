@@ -771,6 +771,20 @@
         "region.patterns-nonempty-iff",
         "region.hull"
       ]
+    },
+    {
+      "id": "2026-08-24-cleanup-and-compress",
+      "date": "2026-08-24",
+      "project": null,
+      "path": "prompts/2026-08-24-cleanup-and-compress",
+      "verdict": "The live documents say what is current, the deference line has a registry, and two friction entries close as gates.",
+      "verdict_source": "prompts/2026-08-24-cleanup-and-compress/REPORT.md",
+      "depends_on": [],
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-08-24-cleanup-and-compress/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
