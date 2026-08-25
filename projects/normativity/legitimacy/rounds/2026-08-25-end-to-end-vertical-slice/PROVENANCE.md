@@ -2,7 +2,7 @@
 
 | Files | Generator | Review status | Date | Originating round | Chat bundle |
 |---|---|---|---|---|---|
-| `README.md`, `ARCHITECTURE.md`, `VERTICAL_SLICE.md`, `FINDINGS.md`, `SETTLEMENT_SEMANTICS.md`, `EXPRESSIVENESS.md` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-25 | `prompts/2026-08-25-end-to-end-vertical-slice/` | — |
+| `README.md`, `ARCHITECTURE.md`, `ANSWERABILITY_SCOUT.md`, `VERTICAL_SLICE.md`, `FINDINGS.md`, `SETTLEMENT_SEMANTICS.md`, `EXPRESSIVENESS.md` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-25 | `prompts/2026-08-25-end-to-end-vertical-slice/` | — |
 | `src/`, `tests/`, `TRACE.txt` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-25 | `prompts/2026-08-25-end-to-end-vertical-slice/` | — |
 
 The prompt was authored outside this repository and is committed verbatim at

@@ -34,6 +34,15 @@ above over a schedule of *presentations*, with the three facts the slice
 established about it: `D_t` is not monotone across days, the charge is
 presentation-dependent, and the tolerance route is bounded.
 
+**And one bridge toward it.** `ANSWERABILITY_SCOUT.md` gets a Level-I accounting
+theorem out of the succession structure already present: allowance carried on
+live answerability episodes, subadditivity of the deficit over row groups, and
+two local laws — no laundering through succession, no silent creation — give
+`sum_{t<T} c_t + Phi_T <= Phi_0 + sum eta_t`, hence `sum_t c_t <= Phi_0` when
+nothing is granted. It does **not** prove item 61: it reduces summability of the
+charge to summability of an explicit grant channel, and what licenses a grant is
+Level II and needs the inquiry loop.
+
 ## The pipeline, running
 
 ```text
@@ -55,6 +64,8 @@ the charged boundary, and the minimal persistent state. The documents below
 defer to it for what the objects *are*.
 
 - `ARCHITECTURE.md` — the canonical architecture, with one signature block.
+- `ANSWERABILITY_SCOUT.md` — a first bridge from answerable succession to a
+  bound on cumulative liability, at Level I and presentation level.
 - `VERTICAL_SLICE.md` — the specification. §7 is the compiler, §11 is the
   traderization boundary and the inertness dichotomy, §13 is what is not shown.
 - `FINDINGS.md` — the research report. §6 is the central result, §10 is
@@ -68,7 +79,7 @@ defer to it for what the objects *are*.
   installation), `conflict.py` (Fourier-Motzkin with Farkas provenance),
   `geometry.py`, `safety.py` (the charged branch, on the canonical objects),
   `pipeline.py`, `toy.py`, `variants.py`, `trajectories.py`, `trace.py`.
-- `tests/` — 170 cases. `python3 tests/run.py`.
+- `tests/` — 194 cases. `python3 tests/run.py`.
 
 ## What the tests cover
 
@@ -82,6 +93,7 @@ defer to it for what the objects *are*.
 | `test_safety.py` | the billed quantity is the canonical sharp aggregate and not a clone; fixed-request monotonicity; the cross-day counterexample; four charged trajectories |
 | `test_settlement.py` | `Sigma` as a legal `DeductiveProcess`; `sem_L` total and rigid; raw outcomes removing no world; contradictions attributed not repaired; unrelated growth changing nothing |
 | `test_toy.py` | RI holds at every state; value revision is not operative revision; explicit operative revision; the full provenance chain; deterministic replay against the committed trace |
+| `test_answerability.py` | the allocation lemma covers the joint charge; the ledger laws; the one-step potential inequality and its telescoping on driven runs; both structural laws shown necessary by divergent witnesses |
 | `test_architecture.py` | the reason substrate is a multihypergraph whose edges carry identity; schema revision is ordinary supersession, including a schema retiring its own standing; the three graphs are disjoint; the persistent state is three components; the charged object is a presentation |
 
 ## What this does not establish

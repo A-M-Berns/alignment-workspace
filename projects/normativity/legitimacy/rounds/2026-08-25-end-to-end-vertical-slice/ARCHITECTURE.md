@@ -437,6 +437,10 @@ to fall is watching for something that need not happen even when inquiry works.
 1. **The safety condition.** `Σ_t q_t < ∞` for a normative source anyone would
    call legitimate. Four synthetic trajectories are exhibited, two convergent
    and two not; no source is shown summable. `PRIORITIES.md` item 61.
+   `ANSWERABILITY_SCOUT.md` gets partway: allowance on live answerability
+   episodes, plus subadditivity of the deficit and two local succession laws,
+   bounds `Σ_t c_t` by `Φ_0 + Σ η_t`. That reduces the question to what
+   licenses a grant, which is the inquiry loop's.
 2. **Presentation canonicalisation**, or a demonstration that no canonical row
    system for a region exists that is defensible.
 3. **The dichotomy in Lean** — three lines, using only convexity. Item 62.
