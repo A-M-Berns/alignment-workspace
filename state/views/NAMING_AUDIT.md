@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 207 names, 126 of them Lean only
+## deference — 207 names, 125 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -109,11 +109,11 @@ change, and the count of those is the size of the free choice remaining.
 | `Cell` | abbrev | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.Cell` |
 | `IsCellMaximiser` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.IsCellMaximiser` |
 | `St` | abbrev | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.St` |
-| `X` | def | 2026-08-11-stage-iii-fud | note | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.X` |
+| `X` | def | 2026-08-11-stage-iii-fud | note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.X` |
 | `cell` | def | 2026-08-11-stage-iii-fud | note | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.cell` |
 | `cellMass` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.cellMass` |
 | `cellValue` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.cellValue` |
-| `delta` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.delta` |
+| `delta` | def | 2026-08-11-stage-iii-fud | prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.delta` |
 | `envelopeGap` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.envelopeGap` |
 | `p` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.p` |
 | `phi` | def | 2026-08-11-stage-iii-fud | prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.phi` |
@@ -139,7 +139,7 @@ change, and the count of those is the size of the free choice remaining.
 | `weight` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weight` |
 | `weightEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weightEF` |
 | `Pr` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.Pr` |
-| `X` | def | 2026-08-11-faithful-acceleration | note | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.X` |
+| `X` | def | 2026-08-11-faithful-acceleration | note, prose | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.X` |
 | `CoherentMixture` | structure | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.CoherentMixture` |
 | `coinMixture` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.coinMixture` |
 | `coinPrices` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.coinPrices` |
@@ -225,7 +225,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 369 names, 314 of them Lean only
+## normativity — 369 names, 310 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -295,8 +295,8 @@ change, and the count of those is the size of the free choice remaining.
 | `gap` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.CoherenceModulus.gap` |
 | `l1` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.l1` |
 | `mixture` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.mixture` |
-| `Computation` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.Computation` |
-| `RationalConstraintSchedule` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule` |
+| `Computation` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.Computation` |
+| `RationalConstraintSchedule` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule` |
 | `RationalConstraintSchedule.canonicalRepresentation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.canonicalRepresentation` |
 | `RegionRepresentation` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RegionRepresentation` |
 | `RegionRepresentation.Effective` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RegionRepresentation.Effective` |
@@ -312,8 +312,8 @@ change, and the count of those is the size of the free choice remaining.
 | `intervalSchedule` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.intervalSchedule` |
 | `market` | def | unrecorded | note | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.market` |
 | `pointPolytope` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.pointPolytope` |
-| `regionPred` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.regionPred` |
-| `regionPred` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.regionPred` |
+| `regionPred` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ConstraintSchedule.regionPred` |
+| `regionPred` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.regionPred` |
 | `schedule` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.schedule` |
 | `scheduleComputation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.scheduleComputation` |
 | `target` | def | unrecorded | note | `Workspace.Normativity.Contrib.ConstraintSchedule.target` |
