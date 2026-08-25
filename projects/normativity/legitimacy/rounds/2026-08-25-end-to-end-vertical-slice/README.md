@@ -88,7 +88,7 @@ defer to it for what the objects *are*.
   installation), `conflict.py` (Fourier-Motzkin with Farkas provenance),
   `geometry.py`, `safety.py` (the charged branch, on the canonical objects),
   `pipeline.py`, `toy.py`, `variants.py`, `trajectories.py`, `trace.py`.
-- `tests/` — 240 cases. `python3 tests/run.py`.
+- `tests/` — 264 cases. `python3 tests/run.py`.
 
 ## What the tests cover
 
@@ -103,7 +103,7 @@ defer to it for what the objects *are*.
 | `test_settlement.py` | `Sigma` as a legal `DeductiveProcess`; `sem_L` total and rigid; raw outcomes removing no world; contradictions attributed not repaired; unrelated growth changing nothing |
 | `test_toy.py` | RI holds at every state; value revision is not operative revision; explicit operative revision; the full provenance chain; deterministic replay against the committed trace |
 | `test_answerability.py` | the allocation lemma covers the joint charge; the ledger laws; the one-step potential inequality and its telescoping on driven runs; both structural laws shown necessary by divergent witnesses |
-| `test_inquiry.py` | the six loop snapshots `T0`–`T5`; the need derived and inert; service certifiable from settlements and monotone under extension; assessment conclusion-neutral; policy parametricity; service not factoring through `PC(Sigma)`; no operation minting allowance |
+| `test_inquiry.py` | the six loop snapshots `T0`–`T5`, plus the attacks: the episode derived from the record rather than asserted, a real RI `Transfer` moving it while the reference holds, forged and relabelled receipts refused by `authenticate`, wrong-spec and invalid and lapsed certificates refused by the assessment gate, standing-local pressure, observation spending nothing, and no operation minting allowance |
 | `test_architecture.py` | the reason substrate is a multihypergraph whose edges carry identity; schema revision is ordinary supersession, including a schema retiring its own standing; the three graphs are disjoint; the persistent state is three components; the charged object is a presentation |
 
 ## What this does not establish

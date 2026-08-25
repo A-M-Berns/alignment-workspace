@@ -28,6 +28,14 @@ a field. Service reads the provenance; the epistemic substrate does not.
 **What service means, and does not.** A specification is conclusion-neutral: it
 says what work the history had to contain, never what the answer was. Both
 branches of a real experiment can be adequate service.
+
+**Nothing here trusts a caller's word for a fact the architecture can derive.**
+The episode a need runs under is looked up in the record and checked for
+uniqueness and subject; procedural provenance is authenticated against an actual
+interaction receipt before a reading may carry it; and a certificate must be
+valid *for the pinned specification* and presently assessable before a reason
+may be appended. An earlier pass accepted each of those as an argument, which is
+what this module was rewritten to stop doing.
 """
 from __future__ import annotations
 
@@ -62,6 +70,74 @@ class InteractionReceipt:
     index: int
     action: str
     outcome_id: str
+
+
+@dataclass(frozen=True)
+class InteractionProvenance:
+    """Authenticated procedural provenance. Constructible only by `authenticate`.
+
+    The private witness is the whole point: a caller cannot fill these fields
+    in. To hold one of these is to have had an actual receipt in an actual log
+    resolve against the outcome being settled.
+    """
+
+    receipt_index: int
+    action: str
+    outcome_id: str
+
+    def __init__(self, witness, receipt_index, action, outcome_id) -> None:
+        if witness is not _AUTHENTIC:
+            raise LiabilityOfProvenance(
+                "procedural provenance is authenticated against a receipt; "
+                "use inquiry.authenticate")
+        object.__setattr__(self, "receipt_index", int(receipt_index))
+        object.__setattr__(self, "action", action)
+        object.__setattr__(self, "outcome_id", outcome_id)
+
+    def as_tuple(self) -> tuple:
+        return (self.outcome_id, self.action, self.receipt_index)
+
+
+class LiabilityOfProvenance(Exception):
+    """A provenance claim that no receipt supports."""
+
+
+_AUTHENTIC = object()
+
+
+def authenticate(log: "InteractionLog", outcome: RawOutcome,
+                 receipt: "InteractionReceipt") -> InteractionProvenance:
+    """Resolve a claimed receipt against the log and the outcome being settled.
+
+    Four conditions, and all four are checked rather than assumed:
+
+        the receipt is the log's own object at that index
+        its action is the action the receipt records
+        its outcome id is the outcome being settled
+        the outcome is the one the log recorded under that receipt
+
+    A forged receipt, a mismatched outcome, an index from another run, or an
+    action relabelled after the fact all fail here — before any settlement
+    exists, and so before anything could be serviced on the strength of it.
+    """
+    if receipt is None or outcome is None:
+        raise LiabilityOfProvenance("provenance needs a receipt and an outcome")
+    if not (0 <= receipt.index < len(log.receipts)):
+        raise LiabilityOfProvenance(
+            f"receipt index {receipt.index} is not in this log")
+    held = log.receipts[receipt.index]
+    if held != receipt:
+        raise LiabilityOfProvenance(
+            "the receipt is not this log's own at that index")
+    if held.outcome_id != outcome.id:
+        raise LiabilityOfProvenance(
+            f"receipt {held.index} records {held.outcome_id!r}, "
+            f"not {outcome.id!r}")
+    if log.outcomes.get(outcome.id) is not outcome:
+        raise LiabilityOfProvenance(
+            "the outcome is not the one this log recorded")
+    return InteractionProvenance(_AUTHENTIC, held.index, held.action,
+                                 held.outcome_id)
 
 
 class InteractionLog:
@@ -131,15 +207,24 @@ def wait_policy(need_live: bool) -> str:
 
 @dataclass(frozen=True)
 class Pressure:
-    """A read of the charged pipeline result. Computed, never stored.
+    """One force-bearing standing's **own** share of the day's liability.
 
-    Carries what the force layer already produced, so that a reader can check
-    that the trigger is the real quantity rather than a flag someone set.
+    Not the joint charge. `D_t` and `q_t` are computed from all active rows at
+    once and are not additively separable, so attributing the joint figure to a
+    standing would over-report the moment a second injunction is active — and
+    would report the *same* total for each of them.
+
+    `answerability.allocate` already solves this: each standing's rows form a
+    genuine `ForceRequest` over the joint support and the joint live worlds, and
+    subadditivity of `D` makes the solo charges cover the joint one. So the
+    quantity here is that standing's solo charge, and `joint_charge` is carried
+    alongside so a reader can see the two are different numbers.
     """
 
     standing_id: str
-    sharp: object
-    charge: object
+    sharp: object                      # this standing's solo deficit
+    charge: object                     # this standing's solo charge
+    joint_charge: object               # the day's total, for comparison
     withheld: Optional[str]
 
     @property
@@ -148,18 +233,33 @@ class Pressure:
 
 
 def pressure_of(run, standing_id: str) -> Optional[Pressure]:
-    """Read the day's charged result for one force-bearing standing.
+    """Read one standing's own liability out of the day's charged result.
 
-    `None` when the day never reached the charged branch — a blocked conflict
-    or an unsatisfiable stage — because there is then no liability fact to be
-    under pressure from.
+    `None` when the day never reached the charged branch — a blocked conflict or
+    an unsatisfiable stage — because there is then no liability fact to be under
+    pressure from; and `None` when the standing carries no active force at this
+    day, because a standing that demands nothing is under no pressure.
     """
+    import answerability
+    import safety
+
     if run.charged is None:
         return None
     if standing_id not in {sid for sid, _ in run.projection}:
         return None
-    return Pressure(standing_id, run.charged.sharp, run.charged.charge,
-                    run.charged.withheld)
+    c = run.charged
+    alloc = answerability.allocate(run.compiled, run.live_worlds, run.day,
+                                   c.slack, c.volume, c.tolerance)
+    if standing_id not in alloc:
+        return None
+    solo = safety.certify(
+        answerability._SubPresentation(
+            run.compiled.coords,
+            tuple(r for r in run.compiled.rows
+                  if r.standing_id == standing_id)),
+        run.live_worlds, run.day)
+    return Pressure(standing_id, solo.aggregate, alloc[standing_id], c.charge,
+                    c.withheld)
 
 
 # ------------------------------------------------------------- the need
@@ -181,6 +281,23 @@ class InquiryRef:
     spec: str                          # ServiceSpecId
 
 
+def current_episode_for(history, subject: str, t=None):
+    """The unique current answerability episode of `subject`, or `None`.
+
+    Derived from the record: `Roots_t` filtered by `subject`, kept where
+    `CurrentEpisode` holds. Episode Uniqueness makes at most one survive, and
+    this raises rather than choosing if the record ever violates that — a
+    reference model that silently picked one would hide exactly the failure the
+    invariant exists to catch.
+    """
+    live = [q for q in history.roots(t)
+            if q.subject == subject and history.current_episode(q, t)]
+    if len(live) > 1:
+        raise ValueError(
+            f"Episode Uniqueness fails for {subject}: {[q.id for q in live]}")
+    return live[0] if live else None
+
+
 @dataclass(frozen=True)
 class InquiryNeed:
     """A derived, read-only fact: this reference is presently unserviced.
@@ -199,22 +316,38 @@ class InquiryNeed:
                 f"under {self.episode}, D={self.pressure.sharp})")
 
 
-def derive_need(run, ref: InquiryRef, episode: Optional[str],
+def derive_need(run, history, ref: InquiryRef,
                 facts: Sequence["SettledFact"] = (),
-                spec: Optional["ServiceSpec"] = None) -> Optional[InquiryNeed]:
-    """`Need(view, current_root, ref)` — a function of state, and nothing else.
+                spec: Optional["ServiceSpec"] = None, t=None,
+                now: Optional[int] = None,
+                window: Optional[int] = None) -> Optional[InquiryNeed]:
+    """`Need(state, ref)` — a function of the record, and it mutates nothing.
 
-    Live when the reference's subject carries positive liability, an episode is
-    currently answerable for it, and the specification is not already serviced.
-    Mutates nothing: it takes a completed run, a root id and a settled-fact
-    view, and returns a value.
+    Live when three things hold together: the reference's subject carries
+    positive liability under this day's projection; the record has a unique
+    current answerability episode for that subject; and no presently usable
+    service exists for the pinned specification.
+
+    **The episode is derived, not supplied.** An earlier pass took it as an
+    argument and stored it, which let a need name a root that did not exist, was
+    not current, or belonged to another standing. It is now looked up.
+
+    **"Presently usable", not "ever certified".** See `INQUIRY_INTEGRATION.md`
+    Q3: a certificate whose assessability has lapsed leaves the historical fact
+    of service standing and the need live again. Suppressing the need on mere
+    historical certifiability would let a machine believe it holds service it can
+    no longer use.
     """
     pressure = pressure_of(run, ref.subject)
-    if pressure is None or not pressure.positive or episode is None:
+    if pressure is None or not pressure.positive:
         return None
-    if spec is not None and certifiable(spec, facts):
-        return None                    # already serviced; nothing is needed
-    return InquiryNeed(ref, pressure, episode)
+    episode = current_episode_for(history, ref.subject, t)
+    if episode is None:
+        return None
+    if spec is not None and assessable_now(spec, facts, now=now,
+                                           window=window):
+        return None
+    return InquiryNeed(ref, pressure, episode.id)
 
 
 # ------------------------------------------- settlement-backed service
@@ -246,9 +379,17 @@ def settled_facts(settle_ids: Sequence[str], sem) -> tuple:
         if sid not in sem:
             continue
         reading = sem.reading(sid)
-        prov = reading.provenance or (None, None, None)
-        out.append(SettledFact(sid, tuple(reading.sentences), prov[0], prov[1],
-                               prov[2]))
+        prov = reading.provenance
+        if prov is None:
+            out.append(SettledFact(sid, tuple(reading.sentences),
+                                   reading.of_outcome, None, None))
+        else:
+            if not isinstance(prov, InteractionProvenance):
+                raise LiabilityOfProvenance(
+                    f"{sid} carries unauthenticated provenance {prov!r}")
+            out.append(SettledFact(sid, tuple(reading.sentences),
+                                   prov.outcome_id, prov.action,
+                                   prov.receipt_index))
     return tuple(out)
 
 
@@ -381,6 +522,26 @@ def assessable(spec: ServiceSpec, facts: Sequence[SettledFact],
     return all(age <= window for age in ages)
 
 
+def assessable_now(spec: ServiceSpec, facts: Sequence[SettledFact],
+                   max_cited: int = 2, now: Optional[int] = None,
+                   window: Optional[int] = None) -> bool:
+    """Whether some certificate for `spec` is valid **and presently usable**.
+
+    `Certifiable` asks whether the history ever contained adequate service;
+    this asks whether that service is still available to lean on. With no
+    freshness window the two coincide, which is the toy's default and is what
+    makes the distinction visible rather than load-bearing here.
+    """
+    ids = tuple(f.settle_id for f in facts)
+    for k in range(max_cited + 1):
+        for cited in itertools.product(ids, repeat=k):
+            cert = ServiceCertificate(spec.spec_id, cited, None)
+            if spec.check(facts, cert) and assessable(spec, facts, cert,
+                                                      window=window, now=now):
+                return True
+    return False
+
+
 # ------------------------------------------------------------ assessment
 
 
@@ -418,6 +579,45 @@ class AssessmentCode:
         return bool(self._admits(ref, cert, facts, proposal))
 
 
+class AssessmentRefused(Exception):
+    """The composite gate refused; the clause that refused is the message."""
+
+
+def admissible_assessment(ref: InquiryRef, spec: ServiceSpec,
+                          facts: Sequence[SettledFact],
+                          cert: Optional[ServiceCertificate],
+                          code: "AssessmentCode", proposal: "ReasonProposal",
+                          now: Optional[int] = None,
+                          window: Optional[int] = None) -> bool:
+    """The whole gate a proposed reason must pass, in order.
+
+        ref.spec == spec.spec_id        the specification is the pinned one
+        cert.spec_id == spec.spec_id    the certificate addresses it
+        ValidCert(spec, facts, cert)    and the judge accepts it
+        Assessable(...)                 and it is presently usable
+        code.admits(...)                and the proposal is grounded in it
+
+    An earlier pass ran only the last clause, against whatever certificate it
+    was handed. That admitted a proposal on a certificate for another
+    specification, on an invalid one, on one citing settlements that do not
+    exist, and on one whose provenance nothing authenticated — because a
+    matching `cited` field was all it looked at.
+
+    The clauses are ordered so that the first failure is the informative one.
+    """
+    if cert is None:
+        return False
+    if ref.spec != spec.spec_id:
+        return False
+    if cert.spec_id != spec.spec_id:
+        return False
+    if not valid_cert(spec, facts, cert):
+        return False
+    if not assessable(spec, facts, cert, window=window, now=now):
+        return False
+    return code.admits(ref, cert, facts, proposal)
+
+
 def grounded_in_cited_settlements(code_id: str = "grounded") -> AssessmentCode:
     """The round's assessment: a reason must be grounded in what was serviced.
 
@@ -444,35 +644,39 @@ def grounded_in_cited_settlements(code_id: str = "grounded") -> AssessmentCode:
 
 
 def provenance_fixture(luv, threshold, upper, spec_id: str = "sigma:fixture"):
-    """Two ledgers with the same `Sigma` and different procedural provenance.
+    """Two ledgers with the same `Sigma` and different **authenticated** provenance.
 
-    `good` settled the matter by the designated probe; `bad` settled *the very
-    same sentences* by some other route. `sem_L` returns the same set for both,
-    so `Sigma`, `PC(Sigma)`, `K^D` and every price are identical — and the
-    diagnostic specification accepts one and refuses the other.
+    Both settle the very same sentences, so `sem_L` agrees, `Sigma` agrees,
+    `PC(Sigma)` agrees and every price agrees. They differ only in what actually
+    happened: `good` ran the designated probe and `bad` ran something else, and
+    each ledger's provenance is authenticated against its own interaction log
+    rather than labelled by hand.
 
     That is the executable form of
 
         service need not factor through PC(Sigma)
 
-    and it is why the provenance seam has to exist at all: an architecture in
-    which service were a function of the epistemic quotient could not tell an
-    investigation from a rumour that happened to be right.
+    and it survives the authentication repair, which is the point: the verdict
+    turns on procedural history, not on a string a fixture chose.
     """
     from epistemic import SettlementSemantics
 
     sentences = (luv.gt(threshold), li.Neg(luv.gt(upper)))
 
-    good = SettlementSemantics()
-    good.admit(SettlementReading(
-        "l:same", "o:probe", sentences, "settled by the designated trial",
-        provenance=("o:probe", PROBE, 0)))
+    def ledger(action: str, outcome_id: str, note: str):
+        log = InteractionLog()
+        outcome = RawOutcome(outcome_id, note)
+        receipt = log.record(action, outcome)
+        sem = SettlementSemantics()
+        sem.admit(SettlementReading(
+            "l:same", outcome.id, sentences, note,
+            provenance=authenticate(log, outcome, receipt)))
+        return log, sem
 
-    bad = SettlementSemantics()
-    bad.admit(SettlementReading(
-        "l:same", "o:hearsay", sentences, "the same proposition, another route",
-        provenance=("o:hearsay", "Hearsay", 0)))
+    good_log, good = ledger(PROBE, "o:probe", "settled by the designated trial")
+    bad_log, bad = ledger("Hearsay", "o:hearsay",
+                          "the same proposition, another route")
 
     return {"spec": diagnostic_spec(spec_id, luv, threshold, action=PROBE),
-            "good": good, "bad": bad, "ids": ("l:same",),
-            "sentences": sentences}
+            "good": good, "bad": bad, "good_log": good_log, "bad_log": bad_log,
+            "ids": ("l:same",), "sentences": sentences}

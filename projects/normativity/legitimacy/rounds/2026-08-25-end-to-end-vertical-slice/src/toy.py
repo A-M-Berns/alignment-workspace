@@ -30,14 +30,16 @@ if str(_RI) not in sys.path:
 
 from ri_core import (ACCOUNT_FOR_SUCCESSION, ACTIVE, GENESIS, AnsRoot,
                      Derivation, History, PAuth, PForce, Seed, SchemaCode,
-                     Standing, StandingState, Create, Supersede, creating)
+                     Standing, StandingState, Create, Supersede, Transfer,
+                     creating)
 
 import li
 from epistemic import (RawOutcome, SettlementReading, SettlementSemantics,
                        Stage, StageEntry, deductive_entries)
 import inquiry
 from inquiry import (PROBE, WAIT, InquiryRef, InteractionLog,
-                     ReasonProposal, derive_need, diagnostic_gamma,
+                     ReasonProposal, admissible_assessment, authenticate,
+                     current_episode_for, derive_need, diagnostic_gamma,
                      diagnostic_spec, grounded_in_cited_settlements,
                      settled_facts)
 from pipeline import run_day
@@ -142,6 +144,16 @@ def service_spec(X0: CertifiedLUV):
 # ------------------------------------------------------------ RI machinery
 
 
+def _schema_transferring_by_wit(name: str, to: str) -> SchemaCode:
+    """Transfer custody of whichever standing the witness names.
+
+    Present so that the round can exercise a **real** RI `Transfer` rather than
+    substituting one episode id for another. Adding it to the seed changes no
+    minted id, because those are a function of `tau` alone.
+    """
+    return SchemaCode(name, lambda wit, pre: Transfer(wit, to))
+
+
 def _schema_superseding_by_wit(name: str, payloads) -> SchemaCode:
     """Supersede whichever standing the event's witness names.
 
@@ -165,6 +177,7 @@ def seed(X0: CertifiedLUV, X1: CertifiedLUV) -> Seed:
         "auth:reforce": PAuth(_schema_superseding_by_wit(
             "supersede-force",
             [PForce("auth:revalue", "auth:reforce", j1(X1))])),
+        "auth:transfer": PAuth(_schema_transferring_by_wit("hand-over", "B")),
     }
     std0 = {x: StandingState(ACTIVE, frozenset(), p) for x, p in payloads.items()}
     roots0 = tuple(AnsRoot(f"q0:{x}", ("P0", 0), "A", x, ACCOUNT_FOR_SUCCESSION,
@@ -225,22 +238,29 @@ class Trajectory:
         Reading pressure must be free. The account is the enforcement channel's
         and is drawn down by force actually emitted; a machine that had to pay
         in order to notice it was paying too much would have the wrong shape.
-        So this runs against a scratch account and returns the result purely as
-        a view.
-        """
-        import safety
-        return run_day(n, self.stage(t), self.history.std(t),
-                       account=safety.OutflowAccount(Fraction(10) ** 9))
 
-    def need(self, run, episode: str = "q0:auth:force"):
-        """`Need(view, current_root, ref)` — derived, and it mutates nothing.
-
-        `episode` names the answerability episode currently carrying the
-        subject. The seed gives every standing object one, and the injunction's
-        own is the genesis root of the authority that issued it.
+        This takes `pipeline.run_day`'s observation path, which prices the
+        request through `safety.price_request` and consults no account at all.
+        An earlier pass used an enormous scratch account, which got the arithmetic
+        right and the type wrong: it simulated enforcement in order to observe it.
         """
-        return derive_need(run, inquiry_ref(), episode, self.facts(),
-                           self.spec)
+        return run_day(n, self.stage(t), self.history.std(t), observe=True)
+
+    def need(self, run, t=None, now=None, window=None):
+        """`Need(state, ref)` — derived from the record, and it mutates nothing.
+
+        The answerability episode is **looked up**, not supplied. An earlier
+        pass defaulted it to `q0:auth:force`, which is the genesis root of the
+        *authority* `auth:force` and not the episode of the injunction it
+        created; `J0`'s own episode is `@q2.0`, minted by `a:force`. The
+        conflation was invisible because nothing checked the subject.
+        """
+        return derive_need(run, self.history, inquiry_ref(), self.facts(),
+                           self.spec, t=t, now=now, window=window)
+
+    def episode_for(self, subject: str = None, t=None):
+        """The unique current episode of a subject, from the record."""
+        return current_episode_for(self.history, subject or J0_STANDING, t)
 
     def act(self, action: str):
         """One ordinary interaction: an action, a raw outcome, a receipt.
@@ -255,18 +275,22 @@ class Trajectory:
         return outcome, receipt
 
     def settle_outcome(self, outcome, receipt, settle_id: str = "l:trial"):
-        """Read the raw outcome into a settlement, carrying its provenance.
+        """Read the raw outcome into a settlement, **authenticating** its receipt.
 
-        This is the only step that moves `Sigma`, and it is the existing
-        certified-reading seam with the receipt frozen alongside the sentences.
+        This is the only step that moves `Sigma`. The provenance is resolved
+        against this trajectory's own interaction log before the reading is
+        admitted, so a settlement can claim `Probe` only if a `Probe` actually
+        produced the outcome being settled. An earlier pass froze whatever tuple
+        the caller passed.
         """
+        provenance = authenticate(self.log, outcome, receipt)
         reading = self.sem.admit(SettlementReading(
             settle_id=settle_id,
             of_outcome=outcome.id,
             sentences=(self.X0.luv.gt(Q(1, 3)),
                        li.Neg(self.X0.luv.gt(Q(2, 3)))),
             note="the readout pins the exposed quantity into (1/3, 2/3]",
-            provenance=(outcome.id, receipt.action, receipt.index)))
+            provenance=provenance))
         self.settled.append(reading.settle_id)
         self.history.settle(settle_id)
         return reading
@@ -284,14 +308,23 @@ class Trajectory:
             s_L=frozenset(["l:trial"]),
             target=li.Atom("v0-is-superseded"))
 
-    def assess_and_append(self, proposal: ReasonProposal) -> bool:
-        """Check admissibility, then append an ordinary `ReasonOcc`.
+    def assess_and_append(self, proposal: ReasonProposal, cert=None,
+                          spec=None, now=None) -> bool:
+        """Run the whole gate, then append an ordinary `ReasonOcc`.
 
-        Returns `False` and appends nothing when the proposal is inadmissible.
-        Appending a reason changes reason history and no standing.
+        The gate is `inquiry.admissible_assessment`: the specification must be
+        the pinned one, the certificate must address it, be valid for it, and be
+        presently assessable, and only then is the proposal's grounding checked.
+        An earlier pass ran the last clause alone against whatever certificate
+        it held, which admitted proposals on certificates for other
+        specifications and on invalid ones.
+
+        Returns `False` and appends nothing when any clause refuses.
         """
-        if not self.assessment.admits(inquiry_ref(), self.certificate,
-                                      self.facts(), proposal):
+        if not admissible_assessment(
+                inquiry_ref(), spec or self.spec, self.facts(),
+                self.certificate if cert is None else cert,
+                self.assessment, proposal, now=now):
             return False
         self.history.reason(proposal.reason_id, s_V=proposal.s_V,
                             s_L=proposal.s_L, target=proposal.target)
