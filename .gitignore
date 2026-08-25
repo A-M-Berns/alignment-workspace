@@ -4,3 +4,9 @@ __pycache__/
 
 # Lean build artifacts
 lean/.lake/
+
+# Agent worktrees: one checkout per concurrent session, inside the repository
+# and untracked. Without this, `git add -A` stages another session's worktree
+# as an embedded repository, which git reports in a hint rather than an error
+# and which every gate here passes.
+.claude/

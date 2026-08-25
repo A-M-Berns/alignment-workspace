@@ -1139,7 +1139,8 @@ where dual-register documentation lives, and it is left open rather than half-an
 
 The four frozen trees move into the research lines they belong to and become
 `agent-consolidated`: ordinary content whose norm is that it is not tweaked.
-`tests/check_frozen.py` and the `frozen-integrity` job are retired.
+<!--historical-->`tests/check_frozen.py`<!--/historical--> and the
+`frozen-integrity` job are retired.
 
 **The trade, so it is visible rather than implicit.** The freeze bought three
 things: a stable citable path, a record of what each tree was when received, and

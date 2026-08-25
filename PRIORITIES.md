@@ -899,7 +899,8 @@ The interface is already in place and cannot be met vacuously:
 `CoherenceModulus.DistanceComplete`, `gap_le_of_distanceComplete`, and the
 composition `IntrinsicCoherence.exists_credence_of_contract` waiting on it. The
 statement is currently `derived` plus exhaustive verification over stated
-rational grids in `tests/test_coherence.py`, against an independently computed
+rational grids in `projects/normativity/rounds/2026-08-16-traderized-enforcement/tests/test_coherence.py`, against an
+independently computed
 distance.
 
 *Deliverable shape:* `lean-proved`, discharging the `DistanceComplete` hypothesis
@@ -1275,7 +1276,7 @@ names a declaration that exists and ships a typechecking witness term.
 *Context:* `projects/deference/note-dump-2026-08-11/lean-deference/` and its
 `AUDIT.md`; `lean/Workspace/Deference/`. For the statement of the positive result,
 `projects/deference/note-dump-2026-08-11/wiki/faithful-acceleration-result.md` and
-`wiki/delay-and-visibility.md` — **not**
+`projects/deference/note-dump-2026-08-11/wiki/delay-and-visibility.md` — **not**
 `note-dump-2026-06-27/notes/faithful-acceleration.md`, whose §5 strength ladder the
 source line's own adjudication found wrong and two of whose lines it found false.
 That file is retained as history and is superseded for the statement.
@@ -1737,7 +1738,9 @@ verdict per hypothesis.
 
 *Context:* `lean/Workspace/Deference/Contrib/InheritedAlgebra.lean`, the
 `value_asymptotic` block and its ported source
-`projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`;
+`projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean` — the superseded
+June tree, cited because provenance records where the port was made from, not
+because it states the current result;
 `projects/deference/note-dump-2026-08-11/wiki/total-trust-implies-value.md`
 §"Necessity of the scope condition" for the menu, its arithmetic, and the
 hard-selector failure; `projects/deference/note-dump-2026-08-11/wiki/soft-self-endorsement.md`
@@ -1762,40 +1765,34 @@ numbered item or by being ruled on in `DECISIONS.md`. **Cite an entry by its
 title, not its number** — the list is renumbered as entries leave it, so numbers
 are positions rather than identifiers.
 
-### F1 — One check for whether the repository's own documents still resolve
+### F1 — Job names in prose, and root documents that classify into no layer
 <!-- workspace-priority: project=none; dispatchable=no -->
 
-Two entries were filed separately and are one piece of work. A documented command
-can name a file that was deleted — `CONTRIBUTING.md` instructed readers to run a
-script that no longer existed, and three documents claimed eight gates where seven
-ran. And an unlisted root-level document defaults to the proof layer, which is the
-right default and fails silently in the granting direction: `RESEARCH_STATE.md` was
-contributor-editable with every gate green until someone noticed by hand.
+The residue of a merged entry whose first half is now a gate. A count or a job
+name repeated in prose drifts from `.github/branch-protection.json` with nothing
+to catch it, and it has bitten twice: three documents claimed eight gates where
+seven ran, and the read-back in `.github/apply-branch-protection.sh` hardcoded
+`8` and would have reported correct protection as wrong. Separately, an unlisted
+root-level document defaults to the proof layer — the right default, failing
+silently in the granting direction, as `RESEARCH_STATE.md` did while
+contributor-editable with every gate green.
 
-One check covers both: every `python3 tests/*.py` and `python3 -m checkers.*` in a
-living document names a file that exists; every CI job name in prose appears in
-`.github/branch-protection.json`; every root-level `*.md` classifies into exactly
-one layer. Each fails loudly and none can pass vacuously.
+Two checks: every CI job name in prose appears in
+`.github/branch-protection.json`, and every root-level `*.md` classifies into
+exactly one layer. Neither can pass vacuously.
 
-**Audited by hand on 2026-08-17 and clean** — zero dead command pointers, required
-contexts matching job names seven for seven, every root document classified. So
-this is insurance rather than a repair, and it is filed at that priority: worth
-building alongside other work in the same area, not on its own. A gate built with
-no failing case to try it against is the kind this repository is suspicious of.
+The half that is done: `tests/dead_pointers.py` checks that every rooted path a
+live document cites resolves, which covers the documented-command case that opened
+this entry. Audited by hand on 2026-08-17 and clean on both remaining halves, so
+this stays insurance rather than repair — worth building alongside other work in
+the same area, not on its own.
 
-### F2 — The deference line has no claims registry
+### F2 — The deference line has no claims registry — *closed*
 <!-- workspace-priority: project=none; dispatchable=no -->
 
-`lean/Workspace/Deference/Contrib/` holds many kernel-verified results, sorry-free
-and auditing clean, and none is registered. The registry is what a claim is, so by
-this repository's own standard the line has established nothing — which its own
-ledger states in its first line. The gap is bookkeeping rather than mathematics,
-and it is the largest single divergence between what the repository holds and what
-it can say it holds.
-
-Since the headline rule, a Lean result its round presents as a headline registers
-in the pull request that ships it. This entry is the backlog that rule does not
-reach: results already merged, whose rounds are history.
+Closed by `projects/deference/CLAIMS.md`. The line held many kernel-verified
+results, sorry-free and auditing clean, and none was registered, so by this
+repository's own standard it had established nothing.
 
 ### F3 — A layer's theory is authoritative and its only code is in a disposable tree
 <!-- workspace-priority: project=none; dispatchable=no -->
@@ -1807,63 +1804,34 @@ implement either. The only executable version of both is
 changed, rewritten, or deleted wholesale at any time without loss" and that
 "nothing here is evidence for anything."
 
-So a round building on that layer must either import from a tree declared
-deletable or reimplement it. The φ-regret preparation round reimplemented the
-obligation fields it needed and recorded the adapter as architected rather than
-verified, because no cross-check against the original is meaningful when the
-original is not evidence.
+So a round building on that layer must either import from a disposable tree or
+reimplement it. The φ-regret preparation round reimplemented the obligation fields
+it needed and recorded the adapter as architected rather than verified, because no
+cross-check against the original is meaningful when the original is not evidence.
 
 Three ways out: consolidate the two modules into a frozen tree; promote them to a
-stable path outside `forward/`; or rule that the theory rows stand without
+stable path outside the disposable one; or rule that the theory rows stand without
 executable support and that adapters are the expected pattern. The choice turns on
 whether the program means to keep building on that layer, which is why it is in
 `DECISIONS.md`'s queue rather than taken here.
 
-### F4 — A pointer into a superseded source tree still resolves, and nothing says it is stale
+### F4 — A pointer into a superseded source tree still resolves — *closed*
 <!-- workspace-priority: project=none; dispatchable=no -->
 
-When a consolidated tree is superseded by a later one, every live pointer into the
-older tree keeps resolving. Nothing distinguishes a pointer that is still correct
-from one that now names a document the newer tree corrects, and no gate can see the
-difference, because both are files that exist. F1's check — every documented command
-names a file that exists — passes on both.
+Closed by `tests/dead_pointers.py`, which checks that every rooted path a live
+document cites resolves and that a citation into a tree declared disposable or
+superseded says which. Both failures were invisible to every other gate, because
+both are files that exist. The corpus-reconciliation round paid the second by hand
+across seven pointers, one of which had materially changed.
 
-The corpus-reconciliation round paid this by hand across seven pointers. Four turned
-out unchanged: the statement-level audit the deference items quote is byte-identical
-in both trees, which took a `diff` to learn and could not be assumed. One had
-materially changed: item 14's context named a document whose strength ladder the
-source line's own adjudication found wrong. The cost is that every superseding
-intake silently converts an unknown subset of live pointers into stale ones, and the
-only way to find out which is to re-read both trees.
-
-What would catch it is cheap and fits the existing discipline: a superseded tree
-declares its successor once, in its own `ORIGIN.md` — the August receipt already
-does — and a check flags every pointer from a living document into a tree that has
-declared one, so an intake produces a list to adjudicate rather than a silent
-inheritance. It does not decide anything; it makes the adjudication visible. The
-null-input case is a superseded tree with no inbound pointers, which must fail
-rather than report clean if the tree is cited anywhere.
-
-### F5 — Agent worktrees live inside the repository and nothing ignores them
+### F5 — Agent worktrees live inside the repository and nothing ignores them — *closed*
 <!-- workspace-priority: project=none; dispatchable=no -->
 
-`.claude/worktrees/` holds one checkout per concurrent agent session, inside the
-repository and untracked. `git add -A` therefore stages another session's
-worktree as an embedded repository, and git says so in a hint rather than an
-error. The traderized-enforcement round did exactly this and caught it only by
-reading the commit's file list afterwards.
-
-The failure is quiet in the direction that matters. A commit carrying an embedded
-repository passes every gate here — the path gate sees a path outside the
-specification list, the name lint sees no Markdown, and the Lean and Python jobs
-see nothing new — so the first sign is a clone that is missing a directory it
-appears to contain.
-
-Two cheap moves: a `.gitignore` entry for `.claude/`, which costs nothing and is a
-one-line specification-layer edit; or a check that no commit adds a gitlink outside
-a declared submodule list, which also catches the case where the directory moves.
-Which paths the repository ignores is a specification decision, and the second move
-is the one with a null-input case, so this is filed rather than taken.
+Closed by the `.claude/` entry in `.gitignore`. Without it `git add -A` staged
+another session's worktree as an embedded repository, which git reports in a hint
+rather than an error and which every gate here passed. The maintainer ruled that an
+ignore rule does not need a gate behind it; the gitlink check the entry also
+proposed is not built.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->
