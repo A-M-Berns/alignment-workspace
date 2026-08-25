@@ -463,7 +463,8 @@ to fall is watching for something that need not happen even when inquiry works.
    `ANSWERABILITY_SCOUT.md` gets partway: allowance on live answerability
    episodes, plus subadditivity of the deficit and two local succession laws,
    bounds `Σ_t c_t` by `Φ_0 + Σ η_t`. That reduces the question to what
-   licenses a grant, which is the inquiry loop's.
+   licenses a grant. `INQUIRY_INTEGRATION.md` §8 closes off one answer rather
+   than supplying one: no operation in the return loop can mint allowance.
 2. **Presentation canonicalisation**, or a demonstration that no canonical row
    system for a region exists that is defensible.
 3. **The dichotomy in Lean** — three lines, using only convexity. Item 62.

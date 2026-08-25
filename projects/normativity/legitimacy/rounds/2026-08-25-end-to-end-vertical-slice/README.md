@@ -48,7 +48,9 @@ two local laws — no laundering through succession, no silent creation — give
 `sum_{t<T} c_t + Phi_T <= Phi_0 + sum eta_t`, hence `sum_t c_t <= Phi_0` when
 nothing is granted. It does **not** prove item 61: it reduces summability of the
 charge to summability of an explicit grant channel, and what licenses a grant is
-Level II and needs the inquiry loop.
+Level II. The inquiry loop is now built and does **not** answer it: no operation
+in the loop can increase allowance, which is a tested negative result rather than
+the missing half of one.
 
 ## The pipeline, running
 
