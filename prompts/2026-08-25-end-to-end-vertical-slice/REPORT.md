@@ -1,8 +1,8 @@
 # Report — the end-to-end vertical slice
 
 Attribution: prompt author unrecorded (authored outside this repository);
-executor Claude Opus 5 (Anthropic); dispatched and executed 2026-08-25, in five
-passes against the same round directory.
+executor Claude Opus 5 (Anthropic); dispatched and executed 2026-08-25, in
+seven passes against the same round directory.
 
 ## Verdict
 
@@ -13,15 +13,16 @@ END-TO-END-DEMONSTRATION-CLOSED-WITH-OPEN-SAFETY-THEOREM
 ACCOUNTING-THEOREM-PROVED-LOCALLY                 (the theorem scout)
 ```
 
-The round ran in five passes against one directory: the slice, the pressing
+The round ran in seven passes against one directory: the slice, the pressing
 pass that repaired the liability quantity, the crystallization pass, the
-answerability scout, and the inquiry return loop.
+answerability scout, the inquiry return loop, and two prosecution passes that
+replaced the loop's caller-asserted arrows with enforced ones.
 
 The slice runs from settlement and reasons through normative standing, value
 exposure and operative force to a region, a live-world deficit certificate, a
 charge, an account debit, and only then a price.
 `projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/`
-carries the specification, the report, the reference model, 240 tests and a
+carries the specification, the report, the reference model, 265 tests and a
 committed trace.
 
 Answers to the four closeout questions:
@@ -37,8 +38,8 @@ Answers to the four closeout questions:
    the exact day-`t` compiled request? Three obstructions are now known and
    recorded on the item.
 4. **The next pass is Level II — what licenses a grant.** The first four passes
-   answered "item 61, not inquiry"; the fifth built the inquiry loop and that
-   answer now reads differently. The loop closed without widening, so inquiry is
+   answered "item 61, not inquiry"; the fifth built the inquiry loop and the
+   sixth and seventh prosecuted it, and that answer now reads differently. The loop closed without widening, so inquiry is
    no longer the open question. What remains is the grant channel `eta`: the
    accounting theorem reduces summability of the charge to summability of
    grants, the inquiry loop is shown unable to mint any, and nothing yet says
@@ -55,20 +56,66 @@ one `Settlement`, one `ReasonOcc` and the ordinary `NormEvent`s.
 
 No `InquiryEvent`, `ServiceEvent`, `AssessmentEvent` or `PressureEvent` was
 added. Everything in the middle of the loop is a derived predicate, environment-
-side, or one frozen provenance field.
+side, or one authenticated provenance field.
 
 Two seams the implementation settled. Service certificates cite `SettleId`s
 rather than transcript indices, because settlement is the public epistemic
 boundary; the CIS round's citation-local judge and its extension-closure
 property survive that change unaltered, while its `ServiceEvent` does not
 survive at all. And the provenance bridge is one frozen field on
-`SettlementReading` — `(outcome_id, action, receipt_index)` — which `sem_L` does
-not read, which no world reads, and which is exactly why service does not factor
-through `PC(Sigma)`.
+`SettlementReading` — an `InteractionProvenance` — which `sem_L` does not read,
+which no world reads, and which is exactly why service does not factor through
+`PC(Sigma)`.
 
 One thing the implementation forced: **reading pressure must be free.** The
 first version derived the need by running a charged day, so a machine would have
 had to pay in order to notice it was paying too much.
+
+## The sixth and seventh passes: prosecuting the loop
+
+The standard both passes were held to is that **no arrow in the return loop
+exists merely because a caller said it did.** Six places failed it, and all six
+are now enforced by the type that owns the arrow rather than by a well-behaved
+fixture. The verdict did not change; what changed is how much it is worth.
+
+The sixth pass found three. The inquiry need took a caller-supplied episode id
+and the toy's default was wrong — `q0:auth:force` is the genesis root of the
+*authority*, whose subject is `auth:force`, while the injunction's own episode is
+`@q2.0`. Nothing checked the subject, so the conflation was invisible.
+Provenance was a freely constructible tuple, so the non-factorization result
+turned on a fixture *labelling* one settlement `Probe` and another `Hearsay`.
+And assessment ran one clause of five, so a certificate for another
+specification, an invalid one, or one citing settlements that do not exist all
+passed.
+
+The seventh found three more, all of them ways to obtain or spend a receipt that
+no procedure backed. A `Wait` could carry the trial's sentences, because
+`settle_outcome` wrote a fixed pair of threshold sentences onto whatever outcome
+it was handed: authentication recorded the action honestly as `Wait`, and the
+settlement then taught the agent the probe's finding anyway, cutting the
+consistent worlds from 25 to 10 and making the service specification certifiable
+off an action that investigated nothing. `InteractionLog.record(action, outcome)`
+was public, so any caller could mint a receipt and `Gamma` was consulted by
+convention only. And receipt identity was value equality, which left the
+semantics unstated.
+
+The repairs are `execute` as the only path to a receipt with no public append
+behind it, `authenticate` by receipt id with the log's own action winning over
+any argument's, and a `SettlementReader` pinned before the interaction and
+applied to the authenticated result. Two things worth recording about them.
+First, none needed a new type, a new event, or a new authority — which is itself
+evidence for the hypothesis, since a loop that required real authority of its own
+would have forced one of these repairs to add it. Second, the canonical **seed**
+is now the pre-inquiry seed exactly: the custody-transfer fixture supplies its
+own fifth authority rather than the canonical trajectory carrying one it never
+exercises.
+
+Two smaller repairs travelled with them. Pressure is standing-local, through
+`answerability.allocate`, rather than the joint figure attributed to each
+standing independently. And observing pressure now consults no account at all —
+`run_day(observe=True)` prices through `safety.price_request`; the earlier very
+large scratch account was still enforcement wearing an observer's hat, and
+`answerability.telescopes` has been moved onto the observation path too.
 
 ## The second pass
 

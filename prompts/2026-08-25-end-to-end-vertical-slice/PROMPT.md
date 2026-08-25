@@ -2173,3 +2173,2012 @@ need -> ordinary action -> raw outcome -> settlement -> historical service
 certificate -> defeasible assessment -> ReasonOcc -> licensed NormEvent ->
 accountable normative succession, and prosecute any shortcut that collapses
 adjacent arrows.
+
+---
+
+# ADDENDUM 7 — PROSECUTE THE INQUIRY RETURN LOOP
+
+*(sent after the return-loop pass reported on PR #57)*
+
+Work in the live `A-M-Berns/alignment-workspace` repository, focusing on PR **#57**:
+
+**“Legitimacy: the inquiry return loop, closing without widening”**
+
+Branch:
+
+```text
+round/2026-08-25-inquiry-return-loop
+```
+
+Primary path:
+
+```text
+projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/
+```
+
+This is a **repair, prosecution, refinement, and cleanup pass** on the inquiry integration already built. Do not start over. The current architectural result looks substantially right:
+
+```text
+normative standing
+-> traderized force
+-> liability pressure
+-> derived inquiry need
+-> ordinary action
+-> raw outcome
+-> settlement
+-> historical service
+-> defeasible assessment
+-> ReasonOcc
+-> licensed NormEvent
+-> accountable succession
+```
+
+and the working verdict remains:
+
+```text
+INQUIRY-LOOP-CLOSES-WITHOUT-WIDENING
+```
+
+The purpose of this pass is to determine whether that verdict survives **stronger integrity tests**, fix places where the current implementation trusts caller-supplied annotations instead of deriving facts from the existing architecture, and clean up any overclaims or accidental generality.
+
+The standard is:
+
+> The loop should work because the existing types compose, not because the fixture passes around strings saying that they compose.
+
+Do not add new ontology unless a concrete counterexample forces it.
+
+---
+
+# 1. Begin by auditing the current PR, not by trusting its report
+
+Read the full current PR diff and at minimum inspect:
+
+```text
+src/inquiry.py
+src/toy.py
+src/epistemic.py
+src/answerability.py
+src/trace.py
+
+tests/test_inquiry.py
+tests/test_toy.py
+tests/test_answerability.py
+tests/test_architecture.py
+
+INQUIRY_INTEGRATION.md
+ARCHITECTURE.md
+ANSWERABILITY_SCOUT.md
+SETTLEMENT_SEMANTICS.md
+README.md
+TRACE.txt
+```
+
+Also inspect the relevant RI core implementation, especially:
+
+```text
+History.roots
+History.root
+History.current_episode
+History.custodian
+History.has_custody
+History.succ
+History.mint
+Transfer
+AnsRoot
+```
+
+and the prior certified-interactive-service round as needed.
+
+Treat the existing PR description and `INQUIRY_INTEGRATION.md` as hypotheses to audit.
+
+---
+
+# 2. Preserve the main architectural achievement
+
+Do **not** introduce any of:
+
+```text
+InquiryEvent
+ServiceEvent
+AssessmentEvent
+PressureEvent
+```
+
+unless you can first produce a minimal explicit impossibility result showing why the four historical kinds are insufficient:
+
+```text
+Settlement
+ReasonOcc
+NormEvent
+Response
+```
+
+Likewise, do not widen the reason-source sorts, reopen Reflective Integrity, or build a substantive action theory merely to simplify integration.
+
+The current desired ontology remains:
+
+```text
+historical:
+  Settlement
+  ReasonOcc
+  NormEvent
+  Response
+
+derived / interface:
+  Pressure
+  InquiryNeed
+  ValidCert
+  Certifiable
+  Assessable
+  AdmissibleAssessment
+
+environment-side:
+  Action
+  RawOutcome
+  InteractionReceipt
+  InteractionLog
+  Gamma
+  Policy
+```
+
+The burden of proof is on widening.
+
+---
+
+# 3. First major repair: make the answerability episode real
+
+The current implementation appears to accept a caller-supplied episode string in `derive_need` / `Trajectory.need` and does not verify that it is:
+
+1. an existing `AnsRoot`,
+2. current,
+3. attached to the inquiry subject.
+
+This must be repaired.
+
+In particular, inspect the canonical default:
+
+```text
+"q0:auth:force"
+```
+
+and verify what its `subject` actually is. The force-bearing standing `J0_STANDING = @s2.0` is created by a NormEvent, so RI should mint a corresponding answerability root for `J0`. Do not conflate the authority's genesis root with the created injunction's episode.
+
+Prefer an interface in which inquiry need derives the current episode from actual RI state, e.g. conceptually:
+
+```text
+current_episode_for(history, subject, t)
+  : Option AnsRoot
+```
+
+with uniqueness inherited from RI.
+
+Then:
+
+```text
+derive_need(
+  run,
+  history,
+  ref,
+  facts,
+  spec,
+  t
+)
+```
+
+should derive or verify the relevant episode rather than trust an arbitrary ID.
+
+The key invariant should become:
+
+```text
+Need(state, ref)
+  =>
+exists! q,
+  CurrentEpisode(q)
+  and q.subject = ref.subject
+```
+
+or the appropriate executable finite analogue.
+
+### Real transfer test
+
+Replace the current fake “custody transfer” test, if it merely substitutes another episode string, with an **actual RI Transfer NormEvent**.
+
+Demonstrate:
+
+```text
+before transfer:
+  current episode = q_A
+  inquiry ref     = iota
+
+after transfer:
+  current episode = q_B
+  inquiry ref     = same iota
+```
+
+where `q_B` is actually minted by RI succession.
+
+This should genuinely decide Q1:
+
+```text
+InquiryRef identity = (StandingId, InquiryKey)
+episode/custody      = derived separately
+```
+
+If an actual transfer reveals that this is wrong, report the counterexample and revise the type minimally.
+
+---
+
+# 4. Second major repair: authenticate procedural provenance
+
+The current design correctly wants service to distinguish:
+
+```text
+"phi was settled"
+```
+
+from:
+
+```text
+"phi was settled by the designated Probe"
+```
+
+without changing:
+
+```text
+sem_L : SettleId -> Finset Sentence
+```
+
+That is the right goal.
+
+But do not let `SettlementReading.provenance` be a trusted arbitrary tuple that callers can forge.
+
+The invariant should be:
+
+> If a settlement claims action provenance, that provenance was derived from an actual immutable interaction receipt in the environment-side log and matches the raw outcome being settled.
+
+Develop the narrowest type/interface that enforces this.
+
+For example, rather than allowing:
+
+```text
+SettlementReading(...,
+  provenance=(outcome_id, action, receipt_index))
+```
+
+to be freely constructed, consider a typed object such as:
+
+```text
+InteractionProvenance :=
+{
+  receipt_id/index,
+  outcome_id,
+  action
+}
+```
+
+constructed only by resolving an actual receipt.
+
+Then settlement admission should check at least:
+
+```text
+receipt exists
+receipt.action = claimed action
+receipt.outcome_id = outcome.id
+reading.of_outcome = outcome.id
+```
+
+and freeze the resulting provenance.
+
+Prefer:
+
+```text
+InteractionLog + receipt reference + RawOutcome
+  -> authenticated provenance
+  -> SettlementReading
+```
+
+over caller-populated provenance.
+
+Do **not** make `sem_L` read this provenance.
+
+### Required attacks
+
+Add tests that attempt:
+
+```text
+fake Probe receipt
+mismatched outcome id
+wrong receipt index
+receipt from a different log/run
+action changed from Wait to Probe
+settlement provenance fabricated without an interaction
+```
+
+All should fail at the appropriate boundary.
+
+The strict-more-expressive-than-`PC(Sigma)` result should survive **with authenticated provenance**, not merely because the test fixture can manually label one settlement `"Probe"` and another `"Hearsay"`.
+
+This is central.
+
+---
+
+# 5. Third major repair: enforce the pinned service spec through assessment
+
+Audit the current chain:
+
+```text
+InquiryRef.spec
+ServiceSpec.spec_id
+ServiceCertificate.spec_id
+AssessmentCode.admits
+assess_and_append
+```
+
+The architecture should not merely carry these names; the transition into a reason must verify their agreement.
+
+Aim for a composite predicate approximately:
+
+```text
+AdmissibleAssessment(
+  ref,
+  spec,
+  facts,
+  cert,
+  assessment_code,
+  proposal,
+  now
+)
+```
+
+requiring:
+
+```text
+ref.spec = spec.spec_id
+cert.spec_id = spec.spec_id
+ValidCert(spec, facts, cert)
+Assessable(spec, facts, cert, now)
+assessment_code's proposal conditions hold
+```
+
+before a `ReasonOcc` may be appended.
+
+In particular:
+
+```text
+AssessmentCode.admits(...)
+```
+
+should not be sufficient if it merely checks:
+
+```text
+proposal.s_L <= cert.cited
+```
+
+against an arbitrary certificate.
+
+The canonical append path must refuse:
+
+```text
+wrong-spec certificate
+invalid certificate
+certificate citing nonexistent settlements
+certificate with forged procedural provenance
+historically valid but currently non-assessable certificate
+```
+
+even if its `cited` field superficially matches the proposal.
+
+Add explicit adversarial tests.
+
+The desired chain is genuinely:
+
+```text
+historical settlements
+-> valid certificate for this pinned service spec
+-> presently assessable certificate
+-> admissible proposed reason
+-> ReasonOcc
+```
+
+not:
+
+```text
+object called ServiceCertificate
+-> subset check
+-> ReasonOcc
+```
+
+---
+
+# 6. Reconcile historical service with re-openable inquiry
+
+The current design has two good ideas:
+
+```text
+ValidCert is historically persistent
+Assessable may lapse
+```
+
+but audit whether `derive_need` currently suppresses inquiry forever merely because:
+
+```text
+Certifiable(spec, facts)
+```
+
+was once true.
+
+Decide explicitly what an `InquiryRef` means.
+
+Two coherent possibilities:
+
+### A. One-shot historical service problem
+
+An inquiry reference means:
+
+> Has this particular historical investigation ever been adequately performed?
+
+Then once `Certifiable`, it is permanently serviced.
+
+If later fresh investigation is needed, that is a **new InquiryKey / new inquiry reference**.
+
+### B. Continuing current-service problem
+
+An inquiry reference means:
+
+> Do we currently possess adequate usable service for this unresolved matter?
+
+Then `Need` should depend on something like:
+
+```text
+not exists cert,
+  ValidCert(spec, facts, cert)
+  and Assessable_now(cert)
+```
+
+rather than mere historical certifiability.
+
+Do not leave these semantics half-combined.
+
+Pick the architecture that best fits the intended generality and the RI/event-sourced philosophy, implement the smallest clean version, and explain the choice.
+
+Whichever you choose, preserve:
+
+```text
+historical service persistence != current conclusion permanence
+```
+
+---
+
+# 7. Clarify pressure locality
+
+Audit:
+
+```text
+pressure_of(run, standing_id)
+```
+
+The current `run.charged.sharp` / `run.charged.charge` are joint presentation-level quantities.
+
+If the toy has exactly one force-bearing standing, then using the joint charge as that standing's pressure is valid **for the toy**.
+
+But do not expose an interface that silently generalizes this to arbitrary multi-standing cases.
+
+The answerability scout already contains a per-standing allocation:
+
+```text
+allocate(...)
+```
+
+based on the solo charge of each standing's row group over the joint support/live worlds.
+
+Choose one of:
+
+1. use the actual per-standing allocation machinery;
+2. explicitly restrict the current `Pressure` type/function to singleton force projections;
+3. rename the quantity so it is visibly global rather than standing-local.
+
+Prefer the smallest solution consistent with the rest of the slice.
+
+Add a test ensuring the interface cannot accidentally attribute the entire joint charge independently to multiple force-bearing standings.
+
+Do not turn this into a new liability round.
+
+---
+
+# 8. Refine the “reading pressure is free” seam
+
+The current implementation apparently discovered an important issue:
+
+> deriving pressure by running a charged day against the real account would spend allowance merely to inspect the pressure.
+
+The scratch-account workaround may be acceptable as a fixture, but prosecute whether it is the right abstraction.
+
+Ideally expose a **non-mutating assessment path** from the enforcement machinery, something like:
+
+```text
+price_request / certify / evaluate_force_request
+```
+
+that computes:
+
+```text
+live deficit
+declared charge
+withheld/affordability information if desired
+```
+
+without emitting force or mutating an account.
+
+Prefer reusing existing functions such as:
+
+```text
+safety.price_request
+safety.certify
+```
+
+over simulating enforcement with an enormous scratch account, if this can be done without duplicating logic.
+
+The principle should be:
+
+```text
+observe certified liability pressure
+!=
+exercise normative force
+```
+
+Make that separation explicit in types/tests.
+
+---
+
+# 9. Strengthen no-oracle-smuggling
+
+The canonical action theory may remain tiny:
+
+```text
+Action = {Wait, Probe}
+Gamma : H x Action -> P+(RawOutcome)
+```
+
+but test the boundary adversarially.
+
+At minimum establish:
+
+```text
+RawOutcome alone cannot change Sigma
+RawOutcome alone cannot create service
+RawOutcome alone cannot create ReasonOcc
+```
+
+and:
+
+```text
+only authenticated settlement of an actual interaction result
+can become service evidence
+```
+
+Also inspect whether a caller can directly invoke `settle_outcome` with an arbitrary `RawOutcome` that never came from `Gamma` / `InteractionLog`.
+
+If so, tighten the admission seam.
+
+The point is not to make the environment implementation secure against malicious Python callers in a software-security sense. The point is that the **reference model's type/interface should express the claimed causal/procedural dependency**.
+
+---
+
+# 10. Make assessment thin but not vacuous
+
+Preserve the principle:
+
+```text
+assessment is checker-shaped, not conclusion-generator-shaped
+```
+
+and preserve conclusion neutrality where appropriate.
+
+But prosecute whether the current checker is **too weak to mean assessment at all**.
+
+If the only condition is:
+
+```text
+proposal.s_L is nonempty
+proposal.s_L <= cert.cited
+```
+
+then any conclusion whatsoever is admissible.
+
+That may be acceptable as a deliberately maximally permissive *grounding* relation, but if so document the exact claim:
+
+> The core only checks grounding in serviced evidence; substantive inferential soundness remains the job of separately pinned inference/applicability schemas.
+
+If the architecture intends `AssessmentCode` to encode more than grounding, make that explicit and give one example involving an `App(...)` premise or a pinned assessment schema.
+
+Do not accidentally smuggle a full reasoner into assessment.
+
+The target distinction is:
+
+```text
+service:
+  enough relevant interaction happened
+
+assessment:
+  this proposed reason is an admissible way for that serviced history
+  to enter the reason graph
+
+reason graph:
+  candidate support exists
+
+NormEvent:
+  the agent actually normatively takes it up
+```
+
+Keep these separations visible.
+
+---
+
+# 11. Strengthen the service non-factorization result
+
+Keep the current theorem-shaped fixture:
+
+```text
+same Sigma
+same PC(Sigma)
+different service verdict
+```
+
+but make it robust to the provenance repair above.
+
+Ideally establish explicitly:
+
+```text
+Q_epi(L_good) = Q_epi(L_bad)
+ValidCert(sigma, L_good, kappa_good)
+not Certifiable(sigma, L_bad)
+```
+
+where the histories differ only in **authenticated procedural history**, not arbitrary metadata.
+
+If practical, formulate a small helper predicate for epistemic factorization:
+
+```text
+EpistemicallyFactorizable(spec, finite_sample)
+```
+
+or at least document the general theorem candidate:
+
+```text
+Service factors through Q
+iff
+it is constant on fibers of Q
+```
+
+Do not spend the round proving abstract category-theoretic machinery; just sharpen the statement.
+
+---
+
+# 12. Strengthen policy parametricity
+
+The existing `probe_policy` / `wait_policy` comparison is good.
+
+Keep:
+
+```text
+same Gamma
+same InquiryRef
+same ServiceSpec
+same settlement semantics
+same assessment code
+same RI machinery
+
+different policy
+-> different trajectory
+```
+
+But make sure “same service semantics” means more than matching `spec_id`.
+
+Prefer sharing the exact same immutable/spec object where feasible, or compare the actual checker behavior over a representative set.
+
+If the policy interface is described as:
+
+```text
+Policy : MachineView -> Action
+```
+
+while implemented as:
+
+```text
+bool -> Action
+```
+
+either tighten the documentation to the toy interface or introduce the thinnest real `MachineView` projection.
+
+Avoid claiming stronger action-theory parametricity than the implementation shows.
+
+---
+
+# 13. Strengthen the no-grant claim
+
+Keep the Level-II seam closed.
+
+No inquiry-side type or operation should:
+
+```text
+grant
+replenish
+credit
+fund
+increase allowance
+```
+
+But replace weak structural tests based only on method names with behavioral/interface tests where possible.
+
+For example:
+
+```text
+account before Need = account after Need
+account before service checking = account after service checking
+account before assessment = account after assessment
+account before ReasonOcc append = account after ReasonOcc append
+```
+
+and demonstrate that a date unaffordable before servicing remains unaffordable afterward unless an explicit grant path is invoked.
+
+If the current “withheld date” test does not actually create a withheld force request, repair it.
+
+Do not add grant semantics.
+
+---
+
+# 14. Preserve the canonical downstream record exactly
+
+One of the strongest current results is that inquiry is invisible to RI history.
+
+Maintain regression tests that after the inquiry return path reaches the old Stage B:
+
+```text
+settlements = [l:trial]
+reasons     = [e:revalue]
+NormEvents  = old events at old taus
+minted standing ids unchanged
+```
+
+and:
+
+```text
+v0 -> v1
+J0 untouched
+```
+
+Then Stage C alone still gives:
+
+```text
+J0 -> J1
+```
+
+This is a major acceptance condition.
+
+If any repair changes historical `tau`s or minted ids, explain exactly why. Prefer keeping them unchanged.
+
+---
+
+# 15. Audit every claimed “derived” object for caller trust
+
+More generally, inspect the whole inquiry integration for this pattern:
+
+```text
+function accepts id/string/annotation
+docstring says "this is the current/valid/authenticated X"
+implementation merely stores it
+```
+
+Search specifically for:
+
+```text
+episode
+subject
+spec_id
+settle_id
+outcome_id
+receipt_index
+action
+certificate citations
+current
+valid
+serviced
+assessable
+```
+
+For each one, ask:
+
+> Is this fact derived/checked from the authoritative underlying structure, or merely asserted by the caller?
+
+Where feasible, move from assertion to derivation/checking.
+
+This is the main conceptual goal of the pass.
+
+---
+
+# 16. Prosecute the four-layer separation
+
+Try to construct attacks that would collapse each adjacent arrow:
+
+```text
+Pressure -> Need
+Need -> Action
+Action -> RawOutcome
+RawOutcome -> Settlement
+Settlement -> Service
+Service -> Assessment
+Assessment -> ReasonOcc
+ReasonOcc -> NormEvent
+```
+
+For each boundary ask whether the left side can forge or directly create the right side.
+
+Examples:
+
+```text
+fake pressure for nonexistent standing
+Need with no current answerability episode
+Probe-labelled settlement with no Probe
+valid proposition but wrong procedure
+fake certificate with matching cited ID
+assessment using historically invalid certificate
+ReasonOcc target unrelated to serviced material
+NormEvent without the reason leaf
+```
+
+Some of these should be rejected by inquiry; some deliberately belong to RI or the reason-schema layer.
+
+Document **which layer rejects which attack**.
+
+That division of responsibility is itself an important result.
+
+---
+
+# 17. Clean up overclaims in documentation
+
+After repairs, review:
+
+```text
+INQUIRY_INTEGRATION.md
+ARCHITECTURE.md
+README.md
+PR description if appropriate
+TRACE.txt
+```
+
+for claims stronger than what is now established.
+
+Particular claims to audit:
+
+```text
+"current episode"
+"custody transfer"
+"narrowest provenance bridge"
+"no oracle"
+"service cites settlements"
+"same service semantics"
+"conclusion-neutral"
+"defeasible assessment"
+"no allowance minting"
+"byte-identical Stage B"
+"service does not factor through PC(Sigma)"
+```
+
+Be exact about:
+
+```text
+[implementation fact]
+[finite exhaustive test]
+[general theorem candidate]
+[design choice]
+[open question]
+```
+
+Do not weaken strong results unnecessarily, but do not let fixture facts masquerade as general theorems.
+
+---
+
+# 18. Keep the work compact
+
+Do not create a sprawling new round unless necessary.
+
+Prefer repairing the existing PR and adding focused tests/docs.
+
+Likely files:
+
+```text
+src/inquiry.py
+src/toy.py
+src/epistemic.py
+possibly src/safety.py only for a clean non-mutating pressure view
+tests/test_inquiry.py
+INQUIRY_INTEGRATION.md
+TRACE.txt
+```
+
+Touch RI core only if a missing accessor genuinely prevents using information RI already derives. Prefer local adapters/helpers over modifying the frozen core.
+
+---
+
+# 19. Required adversarial test package
+
+At minimum add or repair tests for:
+
+1. Inquiry need derives the actual current episode for `J0`.
+2. A nonexistent episode cannot create a need.
+3. An episode for the wrong standing cannot create a need.
+4. A real `Transfer` changes the current episode while preserving `InquiryRef`.
+5. A forged Probe receipt cannot authenticate service.
+6. A receipt with mismatched `outcome_id` is refused.
+7. A receipt from the wrong interaction log/run is refused if the model tracks this identity.
+8. A settlement cannot claim Probe provenance without an actual Probe interaction.
+9. `sem_L` remains blind to procedural provenance.
+10. Wrong-spec certificate cannot enter assessment.
+11. Invalid certificate cannot enter assessment.
+12. Historically valid but non-assessable certificate cannot enter assessment.
+13. Assessment cannot append a reason based on settlements outside the certificate.
+14. Raw outcome alone changes neither worlds nor service status.
+15. Historical service remains valid after unrelated ledger extension.
+16. The chosen stale-service/reopened-inquiry semantics is exercised explicitly.
+17. Multi-standing pressure cannot silently attribute the entire joint charge to each standing.
+18. Pressure reading does not spend allowance.
+19. Probe and Wait policies still give different trajectories under genuinely identical service semantics.
+20. Same epistemic quotient / different authenticated procedural histories still yield different service verdicts.
+21. Inquiry/service/assessment/reason operations do not increase allowance.
+22. A genuinely withheld request stays unaffordable after service absent an explicit grant.
+23. Reason append alone changes no standing.
+24. Only the old `a:revalue` changes `v0 -> v1`.
+25. `J0` remains untouched at Stage B.
+26. Only Stage C changes `J0 -> J1`.
+27. RI remains `Good` at every state.
+28. All pre-existing tests remain green.
+
+Add additional attacks if the build suggests them.
+
+---
+
+# 20. Questions this pass should answer
+
+End with explicit answers to:
+
+### Q1. Inquiry identity
+
+Does `(StandingId, InquiryKey)` still survive a **real RI custody transfer**?
+
+### Q2. Provenance
+
+What is the narrowest **authenticated**, frozen provenance bridge between interaction and settlement?
+
+### Q3. Need semantics
+
+Is an inquiry one-shot historical service, or does need depend on current assessability?
+
+### Q4. Assessment
+
+What exactly is the minimal responsibility of `AssessmentCode`? Pure grounding? Applicability checking? Something else?
+
+### Q5. Pressure
+
+Is inquiry pressure standing-local, episode-local, or global presentation pressure in the current model?
+
+### Q6. Pressure observation
+
+What is the correct non-mutating interface for reading liability pressure?
+
+### Q7. No-widening
+
+After all adversarial repairs, do the four historical types still suffice?
+
+---
+
+# 21. Desired final verdict
+
+Prefer, if supported:
+
+```text
+INQUIRY-LOOP-CLOSES-WITHOUT-WIDENING
+```
+
+but strengthen its meaning:
+
+> The loop closes without widening **and without relying on caller-asserted episode identity, procedural provenance, or certificate validity**.
+
+If something truly forces a new type, return:
+
+```text
+INQUIRY-LOOP-FORCES-WIDENING
+```
+
+and provide the smallest exact counterexample.
+
+A third acceptable verdict, if the ontology survives but one theoretical seam remains unresolved, is:
+
+```text
+INQUIRY-LOOP-CLOSES-WITH-OPEN-SEAM
+```
+
+followed by the exact seam.
+
+---
+
+# 22. Deliverables
+
+Produce:
+
+1. repaired executable inquiry integration;
+2. expanded adversarial tests;
+3. updated deterministic `TRACE.txt`;
+4. revised `INQUIRY_INTEGRATION.md`;
+5. minimal architecture/README edits where genuinely warranted;
+6. a short prosecution report organized as:
+
+   * what survived,
+   * what failed,
+   * what was repaired,
+   * what remains provisional,
+   * answers Q1–Q7,
+   * final verdict.
+
+The deepest success criterion is still:
+
+> **Inquiry completes the world-return loop without becoming a second reasoner, and every claimed dependency is enforced by the architecture rather than narrated around it.**
+
+Keep pressing until the toy earns that sentence.
+
+---
+
+# ADDENDUM 8 — FINAL PROSECUTION AND CLEANUP
+
+*(sent after the prosecution pass reported on PR #57)*
+
+Work in the live `A-M-Berns/alignment-workspace` repository on PR **#57**:
+
+```text
+Legitimacy: the inquiry return loop, closing without widening
+```
+
+Branch:
+
+```text
+round/2026-08-25-inquiry-return-loop
+```
+
+Primary path:
+
+```text
+projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/
+```
+
+This should be a **narrow final prosecution and cleanup pass**, not another architecture-design round.
+
+The current result is substantially successful. The main verdict is now believed:
+
+```text
+INQUIRY-LOOP-CLOSES-WITHOUT-WIDENING
+```
+
+and the previous prosecution pass fixed the major issues around:
+
+* caller-supplied answerability episodes,
+* standing-local pressure,
+* pressure observation mutating the account,
+* caller-supplied procedural provenance,
+* certificate/spec validity at assessment,
+* stale historical service vs current assessability.
+
+Do **not** redesign the system unless this pass uncovers an actual counterexample.
+
+The goal now is:
+
+> Make the remaining interaction, settlement, and specification seams as real as the already-repaired RI/service/assessment seams, remove stale or overstated documentation, and leave the PR in a state that is genuinely ready to merge.
+
+---
+
+# 1. Inspect the current head first
+
+Read the current implementations of at least:
+
+```text
+src/inquiry.py
+src/toy.py
+src/epistemic.py
+src/pipeline.py
+src/safety.py
+src/answerability.py
+
+tests/test_inquiry.py
+
+INQUIRY_INTEGRATION.md
+ARCHITECTURE.md
+README.md
+TRACE.txt
+```
+
+Also inspect the current PR description.
+
+Do not trust the prose where it conflicts with the implementation.
+
+The architectural target remains:
+
+```text
+normative standing
+-> traderized force
+-> liability pressure
+-> derived inquiry need
+-> ordinary action
+-> raw outcome
+-> settlement
+-> historical service
+-> current assessment
+-> ReasonOcc
+-> licensed NormEvent
+-> accountable succession
+```
+
+with only these historical kinds:
+
+```text
+Settlement
+ReasonOcc
+NormEvent
+Response
+```
+
+Do not add:
+
+```text
+InquiryEvent
+ServiceEvent
+AssessmentEvent
+PressureEvent
+```
+
+unless a minimal explicit impossibility result forces it.
+
+---
+
+# 2. Main remaining issue: make action provenance genuinely execution-backed
+
+The current provenance repair authenticates a settlement against an `InteractionLog`, but prosecute whether the log itself is currently authoritative enough.
+
+In particular inspect:
+
+```text
+InteractionLog.record(action, outcome)
+authenticate(log, outcome, receipt)
+```
+
+The current model may still permit a caller to create an arbitrary raw outcome, directly call:
+
+```text
+log.record(PROBE, arbitrary_outcome)
+```
+
+and then obtain apparently authenticated `Probe` provenance without the outcome ever having arisen through `Gamma`.
+
+That is too weak for the intended no-oracle-smuggling claim.
+
+The desired semantic dependency is:
+
+```text
+Gamma + current interaction history + Action
+  -> permitted RawOutcome
+  -> receipt recorded
+```
+
+not:
+
+```text
+caller supplies Action + RawOutcome
+  -> log records whatever it is handed
+```
+
+Build the smallest interaction primitive that makes this dependency executable.
+
+For example:
+
+```text
+execute(
+  log : InteractionLog,
+  gamma : Gamma,
+  action : Action
+) -> (RawOutcome, InteractionReceipt)
+```
+
+with semantics:
+
+```text
+outcomes = gamma(log.history(), action)
+choose/receive y in outcomes
+append receipt(action, y)
+return y, receipt
+```
+
+For the deterministic toy, choosing the sole result is fine.
+
+The important property is that the **public canonical path** from action to receipt goes through `Gamma`.
+
+Then make:
+
+```text
+Trajectory.act(...)
+```
+
+use this primitive.
+
+If `InteractionLog.record` remains public for low-level fixture construction, be explicit that it is not the semantic execution boundary. Prefer making the normal architecture path impossible to bypass accidentally.
+
+---
+
+# 3. Fix receipt identity/authentication exactly
+
+Audit the claim:
+
+> the receipt is the log's own object at that index.
+
+If the code currently does something like:
+
+```text
+held != receipt
+```
+
+on a dataclass, this checks value equality, not object identity.
+
+Choose and enforce the intended semantics.
+
+Two reasonable options:
+
+### Option A: identity-bearing receipt object
+
+Require:
+
+```text
+held is receipt
+```
+
+if the reference model intends object identity to matter.
+
+### Option B: stable receipt ID
+
+Preferably give each receipt a stable identifier, e.g.
+
+```text
+ReceiptId
+```
+
+and authenticate by looking up the immutable receipt with that ID.
+
+Then the conceptual provenance chain is:
+
+```text
+SettleId
+ -> SettlementReading
+ -> ReceiptId
+ -> immutable InteractionReceipt
+ -> (action, outcome)
+```
+
+This is likely cleaner than relying on Python object identity.
+
+Use the smallest implementation consistent with the architecture.
+
+Add a test in which a separately constructed receipt with exactly the same fields as a real receipt is presented. It should behave according to the chosen semantics, not accidentally pass because dataclass equality says the values match.
+
+---
+
+# 4. Main remaining issue: make settlement semantics honest about the actual outcome/action
+
+Audit:
+
+```text
+Trajectory.settle_outcome(outcome, receipt, ...)
+```
+
+The current implementation may authenticate that an outcome really came from `Wait`, but then still assign the canonical diagnostic trial sentences to that settlement.
+
+That would mean:
+
+```text
+Wait
+-> uninformative RawOutcome
+-> settlement that nevertheless says X > 1/3 etc.
+```
+
+Even if service later refuses to count it as a diagnostic, LI has already learned information out of nowhere.
+
+This violates the intended no-oracle-smuggling decomposition.
+
+Repair the settlement-reading seam so the LI-facing semantic content is genuinely a function of the authenticated outcome/procedure.
+
+For the toy, something as simple as:
+
+```text
+ProbePositive -> sentences supporting C
+ProbeNegative -> sentences supporting ¬C
+Wait          -> no diagnostic sentences
+```
+
+is enough.
+
+Do not create a large observation theory.
+
+The key invariant is:
+
+```text
+authenticated action/outcome provenance
++ pinned SettlementReading rule
+-> sem_L(settlement)
+```
+
+and not:
+
+```text
+any authenticated RawOutcome
+-> whatever sentences the caller wanted
+```
+
+If useful, define an explicit application-level reader:
+
+```text
+read_outcome(
+  provenance,
+  outcome
+) -> Optional SettlementReadingPayload
+```
+
+or:
+
+```text
+SettlementReader
+```
+
+but keep it application-level and minimal.
+
+---
+
+# 5. Required no-oracle tests
+
+Add tests for at least:
+
+```text
+Wait -> RawOutcome -> settlement
+```
+
+and show:
+
+```text
+Wait does not add the trial's diagnostic sentences
+Wait does not reduce the version space in the diagnostic direction
+Wait does not make diagnostic service valid
+Wait does not produce e:revalue
+```
+
+Also test:
+
+```text
+raw outcome not produced by Gamma
+```
+
+cannot enter through the canonical settlement path.
+
+The central executable claim should become:
+
+> Informative settlement semantics arise only through the pinned reading of an actual permitted interaction outcome.
+
+---
+
+# 6. Pin the ServiceSpec at the Need boundary too
+
+Audit:
+
+```text
+derive_need(run, history, ref, facts, spec, ...)
+```
+
+The assessment gate now correctly checks:
+
+```text
+ref.spec == spec.spec_id
+```
+
+but `derive_need` may still use whatever `spec` the caller supplies to decide whether service is currently assessable.
+
+If so, repair it.
+
+A mismatched spec must not suppress or reopen an inquiry whose `InquiryRef` pins another `ServiceSpecId`.
+
+Require:
+
+```text
+ref.spec == spec.spec_id
+```
+
+before using that spec to evaluate current service.
+
+Possible semantics:
+
+```text
+if spec is None:
+    cannot evaluate service / use registry lookup
+
+if ref.spec != spec.spec_id:
+    reject / return no valid Need computation / raise typed error
+```
+
+Pick the cleanest behavior for the reference model.
+
+Add explicit tests:
+
+```text
+InquiryRef pins sigma_A
+caller supplies sigma_B
+```
+
+and show `sigma_B` cannot determine whether the `sigma_A` inquiry is live.
+
+---
+
+# 7. Clean up current assessability/freshness semantics
+
+The current design made a substantive choice:
+
+```text
+Need depends on currently usable service,
+not merely historical Certifiable.
+```
+
+That is a coherent and attractive choice.
+
+But inspect whether `Assessable` currently implements freshness using incomparable clocks such as:
+
+```text
+now - receipt_index
+```
+
+where `receipt_index` is an interaction-order index and `now` is described as time.
+
+Do not leave a fake generic temporal semantics in the core.
+
+Preferred architecture:
+
+```text
+ValidCert(sigma, L, kappa)
+```
+
+is core historical service.
+
+Then:
+
+```text
+Assessable(context, sigma, L, kappa)
+```
+
+is a current-view/application predicate.
+
+It may incorporate freshness, supersession, case relevance, etc., but the generic inquiry core need not define a universal time arithmetic.
+
+For the toy, use either:
+
+### Minimal explicit clock
+
+Give interaction receipts a real `tau` in a clearly defined shared clock and use that consistently.
+
+or preferably:
+
+### Parametric current-use checker
+
+Define something like:
+
+```text
+CurrentUseCode
+```
+
+or a simple function passed into `assessable`.
+
+Then the toy's lapse test can use a deliberately simple predicate such as:
+
+```text
+current_round <= cited_round + freshness_window
+```
+
+without pretending this is part of generic service semantics.
+
+Keep the distinction:
+
+```text
+historical validity is persistent
+current usability is defeasible
+```
+
+but make the implementation semantically honest.
+
+---
+
+# 8. Keep the canonical seed literally canonical
+
+The prior repair added:
+
+```text
+auth:transfer
+```
+
+to the canonical seed so that a real transfer test could run.
+
+That weakens the strong claim that the pre-existing canonical RI setup remains literally unchanged.
+
+Prefer separating the test fixture.
+
+For example:
+
+```text
+seed(...)
+```
+
+remains the original canonical four-authority seed.
+
+Add:
+
+```text
+transfer_seed(...)
+```
+
+or:
+
+```text
+Trajectory.with_transfer_authority(...)
+```
+
+for the Q1 custody-transfer test.
+
+Then preserve exactly:
+
+```text
+canonical Stage A/B/C seed
+canonical genesis roots
+canonical NormEvents
+canonical taus
+canonical minted ids
+```
+
+and run transfer only in the adversarial fixture.
+
+Update the documentation accordingly.
+
+The strongest desired statement is:
+
+> The inquiry integration changes neither the canonical RI seed nor its historical A/B/C record; all inquiry machinery is outside the RI history until the pre-existing Settlement/Reason/Norm steps occur.
+
+If this is achievable, make it literally true.
+
+---
+
+# 9. Be precise about policy parametricity
+
+The docs may currently say:
+
+```text
+Policy : MachineView -> Action
+```
+
+while the toy implements:
+
+```text
+bool -> Action
+```
+
+Do not overclaim.
+
+Either:
+
+### Option A
+
+Document the toy honestly:
+
+```text
+ToyPolicy : NeedLive -> Action
+```
+
+and state that richer policies can consume a larger machine view.
+
+or:
+
+### Option B
+
+Introduce a tiny explicit:
+
+```text
+InquiryView :=
+{
+  need : Optional InquiryNeed
+}
+```
+
+and use:
+
+```text
+Policy : InquiryView -> Action
+```
+
+Do not build general decision theory.
+
+The important result is only:
+
+```text
+same environment/service semantics
+different controller
+different trajectory
+```
+
+---
+
+# 10. Clean up the service-vs-assessment vocabulary
+
+Keep:
+
+```text
+ServiceSpec
+ServiceCertificate
+ValidCert
+Certifiable
+Assessable
+AssessmentCode
+ReasonProposal
+admissible_assessment
+```
+
+but make the responsibility of each object exact.
+
+Preferred wording:
+
+```text
+Service:
+  Was enough of the specified interaction/procedure historically completed?
+
+Assessability:
+  Is that historical service presently usable for this inquiry?
+
+AssessmentCode:
+  Is this candidate ReasonOcc grounded in that currently usable service?
+
+Reason layer:
+  Is the resulting consideration inferentially/applicably live?
+
+NormEvent:
+  Does the agent actually take normative action on it?
+```
+
+Do not describe `AssessmentCode` as validating inferential correctness if it only checks grounding.
+
+If the toy's `AssessmentCode` is intentionally maximally permissive over targets, say so.
+
+---
+
+# 11. Re-prosecute the service non-factorization result after the reader repair
+
+The key result should still be:
+
+```text
+same sem_L
+same Sigma
+same PC(Sigma)
+different service verdict
+```
+
+but now both histories should arise through **actual execution-backed interaction paths** and **honest settlement readers**.
+
+Construct something like:
+
+```text
+good:
+  designated Probe -> outcome y -> settlement phi
+
+bad:
+  some other legitimate action/source -> outcome z -> settlement phi
+```
+
+where both genuinely yield the same LI-facing proposition `phi`, but only the first satisfies the procedural service specification.
+
+The result should not depend on:
+
+```text
+manual provenance label
+manual forged receipt
+dishonest settlement reader
+```
+
+If the strict witness still survives, the architectural result is considerably stronger.
+
+---
+
+# 12. Pressure observation cleanup
+
+The new:
+
+```text
+run_day(observe=True)
+safety.observe(...)
+```
+
+direction looks good.
+
+Audit for exactness:
+
+```text
+observe=True
+```
+
+should:
+
+```text
+consult no account
+emit no force
+produce no market price
+still return the exact certificate/charge that the charged path would use
+```
+
+Keep tests comparing observation against actual enforcement on the same pre-state.
+
+Also clean stale prose that still says pressure reading uses a “scratch account.”
+
+Search the whole PR for:
+
+```text
+scratch account
+large account
+10**9
+```
+
+and remove/update any obsolete description.
+
+---
+
+# 13. Strengthen the withheld/no-grant test only if needed
+
+Keep the Level-II grant seam shut.
+
+The behavioral claim should remain:
+
+```text
+Need
+interaction
+settlement
+service
+assessment
+ReasonOcc
+```
+
+cannot increase allowance.
+
+Make sure the “withheld remains withheld” test is comparing genuinely corresponding force requests and is not passing because the post-settlement day is blocked/incompatible for another reason.
+
+If necessary choose a fixture/day where:
+
+```text
+request is well-formed before and after
+charge exceeds account before
+same lack of grant leaves it unaffordable after
+```
+
+Do not spend significant time on grant semantics.
+
+---
+
+# 14. Audit `stage_b()` for ignored failures
+
+Inspect:
+
+```text
+self.certify()
+self.assess_and_append(...)
+self.revalue()
+```
+
+If `stage_b()` always calls `revalue()` regardless of whether certification or assessment succeeded, tighten this.
+
+The canonical path should have explicit control flow:
+
+```text
+cert = certify()
+if cert is None:
+    stop / fail
+
+if not assess_and_append(...):
+    stop / fail
+
+revalue()
+```
+
+The happy path can still be concise, but no helper should silently proceed past a failed gate.
+
+Add one adversarial fixture that causes service or assessment failure and confirms no `NormEvent` occurs.
+
+---
+
+# 15. Audit caller-asserted semantics one last time
+
+Search the inquiry integration for any field or argument whose prose says:
+
+```text
+current
+authenticated
+valid
+pinned
+serviced
+derived
+own
+actual
+```
+
+and ask:
+
+> Is that property checked/derived, or merely stored?
+
+In particular inspect:
+
+```text
+InquiryRef.subject
+InquiryRef.spec
+ServiceCertificate.spec_id
+ServiceCertificate.cited
+SettlementReading.of_outcome
+InteractionReceipt
+InteractionProvenance
+Pressure.standing_id
+ReasonProposal.s_L
+```
+
+Do not attempt to make Python adversary-proof software. The goal is that the **reference model faithfully represents the mathematical dependency being claimed**.
+
+---
+
+# 16. Documentation cleanup
+
+Update:
+
+```text
+INQUIRY_INTEGRATION.md
+ARCHITECTURE.md
+README.md
+TRACE.txt
+PR description
+```
+
+to reflect the actual repaired model.
+
+Search especially for stale or overstrong claims:
+
+```text
+"receipt is the log's own object"
+"constructor no caller can reach"
+"scratch account"
+"byte-identical"
+"canonical seed unchanged"
+"Policy : MachineView -> Action"
+"no oracle"
+"narrowest provenance bridge"
+```
+
+Grade claims honestly as:
+
+```text
+implementation fact
+finite tested witness
+design choice
+general theorem candidate
+open seam
+```
+
+The end state should read more crisply, not longer.
+
+---
+
+# 17. Required final test additions/repairs
+
+At minimum cover:
+
+1. canonical action execution goes through `Gamma`;
+2. direct arbitrary `(action, outcome)` insertion cannot masquerade as canonical execution;
+3. copied/equal-but-not-identical receipt behaves according to the chosen receipt identity semantics;
+4. Wait cannot generate the trial's diagnostic settlement semantics;
+5. a non-Gamma outcome cannot enter the canonical settlement path;
+6. informative settlement semantics correspond to the actual authenticated result;
+7. mismatched `InquiryRef.spec` / `ServiceSpec.spec_id` cannot control Need;
+8. historical service still persists under extension;
+9. current usability can lapse under the repaired explicit/parametric freshness semantics;
+10. lapsed service reopens Need under option B;
+11. canonical seed remains exactly the pre-inquiry canonical seed;
+12. real transfer fixture still proves `(StandingId, InquiryKey)` survives custody transfer;
+13. service non-factorization survives with execution-backed provenance and honest readers;
+14. Probe/Wait policy trajectories differ with genuinely shared service semantics;
+15. pressure observation reads the same charge as enforcement and mutates no account;
+16. service/assessment failure prevents revaluation;
+17. inquiry/service/assessment do not increase allowance;
+18. canonical A/B/C historical trace remains unchanged;
+19. RI remains `Good`;
+20. full repository tests and CI remain green.
+
+---
+
+# 18. Final questions
+
+End the pass with crisp answers:
+
+### Q1
+
+Is the action-to-receipt path now genuinely mediated by `Gamma`, rather than by a caller asserting an action/outcome pair?
+
+### Q2
+
+Is settlement semantic content now genuinely determined by the authenticated interaction result, so `Wait` cannot teach the agent diagnostic facts?
+
+### Q3
+
+Is inquiry's pinned service specification enforced both when deriving Need and when assessing service?
+
+### Q4
+
+What exactly is the receipt/provenance identity model?
+
+### Q5
+
+What is the final generic semantics of `Assessable`? Is freshness generic, or application-supplied?
+
+### Q6
+
+Does the canonical RI seed remain literally unchanged?
+
+### Q7
+
+Does the same-epistemics/different-service witness survive all these repairs?
+
+### Q8
+
+Does the four-historical-type no-widening verdict still stand?
+
+---
+
+# 19. Desired verdict
+
+Prefer:
+
+```text
+INQUIRY-LOOP-CLOSES-WITHOUT-WIDENING
+```
+
+with the stronger interpretation:
+
+> The loop closes without widening, and the causal/procedural dependencies from action through settlement through service are represented by actual checked interfaces rather than trusted annotations.
+
+If one seam genuinely remains provisional, use:
+
+```text
+INQUIRY-LOOP-CLOSES-WITH-OPEN-SEAM
+```
+
+and name exactly one seam.
+
+Do not continue polishing indefinitely. If the issues above are repaired and no new architecture-level defect appears, conclude that this inquiry round is ready to merge and that further research should move downstream rather than continue hardening the toy.
+
+---
+
+# 20. Deliverables
+
+Produce:
+
+1. repaired implementation;
+2. repaired/expanded adversarial tests;
+3. updated `TRACE.txt`;
+4. concise revised `INQUIRY_INTEGRATION.md`;
+5. minimal architecture/README updates;
+6. updated PR description if needed;
+7. a short final prosecution report:
+
+   * what failed,
+   * what was repaired,
+   * what survived,
+   * Q1–Q8,
+   * merge-readiness verdict.
+
+The success criterion is:
+
+> **No arrow in the inquiry return loop exists merely because a caller said it did.**
