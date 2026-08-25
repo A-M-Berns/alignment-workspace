@@ -5,6 +5,10 @@ provisional under `AGENTS.md` §6. Nothing here is Lean-checked or registered.
 
 ## Verdict
 
+INQUIRY-LOOP-CLOSES-WITHOUT-WIDENING — the return loop runs through the waists already earned, adding no historical event kind and leaving the canonical record identical.
+
+Earlier passes, unchanged:
+
 ARCHITECTURE-CRYSTALLIZED-WITH-LOCAL-SEAMS — the forward normative reasoner has one compositional type-level account the running slice implements; the open safety theorem and the presentation-liability seam are identified consumers rather than unresolved architecture.
 
 End-to-end status, unchanged by the crystallization pass:
@@ -44,7 +48,9 @@ two local laws — no laundering through succession, no silent creation — give
 `sum_{t<T} c_t + Phi_T <= Phi_0 + sum eta_t`, hence `sum_t c_t <= Phi_0` when
 nothing is granted. It does **not** prove item 61: it reduces summability of the
 charge to summability of an explicit grant channel, and what licenses a grant is
-Level II and needs the inquiry loop.
+Level II. The inquiry loop is now built and does **not** answer it: no operation
+in the loop can increase allowance, which is a tested negative result rather than
+the missing half of one.
 
 ## The pipeline, running
 
@@ -69,6 +75,8 @@ defer to it for what the objects *are*.
 - `ARCHITECTURE.md` — the canonical architecture, with one signature block.
 - `ANSWERABILITY_SCOUT.md` — a first bridge from answerable succession to a
   bound on cumulative liability, at Level I and presentation level.
+- `INQUIRY_INTEGRATION.md` — the return loop: pressure to need to action to
+  settlement to service to reason, with no new historical event kind.
 - `VERTICAL_SLICE.md` — the specification. §7 is the compiler, §11 is the
   traderization boundary and the inertness dichotomy, §13 is what is not shown.
 - `FINDINGS.md` — the research report. §6 is the central result, §10 is
@@ -82,7 +90,7 @@ defer to it for what the objects *are*.
   installation), `conflict.py` (Fourier-Motzkin with Farkas provenance),
   `geometry.py`, `safety.py` (the charged branch, on the canonical objects),
   `pipeline.py`, `toy.py`, `variants.py`, `trajectories.py`, `trace.py`.
-- `tests/` — 194 cases. `python3 tests/run.py`.
+- `tests/` — 265 cases. `python3 tests/run.py`.
 
 ## What the tests cover
 
@@ -97,6 +105,7 @@ defer to it for what the objects *are*.
 | `test_settlement.py` | `Sigma` as a legal `DeductiveProcess`; `sem_L` total and rigid; raw outcomes removing no world; contradictions attributed not repaired; unrelated growth changing nothing |
 | `test_toy.py` | RI holds at every state; value revision is not operative revision; explicit operative revision; the full provenance chain; deterministic replay against the committed trace |
 | `test_answerability.py` | the allocation lemma covers the joint charge; the ledger laws; the one-step potential inequality and its telescoping on driven runs; both structural laws shown necessary by divergent witnesses |
+| `test_inquiry.py` | the six loop snapshots `T0`–`T5`, plus the attacks — one per seam, each naming the layer that refuses it: an outcome `Gamma` never offered and an arbitrary `(action, outcome)` pair refused by `execute` and by the absence of any public append; unknown, foreign, forged and copied receipts resolved or refused by `authenticate`; a `Wait` unable to carry the trial's sentences, because the pinned reader is applied to the authenticated result; a specification the reference does not pin refused at `Need` and at assessment; wrong-spec, invalid and lapsed certificates refused by the assessment gate; the episode derived from the record and moved by a real RI `Transfer` while the reference holds; standing-local pressure; observation reading the same charge while spending nothing; and no operation minting allowance |
 | `test_architecture.py` | the reason substrate is a multihypergraph whose edges carry identity; schema revision is ordinary supersession, including a schema retiring its own standing; the three graphs are disjoint; the persistent state is three components; the charged object is a presentation |
 
 ## What this does not establish

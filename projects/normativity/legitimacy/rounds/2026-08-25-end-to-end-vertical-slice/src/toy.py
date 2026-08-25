@@ -30,11 +30,19 @@ if str(_RI) not in sys.path:
 
 from ri_core import (ACCOUNT_FOR_SUCCESSION, ACTIVE, GENESIS, AnsRoot,
                      Derivation, History, PAuth, PForce, Seed, SchemaCode,
-                     Standing, StandingState, Create, Supersede, creating)
+                     Standing, StandingState, Create, Supersede, Transfer,
+                     creating)
 
 import li
 from epistemic import (RawOutcome, SettlementReading, SettlementSemantics,
                        Stage, StageEntry, deductive_entries)
+import inquiry
+from inquiry import (PROBE, WAIT, InquiryRef, InquiryView, InteractionLog,
+                     ReasonProposal, admissible_assessment,
+                     current_episode_for, derive_need, diagnostic_gamma,
+                     diagnostic_reader, diagnostic_spec, execute,
+                     grounded_in_cited_settlements, read_and_admit,
+                     settled_facts)
 from pipeline import run_day
 from standing import PValue
 from waist import (CertifiedLUV, Ineq, Injunction, Expect, Prob, ValueRegistry,
@@ -109,7 +117,42 @@ def j1(X1: CertifiedLUV) -> Injunction:
     ))
 
 
+# ---------------------------------------------------------- inquiry layer
+
+#: What the round's inquiry is about: the injunction's own standing, the matter
+#: left unresolved, and the specification that says what would settle it.
+#: Keyed by `StandingId` rather than by episode — the matter outlives whichever
+#: episode currently carries it.
+INQUIRY_KEY = "is-the-exposed-quantity-above-the-ceiling"
+SPEC_ID = "sigma:diagnostic-trial"
+
+
+def inquiry_ref(subject: str = None) -> InquiryRef:
+    return InquiryRef(subject=subject or J0_STANDING, key=INQUIRY_KEY,
+                      spec=SPEC_ID)
+
+
+def service_spec(X0: CertifiedLUV):
+    """The designated probe settled the matter, either way.
+
+    Conclusion-neutral: a settlement affirming `X > 1/3` and one denying it are
+    both adequate service. What it refuses is the same proposition settled by
+    some other route.
+    """
+    return diagnostic_spec(SPEC_ID, X0.luv, Q(1, 3), action=PROBE)
+
+
 # ------------------------------------------------------------ RI machinery
+
+
+def _schema_transferring_by_wit(name: str, to: str) -> SchemaCode:
+    """Transfer custody of whichever standing the witness names.
+
+    Present so that the round can exercise a **real** RI `Transfer` rather than
+    substituting one episode id for another. Adding it to the seed changes no
+    minted id, because those are a function of `tau` alone.
+    """
+    return SchemaCode(name, lambda wit, pre: Transfer(wit, to))
 
 
 def _schema_superseding_by_wit(name: str, payloads) -> SchemaCode:
@@ -123,8 +166,16 @@ def _schema_superseding_by_wit(name: str, payloads) -> SchemaCode:
     return SchemaCode(name, lambda wit, pre: Standing(Supersede(frozenset([wit]), K)))
 
 
-def seed(X0: CertifiedLUV, X1: CertifiedLUV) -> Seed:
-    """A thin seed: four authorities, one genesis root each, nothing else."""
+def seed(X0: CertifiedLUV, X1: CertifiedLUV, extra: dict = None) -> Seed:
+    """A thin seed: four authorities, one genesis root each, nothing else.
+
+    **Literally the pre-inquiry canonical seed.** `extra` is for adversarial
+    fixtures that need an authority the canonical trajectory does not have — the
+    custody-transfer test is the only one — and the canonical path never passes
+    it. An earlier pass added a transfer authority to the seed itself, which
+    weakened the claim that the inquiry integration leaves the canonical RI
+    setup untouched.
+    """
     payloads = {
         "auth:value": PAuth(creating("issue-v0", [PValue("v0")])),
         "auth:force": PAuth(creating(
@@ -136,10 +187,17 @@ def seed(X0: CertifiedLUV, X1: CertifiedLUV) -> Seed:
             "supersede-force",
             [PForce("auth:revalue", "auth:reforce", j1(X1))])),
     }
+    payloads.update(extra or {})
     std0 = {x: StandingState(ACTIVE, frozenset(), p) for x, p in payloads.items()}
     roots0 = tuple(AnsRoot(f"q0:{x}", ("P0", 0), "A", x, ACCOUNT_FOR_SUCCESSION,
                            GENESIS, 0) for x in payloads)
     return Seed("P0", std0, roots0)
+
+
+def transfer_authority() -> dict:
+    """The extra seed entry the custody-transfer fixture needs, and only it."""
+    return {"auth:transfer": PAuth(_schema_transferring_by_wit("hand-over",
+                                                              "B"))}
 
 
 #: Where the created objects land. `standing_tag(tau, i)` is `@s{tau}.{i}`, and
@@ -153,7 +211,8 @@ J1_STANDING = "@s7.0"
 class Trajectory:
     """The toy history, its ledger semantics, and the day runs over it."""
 
-    def __init__(self, capital: Fraction = Fraction(25)) -> None:
+    def __init__(self, capital: Fraction = Fraction(25),
+                 extra_seed: dict = None) -> None:
         import safety
         #: One enforcement account for the whole trajectory. Force is charged
         #: against it date by date, so the trace's cumulative spend is a fact
@@ -163,9 +222,20 @@ class Trajectory:
         self.X0 = x0(self.registry)
         self.X1 = x1(self.registry)
         self.sem = SettlementSemantics()
-        self.history = History(seed(self.X0, self.X1))
+        self.history = History(seed(self.X0, self.X1, extra_seed))
         self.settled: list = []
         self.outcomes: list = []
+        #: Environment side, and deliberately not part of the machine's state:
+        #: `Gamma` and a policy read it, Reflective Integrity never does.
+        self.log = InteractionLog("toy")
+        self.gamma = diagnostic_gamma()
+        #: The pinned reader. What a settlement *means* is fixed here, in
+        #: advance, and computed from the authenticated outcome — so a `Wait`
+        #: cannot carry the trial's content.
+        self.reader = diagnostic_reader(self.X0.luv, action=PROBE)
+        self.spec = service_spec(self.X0)
+        self.assessment = grounded_in_cited_settlements()
+        self.certificate = None
 
     # -- stage A ------------------------------------------------------
 
@@ -175,32 +245,147 @@ class Trajectory:
         self.history.norm("a:force", "auth:force", author="A")
         return self
 
-    # -- stage B ------------------------------------------------------
+    # -- the return loop, into stage B ---------------------------------
 
-    def stage_b(self) -> "Trajectory":
-        """An outcome is read, settled, cited, and answered with a revaluation.
+    def facts(self, t=None):
+        """The provenance view of the settlement ledger."""
+        return settled_facts([x.id for x in self.history.settlements(t)],
+                             self.sem)
 
-        The order is the one the record forces: a settlement is appended before
-        any reason may cite it, and a reason occurs before the normative event
-        whose derivation has it among its leaves.
+    def read_pressure(self, n: int, t=None):
+        """Run day `n` for its liability figure **without spending anything**.
+
+        Reading pressure must be free. The account is the enforcement channel's
+        and is drawn down by force actually emitted; a machine that had to pay
+        in order to notice it was paying too much would have the wrong shape.
+
+        This takes `pipeline.run_day`'s observation path, which prices the
+        request through `safety.price_request` and consults no account at all.
+        An earlier pass used an enormous scratch account, which got the arithmetic
+        right and the type wrong: it simulated enforcement in order to observe it.
         """
-        outcome = RawOutcome("o:trial", "the trial ran and the readout came back")
+        return run_day(n, self.stage(t), self.history.std(t), observe=True)
+
+    def need(self, run, t=None, current_use=None):
+        """`Need(state, ref)` — derived from the record, and it mutates nothing.
+
+        The answerability episode is **looked up**, not supplied. An earlier
+        pass defaulted it to `q0:auth:force`, which is the genesis root of the
+        *authority* `auth:force` and not the episode of the injunction it
+        created; `J0`'s own episode is `@q2.0`, minted by `a:force`. The
+        conflation was invisible because nothing checked the subject.
+        """
+        return derive_need(run, self.history, inquiry_ref(), self.facts(),
+                           self.spec, t=t, current_use=current_use)
+
+    def episode_for(self, subject: str = None, t=None):
+        """The unique current episode of a subject, from the record."""
+        return current_episode_for(self.history, subject or J0_STANDING, t)
+
+    def act(self, action: str):
+        """One ordinary interaction, through the canonical `execute` path.
+
+        `Gamma` is asked what it permits and the log records what came back.
+        There is no public append, so this is the only way a receipt exists —
+        which is what makes "a `Probe` receipt implies a probe" a fact about the
+        model rather than a convention.
+        """
+        outcome, receipt = execute(self.log, self.gamma, action)
         self.outcomes.append(outcome)
-        reading = self.sem.admit(SettlementReading(
-            settle_id="l:trial",
-            of_outcome=outcome.id,
-            sentences=(self.X0.luv.gt(Q(1, 3)),
-                       li.Neg(self.X0.luv.gt(Q(2, 3)))),
-            note="the readout pins the exposed quantity into (1/3, 2/3]"))
+        return outcome, receipt
+
+    def settle_outcome(self, outcome, receipt, settle_id: str = "l:trial"):
+        """Authenticate, read through the pinned reader, and admit.
+
+        The only step that moves `Sigma`, and the sentences are **not the
+        caller's**: `read_and_admit` resolves the receipt against this
+        trajectory's log and applies the pinned reader to the authenticated
+        result. An earlier pass assigned the trial's diagnostic sentences to
+        whatever outcome it was handed, so a `Wait` taught the agent facts no
+        investigation produced.
+        """
+        reading = read_and_admit(
+            self.sem, self.log, outcome, receipt.receipt_id, self.reader,
+            settle_id,
+            note="the readout pins the exposed quantity into (1/3, 2/3]")
         self.settled.append(reading.settle_id)
-        self.history.settle("l:trial")
-        self.history.reason("e:revalue", s_L=frozenset(["l:trial"]),
-                            target=li.Atom("v0-is-superseded"))
+        self.history.settle(settle_id)
+        return reading
+
+    def certify(self):
+        """Find a service certificate over the settled facts, if one exists."""
+        self.certificate = self.spec.prove(self.facts())
+        return self.certificate
+
+    def propose_revaluation(self) -> ReasonProposal:
+        """The proposal that corresponds to the canonical `e:revalue`."""
+        return ReasonProposal(
+            reason_id="e:revalue",
+            s_V=frozenset(),
+            s_L=frozenset(["l:trial"]),
+            target=li.Atom("v0-is-superseded"))
+
+    def assess_and_append(self, proposal: ReasonProposal, cert=None,
+                          spec=None, current_use=None) -> bool:
+        """Run the whole gate, then append an ordinary `ReasonOcc`.
+
+        The gate is `inquiry.admissible_assessment`: the specification must be
+        the pinned one, the certificate must address it, be valid for it, and be
+        presently assessable, and only then is the proposal's grounding checked.
+        An earlier pass ran the last clause alone against whatever certificate
+        it held, which admitted proposals on certificates for other
+        specifications and on invalid ones.
+
+        Returns `False` and appends nothing when any clause refuses.
+        """
+        if not admissible_assessment(
+                inquiry_ref(), spec or self.spec, self.facts(),
+                self.certificate if cert is None else cert,
+                self.assessment, proposal, current_use=current_use):
+            return False
+        self.history.reason(proposal.reason_id, s_V=proposal.s_V,
+                            s_L=proposal.s_L, target=proposal.target)
+        return True
+
+    def revalue(self):
+        """The ordinary licensed normative event. Only this moves standing."""
         self.history.norm("a:revalue", "auth:revalue", author="A",
                           wit=V0_STANDING,
                           derivation=Derivation(
                               concl=li.Atom("v0-is-superseded"),
                               leaves=frozenset(["e:revalue"])))
+        return self
+
+    # -- stage B ------------------------------------------------------
+
+    def stage_b(self, policy=inquiry.probe_policy) -> "Trajectory":
+        """Reach the canonical stage B through the return loop.
+
+        The order is the one the record forces, and every step before the
+        settlement is outside Reflective Integrity entirely: a need is derived,
+        a policy chooses an action, the environment answers, and only the
+        reading of that answer reaches a ledger.
+
+        Under `wait_policy` nothing is settled, so no service is certifiable,
+        no reason is admissible and no revaluation happens — the same semantics
+        producing a different trajectory.
+        """
+        run = self.read_pressure(0)
+        need = self.need(run)
+        action = policy(InquiryView(need))
+        outcome, receipt = self.act(action)
+
+        reading = self.settle_outcome(outcome, receipt)
+        if not reading.exposes:
+            return self       # the reader found nothing; Sigma is unmoved
+
+        if self.certify() is None:
+            return self       # no adequate service; nothing to assess
+
+        if not self.assess_and_append(self.propose_revaluation()):
+            return self       # the gate refused; no reason, so no event
+
+        self.revalue()
         return self
 
     # -- stage C ------------------------------------------------------

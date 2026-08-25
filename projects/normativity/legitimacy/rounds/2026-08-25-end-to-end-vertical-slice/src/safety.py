@@ -130,6 +130,10 @@ class Charged:
     account_remaining: Optional[Fraction] = None
     safety_bound: Optional[Fraction] = None
     withheld: Optional[str] = None    # why no force was emitted
+    #: True when this is an *observation* of what force would cost — no
+    #: account was consulted, no position exists, and the holder is entitled
+    #: to nothing by it.
+    observed: bool = False
 
     @property
     def emitted(self) -> bool:
@@ -157,6 +161,32 @@ def price_request(compiled, live_worlds: Sequence, date: int,
     """
     cert = certify(compiled, live_worlds, date)
     return cert, charge(slack, volume, tolerance, cert)
+
+
+def observe(compiled, live_worlds: Sequence, date: int,
+            slack: Fraction = Fraction(1, 100),
+            volume: Fraction = Fraction(1),
+            tolerance: Fraction = Fraction(1, 10)) -> Charged:
+    """What this request *would* cost. Nothing is debited and no force exists.
+
+    The separation this function exists to make explicit:
+
+        observing certified liability pressure  !=  exercising normative force
+
+    `price_request` already computes the certificate and the charge without an
+    account, so reading pressure needs no account at all — not even a large
+    scratch one. A caller holding the result is entitled to nothing: `force` is
+    `None`, `observed` is `True`, and `emitted` is `False`.
+    """
+    request = ForceRequest.of(compiled, live_worlds, date, slack, volume,
+                              tolerance)
+    cert, q = price_request(compiled, live_worlds, date, slack, volume,
+                            tolerance)
+    return Charged(date, cert.aggregate, cert.rowwise, q, Fraction(slack),
+                   Fraction(volume), Fraction(tolerance), len(live_worlds),
+                   request=request, certificate=cert, force=None,
+                   account_remaining=None, safety_bound=None,
+                   withheld=None, observed=True)
 
 
 def charge_force(compiled, live_worlds: Sequence, date: int,

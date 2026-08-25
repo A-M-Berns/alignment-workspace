@@ -76,7 +76,7 @@ STAGE B  -- an outcome is read, settled, and v0 is superseded
       @s2.0    Active      PForce(J0)
       @s5.0    Active      PValue(v1)
   active value standing: @s5.0->v1
-  raw outcome o:trial: 'the trial ran and the readout came back'
+  raw outcome o:trial: {'band': (Fraction(1, 3), Fraction(2, 3))}
       a raw outcome is not a settlement and constrains no world
   settlement ledger L_t: ['l:trial']
       sem_L(l:trial) = X[v0:q]>1/3, ~X[v0:q]>2/3    [the readout pins the exposed quantity into (1/3, 2/3]]
@@ -175,6 +175,85 @@ STAGE C  -- an explicit normative event replaces J0 by J1
   force emitted; account remaining 24/5, safety bound B = 25
   resulting price vector: (3/4, 1/2, 1/4)
       Expect(X[v1:q]) = 1/2
+
+--------------------------------------------------------------------------
+THE RETURN LOOP -- how stage B is reached
+--------------------------------------------------------------------------
+
+  pressure read from the day-0 charged result, free of charge:
+      D_0 = 3/4   q_0 = 303/40
+      need = InquiryNeed(@s2.0/is-the-exposed-quantity-above-the-ceiling under @q2.0, D=3/4)
+      account untouched by the reading: 25
+
+  T0  need live, no interaction yet
+        ledgers: L=[] R=[] N=['a:value', 'a:force']
+        value standing: @s1.0->v0
+        operative: @s2.0:J0
+        worlds consistent with Sigma: 25
+        interaction receipts: none
+        service certifiable: False
+
+  the policy chose Probe; Gamma returned RawOutcome('o:trial')
+
+  T1  raw outcome in hand, nothing settled
+        ledgers: L=[] R=[] N=['a:value', 'a:force']
+        value standing: @s1.0->v0
+        operative: @s2.0:J0
+        worlds consistent with Sigma: 25
+        interaction receipts: 0:Probe
+        service certifiable: False
+
+  the outcome is read into a settlement:
+      sem_L(l:trial) = X[v0:q]>1/3, ~X[v0:q]>2/3
+      provenance     = InteractionProvenance(receipt_id='toy#0', receipt_index=0, action='Probe', outcome_id='o:trial')
+      (sem_L returns the sentences; the action is not among them)
+
+  service certificate: ServiceCertificate(spec_id='sigma:diagnostic-trial', cited=('l:trial',), data=None)
+
+  T2  epistemics moved, service certifiable, no reason, no standing change
+        ledgers: L=['l:trial'] R=[] N=['a:value', 'a:force']
+        value standing: @s1.0->v0
+        operative: @s2.0:J0
+        worlds consistent with Sigma: 10
+        interaction receipts: 0:Probe
+        service certifiable: True
+
+  assessment admits the proposal e:revalue: True
+      grounded in ['l:trial'], cited by the certificate
+
+  T3  ReasonOcc appended, standing still unchanged
+        ledgers: L=['l:trial'] R=['e:revalue'] N=['a:value', 'a:force']
+        value standing: @s1.0->v0
+        operative: @s2.0:J0
+        worlds consistent with Sigma: 10
+        interaction receipts: 0:Probe
+        service certifiable: True
+
+  T4  the licensed NormEvent revalues v0 -> v1; J0 untouched
+        ledgers: L=['l:trial'] R=['e:revalue'] N=['a:value', 'a:force', 'a:revalue']
+        value standing: @s5.0->v1
+        operative: @s2.0:J0
+        worlds consistent with Sigma: 10
+        interaction receipts: 0:Probe
+        service certifiable: True
+
+  T5  a later NormEvent moves J0 -> J1
+        ledgers: L=['l:trial'] R=['e:revalue', 'e:reforce'] N=['a:value', 'a:force', 'a:revalue', 'a:reforce']
+        value standing: @s5.0->v1
+        operative: @s7.0:J1
+        worlds consistent with Sigma: 10
+        interaction receipts: 0:Probe
+        service certifiable: True
+
+  The loop appended no historical event of its own. Need, service and
+  assessment are predicates; the interaction log is the environment's
+  side; and the only things in the record are one Settlement, one
+  ReasonOcc and the ordinary NormEvents -- exactly the canonical
+  trajectory above.
+
+  Under wait_policy, with identical service semantics:
+      receipts ['Wait'], settled ['l:trial'], serviced False
+      value standing stays @s1.0->v0
 
 --------------------------------------------------------------------------
 WHERE SETTLEMENT CHANGES THE LIABILITY -- and where it does not

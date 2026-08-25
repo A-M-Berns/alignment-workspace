@@ -10,6 +10,7 @@ from __future__ import annotations
 import sys
 from fractions import Fraction
 
+import inquiry
 import toy
 import trajectories as T
 from pipeline import deductively_inert
@@ -166,8 +167,108 @@ def render(out=None) -> str:
         render_day(scene[key], out)
         p("")
 
+    _inquiry_rider(out)
     _rider(out, scene)
     return "\n".join(out) + "\n"
+
+
+def _inquiry_rider(out) -> None:
+    """The return loop, snapshot by snapshot.
+
+    Rendered from a fresh trajectory driven one step at a time, so that the
+    states between pressure and normative succession are visible rather than
+    inferred. The record this produces is the same one Stage B produces above:
+    the loop appends no historical event of its own.
+    """
+    p = out.append
+    from standing import values_projection
+    from pipeline import operative_projection
+    from epistemic import pc_worlds
+
+    p("-" * 74)
+    p("THE RETURN LOOP -- how stage B is reached")
+    p("-" * 74)
+    p("")
+
+    traj = toy.Trajectory()
+    traj.stage_a()
+
+    def snap(tag, note):
+        std = traj.history.std()
+        p(f"  {tag}  {note}")
+        p(f"        ledgers: L={[s.id for s in traj.history.settlements()]} "
+          f"R={[e.id for e in traj.history.reasons()]} "
+          f"N={[a.id for a in traj.history.norm_events()]}")
+        p(f"        value standing: "
+          + ", ".join(f"{i}->{v}" for i, v in values_projection(std)))
+        p(f"        operative: "
+          + ", ".join(f"{i}:{J.injunction_id}"
+                      for i, J in operative_projection(std)))
+        p(f"        worlds consistent with Sigma: "
+          f"{len(pc_worlds(traj.stage(), ()))}")
+        p(f"        interaction receipts: "
+          + (", ".join(f"{r.index}:{r.action}" for r in traj.log.receipts)
+             or "none"))
+        p(f"        service certifiable: "
+          f"{inquiry.certifiable(traj.spec, traj.facts())}")
+        p("")
+
+    run = traj.read_pressure(0)
+    need = traj.need(run)
+    p(f"  pressure read from the day-0 charged result, free of charge:")
+    p(f"      D_0 = {run.charged.sharp}   q_0 = {run.charged.charge}")
+    p(f"      need = {need!r}")
+    p(f"      account untouched by the reading: {traj.account.remaining}")
+    p("")
+    snap("T0", "need live, no interaction yet")
+
+    action = inquiry.probe_policy(inquiry.InquiryView(need))
+    outcome, receipt = traj.act(action)
+    p(f"  the policy chose {action}; Gamma returned {outcome!r}")
+    p("")
+    snap("T1", "raw outcome in hand, nothing settled")
+
+    reading = traj.settle_outcome(outcome, receipt)
+    p(f"  the outcome is read into a settlement:")
+    p(f"      sem_L(l:trial) = "
+      + ", ".join(repr(x) for x in reading.sentences))
+    p(f"      provenance     = {reading.provenance}")
+    p(f"      (sem_L returns the sentences; the action is not among them)")
+    p("")
+    cert = traj.certify()
+    p(f"  service certificate: {cert}")
+    p("")
+    snap("T2", "epistemics moved, service certifiable, no reason, no standing change")
+
+    proposal = traj.propose_revaluation()
+    admitted = traj.assess_and_append(proposal)
+    p(f"  assessment admits the proposal {proposal.reason_id}: {admitted}")
+    p(f"      grounded in {sorted(proposal.s_L)}, cited by the certificate")
+    p("")
+    snap("T3", "ReasonOcc appended, standing still unchanged")
+
+    traj.revalue()
+    snap("T4", "the licensed NormEvent revalues v0 -> v1; J0 untouched")
+
+    traj.stage_c()
+    snap("T5", "a later NormEvent moves J0 -> J1")
+
+    p("  The loop appended no historical event of its own. Need, service and")
+    p("  assessment are predicates; the interaction log is the environment's")
+    p("  side; and the only things in the record are one Settlement, one")
+    p("  ReasonOcc and the ordinary NormEvents -- exactly the canonical")
+    p("  trajectory above.")
+    p("")
+
+    waited = toy.Trajectory().stage_a().stage_b(policy=inquiry.wait_policy)
+    p("  Under wait_policy, with identical service semantics:")
+    p(f"      receipts {[r.action for r in waited.log.receipts]}, "
+      f"settled {[s.id for s in waited.history.settlements()]}, "
+      f"serviced {inquiry.certifiable(waited.spec, waited.facts())}")
+    p(f"      value standing stays "
+      + ", ".join(f"{i}->{v}" for i, v in
+                  values_projection(waited.history.std())))
+    p("")
 
 
 def _rider(out, scene) -> None:

@@ -158,11 +158,16 @@ def run_day(day: int, stage: Stage, std: dict,
             prior: Optional[Sequence[Fraction]] = None,
             schedule_declared_computable: bool = True,
             account=None, policy: str = "quarantine",
-            label: str = "") -> DayRun:
+            label: str = "", observe: bool = False) -> DayRun:
     """One day of the slice, end to end.
 
     `stage` is `Sigma_n`; `std` is the normative view at the corresponding RI
     state. The two arrive separately and are never derived from each other.
+
+    `observe=True` computes what the day's force would cost and emits none:
+    no account is consulted, no position is constructed, and no price is
+    produced. That is the path a machine takes to *read* its own liability
+    pressure, and it is deliberately not the path that exercises force.
 
     `account` is the enforcement channel's `OutflowAccount`. A day whose charge
     the account cannot fund emits no force under the default `quarantine`
@@ -225,11 +230,17 @@ def run_day(day: int, stage: Stage, std: dict,
 
     run.live_worlds = _live_worlds(stage, run.coords)
     run.excluded_worlds = _excluded(run)
-    run.charged = safety.charge_force(
-        run.compiled, run.live_worlds, day, run.region_vertices[0],
-        account if account is not None else safety.OutflowAccount(Fraction(10**6)),
-        slack=slack, volume=volume, tolerance=tolerance, policy=policy,
-        label=label or f"day-{day}")
+    if observe:
+        run.charged = safety.observe(run.compiled, run.live_worlds, day,
+                                     slack=slack, volume=volume,
+                                     tolerance=tolerance)
+    else:
+        run.charged = safety.charge_force(
+            run.compiled, run.live_worlds, day, run.region_vertices[0],
+            account if account is not None
+            else safety.OutflowAccount(Fraction(10 ** 6)),
+            slack=slack, volume=volume, tolerance=tolerance, policy=policy,
+            label=label or f"day-{day}")
     run.obligations = _obligations(run, tolerance, schedule_declared_computable)
 
     if prior is not None and run.charged.emitted:
@@ -320,6 +331,12 @@ def _obligations(run: DayRun, tolerance: Fraction,
         out.append(Obligation(
             "bounded_liability", "force_api.compile_safe_force / outflow account",
             "n/a", "unused: the unconditional branch applies"))
+    elif c is not None and c.observed:
+        out.append(Obligation(
+            "bounded_liability", "safety.observe / price_request",
+            "n/a",
+            f"not evaluated: this is an observation of what force would cost "
+            f"(q_t = {c.charge}), and no account was consulted"))
     elif c is not None and c.emitted:
         out.append(Obligation(
             "bounded_liability", "force_api.compile_safe_force / outflow account",
