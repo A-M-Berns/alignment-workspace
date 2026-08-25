@@ -785,6 +785,18 @@
       ],
       "prompt": "prompts/2026-08-24-cleanup-and-compress/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-24-reflective-integrity-core",
+      "date": "2026-08-24",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core",
+      "verdict": "FREEZE-READY — the demand interface gains the two structural properties four of the main clauses depend on, and no repair reopened the architecture.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core/README.md",
+      "depends_on": ["2026-08-23-transition-certificates"],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-24-reflective-integrity-core/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
