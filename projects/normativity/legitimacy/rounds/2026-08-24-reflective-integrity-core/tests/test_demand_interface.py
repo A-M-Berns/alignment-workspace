@@ -10,7 +10,7 @@ import unittest
 
 from ri_core import (ACCOUNT_FOR_SUCCESSION, GENESIS, AnsRoot, History,
                      PAuth, Response, Seed, StandingState, ACTIVE,
-                     episode_demand_violations, check_seed, superseding)
+                     sampled_episode_demand_violations, check_seed, superseding)
 import scenarios as S
 
 
@@ -21,31 +21,31 @@ def a_root(demand):
 class TestDemandAxioms(unittest.TestCase):
     def test_account_for_succession_satisfies_d1_and_d2(self):
         q = a_root(ACCOUNT_FOR_SUCCESSION)
-        self.assertEqual([], episode_demand_violations(
+        self.assertEqual([], sampled_episode_demand_violations(
             ACCOUNT_FOR_SUCCESSION, S.sample_for(q)))
 
     def test_non_monotone_demand_is_rejected(self):
         d = S.non_monotone()
         q = a_root(d)
-        bad = episode_demand_violations(d, S.sample_for(q))
+        bad = sampled_episode_demand_violations(d, S.sample_for(q))
         self.assertTrue(any(v[0] == "D1" for v in bad), bad)
 
     def test_ungated_demand_is_rejected(self):
         d = S.always_closed()
         q = a_root(d)
-        bad = episode_demand_violations(d, S.sample_for(q))
+        bad = sampled_episode_demand_violations(d, S.sample_for(q))
         self.assertTrue(any(v[0] == "D2" for v in bad), bad)
 
     def test_d2_holds_vacuously_for_an_unsatisfiable_demand(self):
         """Never closing is RI-conformant: `Live and not Due` may be permanent."""
         from ri_core import DemandCode
         never = DemandCode("Never", lambda root, rs, cited: False)
-        self.assertEqual([], episode_demand_violations(never, S.sample_for(a_root(never))))
+        self.assertEqual([], sampled_episode_demand_violations(never, S.sample_for(a_root(never))))
 
     def test_probe_without_a_disposer_makes_afs_unsatisfiable(self):
         q = a_root(ACCOUNT_FOR_SUCCESSION)
         sample = S.sample_for(q, root_id_disposed=False)
-        self.assertEqual([], episode_demand_violations(ACCOUNT_FOR_SUCCESSION, sample))
+        self.assertEqual([], sampled_episode_demand_violations(ACCOUNT_FOR_SUCCESSION, sample))
         self.assertFalse(ACCOUNT_FOR_SUCCESSION.run(q, sample.responses, sample.cited))
 
 

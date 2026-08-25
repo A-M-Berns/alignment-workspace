@@ -115,6 +115,7 @@ def targets(alpha) -> frozenset:
 
 
 def fresh_count(alpha) -> int:
+    """How many objects the effect introduces. A cardinality, never ids."""
     if isinstance(alpha, SetStatus):
         return 0
     return len(alpha.K)
@@ -124,6 +125,22 @@ def targets_n(eff) -> frozenset:
     if isinstance(eff, Standing):
         return targets(eff.alpha)
     return frozenset([eff.x])
+
+
+@dataclass(frozen=True)
+class ApplyCtx:
+    """What writing standing needs from the event doing the writing (§12.1).
+
+    `event_id` is what a termination records; `tau` is what the allocator draws
+    fresh ids from. Derived from the event and passed down — never stored.
+    """
+
+    event_id: str
+    tau: int
+
+
+def ctx_of(a: "NormEvent") -> ApplyCtx:
+    return ApplyCtx(a.id, a.tau)
 
 
 # ------------------------------------------------------------- §13 freshness
@@ -148,32 +165,41 @@ def root_tag(tau: int, j: int) -> str:
     return f"{MINTED_PREFIX}q{tau}.{j}"
 
 
-def fresh_ids(alpha, tau: int) -> tuple:
-    return tuple(standing_tag(tau, i) for i in range(fresh_count(alpha)))
+def fresh_ids(ctx: ApplyCtx, alpha) -> tuple:
+    """The ids those objects get. A function of the effect *and* the context."""
+    return tuple(standing_tag(ctx.tau, i) for i in range(fresh_count(alpha)))
 
 
-def fresh_n(eff, tau: int) -> tuple:
-    return fresh_ids(eff.alpha, tau) if isinstance(eff, Standing) else ()
+def fresh_n(ctx: ApplyCtx, eff) -> tuple:
+    return fresh_ids(ctx, eff.alpha) if isinstance(eff, Standing) else ()
+
+
+def mint_ids(ctx: ApplyCtx, count: int) -> tuple:
+    return tuple(root_tag(ctx.tau, j) for j in range(count))
 
 
 # --------------------------------------- §12 the standing-effect interpreter
 
 
-def apply_effect(view: dict, eff, event_id: str, tau: int) -> dict:
-    """The only place standing is written. `delta` is inlined as its clauses."""
+def apply_effect(view: dict, ctx: ApplyCtx, eff) -> dict:
+    """The only place standing is written. `delta` is inlined as its clauses.
+
+    Signature matches §12.1: the view, the applying event's context, the effect.
+    """
     if isinstance(eff, Transfer):
         return view                                  # Transfer Neutrality
     alpha = eff.alpha
     out = dict(view)
+    ids = fresh_ids(ctx, alpha)
     if isinstance(alpha, Create):
         for i, k in enumerate(alpha.K):
-            out[standing_tag(tau, i)] = StandingState(ACTIVE, frozenset(), k)
+            out[ids[i]] = StandingState(ACTIVE, frozenset(), k)
     elif isinstance(alpha, Supersede):
         for x in alpha.X:
             old = view[x]
-            out[x] = StandingState(terminated(event_id), old.pred, old.payload)
+            out[x] = StandingState(terminated(ctx.event_id), old.pred, old.payload)
         for i, k in enumerate(alpha.K):
-            out[standing_tag(tau, i)] = StandingState(ACTIVE, frozenset(alpha.X), k)
+            out[ids[i]] = StandingState(ACTIVE, frozenset(alpha.X), k)
     elif isinstance(alpha, SetStatus):
         for x in alpha.X:
             old = view[x]
@@ -222,9 +248,11 @@ class Digest:
 class DemandCode:
     """An episode demand. `run(root, responses, cited_digest) -> bool`.
 
-    D1 (monotonicity) and D2 (disposition gating) are *not* enforced by this
-    type; `episode_demand_violations` decides them over a finite sample, and
-    `check_seed` and `check_trajectory` refuse a demand that fails either.
+    D1 (monotonicity) and D2 (disposition gating) are assumptions of the
+    specification's theorems, quantified over every response multiset and every
+    cited-digest map. This type does not carry them and cannot enforce them:
+    `sampled_episode_demand_violations` searches a supplied finite sample, which
+    finds counterexamples and never establishes the assumptions.
     """
 
     name: str
@@ -254,13 +282,17 @@ def _sub_multisets(items: Sequence) -> Iterable[tuple]:
             yield tuple(items[i] for i in combo)
 
 
-def episode_demand_violations(demand: DemandCode, sample) -> list:
-    """Finite decision of D1 and D2 for `demand` over a supplied sample.
+def sampled_episode_demand_violations(demand: DemandCode, sample) -> list:
+    """Search a finite sample for D1 and D2 violations. Not a proof of either.
 
-    `sample` is an `EpisodeDemandSample`: one root, a finite response pool and
-    a finite cited-digest map. D1 is checked over every pair (sub-multiset,
+    `sample` is an `EpisodeDemandSample`: one root, a finite response pool and a
+    finite cited-digest map. D1 is searched over every pair (sub-multiset,
     extension) of the pool with the digest map restricted compatibly; D2 over
     every sub-multiset.
+
+    **This checker witnesses failures and exercises finite instances. Passing it
+    is not a proof that an arbitrary `DemandCode` satisfies D1/D2 universally**
+    — the specification assumes them, and this harness can only refute.
     """
     out = []
     pool = list(sample.responses)
@@ -381,6 +413,7 @@ class Response:
 
 @dataclass(frozen=True)
 class Seed:
+    p0: str                        # PrincipalId — the genesis principal (§4)
     std0: dict                     # StandingId -> StandingState
     roots0: tuple                  # tuple[AnsRoot, ...]
 
@@ -404,7 +437,7 @@ def check_seed(seed: Seed, sampler=None) -> list:
             bad.append(("Z3'", q.id))
         if q.origin != GENESIS:
             bad.append(("Z4", q.id))
-        if not (isinstance(q.creditor, tuple) and q.creditor[1] == 0):
+        if q.creditor != (seed.p0, 0):
             bad.append(("Z4", q.id))
         if q.id.startswith(MINTED_PREFIX):
             bad.append(("F3", q.id))
@@ -416,7 +449,7 @@ def check_seed(seed: Seed, sampler=None) -> list:
     # Z6 (L0 = R0 = N0 = empty) is structural here: a `History` starts empty.
     if sampler is not None:
         for q in seed.roots0:
-            for v in episode_demand_violations(q.demand, sampler(q)):
+            for v in sampled_episode_demand_violations(q.demand, sampler(q)):
                 bad.append(("D1/D2", q.id, v))
     return bad
 
@@ -497,7 +530,7 @@ class History:
             return self._std[t]
         view = dict(self.seed.std0)
         for a in self.norm_events(t):
-            view = apply_effect(view, self.effect(a), a.id, a.tau)
+            view = apply_effect(view, ctx_of(a), self.effect(a))
         self._std[t] = view
         return view
 
@@ -550,13 +583,16 @@ class History:
     # -- §15/§17 roots and minting ----------------------------------------
 
     def mint(self, a: NormEvent) -> tuple:
-        eff = self.effect(a)
+        """Debtor by case (§17): freshly introduced standing goes to the author;
+        a Transfer's successor episode goes to the named transferee."""
+        ctx, eff = ctx_of(a), self.effect(a)
         if isinstance(eff, Transfer):
             pairs = [(eff.x, eff.to)]
         else:
-            pairs = [(y, a.author) for y in fresh_n(eff, a.tau)]
+            pairs = [(y, a.author) for y in fresh_n(ctx, eff)]
+        ids = mint_ids(ctx, len(pairs))
         return tuple(
-            AnsRoot(root_tag(a.tau, j), (a.author, a.tau), P, z,
+            AnsRoot(ids[j], (a.author, a.tau), P, z,
                     ACCOUNT_FOR_SUCCESSION, ("Ev", a.id), a.tau)
             for j, (z, P) in enumerate(pairs))
 
@@ -664,7 +700,7 @@ class History:
         if any(q not in self.roots(t) for u in range(t + 1) for q in self.roots(u)):
             bad.append("i")
         for q in self.roots(t):                      # (ii) frozen/local/monotone
-            if episode_demand_violations(q.demand, self._sample_for(q, t)):
+            if sampled_episode_demand_violations(q.demand, self._sample_for(q, t)):
                 bad.append("ii")
                 break
         for a in self.norm_events(t):                # (iii)

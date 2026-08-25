@@ -33,7 +33,7 @@ class TestSeed(unittest.TestCase):
         seed = S.seed_from({"x": S.commitment("x")})
         extra = AnsRoot("q0:dup", ("P0", 0), "P0", "x",
                         ACCOUNT_FOR_SUCCESSION, GENESIS, 0)
-        broken = Seed(seed.std0, seed.roots0 + (extra,))
+        broken = Seed(seed.p0, seed.std0, seed.roots0 + (extra,))
         self.assertTrue(any(v[0] == "Z3" for v in check_seed(broken)))
         with self.assertRaises(WFError):
             History(broken)
@@ -44,7 +44,7 @@ class TestSeed(unittest.TestCase):
         seed = S.seed_from({"x": S.commitment("x")})
         orphan = AnsRoot("q0:ghost", ("P0", 0), "P0", "ghost",
                          ACCOUNT_FOR_SUCCESSION, GENESIS, 0)
-        broken = Seed(seed.std0, seed.roots0 + (orphan,))
+        broken = Seed(seed.p0, seed.std0, seed.roots0 + (orphan,))
         self.assertTrue(any(v[0] == "Z3'" for v in check_seed(broken)))
 
     def test_seed_ids_may_not_occupy_the_minted_range(self):
@@ -53,14 +53,14 @@ class TestSeed(unittest.TestCase):
         seed = S.seed_from({standing_tag(1, 0): S.commitment("x")})
         self.assertTrue(any(v[0] == "F2" for v in check_seed(seed)))
         base = S.seed_from({"x": S.commitment("x")})
-        collide = Seed(base.std0, (AnsRoot(root_tag(1, 0), ("P0", 0), "P0", "x",
+        collide = Seed(base.p0, base.std0, (AnsRoot(root_tag(1, 0), ("P0", 0), "P0", "x",
                                            ACCOUNT_FOR_SUCCESSION, GENESIS, 0),))
         self.assertTrue(any(v[0] == "F3" for v in check_seed(collide)))
 
     def test_terminated_seed_standing_is_refused(self):
         from ri_core import terminated
-        seed = Seed({"x": StandingState(terminated("a0"), frozenset(),
-                                        S.commitment("x"))}, ())
+        seed = Seed("P0", {"x": StandingState(terminated("a0"), frozenset(),
+                                              S.commitment("x"))}, ())
         self.assertTrue(any(v[0] == "Z1" for v in check_seed(seed)))
 
     def test_ungated_seed_demand_breaks_episode_uniqueness(self):

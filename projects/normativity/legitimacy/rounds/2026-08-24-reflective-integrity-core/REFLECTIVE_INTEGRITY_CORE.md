@@ -37,7 +37,8 @@ and subject only to conservative extension — a new constructor gets a new
 clause, and every existing term keeps its clauses verbatim:
 
 > Time (linear, `tau` injective); the grammar of `V`; `StandingEffect`,
-> `NormEffect`, `targets`, `fresh`, `delta`, `applyEffect`; `CommitmentRole`;
+> `NormEffect`, `targets`, `freshCount`, `freshIds`, `delta`, `applyEffect`;
+> `ApplyCtx`; `CommitmentRole`;
 > `SchemaCode` with `[[.]]_S`; `DemandCode` with `[[.]]_D`; `Disposes`, `MINT`,
 > `succ`, `Live`/`Due`/`Closed`, `ContinuityOK`, `Digest`.
 
@@ -64,18 +65,22 @@ how the stance fold reads existing standing, violating MS.
 The seed is a theorem parameter, not a store.
 
 ```text
-Seed = ( Std_0 : StandingId ->fin StandingState , Roots_0 : Finset AnsRoot )
+Seed = ( P_0 : PrincipalId , Std_0 : StandingId ->fin StandingState , Roots_0 : Finset AnsRoot )
 ```
+
+`P_0` is the genesis principal: the one the seed's episodes are credited to. It
+is a theorem parameter like the rest of the seed — a name the trajectory carries,
+never a store and never written.
 
 `WFSeed(Seed)` holds when:
 
 | | |
 |---|---|
-| **Z1** | `dom(Std_0)` finite; `forall x. status_0(x) in {Active, Suspended}` |
+| **Z1** | `dom(Std_0)` finite; `forall x in dom(Std_0). status_0(x) in {Active, Suspended}` |
 | **Z2** | `forall x in dom(Std_0). pred_0(x) = {}` |
 | **Z3** | `forall x in dom(Std_0). exists! q in Roots_0. subject(q) = x` |
 | **Z3'** | `forall q in Roots_0. subject(q) in dom(Std_0)` |
-| **Z4** | `forall q in Roots_0. origin(q) = Genesis and creditor(q) = Stage(P_0, 0) and tau(q) = 0` |
+| **Z4** | `forall q in Roots_0. origin(q) = Genesis and creditor(q) = Stage(Seed.P_0, 0) and tau(q) = 0` |
 | **Z5** | ids in `Std_0` and `Roots_0` pairwise distinct |
 | **Z6** | `L_0 = R_0 = N_0 = {}` |
 
@@ -207,7 +212,7 @@ SchemaCode : Type
 | **S3** | read-only in `P` — it is a function *into* `NormEffect`, and cannot write | TargetCoverage, SL |
 | **S4** | the output is a well-typed `NormEffect` | soundness of the fold |
 | **S5** | `P` is the strict pre-state including `tau`; no dependence on `>= tau` | Digest Stability |
-| **S6** | the interpreter does not choose ids: fresh ids are `fresh_i(alpha, tau)` (§13) | Effect Determinacy, EP |
+| **S6** | the interpreter does not choose ids: it returns a `freshCount`, and the ids are `freshIds(ctx, alpha)` (§13) | Effect Determinacy, EP |
 
 Nothing about expressiveness is assumed. `SchemaCode = {}` is admissible and
 gives the degenerate instantiation of §4: the foundational theorem contains no
@@ -288,7 +293,8 @@ and operative force are derived: custody from the unique current episode
 and force as folds over the normative view.
 
 ```text
-Std_t = fold applyEffect Std_0 over { effect(a) : a in NormEvents_{<=t} } in tau-order
+Std_t = fold Std_0 over NormEvents_{<=t} in tau-order, applying
+        applyEffect V (ctx a) (effect a)   where   ctx a = (id a, tau a)
 B^_t  = { content k : exists x. Std_t(x) = (Active, _, PCmt (StanceBearing, k)) }
 O_t   = { compiledClause p : exists x. Std_t(x) = (Active, _, PForce p) }
 ```
@@ -322,24 +328,40 @@ through the `Transfer` constructor of `NormEffect`.
 
 ### 12.1 The locality-typed interpreter
 
-```text
-delta : (alpha : StandingEffect) -> (targets alpha -> StandingState)
-                                 -> (targets alpha -> StandingState) x (fresh alpha -> StandingState)
-
-applyEffect V (Standing alpha) = V (+) pi_1(delta alpha ...) (+) pi_2(delta alpha ...)
-applyEffect V (Transfer _ _)   = V
-```
-
-Clauses — the only place standing is written:
+Writing standing needs two facts about the event doing the writing: which event
+id a termination records, and which time the allocator draws fresh ids from.
+Both are carried explicitly, as an argument rather than as state:
 
 ```text
-Create K      : pi_1 = {} ;                                       pi_2 = fresh_i |-> (Active, {}, K_i)
-Supersede X K : pi_1 = x |-> (Terminated a, pred x, payload x) ;  pi_2 = fresh_i |-> (Active, X, K_i)
-SetStatus X s : pi_1 = x |-> (s, pred x, payload x) ;             pi_2 = {}
+ApplyCtx = ( eventId : NormEventId , tau : Time )
+ctx a    = ( id a , tau a )
 ```
 
-`pred(y) = X` for every `y in fresh(Supersede X K)` is a clause shape, not a
-checked condition; `payload` and `pred` are read, never rewritten. `[DEF]`
+```text
+delta : (ctx : ApplyCtx) -> (alpha : StandingEffect)
+      -> (targets alpha -> StandingState)
+      -> (targets alpha -> StandingState) x (freshIds ctx alpha -> StandingState)
+
+applyEffect : NormativeView -> ApplyCtx -> NormEffect -> NormativeView
+applyEffect V ctx (Standing alpha) = V (+) pi_1(delta ctx alpha (V | targets alpha))
+                                       (+) pi_2(delta ctx alpha (V | targets alpha))
+applyEffect V ctx (Transfer _ _)   = V
+```
+
+Clauses — the only place standing is written, writing `y_i = freshIds ctx alpha`
+at index `i`:
+
+```text
+Create K      : pi_1 = {} ;                                                  pi_2 = y_i |-> (Active, {}, K_i)
+Supersede X K : pi_1 = x |-> (Terminated ctx.eventId, pred x, payload x) ;   pi_2 = y_i |-> (Active, X, K_i)
+SetStatus X s : pi_1 = x |-> (s, pred x, payload x) ;                        pi_2 = {}
+```
+
+`ApplyCtx` is derived from the event and passed down; nothing is stored, and
+`applyEffect` remains a function of the view, the event's identity and time, and
+the effect. `pred(y) = X` for every `y in freshIds ctx (Supersede X K)` is a
+clause shape, not a checked condition; `payload` and `pred` are read, never
+rewritten. `[DEF]`
 
 ### 12.2 Preconditions (G6)
 
@@ -358,25 +380,38 @@ Domain membership is the first conjunct because `delta` reads `pred` and
 StandingChanges(a, x) :<=> standing(Std_{<=tau(a)}, x) != standing(Std_{<tau(a)}, x)
 ```
 
-**[THM] Standing Locality (frame lemma).** For `alpha : StandingEffect`,
-`x notin targets alpha ∪ fresh alpha => standing(applyEffect V (Standing alpha), x) = standing(V, x)`.
-*Proof.* The override domain is contained in `targets alpha ∪ fresh alpha` by
-the type of `delta`, and a map override is the identity off its domain. ∎
+**[THM] Standing Locality (frame lemma).** For `ctx : ApplyCtx` and
+`alpha : StandingEffect`,
+`x notin targets alpha ∪ freshIds ctx alpha => standing(applyEffect V ctx (Standing alpha), x) = standing(V, x)`.
+*Proof.* The override domain is contained in `targets alpha ∪ freshIds ctx alpha`
+by the type of `delta`, and a map override is the identity off its domain. ∎
 
-**[DEF] Transfer Neutrality.** `applyEffect V (Transfer _ _) = V`: the
+**[DEF] Transfer Neutrality.** `applyEffect V ctx (Transfer _ _) = V`: the
 interpreter has no clause to write with.
 
 **[THM] TargetCoverage.** `StandingChanges(a, x) => effect(a) = Standing alpha
-and x in targets alpha ∪ fresh alpha`.
+and x in targets alpha ∪ freshIds (ctx a) alpha`.
 
 ---
 
 ## 13. Freshness
 
+How many objects an effect introduces is a property of the effect alone. Which
+ids they get is a property of the effect together with the event allocating
+them, and the two are separate functions:
+
 ```text
-fresh(Create K)      = fresh(Supersede _ K) = |K|          fresh(SetStatus _ _) = 0
-fresh_i(alpha, tau)  = tag(tau, i)
-MINT root ids        = rootTag(tau, j)
+freshCount : StandingEffect -> Nat
+freshCount (Create K)      = |K|        freshCount (Supersede _ K) = |K|        freshCount (SetStatus _ _) = 0
+
+freshIds   : ApplyCtx -> StandingEffect -> Finset StandingId
+freshIds ctx alpha         = { tag(ctx.tau, i) : i < freshCount alpha }
+
+freshN     : ApplyCtx -> NormEffect -> Finset StandingId
+freshN ctx (Standing alpha) = freshIds ctx alpha         freshN ctx (Transfer _ _) = {}
+
+mintCount  : ApplyCtx -> NormEffect -> Nat               -- §17
+mintIds    ctx eff          = { rootTag(ctx.tau, j) : j < mintCount ctx eff }
 ```
 
 | | assumption |
@@ -385,9 +420,9 @@ MINT root ids        = rootTag(tau, j)
 | **F2** | `range(tag) cap dom(Std_0) = {}` |
 | **F3** | `rootTag` is injective on `(tau, index)`, and `range(rootTag) cap ids(Roots_0) = {}` |
 
-**[THM] Fresh allocation.** `fresh(effect a) cap dom(Std_{<tau(a)}) = {}`, and
-the ids in `fresh(effect a)` are pairwise distinct.
-*Proof.* `dom(Std_{<tau(a)}) = dom(Std_0) ∪ union_{tau(b) < tau(a)} fresh(effect b)`
+**[THM] Fresh allocation.** `freshN (ctx a) (effect a) cap dom(Std_{<tau(a)}) = {}`,
+and its ids are pairwise distinct.
+*Proof.* `dom(Std_{<tau(a)}) = dom(Std_0) ∪ union_{tau(b) < tau(a)} freshN (ctx b) (effect b)`
 by the fold. F2 excludes the seed part. For the rest, `tau` is injective on the
 trajectory, so `tau(b) != tau(a)`, and F1 makes `tag(tau(b), j) != tag(tau(a), i)`.
 Pairwise distinctness of siblings is F1 at fixed `tau`. ∎
@@ -396,8 +431,9 @@ The same argument at `rootTag` gives fresh, pairwise-distinct root ids, which
 is what AC(i) and Episode Uniqueness consume.
 
 `schemaRef(a)` lies in `dom(Std_{<tau(a)})` by G4, so the theorem also gives
-`schemaRef(a) notin fresh(effect a)`: no event can be licensed by standing it
-creates. Self-licensing is excluded by the allocator, not by a side condition.
+`schemaRef(a) notin freshN (ctx a) (effect a)`: no event can be licensed by
+standing it creates. Self-licensing is excluded by the allocator, not by a side
+condition.
 
 ---
 
@@ -508,10 +544,12 @@ is minted with debtor `B` (§17); the edge `q_A -> q_B` exists (§22); and
 ## 17. Minting
 
 ```text
-episodes(a) = { (y, author a) : y in fresh alpha }   when effect a = Standing alpha
-            ∪ { (x, B) }                            when effect a = Transfer x B
+episodes(a) = [ (y, author a) : y in freshN (ctx a) (effect a) ]   when effect a = Standing alpha
+            = [ (x, B) ]                                          when effect a = Transfer x B
 
-MINT(a) = for each (z, P) in episodes(a), in index order, one root
+mintCount (ctx a) (effect a) = |episodes(a)|
+
+MINT(a) = for the j-th (z, P) in episodes(a), one root
           ( rootTag(tau a, j), creditor = Stage(author a, tau a), debtor = P,
             subject = z, demand = AccountForSuccession, origin = Ev (id a), tau = tau a )
 Roots_t = Roots_0 ∪ union_{a in NormEvents_{<=t}} MINT(a)
@@ -519,15 +557,21 @@ Roots_t = Roots_0 ∪ union_{a in NormEvents_{<=t}} MINT(a)
 
 | event | disposes | mints |
 |---|---|---|
-| `Create K` | nothing | one per `y in fresh`, debtor `= author` |
-| `Supersede X K` | the current episode of every `x in X` | one per `y in fresh`, debtor `= author` |
+| `Create K` | nothing | one per `y in freshN`, debtor `= author a` |
+| `Supersede X K` | the current episode of every `x in X` | one per `y in freshN`, debtor `= author a` |
 | `SetStatus` | nothing | nothing |
 | `Transfer x B` | the current episode of `x` | one, subject `x`, debtor `B` |
 
 Creditor is `Stage(author a, tau a)` uniformly; §33 says what that buys.
-Debtor of successor roots is `author(a)` uniformly: inheriting the disposed
-episode's debtor is ill-defined for merges, which have two predecessors and two
+
+**Debtor, by case.** A root for standing *freshly introduced* by `Create` or
+`Supersede` has debtor `author(a)`, uniformly: inheriting the disposed episode's
+debtor is ill-defined for merges, which have two predecessors and two
 custodians, and the author is well-defined and carries no extra field.
+`Transfer(x, B)` is the other case by construction — it introduces no standing,
+and the successor episode it mints is for the *same* object `x`, assigned to the
+named transferee `B`. Assigning that one to the author would make `Transfer` a
+no-op on custody and empty §21.
 
 Every standing object — `PCmt`, `PAuth`, `PForce`, `PProto` — is minted under
 the same rule. No privileged commitment semantics.
@@ -808,9 +852,10 @@ for every constructor, hence for arbitrary well-formed interleavings.
 
 ## 29. Main theorem
 
-**THEOREM (Reflective Integrity).** Assume MS, SL, S1-S6, D1-D2, F1-F3, and
-`tau` injective and strictly increasing along the trajectory. If
-`WFSeed(Seed)` and `WFStep(S_t, step_t)` for all `t`, then for all `t`:
+**THEOREM (Reflective Integrity).** Fix a seed `Seed = (P_0, Std_0, Roots_0)`.
+Assume MS, SL, S1-S6, D1-D2, F1-F3, and `tau` injective and strictly increasing
+along the trajectory. If `WFSeed(Seed)` and `WFStep(S_t, step_t)` for all `t`,
+then for all `t`:
 
 | | |
 |---|---|
@@ -820,7 +865,7 @@ for every constructor, hence for arbitrary well-formed interleavings.
 | **(4)** | `forall q in Roots_t, u >= t.` the fate of `q` at `u` is `>=` its fate at `t` in `(Live and not Due) < Due < Closed` |
 | **(5)** | `forall x in dom(Std_t). status_t x != Terminated <=> exists! q. CurrentEpisode_t q and subject q = x` |
 | **(6)** | `HasCustody_t(A,x) and HasCustody_{t'}(B,x) and A != B and t < t' => exists a. t < tau a <= t' and effect a = Transfer x ·` |
-| **(7)** | `StandingChanges(a,x) => effect a = Standing alpha and x in targets alpha ∪ fresh alpha` |
+| **(7)** | `StandingChanges(a,x) => effect a = Standing alpha and x in targets alpha ∪ freshIds (ctx a) alpha` |
 
 No clause bounds how long a root may remain `Live and not Due`, or `Due`.
 
@@ -907,11 +952,18 @@ NormativeView   = StandingId ->fin StandingState
 StandingEffect ::= Create (List Payload) | Supersede (Finset StandingId) (List Payload)
                  | SetStatus (Finset StandingId) (Active | Suspended)
 NormEffect     ::= Standing StandingEffect | Transfer StandingId PrincipalId
-targets, fresh  : StandingEffect -> Finset StandingId
-delta           : (alpha : StandingEffect) -> (targets alpha -> StandingState)
-                                           -> (targets alpha -> StandingState) x (fresh alpha -> StandingState)
-applyEffect     : NormativeView -> NormEffect -> NormativeView
-applyEffect V (Transfer _ _) = V
+ApplyCtx        = (eventId : NormEventId, tau : Time)         ;  ctx a = (id a, tau a)
+targets         : StandingEffect -> Finset StandingId         ;  targetsN : NormEffect -> Finset StandingId
+freshCount      : StandingEffect -> Nat
+freshIds        : ApplyCtx -> StandingEffect -> Finset StandingId
+freshIds ctx alpha = { tag(ctx.tau, i) : i < freshCount alpha }
+freshN          : ApplyCtx -> NormEffect -> Finset StandingId
+mintCount       : ApplyCtx -> NormEffect -> Nat
+mintIds ctx eff = { rootTag(ctx.tau, j) : j < mintCount ctx eff }
+delta           : (ctx : ApplyCtx) -> (alpha : StandingEffect) -> (targets alpha -> StandingState)
+                                   -> (targets alpha -> StandingState) x (freshIds ctx alpha -> StandingState)
+applyEffect     : NormativeView -> ApplyCtx -> NormEffect -> NormativeView
+applyEffect V ctx (Transfer _ _) = V
 tag, rootTag    : Time x Nat -> StandingId / AnsRootId        -- F1-F3
 
 SchemaCode : Type   [[.]]_S : SchemaCode -> (Match x PreState -> NormEffect)          -- S1-S6
@@ -925,13 +977,13 @@ Response   = (id, roots : Finset AnsRootId, cited : Finset NormEventId, tau)
 AnsRoot    = (id, creditor, debtor, subject, demand : DemandCode, origin, tau)
 
 S_t        = (L_t, R_t, N_t)
-Seed       = (Std_0 : NormativeView, Roots_0 : Finset AnsRoot)
+Seed       = (P_0 : PrincipalId, Std_0 : NormativeView, Roots_0 : Finset AnsRoot)
 SystemStep ::= Settle Settlement | Reason ReasonOcc | Norm NormEvent | Respond Response
 
 PreState_{<tau}    := (L_{<tau}, R_{<tau}, N_{<tau}, tau)
 effect a           := [[payloadSchema (Std_{<tau a} (schemaRef a))]]_S (wit a, PreState_{<tau a})
 basis a            := ReasonLeaves (D_a)
-Std_t              := fold applyEffect Std_0 (map effect NormEvents_{<=t})
+Std_t              := fold Std_0 over NormEvents_{<=t}: V |-> applyEffect V (ctx a) (effect a)
 Roots_t            := Roots_0 ∪ union MINT a
 B^_t               := { c : Std_t x = (Active,_,PCmt (StanceBearing, c)) }
 O_t                := { cl : Std_t x = (Active,_,PForce (_,_,cl)) }
@@ -965,31 +1017,80 @@ create a root at `t > s` bearing `Stage(A, s)`, and the closure would fail.
 
 ## 34. Mechanization order
 
-Each item depends only on earlier ones.
+Groups A, B and D are ordered by ordinary dependency: each item uses only what
+precedes it. Group C is not, and stating it as though it were would misdescribe
+the construction.
+
+### A. Static datatypes and interpreters
 
 1. `Time`, ids, `tau` injectivity; the three ledgers and their append operations.
 2. `Payload`, `StandingState`, `NormativeView`; `StandingEffect`, `NormEffect`,
    `targets`, `targetsN`.
-3. `tag`, `rootTag`, F1-F3; `fresh`, `fresh_i`; the Fresh Allocation theorem
-   (§13), which everything about EP consumes.
+3. `ApplyCtx`; `tag`, `rootTag`, F1-F3; `freshCount`, `freshIds`, `freshN`,
+   `mintIds`; the Fresh Allocation theorem (§13), which everything about EP
+   consumes.
 4. `delta`, `applyEffect`; Standing Locality and Transfer Neutrality (§12.3).
-5. `SchemaCode`, `[[.]]_S`, S1-S6; `PreState`.
-6. `WFSeed`, Z1-Z6.
-7. `Derivation`, `steps`, `basis`; `WF` in the order G1-G6, and `effect` as the
-   partial function defined at G4. Effect Determinacy.
-8. `AnsRoot`, `MINT`, `Roots_t`; `Std_t` as the fold. `StandingChanges`,
-   TargetCoverage.
-9. `DemandCode`, `[[.]]_D`, D1-D2; `Digest`, Digest Stability, `CitedDigest`
-   monotonicity.
-10. `Closed`/`Live`/`Due`, trichotomy; `Disposes`, disposition uniqueness;
-    "closure needs a disposer" (§10).
-11. Fate Monotonicity; closure passes through `Due`.
-12. `CurrentEpisode`, EP (§20) — base from Z3, Z3', Z6, D2; step by cases.
-13. `HasCustody`, Custody Locality.
-14. `succ`, `Desc*`, well-foundedness, the key lemma; `ContinuityOK`;
-    Due-Witness.
-15. `GC`, `AC`, `Good`; L1-L4; the main theorem.
-16. Source Closure; FAIR and §30, kept separate.
+5. `SchemaCode`, `[[.]]_S`, S1-S6; `PreState`. `DemandCode`, `[[.]]_D`, D1-D2.
+6. `Derivation`, `steps`, `basis`; `AnsRoot`; `Digest` as a record type.
+
+Nothing in A mentions a trajectory.
+
+### B. Seed
+
+7. `Seed = (P_0, Std_0, Roots_0)`; `WFSeed`, Z1-Z6. The `t = 0` state, on which
+   every clause of C is already total.
+
+### C. Strong recursive trajectory construction
+
+> **Digest, disposition and fate are defined by strong recursion on trajectory
+> time.** Everything the construction at `t` reads is the completed state at
+> `t - 1`, so the recursion is well-founded on `tau` even though the *static*
+> dependency graph of `Digest`, `Disposes`, `CurrentEpisode` and `Closed` has a
+> cycle.
+
+That cycle is real and is not worked around: `Digest(a).disposed` needs
+`Disposes(a, ·)`, which needs `CurrentEpisode_{<tau(a)}`, which needs
+`Closed_{<tau(a)}`, which may inspect `Digest(b)` for cited `b`. Every arrow in
+it crosses from `tau(a)` to a strictly earlier prefix, and that is what makes it
+a definition rather than an equation.
+
+Construct, by strong recursion on `t`, the tuple
+`( S_t , Std_t , Roots_t , Closed_t , Live_t , Due_t , CurrentEpisode_t )`
+together with `Digest(a)` for every `a in NormEvents_t`:
+
+8. **Assume** the tuple is defined for every `u < t`, and `Digest(b)` for every
+   `b in NormEvents_{<t}`. Take `t = 0` from B.
+9. `WFStep(S_{t-1}, step_t)` for the step arriving at `t`, decided entirely
+   against the prefix. For a `Norm` step this is `WF(a)` in the order G1-G6,
+   with `effect(a)` the partial function defined at G4 (§14) — it reads
+   `Std_{<tau(a)}`, which is `Std_{t-1}`, already constructed.
+10. For a `Norm` step: `Disposes(a, q)` for `q in Roots_{t-1}`, using
+    `CurrentEpisode_{t-1}` and `effect(a)` — both available. This fixes
+    `disposed(a)`, hence `Digest(a)`, permanently. `MINT(a)` and `Roots_t`
+    follow; `Std_t` is `applyEffect Std_{t-1} (ctx a) (effect a)`.
+11. For a `Respond` step: `Closed_t(q)` re-evaluates
+    `[[demand q]]_D (q, Responses_t(q), CitedDigest ...)`, where every cited
+    digest belongs to a `NormEvent` with `tau < t` and so was fixed at step 10
+    of an earlier round. The demand is never given a digest it could still
+    change.
+12. `Settle` and `Reason` steps do not participate: they change no fate, no
+    digest, no root and no standing (§28, L1-L2).
+13. `Live_t`, `Due_t`, `CurrentEpisode_t` are read off `Closed_t`, `Roots_t` and
+    the disposition facts of steps 10-11.
+
+`Digest` is therefore never recomputed, which is Digest Stability (§18) holding
+by construction rather than as a later repair.
+
+### D. Derived global theorems
+
+14. Trichotomy; disposition uniqueness; "closure needs a disposer" (§10).
+15. Fate Monotonicity; closure passes through `Due`.
+16. EP (§20) — base from Z3, Z3', Z6, D2; step by cases over C's constructors.
+17. `HasCustody`, Custody Locality. `StandingChanges`, TargetCoverage.
+18. `succ`, `Desc*`, well-foundedness, the key lemma; `ContinuityOK`;
+    Due-Witness; No Invisible Discontinuity.
+19. `GC`, `AC`, `Good`; L1-L4; the main theorem.
+20. Source Closure; FAIR and §30, kept separate.
 
 ---
 

@@ -13,13 +13,16 @@ from ri_core import (ACCOUNT_FOR_SUCCESSION, ACTIVE, GENESIS, SUSPENDED,
 
 
 def seed_from(payloads: dict, debtor: str = "P0", demand=None,
-              roots: bool = True) -> Seed:
-    """One seed standing object per entry, one genesis root per object."""
+              roots: bool = True, p0: str = "P0") -> Seed:
+    """One seed standing object per entry, one genesis root per object.
+
+    `p0` is the genesis principal every seed root is credited to (§4, Z4).
+    """
     d = demand or ACCOUNT_FOR_SUCCESSION
     std0 = {x: StandingState(ACTIVE, frozenset(), p) for x, p in payloads.items()}
-    roots0 = tuple(AnsRoot(f"q0:{x}", ("P0", 0), debtor, x, d, GENESIS, 0)
+    roots0 = tuple(AnsRoot(f"q0:{x}", (p0, 0), debtor, x, d, GENESIS, 0)
                    for x in payloads) if roots else ()
-    return Seed(std0, roots0)
+    return Seed(p0, std0, roots0)
 
 
 def commitment(content: str = "c", role: str = "StanceBearing") -> PCmt:

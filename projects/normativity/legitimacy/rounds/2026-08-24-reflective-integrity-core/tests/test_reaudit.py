@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import unittest
 
-from ri_core import (History, PAuth, Standing, Transfer, fresh_n, standing_tag,
+from ri_core import (History, PAuth, Standing, Transfer, ctx_of, fresh_n, standing_tag,
                      standing_changes, superseding, targets_n, setting, ACTIVE,
                      SUSPENDED, issued_cohort, new_in_cohort)
 import scenarios as S
@@ -61,9 +61,9 @@ class TestConservation(unittest.TestCase):
         for h in all_scenarios():
             for a in h.norm_events():
                 eff = h.effect(a)
-                allowed = set(targets_n(eff)) | set(fresh_n(eff, a.tau))
+                allowed = set(targets_n(eff)) | set(fresh_n(ctx_of(a), eff))
                 if isinstance(eff, Transfer):
-                    allowed = set(fresh_n(eff, a.tau))   # Transfer writes nothing
+                    allowed = set(fresh_n(ctx_of(a), eff))   # Transfer writes nothing
                 for x in set(h.std(a.tau)) | set(h.std(a.tau - 1)):
                     if standing_changes(h, a, x):
                         self.assertIn(x, allowed, (a.id, x))
@@ -121,7 +121,7 @@ class TestReAudit(unittest.TestCase):
         This is why the old `schemaRef not in fresh(effect a)` clause is gone."""
         for h in all_scenarios():
             for a in h.norm_events():
-                self.assertNotIn(a.schema_ref, fresh_n(h.effect(a), a.tau))
+                self.assertNotIn(a.schema_ref, fresh_n(ctx_of(a), h.effect(a)))
                 self.assertIn(a.schema_ref, h.std(a.tau - 1))
 
     def test_digest_stability_under_a_later_disposition(self):

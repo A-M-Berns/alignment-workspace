@@ -27,7 +27,7 @@ store, constructor or conservation law changed.
   roots, effects, digests, fates, custody, the successor DAG and both
   conservation predicates are computed by replay.
 - `src/scenarios.py` — the finite histories the specification argues about.
-- `tests/` — 81 cases. `python3 tests/run.py`.
+- `tests/` — 93 cases. `python3 tests/run.py`.
 
 ## What the tests cover
 
@@ -41,9 +41,10 @@ store, constructor or conservation law changed.
 | `test_reason_and_schema.py` | inference-step licensing separated from practical-schema semantics |
 | `test_reaudit.py` | `GC ∧ AC`, trichotomy, Fate Monotonicity, TargetCoverage, Source Closure, and the independent adversarial cases |
 | `test_vertical_slice.py` | write separation per step kind, and `O_t` as a projection a downstream consumer reads without writing |
+| `test_apply_context.py` | event context in the interpreter, the `freshCount`/`freshIds` split, debtor by case, and the sampled checker's limits |
 
 ## What this does not establish
 
-`AUDIT.md` carries the full list. In short: no Lean, no registered claim, D1
-and D2 decided over finite samples rather than universally, and no completeness
-claim for the adversarial pass.
+`AUDIT.md` carries the full list. In short: no Lean, no registered claim, a
+demand checker that refutes D1 and D2 over finite samples and establishes
+neither, and no completeness claim for the adversarial pass.

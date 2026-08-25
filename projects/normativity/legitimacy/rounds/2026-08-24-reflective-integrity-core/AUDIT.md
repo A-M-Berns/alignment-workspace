@@ -102,11 +102,33 @@ seed root carrying a non-gated or non-monotone demand.
 | `G4₂` (`schemaRef a ∉ fresh(effect a)`) | deleted | redundant once F1–F2 hold: `schemaRef a ∈ dom(Std_{<τ(a)})` by G4, and §13 makes `fresh(effect a)` disjoint from that domain. `test_reaudit.test_self_licensing_is_impossible_without_g4_2` checks the consequence directly |
 | cohort partition, clause (8) | demoted out of the main theorem | with `I_s^{A_s}` and `New_t^{A_s}` defined exactly, the partition `I_s = D_t ⊔ R_t` is excluded middle over a set that AC(i) keeps fixed. It adds nothing to successor-root continuity and Due-Witness. Source Closure is retained, because §17's uniform creditor rule cites it |
 
+## Final cleanup
+
+Typing and mechanization hygiene, run after the repairs above and before the
+freeze. None is an architectural revision: no store, constructor, conservation
+law, theorem meaning or custody semantic changed.
+
+| cleanup | result | architecture changed? |
+|---|---|---|
+| context-aware standing interpreter | `ApplyCtx = (eventId, tau)`; `applyEffect : NormativeView → ApplyCtx → NormEffect → NormativeView`, and `delta` takes `ctx` first. `Supersede` can now legitimately write `Terminated(ctx.eventId)` and the allocator can legitimately read `ctx.tau` — both of which the prose signature previously had no argument for. The reference model already had this shape; the specification now agrees with it | No |
+| `freshCount` / `freshIds` split | `freshCount : StandingEffect → Nat` and `freshIds : ApplyCtx → StandingEffect → Finset StandingId`, with `freshIds ctx α = { tag(ctx.tau, i) : i < freshCount α }`. `freshN` and `mintIds` follow. One symbol no longer alternates between a cardinality and a set of ids | No |
+| strong-recursive mechanization order | §34 is now four groups. A, B and D are ordered by ordinary dependency; C states the actual construction — `Digest`, disposition and fate are defined by strong recursion on trajectory time, and the static cycle through `Digest → Disposes → CurrentEpisode → Closed → Digest` is exhibited rather than hidden, with every arrow crossing to a strictly earlier prefix | No |
+| successor-debtor wording | §17 said "debtor of successor roots is `author(a)` uniformly" while its own table gave `Transfer x B` debtor `B`. The rule is now stated by case: freshly introduced standing under `Create`/`Supersede` goes to `author(a)`; `Transfer` assigns the successor episode for the *same* object to the named transferee. Transfer semantics are unchanged — the prose was wrong, not the model | No |
+| explicit genesis principal | `Seed = (P_0, Std_0, Roots_0)` with `P_0 : PrincipalId` a theorem parameter. Z4, §29's assumptions and §33 now declare it where they use it | No |
+| sampled-demand validation clarification | `episode_demand_violations` is now `sampled_episode_demand_violations`, and its docstring says plainly that it witnesses failures and never establishes D1/D2 for an arbitrary `DemandCode`. `DemandCode`'s docstring says the assumptions are the specification's, not the type's. `test_apply_context.TestSampledCheckerIsNotAProof` exhibits a demand that passes a narrow sample and fails a wider one | No |
+| Z1 quantifier | `forall x. status_0(x) ∈ {Active, Suspended}` restricted to `x ∈ dom(Std_0)`, matching the repair already made to EP. Found by the consistency sweep | No |
+
+Regression coverage for these is in `tests/test_apply_context.py`: allocation
+under two different event times, the recorded termination id and its stability,
+debtor by case for `Transfer` against `Create`/`Supersede`, the count/ids split,
+and the sampled checker's limits.
+
 ## What this does not establish
 
 Nothing here is Lean-checked, and `src/ri_core.py` is a reference model rather
-than a proof: it decides the finite histories it is given, and D1/D2 are
-decided over supplied finite samples, not over all response multisets. The
+than a proof: it decides the finite histories it is given, and
+`sampled_episode_demand_violations` searches supplied finite samples rather than
+all response multisets — it refutes D1/D2, and passing it establishes neither. The
 proofs in the specification are paper derivations. The independent adversarial
 pass found three further local defects; it is not a completeness claim, and a
 fourth may exist. The reconstruction of R2–R4 is inference from the rerun's
