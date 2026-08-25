@@ -149,7 +149,7 @@ class UnrelatedGrowthChangesNothing(unittest.TestCase):
         self.assertEqual(before.coords, after.coords)
         self.assertEqual(before.deductive_vertices, after.deductive_vertices)
         self.assertEqual(before.region_vertices, after.region_vertices)
-        self.assertEqual(before.exclusion_depth, after.exclusion_depth)
+        self.assertEqual(before.sharp_deficit, after.sharp_deficit)
 
     def test_the_grown_stage_really_is_larger(self):
         before, after = v.unrelated_language_extension()

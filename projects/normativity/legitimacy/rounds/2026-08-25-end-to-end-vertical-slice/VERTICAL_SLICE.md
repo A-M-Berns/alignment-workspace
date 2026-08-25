@@ -277,22 +277,97 @@ traderization theorem.** Admissibility and deductive inertness are the same
 condition, and `test_composition.py` checks that they coincide on every
 non-blocking case in the suite.
 
-**T3 — what is left is the charged branch.** A region excluding live worlds is
-enforceable, at `(eps_t + M_t) . d_t / delta_t` per date charged against a
-finite account, and safe when `sum_t` of that is finite. That sum's finiteness
-is a property of the source's trajectory and is established here for nothing.
-`[OBL]`
+**T3 — what is left is the charged branch, and the slice runs it.** The rows
+are handed to `force_api.compile_safe_force`, which computes
+`outflow.LiveDeficitCertificate.by_enumeration` from the very region it is about
+to enforce, charges the account, debits it, and only then constructs the
+position. The slice adds no liability arithmetic of its own.
 
-**T4 — settlement is what makes force cheap.** The exclusion depth is measured
-over `W_n`, and settling removes worlds, so a fixed payload's charge is
-non-increasing as the record settles and reaches zero exactly when what it
-demands is already settled — at which point, by T2, it is inert. `[THM]`,
-`test_composition.py`
+```text
+D_t = max over omega live at t of  sum_j d_{t,j}(omega)        the billed aggregate
+q_t = (eps_t + M_t) * D_t / delta_t                            the charge
+```
+
+`d_{t,j}` is `deduction.world_deficit` — the amount by which row `j`'s
+right-hand side excludes `omega`. A second aggregate, `rowwise`, sums each row's
+own worst world and is larger whenever different rows are worst at different
+worlds; it is reported and is not billed, because `charge(..., sharp=True)`
+bills the first. `[DEF]`
+
+**T3a — the deductive rows are not charged.** `K^D` is world-inclusive by
+construction, so its rows have deficit zero at every live world and contribute
+nothing to `D_t`. What the normative layer pays for is exactly its own
+increment, which is the zero-liability calibration case working as intended.
+`[THM]`
+
+**T3b — no payment, no price.** Under the default `quarantine` policy an
+account that cannot fund `q_t` returns no force, and the slice then produces no
+price. The injunction keeps its normative standing and receives no operative
+force at that date. `[DEF]`, `test_safety.py`
+
+**T4 — what settlement buys, and only that.** Three claims that are easy to
+conflate and are different.
+
+*T4a, and it is the only monotonicity available.* For **one fixed** row
+presentation and support, `Omega' subset Omega` gives `D(Omega') <= D(Omega)`,
+because `D` is a maximum over the live worlds and removing a world removes a
+term. `[THM]`, `test_safety.py`
+
+*T4b — the cross-day version is false.* A frozen injunction over `Expect(X)`
+compiles to a different row system at each day, since `E_n(X)` is the
+precision-`n+1` bundle, and the two live-world sets are patterns over different
+fragments — so `D_{n+1} <= D_n` does not follow from T4a, and it fails. The
+witness: one injunction `Expect(X) <= 1/2`, one stage settling that the quantity
+is at most `1/2`, and
+
+```text
+day 1, k = 2:  every live world reads X at most 1/2;   D_1 = 0,    q_1 = 0
+day 2, k = 3:  a live world obeying the same settlement
+               reads X at 2/3;                          D_2 = 1/6,  q_2 > 0
+```
+
+because the precision-`k` reading of a value `x` is `ceil(x*k)/k`, which is not
+monotone in `k`. A free day becomes a charged day with nothing unsettled, and it
+still rises when the day-2 stage is made strictly larger. `[THM]`,
+`test_safety.py`
+
+*T4c — the charge is not the deficit.* `q_t` depends on `eps_t`, `M_t` and
+`delta_t` as well, so `D_t` falling does not make `q_t` fall. Every statement
+about cost distinguishes them. `[DEF]`
+
+**T5 — the charge is presentation-dependent.** `D_t` sums across rows before
+maximising over worlds, so a demand stated twice costs twice while enforcing
+exactly the same prices. The certificate is not wrong — the trader really holds
+two positions — but the consequence is that a summability question is a question
+about a schedule of *presentations*, not of regions, and a source can make its
+own force arbitrarily expensive by restating it. `[THM]`, `test_composition.py`
+
+**T6 — the tolerance route is bounded.** A conformance promise above `1` says
+nothing about a price in `[0,1]`, and `compile_safe_force` defaults its
+relaxation ceiling to `1` for that reason. While `delta_t <= 1`,
+
+```text
+q_t  =  (eps_t + M_t) * D_t / delta_t  >=  (eps_t + M_t) * D_t ,
+```
+
+so `sum_t q_t < inf` requires `sum_t (eps_t + M_t) * D_t < inf`. Loosening the
+tolerance buys a bounded factor and then stops; `trajectories.tolerance_route`
+displays the charge going constant once the ceiling is reached. This is a
+reading of the API's own default rather than a correction to
+`FUNDING_AND_SAFETY.md` §9, whose own counterexample decays the pressure. `[THM]`
+
+**T7 — the condition itself is open.** `sum_t q_t < inf` is a property of the
+source's trajectory. Four synthetic trajectories are exhibited —
+`settlement_closes_the_gap` and `pressure_decays` converge,
+`tolerance_route` and `nothing_decays` do not — and none of them is a normative
+source anyone should believe in. **No normative source is shown summable here.**
+`[OBL]`
 
 ## 12. The resulting cognitive state
 
 `P_n` is the projection of the incoming price vector onto `K_n`, certified by
-the variational inequality against the generating vertices. This is the `target`
+the variational inequality against the generating vertices, and **produced only
+on a date whose charge the account paid** (T3b). This is the `target`
 of the schedule, and the conformance half of the traderization theorem bounds
 the displayed price's distance from it by the day's tolerance.
 
@@ -307,8 +382,13 @@ the displayed price's distance from it by the day's tolerance.
 - `E3` and the effective-presentation obligation are **declared, not proved**.
   The round's schedules are computable by construction and no `Primrec`
   statement is made.
-- **T3 is the open one.** No normative source in this repository is shown to
-  have summable enforcement liability, and T2 says every contentful one needs it.
+- **T7 is the open one.** No normative source in this repository is shown to
+  have summable enforcement liability, and T2 says every contentful one needs
+  it. The four exhibited trajectories are synthetic and are evidence that the
+  mechanics run, not that any source converges.
+- **T4b is a witness, not a general theorem.** It refutes cross-day
+  monotonicity; it does not characterise when `D` rises, and no such
+  characterisation is offered.
 - The reference model is finite, propositional, and exact. Its `Sentence` is a
   propositional formula and its LUVs are threshold families over atoms; the
   first-order content the pinned dependency discloses as modelling choices is

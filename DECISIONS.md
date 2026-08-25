@@ -84,6 +84,27 @@ commit.
 
 ## Settled
 
+### 2026-08-25 — the enforcement charge is the safety layer's own quantity
+
+**agent-decided, reversible.** The first pass of the end-to-end slice computed
+`sum_omega max_j d_j(omega)` over the excluded worlds and called it the
+exclusion depth, then applied the liability formula to it. That is neither
+`LiveDeficitCertificate`'s sharp aggregate — `max_omega sum_j d_j(omega)` — nor
+its conservative one, and it is not a quantity any theorem here mentions.
+
+The slice now imports `enforcement`, `deduction`, `outflow` and `force_api` from
+the traderized-enforcement round and calls them. It computes no liability
+quantity of its own, and `test_safety.py` pins that the billed figure is the
+certificate's and that it differs from the withdrawn one. *Rejected
+alternative:* keeping a slice-local quantity under a distinct name, which would
+have left two numbers a reader could confuse for the price of force.
+
+The repair changed a conclusion, not only an implementation. The first pass
+reported that a fixed injunction gets cheaper as the record settles. That holds
+at a fixed day and fails across days, because the precision-`k` reading of a
+value is `ceil(x*k)/k` and is not monotone in `k`; the counterexample is in
+`src/trajectories.py` and the claim is withdrawn in the round's `README.md`.
+
 ### 2026-08-25 — the vertical slice's four local repairs
 
 **agent-decided, reversible.** Taken by

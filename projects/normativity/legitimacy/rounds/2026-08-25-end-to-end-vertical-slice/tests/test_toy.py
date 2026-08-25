@@ -130,7 +130,8 @@ class TheTrajectoryReplays(unittest.TestCase):
             self.assertEqual(a.region_vertices, b.region_vertices)
             self.assertEqual(a.prices, b.prices)
             self.assertEqual(a.readings, b.readings)
-            self.assertEqual(a.exclusion_depth, b.exclusion_depth)
+            self.assertEqual(a.sharp_deficit, b.sharp_deficit)
+            self.assertEqual(a.charge, b.charge)
 
     def test_the_rendered_trace_is_stable(self):
         self.assertEqual(trace_module.render(), trace_module.render())

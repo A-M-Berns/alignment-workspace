@@ -5,24 +5,34 @@ provisional under `AGENTS.md` §6. Nothing here is Lean-checked or registered.
 
 ## Verdict
 
-END-TO-END-WITH-LOCAL-REPAIRS, with TRADERIZATION-MISMATCH — both waists carried every case and neither widened; the unconditional traderization theorem's admissibility hypothesis is satisfied exactly by injunctions that change nothing.
+END-TO-END-DEMONSTRATION-CLOSED-WITH-OPEN-SAFETY-THEOREM — the charged traderization path runs end to end on the canonical safety layer's own quantity, and no normative source is shown to satisfy the condition that path needs.
 
-The value and operative waists carried every case the round could construct, and
-neither needed widening. Reflective Integrity was not reopened: the operative
-waist turned out to *be* `PForce`, and the value waist is a payload constructor
-the interpreter never inspects. The repairs are four, all local and all
-specified: the vertical-slice projection pairs each clause with its standing;
-`sem_L` joins `[[.]]_S` and `[[.]]_D` as a third parametric interpreter; the
-compiler merges coefficients on shared threshold sentences; and the stage's
-threshold chain must cover every day's grid.
+The pipeline runs from settlement and reasons through normative standing, value
+exposure and operative force to a region, a live-world deficit certificate, a
+charge, an account debit, and only then a price. Both waists carried every case
+constructed against them and neither was widened; Reflective Integrity was not
+reopened.
 
-The second label is the reason this is not `END-TO-END-READY`. Making the machine
-run exposed that the unconditional traderization theorem's admissibility
-hypothesis is satisfied *exactly* by injunctions that change nothing about the
-prices. Every operative injunction with content therefore needs the charged
-branch, whose safety condition is established for no source in this repository.
-That is a mismatch between the semantic architecture and the available
-mathematics, not a defect in either waist.
+What is open is one condition, and it is now the right one. Every contentful
+injunction falls outside the unconditional theorem — admissibility holds exactly
+for injunctions that change nothing — so each must be paid for out of a finite
+account, and `sum_t (eps_t + M_t) D_t / delta_t < infinity` is established for no
+source here. Four synthetic trajectories are exhibited, two convergent and two
+not.
+
+**Are the waists canonical?** No. **Provisional-but-usable**, and the round does
+not recommend freezing them. Nothing it could construct forced either to widen,
+and the repairs are local and specified.
+
+**Is the charged path exercised end to end?** Yes. `compile_safe_force` computes
+`LiveDeficitCertificate.by_enumeration` from the region it is about to enforce,
+charges, debits, and emits; a date the account cannot fund produces no force and
+no price. The slice reimplements no liability quantity.
+
+**What is the remaining theorem?** Item 61, restated to ask for the condition
+above over a schedule of *presentations*, with the three facts the slice
+established about it: `D_t` is not monotone across days, the charge is
+presentation-dependent, and the tolerance route is bounded.
 
 ## The pipeline, running
 
@@ -49,8 +59,9 @@ injunction standing is untouched and still compiles to `v0`'s thresholds.
 - `src/` — `li.py` (the pinned LI objects), `epistemic.py` (`sem_L`, `Sigma`,
   worlds), `waist.py` (both waists and `kappa`), `standing.py` (the RI
   installation), `conflict.py` (Fourier-Motzkin with Farkas provenance),
-  `geometry.py`, `pipeline.py`, `toy.py`, `variants.py`, `trace.py`.
-- `tests/` — 107 cases. `python3 tests/run.py`.
+  `geometry.py`, `safety.py` (the charged branch, on the canonical objects),
+  `pipeline.py`, `toy.py`, `variants.py`, `trajectories.py`, `trace.py`.
+- `tests/` — 135 cases. `python3 tests/run.py`.
 
 ## What the tests cover
 
@@ -60,7 +71,8 @@ injunction standing is untouched and still compiles to `v0`'s thresholds.
 | `test_value_waist.py` | semantic stability, historical rigidity, non-exposure, plural value without scalarisation, several active specifications, origin-blindness downstream |
 | `test_operative_waist.py` | the five malformed payload classes; projection exactness; no invisible force or weakening; provenance to the issuing event |
 | `test_conflict.py` | the four conflict states; certificates naming the responsible standings; certificates rechecked and tampered ones rejected; the budget raised rather than ignored |
-| `test_composition.py` | channel independence; the intersection; the inertness dichotomy on every case; settlement lowering the charge to zero |
+| `test_composition.py` | channel independence; the intersection; the inertness dichotomy on every case and at its edges; presentation-dependence of the charge |
+| `test_safety.py` | the billed quantity is the canonical sharp aggregate and not a clone; fixed-request monotonicity; the cross-day counterexample; four charged trajectories |
 | `test_settlement.py` | `Sigma` as a legal `DeductiveProcess`; `sem_L` total and rigid; raw outcomes removing no world; contradictions attributed not repaired; unrelated growth changing nothing |
 | `test_toy.py` | RI holds at every state; value revision is not operative revision; explicit operative revision; the full provenance chain; deterministic replay against the committed trace |
 
@@ -69,5 +81,10 @@ injunction standing is untouched and still compiles to `v0`'s thresholds.
 `FINDINGS.md` §9 carries the list. In short: no Lean and no registered claim; the
 inertness dichotomy is a paper derivation checked on finite instances rather than
 mechanized; effective presentation and `Sigma`'s computability are declared, not
-proved; and the safety condition every contentful injunction now depends on is
-established for nothing.
+proved; the cross-day counterexample is a witness rather than a
+characterisation; and **no normative source is shown to satisfy the safety
+condition** every contentful injunction now depends on.
+
+One claim an earlier draft of this round made is withdrawn: that a fixed
+injunction gets cheaper as the record settles. It is true at a fixed day and
+false across days, and `src/trajectories.py` carries the counterexample.

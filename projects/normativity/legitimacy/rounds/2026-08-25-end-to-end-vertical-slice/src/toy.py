@@ -153,7 +153,12 @@ J1_STANDING = "@s7.0"
 class Trajectory:
     """The toy history, its ledger semantics, and the day runs over it."""
 
-    def __init__(self) -> None:
+    def __init__(self, capital: Fraction = Fraction(25)) -> None:
+        import safety
+        #: One enforcement account for the whole trajectory. Force is charged
+        #: against it date by date, so the trace's cumulative spend is a fact
+        #: about the run rather than a per-day illustration.
+        self.account = safety.OutflowAccount(Fraction(capital))
         self.registry = registry()
         self.X0 = x0(self.registry)
         self.X1 = x1(self.registry)
@@ -233,6 +238,7 @@ class Trajectory:
 
     def day(self, n: int, t: Optional[int] = None, **kw):
         """Run day `n` against the record's state at `t`."""
+        kw.setdefault("account", self.account)
         return run_day(n, self.stage(t), self.history.std(t), **kw)
 
 

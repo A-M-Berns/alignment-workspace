@@ -19,6 +19,7 @@ from typing import Optional, Sequence
 
 import conflict
 import geometry
+import safety
 from conflict import (Infeasible, cube_constraints, decide, from_rows,
                       hull_system)
 from epistemic import Stage, admissible_patterns, pc_worlds, stage_satisfiable
@@ -102,11 +103,25 @@ class DayRun:
     region_vertices: tuple = ()
     conflict: ConflictReport = field(default_factory=ConflictReport)
     obligations: tuple = ()
+    live_worlds: tuple = ()
     excluded_worlds: tuple = ()
-    exclusion_depth: Fraction = ZERO
-    charge: Optional[Fraction] = None
+    charged: Optional["safety.Charged"] = None
     prices: tuple = ()
     readings: tuple = ()
+
+    @property
+    def sharp_deficit(self) -> Fraction:
+        """`D_t`, the billed aggregate: `max over live omega of sum_j d_j(omega)`.
+
+        The one quantity the safety theorem is stated against. Read off the
+        canonical certificate rather than recomputed here.
+        """
+        return ZERO if self.charged is None else self.charged.sharp
+
+    @property
+    def charge(self) -> Optional[Fraction]:
+        """`q_t = (eps_t + M_t) * D_t / delta_t`, or `None` if nothing ran."""
+        return None if self.charged is None else self.charged.charge
 
     @property
     def enforced(self) -> bool:
@@ -141,11 +156,19 @@ def run_day(day: int, stage: Stage, std: dict,
             slack: Fraction = Fraction(1, 100),
             volume: Fraction = ONE,
             prior: Optional[Sequence[Fraction]] = None,
-            schedule_declared_computable: bool = True) -> DayRun:
+            schedule_declared_computable: bool = True,
+            account=None, policy: str = "quarantine",
+            label: str = "") -> DayRun:
     """One day of the slice, end to end.
 
     `stage` is `Sigma_n`; `std` is the normative view at the corresponding RI
     state. The two arrive separately and are never derived from each other.
+
+    `account` is the enforcement channel's `OutflowAccount`. A day whose charge
+    the account cannot fund emits no force under the default `quarantine`
+    policy, and then no price is produced: the market is not updated by a
+    request that was never paid for. Passing no account supplies a large one, so
+    that a caller studying geometry is not silently studying affordability.
     """
     projection = operative_projection(std)
     run = DayRun(day=day, stage=stage, projection=projection)
@@ -200,43 +223,50 @@ def run_day(day: int, stage: Stage, std: dict,
     run.region_vertices = tuple(
         geometry.generate_region(run.deductive_vertices, run.compiled.rows))
 
-    run.excluded_worlds, run.exclusion_depth = _exclusion(run, stage)
+    run.live_worlds = _live_worlds(stage, run.coords)
+    run.excluded_worlds = _excluded(run)
+    run.charged = safety.charge_force(
+        run.compiled, run.live_worlds, day, run.region_vertices[0],
+        account if account is not None else safety.OutflowAccount(Fraction(10**6)),
+        slack=slack, volume=volume, tolerance=tolerance, policy=policy,
+        label=label or f"day-{day}")
     run.obligations = _obligations(run, tolerance, schedule_declared_computable)
-    if run.excluded_worlds:
-        run.charge = (Fraction(slack) + Fraction(volume)) \
-            * run.exclusion_depth / Fraction(tolerance)
 
-    if prior is not None:
+    if prior is not None and run.charged.emitted:
         run.prices = tuple(geometry.project_onto(prior, run.region_vertices))
         run.readings = _readings(run)
     return run
 
 
-def _exclusion(run: DayRun, stage: Stage) -> tuple:
-    """Which stage-consistent worlds `K^N_n` excludes, and by how much.
+def _live_worlds(stage: Stage, coords: tuple) -> tuple:
+    """The assessment state: `PC(Sigma_n)` restricted to the day's fragment.
 
-    The deficit of a world is the largest row violation at it, and the aggregate
-    is their sum — the `d_t(W)` the liability bound is stated against. It is
-    computed from the very rows about to be enforced, which is the binding the
-    force layer makes structural in `compile_safe_force`.
+    One entry per distinct pattern. A stage world and its fragment restriction
+    are different objects, and it is the restriction the rows are evaluated at,
+    so two full worlds agreeing on the fragment are one live world here.
     """
-    excluded = []
-    seen = set()
-    total = ZERO
-    for world in pc_worlds(stage, run.coords):
-        point = tuple(payout(world, phi) for phi in run.coords)
-        if point in seen:
-            continue                  # one stage world per fragment pattern
-        seen.add(point)
-        worst = ZERO
-        for row in run.compiled.rows:
-            v = row.violation(point)
-            if v > worst:
-                worst = v
-        if worst > ZERO:
-            excluded.append((point, worst))
-            total += worst
-    return tuple(excluded), total
+    seen: list = []
+    for world in pc_worlds(stage, coords):
+        point = tuple(payout(world, phi) for phi in coords)
+        if point not in seen:
+            seen.append(point)
+    return tuple(seen)
+
+
+def _excluded(run: DayRun) -> tuple:
+    """The live worlds the rows exclude, with each one's *total* row deficit.
+
+    The per-world number here is `sum_j d_j(omega)`, which is the quantity the
+    sharp aggregate maximises over — not the per-row worst, which belongs to the
+    conservative aggregate and is a different number. Reported for inspection;
+    the billed figure is the certificate's, never this loop's.
+    """
+    out = []
+    for point in run.live_worlds:
+        total = sum((row.violation(point) for row in run.compiled.rows), ZERO)
+        if total > ZERO:
+            out.append((point, total))
+    return tuple(out)
 
 
 def _obligations(run: DayRun, tolerance: Fraction,
@@ -281,16 +311,29 @@ def _obligations(run: DayRun, tolerance: Fraction,
         "admissibility",
         "EffectiveRepresentation.end_to_end_of_constraints_effective, hadm",
         "pass" if admissible else "fail",
-        "every Sigma_n-consistent world satisfies the region"
+        "every live world satisfies the region; D_t = 0 and force is free"
         if admissible else
-        f"{len(run.excluded_worlds)} stage-consistent worlds excluded; "
-        f"aggregate deficit {run.exclusion_depth}"))
-    out.append(Obligation(
-        "bounded_liability", "force_api.compile_safe_force / outflow account",
-        "n/a" if admissible else "declared",
-        "unused: the unconditional branch applies" if admissible else
-        "the charged branch applies; the account's lifetime ceiling is the "
-        "safety bound, and its finiteness is the source's obligation"))
+        f"{len(run.excluded_worlds)} of {len(run.live_worlds)} live worlds "
+        f"excluded; sharp deficit D_t = {run.sharp_deficit}"))
+    c = run.charged
+    if admissible:
+        out.append(Obligation(
+            "bounded_liability", "force_api.compile_safe_force / outflow account",
+            "n/a", "unused: the unconditional branch applies"))
+    elif c is not None and c.emitted:
+        out.append(Obligation(
+            "bounded_liability", "force_api.compile_safe_force / outflow account",
+            "pass",
+            f"charged q_t = {c.charge} against the account and emitted; the "
+            f"holder may quote the lifetime ceiling {c.safety_bound} as B. "
+            f"That sum_t q_t stays finite is the source's obligation and is "
+            f"established for nothing here"))
+    else:
+        out.append(Obligation(
+            "bounded_liability", "force_api.compile_safe_force / outflow account",
+            "fail",
+            (c.withheld if c is not None else "no charge was attempted")
+            + "; force is withheld and no price is produced"))
     return tuple(out)
 
 
