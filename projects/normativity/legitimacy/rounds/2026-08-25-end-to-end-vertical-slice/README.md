@@ -5,7 +5,10 @@ provisional under `AGENTS.md` §6. Nothing here is Lean-checked or registered.
 
 ## Verdict
 
-END-TO-END-DEMONSTRATION-CLOSED-WITH-OPEN-SAFETY-THEOREM — the charged traderization path runs end to end on the canonical safety layer's own quantity, and no normative source is shown to satisfy the condition that path needs.
+ARCHITECTURE-CRYSTALLIZED-WITH-LOCAL-SEAMS — the forward normative reasoner has one compositional type-level account the running slice implements; the open safety theorem and the presentation-liability seam are identified consumers rather than unresolved architecture.
+
+End-to-end status, unchanged by the crystallization pass:
+**END-TO-END-DEMONSTRATION-CLOSED-WITH-OPEN-SAFETY-THEOREM.**
 
 The pipeline runs from settlement and reasons through normative standing, value
 exposure and operative force to a region, a live-world deficit certificate, a
