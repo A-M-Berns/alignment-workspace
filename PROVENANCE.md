@@ -146,6 +146,7 @@ of thing this file exists to make visible.
 | `2026-08-24-reflective-integrity-core` | unrecorded — authored outside this repository in a prior session | Claude Opus 5 (Anthropic) | 2026-08-24 |
 | `2026-08-24-cleanup-and-compress` | Claude Fable 5 (Anthropic) | Claude Opus 5 (Anthropic) | 2026-08-24 |
 | `2026-08-25-end-to-end-vertical-slice` | unrecorded — authored outside this repository | Claude Opus 5 (Anthropic) | 2026-08-25 |
+| `2026-08-25-carroll-legitimacy-test` | unrecorded — authored outside this repository | Claude Opus 5 (Anthropic) | 2026-08-25 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have

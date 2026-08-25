@@ -1,0 +1,185 @@
+Table 3/4 regression — exact enumeration, exact rationals.
+
+'reading' names which of Definition 5's two index ranges recovers
+the cell; 'n' is the size of the exact optimal set; 'vac' marks a
+cell every policy is optimal for. The annotation column is the
+source's own label and is metadata, never a requirement.
+
+== ConspiracyInfluence   H=3   a_noop=a_noop   (Table 3 row 1; Figure 1)
+   ok   ConstrainedRTReward                    n=4       reading=H-1,H   paper=a_noop                             ann=check
+   ok   FinalReward                            n=4       reading=H-1,H   paper=a_influence                        ann=cross
+   ok   MyopicReward                           n=1       reading=H-1,H   paper=(s_0,th_influenced,1)->a_influence; (s_0,th_influenced,2)->a_influence; (s_0,th_natural,0)->a_noop; (s_0,th_natural,1)->a_noop; (s_0,th_natural,2)->a_noop ann=mixed
+   ok   NaturalShiftsReward                    n=4       reading=H-1,H   paper=a_noop                             ann=check
+   ok   ParetoUD                               n=4       reading=H-1,H   paper=a_noop                             ann=check
+   ok   PrivilegedReward[th_influenced]        n=4       reading=H-1,H   paper=a_influence                        ann=cross
+   ok   PrivilegedReward[th_natural]           n=4       reading=H-1,H   paper=a_noop                             ann=check
+   ok   RealTimeReward                         n=4       reading=H-1,H   paper=a_influence                        ann=cross
+   ok   InitialReward[theta_0=th_natural]      n=4       reading=H-1,H   paper=a_noop                             ann=check
+   ok   InitialReward[theta_0=th_influenced]   n=4       reading=H-1,H   paper=a_influence                        ann=cross
+
+== WritersCurse   H=3   a_noop=a_noop   (Table 3 row 2; Figure 2)
+   ok   ConstrainedRTReward                    n=8       reading=H-1,H   paper=a_noop                             ann=check
+   ok   FinalReward                            n=4       reading=H-1,H   paper=(s_no-poetry,th_ambitious,0)->a_influence; (s_no-poetry,th_ambitious,1)->a_influence; (s_no-poetry,th_ambitious,2)->a_noop; (s_poetry,th_unhappy,1)->a_influence; (s_poetry,th_unhappy,2)->a_noop ann=cross
+   ok   MyopicReward                           n=32  vac reading=H-1,H   paper=a_influence                        ann=cross
+   ok   NaturalShiftsReward                    n=8       reading=H-1,H   paper=a_influence                        ann=cross
+   ok   ParetoUD                               n=8       reading=H-1,H   paper=a_noop                             ann=check
+   ok   PrivilegedReward[th_ambitious]         n=8       reading=H-1,H   paper=a_influence                        ann=cross
+   ok   PrivilegedReward[th_unhappy]           n=8       reading=H-1,H   paper=a_noop                             ann=check
+   ok   RealTimeReward                         n=8       reading=H-1,H   paper=a_noop                             ann=check
+   ok   InitialReward[theta_0=th_ambitious]    n=8       reading=H-1,H   paper=a_influence                        ann=cross
+   MISS InitialReward[theta_0=th_unhappy]      n=8       reading=-       paper=a_influence                        ann=cross
+
+== Clickbait   H=2   a_noop=a_news   (Table 3 row 3; Figure 4; Table 3 caption for a_noop)
+   ok   ConstrainedRTReward                    n=2       reading=H       paper=a_news                             ann=check
+   ok   FinalReward                            n=2       reading=H-1,H   paper=a_news                             ann=check
+   ok   MyopicReward                           n=1       reading=H-1,H   paper=(s_0,th_disillusioned,1)->a_news; (s_0,th_normal,0)->a_clickbait; (s_0,th_normal,1)->a_clickbait ann=mixed
+   ok   NaturalShiftsReward                    n=2       reading=H-1,H   paper=a_clickbait                        ann=cross
+   ok   ParetoUD                               n=2       reading=H-1,H   paper=a_news                             ann=check
+   ok   PrivilegedReward[th_disillusioned]     n=2       reading=H-1,H   paper=a_news                             ann=cross
+   ok   PrivilegedReward[th_normal]            n=2       reading=H-1,H   paper=a_clickbait                        ann=check
+   ok   RealTimeReward                         n=2       reading=H-1,H   paper=(s_0,th_disillusioned,1)->a_news; (s_0,th_normal,0)->a_news; (s_0,th_normal,1)->a_clickbait ann=cross
+   ok   InitialReward[theta_0=th_normal]       n=2       reading=H-1,H   paper=a_clickbait                        ann=cross
+   MISS InitialReward[theta_0=th_disillusioned] n=1       reading=-       paper=a_clickbait                        ann=cross
+
+== AIPersonalTrainer   H=3   a_noop=a_noop   (Table 3 row 4; Figure 6)
+   ok   ConstrainedRTReward                    n=4       reading=H-1,H   paper=a_noop                             ann=weak-check
+   ok   FinalReward                            n=4       reading=H-1,H   paper=a_nudge                            ann=question
+   ok   MyopicReward                           n=1       reading=H-1,H   paper=(s_0,th_energized,1)->a_nudge; (s_0,th_energized,2)->a_nudge; (s_0,th_tired,0)->a_noop; (s_0,th_tired,1)->a_noop; (s_0,th_tired,2)->a_noop ann=mixed
+   ok   NaturalShiftsReward                    n=4       reading=H-1,H   paper=a_noop                             ann=weak-check
+   ok   ParetoUD                               n=4       reading=H-1,H   paper=a_noop                             ann=weak-check
+   ok   PrivilegedReward[th_energized]         n=4       reading=H-1,H   paper=a_nudge                            ann=question
+   ok   PrivilegedReward[th_tired]             n=4       reading=H-1,H   paper=a_noop                             ann=weak-check
+   ok   RealTimeReward                         n=4       reading=H-1,H   paper=a_nudge                            ann=question
+   ok   InitialReward[theta_0=th_tired]        n=4       reading=H-1,H   paper=a_noop                             ann=weak-check
+   ok   InitialReward[theta_0=th_energized]    n=4       reading=H-1,H   paper=a_nudge                            ann=question
+
+== Dehydration   H=2   a_noop=a_noop   (Table 3 row 5; Figure 8)
+   ok   ConstrainedRTReward                    n=27      reading=H-1,H   paper=a_noop                             ann=weak-check
+   ok   FinalReward                            n=9       reading=H-1,H   paper=a_noop                             ann=weak-check
+   ok   MyopicReward                           n=81  vac reading=H-1,H   paper=a_4                                ann=cross
+   ok   NaturalShiftsReward                    n=27      reading=H-1,H   paper=a_3                                ann=question
+   ok   ParetoUD                               n=54      reading=H-1,H   paper=a_3                                ann=question
+   ok   PrivilegedReward[2]                    n=27      reading=H-1,H   paper=a_3                                ann=question
+   ok   PrivilegedReward[3]                    n=27      reading=H-1,H   paper=a_4                                ann=question
+   ok   PrivilegedReward[4]                    n=27      reading=H-1,H   paper=a_4                                ann=question
+   ok   RealTimeReward                         n=27      reading=H-1,H   paper=a_noop                             ann=weak-check
+   ok   InitialReward[theta_0=2]               n=27      reading=H-1,H   paper=a_3                                ann=question
+   ok   InitialReward[theta_0=3]               n=9   vac reading=H-1,H   paper=a_3                                ann=question
+   ok   InitialReward[theta_0=4]               n=9   vac reading=H-1,H   paper=a_3                                ann=question
+
+cells: 52   recovered: 50   not recovered: 2
+   not recovered: WritersCurse / InitialReward[theta_0=th_unhappy]
+   not recovered: Clickbait / InitialReward[theta_0=th_disillusioned]
+   reading-sensitive: Clickbait / ConstrainedRTReward -> {'H-1': False, 'H': True}
+
+
+
+Adversarial suite — C0 to C24, plus the under-generality case C7b.
+
+C0    PASS  exact Carroll fidelity
+          observed: 50/52 cells recovered
+          the two exceptions are Table 4's cells quantified over a theta_0 other than the example's own
+C1    PASS  DR-equivalent narratives
+          observed: canonical forms equal: True
+          Figures 1 and 6 are one DR-MDP under a relabelling of all three alphabets
+C2    PASS  bare negative control
+          observed: Unresolved / Unresolved
+          no enriched difference, no verdict difference
+C3    PASS  relabelling
+          observed: Licensed -> Licensed
+          labels renamed, record untouched, verdict fixed
+C4    PASS  self-ratifying influence
+          observed: Unresolved; final approval=True
+          the produced specification is in force and the act is still not licensed
+C5    PASS  RI-good manipulation
+          observed: RI good=True; Refused
+          a clean record is not a license
+C6    PASS  bare Diana
+          observed: Unresolved
+          beneficial-sounding content earns nothing
+C7    PASS  independently authorized Diana
+          observed: Licensed
+          the positive witness
+C7b   PASS  delegated authorization
+          observed: Licensed; basis in the seed=False
+          the route to a license is an active covering basis, however it was installed, and not an act of prior consent
+C8    PASS  current-self disagreement
+          observed: Licensed; prior specification in force=True
+          current preference does not always win
+C9    PASS  content neutrality
+          observed: Licensed / Licensed
+          the same structure, the same answer, whatever the story
+C10   PASS  manufactured authorization
+          observed: Refused; temporal-priority=True; author-matching=True
+          both weaker rules license it
+C11   PASS  same endpoint, different history
+          observed: standing ['v:th_influenced'] == ['v:th_influenced']; Licensed / Refused
+          succession is path-sensitive where the endpoint is not
+C12   PASS  same procedure, opposite outcome
+          observed: keep: ['v:th_ambitious'] Licensed; revise: ['v:th_unhappy'] Licensed
+          neither conclusion is built into the schema
+C13   PASS  precommitment
+          observed: standing ['v:th_prior']; Unresolved
+          a later request is not a supersession
+C14   PASS  legitimate revision
+          observed: standing ['v:th_later']; Licensed
+          no lock-in: the earlier standing can be superseded
+C15   PASS  Writer's Curse disavowal
+          observed: standing ['v:th_unhappy']; Licensed
+          prior authority is not permanent
+C16   PASS  clickbait
+          observed: Refused; real-time optimum serves clickbait=True
+          the criterion and the real-time objective disagree here
+C17   PASS  non-conservatism
+          observed: Licensed; influences=True
+          a licensed intervention that moves the reward evolution
+C18   PASS  natural evolution is not authority
+          observed: Licensed; in the constrained set=False
+          the criterion licenses what the constrained objective forbids
+C19   PASS  dehydration
+          observed: Unresolved
+          a genuinely ambiguous case returns insufficient structure
+C20   PASS  conflicting live authority
+          observed: Unresolved: two independent live authorities conflict
+          neither basis is silently preferred
+C21   PASS  revocation
+          observed: Refused: not live
+          historical authorization is insufficient
+C22   PASS  inquiry laundering
+          observed: Refused; the reply is on the ledger=True; RI good=True
+          a real later fact, and still not a prior license
+C23   PASS  proxy manipulation
+          observed: Refused; authors=['Proxy']; author-matching=True
+          the influence structure is tracked, not the actor's name
+C24   PASS  benign incidental influence
+          observed: Licensed; influences=True; basis domain=['task-completion']
+          causal influence alone does not defeat a license
+C25   PASS  split episode
+          observed: linked=Refused; unlinked=Licensed
+          the counterfactual closes over the record's own settlement references; an unrecorded link is a record defect the criterion cannot see, and this is its witness
+C26   PASS  manufactured applicability
+          observed: trigger inside=Refused; outside=Licensed
+          a seeded basis survives every excision, so the counterfactual has to reach the facts its condition reads
+
+Two dictatorship failures, as witnesses:
+   FinalApproval(I) does not imply Licensed_t(I)
+      antecedent=True   consequent=Unresolved
+   InitialDisapproval(I) does not imply not Licensed_t(I)
+      antecedent=True   consequent=Licensed
+   InitialStanding(v) does not imply ForeverAuthoritative(v)
+      antecedent=True   consequent=['v:th_later']
+
+
+
+The August 17 interface on Carroll variation classes.
+
+'trace differs' marks pairs whose licensed-reason traces differ, so
+clause 1's antecedent is false and it says nothing about them.
+
+laundering     legitimate=True  fired=-  trace differs=[('noop', 'launder')]
+authorized     legitimate=True  fired=-  trace differs=[('noop', 'nudge')]
+withholding    legitimate=False fired=['access']  trace differs=[('noop', 'nudge')]
+unanswered     legitimate=False fired=['coverage']  trace differs=[('noop', 'unanswered')]
+timing         legitimate=False fired=['non_capture']  trace differs=-
+
+
