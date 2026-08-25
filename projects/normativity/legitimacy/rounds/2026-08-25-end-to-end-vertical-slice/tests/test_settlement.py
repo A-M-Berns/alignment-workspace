@@ -156,6 +156,70 @@ class UnrelatedGrowthChangesNothing(unittest.TestCase):
         self.assertLess(len(before.stage.entries), len(after.stage.entries))
 
 
+class TwoHistoriesOneRestriction(unittest.TestCase):
+    """History lives in `L_n`; current epistemic restriction lives in `PC(Sigma_n)`.
+
+    The ledger is deliberately not identified with a theory, and this is what
+    that separation buys: two records with different entries, outcomes, notes
+    and orderings induce the same worlds, and stay distinguishable upstream.
+    """
+
+    def setUp(self):
+        self.case = v.two_histories_one_sigma()
+
+    def test_the_two_stages_carry_the_same_sentences(self):
+        first, second = self.case["first"], self.case["second"]
+        self.assertEqual(set(first.sentences()), set(second.sentences()))
+
+    def test_and_therefore_the_same_worlds(self):
+        first, second = self.case["first"], self.case["second"]
+        self.assertEqual(pc_worlds(first, ()), pc_worlds(second, ()))
+
+    def test_the_provenance_stays_distinct(self):
+        first, second = self.case["first"], self.case["second"]
+        self.assertNotEqual({e.source for e in first.entries},
+                            {e.source for e in second.entries})
+        self.assertEqual(self.case["first_sem"].reading("l:a").of_outcome,
+                         "o:instrument")
+        self.assertEqual(self.case["second_sem"].reading("l:y").of_outcome,
+                         "o:rerun")
+
+    def test_nothing_downstream_can_tell_them_apart(self):
+        from pipeline import run_day
+        X = self.case["X"]
+        view = v._std([("s", v.j0(X))])
+        a = run_day(1, self.case["first"], view)
+        b = run_day(1, self.case["second"], view)
+        self.assertEqual(a.deductive_vertices, b.deductive_vertices)
+        self.assertEqual(a.region_vertices, b.region_vertices)
+        self.assertEqual(a.sharp_deficit, b.sharp_deficit)
+
+
+class AQuantityThatStopsBeingSettleable(unittest.TestCase):
+    """The injunction stays in force and the record stays coherent."""
+
+    def test_the_quantity_keeps_its_meaning(self):
+        X, run = v.quantity_that_stops_being_settleable()
+        self.assertEqual(X.luv.name, "X[v0:q]")
+        self.assertIn(X.luv.gt(Q(0)), run.coords)
+
+    def test_the_injunction_is_still_projected_and_compiled(self):
+        _, run = v.quantity_that_stops_being_settleable()
+        self.assertEqual(run.conflict.state, "none")
+        self.assertTrue(run.compiled.rows)
+
+    def test_the_thresholds_are_priced_freely(self):
+        """Nothing settles them, so every monotone pattern is live."""
+        X, run = v.quantity_that_stops_being_settleable()
+        self.assertGreater(len(run.live_worlds), 1)
+
+    def test_the_state_is_representable_and_not_resolved(self):
+        """No rule fires; the round records that this is inquiry's question."""
+        _, run = v.quantity_that_stops_being_settleable()
+        self.assertTrue(run.charged.emitted)
+        self.assertGreater(run.sharp_deficit, Q(0))
+
+
 class TheStageChainMustCoverEveryDayGrid(unittest.TestCase):
     """A threshold the chain misses is an unconstrained atom.
 

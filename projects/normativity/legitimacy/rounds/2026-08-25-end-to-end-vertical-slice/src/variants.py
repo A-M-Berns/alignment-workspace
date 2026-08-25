@@ -381,3 +381,63 @@ def frozen_injunction_across_days(days=(0, 1, 2, 3)):
              label="mixed"),))
     view = _std([("s:frozen", J)])
     return X, J, {n: run_day(n, base_stage(X), view) for n in days}
+
+
+def two_histories_one_sigma():
+    """Distinct settlement histories inducing the same `Sigma_n`.
+
+    Two ledgers with different entry ids, different raw outcomes, different
+    notes and different orderings whose denotations union to the same sentence
+    set. The present epistemic restriction is identical — same worlds, same
+    `K^D`, same deficit — while the provenance stays distinct and recoverable.
+
+    This is the ledger/theory separation doing its job: history lives in `L_n`,
+    current restriction lives in `PC(Sigma_n)`, and nothing downstream of the
+    stage can tell the two records apart.
+    """
+    X = x0()
+    lo, hi = X.luv.gt(Q(1, 3)), li.Neg(X.luv.gt(Q(2, 3)))
+
+    one = SettlementSemantics()
+    one.admit(SettlementReading("l:a", "o:instrument", (lo, hi),
+                                "one readout settling both bounds"))
+
+    two = SettlementSemantics()
+    two.admit(SettlementReading("l:x", "o:witness", (hi,),
+                                "an upper bound from testimony"))
+    two.admit(SettlementReading("l:y", "o:rerun", (lo,),
+                                "a lower bound from the rerun"))
+
+    chain = _chain(X)
+    return {
+        "X": X,
+        "first": Stage.of(chain, one.entries(["l:a"])),
+        "second": Stage.of(chain, two.entries(["l:x", "l:y"])),
+        "first_sem": one,
+        "second_sem": two,
+    }
+
+
+def quantity_that_stops_being_settleable(day: int = 2):
+    """An injunction over a quantity the practice can no longer settle.
+
+    `X[v0:q]` keeps its meaning — its threshold family is fixed by the frozen
+    specification — and the ledger simply stops saying anything about it. The
+    stage grows on unrelated vocabulary, the injunction stays in force, and the
+    quantity's thresholds are priced freely because nothing constrains them.
+
+    The record stays coherent and the question the architecture does not answer
+    is whether an injunction over an unsettleable quantity should stay in
+    force. That is an inquiry-layer question; the slice's job is to show the
+    state is representable rather than to resolve it.
+    """
+    X = x0()
+    J = j0(X)
+    view = _std([("s:J0", J)])
+    sem = SettlementSemantics()
+    sem.admit(SettlementReading(
+        "l:elsewhere", "o:elsewhere",
+        (li.Atom("a-matter-the-practice-moved-on-to"),),
+        "the practice settles other things now"))
+    stage = Stage.of(_chain(X), sem.entries(["l:elsewhere"]))
+    return X, run_day(day, stage, view)
