@@ -749,6 +749,23 @@ rather than merely sufficient. It answers nothing item 42 asks: the enumerator i
 untouched.
 *Record:* `prompts/2026-08-19-deductive-region/REPORT.md`.
 
+---
+
+## Normativity line — legitimacy
+
+Items 53–59 are the residual blockers the legitimacy prosecutions of 2026-08-21
+through 2026-08-23 left behind, filed by
+`prompts/2026-08-24-reservation-bar-and-debt/` within its dispatched scope. Each
+names the round that would consume the answer, because a blocker nobody is waiting
+on is a note rather than a demand. Their shared context is
+`projects/normativity/legitimacy/rounds/`, whose memos state what each prosecution
+tested and where it stopped.
+
+Two blockers those rounds named are not here. The `R → O` compiler — from the
+reason state to a price-space region — is item 39 seen from the reason side, and is
+recorded there rather than duplicated. Lean statements of the transition
+principles are a port target under the standing Lean-port family.
+
 ### 53. The `May`-rule-to-scope compiler — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
@@ -1577,6 +1594,10 @@ worked architecture pair exhibits a jurisdiction label that differs while the
 static view agrees. Whether that is enough for Q3 to graduate is in
 `DECISIONS.md`'s queue.
 *Record:* `prompts/2026-08-11-stage-v-li-native/REPORT.md`.
+
+---
+
+## Infrastructure
 
 ### 10. Build the Lean in CI — **[entry]**
 <!-- workspace-priority: project=none; dispatchable=yes -->
