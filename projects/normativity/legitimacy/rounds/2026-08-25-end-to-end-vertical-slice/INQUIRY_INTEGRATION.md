@@ -77,6 +77,35 @@ ReasonProposal = (reason_id, s_V, s_L, target)
 AssessmentCode.admits(ref, cert, facts, proposal) : bool
 ```
 
+### Who is responsible for what
+
+Each of these answers exactly one question, and none of them answers the next
+one's. The chain is the whole design:
+
+```text
+ServiceSpec / ValidCert / Certifiable
+    Was enough of the specified interaction historically completed?
+
+Assessable
+    Is that historical service presently usable for this inquiry?
+
+AssessmentCode
+    Is this candidate ReasonOcc grounded in that currently usable service?
+
+the reason layer
+    Is the resulting consideration inferentially and applicably live?
+
+NormEvent
+    Does the agent actually take normative action on it?
+```
+
+`AssessmentCode` does **not** validate inferential correctness. The toy's is
+deliberately maximally permissive over *targets*: any conclusion grounded in
+settlements the certificate cited is admissible, including one contradicting the
+revaluation the trajectory makes, and a test asserts that rather than leaving it
+to prose. Substantive soundness belongs to the pinned inference and applicability
+schemas, which live in the reason layer.
+
 ## 3. The trajectory, and its snapshots
 
 `TRACE.txt` renders these from a trajectory driven one step at a time.
