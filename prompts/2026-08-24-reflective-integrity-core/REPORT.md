@@ -12,7 +12,7 @@ FREEZE-READY
 
 The specification lands at
 `projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core/REFLECTIVE_INTEGRITY_CORE.md`
-with a reference model and 81 finite-history tests beside it. No repair required
+with a reference model and 93 finite-history tests beside it. No repair required
 a new persistent store, a new conservation law, abandonment of derived custody,
 or restructuring of the answerability DAG.
 
@@ -88,7 +88,7 @@ the record side.
 
 ## Tests
 
-`python3 tests/run.py` in the round directory: **81 tests, all passing.**
+`python3 tests/run.py` in the round directory: **93 tests, all passing.**
 Repo-level `python3 tests/run.py`: results in the pull request.
 
 The batteries are enumerated in the round's `README.md`. Two of them are
@@ -97,6 +97,17 @@ the recap's one-object counterexample and asserts that Episode Uniqueness fails
 before asserting that the repaired interface refuses that seed; and the
 freshness battery replaces the allocator with one that drops the time component
 and shows the collision reaching `EP`.
+
+## Final cleanup pass
+
+A second dispatch asked for typing and mechanization hygiene before the freeze,
+and `AUDIT.md`'s *Final cleanup* table records it: the interpreter now takes an
+explicit `ApplyCtx`, `freshCount` is separated from `freshIds`, §34 states the
+strong recursion the fate block actually needs instead of claiming a static
+order it does not have, the successor-debtor prose is stated by case, `P_0` is
+an explicit seed parameter, and the demand checker is renamed to say what it
+does. Nothing in it changed a store, a constructor, a conservation law, a
+theorem's meaning or a custody semantic.
 
 ## Deviations
 
@@ -120,7 +131,7 @@ and shows the collision reaching `EP`.
 - `src/ri_core.py` is a reference model. It decides the finite histories it is
   given; it does not prove the general statements. `D1` and `D2` are decided
   over supplied finite samples, not over all response multisets, so a demand
-  passing `episode_demand_violations` is not thereby proved monotone or gated.
+  passing `sampled_episode_demand_violations` is not thereby proved monotone or gated.
 - The paper proofs in §§10, 13, 19–24 and 28 are derivations, not machine-checked
   proofs, and §29's induction is assembled from them.
 - The reconstruction of R2–R4 is inference from the rerun's dependencies. The
@@ -135,15 +146,20 @@ None. Nothing is reserved.
 
 ## Structural defects found
 
-The repository's own worktree directory `.claude/worktrees/` holds sixteen
-worktrees, several on branches whose pull requests have merged. That is a fact
-about the maintainer's machine rather than the repository, and it is stated here
-rather than acted on because some may belong to concurrent sessions.
+Worktrees had accumulated on the maintainer's machine — twenty at the start of
+this round, six of them on branches whose pull requests had merged. On the
+maintainer's instruction those six were removed; `git worktree remove` refuses a
+worktree holding uncommitted or unmerged work, and none did. Two were left: the
+`cleanup-and-compress` worktree, whose pull request has merged but which is
+`locked`, and the shared checkout itself, which sits on the merged branch
+`round/2026-08-17-counterfactual-legitimacy`. Neither is this round's to change —
+a lock is a deliberate in-use signal, and moving the shared checkout's branch is
+the hazard the worktree discipline exists to avoid.
 
 ## New names introduced
 
 All provisional, per `AGENTS.md` §6, and absent from `state/vocabulary.json`:
 `D1` / monotonicity and `D2` / disposition gating as names for the episode-demand
 assumptions; `Z3'` and `Z6` as seed-clause labels; `F1`–`F3` as allocator
-assumption labels; `EpisodeDemandSample` and `episode_demand_violations` in the
+assumption labels; `EpisodeDemandSample` and `sampled_episode_demand_violations` in the
 reference model; **Reflective Integrity Core v1.0** as the document's name.
