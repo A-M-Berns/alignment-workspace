@@ -925,6 +925,125 @@ condition rather than by inspection.
 non-capture, which is the composition the legitimacy line's status block names as
 open.
 
+### 61. A normative source with summable enforcement liability — **[substantial]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The end-to-end slice establishes that the unconditional traderization theorem's
+admissibility hypothesis holds exactly for injunctions that change nothing about
+the prices, so every operative injunction with content depends on the charged
+branch and its safety condition `sum_t (eps_t + M_t) . d_t / delta_t < inf`. No
+source in this repository is shown to satisfy it, which makes this the single
+condition the architecture's safety claim now rests on.
+
+The slice also supplies the handle: `d_t` is measured over the
+`Sigma_t`-consistent worlds, so it falls as the record settles what the
+injunction makes demands about. The question is therefore about settlement rate
+rather than about region geometry.
+
+*Deliverable shape:* `test-supported` at minimum — a normative source, an
+explicit settlement schedule, and either a proof that the sum converges or a
+witness that it does not for a source the architecture would call legitimate.
+*Acceptance check:* a runner computes `d_t` per date from the slice's
+`pipeline._exclusion` over a declared trajectory and reports the partial sums
+against a stated bound.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md`
+§6; `projects/normativity/rounds/2026-08-16-traderized-enforcement/FUNDING_AND_SAFETY.md`
+§9, whose three routes to a finite sum are the candidate shapes.
+*Consumed by:* any round claiming the normative layer preserves the
+logical-induction guarantee, which is every downstream round.
+
+### 62. The inertness dichotomy in Lean — **[entry]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The dichotomy is three lines and uses only convexity: if every stage-consistent
+world satisfies a finite system of half-space rows, then the convex hull of those
+worlds lies inside the region the rows cut, so the intersection is the hull.
+Stated over the repository's own objects it says
+`ConstraintSchedule`'s `hadm` implies `regionPred` contains
+`DeductiveRegion`'s hull, hence that the enforced region equals the deductive one.
+
+It is currently a paper derivation checked on finite instances, and it is the
+premise item 61 exists to answer.
+
+*Deliverable shape:* `lean-proved` — one theorem in a contribution namespace, with
+an inhabitation witness.
+*Acceptance check:* the `lean` job, and `#print axioms` clean.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/VERTICAL_SLICE.md`
+§11 (T2); `lean/Workspace/Normativity/Contrib/{ConstraintSchedule,DeductiveRegion}.lean`.
+*Consumed by:* item 61, which needs the dichotomy to be a statement of record
+before its own negative half means anything.
+
+### 63. `Sigma_n` as a computable deductive process — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+`IsLogicalInductor` is stated against a process carrying
+`ComputableDeductiveProcess`. The slice's `Sigma_n = D_n union Sem_L(L_n)` is
+computable by construction and no computability statement is made about it, so
+E3 in the slice's assumption list is declared rather than discharged. The same
+gap covers `RationalConstraintSchedule.Computation` for the schedules the slice
+generates.
+
+*Deliverable shape:* `lean-proved` for the union case — given
+`ComputableDeductiveProcess D` and a primitive-recursive `sem_L` over an
+enumerable ledger, the union is a `ComputableDeductiveProcess`.
+*Acceptance check:* the `lean` job; the witness is a settled ledger with a
+decidable reading.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/SETTLEMENT_SEMANTICS.md`
+§1 and §9.
+*Consumed by:* any round quoting `IsLogicalInductor` over a record-fed substrate.
+
+### 64. What the inquiry interface consumes — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The forward slice computes five candidate pressure conditions and, for each, a
+certificate: Farkas multipliers naming the responsible injunction terms, minimal
+conflicting source sets, or an exclusion depth with its excluded worlds. What
+inquiry does with one is unspecified, and the slice deliberately stops there.
+
+One constraint the forward run already imposes: a pressure signal firing on
+positive exclusion depth would fire on every honest injunction, since a demand
+about something not yet settled is expensive by construction. The signal has to
+be about the gap not closing.
+
+*Deliverable shape:* an interface note plus a `test-supported` model — what an
+inquiry step consumes, what it emits, and a witness that emitting a `ReasonOcc`
+and nothing else suffices to keep `pressure != reason != normative revision`.
+*Acceptance check:* the slice's certificates feed the model unchanged, and a run
+in which inquiry mutates `N` directly is refused by the step types.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md`
+§8.
+*Consumed by:* the round that closes the loop, which the slice's verdict names as
+the step after item 61.
+
+### 65. Whether `L_min(V)` is needed in its strong form — **[entry]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The slice never required an LI sentence whose meaning is a reason: reasons are
+consumed by identifier comparison and the compiler never sees `V`. So the
+relationship it used is weaker than `L in Ext(L_min(V))` — `L` must code the
+value layer's query vocabulary and the settlement layer's readings, and `V` is
+otherwise opaque.
+
+Whether the stronger relationship is needed is untested, because nothing in the
+toy asked the market to price a claim *about* a reason. A case that does — a
+value query whose answer depends on what the record has recognised as a reason —
+would settle it.
+
+*Deliverable shape:* either such a case, with what it forces `L_min(V)` to
+contain, or an argument that the weak relationship is closed under the
+architecture's operations.
+*Acceptance check:* the slice's compiler runs on the case unchanged, or the round
+states exactly which of its functions must newly read `V`.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-end-to-end-vertical-slice/FINDINGS.md`
+§3.
+*Consumed by:* the round taking these waists to real normative practice, which is
+where open-textured reasons first arrive.
+
 ---
 
 ## Deference line
@@ -1581,6 +1700,27 @@ another session's worktree as an embedded repository, which git reports in a hin
 rather than an error and which every gate here passed. The maintainer ruled that an
 ignore rule does not need a gate behind it; the gitlink check the entry also
 proposed is not built.
+
+### F6 — The name lint cannot see a citation
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+`tests/name_lint.py` matches maintainer surnames anywhere in tracked prose
+outside `prompts/`, the consolidated trees and `DECISIONS.md`. It cannot
+distinguish naming the program after a person — the failure it exists to prevent
+— from citing a third party's published work in a bibliography. A maintainer of
+this repository is also an external author whose work the normativity line needs
+to cite, so the collision is not hypothetical and will recur every time that work
+is referenced.
+
+`projects/normativity/notes/PRIOR_ART.md` ships with the surname in backticks,
+which the gate allows and which reads as a citation key. That is a workaround and
+is recorded as one: it costs a reader nothing here and would cost more in a
+denser bibliography.
+
+The fix is a matching rule that exempts a citation context — a bibliography
+bullet, or a name adjacent to a title in quotes and a link. It changes a gate's
+logic, which is specification layer and retroactive over every document the gate
+has already passed, so it was not taken by the round that hit it.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->

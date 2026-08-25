@@ -40,6 +40,17 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **What the next research step is, given the inertness dichotomy.** The
+  end-to-end slice establishes that the unconditional traderization theorem's
+  admissibility hypothesis holds exactly for injunctions that change nothing, so
+  every contentful injunction depends on a summable-liability condition nothing
+  in the repository establishes — `PRIORITIES.md` item 61. The round recommends
+  answering that before expanding the toy, and cannot say whether it is right.
+  *Turns on:* external knowledge the round lacks — whether a paper, a
+  collaborator, or the real-normative-practice term of the programme's benchmark
+  needs the exact toy widened first. Both orders are defensible on the internal
+  evidence.
+
 - **Where the answerability layer's code lives.** The theory is authoritative in
   `projects/normativity/consolidation-aug9/` and the only implementation is in
   `projects/normativity/forward/`, whose own `FORWARD.md` says the tree may be
@@ -72,6 +83,56 @@ commit.
   no round decides.
 
 ## Settled
+
+### 2026-08-25 — the vertical slice's four local repairs
+
+**agent-decided, reversible.** Taken by
+`prompts/2026-08-25-end-to-end-vertical-slice/`, whose report states each with
+its reason. Reversal is by re-ruling.
+
+**The operative waist is `PForce`, not a new `PInjunction`.** The dispatch
+proposed a new standing payload. Reflective Integrity already carries
+`PForce (commitRef, schemaRef, compiledClause : Clause)`, `Clause` is already
+opaque, and §35's `O_t` is already its projection; adding a second constructor
+would have duplicated a payload and made the projection read two where it reads
+one. *Rejected alternative:* `PInjunction` as specified, which would have been
+honest to the dispatch and redundant in the record.
+
+**The value waist is a new `PValue` payload constructor.** Licensed by
+Meta-Stability's conservative-extension rule and free in practice, since
+`delta`'s three clauses write a payload into a fresh standing state without
+inspecting it. *Rejected alternative:* carrying a value specification as
+`PCmt (NonStanceBearing, code)`, which would have forced a meta-level projection
+to inspect object-level `content` and violated §3's stratification.
+
+**The vertical-slice projection is `O_n = {(i, J_i)}`.** §35's projection is a
+set of clauses; enforcement provenance and per-term conflict attribution both
+need the standing identity, and two active standings with equal payloads
+collapse in a set. No store, constructor or conservation law changes, so this is
+a richer read of the same fold rather than a reopening. *Rejected alternative:*
+carrying provenance inside the clause, which §5 of the dispatch prohibits and
+which would have made the payload non-frozen.
+
+**`sem_L` is a third parametric interpreter.** Alongside `[[.]]_S` and
+`[[.]]_D`, keyed by settlement id, with rigidity, finiteness and computability
+as its assumptions. *Rejected alternative:* a `content` field on `Settlement`,
+which would have changed a record type in the frozen core's §33 signature to buy
+the same thing.
+
+### 2026-08-25 — a citation may be written in backticks where the name lint would otherwise refuse it
+
+**agent-decided, reversible.** `tests/name_lint.py` cannot distinguish naming
+the program after a person from citing a third party's published work, and a
+maintainer of this repository is also an external author the normativity line
+needs to cite. `projects/normativity/notes/PRIOR_ART.md` ships with the one
+colliding surname in backticks, which the gate allows.
+
+This is a workaround and is filed as friction rather than absorbed —
+`PRIORITIES.md`, *Workspace friction*, F6. The fix is a matching rule exempting
+a citation context; it changes a gate's logic, which is specification layer and
+retroactive over every document the gate has already passed, so the round that
+hit it did not take it. *Rejected alternative:* omitting the citation, which the
+dispatch asked for and which would have made the note false by silence.
 
 ### 2026-08-24 — the reservation bar and epistemic debt
 
