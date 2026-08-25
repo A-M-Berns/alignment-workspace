@@ -442,3 +442,25 @@ worktree-isolated, and each is worth a `git status` first: a clean worktree at
 the moment of checking may still belong to a session mid-task.
 
 The round record's `verdict` is unchanged; it already states what the round did.
+
+**A second gate shipped matching the wrong thing, and this closeout is what
+found it.** `tests/round_records.py` treated *no added files* as a broken diff.
+That premise is false: a pull request that modifies files and adds none is an
+ordinary change, and the closeout — one modified file, nothing added — is the
+first such pull request the gate saw. It failed, and would have failed every
+modify-only pull request against `main` from the moment #52 landed.
+
+The gate came verbatim from `round/2026-08-17-lean-gate-scope`, and §5 above
+records that both scripts passed their self-tests unmodified. That was true and
+insufficient: the self-test exercised `landed_rounds` and `unrecorded` and never
+the branch that fired, because `main()` mixed the decision into the git plumbing
+where nothing could reach it. The decision is now `verdict()`, a pure function of
+the changed list, the added list and the provenance text; the null input is a
+diff listing **no files at all**; and five cases pin it, the first being the
+modify-only pull request the gate got wrong. Repaired in this closeout rather
+than filed, under §14: one document, non-retroactive, with its null-input case.
+
+Two gates in two days, both shipping green while checking the wrong thing, both
+caught by running them against a real pull request rather than against their own
+fixtures. The pattern is worth naming: a self-test written beside a gate tests
+what its author already believed.
