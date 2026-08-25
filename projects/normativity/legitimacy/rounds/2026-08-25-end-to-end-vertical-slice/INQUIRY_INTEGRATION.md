@@ -4,11 +4,21 @@ Status: **specification and reference model; unregistered.** Names provisional
 under `AGENTS.md` §6. Nothing here is Lean-checked. `ARCHITECTURE.md` is the
 canonical account of the forward machine; this documents the loop that closes it.
 
-**Verdict: `INQUIRY-LOOP-CLOSES-WITHOUT-WIDENING`** — and the second pass
-strengthens what that means: the loop closes without widening **and without
-relying on caller-asserted episode identity, procedural provenance, or
-certificate validity.** All three were asserted in the first pass and are
-derived or authenticated now.
+**Verdict: `INQUIRY-LOOP-CLOSES-WITHOUT-WIDENING`.**
+
+The standard the loop is held to is that **no arrow in it exists merely because
+a caller said it did.** Each was asserted at some point and each is now enforced
+by the type that owns it:
+
+| arrow | once asserted by | now enforced by |
+|---|---|---|
+| need names an episode | a caller-supplied `AnsRootId` | `current_episode_for`, derived from `Roots_t` |
+| an action produced an outcome | `log.record(action, outcome)` | `execute`, the only way a receipt exists |
+| a receipt vouches for a settlement | a passed receipt object | `authenticate`, by receipt id, against the log |
+| a settlement means something | sentences chosen by the caller | the pinned `SettlementReader`, applied to the authenticated result |
+| a specification governs an inquiry | whichever spec was passed | `SpecMismatch`, at `Need` and at assessment |
+| a certificate is valid | a constructed `ServiceCertificate` | `valid_cert`, re-checked at every use |
+| custody moved | a fixture that said so | a real RI `Transfer`, on its own seed |
 
 The four historical types suffice. No `InquiryEvent`, no `ServiceEvent`, no
 `AssessmentEvent`, no `PressureEvent` was added, and none was needed. The loop
@@ -42,7 +52,7 @@ historical event:
 |---|---|
 | derived predicate | `Pressure`, `InquiryNeed`, `ValidCert`, `Certifiable`, `Assessable`, `AdmissibleAssessment` |
 | environment-side | `Action`, `RawOutcome`, `InteractionReceipt`, `InteractionLog`, `Gamma`, `Policy` |
-| frozen provenance | the receipt carried on `SettlementReading`, admitted once with it |
+| authenticated provenance | `InteractionProvenance`, built only by `authenticate` and admitted once with the `SettlementReading` |
 
 ## 2. The types
 
@@ -51,9 +61,14 @@ InquiryRef  = (subject : StandingId, key : InquiryKey, spec : ServiceSpecId)
 InquiryNeed = (ref, pressure, episode : AnsRootId)          derived, read-only
 
 Gamma  : InteractionHistory x Action -> P+(RawOutcome)
-Policy : MachineView -> Action
+Policy : InquiryView -> Action
+InquiryView      = (need : InquiryNeed option)      what a policy may see
+SettlementReader : (InteractionProvenance, RawOutcome) -> Sentence*
 
-SettledFact = (settle_id, sentences, of_outcome, action, receipt_index)
+execute(log, Gamma, action, choose) -> (RawOutcome, InteractionReceipt)
+    the only way a receipt exists; `choose` must return something Gamma gave
+
+SettledFact = (settle_id, sentences, of_outcome, action, receipt_id)
 ServiceSpec = (spec_id, check : (cited facts, data) -> bool, prove)
 ServiceCertificate = (spec_id, cited : SettleId*, data)
 ValidCert(sigma, facts, kappa)    Certifiable(sigma, facts)
@@ -80,13 +95,15 @@ The record at `T5` is the canonical one: settlements `[l:trial]`, reasons
 a:reforce(7)]`, and the same minted standing ids. **The loop is invisible to
 Reflective Integrity**, which is the strongest form the hypothesis could take.
 
-## 3a. The prosecution pass
+## 3a. The prosecution passes
 
-The first pass built the loop; this one asked whether it worked because the
-types compose or because the fixture passed around strings saying they did.
-Three places were the second, and are repaired.
+The first pass built the loop. The second asked whether it worked because the
+types compose or because the fixture passed around strings saying they did, and
+found three places that were the second. The third asked the same question of
+what the second had left, and found three more. All six are repaired, and each
+repair is a type that refuses rather than a caller that behaves.
 
-### What failed
+### What the second pass found
 
 **The episode was a caller-supplied string, and the default was wrong.**
 `derive_need` took an episode id and stored it. The toy defaulted it to
@@ -108,6 +125,30 @@ against whatever certificate it held. A certificate for another specification,
 an invalid one, or one citing settlements that do not exist all passed, because
 a matching `cited` field was the whole test.
 
+### What the third pass found
+
+The second pass authenticated the receipt but left three ways to obtain one, or
+to spend one, that no procedure backed.
+
+**A `Wait` could carry the trial's sentences.** `settle_outcome` wrote a fixed
+pair of threshold sentences onto whatever outcome it was handed. Authentication
+recorded the action honestly as `Wait` — and then the settlement taught the
+agent the probe's finding anyway, cutting the consistent worlds from 25 to 10
+and making the service specification certifiable off the back of an action that
+investigated nothing. The no-oracle claim was true of the *log* and false of the
+*ledger*.
+
+**Any caller could mint a receipt.** `InteractionLog.record(action, outcome)`
+was public and took both arguments, so `log.record(PROBE, anything)` produced a
+receipt that `authenticate` then accepted. `Gamma` was consulted only by
+convention.
+
+**Receipt identity was value equality.** `authenticate` compared the passed
+receipt to the log's with `!=`, so a separately constructed receipt with equal
+fields authenticated. That is not wrong on its own — but it left the semantics
+unstated, and it made "the receipt is the log's own object" a claim the code did
+not support.
+
 ### What was repaired
 
 **The episode is derived.** `current_episode_for(history, subject, t)` filters
@@ -119,13 +160,32 @@ through. The invariant now holds by construction:
 Need(state, ref)  =>  exists! q. CurrentEpisode(q) and q.subject = ref.subject
 ```
 
-**Provenance is authenticated.** `InteractionProvenance` carries a private
-witness and is constructible only by `authenticate(log, outcome, receipt)`,
-which checks four things: the receipt is the log's own object at that index, its
-action is what the log recorded, its outcome id is the outcome being settled,
-and the outcome is the one the log recorded. `settled_facts` refuses to build a
-`SettledFact` from anything else. A forged receipt, a mismatched outcome, an
-index from another run, and a `Wait` relabelled `Probe` are each refused.
+**The action path is mediated.** `InteractionLog` has no public append.
+`execute(log, Gamma, action, choose)` asks the environment what it permits,
+takes one of those outcomes, and records it — so a `Probe` receipt implies a
+probe as a fact about the model rather than as a convention. A selector that
+returns an outcome `Gamma` did not offer is refused and nothing is recorded.
+
+**Provenance is authenticated by id.** `InteractionProvenance` carries a
+private witness and is constructible only by
+`authenticate(log, outcome, receipt_id)`, which checks three things: the id
+resolves to a receipt in *this* log, that receipt's outcome id is the outcome
+being settled, and the outcome is the object the log recorded under it. The
+action is then read off the log's own receipt, never off an argument — so a
+forged receipt claiming a different action authenticates as what actually
+happened. `settled_facts` refuses to build a `SettledFact` from an unauthenticated
+provenance. An unknown id, an id from another log, a mismatched outcome, an
+outcome that was never executed, and a hand-built provenance tuple are each
+refused.
+
+**What a settlement means is pinned in advance.** `read_and_admit` applies a
+`SettlementReader` fixed before the interaction to the *authenticated result*,
+and the caller supplies neither the sentences nor the action. The toy's reader
+returns the trial's threshold sentences only for a `Probe` carrying a band, and
+the empty set otherwise. So a `Wait` settles honestly as a `Wait`, eliminates no
+world, and makes no service certifiable — the no-oracle claim is executable
+rather than asserted. A probe reporting a different band settles different
+sentences, which is what makes the reading a function of the interaction.
 
 **Assessment runs the whole gate.** `admissible_assessment` requires, in order:
 the specification is the pinned one, the certificate addresses it, `ValidCert`
@@ -136,16 +196,21 @@ Two smaller repairs. **Pressure is standing-local**: `pressure_of` now uses
 charge rather than the joint figure, and `joint_charge` is carried beside it so
 the two are visibly different numbers. And **observing pressure consults no
 account**: `pipeline.run_day(observe=True)` prices through
-`safety.price_request`, replacing the first pass's enormous scratch account,
-which got the arithmetic right and the type wrong by simulating enforcement in
-order to observe it.
+`safety.price_request` and touches no account at all. The first pass simulated
+enforcement against a very large account in order to observe it, which got the
+arithmetic right and the type wrong. `answerability.telescopes` took the same
+path and now takes the observation one too.
 
 ### What survived unchanged
 
-The architectural result. No historical event kind was added, the canonical
-record is still byte-identical to the pre-inquiry Stage B — same `tau`s, same
-minted ids — and the four historical types still suffice. The non-factorization
-result survived the authentication repair, which was the point of doing it.
+The architectural result. No historical event kind was added; the canonical
+record is the pre-inquiry Stage B — the same three events at `tau` 1, 2 and 5,
+one `Settlement`, one `ReasonOcc`, the same minted ids — and the four historical
+types still suffice. The canonical **seed** is the pre-inquiry seed too, exactly
+four authorities: the custody-transfer fixture supplies its own fifth rather
+than the canonical trajectory carrying an authority it never exercises. The
+non-factorization result survived the authentication repair, and both of its
+ledgers are now execution-backed, which was the point of doing it.
 
 ### Which layer rejects which attack
 
@@ -153,10 +218,16 @@ result survived the authentication repair, which was the point of doing it.
 |---|---|
 | need on a standing with no live episode | `current_episode_for` — no episode, no need |
 | need naming the authority's root instead of the injunction's | not expressible; the episode is derived |
-| forged receipt, mismatched outcome, wrong index, foreign log | `authenticate` |
-| `Wait` relabelled as `Probe` | `authenticate` |
-| hand-built provenance tuple | `settled_facts` |
-| settling an outcome that never happened | `authenticate`, via `settle_outcome` |
+| an outcome `Gamma` never offered | `execute` — refused, and nothing recorded |
+| an environment that permits nothing | `execute` — `InteractionRefused` |
+| pairing an arbitrary action with an arbitrary outcome | no public append on `InteractionLog` |
+| unknown receipt id, mismatched outcome, foreign log | `authenticate` |
+| a forged receipt claiming a different action | `authenticate` — the log's action wins |
+| a copied, equal-but-distinct receipt | `authenticate` — resolved by id to the log's own |
+| hand-built provenance tuple | `InteractionProvenance.__init__`, then `settled_facts` |
+| settling an outcome that never happened | `authenticate`, via `read_and_admit` |
+| a `Wait` carrying the trial's sentences | the pinned `SettlementReader` |
+| a specification the reference does not pin | `SpecMismatch`, at `Need` and at assessment |
 | certificate for another specification | `admissible_assessment`, clause 2 |
 | invalid certificate with matching citations | `admissible_assessment`, clause 3 |
 | certificate citing a nonexistent settlement | `admissible_assessment`, clause 3 |
@@ -174,8 +245,11 @@ own.
 
 **Q1 — inquiry identity: `(StandingId, InquiryKey)` survives a real transfer.**
 The first pass "decided" this by handing `derive_need` a different episode
-string, which decided nothing. The toy's seed now carries a transferring
-authority, and the test issues an actual RI `Transfer` `NormEvent` on `@s2.0`.
+string, which decided nothing. The test now issues an actual RI `Transfer`
+`NormEvent` on `@s2.0`, against a fixture seed built by
+`toy.transfer_authority()` — the canonical seed keeps exactly its pre-inquiry
+four authorities, so the canonical trajectory never carries an authority it does
+not exercise.
 The record's own succession moves the episode `@q2.0 -> @q3.0` with the debtor
 going `A -> B`; the `InquiryRef` is unchanged; the need is rederived under the
 new episode; and RI stays `Good`. Putting the episode in the key would have made
@@ -188,7 +262,7 @@ against a real log, a real receipt and the outcome being settled. That is the
 whole bridge:
 
 ```text
-SettleId -> SettlementReading -> (outcome id, action, receipt index)
+SettleId -> SettlementReading -> (receipt id, receipt index, action, outcome id)
 ```
 
 `sem_L : SettleId -> Finset Sentence` does not read it, no world reads it,
@@ -264,6 +338,15 @@ normative force`: the result has `observed=True`, `force=None`, no
 **Q7 — the four historical types still suffice** after every repair above. No
 impossibility result appeared, so nothing was widened.
 
+**Q8 — what the third pass changed about the verdict.** Nothing in the
+architecture, and everything in what the architecture is now known to enforce.
+The three holes were all of the same kind: a claim the prose made that only the
+fixture's good behaviour sustained. Closing them needed no new type, no new
+event, and no new authority — a private constructor, a pinned reader, and an
+identity discipline were enough. That is itself evidence for the hypothesis: if
+the loop had needed real authority of its own, one of these repairs would have
+had to add it.
+
 ## 5. Service does not factor through `PC(Sigma)`
 
 The acceptance criterion, made executable. Two ledgers settle **the very same
@@ -291,17 +374,23 @@ normative machinery, under two policies:
 | `probe_policy` | `Probe` | `l:trial` | yes | `v1` |
 | `wait_policy` | `Wait` | none | no | `v0` |
 
-Waiting still acts; it just acts uninformatively. Nothing about the service
-semantics differs between the two runs, which is the point.
+Waiting still acts; it just acts uninformatively — and it does so because the
+pinned reader returns the empty set for it, not because the trajectory branches
+on the action. The test checks that the two runs agree on `spec.check` for every
+citation set, so nothing about the service semantics differs between them, which
+is the point.
 
 ## 7. What the implementation forced
 
 **Reading pressure must be free.** The first version derived the need by running
 a charged day, which spent allowance — so a machine would have had to pay in
-order to notice it was paying too much. `Trajectory.read_pressure` now runs
-against a scratch account and returns the result as a view. This is a small
-thing that only appeared under test, and it is the shape the architecture
-wanted: the account is drawn down by force actually emitted, never by looking.
+order to notice it was paying too much. The second substituted a very large
+scratch account, which was still enforcement wearing an observer's hat.
+`Trajectory.read_pressure` now takes `run_day(observe=True)`, which prices the
+request through `safety.price_request` and consults no account: `force` is
+`None`, `observed` is `True`, and the holder is entitled to nothing. The test
+checks that this reads the *same* `D_t` and `q_t` as a charged day on the same
+prestate, so the free path is the same arithmetic and not a second one.
 
 **Service must cite settlements, not receipts.** Attempting to keep CIS's
 transcript-index citations would have handed the normative record a certificate
@@ -332,6 +421,24 @@ something inquiry quietly acquires.
 - **The action theory is two constants.** Nothing here is a decision theory,
   and no policy is claimed good. `Servable` and the CIS finite-game machinery
   are not imported.
+- **The reader is a toy reader.** `diagnostic_reader` turns one band readout
+  into two threshold sentences. What it establishes is that *some* pinned
+  function of the authenticated result stands between an interaction and its
+  meaning — not that this is the right function for anything. A real reader
+  would itself be a revisable schema, and nothing here says how it is revised.
+- **Receipt identity is by id, and that is a modelling decision.** A copied
+  receipt authenticates, because the id resolves in the log and the log's own
+  values are then used. This makes forgery useless rather than detectable: a
+  receipt claiming a different action authenticates as what actually happened.
+  An unforgeable-token reading is equally available and would need a different
+  `InteractionLog`.
+- **`Gamma` is deterministic here.** `execute` takes a selector, and the toy's
+  environment offers exactly one outcome, so the set-valued interface is
+  exercised for shape rather than for genuine nondeterminism.
+- **Current usability is a stand-in.** `superseded_by_round` reads a round
+  number off a receipt id. The architecture commits to `Assessable` being
+  defeasible while `ValidCert` is permanent; it commits to no theory of when
+  service goes stale.
 - **One specification, one assessment code.** Conclusion-neutrality is a
   property of the instances exhibited, not a constraint the types enforce; a
   specification *could* be written to encode its answer, and nothing here

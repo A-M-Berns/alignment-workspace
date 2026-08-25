@@ -427,13 +427,13 @@ charged result, an ordinary action through `Gamma`, a raw outcome read into the
 existing settlement seam, a service certificate citing `SettleId`s, an
 assessment checker over a proposed `ReasonOcc`, and an ordinary licensed
 `NormEvent`. No `InquiryEvent`, `ServiceEvent`, `AssessmentEvent` or
-`PressureEvent` was needed, and the record the loop produces is byte-identical
+`PressureEvent` was needed, and the record the loop produces is identical
 to the canonical Stage B — same `tau`s, same minted ids.
 
 Two things it added, both outside `MachineState_t`. The environment side gains
 an `InteractionLog` that `Gamma` and a policy read and Reflective Integrity
 never does. And `SettlementReading` gains one frozen field holding an
-`InteractionProvenance` — `(outcome_id, action, receipt_index)` — which is the
+`InteractionProvenance` — `(receipt_id, receipt_index, action, outcome_id)` — the
 **narrowest authenticated provenance bridge** that lets a service judge tell
 "this was settled" from "this was settled by the designated procedure". It is
 constructible only by resolving a real receipt against a real log and the
@@ -441,7 +441,8 @@ outcome being settled, so it is a procedural fact rather than a caller's
 annotation. `sem_L` does not read it, no world reads
 it, and `PC(Σ_n)` is still a function of the sentences alone — which is exactly
 why service does **not** factor through `PC(Σ_n)`, demonstrated by two ledgers
-with identical `Σ` and opposite service verdicts.
+with identical `Σ` and opposite service verdicts, both of them backed by a real
+execution through a real `Gamma`.
 
 `Std_t` changes only through `applyEffect` on a well-formed `Norm` step, so a
 certificate cannot become force without an event.

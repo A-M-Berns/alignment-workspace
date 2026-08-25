@@ -256,8 +256,7 @@ def run_accounted(days: Sequence[int], stage_at, view_at,
         before = ledger.potential()
         granted_before = ledger.granted
         run = run_day(n, stage_at(n), view_at(n), slack=slack, volume=volume,
-                      tolerance=tolerance,
-                      account=safety.OutflowAccount(Fraction(10) ** 9))
+                      tolerance=tolerance, observe=True)
         if run.conflict.blocking:
             steps.append(Step(n, ZERO, ZERO, ledger.granted - granted_before,
                               before, ledger.potential()))

@@ -1,47 +1,43 @@
 """The return loop: pressure -> need -> action -> settlement -> service -> reason.
 
-The claim this module exists to prosecute is that **inquiry completes the loop
-without becoming a second reasoner**. Nothing here is a historical event. There
-is no `InquiryEvent`, no `ServiceEvent`, no `AssessmentEvent`, no
-`PressureEvent`. The only durable epistemic return is an ordinary `ReasonOcc`,
-and the only thing that moves normative standing is an ordinary licensed
-`NormEvent`.
+The claim this module prosecutes is that **inquiry completes the loop without
+becoming a second reasoner**. Nothing here is a historical event. There is no
+`InquiryEvent`, no `ServiceEvent`, no `AssessmentEvent`, no `PressureEvent`. The
+only durable epistemic return is an ordinary `ReasonOcc`, and the only thing that
+moves normative standing is an ordinary licensed `NormEvent`.
 
-So every object below is one of three kinds:
+Every object below is one of three kinds:
 
-    derived predicate      Need, ValidCert, AdmissibleAssessment
-    environment-side       Action, RawOutcome, InteractionLog, Gamma, Policy
-    frozen provenance      the reading's receipt, admitted once with it
+    derived predicate      Need, ValidCert, Certifiable, Assessable,
+                           AdmissibleAssessment
+    environment-side       Action, RawOutcome, InteractionReceipt,
+                           InteractionLog, Gamma, Policy
+    frozen provenance      the receipt id a reading is admitted with
 
-**The provenance seam.** Service must be able to tell "`¬C` was settled" from
-"`¬C` was settled *by the designated probe*", and it must do so without
-widening `sem_L` or the reason source sorts. The narrowest bridge that works is
-already half-built: `SettlementReading` carries `of_outcome`, so it needs only
-the receipt that outcome came from —
+**No arrow exists because a caller said it did.** Three seams carry that weight
+and each is checked rather than annotated.
 
-    SettleId -> SettlementReading -> (outcome id, action, receipt index)
+*Action to receipt.* The only public way to interact is `execute(log, gamma,
+action)`, which asks `Gamma` what the environment permits and records what comes
+back. There is no public append, so a `Probe` receipt cannot exist without a
+probe.
 
-frozen at admission, alongside the sentences. `sem_L : SettleId -> Finset
-Sentence` never sees it, reason sources stay `V + SettleId`, and no ledger gains
-a field. Service reads the provenance; the epistemic substrate does not.
+*Outcome to meaning.* A `SettlementReader` is pinned in advance and computes the
+LI-facing sentences **from the authenticated outcome**. So `Wait` cannot carry
+the trial's diagnostic content: the reader returns nothing for it and the
+settlement constrains no world. Without this the decomposition leaks — the agent
+would learn from an action that did not investigate.
 
-**What service means, and does not.** A specification is conclusion-neutral: it
-says what work the history had to contain, never what the answer was. Both
-branches of a real experiment can be adequate service.
-
-**Nothing here trusts a caller's word for a fact the architecture can derive.**
-The episode a need runs under is looked up in the record and checked for
-uniqueness and subject; procedural provenance is authenticated against an actual
-interaction receipt before a reading may carry it; and a certificate must be
-valid *for the pinned specification* and presently assessable before a reason
-may be appended. An earlier pass accepted each of those as an argument, which is
-what this module was rewritten to stop doing.
+*Settlement to service.* Provenance is a `ReceiptId` resolved against the log's
+own immutable receipt, so a separately built receipt with matching field values
+authenticates nothing.
 """
 from __future__ import annotations
 
 import itertools
-from dataclasses import dataclass, field
-from typing import Callable, Iterable, Optional, Sequence
+from dataclasses import dataclass
+from fractions import Fraction
+from typing import Callable, Optional, Sequence
 
 import li
 from epistemic import RawOutcome, SettlementReading
@@ -50,123 +46,76 @@ from epistemic import RawOutcome, SettlementReading
 # --------------------------------------------------------- environment side
 
 
-#: The toy's whole action theory. Deliberately two constants: inquiry is
+#: The toy's whole action theory. Two constants: inquiry is
 #: action-theory-parametric, and nothing below reads the action except the
-#: environment and the service judge's provenance check.
+#: environment, the pinned reader, and the service judge's provenance check.
 WAIT = "Wait"
 PROBE = "Probe"
 
 
+class InteractionRefused(Exception):
+    """An interaction the environment does not permit."""
+
+
+class ProvenanceRefused(Exception):
+    """A provenance claim no receipt supports."""
+
+
+class SpecMismatch(Exception):
+    """A specification other than the one an inquiry reference pins."""
+
+
 @dataclass(frozen=True)
 class InteractionReceipt:
-    """Identity-bearing: position, the action taken, the outcome observed.
+    """Immutable, identity-bearing: a stable id, the action, the outcome.
 
-    The CIS round's `Receipt` under another name and with the response replaced
-    by an outcome *id*, because the outcome is a `RawOutcome` that may or may
-    not later be read into a settlement, and the receipt should not pretend to
-    own it.
+    Authentication is by `receipt_id` rather than by object identity, so the
+    model does not lean on Python's `is`. A separately constructed receipt with
+    the same field values is a different receipt unless its id resolves, in this
+    log, to the log's own — and then the log's values are the ones used.
     """
 
+    receipt_id: str
     index: int
     action: str
     outcome_id: str
-
-
-@dataclass(frozen=True)
-class InteractionProvenance:
-    """Authenticated procedural provenance. Constructible only by `authenticate`.
-
-    The private witness is the whole point: a caller cannot fill these fields
-    in. To hold one of these is to have had an actual receipt in an actual log
-    resolve against the outcome being settled.
-    """
-
-    receipt_index: int
-    action: str
-    outcome_id: str
-
-    def __init__(self, witness, receipt_index, action, outcome_id) -> None:
-        if witness is not _AUTHENTIC:
-            raise LiabilityOfProvenance(
-                "procedural provenance is authenticated against a receipt; "
-                "use inquiry.authenticate")
-        object.__setattr__(self, "receipt_index", int(receipt_index))
-        object.__setattr__(self, "action", action)
-        object.__setattr__(self, "outcome_id", outcome_id)
-
-    def as_tuple(self) -> tuple:
-        return (self.outcome_id, self.action, self.receipt_index)
-
-
-class LiabilityOfProvenance(Exception):
-    """A provenance claim that no receipt supports."""
-
-
-_AUTHENTIC = object()
-
-
-def authenticate(log: "InteractionLog", outcome: RawOutcome,
-                 receipt: "InteractionReceipt") -> InteractionProvenance:
-    """Resolve a claimed receipt against the log and the outcome being settled.
-
-    Four conditions, and all four are checked rather than assumed:
-
-        the receipt is the log's own object at that index
-        its action is the action the receipt records
-        its outcome id is the outcome being settled
-        the outcome is the one the log recorded under that receipt
-
-    A forged receipt, a mismatched outcome, an index from another run, or an
-    action relabelled after the fact all fail here — before any settlement
-    exists, and so before anything could be serviced on the strength of it.
-    """
-    if receipt is None or outcome is None:
-        raise LiabilityOfProvenance("provenance needs a receipt and an outcome")
-    if not (0 <= receipt.index < len(log.receipts)):
-        raise LiabilityOfProvenance(
-            f"receipt index {receipt.index} is not in this log")
-    held = log.receipts[receipt.index]
-    if held != receipt:
-        raise LiabilityOfProvenance(
-            "the receipt is not this log's own at that index")
-    if held.outcome_id != outcome.id:
-        raise LiabilityOfProvenance(
-            f"receipt {held.index} records {held.outcome_id!r}, "
-            f"not {outcome.id!r}")
-    if log.outcomes.get(outcome.id) is not outcome:
-        raise LiabilityOfProvenance(
-            "the outcome is not the one this log recorded")
-    return InteractionProvenance(_AUTHENTIC, held.index, held.action,
-                                 held.outcome_id)
 
 
 class InteractionLog:
     """Append-only record of what was done and what came back.
 
     **Not part of `MachineState`.** This is the environment's side of the
-    boundary: `Gamma` reads it, a policy reads it, and RI never does. A raw
-    outcome becomes public exactly when a settlement is admitted for it, which
-    is the seam the architecture already had.
+    boundary: `Gamma` reads it, a policy reads it, Reflective Integrity never
+    does. A raw outcome becomes public exactly when a settlement is admitted.
+
+    There is deliberately **no public append**. `_record` is private and
+    `execute` is the only way in, because a log that accepted a caller's chosen
+    `(action, outcome)` pair would let a `Probe` receipt exist without a probe.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, name: str = "log") -> None:
+        self.name = name
         self.receipts: list = []
         self.outcomes: dict = {}
+        self._by_id: dict = {}
 
-    def record(self, action: str, outcome: RawOutcome) -> InteractionReceipt:
-        receipt = InteractionReceipt(len(self.receipts), action, outcome.id)
+    def _record(self, action: str, outcome: RawOutcome) -> InteractionReceipt:
+        rid = f"{self.name}#{len(self.receipts)}"
+        receipt = InteractionReceipt(rid, len(self.receipts), action,
+                                     outcome.id)
         self.receipts.append(receipt)
         self.outcomes[outcome.id] = outcome
+        self._by_id[rid] = receipt
         return receipt
 
     def history(self) -> tuple:
         return tuple((r.action, r.outcome_id) for r in self.receipts)
 
-    def receipt_for(self, outcome_id: str) -> Optional[InteractionReceipt]:
-        for r in self.receipts:
-            if r.outcome_id == outcome_id:
-                return r
-        return None
+    def receipt(self, receipt_id: str) -> Optional[InteractionReceipt]:
+        return self._by_id.get(receipt_id)
+
+    def outcome(self, outcome_id: str) -> Optional[RawOutcome]:
+        return self.outcomes.get(outcome_id)
 
 
 #: `Gamma : H x A -> P+(RawOutcome)` — history-relational, nonempty, and no
@@ -175,31 +124,179 @@ class InteractionLog:
 Gamma = Callable[[tuple, str], Sequence[RawOutcome]]
 
 
+def execute(log: InteractionLog, gamma: Gamma, action: str,
+            choose=None) -> tuple:
+    """The canonical action path: ask the environment, record what it gives.
+
+        outcomes = gamma(log.history(), action)
+        y        = choose(outcomes)          -- must be one of them
+        receipt  = log._record(action, y)
+
+    `choose` defaults to the first response, which is deterministic for the
+    toy's singleton fixtures and is not part of the interface's meaning: the
+    type is set-valued and a caller may supply any selector over what `Gamma`
+    permits. What a selector may **not** do is return something `Gamma` did not
+    offer.
+    """
+    permitted = tuple(gamma(log.history(), action))
+    if not permitted:
+        raise InteractionRefused(
+            f"Gamma permits no outcome for {action!r}; P+ is nonempty")
+    outcome = permitted[0] if choose is None else choose(permitted)
+    if outcome not in permitted:
+        raise InteractionRefused(
+            f"{outcome!r} is not among the outcomes Gamma permitted")
+    return outcome, log._record(action, outcome)
+
+
 def diagnostic_gamma(outcome_id: str = "o:trial",
-                     content: str = "the trial ran and the readout came back"
-                     ) -> Gamma:
+                     band=(Fraction(1, 3), Fraction(2, 3))) -> Gamma:
     """The canonical toy's environment.
 
-    `Probe` yields the trial readout; `Wait` yields an uninformative tick. Both
-    responses are singletons here, which keeps the fixture deterministic without
-    making the interface functional — the type is still set-valued.
+    `Probe` yields a readout whose content is the band the trial pinned the
+    quantity into; `Wait` yields a tick whose content is `None`. The content is
+    what the pinned reader interprets, so whether an action is informative lives
+    in the environment's response rather than in what a caller writes down.
     """
 
     def gamma(history: tuple, action: str) -> tuple:
         if action == PROBE:
-            return (RawOutcome(outcome_id, content),)
-        return (RawOutcome(f"o:tick{len(history)}", "nothing was attempted"),)
+            return (RawOutcome(outcome_id, {"band": band}),)
+        return (RawOutcome(f"o:tick{len(history)}", {"band": None}),)
 
     return gamma
 
 
-#: `Policy : MachineView -> Action`. Two of them, and no objective anywhere.
-def probe_policy(need_live: bool) -> str:
-    return PROBE if need_live else WAIT
+@dataclass(frozen=True)
+class InquiryView:
+    """The whole of what the toy's policies may read. Deliberately one field.
+
+    Named so that `Policy : InquiryView -> Action` is honest about its argument.
+    A richer controller would take a larger view; nothing here builds one.
+    """
+
+    need: Optional["InquiryNeed"] = None
+
+    @property
+    def need_live(self) -> bool:
+        return self.need is not None
 
 
-def wait_policy(need_live: bool) -> str:
+def probe_policy(view: InquiryView) -> str:
+    return PROBE if view.need_live else WAIT
+
+
+def wait_policy(view: InquiryView) -> str:
     return WAIT
+
+
+# ------------------------------------------------- authenticated provenance
+
+
+_AUTHENTIC = object()
+
+
+@dataclass(frozen=True)
+class InteractionProvenance:
+    """Authenticated procedural provenance, built only by `authenticate`.
+
+    The private witness is the point: to hold one of these is to have had a
+    receipt id resolve, in an actual log, against the outcome being settled.
+    """
+
+    receipt_id: str
+    receipt_index: int
+    action: str
+    outcome_id: str
+
+    def __init__(self, witness, receipt_id, receipt_index, action,
+                 outcome_id) -> None:
+        if witness is not _AUTHENTIC:
+            raise ProvenanceRefused(
+                "procedural provenance is authenticated against a receipt; "
+                "use inquiry.authenticate")
+        object.__setattr__(self, "receipt_id", receipt_id)
+        object.__setattr__(self, "receipt_index", int(receipt_index))
+        object.__setattr__(self, "action", action)
+        object.__setattr__(self, "outcome_id", outcome_id)
+
+
+def authenticate(log: InteractionLog, outcome: RawOutcome,
+                 receipt_id: str) -> InteractionProvenance:
+    """Resolve a receipt **id** against the log and the outcome being settled.
+
+    Three conditions, all checked:
+
+        the id resolves to a receipt in this log
+        that receipt's outcome id is the outcome being settled
+        the outcome is the object this log recorded under that id
+
+    The resulting action is read off the log's receipt, never off an argument.
+    """
+    if outcome is None:
+        raise ProvenanceRefused("provenance needs the outcome being settled")
+    held = log.receipt(receipt_id)
+    if held is None:
+        raise ProvenanceRefused(f"no receipt {receipt_id!r} in this log")
+    if held.outcome_id != outcome.id:
+        raise ProvenanceRefused(
+            f"receipt {held.receipt_id} records {held.outcome_id!r}, "
+            f"not {outcome.id!r}")
+    if log.outcome(outcome.id) is not outcome:
+        raise ProvenanceRefused(
+            "the outcome is not the object this log recorded")
+    return InteractionProvenance(_AUTHENTIC, held.receipt_id, held.index,
+                                 held.action, held.outcome_id)
+
+
+# ---------------------------------------------------------- the pinned reader
+
+
+#: `SettlementReader : (InteractionProvenance, RawOutcome) -> Sentence*`
+#:
+#: Pinned in advance and applied to the authenticated result. This is the seam
+#: that stops the loop smuggling an oracle: without it a caller could settle the
+#: trial's sentences off the back of a `Wait`, and the agent would have learned
+#: something no investigation produced.
+SettlementReader = Callable[["InteractionProvenance", RawOutcome], tuple]
+
+
+def diagnostic_reader(luv, action: str = PROBE) -> SettlementReader:
+    """Read a band readout into threshold sentences, and read nothing else.
+
+    The sentences are a function of the outcome's own content — the band the
+    environment reported — so a settlement says what the interaction found. An
+    action other than the designated one, or an outcome with no band, reads to
+    the empty set: the non-exposure state, which constrains no world.
+    """
+
+    def read(provenance: InteractionProvenance, outcome: RawOutcome) -> tuple:
+        if provenance.action != action:
+            return ()
+        content = outcome.content
+        band = content.get("band") if isinstance(content, dict) else None
+        if band is None:
+            return ()
+        lo, hi = band
+        return (luv.gt(Fraction(lo)), li.Neg(luv.gt(Fraction(hi))))
+
+    return read
+
+
+def read_and_admit(sem, log: InteractionLog, outcome: RawOutcome,
+                   receipt_id: str, reader: SettlementReader,
+                   settle_id: str, note: str = "") -> SettlementReading:
+    """Authenticate, read, and admit — the only path a settlement takes.
+
+    The sentences are the reader's, not the caller's. A caller chooses *which*
+    outcome to settle and under what id; what that settlement then means is
+    fixed by the pinned reader and the authenticated result.
+    """
+    provenance = authenticate(log, outcome, receipt_id)
+    sentences = tuple(reader(provenance, outcome))
+    return sem.admit(SettlementReading(
+        settle_id=settle_id, of_outcome=outcome.id, sentences=sentences,
+        note=note, provenance=provenance))
 
 
 # ------------------------------------------------------------- pressure
@@ -211,14 +308,9 @@ class Pressure:
 
     Not the joint charge. `D_t` and `q_t` are computed from all active rows at
     once and are not additively separable, so attributing the joint figure to a
-    standing would over-report the moment a second injunction is active — and
-    would report the *same* total for each of them.
-
-    `answerability.allocate` already solves this: each standing's rows form a
-    genuine `ForceRequest` over the joint support and the joint live worlds, and
-    subadditivity of `D` makes the solo charges cover the joint one. So the
-    quantity here is that standing's solo charge, and `joint_charge` is carried
-    alongside so a reader can see the two are different numbers.
+    standing would report the same total for each of several.
+    `answerability.allocate` supplies each standing's solo charge over the joint
+    support and live worlds, and subadditivity makes the shares cover the joint.
     """
 
     standing_id: str
@@ -233,12 +325,11 @@ class Pressure:
 
 
 def pressure_of(run, standing_id: str) -> Optional[Pressure]:
-    """Read one standing's own liability out of the day's charged result.
+    """Read one standing's own liability out of the day's result.
 
-    `None` when the day never reached the charged branch — a blocked conflict or
-    an unsatisfiable stage — because there is then no liability fact to be under
-    pressure from; and `None` when the standing carries no active force at this
-    day, because a standing that demands nothing is under no pressure.
+    `None` when the day never reached a charge — a blocked conflict or an
+    unsatisfiable stage — and `None` when the standing carries no active force,
+    because a standing that demands nothing is under no pressure.
     """
     import answerability
     import safety
@@ -272,8 +363,8 @@ class InquiryRef:
     Keyed by `(subject, key)` with the specification pinned. The subject is a
     `StandingId` rather than an `AnsRootId`: the unresolved matter persists
     across episodes, and which episode currently carries it is custody
-    information the machine reads separately. `test_inquiry.py` exercises the
-    case that decides this — an inquiry that outlives a custody transfer.
+    information the machine reads separately. A real RI `Transfer` moves the
+    episode and leaves this untouched.
     """
 
     subject: str                       # StandingId
@@ -284,11 +375,9 @@ class InquiryRef:
 def current_episode_for(history, subject: str, t=None):
     """The unique current answerability episode of `subject`, or `None`.
 
-    Derived from the record: `Roots_t` filtered by `subject`, kept where
+    Derived from the record: `Roots_t` filtered by subject, kept where
     `CurrentEpisode` holds. Episode Uniqueness makes at most one survive, and
-    this raises rather than choosing if the record ever violates that — a
-    reference model that silently picked one would hide exactly the failure the
-    invariant exists to catch.
+    this raises rather than choosing if the record ever violates that.
     """
     live = [q for q in history.roots(t)
             if q.subject == subject and history.current_episode(q, t)]
@@ -302,9 +391,8 @@ def current_episode_for(history, subject: str, t=None):
 class InquiryNeed:
     """A derived, read-only fact: this reference is presently unserviced.
 
-    A need is not an obligation, not a reason, not a desired conclusion, and
-    not a normative event. It licenses nothing. A policy may act on it; nothing
-    is wrong with a policy that does not.
+    Not an obligation, not a reason, not a desired conclusion, not a normative
+    event. It licenses nothing.
     """
 
     ref: InquiryRef
@@ -319,33 +407,35 @@ class InquiryNeed:
 def derive_need(run, history, ref: InquiryRef,
                 facts: Sequence["SettledFact"] = (),
                 spec: Optional["ServiceSpec"] = None, t=None,
-                now: Optional[int] = None,
-                window: Optional[int] = None) -> Optional[InquiryNeed]:
+                current_use=None) -> Optional[InquiryNeed]:
     """`Need(state, ref)` — a function of the record, and it mutates nothing.
 
     Live when three things hold together: the reference's subject carries
     positive liability under this day's projection; the record has a unique
-    current answerability episode for that subject; and no presently usable
-    service exists for the pinned specification.
+    current answerability episode for that subject; and no **presently usable**
+    service exists for the specification the reference pins.
 
-    **The episode is derived, not supplied.** An earlier pass took it as an
-    argument and stored it, which let a need name a root that did not exist, was
-    not current, or belonged to another standing. It is now looked up.
+    The episode is derived, not supplied. The specification is checked against
+    `ref.spec`: a specification the reference does not pin cannot decide whether
+    that reference's inquiry is live, and passing one raises rather than
+    silently answering a different question.
 
-    **"Presently usable", not "ever certified".** See `INQUIRY_INTEGRATION.md`
-    Q3: a certificate whose assessability has lapsed leaves the historical fact
-    of service standing and the need live again. Suppressing the need on mere
-    historical certifiability would let a machine believe it holds service it can
-    no longer use.
+    "Presently usable", not "ever certified" — a certificate whose current
+    usability has lapsed leaves the historical fact of service standing and the
+    need live again.
     """
+    if spec is not None and ref.spec != spec.spec_id:
+        raise SpecMismatch(
+            f"{ref.subject}/{ref.key} pins {ref.spec!r}; "
+            f"{spec.spec_id!r} cannot decide whether it is live")
     pressure = pressure_of(run, ref.subject)
     if pressure is None or not pressure.positive:
         return None
     episode = current_episode_for(history, ref.subject, t)
     if episode is None:
         return None
-    if spec is not None and assessable_now(spec, facts, now=now,
-                                           window=window):
+    if spec is not None and assessable_now(spec, facts,
+                                           current_use=current_use):
         return None
     return InquiryNeed(ref, pressure, episode.id)
 
@@ -355,18 +445,18 @@ def derive_need(run, history, ref: InquiryRef,
 
 @dataclass(frozen=True)
 class SettledFact:
-    """The frozen view of one settlement that a service judge may read.
+    """The frozen view of one settlement a service judge may read.
 
     Sentences *and* provenance. The epistemic substrate reads the first and is
-    blind to the second; service reads both. That asymmetry is the whole of the
-    seam, and it is why service does not factor through `PC(Sigma)`.
+    blind to the second; service reads both. That asymmetry is the seam, and it
+    is why service does not factor through `PC(Sigma)`.
     """
 
     settle_id: str
     sentences: tuple
     of_outcome: Optional[str]
     action: Optional[str]
-    receipt_index: Optional[int]
+    receipt_id: Optional[str]
 
     def holds(self, sentence) -> bool:
         return sentence in self.sentences
@@ -385,11 +475,11 @@ def settled_facts(settle_ids: Sequence[str], sem) -> tuple:
                                    reading.of_outcome, None, None))
         else:
             if not isinstance(prov, InteractionProvenance):
-                raise LiabilityOfProvenance(
+                raise ProvenanceRefused(
                     f"{sid} carries unauthenticated provenance {prov!r}")
             out.append(SettledFact(sid, tuple(reading.sentences),
                                    prov.outcome_id, prov.action,
-                                   prov.receipt_index))
+                                   prov.receipt_id))
     return tuple(out)
 
 
@@ -397,9 +487,9 @@ def settled_facts(settle_ids: Sequence[str], sem) -> tuple:
 class ServiceCertificate:
     """A finite witness of historical service: the spec, the settlements cited.
 
-    Citations are `SettleId`s rather than transcript indices. Settlement is the
-    public epistemic boundary, so a certificate that cites settlements is one
-    the normative record can read without being handed the environment's log.
+    Citations are `SettleId`s rather than transcript indices, because settlement
+    is the public epistemic boundary and a certificate the normative record can
+    read is one that cites settlements.
     """
 
     spec_id: str
@@ -410,17 +500,15 @@ class ServiceCertificate:
 class ServiceSpec:
     """`sigma = (C_sigma, Check_sigma)`, with a citation-local judge.
 
-    The CIS round's shape, with the cited objects changed from raw receipts to
-    settled facts. Two properties survive that change and are what make the
-    shape worth keeping:
+    The certified-interactive-service round's shape, with the cited objects
+    changed from raw receipts to settled facts. Two properties survive that
+    change and are why the shape is worth keeping:
 
-    **Citation locality.** `check` sees only the facts the certificate cites,
-    so a valid certificate cannot depend on anything else in the ledger.
+    **Citation locality.** `check` sees only the facts the certificate cites.
 
-    **Extension closure.** Settlements are append-only and `SettleId`s are
-    stable, so a certificate valid over `L` is valid over `L ++ L'`. Historical
-    service is permanent; whether it *presently* discharges anything is a
-    separate question and lives in `Assessable`.
+    **Extension closure.** Settlements are append-only and `SettleId`s stable,
+    so a certificate valid over `L` is valid over `L ++ L'`. Historical service
+    is permanent; whether it is *presently usable* is `Assessable`'s question.
 
     A specification is **conclusion-neutral**: it says what work the history had
     to contain, never what the answer was.
@@ -449,7 +537,7 @@ class ServiceSpec:
 
 def valid_cert(spec: ServiceSpec, facts: Sequence[SettledFact],
                cert: ServiceCertificate) -> bool:
-    """`ValidCert(sigma, L, kappa)`."""
+    """`ValidCert(sigma, L, kappa)` — historical, and permanent."""
     return spec.check(facts, cert)
 
 
@@ -457,9 +545,8 @@ def certifiable(spec: ServiceSpec, facts: Sequence[SettledFact],
                 max_cited: int = 2, datas: Sequence = (None,)) -> bool:
     """`Certifiable(sigma, L) = exists kappa. ValidCert(sigma, L, kappa)`.
 
-    Exhaustive over citation tuples up to `max_cited`. Complete exactly for
-    specifications whose valid certificates fit that search space, which the
-    round's do.
+    Exhaustive over citation tuples up to `max_cited`; complete exactly for
+    specifications whose certificates fit that space, which the round's do.
     """
     ids = tuple(f.settle_id for f in facts)
     for k in range(max_cited + 1):
@@ -473,13 +560,11 @@ def certifiable(spec: ServiceSpec, facts: Sequence[SettledFact],
 
 def diagnostic_spec(spec_id: str, luv, threshold, action: str = PROBE
                     ) -> ServiceSpec:
-    """The round's specification: *the designated probe settled the matter*.
+    """The round's specification: *the designated procedure settled the matter*.
 
-    Conclusion-neutral by construction. It accepts a settlement that came from
-    `action` and that decided the threshold **either way** — affirming it or
-    denying it. What it refuses is a settlement of the same proposition that did
-    not come from the designated procedure, which is what makes service more
-    than a fact about `Sigma`.
+    Conclusion-neutral by construction: it accepts a settlement that came from
+    `action` and decided the threshold **either way**. What it refuses is a
+    settlement of the same proposition that did not come from that procedure.
     """
     positive = luv.gt(threshold)
     negative = li.Neg(positive)
@@ -502,44 +587,68 @@ def diagnostic_spec(spec_id: str, luv, threshold, action: str = PROBE
     return ServiceSpec(spec_id, check, prove)
 
 
-def assessable(spec: ServiceSpec, facts: Sequence[SettledFact],
-               cert: ServiceCertificate, window: Optional[int] = None,
-               now: Optional[int] = None) -> bool:
-    """Whether a historically valid certificate is *presently* usable.
+#: `CurrentUse : SettledFact -> bool` — an application-supplied predicate.
+#:
+#: Freshness, supersession and case relevance all live here, and the generic
+#: core defines none of them. An earlier pass computed `now - receipt_index`
+#: against a `now` described as time, comparing an interaction-order index to a
+#: clock that does not exist.
+CurrentUse = Callable[[SettledFact], bool]
 
-    Separate from `valid_cert` on purpose. Historical service is permanent and
-    monotone; current assessability may lapse. A freshness window lives here and
-    nowhere else, so nothing about it can reach back and unmake the historical
-    fact.
+
+def assessable(spec: ServiceSpec, facts: Sequence[SettledFact],
+               cert: ServiceCertificate,
+               current_use: Optional[CurrentUse] = None) -> bool:
+    """Whether a historically valid certificate is **presently usable**.
+
+    Separate from `valid_cert` on purpose: historical service is permanent and
+    monotone, current usability is defeasible. With no `current_use` supplied
+    the two coincide, which is the toy's default.
     """
     if not valid_cert(spec, facts, cert):
         return False
-    if window is None or now is None:
+    if current_use is None:
         return True
     index = {f.settle_id: f for f in facts}
-    ages = [now - index[s].receipt_index for s in cert.cited
-            if index[s].receipt_index is not None]
-    return all(age <= window for age in ages)
+    return all(current_use(index[s]) for s in cert.cited)
 
 
 def assessable_now(spec: ServiceSpec, facts: Sequence[SettledFact],
-                   max_cited: int = 2, now: Optional[int] = None,
-                   window: Optional[int] = None) -> bool:
-    """Whether some certificate for `spec` is valid **and presently usable**.
-
-    `Certifiable` asks whether the history ever contained adequate service;
-    this asks whether that service is still available to lean on. With no
-    freshness window the two coincide, which is the toy's default and is what
-    makes the distinction visible rather than load-bearing here.
-    """
+                   max_cited: int = 2,
+                   current_use: Optional[CurrentUse] = None) -> bool:
+    """Whether *some* certificate for `spec` is valid and presently usable."""
     ids = tuple(f.settle_id for f in facts)
     for k in range(max_cited + 1):
         for cited in itertools.product(ids, repeat=k):
             cert = ServiceCertificate(spec.spec_id, cited, None)
             if spec.check(facts, cert) and assessable(spec, facts, cert,
-                                                      window=window, now=now):
+                                                      current_use):
                 return True
     return False
+
+
+def superseded_by_round(cutoff: int) -> CurrentUse:
+    """A deliberately simple current-use predicate for the toy.
+
+    "Service performed before round `cutoff` is no longer usable." It is a
+    stand-in for whatever an application's real lapse condition is, and it lives
+    here rather than in `assessable` so that the generic core commits to no
+    theory of staleness.
+    """
+
+    def usable(fact: SettledFact) -> bool:
+        return fact.receipt_id is not None and fact.action is not None \
+            and _receipt_round(fact) >= cutoff
+
+    return usable
+
+
+def _receipt_round(fact: SettledFact) -> int:
+    """The interaction-order index a receipt id encodes, as the toy's clock."""
+    try:
+        return int(str(fact.receipt_id).rsplit("#", 1)[1])
+    except (IndexError, ValueError):
+        return -1
 
 
 # ------------------------------------------------------------ assessment
@@ -547,11 +656,7 @@ def assessable_now(spec: ServiceSpec, facts: Sequence[SettledFact],
 
 @dataclass(frozen=True)
 class ReasonProposal:
-    """A candidate `ReasonOcc`, before anything has admitted it.
-
-    The three fields an occurrence carries and no others, so that admitting one
-    is an append of exactly what was proposed.
-    """
+    """A candidate `ReasonOcc`, before anything has admitted it."""
 
     reason_id: str
     s_V: frozenset
@@ -562,11 +667,10 @@ class ReasonProposal:
 class AssessmentCode:
     """A checker over proposed reasons. Not a conclusion generator.
 
-    `admits(ref, cert, facts, proposal)` asks whether the proposal is an
-    admissible interpretation of the serviced history. An arbitrary algorithm
-    may propose; this decides admissibility. There is deliberately no function
-    from a certificate to *the* correct conclusion, because there is no such
-    function: the same adequate investigation can bear several ways.
+    An arbitrary algorithm may propose a reason; this decides admissibility.
+    There is deliberately no function from a certificate to *the* correct
+    conclusion, because there is none: the same adequate investigation can bear
+    several ways.
     """
 
     def __init__(self, code_id: str, admits: Callable) -> None:
@@ -579,16 +683,11 @@ class AssessmentCode:
         return bool(self._admits(ref, cert, facts, proposal))
 
 
-class AssessmentRefused(Exception):
-    """The composite gate refused; the clause that refused is the message."""
-
-
 def admissible_assessment(ref: InquiryRef, spec: ServiceSpec,
                           facts: Sequence[SettledFact],
                           cert: Optional[ServiceCertificate],
-                          code: "AssessmentCode", proposal: "ReasonProposal",
-                          now: Optional[int] = None,
-                          window: Optional[int] = None) -> bool:
+                          code: AssessmentCode, proposal: ReasonProposal,
+                          current_use: Optional[CurrentUse] = None) -> bool:
     """The whole gate a proposed reason must pass, in order.
 
         ref.spec == spec.spec_id        the specification is the pinned one
@@ -597,13 +696,8 @@ def admissible_assessment(ref: InquiryRef, spec: ServiceSpec,
         Assessable(...)                 and it is presently usable
         code.admits(...)                and the proposal is grounded in it
 
-    An earlier pass ran only the last clause, against whatever certificate it
-    was handed. That admitted a proposal on a certificate for another
-    specification, on an invalid one, on one citing settlements that do not
-    exist, and on one whose provenance nothing authenticated — because a
-    matching `cited` field was all it looked at.
-
-    The clauses are ordered so that the first failure is the informative one.
+    An earlier pass ran only the last clause against whatever certificate it was
+    handed, so a matching `cited` field was the whole test.
     """
     if cert is None:
         return False
@@ -613,7 +707,7 @@ def admissible_assessment(ref: InquiryRef, spec: ServiceSpec,
         return False
     if not valid_cert(spec, facts, cert):
         return False
-    if not assessable(spec, facts, cert, window=window, now=now):
+    if not assessable(spec, facts, cert, current_use):
         return False
     return code.admits(ref, cert, facts, proposal)
 
@@ -621,15 +715,16 @@ def admissible_assessment(ref: InquiryRef, spec: ServiceSpec,
 def grounded_in_cited_settlements(code_id: str = "grounded") -> AssessmentCode:
     """The round's assessment: a reason must be grounded in what was serviced.
 
-    Two conditions, both citation-local. The proposal's settlement sources are
-    exactly among those the certificate cited, and it has at least one. So a
-    reason may not smuggle in evidence the service did not cover, and may not
-    float free of the investigation it claims to rest on.
+    Two citation-local conditions — the proposal's settlement sources are
+    non-empty and lie within what the certificate cited. So a reason may not
+    smuggle in evidence the service did not cover, and may not float free of the
+    investigation it claims to rest on.
 
-    It says nothing about what the reason concludes. A proposal for the opposite
-    target, grounded in the same settlements, is equally admissible — which is
-    the conclusion-neutrality the specification already has, preserved one layer
-    up.
+    It says nothing about what the reason concludes, and is **deliberately
+    maximally permissive over targets**: a proposal for the opposite target on
+    the same grounds is equally admissible. Whether a consideration is
+    inferentially live belongs to the reason layer's pinned inference and
+    applicability schemas, not here.
     """
 
     def admits(ref, cert, facts, proposal) -> bool:
@@ -644,39 +739,39 @@ def grounded_in_cited_settlements(code_id: str = "grounded") -> AssessmentCode:
 
 
 def provenance_fixture(luv, threshold, upper, spec_id: str = "sigma:fixture"):
-    """Two ledgers with the same `Sigma` and different **authenticated** provenance.
+    """Two ledgers, same `Sigma`, different **execution-backed** procedures.
 
-    Both settle the very same sentences, so `sem_L` agrees, `Sigma` agrees,
-    `PC(Sigma)` agrees and every price agrees. They differ only in what actually
-    happened: `good` ran the designated probe and `bad` ran something else, and
-    each ledger's provenance is authenticated against its own interaction log
-    rather than labelled by hand.
+    Both histories run a real action through a real `Gamma`, take what the
+    environment permits, and read it with a pinned reader keyed to *their own*
+    action — so both genuinely settle the same sentences. They differ only in
+    which procedure was performed.
 
-    That is the executable form of
-
-        service need not factor through PC(Sigma)
-
-    and it survives the authentication repair, which is the point: the verdict
-    turns on procedural history, not on a string a fixture chose.
+    `sem_L` agrees, `Sigma` agrees, `PC(Sigma)` agrees, every price agrees — and
+    the specification accepts one and refuses the other. Nothing here is a
+    label: both provenances are authenticated against real logs, both readings
+    come from pinned readers, and the verdict turns on procedural history alone.
     """
     from epistemic import SettlementSemantics
 
-    sentences = (luv.gt(threshold), li.Neg(luv.gt(upper)))
+    band = (Fraction(threshold), Fraction(upper))
 
-    def ledger(action: str, outcome_id: str, note: str):
-        log = InteractionLog()
-        outcome = RawOutcome(outcome_id, note)
-        receipt = log.record(action, outcome)
+    def ledger(action: str, name: str, outcome_id: str, note: str):
+        def gamma(history, a):
+            return (RawOutcome(outcome_id, {"band": band}),)
+
+        log = InteractionLog(name)
+        outcome, receipt = execute(log, gamma, action)
         sem = SettlementSemantics()
-        sem.admit(SettlementReading(
-            "l:same", outcome.id, sentences, note,
-            provenance=authenticate(log, outcome, receipt)))
+        read_and_admit(sem, log, outcome, receipt.receipt_id,
+                       diagnostic_reader(luv, action=action), "l:same", note)
         return log, sem
 
-    good_log, good = ledger(PROBE, "o:probe", "settled by the designated trial")
-    bad_log, bad = ledger("Hearsay", "o:hearsay",
+    good_log, good = ledger(PROBE, "good", "o:probe",
+                            "settled by the designated trial")
+    bad_log, bad = ledger("Hearsay", "bad", "o:hearsay",
                           "the same proposition, another route")
 
     return {"spec": diagnostic_spec(spec_id, luv, threshold, action=PROBE),
             "good": good, "bad": bad, "good_log": good_log, "bad_log": bad_log,
-            "ids": ("l:same",), "sentences": sentences}
+            "ids": ("l:same",),
+            "sentences": good.sem("l:same")}

@@ -222,7 +222,7 @@ def _inquiry_rider(out) -> None:
     p("")
     snap("T0", "need live, no interaction yet")
 
-    action = inquiry.probe_policy(need is not None)
+    action = inquiry.probe_policy(inquiry.InquiryView(need))
     outcome, receipt = traj.act(action)
     p(f"  the policy chose {action}; Gamma returned {outcome!r}")
     p("")

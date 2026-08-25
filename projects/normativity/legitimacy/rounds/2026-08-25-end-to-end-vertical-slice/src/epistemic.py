@@ -91,8 +91,8 @@ class SettlementReading:
     of_outcome: str
     sentences: tuple = ()
     note: str = ""
-    #: `(outcome_id, action, receipt_index)`, frozen with the reading, or
-    #: `None` for a settlement that did not arise from a designated action.
+    #: An `inquiry.InteractionProvenance`, frozen with the reading, or `None`
+    #: for a settlement that did not arise from a designated action.
     #:
     #: **The narrow provenance seam.** `sem_L` does not read this and neither
     #: does any world; `PC(Sigma_n)` is a function of the sentences alone. It
