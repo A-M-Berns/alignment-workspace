@@ -61,4 +61,10 @@ checker's own state*.
 Consumer-side: *the recognition axiom* (R), *W-index*, *bounded-lifetime
 liability*.
 
+Answerability: *obligation occurrence* (`Ob`), *outstanding*, *opens*,
+*discharges*, *transfers*, *drop*, *Answerability Continuity*, *no silent loss*,
+*controlled destruction* (A1), *fresh obligations* (A2), *potential*, *dilution*,
+*total accounting*, *per-parent accounting*, *Legitimate Evolution package*, *Due*,
+*Disposes*, *Transfers*.
+
 Proper Exercise: *capability* (`Cap`), *reach*, *widening*, *proper exercise*, *authority over authority*, *plenary base*, *jurisdictional self-ratification*, *unauthorized privilege escalation*.

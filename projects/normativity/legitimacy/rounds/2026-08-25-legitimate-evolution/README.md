@@ -6,40 +6,32 @@ Lean-checked and no claim is registered.
 
 ## Verdict
 
-PROPER-EXERCISE-SEMANTIC-ONLY — propriety resides in an opaque permission relation and no generic no-escalation theorem follows: the same gazette, with the same kernel verdicts, escalates or does not according to whether the permission reads what the act puts in force. Two results survive and both are inherited from the kernel's typing — no jurisdictional self-ratification, from strict pre-state evaluation and freshness, and monotone reach conditional on no widening, whose hypothesis a constitution declines on purpose.
+LEGITIMATE-EVOLUTION-KERNEL-STABLE — the smallest local-to-global theorem that deserves the name is a named conjunction of two replay theorems over a shared acceptance predicate, four structural premises in total: Grounded Replay on creation (S1, S2) and Answerability Continuity on destruction (A1, A2), each proved by the same induction on a strictly descending trace index, each with a countermodel where its premise fails. Sharing the acceptance predicate earns exactly one corollary — an act the process was not entitled to perform discharges nothing — and nothing else, so the packaging is honest but thin. On the pass's central question the countermodels decide H-A: four dilution constitutions, one of them carrying every issue forward at weight zero, satisfy A1, A2 and the continuity theorem, so quantitative liability is not constitutive and survives only as a conditional on a class of Transfers semantics — the same reason capability monotonicity failed in round 5, that the kernel is blind to what an occurrence says.
 
-Grounded Replay is unchanged and remains `GROUNDED-REPLAY-KERNEL-STABLE`: the
-kernel does not import the Proper Exercise analysis, has no capability notion, and
-its premises hold on every constitution here — including the one that escalates.
+Round 5's `PROPER-EXERCISE-SEMANTIC-ONLY` stands unchanged, and this round did
+not reopen it. Grounded Replay was frozen for this pass: `src/replay.py` is
+untouched, imports neither the Proper Exercise analysis nor the answerability
+replay, and has no capability or obligation notion in either of its records.
 
-**The question this pass was dispatched to settle** was whether Proper Exercise is
-its own mathematical module or the place where substantive normative content
-necessarily enters. It is the second, and the evidence is a pair: two
-constitutions with the same base and the same edit, identical in grounds,
-disposals, issued content and declared evidence, both satisfying every premise and
-every corollary of the kernel. One refuses the act. The other accepts it and the
-state gains a capability nobody licensed. The only difference is whether the
-permission relation reads what the act puts in force.
+**The question this pass was dispatched to settle** was whether the
+non-entitlement half of legitimacy compresses into an answerability-transition
+kernel of the same size as Grounded Replay. It does, and the compression is
+exact: two premises, one theorem, one induction, the same descending index. S1
+says what a new occurrence needs behind it; A1 says what a departing obligation
+needs in front of it.
 
-So a theorem of the form *proper transitions imply no unauthorized privilege
-escalation* would have to quantify over permission relations, and no such
-statement is true.
+The thing that had to be settled by countermodel rather than intuition was
+whether a quantitative liability invariant is constitutive. It is not.
+`diluted_to_nothing` is a process that names a successor for every issue it ever
+had, satisfies every premise and every conclusion, and ends owing nothing.
+Forbidding that would require reading what an obligation *says*, which is exactly
+what the kernel cannot do and exactly why round 5 found no no-escalation theorem.
+The bound is available as a conditional, and prosecuting it turned up that
+per-parent weight accounting is not a weaker form of total accounting but a wrong
+one — a merge of two obligations of weight 1 into one of weight 1.5 passes
+per-parent and fails in total.
 
-What survives is worth having and is small:
-
-```text
-E2  no jurisdictional self-ratification    theorem, over every capability
-                                           assignment, from strict pre-state
-                                           evaluation and freshness
-E4  no widening gives monotone reach       theorem about a class of permission
-                                           relations; the hypothesis is what a
-                                           constitution declines when it means
-                                           to allow amendment
-```
-
-Both are inherited from the kernel's typing rather than earned by any structure on
-permission, and E4's hypothesis is exactly the naive subset rule for delegation —
-available as a conditional, false as an axiom.
+`ANSWERABILITY.md` opens with the whole package on one page.
 
 ## The statement
 
@@ -104,19 +96,22 @@ G1..G6                          one theorem, three corollaries
 
 ## Contents
 
+- `ANSWERABILITY.md` — the minimal package, the second replay, and H-A.
 - `LEGITIMATE_EVOLUTION.md` — the minimal statement, then the layers.
 - `PROPER_EXERCISE.md` — the fourteen separations, and why there is no
   no-escalation theorem.
 - `CROSS_PROCESS_INTERFACE.md` — origin, historical and current, and what each costs.
 - `CONSUMER_TEST.md` — deference, and which of the three it needs.
 - `TRADERIZATION_CONSUMER.md` — enforcement, and the four repeal cases.
-- `COUNTERMODELS.md` — every premise prosecuted; withdrawals are §§1-5.
+- `COUNTERMODELS.md` — every premise prosecuted; withdrawals are §§1-5, and
+  §§10-11 are this pass's.
 - `THEOREM_MAP.md` — every claim graded, withdrawals first.
 - `src/` — `replay.py` (the kernel), `office.py` (the semantics and a
-  constitution model importing only the kernel), `ri_frame.py` (extraction from a
+  constitution model, importing no record architecture), `ri_frame.py` (extraction from a
   record), `exercise.py` (capability and reach, an analysis over frames),
-  `cases.py` (records the Carroll round did not have).
-- `tests/` — 85 cases. `python3 tests/run.py`.
+  `answer.py` (the second replay, over obligations), `cases.py` (records the
+  Carroll round did not have).
+- `tests/` — 113 cases. `python3 tests/run.py`.
 
 ## What this does not establish
 
@@ -138,3 +133,13 @@ No structure on permission was needed for the fourteen separations, and the roun
 does not claim none could be useful for something else. What it claims is that the
 natural candidate — capability monotonicity under delegation — is refuted by
 constitutional widening.
+
+Answerability says nothing about progress. An obligation may stay open forever
+and both theorems are satisfied; `unobservant()` never notices anything and is
+legitimate; `high_regret()` repeats the same bad choice three times and is
+legitimate. Coverage — that some situation *ought* to have become due — remains
+where round 3 left it, outside.
+
+The realization gap recorded in `ANSWERABILITY.md` §6 has not been checked
+against the Reflective Integrity code. It is stated as a question for the
+maintainer, not as a result.

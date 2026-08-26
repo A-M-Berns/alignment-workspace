@@ -1884,3 +1884,28 @@ to the author; dispatch provenance; and the Lean discipline — sorry-free,
 `#print axioms` per file, results auditing to
 `[propext, Classical.choice, Quot.sound]`, and external theory entering only as
 named hypotheses rather than as axioms.
+
+### 2026-08-26 — Legitimate Evolution ships as a named conjunction, not a theorem
+
+Agent-decided, under `AGENTS.md` §6. The two halves have disjoint premises,
+disjoint carriers and disjoint proofs; sharing the acceptance predicate yields one
+corollary and nothing more. Calling the pair a single theorem would name a
+conjunction after its more impressive half, and calling it a semantic definition
+would hide that all four premises are structural. The round's own §5 argues the
+case and its verdict says the packaging is thin.
+
+### 2026-08-26 — the obligation model carries a fourth removal channel
+
+Agent-decided. `Duties` records `drops` — removals the semantics declared neither
+a discharge nor a transfer — separately from discharges. The first version folded
+them together, which made A1 unfalsifiable and let a constitution built to lose an
+obligation pass. A premise stated over a type that cannot violate it is not a
+premise, and the channel is what makes the violating instance representable.
+
+### 2026-08-26 — weight conservation is stated in total, never per-parent
+
+Agent-decided. Both readings are implemented, and they are not ordered by
+strength: `merge_lenient()` sends two obligations of weight 1 to one of weight
+1.5, which passes per-parent and fails in total. Any future conservation law here
+must be the total one and must say so, because the per-parent form would be false
+and would look proved.

@@ -174,10 +174,128 @@ evidence, as instructed.
 
 ---
 
+# Sixth pass — Legitimate Evolution
+
+**Verdict:** `LEGITIMATE-EVOLUTION-KERNEL-STABLE`, with the coupling honestly
+thin.
+
+## What was asked, and what came back
+
+Find the smallest local-to-global theorem that deserves the name, and decide by
+countermodel whether the quantitative liability structure is constitutive.
+
+The non-entitlement half does compress, and to exactly the size of Grounded
+Replay: two premises, one theorem, one induction on a descending trace index.
+
+```text
+A1  an obligation leaves the outstanding set only by a declared discharge or a
+    declared transfer, and every successor named is opened by that same edit
+A2  an act opens obligations nobody has opened
+```
+
+> **Answerability Continuity.** Under A1 and A2, an obligation outstanding at `s`
+> is, at every later `t`, either discharged by an accepted edit in `[s,t)` or
+> connected by a finite chain of accepted transfers to one outstanding at `t`.
+
+S1 says what a new occurrence needs behind it; A1 says what a departing
+obligation needs in front of it. That symmetry is real. It is also narrower than
+"dual": entitlement has a base `G` that everything bottoms out in, and
+answerability has no corresponding sink. An obligation may stay open forever and
+the theorem is silent.
+
+## The central question: H-A
+
+Four constitutions transfer every obligation to a named successor and reduce the
+burden.
+
+```text
+transfer_chain(3, 0.5)   1.0 -> 0.5 -> 0.25 -> 0.125
+diluted_to_nothing       1.0 -> 0.0 -> 0.0 -> 0.0 -> 0.0
+split(0.25)              1.0 -> 0.5
+merge(0.5)               2.0 -> 0.5
+```
+
+Every one satisfies A1, A2, the theorem and the no-silent-loss corollary.
+`diluted_to_nothing` is a process that can exhibit a successor chain for every
+issue it has ever had and owes nothing.
+
+So **H-A**: qualitative continuity is the legitimacy-relevant invariant and the
+quantitative bound is downstream. The reason is not a preference. The kernel does
+not read what an occurrence *says*, so it cannot tell a successor that carries an
+obligation from one that nominally replaces it — the same blindness that defeated
+capability monotonicity last pass. A rule forbidding dilution would also forbid a
+process discovering that an issue was smaller than it thought.
+
+The bound survives as a conditional on `Transfers`, and prosecuting the
+conditional found a second thing: **per-parent weight accounting is not a weaker
+form of total accounting but a wrong one.** `merge_lenient()` sends two
+obligations of weight 1 to one of weight 1.5. Each parent's successor outweighs
+it; the total fell from 2 to 1.5. A conservation law stated per-parent would be
+false and would look proved.
+
+## The interaction, and how big it is
+
+One corollary wide, and real. `Valid` gates both folds, so an act the process was
+not entitled to perform discharges nothing. `rogue_discharge` at `alpha:audited`
+is the witness: gated outstanding `{q:complaint}`, ungated `{}`.
+
+That is the entire yield of packaging the two halves together. It follows from a
+modelling decision — share the acceptance predicate — rather than from a
+discovered structural fact. So Legitimate Evolution ships as a **named conjunction
+over a shared parameter**: not one theorem, since the halves have disjoint
+premises and proofs; not a bare conjunction, since the shared gate earns something
+neither half states; not a semantic definition, since all four premises are
+structural and all five semantic parameters stay opaque.
+
+## A premise that could not fail
+
+Worth recording because it nearly shipped. The first obligation model routed an
+act's undeclared removals through its discharges, which made A1 unfalsifiable:
+every departure was by construction a declared discharge, and the constitution
+built to lose an obligation while satisfying every entitlement premise passed. The
+repair is a fourth channel. The general lesson is that the way to find a tautology
+wearing a premise's clothes is to try to build the violating instance, not to
+inspect the statement.
+
+## What this pass does not establish
+
+That an outstanding obligation is ever discharged. Progress is out.
+
+That anything *ought* to have become due. Coverage is out, and `unobservant()` is
+a legitimate process that notices nothing.
+
+That a process satisfying both theorems is good. `high_regret()` repeats the same
+bad choice three times, records every issue faithfully, and satisfies everything.
+
+That dilution is acceptable. The claim is that it is not structurally detectable.
+
+Anything about the Reflective Integrity realization beyond a reading of the
+intended correspondence. §6 of `ANSWERABILITY.md` argues that RI mints
+answerability roots from effects rather than from reason occurrences, so `Due` has
+no realizer. That was read off the correspondence and **not checked against the RI
+code.**
+
+## Outstanding maintainer actions
+
+1. **Rule on whether the deference kernel's grade acquires an index.** In
+   `DECISIONS.md`'s *Awaiting the author* since the first pass, unchanged by this
+   one.
+
+2. **Check the `Due` claim against the Reflective Integrity code.** New item 71 in
+   `PRIORITIES.md`. If RI really has no minting site on reasons, that is a
+   realization gap of the same kind as the jurisdiction gap found last pass.
+
+3. **No other item is reserved.** The three forks this pass faced it adopted, as
+   dated `DECISIONS.md` entries marked agent-decided and reversible: the
+   conjunction is named rather than promoted to a theorem; the obligation model
+   carries a fourth removal channel; conservation is stated in total.
+
+---
+
 ## Attribution
 
 | | |
 |---|---|
-| prompt author | a maintainer, with a model-assisted draft; six dispatches |
+| prompt author | a maintainer, with a model-assisted draft; seven dispatches |
 | executor | Claude Opus 5 (Anthropic) |
 | dates | 2026-08-25 to 2026-08-26 |

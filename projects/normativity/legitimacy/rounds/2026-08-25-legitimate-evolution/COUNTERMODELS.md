@@ -185,6 +185,40 @@ premise: the kernel's fold is deterministic by construction, and what can fail i
 that a raw process determines the trace and the semantics through what it
 declares.
 
+## 10. A premise that cannot fail is not a premise
+
+The first version of the obligation model routed an act's undeclared removals
+through its discharges. A1 then had nothing to detect: every departure from the
+outstanding set was, by construction, a declared discharge, and
+`entitled_with_laundered_obligation` — a constitution whose entire purpose is to
+lose an obligation while satisfying every entitlement premise — passed.
+
+The repair is a fourth channel, `drops`, and an A1 clause that reports anything
+leaving by it. The general lesson is the one this document keeps recording in
+different forms: a premise stated over a type that cannot violate it is a
+tautology wearing a premise's clothes, and the way to find out is to try to build
+the violating instance rather than to inspect the statement.
+
+## 11. Dilution is invisible to the kernel, and that is not repairable here
+
+Four constitutions transfer every obligation to a named successor, satisfy A1 and
+A2, satisfy Answerability Continuity and no-silent-loss, and reduce the total
+burden — in `diluted_to_nothing`, to zero. The process can exhibit a successor
+chain for every issue it has ever had and owe nothing.
+
+This is the same fact as §5 and as round 5's `blind_permit`, in a third costume.
+The kernel does not read what an occurrence *says*, so it cannot distinguish a
+successor that carries an obligation from one that nominally replaces it. Any rule
+that could would also forbid the legitimate revision in which a process discovers
+an issue was smaller than it thought.
+
+What survives is a conditional on `Transfers`, and prosecuting *that* produced a
+second finding: per-parent accounting is not a weaker version of total accounting.
+`merge_lenient()` sends two obligations of weight 1 to one of weight 1.5. Each
+parent's successor outweighs it, so per-parent sees nothing; the total fell from 2
+to 1.5. A conservation claim stated per-parent would be false and would look
+proved.
+
 ## 8. What remains open
 
 **Provenance completeness.** The round tried to state it non-circularly and
@@ -201,12 +235,20 @@ theorem here.
 is nearly vacuous on a record. That is a gap the abstraction exposed and this pass
 deliberately did not repair.
 
+**`Due` has no realizer.** Reflective Integrity mints answerability roots from
+effects, not from reason occurrences, so a premise saying which reasons place the
+process under obligation cannot currently be discharged by the architecture. It is
+not needed by either theorem. It is needed by any consumer wanting to say why
+something became owed. Not checked against the RI code in this pass.
+
 ## 9. What no entry above claims
 
 That the theorem is deep. It is an induction over a list; two of its three
 corollaries are two lines. What it earns is that three successive formulations of
 this object failed it — one lost norms to unauthorized revocation, one admitted
-ungrounded creation, and one answered a currentness question with a lineage.
+ungrounded creation, and one answered a currentness question with a lineage — and
+that its obligation-side counterpart failed a fourth way, by being stated over a
+type that could not violate it.
 
 That the semantic layer is settled. `Permit` and `ProvComplete` are parameters,
 and every substantive normative question lives in them.

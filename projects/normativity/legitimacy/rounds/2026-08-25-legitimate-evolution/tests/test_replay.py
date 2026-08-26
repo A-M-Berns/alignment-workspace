@@ -65,7 +65,8 @@ class TestTheKernelIsStructural(unittest.TestCase):
                      "prov_ok", "provenance", "threat", "episode", "alpha"):
             self.assertNotIn(word, used, word)
 
-    def test_the_constitution_model_imports_only_the_kernel(self):
+    def test_the_constitution_model_imports_no_record_architecture(self):
+        """It may name the abstract modules; it may not name the record's."""
         tree = ast.parse(inspect.getsource(of))
         imported = set()
         for node in ast.walk(tree):
@@ -73,8 +74,11 @@ class TestTheKernelIsStructural(unittest.TestCase):
                 imported |= {n.name.split(".")[0] for n in node.names}
             elif isinstance(node, ast.ImportFrom) and node.module:
                 imported.add(node.module.split(".")[0])
-        self.assertEqual(imported - {"__future__", "dataclasses", "typing"},
-                         {"replay"})
+        outside = imported - {"__future__", "dataclasses", "typing"}
+        self.assertTrue(outside <= {"replay", "answer"}, outside)
+        for forbidden in ("ri_core", "enrichment", "legitimacy", "standing",
+                          "cases", "ri_frame"):
+            self.assertNotIn(forbidden, imported, forbidden)
 
     def test_two_premises_and_no_more(self):
         self.assertEqual([n for n, _ in rp.PREMISES], ["S1", "S2"])

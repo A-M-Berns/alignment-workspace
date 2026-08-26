@@ -3014,3 +3014,1023 @@ The standard:
 
 Prefer one strong theorem with a small interface over a taxonomy of authority
 concepts.
+
+---
+
+# Sixth dispatch — 2026-08-26, the Legitimate Evolution round
+
+Verbatim as received.
+
+Use this as the next pass:
+
+> You are continuing the legitimacy project on branch:
+>
+> ```text
+> round/2026-08-25-legitimate-evolution
+> ```
+>
+> Treat the latest results as the starting point:
+>
+> ```text
+> GROUNDED-REPLAY-KERNEL-STABLE
+> PROPER-EXERCISE-SEMANTIC-ONLY
+> ```
+>
+> Grounded Replay is frozen unless you find an actual contradiction.
+>
+> Do not write Lean.
+>
+> Do not reopen the search for a generic Proper Exercise theorem. The previous round established that substantive propriety lives in the local permission semantics:
+>
+> ```text
+> Permit(L,e,ProvView(e))
+> ```
+>
+> Jurisdiction, delegation, amendment, widening, quorum, vetoes, constitutional replacement, etc. are semantic choices. The only generic structural facts worth retaining are strict-prestate evaluation / no self-ratification and Grounded Replay itself.
+>
+> The goal of this pass is:
+>
+> > **Find the smallest local-to-global theorem that deserves the name Legitimate Evolution.**
+>
+> In particular, prosecute whether the non-entitlement half of legitimacy compresses into a small **answerability-transition kernel**, analogous to Grounded Replay.
+>
+> The target architecture to attack is:
+>
+> ```text
+> local normative semantics
+>     Permit
+>     Due
+>     Disposes
+>     [possibly Transfer / Succession semantics]
+>           |
+>           v
+> Grounded Replay          Answerability Continuity
+>           \               /
+>            \             /
+>             LEGITIMATE EVOLUTION
+> ```
+>
+> Do not assume this architecture is correct. Try to break or compress it.
+>
+> ---
+>
+> # 1. Start with the local-to-global standard
+>
+> Legitimate Evolution should not be defined as a conjunction of desired global properties.
+>
+> The desired theorem shape is:
+>
+> ```text
+> small local transition conditions
+>             +
+> small substantive semantic judgments
+>             |
+>             v
+> global invariants over arbitrarily long histories
+> ```
+>
+> Grounded Replay is the model:
+>
+> ```text
+> accepted local edits satisfy two structural premises
+> ->
+> every admitted occurrence has finite ancestry to G
+> ```
+>
+> Find the analogous theorem for unresolved normative obligations.
+>
+> The final theorem should earn something globally that is not merely a restatement of its premises.
+>
+> ---
+>
+> # 2. Freeze the entitlement side
+>
+> Assume the current entitlement side:
+>
+> ```text
+> Valid(L,e)
+>   := grounded in live prior authority
+>      and nonempty authority for effectful edits
+>      and ProvComplete(e)
+>      and Permit(L,e,ProvView(e))
+> ```
+>
+> with Grounded Replay giving:
+>
+> ```text
+> finite ancestry
+> no self-ratification
+> no rejected-occurrence laundering
+> persistence until accepted disposal
+> ```
+>
+> Do not add jurisdiction/capability structure to the structural kernel.
+>
+> Proper Exercise is represented by `Permit`.
+>
+> What Legitimate Evolution still lacks is a theorem saying what happens to **normative burdens that have become outstanding**.
+>
+> ---
+>
+> # 3. Separate three semantic questions
+>
+> Begin with candidate semantic judgments:
+>
+> ```text
+> Due(L,r,q)
+> ```
+>
+> meaning:
+>
+> > under the adopted normative semantics, reason occurrence `r` places issue/standing `q` under an obligation of treatment.
+>
+> ```text
+> Disposes(L,x,q)
+> ```
+>
+> meaning:
+>
+> > response/edit/event `x` counts as a legitimate disposition of the outstanding issue `q`.
+>
+> Possibly:
+>
+> ```text
+> Transfers(L,x,q,q')
+> ```
+>
+> meaning:
+>
+> > `x` legitimately moves responsibility for `q` to successor `q'`.
+>
+> Do not assume these exact types.
+>
+> Ask whether `Due` and `Disposes` are semantic in exactly the same sense that `Permit` turned out to be semantic.
+>
+> In particular, do **not** try to derive:
+>
+> ```text
+> which reasons really matter
+> ```
+>
+> or:
+>
+> ```text
+> what the morally correct answer is.
+> ```
+>
+> The theorem should be relative to supplied semantics.
+>
+> ---
+>
+> # 4. Search for the smallest answerability object
+>
+> Do not begin from the existing `AnsRoot` architecture.
+>
+> Start abstractly.
+>
+> You need enough state to represent:
+>
+> ```text
+> an obligation is opened
+> it remains outstanding
+> it is legitimately disposed
+> it is transferred
+> possibly split
+> possibly merged
+> ```
+>
+> Try the smallest possible object first.
+>
+> Candidate:
+>
+> ```text
+> Obligation occurrence q
+> status_t(q) ∈ {open, closed}
+> successor relation
+> ```
+>
+> but attack this.
+>
+> Ask:
+>
+> * Does a transfer close the old occurrence and open a successor?
+> * Does the global theorem need occurrence identity?
+> * Is unique birth needed?
+> * Is succession tree-shaped, DAG-shaped, or arbitrary?
+> * Can one obligation split into two?
+> * Can two merge into one?
+> * Does merge create laundering?
+> * Is a persistent identity with changing custodian simpler than explicit successors?
+>
+> Prefer the smallest representation that survives the countermodels.
+>
+> ---
+>
+> # 5. Target a qualitative continuity theorem
+>
+> The first hoped-for theorem is approximately:
+>
+> ```text
+> if q becomes outstanding,
+> then at every later time either
+>
+>     q has a legitimate disposition,
+>
+> or
+>
+>     there exists a currently live successor chain carrying what remains owed.
+> ```
+>
+> In symbolic shape:
+>
+> ```text
+> Open_s(q)
+> ->
+> Disposed_{s:t}(q)
+>    or
+> exists q'. Carries_{s:t}(q,q') and Open_t(q')
+> ```
+>
+> Do not accept this formulation uncritically.
+>
+> Find the exact relation.
+>
+> The intended global consequence is:
+>
+> ```text
+> no silent obligation loss.
+> ```
+>
+> This should cover more than persistence of a docket bit.
+>
+> ---
+>
+> # 6. Distinguish the semantic and structural halves
+>
+> A local semantic rule can say:
+>
+> ```text
+> x counts as a disposition of q
+> ```
+>
+> or:
+>
+> ```text
+> x validly transfers q to q'
+> ```
+>
+> The structural theorem should say:
+>
+> > if transitions may remove an outstanding obligation only through one of these declared operations, arbitrarily long replay preserves either a live carrier or a valid disposition history.
+>
+> Do not smuggle “correct response to reasons” into the structural theorem.
+>
+> The analogue to Proper Exercise may be:
+>
+> ```text
+> which responses count as dispositions is semantic;
+> that obligations cannot disappear except by those dispositions is structural.
+> ```
+>
+> Test this analogy explicitly.
+>
+> ---
+>
+> # 7. Prosecute whether Reason Disposition is a separate theorem module
+>
+> Previously the proposed package contained:
+>
+> ```text
+> Reason Disposition
+> Liability Continuity
+> ```
+>
+> Determine whether this was a false decomposition.
+>
+> Candidate compression:
+>
+> ```text
+> Due                 semantic
+> Disposes            semantic
+> obligation replay   structural
+> ```
+>
+> producing:
+>
+> ```text
+> no silent issue loss
+> ```
+>
+> If so, withdraw `Reason Disposition` as an independent theorem module.
+>
+> Conversely, if something genuinely additional is required to connect reason occurrences to answerability episodes, exhibit the countermodel.
+>
+> ---
+>
+> # 8. The central question: qualitative continuity versus quantitative liability
+>
+> The existing quantitative idea is:
+>
+> ```text
+> c_t + Phi_{t+1} <= Phi_t + eta_t
+> ```
+>
+> hence:
+>
+> ```text
+> sum_{t<T} c_t + Phi_T
+> <=
+> Phi_0 + sum_{t<T} eta_t.
+> ```
+>
+> Do not assume this belongs inside Legitimate Evolution.
+>
+> Prosecute two hypotheses:
+>
+> ```text
+> H-A:
+> qualitative answerability continuity is sufficient for legitimacy;
+> the quantitative bound is a downstream strengthening.
+> ```
+>
+> ```text
+> H-B:
+> qualitative continuity is too weak;
+> without a quantitative invariant obligations can be diluted through succession,
+> so liability continuity is constitutive of Legitimate Evolution.
+> ```
+>
+> Build countermodels that distinguish them.
+>
+> ---
+>
+> # 9. Required dilution countermodels
+>
+> At minimum test:
+>
+> ```text
+> A. q remains literally open forever but nobody is required to do anything
+> ```
+>
+> ```text
+> B. q transfers q -> q1 -> q2 -> ... and each transfer halves its burden
+> ```
+>
+> ```text
+> C. q splits into n successors each carrying 1/n^2 of the original burden
+> ```
+>
+> ```text
+> D. two obligations merge into one whose burden is less than either parent
+> ```
+>
+> ```text
+> E. q is transferred to a successor that has no capacity / no actual duty
+> ```
+>
+> ```text
+> F. q is explicitly disposed by an answer the local semantics recognizes,
+> even though an external observer thinks the answer is terrible
+> ```
+>
+> F should probably remain **legitimate evolution**.
+>
+> The question is whether A-E are already excluded by semantic `Disposes/Transfers`, or whether a quantitative invariant is necessary.
+>
+> ---
+>
+> # 10. Distinguish identity from quantity
+>
+> Be precise about what the liability potential measures.
+>
+> Possibilities:
+>
+> ```text
+> burden
+> required future effort
+> enforcement exposure
+> unresolved normative debt
+> expected repair cost
+> capacity reserved for discharge
+> ```
+>
+> Do not use `Phi` until its semantic role is clear.
+>
+> If no quantity can be given an interpretation generic enough for legitimacy, conclude:
+>
+> ```text
+> quantitative liability is consumer-specific and not constitutive of Legitimate Evolution.
+> ```
+>
+> That is an acceptable result.
+>
+> ---
+>
+> # 11. Split and merge are mandatory tests
+>
+> Any answerability calculus that works only for one-to-one succession may be too weak.
+>
+> Test:
+>
+> ```text
+> q -> {q1,q2}
+> ```
+>
+> and:
+>
+> ```text
+> {q1,q2} -> q'
+> ```
+>
+> Ask what must be conserved.
+>
+> Is there:
+>
+> ```text
+> exact conservation
+> subadditivity
+> superadditivity
+> monotone potential
+> resource accounting
+> ```
+>
+> or merely a semantic condition that the successor set “carries” the old obligation?
+>
+> Do not manufacture a numerical invariant merely because split/merge suggests one.
+>
+> ---
+>
+> # 12. Custody is not answerability unless the theorem needs it
+>
+> Current RI uses `AnsRoot` and custody-like structure.
+>
+> Do not assume that abstract Legitimate Evolution needs a custodian.
+>
+> Ask:
+>
+> ```text
+> Is "who is responsible?" necessary to state the global theorem?
+> ```
+>
+> Perhaps the minimal object is only:
+>
+> ```text
+> outstanding issue occurrence
+> successor relation
+> disposition relation
+> ```
+>
+> and custody is realization-level metadata.
+>
+> Conversely, if delegation without a responsible bearer creates a real laundering counterexample, then custody may belong in the abstract kernel.
+>
+> Let countermodels decide.
+>
+> ---
+>
+> # 13. Keep learning out
+>
+> Legitimate Evolution must allow:
+>
+> ```text
+> a process that repeatedly makes the same stupid choice,
+> faithfully records every outstanding issue,
+> and never improves.
+> ```
+>
+> It must also allow:
+>
+> ```text
+> a process that never receives the relevant evidence.
+> ```
+>
+> Those failures belong to:
+>
+> ```text
+> Coverage
+> Regret
+> Legitimate Learning
+> ```
+>
+> not Legitimate Evolution.
+>
+> Required negative test:
+>
+> ```text
+> high-regret but procedurally impeccable process
+> ->
+> Legitimate Evolution = yes
+> Legitimate Learning = no
+> ```
+>
+> Do not introduce fairness, service, exploration, or asymptotic improvement into this pass.
+>
+> ---
+>
+> # 14. Keep coverage out
+>
+> Do not require:
+>
+> ```text
+> every relevant real-world reason becomes Due.
+> ```
+>
+> That is learning coverage.
+>
+> Legitimate Evolution should say only:
+>
+> ```text
+> once the process's supplied semantics recognizes an issue as Due,
+> it cannot lose it except through an accepted disposition/succession mechanism.
+> ```
+>
+> Separate:
+>
+> ```text
+> ProvComplete
+> ```
+>
+> from:
+>
+> ```text
+> learning coverage.
+> ```
+>
+> Provenance adequacy concerns whether a local legitimacy judgment sees the relevant history.
+>
+> Learning coverage concerns whether recurrent failures are exposed to the learning process often enough.
+>
+> ---
+>
+> # 15. Keep substantive correctness out
+>
+> Legitimate Evolution must allow radical normative change.
+>
+> Required positive cases:
+>
+> ```text
+> constitution replaces itself under a permitted amendment
+> ```
+>
+> ```text
+> process rejects a reason after a disposition recognized by its own semantics
+> ```
+>
+> ```text
+> Bob permissibly persuades Alice and the final norm changes
+> ```
+>
+> ```text
+> current values radically differ from initial values
+> ```
+>
+> There must be no theorem of the form:
+>
+> ```text
+> distance(content_t, content_0) <= epsilon.
+> ```
+>
+> If your abstraction implies content conservativity, reject it.
+>
+> ---
+>
+> # 16. Formulate Legitimate Evolution as a global theorem
+>
+> Try to reach something approximately like:
+>
+> ```text
+> THEOREM — Legitimate Evolution
+>
+> Given:
+>   an accepted base G;
+>   a semantic validity relation built from Permit and provenance;
+>   semantic Due / Disposes / succession judgments;
+>   Grounded Replay's local premises;
+>   local answerability-transition premises;
+>
+> then for every finite time t:
+>
+>   (E) every live standing has a finite chain of
+>       strict-prestate accepted exercises to G;
+>
+>   (A) every issue previously recognized as due has
+>       either a legitimate disposition or a currently
+>       outstanding successor trace;
+>
+>   (L?) any further quantity required for non-dilution
+>        satisfies its global conservation/bound.
+> ```
+>
+> The theorem should support arbitrary substantive content change.
+>
+> Do not force `(L?)` to survive.
+>
+> ---
+>
+> # 17. The theorem needs a nontrivial composition payoff
+>
+> Avoid:
+>
+> ```text
+> GroundedReplay
+> and AnswerabilityContinuity
+> ->
+> GroundedReplay and AnswerabilityContinuity.
+> ```
+>
+> Find the strongest useful global statement earned by their interaction.
+>
+> Candidate:
+>
+> > Across any finite sequence of locally legitimate revisions, the process cannot acquire live normative standing without accepted ancestry, and cannot cease to bear an outstanding normative claim except through an accepted disposition or succession route.
+>
+> Perhaps the entitlement and answerability results are merely parallel rather than interactive.
+>
+> If there is no deeper interaction theorem, say so.
+>
+> It may be that:
+>
+> ```text
+> Legitimate Evolution
+> ```
+>
+> is best understood as one semantic property packaged from two independently proved closure theorems.
+>
+> That is acceptable if true.
+>
+> Do not invent interaction.
+>
+> ---
+>
+> # 18. Test the package against both downstream consumers
+>
+> ### Traderization
+>
+> Traderization needs:
+>
+> ```text
+> current Norm(L_t)
+> ```
+>
+> and should receive:
+>
+> ```text
+> these norms are currently live on a Legitimate Evolution trajectory.
+> ```
+>
+> It does **not** need coverage or regret.
+>
+> Ask whether qualitative answerability continuity contributes anything necessary to entitlement to enforcement, or instead constrains how the norm process may revise while enforcement continues.
+>
+> Keep traderization's financial/enforcement liability distinct from any normative answerability potential unless a theorem genuinely identifies them.
+>
+> ### Deference
+>
+> Deference needs:
+>
+> ```text
+> current Auth(L_t)
+> ```
+>
+> and ultimately:
+>
+> ```text
+> Legitimate Learning
+> ```
+>
+> But Legitimate Evolution should already justify:
+>
+> ```text
+> this radically changed current state remains a legitimate successor.
+> ```
+>
+> Do not solve current-state certification in this pass.
+>
+> Treat semantic currentness and efficient certification as separate.
+>
+> ---
+>
+> # 19. Consumer separation tests
+>
+> Ensure Legitimate Evolution judges these correctly:
+>
+> ```text
+> legitimate but financially unenforceable norm
+>     -> legitimate evolution YES
+> ```
+>
+> ```text
+> legitimate but high-regret reasoner
+>     -> legitimate evolution YES
+> ```
+>
+> ```text
+> legitimate but unobservant process
+>     -> legitimate evolution YES
+> ```
+>
+> ```text
+> unauthorized norm issuance
+>     -> NO
+> ```
+>
+> ```text
+> validly issued norm, later invalidly revoked
+>     -> remains live
+> ```
+>
+> ```text
+> outstanding issue deleted by record mutation
+>     -> NO
+> ```
+>
+> ```text
+> outstanding issue transferred according to accepted semantics
+>     -> YES
+> ```
+>
+> ```text
+> obligation diluted to nothing through formally named successors
+>     -> determine whether semantics alone or a quantitative invariant must reject this.
+> ```
+>
+> ---
+>
+> # 20. Revisit RI only after the abstract kernel stabilizes
+>
+> Once the abstract answerability theorem is clear, map it to:
+>
+> ```text
+> ReasonOcc
+> AnsRoot
+> NormEvent
+> Response
+> ```
+>
+> Ask:
+>
+> * Does `AnsRoot` contain too much?
+> * Does it contain too little?
+> * Can `Due` be realized from existing RI data?
+> * Can a `Response` realize disposition?
+> * Can transfer/succession be realized?
+> * Does RI already prevent silent issue loss?
+> * If a quantitative invariant is needed, where would its data live?
+>
+> Do not add new event kinds.
+>
+> Do not modify RI just to fit a provisional theorem.
+>
+> Record the exact realization gaps.
+>
+> ---
+>
+> # 21. Provenance adequacy remains an assumption
+>
+> Do not spend this pass trying to solve `ProvComplete`.
+>
+> It remains:
+>
+> ```text
+> an epistemic assumption at the extraction boundary.
+> ```
+>
+> Use it where local `Permit`, `Due`, or `Disposes` need descriptive facts.
+>
+> If answerability introduces a **new and genuinely distinct** adequacy condition, identify it explicitly rather than silently folding it into `ProvComplete`.
+>
+> ---
+>
+> # 22. Required countermodels
+>
+> Build and execute at least:
+>
+> ```text
+> 1. due issue silently deleted
+> 2. due issue legitimately answered
+> 3. due issue legitimately rejected/defeated
+> 4. due issue transferred once
+> 5. transfer chain
+> 6. transfer to nowhere
+> 7. split obligation
+> 8. merge obligations
+> 9. nominal persistence with burden diluted to zero
+> 10. high-regret but procedurally legitimate process
+> 11. no-coverage but procedurally legitimate process
+> 12. radical constitutional change with clean answerability
+> 13. unauthorized standing with perfect answerability
+> 14. perfect entitlement history with laundered obligation
+> 15. current standing validly revoked while its grounding tree remains
+> ```
+>
+> Cases 13 and 14 are especially important: they establish independence of entitlement continuity and answerability continuity.
+>
+> ---
+>
+> # 23. Try to compress the package
+>
+> Explicitly compare:
+>
+> ```text
+> Candidate A:
+> Grounded Replay
+> + Proper Exercise
+> + Reason Disposition
+> + Liability Continuity
+> ```
+>
+> against:
+>
+> ```text
+> Candidate B:
+> local semantics (Permit, Due, Disposes)
+> + Grounded Replay
+> + Answerability Continuity
+> ```
+>
+> against:
+>
+> ```text
+> Candidate C:
+> local semantics
+> + one unified replay theorem over both standing and obligations
+> ```
+>
+> Candidate A is the old picture.
+>
+> Proper Exercise already gives evidence against A.
+>
+> Determine whether B is the natural endpoint or whether C produces real compression rather than merely putting unrelated state components in one tuple.
+>
+> Prefer B over fake unification.
+>
+> ---
+>
+> # 24. Ask whether entitlement and answerability are dual
+>
+> Investigate, but do not romanticize, the apparent symmetry:
+>
+> ```text
+> entitlement:
+>     standing cannot appear without ancestry
+> ```
+>
+> ```text
+> answerability:
+>     obligation cannot disappear without disposition/succession
+> ```
+>
+> Is there a useful abstract notion of:
+>
+> ```text
+> controlled creation
+> controlled destruction
+> ```
+>
+> from which both are instances?
+>
+> If yes and it actually proves something reusable, report it.
+>
+> If it is merely a verbal duality, leave the theorems separate.
+>
+> ---
+>
+> # 25. Decide what “Legitimate Evolution” is a theorem about
+>
+> At the end answer explicitly:
+>
+> ```text
+> Is Legitimate Evolution:
+>
+> A. one derived theorem;
+> B. a named conjunction of two independent local-to-global theorems;
+> C. a semantic definition plus corollaries;
+> D. something else?
+> ```
+>
+> Do not assume A is better.
+>
+> The goal is conceptual truth and compression, not a grand theorem title.
+>
+> ---
+>
+> # 26. Desired final mathematical package
+>
+> The ideal outcome, if earned, is approximately:
+>
+> ```text
+> LOCAL SEMANTICS
+>   Permit(L,e,r)
+>   Due(L,r,q)
+>   Disposes(L,x,q)
+>   [Transfer ...]
+> ```
+>
+> ```text
+> THEOREM 1 — Grounded Replay
+>   local accepted issuance
+>   ->
+>   finite entitlement ancestry
+> ```
+>
+> ```text
+> THEOREM 2 — Answerability Continuity
+>   local obligation lifecycle
+>   ->
+>   no silent obligation loss over arbitrary finite history
+> ```
+>
+> ```text
+> [THEOREM 3 — Liability Bound]
+>   only if a genuinely legitimacy-relevant quantitative invariant is necessary
+> ```
+>
+> ```text
+> COROLLARY / THEOREM — Legitimate Evolution
+>   arbitrary substantive normative evolution preserves
+>   entitlement integrity and outstanding normative claims.
+> ```
+>
+> Then downstream:
+>
+> ```text
+> Legitimate Evolution
+> + Coverage
+> + Low Regret
+> ->
+> Legitimate Learning
+> ```
+>
+> Do not work on the regret theorem in this pass.
+>
+> ---
+>
+> # 27. Final section
+>
+> End with:
+>
+> ```text
+> MINIMAL LEGITIMATE-EVOLUTION PACKAGE
+> ```
+>
+> It must fit on roughly one page.
+>
+> Include:
+>
+> * exact semantic parameters;
+> * exact structural state;
+> * exact local transition rules;
+> * exact global theorem(s);
+> * which pieces are semantic rather than mathematical;
+> * whether Reason Disposition survives as a separate module;
+> * whether quantitative liability is constitutive or downstream;
+> * one countermodel per indispensable structural premise;
+> * independence test between entitlement and answerability;
+> * exact RI realization gaps;
+> * what Traderization consumes;
+> * what Deference consumes;
+> * what is deliberately postponed to Legitimate Learning.
+>
+> If the package cannot be written on a whiteboard in a few minutes, continue compressing.
+>
+> ---
+>
+> # 28. Verdict
+>
+> End with exactly one:
+>
+> ```text
+> LEGITIMATE-EVOLUTION-KERNEL-STABLE
+> ```
+>
+> if a small local-to-global package survives and the remaining substantive choices are cleanly semantic parameters.
+>
+> ```text
+> ANSWERABILITY-KERNEL-STABLE-BUT-COMPOSITION-TRIVIAL
+> ```
+>
+> if the answerability theorem stabilizes but “Legitimate Evolution” is honestly just a useful name for two independent closure results.
+>
+> ```text
+> LEGITIMATE-EVOLUTION-DECOMPOSITION-LEAKY
+> ```
+>
+> if entitlement, reason disposition, liability, coverage, or learning are still being conflated.
+>
+> ```text
+> ANSWERABILITY-SPINE-FAILS
+> ```
+>
+> if no small local-to-global continuity theorem survives the countermodels.
+>
+> Do not write Lean regardless of verdict.
+>
+> ---
+>
+> The research standard for this pass is:
+>
+> > **A legitimate process may change its substantive normative content arbitrarily. What it may not do is acquire entitlement except through locally permitted prior entitlement, or cease to owe what its own semantics has made outstanding except through a locally legitimate disposition or succession. Find the smallest local conditions from which those global facts follow.**
+>
+> The key uncertainty is whether that second clause is a simple qualitative replay theorem, or whether genuine legitimacy requires the quantitative liability structure as well. Do not resolve that by intuition; make the countermodels decide.
+
+This is the pass where I’d want the architecture to either compress to something almost embarrassingly small, or fail clearly enough that we know exactly what extra structure is doing real work.

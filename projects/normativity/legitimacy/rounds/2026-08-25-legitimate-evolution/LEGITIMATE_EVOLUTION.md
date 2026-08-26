@@ -7,6 +7,11 @@ is registered. `test-supported` is the ceiling.
 
 ---
 
+This document is the **entitlement** half. Its counterpart on the
+non-entitlement half, and the one-page statement of the two together, is
+`ANSWERABILITY.md`. Nothing in this document was changed by that round: the
+kernel was frozen and is unchanged.
+
 ## MINIMAL MATHEMATICAL STATEMENT
 
 **Types.**

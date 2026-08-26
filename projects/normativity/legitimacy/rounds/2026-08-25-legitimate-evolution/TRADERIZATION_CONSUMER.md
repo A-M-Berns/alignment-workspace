@@ -71,6 +71,16 @@ all time. Nothing bounds a **particular** norm's charge over **its own** lifetim
 Occurrence identity gives it something unambiguous to attach to, and the lifetime
 is now well defined at a fixed audit context. `PRIORITIES.md` item 69.
 
+**Narrowed by the answerability pass**, in two ways, both in `ANSWERABILITY.md`
+§4. First, the bound cannot be a structural theorem: four constitutions transfer
+every obligation to a named successor, satisfy both structural premises and the
+continuity theorem, and shrink the total burden — `diluted_to_nothing` to zero. So
+it must be sought as a hypothesis on the succession semantics, in the same shape
+as the monotone-reach conditional. Second, it must be stated in **total**
+accounting. Per-parent accounting is not a weaker form of the same law; a merge of
+two obligations of weight 1 into one of weight 1.5 passes per-parent while the
+total falls, so the per-parent statement is false and would look proved.
+
 ## 5. Legitimate but unenforceable
 
 Unchanged and not a stipulation: under the default exhaustion policy force is

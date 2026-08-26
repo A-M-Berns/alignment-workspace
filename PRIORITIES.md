@@ -1194,14 +1194,52 @@ scout names; charging against the norm's own episode; and either a finite lifeti
 or a decaying allocation, since the per-date deficit provably does not fall with
 increasing settlement.
 
+**Narrowed by the Legitimate Evolution round.** Any such bound is a condition on
+the succession semantics, not a structural theorem. Four constitutions transfer
+every obligation to a named successor, satisfy both structural premises and the
+continuity theorem, and reduce the total burden — one of them to zero. So the
+per-norm statement must be sought as a hypothesis on `Transfers` and stated in
+**total** accounting: per-parent accounting is not a weaker form of it but a wrong
+one, and a merge of two obligations of weight 1 into one of weight 1.5 passes
+per-parent while the total falls.
+
 *Deliverable shape:* the per-norm bound with its local laws, or the witness
 showing it cannot hold at presentation level.
 *Acceptance check:* the slice's driven run exhibits a norm whose lifetime charge
 exceeds any allowance attachable at issuance, or the bound holds on it.
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/TRADERIZATION_CONSUMER.md`
-§4; `.../2026-08-25-end-to-end-vertical-slice/ANSWERABILITY_SCOUT.md` §§4, 8.
+§4; `.../2026-08-25-end-to-end-vertical-slice/ANSWERABILITY_SCOUT.md` §§4, 8;
+`.../2026-08-25-legitimate-evolution/ANSWERABILITY.md` §4.
 *Consumed by:* `PersistentLegitimateEnforcement`, and by item 61.
+
+---
+
+### 71. A minting site on reasons, or `Due` stays a parameter — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Answerability Continuity needs to know which obligations are outstanding, and
+takes that as given. The question it does not answer is which reason occurrences
+place the process under obligation in the first place — `Due(L, r, q)`.
+
+Reflective Integrity appears to mint answerability roots from **effects**, at
+`MINT`, not from reason occurrences. If so there is no site in the architecture
+where a reason, as such, opens an answerability root, and `Due` has no realizer.
+Neither theorem needs it. Any consumer that wants to say *why* something became
+owed does.
+
+This was read off the intended correspondence, not checked against the RI code.
+The first task is to check it.
+
+*Deliverable shape:* either a `MINT`-on-reasons seam with the conditions under
+which a reason opens a root, or the finding that `Due` must remain a semantic
+parameter consulted before the obligation lifecycle is built.
+*Acceptance check:* an RI record in which two reason occurrences differ and the
+outstanding sets they induce differ, derived rather than stipulated.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/ANSWERABILITY.md`
+§6; `PROPER_EXERCISE.md`'s kernel section for the parallel gap on jurisdiction.
+*Consumed by:* item 69, which needs an allowance minted with the obligation.
 
 ---
 

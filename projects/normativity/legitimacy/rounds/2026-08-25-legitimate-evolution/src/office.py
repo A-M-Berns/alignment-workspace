@@ -102,6 +102,11 @@ class Act:
     scope: frozenset = frozenset()
     prov: Prov = Prov()
     label: str = ""
+    #: what the act does to the outstanding set, as the semantics declares it
+    opens: tuple = ()                  # (name, weight), ...
+    discharges: tuple = ()             # names
+    transfers: tuple = ()              # ((old, (new, ...)), ...)
+    drops: tuple = ()                  # names removed with no route: A1 bait
 
 
 AMEND = "d:amend"                      #: a constitution's own token for
@@ -116,6 +121,7 @@ class Constitution:
     doubted: Mapping = field(default_factory=dict)
     coercion_invalidates: bool = True
     quorum: int = 1                    # how many grounds an act needs
+    base_duties: tuple = ()            # (name, weight), outstanding at the start
     checks_issued: bool = True         # does permission read what is issued
     hidden: object = None
     reads_hidden: bool = False
@@ -704,4 +710,242 @@ EXERCISE_CONSTITUTIONS = (
     self_amendment(True), self_amendment(False), constitutional_replacement(),
     threshold(2), threshold(1), veto(True), veto(False),
     ex_post_rationalisation(),
+)
+
+
+# --------------------------------------------------- the answerability side
+
+
+def duties(c: Constitution):
+    """The obligation lifecycle a constitution declares.
+
+    `Due`, `Disposes` and `Transfers` have already been consulted by the time
+    this is read: an act's `opens`, `discharges` and `transfers` are what the
+    semantics said. `drops` is the bait — a removal with no declared route — and
+    exists so that **A1** can fail.
+    """
+    import answer as an
+
+    by_name, base, weight = {}, [], {}
+    for i, (name, w) in enumerate(c.base_duties):
+        q = an.Ob(an.BASE, i)
+        by_name[name] = q
+        base.append(q)
+        weight[q] = w
+
+    opens, discharges, transfers, drops = {}, {}, {}, {}
+    for t, a in enumerate(c.acts):
+        made = []
+        for j, (name, w) in enumerate(a.opens):
+            q = an.Ob(t, j)
+            by_name[name] = q
+            weight[q] = w
+            made.append(q)
+        if made:
+            opens[t] = frozenset(made)
+        gone = frozenset(by_name[n] for n in a.discharges if n in by_name)
+        if gone:
+            discharges[t] = gone
+        dropped = frozenset(by_name[n] for n in a.drops if n in by_name)
+        if dropped:
+            drops[t] = dropped
+        if a.transfers:
+            transfers[t] = {by_name[old]: frozenset(by_name[n] for n in new
+                                                    if n in by_name)
+                            for old, new in a.transfers if old in by_name}
+    d = an.Duties(frozenset(base), opens, discharges, transfers, drops)
+    object.__setattr__(d, "weight", weight)
+    object.__setattr__(d, "names", {q: n for n, q in by_name.items()})
+    return d
+
+
+def burden(d):
+    return lambda q: d.weight.get(q, 0.0)
+
+
+def duty_names(d, obs) -> set:
+    return {d.names.get(q, str(q)) for q in obs}
+
+
+def _one(under="w:charter", **kw):
+    return Act(under, scope=ALL, prov=Prov(findings=frozenset({"f:ordinary"})),
+               **kw)
+
+
+CHARTER = (("w:charter", ALL, "Assembly"),)
+
+
+def answered() -> Constitution:
+    """A due issue, legitimately answered."""
+    return Constitution(chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+                        acts=(_one(discharges=("q:complaint",), label="answer"),))
+
+
+def defeated() -> Constitution:
+    """A due issue the process's own semantics recognises as defeated.
+
+    An external observer may think the answer is terrible. That is not this
+    theorem's business.
+    """
+    return Constitution(chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+                        acts=(_one(discharges=("q:complaint",), label="reject"),))
+
+
+def silently_deleted() -> Constitution:
+    """A due issue removed with no declared route. **A1** must catch it."""
+    return Constitution(chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+                        acts=(_one(drops=("q:complaint",), label="quietly-drop"),))
+
+
+def transferred_once() -> Constitution:
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(opens=(("q:referred", 1.0),),
+                   transfers=(("q:complaint", ("q:referred",)),),
+                   label="refer"),))
+
+
+def transfer_chain(n: int = 3, decay: float = 1.0) -> Constitution:
+    """`n` successive referrals. With `decay < 1` each one weighs less."""
+    acts, w, prev = [], 1.0, "q:complaint"
+    for i in range(n):
+        w = w * decay
+        nxt = f"q:step{i}"
+        acts.append(_one(opens=((nxt, w),), transfers=((prev, (nxt,)),),
+                         label=f"refer{i}"))
+        prev = nxt
+    return Constitution(chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+                        acts=tuple(acts))
+
+
+def transfer_to_nowhere() -> Constitution:
+    """A transfer naming no successor. **A1** must catch it."""
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(transfers=(("q:complaint", ()),), label="refer-to-nothing"),))
+
+
+def split(share: float = 0.5) -> Constitution:
+    """One obligation into two. `share` each; `0.5` conserves, less dilutes."""
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(opens=(("q:left", share), ("q:right", share)),
+                   transfers=(("q:complaint", ("q:left", "q:right")),),
+                   label="split"),))
+
+
+def merge(w: float = 2.0) -> Constitution:
+    """Two obligations into one. `w = 2` conserves; less dilutes."""
+    return Constitution(
+        chartered=CHARTER,
+        base_duties=(("q:a", 1.0), ("q:b", 1.0)),
+        acts=(_one(opens=(("q:joint", w),),
+                   transfers=(("q:a", ("q:joint",)), ("q:b", ("q:joint",))),
+                   label="consolidate"),))
+
+
+def merge_lenient() -> Constitution:
+    """Two obligations of weight 1 into one of weight 1.5.
+
+    Passes per-parent accounting and fails total accounting, which is how the
+    two notions are separated.
+    """
+    return merge(1.5)
+
+
+def diluted_to_nothing() -> Constitution:
+    """Nominal persistence: named successors all the way down, weighing zero."""
+    return transfer_chain(4, decay=0.0)
+
+
+def rogue_discharge() -> Constitution:
+    """An unentitled act claiming to discharge an outstanding obligation.
+
+    The act is refused on the entitlement side — it acts under a warrant granted
+    on a doubted finding — so it discharges nothing. Under two replays with two
+    acceptance predicates it would.
+    """
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(
+            Act("w:charter", grants=(("w:rogue", ALL, ()),), scope=ALL,
+                prov=Prov(findings=frozenset({"f:planted"})), label="plant"),
+            Act("w:rogue", scope=ALL, discharges=("q:complaint",),
+                prov=Prov(findings=frozenset({"f:ordinary"})),
+                label="rogue-discharge"),
+        ),
+        doubted={"alpha:audited": ("f:planted",)},
+    )
+
+
+def unauthorized_with_clean_answerability() -> Constitution:
+    """Entitlement fails; answerability is impeccable. Case 13."""
+    return Constitution(
+        chartered=(("w:fiscal", FISCAL, "Treasury"),),
+        base_duties=(("q:complaint", 1.0),),
+        acts=(Act("w:fiscal", grants=(("n:safety-rule", None, ()),),
+                  scope=SAFETY, prov=Prov(findings=frozenset({"f:ordinary"})),
+                  opens=(("q:new", 1.0),), label="overreach"),),
+    )
+
+
+def entitled_with_laundered_obligation() -> Constitution:
+    """Entitlement is impeccable; an obligation is dropped. Case 14."""
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(grants=(("n:rule", None, ()),), drops=("q:complaint",),
+                   label="legislate-and-forget"),))
+
+
+def revoked_but_grounded() -> Constitution:
+    """A validly issued authority validly revoked; its tree survives. Case 15."""
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(grants=(("w:deputy", ALL, ()),), label="appoint"),
+              _one(revokes=("w:deputy",), inherits=("w:charter",),
+                   label="dismiss")),
+    )
+
+
+def high_regret() -> Constitution:
+    """The same bad choice, three times, every issue faithfully recorded."""
+    acts = tuple(_one(opens=((f"q:same-{i}", 1.0),),
+                      grants=((f"n:same-{i}", None, ()),),
+                      label=f"repeat{i}") for i in range(3))
+    return Constitution(chartered=CHARTER, acts=acts)
+
+
+def unobservant() -> Constitution:
+    """Nothing ever becomes due, because nothing is ever noticed."""
+    return Constitution(chartered=CHARTER,
+                        acts=(_one(grants=(("n:rule", None, ()),),
+                                   label="legislate"),))
+
+
+def refoundation_with_clean_answerability() -> Constitution:
+    """Radical constitutional change carrying its outstanding issue forward."""
+    return Constitution(
+        chartered=(("w:old-order", FISCAL | frozenset({AMEND}), "Convention"),),
+        base_duties=(("q:pending", 1.0),),
+        acts=(Act("w:old-order", revokes=("w:old-order",),
+                  inherits=("w:old-order",),
+                  grants=(("w:assembly", SAFETY | frozenset({AMEND}), ()),),
+                  scope=FISCAL,
+                  prov=Prov(findings=frozenset({"f:referendum"})),
+                  opens=(("q:inherited", 1.0),),
+                  transfers=(("q:pending", ("q:inherited",)),),
+                  label="refound"),),
+    )
+
+
+ANSWER_CONSTITUTIONS = (
+    answered(), defeated(), transferred_once(), transfer_chain(3),
+    split(0.5), merge(2.0), rogue_discharge(),
+    unauthorized_with_clean_answerability(), revoked_but_grounded(),
+    high_regret(), unobservant(), refoundation_with_clean_answerability(),
+)
+
+BROKEN_CONSTITUTIONS = (
+    silently_deleted(), transfer_to_nowhere(),
+    entitled_with_laundered_obligation(),
 )

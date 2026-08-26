@@ -88,6 +88,24 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | P12 | Grounded Replay is unchanged: the kernel does not import the analysis and has no capability notion | FINITE-TEST-SUPPORTED, by parsing | `TestTheKernelIsUntouched` |
 | P13 | Reflective Integrity cannot realize a capability: `PAuth` has no domain and a `NormEvent` has no slot for citing a governing protocol, so an external-rule discipline is **not** sufficient | DERIVED, from the record types | `PROPER_EXERCISE.md`, the kernel section |
 
+## Answerability
+
+| # | claim | class | check |
+|---|---|---|---|
+| A1 | **Answerability Continuity.** Under A1 and A2 an obligation outstanding at `s` is, at every later `t`, discharged in `[s,t)` or connected by a finite chain of accepted transfers to one outstanding at `t` | DERIVED | `thm_answerability_continuity` on every answerability constitution |
+| A2 | **A1 is necessary**, and it is a premise that can fail: three constitutions violate it and each breaks the theorem and its corollary | COUNTEREXAMPLE | `TestA1IsNecessary`; `office.silently_deleted`, `transfer_to_nowhere`, `entitled_with_laundered_obligation` |
+| A3 | **A2 is free from the type**, as freshness was on the entitlement side | DEFINITION + FINITE-TEST-SUPPORTED | `test_a2_is_free_from_the_type` |
+| A4 | **Corollary**, no silent loss: every obligation ever outstanding is discharged or represented by an outstanding descendant | DERIVED | `cor_no_silent_loss` |
+| A5 | **The two halves are independent.** Case 13 satisfies A1/A2 and fails entitlement; case 14 satisfies S1/S2 and fails A1 | COUNTEREXAMPLE, both directions | `test_a1_and_the_entitlement_premises_are_independent`, `test_the_other_direction` |
+| A6 | **Corollary (the coupling).** An act the process was not entitled to perform discharges nothing — from `Valid` gating both folds, and from nothing else | DERIVED | `cor_discharge_requires_entitlement`; `office.rogue_discharge` at `alpha:audited` |
+| A7 | The coupling is the **only** contact: `answer.py` reads `accepted`, `Frame` and `BASE` from the kernel and nothing else | FINITE-TEST-SUPPORTED, by parsing | `test_it_is_the_only_coupling` |
+| A8 | **H-A.** Quantitative liability is not constitutive: four dilution constitutions, one carrying every issue forward at weight zero, satisfy A1, A2, the theorem and the corollary | COUNTEREXAMPLE | `TestDilution`; `office.diluted_to_nothing` |
+| A9 | **Conditional.** If no accepted transfer reduces the summed weight it replaces, the potential is non-increasing except by discharge — a claim about a class of `Transfers` semantics, the counterpart of P3 | DERIVED, conditional | `thm_no_dilution_gives_monotone_potential` |
+| A10 | **Per-parent weight accounting is wrong, not weaker.** A merge of two obligations of weight 1 into one of 1.5 passes per-parent and fails in total | COUNTEREXAMPLE | `office.merge_lenient`; `test_per_parent_accounting_is_wrong_on_a_merge` |
+| A11 | Legitimate Evolution is a **named conjunction over a shared parameter** — not one theorem, not a bare conjunction, not a semantic definition | DEFINITION, argued in `ANSWERABILITY.md` §5 | entries A5, A6 |
+| A12 | The entitlement/answerability duality is **real but narrow**: S1/A1 are opposite constraints on one fold shape, but answerability has no analogue of "leaves in `G`" and is silent on progress | DEFINITION + COUNTEREXAMPLE | `test_an_obligation_may_stay_open_forever` |
+| A13 | Grounded Replay is unchanged: the kernel does not import the second replay and has no obligation notion | FINITE-TEST-SUPPORTED, by parsing | `TestTheKernelIsUntouched` |
+
 ## Open
 
 | # | statement | class |
@@ -95,7 +113,9 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | 30 | **Recognition is an axiom**, over a base, an authority predicate, a semantics and an audit context | AXIOM |
 | 31 | **Provenance completeness.** The round tried to state it non-circularly and failed; it is an explicit epistemic assumption on the extraction | OPEN — the largest hole, and it has survived four formulations |
 | 32 | **A current-state certificate.** Replay, or a commitment plus a delta proof, or an attestation. Nothing here builds the second | OPEN — and now the interface's main cost |
-| 33 | **Bounded-lifetime liability** | OPEN — `PRIORITIES.md` 69 |
+| 33 | **Bounded-lifetime liability** | OPEN — `PRIORITIES.md` 69; entry A8 narrows it: any such bound is a condition on `Transfers`, not a structural theorem |
+| 40 | **`Due`.** Which reason occurrences place a process under obligation. Not needed by either theorem; needed by a consumer wanting to say *why* something became owed | OPEN — and `ANSWERABILITY.md` §6 argues Reflective Integrity has no realizer, since it mints answerability roots from effects |
+| 41 | Whether coverage — that some situation *ought* to have become due — is statable at all without a substantive semantics | OPEN — `unobservant()` is legitimate and notices nothing |
 | 34 | Whether `Permit` needs internal structure | OPEN |
 | 35 | Jurisdiction on a Reflective Integrity authority | OPEN — `PRIORITIES.md` 67 |
 | 36 | A projection-specific simulation condition, weaker than trace agreement, valid when `Permit` factors through the projection | OPEN — stated, not claimed |
@@ -105,9 +125,13 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 
 ## What no entry above claims
 
-That the theorem is deep. It is an induction over a list; two of the three
-corollaries are two lines each. What it earns is that four successive
-formulations failed it.
+That either theorem is deep. Both are inductions over a list; two of the three
+entitlement corollaries are two lines each. What they earn is that five
+successive formulations failed the first, and that the second was built to have a
+premise that can fail after a first version's could not.
+
+That the conjunction is more than it is. Entry A6 is one corollary, it is real,
+and it is the entire yield of packaging the two halves together.
 
 That the semantic layer is settled. `Permit` and `ProvComplete` are parameters and
 every substantive normative question lives in them.
