@@ -1,130 +1,110 @@
 # What one process receives, and what it may infer
 
 Status: **specification; unregistered.** Names provisional.
-`LEGITIMATE_EVOLUTION.md` carries the theory; `CONSUMER_TEST.md` and
-`TRADERIZATION_CONSUMER.md` are the two consumers.
+`LEGITIMATE_EVOLUTION.md` carries the theorem.
 
 ---
 
-## 1. The shape
+## 1. Three questions, not one
+
+The previous interface offered a grounding tree as "essentially the whole
+certificate". It is not. Three questions come apart and only the first has a
+finite certificate:
 
 ```text
-Recognizes_A(G)                     A accepts a base
-A accepts Pi = (Permit, ProvOK)     and an authorization semantics
-A accepts Xi                        and a threat class
-A accepts alpha                     and an audit context
-o in Auth(L(alpha, t))              the certificate checks
-------------------------------------------------
-Recognizes_A(o)
+origin          was this occurrence legitimately issued?     a grounding tree
+historical      what has happened to it since?               the accepted disposals
+current         is it in force now?                           the replay
 ```
 
-**Verifier soundness is a theorem** and is now stated where it belongs: `Verify`
-is a checker, `Valid` is the semantic relation, and `verifier_sound` is the claim
-that the first implies the second along the replay it drives.
+`office.lineage_versus_current` is where they separate: an authority validly
+issued, validly used, validly revoked. Its tree is intact and it is not live. A
+tree is built from grounds; disposals are not grounds; so a tree **structurally
+cannot** answer the third question.
 
-**Iteration is not an extra assumption.** The replay is a fold, so a recognizer
-that accepts the step accepts any finite run of steps. There is no separate
-composition principle to state.
-
-**The bridge is an axiom, and it now carries four parameters rather than two.**
-
-> **(R) — the recognition axiom.** `A` regards an occurrence in
-> `Auth(L(alpha, t))` — the legitimate state of a process whose base, permit
-> relation, provenance relation and audit context `A` accepts — as one it
-> recognizes. `[AXM]`
-
-What the mathematics contributes is the narrowing: (R) commits `A` to H1-H6 being
-the right conditions and to `Permit`, `ProvOK`, `Xi` and `alpha`, and to nothing
-about what the future authority says.
-
-## 2. What A does not have to do
-
-**Endorse the content.** No clause of the replay reads what an occurrence says.
-`apply` is content-blind by the type, and relabelling every value specification
-in a record leaves the legitimate state fixed.
-
-**Know B's internal representation.** H1-H6 are conditions on
-`(Occ, Edit, G, Valid, Permit, ProvOK)`. A constitution and its gazette satisfy
-them with no ledger; a Reflective Integrity record satisfies them with one.
-
-**Trust what B is doing.** This is the change from the previous interface. The
-raw process's own view of what is in force is not consulted at all: `L` is
-rebuilt from the base, and a process that has revoked something it had no
-authority to revoke is simply wrong about its own state.
-
-**Accept an act because it survived a counterfactual.** Legitimacy is a local
-judgment about an edit given the state it was made in, so an act that would not
-have happened but for an argument is not thereby suspect.
-
-## 3. The certificate, and what it costs now
+## 2. What a tree gives
 
 ```text
-Ground = ( occ, edit, children )
+Recognizes_A(G)  and  A accepts (Auth, Valid)  and  pi is a tree for o
+------------------------------------------------------------------
+A may conclude:   o was legitimately issued
+A may not conclude:   o is in force
 ```
 
-A finite grounding tree: leaves in `G`, internal nodes accepted edits, children
-the grounds each edit invoked, historical index strictly decreasing. That is the
-whole certificate. **The stability judgments are gone**, because there is no
-challenge operator to evaluate.
+The tree is finite in the size of `o`'s ancestry, its leaves are in the base, and
+its internal nodes are edits `A` can check. That is the cheap part and it is
+genuinely cheap.
 
-What a recipient must be able to do instead is evaluate `Valid` at each node —
-which is `grounds ⊆ Auth(L)`, `Permit`, and `ProvOK` at the audit context. The
-first two are local to the tree. `ProvOK` is where the cost now sits, and it is
-smaller than before: a judgment about one edit's declared input and exercise
-rather than a replay of the whole record under a voided episode.
+## 3. What a current-state claim costs
 
-So the honest reading of a certificate is:
+It is history-sensitive and there is no way around that. To know `o ∈ L_t`, `A`
+needs to know that no accepted edit in `(s, t]` disposed `o`, and *accepted* is
+itself a replay judgment. So one of:
 
-1. `A` evaluates `ProvOK` itself, which needs the declared inputs and `alpha` but
-   not the raw history;
-2. `A` names an audit context and `B` answers for the edits it doubts;
-3. `A` accepts an attestation, which is a trust assumption and should be recorded
-   as one.
+1. **`A` replays the prefix.** Needs the trace and `Valid`, and gives the exact
+   answer.
+2. **`B` commits to a state and proves the delta.** Needs a commitment scheme and
+   a proof that the edits since it were applied correctly; nothing here builds
+   one.
+3. **`A` accepts an attestation of currentness**, which is a trust assumption and
+   should be recorded as one.
 
-Route 1 is now available and was not before, which is the main practical gain of
-the compression.
+The previous interface offered route 1 without saying so, because its certificate
+had a currentness check hidden inside it.
 
-## 4. What A must be told, and it is more than before
+## 4. Checkers, and what a recognizer must require
 
-Everything is relative to four inputs, and a certificate that omits any of them
-certifies nothing:
+If `A` does not evaluate `Valid` itself but uses a checker, the condition is
+**agreement along the trace**, not soundness:
 
 ```text
-G        the base                    — A recognizes it or the question is empty
-Pi       Permit and ProvOK           — what counts as an authorized exercise
-Xi       the threat class            — what influences A cares about
-alpha    the audit context           — what is currently believed about the past
+for every t:   Check(L_t, e_t)  <->  Valid(L_t, e_t)
 ```
 
-`alpha` is the new one and it is not a formality. Two recognizers with the same
-base and the same semantics can legitimately disagree about what is in force,
-because they believe different things about whether an old edit's conditions were
-actually met. That is a feature — it is how a recognizer revises on new evidence
-— and it means recognition is indexed, not absolute.
+One-sided soundness is worth nothing. A checker that misses a valid revocation
+keeps an authority the semantics removed, and `A` then positively recognizes an
+authority that is no longer legitimate — `COUNTERMODELS.md` §3. This is a change
+from the previous pass, which said soundness sufficed for recognition and was
+wrong.
 
-## 5. Answerability, and what became of it
+Both consumers need the same condition, so the earlier asymmetry between them is
+withdrawn too.
 
-Not in the headline object, and this pass did not put it back. The previous
-pass's countermodel stands: a delegation nobody answers for has a clean spine and
-a derivable authority.
-
-Under the compressed theory the point sharpens. Custody — who is answerable — is
-not part of the legitimate state at all, because the state is a set of
-occurrences and has no holder field. Reflective Integrity's `Transfer` is
-therefore a **no-op on `L`**, and a recognizer that cares whether `B` is an
-answerable process is asking a question this object does not answer.
-
-That is the right division and it is stated rather than assumed: entitlement is
-what `L` tracks; answerability is a separate interface; and `TRADERIZATION_CONSUMER.md`
-§5 has the third.
-
-## 6. The three interfaces
+## 5. What A must be told
 
 ```text
-legitimate    entitled                  o in L(alpha, t), under Pi and Xi
-accountable   answerable                the account layer — not here
-serviceable   sustainably enforceable   bounded-lifetime liability — not here
+G          the base                    A recognizes it or the question is empty
+Auth       which occurrences may ground an edit
+Valid      the semantic relation, or the pieces that define it
+alpha      the audit context — what is believed about the past
 ```
 
-Independent, and the process carries no liability field. A legitimate norm can be
-unenforceable, and the enforcement API says so itself.
+`alpha` is not a formality. Two recognizers with the same base and the same
+semantics can legitimately disagree about what is in force, because they believe
+different things about whether an old edit's conditions were met. Recognition is
+indexed, not absolute.
+
+## 6. The recognition axiom
+
+Unchanged in status and narrower in what it commits to:
+
+> **(R)** `A` regards an occurrence admitted by the replay of a process whose
+> base, authority predicate and validity relation `A` accepts, at an audit context
+> `A` accepts, as one it recognizes. `[AXM]`
+
+The mathematics does not derive it. What it does is say exactly what (R) is a
+commitment to — S1, S2, and the semantics `A` accepted — and exactly what it is
+not: it says nothing about what the occurrence's content is, and nothing about
+whether the occurrence is still in force.
+
+## 7. The three interfaces
+
+```text
+legitimate    entitled                  o in Adm, or o in L_t
+accountable   answerable                not in this object
+serviceable   sustainably enforceable   not in this object
+```
+
+Independent, and the kernel carries no field for either of the others. Custody —
+who is answerable — is not in the state at all, so a `Transfer` in a record is a
+no-op on `L`.

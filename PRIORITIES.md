@@ -1071,31 +1071,56 @@ states exactly which of its functions must newly read `V`.
 *Consumed by:* the round taking these waists to real normative practice, which is
 where open-textured reasons first arrive.
 
-### 66. The legitimate replay in Lean — **[entry]**
+### 66. Grounded Replay in Lean — **[entry]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-The abstract legitimacy interface is finite, first-order, and has no dependency on
-either reference model or on Reflective Integrity: an occurrence type, an edit
-type, a fold, six hypotheses and six theorems whose proofs are inductions over the
-edit history.
+Two types, one fold, two premises, one induction and three corollaries. No
+dependency on either reference model or on Reflective Integrity, and the whole
+statement fits on a page.
 
-Three passes were needed before this was worth doing, and each found a false or
-missing statement in the one before. Porting the first pass's rule would have
-formalized a theorem whose conclusion a register refutes; porting the second's
-would have formalized a frontier an unauthorized revocation can empty.
+Four passes were needed before this was worth doing, and each found a false or
+missing statement in the one before: a rule whose licences need not be grounded, a
+frontier an unauthorized revocation can empty, a grounding theorem an ungrounded
+creation refutes, and a certificate that answered a currentness question with a
+lineage. Porting any of them would have frozen a false statement.
 
-*Deliverable shape:* `Occ`, `Edit`, `replay`, the hypotheses as typeclass fields
-or explicit arguments; `thm_finite_grounding`, `thm_no_laundering` and
-`thm_noninterference` proved; an inhabitation witness for the full hypothesis
-package, per `AGENTS.md` standard 3.
+*Deliverable shape:* `Occ`, `Edit`, `replay`, `S1` and `S2` as explicit
+hypotheses; the grounding theorem and its three corollaries proved; an
+inhabitation witness for the full hypothesis package, per `AGENTS.md` standard 3.
 *Acceptance check:* sorry-free, `#print axioms` clean, and the witness is the
 constitution model rather than a record — the point is that the theorem does not
 mention one.
 *Context:*
-`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
-§§1-5; `src/replay.py`.
-*Consumed by:* any round wanting to cite legitimate evolution as established
-rather than as test-supported.
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`,
+the `MINIMAL MATHEMATICAL STATEMENT` section; `src/replay.py`.
+*Consumed by:* any round wanting to cite grounded legitimacy as established rather
+than as test-supported.
+
+### 70. A current-state certificate — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+A grounding tree certifies that an occurrence was legitimately issued. It cannot
+certify that it is still in force: a tree is built from grounds, disposals are not
+grounds, and so no tree names the revocation that would defeat it.
+
+Both consumers need currentness. Deference is deferring to a judgment *now*, and
+an authority since revoked is not one; enforcement's target is what is in force.
+So the interface currently offers a cheap certificate for the half neither
+consumer can use alone, and requires a replay for the half they need.
+
+Three routes and nothing here builds the second: the recognizer replays the
+prefix; the process commits to a state and proves the delta since it; the
+recognizer accepts an attestation and records that as trust.
+
+*Deliverable shape:* either a commitment-and-delta object with a soundness
+statement, or an argument that currentness is irreducibly a replay, with what that
+costs a recognizer.
+*Acceptance check:* the missed-revocation and lineage-versus-current processes are
+decided correctly by whatever object is proposed.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CROSS_PROCESS_INTERFACE.md`
+§§1-3.
+*Consumed by:* both consumer theorems.
 
 ### 67. Jurisdiction on an authority — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
@@ -1125,27 +1150,25 @@ rather than by a constitution.
 ### 68. Discharging provenance adequacy — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Adequacy is a typed hypothesis: a threat class supplies the influences a
-recognizer cares about, and a process certifies against it only when its
-provenance relation can refuse the edits each influence produced. What nothing
-supplies is the map from an influence to the edits it produced. A record's own
-declared episodes generate a threat class its provenance covers by construction,
-so a record can never fail its own adequacy test.
+The descriptive provenance view of an act must expose every dependency of the
+authorization judgment that the stated threat class cares about. The round tried
+four times to state this non-circularly and has not: it is not "assume the
+relevant influences are visible", not "refuse every influence" — that refuses
+permitted persuasion — and not derivable from a record whose own episodes cover by
+construction.
 
-This has survived three reformulations of the surrounding theory — a
-challenge-stability spine, a typed coverage predicate over challenge sets, and now
-a declared-input provenance relation — which is the strongest evidence available
-that it is not an artefact of any of them.
+It is currently carried as a boolean the extraction must justify, which is honest
+and is not a condition.
 
-*Deliverable shape:* either a condition on a process's declaration discipline
-under which its own episodes are an adequate threat class, or an argument that no
-such condition is statable without a world counterfactual, with the
-counterexample.
+*Deliverable shape:* either an adequacy property that is non-circular, compatible
+with permitted persuasion, and falsified by the hidden-dependency fixtures, or an
+argument that none exists without a world counterfactual, with the counterexample.
 *Acceptance check:* the unlinked arm of the Carroll round's split-episode fixture
-fails the proposed condition and the linked arm passes it.
+and `cases.partial_effect_pair` both fail the proposed condition, and
+`office.persuasion` passes it.
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
-§8; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6, `C25`.
+§8; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6.
 *Consumed by:* any round treating a legitimate state as evidence about an external
 process rather than about its own declarations.
 

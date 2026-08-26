@@ -1,4 +1,4 @@
-# Legitimate evolution and cross-process recognition
+# Grounded Replay
 
 Status: **specification, reference models and a prosecution record;
 unregistered.** All names are provisional under `AGENTS.md` §6. Nothing here is
@@ -6,123 +6,109 @@ Lean-checked and no claim is registered.
 
 ## Verdict
 
-LEGITIMACY-THEOREM-COMPRESSED — the raw lifecycle is replaced by a legitimate replay indexed by an audit context; an unauthorized revocation is a no-op; authorization of the exact exercise is separated from grounding of the authority; legitimate influence no longer has to survive its own removal; declared-dependency factorization is precise and falsifiable in two ways; and finite grounding, no-laundering and hidden-state noninterference are proved from local hypotheses each of which fails a countermodel when dropped.
+GROUNDED-REPLAY-KERNEL-STABLE — the structural theorem is an induction over a list with two premises, each with a countermodel in which the conclusion fails and neither subsuming the other; validity is defined rather than constrained; descriptive provenance is separated from normative permission; lineage is separated from currentness; and the checker condition is exact.
 
-Four reservations, all in `THEOREM_MAP.md` and `COUNTERMODELS.md`.
+Four reservations, all in `THEOREM_MAP.md`.
 
-**The substantive content is in the parameters.** `Permit` and `ProvOK` carry
-what legitimacy actually says; what is proved here is structural. That is the
-honest division and it is stated rather than disguised.
+**The theorem is short.** An induction over a list, and two of its three
+corollaries are two lines each. What it earns is that four successive
+formulations of this object failed it.
 
-**Coverage is still undischarged.** `depends` is supplied from outside, a
-record's own episodes cover by construction, and this is the hole that has
-survived every reformulation the round has tried.
+**The substantive content is in the parameters.** `Permit` and `ProvComplete`
+carry what legitimacy actually says.
 
-**Recognition transport is still an axiom**, and now carries four parameters
-rather than two: base, authorization semantics, threat class, audit context.
+**Provenance completeness is undischarged**, and the round tried to state it
+non-circularly and failed. It is an explicit epistemic assumption on the
+extraction.
 
-**Neither consumer theorem is provable yet.** Deference needs an index on the
-grade; enforcement needs bounded-lifetime liability.
+**A current-state certificate does not exist.** A grounding tree certifies origin
+and cannot certify currentness, and both consumers need currentness.
 
-## What replaced what
-
-```text
-                     before                         now
-state         raw_live ∩ Derivable          L(alpha, s), replayed from G
-judgment      does the edge survive q       did prior authority permit this edit
-identity      standings and derivations     occurrences, tagged by issuing edit
-time          one index                     historical time and audit time
-axioms        L0-L4 + coverage + L5-L8      H1-H6
-```
-
-The previous succession calculus was the scaffold. It found the right questions —
-licences must be grounded, jurisdiction is missing, coverage is a hypothesis —
-and the object underneath is smaller.
-
-## The theorem
+## The statement
 
 ```text
-L(alpha, 0)    = G
-L(alpha, s+1)  = apply(L(alpha, s), e_s)   if Valid_alpha(L(alpha, s), e_s)
-                 L(alpha, s)               otherwise
+L_0     = G
+L_{t+1} = (L_t \ dispose(e_t)) union issue_t(e_t)   if Valid(L_t, e_t)
+          L_t                                        otherwise
 ```
 
 ```text
-H1 mediated mutation      state moves only by applying an edit
-H2 fresh occurrence       an edit issues occurrences nobody has issued
-H3 prestate grounding     a valid edit's grounds are authorities of the pre-state
-H4 permit soundness       a valid edit is one its grounds permit, for this edit
-H5 declared factorization same declared view, same verdict and same effect
-H6 provenance adequacy    valid implies ProvOK, and ProvOK reaches Xi
+S1   grounds(e_t) subset { o in L_t : Auth(o) }
+S2   apply_t(L_t,e_t) != L_t  ->  grounds(e_t) != {}
 ```
+
+> Every occurrence the replay has ever admitted has a finite grounding tree:
+> leaves in `G`, internal nodes accepted edits, children the grounds that edit
+> invoked, and positions strictly descending.
+
+with three corollaries — no self-ratification, no laundering, persistence until
+an accepted edit disposes it. `LEGITIMATE_EVOLUTION.md` opens with the whole
+statement on one page.
+
+## What this pass found
+
+**The grounding theorem was false.** An edit with no grounds satisfies prior
+grounding vacuously and issues an occurrence whose only tree is a leaf outside
+the base. `S2` is the repair, and the right form is *state-changing* rather than
+*any* edit: a no-op needs no authority, and grounding and persistence consume the
+two halves.
+
+**Historical time was being used as identity.** Two edits at one time issued the
+same occurrence. The trace is a list; position is identity and order at once;
+freshness stops being a premise.
+
+**Soundness at a checker's own state is worth nothing.** A checker that misses a
+valid revocation keeps an authority the semantics removed and then admits a stale
+use of it — and the previous pass's soundness notion reports that clean. The
+exact condition is agreement along the trace, it is weaker than global equality,
+and **both** consumers need it. The previous pass's asymmetry between them is
+withdrawn.
+
+**A grounding tree cannot certify currentness.** A tree is built from grounds and
+disposals are not grounds. So deference, which needs current authority, does not
+get a finite certificate — it needs a replay, a commitment scheme nobody has
+built, or an attestation.
+
+**Content invariance was vacuous and is false.** The check replayed the unchanged
+process, and permission reads content once a live policy can ban a scope.
+
+## What got smaller
 
 ```text
-G1 finite grounding       a finite tree to G, historical index descending
-G2 no self-ratification   no edit is grounded in what it issues
-G3 no laundering          a rejected occurrence never becomes legitimate
-G4 noninterference        hidden state cannot move the legitimate state
-G5 persistence            until a valid edit disposes it
-G6 revisability           content is unconstrained
+before                          now
+six hypotheses H1-H6            two premises S1, S2
+Valid primitive + 3 assumptions Valid defined
+ProvOK refusing influences      ProvView describing + Permit deciding
+Occ = (at, index, sort)         Occ = (pos, slot)
+declared/effect split + H5      the effect is in the edit; H5 is extraction
+Auth/Norm a partition           Auth a predicate; Norm lives in the realizations
+G1..G6                          one theorem, three corollaries
 ```
-
-## The three attacks that forced it
-
-**An unauthorized revocation used to work.** `office.rogue_revocation`: a rogue
-authority is correctly refused, and the norm it revokes leaves the frontier
-anyway, because the raw lifecycle was a conjunct. The persistence theorem
-reported no violation while it happened. An attacker who could not add to the
-enforcement target could still subtract from it.
-
-**A grounded warrant used to do anything.** `office.unauthorized_scope`: a fiscal
-warrant legislating on safety, with impeccable grounds and provenance, admitted.
-The calculus checked that the licence was derivable and never what it was for.
-
-**Being persuaded used to count against you.** `office.persuasion`: remove Bob's
-argument and Alice's revision does not happen, and challenge survival scored that
-as dependence. A legitimacy theory that cannot let an agent be argued into a
-revision is not describing the learning the programme exists to describe.
-
-## Occurrences, not contents
-
-An occurrence is *this* grant, tagged by the index of the edit that issued it.
-That one choice makes freshness free — so unique issuance is not an axiom and the
-question the previous pass argued about does not arise — makes no-laundering
-true, and lets a later clean act adopt the very content a rejected act proposed.
-
-## The surprise in audit contexts
-
-Tightening `alpha` can put **more** in force, because the edit it invalidates was
-a repeal. The previous branch met this as the challenge operator being neither
-monotone nor composable and could only record it; here it is a one-line
-consequence, which is the clearest sign the object was wrong before.
 
 ## Contents
 
-- `LEGITIMATE_EVOLUTION.md` — the canonical theorem: the object, H1-H6, G1-G6,
-  the realization, and what the compression cost.
-- `CROSS_PROCESS_INTERFACE.md` — what a recognizer receives and must be told.
-- `CONSUMER_TEST.md` — deference and corrigibility.
-- `TRADERIZATION_CONSUMER.md` — enforcement, and the one theorem still missing.
-- `COUNTERMODELS.md` — every hypothesis prosecuted; withdrawals are §§1-5.
+- `LEGITIMATE_EVOLUTION.md` — the minimal statement, then the layers.
+- `CROSS_PROCESS_INTERFACE.md` — origin, historical and current, and what each costs.
+- `CONSUMER_TEST.md` — deference, and which of the three it needs.
+- `TRADERIZATION_CONSUMER.md` — enforcement, and the four repeal cases.
+- `COUNTERMODELS.md` — every premise prosecuted; withdrawals are §§1-5.
 - `THEOREM_MAP.md` — every claim graded, withdrawals first.
-- `src/` — `replay.py` (the theorem), `ri_frame.py` (the record realization),
-  `office.py` (a constitution and its gazette, importing nothing else of ours),
-  `cases.py` (the records the Carroll round did not have).
-- `tests/` — 46 cases. `python3 tests/run.py`.
+- `src/` — `replay.py` (the kernel), `office.py` (the semantics and a
+  constitution model importing only the kernel), `ri_frame.py` (extraction from a
+  record), `cases.py` (records the Carroll round did not have).
+- `tests/` — 55 cases. `python3 tests/run.py`.
 
 ## What this does not establish
 
-No Lean and no registered claim; the realization is a paper argument from
-Reflective Integrity's own unregistered statements.
+No Lean and no registered claim.
 
-The theorems are not deep. G3 and G5 are short, and the ontology did their work.
-The defence is that they were false or missing in the previous object, and that
-each fails when its hypothesis is dropped — checked, not asserted.
+Provenance completeness is an assumption, not a condition. It is not "assume the
+relevant influences are visible", not "refuse every influence", and not derivable
+from a record whose own episodes cover by construction.
 
-Coverage is a hypothesis nobody discharges, and it is now the only place where a
-process satisfying every axiom can still be certified against a threat it never
-looked at.
+`Permit` is opaque. A constitution with a permissive one satisfies every theorem
+here.
 
-Reflective Integrity has no jurisdiction on an authority, so **H4** is vacuous on
-a record whose authority is a bare `PAuth`. The abstraction exposed that; it is a
-gap in the architecture rather than in the interface, and nothing here fixes it.
+Reflective Integrity has no jurisdiction on an authority, so the permit clause is
+nearly vacuous on a record. That is a gap the abstraction exposed and this pass
+deliberately did not repair.

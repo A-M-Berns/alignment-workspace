@@ -2462,3 +2462,279 @@ Answer directly: 1. Does `F^leg = raw_live ∩ Derivable` fail under illegitimat
 > **The theorem must say more than "the valid replay contains only valid edits." Its global content should be finite grounding, no laundering, and noninterference.**
 
 Treat the current branch as a strong provisional result, not as something to defend.
+
+---
+
+---
+
+# PROSECUTION AND COMPRESSION PASS — BEFORE MECHANIZATION
+
+*Dispatched after the compression pass shipped and was reviewed.*
+
+You are doing one more mathematical prosecution/compression pass on
+`round/2026-08-25-legitimate-evolution`. Current verdict:
+`LEGITIMACY-THEOREM-COMPRESSED`. Do **not** trust that verdict. Do **not**
+Lean-port anything in this pass.
+
+The previous pass appears to have found the correct dynamic object and correctly
+replaced the old `raw_live ∩ Derivable` frontier. The purpose of this pass is
+different:
+
+> **Strip the theorem down to its exact mathematical kernel, prosecute every
+> remaining premise, and separate the structural replay theorem from the
+> substantive local legitimacy semantics and from implementation-factorization
+> claims.**
+
+The target is not another richer architecture. The target is a theorem small
+enough that every type, premise and conclusion is obviously doing necessary work.
+
+# 1. Start by trying to refute the current G1
+
+Construct an edit with `grounds = {}`, issuing a fresh authority, disposing
+nothing, with `Valid` true, `Permit` true, `ProvOK` true, `Xi = {}`. Current H3
+says `Valid(L,e) -> grounds(e) ⊆ Auth(L)`, which holds vacuously. Does current G1
+nevertheless claim a finite grounding tree whose leaves lie in `G`? If yes, G1 is
+false as stated. Do not paper this over by changing the certificate checker.
+Identify the exact missing premise — candidates being
+`Valid(L,e) and apply(L,e) != L -> grounds(e) != {}` or the stronger
+`Valid(L,e) -> grounds(e) != {}` — and decide which is mathematically right.
+Interpret the choice: if something may enter or leave legitimate normative state
+without any prior authority premise, it is a new root, and roots that are intended
+belong in `G`. Add the minimal countermodel and repair.
+
+# 2. Prosecute occurrence identity harder
+
+`Occ = (at, index, sort)` and freshness is claimed to follow from the type. Are
+historical times guaranteed unique per edit? What happens if two edits share `at`?
+Is `at` identity or merely order? Does `Process.at(s)` silently assume at most one
+edit per time? If freshness depends on unique historical times, that is an
+unstated structural premise. Prefer, if necessary, an `EditId` with `time` separate
+and `Occ = (issuer, slot)`. Do not add complexity unless the current
+representation actually has the hole. State exactly which property the theorems
+consume: **unique birth of an occurrence**, not unique issuance of a content.
+
+# 3. Attack the current soundness/completeness result
+
+Prosecute with a missed authority revocation: `a ∈ Auth(G)`, a semantically valid
+`e0` revoking `a`, a sound-but-incomplete verifier rejecting `e0`. Compare the
+semantic replay with the verifier replay. Does the recognizer now positively
+recognize an authority no longer semantically legitimate? Then let a later `e1`
+use `a` as a ground: because the checker replay retains `a`, `e1` may be valid
+relative to the checker state and invalid relative to the semantic one. Test
+whether the current `verifier_sound` still calls this checker sound. Determine the
+correct mathematical relation between semantic replay and checker replay — full
+equivalence, or a projection-specific simulation. Find the weakest condition
+actually sufficient for current `AuthorityView`, current `NormView`, and positive
+issuance certificates. This is a mathematical question, not a product-design
+choice.
+
+# 4. Distinguish three different certification questions
+
+Construct `g --e1--> a`, `e2` validly revokes `a`, `a --e3--> b`. The apparent
+grounding tree `g -> a -> b` contains no representation of `e2`, yet whether `e3`
+was valid depends on `a ∈ Auth(L_3)`, which depends on `e2`. Distinguish origin /
+grounding, historical-liveness, and current-state certificates. Ask exactly what
+G1 proves and do not let "finite grounding tree" silently imply the latter two.
+Determine whether an independently checkable current-authority certificate
+requires replaying the prefix, a state commitment plus proof, proof of absence of
+valid disposal, a richer authorization-proof object, or something else. The
+theorem must stop claiming more than G1 gives.
+
+# 5. Reconsider whether `Valid` should remain an arbitrary parameter
+
+If `Valid` means semantic legitimacy relative to the supplied semantics, why is it
+permitted to arbitrarily reject an edit that is properly grounded, permitted and
+provenance-adequate? Try defining semantic validity rather than constraining it,
+and distinguish semantic `Valid`, computable `Verify` and raw-process admission.
+Decide whether H3/H4/H6 should disappear as theorem hypotheses and become clauses
+of the definition. If there is a good reason to keep `Valid` primitive, exhibit a
+case which requires the extra freedom.
+
+# 6. Separate descriptive provenance from normative permission
+
+Provenance should answer descriptive questions — did Bob provide this argument,
+was this signature forged, was Alice coerced, which inputs entered this exercise,
+was the designated investigation run. `Permit` should decide what those facts mean
+normatively — persuasion is allowed, forgery does not count as exercise, coercion
+does or does not invalidate, this jurisdiction may act on this subject, this vote
+threshold suffices. Re-run persuasion, forged input, coerced exercise and the
+laundering campaign. The persuasion case is especially important: Bob's argument
+should appear in provenance while still being normatively permitted.
+
+# 7. Make the remaining coverage problem exact
+
+Do not solve coverage. State the irreducible question as sharply as possible: for
+a threat class `Xi`, does the provenance view expose every `Xi`-relevant
+dependency of the authorization judgment? Try to state an adequacy property which
+is not circular, not "assume all relevant influences are visible" in prose, not
+equivalent to "refuse every influence", compatible with permitted persuasion, and
+falsifiable by the existing fixtures. If no satisfactory abstract condition
+exists, say so and leave coverage as an explicit epistemic/causal assumption. Do
+not contaminate Grounded Replay with it.
+
+# 8. Freeze the effect inside the edit
+
+If legitimacy authorizes the exact normative edit, consider making `delta =
+(dispose, issue)` part of the proposal, so `apply` is deterministic by
+construction. A raw implementation performing another effect has not executed the
+same edit; it has violated a realization-level conformance relation. Ask whether
+the hidden-effect countermodel belongs at the legitimacy theorem or at the
+raw-history to abstract-edit realization boundary. Prefer the latter if the maths
+permits.
+
+# 9. Move H5 to the correct level if possible
+
+Decompose: raw history → extraction → edit trace → deterministic semantic replay →
+`L`. At the abstract level, same base plus same abstract trace gives the same
+replay, which is fold congruence. At the realization level, same declared raw view
+gives the same extracted trace, which is the substantive factorization theorem.
+Determine whether hidden-state noninterference should therefore be a composition
+of the two. If so, H5 is not a legitimacy premise.
+
+# 10. Delete or repair G6
+
+Arbitrary content relabelling should be able to change `Permit` and therefore
+legitimacy — a fiscal warrant may permit setting a tax rate while refusing to
+disable a safety system. Also inspect whether the executable check genuinely
+replays a relabelled process or merely builds a relabelled dictionary while
+replaying the unchanged one. If the claim is vacuous or false, withdraw it, and
+replace it with a no-content-conservativity statement that is not a separate
+theorem if it follows from the structural proof never inspecting content.
+
+# 11. Reconsider the authority/norm partition
+
+Ask whether the theorem requires a partition. Could one item be both
+authorization-bearing and substantively normative? Grounded Replay seems to need
+only `Auth`, while the enforcement consumer needs `Norm`; they need not be
+exhaustive or disjoint unless a theorem uses that. Prefer predicates if the
+partition buys nothing. Do not change RI merely for elegance.
+
+# 12. Strip the structural theorem down aggressively
+
+Isolate a theorem mentioning none of `Permit`, `ProvOK`, `Xi`, raw histories,
+challenge replay, reason occurrences, settlements, answerability, deference or
+traderization. Structural premises should be only what the induction consumes.
+Candidate minimum: unique birth; accepted nontrivial edits have a non-empty ground
+set; `Valid(L,e) -> grounds(e) ⊆ Auth(L)`; plus whatever ordering fact ensures
+grounds strictly precede issued outputs. Determine the exact minimum. Do not
+retain six hypotheses for symmetry.
+
+# 13. State the strongest exact Grounded Replay theorem
+
+State it in mathematical form, not prose, with the corollaries — no
+self-ratification, no laundering of rejected occurrence identities, persistence
+until accepted disposal — derived separately. Check whether these are genuinely
+consequences of the same premises or require different structural assumptions.
+
+# 14. Ask whether live-state membership is what G1 should range over
+
+An occurrence can be legitimately issued and later legitimately disposed; its
+legitimacy history does not vanish. Consider `Admitted` = `G` union the issues of
+accepted edits, with `L ⊆ Admitted`, and lifecycle separate. Prosecute both
+formulations and use the one the consumers actually need.
+
+# 15. Press the distinction between lineage and currentness
+
+`Grounded`, `Admitted` and `Live` should not be silently identified. Determine
+their exact relationships and build counterexamples for the reverse implications.
+In particular: a grounding tree may establish `Grounded(o)` but cannot by itself
+establish `Live_t(o)`. Make this explicit if true.
+
+# 16. Re-run the two consumers after the distinction
+
+Deference: decide whether the bridge needs `Grounded(o)` or `Live_t(o)`. If it
+needs current legitimate authority, a grounding tree alone is insufficient and
+checker completeness matters. Traderization clearly consumes `Norm(L_t)`, so it
+requires currentness; re-test unauthorized repeal, valid repeal, missed valid
+repeal and audit-invalidated repeal.
+
+# 17. Keep the reasons multihypergraph below the structural theorem
+
+Do not put `ReasonOcc` into Grounded Replay. A reason derivation is evidence for
+the local judgment, not a parent in the authorization grounding tree unless a
+normative rule separately makes it one. Preserve: epistemic provenance is not
+normative authority provenance.
+
+# 18. Do not repair RI jurisdiction yet
+
+Leave the bare-`PAuth` gap as a realization failure. Do not widen `PAuth` merely to
+make a hypothesis green. First determine the clean abstract `Permit` interface.
+
+# 19. Required countermodels
+
+Nullary authority creation; two edits at one historical time; missed valid
+authority revocation; stale authority used downstream; grounding tree omitting an
+intervening revocation; content-sensitive jurisdiction; permitted persuasion;
+forged input; coerced exercise; hidden raw dependency; hidden effect; legitimate
+readoption of identical content.
+
+# 20. What may survive
+
+A structural core (Grounded Replay, finite grounding, no self-ratification, no
+laundering, persistence); local semantics (`Valid` defined from prior authority,
+non-empty basis, complete provenance description, `Permit`); realization
+(extraction factorization giving hidden-state noninterference); computation
+(`Verify` versus semantic `Valid`, with separate soundness/completeness/simulation
+questions).
+
+# 21. Do not oversell mathematical depth
+
+If Grounded Replay is a short induction, say so. The contribution may be
+identifying the correct derived state, the exact closure invariant, why previous
+natural objects fail, the separation of global grounded evolution from local
+substantive legitimacy, and the right interfaces for two consumers. Do not inflate
+a two-line persistence lemma into a central theorem.
+
+# 22. Deliverables
+
+Update the current round. Delete obsolete claims and tests rather than keeping them
+alive for continuity. Preserve withdrawn formulations in the prosecution record
+where historically useful. **Do not write Lean.**
+
+# 23. Final theorem statement
+
+End with a section literally titled `MINIMAL MATHEMATICAL STATEMENT` containing
+exact types, exact definitions, the minimal premises, the exact theorem, exact
+corollaries, one counterexample per premise, which claims are definitional versus
+inductive, and which objects are structural versus semantic versus
+realization-level. It should fit on roughly one page.
+
+# 24. Final questions
+
+1. Is current G1 false because empty ground sets are allowed? 2. What is the
+minimal repair? 3. Is historical time being used incorrectly as edit identity? 4.
+What exact freshness property is required? 5. Does sound verifier
+under-approximation preserve current `AuthorityView`? 6. Does it preserve current
+`NormView`? 7. What is the weakest checker relation sufficient for each? 8. What
+exactly does a grounding tree certify? 9. What does it fail to certify? 10. Is a
+current-state certificate necessarily history-sensitive? 11. Should semantic
+`Valid` be defined rather than primitive? 12. What is the exact definition if so?
+13. Which work is descriptive provenance doing? 14. Which work is `Permit` doing?
+15. What exactly remains open in threat/provenance completeness? 16. Should the
+edit contain its frozen effect? 17. If yes, what becomes of hidden-effect
+factorization? 18. Is H5 a legitimacy hypothesis or a realization theorem? 19. Is
+G6 false/vacuous and should it be deleted? 20. Must `Auth` and `Norm` be a
+partition? 21. What are the minimal structural premises? 22. Should G1 range over
+current live state or all historically admitted occurrences? 23. What is the exact
+relation between grounded, admitted and live? 24. Which does deference consume?
+25. Which does traderization consume? 26. What remains of H1-H6? 27. What remains
+of G1-G6? 28. Is the theorem now stable enough for a future Lean port?
+
+# 25. Verdicts
+
+`GROUNDED-REPLAY-KERNEL-STABLE` if the structural theorem reduces to a small exact
+induction with all premises prosecuted and the semantic/realization layers cleanly
+separated. `COMPRESSION-STILL-LEAKY` if the replay object is right but
+types/premises/certificates still conflate distinct notions.
+`REPLAY-SPINE-FAILS` if a serious counterexample breaks the reconstructed-state
+approach itself. No Lean in any case.
+
+The standard for this pass:
+
+> **At the end I should be able to write the core theorem on a whiteboard in under
+> a minute, and every symbol on the board should have a mathematically unavoidable
+> role.**
+
+The main thing to resist is adding concepts. Prefer deleting assumptions,
+splitting claims that are mathematically different, and moving
+implementation-specific facts below the realization boundary.

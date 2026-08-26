@@ -109,6 +109,72 @@ commit.
 
 ## Settled
 
+### 2026-08-26 — an occurrence is identified by trace position, not by historical time
+
+**agent-decided, reversible.** The previous formulation made an edit's identity
+its historical index and left that index a free field, so two edits at one time
+issued the same occurrence and a claim that freshness followed from the type
+rested on an unstated premise.
+
+The trace is a list. Position is identity and order at once, and freshness stops
+being a premise. A realization that wants to record when an act happened carries
+that as data; two acts at one moment still issue distinct occurrences.
+
+What the theorems consume is unique **birth**, not unique issuance of a content —
+which is what lets the same policy be adopted twice, once illicitly and once
+cleanly.
+
+*Rejected alternative:* a separate edit identity with historical time beside it,
+which buys the same freshness at the cost of a second index nothing else uses.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§2.
+
+### 2026-08-26 — semantic validity is defined, not constrained
+
+**agent-decided, reversible.** The previous formulation kept validity primitive
+and assumed three implications about it, leaving it free to reject an edit that
+was grounded, permitted and provenance-adequate for no stated reason. Nothing
+needed that freedom.
+
+Validity is now the conjunction of prior grounding, a non-empty ground set for a
+state-changing edit, provenance completeness, and permission. The first two are
+the kernel's premises; the last two are the semantic layer's parameters.
+
+This also splits descriptive provenance from normative permission. Provenance
+answers whether Bob argued, whether a signature was forged, whether the actor was
+coerced; permission answers what those facts mean. The previous provenance
+predicate could only refuse an influence, which is why permitted persuasion had
+to be handled as an exception.
+
+*Rejected alternative:* a primitive validity relation with hypotheses on it.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
+§2.
+
+### 2026-08-26 — a grounding certificate is about origin, not currentness
+
+**agent-decided, reversible.** The grounding theorem ranges over what the replay
+has ever admitted, not over what is in force. A tree is built from grounds, and
+disposals are not grounds, so it structurally cannot witness that nothing later
+removed the occurrence.
+
+The previous certificate conflated the two by requiring the occurrence to be live
+before building a tree, and so answered a currentness question with a lineage
+object. Both consumers turn out to need currentness, so this is a cost the
+interface now states rather than hides: a current-state claim needs a replay, a
+commitment plus a delta proof, or an attestation.
+
+*Rejected alternative:* keeping the liveness check inside the certificate, which
+made the object look cheaper than it is.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CROSS_PROCESS_INTERFACE.md`
+§1.
+
+
 ### 2026-08-25 — the legitimate state is replayed, not filtered
 
 **agent-decided, reversible.** Re-rules the same day's frontier entry below,

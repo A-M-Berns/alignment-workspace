@@ -1,630 +1,460 @@
-"""Legitimate replay: the legitimate state is reconstructed, not filtered.
-
-A process proposes a finite sequence of **edits**. The legitimate state is built
-by replaying them and applying exactly the valid ones:
+"""Grounded Replay: the structural kernel.
 
 ```text
-L(alpha, 0)    = G
-L(alpha, s+1)  = apply(L(alpha, s), e_s)   if Valid_alpha(L(alpha, s), e_s)
-                 L(alpha, s)               otherwise
+L_0     = G
+L_{t+1} = (L_t \\ dispose(e_t)) union issue_t(e_t)   if Valid(L_t, e_t)
+          L_t                                        otherwise
 ```
 
-The raw process may diverge from this arbitrarily. What it does is a fact about
-the raw process; what is legitimately in force is `L`.
+Everything here is structural. `Valid` is a parameter and no theorem below
+assumes it is any good; `office.py` supplies a semantic one and `ri_frame.py` one
+derived from a record. Nothing here mentions provenance, threat classes,
+permission, reasons, settlements, answerability, prices or raw histories, and
+`tests/test_replay.py` checks that by reading the module.
 
-Nothing here is a normative event, a reason occurrence, a settlement, an
-answerability root, a replay of a record, or a price. `office.py` builds edit
-sequences from a constitution and its gazette; `ri_frame.py` builds them from a
-Reflective Integrity record. Both run the hypothesis checkers and the theorems
-below unchanged.
+Three things were deleted rather than repaired.
 
-```text
-Occ                 an occurrence: what a particular act put in force
-Edit                a frozen proposal: grounds, input, exercise, dispose, issue
-G                   the base a recognizing process accepts
-alpha               the audit context — what is currently believed about the past
-Valid_alpha         the semantic legitimacy relation, a parameter
-Permit              the authorization relation, a parameter
-ProvOK              provenance and exercise adequacy, a parameter
-Xi                  the threat class the recognizer cares about
-```
+**Historical time as identity.** An edit's identity used to be its historical
+index, so two edits at one time issued the *same* occurrence. The trace is a
+list; position is identity and order at once; freshness is a fact about lists
+rather than a premise.
 
-**Occurrences, not contents.** An occurrence is *this* grant, tagged by when it
-was made. Two acts issuing the same policy issue two occurrences. That choice is
-what makes the no-laundering theorem true and what lets a later clean act adopt
-the very content a rejected act proposed.
+**The declared/effect split.** The effect is part of the proposal, so `apply` is a
+function of the state and the edit and a fold over a trace is deterministic. A
+raw process doing something else has not executed this edit, which is a
+realization-level conformance question.
+
+**Content invariance.** Withdrawn: it was checked vacuously and it is false once
+permission reads content. What is true is that this module never inspects
+content, so it imposes no conservativity on it.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Callable, Iterable, Mapping, Optional, Sequence
+from dataclasses import dataclass
+from typing import Callable, Optional
 
 
-AUTHORITY = "authority"
-NORM = "norm"
-
-BASE_TIME = -1
+BASE = -1                              #: the position of a base occurrence
 
 
 @dataclass(frozen=True)
 class Occ:
-    """An occurrence. `at` is the historical index of the act that issued it.
+    """An occurrence: what one act put in force.
 
-    Base occurrences carry `BASE_TIME`. Everything else carries the index of its
-    issuing edit, which is what makes freshness a fact about the type rather than
-    a condition anyone has to check.
+    `pos` is the position in the trace of the edit that issued it, or `BASE`.
+    Identity, not time — a realization that wants to record *when* an act
+    happened carries that as data, and two acts at one moment still issue
+    distinct occurrences.
     """
 
-    at: int
-    index: int
-    sort: str = AUTHORITY
+    pos: int
+    slot: int
 
     def __str__(self) -> str:
-        where = "G" if self.at == BASE_TIME else str(self.at)
-        return f"{self.sort[0]}{where}.{self.index}"
+        return f"o{'G' if self.pos == BASE else self.pos}.{self.slot}"
 
 
 @dataclass(frozen=True)
 class Edit:
-    """A frozen proposal. Everything a legitimacy judgment is allowed to read.
+    """A proposal, with its effect frozen into it.
 
     ```text
-    grounds   B   the occurrences invoked as the authority for this act
-    input     I   the authorization-relevant information declared for it
-    exercise  X   the evidence that this was an authentic exercise
-    dispose       the occurrences it proposes to end
-    issue         (sort, content) per occurrence it proposes to put in force
-    scope         the domain it purports to act in
+    grounds   the occurrences invoked as the authority for this act
+    dispose   the occurrences it ends
+    issues    the contents it puts in force, one per issued occurrence
+    declared  what the semantics may read; never read here
     ```
 
-    `content` is carried but never read by `apply`, which is why unrestricted
-    substantive revision is a property of the type rather than a theorem.
+    **The whole effect is in the edit.** `dispose` and `issues` say exactly what
+    the act does, so `apply` is a function of the state and the edit and a fold
+    over a trace is deterministic. A raw process that produces a different effect
+    has not executed this edit: that is a conformance question at the extraction
+    boundary, and `ri_frame.extraction_agrees` is where it is checked.
     """
 
-    at: int
-    grounds: frozenset
+    grounds: frozenset = frozenset()
     dispose: frozenset = frozenset()
-    issue: tuple = ()                  # ((sort, content), ...)
-    input: object = None
-    exercise: object = None
-    scope: object = None
-    request: object = None
+    issues: tuple = ()
+    declared: object = None
     label: str = ""
 
-    def declared(self) -> tuple:
-        """The part a legitimacy judgment is allowed to read *before* the effect.
+    @property
+    def slots(self) -> int:
+        return len(self.issues)
 
-        `dispose` and `issue` are what the act turned out to do; `request` is
-        what it asked for. Keeping them apart is what gives the factorization
-        hypothesis content: same declared view, same effect is a claim, and it is
-        false of a realization whose effect reads state nobody declared.
-        """
-        return (frozenset(self.grounds), self.input, self.exercise,
-                self.scope, self.request)
-
-    def issued(self) -> tuple:
-        return tuple(Occ(self.at, i, sort)
-                     for i, (sort, _) in enumerate(self.issue))
-
-    def content(self) -> dict:
-        return {Occ(self.at, i, sort): c
-                for i, (sort, c) in enumerate(self.issue)}
+    def issued(self, pos: int) -> frozenset:
+        return frozenset(Occ(pos, i) for i in range(len(self.issues)))
 
     def __str__(self) -> str:
-        return self.label or f"e{self.at}"
-
-
-def apply_edit(state: frozenset, e: Edit) -> frozenset:
-    """`apply`. Ends what it disposes, adds what it issues. Reads no content."""
-    return (state - e.dispose) | frozenset(e.issued())
-
-
-# --------------------------------------------------------------- the process
+        return self.label or "e"
 
 
 @dataclass(frozen=True)
-class Process:
-    """A finite proposed history, a base, and the parameters of legitimacy.
+class Frame:
+    """A base, a trace, an authority predicate, and a validity relation.
 
-    `valid(alpha, state, edit)` is the semantic legitimacy relation and is a
-    **parameter**: none of the theorems below assumes it is any good. What they
-    assume is stated as `H1`-`H6`, each of which a realization can fail.
+    `auth` is a **predicate**, not half of a partition. The kernel needs to know
+    which occurrences can ground an edit; whether an occurrence is also
+    substantively normative is a separate predicate, and nothing here requires
+    the two to be disjoint or exhaustive.
     """
 
     base: frozenset
-    edits: tuple
-    valid: Callable                    # (alpha, frozenset, Edit) -> bool
-    contexts: tuple = ()               # the audit contexts in view
-    permit: Optional[Callable] = None  # (state, edit) -> bool
-    prov_ok: Optional[Callable] = None # (alpha, edit) -> bool
-    view: Optional[Callable] = None    # (alpha, prefix) -> the declared view
-    content: Mapping = field(default_factory=dict)   # base occurrence contents
+    trace: tuple
+    auth: Callable                     # Occ -> bool
+    valid: Callable                    # (state, Edit) -> bool
 
-    def at(self, s: int) -> Optional[Edit]:
-        for e in self.edits:
-            if e.at == s:
-                return e
-        return None
+    def issued(self, t: int) -> frozenset:
+        return self.trace[t].issued(t)
 
-    def times(self) -> tuple:
-        return tuple(sorted(e.at for e in self.edits))
-
-    def horizon(self) -> int:
-        return max([e.at for e in self.edits], default=BASE_TIME) + 1
-
-    def contents(self) -> dict:
-        out = dict(self.content)
-        for e in self.edits:
-            out.update(e.content())
-        return out
+    def authorities(self, state: frozenset) -> frozenset:
+        return frozenset(o for o in state if self.auth(o))
 
 
-def replay(p: Process, alpha, upto: Optional[int] = None) -> frozenset:
-    """`L(alpha, t)`. The legitimate state after replaying the proposal."""
-    upto = p.horizon() if upto is None else upto
-    state = p.base
-    for s in sorted(e.at for e in p.edits):
-        if s >= upto:
-            break
-        e = p.at(s)
-        if p.valid(alpha, state, e):
-            state = apply_edit(state, e)
+def apply_edit(f: Frame, state: frozenset, t: int) -> frozenset:
+    e = f.trace[t]
+    return (state - e.dispose) | e.issued(t)
+
+
+def changes(f: Frame, state: frozenset, t: int) -> bool:
+    return apply_edit(f, state, t) != state
+
+
+def replay(f: Frame, upto: Optional[int] = None) -> frozenset:
+    """`L_t`."""
+    upto = len(f.trace) if upto is None else upto
+    state = f.base
+    for t in range(upto):
+        if f.valid(state, f.trace[t]):
+            state = apply_edit(f, state, t)
     return state
 
 
-def accepted(p: Process, alpha, upto: Optional[int] = None) -> tuple:
-    """The edits the replay actually applied."""
-    upto = p.horizon() if upto is None else upto
-    state, out = p.base, []
-    for s in sorted(e.at for e in p.edits):
-        if s >= upto:
-            break
-        e = p.at(s)
-        if p.valid(alpha, state, e):
-            out.append(e)
-            state = apply_edit(state, e)
+def accepted(f: Frame, upto: Optional[int] = None) -> tuple:
+    """The positions the replay applied."""
+    upto = len(f.trace) if upto is None else upto
+    state, out = f.base, []
+    for t in range(upto):
+        if f.valid(state, f.trace[t]):
+            out.append(t)
+            state = apply_edit(f, state, t)
     return tuple(out)
 
 
-def auth(state: frozenset) -> frozenset:
-    """`Auth(L)` — what the deference consumer reads."""
-    return frozenset(o for o in state if o.sort == AUTHORITY)
+def admitted(f: Frame, upto: Optional[int] = None) -> frozenset:
+    """`Adm_t = G union { issue_s(e_s) : s accepted, s < t }`.
 
-
-def norms(state: frozenset) -> frozenset:
-    """`Norm(L)` — what the enforcement consumer reads."""
-    return frozenset(o for o in state if o.sort == NORM)
-
-
-# ------------------------------------------------------------ the hypotheses
-
-
-def h1_mediated_mutation(p: Process) -> tuple:
-    """**H1.** The legitimate state changes only by applying an edit.
-
-    *Reading.* Nothing comes into or out of force except by an act on the
-    record. Architectural: it is how `replay` is written, and it is listed
-    because a realization that let state drift between edits would not be
-    modelled by this object at all. Checked by re-deriving each step.
+    What legitimate replay has ever put in force. **This is what the grounding
+    theorem is about**, and it is not what is in force now: an occurrence validly
+    issued and validly disposed stays admitted and stops being live. Conflating
+    the two let the previous formulation's certificate claim more than it proved.
     """
-    bad = []
-    state = p.base
-    for s in p.times():
-        e = p.at(s)
-        expect = apply_edit(state, e) if p.valid(None if not p.contexts
-                                                 else p.contexts[0], state, e) \
-            else state
-        got = replay(p, p.contexts[0] if p.contexts else None, s + 1)
-        if got != expect:
-            bad.append((s, e))
-        state = expect
+    upto = len(f.trace) if upto is None else upto
+    out = set(f.base)
+    for t in accepted(f, upto):
+        out |= f.issued(t)
+    return frozenset(out)
+
+
+# ------------------------------------------------------ structural premises
+
+
+def s1_prior_grounding(f: Frame) -> tuple:
+    """**S1.** An accepted edit's grounds are authorities of the strict pre-state.
+
+    *You act under authority you already have.*
+    """
+    bad, state = [], f.base
+    for t in range(len(f.trace)):
+        e = f.trace[t]
+        if f.valid(state, e):
+            missing = e.grounds - f.authorities(state)
+            if missing:
+                bad.append(("ungrounded", t, tuple(sorted(missing, key=str))))
+            state = apply_edit(f, state, t)
     return tuple(bad)
 
 
-def h2_fresh_occurrence(p: Process) -> tuple:
-    """**H2.** An edit issues occurrences nobody has issued and nothing holds.
+def s2_no_ex_nihilo(f: Frame) -> tuple:
+    """**S2.** An accepted edit that changes the state has a non-empty ground set.
 
-    *Reading.* A grant is a new thing, not a re-entry of an old one. Free from
-    the type — an occurrence carries the index of its issuing edit — and it is
-    what the no-laundering and finite-grounding theorems actually consume.
+    *Nothing enters or leaves legitimate normative state without some prior
+    authority premise.* Roots that are wanted belong in `G`, which is what `G`
+    is for.
+
+    The previous formulation lacked this and its grounding theorem was **false**:
+    an edit with no grounds satisfies prior grounding vacuously and issues an
+    occurrence whose only tree is itself, with a leaf outside the base.
+
+    The two halves are consumed by different results. Grounding needs it of edits
+    that **issue**; persistence needs it of edits that **dispose**, which is the
+    unauthorized-repeal attack. Stating it over any state-changing edit is the
+    union of the two and is why it is one premise rather than two.
     """
-    seen, bad = set(p.base), []
-    for s in p.times():
-        for o in p.at(s).issued():
-            if o.at != s:
-                bad.append(("mis-tagged", s, o))
+    bad, state = [], f.base
+    for t in range(len(f.trace)):
+        e = f.trace[t]
+        if f.valid(state, e):
+            if changes(f, state, t) and not e.grounds:
+                bad.append(("ex nihilo", t))
+            state = apply_edit(f, state, t)
+    return tuple(bad)
+
+
+PREMISES = (("S1", s1_prior_grounding), ("S2", s2_no_ex_nihilo))
+
+
+def violations(f: Frame) -> dict:
+    return {n: c(f) for n, c in PREMISES if c(f)}
+
+
+def fresh_by_construction(f: Frame) -> tuple:
+    """Freshness, as a fact rather than a premise.
+
+    Two edits at one position cannot exist, because the trace is a list. Checked
+    anyway so the claim is exercised, and so a realization that manufactures its
+    own occurrences is caught.
+    """
+    seen, bad = set(f.base), []
+    for t in range(len(f.trace)):
+        for o in f.issued(t):
+            if o.pos != t:
+                bad.append(("mis-positioned", t, o))
             if o in seen:
-                bad.append(("reissued", s, o))
+                bad.append(("reissued", t, o))
             seen.add(o)
     return tuple(bad)
 
 
-def h3_prestate_grounding(p: Process, alpha) -> tuple:
-    """**H3.** A valid edit's grounds are authorities of the strict pre-state.
-
-    *Reading.* You act under authority you already have. A hypothesis on the
-    parameter `valid`, and the one that makes finite grounding an induction
-    rather than a definition.
-    """
-    bad, state = [], p.base
-    for s in p.times():
-        e = p.at(s)
-        if p.valid(alpha, state, e):
-            missing = e.grounds - auth(state)
-            if missing:
-                bad.append((s, e, tuple(sorted(missing, key=str))))
-            state = apply_edit(state, e)
-    return tuple(bad)
-
-
-def h4_permit_soundness(p: Process, alpha) -> tuple:
-    """**H4.** A valid edit is one its grounds permit, for this exact edit.
-
-    *Reading.* Holding a warrant is not doing whatever you like with it.
-    Jurisdiction, scope, consent conditions, amendment rules and procedural
-    conditions all live in `permit`, which is a parameter: the interface
-    requires that some such relation be consulted, not what it says.
-
-    `office.unauthorized_scope` is the process where a perfectly grounded
-    authority acts outside its domain, and the round's previous succession
-    calculus admitted it.
-    """
-    if p.permit is None:
-        return (("no permit relation supplied",),)
-    bad, state = [], p.base
-    for s in p.times():
-        e = p.at(s)
-        if p.valid(alpha, state, e):
-            if not p.permit(state, e):
-                bad.append((s, e))
-            state = apply_edit(state, e)
-    return tuple(bad)
-
-
-def h5_declared_factorization(p: Process, q: Process, alpha) -> tuple:
-    """**H5.** Two proposals with the same declared view have the same verdicts
-    and the same effects.
-
-    *Reading.* Whatever the legitimacy rules read, they read through the
-    interface. Hidden implementation state may differ arbitrarily and must not
-    change what is valid or what an edit does.
-
-    This is the general form of the pre-state condition the previous pass
-    isolated. It is checked between two processes rather than inside one,
-    because the content of the hypothesis is a comparison.
-    """
-    if p.view is None or q.view is None:
-        return (("no view supplied",),)
-    if p.base != q.base:
-        return (("different bases",),)
-    bad = []
-    ps, qs = p.base, q.base
-    for i, s in enumerate(p.times()):
-        if p.view(alpha, i) != q.view(alpha, i):
-            break
-        pe, qe = p.at(s), q.at(s)
-        if pe is None or qe is None or pe.declared() != qe.declared():
-            break
-        if (pe.dispose, pe.issue) != (qe.dispose, qe.issue):
-            bad.append(("effect differs", s))
-            break
-        pv, qv = p.valid(alpha, ps, pe), q.valid(alpha, qs, qe)
-        if pv != qv:
-            bad.append(("verdict differs", s))
-            break
-        ps = apply_edit(ps, pe) if pv else ps
-        qs = apply_edit(qs, qe) if qv else qs
-        if ps != qs:
-            bad.append(("state diverges", s))
-            break
-    return tuple(bad)
-
-
-def h6_provenance_adequacy(p: Process, alpha, threat) -> tuple:
-    """**H6.** A valid edit's declared input and exercise pass provenance, and
-    provenance is adequate to the stated threat class.
-
-    ```text
-    Valid_alpha(L, e)  =>  ProvOK_alpha(e)
-    every influence in Xi is one ProvOK can see
-    ```
-
-    *Reading.* The calculus actually asks about the influences anyone is worried
-    about. `depends` is a fact about the world; nothing here computes it, and
-    the hypothesis is what keeps a process that checks nothing from certifying
-    everything.
-    """
-    if p.prov_ok is None:
-        return (("no provenance relation supplied",),)
-    bad, state = [], p.base
-    for s in p.times():
-        e = p.at(s)
-        if p.valid(alpha, state, e):
-            if not p.prov_ok(alpha, e):
-                bad.append(("valid but provenance fails", s, e))
-            state = apply_edit(state, e)
-    for xi, reach in threat.items():
-        if not reach <= _visible(p, alpha):
-            bad.append(("uncovered influence", xi,
-                        tuple(sorted(reach - _visible(p, alpha), key=str))))
-    return tuple(bad)
-
-
-def _visible(p: Process, alpha) -> frozenset:
-    """The edits provenance can refuse. An influence outside it is invisible."""
-    if p.prov_ok is None:
-        return frozenset()
-    return frozenset(e.at for e in p.edits if not p.prov_ok(alpha, e))
-
-
-HYPOTHESES = ("H1", "H2", "H3", "H4", "H5", "H6")
-
-
-def structural_violations(p: Process, alpha) -> dict:
-    """H1-H4, the ones checkable inside one process."""
-    out = {}
-    for name, check in (("H1", lambda: h1_mediated_mutation(p)),
-                        ("H2", lambda: h2_fresh_occurrence(p)),
-                        ("H3", lambda: h3_prestate_grounding(p, alpha)),
-                        ("H4", lambda: h4_permit_soundness(p, alpha))):
-        bad = check()
-        if bad:
-            out[name] = bad
-    return out
-
-
-# --------------------------------------------------------------- theorems
+# ------------------------------------------------------------- the theorem
 
 
 @dataclass(frozen=True)
-class Ground:
-    """A node of a grounding certificate."""
-
+class Tree:
     occ: Occ
-    edit: Optional[int]                # the historical index that issued it
+    edit: Optional[int]
     children: tuple
 
 
-def certificate(p: Process, alpha, o: Occ,
-                upto: Optional[int] = None) -> Optional[Ground]:
-    """A finite grounding tree for `o`, or `None` if it is not legitimate.
+def tree(f: Frame, o: Occ, upto: Optional[int] = None) -> Optional[Tree]:
+    """A grounding tree for `o`, or `None` if replay never admitted it.
 
-    Leaves are base occurrences; internal nodes are edits the replay accepted;
-    children are the grounds that edit invoked. Historical time strictly
-    decreases downwards, which is what makes the recursion terminate and what
-    `thm_finite_grounding` reports on.
-
-    No unique issuance is needed: if several accepted edits issued `o` the tree
-    names one, and the theorem is about the route the certificate exhibits.
+    **Ranges over `admitted`, not over the live state.** Whether `o` is still in
+    force is a different question; `CROSS_PROCESS_INTERFACE.md` §3 is what that
+    costs.
     """
-    upto = p.horizon() if upto is None else upto
-    if o not in replay(p, alpha, upto):
+    upto = len(f.trace) if upto is None else upto
+    if o in f.base:
+        return Tree(o, None, ())
+    if o not in admitted(f, upto) or o.pos not in accepted(f, upto):
         return None
-    if o.at == BASE_TIME:
-        return Ground(o, None, ())
-    taken = {e.at for e in accepted(p, alpha, upto)}
-    if o.at not in taken:
-        return None
-    e = p.at(o.at)
     kids = []
-    for g in sorted(e.grounds, key=str):
-        sub = certificate(p, alpha, g, o.at)
+    for g in sorted(f.trace[o.pos].grounds, key=str):
+        sub = tree(f, g, o.pos)
         if sub is None:
             return None
         kids.append(sub)
-    return Ground(o, o.at, tuple(kids))
+    return Tree(o, o.pos, tuple(kids))
 
 
-def tree_edits(g: Ground) -> frozenset:
-    out = frozenset() if g.edit is None else frozenset({g.edit})
-    for k in g.children:
-        out |= tree_edits(k)
+def leaves(t: Tree) -> frozenset:
+    if not t.children:
+        return frozenset({t.occ})
+    return frozenset().union(frozenset(), *[leaves(k) for k in t.children])
+
+
+def edits_of(t: Tree) -> frozenset:
+    out = frozenset() if t.edit is None else frozenset({t.edit})
+    for k in t.children:
+        out |= edits_of(k)
     return out
 
 
-def tree_leaves(g: Ground) -> frozenset:
-    if not g.children:
-        return frozenset({g.occ})
-    return frozenset().union(frozenset(), *[tree_leaves(k) for k in g.children])
-
-
-def thm_finite_grounding(p: Process, alpha) -> tuple:
-    """**G1.** Every legitimate occurrence has a finite grounding tree whose
-    leaves lie in the base, whose internal nodes are accepted edits, and whose
-    historical index strictly decreases downwards.
-
-    *Proof.* Induction on the historical index. The base holds at `L(alpha,0)=G`.
-    An accepted edit at `s` has `grounds ⊆ Auth(L(alpha,s))` by **H3**, and by
-    **H2** every occurrence of `L(alpha,s)` was issued strictly before `s` or is
-    a base occurrence; so each ground has a tree of strictly smaller index, and
-    hanging them under `s` gives one for what `s` issued. ∎
-
-    Returns the occurrences with no such tree, or whose tree fails descent.
-    """
-    bad = []
-    state = replay(p, alpha)
-    for o in sorted(state, key=str):
-        g = certificate(p, alpha, o)
-        if g is None:
-            bad.append(("no tree", o))
-            continue
-        if not tree_leaves(g) <= p.base:
-            bad.append(("leaves outside the base", o))
-        if not _descends(p, g):
-            bad.append(("no strict descent", o))
-    return tuple(bad)
-
-
-def _descends(p: Process, g: Ground) -> bool:
-    for k in g.children:
-        if not (k.occ.at < g.occ.at or k.occ.at == BASE_TIME):
+def descends(t: Tree) -> bool:
+    for k in t.children:
+        if not (k.occ.pos < t.occ.pos or k.occ.pos == BASE):
             return False
-        if not _descends(p, k):
+        if not descends(k):
             return False
     return True
 
 
-def thm_no_self_ratification(p: Process, alpha) -> tuple:
-    """**G2.** No accepted edit is grounded in what it issues.
+def thm_grounded_replay(f: Frame) -> tuple:
+    """**Grounded Replay.** Under **S1** and **S2**, every admitted occurrence has
+    a finite grounding tree: leaves in `G`, internal nodes accepted edits,
+    children the grounds that edit invoked, child positions strictly smaller.
 
-    *Proof.* By **H3** its grounds are in the pre-state; by **H2** what it
-    issues is not. ∎
+    *Proof.* Induction on trace position. `Adm_0 = G`, and a base occurrence is
+    its own tree. An accepted edit at `t` has `grounds ⊆ Auth(L_t)` by **S1** and
+    `L_t ⊆ Adm_t`, so each ground is admitted; every admitted occurrence lies in
+    `G` or was issued at a position `< t`, so the induction hypothesis gives each
+    a tree; **S2** makes the ground set non-empty for any edit that issues, so no
+    issued occurrence is a leaf outside `G`. Hanging the grounds' trees under `t`
+    gives one for each occurrence `t` issues. ∎
+
+    A short induction, and the round does not pretend otherwise. What it earns is
+    that neither of the two previous objects admitted it.
     """
-    return tuple((e.at, tuple(sorted(e.grounds & frozenset(e.issued()), key=str)))
-                 for e in accepted(p, alpha)
-                 if e.grounds & frozenset(e.issued()))
-
-
-def thm_no_laundering(p: Process, alpha) -> tuple:
-    """**G3.** An occurrence a rejected edit proposed never becomes legitimate.
-
-    ```text
-    not Valid_alpha(L(alpha,s), e_s)  =>  for all u > s,
-        no occurrence e_s proposed lies in L(alpha, u)
-    ```
-
-    *Proof.* The rejected edit is a no-op, so its occurrences are absent at
-    `s+1`; and by **H2** every later edit issues occurrences tagged with its own
-    later index, so none of them is one of these. Downstream use cannot help: a
-    later edit invoking a rejected occurrence as a ground fails **H3**. ∎
-
-    The work is done by the choice of occurrence identity rather than by the
-    induction, and that is the point of the choice: `office.readoption` is the
-    process where a later clean act adopts the very content a rejected act
-    proposed, and it is legitimate.
-    """
-    taken = {e.at for e in accepted(p, alpha)}
-    rejected = [e for e in p.edits if e.at not in taken]
-    final = replay(p, alpha)
     bad = []
-    for e in rejected:
-        leaked = frozenset(e.issued()) & final
-        if leaked:
-            bad.append((e.at, tuple(sorted(leaked, key=str))))
+    for o in sorted(admitted(f), key=str):
+        pi = tree(f, o)
+        if pi is None:
+            bad.append(("no tree", o))
+            continue
+        if not leaves(pi) <= f.base:
+            bad.append(("leaf outside the base", o))
+        if not descends(pi):
+            bad.append(("no strict descent", o))
     return tuple(bad)
 
 
-def thm_noninterference(p: Process, q: Process, alpha) -> bool:
-    """**G4.** Two proposals with the same declared view have the same legitimate
-    state.
+def cor_no_self_ratification(f: Frame) -> tuple:
+    """**Corollary 1.** No accepted edit is grounded in what it issues.
 
-    *Proof.* Induction on the step, from **H5**: the view determines the edit and
-    the verdict, and the state at each step is a function of the previous state
-    and those. ∎
-
-    Raw histories may differ arbitrarily outside the declared view. Authorized
-    influence is not excluded: an influence that changes the declared input
-    changes the view, and the two sides are then allowed to differ.
+    By **S1** its grounds are in the pre-state, and every occurrence it issues
+    carries its own position, which nothing in the pre-state does.
     """
-    if h5_declared_factorization(p, q, alpha):
-        return False
-    return replay(p, alpha) == replay(q, alpha)
+    return tuple((t, tuple(sorted(f.trace[t].grounds & f.issued(t), key=str)))
+                 for t in accepted(f)
+                 if f.trace[t].grounds & f.issued(t))
 
 
-def thm_persistence(p: Process, alpha) -> tuple:
-    """**G5.** Persistent until a **valid** edit disposes it.
+def cor_no_laundering(f: Frame) -> tuple:
+    """**Corollary 2.** An occurrence a rejected edit proposed is never admitted.
+
+    A rejected edit is a no-op, and every occurrence any other edit issues carries
+    that other edit's position. Downstream use cannot help: an edit invoking such
+    an occurrence as a ground fails **S1**.
+
+    About occurrence identity, not content. `office.readoption` is where the same
+    content enters later through a different occurrence and is admitted.
+    """
+    taken = set(accepted(f))
+    adm = admitted(f)
+    return tuple((t, tuple(sorted(f.trace[t].issued(t) & adm, key=str)))
+                 for t in range(len(f.trace))
+                 if t not in taken and f.trace[t].issued(t) & adm)
+
+
+def cor_persistence(f: Frame) -> tuple:
+    """**Corollary 3.** Live until an accepted edit disposes it.
 
     ```text
-    o in L(alpha, s)  and no accepted edit in (s, u] disposes o
-        =>  o in L(alpha, u)
+    o in L_s  and no accepted u in [s, t) disposes o  =>  o in L_t
     ```
 
-    *Proof.* A rejected edit is a no-op and an accepted edit that does not
-    dispose `o` keeps it. ∎
-
-    The previous formulation took the raw lifecycle and intersected it with a
-    derivability set, and so lost an occurrence whenever *anything* in the raw
-    process removed it — including an act with no legitimate authority at all.
-    `office.rogue_revocation` is that attack and `COUNTERMODELS.md` §1 runs it
-    against both.
+    Two lines: a rejected edit is a no-op and an accepted edit that does not
+    dispose `o` keeps it. What earns it is that the previous object's persistence
+    was about the raw process, and an unauthorized revocation defeated it.
     """
     bad = []
-    times = list(p.times()) + [p.horizon()]
-    for i, s in enumerate(times):
-        state = replay(p, alpha, s)
+    for s in range(len(f.trace) + 1):
+        state = replay(f, s)
         for o in sorted(state, key=str):
-            for u in times[i + 1:]:
-                disposed = any(o in e.dispose
-                               for e in accepted(p, alpha, u) if s <= e.at < u)
-                if disposed:
+            for t in range(s + 1, len(f.trace) + 1):
+                if any(o in f.trace[u].dispose
+                       for u in accepted(f, t) if s <= u < t):
                     break
-                if o not in replay(p, alpha, u):
-                    bad.append((o, s, u))
+                if o not in replay(f, t):
+                    bad.append((o, s, t))
                     break
     return tuple(bad)
 
 
-def thm_content_unconstrained(p: Process, alpha, sigma: Mapping) -> bool:
-    """**G6.** Relabelling what occurrences say changes nothing legitimate.
+# -------------------------------------------------- lineage and currentness
 
-    `apply` reads no content and `Occ` carries none, so this holds by the type.
-    Its force is as a condition on a realization: one whose validity rules
-    inspected what an occurrence says would not map onto a process at all.
+
+def live(f: Frame, t: Optional[int] = None) -> frozenset:
+    return replay(f, t)
+
+
+def grounded(f: Frame, o: Occ, t: Optional[int] = None) -> bool:
+    return tree(f, o, t) is not None
+
+
+def relations(f: Frame, t: Optional[int] = None) -> dict:
+    """`Live ⊆ Admitted`, and on a fixed trace **Grounded = Admitted**.
+
+    The third notion is not independent: a lineage is built from the accepted
+    edits of *this* trace, so having one and having been issued by one coincide.
+    What is independent, and what the previous formulation conflated, is
+    **admitted** against **live**.
     """
-    before = replay(p, alpha)
-    relabelled = {o: sigma.get(c, c) for o, c in p.contents().items()}
-    return relabelled is not None and replay(p, alpha) == before
+    t = len(f.trace) if t is None else t
+    adm, lv = admitted(f, t), live(f, t)
+    return {
+        "live": lv,
+        "admitted": adm,
+        "grounded": frozenset(o for o in adm if grounded(f, o, t)),
+        "live_subset_admitted": lv <= adm,
+        "admitted_not_live": adm - lv,
+    }
 
 
-# ------------------------------------------------------- audit contexts
+# ------------------------------------------------------- checkers, exactly
 
 
-def retracted(p: Process, alpha, beta) -> frozenset:
-    """What leaves the legitimate state when the audit context tightens."""
-    return replay(p, alpha) - replay(p, beta)
+def with_checker(f: Frame, check: Callable) -> Frame:
+    return Frame(f.base, f.trace, f.auth, check)
 
 
-def restored(p: Process, alpha, beta) -> frozenset:
-    """What **enters** it. Not empty in general, and that is a result.
+def agrees_on_trace(f: Frame, check: Callable) -> tuple:
+    """**The exact condition.** The checker matches the semantic relation at each
+    state the *semantic* replay actually reaches.
 
-    Invalidating an edit that was a *revocation* leaves its target standing. So
-    a stricter audit context is not a smaller legitimate state, and the earlier
-    surprise that the challenge operator was neither monotone nor composable is
-    this fact seen through a harder-to-read object.
+    ```text
+    for every t:  Check(L_t, e_t)  <->  Valid(L_t, e_t)
+    ```
+
+    Weaker than global extensional equality — it says nothing about states the
+    trace never reaches — and strictly stronger than one-sided soundness.
     """
-    return replay(p, beta) - replay(p, alpha)
-
-
-# ---------------------------------------------- verifiers, and what they cost
-
-
-def with_verifier(p: Process, verify: Callable) -> Process:
-    """The same proposal replayed by a checker instead of by the semantic
-    relation."""
-    return Process(p.base, p.edits, verify, p.contexts, p.permit, p.prov_ok,
-                   p.view, p.content)
-
-
-def verifier_sound(p: Process, verify: Callable, alpha) -> tuple:
-    """`Verify(L,e) => Valid(L,e)` along the replay the verifier itself drives."""
-    bad, state = [], p.base
-    for s in p.times():
-        e = p.at(s)
-        if verify(alpha, state, e):
-            if not p.valid(alpha, state, e):
-                bad.append(("accepted an invalid edit", s))
-            state = apply_edit(state, e)
+    bad, state = [], f.base
+    for t in range(len(f.trace)):
+        e = f.trace[t]
+        v, c = f.valid(state, e), check(state, e)
+        if v != c:
+            bad.append(("disagrees", t, v, c))
+        if v:
+            state = apply_edit(f, state, t)
     return tuple(bad)
 
 
-def verifier_complete(p: Process, verify: Callable, alpha) -> tuple:
-    """`Valid(L,e) => Verify(L,e)` along the same replay.
+def thm_simulation(f: Frame, check: Callable) -> bool:
+    """**Simulation.** Agreement along the trace gives `Lhat_t = L_t` for every `t`.
 
-    **The asymmetry the consumers care about.** A sound but incomplete checker
-    under-approximates: it misses valid edits. For an occurrence entering force
-    that is conservative and the deference consumer can live with it. For an
-    occurrence *leaving* force it is not: a missed valid revocation leaves an
-    obsolete norm in the enforcement target.
+    Induction: the states are equal at 0, and equal states with equal verdicts
+    have equal successors. Both projections then agree, so a recognizer reading
+    either gets the semantic answer. ∎
     """
-    bad, state = [], p.base
-    for s in p.times():
-        e = p.at(s)
-        if p.valid(alpha, state, e) and not verify(alpha, state, e):
-            bad.append(("missed a valid edit", s, bool(e.dispose)))
-        state = apply_edit(state, e) if verify(alpha, state, e) else state
+    if agrees_on_trace(f, check):
+        return False
+    g = with_checker(f, check)
+    return all(replay(f, t) == replay(g, t) for t in range(len(f.trace) + 1))
+
+
+def sound_at_own_state(f: Frame, check: Callable) -> tuple:
+    """The **rejected** notion, kept so the two run side by side.
+
+    `Check(Lhat, e) -> Valid(Lhat, e)`, evaluated at the checker's own state. It
+    is what the previous pass called soundness and it is worth nothing: a checker
+    missing a valid revocation keeps an authority the semantic replay removed, and
+    every later verdict it takes is evaluated against a state that never
+    legitimately existed. `COUNTERMODELS.md` §3.
+    """
+    bad, state = [], f.base
+    for t in range(len(f.trace)):
+        e = f.trace[t]
+        if check(state, e):
+            if not f.valid(state, e):
+                bad.append(("accepted an invalid edit", t))
+            state = apply_edit(f, state, t)
     return tuple(bad)
 
 
-def missed_disposals(p: Process, verify: Callable, alpha) -> tuple:
-    """The valid disposals a checker misses — the ones enforcement cannot afford."""
-    return tuple(b for b in verifier_complete(p, verify, alpha) if b[2])
+def divergence(f: Frame, check: Callable) -> dict:
+    """What a checker's replay gets wrong, split by direction."""
+    g = with_checker(f, check)
+    lv, lhat = live(f), live(g)
+    return {"missing": lv - lhat, "spurious": lhat - lv,
+            "agrees": agrees_on_trace(f, check)}

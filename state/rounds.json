@@ -883,7 +883,7 @@
       "date": "2026-08-25",
       "project": "normativity.legitimacy",
       "path": "projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution",
-      "verdict": "LEGITIMACY-THEOREM-COMPRESSED — the raw lifecycle is replaced by a legitimate replay indexed by an audit context; an unauthorized revocation is a no-op; authorization of the exact exercise is separated from grounding of the authority; legitimate influence no longer has to survive its own removal; declared-dependency factorization is precise and falsifiable in two ways; and finite grounding, no-laundering and hidden-state noninterference are proved from local hypotheses each of which fails a countermodel when dropped.",
+      "verdict": "GROUNDED-REPLAY-KERNEL-STABLE — the structural theorem is an induction over a list with two premises, each with a countermodel in which the conclusion fails and neither subsuming the other; validity is defined rather than constrained; descriptive provenance is separated from normative permission; lineage is separated from currentness; and the checker condition is exact.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/README.md",
       "depends_on": [
         "2026-08-25-carroll-legitimacy-test",

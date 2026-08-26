@@ -2,12 +2,13 @@
 
 | Files | Generator | Review status | Date | Originating round | Chat bundle |
 |---|---|---|---|---|---|
-| `README.md`, `LEGITIMATE_EVOLUTION.md`, `CROSS_PROCESS_INTERFACE.md`, `CONSUMER_TEST.md`, `TRADERIZATION_CONSUMER.md`, `COUNTERMODELS.md`, `THEOREM_MAP.md` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-25 | `prompts/2026-08-25-legitimate-evolution/` | — |
-| `src/`, `tests/` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-25 | `prompts/2026-08-25-legitimate-evolution/` | — |
+| `README.md`, `LEGITIMATE_EVOLUTION.md`, `CROSS_PROCESS_INTERFACE.md`, `CONSUMER_TEST.md`, `TRADERIZATION_CONSUMER.md`, `COUNTERMODELS.md`, `THEOREM_MAP.md` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-26 | `prompts/2026-08-25-legitimate-evolution/` | — |
+| `src/`, `tests/` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-26 | `prompts/2026-08-25-legitimate-evolution/` | — |
 
 The prompt was authored outside this repository and is committed verbatim at
-`prompts/2026-08-25-legitimate-evolution/PROMPT.md` — four dispatches: the round,
-an addendum sent mid-round, a repair pass, and a compression pass.
+`prompts/2026-08-25-legitimate-evolution/PROMPT.md` — five dispatches: the round,
+an addendum sent mid-round, a repair pass, a compression pass, and this
+prosecution pass.
 
 ## Sources
 
@@ -18,54 +19,44 @@ builder and the settlement-ancestry closure, `fixtures.py` for `C7b`, `C10`,
 at `../2026-08-24-reflective-integrity-core/src/ri_core.py` and the vertical
 slice's `standing.py` for `PValue`.
 
-`legitimacy.py`'s `independent` and `survives_excision` are **not** imported: the
-compressed judgment reads an edit's declared input rather than replaying the
-record under a voided episode, and `LEGITIMATE_EVOLUTION.md` §7 is the account of
-what that trades.
-
 **In-repository, read and mapped rather than imported.**
 `../2026-08-24-reflective-integrity-core/REFLECTIVE_INTEGRITY_CORE.md` §§12.3,
-13, 15.2, 17 and 19, for the realization table.
-`../2026-08-25-carroll-legitimacy-test/CRITERION.md` §§3-4 and 6, for the
-challenge operator and the properties it does not have.
+13, 15.2 and 17, for the extraction.
 `../2026-08-25-end-to-end-vertical-slice/ANSWERABILITY_SCOUT.md` and
 `VERTICAL_SLICE.md` §11, for the Level-I accounting result.
-`../2026-08-17-counterfactual-legitimacy/LEGITIMACY_TO_TRUST_INTERFACE.md`, for
-`H5` and `grade_reads_outside`.
 
 **In-repository, read as the consumers.** The traderized-enforcement round at
 `../../rounds/2026-08-16-traderized-enforcement/src/` — `force_api.py`,
-`outflow.py`, `deduction.py` — cited by declaration for the charge, the deficit
-certificate and the exhaustion policy.
+`outflow.py`, `deduction.py` — cited by declaration.
 `lean/Workspace/Deference/Contrib/DelegationBridge.lean` and
 `ReachableCorrectiveControl.lean`, cited by declaration and line;
-`projects/deference/CLAIMS.md`; `projects/deference/notes/FUTURE_AGENT_SPEC.md`
-and `FINITE_MODEL_SKELETON.md` §8.5. No Lean file is modified and no registered
-claim is changed.
+`projects/deference/notes/FUTURE_AGENT_SPEC.md` and `FINITE_MODEL_SKELETON.md`
+§8.5. No Lean file is modified and no registered claim is changed.
 
 **Not used.** No Logical Induction object and no charged enforcement path is run;
-no liability quantity is computed here. `src/office.py` imports `replay.py` and
-the standard library and nothing else, which `tests/test_replay.py` checks by
-parsing its imports; `src/replay.py` names no architectural type, which the same
-file checks by reading it.
+no liability quantity is computed. `src/office.py` imports `replay.py` and the
+standard library and nothing else, and `src/replay.py` names no architectural or
+semantic identifier — `tests/test_replay.py` checks both by parsing.
 
 ## New names introduced
 
 All provisional under `AGENTS.md` §6.
 
-*Occurrence* (`Occ`), *edit*, *declared view*, *grounds*, *issue*, *dispose*,
-*audit context* (`alpha`), *legitimate replay*, *legitimate state* (`L`),
-*authority view* (`Auth`), *norm view* (`Norm`), *threat class* (`Xi`).
+Kernel: *occurrence* (`Occ`), *edit*, *trace position*, *grounds*, *issues*,
+*dispose*, *base* (`G`), *authority predicate*, *admitted*, *live*, *grounded*,
+*grounding tree*.
 
-Parameters: *`Valid`*, *`Permit`*, *`ProvOK`*, *`InputOK`*, *`ExerciseOK`*.
+Premises: *prior grounding* (S1), *no ex nihilo* (S2).
 
-Hypotheses: *mediated mutation* (H1), *fresh occurrence* (H2), *strict-prestate
-grounding* (H3), *permit soundness* (H4), *declared factorization* (H5),
-*threat-relative provenance adequacy* (H6).
+Theorem and corollaries: *Grounded Replay*, *no self-ratification*, *no
+laundering*, *persistence*.
 
-Theorems: *finite grounding* (G1), *no self-ratification* (G2), *no laundering*
-(G3), *hidden-state noninterference* (G4), *persistence* (G5), *unrestricted
-permitted revision* (G6).
+Semantics: *`Valid`*, *`Permit`*, *`ProvView`*, *`ProvComplete`*, *audit context*
+(`alpha`), *threat class* (`Xi`).
+
+Realization and computation: *extraction*, *extraction factorization*, *fold
+determinism*, *agreement along the trace*, *simulation*, *soundness at the
+checker's own state*.
 
 Consumer-side: *the recognition axiom* (R), *W-index*, *bounded-lifetime
-liability*, *verifier soundness*, *verifier completeness*, *missed disposal*.
+liability*.

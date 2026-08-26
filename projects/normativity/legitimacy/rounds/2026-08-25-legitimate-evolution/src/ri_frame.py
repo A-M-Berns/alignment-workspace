@@ -1,44 +1,39 @@
-"""The realization: a Reflective Integrity record proposes an edit sequence.
+"""Extraction: a Reflective Integrity record yields a trace and a semantics.
 
 ```text
-abstract               realized by
----------------------  -----------------------------------------------------
-occurrence             a standing id — a seed id, or `@s{tau}.{i}`
-occurrence index       tau, which the id already carries
-sort                   PAuth and PProto are authority; PValue, PForce and PCmt
-                       are norm
-edit                   a NormEvent, frozen with its effect
-grounds                schemaRef, plus the authority-sorted Supersede targets
-                       where the event issues
-dispose                targetsN(effect)
-issue                  the fresh ids, with their payloads
-input        I         the settlements the event's reason leaves draw on
-exercise     X         the author and the derivation's leaves
-scope                  a PProto ground's `covers`, where there is one
-alpha                  the episodes currently doubted
+raw record  --extract_alpha-->  (base, trace, auth, Valid)  --replay-->  L_t
 ```
 
-**The challenge operator is gone from the headline.** Where the previous pass
-asked whether an event survives a replay of the record with an episode's
-settlements voided, this asks whether the event's *declared input* draws on a
-doubted episode. Two consequences, and both are improvements.
+The extraction is the realization boundary, and it is where the substantive
+factorization claim now lives. The kernel's own determinism — same base, same
+trace, same validity relation, same replay — is a fold congruence and is
+definitional. What is not definitional is that **the raw record determines the
+trace and the semantics through what it declares**, and a record can fail it two
+ways: by producing a different trace, or by producing a different validity
+relation. `cases.partial_effect_pair` is the first and `office.hidden_reading_pair`
+the second.
 
-The pathologies go with it. Excision was neither monotone nor composable because
-it re-evaluated an evolving state; a declared-input test is evaluated once, at
-the edit, and the earlier surprise reappears in an intelligible place — a
-stricter audit context can leave *more* in force, because the edit it
-invalidates was a revocation.
+```text
+occurrence   a seed standing, or the standing `@s{tau}.{i}` an event minted
+position     the event's index in tau order — identity, not tau itself
+grounds      schemaRef, plus the authority-sorted Supersede targets where it issues
+dispose      targetsN(effect)                slots   how many fresh ids
+auth         PAuth and PProto                (a predicate; see below)
+input        the settlements the event's reason leaves draw on
+alpha        the episodes currently doubted
+```
 
-And a real over-refusal goes with it. Under challenge survival, an edit that
-would not have happened but for an argument was scored dependent on that
-argument. Under the declared-input test it is valid if prior authority permitted
-it given that input, which is what `office.persuasion` is about.
+**`auth` is a predicate and not a partition.** Reflective Integrity happens to
+make the two disjoint — a payload is one constructor or another — so no record
+here exhibits an occurrence that both governs and is governed. That is a fact
+about the architecture, not a requirement of the interface, and
+`office.content_sensitive_jurisdiction` is where a norm participates in a
+permission judgment without being an authority.
 
-**Where the realization is thin, and it is named rather than hidden.** `PAuth`
-carries a `SchemaCode` and no domain, so the RI realization's `permit` is the
-identity except where a `PProto` ground supplies a `covers` set. A record whose
-authority is a bare `PAuth` therefore satisfies **H4** vacuously, and
-`office.unauthorized_scope` is where the hypothesis has teeth.
+**Permission is thin here and the round says so.** `PAuth` carries a
+`SchemaCode` and no domain, so jurisdiction bites only where a `PProto` ground
+supplies `covers`. `PRIORITIES.md` item 67 is the repair and this pass does not
+attempt it.
 """
 from __future__ import annotations
 
@@ -53,69 +48,16 @@ import enrichment as en
 import replay as rp
 
 
-def sort_of(payload) -> str:
-    """`PAuth` and `PProto` govern; `PValue`, `PForce` and `PCmt` are governed."""
-    return rp.AUTHORITY if isinstance(payload, (ri.PAuth, ri.PProto)) else rp.NORM
-
-
-def occ_of(history: ri.History, x: str, seed_index: Mapping) -> rp.Occ:
-    """The occurrence a standing id names.
-
-    A seed id is a base occurrence; `@s{tau}.{i}` is the occurrence the edit at
-    `tau` issued at index `i`. The identifier scheme already carries occurrence
-    identity, which is why no side condition is needed for freshness.
-    """
-    if x in seed_index:
-        i, payload = seed_index[x]
-        return rp.Occ(rp.BASE_TIME, i, sort_of(payload))
-    tau, idx = _parse(x)
-    st = history.std(tau).get(x)
-    return rp.Occ(tau, idx, sort_of(st.payload) if st else rp.AUTHORITY)
-
-
-def _parse(x: str) -> tuple:
-    body = x[len(ri.MINTED_PREFIX) + 1:]
-    tau, idx = body.split(".")
-    return int(tau), int(idx)
-
-
-def _roles(history: ri.History, a: ri.NormEvent, seed_index):
-    """`(grounds, dispose, issue)` for one event."""
-    eff = history.effect(a)
-    ctx = ri.ctx_of(a)
-    occ = lambda x: occ_of(history, x, seed_index)
-    lic = frozenset({occ(a.schema_ref)})
-    if isinstance(eff, ri.Transfer):
-        # Custody, not authority: `applyEffect` is the identity on a Transfer and
-        # the abstract state has no holder field. Who is answerable is the
-        # accountability interface's question and is deliberately not this one.
-        return lic, frozenset(), ()
-    alpha = eff.alpha
-    fresh = tuple(ri.fresh_n(ctx, eff))
-    issue = tuple((sort_of(p), p) for p in _payloads(alpha))
-    if isinstance(alpha, ri.Supersede):
-        targets = frozenset(occ(x) for x in alpha.X)
-        parents = frozenset(o for o in targets if o.sort == rp.AUTHORITY) \
-            if fresh else frozenset()
-        return lic | parents, targets, issue
-    if isinstance(alpha, ri.Create):
-        return lic, frozenset(), issue
-    return lic, frozenset(), ()
-
-
-def _payloads(alpha) -> tuple:
-    if isinstance(alpha, (ri.Create, ri.Supersede)):
-        return tuple(alpha.K)
-    return ()
+def is_authority(payload) -> bool:
+    return isinstance(payload, (ri.PAuth, ri.PProto))
 
 
 def declared_input(case: en.RichCarrollCase, a: ri.NormEvent) -> frozenset:
-    """The settlements this event's reasons draw on. Its `I`.
+    """The settlements this event's reasons draw on: its descriptive provenance.
 
-    Read forward off the reason ledger. What makes this a *declared* input is
-    that the record says it: an event whose authorization actually turned on
-    something its derivation does not cite is a record that fails **H5**, not a
-    case the interface silently accepts.
+    Read forward off the reason ledger. An event whose authorization actually
+    turned on something its derivation does not cite is a record that fails
+    extraction factorization, not a case the interface silently accepts.
     """
     h = case.history()
     by_id = {e.id: e for e in h.reasons()}
@@ -128,78 +70,126 @@ def declared_input(case: en.RichCarrollCase, a: ri.NormEvent) -> frozenset:
 
 
 def episode_settlements(case: en.RichCarrollCase, episode: str) -> frozenset:
-    """Every settlement in an episode's ancestry class."""
     out = en.settlement_ancestors(case, case.episode_seeds(episode))
     for other in en.ancestry(case, episode):
         out |= en.settlement_ancestors(case, case.episode_seeds(other))
     return out
 
 
-def build(case: en.RichCarrollCase, base: Optional[frozenset] = None,
-          doubted: Optional[Mapping] = None) -> rp.Process:
-    """The proposal a record makes.
+def episodes(case: en.RichCarrollCase) -> tuple:
+    return tuple(sorted({e for _, e in case.settlement_episodes if e is not None}))
 
-    `doubted` maps an audit context to the episodes it doubts; the default gives
-    one context doubting every declared episode, and one doubting none.
-    """
+
+def contexts(case: en.RichCarrollCase) -> tuple:
+    return ("alpha:audited", "alpha:trusting")
+
+
+def build(case: en.RichCarrollCase, alpha: str = "alpha:audited",
+          doubted: Optional[frozenset] = None) -> rp.Frame:
+    """Extract a frame from a record at one audit context."""
     h = case.history()
-    seed_index = {x: (i, st.payload)
-                  for i, (x, st) in enumerate(sorted(h.seed.std0.items()))}
-    occ = lambda x: occ_of(h, x, seed_index)
-
-    base_occs = frozenset(occ(x) for x in h.seed.std0)
-    content = {occ(x): st.payload for x, st in h.seed.std0.items()}
-
-    episodes = tuple(sorted({e for _, e in case.settlement_episodes
-                             if e is not None}))
     if doubted is None:
-        doubted = {"alpha:trusting": frozenset(),
-                   "alpha:audited": frozenset(episodes)}
-    doubted = {k: frozenset(v) for k, v in doubted.items()}
-    tainted = {k: frozenset().union(frozenset(),
-                                    *[episode_settlements(case, e) for e in v])
-               for k, v in doubted.items()}
+        doubted = frozenset(episodes(case)) if alpha.endswith("audited") \
+            else frozenset()
+    tainted = frozenset().union(frozenset(),
+                                *[episode_settlements(case, e) for e in doubted])
 
-    edits = []
-    for a in h.norm_events():
-        grounds, dispose, issue = _roles(h, a, seed_index)
-        edits.append(rp.Edit(
-            at=a.tau, grounds=grounds, dispose=dispose, issue=issue,
-            input=declared_input(case, a),
-            exercise=(a.author, frozenset(a.derivation.leaves)),
-            scope=_scope(h, a, seed_index, content),
-            request=(a.schema_ref, _freeze(a.wit)),
+    seed = sorted(h.seed.std0.items())
+    occ_of, content = {}, {}
+    base = []
+    for i, (x, st) in enumerate(seed):
+        o = rp.Occ(rp.BASE, i)
+        occ_of[x], content[o] = o, st.payload
+        base.append(o)
+
+    events = list(h.norm_events())
+    trace = []
+    for t, a in enumerate(events):
+        eff = h.effect(a)
+        ctx = ri.ctx_of(a)
+        fresh = tuple(ri.fresh_n(ctx, eff))
+        lic = frozenset({occ_of[a.schema_ref]}) if a.schema_ref in occ_of \
+            else frozenset()
+        if isinstance(eff, ri.Transfer):
+            grounds, dispose, payloads = lic, frozenset(), ()
+        else:
+            alpha_eff = eff.alpha
+            payloads = tuple(alpha_eff.K) if isinstance(
+                alpha_eff, (ri.Create, ri.Supersede)) else ()
+            if isinstance(alpha_eff, ri.Supersede):
+                targets = frozenset(occ_of[x] for x in alpha_eff.X
+                                    if x in occ_of)
+                parents = frozenset(o for o in targets
+                                    if is_authority(content.get(o))) \
+                    if fresh else frozenset()
+                grounds, dispose = lic | parents, targets
+            elif isinstance(alpha_eff, ri.Create):
+                grounds, dispose = lic, frozenset()
+            else:
+                grounds = lic
+                dispose = frozenset()
+        for j, p in enumerate(payloads):
+            o = rp.Occ(t, j)
+            occ_of[fresh[j]] = o
+            content[o] = p
+        trace.append(rp.Edit(
+            grounds=grounds, dispose=dispose, issues=tuple(payloads),
+            declared=(declared_input(case, a), a.author, _freeze(a.wit),
+                      a.schema_ref),
             label=a.id))
+    trace = tuple(trace)
+
+    def auth(o) -> bool:
+        return is_authority(content.get(o))
 
     def covers_of(o):
-        payload = content.get(o)
-        term = getattr(payload, "term", None)
+        term = getattr(content.get(o), "term", None)
         return frozenset(getattr(term, "covers", ())) if term is not None else None
 
     def permit(state, e) -> bool:
-        """`PAuth` carries no domain, so this bites only on a `PProto` ground."""
+        """Jurisdiction where a `PProto` ground declares one, and nothing else."""
         for g in e.grounds:
             c = covers_of(g)
-            if c is not None and e.scope and not (e.scope <= c):
+            if c is not None and c == frozenset():
                 return False
         return True
 
-    def prov_ok(alpha, e) -> bool:
-        return not (frozenset(e.input) & tainted.get(alpha, frozenset()))
+    def valid(state, e) -> bool:
+        if not e.grounds <= frozenset(o for o in state if auth(o)):
+            return False
+        alters = bool(e.dispose & state) or bool(e.issues)
+        if alters and not e.grounds:
+            return False
+        if frozenset(e.declared[0]) & tainted:
+            return False
+        return permit(state, e)
 
-    def valid(alpha, state, e) -> bool:
-        return (e.grounds <= rp.auth(state) and permit(state, e)
-                and prov_ok(alpha, e))
+    f = rp.Frame(frozenset(base), trace, auth, valid)
+    object.__setattr__(f, "content", content)
+    object.__setattr__(f, "occ_of", occ_of)
+    return f
 
-    def view(alpha, i):
-        return (base_occs, tuple(e.declared() for e in edits[:i]),
-                tainted.get(alpha, frozenset()))
 
-    for e in edits:
-        content.update(e.content())
+def norms(f: rp.Frame, state) -> frozenset:
+    """The enforcement projection: what is governed rather than what governs."""
+    return frozenset(o for o in state if not f.auth(o))
 
-    return rp.Process(base_occs, tuple(edits), valid, tuple(sorted(doubted)),
-                      permit, prov_ok, view, content)
+
+def names(f: rp.Frame, occs) -> set:
+    out = set()
+    for o in occs:
+        p = f.content.get(o)
+        if isinstance(p, PValue):
+            out.add(p.spec_id)
+        elif isinstance(p, ri.PProto):
+            out.add(getattr(p.term, "id", str(p.term)))
+        elif isinstance(p, ri.PAuth):
+            out.add(p.code.name)
+        elif isinstance(p, ri.PForce):
+            out.add(str(p.clause))
+        else:
+            out.add(str(p))
+    return out
 
 
 def _freeze(w):
@@ -208,42 +198,6 @@ def _freeze(w):
     if isinstance(w, (list, tuple)):
         return tuple(_freeze(x) for x in w)
     return w
-
-
-def _scope(history, a, seed_index, content) -> frozenset:
-    """The intervention class an event purports to act in, where it declares one.
-
-    A record whose authorities are bare `PAuth` declares none, and the permit
-    relation is then vacuous on it — stated in the module docstring rather than
-    papered over.
-    """
-    return frozenset()
-
-
-def threat(case: en.RichCarrollCase, alpha: str,
-           doubted: Optional[Mapping] = None) -> dict:
-    """The influences an audit context is asked to see.
-
-    One per doubted episode, reaching the edits whose declared input draws on it.
-    A record's own episodes make coverage true by construction, which is the
-    ceiling on self-certification: a recognizer worried about an influence the
-    record does not record must supply its own threat class, against which the
-    record may simply fail.
-    """
-    p = build(case, doubted=doubted)
-    eps = doubted[alpha] if doubted else \
-        ({e for _, e in case.settlement_episodes if e is not None}
-         if alpha.endswith("audited") else set())
-    out = {}
-    for e in eps:
-        sett = episode_settlements(case, e)
-        out[f"xi:{e}"] = frozenset(
-            ed.at for ed in p.edits if frozenset(ed.input) & sett)
-    return out
-
-
-def content_of(p: rp.Process, o: rp.Occ):
-    return p.contents().get(o)
 
 
 def relabel(case: en.RichCarrollCase, sigma: Mapping) -> en.RichCarrollCase:
@@ -275,3 +229,33 @@ def _map_wit(wit, m):
     if isinstance(wit, (set, frozenset)):
         return frozenset(_map_wit(w, m) for w in wit)
     return m(wit)
+
+
+def extraction_agrees(a: en.RichCarrollCase, b: en.RichCarrollCase,
+                      alpha: str = "alpha:trusting") -> tuple:
+    """**Extraction factorization**, checked between two records.
+
+    Same declared data must give the same trace. Returns the first position at
+    which the extracted edits differ, or the empty tuple.
+
+    This is where hidden-state noninterference actually lives. The kernel's own
+    determinism is a fold congruence; what can fail is that a record's effect or
+    verdict turns on something the record does not declare.
+    """
+    fa, fb = build(a, alpha), build(b, alpha)
+    if fa.base != fb.base:
+        return (("different bases",),)
+    if len(fa.trace) != len(fb.trace):
+        return (("different lengths", len(fa.trace), len(fb.trace)),)
+    for t, (x, y) in enumerate(zip(fa.trace, fb.trace)):
+        if x.declared != y.declared:
+            return ()
+        if (x.grounds, x.dispose, x.issues) != (y.grounds, y.dispose, y.issues):
+            return (("effect differs on equal declarations", t),)
+    return ()
+
+
+def declared_data(case: en.RichCarrollCase, alpha: str = "alpha:trusting") -> tuple:
+    """What extraction is allowed to read: per event, its declared part."""
+    f = build(case, alpha)
+    return tuple((e.grounds, e.declared) for e in f.trace)
