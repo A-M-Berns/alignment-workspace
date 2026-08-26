@@ -167,30 +167,51 @@ different authority.
 
 `C28` runs both arms. Under a pre-state-reading minting schema the event survives
 and the authority comes back carrying a different code, so the clauses disagree.
-Under a pre-state-blind one they agree, and the argument that they must is short:
-a standing id is `@s{tau}.{i}`, `tau` is preserved by excision, so the only event
-that can mint that id is the one at that `tau`; if it survives with the same
-witness and reads nothing else, the payload is identical, and if it does not
-survive the id is absent and `G4` fails.
+Under a pre-state-blind one they agree:
 
 ```text
 every schema in the record is pre-state-blind
     ->  survives_excision(a, E) implies independent(schemaRef(a), E, tau(a))
 ```
 
-Both clauses are kept because Reflective Integrity permits the schemas that
-separate them, and the condition under which one could be dropped is now stated
-rather than guessed at.
+The argument, in full. `survives_excision(a, E)` means `a` was admitted in the
+excised replay, so `G4` passed there and `schemaRef(a)` is present and `Active`
+in it. `independent` asks for three things: `Active` in the original at
+`tau(a) - 1`, which holds because `a` is in the original record and passed `G4`
+there; `Active` in the excised record, which is what `G4` just gave; and the same
+payload. A standing id is either a seed id, whose payload never changes, or
+`@s{tau}.{i}`, and `tau` is preserved by excision — so the only event that can
+mint that id is the one at that `tau`. If it survives, a pre-state-blind schema
+gives it the same effect on the same witness and hence the same payload. If it
+does not survive, the id is absent and `G4` fails, contradicting survival.
+
+**This is a succession result and not an excision-algebra result**, and the
+difference is not cosmetic. It quantifies over one excision and one surviving
+event; it says nothing about comparing two excisions, which is where monotonicity
+and composition live and where blindness buys nothing. The round stated them
+together once and they are separated here because that was the overclaim.
+
+Both clauses are kept, because Reflective Integrity permits the schemas that
+separate them. Graded DERIVED in `THEOREM_MAP.md`: it is a paper argument from
+the admission rules and the id scheme, checked on one witness, and it is not
+mechanized.
 
 ## 5. What the criterion is not
 
-It is not the real-time objective: `C16` refuses what the real-time optimum
+Each of these is *not licensed* rather than `Refused`, which after the verdict
+repair is a distinction the round has to keep: `Refused` names a live independent
+prohibition, and none of these cases has one. Each returns `Unresolved` on a
+`defeated-citation` ground — a covering basis was cited and is blocked as a
+source of license.
+
+It is not the real-time objective: `C16` declines what the real-time optimum
 takes. It is not the constrained objective: `C18` licenses a policy outside the
 constrained set. It is not temporal priority: `C10`'s laundering passes a
-priority-only rule and is refused here. It is not actor identity: `C23`'s proxy
-passes an author-matching rule and is refused here. It is not `RI.Good`: `C5`'s
-record is `Good` throughout and the act is refused. It is not consent: `C7b`'s
-basis is installed during the record by an ordinary licensed event, not seeded.
+priority-only rule and its cited basis is blocked here. It is not actor identity:
+`C23`'s proxy passes an author-matching rule and its cited basis is blocked here.
+It is not `RI.Good`: `C5`'s record is `Good` throughout and the act is not
+licensed. It is not consent: `C7b`'s basis is installed during the record by an
+ordinary licensed event, not seeded.
 
 And it privileges no temporal index. `FinalApproval(I)` holds in `C4` and the act
 is not licensed; `InitialDisapproval(I)` holds in `C8` and the act is licensed;
@@ -200,16 +221,57 @@ one in `C13`.
 ## 6. What it does not do
 
 **The excision operator has two properties one would want and does not get.**
-`tests/test_excision.py` verifies determinism, position preservation,
-admissibility of the result, subhistory-in-information, prefix causality,
-idempotence and that excising nothing is the identity. It refutes monotonicity —
-`E` a subset of `E2` does not give `Survivors(E2)` a subset of `Survivors(E)` —
-and composition, which is not the excision of the union. Both fail on one
-witness, `fixtures.nonmonotone_case`, whose schema is admissible exactly at an
-even reason count: excising one episode leaves an odd count and the event falls,
-excising both leaves zero and it stands. The witness is a legal Reflective
-Integrity record. Both properties hold on every pre-state-blind fixture in the
-round, which is the same lever as the succession clause above.
+`tests/test_excision.py` verifies seven on the round's fixtures: determinism,
+position preservation, admissibility of the result, subhistory-in-information,
+prefix causality, idempotence, and that excising nothing is the identity. None
+of the seven is proved for an arbitrary record.
+
+It refutes two: **monotonicity** — `E` a subset of `E2` does not give
+`Survivors(E2)` a subset of `Survivors(E)` — and **composition**, which is not
+the excision of the union. There are two independent sources, and the round found
+them in this order.
+
+The first is pre-state-sensitive schema interpretation. `[[sigma]]_S` may read
+the strict pre-state and `G5` rejects an event whose schema returns nothing, so a
+smaller record can make an event inadmissible.
+`fixtures.nonmonotone_case` is admissible exactly at an even reason count.
+
+The second needs no pre-state reading at all, and it is the one that matters.
+Admission is a **replay over an evolving standing view**, and removing more
+history can restore an earlier standing and with it a later event's
+admissibility. `fixtures.suspension_restoration_case` is the witness: one episode
+suspends an authority, another reactivates it, a third event names it and `G4`
+requires it Active. Excising the reactivating episode leaves the suspension
+standing and the third event falls; excising both leaves the authority never
+suspended and it stands. Every schema in that record is pre-state-blind.
+
+So **pre-state-blindness buys neither property**. An earlier draft of this round
+said it did, on the evidence that both hold across the round's own fixtures; that
+was an inference from a sample, and the sample was of legitimacy fixtures rather
+than of records built to break the algebra.
+
+The lesson is about what the counterfactual *is*:
+
+> Counterfactual replay is a semantic re-evaluation of an evolving normative
+> record, not deletion from a graph. Excising more can restore earlier normative
+> state and thereby restore later admissibility.
+
+**One route does not work, and naming it is a result about the architecture.**
+Restoring a *stance* reaches nothing. `G2` asks whether a derivation's leaves are
+reason ids on the ledger, and `WFStep(Reason)` asks only that a reason's
+settlement sources are on the ledger. Neither reads the stance set `B_t`, and
+`Enabled` is a derived query no admission rule consults. That is the vertical
+slice's "having a reason is not taking a stance", seen from the side where it
+costs something: a counterfactual that removes what a reason stands on does not
+thereby remove the reason or anything grounded in it.
+`fixtures.stance_restoration_case` is the negative control and
+`test_excision.py` reads the clause off `wf_violations` rather than describing it.
+
+**None of this reaches the criterion.** `independent` and `survives_excision`
+each call `excise` once, on `ancestry(episode(I))`, and no verdict is assembled
+from verdicts taken at different excision sets.
+`test_adversarial.test_the_criterion_never_composes_two_excisions` checks that by
+parsing the module rather than by assertion.
 
 **It licenses nothing on a bare Carroll case.** Every one of the five examples,
 with no enriched history, returns `Unresolved` — checked, in

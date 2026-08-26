@@ -74,7 +74,7 @@ cells: 52   recovered: 50   not recovered: 2
 
 
 
-Adversarial suite — C0 to C33, C7b included: 35 rows.
+Adversarial suite — C0 to C34, C7b included: 36 rows.
 
 C0    PASS  exact Carroll fidelity
           observed: 50/52 cells recovered
@@ -181,6 +181,9 @@ C32   PASS  license without standing
 C33   PASS  standing without license
           observed: intervention Unresolved/no-covering-basis; succession Licensed; the value has standing=True
           later legitimate adoption of the same value does not reach back and license the influence that first produced it
+C34   PASS  standing restoration under excision
+          observed: good=True; excise E1=['a:suspend']; excise E1+E2=['a:target']; composed=[]; stance route reaches admission=False
+          pre-state-blindness buys neither monotonicity nor composition of excision; the stance route does not reach admission at all, because G2 reads ledger membership of reason ids
 
 Two dictatorship failures, as witnesses:
    FinalApproval(I) does not imply Licensed_t(I)

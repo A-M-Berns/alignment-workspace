@@ -5,12 +5,30 @@ Excise_E(H)   replay H with the settlements of the episodes in E removed,
               each removed step replaced by an inert settlement
 ```
 
-Six properties hold. Two tempting algebraic ones fail, and both fail for the
-same reason: Reflective Integrity's admissibility is not a monotone function of
-the record, because a schema may read the strict pre-state and `G5` rejects an
-event whose schema returns nothing. `fixtures.nonmonotone_case` is the witness.
-The round keeps the counterexample rather than adding machinery to force the
-algebra.
+**Seven** properties hold on the fixtures here. Two tempting algebraic ones fail:
+monotonicity in the excised set, and composition. There are **two independent
+sources** of the failure and the round found them in that order.
+
+The first is pre-state-sensitive schema interpretation: `[[sigma]]_S` may read
+the strict pre-state, and `G5` rejects an event whose schema returns nothing, so
+a smaller record can make an event inadmissible.
+
+The second needs no pre-state reading at all. Admission is a *replay* over an
+evolving standing view, and removing more history can restore an earlier
+standing and with it a later event's admissibility.
+`fixtures.suspension_restoration_case` is the witness: one episode suspends an
+authority, another reactivates it, and a third event names it. Excising the
+reactivating episode leaves the suspension in place and the third event falls;
+excising both leaves the authority never suspended and it stands.
+
+So pre-state-blindness buys neither property. What it does buy is narrower and
+lives in `test_adversarial.py`: for a *surviving* event, blindness makes the
+payload of the authority it names the same one. That is a succession result, not
+an algebra one, and the two are kept apart deliberately.
+
+`fixtures.stance_restoration_case` is the negative control for a route that does
+*not* work, and it names the clause: `G2` reads ledger membership of reason ids,
+not enablement.
 """
 from __future__ import annotations
 
@@ -28,6 +46,10 @@ def occurrence_ids(history) -> tuple:
             tuple(r.id for r in history.responses()))
 
 
+def events(history) -> set:
+    return {a.id for a in history.norm_events()}
+
+
 def blind_cases() -> list:
     """Every fixture whose schemas are all pre-state-blind."""
     return [F.C10_manufactured_authorization()["case"],
@@ -39,6 +61,7 @@ def blind_cases() -> list:
 
 
 class TestPropertiesThatHold(unittest.TestCase):
+    """Seven, on the fixtures below. None is proved for an arbitrary record."""
 
     def test_determinism(self):
         for case in blind_cases():
@@ -53,8 +76,9 @@ class TestPropertiesThatHold(unittest.TestCase):
                 self.assertEqual(en.excise(case, eps).now, case.history().now)
 
     def test_the_result_is_an_admissible_record(self):
-        for case in blind_cases():
-            for eps in ([], ["E"], ["E1", "E2"]):
+        for case in blind_cases() + [F.suspension_restoration_case(),
+                                     F.stance_restoration_case()]:
+            for eps in ([], ["E"], ["E1"], ["E1", "E2"]):
                 self.assertTrue(en.excise(case, eps).good())
 
     def test_subhistory_in_information(self):
@@ -62,7 +86,7 @@ class TestPropertiesThatHold(unittest.TestCase):
         for case in blind_cases():
             original = occurrence_ids(case.history())
             after = occurrence_ids(en.excise(case, ["E", "E1", "E2"]))
-            for kind, (was, now) in enumerate(zip(original, after)):
+            for was, now in zip(original, after):
                 for oid in now:
                     self.assertTrue(oid in was or oid.startswith(en.VOID),
                                     f"{oid} appeared from nowhere")
@@ -92,45 +116,86 @@ class TestPropertiesThatHold(unittest.TestCase):
 
 
 class TestPropertiesThatFail(unittest.TestCase):
-    """Two, with one witness, and the witness is a legal Reflective Integrity record."""
+    """Two, from two independent sources, each with a legal record as witness."""
 
-    def setUp(self):
-        self.case = F.nonmonotone_case()
-
-    def test_the_witness_is_a_legal_record(self):
-        self.assertTrue(self.case.history().good())
-        self.assertEqual({a.id for a in self.case.history().norm_events()},
-                         {"a:parity"})
-
-    def test_monotonicity_fails(self):
-        """`E subset E'` does not imply `Survivors(E') subset Survivors(E)`."""
-        small = {a.id for a in en.excise(self.case, ["E1"]).norm_events()}
-        large = {a.id for a in en.excise(self.case, ["E1", "E2"]).norm_events()}
-        self.assertEqual(small, set())
-        self.assertEqual(large, {"a:parity"})
+    def test_a_prestate_reading_schema_breaks_monotonicity(self):
+        case = F.nonmonotone_case()
+        self.assertTrue(case.history().good())
+        small = events(en.excise(case, ["E1"]))
+        large = events(en.excise(case, ["E1", "E2"]))
+        self.assertEqual((small, large), (set(), {"a:parity"}))
         self.assertFalse(large <= small)
 
-    def test_composition_fails(self):
-        """`Excise_{E'}(Excise_E(H))` is not `Excise_{E union E'}(H)`."""
-        composed = en.excise(en.excised_case(self.case, ["E1"]), ["E2"])
-        joint = en.excise(self.case, ["E1", "E2"])
-        self.assertEqual({a.id for a in composed.norm_events()}, set())
-        self.assertEqual({a.id for a in joint.norm_events()}, {"a:parity"})
+    def test_a_prestate_reading_schema_breaks_composition(self):
+        case = F.nonmonotone_case()
+        composed = en.excise(en.excised_case(case, ["E1"]), ["E2"])
+        joint = en.excise(case, ["E1", "E2"])
+        self.assertEqual(events(composed), set())
+        self.assertEqual(events(joint), {"a:parity"})
 
-    def test_both_failures_need_a_prestate_reading_schema(self):
-        """The same two properties hold on every pre-state-blind fixture here."""
+    def test_standing_restoration_breaks_monotonicity_without_reading_anything(self):
+        """The sharper witness: every schema here is pre-state-blind."""
+        case = F.suspension_restoration_case()
+        self.assertTrue(case.history().good())
+        self.assertEqual(events(case.history()),
+                         {"a:suspend", "a:reactivate", "a:target"})
+        small = events(en.excise(case, ["E1"]))
+        large = events(en.excise(case, ["E1", "E2"]))
+        self.assertEqual(small, {"a:suspend"})
+        self.assertEqual(large, {"a:target"})
+        self.assertNotIn("a:target", small)
+        self.assertFalse(large <= small)
+
+    def test_standing_restoration_breaks_composition(self):
+        case = F.suspension_restoration_case()
+        composed = en.excise(en.excised_case(case, ["E1"]), ["E2"])
+        joint = en.excise(case, ["E1", "E2"])
+        self.assertEqual(events(composed), set())
+        self.assertEqual(events(joint), {"a:target"})
+
+    def test_blindness_does_not_rescue_either_property(self):
+        """Stated as its own case because the round claimed the opposite once."""
+        case = F.suspension_restoration_case()
+        self.assertTrue(events(en.excise(case, ["E1", "E2"]))
+                        - events(en.excise(case, ["E1"])))
+
+    def test_both_properties_hold_on_the_rounds_own_fixtures(self):
+        """An observation about this suite, and not a theorem about records.
+
+        Every legitimacy fixture in the round happens to satisfy both. That is
+        why neither failure showed up until a record was built to produce one,
+        and it is the reason this test is named for what it checks.
+        """
         for case in blind_cases():
             small = occurrence_ids(en.excise(case, ["E1"]))
             large = occurrence_ids(en.excise(case, ["E1", "E2"]))
             for was, now in zip(small, large):
-                self.assertTrue(set(now) - {i for i in now
-                                            if i.startswith(en.VOID)}
-                                <= set(was))
+                self.assertTrue(
+                    {i for i in now if not i.startswith(en.VOID)} <= set(was))
             composed = en.excise(en.excised_case(case, ["E1"]), ["E2"])
             joint = en.excise(case, ["E1", "E2"])
-            self.assertEqual(
-                {a.id for a in composed.norm_events()},
-                {a.id for a in joint.norm_events()})
+            self.assertEqual(events(composed), events(joint))
+
+
+class TestTheRouteThatDoesNotWork(unittest.TestCase):
+    """Restoring a *stance* reaches nothing, and the clause that says so."""
+
+    def test_removing_a_stance_source_does_not_drop_a_later_event(self):
+        case = F.stance_restoration_case()
+        self.assertTrue(case.history().good())
+        self.assertIn("v", case.history().bhat())
+        self.assertIn("a:target", events(en.excise(case, ["E1"])))
+        self.assertNotIn("v", en.excise(case, ["E1"]).bhat())
+
+    def test_g2_reads_ledger_membership_and_not_enablement(self):
+        """The exact clause, read off the admission rule rather than described."""
+        case = F.stance_restoration_case()
+        history = case.history()
+        target = [a for a in history.norm_events() if a.id == "a:target"][0]
+        self.assertEqual(target.derivation.leaves, frozenset({"r:uses-v"}))
+        stripped = en.excise(case, ["E1"])
+        self.assertIn("r:uses-v", {e.id for e in stripped.reasons()})
+        self.assertEqual(stripped.wf_violations(target), [])
 
 
 if __name__ == "__main__":

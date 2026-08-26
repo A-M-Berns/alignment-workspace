@@ -6,20 +6,24 @@ Lean-checked and no claim is registered.
 
 ## Verdict
 
-CARROLL-CRITERION-SURVIVES-HARDENING — the criterion carries the hostile suite after two live defects were found and repaired, licenses genuine influence, reserves refusal for a positive prohibition, and returns insufficient structure on every bare example the source states.
+CARROLL-ROUND-CLOSED — the criterion carries the hostile suite after three prosecution passes, licenses genuine influence, reserves refusal for a positive prohibition, returns insufficient structure on every bare example the source states, and the one algebraic claim the round made beyond it is withdrawn with its counterexample.
 
 Read that with three qualifications, all of which are in `THEOREM_MAP.md` and
 `PROSECUTION.md` and none of which is a footnote.
 
-The suite is thirty-five fixtures **this round wrote**, against a criterion
-**this round wrote**. Five of the fixtures killed five versions of the criterion,
-which is the only evidence here that the exercise was adversarial at all. Two of
-those five were found by a hardening pass against the criterion as it stood after
-the round's own first pass, and both had been shipping: `ancestry` walked
-episode-to-episode where the prose said it closed over settlement references, so
-an unlabelled settlement between two halves of a campaign licensed a manufactured
-permit; and `Refused` was a closed-world reading of a permission language, so a
-protocol empowering somebody else refused this agent.
+The suite is thirty-six rows **this round wrote**, against a criterion **this
+round wrote**. Five of the rows killed five versions of the criterion and a sixth
+killed a claim the round made about its machinery, which is the only evidence
+here that the exercise was adversarial at all.
+
+Three of those six were in the gap between what a document said and what the code
+did, or between a sample and a claim. `ancestry` walked episode-to-episode where
+the prose said it closed over settlement references, so an unlabelled settlement
+between two halves of a campaign licensed a manufactured permit. `Refused` was a
+closed-world reading of a permission language, so a protocol empowering somebody
+else refused this agent. And the claim that pre-state-blind schemas bought the
+excision algebra was read off the round's own fixture sample; a legal record with
+no pre-state reading anywhere refutes it.
 
 The criterion licenses **nothing** on a bare Carroll case. All five of the
 source's examples, with no enriched history, return `Unresolved`. The round does
@@ -97,7 +101,31 @@ nothing else.
 reference graph, projected to episodes — with the cascade computed by Reflective
 Integrity's admission rules rather than annotated, and with the basis's
 applicability condition required to remain discharged. `CRITERION.md` is the
-account and `PROSECUTION.md` the fifteen entries that did not survive.
+account and `PROSECUTION.md` the sixteen entries that did not survive.
+
+Excision is applied **once**, at `ancestry(episode(I))`. That matters, because
+the operator is neither monotone in the excised set nor composable — a fact the
+round claimed otherwise about and now carries a counterexample for — and the
+criterion never assembles a verdict from verdicts at different excision sets.
+
+## What the counterfactual is
+
+The round's one piece of general mathematics, and it was earned by being wrong
+about it first:
+
+> Counterfactual replay is a semantic re-evaluation of an evolving normative
+> record, not deletion from a graph. Excising more can restore earlier normative
+> state and thereby restore later admissibility.
+
+`excise` is therefore neither monotone in the excised set nor composable, from
+two independent sources: schemas may read the strict pre-state, and admission is
+a replay over a standing view that removing history can restore. The second needs
+no pre-state reading. One route does *not* work and naming it is a result too:
+removing a stance-bearing standing reaches admission not at all, because `G2`
+reads ledger membership of reason ids and no admission rule consults the stance
+set.
+
+`CRITERION.md` §6 has both witnesses, and `tests/test_excision.py` runs them.
 
 ## The old interface
 
@@ -119,9 +147,10 @@ trace itself.
   license and uptake, and the five non-implications with their witnesses.
 - `CRITERION.md` — the criterion, the four questions the counterfactual had to
   answer, and what it does not do.
-- `PROSECUTION.md` — fifteen entries: rejected versions, rejected design choices
-  and one implementation defect. Three of the rejected rules are still in the
-  source, so those three comparisons run as tests.
+- `PROSECUTION.md` — sixteen entries: rejected versions, rejected design choices,
+  one rejected claim about the machinery, and one implementation defect. Three of
+  the rejected rules are still in the source, so those three comparisons run as
+  tests.
 - `OLD_INTERFACE.md` — the August 17 comparison.
 - `THEOREM_MAP.md` — every claim, graded.
 - `MATRIX.txt` — the three tables, regenerate with `python3 src/report.py MATRIX.txt`.
@@ -130,7 +159,7 @@ trace itself.
   (`Q_DR`, ancestry, excision), `legitimacy.py` (the five words and the
   criterion), `fixtures.py`, `variations.py`, `old_interface.py`, `suite.py`,
   `report.py`. Eleven modules.
-- `tests/` — 131 cases across eight files. `python3 tests/run.py`.
+- `tests/` — 159 cases across nine files. `python3 tests/run.py`.
 
 ## What the tests cover
 
@@ -142,7 +171,8 @@ trace itself.
 | `test_language.py` | influence read from the DR-MDP alone; a parameterization without standing; standing moving only through an event; authority against preference, agent and condition; the four non-implications; every step one of the four historical kinds; every fixture Reflective-Integrity-good |
 | `test_legitimacy.py` | the three verdicts and the reasons they carry; independence of a seeded, an episode-internal and a record-installed basis; a protocol covering another class; a prohibition alone; the standing fold; the bridge |
 | `test_adversarial.py` | the whole suite; the rendered matrix matching the committed one; the three dictatorship witnesses; each rejected rule run beside the criterion on the fixture that killed it; the cascade and the `tau`-preservation; the four attacks the round added; non-conservatism; the under-generality controls |
-| `test_excision.py` | seven properties of the excision operator verified and two refuted, with the legal Reflective Integrity record that refutes both |
+| `test_correspondence.py` | each criterion-defining phrase against what the code does: the ancestry closure and its direction, what excision removes by declaration, what independence reads, the five grounds, the two succession clauses being independent, and relabelling carrying the settled facts |
+| `test_excision.py` | seven properties of the excision operator verified on the round's fixtures and two refuted, from two independent sources, each with a legal Reflective Integrity record; plus the stance route that reaches admission not at all, with the clause read off `wf_violations` |
 | `test_old_interface.py` | each clause firing somewhere; the laundering and authorized classes both passing; the criterion separating them; clause 1 vacuous on both; `Z` along the run and `L` by content |
 
 ## What this does not establish
@@ -153,9 +183,9 @@ No Lean, no registered claim, and `test-supported` is the ceiling for everything
 here.
 
 The criterion has no counterexample **among the cases the round could think of**,
-and the round wrote both sides. Its two most recent repairs were forced by
-defects that had already shipped once, so the count of versions killed is a lower
-bound on how many were wrong.
+and the round wrote both sides. Three of its six prosecuted failures were forced
+by claims that had already shipped, so the count is a lower bound on how many
+were wrong.
 
 The supplied seam is three fields, not one. `covers` can only name an edge of the
 DR-MDP, which is the protection the round claims for it; a protocol's `condition`

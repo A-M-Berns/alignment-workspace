@@ -18,8 +18,8 @@ class TestSuite(unittest.TestCase):
     def test_the_suite_is_the_whole_suite(self):
         ids = [r["id"] for r in suite.run()]
         self.assertEqual(ids[0], "C0")
-        self.assertEqual(ids[-1], "C33")
-        self.assertEqual(len(ids), 35)      # C0-C24, plus C7b and C25-C33
+        self.assertEqual(ids[-1], "C34")
+        self.assertEqual(len(ids), 36)      # C0-C24, plus C7b and C25-C34
 
     def test_the_suite_can_fail(self):
         """The null-input case: a demand that is false reports FAIL."""
@@ -157,6 +157,29 @@ class TestTheRoundsOwnAttacks(unittest.TestCase):
         d = F.C28_prestate_reading_schema(prestate_reading=False)
         self.assertTrue(lg.survives_excision(d["case"], d["event"], d["episode"]))
         self.assertTrue(lg.independent(d["case"], d["authority"], d["episode"], 4))
+
+    def test_the_criterion_never_composes_two_excisions(self):
+        """Merge-readiness: the algebra that fails is not one the criterion uses.
+
+        `independent` and `survives_excision` each call `excise` once, on
+        `ancestry(episode(I))`. No verdict is assembled from verdicts taken at
+        different excision sets, so the failure of monotonicity and composition
+        in `test_excision.py` reaches no claim the criterion makes.
+        """
+        import ast
+        import pathlib
+        source = (pathlib.Path(__file__).resolve().parents[1] / "src"
+                  / "legitimacy.py").read_text()
+        calls = [n for n in ast.walk(ast.parse(source))
+                 if isinstance(n, ast.Call)
+                 and isinstance(n.func, ast.Attribute)
+                 and n.func.attr in ("excise", "excised_case")]
+        self.assertEqual(len(calls), 2)
+        for call in calls:
+            self.assertEqual(call.func.attr, "excise")
+            inner = call.args[1]
+            self.assertIsInstance(inner, ast.Call)
+            self.assertEqual(inner.func.attr, "ancestry")
 
     def test_the_same_trigger_outside_the_episode_licenses(self):
         d = F.C26_manufactured_condition(inside=False)

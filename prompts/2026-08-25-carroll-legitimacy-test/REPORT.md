@@ -6,20 +6,20 @@
 
 Verdict:
 
-CARROLL-CRITERION-SURVIVES-HARDENING — the criterion carries the hostile suite after two live defects were found and repaired, licenses genuine influence, reserves refusal for a positive prohibition, and returns insufficient structure on every bare example the source states.
+CARROLL-ROUND-CLOSED — the criterion carries the hostile suite after three prosecution passes, licenses genuine influence, reserves refusal for a positive prohibition, returns insufficient structure on every bare example the source states, and the one algebraic claim the round made beyond it is withdrawn with its counterexample.
 
-The round ran in two passes. The first built the reproduction, the language and
-the criterion, and closed at `CARROLL-CRITERION-SURVIVES`. The second was a
-hardening pass dispatched against that result, and it found two defects that had
-already shipped. The verdict below is the second pass's; §"The hardening pass"
-records what changed.
+The round ran in three passes. The first built the reproduction, the language and
+the criterion. The second was a hardening pass against that result and found two
+shipped defects. The third was a falsification pass against one remaining
+mathematical claim, and the claim was false. The criterion itself was not
+touched by the third pass.
 
 The round is at
 `projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/`.
 `README.md` is the entry point, `CARROLL_CORE.md` the reproduction,
 `CRITERION.md` the criterion, `PROSECUTION.md` what did not survive,
-`OLD_INTERFACE.md` the comparison, `THEOREM_MAP.md` the grading. 131 tests across
-eight files, `python3 tests/run.py`.
+`OLD_INTERFACE.md` the comparison, `THEOREM_MAP.md` the grading. 159 tests across
+nine files, `python3 tests/run.py`.
 
 ## What the source was reproduced to
 
@@ -67,10 +67,10 @@ Its verdict is three-valued with the status a function of a named ground, and
 `Refused` is reserved for an admissible independent prohibition: the permission
 language is not read closed-world.
 
-Eight versions did not survive. `PROSECUTION.md` carries fifteen entries —
-rejected rules, rejected design choices, and one implementation defect — and
-three of the rejected rules are still in the source, so those three comparisons
-run as tests rather than sitting in prose.
+`PROSECUTION.md` carries sixteen entries — rejected rules, rejected design
+choices, one rejected claim about the machinery, and one implementation defect —
+and three of the rejected rules are still in the source, so those three
+comparisons run as tests rather than sitting in prose.
 
 No case-specific clause was added at any point. Every repair generalises:
 closing the counterfactual over episode ancestry, taking that closure in the
@@ -150,13 +150,65 @@ the record.
 The historical ontology did not widen. No fifth event kind, no new foundational
 primitive, no change to Reflective Integrity.
 
+## The falsification pass
+
+One attack, aimed at the hardening pass's remaining mathematical claim: that
+pre-state-blind schemas were "the lever" behind the failure of monotonicity and
+composition for `excise`, on the evidence that both held across every
+pre-state-blind fixture in the round.
+
+**The claim is false.** `C34`'s
+`fixtures.suspension_restoration_case` uses only pre-state-blind schemas: one
+episode suspends an authority, another reactivates it, and a third event names it
+where `G4` requires it `Active`. Excising the reactivating episode leaves the
+suspension in place and the third event falls; excising both leaves the authority
+never suspended and it stands. Monotonicity and composition both fail with
+nothing reading the pre-state anywhere.
+
+So there are two independent sources, not one. Pre-state-sensitive schema
+interpretation is the first; **replay-sensitive admission itself** is the second,
+and it is the one that generalises:
+
+> Counterfactual replay is a semantic re-evaluation of an evolving normative
+> record, not deletion from a graph. Excising more can restore earlier normative
+> state and thereby restore later admissibility.
+
+The dispatched mechanism was different — remove a stance-bearing standing so a
+reason is disabled and an event citing it falls under `G2` — and **that route
+does not work**. `G2` reads whether a derivation's leaves are reason ids on the
+ledger, `WFStep(Reason)` reads whether a reason's settlement sources are on the
+ledger, and neither consults the stance set; `Enabled` is a derived query no
+admission rule calls. `fixtures.stance_restoration_case` is the negative control
+and `test_excision.py` reads the clause off `wf_violations`. This is the vertical
+slice's "having a reason is not taking a stance" seen from the side where it
+costs something.
+
+The narrower `C28` succession result **survives**, and is now stated apart from
+the algebra with its argument written out: for a *surviving* event, `G4` gives
+the named authority `Active` in the excised record, and the `@s{tau}.{i}` id
+scheme plus pre-state-blindness gives it the same payload. That quantifies over
+one excision and one event; monotonicity and composition quantify over two
+excisions, which is where blindness buys nothing.
+
+**No part of the prospective-license criterion changed.** `independent` and
+`survives_excision` each call `excise` once, on `ancestry(episode(I))`, and no
+verdict is assembled across excision sets —
+`test_adversarial.test_the_criterion_never_composes_two_excisions` checks that by
+parsing the module.
+
+`tests/test_correspondence.py` is new, and is the pass's answer to the failure
+mode the previous one exposed. Three of this round's six prosecuted failures lived
+in the gap between a document and an implementation, and none would have been
+caught by the adversarial suite, because each preserved the verdicts the suite
+asserts. That file asserts the definitions instead.
+
 ## What remains open
 
 `THEOREM_MAP.md` items 35 to 42. The five that matter:
 
-The criterion has no counterexample **among the thirty-five fixtures this round
-wrote**, and the round wrote the criterion too. Two of its repairs were forced by
-defects that had already shipped once, so the count of versions killed is a lower
+The criterion has no counterexample **among the thirty-six rows this round
+wrote**, and the round wrote the criterion too. Three of its six prosecuted
+failures were forced by claims that had already shipped, so the count is a lower
 bound on how many were wrong.
 
 An agent that splits its campaign into two influence episodes whose settlements
@@ -169,9 +221,10 @@ and the fact tokens a settlement establishes. Only the first is confined to
 naming a structural edge; the other two are opaque strings, and relabelling the
 DR-MDP renames none of them.
 
-Whether restricting a record to pre-state-blind schemas is affordable. It buys
-the excision algebra and one succession clause, and nothing here says what it
-costs.
+What condition, if any, restores monotonicity and composition of `excise`.
+Pre-state-blindness does not, and no condition covering both known sources is
+proposed here. Blindness still buys the `C28` succession implication, and whether
+that alone is worth imposing is open.
 
 Every bare Carroll case returns `Unresolved`. The criterion does not answer the
 source's question; it says the DR-MDP does not contain the answer and exhibits
@@ -192,18 +245,20 @@ line's canonical account and its executable form. `ANSWERABILITY_SCOUT.md` and
 `SETTLEMENT_SEMANTICS.md` were read only through the vertical slice's `README.md`
 summaries; nothing in this round consumes either.
 
-**Suite size.** The prompt specified C0 to C24. The round runs thirty-five rows:
-those twenty-five, plus `C7b` (a license whose basis was installed during the
-record rather than seeded, against the first prompt's under-generality test) and
-`C25` to `C33`. `C25` (split campaign), `C26` (manufactured applicability) and
-`C27` (unlabelled intermediate) each killed the criterion as then written; `C29`
-pins the repaired verdict semantics; `C28`, `C30`, `C31`, `C32` and `C33` are
-attacks it survived.
+**Suite size.** The first prompt specified C0 to C24. The round runs thirty-six
+rows: those twenty-five, plus `C7b` (a license whose basis was installed during
+the record rather than seeded, against the first prompt's under-generality test)
+and `C25` to `C34`. `C25` (split campaign), `C26` (manufactured applicability)
+and `C27` (unlabelled intermediate) each killed the criterion as then written;
+`C29` pins the repaired verdict semantics; `C34` killed a claim about `excise`
+rather than about the criterion; `C28`, `C30`, `C31`, `C32` and `C33` are attacks
+it survived.
 
 **Layout.** Beyond the suggested layout the round adds `src/table4.py`,
 `src/variations.py`, `src/old_interface.py`, `src/suite.py`, `src/report.py`,
-`OLD_INTERFACE.md` and `MATRIX.txt`, and three further test files — for the
-suite, the comparison and the excision operator.
+`OLD_INTERFACE.md` and `MATRIX.txt`, and four further test files — for the suite,
+the comparison, the excision operator, and the definition-to-implementation
+correspondence.
 
 **Table 4's annotations.** Carried as ASCII tokens — `check`, `cross`,
 `question`, `weak-check`, `mixed` — rather than the source's glyphs. They are
@@ -222,8 +277,10 @@ All provisional under `AGENTS.md` §6: `RichCarrollCase`, `Protocol`,
 `Verdict`, `prior_independent_authorization`, `admissible_independent`,
 `prospective_license`, `defeated_citation`, `legitimate_succession`,
 `current_standing`, `theta_has_standing`, `uptake_events`, `survives_excision`,
-`THETA_INDEX_READINGS`, and the five ground names `independent-permission`,
-`independent-prohibition`, `conflict`, `defeated-citation`, `no-covering-basis`.
+`THETA_INDEX_READINGS`, the five ground names `independent-permission`,
+`independent-prohibition`, `conflict`, `defeated-citation` and
+`no-covering-basis`, and the three algebra witnesses `nonmonotone_case`,
+`suspension_restoration_case` and `stance_restoration_case`.
 
 ## What this does not establish
 
@@ -237,8 +294,9 @@ wrong. The excision counterfactual asks what the record would have admitted, not
 what would have happened, so a basis a person would have installed anyway is
 scored dependent whenever the record's only path to it runs through the episode.
 Influence-episode membership is an input to the model. The excision operator is
-neither monotone nor composable in general, so nothing here supports reasoning
-about several episodes by combining verdicts about each. And the criterion's
+neither monotone nor composable, from two independent sources, so nothing here
+supports reasoning about several episodes by combining verdicts about each; the
+criterion never does, and that is checked rather than intended. And the criterion's
 `Licensed` verdict requires an active covering authority basis, which no bare
 Carroll case has and no argument here says a real deployment could produce.
 
@@ -250,5 +308,6 @@ Carroll case has and no argument here says a real deployment could produce.
    source's examples is a correct result about what DR-MDPs omit or an evasion
    dressed as one, and the answer turns on where the program is going.
 
-2. **The merge.** A pull-request fact: auto-merge is left off and the merge is the
-   maintainer's.
+2. **The merge.** Performed under the final dispatch, which set merge as the
+   intended endpoint conditional on the last attack not breaking the criterion.
+   It did not: it broke a claim about `excise` and the criterion was untouched.

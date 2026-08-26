@@ -1,4 +1,4 @@
-"""C0 to C33, run once, as data.
+"""C0 to C34, run once, as data.
 
 `run()` returns one row per case: what was observed, what the case demanded, and
 whether the demand was met. `tests/test_adversarial.py` asserts the rows and
@@ -457,8 +457,30 @@ def C33():
                 "and license the influence that first produced it")
 
 
+def C34():
+    """Standing restoration: excising more restores an event, blindly."""
+    case = F.suspension_restoration_case()
+    small = {a.id for a in en.excise(case, ["E1"]).norm_events()}
+    large = {a.id for a in en.excise(case, ["E1", "E2"]).norm_events()}
+    composed = {a.id for a in
+                en.excise(en.excised_case(case, ["E1"]), ["E2"]).norm_events()}
+    control = F.stance_restoration_case()
+    stance_survives = "a:target" in {
+        a.id for a in en.excise(control, ["E1"]).norm_events()}
+    return _row("C34", "standing restoration under excision",
+                f"good={case.history().good()}; excise E1={sorted(small)}; "
+                f"excise E1+E2={sorted(large)}; composed={sorted(composed)}; "
+                f"stance route reaches admission={not stance_survives}",
+                case.history().good()
+                and "a:target" not in small and "a:target" in large
+                and composed != large and stance_survives,
+                "pre-state-blindness buys neither monotonicity nor composition "
+                "of excision; the stance route does not reach admission at all, "
+                "because G2 reads ledger membership of reason ids")
+
+
 CASES = [C0, C1, C2, C3, C4, C5, C6, C7, C7b, C8, C9, C10, C11, C12, C13, C14,
-         C15, C16, C17, C18, C19, C20, C21, C22, C23, C24, C25, C26, C27, C28, C29, C30, C31, C32, C33]
+         C15, C16, C17, C18, C19, C20, C21, C22, C23, C24, C25, C26, C27, C28, C29, C30, C31, C32, C33, C34]
 
 
 def run() -> list:

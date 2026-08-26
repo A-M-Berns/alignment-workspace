@@ -1,16 +1,18 @@
 # Prosecution
 
 Every version of the criterion the round built and rejected, with the fixture
-that killed it, and one implementation defect that is not a version but was found
-the same way. Fifteen entries; **three** of the rejected rules are kept in the
-source — `temporal_priority_license`, `author_matching_license` and
+that killed it, one rejected claim *about* the criterion's machinery, and one
+implementation defect. Sixteen entries; **three** of the rejected rules are kept
+in the source — `temporal_priority_license`, `author_matching_license` and
 `authority_only_succession` — so those three comparisons run as tests rather than
 sitting in prose.
 
-Entries 4b and 5b were found by the hardening pass against the criterion as
-merged into this branch's first commits. Both were live: the ancestry walk
+Entries 4b and 5b were found by the hardening pass against the criterion as it
+stood in this branch's earlier commits. Both were live: the ancestry walk
 licensed a manufactured permit, and `Refused` was a closed-world reading of a
-permission language.
+permission language. Entry 13 was found by the final pass and is not a defect in
+the criterion — it is a claim the round made about excision that a legal record
+refutes.
 
 ---
 
@@ -159,7 +161,35 @@ raw interaction outcome already becomes, and the episode is a property of those
 settlements. `test_language.py` checks that every step of every fixture in the
 round is one of `Settle`, `Reason`, `Norm`, `Respond`.
 
-## 13. `relabel_case` dropping the settled-fact map
+## 13. Pre-state-blindness as the condition restoring the excision algebra
+
+The hardening pass observed that monotonicity and composition held across every
+pre-state-blind fixture in the round and wrote that pre-state-blindness was "the
+lever" behind both failures. Killed by `C34`.
+
+`fixtures.suspension_restoration_case` uses only pre-state-blind schemas: one
+episode suspends an authority, another reactivates it, and a third event names it
+where `G4` needs it `Active`. Excising the reactivating episode leaves the
+suspension in place and the third event falls; excising both leaves the authority
+never suspended and it stands. Monotonicity and composition both fail.
+
+The repair is to the interpretation and not to the operator. There are two
+independent sources of the failure — pre-state-sensitive schema interpretation,
+and replay-sensitive admission itself — and only the first has anything to do
+with blindness. The narrower `C28` result survives untouched, because it
+quantifies over one excision and one surviving event rather than over two
+excisions; `CRITERION.md` §4 carries its argument and the two are now stated
+apart.
+
+The attack was dispatched with a different mechanism in mind — removing a
+stance-bearing standing so that a reason is disabled and an event citing it falls
+under `G2`. That route does not work, and `fixtures.stance_restoration_case` is
+the negative control: `G2` reads ledger membership of reason ids and
+`WFStep(Reason)` reads settlement sources, so neither consults the stance set.
+The proposed mechanism is blocked by the architecture's own "having a reason is
+not taking a stance".
+
+## 14. `relabel_case` dropping the settled-fact map
 
 Not a version of the criterion — an implementation defect the hardening pass's
 own honesty test found. `relabel_case` rebuilt a case without carrying
@@ -177,17 +207,21 @@ whose condition is discharged from a settled fact.
 repair generalises rather than special-casing. Three came from the round's first
 pass — `C25`, `C26` and the `C11` succession clause — and two from the hardening
 pass, `C27` against the ancestry closure and the closed-world reading of
-`Refused`. That is a weaker result than it sounds: the suite is thirty-five
-fixtures the round wrote, and a criterion built against them passing them is
-evidence about the round's imagination, not about the criterion.
+`Refused`. A sixth attack, `C34`, broke a claim the round made *about* the
+criterion's machinery rather than the criterion itself. That is a weaker record
+than it sounds: the suite is thirty-six rows the round wrote, and a criterion
+built against them passing them is evidence about the round's imagination, not
+about the criterion.
 
-**The two the hardening pass found were both in the gap between prose and code.**
-`CRITERION.md` already said the closure was over settlement references and the
-implementation walked episodes; `Unresolved` was already documented as "the
-record does not say" and the implementation returned `Refused` for four cases
-where the record does not say. A round whose documents and code are checked
-against each other only by the author is a round with this failure mode, and
-neither would have been found by running the suite.
+**Three of the six were in the gap between prose and code, or between a sample
+and a claim.** `CRITERION.md` already said the ancestry closure was over
+settlement references and the implementation walked episodes; `Unresolved` was
+already documented as "the record does not say" and the implementation returned
+`Refused` for four cases where the record does not say; and the claim that
+pre-state-blindness bought the excision algebra was read off a sample of
+legitimacy fixtures rather than off the admission rules. A round whose documents
+and code are checked against each other only by the author has this failure mode,
+and none of the three would have been found by running the suite.
 
 **One attack is unresolved rather than defeated.** `C25`'s unlinked arm is
 licensed. The round's position is that a record which does not link two episodes

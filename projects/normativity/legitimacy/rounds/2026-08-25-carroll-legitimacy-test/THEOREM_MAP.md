@@ -34,10 +34,13 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | 25 | `ancestry` is the transitive predecessor closure in the settlement-reference graph, projected to episodes; an episode-to-episode walk is a different and weaker closure | DEFINITION + COUNTEREXAMPLE | `C27`, `test_adversarial.test_the_closure_runs_in_the_settlement_graph` |
 | 26 | `Refused` is reachable from exactly one ground — an admissible independent prohibition — so the permission language is not read closed-world | DEFINITION + FINITE-TEST-SUPPORTED | `C29`, `test_legitimacy.TestVerdictShape` |
 | 27 | `survives_excision(a, E)` does **not** imply `independent(schemaRef(a), E, tau(a))`; the separator is a schema that reads the strict pre-state | COUNTEREXAMPLE | `C28`, `test_adversarial.test_event_survival_does_not_imply_an_independent_authority` |
-| 28 | Where every schema in the record is pre-state-blind, it does imply it | DERIVED, argued from id minting and `G4`; checked on one witness | `C28`'s blind arm; `CRITERION.md` §4 |
-| 29 | `excise` is deterministic, position-preserving, admissibility-preserving, subhistory-in-information, prefix-causal and idempotent, and excising nothing is the identity | FINITE-TEST-SUPPORTED | `test_excision.TestPropertiesThatHold` |
-| 30 | `excise` is **not** monotone in the excised set and does **not** compose; one witness refutes both | COUNTEREXAMPLE | `test_excision.TestPropertiesThatFail`, `fixtures.nonmonotone_case` |
-| 31 | Both failures need a pre-state-reading schema: both properties hold on every pre-state-blind fixture in the round | FINITE-TEST-SUPPORTED | `test_excision.test_both_failures_need_a_prestate_reading_schema` |
+| 28 | Where every schema in the record is pre-state-blind, it does imply it. **A succession result about one excision and one surviving event, not an excision-algebra result** — see 31a | DERIVED, argued from `G4` and the `@s{tau}.{i}` id scheme; checked on one witness; not mechanized | `C28`'s blind arm; `CRITERION.md` §4 |
+| 29 | `excise` is deterministic, position-preserving, admissibility-preserving, subhistory-in-information, prefix-causal and idempotent, and excising nothing is the identity — **on the round's fixtures**, not for an arbitrary record | FINITE-TEST-SUPPORTED | `test_excision.TestPropertiesThatHold`, seven cases |
+| 30 | `excise` is **not** monotone in the excised set and does **not** compose | COUNTEREXAMPLE | `test_excision.TestPropertiesThatFail` |
+| 31 | There are **two independent sources**: pre-state-sensitive schema interpretation, and replay-sensitive admission itself. The second needs no pre-state reading — excising more can restore a suspended authority and with it a later event | COUNTEREXAMPLE | `fixtures.nonmonotone_case`; `fixtures.suspension_restoration_case`, `C34` |
+| 31a | Pre-state-blindness therefore buys **neither** property. The earlier claim that it did was an inference from the round's own fixture sample and is withdrawn | COUNTEREXAMPLE | `test_excision.test_blindness_does_not_rescue_either_property`, `PROSECUTION.md` §13 |
+| 31b | Restoring a stance-bearing standing reaches admission **not at all**: `G2` reads ledger membership of reason ids and `WFStep(Reason)` reads settlement sources, so neither consults `B_t` | DERIVED, read off `wf_violations` | `fixtures.stance_restoration_case`, `test_excision.TestTheRouteThatDoesNotWork` |
+| 31c | Neither failure reaches the criterion: `independent` and `survives_excision` each call `excise` once, on `ancestry(episode(I))`, and no verdict is assembled across excision sets | FINITE-TEST-SUPPORTED, by parsing the module | `test_adversarial.test_the_criterion_never_composes_two_excisions` |
 | 32 | A protocol's applicability condition must remain discharged in the excised record; a fact restated inside the episode but established outside it still is | FINITE-TEST-SUPPORTED | `C30`, five arms |
 | 33 | Two interventions of one intervention class in two state contexts are distinguished by the existing `condition` field, so the class did not widen | FINITE-TEST-SUPPORTED | `C31` |
 | 34 | **License and standing are separate in both directions**: a licensed act whose result has no standing, and an unlicensed act whose result later acquires standing through a licensed succession | FINITE-TEST-SUPPORTED | `C32`, `C33` |
@@ -46,23 +49,25 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 
 | # | statement | class |
 |---|---|---|
-| 35 | The criterion, as stated, has no counterexample | CONJECTURE — thirty-five fixtures the round wrote, and the round wrote both the criterion and the fixtures |
+| 35 | The criterion, as stated, has no counterexample | CONJECTURE — thirty-six rows the round wrote, and the round wrote both the criterion and the fixtures |
 | 36 | A record whose two episodes carry no reference reaching each other defeats the criterion; whether real records can be made to carry the links | OPEN — `C25`'s unlinked arm is the witness for the first half, and nothing addresses the second |
 | 37 | The supplied seam is `covers`, `condition` and the fact vocabulary. Whether an account of any of the three is possible without reintroducing content | OPEN |
 | 38 | Excision is a record counterfactual. Whether a world counterfactual — would this basis have existed anyway — is statable in this architecture | OPEN |
 | 39 | Every bare Carroll case returns `Unresolved`. Whether records of the shape the criterion needs are obtainable for real preference-influencing systems | OPEN — and the question on which the round's practical value turns |
 | 40 | Non-capture may be recoverable as a live clause where the transition rule has a second channel; nothing here says whether a real implementation of Reflective Integrity has one | OPEN |
-| 41 | Whether restricting the record to pre-state-blind schemas is a defensible condition to impose, given that it buys the excision algebra and one succession clause | OPEN — the hardening pass found the lever, and nothing here says whether the restriction is affordable |
+| 41 | What condition, if any, restores monotonicity and composition of `excise`. Pre-state-blindness does not; the two known sources are schema interpretation and replay-sensitive admission, and no condition covering both is proposed here | OPEN |
+| 41a | Whether pre-state-blindness is worth imposing for what it *does* buy — the succession implication of entry 28 — and what that would cost | OPEN |
 | 42 | A Lean port of the excision cascade, the ancestry closure and the independence predicate | OPEN — nothing in this round is Lean-checked |
 
 ## What no entry above claims
 
 That the criterion is correct. Every positive entry is a finite witness or a
 finite refutation, and the honest summary of entries 14 to 19 is that the
-criterion says what the round wanted it to say on thirty-five constructed cases
+criterion says what the round wanted it to say on thirty-six constructed rows
 after five of its versions were killed by five of them — two of those five during
-the hardening pass, against the criterion as it stood in this branch's first
-commits.
+the hardening pass, against the criterion as it stood in this branch's earlier
+commits. A sixth attack, `C34`, killed a claim the round made about `excise`
+rather than about the criterion.
 
 That entry 28 is proved. It is an argument from how minted ids are formed and
 what `G4` requires, checked on one witness, and it is graded DERIVED rather than

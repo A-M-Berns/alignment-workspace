@@ -1,4 +1,4 @@
-"""The adversarial suite, C0 to C33, as constructed cases.
+"""The adversarial suite, C0 to C34, as constructed cases.
 
 Every fixture is a Reflective Integrity record over one of the five Carroll
 DR-MDPs. The DR-MDP is never edited: `Q_DR` of every enriched case in this
@@ -811,6 +811,94 @@ def nonmonotone_case() -> en.RichCarrollCase:
     b.reason("r1", s_L={"s1"}, target="t1")
     b.reason("r2", s_L={"s2"}, target="t2")
     b.norm("a:parity", PARITY, USER)
+    return b.build()
+
+
+TARGET_AUTH = "const.target"
+
+
+def _suspend(wit, pre):
+    return ri.Standing(ri.SetStatus(frozenset({TARGET_AUTH}), ri.SUSPENDED))
+
+
+def _reactivate(wit, pre):
+    return ri.Standing(ri.SetStatus(frozenset({TARGET_AUTH}), ri.ACTIVE))
+
+
+def suspension_restoration_case() -> en.RichCarrollCase:
+    """Removing more history restores a standing, and with it a later event.
+
+    Every schema here is pre-state-blind: each returns a fixed effect and reads
+    neither the witness nor the record. What varies is *which events survive*,
+    and that is enough.
+
+    ```text
+    E2 suspends the authority        a:suspend
+    E1 reactivates it                a:reactivate
+    later                            a:target names it, and G4 needs it Active
+    ```
+
+    In the record the authority is Active at `a:target`'s strict pre-state, so
+    `a:target` is admitted. Excising `E1` alone drops the reactivation and leaves
+    the suspension standing, so `a:target` fails `G4` and falls. Excising `E1`
+    and `E2` together drops both, the authority was never suspended, and
+    `a:target` is admitted again.
+
+    This is the witness that pre-state-blindness buys neither monotonicity nor
+    composition of excision.
+    """
+    m = cc.conspiracy_influence()
+    s = seed({TARGET_AUTH: ri.PAuth(SC_CREATE),
+              "const.suspend": ri.PAuth(ri.SchemaCode("suspend", _suspend)),
+              "const.reactivate": ri.PAuth(ri.SchemaCode("react", _reactivate))})
+    b = en.CaseBuilder(m, s, narrative("standing restoration", "x"))
+    b.begin("E2")
+    b.settle("s2")
+    b.end()
+    b.reason("r2", s_L={"s2"}, target="t2")
+    b.norm("a:suspend", "const.suspend", USER, leaves={"r2"})
+    b.begin("E1")
+    b.settle("s1")
+    b.end()
+    b.reason("r1", s_L={"s1"}, target="t1")
+    b.norm("a:reactivate", "const.reactivate", USER, leaves={"r1"})
+    b.norm("a:target", TARGET_AUTH, USER, wit=(PValue("v:x"),))
+    return b.build()
+
+
+def stance_restoration_case() -> en.RichCarrollCase:
+    """The same shape through the stance set, which does not reach admission.
+
+    A stance-bearing standing for `v` is removed by an event in `E2` and a new
+    one is created by an event in `E1`; a reason has `v` among its stance
+    sources, and a later event cites that reason. Excising `E1` leaves `v` out of
+    the stance set for good.
+
+    It changes nothing. `G2` asks whether the derivation's leaves are reason
+    *ids on the ledger*, and `WFStep(Reason)` asks only that a reason's
+    settlement sources are on the ledger. Neither reads the stance set, and
+    `Enabled` is a derived query no admission rule consults — which is the
+    architecture's own "having a reason is not taking a stance", seen from the
+    side where it costs something.
+    """
+    m = cc.conspiracy_influence()
+    s = seed({"val.v": ri.PCmt("StanceBearing", "v")})
+    b = en.CaseBuilder(m, s, narrative("stance restoration", "x"))
+    b.begin("E2")
+    b.settle("s2")
+    b.end()
+    b.reason("r2", s_L={"s2"}, target="t2")
+    b.norm("a:remove", CONST_SUPERSEDE, USER,
+           wit=({"val.v"}, (ri.PCmt("NonStanceBearing", "gone"),)), leaves={"r2"})
+    b.begin("E1")
+    b.settle("s1")
+    b.end()
+    b.reason("r1", s_L={"s1"}, target="t1")
+    b.norm("a:restore", CONST_CREATE, USER,
+           wit=(ri.PCmt("StanceBearing", "v"),), leaves={"r1"})
+    b.reason("r:uses-v", s_V={"v"}, target="t3")
+    b.norm("a:target", CONST_CREATE, USER, wit=(PValue("v:x"),),
+           leaves={"r:uses-v"})
     return b.build()
 
 
