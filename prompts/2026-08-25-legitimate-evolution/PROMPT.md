@@ -2738,3 +2738,279 @@ The standard for this pass:
 The main thing to resist is adding concepts. Prefer deleting assumptions,
 splitting claims that are mathematically different, and moving
 implementation-specific facts below the realization boundary.
+
+---
+
+---
+
+# PROPER EXERCISE — A NARROW THEOREM-DISCOVERY ROUND
+
+*Dispatched after the prosecution pass shipped and was reviewed.*
+
+Treat **Grounded Replay as frozen infrastructure** unless you discover an actual
+contradiction in it. Do not enrich it. Do not re-open succession calculus,
+challenge survival, raw-live filtering, or the grounding-tree/currentness
+distinction unless Proper Exercise genuinely forces a change.
+
+Grounded Replay establishes, roughly: legitimate state is reconstructed by
+replaying valid edits from a base; accepted issuance is grounded in already-live
+prior standing; admitted standing has finite ancestry to the base; rejected issued
+identities cannot be laundered into legitimate standing; live standing persists
+until a valid edit disposes it.
+
+It does **not** establish that a grounded authority was entitled to perform the
+particular act it performed. The canonical counterexample is a fiscal authority,
+grounded, with impeccable provenance, legislating on safety.
+
+> **Find the smallest mathematical theory of Proper Exercise that distinguishes
+> possessing legitimate authority from being entitled to perform this exact edit,
+> and determine whether it yields a nontrivial no-privilege-escalation theorem.**
+
+Do not write Lean. Do not attempt the full legitimacy theorem package. Do not
+solve Reason Disposition, Liability Continuity, provenance adequacy or deference
+except where they are necessary as consumers or tests.
+
+# 1. Start from the failure, not from an ontology
+
+Construct the smallest examples separating grounded authority from proper
+exercise: (A) fiscal authority on fiscal policy, should pass; (B) the same on
+safety, should fail; (C) safety authority delegating narrower safety power,
+probably pass; (D) safety authority delegating fiscal power, should fail absent a
+higher rule; (E) ordinary authority expanding its own jurisdiction, should fail;
+(F) constitutional authority expanding another office's, may pass; (G)
+constitutional authority changing the constitution itself, may pass if amendment
+authority exists.
+
+Do not begin by inventing fields like `scope`, `domain`, `capability`, `role` or
+`jurisdiction`. Let the counterexamples tell you which structure is necessary.
+
+# 2. Ask what `Permit` must contain
+
+`Permit(L, e, r)` is a valid semantic interface but not yet a theory. Determine
+whether it admits a useful internal factorization — authority to a class of
+permitted edits; authority plus jurisdiction to a permitted transformation; or a
+proof-relevant judgment. The target must reject fiscal-to-safety overreach and
+still allow delegation, amendment, constitutional change, open-ended substantive
+revision, multiple authorities jointly authorizing, and different authorization
+proofs for the same edit.
+
+# 3. Separate three questions
+
+Is the authority live; what class of acts is it empowered to perform; were the
+procedural and contextual conditions satisfied. Grounded Replay handles the first.
+Provenance supplies descriptive facts relevant to the third but should not make
+the normative decision. Give exact types without collapsing them.
+
+# 4. Prosecute the naive capability-set model
+
+`J(a) subset Edit`, with exercise proper if `e` is in the combination over the
+basis. Attack it: is `Edit` too intensional or too concrete; should permissions
+range over edit descriptions; how are context-dependent conditions represented;
+how are joint authorities; is authority conjunctive, disjunctive, thresholded,
+role-sensitive; can it be conditional on state; can the same authority permit
+different acts depending on declared evidence; can a permission be revised.
+
+# 5. Press especially on authority that changes authority
+
+How can legitimate authority scope change without allowing arbitrary privilege
+escalation? Naive monotonicity `J(a') subset J(a)` for delegation is likely too
+strong. Distinguish object-level permissions from permissions to transform
+permissions only if counterexamples require it; investigate whether higher-order
+authority can be represented uniformly as permission over edits whose content
+happens to modify authorization structure. Prefer a single uniform calculus.
+
+# 6. Target a No Unauthorized Privilege Escalation theorem
+
+Aim beyond "Permit was checked". Intended: any authority in force may have
+broader, narrower or different scope than its ancestors, but every change in that
+scope must itself occur through an edit that prior live authority was empowered to
+perform. This should imply that no office bootstraps new powers merely by
+exercising the powers it has, while allowing a constitutionally empowered
+amendment authority to widen another office.
+
+# 7. Ask whether Grounded Replay needs extension or only decoration
+
+Ideally the kernel is unchanged and Proper Exercise attaches a proof object to
+each accepted edge. Prefer this over modifying the replay kernel. If the kernel
+genuinely needs more structure, exhibit the exact counterexample.
+
+# 8. Keep reasons and provenance local
+
+Hereditary authority support `B`, plus local reason/provenance evidence `r`, plus
+the exact edit. The grounding recursion follows `B` and does not recurse through
+`r`. Test: Bob persuades Alice, Alice uses valid authority to revise, removing the
+argument would remove the revision, and the exercise should still be proper if
+persuasion is permitted. Do not reintroduce challenge survival.
+
+# 9. Do not let provenance decide normativity
+
+Provenance says what happened; Proper Exercise says what those facts authorize.
+Both "coercion invalidates" and "coercion does not invalidate" must be
+representable. Same for forged signature, vote threshold, consent, declared
+reason, delegated actor, procedural defect. Provenance adequacy remains an
+explicit epistemic assumption; do not derive it.
+
+# 10. Press on proof relevance
+
+Should `ProperExercise(L,e)` be a proposition, or is the important object a proof
+with accessible support? Multiple proofs may exist for one edit, which matters for
+joint authority, redundant authority, alternative amendment paths and ex post
+rationalization. Prosecute: an edit performed under invalid basis B_bad, where a
+valid B_good could have authorized the same edit. Should it thereby count as
+proper? Probably not automatically. Determine whether Proper Exercise must certify
+the actual exercise route rather than existentially quantifying.
+
+# 11. Build an ex-post-rationalization counterexample
+
+Alice performs `e` claiming `a_bad`, which does not authorize it, while `b_good`
+independently could have and was not invoked. Compare `exists B. Permit(B,e)`
+against the actual exercise carrying a valid witness. Decide which notion
+legitimacy requires; this should inform whether grounds belong to `Edit` or to a
+witness.
+
+# 12. Press on delegation
+
+Narrower, equal, broader, incomparable. Which are always permissible, never, or
+permissible only with delegation/amendment authority. Avoid assuming a subset
+relation unless it survives. Try for a compositional theorem: proper delegation
+plus proper use by the delegate gives proper downstream exercise.
+
+# 13. Press on joint and threshold authority
+
+Two-of-three, unanimity, co-signature, ordinary authority plus emergency
+condition. Support plus a predicate may already handle all of these; if so, do not
+add an authority algebra. Determine what structural theorem, if any, is provable
+without inspecting `Permit`.
+
+# 14. Press on negative conditions
+
+No veto active; no conflict of interest; no superseding rule live; emergency
+absent or present. Separate hereditary authority premises from local contextual
+conditions. A negative fact must not become an ancestor in the authority tree
+merely because `Permit` consulted it.
+
+# 15. Ask what theorem remains if `Permit` is opaque
+
+Be ruthless. If the only theorem is "valid edits satisfy Permit", nothing
+mathematical has been gained. We need internal structure yielding a theorem, or a
+proof-relevant interface whose composition yields one, or a no-privilege-escalation
+invariant, or a recognition/composition property unavailable to an arbitrary
+predicate. If none exists, say clearly that Proper Exercise is semantic input, not
+a theorem module. That is an acceptable result. Do not manufacture fake theorem
+content.
+
+# 16. Try three candidate abstraction levels
+
+Level A opaque `Permit`; Level B capability/jurisdiction; Level C a proof system
+with rules for direct exercise, delegation, amendment, joint authority and
+procedural side conditions. Compare on expressive adequacy, theorem strength, RI
+realization cost, and risk of smuggling moral theory into the calculus. Prefer the
+weakest level that earns a real theorem.
+
+# 17. Try to characterize privilege escalation exactly
+
+Define a formal bad event — an authority capability becoming available downstream
+although no proper authority-transforming edit in its lineage licensed it, or a
+downstream exercise permitted by newly created authority where no ancestor had
+permission to create authority permitting it. Then prove or refute that proper
+authority-transforming transitions imply no unauthorized privilege escalation.
+
+# 18. Constitutional self-amendment is a mandatory test
+
+Amendment rule R replaces itself with R'. The validity is judged under the strict
+prestate rule R; R' governs later edits only; R' must not retroactively authorize
+its own creation. If the abstraction cannot represent this without a special case
+it is probably wrong.
+
+# 19. Also test constitutional replacement
+
+R authorizes replacement of the entire constitutional structure, with radically
+different authority classes. The theorem should still say the replacement was
+proper because the prior constitution authorized that transformation. Do not
+impose conservativity that rules this out.
+
+# 20. Interaction with Grounded Replay
+
+Aim for a strengthened lineage result where every internal edge carries a Proper
+Exercise witness. Name it only if useful; do not rename Grounded Replay. Then ask
+whether the combination yields No Unauthorized Privilege Escalation.
+
+# 21-22. Do not solve Reason Disposition or Liability Continuity
+
+Reasons are local evidence only; due reasons, defeat, response obligations and
+inquiry liveness are the next module. Custody, answerability roots, charges and
+grants are out of scope except as counterexamples showing Proper Exercise does not
+imply answerability.
+
+# 23. RI is a consumer, not the definition
+
+Report which Proper Exercise hypotheses RI can realize now, exactly which it
+cannot, and the minimal data it would need. If the clean theorem implies `PAuth`
+needs a jurisdiction field, say so; if a `PProto`-style external rule suffices, say
+so. Do not modify RI solely to make tests pass.
+
+# 24. Required countermodels
+
+Fiscal used for fiscal; fiscal used for safety; self-expanding authority without
+amendment permission; constitution-authorized expansion; narrower delegation;
+broader delegation without meta-authority; broader delegation with explicit
+authority-transforming permission; two-of-three joint authority; a negative side
+condition such as no-veto; ex-post rationalization by an unused valid route;
+permitted persuasion; forged exercise; self-amendment under the strict prestate
+rule; attempted self-amendment justified only by the new rule; total
+constitutional replacement explicitly authorized by the prior rule.
+
+# 25. Desired theorem package
+
+A definition of Proper Exercise; an Exercise Preservation / Proper Lineage
+theorem; a No Unauthorized Privilege Escalation theorem; a No Jurisdictional
+Self-Ratification corollary. If only the definition survives, report that there is
+no independent mathematical theorem here.
+
+# 26. Final compression
+
+End with a section titled `MINIMAL PROPER-EXERCISE KERNEL`, roughly one page,
+containing exact types, the exact local judgment, which premises are hereditary,
+which inputs are merely local evidence, whether grounds live on the edit or the
+witness, the exact theorems, one countermodel per premise, whether
+authority-transforming edits need special structure, whether privilege escalation
+has a clean mathematical definition, and what RI is missing. If it requires a large
+authority ontology, treat that as evidence the abstraction has not compressed.
+
+# 27. Questions that must be answered
+
+1. Is `Permit` inherently opaque, or is there a useful minimal internal structure?
+2. Is authority best represented as a capability over edits? 3. Is jurisdiction a
+property, a relation, or a theorem of a proof system? 4. Do grounds belong to the
+edit or the witness? 5. Is Proper Exercise existential over routes or tied to the
+actual route? 6. How is ex-post rationalization prevented? 7. How are
+joint/threshold authorities represented? 8. How are negative side conditions
+represented without making them hereditary ancestors? 9. Can
+authority-transforming edits be represented uniformly? 10. Can legitimate scope
+widen? 11. What licenses widening? 12. What is the exact definition of
+unauthorized privilege escalation? 13. Can a no-privilege-escalation theorem be
+proved? 14. Does constitutional self-amendment work under strict-prestate
+semantics? 15. Does total authorized replacement work? 16. Does Proper Exercise
+require any change to Grounded Replay? 17. What stronger lineage witness results?
+18. What does RI need to add? 19. Is this genuinely a theorem module, or mostly
+substantive semantic input? 20. What is the smallest object worth formalizing
+later?
+
+# 28. Verdict
+
+`PROPER-EXERCISE-KERNEL-STABLE` if a small falsifiable mathematical structure
+earns a genuine theorem such as no unauthorized privilege escalation.
+`PROPER-EXERCISE-SEMANTIC-ONLY` if the honest result is that propriety resides in
+an opaque `Permit` semantics and no nontrivial generic theorem follows.
+`PROPER-EXERCISE-ABSTRACTION-LEAKY` if the current abstraction still conflates
+authority, local evidence, procedure or scope. Do not write Lean regardless.
+
+The standard:
+
+> **Grounded Replay already tells us that authority has legitimate ancestry. The
+> new mathematics must tell us something nontrivial about what inherited authority
+> is allowed to do, without freezing substantive normative content or pretending to
+> derive a moral theory.**
+
+Prefer one strong theorem with a small interface over a taxonomy of authority
+concepts.

@@ -43,9 +43,15 @@ from typing import Callable, Mapping, Optional
 import replay as rp
 
 
-ALL = frozenset({"d:all"})
 FISCAL = frozenset({"d:fiscal"})
 SAFETY = frozenset({"d:safety"})
+INSPECT = frozenset({"d:safety-inspect"})
+ADJUDICATE = frozenset({"d:adjudicate"})
+
+#: Plenary authority. A capability is a set of scope tokens and containment is
+#: ordinary subset, so the widest one has to *contain* the others rather than
+#: being a token that stands for them.
+ALL = FISCAL | SAFETY | INSPECT | ADJUDICATE | frozenset({"d:general"})
 
 
 @dataclass(frozen=True)
@@ -98,12 +104,19 @@ class Act:
     label: str = ""
 
 
+AMEND = "d:amend"                      #: a constitution's own token for
+                                       #: authority over authority. Nothing in
+                                       #: the kernel knows it exists.
+
+
 @dataclass(frozen=True)
 class Constitution:
     chartered: tuple                   # (name, domain-or-None, holder)
     acts: tuple
     doubted: Mapping = field(default_factory=dict)
     coercion_invalidates: bool = True
+    quorum: int = 1                    # how many grounds an act needs
+    checks_issued: bool = True         # does permission read what is issued
     hidden: object = None
     reads_hidden: bool = False
 
@@ -134,15 +147,21 @@ def build(c: Constitution, alpha: Optional[str] = None) -> rp.Frame:
     for t, a in enumerate(c.acts):
         parents = a.inherits if a.inherits is not None else \
             tuple(w for w in a.revokes if is_auth.get(w))
-        grounds = frozenset(
-            ([by_name[a.under]] if a.under else [])
-            + [by_name[w] for w in parents if w in by_name])
+        # what it acts on is resolved against the pre-state...
         dispose = frozenset(by_name[w] for w in a.revokes if w in by_name)
+        # ...and then its own issuances are named, so that an act citing
+        # something it is about to create resolves to that occurrence rather
+        # than to nothing. `self_amendment(False)` is why: the ground is then in
+        # `issue_t(e_t)`, the strict pre-state does not contain it, and the act
+        # is refused rather than being unrepresentable.
         for j, (name, domain, bans) in enumerate(a.grants):
             o = rp.Occ(t, j)
             content[o] = Warrant(name, frozenset(domain), _holder(c, a)) \
                 if domain is not None else Policy(name, frozenset(bans))
             by_name[name] = o
+        grounds = frozenset(
+            ([by_name[a.under]] if a.under else [])
+            + [by_name[w] for w in parents if w in by_name])
         trace.append(rp.Edit(
             grounds=grounds, dispose=dispose,
             issues=tuple(content[rp.Occ(t, j)] for j in range(len(a.grants))),
@@ -169,17 +188,33 @@ def build(c: Constitution, alpha: Optional[str] = None) -> rp.Frame:
             return False
         if doubted & prov.findings:
             return False
-        domains = None
+        held = None
+        voters = 0
         for g in e.grounds:
             w = content.get(g)
-            d = w.domain if isinstance(w, Warrant) else frozenset()
-            domains = d if domains is None else (domains & d)
-        if not scope or not scope <= (domains or frozenset()):
+            if not isinstance(w, Warrant):
+                continue
+            voters += 1
+            held = w.domain if held is None else (held & w.domain)
+        held = held or frozenset()
+
+        if voters < c.quorum:
             return False
+        if not scope or not scope <= held:
+            return False
+
+        # a live policy may forbid a scope outright: permission reads content
         for o in state:
-            p = content.get(o)
-            if isinstance(p, Policy) and p.bans & scope:
+            pol = content.get(o)
+            if isinstance(pol, Policy) and pol.bans & scope:
                 return False
+
+        # what the act puts in force is part of the act, so permission sees it.
+        # widening beyond the basis needs authority over authority.
+        if c.checks_issued and AMEND not in held:
+            for issued in e.issues:
+                if isinstance(issued, Warrant) and not issued.domain <= held:
+                    return False
         return True
 
     def valid(state, e) -> bool:
@@ -270,12 +305,21 @@ def unauthorized_scope() -> Constitution:
     )
 
 
-def content_sensitive_jurisdiction() -> Constitution:
-    """A live policy bans a scope, and permission reads what it says."""
+def content_sensitive_jurisdiction(moratorium: bool = True) -> Constitution:
+    """A live policy bans a scope, and permission reads what it says.
+
+    The moratorium is a **norm**, not an authority: it grounds nothing and
+    appears in no grounding tree, and it decides the verdict anyway. Relabel it
+    so that it bans nothing and the same act is permitted, which is why content
+    invariance is withdrawn.
+    """
+    bans = tuple(SAFETY) if moratorium else ()
     return Constitution(
-        chartered=(("w:charter", ALL, "Assembly"),
-                   ("n:moratorium", None, "Assembly")),
+        chartered=(("w:charter", ALL, "Assembly"),),
         acts=(
+            Act("w:charter", grants=(("n:moratorium", None, bans),), scope=ALL,
+                prov=Prov(findings=frozenset({"f:convention"})),
+                label="declare-moratorium"),
             Act("w:charter", grants=(("n:safety-change", None, ()),),
                 scope=SAFETY, prov=Prov(findings=frozenset({"f:ordinary"})),
                 label="touch-safety"),
@@ -449,4 +493,215 @@ ALL_CONSTITUTIONS = (
     readoption(), audit_discovery(), audit_restores(), forged_input(),
     coerced_exercise(), incomplete_provenance(), missed_revocation(),
     lineage_versus_current(), repealable(), content_sensitive_jurisdiction(),
+)
+
+
+# ------------------------------------------- proper exercise: the separations
+
+
+def _charter(*extra) -> tuple:
+    return (("w:charter", ALL, "Assembly"),) + extra
+
+
+def fiscal_in_scope() -> Constitution:
+    """**A.** A fiscal warrant legislating on fiscal policy."""
+    return Constitution(
+        chartered=_charter(("w:fiscal", FISCAL, "Treasury")),
+        acts=(Act("w:fiscal", grants=(("n:budget", None, ()),), scope=FISCAL,
+                  prov=Prov(findings=frozenset({"f:ordinary"})), label="budget"),),
+    )
+
+
+def fiscal_out_of_scope() -> Constitution:
+    """**B.** The same warrant legislating on safety."""
+    return Constitution(
+        chartered=_charter(("w:fiscal", FISCAL, "Treasury")),
+        acts=(Act("w:fiscal", grants=(("n:safety-rule", None, ()),), scope=SAFETY,
+                  prov=Prov(findings=frozenset({"f:ordinary"})), label="overreach"),),
+    )
+
+
+def delegation(kind: str) -> Constitution:
+    """**C, D and the two remaining cases.** A safety warrant delegating.
+
+    ```text
+    narrower       a strict subset of what it holds
+    equal          the same
+    broader        fiscal as well as safety
+    incomparable   fiscal instead of safety
+    ```
+    """
+    inner = INSPECT
+    domains = {"narrower": inner, "equal": SAFETY,
+               "broader": SAFETY | FISCAL, "incomparable": FISCAL}
+    return Constitution(
+        chartered=_charter(("w:safety", SAFETY | inner, "Inspector")),
+        acts=(Act("w:safety", grants=(("w:deputy", domains[kind], ()),),
+                  scope=SAFETY, prov=Prov(findings=frozenset({"f:ordinary"})),
+                  label=f"delegate-{kind}"),),
+    )
+
+
+def self_expansion() -> Constitution:
+    """**E.** An ordinary authority granting itself a wider successor.
+
+    The base is **not** plenary. That is not decoration: with a plenary charter
+    live, the reach of the state is already everything and no act can grow it, so
+    escalation would be unmeasurable and the example would prove nothing.
+    """
+    return Constitution(
+        chartered=(("w:fiscal", FISCAL, "Treasury"),),
+        acts=(Act("w:fiscal", grants=(("w:fiscal-2", FISCAL | SAFETY, ()),),
+                  scope=FISCAL, prov=Prov(findings=frozenset({"f:ordinary"})),
+                  label="self-expand"),),
+    )
+
+
+def constitutional_widening() -> Constitution:
+    """**F.** An amendment authority widening another office.
+
+    The amender holds `d:amend` and is otherwise **narrow**, so the capability it
+    confers really does exceed what the basis held and the reach of the state
+    really does grow. Nothing in the kernel knows the token exists; it is this
+    constitution's own vocabulary, and that is the point.
+    """
+    return Constitution(
+        chartered=(("w:convention", FISCAL | frozenset({AMEND}), "Convention"),
+                   ("w:fiscal", FISCAL, "Treasury")),
+        acts=(Act("w:convention", revokes=("w:fiscal",),
+                  inherits=("w:convention",),
+                  grants=(("w:fiscal-2", FISCAL | SAFETY, ()),),
+                  scope=FISCAL,
+                  prov=Prov(findings=frozenset({"f:amendment-carried"})),
+                  label="widen-treasury"),),
+    )
+
+
+def self_amendment(honest: bool = True) -> Constitution:
+    """**G.** The amendment rule amending itself.
+
+    `honest`: the act is grounded in the **old** rule, which is live at the strict
+    pre-state, and issues the new one. `honest=False` grounds the act in the rule
+    it is about to create, which the pre-state does not contain.
+    """
+    old_rule = ("w:rule-R", ALL | frozenset({AMEND}), "Assembly")
+    return Constitution(
+        chartered=(old_rule,),
+        acts=(Act("w:rule-R" if honest else "w:rule-R2",
+                  revokes=("w:rule-R",), inherits=("w:rule-R",),
+                  grants=(("w:rule-R2", ALL | frozenset({AMEND}), ()),),
+                  scope=ALL, prov=Prov(findings=frozenset({"f:convention"})),
+                  label="amend-the-rule"),),
+    )
+
+
+def constitutional_replacement() -> Constitution:
+    """A prior rule authorizing replacement of the whole structure.
+
+    The successors' capabilities are unrelated to the predecessors'. Nothing here
+    imposes scope conservativity, which is the point.
+    """
+    return Constitution(
+        chartered=(("w:old-order", FISCAL | frozenset({AMEND}), "Convention"),
+                   ("w:ministry", FISCAL, "Ministry")),
+        acts=(Act("w:old-order", revokes=("w:old-order", "w:ministry"),
+                  inherits=("w:old-order",),
+                  grants=(("w:assembly", SAFETY | frozenset({AMEND}), ()),
+                          ("w:tribunal", ADJUDICATE, ())),
+                  scope=FISCAL,
+                  prov=Prov(findings=frozenset({"f:referendum"})),
+                  label="refound"),),
+    )
+
+
+def threshold(votes: int) -> Constitution:
+    """A two-of-three board. The act names the members it actually invoked."""
+    members = tuple((f"w:member-{i}", SAFETY, f"Member {i}") for i in range(3))
+    invoked = tuple(name for name, _, _ in members[:votes])
+    return Constitution(
+        chartered=_charter(*members),
+        acts=(Act(invoked[0], inherits=invoked[1:],
+                  grants=(("n:resolution", None, ()),), scope=SAFETY,
+                  prov=Prov(findings=frozenset({"f:minutes"})),
+                  label=f"resolve-{votes}"),),
+        quorum=2,
+    )
+
+
+def veto(active: bool) -> Constitution:
+    """A negative side condition. A live veto forbids the scope.
+
+    The veto is **not** a ground: permission consults the state, and the
+    grounding tree follows `grounds`. So a fact that decided the verdict does not
+    thereby become an ancestor, which is the typing test.
+    """
+    acts = ()
+    if active:
+        acts += (Act("w:charter", grants=(("n:veto", None, tuple(SAFETY)),),
+                     scope=ALL, prov=Prov(findings=frozenset({"f:objection"})),
+                     label="lodge-veto"),)
+    acts += (Act("w:board", grants=(("n:measure", None, ()),), scope=SAFETY,
+                 prov=Prov(findings=frozenset({"f:ordinary"})), label="measure"),)
+    return Constitution(chartered=_charter(("w:board", SAFETY, "Board")),
+                        acts=acts)
+
+
+def ex_post_rationalisation() -> Constitution:
+    """An act invoking a basis that does not authorize it, beside one that would.
+
+    `w:safety` is live and would authorize the measure. The act does not invoke
+    it: it invokes `w:fiscal`. The act is refused, and it stays refused, because
+    invoking the other basis would be a different act at a different position.
+    """
+    return Constitution(
+        chartered=_charter(("w:fiscal", FISCAL, "Treasury"),
+                           ("w:safety", SAFETY, "Inspector")),
+        acts=(Act("w:fiscal", grants=(("n:measure", None, ()),), scope=SAFETY,
+                  prov=Prov(findings=frozenset({"f:ordinary"})),
+                  label="wrong-basis"),),
+    )
+
+
+def blind_permit() -> Constitution:
+    """A constitution whose permission does not read what the act puts in force.
+
+    Everything else is the self-expansion case. With `checks_issued` false the
+    fiscal warrant issues a safety-capable successor and the state gains a power
+    nobody licensed — which is what the permission being able to see the effect
+    is worth.
+    """
+    return Constitution(
+        chartered=(("w:fiscal", FISCAL, "Treasury"),),
+        acts=(Act("w:fiscal", grants=(("w:fiscal-2", FISCAL | SAFETY, ()),),
+                  scope=FISCAL, prov=Prov(findings=frozenset({"f:ordinary"})),
+                  label="unseen-expand"),),
+        checks_issued=False,
+    )
+
+
+def capability(c) -> frozenset:
+    """`Cap` for this realization: a warrant's domain; a policy has none."""
+    return c.domain if isinstance(c, Warrant) else frozenset()
+
+
+def probe_edits(f) -> tuple:
+    """A fixed candidate set for measuring power: one act per domain."""
+    import replay as rp
+    return tuple(
+        rp.Edit(grounds=frozenset({o}), issues=(Policy("probe"),),
+                declared=(d, Prov(findings=frozenset({"f:ordinary"}))),
+                label=f"probe:{sorted(d)[0]}@{o}")
+        for o in sorted(f.base | {rp.Occ(t, j) for t in range(len(f.trace))
+                                  for j in range(len(f.trace[t].issues))},
+                        key=str)
+        for d in (FISCAL, SAFETY))
+
+
+EXERCISE_CONSTITUTIONS = (
+    fiscal_in_scope(), fiscal_out_of_scope(),
+    delegation("narrower"), delegation("equal"), delegation("broader"),
+    delegation("incomparable"), self_expansion(), constitutional_widening(),
+    self_amendment(True), self_amendment(False), constitutional_replacement(),
+    threshold(2), threshold(1), veto(True), veto(False),
+    ex_post_rationalisation(),
 )

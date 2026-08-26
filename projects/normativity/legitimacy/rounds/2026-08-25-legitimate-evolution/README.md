@@ -6,23 +6,40 @@ Lean-checked and no claim is registered.
 
 ## Verdict
 
-GROUNDED-REPLAY-KERNEL-STABLE — the structural theorem is an induction over a list with two premises, each with a countermodel in which the conclusion fails and neither subsuming the other; validity is defined rather than constrained; descriptive provenance is separated from normative permission; lineage is separated from currentness; and the checker condition is exact.
+PROPER-EXERCISE-SEMANTIC-ONLY — propriety resides in an opaque permission relation and no generic no-escalation theorem follows: the same gazette, with the same kernel verdicts, escalates or does not according to whether the permission reads what the act puts in force. Two results survive and both are inherited from the kernel's typing — no jurisdictional self-ratification, from strict pre-state evaluation and freshness, and monotone reach conditional on no widening, whose hypothesis a constitution declines on purpose.
 
-Four reservations, all in `THEOREM_MAP.md`.
+Grounded Replay is unchanged and remains `GROUNDED-REPLAY-KERNEL-STABLE`: the
+kernel does not import the Proper Exercise analysis, has no capability notion, and
+its premises hold on every constitution here — including the one that escalates.
 
-**The theorem is short.** An induction over a list, and two of its three
-corollaries are two lines each. What it earns is that four successive
-formulations of this object failed it.
+**The question this pass was dispatched to settle** was whether Proper Exercise is
+its own mathematical module or the place where substantive normative content
+necessarily enters. It is the second, and the evidence is a pair: two
+constitutions with the same base and the same edit, identical in grounds,
+disposals, issued content and declared evidence, both satisfying every premise and
+every corollary of the kernel. One refuses the act. The other accepts it and the
+state gains a capability nobody licensed. The only difference is whether the
+permission relation reads what the act puts in force.
 
-**The substantive content is in the parameters.** `Permit` and `ProvComplete`
-carry what legitimacy actually says.
+So a theorem of the form *proper transitions imply no unauthorized privilege
+escalation* would have to quantify over permission relations, and no such
+statement is true.
 
-**Provenance completeness is undischarged**, and the round tried to state it
-non-circularly and failed. It is an explicit epistemic assumption on the
-extraction.
+What survives is worth having and is small:
 
-**A current-state certificate does not exist.** A grounding tree certifies origin
-and cannot certify currentness, and both consumers need currentness.
+```text
+E2  no jurisdictional self-ratification    theorem, over every capability
+                                           assignment, from strict pre-state
+                                           evaluation and freshness
+E4  no widening gives monotone reach       theorem about a class of permission
+                                           relations; the hypothesis is what a
+                                           constitution declines when it means
+                                           to allow amendment
+```
+
+Both are inherited from the kernel's typing rather than earned by any structure on
+permission, and E4's hypothesis is exactly the naive subset rule for delegation —
+available as a conditional, false as an axiom.
 
 ## The statement
 
@@ -45,7 +62,7 @@ with three corollaries — no self-ratification, no laundering, persistence unti
 an accepted edit disposes it. `LEGITIMATE_EVOLUTION.md` opens with the whole
 statement on one page.
 
-## What this pass found
+## What the prosecutions found
 
 **The grounding theorem was false.** An edit with no grounds satisfies prior
 grounding vacuously and issues an occurrence whose only tree is a leaf outside
@@ -88,6 +105,8 @@ G1..G6                          one theorem, three corollaries
 ## Contents
 
 - `LEGITIMATE_EVOLUTION.md` — the minimal statement, then the layers.
+- `PROPER_EXERCISE.md` — the fourteen separations, and why there is no
+  no-escalation theorem.
 - `CROSS_PROCESS_INTERFACE.md` — origin, historical and current, and what each costs.
 - `CONSUMER_TEST.md` — deference, and which of the three it needs.
 - `TRADERIZATION_CONSUMER.md` — enforcement, and the four repeal cases.
@@ -95,8 +114,9 @@ G1..G6                          one theorem, three corollaries
 - `THEOREM_MAP.md` — every claim graded, withdrawals first.
 - `src/` — `replay.py` (the kernel), `office.py` (the semantics and a
   constitution model importing only the kernel), `ri_frame.py` (extraction from a
-  record), `cases.py` (records the Carroll round did not have).
-- `tests/` — 55 cases. `python3 tests/run.py`.
+  record), `exercise.py` (capability and reach, an analysis over frames),
+  `cases.py` (records the Carroll round did not have).
+- `tests/` — 85 cases. `python3 tests/run.py`.
 
 ## What this does not establish
 
@@ -110,5 +130,11 @@ from a record whose own episodes cover by construction.
 here.
 
 Reflective Integrity has no jurisdiction on an authority, so the permit clause is
-nearly vacuous on a record. That is a gap the abstraction exposed and this pass
-deliberately did not repair.
+nearly vacuous on a record — and an external-rule discipline cannot substitute,
+because a `NormEvent` has no slot for citing a governing protocol. That is a gap
+the abstraction exposed and this pass deliberately did not repair.
+
+No structure on permission was needed for the fourteen separations, and the round
+does not claim none could be useful for something else. What it claims is that the
+natural candidate — capability monotonicity under delegation — is refuted by
+constitutional widening.

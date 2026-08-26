@@ -1,199 +1,176 @@
-# Report — Grounded Replay
+# Report — Proper Exercise
 
-**Verdict: GROUNDED-REPLAY-KERNEL-STABLE.**
+**Verdict: PROPER-EXERCISE-SEMANTIC-ONLY.**
 
-Superseding `LEGITIMACY-THEOREM-COMPRESSED`. The replay object survived; four of
-the things built on it did not.
+Grounded Replay is untouched and remains `GROUNDED-REPLAY-KERNEL-STABLE`.
+
+The pass was dispatched to settle whether Proper Exercise is a real mathematical
+module or the place where substantive normative content necessarily enters. It is
+the second, and the evidence is a pair rather than an argument.
 
 Deliverables are at
-`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/`.
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/`, with
+the new material in `PROPER_EXERCISE.md`.
 
 ---
 
 ## Deviations from the prompt
 
-**No separate `EditId`.** §2 offered `Occ = (issuer, slot)` with time beside it.
-The trace is a list, so position is identity and order at once and the second
-index buys nothing. The hole §2 identified was real; the repair is smaller than
-proposed.
+**No `ProperExercise` judgment was introduced.** §25 offered a definition to end
+with. The pass found that `Valid` already contains it and that a separate
+judgment would be a rename: grounds are on the edit, evidence is on the edit, and
+the permission clause is the whole of propriety.
 
-**`Xi` is not a field of anything.** §12 asked for a structural theorem
-mentioning no threat class and §7 for coverage to remain explicit. Coverage is a
-boolean the extraction must justify (`ProvComplete`), and the threat class it is
-relative to is named in prose rather than modelled — the round could not state an
-adequacy condition worth modelling, which §7 permits.
+**`Reach` rather than a set of permitted edits.** §17 suggested defining
+escalation over available capability or over downstream exercises. The
+edit-indexed version counts a *narrower* delegation as growth, because creating
+any authority adds edits that can name it. The union of live capabilities is the
+notion that behaves.
 
-**`office.py` carries the semantics as well as the non-record realization.** §20's
-decomposition wants them separate. They are separate *layers* and one file, since
-the semantic definition and the constitution that instantiates it are read
-together; `replay.py` is the boundary that matters and it is clean.
+**No `Properly Grounded Lineage` name.** §20 allowed one if useful. It is not: the
+exercise witness is the acceptance of the edit, which the grounding tree already
+records.
 
-**Three earlier verdicts are now withdrawn in the record**, not just superseded:
-`LEGITIMATE-EVOLUTION-CONSUMABLE`, `TWO-CONSUMER-READY` and one substantive claim
-of `COMPRESSED` (§3 below).
+**`office.py` grew rather than a new realization being written.** The separations
+are constitutions, and the constitution model already existed.
 
 ---
 
-## The final questions
+## The questions
 
-**1. Is G1 false because empty ground sets are allowed?** Yes. `office.ex_nihilo`:
-prior grounding holds vacuously, the edit is accepted, and the occurrence it
-issues has no tree with leaves in the base. The conclusion is false on a frame
-satisfying every stated hypothesis.
+**1. Is `Permit` inherently opaque?** For these purposes, yes. Fourteen
+separations were decided by it and none required it to have internal structure.
 
-**2. The minimal repair.** `S2`: an accepted edit that *changes the state* has a
-non-empty ground set. Not "every valid edit" — a no-op needs no authority. The
-two halves are consumed separately: grounding needs it of edits that issue,
-persistence of edits that dispose.
+**2. Is authority best represented as a capability over edits?** A capability is
+the right *descriptive* device — it is what makes escalation statable — and it is
+not a representation the theory needs. The kernel has no capability notion and
+does not miss one.
 
-**3. Was historical time being used as identity?** Yes, and it was a free field,
-so two edits at one time issued the same occurrence and the replay applied the
-first twice.
+**3. Is jurisdiction a property, a relation, or a theorem?** A relation, and one
+the semantics supplies: `Permit(L, e, r)`. Making it a property of an authority
+would not have handled negative side conditions, which read the state.
 
-**4. The freshness property required.** Unique **birth**: no two edits issue one
-occurrence. Not unique issuance of a content — `office.readoption` issues one
-content twice and must. Now definitional, since positions in a list are unique.
+**4. Do grounds belong to the edit or to a witness?** The edit. That is what ties
+legitimacy to the actual route.
 
-**5. Does sound under-approximation preserve `AuthorityView`?** **No.** A checker
-that misses a valid revocation keeps the revoked authority. It does not
-under-approximate the state; a missed disposal makes it strictly larger.
+**5. Existential over routes, or the actual route?** The actual route.
 
-**6. Does it preserve `NormView`?** No, for the same reason, and the stale
-authority then admits a norm the semantics never did.
+**6. How is ex-post rationalisation prevented?** By (4) and by the kernel's
+no-laundering corollary: invoking a different basis is a different act at a
+different position. `office.ex_post_rationalisation` has a valid unused basis
+sitting live beside the refused act.
 
-**7. The weakest sufficient checker relation.** Agreement along the trace:
-`Check(L_t, e_t) ⟺ Valid(L_t, e_t)` at the states the **semantic** replay
-reaches. Weaker than global extensional equality — a checker wrong at every
-unvisited state still simulates, and there is a test for that — and strictly
-stronger than either one-sided condition. It gives `Lhat = L` by induction, hence
-both projections. A projection-specific weakening exists and needs `Permit` to
-factor through the projection; stated, not claimed.
+**7. Joint and threshold authority?** The edit names the members it invoked and
+the predicate counts them. No authority algebra; the kernel contains no
+occurrence of *quorum*, *threshold* or *vote*, and a test reads the module to say
+so.
 
-**8. What a grounding tree certifies.** That the occurrence was legitimately
-issued: a finite lineage of accepted edits back to the base, positions strictly
-descending.
+**8. Negative side conditions without making them ancestors?** They already are
+not: `Permit` reads the state, and the grounding tree recurses through `grounds`.
+A live veto refuses a measure and appears in no tree.
 
-**9. What it fails to certify.** That the occurrence is in force. A tree is built
-from grounds and disposals are not grounds, so it structurally cannot name the
-revocation that would defeat it.
+**9. Can authority-transforming edits be uniform with ordinary ones?** Yes, and
+no second ontology was needed. Self-amendment, delegation and total constitutional
+replacement are one calculus.
 
-**10. Is a current-state certificate history-sensitive?** Yes, necessarily.
-Replay the prefix, or hold a state commitment plus a proof of the delta, or accept
-an attestation. Nothing here builds the second.
+**10. Can legitimate scope widen?** Yes.
 
-**11. Should `Valid` be defined?** Yes. Keeping it primitive left it free to
-reject a grounded, permitted, provenance-adequate edit, and nothing needed that.
+**11. What licenses widening?** A token in the acting basis's own capability
+vocabulary — the constitution's business, invisible to the kernel.
 
-**12. The definition.**
+**12. The exact definition of unauthorized privilege escalation.**
+`Reach(L_{t+1}) \ Reach(L_t) != {}` at an accepted edit that issues capability
+beyond the intersection of its grounds'. Clean and checkable. **And measurable
+only against a base that is not plenary**: with plenary authority live, reach is
+already everything and nothing can grow it.
+
+**13. Can a no-escalation theorem be proved?** **No.** `self_expansion` and
+`blind_permit` are the same base and the same edit — identical grounds,
+disposals, issued content, declared evidence — and satisfy every premise and
+corollary of the kernel. One refuses; the other accepts and reach grows. The only
+difference is whether the permission reads what the act issues, so no statement
+quantified over permission relations can exclude escalation.
+
+**14. Constitutional self-amendment under strict-prestate semantics?** Works, with
+no special case. The amendment is judged under the rule live at the strict
+pre-state; the new rule governs later edits; and an act citing the rule it creates
+is refused, because that ground is in `issue_t` and the pre-state does not contain
+it.
+
+**15. Total authorized constitutional replacement?** Works. Successor
+capabilities are unrelated to predecessors' and nothing imposes conservativity.
+
+**16. Does Proper Exercise require a change to Grounded Replay?** No. The kernel
+does not import the analysis, has no capability notion, and its premises hold on
+every constitution here including the escalating one.
+
+**17. The stronger lineage witness.** Available and not worth naming: every
+internal edge of a tree is an accepted edit, and acceptance *is* the exercise
+witness.
+
+**18. What Reflective Integrity needs.** A capability on authority-bearing
+standing. `PAuth` carries a `SchemaCode` and no domain, so `Cap` is empty on it.
+**And an external-rule discipline cannot substitute**: `PProto`'s `covers` is a
+capability, but a `NormEvent` has no slot for citing a governing protocol —
+`schemaRef` and `steps` both name `PAuth`s. So this needs a type change, which
+sharpens `PRIORITIES.md` item 67.
+
+**19. Theorem module or semantic input?** Semantic input, with two theorems that
+belong to the kernel.
+
+**20. The smallest object worth formalizing later.** Unchanged: Grounded Replay.
+Proper Exercise adds nothing to port.
+
+---
+
+## What survives
 
 ```text
-Valid_alpha(L,e) := grounds(e) ⊆ Auth(L)
-                  ∧ (changes(L,e) → grounds(e) ≠ ∅)
-                  ∧ ProvComplete_alpha(e)
-                  ∧ Permit(L, e, ProvView_alpha(e))
+E1  reach changes only at an accepted edit        a restatement of the replay
+E2  no jurisdictional self-ratification           theorem, over every capability
+                                                  assignment
+E3  the issued capability is *available* to the
+    permission                                    true, and not a theorem that it
+                                                  is checked
+E4  no widening gives monotone reach              theorem about a class of
+                                                  permission relations
 ```
 
-**13. What descriptive provenance does.** Records what happened: which findings
-entered, whether a signature was forged, whether the actor was coerced.
+E2 is the one worth having. It quantifies over every capability assignment and
+never inspects one, and it says an act cannot widen the authority that licenses it
+by widening it. It comes from strict pre-state evaluation plus freshness — both
+already in the kernel.
 
-**14. What `Permit` does.** Decides what those facts mean, plus jurisdiction and
-scope. The split is what lets persuasion be **recorded and permitted**; the
-previous provenance predicate could only refuse an influence.
-
-**15. What remains open in completeness.** The whole of it. The round tried to
-state an adequacy condition that is non-circular, not "refuse every influence",
-compatible with permitted persuasion, and falsifiable by the existing fixtures,
-and did not find one. It is an explicit epistemic assumption on the extraction and
-is not a premise of the kernel.
-
-**16. Should the edit contain its frozen effect?** Yes. `apply` is then a function
-and the fold is deterministic.
-
-**17. What becomes of hidden-effect factorization?** It moves below the boundary.
-Noninterference is extraction factorization composed with fold determinism; the
-second is definitional. A record whose effect reads an uncited settlement produces
-a different **trace**, which is a conformance failure, not a legitimacy premise.
-
-**18. Is H5 a legitimacy hypothesis?** No — a realization theorem, and it can fail
-two ways: a different trace, or a different validity relation.
-
-**19. Is G6 false or vacuous?** Both. The check replayed the unchanged process, and
-permission reads content once a live policy can ban a scope. Deleted, replaced by
-a no-conservativity statement that follows from the kernel never inspecting
-content.
-
-**20. Must `Auth` and `Norm` be a partition?** No. The kernel needs one predicate;
-the enforcement projection lives in the realizations; nothing requires them
-disjoint or exhaustive, and a norm can bear on a permission judgment without being
-an authority.
-
-**21. The minimal structural premises.** Two: prior grounding, and no ex nihilo.
-Each has a countermodel where the theorem's conclusion fails, and they fail on
-different frames.
-
-**22. Should the theorem range over live or admitted?** **Admitted.** An
-occurrence validly issued and validly disposed keeps its lineage and stops being
-in force.
-
-**23. Grounded, admitted, live.** `Live ⊆ Admitted`, strictly. On a fixed trace
-`Grounded = Admitted` — a lineage is built from that trace's accepted edits, so
-having one and having been issued by one coincide. The independent distinction is
-admitted against live.
-
-**24. Which does deference consume?** `Live`. The grade is the judgment being
-deferred to now, and an authority since revoked is not one. So deference does
-**not** get a finite certificate, which is a change from the previous pass.
-
-**25. Which does traderization consume?** `Live`, unchanged.
-
-**26. What remains of H1-H6?** H1 and H2 are definitional under the new types; H3
-and H4 became `S1` and part of the semantic definition; H5 is extraction; H6 is
-`ProvComplete`, an assumption. Two premises remain.
-
-**27. What remains of G1-G6?** One theorem and three corollaries. G4 is
-extraction plus fold determinism; G6 is withdrawn.
-
-**28. Stable enough for a Lean port?** Yes. Two types, one fold, two premises, one
-induction, three corollaries; every premise prosecuted; the semantic,
-realization and computational layers separate and each with its own failures.
+E4 is the naive delegation rule, available as a conditional. A constitution that
+means to allow amendment declines its hypothesis on purpose, which is the whole
+difference between delegation and amendment.
 
 ---
 
 ## What this pass does not establish
 
-No Lean and no registered claim, deliberately.
+That `Permit` could not usefully be structured for some other purpose. It
+establishes that no structure was needed for the fourteen separations, and that
+the natural candidate is refuted.
 
-Provenance completeness is undischarged and has now survived four surrounding
-theories, which is the best evidence available that it is not an artefact of any
-of them.
+That scope tokens are the right capability language. They separated fourteen
+cases; nothing here says a real jurisdiction is a set of tokens.
 
-`Permit` is opaque. A constitution with a permissive one satisfies every theorem
-here, and every substantive normative question lives in it.
-
-A current-state certificate does not exist. Both consumers need one and the round
-sharpened the problem rather than solving it.
-
-Reflective Integrity has no jurisdiction on an authority, so the permit clause is
-nearly vacuous on a record. `PRIORITIES.md` item 67, deliberately not repaired.
-
-The theorem is short. An induction over a list; two corollaries are two lines. The
-contribution is the object, the exact premises, and four formulations' worth of
-evidence about what fails.
+Anything about reasons, liability or deference. Reasons appear only as local
+evidence, as instructed.
 
 ---
 
 ## Outstanding maintainer actions
 
 1. **Rule on whether the deference kernel's grade acquires an index.** In
-   `DECISIONS.md`'s *Awaiting the author* since the first pass. This pass sharpens
-   what it would attach to: the premise is `Live_t(o)`, and supplying it needs a
-   replay or an attestation rather than a certificate. *Turns on:* whether the
-   deference line is being restarted, and what a paper needs.
+   `DECISIONS.md`'s *Awaiting the author* since the first pass, unchanged by this
+   one.
 
-2. **No other item is reserved.** The three forks this pass faced it adopted, as
-   dated `DECISIONS.md` entries marked agent-decided and reversible: occurrence
-   identity is trace position; semantic validity is defined rather than
-   constrained; a grounding certificate is about origin rather than currentness.
+2. **No other item is reserved.** The two forks this pass faced it adopted, as
+   dated `DECISIONS.md` entries marked agent-decided and reversible: proper
+   exercise is semantic input rather than a theorem module; an act's grounds are
+   part of the act.
 
 ---
 
@@ -201,6 +178,6 @@ evidence about what fails.
 
 | | |
 |---|---|
-| prompt author | a maintainer, with a model-assisted draft; five dispatches |
+| prompt author | a maintainer, with a model-assisted draft; six dispatches |
 | executor | Claude Opus 5 (Anthropic) |
 | dates | 2026-08-25 to 2026-08-26 |

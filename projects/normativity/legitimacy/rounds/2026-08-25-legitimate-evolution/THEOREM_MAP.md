@@ -70,6 +70,24 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | 28 | Enforcement consumes `NormView_t` and gets the right target in all four repeal cases | FINITE-TEST-SUPPORTED | `TRADERIZATION_CONSUMER.md` §2 |
 | 29 | The corrigibility theorem is statable and one hypothesis has no formal object | SOURCE-REPRODUCTION | `ReachableCorrectiveControl.lean:926,1051` |
 
+## Proper Exercise
+
+| # | claim | class | check |
+|---|---|---|---|
+| P1 | Fourteen separations between grounded authority and proper exercise, every one satisfying the kernel's premises | FINITE-TEST-SUPPORTED | `test_exercise.py` |
+| P2 | **E2, no jurisdictional self-ratification.** No edit's permission can rest on a capability it creates — quantified over every capability assignment | DERIVED, from strict pre-state evaluation and freshness | `thm_no_jurisdictional_self_ratification`; `office.self_amendment(False)` |
+| P3 | **E4.** No accepted edit widening beyond its basis gives non-increasing reach | DERIVED, about a class of permission relations | `thm_no_widening_gives_monotone_reach` |
+| P4 | **E4's hypothesis is declinable**, so it is not a constraint: a constitution may license widening | COUNTEREXAMPLE | `office.constitutional_widening` |
+| P5 | **There is no generic no-escalation theorem.** `self_expansion` and `blind_permit` are the same gazette with the same kernel verdicts; one escalates | COUNTEREXAMPLE | `test_e3_is_not_a_theorem` |
+| P6 | Escalation has a clean definition — reach grows at an edit that widens — and it is measurable only against a non-plenary base | DEFINITION + FINITE-TEST-SUPPORTED | `exercise.gained`, `exercise.widens` |
+| P7 | Grounds live on the edit, so legitimacy is tied to the **actual** exercise route and ex-post rationalisation fails | DERIVED + FINITE-TEST-SUPPORTED | `office.ex_post_rationalisation` |
+| P8 | No proof-relevant witness object is needed: the support is already in the edit | DERIVED | entry P7 |
+| P9 | Authority-transforming edits need no second ontology; self-amendment, delegation and total replacement are one calculus | FINITE-TEST-SUPPORTED | `TestAuthorityOverAuthority` |
+| P10 | Joint and threshold authority need no authority algebra | FINITE-TEST-SUPPORTED, by reading the kernel | `office.threshold` |
+| P11 | A negative side condition decides a verdict without becoming an ancestor | FINITE-TEST-SUPPORTED | `office.veto`; `exercise.tree_mentions` |
+| P12 | Grounded Replay is unchanged: the kernel does not import the analysis and has no capability notion | FINITE-TEST-SUPPORTED, by parsing | `TestTheKernelIsUntouched` |
+| P13 | Reflective Integrity cannot realize a capability: `PAuth` has no domain and a `NormEvent` has no slot for citing a governing protocol, so an external-rule discipline is **not** sufficient | DERIVED, from the record types | `PROPER_EXERCISE.md`, the kernel section |
+
 ## Open
 
 | # | statement | class |
@@ -81,7 +99,9 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | 34 | Whether `Permit` needs internal structure | OPEN |
 | 35 | Jurisdiction on a Reflective Integrity authority | OPEN — `PRIORITIES.md` 67 |
 | 36 | A projection-specific simulation condition, weaker than trace agreement, valid when `Permit` factors through the projection | OPEN — stated, not claimed |
-| 37 | A Lean port | OPEN — now recommended |
+| 37 | A Lean port of Grounded Replay | OPEN — recommended; Proper Exercise adds nothing to port |
+| 38 | Whether `Permit` has useful structure for some purpose other than the fourteen separations | OPEN — this pass found none needed |
+| 39 | A capability field on Reflective Integrity's authority-bearing standing | OPEN — `PRIORITIES.md` 67, now with the reason an external rule cannot substitute |
 
 ## What no entry above claims
 

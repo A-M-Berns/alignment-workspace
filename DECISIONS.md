@@ -109,6 +109,60 @@ commit.
 
 ## Settled
 
+### 2026-08-26 — proper exercise is semantic input, not a theorem module
+
+**agent-decided, reversible.** A round went looking for the smallest mathematical
+structure between *this authority is grounded* and *this act was within it*, and
+found that there is none to have.
+
+The evidence is a pair of constitutions with the same base and the same act —
+identical grounds, disposals, issued content and declared evidence — both
+satisfying every premise and every corollary of Grounded Replay. One refuses the
+act. The other accepts it and the state gains a capability nobody licensed. The
+difference is whether the permission relation reads what the act puts in force.
+So a no-escalation theorem would have to quantify over permission relations, and
+none is true.
+
+Two results survive and both are inherited from the kernel's typing rather than
+from any structure on permission: no edit's permission can rest on a capability
+it creates, which follows from strict pre-state evaluation and freshness; and
+reach is non-increasing when no accepted edit widens beyond its basis, which is
+the naive delegation rule available as a conditional and false as an axiom.
+
+The practical consequence is that permission stays an opaque parameter and the
+round does not wrap it in theorem language. Fourteen separations — jurisdiction,
+delegation four ways, self-amendment, total constitutional replacement, threshold
+authority, a veto, ex-post rationalisation — are all decided by it and none of
+them needed it to have internal structure.
+
+*Rejected alternative:* a capability calculus or a proof system for exercise,
+either of which would have added an ontology without adding a theorem.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/PROPER_EXERCISE.md`.
+
+### 2026-08-26 — an act's grounds are part of the act
+
+**agent-decided, reversible.** Legitimacy is tied to the exercise route actually
+taken, not to the existence of some route that would have worked.
+
+An act invoking a basis that does not authorize it is refused even when a basis
+that would have authorized it sits live and unused beside it. Invoking the other
+one would be a different act, at a different position, issuing different
+occurrences — so the kernel's no-laundering corollary already forecloses ex-post
+rationalisation, and nothing further is needed.
+
+This settles a question the round had left open: no proof-relevant exercise
+witness is required, because the support is already in the edit.
+
+*Rejected alternative:* existential quantification over admissible bases, which
+would have made every act proper that any live authority could have performed.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/PROPER_EXERCISE.md`
+§3.
+
+
 ### 2026-08-26 — an occurrence is identified by trace position, not by historical time
 
 **agent-decided, reversible.** The previous formulation made an edit's identity

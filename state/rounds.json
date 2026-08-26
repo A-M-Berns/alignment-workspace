@@ -883,7 +883,7 @@
       "date": "2026-08-25",
       "project": "normativity.legitimacy",
       "path": "projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution",
-      "verdict": "GROUNDED-REPLAY-KERNEL-STABLE — the structural theorem is an induction over a list with two premises, each with a countermodel in which the conclusion fails and neither subsuming the other; validity is defined rather than constrained; descriptive provenance is separated from normative permission; lineage is separated from currentness; and the checker condition is exact.",
+      "verdict": "PROPER-EXERCISE-SEMANTIC-ONLY — propriety resides in an opaque permission relation and no generic no-escalation theorem follows: the same gazette, with the same kernel verdicts, escalates or does not according to whether the permission reads what the act puts in force. Two results survive and both are inherited from the kernel's typing — no jurisdictional self-ratification, from strict pre-state evaluation and freshness, and monotone reach conditional on no widening, whose hypothesis a constitution declines on purpose.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/README.md",
       "depends_on": [
         "2026-08-25-carroll-legitimacy-test",

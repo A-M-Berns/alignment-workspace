@@ -316,18 +316,17 @@ class TestContentInvarianceIsWithdrawn(unittest.TestCase):
     """§10. It was vacuous, and it is false once permission reads content."""
 
     def test_a_live_policy_can_forbid_a_scope(self):
-        f = of.build(of.content_sensitive_jurisdiction())
-        self.assertEqual(rp.accepted(f), ())
+        f = of.build(of.content_sensitive_jurisdiction(True))
+        self.assertEqual([str(f.trace[t]) for t in rp.accepted(f)],
+                         ["declare-moratorium"])
 
     def test_relabelling_the_policy_changes_what_is_legitimate(self):
-        c = of.content_sensitive_jurisdiction()
-        banning = of.Constitution(
-            chartered=(("w:charter", of.ALL, "Assembly"),
-                       ("n:moratorium", None, "Assembly")),
-            acts=c.acts)
-        f = of.build(banning)
-        # the same gazette, with the moratorium not banning anything
-        self.assertEqual(rp.accepted(f), ())
+        """One gazette, one difference: what the moratorium says."""
+        banning = of.build(of.content_sensitive_jurisdiction(True))
+        empty = of.build(of.content_sensitive_jurisdiction(False))
+        self.assertEqual(banning.trace[1], empty.trace[1])
+        self.assertNotIn(1, rp.accepted(banning))
+        self.assertIn(1, rp.accepted(empty))
 
     def test_the_kernel_never_reads_content(self):
         src = inspect.getsource(rp.apply_edit) + inspect.getsource(rp.replay)
@@ -357,10 +356,10 @@ class TestAuthAndNormAreNotAPartition(unittest.TestCase):
 
     def test_a_norm_can_bear_on_a_permission_judgment(self):
         """Without being an authority — so the roles are not exclusive."""
-        f = of.build(of.content_sensitive_jurisdiction())
-        mor = [o for o in f.base if of.names(f, {o}) == {"n:moratorium"}][0]
+        f = of.build(of.content_sensitive_jurisdiction(True))
+        mor = [o for o in rp.live(f) if of.names(f, {o}) == {"n:moratorium"}][0]
         self.assertFalse(f.auth(mor))
-        self.assertEqual(rp.accepted(f), ())
+        self.assertNotIn(1, rp.accepted(f))
 
 
 class TestNoLaundering(unittest.TestCase):

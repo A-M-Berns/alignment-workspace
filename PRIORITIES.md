@@ -1122,30 +1122,35 @@ decided correctly by whatever object is proposed.
 §§1-3.
 *Consumed by:* both consumer theorems.
 
-### 67. Jurisdiction on an authority — **[open]**
+### 67. A capability on authority-bearing standing — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-The abstract interface requires that a permit relation be consulted: a valid edit
-is one its grounds permit *for this edit*, which is what refuses an authority
+The abstract interface requires a permission relation to be consulted: a valid
+edit is one its grounds permit *for this edit*, which is what refuses an authority
 acting outside its domain. Reflective Integrity has nothing to realize it with.
-`PAuth` carries a `SchemaCode` and no domain, so the permit clause is the identity
-on a record whose authority is a bare `PAuth`, and the hypothesis is discharged
-vacuously.
+`PAuth` carries a `SchemaCode` and no capability, so the permission clause is the
+identity on a record whose authority is a bare `PAuth`.
 
-The Carroll round's `PProto.covers` is the only scope field in the architecture
-and it is an enrichment-layer object over intervention classes, not a property of
-authority as such.
+The Proper Exercise round settled that an **external rule cannot substitute**.
+`PProto`'s `covers` is a capability, but a `NormEvent` has no slot for citing a
+governing protocol: `schemaRef` names a `PAuth` and `steps` name `PAuth`s. So
+this is a type change rather than a discipline.
 
-*Deliverable shape:* either a domain on authority-bearing standing and the
-admission clause that reads it, or an argument that scope belongs entirely to the
-schema and the abstract permit clause should be realized differently.
+The same round settled what the field would and would not buy. It makes the
+escalation question *statable* on a record; it does not make any no-escalation
+theorem true, because propriety remains semantic.
+
+*Deliverable shape:* either a capability on authority-bearing standing with the
+admission clause that reads it, or a slot for an event to cite a governing
+protocol, with the fourteen separations run against a record realization.
 *Acceptance check:* a record in which a grounded authority acts outside its
-declared domain is refused, and the corresponding constitution register agrees.
+declared capability is refused, and the corresponding constitution agrees.
 *Context:*
-`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
-§2; `.../2026-08-24-reflective-integrity-core/REFLECTIVE_INTEGRITY_CORE.md` §11.
-*Consumed by:* any round treating the permit hypothesis as discharged by a record
-rather than by a constitution.
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/PROPER_EXERCISE.md`,
+the kernel section; `.../2026-08-24-reflective-integrity-core/REFLECTIVE_INTEGRITY_CORE.md`
+§11.
+*Consumed by:* any round wanting the jurisdiction separations to hold of a record
+rather than only of a constitution.
 
 ### 68. Discharging provenance adequacy — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->

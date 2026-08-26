@@ -2,13 +2,13 @@
 
 | Files | Generator | Review status | Date | Originating round | Chat bundle |
 |---|---|---|---|---|---|
-| `README.md`, `LEGITIMATE_EVOLUTION.md`, `CROSS_PROCESS_INTERFACE.md`, `CONSUMER_TEST.md`, `TRADERIZATION_CONSUMER.md`, `COUNTERMODELS.md`, `THEOREM_MAP.md` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-26 | `prompts/2026-08-25-legitimate-evolution/` | — |
+| `README.md`, `LEGITIMATE_EVOLUTION.md`, `PROPER_EXERCISE.md`, `CROSS_PROCESS_INTERFACE.md`, `CONSUMER_TEST.md`, `TRADERIZATION_CONSUMER.md`, `COUNTERMODELS.md`, `THEOREM_MAP.md` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-26 | `prompts/2026-08-25-legitimate-evolution/` | — |
 | `src/`, `tests/` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-26 | `prompts/2026-08-25-legitimate-evolution/` | — |
 
 The prompt was authored outside this repository and is committed verbatim at
 `prompts/2026-08-25-legitimate-evolution/PROMPT.md` — five dispatches: the round,
-an addendum sent mid-round, a repair pass, a compression pass, and this
-prosecution pass.
+an addendum sent mid-round, a repair pass, a compression pass, a prosecution
+pass, and a Proper Exercise discovery round.
 
 ## Sources
 
@@ -60,3 +60,5 @@ checker's own state*.
 
 Consumer-side: *the recognition axiom* (R), *W-index*, *bounded-lifetime
 liability*.
+
+Proper Exercise: *capability* (`Cap`), *reach*, *widening*, *proper exercise*, *authority over authority*, *plenary base*, *jurisdictional self-ratification*, *unauthorized privilege escalation*.
