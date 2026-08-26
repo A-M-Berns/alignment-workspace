@@ -70,6 +70,19 @@ commit.
   exhibit candidates and cannot say they are enough, which is the judgment
   *Where ingenuity is the bottleneck* exists to hold.
 
+- **Whether returning `Unresolved` on every bare DR-MDP example is the shape
+  this program wants.** The Carroll round's criterion licenses nothing on any of
+  the five finite examples of the source it was dispatched against: with no
+  enriched record, all five return `Unresolved`. That is either the correct
+  result about what a DR-MDP omits — the round's own reading, and the reading its
+  non-factorization witness supports — or a legitimacy layer that declines every
+  case anyone actually asked about. Read
+  `projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/`
+  `CRITERION.md` §6 and `README.md`'s verdict. *Turns on:* where the program is
+  going — whether the next thing wanted is a criterion that decides bare cases,
+  or an account of what a record must carry before any criterion can. The round
+  is genuinely split and has no evidence either way.
+
 - **Whether endpoint-preservation is a target this program wants.** The source
   corpus proposes that an advisor's influence is legitimate when it changes how
   fast the principal's deliberation converges and not where it converges to. It

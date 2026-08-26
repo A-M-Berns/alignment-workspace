@@ -861,6 +861,22 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-25-end-to-end-vertical-slice/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-25-carroll-legitimacy-test",
+      "date": "2026-08-25",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test",
+      "verdict": "CARROLL-ROUND-CLOSED — the criterion carries the hostile suite after three prosecution passes, licenses genuine influence, reserves refusal for a positive prohibition, returns insufficient structure on every bare example the source states, and the one algebraic claim the round made beyond it is withdrawn with its counterexample.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/README.md",
+      "depends_on": [
+        "2026-08-24-reflective-integrity-core",
+        "2026-08-25-end-to-end-vertical-slice",
+        "2026-08-17-counterfactual-legitimacy"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-25-carroll-legitimacy-test/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
