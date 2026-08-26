@@ -41,13 +41,58 @@ LICENSED = "Licensed"
 REFUSED = "Refused"
 UNRESOLVED = "Unresolved"
 
+#: The five grounds a verdict can rest on, and the status each determines. The
+#: status is a function of the ground and nothing else, which is what makes the
+#: three values a case distinction rather than a summary.
+#:
+#: ```text
+#: independent-permission    an admissible independent permission, no prohibition
+#: independent-prohibition   an admissible independent prohibition, no permission
+#: conflict                  both
+#: defeated-citation         a covering basis exists and none is admissible and
+#:                           independent; the record says something about this
+#:                           class and none of it licenses the act
+#: no-covering-basis         nothing in the record covers this class at all
+#: ```
+PERMISSION = "independent-permission"
+PROHIBITION = "independent-prohibition"
+CONFLICT = "conflict"
+DEFEATED = "defeated-citation"
+NO_BASIS = "no-covering-basis"
+
+STATUS_OF_GROUND = {
+    PERMISSION: LICENSED,
+    PROHIBITION: REFUSED,
+    CONFLICT: UNRESOLVED,
+    DEFEATED: UNRESOLVED,
+    NO_BASIS: UNRESOLVED,
+}
+
 
 @dataclass(frozen=True)
 class Verdict:
+    """Three values, and the ground the status is derived from.
+
+    **The permission language is not closed-world.** Failing to find a
+    permission is not a prohibition, so `Refused` is reserved for the one case
+    where the record contains a positive normative fact against the act: an
+    admissible independent standing that forbids the class. Everything else that
+    is not a license is `Unresolved`, and the `ground` says which kind.
+
+    That distinction is not cosmetic. Under the closed-world reading, a protocol
+    saying "Alice may do C" would refuse Bob, a condition that has not obtained
+    would refuse everyone, and a lapsed permit would prohibit what it used to
+    allow. None of the three is what those standings say.
+    """
+
     status: str
+    ground: str
     reason: str
     bases: tuple = ()
     blocked: tuple = ()
+
+    def __post_init__(self) -> None:
+        assert STATUS_OF_GROUND[self.ground] == self.status
 
     def __bool__(self) -> bool:                     # never a silent truth value
         raise TypeError("a Verdict is three-valued; compare its status")
@@ -198,46 +243,77 @@ def prior_independent_authorization(case: en.RichCarrollCase,
 # ---------------------------------------------------------- the criterion
 
 
+def admissible_independent(case: en.RichCarrollCase, iv: en.Intervention,
+                           std: Mapping, polarity: str) -> tuple:
+    """The bases of one polarity that both pass `authority` and are independent.
+
+    Returns `(live, blocked)`. Independence is applied to prohibitions exactly as
+    it is to permissions: an agent that manufactures a prohibition to excuse
+    inaction is doing the same thing as one that manufactures a permission, and
+    the criterion has no reason to treat the two asymmetrically.
+    """
+    ok, blocked = authority(case, iv, std, polarity)
+    live = tuple(b for b in ok
+                 if independent(case, b.standing_id, iv.episode, iv.tau,
+                                b.protocol.condition, iv))
+    dependent = tuple((b.standing_id, "not independent of the influence episode")
+                      for b in ok if b not in live)
+    return live, blocked + dependent
+
+
 def prospective_license(case: en.RichCarrollCase, iv: en.Intervention) -> Verdict:
     """`ProspectivelyLicensed_t(I)`. Three-valued, and never silently true.
 
-    `Licensed` requires a positive basis. `Refused` requires a defeater — a
-    covering basis that is not live, not applicable, not the agent's, or not
-    independent of the episode, or a live independent prohibition. `Unresolved`
-    is what a case with no covering structure at all returns, and it is not
-    permission: the use rule is that an agent acts on `Licensed` and on nothing
-    else.
+    The whole case distinction, in the order it is decided:
+
+    ```text
+    permission and prohibition   ->  conflict           Unresolved
+    permission only              ->  permission         Licensed
+    prohibition only             ->  prohibition        Refused
+    neither, some covering basis ->  defeated-citation  Unresolved
+    neither, no covering basis   ->  no-covering-basis  Unresolved
+    ```
+
+    `Unresolved` is not permission. The use rule is that an agent acts on
+    `Licensed` and on nothing else, and the two `Unresolved` grounds differ in
+    what a reader learns rather than in what the agent may do.
     """
     std = case.history().std(iv.tau - 1)
-    permits, blocked_p = authority(case, iv, std, "permit")
-    forbids, _ = authority(case, iv, std, "forbid")
+    permits, blocked_p = admissible_independent(case, iv, std, "permit")
+    forbids, blocked_f = admissible_independent(case, iv, std, "forbid")
+    blocked = blocked_p + blocked_f
+    names = lambda bs: tuple(b.standing_id for b in bs)
 
-    live_permits = tuple(b for b in permits
-                         if independent(case, b.standing_id, iv.episode, iv.tau,
-                                        b.protocol.condition, iv))
-    dependent = tuple((b.standing_id, "not independent of the influence episode")
-                      for b in permits if b not in live_permits)
-    live_forbids = tuple(b for b in forbids
-                         if independent(case, b.standing_id, iv.episode, iv.tau,
-                                        b.protocol.condition, iv))
+    if permits and forbids:
+        return Verdict(UNRESOLVED, CONFLICT,
+                       "two independent live authorities conflict",
+                       names(permits),
+                       tuple((x, "prohibits the class") for x in names(forbids)))
+    if permits:
+        return Verdict(LICENSED, PERMISSION,
+                       "an independent live authority covers it",
+                       names(permits), blocked)
+    if forbids:
+        return Verdict(REFUSED, PROHIBITION,
+                       "an independent live authority prohibits it",
+                       (),
+                       tuple((x, "prohibits the class") for x in names(forbids))
+                       + blocked)
+    if covering(case, iv, std):
+        return Verdict(UNRESOLVED, DEFEATED,
+                       "every covering basis is defeated", (), blocked)
+    return Verdict(UNRESOLVED, NO_BASIS,
+                   "no basis covers this intervention class")
 
-    blocked = blocked_p + dependent
 
-    if live_permits and live_forbids:
-        return Verdict(UNRESOLVED, "two independent live authorities conflict",
-                       tuple(b.standing_id for b in live_permits),
-                       tuple((b.standing_id, "prohibits the class")
-                             for b in live_forbids))
-    if live_permits:
-        return Verdict(LICENSED, "an independent live authority covers it",
-                       tuple(b.standing_id for b in live_permits), blocked)
-    if live_forbids:
-        return Verdict(REFUSED, "an independent live authority prohibits it",
-                       (), tuple((b.standing_id, "prohibits the class")
-                                 for b in live_forbids) + blocked)
-    if blocked:
-        return Verdict(REFUSED, blocked[0][1], (), blocked)
-    return Verdict(UNRESOLVED, "no basis covers this intervention class")
+def defeated_citation(case: en.RichCarrollCase, iv: en.Intervention) -> bool:
+    """The record says something about this class and none of it licenses the act.
+
+    The diagnostic the third verdict value would otherwise have carried. It is a
+    predicate rather than a status because the agent's options are the same
+    either way: `Unresolved` authorizes nothing, whichever ground it rests on.
+    """
+    return prospective_license(case, iv).ground == DEFEATED
 
 
 def temporal_priority_license(case: en.RichCarrollCase,
@@ -304,19 +380,20 @@ def legitimate_succession(case: en.RichCarrollCase, event_id: str,
     h = case.history()
     matches = [a for a in h.norm_events() if a.id == event_id]
     if not matches:
-        return Verdict(UNRESOLVED, "no such event in the record")
+        return Verdict(UNRESOLVED, NO_BASIS, "no such event in the record")
     a = matches[0]
     if h.wf_violations(a):
-        return Verdict(REFUSED, "the event was not well-formed")
+        return Verdict(UNRESOLVED, DEFEATED, "the event was not well-formed")
     if not independent(case, a.schema_ref, episode, a.tau):
-        return Verdict(REFUSED,
+        return Verdict(UNRESOLVED, DEFEATED,
                        "the authority it named does not survive the episode",
                        (), ((a.schema_ref, "not independent"),))
     if not survives_excision(case, event_id, episode):
-        return Verdict(REFUSED,
+        return Verdict(UNRESOLVED, DEFEATED,
                        "the revision has no ground outside the influence episode",
                        (), ((event_id, "does not survive excision"),))
-    return Verdict(LICENSED, "an independent authority licensed the revision",
+    return Verdict(LICENSED, PERMISSION,
+                   "an independent authority licensed the revision",
                    (a.schema_ref,))
 
 
@@ -330,11 +407,12 @@ def authority_only_succession(case: en.RichCarrollCase, event_id: str,
     h = case.history()
     matches = [a for a in h.norm_events() if a.id == event_id]
     if not matches:
-        return Verdict(UNRESOLVED, "no such event in the record")
+        return Verdict(UNRESOLVED, NO_BASIS, "no such event in the record")
     a = matches[0]
     if independent(case, a.schema_ref, episode, a.tau):
-        return Verdict(LICENSED, "the named authority survives", (a.schema_ref,))
-    return Verdict(REFUSED, "the named authority does not survive")
+        return Verdict(LICENSED, PERMISSION, "the named authority survives",
+                       (a.schema_ref,))
+    return Verdict(UNRESOLVED, DEFEATED, "the named authority does not survive")
 
 
 # ------------------------------------------------ the two dictatorship tests

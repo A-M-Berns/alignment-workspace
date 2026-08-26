@@ -74,7 +74,7 @@ cells: 52   recovered: 50   not recovered: 2
 
 
 
-Adversarial suite — C0 to C24, plus the under-generality case C7b.
+Adversarial suite — C0 to C33, C7b included: 35 rows.
 
 C0    PASS  exact Carroll fidelity
           observed: 50/52 cells recovered
@@ -86,13 +86,13 @@ C2    PASS  bare negative control
           observed: Unresolved / Unresolved
           no enriched difference, no verdict difference
 C3    PASS  relabelling
-          observed: Licensed -> Licensed
-          labels renamed, record untouched, verdict fixed
+          observed: Licensed->Licensed; Licensed->Licensed
+          labels renamed, record untouched, verdict fixed — including where the condition is discharged from a settled fact
 C4    PASS  self-ratifying influence
           observed: Unresolved; final approval=True
           the produced specification is in force and the act is still not licensed
 C5    PASS  RI-good manipulation
-          observed: RI good=True; Refused
+          observed: RI good=True; Unresolved/defeated-citation
           a clean record is not a license
 C6    PASS  bare Diana
           observed: Unresolved
@@ -110,10 +110,10 @@ C9    PASS  content neutrality
           observed: Licensed / Licensed
           the same structure, the same answer, whatever the story
 C10   PASS  manufactured authorization
-          observed: Refused; temporal-priority=True; author-matching=True
+          observed: Unresolved/defeated-citation; temporal-priority=True; author-matching=True
           both weaker rules license it
 C11   PASS  same endpoint, different history
-          observed: standing ['v:th_influenced'] == ['v:th_influenced']; Licensed / Refused
+          observed: standing ['v:th_influenced'] == ['v:th_influenced']; Licensed / Unresolved
           succession is path-sensitive where the endpoint is not
 C12   PASS  same procedure, opposite outcome
           observed: keep: ['v:th_ambitious'] Licensed; revise: ['v:th_unhappy'] Licensed
@@ -128,7 +128,7 @@ C15   PASS  Writer's Curse disavowal
           observed: standing ['v:th_unhappy']; Licensed
           prior authority is not permanent
 C16   PASS  clickbait
-          observed: Refused; real-time optimum serves clickbait=True
+          observed: Unresolved; real-time optimum serves clickbait=True
           the criterion and the real-time objective disagree here
 C17   PASS  non-conservatism
           observed: Licensed; influences=True
@@ -143,23 +143,44 @@ C20   PASS  conflicting live authority
           observed: Unresolved: two independent live authorities conflict
           neither basis is silently preferred
 C21   PASS  revocation
-          observed: Refused: not live
-          historical authorization is insufficient
+          observed: Unresolved/defeated-citation; blocked=['not live']
+          historical authorization is insufficient, and a lapsed permit is an absent permission rather than a prohibition
 C22   PASS  inquiry laundering
-          observed: Refused; the reply is on the ledger=True; RI good=True
+          observed: Unresolved; the reply is on the ledger=True; RI good=True
           a real later fact, and still not a prior license
 C23   PASS  proxy manipulation
-          observed: Refused; authors=['Proxy']; author-matching=True
+          observed: Unresolved; authors=['Proxy']; author-matching=True
           the influence structure is tracked, not the actor's name
 C24   PASS  benign incidental influence
           observed: Licensed; influences=True; basis domain=['task-completion']
           causal influence alone does not defeat a license
 C25   PASS  split episode
-          observed: linked=Refused; unlinked=Licensed
+          observed: linked=Unresolved/defeated-citation; unlinked=Licensed
           the counterfactual closes over the record's own settlement references; an unrecorded link is a record defect the criterion cannot see, and this is its witness
 C26   PASS  manufactured applicability
-          observed: trigger inside=Refused; outside=Licensed
+          observed: trigger inside=Unresolved/defeated-citation; outside=Licensed
           a seeded basis survives every excision, so the counterfactual has to reach the facts its condition reads
+C27   PASS  unlabelled intermediate
+          observed: Unresolved/defeated-citation; ancestry(E2)=['E1', 'E2']
+          the counterfactual closes in the settlement graph and projects to episodes afterwards; an episode-to-episode walk missed this
+C28   PASS  pre-state-reading schema
+          observed: blind: survives=True independent=True Licensed; reading: survives=True independent=False Unresolved
+          event survival does not imply the authority it named is independent, so the succession clauses are not redundant; the separator is whether schemas read the strict pre-state
+C29   PASS  the three-valued case distinction
+          observed: condition-unmet->defeated-citation; conflict->conflict; independent-permission->independent-permission; independent-prohibition->independent-prohibition; manufactured->defeated-citation; no-covering-basis->no-covering-basis; revoked->defeated-citation; wrong-agent->defeated-citation
+          Refused is reserved for a live independent prohibition; absence of a permission is never a prohibition
+C30   PASS  applicability boundary
+          observed: inside=Unresolved; mixed=Unresolved; outside=Licensed; re-established=Licensed; two-routes=Licensed
+          the condition has to remain discharged in the excised record, which a fact restated inside the episode still is and a fact only ever established inside it is not
+C31   PASS  one class, two contexts
+          observed: class=(1, 0, 1); context established=Licensed; not established=Unresolved
+          the existing condition field reaches a contextual distinction the intervention class does not carry, so the class was not widened
+C32   PASS  license without standing
+          observed: Licensed; the result has standing=False
+          a license is permission to act, not installation of what the act produces
+C33   PASS  standing without license
+          observed: intervention Unresolved/no-covering-basis; succession Licensed; the value has standing=True
+          later legitimate adoption of the same value does not reach back and license the influence that first produced it
 
 Two dictatorship failures, as witnesses:
    FinalApproval(I) does not imply Licensed_t(I)

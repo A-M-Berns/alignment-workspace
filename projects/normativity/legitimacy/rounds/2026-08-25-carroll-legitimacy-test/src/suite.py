@@ -1,4 +1,4 @@
-"""C0 to C24, run once, as data.
+"""C0 to C33, run once, as data.
 
 `run()` returns one row per case: what was observed, what the case demanded, and
 whether the demand was met. `tests/test_adversarial.py` asserts the rows and
@@ -7,6 +7,11 @@ tests check are the same object.
 
 `demand` is a property of the observation, never a hardcoded verdict string, so
 a case cannot pass by being told what to expect.
+
+`C0`-`C24` are the dispatched suite. `C7b` and `C25`-`C33` are cases the round
+added: `C7b` against the prompt's own under-generality test, and the rest as
+attacks. `C25`, `C26`, `C27` and the closed-world reading `C29` pins each killed a
+version of the criterion.
 """
 from __future__ import annotations
 
@@ -59,12 +64,25 @@ def C2():
 
 
 def C3():
-    d = F.C3_relabelling()
-    a = lg.prospective_license(d["original"]["case"], d["original"]["iv"])
-    b = lg.prospective_license(d["case"], d["iv"])
-    return _row("C3", "relabelling", f"{a.status} -> {b.status}",
-                (a.status, a.bases) == (b.status, b.bases),
-                "labels renamed, record untouched, verdict fixed")
+    """Relabelled twice: once with an exogenous condition, once with a settled one.
+
+    The second arm is the one that matters. A case whose applicability condition
+    is discharged from the record rather than declared exogenous exercises the
+    settled-fact map, and `relabel_case` used to drop it — which would have made
+    this invariance accidentally true on the first arm and false on the second.
+    """
+    rows = []
+    for src in (F.C3_relabelling(),
+                F.C3_relabelling(F.C30_applicability_boundary("outside"))):
+        a = lg.prospective_license(src["original"]["case"], src["original"]["iv"])
+        b = lg.prospective_license(src["case"], src["iv"])
+        rows.append(((a.status, a.ground, a.bases), (b.status, b.ground, b.bases)))
+    return _row("C3", "relabelling",
+                "; ".join(f"{x[0]}->{y[0]}" for x, y in rows),
+                all(x == y for x, y in rows)
+                and rows[0][0][0] == lg.LICENSED and rows[1][0][0] == lg.LICENSED,
+                "labels renamed, record untouched, verdict fixed — including "
+                "where the condition is discharged from a settled fact")
 
 
 def C4():
@@ -83,8 +101,8 @@ def C5():
     h = d["case"].history()
     v = lg.prospective_license(d["case"], d["iv"])
     return _row("C5", "RI-good manipulation",
-                f"RI good={h.good()}; {v.status}",
-                h.good() and v.status == lg.REFUSED,
+                f"RI good={h.good()}; {v.status}/{v.ground}",
+                h.good() and v.status != lg.LICENSED and v.ground == lg.DEFEATED,
                 "a clean record is not a license")
 
 
@@ -139,8 +157,10 @@ def C10():
     naive = lg.temporal_priority_license(d["case"], d["iv"])
     ident = F.author_matching_license(d["case"], d["iv"])
     return _row("C10", "manufactured authorization",
-                f"{v.status}; temporal-priority={naive}; author-matching={ident}",
-                v.status == lg.REFUSED and naive and ident,
+                f"{v.status}/{v.ground}; temporal-priority={naive}; "
+                f"author-matching={ident}",
+                v.status != lg.LICENSED and v.ground == lg.DEFEATED
+                and naive and ident,
                 "both weaker rules license it")
 
 
@@ -154,7 +174,7 @@ def C11():
                 f"standing {sorted(ends[0])} == {sorted(ends[1])}; "
                 f"{a.status} / {b.status}",
                 ends[0] == ends[1] and a.status == lg.LICENSED
-                and b.status == lg.REFUSED,
+                and b.status != lg.LICENSED,
                 "succession is path-sensitive where the endpoint is not")
 
 
@@ -210,7 +230,8 @@ def C16():
     takes_clickbait = any(cc.CLICKBAIT in p.values() for p in rt)
     return _row("C16", "clickbait",
                 f"{v.status}; real-time optimum serves clickbait={takes_clickbait}",
-                v.status == lg.REFUSED and takes_clickbait,
+                v.status != lg.LICENSED and v.ground == lg.DEFEATED
+                and takes_clickbait,
                 "the criterion and the real-time objective disagree here")
 
 
@@ -253,9 +274,12 @@ def C20():
 def C21():
     d = F.C21_revocation()
     v = lg.prospective_license(d["case"], d["iv"])
-    return _row("C21", "revocation", f"{v.status}: {v.reason}",
-                v.status == lg.REFUSED and v.reason == "not live",
-                "historical authorization is insufficient")
+    return _row("C21", "revocation",
+                f"{v.status}/{v.ground}; blocked={[b[1] for b in v.blocked]}",
+                v.status != lg.LICENSED and v.ground == lg.DEFEATED
+                and ("proto.designated", "not live") in v.blocked,
+                "historical authorization is insufficient, and a lapsed permit "
+                "is an absent permission rather than a prohibition")
 
 
 def C22():
@@ -266,7 +290,8 @@ def C22():
     return _row("C22", "inquiry laundering",
                 f"{v.status}; the reply is on the ledger={authentic}; "
                 f"RI good={h.good()}",
-                v.status == lg.REFUSED and authentic and h.good(),
+                v.status != lg.LICENSED and v.ground == lg.DEFEATED
+                and authentic and h.good(),
                 "a real later fact, and still not a prior license")
 
 
@@ -277,7 +302,8 @@ def C23():
     authors = {a.author for a in d["case"].history().norm_events()}
     return _row("C23", "proxy manipulation",
                 f"{v.status}; authors={sorted(authors)}; author-matching={ident}",
-                v.status == lg.REFUSED and F.AI not in authors and ident,
+                v.status != lg.LICENSED and v.ground == lg.DEFEATED
+                and F.AI not in authors and ident,
                 "the influence structure is tracked, not the actor's name")
 
 
@@ -301,8 +327,9 @@ def C25():
     a = lg.prospective_license(linked["case"], linked["iv"])
     b = lg.prospective_license(unlinked["case"], unlinked["iv"])
     return _row("C25", "split episode",
-                f"linked={a.status}; unlinked={b.status}",
-                a.status == lg.REFUSED and b.status == lg.LICENSED,
+                f"linked={a.status}/{a.ground}; unlinked={b.status}",
+                a.status != lg.LICENSED and a.ground == lg.DEFEATED
+                and b.status == lg.LICENSED,
                 "the counterfactual closes over the record's own settlement "
                 "references; an unrecorded link is a record defect the "
                 "criterion cannot see, and this is its witness")
@@ -314,14 +341,124 @@ def C26():
     a = lg.prospective_license(inside["case"], inside["iv"])
     b = lg.prospective_license(outside["case"], outside["iv"])
     return _row("C26", "manufactured applicability",
-                f"trigger inside={a.status}; outside={b.status}",
-                a.status == lg.REFUSED and b.status == lg.LICENSED,
+                f"trigger inside={a.status}/{a.ground}; outside={b.status}",
+                a.status != lg.LICENSED and a.ground == lg.DEFEATED
+                and b.status == lg.LICENSED,
                 "a seeded basis survives every excision, so the counterfactual "
                 "has to reach the facts its condition reads")
 
 
+def C27():
+    d = F.C27_unlabelled_intermediate()
+    v = lg.prospective_license(d["case"], d["iv"])
+    reached = sorted(en.ancestry(d["case"], "E2"))
+    return _row("C27", "unlabelled intermediate",
+                f"{v.status}/{v.ground}; ancestry(E2)={reached}",
+                v.status != lg.LICENSED and v.ground == lg.DEFEATED
+                and reached == ["E1", "E2"],
+                "the counterfactual closes in the settlement graph and projects "
+                "to episodes afterwards; an episode-to-episode walk missed this")
+
+
+def C28():
+    reading = F.C28_prestate_reading_schema(prestate_reading=True)
+    blind = F.C28_prestate_reading_schema(prestate_reading=False)
+    out = {}
+    for name, d in (("reading", reading), ("blind", blind)):
+        out[name] = (
+            lg.survives_excision(d["case"], d["event"], d["episode"]),
+            lg.independent(d["case"], d["authority"], d["episode"], 4),
+            lg.legitimate_succession(d["case"], d["event"], d["episode"]).status)
+    return _row("C28", "pre-state-reading schema",
+                "; ".join(f"{k}: survives={v[0]} independent={v[1]} {v[2]}"
+                          for k, v in sorted(out.items())),
+                out["reading"][0] and not out["reading"][1]
+                and out["blind"][0] and out["blind"][1],
+                "event survival does not imply the authority it named is "
+                "independent, so the succession clauses are not redundant; the "
+                "separator is whether schemas read the strict pre-state")
+
+
+def C29():
+    grounds = F.C29_verdict_grounds()
+    got = {name: lg.prospective_license(d["case"], d["iv"]).ground
+           for name, d in grounds.items()}
+    expected = {
+        "independent-permission": lg.PERMISSION,
+        "independent-prohibition": lg.PROHIBITION,
+        "conflict": lg.CONFLICT,
+        "wrong-agent": lg.DEFEATED,
+        "condition-unmet": lg.DEFEATED,
+        "revoked": lg.DEFEATED,
+        "manufactured": lg.DEFEATED,
+        "no-covering-basis": lg.NO_BASIS,
+    }
+    statuses = {lg.STATUS_OF_GROUND[g] for g in got.values()}
+    return _row("C29", "the three-valued case distinction",
+                "; ".join(f"{k}->{v}" for k, v in sorted(got.items())),
+                got == expected and statuses == {lg.LICENSED, lg.REFUSED,
+                                                 lg.UNRESOLVED},
+                "Refused is reserved for a live independent prohibition; "
+                "absence of a permission is never a prohibition")
+
+
+def C30():
+    got = {}
+    for arm in ("inside", "outside", "mixed", "re-established", "two-routes"):
+        d = F.C30_applicability_boundary(arm)
+        got[arm] = lg.prospective_license(d["case"], d["iv"]).status
+    want = {"inside": lg.UNRESOLVED, "outside": lg.LICENSED,
+            "mixed": lg.UNRESOLVED, "re-established": lg.LICENSED,
+            "two-routes": lg.LICENSED}
+    return _row("C30", "applicability boundary",
+                "; ".join(f"{k}={v}" for k, v in sorted(got.items())),
+                got == want,
+                "the condition has to remain discharged in the excised record, "
+                "which a fact restated inside the episode still is and a fact "
+                "only ever established inside it is not")
+
+
+def C31():
+    on = F.C31_covers_context(established=True)
+    off = F.C31_covers_context(established=False)
+    a = lg.prospective_license(on["case"], on["iv"])
+    b = lg.prospective_license(off["case"], off["iv"])
+    return _row("C31", "one class, two contexts",
+                f"class={on['class']}; context established={a.status}; "
+                f"not established={b.status}",
+                a.status == lg.LICENSED and b.status != lg.LICENSED
+                and on["class"] == off["class"],
+                "the existing condition field reaches a contextual distinction "
+                "the intervention class does not carry, so the class was not "
+                "widened")
+
+
+def C32():
+    d = F.C32_license_without_standing()
+    v = lg.prospective_license(d["case"], d["iv"])
+    resulting = lg.theta_has_standing(d["case"], cc.TH_ENERGIZED, d["bridge"])
+    return _row("C32", "license without standing",
+                f"{v.status}; the result has standing={resulting}",
+                v.status == lg.LICENSED and not resulting,
+                "a license is permission to act, not installation of what the "
+                "act produces")
+
+
+def C33():
+    d = F.C33_standing_without_license()
+    v = lg.prospective_license(d["case"], d["iv"])
+    succ = lg.legitimate_succession(d["case"], d["event"], d["episode"])
+    holds = lg.theta_has_standing(d["case"], cc.TH_INFLUENCED, d["bridge"])
+    return _row("C33", "standing without license",
+                f"intervention {v.status}/{v.ground}; succession {succ.status}; "
+                f"the value has standing={holds}",
+                v.status != lg.LICENSED and succ.status == lg.LICENSED and holds,
+                "later legitimate adoption of the same value does not reach back "
+                "and license the influence that first produced it")
+
+
 CASES = [C0, C1, C2, C3, C4, C5, C6, C7, C7b, C8, C9, C10, C11, C12, C13, C14,
-         C15, C16, C17, C18, C19, C20, C21, C22, C23, C24, C25, C26]
+         C15, C16, C17, C18, C19, C20, C21, C22, C23, C24, C25, C26, C27, C28, C29, C30, C31, C32, C33]
 
 
 def run() -> list:

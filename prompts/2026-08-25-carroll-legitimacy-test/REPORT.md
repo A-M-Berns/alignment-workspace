@@ -6,14 +6,20 @@
 
 Verdict:
 
-CARROLL-CRITERION-SURVIVES — an independent covering authority plus answerable succession carries the whole hostile suite, licenses genuine influence, and returns insufficient structure on every bare example the source states.
+CARROLL-CRITERION-SURVIVES-HARDENING — the criterion carries the hostile suite after two live defects were found and repaired, licenses genuine influence, reserves refusal for a positive prohibition, and returns insufficient structure on every bare example the source states.
+
+The round ran in two passes. The first built the reproduction, the language and
+the criterion, and closed at `CARROLL-CRITERION-SURVIVES`. The second was a
+hardening pass dispatched against that result, and it found two defects that had
+already shipped. The verdict below is the second pass's; §"The hardening pass"
+records what changed.
 
 The round is at
 `projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/`.
 `README.md` is the entry point, `CARROLL_CORE.md` the reproduction,
 `CRITERION.md` the criterion, `PROSECUTION.md` what did not survive,
-`OLD_INTERFACE.md` the comparison, `THEOREM_MAP.md` the grading. 109 tests,
-`python3 tests/run.py`.
+`OLD_INTERFACE.md` the comparison, `THEOREM_MAP.md` the grading. 131 tests across
+eight files, `python3 tests/run.py`.
 
 ## What the source was reproduced to
 
@@ -57,20 +63,26 @@ the record's settlement references — where the excision cascade is computed by
 Reflective Integrity's admission rules and only the ancestry class's settlements
 are removed by declaration.
 
-Six versions did not survive, and two of the six were killed by attacks the round
-built after the dispatched suite already passed. `PROSECUTION.md` lists all
-twelve rejected rules and design choices; four are still in the source so the
-comparison runs as a test rather than sitting in prose.
+Its verdict is three-valued with the status a function of a named ground, and
+`Refused` is reserved for an admissible independent prohibition: the permission
+language is not read closed-world.
 
-No case-specific clause was added. The criterion is uniform, and the two repairs
-the round's own attacks forced — closing the counterfactual over episode ancestry,
-and putting settled facts inside it — both generalise.
+Eight versions did not survive. `PROSECUTION.md` carries fifteen entries —
+rejected rules, rejected design choices, and one implementation defect — and
+three of the rejected rules are still in the source, so those three comparisons
+run as tests rather than sitting in prose.
+
+No case-specific clause was added at any point. Every repair generalises:
+closing the counterfactual over episode ancestry, taking that closure in the
+settlement graph rather than the episode quotient, putting settled facts inside
+the counterfactual, and reserving `Refused` for a positive prohibition.
 
 ## Whether the old interface survived
 
 Not as an account of Carroll legitimacy. `answerability + coverage + access +
 non-capture` returns the same verdict on the laundering class and the
-independently-authorized class; the criterion returns `Refused` and `Licensed`.
+independently-authorized class; the criterion returns `Unresolved` on a
+`defeated-citation` and `Licensed`.
 Its first clause is silent on both, because laundering runs through the reason
 channel and so changes the licensed-reason trace, which is its antecedent.
 
@@ -85,20 +97,81 @@ Access and coverage survive as independent clauses catching things the criterion
 does not — a withheld due reason, an unanswered disposed episode. `OLD_INTERFACE.md`
 answers all eight questions.
 
+## The hardening pass
+
+Four attacks were added against the criterion as it stood after the first pass.
+**Two broke it**, and both had been shipping.
+
+`C27` — the two halves of a campaign joined through an unlabelled settlement.
+`ancestry` walked from episode to episode one settlement-reference at a time, so
+a settlement belonging to no episode broke the walk, the manufactured permit
+survived excision, and the intervention came back `Licensed`. The repair takes
+the transitive predecessor closure in the settlement-reference graph and projects
+to episodes afterwards, which is what `CRITERION.md` had claimed and what the
+code did not do.
+
+The three-valued semantics — pressed by inspection rather than by a fixture,
+because every case in the suite only ever demanded *not licensed*, so an
+over-broad `Refused` never showed as a failure. `Refused` was returned for a
+permit empowering another agent, an unmet condition, a lapsed permit and a
+manufactured one, none of which is the record prohibiting anything. That is a
+closed-world reading of a permission language. `Refused` is now reachable from
+one ground only; the rest are `Unresolved` carrying a ground that says which
+kind, and `C29` runs one minimal case per ground.
+
+Two attacks did **not** break it. `C28` asks whether the succession criterion's
+independence clause is redundant given event survival: it is not, and the
+separator is exactly whether schemas read the strict pre-state — under a
+pre-state-reading minting schema the event survives excision and the authority it
+named comes back carrying a different code. `C30` walks the applicability
+boundary in five arms and the criterion turns on whether the condition is still
+discharged in the excised record, which is what it should turn on.
+
+`C31` asked whether `intervention_class` is too coarse. It is not, for the
+distinction tested: two interventions of one class reachable from two different
+states are separated by the existing `condition` field, and the action ontology
+did not widen.
+
+`tests/test_excision.py` is new. Seven properties of the excision operator hold —
+determinism, position preservation, admissibility, subhistory-in-information,
+prefix causality, idempotence, and excising nothing being the identity. Two fail:
+**monotonicity in the excised set, and composition**. One witness refutes both,
+and it is a legal Reflective Integrity record whose schema is admissible exactly
+at an even reason count. Both properties hold on every pre-state-blind fixture in
+the round — the same lever as the succession clause, which is the pass's one
+piece of unification.
+
+One implementation defect was found by the pass's own honesty test:
+`relabel_case` dropped the settled-fact map, so a relabelled case lost every fact
+its protocol conditions read. `C3`'s invariance was true and untested where it
+mattered, and `C3` now relabels a second case whose condition is discharged from
+the record.
+
+The historical ontology did not widen. No fifth event kind, no new foundational
+primitive, no change to Reflective Integrity.
+
 ## What remains open
 
-`THEOREM_MAP.md` items 25 to 31. The four that matter:
+`THEOREM_MAP.md` items 35 to 42. The five that matter:
 
-The criterion has no counterexample **among the twenty-eight fixtures this round
-wrote**, and the round wrote the criterion too.
+The criterion has no counterexample **among the thirty-five fixtures this round
+wrote**, and the round wrote the criterion too. Two of its repairs were forced by
+defects that had already shipped once, so the count of versions killed is a lower
+bound on how many were wrong.
 
 An agent that splits its campaign into two influence episodes whose settlements
-record no reference to each other is licensed. The round's position — that this
-is a defective record rather than a hard case — is a position, and the
+record no reference *reaching* each other is licensed. The round's position — that
+this is a defective record rather than a hard case — is a position, and the
 provenance-completeness hypothesis it needs is stated rather than established.
 
-Which structural class a protocol covers is supplied. It can only name an edge of
-the DR-MDP, never a narrative, and that is the whole of the protection.
+The supplied seam is three fields, not one: `covers`, a protocol's `condition`,
+and the fact tokens a settlement establishes. Only the first is confined to
+naming a structural edge; the other two are opaque strings, and relabelling the
+DR-MDP renames none of them.
+
+Whether restricting a record to pre-state-blind schemas is affordable. It buys
+the excision algebra and one succession clause, and nothing here says what it
+costs.
 
 Every bare Carroll case returns `Unresolved`. The criterion does not answer the
 source's question; it says the DR-MDP does not contain the answer and exhibits
@@ -119,17 +192,18 @@ line's canonical account and its executable form. `ANSWERABILITY_SCOUT.md` and
 `SETTLEMENT_SEMANTICS.md` were read only through the vertical slice's `README.md`
 summaries; nothing in this round consumes either.
 
-**Suite size.** The prompt specified C0 to C24. The round runs twenty-eight
-cases: those twenty-five, plus `C7b` (a license whose basis was installed during
-the record rather than seeded, against the prompt's own under-generality test),
-`C25` (a campaign split across two influence episodes) and `C26` (a manufactured
-applicability condition against a seeded basis). `C25` and `C26` each killed the
-criterion as then written.
+**Suite size.** The prompt specified C0 to C24. The round runs thirty-five rows:
+those twenty-five, plus `C7b` (a license whose basis was installed during the
+record rather than seeded, against the first prompt's under-generality test) and
+`C25` to `C33`. `C25` (split campaign), `C26` (manufactured applicability) and
+`C27` (unlabelled intermediate) each killed the criterion as then written; `C29`
+pins the repaired verdict semantics; `C28`, `C30`, `C31`, `C32` and `C33` are
+attacks it survived.
 
 **Layout.** Beyond the suggested layout the round adds `src/table4.py`,
 `src/variations.py`, `src/old_interface.py`, `src/suite.py`, `src/report.py`,
-`OLD_INTERFACE.md` and `MATRIX.txt`, and one further test file each for the
-suite and the comparison.
+`OLD_INTERFACE.md` and `MATRIX.txt`, and three further test files — for the
+suite, the comparison and the excision operator.
 
 **Table 4's annotations.** Carried as ASCII tokens — `check`, `cross`,
 `question`, `weak-check`, `mixed` — rather than the source's glyphs. They are
@@ -144,20 +218,27 @@ item family.
 
 All provisional under `AGENTS.md` §6: `RichCarrollCase`, `Protocol`,
 `Intervention`, `intervention_class`, `Narrative`, `CaseBuilder`, `ancestry`,
-`excise`, `established_facts`, `Basis`, `Verdict`,
-`prior_independent_authorization`, `prospective_license`,
-`legitimate_succession`, `current_standing`, `theta_has_standing`,
-`uptake_events`, `survives_excision`, `THETA_INDEX_READINGS`.
+`settlement_ancestors`, `excise`, `excised_case`, `established_facts`, `Basis`,
+`Verdict`, `prior_independent_authorization`, `admissible_independent`,
+`prospective_license`, `defeated_citation`, `legitimate_succession`,
+`current_standing`, `theta_has_standing`, `uptake_events`, `survives_excision`,
+`THETA_INDEX_READINGS`, and the five ground names `independent-permission`,
+`independent-prohibition`, `conflict`, `defeated-citation`, `no-covering-basis`.
 
 ## What this does not establish
 
 No Lean and no registered claim; `test-supported` is the ceiling for everything
-in the round. Table 4's two unrecovered cells and the one reading-sensitive cell
+in the round. The one entry graded `DERIVED` rather than tested — that event
+survival implies authority independence when every schema is pre-state-blind — is
+an argument from how minted ids are formed and what `G4` requires, checked on one
+witness and not mechanized. Table 4's two unrecovered cells and the one reading-sensitive cell
 are disagreements under a stated reading, not demonstrations that the source is
 wrong. The excision counterfactual asks what the record would have admitted, not
 what would have happened, so a basis a person would have installed anyway is
 scored dependent whenever the record's only path to it runs through the episode.
-Influence-episode membership is an input to the model. And the criterion's
+Influence-episode membership is an input to the model. The excision operator is
+neither monotone nor composable in general, so nothing here supports reasoning
+about several episodes by combining verdicts about each. And the criterion's
 `Licensed` verdict requires an active covering authority basis, which no bare
 Carroll case has and no argument here says a real deployment could produce.
 

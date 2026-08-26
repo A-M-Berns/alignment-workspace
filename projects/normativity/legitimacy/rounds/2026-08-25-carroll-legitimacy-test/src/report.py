@@ -57,7 +57,7 @@ def objective_regression() -> str:
 
 
 def adversarial_matrix() -> str:
-    out = ["Adversarial suite — C0 to C24, plus the under-generality case C7b.",
+    out = ["Adversarial suite — C0 to C33, C7b included: 35 rows.",
            ""]
     for row in suite.run():
         out.append(f"{row['id']:5s} {row['result']:5s} {row['title']}")

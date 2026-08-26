@@ -61,11 +61,12 @@ class TestAuthorityIsNotPreference(unittest.TestCase):
         self.assertEqual(blocked, ())
 
     def test_a_basis_for_another_agent_does_not_authorise(self):
+        """And does not prohibit either: it says nothing about this agent."""
         d = F.C7_authorized_diana()
         other = F.move_intervention(d["case"].dr_mdp, tau=1, episode=None,
                                     agent="SomebodyElse")
         v = lg.prospective_license(d["case"], other)
-        self.assertEqual(v.status, lg.REFUSED)
+        self.assertEqual((v.status, v.ground), (lg.UNRESOLVED, lg.DEFEATED))
         self.assertEqual(v.blocked[0][1], "empowers another agent")
 
     def test_an_inapplicable_condition_does_not_authorise(self):
@@ -73,7 +74,7 @@ class TestAuthorityIsNotPreference(unittest.TestCase):
         off = F.move_intervention(d["case"].dr_mdp, tau=1, episode=None,
                                   facts=frozenset())
         v = lg.prospective_license(d["case"], off)
-        self.assertEqual(v.status, lg.REFUSED)
+        self.assertEqual((v.status, v.ground), (lg.UNRESOLVED, lg.DEFEATED))
         self.assertEqual(v.blocked[0][1], "applicability condition unmet")
 
 
@@ -102,8 +103,27 @@ class TestNonImplications(unittest.TestCase):
         h = d["case"].history()
         self.assertIn("s:answer", {s.id for s in h.settlements()})
         self.assertTrue(h.good())
+        v = lg.prospective_license(d["case"], d["iv"])
+        self.assertEqual((v.status, v.ground), (lg.UNRESOLVED, lg.DEFEATED))
+
+    def test_later_succession_does_not_reach_back_to_the_license(self):
+        """Fifth, found by the hardening pass: the separation in its strong form."""
+        d = F.C33_standing_without_license()
         self.assertEqual(
-            lg.prospective_license(d["case"], d["iv"]).status, lg.REFUSED)
+            lg.prospective_license(d["case"], d["iv"]).status, lg.UNRESOLVED)
+        self.assertEqual(
+            lg.legitimate_succession(d["case"], d["event"], d["episode"]).status,
+            lg.LICENSED)
+        self.assertTrue(
+            lg.theta_has_standing(d["case"], cc.TH_INFLUENCED, d["bridge"]))
+
+    def test_a_license_is_not_installation_of_its_result(self):
+        """Second, as its own fixture rather than implicit in `C7`."""
+        d = F.C32_license_without_standing()
+        self.assertEqual(
+            lg.prospective_license(d["case"], d["iv"]).status, lg.LICENSED)
+        self.assertFalse(
+            lg.theta_has_standing(d["case"], cc.TH_ENERGIZED, d["bridge"]))
 
     def test_reason_is_not_stance_and_value_is_not_operative(self):
         """The distinction the architecture already carried, still holding."""
@@ -124,12 +144,30 @@ def collect(obj) -> list:
     return []
 
 
+#: Fixtures that take an arm rather than standing alone. Listed so that a new
+#: parameterised fixture that nobody adds here fails the count test below rather
+#: than quietly leaving its arms unexercised.
+ARMED = {
+    "C25_split_episode": [{"linked": True}, {"linked": False}],
+    "C26_manufactured_condition": [{"inside": True}, {"inside": False}],
+    "C28_prestate_reading_schema": [{"prestate_reading": True},
+                                    {"prestate_reading": False}],
+    "C30_applicability_boundary": [{"arm": a} for a in
+                                   ("inside", "outside", "mixed",
+                                    "re-established", "two-routes")],
+    "C31_covers_context": [{"established": True}, {"established": False}],
+}
+
+
 def every_case() -> list:
     import variations as V
     out = []
     for name in sorted(dir(F)):
-        if len(name) > 1 and name[0] == "C" and name[1].isdigit():
-            out.extend(collect(getattr(F, name)()))
+        if not (len(name) > 1 and name[0] == "C" and name[1].isdigit()):
+            continue
+        for kwargs in ARMED.get(name, [{}]):
+            out.extend(collect(getattr(F, name)(**kwargs)))
+    out.append(F.nonmonotone_case())
     for build in V.CLASSES.values():
         out.extend(collect(build()))
     return out
@@ -138,7 +176,7 @@ def every_case() -> list:
 class TestNoNewHistoricalEventKind(unittest.TestCase):
 
     def test_the_suite_is_not_empty(self):
-        self.assertGreaterEqual(len(every_case()), 20)
+        self.assertGreaterEqual(len(every_case()), 40)
 
     def test_every_step_is_one_of_the_four(self):
         kinds = {type(s).__name__ for case in every_case() for s in case.steps}

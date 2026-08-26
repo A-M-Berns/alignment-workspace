@@ -104,6 +104,29 @@ class TestBareNegativeControl(unittest.TestCase):
             for cls in p.covers:
                 self.assertTrue(all(isinstance(i, int) for i in cls))
 
+    def test_the_supplied_seam_is_covers_and_condition_and_the_fact_vocabulary(self):
+        """Three fields, one seam, and the round says so rather than claiming two.
+
+        `covers` can only name a structural edge, which is the protection the
+        round claims for it. A protocol's `condition` and the fact tokens a
+        settlement establishes are opaque strings the case supplies, so content
+        can enter there in exactly the way it cannot enter `covers`. Relabelling
+        the DR-MDP renames neither, which is why `C3` passes and why `C3` is not
+        evidence that the seam is closed.
+        """
+        d = F.C30_applicability_boundary("outside")
+        tokens = {t for _, toks in d["case"].fact_settlements for t in toks}
+        self.assertTrue(all(isinstance(t, str) for t in tokens))
+        conditions = {c for _, p in en.active_protocols(d["case"].history().std())
+                      for c in p.condition}
+        self.assertTrue(conditions and all(isinstance(c, str) for c in conditions))
+        m = d["case"].dr_mdp
+        renamed = en.relabel_case(
+            d["case"], {s: f"x::{s}" for s in m.states},
+            {t: f"x::{t}" for t in m.thetas}, {a: f"x::{a}" for a in m.actions})
+        self.assertEqual(
+            {t for _, toks in renamed.fact_settlements for t in toks}, tokens)
+
     def test_the_class_token_is_the_same_for_both_narratives(self):
         bob = F.C9_content_neutrality()
         diana = bob["diana"]

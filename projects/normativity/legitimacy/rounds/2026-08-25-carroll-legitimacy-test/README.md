@@ -6,14 +6,20 @@ Lean-checked and no claim is registered.
 
 ## Verdict
 
-CARROLL-CRITERION-SURVIVES — an independent covering authority plus answerable succession carries the whole hostile suite, licenses genuine influence, and returns insufficient structure on every bare example the source states.
+CARROLL-CRITERION-SURVIVES-HARDENING — the criterion carries the hostile suite after two live defects were found and repaired, licenses genuine influence, reserves refusal for a positive prohibition, and returns insufficient structure on every bare example the source states.
 
 Read that with three qualifications, all of which are in `THEOREM_MAP.md` and
 `PROSECUTION.md` and none of which is a footnote.
 
-The suite is twenty-eight fixtures **this round wrote**, against a criterion
-**this round wrote**. Two of the fixtures killed two versions of the criterion,
-which is the only evidence here that the exercise was adversarial at all.
+The suite is thirty-five fixtures **this round wrote**, against a criterion
+**this round wrote**. Five of the fixtures killed five versions of the criterion,
+which is the only evidence here that the exercise was adversarial at all. Two of
+those five were found by a hardening pass against the criterion as it stood after
+the round's own first pass, and both had been shipping: `ancestry` walked
+episode-to-episode where the prose said it closed over settlement references, so
+an unlabelled settlement between two halves of a campaign licensed a manufactured
+permit; and `Refused` was a closed-world reading of a permission language, so a
+protocol empowering somebody else refused this agent.
 
 The criterion licenses **nothing** on a bare Carroll case. All five of the
 source's examples, with no enriched history, return `Unresolved`. The round does
@@ -22,9 +28,9 @@ contain the answer, exhibits the smallest structure that would, and leaves open
 whether such structure is obtainable.
 
 One attack is unresolved rather than defeated. An agent that splits its campaign
-into two influence episodes whose settlements record no reference to each other
-is licensed. The round's position is that this is a defective record rather than
-a hard case, and that position is not a result.
+into two influence episodes whose settlements record no reference *reaching* each
+other is licensed. The round's position is that this is a defective record rather
+than a hard case, and that position is not a result.
 
 ## What the source was reproduced to
 
@@ -68,12 +74,30 @@ LegitimateSuccession_t(x, x') :=
 CurrentStanding_t   =   the value specifications the record has in force
 ```
 
-Three-valued: `Licensed`, `Refused`, `Unresolved`, and `Unresolved` is not
-permission. `Independent` is counterfactual persistence under excising the
-intervention's ancestry class from the record — the class closed over the
-record's own settlement references, and the excision cascade computed by
-Reflective Integrity's admission rules rather than annotated. `CRITERION.md` is
-the account and `PROSECUTION.md` the six versions that did not survive.
+Three-valued, with the status a function of a named **ground**:
+
+```text
+independent-permission    Licensed
+independent-prohibition   Refused
+conflict                  Unresolved
+defeated-citation         Unresolved   a covering basis exists and none is
+                                       admissible and independent
+no-covering-basis         Unresolved   the record says nothing about this class
+```
+
+**`Refused` is reserved for a positive prohibition.** The permission language is
+not closed-world: a permit for another agent, an unmet condition, a lapsed permit
+and a manufactured one are all `Unresolved` on a `defeated-citation`, because
+none of them is the record saying the act may not be done. `Unresolved` is not
+permission either — the use rule is that an agent acts on `Licensed` and on
+nothing else.
+
+`Independent` is counterfactual persistence under excising the intervention's
+**ancestry class** — the transitive predecessor closure in the settlement-
+reference graph, projected to episodes — with the cascade computed by Reflective
+Integrity's admission rules rather than annotated, and with the basis's
+applicability condition required to remain discharged. `CRITERION.md` is the
+account and `PROSECUTION.md` the fifteen entries that did not survive.
 
 ## The old interface
 
@@ -82,19 +106,22 @@ the laundering class and on the independently-authorized class. Its first clause
 is silent on both, because Carroll's laundering runs through the reason channel
 and so changes the licensed-reason trace, which is its antecedent. Access and
 coverage survive as independent clauses catching things the new criterion does
-not. `OLD_INTERFACE.md` answers the eight questions and states why non-capture is
-out of scope inside this architecture rather than wrong.
+not. `OLD_INTERFACE.md` answers the eight questions. The result is a scope result
+rather than a refutation: non-capture protects against a different channel, and
+it is insufficient for manipulation that operates by manufacturing the reason
+trace itself.
 
 ## Contents
 
 - `CARROLL_CORE.md` — the reproduction, the two figure readings and their
   evidence, and the five findings about the source.
-- `LEGITIMACY_LANGUAGE.md` — influence, standing, authority, license, uptake, and
-  the four non-implications with their witnesses.
+- `LEGITIMACY_LANGUAGE.md` — the type of each of influence, standing, authority,
+  license and uptake, and the five non-implications with their witnesses.
 - `CRITERION.md` — the criterion, the four questions the counterfactual had to
   answer, and what it does not do.
-- `PROSECUTION.md` — twelve rejected versions and design choices, four of them
-  still in the source so the comparison is a test.
+- `PROSECUTION.md` — fifteen entries: rejected versions, rejected design choices
+  and one implementation defect. Three of the rejected rules are still in the
+  source, so those three comparisons run as tests.
 - `OLD_INTERFACE.md` — the August 17 comparison.
 - `THEOREM_MAP.md` — every claim, graded.
 - `MATRIX.txt` — the three tables, regenerate with `python3 src/report.py MATRIX.txt`.
@@ -102,8 +129,8 @@ out of scope inside this architecture rather than wrong.
   `objectives.py` (Table 2), `table4.py` (the regression), `enrichment.py`
   (`Q_DR`, ancestry, excision), `legitimacy.py` (the five words and the
   criterion), `fixtures.py`, `variations.py`, `old_interface.py`, `suite.py`,
-  `report.py`.
-- `tests/` — 109 cases. `python3 tests/run.py`.
+  `report.py`. Eleven modules.
+- `tests/` — 131 cases across eight files. `python3 tests/run.py`.
 
 ## What the tests cover
 
@@ -114,7 +141,8 @@ out of scope inside this architecture rather than wrong.
 | `test_projection.py` | `Q_DR` returning the field; two enriched cases on one value; the record untouched by relabelling; non-factorization in both the isomorphic and the literal form; the bare control; verdicts never a silent boolean; protocols covering only index triples |
 | `test_language.py` | influence read from the DR-MDP alone; a parameterization without standing; standing moving only through an event; authority against preference, agent and condition; the four non-implications; every step one of the four historical kinds; every fixture Reflective-Integrity-good |
 | `test_legitimacy.py` | the three verdicts and the reasons they carry; independence of a seeded, an episode-internal and a record-installed basis; a protocol covering another class; a prohibition alone; the standing fold; the bridge |
-| `test_adversarial.py` | the whole suite; the rendered matrix matching the committed one; the three dictatorship witnesses; each rejected rule run beside the criterion on the fixture that killed it; the cascade and the `tau`-preservation; the two attacks the round added; non-conservatism; the under-generality controls |
+| `test_adversarial.py` | the whole suite; the rendered matrix matching the committed one; the three dictatorship witnesses; each rejected rule run beside the criterion on the fixture that killed it; the cascade and the `tau`-preservation; the four attacks the round added; non-conservatism; the under-generality controls |
+| `test_excision.py` | seven properties of the excision operator verified and two refuted, with the legal Reflective Integrity record that refutes both |
 | `test_old_interface.py` | each clause firing somewhere; the laundering and authorized classes both passing; the criterion separating them; clause 1 vacuous on both; `Z` along the run and `L` by content |
 
 ## What this does not establish
@@ -125,11 +153,14 @@ No Lean, no registered claim, and `test-supported` is the ceiling for everything
 here.
 
 The criterion has no counterexample **among the cases the round could think of**,
-and the round wrote both sides.
+and the round wrote both sides. Its two most recent repairs were forced by
+defects that had already shipped once, so the count of versions killed is a lower
+bound on how many were wrong.
 
-`covers` — which structural class a protocol authorises — is supplied by whoever
-builds the case. It can only name an edge of the DR-MDP, never a narrative, and
-that is the whole of the protection. Choosing which edge is a normative choice
+The supplied seam is three fields, not one. `covers` can only name an edge of the
+DR-MDP, which is the protection the round claims for it; a protocol's `condition`
+and the fact tokens a settlement establishes are opaque strings, and relabelling
+the DR-MDP renames none of the three. Choosing any of them is a normative choice
 made outside the model, and it is the largest remaining place where content can
 enter.
 

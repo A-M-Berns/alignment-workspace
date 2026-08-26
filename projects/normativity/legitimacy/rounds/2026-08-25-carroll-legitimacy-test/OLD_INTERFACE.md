@@ -29,8 +29,8 @@ timing         legitimate=False  non-capture       traces equal
 ```
 
 **The interface returns the same verdict on the laundering class and on the
-authorized class.** The new criterion returns `Refused` on the first and
-`Licensed` on the second. That is the round's comparison finding, and it is one
+authorized class.** The new criterion returns `Unresolved` on the first, on a
+`defeated-citation` ground, and `Licensed` on the second. That is the round's comparison finding, and it is one
 line of `test_old_interface.py`.
 
 ## Why clause 1 is silent
@@ -134,8 +134,16 @@ about different things and the round found no reason to merge them.
 **Coverage survives as the only clause a single run determines**, which was the
 earlier round's own reading of it and is unchanged.
 
-**Non-capture is not refuted; it is out of scope.** It is a condition on a
-transition rule with a second channel. Reflective Integrity's is a transition rule
-with one, and its architecture is the reason. Whether the second channel returns
-when a record is produced by a real system rather than constructed is a question
-about implementations and not about the clause.
+**Non-capture is not refuted.** It protects against a different channel, and it
+is insufficient for manipulation that operates by manufacturing the reason trace
+itself. That is a scope result: the clause is a condition on a transition rule
+with a second channel by which an agent can move the protected machinery other
+than by supplying reasons, and Reflective Integrity's is a transition rule with
+one. Whether the second channel returns when a record is produced by a real
+system rather than constructed is a question about implementations, not about the
+clause.
+
+What this round does **not** claim is that the earlier interface is refuted, or
+that the new criterion subsumes it. On the classes built here they are
+independent: access fires where the criterion is silent, and the criterion
+separates two classes the interface cannot.

@@ -31,25 +31,42 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | 22 | Access still fires where a due reason is withheld, and coverage where a disposed episode is unanswered | FINITE-TEST-SUPPORTED | `test_old_interface.TestClausesAreAlive` |
 | 23 | No new historical event kind was needed: every step of every fixture is `Settle`, `Reason`, `Norm` or `Respond` | FINITE-TEST-SUPPORTED | `test_language.test_every_step_is_one_of_the_four` |
 | 24 | The excision cascade is Reflective Integrity's admission rules and not an annotation: one declared settlement removes the whole downstream record in `C10` | FINITE-TEST-SUPPORTED | `test_adversarial.test_excision_removes_by_cascade_and_not_by_annotation` |
+| 25 | `ancestry` is the transitive predecessor closure in the settlement-reference graph, projected to episodes; an episode-to-episode walk is a different and weaker closure | DEFINITION + COUNTEREXAMPLE | `C27`, `test_adversarial.test_the_closure_runs_in_the_settlement_graph` |
+| 26 | `Refused` is reachable from exactly one ground — an admissible independent prohibition — so the permission language is not read closed-world | DEFINITION + FINITE-TEST-SUPPORTED | `C29`, `test_legitimacy.TestVerdictShape` |
+| 27 | `survives_excision(a, E)` does **not** imply `independent(schemaRef(a), E, tau(a))`; the separator is a schema that reads the strict pre-state | COUNTEREXAMPLE | `C28`, `test_adversarial.test_event_survival_does_not_imply_an_independent_authority` |
+| 28 | Where every schema in the record is pre-state-blind, it does imply it | DERIVED, argued from id minting and `G4`; checked on one witness | `C28`'s blind arm; `CRITERION.md` §4 |
+| 29 | `excise` is deterministic, position-preserving, admissibility-preserving, subhistory-in-information, prefix-causal and idempotent, and excising nothing is the identity | FINITE-TEST-SUPPORTED | `test_excision.TestPropertiesThatHold` |
+| 30 | `excise` is **not** monotone in the excised set and does **not** compose; one witness refutes both | COUNTEREXAMPLE | `test_excision.TestPropertiesThatFail`, `fixtures.nonmonotone_case` |
+| 31 | Both failures need a pre-state-reading schema: both properties hold on every pre-state-blind fixture in the round | FINITE-TEST-SUPPORTED | `test_excision.test_both_failures_need_a_prestate_reading_schema` |
+| 32 | A protocol's applicability condition must remain discharged in the excised record; a fact restated inside the episode but established outside it still is | FINITE-TEST-SUPPORTED | `C30`, five arms |
+| 33 | Two interventions of one intervention class in two state contexts are distinguished by the existing `condition` field, so the class did not widen | FINITE-TEST-SUPPORTED | `C31` |
+| 34 | **License and standing are separate in both directions**: a licensed act whose result has no standing, and an unlicensed act whose result later acquires standing through a licensed succession | FINITE-TEST-SUPPORTED | `C32`, `C33` |
 
 ## Conjectures and open items
 
 | # | statement | class |
 |---|---|---|
-| 25 | The criterion, as stated, has no counterexample | CONJECTURE — twenty-eight fixtures the round wrote, and the round wrote both the criterion and the fixtures |
-| 26 | A record whose two episodes carry no reference between them defeats the criterion; whether real records can be made to carry the links | OPEN — `C25`'s unlinked arm is the witness for the first half, and nothing addresses the second |
-| 27 | Which structural class a protocol covers is supplied, not derived. Whether an account of that is possible without reintroducing content | OPEN |
-| 28 | Excision is a record counterfactual. Whether a world counterfactual — would this basis have existed anyway — is statable in this architecture | OPEN |
-| 29 | Every bare Carroll case returns `Unresolved`. Whether records of the shape the criterion needs are obtainable for real preference-influencing systems | OPEN — and the question on which the round's practical value turns |
-| 30 | Non-capture may be recoverable as a live clause where the transition rule has a second channel; nothing here says whether a real implementation of Reflective Integrity has one | OPEN |
-| 31 | A Lean port of the excision cascade and the independence predicate | OPEN — nothing in this round is Lean-checked |
+| 35 | The criterion, as stated, has no counterexample | CONJECTURE — thirty-five fixtures the round wrote, and the round wrote both the criterion and the fixtures |
+| 36 | A record whose two episodes carry no reference reaching each other defeats the criterion; whether real records can be made to carry the links | OPEN — `C25`'s unlinked arm is the witness for the first half, and nothing addresses the second |
+| 37 | The supplied seam is `covers`, `condition` and the fact vocabulary. Whether an account of any of the three is possible without reintroducing content | OPEN |
+| 38 | Excision is a record counterfactual. Whether a world counterfactual — would this basis have existed anyway — is statable in this architecture | OPEN |
+| 39 | Every bare Carroll case returns `Unresolved`. Whether records of the shape the criterion needs are obtainable for real preference-influencing systems | OPEN — and the question on which the round's practical value turns |
+| 40 | Non-capture may be recoverable as a live clause where the transition rule has a second channel; nothing here says whether a real implementation of Reflective Integrity has one | OPEN |
+| 41 | Whether restricting the record to pre-state-blind schemas is a defensible condition to impose, given that it buys the excision algebra and one succession clause | OPEN — the hardening pass found the lever, and nothing here says whether the restriction is affordable |
+| 42 | A Lean port of the excision cascade, the ancestry closure and the independence predicate | OPEN — nothing in this round is Lean-checked |
 
 ## What no entry above claims
 
 That the criterion is correct. Every positive entry is a finite witness or a
 finite refutation, and the honest summary of entries 14 to 19 is that the
-criterion says what the round wanted it to say on twenty-eight constructed cases
-after two of its versions were killed by two of them.
+criterion says what the round wanted it to say on thirty-five constructed cases
+after five of its versions were killed by five of them — two of those five during
+the hardening pass, against the criterion as it stood in this branch's first
+commits.
+
+That entry 28 is proved. It is an argument from how minted ids are formed and
+what `G4` requires, checked on one witness, and it is graded DERIVED rather than
+`lean-proved` because nothing here is Lean-checked.
 
 That the source's Table 4 is wrong where it is not recovered. Entries 5, 6 and 8
 are disagreements between the transcription and the table under a stated reading;

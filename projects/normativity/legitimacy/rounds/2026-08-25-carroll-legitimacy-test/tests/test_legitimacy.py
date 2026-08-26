@@ -12,14 +12,27 @@ from standing import PValue
 
 class TestVerdictShape(unittest.TestCase):
 
-    def test_three_values_and_no_fourth(self):
-        seen = set()
-        for build in (F.C6_bare_diana, F.C7_authorized_diana,
-                      F.C10_manufactured_authorization, F.C21_revocation,
-                      F.C20_conflicting_authority):
-            d = build()
-            seen.add(lg.prospective_license(d["case"], d["iv"]).status)
-        self.assertEqual(seen, {lg.LICENSED, lg.REFUSED, lg.UNRESOLVED})
+    def test_every_ground_is_reachable_and_every_status_with_it(self):
+        grounds = F.C29_verdict_grounds()
+        got = {lg.prospective_license(d["case"], d["iv"]).ground
+               for d in grounds.values()}
+        self.assertEqual(got, set(lg.STATUS_OF_GROUND))
+        self.assertEqual({lg.STATUS_OF_GROUND[g] for g in got},
+                         {lg.LICENSED, lg.REFUSED, lg.UNRESOLVED})
+
+    def test_the_status_is_a_function_of_the_ground(self):
+        grounds = F.C29_verdict_grounds()
+        for d in grounds.values():
+            v = lg.prospective_license(d["case"], d["iv"])
+            self.assertEqual(v.status, lg.STATUS_OF_GROUND[v.ground])
+
+    def test_refused_is_reserved_for_a_live_prohibition(self):
+        """The one thing that is not a closed-world reading of the permissions."""
+        grounds = F.C29_verdict_grounds()
+        refused = {name for name, d in grounds.items()
+                   if lg.prospective_license(d["case"], d["iv"]).status
+                   == lg.REFUSED}
+        self.assertEqual(refused, {"independent-prohibition"})
 
     def test_unresolved_is_not_permission(self):
         """The use rule, stated where it can be checked."""
@@ -32,10 +45,15 @@ class TestVerdictShape(unittest.TestCase):
         v = lg.prospective_license(d["case"], d["iv"])
         self.assertEqual(v.bases, ("proto.designated",))
 
-    def test_a_refusal_names_its_defeater(self):
+    def test_a_defeated_citation_names_its_defeater(self):
         d = F.C21_revocation()
         v = lg.prospective_license(d["case"], d["iv"])
+        self.assertEqual(v.ground, lg.DEFEATED)
         self.assertEqual(v.blocked, (("proto.designated", "not live"),))
+
+    def test_a_verdict_cannot_carry_a_status_its_ground_denies(self):
+        with self.assertRaises(AssertionError):
+            lg.Verdict(lg.LICENSED, lg.NO_BASIS, "impossible")
 
 
 class TestIndependence(unittest.TestCase):
@@ -79,8 +97,25 @@ class TestCoveringAndClasses(unittest.TestCase):
         case = en.CaseBuilder(m, s, F.narrative("forbidden", "D")).build()
         iv = F.move_intervention(m, tau=1)
         v = lg.prospective_license(case, iv)
-        self.assertEqual(v.status, lg.REFUSED)
+        self.assertEqual((v.status, v.ground), (lg.REFUSED, lg.PROHIBITION))
         self.assertIn("prohibits", v.blocked[0][1])
+
+    def test_a_manufactured_prohibition_is_defeated_like_a_permission(self):
+        """Independence is applied to both polarities, not only to permissions."""
+        m = F.cc.ai_personal_trainer()
+        b = en.CaseBuilder(m, F.seed(), F.narrative("manufactured ban", "D"))
+        b.begin("E")
+        b.settle("s:manip")
+        b.end()
+        b.reason("r:manip", s_L={"s:manip"}, target="v:forbid")
+        b.norm("a:ban", F.CONST_CREATE, F.USER,
+               wit=(ri.PProto(F.trainer_protocol("p:manufactured-ban",
+                                                 polarity="forbid")),),
+               leaves={"r:manip"})
+        case = b.build()
+        iv = F.move_intervention(m, tau=b.now + 1, episode="E")
+        v = lg.prospective_license(case, iv)
+        self.assertEqual((v.status, v.ground), (lg.UNRESOLVED, lg.DEFEATED))
 
 
 class TestStandingAndSuccession(unittest.TestCase):

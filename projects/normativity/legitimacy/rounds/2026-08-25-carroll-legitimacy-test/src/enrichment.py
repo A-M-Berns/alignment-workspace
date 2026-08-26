@@ -238,35 +238,58 @@ class CaseBuilder:
 VOID = "@@void"
 
 
+def settlement_ancestors(case: RichCarrollCase, ids) -> frozenset:
+    """Transitive predecessor closure in the settlement-reference graph.
+
+    **Direction.** `Settlement.refs` names *predecessors*: `WFStep(Settle)`
+    refuses a settlement whose `refs` are not already on the ledger, so a
+    reference always points backwards in time and the graph is acyclic. The
+    closure therefore terminates, and the visited set is kept anyway so that it
+    would terminate on a cyclic graph too.
+    """
+    out, frontier = set(ids), list(ids)
+    while frontier:
+        sid = frontier.pop()
+        for ref in case.refs_of(sid):
+            if ref not in out:
+                out.add(ref)
+                frontier.append(ref)
+    return frozenset(out)
+
+
 def ancestry(case: RichCarrollCase, episode: Optional[str]) -> frozenset:
     """The intervention's causal ancestry class, as episodes.
 
+    Closure first, projection second:
+
+    ```text
+    AncSett(E)  = transitive predecessor closure from E's own settlements
+    ancestry(E) = { episode(s) : s in AncSett(E) } minus {none}, union {E}
+    ```
+
     The counterfactual object is not one declared episode. An agent that runs
     its campaign as two episodes and cites the second would otherwise keep
-    whatever the first installed. The closure is over the record's own
-    settlement references: an episode is in the class when a settlement already
-    in it refers to one of that episode's settlements.
+    whatever the first installed, which is `C25`. Nor is it the episodes one
+    reference away: an agent that puts a single unlabelled settlement between
+    the two halves of its campaign would otherwise break an episode-to-episode
+    walk, which is `C27` — the attack that killed the first version of this
+    function, and the reason the closure is taken in the settlement graph and
+    projected afterwards rather than walked in the quotient.
 
     **The hypothesis this makes explicit.** The class is only as wide as the
     record's provenance. A second episode whose settlements record no reference
-    to the first is, as far as the record can tell, causally unrelated to it,
-    and the criterion will treat a basis installed in the first as independent.
-    That is a completeness condition on the record, stated here rather than
-    assumed: every settlement an episode caused refers to the settlement that
-    caused it.
+    reaching the first is, as far as the record can tell, causally unrelated to
+    it, and the criterion will treat a basis installed in the first as
+    independent. That is a completeness condition on the record, stated here
+    rather than assumed: every settlement an episode caused refers, directly or
+    through intermediates, to the settlement that caused it.
     """
     if episode is None:
         return frozenset()
-    out, frontier = {episode}, [episode]
-    while frontier:
-        eid = frontier.pop()
-        for sid in case.episode_seeds(eid):
-            for ref in case.refs_of(sid):
-                other = case.episode_of(ref)
-                if other is not None and other not in out:
-                    out.add(other)
-                    frontier.append(other)
-    return frozenset(out)
+    reached = settlement_ancestors(case, case.episode_seeds(episode))
+    found = {case.episode_of(sid) for sid in reached}
+    found.discard(None)
+    return frozenset(found) | {episode}
 
 
 def established_facts(case: RichCarrollCase, history: ri.History,
@@ -310,6 +333,24 @@ def excise(case: RichCarrollCase, episodes) -> ri.History:
             removed.append(step)
     out.removed = tuple(removed)
     return out
+
+
+def excised_case(case: RichCarrollCase, episodes) -> RichCarrollCase:
+    """`excise` lifted to a case, so that composing two excisions is statable.
+
+    `excise` returns a `History`; composing it with itself needs the settlement
+    provenance of the intermediate, which is the original's restricted to the
+    settlements that survived.
+    """
+    history = excise(case, episodes)
+    surviving = {s.id for s in history.settlements()}
+    return RichCarrollCase(
+        case.dr_mdp, tuple(history.steps), case.seed, case.narrative,
+        tuple((sid, eid) for sid, eid in case.settlement_episodes
+              if sid in surviving),
+        case.interventions,
+        tuple((sid, toks) for sid, toks in case.fact_settlements
+              if sid in surviving))
 
 
 def _restamp(step):
@@ -361,4 +402,5 @@ def relabel_case(case: RichCarrollCase, smap, thmap, amap,
                 for iv in case.interventions)
     return RichCarrollCase(m, case.steps, case.seed,
                            narrative or case.narrative,
-                           case.settlement_episodes, ivs)
+                           case.settlement_episodes, ivs,
+                           case.fact_settlements)

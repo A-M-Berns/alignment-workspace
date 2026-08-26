@@ -18,8 +18,8 @@ class TestSuite(unittest.TestCase):
     def test_the_suite_is_the_whole_suite(self):
         ids = [r["id"] for r in suite.run()]
         self.assertEqual(ids[0], "C0")
-        self.assertEqual(ids[-1], "C26")
-        self.assertEqual(len(ids), 28)      # C0-C24, plus C7b, C25 and C26
+        self.assertEqual(ids[-1], "C33")
+        self.assertEqual(len(ids), 35)      # C0-C24, plus C7b and C25-C33
 
     def test_the_suite_can_fail(self):
         """The null-input case: a demand that is false reports FAIL."""
@@ -69,14 +69,12 @@ class TestTheCounterfactualIsDoingWork(unittest.TestCase):
     def test_temporal_priority_licenses_the_laundering_case(self):
         d = F.C10_manufactured_authorization()
         self.assertTrue(lg.temporal_priority_license(d["case"], d["iv"]))
-        self.assertEqual(
-            lg.prospective_license(d["case"], d["iv"]).status, lg.REFUSED)
+        self.assertTrue(lg.defeated_citation(d["case"], d["iv"]))
 
     def test_author_matching_licenses_the_proxy_case(self):
         d = F.C23_proxy()
         self.assertTrue(F.author_matching_license(d["case"], d["iv"]))
-        self.assertEqual(
-            lg.prospective_license(d["case"], d["iv"]).status, lg.REFUSED)
+        self.assertTrue(lg.defeated_citation(d["case"], d["iv"]))
 
     def test_authority_only_succession_cannot_tell_the_endpoints_apart(self):
         d = F.C11_same_endpoint()
@@ -85,7 +83,7 @@ class TestTheCounterfactualIsDoingWork(unittest.TestCase):
         strong = [lg.legitimate_succession(d[a], d["event"], d["episode"]).status
                   for a in ("reflective", "manipulated")]
         self.assertEqual(weak, [lg.LICENSED, lg.LICENSED])
-        self.assertEqual(strong, [lg.LICENSED, lg.REFUSED])
+        self.assertEqual(strong, [lg.LICENSED, lg.UNRESOLVED])
 
     def test_excision_removes_by_cascade_and_not_by_annotation(self):
         """Only the episode's settlements are declared; the rest is `WF`."""
@@ -114,8 +112,7 @@ class TestTheRoundsOwnAttacks(unittest.TestCase):
 
     def test_a_split_campaign_is_caught_when_the_record_links_it(self):
         d = F.C25_split_episode(linked=True)
-        self.assertEqual(
-            lg.prospective_license(d["case"], d["iv"]).status, lg.REFUSED)
+        self.assertTrue(lg.defeated_citation(d["case"], d["iv"]))
 
     def test_a_split_campaign_is_not_caught_when_it_does_not(self):
         """The provenance-completeness hypothesis, exhibited rather than assumed."""
@@ -133,10 +130,33 @@ class TestTheRoundsOwnAttacks(unittest.TestCase):
     def test_a_manufactured_trigger_defeats_an_independent_basis(self):
         d = F.C26_manufactured_condition(inside=True)
         v = lg.prospective_license(d["case"], d["iv"])
-        self.assertEqual(v.status, lg.REFUSED)
+        self.assertEqual((v.status, v.ground), (lg.UNRESOLVED, lg.DEFEATED))
         self.assertEqual(v.blocked,
                          (("proto.designated",
                            "not independent of the influence episode"),))
+
+    def test_an_unlabelled_intermediate_does_not_break_the_ancestry(self):
+        import enrichment as en
+        d = F.C27_unlabelled_intermediate()
+        self.assertEqual(en.ancestry(d["case"], "E2"), frozenset({"E1", "E2"}))
+        self.assertTrue(lg.defeated_citation(d["case"], d["iv"]))
+
+    def test_the_closure_runs_in_the_settlement_graph(self):
+        import enrichment as en
+        case = F.C27_unlabelled_intermediate()["case"]
+        self.assertEqual(en.settlement_ancestors(case, {"s2"}),
+                         frozenset({"s2", "s_mid", "s1"}))
+        self.assertIsNone(case.episode_of("s_mid"))
+
+    def test_event_survival_does_not_imply_an_independent_authority(self):
+        d = F.C28_prestate_reading_schema(prestate_reading=True)
+        self.assertTrue(lg.survives_excision(d["case"], d["event"], d["episode"]))
+        self.assertFalse(lg.independent(d["case"], d["authority"], d["episode"], 4))
+
+    def test_it_does_imply_it_when_no_schema_reads_the_prestate(self):
+        d = F.C28_prestate_reading_schema(prestate_reading=False)
+        self.assertTrue(lg.survives_excision(d["case"], d["event"], d["episode"]))
+        self.assertTrue(lg.independent(d["case"], d["authority"], d["episode"], 4))
 
     def test_the_same_trigger_outside_the_episode_licenses(self):
         d = F.C26_manufactured_condition(inside=False)

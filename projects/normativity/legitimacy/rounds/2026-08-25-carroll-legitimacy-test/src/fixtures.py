@@ -1,4 +1,4 @@
-"""The adversarial suite, C0 to C24, as constructed cases.
+"""The adversarial suite, C0 to C33, as constructed cases.
 
 Every fixture is a Reflective Integrity record over one of the five Carroll
 DR-MDPs. The DR-MDP is never edited: `Q_DR` of every enriched case in this
@@ -16,6 +16,12 @@ The last is seeded rather than created, so it is independent of every episode by
 construction. That is the only thing in this module that is true by
 construction, and it is the analogue of a person's standing authority over their
 own commitments rather than a normative label about any particular revision.
+
+Two further schemas appear only in the fixtures that need them: a minting schema
+that reads the strict pre-state (`C28`) and one whose admissibility is a parity
+condition on the pre-state (`nonmonotone_case`). Both are legal under `S1`-`S6`,
+and both exist to show what Reflective Integrity permits rather than to model
+anything.
 """
 from __future__ import annotations
 
@@ -538,6 +544,274 @@ def C26_manufactured_condition(inside: bool = True) -> dict:
                          b.now + 1, "E", frozenset())
     b.declare(iv)
     return {"case": b.build(), "iv": iv, "inside": inside}
+
+
+def C27_unlabelled_intermediate() -> dict:
+    """The two halves of a campaign joined through an unlabelled settlement.
+
+    Not in the dispatched list. `C25` forced the counterfactual to close over
+    episodes; this forces it to close in the settlement graph and project
+    afterwards. The chain is
+
+    ```text
+    s2 in E2   ->refs->   s_mid in no episode   ->refs->   s1 in E1
+    ```
+
+    and an episode-to-episode walk one reference deep never reaches `E1`.
+    """
+    m = cc.conspiracy_influence()
+    b = en.CaseBuilder(m, seed(), narrative("unlabelled intermediate", "B"))
+    b.begin("E1")
+    b.settle("s1")
+    b.end()
+    b.reason("r:e1", s_L={"s1"}, target="v:permit")
+    b.norm("a:install", CONST_CREATE, USER,
+           wit=(ri.PProto(trainer_protocol("p:manufactured")),), leaves={"r:e1"})
+    b.settle("s_mid", refs={"s1"})                  # belongs to no episode
+    b.begin("E2")
+    b.settle("s2", refs={"s_mid"})
+    b.end()
+    iv = move_intervention(m, tau=b.now + 1, episode="E2")
+    b.declare(iv)
+    return {"case": b.build(), "iv": iv}
+
+
+def _minting_schema(prestate_reading: bool) -> ri.SchemaCode:
+    """A schema that creates an authority, optionally reading the pre-state.
+
+    S1-S6 permit a schema to be any deterministic function of the witness *and
+    the strict pre-state*, so the payload of a standing an event creates can
+    depend on what the record held at that moment. That is the whole content of
+    `C28`.
+    """
+    def run(wit, pre):
+        name = f"minted-{len(pre.R)}" if prestate_reading else "minted"
+        return ri.Standing(ri.Create((ri.PAuth(ri.SchemaCode(name, _supersede)),)))
+    return ri.SchemaCode("mint", run)
+
+
+MINT = "const.mint"
+
+
+def C28_prestate_reading_schema(prestate_reading: bool = True) -> dict:
+    """Does event survival already imply the authority it named is independent?
+
+    Not in the dispatched list. The succession criterion carries two clauses and
+    the second looks like it might follow from the third. It does not, and the
+    separator is exactly whether schemas read the pre-state: the event survives
+    excision under both arms, and under the reading arm the authority it names
+    comes back carrying a different code.
+    """
+    m = cc.conspiracy_influence()
+    s = seed({MINT: ri.PAuth(_minting_schema(prestate_reading)),
+              "val.low": PValue("v:th_natural")})
+    b = en.CaseBuilder(m, s, narrative("minted authority", "B"))
+    b.begin("E")
+    b.settle("s:manip")
+    b.end()
+    b.reason("r:from-manip", s_L={"s:manip"}, target="v:th_influenced")
+    b.norm("a:mint", MINT, USER)
+    minted = ri.standing_tag(3, 0)
+    b.norm("a:use", minted, USER,
+           wit=({"val.low"}, (PValue("v:th_influenced"),)))
+    return {"case": b.build(), "event": "a:use", "episode": "E",
+            "authority": minted, "prestate_reading": prestate_reading}
+
+
+def C29_verdict_grounds() -> dict:
+    """One minimal case per ground, so every branch of the case distinction runs."""
+    m = cc.ai_personal_trainer()
+
+    def probe(extra, **iv_kwargs):
+        b = en.CaseBuilder(m, seed(extra), narrative("ground probe", "D"))
+        iv = move_intervention(m, tau=1, **iv_kwargs)
+        b.declare(iv)
+        return {"case": b.build(), "iv": iv}
+
+    return {
+        "independent-permission": probe(
+            {"proto.permit": ri.PProto(trainer_protocol())}),
+        "independent-prohibition": probe(
+            {"proto.forbid": ri.PProto(
+                trainer_protocol("p:forbid", polarity="forbid"))}),
+        "conflict": C20_conflicting_authority(),
+        "wrong-agent": probe({"proto.alice": ri.PProto(
+            trainer_protocol("p:alice", agent="Alice"))}),
+        "condition-unmet": probe({"proto.cond": ri.PProto(trainer_protocol())},
+                                 facts=frozenset()),
+        "revoked": C21_revocation(),
+        "manufactured": C10_manufactured_authorization(),
+        "no-covering-basis": C6_bare_diana(),
+    }
+
+
+F_EXO, F_EPISODIC = "f:exogenous-condition", "f:episodic-condition"
+
+
+def C30_applicability_boundary(arm: str) -> dict:
+    """Where a protocol's condition is discharged from, five ways.
+
+    Not in the dispatched list in this form. `C26` showed a wholly manufactured
+    trigger is not enough; these are the boundary cases around it. The criterion
+    has to turn on whether the condition is still discharged in the excised
+    record, not on whether a syntactically similar fact was ever present.
+    """
+    m = cc.ai_personal_trainer()
+    needs = {"inside": {F_EPISODIC}, "outside": {F_EXO},
+             "mixed": {F_EXO, F_EPISODIC}, "re-established": {F_EXO},
+             "two-routes": {F_EXO}}[arm]
+    s = seed({"proto.designated": ri.PProto(
+        trainer_protocol(condition=frozenset(needs)))})
+    b = en.CaseBuilder(m, s, narrative(f"applicability/{arm}", "D"))
+    if arm in ("outside", "mixed", "re-established", "two-routes"):
+        b.settle("s:exogenous", establishes={F_EXO})
+    if arm in ("inside", "mixed"):
+        b.begin("E")
+        b.settle("s:episodic", establishes={F_EPISODIC})
+        b.end()
+    if arm == "re-established":
+        b.begin("E")
+        b.settle("s:again", establishes={F_EXO})       # the same fact, restated
+        b.end()
+    if arm == "two-routes":
+        b.begin("E")
+        b.settle("s:route-two", establishes={F_EXO})   # a second, dependent route
+        b.end()
+    iv = en.Intervention("I", AI, m.actions[1], m.thetas[0], m.thetas[1],
+                         b.now + 1, "E", frozenset())
+    b.declare(iv)
+    return {"case": b.build(), "iv": iv, "arm": arm}
+
+
+def _two_context_mdp() -> drmdp.DRMDP:
+    """One reward-parameterization edge reachable from two different states.
+
+    The smallest shape in which `intervention_class` is silent about context:
+    `a_move` carries `th_0` to `th_1` from both `s_a` and `s_b`, so the two
+    interventions share a class and differ in the state acted from.
+    """
+    S, TH, A = ("s_a", "s_b"), ("th_0", "th_1"), ("a_hold", "a_move")
+
+    def T(s, th, a):
+        return (s, TH[1] if a == A[1] else th)
+
+    def R(th, s, a, s2):
+        return 1 if th == TH[1] else 0
+
+    return drmdp.build(S, TH, A, T, R, S[0], TH[0])
+
+
+F_CONTEXT = "f:acting-from-the-first-state"
+
+
+def C31_covers_context(established: bool) -> dict:
+    """Two interventions of one class, in two contexts, and one authority.
+
+    Not in the dispatched list. `covers` names a class and says nothing about
+    the state acted from; the question is whether the existing `condition` field
+    reaches the distinction without widening the class.
+    """
+    m = _two_context_mdp()
+    s = seed({"proto.contextual": ri.PProto(
+        en.Protocol("p:contextual", AI, frozenset({(1, 0, 1)}),
+                    frozenset({F_CONTEXT})))})
+    b = en.CaseBuilder(m, s, narrative("contextual authority", "x"))
+    if established:
+        b.settle("s:context", establishes={F_CONTEXT})
+    iv = en.Intervention("I", AI, m.actions[1], m.thetas[0], m.thetas[1],
+                         b.now + 1, None, frozenset())
+    b.declare(iv)
+    return {"case": b.build(), "iv": iv, "class": en.intervention_class(m, iv)}
+
+
+def C32_license_without_standing() -> dict:
+    """A licensed intervention, and no specification in force for its result.
+
+    The separation stated as its own fixture rather than left implicit in `C7`.
+    The record contains the authority and the act; it contains no event
+    installing a specification of the parameterization the act produces.
+    """
+    m = cc.ai_personal_trainer()
+    s = seed({"proto.designated": ri.PProto(trainer_protocol()),
+              "val.low": PValue("v:th_tired")})
+    b = en.CaseBuilder(m, s, narrative("license without standing", "D"))
+    b.begin("E")
+    b.settle("s:nudge")
+    b.end()
+    iv = move_intervention(m, tau=1, episode="E")
+    b.declare(iv)
+    return {"case": b.build(), "iv": iv, "bridge": bridge(m)}
+
+
+def C33_standing_without_license() -> dict:
+    """An unlicensed influence, and the same value later installed independently.
+
+    The converse separation, and the sharper of the two: the later installation
+    is legitimate, the specification it installs is the one the influence
+    produced, and the influence is still not licensed. A verdict about an act at
+    `tau` is a verdict about the pre-state at `tau`, so nothing later reaches it.
+    """
+    m = cc.conspiracy_influence()
+    s = seed({"val.low": PValue("v:th_natural")})
+    b = en.CaseBuilder(m, s, narrative("standing without license", "B"))
+    b.begin("E")
+    b.settle("s:influence")
+    b.end()
+    iv = move_intervention(m, tau=1, episode="E")
+    b.declare(iv)
+    b.settle("s:own-reflection")                     # outside every episode
+    b.reason("r:reflective", s_L={"s:own-reflection"}, target="v:th_influenced")
+    b.norm("a:adoption", SELF_REVISION, USER,
+           wit=("revise", {"val.low"}, (PValue("v:th_influenced"),)),
+           leaves={"r:reflective"})
+    return {"case": b.build(), "iv": iv, "event": "a:adoption", "episode": "E",
+            "bridge": bridge(m)}
+
+
+def _parity_schema() -> ri.SchemaCode:
+    """Admissible exactly when the pre-state holds an even number of reasons.
+
+    Legal under S1-S6: deterministic, read-only, well-typed, strict pre-state.
+    Returning `None` is what `G5` rejects, so admissibility here is a
+    non-monotone function of the record — which is the whole point.
+    """
+    def run(wit, pre):
+        if len(pre.R) % 2:
+            return None
+        return ri.Standing(ri.Create((ri.PProto(en.Protocol("p:parity", AI,
+                                                            frozenset())),)))
+    return ri.SchemaCode("parity", run)
+
+
+PARITY = "const.parity"
+
+
+def nonmonotone_case() -> en.RichCarrollCase:
+    """Removing more can restore an occurrence that removing less destroyed.
+
+    Two episodes, one reason grounded in each, and an event admissible only at an
+    even reason count. Excising one episode leaves an odd count and the event
+    falls; excising both leaves zero and it stands. The witness for the failure of
+
+    ```text
+    E subset of E'  ->  Survivors(E') subset of Survivors(E)
+    ```
+
+    and, with the same steps, for the failure of composition.
+    """
+    m = cc.conspiracy_influence()
+    b = en.CaseBuilder(m, seed({PARITY: ri.PAuth(_parity_schema())}),
+                       narrative("non-monotone admissibility", "x"))
+    b.begin("E1")
+    b.settle("s1")
+    b.end()
+    b.begin("E2")
+    b.settle("s2")
+    b.end()
+    b.reason("r1", s_L={"s1"}, target="t1")
+    b.reason("r2", s_L={"s2"}, target="t2")
+    b.norm("a:parity", PARITY, USER)
+    return b.build()
 
 
 # ------------------------------------------------------------- the strawmen

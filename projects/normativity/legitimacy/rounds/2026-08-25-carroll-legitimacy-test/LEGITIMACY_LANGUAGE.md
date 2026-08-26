@@ -8,6 +8,49 @@ The source asks which of a person's changing preferences should have authority
 and legitimacy. Most of the difficulty in that question is that one word is
 doing five jobs. These are the five, kept apart by type.
 
+## The type of each, first
+
+Every term below has one meaning, and the type is what fixes it. Where the prose
+of this round says a person's preference *has authority*, it is wrong: what
+exists is a standing, an authority basis, or a license, and those are three
+objects.
+
+```text
+Influence     : DRMDP x Policy x Horizon x Action        -> Bool
+                a descriptive property of a policy, computed before any record
+
+Standing_t    : Case x Time                              -> Finset ValueSpec
+                which specifications the record has in force
+
+Authority_t   : Case x Intervention x StandingView x Pol -> (admissible, blocked)
+                a relation between a standing basis and an intervention class,
+                in a domain
+
+Licensed_t    : Case x Intervention  -> {Licensed, Refused, Unresolved} x Ground
+                a prospective verdict about one act at one pre-state
+
+Uptake        : Case                                     -> Finset NormEvent
+                the historical transitions across which the value projection moved
+
+Succession    : Case x NormEvent x Episode               -> Verdict
+                the legitimacy of one standing-revision event
+```
+
+Two supporting objects have types worth stating because the criterion's shape
+depends on them:
+
+```text
+ancestry  : Case x Episode          -> Finset Episode
+excise    : Case x Finset Episode   -> History
+survives  : Case x RecordId x Episode -> Bool
+Q_DR      : Case                    -> DRMDP
+```
+
+`excise` returns a `History` rather than a `Case`, which is why composing two
+excisions needs `excised_case` to carry the settlement provenance of the
+intermediate. `tests/test_excision.py` is where the operator's properties are
+verified and refuted.
+
 ---
 
 ## 1. Influence
@@ -74,19 +117,30 @@ a settlement is not a standing and a reason is not a stance.
 ## 4. License
 
 ```text
-prospective_license(case, I)  ->  Licensed | Refused | Unresolved
+prospective_license(case, I)  ->  Verdict(status, ground, reason, bases, blocked)
+status in {Licensed, Refused, Unresolved}, and is a function of the ground
 ```
 
 Action-relative and prospective: read against the strict pre-state `tau(I) - 1`,
-about whether the agent is entitled to perform `I`. `CRITERION.md` is the
-account. What belongs here is what the word does *not* carry:
+about whether the agent is entitled to perform `I`. `CRITERION.md` §2 carries the
+case distinction. **`Refused` means an admissible independent prohibition covers
+the class**, and nothing else does: the permission language is not closed-world,
+so failing to find a permission is `Unresolved` with a `defeated-citation` or
+`no-covering-basis` ground.
 
-- a license does not confer standing on what it produces (`C7`: the nudge is
+What belongs here is what the word does *not* carry:
+
+- a license does not confer standing on what it produces (`C32`: the nudge is
   licensed and no specification of the resulting parameterization is in force);
 - standing on the result does not make the act licensed (`C4`: the produced
   specification is in force and the act is `Unresolved`);
 - an authentic later endorsement does not make a prior license (`C22`: the reply
-  is on the ledger, the record is `Good`, and the verdict is `Refused`).
+  is on the ledger, the record is `Good`, and the verdict is `Unresolved` on a
+  `defeated-citation`);
+- **a later legitimate adoption of the value does not reach back** (`C33`: the
+  specification the influence produced ends up in force by a succession that is
+  itself `Licensed`, and the influence is still not licensed, because a verdict
+  about an act at `tau` reads the pre-state at `tau`).
 
 ## 5. Uptake
 
@@ -106,10 +160,11 @@ still the one in force.
 
 ```text
 Influence(I)                        does not imply   illegitimacy          C24
-Licensed_t(I)                       does not imply   standing for the      C7
+Licensed_t(I)                       does not imply   standing for the      C32
                                                      preference it produced
 standing for the result             does not imply   Licensed_t(I)         C4
 post-intervention endorsement       does not imply   Licensed_t(I)         C22
+later legitimate succession         does not imply   Licensed_t(I)         C33
 ```
 
 None of the four needed a new ontology. `Settlement`, `ReasonOcc`, `NormEvent`
@@ -121,12 +176,19 @@ as `PProto`'s field already is.
 
 ## What the language does not settle
 
-It does not say how a protocol comes to cover a class. `covers` is supplied by
-whoever builds the case, and although it can only name a structural edge, the
-choice of which edge to cover is a normative choice made outside the model. That
-is the largest place where content could still enter, and the round's answer to
-it is only that the choice is visible: it is a field of a standing, in the
-record, with provenance, rather than a judgement inside a verdict function.
+It does not say how a protocol comes to cover a class, nor where its
+applicability condition comes from, nor what a settled fact means. Those are
+three fields — `Protocol.covers`, `Protocol.condition`, and the tokens a
+settlement establishes — and they are one supplied seam. `covers` can only name a
+structural edge of the DR-MDP; the other two are opaque strings, and relabelling
+the DR-MDP renames none of the three. The round's answer is only that the choice
+is visible: it is a field of a standing, in the record, with provenance, rather
+than a judgement inside a verdict function.
+
+`C31` settles one narrow question about the first of the three. Two interventions
+sharing an intervention class, reachable from two different states, are
+distinguished by the existing `condition` field. The class did not have to widen,
+and no fixture this round built forced the action ontology to change.
 
 It also has nothing to say about the difference between influence an agent
 intends and influence it merely causes. `C24` represents "incidental" by the
