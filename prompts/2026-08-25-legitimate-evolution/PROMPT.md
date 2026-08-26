@@ -4966,3 +4966,920 @@ Use this as the next agent pass.
 > > **A legitimate process is not merely one that preserves obligations someone handed it. Once a represented reason is, by the process's own accepted semantics, something it owes an answer to, that fact must enter the answerability dynamics; thereafter it may disappear only through a legitimate resolution path. At the same time, unauthorized normative acts must not gain the power to erase obligations, even though their occurrence may itself generate new obligations. Find the smallest local-to-global theorem that captures exactly this.**
 
 The unauthorized-act-generates-complaint case is the one I’d pay particular attention to. It may expose that the current “same `Valid` gates both folds” coupling is too crude even though the corollary it was introduced to secure is exactly right.
+
+---
+
+# Eighth dispatch — 2026-08-26, the Due bridge
+
+Verbatim as received.
+
+Use this for the next hostile pass:
+
+> Continue on:
+>
+> ```text
+> round/2026-08-25-legitimate-evolution
+> ```
+>
+> Treat the current result as:
+>
+> ```text
+> LEGITIMATE-EVOLUTION-NEEDS-DUE-BRIDGE
+> ```
+>
+> Do **not** write Lean.
+>
+> Do **not** reopen Grounded Replay unless you find an actual contradiction.
+>
+> Do **not** reopen quantitative liability except to preserve the already-earned conclusion:
+>
+> ```text
+> qualitative answerability continuity does not imply quantitative burden conservation
+> ```
+>
+> and:
+>
+> ```text
+> total accounting, not per-parent accounting, is required for any later quantitative law.
+> ```
+>
+> The purpose of this pass is narrower:
+>
+> > **Find the smallest correct local semantics and one-step transition laws for the Due bridge and answerability resolution, so that Legitimate Evolution can finally be frozen as a local-to-global theorem package.**
+>
+> The current candidate picture is:
+>
+> ```text
+> local semantics:
+>     Permit
+>     Due
+>     Resolve
+>
+> local structural laws:
+>     grounded permitted standing change
+>     newly-due -> outstanding
+>     outstanding removal only by legitimate discharge/carry
+>
+> global theorems:
+>     Grounded Replay
+>     Answerability Continuity
+> ```
+>
+> Attack this. Do not preserve it for aesthetic reasons.
+>
+> ---
+>
+> # 1. Start from the corrected answerability theorem
+>
+> The old chain theorem is withdrawn.
+>
+> The corrected intended conclusion is:
+>
+> > Every obligation outstanding at time `s`, at every later finite `t`, has a finite forward resolution derivation rooted at that obligation whose leaves are all either:
+> >
+> > * currently outstanding at `t`; or
+> > * validly discharged before `t`.
+>
+> Transfers expand a node to the obligations that carry it.
+>
+> Splits create multiple children.
+>
+> Merges may create a DAG globally but may be unfolded into a finite derivation tree for an individual root.
+>
+> Verify this exact theorem against:
+>
+> ```text
+> direct discharge
+> transfer
+> transfer chain
+> transfer -> discharge
+> split
+> split -> discharge one branch, leave one open
+> split -> discharge all branches
+> merge
+> merge -> discharge successor
+> indefinite persistence
+> ```
+>
+> Be explicit that **every frontier branch must be accounted for**.
+>
+> No existential “one surviving descendant is enough.”
+>
+> ---
+>
+> # 2. Remove A2 unless it earns its place
+>
+> Current evidence says freshness of obligation identity is not needed for the theorem.
+>
+> Use:
+>
+> ```text
+> q0 -> q1 -> q0
+> ```
+>
+> or any stronger freshness violation while preserving controlled resolution.
+>
+> Determine exactly:
+>
+> ```text
+> A2 is:
+>     necessary theorem premise
+>     representation hygiene
+>     definitional under occurrence identity
+>     irrelevant
+> ```
+>
+> My current expectation is:
+>
+> ```text
+> representation hygiene / definitional, not a theorem premise.
+> ```
+>
+> Do not keep a premise merely to mirror Grounded Replay.
+>
+> ---
+>
+> # 3. Tighten the one-step controlled-resolution law
+>
+> Current transfer rules may still be too restrictive if they require successors to be newly opened by the same edit.
+>
+> Test:
+>
+> ```text
+> O_t = {q1, q2}
+> ```
+>
+> followed by:
+>
+> ```text
+> Resolve(q1) = carry({q2})
+> ```
+>
+> where `q2` was already outstanding.
+>
+> This should probably be legitimate consolidation.
+>
+> Candidate minimal law:
+>
+> ```text
+> if q leaves O_t at step t,
+> then either:
+>
+>   Resolve_t(q) = done
+>
+> or
+>
+>   Resolve_t(q) = carry(S)
+>   with S nonempty and S subset O_{t+1}.
+> ```
+>
+> Do not require `S` to be fresh unless a countermodel proves it necessary.
+>
+> Test split, merge, preexisting-successor transfer, and shared successors.
+>
+> ---
+>
+> # 4. Decide exactly what `Resolve` means
+>
+> Compare:
+>
+> ```text
+> Resolve(L, history, e, q) = done
+> ```
+>
+> and:
+>
+> ```text
+> Resolve(L, history, e, q) = carry(S)
+> ```
+>
+> against separate:
+>
+> ```text
+> Disposes
+> Transfers
+> ```
+>
+> Ask whether one `Resolve` judgment is enough for:
+>
+> ```text
+> answer
+> defeat
+> withdrawal
+> delegation
+> referral
+> split
+> merge
+> transfer into existing episode
+> ```
+>
+> Prefer one `Resolve` unless separate primitives are needed by a downstream theorem.
+>
+> ---
+>
+> # 5. The central attack: what exactly is `Due`?
+>
+> Do not use a timeless predicate casually.
+>
+> The naive statement:
+>
+> ```text
+> Due(L_t, r, q) -> q in O_{t+1}
+> ```
+>
+> risks reopening already-resolved obligations forever if `r` remains represented.
+>
+> Build:
+>
+> ```text
+> r is represented at t=0
+> Due(r,q)
+> q opens
+> q is legitimately discharged at t=5
+> r remains in the reason ledger forever
+> ```
+>
+> Ask whether the current Due semantics forces `q` to reopen.
+>
+> If yes, reject that semantics.
+>
+> ---
+>
+> # 6. Compare three candidate Due interfaces
+>
+> Test at least:
+>
+> ```text
+> A. persistent predicate
+>    Due_t(r,q)
+> ```
+>
+> ```text
+> B. event-like judgment
+>    NewDue_t(r,q)
+> ```
+>
+> ```text
+> C. transition generator
+>    Due(X_t, new represented material at t) = finite set of new obligation payloads
+> ```
+>
+> Find the smallest interface that:
+>
+> * does not reopen resolved obligations;
+> * can represent old reasons becoming newly due after context changes;
+> * can represent several reasons jointly generating one obligation;
+> * can represent one reason generating several obligations;
+> * does not smuggle Coverage into legitimacy.
+>
+> Do not assume `ReasonOcc arrival == Due event`.
+>
+> ---
+>
+> # 7. Old reason becoming newly due is mandatory
+>
+> Build:
+>
+> ```text
+> r exists in the reason ledger from t=0
+> at t=0 it is not Due
+> normative/context state changes at t=5
+> at t=5 the same old r now makes q newly due
+> ```
+>
+> A design that only mints obligations when a `ReasonOcc` is first created is too weak if this case is legitimate.
+>
+> Determine whether Due should be evaluated over:
+>
+> ```text
+> represented reason ledger + strict prestate
+> ```
+>
+> and produce **newly activated due claims** relative to prior answerability history.
+>
+> ---
+>
+> # 8. Several reasons jointly creating one obligation
+>
+> Test:
+>
+> ```text
+> r1 alone: not due
+> r2 alone: not due
+> {r1,r2} together: q becomes due
+> ```
+>
+> Do not force one obligation to have exactly one reason parent unless necessary.
+>
+> This may suggest:
+>
+> ```text
+> Due(X_t, support_set, q)
+> ```
+>
+> or a derived activation condition over the whole represented reason state.
+>
+> Keep the interface as small as possible.
+>
+> ---
+>
+> # 9. One reason creating several obligations
+>
+> Test:
+>
+> ```text
+> r -> {q1,q2}
+> ```
+>
+> e.g. one represented failure creates:
+>
+> ```text
+> obligation to repair
+> obligation to explain
+> ```
+>
+> The Due bridge must handle this without special machinery.
+>
+> ---
+>
+> # 10. Distinguish Due from Coverage
+>
+> Required cases:
+>
+> ```text
+> relevant reason never represented
+> ```
+>
+> should remain:
+>
+> ```text
+> Legitimate Evolution YES
+> ```
+>
+> while:
+>
+> ```text
+> reason represented
+> local Due semantics activates q
+> q never enters answerability
+> ```
+>
+> should be:
+>
+> ```text
+> Legitimate Evolution NO
+> ```
+>
+> State the distinction formally.
+>
+> Coverage concerns:
+>
+> ```text
+> whether relevant world failures/reasons become represented
+> ```
+>
+> Due concerns:
+>
+> ```text
+> what the process's semantics says follows normatively from represented material.
+> ```
+>
+> Do not mix them.
+>
+> ---
+>
+> # 11. Do not gate Due-openings by normative `Permit`
+>
+> Preserve the key countermodel:
+>
+> ```text
+> unauthorized act occurs
+> normative standing change is rejected
+> fact of the act is represented
+> that fact makes complaint q due
+> ```
+>
+> Desired:
+>
+> ```text
+> normative effect: rejected
+> answerability opening: accepted
+> ```
+>
+> This should remain representable.
+>
+> Thus do not use:
+>
+> ```text
+> one Valid bit gates all effects.
+> ```
+>
+> ---
+>
+> # 12. Find the exact asymmetric local gates
+>
+> Current guess:
+>
+> ```text
+> normative standing effect:
+>     gated by Permit
+>
+> obligation opening:
+>     generated by Due
+>
+> obligation discharge/carry:
+>     gated by Resolve
+> ```
+>
+> Test whether these three are genuinely independent.
+>
+> Required examples:
+>
+> ```text
+> unauthorized action creates complaint
+> unauthorized attempted discharge fails
+> ordinary Response discharges without changing normative standing
+> normative amendment changes standing without opening or resolving anything
+> represented evidence opens an obligation without any NormEvent
+> ```
+>
+> If one joint `LegitStep` relation can represent these cleanly without losing useful factorization, report that.
+>
+> Otherwise retain three semantic projections.
+>
+> ---
+>
+> # 13. `Resolve` must read legitimate strict prestate
+>
+> We still need:
+>
+> ```text
+> an actor cannot use authority it just created to resolve an obligation
+> ```
+>
+> and:
+>
+> ```text
+> an unentitled actor cannot erase an obligation.
+> ```
+>
+> Require resolution semantics to be evaluated against the legitimate prestate:
+>
+> ```text
+> Resolve(L_t, O_t, represented history, event, q)
+> ```
+>
+> Test:
+>
+> ```text
+> self-authorize then discharge in same step
+> ```
+>
+> It should fail unless the old prestate already permits the resolution.
+>
+> ---
+>
+> # 14. Same-step Due and Resolve
+>
+> Test:
+>
+> ```text
+> an event reveals a problem and simultaneously provides a complete legitimate answer
+> ```
+>
+> Is it necessary for `q` to appear in an intermediate outstanding set?
+>
+> Compare:
+>
+> ```text
+> Due -> open q -> resolve q in same step
+> ```
+>
+> versus:
+>
+> ```text
+> Due claim gets an immediate resolution witness and never appears in O_{t+1}
+> ```
+>
+> Choose the cleaner semantics.
+>
+> The global theorem must still have a resolution derivation for that due claim.
+>
+> Do not let “same-step resolution” become a loophole for silently ignoring Due.
+>
+> ---
+>
+> # 15. Decide whether answerability identity is semantic or structural
+>
+> If a due claim is immediately resolved, it may still need a proof-relevant identity so the global theorem can say:
+>
+> ```text
+> this due claim was handled.
+> ```
+>
+> Ask whether the minimal object should be:
+>
+> ```text
+> Claim occurrence
+> ```
+>
+> minted by Due even when not live after the step.
+>
+> This may parallel `Admitted` versus `Live` on the entitlement side.
+>
+> Do not add identity unless the theorem actually needs it.
+>
+> ---
+>
+> # 16. Try an `Admitted obligation` / `Outstanding obligation` distinction
+>
+> Grounded Replay benefited from distinguishing:
+>
+> ```text
+> Admitted
+> Live
+> ```
+>
+> There may be an exact answerability analogue:
+>
+> ```text
+> Incurred_t
+> Outstanding_t
+> ```
+>
+> where:
+>
+> ```text
+> Incurred
+> ```
+>
+> records every obligation ever generated by Due,
+>
+> and:
+>
+> ```text
+> Outstanding
+> ```
+>
+> is those not yet legitimately resolved.
+>
+> This would make the global theorem naturally quantify over:
+>
+> ```text
+> every incurred obligation
+> ```
+>
+> rather than over whatever happens to be outstanding at some chosen start time.
+>
+> Test whether this substantially cleans up same-step resolution and Due-realization.
+>
+> ---
+>
+> # 17. Candidate local-to-global theorem
+>
+> Try to derive:
+>
+> ```text
+> For every due-generated obligation occurrence q incurred by time t,
+> there is a finite resolution derivation rooted at q whose leaves
+> are all either:
+>
+>     validly discharged occurrences
+>
+> or
+>
+>     obligations currently outstanding at t.
+> ```
+>
+> This is likely the answerability theorem Legitimate Evolution actually wants.
+>
+> Compare this with the older:
+>
+> ```text
+> every q outstanding at s ...
+> ```
+>
+> Decide which is more primitive and useful.
+>
+> ---
+>
+> # 18. Reassess the package after Due is added
+>
+> Candidate:
+>
+> ```text
+> LOCAL SEMANTICS
+>     Permit
+>     Due
+>     Resolve
+>
+> STRUCTURAL LAWS
+>     S1/S2
+>     D1 every newly-due claim is incurred
+>     A1 every outstanding removal has a Resolve witness
+>
+> GLOBAL
+>     Grounded Replay
+>     Answerability Resolution
+> ```
+>
+> Ask whether `D1` and `A1` are the only answerability-side premises.
+>
+> If yes, produce one countermodel for dropping each.
+>
+> Required:
+>
+> ```text
+> drop D1:
+> represented due claim is ignored
+> ```
+>
+> ```text
+> drop A1:
+> incurred/open claim disappears silently
+> ```
+>
+> These should fail for genuinely different reasons.
+>
+> ---
+>
+> # 19. Ask if D1 can be definitional
+>
+> Be suspicious.
+>
+> If the type of the model defines:
+>
+> ```text
+> incurred := all Due outputs
+> ```
+>
+> then:
+>
+> ```text
+> Due -> incurred
+> ```
+>
+> is no longer a premise; it becomes true by construction.
+>
+> That may be correct, or it may repeat the earlier mistake where A1 became unfalsifiable.
+>
+> Try to build:
+>
+> ```text
+> semantics says q is newly due
+> implementation fails to record q
+> ```
+>
+> If the model cannot represent this failure, D1 is hidden in the type.
+>
+> Decide whether Legitimate Evolution should treat Due-realization as:
+>
+> ```text
+> semantic definition
+> ```
+>
+> or:
+>
+> ```text
+> conformance premise at the realization boundary.
+> ```
+>
+> This distinction matters.
+>
+> ---
+>
+> # 20. Inspect RI now, carefully
+>
+> Actually inspect the current RI implementation/spec.
+>
+> Determine:
+>
+> ```text
+> what creates AnsRoot?
+> what `MINT` means exactly?
+> whether ReasonOcc can affect root creation
+> whether old reasons are re-evaluated after normative/context changes
+> what RI's existing `due()` predicate means
+> whether Response can settle a root without NormEvent
+> whether continuity_ok already works over incurred/history rather than only live roots
+> ```
+>
+> Do not infer from names.
+>
+> Quote exact types/transition rules in the round notes.
+>
+> ---
+>
+> # 21. Do not immediately add a reason-keyed MINT
+>
+> The tempting repair is:
+>
+> ```text
+> ReasonOcc -> Due -> AnsRoot
+> ```
+>
+> but old-reason-becomes-newly-due may refute “mint on reason arrival.”
+>
+> Compare:
+>
+> ```text
+> reason-keyed minting
+> ```
+>
+> ```text
+> due-activation step over the whole represented reason state
+> ```
+>
+> ```text
+> answerability projection derived after each replay step
+> ```
+>
+> Pick the smallest RI seam that can realize the abstract theorem.
+>
+> Do not add a fifth event kind.
+>
+> ---
+>
+> # 22. Re-check the philosophical boundary
+>
+> Required legitimate cases:
+>
+> ```text
+> radical value change
+> constitutional replacement
+> permitted persuasion
+> high regret
+> failure never observed
+> obligation left open forever
+> legitimate reassessment that reduces burden
+> ```
+>
+> Required illegitimate cases:
+>
+> ```text
+> ex-nihilo entitlement
+> represented Due claim ignored
+> silent obligation deletion
+> unauthorized discharge
+> transfer to empty frontier
+> one split branch silently lost
+> ```
+>
+> If the theorem does not separate these automatically, keep working.
+>
+> ---
+>
+> # 23. Keep quantitative liability downstream
+>
+> Do not put a weight in the generic theorem.
+>
+> Preserve:
+>
+> ```text
+> a successor may legitimately change substantive burden
+> ```
+>
+> because `Resolve` decides whether it genuinely carries the predecessor.
+>
+> Any later quantitative law should be:
+>
+> ```text
+> an extra semantic restriction / consumer theorem
+> ```
+>
+> not part of the structural Legitimate Evolution kernel.
+>
+> ---
+>
+> # 24. Final theorem target
+>
+> Aim for something approximately:
+>
+> ```text
+> LEGITIMATE EVOLUTION
+>
+> Given local semantics Permit, Due, Resolve and a finite represented history:
+>
+>   1. standing effects obey Grounded Replay's local premises;
+>
+>   2. every newly activated Due claim is incurred;
+>
+>   3. an outstanding claim can cease to be outstanding only through
+>      a locally legitimate Resolve judgment whose carried frontier is nonempty
+>      and lies in the next outstanding state;
+>
+> then for every finite t:
+>
+>   E. every live standing has finite legitimate ancestry to the accepted base;
+>
+>   A. every incurred answerability claim has a finite resolution derivation
+>      whose leaves are all validly discharged or currently outstanding.
+> ```
+>
+> Semantic consequence:
+>
+> ```text
+> the process can change substantive normative content arbitrarily,
+> but cannot manufacture entitlement, ignore a claim its represented reasons
+> newly make due, or erase such a claim without a legitimate resolution history.
+> ```
+>
+> Do not force this exact statement if the countermodels improve it.
+>
+> ---
+>
+> # 25. Decide the theorem/package status
+>
+> Explicitly answer:
+>
+> ```text
+> Is Legitimate Evolution now:
+>
+> A. one theorem;
+> B. two local-to-global theorems plus a Due-realization premise;
+> C. a named package of Grounded Replay + Answerability Resolution;
+> D. a semantic transition definition with two global corollaries;
+> E. something else?
+> ```
+>
+> Again, do not optimize for grandeur.
+>
+> ---
+>
+> # 26. Final compression
+>
+> End with:
+>
+> ```text
+> MINIMAL LEGITIMATE-EVOLUTION KERNEL
+> ```
+>
+> It must fit on one page.
+>
+> Include:
+>
+> * state;
+> * semantic primitives;
+> * exact Due notion;
+> * exact local premises;
+> * exact resolution witness object;
+> * exact theorem conclusions;
+> * one countermodel per non-definitional premise;
+> * whether D1 is structural or realization-level;
+> * exact asymmetric gating;
+> * exact RI realization;
+> * what remains outside: Coverage, Regret, quantitative liability, certification.
+>
+> Then give:
+>
+> ```text
+> WHITEBOARD VERSION
+> ```
+>
+> in no more than six lines.
+>
+> ---
+>
+> # 27. Verdict
+>
+> End with exactly one:
+>
+> ```text
+> LEGITIMATE-EVOLUTION-FROZEN
+> ```
+>
+> if the Due bridge and resolution law survive the hostile cases and the RI realization seam is clear.
+>
+> ```text
+> DUE-SEMANTICS-UNSTABLE
+> ```
+>
+> if persistent/newly-due/joint-reason cases prevent a clean semantic interface.
+>
+> ```text
+> DUE-REALIZATION-GAP
+> ```
+>
+> if the abstract theorem stabilizes but RI cannot yet realize it.
+>
+> ```text
+> ANSWERABILITY-RESOLUTION-UNSTABLE
+> ```
+>
+> if the corrected frontier/transfer semantics still fails.
+>
+> ```text
+> LEGITIMATE-EVOLUTION-DECOMPOSITION-LEAKY
+> ```
+>
+> if the theorem again starts importing Coverage, progress, regret, or substantive correctness.
+>
+> Do not write Lean regardless of verdict.
+>
+> ---
+>
+> The research standard is:
+>
+> > **Do not let “Due” mean “this reason remains eternally unresolved,” and do not let the answerability theorem merely preserve a docket someone handed it. Identify the exact moment a represented reason creates a new normative claim, ensure that claim enters the process, and then prove that arbitrary future evolution cannot lose any branch of what became owed except through a legitimate resolution.**
+
+This is the pass where I’d especially want the agent to attack whether `D1` is actually a theorem premise or a realization/conformance condition. That feels like the same class of mistake the earlier rounds repeatedly caught: a morally important sentence can live at a very different layer from the mathematical induction.

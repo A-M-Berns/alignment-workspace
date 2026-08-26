@@ -295,7 +295,50 @@ Not a coverage failure -- the reason is represented. Not regret. The repair is
 `D1`, one inclusion at one position, and it is the clause that makes the package
 say something about evolution rather than about bookkeeping.
 
-## 16. What remains open
+## 16. The carry law refused legitimate consolidation
+
+`O_0 = {q:minor, q:major}`, and one event carries `q:minor` into `q:major`. The
+derivation is correct -- carried, then open -- and the premise refused it, because
+it required successors to be freshly opened by the transferring event.
+
+The repaired law asks for what the induction actually uses: the successor set is
+non-empty and lies in `O_{t+1}`. Freshness is now consulted nowhere. The repair
+also absorbs a protection that previously needed separate reasoning: carrying into
+a claim the same event discharges is refused, since that successor is not
+outstanding after the step.
+
+## 17. A persistent `Due` makes answering illegitimate
+
+Open a claim, answer it, and leave its reasons represented. On a persistent
+predicate the claim is activated again at every later position, so the legitimate
+discharge is a violation and the claim can never be closed. Run against the model,
+`D1` fires at the discharge.
+
+The obvious repair -- activate on the reason's arrival -- is refused by a second
+countermodel: material represented at `t=0` that only a later normative state
+makes owed never activates at all. What survives is an activation generator over
+the whole represented state, with newness decided against what is already
+incurred. This also refutes the *previous pass's own recommendation* for the RI
+seam, which was a minting trigger keyed on reason occurrences.
+
+## 18. A premise that was not a premise
+
+`recognized_due_but_never_entered`: impeccable entitlement, no removals at all, a
+represented reason the semantics activates, and nothing taken on. `A1` is clean,
+the theorem is clean, no-silent-loss is clean, and the process has ignored what it
+recognized as owed.
+
+The previous pass shipped `D1` as a structural premise. The induction never
+consults it. Dropping it does not break the proof; it shrinks the set the
+conclusion quantifies over, and a process can exploit exactly that gap. `D1` is a
+conformance condition at the realization boundary.
+
+This is a different failure from the ones above and worth naming as its own kind.
+The earlier entries in this document are statements that were false or premises
+that could not fail. This is a true and necessary statement sitting one layer away
+from where it was written. Nothing tested wrong; the shape of the claim was wrong.
+
+## 19. What remains open
 
 **Provenance completeness.** The round tried to state it non-circularly and
 failed. It is not "assume the relevant influences are visible", not "refuse every
@@ -311,22 +354,30 @@ theorem here.
 is nearly vacuous on a record. That is a gap the abstraction exposed and this pass
 deliberately did not repair.
 
-**`Due` has no realizer**, and this is now checked rather than read off an
-intended correspondence. `History.roots(t)` is the seed roots extended by
-`mint(a)` over `norm_events(t)`, and `mint` is typed on `NormEvent`; `ReasonOcc`
-appears only in derivation leaves and as a `Reason` step's payload, and nothing
-consults it. RI's `History.due(q, t)` is a different predicate -- it asks whether
-a live root's episode is being succeeded. Since D1 is now a premise, this is a
-premise the architecture cannot discharge. The smallest seam is a minting trigger
-keyed on reason occurrences; `Reason` already exists, so no new event kind is
-needed.
+**`Due` has no realizer**, and this pass narrowed the seam and refuted the
+previous pass's proposal for it. Quoting `ri_core.py`: `roots(t)` is
+`seed.roots0` extended by `mint(a)` over `norm_events(t)`; `mint` is typed on
+`NormEvent`; `ReasonOcc` occurs only in `Derivation.leaves` and as the payload of
+a `Reason` step, and `roots` reads neither. RI's `due(q,t)` is
+`live(q,t) and any(disposes(a,q) ...)`, meaning *this live root's episode is being
+succeeded* -- a different predicate wearing the same name.
+
+What RI does already have is three of the four pieces. `roots` never removes, so
+`roots` against `live` is the incurred/outstanding split. `Respond` is its own
+history step and `closed` runs the demand over responses, so resolution is
+already independent of the norm channel. And `continuity_ok` recurses over
+successors with a leaf condition of live-and-not-due.
+
+The missing piece is an activation step over the represented state, evaluated
+after each replay step against what is already incurred. Not a reason-keyed mint,
+which §17 refutes, and not a fifth event kind.
 
 Worth recording in the other direction: RI's `continuity_ok` already recurses over
 successors with a leaf condition of live-and-not-due, which is the corrected
 frontier statement. The architecture had the right shape and the abstraction
 shipped the wrong one.
 
-## 17. What no entry above claims
+## 20. What no entry above claims
 
 That the theorem is deep. It is an induction over a list; two of its three
 corollaries are two lines. What it earns is that three successive formulations of

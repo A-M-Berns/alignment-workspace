@@ -129,6 +129,9 @@ Unchanged. Deference needs *current* authority and a grounding tree certifies
 origin, so the current-state certificate is still missing and this pass did no
 work on it.
 
-Not obtained, and worth saying plainly: D1 is a premise, and Reflective Integrity
-cannot discharge it. A deference consumer reading an RI record gets the continuity
-half and not the realization half.
+Not obtained, and worth saying plainly: `D1` is a **conformance condition at the
+realization boundary**, and Reflective Integrity cannot supply it. A deference
+consumer reading an RI record gets the resolution theorem and not the
+recognized-is-taken-on half — and because `D1` is not a premise, nothing about
+the record's structure signals that the half is missing. That is the practical
+cost of the layer distinction, and the reason it is worth stating.

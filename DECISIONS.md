@@ -1942,3 +1942,42 @@ Agent-decided. They were two names for the two answers one function gives: done,
 or carry to these successors. The semantic interface is now `Permit`, `Due`,
 `Resolve`. The formally smallest encoding — a single joint step relation — was
 rejected because it collapses the distinctions the three consumers each need.
+
+### 2026-08-26 — `D1` is a conformance condition, not a structural premise
+
+Agent-decided, under `AGENTS.md` §6, and it corrects the previous pass. The
+answerability induction never consults `D1`; a process with impeccable
+entitlement and no removals at all satisfies A1, the theorem and no-silent-loss
+while never taking on a claim its own semantics activated. `D1` does not make the
+proof work, it makes the conclusion quantify over the right set. It is checked
+separately, reported separately, and the package is the composition. The
+distinction is not cosmetic: a structural premise is discharged by construction,
+a conformance condition has to be checked against an implementation and can fail
+there while every theorem still holds.
+
+### 2026-08-26 — `Due` is an activation generator over the represented state
+
+Agent-decided. Not a predicate on a reason occurrence: a persistent predicate
+makes answering an answerable claim illegitimate, because the reasons stay
+represented and keep reactivating it, and activating on a reason's arrival misses
+material that only a later normative state makes owed. `Due` returns claim keys;
+newly due is what it returns minus what is already incurred; the structure mints
+the occurrence. This supersedes the previous pass's recommendation of a
+reason-keyed minting seam for Reflective Integrity.
+
+### 2026-08-26 — incurred and outstanding are separate sets
+
+Agent-decided. The answerability analogue of `Admitted` and `Live`. The theorem
+quantifies over incurred, so a claim incurred and resolved by one event is still
+something it speaks about, and same-step resolution needs no bureaucratic delay.
+This reverses the previous pass's decision that immediate resolution should be
+inexpressible: the protection that decision was reaching for comes from `Resolve`
+reading the strict pre-state, not from the order of unions.
+
+### 2026-08-26 — carried successors need not be fresh
+
+Agent-decided. The carry law is that the successor set is non-empty and lies in
+the next outstanding state. Requiring freshness refused ordinary consolidation
+into a claim already outstanding, which the derivation handles correctly. The
+relaxed law also absorbs the strict-pre-state protection on the resolution side,
+since a successor the same event discharges is not outstanding after the step.

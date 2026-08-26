@@ -1219,44 +1219,48 @@ exceeds any allowance attachable at issuance, or the bound holds on it.
 
 ---
 
-### 71. A minting site on reasons — **[open]** — *now a premise the architecture cannot discharge*
+### 71. A due-activation step over the represented state — **[open]** — *the seam is now known*
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-**Upgraded from a reading to a checked gap, and from optional to blocking.** The
-answerability side now carries a structural premise `D1`: what the process's own
-semantics says is owed at `t` is outstanding at `t+1`. Without it a process with
-impeccable entitlement, no removals at all, and a represented reason it itself
-recognizes as owed an answer, satisfies everything and enters nothing.
+**Narrowed twice, and the obvious repair is refuted.** Legitimate Evolution needs
+a condition `D1`: what the process's own semantics newly makes due must be taken
+on. It sits at the **realization boundary** rather than among the structural
+premises — the answerability induction never uses it — which is precisely why it
+has to be checked against an implementation and can fail there.
 
-Reflective Integrity cannot discharge D1. Checked against
-`rounds/2026-08-24-reflective-integrity-core/src/ri_core.py`: `History.roots(t)`
-is the seed roots extended by `mint(a)` over `norm_events(t)`, and `mint` is typed
-on `NormEvent`. `ReasonOcc` appears in `Derivation.leaves` and as the payload of a
-`Reason` history step, and `roots` consults neither. There is no path from a
-represented reason to an answerability root.
+Reflective Integrity cannot currently supply it, and already has three of the four
+pieces. Quoting `rounds/2026-08-24-reflective-integrity-core/src/ri_core.py`:
 
-Two further findings from the same reading. RI's `History.due(q, t)` is a
-**different predicate** — it asks whether a live root's episode is being succeeded
-— so the name is taken and means something else. And RI's `continuity_ok` already
-recurses over successors with a leaf condition of live-and-not-due, which is
-exactly the corrected frontier statement the abstraction had wrong until this
-pass: the architecture had the right shape and the abstraction did not.
+- `roots(t)` is `seed.roots0` extended by `mint(a)` over `norm_events(t)`, and
+  never removes — so `roots` against `live` **is** the incurred/outstanding split.
+- `Respond` is its own history step and `closed(q,t)` runs the root's demand over
+  its responses — so **resolution is already independent of the norm channel**.
+- `continuity_ok` recurses over successors with a leaf condition of
+  live-and-not-due — the right shape for the resolution frontier.
+- `mint` is typed on `NormEvent`. `ReasonOcc` occurs only in `Derivation.leaves`
+  and as the payload of a `Reason` step, and `roots` reads neither. **There is no
+  activation path.**
 
-The seam is small and needs **no new event kind**, since `Reason` already exists:
-`roots()` must consult represented reasons under a semantic predicate the way it
-consults norm events.
+Note the name collision: RI's `due(q,t)` is
+`live(q,t) and any(disposes(a,q) for a in norm_events(t))`, meaning *this live
+root's episode is being succeeded*. It is a different predicate.
 
-*Deliverable shape:* a minting trigger keyed on reason occurrences, with the
-conditions under which a represented reason opens a root; or the finding that D1
-must be discharged outside RI, with what that costs a consumer.
-*Acceptance check:* an RI record in which two histories differ only in a
-represented reason and the outstanding sets they induce differ, derived rather
-than stipulated.
+**The previous pass's proposal is withdrawn.** A minting trigger keyed on reason
+occurrences cannot see material represented at `t=0` that a normative change at
+`t=5` makes owed, and that case is legitimate. The seam is a **due-activation
+step evaluated over the whole represented state after each replay step**, diffed
+against what is already incurred. A derived projection, not a fifth event kind.
+
+*Deliverable shape:* the activation step with the conditions under which
+represented material activates a claim key, and the diff against incurred; or the
+finding that activation must live outside RI, with what that costs a consumer.
+*Acceptance check:* an RI record in which no step is appended between two states
+and a claim nevertheless activates, because the normative context changed — plus
+its negative, a resolved claim whose material stays represented and which does not
+reactivate.
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/ANSWERABILITY.md`
-§§4, 8; `PROPER_EXERCISE.md`'s kernel section for the parallel gap on
-jurisdiction, which has the same shape — a semantic input with no representable
-realizer.
+§§4, 9; `COUNTERMODELS.md` §§17-18.
 *Consumed by:* item 69, which needs an allowance minted with the obligation; and
 by deference, which wants the recognized-and-entered guarantee.
 

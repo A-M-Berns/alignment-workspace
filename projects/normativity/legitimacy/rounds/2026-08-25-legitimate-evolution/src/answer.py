@@ -1,38 +1,43 @@
-"""Answerability: required entry, controlled resolution.
+"""Answerability: what becomes owed, and how it may stop being owed.
 
-Grounded Replay controls **creation of standing**: nothing acquires normative
-standing without licensed ancestry. This module controls the obligation side, and
-after this pass it controls *two* things rather than one:
-
-```text
-D1  what the process's own semantics makes due must enter the outstanding set
-A1  what is outstanding leaves it only by a declared discharge or a declared
-    succession
-```
-
-The previous pass had only the second, and called the pair a duality. It is not
-one, and `ANSWERABILITY.md` §6 says so: entitlement is controlled creation,
-answerability is *required* creation plus controlled resolution.
+Two sets, not one, and the distinction is the entitlement side's `Admitted` /
+`Live` in another costume:
 
 ```text
-O_0     = the base obligations
-O_{t+1} = (O_t \\ (disch_t u moved_t)) u opens_t     if Valid(L_t, e_t)
-        = O_t u opens_t                              otherwise
+Incurred_t     every claim the process has ever taken on
+Outstanding_t  those not yet resolved
 ```
 
-**The fold is gated asymmetrically, and that is the correction this pass makes.**
-Removing an obligation is an exercise of authority and needs entitlement.
-Acquiring one is not: a process becomes answerable for what happened, including
-for an act it refused. An unauthorized act discharges nothing and may still open
-a complaint about itself.
+The theorem quantifies over **incurred**. Quantifying over what happens to be
+outstanding at a chosen start time was the previous version's shape, and it cannot
+say anything at all about a claim incurred and resolved between two observations.
 
 ```text
-Due       which represented reasons the semantics says are owed an answer
-Resolve   which acts discharge an obligation, and which carry it to successors
+I_{t+1} = I_t u opens_t
+O_{t+1} = (O_t u opens_t) \\ (disch_t u moved_t)      if Valid(L_t, e_t)
+        = O_t u opens_t                                otherwise
 ```
 
-Two parameters, not four. `Disposes` and `Transfers` were two names for the two
-answers `Resolve` can give, and are folded together.
+Openings are ungated and removals are gated: a process is answerable for what
+happened, including for an act it refused, and removing a claim is an exercise of
+authority. Openings are unioned **before** the removals, so a claim may be
+incurred and resolved by one event without ever being outstanding -- see
+`ANSWERABILITY.md` §5.
+
+```text
+Due      the represented material, read against the strict pre-state, activates
+         these claim keys.  Newly due = activated and not already incurred.
+Resolve  done, or carry(S).
+```
+
+Two semantic parameters. `Due` is an **activation generator** over the whole
+represented state, not a predicate on a reason occurrence: a claim key already
+incurred is not newly due however long its reasons stay represented, which is what
+stops a resolved claim from reopening forever.
+
+**One structural premise, A1.** `D1` is a conformance condition at the
+realization boundary and is not used by the induction; `ANSWERABILITY.md` §7 is
+the argument, and it corrects the previous pass, which shipped it as a premise.
 """
 from __future__ import annotations
 
@@ -46,11 +51,18 @@ BASE = rp.BASE
 
 OPEN = "open"
 DISCHARGED = "discharged"
+CARRIED = "carried"
 
 
 @dataclass(frozen=True)
 class Ob:
-    """An obligation occurrence: this issue, become outstanding at this act."""
+    """A claim occurrence: this claim, incurred at this position.
+
+    Minted whether or not the claim survives the step, so the theorem can say
+    *this claim was handled* about one incurred and resolved at once. The
+    entitlement side needed the same move to talk about an occurrence that was
+    admitted and later disposed of.
+    """
 
     pos: int
     slot: int
@@ -61,25 +73,25 @@ class Ob:
 
 @dataclass(frozen=True)
 class Duties:
-    """What each edit does to the outstanding set, as the semantics declares it.
+    """What each event does to the answerability state, as the semantics says.
 
     ```text
-    opens[t]       obligations the event at t makes outstanding
-    discharges[t]  outstanding obligations it disposes of
-    transfers[t]   {old: successors}, the successors being among opens[t]
-    due[t]         what the semantics says is owed, given what is represented
+    opens[t]       claims incurred at t
+    discharges[t]  claims Resolve judged done
+    transfers[t]   {q: S}, Resolve judged carry(S)
+    drops[t]       removed by neither route -- the A1 bait
+    due[t]         claim keys Due activates at t, before newness is applied
+    key[q]         which claim key an occurrence realizes
     ```
-
-    `Due` and `Resolve` have already been consulted by the time this is read;
-    this module never re-decides them.
     """
 
     base: frozenset
-    opens: Mapping                     # position -> frozenset[Ob]
-    discharges: Mapping                # position -> frozenset[Ob]
-    transfers: Mapping                 # position -> {Ob: frozenset[Ob]}
-    drops: Mapping = field(default_factory=dict)   # removed by neither route
-    due: Mapping = field(default_factory=dict)     # position -> frozenset[Ob]
+    opens: Mapping
+    discharges: Mapping
+    transfers: Mapping
+    drops: Mapping = field(default_factory=dict)
+    due: Mapping = field(default_factory=dict)
+    key: Mapping = field(default_factory=dict)
 
     def opened(self, t: int) -> frozenset:
         return self.opens.get(t, frozenset())
@@ -94,33 +106,36 @@ class Duties:
         return self.transfers.get(t, {}).get(q, frozenset())
 
     def dropped(self, t: int) -> frozenset:
-        """Removals the semantics declared neither a discharge nor a transfer.
-
-        A well-formed process has none. The channel exists so that **A1** is a
-        premise that can fail rather than a fact about the type.
-        """
         return self.drops.get(t, frozenset())
 
-    def owed(self, t: int) -> frozenset:
-        """What `Due` says is owed at `t`, given everything represented by then.
-
-        Indexed by position rather than attached to a reason, because a reason
-        represented at `u` can become owed later as the normative state changes.
-        """
+    def activated(self, t: int) -> frozenset:
+        """Claim keys `Due` activates at `t`. Not yet filtered for newness."""
         return self.due.get(t, frozenset())
+
+    def key_of(self, q: Ob):
+        return self.key.get(q, q)
 
 
 def step(d: Duties, out: frozenset, t: int, accepted: bool) -> frozenset:
-    """One step of the obligation fold, gated asymmetrically.
+    """One step of the outstanding fold.
 
-    Openings apply whether or not the edit was accepted; removals do not.
-    Openings are unioned **last**, so an obligation opened and discharged by one
-    event is still outstanding afterwards — an event cannot use an obligation it
-    creates to certify that it has already dealt with it.
+    Openings are applied **first**, so an event may incur and resolve a claim in
+    one step. What stops that from being a loophole is not the union order but
+    that `Resolve` reads the strict pre-state: `ANSWERABILITY.md` §6.
     """
+    grown = out | d.opened(t)
     if not accepted:
-        return out | d.opened(t)
-    return (out - d.discharged(t) - d.moved(t) - d.dropped(t)) | d.opened(t)
+        return grown
+    return grown - d.discharged(t) - d.moved(t) - d.dropped(t)
+
+
+def incurred(f: rp.Frame, d: Duties, upto: Optional[int] = None) -> frozenset:
+    """`I_t`. Ungated: a claim incurred at a refused event is still incurred."""
+    upto = len(f.trace) if upto is None else upto
+    out = set(d.base)
+    for t in range(upto):
+        out |= d.opened(t)
+    return frozenset(out)
 
 
 def outstanding(f: rp.Frame, d: Duties, upto: Optional[int] = None) -> frozenset:
@@ -132,127 +147,112 @@ def outstanding(f: rp.Frame, d: Duties, upto: Optional[int] = None) -> frozenset
     return out
 
 
-def ever_open(f: rp.Frame, d: Duties, upto: Optional[int] = None) -> frozenset:
-    upto = len(f.trace) if upto is None else upto
-    out = set(d.base)
-    for t in range(upto):
-        out |= d.opened(t)
-    return frozenset(out)
+def newly_due(d: Duties, t: int) -> frozenset:
+    """Claim keys `Due` activates at `t` that no earlier claim already realizes.
+
+    *Already incurred is not newly due.* Without this, a claim whose reasons stay
+    represented is re-activated at every later position and can never be
+    legitimately resolved -- `ANSWERABILITY.md` §4 builds that countermodel.
+    """
+    before = {d.key_of(q) for q in d.base}
+    for u in range(t):
+        before |= {d.key_of(q) for q in d.opened(u)}
+    return frozenset(d.activated(t) - before)
 
 
-# ------------------------------------------------------ structural premises
+# ---------------------------------------------------- the structural premise
 
 
-def d1_due_realization(f: rp.Frame, d: Duties) -> tuple:
-    """**D1.** What the semantics says is owed at `t` is outstanding after `t`.
+def a1_controlled_resolution(f: rp.Frame, d: Duties) -> tuple:
+    """**A1.** An accepted event removes an outstanding claim only by a `Resolve`
+    judgment: `done`, or `carry(S)` with `S` non-empty and `S subset O_{t+1}`.
 
-    *A recognized reason cannot be left out of the answerability dynamics.* Not a
-    coverage requirement: `Due` speaks only about what is already represented, so
-    a process that notices nothing owes nothing and satisfies this vacuously. Not
-    a progress requirement either: it forces an obligation to be **entered**, and
-    says nothing about its ever being closed.
+    *Nothing stops being owed without a resolution witness.* `S` is **not**
+    required to be fresh. Carrying a claim into one already outstanding is
+    ordinary consolidation, and the previous version's fresh-successor clause
+    refused it while the derivation handled it correctly.
 
-    The obligation may already have been outstanding; D1 asks only that it be
-    outstanding at `t+1`, which is what rules out both never entering it and
-    entering and closing it in the same breath.
+    A rejected event removes nothing, which is structural rather than a clause:
+    `step` does not consult its disposals.
     """
     bad, out = [], d.base
     acc = set(rp.accepted(f))
     for t in range(len(f.trace)):
         after = step(d, out, t, t in acc)
-        for q in sorted(d.owed(t) - after, key=str):
-            bad.append(("recognized as due and not outstanding", t, q))
+        if t in acc:
+            grown = out | d.opened(t)
+            for q in sorted(grown - after, key=str):
+                if q not in d.discharged(t) and q not in d.moved(t):
+                    bad.append(("vanished", t, q))
+            for q in sorted(d.moved(t), key=str):
+                if q not in grown:
+                    bad.append(("carried what was not outstanding", t, q))
+                succ = d.successors(t, q)
+                if not succ:
+                    bad.append(("carried to nothing", t, q))
+                elif succ - after:
+                    bad.append(("successor not outstanding after the step", t, q,
+                                tuple(sorted(succ - after, key=str))))
+            for q in sorted(d.discharged(t), key=str):
+                if q not in grown:
+                    bad.append(("discharged what was not outstanding", t, q))
+            for q in sorted(d.dropped(t) & grown, key=str):
+                bad.append(("removed with no resolution", t, q))
         out = after
     return tuple(bad)
 
 
-def a1_controlled_resolution(f: rp.Frame, d: Duties) -> tuple:
-    """**A1.** An accepted edit removes an outstanding obligation only by
-    discharging it or by transferring it, and every successor it names is one it
-    opens.
-
-    *Nothing stops being owed by accident.* A rejected edit removes nothing at
-    all, which is now structural rather than a clause: `step` does not consult
-    its disposals.
-    """
-    bad, out = [], d.base
-    acc = set(rp.accepted(f))
-    for t in range(len(f.trace)):
-        if t in acc:
-            gone = out - step(d, out, t, True)
-            for q in sorted(gone, key=str):
-                if q not in d.discharged(t) and q not in d.moved(t):
-                    bad.append(("vanished", t, q))
-            for q in sorted(d.moved(t), key=str):
-                if q not in out:
-                    bad.append(("transferred what was not open", t, q))
-                missing = d.successors(t, q) - d.opened(t)
-                if missing:
-                    bad.append(("successor not opened", t, q,
-                                tuple(sorted(missing, key=str))))
-                if not d.successors(t, q):
-                    bad.append(("transferred to nothing", t, q))
-            for q in sorted(d.discharged(t), key=str):
-                if q not in out:
-                    bad.append(("discharged what was not open", t, q))
-            for q in sorted(d.dropped(t) & out, key=str):
-                bad.append(("removed with no declared route", t, q))
-        out = step(d, out, t, t in acc)
-    return tuple(bad)
-
-
-def fresh_by_construction(f: rp.Frame, d: Duties) -> tuple:
-    """Obligation occurrences are born once, because `Ob(pos, slot)` says so.
-
-    The previous pass shipped this as a premise **A2** and used it to argue that
-    transfer chains terminate. It is not needed for that and it is not needed for
-    anything else: see `ANSWERABILITY.md` §3. It is retained as a hygiene check on
-    the *encoding*, so a `Duties` built by hand cannot claim an event opened
-    something at another event's position.
-    """
-    seen, bad = set(d.base), []
-    for t in range(len(f.trace)):
-        for q in sorted(d.opened(t), key=str):
-            if q.pos != t:
-                bad.append(("mis-positioned", t, q))
-            if q in seen:
-                bad.append(("reopened", t, q))
-            seen.add(q)
-    return tuple(bad)
-
-
-PREMISES = (("D1", d1_due_realization), ("A1", a1_controlled_resolution))
-
-HYGIENE = (("fresh", fresh_by_construction),)
+PREMISES = (("A1", a1_controlled_resolution),)
 
 
 def violations(f: rp.Frame, d: Duties) -> dict:
     return {n: c(f, d) for n, c in PREMISES if c(f, d)}
 
 
+# --------------------------------------------- the realization-boundary check
+
+
+def d1_due_realization(f: rp.Frame, d: Duties) -> tuple:
+    """**D1.** Every newly due claim key is realized by a claim incurred there.
+
+    **Not a premise of the theorem below**, which never consults it. It is a
+    conformance condition relating the semantics to what the process recorded.
+    Dropping it does not make the induction fail; it makes the conclusion
+    quantify over a smaller set, which is exactly how a process can satisfy
+    everything structural and still ignore what it has recognized as owed.
+
+    Kept in the package because Legitimate Evolution is the *composition*, and
+    `ANSWERABILITY.md` §7 argues that is the honest layering.
+    """
+    bad = []
+    for t in range(len(f.trace)):
+        realized = {d.key_of(q) for q in d.opened(t)}
+        for k in sorted(newly_due(d, t) - realized, key=str):
+            bad.append(("activated and not incurred", t, k))
+    return tuple(bad)
+
+
+CONFORMANCE = (("D1", d1_due_realization),)
+
+
+def nonconformance(f: rp.Frame, d: Duties) -> dict:
+    return {n: c(f, d) for n, c in CONFORMANCE if c(f, d)}
+
+
 # ------------------------------------------------------------- the theorem
 
 
 def resolution(f: rp.Frame, d: Duties, q: Ob, s: int,
-               t: Optional[int] = None) -> dict:
-    """The finite resolution derivation of `q` between `s` and `t`.
+               t: Optional[int] = None) -> Optional[dict]:
+    """The finite resolution derivation of `q` over `[s, t)`.
 
-    A node is `{"ob", "at", "verdict", "children"}`. The verdict is `OPEN` at a
-    leaf still outstanding at `t`, `DISCHARGED` at a leaf an accepted edit
-    disposed of, and `"carried"` at an internal node whose children are the
-    successors an accepted edit named.
+    Leaves are `OPEN` or `DISCHARGED`; internal nodes are `CARRIED`. Returns
+    `None` when no derivation exists -- `q` left by neither route, or was carried
+    to nothing -- so a broken process is reported rather than silently resolved.
 
-    Unfolds to a **tree** even though succession is in general a DAG: a split
-    whose branches later transfer into one obligation gives that obligation two
-    distinct leaves here. The unfolding is finite because each child starts at a
-    strictly later trace position, so depth is bounded by `t - s`, and because
-    every node has finitely many successors.
-
-    Returns `None` for the cases the premises exclude: `q` left the outstanding
-    set by neither route, or was carried to no successor at all. The second is
-    why the conclusion asks for a **non-empty** frontier -- a node with no
-    children is laundering wearing a derivation's shape, and an empty frontier
-    would satisfy "every leaf is open or discharged" vacuously.
+    Finite because each child begins at a strictly later position and positions
+    are bounded by `t`. Nothing about occurrence identity is used, which is why
+    the previous pass's freshness premise was inert.
     """
     t = len(f.trace) if t is None else t
     acc = set(rp.accepted(f, t))
@@ -264,11 +264,11 @@ def resolution(f: rp.Frame, d: Duties, q: Ob, s: int,
         if q in d.moved(u):
             succ = sorted(d.successors(u, q), key=str)
             if not succ:
-                return None            # carried to nothing is not a resolution
+                return None
             kids = tuple(resolution(f, d, x, u + 1, t) for x in succ)
             if any(k is None for k in kids):
                 return None
-            return {"ob": q, "at": u, "verdict": "carried", "children": kids}
+            return {"ob": q, "at": u, "verdict": CARRIED, "children": kids}
         if q in d.dropped(u):
             return None
     if q in outstanding(f, d, t):
@@ -277,7 +277,6 @@ def resolution(f: rp.Frame, d: Duties, q: Ob, s: int,
 
 
 def frontier(node) -> tuple:
-    """The leaves of a resolution derivation, in order."""
     if node is None:
         return ()
     if not node["children"]:
@@ -285,73 +284,66 @@ def frontier(node) -> tuple:
     return tuple(x for k in node["children"] for x in frontier(k))
 
 
-def thm_answerability_continuity(f: rp.Frame, d: Duties) -> tuple:
-    """**Answerability Continuity.** Under **A1**, every obligation outstanding at
-    `s` has, at every later `t`, a finite resolution derivation whose frontier is
-    non-empty and consists only of obligations still outstanding at `t` and
-    obligations an accepted edit discharged before `t`.
+def born(q: Ob) -> int:
+    return 0 if q.pos == BASE else q.pos
 
-    *Proof.* Induction on `t - s`. If no accepted edit in `[s,t)` discharges,
-    transfers or drops `q`, then by **A1** nothing removes it, so `q` is
-    outstanding at `t` and the derivation is a leaf. Otherwise take the first such
-    edit at `u`. A drop is excluded by **A1**. A discharge gives a leaf. A
-    transfer gives children, each a successor that **A1** requires the same edit to
-    open, hence outstanding at `u+1`, each with a derivation over the strictly
-    shorter interval `[u+1, t)`; **A1** also forbids transferring to no successor,
-    so the node has at least one child and the frontier stays non-empty. Finite
-    branching and bounded depth make the tree finite. ∎
 
-    **A2 is not used.** Termination comes from the interval shrinking, which the
-    trace being a list already supplies; freshness of opened obligations is not
-    consulted anywhere in the argument.
+def thm_answerability_resolution(f: rp.Frame, d: Duties) -> tuple:
+    """**Answerability Resolution.** Under **A1**, every claim incurred by `t` has
+    a finite resolution derivation rooted at it whose frontier is non-empty and
+    every branch of which is either a claim outstanding at `t` or a claim an
+    accepted event discharged before `t`.
 
-    Returns the `(q, s, t)` triples with no derivation.
+    *Proof.* Induction on `t - s`. If no accepted event in `[s,t)` resolves `q`
+    then by **A1** nothing removes it, so `q` is outstanding at `t` and the
+    derivation is a leaf. Otherwise take the first that does. `done` gives a
+    discharged leaf. `carry(S)` gives children: **A1** makes `S` non-empty and
+    puts every member in `O_{u+1}`, so each child is a claim outstanding at a
+    strictly later position with a derivation over the shorter interval. Finite
+    branching, bounded depth. ∎
+
+    **Every branch is accounted for.** There is no surviving-descendant escape: a
+    split one of whose branches is silently lost has no derivation, because the
+    lost branch's own subderivation is `None`.
+
+    Returns the `(q, t)` pairs with no derivation.
     """
     bad = []
-    for s in range(len(f.trace) + 1):
-        for q in sorted(outstanding(f, d, s), key=str):
-            for t in range(s + 1, len(f.trace) + 1):
-                if resolution(f, d, q, s, t) is None:
-                    bad.append((q, s, t))
-                    break
-    return tuple(bad)
-
-
-def cor_no_silent_loss(f: rp.Frame, d: Duties) -> tuple:
-    """**Corollary.** Every obligation ever outstanding has, at the end, a
-    resolution derivation: nothing leaves the outstanding set unaccounted for."""
-    end = len(f.trace)
-    bad = []
-    for q in sorted(ever_open(f, d), key=str):
-        s = 0 if q.pos == BASE else q.pos + 1
-        if resolution(f, d, q, s, end) is None:
-            bad.append(q)
-    return tuple(bad)
-
-
-def cor_recognized_is_entered(f: rp.Frame, d: Duties) -> tuple:
-    """**Corollary.** Every obligation the semantics ever made due has a
-    resolution derivation from the position at which it became due.
-
-    D1 plus the theorem. This is the clause the previous package lacked: without
-    D1 a process satisfying everything else can recognize a reason as owing an
-    answer and never enter it, and nothing in the obligation dynamics notices,
-    because the dynamics only ever constrained departures.
-    """
-    end = len(f.trace)
-    bad = []
-    for t in range(len(f.trace)):
-        for q in sorted(d.owed(t), key=str):
-            if resolution(f, d, q, t + 1, end) is None:
+    for t in range(len(f.trace) + 1):
+        for q in sorted(incurred(f, d, t), key=str):
+            if resolution(f, d, q, born(q), t) is None:
                 bad.append((q, t))
     return tuple(bad)
 
 
-# ------------------------------------------------------------ the coupling
+def cor_no_silent_loss(f: rp.Frame, d: Duties) -> tuple:
+    end = len(f.trace)
+    return tuple(q for q in sorted(incurred(f, d), key=str)
+                 if resolution(f, d, q, born(q), end) is None)
+
+
+def cor_recognized_is_resolved(f: rp.Frame, d: Duties) -> tuple:
+    """**Legitimate Evolution, answerability half.** D1 composed with the theorem:
+    every claim the semantics newly made due has a resolution derivation.
+
+    Returns the newly-due keys with no such derivation -- whether because the
+    process never incurred them, or because what it incurred was lost.
+    """
+    end = len(f.trace)
+    bad = []
+    for t in range(len(f.trace)):
+        realized = {d.key_of(q): q for q in d.opened(t)}
+        for k in sorted(newly_due(d, t), key=str):
+            q = realized.get(k)
+            if q is None or resolution(f, d, q, born(q), end) is None:
+                bad.append((k, t))
+    return tuple(bad)
+
+
+# ------------------------------------------------------------ the gating
 
 
 def ungated(d: Duties, trace_len: int, upto: Optional[int] = None) -> frozenset:
-    """The outstanding set if every edit's disposals took effect, entitled or not."""
     upto = trace_len if upto is None else upto
     out = d.base
     for t in range(upto):
@@ -360,27 +352,15 @@ def ungated(d: Duties, trace_len: int, upto: Optional[int] = None) -> frozenset:
 
 
 def cor_discharge_requires_entitlement(f: rp.Frame, d: Duties) -> frozenset:
-    """**Coupling, one direction.** An act the process was not entitled to perform
-    discharges nothing.
-
-    Returns what an ungated fold would have lost.
-    """
+    """An event the process was not entitled to perform resolves nothing."""
     return outstanding(f, d) - ungated(d, len(f.trace))
 
 
 def cor_opening_needs_no_entitlement(f: rp.Frame, d: Duties) -> frozenset:
-    """**Coupling, the other direction.** An obligation may open at an edit the
-    process refused.
-
-    Returns the obligations outstanding at the end that a **rejected** edit
-    opened. Non-empty exactly when the process became answerable for something it
-    declined to do — which is the case the previous pass's shared gate could not
-    represent at all.
-    """
+    """A claim may be incurred at an event the process refused."""
     acc = set(rp.accepted(f))
-    from_rejected = frozenset(
-        q for t in range(len(f.trace)) if t not in acc for q in d.opened(t))
-    return from_rejected & outstanding(f, d)
+    return frozenset(q for t in range(len(f.trace)) if t not in acc
+                     for q in d.opened(t)) & incurred(f, d)
 
 
 # ------------------------------------------------- the quantitative question
@@ -388,7 +368,6 @@ def cor_opening_needs_no_entitlement(f: rp.Frame, d: Duties) -> frozenset:
 
 def potential(f: rp.Frame, d: Duties, weight: Callable,
               upto: Optional[int] = None) -> float:
-    """A supplied burden, summed over what is outstanding. Not part of the kernel."""
     return sum(weight(q) for q in outstanding(f, d, upto))
 
 
@@ -397,11 +376,7 @@ def potential_trace(f: rp.Frame, d: Duties, weight: Callable) -> tuple:
 
 
 def diluting_edits(f: rp.Frame, d: Duties, weight: Callable) -> tuple:
-    """Accepted transfers whose successors weigh less than the parent replaced.
-
-    **Per-parent accounting**, and it is not a weaker form of the total but a
-    wrong one. See `diluting_edits_total`. Kept only to exhibit that.
-    """
+    """Per-parent accounting. Not a weaker form of the total but a wrong one."""
     bad, out = [], d.base
     acc = set(rp.accepted(f))
     for t in range(len(f.trace)):
@@ -416,19 +391,16 @@ def diluting_edits(f: rp.Frame, d: Duties, weight: Callable) -> tuple:
 
 
 def diluting_edits_total(f: rp.Frame, d: Duties, weight: Callable) -> tuple:
-    """Accepted edits whose transferred successors weigh less **in total** than the
-    obligations they replaced.
+    """Total accounting, which is what any later quantitative law must use.
 
-    The two notions come apart on a **merge**. Two parents of weight 1 mapping to
-    one successor of weight 1.5 passes per-parent — each parent sees 1.5, which is
-    more than its own 1 — and fails in total, since 2 became 1.5. So the total is
-    the accounting a conservation claim needs.
+    Two parents of weight 1 carried to one successor of weight 1.5 passes
+    per-parent and fails here.
     """
     bad, out = [], d.base
     acc = set(rp.accepted(f))
     for t in range(len(f.trace)):
         if t in acc:
-            moved = d.moved(t) & out
+            moved = d.moved(t) & (out | d.opened(t))
             if moved:
                 before = sum(weight(q) for q in moved)
                 targets = frozenset().union(
@@ -441,12 +413,9 @@ def diluting_edits_total(f: rp.Frame, d: Duties, weight: Callable) -> tuple:
 
 
 def unheralded_openings(f: rp.Frame, d: Duties) -> tuple:
-    """Obligations opened by an edit that no transfer of that edit names.
-
-    The hypothesis the previous pass's quantitative claim silently omitted: a
-    fresh obligation raises the burden without any transfer having diluted
-    anything, so no condition on transfers alone can bound the potential.
-    """
+    """Claims incurred without being a named successor: they raise the burden
+    however well transfers behave, which is the hypothesis a conservation claim
+    must state and the withdrawn version omitted."""
     bad = []
     for t in range(len(f.trace)):
         named = frozenset().union(
@@ -454,23 +423,3 @@ def unheralded_openings(f: rp.Frame, d: Duties) -> tuple:
         for q in sorted(d.opened(t) - named, key=str):
             bad.append((t, q))
     return tuple(bad)
-
-
-def thm_conserving_transfers_give_monotone_potential(
-        f: rp.Frame, d: Duties, weight: Callable) -> bool:
-    """**Conditional.** If no accepted edit dilutes in total, and every opened
-    obligation is a successor named by a transfer of the edit that opens it, then
-    the potential is non-increasing.
-
-    Both hypotheses are needed and the previous pass's version stated neither
-    correctly: it checked per-parent rather than total dilution, and it ignored
-    that a fresh obligation raises the potential no matter what the transfers do.
-    Its discharge escape clause made it unfalsifiable on any trace containing a
-    discharge. It is withdrawn and replaced by this.
-
-    This is a claim about a class of `Resolve` semantics, not a structural fact.
-    """
-    if diluting_edits_total(f, d, weight) or unheralded_openings(f, d):
-        return True                    # the hypotheses do not apply
-    trace = potential_trace(f, d, weight)
-    return all(b <= a + 1e-9 for a, b in zip(trace, trace[1:]))

@@ -92,29 +92,32 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 
 | # | claim | class | check |
 |---|---|---|---|
-| A1 | **Withdrawn.** The previous conclusion — discharged in `[s,t)` or carried to something outstanding at `t` — is **false** on transfer-then-discharge, split-then-discharge-both and merge-then-discharge, all with clean premises | WITHDRAWN, by countermodel | `TestTheOldConclusionWasFalse` |
-| A2 | **Withdrawn.** The premise `A2` (fresh openings) was never load-bearing: a hand-built cycle violating freshness maximally satisfies the corrected theorem | WITHDRAWN, by countermodel | `TestA2WasNotLoadBearing` |
-| A3 | **Withdrawn.** `thm_no_dilution_gives_monotone_potential` checked per-parent rather than total dilution, ignored fresh openings, and its discharge escape clause made it unfalsifiable on any trace with a discharge | WITHDRAWN | `test_the_withdrawn_version_is_gone` |
-| A4 | **Withdrawn.** The shared acceptance bit gating both folds. It cannot represent a process answerable for an act it refused | WITHDRAWN, by countermodel | `office.unauthorized_act_opens_complaint` |
-| A5 | **Answerability Continuity.** Under **A1**, every obligation outstanding at `s` has, at every later `t`, a finite resolution derivation whose frontier is non-empty and contains only obligations outstanding at `t` or discharged by an accepted edit before `t` | DERIVED | `thm_answerability_continuity` on every answerability constitution |
-| A6 | **A1 is necessary**, and it is a premise that can fail: three constitutions violate it and each breaks the corollary | COUNTEREXAMPLE | `TestTheKernelIsUntouched`; `office.A1_BROKEN` |
-| A7 | The witness is a **finite tree unfolded from a DAG**; a reconverging split gives one obligation two distinct leaves | DEFINITION + FINITE-TEST-SUPPORTED | `test_succession_is_a_dag_and_the_derivation_is_still_a_tree` |
-| A8 | Termination comes from the **interval**, not from occurrence identity: an obligation may be its own descendant and the unfolding is still finite | DERIVED | `test_termination_comes_from_the_interval_not_from_freshness` |
-| A9 | A `carried` node with no children is **not** a derivation; the conclusion requires a non-empty frontier, and A1's transferred-to-nothing clause supplies it | DERIVED | `office.transfer_to_nowhere` |
-| A10 | **D1, due realization.** What the semantics says is owed at `t` is outstanding at `t+1` | AXIOM (structural premise) | `d1_due_realization` |
-| A11 | **D1 is necessary.** A process with impeccable entitlement, no removals at all, and a represented reason its own semantics calls owed, passes everything else and enters nothing | COUNTEREXAMPLE | `office.recognized_due_but_never_entered` |
-| A12 | **Corollary.** Every obligation the semantics ever made due has a resolution derivation from where it became due | DERIVED | `cor_recognized_is_entered` |
-| A13 | **D1 requires neither coverage nor progress.** A process that represents nothing owes nothing; an entered obligation may stay open forever | COUNTEREXAMPLE, both | `office.unobservant`; `test_d1_does_not_smuggle_in_progress` |
-| A14 | `Due` reads the normative state, so a reason represented at `u` can become owed at `t > u`; D1 is indexed by position for that reason | DEFINITION + FINITE-TEST-SUPPORTED | `office.due_arrives_later` |
-| A15 | **Strict pre-state on the resolution side** is structural, not a clause: openings are unioned last, so opening-and-discharging in one act and self-ratifying resolution are both refused by A1 | DERIVED | `TestStrictPreState` |
-| A16 | **Coupling, asymmetric.** An act the process was not entitled to perform discharges nothing | DERIVED | `cor_discharge_requires_entitlement`; `office.rogue_discharge` |
-| A17 | **Coupling, converse.** An obligation may open at an edit the process refused, and one act may exercise both channels with only the opening taking effect | DERIVED + COUNTEREXAMPLE | `cor_opening_needs_no_entitlement`; `office.unauthorized_act_attempts_discharge` |
-| A18 | The asymmetry does not open a laundering route: transfer is a removal and removals stay gated | DERIVED | `test_a_rejected_edit_still_removes_nothing` |
-| A19 | **Quantitative burden conservation is not a generic structural consequence** of answerability continuity. Stated narrowly: it does not claim no semantics may impose one | COUNTEREXAMPLE | `TestTheQuantitativeRepair` |
-| A20 | **Conditional, repaired.** No total dilution *and* every opened obligation a named successor gives non-increasing potential. Both hypotheses are needed | DERIVED, conditional | `thm_conserving_transfers_give_monotone_potential`; `office.high_regret` |
-| A21 | Per-parent weight accounting is wrong, not weaker | COUNTEREXAMPLE | `office.merge_lenient` |
-| A22 | Legitimate Evolution is a **named package of two closure theorems and two coupling laws** — option D. The entitlement/answerability duality is dropped, not narrowed | DEFINITION, argued in `ANSWERABILITY.md` §9 | entries A10, A16, A17 |
-| A23 | Grounded Replay is unchanged: the kernel does not import the second replay, has no obligation notion, and `answer.py` reads only `accepted`, `Frame` and `BASE` from it | FINITE-TEST-SUPPORTED, by parsing | `TestTheKernelIsUntouched` |
+| A1 | **Withdrawn.** The chain conclusion — discharged, or carried to something outstanding — is false on transfer-then-discharge, split-then-discharge-both and merge-then-discharge | WITHDRAWN, by countermodel | round 7 |
+| A2 | **Withdrawn.** The freshness premise was never load-bearing, and is now consulted nowhere | WITHDRAWN, by countermodel | `test_freshness_is_consulted_nowhere` |
+| A3 | **Withdrawn.** `thm_no_dilution_gives_monotone_potential`: per-parent rather than total, ignored fresh openings, unfalsifiable on any trace with a discharge | WITHDRAWN | round 7 |
+| A4 | **Withdrawn.** The shared acceptance bit gating both folds | WITHDRAWN, by countermodel | `office.unauthorized_act_opens_complaint` |
+| A5 | **Withdrawn.** The fresh-successor clause in the carry law: it refuses ordinary consolidation into a claim already outstanding, which the derivation handles correctly | WITHDRAWN, by countermodel | `office.carry_into_existing_claim` |
+| A6 | **Withdrawn.** `D1` as a **premise** of the answerability theorem. The induction never consults it; it is a conformance condition at the realization boundary | WITHDRAWN, relocated | `TestD1IsNotATheoremPremise` |
+| A7 | **Withdrawn.** Quantifying the conclusion over claims outstanding at a chosen start time: it cannot speak about a claim incurred and resolved between two observations | WITHDRAWN | `test_the_theorem_quantifies_over_incurred` |
+| A8 | **Answerability Resolution.** Under **A1**, every claim **incurred** by `t` has a finite resolution derivation whose frontier is non-empty and every branch of which is outstanding at `t` or discharged by an accepted event before `t` | DERIVED | `thm_answerability_resolution` on all 33 answerability constitutions |
+| A9 | **A1 is necessary**, with four countermodels of three shapes: silent deletion, carry to nothing, carry into what the same event discharges, and a split with one branch lost | COUNTEREXAMPLE | `office.A1_BROKEN` |
+| A10 | **Every branch is accounted for**: a surviving branch does not rescue a root whose sibling was lost | COUNTEREXAMPLE | `test_every_branch_must_be_accounted_for` |
+| A11 | The carry law is exactly `S` non-empty and `S subset O_{t+1}`; freshness is not required and successors may be preexisting or shared | DERIVED + FINITE-TEST-SUPPORTED | `TestTheCarryLaw` |
+| A12 | Carrying into a claim the same event discharges is refused **by that law**, so the strict-pre-state protection on the resolution side needs no clause of its own | DERIVED | `office.carry_into_something_resolved` |
+| A13 | `Incurred` / `Outstanding` is the answerability analogue of `Admitted` / `Live`, and the theorem quantifies over the former | DEFINITION | `an.incurred`, `an.outstanding` |
+| A14 | **`Due` is an activation generator** over the represented state. A persistent predicate is refuted: it makes answering an answerable claim illegitimate | COUNTEREXAMPLE | `office.resolved_stays_resolved` |
+| A15 | Minting on reason arrival is refuted: material represented early can be made owed by a later normative state | COUNTEREXAMPLE | `office.old_reason_becomes_newly_due` |
+| A16 | Joint reasons activating one claim, and one reason activating several, need no extra machinery once `Due` reads the state | FINITE-TEST-SUPPORTED | `office.joint_reasons_one_claim`, `one_reason_many_claims` |
+| A17 | Same-step Due and resolution needs no intermediate outstanding state, and is not a loophole: the difference from ignoring the claim is the `Resolve` witness | DERIVED + COUNTEREXAMPLE | `office.due_and_resolved_in_one_step` against `due_and_ignored_in_one_step` |
+| A18 | **D1 is a conformance condition, not a premise.** A process satisfying A1, the theorem and no-silent-loss can ignore what its semantics activated | COUNTEREXAMPLE | `office.recognized_due_but_never_entered` |
+| A19 | D1 is **not hidden in the type**: two constitutions represent the failure and both are caught | COUNTEREXAMPLE | `office.D1_BROKEN` |
+| A20 | Dropping A1 and dropping D1 fail for different reasons — a claim is lost, against a claim never taken on | COUNTEREXAMPLE, both | `test_the_two_failures_are_different` |
+| A21 | **Three gates act independently**: standing change by `Permit`, incurrence by `Due` ungated, resolution by `Permit` at the strict pre-state | FINITE-TEST-SUPPORTED, five cases | `TestTheThreeGates` |
+| A22 | Self-authorizing does not license a resolution | DERIVED | `office.self_authorize_then_discharge` |
+| A23 | The boundary is separated automatically: six legitimate processes pass, six illegitimate ones fail and say which condition | FINITE-TEST-SUPPORTED | `TestTheBoundary` |
+| A24 | Legitimate Evolution is **option B** — two local-to-global theorems plus a Due-realization condition at the realization boundary | DEFINITION, argued in `ANSWERABILITY.md` §10 | entries A8, A18 |
+| A25 | The quantitative conclusions are preserved and not extended: not a generic structural consequence, and total accounting is required | COUNTEREXAMPLE | `TestTheQuantitativeConclusionIsPreserved` |
+| A26 | Grounded Replay is unchanged; `answer.py` reads only `accepted`, `Frame` and `BASE` from it | FINITE-TEST-SUPPORTED, by parsing | `TestTheKernelIsUntouched` |
 
 ## Open
 
@@ -124,7 +127,7 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | 31 | **Provenance completeness.** The round tried to state it non-circularly and failed; it is an explicit epistemic assumption on the extraction | OPEN — the largest hole, and it has survived four formulations |
 | 32 | **A current-state certificate.** Replay, or a commitment plus a delta proof, or an attestation. Nothing here builds the second | OPEN — and now the interface's main cost |
 | 33 | **Bounded-lifetime liability** | OPEN — `PRIORITIES.md` 69; entry A8 narrows it: any such bound is a condition on `Transfers`, not a structural theorem |
-| 40 | **`Due` has no realizer.** Now a structural premise (D1), and Reflective Integrity cannot discharge it: `roots()` mints from `NormEvent`s only, `ReasonOcc` is never consulted, and RI's own `due()` is a different predicate. Smallest seam: a minting trigger keyed on reason occurrences, one function, no new event kind | OPEN — the pass's headline gap; checked against `ri_core.py`, `PRIORITIES.md` 71 |
+| 40 | **`Due` has no realizer**, and the seam is now known to be an activation step rather than a reason-keyed mint. RI has the incurred/outstanding split (`roots` against `live`), a resolution channel independent of `NormEvent` (`Respond`), and a successor recursion of the right shape (`continuity_ok`). It has no way for represented material to activate a claim | OPEN — the verdict's gap; quoted against `ri_core.py` in `ANSWERABILITY.md` §9, `PRIORITIES.md` 71 |
 | 41 | Whether coverage — that some situation *ought* to have become due — is statable at all without a substantive semantics | OPEN — `unobservant()` is legitimate and notices nothing |
 | 34 | Whether `Permit` needs internal structure | OPEN |
 | 35 | Jurisdiction on a Reflective Integrity authority | OPEN — `PRIORITIES.md` 67 |

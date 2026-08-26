@@ -440,10 +440,124 @@ Anything about progress, coverage, regret or substantive correctness.
 
 ---
 
+# Eighth pass — the Due bridge
+
+**Verdict:** `DUE-REALIZATION-GAP`.
+
+The abstract package stabilizes. Reflective Integrity still cannot realize it,
+and the seam turns out to be a different thing from what the previous pass
+proposed.
+
+## The layer correction
+
+The pass's main result, and it is a correction to my own previous pass rather
+than a discovery about the object.
+
+`recognized_due_but_never_entered`: impeccable entitlement, no removals at all, a
+represented reason the semantics activates, nothing taken on.
+
+```text
+A1                        clean
+Answerability Resolution  clean
+no silent loss            clean
+D1                        fires
+```
+
+The induction never consults `D1`. Dropping it does not break a proof; it shrinks
+the set the conclusion quantifies over, and a process can exploit exactly that.
+So `D1` is a **conformance condition at the realization boundary**, not a
+structural premise.
+
+This is a different kind of defect from the ones earlier rounds found. Those were
+statements that were false, or premises that could not fail. This one is true,
+necessary, and was written one layer away from where it belongs. Nothing tested
+wrong. It matters because a structural premise is discharged by construction while
+a conformance condition has to be checked against an implementation — and can fail
+there while every theorem still holds. A deference consumer reading a record gets
+the resolution theorem and no signal that the other half is missing.
+
+## Due, chosen by countermodel
+
+**Persistent predicate: refuted.** Open a claim, answer it, leave its reasons
+represented. The predicate reactivates the claim at every later position, so the
+legitimate discharge becomes a violation and the claim can never be closed.
+
+**Mint on reason arrival: refuted.** Material represented at `t=0` that only a
+later normative state makes owed never activates. That case is legitimate, and it
+kills the previous pass's recommended RI seam.
+
+**Activation generator: what survives.** `Due` reads the whole represented state
+against the strict pre-state and returns claim keys; newly due is that minus what
+is already incurred. Joint reasons activating one claim and one reason activating
+several then need no extra machinery — the activation simply does or does not
+fire — so the support-set structure the dispatch feared might be forced is not.
+
+## Incurred against outstanding
+
+The answerability analogue of `Admitted` / `Live`, and it earns its place twice.
+The theorem quantifies over incurred, so it speaks about a claim incurred and
+resolved between two observations. And same-step Due-and-resolution stops being a
+problem: the claim is incurred, discharged, never outstanding, and still covered.
+
+That reverses the previous pass's decision to make immediate resolution
+inexpressible. The protection that decision was reaching for comes from `Resolve`
+reading the strict pre-state — `self_authorize_then_discharge` is refused — not
+from the order in which the fold unions openings. Same-step resolution is not a
+loophole because the difference from ignoring the claim is a `Resolve` witness,
+and `due_and_ignored_in_one_step` is caught.
+
+## The carry law was too strong
+
+Requiring successors to be freshly opened refuses ordinary consolidation into a
+claim already outstanding, which the derivation handles correctly. The law is now
+`S` non-empty and `S subset O_{t+1}`, which also absorbs the strict-pre-state
+protection: a successor the same event discharges is not outstanding after the
+step. Freshness is consulted nowhere in the module.
+
+## RI, quoted
+
+`roots(t)` is `seed.roots0` extended by `mint(a)` over `norm_events(t)`; `mint` is
+typed on `NormEvent`; `ReasonOcc` occurs only in `Derivation.leaves` and as a
+`Reason` step's payload, and `roots` reads neither. RI's `due(q,t)` is
+`live(q,t) and any(disposes(a,q) ...)` — *this live root's episode is being
+succeeded* — a different predicate with the same name.
+
+RI already has three of the four pieces: `roots` against `live` is the
+incurred/outstanding split, `Respond` settles a root without a `NormEvent`, and
+`continuity_ok` recurses over successors with the right leaf condition. What is
+missing is one activation step over the represented state.
+
+## What this pass does not establish
+
+That the package is right. Four of its predecessors looked right for a pass each,
+and the corrections have twice been to things the previous pass had just decided.
+
+That `Due`'s activation form is uniquely minimal. Two simpler interfaces are
+refuted by executed countermodels; that is not the same as minimality.
+
+That the RI seam is buildable as described. It is specified and not built.
+
+## Outstanding maintainer actions
+
+1. **Rule on whether the deference kernel's grade acquires an index.** In
+   `DECISIONS.md`'s *Awaiting the author* since the first pass, unchanged.
+
+2. **Decide where `D1` is discharged.** Priority 71 now specifies an activation
+   step rather than a reason-keyed mint. The alternative is discharging it outside
+   RI, and someone should say which — it is the last thing between this package
+   and a freeze.
+
+3. **No other item is reserved.** The four forks this pass faced it adopted, as
+   dated `DECISIONS.md` entries marked agent-decided and reversible: `D1`
+   relocated to the realization boundary; `Due` as an activation generator;
+   incurred and outstanding split; carried successors need not be fresh.
+
+---
+
 ## Attribution
 
 | | |
 |---|---|
-| prompt author | a maintainer, with a model-assisted draft; eight dispatches |
+| prompt author | a maintainer, with a model-assisted draft; nine dispatches |
 | executor | Claude Opus 5 (Anthropic) |
 | dates | 2026-08-25 to 2026-08-26 |

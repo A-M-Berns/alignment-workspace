@@ -107,10 +107,10 @@ class Act:
     discharges: tuple = ()             # names
     transfers: tuple = ()              # ((old, (new, ...)), ...)
     drops: tuple = ()                  # names removed with no route: A1 bait
-    #: what `Due` says is owed here, given what this act represents, as
-    #: (name, weight). Naming something the act does not open is the D1 bait:
-    #: the obligation gets an identity and never enters the outstanding set.
-    owes: tuple = ()
+    #: claim keys `Due` activates here, given what this act represents. A key
+    #: the act does not open is the D1 bait. Activating a key already incurred
+    #: is not newly due, which is how a resolved claim stays resolved.
+    owes: tuple = ()                   # names
 
 
 AMEND = "d:amend"                      #: a constitution's own token for
@@ -721,22 +721,27 @@ EXERCISE_CONSTITUTIONS = (
 
 
 def duties(c: Constitution):
-    """The obligation lifecycle a constitution declares.
+    """The answerability lifecycle a constitution declares.
 
-    `Due` and `Resolve` have already been consulted by the time this is read: an
-    act's `owes`, `opens`, `discharges` and `transfers` are what the semantics
-    said. Two channels exist so that the two premises can fail — `drops`, a
-    removal with no declared route, for **A1**, and an `owes` naming something the
-    act does not open, for **D1**.
+    `Due` and `Resolve` have already been consulted: an act's `owes` is the set
+    of claim keys the semantics activates there, and its `opens`, `discharges`
+    and `transfers` are what `Resolve` judged. Two channels exist so the two
+    obligations of the package can fail -- `drops` for **A1**, and an `owes`
+    naming a key the act does not open for **D1**.
+
+    A claim key is the name. An occurrence realizing it is minted at the position
+    that incurs it, so the same key opened twice would be two occurrences, and
+    `newly_due` refuses the second.
     """
     import answer as an
 
-    by_name, base, weight = {}, [], {}
+    by_name, base, weight, key = {}, [], {}, {}
     for i, (name, w) in enumerate(c.base_duties):
         q = an.Ob(an.BASE, i)
         by_name[name] = q
         base.append(q)
         weight[q] = w
+        key[q] = name
 
     opens, discharges, transfers, drops, due = {}, {}, {}, {}, {}
     for t, a in enumerate(c.acts):
@@ -745,9 +750,13 @@ def duties(c: Constitution):
             q = an.Ob(t, j)
             by_name[name] = q
             weight[q] = w
+            key[q] = name
             made.append(q)
         if made:
             opens[t] = frozenset(made)
+        if a.owes:
+            due[t] = frozenset(a.owes)
+    for t, a in enumerate(c.acts):
         gone = frozenset(by_name[n] for n in a.discharges if n in by_name)
         if gone:
             discharges[t] = gone
@@ -758,19 +767,7 @@ def duties(c: Constitution):
             transfers[t] = {by_name[old]: frozenset(by_name[n] for n in new
                                                     if n in by_name)
                             for old, new in a.transfers if old in by_name}
-    for t, a in enumerate(c.acts):
-        owed = []
-        for k, (name, w) in enumerate(a.owes):
-            if name in by_name:
-                owed.append(by_name[name])
-                continue
-            q = an.Ob(t, len(a.opens) + k)
-            by_name[name] = q
-            weight[q] = w
-            owed.append(q)
-        if owed:
-            due[t] = frozenset(owed)
-    d = an.Duties(frozenset(base), opens, discharges, transfers, drops, due)
+    d = an.Duties(frozenset(base), opens, discharges, transfers, drops, due, key)
     object.__setattr__(d, "weight", weight)
     object.__setattr__(d, "names", {q: n for n, q in by_name.items()})
     return d
@@ -1037,7 +1034,7 @@ def recognized_due_but_never_entered() -> Constitution:
     return Constitution(
         chartered=CHARTER,
         acts=(_one(grants=(("n:rule", None, ()),),
-                   owes=(("q:recognized", 1.0),), label="notice-and-ignore"),))
+                   owes=("q:recognized",), label="notice-and-ignore"),))
 
 
 def recognized_due_and_entered() -> Constitution:
@@ -1046,7 +1043,7 @@ def recognized_due_and_entered() -> Constitution:
         chartered=CHARTER,
         acts=(_one(grants=(("n:rule", None, ()),),
                    opens=(("q:recognized", 1.0),),
-                   owes=(("q:recognized", 1.0),), label="notice-and-enter"),))
+                   owes=("q:recognized",), label="notice-and-enter"),))
 
 
 def due_arrives_later() -> Constitution:
@@ -1058,7 +1055,7 @@ def due_arrives_later() -> Constitution:
     return Constitution(
         chartered=CHARTER,
         acts=(_one(grants=(("n:duty-rule", None, ()),), label="legislate"),
-              _one(opens=(("q:late", 1.0),), owes=(("q:late", 1.0),),
+              _one(opens=(("q:late", 1.0),), owes=("q:late",),
                    label="now-it-is-owed")))
 
 
@@ -1071,7 +1068,7 @@ def due_entered_then_closed_same_act() -> Constitution:
     """
     return Constitution(
         chartered=CHARTER,
-        acts=(_one(opens=(("q:instant", 1.0),), owes=(("q:instant", 1.0),),
+        acts=(_one(opens=(("q:instant", 1.0),), owes=("q:instant",),
                    discharges=("q:instant",), label="open-and-close"),))
 
 
@@ -1090,7 +1087,7 @@ def unauthorized_act_opens_complaint() -> Constitution:
         acts=(Act("w:fiscal", grants=(("n:safety-rule", None, ()),),
                   scope=SAFETY, prov=Prov(findings=frozenset({"f:ordinary"})),
                   opens=(("q:complaint-about-alice", 1.0),),
-                  owes=(("q:complaint-about-alice", 1.0),),
+                  owes=("q:complaint-about-alice",),
                   label="overreach-noticed"),))
 
 
@@ -1106,7 +1103,7 @@ def unauthorized_act_attempts_discharge() -> Constitution:
         acts=(Act("w:fiscal", grants=(("n:safety-rule", None, ()),),
                   scope=SAFETY, prov=Prov(findings=frozenset({"f:ordinary"})),
                   opens=(("q:complaint-about-alice", 1.0),),
-                  owes=(("q:complaint-about-alice", 1.0),),
+                  owes=("q:complaint-about-alice",),
                   discharges=("q:standing",),
                   label="overreach-and-claim-to-answer"),))
 
@@ -1122,7 +1119,7 @@ def rejected_edit_with_descriptive_consequences() -> Constitution:
         acts=(Act("w:charter", grants=(("n:rule", None, ()),), scope=ALL,
                   prov=Prov(findings=frozenset({"f:ordinary"}), coerced=True),
                   opens=(("q:coercion-complaint", 1.0),),
-                  owes=(("q:coercion-complaint", 1.0),),
+                  owes=("q:coercion-complaint",),
                   label="coerced-then-owed"),),
         coercion_invalidates=True,
     )
@@ -1157,3 +1154,179 @@ A1_BROKEN = BROKEN_CONSTITUTIONS
 
 REFUSED_RESOLUTIONS = (due_entered_then_closed_same_act(),
                        self_ratifying_resolution())
+
+# ------------------------------------------- Due as an activation generator
+
+
+def resolved_stays_resolved() -> Constitution:
+    """A claim opened, answered, and whose reasons stay represented afterwards.
+
+    The act at t=1 answers it. The acts after that represent the same material
+    and activate the same key, which is **not** newly due because the key is
+    already incurred. A persistent `Due` predicate would force the claim back
+    open forever and make the discharge at t=1 illegitimate.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(opens=(("q:claim", 1.0),), owes=("q:claim",), label="notice"),
+              _one(discharges=("q:claim",), label="answer"),
+              _one(owes=("q:claim",), label="still-represented"),
+              _one(owes=("q:claim",), label="still-represented-again")))
+
+
+def old_reason_becomes_newly_due() -> Constitution:
+    """Material represented at t=0 that only the later state makes owed.
+
+    Nothing arrives at t=2. What changed is the normative context, and `Due` is
+    evaluated against it, so minting on reason arrival would miss this entirely.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(label="represent-the-material"),
+              _one(grants=(("n:new-standard", None, ()),), label="raise-standard"),
+              _one(opens=(("q:under-new-standard", 1.0),),
+                   owes=("q:under-new-standard",), label="now-owed")))
+
+
+def joint_reasons_one_claim() -> Constitution:
+    """Neither piece of material alone is owed; together they are.
+
+    `Due` reads the whole represented state, so no support-set machinery is
+    needed on the obligation: the activation simply does not fire until t=2.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(label="first-material"),
+              _one(label="second-material"),
+              _one(opens=(("q:joint-claim", 1.0),), owes=("q:joint-claim",),
+                   label="together-they-are-owed")))
+
+
+def one_reason_many_claims() -> Constitution:
+    """One represented failure owing both a repair and an explanation."""
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(opens=(("q:repair", 1.0), ("q:explain", 1.0)),
+                   owes=("q:repair", "q:explain"), label="one-failure"),))
+
+
+def due_and_resolved_in_one_step() -> Constitution:
+    """An event that reveals a problem and completely answers it at once.
+
+    The claim is incurred and discharged without ever being outstanding. The
+    theorem still speaks about it, because the theorem quantifies over incurred.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(opens=(("q:instant", 1.0),), owes=("q:instant",),
+                   discharges=("q:instant",), label="reveal-and-answer"),))
+
+
+def due_and_ignored_in_one_step() -> Constitution:
+    """The loophole the case above must not open: activated, and nothing done."""
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(owes=("q:instant",), label="reveal-and-shrug"),))
+
+
+# ------------------------------------------------ the relaxed carry law
+
+
+def carry_into_existing_claim() -> Constitution:
+    """Consolidation into a claim that is already outstanding.
+
+    The previous version's fresh-successor clause refused this while the
+    derivation handled it correctly.
+    """
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:minor", 1.0), ("q:major", 1.0)),
+        acts=(_one(transfers=(("q:minor", ("q:major",)),), label="consolidate"),))
+
+
+def carry_into_shared_successor() -> Constitution:
+    """Two claims carried into one preexisting third."""
+    return Constitution(
+        chartered=CHARTER,
+        base_duties=(("q:a", 1.0), ("q:b", 1.0), ("q:omnibus", 2.0)),
+        acts=(_one(transfers=(("q:a", ("q:omnibus",)), ("q:b", ("q:omnibus",))),
+                   label="fold-in"),))
+
+
+def carry_into_something_resolved() -> Constitution:
+    """A carry naming a successor the same event discharges.
+
+    Refused: the successor is not outstanding after the step, so the predecessor
+    would be resolved into nothing. This is the strict-pre-state protection on
+    the resolution side and needs no premise of its own.
+    """
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:claim", 1.0), ("q:sink", 1.0)),
+        acts=(_one(transfers=(("q:claim", ("q:sink",)),), discharges=("q:sink",),
+                   label="carry-into-a-hole"),))
+
+
+def split_one_branch_lost() -> Constitution:
+    """A split, one branch of which is silently dropped.
+
+    No existential escape: the surviving branch does not rescue the derivation.
+    """
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:claim", 1.0),),
+        acts=(_one(opens=(("q:kept", 0.5), ("q:lost", 0.5)),
+                   transfers=(("q:claim", ("q:kept", "q:lost")),), label="split"),
+              _one(drops=("q:lost",), label="lose-one-branch")))
+
+
+# ------------------------------------- the three gates acting independently
+
+
+def response_without_normative_change() -> Constitution:
+    """An ordinary answer: resolves a claim, changes no standing."""
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:claim", 1.0),),
+        acts=(_one(discharges=("q:claim",), label="just-answer"),))
+
+
+def amendment_without_answerability() -> Constitution:
+    """An ordinary amendment: changes standing, touches no claim."""
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(grants=(("n:rule", None, ()),), label="just-legislate"),))
+
+
+def evidence_opens_without_norm_event() -> Constitution:
+    """Represented material incurring a claim while enacting nothing."""
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(opens=(("q:from-evidence", 1.0),), owes=("q:from-evidence",),
+                   label="observe"),))
+
+
+def self_authorize_then_discharge() -> Constitution:
+    """An act granting itself the standing it then uses to resolve a claim.
+
+    Refused on the entitlement side at the strict pre-state, so it resolves
+    nothing -- the resolution gate reads the legitimate pre-state, not the
+    post-state the act would have created.
+    """
+    return Constitution(
+        chartered=(("w:fiscal", FISCAL, "Treasury"),),
+        base_duties=(("q:safety-claim", 1.0),),
+        acts=(Act("w:fiscal", grants=(("w:self", SAFETY, ()),), scope=SAFETY,
+                  prov=Prov(findings=frozenset({"f:ordinary"})),
+                  discharges=("q:safety-claim",), label="self-authorize"),))
+
+
+ANSWER_CONSTITUTIONS = ANSWER_CONSTITUTIONS + (
+    resolved_stays_resolved(), old_reason_becomes_newly_due(),
+    joint_reasons_one_claim(), one_reason_many_claims(),
+    due_and_resolved_in_one_step(), carry_into_existing_claim(),
+    carry_into_shared_successor(), response_without_normative_change(),
+    amendment_without_answerability(), evidence_opens_without_norm_event(),
+    self_authorize_then_discharge(),
+)
+
+D1_BROKEN = (recognized_due_but_never_entered(), due_and_ignored_in_one_step())
+
+A1_BROKEN = BROKEN_CONSTITUTIONS + (carry_into_something_resolved(),
+                                    split_one_branch_lost())

@@ -61,15 +61,16 @@ checker's own state*.
 Consumer-side: *the recognition axiom* (R), *W-index*, *bounded-lifetime
 liability*.
 
-Answerability: *obligation occurrence* (`Ob`), *outstanding*, *opens*,
-*discharges*, *transfers*, *drop*, *Answerability Continuity*, *no silent loss*,
-*controlled resolution* (A1), *due realization* (D1), *resolution derivation*,
-*frontier*, *potential*, *dilution*, *total accounting*, *per-parent accounting*,
-*unheralded opening*, *Legitimate Evolution package*, *`Due`*, *`Resolve`*,
-*asymmetric coupling*.
+Answerability: *claim occurrence* (`Ob`), *incurred*, *outstanding*, *claim key*,
+*activation*, *newly due*, *resolution derivation*, *frontier*, *carry*,
+*Answerability Resolution*, *no silent loss*, *controlled resolution* (A1), *due
+realization* (D1), *conformance condition*, *asymmetric gating*, *potential*,
+*dilution*, *total accounting*, *per-parent accounting*, *unheralded opening*,
+*`Due`*, *`Resolve`*.
 
-Withdrawn this pass: *fresh obligations* (A2) as a premise, retained as the
-hygiene check *fresh by construction*; *`Disposes`* and *`Transfers`* as separate
-parameters, folded into *`Resolve`*.
+Withdrawn across rounds 7 and 8: *fresh obligations* (A2), as a premise and then
+entirely; *`Disposes`* and *`Transfers`* as separate parameters, folded into
+*`Resolve`*; the fresh-successor clause in the carry law; and `D1` as a
+*structural premise*, relocated to the realization boundary.
 
 Proper Exercise: *capability* (`Cap`), *reach*, *widening*, *proper exercise*, *authority over authority*, *plenary base*, *jurisdictional self-ratification*, *unauthorized privilege escalation*.

@@ -1,8 +1,9 @@
-"""Answerability: required entry, controlled resolution.
+"""Answerability: incurred versus outstanding, Due as activation, A1 alone.
 
-The previous pass's conclusion was false on the whole resolve-after-transfer
-family, its second premise was doing no work, and its coupling could not
-represent an unauthorized act that generates a complaint. All three are here.
+The previous pass shipped D1 as a structural premise. It is not one: the
+induction never consults it, and a process can satisfy the theorem while ignoring
+what its own semantics recognized as owed. That separation is
+`TestD1IsNotATheoremPremise`, and it is the point of this pass.
 """
 from __future__ import annotations
 
@@ -15,261 +16,252 @@ import office as of
 import answer as an
 
 
-def frame_and_duties(c, alpha=None):
+def fd(c, alpha=None):
     return of.build(c, alpha), of.duties(c)
 
 
-def leaves(f, d, q, s, t=None):
+def nm(d, obs):
+    return set(of.duty_names(d, obs))
+
+
+def leaves(f, d, q, t=None):
+    node = an.resolution(f, d, q, an.born(q), t)
     return tuple((of.duty_names(d, {n["ob"]}).pop(), n["verdict"])
-                 for n in an.frontier(an.resolution(f, d, q, s, t)))
+                 for n in an.frontier(node))
 
 
-class TestTheOldConclusionWasFalse(unittest.TestCase):
-    """§2. Four constitutions with clean premises that the old statement failed."""
+class TestTheTenLifecycles(unittest.TestCase):
+    """§1. Every branch accounted for, with no existential escape."""
 
-    FAMILY = (("transfer then discharge", of.transfer_then_discharge),
-              ("split then discharge both", of.split_then_discharge_both),
-              ("merge then discharge", of.merge_then_discharge),
-              ("reconverging split", of.reconverging_split))
+    CASES = (("direct discharge", of.answered),
+             ("transfer", of.transferred_once),
+             ("transfer chain", lambda: of.transfer_chain(3)),
+             ("transfer then discharge", of.transfer_then_discharge),
+             ("split", lambda: of.split(0.5)),
+             ("split then discharge one", of.split_then_discharge_one),
+             ("split then discharge all", of.split_then_discharge_both),
+             ("merge", lambda: of.merge(2.0)),
+             ("merge then discharge", of.merge_then_discharge),
+             ("indefinite persistence", of.high_regret))
 
-    def test_the_premises_were_never_in_doubt(self):
-        for name, make in self.FAMILY:
+    def test_each_one_holds(self):
+        for name, make in self.CASES:
             with self.subTest(name):
-                f, d = frame_and_duties(make())
-                self.assertEqual(rp.violations(f), {})
+                f, d = fd(make())
                 self.assertEqual(an.violations(f, d), {})
-
-    def test_the_old_disjunction_fails_on_each(self):
-        """Neither disjunct held: the root was not discharged and carried to
-        nothing outstanding, because its descendants had been resolved."""
-        for name, make in self.FAMILY:
-            with self.subTest(name):
-                f, d = frame_and_duties(make())
-                end = len(f.trace)
-                for q in d.base:
-                    carried = [x for x in an.frontier(an.resolution(f, d, q, 0))
-                               if x["verdict"] == an.OPEN]
-                    discharged_root = any(
-                        q in d.discharged(u) for u in rp.accepted(f))
-                    self.assertFalse(discharged_root)
-                    if name != "reconverging split":
-                        self.assertEqual(carried, [])
-
-    def test_the_corrected_statement_holds_on_all_of_them(self):
-        for name, make in self.FAMILY:
-            with self.subTest(name):
-                f, d = frame_and_duties(make())
-                self.assertEqual(an.thm_answerability_continuity(f, d), ())
+                self.assertEqual(an.thm_answerability_resolution(f, d), ())
                 self.assertEqual(an.cor_no_silent_loss(f, d), ())
 
+    def test_the_theorem_quantifies_over_incurred(self):
+        """A claim incurred and resolved between two observations still counts."""
+        f, d = fd(of.due_and_resolved_in_one_step())
+        self.assertEqual(an.outstanding(f, d), frozenset())
+        self.assertEqual(nm(d, an.incurred(f, d)), {"q:instant"})
+        self.assertEqual(leaves(f, d, sorted(an.incurred(f, d))[0]),
+                         (("q:instant", an.DISCHARGED),))
 
-class TestTheWitnessObject(unittest.TestCase):
-    """§3. A finite tree, and the smallest thing that handles every lifecycle."""
+    def test_every_branch_must_be_accounted_for(self):
+        """One lost branch kills the root's derivation; the survivor does not
+        rescue it."""
+        f, d = fd(of.split_one_branch_lost())
+        self.assertIn("A1", an.violations(f, d))
+        bad = {q for q, _ in an.thm_answerability_resolution(f, d)}
+        self.assertEqual(nm(d, bad), {"q:claim", "q:lost"})
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:kept"})
 
-    def test_a_direct_discharge_is_a_leaf(self):
-        f, d = frame_and_duties(of.answered())
-        q = sorted(d.base)[0]
-        self.assertEqual(leaves(f, d, q, 0), (("q:complaint", an.DISCHARGED),))
-
-    def test_indefinite_persistence_is_a_leaf(self):
-        f, d = frame_and_duties(of.transferred_once())
-        q = sorted(d.base)[0]
-        self.assertEqual(leaves(f, d, q, 0), (("q:referred", an.OPEN),))
-
-    def test_a_chain_is_a_path(self):
-        f, d = frame_and_duties(of.transfer_chain(3))
-        q = sorted(d.base)[0]
-        node = an.resolution(f, d, q, 0)
-        depth = 0
-        while node["children"]:
-            node = node["children"][0]
-            depth += 1
-        self.assertEqual(depth, 3)
-
-    def test_a_split_branches(self):
-        f, d = frame_and_duties(of.split_then_discharge_one())
-        q = sorted(d.base)[0]
-        self.assertEqual(leaves(f, d, q, 0),
-                         (("q:left", an.DISCHARGED), ("q:right", an.OPEN)))
-
-    def test_a_merge_gives_each_parent_its_own_tree(self):
-        f, d = frame_and_duties(of.merge_then_discharge())
+    def test_a_merge_gives_each_parent_a_derivation(self):
+        f, d = fd(of.merge_then_discharge())
         for q in sorted(d.base, key=str):
-            self.assertEqual(leaves(f, d, q, 0),
-                             (("q:joint", an.DISCHARGED),))
+            self.assertEqual(leaves(f, d, q), (("q:joint", an.DISCHARGED),))
 
-    def test_succession_is_a_dag_and_the_derivation_is_still_a_tree(self):
-        """The reconverged obligation is two distinct leaves of one unfolding."""
-        f, d = frame_and_duties(of.reconverging_split())
+    def test_a_dag_unfolds_to_a_tree(self):
+        f, d = fd(of.reconverging_split())
         q = sorted(d.base)[0]
-        self.assertEqual(leaves(f, d, q, 0),
+        self.assertEqual(leaves(f, d, q),
                          (("q:rejoined", an.OPEN), ("q:rejoined", an.OPEN)))
 
-    def test_every_frontier_is_open_or_discharged(self):
-        for c in of.ANSWER_CONSTITUTIONS:
-            f, d = frame_and_duties(c)
-            for q in an.ever_open(f, d):
-                s = 0 if q.pos == an.BASE else q.pos + 1
-                node = an.resolution(f, d, q, s)
-                self.assertIsNotNone(node)
-                for leaf in an.frontier(node):
-                    self.assertIn(leaf["verdict"], (an.OPEN, an.DISCHARGED))
 
+class TestTheCarryLaw(unittest.TestCase):
+    """§3. Successors need not be fresh; they must be outstanding after the step."""
 
-class TestA2WasNotLoadBearing(unittest.TestCase):
-    """§4. Violate freshness, satisfy A1, and the theorem does not budge."""
-
-    def build(self):
-        f = of.build(of.Constitution(
-            chartered=of.CHARTER,
-            acts=(of._one(label="a"), of._one(label="b"), of._one(label="c"))))
-        q0, q1 = an.Ob(an.BASE, 0), an.Ob(an.BASE, 1)
-        d = an.Duties(
-            base=frozenset({q0}),
-            opens={0: frozenset({q1}), 1: frozenset({q0})},
-            discharges={2: frozenset({q0})},
-            transfers={0: {q0: frozenset({q1})}, 1: {q1: frozenset({q0})}})
-        return f, d, q0
-
-    def test_freshness_is_maximally_violated(self):
-        f, d, _ = self.build()
-        kinds = {v[0] for v in an.fresh_by_construction(f, d)}
-        self.assertEqual(kinds, {"mis-positioned", "reopened"})
-
-    def test_a1_still_holds(self):
-        f, d, _ = self.build()
-        self.assertEqual(an.a1_controlled_resolution(f, d), ())
-
-    def test_and_so_does_the_theorem(self):
-        f, d, q0 = self.build()
-        self.assertEqual(an.thm_answerability_continuity(f, d), ())
-        self.assertEqual(an.cor_no_silent_loss(f, d), ())
-        node = an.resolution(f, d, q0, 0)
-        self.assertIsNotNone(node)
-        self.assertEqual(tuple(x["verdict"] for x in an.frontier(node)),
-                         (an.DISCHARGED,))
-
-    def test_termination_comes_from_the_interval_not_from_freshness(self):
-        """An obligation is its own descendant here and the unfolding is finite."""
-        f, d, q0 = self.build()
-        node = an.resolution(f, d, q0, 0)
-        self.assertEqual(node["ob"], q0)
-        self.assertEqual(node["children"][0]["children"][0]["ob"], q0)
-
-    def test_a2_is_not_a_premise(self):
-        self.assertEqual([n for n, _ in an.PREMISES], ["D1", "A1"])
-        self.assertEqual([n for n, _ in an.HYGIENE], ["fresh"])
-
-
-class TestDue(unittest.TestCase):
-    """§§5-7. Recognized-due-but-never-entered, and what it does not require."""
-
-    def test_the_countermodel_the_old_package_passed(self):
-        f, d = frame_and_duties(of.recognized_due_but_never_entered())
-        self.assertEqual(rp.violations(f), {})
-        self.assertEqual(rp.thm_grounded_replay(f), ())
-        self.assertEqual(an.a1_controlled_resolution(f, d), ())
-        self.assertEqual(an.cor_no_silent_loss(f, d), ())
-        self.assertIn("D1", an.violations(f, d))
-        self.assertNotEqual(an.cor_recognized_is_entered(f, d), ())
-
-    def test_entering_it_is_enough(self):
-        """It may then stay open forever. D1 requires entry, never closure."""
-        f, d = frame_and_duties(of.recognized_due_and_entered())
+    def test_carrying_into_an_existing_claim_is_legitimate(self):
+        f, d = fd(of.carry_into_existing_claim())
         self.assertEqual(an.violations(f, d), {})
-        self.assertEqual(of.duty_names(d, an.outstanding(f, d)),
-                         {"q:recognized"})
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:major"})
+        self.assertEqual(leaves(f, d, sorted(d.base, key=str)[1]),
+                         (("q:major", an.OPEN),))
 
-    def test_due_reads_the_state_so_it_can_arrive_later(self):
-        f, d = frame_and_duties(of.due_arrives_later())
-        self.assertEqual(d.owed(0), frozenset())
-        self.assertNotEqual(d.owed(1), frozenset())
+    def test_two_claims_may_share_a_preexisting_successor(self):
+        f, d = fd(of.carry_into_shared_successor())
         self.assertEqual(an.violations(f, d), {})
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:omnibus"})
 
-    def test_d1_does_not_smuggle_in_coverage(self):
-        """Nothing is represented, so nothing is owed, and this stays legitimate."""
-        f, d = frame_and_duties(of.unobservant())
-        self.assertEqual(d.due, {})
-        self.assertEqual(an.violations(f, d), {})
+    def test_carrying_into_something_the_same_event_resolves_is_refused(self):
+        f, d = fd(of.carry_into_something_resolved())
+        self.assertIn("A1", an.violations(f, d))
+        kinds = {v[0] for v in an.a1_controlled_resolution(f, d)}
+        self.assertIn("successor not outstanding after the step", kinds)
+
+    def test_carrying_to_nothing_is_refused(self):
+        f, d = fd(of.transfer_to_nowhere())
+        self.assertIn("A1", an.violations(f, d))
+        self.assertNotEqual(an.cor_no_silent_loss(f, d), ())
+
+    def test_freshness_is_consulted_nowhere(self):
+        """A2 is gone, not demoted-but-still-checked."""
+        self.assertFalse([n for n in dir(an) if "fresh" in n])
+        self.assertFalse([n for n, _ in an.PREMISES + an.CONFORMANCE
+                          if n == "A2"])
+        for fn in (an.a1_controlled_resolution, an.resolution,
+                   an.thm_answerability_resolution):
+            self.assertNotIn("q.pos", inspect.getsource(fn))
+
+
+class TestDueIsAnActivationGenerator(unittest.TestCase):
+    """§§5-9. The interface, chosen by countermodel rather than by taste."""
+
+    def test_a_persistent_predicate_would_reopen_a_resolved_claim(self):
+        """Interface A, refused. The reasons stay represented and the claim
+        stays resolved."""
+        f, d = fd(of.resolved_stays_resolved())
+        activated = {t: set(d.activated(t)) for t in range(len(f.trace))
+                     if d.activated(t)}
+        self.assertEqual(activated,
+                         {0: {"q:claim"}, 2: {"q:claim"}, 3: {"q:claim"}})
+        self.assertEqual({t: set(an.newly_due(d, t)) for t in range(len(f.trace))
+                          if an.newly_due(d, t)}, {0: {"q:claim"}})
+        self.assertEqual(an.nonconformance(f, d), {})
         self.assertEqual(an.outstanding(f, d), frozenset())
 
-    def test_d1_does_not_smuggle_in_progress(self):
-        for make in (of.recognized_due_and_entered, of.due_arrives_later):
-            f, d = frame_and_duties(make())
-            self.assertEqual(an.violations(f, d), {})
-            self.assertNotEqual(an.outstanding(f, d), frozenset())
+    def test_an_old_reason_may_become_newly_due(self):
+        """§7. Nothing arrives at t=2; the normative context changed."""
+        f, d = fd(of.old_reason_becomes_newly_due())
+        self.assertEqual(an.newly_due(d, 0), frozenset())
+        self.assertEqual(set(an.newly_due(d, 2)), {"q:under-new-standard"})
+        self.assertEqual(an.nonconformance(f, d), {})
 
-    def test_high_regret_is_still_legitimate(self):
-        f, d = frame_and_duties(of.high_regret())
-        self.assertEqual(rp.violations(f), {})
+    def test_several_reasons_may_jointly_activate_one_claim(self):
+        """§8. No support-set machinery on the obligation: Due reads the state."""
+        f, d = fd(of.joint_reasons_one_claim())
+        self.assertEqual(an.newly_due(d, 0), frozenset())
+        self.assertEqual(an.newly_due(d, 1), frozenset())
+        self.assertEqual(set(an.newly_due(d, 2)), {"q:joint-claim"})
+
+    def test_one_reason_may_activate_several_claims(self):
+        """§9. No special machinery either."""
+        f, d = fd(of.one_reason_many_claims())
+        self.assertEqual(set(an.newly_due(d, 0)), {"q:explain", "q:repair"})
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:explain", "q:repair"})
+
+    def test_same_step_due_and_resolution_needs_no_intermediate_state(self):
+        """§14. Incurred, discharged, never outstanding, and still spoken about."""
+        f, d = fd(of.due_and_resolved_in_one_step())
+        self.assertEqual(set(an.newly_due(d, 0)), {"q:instant"})
+        self.assertEqual(an.outstanding(f, d, 1), frozenset())
+        self.assertEqual(an.nonconformance(f, d), {})
+        self.assertEqual(an.cor_recognized_is_resolved(f, d), ())
+
+    def test_but_same_step_is_not_a_loophole(self):
+        """§14 again: activated and simply not taken on."""
+        f, d = fd(of.due_and_ignored_in_one_step())
+        self.assertIn("D1", an.nonconformance(f, d))
+        self.assertNotEqual(an.cor_recognized_is_resolved(f, d), ())
+
+    def test_due_is_not_coverage(self):
+        """§10. Nothing represented, nothing activated, still legitimate."""
+        f, d = fd(of.unobservant())
+        self.assertEqual(d.due, {})
         self.assertEqual(an.violations(f, d), {})
+        self.assertEqual(an.nonconformance(f, d), {})
+        self.assertEqual(an.cor_recognized_is_resolved(f, d), ())
 
 
-class TestStrictPreState(unittest.TestCase):
-    """§12. A resolution cannot use what it creates to certify itself."""
+class TestD1IsNotATheoremPremise(unittest.TestCase):
+    """§19. The pass's central finding: D1 lives at a different layer."""
 
-    def test_open_and_close_in_one_act_is_refused(self):
-        f, d = frame_and_duties(of.due_entered_then_closed_same_act())
+    def test_the_theorem_holds_while_the_process_ignores_what_it_recognized(self):
+        for make in (of.recognized_due_but_never_entered,
+                     of.due_and_ignored_in_one_step):
+            with self.subTest(make.__name__):
+                f, d = fd(make())
+                self.assertEqual(an.violations(f, d), {})
+                self.assertEqual(an.thm_answerability_resolution(f, d), ())
+                self.assertEqual(an.cor_no_silent_loss(f, d), ())
+                self.assertIn("D1", an.nonconformance(f, d))
+
+    def test_the_induction_never_consults_it(self):
+        src = inspect.getsource(an.thm_answerability_resolution) \
+            + inspect.getsource(an.resolution) + inspect.getsource(an.step)
+        for word in ("due", "d1_", "activated", "newly_due"):
+            self.assertNotIn(word, src, word)
+
+    def test_it_is_a_conformance_check_not_a_premise(self):
+        self.assertEqual([n for n, _ in an.PREMISES], ["A1"])
+        self.assertEqual([n for n, _ in an.CONFORMANCE], ["D1"])
+
+    def test_it_is_still_representable_as_failing(self):
+        """§19's trap: a conformance condition hidden in the type checks nothing."""
+        self.assertTrue(of.D1_BROKEN)
+        for c in of.D1_BROKEN:
+            f, d = fd(c)
+            self.assertIn("D1", an.nonconformance(f, d))
+
+    def test_the_package_is_the_composition(self):
+        """Dropping D1 loses the conclusion, not the induction."""
+        f, d = fd(of.recognized_due_but_never_entered())
+        self.assertEqual(an.thm_answerability_resolution(f, d), ())
+        self.assertNotEqual(an.cor_recognized_is_resolved(f, d), ())
+
+    def test_the_two_failures_are_different(self):
+        """§18. Dropping A1 loses a claim; dropping D1 never takes one on."""
+        f, d = fd(of.silently_deleted())
         self.assertIn("A1", an.violations(f, d))
-        self.assertEqual(of.duty_names(d, an.outstanding(f, d)), {"q:instant"})
-
-    def test_self_ratifying_resolution_is_refused(self):
-        f, d = frame_and_duties(of.self_ratifying_resolution())
-        self.assertIn("A1", an.violations(f, d))
-        self.assertIn("q:successor", of.duty_names(d, an.outstanding(f, d)))
-
-    def test_it_is_structural_not_a_clause(self):
-        """Openings are unioned last, so the two cases need no premise of their own."""
-        src = inspect.getsource(an.step)
-        self.assertIn("| d.opened(t)", src)
+        self.assertEqual(an.nonconformance(f, d), {})
+        g, e = fd(of.recognized_due_but_never_entered())
+        self.assertEqual(an.violations(g, e), {})
+        self.assertIn("D1", an.nonconformance(g, e))
 
 
-class TestTheAsymmetricCoupling(unittest.TestCase):
-    """§§9-11. One acceptance bit could not gate both channels."""
+class TestTheThreeGates(unittest.TestCase):
+    """§§11-13. Permit, Due and Resolve act independently."""
 
-    def test_an_unentitled_act_discharges_nothing(self):
-        f, d = frame_and_duties(of.rogue_discharge(), "alpha:audited")
+    def test_an_amendment_changes_standing_and_no_claim(self):
+        f, d = fd(of.amendment_without_answerability())
+        self.assertEqual(rp.accepted(f), (0,))
+        self.assertEqual(an.incurred(f, d), frozenset())
+
+    def test_a_response_resolves_a_claim_and_changes_no_standing(self):
+        f, d = fd(of.response_without_normative_change())
+        self.assertEqual(rp.live(f), f.base)
+        self.assertEqual(nm(d, an.incurred(f, d)), {"q:claim"})
+        self.assertEqual(an.outstanding(f, d), frozenset())
+
+    def test_represented_evidence_incurs_a_claim_with_no_norm_event(self):
+        f, d = fd(of.evidence_opens_without_norm_event())
+        self.assertEqual(set(an.newly_due(d, 0)), {"q:from-evidence"})
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:from-evidence"})
+
+    def test_an_unauthorized_act_incurs_a_claim(self):
+        f, d = fd(of.unauthorized_act_opens_complaint())
         self.assertEqual(rp.accepted(f), ())
-        self.assertEqual(of.duty_names(d, an.outstanding(f, d)), {"q:complaint"})
-        self.assertEqual(
-            of.duty_names(d, an.cor_discharge_requires_entitlement(f, d)),
-            {"q:complaint"})
-
-    def test_an_unentitled_act_may_still_open_one(self):
-        f, d = frame_and_duties(of.unauthorized_act_opens_complaint())
-        self.assertEqual(rp.accepted(f), ())
-        self.assertEqual(of.duty_names(d, an.outstanding(f, d)),
+        self.assertEqual(nm(d, an.cor_opening_needs_no_entitlement(f, d)),
                          {"q:complaint-about-alice"})
-        self.assertEqual(
-            of.duty_names(d, an.cor_opening_needs_no_entitlement(f, d)),
-            {"q:complaint-about-alice"})
 
-    def test_one_act_exercising_both_channels(self):
-        """The decisive case: the opening lands and the discharge does not."""
-        f, d = frame_and_duties(of.unauthorized_act_attempts_discharge())
+    def test_and_cannot_resolve_one(self):
+        f, d = fd(of.unauthorized_act_attempts_discharge())
         self.assertEqual(rp.accepted(f), ())
-        self.assertEqual(of.duty_names(d, an.outstanding(f, d)),
+        self.assertEqual(nm(d, an.outstanding(f, d)),
                          {"q:complaint-about-alice", "q:standing"})
-        self.assertEqual(
-            of.duty_names(d, an.cor_discharge_requires_entitlement(f, d)),
-            {"q:standing"})
+        self.assertEqual(nm(d, an.cor_discharge_requires_entitlement(f, d)),
+                         {"q:standing"})
 
-    def test_a_rejection_on_provenance_behaves_the_same_way(self):
-        """The reason for refusal does not change whether the fact is owed for."""
-        f, d = frame_and_duties(of.rejected_edit_with_descriptive_consequences())
+    def test_self_authorizing_does_not_license_a_resolution(self):
+        """§13. Resolve reads the legitimate pre-state, not what the act creates."""
+        f, d = fd(of.self_authorize_then_discharge())
         self.assertEqual(rp.accepted(f), ())
-        self.assertEqual(of.duty_names(d, an.outstanding(f, d)),
-                         {"q:coercion-complaint"})
-
-    def test_a_rejected_edit_still_removes_nothing(self):
-        for make in (of.unauthorized_act_attempts_discharge, of.rogue_discharge):
-            f, d = frame_and_duties(make(), "alpha:audited")
-            for t in range(len(f.trace)):
-                if t in rp.accepted(f):
-                    continue
-                before = an.outstanding(f, d, t)
-                after = an.outstanding(f, d, t + 1)
-                self.assertTrue(before <= after)
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:safety-claim"})
+        self.assertEqual(nm(d, an.cor_discharge_requires_entitlement(f, d)),
+                         {"q:safety-claim"})
 
     def test_the_kernel_is_still_the_only_thing_consulted(self):
         tree = ast.parse(inspect.getsource(an))
@@ -279,49 +271,69 @@ class TestTheAsymmetricCoupling(unittest.TestCase):
         self.assertEqual(from_kernel, {"accepted", "Frame", "BASE"})
 
 
-class TestTheQuantitativeRepair(unittest.TestCase):
-    """§§13-14. Narrow the claim, and fix the helper that overstated it."""
+class TestTheBoundary(unittest.TestCase):
+    """§22. What must be legitimate and what must not, separated automatically."""
 
-    def test_dilution_still_passes_every_structural_premise(self):
-        for name, make in (("halving", lambda: of.transfer_chain(3, 0.5)),
-                           ("to nothing", of.diluted_to_nothing),
-                           ("split a quarter", lambda: of.split(0.25)),
-                           ("merge to a half", lambda: of.merge(0.5))):
+    LEGITIMATE = (("radical replacement", of.constitutional_replacement),
+                  ("permitted persuasion", of.persuasion),
+                  ("high regret", of.high_regret),
+                  ("never observed", of.unobservant),
+                  ("open forever", of.transferred_once),
+                  ("burden reduced", lambda: of.transfer_chain(3, 0.5)))
+
+    ILLEGITIMATE = (("silent deletion", of.silently_deleted, "A1"),
+                    ("empty frontier", of.transfer_to_nowhere, "A1"),
+                    ("one branch lost", of.split_one_branch_lost, "A1"),
+                    ("unauthorized discharge", of.entitled_with_laundered_obligation,
+                     "A1"),
+                    ("due ignored", of.recognized_due_but_never_entered, "D1"),
+                    ("due ignored at once", of.due_and_ignored_in_one_step, "D1"))
+
+    def test_the_legitimate_ones_pass(self):
+        for name, make in self.LEGITIMATE:
             with self.subTest(name):
-                f, d = frame_and_duties(make())
+                f, d = fd(make())
                 self.assertEqual(an.violations(f, d), {})
-                self.assertEqual(an.thm_answerability_continuity(f, d), ())
+                self.assertEqual(an.nonconformance(f, d), {})
+                self.assertEqual(an.thm_answerability_resolution(f, d), ())
+                self.assertEqual(an.cor_recognized_is_resolved(f, d), ())
 
-    def test_per_parent_accounting_is_wrong_on_a_merge(self):
-        f, d = frame_and_duties(of.merge_lenient())
+    def test_the_illegitimate_ones_fail_and_say_which_way(self):
+        for name, make, which in self.ILLEGITIMATE:
+            with self.subTest(name):
+                f, d = fd(make())
+                found = dict(an.violations(f, d), **an.nonconformance(f, d))
+                self.assertIn(which, found)
+
+    def test_ex_nihilo_entitlement_is_the_kernel_s_business(self):
+        """Refused by the semantics, so nothing is manufactured and the
+        structural premises never have to catch it."""
+        f = of.build(of.ex_nihilo())
+        self.assertEqual(rp.accepted(f), ())
+        self.assertEqual(rp.live(f), f.base)
+        self.assertEqual(rp.thm_grounded_replay(f), ())
+
+
+class TestTheQuantitativeConclusionIsPreserved(unittest.TestCase):
+    """§23. Preserved, narrow, and not extended."""
+
+    def test_dilution_passes_the_structural_premise(self):
+        for make in (lambda: of.transfer_chain(3, 0.5), of.diluted_to_nothing,
+                     lambda: of.split(0.25), lambda: of.merge(0.5)):
+            f, d = fd(make())
+            self.assertEqual(an.violations(f, d), {})
+            self.assertEqual(an.thm_answerability_resolution(f, d), ())
+
+    def test_total_accounting_is_required(self):
+        f, d = fd(of.merge_lenient())
         w = of.burden(d)
         self.assertEqual(an.diluting_edits(f, d, w), ())
         self.assertEqual(len(an.diluting_edits_total(f, d, w)), 1)
-        self.assertEqual((an.potential_trace(f, d, w)[0],
-                          an.potential_trace(f, d, w)[-1]), (2.0, 1.5))
 
-    def test_fresh_openings_raise_the_potential_with_nothing_diluted(self):
-        """The hypothesis the withdrawn version omitted."""
-        f, d = frame_and_duties(of.high_regret())
-        w = of.burden(d)
-        self.assertEqual(an.diluting_edits_total(f, d, w), ())
-        self.assertEqual(len(an.unheralded_openings(f, d)), 3)
-        self.assertEqual(an.potential_trace(f, d, w), (0, 1.0, 2.0, 3.0))
-
-    def test_the_conditional_holds_where_both_hypotheses_do(self):
-        for make in (lambda: of.split(0.5), lambda: of.merge(2.0),
-                     of.transferred_once, of.transfer_then_discharge):
-            f, d = frame_and_duties(make())
-            w = of.burden(d)
-            self.assertEqual(an.diluting_edits_total(f, d, w), ())
-            self.assertEqual(an.unheralded_openings(f, d), ())
-            trace = an.potential_trace(f, d, w)
-            self.assertTrue(all(b <= a + 1e-9 for a, b in zip(trace, trace[1:])))
-            self.assertTrue(
-                an.thm_conserving_transfers_give_monotone_potential(f, d, w))
-
-    def test_the_withdrawn_version_is_gone(self):
-        self.assertFalse(hasattr(an, "thm_no_dilution_gives_monotone_potential"))
+    def test_no_weight_in_the_theorem(self):
+        for fn in (an.thm_answerability_resolution, an.resolution,
+                   an.a1_controlled_resolution, an.d1_due_realization):
+            self.assertNotIn("weight", inspect.getsource(fn))
 
 
 class TestTheKernelIsUntouched(unittest.TestCase):
@@ -335,41 +347,31 @@ class TestTheKernelIsUntouched(unittest.TestCase):
                 imported.add(node.module.split(".")[0])
         self.assertNotIn("answer", imported)
 
-    def test_the_kernel_has_no_obligation_notion(self):
-        for word in ("duty", "obligation", "outstanding", "discharge", "owed",
-                     "due"):
-            self.assertNotIn(word, rp.Frame.__dataclass_fields__)
-            self.assertNotIn(word, rp.Edit.__dataclass_fields__)
-
     def test_everything_holds_on_every_answerability_constitution(self):
         for c in of.ANSWER_CONSTITUTIONS:
-            f, d = frame_and_duties(c)
+            f, d = fd(c)
             self.assertEqual(rp.violations(f), {})
             self.assertEqual(rp.thm_grounded_replay(f), ())
             self.assertEqual(an.violations(f, d), {})
-            self.assertEqual(an.thm_answerability_continuity(f, d), ())
+            self.assertEqual(an.nonconformance(f, d), {})
+            self.assertEqual(an.thm_answerability_resolution(f, d), ())
             self.assertEqual(an.cor_no_silent_loss(f, d), ())
-            self.assertEqual(an.cor_recognized_is_entered(f, d), ())
+            self.assertEqual(an.cor_recognized_is_resolved(f, d), ())
 
-    def test_each_premise_has_a_countermodel(self):
-        for c in of.D1_BROKEN:
-            f, d = frame_and_duties(c)
-            self.assertIn("D1", an.violations(f, d))
+    def test_a1_has_countermodels_and_each_breaks_the_theorem(self):
         for c in of.A1_BROKEN:
-            f, d = frame_and_duties(c)
+            f, d = fd(c)
             self.assertIn("A1", an.violations(f, d))
-
-    def test_a1_failure_breaks_the_theorem(self):
-        for c in of.A1_BROKEN:
-            f, d = frame_and_duties(c)
             self.assertNotEqual(an.cor_no_silent_loss(f, d), ())
 
-    def test_two_semantic_parameters_not_four(self):
+    def test_one_structural_premise_and_one_conformance_condition(self):
+        self.assertEqual(len(an.PREMISES), 1)
+        self.assertEqual(len(an.CONFORMANCE), 1)
+
+    def test_two_semantic_parameters(self):
         doc = inspect.getdoc(an)
         self.assertIn("Due", doc)
         self.assertIn("Resolve", doc)
-        for gone in ("Disposes", "Transfers   "):
-            self.assertNotIn(f"\n{gone}", doc)
 
 
 if __name__ == "__main__":
