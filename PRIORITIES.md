@@ -1071,6 +1071,205 @@ states exactly which of its functions must newly read `V`.
 *Consumed by:* the round taking these waists to real normative practice, which is
 where open-textured reasons first arrive.
 
+### 66. Grounded Replay in Lean — **[entry]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Two types, one fold, two premises, one induction and three corollaries. No
+dependency on either reference model or on Reflective Integrity, and the whole
+statement fits on a page.
+
+Four passes were needed before this was worth doing, and each found a false or
+missing statement in the one before: a rule whose licences need not be grounded, a
+frontier an unauthorized revocation can empty, a grounding theorem an ungrounded
+creation refutes, and a certificate that answered a currentness question with a
+lineage. Porting any of them would have frozen a false statement.
+
+*Deliverable shape:* `Occ`, `Edit`, `replay`, `S1` and `S2` as explicit
+hypotheses; the grounding theorem and its three corollaries proved; an
+inhabitation witness for the full hypothesis package, per `AGENTS.md` standard 3.
+*Acceptance check:* sorry-free, `#print axioms` clean, and the witness is the
+constitution model rather than a record — the point is that the theorem does not
+mention one.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`,
+the `MINIMAL MATHEMATICAL STATEMENT` section; `src/replay.py`.
+*Consumed by:* any round wanting to cite grounded legitimacy as established rather
+than as test-supported.
+
+### 70. A current-state certificate — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+A grounding tree certifies that an occurrence was legitimately issued. It cannot
+certify that it is still in force: a tree is built from grounds, disposals are not
+grounds, and so no tree names the revocation that would defeat it.
+
+Both consumers need currentness. Deference is deferring to a judgment *now*, and
+an authority since revoked is not one; enforcement's target is what is in force.
+So the interface currently offers a cheap certificate for the half neither
+consumer can use alone, and requires a replay for the half they need.
+
+Three routes and nothing here builds the second: the recognizer replays the
+prefix; the process commits to a state and proves the delta since it; the
+recognizer accepts an attestation and records that as trust.
+
+*Deliverable shape:* either a commitment-and-delta object with a soundness
+statement, or an argument that currentness is irreducibly a replay, with what that
+costs a recognizer.
+*Acceptance check:* the missed-revocation and lineage-versus-current processes are
+decided correctly by whatever object is proposed.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CROSS_PROCESS_INTERFACE.md`
+§§1-3.
+*Consumed by:* both consumer theorems.
+
+### 67. A capability on authority-bearing standing — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The abstract interface requires a permission relation to be consulted: a valid
+edit is one its grounds permit *for this edit*, which is what refuses an authority
+acting outside its domain. Reflective Integrity has nothing to realize it with.
+`PAuth` carries a `SchemaCode` and no capability, so the permission clause is the
+identity on a record whose authority is a bare `PAuth`.
+
+The Proper Exercise round settled that an **external rule cannot substitute**.
+`PProto`'s `covers` is a capability, but a `NormEvent` has no slot for citing a
+governing protocol: `schemaRef` names a `PAuth` and `steps` name `PAuth`s. So
+this is a type change rather than a discipline.
+
+The same round settled what the field would and would not buy. It makes the
+escalation question *statable* on a record; it does not make any no-escalation
+theorem true, because propriety remains semantic.
+
+*Deliverable shape:* either a capability on authority-bearing standing with the
+admission clause that reads it, or a slot for an event to cite a governing
+protocol, with the fourteen separations run against a record realization.
+*Acceptance check:* a record in which a grounded authority acts outside its
+declared capability is refused, and the corresponding constitution agrees.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/PROPER_EXERCISE.md`,
+the kernel section; `.../2026-08-24-reflective-integrity-core/REFLECTIVE_INTEGRITY_CORE.md`
+§11.
+*Consumed by:* any round wanting the jurisdiction separations to hold of a record
+rather than only of a constitution.
+
+### 68. Discharging provenance adequacy — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The descriptive provenance view of an act must expose every dependency of the
+authorization judgment that the stated threat class cares about. The round tried
+four times to state this non-circularly and has not: it is not "assume the
+relevant influences are visible", not "refuse every influence" — that refuses
+permitted persuasion — and not derivable from a record whose own episodes cover by
+construction.
+
+It is currently carried as a boolean the extraction must justify, which is honest
+and is not a condition.
+
+*Deliverable shape:* either an adequacy property that is non-circular, compatible
+with permitted persuasion, and falsified by the hidden-dependency fixtures, or an
+argument that none exists without a world counterfactual, with the counterexample.
+*Acceptance check:* the unlinked arm of the Carroll round's split-episode fixture
+and `cases.partial_effect_pair` both fail the proposed condition, and
+`office.persuasion` passes it.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§8; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6.
+*Consumed by:* any round treating a legitimate state as evidence about an external
+process rather than about its own declarations.
+
+### 69. Bounded-lifetime liability — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The enforcement consumer wants: a norm that is legitimately live over an interval
+is enforced throughout it. The legitimacy interface now supplies the interval —
+`NormView_s` and the lifetime it induces — and the liability theory supplies a
+charge, an allocation to each force-bearing standing, and a **global** bound
+`sum_t c_t <= Phi_0 + sum_t eta_t`.
+
+What is missing is the per-norm statement: that the charge allocated to one norm
+over its own lifetime is bounded by an allowance attached to it at issuance, and
+that such allowances are summable. Three things it needs and none of which
+exists — an allowance minted with the norm, at the `MINT` seam the answerability
+scout names; charging against the norm's own episode; and either a finite lifetime
+or a decaying allocation, since the per-date deficit provably does not fall with
+increasing settlement.
+
+**Narrowed by the Legitimate Evolution round**, and the narrowing is itself
+narrow: any such bound is a condition on the succession semantics rather than a
+structural theorem, which does **not** mean no legitimacy semantics may impose
+one. A `Resolve` that refuses a successor not genuinely carrying its predecessor
+is coherent; the structural layer cannot see it only because it cannot see any
+content. Four constitutions transfer
+every obligation to a named successor, satisfy both structural premises and the
+continuity theorem, and reduce the total burden — one of them to zero. So the
+per-norm statement must be sought as a hypothesis on `Transfers` and stated in
+**total** accounting: per-parent accounting is not a weaker form of it but a wrong
+one, and a merge of two obligations of weight 1 into one of weight 1.5 passes
+per-parent while the total falls.
+
+*Deliverable shape:* the per-norm bound with its local laws, or the witness
+showing it cannot hold at presentation level.
+*Acceptance check:* the slice's driven run exhibits a norm whose lifetime charge
+exceeds any allowance attachable at issuance, or the bound holds on it.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/TRADERIZATION_CONSUMER.md`
+§4; `.../2026-08-25-end-to-end-vertical-slice/ANSWERABILITY_SCOUT.md` §§4, 8;
+`.../2026-08-25-legitimate-evolution/ANSWERABILITY.md` §4.
+*Consumed by:* `PersistentLegitimateEnforcement`, and by item 61.
+
+---
+
+### 71. Build the due-activation term in `roots()` — **[open]** — *specified, not built*
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+**Narrowed from a gap to an implementation task.** Legitimate Evolution needs the
+conformance condition `D1`: every rising edge of `Due` must be realized by an
+incurred claim. The seam in Reflective Integrity is now determined, and it uses
+only functions that already exist.
+
+```python
+def active_due(self, t=None):            # Due supplied, as Permit is
+    return self.due_sem(self.reasons(t), self.prestate(self._at(t)))
+
+def new_due(self, t):
+    prev = self.active_due(t - 1) if t > 0 else frozenset()
+    return self.active_due(t) - prev
+
+def roots(self, t=None):
+    out = list(self.seed.roots0)
+    for a in self.norm_events(t):
+        out.extend(self.mint(a))
+    for u in range(1, self._at(t) + 1):                    # the seam
+        out.extend(self.mint_due(k, u) for k in self.new_due(u))
+    return tuple(out)
+```
+
+`reasons(t)` already exposes the represented ledger as a prefix function,
+`prestate` already exists, and `mint_ids` already keys ids by position so two
+episodes of one claim key get distinct ids for free. **No new event kind.**
+
+Three things to get right when building it. `Due` is a **level** and the edge is
+taken against its own prior output, never against `roots` or `live` — otherwise
+answerability decides what is owed. `D1` is an **inclusion**: carriage already
+mints roots and must keep doing so. And because `roots` stays a pure function of
+history, `D1` holds by construction in the semantic state; the conformance failure
+lives at the boundary where a record is materialized or certified, so the check
+belongs in whatever ships a record, as a recomputation.
+
+Note the name collision to avoid: RI's existing `due(q,t)` means *this live root's
+episode is being succeeded*, which is unrelated.
+
+*Deliverable shape:* the activation term, plus a verifier that recomputes rising
+edges from a shipped record and compares them against its roots.
+*Acceptance check:* a record in which no step is appended between two states and a
+claim nevertheless activates because the normative context changed; its negative,
+a resolved claim whose material stays represented and does not reactivate; and a
+recurrence, where a claim key falls and rises and mints a second root.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/ANSWERABILITY.md`,
+*RI REALIZATION OF D1*; `COUNTERMODELS.md` §19.
+*Reserved:* implementing it edits the Reflective Integrity Core round's artifact.
+
 ---
 
 ## Deference line

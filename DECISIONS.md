@@ -95,7 +95,321 @@ commit.
   *Turns on:* where the program is going — this is *what is worth proving*, which
   no round decides.
 
+- **Whether the deference kernel's grade acquires an index.** `GradeTrust` types
+  the principal's grade as `C -> P -> Q` with no time, process or standing on it,
+  so the legitimacy premise a cross-process deference theorem would consume has
+  nowhere to attach. The change is one field — `W : A -> C -> P -> Q` — plus a
+  stated hypothesis that the grade is a function of the authority in force, and
+  it revises no registered statement, since `delegation_bridge` is proved for
+  every `W`. Read
+  `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CONSUMER_TEST.md`
+  §§2 and 6. *Turns on:* whether the deference line is being restarted, and what
+  a paper needs. It is a specification-layer edit in a paused line, and the round
+  has no evidence about either.
+
 ## Settled
+
+### 2026-08-26 — proper exercise is semantic input, not a theorem module
+
+**agent-decided, reversible.** A round went looking for the smallest mathematical
+structure between *this authority is grounded* and *this act was within it*, and
+found that there is none to have.
+
+The evidence is a pair of constitutions with the same base and the same act —
+identical grounds, disposals, issued content and declared evidence — both
+satisfying every premise and every corollary of Grounded Replay. One refuses the
+act. The other accepts it and the state gains a capability nobody licensed. The
+difference is whether the permission relation reads what the act puts in force.
+So a no-escalation theorem would have to quantify over permission relations, and
+none is true.
+
+Two results survive and both are inherited from the kernel's typing rather than
+from any structure on permission: no edit's permission can rest on a capability
+it creates, which follows from strict pre-state evaluation and freshness; and
+reach is non-increasing when no accepted edit widens beyond its basis, which is
+the naive delegation rule available as a conditional and false as an axiom.
+
+The practical consequence is that permission stays an opaque parameter and the
+round does not wrap it in theorem language. Fourteen separations — jurisdiction,
+delegation four ways, self-amendment, total constitutional replacement, threshold
+authority, a veto, ex-post rationalisation — are all decided by it and none of
+them needed it to have internal structure.
+
+*Rejected alternative:* a capability calculus or a proof system for exercise,
+either of which would have added an ontology without adding a theorem.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/PROPER_EXERCISE.md`.
+
+### 2026-08-26 — an act's grounds are part of the act
+
+**agent-decided, reversible.** Legitimacy is tied to the exercise route actually
+taken, not to the existence of some route that would have worked.
+
+An act invoking a basis that does not authorize it is refused even when a basis
+that would have authorized it sits live and unused beside it. Invoking the other
+one would be a different act, at a different position, issuing different
+occurrences — so the kernel's no-laundering corollary already forecloses ex-post
+rationalisation, and nothing further is needed.
+
+This settles a question the round had left open: no proof-relevant exercise
+witness is required, because the support is already in the edit.
+
+*Rejected alternative:* existential quantification over admissible bases, which
+would have made every act proper that any live authority could have performed.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/PROPER_EXERCISE.md`
+§3.
+
+
+### 2026-08-26 — an occurrence is identified by trace position, not by historical time
+
+**agent-decided, reversible.** The previous formulation made an edit's identity
+its historical index and left that index a free field, so two edits at one time
+issued the same occurrence and a claim that freshness followed from the type
+rested on an unstated premise.
+
+The trace is a list. Position is identity and order at once, and freshness stops
+being a premise. A realization that wants to record when an act happened carries
+that as data; two acts at one moment still issue distinct occurrences.
+
+What the theorems consume is unique **birth**, not unique issuance of a content —
+which is what lets the same policy be adopted twice, once illicitly and once
+cleanly.
+
+*Rejected alternative:* a separate edit identity with historical time beside it,
+which buys the same freshness at the cost of a second index nothing else uses.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§2.
+
+### 2026-08-26 — semantic validity is defined, not constrained
+
+**agent-decided, reversible.** The previous formulation kept validity primitive
+and assumed three implications about it, leaving it free to reject an edit that
+was grounded, permitted and provenance-adequate for no stated reason. Nothing
+needed that freedom.
+
+Validity is now the conjunction of prior grounding, a non-empty ground set for a
+state-changing edit, provenance completeness, and permission. The first two are
+the kernel's premises; the last two are the semantic layer's parameters.
+
+This also splits descriptive provenance from normative permission. Provenance
+answers whether Bob argued, whether a signature was forged, whether the actor was
+coerced; permission answers what those facts mean. The previous provenance
+predicate could only refuse an influence, which is why permitted persuasion had
+to be handled as an exception.
+
+*Rejected alternative:* a primitive validity relation with hypotheses on it.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
+§2.
+
+### 2026-08-26 — a grounding certificate is about origin, not currentness
+
+**agent-decided, reversible.** The grounding theorem ranges over what the replay
+has ever admitted, not over what is in force. A tree is built from grounds, and
+disposals are not grounds, so it structurally cannot witness that nothing later
+removed the occurrence.
+
+The previous certificate conflated the two by requiring the occurrence to be live
+before building a tree, and so answered a currentness question with a lineage
+object. Both consumers turn out to need currentness, so this is a cost the
+interface now states rather than hides: a current-state claim needs a replay, a
+commitment plus a delta proof, or an attestation.
+
+*Rejected alternative:* keeping the liveness check inside the certificate, which
+made the object look cheaper than it is.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CROSS_PROCESS_INTERFACE.md`
+§1.
+
+
+### 2026-08-25 — the legitimate state is replayed, not filtered
+
+**agent-decided, reversible.** Re-rules the same day's frontier entry below,
+which defined what is legitimately in force as the raw lifecycle intersected with
+a derivability set.
+
+A register in which a rogue authority — correctly refused — revokes a legitimate
+norm decides it: the norm left the frontier because *something* in the raw
+process removed it, and the persistence theorem reported no violation, because
+its hypothesis was that no exercise acts on the object and one did. An attacker
+with no legitimate authority could subtract from the enforcement target.
+
+The legitimate state is now rebuilt from the recognized base by replaying the
+proposed edits and applying the valid ones. A rejected edit is a no-op, so a
+revocation nobody was entitled to make removes nothing.
+
+*Rejected alternative:* the filtered frontier, which the round shipped and
+tested.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§1.
+
+### 2026-08-25 — legitimacy is judged locally, not by outcome survival
+
+**agent-decided, reversible.** Whether an exercise is legitimate is now: did
+prior legitimate authority permit this exact edit, given this declared input and
+this evidence of authentic exercise. It is not: does the edit survive removal of
+the influence.
+
+The case that decides it is ordinary persuasion. An agent with authority to
+revise is argued into a revision; remove the argument and the revision does not
+happen; challenge survival scores that as dependence. A legitimacy theory that
+cannot let an agent be argued into a revision is not describing the learning this
+programme exists to describe.
+
+The cost is stated rather than absorbed: a counterfactual test can in principle
+notice a dependence the record does not declare, and a declared-input test
+cannot. The factorization hypothesis is what makes that safe, and it is falsified
+by a record whose effect reads an uncited settlement.
+
+*Rejected alternative:* challenge survival, which the two previous passes carried
+as the central modal condition.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
+§7.
+
+### 2026-08-25 — grounding an authority is not authorizing an exercise
+
+**agent-decided, reversible.** A permit relation is a conjunct of validity. A
+warrant granted cleanly, with impeccable provenance, used outside its domain,
+issues nothing.
+
+The previous formulation checked that an exercise's licence was recursively
+derivable and never what the licence was for, so it established authority
+provenance and not legitimacy of the particular exercise. `Permit` is a
+parameter: the interface requires it be consulted and says nothing about what it
+should say.
+
+This exposes a gap in Reflective Integrity rather than in the interface — `PAuth`
+carries a schema code and no domain — and the round names it instead of letting
+the hypothesis look discharged.
+
+*Rejected alternative:* leaving jurisdiction to the realization's `covers` field
+without an abstract clause requiring it.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§2.
+
+
+### 2026-08-25 — legitimacy parents are not the objects an exercise acts on
+
+**agent-decided, reversible.** Re-rules the same day's entry below, which took
+all of an exercise's targets as its legitimacy parents on the evidence of a merge
+register. A cleanup register decides the other half: a regulator revoking a
+fraudulent warrant and granting a proper one acts on the fraudulent one and
+inherits from its own charter, and a rule reading the objects acted on makes the
+replacement illegitimate.
+
+So the type splits. `affected(t)` is what the exercise acts on and constrains
+nothing; `parents(t)` is what its issue inherits entitlement from and must be
+derivable, all of it. The merge case is unchanged under the split, because there
+the manufactured warrant really is a parent.
+
+In the record calculus a cleanup is a revocation plus a separate creation, and the
+creation inherits from its licence alone — so Reflective Integrity can express
+both and needed no widening.
+
+*Rejected alternative:* one relation for both, which is what the round's first
+pass shipped.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§2.
+
+### 2026-08-25 — an exercise is individuated by what it does
+
+**agent-decided, reversible.** A challenged replay may re-admit an event and have
+it act differently. Whether that counts as the same exercise surviving is a choice
+with consequences: under event identity the issuance-stability axiom needs the
+record's schemas to be pre-state-blind, and under effect identity the
+origin-necessity axiom needs it instead. The condition does not go away, so the
+choice is made on semantics — an act that does something else is not the same act
+— and the realization defaults to effect identity.
+
+The prosecution is the reason this is recorded rather than assumed: the round's
+first reading was that a finer identity would remove the hypothesis, and a record
+whose effect changes in one component and not another shows it does not.
+
+*Rejected alternative:* identifying an exercise with the event id, which is what
+the first pass used and what makes `C28` a defect rather than a repair.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
+§8.1.
+
+### 2026-08-25 — legitimacy does not mention liability
+
+**agent-decided, reversible.** Entitled, answerable and sustainably enforceable
+are three interfaces, and the succession frame carries no liability field. An
+authority that inherits unbounded outstanding liability is still entitled and is
+not serviceable, and folding the second into the first would make an insolvent
+norm *illegitimate* and would make the abstract layer read a price.
+
+The enforcement API already behaves this way: on exhaustion force is withheld and
+"the endorsement keeps its normative standing".
+
+*Rejected alternative:* a bounded-liability clause inside legitimate succession,
+which would have made the enforcement consumer's missing theorem into a
+legitimacy hypothesis instead of a consumer one.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/TRADERIZATION_CONSUMER.md`
+§5.
+
+
+### 2026-08-25 — answerability continuity is not a conjunct of legitimate succession
+
+**agent-decided, reversible.** A record in which an authority is transferred to
+another principal under a licensed schema, and the episode the transfer ended is
+never answered, satisfies every authority-side condition: the standing keeps its
+identifier, its payload and its predecessors, because `applyEffect` is the
+identity on a `Transfer`, and it is derivable against every challenge. Only the
+holder moved, and only the account is outstanding.
+
+Adding answerability continuity to the succession relation would refuse that
+case, in which nothing about the authority is wrong. The account layer is
+therefore separate data with its own two axioms, and a recognizing process that
+wants an answerable counterparty reads it as a second condition rather than
+getting it inside the first.
+
+*Rejected alternative:* a single relation conjoining the two, which is what the
+dispatch's §4 proposed as a candidate ingredient.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§4.
+
+### 2026-08-25 — derivability requires all of an exercise's sources
+
+**agent-decided, reversible.** An exercise that supersedes several authorities at
+once inherits from all of them, so the successor is certified only when every
+source is. The alternative — one certified source suffices — admits a successor
+of a manufactured authority and an earned one whenever the merging act itself
+survives the challenge.
+
+The decision could not be taken inside this repository's own architecture:
+Reflective Integrity's `G6` refuses a supersession whose target is absent, so a
+merge whose sources do not all survive is inadmissible anyway and the two rules
+agree everywhere. A register of offices and appointments, which has no such
+precondition, separates them and is what settled it.
+
+*Rejected alternative:* existential inheritance, under which a lineage through
+the clean half of a pair carries the pair.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§5.
+
 
 ### 2026-08-25 — the enforcement charge is the safety layer's own quantity
 
@@ -1570,3 +1884,129 @@ to the author; dispatch provenance; and the Lean discipline — sorry-free,
 `#print axioms` per file, results auditing to
 `[propext, Classical.choice, Quot.sound]`, and external theory entering only as
 named hypotheses rather than as axioms.
+
+### 2026-08-26 — Legitimate Evolution ships as a named conjunction, not a theorem
+
+Agent-decided, under `AGENTS.md` §6. The two halves have disjoint premises,
+disjoint carriers and disjoint proofs; sharing the acceptance predicate yields one
+corollary and nothing more. Calling the pair a single theorem would name a
+conjunction after its more impressive half, and calling it a semantic definition
+would hide that all four premises are structural. The round's own §5 argues the
+case and its verdict says the packaging is thin.
+
+### 2026-08-26 — the obligation model carries a fourth removal channel
+
+Agent-decided. `Duties` records `drops` — removals the semantics declared neither
+a discharge nor a transfer — separately from discharges. The first version folded
+them together, which made A1 unfalsifiable and let a constitution built to lose an
+obligation pass. A premise stated over a type that cannot violate it is not a
+premise, and the channel is what makes the violating instance representable.
+
+### 2026-08-26 — weight conservation is stated in total, never per-parent
+
+Agent-decided. Both readings are implemented, and they are not ordered by
+strength: `merge_lenient()` sends two obligations of weight 1 to one of weight
+1.5, which passes per-parent and fails in total. Any future conservation law here
+must be the total one and must say so, because the per-parent form would be false
+and would look proved.
+
+### 2026-08-26 — the obligation fold is gated asymmetrically
+
+Agent-decided, under `AGENTS.md` §6, and it reverses the previous pass's shared
+gate. Openings apply whether or not an edit was accepted; discharges and transfers
+apply only when it was. Removing an obligation is an exercise of authority and
+needs entitlement; acquiring one is not, because a process is answerable for what
+happened, including for an act it refused. The corollary the shared gate was
+introduced to secure — an unentitled act discharges nothing — survives unchanged,
+since discharge is still gated.
+
+### 2026-08-26 — A2 is withdrawn as a premise
+
+Agent-decided. Freshness of opened obligations was claimed to make transfer chains
+terminate. It does not; the interval does. A hand-built cycle violating freshness
+in every representable way satisfies the corrected theorem. A2 is retained as
+`fresh_by_construction`, a check on the encoding, and named in no theorem.
+
+### 2026-08-26 — immediate resolution is not expressible, on purpose
+
+Agent-decided. The obligation fold unions openings last, so an obligation opened
+and discharged by one event is outstanding afterwards and the discharge is
+reported as disposing of something not open. A recognized obligation must
+therefore be exhibited for at least one position before it can be resolved. This
+costs one trace position and buys the strict-pre-state discipline on the
+resolution side for free, with no premise of its own.
+
+### 2026-08-26 — `Disposes` and `Transfers` become one parameter `Resolve`
+
+Agent-decided. They were two names for the two answers one function gives: done,
+or carry to these successors. The semantic interface is now `Permit`, `Due`,
+`Resolve`. The formally smallest encoding — a single joint step relation — was
+rejected because it collapses the distinctions the three consumers each need.
+
+### 2026-08-26 — `D1` is a conformance condition, not a structural premise
+
+Agent-decided, under `AGENTS.md` §6, and it corrects the previous pass. The
+answerability induction never consults `D1`; a process with impeccable
+entitlement and no removals at all satisfies A1, the theorem and no-silent-loss
+while never taking on a claim its own semantics activated. `D1` does not make the
+proof work, it makes the conclusion quantify over the right set. It is checked
+separately, reported separately, and the package is the composition. The
+distinction is not cosmetic: a structural premise is discharged by construction,
+a conformance condition has to be checked against an implementation and can fail
+there while every theorem still holds.
+
+### 2026-08-26 — `Due` is an activation generator over the represented state
+
+Agent-decided. Not a predicate on a reason occurrence: a persistent predicate
+makes answering an answerable claim illegitimate, because the reasons stay
+represented and keep reactivating it, and activating on a reason's arrival misses
+material that only a later normative state makes owed. `Due` returns claim keys;
+newly due is what it returns minus what is already incurred; the structure mints
+the occurrence. This supersedes the previous pass's recommendation of a
+reason-keyed minting seam for Reflective Integrity.
+
+### 2026-08-26 — incurred and outstanding are separate sets
+
+Agent-decided. The answerability analogue of `Admitted` and `Live`. The theorem
+quantifies over incurred, so a claim incurred and resolved by one event is still
+something it speaks about, and same-step resolution needs no bureaucratic delay.
+This reverses the previous pass's decision that immediate resolution should be
+inexpressible: the protection that decision was reaching for comes from `Resolve`
+reading the strict pre-state, not from the order of unions.
+
+### 2026-08-26 — carried successors need not be fresh
+
+Agent-decided. The carry law is that the successor set is non-empty and lies in
+the next outstanding state. Requiring freshness refused ordinary consolidation
+into a claim already outstanding, which the derivation handles correctly. The
+relaxed law also absorbs the strict-pre-state protection on the resolution side,
+since a successor the same event discharges is not outstanding after the step.
+
+### 2026-08-26 — `Due` is a level and its rising edge is what obliges
+
+Agent-decided, under `AGENTS.md` §6, replacing the previous pass's rule that
+newness is claim content not already incurred. That rule forbade recurrence: a
+claim legitimately resolved and then genuinely owed again produced no activation,
+so a process ignoring the second episode conformed silently. It was also circular
+in the direction the dispatch warned about, since memoizing consults the incurred
+set and lets answerability decide what is owed. `NewDue_t = ActiveDue_t \
+ActiveDue_{t-1}` gets persistence, recurrence and non-circularity together and is
+smaller than what it replaces. A falling edge resolves nothing.
+
+### 2026-08-26 — `D1` is an inclusion, never an equality
+
+Agent-decided. Carriage is a second legitimate genesis for a claim: a transfer
+opens a successor that `Due` never activates. Requiring `NewDue_t` to equal what
+is newly incurred would refuse ordinary succession, so the condition is inclusion
+and the architecture has exactly two geneses, activation and carriage.
+
+### 2026-08-26 — the RI seam is a derived projection, not stored mint events
+
+Agent-decided, specified and not implemented. `roots()` gains an activation term
+computed from `reasons()` and `prestate()`, both of which already exist, with ids
+from `mint_ids()` which already keys by position. No new event kind. Because
+`roots` stays a pure function of the history, `D1` then holds by construction in
+the semantic state and relocates to the boundary where a record is materialized or
+certified — which is the right place for a conformance condition, and is where the
+verifier's recomputation catches an omission that no structural check can see.
+Implementing it edits a previous round's artifact and is reserved to the author.
