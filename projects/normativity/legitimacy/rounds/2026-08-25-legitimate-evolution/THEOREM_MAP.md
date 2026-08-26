@@ -118,6 +118,19 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | A24 | Legitimate Evolution is **option B** — two local-to-global theorems plus a Due-realization condition at the realization boundary | DEFINITION, argued in `ANSWERABILITY.md` §10 | entries A8, A18 |
 | A25 | The quantitative conclusions are preserved and not extended: not a generic structural consequence, and total accounting is required | COUNTEREXAMPLE | `TestTheQuantitativeConclusionIsPreserved` |
 | A26 | Grounded Replay is unchanged; `answer.py` reads only `accepted`, `Frame` and `BASE` from it | FINITE-TEST-SUPPORTED, by parsing | `TestTheKernelIsUntouched` |
+| A27 | **Withdrawn.** Newness by memoizing claim content. It forbids recurrence outright: a claim resolved and then genuinely owed again produces no activation | WITHDRAWN, by countermodel | `office.recurrence` |
+| A28 | **`Due` is a level; its rising edge obliges.** `NewDue_t = ActiveDue_t \ ActiveDue_{t-1}` | DEFINITION | `an.newly_due` |
+| A29 | The edge gets persistence, recurrence and non-circularity together; the three candidate rules each fail at least one | COUNTEREXAMPLE, three rules | `TestActivationEpisodes` |
+| A30 | **Non-circular**: the edge consults `Due`'s own prior output, never `Incurred` or `Outstanding`. Memoizing did consult the incurred set | DERIVED, by parsing | `test_the_edge_never_consults_answerability` |
+| A31 | **A falling edge resolves nothing.** What stops being owed is decided by `Resolve` | DERIVED | `office.falling_edge_is_not_resolution` |
+| A32 | Recurrence mints a **second occurrence** on the same claim key, and an ignored second episode is caught at its own position | COUNTEREXAMPLE | `office.recurrence`, `recurrence_ignored` |
+| A33 | **D1 is an inclusion, not an equality.** Carriage is a second legitimate genesis; equality would refuse ordinary succession | COUNTEREXAMPLE | `office.succession_incurs_without_due` |
+| A34 | **Phase order**: descriptive material from the current event, normative standing from the strict pre-state, for both `Due` and `Resolve` | DEFINITION + FINITE-TEST-SUPPORTED | `office.unauthorized_act_opens_complaint` against `self_authorize_then_discharge` |
+| A35 | Radical constitutional change can activate long-standing represented material with nothing new arriving | COUNTEREXAMPLE | `office.refoundation_activates_an_old_reason` |
+| A36 | **The verifier test.** The omission is invisible structurally — Grounded Replay, A1, the theorem and no-silent-loss are all clean — and is caught only by recomputing the activation | COUNTEREXAMPLE | `TestTheVerifierTest` |
+| A37 | **RI seam determined**: a derived activation term in `roots()` using `reasons()`, `prestate()` and `mint_ids()` as they exist. No new event kind. Specified, not built | OPEN — specified | `ANSWERABILITY.md`, *RI REALIZATION OF D1* |
+| A38 | Because `roots` is a pure function of history, D1 holds by construction in the **semantic** state and relocates to the materialization boundary. Not defined away: that boundary is where a record can omit a derived root | DERIVED | `ANSWERABILITY.md` §4 |
+| A39 | **Five layers, five distinct failures**, each with a witness and none caught by another layer's check | FINITE-TEST-SUPPORTED | `ANSWERABILITY.md` §5 |
 
 ## Open
 
@@ -127,7 +140,7 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 | 31 | **Provenance completeness.** The round tried to state it non-circularly and failed; it is an explicit epistemic assumption on the extraction | OPEN — the largest hole, and it has survived four formulations |
 | 32 | **A current-state certificate.** Replay, or a commitment plus a delta proof, or an attestation. Nothing here builds the second | OPEN — and now the interface's main cost |
 | 33 | **Bounded-lifetime liability** | OPEN — `PRIORITIES.md` 69; entry A8 narrows it: any such bound is a condition on `Transfers`, not a structural theorem |
-| 40 | **`Due` has no realizer**, and the seam is now known to be an activation step rather than a reason-keyed mint. RI has the incurred/outstanding split (`roots` against `live`), a resolution channel independent of `NormEvent` (`Respond`), and a successor recursion of the right shape (`continuity_ok`). It has no way for represented material to activate a claim | OPEN — the verdict's gap; quoted against `ri_core.py` in `ANSWERABILITY.md` §9, `PRIORITIES.md` 71 |
+| 40 | **`Due` realization.** The seam is now determined — a derived activation term in `roots()`, no new event kind — and not implemented. What remains is building it, and agreeing `Due` out of band as `Permit` already is | OPEN — narrowed from a gap to an implementation task; `PRIORITIES.md` 71 |
 | 41 | Whether coverage — that some situation *ought* to have become due — is statable at all without a substantive semantics | OPEN — `unobservant()` is legitimate and notices nothing |
 | 34 | Whether `Permit` needs internal structure | OPEN |
 | 35 | Jurisdiction on a Reflective Integrity authority | OPEN — `PRIORITIES.md` 67 |

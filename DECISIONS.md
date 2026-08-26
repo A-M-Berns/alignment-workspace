@@ -1981,3 +1981,32 @@ the next outstanding state. Requiring freshness refused ordinary consolidation
 into a claim already outstanding, which the derivation handles correctly. The
 relaxed law also absorbs the strict-pre-state protection on the resolution side,
 since a successor the same event discharges is not outstanding after the step.
+
+### 2026-08-26 — `Due` is a level and its rising edge is what obliges
+
+Agent-decided, under `AGENTS.md` §6, replacing the previous pass's rule that
+newness is claim content not already incurred. That rule forbade recurrence: a
+claim legitimately resolved and then genuinely owed again produced no activation,
+so a process ignoring the second episode conformed silently. It was also circular
+in the direction the dispatch warned about, since memoizing consults the incurred
+set and lets answerability decide what is owed. `NewDue_t = ActiveDue_t \
+ActiveDue_{t-1}` gets persistence, recurrence and non-circularity together and is
+smaller than what it replaces. A falling edge resolves nothing.
+
+### 2026-08-26 — `D1` is an inclusion, never an equality
+
+Agent-decided. Carriage is a second legitimate genesis for a claim: a transfer
+opens a successor that `Due` never activates. Requiring `NewDue_t` to equal what
+is newly incurred would refuse ordinary succession, so the condition is inclusion
+and the architecture has exactly two geneses, activation and carriage.
+
+### 2026-08-26 — the RI seam is a derived projection, not stored mint events
+
+Agent-decided, specified and not implemented. `roots()` gains an activation term
+computed from `reasons()` and `prestate()`, both of which already exist, with ids
+from `mint_ids()` which already keys by position. No new event kind. Because
+`roots` stays a pure function of the history, `D1` then holds by construction in
+the semantic state and relocates to the boundary where a record is materialized or
+certified — which is the right place for a conformance condition, and is where the
+verifier's recomputation catches an omission that no structural check can see.
+Implementing it edits a previous round's artifact and is reserved to the author.

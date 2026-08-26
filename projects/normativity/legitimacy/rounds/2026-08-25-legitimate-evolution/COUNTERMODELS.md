@@ -338,7 +338,31 @@ The earlier entries in this document are statements that were false or premises
 that could not fail. This is a true and necessary statement sitting one layer away
 from where it was written. Nothing tested wrong; the shape of the claim was wrong.
 
-## 19. What remains open
+## 19. A rule that was right on every case tested and forbade a phenomenon
+
+The activation semantics computed newness by memoizing claim content: a key once
+incurred was never newly due again. That is correct for persistence -- a claim
+whose reasons stay represented does not reopen -- and it silently forbids
+recurrence.
+
+```text
+active at 0,1   claim incurred, discharged at 1
+inactive at 2
+active at 3     a second, genuine episode
+```
+
+Memoization reports no activation at 3. A process that ignores the second lapse
+entirely satisfies the condition, and nothing anywhere reports a problem. The
+model could not express a recurring obligation at all.
+
+Two things about this are worth recording beyond the fix. It passed every case
+the previous pass tested, because none of them had a claim go inactive and come
+back. And it was *circular in the direction §16 of the dispatch warned about*:
+memoizing consults the incurred set, so answerability state was deciding what is
+owed. The repair -- a rising edge on a level, compared against `Due`'s own prior
+output -- is smaller than what it replaces and fixes both faults at once.
+
+## 20. What remains open
 
 **Provenance completeness.** The round tried to state it non-circularly and
 failed. It is not "assume the relevant influences are visible", not "refuse every
@@ -354,30 +378,25 @@ theorem here.
 is nearly vacuous on a record. That is a gap the abstraction exposed and this pass
 deliberately did not repair.
 
-**`Due` has no realizer**, and this pass narrowed the seam and refuted the
-previous pass's proposal for it. Quoting `ri_core.py`: `roots(t)` is
-`seed.roots0` extended by `mint(a)` over `norm_events(t)`; `mint` is typed on
-`NormEvent`; `ReasonOcc` occurs only in `Derivation.leaves` and as the payload of
-a `Reason` step, and `roots` reads neither. RI's `due(q,t)` is
-`live(q,t) and any(disposes(a,q) ...)`, meaning *this live root's episode is being
-succeeded* -- a different predicate wearing the same name.
+**`Due`'s realization is determined and not built.** Re-verified against
+`ri_core.py`: `roots(t)` is `seed.roots0` extended by `mint(a)` over
+`norm_events(t)`, and `roots` never consults `reasons`. But `reasons(t)` already
+exists as a prefix function over `Reason` steps, `prestate` already exists, and
+`mint_ids` already keys ids by position -- so the seam is a derived activation
+term in `roots()` and needs no new event kind.
 
-What RI does already have is three of the four pieces. `roots` never removes, so
-`roots` against `live` is the incurred/outstanding split. `Respond` is its own
-history step and `closed` runs the demand over responses, so resolution is
-already independent of the norm channel. And `continuity_ok` recurses over
-successors with a leaf condition of live-and-not-due.
-
-The missing piece is an activation step over the represented state, evaluated
-after each replay step against what is already incurred. Not a reason-keyed mint,
-which §17 refutes, and not a fifth event kind.
+Because `roots` is a pure function of the history, adding that term makes D1 hold
+by construction in the **semantic** state. It is not thereby defined away: it
+relocates to the boundary where a record is materialized or certified and can omit
+a derived root, and §19's decisive case shows the omission is invisible to every
+structural check. The verifier's job is a recomputation, not an inspection.
 
 Worth recording in the other direction: RI's `continuity_ok` already recurses over
 successors with a leaf condition of live-and-not-due, which is the corrected
 frontier statement. The architecture had the right shape and the abstraction
 shipped the wrong one.
 
-## 20. What no entry above claims
+## 21. What no entry above claims
 
 That the theorem is deep. It is an induction over a list; two of its three
 corollaries are two lines. What it earns is that three successive formulations of

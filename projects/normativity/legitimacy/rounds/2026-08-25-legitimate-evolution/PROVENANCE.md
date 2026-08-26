@@ -66,11 +66,12 @@ Answerability: *claim occurrence* (`Ob`), *incurred*, *outstanding*, *claim key*
 *Answerability Resolution*, *no silent loss*, *controlled resolution* (A1), *due
 realization* (D1), *conformance condition*, *asymmetric gating*, *potential*,
 *dilution*, *total accounting*, *per-parent accounting*, *unheralded opening*,
-*`Due`*, *`Resolve`*.
+*`Due`*, *`Resolve`*, *claim key*, *active due*, *rising edge*, *activation episode*, *falling edge*, *carriage*, *verifier recomputation*.
 
 Withdrawn across rounds 7 and 8: *fresh obligations* (A2), as a premise and then
 entirely; *`Disposes`* and *`Transfers`* as separate parameters, folded into
-*`Resolve`*; the fresh-successor clause in the carry law; and `D1` as a
-*structural premise*, relocated to the realization boundary.
+*`Resolve`*; the fresh-successor clause in the carry law; `D1` as a
+*structural premise*, relocated to the realization boundary; and *newness by
+content memoization*, replaced by the rising edge.
 
 Proper Exercise: *capability* (`Cap`), *reach*, *widening*, *proper exercise*, *authority over authority*, *plenary base*, *jurisdictional self-ratification*, *unauthorized privilege escalation*.

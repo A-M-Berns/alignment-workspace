@@ -554,10 +554,130 @@ That the RI seam is buildable as described. It is specified and not built.
 
 ---
 
+# Ninth pass — activation semantics
+
+**Verdict:** `LEGITIMATE-EVOLUTION-FROZEN`.
+
+## The repair
+
+The activation rule computed newness by memoizing claim content: a key once
+incurred was never newly due again. Correct for persistence, and it forbids
+recurrence.
+
+```text
+active at 0,1   incurred, discharged at 1
+inactive at 2
+active at 3     a second, genuine episode
+```
+
+Memoization reports no activation at 3, so a process that ignores the second lapse
+conforms and nothing reports a problem. The model could not express a recurring
+obligation at all.
+
+Two things about that are worth more than the fix. It passed every case the
+previous pass tested, because none had a claim go inactive and return. And it was
+circular in the direction the dispatch warned about: memoizing consults the
+incurred set, so answerability state was deciding what is owed.
+
+`Due` is now a **level** and its **rising edge** is what obliges:
+`NewDue_t = ActiveDue_t \ ActiveDue_{t-1}`. Smaller than what it replaces, and it
+fixes both faults at once.
+
+```text
+                     no reopening   recurrence   non-circular
+persistent predicate      no            yes          yes
+memoize on content        yes           no           no
+rising edge on a level    yes           yes          yes
+```
+
+A falling edge resolves nothing: what stops being owed is decided by `Resolve`,
+never by reasons ceasing to be represented.
+
+## Phase order
+
+One structure, and both semantic reads take the strict pre-state. Descriptive
+material comes from the current event; normative standing from `L_t`. That is why
+an unauthorized act's own occurrence can activate a complaint at its own position
+while a self-authorizing act cannot license its own resolution.
+
+## Inclusion, not equality
+
+`succession_incurs_without_due` carries a claim to a successor, incurring an
+occurrence `Due` never activates. Equality would refuse ordinary succession, so
+`D1` is `NewDue_t subset NewlyIncurred_t` and the architecture has exactly two
+geneses: activation and carriage. RI has the same two.
+
+## The RI seam, determined
+
+`roots(t)` gains an activation term computed from `reasons()` and `prestate()`,
+with ids from `mint_ids()`. All three already exist; `reasons(t)` is already a
+prefix function over `Reason` steps. **No new event kind.**
+
+Because `roots` stays a pure function of history, `D1` then holds by construction
+in the semantic state. It is not defined away — it relocates to the boundary where
+a record is materialized or certified and can omit a derived root. That is where a
+conformance condition belongs.
+
+## The verifier test
+
+`recurrence_ignored` settles where `D1` lives. Every recorded root has perfect
+continuity; Grounded Replay, A1, the resolution theorem and no-silent-loss are all
+clean; the second lapse was never taken on. The record is internally impeccable
+and incomplete.
+
+Only recomputation catches it: replay `Due`, take rising edges, compare against
+what the record incurred. A consumer that merely inspects cannot tell a complete
+record from an impeccably-kept incomplete one. That requires holding `Due` out of
+band, exactly as replaying standing already requires `Permit`.
+
+## Why frozen
+
+Not because no questions remain. Because five failures now each have a witness and
+none is caught by another layer's check:
+
+```text
+Permit failure           illegitimate standing     S1/S2, Grounded Replay
+Due-conformance failure  an owed claim omitted     D1, by recomputation
+Resolve failure          an owed claim erased      A1, Answerability Resolution
+Coverage failure         reason never represented  outside, deliberately
+Regret failure           exposed repair ignored    outside, downstream
+```
+
+## What this pass does not establish
+
+That the RI seam works. It is specified to the function and **not built**;
+building it edits a previous round's artifact.
+
+That `Due`'s activation form is uniquely minimal. Three rules were tested and two
+refuted; that is not minimality.
+
+That two parties with different `Due` semantics can be reconciled by a record.
+They cannot, and the same is already true of `Permit`.
+
+That the package is right. Five of its predecessors looked right for a pass each,
+and this pass again corrected something the previous pass had just decided.
+
+## Outstanding maintainer actions
+
+1. **Rule on whether the deference kernel's grade acquires an index.** In
+   `DECISIONS.md`'s *Awaiting the author* since the first pass, unchanged through
+   nine dispatches.
+
+2. **Build the activation term, or say it lives outside RI.** Priority 71, now an
+   implementation task with the code shape given. Reserved because it edits the
+   Reflective Integrity Core round's artifact.
+
+3. **No other item is reserved.** The three forks this pass faced it adopted, as
+   dated `DECISIONS.md` entries marked agent-decided and reversible: `Due` as a
+   level with a rising edge; `D1` as an inclusion; the seam as a derived
+   projection rather than stored mint events.
+
+---
+
 ## Attribution
 
 | | |
 |---|---|
-| prompt author | a maintainer, with a model-assisted draft; nine dispatches |
+| prompt author | a maintainer, with a model-assisted draft; ten dispatches |
 | executor | Claude Opus 5 (Anthropic) |
 | dates | 2026-08-25 to 2026-08-26 |

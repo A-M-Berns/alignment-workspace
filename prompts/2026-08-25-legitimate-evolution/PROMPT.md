@@ -5883,3 +5883,986 @@ Use this for the next hostile pass:
 > > **Do not let “Due” mean “this reason remains eternally unresolved,” and do not let the answerability theorem merely preserve a docket someone handed it. Identify the exact moment a represented reason creates a new normative claim, ensure that claim enters the process, and then prove that arbitrary future evolution cannot lose any branch of what became owed except through a legitimate resolution.**
 
 This is the pass where I’d especially want the agent to attack whether `D1` is actually a theorem premise or a realization/conformance condition. That feels like the same class of mistake the earlier rounds repeatedly caught: a morally important sentence can live at a very different layer from the mathematical induction.
+
+---
+
+# Ninth dispatch — 2026-08-26, activation semantics
+
+Verbatim as received.
+
+Use this as the next pass:
+
+> Continue on:
+>
+> ```text
+> round/2026-08-25-legitimate-evolution
+> ```
+>
+> Current verdict:
+>
+> ```text
+> DUE-REALIZATION-GAP
+> ```
+>
+> Treat the abstract Legitimate Evolution package as provisionally stable.
+>
+> Do **not** write Lean.
+>
+> Do **not** reopen Grounded Replay, corrected Answerability Resolution, the A2 result, asymmetric gating, or quantitative liability unless this pass finds an actual contradiction.
+>
+> The sole target is:
+>
+> > **Specify and prosecute the activation semantics for `Due`, and determine the smallest RI realization/conformance mechanism that makes every newly activated Due claim become incurred answerability.**
+>
+> The intended endpoint is either:
+>
+> ```text
+> LEGITIMATE-EVOLUTION-FROZEN
+> ```
+>
+> or a very precise statement of why the Due realization remains unstable.
+>
+> ---
+>
+> # 1. Freeze the current abstract spine
+>
+> Assume the current picture:
+>
+> ```text
+> semantic parameters:
+>     Permit
+>     Due
+>     Resolve
+>
+> structural results:
+>     Grounded Replay
+>     Answerability Resolution
+>
+> realization/conformance:
+>     newly activated Due claims must actually become incurred
+> ```
+>
+> Answerability now distinguishes:
+>
+> ```text
+> Incurred
+> Outstanding ⊆ Incurred
+> ```
+>
+> and the corrected global result quantifies over **incurred** obligations:
+>
+> ```text
+> every incurred obligation has a finite resolution derivation
+> whose frontier is entirely:
+>
+>     discharged
+>
+> or
+>
+>     currently outstanding.
+> ```
+>
+> The structural induction does not consult the Due bridge.
+>
+> That is intentional.
+>
+> ---
+>
+> # 2. Treat D1 as conformance, not structural mathematics
+>
+> Current key result:
+>
+> ```text
+> recognized_due_but_never_entered
+> ```
+>
+> can satisfy:
+>
+> ```text
+> Grounded Replay
+> Answerability Resolution
+> no-silent-loss
+> ```
+>
+> while failing:
+>
+> ```text
+> Due realization.
+> ```
+>
+> Therefore:
+>
+> ```text
+> D1 is not a premise used by the resolution induction.
+> ```
+>
+> It is a **realization/conformance condition**:
+>
+> ```text
+> the implemented record must actually contain the obligations
+> that the supplied Due semantics activates.
+> ```
+>
+> Preserve this distinction.
+>
+> Do not turn D1 back into a theorem premise just because it is necessary for the overall legitimacy claim.
+>
+> ---
+>
+> # 3. The central object: activation episodes
+>
+> Persistent `Due(r,q)` has been refuted.
+>
+> “Mint when ReasonOcc arrives” has been refuted.
+>
+> The surviving idea is:
+>
+> ```text
+> Due is evaluated over the represented state
+> and produces newly activated answerability claims.
+> ```
+>
+> Find the exact smallest object.
+>
+> Candidate:
+>
+> ```text
+> ActiveDue_t
+> ```
+>
+> together with:
+>
+> ```text
+> NewDue_t = newly activated claims at t.
+> ```
+>
+> But do not assume set difference on content is sufficient.
+>
+> Prosecute **activation episodes** explicitly.
+>
+> ---
+>
+> # 4. Persistent activation must not reopen after resolution
+>
+> Required case:
+>
+> ```text
+> t=0:
+>     represented state makes claim-template d active
+>     obligation q0 is incurred
+>
+> t=5:
+>     q0 legitimately resolves
+>
+> t>5:
+>     the same underlying reasons remain represented
+>     d remains semantically applicable
+> ```
+>
+> The process must **not** incur a fresh obligation every step merely because the underlying reason still exists.
+>
+> Determine what prevents this.
+>
+> Possibilities:
+>
+> ```text
+> rising-edge activation
+> episode identity
+> discharge changes Due state
+> explicit activation ledger
+> ```
+>
+> Prefer the smallest noncircular solution.
+>
+> ---
+>
+> # 5. Recurrence must still be possible
+>
+> Now test:
+>
+> ```text
+> Due
+> ->
+> incurred
+> ->
+> resolved
+> ->
+> no longer Due
+> ->
+> Due again
+> ```
+>
+> Example interpretation:
+>
+> ```text
+> a recurring obligation
+> a failure that genuinely occurs again
+> a new episode of the same normative kind
+> ```
+>
+> The second activation should generally be able to incur a **new obligation occurrence**.
+>
+> So simply memoizing:
+>
+> ```text
+> "this claim content was once incurred"
+> ```
+>
+> is too strong.
+>
+> Find the minimal identity for:
+>
+> ```text
+> activation episode
+> ```
+>
+> rather than merely:
+>
+> ```text
+> obligation content.
+> ```
+>
+> ---
+>
+> # 6. Old represented material becoming newly Due
+>
+> Required:
+>
+> ```text
+> r represented at t=0
+> r does not activate anything
+>
+> at t=5:
+>     normative/context state changes
+>
+> now the already-existing r activates claim d
+> ```
+>
+> This is why:
+>
+> ```text
+> ReasonOcc arrival -> mint
+> ```
+>
+> is insufficient.
+>
+> Due must be allowed to depend on:
+>
+> ```text
+> current legitimate normative state
+> represented reason state
+> relevant descriptive/provenance state
+> prior activation/incurrence history if necessary
+> ```
+>
+> Determine exactly how much state it needs.
+>
+> ---
+>
+> # 7. Phase ordering is the main technical question
+>
+> Decide when `Due` is evaluated relative to the current step.
+>
+> Candidate order:
+>
+> ```text
+> prestate
+> ->
+> ingest represented/descriptive effects
+> ->
+> accepted normative effects
+> ->
+> evaluate Due activation
+> ->
+> incur obligations
+> ->
+> evaluate Response / Resolve
+> ->
+> poststate
+> ```
+>
+> But this may be wrong.
+>
+> Test alternatives.
+>
+> In particular, distinguish:
+>
+> ```text
+> reasons made visible by the current event
+> ```
+>
+> from:
+>
+> ```text
+> normative standing created by the current event.
+> ```
+>
+> Strict-prestate semantics forbids self-ratifying authority, but a newly represented fact may legitimately create answerability immediately.
+>
+> Find the smallest phase structure that captures both.
+>
+> ---
+>
+> # 8. Same-step activation and resolution
+>
+> Required case:
+>
+> ```text
+> event reveals problem p
+> p activates claim q
+> the same event contains a complete legitimate Response
+> ```
+>
+> Should q:
+>
+> ```text
+> become Incurred but never Outstanding in the next visible state
+> ```
+>
+> or:
+>
+> ```text
+> become Outstanding in an intermediate semantic phase and then resolve?
+> ```
+>
+> Either may work.
+>
+> The important invariant is:
+>
+> ```text
+> q has an incurred occurrence and a legitimate resolution witness.
+> ```
+>
+> Do not require an observable intermediate live state if it adds nothing.
+>
+> But do not permit same-step handling to bypass D1.
+>
+> ---
+>
+> # 9. Strict prestate for Resolve
+>
+> Preserve:
+>
+> ```text
+> self_authorize_then_discharge
+> ```
+>
+> must fail.
+>
+> A response cannot use authority created by the same normative act to justify its discharge unless the old prestate already licenses it.
+>
+> Therefore test whether:
+>
+> ```text
+> Resolve
+> ```
+>
+> must inspect:
+>
+> ```text
+> L_t
+> ```
+>
+> rather than:
+>
+> ```text
+> L_{t+1}.
+> ```
+>
+> Do not weaken strict-prestate protection merely to simplify same-step resolution.
+>
+> ---
+>
+> # 10. Unauthorized act generates complaint
+>
+> Preserve the decisive asymmetric case:
+>
+> ```text
+> unauthorized act occurs
+> its normative effect is refused
+> its occurrence is represented
+> that represented fact activates complaint q
+> ```
+>
+> Desired:
+>
+> ```text
+> normative effect: no-op
+> Due activation: yes
+> q incurred: yes
+> ```
+>
+> Therefore the Due bridge must consume **represented history**, not merely accepted normative history.
+>
+> This is an important architectural constraint.
+>
+> ---
+>
+> # 11. Unauthorized discharge still fails
+>
+> In the same or later history:
+>
+> ```text
+> actor without authority attempts to resolve q
+> ```
+>
+> Desired:
+>
+> ```text
+> Resolve = false
+> q remains Outstanding
+> ```
+>
+> So the asymmetry is:
+>
+> ```text
+> facts/reasons can create answerability without permission;
+> eliminating answerability requires legitimate resolution semantics.
+> ```
+>
+> Preserve this.
+>
+> ---
+>
+> # 12. Joint reasons
+>
+> Required:
+>
+> ```text
+> r1 alone -> no activation
+> r2 alone -> no activation
+> {r1,r2} jointly -> activate d
+> ```
+>
+> Do not require each incurred obligation to name exactly one ReasonOcc parent.
+>
+> Determine whether the activation semantics needs:
+>
+> ```text
+> support sets
+> ```
+>
+> explicitly, or whether:
+>
+> ```text
+> Due(state)
+> ```
+>
+> over the entire represented state already handles this without further abstract structure.
+>
+> Prefer the latter unless proof relevance is needed.
+>
+> ---
+>
+> # 13. One reason, several claims
+>
+> Required:
+>
+> ```text
+> r activates:
+>     q_repair
+>     q_explain
+> ```
+>
+> This should require no special machinery beyond Due producing a finite activation set.
+>
+> Test whether activation identity still works cleanly.
+>
+> ---
+>
+> # 14. Claim templates versus obligation occurrences
+>
+> Decide whether the abstraction needs both:
+>
+> ```text
+> ClaimTemplate d
+> ```
+>
+> and:
+>
+> ```text
+> ObligationOccurrence q
+> ```
+>
+> Candidate:
+>
+> ```text
+> Due_t = finite set of activated claim templates
+> ```
+>
+> and each **new activation episode** mints:
+>
+> ```text
+> q = (t, slot, d)
+> ```
+>
+> This would separate:
+>
+> ```text
+> what is owed
+> ```
+>
+> from:
+>
+> ```text
+> this particular occasion on which it became owed.
+> ```
+>
+> Test whether this distinction earns its complexity.
+>
+> If not, compress it away.
+>
+> ---
+>
+> # 15. Can `NewDue` be ordinary set difference?
+>
+> Candidate:
+>
+> ```text
+> NewDue_t = ActiveDue_t \ ActiveDue_{t-1}
+> ```
+>
+> Attack this.
+>
+> Cases:
+>
+> ```text
+> active -> resolved while still active
+> active -> inactive -> active
+> two independent activations of identical content
+> recurring obligation with unchanged claim template
+> normative amendment changes the interpretation but not the claim identifier
+> ```
+>
+> If set difference is insufficient, identify the minimal episode-sensitive replacement.
+>
+> ---
+>
+> # 16. Avoid circularity
+>
+> Be suspicious of defining:
+>
+> ```text
+> Due_t(d)
+> ```
+>
+> in terms of whether:
+>
+> ```text
+> d is currently outstanding
+> ```
+>
+> solely to prevent reopening.
+>
+> That risks:
+>
+> ```text
+> answerability state determining what is owed
+> ```
+>
+> when the intended direction is:
+>
+> ```text
+> represented reasons + normative semantics
+> ->
+> what becomes owed
+> ->
+> answerability state.
+> ```
+>
+> If prior activation history must enter Due evaluation, state why this is bookkeeping rather than normative circularity.
+>
+> ---
+>
+> # 17. Decide the minimal D1 statement
+>
+> Current candidate:
+>
+> ```text
+> NewDue_t ⊆ Incurred_{t+1}.
+> ```
+>
+> But if same-step activation and resolution exists, make sure `Incurred` records it even though it may never appear in `Outstanding_{t+1}`.
+>
+> Try to state D1 exactly.
+>
+> It should be falsifiable by:
+>
+> ```text
+> recognized_due_but_never_entered.
+> ```
+>
+> It should pass:
+>
+> ```text
+> newly due and immediately legitimately resolved.
+> ```
+>
+> ---
+>
+> # 18. Inclusion versus equality
+>
+> Decide whether RI should require:
+>
+> ```text
+> NewDue_t ⊆ NewlyIncurred_t
+> ```
+>
+> or:
+>
+> ```text
+> NewDue_t = NewlyIncurred_t.
+> ```
+>
+> Inclusion permits obligations to arise through other legitimate sources.
+>
+> Equality says Due is the complete genesis semantics for answerability.
+>
+> Do not choose equality unless the architecture actually intends all AnsRoots to arise through Due.
+>
+> If other root genesis remains legitimate, characterize it.
+>
+> ---
+>
+> # 19. Inspect current RI root genesis exactly
+>
+> Use the actual current RI code/spec.
+>
+> Record:
+>
+> ```text
+> roots(t)
+> mint(...)
+> AnsRoot
+> NormEvent
+> ReasonOcc
+> Response
+> continuity_ok
+> ```
+>
+> Determine exact present behavior.
+>
+> The previous pass found:
+>
+> ```text
+> roots(t) = seed.roots0 + mint(a) over norm_events(t)
+> ```
+>
+> with `mint` typed on `NormEvent`.
+>
+> Verify this again against the live code before changing anything.
+>
+> ---
+>
+> # 20. Design the smallest RI seam
+>
+> Compare at least:
+>
+> ```text
+> A. allow Reason steps to MINT AnsRoots
+> ```
+>
+> ```text
+> B. add a derived Due-activation projection after each replay step
+> ```
+>
+> ```text
+> C. derive Incurred directly from history + Due semantics
+>     rather than recording mint events
+> ```
+>
+> ```text
+> D. add explicit activation data to existing event payloads
+>     without a new event kind
+> ```
+>
+> Test all four.
+>
+> My current expectation is that B or C is cleanest.
+>
+> Do not follow that expectation if the implementation says otherwise.
+>
+> ---
+>
+> # 21. Recorded versus derived Incurred
+>
+> This is important.
+>
+> Should RI **store** that q was incurred?
+>
+> Or should:
+>
+> ```text
+> Incurred_t
+> ```
+>
+> be deterministically derived by replaying:
+>
+> ```text
+> represented history + Due semantics?
+> ```
+>
+> If derived:
+>
+> ```text
+> D1 may become definitional at the abstract RI semantics level,
+> ```
+>
+> but an implementation can still fail conformance if its materialized/certified record omits the derived root.
+>
+> Carefully distinguish:
+>
+> ```text
+> semantic RI state
+> implementation storage
+> external certificate
+> ```
+>
+> Do not hide a conformance failure by defining it away.
+>
+> ---
+>
+> # 22. The verifier test
+>
+> Imagine a deference consumer receives an RI record.
+>
+> It should be able to distinguish:
+>
+> ```text
+> GOOD:
+>     all Due activations represented in Incurred
+> ```
+>
+> from:
+>
+> ```text
+> BAD:
+>     represented reason activates q
+>     q is omitted
+>     every recorded root nevertheless has perfect continuity
+> ```
+>
+> What exactly must the verifier recompute or inspect?
+>
+> This is the practical criterion for where D1 belongs.
+>
+> If an RI record cannot expose this difference, the realization is incomplete.
+>
+> ---
+>
+> # 23. Provenance adequacy
+>
+> Do not solve provenance completeness.
+>
+> If Due depends on represented reasons/context, assume an adequate descriptive view as elsewhere.
+>
+> State exactly:
+>
+> ```text
+> Due is only as good as its supplied represented state.
+> ```
+>
+> That is **not Coverage**.
+>
+> Coverage still asks whether relevant external failures reach the represented state at all.
+>
+> ---
+>
+> # 24. Keep Legitimate Learning downstream
+>
+> Required separations:
+>
+> ```text
+> relevant failure never represented
+>     Legitimate Evolution may pass
+> ```
+>
+> ```text
+> represented state activates Due but RI omits the claim
+>     Legitimate Evolution fails
+> ```
+>
+> ```text
+> claim correctly incurred and remains open forever
+>     Legitimate Evolution passes
+> ```
+>
+> ```text
+> claim repeatedly handled badly but explicitly
+>     Legitimate Evolution passes
+> ```
+>
+> No progress or regret in this pass.
+>
+> ---
+>
+> # 25. Re-state the frozen abstract package if it survives
+>
+> Target:
+>
+> ```text
+> LOCAL SEMANTICS
+>     Permit
+>     Due
+>     Resolve
+>
+> REALIZATION CONFORMANCE
+>     every Due activation episode produces an incurred claim occurrence
+>
+> STRUCTURAL CLOSURE
+>     Grounded Replay
+>     Answerability Resolution
+>
+> GLOBAL LEGITIMATE EVOLUTION
+>     every live standing has legitimate ancestry
+>     every Due-generated incurred claim has a complete resolution derivation
+>     ending only in legitimate discharge or current outstanding frontier
+> ```
+>
+> Keep arbitrary substantive change allowed.
+>
+> ---
+>
+> # 26. Decide whether Legitimate Evolution is now frozen
+>
+> The package may now be:
+>
+> ```text
+> semantics
+> +
+> one realization bridge
+> +
+> two local-to-global closure theorems
+> ```
+>
+> That is acceptable.
+>
+> Do not try to manufacture one monolithic theorem.
+>
+> The important question is whether every layer now owns a distinct failure:
+>
+> ```text
+> Permit failure        -> illegitimate standing
+> Due-conformance failure -> owed claim omitted
+> Resolve failure       -> owed claim erased/invalidly handled
+> Coverage failure      -> relevant reason never represented
+> Regret failure        -> exposed repair repeatedly ignored
+> ```
+>
+> If this separation survives, say so explicitly.
+>
+> ---
+>
+> # 27. Mandatory countermodels
+>
+> Run at least:
+>
+> ```text
+> 1. persistent Due after discharge: no reopening
+> 2. inactive -> active: incurs once
+> 3. active -> inactive -> active: incurs twice as two episodes
+> 4. old reason becomes newly Due after normative change
+> 5. joint reasons activate one claim
+> 6. one reason activates several claims
+> 7. same-step activation + legitimate resolution
+> 8. same-step activation + unauthorized attempted resolution
+> 9. unauthorized action generates complaint
+> 10. represented Due claim omitted from RI
+> 11. obligation incurred from a source other than Due, if architecture permits it
+> 12. recurring identical claim content with distinct activation episodes
+> 13. radical constitutional change causes an old reason to newly activate
+> 14. failure never represented
+> ```
+>
+> Cases 1-4 and 10 are decisive.
+>
+> ---
+>
+> # 28. Final deliverable
+>
+> End with:
+>
+> ```text
+> DUE ACTIVATION SEMANTICS
+> ```
+>
+> Give the exact types and transition order.
+>
+> Then:
+>
+> ```text
+> RI REALIZATION OF D1
+> ```
+>
+> Give:
+>
+> * exact current RI gap;
+> * exact smallest repair;
+> * whether Incurred is stored, derived, or both;
+> * what an external verifier checks;
+> * whether new event kinds are required;
+> * how old-reason-newly-Due works;
+> * how recurrence works;
+> * how same-step resolution works.
+>
+> Then:
+>
+> ```text
+> FROZEN LEGITIMATE-EVOLUTION PACKAGE
+> ```
+>
+> Fit the entire abstract package on one page.
+>
+> Finally:
+>
+> ```text
+> WHITEBOARD VERSION
+> ```
+>
+> in no more than six lines.
+>
+> ---
+>
+> # 29. Verdict
+>
+> End with exactly one:
+>
+> ```text
+> LEGITIMATE-EVOLUTION-FROZEN
+> ```
+>
+> if activation episodes and RI conformance now have a precise minimal realization.
+>
+> ```text
+> DUE-ACTIVATION-SEMANTICS-UNSTABLE
+> ```
+>
+> if recurrence, phase ordering, or identity prevents a clean abstract Due interface.
+>
+> ```text
+> RI-DUE-REALIZATION-UNSTABLE
+> ```
+>
+> if the abstract activation semantics stabilizes but no clean RI seam realizes it.
+>
+> ```text
+> DUE-CONFORMANCE-NOT-CERTIFIABLE
+> ```
+>
+> if semantic realization is possible but an external consumer cannot distinguish omitted Due claims from a valid record.
+>
+> ```text
+> LEGITIMATE-EVOLUTION-DECOMPOSITION-LEAKY
+> ```
+>
+> if fixing Due starts importing Coverage, progress, regret, or substantive correctness.
+>
+> Do not write Lean regardless of verdict.
+>
+> ---
+>
+> The research standard for this pass is:
+>
+> > **A Due judgment should create an answerability episode exactly when represented normative circumstances newly place the process under an obligation—not every moment the reason remains true, not merely when a reason first appears, and not only when an authorized normative edit chooses to record it. The RI realization must make omission of such an episode detectably illegitimate while preserving recurrence, context-dependent activation, unauthorized-act-generated complaints, and same-step legitimate resolution. Find the smallest mechanism that does exactly that.**
+
+This should be the last pass before we zoom back out and reassess the whole legitimacy/learning architecture.

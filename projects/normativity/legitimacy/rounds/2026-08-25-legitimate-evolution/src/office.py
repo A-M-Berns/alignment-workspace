@@ -107,9 +107,9 @@ class Act:
     discharges: tuple = ()             # names
     transfers: tuple = ()              # ((old, (new, ...)), ...)
     drops: tuple = ()                  # names removed with no route: A1 bait
-    #: claim keys `Due` activates here, given what this act represents. A key
-    #: the act does not open is the D1 bait. Activating a key already incurred
-    #: is not newly due, which is how a resolved claim stays resolved.
+    #: `ActiveDue` here: the claim keys the semantics holds active at this
+    #: step, as a level rather than an event. A rising edge with no matching
+    #: opening is the D1 bait.
     owes: tuple = ()                   # names
 
 
@@ -126,6 +126,9 @@ class Constitution:
     coercion_invalidates: bool = True
     quorum: int = 1                    # how many grounds an act needs
     base_duties: tuple = ()            # (name, weight), outstanding at the start
+    #: obligation name -> claim key, when several occurrences realize one key.
+    #: Two episodes of a recurring claim share a key and are distinct claims.
+    claim_keys: dict = field(default_factory=dict)
     checks_issued: bool = True         # does permission read what is issued
     hidden: object = None
     reads_hidden: bool = False
@@ -724,7 +727,7 @@ def duties(c: Constitution):
     """The answerability lifecycle a constitution declares.
 
     `Due` and `Resolve` have already been consulted: an act's `owes` is the set
-    of claim keys the semantics activates there, and its `opens`, `discharges`
+    of claim keys the semantics holds **active** there, and its `opens`, `discharges`
     and `transfers` are what `Resolve` judged. Two channels exist so the two
     obligations of the package can fail -- `drops` for **A1**, and an `owes`
     naming a key the act does not open for **D1**.
@@ -741,7 +744,7 @@ def duties(c: Constitution):
         by_name[name] = q
         base.append(q)
         weight[q] = w
-        key[q] = name
+        key[q] = c.claim_keys.get(name, name)
 
     opens, discharges, transfers, drops, due = {}, {}, {}, {}, {}
     for t, a in enumerate(c.acts):
@@ -750,7 +753,7 @@ def duties(c: Constitution):
             q = an.Ob(t, j)
             by_name[name] = q
             weight[q] = w
-            key[q] = name
+            key[q] = c.claim_keys.get(name, name)
             made.append(q)
         if made:
             opens[t] = frozenset(made)
@@ -1169,7 +1172,7 @@ def resolved_stays_resolved() -> Constitution:
     return Constitution(
         chartered=CHARTER,
         acts=(_one(opens=(("q:claim", 1.0),), owes=("q:claim",), label="notice"),
-              _one(discharges=("q:claim",), label="answer"),
+              _one(owes=("q:claim",), discharges=("q:claim",), label="answer"),
               _one(owes=("q:claim",), label="still-represented"),
               _one(owes=("q:claim",), label="still-represented-again")))
 
@@ -1185,7 +1188,8 @@ def old_reason_becomes_newly_due() -> Constitution:
         acts=(_one(label="represent-the-material"),
               _one(grants=(("n:new-standard", None, ()),), label="raise-standard"),
               _one(opens=(("q:under-new-standard", 1.0),),
-                   owes=("q:under-new-standard",), label="now-owed")))
+                   owes=("q:under-new-standard",), label="now-owed"),
+              _one(owes=("q:under-new-standard",), label="still-owed")))
 
 
 def joint_reasons_one_claim() -> Constitution:
@@ -1330,3 +1334,120 @@ D1_BROKEN = (recognized_due_but_never_entered(), due_and_ignored_in_one_step())
 
 A1_BROKEN = BROKEN_CONSTITUTIONS + (carry_into_something_resolved(),
                                     split_one_branch_lost())
+
+# --------------------------------------------------- activation episodes
+
+
+def recurrence() -> Constitution:
+    """The same claim kind, twice, as two episodes.
+
+    Active, incurred, resolved; the level falls; it rises again. The second
+    rising edge is a genuinely new occasion and incurs a **second** occurrence.
+    Memoizing on content forbids this, which is why the previous version could
+    not express a recurring obligation at all.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(opens=(("q:lapse-1", 1.0),), owes=("q:lapse",),
+                   label="first-lapse"),
+              _one(owes=("q:lapse",), discharges=("q:lapse-1",),
+                   label="fix-it"),
+              _one(label="quiet"),
+              _one(opens=(("q:lapse-2", 1.0),), owes=("q:lapse",),
+                   label="second-lapse")),
+        claim_keys={"q:lapse-1": "q:lapse", "q:lapse-2": "q:lapse"})
+
+
+def recurrence_ignored() -> Constitution:
+    """The second episode arrives and nothing is taken on. D1 must catch it."""
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(opens=(("q:lapse-1", 1.0),), owes=("q:lapse",),
+                   label="first-lapse"),
+              _one(owes=("q:lapse",), discharges=("q:lapse-1",),
+                   label="fix-it"),
+              _one(label="quiet"),
+              _one(owes=("q:lapse",), label="second-lapse-ignored")),
+        claim_keys={"q:lapse-1": "q:lapse"})
+
+
+def falling_edge_is_not_resolution() -> Constitution:
+    """`Due` going quiet does not resolve anything.
+
+    The claim was incurred and stays outstanding: what stops being owed is
+    decided by `Resolve`, not by the reasons ceasing to be represented.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(opens=(("q:claim", 1.0),), owes=("q:claim",), label="notice"),
+              _one(label="reasons-no-longer-represented")))
+
+
+def same_step_activation_unauthorized_resolution() -> Constitution:
+    """Activated and answered at once, by an actor without the standing.
+
+    The claim is incurred because incurrence is ungated; the resolution is
+    refused because resolution is not.
+    """
+    return Constitution(
+        chartered=(("w:fiscal", FISCAL, "Treasury"),),
+        acts=(Act("w:fiscal", grants=(("n:safety-rule", None, ()),),
+                  scope=SAFETY, prov=Prov(findings=frozenset({"f:ordinary"})),
+                  opens=(("q:revealed", 1.0),), owes=("q:revealed",),
+                  discharges=("q:revealed",), label="reveal-and-overreach"),))
+
+
+def refoundation_activates_an_old_reason() -> Constitution:
+    """Radical constitutional change makes long-standing material newly owed.
+
+    Nothing is represented at t=2 that was not represented at t=0. The successor
+    constitution simply owes an answer for it, which is what a `Due` reading only
+    reason arrivals cannot see.
+    """
+    return Constitution(
+        chartered=(("w:old-order", FISCAL | frozenset({AMEND}), "Convention"),),
+        acts=(Act("w:old-order", scope=FISCAL,
+                  prov=Prov(findings=frozenset({"f:longstanding"})),
+                  label="represent-the-practice"),
+              Act("w:old-order", revokes=("w:old-order",),
+                  inherits=("w:old-order",),
+                  grants=(("w:assembly", SAFETY | frozenset({AMEND}), ()),),
+                  scope=FISCAL,
+                  prov=Prov(findings=frozenset({"f:referendum"})),
+                  label="refound"),
+              Act("w:assembly", scope=SAFETY,
+                  prov=Prov(findings=frozenset({"f:longstanding"})),
+                  opens=(("q:account-for-the-practice", 1.0),),
+                  owes=("q:account-for-the-practice",),
+                  label="now-it-is-owed")))
+
+
+def succession_incurs_without_due() -> Constitution:
+    """A claim incurred as a carried successor, which `Due` never activates.
+
+    The reason D1 is an inclusion rather than an equality: succession is a second
+    and legitimate genesis for answerability.
+    """
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:original", 1.0),),
+        acts=(_one(opens=(("q:successor", 1.0),),
+                   transfers=(("q:original", ("q:successor",)),),
+                   label="refer"),))
+
+
+ACTIVATION_CONSTITUTIONS = (
+    resolved_stays_resolved(), recurrence(), falling_edge_is_not_resolution(),
+    old_reason_becomes_newly_due(), joint_reasons_one_claim(),
+    one_reason_many_claims(), due_and_resolved_in_one_step(),
+    same_step_activation_unauthorized_resolution(),
+    unauthorized_act_opens_complaint(), succession_incurs_without_due(),
+    refoundation_activates_an_old_reason(), unobservant(),
+)
+
+ANSWER_CONSTITUTIONS = ANSWER_CONSTITUTIONS + (
+    recurrence(), falling_edge_is_not_resolution(),
+    same_step_activation_unauthorized_resolution(),
+    succession_incurs_without_due(), refoundation_activates_an_old_reason(),
+)
+
+D1_BROKEN = D1_BROKEN + (recurrence_ignored(),)

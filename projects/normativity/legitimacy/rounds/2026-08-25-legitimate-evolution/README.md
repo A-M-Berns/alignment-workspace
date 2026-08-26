@@ -6,7 +6,7 @@ Lean-checked and no claim is registered.
 
 ## Verdict
 
-DUE-REALIZATION-GAP — the abstract package stabilizes and Reflective Integrity still cannot realize it. Three repairs made it stable. The carry law was too strong: requiring successors to be freshly opened refused ordinary consolidation into a claim already outstanding, and the correct law is that the successor set is non-empty and outstanding after the step, which also subsumes the strict-pre-state protection. Due is an activation generator over the whole represented state, not a predicate on a reason: a persistent predicate makes answering an answerable claim illegitimate, since the reasons stay represented and keep reactivating it, and minting on reason arrival cannot see material that only a later normative state makes owed. And splitting incurred from outstanding — the entitlement side's admitted-versus-live — lets the theorem quantify over every claim ever taken on, so a claim incurred and resolved by one event is still something the theorem speaks about. The central finding is a layer correction to the previous pass: D1 is not a premise of the answerability theorem. The induction never consults it, and a process with impeccable entitlement, no removals at all, and a represented reason its own semantics activates satisfies A1, the theorem and no-silent-loss while never taking the claim on. D1 does not make the proof work, it makes the conclusion quantify over the right set, so it is a conformance condition at the realization boundary. RI has three of the four pieces already — roots against live is the incurred/outstanding split, Respond settles without a NormEvent, and continuity_ok recurses over successors with the right leaf condition — and lacks only an activation step; and the previous pass's recommended seam, a minting trigger keyed on reason occurrences, is refuted by the old-reason-becomes-newly-due case.
+LEGITIMATE-EVOLUTION-FROZEN — the activation semantics needed one repair and the package now separates five failures, each with an executed witness and none caught by another's check. Due was memoizing on claim content, so a key once incurred could never be newly due again: a lapse that is fixed and then genuinely happens again produced no activation at all, and a process ignoring the second episode satisfied the condition silently. Due is now a level over the represented state and the strict pre-state, and what obliges is its rising edge, which gets persistence, recurrence and non-circularity at once — memoizing consulted the incurred set, which is answerability deciding what is owed, while the edge consults only Due's own prior output. A falling edge resolves nothing. D1 stays an inclusion rather than an equality, because carriage is a second legitimate genesis and equality would refuse ordinary succession. The RI seam is determined: a derived activation term in roots(), using reasons(), prestate() and mint_ids() as they already exist, with no new event kind — and because roots is a pure function of history, D1 holds by construction in the semantic state and relocates to the boundary where a record is materialized or certified. That is where it belongs, and the verifier's job is a recomputation rather than an inspection: the decisive case has perfect continuity on every recorded claim and is caught only by replaying Due and comparing rising edges. The seam is specified to the function and not built; Due must be shared out of band exactly as Permit already must.
 
 Round 5's `PROPER-EXERCISE-SEMANTIC-ONLY` stands unchanged, and this round did
 not reopen it. Grounded Replay was frozen for this pass: `src/replay.py` is
@@ -14,20 +14,20 @@ untouched, imports neither the Proper Exercise analysis nor the answerability
 replay, and has no capability or obligation notion in either of its records.
 
 **The question this pass was dispatched to settle** was whether the Due bridge
-and the resolution law can be made small and correct enough to freeze. They can,
-and the freezing is blocked by the realization rather than by the mathematics.
+has a small correct activation semantics and a small RI realization. Both, after
+one repair.
 
-The thing worth carrying forward is the layer correction. A morally important
-sentence — *what the process recognizes as owed must be taken on* — was shipped
-last pass as a premise of an induction that never uses it. Stating it in the
-right place changes what a realization has to supply: a structural premise is
-discharged by construction, and a conformance condition has to be checked against
-an implementation and can fail there while every theorem still holds.
+The repair is worth stating on its own, because the defect was invisible. The
+previous activation rule was correct on every case the previous pass tested and
+silently forbade an entire phenomenon: a claim that is legitimately resolved and
+then genuinely becomes owed again. Nothing failed; the second episode simply did
+not exist as far as the model was concerned. The rule that fixes it is smaller
+than the one it replaces.
 
-The other three repairs are ordinary. The carry law was refusing legitimate
-consolidation. `Due` as a predicate on a reason either reopens resolved claims
-forever or misses material that only a later normative state makes owed. And the
-theorem was quantifying over a set that forgets.
+What makes the package freezable is not that no questions remain. It is that five
+distinct failures now each have a witness, and none of them is caught by another
+layer's check — illegitimate standing, an omitted claim, an erased claim, an
+unrepresented reason, and an ignored repair, the last two deliberately outside.
 
 `ANSWERABILITY.md` opens with the whole package on one page.
 
@@ -102,14 +102,14 @@ G1..G6                          one theorem, three corollaries
 - `CONSUMER_TEST.md` — deference, and which of the three it needs.
 - `TRADERIZATION_CONSUMER.md` — enforcement, and the four repeal cases.
 - `COUNTERMODELS.md` — every premise prosecuted; withdrawals are §§1-5 and
-  §§12-18.
+  §§12-19.
 - `THEOREM_MAP.md` — every claim graded, withdrawals first.
 - `src/` — `replay.py` (the kernel), `office.py` (the semantics and a
   constitution model, importing no record architecture), `ri_frame.py`
   (extraction from a record), `exercise.py` (capability and reach),
   `answer.py` (incurred and outstanding claims, Due and Resolve), `cases.py`
   (records the Carroll round did not have).
-- `tests/` — 126 cases. `python3 tests/run.py`.
+- `tests/` — 139 cases. `python3 tests/run.py`.
 
 ## What this does not establish
 

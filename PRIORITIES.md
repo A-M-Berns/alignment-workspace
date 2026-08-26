@@ -1219,50 +1219,56 @@ exceeds any allowance attachable at issuance, or the bound holds on it.
 
 ---
 
-### 71. A due-activation step over the represented state — **[open]** — *the seam is now known*
+### 71. Build the due-activation term in `roots()` — **[open]** — *specified, not built*
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-**Narrowed twice, and the obvious repair is refuted.** Legitimate Evolution needs
-a condition `D1`: what the process's own semantics newly makes due must be taken
-on. It sits at the **realization boundary** rather than among the structural
-premises — the answerability induction never uses it — which is precisely why it
-has to be checked against an implementation and can fail there.
+**Narrowed from a gap to an implementation task.** Legitimate Evolution needs the
+conformance condition `D1`: every rising edge of `Due` must be realized by an
+incurred claim. The seam in Reflective Integrity is now determined, and it uses
+only functions that already exist.
 
-Reflective Integrity cannot currently supply it, and already has three of the four
-pieces. Quoting `rounds/2026-08-24-reflective-integrity-core/src/ri_core.py`:
+```python
+def active_due(self, t=None):            # Due supplied, as Permit is
+    return self.due_sem(self.reasons(t), self.prestate(self._at(t)))
 
-- `roots(t)` is `seed.roots0` extended by `mint(a)` over `norm_events(t)`, and
-  never removes — so `roots` against `live` **is** the incurred/outstanding split.
-- `Respond` is its own history step and `closed(q,t)` runs the root's demand over
-  its responses — so **resolution is already independent of the norm channel**.
-- `continuity_ok` recurses over successors with a leaf condition of
-  live-and-not-due — the right shape for the resolution frontier.
-- `mint` is typed on `NormEvent`. `ReasonOcc` occurs only in `Derivation.leaves`
-  and as the payload of a `Reason` step, and `roots` reads neither. **There is no
-  activation path.**
+def new_due(self, t):
+    prev = self.active_due(t - 1) if t > 0 else frozenset()
+    return self.active_due(t) - prev
 
-Note the name collision: RI's `due(q,t)` is
-`live(q,t) and any(disposes(a,q) for a in norm_events(t))`, meaning *this live
-root's episode is being succeeded*. It is a different predicate.
+def roots(self, t=None):
+    out = list(self.seed.roots0)
+    for a in self.norm_events(t):
+        out.extend(self.mint(a))
+    for u in range(1, self._at(t) + 1):                    # the seam
+        out.extend(self.mint_due(k, u) for k in self.new_due(u))
+    return tuple(out)
+```
 
-**The previous pass's proposal is withdrawn.** A minting trigger keyed on reason
-occurrences cannot see material represented at `t=0` that a normative change at
-`t=5` makes owed, and that case is legitimate. The seam is a **due-activation
-step evaluated over the whole represented state after each replay step**, diffed
-against what is already incurred. A derived projection, not a fifth event kind.
+`reasons(t)` already exposes the represented ledger as a prefix function,
+`prestate` already exists, and `mint_ids` already keys ids by position so two
+episodes of one claim key get distinct ids for free. **No new event kind.**
 
-*Deliverable shape:* the activation step with the conditions under which
-represented material activates a claim key, and the diff against incurred; or the
-finding that activation must live outside RI, with what that costs a consumer.
-*Acceptance check:* an RI record in which no step is appended between two states
-and a claim nevertheless activates, because the normative context changed — plus
-its negative, a resolved claim whose material stays represented and which does not
-reactivate.
+Three things to get right when building it. `Due` is a **level** and the edge is
+taken against its own prior output, never against `roots` or `live` — otherwise
+answerability decides what is owed. `D1` is an **inclusion**: carriage already
+mints roots and must keep doing so. And because `roots` stays a pure function of
+history, `D1` holds by construction in the semantic state; the conformance failure
+lives at the boundary where a record is materialized or certified, so the check
+belongs in whatever ships a record, as a recomputation.
+
+Note the name collision to avoid: RI's existing `due(q,t)` means *this live root's
+episode is being succeeded*, which is unrelated.
+
+*Deliverable shape:* the activation term, plus a verifier that recomputes rising
+edges from a shipped record and compares them against its roots.
+*Acceptance check:* a record in which no step is appended between two states and a
+claim nevertheless activates because the normative context changed; its negative,
+a resolved claim whose material stays represented and does not reactivate; and a
+recurrence, where a claim key falls and rises and mints a second root.
 *Context:*
-`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/ANSWERABILITY.md`
-§§4, 9; `COUNTERMODELS.md` §§17-18.
-*Consumed by:* item 69, which needs an allowance minted with the obligation; and
-by deference, which wants the recognized-and-entered guarantee.
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/ANSWERABILITY.md`,
+*RI REALIZATION OF D1*; `COUNTERMODELS.md` §19.
+*Reserved:* implementing it edits the Reflective Integrity Core round's artifact.
 
 ---
 

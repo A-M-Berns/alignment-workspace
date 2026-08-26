@@ -129,9 +129,14 @@ Unchanged. Deference needs *current* authority and a grounding tree certifies
 origin, so the current-state certificate is still missing and this pass did no
 work on it.
 
-Not obtained, and worth saying plainly: `D1` is a **conformance condition at the
-realization boundary**, and Reflective Integrity cannot supply it. A deference
-consumer reading an RI record gets the resolution theorem and not the
-recognized-is-taken-on half — and because `D1` is not a premise, nothing about
-the record's structure signals that the half is missing. That is the practical
-cost of the layer distinction, and the reason it is worth stating.
+`D1` is a **conformance condition at the realization boundary**, and what a
+deference consumer must do about it is now precise: **recompute**. Replay `Due`
+over the represented state, take its rising edges, and check each is realized by
+a claim the record incurred. Nothing structural will do it — the decisive case has
+perfect continuity on every recorded claim — so a consumer that only inspects the
+record cannot tell a complete one from an impeccably-kept incomplete one.
+
+That requires the consumer to hold `Due`, exactly as replaying standing already
+requires it to hold `Permit`. Two parties with different `Due` semantics disagree
+about what was owed and nothing in the record settles it. This is a real residual
+and it is the one the architecture already carries.

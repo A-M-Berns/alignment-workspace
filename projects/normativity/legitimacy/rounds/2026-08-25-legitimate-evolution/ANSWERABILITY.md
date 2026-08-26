@@ -1,361 +1,289 @@
-# Answerability, and the Legitimate Evolution kernel
+# Answerability, activation, and the frozen Legitimate Evolution package
 
 Status: **specification, reference models and a prosecution record;
 unregistered.** All names are provisional under `AGENTS.md` §6. Nothing here is
 Lean-checked and no claim is registered.
 
-Grounded Replay is frozen and unchanged.
+Grounded Replay is frozen and unchanged. The corrected Answerability Resolution
+theorem, the A2 result, the asymmetric gating and the quantitative conclusions are
+unchanged by this pass.
 
-**The previous version of this document made a layer error.** It shipped `D1` as
-a structural premise of the answerability theorem. The induction never consults
-it, and a process can satisfy the theorem completely while ignoring what its own
-semantics recognized as owed — §7 exhibits exactly that. `D1` is a conformance
-condition at the realization boundary, and saying so is this pass's main result.
+**One repair this pass.** The activation semantics memoized on claim content, so
+a resolved claim could never recur. `Due` is now a **level** and what obliges is
+its **rising edge**.
 
-## MINIMAL LEGITIMATE-EVOLUTION KERNEL
-
-**State.** A trace of events. Standing occurrences `o`; claim occurrences `q`.
-Identity is trace position with a slot index. Two answerability sets, mirroring
-`Admitted` / `Live` on the entitlement side:
+## DUE ACTIVATION SEMANTICS
 
 ```text
-I_{t+1} = I_t u opens_t                              incurred, ungated
-O_{t+1} = (O_t u opens_t) \ (disch_t u moved_t)      outstanding, if Valid
-        = O_t u opens_t                               otherwise
+ClaimKey     an opaque label: what is owed, on this occasion
+Ob(pos,slot) a claim occurrence: this claim, incurred here
+
+ActiveDue_t  = Due(represented_{<=t}, L_t)        a level, supplied
+NewDue_t     = ActiveDue_t \ ActiveDue_{t-1}      the rising edge
 ```
 
-**Semantic primitives, three.**
+Each key in `NewDue_t` should be realized by an occurrence minted at `t`. Two
+episodes of one kind share a key and are distinct occurrences.
+
+**Transition order.** One phase structure, and both semantic reads take the
+strict pre-state:
 
 ```text
-Permit   may this event change standing, at the strict pre-state
-Due      the represented material, read against the strict pre-state, activates
-         these claim keys
-Resolve  done, or carry(S), read at the strict pre-state
+(L_t, O_t)                          strict pre-state
+  represent event t's material      descriptive, from the current event
+  ActiveDue_t = Due(reasons_{<=t}, L_t)
+  NewDue_t -> incur                 ungated
+  Resolve judged at (L_t, O_t)      gated
+  accepted normative effect -> L_{t+1}
+  O_{t+1} = (O_t u opens_t) \ (disch_t u moved_t)   if accepted
 ```
 
-**Exact Due notion.** An **activation generator** over the whole represented
-state, not a predicate on a reason occurrence:
+Descriptive material from the current event; normative standing from the strict
+pre-state. That is the mix §7 of the dispatch asked for, and it is why an
+unauthorized act's own occurrence can activate a complaint at its own position
+while a self-authorizing act cannot license its own resolution.
+
+## RI REALIZATION OF D1
+
+**Exact current gap.** Verified again against
+`rounds/2026-08-24-reflective-integrity-core/src/ri_core.py`:
 
 ```text
-newly_due_t = Due(X_t) \ { keys already realized by an incurred claim }
+roots(t)     = seed.roots0 + [mint(a) for a in norm_events(t)]
+mint(a: NormEvent)  -> Transfer: one root (eff.x, eff.to)
+                    -> otherwise: one per fresh_n(ctx, eff), debtor a.author
+reasons(t)   = tuple(s.e for s in steps[:t] if isinstance(s, Reason))
+prestate(tau)
+responses(t) = tuple(s.rho for s in steps[:t] if isinstance(s, Respond))
+closed(q,t)  = q.demand.run(q, responses_for(q,t), ...)
+due(q,t)     = live(q,t) and any(disposes(a,q) for a in norm_events(t))
 ```
 
-**Structural premises.**
+`roots` never consults `reasons`. That is the whole gap.
+
+**Exact smallest repair.** Option **B**, a derived projection, using only
+functions that already exist:
+
+```python
+def active_due(self, t=None):            # Due supplied, as Permit is
+    return self.due_sem(self.reasons(t), self.prestate(self._at(t)))
+
+def new_due(self, t):
+    prev = self.active_due(t - 1) if t > 0 else frozenset()
+    return self.active_due(t) - prev
+
+def roots(self, t=None):
+    out = list(self.seed.roots0)
+    for a in self.norm_events(t):
+        out.extend(self.mint(a))
+    for u in range(1, self._at(t) + 1):                    # the seam
+        out.extend(self.mint_due(k, u) for k in self.new_due(u))
+    return tuple(out)
+```
+
+**No new event kind.** `Reason` already exists as a step, `reasons(t)` already
+exposes the ledger as a prefix function, `prestate` already exists, and
+`mint_ids` already keys ids by position so two episodes of one key get distinct
+ids for free.
+
+**Stored, derived, or both: derived.** `roots` is already a pure function of the
+history, and adding an activation term keeps it one. Note honestly what that
+does: in the **semantic** state D1 then holds by construction. It does not
+thereby vanish — it relocates to the boundary where a record is materialized or
+certified, and that is where a conformance check belongs. The three levels:
 
 ```text
-S1  grounds(e_t) subset { o in L_t : Auth(o) }
-S2  apply_t(L_t,e_t) != L_t  ->  grounds(e_t) != {}
-A1  an accepted event removes q from O only by Resolve: done, or carry(S)
-    with S non-empty and S subset O_{t+1}
+semantic RI state       derived; D1 holds by construction
+materialized record     a stored root list that can omit a derived root
+external certificate    what a consumer actually receives
 ```
 
-**Conformance condition, at the realization boundary and not a premise.**
+**What an external verifier checks.** Replay `Due` over the represented state and
+compare its rising edges against the claims the record incurred. Concretely: for
+each `t`, recompute `ActiveDue_t`, take the edge, and check each key in it is
+realized by a root minted at `t`.
+
+This is a **recomputation, not an inspection**, and it has to be, because the
+omission is invisible structurally. `TestTheVerifierTest` runs exactly that
+comparison on the three broken constitutions: Grounded Replay clean, A1 clean,
+Answerability Resolution clean, no-silent-loss clean, D1 fires. Nothing about the
+recorded roots is wrong. What is wrong is which roots exist.
+
+**What the verifier needs out of band:** `Due`. Exactly as it already needs
+`Permit` to replay standing. Two parties with different `Due` semantics disagree
+about what was owed, and nothing in the record settles it. That is a real
+residual and it is the same residual the architecture already carries for
+`Permit`; it is not a new hole opened by this pass.
+
+**Old reason newly due** works because `Due` reads `(reasons_{<=t}, L_t)` and
+`L_t` changes. **Recurrence** works because the edge is on a level, so a key that
+falls and rises again mints a second root at the second rise. **Same-step
+resolution** works because `Respond` is already independent of `NormEvent`, so a
+root minted at `t` can be closed by a response at `t` without ever being live in a
+visible state — and RI already exposes that through `closed`.
+
+## FROZEN LEGITIMATE-EVOLUTION PACKAGE
 
 ```text
-D1  every newly due claim key is realized by a claim incurred at that position
+STATE
+  L_t  standing occurrences        Occ(pos, slot)
+  I_t  incurred claims             Ob(pos, slot),  never shrinks
+  O_t  outstanding claims          O_t subset I_t
+
+LOCAL SEMANTICS  (opaque, supplied)
+  Permit   may this event change standing, at the strict pre-state
+  Due      a level over the represented state and the strict pre-state
+  Resolve  done, or carry(S), judged at the strict pre-state
+
+STRUCTURAL PREMISES
+  S1  grounds(e_t) subset { o in L_t : Auth(o) }
+  S2  apply_t(L_t,e_t) != L_t  ->  grounds(e_t) != {}
+  A1  a claim leaves O only by Resolve: done, or carry(S) with S non-empty
+      and S subset O_{t+1}
+
+REALIZATION CONFORMANCE
+  D1  NewDue_t subset NewlyIncurred_t          inclusion, not equality
+
+STRUCTURAL CLOSURE
+  Grounded Replay          every admitted occurrence has a finite grounding
+                           tree, leaves in G, positions strictly descending
+  Answerability Resolution every incurred claim has a finite resolution
+                           derivation, frontier non-empty, every branch
+                           outstanding or discharged
+
+GLOBAL LEGITIMATE EVOLUTION  (the composition)
+  every live standing has legitimate ancestry to the accepted base, and
+  every claim the process's own semantics newly made due has a complete
+  resolution derivation ending only in legitimate discharge or the current
+  outstanding frontier
+
+GATING
+  standing change   Permit          incurrence  ungated       resolution  Permit
+
+OUTSIDE
+  Coverage, progress, regret, substantive correctness, quantitative liability,
+  current-state certification
 ```
-
-**Witness object.** A finite resolution derivation: a tree, unfolded from a DAG.
-Internal nodes `carried`; leaves `open` or `discharged`.
-
-**Theorems.**
-
-> **Grounded Replay.** Under S1 and S2, every admitted occurrence has a finite
-> grounding tree with leaves in `G` and strictly descending positions.
-
-> **Answerability Resolution.** Under A1, every claim **incurred** by `t` has a
-> finite resolution derivation rooted at it whose frontier is non-empty and
-> **every branch** of which is a claim outstanding at `t` or a claim an accepted
-> event discharged before `t`.
-
-> **Legitimate Evolution** (the composition, needing D1). Every claim the
-> process's own semantics newly made due has such a derivation.
-
-**Countermodel per non-definitional premise.**
-
-```text
-S1   an edit grounded in an occurrence nobody issued
-S2   a nullary-grounds edit whose issuance has no tree
-A1   silent deletion; carry to nothing; carry into what the same event
-     discharges; a split with one branch lost
-D1   a represented reason the semantics activates and the process never incurs
-```
-
-**Asymmetric gating.**
-
-```text
-standing change     gated by Permit
-claim incurrence    generated by Due, gated by nothing
-resolution          gated by Permit at the strict pre-state, via Resolve
-```
-
-**RI realization.** RI already has `roots` / `live` (incurred / outstanding) and
-`Respond` as a channel independent of `NormEvent`. It has no way for represented
-reasons to activate a root. §9.
-
-**Outside.** Coverage; progress; regret; substantive correctness; quantitative
-liability; current-state certification.
 
 ### Whiteboard
 
 ```text
-Incurred grows, never shrinks. Outstanding is incurred-minus-resolved.
-Standing changes need Permit; claims arrive by Due, ungated; resolution needs
-Permit at the strict pre-state.
-A1: a claim leaves Outstanding only by done, or carry into a nonempty set that
-is outstanding after the step.
-Theorem: every incurred claim has a finite resolution tree, every leaf open or
-discharged. D1 (conformance) makes that quantify over everything Due activated.
+Incurred never shrinks; Outstanding is incurred-minus-resolved.
+Due is a level; its rising edge is what obliges. Falling edges resolve nothing.
+Claims arrive ungated (even from refused acts); they leave only by Resolve at
+the strict pre-state, into a nonempty successor set still outstanding after.
+Theorem: every incurred claim has a finite resolution tree, all leaves open or
+discharged. D1 (conformance, checked by recomputation) makes that cover
+everything Due activated.
 ```
 
-## 1. Incurred against Outstanding
+## 1. The repair: a level, not a memo
 
-The previous statement quantified over claims outstanding at a chosen start
-time. That cannot say anything about a claim incurred and resolved between two
-observations, and it made same-step resolution look like a problem needing a
-bureaucratic delay to solve.
-
-Splitting the two sets removes the problem. `Incurred` records every claim the
-process ever took on, and never shrinks. `Outstanding` is what has not yet been
-resolved. The theorem quantifies over `Incurred`, so a claim that is incurred and
-discharged by one event is still something the theorem speaks about — its
-derivation is a single discharged leaf.
-
-This is the entitlement side's `Admitted` / `Live` distinction, and it arrived
-for the same reason: a theorem about origins cannot be stated over a set that
-forgets.
-
-## 2. The ten lifecycles, and every branch accounted for
-
-All ten pass, and there is no existential escape. `split_one_branch_lost` splits
-a claim and then drops one branch: the surviving branch does **not** rescue the
-root. The theorem reports both the lost branch and the root, because the root's
-derivation contains the lost branch's subderivation, which does not exist.
-
-That is what "every frontier branch must be accounted for" buys, and it is why
-the conclusion is about a derivation rather than about reachability: a
-reachability statement with an existential would pass this case.
-
-## 3. The carry law was too strong
-
-The previous A1 required successors to be freshly opened by the transferring
-event. That refuses ordinary consolidation. Build
+The previous version computed newness by memoizing claim content: a key once
+incurred was never newly due again. That gets persistence right and recurrence
+catastrophically wrong. Build a lapse, fix it, and have it happen again:
 
 ```text
-O_0 = {q:minor, q:major};   t=0: carry q:minor -> {q:major}
+active   at 0, 1        incurred q:lapse-1, discharged at 1
+inactive at 2
+active   at 3           a second, genuine episode
 ```
 
-The derivation handles it correctly — `q:minor [carried] -> q:major [open]` — and
-only the premise refused it. The repaired law asks for what the theorem actually
-uses:
+Memoization reports no activation at `3`, so a process that ignores the second
+lapse entirely satisfies D1. The failure is silent and total: the model could not
+express a recurring obligation at all.
+
+The rising edge fixes both at once.
 
 ```text
-S non-empty  and  S subset O_{t+1}
+                     no reopening   recurrence   non-circular
+persistent predicate      no            yes          yes
+memoize on content        yes           no           no
+rising edge on a level    yes           yes          yes
 ```
 
-Freshness is not required and is now consulted nowhere. Two claims may share a
-preexisting successor (`carry_into_shared_successor`), which is the merge case
-without any minting.
+The third column matters and is easy to miss. Memoizing consults `Incurred` —
+answerability state deciding what is owed, which is the circularity §16 warns
+about. The rising edge consults `ActiveDue_{t-1}`, which is `Due`'s own previous
+output. That is bookkeeping over the semantics' decisions, not the answerability
+state feeding back into them.
 
-This also subsumes a protection that previously needed its own reasoning:
-carrying into a claim the same event discharges is refused, because the successor
-is not outstanding after the step. `carry_into_something_resolved` is the fixture.
+**A falling edge resolves nothing.** `falling_edge_is_not_resolution` incurs a
+claim and then goes quiet; the claim stays outstanding. What stops being owed is
+decided by `Resolve`, never by the reasons ceasing to be represented.
 
-## 4. Due is an activation generator
+## 2. Activation identity, and its boundary
 
-Three interfaces were tested against five requirements. The decisive countermodel
-is the first.
+`Due` returns keys that already individuate the occasion. The structure mints the
+occurrence. So a key is *what is owed on this occasion*, and an `Ob` is *the
+occasion's record*.
 
-**A. Persistent predicate `Due_t(r,q)`. Refuted.** Build a claim opened at `t=0`,
-answered at `t=1`, whose reasons stay represented afterwards. A persistent
-predicate keeps activating the claim at `t=2` and `t=3`, so the legitimate
-discharge at `t=1` becomes a violation and the claim can never be closed. Run
-against the model, `D1` fires at the discharge position. A semantics on which
-answering an answerable claim is illegitimate is not a candidate.
+Two levels, and both earn their place: `Due` speaks about keys, the resolution
+theorem speaks about occurrences, and recurrence needs one key to have several
+occurrences. `office.Constitution.claim_keys` is where a fixture says two
+obligations realize one key.
 
-**B. Event-like `NewDue_t(r,q)`.** Fixes the reopening, and cannot express §7:
-if newness is keyed on the reason's arrival, material represented at `t=0` that
-only the later normative state makes owed never activates.
+The boundary worth stating: two genuinely independent claims of the same kind,
+simultaneously active and indistinguishable in the represented state, are one key
+and therefore one claim. That is not a defect being hidden. If the represented
+state cannot tell them apart, neither the process nor a verifier can, and
+inventing a distinction would be inventing content.
 
-**C. Activation generator.** `Due` reads the whole represented state against the
-strict pre-state and returns claim keys; newly due is what it returns minus what
-is already incurred. This is what the model implements.
+## 3. Inclusion, not equality
+
+`D1` is `NewDue_t subset NewlyIncurred_t`. Equality would say `Due` is the
+complete genesis semantics for answerability, and it is not:
+`succession_incurs_without_due` carries a claim to a successor, which incurs an
+occurrence that `Due` never activates. Requiring equality would refuse ordinary
+succession.
+
+So there are exactly two legitimate geneses: activation, and carriage. RI has the
+same two — `mint` on a `Transfer` is carriage, and the seam adds activation.
+
+## 4. The verifier test, and where D1 belongs
+
+`recurrence_ignored` is the case that settles it. Every recorded root has perfect
+continuity; Grounded Replay, A1, the resolution theorem and no-silent-loss are all
+clean; and the second lapse was never taken on. No structural check catches it,
+because nothing structural is wrong — the record is internally impeccable and
+incomplete.
+
+The only thing that catches it is recomputing the activation and comparing. That
+is the practical criterion the dispatch asked for, and it is what puts `D1` at the
+realization boundary rather than among the premises: a premise is discharged by
+construction, a conformance condition is checked against a record.
+
+## 5. Every layer owns a distinct failure
 
 ```text
-requirement                                      A     B     C
-does not reopen a resolved claim                 no    yes   yes
-old reason becomes newly due after a change      yes   no    yes
-several reasons jointly activate one claim       yes   yes   yes
-one reason activates several claims              yes   yes   yes
-does not smuggle in coverage                     yes   yes   yes
+Permit failure          illegitimate standing          S1/S2, Grounded Replay
+Due-conformance failure an owed claim omitted          D1, by recomputation
+Resolve failure         an owed claim erased           A1, Answerability Resolution
+Coverage failure        a reason never represented     outside; not a defect here
+Regret failure          exposed repair ignored         outside; downstream
 ```
 
-The last three need no extra machinery once `Due` reads the state rather than a
-reason. `joint_reasons_one_claim` simply does not fire until both pieces are
-represented; `one_reason_many_claims` returns two keys. Neither needs a support
-set attached to the obligation, which is the machinery §8 warned might be forced.
+Each row has an executed witness and none of them is caught by another row's
+check. That separation is the reason to call the package frozen rather than the
+absence of remaining questions.
 
-**Claim keys, and why occurrence identity stays structural.** `Due` names keys;
-the structure mints an occurrence realizing a key at the position that incurs it.
-Newness is decided on keys. So the semantics never has to supply an identity, and
-"already incurred" is checkable.
+## 6. Provenance adequacy
 
-## 5. Same-step Due and resolution
+`Due` is only as good as its supplied represented state. That is not Coverage.
+Coverage asks whether relevant external failures reach the represented state at
+all; this pass assumes an adequate descriptive view exactly as the rest of the
+round does, and inherits the unsolved provenance-completeness assumption
+unchanged.
 
-An event may reveal a problem and completely answer it. With `Incurred` separate,
-the claim is incurred at `t`, resolved at `t`, never outstanding, and the theorem
-still speaks about it. No intermediate state is needed and none is required.
+## 7. What no claim above asserts
 
-That does **not** become a loophole for ignoring what is due.
-`due_and_ignored_in_one_step` activates a key and does nothing: D1 fires and
-`cor_recognized_is_resolved` reports it. The difference between the two is
-whether there is a `Resolve` witness, which is exactly the right place for the
-difference to live.
-
-The previous pass forced a one-position delay by unioning openings last, and
-justified it as strict pre-state discipline. That was the wrong mechanism for the
-right worry — see §6.
-
-## 6. Strict pre-state, correctly located
-
-The protection needed is that resolution is judged at the legitimate pre-state.
-`self_authorize_then_discharge` grants itself the standing it then uses to
-discharge a claim: refused on the entitlement side, so it resolves nothing and the
-claim survives. That comes from `Resolve` being read at `(L_t, O_t)`, not from
-any ordering of unions.
-
-The second analogue — a resolution using a successor it creates as evidence the
-predecessor was handled — is A1's `S subset O_{t+1}` clause, §3.
-
-Both hold with openings applied first. The union order was doing no work, and
-keeping it would have cost the clean same-step semantics for nothing.
-
-## 7. D1 is not a premise of the theorem
-
-The pass's central finding, and it corrects the previous pass.
-
-Take `recognized_due_but_never_entered`: impeccable entitlement, no removals at
-all, a represented reason the semantics activates, and nothing incurred.
-
-```text
-A1                          clean
-Answerability Resolution    clean
-no silent loss              clean
-D1                          fires
-```
-
-The induction holds because there is nothing to induct over. D1 does not make the
-proof work; it makes the *conclusion quantify over the right set*. Dropping it
-does not break a theorem, it shrinks a domain — and a process can exploit exactly
-that.
-
-So the layering is:
-
-```text
-structural   A1        used by the induction, over incurred claims
-conformance  D1        relates the semantics to what the process recorded
-package      the composition of the two
-```
-
-This matters for what a realization has to supply. A structural premise is
-discharged by the model's construction; a conformance condition has to be
-*checked against an implementation*, and can fail there while every theorem still
-holds. That is the shape of thing worth knowing before someone tries to formalize
-it and finds the premise unused.
-
-**It is not hidden in the type.** §19's trap is real — this round has already
-shipped one premise that could not fail. `D1_BROKEN` contains two constitutions
-where the semantics activates a key and the process does not incur it, one of
-them a same-step case. Both are representable and both are caught.
-
-## 8. What the package separates automatically
-
-```text
-legitimate                        illegitimate
-radical constitutional change     ex-nihilo entitlement          (S2)
-permitted persuasion              silent deletion                (A1)
-high regret                       carry to an empty frontier     (A1)
-a failure never represented       one split branch lost          (A1)
-a claim open forever              unauthorized discharge         (A1 + gating)
-a legitimately reduced burden     a recognized claim ignored     (D1)
-```
-
-Both columns are executed. Nothing in the right column requires reading what an
-occurrence says, and nothing in the left column is refused.
-
-## 9. RI realization, quoted
-
-Read off `rounds/2026-08-24-reflective-integrity-core/src/ri_core.py`.
-
-**What creates an `AnsRoot`.** `roots(t)` is `seed.roots0` extended by `mint(a)`
-for each `a` in `norm_events(t)`. Two sources: the seed, and norm events.
-
-**What `MINT` means.** `mint(a: NormEvent)`: if `effect(a)` is a `Transfer`, one
-root for `(eff.x, eff.to)` — subject the transferred standing, debtor the
-transferee. Otherwise one root per member of `fresh_n(ctx, eff)`, debtor
-`a.author`. Every minted root carries `ACCOUNT_FOR_SUCCESSION` as its demand and
-`("Ev", a.id)` as its trigger.
-
-**Can `ReasonOcc` affect root creation?** No. `ReasonOcc` occurs in
-`Derivation.leaves` and as the payload of the `Reason` history step. `roots`
-reads neither.
-
-**Are old reasons re-evaluated after a context change?** No. `roots` is a pure
-function of the seed and the norm-event list; nothing recomputes an activation.
-
-**What RI's `due()` means.**
-`due(q,t) = live(q,t) and any(disposes(a,q) for a in norm_events(t))`, and
-`disposes` holds only for a `Transfer` or a `Supersede` targeting the root's
-subject in its current episode. So it means *this live root's episode is being
-succeeded*. The name is taken and means something else.
-
-**Can a `Response` settle a root without a `NormEvent`?** **Yes.**
-`closed(q,t)` runs `q.demand` over `responses_for(q,t)`, and `Respond` is its own
-history step. Resolution is already independent of the norm channel.
-
-**Does `continuity_ok` work over incurred or only live?** Over incurred. `roots(t)`
-never removes, so it *is* the incurred set, and `live` / `closed` is the
-outstanding / resolved split. `continuity_ok` recurses over successors with a leaf
-condition of live-and-not-due.
-
-**So RI already has three of the four pieces**: the incurred/outstanding split,
-a resolution channel independent of standing change, and a successor recursion of
-the right shape. What is missing is one thing: a way for represented material to
-activate a claim.
-
-**And the seam is not what the previous pass recommended.** That pass proposed a
-minting trigger keyed on reason occurrences. §4 refutes it: a reason represented
-at `t=0` can become owed at `t=5` because the normative state changed, and
-mint-on-arrival cannot see that. The seam has to be a **due-activation step
-evaluated over the whole represented state after each replay step**, comparing
-against what is already incurred. That is a derived projection, not a fifth event
-kind.
-
-## 10. What Legitimate Evolution is
-
-**Option B**: two local-to-global theorems plus a Due-realization condition — with
-the correction that the condition sits at the realization boundary rather than
-among the premises.
-
-Not one theorem: disjoint carriers, disjoint premises, disjoint inductions. Not a
-package of two closure theorems alone: that is what the previous pass shipped, and
-it passes a process that ignores what it recognized. Not a semantic transition
-definition: `Permit`, `Due` and `Resolve` stay opaque and every structural premise
-is checkable without them.
-
-The semantic consequence is the one the standard asked for. A process may change
-its substantive normative content arbitrarily; it cannot manufacture entitlement,
-cannot ignore a claim its own represented reasons newly make due, and cannot erase
-such a claim without a resolution history every branch of which ends open or
-discharged.
-
-## 11. What no claim above asserts
-
-- No claim that any claim is ever discharged. Progress is out.
-- No claim that anything ought to have been represented. Coverage is out.
+- No claim that the RI seam is implemented. It is specified down to the function
+  and not built; building it edits a previous round's artifact.
+- No claim that any claim is ever discharged, or that anything ought to have been
+  represented.
+- No claim that `Due`'s activation form is uniquely minimal — only that
+  persistence, arrival-minting and content-memoization are each refuted by an
+  executed countermodel.
+- No claim that two parties with different `Due` semantics can be reconciled by
+  the record. They cannot, and the same is already true of `Permit`.
 - No claim that a conforming process is good. `high_regret` conforms.
-- No claim about quantitative burden beyond the two preserved results: it is not
-  a generic structural consequence, and any later law must use total accounting.
-- No claim that `Due`'s exact activation form is uniquely minimal — only that the
-  two simpler interfaces are refuted by executed countermodels.
-- No claim that the RI seam of §9 is built. It is not.

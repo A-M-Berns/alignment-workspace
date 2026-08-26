@@ -25,15 +25,26 @@ incurred and resolved by one event without ever being outstanding -- see
 `ANSWERABILITY.md` §5.
 
 ```text
-Due      the represented material, read against the strict pre-state, activates
-         these claim keys.  Newly due = activated and not already incurred.
-Resolve  done, or carry(S).
+Due      the represented material, read against the strict pre-state, is
+         currently active for these claim keys
+Resolve  done, or carry(S)
 ```
 
-Two semantic parameters. `Due` is an **activation generator** over the whole
-represented state, not a predicate on a reason occurrence: a claim key already
-incurred is not newly due however long its reasons stay represented, which is what
-stops a resolved claim from reopening forever.
+Two semantic parameters. `Due` reports an **active set**, and what obliges is its
+**rising edge**:
+
+```text
+NewDue_t = ActiveDue_t \ ActiveDue_{t-1}
+```
+
+A claim active continuously across its own discharge has no rising edge and does
+not reopen. A claim that goes inactive and becomes active again has a second
+rising edge and incurs a **second occurrence**, which is recurrence. Memoizing on
+content instead -- what the previous version did -- forbids recurrence outright.
+
+The edge is computed against `Due`'s own previous output and never against the
+answerability state, so nothing here lets what is outstanding decide what is
+owed. See `ANSWERABILITY.md` §5.
 
 **One structural premise, A1.** `D1` is a conformance condition at the
 realization boundary and is not used by the induction; `ANSWERABILITY.md` §7 is
@@ -80,7 +91,7 @@ class Duties:
     discharges[t]  claims Resolve judged done
     transfers[t]   {q: S}, Resolve judged carry(S)
     drops[t]       removed by neither route -- the A1 bait
-    due[t]         claim keys Due activates at t, before newness is applied
+    due[t]         ActiveDue_t, the claim keys held active at t
     key[q]         which claim key an occurrence realizes
     ```
     """
@@ -108,8 +119,11 @@ class Duties:
     def dropped(self, t: int) -> frozenset:
         return self.drops.get(t, frozenset())
 
-    def activated(self, t: int) -> frozenset:
-        """Claim keys `Due` activates at `t`. Not yet filtered for newness."""
+    def active(self, t: int) -> frozenset:
+        """`ActiveDue_t`: the claim keys the semantics holds active at `t`.
+
+        A level, not an event. The rising edge is taken in `newly_due`.
+        """
         return self.due.get(t, frozenset())
 
     def key_of(self, q: Ob):
@@ -148,16 +162,24 @@ def outstanding(f: rp.Frame, d: Duties, upto: Optional[int] = None) -> frozenset
 
 
 def newly_due(d: Duties, t: int) -> frozenset:
-    """Claim keys `Due` activates at `t` that no earlier claim already realizes.
+    """`NewDue_t = ActiveDue_t \ ActiveDue_{t-1}`. The rising edge.
 
-    *Already incurred is not newly due.* Without this, a claim whose reasons stay
-    represented is re-activated at every later position and can never be
-    legitimately resolved -- `ANSWERABILITY.md` §4 builds that countermodel.
+    Three things this gets right that memoizing on content does not.
+
+    *No reopening.* A claim active continuously across its own discharge is
+    active at `t-1` too, so there is no edge and nothing is re-incurred.
+
+    *Recurrence.* A claim that goes inactive and becomes active again has a
+    second edge and incurs a second occurrence -- a new episode of the same kind.
+    Memoizing on content makes that impossible, which is what the previous
+    version did.
+
+    *No circularity.* The comparison is against `Due`'s own prior output, never
+    against `Incurred` or `Outstanding`. What is owed is decided by the
+    represented state and the semantics; the edge is bookkeeping over that
+    decision, not answerability feeding back into it.
     """
-    before = {d.key_of(q) for q in d.base}
-    for u in range(t):
-        before |= {d.key_of(q) for q in d.opened(u)}
-    return frozenset(d.activated(t) - before)
+    return frozenset(d.active(t) - (d.active(t - 1) if t > 0 else frozenset()))
 
 
 # ---------------------------------------------------- the structural premise
@@ -215,6 +237,10 @@ def violations(f: rp.Frame, d: Duties) -> dict:
 def d1_due_realization(f: rp.Frame, d: Duties) -> tuple:
     """**D1.** Every newly due claim key is realized by a claim incurred there.
 
+    Inclusion, not equality: `NewDue_t subset NewlyIncurred_t`. Claims may also
+    be incurred as carried successors, which is a different and legitimate
+    genesis, so requiring equality would refuse ordinary succession.
+
     **Not a premise of the theorem below**, which never consults it. It is a
     conformance condition relating the semantics to what the process recorded.
     Dropping it does not make the induction fail; it makes the conclusion
@@ -228,7 +254,7 @@ def d1_due_realization(f: rp.Frame, d: Duties) -> tuple:
     for t in range(len(f.trace)):
         realized = {d.key_of(q) for q in d.opened(t)}
         for k in sorted(newly_due(d, t) - realized, key=str):
-            bad.append(("activated and not incurred", t, k))
+            bad.append(("activation episode with no incurred claim", t, k))
     return tuple(bad)
 
 

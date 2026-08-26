@@ -117,63 +117,125 @@ class TestTheCarryLaw(unittest.TestCase):
             self.assertNotIn("q.pos", inspect.getsource(fn))
 
 
-class TestDueIsAnActivationGenerator(unittest.TestCase):
-    """§§5-9. The interface, chosen by countermodel rather than by taste."""
+class TestActivationEpisodes(unittest.TestCase):
+    """§§3-6, 15. `Due` is a level; what obliges is its rising edge."""
 
-    def test_a_persistent_predicate_would_reopen_a_resolved_claim(self):
-        """Interface A, refused. The reasons stay represented and the claim
-        stays resolved."""
+    def test_persistent_activation_does_not_reopen(self):
+        """§4. The claim stays active across its own discharge and stays closed."""
         f, d = fd(of.resolved_stays_resolved())
-        activated = {t: set(d.activated(t)) for t in range(len(f.trace))
-                     if d.activated(t)}
-        self.assertEqual(activated,
-                         {0: {"q:claim"}, 2: {"q:claim"}, 3: {"q:claim"}})
+        self.assertEqual({t: set(d.active(t)) for t in range(len(f.trace))},
+                         {t: {"q:claim"} for t in range(4)})
         self.assertEqual({t: set(an.newly_due(d, t)) for t in range(len(f.trace))
                           if an.newly_due(d, t)}, {0: {"q:claim"}})
         self.assertEqual(an.nonconformance(f, d), {})
         self.assertEqual(an.outstanding(f, d), frozenset())
 
+    def test_recurrence_incurs_a_second_occurrence(self):
+        """§5. Two episodes of one claim kind, and memoizing forbids this."""
+        f, d = fd(of.recurrence())
+        self.assertEqual([t for t in range(len(f.trace)) if an.newly_due(d, t)],
+                         [0, 3])
+        self.assertEqual(nm(d, an.incurred(f, d)), {"q:lapse-1", "q:lapse-2"})
+        self.assertEqual({d.key_of(q) for q in an.incurred(f, d)}, {"q:lapse"})
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:lapse-2"})
+        self.assertEqual(an.nonconformance(f, d), {})
+
+    def test_content_difference_would_have_missed_it(self):
+        """§15. Set difference on content gives one episode where there are two."""
+        f, d = fd(of.recurrence())
+        ever = {d.key_of(q) for q in an.incurred(f, d)}
+        self.assertEqual(len(ever), 1)
+        self.assertEqual(len([t for t in range(len(f.trace))
+                              if an.newly_due(d, t)]), 2)
+
+    def test_an_ignored_second_episode_is_caught(self):
+        f, d = fd(of.recurrence_ignored())
+        self.assertIn("D1", an.nonconformance(f, d))
+        self.assertEqual([v[1] for v in an.nonconformance(f, d)["D1"]], [3])
+
+    def test_a_falling_edge_resolves_nothing(self):
+        """What stops being owed is decided by Resolve, not by Due going quiet."""
+        f, d = fd(of.falling_edge_is_not_resolution())
+        self.assertEqual(set(an.newly_due(d, 0)), {"q:claim"})
+        self.assertEqual(d.active(1), frozenset())
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:claim"})
+
     def test_an_old_reason_may_become_newly_due(self):
-        """§7. Nothing arrives at t=2; the normative context changed."""
+        """§6. Nothing arrives; the normative context changed."""
         f, d = fd(of.old_reason_becomes_newly_due())
         self.assertEqual(an.newly_due(d, 0), frozenset())
         self.assertEqual(set(an.newly_due(d, 2)), {"q:under-new-standard"})
         self.assertEqual(an.nonconformance(f, d), {})
 
+    def test_radical_change_can_activate_a_longstanding_reason(self):
+        """§27 case 13. The successor constitution owes for the old practice."""
+        f, d = fd(of.refoundation_activates_an_old_reason())
+        self.assertEqual(set(an.newly_due(d, 2)),
+                         {"q:account-for-the-practice"})
+        self.assertEqual(rp.violations(f), {})
+        self.assertEqual(an.nonconformance(f, d), {})
+
     def test_several_reasons_may_jointly_activate_one_claim(self):
-        """§8. No support-set machinery on the obligation: Due reads the state."""
+        """§12. No support sets on the obligation: Due reads the state."""
         f, d = fd(of.joint_reasons_one_claim())
         self.assertEqual(an.newly_due(d, 0), frozenset())
         self.assertEqual(an.newly_due(d, 1), frozenset())
         self.assertEqual(set(an.newly_due(d, 2)), {"q:joint-claim"})
 
     def test_one_reason_may_activate_several_claims(self):
-        """§9. No special machinery either."""
+        """§13. No special machinery either."""
         f, d = fd(of.one_reason_many_claims())
         self.assertEqual(set(an.newly_due(d, 0)), {"q:explain", "q:repair"})
-        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:explain", "q:repair"})
 
-    def test_same_step_due_and_resolution_needs_no_intermediate_state(self):
-        """§14. Incurred, discharged, never outstanding, and still spoken about."""
+    def test_the_edge_never_consults_answerability(self):
+        """§16. Bookkeeping over Due's own output, not a normative loop."""
+        src = inspect.getsource(an.newly_due)
+        for word in ("outstanding", "incurred", "Incurred", "opened"):
+            self.assertNotIn(word, src.split('"""')[2], word)
+
+    def test_same_step_activation_and_resolution(self):
+        """§8. Incurred, resolved, never outstanding, and still covered."""
         f, d = fd(of.due_and_resolved_in_one_step())
         self.assertEqual(set(an.newly_due(d, 0)), {"q:instant"})
         self.assertEqual(an.outstanding(f, d, 1), frozenset())
         self.assertEqual(an.nonconformance(f, d), {})
         self.assertEqual(an.cor_recognized_is_resolved(f, d), ())
 
+    def test_same_step_activation_with_an_unauthorized_resolution(self):
+        """§27 case 8. Incurrence lands; the resolution does not."""
+        f, d = fd(of.same_step_activation_unauthorized_resolution())
+        self.assertEqual(rp.accepted(f), ())
+        self.assertEqual(nm(d, an.incurred(f, d)), {"q:revealed"})
+        self.assertEqual(nm(d, an.outstanding(f, d)), {"q:revealed"})
+
     def test_but_same_step_is_not_a_loophole(self):
-        """§14 again: activated and simply not taken on."""
         f, d = fd(of.due_and_ignored_in_one_step())
         self.assertIn("D1", an.nonconformance(f, d))
         self.assertNotEqual(an.cor_recognized_is_resolved(f, d), ())
 
     def test_due_is_not_coverage(self):
-        """§10. Nothing represented, nothing activated, still legitimate."""
+        """§10. Nothing represented, nothing active, still legitimate."""
         f, d = fd(of.unobservant())
         self.assertEqual(d.due, {})
         self.assertEqual(an.violations(f, d), {})
         self.assertEqual(an.nonconformance(f, d), {})
-        self.assertEqual(an.cor_recognized_is_resolved(f, d), ())
+
+
+class TestD1IsAnInclusion(unittest.TestCase):
+    """§18. Due is not the only legitimate genesis for a claim."""
+
+    def test_succession_incurs_a_claim_Due_never_activates(self):
+        f, d = fd(of.succession_incurs_without_due())
+        self.assertEqual(d.due, {})
+        self.assertEqual(nm(d, an.incurred(f, d)), {"q:original", "q:successor"})
+        self.assertEqual(an.nonconformance(f, d), {})
+
+    def test_so_equality_would_refuse_ordinary_succession(self):
+        f, d = fd(of.succession_incurs_without_due())
+        newly = frozenset().union(frozenset(),
+                                  *[an.newly_due(d, t) for t in range(len(f.trace))])
+        self.assertEqual(newly, frozenset())
+        self.assertNotEqual(an.incurred(f, d), frozenset())
 
 
 class TestD1IsNotATheoremPremise(unittest.TestCase):
@@ -220,6 +282,49 @@ class TestD1IsNotATheoremPremise(unittest.TestCase):
         g, e = fd(of.recognized_due_but_never_entered())
         self.assertEqual(an.violations(g, e), {})
         self.assertIn("D1", an.nonconformance(g, e))
+
+
+class TestTheVerifierTest(unittest.TestCase):
+    """§22. Can a consumer tell an omitted claim from a valid record?"""
+
+    def test_the_bad_case_has_perfect_continuity_on_every_recorded_claim(self):
+        """Which is why no structural check can catch it."""
+        for c in of.D1_BROKEN:
+            with self.subTest(c.acts[-1].label):
+                f, d = fd(c)
+                self.assertEqual(rp.thm_grounded_replay(f), ())
+                self.assertEqual(an.violations(f, d), {})
+                self.assertEqual(an.thm_answerability_resolution(f, d), ())
+                self.assertEqual(an.cor_no_silent_loss(f, d), ())
+                self.assertIn("D1", an.nonconformance(f, d))
+
+    def test_and_recomputing_the_activation_catches_it(self):
+        """The verifier's whole job: replay Due over the represented state and
+        compare its rising edges against what the record incurred."""
+        for c in of.D1_BROKEN:
+            with self.subTest(c.acts[-1].label):
+                f, d = fd(c)
+                reported = [(t, k) for _, t, k in an.nonconformance(f, d)["D1"]]
+                self.assertTrue(reported)
+                for t, k in reported:
+                    self.assertIn(k, an.newly_due(d, t))
+                    self.assertNotIn(k, {d.key_of(q) for q in d.opened(t)})
+
+    def test_a_conforming_record_recomputes_clean(self):
+        for c in of.ACTIVATION_CONSTITUTIONS:
+            f, d = fd(c)
+            self.assertEqual(an.nonconformance(f, d), {})
+            self.assertEqual(an.cor_recognized_is_resolved(f, d), ())
+
+    def test_what_the_verifier_needs(self):
+        """`Due` is a parameter, exactly as `Permit` is. The record carries the
+        represented state; the semantics has to be agreed out of band."""
+        f, d = fd(of.recurrence())
+        self.assertIsNotNone(d.due)
+        blind = an.Duties(d.base, d.opens, d.discharges, d.transfers, d.drops,
+                          {}, d.key)
+        self.assertEqual(an.nonconformance(f, blind), {})
+        self.assertEqual(an.violations(f, blind), an.violations(f, d))
 
 
 class TestTheThreeGates(unittest.TestCase):
