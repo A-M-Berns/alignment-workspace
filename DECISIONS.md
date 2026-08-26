@@ -1909,3 +1909,36 @@ strength: `merge_lenient()` sends two obligations of weight 1 to one of weight
 1.5, which passes per-parent and fails in total. Any future conservation law here
 must be the total one and must say so, because the per-parent form would be false
 and would look proved.
+
+### 2026-08-26 — the obligation fold is gated asymmetrically
+
+Agent-decided, under `AGENTS.md` §6, and it reverses the previous pass's shared
+gate. Openings apply whether or not an edit was accepted; discharges and transfers
+apply only when it was. Removing an obligation is an exercise of authority and
+needs entitlement; acquiring one is not, because a process is answerable for what
+happened, including for an act it refused. The corollary the shared gate was
+introduced to secure — an unentitled act discharges nothing — survives unchanged,
+since discharge is still gated.
+
+### 2026-08-26 — A2 is withdrawn as a premise
+
+Agent-decided. Freshness of opened obligations was claimed to make transfer chains
+terminate. It does not; the interval does. A hand-built cycle violating freshness
+in every representable way satisfies the corrected theorem. A2 is retained as
+`fresh_by_construction`, a check on the encoding, and named in no theorem.
+
+### 2026-08-26 — immediate resolution is not expressible, on purpose
+
+Agent-decided. The obligation fold unions openings last, so an obligation opened
+and discharged by one event is outstanding afterwards and the discharge is
+reported as disposing of something not open. A recognized obligation must
+therefore be exhibited for at least one position before it can be resolved. This
+costs one trace position and buys the strict-pre-state discipline on the
+resolution side for free, with no premise of its own.
+
+### 2026-08-26 — `Disposes` and `Transfers` become one parameter `Resolve`
+
+Agent-decided. They were two names for the two answers one function gives: done,
+or carry to these successors. The semantic interface is now `Permit`, `Due`,
+`Resolve`. The formally smallest encoding — a single joint step relation — was
+rejected because it collapses the distinctions the three consumers each need.

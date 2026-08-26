@@ -219,7 +219,83 @@ parent's successor outweighs it, so per-parent sees nothing; the total fell from
 to 1.5. A conservation claim stated per-parent would be false and would look
 proved.
 
-## 8. What remains open
+## 12. The answerability conclusion was false
+
+Refer a complaint, then answer the referral.
+
+```text
+O_0 = {q0};   t=0: transfer q0 -> q1;   t=1: discharge q1
+```
+
+Premises clean, entitlement clean. The shipped conclusion asked whether `q0` was
+discharged in `[0,2)` -- no, `q1` was -- or carried to something outstanding at
+`2` -- no, `q1` is closed. Both disjuncts fail on a process with nothing wrong
+with it. `split -> discharge both` and `merge -> discharge successor` fail
+identically; `split -> discharge one branch` passed only because the surviving
+branch supplied the missing disjunct by accident.
+
+The statement tracked the root's own fate where succession replaces the root with
+others whose fate is the answer. The repair asks for a derivation and classifies
+its frontier. This is the fourth time an object in this round was refuted by a
+countermodel rather than under-proved, and the first time the defect survived a
+whole pass and shipped.
+
+A smaller sibling found while repairing it: a transfer naming **no** successor
+produced a `carried` node with no children, and an empty frontier satisfies "every
+leaf is open or discharged" vacuously. The conclusion now requires a non-empty
+frontier.
+
+## 13. A premise that was doing nothing
+
+The previous pass claimed A2 (fresh openings) made transfer chains terminate.
+Build the cycle
+
+```text
+q0 -> q1 at 0,   q1 -> q0 at 1,   discharge q0 at 2
+```
+
+by hand. Freshness is violated in every way the check reports -- mis-positioned
+occurrences, an obligation reopened, an obligation its own descendant -- A1 holds,
+and the corrected theorem holds with the finite derivation
+`qG.0 -> qG.1 -> qG.0 [discharged]`. Termination comes from each step moving
+strictly right along a finite trace.
+
+A2 is demoted to representation hygiene. Under occurrence identity it is also
+definitional: the constitution model cannot construct a violation, which is why
+the countermodel had to be hand-built -- and why the premise looked safe.
+
+## 14. One acceptance bit could not gate both channels
+
+An unauthorized act is refused, so no normative standing changes. The fact that
+the attempt occurred is represented and, by the process's own semantics, owed an
+answer. Under the shared gate a rejected edit was a no-op on the obligation fold,
+so no complaint could open: the architecture could not represent a process
+becoming answerable for what it refused to do.
+
+The repair gates the directions differently -- openings ungated, removals gated.
+The corollary the shared gate secured is untouched, because discharge is still
+gated, and `unauthorized_act_attempts_discharge` exercises both channels in one
+act with only the opening landing. The direction is safe because opening is a
+burden rather than a power, and laundering stays closed because transfer is a
+removal.
+
+This one is a design error rather than a mistake in a statement, and it was
+visible in the previous pass's own framing: the corollary was described there as
+the entire yield of packaging the two halves together, which is what a coupling
+too coarse to say anything else looks like.
+
+## 15. Recognized as due, and never entered
+
+A process with impeccable entitlement, no removals at all, and a represented
+reason its own semantics says is owed an answer, which it never enters. The
+previous package passes it, because its only obligation premise constrained
+departures and there were none.
+
+Not a coverage failure -- the reason is represented. Not regret. The repair is
+`D1`, one inclusion at one position, and it is the clause that makes the package
+say something about evolution rather than about bookkeeping.
+
+## 16. What remains open
 
 **Provenance completeness.** The round tried to state it non-circularly and
 failed. It is not "assume the relevant influences are visible", not "refuse every
@@ -235,13 +311,22 @@ theorem here.
 is nearly vacuous on a record. That is a gap the abstraction exposed and this pass
 deliberately did not repair.
 
-**`Due` has no realizer.** Reflective Integrity mints answerability roots from
-effects, not from reason occurrences, so a premise saying which reasons place the
-process under obligation cannot currently be discharged by the architecture. It is
-not needed by either theorem. It is needed by any consumer wanting to say why
-something became owed. Not checked against the RI code in this pass.
+**`Due` has no realizer**, and this is now checked rather than read off an
+intended correspondence. `History.roots(t)` is the seed roots extended by
+`mint(a)` over `norm_events(t)`, and `mint` is typed on `NormEvent`; `ReasonOcc`
+appears only in derivation leaves and as a `Reason` step's payload, and nothing
+consults it. RI's `History.due(q, t)` is a different predicate -- it asks whether
+a live root's episode is being succeeded. Since D1 is now a premise, this is a
+premise the architecture cannot discharge. The smallest seam is a minting trigger
+keyed on reason occurrences; `Reason` already exists, so no new event kind is
+needed.
 
-## 9. What no entry above claims
+Worth recording in the other direction: RI's `continuity_ok` already recurses over
+successors with a leaf condition of live-and-not-due, which is the corrected
+frontier statement. The architecture had the right shape and the abstraction
+shipped the wrong one.
+
+## 17. What no entry above claims
 
 That the theorem is deep. It is an induction over a list; two of its three
 corollaries are two lines. What it earns is that three successive formulations of

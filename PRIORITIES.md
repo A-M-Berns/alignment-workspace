@@ -1194,8 +1194,12 @@ scout names; charging against the norm's own episode; and either a finite lifeti
 or a decaying allocation, since the per-date deficit provably does not fall with
 increasing settlement.
 
-**Narrowed by the Legitimate Evolution round.** Any such bound is a condition on
-the succession semantics, not a structural theorem. Four constitutions transfer
+**Narrowed by the Legitimate Evolution round**, and the narrowing is itself
+narrow: any such bound is a condition on the succession semantics rather than a
+structural theorem, which does **not** mean no legitimacy semantics may impose
+one. A `Resolve` that refuses a successor not genuinely carrying its predecessor
+is coherent; the structural layer cannot see it only because it cannot see any
+content. Four constitutions transfer
 every obligation to a named successor, satisfy both structural premises and the
 continuity theorem, and reduce the total burden — one of them to zero. So the
 per-norm statement must be sought as a hypothesis on `Transfers` and stated in
@@ -1215,31 +1219,46 @@ exceeds any allowance attachable at issuance, or the bound holds on it.
 
 ---
 
-### 71. A minting site on reasons, or `Due` stays a parameter — **[open]**
+### 71. A minting site on reasons — **[open]** — *now a premise the architecture cannot discharge*
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-Answerability Continuity needs to know which obligations are outstanding, and
-takes that as given. The question it does not answer is which reason occurrences
-place the process under obligation in the first place — `Due(L, r, q)`.
+**Upgraded from a reading to a checked gap, and from optional to blocking.** The
+answerability side now carries a structural premise `D1`: what the process's own
+semantics says is owed at `t` is outstanding at `t+1`. Without it a process with
+impeccable entitlement, no removals at all, and a represented reason it itself
+recognizes as owed an answer, satisfies everything and enters nothing.
 
-Reflective Integrity appears to mint answerability roots from **effects**, at
-`MINT`, not from reason occurrences. If so there is no site in the architecture
-where a reason, as such, opens an answerability root, and `Due` has no realizer.
-Neither theorem needs it. Any consumer that wants to say *why* something became
-owed does.
+Reflective Integrity cannot discharge D1. Checked against
+`rounds/2026-08-24-reflective-integrity-core/src/ri_core.py`: `History.roots(t)`
+is the seed roots extended by `mint(a)` over `norm_events(t)`, and `mint` is typed
+on `NormEvent`. `ReasonOcc` appears in `Derivation.leaves` and as the payload of a
+`Reason` history step, and `roots` consults neither. There is no path from a
+represented reason to an answerability root.
 
-This was read off the intended correspondence, not checked against the RI code.
-The first task is to check it.
+Two further findings from the same reading. RI's `History.due(q, t)` is a
+**different predicate** — it asks whether a live root's episode is being succeeded
+— so the name is taken and means something else. And RI's `continuity_ok` already
+recurses over successors with a leaf condition of live-and-not-due, which is
+exactly the corrected frontier statement the abstraction had wrong until this
+pass: the architecture had the right shape and the abstraction did not.
 
-*Deliverable shape:* either a `MINT`-on-reasons seam with the conditions under
-which a reason opens a root, or the finding that `Due` must remain a semantic
-parameter consulted before the obligation lifecycle is built.
-*Acceptance check:* an RI record in which two reason occurrences differ and the
-outstanding sets they induce differ, derived rather than stipulated.
+The seam is small and needs **no new event kind**, since `Reason` already exists:
+`roots()` must consult represented reasons under a semantic predicate the way it
+consults norm events.
+
+*Deliverable shape:* a minting trigger keyed on reason occurrences, with the
+conditions under which a represented reason opens a root; or the finding that D1
+must be discharged outside RI, with what that costs a consumer.
+*Acceptance check:* an RI record in which two histories differ only in a
+represented reason and the outstanding sets they induce differ, derived rather
+than stipulated.
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/ANSWERABILITY.md`
-§6; `PROPER_EXERCISE.md`'s kernel section for the parallel gap on jurisdiction.
-*Consumed by:* item 69, which needs an allowance minted with the obligation.
+§§4, 8; `PROPER_EXERCISE.md`'s kernel section for the parallel gap on
+jurisdiction, which has the same shape — a semantic input with no representable
+realizer.
+*Consumed by:* item 69, which needs an allowance minted with the obligation; and
+by deference, which wants the recognized-and-entered guarantee.
 
 ---
 

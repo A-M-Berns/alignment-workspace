@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 207 names, 124 of them Lean only
+## deference — 207 names, 123 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -196,7 +196,7 @@ change, and the count of those is the size of the free choice remaining.
 | `s3a` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.s3a` |
 | `s3b` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.s3b` |
 | `setTag` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.setTag` |
-| `step` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.step` |
+| `step` | def | 2026-08-12-reachable-corrective-control | prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.step` |
 | `stepHFirst` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.stepHFirst` |
 | `stillRun` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.stillRun` |
 | `trace` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.trace` |
@@ -262,7 +262,7 @@ change, and the count of those is the size of the free choice remaining.
 | `componentAt` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.componentAt` |
 | `componentTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.componentTrader` |
 | `firmTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.firmTrader` |
-| `history` | def | 2026-08-16-traderized-enforcement | wiki | `Workspace.Normativity.Contrib.AssessmentFirm.history` |
+| `history` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.AssessmentFirm.history` |
 | `quote` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentFirm.quote` |
 | `states` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.AssessmentFirm.states` |
 | `tradingFirmTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.tradingFirmTrader` |
@@ -325,7 +325,7 @@ change, and the count of those is the size of the free choice remaining.
 | `deductiveReps` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductiveReps` |
 | `deductiveScheduleComputation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductiveScheduleComputation` |
 | `aggregateAt` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.aggregateAt` |
-| `history` | def | 2026-08-16-traderized-enforcement | wiki | `Workspace.Normativity.Contrib.DeductiveEnforcement.history` |
+| `history` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.DeductiveEnforcement.history` |
 | `quote` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.DeductiveEnforcement.quote` |
 | `realizedAggregate` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedAggregate` |
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedEnforcer` |
@@ -415,7 +415,7 @@ change, and the count of those is the size of the free choice remaining.
 | `enfPrefixFromStagesAtFuel` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.EnforcedComputation.enfPrefixFromStagesAtFuel` |
 | `enfStatePrefix` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.EnforcedComputation.enfStatePrefix` |
 | `aggregateAt` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.aggregateAt` |
-| `history` | def | 2026-08-16-traderized-enforcement | wiki | `Workspace.Normativity.Contrib.EnforcementPreservation.history` |
+| `history` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.EnforcementPreservation.history` |
 | `quote` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.EnforcementPreservation.quote` |
 | `realizedAggregate` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedAggregate` |
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedEnforcer` |

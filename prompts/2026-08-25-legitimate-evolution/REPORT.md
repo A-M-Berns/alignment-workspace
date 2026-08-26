@@ -292,10 +292,158 @@ code.**
 
 ---
 
+# Seventh pass — is the pair the smallest correct package?
+
+**Verdict:** `LEGITIMATE-EVOLUTION-NEEDS-DUE-BRIDGE`.
+
+It was not the smallest correct package, and it was not correct. Three things
+went wrong and all three are repaired here; the fourth is the gap the verdict
+names.
+
+## The conclusion was false
+
+Refer a complaint, then answer the referral. Premises clean, entitlement clean,
+and the shipped theorem reports a violation: `q0` was not discharged — `q1` was —
+and was not carried to anything outstanding, because `q1` is closed. Both
+disjuncts fail. `split -> discharge both` and `merge -> discharge successor` fail
+the same way. `split -> discharge one branch` passed only because the surviving
+branch happened to supply the missing disjunct.
+
+The old statement tracked a root's own fate where succession replaces the root
+with others whose fate is the answer. The corrected conclusion:
+
+> Every obligation outstanding at `s` has, at every later `t`, a finite
+> resolution derivation whose frontier is non-empty and consists only of
+> obligations still outstanding at `t` and obligations an accepted edit
+> discharged before `t`.
+
+The witness is a **tree unfolded from a DAG** — a reconverging split gives one
+obligation two distinct leaves — and it is finite because each child begins at a
+strictly later position, not for any deeper reason. A sibling defect surfaced
+while repairing it: a transfer naming no successor produced a node with no
+children, and an empty frontier satisfies the leaf condition vacuously. Hence
+non-empty.
+
+## A2 was inert
+
+The claim was that freshness makes transfer chains terminate. Build
+`q0 -> q1 -> q0`, discharge `q0`. Freshness violated in every representable way,
+A1 satisfied, theorem holds, derivation finite. Termination comes from the
+interval. A2 is demoted to representation hygiene; under occurrence identity it
+is additionally definitional, which is why the countermodel had to be built by
+hand and why the premise looked safe for a whole pass.
+
+## One acceptance bit could not gate both channels
+
+The case flagged in the dispatch, and it is a genuine design error. An
+unauthorized act is refused; the fact that the attempt occurred is represented
+and is itself owed an answer; under the shared gate a rejected edit was a no-op on
+the obligation fold, so no complaint could open. The architecture could not
+represent a process becoming answerable for what it refused to do.
+
+The gate is now asymmetric — openings ungated, removals gated. The corollary the
+shared gate secured is untouched. `unauthorized_act_attempts_discharge` exercises
+both channels in one act:
+
+```text
+accepted            ()
+O_end               {q:complaint-about-alice, q:standing}
+opened by rejected  {q:complaint-about-alice}
+would have been discharged {q:standing}
+```
+
+Safe because opening is a burden rather than a power, and laundering stays closed
+because transfer is a removal. This kills the entitlement/answerability duality
+rather than narrowing it: the honest statement is controlled creation of standing
+against **required** creation and controlled resolution of obligations.
+
+## Due
+
+The conceptual attack lands. A process with impeccable entitlement, no removals,
+and a represented reason its own semantics calls owed, which it never enters,
+passes the old package completely — its only obligation premise constrained
+departures, and there were none.
+
+`D1: owed_t subset O_{t+1}`. One inclusion at one position. It does not require
+coverage (`Due` speaks only of what is represented, so `unobservant()` stays
+legitimate), does not require progress (entry, never closure), is indexed by
+position because `Due` reads the state and a reason can become owed later, and
+forbids opening-and-closing in one breath for free, because the fold unions
+openings last.
+
+## The RI check, this time against the code
+
+`History.roots(t)` is the seed roots extended by `mint(a)` over `norm_events(t)`;
+`mint` is typed on `NormEvent`. `ReasonOcc` appears in `Derivation.leaves` and as
+a `Reason` step's payload and is consulted by neither. There is no path from a
+represented reason to an answerability root, so **D1 is a premise the architecture
+cannot discharge**. RI's own `due(q,t)` is a different predicate — whether a live
+root's episode is being succeeded — so the name is taken.
+
+The seam needs no new event kind, since `Reason` already exists: `roots()` must
+consult represented reasons under a semantic predicate.
+
+One finding in RI's favour: its `continuity_ok` already recurses over successors
+with a leaf condition of live-and-not-due, which is the corrected frontier
+statement. The architecture had the right shape and the abstraction shipped the
+wrong one.
+
+## The quantitative helper, withdrawn
+
+`thm_no_dilution_gives_monotone_potential` checked per-parent rather than total
+dilution, ignored that fresh obligations raise the potential however transfers
+behave, and had a discharge escape clause that made it unfalsifiable on any trace
+containing a discharge. `high_regret` is the witness: zero dilution, potential
+`0 -> 1 -> 2 -> 3`. Replaced by a conditional naming both hypotheses. The
+per-parent result is preserved as the reason total accounting is required.
+
+The previous pass's headline claim is also narrowed: quantitative burden
+conservation is not a *generic structural consequence* of answerability
+continuity, which does not mean no legitimacy semantics may impose one.
+
+## What Legitimate Evolution is
+
+A named package of two closure theorems and two coupling laws — option D. Not one
+joint theorem; not a semantic definition; and not merely the two closure theorems,
+because D1 is a third structural premise neither contains.
+
+Smallest formally sufficient interface: a joint step relation with a `Due`
+projection. Smallest semantically useful: `Permit`, `Due`, `Resolve`. The second
+is what the theorem uses, because the first collapses distinctions each of the
+three consumers separately needs.
+
+## What this pass does not establish
+
+That the repaired package is right. Three of its predecessors looked right for a
+pass each. The corrected conclusion, D1 and the asymmetric gate are one pass old
+and have not faced a hostile round.
+
+That D1 is the only missing local law, or that its exact form is minimal — only
+that the countermodel it was built to refuse is refused, and that coverage and
+progress stay out.
+
+Anything about progress, coverage, regret or substantive correctness.
+
+## Outstanding maintainer actions
+
+1. **Rule on whether the deference kernel's grade acquires an index.** In
+   `DECISIONS.md`'s *Awaiting the author* since the first pass, unchanged.
+
+2. **Decide whether RI grows a reason-keyed minting site.** Priority 71, now a
+   premise the architecture cannot discharge rather than a convenience. The
+   alternative is discharging D1 outside RI, and someone should say which.
+
+3. **No other item is reserved.** The four forks this pass faced it adopted, as
+   dated `DECISIONS.md` entries marked agent-decided and reversible: the
+   asymmetric gate; A2 withdrawn; immediate resolution deliberately
+   inexpressible; `Disposes` and `Transfers` folded into `Resolve`.
+
+---
+
 ## Attribution
 
 | | |
 |---|---|
-| prompt author | a maintainer, with a model-assisted draft; seven dispatches |
+| prompt author | a maintainer, with a model-assisted draft; eight dispatches |
 | executor | Claude Opus 5 (Anthropic) |
 | dates | 2026-08-25 to 2026-08-26 |

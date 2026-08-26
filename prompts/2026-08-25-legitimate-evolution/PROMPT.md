@@ -4034,3 +4034,935 @@ Use this as the next pass:
 > The key uncertainty is whether that second clause is a simple qualitative replay theorem, or whether genuine legitimacy requires the quantitative liability structure as well. Do not resolve that by intuition; make the countermodels decide.
 
 This is the pass where I’d want the architecture to either compress to something almost embarrassingly small, or fail clearly enough that we know exactly what extra structure is doing real work.
+
+---
+
+# Seventh dispatch — 2026-08-26, the smallest correct package
+
+Verbatim as received.
+
+Use this as the next agent pass.
+
+> Continue on:
+>
+> ```text
+> round/2026-08-25-legitimate-evolution
+> ```
+>
+> Current head:
+>
+> ```text
+> b9f01d4
+> ```
+>
+> Current verdict:
+>
+> ```text
+> LEGITIMATE-EVOLUTION-KERNEL-STABLE
+> ```
+>
+> Treat that verdict as provisional.
+>
+> Do **not** write Lean.
+>
+> The purpose of this pass is not to add more architecture. It is to answer one narrow question:
+>
+> > **Is the current pair — Grounded Replay + Answerability Continuity — actually the smallest correct local-to-global theorem package for Legitimate Evolution, or is the answerability side still one semantic seam too weak?**
+>
+> The standard is:
+>
+> > Legitimate Evolution should say that arbitrary substantive normative change cannot manufacture entitlement, ignore something the process's own represented reasons make due, or erase what has become owed except through locally legitimate evolution.
+>
+> ---
+>
+> # 1. Freeze Grounded Replay
+>
+> Do not modify Grounded Replay unless this pass finds an actual contradiction.
+>
+> Assume:
+>
+> ```text
+> S1 prior live grounding
+> S2 no ex-nihilo effectful edit
+> ```
+>
+> and the current theorem/corollaries.
+>
+> The entitlement side is not the target.
+>
+> ---
+>
+> # 2. First attack: transfer then discharge
+>
+> The current Answerability Continuity statement appears false.
+>
+> Build exactly:
+>
+> ```text
+> O_0 = {q0}
+>
+> t=0:
+>     transfer q0 -> q1
+>
+> t=1:
+>     discharge q1
+> ```
+>
+> Require A1 and A2 to hold.
+>
+> Then check the current theorem for:
+>
+> ```text
+> q0, s=0, t=2
+> ```
+>
+> Current conclusion says q0 is either:
+>
+> ```text
+> discharged in [0,2)
+> ```
+>
+> or:
+>
+> ```text
+> connected by transfers to something outstanding at 2.
+> ```
+>
+> Neither appears true.
+>
+> Do not patch the implementation first. Decide the **correct mathematical conclusion**.
+>
+> Candidate:
+>
+> ```text
+> every obligation outstanding at s has, at time t,
+> a finite forward resolution derivation whose leaves are either:
+>
+>     currently outstanding at t
+>
+> or
+>
+>     validly discharged before t.
+> ```
+>
+> Transfers expand a node into its successor obligations.
+>
+> Test whether this handles:
+>
+> ```text
+> direct discharge
+> one transfer
+> transfer chain
+> transfer -> discharge
+> split
+> split -> partial discharge
+> split -> all discharge
+> merge
+> merge -> discharge
+> indefinite persistence
+> ```
+>
+> Find the smallest exact statement.
+>
+> ---
+>
+> # 3. Decide whether the correct witness is a chain, tree, DAG, or something simpler
+>
+> Do not assume “resolution tree.”
+>
+> Splits suggest branching.
+>
+> Merges suggest DAG structure.
+>
+> But the theorem for one root obligation may be representable by an unfolded finite tree even when global succession is a DAG.
+>
+> Compare:
+>
+> ```text
+> transfer chain
+> resolution tree
+> finite derivation
+> reachability relation plus leaf classification
+> ```
+>
+> Prefer the mathematically smallest object that handles every lifecycle correctly.
+>
+> The proof should remain a simple induction on trace position if possible.
+>
+> ---
+>
+> # 4. Attack A2 directly
+>
+> Current A2:
+>
+> ```text
+> opened obligations are fresh / nobody has opened them before
+> ```
+>
+> The current proof says freshness makes transfer chains finite.
+>
+> But the trace is already finite and every transfer step happens at a later edit.
+>
+> Try to prove the corrected Answerability Continuity theorem from **A1 alone**.
+>
+> Then explicitly build:
+>
+> ```text
+> drop A2
+> satisfy A1
+> violate freshness
+> ```
+>
+> and ask whether the theorem actually fails.
+>
+> Do not retain A2 merely because it makes the answerability theorem look symmetric with Grounded Replay.
+>
+> Verdict must distinguish:
+>
+> ```text
+> A2 necessary
+> A2 only representation hygiene
+> A2 definitional under occurrence identity
+> A2 entirely unnecessary
+> ```
+>
+> If A2 is not necessary, remove it from the theorem package.
+>
+> ---
+>
+> # 5. The central conceptual attack: stipulated obligations versus due obligations
+>
+> Current Answerability Continuity starts from:
+>
+> ```text
+> q is already outstanding.
+> ```
+>
+> That may be too weak for Legitimate Evolution.
+>
+> Build the following countermodel:
+>
+> ```text
+> reason occurrence r is represented
+> local semantic judgment says Due(L,r,q)
+> no q is ever opened
+> no outstanding obligation is ever silently deleted
+> Grounded Replay is perfect
+> ```
+>
+> The current package likely passes this.
+>
+> Decide whether it should count as Legitimate Evolution.
+>
+> My intended answer is probably:
+>
+> ```text
+> NO
+> ```
+>
+> because this is not a coverage failure:
+>
+> ```text
+> r is already represented.
+> ```
+>
+> Nor is it a regret failure.
+>
+> The process's own local semantics says the represented reason makes something due, and the process simply fails to enter that obligation into its answerability dynamics.
+>
+> Prosecute this hard.
+>
+> ---
+>
+> # 6. Distinguish coverage from Due-realization
+>
+> Keep these separate:
+>
+> ```text
+> COVERAGE:
+>     does the relevant failure/reason ever become represented?
+>
+> DUE:
+>     given a represented reason, does the local normative semantics say it
+>     requires treatment?
+>
+> MINTING:
+>     if Due says yes, does the answerability state actually reflect that?
+> ```
+>
+> Legitimate Evolution should **not** require coverage.
+>
+> It may require:
+>
+> ```text
+> Due -> opened-or-immediately-resolved
+> ```
+>
+> once the reason is represented.
+>
+> Test:
+>
+> ```text
+> relevant reason never observed
+> ```
+>
+> should remain:
+>
+> ```text
+> Legitimate Evolution YES
+> Legitimate Learning potentially NO
+> ```
+>
+> while:
+>
+> ```text
+> reason represented
+> Due says it requires treatment
+> answerability state ignores it
+> ```
+>
+> should probably be:
+>
+> ```text
+> Legitimate Evolution NO
+> ```
+>
+> If you disagree, provide the exact conceptual reason and consumer test.
+>
+> ---
+>
+> # 7. Search for the minimal local minting law
+>
+> Candidate:
+>
+> ```text
+> Due(X_t,r,q)
+> ->
+> q is opened by the accepted event at t
+> or q is legitimately resolved in that same event
+> ```
+>
+> But do not assume this exact form.
+>
+> Questions:
+>
+> * Is `q` determined by `Due`, or does `Due` merely say some obligation must open?
+> * Can one reason create multiple obligations?
+> * Can several reasons jointly create one obligation?
+> * Can a reason become due without a new event?
+> * Is “immediate resolution” meaningful, or should opening and resolution occur at distinct trace positions?
+> * Does the theorem need occurrence identity at the minting site?
+>
+> Find the smallest rule needed to prevent:
+>
+> ```text
+> recognized-due-but-never-entered
+> ```
+>
+> without introducing coverage or progress.
+>
+> ---
+>
+> # 8. Reconsider the local semantic interface
+>
+> Current documents list:
+>
+> ```text
+> Auth
+> Permit
+> Due
+> Disposes
+> Transfers
+> ```
+>
+> Press whether this is the right factoring.
+>
+> Candidate compressed interface:
+>
+> ```text
+> Permit
+> Due
+> Resolve
+> ```
+>
+> where `Resolve` may return:
+>
+> ```text
+> done
+> carry(successor set)
+> ```
+>
+> Or perhaps the truly minimal object is:
+>
+> ```text
+> LegitStep(X_t,e_t,X_{t+1})
+> ```
+>
+> with named projections used only by consumers.
+>
+> Compare:
+>
+> ```text
+> A. Permit + Due + Disposes + Transfers
+> B. Permit + Due + Resolve
+> C. one joint LegitStep relation
+> ```
+>
+> Do not choose the formally smallest encoding if it destroys the distinctions needed by downstream theorems.
+>
+> In particular:
+>
+> * Grounded Replay wants the authority/Permit side;
+> * Legitimate Learning will likely need access to Due;
+> * Answerability Continuity needs the resolution/succession side.
+>
+> Find the smallest **semantically informative** factorization.
+>
+> ---
+>
+> # 9. Should both folds still share one `Valid` bit?
+>
+> Current coupling:
+>
+> ```text
+> the same Valid gates normative replay and obligation replay
+> ```
+>
+> giving:
+>
+> ```text
+> unentitled act discharges nothing.
+> ```
+>
+> Keep this test, but ask whether `Valid` is now too coarse.
+>
+> Could there be an event where:
+>
+> ```text
+> normative effect invalid
+> but a reason becomes Due anyway?
+> ```
+>
+> For example, an unauthorized act may still generate a complaint.
+>
+> Or:
+>
+> ```text
+> normative edit rejected
+> but descriptive evidence arrives
+> and opens an obligation.
+> ```
+>
+> If so, “same Valid gates both entire folds” may be too strong.
+>
+> This is important.
+>
+> Distinguish:
+>
+> ```text
+> entitlement to alter normative standing
+> entitlement to discharge/transfer an existing obligation
+> occurrence of a fact/reason that opens a new obligation
+> ```
+>
+> We definitely want:
+>
+> ```text
+> an unentitled act cannot discharge an obligation.
+> ```
+>
+> But do we really want:
+>
+> ```text
+> a rejected normative edit cannot cause a new obligation to become due?
+> ```
+>
+> Construct examples.
+>
+> This may force a more precise joint transition semantics than a shared scalar `Valid`.
+>
+> ---
+>
+> # 10. Mandatory unauthorized-act / complaint test
+>
+> Build:
+>
+> ```text
+> Alice performs unauthorized action e
+> e is rejected as normative standing change
+> the action itself is represented in provenance
+> that fact gives rise to a complaint q
+> ```
+>
+> Desired behavior may be:
+>
+> ```text
+> normative effect: no-op
+> answerability effect: q opens
+> ```
+>
+> If the current shared-Valid architecture makes this impossible, decide whether that is a genuine flaw.
+>
+> This test is central.
+>
+> It separates:
+>
+> ```text
+> normative legitimacy of an act
+> ```
+>
+> from:
+>
+> ```text
+> the process becoming answerable for the fact that the act occurred.
+> ```
+>
+> Do not assume a rejected event is metaphysically nonexistent.
+>
+> Remember:
+>
+> ```text
+> replay legitimacy state != raw history.
+> ```
+>
+> ---
+>
+> # 11. This may change the coupling theorem
+>
+> If openings can arise from represented raw/rejected events while discharges require normative entitlement, the right coupling may be asymmetric:
+>
+> ```text
+> OPEN:
+>     can be triggered by represented reasons/facts even when no normative edit is accepted
+>
+> DISCHARGE / TRANSFER:
+>     must be licensed by the legitimate prestate
+> ```
+>
+> Investigate whether this is the correct architecture.
+>
+> Candidate:
+>
+> ```text
+> raw/represented history
+>      |
+>      +--> Due --> opens obligations
+>      |
+>      +--> proposed normative edit
+>              |
+>              Permit
+>              |
+>              accepted effect / discharge / transfer
+> ```
+>
+> If this is right, the current “same Valid gates both folds” should be weakened.
+>
+> ---
+>
+> # 12. Preserve strict-prestate semantics
+>
+> Whatever local judgment survives, require that:
+>
+> ```text
+> an edit cannot use authority it creates to justify itself
+> ```
+>
+> and:
+>
+> ```text
+> a purported resolution cannot use a successor obligation it creates
+> retroactively as evidence that the predecessor was already handled.
+> ```
+>
+> Test self-ratifying resolution analogues.
+>
+> ---
+>
+> # 13. Reassess quantitative liability carefully
+>
+> Retain the important result:
+>
+> ```text
+> qualitative answerability continuity
+> does not imply quantitative burden conservation.
+> ```
+>
+> Do **not** overstate this as:
+>
+> ```text
+> quantitative liability is definitely not constitutive of any legitimacy semantics.
+> ```
+>
+> The structural theorem is content-blind.
+>
+> A `Resolve/Transfer` semantics may refuse a nominal successor that does not genuinely carry the old obligation.
+>
+> State the result narrowly:
+>
+> ```text
+> quantitative burden conservation is not a generic structural consequence
+> of answerability continuity.
+> ```
+>
+> Then ask whether any quantitative law belongs:
+>
+> ```text
+> a. inside semantic Resolve/Transfers,
+> b. downstream for traderization,
+> c. nowhere generically.
+> ```
+>
+> Do not decide by intuition.
+>
+> ---
+>
+> # 14. Fix or withdraw the current quantitative helper
+>
+> Inspect:
+>
+> ```text
+> thm_no_dilution_gives_monotone_potential
+> ```
+>
+> Current code appears to:
+>
+> * check per-parent dilution rather than total dilution;
+> * ignore that entirely new obligations may increase potential.
+>
+> Either repair the theorem with exact sufficient hypotheses or withdraw it.
+>
+> Do not leave a false/underspecified quantitative theorem adjacent to the stable qualitative kernel.
+>
+> Preserve the result:
+>
+> ```text
+> total accounting, not per-parent accounting, is required for merges.
+> ```
+>
+> ---
+>
+> # 15. Revisit the supposed entitlement/answerability duality
+>
+> Current slogan:
+>
+> ```text
+> entitlement controls creation
+> answerability controls destruction
+> ```
+>
+> Press this after adding Due.
+>
+> The more accurate picture may be:
+>
+> ```text
+> entitlement:
+>     controlled creation of normative standing
+>
+> answerability:
+>     required creation + controlled resolution of normative obligations
+> ```
+>
+> That is less symmetric but possibly more correct.
+>
+> Do not preserve a pretty duality if `Due -> mint` breaks it.
+>
+> ---
+>
+> # 16. Target the actual Legitimate Evolution theorem
+>
+> Try to end with something close to:
+>
+> ```text
+> THEOREM / PACKAGE — Legitimate Evolution
+>
+> Given:
+>
+>   an accepted normative base G;
+>   represented descriptive history;
+>   substantive local semantics Permit, Due, Resolve;
+>   strict-prestate evaluation;
+>   Grounded Replay's structural premises;
+>   a local Due-realization law;
+>   a local controlled-resolution law;
+>
+> then for every finite t:
+>
+>   E. every live normative standing has finite accepted
+>      strict-prestate ancestry to G;
+>
+>   A. every represented reason that the local semantics made Due
+>      has a finite resolution derivation whose current frontier
+>      consists only of obligations still outstanding at t or
+>      obligations validly discharged before t.
+> ```
+>
+> Then derive:
+>
+> ```text
+> no manufactured entitlement
+> no recognized-due-but-ignored obligation
+> no silent obligation loss
+> no unentitled discharge
+> ```
+>
+> This should permit:
+>
+> ```text
+> radical normative change
+> permitted persuasion
+> constitutional replacement
+> high regret
+> no coverage
+> obligations remaining open forever
+> ```
+>
+> ---
+>
+> # 17. Keep Legitimate Learning out
+>
+> Do not prove progress.
+>
+> Do not prove coverage.
+>
+> Do not prove low regret.
+>
+> Required boundary:
+>
+> ```text
+> Legitimate Evolution
+> + Coverage
+> + Low Regret
+> ->
+> Legitimate Learning
+> ```
+>
+> remains downstream.
+>
+> The only reason to mention this is to test whether `Due` belongs upstream of coverage.
+>
+> ---
+>
+> # 18. Consumer tests
+>
+> ### Deference
+>
+> Ask whether the strengthened theorem now supports the intended statement:
+>
+> ```text
+> future process is not merely genealogically descended,
+> but any represented reason it itself recognizes as demanding treatment
+> remains in its normative answerability dynamics.
+> ```
+>
+> No current-state certification work in this pass.
+>
+> ### Traderization
+>
+> Traderization still consumes:
+>
+> ```text
+> current legitimate Norm(L_t)
+> ```
+>
+> It should not need Coverage or Regret.
+>
+> Ask whether outstanding obligations affect:
+>
+> ```text
+> which norm edits/discharges are legitimate
+> ```
+>
+> versus:
+>
+> ```text
+> financial serviceability of enforcement.
+> ```
+>
+> Keep those distinct.
+>
+> ---
+>
+> # 19. RI realization check
+>
+> This time actually inspect the RI code before claiming priority 71.
+>
+> Determine:
+>
+> ```text
+> Does ReasonOcc ever directly or indirectly mint an AnsRoot?
+> ```
+>
+> ```text
+> What exactly triggers MINT?
+> ```
+>
+> ```text
+> Can a represented reason be Due without a NormEvent effect already deciding to mint?
+> ```
+>
+> ```text
+> Is Due currently derivable, representable, or merely a semantic parameter?
+> ```
+>
+> If RI cannot realize:
+>
+> ```text
+> represented reason -> Due -> outstanding obligation
+> ```
+>
+> identify the smallest missing seam.
+>
+> Do not add a new event kind.
+>
+> ---
+>
+> # 20. Required new countermodels
+>
+> At minimum:
+>
+> ```text
+> 1. transfer -> discharge
+> 2. split -> discharge one branch, leave one open
+> 3. split -> discharge both branches
+> 4. merge -> discharge successor
+> 5. violate A2 while satisfying A1
+> 6. represented reason is Due but no obligation opens
+> 7. relevant reason never represented
+> 8. unauthorized normative act generates a legitimate complaint
+> 9. unauthorized act attempts to discharge an existing complaint
+> 10. rejected normative edit whose descriptive consequences still create Due
+> 11. self-ratifying resolution attempt
+> 12. radical constitutional replacement with obligations correctly carried
+> ```
+>
+> Cases 6-10 are the conceptual heart of the pass.
+>
+> ---
+>
+> # 21. Re-evaluate the number of semantic primitives
+>
+> At the end, compare:
+>
+> ```text
+> Auth + Permit + Due + Disposes + Transfers
+> ```
+>
+> ```text
+> Permit + Due + Resolve
+> ```
+>
+> ```text
+> one joint LegitStep plus exposed Due projection
+> ```
+>
+> Report:
+>
+> ```text
+> smallest formally sufficient interface
+> ```
+>
+> and:
+>
+> ```text
+> smallest semantically useful interface
+> ```
+>
+> These may differ.
+>
+> Prefer the second for the theorem statement.
+>
+> ---
+>
+> # 22. Decide what Legitimate Evolution actually is
+>
+> End by answering:
+>
+> ```text
+> Is Legitimate Evolution:
+>
+> A. Grounded Replay + corrected Answerability Continuity;
+>
+> B. those two plus Due-realization;
+>
+> C. one joint local-to-global theorem;
+>
+> D. a named package of independent closure theorems plus one or two coupling laws;
+>
+> E. something else?
+> ```
+>
+> Do not optimize for making it “one theorem.”
+>
+> Optimize for the smallest correct statement that deserves the intended philosophical use.
+>
+> ---
+>
+> # 23. Final compression
+>
+> End with:
+>
+> ```text
+> MINIMAL LEGITIMATE-EVOLUTION STATEMENT
+> ```
+>
+> It must fit on one page and include:
+>
+> * exact state carried;
+> * exact local semantic inputs;
+> * exact structural premises;
+> * exact theorem conclusion;
+> * exact role of Due;
+> * whether A2 survives;
+> * exact corrected answerability witness object;
+> * exact coupling between normative and answerability evolution;
+> * what is semantic versus structural;
+> * what is explicitly deferred to Coverage / Regret / Traderization;
+> * exact RI realization gap.
+>
+> Then give a 4-6 line whiteboard version.
+>
+> ---
+>
+> # 24. Verdict
+>
+> End with exactly one:
+>
+> ```text
+> LEGITIMATE-EVOLUTION-FROZEN
+> ```
+>
+> if the package survives these attacks and there is no remaining structural ambiguity.
+>
+> ```text
+> LEGITIMATE-EVOLUTION-NEEDS-DUE-BRIDGE
+> ```
+>
+> if Grounded Replay and obligation continuity are right but the represented-reason → outstanding-obligation seam remains unresolved.
+>
+> ```text
+> ANSWERABILITY-THEOREM-NEEDS-REPAIR
+> ```
+>
+> if the transfer/discharge issue or A2 issue prevents freezing the current kernel.
+>
+> ```text
+> SHARED-VALID-COUPLING-FAILS
+> ```
+>
+> if unauthorized acts creating obligations show that one acceptance bit cannot correctly gate both channels.
+>
+> ```text
+> LEGITIMATE-EVOLUTION-DECOMPOSITION-LEAKY
+> ```
+>
+> if the boundary between legitimacy, coverage and learning is still not clean.
+>
+> Do not write Lean regardless of verdict.
+>
+> ---
+>
+> The research standard for this pass is:
+>
+> > **A legitimate process is not merely one that preserves obligations someone handed it. Once a represented reason is, by the process's own accepted semantics, something it owes an answer to, that fact must enter the answerability dynamics; thereafter it may disappear only through a legitimate resolution path. At the same time, unauthorized normative acts must not gain the power to erase obligations, even though their occurrence may itself generate new obligations. Find the smallest local-to-global theorem that captures exactly this.**
+
+The unauthorized-act-generates-complaint case is the one I’d pay particular attention to. It may expose that the current “same `Valid` gates both folds” coupling is too crude even though the corollary it was introduced to secure is exactly right.

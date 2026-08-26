@@ -72,7 +72,7 @@ Occurrence identity gives it something unambiguous to attach to, and the lifetim
 is now well defined at a fixed audit context. `PRIORITIES.md` item 69.
 
 **Narrowed by the answerability pass**, in two ways, both in `ANSWERABILITY.md`
-§4. First, the bound cannot be a structural theorem: four constitutions transfer
+§7. First, the bound cannot be a structural theorem: four constitutions transfer
 every obligation to a named successor, satisfy both structural premises and the
 continuity theorem, and shrink the total burden — `diluted_to_nothing` to zero. So
 it must be sought as a hypothesis on the succession semantics, in the same shape
@@ -102,3 +102,11 @@ No theorem is proved. `interpret` is consumer-supplied and unconstrained.
 Whether a legitimacy verdict can be computed at enforcement time is still open,
 and this pass makes the cost more precise rather than smaller: the target is
 `L_t`, and `L_t` is a replay.
+
+**Which question is which.** Outstanding obligations do **not** affect which norm
+edits are legitimate: the two folds do not read each other in that direction, and
+an obligation's being open constrains nothing about what may be enacted. They do
+affect whether enforcement is financially serviceable. A quantitative law belongs
+on the second question, or inside a semantic `Resolve` that refuses a successor
+which does not genuinely carry its predecessor -- not in the structural kernel,
+which is blind to what an obligation says.

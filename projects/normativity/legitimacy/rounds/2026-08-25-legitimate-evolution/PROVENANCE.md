@@ -63,8 +63,13 @@ liability*.
 
 Answerability: *obligation occurrence* (`Ob`), *outstanding*, *opens*,
 *discharges*, *transfers*, *drop*, *Answerability Continuity*, *no silent loss*,
-*controlled destruction* (A1), *fresh obligations* (A2), *potential*, *dilution*,
-*total accounting*, *per-parent accounting*, *Legitimate Evolution package*, *Due*,
-*Disposes*, *Transfers*.
+*controlled resolution* (A1), *due realization* (D1), *resolution derivation*,
+*frontier*, *potential*, *dilution*, *total accounting*, *per-parent accounting*,
+*unheralded opening*, *Legitimate Evolution package*, *`Due`*, *`Resolve`*,
+*asymmetric coupling*.
+
+Withdrawn this pass: *fresh obligations* (A2) as a premise, retained as the
+hygiene check *fresh by construction*; *`Disposes`* and *`Transfers`* as separate
+parameters, folded into *`Resolve`*.
 
 Proper Exercise: *capability* (`Cap`), *reach*, *widening*, *proper exercise*, *authority over authority*, *plenary base*, *jurisdictional self-ratification*, *unauthorized privilege escalation*.

@@ -1,37 +1,57 @@
-# Answerability Continuity, and the Legitimate Evolution package
+# Answerability, and the Legitimate Evolution package
 
 Status: **specification, reference models and a prosecution record;
 unregistered.** All names are provisional under `AGENTS.md` §6. Nothing here is
 Lean-checked and no claim is registered.
 
-Grounded Replay is frozen for this pass. `src/replay.py` is unchanged, does not
-import `src/answer.py`, and has no obligation notion in either of its records —
-all three checked in `tests/test_answer.py::TestTheKernelIsUntouched`.
+Grounded Replay is frozen and unchanged. `src/replay.py` does not import
+`src/answer.py` and has no obligation notion — checked in
+`tests/test_answer.py::TestTheKernelIsUntouched`.
 
-## MINIMAL LEGITIMATE-EVOLUTION PACKAGE
+**Three things in the previous version of this document were wrong.** The
+continuity conclusion was false on every process that resolves an obligation
+after transferring it; the second premise was doing no work; and the coupling
+could not represent an unauthorized act that generates a complaint. §§1, 3 and 6
+below are the repairs, and `COUNTERMODELS.md` §§12-14 are the refutations.
 
-**Carrier.** A trace of edits, replayed by a fold. Two kinds of thing are carried:
-standing occurrences `o`, and outstanding obligation occurrences `q`. Identity of
-each is its position in the trace paired with a slot index, so freshness is
-definitional and no premise has to ask for it.
+## MINIMAL LEGITIMATE-EVOLUTION STATEMENT
+
+**State carried.** A trace of edits, replayed by two folds. Standing occurrences
+`o`, and obligation occurrences `q`. Identity of each is its trace position paired
+with a slot index, so unique birth is definitional.
+
+**Local semantic inputs, three.**
+
+```text
+Permit   may this edit be made, given the strict pre-state and its declared input
+Due      which represented reasons the semantics says are owed an answer
+Resolve  done, or carry(successors)
+```
+
+`Auth` remains the base predicate the kernel is parameterised by rather than a
+semantic input. `Disposes` and `Transfers` were two names for `Resolve`'s two
+answers and are folded together.
 
 **The two folds.**
 
 ```text
-L_0 = G                                          O_0 = Q
-L_{t+1} = (L_t \ dispose_t) u issue_t            if Valid(L_t, e_t)
-O_{t+1} = (O_t \ (disch_t u moved_t)) u opens_t  if Valid(L_t, e_t)
-          unchanged, both, otherwise
+L_0     = G                                O_0     = Q
+L_{t+1} = (L_t \ dispose_t) u issue_t      if Valid(L_t, e_t)
+          L_t                              otherwise
+
+O_{t+1} = (O_t \ (disch_t u moved_t)) u opens_t   if Valid(L_t, e_t)
+        = O_t u opens_t                            otherwise
 ```
 
-**The four premises.**
+**Structural premises, three.**
 
 ```text
 S1  grounds(e_t) subset { o in L_t : Auth(o) }        prior grounding
 S2  apply_t(L_t,e_t) != L_t  ->  grounds(e_t) != {}   no ex nihilo
-A1  q leaves O_t only via disch_t or moved_t, and     controlled destruction
-    every successor named is opened by that edit
-A2  opens_t are obligations nobody has opened         free from the type
+D1  owed_t subset O_{t+1}                             due realization
+A1  q leaves O_t only via disch_t or moved_t, every   controlled resolution
+    successor named is opened by that edit, and no
+    transfer names an empty successor set
 ```
 
 **The two theorems.**
@@ -39,201 +59,377 @@ A2  opens_t are obligations nobody has opened         free from the type
 > **Grounded Replay.** Under S1 and S2, every admitted occurrence has a finite
 > grounding tree with leaves in `G` and strictly descending positions.
 
-> **Answerability Continuity.** Under A1 and A2, an obligation outstanding at `s`
-> is, at every later `t`, either discharged by an accepted edit in `[s,t)` or
-> connected by a finite chain of accepted transfers to one outstanding at `t`.
+> **Answerability Continuity.** Under A1, every obligation outstanding at `s` has,
+> at every later `t`, a finite resolution derivation whose frontier is non-empty
+> and consists only of obligations still outstanding at `t` and obligations an
+> accepted edit discharged before `t`.
 
-**The single coupling.** `Valid` gates both folds. `answer.py` reaches into the
-kernel for `accepted`, `Frame` and `BASE` and for nothing else — asserted by AST
-in `TestTheInteraction::test_it_is_the_only_coupling`. From that sharing, and only
-from it:
+**The role of Due.** D1 is what makes the package say more than "obligations
+someone handed us are not lost". With it:
 
-> **Corollary (discharge requires entitlement).** An act the process was not
-> entitled to perform discharges nothing.
+> **Corollary.** Every obligation the semantics ever made due has a resolution
+> derivation from the position at which it became due.
 
-**Semantic parameters, five, all opaque.** `Auth`, `Permit` (round 5), `Due`,
-`Disposes`, `Transfers`. The kernel decides none of them and reads none of what an
+**A2 does not survive.** See §3. It was representation hygiene, retained as
+`fresh_by_construction` and named nowhere in a theorem.
+
+**The witness object.** A finite tree, unfolded from a DAG. Nodes are `carried`;
+leaves are `open` or `discharged`. Depth is bounded by `t - s` because every child
+begins at a strictly later position.
+
+**The coupling, asymmetric.**
+
+```text
+OPEN       ungated by entitlement    a process is answerable for what happened
+DISCHARGE  gated by Valid            removing an obligation exercises authority
+TRANSFER   gated by Valid
+```
+
+> **Corollary.** An act the process was not entitled to perform discharges
+> nothing.
+
+> **Corollary.** An obligation may open at an edit the process refused.
+
+**Structural versus semantic.** S1, S2, D1, A1 and both folds are structural.
+`Permit`, `Due` and `Resolve` are opaque and the kernel reads none of what an
 occurrence says.
 
-**What is deliberately not in the package.** Substantive correctness; learning;
-regret; coverage (that some situation *ought* to have become due); progress (that
-an open obligation is ever closed); and the quantitative burden — see §4.
+**Deferred.** Coverage (whether a reason is ever represented); progress (whether
+an open obligation is ever closed); regret; substantive correctness; and any
+quantitative burden law — §7.
 
-**Witnesses that the premises can fail.** `silently_deleted`,
-`transfer_to_nowhere`, `entitled_with_laundered_obligation` each fire A1 and each
-break both the theorem and its corollary.
+**RI realization gap.** `roots()` mints `AnsRoot`s from `NormEvent`s only, so
+`Due` has no realizer. §8, checked against the code.
 
-**Witness that the halves are independent.**
-`unauthorized_with_clean_answerability` (entitlement refuses, A1 clean) against
-`entitled_with_laundered_obligation` (entitlement impeccable, A1 fires).
-
-**Witness that the coupling is not vacuous.** `rogue_discharge` at
-`alpha:audited`: gated outstanding `{q:complaint}`, ungated `{}`.
-
-**Verdict.** LEGITIMATE-EVOLUTION-KERNEL-STABLE, with the coupling honestly thin —
-see §5.
-
-## 1. What the second replay is
-
-Grounded Replay controls **creation**: nothing acquires standing without licensed
-ancestry. This controls **destruction**: nothing stops being owed except through a
-declared discharge or a declared succession.
-
-The symmetry is exact enough to be worth stating. S1 says what a *new* item needs
-behind it. A1 says what a *departing* item needs in front of it. S2 says a
-state-changing edit cannot come from nothing; A2 says an opened obligation is one
-nobody has opened. In both cases one premise is about licensing and one is about
-freshness, and in both cases the freshness premise is nearly free from the choice
-of identity.
-
-A1 is the premise that does the work, and it is a premise that can fail. The
-`drops` channel on `Duties` exists for that reason: without a representable way to
-remove an obligation by neither route, A1 would be a fact about the type rather
-than a claim about a process. An earlier version of `office.duties` folded drops
-into discharges, and the consequence was that
-`entitled_with_laundered_obligation` — a constitution whose whole point is to lose
-an obligation — passed. That is recorded here because it is the shape of mistake
-this round exists to catch: a premise that cannot fail is not a premise.
-
-## 2. The interaction, and its exact size
-
-The dispatch warned against inventing an interaction. There is one, it is
-non-vacuous, and it is one corollary wide.
-
-`rogue_discharge` is a constitution in which a warrant is granted on a finding a
-later audit doubts, and the holder of that warrant purports to discharge an
-outstanding complaint. Under `alpha:audited` the entitlement side refuses both
-edits. Because the same acceptance predicate gates the obligation fold, the
-complaint is still outstanding at the end. `ungated` computes what a second replay
-with its own acceptance predicate would have produced: the empty set. The
-difference is the witness.
-
-That is the whole of what packaging the two halves together earns. It is real —
-there is a constitution where it bites, and it is exhibited rather than asserted —
-but it is a consequence of a modelling decision (share `Valid`) rather than a
-discovered structural fact. Anyone who wanted the two folds independent could have
-them, and would then have a system in which an act nobody was entitled to perform
-can close a complaint.
-
-## 3. Local to global
-
-Both theorems have the same shape, and it is the shape the round was sent to find.
-A premise constrains a *single* step: what one edit may cite, what one edit may
-remove. The conclusion is about the *whole* trace: an unbounded ancestry, an
-unbounded succession. The bridge in both cases is that the local premise names an
-object at a strictly smaller index, so induction on the index terminates without
-any well-foundedness assumption being added — it is inherited from the trace being
-a list.
-
-That is why the package is this small. Nothing else was needed, and the two rounds
-that tried to add something else — content invariance in round 3, no-escalation in
-round 5 — both found their addition was either vacuous or false.
-
-## 4. H-A against H-B: the countermodels decide
-
-**H-A** — qualitative answerability continuity is the legitimacy-relevant
-invariant, and a quantitative bound is a downstream strengthening.
-
-**H-B** — without a quantitative invariant, obligations dilute through succession,
-so liability continuity is constitutive of legitimacy.
-
-Four countermodels, all in `office.py`, all executed in
-`TestDilution::test_every_dilution_passes_the_qualitative_theorem`:
+### Whiteboard
 
 ```text
-transfer_chain(3, 0.5)   potential 1.0 -> 0.5 -> 0.25 -> 0.125
-diluted_to_nothing       potential 1.0 -> 0.0 -> 0.0 -> 0.0 -> 0.0
-split(0.25)              potential 1.0 -> 0.5
-merge(0.5)               potential 2.0 -> 0.5
+Two folds over one trace, sharing an acceptance predicate asymmetrically.
+Standing: nothing enters without licensed ancestry           (S1, S2)
+Obligation: what the process's own semantics calls due enters (D1)
+            and leaves only by discharge or named succession  (A1)
+Every obligation has a finite resolution tree whose leaves are
+open-or-discharged. Unentitled acts discharge nothing and may still open.
 ```
 
-Every one of them satisfies A1 and A2, satisfies Answerability Continuity, and
-satisfies no-silent-loss. `diluted_to_nothing` in particular ends with a named,
-outstanding, nominally-carried obligation of weight zero: the process can point at
-a successor for every issue it ever had and owes nothing.
+## 1. The conclusion was false
 
-So the qualitative kernel does not see dilution, and nothing structural makes it.
-The reason is the one round 5 found for capabilities: **the kernel is blind to
-what an occurrence says, and a diluted successor is a content change.** A rule
-that forbade dilution would have to read the content of obligations, and would
-then also forbid the legitimate case where a process discovers an issue was
-smaller than it thought.
-
-**H-A**, then, and for a reason rather than a preference. The quantitative bound
-survives as a conditional:
-
-> **Conditional.** If no accepted transfer reduces the summed weight of what it
-> replaces, the potential is non-increasing except by discharge.
-
-Its hypothesis is a constraint on a class of `Transfers` semantics — the exact
-counterpart of round 5's E4, whose hypothesis a constitution declines on purpose
-when it means to permit amendment.
-
-### The accounting the conditional needs
-
-Prosecuting the conditional turned up a second finding. Per-parent accounting —
-each transferred obligation must have successors weighing at least as much as
-itself — is not a weaker version of total accounting. It is wrong.
-`merge_lenient()` maps two obligations of weight 1 to one of weight 1.5. Each
-parent sees a successor of 1.5, which exceeds its own 1, so per-parent reports no
-dilution; the total went from 2 to 1.5, so total accounting reports one. Pinned in
-`test_per_parent_accounting_is_wrong_on_a_merge`. Any future statement of a
-conservation law here must be the total, and must say so.
-
-## 5. Is Legitimate Evolution one theorem, a conjunction, or a definition?
-
-It is a **named conjunction over a shared parameter**, and calling it anything
-grander would overstate it.
-
-Not one theorem: the two halves have disjoint premises, disjoint carriers and
-disjoint proofs, and each is provable without the other. Not a bare conjunction
-either: the shared `Valid` yields the corollary in §2, which neither half states
-and which fails if the folds are gated separately. Not a semantic definition: all
-four premises are structural, and the five semantic parameters remain opaque.
-
-The candidates the dispatch named resolve as:
+Build a process that refers a complaint and then answers the referral.
 
 ```text
-A  entitlement alone           too weak: case 14 passes it and loses an obligation
-B  entitlement + answerability what survives; the coupling adds one corollary
-C  B + a liability bound       the bound is not structural; available as a
-                               conditional on a class of Transfers semantics
+O_0 = {q0};   t=0: transfer q0 -> q1;   t=1: discharge q1
 ```
 
-**Is the duality real or verbal?** Real, but narrower than "dual". S1 and A1 are
-genuinely opposite constraints on the same fold shape — one on entry, one on exit
-— and the two induction proofs are the same argument on the same descending index.
-What is *not* dual: entitlement has a distinguished base `G` that grounds
-everything, and answerability has no corresponding sink. An obligation may stay
-open forever and the theorem is silent. There is no obligation-side analogue of
-"leaves in `G`", and pretending otherwise would be the verbal half.
+A1 holds, freshness holds, entitlement is impeccable. The shipped conclusion asked
+whether `q0` was discharged in `[0,2)` — it was not, `q1` was — or carried to
+something outstanding at `2` — it was not, `q1` is closed. Both disjuncts fail and
+the theorem reported a violation on a process with nothing wrong with it.
 
-## 6. Realization: the gap in mapping to Reflective Integrity
+It is not one case. `split -> discharge both`, `merge -> discharge successor` and
+any chain ending in a discharge fail identically. `split -> discharge one branch`
+passed only by accident, because the surviving branch supplied the missing
+disjunct.
 
-The intended reading maps `q` to an `AnsRoot`, `opens` to `MINT`, `discharges` to
-a settled `Response`, and `transfers` to a `NormEvent` that re-roots one.
+The defect is that the old statement tracked *the root* and asked about its own
+fate, when succession replaces an obligation with others whose fate is the answer.
+The corrected conclusion asks for a **derivation** and classifies its **frontier**.
 
-One gap is worth recording rather than papering over. **RI mints `AnsRoot`s from
-effects, not from reason occurrences.** So a candidate premise of the form
-`Due(L, r, q)` — this reason occurrence places the process under this obligation —
-has no realizer in the current architecture: there is no place where a reason, as
-such, opens an answerability root. Either `Due` stays a parameter consulted before
-`Duties` is built (what is done here), or RI grows a minting site on reasons.
-`Due` is not needed by either theorem, so nothing is blocked; it is the interface
-that would be needed by a consumer wanting to say *why* something became owed.
+Every one of the five is now clean, and the derivations are exhibited:
 
-This has not been checked against the RI code in this pass. It is stated as a
-realization question for the maintainer, not as a result.
+```text
+merge -> discharge          q:a [carried] -> q:joint [discharged]
+                            q:b [carried] -> q:joint [discharged]
 
-## 7. What no claim above asserts
+reconverging split          q:complaint [carried]
+                              q:left  [carried] -> q:rejoined [open]
+                              q:right [carried] -> q:rejoined [open]
+```
 
-- No claim that an outstanding obligation is ever discharged. Progress is out.
-- No claim that anything *ought* to have become due. Coverage is out;
-  `unobservant()` is a legitimate process that notices nothing.
-- No claim that a process satisfying both theorems is good. `high_regret()` makes
-  the same bad choice three times, records every issue faithfully, and satisfies
-  everything here.
-- No claim that dilution is illegitimate. §4 argues it is not structurally
-  detectable, not that it is fine.
-- No claim about the RI mapping in §6 beyond a reading of the intended
-  correspondence.
+## 2. The witness is a tree, unfolded from a DAG
+
+Global succession is a DAG: a merge gives one obligation two parents, and a split
+whose branches later rejoin gives one obligation two ancestral paths. The
+derivation *of a single root* is nevertheless a finite tree, because it unfolds
+that DAG — `q:rejoined` above is two distinct leaves, one per path.
+
+The alternatives were considered and are worse. A chain cannot branch, so splits
+break it. A reachability relation plus a leaf classification states the theorem but
+exhibits no witness, and this round's standard is that a claim is checked. A DAG
+witness would need sharing, which buys nothing: the statement quantifies over
+leaves, and the unfolding's leaf multiset is what the conclusion is about.
+
+Finiteness is not an extra hypothesis. Each child starts at a strictly later
+position and positions are bounded by `t`, so depth is bounded by `t - s`; each
+node has finitely many successors. The proof is still an induction on `t - s`.
+
+The one subtlety the tests caught: a `carried` node with **no** children is not a
+derivation. `transfer_to_nowhere` produced exactly that, and an empty frontier
+satisfies "every leaf is open or discharged" vacuously. The conclusion therefore
+asks for a non-empty frontier, and A1's transferred-to-nothing clause is what
+supplies it.
+
+## 3. A2 was not load-bearing
+
+The previous pass argued that freshness makes transfer chains terminate. It does
+not; the interval does. Build a `Duties` with
+
+```text
+q0 -> q1 at 0,   q1 -> q0 at 1,   discharge q0 at 2
+```
+
+Every opened obligation was already open, occurrences are mis-positioned, an
+obligation is its own descendant. Freshness is violated in every way the check can
+report. A1 holds, and the theorem holds, with the derivation
+
+```text
+qG.0 [carried@0] -> qG.1 [carried@1] -> qG.0 [discharged@2]
+```
+
+finite despite the cycle, because each step moves strictly right along a finite
+trace.
+
+Verdict on the taxonomy the dispatch asked for: **A2 is representation hygiene**,
+and under occurrence identity it is additionally definitional — `office.duties`
+cannot construct a violation, and the countermodel above had to be built by hand.
+It is removed from the premise list and retained as `fresh_by_construction`, which
+guards the *encoding*, not the theorem.
+
+That the package now has an asymmetric premise count (two on entitlement, two on
+answerability, but one of the four doing different work) is not a defect to be
+tidied. §6 explains why the symmetry was never real.
+
+## 4. Recognized as due, and never entered
+
+The conceptual attack, and it lands.
+
+```text
+a reason is represented
+the process's own semantics says it is owed an answer
+no obligation is ever opened
+no outstanding obligation is ever removed
+entitlement is impeccable
+```
+
+The previous package passes this without complaint, because A1 only ever
+constrained *departures* from the outstanding set, and a process that never enters
+anything has no departures. That is not a legitimate process. It is not a coverage
+failure — the reason is represented — and not a regret failure; the process has
+recognized, by its own lights, that it owes an answer, and has simply declined to
+put it on the books.
+
+The minimal law is one line:
+
+```text
+D1   owed_t subset O_{t+1}
+```
+
+What that gets right, and what it cost to see:
+
+- **It is local.** One inclusion at one position. The global corollary comes from
+  composing it with the theorem.
+- **It does not require coverage.** `Due` speaks only about what is already
+  represented. `unobservant()` recognizes nothing, owes nothing, and stays
+  legitimate. Coverage remains where round 3 left it.
+- **It does not require progress.** D1 forces entry, never closure. An obligation
+  entered under D1 may stay open forever.
+- **It forbids entering-and-closing in one breath.** The fold unions openings
+  **last**, so an obligation opened and discharged at one position is outstanding
+  afterwards, and A1 reports the discharge as disposing of something not open.
+  Immediate resolution is therefore not expressible, which is the right answer to
+  the dispatch's question: a resolution one position later costs nothing and keeps
+  the obligation exhibitable. §5 has the strict-pre-state consequence.
+- **It is indexed by position, not attached to a reason.** `Due` reads the
+  normative state, so a reason represented at `u` can become owed at `t > u`
+  without any new reason arriving. `due_arrives_later` is the fixture.
+
+Two questions from the dispatch that the model answers rather than assumes. `Due`
+names obligation *labels*; the structure mints the occurrence. So one reason may
+make several things due, and two reasons may make the same thing due without
+minting it twice — and occurrence identity stays structural rather than becoming
+something the semantics has to supply.
+
+## 5. Strict pre-state, on the resolution side
+
+Both analogues hold and neither needed a premise of its own.
+
+`due_entered_then_closed_same_act` opens what it owes and purports to discharge it
+at once: refused, because openings are unioned last.
+`self_ratifying_resolution` transfers an obligation to a successor and discharges
+the successor in the same act: refused, for the same reason. A resolution cannot
+use an obligation it creates to certify that it has already dealt with the
+predecessor.
+
+## 6. One acceptance bit could not gate both channels
+
+This is the correction the dispatch flagged, and it is a real defect in what
+shipped.
+
+`Alice` acts without entitlement. The act is refused: no normative standing
+changes. The *fact that the attempt occurred* is represented, and by the process's
+own semantics that fact is owed an answer. Under the shared gate, a rejected edit
+was a no-op on the obligation fold, so no complaint could open. The architecture
+could not represent a process that becomes answerable for what it refused to do.
+
+The fix is to gate the two directions differently:
+
+```text
+OPEN                 ungated
+DISCHARGE, TRANSFER  gated by Valid
+```
+
+The corollary the shared gate was introduced to secure is unaffected, because
+discharge is still gated. What is gained is its converse. The decisive fixture is
+`unauthorized_act_attempts_discharge`, one act exercising both channels:
+
+```text
+accepted            ()
+O_end               {q:complaint-about-alice, q:standing}
+opened by rejected  {q:complaint-about-alice}
+would have been discharged {q:standing}
+```
+
+The opening lands and the discharge does not.
+
+**Why this direction is safe.** Opening an obligation is a burden on the process,
+not a power over it, so an adversary who can only open is working against itself.
+The laundering route is closed: an unentitled act cannot name a successor and
+carry a real obligation away, because transfer is a removal and removals are
+gated. `rejected_edit_with_descriptive_consequences` confirms the behaviour does
+not depend on *why* the edit was refused — a provenance refusal behaves like a
+scope refusal.
+
+**What this does to the duality.** It ends it. The previous pass's slogan was
+entitlement-controls-creation against answerability-controls-destruction, already
+qualified there as narrower than it looked. With D1 the correct statement is
+
+```text
+entitlement     controlled creation of standing
+answerability   required creation and controlled resolution of obligations
+```
+
+which is not a duality at all. The pretty version is dropped.
+
+## 7. The quantitative question, stated narrowly
+
+The previous pass's finding stands and was overstated. The narrow version:
+
+> Quantitative burden conservation is not a generic structural consequence of
+> answerability continuity.
+
+Four constitutions transfer every obligation to a named successor and shrink the
+burden, one of them to zero, while satisfying every structural premise. What is
+**not** established is that no legitimacy semantics may impose a quantitative law:
+a `Resolve` that refuses a successor which does not genuinely carry its
+predecessor is perfectly coherent, and the structural layer is blind to it only
+because it is blind to all content.
+
+Where a quantitative law belongs, given that: **inside semantic `Resolve`** if it
+is about whether a successor really carries an obligation, and **downstream in
+traderization** if it is about whether enforcement is financially serviceable.
+Not generically, and not in this kernel.
+
+### The helper is withdrawn and replaced
+
+`thm_no_dilution_gives_monotone_potential` was underspecified in two ways. It
+checked per-parent rather than total dilution. And it ignored that a fresh
+obligation raises the potential however well transfers behave, papering over that
+with a discharge escape clause that made it unfalsifiable on any trace containing
+a discharge. `high_regret` is the witness: no dilution at all, and the potential
+runs `0 -> 1 -> 2 -> 3`.
+
+The replacement names both hypotheses:
+
+> **Conditional.** If no accepted edit dilutes in total, and every opened
+> obligation is a successor named by a transfer of the edit that opens it, then
+> the potential is non-increasing.
+
+The per-parent result is preserved as the reason total accounting is required:
+`merge_lenient` sends two obligations of weight 1 to one of weight 1.5, passes
+per-parent and fails in total.
+
+## 8. RI realization: checked against the code
+
+The previous pass recorded this as a reading. It is now read off
+`rounds/2026-08-24-reflective-integrity-core/src/ri_core.py`.
+
+**Does `ReasonOcc` ever mint an `AnsRoot`, directly or indirectly?** No.
+`History.roots(t)` is `seed.roots0` extended by `mint(a)` for every `a` in
+`norm_events(t)`, and `mint` is typed on `NormEvent`. `ReasonOcc` appears in
+`Derivation.leaves` and as the payload of a `Reason` history step; neither is
+consulted by `roots`.
+
+**What triggers MINT?** A `NormEvent`, in two cases: a `Transfer` effect mints one
+root for the successor episode, debtor the transferee; anything else mints one per
+freshly introduced standing, debtor the author.
+
+**Can a represented reason be Due without a `NormEvent` already deciding to
+mint?** No. There is no path from a `Reason` step to a root.
+
+**Is `Due` derivable, representable, or a parameter?** None of the three, and
+there is a name collision worth flagging. RI has `History.due(q, t)`, but it means
+*this live root is disposed of by some norm event* — a property of an existing
+root's episode, not of a reason. The `Due` this package needs is not representable
+at all.
+
+**The smallest missing seam,** and it is not a new event kind: `Reason` already
+exists as a history step. What is missing is a minting trigger keyed on reason
+occurrences — `roots()` consulting represented reasons under a semantic predicate,
+the way it consults norm events. That is one clause in one function.
+
+Worth recording in the other direction: RI's own `continuity_ok` recurses over
+successors with a leaf condition of *live and not due*, which is the corrected
+frontier statement of §1. **The architecture already had the right shape, and the
+abstraction shipped the wrong one.**
+
+## 9. What the package is
+
+A **named package of two closure theorems and two coupling laws**, which is
+option D. Not one joint theorem: the folds have disjoint carriers, disjoint
+premises and disjoint proofs. Not a semantic definition: every premise is
+structural. Not simply A + corrected-continuity: D1 is a third structural premise
+that neither closure theorem contains, and without it the package passes a process
+that recognizes an obligation and ignores it.
+
+The two coupling laws are the asymmetric gate's two halves, and they are laws
+rather than corollaries of a shared parameter, because after §6 there is no single
+shared parameter to derive them from.
+
+Interface comparison, as asked:
+
+```text
+smallest formally sufficient      one joint LegitStep relation with a Due
+                                  projection; everything else recoverable
+smallest semantically useful      Permit + Due + Resolve
+```
+
+They differ and the second is what the theorem uses. `LegitStep` would collapse
+the distinction Grounded Replay needs (authority) into the one answerability needs
+(resolution) and the one Legitimate Learning will need (Due), and the consumers
+would have to project it back out. Going the other way, splitting `Resolve` into
+`Disposes` and `Transfers` names one function twice.
+
+## 10. Consumers
+
+**Deference.** The strengthened package does support the intended statement: a
+successor process is not merely genealogically descended, but any represented
+reason it itself recognizes as demanding treatment is in its answerability
+dynamics and can leave only by a resolution path. That is D1 plus the corollary in
+§4, and it is strictly more than the previous package could say. No current-state
+certification work in this pass; that gap is unchanged.
+
+**Traderization.** Still consumes `Norm(L_t)` and needs neither coverage nor
+regret. The distinction the dispatch asked to keep: outstanding obligations do
+**not** affect which norm edits are legitimate — the two folds do not read each
+other in that direction — and do affect financial serviceability, which is where a
+quantitative law belongs if one belongs anywhere. §7.
+
+## 11. What no claim above asserts
+
+- No claim that an outstanding obligation is ever discharged.
+- No claim that any situation *ought* to have become represented.
+- No claim that a process satisfying everything here is good. `high_regret`
+  satisfies all of it.
+- No claim that quantitative liability is unavailable to a legitimacy semantics.
+  §7 states only that it is not a structural consequence.
+- No claim that the RI seam in §8 is easy, only that it is one function and needs
+  no new event kind.

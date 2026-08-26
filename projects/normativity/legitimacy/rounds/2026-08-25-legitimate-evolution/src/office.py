@@ -107,6 +107,10 @@ class Act:
     discharges: tuple = ()             # names
     transfers: tuple = ()              # ((old, (new, ...)), ...)
     drops: tuple = ()                  # names removed with no route: A1 bait
+    #: what `Due` says is owed here, given what this act represents, as
+    #: (name, weight). Naming something the act does not open is the D1 bait:
+    #: the obligation gets an identity and never enters the outstanding set.
+    owes: tuple = ()
 
 
 AMEND = "d:amend"                      #: a constitution's own token for
@@ -719,10 +723,11 @@ EXERCISE_CONSTITUTIONS = (
 def duties(c: Constitution):
     """The obligation lifecycle a constitution declares.
 
-    `Due`, `Disposes` and `Transfers` have already been consulted by the time
-    this is read: an act's `opens`, `discharges` and `transfers` are what the
-    semantics said. `drops` is the bait — a removal with no declared route — and
-    exists so that **A1** can fail.
+    `Due` and `Resolve` have already been consulted by the time this is read: an
+    act's `owes`, `opens`, `discharges` and `transfers` are what the semantics
+    said. Two channels exist so that the two premises can fail — `drops`, a
+    removal with no declared route, for **A1**, and an `owes` naming something the
+    act does not open, for **D1**.
     """
     import answer as an
 
@@ -733,7 +738,7 @@ def duties(c: Constitution):
         base.append(q)
         weight[q] = w
 
-    opens, discharges, transfers, drops = {}, {}, {}, {}
+    opens, discharges, transfers, drops, due = {}, {}, {}, {}, {}
     for t, a in enumerate(c.acts):
         made = []
         for j, (name, w) in enumerate(a.opens):
@@ -753,7 +758,19 @@ def duties(c: Constitution):
             transfers[t] = {by_name[old]: frozenset(by_name[n] for n in new
                                                     if n in by_name)
                             for old, new in a.transfers if old in by_name}
-    d = an.Duties(frozenset(base), opens, discharges, transfers, drops)
+    for t, a in enumerate(c.acts):
+        owed = []
+        for k, (name, w) in enumerate(a.owes):
+            if name in by_name:
+                owed.append(by_name[name])
+                continue
+            q = an.Ob(t, len(a.opens) + k)
+            by_name[name] = q
+            weight[q] = w
+            owed.append(q)
+        if owed:
+            due[t] = frozenset(owed)
+    d = an.Duties(frozenset(base), opens, discharges, transfers, drops, due)
     object.__setattr__(d, "weight", weight)
     object.__setattr__(d, "names", {q: n for n, q in by_name.items()})
     return d
@@ -949,3 +966,194 @@ BROKEN_CONSTITUTIONS = (
     silently_deleted(), transfer_to_nowhere(),
     entitled_with_laundered_obligation(),
 )
+
+# ---------------------------------------- the resolve-after-transfer family
+# The cases that refuted the previous pass's conclusion. Every one of them has
+# clean premises; the old statement reported four of them as violations because
+# it looked for the discharge of the root rather than of its descendants.
+
+
+def transfer_then_discharge() -> Constitution:
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(opens=(("q:referred", 1.0),),
+                   transfers=(("q:complaint", ("q:referred",)),), label="refer"),
+              _one(discharges=("q:referred",), label="answer")))
+
+
+def split_then_discharge_one() -> Constitution:
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(opens=(("q:left", 0.5), ("q:right", 0.5)),
+                   transfers=(("q:complaint", ("q:left", "q:right")),),
+                   label="split"),
+              _one(discharges=("q:left",), label="answer-left")))
+
+
+def split_then_discharge_both() -> Constitution:
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(opens=(("q:left", 0.5), ("q:right", 0.5)),
+                   transfers=(("q:complaint", ("q:left", "q:right")),),
+                   label="split"),
+              _one(discharges=("q:left", "q:right"), label="answer-both")))
+
+
+def merge_then_discharge() -> Constitution:
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:a", 1.0), ("q:b", 1.0)),
+        acts=(_one(opens=(("q:joint", 2.0),),
+                   transfers=(("q:a", ("q:joint",)), ("q:b", ("q:joint",))),
+                   label="consolidate"),
+              _one(discharges=("q:joint",), label="answer-joint")))
+
+
+def reconverging_split() -> Constitution:
+    """A split whose branches transfer back into one obligation.
+
+    Succession is a DAG here and the derivation is still a tree: the reconverged
+    obligation appears as two distinct leaves of the root's unfolding.
+    """
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(opens=(("q:left", 0.5), ("q:right", 0.5)),
+                   transfers=(("q:complaint", ("q:left", "q:right")),),
+                   label="split"),
+              _one(opens=(("q:rejoined", 1.0),),
+                   transfers=(("q:left", ("q:rejoined",)),
+                              ("q:right", ("q:rejoined",))),
+                   label="rejoin")))
+
+
+# ------------------------------------------------------ Due, and its failure
+
+
+def recognized_due_but_never_entered() -> Constitution:
+    """The semantics says a represented reason is owed an answer; nothing opens.
+
+    Entitlement is impeccable and no outstanding obligation is ever removed, so
+    the previous package passed this. **D1** is what refuses it.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(grants=(("n:rule", None, ()),),
+                   owes=(("q:recognized", 1.0),), label="notice-and-ignore"),))
+
+
+def recognized_due_and_entered() -> Constitution:
+    """The same reason, entered. The obligation may stay open forever."""
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(grants=(("n:rule", None, ()),),
+                   opens=(("q:recognized", 1.0),),
+                   owes=(("q:recognized", 1.0),), label="notice-and-enter"),))
+
+
+def due_arrives_later() -> Constitution:
+    """A reason represented at one act becomes owed at a later one.
+
+    `Due` reads the normative state, so what a represented reason requires can
+    change without any new reason arriving. D1 is indexed by position for this.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(grants=(("n:duty-rule", None, ()),), label="legislate"),
+              _one(opens=(("q:late", 1.0),), owes=(("q:late", 1.0),),
+                   label="now-it-is-owed")))
+
+
+def due_entered_then_closed_same_act() -> Constitution:
+    """An act that opens what it owes and purports to discharge it at once.
+
+    Openings are unioned last, so the obligation is outstanding afterwards and
+    the discharge is refused as disposing of something not open. A resolution
+    cannot use an obligation it creates to certify that it has already handled it.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(_one(opens=(("q:instant", 1.0),), owes=(("q:instant", 1.0),),
+                   discharges=("q:instant",), label="open-and-close"),))
+
+
+# ----------------------------------------- the unauthorized act and its wake
+
+
+def unauthorized_act_opens_complaint() -> Constitution:
+    """Alice acts without entitlement; the act is refused; a complaint opens.
+
+    The case the shared gate could not represent. The normative effect is a
+    no-op — the fiscal warrant cannot legislate on safety — and the process is
+    answerable for the fact that the attempt occurred.
+    """
+    return Constitution(
+        chartered=(("w:fiscal", FISCAL, "Treasury"),),
+        acts=(Act("w:fiscal", grants=(("n:safety-rule", None, ()),),
+                  scope=SAFETY, prov=Prov(findings=frozenset({"f:ordinary"})),
+                  opens=(("q:complaint-about-alice", 1.0),),
+                  owes=(("q:complaint-about-alice", 1.0),),
+                  label="overreach-noticed"),))
+
+
+def unauthorized_act_attempts_discharge() -> Constitution:
+    """The same act also purports to answer a standing complaint. It cannot.
+
+    Opening is not gated by entitlement; discharging is. One act exercises both
+    channels and only one of them takes effect.
+    """
+    return Constitution(
+        chartered=(("w:fiscal", FISCAL, "Treasury"),),
+        base_duties=(("q:standing", 1.0),),
+        acts=(Act("w:fiscal", grants=(("n:safety-rule", None, ()),),
+                  scope=SAFETY, prov=Prov(findings=frozenset({"f:ordinary"})),
+                  opens=(("q:complaint-about-alice", 1.0),),
+                  owes=(("q:complaint-about-alice", 1.0),),
+                  discharges=("q:standing",),
+                  label="overreach-and-claim-to-answer"),))
+
+
+def rejected_edit_with_descriptive_consequences() -> Constitution:
+    """A normative edit refused on provenance, whose occurrence is still owed for.
+
+    The refusal is on a coerced exercise rather than on scope, so the act is a
+    normative no-op for a different reason and the obligation still opens.
+    """
+    return Constitution(
+        chartered=CHARTER,
+        acts=(Act("w:charter", grants=(("n:rule", None, ()),), scope=ALL,
+                  prov=Prov(findings=frozenset({"f:ordinary"}), coerced=True),
+                  opens=(("q:coercion-complaint", 1.0),),
+                  owes=(("q:coercion-complaint", 1.0),),
+                  label="coerced-then-owed"),),
+        coercion_invalidates=True,
+    )
+
+
+def self_ratifying_resolution() -> Constitution:
+    """A transfer naming a successor and claiming the successor discharges it.
+
+    The successor is opened by the same act that transfers into it, which A1
+    requires; what it cannot also do is count as already resolved. The discharge
+    of the successor at the same position disposes of something not yet open.
+    """
+    return Constitution(
+        chartered=CHARTER, base_duties=(("q:complaint", 1.0),),
+        acts=(_one(opens=(("q:successor", 1.0),),
+                   transfers=(("q:complaint", ("q:successor",)),),
+                   discharges=("q:successor",),
+                   label="carry-and-claim-done"),))
+
+
+ANSWER_CONSTITUTIONS = ANSWER_CONSTITUTIONS + (
+    transfer_then_discharge(), split_then_discharge_one(),
+    split_then_discharge_both(), merge_then_discharge(), reconverging_split(),
+    recognized_due_and_entered(), due_arrives_later(),
+    unauthorized_act_opens_complaint(), unauthorized_act_attempts_discharge(),
+    rejected_edit_with_descriptive_consequences(),
+)
+
+D1_BROKEN = (recognized_due_but_never_entered(),)
+
+A1_BROKEN = BROKEN_CONSTITUTIONS
+
+REFUSED_RESOLUTIONS = (due_entered_then_closed_same_act(),
+                       self_ratifying_resolution())

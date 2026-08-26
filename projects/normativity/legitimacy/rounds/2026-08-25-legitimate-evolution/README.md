@@ -6,30 +6,33 @@ Lean-checked and no claim is registered.
 
 ## Verdict
 
-LEGITIMATE-EVOLUTION-KERNEL-STABLE — the smallest local-to-global theorem that deserves the name is a named conjunction of two replay theorems over a shared acceptance predicate, four structural premises in total: Grounded Replay on creation (S1, S2) and Answerability Continuity on destruction (A1, A2), each proved by the same induction on a strictly descending trace index, each with a countermodel where its premise fails. Sharing the acceptance predicate earns exactly one corollary — an act the process was not entitled to perform discharges nothing — and nothing else, so the packaging is honest but thin. On the pass's central question the countermodels decide H-A: four dilution constitutions, one of them carrying every issue forward at weight zero, satisfy A1, A2 and the continuity theorem, so quantitative liability is not constitutive and survives only as a conditional on a class of Transfers semantics — the same reason capability monotonicity failed in round 5, that the kernel is blind to what an occurrence says.
+LEGITIMATE-EVOLUTION-NEEDS-DUE-BRIDGE — three things in the shipped package were wrong and are repaired here, and the one that remains is the seam the package is named for. Answerability Continuity's conclusion was false on every process that resolves an obligation after transferring it: transfer-then-discharge, split-then-discharge-both and merge-then-discharge all have clean premises and failed it, because the statement tracked a root's own fate where succession replaces it with others. The corrected conclusion asks for a finite resolution derivation with a non-empty frontier of open-or-discharged leaves, a tree unfolded from a DAG. A2 was doing no work — a hand-built cycle violating freshness maximally still satisfies the theorem, since termination comes from the interval and not from occurrence identity — and is demoted to representation hygiene. And one acceptance bit could not gate both channels: an unauthorized act whose occurrence is itself owed an answer could open nothing, so the gate is now asymmetric, openings ungated and removals gated, which keeps the corollary that an unentitled act discharges nothing and adds its converse. The remaining gap is Due: a process may recognize a represented reason as owed and never enter it, which D1 now forbids abstractly, and which Reflective Integrity cannot realize — roots() mints from NormEvents only, checked against the code, and RI's own due() is a different predicate.
 
 Round 5's `PROPER-EXERCISE-SEMANTIC-ONLY` stands unchanged, and this round did
 not reopen it. Grounded Replay was frozen for this pass: `src/replay.py` is
 untouched, imports neither the Proper Exercise analysis nor the answerability
 replay, and has no capability or obligation notion in either of its records.
 
-**The question this pass was dispatched to settle** was whether the
-non-entitlement half of legitimacy compresses into an answerability-transition
-kernel of the same size as Grounded Replay. It does, and the compression is
-exact: two premises, one theorem, one induction, the same descending index. S1
-says what a new occurrence needs behind it; A1 says what a departing obligation
-needs in front of it.
+**The question this pass was dispatched to settle** was whether the pair is
+actually the smallest correct package, or whether the answerability side is still
+one semantic seam too weak. It was too weak, and in three places at once.
 
-The thing that had to be settled by countermodel rather than intuition was
-whether a quantitative liability invariant is constitutive. It is not.
-`diluted_to_nothing` is a process that names a successor for every issue it ever
-had, satisfies every premise and every conclusion, and ends owing nothing.
-Forbidding that would require reading what an obligation *says*, which is exactly
-what the kernel cannot do and exactly why round 5 found no no-escalation theorem.
-The bound is available as a conditional, and prosecuting it turned up that
-per-parent weight accounting is not a weaker form of total accounting but a wrong
-one — a merge of two obligations of weight 1 into one of weight 1.5 passes
-per-parent and fails in total.
+Two of the three were outright errors rather than gaps. The continuity conclusion
+was false — not under-proved, false, on a family of ordinary processes. The second
+premise was inert. Both were found by building the instance rather than by
+inspecting the statement, which is the same method that found the previous three
+defects in this object.
+
+The third is the one the dispatch flagged and is a design error rather than a
+mistake: sharing one acceptance bit between the two folds made it impossible to
+represent a process that becomes answerable for an act it refused. The corollary
+the shared gate was introduced to secure survives the repair; what it gains is the
+converse.
+
+What remains open is `Due`. The package can now say that a recognized obligation
+must be entered, and Reflective Integrity has no way to realize that: it mints
+answerability roots from normative effects only. The seam is one function, not a
+new event kind, and it is not built.
 
 `ANSWERABILITY.md` opens with the whole package on one page.
 
@@ -103,15 +106,15 @@ G1..G6                          one theorem, three corollaries
 - `CROSS_PROCESS_INTERFACE.md` — origin, historical and current, and what each costs.
 - `CONSUMER_TEST.md` — deference, and which of the three it needs.
 - `TRADERIZATION_CONSUMER.md` — enforcement, and the four repeal cases.
-- `COUNTERMODELS.md` — every premise prosecuted; withdrawals are §§1-5, and
-  §§10-11 are this pass's.
+- `COUNTERMODELS.md` — every premise prosecuted; withdrawals are §§1-5 and
+  §§12-15.
 - `THEOREM_MAP.md` — every claim graded, withdrawals first.
 - `src/` — `replay.py` (the kernel), `office.py` (the semantics and a
   constitution model, importing no record architecture), `ri_frame.py` (extraction from a
   record), `exercise.py` (capability and reach, an analysis over frames),
   `answer.py` (the second replay, over obligations), `cases.py` (records the
   Carroll round did not have).
-- `tests/` — 113 cases. `python3 tests/run.py`.
+- `tests/` — 126 cases. `python3 tests/run.py`.
 
 ## What this does not establish
 

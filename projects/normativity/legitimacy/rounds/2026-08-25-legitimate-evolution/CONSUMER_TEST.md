@@ -112,3 +112,23 @@ sharpened it rather than solving it.
 
 That `W` tracks the quantity that matters, or that the resulting theorem is worth
 proving — `PRIORITIES.md` Q2.
+
+---
+
+## What the Due bridge adds, and what it still does not
+
+Added by this pass. The package can now state the thing deference actually wants:
+a successor process is not merely genealogically descended from a legitimate one,
+but any represented reason **it itself** recognizes as demanding treatment is in
+its answerability dynamics, and can leave only along a resolution path. That is
+D1 composed with the continuity theorem, and the previous package could not say
+it -- a process satisfying every premise could recognize an obligation by its own
+semantics and never enter it.
+
+Unchanged. Deference needs *current* authority and a grounding tree certifies
+origin, so the current-state certificate is still missing and this pass did no
+work on it.
+
+Not obtained, and worth saying plainly: D1 is a premise, and Reflective Integrity
+cannot discharge it. A deference consumer reading an RI record gets the continuity
+half and not the realization half.
