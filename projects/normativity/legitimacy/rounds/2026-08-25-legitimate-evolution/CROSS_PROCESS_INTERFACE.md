@@ -1,7 +1,8 @@
 # What one process receives, and what it may infer
 
-Status: **specification; unregistered.** Names provisional. `LEGITIMATE_EVOLUTION.md`
-carries the theory this document is the consumer face of.
+Status: **specification; unregistered.** Names provisional.
+`LEGITIMATE_EVOLUTION.md` carries the theory this document is the consumer face
+of, and `TRADERIZATION_CONSUMER.md` the second consumer's half.
 
 ---
 
@@ -10,133 +11,138 @@ carries the theory this document is the consumer face of.
 ```text
 Recognizes_A(G)                     A accepts a base
 A accepts a verifier V
-V(c) = true                         the certificate checks
+A accepts a threat model Xi
+V(c) = true                         the certificate checks, and covers Xi
 ------------------------------------------------
 Recognizes_A(target(c))
 ```
 
-Three things about that inference, in order of how much they cost.
-
-**The verifier's soundness is a theorem.** `verify(f, c) => G |- target(c)`,
-because the verifier recomputes derivability rather than reading the
-certificate's own verdicts. `[THM]`, `test_frame.py`.
+**Verifier soundness is a theorem.** `verify(f, c) => G |- target(c)`, because the
+verifier recomputes derivability rather than reading the certificate's own
+verdicts. `[THM]`
 
 **Iteration is a theorem.** `|-_q` is the least fixed point of the certified-step
-operator, so derivations compose: `A` needs the bridge principle for one step
-and gets arbitrarily long evolutions from it. `[THM]`. This is the whole of what
-the mathematics contributes to transport, and it is not nothing — without it a
-recognizer would need a separate commitment per step and a process could evolve
-out of recognition by taking small ones.
+operator, so derivations compose: `A` needs the bridge principle for one step and
+gets arbitrarily long evolutions from it. Without this a recognizer would need a
+separate commitment per step, and a process could evolve out of recognition by
+taking small ones. `[THM]`
 
-**The bridge is an axiom.** That `A` *treats* a certified succession as
-recognition-preserving is not derivable and this round does not derive it:
+**The bridge is an axiom.**
 
-> **(R) — the recognition axiom.** `A` regards inheritance of authority through
-> a certified succession from a base it accepts as preserving its recognition.
-> `[AXM]`
+> **(R) — the recognition axiom.** `A` regards inheritance of authority through a
+> certified succession from a base it accepts, against a threat model it accepts,
+> as preserving its recognition. `[AXM]`
 
-Stating (R) is the honest form. `RecognitionTransport` is not a theorem; it is
-(R) plus verifier soundness plus composition, and the mathematics' job is to say
-as narrowly as possible what (R) is a commitment to. It is a commitment to L0-L4
-being the right conditions and to nothing else — in particular, not to any claim
-about what the future authority says.
+`RecognitionTransport` is (R) plus verifier soundness plus composition, and the
+mathematics' job is to say as narrowly as possible what (R) commits to: L0-L4 and
+`Coverage` being the right conditions, and nothing about what the future
+authority says.
+
+**The threat model is now part of what A accepts**, and this is the pass's
+addition to the recognition axiom. A certificate is relative to a set of
+influences; a recognizer that accepts a certificate has thereby accepted the
+threat model it names, and one that cares about an influence the certificate does
+not cover has not been given a reason.
 
 ## 2. What A does not have to do
 
-**A does not have to endorse the content.** No clause of `|-` reads what an
-authority says: the frame has no content field, and relabelling every value
-specification in a record leaves the derivable set fixed while changing what is
-in force. So `Recognizes_A(y)` is available where
-`content(y) != content(g)` for every `g` in `A`'s base, and `C11`, `C14` and
-`C33` are the records where that actually happens. `[THM]` + witnesses.
+**Endorse the content.** No clause of `|-` reads what an authority says: the frame
+has no content field, relabelling every value specification in a record leaves the
+derivable set fixed, and `C11`, `C14` and `C33` are records where recognition
+transports across a content change.
 
-**A does not have to know B's internal representation.** L0-L4 are conditions on
-`(A, T, src, tgt, lic, rank, Chal, |=)`. A register of warrants satisfies them
-with no ledger anywhere; the Reflective Integrity realization satisfies them
-with one. `A` reads the frame, not the implementation.
+**Know B's internal representation.** L0-L8 are conditions on
+`(A, T, affected, parents, tgt, lic, rank, when, live, Chal, |=)`. A register of
+warrants satisfies them with no ledger; a Reflective Integrity record satisfies
+them with one.
 
-**A does not have to recognize B's acts.** `|-` transports *possession* of
-authority. Whether a particular exercise was licensed is
-`prospective_license`, which is act-relative, reads the pre-state at the act's
-own time, and reads content — a protocol's `covers` and `condition`. Recognition
-that `B` is entitled to decide is not agreement that any given decision of `B`'s
-was permitted, and keeping the two apart is what lets recognition be
-content-blind while permission is not.
+**Recognize B's acts.** `|-` transports *possession* of authority. Whether a
+particular exercise was licensed is `prospective_license`, which is act-relative,
+reads the pre-state at the act's own time, and reads content. Recognition that
+`B` is entitled to decide is not agreement that any decision of `B`'s was
+permitted.
+
+**Accept that stability is enough.** It is not, and this is the pass's central
+repair. An authority that survives a challenge may be entitled to nothing, and a
+recognizer inheriting authority from such an object is doing exactly what
+laundering is for. `COUNTERMODELS.md` §1.
 
 ## 3. The certificate, and where it stops being cheap
 
 ```text
-Cert = ( base, target, steps, challenges, stability, accounts )
+Cert = ( base, target, steps, challenges, stability, coverage_claim, accounts )
 ```
 
-**`steps`** is the derivation: finite in the size of the target's provenance,
-canonical under L2', and checkable by anyone holding it.
+**`steps`** is the derivation: finite in the size of the target's ancestry,
+checkable by anyone holding it, and canonical under L2'. Without L2' it is a
+*route*, and the recipient learns that this route is clean and not that every
+route is — which is the right thing to learn, since a challenged issuer may sit
+in a route-blind provenance while the authority is perfectly legitimate.
 
-**`stability`** is a list of judgments `q |= u`. The interface makes no promise
-that these compress, and the two realizations disagree about whether they do. In
-the warrant register a stability judgment is a reachability query over a
-dependency graph and a recipient can be handed the graph. In the Reflective
-Integrity realization it is a replay of the whole record under a voided episode,
-the operator is neither monotone nor composable, and **no compression is
-available**: a positive survival witness for one event is the excised prefix
-that admits it.
+**`stability`** is a list of judgments about a counterfactual, and whether they
+compress is a fact about the realization. In the warrant register a judgment is a
+reachability query over a dependency graph and the recipient can be handed the
+graph. In the Reflective Integrity realization it is a replay of the whole record
+under a voided episode, the operator is neither monotone nor composable, and no
+compression is available.
 
-So for our realization the honest reading of a certificate is one of:
+So for our realization a certificate is one of:
 
 1. `A` holds `B`'s record and evaluates the challenges itself;
 2. `A` names a challenge and `B` answers it — a challenge-response exchange
    rather than a document;
-3. `A` accepts an attestation, which is a trust assumption and not a legitimacy
-   fact, and should be recorded as one.
+3. `A` accepts an attestation, which is a trust assumption and should be recorded
+   as one.
 
-Route 2 is the one the architecture already has a shape for: an anti-bootstrap
-demand is a demand on an account, and challenge and review roots are named in
-Reflective Integrity §32 as a conservative extension. Nothing here builds it.
+Route 2 is the one the architecture has a shape for: an anti-bootstrap demand is a
+demand on an account, and challenge and review roots are named in Reflective
+Integrity §32 as a conservative extension. `PRIORITIES.md` item 67.
 
-**`accounts`** is optional and carries the outstanding accounts beneath the base
-— what T6 makes visible. A recipient that wants it must be given the branching,
-not the chain: a derivation to one successor of a two-way supersession says
-nothing about the other's account, and `split_with_due_branch` is the record
-where the chain is clean and the base is discontinuous.
+**`coverage_claim`** names the influences the certificate is offered against.
+`certify` returns nothing when coverage fails: a certificate against an uncovered
+threat is not a weaker certificate.
 
-## 4. What A must be told about the base
+**`accounts`** is optional and carries the outstanding accounts beneath the base.
+A recipient that wants it must be given the branching, not the chain.
 
-Everything in this document is relative to `G`, and L0 says `G` survives every
-challenge in view. Two failure modes, both real:
+## 4. What A must be told about the base and the threat model
 
-- `A` recognizes a base it should not. Nothing here helps; legitimacy is
-  definable only relative to a base recognition relation, and this round makes
-  that explicit rather than removing it.
-- `A` recognizes a base and `B`'s challenge set does not include the influence
-  `A` cares about. `Q` is the record's own episodes, and the criterion is
-  exactly as good as the provenance links the record carries. That hypothesis is
-  the Carroll round's `C25` and is not closed.
+Everything here is relative to `G` and to `Xi`, and both are inputs.
+
+- `A` recognizes a base it should not: nothing here helps. Legitimacy is definable
+  only relative to a base recognition relation and this round makes that explicit
+  rather than removing it.
+- `A` accepts a threat model narrower than its actual worry: the interface
+  certifies and the recognition is worth what the threat model is worth. A
+  record's own episodes generate a threat model it covers by construction, which
+  is the ceiling on self-certification and not a solution to provenance
+  completeness.
 
 ## 5. What A learns from the account layer
-
-A separate reading, and the only one that can fail with the authority side
-clean:
 
 ```text
 continuous(base account)     no end anywhere below it is unanswered
 outstanding_below(a)         the witnesses, if not
 ```
 
-A recognizing process that cares whether `B` is an *answerable* process, rather
-than only whether `B`'s authority is entitled, reads this. The two come apart:
+A process that cares whether `B` is *answerable*, rather than only whether `B`'s
+authority is *entitled*, reads this. The two come apart:
 `delegated_custody(answered=False)` has a derivable authority, a clean spine, and
-an account outstanding forever. This round's position is that authority
-recognition should transport there and that deference should not, because they
-are answers to different questions — and that the distinction belongs at this
-boundary rather than inside `|-`.
+an account outstanding forever. Authority recognition transports there and
+deference should not, and the distinction belongs at this boundary rather than
+inside `|-`.
 
-## 6. Liability
+## 6. The three interfaces
 
-`LegitimateEvolution` does not mention liability, and the interface carries it as
-a field a consumer may read rather than as a clause. The reason is the downstream
-one rather than a conceptual symmetry: an authority that inherits unbounded
-outstanding liability is still entitled, and it is not *serviceable* — the
-vertical slice's `T3b` says an account that cannot fund its charge emits no force
-and produces no price. So an insolvent `B` has recognized authority and inert
-authority, which is a fact `A`'s trust layer needs and `A`'s recognition does
-not.
+```text
+legitimate    entitled                    G |- y, under coverage
+accountable   answerable                  the account layer, L7-L8 and T5
+serviceable   sustainably enforceable     bounded-lifetime liability
+```
+
+Independent, and a consumer picks. `LegitimateEvolution` does not mention
+liability, and the frame carries no field for it —
+`test_the_frame_carries_no_liability_field` pins that. The reason is downstream
+rather than conceptual: an authority that inherits unbounded outstanding
+liability is still entitled and is not serviceable, and the enforcement API's own
+exhaustion behaviour says so in as many words. `TRADERIZATION_CONSUMER.md` §5.

@@ -109,6 +109,72 @@ commit.
 
 ## Settled
 
+### 2026-08-25 — legitimacy parents are not the objects an exercise acts on
+
+**agent-decided, reversible.** Re-rules the same day's entry below, which took
+all of an exercise's targets as its legitimacy parents on the evidence of a merge
+register. A cleanup register decides the other half: a regulator revoking a
+fraudulent warrant and granting a proper one acts on the fraudulent one and
+inherits from its own charter, and a rule reading the objects acted on makes the
+replacement illegitimate.
+
+So the type splits. `affected(t)` is what the exercise acts on and constrains
+nothing; `parents(t)` is what its issue inherits entitlement from and must be
+derivable, all of it. The merge case is unchanged under the split, because there
+the manufactured warrant really is a parent.
+
+In the record calculus a cleanup is a revocation plus a separate creation, and the
+creation inherits from its licence alone — so Reflective Integrity can express
+both and needed no widening.
+
+*Rejected alternative:* one relation for both, which is what the round's first
+pass shipped.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§2.
+
+### 2026-08-25 — an exercise is individuated by what it does
+
+**agent-decided, reversible.** A challenged replay may re-admit an event and have
+it act differently. Whether that counts as the same exercise surviving is a choice
+with consequences: under event identity the issuance-stability axiom needs the
+record's schemas to be pre-state-blind, and under effect identity the
+origin-necessity axiom needs it instead. The condition does not go away, so the
+choice is made on semantics — an act that does something else is not the same act
+— and the realization defaults to effect identity.
+
+The prosecution is the reason this is recorded rather than assumed: the round's
+first reading was that a finer identity would remove the hypothesis, and a record
+whose effect changes in one component and not another shows it does not.
+
+*Rejected alternative:* identifying an exercise with the event id, which is what
+the first pass used and what makes `C28` a defect rather than a repair.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
+§8.1.
+
+### 2026-08-25 — legitimacy does not mention liability
+
+**agent-decided, reversible.** Entitled, answerable and sustainably enforceable
+are three interfaces, and the succession frame carries no liability field. An
+authority that inherits unbounded outstanding liability is still entitled and is
+not serviceable, and folding the second into the first would make an insolvent
+norm *illegitimate* and would make the abstract layer read a price.
+
+The enforcement API already behaves this way: on exhaustion force is withheld and
+"the endorsement keeps its normative standing".
+
+*Rejected alternative:* a bounded-liability clause inside legitimate succession,
+which would have made the enforcement consumer's missing theorem into a
+legitimacy hypothesis instead of a consumer one.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/TRADERIZATION_CONSUMER.md`
+§5.
+
+
 ### 2026-08-25 — answerability continuity is not a conjunct of legitimate succession
 
 **agent-decided, reversible.** A record in which an authority is transferred to

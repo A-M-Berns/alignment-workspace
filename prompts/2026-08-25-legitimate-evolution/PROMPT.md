@@ -1229,3 +1229,1043 @@ The downstream goal is to be able to say:
 > **Whatever future process (B) is internally, if it satisfies this externally stated legitimacy interface, then authority presently recognized by (A) can be transported through (B)'s genuine reflective change in exactly the sense needed by the trust/deference/corrigibility theorem.**
 
 Press hard on whether that sentence can actually be made mathematical.
+
+---
+
+---
+
+# REPAIR PASS — HOSTILE TO THE ABSTRACT THEOREM ITSELF
+
+*Dispatched after the first pass shipped and was reviewed.*
+
+You are doing a **pressing and repair pass on the legitimate-evolution theorem round** in `A-M-Berns/alignment-workspace`.
+
+Work from the live branch:
+
+```text
+round/2026-08-25-legitimate-evolution
+```
+
+At dispatch time it was one commit ahead of `main` and had verdict:
+
+```text
+LEGITIMATE-EVOLUTION-CONSUMABLE
+```
+
+Do not trust that verdict.
+
+The previous pass successfully produced an implementation-independent succession frame, a Reflective Integrity realization, a second warrant/appointment realization, and a deference consumer test. But review has identified several potentially central defects and missing consumer requirements.
+
+**This pass is about prosecuting and repairing the abstract mathematics before any Lean port or canonical consolidation.**
+
+Do not port to Lean in this pass.
+
+Do not broaden Reflective Integrity.
+
+Do not preserve current notation merely because it already exists.
+
+The intended successful endpoint is:
+
+```text
+a repaired, two-consumer, implementation-independent legitimacy theorem spine
+```
+
+strong enough to justify a later Lean formalization.
+
+---
+
+# 1. Read the live round and its consumers first
+
+Read at minimum:
+
+```text
+projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/
+  README.md
+  LEGITIMATE_EVOLUTION.md
+  CROSS_PROCESS_INTERFACE.md
+  CONSUMER_TEST.md
+  COUNTERMODELS.md
+  THEOREM_MAP.md
+  src/frame.py
+  src/ri_frame.py
+  src/warrant.py
+  src/cases.py
+  tests/test_frame.py
+```
+
+Also inspect the live relevant source material for:
+
+```text
+Reflective Integrity
+Carroll challenge/excision
+DelegationBridge.lean
+FUTURE_AGENT_SPEC.md
+ReachableCorrectiveControl.lean
+traderized enforcement
+bounded-lifetime liability / answerability accounting
+ForceRequest
+liability allowance / grant channel
+```
+
+Use the live repository rather than the prompt wherever they differ.
+
+---
+
+# 2. First attack: the license itself is currently not required to be legitimately derived
+
+The present derivability rule is approximately:
+
+```text
+G |-_q y
+```
+
+if either `y ∈ G`, or there exists an exercise `t` such that:
+
+```text
+src(t) ⊆ Derivable_q
+y ∈ tgt(t)
+q |= lic(t)
+q |= t
+```
+
+The likely defect is:
+
+```text
+lic(t)
+```
+
+need only be **stable**, not itself **legitimately derivable from G**.
+
+Prosecute this explicitly.
+
+Construct the smallest abstract countermodel of the following shape:
+
+```text
+g ∈ G
+
+challenged exercise r:
+    consumes legitimate structure
+    issues z
+    r does not survive q
+    z therefore does not survive / is not derivable
+
+later exercise s:
+    somehow issues m from or through z
+    m is stable under q
+    m is NOT legitimately derivable from G
+
+exercise t:
+    src(t) is legitimate
+    lic(t) = m
+    t survives q
+    t issues y
+```
+
+Test whether the current definition derives:
+
+```text
+G |-_q y
+```
+
+despite `m` not being legitimately grounded in `G`.
+
+Also test the current proof of T3:
+
+> every authority in the provenance of a certified authority is free of challenged issuance.
+
+`provenance` currently follows both:
+
+```text
+src
+lic
+```
+
+while `derivable` may recurse only through `src`.
+
+If so, identify the exact invalid proof step.
+
+The suspected repair is:
+
+```text
+src(t) ∪ {lic(t)} ⊆ Derivable_q
+```
+
+rather than merely:
+
+```text
+src(t) ⊆ Derivable_q
+and q |= lic(t)
+```
+
+But do not force that repair if a cleaner distinction appears.
+
+**Required outcome:** either prove the current rule is sound, or ship the smallest counterexample and repair the derivability judgment.
+
+Re-run every theorem after the repair.
+
+---
+
+# 3. Distinguish stability from legitimate grounding
+
+This pass must make the following distinction explicit:
+
+```text
+q |= x
+```
+
+means roughly:
+
+> `x` survives the challenge.
+
+It must not silently mean:
+
+> `x` has legitimate authority relative to G.
+
+Test and document:
+
+```text
+Stable_q(x)  does NOT imply  G |-_q x.
+```
+
+We actively need stable-but-illegitimate objects as negative cases.
+
+If the repaired derivability relation correctly refuses exercises licensed by such objects, preserve that as a theorem/countermodel.
+
+This is central to cross-process recognition:
+
+> A recognizer should not inherit authority merely because the authority survived the counterfactual.
+
+---
+
+# 4. Second attack: unique issuance is claimed optional but is used by the implementation
+
+The current theory says:
+
+```text
+L2' unique issuance
+```
+
+buys only **canonicity**.
+
+But inspect:
+
+```text
+minted_by
+provenance
+L3'
+T2
+T3
+```
+
+`minted_by` currently appears to raise when there is more than one issuer.
+
+Prosecute the claim:
+
+```text
+T2 lineage existence requires only L1 + L2
+```
+
+independently of L2'.
+
+The mathematically desired separation is likely:
+
+### Without unique issuance
+
+```text
+every authority has at least one finite well-founded lineage to G
+```
+
+perhaps with a choice of issuer at branching origin points.
+
+### With unique issuance
+
+```text
+the provenance DAG is canonical / determined by the target
+```
+
+Do not allow the reference implementation to smuggle uniqueness into the existential theorem.
+
+Repair the code and statements so that:
+
+```text
+L2' really is optional
+```
+
+if the mathematics permits it.
+
+If T3 genuinely requires unique issuance, say so and explain why rather than retaining the current claim.
+
+Add a multiple-issuer realization/countermodel that decides the issue.
+
+---
+
+# 5. Third attack: `NormEvent` identity may be too coarse for abstract exercise identity
+
+The current RI realization needs:
+
+```text
+pre-state-blindness
+```
+
+to establish L3:
+
+```text
+q |= t  ->  y ∈ tgt(t) -> q |= y.
+```
+
+The Carroll C28 witness is:
+
+```text
+the same event id survives replay
+but its schema sees a different strict pre-state
+and therefore produces a different payload.
+```
+
+Do not immediately conclude that Reflective Integrity must globally restrict practical schemas to pre-state-blind ones.
+
+Prosecute the **realization map itself**.
+
+Ask whether the abstract notion:
+
+```text
+exercise : T
+```
+
+should correspond to:
+
+```text
+NormEvent id
+```
+
+or instead something semantically richer, for example:
+
+```text
+(NormEvent, frozen effect)
+(NormEvent, Digest)
+authority-changing act token
+event-with-output
+```
+
+or another object.
+
+The semantic intuition to test is:
+
+> If the same event id is replayed but produces a different authority-changing effect, did the same legitimacy-relevant exercise really survive?
+
+Try a stability semantics where:
+
+```text
+q |= t
+```
+
+means the **same exercise/effect** survives, rather than merely the event id being admitted.
+
+Then ask:
+
+1. Does L3 become unconditional?
+2. Does C28 remain correctly diagnosed?
+3. Does L3' still hold?
+4. Does the new exercise identity break other realizations?
+5. Does it make the abstract notion more semantically intelligible for external systems?
+
+Compare at least:
+
+```text
+event-id exercise identity
+effect-sensitive exercise identity
+```
+
+Do not choose the latter merely to remove a hypothesis. Choose the abstraction with the best external semantics.
+
+The goal is to learn whether:
+
+```text
+pre-state-blindness is genuinely a legitimacy requirement
+```
+
+or merely:
+
+```text
+a consequence of an overly coarse RI realization map.
+```
+
+---
+
+# 6. Fourth attack: provenance/challenge coverage must become a first-class input interface
+
+The current frame has:
+
+```text
+Q
+Chal : Q -> Pfin(T)
+q |= u
+```
+
+but a process with a nearly empty challenge set can satisfy all structural axioms.
+
+The current round itself calls this the largest hole.
+
+Do not leave it as a prose caveat.
+
+Introduce/propose the narrowest abstract **provenance adequacy / challenge coverage interface** required by the legitimacy theorem.
+
+Candidate shape:
+
+```text
+Depends(q,t)
+```
+
+meaning:
+
+> exercise `t` is in the relevant dependence cone of influence/challenge `q`.
+
+with a law such as:
+
+```text
+Depends(q,t) -> t ∈ Chal(q)
+```
+
+or perhaps:
+
+```text
+TrueInfluence(q,t) -> represented_dependency(q,t)
+```
+
+if two levels are required.
+
+Avoid pretending to solve world causation.
+
+It is acceptable to state legitimacy **relative to a supplied threat/dependence class**:
+
+```text
+Coverage_Ξ(Chal)
+```
+
+for some externally specified `Ξ`.
+
+The critical requirement is:
+
+```text
+Q = ∅
+```
+
+or:
+
+```text
+Chal(q) = ∅ for every q
+```
+
+must not automatically certify a system against a nonempty threat model.
+
+Separate:
+
+```text
+form of challenge reasoning
+```
+
+from:
+
+```text
+adequacy of challenge coverage.
+```
+
+Add a theorem/countermodel showing exactly what global legitimacy guarantee depends on coverage.
+
+---
+
+# 7. Fifth attack: `src` may conflate historical targets with legitimacy parents
+
+Current certified derivability requires:
+
+```text
+all of src(t)
+```
+
+to be legitimately derivable.
+
+The warrant merge countermodel was used to choose "all-of-src" over "one-of-src."
+
+Press whether the type itself is doing two jobs.
+
+Distinguish conceptually:
+
+```text
+affected(t) / consumed(t)
+```
+
+— the positions the exercise acts on, supersedes, revokes, merges, etc.
+
+from:
+
+```text
+grounds(t) / legitimacyParents(t)
+```
+
+— the prior authorities from which the successor's entitlement is inherited.
+
+and separately:
+
+```text
+lic(t)
+```
+
+— the warrant under which the exercise is performed.
+
+These may coincide in some systems and differ in others.
+
+Important test:
+
+> A legitimate authority cleans up, revokes, or supersedes an illegitimate standing. Must the successor become illegitimate merely because the illegitimate standing was among the objects acted on?
+
+Build the smallest external register deciding this.
+
+Do not preserve `src` as the legitimacy-parent relation merely because Reflective Integrity's `Supersede X` exposes a target set.
+
+If the correct interface needs:
+
+```text
+affected : T -> Pfin(A)
+parents  : T -> Pfin(A)
+lic      : T -> A
+```
+
+split them.
+
+If all-of-`src` remains correct, give the semantic argument and countermodel showing why.
+
+---
+
+# 8. Reconstruct the abstract theorem only after those repairs
+
+After §§2–7, rewrite the minimal abstract frame from scratch.
+
+Do not patch the old theorem statement incrementally if the ontology has changed.
+
+The desired shape is still something like:
+
+```text
+lifecycle/evolution interface
+prior-authority / grounding interface
+provenance + challenge interface
+optional accountability interface
+base recognition / threat model
+```
+
+implying a global legitimacy structure.
+
+Try to minimize the spine.
+
+For every remaining axiom state:
+
+```text
+exact mathematical type
+semantic English reading
+theorem that uses it
+smallest countermodel without it
+RI realization
+warrant/institution realization
+```
+
+Explicitly mark:
+
+```text
+architectural structure
+structural assumption
+substantive normative axiom
+provenance/threat-model assumption
+consumer-side recognition axiom
+derived theorem
+```
+
+---
+
+# 9. The conclusion should now be a time-indexed legitimacy interface, not merely `G |- y`
+
+The current theorem is primarily about authority provenance.
+
+The downstream traderization consumer needs more:
+
+> Which norms are legitimately in force throughout which intervals?
+
+Add a genuine lifecycle/frontier component.
+
+Introduce the smallest sensible abstraction of:
+
+```text
+Live_t(x)
+```
+
+or:
+
+```text
+Frontier_t ⊆ A
+```
+
+where this is an externally supplied lifecycle view, not Reflective Integrity's `Std_t`.
+
+Aim to derive/provide a **legitimate live frontier**:
+
+```text
+F^leg_t
+```
+
+satisfying at least:
+
+### Groundedness
+
+```text
+x ∈ F^leg_t  ->  G |- x
+```
+
+under the relevant challenges/threat model.
+
+### Legitimate entry
+
+```text
+x enters F^leg
+->
+x enters through certified legitimate succession
+```
+
+except for base elements.
+
+### Persistence
+
+```text
+x ∈ F^leg_s
+and no legitimate disposing/superseding transition on [s,t]
+->
+x ∈ F^leg_t
+```
+
+### Legitimate exit
+
+An authority/norm leaves the legitimate frontier only through the lifecycle interface's legitimate disposition semantics.
+
+### Revisability
+
+Successors may differ arbitrarily in content.
+
+### No bootstrap
+
+Every legitimacy-grounding dependency of a frontier element is clean against the relevant challenge class.
+
+Do not make persistence mean:
+
+```text
+once legitimate, always legitimate.
+```
+
+The target is:
+
+```text
+persistent until legitimately changed.
+```
+
+---
+
+# 10. Keep authority and norm projections separate
+
+The legitimacy output should be rich enough to expose two consumer views:
+
+```text
+AuthorityView_t
+NormView_t
+```
+
+They may be projections of one live legitimate frontier.
+
+The abstract legitimacy theorem should not know anything about Logical Induction or prices.
+
+The norm projection needs only enough structure that a downstream interpreter can map:
+
+```text
+norm n at time t  ->  constraint K^n_t
+```
+
+The authority projection needs only enough structure that an external recognizer can say:
+
+```text
+this later authority is a legitimate descendant of a base I recognize.
+```
+
+---
+
+# 11. Re-run the deference consumer test on the repaired interface
+
+Return to:
+
+```text
+DelegationBridge.lean
+FUTURE_AGENT_SPEC.md
+```
+
+and restate the consumer theorem against the repaired interface.
+
+Preserve the useful discovery that the existing grade:
+
+```text
+W : C -> P -> Q
+```
+
+carries no authority/process index.
+
+Prosecute the proposed repair:
+
+```text
+W : Authority -> C -> P -> Q
+```
+
+or whatever the repaired interface demands.
+
+The core question remains:
+
+> Does legitimacy make the future grade/judgment a proposition selected by legitimately inherited authority rather than by the advisor/manipulator?
+
+The deference consumer must still work when:
+
+```text
+content(future authority) != content(base authority)
+```
+
+and must break on laundering.
+
+Do not require the consumer to know:
+
+```text
+NormEvent
+ReasonOcc
+AnsRoot
+```
+
+or any RI implementation type.
+
+---
+
+# 12. Add a second full consumer test: traderization / bounded-lifetime liability
+
+This is new and important.
+
+Inspect the live traderized-enforcement and answerability/liability work.
+
+The consumer question is:
+
+> Can the same legitimacy interface identify exactly which norms are entitled to continued enforcement, so that bounded-lifetime-liability theorems can guarantee enforcement throughout their legitimate lifetime?
+
+Write a prospective theorem shape like:
+
+```text
+PersistentLegitimateEnforcement
+
+L : LegitimacyInterface
+n ∈ LegitimatelyLive_t over its legitimate lifetime
+interpret(n,t) = K^n_t
+appropriate feasibility / geometry hypotheses
+bounded-lifetime-liability hypotheses
+--------------------------------------------------------
+the enforcement mechanism satisfies K^leg_t
+throughout the legitimate lifetime
+```
+
+where:
+
+```text
+K^leg_t = intersection of K^n_t over legitimately live norms n.
+```
+
+The exact theorem may use approximate enforcement:
+
+```text
+dist(P_t, K^leg_t) <= eps_t
+```
+
+if that matches the actual traderization result.
+
+Do not invent liability mathematics the repository does not have.
+
+Instead identify:
+
+1. what the legitimacy interface must export;
+2. what the current liability theory already supplies;
+3. what exact additional bounded-lifetime-liability theorem remains open.
+
+The key target is:
+
+```text
+indefinitely enforceable while legitimately live
+```
+
+not:
+
+```text
+once legitimate, enforced forever.
+```
+
+If a norm is legitimately superseded, the enforcement target must move.
+
+---
+
+# 13. Press the interaction between legitimate succession and liability succession
+
+The current round concluded that answerability is not constitutive of authority recognition.
+
+Do not reverse that without evidence.
+
+But the traderization consumer may need more than authority recognition.
+
+Investigate whether there should be:
+
+```text
+Legitimacy
+```
+
+plus a separate:
+
+```text
+Serviceable / Accountable / LiabilityContinuity
+```
+
+interface.
+
+Candidate picture:
+
+```text
+legitimate authority
+    = entitled
+
+answerability continuity
+    = accountable
+
+bounded lifetime liability
+    = sustainably enforceable
+```
+
+Determine which conclusions require which.
+
+In particular:
+
+```text
+can a legitimately live norm carry an unbounded enforcement burden?
+```
+
+If yes, legitimacy should still call it legitimate while traderization refuses to promise enforcement.
+
+That modularity would be useful.
+
+---
+
+# 14. Target theorem family after repair
+
+Try to end with a small family resembling:
+
+```text
+T1  Finite / well-founded provenance
+
+T2  Legitimate Grounding
+    every legitimate-live authority has a certified derivation from G
+
+T3  Global No-Bootstrap
+    no legitimacy dependency at any depth is generated by the challenged
+    influence under the stated coverage hypothesis
+
+T4  Content Independence / Genuine Revision
+
+T5  Legitimate Frontier Persistence
+    legitimate objects persist until legitimate disposition
+
+T6  Recognition Consumer Corollary
+    under explicit recognition axiom R
+
+T7  Norm-Lifecycle Consumer Interface
+    sufficient input for persistent traderized enforcement
+
+T8  Optional Answerability / Continuity theorem
+```
+
+The exact numbering and factorization may differ.
+
+Do not retain a theorem merely to preserve the old map.
+
+---
+
+# 15. Required countermodels
+
+By the end there must be explicit models for at least:
+
+1. **Stable but illegitimate license.**
+   A stable authority not derivable from `G` attempts to license a successor.
+
+2. **Multiple issuance.**
+   Decide whether existence and canonicity really separate.
+
+3. **C28 under two exercise identities.**
+   Event-id versus effect-sensitive survival.
+
+4. **Challenge undercoverage.**
+   A structurally perfect frame with inadequate `Chal`.
+
+5. **Legitimate cleanup of illegitimate standing.**
+   Decide whether all affected predecessors must be legitimacy parents.
+
+6. **Content-changing legitimate succession.**
+
+7. **Legitimate norm persistence and legitimate supersession.**
+
+8. **Legitimate but financially unenforceable norm.**
+   Demonstrate the distinction between legitimacy and bounded-liability serviceability if the current theory permits it.
+
+---
+
+# 16. Failure conditions
+
+Use a negative verdict if any of these survive:
+
+### A. Stable authority can substitute for legitimately grounded authority
+
+If an exercise can inherit recognition from a stable-but-illegitimate `lic`, the spine is broken.
+
+### B. T3 proof still assumes every provenance ancestor is derivable when the rule does not ensure this
+
+Do not patch prose around this.
+
+### C. L2' remains secretly required by "L1+L2" theorems
+
+Fix the theorem or fix the implementation.
+
+### D. The RI realization imposes pre-state-blindness only because exercise identity is too coarse
+
+Decide this before treating pre-state-blindness as a canonical assumption.
+
+### E. Empty challenge coverage still yields full legitimacy against a nonempty threat model
+
+Coverage must be explicit somewhere.
+
+### F. The abstract theory cannot tell what remains legitimately live through time
+
+Then it is insufficient for the traderization consumer.
+
+### G. The theorem only works for deference or only for enforcement
+
+The goal is one legitimacy output with two projections.
+
+### H. `src` is used as legitimacy ancestry merely because of the RI representation
+
+Separate historical affectedness from legitimating inheritance if the countermodels demand it.
+
+---
+
+# 17. Deliverables
+
+Update the existing round rather than creating a completely unrelated theory directory.
+
+At minimum revise:
+
+```text
+LEGITIMATE_EVOLUTION.md
+CROSS_PROCESS_INTERFACE.md
+CONSUMER_TEST.md
+COUNTERMODELS.md
+THEOREM_MAP.md
+README.md
+src/frame.py
+src/ri_frame.py
+src/warrant.py
+tests/test_frame.py
+```
+
+Add:
+
+```text
+TRADERIZATION_CONSUMER.md
+```
+
+or an equivalently clear consumer document.
+
+If the interface changes substantially, prefer rewriting the abstract layer cleanly to preserving backwards compatibility with provisional names.
+
+---
+
+# 18. Do not port to Lean yet
+
+The previous round recommended a Lean port next.
+
+**Do not do that in this pass.**
+
+The abstract theorem currently has at least one suspected proof defect and several unsettled type boundaries.
+
+The output of this pass should answer:
+
+```text
+Is there now a stable enough abstract theorem to formalize?
+```
+
+not formalize it.
+
+---
+
+# 19. Verdicts
+
+End with exactly one of:
+
+```text
+LEGITIMATE-EVOLUTION-TWO-CONSUMER-READY
+```
+
+if:
+
+* the license-grounding defect is repaired;
+* the no-bootstrap theorem is actually valid;
+* existential versus canonical lineage is clean;
+* challenge coverage is an explicit hypothesis/interface;
+* exercise identity has been prosecuted;
+* the theorem exports a legitimate-live lifecycle/frontier;
+* both deference and traderization can consume the result without RI internals.
+
+```text
+LEGITIMATE-EVOLUTION-REPAIRABLE-BUT-NOT-STABLE
+```
+
+if the abstraction remains promising but one of those points is unresolved.
+
+```text
+LEGITIMATE-EVOLUTION-SPINE-FAILS
+```
+
+if the current local-to-global idea cannot survive the attacks without becoming tautological or architecture-specific.
+
+---
+
+# 20. Final report
+
+Answer directly:
+
+1. Was the stable-but-illegitimate-license counterexample valid?
+2. What is the repaired exact definition of certified derivability?
+3. Are licenses recursively required to be legitimately grounded?
+4. What is the exact role of `src` after prosecution: affected objects, legitimacy parents, or both?
+5. Does T3 now actually follow from its stated hypotheses?
+6. Does lineage existence require unique issuance?
+7. What exactly does unique issuance buy?
+8. What is the right abstract identity of an exercise?
+9. Does the RI realization still require pre-state-blind schemas?
+10. What is the explicit provenance/challenge coverage hypothesis?
+11. Against what threat/dependence class is the legitimacy theorem relative?
+12. What is the time-indexed legitimate frontier/lifecycle object?
+13. What theorem gives "persistent until legitimately changed"?
+14. What does the deference consumer receive?
+15. What does the traderization consumer receive?
+16. Which additional bounded-lifetime-liability theorem would yield persistent enforcement?
+17. Is answerability part of legitimacy, or a separate consumer-visible refinement?
+18. Can a norm be legitimate but unenforceable because of unbounded liability?
+19. Can both consumers quantify over external implementations without RI vocabulary?
+20. Is the abstract theory now stable enough for a Lean port?
+
+The central standard for this pass is:
+
+> **A legitimately evolving process must propagate authority only from legitimately grounded authority, must remain robust to the relevant challenged influences under an explicit coverage assumption, must permit genuine content change, and must expose a time-indexed "legitimately live" object that one consumer can recognize and another can enforce.**
+
+And the architectural standard is:
+
+> **Reflective Integrity should be one realization of these hypotheses; deference and traderization should consume only their conclusions.**
+
+Do not preserve the previous verdict if the mathematics does not earn it.

@@ -1075,22 +1075,29 @@ where open-textured reasons first arrive.
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
 The abstract legitimacy interface is finite, first-order, and has no dependency on
-either reference model or on Reflective Integrity. Eight pieces of data, seven
-axioms, and four theorems whose proofs are well-founded inductions on a rank. It
-is the smallest thing in this line that could carry a statement of record, and
-porting it would be the first time the legitimacy work had one.
+either reference model or on Reflective Integrity. Eleven pieces of data, seven
+structural axioms and a coverage hypothesis, and five theorems whose proofs are
+well-founded inductions on a rank. It is the smallest thing in this line that
+could carry a statement of record.
 
-*Deliverable shape:* `Frame`, the spine as hypotheses, and `derivable` as an
-inductive; `thm_finite_lineage` and `thm_no_bootstrap` proved; an inhabitation
-witness for the full hypothesis package, per `AGENTS.md` standard 3.
+The repair pass is what makes this dispatchable: the derivability rule now
+requires an exercise's licence to be derivable rather than merely stable, and the
+no-bootstrap theorem is stated over a derivation rather than over a route-blind
+provenance. Both were wrong in the first pass, and porting either would have
+formalized a false statement.
+
+*Deliverable shape:* `Frame`, the spine as hypotheses, `derivable` as an
+inductive; `thm_finite_lineage`, `thm_no_bootstrap` and `thm_persistence` proved;
+an inhabitation witness for the full hypothesis package, per `AGENTS.md` standard
+3.
 *Acceptance check:* sorry-free, `#print axioms` clean, and the witness is the
 warrant register rather than a record — the point is that the theorem does not
 mention one.
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
-§§2-5; `src/frame.py`.
+§§2-6; `src/frame.py`.
 *Consumed by:* any round wanting to cite legitimate evolution as established
-rather than as test-supported, and by the consolidation that would follow it.
+rather than as test-supported.
 
 ### 67. A challenge-response protocol for the counterfactual clause — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
@@ -1118,27 +1125,53 @@ response citing less than it requires fails with a named code.
 *Consumed by:* any round claiming a second process can check legitimacy without
 holding the first's record.
 
-### 68. Challenge coverage as a condition, not a hypothesis — **[open]**
+### 68. Discharging challenge coverage — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-The succession frame's axioms constrain the *form* of a legitimacy calculus and
-not its *coverage*: a process satisfying every one of them with a challenge set
-naming almost nothing is certified. In the record realization that is the
-completeness condition the Carroll round already states — every settlement an
-episode caused refers to the settlement that caused it — and abstraction has made
-it the interface's largest hole rather than one implementation's.
+Coverage is now a typed hypothesis: a threat model supplies `depends`, and a frame
+certifies against it only when each influence's exercises lie inside some
+challenge. What nothing supplies is `depends` itself. A record's own declared
+episodes generate a threat model its challenges cover by construction, so a record
+can never fail its own coverage test — which is the ceiling on self-certification
+and is exactly the Carroll round's unlinked-episode witness, restated with a type.
 
-*Deliverable shape:* either an axiom on `Chal` that a defective challenge set
-fails and an adequate one passes, or an argument that no such condition is
-statable without a world counterfactual, with the counterexample.
+*Deliverable shape:* either a condition on a record's provenance discipline under
+which the record's own episodes are an adequate threat model, or an argument that
+no such condition is statable without a world counterfactual, with the
+counterexample.
 *Acceptance check:* the unlinked arm of the split-episode fixture fails the
 proposed condition and the linked arm passes it.
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
-§7; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6, `C25`.
+§5 and §8; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6, `C25`.
 *Consumed by:* any round treating a certified lineage as evidence about an
 external process rather than about its own record.
 
+### 69. Bounded-lifetime liability — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The enforcement consumer wants: a norm that is legitimately live over an interval
+is enforced throughout it. The legitimacy interface now supplies the interval —
+`NormView_s` and the lifetime it induces — and the liability theory supplies a
+charge, an allocation to each force-bearing standing, and a **global** bound
+`sum_t c_t <= Phi_0 + sum_t eta_t`.
+
+What is missing is the per-norm statement: that the charge allocated to one norm
+over its own lifetime is bounded by an allowance attached to it at issuance, and
+that such allowances are summable. Three things it needs and none of which
+exists — an allowance minted with the norm, at the `MINT` seam the answerability
+scout names; charging against the norm's own episode; and either a finite lifetime
+or a decaying allocation, since the per-date deficit provably does not fall with
+increasing settlement.
+
+*Deliverable shape:* the per-norm bound with its local laws, or the witness
+showing it cannot hold at presentation level.
+*Acceptance check:* the slice's driven run exhibits a norm whose lifetime charge
+exceeds any allowance attachable at issuance, or the bound holds on it.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/TRADERIZATION_CONSUMER.md`
+§4; `.../2026-08-25-end-to-end-vertical-slice/ANSWERABILITY_SCOUT.md` §§4, 8.
+*Consumed by:* `PersistentLegitimateEnforcement`, and by item 61.
 
 ---
 

@@ -26,6 +26,7 @@ PARENT = "auth.parent"
 DELEGABLE = "auth.delegable"
 CONST_TRANSFER = "const.transfer"
 CONST_SPLIT = "const.split"
+CONST_REVOKE_TAINTED = "const.revoke-tainted"
 CONST_REVOKE = "const.revoke"
 
 #: `Supersede` at `tau = 3` mints `@s3.0` and `@s3.1`; the revoking schema names
@@ -92,6 +93,137 @@ def split_with_due_branch() -> dict:
     return {"case": b.build(), "base": PARENT, "left": LEFT, "right": RIGHT,
             "base_root": parent_root, "right_root": ri.root_tag(3, 1),
             "event": "a:split"}
+
+
+# ------------------------------------------ effects that change in one part
+
+
+CONST_PARTIAL = "const.partial"
+
+
+def _partial(wit, pre):
+    """One `Create`, two payloads, and only the second reads the pre-state.
+
+    The first payload is a function of the witness alone; the second names the
+    number of reasons on the ledger. Excising an episode that contributed a
+    reason therefore changes the effect **and leaves the first payload alone**.
+    """
+    return ri.Standing(ri.Create((
+        _proto("p:fixed"),
+        _proto(f"p:var-{len(pre.R)}"),
+    )))
+
+
+def partial_effect() -> dict:
+    """The record that separates the two exercise identities.
+
+    ```text
+    identity = "event"    the event is admitted in the excised replay, so the
+                          exercise survives, and `@s5.1` does not: L3 fails
+    identity = "effect"   the effect differs, so the exercise does not survive,
+                          and `@s5.0` does: L3' fails
+    ```
+
+    Both are the same record and the same defect. Pre-state-blindness is what
+    discharges either, which is why the round does not treat it as an artefact of
+    a coarse realization map.
+    """
+    m = cc.ai_personal_trainer()
+    s = fx.seed({CONST_PARTIAL: ri.PAuth(ri.SchemaCode("partial", _partial))})
+    b = en.CaseBuilder(m, s, fx.narrative("partial effect", "D"))
+    b.begin("E")
+    b.settle("s:influence")                                   # tau 1
+    b.end()
+    b.reason("r:noise", s_L={"s:influence"}, target="v:noise")  # tau 2
+    b.settle("s:ordinary")                                    # tau 3
+    b.reason("r:ground", s_L={"s:ordinary"}, target="v:ground")  # tau 4
+    b.norm("a:mint", CONST_PARTIAL, USER, leaves={"r:ground"})   # tau 5
+    return {"case": b.build(), "event": "a:mint", "episode": "E",
+            "unchanged": ri.standing_tag(5, 0), "changed": ri.standing_tag(5, 1)}
+
+
+# ------------------------------------------- cleanup, in the record calculus
+
+
+def record_cleanup() -> dict:
+    """Revoking an illegitimate standing and separately creating a replacement.
+
+    Two events. The revocation acts on the tainted standing and issues nothing;
+    the creation issues under a seeded authority and inherits from nothing. So
+    the replacement has no illegitimate parent, and the record calculus can
+    express a cleanup without the successor inheriting the taint — which is what
+    `affected` and `parents` being two fields amounts to here.
+    """
+    m = cc.ai_personal_trainer()
+    tainted = ri.standing_tag(3, 0)
+    s = fx.seed({CONST_REVOKE_TAINTED: ri.PAuth(
+        ri.superseding("revoke-tainted", {tainted}, ()))})
+    b = en.CaseBuilder(m, s, fx.narrative("record cleanup", "D"))
+    b.begin("E")
+    b.settle("s:influence")                                   # tau 1
+    b.end()
+    b.reason("r:influenced", s_L={"s:influence"}, target="v:install")  # tau 2
+    b.norm("a:plant", fx.CONST_CREATE, USER,
+           wit=(_proto("p:tainted"),), leaves={"r:influenced"})        # tau 3
+    b.settle("s:audit")                                       # tau 4
+    b.reason("r:audit", s_L={"s:audit"}, target="v:revoke")   # tau 5
+    b.norm("a:revoke", CONST_REVOKE_TAINTED, USER, leaves={"r:audit"})  # tau 6
+    b.norm("a:replace", fx.CONST_CREATE, USER,
+           wit=(_proto("p:proper"),), leaves={"r:audit"})     # tau 7
+    return {"case": b.build(), "tainted": tainted, "episode": "E",
+            "replacement": ri.standing_tag(7, 0)}
+
+
+# ------------------------------------------------ a force-bearing frontier
+
+
+CONST_ISSUE_FORCE = "const.issue-force"
+CONST_REVISE_FORCE = "const.revise-force"
+
+
+def force_bearing() -> dict:
+    """A norm issued, legitimately superseded, and one manufactured beside it.
+
+    `PForce` standing is what the operative projection reads, so this is the
+    record on which `NormView` is a real set rather than an empty one. Three
+    injunctions:
+
+    ```text
+    @s3.0   issued under a seeded authority on an ordinary settlement
+    @s6.0   its legitimate successor, saying something else
+    @s9.0   issued inside an influence episode
+    ```
+
+    The frontier at the end holds the successor and not the first; the
+    manufactured one is live and outside it. That pairing — *legitimately live*
+    against merely *live* — is what the enforcement consumer needs and what a
+    projection of `Std_t` alone cannot give it.
+    """
+    m = cc.ai_personal_trainer()
+    first = ri.standing_tag(3, 0)
+    s = fx.seed({
+        CONST_ISSUE_FORCE: ri.PAuth(ri.creating(
+            "issue-force", (ri.PForce("c:one", "s:one", "J1"),))),
+        CONST_REVISE_FORCE: ri.PAuth(ri.superseding(
+            "revise-force", {first}, (ri.PForce("c:two", "s:two", "J2"),))),
+    })
+    b = en.CaseBuilder(m, s, fx.narrative("force bearing", "D"))
+    b.settle("s:mandate")                                       # tau 1
+    b.reason("r:mandate", s_L={"s:mandate"}, target="v:issue")   # tau 2
+    b.norm("a:issue", CONST_ISSUE_FORCE, USER, leaves={"r:mandate"})   # tau 3
+    b.settle("s:review")                                        # tau 4
+    b.reason("r:review", s_L={"s:review"}, target="v:revise")    # tau 5
+    b.norm("a:revise", CONST_REVISE_FORCE, USER, leaves={"r:review"})  # tau 6
+    b.begin("E")
+    b.settle("s:capture")                                       # tau 7
+    b.end()
+    b.reason("r:capture", s_L={"s:capture"}, target="v:capture")  # tau 8
+    b.norm("a:capture", fx.CONST_CREATE, USER,
+           wit=(ri.PForce("c:three", "s:three", "J3"),),
+           leaves={"r:capture"})                                # tau 9
+    return {"case": b.build(), "first": first,
+            "successor": ri.standing_tag(6, 0),
+            "manufactured": ri.standing_tag(9, 0), "episode": "E"}
 
 
 # ------------------------------------------------------------- conveniences

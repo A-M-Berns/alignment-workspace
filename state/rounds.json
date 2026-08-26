@@ -883,13 +883,14 @@
       "date": "2026-08-25",
       "project": "normativity.legitimacy",
       "path": "projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution",
-      "verdict": "LEGITIMATE-EVOLUTION-CONSUMABLE — an implementation-neutral succession frame whose axioms a register of offices satisfies with no ledger, a realization theorem placing Reflective Integrity inside it under one named hypothesis, and a global anti-bootstrap theorem derived from step-local obligations; recognition transports across content change and breaks under laundering, and one field on the deference kernel's grade stands between the interface and a consumption.",
+      "verdict": "LEGITIMATE-EVOLUTION-TWO-CONSUMER-READY — the licence-grounding defect is repaired and the no-bootstrap theorem is valid over derivations rather than provenances; lineage existence is free of unique issuance; challenge coverage is a typed hypothesis rather than a caveat; exercise identity relocates the pre-state condition rather than removing it; the interface exports a legitimately live frontier with two projections; and both the deference and enforcement consumers can read it without any Reflective Integrity vocabulary, each with one named missing hypothesis of its own.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/README.md",
       "depends_on": [
         "2026-08-25-carroll-legitimacy-test",
         "2026-08-24-reflective-integrity-core",
         "2026-08-25-end-to-end-vertical-slice",
-        "2026-08-17-counterfactual-legitimacy"
+        "2026-08-17-counterfactual-legitimacy",
+        "2026-08-16-traderized-enforcement"
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-25-legitimate-evolution/PROMPT.md",
