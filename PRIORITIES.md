@@ -1071,81 +1071,83 @@ states exactly which of its functions must newly read `V`.
 *Consumed by:* the round taking these waists to real normative practice, which is
 where open-textured reasons first arrive.
 
-### 66. The succession frame in Lean — **[entry]**
+### 66. The legitimate replay in Lean — **[entry]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
 The abstract legitimacy interface is finite, first-order, and has no dependency on
-either reference model or on Reflective Integrity. Eleven pieces of data, seven
-structural axioms and a coverage hypothesis, and five theorems whose proofs are
-well-founded inductions on a rank. It is the smallest thing in this line that
-could carry a statement of record.
+either reference model or on Reflective Integrity: an occurrence type, an edit
+type, a fold, six hypotheses and six theorems whose proofs are inductions over the
+edit history.
 
-The repair pass is what makes this dispatchable: the derivability rule now
-requires an exercise's licence to be derivable rather than merely stable, and the
-no-bootstrap theorem is stated over a derivation rather than over a route-blind
-provenance. Both were wrong in the first pass, and porting either would have
-formalized a false statement.
+Three passes were needed before this was worth doing, and each found a false or
+missing statement in the one before. Porting the first pass's rule would have
+formalized a theorem whose conclusion a register refutes; porting the second's
+would have formalized a frontier an unauthorized revocation can empty.
 
-*Deliverable shape:* `Frame`, the spine as hypotheses, `derivable` as an
-inductive; `thm_finite_lineage`, `thm_no_bootstrap` and `thm_persistence` proved;
-an inhabitation witness for the full hypothesis package, per `AGENTS.md` standard
-3.
+*Deliverable shape:* `Occ`, `Edit`, `replay`, the hypotheses as typeclass fields
+or explicit arguments; `thm_finite_grounding`, `thm_no_laundering` and
+`thm_noninterference` proved; an inhabitation witness for the full hypothesis
+package, per `AGENTS.md` standard 3.
 *Acceptance check:* sorry-free, `#print axioms` clean, and the witness is the
-warrant register rather than a record — the point is that the theorem does not
+constitution model rather than a record — the point is that the theorem does not
 mention one.
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
-§§2-6; `src/frame.py`.
+§§1-5; `src/replay.py`.
 *Consumed by:* any round wanting to cite legitimate evolution as established
 rather than as test-supported.
 
-### 67. A challenge-response protocol for the counterfactual clause — **[open]**
+### 67. Jurisdiction on an authority — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-A derivation compresses and the stability judgments it rests on do not: in the
-Reflective Integrity realization a positive survival witness for one exercise is
-the excised prefix that admits it, and the operator is neither monotone nor
-composable, so nothing smaller is available. A recognizing process must therefore
-hold the whole record, or challenge and be answered, or accept an attestation and
-record that as trust.
+The abstract interface requires that a permit relation be consulted: a valid edit
+is one its grounds permit *for this edit*, which is what refuses an authority
+acting outside its domain. Reflective Integrity has nothing to realize it with.
+`PAuth` carries a `SchemaCode` and no domain, so the permit clause is the identity
+on a record whose authority is a bare `PAuth`, and the hypothesis is discharged
+vacuously.
 
-The second is the one the architecture already has a shape for. An anti-bootstrap
-demand is a demand on an account, and challenge and review roots are named in
-Reflective Integrity §32 as a conservative extension by new `DemandCode` values.
-Nothing builds it.
+The Carroll round's `PProto.covers` is the only scope field in the architecture
+and it is an enrichment-layer object over intervention classes, not a property of
+authority as such.
 
-*Deliverable shape:* the demand, what a response must cite, and a soundness
-statement relating a discharged challenge demand to the stability judgment it
-stands for.
-*Acceptance check:* the laundering fixtures run against the protocol, and a
-response citing less than it requires fails with a named code.
-*Context:*
-`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CROSS_PROCESS_INTERFACE.md`
-§3; `.../2026-08-24-reflective-integrity-core/REFLECTIVE_INTEGRITY_CORE.md` §32.
-*Consumed by:* any round claiming a second process can check legitimacy without
-holding the first's record.
-
-### 68. Discharging challenge coverage — **[open]**
-<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
-
-Coverage is now a typed hypothesis: a threat model supplies `depends`, and a frame
-certifies against it only when each influence's exercises lie inside some
-challenge. What nothing supplies is `depends` itself. A record's own declared
-episodes generate a threat model its challenges cover by construction, so a record
-can never fail its own coverage test — which is the ceiling on self-certification
-and is exactly the Carroll round's unlinked-episode witness, restated with a type.
-
-*Deliverable shape:* either a condition on a record's provenance discipline under
-which the record's own episodes are an adequate threat model, or an argument that
-no such condition is statable without a world counterfactual, with the
-counterexample.
-*Acceptance check:* the unlinked arm of the split-episode fixture fails the
-proposed condition and the linked arm passes it.
+*Deliverable shape:* either a domain on authority-bearing standing and the
+admission clause that reads it, or an argument that scope belongs entirely to the
+schema and the abstract permit clause should be realized differently.
+*Acceptance check:* a record in which a grounded authority acts outside its
+declared domain is refused, and the corresponding constitution register agrees.
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
-§5 and §8; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6, `C25`.
-*Consumed by:* any round treating a certified lineage as evidence about an
-external process rather than about its own record.
+§2; `.../2026-08-24-reflective-integrity-core/REFLECTIVE_INTEGRITY_CORE.md` §11.
+*Consumed by:* any round treating the permit hypothesis as discharged by a record
+rather than by a constitution.
+
+### 68. Discharging provenance adequacy — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+Adequacy is a typed hypothesis: a threat class supplies the influences a
+recognizer cares about, and a process certifies against it only when its
+provenance relation can refuse the edits each influence produced. What nothing
+supplies is the map from an influence to the edits it produced. A record's own
+declared episodes generate a threat class its provenance covers by construction,
+so a record can never fail its own adequacy test.
+
+This has survived three reformulations of the surrounding theory — a
+challenge-stability spine, a typed coverage predicate over challenge sets, and now
+a declared-input provenance relation — which is the strongest evidence available
+that it is not an artefact of any of them.
+
+*Deliverable shape:* either a condition on a process's declaration discipline
+under which its own episodes are an adequate threat class, or an argument that no
+such condition is statable without a world counterfactual, with the
+counterexample.
+*Acceptance check:* the unlinked arm of the Carroll round's split-episode fixture
+fails the proposed condition and the linked arm passes it.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§8; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6, `C25`.
+*Consumed by:* any round treating a legitimate state as evidence about an external
+process rather than about its own declarations.
 
 ### 69. Bounded-lifetime liability — **[open]**
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->

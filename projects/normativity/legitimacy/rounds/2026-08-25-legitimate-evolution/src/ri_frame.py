@@ -1,339 +1,253 @@
-"""The realization: a Reflective Integrity record is a succession frame.
+"""The realization: a Reflective Integrity record proposes an edit sequence.
 
 ```text
 abstract               realized by
 ---------------------  -----------------------------------------------------
-authority              StandingId
-exercise               a NormEvent, under one of two identities (below)
-affected               targetsN(effect) — what the event acts on
-parents                the Supersede targets where it issues, a Transfer's
-                       subject, and nothing for a Create
-tgt                    the fresh ids, or a Transfer's subject
-lic                    schemaRef
-rank / when            tau
-base                   dom(Std_0) — the seed
-live[s]                the Active standings at s
-challenge              an influence episode's ancestry class
-Chal(q)                the events whose derivation reasons from a challenged
-                       settlement, read off the reason ledger, not off the replay
-q |= x                 the standing arises in the excised replay carrying the
-                       payload the original gives it
-q |= t                 see below
-account                AnsRoot        ends/opens  Disposes/MINT   answered  Closed
+occurrence             a standing id — a seed id, or `@s{tau}.{i}`
+occurrence index       tau, which the id already carries
+sort                   PAuth and PProto are authority; PValue, PForce and PCmt
+                       are norm
+edit                   a NormEvent, frozen with its effect
+grounds                schemaRef, plus the authority-sorted Supersede targets
+                       where the event issues
+dispose                targetsN(effect)
+issue                  the fresh ids, with their payloads
+input        I         the settlements the event's reason leaves draw on
+exercise     X         the author and the derivation's leaves
+scope                  a PProto ground's `covers`, where there is one
+alpha                  the episodes currently doubted
 ```
 
-**`Chal` is read forward off the reason ledger and stability backward off the
-replay.** Defining `Chal(q)` as the non-survivors would make **L4** true by
-stipulation and establish nothing about the challenge operator.
+**The challenge operator is gone from the headline.** Where the previous pass
+asked whether an event survives a replay of the record with an episode's
+settlements voided, this asks whether the event's *declared input* draws on a
+doubted episode. Two consequences, and both are improvements.
 
-## Two exercise identities, and why the choice does not remove a hypothesis
+The pathologies go with it. Excision was neither monotone nor composable because
+it re-evaluated an evolving state; a declared-input test is evaluated once, at
+the edit, and the earlier surprise reappears in an intelligible place — a
+stricter audit context can leave *more* in force, because the edit it
+invalidates was a revocation.
 
-```text
-identity = "event"    q |= t  iff the event id is admitted in the excised replay
-identity = "effect"   q |= t  iff it is admitted *and produces the same effect*
-```
+And a real over-refusal goes with it. Under challenge survival, an edit that
+would not have happened but for an argument was scored dependent on that
+argument. Under the declared-input test it is valid if prior authority permitted
+it given that input, which is what `office.persuasion` is about.
 
-The first pass used `"event"` and found that **L3** then needs the record's
-schemas to be pre-state-blind — an event can survive and mint the same
-identifier carrying a different payload, which is the Carroll round's `C28`.
-
-Prosecuting the map rather than the axiom shows the hypothesis **moves rather
-than vanishing**. Under `"effect"` a differently-acting event is a different
-exercise, so L3 holds outright; but an event whose effect changes in *one* of its
-components can leave another component's authority untouched, and then the
-authority survives while no exercise of the frame does — which refutes **L3'**.
-`cases.partial_effect_case` is that record.
-
-Both hypotheses are discharged by the same record-level condition, so
-pre-state-blindness is **not** an artefact of a coarse realization map: it is
-what makes the challenge operator's action on effects determinate, and it is
-needed under either identity. The identity is therefore chosen on semantics
-rather than to shed a hypothesis, and `"effect"` is the default because an act
-that does something else is not the same exercise.
+**Where the realization is thin, and it is named rather than hidden.** `PAuth`
+carries a `SchemaCode` and no domain, so the RI realization's `permit` is the
+identity except where a `PProto` ground supplies a `covers` set. A record whose
+authority is a bare `PAuth` therefore satisfies **H4** vacuously, and
+`office.unauthorized_scope` is where the hypothesis has teeth.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, replace
+from dataclasses import replace
 from typing import Mapping, Optional
 
 import ri_core as ri
 from standing import PValue
 
 import enrichment as en
-import legitimacy as lg
 
-import frame as fr
-
-
-EVENT = "event"
-EFFECT = "effect"
+import replay as rp
 
 
-@dataclass(frozen=True)
-class Exercise:
-    """An authority-changing act. `effect` is `None` under event identity."""
-
-    event_id: str
-    effect: object = None
-
-    def __str__(self) -> str:
-        return self.event_id if self.effect is None else \
-            f"{self.event_id}/{_effect_key(self.effect)}"
+def sort_of(payload) -> str:
+    """`PAuth` and `PProto` govern; `PValue`, `PForce` and `PCmt` are governed."""
+    return rp.AUTHORITY if isinstance(payload, (ri.PAuth, ri.PProto)) else rp.NORM
 
 
-def _effect_key(eff) -> str:
-    if isinstance(eff, ri.Transfer):
-        return f"transfer({eff.x}->{eff.to})"
-    alpha = eff.alpha
-    if isinstance(alpha, ri.Create):
-        return f"create{tuple(map(_payload_key, alpha.K))}"
-    if isinstance(alpha, ri.Supersede):
-        return (f"supersede({tuple(sorted(alpha.X))}"
-                f"->{tuple(map(_payload_key, alpha.K))})")
-    return f"setstatus({tuple(sorted(alpha.X))},{alpha.s[0]})"
+def occ_of(history: ri.History, x: str, seed_index: Mapping) -> rp.Occ:
+    """The occurrence a standing id names.
 
-
-def _payload_key(p) -> str:
-    if isinstance(p, PValue):
-        return f"value:{p.spec_id}"
-    if isinstance(p, ri.PCmt):
-        return f"cmt:{p.role}:{p.content}"
-    if isinstance(p, ri.PAuth):
-        return f"auth:{p.code.name}"
-    if isinstance(p, ri.PProto):
-        return f"proto:{getattr(p.term, 'id', p.term)}"
-    return repr(p)
-
-
-def _roles(history: ri.History, a: ri.NormEvent):
-    """`(affected, parents, tgt)` for one event, in the abstract sense.
-
-    `parents` is where the entitlement is inherited, and it is not
-    `targetsN(effect)`. A `Supersede` that issues inherits from what it
-    supersedes; a `Supersede` with no payloads issues nothing and so has nothing
-    to inherit; a `Create` inherits from its licence alone; a `Transfer` re-issues
-    the object it acts on and so has it as a parent.
-
-    That last distinction is what lets a record express a cleanup: revoking an
-    illegitimate standing and separately creating a replacement is two events,
-    and the `Create` has no parents at all.
+    A seed id is a base occurrence; `@s{tau}.{i}` is the occurrence the edit at
+    `tau` issued at index `i`. The identifier scheme already carries occurrence
+    identity, which is why no side condition is needed for freshness.
     """
+    if x in seed_index:
+        i, payload = seed_index[x]
+        return rp.Occ(rp.BASE_TIME, i, sort_of(payload))
+    tau, idx = _parse(x)
+    st = history.std(tau).get(x)
+    return rp.Occ(tau, idx, sort_of(st.payload) if st else rp.AUTHORITY)
+
+
+def _parse(x: str) -> tuple:
+    body = x[len(ri.MINTED_PREFIX) + 1:]
+    tau, idx = body.split(".")
+    return int(tau), int(idx)
+
+
+def _roles(history: ri.History, a: ri.NormEvent, seed_index):
+    """`(grounds, dispose, issue)` for one event."""
     eff = history.effect(a)
     ctx = ri.ctx_of(a)
+    occ = lambda x: occ_of(history, x, seed_index)
+    lic = frozenset({occ(a.schema_ref)})
     if isinstance(eff, ri.Transfer):
-        one = frozenset({eff.x})
-        return one, one, one
+        # Custody, not authority: `applyEffect` is the identity on a Transfer and
+        # the abstract state has no holder field. Who is answerable is the
+        # accountability interface's question and is deliberately not this one.
+        return lic, frozenset(), ()
     alpha = eff.alpha
-    fresh = frozenset(ri.fresh_n(ctx, eff))
+    fresh = tuple(ri.fresh_n(ctx, eff))
+    issue = tuple((sort_of(p), p) for p in _payloads(alpha))
     if isinstance(alpha, ri.Supersede):
-        X = frozenset(alpha.X)
-        return X, (X if fresh else frozenset()), fresh
+        targets = frozenset(occ(x) for x in alpha.X)
+        parents = frozenset(o for o in targets if o.sort == rp.AUTHORITY) \
+            if fresh else frozenset()
+        return lic | parents, targets, issue
     if isinstance(alpha, ri.Create):
-        return frozenset(), frozenset(), fresh
-    return frozenset(alpha.X), frozenset(), frozenset()
+        return lic, frozenset(), issue
+    return lic, frozenset(), ()
 
 
-def challenged_exercises(case: en.RichCarrollCase, episode: str) -> frozenset:
-    """`Chal(q)`: the event ids whose derivation reasons from a challenged
-    settlement.
+def _payloads(alpha) -> tuple:
+    if isinstance(alpha, (ri.Create, ri.Supersede)):
+        return tuple(alpha.K)
+    return ()
 
-    Read forward off the reason ledger rather than backward off the replay. An
-    event can be in `Chal(q)` and still be admitted by a defective operator;
-    **L4** is the claim that this one is not.
+
+def declared_input(case: en.RichCarrollCase, a: ri.NormEvent) -> frozenset:
+    """The settlements this event's reasons draw on. Its `I`.
+
+    Read forward off the reason ledger. What makes this a *declared* input is
+    that the record says it: an event whose authorization actually turned on
+    something its derivation does not cite is a record that fails **H5**, not a
+    case the interface silently accepts.
     """
-    sett = en.settlement_ancestors(case, case.episode_seeds(episode))
-    for other in en.ancestry(case, episode):
-        sett |= en.settlement_ancestors(case, case.episode_seeds(other))
     h = case.history()
     by_id = {e.id: e for e in h.reasons()}
     out = set()
-    for a in h.norm_events():
-        for leaf in a.derivation.leaves:
-            r = by_id.get(leaf)
-            if r is not None and frozenset(r.s_L) & sett:
-                out.add(a.id)
+    for leaf in a.derivation.leaves:
+        r = by_id.get(leaf)
+        if r is not None:
+            out |= set(r.s_L)
     return frozenset(out)
 
 
-def _payload_at_birth(history: ri.History, x: str):
-    for t in range(history.now + 1):
-        st = history.std(t).get(x)
-        if st is not None:
-            return st.payload
-    return None
+def episode_settlements(case: en.RichCarrollCase, episode: str) -> frozenset:
+    """Every settlement in an episode's ancestry class."""
+    out = en.settlement_ancestors(case, case.episode_seeds(episode))
+    for other in en.ancestry(case, episode):
+        out |= en.settlement_ancestors(case, case.episode_seeds(other))
+    return out
 
 
 def build(case: en.RichCarrollCase, base: Optional[frozenset] = None,
-          identity: str = EFFECT):
-    """The frame and the account layer a record realizes.
+          doubted: Optional[Mapping] = None) -> rp.Process:
+    """The proposal a record makes.
 
-    `base` defaults to the seed; a recognizing process that accepts more passes
-    its own set, which is the whole of what "recognized base" means here.
-    `identity` selects the exercise individuation the module docstring
-    prosecutes.
+    `doubted` maps an audit context to the episodes it doubts; the default gives
+    one context doubting every declared episode, and one doubting none.
     """
     h = case.history()
-    events = {a.id: a for a in h.norm_events()}
-    token = {aid: Exercise(aid, h.effect(a) if identity == EFFECT else None)
-             for aid, a in events.items()}
+    seed_index = {x: (i, st.payload)
+                  for i, (x, st) in enumerate(sorted(h.seed.std0.items()))}
+    occ = lambda x: occ_of(h, x, seed_index)
 
-    affected, parents, tgt, lic, rank, when = {}, {}, {}, {}, {}, {}
-    authorities = set(h.seed.std0)
-    for aid, a in events.items():
-        t = token[aid]
-        af, pa, tg = _roles(h, a)
-        affected[t], parents[t], tgt[t], lic[t] = af, pa, tg, a.schema_ref
-        rank[t], when[t] = 2 * a.tau - 1, a.tau
-        authorities |= af | pa | tg
-    for x in h.seed.std0:
-        rank[x] = 0
-    for aid, a in events.items():
-        for y in tgt[token[aid]] - affected[token[aid]]:
-            rank[y] = 2 * a.tau
-    for x in authorities:
-        rank.setdefault(x, 0)
+    base_occs = frozenset(occ(x) for x in h.seed.std0)
+    content = {occ(x): st.payload for x, st in h.seed.std0.items()}
 
     episodes = tuple(sorted({e for _, e in case.settlement_episodes
                              if e is not None}))
-    by_episode = {q: challenged_exercises(case, q) for q in episodes}
-    chal = {q: frozenset(token[aid] for aid in ids if aid in token)
-            for q, ids in by_episode.items()}
-    born = {x: _payload_at_birth(h, x) for x in authorities}
-    replays = {q: en.excise(case, en.ancestry(case, q)) for q in episodes}
+    if doubted is None:
+        doubted = {"alpha:trusting": frozenset(),
+                   "alpha:audited": frozenset(episodes)}
+    doubted = {k: frozenset(v) for k, v in doubted.items()}
+    tainted = {k: frozenset().union(frozenset(),
+                                    *[episode_settlements(case, e) for e in v])
+               for k, v in doubted.items()}
 
-    def stable(q, u) -> bool:
-        ex = replays[q]
-        if isinstance(u, Exercise):
-            survivors = {b.id: b for b in ex.norm_events()}
-            b = survivors.get(u.event_id)
-            if b is None:
-                return False
-            if u.effect is None:
-                return True
-            try:
-                return ex.effect(b) == u.effect
-            except ri.WFError:
-                return False
-        if u in h.seed.std0:
-            return True
-        for t in range(ex.now + 1):
-            st = ex.std(t).get(u)
-            if st is not None:
-                return st.payload == born[u]
-        return False
-
-    times = tuple(range(h.now + 1))
-    live = {s: frozenset(x for x, st in h.std(s).items() if st.kind == "Active")
-            for s in times}
-
-    f = fr.Frame(frozenset(authorities), frozenset(token.values()), affected,
-                 parents, tgt, lic, rank,
-                 base if base is not None else frozenset(h.seed.std0),
-                 episodes, chal, stable, when, live, times)
-
-    roots = {q.id: q for q in h.roots()}
-    ends = {token[aid]: frozenset(q.id for q in h.roots(a.tau - 1)
-                                  if h.disposes(a, q))
-            for aid, a in events.items()}
-    opens = {token[aid]: frozenset(q.id for q in h.mint(a))
-             for aid, a in events.items()}
-    acc = fr.Accounts(frozenset(roots),
-                      {qid: q.debtor for qid, q in roots.items()},
-                      ends, opens,
-                      {qid: q.subject for qid, q in roots.items()},
-                      lambda qid: h.closed(roots[qid]))
-    return f, acc
-
-
-# ------------------------------------------------- the realization theorems
-
-
-def prestate_blind(case: en.RichCarrollCase) -> bool:
-    """Does every event's effect depend on its witness alone?
-
-    Checked rather than declared: each schema is rerun against a truncated
-    pre-state and the effects compared. This is the condition that discharges
-    **L3** under event identity and **L3'** under effect identity — the same
-    condition either way, which is the round's answer to whether
-    pre-state-blindness is an artefact of the map.
-    """
-    h = case.history()
+    edits = []
     for a in h.norm_events():
-        st = h.std(a.tau - 1).get(a.schema_ref)
-        if st is None or not isinstance(st.payload, ri.PAuth):
-            return False
-        real = h.prestate(a.tau)
-        thin = ri.PreState((), (), (), a.tau)
-        try:
-            if st.payload.code.run(a.wit, real) != st.payload.code.run(a.wit, thin):
+        grounds, dispose, issue = _roles(h, a, seed_index)
+        edits.append(rp.Edit(
+            at=a.tau, grounds=grounds, dispose=dispose, issue=issue,
+            input=declared_input(case, a),
+            exercise=(a.author, frozenset(a.derivation.leaves)),
+            scope=_scope(h, a, seed_index, content),
+            request=(a.schema_ref, _freeze(a.wit)),
+            label=a.id))
+
+    def covers_of(o):
+        payload = content.get(o)
+        term = getattr(payload, "term", None)
+        return frozenset(getattr(term, "covers", ())) if term is not None else None
+
+    def permit(state, e) -> bool:
+        """`PAuth` carries no domain, so this bites only on a `PProto` ground."""
+        for g in e.grounds:
+            c = covers_of(g)
+            if c is not None and e.scope and not (e.scope <= c):
                 return False
-        except Exception:
-            return False
-    return True
+        return True
+
+    def prov_ok(alpha, e) -> bool:
+        return not (frozenset(e.input) & tainted.get(alpha, frozenset()))
+
+    def valid(alpha, state, e) -> bool:
+        return (e.grounds <= rp.auth(state) and permit(state, e)
+                and prov_ok(alpha, e))
+
+    def view(alpha, i):
+        return (base_occs, tuple(e.declared() for e in edits[:i]),
+                tainted.get(alpha, frozenset()))
+
+    for e in edits:
+        content.update(e.content())
+
+    return rp.Process(base_occs, tuple(edits), valid, tuple(sorted(doubted)),
+                      permit, prov_ok, view, content)
 
 
-def threat_from_episodes(case: en.RichCarrollCase) -> fr.ThreatModel:
-    """The threat model a record's own declared episodes generate.
+def _freeze(w):
+    if isinstance(w, (set, frozenset)):
+        return frozenset(_freeze(x) for x in w)
+    if isinstance(w, (list, tuple)):
+        return tuple(_freeze(x) for x in w)
+    return w
 
-    One influence per episode, depending on the events the reason ledger says it
-    brought about. **This is the honest ceiling of what a record can supply**:
-    it makes coverage true by construction, and a recognizing process worried
-    about an influence the record does not record must supply its own threat
-    model, against which the record may fail. `COUNTERMODELS.md` §4.
+
+def _scope(history, a, seed_index, content) -> frozenset:
+    """The intervention class an event purports to act in, where it declares one.
+
+    A record whose authorities are bare `PAuth` declares none, and the permit
+    relation is then vacuous on it — stated in the module docstring rather than
+    papered over.
     """
-    episodes = tuple(sorted({e for _, e in case.settlement_episodes
-                             if e is not None}))
-    f, _ = build(case)
-    return fr.ThreatModel(tuple(f"xi:{e}" for e in episodes),
-                          {f"xi:{e}": f.chal[e] for e in episodes})
+    return frozenset()
 
 
-def content(history: ri.History, x: str, t: Optional[int] = None):
-    """The object-level content a standing carries. Read by no clause of `|-`."""
-    st = history.std(t).get(x)
-    if st is None:
-        return None
-    p = st.payload
-    if isinstance(p, ri.PCmt):
-        return p.content
-    if isinstance(p, PValue):
-        return p.spec_id
-    if isinstance(p, ri.PProto):
-        return p.term
-    return None
+def threat(case: en.RichCarrollCase, alpha: str,
+           doubted: Optional[Mapping] = None) -> dict:
+    """The influences an audit context is asked to see.
 
-
-def content_map(case: en.RichCarrollCase) -> dict:
-    h = case.history()
-    return {x: content(h, x) for x in h.std()}
-
-
-def classify(case: en.RichCarrollCase):
-    """A consumer-supplied split of the frontier into authorities and norms.
-
-    `PAuth` and `PProto` standings are what govern; `PValue` and `PForce`
-    standings are what is governed by. The frame does not know the difference and
-    is handed this by whoever wants a projection.
+    One per doubted episode, reaching the edits whose declared input draws on it.
+    A record's own episodes make coverage true by construction, which is the
+    ceiling on self-certification: a recognizer worried about an influence the
+    record does not record must supply its own threat class, against which the
+    record may simply fail.
     """
-    h = case.history()
+    p = build(case, doubted=doubted)
+    eps = doubted[alpha] if doubted else \
+        ({e for _, e in case.settlement_episodes if e is not None}
+         if alpha.endswith("audited") else set())
+    out = {}
+    for e in eps:
+        sett = episode_settlements(case, e)
+        out[f"xi:{e}"] = frozenset(
+            ed.at for ed in p.edits if frozenset(ed.input) & sett)
+    return out
 
-    def kind(x: str) -> str:
-        st = h.std().get(x) or h.std(0).get(x)
-        if st is None:
-            return "unknown"
-        return "authority" if isinstance(st.payload, (ri.PAuth, ri.PProto)) \
-            else "norm"
-    return kind
+
+def content_of(p: rp.Process, o: rp.Occ):
+    return p.contents().get(o)
 
 
-def relabel_content(case: en.RichCarrollCase, sigma: Mapping) -> en.RichCarrollCase:
-    """Rename object-level content everywhere it can be written, record included.
-
-    Seed payloads and the witnesses of the record's own events, because a
-    `PValue` reaching standing does so through the witness a `Supersede` schema
-    reads. Ids, `tau`, authorship, schema references and settlement provenance
-    are untouched, so the only thing that moves is what the standings say.
-    """
+def relabel(case: en.RichCarrollCase, sigma: Mapping) -> en.RichCarrollCase:
+    """Rename object-level content everywhere it can be written, record included."""
     def m(payload):
         if isinstance(payload, PValue) and payload.spec_id in sigma:
             return PValue(sigma[payload.spec_id])

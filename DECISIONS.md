@@ -109,6 +109,78 @@ commit.
 
 ## Settled
 
+### 2026-08-25 — the legitimate state is replayed, not filtered
+
+**agent-decided, reversible.** Re-rules the same day's frontier entry below,
+which defined what is legitimately in force as the raw lifecycle intersected with
+a derivability set.
+
+A register in which a rogue authority — correctly refused — revokes a legitimate
+norm decides it: the norm left the frontier because *something* in the raw
+process removed it, and the persistence theorem reported no violation, because
+its hypothesis was that no exercise acts on the object and one did. An attacker
+with no legitimate authority could subtract from the enforcement target.
+
+The legitimate state is now rebuilt from the recognized base by replaying the
+proposed edits and applying the valid ones. A rejected edit is a no-op, so a
+revocation nobody was entitled to make removes nothing.
+
+*Rejected alternative:* the filtered frontier, which the round shipped and
+tested.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§1.
+
+### 2026-08-25 — legitimacy is judged locally, not by outcome survival
+
+**agent-decided, reversible.** Whether an exercise is legitimate is now: did
+prior legitimate authority permit this exact edit, given this declared input and
+this evidence of authentic exercise. It is not: does the edit survive removal of
+the influence.
+
+The case that decides it is ordinary persuasion. An agent with authority to
+revise is argued into a revision; remove the argument and the revision does not
+happen; challenge survival scores that as dependence. A legitimacy theory that
+cannot let an agent be argued into a revision is not describing the learning this
+programme exists to describe.
+
+The cost is stated rather than absorbed: a counterfactual test can in principle
+notice a dependence the record does not declare, and a declared-input test
+cannot. The factorization hypothesis is what makes that safe, and it is falsified
+by a record whose effect reads an uncited settlement.
+
+*Rejected alternative:* challenge survival, which the two previous passes carried
+as the central modal condition.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
+§7.
+
+### 2026-08-25 — grounding an authority is not authorizing an exercise
+
+**agent-decided, reversible.** A permit relation is a conjunct of validity. A
+warrant granted cleanly, with impeccable provenance, used outside its domain,
+issues nothing.
+
+The previous formulation checked that an exercise's licence was recursively
+derivable and never what the licence was for, so it established authority
+provenance and not legitimacy of the particular exercise. `Permit` is a
+parameter: the interface requires it be consulted and says nothing about what it
+should say.
+
+This exposes a gap in Reflective Integrity rather than in the interface — `PAuth`
+carries a schema code and no domain — and the round names it instead of letting
+the hypothesis look discharged.
+
+*Rejected alternative:* leaving jurisdiction to the realization's `covers` field
+without an abstract clause requiring it.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§2.
+
+
 ### 2026-08-25 — legitimacy parents are not the objects an exercise acts on
 
 **agent-decided, reversible.** Re-rules the same day's entry below, which took

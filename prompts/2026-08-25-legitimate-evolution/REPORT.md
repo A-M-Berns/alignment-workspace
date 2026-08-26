@@ -1,20 +1,11 @@
 # Report — legitimate evolution and cross-process recognition
 
-**Verdict: LEGITIMATE-EVOLUTION-TWO-CONSUMER-READY.**
+**Verdict: LEGITIMACY-THEOREM-COMPRESSED.**
 
-Superseding the first pass's `LEGITIMATE-EVOLUTION-CONSUMABLE`, which the repair
-pass withdrew: the headline theorem it shipped was **false**, not merely
-under-proved, and `warrant.stable_but_illegitimate_register` is the frame that
-shows it.
-
-All seven conditions of the verdict are met. The licence-grounding defect is
-repaired; the no-bootstrap theorem holds over derivations rather than
-provenances; lineage existence is free of unique issuance and a two-issuer
-register proves the separation; challenge coverage is a typed hypothesis with a
-countermodel; exercise identity is prosecuted and the answer is that it relocates
-the pre-state condition rather than removing it; the interface exports a
-legitimately live frontier with two projections; and both consumers can read it
-with no Reflective Integrity vocabulary.
+Superseding `LEGITIMATE-EVOLUTION-TWO-CONSUMER-READY`. The succession calculus
+was the scaffold: it found the right questions and the object underneath is
+smaller. All ten conditions of the compressed verdict are met, and each of the
+three attacks the dispatch named landed.
 
 Deliverables are at
 `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/`.
@@ -23,221 +14,213 @@ Deliverables are at
 
 ## Deviations from the prompt
 
-**The theorem numbering is not §14's.** `T2 Legitimate Grounding` and `T3 Global
-No-Bootstrap` collapse into one result, because the grounding claim is the
-derivability relation's own definition and the content is entirely in the
-no-bootstrap conclusion; retaining both would have been the padding §14 warns
-against. `T6` remains an axiom plus two theorems and `T7` is a document.
+**One canonical theorem document, not a new one.** §24 offered
+`LEGITIMATE_REPLAY.md` or `NO_LAUNDERING.md` and preferred compression;
+`LEGITIMATE_EVOLUTION.md` was rewritten instead.
 
-**§9's *groundedness* is not proved and cannot be.** `x in F^leg_t -> G |- x` is
-true by the definition of the frontier as `live ∩ Derivable`. It is listed as a
-definition rather than dressed as a theorem.
+**`src/frame.py` and `src/warrant.py` are deleted rather than kept for
+comparison.** §24 asks that rejected rules be preserved where informative. The
+rejected *registers* are preserved and now run against the new theory; the
+rejected *rules* are described in `COUNTERMODELS.md` with the process that killed
+each. Keeping two live formulations of the same object would have violated the
+present-ontology rule and doubled the surface for no evidential gain.
 
-**§9's list of exits is incomplete and the round adds one.** A norm can leave the
-legitimate frontier with nothing acting on it, by the arrival of a challenge that
-reaches its lineage. That is `T4'` and it is a consequence of quantifying over
-challenges, not a defect.
+**§14's theorem numbering is not followed.** `T2 Legitimate Grounding` and `T3
+Global No-Bootstrap` are one theorem plus a corollary here, because grounding is
+the replay's own definition and the content is in no-laundering. §9's
+*groundedness* is a definition, not a theorem, and is labelled one.
 
-**The first pass's `LegitCert(x0, x)` is over a base set and now also carries a
-coverage claim.** A certificate that does not name what it is a certificate
-against is not a weaker certificate, so `certify` returns nothing when coverage
-fails.
+**§9's list of frontier exits is incomplete and the round adds a second.**
+Tightening the audit context can remove an occurrence with nothing acting on it —
+and can also **restore** one. That second direction is new this pass.
 
-**Two `DECISIONS.md` entries from the first pass are re-ruled**, not amended in
-place: legitimacy parents are not the objects an exercise acts on, and an
-exercise is individuated by what it does. A third is added for keeping liability
-out of legitimacy.
+**The two-issuer question is dropped rather than answered.** §4 of the previous
+dispatch had it; occurrence identity dissolves it, and the register has no
+analogue to build.
 
 ---
 
 ## The final questions
 
-**1. Was the stable-but-illegitimate-license counterexample valid?** Yes, and it
-is stronger than the review supposed. It is not a proof gap: on
-`warrant.stable_but_illegitimate_register` the spine holds, `w:y` is derivable,
-and `w:tainted` — issued by a challenged exercise — sits in `w:y`'s provenance.
-So the **conclusion** of the no-bootstrap theorem was false. The invalid step was
-"each such `z` is itself derivable", which was unavailable for a licence:
-derivability recursed only through parents while provenance ran through licences
-too.
+**1. Was the stable-but-illegitimate-license counterexample valid?** That was the
+previous pass and yes. This pass's first attack also landed:
+`F^leg = raw_live ∩ Derivable` fails under illegitimate revocation, and worse than
+suspected — the persistence theorem reported **no violation** while it happened,
+because its hypothesis was "no exercise acts on it" and an exercise did. An
+attacker with no legitimate authority could subtract from the enforcement target.
 
-**2. The repaired definition.**
+**2. What replaces it.** A legitimate replay:
 
 ```text
-G |-_q y   :=   y in G,  or
-                exists t.  parents(t) union {lic(t)}  subset  { z : G |-_q z }
-                       and y in tgt(t)
-                       and q |= t
+L(alpha, 0) = G
+L(alpha, s+1) = apply(L(alpha,s), e_s) if Valid_alpha(L(alpha,s), e_s) else L(alpha,s)
 ```
 
-One clause *fewer* than the old rule, not one more: stability of the licence is
-now a consequence of `T2a` rather than a hypothesis.
+A rejected edit is a no-op, so an unauthorized revocation removes nothing.
 
-**3. Are licences recursively required to be legitimately grounded?** Yes.
-`grounds(t) = parents(t) ∪ {lic(t)}` and all of it must be derivable, so the
-requirement recurses to the base.
+**3. One replay or a family?** A family, `L(alpha, s)`, on two independent
+indices. Historical time is when the act happened; the audit context is what is
+currently believed about whether its conditions were met. Changing the first is
+normative revision; changing the second is a revised assessment of a revision.
 
-**4. The role of `src` after prosecution.** It was doing two jobs and is now two
-fields. `affected(t)` is what the exercise acts on and constrains nothing;
-`parents(t)` is what its issue inherits entitlement from and must be derivable,
-all of it. `warrant.cleanup_register` decides it: a regulator revoking a
-fraudulent warrant and granting a proper one inherits from its charter, and the
-old rule made the replacement illegitimate. In a record a cleanup is a revocation
-plus a separate creation, and the creation inherits from its licence alone.
-
-**5. Does the theorem follow now?** Yes. Every `z` in a certified derivation's
-ancestry is derivable by construction of the repaired rule, so `T2a` gives
-`q |= z`, `L3'` gives a stable issuer and `L4` puts it outside `Chal(q)`. Checked
-on eight frames, with the rejected rule failing the same standard on the frame
-that separates them.
-
-**6. Does lineage existence require unique issuance?** No. `provenance` closes
-over every issuer, `minted_by` returns the first rather than raising, and
-`thm_finite_lineage` is clean on a register where `L2'` fails. `L2'` is out of the
-checked spine.
-
-**7. What unique issuance buys.** Canonicity, and only that: the provenance is
-determined by the target, so a process cannot present a flattering route. Without
-it a certificate exhibits *a* route and the recipient learns that this route is
-clean, not that every route is — which is the correct thing to learn, since on
-`warrant.two_issuers_register` a challenged issuer sits in the route-blind
-provenance while the authority is perfectly legitimate by the clean route. That
-register is also why the no-bootstrap theorem had to move from provenances to
-derivations.
-
-**8. The right abstract identity of an exercise.** Effect-sensitive: an act that
-does something else is not the same act. Chosen on semantics, because the
-prosecution shows it does not buy a free hypothesis.
-
-**9. Does the realization still need pre-state-blind schemas?** Yes, and this is
-the pass's most surprising finding. The hypothesis **moves rather than
-vanishing**:
-
-| | L3 | L3' |
-|---|---|---|
-| event identity | needs pre-state-blindness | free |
-| effect identity | free | needs pre-state-blindness |
-
-`C28` alone would have said otherwise — it fails L3 under event identity and
-satisfies the whole spine under effect identity. `cases.partial_effect` is the
-general case: one `Create`, two payloads, only the second reading the pre-state,
-so the effect changes while one issued authority does not. Failure condition D is
-therefore answered negatively: pre-state-blindness is not an artefact of a coarse
-map, it is what makes the challenge operator's action on effects determinate.
-
-**10. The coverage hypothesis.**
+**4. The local judgment.**
 
 ```text
-ThreatModel = (Xi, depends : Xi -> Pfin(T))
-Coverage    :  forall xi in Xi. exists q in Q. depends(xi) subset Chal(q)
+Valid_alpha(L, e)  =>  grounds(e) subset Auth(L)      H3
+                   =>  Permit(L, grounds(e), input(e), e)   H4
+                   =>  ProvOK_alpha(e)                H6
 ```
 
-`certified_against` returns the empty set when it fails and `certify` returns no
-certificate at all.
+`Valid` is a **parameter**; those are hypotheses on it, each with a countermodel.
 
-**11. What the theorem is relative to.** A supplied threat class. `depends` is a
-fact about the world and about a process's provenance discipline, and nothing
-here computes it. A record's own declared episodes generate a threat model it
-covers by construction, which is the ceiling on self-certification and is not a
-solution to provenance completeness.
+**5. Does a grounded licence suffice?** No. `office.unauthorized_scope` is a
+fiscal warrant legislating on safety with impeccable grounds and provenance, and
+the previous calculus admitted it. `Permit` is required.
 
-**12. The frontier.** `F^leg_s = live[s] ∩ Derivable`, with `live` supplied by
-the realization under two axioms — nothing comes into force without an act,
-nothing falls out of force on its own.
+**6. `InputOK` versus `ExerciseOK`.** Whether the declared information is
+authentic, versus whether this was an authentic exercise. A forgery fails the
+first; duress fails the second; `office.forged_input` and
+`office.coerced_exercise` fail different clauses. The interface fixes neither
+answer — a constitution may declare that coercion does not invalidate.
 
-**13. Persistent until legitimately changed.** `T4`, from the exit axiom:
-derivability does not move with the lifecycle index, so only the live view can
-change, and it changes only through an exercise acting on the authority. With
-`T4'` those are the only two exits.
+**7. Does the theorem still need challenge survival?** No. It is gone from the
+headline and Carroll excision realizes `ProvOK` if a realization wants it.
 
-**14. What the deference consumer receives.** `x in AuthorityView_s` — the
-authority legitimately in force when the grade is read — under a stated threat
-model. Its job is to make `GradeTrust` a proposition the advisor did not select.
-The kernel still cannot state it: `W` carries no index, and the required change is
-one field plus one hypothesis, neither revising a registered statement.
+**8. What becomes of L3 and L3'?** Retired. They were conditions on a
+challenge-stability relation that no longer appears. Their anti-laundering work is
+done by `ProvOK` refusing the edit at issuance plus freshness; their pathologies —
+non-monotonicity, non-composability — go with them, and reappear as the
+intelligible fact that invalidating a repeal restores its target.
 
-**15. What the traderization consumer receives.** `NormView_s` and the lifetime it
-induces, under a consumer-supplied classifier. `cases.force_bearing` is the record
-where that is a real set: one injunction legitimately superseded, one manufactured
-beside it, and the frontier holds the successor while the manufactured one is live
-and outside it. That distinction is precisely what a projection of `Std_t` cannot
-make.
+**9. The dependency-factorization law.** Two proposals with the same declared view
+have the same verdicts. `office.hidden_admission_pair` refutes it for a
+realization whose validity rules read a hidden variable.
 
-**16. The missing liability theorem.** Bounded-lifetime liability: that the charge
-allocated to one norm over its own legitimate lifetime is bounded by an allowance
-attached to it at issuance, and that such allowances are summable. Level I bounds
-the **total** across all norms and all time; nothing bounds a particular norm's
-own lifetime. It needs an allowance minted with the norm at the `MINT` seam,
-charging against the norm's own episode, and either a finite lifetime or a
-decaying allocation — the per-date deficit provably does not fall with increasing
-settlement. Filed as `PRIORITIES.md` item 69.
+**10. The effect-factorization law.** The same, for effects.
+`cases.partial_effect_pair` is two records of equal length, same `tau`s, same
+authority, same witness, same cited reason and settlement, differing only in an
+**uncited** settlement that the schema reads. **This generalizes the previous
+pass's pre-state condition**: the defect is not reading the pre-state, it is
+reading state the record does not declare. A schema may read the whole pre-state
+if the edit declares what it read.
 
-**17. Is answerability part of legitimacy?** No, and the pass did not reverse the
-first pass's finding — it strengthened the evidence by realizing the same shape in
-a register with no record. A delegation nobody answers for has a clean spine, a
-derivable authority and an account outstanding forever. It is a separate
-consumer-visible refinement, and it earns two constructors the authority graph
-cannot express plus the one clause that can fail with the authority side clean.
+**11. The adequacy hypothesis.** Every influence in `Xi` is one `ProvOK` can
+refuse. Undischarged, and now the only hole of its kind.
 
-**18. Can a norm be legitimate but unenforceable?** Yes, and the architecture
-already says so rather than this round stipulating it. Under the default
-exhaustion policy `compile_safe_force` withholds force and "the endorsement keeps
-its normative standing". It is not a corner case: the inertness dichotomy puts
-every contentful injunction in the charged branch, and no normative source in the
-repository is shown to have summable liability.
+**12. Is `Valid` semantic or verifier-relative?** Both, at two layers, and keeping
+them apart is what §10 of the dispatch was right to press. `Valid` is semantic;
+`Verify` is a checker; `verifier_sound` and `verifier_complete` are separate.
 
-**19. Can both consumers quantify over external implementations?** Yes for the
-interface — every hypothesis is a condition on the frame, and a register of
-offices satisfies them with no ledger. **No for our realization's stability
-oracle**, unchanged by this pass: `A` must hold `B`'s record, challenge it
-interactively, or accept an attestation.
+**13. Do consumers require completeness?** Asymmetrically, and this is the
+sharpest new finding. A sound incomplete checker misses valid edits. Missing an
+**issuance** is conservative — recognition declines something it should have
+recognized. Missing a **disposal** is a hazard — an obsolete norm stays in the
+enforcement target and force is applied without entitlement. So the two consumers
+can share an interface and cannot share a checker.
 
-**20. Stable enough for a Lean port?** Yes, and that is now the recommended next
-step — `PRIORITIES.md` item 66, restated. The repair pass is what makes it
-dispatchable: porting the first pass's rule would have formalized a false
-statement. The remaining open items are consumer-side or acknowledged-external and
-none of them changes a type in the spine.
+**14. Finite grounding.** Every legitimate occurrence has a finite tree, leaves in
+`G`, internal nodes accepted edits, historical index strictly decreasing.
+Induction on the index from H3 and H2. Fails when H3 is dropped — checked.
+
+**15. No laundering.** An occurrence a rejected edit proposed never becomes
+legitimate, however often it is used downstream. Freshness plus the no-op. The
+work is done by choosing occurrences over contents, and the pairing that makes it
+substantive is `office.readoption`: the same content, adopted later by a clean
+act, is legitimate.
+
+**16. Noninterference.** Same declared view, same legitimate state, by induction
+from H5. Raw histories may differ arbitrarily outside the view; an influence that
+changes the declared input changes the view and is permitted to change the
+outcome.
+
+**17. Persistence at fixed audit context.** `o in L(alpha,s)` and no accepted edit
+in `(s,u]` disposing `o` gives `o in L(alpha,u)`. This is the property the
+previous object did not have.
+
+**18. How later audit information retracts.** By replaying at a stricter `alpha`:
+the invalidated edit becomes a no-op and everything grounded in what it issued
+falls with it. No historical rule changes.
+
+**19. Readoption versus laundering.** Occurrence identity. The rejected act's
+occurrence and the clean act's occurrence are different objects with the same
+content, and only the second is in the state.
+
+**20. What deference consumes.** `o in Auth(L(alpha,t))`, plus the four things the
+recognizer must accept. Its job is unchanged: to make `GradeTrust` a proposition
+the advisor did not select. The kernel still cannot state it — `W` has no index.
+
+**21. What traderization consumes.** `Norm(L(alpha,t))` and the lifetime it
+induces.
+
+**22. Which axioms survived unchanged?** In substance, two: strict-prestate
+grounding, and base recognition — the latter now folded into "the replay starts at
+`G`". Everything else was replaced, retired or dissolved.
+
+**23. Which became realization-specific?** Challenge survival in both its forms;
+the challenge set and its coverage predicate as a *frame* field (adequacy remains
+abstract, the operator does not); unique issuance; the lifecycle entry and exit
+axioms, which are now consequences of the replay rather than conditions on a
+supplied view; and the account layer's two axioms, which are outside this object
+entirely.
+
+**24. Is pre-state-blindness still required?** Not as stated. It is a sufficient
+condition for the real hypothesis, which is that the effect and the verdict factor
+through what the edit declares. That is strictly weaker and strictly more
+intelligible, and it is falsifiable in a way "the schema reads the pre-state"
+never was.
+
+**25. Is the theorem non-definitional?** Partly, and the honest breakdown is:
+`G1` and `G4` are genuine inductions and each fails when its hypothesis is
+dropped — checked. `G3` and `G5` are short, and the ontology did their work; their
+defence is that they were false or missing in the previous object. `G2` is a
+corollary and `G6` is true by the type. The substantive normative content is
+entirely in `Permit` and `ProvOK`, which are parameters, and the round says so
+rather than claiming the theorem settles what legitimacy requires.
+
+**26. Short enough to be the compression target for the line?** Yes. Two types,
+one fold, six hypotheses, six theorems, no challenge operator and no ledger.
+
+**27. Stable enough for a Lean port?** Yes, and it is now the recommended next
+step. Three passes were needed to get here and each found a false or missing
+statement in the one before, which is the argument for having done them first.
 
 ---
 
 ## What this pass does not establish
 
-No Lean and no registered claim, deliberately. The realization theorem is a paper
-argument from Reflective Integrity's own statements, checked on finite records,
-and those statements are themselves unregistered.
+No Lean and no registered claim, deliberately.
 
-Coverage is explicit and undischarged. An external process satisfying every axiom
-with a challenge set naming almost nothing is certified, and the Carroll round's
-unlinked-episode witness is now a coverage failure with a type rather than a
-prose caveat. Nothing here says how a process comes by an adequate challenge set.
+Adequacy is undischarged and has now survived three surrounding theories. Nothing
+here computes the map from an influence to the edits it produced.
 
 Neither consumer theorem is provable. Deference lacks an index on the grade and a
-protected-capability predicate; enforcement lacks bounded-lifetime liability. Both
-are named, both sit on the consumers' side of the boundary, and neither is a
-defect in the interface.
+protected-capability predicate; enforcement lacks bounded-lifetime liability.
 
-The account layer's abstraction is the weakest part of the interface.
-`warrant.py` realizes it, but the realization was written to match rather than
-found independently, so it is the one component not tested by a system with its
-own reasons for the same shape.
+`Permit` and `ProvOK` are opaque parameters. The interface requires they be
+consulted and constrains neither, so a constitution with a permissive `Permit` is
+accepted by every theorem here.
 
-The spine is not shown minimal. `L2'` is out; `L5`-`L8` are four bookkeeping
-axioms a better factorization might do with two.
+Reflective Integrity has no jurisdiction on an authority, so H4 is vacuous on a
+record whose authority is a bare `PAuth`. That is a gap the abstraction exposed
+and this round did not fix.
+
+The account layer left the headline in the previous pass and was not re-examined
+here.
 
 ---
 
 ## Outstanding maintainer actions
 
-1. **Rule on whether the deference kernel's grade acquires an index.** Already in
-   `DECISIONS.md`'s *Awaiting the author* from the first pass; unchanged by this
-   one, and the repair makes the premise it would attach to stronger rather than
-   different. *Turns on:* whether the deference line is being restarted, and what
-   a paper needs.
+1. **Rule on whether the deference kernel's grade acquires an index.** In
+   `DECISIONS.md`'s *Awaiting the author* since the first pass; unchanged, and the
+   premise it would attach to is now stronger. *Turns on:* whether the deference
+   line is being restarted, and what a paper needs.
 
 2. **No other item is reserved.** The three forks this pass faced it adopted, as
-   dated `DECISIONS.md` entries marked agent-decided and reversible: legitimacy
-   parents are not the objects acted on; an exercise is individuated by what it
-   does; legitimacy does not mention liability.
+   dated `DECISIONS.md` entries marked agent-decided and reversible: the
+   legitimate state is replayed rather than filtered; legitimacy is judged locally
+   rather than by outcome survival; grounding an authority is not authorizing an
+   exercise.
 
 ---
 
@@ -245,6 +228,6 @@ axioms a better factorization might do with two.
 
 | | |
 |---|---|
-| prompt author | a maintainer, with a model-assisted draft; three dispatches — the round, an addendum sent mid-round, and this repair pass |
+| prompt author | a maintainer, with a model-assisted draft; four dispatches — the round, an addendum sent mid-round, a repair pass, and this compression pass |
 | executor | Claude Opus 5 (Anthropic) |
 | dates | 2026-08-25 |

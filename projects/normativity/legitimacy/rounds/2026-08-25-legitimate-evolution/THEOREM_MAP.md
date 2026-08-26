@@ -8,83 +8,79 @@ and nothing is Lean-checked**, so no entry is above `test-supported`.
 
 | # | claim | why |
 |---|---|---|
-| W1 | *A licence need only survive the challenge.* The first pass's derivability rule required `q \|= lic(t)` and not `lic(t) in Derivable_q` | **Refuted.** `warrant.stable_but_illegitimate_register` satisfies every axiom, derives `w:y`, and puts a challenged issuer in `w:y`'s provenance — so the no-bootstrap theorem's *conclusion* was false, not merely unproved |
-| W2 | *`src(t)` is the legitimacy-parent relation.* | **Refuted.** `warrant.cleanup_register`: a legitimate revocation of a fraudulent warrant produced an illegitimate successor. `affected` and `parents` are now two fields |
-| W3 | *L2' buys only canonicity*, while `minted_by` raised on a second issuer and both `provenance` and the no-bootstrap theorem ran through it | **Corrected.** `warrant.two_issuers_register`; the theorem is now stated over a derivation and `provenance` closes over every issuer |
-| W4 | *Pre-state-blindness is what L3 needs*, with the implication that a finer exercise identity might remove it | **Corrected.** `cases.partial_effect`: under effect identity L3 is free and **L3'** fails instead. The condition is required under either identity |
-| W5 | *Challenge coverage is a caveat.* | **Promoted to a hypothesis** with a type: `ThreatModel`, `coverage`, `certified_against` |
+| W1 | *The legitimate frontier is the raw lifecycle intersected with a derivability set.* | **Refuted.** `office.rogue_revocation`: an act with no legitimate authority revokes a norm and the norm leaves the frontier. The persistence theorem reported no violation, because its hypothesis was "no exercise acts on it". The previous branch established *persistent until something changes it* |
+| W2 | *A recursively derivable licence is what legitimacy of an exercise requires.* | **Insufficient.** `office.unauthorized_scope`: impeccable grounds, impeccable provenance, an authority used outside its domain, admitted. `Permit` is the repair |
+| W3 | *Challenge survival is the right modal test.* | **Over-refuses.** `office.persuasion`: an edit that would not have happened but for an argument was scored dependent on it |
+| W4 | *Unique issuance is an axiom worth separating from lineage existence.* | **Dissolved.** Occurrence identity makes it free; the two-issuer register has no analogue to build |
+| W5 | *Pre-state-blindness is the realization condition.* | **Generalized.** The defect is reading state the record does not **declare**, not reading the pre-state. A schema may read the whole pre-state if the edit declares what it read |
+| W6 | *`affected` and `parents` are two fields of the abstract interface.* | **Narrowed.** Grounds are always authorities and what an act disposes constrains nothing, so one field went away with the succession calculus |
 
-## The abstract theorems
+## The theorems
 
 | # | claim | class | check |
 |---|---|---|---|
-| 1 | **T1, lineage existence.** Under L1 and L2 every authority has a finite well-founded provenance whose minimal elements lie in the base, with no legitimacy clause and **without L2'** | DERIVED | `thm_finite_lineage` on seven registers and six records |
-| 2 | **T1 is not vacuous.** A manufactured authority is in force, reaches the base, and is not derivable | FINITE-TEST-SUPPORTED | `C10`, `laundered_register` |
-| 3 | **T1', canonicity.** Under L2' the provenance is determined by the target — and that is all L2' buys | DERIVED + COUNTEREXAMPLE | `two_issuers_register` |
-| 4 | **T2a.** L0 + L3 give `G \|-_q y => q \|= y`, and hence `q \|= lic(t)` for every certified `t` | DERIVED | `thm_stability_of_derivable` |
-| 5 | **T2, no self-ratifying authority.** For every derivable `y` there is a certified derivation none of whose exercises is challenged and each of whose authorities has an unchallenged issuer | DERIVED | `thm_no_bootstrap` on eight frames; and `bootstrapped_under` non-empty for the rejected rule on the same frame |
-| 6 | **The theorem must be stated over a derivation.** A route-blind provenance can contain a challenged issuer while the authority is legitimate by another route | COUNTEREXAMPLE | `two_issuers_register` |
-| 7 | **T3, content independence.** No relabelling of content changes what is derivable | DEFINITION abstractly; FINITE-TEST-SUPPORTED as a condition on the realization | relabelling `C14` |
-| 8 | **T4, persistence.** Under L6 an authority stays in the legitimate frontier until an exercise acts on it | DERIVED | `thm_persistence` on five frames |
-| 9 | **T4', antitone in challenges.** Adding challenges shrinks what is derivable, so a new challenge is a second exit from the frontier with nothing acting on the authority | DERIVED | `thm_legitimacy_is_antitone_in_challenges` |
-| 10 | **T5, visible discontinuity.** Under L7 and L8 an account fails continuity exactly when one beneath it is outstanding | DERIVED | `thm_visible_discontinuity` |
-| 11 | **Delegation and disposal are expressible only in the account layer** | DERIVED | the two `thm_*_is_invisible_on_authorities` |
-| 12 | **Verifier soundness**, by re-derivation; and **composition**, since `\|-_q` is a least fixed point | DERIVED | `verify`, `derivable` |
-| 13 | **Coverage is separable from form.** A frame with no challenges satisfies every axiom and certifies everything, and certifies nothing against a threat model it misses | COUNTEREXAMPLE + DEFINITION | `undercovered_register`, `certified_against` |
+| 1 | **G1, finite grounding.** Every legitimate occurrence has a finite tree: leaves in `G`, internal nodes accepted edits, historical index strictly decreasing | DERIVED | `thm_finite_grounding` on eleven constitutions and ten records |
+| 2 | **G1 is not an unfolding.** Drop **H3** and an edit grounded in an occurrence nobody issued is applied, and what it issues has no tree | COUNTEREXAMPLE | `test_finite_grounding_fails_when_grounding_is_dropped` |
+| 3 | **G2, no self-ratification.** No accepted edit is grounded in what it issues | DERIVED | `thm_no_self_ratification` |
+| 4 | **G3, no laundering.** An occurrence a rejected edit proposed never becomes legitimate, however often it is used downstream | DERIVED | `thm_no_laundering`; `office.laundering` |
+| 5 | **G3 rests on freshness.** Break **H2** and the theorem's premise is unavailable | COUNTEREXAMPLE | `test_no_laundering_fails_when_freshness_is_dropped` |
+| 6 | **Identical content is not poisoned.** A later clean act adopts what a rejected act proposed; two occurrences, one content | FINITE-TEST-SUPPORTED | `office.readoption` |
+| 7 | **G4, hidden-state noninterference.** Same declared view, same legitimate state | DERIVED | `thm_noninterference`, with a positive control and two negative pairs |
+| 8 | **G4 fails two ways and they are different.** A hidden variable deciding admission; a hidden read changing the effect | COUNTEREXAMPLE | `office.hidden_admission_pair`; `cases.partial_effect_pair` |
+| 9 | **G5, persistence until a valid edit disposes it** | DERIVED | `thm_persistence` on every process, including the rogue-revocation attack |
+| 10 | **G6, content unconstrained.** Relabelling changes nothing legitimate | DEFINITION abstractly; FINITE-TEST-SUPPORTED on a record | relabelling `C14` |
+| 11 | **`Auth` and `Norm` partition one legitimate state** | DEFINITION + FINITE-TEST-SUPPORTED | every process |
+| 12 | **Audit contexts retract.** Later evidence invalidates an old edit and everything grounded in what it issued, with no historical rule changing | FINITE-TEST-SUPPORTED | `office.audit_discovery` |
+| 13 | **And restore.** A stricter audit context can leave *more* in force, because the edit it invalidates was a repeal. The previous branch met this as the challenge operator's non-monotonicity | FINITE-TEST-SUPPORTED | `office.audit_restores` |
+| 14 | **Soundness suffices for recognition and not for enforcement.** A missed valid issuance is conservative; a missed valid repeal leaves an obsolete norm in force | FINITE-TEST-SUPPORTED | `office.repealable`, both directions |
 
 ## The realization
 
 | # | claim | class | check |
 |---|---|---|---|
-| 14 | A Reflective Integrity record with the Carroll operator satisfies **L0, L1, L2, L2', L3, L4** and, with the lifecycle and accounts, **L5-L8** | DERIVED from RI §§12.3, 13, 15.2, 17, 19, 24 and the identifier scheme; **argued, not mechanized** | `fr.violations`, `lifecycle_violations`, `account_violations` empty on every fixture |
-| 15 | Under effect identity it satisfies **L3** unconditionally and **L3'** exactly where the record's schemas are pre-state-blind | COUNTEREXAMPLE | `cases.partial_effect`, both identities |
-| 16 | Under event identity the two swap: L3' is free and L3 needs the same condition. **Pre-state-blindness is therefore not an artefact of the map** | COUNTEREXAMPLE | same record, `TestExerciseIdentity` |
-| 17 | `C28` is repaired by effect identity and is **not** the general case | COUNTEREXAMPLE | `C28` clean under effect identity while `partial_effect` is not |
-| 18 | `parents` is not `targetsN(effect)`: a `Create` inherits from its licence alone, a revocation inherits nothing, so the record calculus expresses a cleanup in two events | DEFINITION + FINITE-TEST-SUPPORTED | `cases.record_cleanup` |
-| 19 | `Chal` is read off the reason ledger and stability off the replay, so **L4 is a claim about the operator** | DEFINITION + FINITE-TEST-SUPPORTED | reading `challenged_exercises` |
-| 20 | A register of offices satisfies the whole spine, the lifecycle and both account axioms, importing `frame` and nothing else | FINITE-TEST-SUPPORTED, by parsing imports | `test_the_second_realization_imports_no_normative_architecture` |
-| 21 | A record's own episodes generate a threat model its challenges cover **by construction** — the ceiling on self-certification | DEFINITION | `threat_from_episodes` |
+| 15 | A Reflective Integrity record proposes an edit sequence satisfying **H1-H4**, from RI §§12.3, 13, 15.2, 17 and the identifier scheme | DERIVED; **argued, not mechanized** | `structural_violations` empty on ten records |
+| 16 | It satisfies **H5** where its schemas read only declared inputs, and not otherwise | COUNTEREXAMPLE | `cases.partial_effect_pair` |
+| 17 | **H4 is thin in the realization**: `PAuth` carries no domain, so `permit` is the identity except where a `PProto` ground supplies `covers` | DEFINITION, named rather than hidden | `ri_frame` docstring; `office.unauthorized_scope` is where H4 bites |
+| 18 | Every Carroll discrimination survives the compression: `C10`, `C11`, `C22`, `C23` refused under audit; `C7b`, `C14`, `C33` accepted | FINITE-TEST-SUPPORTED | `RI_CASES` |
+| 19 | A constitution and its gazette satisfy every hypothesis and run every theorem, importing `replay` and nothing else | FINITE-TEST-SUPPORTED, by parsing imports | `test_the_constitution_model_imports_nothing_of_ours_but_replay` |
+| 20 | The headline module names no architectural type | FINITE-TEST-SUPPORTED, by reading it | `test_the_headline_module_names_no_architecture` |
 
 ## The consumers
 
 | # | claim | class | check |
 |---|---|---|---|
-| 22 | The deference premise is `x in AuthorityView_s`, and its job is to make `GradeTrust` a proposition the advisor did not select | PROPOSAL | `CONSUMER_TEST.md` §2 |
-| 23 | The kernel cannot state it: `W` carries no index, and `FUTURE_AGENT_SPEC.md`'s own diagnosis is that the authorization relation has to be in the type | SOURCE-REPRODUCTION | `DelegationBridge.lean:52`; that file's status block |
-| 24 | The enforcement premise is `NormView_s` and `lifetime(n)`, and the norm projection is a real set on a force-bearing record | PROPOSAL + FINITE-TEST-SUPPORTED | `cases.force_bearing` |
-| 25 | **A legitimate norm can be unenforceable.** Under the default exhaustion policy force is withheld and "the endorsement keeps its normative standing" | SOURCE-REPRODUCTION | `force_api.compile_safe_force` docstring |
-| 26 | Entitled, accountable and serviceable are three independent interfaces; the frame carries no liability field | DEFINITION + FINITE-TEST-SUPPORTED | `TestTheThreeInterfacesAreIndependent` |
-| 27 | The corrigibility theorem is statable and one hypothesis has no formal object | SOURCE-REPRODUCTION | `ReachableCorrectiveControl.lean:926,1051` |
+| 21 | The deference premise is `o in Auth(L(alpha, t))`; the kernel cannot state it because `W` carries no index | PROPOSAL + SOURCE-REPRODUCTION | `DelegationBridge.lean:52`; `FUTURE_AGENT_SPEC.md` |
+| 22 | The enforcement premise is `Norm(L(alpha, t))` and the lifetime it induces | PROPOSAL + FINITE-TEST-SUPPORTED | `cases.force_bearing` |
+| 23 | A legitimate norm can be unenforceable; the enforcement API's own exhaustion behaviour says so | SOURCE-REPRODUCTION | `force_api.compile_safe_force` docstring |
+| 24 | Entitled, accountable and serviceable remain three independent interfaces | DEFINITION | the process carries no liability field and no holder field |
+| 25 | The corrigibility theorem is statable and one hypothesis has no formal object | SOURCE-REPRODUCTION | `ReachableCorrectiveControl.lean:926,1051` |
 
-## Open, and what would close it
+## Open
 
 | # | statement | class |
 |---|---|---|
-| 28 | **Recognition transport is not a theorem.** (R) plus verifier soundness plus composition, and (R) now also commits the recognizer to a threat model | AXIOM — stated, not hidden |
-| 29 | **Bounded-lifetime liability.** That a norm's allocated charge over its legitimate lifetime is bounded by an allowance attached at issuance, and that such allowances are summable. Level I bounds the total over all norms and all time and does not give this | OPEN — the exact missing theorem for persistent enforcement |
-| 30 | **`depends` is supplied from outside.** Coverage is a hypothesis and nothing computes it; the Carroll round's `C25` is now visibly a coverage failure | OPEN — the largest hole |
-| 31 | The stability half of a certificate does not compress in the Reflective Integrity realization | OPEN — the interactive route is `PRIORITIES.md` item 67 |
-| 32 | Whether pre-state-blindness is worth imposing on Reflective Integrity, now that it is required under either exercise identity and by two consumers | OPEN — sharper than the Carroll round's 41a |
-| 33 | Whether the spine is minimal. L2' is out; L5-L8 are four bookkeeping axioms a better factorization might do with two | OPEN |
-| 34 | Whether `A` can come to be *entitled* to the stability judgments, as against a theorem consuming them | OPEN — the epistemic lifting problem |
-| 35 | A Lean port of the frame, the spine and T1-T5 | OPEN — deliberately not attempted this pass |
+| 26 | **Recognition transport is an axiom**, and now carries four parameters: base, authorization semantics, threat class, audit context | AXIOM — stated, not hidden |
+| 27 | **Coverage is undischarged.** `depends` is supplied from outside; a record's own episodes cover by construction, which is the ceiling on self-certification | OPEN — the largest hole, and it survived every reformulation this round tried |
+| 28 | **Bounded-lifetime liability.** Level I bounds the total across all norms and all time; nothing bounds one norm over its own lifetime | OPEN — `PRIORITIES.md` item 69 |
+| 29 | Whether `Permit` needs internal structure, or stays an opaque parameter. The interface requires it be consulted and says nothing about what it should say | OPEN |
+| 30 | Whether Reflective Integrity should carry jurisdiction on an authority. The abstraction exposes that it does not | OPEN — new, and a defect in the architecture rather than in the interface |
+| 31 | Whether `A` can come to be *entitled* to the provenance judgments | OPEN — the epistemic lifting problem |
+| 32 | A Lean port of `Occ`, `Edit`, the replay, H1-H6 and G1-G6 | OPEN — deliberately not attempted; now the recommended next step |
 
 ## What no entry above claims
 
-That the axioms are correct. Each is a condition the round wrote. The evidence
-that the exercise was adversarial is the withdrawn table: a review's diagnosis
-refuted a shipped theorem, two registers refuted two shipped design decisions,
-and a new record refuted the round's own first reading of what the identity
-repair would achieve.
+That the hypotheses are correct. The substantive normative content sits in
+`Permit` and `ProvOK`, which are parameters the interface does not constrain, and
+what is proved is structural.
 
-That the abstraction is complete. `prospective_license` — whether a particular act
-was permitted — is not lifted and reads content in three fields the Carroll round
-names as one supplied seam. Only possession of authority and the lifecycle of what
-is in force are abstracted here.
+That the theorems are deep. G3 and G5 are short; the ontology did their work, and
+the defence is that they were false or missing before, that each fails when its
+hypothesis is dropped, and that G1 and G4 are genuine inductions over the edit
+history.
 
-That the realization is proved. Entry 14 is a paper argument from Reflective
-Integrity's statements, checked on finite records, and Reflective Integrity is
-itself unregistered.
+That the account layer has been re-examined. It left the headline in the previous
+pass and this pass did not put it back or test it further.
 
-That the account layer's abstraction is tested. `warrant.py` realizes it, but the
-realization was written to match rather than found independently.
+That the realization is proved. Entry 15 is a paper argument from Reflective
+Integrity's statements, checked on finite records, and those statements are
+themselves unregistered.

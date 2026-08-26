@@ -142,6 +142,46 @@ def partial_effect() -> dict:
             "unchanged": ri.standing_tag(5, 0), "changed": ri.standing_tag(5, 1)}
 
 
+def _reads_undeclared(wit, pre):
+    """A schema whose second payload reads a settlement no edit ever cites."""
+    trigger = any(x.id == "s:trigger" for x in pre.L)
+    return ri.Standing(ri.Create((
+        _proto("p:fixed"),
+        _proto("p:var-T" if trigger else "p:var-N"),
+    )))
+
+
+CONST_UNDECLARED = "const.undeclared"
+
+
+def partial_effect_pair() -> dict:
+    """Two records with the same declared view and different effects.
+
+    Same length, same taus, same authority, same witness, same cited reason and
+    the same cited settlement. They differ only in an **uncited** settlement,
+    which no edit declares as input and which the minting schema nonetheless
+    reads. So the declared view is identical at every step and the second issued
+    occurrence carries a different payload.
+
+    This is the factorization hypothesis failing, and it is the general form of
+    the pre-state condition the previous pass isolated: the defect is not that a
+    schema reads the pre-state, it is that it reads state the record does not
+    declare.
+    """
+    def arm(trigger: bool) -> en.RichCarrollCase:
+        m = cc.ai_personal_trainer()
+        s = fx.seed({CONST_UNDECLARED: ri.PAuth(
+            ri.SchemaCode("undeclared", _reads_undeclared))})
+        b = en.CaseBuilder(m, s, fx.narrative("undeclared read", "D"))
+        b.settle("s:ordinary")                                         # tau 1
+        b.settle("s:trigger" if trigger else "s:quiet")                # tau 2
+        b.reason("r:ground", s_L={"s:ordinary"}, target="v:ground")    # tau 3
+        b.norm("a:mint", CONST_UNDECLARED, USER, leaves={"r:ground"})  # tau 4
+        return b.build()
+
+    return {"quiet": arm(False), "noisy": arm(True), "event": "a:mint", "at": 4}
+
+
 # ------------------------------------------- cleanup, in the record calculus
 
 

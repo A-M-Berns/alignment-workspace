@@ -2269,3 +2269,196 @@ And the architectural standard is:
 > **Reflective Integrity should be one realization of these hypotheses; deference and traderization should consume only their conclusions.**
 
 Do not preserve the previous verdict if the mathematics does not earn it.
+
+---
+
+---
+
+# COMPRESSION PASS — HOSTILE TO THE ABSTRACT THEOREM ITSELF
+
+*Dispatched after the repair pass shipped and was reviewed.*
+
+You are doing a **theorem-compression prosecution pass** on the live legitimacy branch:
+
+```text
+round/2026-08-25-legitimate-evolution
+```
+
+The current branch has already repaired several real defects:
+
+* licences must themselves be recursively derivable, not merely challenge-stable;
+* `affected` is separated from legitimacy `parents`;
+* unique issuance is optional;
+* no-bootstrap is stated over a derivation rather than route-blind provenance;
+* challenge coverage is now an explicit typed hypothesis;
+* a lifecycle/frontier and two consumer projections were added;
+* traderization is now a second consumer;
+* the current verdict is `LEGITIMATE-EVOLUTION-TWO-CONSUMER-READY`.
+
+Do **not** trust that verdict as final.
+
+This pass asks whether the current succession/challenge theorem can be compressed into a stronger and more semantically correct theorem about **legitimate replay, no laundering, and hidden-state noninterference**.
+
+Do not Lean-port in this pass. Do not preserve the current L0-L8 spine merely because it now passes its tests. Do not preserve `F^leg = live ∩ Derivable` if a better semantic object is required.
+
+The target is the **shortest implementation-independent theorem whose local hypotheses genuinely imply the global legitimacy properties needed by both deference and persistent enforcement**.
+
+# 1. Read the repaired round first
+
+Read the round's seven documents and five modules. Also inspect the current live material for Carroll legitimacy/excision, Reflective Integrity Core, the inquiry return loop, the answerability scout, `DelegationBridge.lean`, `ReachableCorrectiveControl.lean` and traderized enforcement. Use live repository contents over this prompt where they differ.
+
+# 2. First attack: `F^leg = live ∩ Derivable` may not mean "persistent until legitimately changed"
+
+Prosecute: `n` is legitimately live; an attacker performs an illegitimate exercise `r`; `r` revokes or supersedes `n` in the raw lifecycle; `n` therefore leaves raw `live[s]`. Does `n` now leave `F^leg` merely because `F^leg = raw_live ∩ derivable`, even though no **legitimate** transition disposed it?
+
+If yes, the current theorem establishes only *persistent until something in the raw process changes it*, which is too weak for the traderization consumer.
+
+**Required countermodel:** a legitimately live norm subjected to an illegitimate raw revocation. Determine the expected enforcement target before and after the attack.
+
+# 3. Prosecute a derived legitimate replay instead
+
+Try replacing `F^leg = raw_live ∩ Derivable` with a separately reconstructed legitimate state:
+
+```text
+L_0 = G
+L_{s+1} = apply(L_s, e_s)  if Valid(L_s, e_s, c_s)
+          L_s              otherwise
+```
+
+Prosecute whether this yields: illegitimate creation is a no-op; illegitimate revocation is a no-op; legitimate revision changes legitimate state; legitimate delegation changes legitimate authority state; legitimate self-revocation is allowed if authorized by the strict pre-state. The raw process may diverge arbitrarily.
+
+Do not assume this construction is correct merely because it fixes the lifecycle problem. Ask whether it makes the headline theorem tautological. If it does, identify which genuinely global consequences still require proof.
+
+# 4. Separate historical time from audit time
+
+A historical edit may have appeared legitimate when performed, while later inquiry discovers forged provenance, hidden influence, invalid consent, omitted dependency or fraudulent authority.
+
+Introduce/prosecute a two-index object `L^alpha_s` where `s` is historical/event time and `alpha` is the current audit/provenance context. For fixed `alpha`, replay the historical edit sequence. The current legitimacy state at `t` is `L^{alpha_t}_t`.
+
+Prosecute whether this cleanly separates the historical authorization rule from current evidence about whether that rule was actually satisfied. Changing `alpha` may revise the legitimacy assessment of old edits without retroactively changing which normative rule was historically applicable.
+
+Add a fixture where later audit information invalidates an earlier authority-changing edit and all descendants whose legitimacy depended on it.
+
+# 5. Replace "challenge survival" with "authorization of the actual edit" if possible
+
+Canonical case: Alice legitimately has authority to revise policy after hearing Bob; Bob gives an argument; Alice changes policy because of it; remove Bob's argument and the edit no longer occurs. This should **not** by itself make the edit illegitimate.
+
+Test whether legitimacy should require that the edit survives the challenge, or instead that prior legitimate authority permitted this exact edit given this certified input. Candidate local judgment `Permit_L(B, I, e)`. It may be content-sensitive and jurisdiction-sensitive, and must allow `content(successor) != content(predecessor)` without allowing arbitrary scope expansion.
+
+Decide whether challenge replay belongs in the abstract legitimacy theorem or in one realization of provenance/exercise validity. Do not preserve L3/L3' unless the theorem genuinely needs them after this reformulation.
+
+# 6. Add an explicit distinction between legitimate authority and permitted exercise
+
+Construct: authority `a` is legitimately grounded; `a` has jurisdiction only over domain `D`; exercise `t` uses `a` to perform edit `e` outside `D`. Does the current abstract frame reject it? If not, the theorem establishes authority provenance but not legitimacy of the particular exercise.
+
+Introduce the narrowest abstract authorization relation necessary to block this. It must express jurisdiction, scope, consent conditions, amendment rules, procedural conditions and domain restrictions without importing Reflective Integrity.
+
+**Required countermodel:** legitimate authority used outside its jurisdiction.
+
+# 7. Distinguish input validity from exercise validity
+
+A legitimacy certificate may need `c = (B, I, X)` — prior legitimate authority basis, authorization-relevant informational input, and evidence that this was an admissible/authentic exercise. Prosecute `InputOK` and `ExerciseOK` as separate concepts, deciding cases like legitimate argument, forged message, coercion, tampered decision procedure, fake consent, valid election, manipulated election.
+
+Do not hardcode normative answers. The live rules may permit arbitrary influence, in which case the theorem should accept it. The structural theorem should only require that whatever the rules treat as relevant to authentic exercise is represented through the interface.
+
+# 8. Dependency factorization must become precise
+
+The central remaining risk is that "provenance completeness" just means "assume hidden influence does not matter." Turn this into a falsifiable mathematical interface.
+
+Let the legitimacy-relevant view of a historical edit be `V_s = (L_s, B_s, I_s, X_s, e_s)`. Require: `V_s(H) = V_s(H') -> Valid(H, e_s) = Valid(H', e_s)`, and where valid, `apply_H(L_s,e_s) = apply_H'(L_s,e_s)`.
+
+This should generalize the earlier pre-state-blindness issue: schemas may read pre-state, but every legitimacy-relevant read must factor through the declared interface. Build a negative fixture where a hidden variable changes either whether the edit is admitted or what normative effect is produced, while all declared inputs remain fixed.
+
+# 9. Threat-relative provenance adequacy should remain explicit
+
+Preserve the good repair that legitimacy is relative to a threat model `Xi`. But reconsider whether the current `ThreatModel.depends` / `Coverage via Chal` remains the best abstraction if challenge replay moves below the headline theorem. A more abstract interface may be `ProvOK_{alpha,Xi}(I, X)` with a semantic adequacy law. It is acceptable for Carroll replay to realize this interface; it is not acceptable for the headline theorem to silently assume every relevant dependency is already recorded.
+
+# 10. Prosecute the distinction between soundness and completeness
+
+If `Verify(c,e) -> Valid(e)` but not conversely, the legitimate replay is a sound under-approximation. That may be enough for some recognition tasks and wrong for enforcement: a legitimate revocation is missed, the old norm remains in the derived replay, and enforcement wrongly continues.
+
+Explicitly separate verifier soundness, verifier completeness and the semantic legitimacy relation. Add a fixture where sound-but-incomplete verification leaves an obsolete norm in force.
+
+# 11. Prosecute occurrence identity versus content identity
+
+A rejected edit may introduce content `x`; later an independent legitimate edit may introduce the same content. We want illicit occurrence != later legitimate occurrence even when the contents are equal. Build: bad edit introduces policy P; descendants use the bad occurrence; later clean authority independently adopts P. Required: first lineage rejected, later clean occurrence legitimate. Do not poison content globally.
+
+# 12. Target a real No-Laundering theorem
+
+> If an authority-changing edit is rejected under audit context `alpha` and threat model `Xi`, then the authority occurrence it creates cannot become a valid legitimacy ground merely through downstream use.
+
+Test whether this follows from strict-prestate grounding, legitimate replay and occurrence identity, rather than from challenge-stability axioms. This should be a global theorem, not a definition.
+
+# 13. Target finite grounding as a certificate theorem
+
+For every legitimate authority occurrence derive a finite certificate tree whose leaves lie in `G`, whose internal nodes are `alpha`-valid historical edits, and whose children are the prior authority grounds of the edit, with historical time strictly decreasing. No unique issuance required; multiple valid derivations allowed. Compare this to the current `derivation` object and decide whether the latter survives.
+
+# 14. Target hidden-state noninterference
+
+Define the complete legitimacy-relevant view up to `t` and try to prove that two raw histories with the same view have the same legitimate state. Interpretation: hidden implementation state cannot change what is legitimately in force except by changing something that crosses a declared legitimacy interface. Authorized influence is allowed. The theorem should not require invariant outputs under legitimate persuasion. Add both positive and negative tests.
+
+# 15. Persistence theorem must be stated correctly
+
+Under a fixed audit context: `x in L^alpha_s` and no `alpha`-valid edit disposes `x` during `(s,t]` implies `x in L^alpha_t`. Separately, `alpha -> alpha'` may remove `x`. Do not conflate normative revision with revised legitimacy assessment.
+
+# 16. Revisit authority and norm as separate sorts/views
+
+Ensure the abstract interface can distinguish authority-bearing outputs from force-bearing/substantive normative outputs without consumer knowledge leaking into the theorem. Deference consumes `AuthorityView`; traderization consumes `NormView`.
+
+# 17. Re-run both consumers against the compressed theorem
+
+Deference: does the consumer now receive enough to establish that a future authority occurrence is in the valid closure of a base authority it recognizes, while allowing radically changed content, and rejecting raw future authority generated by an invalid edit? Preserve the finding that recognition transport is still an explicit consumer axiom.
+
+Traderization: define the enforcement target from `Norm(L^alpha_t)`, not raw standing. Test that illegitimate revocation leaves the norm in the target, legitimate revocation removes it, and later audit invalidation revises it. Retain the modular separation of legitimacy, accountability and serviceability; do not pull liability into the headline theorem.
+
+# 18. Re-evaluate the current challenge spine
+
+For each of L0-L4, `q |= x`, `Chal`, issuance stability, origin necessity and challenge bite, classify: still essential; realization-specific; replaced; optional strengthening; obsolete. Decide whether pre-state-blindness remains a global legitimacy assumption or whether its genuine content is captured by authorization/effect factorization. The branch's effect-identity prosecution showed changing exercise identity alone does not remove the problem; do not ignore that, and do not treat it as proof that challenge survival is the correct abstraction.
+
+# 19. Compression target
+
+Candidate local hypotheses: mediated explicit mutation; strict-prestate grounded authorization; permit/jurisdiction soundness for the exact edit; declared dependency/effect factorization; threat-relative provenance/exercise adequacy. Then prove a global package: finite grounding to the recognized base; no self-ratification; no laundering of rejected authority; hidden-state noninterference; persistence until valid disposition; unrestricted permitted substantive revision — relative to base `G`, authorization semantics `Pi`, threat model `Xi` and audit context `alpha`. The theorem should not claim to derive substantive moral correctness of `G` or `Pi`.
+
+# 20. Required countermodels
+
+Illegitimate revocation of a legitimate norm; legitimate authority with unauthorized jurisdiction; legitimate persuasion; hidden authorization dependency; hidden effect dependency; later audit discovery; rejected-authority laundering; independent readoption of identical content; sound but incomplete checker; two raw histories with the same declared legitimacy view.
+
+# 21. What counts as real mathematical content
+
+Do not count "only Valid edits affect the legitimate replay" as the headline theorem if that is true merely by definition. The theorem should earn finite grounding, no laundering and noninterference by induction/factorization from local hypotheses. The proof should contain a recognizable global step. If all global conclusions are definitional unfoldings, the compression has gone too far.
+
+# 22. Keep the realization boundary sharp
+
+The headline theorem must not mention `NormEvent`, `ReasonOcc`, `Settlement`, `AnsRoot`, Reflective Integrity, Carroll DR-MDP, Logical Induction, `PForce` or replay internals. Then separately ask whether Reflective Integrity realizes the hypotheses, and whether the warrant/register model can realize them without RI. If the non-RI realization becomes difficult after adding `Permit`, `ProvOK` and audit context, build a minimal independent office/constitution model rather than weakening the theorem to preserve the old fixture.
+
+# 23. Do not Lean-port
+
+Even if the current branch says a Lean port is recommended: **DO NOT LEAN-PORT THIS PASS.** A Lean port of the wrong abstraction would freeze provisional ontology.
+
+# 24. Deliverables
+
+Update the current round. At minimum revise `README.md`, `LEGITIMATE_EVOLUTION.md`, `CROSS_PROCESS_INTERFACE.md`, `CONSUMER_TEST.md`, `TRADERIZATION_CONSUMER.md`, `COUNTERMODELS.md`, `THEOREM_MAP.md`, `src/frame.py`, `src/ri_frame.py`, `src/warrant.py`, `tests/test_frame.py`. Add a dedicated document if useful, but prefer one compressed canonical theorem document over proliferating prose. Preserve old rejected rules/countermodels where they remain informative.
+
+# 25. Verdicts
+
+`LEGITIMACY-THEOREM-COMPRESSED` if: the raw lifecycle has been replaced or shown sufficient; the illicit-revocation case is handled correctly; legitimate authority is distinguished from authorization of the exact exercise; legitimate influence does not need outcome survival; audit time and historical time are handled coherently; dependency/effect factorization is precise and falsifiable; no-laundering is proved; finite grounding is proved; hidden-state noninterference is proved; both consumers work against the same abstract output.
+
+`LEGITIMACY-THEOREM-PROMISING-BUT-NOT-COMPRESSED` if the new direction is better but one ingredient remains unresolved.
+
+`CURRENT-SUCCESSION-SPINE-REMAINS-BEST` only if the alternate formulation is actually weaker, false, or collapses into tautology.
+
+`LEGITIMACY-ABSTRACTION-FAILS` if no nontrivial implementation-independent theorem survives without smuggling the desired conclusion into `Valid`.
+
+# 26. Final report
+
+Answer directly: 1. Does `F^leg = raw_live ∩ Derivable` fail under illegitimate revocation? 2. What replaces it? 3. One legitimate replay or an audit-indexed family? 4. What is the exact local `Valid` judgment? 5. Does a grounded licence suffice, or is `Permit` required? 6. What belongs in `InputOK` versus `ExerciseOK`? 7. Does the abstract theorem still need challenge survival? 8. What becomes of L3/L3'? 9. What is the dependency-factorization law? 10. What is the effect-factorization law? 11. What is the threat-relative provenance adequacy hypothesis? 12. Is `Valid` semantic, verifier-relative, or both? 13. Do consumers require verifier completeness? 14. What is the finite grounding theorem? 15. What is the no-laundering theorem? 16. What is the hidden-state noninterference theorem? 17. What is the persistence theorem at fixed audit context? 18. How does later audit information retract previously accepted legitimacy? 19. How is later clean readoption distinguished from laundering? 20. What does deference consume? 21. What does traderization consume? 22. Which current branch axioms survived unchanged? 23. Which became realization-specific? 24. Is pre-state-blindness still genuinely required? 25. Is the resulting theorem materially non-definitional? 26. Is the theorem short enough to be the compression target for the whole legitimacy line? 27. Is it stable enough for a later Lean port?
+
+# 27. Central standard
+
+> **Given a recognized base, explicit locally authorized normative edits, complete declared authorization dependencies, and provenance adequate to a stated threat model, every currently legitimate authority has a finite authorization lineage to the base; rejected authority cannot acquire legitimacy merely through downstream use; hidden implementation differences cannot change the legitimate state without crossing the declared legitimacy interface; and legitimate normative state persists until a valid edit changes it, while genuine content-changing learning remains allowed.**
+
+> **Reflective Integrity should realize the hypotheses. Deference and traderization should consume only the conclusions.**
+
+> **The theorem must say more than "the valid replay contains only valid edits." Its global content should be finite grounding, no laundering, and noninterference.**
+
+Treat the current branch as a strong provisional result, not as something to defend.

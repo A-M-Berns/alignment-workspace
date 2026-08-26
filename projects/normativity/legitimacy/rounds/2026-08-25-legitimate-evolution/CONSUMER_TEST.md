@@ -1,11 +1,11 @@
-# The first consumer: plugging it into the deference machinery
+# The first consumer: the deference machinery
 
 Status: **prosecution record; unregistered.** Cited by path against this branch's
-base, not from memory. `TRADERIZATION_CONSUMER.md` is the second consumer.
+base. `TRADERIZATION_CONSUMER.md` is the second consumer.
 
 ---
 
-## 1. What the consumer actually is
+## 1. The consumer, unchanged
 
 | statement | where | what it needs |
 |---|---|---|
@@ -13,170 +13,124 @@ base, not from memory. `TRADERIZATION_CONSUMER.md` is the second consumer.
 | `GradeTrust EX W eta` | same file, line 52 | `forall x pi. abs (EX x pi - W x pi) <= eta` |
 | `canCorrectFuture_iff`, `forecloses_iff` | `ReachableCorrectiveControl.lean:306,313` | a finite transition system with three input coordinates |
 
-Both are registered `lean-proved` in `projects/deference/CLAIMS.md`, the second
-**because it refutes its own round's protection claims**:
-`advisor_has_a_universal_veto` and `canCorrectFuture_measures_advisor_cooperation`
-(lines 1051 and 926) say the capability predicate measures the advisor's
-cooperation rather than the principal's control.
-
-Two documents say where the hole is, in the deference line's own words.
-
 `DelegationBridge.lean`'s docstring: grade trust "is the source's substantive
-hypothesis and it is imported, not derived — the source's §1.1 and §4 argue at
-length that no settlement instantiation in the skeleton produces it."
+hypothesis and it is imported, not derived". `FUTURE_AGENT_SPEC.md`'s status
+block: "**The cause is the signature, not the parameterisation.** ... **the
+authorisation relation has to be in the type.**" And: "Value drift is
+deliberately excluded."
 
-`projects/deference/notes/FUTURE_AGENT_SPEC.md`, whose status block is a
-diagnosis of a collapse: "**The cause is the signature, not the parameterisation.**
-Two authorisation regimes that induce the same realisation map `Ω → Π_n ⊔ {⊥}`
-are the *same object* in a model whose only outputs are such maps priced by one
-measure. No fourth parameter repairs that; **the authorisation relation has to be
-in the type.**" And, four questions later: "Value drift is deliberately excluded."
+## 2. The substitution, against the compressed interface
 
-## 2. The substitution, against the repaired interface
-
-`W : C -> P -> Q` carries **no index** — not a time, not a process, not an
-authority. The object to be substituted has nowhere to go, so the first result is
-a re-typing:
+`W : C -> P -> Q` carries no index. The re-typing is the same one the previous
+pass found, and the object filling it is now sharper:
 
 ```text
-                     W : C -> P -> Q                            current
-                     W : A -> C -> P -> Q                        required
-                     W_x  for the authority x in AuthorityView_s
+                     W : Occ -> C -> P -> Q
+                     W_o  for o in Auth(L(alpha, t))
 ```
-
-The repaired interface supplies the index and the time at which to read it:
 
 ```text
 CertifiedDelegation                                            (prospective)
 
-  Recognizes_A(G)                       A accepts a base
-  Xi                                    and a threat model
-  B |= LegitimacyInterface              B satisfies L0-L8
-  Coverage(B, Xi)                       B's challenges reach Xi
-  x in AuthorityView_s under B          x is legitimately live at s
-  (W-index)  W_x is a function of the authority in force
-  GradeTrust EX W_x eta
-  hp, and J pointwise W_x-maximal
+  Recognizes_A(G), Pi, Xi, alpha            what A accepts
+  B proposes a process satisfying H1-H6
+  o in Auth(L(alpha, t))                    the legitimacy premise
+  (W-index)  W_o is a function of the authority in force
+  GradeTrust EX W_o eta
+  hp, and J pointwise W_o-maximal
   -----------------------------------------------------------------
-  valuation p EX sel + gradeMargin p W_x J sel
+  valuation p EX sel + gradeMargin p W_o J sel
       - 2 * eta * disagreementMass p J sel   <=   valuation p EX J
 ```
 
-**The legitimacy fact appearing as a hypothesis is `x in AuthorityView_s`**, and
-it does one job: it makes `GradeTrust EX W_x eta` a proposition the advisor did
-not select. The bridge's inequality is already proved and legitimacy contributes
-nothing to it.
+**The legitimacy fact is `o in Auth(L(alpha, t))`**, and its job is unchanged: to
+make `GradeTrust` a proposition the advisor did not select. Four things changed
+about what it is worth.
 
-Three things the repair changed about what that hypothesis is worth.
+**It is a fact about a reconstructed state, not a filtered one.** The previous
+premise could be defeated by an attacker with no authority, because the raw
+process's lifecycle was a conjunct. It cannot now: an unauthorized revocation is
+a no-op.
 
-**It is stronger than the first pass's.** `G |- x` now requires every licence in
-the lineage to be derivable, not merely to survive. The first pass's version was
-satisfiable through an authority that survived a counterfactual while being
-entitled to nothing, which is exactly the manipulation the premise exists to
-exclude. `COUNTERMODELS.md` §1.
+**It rules out the exercise and not just the provenance.** `Permit` is a conjunct
+of `Valid`, so an authority used outside its jurisdiction issues nothing. The
+previous premise did not carry that.
 
-**It is relative to a threat model, and says so.** A deference theorem consuming
-`G |- x` without `Coverage` would be consuming a certificate against nothing.
+**It is indexed by an audit context**, so a recognizer that learns of an
+influence revises its premise rather than being stuck with a verdict taken once.
 
-**It is time-indexed.** `AuthorityView_s` rather than `G |- x` alone, so the
-premise is about the authority in force when the grade is read, and T4 is what
-says it does not silently lapse between dates.
+**It does not require the future authority to have survived a counterfactual**,
+so a principal who was argued into a revision still has one.
 
-**(W-index) is substantive and is not free.** It is the sharpened form of the
-August 17 interface's `H5`, grade factorization, and `grade_reads_outside` is that
-round's witness of a grade reading a field the protected object does not cover,
-flipping grade trust while every legitimacy clause stays silent.
+**(W-index) is substantive.** It is the August 17 interface's `H5` sharpened, and
+`grade_reads_outside` is that round's witness of a grade reading a field the
+protected object does not cover.
 
-## 3. What this buys over the August 17 interface
+## 3. What this buys over challenge-stability
 
-That interface supplied non-capture: `Coupled(a,b) and L(a) = L(b) => Z(a) = Z(b)`
-over a named advisor variation class.
+The comparison with the August 17 non-capture clause is unchanged and is in the
+previous pass's record. The comparison worth making now is with the round's own
+previous premise.
 
-**Checkability.** Non-capture is a semantic property of a variation class, and the
-procedural round established that no statistic of one realized trajectory
-determines it. `x in AuthorityView_s` is a property of one frame, one threat model
-and finitely many stability judgments. That is an improvement in what `A` could
-come to be entitled to, bounded by §3 of `CROSS_PROCESS_INTERFACE.md`.
+**Checkability improved again.** The old premise needed a stability judgment per
+edge, each costing a replay of the record under a voided episode, and the
+operator was neither monotone nor composable. The new one needs `ProvOK` on each
+edit's declared input — evaluable by the recognizer from the declared data.
 
-**Scope.** The Carroll round found non-capture's antecedent *false* on both
-laundering classes, because laundering runs through the reason channel and so
-changes the licensed-reason trace. Derivability fires there.
+**Coverage did not improve.** `ProvOK`'s adequacy to `Xi` is still an axiom.
 
-**Coverage, the other way.** Access and coverage survive as independent clauses
-catching things this interface does not — a withheld due reason is not a
-succession defect and no axiom of the spine sees it. The composition remains a
-conjunction.
-
-## 4. The corrigibility shape, and the hypothesis with no model
+## 4. Corrigibility
 
 ```text
 CorrigibleDeference                                            (prospective)
 
-  Recognizes_A(G), Xi, B |= LegitimacyInterface, Coverage(B, Xi)
-  x in AuthorityView_s under B
-  Trust:              GradeTrust EX W_x eta, (W-index)
+  Recognizes_A(G), Pi, Xi, alpha
+  o in Auth(L(alpha, t)) under B
+  Trust:              GradeTrust EX W_o eta, (W-index)
   EffectiveAuthority: the principal's corrective capability is preserved
                       under every advisor policy in scope
   -----------------------------------------------------------------
   A has no strictly dominant preemption on the protected domain
 ```
 
-The three inputs are the August 17 interface's own proposal, and the round can say
-which is missing: the third. `ReachableCorrectiveControl`'s registered refutations
-mean there is no formal object standing for `EffectiveAuthority`. Legitimacy does
-not supply it and this round does not attempt to — standing and effective causal
-access were separated by the relational-scorekeeping bridge and shown independent
-in both directions.
-
-So the corrigibility theorem is **statable and not provable**, and the obstacle is
-`PRIORITIES.md` item 22's fourth question: a protected-capability predicate
-quantifying the advisor universally.
+Statable and not provable, and the missing hypothesis is unchanged:
+`ReachableCorrectiveControl`'s registered refutations mean there is no formal
+object standing for `EffectiveAuthority`. Legitimacy does not supply it.
 
 ## 5. The negative test: pretend Reflective Integrity does not exist
 
-Delete `NormEvent`, `AnsRoot` and `ReasonOcc` from §2 and §4 and read what
-remains.
+**Can the consumer theorem be stated?** Yes. Every hypothesis is a condition on
+the process, and a constitution and its gazette satisfy them.
 
-**Can the consumer theorem still be stated?** Yes. Every hypothesis is a condition
-on the frame, and the warrant register satisfies them with no ledger anywhere.
+**Can the legitimacy premise be checked in principle?** Yes, and more cheaply
+than before. A grounding tree is finite; `Valid` at each node is `grounds`,
+`Permit` and `ProvOK`.
 
-**Can the legitimacy premise be checked or proved in principle?** Yes, and the
-cost is realization-dependent. A derivation is finite in every realization. The
-stability judgments are a reachability query in the warrant register and a replay
-in ours.
+**Does `A` need `B`'s internal representation?** For the interface, no. **And now
+substantially less for the realization** — `ProvOK` reads declared inputs rather
+than replaying the record. `A` still needs the declared data, which is not
+nothing, and route 3 of `CROSS_PROCESS_INTERFACE.md` §3 remains a trust
+assumption when `A` will not hold it.
 
-**Does `A` need to know `B`'s internal representation?** For the interface, no.
-**For our realization's stability oracle, yes** — the honest answer is not the
-desired one, and it is unchanged by this pass. `A` must hold `B`'s record,
-challenge it interactively, or accept an attestation.
+**Does `A` need to endorse the content?** No.
 
-**Does `A` need to endorse `B`'s future normative content?** No.
-
-Three of four, with the third qualified rather than met — and the qualification is
-a fact about this realization, not about the interface, which is the distinction
-the abstraction exists to make visible.
+Three of four cleanly, and the third improved from *no for the interface, yes for
+our oracle* to *no for the interface, and the realization now needs declared data
+rather than the whole record*.
 
 ## 6. What the deference line would have to change
 
-Unchanged by this pass, and still one field and one hypothesis.
-
-1. **`W` acquires an index.** `W : A -> C -> P -> Q`, read off the authority in
-   force. `valuation`, `gradeMargin`, `disagreementMass` and both theorems take
-   `W` as a parameter and never inspect it, so nothing in the file is revised.
-2. **(W-index) is stated as a hypothesis.** That the principal's grade is a
-   function of the authority in force, and not of anything the advisor can write
-   beside it.
+Unchanged, and still one field and one hypothesis: index `W` by the authority in
+force, and state that the grade is a function of it. Neither revises a registered
+statement.
 
 ## 7. What this test does not establish
 
-That `W` tracks anything worth tracking. `FINITE_MODEL_SKELETON.md` §8.5 declares
-"**The relation between `v⁺` and `X`** — none", and legitimacy cannot supply it:
-that is a claim about the principal's competence about the world.
+That `W` tracks anything worth tracking — `FINITE_MODEL_SKELETON.md` §8.5
+declares "**The relation between `v⁺` and `X`** — none".
 
-That the re-typing is enough. It makes the premise statable; whether the resulting
-theorem is worth proving depends on the grade-to-quantity link the programme
-decided to derive rather than assume, which is `PRIORITIES.md` Q2.
+That the re-typing is enough; whether the resulting theorem is worth proving
+depends on the grade-to-quantity link, which is `PRIORITIES.md` Q2.
 
-That `A` can come to be entitled to the stability judgments, as against a theorem
-consuming them. That is the epistemic lifting problem and it is where the August
-17 interface left it.
+That `A` can come to be entitled to the provenance judgments, as against a
+theorem consuming them.

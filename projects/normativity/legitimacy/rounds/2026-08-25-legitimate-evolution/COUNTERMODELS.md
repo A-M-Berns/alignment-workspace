@@ -1,242 +1,213 @@
 # Prosecuting the hypotheses
 
-Status: **prosecution record; unregistered.** Every entry names the frame that
+Status: **prosecution record; unregistered.** Every entry names the process that
 decides it and the test that runs it.
 
-Six of the eight sections below settle a question the round's first pass got
-wrong or left open, and three of them were decided by a register of offices
-rather than by a record, because Reflective Integrity's admission preconditions
-make the alternatives indistinguishable inside our own architecture.
+The first five sections each replaced something the round had already shipped and
+tested. Three of them were decided by a constitution and its gazette rather than
+by a record, because Reflective Integrity's admission preconditions make the
+alternatives indistinguishable inside our own architecture.
 
 ---
 
-## 1. The licence had only to be stable, and that refuted the headline theorem
+## 1. The legitimate state cannot be the raw lifecycle filtered
 
-**`warrant.stable_but_illegitimate_register`.**
-
-```text
-act:plant     challenged; grants w:tainted
-act:launder   clean findings, under the charter; supersedes w:tainted by w:m
-act:use       under w:m; grants w:y
-```
-
-`w:m` **survives** the challenge — the act that granted it relies on nothing void
-— and is **not** derivable, because it inherits from `w:tainted`. The first
-pass's rule required a licence only to satisfy `q |= lic(t)`, so:
+**`office.rogue_revocation`.** A norm is issued cleanly. A doubted act grants a
+rogue authority. An act under that rogue authority revokes the norm.
 
 ```text
-rejected rule    w:y is derivable,      and bootstrapped_under is non-empty
-repaired rule    w:y is refused,        and thm_no_bootstrap is clean
+the rogue authority   never legitimate          — correctly refused
+the raw process       has removed the norm
+raw ∩ derivable       has removed the norm      — wrong
+legitimate replay     keeps the norm            — right
 ```
 
-This is a refutation and not a proof gap. On the frame above, every axiom of the
-spine holds and **T2's conclusion is false**: `w:tainted` sits in `w:y`'s
-provenance and was issued by a challenged exercise. The first pass's proof step
-"each such `z` is itself derivable" was unavailable for a licence, because
-derivability recursed only through parents while provenance ran through licences
-too.
+The previous object was `F^leg = live[s] ∩ Derivable`, and it lost the norm
+because *something* in the raw process removed it. Its persistence theorem
+reported no violation while this happened, because the theorem's hypothesis was
+"no exercise acts on it" and an exercise did — one with no legitimate authority
+at all.
 
-**The repair** is that the licence is a *ground*: `grounds(t) = parents(t) ∪
-{lic(t)}` and derivability requires all of it. Stability of the licence then
-follows from T2a rather than being assumed, so the repaired rule has one clause
-fewer, not one more.
+So the previous branch established **persistent until something changes it**, not
+*persistent until legitimately changed*, and for the enforcement consumer that is
+the difference between a target and a suggestion: an attacker with no authority
+could remove a norm from what gets enforced.
 
-`frame.derivable_stable_licence` keeps the rejected rule so the two run side by
-side, and `TestTheLicenceMustBeDerived` runs them.
+The repair is to reconstruct rather than filter. A rejected edit is a **no-op**,
+so a revocation nobody was entitled to make does not remove anything.
 
-**Stable-but-illegitimate objects are wanted, not excluded.** `w:m` is exactly
-such an object and the interface's job is to refuse what it licenses. A
-recognizing process must not inherit authority merely because the authority
-survived a counterfactual, and this register is where that sentence has a truth
-value.
+## 2. A grounded authority is not an authorized exercise
 
-## 2. Acting on a standing is not inheriting from it
-
-**`warrant.cleanup_register`.** A regulator revokes a fraudulent warrant and
-grants a proper one:
+**`office.unauthorized_scope`.** `w:fiscal` is granted cleanly and holds only over
+fiscal matters. The act using it to legislate on safety has impeccable grounds
+and impeccable provenance.
 
 ```text
-act:cleanup     revokes w:tainted, inherits from nothing, grants w:proper
-act:relaunder   inherits from w:tainted,                  grants w:carried
+grounds ⊆ Auth(L)     true
+ProvOK                true
+Permit                false
 ```
 
-`w:proper` is derivable and `w:carried` is refused. Under the first pass's rule —
-where the objects acted on were the legitimacy parents — the cleanup produced an
-illegitimate successor, which is the wrong answer: a legitimate authority ending
-an illegitimate standing is doing the thing one wants it to do.
+The previous calculus admitted it. It required an exercise's licence to be
+derivable and never asked what the licence was *for*, so it established authority
+provenance and not legitimacy of the particular exercise.
 
-So the type splits. `affected(t)` is what the exercise acts on and constrains
-nothing; `parents(t)` is what its issue inherits from and must be derivable.
+`Permit(L, B, I, e)` is the narrowest repair: a parameter the interface requires
+be consulted, able to express jurisdiction, scope, consent conditions, amendment
+rules and procedural conditions, and saying nothing itself about what any of them
+should be.
 
-**The record calculus can express both**, and `cases.record_cleanup` is the
-witness: a revocation acts on the tainted standing and issues nothing, and a
-separate creation issues under a seeded authority and inherits from nothing. In
-Reflective Integrity a `Supersede` that issues does inherit from what it
-supersedes — `pred(y) = X` is the lineage — so a cleanup is two events, and that
-is a fact about the record calculus rather than a limitation of it.
+**Where this bites the realization.** Reflective Integrity's `PAuth` carries a
+`SchemaCode` and no domain, so `permit` is the identity on a record whose
+authority is a bare `PAuth`. That is a gap in the architecture the abstraction
+exposes, and `LEGITIMATE_EVOLUTION.md` §8 names it rather than letting H4 look
+discharged.
 
-**All of `parents`, not one of them.** `warrant.merge_register` is unchanged from
-the first pass and still decides it: an act inheriting from a manufactured
-warrant and an earned one, relying only on clean findings, is refused under
-all-of and admitted under one-of. The Reflective Integrity realization cannot see
-this — `G6` refuses a supersession with an absent target — which is why the
-register exists.
+## 3. Legitimate influence does not require outcome survival
 
-## 3. Unique issuance is optional, and the theorem had to move to make it so
+**`office.persuasion`.** Alice has authority to revise policy. Bob argues. Alice
+revises, relying on the argument. Remove the argument and the edit does not
+happen.
 
-**`warrant.two_issuers_register`.** Two chanceries and no central roll: `w:dual`
-is entered by each, once on a challenged finding and once cleanly.
+Under challenge survival that counts against the edit. Under the local judgment
+it counts for nothing: the question is whether prior legitimate authority
+permitted this exact edit given this declared input, and it did.
+
+This is a **strict reduction in what the theory refuses**, and it is the one the
+Carroll round predicted when it called its criterion "conservative in the
+direction of refusing". A legitimacy theory that cannot let an agent be persuaded
+is not describing the learning the programme exists to describe.
+
+**What it costs.** A counterfactual test can in principle notice a dependence the
+record does not declare; a declared-input test cannot. **H5** is the hypothesis
+that makes that safe, and §6 is where it fails.
+
+## 4. Rejected authority never rehabilitates, and identical content is not poisoned
+
+**`office.laundering`.** A doubted grant used downstream three times. Nothing is
+accepted; the legitimate state is the base.
+
+**`office.readoption`.** The same policy content proposed twice — once under the
+doubted grant, once by the charter on a clean finding. The first occurrence is
+never legitimate; the second is; the content is untouched.
 
 ```text
-L2'                     fails
-thm_finite_lineage      clean
-w:dual, w:downstream    derivable, by the clean route
-provenance(w:downstream)  contains the challenged issuer
-the derivation           does not
+illicit occurrence   n1.0    rejected
+clean occurrence     n2.0    legitimate
+same content         n:P     both
 ```
 
-The first pass claimed L2' bought only canonicity while `minted_by` raised on a
-second issuer and `provenance` and the no-bootstrap theorem both ran through it.
-That claim was not false so much as untested, and the register tests it.
+This is why the ontology is occurrences. A theory tracking contents would have to
+either poison `n:P` globally — refusing later independent adoption, which is the
+learning case again — or let downstream use rehabilitate it.
 
-Three repairs. `minted_by` returns the first issuer rather than raising, so an
-existential theorem cannot lean on uniqueness. `provenance` closes over **every**
-issuer, which is the right object for T1 — a claim about the whole graph being
-well founded. And **T2 is stated over a derivation**, not over the provenance,
-because on this register the union contains a challenged issuer while the
-authority is perfectly legitimate.
+## 5. Unique issuance dissolves
 
-So the separation is real:
+The previous branch spent a section on whether lineage existence needs unique
+issuance, built a two-chancery register to separate existence from canonicity,
+and restated the no-bootstrap theorem over derivations to avoid it.
+
+Under occurrence identity there is nothing to separate: an occurrence carries the
+index of the edit that issued it, so two edits cannot issue one occurrence and no
+axiom says so. **H2** reports any attempt, and
+`TestTheCompressionIsNotDefinitional` breaks freshness deliberately to check that
+it is doing work.
+
+The earlier register has no analogue to build, which is the cleanest evidence
+that the earlier question was an artefact of the earlier object.
+
+## 6. Factorization, and the two ways it fails
+
+**Admission.** `office.hidden_admission_pair` — one gazette, two constitutions,
+a hidden variable the gazette does not report and the validity rules consult. The
+declared views agree at every step and one replay admits the act while the other
+refuses it.
+
+**Effect.** `cases.partial_effect_pair` — two records of the same length, same
+`tau`s, same authority, same witness, same cited reason, same cited settlement.
+They differ only in an **uncited** settlement, and the minting schema reads it, so
+one issued occurrence carries a different payload.
 
 ```text
-without L2'   every authority has at least one finite lineage to G   (T1)
-with L2'      the provenance is determined by the target              (T1')
+declared views       identical at every step
+verdicts             identical
+effects              differ
 ```
 
-and L2' is out of the checked spine.
+Both are refused by **H5**, and the positive control `office.clean_pair` passes.
 
-## 4. Exercise identity relocates the hypothesis rather than removing it
+**This is the general form of the pre-state condition.** The previous branch
+concluded that pre-state-blindness was required under either exercise identity
+and treated it as a fact about schemas. It is not about the pre-state: the defect
+is reading state the record does not **declare**. A schema may read the whole
+pre-state provided the edit declares what it read; a schema reading one uncited
+settlement breaks the theorem. That reformulation is what makes the hypothesis
+falsifiable rather than a coding standard.
 
-**`cases.partial_effect`.** One `Create`, two payloads, and only the second reads
-the strict pre-state — it names the number of reasons on the ledger. Excising an
-episode that contributed a reason changes the effect and leaves the first payload
-alone.
+## 7. Two failures of provenance that are not one
+
+**`office.forged_input`** — the declared information is a forgery. `InputOK`
+fails, `ExerciseOK` holds.
+
+**`office.coerced_exercise`** — the information is authentic and the act was made
+under duress. `ExerciseOK` fails, `InputOK` holds.
+
+Both are refused and they fail different clauses. The interface fixes neither
+answer: a constitution may declare that coercion does not invalidate, and the
+theorem accepts it. What is required is that whatever the rules treat as relevant
+to authentic exercise crosses the interface.
+
+## 8. Coverage is still a hypothesis nobody discharges
+
+**`office.laundering` at a context that doubts nothing** accepts everything and
+certifies the manufactured permit. The threat model refuses it:
 
 ```text
-identity = "event"     L3  fails at @s5.1     L3' clean
-identity = "effect"    L3' fails at @s5.0     L3  clean
+Xi = { xi:campaign -> the edits it produced }
+H6 adequacy   uncovered influence
 ```
 
-`C28` alone would have suggested effect identity is free: it fails L3 under event
-identity and satisfies the whole spine under effect identity. `partial_effect` is
-the record that shows the general case, and both failures are the same defect
-seen from two sides.
+and the audited context covers it.
 
-**Both are discharged by pre-state-blindness**, checked rather than declared by
-rerunning each schema against a truncated pre-state. So the first pass's
-hypothesis was not an artefact of a coarse map; it is the record-level condition
-that makes the challenge operator's action on effects determinate.
+A record's own declared episodes generate a threat model its provenance covers by
+construction. That is the ceiling on self-certification, and it is unchanged by
+this pass: nothing here computes `depends`, and a recognizer worried about an
+influence the record does not record must supply its own threat class, against
+which the record may simply fail.
 
-The identity is therefore chosen on external semantics. *If the same act is
-replayed but produces a different authority-changing effect, did the same
-legitimacy-relevant exercise survive?* No — so effect identity is the default,
-and the round records that this buys a repaired `C28` and no hypothesis.
+## 9. Soundness is not enough for one of the two consumers
 
-## 5. Coverage: a structurally perfect frame that certifies a captured warrant
-
-**`warrant.undercovered_register`.** A capture grants a warrant, the warrant
-grants a permit, and the register challenges nothing.
+**`office.repealable`** with a checker that declines one valid edit.
 
 ```text
-spine violations      {}
-challenges            ()
-derivable_everywhere  every warrant, including the captured one
+missed a valid issuance    the norm is absent   — conservative, and safe
+missed a valid repeal      the norm is present  — an obsolete norm is enforced
 ```
 
-Every axiom holds, vacuously, and the calculus certifies the thing anyone would
-have wanted it to refuse. The first pass carried this as a prose caveat; it is
-now a hypothesis with a type.
+So the consumers have different requirements. Recognition can run on a sound
+under-approximation: it will refuse to recognize things it should have
+recognized, which is a cost and not a hazard. Enforcement cannot: the
+under-approximation *keeps* things in the target, and a missed repeal is force
+applied without entitlement.
 
-```text
-ThreatModel = (Xi, depends)
-Coverage    :  forall xi. exists q. depends(xi) subset Chal(q)
-```
+**`Valid` is semantic and `Verify` is a checker**, and the interface keeps them
+apart for exactly this reason. `verifier_sound` and `verifier_complete` are
+separate functions and `missed_disposals` is the one enforcement must watch.
 
-`certified_against` returns the empty set when coverage fails, and `certify`
-returns no certificate at all — a certificate against an uncovered threat is not
-a weaker certificate. The same threat model against `laundered_register`, which
-does challenge the influence, certifies the charter and refuses the permit.
+## 10. What no entry above claims
 
-**What this does not do.** `depends` is supplied from outside and nothing here
-computes it. A record's own declared episodes generate a threat model its
-challenge set covers by construction, which is the honest ceiling on
-self-certification and is not a solution to provenance completeness. The Carroll
-round's `C25` — two episodes with no reference reaching each other — is
-unaddressed and is now visibly a failure of `depends` against `Chal` rather than
-a vague caveat.
+That the hypotheses are correct. Each is a condition the round wrote, and the
+substantive normative content sits in `Permit` and `ProvOK`, which are parameters
+the interface does not constrain.
 
-## 6. Answerability, and the countermodel that kept it out of the spine
+That the theorems are deep. G3 is a short induction whose work was done by
+choosing occurrences over contents; G5 is two lines. The defence is that they
+were *false or missing* in the previous object, that each fails when its
+hypothesis is dropped — checked — and that G1 and G4 are genuine inductions over
+the edit history.
 
-**`cases.delegated_custody(answered=False)`**, unchanged from the first pass, and
-now also **`warrant.unanswered_delegation_register`** so the same shape exists in
-a frame with no record.
+That coverage is solved. §8 is the largest remaining hole and it survives every
+reformulation this round has tried.
 
-```text
-spine violations             {}
-derivable everywhere         the delegated authority is in it
-continuity at the base       False
-outstanding below the base   the disposed episode, forever
-```
-
-Every authority-side clause holds; only the holder moved and only the account is
-outstanding. Adding answerability continuity to the succession relation would
-refuse a case in which nothing about the authority is wrong.
-
-What the account layer earns instead is two constructors the authority graph
-cannot express — delegation issues nothing, disposal has no successor — and T5,
-the only clause of the interface that can fail with the authority side clean.
-
-**The traderization consumer does not change this**, and `TRADERIZATION_CONSUMER.md`
-§4 is why: what it needs is bounded liability, which is a third thing again.
-
-## 7. Where a suspension is not an edge
-
-`SetStatus` writes neither `pred` nor a fresh identifier, so a suspension and a
-reactivation make no authority edge. It is an `affected` with empty `parents` and
-empty `tgt`, and it moves the lifecycle view without moving derivability — which
-is the right answer, since suspending an authority does not unmake its
-entitlement.
-
-The Carroll round's consequence stands: excising *more* can restore a suspended
-authority and with it a later event's admissibility, which is why the challenge
-operator is not monotone. The frame does not repair that and does not need to,
-because `derivable_everywhere` intersects per-challenge verdicts and never
-excises a union.
-
-## 8. The strongest counterexample that survives
-
-Provenance incompleteness, now stated as a coverage failure rather than as prose.
-An external process can satisfy L0-L8 with a `depends` its `Chal` does not reach,
-and the interface will certify it. `Coverage` makes the hypothesis explicit and
-does not discharge it; nothing in this round says how a process comes by an
-adequate challenge set, and the answer is not available from a record
-counterfactual.
-
-Second, and smaller: the account layer remains Reflective Integrity's
-answerability structure with the names changed. `warrant.py` realizes it, but the
-realization was written to match rather than found independently, so it is the
-one part of the interface whose abstraction is not tested by a system that had
-its own reasons for the same shape.
-
-## 9. What no entry above claims
-
-That the spine is minimal. L2' is out; nothing shows the remaining six cannot be
-merged further, and L5-L8 are four axioms doing bookkeeping that a better
-factorization might do with two.
-
-That the interface has no counterexample. It has fifty-six checks the round
-wrote, against axioms the round wrote, in two realizations the round wrote. The
-evidence that the exercise was adversarial is §§1-4, where a review's diagnosis
-refuted a shipped theorem, a register refuted a shipped design decision, a
-register refuted a shipped claim about what an axiom buys, and a new record
-refuted the round's own first reading of what the identity repair would achieve.
+That the account layer has been re-examined. It left the headline in the previous
+pass and this pass did not put it back or test it further.
