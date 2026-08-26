@@ -877,6 +877,23 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-25-carroll-legitimacy-test/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-25-legitimate-evolution",
+      "date": "2026-08-25",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution",
+      "verdict": "LEGITIMATE-EVOLUTION-CONSUMABLE — an implementation-neutral succession frame whose axioms a register of offices satisfies with no ledger, a realization theorem placing Reflective Integrity inside it under one named hypothesis, and a global anti-bootstrap theorem derived from step-local obligations; recognition transports across content change and breaks under laundering, and one field on the deference kernel's grade stands between the interface and a consumption.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/README.md",
+      "depends_on": [
+        "2026-08-25-carroll-legitimacy-test",
+        "2026-08-24-reflective-integrity-core",
+        "2026-08-25-end-to-end-vertical-slice",
+        "2026-08-17-counterfactual-legitimacy"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-25-legitimate-evolution/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

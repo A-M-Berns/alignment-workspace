@@ -12,4 +12,6 @@ current fixture results. Future legitimacy rounds land under `rounds/`.
 - Role-parametric answerability prosecution: `rounds/2026-08-22-role-parametric-answerability/`
 - Afoundational inquiry interface prosecution: `rounds/2026-08-23-afoundational-inquiry/`
 - Reflective Integrity Core v1.0: `rounds/2026-08-24-reflective-integrity-core/`
+- The succession frame and cross-process recognition:
+  `rounds/2026-08-25-legitimate-evolution/`
 - Interpretation and philosophical gloss: [Legitimacy wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Legitimacy)

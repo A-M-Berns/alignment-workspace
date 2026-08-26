@@ -1071,6 +1071,75 @@ states exactly which of its functions must newly read `V`.
 *Consumed by:* the round taking these waists to real normative practice, which is
 where open-textured reasons first arrive.
 
+### 66. The succession frame in Lean — **[entry]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The abstract legitimacy interface is finite, first-order, and has no dependency on
+either reference model or on Reflective Integrity. Eight pieces of data, seven
+axioms, and four theorems whose proofs are well-founded inductions on a rank. It
+is the smallest thing in this line that could carry a statement of record, and
+porting it would be the first time the legitimacy work had one.
+
+*Deliverable shape:* `Frame`, the spine as hypotheses, and `derivable` as an
+inductive; `thm_finite_lineage` and `thm_no_bootstrap` proved; an inhabitation
+witness for the full hypothesis package, per `AGENTS.md` standard 3.
+*Acceptance check:* sorry-free, `#print axioms` clean, and the witness is the
+warrant register rather than a record — the point is that the theorem does not
+mention one.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/LEGITIMATE_EVOLUTION.md`
+§§2-5; `src/frame.py`.
+*Consumed by:* any round wanting to cite legitimate evolution as established
+rather than as test-supported, and by the consolidation that would follow it.
+
+### 67. A challenge-response protocol for the counterfactual clause — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+A derivation compresses and the stability judgments it rests on do not: in the
+Reflective Integrity realization a positive survival witness for one exercise is
+the excised prefix that admits it, and the operator is neither monotone nor
+composable, so nothing smaller is available. A recognizing process must therefore
+hold the whole record, or challenge and be answered, or accept an attestation and
+record that as trust.
+
+The second is the one the architecture already has a shape for. An anti-bootstrap
+demand is a demand on an account, and challenge and review roots are named in
+Reflective Integrity §32 as a conservative extension by new `DemandCode` values.
+Nothing builds it.
+
+*Deliverable shape:* the demand, what a response must cite, and a soundness
+statement relating a discharged challenge demand to the stability judgment it
+stands for.
+*Acceptance check:* the laundering fixtures run against the protocol, and a
+response citing less than it requires fails with a named code.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CROSS_PROCESS_INTERFACE.md`
+§3; `.../2026-08-24-reflective-integrity-core/REFLECTIVE_INTEGRITY_CORE.md` §32.
+*Consumed by:* any round claiming a second process can check legitimacy without
+holding the first's record.
+
+### 68. Challenge coverage as a condition, not a hypothesis — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The succession frame's axioms constrain the *form* of a legitimacy calculus and
+not its *coverage*: a process satisfying every one of them with a challenge set
+naming almost nothing is certified. In the record realization that is the
+completeness condition the Carroll round already states — every settlement an
+episode caused refers to the settlement that caused it — and abstraction has made
+it the interface's largest hole rather than one implementation's.
+
+*Deliverable shape:* either an axiom on `Chal` that a defective challenge set
+fails and an adequate one passes, or an argument that no such condition is
+statable without a world counterfactual, with the counterexample.
+*Acceptance check:* the unlinked arm of the split-episode fixture fails the
+proposed condition and the linked arm passes it.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§7; `.../2026-08-25-carroll-legitimacy-test/CRITERION.md` §6, `C25`.
+*Consumed by:* any round treating a certified lineage as evidence about an
+external process rather than about its own record.
+
+
 ---
 
 ## Deference line

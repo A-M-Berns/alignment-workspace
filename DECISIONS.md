@@ -95,7 +95,63 @@ commit.
   *Turns on:* where the program is going — this is *what is worth proving*, which
   no round decides.
 
+- **Whether the deference kernel's grade acquires an index.** `GradeTrust` types
+  the principal's grade as `C -> P -> Q` with no time, process or standing on it,
+  so the legitimacy premise a cross-process deference theorem would consume has
+  nowhere to attach. The change is one field — `W : A -> C -> P -> Q` — plus a
+  stated hypothesis that the grade is a function of the authority in force, and
+  it revises no registered statement, since `delegation_bridge` is proved for
+  every `W`. Read
+  `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CONSUMER_TEST.md`
+  §§2 and 6. *Turns on:* whether the deference line is being restarted, and what
+  a paper needs. It is a specification-layer edit in a paused line, and the round
+  has no evidence about either.
+
 ## Settled
+
+### 2026-08-25 — answerability continuity is not a conjunct of legitimate succession
+
+**agent-decided, reversible.** A record in which an authority is transferred to
+another principal under a licensed schema, and the episode the transfer ended is
+never answered, satisfies every authority-side condition: the standing keeps its
+identifier, its payload and its predecessors, because `applyEffect` is the
+identity on a `Transfer`, and it is derivable against every challenge. Only the
+holder moved, and only the account is outstanding.
+
+Adding answerability continuity to the succession relation would refuse that
+case, in which nothing about the authority is wrong. The account layer is
+therefore separate data with its own two axioms, and a recognizing process that
+wants an answerable counterparty reads it as a second condition rather than
+getting it inside the first.
+
+*Rejected alternative:* a single relation conjoining the two, which is what the
+dispatch's §4 proposed as a candidate ingredient.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§4.
+
+### 2026-08-25 — derivability requires all of an exercise's sources
+
+**agent-decided, reversible.** An exercise that supersedes several authorities at
+once inherits from all of them, so the successor is certified only when every
+source is. The alternative — one certified source suffices — admits a successor
+of a manufactured authority and an earned one whenever the merging act itself
+survives the challenge.
+
+The decision could not be taken inside this repository's own architecture:
+Reflective Integrity's `G6` refuses a supersession whose target is absent, so a
+merge whose sources do not all survive is inadmissible anyway and the two rules
+agree everywhere. A register of offices and appointments, which has no such
+precondition, separates them and is what settled it.
+
+*Rejected alternative:* existential inheritance, under which a lineage through
+the clean half of a pair carries the pair.
+
+*Record:*
+`projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/COUNTERMODELS.md`
+§5.
+
 
 ### 2026-08-25 — the enforcement charge is the safety layer's own quantity
 
