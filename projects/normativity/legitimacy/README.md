@@ -21,4 +21,6 @@ current fixture results. Future legitimacy rounds land under `rounds/`.
   generated them: `rounds/2026-08-28-answerable-revision/`
 - Answerable challenge service — the layer below promotion, and whether an open
   criticism can be starved: `rounds/2026-08-28-answerable-challenge-service/`
+- Bounded service and the coverage boundary — deriving the service premise, and
+  formalizing coverage beside it: `rounds/2026-08-28-service-realization/`
 - Interpretation and philosophical gloss: [Legitimacy wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Legitimacy)
