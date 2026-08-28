@@ -228,8 +228,45 @@ scan in `tests/run.py` does not see it; it is not an `axiom` declaration, so
 `…poison_native_decide._native.native_decide.ax_1_1` — is minted by the compiler
 and written in no source file, so nothing reading the source could see it at all.
 
-On that commit: **`lake build` green, `tests/audit_axioms.py` green,
-`conservativity` green, `tests/replay.py` green, `tests/blanket_axioms.py` red.**
+All five gates on that one commit, from the `lean` job's log:
+
+```
+AXIOM AUDIT: 755 results across 48 files, all within ['Classical.choice', 'Quot.sound', 'propext']
+
+BLANKET AXIOM AUDIT FAILED:
+  - Workspace.Deference.Contrib.StaticViewFactorization.poison_native_decide
+      depends on ['….poison_native_decide._native.native_decide.ax_1_1']
+      outside ['propext', 'Classical.choice', 'Quot.sound']
+BLANKET AXIOM AUDIT: 3116 declaration(s) under 'Workspace', axioms used:
+  ['propext', 'Classical.choice', 'Quot.sound',
+   '….poison_native_decide._native.native_decide.ax_1_1']
+
+REPLAY: the live fixture was rejected — leanchecker still refuses
+  Fixture.Unchecked.falseThm, a theorem of `False` the elaborator accepted.
+REPLAY: 50 module(s) replayed, covering all 48 committed source module(s);
+  the kernel accepted every declaration.
+```
+
+Build green, `conservativity` green, `tests/audit_axioms.py` green, replay green,
+**blanket audit red**. Note the axiom name: it exists only in the compiled
+environment, which is why the gate that reads the environment is the one that
+finds it.
+
+The same fixture in the sibling repository, on `poison/faf-native-decide`, one
+`native_decide` theorem appended to `APITests/CartesianFrames.lean`:
+
+```
+condensation sorry ledger: OK — 0 sorry-dependent declarations, all ledgered
+BLANKET AXIOM AUDIT FAILED:
+  - APITests: poison_native_decide depends on
+      ['poison_native_decide._native.native_decide.ax_1_1'] outside […]
+KERNEL REPLAY: the kernel accepted every declaration in all 273 replayed module(s).
+```
+
+The build, all seven node checkers, `AxiomAudit.lean`'s enumerated inventory and
+`check_sorry_ledger.py` are green on that commit. This is the pair the dispatch
+asked for: the existing audit green and the new blanket gate red, on the same
+commit.
 
 A note on the fixture's own history, because it is the better half of the story.
 The first revision of it explained in prose that the declaration "is not a
@@ -243,15 +280,18 @@ Branch `poison/ws-unchecked-declaration`, pull request 66, never merged.
 `lean4checker`'s own `AddFalse` fixture, adapted: a `.thmDecl` whose type is
 `False`, pushed into the environment with `doCheck := false`.
 
-On that commit, from the CI log:
+All three gates on that one commit, from the `lean` job's log:
 
 ```
 AXIOM AUDIT: 756 results across 48 files, all within ['Classical.choice', 'Quot.sound', 'propext']
-```
 
-```
+BLANKET AXIOM AUDIT: 3115 declaration(s) audited across the whole library,
+  all within ['propext', 'Classical.choice', 'Quot.sound']
+  — axiom-audit v0.1.2 (46024e005996495c65ef609368e11ab39c4222e3)
+
 REPLAY FAILED:
   - leanchecker exited 1
+  - 8 committed module(s) were not replayed: [… the eight the run never reached]
     replaying Workspace.Deference.Contrib.StaticViewFactorization
     leanchecker found a problem in Workspace.Deference.Contrib.StaticViewFactorization
     uncaught exception: while replaying declaration
@@ -261,6 +301,11 @@ REPLAY FAILED:
     but it is expected to have type
       False
 ```
+
+Build green, both axiom gates green, **replay red** — and note the second
+finding, which is the module-count assertion doing its own job: the checker died
+part-way, so eight committed modules were never replayed, and that is reported as
+a failure in its own right rather than left implicit in the exit code.
 
 The elaborator emitted `'…poison_false' does not depend on any axioms` during the
 build, which is what the axiom audit reads. A theorem of `False` in the
@@ -351,13 +396,13 @@ from the Actions API.
 
 **Formalized-Agent-Foundations**, branch `demo/faf-gates-run`, the `build` job:
 
-| step | warm |
-|---|---|
-| Free runner disk space | 85 s |
-| Build (`lean-action`, all default targets) | 109 s |
-| Condensation sorry ledger | 7 s |
-| **Kernel replay** | **408 s** — 273 modules across 11 roots |
-| **Blanket axiom audit** | see below |
+| step | warm | note |
+|---|---|---|
+| Free runner disk space | 61 s | pre-existing |
+| Build (`lean-action`, all default targets) | 131 s | warm GitHub cache |
+| Condensation sorry ledger | 8 s | pre-existing |
+| **Blanket axiom audit** | **33 s** | 28 627 declarations across 11 roots |
+| **Kernel replay** | **305 s** | 273 modules |
 
 **Verdict against the ~10 minute budget: both stay in the pull-request path in
 the workspace.** Replay adds 57 seconds warm, an order of magnitude under budget,
@@ -372,11 +417,14 @@ environment once. That is not a reason to replace the per-file audit — it answ
 a different question and this round does not touch it — but if the `lean` job's
 wall time ever becomes the constraint, that is where the time is.
 
-In Formalized-Agent-Foundations replay costs 408 s, which is why the schedule
-there is push-and-nightly rather than per-pull-request even though it would fit:
-that repository's pull-request path already carries a build measured in minutes
-when the cache misses, and its protection on a pull request is the build, seven
-node checkers, the enumerated inventory and the sorry ledger.
+In Formalized-Agent-Foundations replay costs 305 s over 273 modules — five
+minutes, still inside the dispatch's budget, and the schedule there is
+push-and-nightly anyway because the dispatch asked for the lighter schedule and
+because that repository's pull-request path already carries a build measured in
+minutes when the cache misses. Its protection on a pull request is the build,
+seven node checkers, the enumerated inventory and the sorry ledger. The blanket
+audit at 33 s would have been affordable per-pull-request; it is scheduled with
+replay so that the two verdicts always come from the same commit.
 
 ---
 
@@ -406,7 +454,29 @@ direction that corresponds to something being unverified.
 
 ### Formalized-Agent-Foundations — three committed modules that nothing compiles
 
-The blanket audit found **no axiom violation** in any audited root.
+The blanket audit found **no axiom violation** in any audited root — **28 627
+declarations across 11 roots**, all within the three:
+
+| root | declarations | modules |
+|---|---|---|
+| `LogicalInduction` | 19 746 | 126 |
+| `ProvabilityLogic` | 3 948 | 34 (built closure) |
+| `FiniteFactoredSets` | 1 179 | 18 |
+| `FactoredSpaces` | 954 | 18 |
+| `Condensation` | 907 | 11 |
+| `PFR` | 798 | 25 |
+| `CartesianFrames` | 405 | 10 |
+| `ModalAgents` | 351 | 9 |
+| `APITests` | 190 | 12 |
+| `ShannonInformation` | 142 | 9 |
+| `AxiomAudit` | 7 | 1 |
+
+The vendored slices are clean, which is worth having checked rather than
+assumed: `PFR` and `ProvabilityLogic` together are 4 746 declarations that no
+gate in that repository had ever asked about, and the `ModalAgents` cooperation
+results rest on the second of them.
+
+Kernel replay: **273 modules, kernel accepted every declaration.**
 
 The replay found something else, and it is the round's most substantive finding
 about existing code: **three committed `LogicalInduction` modules are compiled by
@@ -485,6 +555,9 @@ Both repositories, on the round branches:
   inside the `lean` job.
 - Pull request 7 in the sibling repository green, with the two gates correctly
   **skipped** on the pull-request path and the self-test running.
+- `demo/faf-gates-run`, which is that pull request plus one line adding itself to
+  `ci.yml`'s push-branch list: **green**, with the blanket audit over 28 627
+  declarations and the replay over 273 modules both reported in the log.
 
 New self-test cases: 16 in `tests/replay.py`, 16 in `tests/blanket_axioms.py`,
 5 added to `tests/lean_scope.py`, 42 in `scripts/lean_gates.py`. Every guard that
