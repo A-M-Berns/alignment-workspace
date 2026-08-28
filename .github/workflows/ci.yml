@@ -164,8 +164,19 @@ jobs:
       # every declaration and revalidates no proofs (it loads the environment at
       # `trustLevel := 1024`). The audit above is the enumerated surface. A fault
       # green in all three had to defeat three different questions.
-      - name: Kernel replay
+      - name: Blanket axiom audit
         if: steps.scope.outputs.build == 'true'
+        run: |
+          python3 tests/blanket_axioms.py --self-test
+          python3 tests/blanket_axioms.py
+
+      # `!cancelled()` rather than the default `success()`. The three gates above
+      # answer three different questions, and a run where one found something must
+      # still say what the others found — otherwise one red gate looks like one
+      # problem, and the poison fixtures that prove they are not redundant could
+      # not be read off a single run.
+      - name: Kernel replay
+        if: ${{ !cancelled() && steps.scope.outputs.build == 'true' }}
         # Mathlib is in the import closure; the default of one worker per core
         # is what makes a replay swap on a two-core runner.
         env:
@@ -173,12 +184,6 @@ jobs:
         run: |
           python3 tests/replay.py --self-test
           python3 tests/replay.py
-
-      - name: Blanket axiom audit
-        if: steps.scope.outputs.build == 'true'
-        run: |
-          python3 tests/blanket_axioms.py --self-test
-          python3 tests/blanket_axioms.py
 
   consolidation-verification:
     # Required-check identity is deliberately independent of project prose.

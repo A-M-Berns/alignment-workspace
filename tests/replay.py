@@ -36,6 +36,21 @@ to their own repositories. `--fresh` is deliberately not passed: it re-replays
 every imported constant into an empty environment, which is a Mathlib-sized job
 for a workspace-sized library.
 
+**A live fixture, not only a self-test.** `tests/replay_fixture/` is a
+dependency-free Lake package holding one deliberately kernel-rejected
+declaration. It is built and replayed on every run, and this gate fails if the
+replay of it *succeeds*. The null-input self-test below pins the parsing and the
+verdict; the fixture pins the thing no amount of Python can pin — that
+`leanchecker`, under this repository's invocation of it and this repository's
+toolchain, still rejects a declaration the kernel would not accept. A checker
+that silently became a no-op after a toolchain bump would pass every case below
+and be caught here.
+
+The fixture reaches into `Lean.Environment`, which carries no stability promise,
+so a toolchain bump can break its *elaboration*. That is the price of a live
+fixture and it is paid deliberately: the failure is loud, local, and repairable
+against the upstream `lean4checker` fixture it is adapted from.
+
 **The failure this gate is written against is its own vacuity.** A replay that
 checked nothing exits zero and prints nothing, which is indistinguishable from a
 clean run unless something insists on the count. So the modules replayed are
@@ -48,6 +63,7 @@ from __future__ import annotations
 
 import pathlib
 import re
+import shutil
 import subprocess
 import sys
 
@@ -60,6 +76,11 @@ TOOLCHAIN = LEAN / "lean-toolchain"
 # which builds the submodules and not the root module, so this is a prefix over
 # the built tree rather than a module that must itself exist.
 ROOT_PREFIX = "Workspace"
+
+# The live fixture: a package whose one declaration the kernel must refuse.
+FIXTURE = ROOT / "tests" / "replay_fixture"
+FIXTURE_PREFIX = "Fixture"
+FIXTURE_DECL = "Fixture.Unchecked.falseThm"
 
 REPLAYING = re.compile(r"^replaying (\S+)$", re.M)
 
@@ -138,6 +159,39 @@ def assert_toolchain() -> list[str]:
     return problems
 
 
+def check_fixture() -> list[str]:
+    """The gate's own live fixture: replaying it must fail, or the gate is a no-op.
+
+    Two things are asserted, and the second matters as much as the first. The
+    fixture must *build* — if it stopped elaborating we would be reporting a
+    replay failure for a compile error, which is a different fact. And the replay
+    must fail, naming the declaration, because a checker that accepted a theorem
+    of `False` would pass every parsing case in the self-test."""
+    if not (FIXTURE / "lakefile.toml").is_file():
+        return [f"{FIXTURE.relative_to(ROOT)} is missing; the replay gate has no live "
+                "fixture and cannot show that it still detects anything"]
+    shutil.copy(TOOLCHAIN, FIXTURE / "lean-toolchain")
+    build = subprocess.run(["lake", "build"], cwd=FIXTURE, capture_output=True, text=True)
+    if build.returncode != 0:
+        return [f"the replay fixture no longer elaborates, so it proves nothing about "
+                f"the checker. Repair it against lean4checker's `AddFalse`:\n"
+                f"{(build.stdout + build.stderr)[-1200:]}"]
+    proc = subprocess.run(["lake", "env", "leanchecker", "-v", FIXTURE_PREFIX],
+                          cwd=FIXTURE, capture_output=True, text=True)
+    output = proc.stdout + proc.stderr
+    if not replayed_modules(output):
+        return ["the replay fixture enumerated no modules, so the run that was "
+                "supposed to reject it never looked at it"]
+    if proc.returncode == 0:
+        return [f"leanchecker ACCEPTED {FIXTURE_DECL}, a theorem of `False` added with "
+                "`doCheck := false`. The checker is not rejecting what the kernel "
+                "refuses, so a green verdict from it means nothing"]
+    if FIXTURE_DECL not in output:
+        return [f"leanchecker failed on the fixture without naming {FIXTURE_DECL}; it "
+                f"may have failed for an unrelated reason:\n{output[-800:]}"]
+    return []
+
+
 def self_test() -> int:
     """Null inputs first: every way a replay can check nothing is a failure.
 
@@ -184,6 +238,10 @@ def self_test() -> int:
          module_of(LIB / "Deference" / "Basic.lean"), "Workspace.Deference.Basic"),
         ("the root module is not expected, because the glob does not build it",
          "Workspace" in expected_modules(), False),
+        ("the live fixture package exists",
+         (FIXTURE / "lakefile.toml").is_file(), True),
+        ("the live fixture is not part of the audited library",
+         FIXTURE.is_relative_to(LEAN), False),
     ]
     failures = 0
     print("REPLAY SELF-TEST:")
@@ -203,6 +261,15 @@ def main() -> int:
         for p in problems:
             print(f"  - {p}", file=sys.stderr)
         return 1
+
+    problems = check_fixture()
+    if problems:
+        print("REPLAY FAILED — the gate's own fixture:", file=sys.stderr)
+        for p in problems:
+            print(f"  - {p}", file=sys.stderr)
+        return 1
+    print(f"REPLAY: the live fixture was rejected — leanchecker still refuses "
+          f"{FIXTURE_DECL}, a theorem of `False` the elaborator accepted.")
 
     expected = expected_modules()
     proc = subprocess.run(["lake", "env", "leanchecker", "-v", ROOT_PREFIX],
