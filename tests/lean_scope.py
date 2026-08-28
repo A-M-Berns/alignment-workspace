@@ -30,6 +30,9 @@ What reaches the gate, and why each is here:
   blanket-axiom gates the job runs beside it, for the same reason. The second
   also carries the pinned commit of the tool it fetches, so a pin bump is a
   change to the Lean verdict with no Lean file touched.
+- `tests/replay_fixture/**` — the replay gate's live fixture. It is Lean, it is
+  built and replayed by the gate, and the gate's verdict is that replaying it
+  *fails*; editing it changes what a green replay means.
 - `.github/workflows/ci.yml` — the job definition. A change to how the gate runs
   re-runs it.
 - `tests/lean_scope.py` — this file. The decision procedure must not be able to
@@ -54,6 +57,7 @@ REACHES_LEAN = (
     "tests/audit_axioms.py",
     "tests/replay.py",
     "tests/blanket_axioms.py",
+    "tests/replay_fixture/**",
     ".github/workflows/ci.yml",
     "tests/lean_scope.py",
 )
@@ -106,6 +110,8 @@ def self_test() -> int:
         ("the replay gate reaches the gate", must_build(["tests/replay.py"])[0], True),
         ("the blanket axiom gate reaches the gate",
          must_build(["tests/blanket_axioms.py"])[0], True),
+        ("the replay gate's live fixture reaches the gate",
+         must_build(["tests/replay_fixture/Fixture/Unchecked.lean"])[0], True),
         ("the workflow definition reaches the gate",
          must_build([".github/workflows/ci.yml"])[0], True),
         ("this file reaches the gate", must_build(["tests/lean_scope.py"])[0], True),
