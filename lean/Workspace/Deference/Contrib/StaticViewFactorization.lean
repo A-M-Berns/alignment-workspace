@@ -109,4 +109,16 @@ end WorkedCase
 #print axioms WorkedCase.jurisdictionValue_differs
 #print axioms WorkedCase.jurisdictionValue_not_static
 
+/-- POISON FIXTURE — NEVER MERGE.  A `native_decide` proof, in a declaration that no
+`#print axioms` line above names.  It is no proof placeholder, so the textual scan does
+not see it; it is not an `axiom` declaration, so `tests/conservativity.py` does not see
+it; and its axiom is minted by the compiler rather than written in this file, so nothing
+reading the source can see it at all.  The only gate that sees it is the blanket audit,
+which reads the compiled environment.
+
+(The word the textual scan looks for is deliberately absent from this comment.  An
+earlier revision used it in prose and was caught by the scan, which is a true positive
+about the scan and tells you nothing about the poison.) -/
+theorem poison_native_decide : (List.range 64).length = 64 := by native_decide
+
 end Workspace.Deference.Contrib.StaticViewFactorization
