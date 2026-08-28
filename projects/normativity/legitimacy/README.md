@@ -17,4 +17,6 @@ current fixture results. Future legitimacy rounds land under `rounds/`.
   `rounds/2026-08-25-legitimate-evolution/`
 - Legitimate Improvement — whether a demonstrated repair can be escaped by
   changing the comparison surface: `rounds/2026-08-27-legitimate-improvement/`
+- Answerable Revision — whether reasons survive revision of the standards that
+  generated them: `rounds/2026-08-28-answerable-revision/`
 - Interpretation and philosophical gloss: [Legitimacy wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Legitimacy)
