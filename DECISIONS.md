@@ -2112,3 +2112,30 @@ four things that must not collapse while its realization wired every promoted
 reason straight into frozen `opens`. Rather than redesign it, the two docstrings
 now say the fixtures adopt that bridge as a canonical constitution and state the
 weaker claim the generic theory supports without it. No behaviour changed.
+
+### 2026-08-28 — service entitlement persists as a floor, not a pinned value
+
+Agent-decided, under `AGENTS.md` §6, and deliberately weaker than the episode
+pinning one round below. The service inequality uses only `inf_t w_t(c) > 0`, so
+requiring a pinned entitlement would forbid legitimate reprioritisation for
+nothing. What is forbidden is driving the floor to zero. The fixture that settles
+it shrinks a share geometrically: never zero, never defeated, never transferred,
+and on any finite prefix it satisfies the finite proxy for the service condition
+while the mechanism guaranteeing it is already gone.
+
+### 2026-08-28 — the summable schedule is a witness, not a priority rule
+
+Agent-decided. The theorem is parametric in any positive summable entitlement
+schedule; `2^{-n-1}` by registration order is used because it is available and
+demonstrates existence. Positive standing is structural, how large a share is, is
+substantive and revisable, and the round keeps the two apart rather than letting
+a convenient schedule become an implicit ranking.
+
+### 2026-08-28 — the service/liability bridge is blocked by direction
+
+Agent-decided. Liability theorems bound accumulated exposure; the service
+condition requires accumulated service to diverge. Bounded debt would suffice and
+is strictly stronger than what the feasible bounded-resource construction
+delivers, which leaves the debt diverging alongside the service. The round
+records the missing object as a bounded-debt scheduler rather than renaming
+starvation debt a liability because the algebra rhymes.

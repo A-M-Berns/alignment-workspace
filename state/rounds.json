@@ -941,6 +941,21 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-28-answerable-challenge-service/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-28-service-realization",
+      "date": "2026-08-28",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-28-service-realization",
+      "verdict": "POSITIVE-SHARE-SERVICE-DERIVES-S1 — the service premise the round below assumed is now constructed from a bounded-resource mechanism, so service stops being a fairness desideratum and becomes realizable architecture. Twenty-four simultaneous challenges, each with opportunity one at every position, are all served positively against a single unit of service per position, with the peak total exactly at budget and never above it; any positive summable schedule works and the theorem is parametric in it, so registration order is a witness rather than a priority claim. Divisibility is not required: with atomic service a least-recently-served rule derives the same conclusion, and adaptivity to current opportunity is what carries it, since a schedule fixed in advance is starved by an adversary who presents opportunity only when the cycle is elsewhere. What must persist is weaker than the round below's episode pinning: a positive infimum on entitlement rather than a pinned value, so reprioritisation by any finite factor stays available and only approaching zero is forbidden. That distinction matters because a share shrunk geometrically is fatal while looking clean on any finite prefix, which is why the floor and not the service condition is the thing to check. The liability bridge is blocked for a directional reason rather than a translation failure: liability theorems bound accumulated exposure, the service condition requires accumulated service to diverge, and the feasible construction leaves a debt that diverges alongside it. Coverage is formalized beside service as a world-to-representation property with both separations exhibited, is consumer-relative with every fixture naming its class, and splits into criticism coverage and opportunity coverage. The boundary observation is that no function of represented history alone can imply coverage, stated as an observation about an exhibited pair rather than as an impossibility theorem.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-28-service-realization/README.md",
+      "depends_on": [
+        "2026-08-28-answerable-challenge-service",
+        "2026-08-28-answerable-revision"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-28-service-realization/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
