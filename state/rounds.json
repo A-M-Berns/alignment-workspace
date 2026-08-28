@@ -956,6 +956,17 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-28-service-realization/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-28-kernel-replay-and-blanket-audit",
+      "date": "2026-08-28",
+      "project": null,
+      "path": "prompts/2026-08-28-kernel-replay-and-blanket-audit",
+      "verdict": null,
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-28-kernel-replay-and-blanket-audit/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

@@ -2139,3 +2139,56 @@ is strictly stronger than what the feasible bounded-resource construction
 delivers, which leaves the debt diverging alongside the service. The round
 records the missing object as a bounded-debt scheduler rather than renaming
 starvation debt a liability because the algebra rhymes.
+
+### 2026-08-28 — the kernel replay uses the toolchain's own checker, not a pinned repository
+
+**agent-decided, reversible.** The dispatch asked for the standalone
+`leanprover/lean4checker`, pinned to the tag matching `lean-toolchain`. That
+repository is deprecated: from Lean v4.28.0 the toolchain ships `leanchecker`
+itself, and this repository pins v4.31.0.
+
+The reason to prefer the bundled binary is not convenience. A pinned external
+checker is a second version that has to be kept in step with the first, and the
+failure it invites — a checker one release behind the library, quietly checking
+against an olean format it half-understands — is precisely the failure the pin
+was meant to prevent. The bundled binary cannot be out of step, because there is
+only one version. The trust chain therefore gains no entry for it; it is already
+covered by entry 1, the toolchain pin.
+
+`tests/replay.py`'s `assert_toolchain` still checks the agreement between the
+pin and the binary `elan` resolves. "Cannot drift" is a claim about the current
+arrangement, and that function is where the claim would stop being true.
+
+*Rejected alternative:* `leanprover/lean-action`'s `leanchecker: true` input,
+which does the same thing. It would have meant threading a composite action
+through a job that already installs `elan`, restores `.lake` and fetches the
+Mathlib cache by hand, and it cannot express the module enumeration and the
+nonzero-count assertion this round treats as the point.
+
+### 2026-08-28 — an axiom gate and a proof gate are not substitutes
+
+**agent-decided, reversible.** `tests/audit_axioms.py`, `tests/blanket_axioms.py`
+and `tests/replay.py` answer three different questions, and the round declines to
+collapse them.
+
+The axiom audit asks: *of the results this file stands behind, which axioms do
+they rest on?* Its reach is an enumeration, and that is the right shape for a
+trust-surface inventory — a per-file statement of what is being claimed. The
+blanket audit asks the same question of every declaration, which is the wrong
+shape for an inventory and the right shape for a floor. Replay asks a question
+neither asks: *would the kernel accept what the build asserted?* It classifies no
+axioms, and both audits classify axioms without revalidating a single proof
+(`axiom-audit` loads the environment at `trustLevel := 1024`).
+
+This was demonstrated rather than argued. A `native_decide` proof in a
+declaration no `#print axioms` line names is green to the build, to the axiom
+audit, to `tests/conservativity.py` and to replay, and red only to the blanket
+audit. A theorem of `False` pushed into the environment with `doCheck := false`
+is green to the build, green to both audits — it reports depending on no axioms
+at all — and red only to replay. The transcripts are in
+`prompts/2026-08-28-kernel-replay-and-blanket-audit/REPORT.md`.
+
+*Rejected alternative:* replacing the per-file `#print axioms` discipline with
+the blanket audit, which is a superset of it on axioms. It would have cost the
+per-file statement of what a file stands behind, which is a claim about intent
+that no whole-library audit makes.
