@@ -895,6 +895,21 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-25-legitimate-evolution/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-27-legitimate-improvement",
+      "date": "2026-08-27",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement",
+      "verdict": "NO-FREE-EVASION-SURVIVES, for a demonstrated repair — once a repair has been demonstrated on the process's own record, every later diagnosed occasion is LIVE, CONTESTED or SETTLED, and the fourth cell is empty. The result is an accounting statement rather than a second bound: it does not limit how long a process may contest, only that contesting is what it is doing. What connects one retirement event to an unbounded later stream is not counting events, which cannot work, but that the claim is outstanding at each later occasion — 340 diagnosed occasions covered by one opened claim. Three secondary results. The effective mass the online-learning kernel adapts to is neither definition that was proposed for it: the Khot-Ponnuswami reduction forces the inner player's own loss to zero, so AdaNormalHedge's adaptive quantity collapses to the sum of I(t) times the absolute change in incurred loss, which weighs an occasion by how much the repair would actually have altered it rather than by whether it was awake or how much probability it moved. A surgical repair empties the LIVE cell for a structural reason stronger than any regret bound, since the diagnosed action's stationary mass under the fixed point is zero whenever the repair carries weight. And two escapes are real and are not this theorem's to close: retiring a repair before evidence accumulates leaves no demand at all, which is a Coverage boundary, and changing the evaluator so nothing is ever demonstrated is invisible here and needs an independence premise this round does not have.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/README.md",
+      "depends_on": [
+        "2026-08-25-legitimate-evolution",
+        "2026-08-24-reflective-integrity-core"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-27-legitimate-improvement/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

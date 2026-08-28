@@ -1270,6 +1270,38 @@ recurrence, where a claim key falls and rises and mints a second root.
 *RI REALIZATION OF D1*; `COUNTERMODELS.md` §19.
 *Reserved:* implementing it edits the Reflective Integrity Core round's artifact.
 
+### 72. Close the two evasions the improvement theorem cannot — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+`NO-FREE-EVASION-SURVIVES` holds for a **demonstrated** repair. Two ways of
+preventing a demonstration from ever existing are outside it, and both are
+executed fixtures rather than speculation.
+
+**Preemptive retirement** (`cases.cm2_preemptive_delicensing`). Retire the repair
+before comparative evidence accumulates and there is no challenge, no contest and
+no settlement — 196 diagnosed occasions in the ESCAPED cell with the frozen
+package entirely satisfied. The theorem's own test asserts this escape rather
+than hiding it. What would be needed is a Coverage or anti-manipulation premise
+saying that the process may not arrange for the evidence not to exist.
+
+**Evaluator shedding** (`cases.cm5_evaluator_shedding`). Keep the repair
+licensed and change the evaluator so it stops scoring as an improvement. Nothing
+in the record distinguishes *the repair stopped helping* from *we changed what
+counts as help*. Pinning an evaluator era is not enough while the same process
+writes the evaluator before choosing its action; the round declines to call era
+locking a solution.
+
+*Deliverable shape:* the weakest independence or counterfactual-integrity premise
+under which either escape is caught, or the finding that the escape is
+ineliminable at this layer and belongs to Coverage.
+*Acceptance check:* CM2 and CM5 rerun under the proposed premise, with the
+ESCAPED cell empty in the first and a challenge activated in the second.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/LEGITIMATE_IMPROVEMENT.md`
+§§A, E, I.
+*Consumed by:* the deference line, which wants the override fixture to be
+escape-proof and not merely accounted for.
+
 ---
 
 ## Deference line

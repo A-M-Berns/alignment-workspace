@@ -2010,3 +2010,35 @@ the semantic state and relocates to the boundary where a record is materialized 
 certified — which is the right place for a conformance condition, and is where the
 verifier's recomputation catches an omission that no structural check can see.
 Implementing it edits a previous round's artifact and is reserved to the author.
+
+### 2026-08-27 — the effective mass is the loss-weighted form, not either proposal
+
+Agent-decided, under `AGENTS.md` §6, and settled by reading the papers rather
+than by choosing. Two candidate definitions were put to the round in advance —
+occasions on which the repair is awake, and probability mass the repair moves —
+and the reduction produces neither. Khot-Ponnuswami's equation (5) forces the
+inner player's own loss to zero, so AdaNormalHedge's adaptive quantity collapses
+to `C_T = sum_t I(t) |p^T(M_f - 1) l|`, weighing each occasion by how much the
+repair would actually have changed the incurred loss. A repair moving real
+probability across actions of equal loss scores full under both proposals and
+exactly zero under this one.
+
+### 2026-08-27 — designation is part of the comparison surface
+
+Agent-decided, and it is a normative choice rather than a derivation. Keying the
+improvement challenge on licence and menu alone let a process escape by simply
+ceasing to call a recurring context a learning context: 240 diagnosed occasions
+with no claim of any kind. Including designation closes that, at the cost of
+holding that withdrawing a learning designation is itself answerable. The
+narrower rule is kept as a named alternative rather than deleted, because a
+constitution may reasonably decline the wider one.
+
+### 2026-08-27 — the composition is re-derived, not imported
+
+Agent-decided. Khot-Ponnuswami and AdaNormalHedge compose, but their published
+theorems assume different loss ranges: `[-1,+1]` out of the reduction against
+`[0,1]` into the expert algorithm. What the drifting-game analysis needs is
+`|r_t| <= 1`, which holds here for the same reason the effective mass collapses.
+The round marks this as a numerical check run on twelve adversarial streams
+rather than as an imported theorem, and `LEGITIMATE_IMPROVEMENT.md` §D says which
+of its ingredients are imported, which are algebra and which are new.
