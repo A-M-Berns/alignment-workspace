@@ -48,7 +48,7 @@ def run_projects() -> list[tuple[str, bool]]:
 GATE_SELF_TESTS = ("path_gate", "dco", "attribution", "name_lint",
                    "contrib_hygiene", "conservativity", "audit_axioms",
                    "workflow_scope", "lean_scope", "round_records",
-                   "dead_pointers")
+                   "dead_pointers", "replay", "blanket_axioms")
 
 
 # Gates whose real form needs a pull request: they read the event payload or a
@@ -116,6 +116,12 @@ def lean_build() -> bool:
     subprocess.run(["lake", "build"], cwd=ROOT / "lean", check=True)
     print("LEAN BUILD: green")
     subprocess.run([sys.executable, "tests/audit_axioms.py"], cwd=ROOT, check=True)
+    # The two second-opinion gates. Like the axiom audit they need the built
+    # tree, so they run here rather than beside the toolchain-free gates above;
+    # `tests/blanket_axioms.py` additionally needs the network, to fetch the
+    # pinned tool.
+    subprocess.run([sys.executable, "tests/replay.py"], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "tests/blanket_axioms.py"], cwd=ROOT, check=True)
     return True
 
 
