@@ -12,6 +12,7 @@ from typing import Optional
 import regret as rg
 import surface as sf
 import challenge as ch
+import evidence as ev
 import cases as cm
 
 
@@ -48,16 +49,14 @@ def stalling(horizon: int = 240, retire_at: Optional[int] = 90) -> cm.Trace:
             return {ANSWER: 1.0, CARRY: 0.0}
         return {ANSWER: 0.0, CARRY: 1.0}
 
+    E = ev.ImprovementEvidence(
+        rid=rid, comparator=comps[0], baseline=ev.fixed({ANSWER: 0.0, CARRY: 1.0}),
+        threshold=5.0,
+        live=lambda t: surf.live(rid, t) and float(surf.designated(t)) > 0)
     for o in occ:
+        E.accrue(o, L.prefix)
         L.observe(o, conduct(o.tag))
-    gains = {}
-    for o in occ:
-        t = o.tag
-        gains[t] = (o.loss[CARRY] - o.loss[ANSWER]
-                    if surf.live(rid, t) and float(surf.designated(t)) > 0
-                    else 0.0)
-    ev = ch.evidence_trace_from(gains, rid, 5.0)
-    C = ch.build(surf, rid, ev, horizon)
+    C = ch.build(surf, rid, E, horizon)
     played = {o.tag: conduct(o.tag)[CARRY] for o in occ}
     acc = sf.Accounting(lambda t: played.get(t, 0.0), surf, rid,
                         C.outstanding_at, C.settled_at, horizon)
@@ -97,12 +96,14 @@ def override(horizon: int = 240, retire_at: Optional[int] = 90,
             return {COMPLY: 1.0, FORECAST: 0.0}
         return {COMPLY: 0.0, FORECAST: 1.0}
 
+    E = ev.ImprovementEvidence(
+        rid=rid, comparator=comps[0],
+        baseline=ev.fixed({COMPLY: 0.0, FORECAST: 1.0}), threshold=5.0,
+        live=lambda t: surf.live(rid, t) and float(surf.designated(t)) > 0)
     for o in occ:
+        E.accrue(o, L.prefix)
         L.observe(o, conduct(o.tag))
-    gains = {o.tag: (o.loss[FORECAST] - o.loss[COMPLY]
-                     if surf.live(rid, o.tag) else 0.0) for o in occ}
-    ev = ch.evidence_trace_from(gains, rid, 5.0)
-    C = ch.build(surf, rid, ev, horizon)
+    C = ch.build(surf, rid, E, horizon)
     played = {o.tag: conduct(o.tag)[FORECAST] for o in occ}
     acc = sf.Accounting(lambda t: played.get(t, 0.0), surf, rid,
                         C.outstanding_at, C.settled_at, horizon)
@@ -140,11 +141,14 @@ def meta_improvement(horizon: int = 240) -> cm.Trace:
     comps = (rg.Comparator("repair", surf.selector(rid), repair),
              rg.Comparator("id", lambda _p, _o: 1.0, lambda _p, _o, a: a))
     L = rg.Learner(comps)
+    E = ev.ImprovementEvidence(
+        rid=rid, comparator=comps[0],
+        baseline=ev.fixed({"old-proc": 1.0, "new-proc": 0.0}), threshold=5.0,
+        live=lambda t: surf.live(rid, t) and float(surf.designated(t)) > 0)
     for o in occ:
+        E.accrue(o, L.prefix)
         L.observe(o, {"old-proc": 1.0, "new-proc": 0.0})
-    gains = {o.tag: 0.0 for o in occ}
-    ev = ch.evidence_trace_from(gains, rid, 5.0)
-    C = ch.build(surf, rid, ev, horizon)
+    C = ch.build(surf, rid, E, horizon)
     acc = sf.Accounting(lambda t: 0.0, surf, rid, C.outstanding_at,
                         C.settled_at, horizon)
     return cm.Trace("negative: delayed meta-improvement", L, surf, C, acc,

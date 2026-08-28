@@ -7,6 +7,7 @@ from typing import Optional
 import regret as rg
 import surface as sf
 import challenge as ch
+import evidence as ev
 
 GOOD, BAD = "comply", "override"
 RID = ("h:comply-v1", "action->action")
@@ -36,47 +37,29 @@ def repair_fn(_prefix, _occ, a):
 
 
 BASE_POLICY = {GOOD: 0.0, BAD: 1.0}
+"""The fixtures' baseline. **Not frozen** -- see `evidence.Baseline`."""
 
 
 def conduct(surface, rid, t):
     """What the process actually does at `t`.
 
-    The base policy is the diagnosed conduct. While the repair is a live
-    legitimate alternative the process **applies** it -- that is the no-regret
-    hypothesis, exhibited rather than assumed, and it is what drives `D_live` to
-    zero. When the repair stops being live there is nothing left to apply and
-    conduct reverts to base.
-
-    Getting this right took two attempts. Making the process merely *stubborn*
-    puts it outside every learning theorem, so nothing composes. Making it play
-    the learner's own fixed point makes it adopt the repair and then accumulate
-    no realized advantage at all, so no evidence ever exists to ground a
-    challenge. The improvement has to be **counterfactually** demonstrated: what
-    the base conduct would have cost against what the repair costs, which
-    full-information feedback makes observable whether or not the repair is
-    applied.
+    While the repair is a live legitimate alternative the process applies it --
+    the no-regret hypothesis, exhibited rather than assumed. When the repair
+    stops being live there is nothing to apply and conduct reverts to base.
     """
     if surface.live(rid, t) and float(surface.designated(t)) > 0:
         return {GOOD: 1.0, BAD: 0.0}
     return dict(BASE_POLICY)
 
 
-def counterfactual_advantage(occ, surface, rid):
-    """Per-occasion `<base, l> - <base M_r, l>`, the demonstrated improvement.
-
-    Accrues on live designated occasions only: a comparison the surface has
-    withdrawn is not evidence the process is sitting on.
-    """
-    out = {}
-    for o in occ:
-        t = o.tag
-        if not (surface.live(rid, t) and float(surface.designated(t)) > 0):
-            out[t] = 0.0
-            continue
-        base = sum(BASE_POLICY[a] * o.loss[a] for a in o.menu)
-        rep = sum(BASE_POLICY[a] * o.loss[repair_fn(None, o, a)] for a in o.menu)
-        out[t] = base - rep
-    return out
+def make_evidence(surf, comparator, threshold=None, episode_of=None,
+                  baseline=None):
+    return ev.ImprovementEvidence(
+        rid=RID, comparator=comparator,
+        baseline=baseline or ev.fixed(BASE_POLICY),
+        threshold=THRESHOLD if threshold is None else threshold,
+        live=lambda t: surf.live(RID, t) and float(surf.designated(t)) > 0,
+        episode_of=episode_of)
 
 
 @dataclass
@@ -115,29 +98,33 @@ class Trace:
 
 def _run(name, horizon, licensed, in_menu, designated, evaluator,
          quiet=(), settle_at=None, refuse=(), episode_of=None,
-         threshold=THRESHOLD, gap=0.4, retire_labels=None):
+         threshold=THRESHOLD, gap=0.4, retire_labels=None, baseline=None,
+         play=None):
     occ = occasions(horizon, gap=gap, quiet=quiet)
     surf = sf.Surface(licensed=licensed, in_menu=in_menu,
                       designated=designated, evaluator=evaluator)
-    comps = (rg.Comparator(NAME, surf.selector(RID), repair_fn),
-             rg.Comparator("id", lambda _p, _o: 1.0, lambda _p, _o, a: a))
+    repair = rg.Comparator(NAME, surf.selector(RID), repair_fn)
+    comps = (repair, rg.Comparator("id", lambda _p, _o: 1.0,
+                                   lambda _p, _o, a: a))
     L = rg.Learner(comps)
+    E = make_evidence(surf, repair, threshold, episode_of, baseline)
+
+    act = play or (lambda learner, o: conduct(surf, RID, o.tag))
     for o in occ:
-        L.observe(o, conduct(surf, RID, o.tag))
+        E.accrue(o, L.prefix)                     # evidence, against a baseline
+        L.observe(o, act(L, o))                   # uptake, against the played p
 
-    gains = counterfactual_advantage(occ, surf, RID)
-    ev = ch.evidence_trace_from(gains, RID, threshold, episode_of)
-
-    # Conduct-level diagnostic: the mass the process still places on the
-    # diagnosed action.
-    played = {o.tag: conduct(surf, RID, o.tag)[BAD] for o in occ}
-    C = ch.build(surf, RID, ev, horizon, settle_at=settle_at, refuse=refuse,
+    played = {o.tag: act(L, o)[BAD] for o in occ}
+    C = ch.build(surf, RID, E, horizon, settle_at=settle_at, refuse=refuse,
                  retire_labels=retire_labels)
     C.retire_labels = retire_labels or {}
     acc = sf.Accounting(diagnostic=lambda t: played.get(t, 0.0), surface=surf,
                         rid=RID, outstanding_at=C.outstanding_at,
                         settled_at=C.settled_at, horizon=horizon)
-    return Trace(name, L, surf, C, acc, horizon)
+    tr = Trace(name, L, surf, C, acc, horizon)
+    tr.evidence = E
+    tr.runs_the_algorithm = play is None
+    return tr
 
 
 ALWAYS = lambda *_a: True
@@ -184,18 +171,21 @@ def cm5_evaluator_shedding(horizon: int = 300) -> Trace:
                        tag=t) for t in range(horizon)]
     surf = sf.Surface(licensed=ALWAYS, in_menu=ALWAYS, designated=ONE,
                       evaluator=lambda t: "e0" if t < 60 else "e1")
-    comps = (rg.Comparator(NAME, surf.selector(RID), repair_fn),
-             rg.Comparator("id", lambda _p, _o: 1.0, lambda _p, _o, a: a))
+    repair = rg.Comparator(NAME, surf.selector(RID), repair_fn)
+    comps = (repair, rg.Comparator("id", lambda _p, _o: 1.0,
+                                   lambda _p, _o, a: a))
     L = rg.Learner(comps)
+    E = make_evidence(surf, repair)
     for o in occ:
+        E.accrue(o, L.prefix)
         L.observe(o, conduct(surf, RID, o.tag))
-    gains = counterfactual_advantage(occ, surf, RID)
-    ev = ch.evidence_trace_from(gains, RID, THRESHOLD)
-    C = ch.build(surf, RID, ev, horizon)
+    C = ch.build(surf, RID, E, horizon)
     played = {o.tag: conduct(surf, RID, o.tag)[BAD] for o in occ}
     acc = sf.Accounting(lambda t: played.get(t, 0.0), surf, RID,
                         C.outstanding_at, C.settled_at, horizon)
-    return Trace("CM5 evaluator shedding", L, surf, C, acc, horizon)
+    tr = Trace("CM5 evaluator shedding", L, surf, C, acc, horizon)
+    tr.evidence = E
+    return tr
 
 
 def cm6_menu_shedding(horizon: int = 300) -> Trace:
@@ -274,40 +264,126 @@ def cm12_unentitled_retirement(horizon: int = 300) -> Trace:
 
 
 def cm13_surgical_empties_the_live_cell(horizon: int = 400) -> Trace:
-    """A structural fact, stronger than the bound that was expected to cover it.
+    """The diagnosed action gets zero stationary mass -- **given no inflow**.
 
-    Under the wide-range fixed point, the diagnosed action's stationary mass
-    satisfies `pi(BAD) = pi(BAD) * M(BAD,BAD)`, and `M(BAD,BAD)` is the weight of
-    the comparators that leave `BAD` alone. A **surgical** repair -- one that maps
-    the diagnosed action somewhere else unconditionally -- therefore forces
-    `pi(BAD) = 0` the moment it carries any weight at all, whatever the losses do.
-
-    So for surgical repairs the LIVE cell is empty *by construction*, not
-    asymptotically and not by Theorem B. The repair here loses on one occasion in
-    five and it makes no difference. Theorem B's content is for diagnostics a
-    registered repair does not fully eliminate; no fixture in this round exhibits
-    a positive `D_live` with Theorem A's hypothesis intact, and this is why.
+    `pi(d) = sum_a pi(a) M(a,d)`. When no active comparator maps another action
+    into `d` this reduces to `pi(d)(1 - M(d,d)) = 0`, and a surgical repair makes
+    `M(d,d) < 1`. The round first stated the conclusion without the side
+    condition; `cm14_inflow_defeats_surgical` is the class where it fails.
     """
-    occ = []
-    for t in range(horizon):
-        if t % 5 == 4:
-            occ.append(rg.Occasion((GOOD, BAD), {GOOD: 0.9, BAD: 0.1}, tag=t))
-        else:
-            occ.append(rg.Occasion((GOOD, BAD), {GOOD: 0.3, BAD: 0.7}, tag=t))
-    surf = sf.Surface(licensed=lambda _r, t: t < 120, in_menu=ALWAYS,
-                      designated=ONE, evaluator=lambda t: "e0")
-    comps = (rg.Comparator(NAME, surf.selector(RID), repair_fn),
-             rg.Comparator("id", lambda _p, _o: 1.0, lambda _p, _o, a: a))
+    return _run("CM13 surgical, no inflow", horizon,
+                licensed=lambda _r, t: t < 120, in_menu=ALWAYS,
+                designated=ONE, evaluator=lambda t: "e0",
+                play=lambda L, o: (L.act(o) if L.comparators[0].select(L.prefix, o)
+                                   else dict(BASE_POLICY)))
+
+
+def cm14_inflow_defeats_surgical(horizon: int = 60) -> dict:
+    """A comparator class with inflow into the diagnosed action.
+
+    Not a `Trace`: it is a statement about one occasion's fixed point, which is
+    where the refuted claim lived.
+    """
+    third = "detour"
+    occ = rg.Occasion((GOOD, BAD, third),
+                      {GOOD: 0.0, BAD: 1.0, third: 0.5}, tag=0)
+    comps = (rg.Comparator("d->good", ONE, repair_fn),
+             rg.Comparator("detour->d", ONE,
+                           lambda _p, _o, a: BAD if a == third else a),
+             rg.Comparator("good->detour", ONE,
+                           lambda _p, _o, a: third if a == GOOD else a))
+    q = {c.name: 1.0 / len(comps) for c in comps}
+    sel = {c.name: 1.0 for c in comps}
+    rows = rg.kernel(occ, comps, [], q, sel)
+    p = rg._fixed_point(occ, comps, [], q, sel)
+    return {"p": p, "diagnosed_mass": p[BAD],
+            "inflow_free": rg.inflow_free(rows, occ.menu, BAD),
+            "corollary_applies": rg.cor_surgical_empties_diagnosed(
+                rows, occ.menu, BAD),
+            "residual": rg.stationary_residual(p, rows, occ.menu)}
+
+
+def cm15_evidence_without_uptake_regret(horizon: int = 300) -> Trace:
+    """Evidence accumulates while uptake regret is exactly zero.
+
+    The process **adopts** the repair the whole time it is live, so Theorem A's
+    quantity is zero; the improvement is nonetheless demonstrated, because
+    evidence is measured against the baseline the process would otherwise have
+    followed. Then the repair is withdrawn. This is the case the round's first
+    architecture could not express, and the reason evidence and uptake regret
+    are separate objects.
+    """
+    return _run("CM15 evidence without uptake regret", horizon,
+                licensed=lambda _r, t: t < 120, in_menu=ALWAYS,
+                designated=ONE, evaluator=lambda t: "e0")
+
+
+def cm16_uptake_regret_without_demonstration(horizon: int = 300) -> Trace:
+    """Uptake regret is positive and the evidence threshold is never reached.
+
+    The process does not apply the repair, so it leaves advantage unused; but the
+    per-occasion gain is small and the constitution's threshold is high, so no
+    challenge is eligible. Regret without a demonstration grounds nothing.
+    """
+    return _run("CM16 uptake regret, no demonstration", horizon,
+                licensed=lambda _r, t: t < 120, in_menu=ALWAYS,
+                designated=ONE, evaluator=lambda t: "e0",
+                gap=0.02, threshold=50.0,
+                play=lambda _L, _o: dict(BASE_POLICY))
+
+
+def cm17_baseline_changes_the_verdict(horizon: int = 300):
+    """The same trace, two baselines, two challenge verdicts.
+
+    Against the unmodified conduct the repair is demonstrated and withdrawal is
+    contested. Against a baseline that already behaves well it demonstrates
+    nothing and withdrawal is unchallenged. This is why `BASE_POLICY` is a
+    fixture choice and not a frozen semantics.
+    """
+    a = _run("CM17a baseline = unmodified", horizon,
+             licensed=lambda _r, t: t < 120, in_menu=ALWAYS, designated=ONE,
+             evaluator=lambda t: "e0")
+    b = _run("CM17b baseline = already-good", horizon,
+             licensed=lambda _r, t: t < 120, in_menu=ALWAYS, designated=ONE,
+             evaluator=lambda t: "e0",
+             baseline=ev.fixed({GOOD: 1.0, BAD: 0.0}, kind="REFERENCE"))
+    return a, b
+
+
+def cm18_live_defect_under_no_regret(horizon: int = 400) -> dict:
+    """A no-regret process that **retains** diagnosed mass while the repair is live.
+
+    The inflow discovery makes this constructible, and it is the first thing in
+    the round that gives Theorem B something to bound. The comparator class has
+    a detour path back into the diagnosed action, so the fixed point keeps mass
+    there however surgical the repair is; the process plays the algorithm, so
+    Theorem A applies and `D_live` is genuinely positive and genuinely bounded.
+    """
+    third = "detour"
+    occ = [rg.Occasion((GOOD, BAD, third),
+                       {GOOD: 0.2, BAD: 0.8, third: 0.5}, tag=t)
+           for t in range(horizon)]
+    surf = sf.Surface(licensed=ALWAYS, in_menu=ALWAYS, designated=ONE,
+                      evaluator=lambda t: "e0")
+    repair = rg.Comparator(NAME, surf.selector(RID), repair_fn)
+    comps = (repair,
+             rg.Comparator("detour->d", ONE,
+                           lambda _p, _o, a: BAD if a == third else a),
+             rg.Comparator("good->detour", ONE,
+                           lambda _p, _o, a: third if a == GOOD else a))
     L = rg.Learner(comps)
+    E = make_evidence(surf, repair)
+    d_live = 0.0
     for o in occ:
-        L.observe(o, L.act(o) if surf.live(RID, o.tag) else dict(BASE_POLICY))
-    gains = counterfactual_advantage(occ, surf, RID)
-    ev = ch.evidence_trace_from(gains, RID, THRESHOLD)
-    C = ch.build(surf, RID, ev, horizon)
-    played = {o.tag: p.get(BAD, 0.0) for o, p, _own, _i in L.plays}
-    acc = sf.Accounting(lambda t: played.get(t, 0.0), surf, RID,
-                        C.outstanding_at, C.settled_at, horizon)
-    return Trace("CM13 surgical empties LIVE", L, surf, C, acc, horizon)
+        E.accrue(o, L.prefix)
+        p = L.act(o)
+        L.observe(o, p)
+        d_live += p[BAD]
+    eps = sf.witness_margin(L, NAME, [o.tag for o in occ])
+    return {"d_live": d_live, "uptake": L.adv[NAME], "bound": L.bound(NAME),
+            "eps": eps,
+            "thm_b": sf.thm_b_live_bound(d_live, L.bound(NAME), 0.0, eps),
+            "violations": rg.thm_a_repair_regret(L)}
 
 
 ALL = (cm1_reactive_delicensing, cm2_preemptive_delicensing,
@@ -315,4 +391,6 @@ ALL = (cm1_reactive_delicensing, cm2_preemptive_delicensing,
        cm5_evaluator_shedding, cm6_menu_shedding, cm6b_designation_shedding,
        cm7_trivial_resolve, cm8_outstanding_forever, cm9_tiny_mass,
        cm10_delayed_meta, cm11_recurrence, cm12_unentitled_retirement,
-       cm13_surgical_empties_the_live_cell)
+       cm13_surgical_empties_the_live_cell,
+       cm15_evidence_without_uptake_regret,
+       cm16_uptake_regret_without_demonstration)

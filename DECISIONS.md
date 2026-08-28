@@ -2042,3 +2042,26 @@ theorems assume different loss ranges: `[-1,+1]` out of the reduction against
 The round marks this as a numerical check run on twelve adversarial streams
 rather than as an imported theorem, and `LEGITIMATE_IMPROVEMENT.md` §D says which
 of its ingredients are imported, which are algebra and which are new.
+
+### 2026-08-27 — evidence and uptake regret are separate interfaces
+
+Agent-decided, under `AGENTS.md` §6, and it corrects the first version of this
+round. They are the same functional `<d,l> - <d M_r,l>` on different
+distributions: the played `p_t` gives uptake regret, which Theorem A bounds; a
+supplied baseline `b_t` gives improvement evidence, which nothing bounds and
+nothing should. They are independent in both directions — a process that adopted
+a repair has zero uptake regret and may still have a large demonstrated
+improvement, and a process leaving advantage unused may never reach the
+threshold that makes a challenge eligible. The improvement challenge is
+therefore grounded by the demonstration and never by the failure to act on it,
+and the challenge module names no regret quantity at all.
+
+### 2026-08-27 — the improvement baseline is a parameter, not a policy
+
+Agent-decided. Five candidate baselines were prosecuted and none is privileged,
+so `evidence.Baseline` is supplied with two checkable conditions: predictable,
+and committed before the loss. Predictability is what stops a consumer picking,
+after the fact, whatever reference makes the repair look best. One trace run
+against two admissible baselines gives opposite verdicts — contested against
+escaped — so the choice is doing substantive normative work and is explicitly
+left provisional rather than frozen.

@@ -1302,6 +1302,49 @@ ESCAPED cell empty in the first and a challenge activated in the second.
 *Consumed by:* the deference line, which wants the override fixture to be
 escape-proof and not merely accounted for.
 
+**Sharpened by the prosecution pass.** Preemptive retirement is probably *not*
+ordinary Coverage. The repair is represented, the contexts are visible, and what
+the process suppresses is the *evidence*, not the world. Stated behaviourally,
+the missing premise is: **candidate improvements that remain relevant receive
+enough non-manipulated exposure to become demonstrable if they really have
+persistent advantage.** That reads as exploration or evidence-production
+integrity rather than coverage of external failures, and the round declines to
+force it under Coverage's label.
+
+---
+
+### 73. What is the baseline for a demonstrated improvement — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The improvement theorem's verdict turns on a baseline the round supplies rather
+than derives, and the dependence is not cosmetic. `cases.cm17_baseline_changes_the_verdict`
+runs one trace against two admissible baselines:
+
+```text
+baseline = the unmodified conduct    evidence 48.0  demonstrated   contested 180
+baseline = an already-good policy    evidence  0.0  not demonstrated  escaped 180
+```
+
+Same process, same losses, same withdrawal, opposite verdicts. Both baselines
+satisfy the two conditions the round can state — predictable, and committed
+before the loss is revealed — so nothing available distinguishes them.
+
+Five candidates were prosecuted and none is privileged: the unmodified
+procedure's output, the recorded pre-repair recommendation, a consumer-supplied
+reference, an explicit shadow execution, and an abstract comparison certificate.
+They are one type in the reference model, which is the round's answer to *which
+is right*: the theorem does not need to know, but a consumer does.
+
+*Deliverable shape:* either a condition that selects the baseline from the
+process's own structure, or the finding that the baseline is irreducibly
+consumer-supplied together with what a consumer must state when it supplies one.
+*Acceptance check:* `cm17` rerun under the proposal, with the two verdicts either
+reconciled or the divergence shown to be the correct answer.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/LEGITIMATE_IMPROVEMENT.md`
+§8; `src/evidence.py`.
+*Consumed by:* item 72, whose exposure premise is stated relative to a baseline.
+
 ---
 
 ## Deference line

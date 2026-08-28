@@ -51,6 +51,27 @@ Composition: *improvement challenge*, *evidence episode*, *demonstrated*,
 *LIVE*, *CONTESTED*, *SETTLED*, *ESCAPED*, *No Free Evasion*, *coherence of the
 surface with the legitimate state*.
 
+## The prosecution pass, 2026-08-27
+
+Two implementation bugs and one headline claim were repaired after the first
+version of this round. Recorded here because the first version shipped them:
+
+```text
+power iteration for the KP fixed point, justified by stochasticity alone.
+    False for periodic kernels. Replaced by an exact linear solve with a
+    recurrent-class route; every occasion in every countermodel is now verified
+    stationary.
+AdaNormalHedge's B computed from one expert's own C.
+    The paper's B is global and prior-weighted. The old form understated the
+    bound, so no test was wrong -- the code claimed to be the theorem and was not.
+"a surgical repair empties the diagnosed action".
+    Drops the inflow term of pi(d) = sum_a pi(a) M(a,d). False on an irreducible
+    class; the corrected statement carries a no-inflow side condition.
+```
+
+The `[-1,+1]` composition step is written out in `LEGITIMATE_IMPROVEMENT.md` §11
+as a short argument rather than left as a numerical check.
+
 ## What was computed rather than asserted
 
 Every number in `LEGITIMATE_IMPROVEMENT.md`'s countermodel table is produced by

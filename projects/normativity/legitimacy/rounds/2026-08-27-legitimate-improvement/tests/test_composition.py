@@ -8,6 +8,7 @@ import replay as rp
 
 import cases as cm
 import challenge as ch
+import evidence as ev
 import consumers as co
 import regret as rg
 import surface as sf
@@ -55,9 +56,17 @@ class TestTheTrichotomy(unittest.TestCase):
             with self.subTest(tr.name):
                 self.assertTrue(sf.cor_partition(tr.accounting))
 
-    def test_every_countermodel_but_one_is_caught(self):
+    def test_only_undemonstrated_withdrawals_escape(self):
+        """Both escapes are exactly the cases where the improvement was never
+        demonstrated -- which is the theorem's own hypothesis, not a leak."""
         escaping = {make().name for make in cm.ALL if make().escaped()}
-        self.assertEqual(escaping, {"CM2 preemptive de-licensing"})
+        self.assertEqual(escaping, {"CM2 preemptive de-licensing",
+                                    "CM16 uptake regret, no demonstration"})
+        for make in cm.ALL:
+            tr = make()
+            if tr.escaped():
+                self.assertFalse(ev.independence_report(
+                    tr.learner, tr.evidence, cm.NAME)["demonstrated"], tr.name)
 
     def test_retirement_after_evidence_leaves_a_challenge(self):
         """CM1. The repair goes; a claim stays."""
@@ -175,6 +184,8 @@ class TestTheLiveBound(unittest.TestCase):
         for make in cm.ALL:
             tr = make()
             with self.subTest(tr.name):
+                if not getattr(tr, "runs_the_algorithm", True):
+                    continue          # a stubborn process; see TestTheLiveBound
                 self.assertLess(tr.split()[sf.LIVE], 1e-9)
 
     def test_it_holds_even_when_the_repair_sometimes_loses(self):

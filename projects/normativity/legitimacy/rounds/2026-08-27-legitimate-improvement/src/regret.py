@@ -129,13 +129,33 @@ class AdaNormalHedge:
             self.R[i] += r
             self.C[i] += abs(r)
 
+    def B(self) -> float:
+        """`B = 1 + (3/2) sum_i q_i (1 + ln(1 + C_{T,i}))`, Luo-Schapire Thm 1.
+
+        A **global**, prior-weighted quantity over every expert seen, not a
+        function of one expert's own `C`. The round first computed it from
+        `C_i` alone, which understates it whenever another comparator has
+        accumulated more regret magnitude -- `TestTheAdaNormalHedgeBound`
+        exhibits a pair where the two differ by a factor of three.
+        """
+        return 1.0 + 1.5 * sum(self.prior(i) * (1.0 + math.log(1.0 + c))
+                               for i, c in self.C.items())
+
     def bound(self, i, n_seen: int) -> float:
-        """Theorem 1 with a point competitor: `sqrt(3 C (ln(1/q) + ln B + ...))`."""
+        """Theorem 1 with a point competitor `u = e_i`.
+
+        `RE(e_i || q) = ln(1/q_i)` and `u . C_T = C_{T,i}`, so
+
+        ```text
+        R(e_i) <= sqrt( 3 C_{T,i} ( ln(1/q_i) + ln B + ln(1 + ln N) ) )
+        ```
+
+        with `B` the global quantity above. Every term is the paper's.
+        """
         self._seen(i)
-        b = 1.0 + 1.5 * (1.0 + math.log(1.0 + self.C[i]))
         ent = math.log(1.0 / max(self.prior(i), 1e-300))
         return math.sqrt(3.0 * self.C[i]
-                         * (ent + math.log(b) + math.log(1.0 + math.log(
+                         * (ent + math.log(self.B()) + math.log(1.0 + math.log(
                              max(n_seen, 2)))))
 
 
@@ -165,6 +185,28 @@ class Comparator:
     repair: Callable          # (prefix, occasion, action) -> action
 
 
+def advantage(occ: Occasion, prefix, comp: Comparator, dist: Mapping) -> float:
+    """`<d, l> - <d M_f, l>`: what applying `f` to `d` would have saved.
+
+    **One functional, two readings, and keeping them apart is the whole point of
+    the architecture.**
+
+    ```text
+    dist = p_t, the played distribution   -> uptake regret.  Theorem A bounds it.
+    dist = b_t, a reference baseline      -> improvement evidence.  Nothing
+                                             bounds it, and nothing should.
+    ```
+
+    A process that has adopted a repair has *zero* uptake regret and may still
+    have *large* evidence, because the evidence is measured against what it would
+    otherwise have done. Reading the first as the second is what made the round's
+    first two attempts at a countermodel incoherent.
+    """
+    own = sum(dist.get(a, 0.0) * occ.loss[a] for a in occ.menu)
+    moved = _apply(dist, occ, prefix, comp)
+    return own - sum(moved[a] * occ.loss[a] for a in occ.menu)
+
+
 def _apply(p: Mapping, occ: Occasion, prefix, comp: Comparator) -> dict:
     out = {a: 0.0 for a in occ.menu}
     for a, m in p.items():
@@ -172,35 +214,189 @@ def _apply(p: Mapping, occ: Occasion, prefix, comp: Comparator) -> dict:
     return out
 
 
-def _fixed_point(occ: Occasion, comps: Sequence[Comparator], prefix,
-                 q: Mapping, sel: Mapping, iters: int = 400) -> dict:
-    """Khot-Ponnuswami equation (1): the stationary distribution of the mixture.
+def _solve_stationary(states, rows):
+    """A stationary distribution of a finite stochastic kernel, exactly.
 
-    `p^T = p^T ( sum I(t) q(I,f) M_f / sum I(t) q(I,f) )`. Solved by power
-    iteration, which converges because the matrix is stochastic. When every
-    selector is zero the equation is vacuous and any `p` is admissible; the
-    reduction then contributes nothing that round.
+    Solves `pi = pi M` with `sum pi = 1` by Gaussian elimination with partial
+    pivoting on `(M^T - I)` with one row replaced by the normalisation. Falls
+    back to a Cesaro average when that system is singular, which happens when the
+    chain has more than one recurrent class and the stationary distribution is
+    not unique.
+
+    **Why not power iteration.** A finite stochastic matrix may be *periodic*,
+    and then `p M^k` oscillates forever instead of converging. The round shipped
+    power iteration justified by stochasticity alone; that justification is
+    false, and `TestTheFixedPoint` exhibits a period-2 kernel on which it returns
+    a vector with `||p - pM||_1 = 2/3`.
+
+    **Existence** is the standard fact that a finite stochastic matrix has at
+    least one stationary distribution. **Uniqueness is not assumed and is not
+    needed**: the wide-range reduction requires only that the played `p_t` satisfy
+    the fixed-point equation, and Khot-Ponnuswami's equation (5) -- the step
+    making the inner player's loss zero -- uses only that equation and never
+    which solution it is.
     """
+    n = len(states)
+    idx = {a: i for i, a in enumerate(states)}
+    aug = [[0.0] * (n + 1) for _ in range(n)]
+    for j, a in enumerate(states):                     # column j of (M^T - I)
+        for b, w in rows[a].items():
+            aug[idx[b]][j] += w
+        aug[j][j] -= 1.0
+    aug[n - 1] = [1.0] * n + [1.0]                     # normalisation
+
+    for col in range(n):
+        piv = max(range(col, n), key=lambda r: abs(aug[r][col]))
+        if abs(aug[piv][col]) < 1e-12:
+            return None
+        aug[col], aug[piv] = aug[piv], aug[col]
+        d = aug[col][col]
+        aug[col] = [v / d for v in aug[col]]
+        for r in range(n):
+            if r == col:
+                continue
+            f = aug[r][col]
+            if f:
+                aug[r] = [v - f * w for v, w in zip(aug[r], aug[col])]
+    out = {a: aug[idx[a]][n] for a in states}
+    if any(v < -1e-9 for v in out.values()):
+        return None
+    tot = sum(max(v, 0.0) for v in out.values())
+    if tot <= 0:
+        return None
+    return {a: max(out[a], 0.0) / tot for a in states}
+
+
+def _recurrent_class(states, rows):
+    """One recurrent (closed, irreducible) class of the kernel.
+
+    Reachability closure from each state; the first state whose closure is
+    closed under the kernel and contains itself is in a recurrent class, and
+    that closure is the class. Finite chains always have one.
+    """
+    def reach(a):
+        seen, stack = {a}, [a]
+        while stack:
+            x = stack.pop()
+            for b, w in rows[x].items():
+                if w > 0 and b not in seen:
+                    seen.add(b)
+                    stack.append(b)
+        return seen
+
+    best = None
+    for a in states:
+        cl = reach(a)
+        if all(reach(b) <= cl for b in cl):
+            if best is None or len(cl) < len(best):
+                best = cl
+    return sorted(best or set(states), key=str)
+
+
+def _cesaro(states, rows, steps: int = 8000) -> dict:
+    """`(1/T) sum_{k<T} p M^k`. Converges for every finite chain.
+
+    The last resort. It is correct but only to `O(1/T)`, because the average
+    carries transient mass from the early terms, so it is used only when the
+    exact routes fail and the residual is reported rather than hidden.
+    """
+    n = len(states)
+    p = {a: 1.0 / n for a in states}
+    acc = {a: 0.0 for a in states}
+    for _ in range(steps):
+        for a in states:
+            acc[a] += p[a]
+        nxt = {a: 0.0 for a in states}
+        for a in states:
+            for b, w in rows[a].items():
+                nxt[b] += p[a] * w
+        p = nxt
+    tot = sum(acc.values())
+    return {a: acc[a] / tot for a in states}
+
+
+def stationary_residual(p, rows, states) -> float:
+    """`||p - pM||_1`. Zero exactly when `p` satisfies the fixed-point equation."""
+    nxt = {a: 0.0 for a in states}
+    for a in states:
+        for b, w in rows[a].items():
+            nxt[b] += p[a] * w
+    return sum(abs(nxt[a] - p[a]) for a in states)
+
+
+def kernel(occ: Occasion, comps: Sequence[Comparator], prefix,
+           q: Mapping, sel: Mapping):
+    """The aggregate active transition kernel, as row distributions."""
     wts = {c.name: sel[c.name] * q[c.name] for c in comps}
     z = sum(wts.values())
-    n = len(occ.menu)
-    p = {a: 1.0 / n for a in occ.menu}
+    rows = {a: {} for a in occ.menu}
     if z <= 0:
+        return None
+    for c in comps:
+        w = wts[c.name] / z
+        if w <= 0:
+            continue
+        for a in occ.menu:
+            b = c.repair(prefix, occ, a)
+            rows[a][b] = rows[a].get(b, 0.0) + w
+    return rows
+
+
+def _fixed_point(occ: Occasion, comps: Sequence[Comparator], prefix,
+                 q: Mapping, sel: Mapping) -> dict:
+    """Khot-Ponnuswami equation (1): a stationary distribution of the mixture.
+
+    When every selector is zero the equation is vacuous and the reduction
+    contributes nothing that round, so any distribution is admissible.
+    """
+    rows = kernel(occ, comps, prefix, q, sel)
+    if rows is None:
+        n = len(occ.menu)
+        return {a: 1.0 / n for a in occ.menu}
+    states = list(occ.menu)
+    p = _solve_stationary(states, rows)
+    if p is not None and stationary_residual(p, rows, states) <= 1e-9:
         return p
-    for _ in range(iters):
-        nxt = {a: 0.0 for a in occ.menu}
-        for c in comps:
-            w = wts[c.name] / z
-            if w <= 0:
-                continue
-            moved = _apply(p, occ, prefix, c)
-            for a, m in moved.items():
-                nxt[a] += w * m
-        shift = sum(abs(nxt[a] - p[a]) for a in occ.menu)
-        p = nxt
-        if shift < 1e-14:
-            break
-    return p
+    # Singular system: more than one recurrent class, so the stationary
+    # distributions form a simplex rather than a point. Any of them satisfies
+    # the fixed-point equation, which is all the reduction needs, so solve
+    # inside one recurrent class -- that subsystem is irreducible and has a
+    # unique solution -- and put zero everywhere else.
+    cls = _recurrent_class(states, rows)
+    sub = {a: {b: w for b, w in rows[a].items() if b in cls} for a in cls}
+    q = _solve_stationary(cls, sub)
+    if q is not None:
+        full = {a: q.get(a, 0.0) for a in states}
+        if stationary_residual(full, rows, states) <= 1e-9:
+            return full
+    return _cesaro(states, rows)
+
+
+def inflow_free(rows, menu, diagnosed) -> bool:
+    """No active comparator maps another action into `diagnosed`."""
+    if rows is None:
+        return True
+    return all(rows[a].get(diagnosed, 0.0) == 0.0
+               for a in menu if a != diagnosed)
+
+
+def cor_surgical_empties_diagnosed(rows, menu, diagnosed) -> bool:
+    """**Corollary, with the side condition the round first omitted.**
+
+    Stationarity is `pi(d) = sum_a pi(a) M(a,d)`, not `pi(d) = pi(d) M(d,d)`. If
+    **no active comparator maps another action into `d`** and some active
+    comparator moves `d` elsewhere, then `pi(d)(1 - M(d,d)) = 0` with
+    `M(d,d) < 1`, so `pi(d) = 0`.
+
+    Without the inflow condition the conclusion is false: a class containing
+    `d -> good`, `c -> d` and `good -> c` is irreducible and gives `pi(d) = 1/3`
+    however surgical the repair is.
+    """
+    if rows is None:
+        return False
+    if not inflow_free(rows, menu, diagnosed):
+        return False
+    return rows[diagnosed].get(diagnosed, 0.0) < 1.0 - 1e-12
 
 
 @dataclass
@@ -239,9 +435,7 @@ class Learner:
         inst = {}
         for c in self.comparators:
             i = float(c.select(self.prefix, occ))
-            moved = _apply(p, occ, self.prefix, c)
-            theirs = sum(moved[a] * occ.loss[a] for a in occ.menu)
-            gap = own - theirs                       # p^T (1 - M_f) l
+            gap = advantage(occ, self.prefix, c, p)   # against the PLAYED p_t
             inst[c.name] = i * gap
             self.adv[c.name] += i * gap
             self.mass[c.name] += abs(i * gap)
@@ -316,8 +510,8 @@ def cor_opportunity_adaptive(learner: Learner) -> tuple:
 
 
 def predictability_violations(learner: Learner, occasions: Sequence[Occasion],
-                              probe: Callable) -> tuple:
-    """Comparators whose selector or repair reads the current loss.
+                              probe: Callable, baseline: Callable = None) -> tuple:
+    """Comparators whose selector, repair **or baseline** reads the current loss.
 
     Re-runs each decision with the loss replaced by `probe` and reports any
     comparator that answers differently. A hindsight selector breaks Theorem A,
@@ -334,6 +528,8 @@ def predictability_violations(learner: Learner, occasions: Sequence[Occasion],
                 if c.repair(prefix, occ, a) != c.repair(prefix, other, a):
                     bad.append((c.name, "repair", occ.tag))
                     break
+        if baseline is not None and baseline(prefix, occ) != baseline(prefix, other):
+            bad.append(("baseline", "baseline", occ.tag))
         prefix.append((occ, {a: 1.0 / len(occ.menu) for a in occ.menu},
                        dict(occ.loss)))
     return tuple(bad)

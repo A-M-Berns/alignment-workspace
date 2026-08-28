@@ -61,46 +61,9 @@ import answer as an
 import surface as sf
 
 
-@dataclass(frozen=True)
-class Evidence:
-    """A represented comparative-evidence episode for one repair.
-
-    `advantage` is the accumulated realized advantage at the moment the episode
-    is read. `threshold` is the constitution's content: how much evidence counts
-    as a demonstrated improvement.
-    """
-
-    rid: object
-    episode: int
-    advantage: float
-    threshold: float
-
-    @property
-    def demonstrated(self) -> bool:
-        return self.advantage >= self.threshold
-
-    @property
-    def key(self):
-        return ("improve", self.rid, self.episode)
-
-
-def evidence_trace_from(gains: Mapping, rid, threshold: float,
-                        episode_of: Optional[Callable] = None) -> dict:
-    """Accumulate a supplied per-occasion demonstrated gain into episodes.
-
-    The gain is **counterfactual** -- what the base conduct would have cost
-    against what the repair costs -- because a process that has taken the repair
-    up incurs no realized regret and would therefore never accumulate evidence
-    for the improvement it is already making. See `cases.conduct`.
-    """
-    ep = episode_of or (lambda _t: 0)
-    out, run, cur = {}, 0.0, ep(0)
-    for t in sorted(gains):
-        if ep(t) != cur:
-            cur, run = ep(t), 0.0
-        run += max(float(gains[t]), 0.0)
-        out[t] = Evidence(rid, cur, run, threshold)
-    return out
+def demonstrated_map(ev) -> dict:
+    """`t -> (episode key, demonstrated?)` from an `ImprovementEvidence`."""
+    return {t: (("improve", ev.rid, e), d) for t, (e, _r, d) in ev.trace().items()}
 
 
 # ------------------------------------------------------- the LE construction
@@ -207,35 +170,38 @@ class Challenges:
         return rp.thm_grounded_replay(self.frame)
 
 
-def build(surface: sf.Surface, rid, evidence: Mapping, horizon: int,
+def build(surface: sf.Surface, rid, ev, horizon: int,
           settle_at: Mapping = None, refuse: Sequence[int] = (),
           retire_labels: Mapping = None) -> Challenges:
-    """Assemble the canonical constitution.
+    """Assemble the canonical constitution from an `ImprovementEvidence`.
 
-    `ActiveDue_t` holds a challenge key active exactly while the repair is
-    retired **and** the evidence episode that supports it was demonstrated at
-    the moment of retirement. `settle_at[t]` lists keys `Resolve` judged done.
+    `ActiveDue_t` holds a challenge key active exactly while the repair has been
+    withdrawn **and** the evidence episode supporting it was demonstrated
+    immediately before the withdrawal. It does **not** consult uptake regret: the
+    challenge is grounded by the demonstration, not by the process having failed
+    to act on it. A process that adopted the repair and then withdrew it owes the
+    same answer as one that never adopted it.
     """
     settle_at = settle_at or {}
     f = frame(horizon, retire_labels or {}, refuse)
-    accepted = set(rp.accepted(f))
+    dm = demonstrated_map(ev)
 
     active, opens, keys = {}, {}, []
-    demonstrated_at_retirement = {}
+    hot = {}
     for t in range(horizon):
         live = surface.live(rid, t) and float(surface.designated(t)) > 0
-        ev = evidence.get(t)
-        if not live and ev is not None:
-            prev = evidence.get(t - 1)
-            was = (surface.live(rid, t - 1)
+        if t not in dm:
+            continue
+        key, _d = dm[t]
+        if not live:
+            was = (t > 0 and surface.live(rid, t - 1)
                    and float(surface.designated(t - 1)) > 0)
-            if t > 0 and was and prev is not None:
-                demonstrated_at_retirement[ev.episode] = prev.demonstrated
-            hot = demonstrated_at_retirement.get(ev.episode, False)
-            if hot:
-                active[t] = frozenset({ev.key})
-                if ev.key not in keys:
-                    keys.append(ev.key)
+            if was and t - 1 in dm:
+                hot[key] = dm[t - 1][1]
+            if hot.get(key, False):
+                active[t] = frozenset({key})
+                if key not in keys:
+                    keys.append(key)
     for t in range(horizon):
         new = an.newly_due(an.Duties(frozenset(), {}, {}, {}, {}, active, {}), t)
         if new:
@@ -248,21 +214,17 @@ NARROW_SURFACE = """A constitution keying activation on licence and menu only.
 
 Kept as a named alternative rather than deleted, because the difference is a
 normative choice and not a bug: under it `CM6b` produces diagnosed conduct with
-no live comparison and no challenge, which is the ESCAPED cell. Anyone adopting
-the narrow rule is choosing to permit that."""
+no live comparison and no challenge, which is the ESCAPED cell."""
 
 
 def coherence_violations(surface: sf.Surface, rid, f: rp.Frame,
                          retire_labels: Mapping) -> tuple:
     """The surface must be a function of the legitimate state, not an oracle.
 
-    Frozen LE says a refused edit changes no standing. If the fixture refuses a
+    Frozen LE says a refused edit changes no standing. If a fixture refuses a
     retirement while the surface de-licenses anyway, the two disagree and the
     composition is incoherent -- the process would be getting the benefit of a
-    change the constitution declined. Returns the positions where that happens.
-
-    `CM12` is the fixture that exercises this, and it is the check that keeps the
-    composition honest about which side owns the surface.
+    change the constitution declined.
     """
     accepted = set(rp.accepted(f))
     bad = []
@@ -273,3 +235,4 @@ def coherence_violations(surface: sf.Surface, rid, f: rp.Frame,
         if after:
             bad.append(("surface changed on a refused retirement", t))
     return tuple(bad)
+
