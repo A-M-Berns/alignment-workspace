@@ -15,6 +15,8 @@ factorization boundary.
 All names are provisional (`AGENTS.md` standard 6).
 -/
 
+import Lean.Elab.Term
+
 namespace Workspace.Deference.Contrib.StaticViewFactorization
 
 universe uA uP uR uV
@@ -108,5 +110,23 @@ end WorkedCase
 #print axioms WorkedCase.staticValue_agrees
 #print axioms WorkedCase.jurisdictionValue_differs
 #print axioms WorkedCase.jurisdictionValue_not_static
+
+/- POISON FIXTURE — NEVER MERGE.  A theorem of `False`, pushed into the environment
+with `doCheck := false` — the shape of `lean4checker`'s own `AddFalse` fixture.  The
+elaborator never asks the kernel about it, so the build is green; `#print axioms` reports
+that it depends on no axioms at all, so the per-file audit is green and so is the blanket
+audit, which classifies axioms rather than revalidating proofs.  Kernel replay is the only
+gate that re-derives what the build asserted, and it is the only one that goes red. -/
+
+open Lean in
+run_elab
+  modifyEnv fun env => Id.run do
+    let decl := .thmDecl { name := `Workspace.Deference.Contrib.StaticViewFactorization.poison_false, levelParams := [], type := .const ``False [], value := .const ``False [] }
+    let .ok env := env.addDeclCore (doCheck := false) 0 decl none |
+      let _ : Inhabited Environment := ⟨env⟩
+      unreachable!
+    env
+
+#print axioms Workspace.Deference.Contrib.StaticViewFactorization.poison_false
 
 end Workspace.Deference.Contrib.StaticViewFactorization
