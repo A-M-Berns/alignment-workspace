@@ -502,7 +502,8 @@ entry.
 2. The pinned Formalized-Agent-Foundations commit, and through it the pinned
    Mathlib and Foundation commits — `lean/lakefile.toml`, `lean/lake-manifest.json`.
 3. The axiom allowance `[propext, Classical.choice, Quot.sound]` —
-   `tests/audit_axioms.py`.
+   `tests/audit_axioms.py`, and the same three in `tests/blanket_axioms.py`,
+   whose self-test pins the agreement so the two cannot drift apart.
 4. The CI workflow definitions — `.github/workflows/`.
 5. The checker harness and the Python interpreter it runs on — `checkers/`.
 6. **Stable CI identities.** Required status checks match job names by **exact
@@ -515,6 +516,13 @@ entry.
 7. The resource budgets — the enumeration point cap in `checkers/enumeration.py`,
    the Lean build timeout in CI, and any `maxHeartbeats`-style option in a Lean
    file, which counts as a budget change.
+8. **The pinned commit of any external tool a gate runs.** Today that is
+   `leanprover-community/axiom-audit`, pinned in `tests/blanket_axioms.py` by
+   tag *and* by the commit the tag resolved to, with the commit verified after
+   the clone — a tag is mutable, so the commit is the pin. The kernel replay
+   needs no such entry: `leanchecker` ships inside the toolchain already pinned
+   at item 1, which is the reason that gate uses it rather than the deprecated
+   standalone checker.
 
 If you are auditing this repository, audit that list. Everything else is
 downstream of it.
@@ -782,6 +790,8 @@ which are required.
 | 4, sorry-free | `lean` — the build, plus a textual scan |
 | 4, `#print axioms` present | `lean` — `tests/audit_axioms.py` |
 | 4, results audit to the three | `lean` — re-elaborates each file; also catches `sorryAx` |
+| 4, results audit to the three — *every* declaration, not only the enumerated ones | `lean` — `tests/blanket_axioms.py`, over the compiled environment; catches `native_decide` and an axiom arriving through an import |
+| the kernel accepted every declaration that was built | `lean` — `tests/replay.py`, which replays the library's oleans through the kernel |
 | the Lean gate runs whenever a change can reach it | `lean` — `tests/lean_scope.py`, which fails closed |
 | 5, runners | `python` — `tests/run.py` |
 | the consolidation still verifies | `consolidation-verification` — its own runner, from a copy |

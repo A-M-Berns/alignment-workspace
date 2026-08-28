@@ -10,3 +10,9 @@ lean/.lake/
 # as an embedded repository, which git reports in a hint rather than an error
 # and which every gate here passes.
 .claude/
+
+# The replay gate's live fixture is a Lake package built during the run; its
+# toolchain file is copied from `lean/lean-toolchain` at run time so the two
+# cannot drift, and its build tree is disposable.
+tests/replay_fixture/.lake/
+tests/replay_fixture/lean-toolchain

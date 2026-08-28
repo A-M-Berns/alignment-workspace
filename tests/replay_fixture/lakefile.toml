@@ -1,0 +1,13 @@
+# A deliberately kernel-rejected library, built and replayed by `tests/replay.py`
+# so the replay gate proves in every run that it still detects one.
+#
+# Dependency-free on purpose: it must build in seconds, and it must not be able to
+# fail for any reason other than the one it is for. It is not part of the
+# `Workspace` library, is reached by no glob of `lean/lakefile.toml`, and is
+# audited by neither axiom gate.
+name = "replayFixture"
+defaultTargets = ["Fixture"]
+
+[[lean_lib]]
+name = "Fixture"
+globs = ["Fixture.+"]

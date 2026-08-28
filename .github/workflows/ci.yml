@@ -91,6 +91,12 @@ jobs:
       - run: python3 tests/run.py
 
   lean:
+    # The job name is the required-check context, matched by exact string in
+    # `.github/branch-protection.json`. It stays as written even though the job
+    # now runs two gates the name does not mention: renaming it means updating
+    # the protection payload in the same change, and every open pull request
+    # waits on the old context until protection is re-applied. The steps below
+    # are the authority on what the job does; this string is an identifier.
     name: lean — build, sorry-free, axiom audit
     runs-on: ubuntu-latest
     steps:
@@ -144,6 +150,40 @@ jobs:
         run: |
           python3 ../tests/audit_axioms.py --self-test
           python3 ../tests/audit_axioms.py
+
+      # Two second opinions on the same build, added as steps of this job rather
+      # than as jobs of their own: `lean` is a required check matched by exact
+      # string, and a new job name is a change to
+      # `.github/branch-protection.json` that every open pull request waits on.
+      # They inherit this job's work-conditionality for free — they run exactly
+      # when the build they read did.
+      #
+      # They ask different questions and neither replaces the audit above, which
+      # keeps the per-file trust-surface-inventory role. Replay revalidates
+      # proofs and classifies no axioms; the blanket audit classifies axioms over
+      # every declaration and revalidates no proofs (it loads the environment at
+      # `trustLevel := 1024`). The audit above is the enumerated surface. A fault
+      # green in all three had to defeat three different questions.
+      - name: Blanket axiom audit
+        if: steps.scope.outputs.build == 'true'
+        run: |
+          python3 tests/blanket_axioms.py --self-test
+          python3 tests/blanket_axioms.py
+
+      # `!cancelled()` rather than the default `success()`. The three gates above
+      # answer three different questions, and a run where one found something must
+      # still say what the others found — otherwise one red gate looks like one
+      # problem, and the poison fixtures that prove they are not redundant could
+      # not be read off a single run.
+      - name: Kernel replay
+        if: ${{ !cancelled() && steps.scope.outputs.build == 'true' }}
+        # Mathlib is in the import closure; the default of one worker per core
+        # is what makes a replay swap on a two-core runner.
+        env:
+          LEAN_NUM_THREADS: 4
+        run: |
+          python3 tests/replay.py --self-test
+          python3 tests/replay.py
 
   consolidation-verification:
     # Required-check identity is deliberately independent of project prose.

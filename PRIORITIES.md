@@ -2125,3 +2125,39 @@ naming a job no workflow defines. Condition 2 is checked only in the form a scri
 can see: that a write-granting job's context is not a required check.
 *Record:* `prompts/2026-08-16-wiki-in-repo-sync/REPORT.md`.
 
+
+### 74. A second opinion on the Lean verdict: kernel replay and a blanket axiom audit — **[entry]**
+<!-- workspace-priority: project=none; dispatchable=yes -->
+
+The `lean` job trusts one process end to end. `lake build` elaborates, and
+`tests/audit_axioms.py` then asks the *same* environment which axioms the
+declarations named in each file's `#print axioms` lines depend on. Two failures
+are invisible to that arrangement, and neither is exotic.
+
+A declaration can enter the environment without the kernel ever checking it —
+`addDeclCore (doCheck := false)`, a tactic reaching past the checked environment,
+or a bug in Lean's own import or parallel-elaboration handling. Such a
+declaration elaborates, ships an `.olean`, and reports a clean axiom set, because
+an axiom audit reads the environment rather than re-deriving it. Replaying the
+library's `.olean`s through the kernel is what detects it, and the toolchain now
+ships `leanchecker` to do exactly that.
+
+And the audit's reach is the set of names somebody remembered to type after
+`#print axioms`. A declaration in a committed module that no `#print axioms` line
+mentions is built, exported and unaudited. The blanket audit
+(`leanprover-community/axiom-audit`) closes that by auditing *every* declaration
+defined under the library root against the same three axioms, rather than the
+trust surface someone enumerated.
+
+Neither replaces `tests/audit_axioms.py`, which keeps the per-file
+trust-surface-inventory role the house discipline is written around. They are
+second opinions with different failure coverage — the axiom audit classifies
+axioms without revalidating proofs, replay revalidates proofs without classifying
+axioms — and the value is that a single fault cannot be green in all three.
+
+*Deliverable shape:* Steps inside the existing `lean` job in `.github/workflows/ci.yml`, plus their check scripts — **specification layer**, so a maintainer act; contributors propose via issue.
+*Acceptance check:* Both steps run in the `lean` job, each enumerates what it checked and refuses a run that checked nothing, and each has been shown red on a poison branch that the other two gates pass.
+
+*Context:* `.github/workflows/ci.yml`; `tests/audit_axioms.py`; `tests/lean_scope.py`.
+*A solution ships:* the two steps, the module and declaration counts they assert,
+and a transcript per gate of the failure it is for.

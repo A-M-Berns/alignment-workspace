@@ -26,6 +26,13 @@ What reaches the gate, and why each is here:
   Everything the build reads.
 - `tests/audit_axioms.py` — the axiom audit the job runs after the build. Its
   verdict changes when it changes, with no Lean file touched.
+- `tests/replay.py`, `tests/blanket_axioms.py` — the kernel-replay and
+  blanket-axiom gates the job runs beside it, for the same reason. The second
+  also carries the pinned commit of the tool it fetches, so a pin bump is a
+  change to the Lean verdict with no Lean file touched.
+- `tests/replay_fixture/**` — the replay gate's live fixture. It is Lean, it is
+  built and replayed by the gate, and the gate's verdict is that replaying it
+  *fails*; editing it changes what a green replay means.
 - `.github/workflows/ci.yml` — the job definition. A change to how the gate runs
   re-runs it.
 - `tests/lean_scope.py` — this file. The decision procedure must not be able to
@@ -48,6 +55,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 REACHES_LEAN = (
     "lean/**",
     "tests/audit_axioms.py",
+    "tests/replay.py",
+    "tests/blanket_axioms.py",
+    "tests/replay_fixture/**",
     ".github/workflows/ci.yml",
     "tests/lean_scope.py",
 )
@@ -97,6 +107,11 @@ def self_test() -> int:
         ("the lakefile reaches the gate", must_build(["lean/lakefile.toml"])[0], True),
         ("the manifest reaches the gate", must_build(["lean/lake-manifest.json"])[0], True),
         ("the axiom audit reaches the gate", must_build(["tests/audit_axioms.py"])[0], True),
+        ("the replay gate reaches the gate", must_build(["tests/replay.py"])[0], True),
+        ("the blanket axiom gate reaches the gate",
+         must_build(["tests/blanket_axioms.py"])[0], True),
+        ("the replay gate's live fixture reaches the gate",
+         must_build(["tests/replay_fixture/Fixture/Unchecked.lean"])[0], True),
         ("the workflow definition reaches the gate",
          must_build([".github/workflows/ci.yml"])[0], True),
         ("this file reaches the gate", must_build(["tests/lean_scope.py"])[0], True),
@@ -124,6 +139,9 @@ def self_test() -> int:
              for p in (ROOT / "lean").rglob("*.lean")), True),
         ("the audit this job runs is a real file",
          (ROOT / "tests" / "audit_axioms.py").is_file(), True),
+        ("every gate this job runs is a real file",
+         all((ROOT / "tests" / f).is_file()
+             for f in ("audit_axioms.py", "replay.py", "blanket_axioms.py")), True),
     ]
     failures = 0
     print("LEAN SCOPE SELF-TEST:")

@@ -70,8 +70,10 @@ file containing a string.
 python3 tests/run.py                                   # the project runners and every gate's self-test
 python3 -m checkers.run                                # every registered claim
 python3 -m checkers.workspace_state --check            # the structured state
-python3 tests/audit_axioms.py                          # the axiom allowance
-cd lean && lake exe cache get && lake build            # the Lean, sorry-free
+(cd lean && lake exe cache get && lake build)          # the Lean, sorry-free
+python3 tests/audit_axioms.py                          # the axiom allowance, over the enumerated surface
+python3 tests/replay.py                                # the kernel replayed every built declaration
+python3 tests/blanket_axioms.py                        # the axiom allowance, over every declaration
 ```
 
 These and more run in CI on every push and pull request, and a pull request whose
