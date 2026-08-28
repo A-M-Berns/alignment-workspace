@@ -69,9 +69,11 @@ job does and the string is an identifier.
 ### A2 — the audit's scope, and why it is not the tool's default
 
 The lakefile globs `Workspace.+`. That glob builds the submodules and **not** the
-root module: `lean/Workspace.lean` has no olean, which is a fact worth knowing
-independently of this round. So `axiom-audit`'s default — import the root module,
-audit its import closure — would have failed to find an olean at all. And even
+root module — checked on a minimal package with the same glob, where
+`lake build` produces no `Probe.olean` and `axiom-audit`'s default run fails with
+"object file … of module Probe does not exist". So the tool's default here —
+import the root module, audit its import closure — would have found no olean at
+all. And even
 with the root built, its closure reaches `Smoke.lean` and the two `Basic.lean`
 namespace roots, neither of which imports a single `Contrib/` module: the default
 would have audited three files out of fifty-two while reporting success.
@@ -447,7 +449,10 @@ The replay's first run turned up a second thing, and it is the reason the
 module comparison is one-directional. It replayed **50 modules against 48
 committed sources** — the surplus being `Workspace` and `Workspace.Leverage.Basic`,
 oleans restored from an older `.lake` cache by the workflow's `restore-keys`
-prefix, for modules this tree no longer has. A strict equality check would have
+prefix. `Workspace.Leverage.Basic` is certainly that: no such source exists in
+this tree. `Workspace` is the root module the current glob does not build, so it
+is the same story, though on that one the cache and the glob are not
+distinguishable from the log alone. A strict equality check would have
 failed the first real run for a reason that is not a fault. Replaying *more* than
 the sources name is therefore allowed and replaying *fewer* is not, which is the
 direction that corresponds to something being unverified.
