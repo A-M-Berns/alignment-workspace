@@ -2065,3 +2065,23 @@ after the fact, whatever reference makes the repair look best. One trace run
 against two admissible baselines gives opposite verdicts — contested against
 escaped — so the choice is doing substantive normative work and is explicitly
 left provisional rather than frozen.
+
+### 2026-08-28 — promotion permanence is the round's own premise
+
+Agent-decided, under `AGENTS.md` §6. The Answerable Revision closure argument is
+three lines of inheritance from frozen Legitimate Evolution, and the round says
+so rather than presenting it as new. What is not inherited is that the promotion
+record is write-once: a process re-deriving its own past under present standards
+is invisible to the frozen premises, which govern how claims leave the
+outstanding set rather than whether they arrive. `P1` is therefore stated
+separately, checked separately, and exhibited failing.
+
+### 2026-08-28 — historical validity and current endorsement are separate predicates
+
+Agent-decided. A process must be able to say that something really was a reason
+it incurred under its then-legitimate standards while rejecting its force now;
+what it must not be able to say is that because the standards changed there never
+was an answerability relation. Requiring current endorsement for historical
+answerability would collapse the two and make every standards change a laundering
+opportunity, so the theorem depends on the first predicate only and the two are
+allowed to diverge.
