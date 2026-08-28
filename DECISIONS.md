@@ -2085,3 +2085,30 @@ was an answerability relation. Requiring current endorsement for historical
 answerability would collapse the two and make every standards change a laundering
 opportunity, so the theorem depends on the first predicate only and the two are
 allowed to diverge.
+
+### 2026-08-28 — an open challenge episode is pinned to its registration terms
+
+Agent-decided, under `AGENTS.md` §6. A global change to threshold, evaluator or
+protocol applies to everything registered afterwards; applying it to an already
+open challenge requires an explicit transfer to a successor episode. Without this
+the moving-goalpost attack succeeds with nothing erased, nothing rejected and no
+reason ever promoted, and with every other premise satisfied. Pinning binds the
+episode rather than the process, so substantive standards remain revisable.
+
+### 2026-08-28 — the round declines to refuse a pre-existing self-sealing rule
+
+Agent-decided, and it is a decision not to add a premise. A general rule
+installed before any challenge, holding that criticisms threatening authority are
+rejected, passes temporal and inferential integrity. Every candidate premise
+considered for refusing it would also have refused a standing resource-priority
+rule deferring one challenge in favour of another, which is legitimate. The
+boundary is recorded as the Reflective Openness frontier rather than closed by a
+condition that would misclassify legitimate deferral.
+
+### 2026-08-28 — the preceding round's promotion-to-Due bridge is qualified
+
+Agent-decided. `2026-08-28-answerable-revision` listed a Due obligation among
+four things that must not collapse while its realization wired every promoted
+reason straight into frozen `opens`. Rather than redesign it, the two docstrings
+now say the fixtures adopt that bridge as a canonical constitution and state the
+weaker claim the generic theory supports without it. No behaviour changed.

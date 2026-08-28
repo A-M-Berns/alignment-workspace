@@ -77,6 +77,29 @@ a revision reason                  what promotion produces
 a Due obligation                   what a supplied Due semantics may then say
 ```
 
+**The reference realization collapses the last step, deliberately, and the round
+did not say so.** `warrant.duties` wires every promoted reason straight into
+frozen `opens`, which *is* incurrence. So the fixtures adopt
+
+```text
+promotion  ->  answerability incurrence
+```
+
+as one **canonical constitution**, not as a claim about every normative system.
+The generic theory does not identify a revision reason with a Due obligation, and
+the two statements it actually supports are:
+
+> **Historical Reason Persistence.** A promotion that occurred at `t` is a
+> permanent historical event. That is `P1`, and it needs no Due semantics at all.
+
+> **Answerable Revision.** *If* the supplied normative semantics makes a promoted
+> reason incur an answerability claim, then frozen Legitimate Evolution prevents
+> later warrant, evaluator or policy revision from silently erasing it.
+
+Everything below is stated under the canonical instance. A constitution that
+promotes reasons without incurring claims gets the first statement and not the
+second, and this round exhibits no such constitution.
+
 `Reason` identity is `(payload, under, at)`. The warrant and the position are
 part of it because the claim is historical: this reason was promoted *under that
 warrant, at that time*. A later warrant cannot make it a different reason and

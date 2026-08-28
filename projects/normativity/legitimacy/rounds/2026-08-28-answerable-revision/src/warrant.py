@@ -233,8 +233,15 @@ def frame(h: History) -> rp.Frame:
 def duties(h: History) -> an.Duties:
     """Promotion becomes `opens`; resolution becomes `discharges`.
 
-    Nothing else is wired. The theorem below is then read off frozen LE, which is
-    the point: the new content is the promotion semantics, not a new replay.
+    **This is a canonical constitution, not the generic theory.** Wiring
+    promotion straight into `opens` adopts the substantive bridge
+    `promotion -> answerability incurrence`, which the round's own four-way
+    distinction says is a separate question. `P1` and Historical Reason
+    Persistence hold without it; only Answerable Revision needs it, and needs it
+    as a supplied premise rather than as a definition. See
+    `ANSWERABLE_REVISION.md` §C.
+
+    Nothing else is wired. The theorem below is then read off frozen LE.
     """
     opens, key, by_key = {}, {}, {}
     for t in range(h.horizon):

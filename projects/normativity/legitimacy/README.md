@@ -19,4 +19,6 @@ current fixture results. Future legitimacy rounds land under `rounds/`.
   changing the comparison surface: `rounds/2026-08-27-legitimate-improvement/`
 - Answerable Revision — whether reasons survive revision of the standards that
   generated them: `rounds/2026-08-28-answerable-revision/`
+- Answerable challenge service — the layer below promotion, and whether an open
+  criticism can be starved: `rounds/2026-08-28-answerable-challenge-service/`
 - Interpretation and philosophical gloss: [Legitimacy wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Legitimacy)
