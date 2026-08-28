@@ -213,3 +213,291 @@ catches the `native_decide` and not the unchecked declaration; replay catches th
 unchecked declaration and not the `native_decide`. Neither gate subsumes the
 other, and neither subsumes the one that was already there.
 
+### F1 — the blanket audit catches what the enumerated audit cannot
+
+Branch `poison/ws-native-decide`, pull request 65, never merged. One declaration
+appended to `lean/Workspace/Deference/Contrib/StaticViewFactorization.lean`:
+
+```lean
+theorem poison_native_decide : (List.range 64).length = 64 := by native_decide
+```
+
+No `#print axioms` line names it. It is not a proof placeholder, so the textual
+scan in `tests/run.py` does not see it; it is not an `axiom` declaration, so
+`tests/conservativity.py` does not see it; and its axiom —
+`…poison_native_decide._native.native_decide.ax_1_1` — is minted by the compiler
+and written in no source file, so nothing reading the source could see it at all.
+
+On that commit: **`lake build` green, `tests/audit_axioms.py` green,
+`conservativity` green, `tests/replay.py` green, `tests/blanket_axioms.py` red.**
+
+A note on the fixture's own history, because it is the better half of the story.
+The first revision of it explained in prose that the declaration "is not a
+`sorry`" — and the textual scan caught the *comment*. A true positive about the
+scan, and evidence for nothing about the poison. The fixture was reworded to
+avoid the token, which is what made the demonstration honest.
+
+### F2 — replay catches what neither axiom gate can
+
+Branch `poison/ws-unchecked-declaration`, pull request 66, never merged.
+`lean4checker`'s own `AddFalse` fixture, adapted: a `.thmDecl` whose type is
+`False`, pushed into the environment with `doCheck := false`.
+
+On that commit, from the CI log:
+
+```
+AXIOM AUDIT: 756 results across 48 files, all within ['Classical.choice', 'Quot.sound', 'propext']
+```
+
+```
+REPLAY FAILED:
+  - leanchecker exited 1
+    replaying Workspace.Deference.Contrib.StaticViewFactorization
+    leanchecker found a problem in Workspace.Deference.Contrib.StaticViewFactorization
+    uncaught exception: while replaying declaration
+      'Workspace.Deference.Contrib.StaticViewFactorization.poison_false':
+    (kernel) declaration type mismatch, '…poison_false' has type
+      Prop
+    but it is expected to have type
+      False
+```
+
+The elaborator emitted `'…poison_false' does not depend on any axioms` during the
+build, which is what the axiom audit reads. A theorem of `False` in the
+environment, and the axiom gates report it clean, because that is a true answer to
+the question they ask.
+
+**A permanent in-CI fixture was achievable, and was added.** The dispatch asked
+for one only if it could be had cleanly. `tests/replay_fixture/` is a
+dependency-free Lake package holding the same declaration; `tests/replay.py`
+builds and replays it on every run and **fails if that replay succeeds**. Three
+seconds, no dependencies, reached by no glob of `lean/lakefile.toml`, audited by
+neither axiom gate.
+
+It earns its three seconds by pinning what the self-test cannot. Every null-input
+case in `tests/replay.py` would pass unchanged if `leanchecker`, after some future
+toolchain bump, quietly stopped rejecting anything under this repository's
+invocation of it. The fixture is the case that would then fail. Its cost is
+recorded rather than hidden: it reaches into `Lean.Environment`, which carries no
+stability promise, so a toolchain bump can break its elaboration — and the gate
+distinguishes "the fixture no longer compiles" from "the fixture was accepted",
+because reporting the first as the second would be a different claim.
+
+The equivalent for the blanket audit was **not** added, and the reason is that it
+would be ceremony. The audit already refuses a report with zero declarations, a
+wrong root, or a widened allowlist, and those refusals are self-tested. A live
+poison would additionally require carrying a `native_decide` proof in a package
+that is built on every run, which buys a case the tool's own exit code already
+covers.
+
+### F3 — a mismatched checker fails loudly, and cannot pass vacuously
+
+There is no version to mismatch by construction: `lake env leanchecker` resolves
+through `elan` to the toolchain `lean-toolchain` names. The transcript below
+forces the mismatch anyway, by moving the pin under an already-built tree.
+
+```
+### 0. baseline: pin and checker agree
+leanprover/lean4:v4.31.0
+/Users/…/.elan/toolchains/leanprover--lean4---v4.31.0/bin/leanchecker
+replaying Probe.Unreached
+replaying Probe.Good
+rc=0
+
+### 1. the pin is moved forward to v4.33.1; the oleans are still v4.31.0
+leanprover/lean4:v4.33.1
+/Users/…/.elan/toolchains/leanprover--lean4---v4.33.1/bin/leanchecker
+leanchecker found a problem in Probe.Unreached
+replaying Probe.Unreached
+uncaught exception: failed to read file '…/Probe/Unreached.olean', incompatible header
+rc=1
+
+### 2. the pin is moved back to v4.27.0, which predates the bundled checker
+leanprover/lean4:v4.27.0
+error: not a file: '/Users/…/leanprover--lean4---v4.27.0/bin/leanchecker'
+elan-which-rc=1
+```
+
+Three independent things catch each case, which is the answer to "fails loudly
+rather than passing vacuously":
+
+1. `assert_toolchain` compares the pin against the path `elan which leanchecker`
+   resolves, and turns case 2's exit into a message naming v4.28.0 as the release
+   the bundled checker arrived in.
+2. The exit code. Case 1 is `rc=1` with an explicit `incompatible header`.
+3. The module-count assertion. Case 1 died after enumerating one of two modules,
+   so even had it exited zero the missing module would have failed the gate. This
+   is the guard that matters, because it is the only one that survives a checker
+   that fails *silently*.
+
+---
+
+## A4 — runtimes, measured
+
+Warm runs, `ubuntu-latest`, `.lake` restored from cache. Per-step wall times read
+from the Actions API.
+
+**alignment-workspace**, pull request 64, the `lean` job:
+
+| step | warm | note |
+|---|---|---|
+| Cache `.lake` (restore) | 48 s | pre-existing |
+| Mathlib oleans (`lake exe cache get`) | 31 s | pre-existing |
+| Build | 2 s | fully cached |
+| Axiom audit (`tests/audit_axioms.py`) | 217 s | pre-existing; re-elaborates all 48 files |
+| **Blanket axiom audit** | **10 s** | includes cloning and building `axiom-audit`; 3114 declarations |
+| **Kernel replay** | **57 s** | 50 modules; plus ~3 s for the live fixture |
+| job total | ~6 min | was ~5 min |
+
+**Formalized-Agent-Foundations**, branch `demo/faf-gates-run`, the `build` job:
+
+| step | warm |
+|---|---|
+| Free runner disk space | 85 s |
+| Build (`lean-action`, all default targets) | 109 s |
+| Condensation sorry ledger | 7 s |
+| **Kernel replay** | **408 s** — 273 modules across 11 roots |
+| **Blanket axiom audit** | see below |
+
+**Verdict against the ~10 minute budget: both stay in the pull-request path in
+the workspace.** Replay adds 57 seconds warm, an order of magnitude under budget,
+and the blanket audit adds 10. Together they lengthen a warm `lean` job by about
+one minute, against an axiom audit that already costs three and a half. Nothing
+is moved to push-and-nightly here.
+
+The number worth watching is not the one that changed. `tests/audit_axioms.py` at
+217 s is 60% of this job, because it re-elaborates every file with `lake env
+lean`. The blanket audit reaches every declaration in 10 s by reading the compiled
+environment once. That is not a reason to replace the per-file audit — it answers
+a different question and this round does not touch it — but if the `lean` job's
+wall time ever becomes the constraint, that is where the time is.
+
+In Formalized-Agent-Foundations replay costs 408 s, which is why the schedule
+there is push-and-nightly rather than per-pull-request even though it would fit:
+that repository's pull-request path already carries a build measured in minutes
+when the cache misses, and its protection on a pull request is the build, seven
+node checkers, the enumerated inventory and the sorry ledger.
+
+---
+
+## What the new gates found in existing code
+
+### alignment-workspace — nothing, and one surprise about the enumeration
+
+The blanket audit's first run: **3114 declarations under `Workspace`, all within
+`[propext, Classical.choice, Quot.sound]`.** No violation, no debt to classify,
+nothing excluded.
+
+The number is the finding. `tests/audit_axioms.py` reports **756 results across
+48 files** on the same tree. So the enumerated trust surface covers roughly a
+quarter of what is built, and the other three quarters had never been asked. They
+turn out to be clean, which is the outcome to want and not the outcome to assume:
+the gap between 756 and 3114 was invisible before this round and is now
+checked on every run.
+
+The replay's first run turned up a second thing, and it is the reason the
+module comparison is one-directional. It replayed **50 modules against 48
+committed sources** — the surplus being `Workspace` and `Workspace.Leverage.Basic`,
+oleans restored from an older `.lake` cache by the workflow's `restore-keys`
+prefix, for modules this tree no longer has. A strict equality check would have
+failed the first real run for a reason that is not a fault. Replaying *more* than
+the sources name is therefore allowed and replaying *fewer* is not, which is the
+direction that corresponds to something being unverified.
+
+### Formalized-Agent-Foundations — three committed modules that nothing compiles
+
+The blanket audit found **no axiom violation** in any audited root.
+
+The replay found something else, and it is the round's most substantive finding
+about existing code: **three committed `LogicalInduction` modules are compiled by
+nothing.** They are reachable from no library root and imported by no module, so
+`lake build` never touches them, `AxiomAudit.lean` never sees them, the sorry
+ledger never sees them, and no node checker reads their declarations.
+
+Classified, per the dispatch's instruction to report rather than exclude:
+
+| module | classification |
+|---|---|
+| `LogicalInduction/Construction/Machine/TimedRespectsProbe.lean` | **scratch.** Its own header: "This file is a spike, not part of the formalization. It is not imported by `LogicalInduction.lean`, contributes to no endpoint, and carries no paper node." |
+| `LogicalInduction/Framework/FirstOrderSubstrateProbe.lean` | **scratch.** Its own header: "Not part of the build … imported by nothing, claims no paper node, and is excluded from `AxiomAudit`." |
+| `LogicalInduction/Framework/Machine/SentenceCodes.lean` | **debt.** It says no such thing. It presents itself as content — `RpnSentenceCodes.toMachine`, the machine reading of the efficient sentence-sequence class — and `Framework/RpnEmission.lean` cites it by path in prose. Nothing imports it, so nothing compiles it. |
+
+The third is the one worth a decision. It is not scratch that says it is scratch;
+it is a module written as part of the machine-reading line, pointed at from a
+built module's documentation, and never compiled. Whether to wire it into the
+build or retire it is a question for that line and not for a CI gate, so this
+round did neither. What it did do is make the situation impossible to keep
+missing: `UNBUILT` in `scripts/lean_gates.py` names all three with reasons, the
+replay prints them on every run, and the list fails in both directions — a module
+that is neither built nor listed fails, and a listed module that turns out to be
+built fails too, so no entry can outlive the situation it describes.
+
+A second, smaller finding from the same run: `ShannonInformation.lean` is not
+compiled either, but for a structural reason rather than an oversight — the
+library is globbed `.submodules`, which builds the submodules and not the root
+module. `source_modules` now reads the lakefile's globs, so the three forms
+(`.submodules`, `.andSubmodules`, no globs) are distinguished, with a self-test
+case each. The same is true of `lean/Workspace.lean` in this repository, whose
+library is globbed `Workspace.+`.
+
+---
+
+## What these gates do not establish
+
+Worth stating plainly, because two new green checks invite more confidence than
+they earn.
+
+**Replay trusts the `.olean` files are structurally well-formed.** The Lean
+reference manual is explicit: it "is prone to an attacker crafting invalid
+`.olean` files". It is a defence against bugs in Lean's handling of declarations
+and against tactics that bypass the checked environment — not against a forged
+build artifact.
+
+**The blanket audit revalidates no proofs.** It loads the environment at
+`trustLevel := 1024`, taking imported constants as type-correct. It answers *which
+axioms*, and its answer is only as good as the build it reads — which is exactly
+why replay is its sibling and not its replacement.
+
+**Neither says the statements mean anything.** A theorem can be kernel-checked,
+axiom-clean, and vacuous, or true and about the wrong object. That is the
+nonvacuity witness's job and the human read-through's job, and nothing here
+touches either.
+
+**Coverage is defined by what is on disk and what was built.** In this repository
+the audit's module list comes from the source tree, so a module deleted from disk
+stops being audited silently — which is correct, but is a fact about the gate
+rather than about the library. In Formalized-Agent-Foundations coverage is what
+`lake build` compiled, which is why the three unbuilt modules above are a finding
+and not an omission.
+
+---
+
+## Verification
+
+Both repositories, on the round branches:
+
+- Full local suite green: `python3 tests/run.py` (28 project runners, every
+  gate's self-test, gate coverage), `python3 -m checkers.run`,
+  `python3 -m checkers.workspace_state --check`, `python3 tests/workflow_scope.py`,
+  `python3 tests/dead_pointers.py`, `python3 tests/name_lint.py`.
+- `python3 scripts/lean_gates.py --self-test` in the sibling repository: 42 cases.
+- Every required check green on pull request 64, including the two new steps
+  inside the `lean` job.
+- Pull request 7 in the sibling repository green, with the two gates correctly
+  **skipped** on the pull-request path and the self-test running.
+
+New self-test cases: 16 in `tests/replay.py`, 16 in `tests/blanket_axioms.py`,
+5 added to `tests/lean_scope.py`, 42 in `scripts/lean_gates.py`. Every guard that
+makes a gate fail closed has one, so removing the guard fails the self-test that
+pins it.
+
+## Housekeeping
+
+Four branches exist only for the transcripts above and are **never merged**:
+`poison/ws-native-decide` and `poison/ws-unchecked-declaration` here, and
+`demo/faf-gates-run` and `poison/faf-native-decide` in the sibling repository.
+The `demo/` branch exists because the push-only gates cannot run on a pull
+request by design and `workflow_dispatch` is not available until the workflow
+declaring it is on the default branch; it adds itself to `ci.yml`'s push-branch
+list and differs from the round branch in nothing else. All four are deleted once
+this report is filed.
