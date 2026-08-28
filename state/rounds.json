@@ -895,6 +895,21 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-25-legitimate-evolution/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-27-legitimate-improvement",
+      "date": "2026-08-27",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement",
+      "verdict": "NO-FREE-EVASION-SURVIVES-BUT-EVIDENCE-INTERFACE-OPEN — Theorem C survives the prosecution and is now stated over the right objects, and what blocks a clean merge is not the theorem but the meaning of *demonstrated*. The pass's main repair is separating three things the round had run together: evidence, which says r is an improvement relative to some baseline; uptake regret, which asks whether the played policy leaves that advantage unused while r is live; and answerability, which governs what remains after r is withdrawn. Evidence and uptake regret are the same functional on different distributions and are independent in both directions — a process that has adopted the repair has exactly zero uptake regret and may still have a large demonstrated improvement, and a process leaving advantage unused may never reach the threshold that makes a challenge eligible. So the challenge is grounded by the demonstration and never by the failure to act on it, and the challenge module names no regret quantity at all. Two implementation bugs are fixed: the Khot-Ponnuswami fixed point was computed by power iteration justified by stochasticity alone, which is false for periodic kernels and returned a vector off stationarity by two thirds on an exhibited period-2 chain; and AdaNormalHedge's auxiliary B was computed from one expert's own accumulated regret rather than the paper's global prior-weighted quantity. One headline claim is corrected: a surgical repair empties the diagnosed action only when no active comparator maps another action into it, since stationarity carries an inflow term the round had dropped, and the corrected version is what made the first genuine exercise of Theorem B constructible. The open seam is the baseline: one trace run against two admissible baselines gives contested against escaped, so the baseline is doing substantive normative work that the round supplies rather than derives.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/README.md",
+      "depends_on": [
+        "2026-08-25-legitimate-evolution",
+        "2026-08-24-reflective-integrity-core"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-27-legitimate-improvement/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

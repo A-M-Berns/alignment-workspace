@@ -1270,6 +1270,81 @@ recurrence, where a claim key falls and rises and mints a second root.
 *RI REALIZATION OF D1*; `COUNTERMODELS.md` §19.
 *Reserved:* implementing it edits the Reflective Integrity Core round's artifact.
 
+### 72. Close the two evasions the improvement theorem cannot — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+`NO-FREE-EVASION-SURVIVES` holds for a **demonstrated** repair. Two ways of
+preventing a demonstration from ever existing are outside it, and both are
+executed fixtures rather than speculation.
+
+**Preemptive retirement** (`cases.cm2_preemptive_delicensing`). Retire the repair
+before comparative evidence accumulates and there is no challenge, no contest and
+no settlement — 196 diagnosed occasions in the ESCAPED cell with the frozen
+package entirely satisfied. The theorem's own test asserts this escape rather
+than hiding it. What would be needed is a Coverage or anti-manipulation premise
+saying that the process may not arrange for the evidence not to exist.
+
+**Evaluator shedding** (`cases.cm5_evaluator_shedding`). Keep the repair
+licensed and change the evaluator so it stops scoring as an improvement. Nothing
+in the record distinguishes *the repair stopped helping* from *we changed what
+counts as help*. Pinning an evaluator era is not enough while the same process
+writes the evaluator before choosing its action; the round declines to call era
+locking a solution.
+
+*Deliverable shape:* the weakest independence or counterfactual-integrity premise
+under which either escape is caught, or the finding that the escape is
+ineliminable at this layer and belongs to Coverage.
+*Acceptance check:* CM2 and CM5 rerun under the proposed premise, with the
+ESCAPED cell empty in the first and a challenge activated in the second.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/LEGITIMATE_IMPROVEMENT.md`
+§§A, E, I.
+*Consumed by:* the deference line, which wants the override fixture to be
+escape-proof and not merely accounted for.
+
+**Sharpened by the prosecution pass.** Preemptive retirement is probably *not*
+ordinary Coverage. The repair is represented, the contexts are visible, and what
+the process suppresses is the *evidence*, not the world. Stated behaviourally,
+the missing premise is: **candidate improvements that remain relevant receive
+enough non-manipulated exposure to become demonstrable if they really have
+persistent advantage.** That reads as exploration or evidence-production
+integrity rather than coverage of external failures, and the round declines to
+force it under Coverage's label.
+
+---
+
+### 73. What is the baseline for a demonstrated improvement — **[open]**
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The improvement theorem's verdict turns on a baseline the round supplies rather
+than derives, and the dependence is not cosmetic. `cases.cm17_baseline_changes_the_verdict`
+runs one trace against two admissible baselines:
+
+```text
+baseline = the unmodified conduct    evidence 48.0  demonstrated   contested 180
+baseline = an already-good policy    evidence  0.0  not demonstrated  escaped 180
+```
+
+Same process, same losses, same withdrawal, opposite verdicts. Both baselines
+satisfy the two conditions the round can state — predictable, and committed
+before the loss is revealed — so nothing available distinguishes them.
+
+Five candidates were prosecuted and none is privileged: the unmodified
+procedure's output, the recorded pre-repair recommendation, a consumer-supplied
+reference, an explicit shadow execution, and an abstract comparison certificate.
+They are one type in the reference model, which is the round's answer to *which
+is right*: the theorem does not need to know, but a consumer does.
+
+*Deliverable shape:* either a condition that selects the baseline from the
+process's own structure, or the finding that the baseline is irreducibly
+consumer-supplied together with what a consumer must state when it supplies one.
+*Acceptance check:* `cm17` rerun under the proposal, with the two verdicts either
+reconciled or the divergence shown to be the correct answer.
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-27-legitimate-improvement/LEGITIMATE_IMPROVEMENT.md`
+§8; `src/evidence.py`.
+*Consumed by:* item 72, whose exposure premise is stated relative to a baseline.
+
 ---
 
 ## Deference line

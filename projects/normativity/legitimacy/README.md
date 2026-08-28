@@ -15,4 +15,6 @@ current fixture results. Future legitimacy rounds land under `rounds/`.
 - Grounded Replay, Proper Exercise and Answerability Continuity — the two
   structural kernels and the argument that propriety and liability are semantic:
   `rounds/2026-08-25-legitimate-evolution/`
+- Legitimate Improvement — whether a demonstrated repair can be escaped by
+  changing the comparison surface: `rounds/2026-08-27-legitimate-improvement/`
 - Interpretation and philosophical gloss: [Legitimacy wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Legitimacy)
