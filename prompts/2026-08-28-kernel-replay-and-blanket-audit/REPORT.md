@@ -569,6 +569,29 @@ New self-test cases: 16 in `tests/replay.py`, 16 in `tests/blanket_axioms.py`,
 makes a gate fail closed has one, so removing the guard fails the self-test that
 pins it.
 
+## The reservation bar
+
+**Nothing is reserved to the maintainer, and the dispatch's trigger did not
+fire.** It reserved the case where the blanket audit finds a real violation in
+existing code whose classification is genuinely unclear. The blanket audit found
+no violation in either repository — 3114 declarations here and 28 627 there, all
+within the three.
+
+What was found instead came from the replay, and its classification is not
+unclear: three committed modules that nothing compiles, two of which say in their
+own headers that they are spikes. The third,
+`LogicalInduction/Framework/Machine/SentenceCodes.lean`, is unambiguously *not*
+scratch — and the decision it invites, whether to wire it into the build or
+retire it, is a decision for that formalization line rather than a debt-versus-
+exclusion call for a CI gate. This round records it, names it in the gate's own
+source, and prints it on every run. Adopting it either way would be this round
+legislating over a line it was not dispatched into.
+
+Everything else — the gate placement, the scope choices, the pull-request-versus-
+main scheduling, and the substitution of the toolchain's own checker for the
+deprecated repository the dispatch named — is agent-decided and reversible, and
+each is a dated `DECISIONS.md` entry or a documented constant.
+
 ## Housekeeping
 
 Four branches exist only for the transcripts above and are **never merged**:
