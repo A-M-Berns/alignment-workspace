@@ -14,7 +14,8 @@ For rows 1–15 and 18–20, \(Z=\{0,1\}\) unless stated otherwise and
 \]
 
 `⊥` is no receipt. `Access` means one admissible route policy has
-\(T=d_q\circ Y_q\). `Registration` is evaluated on \(q^{\rm act}\).
+\(T=d_q\circ Y_q\). `Registration` means robust counterfactual registration under
+\(q^{\rm act}\), not a historical event; the follow-up audit separates the four stages.
 `Implements` requires target preservation and one route with both access and
 registration. “PE” is the Coverage specialization in `PROPER_EXERCISE.md`, not a
 structural Continuity check.

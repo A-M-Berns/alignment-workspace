@@ -1,7 +1,7 @@
 """Boolean skeleton of No Clean Self-Sealing.
 
 This isolates what comes from exact outstanding-set evolution and what must be supplied by
-Coverage Resolution Soundness.  It is not a model of the full Continuity trace.
+local closure adequacy.  It is not a model of the full Continuity trace.
 """
 
 from dataclasses import dataclass
@@ -21,7 +21,7 @@ class Step:
 
     @property
     def resolution_sound(self) -> bool:
-        """A defective contract may not be terminally resolved."""
+        """Local closure adequacy: a post-defect cannot certify terminal closure."""
         return not (self.resolves_last_carrier and not self.opens_successor and self.defect)
 
     @property

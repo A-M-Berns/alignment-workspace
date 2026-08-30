@@ -22,12 +22,12 @@ class FiniteModels(unittest.TestCase):
     def test_route_existence_does_not_imply_exercise(self):
         model = MODELS["route_never_exercised"]
         self.assertTrue(model.implemented())
-        self.assertFalse(model.actual_registration())
+        self.assertFalse(model.registration_on_actual_policy())
 
     def test_exposure_does_not_imply_registration(self):
         model = MODELS["receipt_not_registered"]
         self.assertTrue(model.structurally_accessible())
-        self.assertFalse(model.actual_registration())
+        self.assertFalse(model.registration_on_actual_policy())
         self.assertFalse(model.implemented())
 
     def test_target_change_rejects_end_to_end_route(self):

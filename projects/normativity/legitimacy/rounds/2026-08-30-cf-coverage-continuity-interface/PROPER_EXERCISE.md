@@ -49,10 +49,10 @@ The typed refinements are:
 
 - `Permit`: a change of standing may not erase the authority of the anchored coverage
   issue or its historical scope without an accepted disposition/translation.
-- `Resolve`: terminal resolution of \(q_\sigma\) is accepted only if every active
-  criticism is represented, the contract is implemented for remaining ones, or an
-  anchored authorized disposition covers the exception. A successor resolution must
-  transport scope and pending failures.
+- `Resolve`: a local closure certificate predicts the post-transition anchored contract
+  state. Terminal resolution of \(q_\sigma\) is accepted only if every predicted active
+  criticism is represented, has an adequate route, or has an anchored authorized
+  disposition. A successor resolution must transport scope and pending failures.
 - `Continue`: a successor state carries the anchored scope, target transports,
   representation state, and open failures.
 - `Met`: deletion of a sensor or concept is not satisfaction. Receipt/registration,

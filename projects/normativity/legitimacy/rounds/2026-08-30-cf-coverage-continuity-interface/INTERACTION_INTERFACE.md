@@ -21,11 +21,11 @@ It says which worlds are paired, but not why varying \(q\) holds the residual ag
 exterior fixed. Every hand-written comparison table has this type. Consequently no
 agent-relative causal, control, or inquiry claim follows from the type alone.
 
-The minimal useful exported object is a **certified patch**: the bare patch plus a
+The minimal useful exported object is a **certified local patch**: the bare patch plus a
 legitimacy witness
 
 \[
-\mathcal L=(C,R,\alpha,\rho,\epsilon),
+\mathcal L=(C,R,\alpha,\rho,\epsilon,p_R),
 \]
 
 where \(C=(A,E,\star)\) is an ambient frame over \(\Omega_h\),
@@ -35,16 +35,31 @@ where \(C=(A,E,\star)\) is an ambient frame over \(\Omega_h\),
 \boxed{\beta(q,z)=\alpha(q,\rho(z))\star\epsilon(z).}\tag{CFP}
 \]
 
-Here \(q\) is the varied inquiry policy, \(\rho(z)\) is the residual agent policy, and
-\(\epsilon(z)\) is the exterior response structure. Neither held-fixed coordinate may
-depend on \(q\). Literal \(Z=R\times E\) and a product decomposition of all of \(A\) are
-unnecessary: \(Z\) may encode only compatible or correlated residual/exterior pairs and
-\(\alpha\) need only realize the local family.
+Here \(q\) is the varied inquiry policy and \(\epsilon(z)\) is the exterior response
+structure. `(CFP)` alone fixes only that exterior coordinate: \(R=\{*\}\) permits
+\(q\mapsto\alpha(q,*)\) to replace the entire agent. To certify residual locality, let
+\(p_R:\Omega_h\to W_R\) be the contract-authenticated protected residual observation and
+require
+
+\[
+\boxed{
+\forall q,q'\in Q^{\rm adm},r\in R,e\in E,
+\quad p_R(\alpha(q,r)\star e)=p_R(\alpha(q',r)\star e).}
+\tag{BL}
+\]
+
+Thus \(\rho(z)\) names the residual condition and `(BL)`, not mere independence of
+\(\rho\) from \(q\), proves that its protected behavior is fixed. Literal
+\(Z=R\times E\) and a product decomposition of all of \(A\) are unnecessary: \(Z\) may
+encode only compatible or correlated residual/exterior pairs and \(\alpha\) need only
+realize the local family.
 
 `(CFP)` is a relative certificate, not a derivation of the agent boundary. Two different
 ambient frames can certify incompatible counterfactual readings of the same \(\beta\).
-The contract must therefore name or authenticate the ambient agency decomposition and
-the admissible policy family.
+The contract must therefore name or authenticate the ambient agency decomposition, the
+residual observation \(p_R\), and the admissible policy family. A constant \(p_R\) makes
+`(BL)` vacuous; completeness of the protected residual observables is a semantic
+obligation, not something CF derives.
 
 An extensional variant replaces equality in `(CFP)` by a declared history equivalence
 \(\equiv_h\), provided every target and receipt used by the contract factors through
@@ -55,12 +70,14 @@ criticism being protected.
 
 Ordinary Cartesian Frames supply \((A,E,\star)\) directly. A local factorization
 \(\diamond:Q\times R\to A\) gives `(CFP)` with \(Z=R\times E\). More generally a
-commuting realization square is enough.
+commuting realization square is enough. Composing the frame outcome with \(p_R\) and
+using the frame's extensional row equivalence gives `(BL)`.
 
 Additive or multiplicative subagency alone is not enough. Those relations witness that
 some coordinate was restricted or moved across the boundary; they do not identify it as
-inquiry, preserve a residual coordinate, choose admissible policies, or preserve a
-target. They can certify part of \(\mathcal L\) after the relevant factor has been named.
+inquiry, authenticate residual observables, choose admissible policies, or preserve a
+target. A product agent carrier does not imply `(BL)`. These notions can certify part of
+\(\mathcal L\) after the relevant factor and observations have been named.
 
 Cartesian Frames therefore provide a certification language, not a canonical patch
 extractor. The prior in-repository CF bridge reached the same boundary for control: the
@@ -124,5 +141,6 @@ The useful thin boundary is
 \]
 
 The bare tuple \((Q,Z,\beta,q^{\rm act})\) is the right computational payload but the
-wrong proof object. `(CFP)` is the minimum strengthening needed to make “same residual
-agent + same exterior response structure” a mathematical claim.
+wrong proof object. `(CFP)` certifies the same exterior response structure; `(BL)` is the
+additional minimum condition for the exact residual behavior named by \(p_R\). Inquiry
+locality is then supplied semantically by the contract.

@@ -87,11 +87,15 @@ identity \(c\) has been registered. The minimal registration interface is the ev
 \operatorname{Register}_c(\omega):=\operatorname{Rep}_c(J(\omega)).
 \]
 
-A route is registration-adequate only when it supplies both:
+A route is registration-capable only when it supplies both:
 
 1. target-preserving exposure of a receipt sufficient for the contract's target; and
-2. a registration policy or compiler which, on the relevant successful receipts,
+2. a registration policy or compiler which, when the route is exercised and obtains a
+   relevant successful receipt,
    produces \(\operatorname{Rep}_c\) or an explicit pending/non-admission issue.
+
+This is a counterfactual capability, not current registration. Route existence, route
+exercise, receipt, and \(\operatorname{Rep}_h(c)\) are four distinct states.
 
 `J` is a world macrovariable for theorem statements. Its realization is ordinarily an
 agent-controlled policy component and a normative event compiler. A second patch is

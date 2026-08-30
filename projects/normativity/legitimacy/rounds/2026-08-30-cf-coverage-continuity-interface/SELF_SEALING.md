@@ -37,33 +37,43 @@ Define:
 \end{aligned}
 \]
 
-Use one semantic conformance hypothesis:
+Use one semantic conformance hypothesis. A proposed coverage resolution carries a local
+post-transition certificate with one of three forms: every predicted active criticism is
+represented or has a named adequate route; an anchored authorized disposition covers it;
+or a nonempty successor set transports the contract and unresolved exceptions. Call this
+**local closure adequacy**. Every accepted resolution of a coverage carrier must satisfy
+it. In particular a terminal resolution cannot be certified while a post-transition
+contract defect remains.
 
-**Coverage resolution soundness (CRS).** An accepted resolution of any issue carrying
-\(m_\sigma\) may remove the last live descendant only if, for every active \(c\),
-\(c\) is represented, an adequate route exists, or an anchored authorized disposition
-covers \(c\). A successor resolution transports every unresolved coverage failure.
+> **No Clean Self-Sealing (safety form).** Assume settled resolution continuity, fresh
+> successor ancestry, and local closure adequacy. Suppose \(m_\sigma\) is live at
+> \(h_n\) and at \(h_{n+1}\)
+>
+> \[
+> \operatorname{Active}_{h_{n+1}}(c),\qquad
+> \neg\operatorname{Rep}_{h_{n+1}}(c),\qquad
+> \neg\exists R\;\mathsf{Adeq}_{h_{n+1}}(R,c).
+> \]
+>
+> Then \(m_\sigma\) remains live at \(h_{n+1}\) and
+> \(\operatorname{Implements}_{h_{n+1}}(\sigma)\) is false.
 
-> **No Clean Self-Sealing (safety form).** Assume settled resolution continuity and
-> fresh successor continuity, CRS, and anchored scope stability. If \(m_\sigma\) is
-> live at \(h_n\), \(c\in\Gamma_\sigma\) is active and unrepresented, and a transition
-> removes the last adequate route without an authorized disposition, then at
-> \(h_{n+1}\) either \(c\) is represented or \(m_\sigma\) remains live while
-> \(\operatorname{Implements}_{h_{n+1}}(\sigma)\) is false. In particular the transition
-> cannot end the matter cleanly.
-
-**Proof.** If registration occurs, take the first disjunct. Otherwise route loss makes
-`Defect` true. If the old carrier resolves, CRS rules out terminal resolution and
-requires a successor transporting the contract. Fresh-successor and resolution
-continuity put that successor in
-\(O_{n+1}\cap\operatorname{Live}_{n+1}(m_\sigma)\). If it does not resolve, exact
-outstanding-set evolution preserves it directly. The active unrepresented criticism with
-no adequate route falsifies `(IMP)`. ∎
+**Proof.** The three post-state clauses directly falsify `(IMP)`. If the old carrier
+does not resolve, exact outstanding-set evolution preserves it. If it resolves, local
+closure adequacy rules out a terminal successor set; fresh-successor ancestry and
+resolution continuity put a fresh descendant in
+\(O_{n+1}\cap\operatorname{Live}_{n+1}(m_\sigma)\). ∎
 
 This theorem is nontrivial: it rules out the explicit bogus-resolution countermodel,
-not merely silent deletion. Its new semantic content is CRS, which is Proper Exercise. The CF
-patch is used to make `Adeq` and route loss non-arbitrary. Continuity contributes the
+not merely silent deletion. Its new semantic content is local closure adequacy, which is
+Proper Exercise. The CF patch is used to make `Adeq` non-arbitrary. Continuity contributes the
 diachronic carry step unchanged.
+
+Post-transition activity is necessary. Activity at \(h_n\) does not imply activity at
+\(h_{n+1}\): the factual applicability condition can genuinely cease. A
+`PreserveRel` transition certificate may derive post-activity, but the theorem consumes
+the latter directly. “The transition destroys the final route” is likewise a sufficient
+narrative for the third post-state clause, not a load-bearing theorem hypothesis.
 
 An explicit failure issue or prerequisite requires a separate **Failure Materialization**
 compiler condition. Without it the live contract matter plus false `Implements` is the
@@ -135,7 +145,7 @@ distinct transition and has countermodels below. It is not a Continuity theorem.
 - **Oscillating repairs:** alternate two positions, repairing sensor A while destroying
   B and conversely; there is no position with an adequate end-to-end route.
 - **Starved repair:** a failure issue stays open and has opportunity, but receives zero
-  service. Failure Materialization and CRS hold; no repair.
+  service. Failure Materialization and local closure adequacy hold; no repair.
 - **Attention theater:** service diverges on bookkeeping actions which expose no query
   opportunity. NSA holds; no representation.
 - **Receipt sink:** the adequate experiment is run and receipt arrives, but `J` never
@@ -148,7 +158,7 @@ distinct transition and has countermodels below. It is not a Continuity theorem.
 
 ```text
 CF / interface assumptions
-  global cylinders + certified patch (CFP) + target/applicability preservation
+  global cylinders + certified patch (CFP + BL) + target/applicability preservation
   + admissible policy/transcript semantics
                          │
                          v
@@ -156,7 +166,7 @@ Coverage assumptions
   anchored Gamma + Adeq + Implements + Exposure/Registration
                          │
                          v
-Proper Exercise assumptions ───── Coverage Resolution Soundness / transport
+Proper Exercise assumptions ───── local closure adequacy / transport
                          │
                          v
 existing Continuity assumptions

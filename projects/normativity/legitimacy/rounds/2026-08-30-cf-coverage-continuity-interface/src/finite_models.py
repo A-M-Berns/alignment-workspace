@@ -50,15 +50,19 @@ class Model:
     def structurally_accessible(self) -> bool:
         return any(self.query_exposes(q) for q in self.route_queries)
 
-    def actual_registration(self) -> bool:
+    def registration_on_actual_policy(self) -> bool:
+        """Robust counterfactual registration under q_act, not a past event."""
         return all(self.beta[self.actual_query, z].represented for z in self.complements)
+
+    def route_registration_capable(self, q: Hashable) -> bool:
+        return all(self.beta[q, z].represented for z in self.complements)
 
     def implemented(self) -> bool:
         if not self.active or self.disposition:
             return True
         return self.target_preserving() and any(
             self.query_exposes(q)
-            and all(self.beta[q, z].represented for z in self.complements)
+            and self.route_registration_capable(q)
             for q in self.route_queries
         )
 
@@ -227,6 +231,6 @@ def signature(model: Model) -> tuple[bool, bool, bool, bool]:
     return (
         model.target_preserving(),
         model.structurally_accessible(),
-        model.actual_registration(),
+        model.registration_on_actual_policy(),
         model.implemented(),
     )
