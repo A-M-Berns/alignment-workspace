@@ -40,6 +40,12 @@ finite minimax gives
 \tag{D}
 \]
 
+This equality is the finite bilinear minimax theorem on the compact convex trimmed
+simplex and row simplex. Feasibility of `(P)` is equivalent to the left side being
+nonnegative: a feasible `mu` has every slack nonnegative, while compactness makes the
+maximum strictly negative when no feasible `mu` exists. Therefore the right side is
+negative exactly in the infeasible case, yielding the strict certificate below.
+
 Thus `(P)` is infeasible exactly when there is `lambda>=0`, `1^Tlambda=1`, and
 `delta>0` such that
 
@@ -61,6 +67,10 @@ The inner maximum is explicit. If `c_i=lambda^TAs^i`, then
 operative demands requires a combined value strictly exceeding every assessment that
 retains `theta` coverage. This is an exact alternative, not a heuristic separator.
 
+It proves only failure of this joint covered-compatibility LP for the stated profiles,
+rows, and `theta`. It does not prove that a row is false, a source reason ungrounded,
+the agent must stop acting, or weakening a row is the correct response.
+
 ## 3. Example
 
 Take profiles `(0,1)` and `(1,0)`, rows `v_1>=3/4` and `v_2>=3/4`, and any
@@ -76,7 +86,8 @@ record without becoming a new self-authorizing normative reason.
 
 ## 4. Adjudication interface
 
-A verified `(UC)` certificate should make a Continuity-visible conflict available:
+A Proper-Exercise protocol may use a verified `(UC)` certificate to make a
+Continuity-visible conflict available:
 
 \[
 \text{no covered underwriting}
@@ -85,7 +96,7 @@ A verified `(UC)` certificate should make a Continuity-visible conflict availabl
 \]
 
 Permissible answers include priority adjudication, inquiry, a justified settlement
-model revision, or a controlled enforcement schedule. Silently dropping rows or
-resetting the authority ledger is not an answer. The implication is a proposed
-realization protocol, not part of the convex theorem.
-
+model revision, or a controlled enforcement schedule. Silently enforcing every row
+at full authority despite the receipt requires some other safety certificate;
+silently dropping rows or resetting the ledger is not an answer. This normative
+protocol rule is proposed Proper Exercise, not a consequence of the LP theorem.

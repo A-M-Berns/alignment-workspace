@@ -31,8 +31,9 @@ include unresolved conflict among demands, a poor descriptive settlement model, 
 the need to adjudicate which rows may exert authority simultaneously. Liability
 compatibility is therefore a Proper-Exercise constraint on joint leverage.
 
-An infeasibility certificate is a reason to acknowledge and service the conflict. It
-does not itself authorize weakening a row.
+An infeasibility certificate can be made a reason to acknowledge and service the
+conflict by a separate Proper-Exercise protocol. The LP result alone does not impose
+that norm and does not authorize weakening a row.
 
 ## 3. Authority revision and anti-reset
 
@@ -86,12 +87,20 @@ Coverage -> represented reasons -> Continuity -> Progress
 - Grounding explains why governing schemas are attributable.
 - Continuity prevents lifecycle erasure.
 - Progress prevents indefinitely inert service.
-- Liability limits how the concrete authority implementing leverage may be subsidized
-  or dominate the market.
+- Liability determines whether the joint exercise of normative leverage is
+  indefinitely subsidized or can financially dominate the market realization.
 
 By theorem dependency, liability is currently a Progress-realization and
 Proper-Exercise condition, not a fourth schematic pillar. Its algebra is general
 enough to apply to other authority exercises later.
+
+The sharpened division is:
+
+> Grounding determines whether authority has attributable provenance; Continuity
+> determines which incurred obligations survive; Progress determines whether
+> answerable reasons may remain behaviorally inert; liability constrains how those
+> grounded reasons may jointly exercise sustained authority without unbounded
+> subsidy.
 
 ## 6. Guarantees and non-guarantees
 
@@ -101,4 +110,3 @@ do not supply this financial invariant.
 
 It does not prove correctness, legitimacy of source reasons, proper authorization,
 Coverage, non-starvation, Uptake, conflict resolution, or eventual closure.
-

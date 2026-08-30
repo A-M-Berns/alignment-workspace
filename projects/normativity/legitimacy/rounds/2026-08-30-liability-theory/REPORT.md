@@ -22,8 +22,11 @@ d_n=[-(\mu_n-\mu_{n-1})\cdot E_{n-1}]_+.
 
 Uniformly bounded total switching debt implies bounded liability. A checkable
 subfragment follows when the supporting mixtures have lifetime total variation
-`T<theta`. General controlled selection and inventory-sensitive switching remain the
-single research core. PR50's pump is precisely an unbounded refinancing witness.
+`T<theta`, after replacing terminal liability by running worst liability in the
+range estimate. The original TV proof's terminal-horizon inequality was false; the
+switching identity and numerical bound survive the repair. General causal controlled
+selection and inventory-sensitive switching remain the single research core. PR50's
+pump is precisely an unbounded refinancing witness.
 
 ## Governing questions
 
@@ -75,16 +78,17 @@ object; set gap is a one-dimensional geometric component.
 ### 7. Is controlled drift checkable?
 
 Yes in a meaningful fragment. If each current exercise is underwritten by a
-`theta`-covered `mu_n`, accumulated switching debt is at most `S+kappa L_N`, and
+`theta`-covered `mu_n`, accumulated switching debt satisfies at every horizon
+`D_n<=S+kappa bar L_n`, and
 `kappa<theta`, then
 
 \[
-L_N\le\frac{S+(1-\theta)U}{\theta-\kappa}.
+\bar L_N\le\frac{S+(1-\theta)U}{\theta-\kappa}.
 \]
 
 Moreover total supporting-mixture variation `T<theta` implies this with
 `S=TU`, `kappa=T`, yielding
-`L_N<=U(1-theta+T)/(theta-T)`. The open problem is a less restrictive derivation from
+`bar L_N<=U(1-theta+T)/(theta-T)`. The open problem is a less restrictive derivation from
 region geometry, turnover, and compatible selection.
 
 ### 8. Is there a meaningful finite characterization theorem?
@@ -151,10 +155,94 @@ service, absence of conflict, Uptake, eventual closure, or good settlement seman
 ## Research boundary
 
 The next theorem should target compatible-potential selection for moving finite
-polytopes with an inventory-sensitive switching bound—strictly stronger than PR50's
-one-dimensional set-gap evidence and less restrictive than lifetime
-`TV(mu_n)<theta`. This is the remaining diachronic liability problem. It does not
-block the static theory or the covered finite Progress realization.
+polytopes by one adapted rule `mu_n=sigma_n(K_{<=n},E_{n-1})`, with a uniform
+inventory-sensitive switching bound over every allowed generated run. This is
+strictly stronger than PR50's one-dimensional set-gap evidence and less restrictive
+than lifetime `TV(mu_n)<theta`. It is the remaining diachronic liability problem and
+does not block the static theory or the covered finite Progress realization.
 
-### `LIABILITY-THEORY-REDUCED-TO-CONTROLLED-DRIFT`
+## PR70 tightening questions
 
+### 1. Was terminal liability used incorrectly?
+
+Yes. `range(E_{n-1})<=U+L_N` can fail when later trades repair the earlier loss. The
+exact fixture in `COUNTERMODELS.md` has final `L_1=0` and earlier range `11` with
+`U=1`. The correct quantity is `bar L_N=max_{k<=N}L_k`.
+
+### 2. Does the corrected theorem recover the same bound?
+
+Yes. Horizonwise application and maximization give
+
+\[
+\bar L_N\le U\frac{1-\theta+T}{\theta-T}
+\]
+
+when one selector sequence has `T_N<=T<theta` at every horizon. The numerical formula
+is unchanged and now bounds the entire liability history.
+
+### 3. What is the cleanest Controlled-Drift theorem?
+
+With `E_n=sum_{k=0}^n e_k`, current underwriting `mu_n dot e_n>=0`, coverage
+`mu_n(omega)>=theta`, and `E_n(omega)<=U`, define switching debt from dates `1..N`.
+If `D_n<=S+kappa bar L_n` for every horizon and `kappa<theta`, then
+
+\[
+\bar L_N\le\frac{S+(1-\theta)U}{\theta-\kappa}.
+\]
+
+Uniform bounded debt and a common potential are its `kappa=0` specializations.
+
+### 4. Should switching debt use terminal or running liability?
+
+Neither. Raw switching debt is exactly
+`[-(mu_n-mu_{n-1}) dot E_{n-1}]_+`. Running liability is needed only in sufficient
+bounds on accumulated debt.
+
+### 5. Is lifetime `TV<theta` sound after repair?
+
+Yes, as a sufficient and conservative certificate. It is strict at the closure
+threshold, can be restrictive in high dimension, ignores how motion is partitioned,
+and may overcharge motion that leaves the barycenter or inherited payoff unchanged.
+
+### 6. What selector quantifiers are required?
+
+An ex post sequence suffices to audit one realized run. An operational guarantee
+requires one adapted rule chosen in advance, selecting `mu_n` after the current region
+and `E_{n-1}` are known but before `e_n`, uniformly over all runs generated with that
+rule. A region-only rule is stronger but not algebraically necessary.
+
+### 7. What exact problem remains open?
+
+Find geometric or online conditions on
+`M_n={mu in Delta_theta:Smu in K_n}` that produce one adapted selector rule with
+uniformly bounded switching debt, or `D_N<=S+kappa bar L_N` with `kappa<theta`, for
+every allowed run. Time-varying profile universes remain deferred.
+
+### 8. Is the finite iff sound and useful?
+
+Yes as finite ex post algebra: under a common upper envelope, uniform coordinatewise
+lower boundedness is equivalent to some full-support potential having uniformly
+bounded deficit. It is not an operational underwriting theorem because the potential
+may be chosen after boundedness is known. The distinction is now explicit.
+
+### 9. Is the LP certificate exact and correctly interpreted?
+
+Yes. Finite bilinear minimax gives an exact alternative. The certificate proves that
+a nonnegative row combination exceeds every `theta`-covered assessment. It proves no
+row false or ungrounded and prescribes no remedy. Turning it into an adjudication
+receipt is a separate Proper-Exercise protocol rule.
+
+### 10. Where does liability belong?
+
+It remains a constraint on the joint exercise of grounded authority, consumed by the
+traderized Progress realization and naturally governed under Proper Exercise. It is
+not a fourth liveness or Progress pillar.
+
+### 11. Is PR70 ready to merge?
+
+Yes as a research checkpoint once the current head's required checks complete
+successfully. The local theorem error is repaired, the static results survive, the
+remaining causal-selector problem is exact, and no claim of arbitrary moving-region
+affordability is made.
+
+### `LIABILITY-THEORY-READY-AS-RESEARCH-CHECKPOINT`

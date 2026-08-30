@@ -29,6 +29,14 @@ def controlled_tv_bound(theta, upper, total_tv):
     return upper * (1 - theta + total_tv) / (theta - total_tv)
 
 
+def terminal_liability(inventory):
+    return max((max(Fraction(0), -x) for x in inventory), default=Fraction(0))
+
+
+def running_liability(inventories):
+    return max((terminal_liability(e) for e in inventories), default=Fraction(0))
+
+
 def max_trimmed_expectation(values, theta):
     """Max of mu·values over mu_i >= theta, sum mu_i = 1."""
     residual = 1 - len(values) * theta
@@ -45,4 +53,3 @@ def combined_row_deficit(profile_row_values, requirements, row_weights, theta):
     combined_profiles = [dot(row, row_weights) for row in profile_row_values]
     required = dot(requirements, row_weights)
     return required - max_trimmed_expectation(combined_profiles, theta)
-

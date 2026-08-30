@@ -16,11 +16,11 @@ compatibility is a strong schedule-level certificate, not the definition of
 affordability. Conversely, failure of the certificate is a vulnerability, not proof
 that a particular run loses without bound.
 
-## 2. A finite algebraic iff—and its limit
+## 2. A finite ex post algebraic iff—and its limit
 
 There is a clean but deliberately modest characterization. Let `mathcal E` be a
-family of payoff vectors on a fixed finite profile set and suppose every
-`E in mathcal E` satisfies `E_i<=U`.
+family of payoff vectors on one fixed **finite** profile set and suppose every
+`E in mathcal E` satisfies `E_i<=U` for one common finite `U`.
 
 The following are equivalent:
 
@@ -28,15 +28,20 @@ The following are equivalent:
 2. there exists one full-support probability `mu` and finite `S` such that
    `mu dot E>=-S` for every `E in mathcal E`.
 
-The forward direction uses any full-support `mu`; the reverse is the Underwriting
-Lemma. This characterizes uniform bounded liability by a bounded-deficit covered
-potential once an upper envelope is available.
+The forward direction uses any full-support `mu`: if `E_i>=-B`, then
+`mu dot E>=-B`. The reverse takes `theta=min_i mu_i>0` and applies the Underwriting
+Lemma. Thus the equivalence is mathematically sound. Full support matters in the
+reverse direction, but is freely selectable in the forward direction once bounded
+liability is already known.
 
-It is not a design theorem. In the forward direction the potential can be selected
-after knowing that liability is bounded, and need not follow from the constraint or
-settlement geometry. Requiring a predictable, schedule-certified potential is what
-makes underwriting substantive, and that stronger reverse implication is false in
-general because of inactive and finite-exposure schedules.
+This is an **ex post algebraic covered-potential characterization**, not a design
+theorem. Its forward direction can select `mu` after knowing that liability is
+bounded; `mu` need not be compatible with a region, predictable, or produced by an
+authority policy. A **certified underwriting potential** is stronger: it is obtained
+from public constraint/settlement geometry or by one adapted selector rule before the
+payoff increment it underwrites. Only the certified form is an operational safety
+certificate. The stronger geometry-derived converse is false in general because of
+inactive and finite-exposure schedules.
 
 ## 3. Static taxonomy
 
@@ -45,7 +50,7 @@ general because of inactive and finite-exposure schedules.
 | pointwise/world inclusion | every profile in every region | zero liability |
 | common covered | one `theta`-covered barycenter in all contributing regions | bounded nonzero liability |
 | bounded exposure | finite/summable authority payoff magnitude | bounded by exposure, no compatibility needed |
-| bounded switching debt | changing covered potentials with `sum d_n<infinity` | bounded by `(BSD)` |
+| bounded switching debt | changing covered potentials with uniformly bounded running `D_n` | bounded by `(BSD)` |
 | unsupported | none of the above known | no conclusion; PR50 supplies an unbounded witness |
 
 These routes overlap. They classify available proofs, not moral kinds of authority.
@@ -66,4 +71,3 @@ The theory should therefore state:
 - the LP dual exactly characterizes failure of that certificate;
 - bounded liability itself has additional accidental/exposure-bounded routes;
 - general affordable revision remains a controlled-switching problem.
-

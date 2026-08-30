@@ -6,7 +6,9 @@ from liability_theory import (
     controlled_tv_bound,
     dot,
     max_trimmed_expectation,
+    running_liability,
     switching_debt,
+    terminal_liability,
     total_variation,
     underwriting_bound,
 )
@@ -94,7 +96,50 @@ class DriftTests(unittest.TestCase):
         consolidated = tuple(x+y for x, y in zip(old, new))
         self.assertEqual(consolidated, (F(-1), F(0)))
 
+    def test_terminal_liability_cannot_bound_earlier_range(self):
+        e0 = (F(-10), F(1))
+        e1 = (F(10), F(-1))
+        final = tuple(x+y for x, y in zip(e0, e1))
+        self.assertGreaterEqual(dot((F(1, 20), F(19, 20)), e0), 0)
+        self.assertGreaterEqual(dot((F(1, 2), F(1, 2)), e1), 0)
+        self.assertEqual(terminal_liability(final), 0)
+        self.assertGreater(max(e0)-min(e0), F(1) + terminal_liability(final))
+        self.assertEqual(max(e0)-min(e0), F(1) + running_liability((e0, final)))
+
+    def test_large_selector_motion_with_zero_inventory_has_zero_debt(self):
+        self.assertEqual(
+            switching_debt((F(1), F(0)), (F(0), F(1)), (F(0), F(0))), 0
+        )
+
+    def test_small_motion_can_have_large_inventory_sensitive_debt(self):
+        eps, magnitude = F(1, 100), F(10000)
+        old = (F(1, 2), F(1, 2))
+        new = (F(1, 2) + eps, F(1, 2) - eps)
+        self.assertEqual(total_variation(old, new), eps)
+        self.assertEqual(switching_debt(old, new, (-magnitude, F(0))), F(100))
+
+    def test_same_barycenter_can_make_tv_proxy_strict(self):
+        # Profiles 0, 1, 2: these mixtures both have barycenter one.
+        old = (F(1, 2), F(0), F(1, 2))
+        new = (F(0), F(1), F(0))
+        profiles = (F(0), F(1), F(2))
+        self.assertEqual(dot(old, profiles), dot(new, profiles))
+        self.assertEqual(total_variation(old, new), 1)
+        linear_inventory = tuple(F(7) * x - F(3) for x in profiles)
+        self.assertEqual(switching_debt(old, new, linear_inventory), 0)
+
+    def test_many_monotone_tiny_switches_equal_one_large_tv_switch(self):
+        path = tuple((F(1) - F(i, 10), F(i, 10)) for i in range(11))
+        tiny_total = sum(
+            (total_variation(path[i-1], path[i]) for i in range(1, len(path))), F(0)
+        )
+        self.assertEqual(tiny_total, total_variation(path[0], path[-1]))
+
+    def test_high_dimension_forces_small_uniform_coverage(self):
+        for profile_count in (2, 4, 16):
+            theta = F(1, profile_count)
+            self.assertEqual(sum((theta for _ in range(profile_count)), F(0)), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
-
