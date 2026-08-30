@@ -7,6 +7,7 @@
 | `TraderizedEnforcement.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-16/17 | `prompts/2026-08-16-traderized-enforcement/` | — |
 | `AssessmentProcess.lean`, `AssessmentFirm.lean`, `AssessmentProperties.lean`, `EnforcementStrategy.lean`, `EnforcementPreservation.lean`, `DeductiveEnforcement.lean`, `CoherenceModulus.lean`, `IntrinsicCoherence.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-16-traderized-enforcement/` | — |
 | `MaxMinRepresentation.lean` | `prompts/2026-08-18-maxmin-representation/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-18-maxmin-representation/` | — |
+| `NormativeContinuity.lean` | `prompts/2026-08-29-normative-continuity-concordance/` (executor: Claude Fable 5, Anthropic; prompt author: the maintainer with GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-29 | `prompts/2026-08-29-normative-continuity-concordance/` | — |
 
 `MaxMinRepresentation.lean` proves Ovchinnikov's max–min representation theorem
 (Beiträge zur Algebra und Geometrie 43 (2002) 297–302, Theorem 4.1) for a piecewise
@@ -145,3 +146,11 @@ Upstream, `LIACompiler` gained a purely additive public section: twenty exported
 declarations, none of which changes an existing one, stated in the already-public
 `Sentence.atoms` / `sentenceBool` / `tableConsistent` / `supportSentenceList` vocabulary so
 that no caller has to rebuild the strong-recursion tower over the formula encoding.
+
+`NormativeContinuity.lean` proves the structural theorem spine of *Normative Continuity
+under Self-Revision* (`projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance/`):
+the Persistent-Wait Theorem from Requirements 4, 5, 7, 8, 9, 10 and 12 of that document,
+Persistent Opportunity parametric in wait responsiveness, No Structural Abandonment
+parametric in non-starvation, Grounded Replay from Requirement 1, and the
+rotating-prerequisite countermodel in both directions (the ownership-only gate admits it,
+the reach gate rejects it, every other requirement holds). It imports Mathlib only.

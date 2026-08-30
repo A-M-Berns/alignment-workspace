@@ -956,6 +956,22 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-28-service-realization/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-29-normative-continuity-concordance",
+      "date": "2026-08-29",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance",
+      "verdict": "FORMALIZATION-SURVIVES — the Persistent-Wait Theorem, Persistent Opportunity, No Structural Abandonment, Grounded Replay, and their structural lemmas are proved in Lean from exactly the hypotheses the proof-pass dependency audit named, with no added assumption: Requirements 4, 5, 7, 8, 9, 10 and 12 plus finite batches for Persistent-Wait, wait responsiveness added for Persistent Opportunity, non-starvation added for No Structural Abandonment, and Requirement 1 alone for Grounded Replay, whose freshness clause is stated and never consumed. The rotating-prerequisite countermodel is Lean-verified in both directions: the ownership-only gate admits it and the Persistent-Wait conclusion fails on it, while the reach gate rejects it at the first rotation with every other requirement holding. The provenance concordance is CONCORDANT-WITH-LOCAL-REPAIRS: no theorem contradicts frozen Legitimate Evolution, and every trace the synthesis admits satisfies the frozen carry law, but successor freshness and same-batch resolution reverse decisions the frozen round recorded, the no-rewiring rule is a weakening of the Answerable Process discipline rather than a new rule, and these are recorded as errata for the next revision with the freshness reversal reserved to the author.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance/README.md",
+      "depends_on": [
+        "2026-08-25-legitimate-evolution",
+        "2026-08-28-answerable-challenge-service",
+        "2026-08-28-service-realization"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-29-normative-continuity-concordance/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
