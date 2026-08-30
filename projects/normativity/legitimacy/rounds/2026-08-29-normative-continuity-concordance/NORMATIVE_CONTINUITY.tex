@@ -1,0 +1,1045 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage[expansion=false]{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+% ---------- theorem environments ----------
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{requirement}{Structural requirement}
+\newtheorem*{definition}{Definition}
+\newtheorem*{semantics}{Semantic judgment}
+\newtheorem*{assumption}{Additional assumption}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% ---------- notation ----------
+\newcommand{\fin}{\subseteq_{\mathrm{fin}}}
+\newcommand{\Past}{\mathsf{Past}}
+\newcommand{\Auth}{\mathsf{Auth}}
+\newcommand{\Permit}{\mathsf{Permit}}
+\newcommand{\Due}{\mathsf{Due}}
+\newcommand{\NewDue}{\mathsf{NewDue}}
+\newcommand{\Resolve}{\mathsf{Resolve}}
+\newcommand{\Continue}{\mathsf{Continue}}
+\newcommand{\Met}{\mathsf{Met}}
+\newcommand{\AddPre}{\mathsf{AddPre}}
+\newcommand{\DropPre}{\mathsf{DropPre}}
+\newcommand{\Designate}{\mathsf{Designate}}
+\newcommand{\Pre}{\mathcal P}
+\newcommand{\Ready}{\mathsf{Ready}}
+\newcommand{\Live}{\mathsf{Live}}
+\newcommand{\Routes}{\mathsf{Routes}}
+\newcommand{\Reach}{\mathsf{Reach}}
+\newcommand{\Work}{\mathsf{Work}}
+\newcommand{\NoRoute}{\mathsf{NoRoute}}
+\newcommand{\Ext}{\mathsf{External}}
+\newcommand{\RepCrit}{\mathsf{RepCrit}}
+\newcommand{\ResSet}{\mathsf{Res}}
+\newcommand{\Par}{\mathsf{Par}}
+\newcommand{\Born}{\mathcal Q^{+}}
+\newcommand{\ind}[1]{\mathbf 1[#1]}
+\newcommand{\res}[2]{\overset{#1}{\Longrightarrow}_{#2}}
+
+\title{Normative Continuity under Self-Revision\\[3pt]
+\large How rules can change without erasing authority or obligations}
+\author{}
+\date{Working synthesis --- 29 August 2026}
+
+\begin{document}
+\maketitle
+
+\section*{The question}
+
+Suppose a reasoner can revise the normative rules it represents: its judgments,
+warrants, evaluators, adjudicative procedures, and even represented rules about
+how those things may be revised. No substantive rule has to remain in force
+forever. What has to stay continuous so that revision does not become a way to
+create authority from nowhere, erase an inconvenient obligation, change the
+rules of a pending case, reset its history, or leave it waiting forever?
+
+The proposal in this note is simple in spirit:
+\begin{center}
+\emph{the content may change; the history of what was authorized and what became owed may not be silently rewritten.}
+\end{center}
+
+There are two parts. \emph{Legitimate Evolution} tracks how rules acquire and
+lose authority. The \emph{Answerable Process} tracks what happens to the issues
+those rules create. Together they support the headline result, Theorem~\ref{thm:nsa}:
+provided no fixed no-route wait can remain unresolved forever, every matter
+either closes through recorded resolutions or receives unbounded total
+attention.
+
+\paragraph{What is and is not fixed.}
+The represented rules may change. The mathematical vocabulary used to read a
+history does not: for example, the relation $\Permit_n(c)$ is a fixed part of
+the model which asks what the reasoner's \emph{current represented rules} say
+about proposed change $c$. In this sense the reasoner may change its represented
+rules of revision without changing the metalogical notion of what it means for
+those current rules to permit a move. The accepted initial state is also fixed
+as a historical starting point. The theory does not claim to eliminate every
+fixed meta-level notion.
+
+\paragraph{Kinds of statements.}
+A \emph{semantic judgment} says what the reasoner's current represented rules
+say at a given history. A \emph{structural requirement} says how the recorded
+history must respect those judgments through time. Additional assumptions are
+stated only when a theorem needs something neither supplied by the structural
+rules nor determined by the represented history.
+
+\section{History and the objects that live in it}\label{sec:objects}
+
+\begin{definition}[history and grounds]
+At position $n\in\mathbb N$ the reasoner appends a finite batch of records
+\[
+ e_n=(r_{n,1},\ldots,r_{n,k_n}),
+ \qquad
+ H_n=(e_0,\ldots,e_{n-1}).
+\]
+$H_n$ is the strict prefix available before position $n$. Let
+\[
+ \Past_n:=\{r_{j,\ell}:j<n\}.
+\]
+Grounds for a move at position $n$ are simply a finite set of prior records,
+\[
+ g\fin\Past_n.
+\]
+Thus a record written in $e_n$ cannot be cited as a prior ground by another
+record in the same batch.
+\end{definition}
+
+A record may change which normative rules stand in force, open or resolve an
+issue, add or withdraw a prerequisite, or mark an issue as a separately
+protected matter. Record identity is historical: changing how a later state
+interprets the same content does not create a new occurrence.
+
+\subsection{Rules that currently have authority}
+
+At each point in the history, the reasoner treats some represented rules as
+currently authoritative. Let $\mathcal N$ be the set of records that can serve
+as such rules, and let
+\[
+ L_n\subseteq\mathcal N
+\]
+be the rules in force before position $n$. We call a rule in $L_n$
+\emph{standing}. The rules in force at the beginning are
+\[
+ G:=L_0.
+\]
+$G$ is only the starting point. A rule in $G$ may later be removed, and a rule
+not in $G$ may later acquire standing.
+
+Two facts about a standing rule will matter below:
+\begin{itemize}[itemsep=1pt,topsep=2pt]
+ \item $\Auth(\lambda)$ means that $\lambda$ may be cited as authority for
+       changing which rules have standing.
+ \item $\lambda\triangleright(\kappa,\tau,x)$ means that $\lambda$ authorizes
+       protocol $\kappa$ to handle a new issue of kind $\tau$ about subject $x$.
+\end{itemize}
+These are features of what the represented rule says. They are not additional
+semantic judgments that vary separately with time.
+
+\begin{definition}[current authority to govern an issue]
+A protocol is authorized to govern a new issue when some rule already in force
+says that it may. We write
+\[
+ \kappa\Vdash_n(\tau,x)
+ \quad\Longleftrightarrow\quad
+ \exists\lambda\in L_n:\ \lambda\triangleright(\kappa,\tau,x).
+\]
+Thus $\kappa\Vdash_n(\tau,x)$ is derived from the rules standing at $H_n$; it
+is not a separate source of authority.
+\end{definition}
+
+\subsection{Issues}
+
+Let $\mathcal Q$ be the set of issue occurrences. An issue $q$ is the occurrence
+of an issue-opening record. It has immutable opening data
+\[
+ \pi(q)=(\tau_q,x_q,\kappa_q,s_q^0)
+ \in \mathcal T\times\mathcal X\times\mathcal K\times\mathcal S_{\kappa_q}.
+\]
+The four coordinates answer four different questions:
+\begin{itemize}[itemsep=1pt,topsep=2pt]
+ \item $\tau_q$ --- \emph{what kind of question is this?}
+ \item $x_q$ --- \emph{what is the question about?}
+ \item $\kappa_q$ --- \emph{which protocol will judge this particular episode?}
+ \item $s_q^0$ --- \emph{what local memory does that protocol start with?}
+\end{itemize}
+The subject $x_q$ may itself be a rule, reason, issue, protocol, event, or
+process component. If $q$ is still open at $H_n$, write
+$s_n(q)\in\mathcal S_{\kappa_q}$ for its current local state.
+
+Let $\Born_n\subseteq\mathcal Q$ be the issues opened in batch $e_n$; the
+superscript $+$ is meant to suggest ``new at $n$.'' The sets $\Born_n$ are
+disjoint. Thus
+\[
+ I_n:=\bigcup_{j<n}\Born_j
+\]
+is the set of issues incurred before position $n$, and $O_n\subseteq I_n$ is
+the set still outstanding at $H_n$.
+
+\subsection{Prerequisites}
+
+Let $\mathcal D$ be the set of prerequisite occurrences. A prerequisite
+occurrence is identified with the record that first introduces it, so the same
+occurrence cannot later be ``re-added'' after withdrawal. Its immutable data are
+\[
+ \delta(d)=(q_d,\chi_d,T_d).
+\]
+Here $q_d$ is the issue that owns the prerequisite, $\chi_d$ is the condition
+that would satisfy it, and $T_d\fin\mathcal Q$ is a finite set of issue
+occurrences named as initial internal ways of working toward $\chi_d$.
+Different prerequisites of one issue are conjunctive; the alternatives in
+$T_d$ are disjunctive.
+
+For $q\in O_n$, let $\Pre_n(q)\subseteq\mathcal D$ be the finite set of
+prerequisites currently active for $q$.
+
+\section{What the reasoner's current rules decide}\label{sec:semantics}
+
+The following are the \emph{only} primitive prefix-dependent semantic
+judgments in this note. Each is evaluated from $H_n$ and may read the current
+standing state $L_n$ and whatever represented rules are present in $H_n$.
+Everything introduced later is derived from the history plus these judgments.
+
+\begin{semantics}[permission to change standing]
+$\Permit_n(c)$ means that the current represented rules permit proposed
+standing-change record $c$ at $H_n$.
+\end{semantics}
+
+\begin{semantics}[what is currently due]
+The current rules determine a set
+\[
+ \Due_n:=\Due(H_n,L_n)\subseteq\mathcal T\times\mathcal X.
+\]
+What creates a new obligation is a rising edge,
+\[
+ \NewDue_n:=
+ \begin{cases}
+   \Due_0,&n=0,\\
+   \Due_n\setminus\Due_{n-1},&n>0.
+ \end{cases}
+\]
+If a pair later drops out of $\Due_n$, that does not close any issue already
+opened for it. If it later reappears, that is a new rising edge and can create
+a new issue.
+\end{semantics}
+
+\begin{semantics}[resolution]
+For $q\in O_n$, $g\fin\Past_n$, and finite $S\subseteq\mathcal Q$,
+$\Resolve_n(q;g,S)$ means that $q$'s own anchored protocol $\kappa_q$, reading
+$H_n$ and $s_n(q)$, accepts disposing of $q$ into successor set $S$ on grounds
+$g$. $S=\varnothing$ is a terminal resolution. If batch $e_n$ actually records
+such an accepted resolution, write
+\[
+ q\res{g}{n}S,
+ \qquad
+ \ResSet_n:=\{q\in O_n:\exists g,S\;q\res{g}{n}S\}.
+\]
+\end{semantics}
+
+\begin{semantics}[state continuation]
+For finite parent set $P\subseteq O_n$, proposed fresh successor $q'$, and
+grounds $g$, $\Continue_n(P;q',g)$ means that the current rules accept the
+proposed initial state $s_{q'}^0$ as a continuation of the parents' current
+states. This relation can allow ordinary state transport or an explicit reset;
+what matters structurally is that the transition is represented and accepted,
+not silent.
+\end{semantics}
+
+\begin{semantics}[prerequisite satisfaction]
+$\Met_n(d)$ means that the condition $\chi_d$ is satisfied at prefix $H_n$.
+This judgment applies to every prerequisite, not only to information expected
+from outside the reasoner.
+\end{semantics}
+
+\begin{semantics}[adding and withdrawing prerequisites]
+$\AddPre_n(q;g,d)$ means that the current rules accept introducing fresh
+prerequisite occurrence $d$ for issue $q$ (so $q_d=q$); $\DropPre_n(q;g,d)$
+means that they accept withdrawing active prerequisite $d$ from $q$. Let
+$\Pre_n^+(q)$ and $\Pre_n^-(q)$ be the prerequisite occurrences actually added
+and withdrawn by accepted records in $e_n$; every $d\in\Pre_n^+(q)$ has
+$q_d=q$.
+\end{semantics}
+
+\begin{semantics}[creating an additional matter]
+$\Designate_n(q;g)$ means that the current rules accept making issue $q$ the
+root of an additional protected matter. The issue may already exist or may be
+opened in the same batch.
+\end{semantics}
+
+For emphasis, the complete list is
+\[
+ \Permit,\ \Due,\ \Resolve,\ \Continue,\ \Met,\ \AddPre,\ \DropPre,\ \Designate.
+\]
+Relations such as $\Vdash_n$, readiness, successor ancestry, routes,
+reachability, available work, and service are defined from the record and are
+not further semantic inputs.
+
+\paragraph{Acceptance convention.}
+For the semantic judgments that govern recorded moves, an \emph{accepted} move
+means both that its record occurs in $e_n$ and that the corresponding judgment
+holds at the strict prefix $H_n$: $\Permit$ for standing changes, $\Resolve$
+for resolutions, $\AddPre$/$\DropPre$ for prerequisite changes, and
+$\Designate$ for matter designation. $\Continue$ is checked when a successor
+opens; $\Due$ and $\Met$ describe the current semantic state rather than
+recorded moves.
+
+\section{How authority changes: Legitimate Evolution}\label{sec:standing}
+
+The rules in force are not fixed. At position $n$ the reasoner may add rules to
+$L_n$ or remove rules from it. Legitimate Evolution imposes one continuity
+condition on this freedom: a change in authority must answer to authority that
+was already in force before the change.
+
+Concretely, a proposed change must pass the current rules' own test for whether
+it is permitted. And if the change actually adds or removes authority, it must
+cite at least one rule that was already standing and was itself allowed to
+justify changes of authority.
+
+\begin{requirement}[changing which rules have authority]\label{req:standing-change}
+Let $L_n^+$ be the rules that gain standing in batch $e_n$, and let $L_n^-$ be
+the rules that lose it. Every record $c$ in $e_n$ that proposes such a change
+must satisfy
+\[
+ \Permit_n(c).
+\]
+If $c$ actually adds or removes standing, then
+\[
+ \varnothing\neq g(c)\subseteq\{\lambda\in L_n:\Auth(\lambda)\}.
+\]
+After the batch, the rules in force are exactly
+\[
+ L_{n+1}=(L_n\setminus L_n^-)\cup L_n^+.
+\]
+As in the frozen kernel, the occurrences in $L_n^+$ are fresh: each is first
+recorded in $e_n$. A rule that has lost standing does not re-enter as the same
+occurrence; readopting its content produces a new occurrence with its own
+grounds.
+\end{requirement}
+
+Because grounds must come from $\Past_n$, every cited authorizer predates the
+change it justifies. In particular, a rule first added in $e_n$ cannot justify
+its own admission or another change in the same batch. There is no same-batch
+bootstrap of authority.
+
+This local requirement has a global consequence. Pick any rule that is in force
+now and ask what earlier standing rules authorized its admission. Ask the same
+question about those authorizers, and continue backward. Each step moves to an
+earlier position, so this history cannot continue forever.
+
+\begin{theorem}[Grounded Replay]\label{thm:replay}
+Assume Requirement~\ref{req:standing-change}. For every $\lambda\in L_n$,
+there is a finite authorization tree rooted at $\lambda$ whose leaves lie in
+$G$. Each non-leaf node is linked to the standing authorizers cited when that
+rule entered $L$, and positions strictly decrease along every branch.
+\end{theorem}
+
+\begin{proof}
+Induct on the position at which a rule gained standing. A rule not in $G$
+entered through a change grounded in earlier standing authorizers, each of
+which is in $G$ or entered at a strictly earlier position. Apply the same
+argument to each of those grounds. Since positions strictly decrease, every
+branch eventually reaches $G$. Freshness of $L_n^+$ makes ``the change through
+which the rule entered'' unique.
+\end{proof}
+
+Grounded Replay is about where current authority came from, not about keeping
+old rules forever. A rule in the ancestry---even a rule in $G$---may later be
+legitimately removed. What survives revision is the historical chain by which
+present authority was acquired.
+
+This grounding requirement is specific to changes of authority. The structural
+theory does not require every resolution, prerequisite change, or matter
+designation to cite nonempty grounds. Those moves may have empty grounds unless
+their own semantic judgment rules that out. Grounded Replay is therefore a
+theorem about the history of authority, not a universal grounding theorem for
+every recorded move.
+
+\section{Continuity of issues}\label{sec:issues}
+
+The next requirements say what happens once the current rules make something
+due and an issue has been opened for it.
+
+\begin{requirement}[standing at opening]\label{req:anchor}
+Every fresh issue uses a protocol that currently has standing for its kind and
+subject:
+\[
+ q\in\Born_n\quad\Longrightarrow\quad
+ \kappa_q\Vdash_n(\tau_q,x_q).
+\]
+A standing change recorded in the same batch cannot authorize the opening:
+standing is read from the strict prefix $H_n$.
+\end{requirement}
+
+\begin{requirement}[new demands become issues]\label{req:due}
+Every newly due pair is represented by a fresh issue:
+\[
+ (\tau,x)\in\NewDue_n
+ \quad\Longrightarrow\quad
+ \exists q\in\Born_n:\ (\tau_q,x_q)=(\tau,x).
+\]
+\end{requirement}
+
+\begin{assumption}[compatibility of what is due with what has standing]\label{assump:compat}
+Whenever $(\tau,x)\in\NewDue_n$, at least one protocol currently has standing
+for that pair:
+\[
+ (\tau,x)\in\NewDue_n
+ \quad\Longrightarrow\quad
+ \exists\kappa\in\mathcal K:\ \kappa\Vdash_n(\tau,x).
+\]
+This is not a theorem of the structural bookkeeping. It is the minimal
+compatibility needed for the previous two requirements to be jointly
+satisfiable.
+\end{assumption}
+
+\begin{requirement}[resolution continuity]\label{req:resolution-continuity}
+\[
+ O_{n+1}=(O_n\setminus\ResSet_n)\cup\Born_n.
+\]
+So an old issue remains outstanding unless it is explicitly resolved, and
+every fresh issue is outstanding at the next prefix. In particular,
+\[
+ q\in O_n\setminus O_{n+1}\quad\Longrightarrow\quad q\in\ResSet_n.
+\]
+A change in the surrounding normative rules cannot by itself make an issue
+disappear.
+\end{requirement}
+
+\begin{requirement}[successors are fresh]\label{req:fresh-successors}
+If $q\res{g}{n}S$, then $S\subseteq\Born_n$. Define the successor relation
+\[
+ q\to q'
+ \quad\Longleftrightarrow\quad
+ \exists n,g,S\;\bigl(q\res{g}{n}S\ \wedge\ q'\in S\bigr).
+\]
+Because successors open later than their parents, $\to$ is acyclic. If
+$q'\in\Born_n$, let
+\[
+ \Par_n(q'):=\{q\in O_n:\exists g,S\;(q\res{g}{n}S\wedge q'\in S)\}
+\]
+be the set of parents that resolve into it in that batch.
+\end{requirement}
+
+\begin{lemma}[revision is prospective]\label{lem:prospective}
+If $q\to q'$, then the resolution of $q$ is judged under $\kappa_q$, while
+$q'$ is governed by its own opening anchor $\kappa_{q'}$, which must stand when
+$q'$ opens.
+\end{lemma}
+
+\begin{proof}
+The resolution record for $q$ can be accepted only through
+$\Resolve_n(q;g,S)$, whose definition uses the immutable anchor $\kappa_q$. By
+Requirement~\ref{req:fresh-successors}, $q'$ is a fresh issue in the same
+batch, and Requirement~\ref{req:anchor} checks its own anchor $\kappa_{q'}$
+against the standing state already present in $H_n$. Thus revision can govern
+the fresh successor without changing the adjudicative terms of the old issue.
+\end{proof}
+
+Thus a protocol can gain or lose standing without changing the rules of a case
+that is already open. To move a continuing issue to new terms, the process must
+resolve the old issue and open a fresh successor under those terms.
+
+\begin{requirement}[state continuity]\label{req:state}
+Every fresh successor with at least one parent begins from an explicitly
+accepted continuation of the parents' current states:
+\[
+ q'\in\Born_n,\ \Par_n(q')\neq\varnothing
+ \quad\Longrightarrow\quad
+ \exists g\fin\Past_n:\ \Continue_n(\Par_n(q');q',g).
+\]
+The current rules may allow a reset, but the reset must be represented as the
+accepted transition to the successor; accumulated local state cannot simply be
+replaced without such a transition.
+\end{requirement}
+
+\section{Prerequisites and matters}\label{sec:matters}
+
+\subsection{Prerequisites persist until something happens to them}
+
+\begin{requirement}[prerequisite continuity]\label{req:pre-continuity}
+If $q$ remains outstanding across position $n$, then
+\[
+ \Pre_{n+1}(q)
+ =\bigl(\Pre_n(q)\setminus\Pre_n^-(q)\bigr)\cup\Pre_n^+(q).
+\]
+If $q\in\Born_n$ is fresh, then
+\[
+ \Pre_{n+1}(q)=\Pre_n^+(q).
+\]
+Thus an active prerequisite of a continuing issue remains active unless an
+accepted withdrawal removes it. Resolving the issue ends its remaining
+prerequisites with that episode. Because prerequisite identities are fresh
+record occurrences, a withdrawn $d$ cannot later be reactivated; a later
+prerequisite is a new occurrence $d'$.
+\end{requirement}
+
+\begin{requirement}[prerequisites cannot name future issues]\label{req:pre-refs}
+If $d$ is first introduced in $e_n$, then
+\[
+ q_d\in O_n\cup\Born_n,
+ \qquad
+ T_d\subseteq O_n\cup\Born_n.
+\]
+A prerequisite may point to issues already open or co-opened in the same
+batch, but not to an issue occurrence that does not yet exist.
+\end{requirement}
+
+\begin{requirement}[satisfaction is persistent]\label{req:met}
+\[
+ \Met_n(d)\quad\Longrightarrow\quad\Met_{n+1}(d).
+\]
+A fixed prerequisite may become satisfied; it cannot later become unsatisfied.
+\end{requirement}
+
+\begin{definition}[ready issue]
+\[
+ \Ready_n(q)
+ \quad\Longleftrightarrow\quad
+ \forall d\in\Pre_n(q),\ \Met_n(d).
+\]
+\end{definition}
+
+\begin{requirement}[only ready issues may resolve]\label{req:ready}
+\[
+ q\in\ResSet_n\quad\Longrightarrow\quad\Ready_n(q).
+\]
+\end{requirement}
+
+\subsection{A matter is the obligation that survives issue replacement}
+
+An \emph{issue} is one case or episode. A \emph{matter} is the continuing
+obligation to deal with a case and whatever successor issues replace it.
+This distinction is what prevents procedural churn from resetting service.
+
+Let $\preceq$ be the reflexive-transitive closure of $\to$. Matters are created
+in time, not retroactively. Let $M_n$ be the matters that already exist at
+prefix $H_n$, with $M_0=\varnothing$. After batch $e_n$, add
+\begin{itemize}[itemsep=1pt,topsep=2pt]
+ \item every fresh issue $q\in\Born_n$ with $\Par_n(q)=\varnothing$ (a root
+       issue), and
+ \item every issue $q\in O_n\cup\Born_n$ for which $e_n$ contains an accepted
+       $\Designate_n(q;g)$ record.
+\end{itemize}
+No matter is removed from $M_n$. Write
+\[
+ M_\infty:=\bigcup_n M_n,
+ \qquad
+ \beta(m):=\min\{n:m\in M_n\}
+\]
+for the eventual set of matters and the first prefix at which matter $m$
+exists.
+
+\begin{definition}[live descendants of a matter]
+For $n\ge\beta(m)$,
+\[
+ \Live_n(m):=\{q\in O_n:m\preceq q\}.
+\]
+These are the currently open issues through which the matter continues.
+\end{definition}
+
+\begin{lemma}[matter continuity]\label{lem:matter-continuity}
+If $n\ge\beta(m)$ and $\Live_n(m)=\varnothing$, then
+$\Live_k(m)=\varnothing$ for every $k\ge n$. More generally, every outstanding
+descendant of $m$ remains part of matter $m$, through branching and merging.
+\end{lemma}
+
+\begin{proof}
+An existing descendant belongs to $\Live_n(m)$ by definition. A new descendant
+can only be opened as a successor of an outstanding descendant. If no such
+outstanding descendant exists, no later one can be created.
+\end{proof}
+
+\section{Internal routes and when work is available}\label{sec:work}
+
+A prerequisite can block an issue while pointing to other issues that are
+supposed to help satisfy it. The next definitions follow those pointers through
+issue succession.
+
+\begin{definition}[current internal routes]
+\[
+ \Routes_n(d):=\{r\in O_n:\exists t\in T_d\text{ with }t\preceq r\}.
+\]
+So if a route root $t\in T_d$ is replaced by successors, those live successors
+remain routes for the same prerequisite automatically.
+\end{definition}
+
+\begin{lemma}[route loss is permanent]\label{lem:route-extinction}
+Let $d$ be introduced in $e_j$. If $n>j$ and $\Routes_n(d)=\varnothing$, then
+$\Routes_k(d)=\varnothing$ for all $k\ge n$.
+\end{lemma}
+
+\begin{proof}
+By Requirement~\ref{req:pre-refs}, $T_d\subseteq O_j\cup\Born_j\subseteq I_n$
+for $n>j$, so no root in $T_d$ opens at or after $n$. Any route at $k+1\ge n+1$
+is therefore either a route at $k$ that remained outstanding, or a fresh issue
+in $\Born_k$ that is a successor of an outstanding descendant of some root in
+$T_d$; that parent lies in $O_k$ and is itself a route at $k$. Induct on $k$
+from $\Routes_n(d)=\varnothing$.
+\end{proof}
+
+The restriction $n>j$ is needed: a root $t\in T_d$ co-opened in $e_j$ is not
+outstanding at $H_j$, so $\Routes_j(d)$ may be empty while
+$\Routes_{j+1}(d)\ni t$. Since $d\in\Pre_n(q_d)$ only for $n>j$, this does not
+affect the waiting relation below.
+
+For unmet prerequisites, define a directed waiting relation
+\[
+ q\rightsquigarrow_n r
+ \quad\Longleftrightarrow\quad
+ \exists d\in\Pre_n(q):\ \neg\Met_n(d)\ \wedge\ r\in\Routes_n(d).
+\]
+Read $q\rightsquigarrow_n r$ as: ``$q$ is currently waiting through $r$.''
+
+\begin{definition}[issues relevant to a matter]
+$\Reach_n(m)$ is the least set containing $\Live_n(m)$ and closed under
+$\rightsquigarrow_n$. In words: start with the live descendants of $m$ and
+follow every chain of unmet prerequisites to the internal issues they point to.
+At every finite prefix this set is finite.
+\end{definition}
+
+\begin{definition}[available work]
+\[
+ \Work_n(m)
+ :=\{q\in\Reach_n(m):\Ready_n(q)\}
+ \cup
+ \{q\in\Reach_n(m):q\text{ lies on a }\rightsquigarrow_n\text{-cycle}\}.
+\]
+A ready reachable issue is work that can proceed toward resolution. A waiting
+cycle also counts as work: circular internal dependence is itself something
+the process can act on, not a reason for permanent idleness.
+\end{definition}
+
+Define the opportunity indicator and cumulative opportunity by
+\[
+ o_n(m):=\ind{m\in M_n\ \wedge\ \Work_n(m)\neq\varnothing},
+ \qquad
+ \Omega_N(m):=\sum_{n<N}o_n(m).
+\]
+Thus $\Omega_N(m)$ is simply the number of positions before $N$ at which
+matter $m$ had at least one available piece of work.
+
+Let $a_n(m)$ be the service attention assigned to matter $m$ at position $n$.
+We require
+\[
+ 0\le a_n(m)\le o_n(m),
+ \qquad
+ \sum_{m\in M_n}a_n(m)\le 1,
+ \qquad
+ A_N(m):=\sum_{n<N}a_n(m).
+\]
+The first inequality says attention is charged only when the matter has
+available work; the second is a unit total service budget. Here attention is a
+service quantity, not a restriction on which structural records may be written.
+For example, the process may record withdrawal of a dead prerequisite while
+$o_n(m)=0$; that record can restore future work without itself counting as
+attention to currently available work.
+
+\begin{requirement}[non-starvation]\label{req:nonstarvation}
+For every $m\in M_\infty$,
+\[
+ \Omega_N(m)\to\infty
+ \quad\Longrightarrow\quad
+ A_N(m)\to\infty.
+\]
+If a matter offers work infinitely often, it cannot receive only finite total
+attention.
+\end{requirement}
+
+\begin{lemma}[non-starvation is feasible under the unit budget]\label{lem:nonstarve-feasible}
+Enumerate matters in order of birth as $m_0,m_1,\ldots$ and give $m_j$ fixed
+share $w_j=2^{-j-1}$. Set
+\[
+ a_n(m_j):=w_j o_n(m_j).
+\]
+Then $\sum_j a_n(m_j)\le1$ at every position and
+$A_N(m_j)=w_j\Omega_N(m_j)$. Hence all matters can satisfy non-starvation
+simultaneously. This is only a feasibility witness, not a proposed priority
+rule.
+\end{lemma}
+
+The final structural rule prevents a process from making a starving matter's
+waiting chain move forever.
+
+\begin{requirement}[do not rewire a starving waiting chain]\label{req:no-rewire}
+Suppose $q$ is already outstanding, remains outstanding across position $n$,
+and receives at least one fresh prerequisite in $e_n$. Then every matter that
+already reaches $q$ must currently have some available work:
+\[
+ q\in O_n\cap O_{n+1},\ \Pre_n^+(q)\neq\varnothing
+ \quad\Longrightarrow\quad
+ \forall m\in M_n\,
+ \bigl(q\in\Reach_n(m)\Rightarrow\Work_n(m)\neq\varnothing\bigr).
+\]
+Fresh issues may open with prerequisites. The restriction applies only to
+adding another prerequisite to an existing issue while some already-existing
+matter is stuck through that issue.
+\end{requirement}
+
+\begin{remark}[why the rule follows reachability, not ownership]
+It is not enough to look only at matters for which $q$ is a direct descendant.
+Another matter may be waiting on $q$ through a chain of prerequisites. If that
+indirectly waiting matter has no available work, continually replacing $q$'s
+prerequisites can keep the matter idle forever while ensuring that no single
+prerequisite persists. Requirement~\ref{req:no-rewire} blocks exactly that
+failure mode.
+\end{remark}
+
+\section{The main structural theorem}\label{sec:main}
+
+\begin{lemma}[every outstanding issue belongs to a matter]\label{lem:root-matter}
+For every $q\in O_n$, there is some $m\in M_n$ with $q\in\Live_n(m)$.
+\end{lemma}
+
+\begin{proof}
+Follow parent links backward from $q$. Parents open earlier than successors, so
+the chain is finite and reaches a root issue. That root became a matter when it
+opened.
+\end{proof}
+
+\begin{lemma}[a reachable resolution creates an opportunity]\label{lem:resolution-opportunity}
+If $q\in\Reach_n(m)$ and $q\in\ResSet_n$, then $o_n(m)=1$.
+\end{lemma}
+
+\begin{proof}
+A resolving issue must be ready by Requirement~\ref{req:ready}. A ready issue
+in $\Reach_n(m)$ belongs to $\Work_n(m)$.
+\end{proof}
+
+\begin{definition}[a no-route wait]
+For $m\in M_n$, let
+\[
+ \NoRoute_n(m):=
+ \left\{d:\begin{array}{l}
+ d\in\Pre_n(q)\text{ for some }q\in\Reach_n(m),\\
+ \neg\Met_n(d),\quad\Routes_n(d)=\varnothing
+ \end{array}\right\}.
+\]
+So $d\in\NoRoute_n(m)$ means that somewhere along matter $m$'s waiting
+structure there is an unmet prerequisite, still active, for which no live
+internal issue remains as a route toward satisfaction.
+\end{definition}
+
+\begin{theorem}[Persistent-Wait Theorem]\label{thm:persistent-wait}
+Assume Requirements \ref{req:resolution-continuity}, \ref{req:fresh-successors},
+\ref{req:pre-continuity}--\ref{req:ready} and \ref{req:no-rewire}.
+Fix $m\in M_\infty$. If, after its birth,
+$m$ remains live forever but has available work only finitely often,
+\[
+ \exists n_0\ge\beta(m)\ \forall n\ge n_0:\ \Live_n(m)\neq\varnothing,
+ \qquad
+ \sup_N\Omega_N(m)<\infty,
+\]
+then eventually one fixed no-route wait remains:
+\[
+ \exists d,N_0\ \forall n\ge N_0:\ d\in\NoRoute_n(m).
+\]
+\end{theorem}
+
+\begin{proof}
+Since $m\in M_n$ for all $n\ge\beta(m)$ and $\Omega_N(m)$ is bounded, there are
+only finitely many positions at which $\Work_n(m)\neq\varnothing$. Choose
+$n_1\ge n_0$ after the last of them. Then $\Work_n(m)=\varnothing$ and
+$\Live_n(m)\neq\varnothing$ for every $n\ge n_1$.
+
+\emph{1. No reachable issue resolves after $n_1$.}
+If $q\in\Reach_n(m)\cap\ResSet_n$ with $n\ge n_1$, Lemma~\ref{lem:resolution-opportunity}
+gives $\Work_n(m)\neq\varnothing$, a contradiction.
+
+\emph{2. The reachable waiting structure can only shrink:}
+for $n\ge n_1$, $\Live_{n+1}(m)=\Live_n(m)$,
+$\Reach_{n+1}(m)\subseteq\Reach_n(m)$, and for every
+$q\in\Reach_{n+1}(m)$, $\Pre_{n+1}(q)\subseteq\Pre_n(q)$.
+
+\emph{Live lineage.} Let $q\in\Live_{n+1}(m)$. If $q\in O_n$ then
+$q\in\Live_n(m)$. Otherwise $q\in\Born_n$ by
+Requirement~\ref{req:resolution-continuity}; $q\neq m$ because $m\in M_n$ was
+opened before $n$; so $m\preceq q$ passes through a parent
+$p\in\Par_n(q)\subseteq O_n$ with $m\preceq p$. Then $p\in\Live_n(m)$ resolves
+at $n$, contradicting Step~1. Conversely nothing in $\Live_n(m)$ resolves, so
+$\Live_n(m)\subseteq O_{n+1}$.
+
+\emph{Prerequisites.} Let $q\in\Reach_n(m)$. Then $q\in O_n\cap O_{n+1}$ by
+Step~1, and Requirement~\ref{req:no-rewire} with $\Work_n(m)=\varnothing$
+gives $\Pre_n^+(q)=\varnothing$, so
+$\Pre_{n+1}(q)=\Pre_n(q)\setminus\Pre_n^-(q)\subseteq\Pre_n(q)$ by
+Requirement~\ref{req:pre-continuity}.
+
+\emph{Routes.} Let $q\in\Reach_n(m)$, $d\in\Pre_n(q)$ unmet at $n$, and
+$r\in\Routes_{n+1}(d)$. Since $d$ was introduced before $n$,
+Requirement~\ref{req:pre-refs} puts $T_d\subseteq I_n$, so $r\notin T_d$ if
+$r\in\Born_n$. If $r\in O_n$ then $r\in\Routes_n(d)$, hence $q\rightsquigarrow_n r$
+and $r\in\Reach_n(m)$ by closure. If $r\in\Born_n$, its parent
+$p\in\Par_n(r)\subseteq O_n$ satisfies $t\preceq p$ for some $t\in T_d$, so
+$p\in\Routes_n(d)$, $p\in\Reach_n(m)$, and $p$ resolves at $n$, contradicting
+Step~1. Thus $\Routes_{n+1}(d)\subseteq\Routes_n(d)$, and since no route in
+$\Reach_n(m)$ resolves, in fact $\Routes_{n+1}(d)=\Routes_n(d)$.
+
+\emph{Closure.} Now let $q\in\Reach_{n+1}(m)$ be obtained from
+$\Live_{n+1}(m)=\Live_n(m)\subseteq\Reach_n(m)$ by an edge
+$q_0\rightsquigarrow_{n+1}q$ with $q_0\in\Reach_n(m)$ (induction along the
+closure). The edge is witnessed by some $d\in\Pre_{n+1}(q_0)\subseteq\Pre_n(q_0)$
+with $\neg\Met_{n+1}(d)$, hence $\neg\Met_n(d)$ by
+Requirement~\ref{req:met}, and $q\in\Routes_{n+1}(d)\subseteq\Routes_n(d)$.
+So $q_0\rightsquigarrow_n q$ and $q\in\Reach_n(m)$.
+
+Hence, after $n_1$, all reachable issues lie in the finite set
+$\Reach_{n_1}(m)$ and all their active prerequisites in the finite set
+$\bigcup_{q\in\Reach_{n_1}(m)}\Pre_{n_1}(q)$; no fresh issue and no fresh
+prerequisite occurrence can enter.
+
+\emph{3. The finite structure eventually stabilizes.}
+For $n\ge n_1$ the sets $\Reach_n(m)$ and $\Pre_n(q)$ ($q$ reachable) are
+non-increasing, and $\Met_n(d)$ is non-decreasing by Requirement~\ref{req:met},
+all within one fixed finite set. Route sets of unmet reachable prerequisites
+are constant by Step~2. Monotone sequences in a finite set are eventually
+constant, so there is $n_2\ge n_1$ after which the reachable issues, active
+prerequisites, satisfaction values, and route sets do not change. The waiting
+relation $\rightsquigarrow_n$ restricted to $\Reach_n(m)$ is determined by
+these, so it is constant too.
+
+\emph{4. A stable finite waiting graph with no available work has a no-route
+wait.}
+Fix $n\ge n_2$. The matter is still live, so $\Reach_n(m)$ is nonempty. No
+reachable issue is ready and no reachable issue lies on a
+$\rightsquigarrow_n$-cycle (a self-loop $q\rightsquigarrow_n q$ counts as a
+cycle), since either would belong to $\Work_n(m)$. Because $\Reach_n(m)$ is
+closed under $\rightsquigarrow_n$, the waiting graph on $\Reach_n(m)$ is a
+finite acyclic digraph and has a sink $q^*$. It is not ready, so some active
+$d\in\Pre_n(q^*)$ is unmet. If $\Routes_n(d)\neq\varnothing$, $q^*$ would have
+an outgoing waiting edge, contrary to being a sink. Thus
+$\Routes_n(d)=\varnothing$ and $d\in\NoRoute_n(m)$.
+
+\emph{5. The same wait persists.}
+For every $n\ge n_2$ the same $q^*$ is reachable, the same $d$ is active on it
+and unmet, and $\Routes_n(d)=\varnothing$, all by stabilization (or, for the
+route set, by Lemma~\ref{lem:route-extinction}). Hence $d\in\NoRoute_n(m)$ for
+all $n\ge n_2$.
+\end{proof}
+
+The theorem deliberately stops here. Structural continuity can show that
+permanent idleness must settle on a fixed unmet wait with no internal route. It
+does not say why such a wait would eventually clear. For the next result we
+need only one liveness assumption; we do not need to classify waits as
+internal or external.
+
+\section{From a fixed wait to No Structural Abandonment}\label{sec:nsa}
+
+\begin{assumption}[wait responsiveness]\label{assump:wait}
+No fixed prerequisite may remain forever as an active, reachable, unmet wait
+with no internal route. Formally, for every matter $m$, prerequisite
+occurrence $d$, and position $N_0$,
+\[
+ \bigl(\forall n\ge N_0:\ d\in\NoRoute_n(m)\bigr)
+ \quad\Longrightarrow\quad
+ \exists k\ge N_0:\ \Met_k(d).
+\]
+This deliberately abstracts over why the wait clears. A prerequisite that is
+currently no-route may instead be withdrawn or cease to be reachable before it
+becomes permanent. Coverage of outside inputs and a separate discipline for
+removing obsolete internal prerequisites are possible sufficient conditions for
+this one assumption; the structural theory itself uses only the combined
+liveness statement above.
+\end{assumption}
+
+\begin{theorem}[Persistent Opportunity]\label{thm:persistent-opportunity}
+Under the hypotheses of Theorem~\ref{thm:persistent-wait} and wait
+responsiveness, if matter $m$ remains live forever after its birth, then
+\[
+ \Omega_N(m)\to\infty.
+\]
+\end{theorem}
+
+\begin{proof}
+If cumulative opportunity were bounded, Theorem~\ref{thm:persistent-wait}
+would produce $d$ and $N_0$ with $d\in\NoRoute_n(m)$ for every $n\ge N_0$.
+Wait responsiveness gives some $k\ge N_0$ with $\Met_k(d)$, contradicting
+$d\in\NoRoute_k(m)$, which by definition requires $\neg\Met_k(d)$.
+\end{proof}
+
+\begin{theorem}[No Structural Abandonment]\label{thm:nsa}
+Add Requirement~\ref{req:nonstarvation} (non-starvation). Then for every matter
+$m\in M_\infty$, at least one of the following holds (they need not be
+exclusive):
+\[
+ \bigl(\exists N\ge\beta(m)\ \forall n\ge N:\ \Live_n(m)=\varnothing\bigr)
+ \qquad\text{or}\qquad
+ A_N(m)\to\infty.
+\]
+In words: the matter eventually closes through explicit resolutions, or it
+receives unbounded total attention.
+\end{theorem}
+
+\begin{proof}
+After a matter is born, emptiness of $\Live_n(m)$ is permanent by
+Lemma~\ref{lem:matter-continuity}. Thus either the matter eventually closes or
+it remains live forever. In the second case Theorem~\ref{thm:persistent-opportunity}
+gives $\Omega_N(m)\to\infty$, and non-starvation gives $A_N(m)\to\infty$.
+Resolution continuity makes the first case explicit rather than silent.
+\end{proof}
+
+\begin{center}
+\emph{If no fixed no-route wait can persist forever: resolve it, or keep servicing it.}
+\end{center}
+
+\section{One continuity principle, repeated at several levels}\label{sec:picture}
+
+The individual rules are easier to remember as instances of one idea:
+revision may change normative content, but it may not silently break the
+historical relation that carries authority or obligation forward.
+
+\begin{center}
+\begin{tabular}{@{}p{0.27\textwidth}p{0.62\textwidth}@{}}
+\toprule
+\textbf{Part of the theory} & \textbf{What it prevents} \\
+\midrule
+Grounded Replay & A currently standing rule appearing without an authorization history. \\
+New demands become issues & A demand generated by the reasoner's own rules remaining merely implicit. \\
+Resolution continuity & An outstanding issue disappearing when the surrounding rules change. \\
+Prospective revision & A new rule retroactively becoming the judge of an already-open case. \\
+State continuity & A successor silently forgetting the procedural state accumulated by its parents. \\
+Matter continuity & Renaming, splitting, or replacing issues resetting the obligation to deal with the underlying matter. \\
+Persistent-Wait Theorem & Internal restructuring producing permanent idleness without eventually exposing one fixed unmet wait. \\
+Non-starvation & Infinitely many opportunities for work receiving only finite total service. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two short slogans capture the two halves:
+\[
+ \boxed{\text{authority must have a history}}
+ \qquad\qquad
+ \boxed{\text{obligations must have a future}}.
+\]
+
+\section{How this connects to criticism and substantive progress}\label{sec:updown}
+
+The structural theory starts only once something is represented. It does not
+show that important criticism enters the record, and it does not show that
+attention leads to a good answer. Those are separate assumptions or theorems.
+
+A discovery/coverage theory might supply:
+\begin{quote}
+If a relevant criticism remains exposed in the world, eventually a record
+representing that criticism appears.
+\end{quote}
+The reasoner's own current normative rules might then satisfy a responsiveness
+condition such as
+\[
+ \RepCrit_n(c)
+ \quad\Longrightarrow\quad
+ (\mathrm{Registration},c)\in\NewDue_{n+1}.
+\]
+The one-step shift is just strict-prefix timing: a criticism written in $e_n$
+first becomes readable in $H_{n+1}$. Coverage of outside inputs can also help
+justify wait responsiveness; removing obsolete internal prerequisites supplies
+another possible source of that assumption. The present theory does not need to
+distinguish the two cases.
+
+At the other end, an application-specific progress theorem might say
+\[
+ A_N(m)\to\infty
+ \quad+\quad
+ \text{persistent relevant evidence}
+ \quad\Longrightarrow\quad
+ \text{a useful accepted disposition}.
+\]
+Nothing in the present structural theory says the critic must win. The claim is
+only that a protected matter cannot be erased, silently re-judged, silently
+reset, hidden forever behind a moving chain of prerequisites, or starved when
+work keeps becoming available.
+
+The full intended composition is therefore
+\[
+\begin{aligned}
+&\text{persistent relevant criticism}
+  \longrightarrow \text{represented criticism}
+  \longrightarrow \text{newly due issue}
+  \longrightarrow \text{matter},\\[4pt]
+&\text{matter}
+  \xrightarrow{\ \text{wait responsiveness}\ } \text{explicit closure or infinitely much opportunity},\\[4pt]
+&\text{infinitely much opportunity}
+  \longrightarrow \text{unbounded attention}
+  \longrightarrow \text{useful disposition}.
+\end{aligned}
+\]
+Each arrow needs its own assumption or theorem.
+
+\section{Scope and proof status}\label{sec:scope}
+
+\paragraph{What this theory does not establish.}
+It does not establish normative correctness, good judgment, reflective
+openness, a final evaluator, rates of progress, or resistance to manipulating
+which future evidence becomes available. A self-sealing rule can have a
+perfectly legitimate authorization history. Structural continuity says how
+such a rule must be changed and how the obligations it creates persist; it does
+not say the rule is substantively good.
+
+\paragraph{What remains fixed.}
+The accepted initial standing state $G$ and the eight semantic relations of
+Section~\ref{sec:semantics} are fixed parts of the mathematical model. Their
+values may depend on the current represented rules, and those represented rules
+may themselves change. Internalizing still more of this meta-level structure is
+a separate problem.
+
+\paragraph{Current provenance and proof status.}
+The standing-change discipline and Grounded Replay restate the frozen
+Legitimate Evolution work. Resolution continuity and the basic issue/state
+continuity rules consolidate the subsequent Answerable Process design.
+The route-following construction, the no-rewiring rule, and
+Theorems~\ref{thm:persistent-wait}--\ref{thm:nsa} are the newer part of the
+synthesis. The proofs here are paper proofs and should remain marked as proof
+obligations until independently checked and entered into the project
+concordance. In particular, the no-rewiring rule is motivated by the explicit
+cross-matter prerequisite-rotation counterexample that breaks the weaker
+ownership-only gate. The notation $\Work_n(m)$ is the same mathematical object
+previously called the actionable frontier $\mathsf{Front}_n(m)$; this is an
+expository rename, not a change in the definition.
+
+\paragraph{Which requirements each theorem uses.}
+Grounded Replay uses Requirement~\ref{req:standing-change} only. The
+Persistent-Wait Theorem uses Requirements \ref{req:resolution-continuity},
+\ref{req:fresh-successors}, \ref{req:pre-continuity}--\ref{req:ready} and
+\ref{req:no-rewire}, together with finiteness of batches; Persistent
+Opportunity adds wait responsiveness, and No Structural Abandonment adds
+Requirement~\ref{req:nonstarvation}. Requirements \ref{req:anchor},
+\ref{req:due} and \ref{req:state}, the compatibility assumption, and the
+judgments $\Permit$, $\Due$, $\Continue$ and $\Designate$ are part of the
+theory of normative continuity but are not load-bearing for any theorem after
+Grounded Replay; the standing layer and the issue layer meet only at
+Requirement~\ref{req:anchor}. Lemma~\ref{lem:root-matter} is likewise not used
+by the theorems.
+
+\paragraph{Adjacent work is not superseded.}
+This synthesis does not replace the separate Proper Exercise results about
+jurisdictional self-ratification and the absence of a generic no-escalation
+theorem; the checker/trace-agreement layer that asks whether a concrete run
+actually follows the represented semantics; or the evidence/uptake/answerability
+decomposition developed for Legitimate Improvement. Those theories answer
+different questions and remain separate inputs or downstream consumers.
+
+\paragraph{Audit status.}
+\textsc{agent-consolidated} (29 August 2026): the definitions and theorems
+above were independently reconstructed and adversarially checked by an agent,
+with executable fixtures in \texttt{normative\_continuity\_fixtures.py}
+(the rotating-prerequisite countermodel against the ownership-only gate, its
+rejection by Requirement~\ref{req:no-rewire}, co-opened route roots, route
+extinction, waiting cycles, and branching/merging/designation). This label
+does not mean \textsc{frozen}, \textsc{canonical}, \textsc{proved}, or
+\textsc{lean-verified}. The next stages are provenance concordance and
+independent or formal proof checking.
+
+\paragraph{Next mathematical debt.}
+The priced and clocked charge/liability machinery should appear only through a
+separate theorem showing that a concrete bounded reasoner satisfies these
+structural requirements, and stating whatever stronger finite-time or
+liability guarantees that construction adds. It should not be built into the
+structural definitions themselves.
+
+\end{document}

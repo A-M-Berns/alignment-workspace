@@ -107,6 +107,21 @@ commit.
   a paper needs. It is a specification-layer edit in a paused line, and the round
   has no evidence about either.
 
+- **Whether successor freshness supersedes the frozen carry law.** The
+  Normative Continuity synthesis requires every successor of a resolved issue to
+  be opened in the same batch (`S ⊆ Q⁺_n`), inherited from the Answerable Process
+  page; the frozen Legitimate Evolution round withdrew exactly that clause (A5,
+  A11: "successors may be preexisting or shared", with
+  `office.carry_into_existing_claim` a legitimate fixture). Every trace the
+  synthesis admits satisfies the frozen carry law, so no theorem is contradicted;
+  a trace the frozen round called legitimate is refused. The Persistent-Wait proof
+  uses freshness at one point (`exists_parent_of_anc`) and would need an explicit
+  acyclicity hypothesis under the weaker rule. Read
+  `projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance/CONCORDANCE.md`
+  §8. *Turns on:* whether cross-batch consolidation into an existing issue is a
+  move the continuity line wants to express directly or through a prerequisite
+  edge, which is a modelling choice the round has no evidence to settle.
+
 ## Settled
 
 ### 2026-08-26 — proper exercise is semantic input, not a theorem module
@@ -2139,3 +2154,26 @@ is strictly stronger than what the feasible bounded-resource construction
 delivers, which leaves the debt diverging alongside the service. The round
 records the missing object as a bounded-debt scheduler rather than renaming
 starvation debt a liability because the algebra rhymes.
+
+### 2026-08-29 — the checkpoint bytes are not edited; concordance findings are errata
+
+Agent-decided, reversible. The `AGENT-CONSOLIDATED` checkpoint of Normative
+Continuity enters the tree byte-exact with digests in its `ORIGIN.md`, and the
+eight provenance corrections the concordance found (undeclared reversals of
+frozen Legitimate Evolution decisions inherited through the Answerable Process
+page, and the no-rewiring rule's ancestry) are recorded as errata in
+`CONCORDANCE.md` §7 for the next revision rather than applied to the source. The
+alternative — applying them and re-hashing — was rejected because it would make
+the round that checked the checkpoint also the round that changed it, which is
+the confusion the digests exist to prevent.
+
+### 2026-08-29 — matters enter the Lean spine abstractly
+
+Agent-decided, reversible. The formalization takes `M : ℕ → Finset Q` with two
+fields, monotonicity and priority (`m ∈ M n → ∃ j < n, m ∈ Born j`), rather than
+the paper's construction from roots and designations, because the theorems
+consume only those two facts and stating the construction would import the
+`Designate` judgment into hypotheses that do not read it. Proving the
+construction satisfies the fields is left as an obligation
+(`THEOREM_MAP.md`). The alternative, a concrete `M`, was rejected as hiding a
+dependency the proof-pass table was built to expose.

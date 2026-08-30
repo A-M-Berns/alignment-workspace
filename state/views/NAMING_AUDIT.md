@@ -87,7 +87,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Act` | abbrev | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Act` |
 | `J` | def | 2026-08-11-phase-ii-promotion | note | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.J` |
 | `Jhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Jhat` |
-| `S` | def | 2026-08-11-phase-ii-promotion | wiki, note | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.S` |
+| `S` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.S` |
 | `advantage` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.advantage` |
 | `defect` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.defect` |
 | `eta` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.eta` |
@@ -225,7 +225,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 369 names, 310 of them Lean only
+## normativity — 402 names, 340 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -466,6 +466,39 @@ change, and the count of those is the size of the free choice remaining.
 | `negLine` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.negLine` |
 | `segmentComponent` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.segmentComponent` |
 | `segmentDomain` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.segmentDomain` |
+| `AQ` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.AQ` |
+| `AnchorStanding` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.AnchorStanding` |
+| `Attention` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.Attention` |
+| `BQ` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.BQ` |
+| `Fresh` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.StandingTrace.Fresh` |
+| `Grounded` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.StandingTrace.Grounded` |
+| `IssueTrace` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace` |
+| `Licensing` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Licensing` |
+| `Licensing.standsFor` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Licensing.standsFor` |
+| `Live` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Live` |
+| `LiveGate` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.LiveGate` |
+| `NoRouteWait` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.NoRouteWait` |
+| `NonStarving` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.NonStarving` |
+| `Omega` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Omega` |
+| `OtherRequirements` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.OtherRequirements` |
+| `Reach` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Reach` |
+| `ReachGate` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.ReachGate` |
+| `Ready` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Ready` |
+| `Routes` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Routes` |
+| `StandingTrace` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.StandingTrace` |
+| `TraceData` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData` |
+| `WaitResponsive` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.WaitResponsive` |
+| `Work` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Work` |
+| `anc` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.anc` |
+| `fixA` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixA` |
+| `fixB` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixB` |
+| `fixE` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE` |
+| `onCycle` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.onCycle` |
+| `only` | structure | 2026-08-29-normative-continuity-concordance | note, prose | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.only` |
+| `opp` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.opp` |
+| `succ` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.succ` |
+| `toIssueTrace` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.toIssueTrace` |
+| `waits` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.waits` |
 | `SemanticAction` | inductive | 2026-08-11-phi-regret-bridge | Lean only | `Workspace.Normativity.Contrib.PhiRegretBridge.SemanticAction` |
 | `actual` | def | 2026-08-11-phi-regret-bridge | note | `Workspace.Normativity.Contrib.PhiRegretBridge.Witness.actual` |
 | `cumulativeLoss` | def | 2026-08-11-phi-regret-bridge | Lean only | `Workspace.Normativity.Contrib.PhiRegretBridge.cumulativeLoss` |
