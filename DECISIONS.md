@@ -107,21 +107,6 @@ commit.
   a paper needs. It is a specification-layer edit in a paused line, and the round
   has no evidence about either.
 
-- **Whether successor freshness supersedes the frozen carry law.** The
-  Normative Continuity synthesis requires every successor of a resolved issue to
-  be opened in the same batch (`S ⊆ Q⁺_n`), inherited from the Answerable Process
-  page; the frozen Legitimate Evolution round withdrew exactly that clause (A5,
-  A11: "successors may be preexisting or shared", with
-  `office.carry_into_existing_claim` a legitimate fixture). Every trace the
-  synthesis admits satisfies the frozen carry law, so no theorem is contradicted;
-  a trace the frozen round called legitimate is refused. The Persistent-Wait proof
-  uses freshness at one point (`exists_parent_of_anc`) and would need an explicit
-  acyclicity hypothesis under the weaker rule. Read
-  `projects/normativity/legitimacy/rounds/2026-08-29-normative-continuity-concordance/CONCORDANCE.md`
-  §8. *Turns on:* whether cross-batch consolidation into an existing issue is a
-  move the continuity line wants to express directly or through a prerequisite
-  edge, which is a modelling choice the round has no evidence to settle.
-
 ## Settled
 
 ### 2026-08-26 — proper exercise is semantic input, not a theorem module
@@ -2177,3 +2162,50 @@ consume only those two facts and stating the construction would import the
 construction satisfies the fields is left as an obligation
 (`THEOREM_MAP.md`). The alternative, a concrete `M`, was rejected as hiding a
 dependency the proof-pass table was built to expose.
+
+### 2026-08-30 — successor freshness supersedes the frozen carry law
+
+Agent-decided under a dispatch that asked for a firm resolution; reversible. A
+successor of a resolved issue must be opened in the resolution batch
+(`S ⊆ Q⁺_n`), superseding Legitimate Evolution A5/A11. The reason is
+prefix-determinacy, not proof convenience: a static successor edge into an
+issue that already exists makes `m ⪯ q'` hold at every prefix, so `Live_k(m)`
+and `o_k(m)` for earlier `k` change when the resolution is written, and
+opportunity stops being a function of the history up to `k`. Time-stamped
+edges repair this at the cost of doubly time-indexed ancestry and buy nothing
+the theory needs, because relating an outstanding issue to an existing one is
+a prerequisite routed to it, which keeps matter identity, reach and attention.
+Succession is diachronic continuation of an entitlement into a fresh episode.
+The alternative kept open for a consumer: time-stamped consolidation, if one
+ever needs an existing issue to be a descendant rather than a route.
+`projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement/SETTLEMENT.md`
+§1. This closes the *Awaiting the author* entry of 2026-08-29.
+
+### 2026-08-30 — the remaining Legitimate Evolution departures are settled as departures
+
+Agent-decided, reversible. Same-batch opening and resolution is forbidden
+(every judgment about an issue reads a prefix at which it is outstanding;
+supersedes A17); all eight judgments read the strict prefix uniformly
+(supersedes A34's descriptive/normative split at the cost of one position);
+`Resolve` is sufficient alone, `Permit` may be read inside it (supersedes A21;
+a second gate does no structural work); grounds are constrained only for
+records that change standing (S1's constraint on no-op edits has no structural
+content). Grounded Replay is stated over admitted occurrences with the live
+form as corollary, which is LE's own theorem. Wait responsiveness's primitive is
+"no fixed prerequisite is a permanent no-route wait", equivalent to the
+eventually-met form. Each is recorded at the requirement it touches in revision
+2 of the specification. `SETTLEMENT.md` §§2, 6, 7.
+
+### 2026-08-30 — the mathematics of Normative Continuity is settled
+
+Agent-decided under the dispatch's own criteria, reversible by a downstream
+consumer exposing a missing capability. Status
+`NORMATIVE-CONTINUITY-MATH-SETTLED`: the structural mathematical specification,
+its principal modeling choices, theorem dependencies, satisfiability, and Lean
+theorem spine have been settled. This does not assert Coverage, Progress,
+substantive normative correctness, Proper Exercise, or realization by a
+concrete reasoner, and does not call the legitimacy project settled. The
+`AGENT-CONSOLIDATED` checkpoint of 2026-08-29 is unchanged and remains the
+origin. The paper's matter construction is proved to realize the Lean
+abstraction with no extra property; the whole specification is inhabited in
+Lean and jointly satisfied by a witness trace.

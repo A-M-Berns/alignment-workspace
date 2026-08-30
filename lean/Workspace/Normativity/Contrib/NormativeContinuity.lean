@@ -32,10 +32,19 @@ reads them.
   lemma is false at a prerequisite's introduction position; `fixE_cycle_is_work` shows a
   two-node waiting cycle counts as work.
 
-**What is not claimed.** That the matter construction `M_n` of the paper is the only one
-satisfying `matters_mono`/`matters_prior`; that wait responsiveness or non-starvation hold
-of anything; anything about `Permit`, `Due`, `Continue`, checkers, Proper Exercise, or
-Legitimate Improvement.
+**Settlement additions (2026-08-30, §4).** `IssueTraceCore.mattersOf` is the paper's
+matter construction (roots at birth, designations prospectively) and
+`IssueTraceCore.toIssueTrace` realizes the abstract fields from it, so every theorem above
+applies to the paper's matters; `StandingTrace.grounded_replay_admitted` is Grounded Replay
+over admitted occurrences with the live form as corollary; `IssueTrace.NoPermanentWait` is
+the settled primitive form of wait responsiveness, shown equivalent to the `Met` form;
+`IssueTrace.shareAttention` is the positive-share attention witness with the unit budget
+(`shareAttention_sum_le_one`) and non-starvation (`shareAttention_nonStarving`) for every
+matter; `Fixtures.fixE_issueTrace` inhabits the full issue-trace specification.
+
+**What is not claimed.** That wait responsiveness or non-starvation hold of anything;
+anything about `Permit`, `Due`, `Continue`, checkers, Proper Exercise, or Legitimate
+Improvement.
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
@@ -50,6 +59,12 @@ import Mathlib.Data.Fintype.Basic
 import Mathlib.Algebra.Order.Ring.Rat
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Tactic.DeriveFintype
+import Mathlib.Tactic.Positivity
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.Linarith
+import Mathlib.Algebra.Order.BigOperators.Group.Finset
+import Mathlib.Algebra.BigOperators.Ring.Finset
+import Mathlib.Algebra.Order.Archimedean.Basic
 
 namespace Workspace.Normativity.Contrib.NormativeContinuity
 
@@ -1021,6 +1036,342 @@ theorem fixE_cycle_is_work {n : ℕ} (hn : 2 ≤ n) :
 
 end Fixtures
 
+
+/-! ## 4. Settlement additions (2026-08-30)
+
+The concrete matter construction and its realization of the abstract fields, the
+admitted-occurrence form of Grounded Replay, the primitive form of wait responsiveness,
+the positive-share attention witness, and an inhabitant of `IssueTrace`. -/
+
+/-! ### 4.1 The paper's matter construction realizes the abstract fields -/
+
+/-- An issue trace without matters: every `IssueTrace` field except `M`,
+`matters_mono`, `matters_prior`. -/
+structure IssueTraceCore (Q D : Type*) extends TraceData Q D where
+  born_unique : ∀ q n k, q ∈ Born n → q ∈ Born k → n = k
+  born_not_out : ∀ q n, q ∈ Born n → q ∉ O n
+  out_born : ∀ q n, q ∈ O n → ∃ j < n, q ∈ Born j
+  res_subset : ∀ n, Res n ⊆ O n
+  resolution_continuity : ∀ n, O (n + 1) = (O n \ Res n) ∪ Born n
+  fresh_successors : ∀ n q, q ∈ Born n → ∀ p ∈ par q, p ∈ Res n
+  pre_continuity : ∀ n q, q ∈ O n → q ∈ O (n + 1) →
+    Pre (n + 1) q = (Pre n q \ PreDrop n q) ∪ PreAdd n q
+  pre_fresh : ∀ n q, q ∈ Born n → Pre (n + 1) q = PreAdd n q
+  pre_intro : ∀ n q d, d ∈ PreAdd n q → intro d = n
+  pre_refs : ∀ n q d, d ∈ PreAdd n q → roots d ⊆ O n ∪ Born n
+  met_persistent : ∀ n d, Met n d → Met (n + 1) d
+  ready_resolve : ∀ n q, q ∈ Res n → toTraceData.Ready n q
+  no_rewire : ∀ n q, q ∈ O n → q ∈ O (n + 1) → (PreAdd n q).Nonempty →
+    ∀ m ∈ M n, q ∈ toTraceData.Reach n m → (toTraceData.Work n m).Nonempty
+
+namespace IssueTraceCore
+
+variable (C : IssueTraceCore Q D)
+
+/-- The paper's `M_n`: `M_0 = ∅`; after batch `e_n`, add every root issue born at `n`
+(`Par_n(q) = ∅`, i.e. `par q = ∅`) and every issue designated in `e_n`. `Desig n` is the
+set of accepted `Designate_n` records. -/
+def mattersOf (Desig : ℕ → Finset Q) : ℕ → Finset Q
+  | 0 => ∅
+  | n + 1 => mattersOf Desig n ∪ (C.Born n).filter (fun q => C.par q = ∅) ∪ Desig n
+
+@[simp] lemma mattersOf_zero (Desig : ℕ → Finset Q) : C.mattersOf Desig 0 = ∅ := rfl
+
+lemma mattersOf_succ (Desig : ℕ → Finset Q) (n : ℕ) :
+    C.mattersOf Desig (n + 1) =
+      C.mattersOf Desig n ∪ (C.Born n).filter (fun q => C.par q = ∅) ∪ Desig n := rfl
+
+/-- Matterhood is prospective: `m ∈ M_{n+1}` iff it was already a matter, or became one
+in batch `e_n` as a root or by designation. -/
+lemma mem_mattersOf_succ (Desig : ℕ → Finset Q) (n : ℕ) (m : Q) :
+    m ∈ C.mattersOf Desig (n + 1) ↔
+      m ∈ C.mattersOf Desig n ∨ (m ∈ C.Born n ∧ C.par m = ∅) ∨ m ∈ Desig n := by
+  simp [mattersOf_succ, mem_union, mem_filter, or_assoc]
+
+lemma mattersOf_mono (Desig : ℕ → Finset Q) : ∀ n m, m ∈ C.mattersOf Desig n →
+    m ∈ C.mattersOf Desig (n + 1) := by
+  intro n m h; rw [mem_mattersOf_succ]; exact Or.inl h
+
+/-- With designation restricted to issues already open or co-opened (the paper's
+`q ∈ O_n ∪ Q⁺_n`), every matter is an issue born strictly before the prefix at which it
+exists. -/
+lemma mattersOf_prior (Desig : ℕ → Finset Q)
+    (hD : ∀ n, Desig n ⊆ C.O n ∪ C.Born n) :
+    ∀ n m, m ∈ C.mattersOf Desig n → ∃ j < n, m ∈ C.Born j := by
+  intro n
+  induction n with
+  | zero => intro m h; simp at h
+  | succ n ih =>
+    intro m h
+    rw [mem_mattersOf_succ] at h
+    rcases h with h | ⟨h, -⟩ | h
+    · obtain ⟨j, hj, hm⟩ := ih m h; exact ⟨j, by omega, hm⟩
+    · exact ⟨n, by omega, h⟩
+    · rcases mem_union.1 (hD n h) with h | h
+      · obtain ⟨j, hj, hm⟩ := C.out_born m n h; exact ⟨j, by omega, hm⟩
+      · exact ⟨n, by omega, h⟩
+
+/-- The realization: the concrete construction yields an `IssueTrace`, so every theorem
+of §1 applies to the paper's matters. Requirement 12 is transported verbatim (its `M`
+is the constructed one). -/
+def toIssueTrace (Desig : ℕ → Finset Q) (hD : ∀ n, Desig n ⊆ C.O n ∪ C.Born n)
+    (hgate : ∀ n q, q ∈ C.O n → q ∈ C.O (n + 1) → (C.PreAdd n q).Nonempty →
+      ∀ m ∈ C.mattersOf Desig n, q ∈ C.Reach n m → (C.Work n m).Nonempty) :
+    IssueTrace Q D :=
+  { C.toTraceData with
+    M := C.mattersOf Desig
+    born_unique := C.born_unique, born_not_out := C.born_not_out, out_born := C.out_born,
+    res_subset := C.res_subset, resolution_continuity := C.resolution_continuity,
+    fresh_successors := C.fresh_successors, pre_continuity := C.pre_continuity,
+    pre_fresh := C.pre_fresh, pre_intro := C.pre_intro, pre_refs := C.pre_refs,
+    met_persistent := C.met_persistent, ready_resolve := C.ready_resolve,
+    matters_mono := C.mattersOf_mono Desig, matters_prior := C.mattersOf_prior Desig hD,
+    no_rewire := hgate }
+
+/-- Birth: `β(m)` for the constructed matters is the successor of the batch in which `m`
+was born as a root or designated — never earlier (no retroactive matterhood). -/
+lemma mattersOf_not_mem_of_lt (Desig : ℕ → Finset Q) (hD : ∀ n, Desig n ⊆ C.O n ∪ C.Born n)
+    {m : Q} {j n : ℕ} (hm : m ∈ C.Born j) (hn : n ≤ j) : m ∉ C.mattersOf Desig n := by
+  intro h
+  obtain ⟨i, hi, hmi⟩ := C.mattersOf_prior Desig hD n m h
+  have := C.born_unique m j i hm hmi
+  omega
+
+/-- Merge: a joint successor is live for every matter of every parent. -/
+lemma anc_of_parent {m p q : Q} (hp : p ∈ C.par q) (h : C.anc m p) : C.anc m q :=
+  h.tail hp
+
+/-- Split: each successor of a resolved descendant is live for the same matter. -/
+lemma mem_live_succ_of_parent {m p q : Q} {n : ℕ} (hq : q ∈ C.Born n) (hp : p ∈ C.par q)
+    (hL : p ∈ C.Live n m) : q ∈ C.Live (n + 1) m := by
+  refine mem_filter.2 ⟨?_, C.anc_of_parent hp (mem_filter.1 hL).2⟩
+  rw [C.resolution_continuity n]; exact mem_union_right _ hq
+
+end IssueTraceCore
+
+/-! ### 4.2 Grounded Replay over admitted occurrences -/
+
+namespace StandingTrace
+
+variable {N : Type*} (S : StandingTrace N)
+
+/-- `Adm_n`: `G` together with everything that gained standing before `n`, whether or
+not it still stands. -/
+def Adm : ℕ → Finset N
+  | 0 => S.L 0
+  | n + 1 => Adm n ∪ S.Ladd n
+
+lemma L_subset_Adm : ∀ n, S.L n ⊆ S.Adm n := by
+  intro n
+  induction n with
+  | zero => exact subset_rfl
+  | succ n ih =>
+    intro l hl
+    rw [S.step n] at hl
+    rcases mem_union.1 hl with h | h
+    · exact mem_union_left _ (ih (mem_sdiff.1 h).1)
+    · exact mem_union_right _ h
+
+/-- **Grounded Replay, historical form.** Every admitted occurrence has an authorization
+tree back to `G`, whether or not it still stands. -/
+theorem grounded_replay_admitted : ∀ n, ∀ l ∈ S.Adm n, S.Grounded n l := by
+  intro n
+  induction n with
+  | zero => intro l hl; exact Grounded.genesis hl
+  | succ n ih =>
+    intro l hl
+    rcases mem_union.1 hl with h | h
+    · exact Grounded.mono S (ih l h) (Nat.le_succ n)
+    · by_cases hin : l ∈ S.L n
+      · exact Grounded.mono S (S.grounded_replay n l hin) (Nat.le_succ n)
+      · refine Grounded.node h hin (by omega) (fun g hg => ?_)
+        have := S.grounds_standing n l h hin hg
+        exact Grounded.mono S (S.grounded_replay n g (mem_filter.1 this).1) le_rfl
+
+/-- The live form is the corollary. -/
+theorem grounded_replay_live (n : ℕ) (l : N) (hl : l ∈ S.L n) : S.Grounded n l :=
+  S.grounded_replay_admitted n l (S.L_subset_Adm n hl)
+
+end StandingTrace
+
+/-! ### 4.3 Wait responsiveness: the primitive form -/
+
+namespace IssueTrace
+
+variable (T : IssueTrace Q D)
+
+/-- The settled primitive: no fixed prerequisite is a permanent no-route wait. -/
+def NoPermanentWait (m : Q) : Prop :=
+  ∀ d N0, ∃ n, N0 ≤ n ∧ ¬ T.NoRouteWait n m d
+
+/-- The "eventually `Met`" form implies the primitive form. -/
+lemma noPermanentWait_of_waitResponsive {m : Q} (h : T.WaitResponsive m) :
+    T.NoPermanentWait m := by
+  intro d N0
+  by_contra hcon
+  push Not at hcon
+  obtain ⟨k, hk, hmet⟩ := h d N0 hcon
+  obtain ⟨_, _, _, hu, _⟩ := hcon k hk
+  exact hu hmet
+
+/-- And conversely, vacuously: the two are equivalent. -/
+lemma waitResponsive_of_noPermanentWait {m : Q} (h : T.NoPermanentWait m) :
+    T.WaitResponsive m := by
+  intro d N0 hall
+  obtain ⟨n, hn, hnot⟩ := h d N0
+  exact absurd (hall n hn) hnot
+
+/-- Persistent Opportunity from the primitive form. -/
+theorem persistent_opportunity' (m : Q) (n0 : ℕ) (hm0 : m ∈ T.M n0)
+    (hlive : ∀ n, n0 ≤ n → (T.Live n m).Nonempty) (h : T.NoPermanentWait m) :
+    ∀ B, ∃ N, B < T.Omega N m :=
+  T.persistent_opportunity m n0 hm0 hlive (T.waitResponsive_of_noPermanentWait h)
+
+/-! ### 4.4 The positive-share attention witness -/
+
+/-- Share `2^{-(idx m)-1}` for an injective index (e.g. birth order with a fixed
+tie-break), charged exactly when the matter has work. -/
+def shareAttention (idx : Q → ℕ) (n : ℕ) (m : Q) : ℚ :=
+  if T.opp n m then (1 / 2 : ℚ) ^ (idx m + 1) else 0
+
+lemma shareAttention_nonneg (idx : Q → ℕ) (n : ℕ) (m : Q) : 0 ≤ T.shareAttention idx n m := by
+  unfold shareAttention; split_ifs <;> positivity
+
+lemma shareAttention_le_opp (idx : Q → ℕ) (n : ℕ) (m : Q) :
+    T.shareAttention idx n m ≤ if T.opp n m then 1 else 0 := by
+  unfold shareAttention
+  split_ifs
+  · exact pow_le_one₀ (by norm_num) (by norm_num)
+  · exact le_rfl
+
+lemma geom_half_sum_le (N : ℕ) : ∑ k ∈ range N, (1 / 2 : ℚ) ^ (k + 1) ≤ 1 := by
+  have : ∀ N, ∑ k ∈ range N, (1 / 2 : ℚ) ^ (k + 1) = 1 - (1 / 2 : ℚ) ^ N := by
+    intro N
+    induction N with
+    | zero => simp
+    | succ N ih => rw [sum_range_succ, ih]; ring
+  rw [this]
+  have : (0 : ℚ) ≤ (1 / 2 : ℚ) ^ N := by positivity
+  linarith
+
+/-- Unit budget at every position, for any finite set of matters. -/
+lemma shareAttention_sum_le_one (idx : Q → ℕ) (hidx : Function.Injective idx) (n : ℕ)
+    (S : Finset Q) : ∑ m ∈ S, T.shareAttention idx n m ≤ 1 := by
+  calc ∑ m ∈ S, T.shareAttention idx n m
+      ≤ ∑ m ∈ S, (1 / 2 : ℚ) ^ (idx m + 1) := by
+        apply sum_le_sum; intro m _
+        unfold shareAttention; split_ifs
+        · exact le_rfl
+        · positivity
+    _ = ∑ k ∈ S.image idx, (1 / 2 : ℚ) ^ (k + 1) := by
+        rw [sum_image (fun a _ b _ h => hidx h)]
+    _ ≤ ∑ k ∈ range ((S.image idx).sup id + 1), (1 / 2 : ℚ) ^ (k + 1) := by
+        apply sum_le_sum_of_subset_of_nonneg
+        · intro k hk
+          rw [mem_range]
+          have := le_sup (f := id) hk
+          simp only [id] at this
+          omega
+        · intro k _ _; positivity
+    _ ≤ 1 := geom_half_sum_le _
+
+/-- `A_N(m) = w_m · Ω_N(m)` exactly. -/
+lemma attention_share_eq (idx : Q → ℕ) (N : ℕ) (m : Q) :
+    Attention (T.shareAttention idx) N m = (1 / 2 : ℚ) ^ (idx m + 1) * T.Omega N m := by
+  unfold Attention shareAttention TraceData.Omega
+  rw [← sum_boole, mul_sum]
+  apply sum_congr rfl
+  intro n _
+  split_ifs <;> simp
+
+/-- Hence non-starvation holds for every matter simultaneously. -/
+theorem shareAttention_nonStarving (idx : Q → ℕ) (m : Q) :
+    T.NonStarving (T.shareAttention idx) m := by
+  intro hΩ C
+  set w : ℚ := (1 / 2 : ℚ) ^ (idx m + 1) with hw
+  have hwpos : 0 < w := by positivity
+  obtain ⟨B, hB⟩ : ∃ B : ℕ, C / w < B := exists_nat_gt _
+  obtain ⟨N, hN⟩ := hΩ B
+  refine ⟨N, ?_⟩
+  rw [attention_share_eq]
+  have : (C / w) * w < (T.Omega N m : ℚ) * w := by
+    apply mul_lt_mul_of_pos_right _ hwpos
+    calc C / w < B := hB
+      _ < T.Omega N m := by exact_mod_cast hN
+  rw [div_mul_cancel₀ _ hwpos.ne'] at this
+  linarith [this]
+
+end IssueTrace
+
+/-! ### 4.5 An inhabitant of the full issue-trace specification -/
+
+namespace Fixtures
+
+@[simp] lemma fixE_mem_O {n : ℕ} {q : BQ} : q ∈ fixE.O n ↔ 1 ≤ n := by
+  simp only [fixE, mem_filter, mem_univ, true_and]
+@[simp] lemma fixE_Res {n : ℕ} : fixE.Res n = ∅ := rfl
+@[simp] lemma fixE_mem_Born {n : ℕ} {q : BQ} : q ∈ fixE.Born n ↔ n = 0 := by
+  simp only [fixE, mem_filter, mem_univ, true_and]
+@[simp] lemma fixE_par {q : BQ} : fixE.par q = ∅ := rfl
+@[simp] lemma fixE_Pre {n : ℕ} {q : BQ} :
+    fixE.Pre n q = if 2 ≤ n then {decide (q = BQ.a)} else ∅ := rfl
+@[simp] lemma fixE_PreAdd {n : ℕ} {q : BQ} :
+    fixE.PreAdd n q = if n = 1 then {decide (q = BQ.a)} else ∅ := rfl
+@[simp] lemma fixE_PreDrop {n : ℕ} {q : BQ} : fixE.PreDrop n q = ∅ := rfl
+@[simp] lemma fixE_intro {d : Bool} : fixE.intro d = 1 := rfl
+@[simp] lemma fixE_Met {n : ℕ} {d : Bool} : ¬ fixE.Met n d := by simp [fixE]
+@[simp] lemma fixE_mem_M {n : ℕ} {q : BQ} : q ∈ fixE.M n ↔ 1 ≤ n := by
+  simp only [fixE, mem_filter, mem_univ, true_and]
+
+/-- Fixture E satisfies every other requirement. -/
+theorem fixE_other_requirements : OtherRequirements fixE := by
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · intro q n k hn hk; rw [fixE_mem_Born] at hn hk; omega
+  · intro q n hq; rw [fixE_mem_Born] at hq; rw [fixE_mem_O]; omega
+  · intro q n hq; rw [fixE_mem_O] at hq; exact ⟨0, by omega, by rw [fixE_mem_Born]⟩
+  · intro n; simp
+  · intro n; ext q; simp; omega
+  · intro n q _ p hp; simp at hp
+  · intro n q hO hO'
+    rw [fixE_mem_O] at hO
+    by_cases h : 2 ≤ n
+    · simp [h, show 2 ≤ n + 1 by omega, show ¬ n = 1 by omega]
+    · have : n = 1 := by omega
+      subst this; simp
+  · intro n q hq; rw [fixE_mem_Born] at hq; subst hq; simp
+  · intro n q d hd
+    by_cases h : n = 1
+    · simp [h]
+    · simp [h] at hd
+  · intro n q d hd r hr
+    by_cases h : n = 1
+    · subst h; simp
+    · simp [h] at hd
+  · intro n d h; exact h
+  · intro n q hq; simp at hq
+  · intro n m hm; rw [fixE_mem_M] at hm ⊢; omega
+  · intro n m hm; rw [fixE_mem_M] at hm; exact ⟨0, by omega, by rw [fixE_mem_Born]⟩
+
+/-- Fixture E satisfies the reach gate: its only prerequisite additions are at position
+1, where both matters have work (`a` and `t` are ready). -/
+theorem fixE_reach_gate : ReachGate fixE := by
+  intro n q hO hO' hadd m hm hR
+  have hn : n = 1 := by
+    by_contra hne; simp [hne] at hadd
+  subst hn
+  have hOq : ∀ q, q ∈ fixE.O 1 := by intro q; simp
+  refine ⟨m, mem_filter.2 ⟨?_, Or.inl ?_⟩⟩
+  · exact mem_filter.2 ⟨hOq m, m, mem_filter.2 ⟨hOq m, ReflTransGen.refl⟩, ReflTransGen.refl⟩
+  · intro d hd; simp at hd
+
+/-- The specification is inhabited. -/
+def fixE_issueTrace : IssueTrace BQ Bool := toIssueTrace fixE fixE_other_requirements fixE_reach_gate
+
+theorem fixE_issueTrace_nonvacuous : (fixE_issueTrace.Live 1 BQ.a).Nonempty :=
+  ⟨BQ.a, mem_filter.2 ⟨by simp [fixE_issueTrace, toIssueTrace], ReflTransGen.refl⟩⟩
+
+end Fixtures
+
 end
 
 end Workspace.Normativity.Contrib.NormativeContinuity
@@ -1040,3 +1391,16 @@ end Workspace.Normativity.Contrib.NormativeContinuity
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixA_persistent_wait_fails
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixB_routes
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE_cycle_is_work
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTraceCore.mattersOf_prior
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTraceCore.mattersOf_not_mem_of_lt
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTraceCore.mem_live_succ_of_parent
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.StandingTrace.grounded_replay_admitted
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.StandingTrace.grounded_replay_live
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.noPermanentWait_of_waitResponsive
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.waitResponsive_of_noPermanentWait
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.persistent_opportunity'
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.shareAttention_sum_le_one
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.shareAttention_nonStarving
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE_other_requirements
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE_reach_gate
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE_issueTrace_nonvacuous

@@ -972,6 +972,21 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-29-normative-continuity-concordance/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-30-normative-continuity-settlement",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement",
+      "verdict": "NORMATIVE-CONTINUITY-MATH-SETTLED — the structural mathematical specification, its principal modeling choices, theorem dependencies, satisfiability, and Lean theorem spine have been settled; this does not assert Coverage, Progress, substantive normative correctness, Proper Exercise, or realization by a concrete reasoner. Successor freshness is settled as the primitive because a static successor edge into an existing issue makes past opportunity depend on future records, while a route edge expresses consolidation with matter identity, reach and attention intact; same-batch opening and resolution is forbidden because every judgment about an issue reads a prefix at which it is outstanding; Due is uniformly strict-prefix; resolution is not gated by Permit; grounds are constrained only for records that change standing; Grounded Replay is stated over admitted occurrences with the live form as corollary; wait responsiveness is the primitive \"no permanent no-route wait\", equivalent to the eventually-met form. The paper's matter construction is proved in Lean to realize exactly the two abstract fields the theorem spine consumes, with no extra property needed, and the whole specification is inhabited in Lean and jointly satisfied by a nontrivial witness trace that exercises every departure and every red-team shape; every dependency fact of the concordance round is unchanged and the fixtures still pass.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-normative-continuity-settlement/README.md",
+      "depends_on": [
+        "2026-08-29-normative-continuity-concordance",
+        "2026-08-25-legitimate-evolution"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-normative-continuity-settlement/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
