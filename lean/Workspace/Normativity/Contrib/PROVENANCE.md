@@ -7,7 +7,8 @@
 | `TraderizedEnforcement.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-16/17 | `prompts/2026-08-16-traderized-enforcement/` | — |
 | `AssessmentProcess.lean`, `AssessmentFirm.lean`, `AssessmentProperties.lean`, `EnforcementStrategy.lean`, `EnforcementPreservation.lean`, `DeductiveEnforcement.lean`, `CoherenceModulus.lean`, `IntrinsicCoherence.lean` | `prompts/2026-08-16-traderized-enforcement/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-16-traderized-enforcement/` | — |
 | `MaxMinRepresentation.lean` | `prompts/2026-08-18-maxmin-representation/` (executor: Claude Opus 5, Anthropic; prompt author: unrecorded) | `ci-only` | 2026-08-18 | `prompts/2026-08-18-maxmin-representation/` | — |
-| `NormativeContinuity.lean` | `prompts/2026-08-29-normative-continuity-concordance/` (executor: Claude Fable 5, Anthropic; prompt author: the maintainer with GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-29 | `prompts/2026-08-29-normative-continuity-concordance/` | — |
+| `NormativeContinuity.lean` (§1–3) | `prompts/2026-08-29-normative-continuity-concordance/` (executor: Claude Fable 5, Anthropic; prompt author: the maintainer with GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-29 | `prompts/2026-08-29-normative-continuity-concordance/` | — |
+| `NormativeContinuity.lean` (§4, settlement additions) | `prompts/2026-08-30-normative-continuity-settlement/` (executor: Claude Fable 5, Anthropic; prompt author: the maintainer with GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-30 | `prompts/2026-08-30-normative-continuity-settlement/` | — |
 
 `MaxMinRepresentation.lean` proves Ovchinnikov's max–min representation theorem
 (Beiträge zur Algebra und Geometrie 43 (2002) 297–302, Theorem 4.1) for a piecewise
@@ -154,3 +155,9 @@ Persistent Opportunity parametric in wait responsiveness, No Structural Abandonm
 parametric in non-starvation, Grounded Replay from Requirement 1, and the
 rotating-prerequisite countermodel in both directions (the ownership-only gate admits it,
 the reach gate rejects it, every other requirement holds). It imports Mathlib only.
+
+§4 of `NormativeContinuity.lean` (2026-08-30) adds the paper's matter construction and
+its realization of the abstract `IssueTrace` fields, Grounded Replay over admitted
+occurrences, the primitive form of wait responsiveness, the positive-share attention
+witness with the unit budget and non-starvation, and an inhabitant of the issue-trace
+specification. The §1–3 proofs are unchanged.
