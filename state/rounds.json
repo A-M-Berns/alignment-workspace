@@ -987,6 +987,21 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-30-normative-continuity-settlement/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-30-proper-exercise-calculus",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-proper-exercise-calculus",
+      "verdict": "PE-AND-LOCALITY-BOTH-NEED-LOCAL-REPAIRS",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-proper-exercise-calculus/REPORT.md",
+      "depends_on": [
+        "2026-08-30-normative-continuity-settlement",
+        "2026-08-28-service-realization"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-proper-exercise-calculus/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
