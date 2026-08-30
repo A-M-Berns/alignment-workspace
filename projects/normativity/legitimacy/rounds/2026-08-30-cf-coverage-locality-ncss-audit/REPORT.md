@@ -7,6 +7,12 @@ open.
 
 Both objections succeed, and both have local repairs.
 
+**Subsequent correction.** The follow-up Proper Exercise round preserves this audit's
+finding that `(CFP)` is insufficient, but refines its repair: `(BL)` freezes realized
+residual behavior and is too strong for an unchanged contingent policy receiving
+different information. It remains an optional trace certificate; response-structure
+locality is the default repaired notion.
+
 `(CFP)` certifies an exterior-fixed comparison but no residual-agent invariance. Neither
 `res(alpha(q,r))=r` nor a named residual equivalence fixes the problem: either can be a
 label while \(q\) selects the whole agent. The minimal meaningful condition is

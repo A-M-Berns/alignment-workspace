@@ -48,6 +48,13 @@ require
 \tag{BL}
 \]
 
+**Later correction.** `(BL)` is a sufficient certificate for *realized residual
+behavior*, not the minimal certificate for a fixed residual response policy. An unchanged
+contingent rule can select different actions after different query-produced receipts.
+The follow-up `2026-08-30-proper-exercise-calculus/LOCALITY_RESPONSE_STRUCTURE.md`
+therefore retains `(BL)` as an optional strong condition and uses authenticated
+receipt-conditioned response structure as the default locality invariant.
+
 Thus \(\rho(z)\) names the residual condition and `(BL)`, not mere independence of
 \(\rho\) from \(q\), proves that its protected behavior is fixed. Literal
 \(Z=R\times E\) and a product decomposition of all of \(A\) are unnecessary: \(Z\) may
@@ -141,6 +148,7 @@ The useful thin boundary is
 \]
 
 The bare tuple \((Q,Z,\beta,q^{\rm act})\) is the right computational payload but the
-wrong proof object. `(CFP)` certifies the same exterior response structure; `(BL)` is the
-additional minimum condition for the exact residual behavior named by \(p_R\). Inquiry
-locality is then supplied semantically by the contract.
+wrong proof object. `(CFP)` certifies the same exterior response structure; `(BL)` is an
+additional strong condition for the exact realized residual behavior named by \(p_R\).
+When information-dependent downstream action is allowed, authenticate the residual
+response rule instead. Inquiry locality is then supplied semantically by the contract.

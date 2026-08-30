@@ -78,6 +78,13 @@ which claims substantive residual protection must authenticate a separating fami
 residual observables. Nonconstancy or injectivity of residual labels is a useful audit,
 not a theorem field: a genuinely trivial residual is allowed.
 
+**Superseded interpretation.** The subsequent Proper Exercise pass shows that this exact
+claim is stronger than residual-policy locality: the same contingent response rule may
+produce different realized behavior after different receipts. `(BL)` remains valid when
+trace invariance is actually required, but the default local-agent claim now uses an
+authenticated receipt-conditioned response structure. See
+`../2026-08-30-proper-exercise-calculus/LOCALITY_RESPONSE_STRUCTURE.md`.
+
 A residual projection `(RP)` is optional. It is useful when downstream code must recover
 a named residual coordinate, but no Coverage or NCSS proof consumes it. The behavioral
 certificate, not `(RP)`, carries locality.
@@ -85,16 +92,18 @@ certificate, not `(RP)`, carries locality.
 ## 4. Three levels
 
 1. **Exterior-fixed variation:** `(CFP)`, with \(\epsilon(z)\) independent of \(q\).
-2. **Residual-behavior-fixed variation:** `(CFP)+(BL)` relative to authenticated
-   \(p_R\).
+2. **Residual-realization-fixed variation:** `(CFP)+(BL)` relative to authenticated
+   \(p_R\); this is stronger than response-policy-fixed variation.
 3. **Inquiry-local variation:** level 2 plus contract semantics identifying
    \(Q^{\rm adm}\) as inquiry policies and certifying target/applicability preservation,
    exposure, and registration capability.
 
 Cartesian Frames provide level 1 and the universal quantification over exterior
-responses used by level 2. The Coverage contract supplies level 3. Coverage's access
-calculation can be performed at level 1 over complete policies, but calling the result a
-*local agent patch* requires level 2. “Inquiry” is semantic and is not derived from CF.
+responses used by level 2. A receipt-conditioned semantic interface is needed to express
+the weaker response-policy invariant. The Coverage contract supplies level 3. Coverage's
+access calculation can be performed at level 1 over complete policies, but calling the
+result a *local agent patch* requires an explicit response-policy or stronger trace
+certificate. “Inquiry” is semantic and is not derived from CF.
 
 ## 5. Existing CF notions
 
