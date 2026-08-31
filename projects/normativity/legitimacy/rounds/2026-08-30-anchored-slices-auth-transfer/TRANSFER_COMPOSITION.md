@@ -49,6 +49,7 @@ that preserve finite joins and bottom. Transfer is checked after mapping into
 \]
 
 An arbitrary era-to-era join homomorphism is insufficient: it could map
-nonzero inherited content to zero. The stable anchored codomain is what turns a
-representation change into preservation rather than evaluator-controlled
-forgetting.
+nonzero inherited content to zero. A stable anchored codomain blocks cumulative
+forgetting only when era maps are also order-reflecting on admissible
+slice-relative quotients and those quotients are compatible. The codomain alone
+does not turn a lossy representation change into preservation.

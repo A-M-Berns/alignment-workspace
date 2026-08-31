@@ -16,12 +16,15 @@ Generic Transfer cleanly separates:
 
 Accounting needs only a finite join-semilattice with bottom. Authentication is
 necessarily domain-specific, though it has a generic proof-relevant interface
-and soundness projection. Authenticated Transfer composes when the intermediate
+and soundness projection. Strong semantic preservation additionally requires
+slice-relative order reflection on admissible representations. Authenticated
+Transfer composes when the intermediate
 interpretation is shared or connected by an authenticated join-preserving
 commuting bridge into a stable slice domain.
 
 Slice-wise Answerability Conservation follows by induction from authenticated
-birth, local Transfer accounting/authentication, authenticated terminal exits,
+birth, generalized accounting/authentication over every semantic mutation, an
+identity frame for all other persistent carriers, authenticated terminal exits,
 and settled Continuity. Its No Semantic Laundering corollary forces weakening
 to expose an authorized disposition and strengthening to expose a fresh origin.
 No settled Continuity change is needed.
@@ -42,9 +45,10 @@ No settled Continuity change is needed.
    bottom and its induced order.
 6. **Is a join-semilattice enough?** Yes. No distributivity, complement,
    meet, atomic decomposition, or canonical subtraction is used.
-7. **Generic accounting?** For each affected slice, incoming content equals
-   authenticated satisfaction, authorized disposition, and the finite join of
-   outgoing carrier loads.
+7. **Generic accounting?** For each affected slice and prefix transition, the
+   join of all semantically changed old carrier loads equals authenticated
+   satisfaction, authorized disposition, and the join of all affected
+   post-state loads. Persistent carriers outside the batch satisfy identity.
 8. **What is domain-authenticated?** Representation denotation, translations,
    admissions, dispositions, terminal witnesses, and any context/ontology bridge.
 9. **Can a denotation map represent authentication?** It can state the
@@ -53,16 +57,18 @@ No settled Continuity change is needed.
 10. **How is it anchored?** Slice birth fixes a stable semantic domain and
     interpretation commitment; era-local meanings map into it through
     authenticated bridges.
-11. **What blocks disguised weakening?** The old-slice equation. Any missing
-    component must appear in an authorized Disposition term.
+11. **What blocks disguised weakening?** The old-slice equation plus
+    slice-relative order reflection. Any missing relevant component must appear
+    in an authorized Disposition term.
 12. **Strengthening?** Transfer the old slice unchanged and admit the increment
     as a fresh slice.
 13. **Does authenticated Transfer compose?** Yes, conditionally.
 14. **Composition condition?** Same slice; validated local certificates; stable
     or transported context/target identifiers; and exact intermediate semantic
     agreement or a join-and-bottom-preserving authenticated commuting bridge.
-15. **Time-varying ontology?** Yes when local meanings commute into the stable
-    anchored slice domain. Arbitrary evaluator remapping is insufficient.
+15. **Time-varying ontology?** Yes when local meanings commute faithfully into
+    the stable anchored slice domain and the relevance quotients are compatible.
+    Arbitrary evaluator remapping is insufficient.
 16. **Where does regress stop?** At an explicit fixed metalanguage/model
     relation or named checker soundness assumption. The calculus is
     parameterized by semantics; it does not manufacture meaning.
@@ -122,6 +128,12 @@ assumptions instead. The prompt record preserves every numbered instruction,
 hostile case, deliverable, question class, and verdict option, but compresses
 repeated display equations and framing prose rather than reproducing the
 dispatch byte-for-byte.
+
+The initial theorem statement had a local gap: it covered only resolution
+batches and incorrectly attributed semantic-load persistence to structural
+outstanding evolution. The open PR was amended in place after the
+2026-08-31-faithful-semantic-preservation countermodel. The verdict on anchored
+slices is unchanged.
 
 ## What is not shown
 

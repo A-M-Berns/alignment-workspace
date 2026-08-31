@@ -1032,6 +1032,21 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-30-anchored-slices-auth-transfer/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-31-faithful-semantic-preservation",
+      "date": "2026-08-31",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation",
+      "verdict": "PR73-CONSERVATION-NEEDS-IN-PLACE-MUTATION-REPAIR",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/REPORT.md",
+      "depends_on": [
+        "2026-08-30-anchored-slices-auth-transfer",
+        "2026-08-25-legitimate-evolution"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-31-faithful-semantic-preservation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

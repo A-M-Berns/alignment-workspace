@@ -17,6 +17,13 @@ passes while answerability is laundered.
 Semantic authentication is the independent evidence that source and target
 representations are related to the historically anchored meaning as claimed.
 
+This is authentication correctness, not by itself authentication adequacy. A
+join-preserving denotation can be correct and still collapse a distinction
+relevant to the slice. The strong No Semantic Laundering consumer therefore
+also requires order reflection on admissible representations modulo an
+anchored slice-relative equivalence. The
+2026-08-31-faithful-semantic-preservation follow-up makes that interface exact.
+
 ## Generic interface
 
 For domain \(\tau\), context \(K\), matter \(m\), and slice \(\alpha\), use a
