@@ -23,4 +23,7 @@ current fixture results. Future legitimacy rounds land under `rounds/`.
   criticism can be starved: `rounds/2026-08-28-answerable-challenge-service/`
 - Bounded service and the coverage boundary — deriving the service premise, and
   formalizing coverage beside it: `rounds/2026-08-28-service-realization/`
+- Normative Affordability — the Answerability-to-Progress service interface,
+  joint actionable response, and settlement-relative safety:
+  `rounds/2026-08-31-normative-affordability/`
 - Interpretation and philosophical gloss: [Legitimacy wiki](https://github.com/A-M-Berns/alignment-workspace/wiki/Legitimacy)

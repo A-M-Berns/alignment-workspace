@@ -1924,6 +1924,36 @@ unbounded one with a witness are both better than the present reading.
 
 ---
 
+### 74. Is the overload certificate complete for the causal problem? — **[entry]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+A Farkas pair `(y, z)` with positive deficit refutes finite-horizon affordability on
+any settlement-consistent path, and that direction is proved. The converse is open,
+and it is the difference between a diagnostic and a dichotomy: a program feasible on
+every path separately may still admit no causal policy, because the per-path relaxation
+hands the controller the path in advance.
+
+Settle it. Either exhibit a certificate class complete for the causal problem — the
+transport plan of the Deferred Service Transfer theorem is already a flow, so flow/cut
+duality on the plan is the first place to look — or exhibit a causally unaffordable
+instance every path of which is feasible, which shows no per-path certificate class can
+be complete and moves the question to certificates over policies.
+
+*Deliverable shape:* `witness-checked` for the separating instance, or a stated theorem
+with an exact-rational fixture inhabiting its hypotheses for the completeness direction.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes; a registered entry, if one is filed, is accepted by `python3 -m checkers.run`.
+
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/EXISTENCE_AND_DUALITY.md`
+§4 for the certificate and the soundness proof, §1–§3 for the causal problem it is a
+relaxation of, and `src/overload.py` with `tests/test_overload.py` for the exact
+instances; `projects/normativity/legitimacy/rounds/2026-08-30-liability-theory/DUALITY.md`
+for the synchronic certificate the horizon version extends.
+*A solution ships:* the theorem or the separating instance, and in either case a
+statement of what a certificate can and cannot be fed back into Answerability as.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
@@ -2022,6 +2052,30 @@ The fix is a matching rule that exempts a citation context — a bibliography
 bullet, or a name adjacent to a title in quotes and a link. It changes a gate's
 logic, which is specification layer and retroactive over every document the gate
 has already passed, so it was not taken by the round that hit it.
+
+### F7 — A round cannot record a dependency on an unindexed research checkpoint
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+`state/rounds.json` requires every `depends_on` id to resolve, and
+`workspace_state --check` fails on one that does not. Several research checkpoints on
+`main` — the Progress research, witness-bridge, consolidation and liability-hard-pass
+rounds, and the liability-theory round beside them — landed with round directories and
+round-local provenance but no `state/rounds.json` record and no `prompts/` entry.
+
+A later round that genuinely takes their results as hypotheses therefore has two
+options, both wrong: name them and fail the checker, or index itself while claiming to
+depend on nothing. The Normative Affordability round hit the question and escaped it —
+it reads those checkpoints and refutes one of their hypotheses, but consumes none of
+their results, so `depends_on: []` is accurate rather than convenient. The next round
+that actually builds on one of them will not have that escape.
+
+The rule the index enforces is right; what is missing is a way to say *depends on an
+unindexed checkpoint*. Three candidate fixes: index the checkpoints retroactively,
+which is history and cheap; allow a `depends_on_unindexed` field carrying paths rather
+than ids, which is a schema change and specification layer; or rule that a research
+checkpoint must be indexed at merge, which is a convention change binding future rounds
+only. The choice is specification layer and was not taken here.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->

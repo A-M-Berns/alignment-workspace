@@ -95,6 +95,19 @@ commit.
   *Turns on:* where the program is going — this is *what is worth proving*, which
   no round decides.
 
+- **Whether Progress is claim-weighted or service-weighted.** The merged Progress
+  schematic concludes that the *service*-weighted defect density vanishes, and a
+  two-surface fair rotation satisfies its every hypothesis while the service
+  measure never touches a defective date: exactly zero service-weighted defect at
+  every horizon against a claim-weighted defect of one half. Making Progress
+  claim-weighted imports a transport interface and a residual stability error into
+  the settled statement; leaving it service-weighted keeps the present theorem and
+  moves the burden onto whatever consumes it. Read
+  `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+  `SERVICE_TRANSFER.md` §3 and `AFFORDABILITY.md` §2. *Turns on:* what the paper's
+  Progress claim has to be able to say — external knowledge the round lacks, and
+  the round has evidence for the mathematics either way but none for the choice.
+
 - **Whether the deference kernel's grade acquires an index.** `GradeTrust` types
   the principal's grade as `C -> P -> Q` with no time, process or standing on it,
   so the legitimacy premise a cross-process deference theorem would consume has
@@ -108,6 +121,49 @@ commit.
   has no evidence about either.
 
 ## Settled
+
+### 2026-08-31 — the service-fidelity interface is a transport plan, not contiguity
+
+**agent-decided, reversible.** Contiguity of the claim measure against the service
+measure is exactly the weakest condition under which service-weighted learning
+transfers to claim-weighted defect, for triangular arrays — and a settlement-relative
+defect is a triangular array, so the strong version is the one in force. It is
+nevertheless not what the interface should carry. It is not checkable at a finite
+horizon, it is not quantitative, and it is false of bounded-delay service, which the
+theory has no reason to forbid: a two-surface rotation has delay one and backlog one
+and defeats it.
+
+The interface is instead a declared transport plan `T(t, s)` with a claim marginal, a
+service-feasibility constraint, a stability inequality `d_t <= L d_s + eps`, and a
+service-to-claim cap. Feasibility plus the cap give a pointwise density bound, so
+contiguity is a consequence rather than a hypothesis and the resulting transfer bound
+is quantitative. Queue stability, bounded delay, backlog bounds and fair scheduling
+keep their role, on the other side of the interface: they establish that a plan
+exists, not that transfer holds.
+
+*Rejected alternative:* keeping contiguity as clause 2 of the affordability
+definition and treating deferral as a separate extension.
+
+### 2026-08-31 — Actionability is read against the common region, not reason-relative ones
+
+**agent-decided, reversible.** Individually actionable controls do not compose when
+each reason's gain is scored against that reason's own admissible region: an exhibited
+pair with jointly satisfiable demands, each meeting its margin exactly, has a
+per-reason gain of `-1/8` after aggregation, because one reason's region does not
+constrain the coordinates the other moves. Scored against the intersection of the
+regions the composition is immediate — an infimum over a smaller set is larger, and an
+infimum is superadditive — with no convexity, separability or noninterference
+hypothesis.
+
+The joint response correspondence therefore drops the reason-indexed comparison
+coordinate the dispatch proposed and keeps `(w, u)` with `u = sum_r w^r zeta^r`,
+standing beside one datum: the intersection is nonempty. So typed it is the image of a
+nonnegative orthant under a linear map intersected with the control set, which is
+convex whenever the control set is — the convexity the existence theory wants is what
+the minimal type already is, rather than an added assumption.
+
+*Rejected alternative:* a joint response correspondence carrying per-reason scored
+challenges, which is the shape the interference countermodel exploits.
 
 ### 2026-08-26 — proper exercise is semantic input, not a theorem module
 
