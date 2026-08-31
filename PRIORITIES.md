@@ -1948,8 +1948,8 @@ passes; a registered entry, if one is filed, is accepted by `python3 -m checkers
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/EXISTENCE_AND_DUALITY.md`
 §4 for the certificate and the soundness proof, §1–§3 for the causal problem it is a
-relaxation of, and `src/overload.py` with `tests/test_overload.py` for the exact
-instances; `projects/normativity/legitimacy/rounds/2026-08-30-liability-theory/DUALITY.md`
+relaxation of, and its `src/overload.py` with the matching module under `tests/` for
+the exact instances; `projects/normativity/legitimacy/rounds/2026-08-30-liability-theory/DUALITY.md`
 for the synchronic certificate the horizon version extends.
 *A solution ships:* the theorem or the separating instance, and in either case a
 statement of what a certificate can and cannot be fed back into Answerability as.
