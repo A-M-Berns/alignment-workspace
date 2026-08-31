@@ -164,7 +164,7 @@ of thing this file exists to make visible.
 | `2026-08-28-service-realization` | unrecorded — authored outside this repository | Claude Opus 5 (Anthropic) | 2026-08-28 |
 | `2026-08-30-proper-exercise-calculus` | unrecorded — authored outside this repository | GPT-5 Codex (OpenAI) | 2026-08-30 |
 | `2026-08-30-answerability-carriers` | unrecorded — authored outside this repository | GPT-5 Codex (OpenAI) | 2026-08-30 |
-| `2026-08-30-anchored-slices-auth-transfer` | unrecorded — authored outside this repository | GPT-5 Codex (OpenAI) | 2026-08-30 — 2026-08-31 |
+| `2026-08-30-anchored-slices-auth-transfer` (`prompts/2026-08-30-anchored-slices-auth-transfer/`) | unrecorded — authored outside this repository | GPT-5 Codex (OpenAI) | 2026-08-30 — 2026-08-31 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have
