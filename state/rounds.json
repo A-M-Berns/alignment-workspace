@@ -1002,6 +1002,51 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-30-proper-exercise-calculus/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-08-30-answerability-carriers",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers",
+      "verdict": "MATTER-FRONTIER-SEMANTICS-REQUIRED",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers/REPORT.md",
+      "depends_on": [
+        "2026-08-30-proper-exercise-calculus",
+        "2026-08-28-answerable-revision"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-answerability-carriers/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-30-anchored-slices-auth-transfer",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer",
+      "verdict": "ANCHORED-SLICES-REQUIRED",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/REPORT.md",
+      "depends_on": [
+        "2026-08-30-answerability-carriers",
+        "2026-08-30-proper-exercise-calculus"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-anchored-slices-auth-transfer/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-31-faithful-semantic-preservation",
+      "date": "2026-08-31",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation",
+      "verdict": "PR73-CONSERVATION-NEEDS-IN-PLACE-MUTATION-REPAIR",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/REPORT.md",
+      "depends_on": [
+        "2026-08-30-anchored-slices-auth-transfer",
+        "2026-08-25-legitimate-evolution"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-31-faithful-semantic-preservation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
