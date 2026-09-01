@@ -35,30 +35,41 @@ semantic obligation on the reason and no scheduler supplies it. This is the exac
 division of labour the dispatch asked about between queue conditions and
 contiguity.
 
-## 2. A fixed budget funds only a transient
+## 2. The account is signed, and what that costs the existence theory
 
-The safety constraint is `a_n >= -B` for a *fixed* `B`, robustly over the live
-assessment set. Sustaining service forever therefore cannot cost anything forever.
+The safety constraint is `a_n >= -B` for a *fixed* `B`, over the live assessment
+set — a **signed cumulative** account with a floor. Positive dates finance
+negative ones, and one world's gains do not finance another world's losses. Both
+halves of that sentence are load-bearing and the round's first pass got the first
+half wrong.
 
-**Observation E2.** If every admissible control servicing `r` has robust liability
-increment bounded below by `delta > 0` — that is,
-`sup_{W in Assess} -W(l_n(w)) >= delta` whenever `w^r > 0` — then the total mass
-ever served to `r` is at most `B/delta`, so `W^r_N` is bounded and `r` cannot be
-persistently relevant.
+**Observation E2 is withdrawn.** It said that a per-round robust liability
+increment bounded below by `delta > 0` caps the total service mass at `B/delta`,
+and concluded that persistent service must be self-financing. The step interchanges
+a supremum with a sum: the account is `sup_omega ( - sum_t v_t(omega) )`, while the
+hypothesis bounds `sup_omega ( -v_t(omega) )` at each date separately, and different
+worlds may be worst at different dates. One priced sentence and two worlds refute
+it — alternate the row between `P >= 3/4` and `P <= 1/4` at a held price of `1/2`
+and every date has robust loss exactly `1` while the account oscillates inside a
+band of width `1` and the total force applied diverges
+(`tests/test_li_account.py::PointwiseSelfFinancingIsNotNecessary`).
 
-The consequence is structural. **Persistent service must be self-financing.**
-Write
+**E2′ (the surviving statement).** If some `omega` is live at every date and
+`s_t(omega) - d_t >= eta > 0` whenever `w_t > 0`, where `s_t(omega)` is the row's
+signed misfit at that world — one persistently live world is charged more than the
+displayed defect returns — then `sum_t w_t <= B / eta`.
 
-    Z_n(h) = { w in J_n(h) : sup_{W in Assess(h)} -W(l_n(w)) <= 0 }
-
-for the self-financing controls: those whose exposure is nonnegative in every live
-assessment. The budget `B` funds departures from `Z`, and departures are
-necessarily transient. This is why the liability theory's covered-underwriting
-condition turns up here: a barycenter admitted by every active row makes the
-projection portfolio's value nonnegative on a `theta`-covered mixture, which is
-exactly what puts a control in `Z` up to the coverage discount `U(1-theta)/theta`.
-Affordability existence and covered underwriting are the same question asked
-prospectively and retrospectively.
+The hypothesis is worldwise and cumulative, not per-round and robust, and the
+proportionality to `w_t` is what turns a bound on costly *dates* into a bound on
+service *mass*. Pointwise self-financing — every live world admitted, so the
+account is a sum of nonnegative terms — is **sufficient and not necessary**: a norm
+may exclude the sole live world at every date, be enforced forever, lose at every
+date and stay affordable if the exclusion depth decays fast enough
+(`li_account.decaying_depth`, against `li_account.fixed_depth`, whose account
+diverges linearly). The covered-underwriting condition is a second sufficient
+route, financing a loss in one world against gains in others. What is necessary is
+just the account condition: for every world live at the horizon, the cumulative
+value stays above the floor.
 
 ## 3. Theorem T7 (a sufficient condition, drift form)
 
@@ -69,8 +80,13 @@ prospectively and retrospectively.
 2. `l_n` is convex in `w` with `l_n(0) = 0`, so `Z_n(h)` is convex and contains
    `0`;
 3. claims arrive at bounded rate, `c^r_n <= c_max`;
-4. **self-financing slack**: there are `eta > 0` and, at every reachable history,
-   a control `v in Z_n(h)` with `v^r >= (1 + eta) c_max` for every persistent `r`.
+4. **pointwise self-financing slack**: writing
+   `Z_n(h) = { w in J_n(h) : sup_{W in Assess(h)} -W(l_n(w)) <= 0 }` for the
+   controls whose exposure is nonnegative in every live assessment, there are
+   `eta > 0` and, at every reachable history, a control `v in Z_n(h)` with
+   `v^r >= (1 + eta) c_max` for every persistent `r`. This is a **strong
+   sufficient** hypothesis and no necessity is claimed for it: E2′ above says what
+   the necessary condition is, and it is weaker.
 
 Then the max-weight policy `w_n in argmax { <b_n, w> : w in Z_n(h_{n-1}) }` keeps
 the backlog bounded and the account nondecreasing. A witness exists, with `B = 0`.

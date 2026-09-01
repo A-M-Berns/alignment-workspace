@@ -177,10 +177,18 @@ term is at most `L K E_{nu_N}[d]`. `square`
 
 Three things follow, and they are the reason to prefer this statement.
 
-**Contiguity is derived, not assumed.** The step `mu~_N <= K nu_N` is a pointwise
-density bound obtained from the plan's feasibility and the parsimony cap; T1.1
-then applies. Nothing asymptotic is used and no separate fidelity hypothesis is
-carried.
+**The density bound is on the transported measure, and T3 is an alternative route
+to the conclusion rather than a derivation of contiguity.** The step
+`mu~_N <= K nu_N` is a pointwise density bound on `mu~`, the claim mass pushed
+forward onto the dates where it was serviced. Nothing is proved relating `mu_N` to
+`nu_N`, and on the repaired-rotation trajectory below the original pair is *not*
+contiguous: the odd dates carry `nu_N` mass exactly `0` and `mu_N` mass exactly
+`1/2`, at every horizon, while T3's hypotheses hold and its conclusion is true.
+
+So T1 and T3 are **incomparable**. T1 needs a measure relation between `mu` and
+`nu` and no hypothesis about the defect; T3 needs no measure relation and the
+semantic hypothesis `(T3)`. T1's route fails on any bounded-delay schedule and
+T3's fails when the defect is not stable across the deferral.
 
 **The theorem is quantitative.** There is no `-> 0` in the hypothesis and none in
 the conclusion; the asymptotic statement is the corollary.
@@ -196,16 +204,20 @@ semantic obligation on the reason, and no scheduler supplies it.
 Exactly checked in `tests/test_transfer.py::DeferredTransfer`: the rotation plan
 is feasible with zero residual, its stability defect against the C1 array is
 exactly `1` (so the theorem correctly refuses to conclude), and against a defect
-constant on rotation blocks the stability defect is `0` and the bound holds.
+constant on rotation blocks the stability defect is `0` and the bound holds. The
+same test class pins the incomparability: on that trajectory `mu_N` has no bounded
+density against `nu_N` while `mu~_N` has density exactly the cap.
 
 ## 5. The recommended interface
 
 The Answerability-to-Progress interface is a **declared transport plan with
 constants `(L, eps, K)` and a residual schedule**, not a contiguity assertion.
 Contiguity is the right *characterization* — T1 and T2 make it exactly the class
-of measure pairs for which blind transfer works — and the wrong *primitive*,
-because it is not checkable at a finite horizon, not quantitative, and not
-satisfied by service patterns the theory has no reason to forbid.
+of measure pairs for which blind transfer works, blind meaning that nothing is
+assumed about the defect — and the wrong *primitive*, because it is not checkable
+at a finite horizon, not quantitative, and not satisfied by service patterns the
+theory has no reason to forbid. The price of the plan is that it is not blind: it
+carries `(T3)`, which is a claim about the reason and not about the schedule.
 
 ## 6. What this section does not establish
 

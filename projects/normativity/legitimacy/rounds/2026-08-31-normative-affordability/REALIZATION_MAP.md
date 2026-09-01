@@ -9,20 +9,30 @@
 | assessment set `Assess(h_N)` | `PC(D_N)`, or `Omega_N^live` in the generalized lift |
 | account `Acc(kappa)` | `W(E_{<=N})`, the enforcement position's cumulative value |
 | safe class at `B` | uniformly bounded lifetime downside over every live world |
-| `SafeCert ==> Uptake` | bounded liability implies no efficiently computable trader exploits the modified market, and each has assessed net worth at most `1 + B` |
+| `SafeCert ==> PreservedUptake` | bounded liability implies no efficiently computable trader exploits the modified market, and each has assessed net worth at most `1 + B` — a statement about the ordinary trader class |
+| Uptake | the market maker's cumulative cap: `omega(sum_{i<=n} E_i) <= 1 + B_F` at every live world and date |
 | normative defect `d_t` | `dist(P_t, K_t)` |
 | assessment misfit `e_t(W)` | `dist(W|_{Phi_t}, K_t)` |
 | Actionability margin | the force/friction inequality of §2 |
 | joint feasibility `K_t != empty` | covered compatibility; its failure has the unsupported-authority certificate |
-| per-reason Uptake | the Logical Induction criterion, quantified over each enforcement trader |
-| service intensity `w^r_t` | the enforcement intensity `lambda_r`, equivalently the compiler's `beta_{t,j}` |
+| per-reason accounting | the combined cap less the other reasons' floors, `U_j = 1 + B_F + sum_{k != j} B_k` |
+| service intensity `w^r_t` | the position's row-weighted magnitude `beta_{t,j} g_{t,j}(P_t)` — **not** the multiplier `beta` |
 
 The last row is the one worth pausing on. The scheduling variable of Service
-Transfer and the enforcement intensity of the force compiler are the same number.
-A scheduler that services a reason weakly and a controller that enforces its rows
-weakly are not two mechanisms with a coordination problem; they are one variable
-under two descriptions, and the parsimony cap `K` of `SERVICE_TRANSFER.md` §4 is a
-bound on how much intensity may be spent where nothing is owed.
+Transfer and the force compiler's spend are the same number only when the
+intensity is read as the size of the position actually taken. Under that reading
+`sum w d` is the cumulative force work and `sum w e` the cumulative misfit charge,
+both in the schematic's own vocabulary; reading `w` as `beta` leaves the force
+inequality quadratic in the defect and costs a Cauchy-Schwarz step and a worse
+residual. A scheduler that services a reason weakly and a controller that takes a
+small position on its rows are then one variable under two descriptions, and the
+parsimony cap `K` of `SERVICE_TRANSFER.md` §4 bounds how much of it may be spent
+where nothing is owed.
+
+The source's own warning is not contradicted: `beta` is a position size and not
+funding, and under an exact contract the *realized* position size is set by the
+opposing ordinary volume rather than by `beta`. How much of the schematic's
+scheduling freedom survives that is open — `FOLLOWUP_REPORT.md`, final section.
 
 ## 2. The score identity and the friction inequality
 

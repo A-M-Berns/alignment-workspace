@@ -1,5 +1,10 @@
 # Report
 
+A follow-up audit of the realization map withdrew three of this report's claims
+and repaired a fourth. `FOLLOWUP_REPORT.md` carries the audit and lists every
+correction; `CORRECTED_STACK.md` states what the stack is now. This report is the
+record of the first pass, with those four statements corrected in place.
+
 ## 1. The recommended theorem stack
 
 Eight results, ordered by dependency. Every one is stated and proved in this
@@ -30,8 +35,9 @@ round's documents; none is registered, and none is in Lean.
    countermodels, each hitting a different object.
 6. **Backlog-to-transport (E1) and existence by drift (T7).** Bounded backlog
    yields an adapted FIFO plan with vanishing residual and, under a window
-   service floor, a delay bound; a self-financing slack condition makes
-   max-weight scheduling a witness. T7 is a proof sketch.
+   service floor, a delay bound; a *pointwise* self-financing slack condition
+   makes max-weight scheduling a witness. T7 is a proof sketch and its hypothesis
+   is sufficient, not necessary.
 7. **Overload certificates (T8).** A Farkas pair `(y, z)` with positive deficit
    refutes finite-horizon affordability. Sound for the causal problem; not
    complete.
@@ -43,8 +49,10 @@ round's documents; none is registered, and none is in Lean.
 ## 2. Direct answers to the governing questions
 
 **Is contiguity the correct and minimal Service Transfer condition?** Correct and
-exactly minimal as a *characterization* for triangular arrays (T1, T2). Not
-minimal as an *interface*: T3 derives it from a checkable finite-horizon object.
+exactly minimal as a *characterization* for triangular arrays (T1, T2). Not the
+right *interface*: T3 reaches the same conclusion from a checkable finite-horizon
+object, and the two routes are incomparable rather than one deriving the other —
+what T3 bounds is the density of the *transported* claim measure.
 The triangular-array caveat the dispatch flags is real and resolves the other way
 from what the flag suggests — the naive indicator counterexample does need an
 `N`-dependent defect, and the fixed-sequence condition is strictly weaker (T2'),
@@ -68,12 +76,16 @@ aggregation — convexity, separability, noninterference and superposition-as-an
 axiom are not needed.
 
 **What does traderized Logical Induction get for free?** Additivity of positions;
-a common scoring set, since every position is scored against the same live
-assessment worlds; and per-reason Uptake, since the criterion quantifies over each
-efficiently computable trader separately. Not free: nonemptiness of the
-intersection of the demands with the assessment set, which is covered
-compatibility; and the reactive fixed point, which is the construction rather than
-a theorem about arbitrary engines.
+reactivity, since the compiled position is a continuous function of the current
+price, which is what defeats the interference countermodel; and an upper bound on
+every reason's cumulative account, from the market maker's cumulative cap less the
+ordinary trading firm's floor. **Not** from the criterion: it quantifies over
+efficiently computable traders and the enforcement position sits in the
+price-setting aggregate instead, where it is not required to be efficiently
+computable and typically is not. Not free: the assessment set's relation to the
+regions, which is a four-rung ladder rather than one condition, and the reactive
+fixed point, which is the construction rather than a theorem about arbitrary
+engines. `FOLLOWUP_REPORT.md` §B.
 
 **What is the minimal SafeCert type?** A prefix-closed class of control histories
 whose membership is antitone in settlement. Actual-path safety is not a candidate
@@ -113,12 +125,12 @@ because settlements are never re-spoken.
 | service parsimony `W_N <= K C_N` | schematic |
 | nonempty common region | schematic; realized as covered compatibility |
 | additive aggregation | realization-specific (free in traderization) |
-| per-reason Uptake | realization-specific (free in traderization) |
+| per-reason Uptake | schematic; **not** free in traderization — the maker's cap plus summable per-reason liability budgets replaces it |
 | share persistence | schematic, and needed only on the aggregate-Uptake route |
 | prefix closure, settlement monotonicity | schematic; properties of the settlement interface |
 | `SafeCert ==> Uptake` | realization-specific; the traderized instance is bounded liability implies preservation |
 | bounded-liability accounting, Brier form, core minimum | realization-specific |
-| self-financing slack | schematic, and the place existence actually fails |
+| pointwise self-financing slack | schematic, sufficient not necessary, and the place the existence *sketch* needs strengthening |
 
 ## 4. Deviations from the dispatch
 
@@ -180,20 +192,21 @@ Every document carries its own list; the ones that matter across the round:
 2. Can exact transport stability (`eps_r = 0`) be certified for any reason type
    that a practice actually produces, or is the claim-weighted conclusion always
    approximate?
-3. Does self-financing slack ever hold with a growing reason set? Observation E2
-   says a fixed budget funds a bounded total of non-self-financing service, so a
-   growing set of persistent reasons must be served almost entirely by controls
-   that are nonnegative in every live assessment.
-4. Is per-reason Uptake available outside logical induction — in a regret-bearing
-   online learner, is each reason's own comparator guaranteed separately?
+3. Is the realized position size a free variable? The schematic treats `w^r_t` as
+   the controller's choice, while under an exact market-maker contract the
+   realized size is set by the opposing ordinary volume. This is the seam between
+   the intensity identification and the existence theory.
+4. Is bounded cumulative enforcement liability *necessary* for preservation —
+   `PRIORITIES.md` item 40? Until it is settled the affordability layer has a
+   sufficient condition and no necessity direction at all.
 5. What certifies `(T3)`'s constants across an era boundary? That is the semantic
    bridge, and it is the one obligation in the stack with no candidate mechanism.
 
 ## 7. New names introduced
 
 All provisional. **Service parsimony** (the cap `W_N <= K C_N`). **Transport
-stability** (the `(T3)` inequality and its constants `(L, eps)`). **Self-financing
-control** (robust liability increment at most zero). **Overload certificate** (the
+stability** (the `(T3)` inequality and its constants `(L, eps)`). **Overload
+certificate** (the
 Farkas pair `(y, z)` with positive deficit). **Fixed-set contiguity** (the exact
 condition for `N`-independent defect sequences). The dispatch's own provisional
 terms — affordability witness, claim measure, actual service measure — are kept as

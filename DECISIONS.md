@@ -95,19 +95,6 @@ commit.
   *Turns on:* where the program is going — this is *what is worth proving*, which
   no round decides.
 
-- **Whether Progress is claim-weighted or service-weighted.** The merged Progress
-  schematic concludes that the *service*-weighted defect density vanishes, and a
-  two-surface fair rotation satisfies its every hypothesis while the service
-  measure never touches a defective date: exactly zero service-weighted defect at
-  every horizon against a claim-weighted defect of one half. Making Progress
-  claim-weighted imports a transport interface and a residual stability error into
-  the settled statement; leaving it service-weighted keeps the present theorem and
-  moves the burden onto whatever consumes it. Read
-  `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
-  `SERVICE_TRANSFER.md` §3 and `AFFORDABILITY.md` §2. *Turns on:* what the paper's
-  Progress claim has to be able to say — external knowledge the round lacks, and
-  the round has evidence for the mathematics either way but none for the choice.
-
 - **Whether the deference kernel's grade acquires an index.** `GradeTrust` types
   the principal's grade as `C -> P -> Q` with no time, process or standing on it,
   so the legitimacy premise a cross-process deference theorem would consume has
@@ -122,6 +109,87 @@ commit.
 
 ## Settled
 
+### 2026-08-31 — Progress is staged, not redefined
+
+**agent-decided, reversible.** The question of whether Progress should be
+claim-weighted or service-weighted had a false disjunct. The base theorem stays
+service-weighted and unchanged; a second theorem, whose premises are a transport
+plan and its constants and which mentions no engine, carries the conclusion to the
+claim-weighted one at a residual equal to the transport stability error.
+
+The argument is premise locality. Stage one mentions no scheduler and no claim
+measure; stage two mentions no gain, no margin, no Uptake and no engine, so it
+composes with any engine-side guarantee of the form `E_nu[d] -> 0` — including the
+merged Progress schematic exactly as settled, and including the Logical Induction
+realization, which reaches that form by a route sharing no premise with it. The
+round's two central countermodels sort the same way: the rotation countermodel is
+entirely a stage-two failure and the vanishing-share countermodel entirely a
+stage-one failure. In the merged form the residual sits in a theorem whose other
+premises are semantic and learner-side, so a reader cannot tell what it is charged
+to.
+
+No settled definition changes, and the question leaves *Awaiting the author*
+because it has an answer rather than because it was ruled on.
+
+*Rejected alternative:* rewriting the base Progress theorem to be claim-weighted,
+which would import a scheduling object and a residual into a statement that needs
+neither.
+
+### 2026-08-31 — Progress comes from the market maker; the criterion preserves the substrate
+
+**agent-decided, reversible.** In the traderized realization the source of Uptake
+is the market maker's cumulative cap on the combined aggregate, which bounds the
+enforcement position's cumulative assessed value by a constant at every live world
+and date. It is **not** the Logical Induction criterion: the criterion quantifies
+over efficiently computable traders, and the enforcement position sits in the
+price-setting aggregate instead, where it is not required to be efficiently
+computable and, for a coherence-polytope presentation, is not.
+
+What the criterion's preservation theorem establishes is that the *ordinary*
+trader class's guarantee survives the added control — substrate preservation, not
+Uptake — and it supplies no bound on the enforcement position's own value.
+
+Three consequences are adopted with it. Actionability and Uptake are theorems
+rather than premises in this realization, leaving the account floor as the only
+genuine hypothesis. The intensity variable that plays both scheduling and force
+roles is the position's row-weighted magnitude, not the enforcement multiplier.
+And per-reason accounting costs the other reasons' liability floors, which
+replaces the round's share-persistence condition with a summability condition on
+safety budgets.
+
+*Rejected alternative:* keeping the criterion as the source of per-reason Uptake,
+which would have made the realization's central inequality depend on a quantifier
+the construction deliberately exempts the enforcement position from.
+
+### 2026-08-31 — "self-financing" is deleted; affordability is a signed account
+
+**agent-decided, reversible.** The round claimed that a fixed liability budget
+funds only a transient and therefore that persistent service must be
+self-financing. The step interchanges a supremum with a sum: the account is the
+worst case of a cumulative value, while the hypothesis bounds the worst case of
+each increment, and different worlds may be worst at different dates. One priced
+sentence and two worlds refute it — a norm alternating which world it excludes has
+robust loss exactly `1` at every date, an account that oscillates inside a band of
+width `1`, and unbounded total force.
+
+Nor does the corrected worldwise form give self-financing: a norm may exclude the
+sole live world at every date, be enforced forever, lose at every date and stay
+affordable when the exclusion depth decays. The traderized round had already
+withdrawn a theorem of the same shape and had already recorded that the
+per-date-supremum certificate is conservative; this round reintroduced both
+errors and now removes them.
+
+The necessary condition is the account condition itself — for every world live at
+the horizon, the cumulative value stays above the floor — and the sufficient
+certificates are the existing liability-regime taxonomy. "Self-financing" was a
+fifth name for the world-compatible regime, presented as necessary, and is
+deleted. The existence theorem that used it survives as a strong sufficient
+theorem with the necessity gloss removed.
+
+*Rejected alternative:* repairing the observation by quantifying over a single
+persistent world, which is true but bounds the number of costly dates rather than
+the service mass, and needs a proportionality hypothesis to bound the mass.
+
 ### 2026-08-31 — the service-fidelity interface is a transport plan, not contiguity
 
 **agent-decided, reversible.** Contiguity of the claim measure against the service
@@ -135,9 +203,11 @@ and defeats it.
 
 The interface is instead a declared transport plan `T(t, s)` with a claim marginal, a
 service-feasibility constraint, a stability inequality `d_t <= L d_s + eps`, and a
-service-to-claim cap. Feasibility plus the cap give a pointwise density bound, so
-contiguity is a consequence rather than a hypothesis and the resulting transfer bound
-is quantitative. Queue stability, bounded delay, backlog bounds and fair scheduling
+service-to-claim cap. Feasibility plus the cap give a pointwise density bound on the
+*transported* claim measure, and the resulting transfer bound is quantitative. The
+two routes are incomparable rather than one deriving the other: contiguity needs a
+measure relation and no hypothesis about the defect, the plan needs no measure
+relation and the stability hypothesis, and each fails where the other holds. Queue stability, bounded delay, backlog bounds and fair scheduling
 keep their role, on the other side of the interface: they establish that a plan
 exists, not that transfer holds.
 

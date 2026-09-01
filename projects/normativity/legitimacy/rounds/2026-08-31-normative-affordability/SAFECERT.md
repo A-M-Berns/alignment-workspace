@@ -4,7 +4,7 @@
 
 Affordability needs one implication from the controlled engine:
 
-    SafeCert(kappa, C)  ==>  Uptake(D^kappa)
+    SafeCert(kappa, C)  ==>  PreservedUptake(D^kappa)
 
 — the aggregate normative control `kappa = (u_t)_t`, applied to the decision
 engine `D`, leaves the engine's own learning guarantee intact. Everything else
@@ -13,8 +13,12 @@ about the engine is opaque to the composition theorem.
 The dispatch asks which of five candidate types is minimal. The answer is the
 first, with one attribute the others were carrying:
 
-> **SafeCert is a prefix-closed class of control histories whose membership
-> predicate is antitone in settlement.**
+> **SafeCert is a prefix-closed class of control histories whose membership is
+> decided by a functional of the history, under a consistency property strong
+> enough that a certificate is never revoked.**
+
+Antitonicity in settlement is that consistency property for a worst-case
+functional, and is what §3 uses.
 
 An account, a risk functional and a burden monoid are all *presentations* of such
 a class, and none of them is needed in the interface. Which presentation an
@@ -25,20 +29,30 @@ interface, where a named certificate type already lives.
 
 The dispatch asks whether safety should be actual-path or robust over all
 settlement-consistent continuations. Actual-path safety is not merely weaker; it
-is not a predicate an adapted controller can evaluate.
+is not a predicate an adapted controller can evaluate. What that argument forces
+is *evaluability at the history where the control is chosen*, and worst-case over
+live continuations is one functional with that property rather than the only one:
+an engine carrying a measure over continuations can certify an expectation, a
+quantile, an almost-sure bound or a supermartingale condition. Worst-case is
+forced in the traderized realization for a different and specific reason — the
+assessment structure there is a nested family of *sets* with no measure on it, so
+the supremum is the monotone predictable functional available. See
+`FOLLOWUP_REPORT.md` §D.
 
 A control chosen at date `t` is chosen from `F_{t-1}`. Its realized cumulative
 value depends on settlements that have not occurred. So "the realized account
 never fell below `-B`" is not `F_n`-measurable at any `n` before the last
 relevant settlement, and a certificate that cannot be evaluated at the date the
-control is chosen certifies nothing at that date. The predicability requirement
-the dispatch imposes on the controller therefore forces the robust reading; it is
-not an independent modelling choice.
+control is chosen certifies nothing at that date. The predictability requirement
+the dispatch imposes on the controller therefore rules the actual-path reading
+out; it does not by itself select the worst-case one.
 
 Concretely: an enforcement position on an unsettled report variable has a
 realized value in `{+a, -b}` according to which way the variable settles. Two
 histories agreeing on everything settled at `h_N` differ in that value. Any
-history-relative safety predicate must quantify over both.
+history-relative safety predicate must therefore be a functional of the *family*
+of continuations rather than of the realized one. Which functional is a separate
+question, answered by the engine.
 
 ## 3. The robust form and its one theorem
 
@@ -61,8 +75,12 @@ because settlement only removes continuations — this is the settlement interfa
 constraining role, and no-claw-back is what makes it monotone rather than merely
 usually-monotone. Hence `Risk_{h'} <= Risk_h` pointwise.
 
-**Theorem T5 (a safety certificate is never revoked).** If `kappa_{<=n} in
-Safe(h_n)` and `h_m` extends `h_n`, then `kappa_{<=n} in Safe(h_m)`.
+**Theorem T5 (a safety certificate is never revoked).** Let `Risk_h` be a
+supremum over `Assess(h)` and let `Assess` shrink under settlement. If
+`kappa_{<=n} in Safe(h_n)` and `h_m` extends `h_n`, then `kappa_{<=n} in
+Safe(h_m)`. Both hypotheses are consumed: for a functional that is not a supremum
+over a shrinking family — an expectation, say — the corresponding statement is a
+tower or supermartingale property and is not implied by this one.
 
 *Proof.* `Risk_{h_m}(kappa') <= Risk_{h_n}(kappa') <= B` for every prefix. `square`
 
@@ -104,7 +122,11 @@ deficit at the assessment world, and the support route through the semantic set'
 support capacity. The preservation theorem those feed is: **if the cumulative
 liability over the assessment worlds is bounded by `B`, no efficiently computable
 trader exploits the modified market, and every such trader's assessed net worth is
-at most `1 + B`.** That is `SafeCert ==> Uptake` with `C = B`.
+at most `1 + B`.** That is `SafeCert ==> PreservedUptake` with `C = B`, and it is a
+statement about the **ordinary** trader class: the substrate's epistemic guarantee
+survives the control. It supplies no bound on the enforcement position's own value,
+which is what Uptake needs and which the market maker's cumulative cap supplies
+instead — `FOLLOWUP_REPORT.md` §B1.
 
 Three mappings are then forced rather than chosen:
 

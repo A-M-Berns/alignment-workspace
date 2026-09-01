@@ -20,11 +20,14 @@ each chosen from `F_{t-1}`, together with an adapted family of transport plans
 
 Three changes from the candidate definition, each with its reason.
 
-**Contiguity is gone.** Clause 2 replaces `mu^r_N ◁ nu^r_N` with the transport
-plan that derives it. Contiguity is exactly the right *characterization* (T1, T2)
-and the wrong primitive: it is not checkable at a finite horizon, it is not
-quantitative, and it is violated by bounded-delay service, which the theory has no
-reason to forbid.
+**Contiguity is gone.** Clause 2 replaces `mu^r_N ◁ nu^r_N` with a transport
+plan. The two are **incomparable** routes to the same conclusion, not one deriving
+the other: contiguity is exactly the right *characterization* (T1, T2) when
+nothing is assumed about the defect, and the wrong primitive, because it is not
+checkable at a finite horizon, not quantitative, and violated by bounded-delay
+service, which the theory has no reason to forbid. What the plan proves is a
+density bound on the *transported* claim measure, and it buys that with `(T3)`, a
+hypothesis about the reason rather than about the schedule.
 
 **The `q` coordinate is gone.** The reason-indexed object Uptake scores is the
 reason's own position, already determined by clause 1.
@@ -41,7 +44,12 @@ Assume an affordability witness, and:
 
 - **(Act)** single-reason Actionability at the realized state:
   `g^r_t >= gamma_r d^r_t` with `gamma_r > 0`, where `g^r_t` is the reason's gain
-  at the state the aggregate control actually produced;
+  at the state the aggregate control actually produced. The traderized realization
+  supplies a *friction* form of this rather than the clean one — the gain is at
+  least `w^r_t (d^r_t - e^r_t)`, with `e` the misfit between the norm and the live
+  assessment worlds — so the margin is `1` and the residual is a subtracted misfit.
+  `FOLLOWUP_REPORT.md` §B3 carries the consequence: there the conclusion is that
+  the defect converges to the misfit rather than to `0`;
 - **(Upt)** per-reason Uptake:
   `limsup_N ( sum_{n<N} w^r_n g^r_n ) / W^r_N <= 0`.
 
@@ -130,9 +138,9 @@ without the other admits the countermodel the other blocks.
 The five removals hit five different mathematical objects — a measure comparison,
 a positive constant, a choice of scoring set, a bounded functional, and a
 filtration. That is the evidence the decomposition is not a restatement of one
-condition in five vocabularies. It is also the evidence for one merge: **contiguity
-and the transport plan are not two requirements**, and the definition above
-carries only the second.
+condition in five vocabularies. It is also the evidence for one choice:
+**contiguity and the transport plan are alternative discharges of one
+obligation**, and the definition above carries the checkable one.
 
 ## 5. What this section does not establish
 

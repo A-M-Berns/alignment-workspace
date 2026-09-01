@@ -706,3 +706,284 @@ $$
 $$
 
 The goal of the pass is to determine whether this is the real theorem architecture—and, if it is, to make each arrow mathematically exact.
+
+---
+
+# Second dispatch — follow-up research pass on PR75
+
+You are doing a focused follow-up research pass on PR75, `Research Normative Affordability and its service interface`, in the `alignment-workspace`.
+
+Start by reading the entire round at:
+
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+
+especially:
+
+* `SERVICE_TRANSFER.md`
+* `JOINT_ACTIONABILITY.md`
+* `AFFORDABILITY.md`
+* `SAFECERT.md`
+* `EXISTENCE_AND_DUALITY.md`
+* `REALIZATION_MAP.md`
+* `REPORT.md`
+
+Then read the traderization/liability material that these documents purport to realize. In particular, recover the exact roles of:
+
+* projection force against a normative region \(K\);
+* assessment-world value and lifetime liability;
+* the MarketMaker / fixed-point variational inequality;
+* the Logical Induction Criterion;
+* the theorem that bounded authority/enforcement liability preserves ordinary LI;
+* the force/friction inequality
+
+  $$
+  \langle \zeta,x-p\rangle\ge \lambda(d^2-de);
+  $$
+* the homothetic/core or covered-underwriting results where relevant.
+
+Do **not** assume PR75's realization map is correct merely because its schematic mathematics is correct. The goal of this pass is to determine exactly which abstractions survive contact with the existing traderized LI mathematics.
+
+## Governing question
+
+Can PR75's Sustainable Progress / Normative Affordability theorem be given a clean end-to-end Logical Induction realization **without collapsing mathematical objects that traderization deliberately keeps distinct**?
+
+There are three specific pressure points to investigate.
+
+### A. What should “Progress” mean?
+
+PR75 shows that service-weighted defect can vanish while claim-weighted defect remains large, and introduces transport to transfer learning from actual service mass back to normatively owed claim mass.
+
+Determine whether the clean theorem stack should be:
+
+$$
+\text{Actionability + Uptake}
+\Rightarrow
+\text{service-weighted Progress}
+$$
+
+followed by
+
+$$
+\text{service-weighted Progress + Service Transport}
+\Rightarrow
+\text{claim-weighted Sustainable Progress},
+$$
+
+rather than modifying the base Progress theorem itself to be claim-weighted.
+
+Do not decide this narratively. State the mathematical interfaces in both decompositions and identify which gives the more modular theorem stack.
+
+Pay particular attention to the distinction between:
+
+* the actual service measure \(\nu_N^r\);
+* the normatively owed claim measure \(\mu_N^r\);
+* transport \(T^r(t,s)\);
+* the stability error \(\varepsilon_r\).
+
+Check the wording in `SERVICE_TRANSFER.md`: PR75 sometimes says contiguity is “derived” by the transport theorem. Verify whether this is literally true of the original claim measure \(\mu_N\) versus service measure \(\nu_N\), or only of the **transported claim measure on service dates**. If the latter, state and repair the distinction precisely.
+
+### B. Reconstruct the LI realization from first principles
+
+This is the most important part of the pass.
+
+PR75 appears at points to identify a “common scoring set” supplied by LI's live assessment worlds with the common region used in Joint Actionability. Check whether this is sound.
+
+Keep explicit notation for at least these two sets:
+
+$$
+K_t
+=
+\text{normative admissible region}
+$$
+
+and
+
+$$
+A_t
+=
+\text{live assessment set}
+\quad
+(\text{e.g. }PC(D_t)).
+$$
+
+Ask separately:
+
+1. Against what set is **normative force / Actionability** scored?
+2. Against what set is **liability / safety** scored?
+3. What exactly produces **Uptake** in the concrete LI construction?
+4. What exactly does the **LIC preservation theorem** establish?
+
+Do not conflate these unless an actual theorem identifies them.
+
+In particular, investigate the hypothesis that the correct realization is closer to:
+
+$$
+\begin{array}{rcl}
+\text{Actionability}
+&\leftrightarrow&
+\text{projection force against }K_t,\\
+\text{Uptake}
+&\leftrightarrow&
+\text{MarketMaker / fixed-point VI response to added demand},\\
+\text{Affordability account}
+&\leftrightarrow&
+\text{worldwise cumulative authority-trader value over }A_t,\\
+\text{SafeCert preservation}
+&\leftrightarrow&
+\text{bounded liability preserves ordinary LIC}.
+\end{array}
+$$
+
+This is only a conjectured factorization. Verify or refute it from the actual mathematics.
+
+A particular claim to audit is PR75's statement that **per-reason Uptake is free because LIC quantifies over each enforcement trader individually**. Check whether the authority/projection enforcer is in fact an ordinary budgeted trader to which LIC applies, or whether it is an extra control whose bounded liability merely preserves LIC for the original trader class.
+
+If LIC is not the correct concrete source of Uptake, identify the exact VI / MarketMaker inequality that is, and derive the relevant Progress inequality from it.
+
+Also determine what becomes of T4, Joint Actionability. Its abstract theorem may be right even if the proposed LI realization is not. Preserve the distinction between:
+
+* a common normative comparison region used to certify force; and
+* a common settlement/assessment set used to price liability.
+
+Explain exactly when nonemptiness of
+
+$$
+A_t\cap\bigcap_r K_t^r
+$$
+
+is enough for anything, and when stronger coverage/accommodation hypotheses are required.
+
+### C. Affordability is a signed cumulative account: audit “self-financing”
+
+`EXISTENCE_AND_DUALITY.md` claims that a fixed liability budget can fund only a transient and concludes that persistent service must be “self-financing,” where each control has nonnegative robust incremental value.
+
+Stress-test this carefully.
+
+The existing liability theory uses a **signed cumulative account** with a lower bound, so positive periods may finance negative periods. For example, alternating increments \(+1,-1,+1,-1,\dots\) preserve a fixed lower bound despite infinitely many locally loss-making interventions.
+
+Determine:
+
+* whether Observation E2 is stated correctly;
+* whether its conclusion bounds number of costly service dates or total service mass;
+* what additional proportionality assumptions would be required to bound total service mass;
+* whether “persistent service must be self-financing” is false as stated;
+* what the correct necessary notion is.
+
+Candidate replacements include, but are not limited to:
+
+* bounded cumulative downside;
+* nonnegative long-run robust drift;
+* existence of a replenishing potential;
+* a credit/debit process whose prefixes remain above a floor;
+* a policy-level underwriting condition.
+
+Do not force one of these if the mathematics suggests something cleaner.
+
+Then revisit T7. It may remain a perfectly good **strong sufficient theorem** using pointwise self-financing slack. If so, state it explicitly as such and separate it from any alleged necessity claim.
+
+This section should connect back to the conceptual affordability schematic:
+
+> affordability is not a sum of nonnegative costs; it is the viability of a signed, persistent underwriting account under the exercise of normative force.
+
+### D. SafeCert abstraction
+
+Audit PR75's proposed minimal SafeCert interface.
+
+The useful abstraction seems to be something like
+
+$$
+\mathrm{SafeCert}_D(\kappa)
+\Rightarrow
+\mathrm{PreservedUptake}(D^\kappa).
+$$
+
+PR75 additionally argues that robust settlement-relative safety is *forced* because actual-path safety is not measurable when an adapted control is chosen.
+
+Check whether that claim is actually schematic. A stochastic learner could conceivably certify almost-sure, high-probability, expectation-based, or other prospective guarantees without using worst-case live-world robustness.
+
+Distinguish:
+
+* what the **generic interface** truly requires;
+* what is specifically forced/natural in the **traderized LI realization**.
+
+Do not weaken the robust LI result; just avoid claiming more abstraction than has been proved.
+
+## Composition target
+
+After resolving A–D, try to state the strongest clean schematic theorem you believe the workspace now supports.
+
+A likely shape is:
+
+$$
+\boxed{
+\text{Affordable service policy}
++
+\text{Actionability}
++
+\text{Uptake}
++
+\text{Service Transport}
+\Rightarrow
+\text{claim-weighted Sustainable Progress}
+}
+$$
+
+with, for each persistent reason \(r\),
+
+$$
+\limsup_N E_{\mu_N^r}[d^r]
+\le
+\varepsilon_r,
+$$
+
+and exact convergence when transport stability is exact.
+
+But do not merely restate PR75. Specify exactly which premise belongs to:
+
+* Answerability / standing;
+* service scheduling;
+* semantic transport;
+* force / Actionability;
+* learner Uptake;
+* affordability / safety;
+* substrate preservation.
+
+The theorem should make clear that the **same intensity variable \(w_t^r\)** can play both roles of service allocation and normative control intensity if that identification survives the LI audit.
+
+Then provide the corresponding LI instantiation line by line.
+
+## Causal overload
+
+Finally, reassess PR75's open Priority 74 in light of the corrected account picture.
+
+The finite-horizon Farkas certificate is only a per-path infeasibility certificate. The real problem is the quantifier gap
+
+$$
+\forall \omega\,\exists \pi_\omega
+\qquad\not\Rightarrow\qquad
+\exists \pi\,\forall\omega.
+$$
+
+Say whether this remains the highest-value next theorem target.
+
+If so, sharpen what a complete certificate would have to separate: not merely feasible points on each realized path, but **causal policies / strategies**. Consider whether the natural dual object should look more like:
+
+* a dynamic flow/cut;
+* an adversarial strategy;
+* a potential/supermartingale;
+* a policy-separation theorem;
+* or something else.
+
+Do not solve this speculatively if the round does not support it; identify the exact mathematical problem.
+
+## Deliverables
+
+Produce:
+
+1. `FOLLOWUP_REPORT.md` — detailed audit with explicit verdicts on A–D.
+2. `CORRECTED_STACK.md` — the smallest theorem/interface stack you now recommend, schematic first and LI realization second.
+3. Exact counterexamples or small rational fixtures for every claim from PR75 you reject or weaken.
+4. If appropriate, targeted edits to the PR75 round documents. Do **not** rewrite earlier consolidated work merely for consistency; record corrections locally unless the workspace's provenance rules explicitly permit otherwise.
+5. A short final section titled **“What actually remains before an end-to-end LI legitimacy theorem?”** Separate genuinely missing mathematics from terminology/interface cleanup.
+
+Treat PR75's transport theorem and counterexamples as results to preserve unless you find an actual flaw. The purpose of this pass is not to redo the round. It is to make the abstraction boundary line up exactly with the traderization/liability mathematics and to remove any accidental overclaims before the affordability theory is consolidated.

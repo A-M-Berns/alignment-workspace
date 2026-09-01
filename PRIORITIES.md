@@ -1924,7 +1924,7 @@ unbounded one with a witness are both better than the present reading.
 
 ---
 
-### 74. Is the overload certificate complete for the causal problem? — **[entry]**
+### 74. Is the overload certificate complete for the causal problem? — **[entry]** — *sequenced behind item 40*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -1940,6 +1940,22 @@ duality on the plan is the first place to look — or exhibit a causally unaffor
 instance every path of which is feasible, which shows no per-path certificate class can
 be complete and moves the question to certificates over policies.
 
+**Sequencing.** Take item 40 first. Until the necessity of bounded cumulative
+enforcement liability is settled or refuted, an overload certificate for the causal
+problem certifies the failure of a hypothesis whose necessity is unknown, and every
+"unaffordable" verdict in this line means "the known route to safety no longer
+applies" rather than "no safe policy exists".
+
+**What the dual object probably is.** The account is signed and cumulative and must
+stay above a floor at every world the settlement process keeps live, so what has to
+be separated is a *policy* from a family of adversary responses rather than a point
+from a per-path feasible set. That points at a potential or supermartingale over the
+assessment family — a function of the history upper-bounding the account slack still
+achievable, decreasing along every admissible control, starting below what is owed —
+rather than a flow or a cut. A cut is a sum of per-date capacities and the account is
+not, so flow/cut duality recovers the per-path relaxation and cannot see the
+cross-period financing the alternating countermodel exhibits.
+
 *Deliverable shape:* `witness-checked` for the separating instance, or a stated theorem
 with an exact-rational fixture inhabiting its hypotheses for the completeness direction.
 *Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
@@ -1948,8 +1964,9 @@ passes; a registered entry, if one is filed, is accepted by `python3 -m checkers
 *Context:*
 `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/EXISTENCE_AND_DUALITY.md`
 §4 for the certificate and the soundness proof, §1–§3 for the causal problem it is a
-relaxation of, and its `src/overload.py` with the matching module under `tests/` for
-the exact instances; `projects/normativity/legitimacy/rounds/2026-08-30-liability-theory/DUALITY.md`
+relaxation of, that round's `FOLLOWUP_REPORT.md` for why the account is signed and
+what that does to the dual, and its `src/overload.py` and `src/li_account.py` with
+the matching modules under `tests/` for the exact instances; `projects/normativity/legitimacy/rounds/2026-08-30-liability-theory/DUALITY.md`
 for the synchronic certificate the horizon version extends.
 *A solution ships:* the theorem or the separating instance, and in either case a
 statement of what a certificate can and cannot be fed back into Answerability as.

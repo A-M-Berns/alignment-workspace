@@ -158,6 +158,35 @@ class DeferredTransfer(unittest.TestCase):
         mu = T.normalize(claims)
         self.assertLessEqual(T.expectation(mu, defect), bound)
 
+    def test_transport_does_not_derive_contiguity_of_the_original_pair(self):
+        """The density bound the transport theorem produces is on the
+        *transported* claim measure. The original pair is not contiguous on the
+        same trajectory, so transport is an alternative route to the conclusion
+        rather than a derivation of contiguity."""
+        horizon = 20
+        claims = [Fraction(1)] * horizon
+        service = [Fraction(2) if t % 2 == 0 else Fraction(0)
+                   for t in range(horizon)]
+        defect = [Fraction(1, 4) if (t // 2) % 3 == 0 else Fraction(0)
+                  for t in range(horizon)]
+        plan = self._plan(horizon)
+        mu = T.normalize(claims)
+        nu = T.normalize(service)
+        # The original pair has no bounded density, and the odd dates witness it.
+        self.assertIsNone(T.density_bound(mu, nu))
+        odd = [t for t in range(horizon) if t % 2]
+        self.assertEqual(T.mass(nu, odd), Fraction(0))
+        self.assertEqual(T.mass(mu, odd), Fraction(1, 2))
+        # The transported claim measure does have one, and it is the cap.
+        transported = plan.transported_claim_measure(claims, horizon)
+        total = sum(transported, Fraction(0))
+        self.assertEqual(total, Fraction(1))
+        self.assertEqual(T.density_bound(transported, nu), Fraction(1))
+        # And the conclusion still holds, by transport rather than by contiguity.
+        bound = T.deferred_transfer_bound(claims, service, defect, plan,
+                                          Fraction(1), Fraction(1))
+        self.assertLessEqual(T.expectation(mu, defect), bound)
+
     def test_the_cap_is_load_bearing(self):
         horizon = 20
         f = T.dilution(horizon)

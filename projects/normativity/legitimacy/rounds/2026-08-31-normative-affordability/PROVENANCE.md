@@ -4,6 +4,10 @@
 |---|---|---|---|
 | `*.md`, `src/**`, `tests/**` | Claude Opus 5 (Anthropic) | `ci-only` | 2026-08-31 |
 
+`FOLLOWUP_REPORT.md`, `CORRECTED_STACK.md`, `src/li_account.py` and
+`tests/test_li_account.py` are the second dispatch's; the corrections it applied to
+the first dispatch's documents are listed in `FOLLOWUP_REPORT.md`.
+
 The round starts from `main` at
 `292bb2731b0df09aa034ca4abc5ce64a20a41785`. It reads and does not modify:
 
@@ -18,7 +22,14 @@ The round starts from `main` at
   position, the conformance guarantee, the deficit and support liability routes,
   the preservation theorem and the conformance/liability trade equation;
 - `projects/normativity/rounds/2026-08-16-traderized-enforcement/CORE_CONDITION.md`,
-  for the depth condition and its compiled row;
+  for the depth condition and its compiled row; `MODEL.md` for the priced fragment,
+  the compiled position, its legality audit and the statement that the enforcement
+  trader is exempt from the criterion's quantifier; `FUNDING_AND_SAFETY.md` for the
+  liability identity, the world-inclusive corollary, the preservation theorem and
+  its market-maker step, the corrected declared-quantity ceiling, and the
+  safe-without-world-inclusiveness trajectory; `NORMATIVE_SAFETY.md` §9 and §13 for
+  the affordability relation, the withdrawn depth-only impossibility theorem and
+  the conservatism of the per-date certificate;
 - `projects/normativity/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md`, an
   `agent-consolidated` tree, for no-claw-back, the two polytopes, clauses `J3`,
   `P1`, `P2`, `P4` and the assumed residues.

@@ -108,32 +108,44 @@ Two repairs, and they are not equivalent:
 - **Per-reason Uptake.** Assume Uptake separately for each reason's own position
   against its own service measure. This carries no share obligation.
 
-Per-reason Uptake is the right schematic assumption, and §5 says why it is not an
-extra cost in the traderized realization.
+Per-reason Uptake is the right schematic assumption. It is **not** free in the
+traderized realization, and §5 says what replaces it there.
 
 ## 5. What traderized LI gets for free, and what it does not
 
-**Free: per-reason Uptake.** The Logical Induction criterion quantifies over
-every efficiently computable trader individually; a reason's enforcement position
-is one such trader, and its value is bounded against the market prices the whole
-ensemble produced. No share condition and no aggregate normalization is involved,
-so J3 does not arise.
+**Free: an upper bound on every reason's account.** The market maker's fixed
+point bounds the combined aggregate's cumulative value at every live world and
+date; subtracting the ordinary trading firm's own floor leaves a constant cap on
+the enforcement position's cumulative value. That cap, not the Logical Induction
+criterion, is what plays Uptake's role. The criterion quantifies over efficiently
+computable traders and the enforcement position sits in the price-setting
+aggregate instead, where it is not required to be efficiently computable and for a
+coherence-polytope presentation is not — so no per-reason bound comes from it.
+`FOLLOWUP_REPORT.md` §B1 carries the audit.
 
-**Free: a common scoring set.** In the traderized reading the quantity scored is
-`W(E_{<=N})` for `W` ranging over the live assessment worlds — `PC(D_N)` in the
-deductive case — which is the *same* set for every reason. J1's mechanism needs a
-reason-relative scoring set, so it cannot be built there. What the reason's own
-region `K^r` does in that setting is **select the position** (`zeta^r =
-lambda_r (proj_{K^r} P - P)`), not score it.
+Isolating one reason's account from the combined cap costs the other reasons'
+liability floors, `U_j = 1 + B_F + sum_{k != j} B_k`, so per-reason Progress needs
+those budgets summable. That is a condition on the safety budgets rather than on
+the scheduler, and it is what replaces J3's share condition in this realization.
+
+**Free: reactivity.** The compiled position is a continuous function of the
+current price, so its certificate is evaluated at whatever state the aggregate
+produced. J1's mechanism needs a control fixed before the joint state is known, so
+it cannot be built there. What the reason's own region `K^r` does in that setting
+is **select the position**, not score it.
 
 **Free: additivity.** Positions enter the market as a sum, and the market maker
 prices against the aggregate, so T4's one structural hypothesis is the
 construction.
 
-**Not free: nonemptiness of the intersection with the assessment set.** With a
-common scoring set, T4's `K nonempty` becomes `PC(D_N) ∩ intersect_r K^r ≠ empty`
-— and, once the coverage requirement is added, covered compatibility. Its failure
-is J2, and it is the one thing that genuinely can go wrong.
+**Not free: the assessment set's relation to the regions.** T4's `K nonempty` is a
+purely normative condition and is what the compiler needs to have a region point to
+evaluate at. Three strictly stronger conditions do three further jobs, and
+conflating them conflates the quantifier Progress uses with the one liability uses:
+a *single* live world in every region bounds the cumulative force work, a
+`theta`-covered mixture whose barycenter lies in every region bounds liability, and
+*every* live world in every region makes liability zero. `FOLLOWUP_REPORT.md` §B4
+is the ladder; J2 is the failure of the first rung.
 
 **Not free: the reactive step.** The positions are computed at the price the
 aggregate produced, which is a fixed point rather than an open-loop schedule.
