@@ -2,8 +2,12 @@
 
 ## 1. The viability problem, correctly typed
 
-State at date `t`: a service backlog `b_t in R_+^R` and the worldwise account
-`V_{t-1}(·)` on the live set. The controller picks a predictable allocation `a_t`;
+State at date `t`: a service state and the worldwise account `V_{t-1}(·)` on the
+live set. Scalar backlog is a **sufficient realization** of the service state for
+one simple semantics — fungible service, first-in-first-out, no deadlines — and is
+not the generic interface, which is Answerability's set of admissible service
+traces, equivalently the admissible transport plans. Backlog is used below because
+the existence theorems are proved in that realization. The controller picks a predictable allocation `a_t`;
 the engine then produces the fixed point, and the account moves reactively:
 
     b^r_{t+1}      =  [ b^r_t + c^r_{t+1} - a^r_t ]_+
@@ -26,10 +30,13 @@ rows are active**. The source states the same consequence directly.
 
 So there is no service-capacity competition in the conformance guarantee: a
 hundred reasons each allocated `a` get the same tolerance as one reason allocated
-`a`. Every form of overload in this theory is **liability overload**. That is worth
-saying plainly, because the scheduling intuition imported from queueing —
-a shared server, reasons contending for slots — does not apply to the force layer
-at all. What is shared is the liability allowance.
+`a`. **Conditional on force feasibility**, therefore, overload in this theory is
+liability overload — the qualification is load-bearing, since an empty region, an
+unpriceable row or an illegal compiled control is a failure before any account is
+consulted, and `OVERLOAD_TARGET.md` §1 keeps the two apart. Within that
+qualification the scheduling intuition imported from queueing — a shared server,
+reasons contending for slots — does not apply to the force layer at all. What is
+shared is the liability allowance.
 
 ## 3. A positive existence theorem, one reason
 
@@ -125,17 +132,22 @@ Define the **sustainable authority-rate region**
 Three properties follow from §4.
 
 **Downward closed.** Allocating less is always feasible; `a = 0` costs nothing.
+This is the only closure property that is automatic.
 
-**Its per-date generator is not convex**, by §4, so the natural LP/Farkas
-machinery does not apply date by date.
+**`A` is *not* convex**, and the claim that time-sharing convexifies it is
+withdrawn. Time-sharing convexifies a renewable per-date resource; the liability
+budget is a consumable stock, and authority is quadratic in the stock, so
+interleaving two policies quarters what each buys. Two rows at friction `1` and
+budget `2` have `(4,0)` and `(0,4)` achievable and their midpoint `(2,2)` not.
+`CAUSAL_CAPACITY.md` §1.
 
-**`A` itself is convex**, because time-sharing between two policies achieves any
-convex combination of their long-run rates, and SafeCert is preserved by
-interleaving when the budgets are interleaved with them. So `A` is the convex hull
-of the per-date generator's achievable long-run rates, and **the convexification is
-performed by the schedule, not assumed of the geometry.** That is the formal object
-"normative capacity" should name, and the useful slack notion is a demand rate in
-its interior.
+**`A` is also the wrong object.** It is `{0}` whenever the friction is floored and
+everything whenever the friction decays fast, and — the case that matters — `{0}`
+on friction sequences where the reason *is* persistently served, since persistence
+is `sum_t a_t = infinity` and a positive rate is `A_N = Omega(N)`. The composition
+theorem consumes the first. `CAUSAL_CAPACITY.md` §2 replaces `A` with the
+persistence region, which is a per-reason predicate with no capacity structure at
+all.
 
 ## 7. Overload, refined but not solved
 

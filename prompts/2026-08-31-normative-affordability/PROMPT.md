@@ -2344,3 +2344,766 @@ The pass succeeds if it can answer:
 If yes, state that theorem cleanly and identify **existence of an affordable service schedule** as the next problem.
 
 If no, identify the exact remaining missing arrow and produce the smallest counterexample.
+
+---
+
+# Fifth dispatch — causal affordability existence and normative capacity
+
+# Fifth pass inside PR75: causal affordability existence and normative capacity
+
+Stay inside the existing PR75 research round:
+
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+
+Do not open a new research round unless the workspace rules strictly require it.
+
+The previous dispatches have now largely closed the **fixed-era construction/composition theorem**. Treat the following as the current best architecture unless you find an actual mathematical error:
+
+$$
+\text{Answerability claims}
+\to
+\text{predictable allocated authority }a
+\to
+\text{reactive traderized-LI control}
+\to
+\text{service-weighted Progress}
+\to
+\text{Service Transport}
+\to
+\text{claim-weighted Sustainable Progress},
+$$
+
+with bounded lifetime liability preserving ordinary LI.
+
+In particular:
+
+* service is allocated authority
+
+  $$
+  a_{t,j}=\beta_{t,j},
+  $$
+
+  not realized force;
+* realized force is endogenous:
+
+  $$
+  f_{t,j}=a_{t,j}d_{t,j};
+  $$
+* the predictable object is a reactive control law
+
+  $$
+  \kappa_t:P\mapsto u_t(P);
+  $$
+* the fixed-era composition theorem is conditional on a service-faithful authority schedule, appropriate reason/row-level account bounds, settlement-friction residuals, and transport stability;
+* local authority capacity and lifetime SafeCert are distinct;
+* normative-force feasibility and affordability are distinct.
+
+The main purpose of this pass is now:
+
+$$
+\boxed{
+\textbf{When does an affordable authority schedule actually exist?}
+}
+$$
+
+and, closely related,
+
+$$
+\boxed{
+\textbf{What is the correct mathematical object corresponding to normative capacity / overload?}
+}
+$$
+
+Do not spend most of the pass redescribing the architecture. Push the causal existence mathematics.
+
+---
+
+# 1. First repair: audit the claimed convexity of the sustainable authority-rate region
+
+`AFFORDABLE_SCHEDULING.md` currently defines something like
+
+$$
+\mathcal A
+=
+\left\{
+\lambda\in\mathbb R_+^R:
+\exists\text{ causal SafeCert policy with }
+\liminf_N \frac{A_N^r}{N}\ge\lambda_r
+\right\}.
+$$
+
+It then claims that \(\mathcal A\) is convex because policies can be time-shared.
+
+Do **not** assume this is correct.
+
+In a history-dependent causal system, interleaving policies may alter:
+
+* market prices;
+* account slack;
+* live assessment worlds;
+* future capacity;
+* future docket state;
+* the histories on which the constituent policies would have acted.
+
+So naïve time-sharing need not reproduce a convex combination of the original trajectories.
+
+### Task A1 — counterexample or theorem
+
+Either:
+
+1. produce the smallest exact counterexample showing that two achievable rate vectors
+
+   $$
+   \lambda^{(1)},\lambda^{(2)}\in\mathcal A
+   $$
+
+   can have a convex combination outside \(\mathcal A\);
+
+or:
+
+2. prove convexity under explicit structural assumptions.
+
+A useful counterexample template is an irreversible history-dependent mode switch:
+
+* one initial policy choice puts the environment/account system permanently into a mode supporting only reason \(1\);
+* another choice puts it into a mode supporting only reason \(2\);
+* the two endpoint rate vectors are individually achievable;
+* no causal policy achieves their midpoint.
+
+But do not use this exact fixture if it does not fit the abstraction faithfully.
+
+### Task A2 — characterize when time-sharing works
+
+Identify sufficient closure assumptions such as:
+
+* reset/renewal structure;
+* concatenation closure;
+* history-independent per-date capacity;
+* account additivity with independent budget partitions;
+* stationary environment dynamics;
+* block policies whose starting-state dependence can be controlled;
+* convexification by randomized policies, if randomness is part of the theory.
+
+State the weakest useful theorem you can defend.
+
+Until such a theorem is proved, replace any unconditional claim
+
+$$
+\mathcal A\text{ is convex}
+$$
+
+with the weaker fact that is genuinely automatic:
+
+$$
+\boxed{
+\mathcal A\text{ is downward closed}.
+}
+$$
+
+Distinguish:
+
+* the raw causal sustainable-rate region;
+* its convex hull;
+* a time-sharing closure, if one exists;
+* an interior/slack concept.
+
+Do not call the convex hull “the achievable region” unless it is actually achievable.
+
+---
+
+# 2. Separate normative infeasibility from normative insolvency
+
+The current scheduling discussion sometimes says that all overload is liability overload because there is no shared conformance server.
+
+Sharpen this.
+
+There are at least two conceptually distinct failure modes.
+
+## Force / semantic infeasibility
+
+Examples:
+
+* empty joint normative region;
+* unpriceable rows;
+* illegal/noncontinuous compiled control;
+* impossible service timing requirements;
+* semantic incompatibility before affordability is considered.
+
+Call this schematically:
+
+$$
+\boxed{\text{normative infeasibility}.}
+$$
+
+## Affordability failure
+
+The normative load is meaningful/actionable, but no causal service schedule can satisfy the required trace while preserving the liability account:
+
+$$
+\boxed{\text{normative insolvency}.}
+$$
+
+Determine precisely what the traderized-LI modulus establishes:
+
+> Conditional on force feasibility, there is no additional shared-server competition in the **conformance inequality**; additional reasons consume underwriting/liability, not a finite total amount of enforcement force.
+
+State this as a theorem or lemma rather than saying that “every overload is liability overload.”
+
+This distinction may become important later when Answerability receives an overload certificate: it should know whether the failure was semantic inconsistency or insufficient underwriting capacity.
+
+---
+
+# 3. Put the causal affordability-existence problem in its final type
+
+Use the corrected variables.
+
+At history \(h_t\), state includes at least:
+
+$$
+z_t
+=
+\text{Answerability/service state}
+$$
+
+and a settlement-relative account state
+
+$$
+V_t:\Omega_t^{\rm live}\to\mathbb R.
+$$
+
+Answerability supplies a set of admissible future service traces, or equivalently constraints on allocations \(a_t^r\).
+
+The policy chooses predictable allocated authority
+
+$$
+a_t
+$$
+
+and hence a reactive control law
+
+$$
+\kappa_t.
+$$
+
+The engine produces the fixed point and endogenous defect/force:
+
+$$
+P_t,\qquad d_t,\qquad f_t=a_td_t.
+$$
+
+Settlement then updates the live set and account.
+
+Give a precise causal recursion.
+
+The primal existence question should look approximately like:
+
+$$
+\exists\pi
+\quad
+\forall\text{ admissible exterior/settlement histories}
+$$
+
+such that:
+
+1. the service trace generated by \(\pi\) is admissible under Answerability;
+2. every persistent claim receives the required amount/timing of allocated authority;
+3. the induced reactive control history satisfies
+
+   $$
+   V_N(\omega)\ge-B
+   $$
+
+   for every live \(\omega\) at every prefix.
+
+Be explicit about all quantifier order.
+
+This should be the canonical definition of **affordability existence** for the fixed era.
+
+---
+
+# 4. Identify the correct state variable for signed-account viability
+
+Route B currently uses something like
+
+$$
+\sigma_t
+=
+B+
+\min_{\omega\in A_{t-1}}
+V_{t-1}(\omega)
+$$
+
+as available account slack.
+
+Check whether this scalar is sufficient state for future safety.
+
+Because the live set shrinks and different worlds may become worst at different dates, it may be necessary to retain the entire profile
+
+$$
+V_t(\cdot)
+$$
+
+rather than only its current minimum.
+
+Investigate:
+
+* Can two account profiles with equal current minimum have different future viable authority sets?
+* Does the narrowing settlement set make the scalar minimum Markov-sufficient?
+* Under what structural assumptions can the account profile be compressed to one scalar?
+* Is there a minimal sufficient statistic for affordability control?
+
+Construct a rational counterexample if the minimum alone is insufficient.
+
+This matters greatly for the eventual dynamic-programming / viability formulation.
+
+---
+
+# 5. Strengthen the positive existence theory
+
+The current one-reason theorem is:
+
+if
+
+$$
+\sum_t \sqrt{a_t c}\,\sigma_t<\infty
+$$
+
+and
+
+$$
+\sum_ta_t=\infty,
+$$
+
+then persistent service is affordable.
+
+This is useful, but still an offline sufficient condition.
+
+Develop several increasingly strong existence results.
+
+## E1 — deterministic/offline benchmark
+
+State the sharpest transparent sufficient condition for one reason.
+
+Try to understand whether the square-root condition is near necessary in the conservative certificate regime.
+
+For fixed depth sequence \(D_t\) and engine scale \(m_t=\epsilon_t+M_t\), characterize when there exists some
+
+$$
+a_t\ge0
+$$
+
+such that
+
+$$
+\sum_ta_t=\infty
+$$
+
+but
+
+$$
+\sum_t\sqrt{a_tm_t}D_t<\infty.
+$$
+
+This is a pure sequence-space existence problem.
+
+Can it be characterized directly in terms of the decay of
+
+$$
+D_t\sqrt{m_t}?
+$$
+
+Do not settle for polynomial examples if there is an exact characterization.
+
+For example, investigate whether the existence of such \(a_t\) has an \(\ell^p\)-style necessary-and-sufficient condition.
+
+This may yield a very clean mathematical notion of **affordable persistent enforcement**.
+
+## E2 — many reasons, known future
+
+Generalize the sequence characterization to countably many reasons with summable liability budgets.
+
+Determine when there exist allocations \(a_t^r\) with
+
+$$
+\sum_ta_t^r=\infty
+\qquad\forall r
+$$
+
+while
+
+$$
+\sum_{t,r}
+\sqrt{a_t^rm_t}\,D_t^r
+<\infty.
+$$
+
+Because there is no conformance competition, this may decompose almost completely by reason except for the total liability budget.
+
+Find the clean theorem.
+
+## E3 — causal/predictable depths
+
+Now assume \(D_t^r\) becomes observable only at time \(t\), but before choosing \(a_t^r\).
+
+Can a universal causal scheduler achieve persistent service whenever some offline affordable schedule exists?
+
+If not, exhibit the online/offline gap.
+
+If yes under regularity assumptions, state them.
+
+This is likely a real online-algorithms question.
+
+---
+
+# 6. Investigate the key sequence-space problem deeply
+
+The square-root liability law suggests a potentially elegant mathematical characterization.
+
+Set
+
+$$
+q_t:=D_t\sqrt{m_t}.
+$$
+
+We seek
+
+$$
+a_t\ge0
+$$
+
+such that
+
+$$
+\sum_ta_t=\infty
+$$
+
+but
+
+$$
+\sum_tq_t\sqrt{a_t}<\infty.
+$$
+
+Let
+
+$$
+x_t=\sqrt{a_t}.
+$$
+
+Then the question becomes:
+
+$$
+\boxed{
+\exists x_t\ge0:
+\quad
+\sum_tx_t^2=\infty,
+\qquad
+\sum_tq_tx_t<\infty?
+}
+$$
+
+This looks like a clean functional-analysis / sequence-space problem.
+
+Determine the exact necessary-and-sufficient condition on \(q=(q_t)\).
+
+For example:
+
+* Is it equivalent to \(q\in\ell^2\)?
+* Is \(\ell^2\) sufficient but not necessary?
+* What happens at borderline sequences?
+* Can block constructions beat naïve choices?
+* What is the dual characterization?
+
+Do this carefully.
+
+If there is an exact theorem here, it may be one of the most elegant mathematical results in the affordability theory:
+
+> a normative constraint admits infinite total service on finite conservative liability iff its settlement-friction sequence lies in a particular sequence class.
+
+Check whether the “conservative liability” qualification is necessary.
+
+Then interpret the theorem in the original variables.
+
+---
+
+# 7. Signed-account viability versus conservative underwriting
+
+The conservative route uses
+
+$$
+\sum_tq_tx_t<\infty.
+$$
+
+But the true account is signed:
+
+$$
+V_N(\omega)
+=
+\sum_t
+a_td_t(d_t-s_t(\omega)).
+$$
+
+Positive work may fund negative friction later.
+
+Determine how much strictly larger the signed-account affordable class can be.
+
+Construct a minimal example where:
+
+* no conservative summable-charge schedule can provide persistent service;
+* but a signed-account adaptive policy can provide persistent service indefinitely.
+
+The previous finite two-date example only shows a larger local cap. Seek an **infinite-horizon separation**.
+
+This could be a major result.
+
+Potential shape:
+
+$$
+\boxed{
+\text{conservative affordability}
+\subsetneq
+\text{signed-account affordability}.
+}
+$$
+
+Then ask whether the signed-account class has a natural characterization in terms of cumulative/drift conditions.
+
+Do not use “self-financing” as a new name.
+
+---
+
+# 8. Adversarial docket existence
+
+Now bring Answerability arrivals back in.
+
+Suppose reasons arrive predictably over time, each carrying:
+
+* a claim/service trace requirement;
+* a priceable normative row or region;
+* an evolving settlement-friction/depth process.
+
+Ask:
+
+> Under what conditions is there a causal authority scheduler satisfying every persistent reason?
+
+The current countable round-robin theorem assumes useful dates have already been partitioned.
+
+Try more realistic conditions.
+
+Candidates:
+
+### Persistent opportunity
+
+For every persistent reason \(r\),
+
+$$
+\sum_t \operatorname{cap}_t^r=\infty.
+$$
+
+Is that alone enough?
+
+Probably not if many reasons share liability budget. Construct the obstruction.
+
+### Weighted capacity condition
+
+For every finite subset \(S\) of persistent reasons, require some cumulative capacity inequality.
+
+Is there a Hall-type condition?
+
+Be careful: the per-date authority set is non-convex and liability is diachronic, so a standard flow theorem may fail.
+
+### Slack/interior condition
+
+Can you formulate an arrival/load condition analogous to queueing stability:
+
+$$
+\text{Answerability demand lies strictly inside causal affordable capacity}
+$$
+
+and prove an online scheduling theorem?
+
+Do not invoke “interior of \(\mathcal A\)” until the convexity/time-sharing question is resolved.
+
+If an exact theorem is too hard, isolate the minimal model in which one can be proved.
+
+---
+
+# 9. Reassess the role of backlog
+
+The current recurrence
+
+$$
+b_{t+1}^r
+=
+[b_t^r+c_{t+1}^r-a_t^r]_+
+$$
+
+is a convenient scheduling abstraction.
+
+But Deferred Service Transport permits richer structure:
+
+* deadlines;
+* semantic stability degrading with delay;
+* heterogeneous service effectiveness;
+* claims satisfied by specific kinds of later service.
+
+Determine whether scalar backlog is actually sufficient for the Answerability service state.
+
+Likely:
+
+$$
+\boxed{
+\text{backlog is a sufficient realization for one simple service semantics,}
+}
+$$
+
+not the generic interface.
+
+Keep the generic affordability theory based on admissible service traces / transport plans, and use backlog only for particular existence theorems.
+
+If appropriate, patch any text suggesting backlog is primitive.
+
+---
+
+# 10. Dynamic overload and duality: sharpen the target, don't force a theorem
+
+Once the primal has been clarified, state exactly what an overload certificate should certify.
+
+There are now at least two failures:
+
+### Normative infeasibility certificate
+
+No joint actionable/priceable normative realization exists.
+
+This may be ordinary geometric separation.
+
+### Normative insolvency certificate
+
+The normative requirements are force-feasible, but no causal policy can service them while keeping the account viable.
+
+This requires separating a **service obligation** from a **causal signed-account capacity**.
+
+The finite-path Farkas certificate only addresses a simpler static problem.
+
+Ask whether a dynamic certificate could be:
+
+* a potential \(H(z,V)\) whose drift under every safe action is too small to discharge the incoming normative load;
+* an adversarial strategy;
+* a supermartingale;
+* a Bellman value function proving the viability kernel empty.
+
+Do not claim completeness.
+
+The goal is to state the exact dual problem we eventually want.
+
+---
+
+# 11. Patch the current overclaims
+
+Within PR75, correct at least:
+
+1. unconditional convexity of the sustainable authority-rate region;
+2. “every overload is liability overload” → qualify by force feasibility;
+3. any suggestion that separate reason underwriting is *necessary* for every form of reasonwise Progress;
+4. any place where local authority capacity is treated as the SafeCert itself;
+5. any stale reference to the pre-\(a=\beta\) service variable.
+
+Do not rewrite the entire round. Make targeted corrections and preserve provenance.
+
+---
+
+# 12. Decide whether the fixed-era construction should now be frozen
+
+After this pass, explicitly answer:
+
+> Is there any remaining reason to keep modifying the fixed-era composition theorem itself?
+
+If the answer is no, recommend freezing:
+
+* `FIXED_ERA_THEOREM.md`;
+* the S1–S6 schematic stack;
+* the \(\beta\)/\(\beta d\) typing;
+* reasonwise row accounting;
+* Service Transport.
+
+Then subsequent work in PR75 should be labeled **existence/characterization**, not continued composition repair.
+
+This is important to prevent the research round from endlessly reopening already-stable interfaces.
+
+---
+
+# Deliverables
+
+Produce or update:
+
+1. `CAUSAL_CAPACITY.md`
+
+   * corrected definition of sustainable authority capacity;
+   * counterexample to naïve convexity or theorem giving sufficient conditions;
+   * downward closure;
+   * time-sharing/concatenation conditions.
+
+2. `PERSISTENT_AFFORDABILITY.md`
+
+   * solve the sequence problem
+
+     $$
+     \sum x_t^2=\infty,\qquad
+     \sum q_tx_t<\infty;
+     $$
+   * give the strongest necessary-and-sufficient condition you can obtain;
+   * map it to persistent authority on finite liability.
+
+3. `SIGNED_VS_CONSERVATIVE.md`
+
+   * infinite-horizon comparison between conservative sum-of-suprema underwriting and true signed-account affordability.
+
+4. `ONLINE_EXISTENCE.md`
+
+   * formulate and, where possible, prove causal scheduling results against predictable/adversarial arrivals;
+   * clearly mark offline versus online hypotheses.
+
+5. `OVERLOAD_TARGET.md`
+
+   * separate normative infeasibility from insolvency;
+   * state the desired dynamic dual/certificate problem.
+
+6. Targeted patches to current PR75 documents.
+
+7. Exact-rational fixtures for:
+
+   * failure of causal rate-region convexity, if applicable;
+   * success of time-sharing under an explicit resettable model;
+   * persistent conservative affordability;
+   * failure of persistent affordability with nondecaying settlement depth;
+   * infinite-horizon signed-account affordability strictly beyond conservative budgeting;
+   * adversarial arrival process defeating a naïve fair scheduler.
+
+## Priority
+
+Spend the most effort on:
+
+1. the exact sequence-space characterization
+
+   $$
+   \exists x:\quad x\notin\ell^2,\quad qx\in\ell^1;
+   $$
+2. the causal convexity/time-sharing issue;
+3. an infinite-horizon separation between conservative and signed-account affordability;
+4. a clean online existence theorem or counterexample.
+
+These are likely to produce actual mathematical results rather than further architecture.
+
+## Success criterion
+
+The pass succeeds if it can turn the current statement
+
+> “existence of an affordable schedule remains open”
+
+into a substantially more structured theory:
+
+* an exact or near-exact characterization in the one-reason benchmark;
+* a correct notion of causal normative capacity;
+* at least one genuinely online existence result or impossibility result;
+* a clear separation between semantic infeasibility and underwriting insolvency.
+
+Do not reopen the fixed-era learner construction unless one of these investigations finds an actual contradiction in it.

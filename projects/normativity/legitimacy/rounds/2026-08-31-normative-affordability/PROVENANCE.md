@@ -14,7 +14,11 @@ position magnitude and corrects it in place. `REASONWISE_ACCOUNTING.md`,
 `CAPACITY_VS_SAFETY.md`, `FIXED_ERA_THEOREM.md`, `AFFORDABLE_SCHEDULING.md`,
 `src/reasonwise.py` and `tests/test_reasonwise.py` are the fourth dispatch's, which
 repairs the third's reason-indexed statement and its convexity claim about the
-per-date capacity region.
+per-date capacity region. `PERSISTENT_AFFORDABILITY.md`, `CAUSAL_CAPACITY.md`,
+`SIGNED_VS_CONSERVATIVE.md`, `ONLINE_EXISTENCE.md`, `OVERLOAD_TARGET.md`,
+`src/persistence.py` and `tests/test_persistence.py` are the fifth dispatch's, which
+withdraws the fourth's sustainable authority-rate region and its convexity, and
+freezes the fixed-era composition.
 
 The round starts from `main` at
 `292bb2731b0df09aa034ca4abc5ce64a20a41785`. It reads and does not modify:

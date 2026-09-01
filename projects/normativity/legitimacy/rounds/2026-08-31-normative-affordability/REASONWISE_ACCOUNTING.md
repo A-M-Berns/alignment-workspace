@@ -46,9 +46,12 @@ be financed by another's unbounded losses while every aggregate condition holds,
 and the reason-indexed ceiling — hence the reason-indexed Progress bound that runs
 through it — is unavailable.
 
-The normative reading is worth stating: **each reason's enforcement must be
-separately underwritten.** Aggregate solvency permits cross-subsidy between
-reasons, and cross-subsidy is exactly what makes a per-reason guarantee fail.
+The normative reading, stated at the strength the mathematics supports: aggregate
+solvency permits cross-subsidy between reasons, and cross-subsidy is what defeats
+*this route* to a per-reason ceiling. It does not defeat per-reason Progress, which
+Route III below obtains from the per-date modulus with no decomposition at all.
+Separate underwriting is what buys the good constant, not what makes the conclusion
+available.
 
 ## 3. Three routes to reason-indexed Progress, and none of them is the only one
 

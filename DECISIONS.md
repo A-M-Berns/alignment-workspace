@@ -109,6 +109,63 @@ commit.
 
 ## Settled
 
+### 2026-08-31 — persistent enforcement is affordable iff the friction dips to zero
+
+**agent-decided, reversible.** Write the friction of a normative row at a date as
+its worst live exclusion depth times the square root of the date's slack-plus-volume.
+A schedule with divergent cumulative allocated authority and finite lifetime
+worst-case charge exists **if and only if that friction has liminf zero**, and the
+maximum cumulative authority through any horizon is exactly the squared budget over
+the squared running minimum friction, attained by putting the whole budget on a
+single least-friction date.
+
+Three consequences are adopted with it. Persistence is budget-free — the criterion
+does not mention the budget, so any positive lifetime budget buys it and none buys
+it when the friction is floored. Persistence does not compete across reasons, so
+splitting one budget geometrically serves every individually persistable reason at
+once and there is no Hall-type condition to look for. And a causal scheduler seeing
+the friction only at its own date achieves persistence exactly when an offline one
+can, by a doubling-threshold rule; any scheduler with a positive floor on its
+per-date allocation is defeated by a friction bounded away from zero, so persistence
+requires the freedom to do nothing.
+
+The reading is that a norm can be enforced indefinitely on a finite liability budget
+exactly when there are infinitely many occasions on which enforcing it is nearly
+free. That pushes the burden onto transport stability across the resulting gaps,
+which is where affordability and service fidelity now pull against each other.
+
+*Rejected alternative:* an l^p or summability condition on the friction sequence,
+which is sufficient in the l^2 case and nowhere near necessary.
+
+### 2026-08-31 — the sustainable authority-rate region is withdrawn
+
+**agent-decided, reversible.** An earlier pass in this round defined a sustainable
+authority-rate region and claimed it convex because policies can be time-shared.
+Both the claim and the object are withdrawn.
+
+Time-sharing convexifies a renewable per-date resource; the liability budget is a
+consumable stock and authority is quadratic in the stock, so interleaving two
+policies quarters what each buys. Two rows at unit friction and budget two have the
+rate pairs four-zero and zero-four achievable and their midpoint not. The convex
+hull is not achievable and should not be called the achievable region.
+
+The object is also wrong: the rate region is empty of content whenever the friction
+is floored, everything whenever it decays fast, and — the case that matters — zero
+on friction sequences where the reason is in fact persistently served, because
+persistence is divergence of the cumulative allocation and a positive rate is linear
+growth. The composition theorem consumes the first. It is replaced by the
+persistence region, which is the full power set of the individually persistable
+reasons: downward closed, closed under countable unions, and carrying no capacity
+structure at all.
+
+Separately, the scalar account slack is **not** a sufficient statistic for future
+viability, because the world attaining the minimum can settle away; a
+dynamic-programming treatment has to carry the account profile over the live set.
+
+*Rejected alternative:* keeping the rate region with a convexity caveat, which
+would have preserved an object that reports zero exactly where the theory's
+requirement is met.
+
 ### 2026-08-31 — a reason-indexed cap needs per-row liability floors
 
 **agent-decided, reversible.** The market maker's contract caps the aggregate

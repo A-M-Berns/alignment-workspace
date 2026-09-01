@@ -4,6 +4,11 @@ One era: one settled semantics, one evaluator, no ontology revision. Everything
 below is a composition statement — it consumes an authority schedule and produces
 Progress plus preservation, and it does not assert that such a schedule exists.
 
+**Frozen.** No later pass in this round reopened it, and none should without an
+actual contradiction: subsequent work is existence and characterization, which
+consume this statement rather than amend it. `README.md` records the freeze and
+what it covers.
+
 ## 1. Coercive Actionability, at its weakest hypothesis
 
 **Theorem F1.** Let `0 <= d_t <= D`, `a_t >= 0`, `A_N = sum_{t<N} a_t > 0`, and

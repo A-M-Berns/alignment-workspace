@@ -3,11 +3,11 @@
 **Verdict:**
 `AFFORDABILITY-COMPOSES-BUT-THE-SERVICE-CONDITION-IS-TRANSPORT-NOT-CONTIGUITY`.
 
-Four dispatches: the schematic pass; a follow-up auditing the realization map
+Five dispatches: the schematic pass; a follow-up auditing the realization map
 against the traderized mathematics; a focused pass closing the typing mismatch
-between the schematic service variable and the concrete learner; and a
-consolidation pass finishing the fixed-era statement and isolating the existence
-problem. The technical register, the theorem stack, the
+between the schematic service variable and the concrete learner; a consolidation
+pass finishing the fixed-era statement; and an existence pass characterizing
+persistent affordability and withdrawing the rate region. The technical register, the theorem stack, the
 per-hypothesis classification and the full not-shown list are in
 `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/REPORT.md`,
 the audit in that directory's `FOLLOWUP_REPORT.md`, and the resulting stack in
@@ -177,12 +177,45 @@ non-convex, because authority is quadratic in the liability allowance, so
 concentration beats splitting by the number of reasons and the sustainable rate
 region is a convex hull the schedule itself produces.
 
+## The fifth dispatch: existence, characterized
+
+**Persistent enforcement is affordable iff the friction dips to zero.** Writing the
+friction as the exclusion depth times the square root of the date's slack-plus-volume,
+a schedule with divergent cumulative authority and finite lifetime charge exists
+exactly when that sequence has liminf zero, and the maximum cumulative authority
+through any horizon is exactly the squared budget over the squared running minimum,
+attained by concentrating everything on one least-friction date. No summability or
+l^p condition is equivalent; only a friction floor blocks.
+
+Persistence is budget-free and does not compete across reasons, so every
+individually persistable reason can be served at once and there is no Hall-type
+condition. A causal scheduler seeing the friction only at its own date loses
+nothing, by a doubling-threshold rule — and any scheduler with a positive floor on
+its per-date allocation is defeated, so persistence requires the freedom to do
+nothing.
+
+**The rate region is withdrawn**, both its convexity and the object. Time-sharing
+convexifies a renewable per-date resource and the liability budget is a consumable
+stock; and the region reports zero on friction sequences where the reason is in fact
+persistently served. The persistence region replaces it and has no capacity
+structure at all.
+
+**Conservative underwriting is strictly smaller than the signed account, by an
+unbounded margin.** A satisfied row takes a zero position and costs nothing however
+deep its exclusion of the live worlds, so a floored friction that caps conservative
+authority at a constant permits linear growth on the realized trajectory. And the
+scalar account slack is not sufficient state, because the world attaining the
+minimum can settle away.
+
+The fixed-era composition is frozen. Later work in this round is existence and
+characterization.
+
 ## Outstanding maintainer actions
 
 1. Naming audit over the four surviving provisional names, when one is next run.
    "Self-financing control" is withdrawn rather than renamed.
 
-The reserved question is answered by the staging and has left the queue; seven
+The reserved question is answered by the staging and has left the queue; nine
 dated `DECISIONS.md` entries record the later dispatches' rulings, all
 agent-decided and reversible.
 
@@ -192,4 +225,4 @@ agent-decided and reversible.
 |---|---|
 | prompt author | unrecorded — authored outside this repository |
 | executor | Claude Opus 5 (Anthropic) |
-| dates | four dispatches, all executed 2026-08-31 |
+| dates | five dispatches, all executed 2026-08-31 |
