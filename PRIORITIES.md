@@ -1940,7 +1940,11 @@ duality on the plan is the first place to look — or exhibit a causally unaffor
 instance every path of which is feasible, which shows no per-path certificate class can
 be complete and moves the question to certificates over policies.
 
-**Sequencing.** Take item 40 first. Until the necessity of bounded cumulative
+**Sequencing.** Take item 40 first, and the existence of an affordable schedule
+second — with the service variable now typed as allocated authority, that question
+is well posed for the first time: does a schedule with divergent allocated service
+for every persistent reason exist inside the per-date liability capacity boxes,
+against an adversarial docket arrival process? Until the necessity of bounded cumulative
 enforcement liability is settled or refuted, an overload certificate for the causal
 problem certifies the failure of a hypothesis whose necessity is unknown, and every
 "unaffordable" verdict in this line means "the known route to safety no longer

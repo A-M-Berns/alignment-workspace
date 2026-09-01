@@ -7,6 +7,10 @@
 `FOLLOWUP_REPORT.md`, `CORRECTED_STACK.md`, `src/li_account.py` and
 `tests/test_li_account.py` are the second dispatch's; the corrections it applied to
 the first dispatch's documents are listed in `FOLLOWUP_REPORT.md`.
+`SERVICE_FORCE_TYPING.md`, `LI_PROGRESS_FROM_SERVICE.md`, `END_TO_END_LEARNER.md`,
+`src/service.py` and `tests/test_service.py` are the third dispatch's, which
+withdraws the second's identification of the service variable with the realized
+position magnitude and corrects it in place.
 
 The round starts from `main` at
 `292bb2731b0df09aa034ca4abc5ce64a20a41785`. It reads and does not modify:
@@ -29,7 +33,10 @@ The round starts from `main` at
   its market-maker step, the corrected declared-quantity ceiling, and the
   safe-without-world-inclusiveness trajectory; `NORMATIVE_SAFETY.md` §9 and §13 for
   the affordability relation, the withdrawn depth-only impossibility theorem and
-  the conservatism of the per-date certificate;
+  the conservatism of the per-date certificate; `ENFORCEMENT.md` §§1-3 for the
+  extremal pinning lemma, the enforcement inequality, the per-date modulus
+  `sum_j beta_j g_j^2 <= eps_n + M_n` and the statement that intensities are fixed
+  before the market maker picks a price;
 - `projects/normativity/consolidation-aug9/THEORY_11_SETTLEMENT_INTERFACE.md`, an
   `agent-consolidated` tree, for no-claw-back, the two polytopes, clauses `J3`,
   `P1`, `P2`, `P4` and the assumed residues.

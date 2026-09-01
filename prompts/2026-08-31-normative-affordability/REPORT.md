@@ -3,8 +3,9 @@
 **Verdict:**
 `AFFORDABILITY-COMPOSES-BUT-THE-SERVICE-CONDITION-IS-TRANSPORT-NOT-CONTIGUITY`.
 
-Two dispatches: the schematic pass, and a follow-up auditing the realization map
-against the traderized mathematics. The technical register, the theorem stack, the
+Three dispatches: the schematic pass, a follow-up auditing the realization map
+against the traderized mathematics, and a focused pass closing the typing mismatch
+between the schematic service variable and the concrete learner. The technical register, the theorem stack, the
 per-hypothesis classification and the full not-shown list are in
 `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/REPORT.md`,
 the audit in that directory's `FOLLOWUP_REPORT.md`, and the resulting stack in
@@ -112,14 +113,43 @@ service-weighted defect converges to the service-weighted misfit between the nor
 and the still-live worlds. Force drives conformance exactly to the level at which
 the norm is consistent with what can still be true.
 
+## The third dispatch: service is allocated authority
+
+The schematic's reason-indexed service variable was read, in the realization, as
+the realized position magnitude. It cannot be. That quantity is a function of the
+market maker's fixed-point price, so no scheduler can set it; it is zero exactly
+when the reason is perfectly satisfied, so its normalized measure does not exist
+there; and it counts a date as better served because the reasoner did worse on it.
+A reason monitored forever at constant authority against a geometrically vanishing
+violation has divergent allocated service and summable realized force, so the old
+reading classifies successful learning as starvation.
+
+The service variable is the **enforcement multiplier**, equivalently the promised
+tolerance — fixed before the maker picks a price, and freely schedulable inside a
+per-date liability capacity. The control is correspondingly a predictable *law*
+from states to positions rather than a predictable position.
+
+That buys the concrete theorem the round had been missing. The per-date enforcement
+modulus already bounds the allocated-service-weighted squared violation, so
+service-weighted Progress follows from the market maker's contract with an explicit
+rate — the inverse square root of allocated service — and an explicit residual, the
+norm's own weighted mean-square exclusion of the still-live worlds. One compatible
+live world suffices and gives the fast rate; a certified core minimum caps the
+residual. And the liability charge grows like the square root of allocated
+authority, which is why a reason can receive divergent service on a finite lifetime
+budget: the market's own response reduces the force as compliance improves.
+
+Actionability generalizes to a convex coercivity modulus, which subsumes the old
+linear form and the projection-quadratic one in a single theorem.
+
 ## Outstanding maintainer actions
 
 1. Naming audit over the four surviving provisional names, when one is next run.
    "Self-financing control" is withdrawn rather than renamed.
 
-The reserved question is answered by the staging and has left the queue; three
-dated `DECISIONS.md` entries record the follow-up's rulings, all agent-decided and
-reversible.
+The reserved question is answered by the staging and has left the queue; five
+dated `DECISIONS.md` entries record the second and third dispatches' rulings, all
+agent-decided and reversible.
 
 ## Attribution
 
@@ -127,4 +157,4 @@ reversible.
 |---|---|
 | prompt author | unrecorded — authored outside this repository |
 | executor | Claude Opus 5 (Anthropic) |
-| dates | two dispatches, both executed 2026-08-31 |
+| dates | three dispatches, all executed 2026-08-31 |

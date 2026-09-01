@@ -268,12 +268,16 @@ required".
 ### B6. The intensity variable
 
 The round asked whether one variable `w^r_t` can be both service allocation and
-normative control intensity. **It can, and it is the position's row-weighted
-magnitude `beta_{t,j} g_{t,j}`, not the multiplier `beta`.** Under that reading the
-defect enters linearly rather than quadratically, `work = sum w d` and
-`charge = sum w e`, and every statement in B3 is in the schematic's own vocabulary.
-Reading `w` as `beta` instead leaves the force inequality quadratic in the defect
-and forces a Cauchy–Schwarz step with a worse residual.
+normative control intensity. It can, but **not** as the position magnitude
+`beta_{t,j} g_{t,j}`, which this section proposed and which a later pass withdrew:
+that quantity is a function of the fixed-point price, so it is not available at the
+date the control is chosen, it is zero exactly when the reason is perfectly
+satisfied, and it counts a date as better served because the reasoner did worse on
+it. The service variable is the multiplier `beta` itself, and the price of that is
+the Cauchy–Schwarz step noted below rather than a defect that enters linearly.
+`SERVICE_FORCE_TYPING.md` and `LI_PROGRESS_FROM_SERVICE.md` carry the audit and the
+replacement theorem; the account algebra of B3 is unchanged and is simply read
+against a different measure.
 
 The source's own warning stands and is not contradicted: intensity is a position
 size, not funding, and in the adversarial fixture the realized position size is set
@@ -471,11 +475,11 @@ being withdrawn.
    constants have no candidate mechanism when the two defects belong to different
    representations of the reason. This is the one obligation in the stack with
    nothing proposed for it.
-5. *Whether the realized intensity is a free variable.* The schematic treats
-   `w^r_t` as the controller's choice. Under an exact market-maker contract the
-   realized position size is set by the opposing ordinary volume, so the scheduling
-   freedom the affordability existence theory assumes may not exist in the
-   realization. Nothing here settles it, and it is the seam between §B6 and §C's T7.
+5. *Whether the realized intensity is a free variable.* **Settled by a later
+   pass, in the negative for the realized quantity and the positive for the
+   allocated one.** The multiplier is predictable and freely schedulable inside a
+   per-date capacity box; the realized position size is not, and is set at the
+   fixed point. `SERVICE_FORCE_TYPING.md`.
 6. *A causal overload certificate*, in the potential form described above — after
    item 40.
 

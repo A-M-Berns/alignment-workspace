@@ -37,6 +37,13 @@ route implies the other.
 with equality to `0` when transport stability is exact. `(P2)` has no engine
 parameter and composes with any `(P1)`.
 
+### S3a — Coercive Actionability
+
+If the engine guarantees `sum_t a_t phi(d_t) <= C_N` for a convex `phi` with
+`phi(0) = 0`, strictly increasing, then `E_{nu^a_N}[d] <= phi^{-1}(C_N/A_N)`. The
+linear form `phi(d) = gamma d` and projection enforcement's `phi(d) = d^2` are the
+two instances; the residual and the rate both read off `phi`.
+
 ### S4 — Joint Actionability
 
 Individual Actionability, additive aggregation, nonnegative weights and a nonempty
@@ -101,10 +108,12 @@ refutes affordability. Sound, not complete.
 The proof is S3: the first six rows give `(P1)`, the transport rows give `(P2)`,
 and the last two keep the engine's guarantee alive while the control runs.
 
-**The intensity variable.** `w^r_t` is one variable in two roles — the share of
-service allocated to `r`, and the magnitude of the normative force applied on its
-behalf. That identification survives the realization audit provided `w` is read as
-the **position magnitude**, not as the enforcement multiplier.
+**The intensity variable.** `w^r_t` is the *allocated* authority: the share of
+service assigned to `r` and, in the realization, the enforcement multiplier
+`beta`. It is predictable. The magnitude of force actually applied is `w^r_t d^r_t`
+and is endogenous — the engine decides how hard the allocated authority has to
+push. `SERVICE_FORCE_TYPING.md` carries the audit; the earlier reading, which took
+the position magnitude as the service variable, is withdrawn there.
 
 ## Logical Induction instantiation, line by line
 
@@ -116,11 +125,12 @@ the **position magnitude**, not as the enforcement multiplier.
 | position `zeta^r_t` | the compiled violation-proportional position `sum_j beta_j g_j(P_t) c_j` |
 | defect `d^r_t` | the row violation `g_j(P_t)` at the displayed price |
 | misfit `s^r_t(omega)` | the row's signed misfit `r_j - <c_j, omega>` at an assessment world; its positive part is the deficit that bounds liability |
-| intensity `w^r_t` | `beta_{t,j} g_{t,j}(P_t)`, the position's row-weighted magnitude |
-| Actionability | **a theorem, not a premise**: `value = sum w (d - s)`, from the liability identity |
+| allocated service `a^r_t` | the enforcement multiplier `beta_{t,j}`, equivalently the promised tolerance `delta_t`; predictable, and bounded by a per-date capacity `b_t^2/((eps_t + M_t) D_t^2)` |
+| realized force | `beta_{t,j} g_{t,j}(P_t)`, endogenous at the fixed point |
+| Actionability | **a theorem, not a premise**: the per-date modulus `sum_j a_{t,j} d_{t,j}^2 <= eps_t + M_t`, kernel-checked |
 | Uptake | **a theorem, not a premise**: the market maker's cumulative cap gives `omega(sum_{i<=n} E_i) <= U = 1 + B_F` at every live world |
-| service-weighted Progress | `E_{nu_N}[d] <= U/W_N + inf_{omega ∈ A_N} E_{nu_N}[s(omega)]` |
-| affordability account | `V_N(omega) = sum_{t,j} w_{t,j}(d_{t,j} - s_{t,j}(omega))`, signed and cumulative, an identity at every world |
+| service-weighted Progress | `E_{nu^a_N}[d] <= \|s^+(omega)\|_{L^2(nu^a_N)} + sqrt(U/A_N)`, and `<= sqrt(S_N/A_N)` unconditionally |
+| affordability account | `V_N(omega) = sum_{t,j} a_{t,j} d_{t,j}(d_{t,j} - s_{t,j}(omega))`, signed and cumulative, an identity at every world |
 | SafeCert | `V_N(omega) >= -B` for every date and every live `omega` |
 | substrate preservation | bounded liability implies no efficiently computable trader exploits the modified market, each with assessed net worth at most `1 + B` |
 | joint response | rows add inside one compiled position; interference is a budget split, `U_j = 1 + B_F + sum_{k != j} B_k` |
@@ -132,11 +142,12 @@ Two lines are worth reading twice.
 identity and the maker's fixed-point cap. What remains a genuine hypothesis is the
 account floor, and the whole affordability question is whether it holds.
 
-**The conclusion is sharper and weaker than the schematic's.** Sharper: the
-displayed defect and the misfit converge to each other, so Progress is
-characterized rather than bounded. Weaker: the limit is the misfit, not zero. Force
-drives conformance exactly to the level at which the norm is consistent with what
-can still be true.
+**The conclusion is sharper and weaker than the schematic's.** Sharper: an
+explicit rate, `A_N^{-1/2}` in the allocated service, and an explicit residual.
+Weaker: the residual is the norm's own weighted mean-square exclusion of the
+still-live worlds, not zero. Force drives conformance exactly to the level at
+which the norm is consistent with what can still be true.
+`LI_PROGRESS_FROM_SERVICE.md` has the inequalities.
 
 ## What is deleted
 

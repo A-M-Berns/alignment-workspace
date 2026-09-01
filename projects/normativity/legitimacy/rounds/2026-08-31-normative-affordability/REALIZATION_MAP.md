@@ -16,23 +16,21 @@
 | Actionability margin | the force/friction inequality of §2 |
 | joint feasibility `K_t != empty` | covered compatibility; its failure has the unsupported-authority certificate |
 | per-reason accounting | the combined cap less the other reasons' floors, `U_j = 1 + B_F + sum_{k != j} B_k` |
-| service intensity `w^r_t` | the position's row-weighted magnitude `beta_{t,j} g_{t,j}(P_t)` — **not** the multiplier `beta` |
+| allocated service `a^r_t` | the enforcement multiplier `beta_{t,j}`, equivalently the promised tolerance; predictable, inside a per-date capacity box |
+| realized force | `beta_{t,j} g_{t,j}(P_t)`, endogenous at the market maker's fixed point |
 
-The last row is the one worth pausing on. The scheduling variable of Service
-Transfer and the force compiler's spend are the same number only when the
-intensity is read as the size of the position actually taken. Under that reading
-`sum w d` is the cumulative force work and `sum w e` the cumulative misfit charge,
-both in the schematic's own vocabulary; reading `w` as `beta` leaves the force
-inequality quadratic in the defect and costs a Cauchy-Schwarz step and a worse
-residual. A scheduler that services a reason weakly and a controller that takes a
-small position on its rows are then one variable under two descriptions, and the
-parsimony cap `K` of `SERVICE_TRANSFER.md` §4 bounds how much of it may be spent
-where nothing is owed.
+The last two rows are the ones worth pausing on, and they are two objects rather
+than one. The scheduling variable is the multiplier, which is fixed before the
+maker picks a price; what the multiplier buys is conformance precision,
+`d_j <= sqrt((eps_t + M_t)/beta_j)`, and the position actually taken is decided at
+the fixed point. A scheduler that services a reason weakly is one that promises it
+a loose tolerance, not one that takes a small position — the source's adversarial
+fixture has the realized position identical across `beta in {10, 100, 1000}`, which
+is the same point from the other side.
 
-The source's own warning is not contradicted: `beta` is a position size and not
-funding, and under an exact contract the *realized* position size is set by the
-opposing ordinary volume rather than by `beta`. How much of the schematic's
-scheduling freedom survives that is open — `FOLLOWUP_REPORT.md`, final section.
+The parsimony cap `K` of `SERVICE_TRANSFER.md` §4 bounds how much *authority* may
+be allocated where nothing is owed. `SERVICE_FORCE_TYPING.md` carries the audit and
+`LI_PROGRESS_FROM_SERVICE.md` the theorem the split makes available.
 
 ## 2. The score identity and the friction inequality
 

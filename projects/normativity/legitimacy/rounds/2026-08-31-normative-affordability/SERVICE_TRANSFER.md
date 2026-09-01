@@ -4,7 +4,9 @@
 
 For each horizon `N` fix the index set `[N] = {0, ..., N-1}` and two nonnegative
 weight arrays: the **claim** weights `c_t` with `C_N = sum_{t<N} c_t > 0`, and the
-**service** weights `w_t` with `W_N = sum_{t<N} w_t > 0`. Normalize:
+**service** weights `w_t` with `W_N = sum_{t<N} w_t > 0`. In the realization the
+service weights are the *allocated* authority, which is predictable, and not the
+realized corrective force — see `SERVICE_FORCE_TYPING.md`. Normalize:
 
     mu_N(t) = c_t / C_N        the normatively owed exposure measure
     nu_N(t) = w_t / W_N        the actual service measure

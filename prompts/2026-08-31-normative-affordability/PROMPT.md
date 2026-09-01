@@ -987,3 +987,667 @@ Produce:
 5. A short final section titled **“What actually remains before an end-to-end LI legitimacy theorem?”** Separate genuinely missing mathematics from terminology/interface cleanup.
 
 Treat PR75's transport theorem and counterexamples as results to preserve unless you find an actual flaw. The purpose of this pass is not to redo the round. It is to make the abstraction boundary line up exactly with the traderization/liability mathematics and to remove any accidental overclaims before the affordability theory is consolidated.
+
+---
+
+# Third dispatch — service allocation versus realized force in the traderized LI learner
+
+# Follow-up research pass: service allocation versus realized force in the traderized LI learner
+
+Work against the live `alignment-workspace`, especially PR75 and its follow-up audit:
+
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+
+Read at minimum:
+
+* `CORRECTED_STACK.md`
+* `FOLLOWUP_REPORT.md`
+* `AFFORDABILITY.md`
+* `SERVICE_TRANSFER.md`
+* `JOINT_ACTIONABILITY.md`
+* `SAFECERT.md`
+* `EXISTENCE_AND_DUALITY.md`
+* `REALIZATION_MAP.md`
+
+Then recover the exact traderization / projection-enforcement / MarketMaker definitions and the relevant Answerability/service material.
+
+This is a **focused mathematical pass**. Do not reopen the basic conclusions of PR75 unless this investigation produces an actual counterexample.
+
+## Governing question
+
+The corrected schematic currently identifies a reason-indexed variable \(w_t^r\) as both:
+
+1. the amount of normative **service** allocated to reason \(r\); and
+2. the realized magnitude of the normative **force/control** applied on its behalf.
+
+In the traderized LI realization this is read as
+
+$$
+w_{t,j}=\beta_{t,j} g_{t,j}(P_t),
+$$
+
+where:
+
+* \(\beta_{t,j}\) is the enforcement multiplier / authority allocated to row \(j\);
+* \(g_{t,j}(P_t)\ge 0\) is the displayed violation/defect;
+* the realized row position is
+
+  $$
+  \beta_{t,j}g_{t,j}(P_t)c_{t,j}.
+  $$
+
+But \(P_t\), and hence \(g_{t,j}(P_t)\), is determined at the MarketMaker fixed point. Thus \(w_{t,j}\) is **reactive/endogenous**, not a freely chosen \(\mathcal F_{t-1}\)-measurable scheduling variable.
+
+This may be the remaining typing mismatch between the schematic affordability theorem and its concrete LI realization.
+
+Investigate whether the correct separation is instead:
+
+$$
+\boxed{
+a_{t,j}:=\beta_{t,j}
+=
+\text{predictably allocated normative service/authority}
+}
+$$
+
+and
+
+$$
+\boxed{
+f_{t,j}:=a_{t,j}d_{t,j}
+=
+\beta_{t,j}g_{t,j}(P_t)
+=
+\text{reactively realized corrective force}.
+}
+$$
+
+The goal is to determine whether this distinction is correct, mathematically useful, and sufficient to close the concrete end-to-end learner stack.
+
+---
+
+# 1. Reconstruct the within-round timing exactly
+
+Do not reason from prose. Extract the actual dependency structure of traderized LI.
+
+For a round \(t\), identify which objects are determined at which stage:
+
+1. settled history \(\mathcal F_{t-1}\);
+2. normative docket / active rows;
+3. chosen authority/multiplier parameters;
+4. reactive trader/control law as a function of a candidate displayed price;
+5. ordinary TradingFirm demand;
+6. aggregate demand;
+7. MarketMaker fixed point \(P_t\);
+8. realized defect \(d_t\);
+9. realized enforcement position;
+10. later settlement / world assessment.
+
+Produce an explicit dependency graph.
+
+In particular answer:
+
+* Is \(\beta_{t,j}\) genuinely predictable from \(\mathcal F_{t-1}\)?
+* Is the **control** in LI better typed as a predictable map
+
+  $$
+  \kappa_t:P\mapsto E_t(P)
+  $$
+
+  rather than a realized position \(E_t(P_t)\)?
+* Exactly which variables are permitted to depend on the contemporaneous displayed price?
+* Does the current schematic Affordability definition incorrectly require the realized \(u_t\) to be \(\mathcal F_{t-1}\)-measurable?
+* If so, give the minimal corrected abstract type.
+
+A plausible generic type is:
+
+$$
+\kappa_t\in\mathsf{ControlLaw}_t,
+\qquad
+\kappa_t\text{ chosen from }\mathcal F_{t-1},
+$$
+
+followed by
+
+$$
+u_t=\kappa_t(x_t)
+$$
+
+after the engine produces its current state \(x_t\).
+
+Do not adopt this unless it matches the actual construction.
+
+---
+
+# 2. Which quantity really deserves to be called “service”?
+
+Stress-test the current identification
+
+$$
+\text{service}=w_t=\beta_t d_t.
+$$
+
+Consider at least these cases.
+
+### Perfect compliance
+
+A persistent reason receives substantial deliberate authority
+
+$$
+\beta_t>0
+$$
+
+at every round, but
+
+$$
+d_t=0.
+$$
+
+Then
+
+$$
+\beta_td_t=0.
+$$
+
+Should the theory say this reason received no service?
+
+If not, the current service interpretation is wrong.
+
+### Successful learning
+
+Suppose
+
+$$
+d_t\to0
+$$
+
+rapidly and
+
+$$
+\sum_t\beta_t=\infty
+$$
+
+but
+
+$$
+\sum_t\beta_td_t<\infty.
+$$
+
+The reason is continuously monitored/enforced and becomes nearly perfectly satisfied, but the current PR75 service mass is finite.
+
+Determine whether the existing Persistent Relevance / Answerability semantics would incorrectly classify this as starvation.
+
+### Large defect
+
+Compare two dates with equal allocated authority \(\beta_t\) but very different defects. Is it normatively correct for the high-defect date to count as having received more “service” merely because more corrective force was required?
+
+Try to distinguish formally between:
+
+* **service / authority / attention allocation**;
+* **corrective effort / force**;
+* **realized position/exposure**;
+* **funding**.
+
+The workspace has repeatedly warned that enforcement intensity is not funding. Preserve that distinction.
+
+At the end of this section give a verdict:
+
+$$
+\text{service}=\beta?
+$$
+
+$$
+\text{service}=\beta d?
+$$
+
+or some third quantity?
+
+Do not choose based on terminology; choose based on what the Sustainable Progress theorem actually needs.
+
+---
+
+# 3. Re-derive LI Progress using predictable service weights
+
+Suppose provisionally that
+
+$$
+a_t:=\beta_t
+$$
+
+is the service allocation and
+
+$$
+f_t=a_td_t
+$$
+
+is realized force.
+
+Re-express the existing force/account identity using \(a_t\), \(d_t\), and settlement misfit.
+
+In the simplest compatible-world / zero-friction case, projection force should yield useful work of the form
+
+$$
+a_td_t^2.
+$$
+
+Determine exactly what the MarketMaker cumulative cap gives.
+
+The target shape is:
+
+$$
+\sum_{t<N}a_td_t^2\le U
+$$
+
+or its correct row/world-valued variant.
+
+If
+
+$$
+A_N:=\sum_{t<N}a_t\to\infty,
+$$
+
+derive:
+
+$$
+\frac{\sum_{t<N}a_td_t^2}{A_N}\to0.
+$$
+
+Then determine whether this implies
+
+$$
+\boxed{
+\frac{\sum_{t<N}a_td_t}{A_N}\to0
+}
+$$
+
+by Cauchy–Schwarz / Jensen, and state the sharp bound.
+
+This would produce service-weighted Progress with respect to a genuinely predictable service measure
+
+$$
+\nu_N^a(t)=\frac{a_t}{A_N}.
+$$
+
+Compare this theorem carefully with PR75's current \(w=\beta d\) formulation.
+
+Identify exactly what is gained and lost:
+
+* linear versus quadratic force bound;
+* rates;
+* friction/misfit residual;
+* required boundedness assumptions;
+* service semantics;
+* causal scheduling freedom.
+
+Do not prefer the \(\beta\)-version merely because its semantics are nicer. Determine whether the mathematics is actually sufficient.
+
+---
+
+# 4. Carry the settlement-friction term through correctly
+
+Do not analyze only the compatible-world case.
+
+The current corrected realization has the signed account identity, schematically,
+
+$$
+V_N(\omega)
+=
+\sum_{t,j}
+\beta_{t,j}d_{t,j}
+\bigl(
+d_{t,j}-s_{t,j}(\omega)
+\bigr).
+$$
+
+Rewrite this as
+
+$$
+V_N(\omega)
+=
+\sum_{t,j}
+a_{t,j}
+\left(
+d_{t,j}^2-d_{t,j}s_{t,j}(\omega)
+\right).
+$$
+
+Use the MarketMaker upper cap and liability lower bound to determine the strongest service-\(a\)-weighted Progress statement.
+
+Questions:
+
+1. Can we show
+
+   $$
+   E_{\nu_N^a}[d^2]
+   $$
+
+   converges to a corresponding weighted friction term?
+
+2. Can this be converted into a useful statement about
+
+   $$
+   E_{\nu_N^a}[d]?
+   $$
+
+3. What exact condition on settlement misfit is sufficient for
+
+   $$
+   E_{\nu_N^a}[d]\to0?
+   $$
+
+4. Does one compatible live world still suffice?
+
+5. Can the Brier/Euclidean interpretation sharpen the bound?
+
+6. Does homothetic-core / covered-underwriting structure produce a clean residual theorem?
+
+Try to give the strongest quantitative inequality, not just an asymptotic slogan.
+
+---
+
+# 5. Plug this into Service Transport
+
+PR75's strongest schematic advance was Deferred Service Transfer.
+
+If the learner-side measure should be induced by \(a_t=\beta_t\), re-run the interface:
+
+$$
+\mu_N^r
+=
+\text{Answerability claim measure},
+$$
+
+$$
+\nu_N^r
+=
+\text{actual allocated-service measure based on }\beta_t^r.
+$$
+
+Then Service Transport should compare owed claims directly to **allocated service**, not to the endogenous corrective force \(\beta d\).
+
+Determine whether this produces a cleaner theorem:
+
+$$
+\text{Answerability claim stream}
+\overset{T}{\longrightarrow}
+\text{allocated authority stream}
+$$
+
+and independently
+
+$$
+\text{allocated authority}
++\text{MarketMaker}
++\text{Actionability}
+\longrightarrow
+\text{small defect}.
+$$
+
+If so, state the end-to-end theorem exactly, including transport error.
+
+For example, seek something of the form
+
+$$
+\boxed{
+\limsup_N E_{\mu_N^r}[d^r]
+\le
+\text{transport error}
++
+\text{settlement-friction residual}.
+}
+$$
+
+This may be the actual concrete Sustainable Progress theorem.
+
+Distinguish the two residuals:
+
+* **transport residual**: the reason changes between when service is owed and delivered;
+* **settlement friction**: the norm conflicts with what can still be true.
+
+These should not be conflated.
+
+---
+
+# 6. Does Answerability actually control \(\beta\)?
+
+This is crucial.
+
+Even if \(\beta\) is the right semantic service variable, determine whether the concrete LI construction permits a scheduler to choose it with the freedom the schematic Affordability theorem assumes.
+
+Inspect:
+
+* compiler semantics;
+* projection trader definition;
+* enforcement schedule;
+* calibration needed for finite-time conformance;
+* Budgeter / MarketMaker constraints;
+* any conditions determining \(\beta\) from the desired tolerance.
+
+Ask whether Answerability can meaningfully choose:
+
+$$
+\beta_{t,r}
+$$
+
+subject to a capacity/liability constraint, or whether \(\beta\) is effectively fixed by the enforcement theorem.
+
+There may be three different possibilities:
+
+1. **free scheduling:** \(\beta\) is an independent predictable control variable;
+2. **lower-bound scheduling:** Answerability may demand at least some \(\beta\), while the enforcement compiler chooses more;
+3. **derived scheduling:** \(\beta\) is fixed by desired conformance/tolerance, so service must instead be represented by another parameter.
+
+Determine which is actually true.
+
+If \(\beta\) cannot be freely scheduled, modify the schematic Affordability interface rather than pretending otherwise.
+
+---
+
+# 7. Reassess Actionability under the two-variable picture
+
+If allocated service is \(a\) and realized force is \(f=a d\), then Actionability may no longer naturally have the old linear form
+
+$$
+g_t\ge\gamma d_t.
+$$
+
+Instead the primitive local force theorem might be something like
+
+$$
+\operatorname{Work}_t
+\ge
+a_t d_t^2
+-
+\operatorname{Friction}_t.
+$$
+
+Investigate whether the schematic Actionability layer should permit a general coercivity function
+
+$$
+\boxed{
+\operatorname{Gain}_t
+\ge
+a_t\,\phi(d_t)-\operatorname{Friction}_t
+}
+$$
+
+with projection enforcement realizing
+
+$$
+\phi(d)=d^2.
+$$
+
+If so, characterize the minimal conditions on \(\phi\) under which vanishing average gain/work implies vanishing average defect.
+
+Possible conditions:
+
+* \(\phi(d)>0\) for every \(d>0\);
+* quantitative coercivity;
+* convexity;
+* lower bounds such as \(\phi(d)\ge c d^p\).
+
+This may be a better schematic Actionability theorem than forcing every realization into a linear \(g\ge\gamma d\) form.
+
+Do not generalize unless it simplifies the actual theorem stack.
+
+---
+
+# 8. Affordability under the corrected typing
+
+If the two-variable distinction survives, rewrite the affordability witness.
+
+A candidate:
+
+An affordability witness consists of a predictable sequence of **service allocations / reactive control laws**
+
+$$
+(a_t,\kappa_t)
+$$
+
+such that:
+
+1. Answerability/service transport requirements are satisfied by \(a_t\);
+2. the reactive engine produces realized controls
+
+   $$
+   u_t=\kappa_t(x_t);
+   $$
+3. the resulting settlement-contingent cumulative account lies in `SafeCert`;
+4. the resulting force satisfies the engine-side Progress theorem.
+
+The key point:
+
+$$
+\boxed{
+\text{Affordability chooses authority; the engine determines how much force that authority must actually exert.}
+}
+$$
+
+Determine whether this is right.
+
+If it is, rewrite the causal viability state accordingly. The backlog dynamics should consume \(a_t\), while the liability/account dynamics should consume the endogenous realized control \(u_t\).
+
+That would produce a viability problem with two coupled dynamics:
+
+$$
+b_{t+1}
+=
+\text{service backlog update}(a_t),
+$$
+
+$$
+A_{t+1}
+=
+\text{settlement account update}(u_t,\omega_t).
+$$
+
+This may be the cleanest mathematical form of normative affordability yet.
+
+---
+
+# 9. Reassess the existence theorem
+
+The current T7 schedules the same \(w_t\) that enters the account.
+
+If service is instead \(a_t\) and liability depends on the endogenous \(a_td_t\), T7's max-weight formulation may no longer have the right type.
+
+Determine:
+
+* whether T7 survives unchanged;
+* whether it survives after replacing the safe-control region by a set of service allocations whose induced reactive controls are safe;
+* whether the market's endogenous reduction of force as \(d\to0\) makes existence easier;
+* whether the appropriate capacity region is naturally defined in \(a\)-space.
+
+A particularly interesting possibility is:
+
+> A persistent reason can receive divergent service mass \(\sum a_t=\infty\) while consuming only finite total liability because the realized corrective force dies away as compliance improves.
+
+If true, this is precisely the behavior we want a normative learner to exhibit.
+
+Try to prove or exhibit it in the simplest traderized instance.
+
+---
+
+# 10. Decide what “end-to-end LI learner realization” now requires
+
+At the end, give a very explicit status report.
+
+Separate:
+
+### Already concrete
+
+For example:
+
+* settlement;
+* normative region compiler;
+* reactive projection control;
+* MarketMaker Uptake;
+* signed liability account;
+* bounded-liability preservation.
+
+### Now closed by this pass
+
+Ideally:
+
+* service allocation typing;
+* Answerability → LI service interface;
+* concrete service-weighted Progress.
+
+### Still missing
+
+Possibilities include:
+
+* transport stability construction;
+* generalized live-world transcription;
+* normative statics \(C_t\) versus \(K_t\);
+* existence of an affordable service schedule;
+* liability necessity;
+* cross-era transport;
+* non-capture.
+
+Do not call something missing merely because it is not yet Lean-formalized. Separate mathematical absence from verification debt.
+
+---
+
+# Deliverables
+
+Produce:
+
+1. `SERVICE_FORCE_TYPING.md`
+
+   * exact within-round dependency structure;
+   * verdict on \(\beta\) versus \(\beta d\);
+   * minimal corrected abstract types.
+
+2. `LI_PROGRESS_FROM_SERVICE.md`
+
+   * the strongest theorem deriving service-weighted Progress from predictable service allocation, including friction/misfit;
+   * exact proof or proof sketch;
+   * rational fixtures for edge cases.
+
+3. `END_TO_END_LEARNER.md`
+
+   * Answerability claim stream → service allocation → reactive LI force → MarketMaker Progress → Service Transport → claim-weighted Sustainable Progress;
+   * every hypothesis labeled by layer.
+
+4. Targeted corrections to PR75 if needed. Preserve the provenance rules and do not rewrite older consolidated artifacts merely for cosmetic consistency.
+
+5. New exact-rational tests for at least:
+
+   * persistent service with \(d_t=0\);
+   * \(\sum\beta_t=\infty\) but \(\sum\beta_td_t<\infty\);
+   * \(\sum\beta_td_t^2<\infty\) implying \(\beta\)-weighted defect convergence;
+   * settlement-friction residual;
+   * one compatible world versus liability at other live worlds.
+
+## Success criterion
+
+The pass succeeds if it can give a convincing answer to this question:
+
+> **What exact predictable object does Answerability control in a traderized Logical Inductor, and why does persistent service of that object imply Progress while bounded liability preserves the learner?**
+
+If the answer is “\(\beta\), with realized force \(\beta d\),” prove the resulting end-to-end chain.
+
+If that answer is false, identify the correct object and show precisely why the attractive \(\beta\)/\(\beta d\) distinction fails.
+
+The main objective is not another collection of sufficient conditions. It is to close—or sharply localize—the remaining type mismatch between the schematic affordability theorem and the concrete LI normative learner.

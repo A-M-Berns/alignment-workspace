@@ -109,6 +109,58 @@ commit.
 
 ## Settled
 
+### 2026-08-31 — service is allocated authority, not realized force
+
+**agent-decided, reversible.** The reason-indexed service variable is the
+enforcement multiplier — equivalently the promised tolerance — chosen from the
+record through the previous date. It is not the realized position magnitude, which
+an earlier pass in this round had proposed.
+
+Three failures decide it. The realized force is a function of the market maker's
+fixed-point price, so it is unavailable at the date the round's control must be
+chosen, and an affordability witness cannot be required to schedule it. It is zero
+exactly when the reason is perfectly satisfied, so its normalized measure does not
+exist on the trajectories the theory most wants to call well served. And it counts
+a date as better served because the reasoner did worse on it: equal allocated
+authority against violations of one tenth and nine tenths splits the force measure
+nine to one. A reason monitored forever at constant authority against a
+geometrically vanishing violation has divergent allocated service and summable
+realized force, so the realized reading classifies successful learning as
+starvation.
+
+The control is correspondingly a predictable *law* from states to positions rather
+than a predictable position; in the traderized case the law must be continuous,
+which is what the fixed point's Brouwer step consumes. The affordability witness is
+retyped to `(a_t, kappa_t)` accordingly, with the realized control `u_t =
+kappa_t(x_t)`.
+
+Two things fall out. The per-date enforcement modulus already bounds the
+allocated-service-weighted squared violation, so service-weighted Progress is a
+consequence of the market maker's contract with an explicit rate rather than an
+assumed premise. And the liability charge grows like the square root of allocated
+authority, which is why a reason can receive divergent service on a finite lifetime
+budget: the market's own response reduces the force as compliance improves.
+
+*Rejected alternative:* keeping the realized position magnitude as the service
+variable, which reads the schematic's scheduling freedom into a quantity no
+scheduler can set.
+
+### 2026-08-31 — Actionability is a convex coercivity modulus
+
+**agent-decided, reversible.** The schematic Actionability premise becomes
+`Gain >= a phi(d) - Friction` for a convex `phi` with `phi(0) = 0`, strictly
+increasing on the defect's range. Vanishing average work then gives vanishing
+average defect by Jensen and inversion, at rate `phi^{-1}`.
+
+This simplifies rather than generalizes: the old linear form is `phi(d) = gamma d`
+and projection enforcement is `phi(d) = d^2`, so one theorem covers both and the
+rate and residual read off `phi` instead of being separate hypotheses. Forcing the
+projection realization into a linear form would have required assuming an
+inequality the enforcement mathematics does not supply.
+
+*Rejected alternative:* keeping `g >= gamma d` as the schematic form and treating
+the quadratic realization as a special case needing its own theorem.
+
 ### 2026-08-31 — Progress is staged, not redefined
 
 **agent-decided, reversible.** The question of whether Progress should be
