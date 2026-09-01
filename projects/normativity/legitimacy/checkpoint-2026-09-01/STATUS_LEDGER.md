@@ -26,6 +26,12 @@ that describe how a result was obtained:
 Most Layer I rows are **paper-derived + test-supported**. That pairing is the
 program's normal state and its natural fate is a Lean port.
 
+**Two axes, not one.** This table reports *evidence*. `ROADMAP.md` reports *research
+sequencing*, where Layer I is **closed for research sequencing** — settled enough to
+build on unless a contradiction appears. A row can be closed in that sense and
+`paper-derived` here at the same time, and most are. Neither reading licenses the
+other, and where prose blurs them this table governs.
+
 ---
 
 ## Layer I — fixed-era normative dynamics
@@ -44,12 +50,12 @@ program's normal state and its natural fate is a Lean port.
 | 10 | **Local capacity ≠ lifetime SafeCert** | **paper-derived**, with counterexample | `…/CAPACITY_VS_SAFETY.md` |
 | 11 | **Signed vs conservative account: unbounded separation** | **paper-derived** + **test-supported** | `…/SIGNED_VS_CONSERVATIVE.md` |
 | 12 | **Service-weighted Progress (F2)** at rate `A_N^{-1/2}` | **paper-derived** | `…/FIXED_ERA_THEOREM.md` §2; `…/LI_PROGRESS_FROM_SERVICE.md` |
-| 13 | **Service Transfer T1/T2** — contiguity exactly N&S for triangular arrays | **paper-derived** + **test-supported**. *Prior-art caution:* essentially Le Cam's contiguity equivalence in a new application — see `../../notes/PRIOR_ART.md` §6 | `…/SERVICE_TRANSFER.md` §1 |
+| 13 | **Service Transfer T1/T2** — contiguity exactly N&S for triangular arrays | **paper-derived** + **test-supported**. *Prior art:* the **definition** of contiguity is Le Cam's and is inherited; the proof invokes no lemma. T1's sufficiency is the standard consequence and must not be claimed as new; any novelty is confined to T2 and the fixed-set separation, both **literature review needed**. `../../notes/PRIOR_ART.md` §6.1 | `…/SERVICE_TRANSFER.md` §1 |
 | 14 | **Fixed-set contiguity strictly weaker** (one-step-delay separation) | **paper-derived** + **witnessed** | `…/SERVICE_TRANSFER.md` §2 |
 | 15 | **Deferred Service Transfer (T3)**, claim-normalized error | **paper-derived** | `…/SERVICE_TRANSFER.md` §4 |
 | 16 | **Surface Fairness does not give claim-weighted Progress** | **paper-derived** + **witnessed** | `…/SERVICE_TRANSFER.md` §3 |
-| 17 | **Bounded-delay feasibility (BD1), interval condition** | **paper-derived** + **test-supported**. *Prior-art caution:* a Gale–Hoffman / Horn-1974 specialization; likely a rediscovery | `…/BOUNDED_DELAY_TRANSPORT.md` |
-| 18 | **FIFO optimal and complete (BD2)** | **paper-derived**. *Prior-art caution:* classical | `…/BOUNDED_DELAY_TRANSPORT.md` §3 |
+| 17 | **Bounded-delay feasibility (BD1), interval condition** | **paper-derived** + **test-supported**, but **not self-contained**: the sufficiency proof *invokes* the Gale–Hoffman feasibility condition, so that theorem is a **direct dependency**, and the statement is very probably a rediscovery of Horn (1974). Necessity is self-contained. `../../notes/PRIOR_ART.md` §6.2 | `…/BOUNDED_DELAY_TRANSPORT.md` |
+| 18 | **FIFO optimal and complete (BD2)** | **paper-derived**, self-contained — a four-line exchange argument invoking nothing. *Prior art:* classical in substance (Jackson 1955), adjacent not inherited | `…/BOUNDED_DELAY_TRANSPORT.md` §3 |
 | 19 | **Exogenous persistence criterion (S1)** `liminf L_t(1) = 0` | **paper-derived** + **test-supported** | `…/SHARP_PERSISTENCE.md` |
 | 20 | **Two routes to a cheap date (S3)**; depth-only needs an engine-scale floor | **paper-derived** + **test-supported** | `…/SHARP_PERSISTENCE.md` §3 |
 | 21 | **Finite-horizon optimum (S2)** = `max_t L_t^{-1}(B)` | **paper-derived** | `…/SHARP_PERSISTENCE.md` §4 |
@@ -61,7 +67,7 @@ program's normal state and its natural fate is a Lean port.
 | 27 | **Deadline insolvency certificate (DI1)** | **paper-derived** + **test-supported** | `…/DEADLINE_INSOLVENCY.md` |
 | 28 | **Online persistence has no penalty; no competitive ratio for authority** | **paper-derived** + **witnessed** | `…/ONLINE_EXISTENCE.md`, `…/ONLINE_SERVICEABILITY.md` |
 | 29 | **Joint frontier convex under fractional splitting** | **paper-derived** | `…/JOINT_SERVICEABILITY.md` JS2 |
-| 30 | **Finite-horizon overload certificate**, sound, no converse | **paper-derived**; converse **open** | `…/EXISTENCE_AND_DUALITY.md` §4; `PRIORITIES.md` item 74 |
+| 30 | **Finite-horizon overload certificate**, sound, no converse | **paper-derived**, soundness self-contained; the exactness-under-Slater remark uses LP duality. Converse **open** | `…/EXISTENCE_AND_DUALITY.md` §4; `PRIORITIES.md` item 74 |
 | 31 | **Temporal-modulus certification (hypothesis T)** | **open** — no mechanism | `…/SHARP_TIMELY_SERVICE.md` §6; `PRIORITIES.md` item 76 |
 | 32 | **Closed-loop affordability (E4/E5)** | **open** | `…/CLOSED_LOOP_EXISTENCE.md`; `PRIORITIES.md` item 75 |
 | 33 | **Signed-account viability / sufficient state** | **open** — the scalar slack is provably insufficient | `…/SIGNED_VS_CONSERVATIVE.md` |
@@ -129,7 +135,14 @@ program's normal state and its natural fate is a Lean port.
    kernel-checked: the compiler's legality, the per-date modulus, and the
    trading-firm dominance lift. Nothing about Progress, transport, affordability,
    or timeliness is in Lean.
-3. **"Layer II is open."** Its *structural* half is as well developed as Layer I —
-   conservation, replay, prospective revision, the service dichotomy. What is open
-   is the *semantic* half: what content survives, and what makes a later answer
-   count as an answer to an earlier claim.
+3. **"Layer II is open"**, or equally **"Layer II's structure is done."** Both
+   mislead. *Structural core consolidated* means there is a coherent paper-derived
+   calculus with tested fixtures and identified interfaces — replay, prospective
+   revision, conservation, the service dichotomy. It does **not** mean every
+   structural question is solved: **authorized disposition is a structural gap, not
+   merely a semantic one.** The conservation law has a `Disposed` term whose licence
+   is uncharacterized, so the calculus is not complete as an account of how content
+   leaves the ledger, and the affordability theory downstream inherits a hypothesis
+   (`sum_t c^r_t = infinity`) that disposition would change. The defensible phrase
+   is **structural core consolidated; semantic transport and authorized disposition
+   both open and both load-bearing.**

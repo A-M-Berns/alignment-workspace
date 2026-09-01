@@ -40,6 +40,18 @@ the change happened.
 | **SS1 holds with no hypothesis on the live sets** | **needs nested assessment `A_N ⊆ A_t`** | `…/SHARP_SERVICEABILITY.md` SS1 | The charge is scored against `A_t`, the residual against `A_N`; a world admitted after `t` was never bounded by `D^r_t` |
 | **The square-root branch fails "only when `m_t` is not summable"** | **`(1/A_N) sum (l_t + m_t)^2/m_t -> 0`** | `…/SHARP_SERVICEABILITY.md` §3 | Summability is neither necessary nor sufficient |
 
+## 1a. Supersessions made by this checkpoint itself
+
+Two, both from the September cleanup, and both about how the checkpoint describes
+things rather than about the mathematics.
+
+| superseded | current | where | why |
+|---|---|---|---|
+| **Gale–Hoffman / Horn as *adjacent* prior art to BD1**, with "we take nothing formally" | **A direct mathematical dependency** | `../../notes/PRIOR_ART.md` §6.2 | BD1's sufficiency proof invokes the Gale–Hoffman feasibility condition by name. A document cannot claim independence from a theorem its proof cites. Independent rediscovery is a fact about process and never settles dependency |
+| **Affordability as a conjunct of the candidate legitimacy decomposition** | **A realizability side condition** | `LEGITIMACY_DECOMPOSITION.md` §3 | As a conjunct it invites the reading that a cheaper norm is more legitimate, which the round's own slogan — *cheap enforcement is not always conforming enforcement* — forbids. Affordability contributes feasibility, never normativity |
+
+Neither changes a theorem. Both change what the checkpoint is entitled to say.
+
 ## 2. Terminology
 
 | retired | canonical | note |

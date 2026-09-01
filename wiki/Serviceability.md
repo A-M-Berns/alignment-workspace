@@ -4,6 +4,12 @@
 rational fixtures, from a research round that is merged but registers no claim.
 They are current research, not Established.
 
+The program treats this layer as **closed for research sequencing** — settled enough
+to build on unless a contradiction appears. That is a statement about where effort
+should go, **not** an evidence class: almost none of it is formally verified, and the
+repository's status ledger is what governs any claim about how strongly a particular
+result is established.
+
 A reason that has been raised and not answered is owed something. Serviceability
 asks the boring, indispensable question underneath that: *can the owing actually
 be discharged?* Not whether the reason is correct, and not whether the answer is
@@ -48,9 +54,14 @@ cannot yet supply for itself. See *What is still missing*.
 There is an exact characterization of when transport with a fixed deadline is
 possible at all — for every window, the claim arriving in it must fit inside the
 authority available over that window extended by the deadline — and serving the
-oldest outstanding claim first turns out to be optimal. Both have strong classical
-antecedents in scheduling theory, and the repository's versions are very probably
-rediscoveries; the [prior-art ledger](Prior-Art) says so.
+oldest outstanding claim first turns out to be optimal.
+
+Neither is new. The feasibility criterion is a specialization of a classical
+network-flow theorem, and the repository's proof **cites** that theorem rather than
+proving it; the serve-oldest-first argument is the classical exchange argument,
+independently written out here. The [prior-art ledger](Prior-Art) records which is
+which, because the distinction between *using* a result and *resembling* one is
+exactly what such a ledger is for.
 
 ## Three different questions that look like one
 

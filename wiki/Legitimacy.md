@@ -19,13 +19,16 @@ division is the most useful single thing to hold onto.
 
 | layer | question | where it stands |
 |---|---|---|
-| **I — fixed-era dynamics** | Within one settled semantics and one evaluator: can standing normative claims receive safe, affordable, timely, progress-producing service? | **largely consolidated** |
-| **II — diachronic legitimacy** | Which reasons survive a self-revision; what makes a successor answerable to a predecessor; how content transports across representational change | **structure done, semantics open** |
+| **I — fixed-era dynamics** | Within one settled semantics and one evaluator: can standing normative claims receive safe, affordable, timely, progress-producing service? | **closed for research sequencing** |
+| **II — diachronic legitimacy** | Which reasons survive a self-revision; what makes a successor answerable to a predecessor; how content transports across representational change | **structural core consolidated; semantic transport and authorized disposition still open** |
 | **III — counterfactual non-capture** | Whether the process producing later reasons has itself been manipulated or foreclosed | **open** |
 | **IV — the deference consumer** | What a legitimacy theorem must hand [Deference](Deference) | **downstream** |
 
-Layer I is now closed and its boundary is worth stating bluntly, because the
-mathematics there is strong enough to be mistaken for more than it is. It says
+Layer I is **closed for research sequencing** — settled enough to build on unless a
+contradiction appears, which is a claim about where effort should go and *not* a
+claim that it is formally verified; most of it is not. Its boundary is worth stating
+bluntly, because the mathematics there is strong enough to be mistaken for more than
+it is. It says
 nothing about which reasons survive a revision, when one reason may defeat
 another, how a reason's content transports across a change of representation, what
 makes a successor answerable to a predecessor, whether the process generating the
@@ -38,15 +41,17 @@ Answerability](Diachronic-Answerability).
 
 ## A candidate decomposition, under test
 
-    Legitimacy  =  Diachronic Answerability
-                +  Affordability / serviceability
-                +  Counterfactual non-capture
+    Legitimacy  =?  Diachronic Answerability
+                 +  Affordability / serviceability
+                 +  Counterfactual non-capture
 
 with reasons-responsiveness, Actionability and Progress as *mechanisms inside*
 those pillars rather than pillars of their own.
 
-The checkpoint assesses this as **the best framing currently available and not yet
-canonical**, with two amendments. The first pillar must be read as including its
+The checkpoint assesses this as **a research framing: the best currently available,
+and not part of the current theory**. No legitimacy predicate exists anywhere in the
+repository, the three terms have not been shown independent, and joint sufficiency is
+unproved. Two amendments come with it. The first pillar must be read as including its
 semantic-authentication obligation, not just its structural calculus — otherwise
 semantic transport belongs to no pillar at all. And affordability is better read as
 a *realizability side condition* than as a conjunct: as a conjunct it invites the
@@ -177,7 +182,16 @@ is in the capability lattice above it.
 into a region a market can be made to respect — that is `PRIORITIES.md` item 39 —
 and nothing here generates a burden, which is item 55.
 
-## Current status
+## Status of the normative-record / inquiry subarchitecture
+
+**Scope note.** Everything in this section concerns the record-and-inquiry subline
+described above — the bridge fixtures, the reason-state interface, the
+record-internal kernel. It is **not** a statement about the program as a whole, and
+it does not override the four-layer map at the top of this page. In particular, the
+fixed-era force/serviceability composition described under
+[Serviceability](Serviceability) is *closed for research sequencing*, and the
+paragraphs below do not contradict that: they are about a different object, and they
+were written before that composition existed.
 
 > **Open / unregistered research.** The bridge fixtures provide finite evidence
 > for relational scorekeeping and write separation. Later prosecutions support
@@ -189,13 +203,28 @@ and nothing here generates a burden, which is item 55.
 > **Living note.** The reason-state interface is frozen with a stated reopening
 > condition: a concrete microhistory whose reason-dependency structure cannot be
 > expressed through contents, occurrences, record facts or derived queries — the
-> artifact, not an intuition. Nothing above it is closed; the line's components
-> are open or living notes, and a component becomes closed when a Lean
+> artifact, not an intuition. Nothing above it *in this subline* is closed; the
+> subline's components are open or living notes, and one becomes closed when a Lean
 > declaration or a checker invocation stands for it.
 
-There is no end-to-end composition. The normative-record-to-operative compiler
-remains open, as do general service under bounded resources and the composition
-of actual-run answerability with counterfactual non-capture.
+**Within this subline** there is no end-to-end composition: the
+normative-record-to-operative compiler remains open, as does the composition of
+actual-run answerability with counterfactual non-capture.
+
+**Two of these have moved, and the difference is worth stating precisely.**
+*General service under bounded resources* is no longer open — that is exactly what
+the fixed-era serviceability layer answers, and answers exactly. And a fixed-era
+end-to-end composition, from a claim stream to claim-weighted Progress and to
+substrate preservation, now exists. What remains open here is narrower and still
+real: compiling a *normative record* into the region that composition consumes, and
+joining any of it to non-capture.
+
+**Note the two senses of "closed" on this page.** This subline reserves the word for
+a Lean declaration or a checker invocation — an evidence standard. The four-layer
+map above uses *closed for research sequencing*, which means the question is
+answered well enough to build on unless a contradiction appears, and which says
+nothing about formal verification. Layer I is closed in the second sense and mostly
+not in the first.
 
 ## Evidence and verification
 

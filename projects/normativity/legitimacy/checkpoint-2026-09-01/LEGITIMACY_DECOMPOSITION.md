@@ -1,10 +1,15 @@
 # Testing the candidate legitimacy decomposition
 
+> **This document assesses a research framing. It is not part of the current
+> theory.** No legitimacy predicate exists in this repository, the terms below have
+> not been shown independent, and joint sufficiency is unproved. The `=` in the
+> display is the *proposal's* notation, not an established identity.
+
 The decomposition put to this checkpoint:
 
-    Legitimacy  =  Diachronic Answerability
-                +  Affordability / serviceability
-                +  Counterfactual non-capture
+    Legitimacy  =?  Diachronic Answerability
+                 +  Affordability / serviceability
+                 +  Counterfactual non-capture
 
 with reasons-responsiveness, Actionability and Progress as *mechanisms or
 consequences within* those pillars rather than separate pillars.
@@ -90,10 +95,10 @@ Answerability exports, and those are Answerability's content.
 
 So the honest reading is:
 
-    Legitimacy  =  Diachronic Answerability (structure + semantics)
-                +  Counterfactual non-capture
-                   subject to
-                   Affordability, as the realizability side condition
+    Legitimacy  =?  Diachronic Answerability (structure + semantics)
+                 +  Counterfactual non-capture
+                    subject to
+                    Affordability, as the realizability side condition
 
 which is the same three terms with the third demoted from conjunct to constraint.
 This is not a quibble: as a conjunct, "affordable" invites the reading that a
@@ -111,7 +116,7 @@ forbid.
 | **the action theory** | Supports the demotion of Progress. F1 makes it a consequence of coercivity plus attention, with no independent normative content of its own. |
 | **the Progress consolidation** | Supports it with one caveat: Progress's `(SF)`-style eligibility conditions are *scheduler* conditions, so part of what looks like Progress is really Answerability's admissible-trace export in disguise. That is an argument for the decomposition, not against it. |
 | **the affordability round** | Supports the side-condition reading. Every one of its theorems has the form "such a schedule exists / costs this much", and none has the form "this schedule is the right one". |
-| **the corrigibility consumer** | Supports pillars 1 and 3 directly; is nearly indifferent to pillar 3's *mathematics* and highly sensitive to its *existence*. |
+| **the corrigibility consumer** | Supports pillars 1 and 3 directly. It is nearly indifferent to *which* mathematics pillar 3 turns out to have, and highly sensitive to whether it has any: a legitimacy claim with no non-capture term is one a manipulated process can satisfy. |
 
 ---
 

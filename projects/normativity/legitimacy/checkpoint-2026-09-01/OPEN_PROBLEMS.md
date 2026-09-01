@@ -67,7 +67,14 @@ revision whose grounds trace back to `R_0`.
 **Evidence.** Finite fixtures exhibiting a legitimate disposition and a laundering
 attempt the licence rejects.
 
-**Not yet filed.** Should be, and probably as two items.
+**Filed as `PRIORITIES.md` item 77**, which asks what licenses `MayDispose` and what
+the answer does to the claim stream the affordability theory consumes.
+
+**Cross-era Answerability may still need its own item.** Item 77 covers the licence;
+it does not cover what makes a later service *count as* answering an earlier claim
+when the two are stated in different vocabularies. Whether that separates into a
+second item depends on whether the licence theory turns out to carry it, which is
+not yet known.
 
 ---
 

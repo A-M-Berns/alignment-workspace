@@ -86,12 +86,44 @@ branch. Between the first draft of this checkpoint and its repair, the repositor
 asserted something false about its own contents, and the only reason it was caught is
 that a citation happened to point at one of the missing trees.
 
+## The September cleanup pass
+
+A second dispatch on the same branch, after the answerability stack landed. It added
+no theory and opened no research question. What it changed:
+
+- **One prior-art reclassification, on evidence.** Gale–Hoffman / Horn moved from
+  *adjacent prior art* to **direct mathematical dependency**, because
+  `BOUNDED_DELAY_TRANSPORT.md`'s sufficiency proof invokes the feasibility condition
+  by name. The previous entry said "we take nothing formally" while the proof took
+  something formally. Every other §6 entry was re-checked against its proof by the
+  same test — *would the canonical proof stand if this theorem vanished?* — and the
+  rest held, with Farkas split into a self-contained soundness theorem and an
+  LP-duality-dependent exactness remark.
+- **Four citation repairs.** Pollock and Williams were pinned to exact works and
+  verified. Pettit was demoted to *exact source not yet pinned*. The
+  "Łukasiewicz" attribution for the linear-programming characterisation of
+  probabilistic entailment was demoted: the result is real and used, the attribution
+  was doubtful in two directions, and the standard anchors (Hailperin 1965, Nilsson
+  1986) are recorded as **not confirmed read** rather than substituted in. No entry
+  was completed by guessing a plausible work.
+- **One terminology split**, applied throughout: *closed for research sequencing*
+  now names the sequencing judgment and never the evidence, which is
+  `STATUS_LEDGER.md`'s business.
+- **Scope repairs** to `wiki/Legitimacy.md`, whose inherited record-and-inquiry
+  status paragraphs read as global claims and contradicted the four-layer map.
+- **One strength correction**: the EV1 / Proposition 8.17 comparison is labelled an
+  interpretive analogue rather than a reduction, since no map between the systems
+  was constructed.
+
 ## Web use
 
-Four bibliographic verifications, for `../../notes/PRIOR_ART.md` §6: the
-Gale–Hoffman feasibility condition; Le Cam's contiguity definition and its date;
-Horn's 1974 preemptive-feasibility conditions; and Jackson's 1955 earliest-due-date
-rule. Each is cited for a bibliographic fact and for the substance of a classical
+Seven bibliographic verifications, for `../../notes/PRIOR_ART.md`: the Gale–Hoffman
+feasibility condition; Le Cam's contiguity definition and its date; Horn's 1974
+preemptive-feasibility conditions; Jackson's 1955 earliest-due-date rule; Pollock's
+1987 *Cognitive Science* paper on defeasible reasoning; Williams' 1975 conditional-
+previsions report and its 2007 printing; and Nilsson's 1986 *Probabilistic Logic*
+together with the Hailperin attribution behind the linear-programming
+characterisation. Each is cited for a bibliographic fact and for the substance of a classical
 statement, and each is used to record that a repository result is **probably a
 rediscovery** rather than to import a theorem. No mathematical content was taken
 from a web source.

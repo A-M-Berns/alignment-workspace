@@ -16,7 +16,7 @@ rounds in date order.
 | what remains open, sharply scoped | **`OPEN_PROBLEMS.md`** |
 | where the program should go next, and what to stop doing | **`ROADMAP.md`** |
 | how the conceptual answerability theory meets the service mathematics | **`ANSWERABILITY_AND_SERVICE.md`** |
-| whether `Legitimacy = Answerability + Affordability + Non-capture` | **`LEGITIMACY_DECOMPOSITION.md`** |
+| whether `Legitimacy = Answerability + Affordability + Non-capture` — assessed as a **research framing**, not adopted | **`LEGITIMACY_DECOMPOSITION.md`** |
 | the movement from the August checkpoint and the answerability note | **`AUGUST_TO_SEPTEMBER.md`** |
 | what might be paper-sized, and where novelty is unverified | **`PAPER_CANDIDATES.md`** |
 | the sixteen questions a fresh agent should be able to answer | **`FINAL_AUDIT.md`** |
@@ -40,13 +40,21 @@ editing the documents that made them.
 
 The program divides into four layers, and the division is load-bearing:
 
-    I    fixed-era normative dynamics        largely consolidated
-    II   diachronic legitimacy across revision   structure done, semantics open
-    III  counterfactual non-capture          open
-    IV   corrigibility / deference consumer  downstream
+    I    fixed-era normative dynamics        closed for research sequencing
+    II   diachronic legitimacy across revision   structural core consolidated;
+                                                 semantic transport and authorized
+                                                 disposition open and load-bearing
+    III  counterfactual non-capture              open
+    IV   corrigibility / deference consumer      downstream
 
-The affordability round closed **Layer I**. It answers *when can standing
-normative claims receive safe, affordable, timely, progress-producing service?*
+**"Closed for research sequencing"** means the question is answered well enough to
+build on unless a contradiction appears. **It is not an evidence class** — almost all
+of Layer I is paper-derived and test-supported, not formally verified, and
+`STATUS_LEDGER.md` governs any claim about how strongly something is established.
+
+The affordability round is what closed **Layer I** in that sense. It answers *when
+can standing normative claims receive safe, affordable, timely, progress-producing
+service?*
 It does **not** answer which reasons survive a self-revision, when one reason may
 defeat another, how content transports across representational change, what makes a
 successor answerable to a predecessor, how to prevent manipulation of the

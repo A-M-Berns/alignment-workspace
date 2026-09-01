@@ -102,9 +102,19 @@ a diagonal on geometric tranches `B 2^{-(t+1)}` — structurally the *same*
 construction as Proposition 8.17's summable weights, with the tranches now paying
 for cost rather than dividing a share.
 
-> **EV1 is the liability-priced version of Proposition 8.17.** Non-starvation
-> survives the move from a renewable share to a consumable stock, at the exact price
-> `liminf L_t(1) = 0` and no more.
+> **EV1 is the closest liability-priced analogue of Proposition 8.17.**
+> Non-starvation survives the move from a renewable share to a consumable stock, at
+> the price `liminf L_t(1) = 0` and no more.
+
+**This is an interpretive comparison, not a reduction.** No map between the two
+systems has been constructed and none is claimed. They differ in at least three
+ways: a renewable per-stage share against a lifetime consumable budget; service
+opportunities given by the reachable-work structure against exogenous date costs;
+and discharge semantics — the note's matter is *attended to*, EV1's claim mass is
+*transported and discharged*. What is shared is the construction's shape, a
+summable family of shrinking allowances indexed one per case, and the observation
+that this shape survives being priced. A formal reduction, if one exists, would be
+a result and is not one this checkpoint has.
 
 So the note's service theorems are not invalidated by liability. What liability
 adds is a **criterion**: there are norms for which no schedule discharges the
@@ -207,6 +217,8 @@ This is not a cosmetic difference.
 > **The single most valuable Layer II result would be a theory of authorized
 > disposition** — because it simultaneously supplies defeat, closes the laundering
 > channel, and repairs the affordability question's hypothesis.
+
+Filed as `PRIORITIES.md` **item 77**.
 
 ---
 

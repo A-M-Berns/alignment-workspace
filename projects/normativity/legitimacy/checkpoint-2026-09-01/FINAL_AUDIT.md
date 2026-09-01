@@ -23,11 +23,17 @@ rate. It sits *beside* service allocation, not after it — the scheduler cannot
 choose `phi`. → `CURRENT_THEORY.md` §3.3, §4.
 
 **3. What is Progress?**
-Two different statements. *Service-weighted*: `E_{nu^a_N}[d] -> 0`, what the
-learner delivers, at rate `A_N^{-1/2}`. *Claim-weighted*: `E_{mu_N}[d] -> 0`, what
-Answerability asks for. The second does not follow from the first without a
-transport hypothesis. Which one Progress settles on is **reserved to the
-maintainer**. → `CURRENT_THEORY.md` §3.6.
+A two-stage structure, and the staging is canonical even though the bare name is not:
+
+    service-weighted Progress  --Service Transport-->  claim-weighted Progress
+
+*Service-weighted*, `E_{nu^a_N}[d] -> 0` at rate `A_N^{-1/2}`, is the learner-side
+mechanism theorem — what the machinery delivers. *Claim-weighted*,
+`E_{mu_N}[d] -> 0`, is the Answerability-facing endpoint — what was actually owed.
+The second does not follow from the first without a transport hypothesis, and a
+document using "Progress" bare is underspecified. **Which of the two the bare name
+should denote is reserved to the maintainer**; that reservation is about the name
+only. → `CURRENT_THEORY.md` §3.6.
 
 **4. What is service?**
 **Allocated authority** `a = beta`, the enforcement multiplier fixed before the
@@ -95,21 +101,30 @@ the realizability side condition. No legitimacy theorem exists yet, so the
 interface is a plan, not a result. → `ROADMAP.md` stage 6, `wiki/Deference.md`.
 
 **13. Which prior art is actually being used?**
-As **formal substrate**: Logical Induction; imprecise-probability coherence
-(Walley, Levi, Williams) for the credal state; convex projection and Farkas
-duality. As **conceptual dependency**: Brandom's scorekeeping, Pettit's
-two-place responsibility, Horty and the TMS line for reason representation.
-As **verification target**: Carroll et al. on influenceable reward, and `Demski`'s
-learning-normativity agenda. → `../../notes/PRIOR_ART.md`.
+The test is whether the canonical proof would still stand if the source vanished.
+**Direct mathematical dependency:** Gale–Hoffman / Horn, invoked by name in BD1's
+sufficiency proof. **Formal substrate:** Logical Induction; imprecise-probability
+coherence (Walley, Levi, Williams) for the credal state; convex projection, whose
+variational inequality the enforcement compiler uses; and linear-programming duality,
+for the exactness-under-Slater remark beside the overload certificate. **Conceptual
+dependency:** Brandom's scorekeeping, Horty and the TMS line for reason
+representation, and Pettit — whose exact source is *not pinned*. **Verification
+target:** Carroll et al. on influenceable reward, and `Demski`'s learning-normativity
+agenda. → `../../notes/PRIOR_ART.md`.
 
 **14. Which apparent prior art is merely adjacent?**
-Contiguity (Le Cam) — same definition, different setting, and the transfer theorem
-is in substance a standard consequence. Gale–Hoffman and Horn-1974 — BD1 is
-very probably a rediscovery. Jackson/EDD — BD2 likewise. Submodular and
-covering-with-delay optimization — analogues, not inputs. Online competitive
-analysis — vocabulary, not import. **Three of these are places the repository
-probably rediscovered known mathematics, and the round documents should be read
-with that in mind.** → `../../notes/PRIOR_ART.md` §6.
+Contiguity (Le Cam) — the *definition* is inherited, but T1 argues from it directly
+via Markov and invokes no lemma. Jackson/EDD — BD2 is a four-line exchange argument
+invoking nothing. The Farkas *soundness* theorem, which is self-contained even though
+the certificate has that shape. Online competitive analysis — vocabulary only.
+Submodular and covering-with-delay optimization — analogues, never inputs.
+
+**The two lists moved during the September cleanup.** Gale–Hoffman was previously
+listed as adjacent while the proof invoked it; that was wrong and is corrected.
+Independent rediscovery is a fact about our process and never settles dependency —
+the proof does. Nine places are marked **literature review needed**, and no novelty
+claim should be made outside this repository until they are closed.
+→ `../../notes/PRIOR_ART.md` §6.
 
 **15. What are the next three research problems?**
 (i) **Certifying semantic transport** — where do the (T) constants come from? The
@@ -137,7 +152,12 @@ answered by documents in this directory plus the prior-art note. Questions 10–
 are answered as *statements of what is missing*, which is the honest form.
 
 **Where the audit is weakest.** Question 12 has no theorem behind it, only a plan.
-Question 3 has a reserved decision inside it, so the answer is "two forms, and the
-choice is the maintainer's" rather than a single statement — that is correct but it
-is the one place a reader could still be left uncertain about what the program
-holds.
+Question 3 carries a reserved decision, but the reservation is now confined to the
+*name*: the two-stage structure is stated canonically, so a reader knows what the
+program holds even without knowing what it will eventually be called.
+
+**One thing the audit cannot check.** Every "yes" above is about internal
+consistency — that the canonical documents agree with each other and with the
+sources. It is not a check that they are *right*. The repository default is
+`ci-only`: no maintainer has vouched for this content, and a fresh agent should
+treat a coherent story as a coherent story rather than as a reviewed one.

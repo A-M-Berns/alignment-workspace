@@ -26,10 +26,11 @@ timeliness*, and *cheap enforcement is not conforming enforcement*.
 Actionability (for the coercivity modulus); Service Transport.
 
 **Novelty confidence: moderate, and lower than it first appears.** The
-*composition* looks new. Several components have classical antecedents that the
-round derived independently: BD1 is a Gale–Hoffman / Horn-1974 specialization, BD2
-is an exchange argument in the Jackson/EDD family, and T1's transfer direction is
-in substance Le Cam contiguity. See `../../notes/PRIOR_ART.md` §6.
+*composition* looks new. Several components have classical antecedents: **BD1 does
+not merely resemble Gale–Hoffman, it cites it**, so a paper must present that step
+as inherited; BD2 is an exchange argument in the Jackson/EDD family, written out
+independently; and T1's sufficiency is the standard consequence of a definition
+inherited from Le Cam. See `../../notes/PRIOR_ART.md` §6.
 
 **Prior-art check not done.** Whether D4's *cost* form (sliding-window minimum
 against a date-varying concave charge) is classical. Whether the star-shaped vertex
@@ -38,7 +39,10 @@ resource, qualitative property survives" phenomenon is named.
 
 **Still needed.** A construction for hypothesis (T). Simultaneous (S) and (L). At
 least the headline in Lean. And the paper would have to be honest that its
-scheduling half is a rediscovery with a new application, not new mathematics.
+scheduling half is a rediscovery with a new application, not new mathematics — and,
+for BD1, an *inherited* theorem rather than a rediscovered one, unless the
+self-contained busy-period proof sketched in the prior-art ledger is written out
+first.
 
 ---
 

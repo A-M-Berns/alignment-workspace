@@ -30,10 +30,17 @@ in this document.
 
 | layer | question | state |
 |---|---|---|
-| **I — fixed-era normative dynamics** | Within one settled semantics, one evaluator, no ontology revision: when can standing normative claims receive safe, affordable, timely, progress-producing service? | **largely consolidated** |
-| **II — diachronic legitimacy across revision** | Which reasons survive a self-revision, what makes a successor answerable to a predecessor, how content transports across representational change | **structurally consolidated, semantically open** |
+| **I — fixed-era normative dynamics** | Within one settled semantics, one evaluator, no ontology revision: when can standing normative claims receive safe, affordable, timely, progress-producing service? | **closed for research sequencing** |
+| **II — diachronic legitimacy across revision** | Which reasons survive a self-revision, what makes a successor answerable to a predecessor, how content transports across representational change | **structural core consolidated; semantic transport and authorized disposition open and load-bearing** |
 | **III — counterfactual non-capture** | Whether the process producing later reasons and evaluators has itself been manipulated or foreclosed | **open** |
 | **IV — corrigibility / deference consumer** | What a legitimacy theorem must hand the deference line | **downstream; interface only** |
+
+**"Closed for research sequencing"** means the current theory regards the question as
+sufficiently answered to consume downstream unless an actual contradiction appears.
+**It is not an evidence class**, and it is orthogonal to one: Layer I is closed in
+this sense while almost all of its mathematics is paper-derived and test-supported
+rather than formally verified. Where the two are confused, `STATUS_LEDGER.md`
+governs.
 
 **Layer I is what the affordability round closed.** It does *not* answer: which
 reasons survive a self-revision; when one reason may defeat or replace another;
@@ -222,6 +229,16 @@ one compatible world suffices. Liability uses `sup` — it needs a covered mixtu
 `rounds/2026-08-31-normative-affordability/LI_PROGRESS_FROM_SERVICE.md`,
 `FIXED_ERA_THEOREM.md` §2.
 
+**The staging is canonical even though the bare name is not.** Whatever the
+maintainer settles "Progress" to mean, the two-stage structure below is how the
+checkpoint refers to it, and a document using the bare word without a qualifier is
+underspecified:
+
+    service-weighted Progress  --Service Transport-->  claim-weighted Progress
+    (the learner-side               (§3.7)              (the Answerability-facing
+     mechanism theorem)                                 endpoint; also written
+                                                        Sustainable Progress)
+
 **Two forms, and they are genuinely different statements.**
 
 *Service-weighted Progress* — `E_{nu^{a,r}_N}[d] -> 0`. What the learner delivers.
@@ -238,8 +255,9 @@ like `sqrt(a)`, which is why divergent service fits a finite lifetime budget.
 for. It does **not** follow from the service-weighted form without a transport
 hypothesis (§3.7).
 
-**Which one Progress should settle on is reserved to the maintainer**
-(`DECISIONS.md`, *Awaiting the author*).
+**Which of the two the bare name "Progress" should denote is reserved to the
+maintainer** (`DECISIONS.md`, *Awaiting the author*). That reservation is about the
+*name*; the staging above is not reserved and is used throughout this checkpoint.
 
 **Surface Fairness is a mass condition and does not deliver claim-weighted
 Progress.** A two-surface fair rotation satisfies bounded-deficit `(SF)` with
@@ -463,6 +481,24 @@ asymptotic compatibility with something still live.
    allocated-service typing corrected.
 
 ---
+
+## 4a. The candidate legitimacy decomposition — a research framing
+
+    Legitimacy  ~  Diachronic Answerability, with its semantic authentication
+                +  Counterfactual non-capture
+                   subject to Affordability as the realizability condition
+
+**This is a research framing, not part of the current theory.** No legitimacy
+predicate has been written down anywhere in this repository; the three terms have
+not been shown independent; and joint sufficiency for the corrigibility consumer is
+unproved. `LEGITIMACY_DECOMPOSITION.md` argues for it and states what would make it
+canonical — a definition with a conclusion someone downstream wants — which does not
+exist. Cite it as a framing or not at all.
+
+**Affordability is a realizability condition and not a source of legitimacy.** It
+says the answering was something the reasoner could have done. Nothing normative
+comes from it, and reading it as a conjunct invites the inference that a cheaper norm
+is more legitimate — which §3.11's own slogan forbids.
 
 ## 5. The Answerability interface
 

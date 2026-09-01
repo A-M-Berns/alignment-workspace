@@ -32,11 +32,35 @@ says **literature review needed** rather than guessing. Independent derivation i
 a fact about our process; novelty is a fact about the literature, and only the
 second is a claim.
 
+**The test for *dependency* is about the current proof, not about history.** An
+entry is a **direct mathematical dependency** or **formal substrate** when the
+answer to
+
+> would the canonical proof still stand if this theorem vanished from the reader's
+> toolbox?
+
+is *no*. It is **adjacent prior art** when the answer is *yes* — when the
+repository's proof runs from definitions it states, and the external result merely
+proves something similar. Having rediscovered a theorem does not make it adjacent;
+invoking it in a proof does not make it merely adjacent either. §6 below was
+reclassified on exactly this test in the September 2026 cleanup, and one entry moved
+as a result.
+
 Citations were checked against search results at the date of this note where a
 link is given. Where a remembered label did not check out, that is said. One
 author surname appears in backticks: it collides with the name lint, which
 cannot distinguish a bibliographic citation from naming the program after a
 person. The friction is filed in `PRIORITIES.md`.
+
+**Three grades of citation appear here, and the difference matters for paper
+writing.** A full entry with title, venue and year, marked *citation verified*, has
+been checked against a source. An entry naming a work without that marking was
+carried over from earlier notes and has not been re-checked. An entry marked
+**exact source not yet pinned / literature review needed** records an *idea the
+program uses* whose source has not been identified — the idea is not thereby
+doubtful, but nothing in it may be cited until someone does the work. **No entry
+here was completed by guessing a plausible work**, and where a remembered
+attribution looked wrong it was demoted rather than replaced.
 
 ## 1. Inquiry and service optimization
 
@@ -104,10 +128,13 @@ answerability slice.*
   treatment of a reason's *weight* and *priority* as normative content rather
   than as substrate machinery.
 
-- **Pollock**, on undercutting versus rebutting defeaters — the distinction
-  between attacking a conclusion and attacking the connection. What we take: the
-  undercut/rebut split, which the reason-state round reproduces as an ordinary
-  reason for `~App(sigma, c@n)` rather than as an attack primitive.
+- **Pollock, "Defeasible Reasoning", *Cognitive Science* 11(4), 1987,
+  pp. 481–518.** <http://www.umiacs.umd.edu/~horty/courses/readings/pollock-1987-defreasoning.pdf>.
+  Distinguishes **rebutting** defeaters, which give a prima facie reason for the
+  denial of the conclusion, from **undercutting** defeaters, which attack the
+  inference without arguing the conclusion false. *Citation verified 2026-09-01.*
+  What we take: the undercut/rebut split, which the reason-state round reproduces as
+  an ordinary reason for `~App(sigma, c@n)` rather than as an attack primitive.
 
 - **Prakken, "An abstract framework for argumentation with structured
   arguments", Argument & Computation 1(2), 2010 (ASPIC+).** Structured
@@ -134,10 +161,15 @@ in this repository. None supplies a theorem.*
   commitment/entitlement split, and the idea that normative status is instituted
   by practice rather than found.
 
-- **Pettit**, on reasons-responsiveness and holding-responsible as a relation
-  between agents rather than a property of one. What we take: answerability as a
-  two-place relation with a creditor and a debtor, which is what an answerability
-  root is.
+- **Pettit** — **exact source not yet pinned / literature review needed.** The idea
+  the program uses is that holding-responsible is a *relation between agents* rather
+  than a property of one, and that a reasons-responsive agent is one who can be
+  addressed rather than merely predicted. That is the shape behind answerability's
+  creditor/debtor typing. No specific work has been identified as read, and the
+  candidates were not narrowed; note that `wiki/Sources.md` separately cites
+  **Fischer & Ravizza, *Responsibility and Control*, Cambridge, 1998** for
+  reasons-responsive mechanisms, which may be doing the work this entry attributes.
+  Do not cite this entry in a paper until it is pinned.
 
 What we do **not** take: any commitment to the inferentialist semantics these
 accounts are embedded in. The architecture uses the scorekeeping shape and leaves
@@ -153,8 +185,15 @@ linear-feasibility reduction are the framework our regions live inside.*
   interpretation via acceptable gambles. What we take: the coherence conditions
   and the sets-of-probabilities semantics that the credal state `C_t` is.
 
-- **Williams**, on coherent lower and upper previsions and conditional
-  coherence. What we take: the conditional form of the coherence conditions.
+- **P. M. Williams, "Notes on conditional previsions", School of Mathematical and
+  Physical Sciences, University of Sussex, 1975; revised and published in
+  *International Journal of Approximate Reasoning* 44(3), 2007, pp. 366–383.**
+  <https://www.sciencedirect.com/science/article/pii/S0888613X06001034>. Coherent
+  conditional previsions and the envelope theorem: an upper conditional prevision is
+  the upper envelope of a family of additive conditional previsions. *Citation
+  verified 2026-09-01; the 1975 report circulated unpublished for three decades, so
+  cite the 2007 printing.* What we take: the conditional form of the coherence
+  conditions.
 
 - **Levi, *The Enterprise of Knowledge*, MIT Press, 1980.** Convex sets of
   probabilities and of utilities, indeterminate valuation, and E-admissibility.
@@ -162,10 +201,21 @@ linear-feasibility reduction are the framework our regions live inside.*
   indeterminate value as a first-class state rather than ignorance about a
   determinate one.
 
-- **Łukasiewicz**, on probabilistic logic and the linear-programming
-  characterisation of probabilistic entailment. What we take: the reduction of
-  coherence questions to linear feasibility, which is what makes the region
-  machinery exact.
+- **The linear-programming characterisation of probabilistic entailment** —
+  **attribution not pinned / literature review needed.** The *result* the program
+  uses is real and load-bearing: probabilistic satisfiability reduces to linear
+  feasibility, which is what makes the region machinery exact and finitely
+  checkable. The *attribution* previously recorded here was "Łukasiewicz", and that
+  is doubtful in two directions at once — it may have meant Jan Łukasiewicz, whose
+  work is many-valued logic rather than this, or Thomas Lukasiewicz, whose
+  probabilistic-logic papers are much later than the result being used. The standard
+  anchors for the LP characterisation are **Hailperin (1965)** on probabilistic
+  satisfiability as a linear program and **Nilsson, "Probabilistic Logic",
+  *Artificial Intelligence* 28(1), 1986, pp. 71–87**
+  (<http://ai.stanford.edu/~nilsson/OnlinePubs-Nils/PublishedPapers/problogic.pdf>),
+  the latter verified 2026-09-01. **Neither has been confirmed as actually read by
+  this program**, so the entry records the result and marks the attribution open
+  rather than silently substituting a plausible one.
 
 **Preserved.** Credal and convex statics do not themselves provide learning,
 legitimacy, or normative authority. What we do **not** take: the reading of a
@@ -236,22 +286,25 @@ of the section.
   `P_n`, `Q_n` are contiguous when `P_n(A_n) -> 0` iff `Q_n(A_n) -> 0` for every
   sequence of events; it extends absolute continuity to sequences.
 
-  **Role: adjacent prior art, bordering on direct dependency.** The definition used
-  in `SERVICE_TRANSFER.md` is *the same definition*, and Theorem T1 — that
-  contiguity transfers `E_{nu_N}[d] -> 0` to `E_{mu_N}[d] -> 0` for uniformly
-  bounded arrays — is in substance the standard consequence of contiguity (Le Cam's
-  first lemma direction). What is not obviously standard is T2, the *necessity* for
-  triangular arrays with `{0,D}`-valued defects, and the separation from
-  **fixed-set contiguity** by a one-step delay.
+  **Role: adjacent prior art, with the definition inherited.** Checked against the
+  proof: `SERVICE_TRANSFER.md`'s Theorem T1 argues from the definition directly —
+  Markov's inequality on `nu_N` puts the level set `{d > eps}` into the contiguity
+  hypothesis, and `E_{mu_N}[d] <= eps + D mu_N(A_N)` closes it. **No external
+  theorem is invoked**, and the proof would stand unchanged if Le Cam's lemmas were
+  unavailable. So the dependency is on the *definition* and the *name*, which is a
+  real inheritance of vocabulary and not of mathematics.
 
-  **What we take:** the definition and the transfer direction. **What we do not
-  take:** the statistical-experiments setting, likelihood ratios, or local
-  asymptotic normality — none of which appears here.
+  **What we take:** the definition, and the concept's name. **What we do not take:**
+  any lemma; the statistical-experiments setting; likelihood ratios; local
+  asymptotic normality.
 
-  **literature review needed** — on whether the array/fixed-sequence separation is
-  recorded in the contiguity literature. The transfer theorem itself should be
-  presented as *an application of contiguity*, not as a new theorem, and the round
-  documents should be read with that in mind.
+  **What must not be claimed.** That T1 is a new theorem. The sufficiency direction
+  is the standard and expected consequence of contiguity, and the two-line proof is
+  short precisely because the definition was designed to make it so. Any novelty
+  claim is confined to **T2** — necessity for triangular arrays with `{0,D}`-valued
+  defects — and to the **fixed-set / array separation**, and both are
+  **literature review needed** before either is asserted anywhere outside this
+  repository.
 
 ### 6.2 Flow feasibility and interval conditions
 
@@ -265,39 +318,64 @@ of the section.
   a single machine, by reduction to a network-flow problem; described in the
   literature as one of the cornerstones of scheduling theory.
 
-  **Role: adjacent prior art, and very probably a rediscovery.** `BOUNDED_DELAY_TRANSPORT.md`
-  Theorem BD1 — a plan exists iff `sum_{[u,v]} c <= sum_{[u,v+H]} a` for every
-  interval — is the interval specialization of exactly this. The repository derived
-  it independently and should **not** present it as new.
+  **Role: direct mathematical dependency, for BD1's sufficiency.** *Reclassified in
+  the September 2026 cleanup; the previous entry said "we take nothing formally" and
+  was wrong.* `BOUNDED_DELAY_TRANSPORT.md` Theorem BD1 states that a plan exists iff
+  `sum_{[u,v]} c <= sum_{[u,v+H]} a` for every interval, and its **sufficiency proof
+  invokes the Gale–Hoffman feasibility condition by name**, using the interval
+  neighbourhood structure (the consecutive-ones property) only to cut the check down
+  to intervals. Remove Gale–Hoffman from the reader's toolbox and that proof does not
+  stand. Necessity is self-contained.
 
-  **What we take:** nothing formally, but the antecedent is close enough that the
-  round's statement should cite it. **What we do not take:** the network machinery;
-  the round's proof is a direct exchange argument.
+  **What we take:** the feasibility theorem itself, as a cited step. **What we do not
+  take:** the max-flow machinery, or any claim that the interval specialization is
+  new — it is very probably a rediscovery of Horn's conditions.
 
-  **literature review needed** — on whether the *cost* result (D4, the sliding
-  window minimum `sum_t c_t min_{s in [t,t+H]} w_s`) has a classical statement.
-  The feasibility half is certainly known; the cost half, with a date-varying
-  concave charge, is less obviously so.
+  **A cheap way to make this adjacent again, not done here.** The round's own
+  Theorem BD2 gives a self-contained route: a busy-period argument on FIFO — take the
+  last date before which the backlog was empty, observe that all service since then
+  went to claims arriving in the interval, and read off the violated interval
+  condition — would prove sufficiency without any external theorem. That is a change
+  to a merged round document rather than to a canonical one, so the September cleanup
+  recorded the dependency instead of removing it. Either resolution is honest; only
+  claiming independence while invoking the theorem is not.
+
+  **literature review needed** — on whether the *cost* result (D4, the sliding window
+  minimum `sum_t c_t min_{s in [t,t+H]} w_s`) has a classical statement. The
+  feasibility half is certainly known; the cost half, with a date-varying concave
+  charge, is less obviously so.
 
 ### 6.3 Earliest-deadline / first-in-first-out optimality
 
 - **Jackson, 1955**, the earliest due date rule and its optimality for maximum
   lateness under preemption; **Horn, 1974** for the release-date version.
 
-  **Role: adjacent prior art.** `BOUNDED_DELAY_TRANSPORT.md` Theorem BD2 — FIFO is
-  optimal and complete for the transport problem — is the same exchange argument in
-  a different costume. Independently derived, classical in substance.
+  **Role: adjacent prior art.** Checked against the proof: `BOUNDED_DELAY_TRANSPORT.md`
+  Theorem BD2 gives a complete exchange argument in four lines — if a feasible plan
+  serves a later claim earlier, both service dates are legal for both claims, so they
+  may be swapped — and **invokes nothing external**. It would stand if Jackson's rule
+  were unknown. Classical in substance, independent in presentation; the document's
+  own remark that FIFO and earliest-deadline-first coincide under uniform deadlines is
+  an observation, not a citation.
 
 ### 6.4 Farkas duality and infeasibility certificates
 
 - **Farkas' lemma** and linear-programming duality, in any standard reference.
 
-  **Role: formal substrate.** `EXISTENCE_AND_DUALITY.md`'s finite-horizon overload
-  certificate is a Farkas pair. What is *not* classical, and is the round's actual
-  open question, is that no converse is known **for the causal problem**: a program
-  feasible on every settlement path separately may admit no causal policy, because
-  the per-path relaxation hands the controller the path in advance. That gap is
-  genuinely ours and is filed as `PRIORITIES.md` item 74.
+  **Role: formal substrate for one step; the main theorem is self-contained.**
+  Checked against the proof: `EXISTENCE_AND_DUALITY.md`'s Theorem T8 — the soundness
+  of the overload certificate — is four lines of linear algebra over a convex hull and
+  **invokes nothing**. The certificate *has the shape* of a Farkas pair, which is why
+  it is called one, but nothing is imported to prove it sound. What does depend on the
+  external theory is the adjacent remark that under a Slater point the per-path program
+  has strong duality and the certificate is exact for that program; **that** step is a
+  direct use of linear-programming duality.
+
+  What is *not* classical, and is the round's actual open question, is that no converse
+  is known **for the causal problem**: a program feasible on every settlement path
+  separately may admit no causal policy, because the per-path relaxation hands the
+  controller the path in advance. That gap is genuinely ours and is filed as
+  `PRIORITIES.md` item 74.
 
 ### 6.5 Online algorithms and competitive analysis
 
@@ -305,10 +383,12 @@ of the section.
   **Online Service with Delay** and **Set Cover with Delay** line already recorded
   in §1.
 
-  **Role: adjacent prior art.** `ONLINE_EXISTENCE.md` uses the vocabulary and
-  proves two things in it: that persistence has no online penalty as a *property*,
-  and that there is **no positive competitive ratio** for accumulated authority.
-  The second is a lower-bound construction of the usual kind.
+  **Role: adjacent prior art — vocabulary only.** Checked against the proofs:
+  `ONLINE_EXISTENCE.md` borrows the competitive-ratio *definition* and then argues
+  from scratch, both for the positive result (a doubling-threshold rule achieves
+  persistence whenever an offline scheduler can) and for the negative one (an
+  adversary construction driving the achievable ratio to zero). **No external theorem
+  is invoked**, and no competitive-analysis result is inherited.
 
   **literature review needed** — on whether the "no positive ratio for the
   accumulated resource, but the qualitative property survives" phenomenon has a
@@ -319,18 +399,21 @@ of the section.
 - Standard convex analysis: projection onto a closed convex set, and the
   separating-hyperplane theorem.
 
-  **Role: formal substrate.** The enforcement compiler's position
-  `zeta = lambda(Pi_K P - P)` is a projection direction, and the Common-Mixture
-  argument is finite convex algebra over the barycenter. Nothing here is novel and
-  nothing should be presented as such; the content is in *what is being projected*
-  and *who pays for it*.
+  **Role: formal substrate — a genuine dependency.** The enforcement compiler's
+  position `zeta = lambda(Pi_K P - P)` *is* a projection onto a closed convex set, and
+  the argument uses the projection's defining variational inequality; the
+  Common-Mixture bound is finite convex algebra over a barycenter. Remove convex
+  projection from the toolbox and neither construction can be stated, let alone proved.
+  Nothing here is novel and nothing should be presented as such; the content is in
+  *what is being projected* and *who pays for it*.
 
 ### 6.7 Star-shaped and concave cost functions
 
-  **Role: adjacent prior art, unverified.** `SHARP_PERSISTENCE.md` uses
-  star-shapedness (`L(a)/a` nonincreasing) as the exact structural hypothesis for
-  both the persistence criterion and the finite-horizon vertex optimum. Star-shaped
-  functions are a studied class in convexity theory.
+  **Role: adjacent prior art, unverified.** Checked against the proofs:
+  `SHARP_PERSISTENCE.md` states star-shapedness (`L(a)/a` nonincreasing) as a
+  hypothesis and derives everything it needs from that inequality directly, invoking
+  no external result. Star-shaped functions are a studied class in convexity theory,
+  which is why the term is borrowed.
 
   **literature review needed** — on whether the vertex-optimum result
   (`max sum a_t = max_t L_t^{-1}(B)` for star-shaped costs on a budget simplex)

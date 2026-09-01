@@ -44,10 +44,19 @@ all. Uptake comes from the market maker's cap, and the earlier claim was withdra
 
 ## The reserved decision
 
-There are two forms of the statement and they are genuinely different.
+There are two forms of the statement and they are genuinely different. The staging
+between them is settled even though the bare name is not:
+
+    service-weighted Progress  --Service Transport-->  claim-weighted Progress
+
+the first being the learner-side mechanism theorem and the second the
+Answerability-facing endpoint. Where this wiki says "Progress" without a qualifier it
+means the pair; where a specific one is meant, it says which.
 
 **Service-weighted** Progress says the defect vanishes *on the dates the reasoner
-worked*. That is what the learner delivers, and it is provable.
+worked*. That is what the learner delivers, and it has a complete derivation with a
+rate — though like almost everything in this program that derivation is on paper and
+not in a proof assistant.
 
 **Claim-weighted** Progress says the defect vanishes *on the dates something was
 owed*. That is what answerability actually asks for.

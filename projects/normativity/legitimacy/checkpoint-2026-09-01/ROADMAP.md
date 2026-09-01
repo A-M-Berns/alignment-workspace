@@ -5,23 +5,33 @@ shortest path to a theorem of legitimacy that is useful for corrigibility?
 
 Four buckets, and the boundaries between them are the point.
 
-    closed          the result exists and later work consumes it
+    closed          closed for research sequencing (see below)
     active          being worked, with a shaped question
     open but shaped a precise question and a visible route
     missing idea    a precise question and no route
+
+> **"Closed" here means closed for research sequencing**: the current theory regards
+> the question as sufficiently answered to consume downstream unless an actual
+> contradiction appears. **It is not an evidence class.** Almost everything under
+> *Closed* is **paper-derived and test-supported**, not Lean-proved and not
+> registered as proven; `STATUS_LEDGER.md` is the row-by-row account and governs.
+> The two axes are independent, and a result can be closed for sequencing while its
+> formal verification is still owed — which is the normal state here.
 
 This is **not** a copy of `PRIORITIES.md`. Priority items are work orders;
 this page says which are still worth issuing and which the checkpoint retired.
 
 ---
 
-## Closed
+## Closed for research sequencing
 
-Consume these; do not reopen without an actual contradiction.
+Consume these; do not reopen without an actual contradiction. **Closed for research
+sequencing; paper-derived + test-supported unless the ledger marks otherwise.**
 
 - **The fixed-era composition.** Claim stream to claim-weighted Progress and to
-  substrate preservation, every arrow proved.
-  (`rounds/2026-08-31-normative-affordability/FIXED_ERA_THEOREM.md`, frozen.)
+  substrate preservation, with every arrow carrying a prose derivation and no gap
+  left implicit. (`rounds/2026-08-31-normative-affordability/FIXED_ERA_THEOREM.md`,
+  frozen.) The composition is complete; it is not formally verified.
 - **The service typing.** Service is allocated authority.
 - **Actionability at its weakest hypothesis.** `phi` bounded away from zero away
   from zero, necessary and sufficient; convexity buys only the rate.
@@ -81,8 +91,9 @@ What makes a later reason or service count as *answering* an earlier one?
 shape (`Pre/Post/sat/disp`). What is missing is the licence condition on `disp`.
 **A theory of authorized disposition is the pivot**: it simultaneously supplies
 defeat, closes the laundering channel that would otherwise make every insolvency
-vanish, and repairs the `sum c_t = infinity` hypothesis of EV1. See
-`ANSWERABILITY_AND_SERVICE.md` §6.
+vanish, and repairs the `sum c_t = infinity` hypothesis of EV1. **Filed as
+`PRIORITIES.md` item 77.** See `ANSWERABILITY_AND_SERVICE.md` §6. Whether cross-era
+answering needs a second item beyond the licence is not yet known.
 
 ### 3. Counterfactual non-capture
 
