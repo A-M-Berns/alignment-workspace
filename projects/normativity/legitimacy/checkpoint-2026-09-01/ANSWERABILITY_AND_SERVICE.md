@@ -4,18 +4,13 @@
 capacity"* mean now that there is a mathematical service theory?
 
 **The sources.** The conceptual theory is *Diachronic Answerability Under
-Self-Revision* (31 August 2026), a maintainer-supplied note. The mathematics is the
-`2026-08-31-normative-affordability` round, merged to `main`. This document
-reconciles them.
-
-**A caution about the note's repository counterparts.** Three rounds develop the
-note's mathematics — *answerability carriers*, *anchored slices and authenticated
-semantic Transfer*, and *faithful semantic preservation*. **None of them is on
-`main`.** Their pull requests merged into each other on the branch
-`round/2026-08-30-answerability-carriers` and that stack was never landed, so the
-trees exist on that branch and in working copies but not in the repository's history
-on `main`. Everything this document attributes to the conceptual theory is therefore
-cited to the note itself, by section and theorem number. See `PROVENANCE.md`.
+Self-Revision* (31 August 2026), a maintainer-supplied note, whose repository
+counterparts are the `2026-08-30-answerability-carriers`,
+`2026-08-30-anchored-slices-auth-transfer` and
+`2026-08-31-faithful-semantic-preservation` rounds. The mathematics is the
+`2026-08-31-normative-affordability` round. All are on `main`, and this document
+reconciles them. Where a statement appears only in the note it is cited by section
+and theorem number.
 
 The note is a **working mathematical synthesis; paper proofs, not Lean-verified**,
 by its own statement, and is treated here at exactly that strength.

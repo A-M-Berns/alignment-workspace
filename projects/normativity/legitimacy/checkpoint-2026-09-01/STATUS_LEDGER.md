@@ -74,9 +74,9 @@ program's normal state and its natural fate is a Lean port.
 |---|---|---|---|
 | 36 | **Grounded Replay** — every applicable rule has finite recorded provenance in `R_0` | **paper-derived** | `rounds/2026-08-25-legitimate-evolution/`; the note, Thm 2.5 |
 | 37 | **Prospective revision / anchored protocol execution** — a later revision cannot retroactively judge an earlier episode | **paper-derived** | the note, Lemma 3.9 and Req. 3.5; `rounds/2026-08-28-answerable-revision/` |
-| 38 | **Slice-wise Answerability Conservation** — `c_alpha = Satisfied ∨ Disposed ∨ Remaining` | **paper-derived** + **test-supported** | the note, Thm 6.1. Repository counterpart is in the **unlanded** answerability stack — see the caution below this table |
+| 38 | **Slice-wise Answerability Conservation** — `c_alpha = Satisfied ∨ Disposed ∨ Remaining` | **paper-derived** + **test-supported** | `rounds/2026-08-30-anchored-slices-auth-transfer/`; the note, Thm 6.1 |
 | 39 | **Remaining content cannot increase; no silent terminal closure** | **paper-derived** | the note, Cor. 6.2 and 6.3 |
-| 40 | **Semantic no-laundering** — relabelling alone cannot reduce anchored content | **paper-derived**, *conditional on* semantic authentication and slice faithfulness | the note, Thm 7.5. Repository counterpart **unlanded** |
+| 40 | **Semantic no-laundering** — relabelling alone cannot reduce anchored content | **paper-derived** + **test-supported**, *conditional on* semantic authentication and slice faithfulness | `rounds/2026-08-31-faithful-semantic-preservation/`; the note, Thm 7.5 |
 | 41 | **Semantic authentication `J_alpha`, slice faithfulness** | **interface assumption** — application-supplied | the note, §7, Req. 7.2 and 7.4 |
 | 42 | **Persistent-Wait Theorem** — permanent idleness stabilizes on one unrouted blocker | **paper-derived** | the note, Thm 8.12; `rounds/2026-08-28-answerable-challenge-service/` |
 | 43 | **Idle non-expansion** | **interface assumption** (a requirement on the reasoner, not a theorem) | the note, Req. 8.10 |
@@ -87,15 +87,17 @@ program's normal state and its natural fate is a Lean port.
 | 48 | **Content-preserving transfer across representation change**, quantitatively | **open** — the conceptual calculus exists; the metric bridge to `eps(t,s)` does not | `ANSWERABILITY_AND_SERVICE.md` §5 |
 | 49 | **Justified defeat / authorized disposition** as a normative (not merely accounting) notion | **open** | the note, Def. 5.2 gives the accounting slot; what licenses it is not characterized. `PRIORITIES.md` item 77 |
 
-> **Caution on Layer II sources.** Rows 36–45 and 49 rest on a maintainer-supplied
-> note, *Diachronic Answerability Under Self-Revision* (31 August 2026), which
-> declares itself paper-proved and not Lean-verified. Its three repository
-> counterpart rounds — answerability carriers, anchored slices, faithful semantic
-> preservation — together with the CF-coverage rounds of rows 52–53, are **not on
-> `main`**: their pull requests merged into each other on the branch
-> `round/2026-08-30-answerability-carriers`, which was never landed. Their exact
-> fixtures therefore do not run in this repository's CI, and rows citing them are
-> **paper-derived only** until the stack lands. This is recorded, not resolved.
+> **On Layer II sources.** Rows 36–45 and 49 rest on a maintainer-supplied note,
+> *Diachronic Answerability Under Self-Revision* (31 August 2026), which declares
+> itself paper-proved and not Lean-verified; the note is cited by section and theorem
+> number where a repository document does not carry the same statement.
+>
+> Its repository counterpart rounds — answerability carriers, anchored slices and
+> authenticated semantic Transfer, faithful semantic preservation, and the
+> CF-coverage and proper-exercise rounds — spent a day off `main` because their pull
+> requests merged into each other rather than into the default branch. **They landed
+> on 2026-09-01** and their exact fixtures now run in this repository's CI, so the
+> rows above cite them directly. `DECISIONS.md` carries the account.
 
 ## Layer III — counterfactual non-capture
 
@@ -103,8 +105,8 @@ program's normal state and its natural fate is a Lean port.
 |---|---|---|---|
 | 50 | **Carroll criterion reproduction** (live covering authority + counterfactual persistence under ancestry excision) | **test-supported**; 50/52 target cells | `rounds/2026-08-25-carroll-legitimacy-test/` |
 | 51 | **Excision is non-monotone and non-composable** | **witnessed** | same round; falsification pass |
-| 52 | **Coverage** (world-to-record adequacy) | **open** — consumer-relative, deliberately outside the answerability system | the note, §11; the CF-coverage round, **unlanded** |
-| 53 | **No Clean Self-Sealing** | **partial** — false from Continuity alone; true under ambient factorization + behavioral locality | the CF-coverage round's `SELF_SEALING.md`, **unlanded** |
+| 52 | **Coverage** (world-to-record adequacy) | **open** — consumer-relative, deliberately outside the answerability system | the note, §11; `rounds/2026-08-30-cf-coverage-continuity-interface/` |
+| 53 | **No Clean Self-Sealing** | **partial** — false from Continuity alone; true under ambient factorization + behavioral locality | `rounds/2026-08-30-cf-coverage-continuity-interface/SELF_SEALING.md` |
 | 54 | **Counterfactual non-capture as a pillar of legitimacy** | **conjectural framing** | `LEGITIMACY_DECOMPOSITION.md` |
 
 ## Layer IV — corrigibility / deference consumer

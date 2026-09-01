@@ -132,9 +132,7 @@ consumer-relative question the theory deliberately leaves outside itself.
 ---
 
 **Evidence.** The conceptual theory is a maintainer-supplied note that is not
-published here. Its three repository counterpart rounds — answerability carriers,
-anchored slices, and faithful semantic preservation — are **not on the main branch**:
-their pull requests merged into each other on a stacked branch that was never landed.
-Until that stack lands, the note itself is the only citable statement of the results
-on this page. The reconciliation with the service mathematics is
+published here; its repository counterparts are the answerability carriers, anchored
+slices, and faithful semantic preservation rounds. The reconciliation with the
+service mathematics is
 [`ANSWERABILITY_AND_SERVICE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/checkpoint-2026-09-01/ANSWERABILITY_AND_SERVICE.md).

@@ -2089,13 +2089,11 @@ passes.
 
 *Context:*
 `projects/normativity/legitimacy/checkpoint-2026-09-01/ANSWERABILITY_AND_SERVICE.md`
-§6 for why the three questions are one, and that checkpoint's `OPEN_PROBLEMS.md` §2.
-The conservation law the disposition term sits in, and the authentication side, are
-in the *anchored slices* and *faithful semantic preservation* rounds, which are **not
-on `main`** — they are on the branch `round/2026-08-30-answerability-carriers`,
-whose pull requests merged into each other rather than into `main`. Until that stack
-lands, the citable statement of both is the maintainer-supplied note
-*Diachronic Answerability Under Self-Revision* (31 August 2026), §§5–7.
+§6 for why the three questions are one, and that checkpoint's `OPEN_PROBLEMS.md` §2;
+`projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/`
+for the conservation law the disposition term sits in, and
+`projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/`
+for the authentication side.
 *A solution ships:* the licence, its soundness theorem, and a statement of what the
 affordability theory's claim stream becomes once disposition is available.
 
@@ -2222,7 +2220,7 @@ than ids, which is a schema change and specification layer; or rule that a resea
 checkpoint must be indexed at merge, which is a convention change binding future rounds
 only. The choice is specification layer and was not taken here.
 
-### F8 — A stack of merged pull requests never reached `main`
+### F8 — A stack of merged pull requests never reached `main` — *closed*
 
 <!-- workspace-priority: project=none; dispatchable=no -->
 
@@ -2246,16 +2244,23 @@ this repository's CI, so results attributed to them are paper-derived only from
 `main`'s point of view. The consolidation now cites the underlying note by section
 and theorem number instead, and its `STATUS_LEDGER.md` marks the affected rows.
 
-**Not resolved here.** Landing the stack is a merge decision with its own review, and
-a consolidation pass should not perform it unasked. Two candidate fixes: open a pull
-request from the top of the stack to `main` and land it, after which the path
-citations can be restored; or, if the work is superseded, declare the branches so.
-Either is a maintainer act.
+**Resolved on 2026-09-01.** The maintainer asked for the fix, and the stack was
+landed: current `main` was merged into `round/2026-08-30-liability-theory` on a new
+branch and opened as one pull request. Three files conflicted and all three were
+additive on both sides — `state/rounds.json` resolved as the union of the two record
+sets, `PROVENANCE.md` keeping both sides' rows, and the generated views regenerated.
+No round document was edited. The repository's runner count went from thirty-five
+projects to forty-one, which is the six recovered rounds' fixtures now running.
+`DECISIONS.md` carries the account, and the September checkpoint's path citations are
+restored.
 
-**A general lesson worth keeping.** A MERGED badge names the base the pull request had,
-not `main`. Nothing in the current gates checks that a round directory referenced
-anywhere actually reached the default branch, and a stacked round is exactly the shape
-that slips through.
+**The lesson outlives the fix, and is why this entry stays.** A MERGED badge names the
+base the pull request had, not `main`. Nothing in the current gates checks that a round
+directory referenced anywhere actually reached the default branch, and a stacked round
+is exactly the shape that slips through — it was caught here only because a citation
+happened to point at one. A gate comparing `state/rounds.json` against what the default
+branch actually contains would have caught it directly; whether that is worth building
+is a maintainer call and is not filed as an item.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->

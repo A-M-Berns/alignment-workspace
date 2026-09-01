@@ -83,7 +83,7 @@ change, and the count of those is the size of the free choice remaining.
 | `simRead` | abbrev | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.simRead` |
 | `simulated` | abbrev | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.simulated` |
 | `totalSetoid` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.totalSetoid` |
-| `transfer` | abbrev | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.transfer` |
+| `transfer` | abbrev | 2026-08-12-cartesian-frames | note, prose | `Workspace.Deference.Contrib.CartesianFrameBridge.transfer` |
 | `Act` | abbrev | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Act` |
 | `J` | def | 2026-08-11-phase-ii-promotion | note | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.J` |
 | `Jhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Jhat` |
