@@ -40,6 +40,62 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **Which of the two forms the bare name "Progress" denotes.** The staging is
+  settled and canonical — service-weighted Progress, then Service Transport, then
+  claim-weighted Progress — and only the *name* is open. Making it claim-weighted
+  imports the transport interface and its residual into the settled statement;
+  leaving it service-weighted keeps the current theorem and moves the burden onto
+  whatever consumes it. `projects/normativity/legitimacy/checkpoint-2026-09-01/CURRENT_THEORY.md`
+  §3.6. *Turns on:* what a paper's Progress claim has to be able to say — external
+  knowledge the rounds lack. Both readings are internally consistent.
+
+- **Whether the September checkpoint is `agent-consolidated`.** It is currently
+  ordinary content: editable, `ci-only`, and treated as canonical only by the
+  `DECISIONS.md` entry that says so. Marking it `agent-consolidated` would add an
+  `ORIGIN.md` receipt and put its paths in `tests/path_gate.py`, which is what the
+  August package carries. *Turns on:* whether the checkpoint is meant to be a frozen
+  artifact that a later checkpoint supersedes, or a living document that later
+  rounds amend in place. The round has no view; both are coherent and the difference
+  is a maintenance commitment.
+
+- **Whether the bounded-delay feasibility proof should be made self-contained.**
+  BD1's sufficiency invokes the Gale–Hoffman condition by name, so the prior-art
+  ledger now records a direct mathematical dependency. A busy-period argument on the
+  round's own FIFO theorem would remove it in about a paragraph, at the cost of
+  editing a merged round document. `projects/normativity/notes/PRIOR_ART.md` §6.2.
+  *Turns on:* whether merged round documents are editable to improve a proof, or
+  only to correct an error. `AGENTS.md` settles that for consolidated trees and not
+  for ordinary rounds.
+
+- **Whether the candidate legitimacy decomposition is adopted.** Answerability with
+  its semantic authentication, plus counterfactual non-capture, subject to
+  affordability as a realizability condition. The checkpoint assesses it as the best
+  available framing and explicitly declines to canonize it, because no legitimacy
+  predicate exists, independence is unshown, and joint sufficiency is unproved.
+  `.../checkpoint-2026-09-01/LEGITIMACY_DECOMPOSITION.md`. *Turns on:* whether the
+  program is willing to commit to a shape before it has the predicate. A round can
+  argue the framing and cannot decide whether committing early is worth the risk of
+  building three rounds on a wrong decomposition.
+
+- **What was actually read for the coherence / linear-feasibility result.** The
+  prior-art ledger records the reduction of coherence to linear feasibility as
+  load-bearing, and its attribution as a candidate rather than a record: the
+  maintainer's recollection points at Thomas Lukasiewicz and the
+  Biazzo–Gilio–Lukasiewicz–Sanfilippo coherence line, which checks out as the right
+  tradition, and the older Hailperin and Nilsson anchors remain possible.
+  `projects/normativity/notes/PRIOR_ART.md` §4. The same question stands for the
+  **Pettit** entry, marked *exact source not yet pinned*. *Turns on:* what the
+  maintainer actually read. No round can recover this, and a ledger meant for paper
+  writing should not carry a plausible reconstruction as though it were a citation.
+
+- **Whether a gate should check that a referenced round reached `main`.** Friction
+  F8 records how six rounds sat off the default branch behind a merged badge, and
+  that no current gate would have caught it — a citation happening to point at one
+  is what surfaced it. A checker comparing `state/rounds.json` against the default
+  branch's tree would catch the class directly. *Turns on:* whether the class is
+  frequent enough to be worth a gate, which depends on how often stacked rounds get
+  used and is a workflow judgment rather than a research one.
+
 - **What the next research step is, given the inertness dichotomy.** The
   end-to-end slice establishes that the unconditional traderization theorem's
   admissibility hypothesis holds exactly for injunctions that change nothing, so

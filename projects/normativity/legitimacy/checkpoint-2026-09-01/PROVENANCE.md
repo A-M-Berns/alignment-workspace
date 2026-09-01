@@ -101,11 +101,14 @@ no theory and opened no research question. What it changed:
   LP-duality-dependent exactness remark.
 - **Four citation repairs.** Pollock and Williams were pinned to exact works and
   verified. Pettit was demoted to *exact source not yet pinned*. The
-  "Łukasiewicz" attribution for the linear-programming characterisation of
-  probabilistic entailment was demoted: the result is real and used, the attribution
-  was doubtful in two directions, and the standard anchors (Hailperin 1965, Nilsson
-  1986) are recorded as **not confirmed read** rather than substituted in. No entry
-  was completed by guessing a plausible work.
+  "Łukasiewicz" attribution was demoted, then partly recovered: on the maintainer's
+  recollection it is Thomas Lukasiewicz, and the Biazzo–Gilio–Lukasiewicz–Sanfilippo
+  coherence line checks out as the right family — de Finettian coherence with
+  conditional constraints and a nonlinear-to-linear reduction, which belongs beside
+  Walley and Levi rather than in a probabilistic-logic section. It is recorded as a
+  **candidate identified, not confirmed read**, alongside the older Hailperin and
+  Nilsson anchors. No entry was completed by guessing a plausible work; this one was
+  narrowed by a maintainer recollection and then checked.
 - **One terminology split**, applied throughout: *closed for research sequencing*
   now names the sequencing judgment and never the evidence, which is
   `STATUS_LEDGER.md`'s business.

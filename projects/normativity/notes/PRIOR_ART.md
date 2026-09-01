@@ -201,21 +201,36 @@ linear-feasibility reduction are the framework our regions live inside.*
   indeterminate value as a first-class state rather than ignorance about a
   determinate one.
 
-- **The linear-programming characterisation of probabilistic entailment** —
-  **attribution not pinned / literature review needed.** The *result* the program
-  uses is real and load-bearing: probabilistic satisfiability reduces to linear
-  feasibility, which is what makes the region machinery exact and finitely
-  checkable. The *attribution* previously recorded here was "Łukasiewicz", and that
-  is doubtful in two directions at once — it may have meant Jan Łukasiewicz, whose
-  work is many-valued logic rather than this, or Thomas Lukasiewicz, whose
-  probabilistic-logic papers are much later than the result being used. The standard
-  anchors for the LP characterisation are **Hailperin (1965)** on probabilistic
-  satisfiability as a linear program and **Nilsson, "Probabilistic Logic",
-  *Artificial Intelligence* 28(1), 1986, pp. 71–87**
-  (<http://ai.stanford.edu/~nilsson/OnlinePubs-Nils/PublishedPapers/problogic.pdf>),
-  the latter verified 2026-09-01. **Neither has been confirmed as actually read by
-  this program**, so the entry records the result and marks the attribution open
-  rather than silently substituting a plausible one.
+- **Coherence, conditional constraints, and the linear-programming characterisation**
+  — **candidate identified, not confirmed read.** The *result* the program uses is
+  real and load-bearing: coherence questions reduce to linear feasibility, which is
+  what makes the region machinery exact and finitely checkable.
+
+  The attribution recorded here was originally the bare surname "Łukasiewicz", which
+  read as a probable garble for Jan Łukasiewicz, whose work is many-valued logic and
+  not this. **On the maintainer's recollection it is instead Thomas Lukasiewicz, and
+  that checks out**: **Biazzo, Gilio, Lukasiewicz & Sanfilippo, "Probabilistic Logic
+  under Coherence: Complexity and Algorithms", *Annals of Mathematics and Artificial
+  Intelligence* 45, 2005, pp. 35–81**
+  (<https://link.springer.com/article/10.1007/s10472-005-9005-y>), with the earlier
+  **Lukasiewicz, "Probabilistic logic programming with conditional constraints",
+  *ACM Transactions on Computational Logic* 2(3), 2001**. *Citations verified
+  2026-09-01.* This line works in the **de Finettian coherence** setting — conditional
+  constraints as interval-valued conditional probabilities, with nonlinear programs
+  transformed into equivalent linear ones — which is the same tradition as Walley's
+  lower previsions and sets of desirable gambles in §4 above, and is why it belongs
+  beside them rather than in a probabilistic-logic section of its own.
+
+  **Still not confirmed as read.** The identification is a plausible and now
+  specific reconstruction, not a record of use. What the repository certainly relies
+  on is the *reduction to linear feasibility*; whether it inherited that from this
+  line, or from the older anchors **Hailperin (1965)** and **Nilsson, "Probabilistic
+  Logic", *Artificial Intelligence* 28(1), 1986, pp. 71–87** (verified 2026-09-01),
+  is a question only the maintainer can close.
+
+  **What we take:** the reduction of coherence questions to linear feasibility.
+  **What we do not take:** conditional-constraint entailment, default reasoning over
+  it, or any of the complexity results.
 
 **Preserved.** Credal and convex statics do not themselves provide learning,
 legitimacy, or normative authority. What we do **not** take: the reading of a
