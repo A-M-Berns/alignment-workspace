@@ -155,7 +155,126 @@ assumption on masses at all.
 *Rejected alternative:* keeping the exchange proof, which changed the loads it was
 comparing.
 
+### 2026-09-01 — persistence and eventual full service are the same existence question
+
+**agent-decided, reversible.** Supersedes the entry below. Under exogenous
+star-shaped date costs, unlimited deferral, fungible service, finite individual
+claim masses and divergent total claim mass, a persistent affordable schedule exists
+if and only if an affordable plan discharging every claim exists — both being
+equivalent to the persistence criterion `liminf L_t(1) = 0`. The forward direction is
+a diagonal: each claim takes its *own* cheap date on a geometric tranche of the
+budget. The earlier separation priced block batching, which forces a whole block onto
+one dip, and read that one plan's cost as the minimum.
+
+The equivalence is about which schedules *exist*, not about identity of schedules: a
+persistent schedule may ignore the claims entirely.
+
+Uniform bounded delay remains strictly stronger, and no gap condition substitutes for
+the exact sliding-window criterion — cheap dates every other date with reciprocally
+decaying depth give bounded gaps, a friction dipping to zero, affordable eventual
+service, and divergent timely-service cost. So the earlier claims that bounded gaps
+close the three problems, and that positive density gives bounded gaps, are both
+withdrawn.
+
+**Unlimited deferral makes eventual answering no harder than maintaining divergent
+service; the substantive Answerability constraint enters only when delay matters.**
+
+*Rejected alternative:* keeping the separation and treating eventual service as an
+intermediate obligation between persistence and timeliness. There is no such
+intermediate in this benchmark.
+
+### 2026-09-01 — the transport residual is claim-normalized
+
+**agent-decided, reversible.** Deferred Service Transfer now carries an
+edge-dependent error `eps(t,s)` and contributes the claim-normalized average
+`(1/C_N) sum T(t,s) eps(t,s)` rather than a raw sum. The left-hand side it bounds is
+an average over claim mass, and a raw sum is extensive: it diverges on any infinite
+claim stream even when every edge is exact to a fixed tolerance. Normalized, a plan
+of uniform delay `H` against a temporal modulus contributes at most `omega(H)`
+whatever the claim mass. Finite-horizon optimizations are unaffected, since the claim
+mass is a constant of the instance.
+
+*Rejected alternative:* a single uniform constant `eps`, which cannot express the
+delay-dependence that is the whole content of a timeliness result.
+
+### 2026-09-01 — the friction-free theorem needs nested assessment
+
+**agent-decided, reversible.** The liability charge at date `t` is computed against
+`A_t` and the friction residual at horizon `N` is evaluated against `A_N`. These are
+different sets, and the theorem needs `A_N subseteq A_t` — settlement removes
+continuations and never restores them. Without it a world admitted after `t` was
+never bounded by that date's depth and nothing in the budget covers it. The
+hypothesis is the settlement interface's own monotonicity rather than a new
+assumption.
+
+Past the branch point the exact condition for the residual to vanish is
+`(1/A_N) sum (l_t + m_t)^2 / m_t -> 0`, an identity-derived criterion; the earlier
+slogan "only when the engine scale is summable" is withdrawn as neither necessary nor
+sufficient. The `D_t >= sigma, m_t -> 0` counterregime survives unchanged.
+
+*Rejected alternative:* leaving the quantifiers implicit on the grounds that the
+conservative direction "obviously" dominates. It dominates only within one date's
+live set.
+
+### 2026-09-01 — the serviceability frontier is convex under fractional splitting
+
+**agent-decided, reversible.** Total liability and normalized transport error are
+both *linear* in the transport plan, and admissible plans at a fixed horizon and
+deadline form a transportation polytope, so the achievable region is a linear image
+of a convex set and every Pareto point is recovered by scalarization. The convexity
+hypothesis is that claim mass may split fractionally; over integral assignments only
+the supported frontier is recovered. This is a repair of an unproved claim, not a
+withdrawal.
+
+*Rejected alternative:* asserting full scalarization without naming the hypothesis,
+which is what the previous pass did.
+
+### 2026-09-01 — deadline insolvency admits a finite certificate
+
+**agent-decided, reversible.** Unlike persistence insolvency, which is a claim about
+the infinite future needing a proved tail bound, deadline insolvency concerns claims
+that have already arrived and windows that expire. Its required cost is exactly
+`sum_t c_t min{w_s : s in [max(t,now), t+H]}` on the linear branch, and every field
+of the certificate is settled record or arithmetic over it. It is complete when the
+remaining windows' weights are bounded *below* by a certified quantity — the opposite
+direction from the upper estimates a safe scheduler uses — which is available on the
+deductive channel and not on the empirical one.
+
+A fired certificate licenses recording that *these* claims cannot be answered on
+time. It leaves the reason standing.
+
+*Rejected alternative:* one insolvency notion covering both, which would either
+import an unavailable tail bound into the finite case or claim certification the
+infinite case cannot support.
+
+### 2026-09-01 — the fixed-era affordability and serviceability layer is finished
+
+**agent-decided, reversible.** The round's canonical theorem is Sharp Timely Service:
+sharp-linear affordability plus timely Answerability transport gives claim-weighted
+Progress up to semantic delay only, at rate `(2 sqrt(B_r) + sqrt(U_r)) / sqrt(A^r_N)`,
+under five stated hypotheses. Nothing in it rests on a withdrawn claim; the audit
+tables all twenty withdrawals and the three patterns that produced them.
+
+Settlement friction `F_r` stays in the *generic* schematic theorem, because the
+square-root branch keeps it positive; sharp-linear affordability is exactly the
+boundary at which it vanishes.
+
+Remaining work — closed-loop friction, certification of the temporal modulus,
+simultaneous timeliness and linear-branch affordability, necessity of bounded
+liability, the signed class, and the concave branch — is new direction rather than
+repair, and moves to later rounds.
+
+*Rejected alternative:* continuing to extend the round. Each further pass in this
+sequence produced both a theorem and a withdrawal, and the withdrawals were being
+found by the reader rather than the author; consolidating while the surviving
+statements are audited is the safer stopping point.
+
 ### 2026-09-01 — persistence, eventual service and uniform timeliness are three problems
+
+**Superseded** the same day by the entry above: the separation between persistence
+and eventual full service asserted in the second paragraph is false, and the
+bounded-gap paragraph is withdrawn. What survives is the first paragraph's
+withdrawal, and the strict separation of uniform timeliness. Kept for the record.
 
 **agent-decided, reversible.** The reading of the bounded-delay cost formula's
 limit as the unconstrained persistence criterion is withdrawn. With unit claims and

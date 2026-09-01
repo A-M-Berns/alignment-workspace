@@ -208,9 +208,12 @@ All provisional. **Service parsimony** (the cap `W_N <= K C_N`). **Transport
 stability** (the `(T3)` inequality and its constants `(L, eps)`). **Overload
 certificate** (the
 Farkas pair `(y, z)` with positive deficit). **Fixed-set contiguity** (the exact
-condition for `N`-independent defect sequences). The dispatch's own provisional
-terms — affordability witness, claim measure, actual service measure — are kept as
-given.
+condition for `N`-independent defect sequences). **Sharp Timely Service** (the
+round's canonical theorem). **Claim-normalized transport error** (`epsbar_N(T)`).
+**Nested assessment** (the hypothesis `A_N subseteq A_t`). **Deadline insolvency**
+(the finite certificate, against persistence insolvency). The dispatch's own
+provisional terms — affordability witness, claim measure, actual service measure —
+are kept as given.
 
 ## 8. Outstanding maintainer actions
 
@@ -225,10 +228,57 @@ given.
 2. **Naming audit** over §7 when one is next run.
 
 The residual blocker of §6.1 is filed as `PRIORITIES.md` item 74, naming the round
-that would consume it.
+that would consume it. The two largest gaps in §9's list are filed as items 75
+(closed-loop friction) and 76 (certifying a reason's temporal modulus).
 
 Everything else this round recommends is adopted as a dated `DECISIONS.md` entry,
 agent-decided and reversible.
+
+## 9. The round is finished
+
+**PR75 has finished the fixed-era affordability/serviceability layer.** The
+sentence the ninth dispatch set as its target is now exact:
+
+> Sharp-linear affordability plus timely Answerability transport gives
+> claim-weighted Progress up to semantic delay only.
+
+`SHARP_TIMELY_SERVICE.md` states it as Theorem STS with all five hypotheses — (S)
+service, (L) sharp-linear affordability, (M) the MarketMaker ceiling, (N) nested
+assessment, (T) temporal stability — a finite-horizon inequality with explicit
+constants, three corollaries, and the fixtures pinning the constants. Nothing in it
+rests on a claim the round has withdrawn; `CONSISTENCY_AUDIT.md` is the check.
+
+What the layer contains, settled: the fixed-era composition theorem; the
+allocated-service typing; reasonwise accounting from the aggregate cap; the exact
+persistence criterion for a general star-shaped cost; the bounded-delay feasibility
+and minimum-cost theorems with their sliding-window closed form; the equivalence of
+persistence and eventual full service, and its strict separation from uniform
+timeliness; the two-price collapse of the joint objective on the linear branch; and
+finite deadline-insolvency certificates.
+
+### What moves to later rounds
+
+1. **Closed-loop friction.** Every existence result here is E0-E2 in the
+   `CLOSED_LOOP_EXISTENCE.md` hierarchy: the date costs are exogenous. E3-E5, where
+   `m_t` and `D^r_t` respond to the policy, are untouched and are the largest gap.
+2. **Certifying (T).** The round has no mechanism for establishing a temporal
+   modulus for a reason's defect. Without one, `epsbar` is a symbol.
+3. **Simultaneous (S) and (L).** Existence of a plan that is both timely and on the
+   sharp linear branch, which is where `BOUNDED_DELAY_AFFORDABILITY.md` and
+   `AFFORDABLE_SCHEDULING.md` stop.
+4. **Necessity of bounded liability**, and a converse to the finite-horizon overload
+   certificate.
+5. **The signed class.** `SIGNED_VS_CONSERVATIVE.md` shows the conservative account
+   is strictly and unboundedly smaller; what a scheduler can safely do on the signed
+   account needs sufficient state, which the scalar slack is not.
+6. **Beyond the linear branch.** `BestResidual(B)`, the interval `CapCost` lower
+   bound, and deadline certificates on the concave branch.
+7. **Which of the three service problems Answerability demands.** A question about
+   the semantics, not about affordability, and the round's position is that it
+   should export admissible traces rather than a quota.
+
+Extending PR75 further would mean opening (1) or (2), and both are new conceptual
+directions rather than repairs. The recommendation is consolidation and merge.
 
 ## Attribution
 

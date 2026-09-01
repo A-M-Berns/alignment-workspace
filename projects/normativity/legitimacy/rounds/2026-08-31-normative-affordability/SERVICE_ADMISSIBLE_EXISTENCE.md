@@ -101,6 +101,13 @@ The optimization is
                sum_t T(t,s) <= a_s                    feasibility
                sum_s L_s(a_s) <= B                    affordable .
 
+The objective is the *unnormalized* transport error. At a fixed horizon the claim
+mass `C_N` is a constant of the instance, so dividing by it does not move the
+argmin and this LP finds the same plan as the normalized objective
+`SemErr_N` of `JOINT_SERVICEABILITY.md` §1. The normalization matters only when
+plans are compared across horizons or across claim streams, which is where the
+asymptotic statements live.
+
 **Proposition A2.** With a single claim per date, an error
 `epsilon(t,s) = eta (s - t)` linear in the delay, and reference costs equal to `1`
 except at multiples of `g` where they are `4^-k`, a schedule that serves every claim

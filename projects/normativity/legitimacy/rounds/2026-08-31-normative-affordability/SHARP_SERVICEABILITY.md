@@ -15,9 +15,11 @@ The depth the charge is computed from is the **supremum over live worlds** of th
 same deficit whose weighted mean square the residual is built from. So the residual's
 numerator is dominated termwise by four times the charge.
 
-**Theorem SS1.** Suppose every date's allocation is on the linear branch,
-`a_t <= 4 m_t / D_t^2`, and the lifetime charge satisfies `sum_t L_t(a_t) <= B`.
-Then for every horizon `N` and **every** live world `omega`,
+**Theorem SS1.** Fix a row `r`. Suppose **(N) nested assessment** — `A_N subseteq
+A_t` for every `t <= N` — that every date's allocation is on the linear branch,
+`a^r_t <= 4 m_t / (D^r_t)^2`, and that the lifetime charge satisfies
+`sum_t L^r_t(a^r_t) <= B_r`. Then for every horizon `N` and **every**
+`omega in A_N`,
 
     sum_{t<N} a_t [s^+_t(omega)]^2   <=   sum_{t<N} a_t D_t^2   =   4 sum_{t<N} L_t(a_t)   <=   4B .
 
@@ -27,16 +29,32 @@ Hence if `A_N -> infinity`,
 
 and in particular `F_r(a) = 0`.
 
-*Proof.* `s^+_t(omega) <= D_t` at every live `omega` by definition of the supremum;
-the middle equality is the linear branch; the last is the budget. Divide by `A_N`
-and take square roots. `square`
+*Proof.* `D^r_t` is a supremum over `A_t`, so `s^{+,r}_t(omega) <= D^r_t` requires
+`omega in A_t`. Hypothesis (N) supplies exactly that for every `t <= N`. The middle
+equality is the linear branch; the last is the budget. Divide by `A^r_N` and take
+square roots. `square`
 
-The quantifiers point the right way and it is worth saying why. The charge is
-computed against the *worst* live world, and the residual is evaluated at *some*
-live world; a bound at the worst dominates a bound at any, so the conservative
-direction of the liability certificate is exactly what makes the residual free. The
-conclusion is stronger than `F_r` needs — it holds at the supremum, not just the
-infimum.
+**The two live-world sets are not the same set, and (N) is what relates them.** The
+charge at date `t` is computed against `A_t`, the worlds live *then*; the residual at
+horizon `N` is evaluated at `A_N`, the worlds live *at the end*. Settlement only
+removes continuations and never restores them, so `A_N subseteq A_t` and a world
+surviving to `N` was already scored by every earlier date's certificate. Without (N)
+the theorem is false as stated: a world admitted after `t` was never bounded by
+`D^r_t`, and nothing in the budget covers it. (N) is not an extra assumption on the
+world — it is the settlement interface's own monotonicity, discharged in the
+deductive case by `A_N = PC(D_N)` with a growing deductive state.
+
+With (N) in place the quantifiers point the right way for the second reason too: the
+charge is computed against the *worst* world of `A_t` and the residual is evaluated
+at *some* world of `A_N`, so the conservative direction of the liability certificate
+is what makes the residual free. The conclusion is stronger than `F_r` needs — it
+holds at the supremum over `A_N`, not just the infimum.
+
+**Row indexing.** Every quantity above is indexed by the row: `D^r_t` is the depth of
+`r`'s row, `a^r_t` its allocation, `B_r` its budget. Only `m_t` is shared, and it is
+shared as a *ceiling* on the whole date, so a multi-row schedule must satisfy the
+branch condition against its aggregate allocation — see
+`REASONWISE_ACCOUNTING.md` R1 and `MULTIREASON_SERVICEABILITY.md`.
 
 `tests/test_joint_service.py::LiabilityIsTheFrictionNumerator` pins the identity
 termwise, the uniform bound, and the vanishing mean square along a schedule whose
@@ -76,9 +94,24 @@ like `sqrt(a)` while the friction numerator `a D_t^2` grows like `a`. Inverting,
 
     a_t D_t^2  =  ( L_t(a_t) + m_t )^2 / m_t ,
 
-so a bounded charge bounds the numerator only when `m_t` is summable. With `m_t`
-bounded below, each date on this branch contributes at least `4 m_t` to the
-numerator, and the sum diverges.
+an *identity*, not an estimate. So writing `l_t = L_t(a_t)` for the charge actually
+spent, the friction numerator on this branch is exactly `sum_{t<N} (l_t + m_t)^2/m_t`
+and the residual vanishes precisely when
+
+    ( 1 / A_N )  sum_{t<N}  ( l_t + m_t )^2 / m_t   ->   0 .
+
+That is the exact condition, and it is what an earlier version of this section
+compressed to the slogan "only when `m_t` is summable". The slogan is wrong in both
+directions. Summability is not necessary: with `l_t = 0` the numerator is `sum m_t`,
+which may diverge while `A_N` diverges faster. And it is not sufficient on its own
+either, since `m_t -> 0` makes each term `(l_t + m_t)^2/m_t >= l_t^2/m_t` blow up
+when the charge does not vanish at least as fast.
+
+Two regimes make it concrete. With `m_t` **bounded below** by `m_* > 0`, each date
+contributes at least `m_*`, so the numerator grows at least linearly in the number of
+such dates and vanishing needs `A_N` to outgrow it — which the branch condition
+`a_t > 4 m_t / D_t^2` forbids from being automatic. With `m_t -> 0` and the charge
+spread evenly, the ratio `l_t^2/m_t` diverges term by term.
 
 **The failure is not hypothetical, and it is exactly the second route to cheap
 enforcement.** `SHARP_PERSISTENCE.md` §3 records two ways a date can be cheap: a
@@ -86,6 +119,9 @@ shallow exclusion (`D_t` small) and an easily moved engine (`m_t` small). SS1 us
 the first. On the second — `D_t = D > 0` fixed with `m_t -> 0` — persistence is
 affordable, every date is on the square-root branch, and if every live world is
 excluded by at least `sigma > 0` then `F_r >= sigma` however long the service runs.
+This **counterregime survives the correction above**: it is the `D_t >= sigma`,
+`m_t -> 0` corner, where the exact condition fails for the second of the two reasons
+just given.
 
 So:
 

@@ -6,11 +6,20 @@ A service schedule `(a, T)` controls three things at once:
 
     liability            sum_s L_s(a_s)
     settlement friction  F_r(a), built from sum_s a_s r_s with r_s = D_s^2
-    transport error      eps(T) = sum_{t,s} T(t,s) eps(t,s)
+    transport error      SemErr(T) = limsup_N (1/C^r_N) sum_{t,s} T_N(t,s) eps(t,s)
 
 and the fixed-era bound is
 
-    limsup_N E_{mu^r_N}[d^r]   <=   L_r K_r F_r(a)  +  eps(T) .
+    limsup_N E_{mu^r_N}[d^r]   <=   L_r K_r F_r(a)  +  SemErr(T) .
+
+**The transport term is claim-normalized**, and an earlier version of this document
+used the raw sum `sum T eps`. That was a type error: the left-hand side is an average
+over claim mass and the raw sum is an extensive quantity that diverges on any
+infinite claim stream even when every edge is exact to within a fixed tolerance.
+`SERVICE_TRANSFER.md` T3 now states the normalized form, and `SemErr` is its limsup.
+A plan of uniform delay `H` against a temporal modulus `omega_r` has
+`SemErr(T) <= omega_r(H)` whatever the claim mass, which is the property the raw sum
+did not have.
 
 The earlier frontier treated `F_r` as a property of the norm. It is not: it is the
 misfit landscape `s^r_t(omega)` — which the norm and settlement supply — **evaluated
@@ -27,10 +36,18 @@ For one reason at a finite horizon:
 
     choose  a >= 0 and a legal transport plan T
     subject to  sum_s L_s(a_s) <= B ,   sum_t T(t,s) <= a_s ,
+                sum_s T(t,s) = c_t ,
                 T(t,s) > 0 => t <= s <= t + H
-    minimising  Residual(a, T)  =  L_r K_r F_r(a)  +  eps(T) .
+    minimising  Residual(a, T)  =  L_r K_r F_r(a)  +  SemErr_N(T) ,
 
-Write `BestResidual(B) = inf over affordable admissible plans of Residual`.
+with `SemErr_N(T) = (1/C^r_N) sum_{t,s} T(t,s) eps(t,s)` at a finite horizon.
+
+    BestResidual(B)  =  inf { Residual(a, T) : (a, T) affordable and admissible } ,
+
+the infimum over plans meeting the budget, the capacity constraints and the deadline.
+It is a *normalized* residual, so it is comparable across horizons and across claim
+streams of different sizes — which is what makes the limit statement in §2 meaningful
+at all.
 
 Two facts make this tractable in the regime that matters.
 
@@ -39,7 +56,7 @@ Two facts make this tractable in the regime that matters.
 numerator is not an independent objective at all: it is four times the liability
 already being budgeted. Any affordable persistent schedule has `F_r(a) = 0`, and
 
-    BestResidual(B)  =  inf { eps(T) : (a,T) affordable, A_N -> infinity } .
+    BestResidual(B)  =  inf { SemErr(T) : (a,T) affordable, A^r_N -> infinity } .
 
 **So the joint problem collapses to a pure timeliness problem** in that regime. The
 three-way trade the round expected is a two-way trade between spending and waiting.
@@ -71,10 +88,29 @@ what waiting costs. The cheapest-liability date is not in general the best date 
 the same fixture shows the optimum moving from the farthest, cheapest date to the
 nearest one as the delay price rises.
 
-**Proposition JS2 (the Pareto frontier).** Varying the single combined price traces
-the finite-horizon Pareto frontier between total liability and total transport
-error, and each point of it is computed by one pass of per-claim minimisation over
-the window. No dynamic programming is needed on the linear branch, because D4's
+**Proposition JS2 (the frontier, with its convexity hypothesis).** Both objectives —
+total liability `sum_{t,s} T(t,s) w_s` and normalized transport error
+`(1/C_N) sum_{t,s} T(t,s) eps(t,s)` — are **linear in `T`**, and the admissible plans
+at a fixed horizon and deadline form the transportation polytope
+
+    P  =  { T >= 0 : sum_s T(t,s) = c_t ,  T(t,s) = 0 outside [t, t+H] } ,
+
+which is convex. The achievable region is therefore the linear image of a convex set,
+hence convex, and **every Pareto point is recovered by scalarization**: varying the
+single combined price of JS1 traces the whole frontier, and each point is computed by
+one pass of per-claim minimisation over the window.
+
+**The convexity hypothesis is fractional splitting.** A claim's mass must be allowed
+to divide across several dates. That is what makes `P` a polytope rather than a
+finite set of assignments; over integral assignments the achievable region is a
+finite point set whose non-supported points no price recovers. `BOUNDED_DELAY_AFFORDABILITY.md` D1 says splitting never helps on
+the linear branch *for the liability objective alone*, so an optimum can always be taken atomic there — but the
+statement being made here is about the shape of the *region*, and it needs the
+fractional relaxation. Without fractional splitting the correct claim is the weaker
+one: scalarization recovers the **supported** Pareto frontier, the vertices of the
+convex hull of the achievable set, and nothing more.
+
+No dynamic programming is needed on the linear branch either way, because D4's
 per-claim separation survives the extra objective.
 
 ## 4. Where the collapse does not happen

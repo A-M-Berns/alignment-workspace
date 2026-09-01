@@ -301,15 +301,44 @@ splitting strictly cheaper. The run structure additionally needs equal claim mas
 since the sorting exchange leaves loads unchanged only then, and a crossed
 assignment can strictly win otherwise.
 
-**One reading withdrawn.** Persistence, eventual full service under unbounded delay,
-and uniform bounded-delay service are three strictly separated problems; the limit of
-the bounded-delay costs can exceed the unbounded-delay cost when the gaps between
-cheap dates diverge, and persistence can hold where even eventual service fails.
+**One reading withdrawn.** The limit of the bounded-delay costs can exceed the
+unbounded-delay cost when the gaps between cheap dates diverge, so the bounded-delay
+formula's `H -> infinity` limit is not the persistence criterion.
 
 The settlement-friction residual is schedule-dependent rather than a property of the
 norm, and in the linear regime the joint objective separates per claim into a score
 with two prices rather than three, because the friction price is four times the
 liability price.
+
+## The ninth dispatch, and the round's close
+
+**Persistence and eventual full service are the same existence question.** The
+eighth pass had claimed a strict separation; it priced block batching and read it as
+the minimum. A diagonal gives each claim its own cheap date, so under unlimited
+deferral and divergent claim mass the two are equivalent. Uniform bounded delay
+remains strictly stronger, and no condition on the gaps between cheap dates
+substitutes for the sliding-window criterion: cheap dates every other date with
+reciprocally decaying depth still make timely service unaffordable.
+
+**Three repairs to the machinery.** The transport residual is the claim-normalized
+average of the edge errors, not their raw sum, which is what makes it comparable to
+the claim-weighted defect it bounds. The friction-free theorem needs the settlement
+interface's own monotonicity as an explicit hypothesis, because the charge is scored
+against the worlds live at each date and the residual against the worlds live at the
+horizon. Past the branch point the exact condition is that the squared
+charge-plus-scale over the scale, averaged against allocated authority, vanishes;
+summability of the engine scale is neither necessary nor sufficient.
+
+**The canonical theorem.** Sharp-linear affordability plus timely Answerability
+transport yields claim-weighted Progress up to semantic delay only, at rate twice the
+root budget plus the root ceiling over the root allocated authority. Every clause of
+that sentence is a stated hypothesis or a proved conclusion.
+
+**The round closes.** The fixed-era affordability and serviceability layer is
+finished. Closed-loop friction, certification of the temporal modulus, and the
+simultaneous existence of timely and linear-branch-affordable plans are new
+directions rather than repairs, and move to later rounds. A consistency audit tables
+all twenty withdrawn claims and the three patterns that produced them.
 
 ## Outstanding maintainer actions
 
@@ -326,4 +355,4 @@ agent-decided and reversible.
 |---|---|
 | prompt author | unrecorded — authored outside this repository |
 | executor | Claude Opus 5 (Anthropic) |
-| dates | eight dispatches; five executed 2026-08-31, three 2026-09-01 |
+| dates | nine dispatches; five executed 2026-08-31, four 2026-09-01 |

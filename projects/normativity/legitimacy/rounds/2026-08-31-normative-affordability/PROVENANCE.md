@@ -33,7 +33,12 @@ depth-only reading of the sharp criterion. `SHARP_SERVICEABILITY.md`,
 and `tests/test_joint_service.py` are the eighth dispatch's, which corrects the
 seventh's batching hypotheses and its reading of the unbounded-delay limit, and
 shows the settlement-friction residual is paid for by the liability budget on the
-sharp charge's linear branch.
+sharp charge's linear branch. `SHARP_TIMELY_SERVICE.md`, `DEADLINE_INSOLVENCY.md`,
+`CONSISTENCY_AUDIT.md`, `src/timely.py` and `tests/test_timely.py` are the ninth
+dispatch's, which withdraws the eighth's separation between persistence and eventual
+full service and its bounded-gap shortcut, normalizes the transport residual by claim
+mass, supplies the nested-assessment hypothesis the friction-free theorem needs, and
+assembles the round's canonical Sharp Timely Service theorem.
 
 The round starts from `main` at
 `292bb2731b0df09aa034ca4abc5ce64a20a41785`. It reads and does not modify:

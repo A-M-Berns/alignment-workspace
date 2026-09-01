@@ -153,7 +153,7 @@ transporting.
 
     (T1)  sum_s T(t, s) <= c_t ,  and  R_N := C_N - sum_{t,s} T(t,s)  the residual;
     (T2)  sum_t T(t, s) <= w_s ;
-    (T3)  d_t <= L d_s + eps  whenever  T(t, s) > 0 .
+    (T3)  d_t <= L d_s + eps(t, s)  whenever  T(t, s) > 0 .
 
 `(T1)` says the plan is drawn from what is owed and reports what it leaves
 unmatched; `(T2)` says no date is asked for more service than it delivered;
@@ -164,15 +164,28 @@ about the defect at the service date back to the defect at the claim date.
 that `W_N <= K C_N` (**service parsimony**), and that `R_N / C_N -> 0`. Then for
 every `0 <= d <= D`,
 
-    E_{mu_N}[d]  <=  L K E_{nu_N}[d]  +  eps  +  D R_N / C_N .
+    E_{mu_N}[d]  <=  L K E_{nu_N}[d]  +  epsbar_N(T)  +  D R_N / C_N ,
+
+where the transport contribution is the **claim-normalized** average
+
+    epsbar_N(T)  =  (1 / C_N)  sum_{t,s}  T_N(t,s) eps(t,s) .
+
+The normalization is by the claim mass, because the left-hand side is a
+claim-weighted average and a raw sum of edge errors is not comparable to it — the
+raw sum grows with the number of served claims even when every edge is exact to
+within a fixed tolerance. A uniform constant `eps` recovers the earlier form, since
+`epsbar_N <= eps · (C_N - R_N)/C_N <= eps`. With a temporal modulus
+`|d_t - d_s| <= omega(|s - t|)` and forward service, `eps(t,s) = omega(s - t)` and
+`epsbar_N(T)` is the claim-weighted mean semantic delay cost, which a plan of delay
+at most `H` bounds by `omega(H)`.
 
 *Proof.* Write the transported claim measure `mu~_N(s) = (sum_t T(t,s)) / C_N`.
 Then
 
     E_{mu_N}[d] = (1/C_N) sum_t c_t d_t
                 <= (1/C_N) sum_{t,s} T(t,s) d_t  +  D R_N / C_N
-                <= (1/C_N) sum_{t,s} T(t,s) (L d_s + eps)  +  D R_N / C_N
-                <= L sum_s mu~_N(s) d_s  +  eps  +  D R_N / C_N .
+                <= (1/C_N) sum_{t,s} T(t,s) (L d_s + eps(t,s))  +  D R_N / C_N
+                <= L sum_s mu~_N(s) d_s  +  epsbar_N(T)  +  D R_N / C_N .
 
 By (T2), `mu~_N(s) <= w_s / C_N = nu_N(s) W_N / C_N <= K nu_N(s)`, so the first
 term is at most `L K E_{nu_N}[d]`. `square`
@@ -213,7 +226,7 @@ density against `nu_N` while `mu~_N` has density exactly the cap.
 ## 5. The recommended interface
 
 The Answerability-to-Progress interface is a **declared transport plan with
-constants `(L, eps, K)` and a residual schedule**, not a contiguity assertion.
+constants `(L, eps(·,·), K)` and a residual schedule**, not a contiguity assertion.
 Contiguity is the right *characterization* — T1 and T2 make it exactly the class
 of measure pairs for which blind transfer works, blind meaning that nothing is
 assumed about the defect — and the wrong *primitive*, because it is not checkable

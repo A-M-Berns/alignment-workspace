@@ -106,13 +106,15 @@ read the limit of D4 as the unconstrained persistence criterion. That is false:
 — so unconstrained persistence holds and eventual full service costs under `1/2` —
 for which `Cost_H = infinity` at every finite `H`, because the gaps between cheap
 dates diverge. So `lim_H Cost_H` can strictly exceed the unbounded-delay cost, and
-neither equals the persistence criterion. The three problems separate, and E1 and E2
-give both separations.
+neither equals the persistence criterion. Persistence and eventual full service are
+*equivalent* under unlimited deferral (`EVENTUAL_VS_UNIFORM_SERVICE.md` EV1); what
+separates from both is uniform bounded delay.
 
-Equality holds when the gaps between cheap dates are bounded by some `G`: then every
-window at `H >= G` contains a cheap date and `Cost_H = Cost_infinity`. Claim density
-and cheap-date density meet in the sliding window, and the *spacing* of the cheap
-dates is what decides whether a uniform deadline can reach them.
+`Cost_H = Cost_infinity` holds once `H` exceeds the gaps between cheap dates, but
+that equality is between two *bounded-delay* costs and does **not** make either
+finite: `EVENTUAL_VS_UNIFORM_SERVICE.md` E3 has gaps of exactly two, a friction
+dipping to zero, and `Cost_1 = infinity`. **D4 is the criterion and no gap condition
+substitutes for it.**
 
 ## 5. This is not the old disjoint-window theorem
 

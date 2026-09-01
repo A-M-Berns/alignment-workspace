@@ -5683,3 +5683,961 @@ $$
 as the final asymptotic defect.
 
 Do not broaden beyond this question.
+
+---
+
+# Ninth dispatch — canonical Sharp Timely Service theorem and final consistency audit
+
+# Ninth pass inside PR75: canonical Sharp Timely Service theorem and final consistency audit
+
+Stay inside PR75:
+
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+
+This should be a **narrow theorem-repair and consolidation pass**, not another expansion of the research program.
+
+Treat the following as frozen unless an actual contradiction appears:
+
+* fixed-era construction/composition;
+* service \(=\) predictable allocated authority \(a=\beta\);
+* realized force \(=ad\);
+* reactive-control-law typing;
+* MarketMaker coercive Progress;
+* reasonwise row accounting;
+* SafeCert/preservation;
+* Deferred Service Transfer;
+* bounded-delay interval feasibility/FIFO;
+* exogenous persistence theorem S1;
+* linear bounded-delay cost formula D4.
+
+The main goals are now:
+
+1. repair the false persistence/eventual-service hierarchy;
+2. normalize variable transport error correctly;
+3. state one canonical theorem combining sharp-linear affordability, timely service, and Sustainable Progress;
+4. aggressively clean stale/overbroad claims in the round and PR summary.
+
+Do not open a new conceptual direction unless one of these repairs forces it.
+
+---
+
+# 1. Correct persistence versus eventual full service
+
+`EVENTUAL_VS_UNIFORM_SERVICE.md` currently claims three strictly separated notions:
+
+$$
+\text{persistence}
+<
+\text{eventual full service}
+<
+\text{uniform bounded-delay service}.
+$$
+
+The second separation appears false in the exogenous, fungible, unlimited-deferral benchmark.
+
+Let claims have finite masses
+
+$$
+c_0,c_1,\ldots
+$$
+
+and suppose
+
+$$
+\sum_t c_t=\infty.
+$$
+
+Assume the exogenous date costs \(L_s\) are increasing, star-shaped, vanish at zero, and satisfy the persistence criterion
+
+$$
+\liminf_sL_s(1)=0.
+$$
+
+By the reference-level lemma, for every fixed \(c_t>0\),
+
+$$
+\liminf_sL_s(c_t)=0.
+$$
+
+Therefore enumerate the claims and choose strictly increasing service dates
+
+$$
+s_t\ge t
+$$
+
+such that
+
+$$
+L_{s_t}(c_t)
+\le
+B2^{-(t+1)}.
+$$
+
+Then every claim is eventually served and
+
+$$
+\sum_tL_{s_t}(c_t)\le B.
+$$
+
+Formalize this carefully.
+
+## Target theorem EV1
+
+Under exogenous fungible service, finite individual claim masses, unlimited deferral, and divergent total claim mass:
+
+$$
+\boxed{
+\text{persistent affordability}
+\iff
+\text{affordable eventual full service}.
+}
+$$
+
+Be precise about what each side means.
+
+The reverse direction should use:
+
+$$
+\sum_s a_s
+\ge
+\sum_t c_t
+=
+\infty
+$$
+
+for any plan discharging every claim.
+
+If
+
+$$
+\sum_t c_t<\infty,
+$$
+
+eventual full service clearly need not imply persistent authority, so state the claim-mass hypothesis explicitly.
+
+Also distinguish:
+
+$$
+\boxed{
+\text{existence of a persistent schedule}
+}
+$$
+
+from
+
+$$
+\boxed{
+\text{a particular persistent schedule actually services the claims}.
+}
+$$
+
+A persistent schedule can ignore claims even though some other affordable schedule eventually discharges all of them.
+
+Withdraw the current E2 countermodel.
+
+---
+
+# 2. Preserve the real separation: uniform timeliness
+
+The powers-of-two fixture in E1 appears to establish the actual strict hierarchy:
+
+$$
+\boxed{
+\text{eventual full service}
+\not\Rightarrow
+\text{uniform bounded-delay service}.
+}
+$$
+
+Keep and recheck it.
+
+For unit claims and
+
+$$
+w_t=1
+$$
+
+except
+
+$$
+w_{2^k}=4^{-k},
+$$
+
+show:
+
+* eventual service has finite cost by batching increasingly large blocks at increasingly cheap later dates;
+* for every finite \(H\),
+
+  $$
+  \operatorname{Cost}_H=\infty.
+  $$
+
+Then state the correct hierarchy for the exogenous fungible benchmark:
+
+$$
+\boxed{
+\text{persistence existence}
+\equiv
+\text{eventual full-service existence}
+}
+$$
+
+under divergent total claim mass, while
+
+$$
+\boxed{
+\text{uniform timely service}
+}
+$$
+
+is strictly stronger.
+
+This is conceptually important:
+
+> **Unlimited deferral makes “eventually answer every persistent claim” almost as cheap as merely maintaining divergent service. The substantive Answerability constraint enters when delay itself matters.**
+
+Do not overstate this outside the exogenous/fungible model.
+
+---
+
+# 3. Remove the false bounded-gap shortcut
+
+Audit claims such as:
+
+> bounded gaps between cheap dates imply persistence, eventual service, and bounded-delay service coincide;
+
+or:
+
+> positive-density cheap dates have bounded gaps.
+
+Both are too strong.
+
+Positive asymptotic density does not imply bounded gaps.
+
+And even uniformly bounded gaps between dates where
+
+$$
+w_t\to0
+$$
+
+do not guarantee finite timely-service cost.
+
+Example candidate:
+
+$$
+w_{2k}=k^{-1/2},
+\qquad
+w_{2k+1}=1,
+$$
+
+with unit claims and \(H=1\).
+
+Cheap opportunities have bounded gaps and
+
+$$
+\liminf w_t=0,
+$$
+
+so persistence/eventual service are affordable, but
+
+$$
+\sum_t
+\min_{s\in[t,t+1]}w_s
+$$
+
+diverges.
+
+The exact bounded-delay criterion is already D4:
+
+$$
+\boxed{
+\sum_t
+c_t
+\min_{s\in[t,t+H]}w_s
+<\infty.
+}
+$$
+
+Let this theorem replace heuristic claims based only on gap size.
+
+---
+
+# 4. Generalize Deferred Service Transfer to edge-dependent semantic error
+
+`SERVICE_TRANSFER.md` T3 currently assumes one uniform stability constant:
+
+$$
+d_t\le Ld_s+\epsilon
+$$
+
+whenever \(T(t,s)>0\).
+
+For the joint optimization we want an edge-dependent error:
+
+$$
+d_t
+\le
+L d_s+\epsilon(t,s).
+$$
+
+Derive the exact quantitative theorem.
+
+The additive error should be **claim-normalized**, not the raw sum.
+
+Define
+
+$$
+\boxed{
+\bar\epsilon_N(T)
+=
+\frac1{C_N}
+\sum_{t,s}
+T_N(t,s)\epsilon(t,s).
+}
+$$
+
+Then prove:
+
+$$
+\boxed{
+E_{\mu_N}[d]
+\le
+LK E_{\nu_N}[d]
++
+\bar\epsilon_N(T)
++
+D\frac{R_N}{C_N}.
+}
+$$
+
+Check every normalization.
+
+If \(L\) also needs to vary by edge, consider the minimal useful extension, but do not generalize unnecessarily.
+
+For temporal modulus
+
+$$
+|d_t-d_s|
+\le
+\omega(|s-t|),
+$$
+
+take
+
+$$
+\epsilon(t,s)=\omega(s-t)
+$$
+
+for forward service.
+
+Then the transport contribution becomes the **claim-weighted mean semantic delay cost**
+
+$$
+\boxed{
+\frac1{C_N}
+\sum_{t,s}T(t,s)\omega(s-t).
+}
+$$
+
+Uniform delay \(H\) recovers the earlier bound:
+
+$$
+\bar\epsilon_N(T)\le\omega(H).
+$$
+
+This should replace the unnormalized `eps(T)` currently used in `JOINT_SERVICEABILITY.md`.
+
+---
+
+# 5. Audit the exact SS1 quantifiers
+
+`SHARP_SERVICEABILITY.md` proves, on the sharp linear branch,
+
+$$
+L_t(a_t)
+=
+\frac14a_tD_t^2,
+\qquad
+D_t
+=
+\sup_{\omega\in A_t}s_t^+(\omega).
+$$
+
+Then it bounds, for a horizon \(N\),
+
+$$
+\sum_{t<N}
+a_t[s_t^+(\omega)]^2
+\le
+\sum_{t<N}a_tD_t^2.
+$$
+
+Make the live-world quantifiers exact.
+
+If
+
+$$
+\omega\in A_N
+$$
+
+and \(t<N\), this step needs
+
+$$
+A_N\subseteq A_t
+$$
+
+or the relevant monotone live-world property.
+
+That should hold for settlement-shrinking assessment sets, but put it into the theorem statement or cite the exact interface property.
+
+The robust result should be something like:
+
+$$
+\sup_{\omega\in A_N}
+\sum_{t<N}a_t[s_t^+(\omega)]^2
+\le4B.
+$$
+
+Confirm there is no hidden problem when the row/reason itself changes over time.
+
+If the theorem is row-indexed rather than one fixed deficit functional, type that correctly.
+
+---
+
+# 6. State the canonical Sharp Timely Service theorem
+
+This is the main deliverable.
+
+We now appear to have all the pieces for a clean LI-specific theorem.
+
+## Candidate theorem
+
+Let \(r\) be a persistent fixed-era reason with claim stream \(c_t^r\).
+
+Suppose:
+
+### Service
+
+There is an adapted transport plan \(T^r\) from claims to allocated authority \(a_t^r\), with:
+
+$$
+A_N^r
+=
+\sum_{t<N}a_t^r
+\to\infty,
+$$
+
+service parsimony
+
+$$
+W_N^r\le K_r C_N^r,
+$$
+
+and residual
+
+$$
+R_N^r/C_N^r\to0.
+$$
+
+### Sharp-linear affordability
+
+The reason's enforcement allocations remain on the sharp linear branch:
+
+$$
+a_t^r
+\le
+\frac{4m_t}{(D_t^r)^2}
+$$
+
+on all relevant dates, or all but finitely many with the finite exceptional contribution explicitly absorbed.
+
+Its robust lifetime liability satisfies
+
+$$
+\sum_t
+\frac14a_t^r(D_t^r)^2
+\le B_r.
+$$
+
+### MarketMaker
+
+The reason's enforcement book has the appropriate reasonwise ceiling
+
+$$
+U_r,
+$$
+
+derived from the aggregate cap and complementary row liability floors.
+
+### Temporal stability
+
+For transported claim mass:
+
+$$
+d_t^r
+\le
+L_r d_s^r+\epsilon_r(t,s).
+$$
+
+Then derive the strongest finite-horizon inequality.
+
+The likely shape is:
+
+$$
+E_{\mu_N^r}[d^r]
+\le
+L_rK_r
+\frac{
+2\sqrt{B_r}
++
+\sqrt{U_r}
+}{
+\sqrt{A_N^r}
+}
++
+\bar\epsilon_N^r(T)
++
+D_r\frac{R_N^r}{C_N^r}.
+$$
+
+Check the constants against `LI_PROGRESS_FROM_SERVICE.md`, `FIXED_ERA_THEOREM.md`, and SS2 rather than trusting this candidate.
+
+If the MarketMaker constant is
+
+$$
+U+B_{\rm tot}
+$$
+
+rather than a separately named \(U_r\), preserve the exact form.
+
+Then asymptotically:
+
+$$
+\boxed{
+\limsup_N
+E_{\mu_N^r}[d^r]
+\le
+\limsup_N\bar\epsilon_N^r(T).
+}
+$$
+
+Under uniform delay \(H\) and modulus \(\omega_r\):
+
+$$
+\boxed{
+\limsup_N
+E_{\mu_N^r}[d^r]
+\le
+\omega_r(H).
+}
+$$
+
+Under exact defect preservation:
+
+$$
+\boxed{
+E_{\mu_N^r}[d^r]\to0.
+}
+$$
+
+This theorem should be the canonical positive result of PR75.
+
+---
+
+# 7. Explain exactly what SS1 has compressed
+
+The generic fixed-era theorem carries two residual mechanisms:
+
+1. settlement friction;
+2. transport distortion.
+
+Under sharp-linear robust affordability, the first vanishes automatically.
+
+State the structure explicitly:
+
+$$
+\boxed{
+\text{generic affordability}
+\Rightarrow
+\text{Progress up to }F+\epsilon,
+}
+$$
+
+but
+
+$$
+\boxed{
+\text{sharp-linear robust affordability}
+\Rightarrow
+F=0,
+}
+$$
+
+hence
+
+$$
+\boxed{
+\text{Sharp Timely Service}
+\Rightarrow
+\text{Progress up to transport distortion alone}.
+}
+$$
+
+Do **not** remove \(F\) from the generic schematic theorem.
+
+The square-root branch proves why it belongs there.
+
+---
+
+# 8. Recheck the square-root branch statement
+
+The current file gives
+
+$$
+aD^2
+=
+\frac{(L(a)+m)^2}{m}.
+$$
+
+That identity is useful.
+
+But audit claims such as:
+
+> a bounded charge bounds the numerator only when \(m_t\) is summable.
+
+That wording may be too strong or imprecise.
+
+Given date charges
+
+$$
+\ell_t=L_t(a_t),
+$$
+
+the exact condition is about
+
+$$
+\sum_t
+\frac{(\ell_t+m_t)^2}{m_t}
+$$
+
+relative to total service.
+
+Explore the weakest clean sufficient condition for
+
+$$
+F(a)=0.
+$$
+
+For instance:
+
+$$
+\frac{
+\sum_{t<N}(\ell_t+m_t)^2/m_t
+}{
+A_N
+}
+\to0.
+$$
+
+No need for a full characterization. Just ensure the branch-failure discussion states an exact condition rather than an unnecessarily strong summability slogan.
+
+Preserve the important counterregime:
+
+$$
+D_t\ge\sigma>0,
+\qquad
+m_t\to0,
+$$
+
+where service can be cheaply persistent while \(F\) stays positive.
+
+---
+
+# 9. Repair the joint serviceability objective
+
+Replace raw
+
+$$
+\epsilon(T)
+=
+\sum T(t,s)\epsilon(t,s)
+$$
+
+with the normalized quantity from §4.
+
+Then distinguish finite-horizon and asymptotic objectives.
+
+A finite-horizon objective can use total quantities if explicitly normalized afterward, but the Sustainable Progress theorem consumes an **average per claim**, not total distortion.
+
+A clean asymptotic definition is:
+
+$$
+\mathsf{SemErr}(T)
+=
+\limsup_N
+\frac1{C_N}
+\sum_{t,s<N}
+T_N(t,s)\epsilon(t,s).
+$$
+
+Then:
+
+$$
+\boxed{
+\mathsf{BestResidual}(B)
+=
+\inf_{\text{affordable admissible }(a,T)}
+\left[
+L_rK_rF_r(a)
++
+\mathsf{SemErr}(T)
+\right].
+}
+$$
+
+On the sharp linear branch with persistent service:
+
+$$
+F_r(a)=0,
+$$
+
+so:
+
+$$
+\boxed{
+\mathsf{BestResidual}(B)
+=
+\inf_{\text{sharp-linearly affordable }T}
+\mathsf{SemErr}(T).
+}
+$$
+
+That is the genuine “spending versus waiting” problem.
+
+---
+
+# 10. Tighten the linear assignment/Pareto statement
+
+On the linear branch:
+
+$$
+w_s=\frac14D_s^2
+$$
+
+and any separate friction numerator price is proportional to \(w_s\).
+
+With edge delay cost \(\epsilon(t,s)\), a scalarized finite-horizon problem becomes:
+
+$$
+\operatorname{score}_\lambda(t,s)
+=
+\lambda w_s+\epsilon(t,s)
+$$
+
+up to constants.
+
+Each claim independently chooses:
+
+$$
+s\in[t,t+H]
+$$
+
+minimizing this score.
+
+That part is clean.
+
+But do not automatically state that varying \(\lambda\) recovers **every** Pareto-optimal point.
+
+Determine whether the achievable pair set
+
+$$
+(\text{liability},\text{semantic delay})
+$$
+
+is convex because claims may be fractionally split.
+
+If yes, prove it, then scalarization recovers the supported frontier and perhaps the whole frontier.
+
+If not, say only:
+
+> varying the multiplier recovers the supported Pareto frontier.
+
+Do not spend much time here.
+
+---
+
+# 11. Produce a finite deadline-insolvency certificate
+
+Now that the timely-service cost is exact on the linear branch, formulate the finite certificate cleanly.
+
+For a finite set of already-arrived claims with deadlines, compute the minimum certified remaining liability required to serve them:
+
+$$
+\operatorname{ReqCost}
+=
+\sum_t
+c_t
+\min_{s\in[t,t+H]\cap\text{future}}
+w_s
+$$
+
+in the linear predictable-cost model.
+
+If
+
+$$
+\operatorname{ReqCost}
+>
+B_{\rm remaining},
+$$
+
+then current timely service is impossible.
+
+The certificate should record:
+
+* claims/provenance;
+* legal future service windows;
+* authenticated costs/upper-risk weights;
+* exact minimum required charge;
+* certified remaining liability slack;
+* the strict inequality.
+
+State precisely when this is a complete insolvency certificate and when future costs are not yet known, so only a conditional certificate is possible.
+
+This is probably the cleanest finite overload certificate the round has produced.
+
+---
+
+# 12. Final consistency audit of PR75
+
+Search the round and PR body for now-withdrawn claims.
+
+At minimum patch all surviving forms of:
+
+* sharp persistence iff exclusion depth alone dips, without an \(m_t\) floor;
+* D3 under mere star-shapedness;
+* bounded-delay \(H\to\infty\) equals persistence;
+* eventual full service strictly stronger than persistence in the exogenous unlimited-delay benchmark;
+* positive density implies bounded cheap-date gaps;
+* bounded gaps alone imply finite timely-service cost;
+* \(F_r\) is scheduler-independent;
+* raw unnormalized \(\sum T\epsilon\) is the transport residual;
+* every Pareto point is recovered by scalarization without a convexity proof;
+* every form of overload is liability overload without conditioning on force feasibility;
+* separate reason underwriting is necessary rather than one sufficient isolation route;
+* sustainable authority-rate region convexity.
+
+Do not rewrite provenance history. Mark withdrawals/corrections in the style already used by the round.
+
+---
+
+# 13. Decide whether PR75 should now stop
+
+End with a direct verdict.
+
+PR75 should be considered mathematically mature enough to stop if we now have:
+
+1. the generic fixed-era construction theorem;
+2. exact exogenous persistence characterization;
+3. exact uniform-delay transport;
+4. exact linear timely-service cost;
+5. Sharp Timely Service theorem;
+6. clear scope boundaries around:
+
+   * concave batching,
+   * square-root branch,
+   * closed-loop friction,
+   * nonfungible/cross-era service,
+   * causal overload duality.
+
+If so, say:
+
+$$
+\boxed{
+\text{PR75 has finished the fixed-era affordability/serviceability layer.}
+}
+$$
+
+Then list the remaining questions that should move to later rounds rather than being pursued here.
+
+Likely later work:
+
+* closed-loop empirical serviceability;
+* certification of temporal stability \(T3\);
+* nonfungible service semantics;
+* cross-era semantic transport;
+* necessity of bounded liability;
+* dynamic insolvency duality;
+* counterfactual non-capture / legitimacy;
+* deference/corrigibility consumer.
+
+Do not begin any of those in this pass.
+
+---
+
+# Deliverables
+
+Produce/update:
+
+1. `EVENTUAL_VS_UNIFORM_SERVICE.md`
+
+   * replace E2 with the persistence/eventual-service equivalence theorem;
+   * retain the strict uniform-delay separation.
+
+2. `SERVICE_TRANSFER.md`
+
+   * edge-dependent normalized transport-error theorem.
+
+3. `SHARP_TIMELY_SERVICE.md`
+
+   * canonical finite-horizon and asymptotic theorem;
+   * exact hypotheses and constants;
+   * this should be the main positive theorem of the final pass.
+
+4. `JOINT_SERVICEABILITY.md`
+
+   * normalized semantic-error objective;
+   * corrected scalarization/Pareto language.
+
+5. `SHARP_SERVICEABILITY.md`
+
+   * audit square-root branch conditions and SS1 quantifiers.
+
+6. `DEADLINE_INSOLVENCY.md`
+
+   * finite authenticated timely-service insolvency certificate.
+
+7. Targeted corrections to all contradicted text and the PR body.
+
+8. Exact-rational fixtures for:
+
+   * persistence \(\Rightarrow\) eventual service via diagonal cheap-date assignment;
+   * eventual service but no finite uniform deadline;
+   * bounded cheap-date gaps with divergent timely-service cost;
+   * normalized variable transport error;
+   * Sharp Timely Service finite-horizon bound;
+   * finite deadline insolvency certificate.
+
+## Highest priority
+
+Spend most effort on the exact canonical theorem:
+
+$$
+\boxed{
+\text{sharp-linear affordability}
++
+\text{timely Answerability transport}
+\Longrightarrow
+\text{claim-weighted Progress up to semantic delay only}.
+}
+$$
+
+Everything else in this pass should support making that statement correct and final.
+
+## Success criterion
+
+At the end I want to be able to summarize the positive fixed-era result in one sentence:
+
+> **If Answerability's claims can be transported onto sufficiently timely sharp-linearly affordable enforcement dates, then the same liability budget that preserves the learner also drives settlement friction away, leaving only the semantic change incurred while the reason waited to be answered.**
+
+If that sentence is mathematically exact after the repairs, stop extending PR75 and recommend consolidation/merge.

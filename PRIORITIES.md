@@ -1975,6 +1975,67 @@ for the synchronic certificate the horizon version extends.
 *A solution ships:* the theorem or the separating instance, and in either case a
 statement of what a certificate can and cannot be fed back into Answerability as.
 
+### 75. Close the loop: policy-dependent enforcement friction — **[entry]** — *sequenced behind item 74*
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Every existence result in the affordability round is E0-E2 of its own hierarchy: the
+date costs `L_t` are exogenous, given to the scheduler by an environment that does not
+react. In a live market both inputs to the cost react to the policy. The market
+maker's slack and the opposing volume `m_t` respond to how hard the enforcement
+position has been pushing, and the exclusion depth `D^r_t` responds to whether the
+reason has been enforced — that is the point of enforcing it. So the scheduler's own
+spending changes the prices it will face.
+
+Settle E3-E5. The tractable first question is monotone: if enforcing a reason weakly
+decreases its future depth, does the persistence criterion survive, and is the greedy
+tranche rule still causal-optimal? The adversarial one is whether a policy can be
+driven into a friction trap it created — cheap dates spent early, depth restored, and
+no affordable dates left.
+
+*Deliverable shape:* a stated theorem with exact-rational fixtures, or a trap
+instance.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes.
+
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/CLOSED_LOOP_EXISTENCE.md`
+for the hierarchy and what E0-E2 already give, `SHARP_PERSISTENCE.md` for the
+exogenous criterion the closed loop has to be compared against, and
+`SHARP_TIMELY_SERVICE.md` §6, which names this as the largest gap in its hypotheses.
+*A solution ships:* the criterion, and a statement of which of the exogenous theorems
+survive the loop unchanged.
+
+### 76. Certify a reason's temporal modulus — **[entry]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The canonical Sharp Timely Service bound ends in a single term: the claim-normalized
+semantic error incurred while a reason waited to be answered, bounded by the reason's
+temporal modulus at the plan's delay. The round has **no mechanism for establishing
+that modulus** for any reason, which means the theorem's conclusion is exact and its
+last constant is a symbol.
+
+Settle what a modulus certificate could be. The deductive channel is the place to
+look: if a reason's defect is a function of the settled record and the record grows by
+a bounded amount per date, the modulus is a property of that dependence rather than an
+empirical estimate. On the empirical channel a funded procedure can settle within the
+window and move the depth arbitrarily, so it is plausible that no modulus exists there
+and the honest form is a conditional statement.
+
+*Deliverable shape:* a stated theorem with exact-rational fixtures, or a demonstration
+that the empirical channel admits no modulus.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes.
+
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_TIMELY_SERVICE.md`
+for the theorem and hypothesis (T), `SERVICE_TRANSFER.md` for the normalized transport
+error the modulus bounds, and `CLOSED_LOOP_EXISTENCE.md` §3 for the deductive and
+empirical channel split.
+*A solution ships:* the certificate class, and what Answerability has to export for it
+to be checkable.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
