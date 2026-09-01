@@ -20,10 +20,22 @@ rounds in date order.
 | the movement from the August checkpoint and the answerability note | **`AUGUST_TO_SEPTEMBER.md`** |
 | what might be paper-sized, and where novelty is unverified | **`PAPER_CANDIDATES.md`** |
 | the sixteen questions a fresh agent should be able to answer | **`FINAL_AUDIT.md`** |
+| what this tree is, and what its frozen status covers | `ORIGIN.md` |
 | classified intellectual dependency | `../../notes/PRIOR_ART.md` |
 
 Interpretation and the human-facing narrative are in the
 [wiki](https://github.com/A-M-Berns/alignment-workspace/wiki).
+
+## Status
+
+**`agent-consolidated` from merge.** This tree is frozen as a record of what the
+program held on 1 September 2026: `ORIGIN.md` is the receipt, its paths are in the
+specification list in `tests/path_gate.py`, and future work builds on it rather than
+into it. Edit it for a correction, a scrub or a supersession, say why in the commit,
+and record substantive edits in `DECISIONS.md`.
+
+**The wiki is not frozen and never is.** The human-facing pages are outside this
+tree and are expected to move as understanding does.
 
 ## What this checkpoint supersedes, and what it does not
 

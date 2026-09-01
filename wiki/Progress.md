@@ -1,7 +1,6 @@
 # Progress
 
-**Status: open / unregistered.** A schematic with one deliberately reserved
-decision.
+**Status: open / unregistered.** Paper-derived research, not Established.
 
 ## The word does real work
 
@@ -42,16 +41,17 @@ the enforcement position sits inside the price-setting aggregate and is not
 required to be efficiently computable, so the criterion never quantifies over it at
 all. Uptake comes from the market maker's cap, and the earlier claim was withdrawn.
 
-## The reserved decision
+## Two forms, and which one gets the name
 
-There are two forms of the statement and they are genuinely different. The staging
-between them is settled even though the bare name is not:
+There are two forms of the statement and they are genuinely different:
 
     service-weighted Progress  --Service Transport-->  claim-weighted Progress
 
 the first being the learner-side mechanism theorem and the second the
-Answerability-facing endpoint. Where this wiki says "Progress" without a qualifier it
-means the pair; where a specific one is meant, it says which.
+Answerability-facing endpoint.
+
+**"Progress" means the second.** The learner-side theorem keeps its qualifier and is
+always *service-weighted Progress*, never the bare word.
 
 **Service-weighted** Progress says the defect vanishes *on the dates the reasoner
 worked*. That is what the learner delivers, and it has a complete derivation with a
@@ -67,10 +67,11 @@ tends to one half, simply by servicing the dates where nothing was wrong. Closin
 the gap requires [Service Transport](Serviceability) — an explicit accounting of
 which obligation, owed when, was discharged when.
 
-Which form Progress should settle on is **reserved to the maintainer**, and the
-tradeoff is real: making it claim-weighted imports the transport interface and its
-residual into the settled statement; leaving it service-weighted keeps the current
-theorem and pushes the burden onto whatever consumes it.
+The name went to the claim-weighted form, and the tradeoff was taken knowingly:
+the transport interface and its residual are now inside the settled statement, so a
+Progress claim always carries a transport hypothesis. The alternative would have kept
+a cleaner theorem about a quantity answerability never actually asks for — which is
+the wrong thing to have a clean theorem about.
 
 ## The fairness condition that does not work
 

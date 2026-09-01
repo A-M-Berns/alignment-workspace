@@ -161,15 +161,17 @@ in this repository. None supplies a theorem.*
   commitment/entitlement split, and the idea that normative status is instituted
   by practice rather than found.
 
-- **Pettit** — **exact source not yet pinned / literature review needed.** The idea
-  the program uses is that holding-responsible is a *relation between agents* rather
-  than a property of one, and that a reasons-responsive agent is one who can be
-  addressed rather than merely predicted. That is the shape behind answerability's
-  creditor/debtor typing. No specific work has been identified as read, and the
-  candidates were not narrowed; note that `wiki/Sources.md` separately cites
-  **Fischer & Ravizza, *Responsibility and Control*, Cambridge, 1998** for
-  reasons-responsive mechanisms, which may be doing the work this entry attributes.
-  Do not cite this entry in a paper until it is pinned.
+**Pettit was listed here and is removed.** An earlier draft credited him for
+holding-responsible being a *relation between agents* rather than a property of one —
+the shape behind answerability's creditor/debtor typing. The maintainer confirms **no
+source was read for it** (`DECISIONS.md`, 2026-09-01), so it is not a dependency with
+a missing citation; it is not a dependency. The removal is recorded rather than
+silent, so a later reader can see the entry was examined and dropped.
+
+Where that two-place shape needs an antecedent, **Brandom's scorekeeping** above is
+the one the program actually uses. `wiki/Sources.md` separately cites **Fischer &
+Ravizza, *Responsibility and Control*, Cambridge, 1998** for reasons-responsive
+mechanisms.
 
 What we do **not** take: any commitment to the inferentialist semantics these
 accounts are embedded in. The architecture uses the scorekeeping shape and leaves

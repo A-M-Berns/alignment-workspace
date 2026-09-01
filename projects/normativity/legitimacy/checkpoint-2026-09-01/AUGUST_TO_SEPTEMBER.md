@@ -68,8 +68,10 @@ should have been held to.
 ### Newly opened by later work — not visible in August
 
 - **Which weighting Progress uses.** August had no claim measure, so the
-  service-weighted / claim-weighted distinction could not arise. It is now the one
-  question reserved to the maintainer.
+  service-weighted / claim-weighted distinction could not arise. It was the one
+  question the checkpoint reserved, and it is now settled: **Progress is the
+  claim-weighted form** (`DECISIONS.md`, 2026-09-01), so the transport interface sits
+  inside the settled statement rather than downstream of it.
 - **Transport, and its constants.** No August object corresponds to `T(t,s)`,
   `eps(t,s)`, or `epsbar_N(T)`.
 - **Timeliness as a separate axis from persistence.** August's service notions do

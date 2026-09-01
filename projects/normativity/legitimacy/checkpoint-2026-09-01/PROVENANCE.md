@@ -100,7 +100,8 @@ no theory and opened no research question. What it changed:
   rest held, with Farkas split into a self-contained soundness theorem and an
   LP-duality-dependent exactness remark.
 - **Four citation repairs.** Pollock and Williams were pinned to exact works and
-  verified. Pettit was demoted to *exact source not yet pinned*. The
+  verified. Pettit was demoted, then **removed**: the maintainer confirms no source
+  was read for it, so it was not a dependency with a missing citation. The
   "Łukasiewicz" attribution was demoted, then partly recovered: on the maintainer's
   recollection it is Thomas Lukasiewicz, and the Biazzo–Gilio–Lukasiewicz–Sanfilippo
   coherence line checks out as the right family — de Finettian coherence with

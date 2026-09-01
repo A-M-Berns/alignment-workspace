@@ -1,9 +1,11 @@
 # Testing the candidate legitimacy decomposition
 
-> **This document assesses a research framing. It is not part of the current
-> theory.** No legitimacy predicate exists in this repository, the terms below have
-> not been shown independent, and joint sufficiency is unproved. The `=` in the
-> display is the *proposal's* notation, not an established identity.
+> **The maintainer adopted this as the working framing on 2026-09-01** — the shape
+> future work aims at. **It remains a framing and not a claim.** No legitimacy
+> predicate exists in this repository, the terms below have not been shown
+> independent, and joint sufficiency is unproved. A round may sequence work against
+> it; a round may not cite it as established or take it as a hypothesis. The `=?` in
+> the display is deliberate.
 
 The decomposition put to this checkpoint:
 
@@ -14,9 +16,10 @@ The decomposition put to this checkpoint:
 with reasons-responsiveness, Actionability and Progress as *mechanisms or
 consequences within* those pillars rather than separate pillars.
 
-**Verdict: a good conjectural framing and the best currently available, with one
-structural objection that has to be answered before it is canonized, and one term
-that is doing less work than it appears to.** Details below.
+**Verdict: a good framing and the best currently available — adopted as the
+direction, not canonized as a claim — with one structural objection that has to be
+answered before it could be, and one term that is doing less work than it appears
+to.** Details below.
 
 ---
 
@@ -135,9 +138,12 @@ Three things, none of which exists:
    corrigibility consumer actually needs. This is the hard one and it is the
    substance of `ROADMAP.md` stage 6.
 
-Until (1) exists the decomposition is a **research framing** and should be labelled
-as one wherever it appears. It is recorded here as the current best framing, and
-`ROADMAP.md` sequences the work that would settle it.
+Until (1) exists the decomposition is a **research framing** and is labelled as one
+wherever it appears. The maintainer's 2026-09-01 ruling adopts it as the direction
+work aims at without upgrading it: the framing sequences rounds, and does not license
+a citation. `ROADMAP.md` sequences the work that would settle it, and writing the
+predicate is stage 5 there for a reason — it is cheap, undone, and it determines what
+non-capture must protect.
 
 ---
 

@@ -27,13 +27,14 @@ A two-stage structure, and the staging is canonical even though the bare name is
 
     service-weighted Progress  --Service Transport-->  claim-weighted Progress
 
-*Service-weighted*, `E_{nu^a_N}[d] -> 0` at rate `A_N^{-1/2}`, is the learner-side
-mechanism theorem — what the machinery delivers. *Claim-weighted*,
-`E_{mu_N}[d] -> 0`, is the Answerability-facing endpoint — what was actually owed.
-The second does not follow from the first without a transport hypothesis, and a
-document using "Progress" bare is underspecified. **Which of the two the bare name
-should denote is reserved to the maintainer**; that reservation is about the name
-only. → `CURRENT_THEORY.md` §3.6.
+*Service-weighted Progress*, `E_{nu^a_N}[d] -> 0` at rate `A_N^{-1/2}`, is the
+learner-side mechanism theorem — what the machinery delivers; it always carries its
+qualifier. *Claim-weighted Progress*, `E_{mu_N}[d] -> 0`, is the
+Answerability-facing endpoint — what was actually owed. The second does not follow
+from the first without a transport hypothesis.
+
+**The bare word "Progress" means the claim-weighted form** (settled 2026-09-01), so
+every Progress claim carries a transport hypothesis. → `CURRENT_THEORY.md` §3.6.
 
 **4. What is service?**
 **Allocated authority** `a = beta`, the enforcement multiplier fixed before the
@@ -107,9 +108,9 @@ sufficiency proof. **Formal substrate:** Logical Induction; imprecise-probabilit
 coherence (Walley, Levi, Williams) for the credal state; convex projection, whose
 variational inequality the enforcement compiler uses; and linear-programming duality,
 for the exactness-under-Slater remark beside the overload certificate. **Conceptual
-dependency:** Brandom's scorekeeping, Horty and the TMS line for reason
-representation, and Pettit — whose exact source is *not pinned*. **Verification
-target:** Carroll et al. on influenceable reward, and `Demski`'s learning-normativity
+dependency:** Brandom's scorekeeping — which is also what gives answerability its
+creditor/debtor shape — and Horty with the TMS line for reason representation.
+**Verification target:** Carroll et al. on influenceable reward, and `Demski`'s learning-normativity
 agenda. → `../../notes/PRIOR_ART.md`.
 
 **14. Which apparent prior art is merely adjacent?**

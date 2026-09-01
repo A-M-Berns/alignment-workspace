@@ -229,10 +229,11 @@ one compatible world suffices. Liability uses `sup` — it needs a covered mixtu
 `rounds/2026-08-31-normative-affordability/LI_PROGRESS_FROM_SERVICE.md`,
 `FIXED_ERA_THEOREM.md` §2.
 
-**The staging is canonical even though the bare name is not.** Whatever the
-maintainer settles "Progress" to mean, the two-stage structure below is how the
-checkpoint refers to it, and a document using the bare word without a qualifier is
-underspecified:
+**Progress is the claim-weighted form.** Settled by the maintainer on 2026-09-01
+(`DECISIONS.md`): the bare name **Progress** denotes `E_{mu^r_N}[d^r] -> 0`, the
+defect vanishing on the dates something was *owed*. The learner-side theorem keeps
+its qualified name, **service-weighted Progress**, and is never the bare word. The
+staging:
 
     service-weighted Progress  --Service Transport-->  claim-weighted Progress
     (the learner-side               (§3.7)              (the Answerability-facing
@@ -255,9 +256,11 @@ like `sqrt(a)`, which is why divergent service fits a finite lifetime budget.
 for. It does **not** follow from the service-weighted form without a transport
 hypothesis (§3.7).
 
-**Which of the two the bare name "Progress" should denote is reserved to the
-maintainer** (`DECISIONS.md`, *Awaiting the author*). That reservation is about the
-*name*; the staging above is not reserved and is used throughout this checkpoint.
+**The name is settled: "Progress" is the claim-weighted form.** The cost was
+chosen knowingly — Service Transport and its residual `epsbar^r_N(T)` are now inside
+the settled statement, so a Progress claim carries a transport hypothesis and cannot
+be made without one. The alternative kept a cleaner theorem about a quantity
+Answerability never asks for.
 
 **Surface Fairness is a mass condition and does not deliver claim-weighted
 Progress.** A two-surface fair rotation satisfies bounded-deficit `(SF)` with
@@ -488,12 +491,17 @@ asymptotic compatibility with something still live.
                 +  Counterfactual non-capture
                    subject to Affordability as the realizability condition
 
-**This is a research framing, not part of the current theory.** No legitimacy
-predicate has been written down anywhere in this repository; the three terms have
-not been shown independent; and joint sufficiency for the corrigibility consumer is
-unproved. `LEGITIMACY_DECOMPOSITION.md` argues for it and states what would make it
-canonical — a definition with a conclusion someone downstream wants — which does not
-exist. Cite it as a framing or not at all.
+**Adopted as the working framing** on 2026-09-01 (`DECISIONS.md`): this is the
+shape future work aims at. **It is not a claim.** No legitimacy predicate has been
+written down anywhere in this repository; the three terms have not been shown
+independent; and joint sufficiency for the corrigibility consumer is unproved.
+
+The line that ruling draws: a round may **sequence** work against this framing, and
+may **not** cite it as established, take it as a hypothesis in a theorem, or present
+it outside this repository as the program's account of legitimacy.
+`LEGITIMACY_DECOMPOSITION.md` states what would make it canonical — a definition with
+a conclusion someone downstream wants — and writing that remains the cheap next
+step.
 
 **Affordability is a realizability condition and not a source of legitimacy.** It
 says the answering was something the reasoner could have done. Nothing normative

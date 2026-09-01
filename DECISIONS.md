@@ -40,62 +40,6 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
-- **Which of the two forms the bare name "Progress" denotes.** The staging is
-  settled and canonical — service-weighted Progress, then Service Transport, then
-  claim-weighted Progress — and only the *name* is open. Making it claim-weighted
-  imports the transport interface and its residual into the settled statement;
-  leaving it service-weighted keeps the current theorem and moves the burden onto
-  whatever consumes it. `projects/normativity/legitimacy/checkpoint-2026-09-01/CURRENT_THEORY.md`
-  §3.6. *Turns on:* what a paper's Progress claim has to be able to say — external
-  knowledge the rounds lack. Both readings are internally consistent.
-
-- **Whether the September checkpoint is `agent-consolidated`.** It is currently
-  ordinary content: editable, `ci-only`, and treated as canonical only by the
-  `DECISIONS.md` entry that says so. Marking it `agent-consolidated` would add an
-  `ORIGIN.md` receipt and put its paths in `tests/path_gate.py`, which is what the
-  August package carries. *Turns on:* whether the checkpoint is meant to be a frozen
-  artifact that a later checkpoint supersedes, or a living document that later
-  rounds amend in place. The round has no view; both are coherent and the difference
-  is a maintenance commitment.
-
-- **Whether the bounded-delay feasibility proof should be made self-contained.**
-  BD1's sufficiency invokes the Gale–Hoffman condition by name, so the prior-art
-  ledger now records a direct mathematical dependency. A busy-period argument on the
-  round's own FIFO theorem would remove it in about a paragraph, at the cost of
-  editing a merged round document. `projects/normativity/notes/PRIOR_ART.md` §6.2.
-  *Turns on:* whether merged round documents are editable to improve a proof, or
-  only to correct an error. `AGENTS.md` settles that for consolidated trees and not
-  for ordinary rounds.
-
-- **Whether the candidate legitimacy decomposition is adopted.** Answerability with
-  its semantic authentication, plus counterfactual non-capture, subject to
-  affordability as a realizability condition. The checkpoint assesses it as the best
-  available framing and explicitly declines to canonize it, because no legitimacy
-  predicate exists, independence is unshown, and joint sufficiency is unproved.
-  `.../checkpoint-2026-09-01/LEGITIMACY_DECOMPOSITION.md`. *Turns on:* whether the
-  program is willing to commit to a shape before it has the predicate. A round can
-  argue the framing and cannot decide whether committing early is worth the risk of
-  building three rounds on a wrong decomposition.
-
-- **What was actually read for the coherence / linear-feasibility result.** The
-  prior-art ledger records the reduction of coherence to linear feasibility as
-  load-bearing, and its attribution as a candidate rather than a record: the
-  maintainer's recollection points at Thomas Lukasiewicz and the
-  Biazzo–Gilio–Lukasiewicz–Sanfilippo coherence line, which checks out as the right
-  tradition, and the older Hailperin and Nilsson anchors remain possible.
-  `projects/normativity/notes/PRIOR_ART.md` §4. The same question stands for the
-  **Pettit** entry, marked *exact source not yet pinned*. *Turns on:* what the
-  maintainer actually read. No round can recover this, and a ledger meant for paper
-  writing should not carry a plausible reconstruction as though it were a citation.
-
-- **Whether a gate should check that a referenced round reached `main`.** Friction
-  F8 records how six rounds sat off the default branch behind a merged badge, and
-  that no current gate would have caught it — a citation happening to point at one
-  is what surfaced it. A checker comparing `state/rounds.json` against the default
-  branch's tree would catch the class directly. *Turns on:* whether the class is
-  frequent enough to be worth a gate, which depends on how often stacked rounds get
-  used and is a workflow judgment rather than a research one.
-
 - **What the next research step is, given the inertness dichotomy.** The
   end-to-end slice establishes that the unconditional traderization theorem's
   admissibility hypothesis holds exactly for injunctions that change nothing, so
@@ -164,6 +108,143 @@ commit.
   has no evidence about either.
 
 ## Settled
+
+### 2026-09-01 — Progress is claim-weighted
+
+**Maintainer ruling**, taken in conversation and landed here. The bare name
+**Progress** denotes the **claim-weighted** form: `E_{mu^r_N}[d^r] -> 0`, the defect
+vanishing on the dates something was *owed*. The staging is unchanged and stays
+canonical:
+
+    service-weighted Progress  --Service Transport-->  claim-weighted Progress
+
+**service-weighted Progress** keeps its qualified name and remains the learner-side
+mechanism theorem. It is not "Progress" unqualified, and a document that uses the
+bare word means the claim-weighted endpoint.
+
+What this costs, stated because the ruling chose it knowingly: Service Transport and
+its residual `epsbar^r_N(T)` are now inside the settled statement rather than
+downstream of it, so a Progress claim carries a transport hypothesis and cannot be
+made without one. That is the intended reading — the alternative kept a cleaner
+theorem about a quantity Answerability never asks for.
+
+`projects/normativity/legitimacy/checkpoint-2026-09-01/CURRENT_THEORY.md` §3.6 and
+`FINAL_AUDIT.md` Q3 are updated; the queue entry is discharged.
+
+*Rejected alternative:* service-weighted, which keeps the transport interface out of
+the definition at the price of a headline about the dates the reasoner chose to work
+on.
+
+### 2026-09-01 — the September checkpoint freezes at merge; the wiki never does
+
+**Maintainer ruling.** The checkpoint becomes an `agent-consolidated` tree once the
+outstanding decisions are settled — which this pass does. From merge:
+
+- **The existing work is frozen.** `projects/normativity/legitimacy/checkpoint-2026-09-01/`
+  carries an `ORIGIN.md` receipt and its paths join the specification list in
+  `tests/path_gate.py`. The norm is that it is not tweaked; edit it for a
+  correction, a scrub or a supersession, say why in the commit, and record
+  substantive edits here.
+- **Future work builds on it rather than into it.** A later consolidation is a new
+  checkpoint that supersedes this one, not a rewrite of it. That is the same
+  treatment `projects/normativity/consolidation-aug9/` has, and it is why that
+  package has needed no retraction.
+- **The wiki is explicitly excluded and is never permanently frozen.** `wiki/` is
+  the human-facing register and is expected to move as understanding does. Freezing
+  a checkpoint freezes a *record of what was held*, which is exactly the thing an
+  explanation must be free to improve on.
+
+One consequence worth naming: the outstanding **naming audit** over the round's
+provisional names will edit a frozen tree when it lands. That is a maintainer act
+with a stated reason, which is what the norm permits.
+
+*Rejected alternative:* leaving it a living document. Rejected because a checkpoint
+that later rounds amend in place stops being a record of what was held at a date,
+which is the only thing that makes "which of two conflicting statements is current"
+answerable.
+
+### 2026-09-01 — the bounded-delay feasibility proof keeps its citation
+
+**Maintainer ruling.** BD1's sufficiency proof invokes the Gale–Hoffman feasibility
+condition and will continue to. The prior-art ledger records it as a **direct
+mathematical dependency**, which is the honest label, and no rewrite is undertaken.
+
+The self-contained alternative — a busy-period argument on the round's own FIFO
+theorem — stays recorded in `projects/normativity/notes/PRIOR_ART.md` §6.2 as
+available and not taken, for whoever writes the paper. The merged round document is
+not edited to make a proof nicer.
+
+*Rejected alternative:* rewriting the proof now. The defect was the ledger claiming
+independence from a theorem the proof cited; relabelling fixed that, and the
+citation itself was never the problem.
+
+### 2026-09-01 — the legitimacy decomposition is the working framing, and not a claim
+
+**Maintainer ruling.** The decomposition
+
+    Legitimacy  ~  Diachronic Answerability, with its semantic authentication
+                +  Counterfactual non-capture
+                   subject to Affordability as the realizability condition
+
+is **approximately the right framing for the bigger picture** and is adopted as the
+shape future work aims at. It is **not** a frozen claim, not a theorem, and not a
+definition: no legitimacy predicate exists, the terms are not shown independent, and
+joint sufficiency is unproved.
+
+The distinction is the whole content of the ruling. A round may **sequence** work
+against this framing — that is what it is for. A round may **not** cite it as
+established, build a theorem on it as a hypothesis, or present it outside this
+repository as the program's account of legitimacy.
+
+`LEGITIMACY_DECOMPOSITION.md` keeps its assessment and its `=?`; what changes is that
+the framing is now the sanctioned direction rather than one candidate among several.
+Writing the predicate down remains the cheap next step that would settle whether the
+shape survives contact with a statement.
+
+*Rejected alternative:* canonizing it. Three rounds built on a wrong decomposition
+costs more than the delay, and the predicate is an afternoon's work away.
+
+### 2026-09-01 — Pettit is removed from the prior-art ledger
+
+**Maintainer ruling: it was not really used.** The entry recorded an idea — that
+holding-responsible is a relation between parties rather than a property of one —
+without an identified work, and the maintainer confirms no source was read for it.
+It is removed from the conceptual-dependency list rather than left marked
+*unpinned*, because an entry nobody used is not a dependency with a missing citation;
+it is not a dependency.
+
+The record of the correction stays, so the ledger shows the entry was examined and
+dropped rather than silently vanishing. Where the two-place shape of answerability
+needs an antecedent, **Brandom's scorekeeping** is the one the program actually uses,
+and `wiki/Sources.md` separately cites **Fischer & Ravizza** for reasons-responsive
+mechanisms.
+
+*Rejected alternative:* keeping it marked *exact source not yet pinned*. That is the
+right marking for an idea in use whose source is lost, and the wrong one for an idea
+that was never taken.
+
+### 2026-09-01 — a gate checks that cited paths are in the repository
+
+**Maintainer ruling: build it.** `tests/untracked_pointers.py` requires every round
+record's paths, and every rooted citation in a live document that resolves on disk,
+to be **tracked by git** rather than merely present. That is exactly the September
+failure: six rounds sat off `main` behind a merged badge, and the shared checkout
+carried them as untracked files, so `dead_pointers.py` passed locally and failed in
+CI.
+
+Two things were wrong and both are fixed. No gate distinguished *present* from
+*committed*; this one does, and its self-test reproduces the failure by writing an
+uncommitted file and checking git does not see it. And `tests/run.py` ran only the
+*self-tests* of both pointer gates, never their real form, which is why the local run
+could report green against a tree CI would reject — both real forms now run locally.
+
+Verified against a reconstruction of the original bug: an untracked round directory
+plus a citation to it passes `dead_pointers.py` and fails this gate with the right
+message, which names the stacked-merge cause.
+
+*Rejected alternative:* folding it into `dead_pointers.py`. "You deleted something"
+and "you never committed something" call for opposite fixes and deserve different
+messages.
 
 ### 2026-09-01 — the answerability stack is landed on `main`
 
