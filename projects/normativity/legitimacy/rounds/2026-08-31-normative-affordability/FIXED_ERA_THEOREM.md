@@ -75,6 +75,15 @@ for `r` satisfying the claim marginal, service feasibility against `a^r`, stabil
 
 *Proof.* `SERVICE_TRANSFER.md` T3 against `nu^{a,r}`, then F2. `square`
 
+**The stability constant, in its general form.** F3 is stated with a *uniform*
+stability constant `eps_r`. `SERVICE_TRANSFER.md` T3 was later generalized to an
+edge-dependent `eps_r(t,s)`, whose contribution is the claim-normalized average
+`epsbar^r_N(T) = (1/C^r_N) sum_{t,s} T^r_N(t,s) eps_r(t,s)`. The uniform constant is
+the special case, since `epsbar^r_N <= eps_r`, so **F3 and F4 remain true as
+written** and are sharpened by replacing `eps_r` with `epsbar^r_N(T)` throughout.
+`SHARP_TIMELY_SERVICE.md` states the sharpened form. This is a strengthening of the
+conclusion under a weaker hypothesis, not a reopening of the frozen composition.
+
 **Corollary F4 (asymptotic).** If `A^r_N -> infinity` and `rho^r_N -> 0`,
 
     limsup_N E_{mu^r_N}[d^r]  <=  L_r K_r F_r  +  eps_r ,

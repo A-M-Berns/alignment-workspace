@@ -100,7 +100,7 @@ closed loop.
 |---|---|---|
 | **E0** | fixed-era construction/composition | frozen; `FIXED_ERA_THEOREM.md` |
 | **E1** | exogenous friction, conservative charge | exact: `liminf q_t = 0`; online equals offline |
-| **E2** | exogenous friction, sharp robust charge | exact: `liminf L_t(1) = 0`, i.e. `liminf s_t = 0` in the normal regime; `SHARP_PERSISTENCE.md` |
+| **E2** | exogenous friction, sharp robust charge | exact: `liminf L_t(1) = 0`, equivalently `liminf min(s_t^2, s_t sqrt(m_t)) = 0`, which reduces to `liminf s_t = 0` exactly under an engine-scale floor `m_t >= m_0 > 0`; `SHARP_PERSISTENCE.md` Lemma S3 |
 | **E3** | E1/E2 intersected with Answerability's admissible traces | partial: a per-window floor needs summable window minima; `SERVICE_ADMISSIBLE_EXISTENCE.md` |
 | **E4** | policy-dependent friction, closed loop | open; C1 is a sufficient forcing condition with no instance |
 | **E5** | signed-account robust scheduling | open; needs a predictable account-drift lower bound |
