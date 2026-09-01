@@ -50,17 +50,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-11-corrigibility-phase-ii",
-      "date": "2026-08-11",
-      "project": null,
-      "path": "prompts/2026-08-11-corrigibility-phase-ii",
-      "verdict": null,
-      "depends_on": [],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-11-corrigibility-phase-ii/PROMPT.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-11-contributor-checkers",
       "date": "2026-08-11",
       "project": null,
@@ -69,6 +58,17 @@
       "depends_on": [],
       "registered_classes": [],
       "prompt": null,
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-11-corrigibility-phase-ii",
+      "date": "2026-08-11",
+      "project": null,
+      "path": "prompts/2026-08-11-corrigibility-phase-ii",
+      "verdict": null,
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-11-corrigibility-phase-ii/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -448,59 +448,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-13-procedural-legitimacy",
-      "date": "2026-08-13",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy",
-      "verdict": "four-condition sufficiency is REFUTED",
-      "verdict_source": "prompts/2026-08-13-procedural-legitimacy/REPORT.md",
-      "depends_on": [
-        "2026-08-12-legitimacy-reorganization"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-procedural-legitimacy/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-13-local-regret-normative-learning",
-      "date": "2026-08-13",
-      "project": "normativity",
-      "path": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning",
-      "verdict": "LOCAL-THEOREM-POSITIVE / NORMATIVE-INTERPRETATION-OPEN",
-      "verdict_source": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning/README.md",
-      "depends_on": [
-        "2026-08-13-relational-scorekeeping-bridge"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-local-regret-normative-learning/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-13-relational-scorekeeping-bridge",
-      "date": "2026-08-13",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge",
-      "verdict": "Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/README.md",
-      "depends_on": [],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-relational-scorekeeping-bridge/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-13-relational-scorekeeping-refinement",
-      "date": "2026-08-13",
-      "project": null,
-      "path": "prompts/2026-08-13-relational-scorekeeping-refinement",
-      "verdict": null,
-      "depends_on": [
-        "2026-08-13-relational-scorekeeping-bridge"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-relational-scorekeeping-refinement/PROMPT.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-13-crown-jewel-learning-theorem",
       "date": "2026-08-13",
       "project": "normativity",
@@ -513,33 +460,6 @@
       "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem/PROMPT.md",
       "claim_changes": [],
       "superseded_by": "2026-08-13-crown-jewel-learning-theorem-refinement"
-    },
-    {
-      "id": "2026-08-13-crown-jewel-learning-theorem-refinement",
-      "date": "2026-08-13",
-      "project": "normativity",
-      "path": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement",
-      "artifact_path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem",
-      "verdict": null,
-      "verdicts": [
-        {
-          "kind": "theorem",
-          "value": "CROWN-JEWEL-THEOREM-POSITIVE-WITH-INTERFACE-HYPOTHESES",
-          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
-        },
-        {
-          "kind": "dynamics",
-          "value": "BM-DYNAMICS-CONDITIONALLY-POSITIVE",
-          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
-        }
-      ],
-      "depends_on": [
-        "2026-08-13-crown-jewel-learning-theorem"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/PROMPT.md",
-      "claim_changes": [],
-      "superseded_by": "2026-08-13-crown-jewel-learning-theorem-final"
     },
     {
       "id": "2026-08-13-crown-jewel-learning-theorem-final",
@@ -596,6 +516,86 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-13-crown-jewel-learning-theorem-refinement",
+      "date": "2026-08-13",
+      "project": "normativity",
+      "path": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement",
+      "artifact_path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem",
+      "verdict": null,
+      "verdicts": [
+        {
+          "kind": "theorem",
+          "value": "CROWN-JEWEL-THEOREM-POSITIVE-WITH-INTERFACE-HYPOTHESES",
+          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
+        },
+        {
+          "kind": "dynamics",
+          "value": "BM-DYNAMICS-CONDITIONALLY-POSITIVE",
+          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
+        }
+      ],
+      "depends_on": [
+        "2026-08-13-crown-jewel-learning-theorem"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/PROMPT.md",
+      "claim_changes": [],
+      "superseded_by": "2026-08-13-crown-jewel-learning-theorem-final"
+    },
+    {
+      "id": "2026-08-13-local-regret-normative-learning",
+      "date": "2026-08-13",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning",
+      "verdict": "LOCAL-THEOREM-POSITIVE / NORMATIVE-INTERPRETATION-OPEN",
+      "verdict_source": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning/README.md",
+      "depends_on": [
+        "2026-08-13-relational-scorekeeping-bridge"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-local-regret-normative-learning/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-13-procedural-legitimacy",
+      "date": "2026-08-13",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy",
+      "verdict": "four-condition sufficiency is REFUTED",
+      "verdict_source": "prompts/2026-08-13-procedural-legitimacy/REPORT.md",
+      "depends_on": [
+        "2026-08-12-legitimacy-reorganization"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-procedural-legitimacy/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-13-relational-scorekeeping-bridge",
+      "date": "2026-08-13",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge",
+      "verdict": "Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/README.md",
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-relational-scorekeeping-bridge/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-13-relational-scorekeeping-refinement",
+      "date": "2026-08-13",
+      "project": null,
+      "path": "prompts/2026-08-13-relational-scorekeeping-refinement",
+      "verdict": null,
+      "depends_on": [
+        "2026-08-13-relational-scorekeeping-bridge"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-relational-scorekeeping-refinement/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-13-wikification-and-normativity",
       "date": "2026-08-13",
       "project": null,
@@ -604,6 +604,18 @@
       "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-wikification-and-normativity/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-16-traderized-enforcement",
+      "date": "2026-08-16",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
+      "verdict": "Logical Induction generalizes past deduction: the assessment-process lift of Budgeter and TradingFirm is kernel-checked against the pinned implementation, a compiled price-region trader gives finite-time force, and preservation follows from finite assessed risk capital — which is exactly zero for deduction, so traderized deduction keeps the original criterion and adds finite-time approximate coherence.",
+      "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md",
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-proof-closure.md",
       "claim_changes": []
     },
     {
@@ -629,18 +641,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-16-traderized-enforcement",
-      "date": "2026-08-16",
-      "project": "normativity",
-      "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
-      "verdict": "Logical Induction generalizes past deduction: the assessment-process lift of Budgeter and TradingFirm is kernel-checked against the pinned implementation, a compiled price-region trader gives finite-time force, and preservation follows from finite assessed risk capital — which is exactly zero for deduction, so traderized deduction keeps the original criterion and adds finite-time approximate coherence.",
-      "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md",
-      "depends_on": [],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-proof-closure.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-17-counterfactual-legitimacy",
       "date": "2026-08-17",
       "project": "normativity.legitimacy",
@@ -650,6 +650,18 @@
       "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-17-counterfactual-legitimacy/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-18-maxmin-representation",
+      "date": "2026-08-18",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-18-maxmin-representation",
+      "verdict": "Ovchinnikov's max–min theorem is kernel-checked for any nonempty convex domain, with no full-dimensionality, no continuity and no finite-dimension hypothesis, by replacing the source's hyperplane arrangement and tope-graph induction with a one-dimensional induction along the segment joining the two points — which also removes the genericity step the source states without proof.",
+      "verdict_source": "projects/normativity/rounds/2026-08-18-maxmin-representation/README.md",
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-18-maxmin-representation/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -678,18 +690,6 @@
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-19-deductive-region/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-18-maxmin-representation",
-      "date": "2026-08-18",
-      "project": "normativity",
-      "path": "projects/normativity/rounds/2026-08-18-maxmin-representation",
-      "verdict": "Ovchinnikov's max–min theorem is kernel-checked for any nonempty convex domain, with no full-dimensionality, no continuity and no finite-dimension hypothesis, by replacing the source's hyperplane arrangement and tope-graph induction with a one-dimensional induction along the segment joining the two points — which also removes the genericity step the source states without proof.",
-      "verdict_source": "projects/normativity/rounds/2026-08-18-maxmin-representation/README.md",
-      "depends_on": [],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-18-maxmin-representation/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -740,6 +740,20 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-23-certified-interactive-service",
+      "date": "2026-08-23",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service",
+      "verdict": "REQUIRES-REVISION — the object survives as an arena plus finite-witness certification, its laws typing disciplines, its content in the capability lattice.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service/README.md",
+      "depends_on": [
+        "2026-08-23-afoundational-inquiry"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-23-certified-interactive-service/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-23-reason-representation",
       "date": "2026-08-23",
       "project": "normativity.legitimacy",
@@ -767,17 +781,31 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-23-certified-interactive-service",
-      "date": "2026-08-23",
+      "id": "2026-08-24-cleanup-and-compress",
+      "date": "2026-08-24",
+      "project": null,
+      "path": "prompts/2026-08-24-cleanup-and-compress",
+      "verdict": "The live documents say what is current, the deference line has a registry, and two friction entries close as gates.",
+      "verdict_source": "prompts/2026-08-24-cleanup-and-compress/REPORT.md",
+      "depends_on": [],
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-08-24-cleanup-and-compress/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-24-reflective-integrity-core",
+      "date": "2026-08-24",
       "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service",
-      "verdict": "REQUIRES-REVISION — the object survives as an arena plus finite-witness certification, its laws typing disciplines, its content in the capability lattice.",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service/README.md",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core",
+      "verdict": "FREEZE-READY — the demand interface gains the two structural properties four of the main clauses depend on, and no repair reopened the architecture.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core/README.md",
       "depends_on": [
-        "2026-08-23-afoundational-inquiry"
+        "2026-08-23-transition-certificates"
       ],
       "registered_classes": [],
-      "prompt": "prompts/2026-08-23-certified-interactive-service/PROMPT.md",
+      "prompt": "prompts/2026-08-24-reflective-integrity-core/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -820,31 +848,19 @@
       ]
     },
     {
-      "id": "2026-08-24-cleanup-and-compress",
-      "date": "2026-08-24",
-      "project": null,
-      "path": "prompts/2026-08-24-cleanup-and-compress",
-      "verdict": "The live documents say what is current, the deference line has a registry, and two friction entries close as gates.",
-      "verdict_source": "prompts/2026-08-24-cleanup-and-compress/REPORT.md",
-      "depends_on": [],
-      "registered_classes": [
-        "lean-proved"
-      ],
-      "prompt": "prompts/2026-08-24-cleanup-and-compress/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-24-reflective-integrity-core",
-      "date": "2026-08-24",
+      "id": "2026-08-25-carroll-legitimacy-test",
+      "date": "2026-08-25",
       "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core",
-      "verdict": "FREEZE-READY — the demand interface gains the two structural properties four of the main clauses depend on, and no repair reopened the architecture.",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core/README.md",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test",
+      "verdict": "CARROLL-ROUND-CLOSED — the criterion carries the hostile suite after three prosecution passes, licenses genuine influence, reserves refusal for a positive prohibition, returns insufficient structure on every bare example the source states, and the one algebraic claim the round made beyond it is withdrawn with its counterexample.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/README.md",
       "depends_on": [
-        "2026-08-23-transition-certificates"
+        "2026-08-24-reflective-integrity-core",
+        "2026-08-25-end-to-end-vertical-slice",
+        "2026-08-17-counterfactual-legitimacy"
       ],
       "registered_classes": [],
-      "prompt": "prompts/2026-08-24-reflective-integrity-core/PROMPT.md",
+      "prompt": "prompts/2026-08-25-carroll-legitimacy-test/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -860,22 +876,6 @@
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-25-end-to-end-vertical-slice/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-25-carroll-legitimacy-test",
-      "date": "2026-08-25",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test",
-      "verdict": "CARROLL-ROUND-CLOSED — the criterion carries the hostile suite after three prosecution passes, licenses genuine influence, reserves refusal for a positive prohibition, returns insufficient structure on every bare example the source states, and the one algebraic claim the round made beyond it is withdrawn with its counterexample.",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/README.md",
-      "depends_on": [
-        "2026-08-24-reflective-integrity-core",
-        "2026-08-25-end-to-end-vertical-slice",
-        "2026-08-17-counterfactual-legitimacy"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-25-carroll-legitimacy-test/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -912,21 +912,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-28-answerable-revision",
-      "date": "2026-08-28",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision",
-      "verdict": "ANSWERABLE-REVISION-SURVIVES — standards may change and reasons incurred under them remain answerable, including when the standard revised is the one that promoted the reason, and including when the reason is about a warrant. The reflective case needs no meta-hierarchy: a warrant's target is an ordinary identifier that may name a warrant, and the module contains no level or rank notion at all. The honest qualification is that most of the theorem is inherited — promotion puts a reason in the frozen package's opens, incurred never shrinks, and A1 lets a claim leave the outstanding set only through an accepted resolution, while a warrant revision is not a resolution and appears in neither fold — so the closure argument is three lines. The round's own content is one premise, promotion permanence: what was promoted at t is a function of the state at t. A process that re-derives its own past under present standards violates it, and the frozen package would not notice, because its premises govern how claims leave rather than whether they arrive; the closure theorem, A1 and Grounded Replay are all clean on that history while the reason simply never exists. The second piece of content is separating historical validity from current endorsement, which lets a process say that something really was a reason it incurred and that it now rejects its force, while forbidding the claim that because standards changed there never was an answerability relation. The boundary is that Answerable Revision begins at promotion and cannot reach behind it: a warrant that narrows itself before a criticism can be promoted is legitimate under every premise here, which is the same boundary the improvement round found one level down and is some evidence it is the real boundary of this family.",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision/README.md",
-      "depends_on": [
-        "2026-08-27-legitimate-improvement",
-        "2026-08-25-legitimate-evolution"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-28-answerable-revision/PROMPT.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-28-answerable-challenge-service",
       "date": "2026-08-28",
       "project": "normativity.legitimacy",
@@ -940,6 +925,21 @@
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-28-answerable-challenge-service/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-28-answerable-revision",
+      "date": "2026-08-28",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision",
+      "verdict": "ANSWERABLE-REVISION-SURVIVES — standards may change and reasons incurred under them remain answerable, including when the standard revised is the one that promoted the reason, and including when the reason is about a warrant. The reflective case needs no meta-hierarchy: a warrant's target is an ordinary identifier that may name a warrant, and the module contains no level or rank notion at all. The honest qualification is that most of the theorem is inherited — promotion puts a reason in the frozen package's opens, incurred never shrinks, and A1 lets a claim leave the outstanding set only through an accepted resolution, while a warrant revision is not a resolution and appears in neither fold — so the closure argument is three lines. The round's own content is one premise, promotion permanence: what was promoted at t is a function of the state at t. A process that re-derives its own past under present standards violates it, and the frozen package would not notice, because its premises govern how claims leave rather than whether they arrive; the closure theorem, A1 and Grounded Replay are all clean on that history while the reason simply never exists. The second piece of content is separating historical validity from current endorsement, which lets a process say that something really was a reason it incurred and that it now rejects its force, while forbidding the claim that because standards changed there never was an answerability relation. The boundary is that Answerable Revision begins at promotion and cannot reach behind it: a warrant that narrows itself before a criticism can be promoted is legitimate under every premise here, which is the same boundary the improvement round found one level down and is some evidence it is the real boundary of this family.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision/README.md",
+      "depends_on": [
+        "2026-08-27-legitimate-improvement",
+        "2026-08-25-legitimate-evolution"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-28-answerable-revision/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -974,6 +974,36 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-30-anchored-slices-auth-transfer",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer",
+      "verdict": "ANCHORED-SLICES-REQUIRED",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/REPORT.md",
+      "depends_on": [
+        "2026-08-30-answerability-carriers",
+        "2026-08-30-proper-exercise-calculus"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-anchored-slices-auth-transfer/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-30-answerability-carriers",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers",
+      "verdict": "MATTER-FRONTIER-SEMANTICS-REQUIRED",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers/REPORT.md",
+      "depends_on": [
+        "2026-08-30-proper-exercise-calculus",
+        "2026-08-28-answerable-revision"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-answerability-carriers/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-30-normative-continuity-settlement",
       "date": "2026-08-30",
       "project": "normativity.legitimacy",
@@ -986,6 +1016,36 @@
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-30-normative-continuity-settlement/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-30-proper-exercise-calculus",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-proper-exercise-calculus",
+      "verdict": "PE-AND-LOCALITY-BOTH-NEED-LOCAL-REPAIRS",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-proper-exercise-calculus/REPORT.md",
+      "depends_on": [
+        "2026-08-30-normative-continuity-settlement",
+        "2026-08-28-service-realization"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-proper-exercise-calculus/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-31-faithful-semantic-preservation",
+      "date": "2026-08-31",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation",
+      "verdict": "PR73-CONSERVATION-NEEDS-IN-PLACE-MUTATION-REPAIR",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/REPORT.md",
+      "depends_on": [
+        "2026-08-30-anchored-slices-auth-transfer",
+        "2026-08-25-legitimate-evolution"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-31-faithful-semantic-preservation/PROMPT.md",
       "claim_changes": []
     },
     {

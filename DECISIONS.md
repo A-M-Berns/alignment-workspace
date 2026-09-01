@@ -109,6 +109,42 @@ commit.
 
 ## Settled
 
+### 2026-09-01 — the answerability stack is landed on `main`
+
+**agent-decided, reversible.** Six research rounds — CF coverage continuity
+interface, the locality and exact NCSS audit, the Proper Exercise refinement
+calculus, answerability carriers, anchored slices and authenticated semantic
+Transfer, and faithful semantic preservation — were not on `main`. Their pull
+requests, #71 through #73, are marked merged on the forge and were merged into
+*each other*: the stack was based on `round/2026-08-30-liability-theory`, which had
+already reached `main` through #70, so eleven commits stayed on the branch and no
+pull request from the top of the stack to `main` was ever opened.
+
+The work is landed rather than redone. Current `main` was merged into the stack and
+the result opened as a single pull request; three files conflicted and all three
+were additive on both sides. `state/rounds.json` is the union of the two record
+sets, sorted by date and id, with `main` winning on any shared id. `PROVENANCE.md`
+keeps both sides' rows in both tables. Generated views are regenerated rather than
+resolved by hand. No round document is edited and nothing from either side is
+dropped.
+
+**Why this was not left as a note.** The rounds' exact fixtures did not run in this
+repository's CI, so results attributed to them were paper-derived from `main`'s
+point of view, and the September checkpoint had to cite the underlying note by
+section number instead of a repository path. Landing the stack restores both.
+
+**The general hazard, worth keeping.** A merged badge names the base the pull
+request had, not `main`. Nothing in the current gates checks that a round directory
+referenced anywhere actually reached the default branch, and a stacked round is the
+shape that slips through. It surfaced only because `tests/dead_pointers.py` failed
+in CI on a citation while passing locally — the local checkout carried the
+directories as untracked files.
+
+*Rejected alternative:* recording the absence and citing around it, which is what
+the September checkpoint did as an interim measure. That keeps the repository
+saying something false about its own contents for no benefit once the merge is
+available.
+
 ### 2026-09-01 — affordability pays for the settlement-friction residual
 
 **agent-decided, reversible.** On the sharp robust charge's linear branch the
