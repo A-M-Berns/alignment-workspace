@@ -3,9 +3,11 @@
 **Verdict:**
 `AFFORDABILITY-COMPOSES-BUT-THE-SERVICE-CONDITION-IS-TRANSPORT-NOT-CONTIGUITY`.
 
-Three dispatches: the schematic pass, a follow-up auditing the realization map
-against the traderized mathematics, and a focused pass closing the typing mismatch
-between the schematic service variable and the concrete learner. The technical register, the theorem stack, the
+Four dispatches: the schematic pass; a follow-up auditing the realization map
+against the traderized mathematics; a focused pass closing the typing mismatch
+between the schematic service variable and the concrete learner; and a
+consolidation pass finishing the fixed-era statement and isolating the existence
+problem. The technical register, the theorem stack, the
 per-hypothesis classification and the full not-shown list are in
 `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/REPORT.md`,
 the audit in that directory's `FOLLOWUP_REPORT.md`, and the resulting stack in
@@ -142,13 +144,46 @@ budget: the market's own response reduces the force as compliance improves.
 Actionability generalizes to a convex coercivity modulus, which subsumes the old
 linear form and the projection-quadratic one in a single theorem.
 
+## The fourth dispatch: the fixed-era theorem closes
+
+Two repairs and one consolidation.
+
+**Reason-indexed Progress needs per-row liability floors.** The maker caps the
+aggregate book; isolating one row's book needs floors on the rest, and then every
+subset inherits a uniform ceiling. Aggregate safety alone does not suffice — books
+with increments plus one and minus one have an identically zero aggregate and no
+reason-level ceiling — so a reason's authority financed by another's losses defeats
+every per-reason guarantee.
+
+**Local authority capacity is not lifetime safety.** A per-date cap respected at
+every date leaves the account unbounded below when the allowances are not summable;
+spending the realized slack instead strictly enlarges the viable region,
+quadratically. The definition carries SafeCert and the capacity sets are how a
+policy establishes it.
+
+**The construction is complete for a fixed era.** Conditional on a service-faithful
+authority schedule, per-row floors summing to a finite total, and the two residual
+assumptions, every arrow from the claim stream to claim-weighted Progress and to
+preservation of the original criterion is proved, with a finite-horizon inequality
+and a dependency graph. The unresolved hypotheses are inputs, not gaps: construction
+is not existence and neither is necessity.
+
+Three findings worth carrying. Coercive Actionability converges exactly when the
+modulus is bounded away from zero away from zero — convexity buys the rate and not
+the convergence. There is no service-capacity competition between reasons, because
+the per-row conformance bound is independent of how many rows are active, so every
+overload here is liability overload. And the per-date authority-capacity region is
+non-convex, because authority is quadratic in the liability allowance, so
+concentration beats splitting by the number of reasons and the sustainable rate
+region is a convex hull the schedule itself produces.
+
 ## Outstanding maintainer actions
 
 1. Naming audit over the four surviving provisional names, when one is next run.
    "Self-financing control" is withdrawn rather than renamed.
 
-The reserved question is answered by the staging and has left the queue; five
-dated `DECISIONS.md` entries record the second and third dispatches' rulings, all
+The reserved question is answered by the staging and has left the queue; seven
+dated `DECISIONS.md` entries record the later dispatches' rulings, all
 agent-decided and reversible.
 
 ## Attribution
@@ -157,4 +192,4 @@ agent-decided and reversible.
 |---|---|
 | prompt author | unrecorded — authored outside this repository |
 | executor | Claude Opus 5 (Anthropic) |
-| dates | three dispatches, all executed 2026-08-31 |
+| dates | four dispatches, all executed 2026-08-31 |

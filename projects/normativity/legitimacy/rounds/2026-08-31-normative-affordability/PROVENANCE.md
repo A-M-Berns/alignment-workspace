@@ -10,7 +10,11 @@ the first dispatch's documents are listed in `FOLLOWUP_REPORT.md`.
 `SERVICE_FORCE_TYPING.md`, `LI_PROGRESS_FROM_SERVICE.md`, `END_TO_END_LEARNER.md`,
 `src/service.py` and `tests/test_service.py` are the third dispatch's, which
 withdraws the second's identification of the service variable with the realized
-position magnitude and corrects it in place.
+position magnitude and corrects it in place. `REASONWISE_ACCOUNTING.md`,
+`CAPACITY_VS_SAFETY.md`, `FIXED_ERA_THEOREM.md`, `AFFORDABLE_SCHEDULING.md`,
+`src/reasonwise.py` and `tests/test_reasonwise.py` are the fourth dispatch's, which
+repairs the third's reason-indexed statement and its convexity claim about the
+per-date capacity region.
 
 The round starts from `main` at
 `292bb2731b0df09aa034ca4abc5ce64a20a41785`. It reads and does not modify:

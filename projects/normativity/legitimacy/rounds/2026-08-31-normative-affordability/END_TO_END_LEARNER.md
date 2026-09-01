@@ -22,6 +22,10 @@
   Claim-weighted Sustainable Progress  limsup E_{mu^r}[d^r] <= L K F_r + eps_r
 ```
 
+`FIXED_ERA_THEOREM.md` supersedes §2 below with the repaired reason-indexed
+statement and its finite-horizon inequality; this section is the shape that
+document makes exact.
+
 ## 2. The theorem
 
 > **Sustainable Progress.** Fix a reason `r` persistent on a tail with bounded
@@ -36,20 +40,21 @@
 >     limsup_N E_{mu^r_N}[d^r]  <=  L_r K_r F_r  +  eps_r ,
 >
 > where `F_r = limsup_N inf_{omega} || s^+(omega) ||_{L^2(nu^{a,r}_N)}` is the
-> **settlement-friction residual** and `eps_r` the **transport residual**. Both
-> vanish exactly when the norm is asymptotically compatible with some persistently
-> live world and deferred service is exactly defect-preserving.
+> **settlement-friction residual** and `eps_r` the **transport residual**. A
+> persistently live world satisfying every serviced row is *sufficient* for
+> `F_r = 0` and is not necessary; `FIXED_ERA_THEOREM.md` §5 separates the
+> sufficient and necessary conditions and exhibits the gap.
 
 | premise | layer |
 |---|---|
 | claim weights `c^r_t` with `C^r_N -> infinity` | Answerability / standing |
-| `a^r_t` chosen from `F_{t-1}`, inside the capacity box `a^r_t <= cap_t` | service scheduling |
+| `a^r_t` chosen from `F_{t-1}` | service scheduling |
 | `A^r_N -> infinity` | service scheduling |
 | adapted plan `T^r` with claim marginal, service feasibility against `a^r`, cap `K_r`, residual density `-> 0` | service scheduling |
 | stability `d_t <= L_r d_s + eps_r` on the plan's support | semantic transport |
 | the docket's rows are priceable and `K_t != empty` in the cube | force / Actionability |
 | the compiled law is continuous and the market maker's contract holds at slack `eps_t` against ordinary volume `M_t` | learner Uptake |
-| `V_N(omega) >= -B` for every date and every live `omega` | affordability / safety |
+| per-row liability floors summing to `B_tot`, which imply `V_N(omega) >= -B_tot` | affordability / safety |
 | bounded liability implies no efficiently computable trader exploits the modified market | substrate preservation |
 
 The proof is three inherited steps and one new one. Force and Uptake give the
@@ -68,7 +73,7 @@ worlds vanishes in the weighted mean square. A scheduler can influence neither.
 An **affordability witness** at a history `h` is a predictable sequence
 `(a_t, kappa_t)` such that:
 
-1. `a_t >= 0` lies in the capacity box, and `kappa_t` is the control law compiled
+1. `a_t >= 0` is the allocated authority and `kappa_t` is the control law compiled
    from the docket and `a_t` — continuous, hence a legal day-`t` strategy;
 2. for every persistent reason, an adapted transport plan with declared constants
    matches the claim stream to `a^r`;
@@ -88,13 +93,16 @@ The backlog is driven by a predictable variable and the account by an endogenous
 one, and the coupling runs one way: `a` sets the capacity within which `d` is
 determined, and `d` then sets what the account is charged.
 
-**T7 survives with its safe set moved into `a`-space.** Its max-weight step
-schedules a predictable variable, which is now correct rather than accidental, and
-the safe region is `{a : a_t <= cap_t}` — an interval per row, hence convex, so
-the drift argument is unchanged. What is new is that the endogenous reduction of
-force makes existence *easier*: by P5 the charge is `O(sqrt(a))`, so a divergent
-allocation can sit inside a finite lifetime budget. The claim the round could not
-state before is now exact and exhibited:
+**T7's max-weight step now schedules a predictable variable**, which is correct
+rather than accidental. Its convexity hypothesis does *not* survive unexamined: the
+per-date authority-capacity set is an interval in each row separately and is **not
+convex jointly**, because the cap is quadratic in the liability allowance a row is
+given — `AFFORDABLE_SCHEDULING.md` §4. Concentration therefore beats splitting,
+convexity is recovered only asymptotically by time-sharing, and T7's drift argument
+needs the long-run region rather than the per-date one. What is new and unambiguous
+is that the endogenous reduction of force makes existence *easier*: by P5 the charge
+is `O(sqrt(a))`, so a divergent allocation can sit inside a finite lifetime budget.
+The claim the round could not state before is now exact and exhibited:
 
 > A persistent reason can receive divergent service mass `sum_t a_t = infinity`
 > while consuming finite total liability, because the realized corrective force
@@ -116,7 +124,7 @@ control law and the market maker's fixed point. The per-date enforcement modulus
 signed cumulative account. Bounded-liability preservation, unconditional in the
 deductive instance.
 
-### Closed by this pass
+### Closed by the third and fourth passes
 
 The service typing: `a = beta`, predictable, with realized force endogenous, and
 the control typed as a law rather than a position. The Answerability-to-LI service
@@ -125,15 +133,18 @@ stream. Service-weighted Progress with an explicit rate `A_N^{-1/2}` and an expl
 friction residual. The capacity region in `a`-space. The sublinearity of liability
 in allocated authority, which is why persistent service is affordable at all. The
 coercivity form of Actionability, which subsumes the linear and quadratic cases in
-one theorem.
+one theorem, at its exact hypothesis. The reason-indexed cap from an aggregate one.
+The separation of local authority capacity from lifetime SafeCert. The non-convexity
+of the per-date capacity region, and the resulting dominance of concentration over
+splitting.
 
 ### Still missing — mathematics
 
 1. **Necessity of bounded liability** (item 40). Still the load-bearing gap.
-2. **An affordable schedule.** With the capacity box and the `a`-space viability
-   problem both stated, the question is now well posed and unanswered: does a
-   schedule with `A^r_N -> infinity` for every persistent reason exist inside the
-   caps, against an adversarial docket arrival process?
+2. **An affordable schedule against an adversarial docket.**
+   `AFFORDABLE_SCHEDULING.md` proves existence when the depths and the allowance
+   schedule are fixed in advance; the adversarial version, and non-vacuity of the
+   sustainable rate region for a real docket, are open.
 3. **Transport stability certificates.** `(T3)`'s constants have no construction,
    and across an era boundary no candidate mechanism at all.
 4. **`C_t` versus `K_t`** (item 39): whether normative statics produce a credal

@@ -1651,3 +1651,696 @@ If the answer is “\(\beta\), with realized force \(\beta d\),” prove the res
 If that answer is false, identify the correct object and show precisely why the attractive \(\beta\)/\(\beta d\) distinction fails.
 
 The main objective is not another collection of sufficient conditions. It is to close—or sharply localize—the remaining type mismatch between the schematic affordability theorem and the concrete LI normative learner.
+
+---
+
+# Fourth dispatch — finish the fixed-era LI learner theorem and isolate the affordability-existence problem
+
+# Follow-up research pass: finish the fixed-era LI learner theorem and isolate the true affordability-existence problem
+
+Work against the live `alignment-workspace`, especially the current state of PR75:
+
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+
+Read at minimum:
+
+* `SERVICE_FORCE_TYPING.md`
+* `LI_PROGRESS_FROM_SERVICE.md`
+* `END_TO_END_LEARNER.md`
+* `CORRECTED_STACK.md`
+* `AFFORDABILITY.md`
+* `SERVICE_TRANSFER.md`
+* `SAFECERT.md`
+* `EXISTENCE_AND_DUALITY.md`
+* `FOLLOWUP_REPORT.md`
+
+Also recover the exact traderized-LI statements these files use:
+
+* aggregate MarketMaker cumulative cap;
+* reason/enforcer decomposition;
+* lifetime-liability preservation;
+* projection/enforcement modulus;
+* covered-underwriting / core bounds;
+* existing liability-regime taxonomy.
+
+This is a focused theorem-repair and consolidation pass. The \(\beta\) versus \(\beta d\) distinction should be treated as the current best typing unless it fails under scrutiny:
+
+$$
+a_{t,r}=\beta_{t,r}
+=
+\text{predictable allocated authority/service},
+$$
+
+$$
+f_{t,r}=a_{t,r}d_{t,r}
+=
+\text{endogenous realized force}.
+$$
+
+The control chosen before the round is a reactive law
+
+$$
+\kappa_t:x\mapsto u_t(x),
+$$
+
+not its realized position.
+
+Do not reopen that question without an actual counterexample.
+
+## Governing objective
+
+Determine whether we can now state a mathematically correct **fixed-era end-to-end normative learner theorem** of the form
+
+$$
+\boxed{
+\text{Answerability claims}
++
+\text{affordable allocated authority}
++
+\text{reactive traderized LI}
++
+\text{service transport}
+\Longrightarrow
+\text{claim-weighted Sustainable Progress}
+}
+$$
+
+while preserving ordinary LI.
+
+The previous pass is very close, but two gaps remain:
+
+1. the Progress theorem is written **per reason** even though the MarketMaker cap is initially on the **aggregate enforcement book**;
+2. the local per-date authority capacity box is being blurred with the genuinely **diachronic lifetime SafeCert**.
+
+Repair these first. Then investigate how much of an actual affordability-existence theorem follows.
+
+---
+
+# 1. Reason-indexed Progress from an aggregate MarketMaker cap
+
+Let the aggregate enforcement book decompose as
+
+$$
+E_t=\sum_r E_t^r,
+\qquad
+V_N(\omega)=\sum_r V_N^r(\omega).
+$$
+
+The MarketMaker argument provides an aggregate upper cap of the form
+
+$$
+V_N(\omega)\le U
+$$
+
+for every relevant live assessment world.
+
+A reason-specific Progress proof needs an upper bound on
+
+$$
+V_N^r(\omega).
+$$
+
+The previous audit suggested that if every other reason has a liability floor
+
+$$
+V_N^k(\omega)\ge-B_k,
+$$
+
+then
+
+$$
+V_N^r(\omega)
+\le
+U+\sum_{k\neq r}B_k
+=:U_r.
+$$
+
+Prove this carefully in the actual traderized-LI accounting.
+
+Questions:
+
+1. Is this exactly the right decomposition?
+2. Does it require a fixed reason set, or does it survive a growing docket?
+3. For countably many reasons, is
+
+   $$
+   \sum_k B_k<\infty
+   $$
+
+   sufficient?
+4. Can one instead allocate a single global liability budget dynamically across reasons?
+5. Is there a cleaner vector-account formulation avoiding arbitrary reason labels?
+6. Does the row-level decomposition make more sense than reason-level decomposition?
+
+Then derive the corrected reason-indexed \(L^2\) Progress theorem:
+
+$$
+E_{\nu_N^{a,r}}[d^r]
+\le
+\|s_r^+(\omega)\|_{L^2(\nu_N^{a,r})}
++
+\sqrt{\frac{U_r}{A_N^r}}
+$$
+
+under the exact correct hypotheses.
+
+If there is a useful **aggregate Sustainable Progress theorem** that avoids reasonwise liability decomposition, state it separately rather than forcing everything reasonwise.
+
+Identify the strongest conditions under which:
+
+$$
+\text{aggregate cap}
+\Rightarrow
+\text{all persistent reasons progress}.
+$$
+
+---
+
+# 2. Local authority capacity is not lifetime safety
+
+Keep these objects explicitly distinct.
+
+A predictable **local authority-capacity set**
+
+$$
+\mathcal C_t(h_{t-1})
+$$
+
+describes authority allocations available on date \(t\). For the conservative per-date certificate, this may contain constraints such as
+
+$$
+0\le a_{t,r}\le
+\frac{b_{t,r}^2}
+{(\varepsilon_t+M_t)D_{t,r}^2}.
+$$
+
+But the true affordability/SafeCert condition is diachronic:
+
+$$
+V_N(\omega)\ge-B
+\qquad
+\forall N,\omega\in A_N.
+$$
+
+Do not identify
+
+$$
+a_t\in\mathcal C_t
+$$
+
+with
+
+$$
+\text{SafeCert}.
+$$
+
+Work out the exact relationship.
+
+At least three possibilities should be distinguished:
+
+### Route A: conservative budget splitting
+
+Choose predictable per-date allowances \(b_t\) with
+
+$$
+\sum_t b_t\le B,
+$$
+
+then use local caps to guarantee lifetime safety.
+
+State the resulting sufficient theorem.
+
+### Route B: persistent signed account
+
+Track the full worldwise account state and allow gains to finance later losses:
+
+$$
+V_t(\cdot)
+\mapsto
+V_{t+1}(\cdot).
+$$
+
+Formulate the true viable authority set conditional on current account state:
+
+$$
+\mathcal C_t^{\mathrm{safe}}
+\bigl(h_{t-1},V_{t-1}\bigr).
+$$
+
+### Route C: existing structural certificates
+
+Covered underwriting, homothetic/core structure, absorbed regimes, etc. may guarantee lifetime safety without an explicit exogenous sequence \(b_t\).
+
+Explain how these fit the same interface.
+
+The goal is a corrected statement:
+
+> **Local capacity says what authority may be allocated now; SafeCert says whether the entire resulting reactive-control history remains underwritten.**
+
+Patch any current text that conflates these.
+
+---
+
+# 3. Correct the affordability witness one final time
+
+The schematic witness should now have the right causal type.
+
+Candidate:
+
+An affordability witness from history \(h\) consists of predictable sequences
+
+$$
+(a_t,\kappa_t)
+$$
+
+where:
+
+* \(a_t\) is reason-indexed allocated authority;
+* \(\kappa_t\) is a legal reactive control law compiled from the current docket and \(a_t\);
+* the realized control is
+
+  $$
+  u_t=\kappa_t(x_t)
+  $$
+
+  after the engine computes \(x_t\);
+* Answerability's claim stream is matched to \(a_t\) by adapted service transport;
+* the realized control history satisfies lifetime SafeCert.
+
+Check whether anything else is actually needed.
+
+In particular, remove stale formulations in which realized \(u_t\) is said to be predictable.
+
+Also decide whether “common region nonempty” belongs in the generic affordability definition or specifically in the compiler/Actionability interface.
+
+Prefer the smaller interface if possible.
+
+---
+
+# 4. Consolidate the coercive Progress theorem
+
+The current abstract Actionability proposal is:
+
+$$
+\operatorname{Work}_N
+=
+\sum_t a_t\phi(d_t)
+\le C_N,
+$$
+
+with \(\phi\) coercive.
+
+For projection enforcement,
+
+$$
+\phi(d)=d^2.
+$$
+
+Audit the current theorem carefully.
+
+A clean form might be:
+
+If
+
+$$
+\frac{\sum_{t<N}a_t\phi(d_t)}
+{\sum_{t<N}a_t}
+\to0,
+$$
+
+and \(\phi:[0,D]\to[0,\infty)\) satisfies an appropriate coercivity condition, then
+
+$$
+E_{\nu_N^a}[d]\to0.
+$$
+
+Determine the weakest useful condition on \(\phi\).
+
+Do we really need convexity and strict monotonicity, or is it enough that for every \(\epsilon>0\),
+
+$$
+\inf_{d\ge\epsilon}\phi(d)>0?
+$$
+
+Distinguish:
+
+* qualitative convergence;
+* quantitative inverse-modulus bounds.
+
+If this yields a cleaner schematic theorem, use it.
+
+Then insert settlement friction:
+
+$$
+\operatorname{Work}
+\le
+\operatorname{Friction}
++
+O(1).
+$$
+
+Try to state a general **coercive Actionability with friction** theorem that specializes exactly to LI without overabstracting.
+
+---
+
+# 5. Repair the fixed-era end-to-end theorem
+
+Produce a theorem whose hypotheses are fully explicit and correctly attributed.
+
+A target shape is:
+
+> **Fixed-Era Sustainable Progress.**
+>
+> Let \(r\) be persistent with Answerability claim stream \(c_t^r\). Suppose:
+>
+> * a predictable authority schedule \(a_t^r\) is service-faithful to \(c_t^r\) via an adapted transport plan;
+> * \(A_N^r=\sum_{t<N}a_t^r\to\infty\);
+> * the reactive traderized-LI controller is legal and the normative region remains priceable;
+> * the reason-specific enforcement account has an upper cap \(U_r\), derived from the aggregate MarketMaker cap plus complementary liability floors;
+> * the lifetime aggregate enforcement account satisfies SafeCert;
+> * the settlement-friction residual is \(F_r\);
+> * transport stability has residual \(\epsilon_r\).
+>
+> Then
+>
+> $$
+> \limsup_N
+> E_{\mu_N^r}[d^r]
+> \le
+> L_rK_rF_r+\epsilon_r,
+> $$
+>
+> with an explicit finite-\(N\) rate, while ordinary LI remains unexploitable.
+
+Derive the exact finite-horizon inequality.
+
+Do not say the residuals vanish “exactly when” some intuitive condition holds unless you prove the equivalence. Give sufficient and necessary conditions separately.
+
+Especially distinguish:
+
+$$
+F_r=0
+$$
+
+from the stronger condition:
+
+$$
+\exists\omega_\ast
+\text{ persistently live and satisfying all serviced rows}.
+$$
+
+The latter is clearly sufficient; determine whether the former implies anything like it under nested compact live sets.
+
+---
+
+# 6. Is the construction theorem now actually complete?
+
+After the repair, answer this sharply.
+
+Call the **construction theorem complete** if, conditional on:
+
+* a service-faithful authority schedule;
+* bounded lifetime liability;
+* settlement-friction and transport residual assumptions;
+
+all arrows from Answerability's service stream to claim-weighted Progress and LI preservation are proved.
+
+Do not require an existence theorem for this status.
+
+If complete, say so and list the exact unresolved hypotheses as **inputs** rather than “missing arrows.”
+
+This distinction matters:
+
+$$
+\boxed{
+\text{construction/composition}
+\neq
+\text{existence}
+\neq
+\text{necessity/characterization}.
+}
+$$
+
+---
+
+# 7. Then attack the true affordability-existence problem in \(a\)-space
+
+Now formulate the problem using the corrected variables.
+
+State:
+
+$$
+b_{t+1}^r
+=
+[b_t^r+c_{t+1}^r-a_t^r]_+
+$$
+
+for service backlog.
+
+The account dynamics are reactive:
+
+$$
+V_{t+1}(\omega)
+=
+V_t(\omega)
++
+\Delta V_t
+\bigl(
+a_t,
+d_t(a_t,\text{market}),
+\omega
+\bigr).
+$$
+
+The controller chooses \(a_t\) before seeing the contemporaneous fixed point/settlement.
+
+Affordability existence asks for a causal policy that simultaneously:
+
+$$
+\sup_t b_t^r<\infty
+$$
+
+or otherwise supplies the required transport fidelity, and
+
+$$
+\inf_{t,\omega}V_t(\omega)>-\infty.
+$$
+
+This is the true viability problem.
+
+Investigate at least the following.
+
+### A. Simple positive theorem
+
+Find the strongest clean sufficient condition under which a persistent reason can receive
+
+$$
+\sum_t a_t=\infty
+$$
+
+while maintaining finite lifetime liability.
+
+Use the new square-root exposure phenomenon if valid:
+
+$$
+\text{liability charge}
+\lesssim
+\sqrt{a_t}\,\sigma_t.
+$$
+
+Give explicit sufficient summability conditions.
+
+### B. Many reasons
+
+Suppose countably/finitely many persistent reasons have individual capacity processes
+
+$$
+\operatorname{cap}_t^r.
+$$
+
+What condition allows a schedule with
+
+$$
+A_N^r\to\infty
+\quad
+\forall r?
+$$
+
+Compare:
+
+* round-robin;
+* weighted fair scheduling;
+* max-weight;
+* capacity-region conditions.
+
+Separate pure service-capacity overload from liability overload.
+
+### C. Adaptive signed-account scheduling
+
+Can allowing positive-account periods to replenish the account strictly enlarge the sustainable service-rate region relative to summable per-date budgeting?
+
+Construct a minimal example if so.
+
+It should, conceptually, but prove it.
+
+### D. Capacity region
+
+Define the set of asymptotically sustainable authority-demand rates.
+
+Something like:
+
+$$
+\mathcal A
+=
+\{
+\lambda:
+\exists\text{ causal policy servicing arrival rate }\lambda
+\text{ while SafeCert holds}
+\}.
+$$
+
+Ask whether it is convex, downward closed, or admits a useful interior/slack notion.
+
+This may be the correct formal object for “normative capacity.”
+
+---
+
+# 8. Revisit overload only after the primal is correct
+
+Do not prioritize a full causal dual unless the primal existence problem is now sufficiently clean.
+
+But refine the desired dual target.
+
+Failure of affordability should ideally yield a certificate separating a **claim/service load** from the **causal safe authority capacity**.
+
+The finite-horizon per-path Farkas certificate remains sound but not complete.
+
+Ask whether the natural dynamic dual object resembles:
+
+* a Lyapunov/potential witness;
+* a supermartingale;
+* an adversarial environment strategy;
+* a dynamic separating functional.
+
+Do not invent terminology without a theorem.
+
+---
+
+# 9. Answerability-to-service compilation
+
+The construction theorem will still be conditional on an authority schedule unless Answerability itself supplies one.
+
+Clarify exactly what Answerability should export.
+
+Possibilities:
+
+1. raw claim arrivals \(c_t^r\), with affordability responsible for scheduling;
+2. service-entitlement constraints rather than a particular schedule;
+3. explicit lower bounds on cumulative allocation:
+
+   $$
+   A_N^r\ge F(C_N^r)-O(1);
+   $$
+4. deadlines / transport constraints.
+
+Prefer to keep normative adjudication out of affordability itself.
+
+A likely clean split is:
+
+$$
+\boxed{
+\text{Answerability exports claims and admissible service traces;}
+}
+$$
+
+$$
+\boxed{
+\text{Affordability selects a safe trace among them.}
+}
+$$
+
+Determine whether this is consistent with the transport machinery.
+
+---
+
+# 10. Final status: what remains before the first fixed-era learner theorem?
+
+End with three explicitly separate lists:
+
+### A. Proven construction/composition pieces
+
+Only include genuine mathematical arrows.
+
+### B. Missing existence mathematics
+
+For example:
+
+* affordable service scheduling;
+* non-vacuity of capacity;
+* transport-stability certificates.
+
+### C. Later legitimacy extensions
+
+Do not mix these into the fixed-era learner:
+
+* cross-era semantic transport;
+* evaluator/ontology revision;
+* counterfactual non-capture;
+* coverage;
+* downstream deference/corrigibility.
+
+The purpose is to know whether the learner-level spine is finished before returning to full legitimacy.
+
+---
+
+# Deliverables
+
+Produce:
+
+1. `REASONWISE_ACCOUNTING.md`
+
+   * aggregate-to-reason cap lemma;
+   * countable/growing reason conditions;
+   * exact counterexamples where aggregate safety does not give per-reason Progress.
+
+2. `CAPACITY_VS_SAFETY.md`
+
+   * local authority-capacity set;
+   * lifetime SafeCert;
+   * sufficient routes connecting them;
+   * examples showing why they are not the same.
+
+3. `FIXED_ERA_THEOREM.md`
+
+   * final theorem statement;
+   * finite-horizon bound;
+   * exact dependency graph;
+   * explicit LI instantiation.
+
+4. `AFFORDABLE_SCHEDULING.md`
+
+   * the corrected viability problem in \(a\)-space;
+   * at least one positive existence theorem;
+   * many-reason analysis;
+   * remaining open questions.
+
+5. Targeted patches to stale PR75 documents, especially any definition still typing realized controls as predictable.
+
+6. Exact-rational fixtures for:
+
+   * aggregate enforcement safe while one reason-book has large positive value because another has large negative value;
+   * reasonwise cap recovered from complementary liability floors;
+   * local per-date authority caps with unbounded lifetime loss when allowances are nonsummable;
+   * signed-account cross-subsidization beating independent per-date budgeting;
+   * divergent allocated service with finite liability;
+   * multiple persistent reasons competing for finite authority capacity.
+
+## Success criterion
+
+The pass succeeds if it can answer:
+
+> **Conditional on an answerability-generated service load, do we now have a mathematically complete construction showing that a traderized Logical Inductor can receive persistent normative authority, make claim-weighted Progress up to explicit settlement/transport residuals, and retain its original epistemic guarantee?**
+
+If yes, state that theorem cleanly and identify **existence of an affordable service schedule** as the next problem.
+
+If no, identify the exact remaining missing arrow and produce the smallest counterexample.

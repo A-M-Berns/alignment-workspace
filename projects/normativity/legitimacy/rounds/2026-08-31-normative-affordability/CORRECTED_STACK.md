@@ -39,10 +39,19 @@ parameter and composes with any `(P1)`.
 
 ### S3a — Coercive Actionability
 
-If the engine guarantees `sum_t a_t phi(d_t) <= C_N` for a convex `phi` with
-`phi(0) = 0`, strictly increasing, then `E_{nu^a_N}[d] <= phi^{-1}(C_N/A_N)`. The
-linear form `phi(d) = gamma d` and projection enforcement's `phi(d) = d^2` are the
-two instances; the residual and the rate both read off `phi`.
+If the engine guarantees `sum_t a_t phi(d_t) <= C_N` with `C_N/A_N -> 0`, then
+`E_{nu^a_N}[d] -> 0` **exactly when** `phi` is bounded away from zero away from
+zero — `inf_{d >= eps} phi(d) > 0` for every `eps > 0`. Convexity is not needed for
+convergence; it buys the rate, `E[d] <= phi^{-1}(C_N/A_N)` by Jensen against
+`(C_N/A_N)^{1/3}` without it. The linear form `phi(d) = gamma d` and projection
+enforcement's `phi(d) = d^2` are the two instances. `FIXED_ERA_THEOREM.md` F1.
+
+### S3b — Subset ceiling
+
+An aggregate cap plus per-row liability floors summing to `B_tot` gives every
+subset of rows the *uniform* ceiling `U + B_tot`. Aggregate safety alone does not:
+two books with increments `+1` and `-1` have an identically zero aggregate and no
+reason-level ceiling at all. `REASONWISE_ACCOUNTING.md`.
 
 ### S4 — Joint Actionability
 
@@ -70,11 +79,12 @@ measure-carrying engine.
 
 ### S6 — Affordability
 
-An **affordability witness** at `h` is a causal `(w_t, u_t)` with
-`u_t = sum_r w^r_t zeta^r_t`, each chosen from `F_{t-1}`, such that the common
-region is nonempty at every date, an adapted transport plan with declared
-constants exists for every persistent reason, and `kappa = (u_t)` lies in the safe
-class. **Affordability** is the existence of such a witness.
+An **affordability witness** at `h` is a predictable `(a_t, kappa_t)` — allocated
+authority per reason, and the control law compiled from it — such that an adapted
+transport plan with declared constants matches each persistent reason's claim
+stream to `a^r`, and the realized history `u_t = kappa_t(x_t)` lies in the safe
+class. **Affordability** is the existence of such a witness. Nonemptiness of the
+common region is a force-interface precondition, not part of this definition.
 
 *Existence.* T7 stands as a **strong sufficient** theorem: convex per-round
 response sets, a convex liability functional, bounded arrival rates and a
@@ -97,9 +107,9 @@ refutes affordability. Sound, not complete.
 > | `W^r_N -> infinity` | service scheduling |
 > | an adapted plan `T^r` with `(T1)`, `(T2)`, cap `K_r`, residual density `-> 0` | service scheduling |
 > | stability `(T3)` with constants `(L_r, eps_r)` | semantic transport |
-> | `g^r_t >= gamma_r d^r_t` at the realized state | force / Actionability |
-> | `limsup ( sum_{n<N} w^r_n g^r_n ) / W^r_N <= 0` | learner Uptake |
-> | `kappa` in the safe class at budget `B` | affordability / safety |
+> | coercive Actionability `sum_t a_t phi(d_t) <= Work_N` with `phi` bounded away from zero away from zero | force / Actionability |
+> | the engine bounds `Work_N` — in LI, the per-date modulus and the cumulative cap | learner Uptake |
+> | per-row liability floors summing to `B_tot`, which imply the aggregate floor | affordability / safety |
 > | `SafeCert(kappa) ==> PreservedUptake(D^kappa)` | substrate preservation |
 >
 > Then `limsup_N E_{mu^r_N}[d^r] <= eps_r`, with equality to `0` when `eps_r = 0`,

@@ -109,6 +109,51 @@ commit.
 
 ## Settled
 
+### 2026-08-31 — a reason-indexed cap needs per-row liability floors
+
+**agent-decided, reversible.** The market maker's contract caps the aggregate
+enforcement book. Isolating one row's book requires floors on the rest: with
+per-row floors summing to a finite total, every subset of rows inherits the
+uniform ceiling of the aggregate cap plus that total, and the floors also imply
+the aggregate floor the preservation theorem needs, so a hypothesis list carrying
+the floors should not also carry aggregate safety separately.
+
+Aggregate safety alone does not suffice, and the countermodel is two lines: books
+with increments plus one and minus one have an identically zero aggregate account,
+so the aggregate cap and the aggregate floor both hold at zero while neither book
+is bounded. One reason's authority financed by another's unbounded losses defeats
+every reason-level guarantee. Each reason's enforcement must be separately
+underwritten.
+
+Reason-indexed Progress does not *require* this, since the per-date modulus bounds
+every subset's work unconditionally; what the floors buy is the constant, and with
+it whether a reason of modest allocation progresses at all.
+
+*Rejected alternative:* stating Progress only in aggregate, which would have left
+the theory unable to say that any particular reason is being answered.
+
+### 2026-08-31 — local authority capacity is not lifetime safety
+
+**agent-decided, reversible.** A predictable per-date authority-capacity set and
+the diachronic SafeCert condition are different objects, and the round had been
+running them together. Respecting a per-date cap at every date gives an account
+unbounded below whenever the allowances are not summable; conversely SafeCert can
+hold while the cap is exceeded, because the cap inverts a worst-case charge and the
+realized world is not the worst one.
+
+The affordability definition therefore carries SafeCert, and capacity sets are how
+a policy establishes it. Three routes are recorded: a summable exogenous allowance
+split; spending the realized account slack, which is the same inequality with the
+slack in place of the allowance and is strictly larger whenever the account has
+earned; and the existing structural certificates, which establish SafeCert with no
+allowance sequence at all. Writing a capacity set into the definition would have
+made affordability depend on which sufficient certificate a scheduler happened to
+use, and would have excluded the third route entirely.
+
+*Rejected alternative:* defining affordability by membership in a per-date capacity
+box, which is neither necessary nor sufficient for the property it was standing in
+for.
+
 ### 2026-08-31 — service is allocated authority, not realized force
 
 **agent-decided, reversible.** The reason-indexed service variable is the

@@ -6,18 +6,20 @@ An **affordability witness** at a history `h` is a causal sequence
 `(a_t, kappa_t)`, each chosen from `F_{t-1}`, together with an adapted family of
 transport plans `T^r` and declared constants, such that at every date:
 
-1. **Feasibility and legality.** `a_t >= 0` is the allocated authority per reason,
-   lying in the date's capacity set; `kappa_t` is the control law compiled from
-   the docket and `a_t`, carrying whatever regularity the engine's response needs;
-   and the common region `K_t(h_{t-1}) = intersect_r K^r_t(h_{t-1})` is nonempty.
-   The **realized** control is `u_t = kappa_t(x_t)` and is not predictable.
+1. **Legality.** `a_t >= 0` is the allocated authority per reason and `kappa_t` is
+   the control law compiled from the docket and `a_t`, carrying whatever
+   regularity the engine's response needs. The **realized** control is
+   `u_t = kappa_t(x_t)` and is not predictable.
 2. **Service fidelity.** For each persistent reason `r`, `T^r` satisfies the
    transport conditions `(T1)`–`(T3)` of `SERVICE_TRANSFER.md` against the
    allocated-service stream `a^r`, with constants `(L_r, eps_r, K_r)` and residual
    density tending to zero. `T^r(t, s)` is fixed by `F_s`: the plan commits when
    the service is delivered, not at the horizon.
-3. **Aggregate safety.** The realized `kappa = (u_t)_t` lies in the prefix-closed,
-   settlement-antitone safe class at budget `B`.
+3. **Safety.** The realized `kappa = (u_t)_t` lies in the prefix-closed,
+   settlement-antitone safe class at budget `B`. A *local* authority-capacity set
+   is one way a policy establishes this and is not the condition itself —
+   `CAPACITY_VS_SAFETY.md` keeps the two apart, and exhibits a policy inside its
+   capacity at every date whose lifetime account is unbounded below.
 
 `SERVICE_FORCE_TYPING.md` is the audit behind clause 1: the service variable is
 the *allocated* authority, and the control is a law rather than a position,
@@ -48,6 +50,12 @@ functional — is an engine declaration, not an argument of the definition.
 force makes clause 2 a demand on the engine's behaviour rather than on the
 scheduler, and leaves the service measure undefined exactly where the reason is
 perfectly satisfied. `SERVICE_FORCE_TYPING.md` §2 exhibits both failures.
+
+**Nonemptiness of the common region has moved out.** It is a precondition for the
+enforcement inequality to have a region point to evaluate at — a property of the
+docket, not of the schedule — so it belongs to the force interface. Keeping it here
+made every affordability statement carry a hypothesis about what the reasons demand
+of each other rather than about what the reasoner can afford.
 
 ## 2. The composition theorem
 
