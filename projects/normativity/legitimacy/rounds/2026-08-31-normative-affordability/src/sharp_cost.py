@@ -64,6 +64,22 @@ def sharp_inverse(s: Fraction, m: Fraction, budget: Fraction) -> Fraction:
     return (budget + m) ** 2 / (s ** 2 * m)
 
 
+def sharp_reference_cost(s: Fraction, m: Fraction) -> Fraction:
+    """`L_t(1)` on either branch, exact when `m` is a perfect square.
+
+    `s^2/4` while `s^2 <= 4m`, and `s sqrt(m) - m` beyond. The two routes to a
+    small reference cost are a shallow exclusion and an easily moved engine.
+    """
+    if s ** 2 <= 4 * m:
+        return s ** 2 / 4
+    return s * _exact_sqrt(m) - m
+
+
+def reference_envelope(s: Fraction, m: Fraction) -> Fraction:
+    """`min(s^2, s sqrt(m))`, the quantity `L_t(1)` is comparable to."""
+    return min(s ** 2, s * _exact_sqrt(m))
+
+
 def _exact_sqrt(a: Fraction) -> Fraction:
     num, den = a.numerator, a.denominator
     rn, rd = _isqrt(num), _isqrt(den)

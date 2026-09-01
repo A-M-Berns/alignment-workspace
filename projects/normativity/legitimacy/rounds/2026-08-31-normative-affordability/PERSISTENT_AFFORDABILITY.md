@@ -127,7 +127,8 @@ allocation `a_t = 1` is sharply affordable forever, with total charge under `1/2
 `SHARP_PERSISTENCE.md` gives the correct theorem for a general star-shaped date
 cost: persistence is achievable iff `liminf_t L_t(1) = 0`. It specializes to
 `liminf q_t = 0` for the conservative charge — so P1 and P2 stand exactly as stated
-— and to `liminf s_t = 0` for the sharp one in the regime `s_t^2 <= 4 m_t`. The two
+— and, for the sharp one, to `liminf_t min(s_t^2, s_t sqrt(m_t)) = 0`, which
+reduces to `liminf s_t = 0` exactly under a floor on the engine scale `m_t`. The two
 criteria agree when `m_t` is bounded above and below, which is the case this section
 had in mind and did not state.
 

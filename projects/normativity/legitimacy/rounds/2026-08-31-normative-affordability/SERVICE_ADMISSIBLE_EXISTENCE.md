@@ -1,5 +1,12 @@
 # Affordability against Answerability's admissible traces
 
+**Superseded in part.** A1's disjoint-window floor condition is a correct upper
+bound on the truth and not the criterion:
+`BOUNDED_DELAY_AFFORDABILITY.md` D4 gives the exact minimum cost for an actual
+claim stream, a *sliding*-window minimum, and the two differ by up to a factor
+`H+1`. The delay frontier of §4 is superseded by `SERVICEABILITY_FRONTIER.md`. What
+stands here is the framing and the direction of the effect.
+
 ## 1. The real existence question
 
 `SHARP_PERSISTENCE.md` characterizes when *some* divergent allocation is
@@ -94,21 +101,22 @@ The optimization is
                sum_t T(t,s) <= a_s                    feasibility
                sum_s L_s(a_s) <= B                    affordable .
 
-**Proposition A2 (the frontier is real, not merely rhetorical).** With a single
-claim per date, an error `epsilon(t,s) = eta (s - t)` linear in the delay, and
-reference costs equal to `1` except at multiples of `g` where they are `4^-k`, the
-affordable schedules place claims only at the dip dates, so the average transport
-error is at least `eta g / 2` — proportional to the dip spacing — while an
-error-free schedule serves at every date and costs at least one unit of budget per
-date. So the achievable pairs (transport error, lifetime charge) are bounded away
-from the origin in both coordinates, and the frontier is parametrized by the dip
-spacing.
+**Proposition A2.** With a single claim per date, an error
+`epsilon(t,s) = eta (s - t)` linear in the delay, and reference costs equal to `1`
+except at multiples of `g` where they are `4^-k`, a schedule that serves every claim
+at the next dip incurs average transport error exactly `eta (g-1)/2` — the mean of
+`0, 1, ..., g-1` — while a schedule serving every claim on arrival incurs no
+transport error and costs at least one unit of budget per non-dip date.
 
-That is the honest statement available at this level: the two residuals of the
-fixed-era theorem are not independently minimizable, and the parameter trading them
-is how often enforcement is cheap. A sharper frontier needs a model of how
-`epsilon` grows with delay for an actual reason type, which the round does not
-have.
+The claim that affordable schedules place service *only* on dip dates is too strong
+and is corrected: a schedule may serve a summable amount elsewhere without affecting
+affordability. What is true is asymptotic — all but a summable part of the service
+mass sits on dip dates.
+
+`SERVICEABILITY_FRONTIER.md` supersedes this heuristic with the real frontier,
+parametrized by the deadline rather than by the dip spacing, and
+`BOUNDED_DELAY_AFFORDABILITY.md` supersedes A1 with the exact sliding-window
+criterion.
 
 ## 5. What this changes about the earlier reading
 

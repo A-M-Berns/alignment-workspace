@@ -3,11 +3,12 @@
 **Verdict:**
 `AFFORDABILITY-COMPOSES-BUT-THE-SERVICE-CONDITION-IS-TRANSPORT-NOT-CONTIGUITY`.
 
-Six dispatches: the schematic pass; a follow-up auditing the realization map
+Seven dispatches: the schematic pass; a follow-up auditing the realization map
 against the traderized mathematics; a focused pass closing the typing mismatch
 between the schematic service variable and the concrete learner; a consolidation
 pass finishing the fixed-era statement; an existence pass characterizing persistent
-affordability; and a repair pass generalizing that characterization and scoping it. The technical register, the theorem stack, the
+affordability; a repair pass generalizing that characterization; and a serviceability
+pass characterizing bounded-delay service. The technical register, the theorem stack, the
 per-hypothesis classification and the full not-shown list are in
 `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/REPORT.md`,
 the audit in that directory's `FOLLOWUP_REPORT.md`, and the resulting stack in
@@ -240,12 +241,49 @@ The rate region's non-convexity claim is narrowed to the finite-horizon
 cumulative-authority frontier, where the counterexample actually lives. The
 fixed-era composition remains frozen and was not reopened.
 
+## The seventh dispatch: serviceability, characterized
+
+**Bounded-delay service is exactly characterized.** Feasibility against a given
+service profile is the interval condition; prefixes do not suffice because service
+cannot run backwards, and first-in-first-out is optimal and complete, so the
+transport plan is constructed rather than assumed. When the profile is chosen the
+minimum cost is a shortest path over consecutive runs, and on the sharp charge's
+linear branch it is exactly the sum over claims of the claim mass times the smallest
+date weight in that claim's own window — a sliding window, where the sixth
+dispatch's condition used a fixed blocking, differing by up to the deadline. One
+formula covers dense, bounded and sparse claim streams and interpolates back to
+unconstrained persistence as the deadline grows.
+
+**Persistence without serviceability is exhibited.** Dips spaced at sixteen satisfy
+the unconstrained criterion and fail bounded-delay service at deadline three, whose
+cost grows linearly with the horizon; a deadline matching the dip spacing restores
+it.
+
+**The transport residual is purchasable.** The minimum cost falls with the deadline
+and the temporal modulus rises with it, so there is a least affordable deadline and
+the Progress residual a budget buys is the modulus evaluated there. Of the two
+residuals in the fixed-era bound, one is a property of the norm and one is a
+resource question.
+
+**Timely service competes where persistence did not**, because its minimum cost is
+a positive number and budgets add; the joint condition is a sum rather than a Hall
+condition, and it is sufficient but not necessary when reasons share rows.
+
+**The online gap reappears under deadlines** and is unbounded, since waiting is no
+longer free — and it closes entirely if the whole window's weights are predictable at
+the claim's arrival, which is the case worth checking against the construction.
+
+The sharp criterion's depth-only reading is also corrected: the reference cost is
+comparable to the minimum of the squared depth and the depth times the root of the
+engine scale, so a fixed depth against a vanishing engine scale is persistently
+enforceable, and the depth-only form needs a floor on the engine scale.
+
 ## Outstanding maintainer actions
 
 1. Naming audit over the four surviving provisional names, when one is next run.
    "Self-financing control" is withdrawn rather than renamed.
 
-The reserved question is answered by the staging and has left the queue; twelve
+The reserved question is answered by the staging and has left the queue; fifteen
 dated `DECISIONS.md` entries record the later dispatches' rulings, all
 agent-decided and reversible.
 
@@ -255,4 +293,4 @@ agent-decided and reversible.
 |---|---|
 | prompt author | unrecorded — authored outside this repository |
 | executor | Claude Opus 5 (Anthropic) |
-| dates | six dispatches; five executed 2026-08-31, the sixth 2026-09-01 |
+| dates | seven dispatches; five executed 2026-08-31, two 2026-09-01 |

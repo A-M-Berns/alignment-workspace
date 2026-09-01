@@ -109,6 +109,69 @@ commit.
 
 ## Settled
 
+### 2026-09-01 — bounded-delay service has an exact sliding-window criterion
+
+**agent-decided, reversible.** Feasibility of a bounded-delay transport plan
+against a *given* service profile is exactly the interval condition — the claim mass
+of every date interval fits the capacity of that interval extended by the deadline.
+Prefixes do not suffice, because service cannot run backwards, and first-in-first-out
+is optimal and complete, so the transport plan the composition theorem consumes is
+constructed rather than assumed.
+
+When the service profile is *chosen*, the minimum cost is a shortest path over
+consecutive runs of claims, each served whole at one date legal for all of them; and
+on the sharp charge's linear branch it collapses to a closed form, the sum over
+claims of the claim mass times the smallest date weight in that claim's own window.
+That is a **sliding**-window minimum, where the previous pass's condition used a
+fixed disjoint blocking; the two differ by up to the deadline, so the earlier
+condition is a correct upper bound and not the criterion. The one formula covers
+dense, bounded and sparse claim streams, and it interpolates exactly back to
+unconstrained persistence as the deadline grows.
+
+The separation the round wanted is now exhibited rather than asserted: dips spaced
+at sixteen satisfy unconstrained persistence and fail bounded-delay service at
+deadline three, whose cost grows linearly with the horizon, while a deadline
+matching the dip spacing restores it.
+
+*Rejected alternative:* keeping the disjoint-window floor condition, which fixes
+where the block boundaries fall and so cannot see the optimum.
+
+### 2026-09-01 — the transport residual is purchasable and the friction residual is not
+
+**agent-decided, reversible.** Given a temporal modulus for the reason's defect,
+a plan with delay at most `H` discharges the transport stability inequality with
+residual the modulus at `H`. The minimum service cost is nonincreasing in `H` and
+the modulus is nondecreasing, so the affordable deadlines form an up-set with a
+least element, and the Sustainable Progress residual a budget buys is the modulus
+evaluated there.
+
+So the two residuals in the fixed-era bound are differently sourced. The
+settlement-friction residual is the norm's own exclusion of the still-live worlds
+and no budget touches it. The transport residual is the price of the deadline the
+budget could afford, and it falls as the budget rises. A reason can be affordable
+and untimely, which is the regime the round previously had no way to name.
+
+*Rejected alternative:* treating the deadline as an Answerability constant rather
+than as the scheduler's dial.
+
+### 2026-09-01 — timely service competes across reasons; persistence does not
+
+**agent-decided, reversible.** The persistence region is the full power set of the
+persistable reasons because the persistence criterion is budget-free: persistence
+costs nothing in the limit. The minimum cost of *timely* service is a definite
+positive number, so budgets add and two reasons each serviceable on the whole budget
+need not be jointly serviceable.
+
+With separable per-reason costs the joint condition is a single sum rather than a
+Hall condition, because the force layer supplies no shared enforcement capacity —
+the per-row conformance bound does not depend on how many rows are active — and the
+contention is scalar. Where reasons share rows or share dates past the charge's
+branch point the costs are subadditive, so the additive test is sufficient for joint
+serviceability and is not an impossibility certificate.
+
+*Rejected alternative:* extending "reasons do not compete" from persistence to
+service, which the positive minimum cost refutes immediately.
+
 ### 2026-09-01 — the persistence criterion is the date cost, not the conservative friction
 
 **agent-decided, reversible.** For a date-cost function that is increasing,

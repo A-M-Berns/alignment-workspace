@@ -17,9 +17,11 @@ so
     L_t(a) >= a L_t(1)   for a <= 1 ,      L_t(a) <= a L_t(1)   for a >= 1 .
 
 Star-shapedness is implied by concavity with `L(0) = 0` and is the only structural
-property used below. The sharp charge is concave: it is linear with slope
-`s^2/4` up to the branch point and has derivative `s sqrt(m)/(2 sqrt(a))` beyond,
-which equals `s^2/4` at the join and decreases after it.
+property either theorem below uses — S1 and S2 both, the second because
+star-shapedness of `L` is star-shapedness of its inverse in the reverse sense. The
+sharp charge is concave, hence star-shaped: it is linear with slope `s^2/4` up to
+the branch point and has derivative `s sqrt(m)/(2 sqrt(a))` beyond, which equals
+`s^2/4` at the join and decreases after it.
 
 ## 2. The theorem
 
@@ -57,11 +59,34 @@ fails; only the *rate* of divergence scales with `B`.
 `liminf_t q_t = 0` exactly. That result is unchanged and correctly scoped.
 
 **Sharp robust.** `L_t(1) = s_t^2/4` whenever `s_t^2 <= 4 m_t`, and
-`s_t sqrt(m_t) - m_t` otherwise. In the normal regime — `s_t <= 1` is a depth
-inside the cube and `m_t` is bounded below by the market maker's own slack — the
-first branch applies and
+`s_t sqrt(m_t) - m_t` otherwise. The two branches have a single envelope:
 
-    sharp-robust persistence  <==>  liminf_t s_t = 0 .
+**Lemma S3.** `(1/4) min(s^2, s sqrt(m))  <=  L(1)  <=  min(s^2, s sqrt(m))`.
+
+*Proof.* If `s^2 <= m` then `min = s^2` and `L(1) = s^2/4`, giving the ratio `1/4`.
+If `m < s^2 <= 4m` then `min = s sqrt(m)` and `L(1) = s^2/4`, whose ratio to the
+minimum is `s/(4 sqrt(m)) in (1/4, 1/2]`. If `s^2 > 4m` then `min = s sqrt(m)` and
+`L(1) = s sqrt(m) - m`, whose ratio is `1 - sqrt(m)/s in (1/2, 1)`. `square`
+
+So
+
+    sharp-robust persistence  <==>  liminf_t min(s_t^2, s_t sqrt(m_t)) = 0 ,
+
+and there are **two independent routes to a cheap date**: a shallow exclusion, and
+an engine that is easy to move. A norm with a fixed exclusion depth `s_t = 1` against
+a vanishing engine scale `m_t -> 0` is persistently enforceable with no depth decay
+at all — `L_t(1) = sqrt(m_t) - m_t -> 0` — and
+`tests/test_sharp_cost.py::TheReferenceCostIsNotDepthOnly` pins it.
+
+**The criterion reduces to the depth alone exactly under a floor on the engine
+scale.** If `m_t >= m_0 > 0` then `min(s^2, s sqrt(m)) >= s min(s, sqrt(m_0))`, which
+is bounded away from zero whenever `s_t` is, so
+
+    m_t >= m_0 > 0    ==>    sharp-robust persistence  <==>  liminf_t s_t = 0 .
+
+`m_t = eps_t + M_t` is the market maker's slack plus the ordinary volume bound, so
+the floor holds whenever the ordinary traders do not go silent. The unqualified
+depth-only statement an earlier version of this section made is withdrawn.
 
 **The two criteria are different, and the round's earlier claim that they agree is
 withdrawn.** `PERSISTENT_AFFORDABILITY.md` §5 asserted the characterization was
@@ -72,23 +97,25 @@ conservative criterion fails outright, while `L_t(1) = 1/(4t^2)` is summable, so
 `tests/test_sharp_cost.py::TheReviewCounterexample` pins every quantity, including
 that the allocation stays on the linear branch.
 
-So **the sharp criterion depends on the exclusion depth alone and the conservative
-one also on the engine scale.** They coincide when `m_t` is bounded above and
-below, which is the case the round had in mind and did not state.
+So the two criteria coincide when `m_t` is bounded above and below, and otherwise
+differ in both directions: the conservative one can fail while the sharp one holds
+(`s_t = 1/t`, `m_t = t^4`), and the sharp one can hold with no depth decay at all
+(`s_t = 1`, `m_t -> 0`).
 
 ## 4. The finite-horizon optimum
 
-**Theorem S2.** For any horizon `N`,
+**Theorem S2.** Under the same hypotheses as S1 — increasing, star-shaped,
+`L_t(0) = 0`, with `L_t^{-1}(B) = sup{a : L_t(a) <= B}` — for any horizon `N`,
 
     max { sum_{t<N} a_t  :  sum_{t<N} L_t(a_t) <= B }  =  max_{t<N} L_t^{-1}(B) ,
 
 attained by spending the whole budget on one date.
 
 *Proof.* Parametrize by the budget split `b_t` with `sum b_t <= B`; the mass bought
-is `sum_t f_t(b_t)` with `f_t = L_t^{-1}`, which is convex, increasing and
-vanishing at zero because `L_t` is concave, increasing and vanishing at zero. A
-convex function with `f(0) = 0` lies below its chord, so `f_t(b) <= (b/B) f_t(B)`
-for `b <= B`, and
+is `sum_t f_t(b_t)` with `f_t = L_t^{-1}`. Star-shapedness of `L_t` is exactly
+star-shapedness of `f_t` in the reverse sense — `f_t(b)/b` nondecreasing, since
+`f_t(b)/b = a/L_t(a)` at `a = f_t(b)` — so `f_t(b) <= (b/B) f_t(B)` for `b <= B`,
+and
 
     sum_t f_t(b_t)  <=  (1/B) (max_t f_t(B)) sum_t b_t  <=  max_t f_t(B) .
 

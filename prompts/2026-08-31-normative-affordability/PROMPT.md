@@ -3954,3 +3954,789 @@ The pass succeeds if we can say, without overclaim:
 > We have an exact theory of persistent normative authority under exogenous robust underwriting, know exactly how the conservative and sharp certificates differ, understand when causal scheduling loses nothing, and have isolated the genuinely harder existence problem as the intersection of affordability with Answerability service constraints and closed-loop friction dynamics.
 
 If the sharp charge yields an equally clean characterization theorem, make that the mathematical centerpiece of the pass.
+
+---
+
+# Seventh dispatch — exact serviceability under bounded-delay transport
+
+# Seventh pass inside PR75: exact serviceability under bounded-delay transport
+
+Stay inside PR75:
+
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+
+Treat the fixed-era composition theorem as frozen.
+
+Also treat the unconstrained persistence theory as substantially complete, subject only to the targeted cleanup in §1 below.
+
+The main purpose of this pass is to move from
+
+$$
+\text{“can this reason receive unbounded authority eventually?”}
+$$
+
+to
+
+$$
+\boxed{
+\text{“can the authority it is owed be delivered on an Answerability-admissible schedule?”}
+}
+$$
+
+The previous pass established that unconstrained affordability prefers sparse low-cost dates. Answerability may forbid arbitrarily long waiting. This tension now looks like the most important mathematical seam in the round.
+
+Read at minimum:
+
+* `SERVICE_TRANSFER.md`
+* `SERVICE_ADMISSIBLE_EXISTENCE.md`
+* `SHARP_PERSISTENCE.md`
+* `PERSISTENT_AFFORDABILITY.md`
+* `ONLINE_EXISTENCE.md`
+* `CLOSED_LOOP_EXISTENCE.md`
+* `AFFORDABILITY.md`
+* `FIXED_ERA_THEOREM.md`
+* `OVERLOAD_TARGET.md`
+
+Do not perform another broad architectural pass.
+
+---
+
+# 1. First make three small persistence-theory repairs
+
+Before doing new work, patch the following precisely.
+
+## 1A. Sharp persistence is not generically depth-only
+
+The correct general criterion is
+
+$$
+\boxed{
+\liminf_t L_t(1)=0.
+}
+$$
+
+For the sharp robust LI cost,
+
+$$
+L_t(1)=
+\begin{cases}
+s_t^2/4,
+&
+s_t^2\le4m_t,
+\\[1mm]
+s_t\sqrt{m_t}-m_t,
+&
+s_t^2>4m_t.
+\end{cases}
+$$
+
+Do not state unconditionally that this is equivalent to
+
+$$
+\liminf_ts_t=0.
+$$
+
+For example,
+
+$$
+s_t=1,\qquad m_t\to0
+$$
+
+can make \(L_t(1)\to0\) with no depth decay.
+
+Find the cleanest uniform comparison. A candidate is
+
+$$
+L_t(1)
+\asymp
+\min\{s_t^2,s_t\sqrt{m_t}\}
+$$
+
+with universal constants.
+
+Prove the sharp inequalities and state the exact conditions under which the criterion simplifies to
+
+$$
+\liminf s_t=0.
+$$
+
+In particular, a fixed positive lower bound on \(m_t\) should be made explicit if used.
+
+Interpret the two routes to low cost separately:
+
+* shallow exclusion;
+* cheap/easy-to-move engine.
+
+## 1B. Separate S1 and S2 hypotheses
+
+`SHARP_PERSISTENCE.md` S1 needs only the star-shaped condition
+
+$$
+a\mapsto L_t(a)/a
+\quad\text{nonincreasing}.
+$$
+
+The finite-horizon concentration theorem S2 currently uses convexity of
+
+$$
+L_t^{-1},
+$$
+
+hence concavity of \(L_t\).
+
+Retype the statements:
+
+* **S1:** increasing + star-shaped + \(L_t(0)=0\);
+* **S2:** add the actual stronger assumptions needed for the inverse/concentration argument.
+
+Do not claim finite-horizon concentration for arbitrary star-shaped costs unless proved.
+
+## 1C. Tighten the old delay-frontier fixture
+
+`SERVICE_ADMISSIBLE_EXISTENCE.md` currently gives a heuristic delay frontier with cheap dates every \(g\) dates and average delay approximately \(g/2\).
+
+Make the constant exact if this fixture is retained:
+
+$$
+\frac{0+1+\cdots+(g-1)}{g}
+=
+\frac{g-1}{2}
+$$
+
+for the corresponding forward-service convention.
+
+Also replace any statement that affordable schedules place service “only” on dip dates with the correct asymptotic claim: finite or summable authority may still be delivered elsewhere.
+
+These are cleanup, not the main research task.
+
+---
+
+# 2. Formalize actual bounded-delay service
+
+The existing blockwise theorem
+
+$$
+\sum_i\min_{s\in B_i}L_s(\alpha)<\infty
+$$
+
+is useful, but it is not yet generic bounded-delay transport.
+
+Now model claims explicitly.
+
+Let claim mass
+
+$$
+c_t\ge0
+$$
+
+arrive at each date \(t\).
+
+Let allocated service be
+
+$$
+a_s\ge0.
+$$
+
+A transport plan
+
+$$
+T(t,s)\ge0
+$$
+
+must satisfy
+
+$$
+\sum_sT(t,s)=c_t
+$$
+
+for claims being fully served,
+
+$$
+\sum_tT(t,s)\le a_s,
+$$
+
+and bounded delay
+
+$$
+T(t,s)>0
+\Longrightarrow
+t\le s\le t+H.
+$$
+
+This is the simplest nontrivial Answerability service semantics.
+
+The affordability problem is:
+
+$$
+\boxed{
+\inf_{a,T}
+\sum_s L_s(a_s)
+}
+$$
+
+subject to those transport constraints.
+
+This should be the central mathematical problem of the pass.
+
+---
+
+# 3. Solve bounded-delay transport feasibility before adding costs
+
+Ignore liability first.
+
+For fixed claim masses \(c_t\), service capacities \(a_s\), and delay \(H\), characterize existence of \(T\).
+
+Because each claim has the interval neighborhood
+
+$$
+[t,t+H],
+$$
+
+this is an interval bipartite-flow problem and should admit a much simpler Hall condition than arbitrary matching.
+
+Find the exact necessary-and-sufficient inequalities.
+
+A likely form is some family of interval inequalities such as
+
+$$
+\sum_{t\in I}c_t
+\le
+\sum_{s\in N(I)}a_s
+$$
+
+for every interval \(I\), where
+
+$$
+N(I)=I+[0,H].
+$$
+
+But exploit the ordered interval structure as aggressively as possible.
+
+Questions:
+
+1. Is it enough to check prefixes?
+2. Is it enough to check all intervals?
+3. Does forward-only bounded delay reduce feasibility to
+
+   $$
+   C_N\le A_{N+H}
+   $$
+
+   plus some no-early-service condition?
+4. Is EDF/FIFO greedy service optimal and complete?
+5. Can the condition be written directly in terms of backlog:
+
+   $$
+   b_t^H=0
+   $$
+
+   for claims reaching age \(H\)?
+
+Give a theorem and proof.
+
+This theorem should connect directly to `SERVICE_TRANSFER.md`: bounded delay should construct the transport plan rather than merely be prose around it.
+
+---
+
+# 4. Then solve the minimum-cost bounded-delay problem
+
+Now restore the date cost \(L_s(a_s)\).
+
+Define
+
+$$
+\mathsf{Cost}_H(c,L)
+=
+\inf
+\left\{
+\sum_sL_s(a_s):
+(a,T)\text{ satisfies bounded-delay service}
+\right\}.
+$$
+
+Try to characterize this exactly or algorithmically.
+
+The costs of interest are increasing and concave in authority.
+
+That is important: **concavity rewards concentration**, while deadlines restrict how far concentration can go.
+
+This is a very specific combinatorial optimization problem.
+
+Investigate whether the optimum has a greedy structure:
+
+> wait within each claim's legal window, then batch as much outstanding service as possible onto the currently cheapest legal date.
+
+Possible algorithms:
+
+* earliest-deadline-first with cheapest-date batching;
+* serve each deadline cohort at the cheapest point in its remaining window;
+* dynamic programming over windows;
+* min-cost flow after an appropriate transformation;
+* an interval covering formulation.
+
+Do not assume ordinary convex optimization applies: the objective is concave.
+
+If the exact infinite-horizon problem is difficult, solve the finite-horizon version completely.
+
+---
+
+# 5. Find the exact bounded-delay affordability criterion
+
+The unconstrained persistence criterion is a dip condition:
+
+$$
+\liminf_tL_t(1)=0.
+$$
+
+With a uniform per-window service floor, the previous pass found a summability condition.
+
+Now derive the true condition for an actual claim process.
+
+Start with canonical claim streams.
+
+## Case A — unit claim every date
+
+$$
+c_t=1.
+$$
+
+Every claim must receive one unit within \(H\) dates.
+
+What is the exact finite-budget affordability criterion?
+
+The service rate is now positive, so the answer may be extremely restrictive.
+
+For concave costs, can claims be batched into packets of size at most \(H+1\)?
+
+Does the optimum reduce to a partition into blocks whose service occurs at one chosen date?
+
+For example, is a condition of the form
+
+$$
+\sum_k
+\min_{s\in[kH,(k+1)H+\text{offset}]}
+L_s(\text{block mass})
+<\infty
+$$
+
+necessary and sufficient?
+
+Do not accept the old disjoint-window floor theorem as the answer unless it really coincides with exact claim-by-claim bounded delay.
+
+## Case B — general bounded claim stream
+
+$$
+0\le c_t\le C.
+$$
+
+Give sufficient and necessary conditions in terms of local claim mass and local cost minima.
+
+## Case C — sparse claims
+
+Determine how the criterion interpolates back toward unconstrained persistence when claim arrivals themselves are sparse.
+
+The goal is a theorem saying exactly how **claim density interacts with cheap-date density**.
+
+---
+
+# 6. Investigate a dual / Hall-style affordability condition
+
+Transport feasibility alone may have an interval Hall condition.
+
+Adding concave cost may yield a useful dual lower bound.
+
+For any set/window of claims, the service satisfying them must fall inside a specific neighborhood. Therefore that neighborhood has a minimum liability cost for carrying the required mass.
+
+Define something like
+
+$$
+\mathsf{CapCost}(J,m)
+=
+\min
+\left\{
+\sum_{s\in J}L_s(a_s):
+\sum_{s\in J}a_s\ge m
+\right\}.
+$$
+
+Because \(L_s\) is concave, this may simply be
+
+$$
+\boxed{
+\mathsf{CapCost}(J,m)
+=
+\min_{s\in J}L_s(m)
+}
+$$
+
+under the S2 hypotheses.
+
+If so, every claim interval \(I\) yields a necessary lower bound
+
+$$
+\min_{s\in N(I)}
+L_s\!\left(\sum_{t\in I}c_t\right).
+$$
+
+Can these local lower bounds be assembled into a **necessary-and-sufficient certificate** for global finite-budget service?
+
+This would be very valuable.
+
+It could look like a covering/packing dual:
+
+* primal: batch claims onto cheap legal service dates;
+* dual: select disjoint or suitably separated claim intervals whose mandatory costs sum beyond the budget.
+
+Because the service neighborhoods are intervals, there may be an exact greedy interval-packing dual rather than a generic Farkas theorem.
+
+Look hard for this.
+
+---
+
+# 7. Relate bounded-delay service to transport stability
+
+The composition theorem does not actually require bounded delay for its own sake. It requires the stability inequality
+
+$$
+d_t\le L\,d_s+\epsilon
+$$
+
+whenever claim \(t\) is serviced at \(s\).
+
+Bounded delay is one possible mechanism for proving this.
+
+Suppose the defect/reason semantics has temporal regularity such as
+
+$$
+|d_t-d_s|
+\le
+\omega(|s-t|)
+$$
+
+for some modulus \(\omega\).
+
+Then bounded delay \(H\) gives
+
+$$
+d_t
+\le
+d_s+\omega(H).
+$$
+
+So the transport residual is
+
+$$
+\epsilon=\omega(H).
+$$
+
+Now affordability and semantic accuracy trade off through \(H\):
+
+* larger \(H\) exposes more cheap dates;
+* larger \(H\) worsens \(\epsilon\).
+
+This may produce a very clean quantitative theorem:
+
+$$
+\boxed{
+\text{Sustainable Progress residual}
+\le
+L K F
++
+\omega(H)
+}
+$$
+
+provided bounded-delay affordability at \(H\) holds.
+
+Try to derive a **serviceability frontier**
+
+$$
+H
+\mapsto
+\bigl(
+\mathsf{minimum\ liability}(H),
+\,
+\mathsf{transport\ error}(H)
+\bigr).
+$$
+
+This is likely more meaningful than the earlier ad hoc delay fixture.
+
+---
+
+# 8. Define serviceability as the intersection, not a new primitive condition
+
+Do not introduce another large abstract interface unless necessary.
+
+For this pass, use:
+
+$$
+\mathcal L_A
+=
+\text{Answerability-admissible service traces},
+$$
+
+$$
+\mathcal L_B
+=
+\text{affordable service traces}.
+$$
+
+Then
+
+$$
+\boxed{
+\text{serviceable}
+\iff
+\mathcal L_A\cap\mathcal L_B\neq\varnothing.
+}
+$$
+
+The point is not to add a label; it is to characterize this intersection.
+
+For bounded-delay claims:
+
+$$
+\mathcal L_A
+=
+\{a:\exists T\text{ with delay}\le H\}.
+$$
+
+For robust exogenous underwriting:
+
+$$
+\mathcal L_B
+=
+\left\{
+a:\sum_tL_t(a_t)\le B
+\right\}.
+$$
+
+So the exact question is now finite and explicit.
+
+---
+
+# 9. Multi-reason serviceability: see whether competition reappears
+
+Unconstrained qualitative persistence did not compete across countably many reasons, because every reason could receive an arbitrarily small positive budget.
+
+That should **stop being true** once reasons impose service deadlines or quantitative local service requirements.
+
+Test this.
+
+Let each reason \(r\) have:
+
+* claims \(c_t^r\);
+* delay \(H_r\);
+* date cost \(L_t^r(a)\).
+
+The global liability budget couples them:
+
+$$
+\sum_{t,r}L_t^r(a_t^r)\le B.
+$$
+
+Ask whether there is now a genuine Hall/capacity condition.
+
+Construct the smallest example where:
+
+* each reason is individually serviceable;
+* the pair is not jointly serviceable.
+
+This would be an important correction to the earlier “reasons don't compete” result:
+
+$$
+\boxed{
+\text{unconstrained persistence doesn't compete;}
+\quad
+\text{timely service can.}
+}
+$$
+
+If a useful multi-reason theorem emerges, state it. Otherwise establish the counterexample and leave the general problem open.
+
+---
+
+# 10. Online bounded-delay service
+
+After solving the offline finite-horizon problem, ask what changes causally.
+
+At time \(s\), the scheduler knows:
+
+* all claims that have arrived;
+* their deadlines;
+* current \(L_s\) / friction;
+* not future costs.
+
+The unconstrained persistence problem had no qualitative online penalty because waiting was free.
+
+Here waiting is not free: deadlines expire.
+
+Therefore an online/offline gap should reappear.
+
+Prove the smallest clean impossibility theorem.
+
+For example:
+
+* one claim;
+* two legal service dates;
+* first date has moderate cost;
+* scheduler must choose whether to spend now;
+* second date may be extremely cheap or extremely expensive.
+
+This should already create a ski-rental/secretary-style tension.
+
+Then ask whether any competitive ratio exists for bounded-delay service cost.
+
+This is much more relevant than the unconstrained authority-amount competitive problem because now the scheduler is solving the actual Answerability requirement.
+
+If useful, derive the optimal two-date competitive ratio.
+
+Do not overdevelop this if it becomes its own field; one crisp separation is enough.
+
+---
+
+# 11. Revisit overload certificates in this bounded-delay model
+
+This model may finally admit a finite insolvency certificate that the unconstrained tail-friction problem lacked.
+
+For a finite set of already-arrived claims with deadlines, infeasibility can sometimes be certified from a finite window:
+
+> these claims require \(m\) service within these legal dates, and even optimally concentrating that authority on the cheapest available legal dates costs more than remaining budget \(B\).
+
+This is finite and authenticated.
+
+Formalize this.
+
+For a claim interval \(I\), candidate certificate:
+
+$$
+\mathsf{RequiredCost}(I)
+>
+B_{\rm remaining}.
+$$
+
+The certificate should contain:
+
+* the claims;
+* their legal service neighborhood;
+* a proved lower bound on the cost of carrying their required mass;
+* the current certified remaining liability slack.
+
+This may be a much better model of an Answerability-facing overload event than the infinite tail-friction certificate.
+
+Distinguish:
+
+* **current/deadline insolvency**, finitely certifiable;
+* **eternal persistence insolvency**, generally requiring a theorem about the future.
+
+---
+
+# 12. Clarify the conceptual result if the math works
+
+The intended compression is something like:
+
+> **Affordability alone asks whether there will eventually be arbitrarily cheap opportunities to exercise a reason. Answerability asks whether those opportunities arrive soon enough to count as answering the reason.**
+
+Or mathematically:
+
+$$
+\boxed{
+\text{unconstrained persistence}
+=
+\text{cheap dates exist},
+}
+$$
+
+while
+
+$$
+\boxed{
+\text{serviceability}
+=
+\text{cheap dates occur inside the reason's admissible service windows}.
+}
+$$
+
+Do not use this slogan unless the theorems really justify it.
+
+---
+
+# Deliverables
+
+Produce:
+
+1. `BOUNDED_DELAY_TRANSPORT.md`
+
+   * exact transport-feasibility theorem for claims with service windows \([t,t+H]\);
+   * greedy/FIFO/EDF construction if available;
+   * Hall/interval characterization.
+
+2. `BOUNDED_DELAY_AFFORDABILITY.md`
+
+   * minimum-cost service problem;
+   * exact result for unit claims or the strongest canonical case;
+   * finite-budget existence criterion.
+
+3. `SERVICEABILITY_FRONTIER.md`
+
+   * liability versus allowable delay;
+   * transport-stability modulus \(\omega(H)\);
+   * resulting Sustainable Progress residual.
+
+4. `MULTIREASON_SERVICEABILITY.md`
+
+   * whether deadlines make reasons compete again;
+   * smallest exact counterexample if joint serviceability fails despite individual serviceability.
+
+5. `ONLINE_SERVICEABILITY.md`
+
+   * smallest online/offline separation under deadlines;
+   * competitive theorem if one is clean.
+
+6. Targeted patches to:
+
+   * `SHARP_PERSISTENCE.md`;
+   * `SERVICE_ADMISSIBLE_EXISTENCE.md`;
+   * PR summary;
+   * any depth-only sharp-persistence claims.
+
+7. Exact-rational fixtures for:
+
+   * sharp persistence with \(s_t\) floored but \(m_t\to0\);
+   * exact bounded-delay transport feasibility/failure;
+   * a dip sequence satisfying unconstrained persistence but failing bounded-delay service;
+   * individually serviceable reasons that are jointly unaffordable, if such an example exists;
+   * finite deadline insolvency certificate;
+   * two-date online bounded-delay dilemma.
+
+## Highest priorities
+
+Spend most effort on:
+
+1. the exact interval/Hall characterization of bounded-delay transport;
+2. the minimum-cost batching problem under concave date costs;
+3. a theorem combining allowable delay \(H\) with transport stability and liability;
+4. finite deadline-based insolvency certificates.
+
+The main goal is no longer to characterize “persistent authority” by itself.
+
+It is to characterize:
+
+$$
+\boxed{
+\textbf{diachronically legitimate service that the learner can actually afford.}
+}
+$$
+
+## Success criterion
+
+The pass succeeds if it gives a theorem substantially stronger than:
+
+> “bounded delay requires more frequent cheap dates.”
+
+We want something like:
+
+> Given a claim process, deadline \(H\), and date-cost process \(L_t\), here are necessary and sufficient conditions for an affordable bounded-delay transport plan; under temporal stability \(\omega\), such a plan implies claim-weighted Sustainable Progress with residual \(\omega(H)\).
+
+If that full theorem is too hard, solve the unit-claim / fixed-\(H\) case exactly and identify the precise obstruction to generalization.

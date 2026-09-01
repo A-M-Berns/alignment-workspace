@@ -23,7 +23,12 @@ freezes the fixed-era composition. `SHARP_PERSISTENCE.md`,
 and `tests/test_sharp_cost.py` are the sixth dispatch's, which withdraws the fifth's
 claim that the sharp charge leaves the criterion unchanged and its online
 competitive-ratio claim, and narrows its rate-region non-convexity to the
-finite-horizon frontier.
+finite-horizon frontier. `BOUNDED_DELAY_TRANSPORT.md`,
+`BOUNDED_DELAY_AFFORDABILITY.md`, `SERVICEABILITY_FRONTIER.md`,
+`MULTIREASON_SERVICEABILITY.md`, `ONLINE_SERVICEABILITY.md`,
+`src/bounded_delay.py` and `tests/test_bounded_delay.py` are the seventh
+dispatch's, which supersedes the sixth's disjoint-window service condition and its
+depth-only reading of the sharp criterion.
 
 The round starts from `main` at
 `292bb2731b0df09aa034ca4abc5ce64a20a41785`. It reads and does not modify:

@@ -42,6 +42,43 @@ class TheReviewCounterexample(unittest.TestCase):
         self.assertLess(reference[-1], Fraction(1, 10 ** 4))
 
 
+class TheReferenceCostIsNotDepthOnly(unittest.TestCase):
+    """A floored exclusion depth against a vanishing engine scale still gives a
+    vanishing reference cost, so the criterion is not `liminf s_t = 0` in
+    general."""
+
+    def test_a_floored_depth_with_a_vanishing_engine_scale_is_cheap(self):
+        s = Fraction(1)
+        values = []
+        for k in range(1, 8):
+            m = Fraction(1, 4 ** k)
+            values.append(S.sharp_reference_cost(s, m))
+        for earlier, later in zip(values, values[1:]):
+            self.assertLess(later, earlier)
+        self.assertEqual(values[0], Fraction(1, 2) - Fraction(1, 4))
+        self.assertLess(values[-1], Fraction(1, 100))
+
+    def test_the_envelope_brackets_the_reference_cost(self):
+        """`(1/4) min(s^2, s sqrt(m)) <= L(1) <= min(s^2, s sqrt(m))`."""
+        for s in (Fraction(1), Fraction(1, 2), Fraction(1, 4), Fraction(3, 2)):
+            for k in range(0, 6):
+                m = Fraction(1, 4 ** k)
+                cost = S.sharp_reference_cost(s, m)
+                envelope = S.reference_envelope(s, m)
+                self.assertLessEqual(cost, envelope)
+                self.assertGreaterEqual(cost, envelope / 4)
+
+    def test_a_floor_on_the_engine_scale_restores_the_depth_criterion(self):
+        """With `m_t >= m_0`, the reference cost is bounded below by a positive
+        function of the depth alone."""
+        floor = Fraction(1, 4)
+        for s in (Fraction(1), Fraction(1, 2), Fraction(1, 8)):
+            for k in range(0, 3):
+                m = floor * (k + 1)
+                cost = S.sharp_reference_cost(s, m)
+                self.assertGreaterEqual(cost, S.reference_envelope(s, floor) / 4)
+
+
 class ThePersistenceCriterion(unittest.TestCase):
     """`liminf_t L_t(1) = 0` is sufficient by a geometric tranche construction,
     and necessary because a star-shaped cost charges at least `a L_t(1)` for
