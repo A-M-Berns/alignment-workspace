@@ -131,10 +131,10 @@ consumer-relative question the theory deliberately leaves outside itself.
 
 ---
 
-**Evidence.** The repository counterparts are
-[`2026-08-30-answerability-carriers`](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers),
-[`2026-08-30-anchored-slices-auth-transfer`](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer)
-and
-[`2026-08-31-faithful-semantic-preservation`](https://github.com/A-M-Berns/alignment-workspace/tree/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation).
-The reconciliation with the service mathematics is
+**Evidence.** The conceptual theory is a maintainer-supplied note that is not
+published here. Its three repository counterpart rounds — answerability carriers,
+anchored slices, and faithful semantic preservation — are **not on the main branch**:
+their pull requests merged into each other on a stacked branch that was never landed.
+Until that stack lands, the note itself is the only citable statement of the results
+on this page. The reconciliation with the service mathematics is
 [`ANSWERABILITY_AND_SERVICE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/checkpoint-2026-09-01/ANSWERABILITY_AND_SERVICE.md).

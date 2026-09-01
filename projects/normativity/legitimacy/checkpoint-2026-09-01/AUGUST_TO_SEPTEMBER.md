@@ -9,10 +9,10 @@ neither is rewritten.
   theory parts 1–12 are not restated here except where a later result modifies
   one, and each such place says so.
 - The note is a **working mathematical synthesis; paper proofs, not
-  Lean-verified**, by its own statement, and is treated at that strength. Its
-  repository counterparts are the `2026-08-30-answerability-carriers`,
-  `2026-08-30-anchored-slices-auth-transfer` and
-  `2026-08-31-faithful-semantic-preservation` rounds.
+  Lean-verified**, by its own statement, and is treated at that strength. Its three
+  repository counterpart rounds are **not on `main`** — their pull requests merged
+  into each other on the branch `round/2026-08-30-answerability-carriers` and that
+  stack was never landed — so everything below is cited to the note itself.
 
 ---
 

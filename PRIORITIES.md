@@ -2089,11 +2089,13 @@ passes.
 
 *Context:*
 `projects/normativity/legitimacy/checkpoint-2026-09-01/ANSWERABILITY_AND_SERVICE.md`
-§6 for why the three questions are one;
-`projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/`
-for the conservation law the disposition term sits in;
-`projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/`
-for the authentication side; and that checkpoint's `OPEN_PROBLEMS.md` §2.
+§6 for why the three questions are one, and that checkpoint's `OPEN_PROBLEMS.md` §2.
+The conservation law the disposition term sits in, and the authentication side, are
+in the *anchored slices* and *faithful semantic preservation* rounds, which are **not
+on `main`** — they are on the branch `round/2026-08-30-answerability-carriers`,
+whose pull requests merged into each other rather than into `main`. Until that stack
+lands, the citable statement of both is the maintainer-supplied note
+*Diachronic Answerability Under Self-Revision* (31 August 2026), §§5–7.
 *A solution ships:* the licence, its soundness theorem, and a statement of what the
 affordability theory's claim stream becomes once disposition is available.
 
@@ -2219,6 +2221,41 @@ which is history and cheap; allow a `depends_on_unindexed` field carrying paths 
 than ids, which is a schema change and specification layer; or rule that a research
 checkpoint must be indexed at merge, which is a convention change binding future rounds
 only. The choice is specification layer and was not taken here.
+
+### F8 — A stack of merged pull requests never reached `main`
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+Three research rounds developing the diachronic-answerability mathematics —
+*answerability carriers*, *anchored slices and authenticated semantic Transfer*, and
+*faithful semantic preservation*, together with the CF-coverage and proper-exercise
+rounds beside them — **are not on `main`.** Their pull requests are marked MERGED on
+the forge, and they were: into *each other*. The stack was based on
+`round/2026-08-30-liability-theory` and then on
+`round/2026-08-30-answerability-carriers`, and no pull request from the top of that
+stack to `main` was ever opened. The trees exist on those branches and in working
+copies; the repository's history on `main` does not contain them.
+
+**How it was found.** The September consolidation cited two of the rounds by path;
+`tests/dead_pointers.py` failed in CI and passed locally, because the local checkout
+had the directories as untracked files left by another session. The gate did exactly
+its job, and the local pass was the misleading signal.
+
+**Why it matters beyond the citations.** Those rounds' exact fixtures do not run in
+this repository's CI, so results attributed to them are paper-derived only from
+`main`'s point of view. The consolidation now cites the underlying note by section
+and theorem number instead, and its `STATUS_LEDGER.md` marks the affected rows.
+
+**Not resolved here.** Landing the stack is a merge decision with its own review, and
+a consolidation pass should not perform it unasked. Two candidate fixes: open a pull
+request from the top of the stack to `main` and land it, after which the path
+citations can be restored; or, if the work is superseded, declare the branches so.
+Either is a maintainer act.
+
+**A general lesson worth keeping.** A MERGED badge names the base the pull request had,
+not `main`. Nothing in the current gates checks that a round directory referenced
+anywhere actually reached the default branch, and a stacked round is exactly the shape
+that slips through.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->
