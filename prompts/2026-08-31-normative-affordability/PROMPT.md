@@ -4740,3 +4740,946 @@ We want something like:
 > Given a claim process, deadline \(H\), and date-cost process \(L_t\), here are necessary and sufficient conditions for an affordable bounded-delay transport plan; under temporal stability \(\omega\), such a plan implies claim-weighted Sustainable Progress with residual \(\omega(H)\).
 
 If that full theorem is too hard, solve the unit-claim / fixed-\(H\) case exactly and identify the precise obstruction to generalization.
+
+---
+
+# Eighth dispatch — close bounded-delay serviceability and couple scheduling to settlement friction
+
+# Eighth pass inside PR75: close bounded-delay serviceability and couple scheduling to settlement friction
+
+Stay inside PR75:
+
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+
+Do not reopen the fixed-era composition theorem.
+
+Treat the following as provisionally stable:
+
+* service \(=\) predictable allocated authority \(a=\beta\);
+* realized force \(=ad\);
+* control is a predictable reactive law;
+* MarketMaker supplies coercive Uptake;
+* bounded liability preserves ordinary LI;
+* Service Transport transfers service-weighted Progress to claim-weighted Progress;
+* uniform bounded-delay transport has an interval feasibility characterization and FIFO construction;
+* under **linear** exogenous date costs,
+
+  $$
+  \operatorname{Cost}_H(c,w)
+  =
+  \sum_t c_t\min_{s\in[t,t+H]}w_s.
+  $$
+
+The previous pass opened the first genuinely joint Answerability–affordability theory. This pass should **finish the exact bounded-delay model and then determine how the service schedule jointly controls liability cost, transport error, and the settlement-friction residual appearing in Progress.**
+
+Read at minimum:
+
+* `BOUNDED_DELAY_TRANSPORT.md`
+* `BOUNDED_DELAY_AFFORDABILITY.md`
+* `SERVICEABILITY_FRONTIER.md`
+* `MULTIREASON_SERVICEABILITY.md`
+* `ONLINE_SERVICEABILITY.md`
+* `SERVICE_TRANSFER.md`
+* `FIXED_ERA_THEOREM.md`
+* `LI_PROGRESS_FROM_SERVICE.md`
+* `SHARP_PERSISTENCE.md`
+* `CAPACITY_VS_SAFETY.md`
+
+Do not do another general survey.
+
+---
+
+# 1. Patch the sharp-persistence scope one final time
+
+The exact generic persistence theorem is
+
+$$
+\exists a:
+\qquad
+\sum_ta_t=\infty,
+\qquad
+\sum_tL_t(a_t)<\infty
+$$
+
+iff
+
+$$
+\boxed{
+\liminf_tL_t(1)=0
+}
+$$
+
+under the stated star-shaped assumptions.
+
+For the sharp LI robust date cost,
+
+$$
+L_t(1)=
+\begin{cases}
+s_t^2/4,&s_t^2\le4m_t,\\[1mm]
+s_t\sqrt{m_t}-m_t,&s_t^2>4m_t.
+\end{cases}
+$$
+
+The previous review notes that this is not generically equivalent to
+
+$$
+\liminf s_t=0.
+$$
+
+For example,
+
+$$
+s_t=1,\qquad m_t\to0
+$$
+
+can also make \(L_t(1)\to0\).
+
+Prove a clean comparison such as
+
+$$
+\boxed{
+\frac14\min\{s^2,s\sqrt m\}
+\le
+L(1)
+\le
+\min\{s^2,s\sqrt m\}
+}
+$$
+
+or the sharpest correct constants.
+
+Then record:
+
+$$
+\boxed{
+\text{sharp robust persistence}
+\iff
+\liminf_t
+\min\{s_t^2,s_t\sqrt{m_t}\}
+=0
+}
+$$
+
+up to the proved equivalence.
+
+Only simplify this to
+
+$$
+\liminf s_t=0
+$$
+
+under an explicit fixed positive lower bound on \(m_t\).
+
+Interpret the two routes to cheap enforcement:
+
+1. the norm becomes less excluding of live worlds;
+2. the engine becomes cheaper/easier to move.
+
+Patch the PR summary accordingly.
+
+---
+
+# 2. Repair D3: exact hypotheses for batching under concave date costs
+
+`BOUNDED_DELAY_AFFORDABILITY.md` currently derives the consecutive-run shortest-path theorem from star-shapedness.
+
+That is too weak.
+
+The previous review gives a candidate counterexample: existing load on two legal dates can make splitting a claim cheaper under a star-shaped but nonconcave cost.
+
+Verify or replace that counterexample.
+
+The target is to establish the correct hierarchy:
+
+$$
+\boxed{
+\begin{array}{ll}
+\text{Persistence S1} &: \text{star-shaped costs},\\
+\text{finite-horizon concentration S2} &: \text{concave costs},\\
+\text{bounded-delay batching D3} &: \text{concave costs},\\
+\text{closed form D4} &: \text{linear costs}.
+\end{array}
+}
+$$
+
+For D3, prove carefully:
+
+> For increasing concave \(L_s\) with \(L_s(0)=0\), an optimal bounded-delay assignment exists in which:
+>
+> * claims are not fractionally split except where irrelevant degeneracy permits it;
+> * service is monotone in claim arrival order;
+> * claims assigned to one service date form a consecutive run;
+> * therefore the optimum is the shortest path over consecutive runs.
+
+Do not reuse the current exchange proof if exchanging two assignments changes the loads at dates and hence changes the cost.
+
+Instead use a correct argument.
+
+Possible routes:
+
+* concave minimization over the transportation polytope attains an optimum at an extreme point;
+* characterize extreme points of the interval transportation polytope;
+* uncross an extreme-point assignment while preserving each date's total load;
+* exploit total unimodularity/consecutive-ones structure;
+* prove directly that there is an optimal atomic assignment and then uncross it.
+
+Distinguish indivisible claims from divisible claim mass. If atomicity requires an assumption, state it.
+
+Then restore the DAG theorem only under the exact proved hypotheses.
+
+---
+
+# 3. Check BD1/BD2 for the infinite stream
+
+The interval theorem
+
+$$
+\sum_{t=u}^v c_t
+\le
+\sum_{s=u}^{v+H}a_s
+\qquad
+\forall[u,v]
+$$
+
+looks correct for finite instances.
+
+Close the countable/infinite-stream case explicitly.
+
+Options:
+
+* prove every finite restriction has a feasible plan and use compactness;
+* give the one-pass FIFO construction directly and show the interval condition prevents deadline misses;
+* state the theorem finite-horizon only and derive the infinite version from consistency of FIFO prefixes.
+
+Prefer the constructive FIFO proof if clean.
+
+The goal is a theorem that can actually feed an infinite-horizon Answerability process.
+
+---
+
+# 4. Delete the false \(H\to\infty\) interpolation
+
+The current D4 text says that bounded-delay service interpolates exactly back to unconstrained persistence as \(H\to\infty\).
+
+This is false in general.
+
+Build the clean counterexample.
+
+A suggested sequence:
+
+$$
+w_t=1
+$$
+
+except
+
+$$
+w_{2^k}=4^{-k},
+$$
+
+with unit claims.
+
+Then:
+
+$$
+\liminf w_t=0,
+$$
+
+so unconstrained persistent authority is affordable.
+
+But for every fixed finite \(H\), gaps between dip dates eventually exceed \(H\), so infinitely many claims have window minimum \(1\), hence
+
+$$
+\operatorname{Cost}_H=\infty.
+$$
+
+Yet with genuinely unbounded delay, claims between successive powers of two can be batched onto the next cheap date, with total cost comparable to
+
+$$
+\sum_k2^k4^{-k}
+=
+\sum_k2^{-k}<\infty.
+$$
+
+Check all indexing exactly.
+
+Then distinguish three different problems:
+
+### Persistence
+
+$$
+\sum a_t=\infty.
+$$
+
+Not every claim must be discharged.
+
+### Full service with unbounded delay
+
+Every claim is eventually transported, but there is no uniform deadline.
+
+### Uniform bounded-delay service
+
+Every claim is served within one fixed \(H\).
+
+These are genuinely different.
+
+Do not identify the \(H=\infty\) service problem with unconstrained persistence.
+
+Investigate whether
+
+$$
+\lim_{H\to\infty}\operatorname{Cost}_H
+$$
+
+can exceed
+
+$$
+\operatorname{Cost}_{\infty}.
+$$
+
+Characterize when equality holds if there is a clean condition.
+
+This is mathematically relevant: uniform timeliness is stronger than eventual answerability.
+
+---
+
+# 5. Reconstruct the fixed-era settlement-friction residual exactly
+
+The previous frontier analysis treated the settlement-friction residual \(F_r\) as a fixed property of the norm.
+
+That is not correct if the fixed-era theorem defines it through the allocated-service measure.
+
+Recover the exact definition from `FIXED_ERA_THEOREM.md` / `LI_PROGRESS_FROM_SERVICE.md`.
+
+It should have the shape
+
+$$
+F_r(a)
+=
+\limsup_N
+\inf_{\omega\in A_N}
+\left(
+\frac{
+\sum_{t<N}a_t^r
+[s_t^r(\omega)^+]^2
+}{
+A_N^r
+}
+\right)^{1/2},
+$$
+
+or the exact current version.
+
+The pointwise landscape
+
+$$
+s_t^r(\omega)
+$$
+
+is supplied by settlement/norm semantics.
+
+But
+
+$$
+F_r(a)
+$$
+
+also depends on the service schedule \(a\).
+
+Record the correct distinction:
+
+$$
+\boxed{
+\text{settlement-misfit landscape}
+=
+\text{environment/norm input}
+}
+$$
+
+versus
+
+$$
+\boxed{
+\text{service-weighted settlement-friction residual}
+=
+\text{landscape evaluated under the chosen service schedule}.
+}
+$$
+
+This means a scheduler can sometimes buy down or worsen \(F_r\) by choosing when to service the reason.
+
+Patch `SERVICEABILITY_FRONTIER.md`.
+
+---
+
+# 6. Formulate the actual joint serviceability optimization
+
+The earlier serviceability optimization minimized only liability:
+
+$$
+\sum_sL_s(a_s).
+$$
+
+But the final Sustainable Progress guarantee also depends on the distribution of service over settlement misfit.
+
+The correct optimization should expose all three quantities:
+
+1. **liability cost**;
+2. **transport/timeliness error**;
+3. **service-weighted settlement friction**.
+
+For one reason, formulate a finite-horizon problem of the form
+
+$$
+\boxed{
+\begin{aligned}
+\text{choose }&a,T\\
+\text{subject to }&
+T\text{ transports claims legally},\\
+&\sum_sL_s(a_s)\le B,\\
+&\sum_tT(t,s)\le a_s,
+\end{aligned}
+}
+$$
+
+and evaluate
+
+$$
+\mathsf{Residual}(a,T)
+=
+L_rK_r F_r(a)
++
+\mathsf{TransportError}(T).
+$$
+
+If bounded delay \(H\) and temporal modulus \(\omega\) are used, then
+
+$$
+\mathsf{TransportError}(T)\le\omega(H).
+$$
+
+But do not force all plans through a uniform \(H\) if a direct delay-weighted objective is more informative.
+
+The conceptual target is:
+
+$$
+\boxed{
+\operatorname{BestResidual}(B)
+=
+\inf_{\text{affordable admissible service}}
+\left[
+L_rK_rF_r(a)
++
+\epsilon(T)
+\right].
+}
+$$
+
+This is potentially the real quantitative notion of affordability/serviceability.
+
+---
+
+# 7. Study the interaction between liability cost and settlement friction
+
+This is important because the two quantities may not be independent.
+
+Under the sharp LI cost, liability itself is generated from world-misfit/exclusion depth.
+
+So low-liability dates may already tend to be low-\(s\) dates.
+
+Ask:
+
+> Does minimizing robust liability automatically control the settlement-friction residual?
+
+There may be a direct theorem.
+
+For example, in the linear sharp branch,
+
+$$
+L_t(a)
+=
+\frac{s_t^2}{4}a.
+$$
+
+Meanwhile the numerator of the service-weighted \(L^2\) friction is approximately
+
+$$
+\sum_t a_ts_t^2.
+$$
+
+Then:
+
+$$
+\boxed{
+\sum_t a_ts_t^2
+=
+4\sum_tL_t(a_t).
+}
+$$
+
+This looks extremely important.
+
+If the same \(s_t\) is the relevant friction quantity, a lifetime liability budget \(B\) gives
+
+$$
+\sum_ta_ts_t^2
+\le4B.
+$$
+
+If total allocated service
+
+$$
+A_N\to\infty,
+$$
+
+then automatically
+
+$$
+\frac{\sum_{t<N}a_ts_t^2}{A_N}
+\to0.
+$$
+
+Hence
+
+$$
+F_r(a)=0.
+$$
+
+Check the quantifiers carefully:
+
+* \(s_t\) may be a supremum over live worlds while \(F_r\) takes an infimum over worlds;
+* this may therefore be a valid robust upper bound, possibly loose;
+* reason/row aggregation may matter.
+
+If this argument works, it is a major compression:
+
+$$
+\boxed{
+\text{finite sharp robust liability}
++
+\text{persistent service}
+\Longrightarrow
+\text{vanishing settlement-friction residual}.
+}
+$$
+
+That would mean the supposedly separate settlement-friction residual is already controlled by affordability in an important regime.
+
+Investigate this aggressively.
+
+Do the analogous calculation in the square-root branch.
+
+There, cost is
+
+$$
+L_t(a)
+=
+s_t\sqrt{a_tm_t}-m_t,
+$$
+
+so the relationship to
+
+$$
+a_ts_t^2
+$$
+
+is different.
+
+Find the strongest bound available.
+
+---
+
+# 8. Re-derive the end-to-end Progress theorem under sharp affordable service
+
+If §7 succeeds, compose the result.
+
+The current fixed-era theorem has schematic form
+
+$$
+\limsup_N
+E_{\mu_N}[d]
+\le
+LKF(a)
++
+\epsilon(T).
+$$
+
+If sharp affordability plus persistent service gives
+
+$$
+F(a)=0,
+$$
+
+then we get:
+
+$$
+\boxed{
+\limsup_N
+E_{\mu_N}[d]
+\le
+\epsilon(T).
+}
+$$
+
+And if temporal regularity plus bounded delay gives
+
+$$
+\epsilon(T)\le\omega(H),
+$$
+
+then:
+
+$$
+\boxed{
+\limsup_N
+E_{\mu_N}[d]
+\le
+\omega(H).
+}
+$$
+
+This would be much stronger conceptually than the current frontier story.
+
+It would say:
+
+> Once the learner can persistently afford the reason under the sharp worldwise liability certificate, the only remaining asymptotic error is how much the reason can change while waiting to be serviced.
+
+Check whether this is actually true.
+
+Do not state it unless every inequality lines up.
+
+This may be the most valuable theorem target in the pass.
+
+---
+
+# 9. Replace the old serviceability frontier with the right frontier
+
+The current frontier uses
+
+$$
+H^*(B)
+=
+\min\{H:\operatorname{Cost}_H\le B\}
+$$
+
+and then says the final residual is
+
+$$
+LKF+\omega(H^*(B)).
+$$
+
+If \(F\) is schedule-dependent, this is incomplete.
+
+Develop one of the following, whichever is mathematically cleanest.
+
+### Frontier A: constrained liability
+
+For each deadline \(H\), define
+
+$$
+\mathcal R_H(B)
+=
+\inf
+\left\{
+F(a):
+(a,T)\text{ has delay }\le H,\ 
+\operatorname{Cost}(a)\le B
+\right\}.
+$$
+
+Then:
+
+$$
+\boxed{
+\operatorname{ProgressResidual}(H,B)
+\le
+LK\mathcal R_H(B)
++
+\omega(H).
+}
+$$
+
+Finally optimize over \(H\):
+
+$$
+\boxed{
+\mathsf{BestResidual}(B)
+=
+\inf_H
+\left[
+LK\mathcal R_H(B)
++
+\omega(H)
+\right].
+}
+$$
+
+### Frontier B: direct delay-weighted optimization
+
+Avoid one uniform deadline and optimize
+
+$$
+LKF(a)
++
+\sum_{t,s}T(t,s)\epsilon(t,s)
+$$
+
+subject to budget.
+
+Use this if it gives a cleaner theorem.
+
+The goal is to expose the **actual trade space**, not to preserve the old \(H^*\) notation.
+
+---
+
+# 10. Characterize the linear-branch joint objective
+
+The linear branch may be exactly solvable.
+
+Suppose:
+
+$$
+L_s(a)=w_sa
+$$
+
+and settlement-friction contribution at date \(s\) has weight
+
+$$
+r_s
+$$
+
+so the numerator is
+
+$$
+\sum_sa_sr_s.
+$$
+
+For a claim at \(t\), sending one unit to \(s\in[t,t+H]\) contributes:
+
+* liability \(w_s\);
+* settlement residual numerator \(r_s\);
+* delay error \(\epsilon(t,s)\).
+
+This becomes a per-unit assignment problem.
+
+Can the optimal date for each claim be chosen by minimizing a scalar score such as
+
+$$
+\lambda w_s+\mu r_s+\epsilon(t,s)?
+$$
+
+Under a Lagrange multiplier for the budget, the problem may separate claim-by-claim exactly.
+
+Derive the finite-horizon Pareto frontier.
+
+This could give a very clean theorem:
+
+> in the linear regime, legitimate service is an interval assignment problem where each claim chooses among legal dates according to a combined underwriting + semantic-friction + delay price.
+
+This would be the first mathematically precise “reason service market” picture in the agenda.
+
+---
+
+# 11. Reassess multi-reason competition under the corrected joint objective
+
+The previous pass gives exact additivity if reasonwise costs are genuinely separable.
+
+Now distinguish three levels:
+
+1. **separate rows and separate underwriting accounts:** exact addition;
+2. **separate rows but one worldwise robust account:** only an inequality because
+
+   $$
+   \sup_\omega\sum_r\ell_r(\omega)
+   \le
+   \sum_r\sup_\omega\ell_r(\omega);
+   $$
+3. **shared rows / shared semantic service:** one action may answer multiple reasons.
+
+Patch `MULTIREASON_SERVICEABILITY.md` so M1's “independent” hypothesis is mathematically explicit.
+
+Then ask whether the joint objective reveals a useful **economy of scope**:
+
+$$
+\operatorname{Cost}(r_1\cup r_2)
+<
+\operatorname{Cost}(r_1)
++
+\operatorname{Cost}(r_2)
+$$
+
+when a single row/action answers both.
+
+Do not develop this deeply unless a clean example falls out.
+
+---
+
+# 12. Keep online serviceability separate
+
+Preserve the basic result:
+
+* unconstrained persistence has qualitative online/offline equivalence;
+* bounded-delay service has a genuine online feasibility gap when future costs are unknown.
+
+But do not claim the \(\sqrt\kappa\) competitive threshold rule as a theorem unless proved.
+
+The main question for this pass is instead:
+
+> If the relevant combined date score from §10 is predictable across the whole legal service window, does the joint serviceability problem become offline-at-arrival?
+
+This may be the relevant distinction between deductive and empirical settlement channels.
+
+Keep it scoped.
+
+---
+
+# 13. Finite overload certificates from deadlines
+
+Continue the useful direction from the previous prompt.
+
+For an already-arrived finite set of claims, bounded deadlines produce a finite legal service region.
+
+A certificate of current insolvency should look like:
+
+$$
+\boxed{
+\text{minimum certified cost of servicing these claims before deadline}
+>
+\text{certified available liability slack}.
+}
+$$
+
+Using the interval structure, derive the strongest cheap certificate possible.
+
+On the linear branch, an interval \(I\) with claim mass \(C(I)\) and service neighborhood \(N(I)\) may produce a lower bound such as
+
+$$
+\sum_{t\in I}
+c_t
+\min_{s\in[t,t+H]}w_s,
+$$
+
+or a sharper joint batching expression under concave costs.
+
+This is a genuinely finite Answerability-facing impossibility witness, unlike a claim about an infinite future friction floor.
+
+Try to make the certificate compositional:
+
+* claim IDs / provenance;
+* legal service window;
+* certified date costs;
+* minimum required liability;
+* current available underwriting;
+* inequality showing impossibility.
+
+---
+
+# 14. Decide the new conceptual compression
+
+At the end, assess which of these is closest to the actual theorem we now have:
+
+### Candidate 1
+
+> Affordability asks whether cheap service dates exist; Answerability asks whether they occur in time.
+
+### Candidate 2
+
+> Serviceability is the existence of a service trace that simultaneously respects the reason's temporal claims and the learner's settlement-contingent balance sheet.
+
+### Candidate 3
+
+> A reason is sustainably answerable when authority can be concentrated on dates that are jointly cheap to enforce, semantically faithful to the claim, and timely enough to preserve its content.
+
+Prefer the mathematically strongest statement rather than the nicest prose.
+
+---
+
+# Deliverables
+
+Produce or update:
+
+1. `BOUNDED_DELAY_AFFORDABILITY.md`
+
+   * correct D3 hypotheses/proof;
+   * preserve D4;
+   * remove false \(H\to\infty\) interpolation.
+
+2. `EVENTUAL_VS_UNIFORM_SERVICE.md`
+
+   * distinguish persistence, eventual full service, and uniform bounded-delay service;
+   * give exact separation examples.
+
+3. `JOINT_SERVICEABILITY.md`
+
+   * define the joint liability / transport / settlement-friction objective;
+   * derive the strongest general theorem.
+
+4. `SHARP_SERVICEABILITY.md`
+
+   * investigate whether sharp robust liability plus persistent service automatically drives the service-weighted settlement-friction residual to zero;
+   * separate linear and square-root branches.
+
+5. `SERVICEABILITY_FRONTIER.md`
+
+   * replace the current exogenous-\(F\) frontier with the corrected schedule-dependent version.
+
+6. Targeted patches to:
+
+   * `SHARP_PERSISTENCE.md`;
+   * `MULTIREASON_SERVICEABILITY.md`;
+   * `ONLINE_SERVICEABILITY.md` if needed;
+   * the PR summary.
+
+7. Exact-rational fixtures for:
+
+   * star-shaped but nonconcave cost where splitting beats D3's unsplit plan;
+   * finite-\(H\) serviceability failure for every \(H\) but finite unbounded-delay full-service cost;
+   * \(s_t\) floored with \(m_t\to0\) making sharp date cost vanish;
+   * linear sharp liability directly bounding the settlement-friction numerator;
+   * a schedule tradeoff where the cheapest-liability date is not the best combined liability/transport/semantic date;
+   * finite deadline insolvency certificate.
+
+## Highest priority
+
+Spend the most effort on the possible theorem:
+
+$$
+\boxed{
+\text{finite sharp liability}
++
+\text{persistent allocated service}
+\Longrightarrow
+F_r(a)=0
+}
+$$
+
+or the strongest correct variant.
+
+If true, this materially simplifies the entire fixed-era theorem.
+
+Then focus on the exact linear-regime joint assignment problem.
+
+## Success criterion
+
+The pass succeeds if it can answer:
+
+> **When a reason must be answered within semantically meaningful time, what service schedule minimizes the learner's actual final Progress error subject to bounded liability?**
+
+A particularly strong outcome would be:
+
+$$
+\text{sharp affordable persistent service}
+\Longrightarrow
+\text{zero settlement-friction residual},
+$$
+
+so that bounded-delay temporal stability leaves only
+
+$$
+\omega(H)
+$$
+
+as the final asymptotic defect.
+
+Do not broaden beyond this question.

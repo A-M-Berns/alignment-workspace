@@ -109,6 +109,71 @@ commit.
 
 ## Settled
 
+### 2026-09-01 — affordability pays for the settlement-friction residual
+
+**agent-decided, reversible.** On the sharp robust charge's linear branch the
+liability charge is computed from the supremum over live worlds of the same deficit
+whose service-weighted mean square is the settlement-friction residual. So the
+residual's numerator is exactly four times the charge, and a bounded lifetime budget
+with divergent allocated service drives the residual to zero — at the supremum
+world, not merely at the infimum the residual takes. The final claim-weighted defect
+is then bounded by the transport residual alone.
+
+Once the learner can persistently afford a reason under the sharp worldwise
+certificate on that branch, the only remaining asymptotic error is how much the
+reason can change while waiting to be serviced. A corollary: on that branch a norm
+permanently excluding every live world by a fixed depth cannot be persistently and
+affordably enforced at all, so persistent affordable enforcement entails asymptotic
+compatibility with something still live.
+
+The compression fails past the branch point, where the charge saturates and the
+numerator does not, and it fails exactly on the second route to cheap enforcement: a
+norm cheap because nobody trades against it buys persistence without buying
+conformance. **Cheap enforcement is not always conforming enforcement**, and which
+of the two routes made a date cheap decides whether Progress follows.
+
+*Rejected alternative:* carrying the settlement-friction residual as an independent
+obstruction, which double-counts a quantity the liability budget already pays for.
+
+### 2026-09-01 — the batching theorem needs concavity and equal claim masses
+
+**agent-decided, reversible.** Two hypotheses were understated. The no-splitting
+lemma needs **concavity**, not star-shapedness: with other load already at the two
+dates the comparison is between increments rather than levels, and a star-shaped
+non-concave cost with unit load at each of two legal dates makes an even split of a
+claim of mass two strictly cheaper than any atomic assignment. The run structure
+needs, in addition, **equal claim masses**: the exchange that sorts service into
+arrival order swaps two claims between dates, which leaves the loads unchanged only
+when the masses are equal, and with unequal masses a crossed assignment can strictly
+win when a saturating date should take the larger claim.
+
+So each result now sits at its exact strength: persistence and finite-horizon
+concentration need star-shapedness, no-splitting needs concavity, the run structure
+needs concavity and equal masses, and the closed form needs linearity and no
+assumption on masses at all.
+
+*Rejected alternative:* keeping the exchange proof, which changed the loads it was
+comparing.
+
+### 2026-09-01 — persistence, eventual service and uniform timeliness are three problems
+
+**agent-decided, reversible.** The reading of the bounded-delay cost formula's
+limit as the unconstrained persistence criterion is withdrawn. With unit claims and
+weights dipping only at the powers of two, unconstrained persistence holds and
+eventual full service under unbounded delay costs under one half, while every fixed
+deadline misses unboundedly many claims and costs infinitely much: the limit of the
+bounded-delay costs strictly exceeds the cost of the limit, because batching needs
+the whole block to wait for the next cheap date and a uniform deadline forbids
+waiting a growing amount. With shallower dips, persistence holds while even
+unbounded-delay full service fails, since persistence buys unbounded authority and
+not the discharge of the claims it was owed to.
+
+The three coincide when the gaps between cheap dates are bounded, which is the
+regime the withdrawn sentence was implicitly assuming.
+
+*Rejected alternative:* treating uniform timeliness as bounded delay with a large
+constant.
+
 ### 2026-09-01 — bounded-delay service has an exact sliding-window criterion
 
 **agent-decided, reversible.** Feasibility of a bounded-delay transport plan

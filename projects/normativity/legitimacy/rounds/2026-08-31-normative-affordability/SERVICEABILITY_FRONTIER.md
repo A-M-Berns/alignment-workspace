@@ -37,7 +37,15 @@ affordable.
 bounded-delay plan at `H*(B)` costing at most `B`, and the fixed-era theorem gives,
 for that reason,
 
-    limsup_N  E_{mu^r_N}[d^r]   <=   L_r K_r F_r  +  omega( H*(B) ) .
+    limsup_N  E_{mu^r_N}[d^r]   <=   L_r K_r F_r(a)  +  omega( H*(B) ) ,
+
+which on the sharp linear branch is just `omega(H*(B))` by SS1. In general the right
+object is the constrained residual
+
+    R_H(B)  =  inf { F_r(a) : (a,T) has delay <= H and costs at most B } ,
+    BestResidual(B)  =  inf_H [ L_r K_r R_H(B) + omega(H) ] ,
+
+and `JOINT_SERVICEABILITY.md` is where that optimization lives.
 
 `H*` is nonincreasing in `B`, so the residual is nonincreasing in `B`.
 
@@ -51,11 +59,22 @@ affordable delay is `3`; and raising the budget to `70` brings it down.
 
 ## 3. Reading the two residuals
 
-The fixed-era bound has two residuals and they are now differently sourced.
+The fixed-era bound has two residuals and they are differently sourced — but not in
+the way an earlier version of this section said.
 
-`F_r`, the **settlement-friction residual**, is the norm's own weighted
-mean-square exclusion of the still-live worlds. No scheduler touches it and no
-budget buys it down. It is a property of the norm against what can still be true.
+`F_r(a)` is **schedule-dependent**. The misfit landscape `s^r_t(omega)` is supplied
+by the norm and by settlement, and the residual is that landscape read against the
+*service measure the scheduler chose*. Servicing a reason on dates where the norm is
+nearly satisfied gives a small residual; servicing it on dates of deep exclusion does
+not. The sentence claiming no scheduler touches it is withdrawn.
+
+**And on the sharp charge's linear branch the scheduler does not have to try.** By
+`SHARP_SERVICEABILITY.md` SS1 the friction numerator is exactly four times the
+liability charge, so any affordable schedule with divergent allocation has
+`F_r(a) = 0` at rate `4B/A_N`. In that regime the frontier below degenerates: the
+only residual left is the transport one, and
+
+    limsup_N E_{mu^r_N}[d^r]  <=  omega(H) .
 
 `omega(H*(B))`, the **transport residual**, is now *purchasable*. It is the price of
 the deadline the budget could afford, and it falls as the budget rises or as the
@@ -80,6 +99,13 @@ separation of `BOUNDED_DELAY_AFFORDABILITY.md` §6.
 at least the floor and there are infinitely many — so `H*(B) = infinity` and there
 is no bounded-delay plan at any budget. Unconstrained persistence also fails here,
 so this regime is not new.
+
+**`H*(B)` can be infinite while eventual full service is affordable.** The weight
+sequence of `EVENTUAL_VS_UNIFORM_SERVICE.md` E1 has divergent gaps between cheap
+dates, so every fixed deadline misses unboundedly many claims while unbounded-delay
+batching costs under `1/2`. A reason can therefore be *eventually answerable* and
+*not timely answerable at any deadline*, which is a third regime beyond the two
+below.
 
 The interesting regime is the middle one, and it is the one the round had no
 vocabulary for before: a reason can be *affordable* and *untimely*.

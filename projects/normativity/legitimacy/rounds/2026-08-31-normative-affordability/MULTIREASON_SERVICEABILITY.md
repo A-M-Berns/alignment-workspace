@@ -23,9 +23,13 @@ when the budget does. So budgets add, and competition is immediate.
 
 ## 2. The theorem, and the counterexample it implies
 
-**Theorem M1.** Suppose the reasons' date costs are independent — each reason's
-enforcement charges its own rows and the charges add. Then a family `R` is jointly
-serviceable on lifetime budget `B` if and only if
+**Theorem M1.** Suppose the reasons' date costs are **separable**: distinct rows,
+and a *separate* liability account per reason, so that the joint charge is the sum
+of the per-reason charges. (This is stronger than distinct rows alone — with one
+worldwise robust account the joint charge is `sup_omega sum_r l_r(omega)`, which is
+at most `sum_r sup_omega l_r(omega)` and generally smaller. See §4 and
+`JOINT_SERVICEABILITY.md` §5.) Then a family `R` is jointly serviceable on lifetime
+budget `B` if and only if
 
     sum_{r in R}  Cost^r_{H_r}  <=  B ,
 
@@ -62,6 +66,13 @@ infeasibility is a sum rather than a cut.
 
 M1's hypothesis is that the per-reason costs add. Three ways it can fail, none
 resolved here.
+
+**One shared account.** Even with distinct rows, a single worldwise robust account
+charges `sup_omega sum_r l_r(omega)`, and the supremum of a sum is at most the sum of
+the suprema. The gap is an economy of scope supplied by the *world quantifier* rather
+than by any sharing of rows, and it is the same sup-versus-sum interchange that
+appears in the round's liability theory. So the additive test is conservative
+whenever the account is shared, which is the normal case.
 
 **Shared rows.** If two reasons are served by the same row, one enforcement
 position discharges both and the costs are subadditive rather than additive. Then

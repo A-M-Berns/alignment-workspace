@@ -3,12 +3,13 @@
 **Verdict:**
 `AFFORDABILITY-COMPOSES-BUT-THE-SERVICE-CONDITION-IS-TRANSPORT-NOT-CONTIGUITY`.
 
-Seven dispatches: the schematic pass; a follow-up auditing the realization map
+Eight dispatches: the schematic pass; a follow-up auditing the realization map
 against the traderized mathematics; a focused pass closing the typing mismatch
 between the schematic service variable and the concrete learner; a consolidation
 pass finishing the fixed-era statement; an existence pass characterizing persistent
-affordability; a repair pass generalizing that characterization; and a serviceability
-pass characterizing bounded-delay service. The technical register, the theorem stack, the
+affordability; a repair pass generalizing that characterization; a serviceability
+pass characterizing bounded-delay service; and a joint pass coupling the schedule to
+the settlement-friction residual. The technical register, the theorem stack, the
 per-hypothesis classification and the full not-shown list are in
 `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/REPORT.md`,
 the audit in that directory's `FOLLOWUP_REPORT.md`, and the resulting stack in
@@ -278,12 +279,44 @@ comparable to the minimum of the squared depth and the depth times the root of t
 engine scale, so a fixed depth against a vanishing engine scale is persistently
 enforceable, and the depth-only form needs a floor on the engine scale.
 
+## The eighth dispatch: affordability pays for the friction residual
+
+**The main theorem.** On the sharp charge's linear branch the liability charge is
+computed from the supremum over live worlds of the same deficit the
+settlement-friction residual is built from, so the residual's numerator is exactly
+four times the charge. A bounded budget with divergent allocated service therefore
+drives the residual to zero at rate four times the budget over the allocation — at
+the supremum world, not just the infimum — and the final claim-weighted defect is
+bounded by the transport residual alone. Once a reason is persistently affordable
+under the sharp certificate, the only remaining asymptotic error is how much it can
+change while waiting.
+
+It fails past the branch point, and it fails on exactly the second route to cheap
+enforcement: a norm cheap because nobody trades against it buys persistence without
+buying conformance. Cheap enforcement is not always conforming enforcement.
+
+**Two hypotheses corrected.** No-splitting needs concavity, not star-shapedness —
+with existing load the comparison is between increments, and a counterexample makes
+splitting strictly cheaper. The run structure additionally needs equal claim masses,
+since the sorting exchange leaves loads unchanged only then, and a crossed
+assignment can strictly win otherwise.
+
+**One reading withdrawn.** Persistence, eventual full service under unbounded delay,
+and uniform bounded-delay service are three strictly separated problems; the limit of
+the bounded-delay costs can exceed the unbounded-delay cost when the gaps between
+cheap dates diverge, and persistence can hold where even eventual service fails.
+
+The settlement-friction residual is schedule-dependent rather than a property of the
+norm, and in the linear regime the joint objective separates per claim into a score
+with two prices rather than three, because the friction price is four times the
+liability price.
+
 ## Outstanding maintainer actions
 
 1. Naming audit over the four surviving provisional names, when one is next run.
    "Self-financing control" is withdrawn rather than renamed.
 
-The reserved question is answered by the staging and has left the queue; fifteen
+The reserved question is answered by the staging and has left the queue; eighteen
 dated `DECISIONS.md` entries record the later dispatches' rulings, all
 agent-decided and reversible.
 
@@ -293,4 +326,4 @@ agent-decided and reversible.
 |---|---|
 | prompt author | unrecorded — authored outside this repository |
 | executor | Claude Opus 5 (Anthropic) |
-| dates | seven dispatches; five executed 2026-08-31, two 2026-09-01 |
+| dates | eight dispatches; five executed 2026-08-31, three 2026-09-01 |
