@@ -247,6 +247,81 @@ time. It leaves the reason standing.
 import an unavailable tail bound into the finite case or claim certification the
 infinite case cannot support.
 
+### 2026-09-01 — the September checkpoint is the current human-facing view
+
+**agent-decided, reversible.** `projects/normativity/legitimacy/checkpoint-2026-09-01/`
+becomes the canonical entry point for the normativity / answerability / legitimacy
+program: current theory with an audited dependency spine, a status ledger, a
+supersession map, open problems, a roadmap, and the reconciliation with the August 9
+consolidation and the diachronic-answerability note.
+
+It **supersedes nothing**. The August 9 consolidation remains authoritative for its
+own content and is reconciled rather than replaced; every research round remains
+untouched as provenance, including those later work corrected. What the checkpoint
+replaces is the *practice* of reading rounds chronologically to learn what the
+program holds.
+
+Four judgments in it are the checkpoint's own rather than inherited, and each says
+so in the document that makes it.
+
+**The four-layer decomposition** — fixed-era dynamics, diachronic legitimacy across
+revision, counterfactual non-capture, and the corrigibility consumer. The division
+is load-bearing because the fixed-era mathematics is strong enough to be mistaken
+for more than it is.
+
+**The dependency spine, audited rather than copied.** Actionability sits *beside*
+service allocation, not after it: the scheduler cannot choose the coercivity
+modulus, which is a property of the response geometry and the enforcement compiler.
+And the normative demand and the force mechanism are separate objects the spine must
+show separately, because affordability is exactly the question of whether the second
+can meet the first, and conflating them makes that question unaskable.
+
+**The two theories meet at divergent attention.** The conceptual answerability
+theory's service dichotomy ends at "attention diverges"; the service mathematics
+begins there. The note names its own missing piece — a reason-to-response structure
+plus a dynamic uptake condition — and that piece is Actionability plus Uptake. Their
+budgets disagree, the note's being renewable per stage and the mathematics' a
+consumable lifetime stock, and the disagreement resolves: the equivalence of
+persistence with eventual full service is the liability-priced version of the note's
+feasibility witness, and non-starvation survives at exactly the price
+`liminf L_t(1) = 0`.
+
+**The candidate legitimacy decomposition is a research framing, not canonical.**
+`Legitimacy = Diachronic Answerability + Affordability + Counterfactual non-capture`
+is the best framing available, with two amendments: the first pillar must be read as
+including its semantic-authentication obligation, or semantic transport belongs to no
+pillar at all; and affordability is better read as a realizability *side condition*
+than a conjunct, since as a conjunct it invites the reading that a cheaper norm is
+more legitimate — which the round's own slogan, *cheap enforcement is not always
+conforming enforcement*, was written to forbid. What would make it canonical is a
+statement of the legitimacy predicate with a conclusion someone downstream wants, and
+no such statement exists.
+
+*Rejected alternative:* rewriting the historical rounds so the current theory reads
+consistently. History stays history; the supersession map carries the current state.
+
+### 2026-09-01 — three fixed-era results are recorded as probable rediscoveries
+
+**agent-decided, reversible.** The service-transfer theorem is in substance a
+standard consequence of Le Cam contiguity — the same definition, a different
+application. The bounded-delay interval feasibility condition is a Gale-Hoffman /
+Horn-1974 specialization. Serve-oldest-first optimality is the Jackson exchange
+argument. Each was derived independently in this repository and none should be
+presented as new mathematics.
+
+Three further places are marked **literature review needed** rather than guessed at:
+whether the sliding-window *cost* form is classical; whether the join-semilattice
+conservation law has a belief-revision antecedent; and whether the persistent-wait
+theorem is a standard fairness argument. The rule adopted is that every extraction
+candidate has its literature review completed before any novelty claim is made
+outside this repository, and that independent derivation is a fact about our process,
+never evidence about the literature.
+
+*Rejected alternative:* leaving the antecedents unrecorded on the grounds that the
+derivations were genuinely independent. Independence of derivation and novelty in the
+literature are different claims, and only the second is the one a reader would take
+from silence.
+
 ### 2026-09-01 — the fixed-era affordability and serviceability layer is finished
 
 **agent-decided, reversible.** The round's canonical theorem is Sharp Timely Service:

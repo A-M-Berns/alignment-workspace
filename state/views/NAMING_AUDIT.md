@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 207 names, 124 of them Lean only
+## deference — 207 names, 123 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -83,7 +83,7 @@ change, and the count of those is the size of the free choice remaining.
 | `simRead` | abbrev | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.simRead` |
 | `simulated` | abbrev | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.simulated` |
 | `totalSetoid` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.totalSetoid` |
-| `transfer` | abbrev | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.transfer` |
+| `transfer` | abbrev | 2026-08-12-cartesian-frames | wiki, note, prose | `Workspace.Deference.Contrib.CartesianFrameBridge.transfer` |
 | `Act` | abbrev | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Act` |
 | `J` | def | 2026-08-11-phase-ii-promotion | note | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.J` |
 | `Jhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Jhat` |
@@ -124,7 +124,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Pierces` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.Pierces` |
 | `WindowsDisjoint` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.WindowsDisjoint` |
 | `a` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.a` |
-| `exposure` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.exposure` |
+| `exposure` | def | 2026-08-11-phase-ii-promotion | wiki | `Workspace.Deference.Contrib.ExposureGeometry.exposure` |
 | `orbit` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.orbit` |
 | `points` | def | 2026-08-11-phase-ii-promotion | prose | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.points` |
 | `accelTrader` | def | 2026-08-11-faithful-acceleration | note | `Workspace.Deference.Contrib.FaithfulAcceleration.accelTrader` |

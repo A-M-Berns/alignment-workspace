@@ -12,6 +12,51 @@ actual-run process architecture on the normativity side: one afoundational
 induction, a thin world transcript, seed-descended authority, versioned rules
 and due tokens, inquiry liabilities, certified service, and a bounded scheduler.
 
+## Four layers, and where the work has actually got to
+
+The September 2026 checkpoint divides the program into four layers, and the
+division is the most useful single thing to hold onto.
+
+| layer | question | where it stands |
+|---|---|---|
+| **I — fixed-era dynamics** | Within one settled semantics and one evaluator: can standing normative claims receive safe, affordable, timely, progress-producing service? | **largely consolidated** |
+| **II — diachronic legitimacy** | Which reasons survive a self-revision; what makes a successor answerable to a predecessor; how content transports across representational change | **structure done, semantics open** |
+| **III — counterfactual non-capture** | Whether the process producing later reasons has itself been manipulated or foreclosed | **open** |
+| **IV — the deference consumer** | What a legitimacy theorem must hand [Deference](Deference) | **downstream** |
+
+Layer I is now closed and its boundary is worth stating bluntly, because the
+mathematics there is strong enough to be mistaken for more than it is. It says
+nothing about which reasons survive a revision, when one reason may defeat
+another, how a reason's content transports across a change of representation, what
+makes a successor answerable to a predecessor, whether the process generating the
+reasons was manipulated, or — therefore — about legitimacy or corrigibility.
+
+The layer pages are [Actionability and normative force](Actionability-and-Normative-Force),
+[Progress](Progress), [Liability and affordability](Liability-and-Affordability),
+[Serviceability](Serviceability), and [Diachronic
+Answerability](Diachronic-Answerability).
+
+## A candidate decomposition, under test
+
+    Legitimacy  =  Diachronic Answerability
+                +  Affordability / serviceability
+                +  Counterfactual non-capture
+
+with reasons-responsiveness, Actionability and Progress as *mechanisms inside*
+those pillars rather than pillars of their own.
+
+The checkpoint assesses this as **the best framing currently available and not yet
+canonical**, with two amendments. The first pillar must be read as including its
+semantic-authentication obligation, not just its structural calculus — otherwise
+semantic transport belongs to no pillar at all. And affordability is better read as
+a *realizability side condition* than as a conjunct: as a conjunct it invites the
+reading that a cheaper norm is more legitimate, which the mathematics itself
+forbids.
+
+What would make it canonical: a statement of the legitimacy predicate with a
+conclusion someone downstream wants. **No such statement exists yet**, and writing
+one is cheap and undone.
+
 ## Three properties, not one
 
 The program reserves three names for independent properties:

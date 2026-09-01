@@ -475,6 +475,14 @@ and its `INTEGRATION_MAP.md` §4;
 ### 40. Is bounded cumulative enforcement liability necessary? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
+**Reframed at the September 2026 checkpoint, not answered.** The affordability
+line now builds a substantial theory on top of this hypothesis — persistence,
+timeliness, and the endpoint composition all consume it — which raises the item's
+value and sharpens what its failure would cost. Until it is settled, every
+"unaffordable" verdict in the line means *the known route to safety no longer
+applies*, not *no safe policy exists*, and the checkpoint's status ledger says so.
+Context: `projects/normativity/legitimacy/checkpoint-2026-09-01/OPEN_PROBLEMS.md` §6.
+
 The preservation theorem's hypothesis is that the enforcement position's
 cumulative value over the assessed worlds is bounded below:
 
@@ -2035,6 +2043,59 @@ error the modulus bounds, and `CLOSED_LOOP_EXISTENCE.md` §3 for the deductive a
 empirical channel split.
 *A solution ships:* the certificate class, and what Answerability has to export for it
 to be checkable.
+
+### 77. What licenses authorized disposition? — **[entry]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The answerability calculus lets incurred content leave the account by one of two
+routes: **satisfaction**, and **authorized disposition** — content that legitimately
+ceases to be owed *without* being answered. Satisfaction has an authentication
+obligation. Disposition has a licence predicate, `MayDispose`, and no theory of
+what licenses it.
+
+This is the highest-value unfiled question in the line, because it is three
+questions at once.
+
+**It is where defeat lives.** "Reason `r'` defeats reason `r`" is, in this
+vocabulary, exactly a licence to stop owing `r`'s remaining content. So the open
+Layer II question *when may one reason replace another* is this question.
+
+**It is the laundering channel.** An unaudited disposition term makes every
+insolvency and every unanswered burden disappear; the no-laundering theorem is true
+only because it *assumes* each disposition term is authenticated.
+
+**It changes the affordability question.** The persistence analysis rests on the
+claim stream diverging. If content can be legitimately disposed of, what has to
+diverge is *undisposed* content, and a reason that looks permanently insolvent may
+be affordable after authorized disposition.
+
+Settle it. Give a licence predicate with an authentication obligation and a
+soundness theorem — disposed content is content that could not have been owed, or
+was answered under a different description, or was superseded by an authorized
+revision whose grounds trace back to the initial rule set — and then say what it
+does to the claim stream the affordability theory consumes.
+
+**A prior-art check is part of the deliverable.** Horty's priority orderings among
+defaults are the obvious place to look and are probably *not* enough: a priority
+ordering says which reason wins, not what licenses the loser to stop being owed.
+Whether that machinery can express `MayDispose` at all is worth settling before
+building something new.
+
+*Deliverable shape:* a stated theorem with exact-rational fixtures, including a
+legitimate disposition and a laundering attempt the licence rejects.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes.
+
+*Context:*
+`projects/normativity/legitimacy/checkpoint-2026-09-01/ANSWERABILITY_AND_SERVICE.md`
+§6 for why the three questions are one;
+`projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/`
+for the conservation law the disposition term sits in;
+`projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/`
+for the authentication side; and that checkpoint's `OPEN_PROBLEMS.md` §2.
+*A solution ships:* the licence, its soundness theorem, and a statement of what the
+affordability theory's claim stream becomes once disposition is available.
 
 ## Workspace friction
 

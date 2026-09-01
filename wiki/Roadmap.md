@@ -38,6 +38,38 @@ than over a finite model.
 
 ## Legitimacy
 
+**The shortest path, after the September 2026 checkpoint.** The fixed-era layer is
+closed, so the ordering below is what actually stands between here and a legitimacy
+theorem — see [Serviceability](Serviceability) and [Diachronic
+Answerability](Diachronic-Answerability) for what the two ends look like.
+
+1. **Certify semantic transport** — item 76. The fixed-era endpoint theorem ends in
+   one uncertified term: how much a reason changed while it waited to be answered.
+   Within an era that is a technical gap; across a self-revision it *is* the whole
+   problem. The visible route is the answerability line's anchored interpretation,
+   and the missing step is quantitative — it is an ordering where the theorem needs
+   a metric.
+2. **A theory of authorized disposition.** What licenses content ceasing to be owed
+   without being answered. It supplies defeat, closes the obvious laundering
+   channel, and repairs a hypothesis the whole persistence analysis rests on. Not
+   yet filed as an item; it should be.
+3. **Write the legitimacy predicate.** Cheap, undone, and it determines what
+   non-capture has to protect.
+4. **Counterfactual non-capture** — item 59 below, which is the pillar with no
+   fixed-era analogue at all and will not get easier by waiting.
+5. **Closed-loop affordability** — item 75. Robustness for the fixed-era layer;
+   blocks nothing above it and can proceed in parallel.
+
+**What should no longer receive research energy.** Any rate-region or time-sharing
+geometry of authority — the budget is a consumable stock, and this has been got
+wrong twice from two directions. Any density or gap condition on cheap enforcement
+dates as a substitute for the exact criterion — three failed attempts. Realized
+force as a measure of service — it inverts the sign of successful learning.
+Sharpening the online competitive ratio for accumulated authority — proved
+impossible. Extending the fixed-era affordability work at all.
+
+The standing legitimacy items:
+
 - Compile versioned `May` rules into certificate-checkable scopes — item 53 —
   which is where substantive authorization content lives.
 - State what a practice owes by way of taking up defeaters, so that basis loss is

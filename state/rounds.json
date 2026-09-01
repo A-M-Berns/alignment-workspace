@@ -999,6 +999,20 @@
       "registered_classes": [],
       "prompt": "prompts/2026-08-31-normative-affordability/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-01-normativity-consolidation",
+      "date": "2026-09-01",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/checkpoint-2026-09-01",
+      "verdict": "NORMATIVITY-PROGRAM-CONSOLIDATED-SEPTEMBER-2026 — the fixed-era layer is compact and its boundary is explicit; the diachronic conceptual theory is reconciled with it, meeting exactly at divergent attention, where the note's service dichotomy ends and the mathematics of defect begins; prior art is classified by role with three probable rediscoveries named; and the shortest path to legitimacy runs through certifying semantic transport and a theory of authorized disposition, not through further fixed-era work.",
+      "verdict_source": "projects/normativity/legitimacy/checkpoint-2026-09-01/README.md",
+      "depends_on": [
+        "2026-08-31-normative-affordability"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-01-normativity-consolidation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
