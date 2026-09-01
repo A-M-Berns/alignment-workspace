@@ -109,6 +109,600 @@ commit.
 
 ## Settled
 
+### 2026-09-01 — affordability pays for the settlement-friction residual
+
+**agent-decided, reversible.** On the sharp robust charge's linear branch the
+liability charge is computed from the supremum over live worlds of the same deficit
+whose service-weighted mean square is the settlement-friction residual. So the
+residual's numerator is exactly four times the charge, and a bounded lifetime budget
+with divergent allocated service drives the residual to zero — at the supremum
+world, not merely at the infimum the residual takes. The final claim-weighted defect
+is then bounded by the transport residual alone.
+
+Once the learner can persistently afford a reason under the sharp worldwise
+certificate on that branch, the only remaining asymptotic error is how much the
+reason can change while waiting to be serviced. A corollary: on that branch a norm
+permanently excluding every live world by a fixed depth cannot be persistently and
+affordably enforced at all, so persistent affordable enforcement entails asymptotic
+compatibility with something still live.
+
+The compression fails past the branch point, where the charge saturates and the
+numerator does not, and it fails exactly on the second route to cheap enforcement: a
+norm cheap because nobody trades against it buys persistence without buying
+conformance. **Cheap enforcement is not always conforming enforcement**, and which
+of the two routes made a date cheap decides whether Progress follows.
+
+*Rejected alternative:* carrying the settlement-friction residual as an independent
+obstruction, which double-counts a quantity the liability budget already pays for.
+
+### 2026-09-01 — the batching theorem needs concavity and equal claim masses
+
+**agent-decided, reversible.** Two hypotheses were understated. The no-splitting
+lemma needs **concavity**, not star-shapedness: with other load already at the two
+dates the comparison is between increments rather than levels, and a star-shaped
+non-concave cost with unit load at each of two legal dates makes an even split of a
+claim of mass two strictly cheaper than any atomic assignment. The run structure
+needs, in addition, **equal claim masses**: the exchange that sorts service into
+arrival order swaps two claims between dates, which leaves the loads unchanged only
+when the masses are equal, and with unequal masses a crossed assignment can strictly
+win when a saturating date should take the larger claim.
+
+So each result now sits at its exact strength: persistence and finite-horizon
+concentration need star-shapedness, no-splitting needs concavity, the run structure
+needs concavity and equal masses, and the closed form needs linearity and no
+assumption on masses at all.
+
+*Rejected alternative:* keeping the exchange proof, which changed the loads it was
+comparing.
+
+### 2026-09-01 — persistence and eventual full service are the same existence question
+
+**agent-decided, reversible.** Supersedes the entry below. Under exogenous
+star-shaped date costs, unlimited deferral, fungible service, finite individual
+claim masses and divergent total claim mass, a persistent affordable schedule exists
+if and only if an affordable plan discharging every claim exists — both being
+equivalent to the persistence criterion `liminf L_t(1) = 0`. The forward direction is
+a diagonal: each claim takes its *own* cheap date on a geometric tranche of the
+budget. The earlier separation priced block batching, which forces a whole block onto
+one dip, and read that one plan's cost as the minimum.
+
+The equivalence is about which schedules *exist*, not about identity of schedules: a
+persistent schedule may ignore the claims entirely.
+
+Uniform bounded delay remains strictly stronger, and no gap condition substitutes for
+the exact sliding-window criterion — cheap dates every other date with reciprocally
+decaying depth give bounded gaps, a friction dipping to zero, affordable eventual
+service, and divergent timely-service cost. So the earlier claims that bounded gaps
+close the three problems, and that positive density gives bounded gaps, are both
+withdrawn.
+
+**Unlimited deferral makes eventual answering no harder than maintaining divergent
+service; the substantive Answerability constraint enters only when delay matters.**
+
+*Rejected alternative:* keeping the separation and treating eventual service as an
+intermediate obligation between persistence and timeliness. There is no such
+intermediate in this benchmark.
+
+### 2026-09-01 — the transport residual is claim-normalized
+
+**agent-decided, reversible.** Deferred Service Transfer now carries an
+edge-dependent error `eps(t,s)` and contributes the claim-normalized average
+`(1/C_N) sum T(t,s) eps(t,s)` rather than a raw sum. The left-hand side it bounds is
+an average over claim mass, and a raw sum is extensive: it diverges on any infinite
+claim stream even when every edge is exact to a fixed tolerance. Normalized, a plan
+of uniform delay `H` against a temporal modulus contributes at most `omega(H)`
+whatever the claim mass. Finite-horizon optimizations are unaffected, since the claim
+mass is a constant of the instance.
+
+*Rejected alternative:* a single uniform constant `eps`, which cannot express the
+delay-dependence that is the whole content of a timeliness result.
+
+### 2026-09-01 — the friction-free theorem needs nested assessment
+
+**agent-decided, reversible.** The liability charge at date `t` is computed against
+`A_t` and the friction residual at horizon `N` is evaluated against `A_N`. These are
+different sets, and the theorem needs `A_N subseteq A_t` — settlement removes
+continuations and never restores them. Without it a world admitted after `t` was
+never bounded by that date's depth and nothing in the budget covers it. The
+hypothesis is the settlement interface's own monotonicity rather than a new
+assumption.
+
+Past the branch point the exact condition for the residual to vanish is
+`(1/A_N) sum (l_t + m_t)^2 / m_t -> 0`, an identity-derived criterion; the earlier
+slogan "only when the engine scale is summable" is withdrawn as neither necessary nor
+sufficient. The `D_t >= sigma, m_t -> 0` counterregime survives unchanged.
+
+*Rejected alternative:* leaving the quantifiers implicit on the grounds that the
+conservative direction "obviously" dominates. It dominates only within one date's
+live set.
+
+### 2026-09-01 — the serviceability frontier is convex under fractional splitting
+
+**agent-decided, reversible.** Total liability and normalized transport error are
+both *linear* in the transport plan, and admissible plans at a fixed horizon and
+deadline form a transportation polytope, so the achievable region is a linear image
+of a convex set and every Pareto point is recovered by scalarization. The convexity
+hypothesis is that claim mass may split fractionally; over integral assignments only
+the supported frontier is recovered. This is a repair of an unproved claim, not a
+withdrawal.
+
+*Rejected alternative:* asserting full scalarization without naming the hypothesis,
+which is what the previous pass did.
+
+### 2026-09-01 — deadline insolvency admits a finite certificate
+
+**agent-decided, reversible.** Unlike persistence insolvency, which is a claim about
+the infinite future needing a proved tail bound, deadline insolvency concerns claims
+that have already arrived and windows that expire. Its required cost is exactly
+`sum_t c_t min{w_s : s in [max(t,now), t+H]}` on the linear branch, and every field
+of the certificate is settled record or arithmetic over it. It is complete when the
+remaining windows' weights are bounded *below* by a certified quantity — the opposite
+direction from the upper estimates a safe scheduler uses — which is available on the
+deductive channel and not on the empirical one.
+
+A fired certificate licenses recording that *these* claims cannot be answered on
+time. It leaves the reason standing.
+
+*Rejected alternative:* one insolvency notion covering both, which would either
+import an unavailable tail bound into the finite case or claim certification the
+infinite case cannot support.
+
+### 2026-09-01 — the fixed-era affordability and serviceability layer is finished
+
+**agent-decided, reversible.** The round's canonical theorem is Sharp Timely Service:
+sharp-linear affordability plus timely Answerability transport gives claim-weighted
+Progress up to semantic delay only, at rate `(2 sqrt(B_r) + sqrt(U_r)) / sqrt(A^r_N)`,
+under five stated hypotheses. Nothing in it rests on a withdrawn claim; the audit
+tables all twenty withdrawals and the three patterns that produced them.
+
+Settlement friction `F_r` stays in the *generic* schematic theorem, because the
+square-root branch keeps it positive; sharp-linear affordability is exactly the
+boundary at which it vanishes.
+
+Remaining work — closed-loop friction, certification of the temporal modulus,
+simultaneous timeliness and linear-branch affordability, necessity of bounded
+liability, the signed class, and the concave branch — is new direction rather than
+repair, and moves to later rounds.
+
+*Rejected alternative:* continuing to extend the round. Each further pass in this
+sequence produced both a theorem and a withdrawal, and the withdrawals were being
+found by the reader rather than the author; consolidating while the surviving
+statements are audited is the safer stopping point.
+
+### 2026-09-01 — persistence, eventual service and uniform timeliness are three problems
+
+**Superseded** the same day by the entry above: the separation between persistence
+and eventual full service asserted in the second paragraph is false, and the
+bounded-gap paragraph is withdrawn. What survives is the first paragraph's
+withdrawal, and the strict separation of uniform timeliness. Kept for the record.
+
+**agent-decided, reversible.** The reading of the bounded-delay cost formula's
+limit as the unconstrained persistence criterion is withdrawn. With unit claims and
+weights dipping only at the powers of two, unconstrained persistence holds and
+eventual full service under unbounded delay costs under one half, while every fixed
+deadline misses unboundedly many claims and costs infinitely much: the limit of the
+bounded-delay costs strictly exceeds the cost of the limit, because batching needs
+the whole block to wait for the next cheap date and a uniform deadline forbids
+waiting a growing amount. With shallower dips, persistence holds while even
+unbounded-delay full service fails, since persistence buys unbounded authority and
+not the discharge of the claims it was owed to.
+
+The three coincide when the gaps between cheap dates are bounded, which is the
+regime the withdrawn sentence was implicitly assuming.
+
+*Rejected alternative:* treating uniform timeliness as bounded delay with a large
+constant.
+
+### 2026-09-01 — bounded-delay service has an exact sliding-window criterion
+
+**agent-decided, reversible.** Feasibility of a bounded-delay transport plan
+against a *given* service profile is exactly the interval condition — the claim mass
+of every date interval fits the capacity of that interval extended by the deadline.
+Prefixes do not suffice, because service cannot run backwards, and first-in-first-out
+is optimal and complete, so the transport plan the composition theorem consumes is
+constructed rather than assumed.
+
+When the service profile is *chosen*, the minimum cost is a shortest path over
+consecutive runs of claims, each served whole at one date legal for all of them; and
+on the sharp charge's linear branch it collapses to a closed form, the sum over
+claims of the claim mass times the smallest date weight in that claim's own window.
+That is a **sliding**-window minimum, where the previous pass's condition used a
+fixed disjoint blocking; the two differ by up to the deadline, so the earlier
+condition is a correct upper bound and not the criterion. The one formula covers
+dense, bounded and sparse claim streams, and it interpolates exactly back to
+unconstrained persistence as the deadline grows.
+
+The separation the round wanted is now exhibited rather than asserted: dips spaced
+at sixteen satisfy unconstrained persistence and fail bounded-delay service at
+deadline three, whose cost grows linearly with the horizon, while a deadline
+matching the dip spacing restores it.
+
+*Rejected alternative:* keeping the disjoint-window floor condition, which fixes
+where the block boundaries fall and so cannot see the optimum.
+
+### 2026-09-01 — the transport residual is purchasable and the friction residual is not
+
+**agent-decided, reversible.** Given a temporal modulus for the reason's defect,
+a plan with delay at most `H` discharges the transport stability inequality with
+residual the modulus at `H`. The minimum service cost is nonincreasing in `H` and
+the modulus is nondecreasing, so the affordable deadlines form an up-set with a
+least element, and the Sustainable Progress residual a budget buys is the modulus
+evaluated there.
+
+So the two residuals in the fixed-era bound are differently sourced. The
+settlement-friction residual is the norm's own exclusion of the still-live worlds
+and no budget touches it. The transport residual is the price of the deadline the
+budget could afford, and it falls as the budget rises. A reason can be affordable
+and untimely, which is the regime the round previously had no way to name.
+
+*Rejected alternative:* treating the deadline as an Answerability constant rather
+than as the scheduler's dial.
+
+### 2026-09-01 — timely service competes across reasons; persistence does not
+
+**agent-decided, reversible.** The persistence region is the full power set of the
+persistable reasons because the persistence criterion is budget-free: persistence
+costs nothing in the limit. The minimum cost of *timely* service is a definite
+positive number, so budgets add and two reasons each serviceable on the whole budget
+need not be jointly serviceable.
+
+With separable per-reason costs the joint condition is a single sum rather than a
+Hall condition, because the force layer supplies no shared enforcement capacity —
+the per-row conformance bound does not depend on how many rows are active — and the
+contention is scalar. Where reasons share rows or share dates past the charge's
+branch point the costs are subadditive, so the additive test is sufficient for joint
+serviceability and is not an impossibility certificate.
+
+*Rejected alternative:* extending "reasons do not compete" from persistence to
+service, which the positive minimum cost refutes immediately.
+
+### 2026-09-01 — the persistence criterion is the date cost, not the conservative friction
+
+**agent-decided, reversible.** For a date-cost function that is increasing,
+vanishing at zero and star-shaped — its cost per unit of authority nonincreasing —
+persistence on a finite lifetime budget is achievable if and only if the cost of a
+fixed positive reference allocation has liminf zero. Sufficiency is a geometric
+tranche construction and uses no structure; necessity uses star-shapedness twice,
+to bound the mass carried by small allocations and to bound the number of large
+ones. The reference level and the budget are both immaterial.
+
+This corrects the previous entry's scope. The conservative charge gives the earlier
+criterion unchanged, but the exact worst-case charge gives a different one — the
+exclusion depth alone, with no engine scale — and the two genuinely differ:
+exclusion depth one over t against engine scale t to the fourth makes the
+conservative friction diverge while a constant allocation remains affordable
+forever. The claim that the criterion was insensitive to which certificate was used
+was proved only for a bounded-friction case and is withdrawn.
+
+The finite-horizon optimum is the largest single-date inverse cost, which recovers
+the earlier squared-budget formula as a special case and shows that an unbounded
+optimum is necessary but not sufficient for persistence — the supremum of achievable
+totals can be infinite while no single schedule attains an infinite total.
+
+*Rejected alternative:* keeping the conservative friction as the primitive, which
+would misclassify as unaffordable every norm whose depth decays while the market's
+own volume grows.
+
+### 2026-09-01 — service admissibility replaces the dip criterion by a summability one
+
+**agent-decided, reversible.** Persistence characterizes when *some* divergent
+allocation is affordable. Answerability admits only some allocation traces, and the
+constraint changes the criterion rather than qualifying it.
+
+Under a per-window service floor — at least a fixed positive allocation in every
+window of the deadline length — affordability holds exactly when the window minima
+of the date cost are summable. A dip sequence spaced more widely than the window
+satisfies the unconstrained criterion and fails this one, so the two are
+genuinely different conditions and the separation is exhibited. Under a cumulative
+service demand, the demand's growth and the running minimum depth must be
+reciprocal.
+
+So the cheap dates and the timely dates are traded against each other, and the
+parameter trading them is how often enforcement is cheap. Answerability should
+therefore export its admissible traces rather than a scalar quota, because which
+windows the service falls in is what decides affordability.
+
+*Rejected alternative:* treating service admissibility as a caveat on the
+persistence theorem rather than as a different theorem.
+
+### 2026-09-01 — insolvency needs a tail proof, not an observed floor
+
+**agent-decided, reversible.** Mathematical insolvency in the exogenous benchmark
+is that the date cost has liminf bounded away from zero. That is a claim about the
+infinite future and no finite prefix establishes it: a scheduler that has watched a
+friction floor hold for a thousand dates has watched exactly that.
+
+An authenticated insolvency certificate is therefore a pair — a claimed tail bound
+and a proof object for it, from the settlement model, a monotonicity argument, or a
+property of the row — and where the second is absent, insolvency may be true and
+not settleably certified. An observed floor licenses deferral and an inquiry into
+whether the floor is permanent; only a proved tail bound licenses recording a reason
+as unaffordable. Infeasibility certificates are genuinely finite, and that asymmetry
+between the two failures is the thing to record.
+
+*Rejected alternative:* treating an observed friction floor as the certificate,
+which would let a scheduler drop a reason on a prediction.
+
+### 2026-08-31 — persistent enforcement is affordable iff the friction dips to zero
+
+**agent-decided, reversible.** Write the friction of a normative row at a date as
+its worst live exclusion depth times the square root of the date's slack-plus-volume.
+A schedule with divergent cumulative allocated authority and finite lifetime
+worst-case charge exists **if and only if that friction has liminf zero**, and the
+maximum cumulative authority through any horizon is exactly the squared budget over
+the squared running minimum friction, attained by putting the whole budget on a
+single least-friction date.
+
+Three consequences are adopted with it. Persistence is budget-free — the criterion
+does not mention the budget, so any positive lifetime budget buys it and none buys
+it when the friction is floored. Persistence does not compete across reasons, so
+splitting one budget geometrically serves every individually persistable reason at
+once and there is no Hall-type condition to look for. And a causal scheduler seeing
+the friction only at its own date achieves persistence exactly when an offline one
+can, by a doubling-threshold rule; any scheduler with a positive floor on its
+per-date allocation is defeated by a friction bounded away from zero, so persistence
+requires the freedom to do nothing.
+
+The reading is that a norm can be enforced indefinitely on a finite liability budget
+exactly when there are infinitely many occasions on which enforcing it is nearly
+free. That pushes the burden onto transport stability across the resulting gaps,
+which is where affordability and service fidelity now pull against each other.
+
+*Rejected alternative:* an l^p or summability condition on the friction sequence,
+which is sufficient in the l^2 case and nowhere near necessary.
+
+### 2026-08-31 — the sustainable authority-rate region is withdrawn
+
+**agent-decided, reversible.** An earlier pass in this round defined a sustainable
+authority-rate region and claimed it convex because policies can be time-shared.
+Both the claim and the object are withdrawn.
+
+Time-sharing convexifies a renewable per-date resource; the liability budget is a
+consumable stock and authority is quadratic in the stock, so interleaving two
+policies quarters what each buys. Two rows at unit friction and budget two have the
+rate pairs four-zero and zero-four achievable and their midpoint not. The convex
+hull is not achievable and should not be called the achievable region.
+
+The object is also wrong: the rate region is empty of content whenever the friction
+is floored, everything whenever it decays fast, and — the case that matters — zero
+on friction sequences where the reason is in fact persistently served, because
+persistence is divergence of the cumulative allocation and a positive rate is linear
+growth. The composition theorem consumes the first. It is replaced by the
+persistence region, which is the full power set of the individually persistable
+reasons: downward closed, closed under countable unions, and carrying no capacity
+structure at all.
+
+Separately, the scalar account slack is **not** a sufficient statistic for future
+viability, because the world attaining the minimum can settle away; a
+dynamic-programming treatment has to carry the account profile over the live set.
+
+*Rejected alternative:* keeping the rate region with a convexity caveat, which
+would have preserved an object that reports zero exactly where the theory's
+requirement is met.
+
+### 2026-08-31 — a reason-indexed cap needs per-row liability floors
+
+**agent-decided, reversible.** The market maker's contract caps the aggregate
+enforcement book. Isolating one row's book requires floors on the rest: with
+per-row floors summing to a finite total, every subset of rows inherits the
+uniform ceiling of the aggregate cap plus that total, and the floors also imply
+the aggregate floor the preservation theorem needs, so a hypothesis list carrying
+the floors should not also carry aggregate safety separately.
+
+Aggregate safety alone does not suffice, and the countermodel is two lines: books
+with increments plus one and minus one have an identically zero aggregate account,
+so the aggregate cap and the aggregate floor both hold at zero while neither book
+is bounded. One reason's authority financed by another's unbounded losses defeats
+every reason-level guarantee. Each reason's enforcement must be separately
+underwritten.
+
+Reason-indexed Progress does not *require* this, since the per-date modulus bounds
+every subset's work unconditionally; what the floors buy is the constant, and with
+it whether a reason of modest allocation progresses at all.
+
+*Rejected alternative:* stating Progress only in aggregate, which would have left
+the theory unable to say that any particular reason is being answered.
+
+### 2026-08-31 — local authority capacity is not lifetime safety
+
+**agent-decided, reversible.** A predictable per-date authority-capacity set and
+the diachronic SafeCert condition are different objects, and the round had been
+running them together. Respecting a per-date cap at every date gives an account
+unbounded below whenever the allowances are not summable; conversely SafeCert can
+hold while the cap is exceeded, because the cap inverts a worst-case charge and the
+realized world is not the worst one.
+
+The affordability definition therefore carries SafeCert, and capacity sets are how
+a policy establishes it. Three routes are recorded: a summable exogenous allowance
+split; spending the realized account slack, which is the same inequality with the
+slack in place of the allowance and is strictly larger whenever the account has
+earned; and the existing structural certificates, which establish SafeCert with no
+allowance sequence at all. Writing a capacity set into the definition would have
+made affordability depend on which sufficient certificate a scheduler happened to
+use, and would have excluded the third route entirely.
+
+*Rejected alternative:* defining affordability by membership in a per-date capacity
+box, which is neither necessary nor sufficient for the property it was standing in
+for.
+
+### 2026-08-31 — service is allocated authority, not realized force
+
+**agent-decided, reversible.** The reason-indexed service variable is the
+enforcement multiplier — equivalently the promised tolerance — chosen from the
+record through the previous date. It is not the realized position magnitude, which
+an earlier pass in this round had proposed.
+
+Three failures decide it. The realized force is a function of the market maker's
+fixed-point price, so it is unavailable at the date the round's control must be
+chosen, and an affordability witness cannot be required to schedule it. It is zero
+exactly when the reason is perfectly satisfied, so its normalized measure does not
+exist on the trajectories the theory most wants to call well served. And it counts
+a date as better served because the reasoner did worse on it: equal allocated
+authority against violations of one tenth and nine tenths splits the force measure
+nine to one. A reason monitored forever at constant authority against a
+geometrically vanishing violation has divergent allocated service and summable
+realized force, so the realized reading classifies successful learning as
+starvation.
+
+The control is correspondingly a predictable *law* from states to positions rather
+than a predictable position; in the traderized case the law must be continuous,
+which is what the fixed point's Brouwer step consumes. The affordability witness is
+retyped to `(a_t, kappa_t)` accordingly, with the realized control `u_t =
+kappa_t(x_t)`.
+
+Two things fall out. The per-date enforcement modulus already bounds the
+allocated-service-weighted squared violation, so service-weighted Progress is a
+consequence of the market maker's contract with an explicit rate rather than an
+assumed premise. And the liability charge grows like the square root of allocated
+authority, which is why a reason can receive divergent service on a finite lifetime
+budget: the market's own response reduces the force as compliance improves.
+
+*Rejected alternative:* keeping the realized position magnitude as the service
+variable, which reads the schematic's scheduling freedom into a quantity no
+scheduler can set.
+
+### 2026-08-31 — Actionability is a convex coercivity modulus
+
+**agent-decided, reversible.** The schematic Actionability premise becomes
+`Gain >= a phi(d) - Friction` for a convex `phi` with `phi(0) = 0`, strictly
+increasing on the defect's range. Vanishing average work then gives vanishing
+average defect by Jensen and inversion, at rate `phi^{-1}`.
+
+This simplifies rather than generalizes: the old linear form is `phi(d) = gamma d`
+and projection enforcement is `phi(d) = d^2`, so one theorem covers both and the
+rate and residual read off `phi` instead of being separate hypotheses. Forcing the
+projection realization into a linear form would have required assuming an
+inequality the enforcement mathematics does not supply.
+
+*Rejected alternative:* keeping `g >= gamma d` as the schematic form and treating
+the quadratic realization as a special case needing its own theorem.
+
+### 2026-08-31 — Progress is staged, not redefined
+
+**agent-decided, reversible.** The question of whether Progress should be
+claim-weighted or service-weighted had a false disjunct. The base theorem stays
+service-weighted and unchanged; a second theorem, whose premises are a transport
+plan and its constants and which mentions no engine, carries the conclusion to the
+claim-weighted one at a residual equal to the transport stability error.
+
+The argument is premise locality. Stage one mentions no scheduler and no claim
+measure; stage two mentions no gain, no margin, no Uptake and no engine, so it
+composes with any engine-side guarantee of the form `E_nu[d] -> 0` — including the
+merged Progress schematic exactly as settled, and including the Logical Induction
+realization, which reaches that form by a route sharing no premise with it. The
+round's two central countermodels sort the same way: the rotation countermodel is
+entirely a stage-two failure and the vanishing-share countermodel entirely a
+stage-one failure. In the merged form the residual sits in a theorem whose other
+premises are semantic and learner-side, so a reader cannot tell what it is charged
+to.
+
+No settled definition changes, and the question leaves *Awaiting the author*
+because it has an answer rather than because it was ruled on.
+
+*Rejected alternative:* rewriting the base Progress theorem to be claim-weighted,
+which would import a scheduling object and a residual into a statement that needs
+neither.
+
+### 2026-08-31 — Progress comes from the market maker; the criterion preserves the substrate
+
+**agent-decided, reversible.** In the traderized realization the source of Uptake
+is the market maker's cumulative cap on the combined aggregate, which bounds the
+enforcement position's cumulative assessed value by a constant at every live world
+and date. It is **not** the Logical Induction criterion: the criterion quantifies
+over efficiently computable traders, and the enforcement position sits in the
+price-setting aggregate instead, where it is not required to be efficiently
+computable and, for a coherence-polytope presentation, is not.
+
+What the criterion's preservation theorem establishes is that the *ordinary*
+trader class's guarantee survives the added control — substrate preservation, not
+Uptake — and it supplies no bound on the enforcement position's own value.
+
+Three consequences are adopted with it. Actionability and Uptake are theorems
+rather than premises in this realization, leaving the account floor as the only
+genuine hypothesis. The intensity variable that plays both scheduling and force
+roles is the position's row-weighted magnitude, not the enforcement multiplier.
+And per-reason accounting costs the other reasons' liability floors, which
+replaces the round's share-persistence condition with a summability condition on
+safety budgets.
+
+*Rejected alternative:* keeping the criterion as the source of per-reason Uptake,
+which would have made the realization's central inequality depend on a quantifier
+the construction deliberately exempts the enforcement position from.
+
+### 2026-08-31 — "self-financing" is deleted; affordability is a signed account
+
+**agent-decided, reversible.** The round claimed that a fixed liability budget
+funds only a transient and therefore that persistent service must be
+self-financing. The step interchanges a supremum with a sum: the account is the
+worst case of a cumulative value, while the hypothesis bounds the worst case of
+each increment, and different worlds may be worst at different dates. One priced
+sentence and two worlds refute it — a norm alternating which world it excludes has
+robust loss exactly `1` at every date, an account that oscillates inside a band of
+width `1`, and unbounded total force.
+
+Nor does the corrected worldwise form give self-financing: a norm may exclude the
+sole live world at every date, be enforced forever, lose at every date and stay
+affordable when the exclusion depth decays. The traderized round had already
+withdrawn a theorem of the same shape and had already recorded that the
+per-date-supremum certificate is conservative; this round reintroduced both
+errors and now removes them.
+
+The necessary condition is the account condition itself — for every world live at
+the horizon, the cumulative value stays above the floor — and the sufficient
+certificates are the existing liability-regime taxonomy. "Self-financing" was a
+fifth name for the world-compatible regime, presented as necessary, and is
+deleted. The existence theorem that used it survives as a strong sufficient
+theorem with the necessity gloss removed.
+
+*Rejected alternative:* repairing the observation by quantifying over a single
+persistent world, which is true but bounds the number of costly dates rather than
+the service mass, and needs a proportionality hypothesis to bound the mass.
+
+### 2026-08-31 — the service-fidelity interface is a transport plan, not contiguity
+
+**agent-decided, reversible.** Contiguity of the claim measure against the service
+measure is exactly the weakest condition under which service-weighted learning
+transfers to claim-weighted defect, for triangular arrays — and a settlement-relative
+defect is a triangular array, so the strong version is the one in force. It is
+nevertheless not what the interface should carry. It is not checkable at a finite
+horizon, it is not quantitative, and it is false of bounded-delay service, which the
+theory has no reason to forbid: a two-surface rotation has delay one and backlog one
+and defeats it.
+
+The interface is instead a declared transport plan `T(t, s)` with a claim marginal, a
+service-feasibility constraint, a stability inequality `d_t <= L d_s + eps`, and a
+service-to-claim cap. Feasibility plus the cap give a pointwise density bound on the
+*transported* claim measure, and the resulting transfer bound is quantitative. The
+two routes are incomparable rather than one deriving the other: contiguity needs a
+measure relation and no hypothesis about the defect, the plan needs no measure
+relation and the stability hypothesis, and each fails where the other holds. Queue stability, bounded delay, backlog bounds and fair scheduling
+keep their role, on the other side of the interface: they establish that a plan
+exists, not that transfer holds.
+
+*Rejected alternative:* keeping contiguity as clause 2 of the affordability
+definition and treating deferral as a separate extension.
+
+### 2026-08-31 — Actionability is read against the common region, not reason-relative ones
+
+**agent-decided, reversible.** Individually actionable controls do not compose when
+each reason's gain is scored against that reason's own admissible region: an exhibited
+pair with jointly satisfiable demands, each meeting its margin exactly, has a
+per-reason gain of `-1/8` after aggregation, because one reason's region does not
+constrain the coordinates the other moves. Scored against the intersection of the
+regions the composition is immediate — an infimum over a smaller set is larger, and an
+infimum is superadditive — with no convexity, separability or noninterference
+hypothesis.
+
+The joint response correspondence therefore drops the reason-indexed comparison
+coordinate the dispatch proposed and keeps `(w, u)` with `u = sum_r w^r zeta^r`,
+standing beside one datum: the intersection is nonempty. So typed it is the image of a
+nonnegative orthant under a linear map intersected with the control set, which is
+convex whenever the control set is — the convexity the existence theory wants is what
+the minimal type already is, rather than an added assumption.
+
+*Rejected alternative:* a joint response correspondence carrying per-reason scored
+challenges, which is the shape the interference countermodel exploits.
+
 ### 2026-08-26 — proper exercise is semantic input, not a theorem module
 
 **agent-decided, reversible.** A round went looking for the smallest mathematical

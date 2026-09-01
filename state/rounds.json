@@ -50,17 +50,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-11-corrigibility-phase-ii",
-      "date": "2026-08-11",
-      "project": null,
-      "path": "prompts/2026-08-11-corrigibility-phase-ii",
-      "verdict": null,
-      "depends_on": [],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-11-corrigibility-phase-ii/PROMPT.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-11-contributor-checkers",
       "date": "2026-08-11",
       "project": null,
@@ -69,6 +58,17 @@
       "depends_on": [],
       "registered_classes": [],
       "prompt": null,
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-11-corrigibility-phase-ii",
+      "date": "2026-08-11",
+      "project": null,
+      "path": "prompts/2026-08-11-corrigibility-phase-ii",
+      "verdict": null,
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-11-corrigibility-phase-ii/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -448,59 +448,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-13-procedural-legitimacy",
-      "date": "2026-08-13",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy",
-      "verdict": "four-condition sufficiency is REFUTED",
-      "verdict_source": "prompts/2026-08-13-procedural-legitimacy/REPORT.md",
-      "depends_on": [
-        "2026-08-12-legitimacy-reorganization"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-procedural-legitimacy/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-13-local-regret-normative-learning",
-      "date": "2026-08-13",
-      "project": "normativity",
-      "path": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning",
-      "verdict": "LOCAL-THEOREM-POSITIVE / NORMATIVE-INTERPRETATION-OPEN",
-      "verdict_source": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning/README.md",
-      "depends_on": [
-        "2026-08-13-relational-scorekeeping-bridge"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-local-regret-normative-learning/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-13-relational-scorekeeping-bridge",
-      "date": "2026-08-13",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge",
-      "verdict": "Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/README.md",
-      "depends_on": [],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-relational-scorekeeping-bridge/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-13-relational-scorekeeping-refinement",
-      "date": "2026-08-13",
-      "project": null,
-      "path": "prompts/2026-08-13-relational-scorekeeping-refinement",
-      "verdict": null,
-      "depends_on": [
-        "2026-08-13-relational-scorekeeping-bridge"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-relational-scorekeeping-refinement/PROMPT.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-13-crown-jewel-learning-theorem",
       "date": "2026-08-13",
       "project": "normativity",
@@ -513,33 +460,6 @@
       "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem/PROMPT.md",
       "claim_changes": [],
       "superseded_by": "2026-08-13-crown-jewel-learning-theorem-refinement"
-    },
-    {
-      "id": "2026-08-13-crown-jewel-learning-theorem-refinement",
-      "date": "2026-08-13",
-      "project": "normativity",
-      "path": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement",
-      "artifact_path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem",
-      "verdict": null,
-      "verdicts": [
-        {
-          "kind": "theorem",
-          "value": "CROWN-JEWEL-THEOREM-POSITIVE-WITH-INTERFACE-HYPOTHESES",
-          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
-        },
-        {
-          "kind": "dynamics",
-          "value": "BM-DYNAMICS-CONDITIONALLY-POSITIVE",
-          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
-        }
-      ],
-      "depends_on": [
-        "2026-08-13-crown-jewel-learning-theorem"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/PROMPT.md",
-      "claim_changes": [],
-      "superseded_by": "2026-08-13-crown-jewel-learning-theorem-final"
     },
     {
       "id": "2026-08-13-crown-jewel-learning-theorem-final",
@@ -596,6 +516,86 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-13-crown-jewel-learning-theorem-refinement",
+      "date": "2026-08-13",
+      "project": "normativity",
+      "path": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement",
+      "artifact_path": "projects/normativity/rounds/2026-08-13-crown-jewel-learning-theorem",
+      "verdict": null,
+      "verdicts": [
+        {
+          "kind": "theorem",
+          "value": "CROWN-JEWEL-THEOREM-POSITIVE-WITH-INTERFACE-HYPOTHESES",
+          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
+        },
+        {
+          "kind": "dynamics",
+          "value": "BM-DYNAMICS-CONDITIONALLY-POSITIVE",
+          "source": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/REPORT.md"
+        }
+      ],
+      "depends_on": [
+        "2026-08-13-crown-jewel-learning-theorem"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-crown-jewel-learning-theorem-refinement/PROMPT.md",
+      "claim_changes": [],
+      "superseded_by": "2026-08-13-crown-jewel-learning-theorem-final"
+    },
+    {
+      "id": "2026-08-13-local-regret-normative-learning",
+      "date": "2026-08-13",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning",
+      "verdict": "LOCAL-THEOREM-POSITIVE / NORMATIVE-INTERPRETATION-OPEN",
+      "verdict_source": "projects/normativity/rounds/2026-08-13-local-regret-normative-learning/README.md",
+      "depends_on": [
+        "2026-08-13-relational-scorekeeping-bridge"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-local-regret-normative-learning/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-13-procedural-legitimacy",
+      "date": "2026-08-13",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-13-procedural-legitimacy",
+      "verdict": "four-condition sufficiency is REFUTED",
+      "verdict_source": "prompts/2026-08-13-procedural-legitimacy/REPORT.md",
+      "depends_on": [
+        "2026-08-12-legitimacy-reorganization"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-procedural-legitimacy/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-13-relational-scorekeeping-bridge",
+      "date": "2026-08-13",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge",
+      "verdict": "Shared-representation-positive / corrigibility-interface-positive / learning-replay-blocked",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/README.md",
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-relational-scorekeeping-bridge/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-13-relational-scorekeeping-refinement",
+      "date": "2026-08-13",
+      "project": null,
+      "path": "prompts/2026-08-13-relational-scorekeeping-refinement",
+      "verdict": null,
+      "depends_on": [
+        "2026-08-13-relational-scorekeeping-bridge"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-13-relational-scorekeeping-refinement/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-13-wikification-and-normativity",
       "date": "2026-08-13",
       "project": null,
@@ -604,6 +604,18 @@
       "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-13-wikification-and-normativity/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-16-traderized-enforcement",
+      "date": "2026-08-16",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
+      "verdict": "Logical Induction generalizes past deduction: the assessment-process lift of Budgeter and TradingFirm is kernel-checked against the pinned implementation, a compiled price-region trader gives finite-time force, and preservation follows from finite assessed risk capital — which is exactly zero for deduction, so traderized deduction keeps the original criterion and adds finite-time approximate coherence.",
+      "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md",
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-proof-closure.md",
       "claim_changes": []
     },
     {
@@ -629,18 +641,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-16-traderized-enforcement",
-      "date": "2026-08-16",
-      "project": "normativity",
-      "path": "projects/normativity/rounds/2026-08-16-traderized-enforcement",
-      "verdict": "Logical Induction generalizes past deduction: the assessment-process lift of Budgeter and TradingFirm is kernel-checked against the pinned implementation, a compiled price-region trader gives finite-time force, and preservation follows from finite assessed risk capital — which is exactly zero for deduction, so traderized deduction keeps the original criterion and adds finite-time approximate coherence.",
-      "verdict_source": "projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md",
-      "depends_on": [],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-16-traderized-enforcement/PROMPT-proof-closure.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-17-counterfactual-legitimacy",
       "date": "2026-08-17",
       "project": "normativity.legitimacy",
@@ -650,6 +650,18 @@
       "depends_on": [],
       "registered_classes": [],
       "prompt": "prompts/2026-08-17-counterfactual-legitimacy/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-18-maxmin-representation",
+      "date": "2026-08-18",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-08-18-maxmin-representation",
+      "verdict": "Ovchinnikov's max–min theorem is kernel-checked for any nonempty convex domain, with no full-dimensionality, no continuity and no finite-dimension hypothesis, by replacing the source's hyperplane arrangement and tope-graph induction with a one-dimensional induction along the segment joining the two points — which also removes the genericity step the source states without proof.",
+      "verdict_source": "projects/normativity/rounds/2026-08-18-maxmin-representation/README.md",
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-18-maxmin-representation/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -678,18 +690,6 @@
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-19-deductive-region/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-18-maxmin-representation",
-      "date": "2026-08-18",
-      "project": "normativity",
-      "path": "projects/normativity/rounds/2026-08-18-maxmin-representation",
-      "verdict": "Ovchinnikov's max–min theorem is kernel-checked for any nonempty convex domain, with no full-dimensionality, no continuity and no finite-dimension hypothesis, by replacing the source's hyperplane arrangement and tope-graph induction with a one-dimensional induction along the segment joining the two points — which also removes the genericity step the source states without proof.",
-      "verdict_source": "projects/normativity/rounds/2026-08-18-maxmin-representation/README.md",
-      "depends_on": [],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-18-maxmin-representation/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -740,6 +740,20 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-23-certified-interactive-service",
+      "date": "2026-08-23",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service",
+      "verdict": "REQUIRES-REVISION — the object survives as an arena plus finite-witness certification, its laws typing disciplines, its content in the capability lattice.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service/README.md",
+      "depends_on": [
+        "2026-08-23-afoundational-inquiry"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-23-certified-interactive-service/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-23-reason-representation",
       "date": "2026-08-23",
       "project": "normativity.legitimacy",
@@ -767,17 +781,31 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-23-certified-interactive-service",
-      "date": "2026-08-23",
+      "id": "2026-08-24-cleanup-and-compress",
+      "date": "2026-08-24",
+      "project": null,
+      "path": "prompts/2026-08-24-cleanup-and-compress",
+      "verdict": "The live documents say what is current, the deference line has a registry, and two friction entries close as gates.",
+      "verdict_source": "prompts/2026-08-24-cleanup-and-compress/REPORT.md",
+      "depends_on": [],
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-08-24-cleanup-and-compress/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-24-reflective-integrity-core",
+      "date": "2026-08-24",
       "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service",
-      "verdict": "REQUIRES-REVISION — the object survives as an arena plus finite-witness certification, its laws typing disciplines, its content in the capability lattice.",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-23-certified-interactive-service/README.md",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core",
+      "verdict": "FREEZE-READY — the demand interface gains the two structural properties four of the main clauses depend on, and no repair reopened the architecture.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core/README.md",
       "depends_on": [
-        "2026-08-23-afoundational-inquiry"
+        "2026-08-23-transition-certificates"
       ],
       "registered_classes": [],
-      "prompt": "prompts/2026-08-23-certified-interactive-service/PROMPT.md",
+      "prompt": "prompts/2026-08-24-reflective-integrity-core/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -820,31 +848,19 @@
       ]
     },
     {
-      "id": "2026-08-24-cleanup-and-compress",
-      "date": "2026-08-24",
-      "project": null,
-      "path": "prompts/2026-08-24-cleanup-and-compress",
-      "verdict": "The live documents say what is current, the deference line has a registry, and two friction entries close as gates.",
-      "verdict_source": "prompts/2026-08-24-cleanup-and-compress/REPORT.md",
-      "depends_on": [],
-      "registered_classes": [
-        "lean-proved"
-      ],
-      "prompt": "prompts/2026-08-24-cleanup-and-compress/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-24-reflective-integrity-core",
-      "date": "2026-08-24",
+      "id": "2026-08-25-carroll-legitimacy-test",
+      "date": "2026-08-25",
       "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core",
-      "verdict": "FREEZE-READY — the demand interface gains the two structural properties four of the main clauses depend on, and no repair reopened the architecture.",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-24-reflective-integrity-core/README.md",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test",
+      "verdict": "CARROLL-ROUND-CLOSED — the criterion carries the hostile suite after three prosecution passes, licenses genuine influence, reserves refusal for a positive prohibition, returns insufficient structure on every bare example the source states, and the one algebraic claim the round made beyond it is withdrawn with its counterexample.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/README.md",
       "depends_on": [
-        "2026-08-23-transition-certificates"
+        "2026-08-24-reflective-integrity-core",
+        "2026-08-25-end-to-end-vertical-slice",
+        "2026-08-17-counterfactual-legitimacy"
       ],
       "registered_classes": [],
-      "prompt": "prompts/2026-08-24-reflective-integrity-core/PROMPT.md",
+      "prompt": "prompts/2026-08-25-carroll-legitimacy-test/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -860,22 +876,6 @@
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-25-end-to-end-vertical-slice/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-25-carroll-legitimacy-test",
-      "date": "2026-08-25",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test",
-      "verdict": "CARROLL-ROUND-CLOSED — the criterion carries the hostile suite after three prosecution passes, licenses genuine influence, reserves refusal for a positive prohibition, returns insufficient structure on every bare example the source states, and the one algebraic claim the round made beyond it is withdrawn with its counterexample.",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/README.md",
-      "depends_on": [
-        "2026-08-24-reflective-integrity-core",
-        "2026-08-25-end-to-end-vertical-slice",
-        "2026-08-17-counterfactual-legitimacy"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-25-carroll-legitimacy-test/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -912,21 +912,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-28-answerable-revision",
-      "date": "2026-08-28",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision",
-      "verdict": "ANSWERABLE-REVISION-SURVIVES — standards may change and reasons incurred under them remain answerable, including when the standard revised is the one that promoted the reason, and including when the reason is about a warrant. The reflective case needs no meta-hierarchy: a warrant's target is an ordinary identifier that may name a warrant, and the module contains no level or rank notion at all. The honest qualification is that most of the theorem is inherited — promotion puts a reason in the frozen package's opens, incurred never shrinks, and A1 lets a claim leave the outstanding set only through an accepted resolution, while a warrant revision is not a resolution and appears in neither fold — so the closure argument is three lines. The round's own content is one premise, promotion permanence: what was promoted at t is a function of the state at t. A process that re-derives its own past under present standards violates it, and the frozen package would not notice, because its premises govern how claims leave rather than whether they arrive; the closure theorem, A1 and Grounded Replay are all clean on that history while the reason simply never exists. The second piece of content is separating historical validity from current endorsement, which lets a process say that something really was a reason it incurred and that it now rejects its force, while forbidding the claim that because standards changed there never was an answerability relation. The boundary is that Answerable Revision begins at promotion and cannot reach behind it: a warrant that narrows itself before a criticism can be promoted is legitimate under every premise here, which is the same boundary the improvement round found one level down and is some evidence it is the real boundary of this family.",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision/README.md",
-      "depends_on": [
-        "2026-08-27-legitimate-improvement",
-        "2026-08-25-legitimate-evolution"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-28-answerable-revision/PROMPT.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-28-answerable-challenge-service",
       "date": "2026-08-28",
       "project": "normativity.legitimacy",
@@ -940,6 +925,21 @@
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-28-answerable-challenge-service/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-28-answerable-revision",
+      "date": "2026-08-28",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision",
+      "verdict": "ANSWERABLE-REVISION-SURVIVES — standards may change and reasons incurred under them remain answerable, including when the standard revised is the one that promoted the reason, and including when the reason is about a warrant. The reflective case needs no meta-hierarchy: a warrant's target is an ordinary identifier that may name a warrant, and the module contains no level or rank notion at all. The honest qualification is that most of the theorem is inherited — promotion puts a reason in the frozen package's opens, incurred never shrinks, and A1 lets a claim leave the outstanding set only through an accepted resolution, while a warrant revision is not a resolution and appears in neither fold — so the closure argument is three lines. The round's own content is one premise, promotion permanence: what was promoted at t is a function of the state at t. A process that re-derives its own past under present standards violates it, and the frozen package would not notice, because its premises govern how claims leave rather than whether they arrive; the closure theorem, A1 and Grounded Replay are all clean on that history while the reason simply never exists. The second piece of content is separating historical validity from current endorsement, which lets a process say that something really was a reason it incurred and that it now rejects its force, while forbidding the claim that because standards changed there never was an answerability relation. The boundary is that Answerable Revision begins at promotion and cannot reach behind it: a warrant that narrows itself before a criticism can be promoted is legitimate under every premise here, which is the same boundary the improvement round found one level down and is some evidence it is the real boundary of this family.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-28-answerable-revision/README.md",
+      "depends_on": [
+        "2026-08-27-legitimate-improvement",
+        "2026-08-25-legitimate-evolution"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-28-answerable-revision/PROMPT.md",
       "claim_changes": []
     },
     {
@@ -974,6 +974,36 @@
       "claim_changes": []
     },
     {
+      "id": "2026-08-30-anchored-slices-auth-transfer",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer",
+      "verdict": "ANCHORED-SLICES-REQUIRED",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/REPORT.md",
+      "depends_on": [
+        "2026-08-30-answerability-carriers",
+        "2026-08-30-proper-exercise-calculus"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-anchored-slices-auth-transfer/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-30-answerability-carriers",
+      "date": "2026-08-30",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers",
+      "verdict": "MATTER-FRONTIER-SEMANTICS-REQUIRED",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers/REPORT.md",
+      "depends_on": [
+        "2026-08-30-proper-exercise-calculus",
+        "2026-08-28-answerable-revision"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-30-answerability-carriers/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-08-30-normative-continuity-settlement",
       "date": "2026-08-30",
       "project": "normativity.legitimacy",
@@ -1004,36 +1034,6 @@
       "claim_changes": []
     },
     {
-      "id": "2026-08-30-answerability-carriers",
-      "date": "2026-08-30",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers",
-      "verdict": "MATTER-FRONTIER-SEMANTICS-REQUIRED",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-answerability-carriers/REPORT.md",
-      "depends_on": [
-        "2026-08-30-proper-exercise-calculus",
-        "2026-08-28-answerable-revision"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-30-answerability-carriers/PROMPT.md",
-      "claim_changes": []
-    },
-    {
-      "id": "2026-08-30-anchored-slices-auth-transfer",
-      "date": "2026-08-30",
-      "project": "normativity.legitimacy",
-      "path": "projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer",
-      "verdict": "ANCHORED-SLICES-REQUIRED",
-      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/REPORT.md",
-      "depends_on": [
-        "2026-08-30-answerability-carriers",
-        "2026-08-30-proper-exercise-calculus"
-      ],
-      "registered_classes": [],
-      "prompt": "prompts/2026-08-30-anchored-slices-auth-transfer/PROMPT.md",
-      "claim_changes": []
-    },
-    {
       "id": "2026-08-31-faithful-semantic-preservation",
       "date": "2026-08-31",
       "project": "normativity.legitimacy",
@@ -1046,6 +1046,18 @@
       ],
       "registered_classes": [],
       "prompt": "prompts/2026-08-31-faithful-semantic-preservation/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-08-31-normative-affordability",
+      "date": "2026-08-31",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability",
+      "verdict": "AFFORDABILITY-COMPOSES-BUT-THE-SERVICE-CONDITION-IS-TRANSPORT-NOT-CONTIGUITY — the proposed architecture survives with one component replaced, one conclusion weakened and one inherited hypothesis refuted; its realization map survives an audit against the traderized mathematics with three withdrawals; and the remaining type mismatch between the schematic and the concrete learner is closed by separating allocated service from realized force. Contiguity of the claim measure against the service measure is exactly the weakest condition under which service-weighted learning transfers to claim-weighted defect, necessary and sufficient for triangular arrays, and necessary because a settlement-relative defect is a triangular array; for a defect sequence fixed independently of the horizon the exact condition is instead fixed-set contiguity, which is strictly weaker, and one-step delay separates them. Contiguity is nevertheless the wrong interface primitive: not checkable at a finite horizon, not quantitative, and false of bounded-delay service. The Deferred Service Transfer theorem reaches the same conclusion from a feasible adapted transport plan with a stability inequality and a service-to-claim cap; the two routes are incomparable rather than one deriving the other, since what the plan bounds is the density of the transported claim measure. Progress is staged rather than redefined, so no settled definition changes. Bounded-deficit Surface Fairness is a condition on total mass and does not control the claim-weighted defect at all: a two-surface fair rotation satisfies it with service-weighted defect exactly zero at every horizon while the claim-weighted defect tends to one half. Joint Actionability does not follow from individual Actionability when the gain is read against reason-relative regions and does follow, with no convexity and no separability, against the common region; in the traderized realization it is true and unused, because the compiled position is reactive. Three realization claims are withdrawn: per-reason Uptake is not free from the criterion, which does not quantify over the enforcement position at all, and comes instead from the market maker's cumulative cap; the criterion's preservation theorem is substrate preservation and not Uptake; and pointwise self-financing is sufficient and not necessary for persistent affordability, refuted by an alternating norm whose every date is robustly loss-making while the signed account stays inside a fixed band. The service variable is the allocated authority and not the realized force: the multiplier is fixed before the market maker picks a price and is freely schedulable inside a per-date liability capacity, while the realized position is decided at the fixed point, is zero exactly when the reason is perfectly satisfied, and counts a date as better served because the reasoner did worse on it. Against the allocated-service measure the per-date enforcement modulus gives service-weighted Progress outright, with rate the inverse square root of allocated service and residual the norm's own weighted mean-square exclusion of the still-live worlds; one compatible live world suffices and gives the fast rate, a certified core minimum caps the residual, and the liability charge grows like the square root of allocated authority, so a reason can receive divergent service on a finite lifetime budget because the realized force dies away as compliance improves. Actionability generalizes to a convex coercivity modulus that subsumes the linear and projection-quadratic cases in one theorem. Finite-horizon overload admits a sound Farkas certificate and no converse, and it is not the highest-value next target: the necessity of bounded liability is, followed by the existence of an affordable schedule, now posed in the allocated-service space where it is well typed. The construction is complete for a fixed era: conditional on a service-faithful authority schedule, per-row liability floors summing to a finite total, and the two residual assumptions, every arrow from the claim stream to claim-weighted Progress and to preservation of the original criterion is proved, with a finite-horizon inequality and an explicit dependency graph. The aggregate market maker cap becomes a uniform per-subset ceiling U plus the total floor exactly when the complementary rows carry summable liability floors, and aggregate safety alone does not suffice: two books with increments plus one and minus one have an identically zero aggregate account and no reason-level ceiling at all. Local authority capacity and lifetime SafeCert are different objects — a policy inside its per-date capacity at every date has an account unbounded below when the allowances are not summable, and spending the realized account slack instead strictly enlarges the viable region, quadratically. Coercive Actionability converges exactly when the modulus is bounded away from zero away from zero; convexity is not needed for convergence and buys only the rate. Conditional on force feasibility there is no service-capacity competition between reasons at all — the per-row conformance bound is independent of how many rows are active — so overload within that qualification is liability overload, while an empty region, an unpriceable row or an illegal compiled control is a failure before any account is consulted. Authority is quadratic in the liability allowance, so the per-date capacity region is non-convex and concentration beats proportional splitting by the reason count. The sustainable authority-rate region is neither convex nor the right object: time-sharing convexifies a renewable per-date resource and the liability budget is a consumable stock, and the rate region reports zero on friction sequences where the reason is in fact persistently served. Replacing it with the persistence region gives an exact answer. Writing the friction as the exclusion depth times the square root of the date's slack-plus-volume, a schedule with divergent cumulative authority and finite lifetime charge exists if and only if the friction has liminf zero; the maximum cumulative authority through any horizon is exactly the squared budget over the squared running minimum friction, attained by putting the whole budget on one least-friction date. Persistence is therefore budget-free and does not compete across reasons, so every individually persistable reason can be served simultaneously with all the others and there is no Hall-type condition to check; the persistence region is the full power set of the persistable reasons. A causal scheduler seeing the friction only at its own date achieves persistence exactly when an offline one can, by a doubling-threshold rule spending geometric tranches, and any scheduler with a positive floor on its per-date allocation is defeated by a friction sequence bounded away from zero. Conservative underwriting is strictly smaller than signed-account affordability by an unbounded margin: a satisfied row takes a zero position and costs nothing however deep its exclusion of the live worlds, so a floored friction that caps conservative authority at a constant permits linear growth on the realized trajectory. The scalar account slack is not sufficient state, because the world attaining the minimum can settle away. The conservative criterion is not the sharp one: for a general star-shaped date cost the persistence criterion is that the cost of a fixed reference allocation has liminf zero, which specializes to the conservative friction dipping and, under the exact worst-case charge, to the exclusion depth alone dipping — and the two differ, since depth one over t against engine scale t to the fourth makes the conservative friction diverge while a constant allocation stays affordable forever. The finite-horizon optimum is the largest single-date inverse cost, which recovers the earlier formula and shows that an unbounded optimum is necessary but not sufficient for persistence. The causal scheduler has no penalty for the persistence property and no positive competitive ratio for the amount of authority accumulated: two dates already cap any rule at one quarter and a cascade drives the achievable ratio to zero. Answerability's admissible traces change the criterion rather than qualifying it: a per-window service floor is affordable exactly when the window minima are summable, which most dip sequences fail, and a cumulative service demand forces the running minimum depth to decay reciprocally to it — this is the frontier between cheap enforcement dates and timely ones. The rate region's non-convexity claim is narrowed to the finite-horizon cumulative-authority frontier, which is where the counterexample lives. Insolvency is a claim about the infinite future: an observed friction floor is not a certificate, and an authenticated one needs a tail bound with a proof object, failing which a reason is deferred rather than recorded as unaffordable. The sharp criterion is not depth-only either: the reference cost is comparable within a factor of four to the minimum of the squared depth and the depth times the root of the engine scale, so a fixed exclusion depth against a vanishing engine scale is persistently enforceable with no depth decay at all, and the depth-only reading holds exactly under a floor on the engine scale. Bounded-delay service is characterized exactly. Feasibility against a given service profile is the interval condition — prefixes do not suffice, since service cannot run backwards — and first-in-first-out is optimal and complete, so the transport plan is constructed rather than assumed. When the service profile is chosen the minimum cost is a shortest path over consecutive runs, and on the sharp charge's linear branch it is exactly the sum over claims of the claim mass times the minimum date weight in that claim's own window: a sliding window, not the disjoint blocking the previous pass used, and the two differ by up to the deadline. That one formula covers dense, bounded and sparse claim streams and interpolates exactly back to unconstrained persistence as the deadline grows. The separation is exhibited: dips spaced at sixteen satisfy unconstrained persistence and fail bounded-delay service at deadline three, whose cost grows linearly with the horizon, while a deadline matching the dip spacing restores affordability. Since the minimum cost is nonincreasing in the deadline and the transport residual is nondecreasing in it, there is a least affordable deadline and the Sustainable Progress residual it buys is the reason's temporal modulus evaluated there — so of the two residuals in the fixed-era bound, the settlement-friction one is a property of the norm and the transport one is purchasable with liability budget. Timely service competes across reasons where persistence did not, because its minimum cost is a definite positive number and the budgets add; the joint condition is a single sum rather than a Hall condition, and it is sufficient but not necessary when reasons share rows. Under deadlines the online gap reappears and is unbounded, since waiting is no longer free, and it closes only if the whole window's weights are predictable at the claim's arrival. On the sharp charge's linear branch the settlement-friction residual is not an independent obstruction: the liability charge is computed from the supremum over live worlds of the same deficit whose weighted mean square the residual is built from, so the friction numerator is exactly four times the charge, a bounded lifetime budget with divergent allocated service drives the residual to zero at rate four times the budget over the allocation, and the final claim-weighted defect is bounded by the transport residual alone — the reason's temporal modulus at the affordable deadline. A corollary is that on that branch a norm permanently excluding every live world by a fixed depth cannot be persistently and affordably enforced at all. The compression fails past the branch point, and it fails exactly on the second route to cheap enforcement: a norm cheap because nobody trades against it buys persistence without buying conformance, so cheap enforcement is not always conforming enforcement. The batching theorem's hypotheses are corrected — no splitting needs concavity rather than star-shapedness, since with existing load the comparison is between increments, and the run structure additionally needs equal claim masses, since a crossed assignment can strictly win when a saturating date should take the larger claim. The reading of the bounded-delay formula's limit as the unconstrained persistence criterion is withdrawn, since the limit of the bounded-delay costs can exceed the unbounded-delay cost when the gaps between cheap dates diverge. The settlement-friction residual is schedule-dependent rather than a fixed property of the norm, so the frontier is stated over the constrained residual; and in the linear regime the joint objective separates per claim into a combined score whose friction price is four times its liability price, leaving two prices rather than three — what underwriting costs and what waiting costs. The fixed-era construction is frozen; what remains is closed-loop friction, the signed class, the necessity of bounded liability, and transport-stability certificates. The round closes here. Persistence and eventual full service under unlimited deferral are the same existence question, by a diagonal that gives each claim its own cheap date, so the earlier separation between them is withdrawn and the substantive Answerability constraint enters only when delay itself matters; uniform bounded delay remains strictly stronger, and no condition on the gaps between cheap dates substitutes for the sliding-window criterion, since cheap dates every other date with reciprocally decaying depth still make timely service unaffordable. The transport residual is the claim-normalized average of the edge errors rather than their raw sum, which makes it comparable to the claim-weighted defect it bounds and bounded by the temporal modulus at the plan's delay whatever the claim mass. The friction-free theorem needs the settlement interface's own monotonicity as an explicit hypothesis, because the charge is computed against the worlds live at each date and the residual is evaluated against the worlds live at the horizon, and past the branch point the exact condition is that the squared charge-plus-scale over the scale, averaged against allocated authority, vanishes — summability of the engine scale is neither necessary nor sufficient. The joint frontier is genuinely convex and fully recovered by scalarization, because both objectives are linear on the transportation polytope, provided claim mass may split fractionally. Deadline insolvency, unlike persistence insolvency, admits a finite authenticated certificate whose every field is settled record, complete exactly when future weights are bounded below. Assembling these gives the round's canonical theorem: sharp-linear affordability plus timely Answerability transport yields claim-weighted Progress up to semantic delay only, at rate twice the root budget plus the root ceiling over the root allocated authority. The fixed-era affordability and serviceability layer is finished; closed-loop friction, certification of the temporal modulus, and simultaneous timeliness and linear-branch affordability move to later rounds.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/README.md",
+      "depends_on": [],
+      "registered_classes": [],
+      "prompt": "prompts/2026-08-31-normative-affordability/PROMPT.md",
       "claim_changes": []
     }
   ]

@@ -1924,6 +1924,118 @@ unbounded one with a witness are both better than the present reading.
 
 ---
 
+### 74. Is the overload certificate complete for the causal problem? — **[entry]** — *sequenced behind item 40*
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+A Farkas pair `(y, z)` with positive deficit refutes finite-horizon affordability on
+any settlement-consistent path, and that direction is proved. The converse is open,
+and it is the difference between a diagnostic and a dichotomy: a program feasible on
+every path separately may still admit no causal policy, because the per-path relaxation
+hands the controller the path in advance.
+
+Settle it. Either exhibit a certificate class complete for the causal problem — the
+transport plan of the Deferred Service Transfer theorem is already a flow, so flow/cut
+duality on the plan is the first place to look — or exhibit a causally unaffordable
+instance every path of which is feasible, which shows no per-path certificate class can
+be complete and moves the question to certificates over policies.
+
+**Sequencing.** Take item 40 first, and the existence of an affordable schedule
+second — with the service variable now typed as allocated authority, that question
+is well posed for the first time: does a schedule with divergent allocated service
+for every persistent reason exist inside the per-date liability capacity boxes,
+against an adversarial docket arrival process? Until the necessity of bounded cumulative
+enforcement liability is settled or refuted, an overload certificate for the causal
+problem certifies the failure of a hypothesis whose necessity is unknown, and every
+"unaffordable" verdict in this line means "the known route to safety no longer
+applies" rather than "no safe policy exists".
+
+**What the dual object probably is.** The account is signed and cumulative and must
+stay above a floor at every world the settlement process keeps live, so what has to
+be separated is a *policy* from a family of adversary responses rather than a point
+from a per-path feasible set. That points at a potential or supermartingale over the
+assessment family — a function of the history upper-bounding the account slack still
+achievable, decreasing along every admissible control, starting below what is owed —
+rather than a flow or a cut. A cut is a sum of per-date capacities and the account is
+not, so flow/cut duality recovers the per-path relaxation and cannot see the
+cross-period financing the alternating countermodel exhibits.
+
+*Deliverable shape:* `witness-checked` for the separating instance, or a stated theorem
+with an exact-rational fixture inhabiting its hypotheses for the completeness direction.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes; a registered entry, if one is filed, is accepted by `python3 -m checkers.run`.
+
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/EXISTENCE_AND_DUALITY.md`
+§4 for the certificate and the soundness proof, §1–§3 for the causal problem it is a
+relaxation of, that round's `FOLLOWUP_REPORT.md` for why the account is signed and
+what that does to the dual, and its `src/overload.py` and `src/li_account.py` with
+the matching modules under `tests/` for the exact instances; `projects/normativity/legitimacy/rounds/2026-08-30-liability-theory/DUALITY.md`
+for the synchronic certificate the horizon version extends.
+*A solution ships:* the theorem or the separating instance, and in either case a
+statement of what a certificate can and cannot be fed back into Answerability as.
+
+### 75. Close the loop: policy-dependent enforcement friction — **[entry]** — *sequenced behind item 74*
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Every existence result in the affordability round is E0-E2 of its own hierarchy: the
+date costs `L_t` are exogenous, given to the scheduler by an environment that does not
+react. In a live market both inputs to the cost react to the policy. The market
+maker's slack and the opposing volume `m_t` respond to how hard the enforcement
+position has been pushing, and the exclusion depth `D^r_t` responds to whether the
+reason has been enforced — that is the point of enforcing it. So the scheduler's own
+spending changes the prices it will face.
+
+Settle E3-E5. The tractable first question is monotone: if enforcing a reason weakly
+decreases its future depth, does the persistence criterion survive, and is the greedy
+tranche rule still causal-optimal? The adversarial one is whether a policy can be
+driven into a friction trap it created — cheap dates spent early, depth restored, and
+no affordable dates left.
+
+*Deliverable shape:* a stated theorem with exact-rational fixtures, or a trap
+instance.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes.
+
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/CLOSED_LOOP_EXISTENCE.md`
+for the hierarchy and what E0-E2 already give, `SHARP_PERSISTENCE.md` for the
+exogenous criterion the closed loop has to be compared against, and
+`SHARP_TIMELY_SERVICE.md` §6, which names this as the largest gap in its hypotheses.
+*A solution ships:* the criterion, and a statement of which of the exogenous theorems
+survive the loop unchanged.
+
+### 76. Certify a reason's temporal modulus — **[entry]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The canonical Sharp Timely Service bound ends in a single term: the claim-normalized
+semantic error incurred while a reason waited to be answered, bounded by the reason's
+temporal modulus at the plan's delay. The round has **no mechanism for establishing
+that modulus** for any reason, which means the theorem's conclusion is exact and its
+last constant is a symbol.
+
+Settle what a modulus certificate could be. The deductive channel is the place to
+look: if a reason's defect is a function of the settled record and the record grows by
+a bounded amount per date, the modulus is a property of that dependence rather than an
+empirical estimate. On the empirical channel a funded procedure can settle within the
+window and move the depth arbitrarily, so it is plausible that no modulus exists there
+and the honest form is a conditional statement.
+
+*Deliverable shape:* a stated theorem with exact-rational fixtures, or a demonstration
+that the empirical channel admits no modulus.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes.
+
+*Context:*
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/SHARP_TIMELY_SERVICE.md`
+for the theorem and hypothesis (T), `SERVICE_TRANSFER.md` for the normalized transport
+error the modulus bounds, and `CLOSED_LOOP_EXISTENCE.md` §3 for the deductive and
+empirical channel split.
+*A solution ships:* the certificate class, and what Answerability has to export for it
+to be checkable.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
@@ -2022,6 +2134,30 @@ The fix is a matching rule that exempts a citation context — a bibliography
 bullet, or a name adjacent to a title in quotes and a link. It changes a gate's
 logic, which is specification layer and retroactive over every document the gate
 has already passed, so it was not taken by the round that hit it.
+
+### F7 — A round cannot record a dependency on an unindexed research checkpoint
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+`state/rounds.json` requires every `depends_on` id to resolve, and
+`workspace_state --check` fails on one that does not. Several research checkpoints on
+`main` — the Progress research, witness-bridge, consolidation and liability-hard-pass
+rounds, and the liability-theory round beside them — landed with round directories and
+round-local provenance but no `state/rounds.json` record and no `prompts/` entry.
+
+A later round that genuinely takes their results as hypotheses therefore has two
+options, both wrong: name them and fail the checker, or index itself while claiming to
+depend on nothing. The Normative Affordability round hit the question and escaped it —
+it reads those checkpoints and refutes one of their hypotheses, but consumes none of
+their results, so `depends_on: []` is accurate rather than convenient. The next round
+that actually builds on one of them will not have that escape.
+
+The rule the index enforces is right; what is missing is a way to say *depends on an
+unindexed checkpoint*. Three candidate fixes: index the checkpoints retroactively,
+which is history and cheap; allow a `depends_on_unindexed` field carrying paths rather
+than ids, which is a schema change and specification layer; or rule that a research
+checkpoint must be indexed at merge, which is a convention change binding future rounds
+only. The choice is specification layer and was not taken here.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->
