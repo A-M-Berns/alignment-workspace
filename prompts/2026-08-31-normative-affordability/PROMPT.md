@@ -3107,3 +3107,850 @@ into a substantially more structured theory:
 * a clear separation between semantic infeasibility and underwriting insolvency.
 
 Do not reopen the fixed-era learner construction unless one of these investigations finds an actual contradiction in it.
+
+---
+
+# Sixth dispatch — repair persistent affordability and close the exogenous-friction benchmark
+
+# Sixth pass inside PR75: repair persistent affordability and close the exogenous-friction benchmark
+
+Stay inside PR75:
+
+`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
+
+Treat the fixed-era composition theorem as **frozen** unless this pass finds an actual contradiction in it.
+
+Read at minimum:
+
+* `PERSISTENT_AFFORDABILITY.md`
+* `ONLINE_EXISTENCE.md`
+* `SIGNED_VS_CONSERVATIVE.md`
+* `CAUSAL_CAPACITY.md`
+* `OVERLOAD_TARGET.md`
+* `AFFORDABLE_SCHEDULING.md`
+* `FIXED_ERA_THEOREM.md`
+* `SERVICE_TRANSFER.md`
+* `CAPACITY_VS_SAFETY.md`
+
+The previous pass found a genuinely strong benchmark theorem, but several interpretations around it are overextended. This pass should repair those exactly.
+
+## Current benchmark result to preserve unless disproved
+
+For a fixed predictable friction sequence
+
+$$
+q_t:=D_t\sqrt{m_t},
+\qquad
+m_t:=\epsilon_t+M_t,
+$$
+
+and the conservative charge
+
+$$
+\sum_t q_t\sqrt{a_t},
+$$
+
+persistent allocated authority
+
+$$
+\sum_t a_t=\infty
+$$
+
+is achievable on finite lifetime budget \(B>0\) iff
+
+$$
+\boxed{\liminf_t q_t=0.}
+$$
+
+Equivalently, with \(x_t=\sqrt{a_t}\),
+
+$$
+\exists x_t\ge0:
+\qquad
+\sum_t x_t^2=\infty,
+\qquad
+\sum_t q_tx_t<\infty
+$$
+
+iff \(\liminf q_t=0\).
+
+Also preserve the finite-horizon conservative optimum unless there is an actual flaw:
+
+$$
+\max_{\sum_{t<N}q_t\sqrt{a_t}\le B}
+\sum_{t<N}a_t
+=
+\frac{B^2}{(\min_{t<N}q_t)^2}.
+$$
+
+What needs work is everything built around this result.
+
+---
+
+# 1. Repair the sharp worst-case charge characterization
+
+`PERSISTENT_AFFORDABILITY.md` currently claims that replacing the conservative charge
+
+$$
+q_t\sqrt{a_t}
+$$
+
+with the exact/sharp robust worst-case date charge leaves the same criterion unchanged.
+
+Audit this carefully.
+
+The current sharp charge is stated as
+
+$$
+L_t(a)=
+\begin{cases}
+a s_t^2/4,
+&
+a\le 4m_t/s_t^2,
+\\[1mm]
+s_t\sqrt{a m_t}-m_t,
+&
+a>4m_t/s_t^2.
+\end{cases}
+$$
+
+The previous review found a counterexample to the claimed \(q_t\)-criterion:
+
+$$
+s_t=\frac1t,
+\qquad
+m_t=t^4.
+$$
+
+Then
+
+$$
+q_t=s_t\sqrt{m_t}=t,
+$$
+
+so \(\liminf q_t>0\), but with \(a_t=1\),
+
+$$
+L_t(1)=\frac1{4t^2},
+$$
+
+hence
+
+$$
+\sum_tL_t(1)<\infty
+\quad\text{and}\quad
+\sum_ta_t=\infty.
+$$
+
+Verify this fixture exactly.
+
+Then find the correct theorem.
+
+A strong candidate is:
+
+> For increasing concave date-cost functions \(L_t:[0,\infty)\to[0,\infty)\) with \(L_t(0)=0\),
+>
+> $$
+> \exists a_t\ge0:
+> \quad
+> \sum_t a_t=\infty,
+> \qquad
+> \sum_tL_t(a_t)<\infty
+> $$
+>
+> iff
+>
+> $$
+> \liminf_tL_t(1)=0.
+> $$
+
+Prove or refute this exact statement.
+
+The intended necessity proof uses concavity:
+
+for \(0\le a\le1\),
+
+$$
+L_t(a)\ge aL_t(1).
+$$
+
+If \(L_t(1)\ge c>0\) eventually, finite total charge bounds the total mass of all small allocations; only finitely much mass can come from \(a_t\ge1\) if each such date has uniformly positive charge.
+
+Make every needed assumption explicit.
+
+If \(L_t(1)\) is not the correct primitive, find the exact one.
+
+Then specialize it to the traderized sharp charge and simplify the criterion in terms of \(s_t,m_t\).
+
+This may be the actual strongest robust-persistence theorem in the round.
+
+---
+
+# 2. Separate three affordability classes cleanly
+
+The round currently has at least three different notions.
+
+## Conservative certificate
+
+$$
+\sum_t q_t\sqrt{a_t}\le B.
+$$
+
+This is easy to certify and pessimistic.
+
+## Sharp robust datewise certificate
+
+$$
+\sum_t L_t(a_t)\le B,
+$$
+
+where \(L_t\) is the exact worst-case charge allowed by the MarketMaker modulus.
+
+## Actual signed-account affordability
+
+$$
+V_N(\omega)
+=
+\sum_{t<N}a_td_t(d_t-s_t(\omega))
+\ge-B
+$$
+
+for every live world and horizon along the realized trajectory.
+
+Produce a clean inclusion diagram.
+
+Determine exactly which implications hold:
+
+$$
+\text{conservative}
+\Rightarrow
+\text{sharp robust}
+\Rightarrow
+\text{signed account}
+$$
+
+or whatever the correct direction is.
+
+Give strict-separation examples.
+
+In particular preserve the important pathwise phenomenon:
+
+if
+
+$$
+d_t=0
+$$
+
+then realized force and account increment vanish even if the live worlds badly violate the norm.
+
+But do not confuse:
+
+* a robust policy guarantee;
+* a realized-path affordability fact.
+
+State precisely what the fixed-era construction consumes and what an existence theorem must guarantee **before** the market response is known.
+
+---
+
+# 3. Repair the online theorem
+
+The qualitative theorem appears sound:
+
+> Given an exogenous predictable conservative-friction sequence \(q_t\), a causal threshold/tranche scheduler achieves persistent affordable service iff an offline scheduler can, namely iff
+>
+> $$
+> \liminf q_t=0.
+> $$
+
+Preserve or repair this.
+
+But delete the claim that the online rule is within a factor \(4\) of offline cumulative authority unless a correct competitive notion supports it.
+
+Construct the explicit counterexample.
+
+If the threshold rule has reached level \(k\), its tranche is approximately
+
+$$
+b_k=B2^{-k}.
+$$
+
+If an unexpectedly tiny friction
+
+$$
+q\ll2^{-k}
+$$
+
+then appears, the online rule buys only
+
+$$
+(b_k/q)^2,
+$$
+
+whereas an offline scheduler could put essentially the full remaining/initial budget there and buy
+
+$$
+(B/q)^2.
+$$
+
+The competitive ratio can therefore go to zero.
+
+State the correct distinction:
+
+$$
+\boxed{
+\text{no online penalty for the binary property “persistence exists”}
+}
+$$
+
+but not
+
+$$
+\boxed{
+\text{no online penalty for amount/rate of accumulated authority}.
+}
+$$
+
+Then ask:
+
+* Is any nontrivial competitive guarantee possible?
+* Is the right comparison additive, multiplicative, prefixwise, or asymptotic?
+* If not, prove an impossibility result.
+
+Do not spend too much time on rates unless there is a clean theorem.
+
+---
+
+# 4. Scope the persistence theorem to exogenous or policy-stable friction
+
+This is crucial.
+
+The benchmark treats
+
+$$
+q_t=D_t\sqrt{\epsilon_t+M_t}
+$$
+
+as an observed external sequence.
+
+But in the actual traderized learner:
+
+* \(M_t\) may depend on the price/history generated by earlier authority;
+* the live-world set may depend on interaction/settlement;
+* hence \(D_t\) may depend on the policy;
+* future docket state may also depend on prior interaction.
+
+So in the closed loop, different authority policies may induce different future friction trajectories.
+
+Make this explicit.
+
+Define at least two models.
+
+### Exogenous-friction benchmark
+
+$$
+q_t
+$$
+
+is fixed independently of the authority policy.
+
+P1/O1 apply directly.
+
+### Policy-dependent friction
+
+$$
+q_t=q_t(h_{t-1},a_{<t},\text{settlement history},\ldots).
+$$
+
+The persistence problem becomes
+
+$$
+\exists\pi\quad
+\forall\text{ admissible exterior histories}
+$$
+
+rather than a sequence selection problem.
+
+Determine which existing claims survive if friction is merely **policy-stable**, e.g. satisfying a uniform bound independent of policy.
+
+Possible condition:
+
+$$
+\forall\pi,\qquad
+\liminf_t q_t^\pi=0.
+$$
+
+Does the threshold scheduler then work uniformly?
+
+Be very careful with quantifier order:
+
+$$
+\forall\pi\,\liminf q^\pi=0
+$$
+
+is not obviously enough to construct one policy whose own induced sequence has dips.
+
+Try to identify a usable condition like:
+
+$$
+\forall h\text{ reachable},\forall k,
+\exists\text{ future admissible continuation with }q\le2^{-k}
+$$
+
+versus a robust condition forcing the dip on every continuation.
+
+If this gets difficult, clearly delimit the benchmark theorem rather than overclaim.
+
+---
+
+# 5. Combine affordability with service admissibility
+
+The benchmark characterizes only
+
+$$
+A_N=\sum_{t<N}a_t\to\infty.
+$$
+
+But Answerability does not necessarily regard every divergent allocation trace as legitimate service.
+
+A sparse low-friction schedule may violate:
+
+* deadlines;
+* bounded-delay requirements;
+* transport stability;
+* semantic preservation over long deferrals;
+* minimum cumulative service requirements.
+
+This is now likely the most important interface between affordability and Answerability.
+
+Define:
+
+$$
+\mathcal L_A
+=
+\text{Answerability-admissible allocated-service traces}.
+$$
+
+Then the actual existence question is:
+
+$$
+\boxed{
+\exists a\in\mathcal L_A
+\quad
+\text{such that }a\text{ is safely underwritten}.
+}
+$$
+
+For the conservative exogenous-friction benchmark:
+
+$$
+\exists a\in\mathcal L_A:
+\qquad
+\sum_tq_t\sqrt{a_t}\le B.
+$$
+
+Investigate several concrete \(\mathcal L_A\).
+
+## Bounded delay
+
+Every claim at time \(t\) must receive service by \(t+H\).
+
+Characterize affordability.
+
+Now sparse arbitrarily late dips may be useless.
+
+Can the criterion be expressed as a block condition such as:
+
+$$
+\inf_{s\in[t,t+H]}q_s
+$$
+
+dipping sufficiently often or having a summability property?
+
+## Cumulative lower bound
+
+Suppose Answerability requires
+
+$$
+A_N\ge F(C_N)-K.
+$$
+
+When can such a growth lower bound coexist with finite liability?
+
+## Weighted transport stability
+
+Suppose delay \(s-t\) incurs error
+
+$$
+\epsilon(t,s).
+$$
+
+Formulate the optimization problem trading liability against semantic transport error.
+
+This may give a very natural frontier:
+
+$$
+\boxed{
+\text{cheap enforcement dates}
+\quad\text{vs.}\quad
+\text{semantically timely enforcement dates}.
+}
+$$
+
+Try to derive at least one theorem rather than only state the tension.
+
+---
+
+# 6. Revisit “persistence does not compete across reasons”
+
+The current benchmark says that because the qualitative criterion is independent of the positive budget \(B\), countably many individually persistable reasons can each receive a geometric sub-budget.
+
+That is correct **under independent exogenous reasonwise friction sequences**.
+
+Scope it accordingly.
+
+Investigate failure modes:
+
+* policy-dependent friction;
+* shared rows;
+* Answerability deadlines;
+* transport requirements;
+* shared semantic constraints;
+* finite liability budgets with stronger-than-persistence service requirements.
+
+State the exact theorem:
+
+> If each reason \(r\) has an exogenous friction sequence \(q_t^r\) with
+>
+> $$
+> \liminf q_t^r=0,
+> $$
+>
+> and mere divergence
+>
+> $$
+> A_N^r\to\infty
+> $$
+>
+> is sufficient service, then every countable family can be persistently served simultaneously on any positive global budget by splitting the budget geometrically.
+
+Then stop.
+
+Do not elevate this to a generic statement about “no competition between reasons.”
+
+The no-conformance-competition lemma remains independently true at the force layer.
+
+---
+
+# 7. Repair `CAUSAL_CAPACITY.md`
+
+The current document correctly rejects naïve convexity but still overstates the geometry of the long-run rate region.
+
+Patch these claims.
+
+The finite-stock **cumulative authority frontier**
+
+$$
+\{(x_r^2)_r:\sum_rx_r\le B\}
+$$
+
+is nonconvex.
+
+That is valid.
+
+But with floored friction and finite lifetime budget, every long-run rate is zero, so this fixture does not imply a nonconvex long-run rate region.
+
+Likewise, rapidly decaying friction can yield
+
+$$
+\mathcal A=\mathbb R_+^R,
+$$
+
+which is convex.
+
+So withdraw claims such as:
+
+$$
+\mathcal A
+\text{ is nonconvex whenever nondegenerate}.
+$$
+
+Keep only what is proved.
+
+A useful corrected hierarchy may be:
+
+* **finite-horizon cumulative authority frontier** — often nonconvex;
+* **persistence set** — simple in the exogenous conservative benchmark;
+* **long-run rate region** — model-dependent and not central to the current composition theorem.
+
+If rates are not needed, de-emphasize the object entirely.
+
+---
+
+# 8. Produce the exact sharp-persistence finite-horizon optimization if possible
+
+For the conservative charge, P2 gives a beautiful exact finite-horizon optimizer.
+
+Ask whether the sharp robust charge admits an equally clean finite-horizon solution:
+
+$$
+\max
+\left\{
+\sum_{t<N}a_t:
+\sum_{t<N}L_t(a_t)\le B
+\right\}.
+$$
+
+Because each \(L_t\) is concave increasing, maximizing a linear function under a sum of concave costs is again concentration-favoring, but the branch structure may matter.
+
+Questions:
+
+* Is the optimum always concentrated on one date?
+* If so, which scalar ranks the dates?
+* Is it
+
+  $$
+  \max_t L_t^{-1}(B)?
+  $$
+
+  exactly?
+* Can splitting ever beat concentration when each \(L_t\) is concave?
+* Is there a simple proof from extreme-point or exchange arguments?
+
+If yes, state:
+
+$$
+\boxed{
+A_N^{\max}(B)
+=
+\max_{t<N}L_t^{-1}(B).
+}
+$$
+
+Then persistent sharp-robust affordability is exactly:
+
+$$
+\sup_tL_t^{-1}(B)=\infty.
+$$
+
+Determine the equivalent tail criterion.
+
+This may be cleaner than the \(L_t(1)\) characterization.
+
+Compare both.
+
+---
+
+# 9. Signed-account existence: keep outcome facts separate from policy guarantees
+
+`SIGNED_VS_CONSERVATIVE.md` correctly observes that the same friction sequence can support very different realized account trajectories.
+
+That means no characterization depending only on \(q_t\) can describe signed-account affordability.
+
+Push this one step further.
+
+Ask what **predictable lower bound on account drift** would suffice for a robust signed-account existence theorem.
+
+Suppose there is a predictable function
+
+$$
+\underline{\Delta V}_t(a_t,V_t,z_t)
+$$
+
+such that every possible market/settlement response satisfies
+
+$$
+\Delta V_t\ge
+\underline{\Delta V}_t.
+$$
+
+Then affordability reduces to viability for a deterministic lower-bound account.
+
+Can traderized LI supply any nontrivial lower bound sharper than the conservative worst-case charge?
+
+If not, say so.
+
+Do not attempt a full signed-account characterization without such a bound.
+
+---
+
+# 10. Repair the overload-certificate story
+
+For the conservative exogenous-friction benchmark, mathematical insolvency is:
+
+$$
+\liminf_tq_t>0.
+$$
+
+But the statement
+
+$$
+q_t\ge q_0
+\quad\text{for all sufficiently large }t
+$$
+
+is an infinite future claim.
+
+A finite prefix does not certify it.
+
+So distinguish:
+
+### Mathematical characterization
+
+$$
+\liminf q_t>0.
+$$
+
+### Finite authenticated certificate
+
+A finite proof object establishing a tail lower bound, perhaps from:
+
+* the normative/settlement model;
+* monotonicity;
+* a symbolic argument;
+* a theorem proving
+
+  $$
+  q_t\ge q_0
+  \quad\forall t\ge T.
+  $$
+
+The certificate should contain both:
+
+$$
+(T,q_0)
+$$
+
+and evidence for the universal tail statement.
+
+If no such proof object exists, insolvency may be true but not yet settleably certified.
+
+This is exactly analogous to the broader Answerability principle that reasons cannot be silently dropped merely because a scheduler predicts future impossibility.
+
+Patch `OVERLOAD_TARGET.md` accordingly.
+
+---
+
+# 11. Clarify the current hierarchy of existence results
+
+By the end, organize the existence theory into something like:
+
+### Level E0 — fixed-era construction
+
+Frozen.
+
+### Level E1 — exogenous conservative friction
+
+Exact characterization:
+
+$$
+\liminf q_t=0.
+$$
+
+Qualitative online/offline equivalence.
+
+### Level E2 — exogenous sharp robust charge
+
+Exact characterization discovered in this pass.
+
+### Level E3 — service-admissible conservative scheduling
+
+Intersect affordability with Answerability's admissible service traces.
+
+### Level E4 — policy-dependent friction / closed loop
+
+True causal viability problem.
+
+### Level E5 — signed-account robust scheduling
+
+Requires response-dependent account-drift theory.
+
+This hierarchy would prevent future work from accidentally importing an E1 result into E4/E5.
+
+---
+
+# 12. Freeze what is actually frozen
+
+Do not modify `FIXED_ERA_THEOREM.md` unless an actual contradiction is found.
+
+At the end, say explicitly whether the following can now be treated as stable:
+
+* service \(=\beta\);
+* realized force \(=\beta d\);
+* control is a reactive law;
+* coercive Progress;
+* reasonwise row accounting;
+* Service Transport;
+* fixed-era Sustainable Progress;
+* SafeCert/preservation composition.
+
+All new corrections should belong to **existence/characterization**, not to the learner construction.
+
+---
+
+# Deliverables
+
+Update or produce:
+
+1. `PERSISTENT_AFFORDABILITY.md`
+
+   * repair the sharp-charge theorem;
+   * keep conservative P1/P2 clearly scoped.
+
+2. `SHARP_PERSISTENCE.md`
+
+   * exact existence criterion for general/sharp date costs \(L_t\);
+   * finite-horizon optimizer if obtainable.
+
+3. `ONLINE_EXISTENCE.md`
+
+   * qualitative online equivalence;
+   * delete false factor-4 competitive claim;
+   * optional competitive impossibility result.
+
+4. `SERVICE_ADMISSIBLE_EXISTENCE.md`
+
+   * bounded-delay and/or cumulative-service version;
+   * at least one theorem showing how service fidelity changes the cheap-date criterion.
+
+5. `CLOSED_LOOP_EXISTENCE.md`
+
+   * exogenous vs policy-dependent friction;
+   * exact quantifier structure;
+   * what benchmark results survive.
+
+6. `OVERLOAD_TARGET.md`
+
+   * mathematical insolvency vs finite authenticated certificate.
+
+7. Targeted corrections to `CAUSAL_CAPACITY.md`, `SIGNED_VS_CONSERVATIVE.md`, and the PR summary.
+
+8. Exact-rational tests for:
+
+   * the counterexample
+
+     $$
+     s_t=1/t,\ m_t=t^4,\ a_t=1;
+     $$
+   * conservative versus sharp robust affordability;
+   * failure of any constant competitive ratio for cumulative authority;
+   * bounded-delay service where \(\liminf q_t=0\) but persistence is not service-admissible;
+   * finite proof of a tail friction floor versus mere observed-so-far floor.
+
+## Highest priorities
+
+Spend most effort on:
+
+1. exact sharp-cost persistence characterization;
+2. affordability + service-admissibility;
+3. correct scope of exogenous versus policy-dependent friction;
+4. authenticated insolvency certificates.
+
+Do not spend this pass reopening the composition theorem or inventing more schematic vocabulary.
+
+## Success criterion
+
+The pass succeeds if we can say, without overclaim:
+
+> We have an exact theory of persistent normative authority under exogenous robust underwriting, know exactly how the conservative and sharp certificates differ, understand when causal scheduling loses nothing, and have isolated the genuinely harder existence problem as the intersection of affordability with Answerability service constraints and closed-loop friction dynamics.
+
+If the sharp charge yields an equally clean characterization theorem, make that the mathematical centerpiece of the pass.

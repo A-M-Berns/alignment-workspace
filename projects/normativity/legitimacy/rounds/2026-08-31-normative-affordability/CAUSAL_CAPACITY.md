@@ -21,12 +21,18 @@ budget `2`. The achievable cumulative-authority pairs are
 `{(x_1^2, x_2^2) : x_1 + x_2 <= 2}`. So `(4, 0)` and `(0, 4)` are achievable and
 their midpoint `(2, 2)` is not: it needs `x_1 = x_2 = sqrt(2)` and
 `2 sqrt(2) > 2`. `tests/test_reasonwise.py::ConcentrationBeatsSplitting` pins the
-arithmetic; the same computation at the level of long-run rates gives
-`A = { lambda : sum_r sqrt(lambda_r / c_r) <= B }`, the sublevel set of a sum of
-square roots, which is star-shaped and not convex.
+arithmetic.
 
-So the correction is not a caveat. **`A` is non-convex wherever it is
-non-degenerate**, and the convex hull is not achievable.
+So the correction is not a caveat: the time-sharing argument is invalid, because
+what it needs is a renewable per-date resource and what the theory has is a stock.
+
+**What the counterexample establishes, exactly**, is that the *finite-horizon
+cumulative-authority frontier* `{(x_r^2)_r : sum_r x_r <= B}` is non-convex. It
+does **not** establish that the long-run rate region is non-convex, and the earlier
+sentence claiming `A` is non-convex wherever non-degenerate is withdrawn: under a
+floored friction every long-run rate is zero and `A = {0}`, which is convex, and
+under fast-decaying friction `A = R_+^R`, also convex. The rate region's geometry is
+model-dependent, and §2 argues it is the wrong object to be studying at all.
 
 ## 2. And where it is degenerate, it is uninformative
 
@@ -49,6 +55,12 @@ nothing.
 Persistence is `sum_t a_t = infinity`; positive rate is `A_N = Omega(N)`. The
 composition theorem consumes the first. The rate region sees only the second, and
 reports `{0}` in the regime the theory most cares about.
+
+**The hierarchy worth keeping.** The finite-horizon cumulative-authority frontier
+is a real object and is often non-convex. The persistence set is simple in the
+exogenous conservative benchmark. The long-run rate region is model-dependent and
+is not consumed by the composition theorem, so it is de-emphasized rather than
+repaired.
 
 ## 3. The right object: the persistence region
 
@@ -77,9 +89,9 @@ Hall-type condition, no capacity region, and no convexity question.
 `tests/test_persistence.py::ManyReasonsDoNotCompeteForPersistence` exhibits five
 reasons on geometric tranches of one budget, each still diverging.
 
-**Persistence does not compete; rate does.** The quadratic dependence on the budget
-is real, and it is what makes the *rate* region non-convex. It simply does not
-touch the qualitative property the composition theorem consumes.
+**Persistence does not compete.** The quadratic dependence on the budget is real
+and shapes the finite-horizon frontier; it does not touch the qualitative property
+the composition theorem consumes.
 
 ## 4. When does time-sharing work?
 
@@ -127,8 +139,10 @@ attempts one.
 
 ## 6. What this does not establish
 
-That `A` is non-convex in every model — C1 gives a flow model where it is convex.
-That the persistence region is the *only* useful object; a quantitative theory
-would want the growth rate of `A^r_N`, which does compete and is non-convex. That
+Anything about the long-run rate region's geometry beyond the two degenerate
+regimes of §2; the non-convexity established here is of the finite-horizon
+cumulative-authority frontier. That the persistence region is the *only* useful
+object; a quantitative theory would want the growth rate of `A^r_N`, which does
+compete. That
 the profile cannot be compressed under some structural hypothesis on settlement;
 none is offered here.

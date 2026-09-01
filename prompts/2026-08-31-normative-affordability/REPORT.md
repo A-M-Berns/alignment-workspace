@@ -3,11 +3,11 @@
 **Verdict:**
 `AFFORDABILITY-COMPOSES-BUT-THE-SERVICE-CONDITION-IS-TRANSPORT-NOT-CONTIGUITY`.
 
-Five dispatches: the schematic pass; a follow-up auditing the realization map
+Six dispatches: the schematic pass; a follow-up auditing the realization map
 against the traderized mathematics; a focused pass closing the typing mismatch
 between the schematic service variable and the concrete learner; a consolidation
-pass finishing the fixed-era statement; and an existence pass characterizing
-persistent affordability and withdrawing the rate region. The technical register, the theorem stack, the
+pass finishing the fixed-era statement; an existence pass characterizing persistent
+affordability; and a repair pass generalizing that characterization and scoping it. The technical register, the theorem stack, the
 per-hypothesis classification and the full not-shown list are in
 `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/REPORT.md`,
 the audit in that directory's `FOLLOWUP_REPORT.md`, and the resulting stack in
@@ -210,12 +210,42 @@ minimum can settle away.
 The fixed-era composition is frozen. Later work in this round is existence and
 characterization.
 
+## The sixth dispatch: the criterion generalized and scoped
+
+**The conservative criterion is not the sharp one.** For a general star-shaped date
+cost, persistence holds iff the cost of a fixed reference allocation has liminf
+zero. That specializes to the conservative friction dipping, and — under the exact
+worst-case charge — to the exclusion depth alone dipping, with no engine scale. The
+two differ: depth one over t against engine scale t to the fourth makes the
+conservative friction diverge while a constant allocation stays affordable forever.
+The fifth dispatch's claim that the criterion was insensitive to the certificate is
+withdrawn.
+
+**No competitive ratio.** The causal scheduler still loses nothing on the
+persistence property, and the fifth dispatch's factor-of-four claim is withdrawn:
+two dates cap any online rule at one quarter, and a cascade drives the achievable
+ratio to zero.
+
+**Service admissibility changes the criterion.** A per-window service floor is
+affordable exactly when the window minima are summable, which dip sequences spaced
+wider than the window fail. That is the frontier between cheap enforcement dates and
+timely ones, and it is why Answerability should export admissible traces rather than
+a quota.
+
+**Insolvency is not certified by an observed floor.** It is a claim about the
+infinite future and needs a tail bound with a proof object; without one a reason is
+deferred rather than recorded as unaffordable.
+
+The rate region's non-convexity claim is narrowed to the finite-horizon
+cumulative-authority frontier, where the counterexample actually lives. The
+fixed-era composition remains frozen and was not reopened.
+
 ## Outstanding maintainer actions
 
 1. Naming audit over the four surviving provisional names, when one is next run.
    "Self-financing control" is withdrawn rather than renamed.
 
-The reserved question is answered by the staging and has left the queue; nine
+The reserved question is answered by the staging and has left the queue; twelve
 dated `DECISIONS.md` entries record the later dispatches' rulings, all
 agent-decided and reversible.
 
@@ -225,4 +255,4 @@ agent-decided and reversible.
 |---|---|
 | prompt author | unrecorded — authored outside this repository |
 | executor | Claude Opus 5 (Anthropic) |
-| dates | five dispatches, all executed 2026-08-31 |
+| dates | six dispatches; five executed 2026-08-31, the sixth 2026-09-01 |

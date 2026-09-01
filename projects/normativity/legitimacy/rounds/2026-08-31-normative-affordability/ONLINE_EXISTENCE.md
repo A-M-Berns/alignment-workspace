@@ -1,4 +1,8 @@
-# Causal scheduling: there is no online penalty for persistence
+# Causal scheduling: no online penalty for persistence, none available for rate
+
+Scoped to the **conservative** charge and an **exogenous** friction sequence, as
+`PERSISTENT_AFFORDABILITY.md` is; `CLOSED_LOOP_EXISTENCE.md` says what survives when
+the friction depends on the policy.
 
 ## 1. The online problem
 
@@ -39,10 +43,13 @@ infinitely often iff for every `k` some later date has `q_t <= 2^-k`, which is
 offline direction of P1, which no policy can evade. `square`
 
 The scheduler is oblivious in the strongest sense: it never estimates the future,
-never revises, and needs no regularity on `q` beyond the liminf. It wastes a factor
-of at most `4` against an offline optimum that knew where the dips were, because
-`theta_k` may overshoot the friction actually encountered — and overshooting only
-helps, since a smaller `q_t` buys *more* authority for the same tranche.
+never revises, and needs no regularity on `q` beyond the liminf.
+
+**It has no competitive guarantee, and the earlier claim of a factor of `4` is
+withdrawn.** At level `k` the rule's tranche is `B 2^{-(k+1)}`; if a friction
+`q << 2^-k` then appears it buys `(B 2^{-(k+1)}/q)^2` where an offline scheduler
+would have bought `(B/q)^2`. The ratio is `4^{-(k+1)}`, which tends to zero. §3a
+shows no rule does better.
 
 `tests/test_persistence.py::TheCausalSchedulerLosesNothing` checks all four parts:
 every trigger contributes at least `B^2/4`, the budget is never exceeded, a
@@ -54,6 +61,36 @@ criterion is unchanged, so every individually persistable reason is persistently
 served by the product rule, with no coordination and no shared state. This is the
 constructive form of the persistence region's closure under countable unions.
 
+## 3a. No online rule has a positive competitive ratio
+
+**Theorem O2.** For cumulative authority under the conservative charge, no causal
+rule achieves a competitive ratio bounded below by any `rho > 0` against the
+offline optimum.
+
+*Proof.* Two dates already cap the ratio at `1/4`. Date one has friction `1`; the
+rule commits `c <= B` without knowing whether a second date follows. If the run
+stops, it holds `c^2` against an offline `B^2`. If a date of friction `eps` follows,
+it holds at most `c^2 + ((B-c)/eps)^2` against `(B/eps)^2`, a ratio tending to
+`((B-c)/B)^2` as `eps -> 0`. The minimum of the two is maximized at `c = B/2` and
+equals `1/4`.
+
+For the general bound take `n` dates with frictions `delta^i` and let the adversary
+stop after any of them. Writing `c_i` for the commitment at stage `i`, the earlier
+stages contribute at most `(n-1) B^2 delta^2 / delta^{2i}` to the stage-`i` holding,
+so a ratio of `rho` at every stopping point forces
+`c_i^2 >= (rho - (n-1) delta^2) B^2`. Choosing `delta` with `(n-1)delta^2 < rho/2`
+gives `c_i >= B sqrt(rho/2)` at every stage, so `sum_i c_i >= n B sqrt(rho/2) > B`
+for `n` large — more than the budget. `square`
+
+`tests/test_sharp_cost.py::NoConstantCompetitiveRatio` pins the two-date bound at
+exactly `1/4`, the two degenerate commitments, and the cascade's contradiction.
+
+**So the correct statement of O1 is binary.** There is no online penalty for the
+*property* "persistence is achievable", and no positive competitive ratio for the
+*amount* of authority accumulated. The right comparison is the qualitative one, and
+the composition theorem consumes exactly that: it needs `A^r_N -> infinity`, not a
+rate.
+
 ## 3. Why the online problem is easy here
 
 Two structural facts, and neither is generic to online scheduling.
@@ -64,20 +101,23 @@ opportunity — is absent.
 
 **The payoff is convex in the spend and the constraint is a stock.** Spending a
 tranche at friction `q` buys `(b/q)^2`, so the *value* of waiting for a smaller `q`
-grows quadratically while the *cost* of waiting is zero. A greedy threshold rule
-therefore cannot be beaten by more than a constant.
+grows quadratically while the *cost* of waiting is zero. A threshold rule can
+therefore always afford to wait for the next dip, which is what makes the
+qualitative property attainable — and, by O2, is not enough for any quantitative
+guarantee, since the same convexity is what lets an offline optimum outperform it
+without bound.
 
-Both facts fail as soon as the requirement is a positive *rate* rather than
-persistence, because then delay does cost: authority accumulated late does not
-raise `liminf A_N/N`. So the online question is easy for the property the
-composition theorem consumes, and open for the quantitative one.
+The first fact fails as soon as the requirement is a positive *rate*, because then
+delay does cost: authority accumulated late does not raise `liminf A_N/N`. So the
+online question is settled for the property the composition theorem consumes, and
+negatively settled for the amount.
 
 ## 4. Adversarial arrivals defeat a fair scheduler
 
 The rule above is not fair in any usual sense — it spends everything on rare dates
 and nothing in between — and that is necessary.
 
-**Countermodel O2.** A scheduler that insists on allocating a fixed positive
+**Countermodel O3.** A scheduler that insists on allocating a fixed positive
 authority `a_0 > 0` at every date, or on splitting each date's tranche equally
 among the currently live reasons, fails on the friction sequence that is `1`
 everywhere except on a sparse set. At friction `1` the charge for `a_0` is
@@ -97,9 +137,11 @@ the second is affordable against a norm whose friction does not decay.
 
 ## 5. What remains open
 
-**Rates, not persistence.** O1 is about `sum a_t = infinity`. Whether a causal
-scheduler can match an offline one's *growth rate* of `A^r_N` is open, and §3 says
-the easy argument does not survive there.
+**Rates, not persistence.** O1 is about `sum a_t = infinity`, and O2 settles the
+quantitative question in the negative: no causal scheduler matches an offline one's
+accumulated authority within any constant factor. Whether some weaker comparison —
+additive, prefixwise, or against a restricted adversary — admits a guarantee is
+open.
 
 **Unobservable friction.** O1 assumes `q_t` is computable at date `t`. The worst
 live exclusion depth requires enumerating the live worlds against the row, which

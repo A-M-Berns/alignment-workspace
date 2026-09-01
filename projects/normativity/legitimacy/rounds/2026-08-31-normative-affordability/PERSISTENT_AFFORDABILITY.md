@@ -1,4 +1,9 @@
-# Persistent affordability: the exact characterization
+# Persistent affordability under the conservative charge
+
+Scoped to the **conservative** worst-case charge and to an **exogenous** friction
+sequence. `SHARP_PERSISTENCE.md` generalizes the criterion to an arbitrary
+star-shaped date cost and corrects §5 below; `CLOSED_LOOP_EXISTENCE.md` says what
+survives when the friction depends on the policy.
 
 ## 1. The sequence problem
 
@@ -96,7 +101,7 @@ claim-weighted conclusion now rests entirely on the transport stability constant
 `(L_r, eps_r)` across those gaps. Affordability and service fidelity pull in
 opposite directions here, and the sparse optimum is exactly where they conflict.
 
-## 5. Does the conservative qualification matter?
+## 5. Does the conservative qualification matter? — yes
 
 The sharp worst-case per-date charge, minimizing the increment `a d (d - s)` over
 the violations the modulus permits, is
@@ -107,16 +112,28 @@ the violations the modulus permits, is
 continuous at the join, where it equals `m`. It is smaller than the conservative
 `sqrt(a m) s` everywhere, and *linear* rather than square-root for small `a`.
 
-The characterization survives unchanged. If `s_t >= s_0 > 0` and `m_t <= m_bar`,
-then on the small-`a` dates `sum a_t s_0^2/4 <= B` bounds `sum a_t`, and on the
-large-`a` dates the square-root term bounds `sum sqrt(a_t)` and hence `sum a_t`;
-so `sum a_t < infinity` either way. If `liminf s_t = 0` the sparse construction of
-P1 works verbatim. So **P1 is robust to which of the two liability certificates is
-used**, and only the constant in P2 changes.
+**It does not, and the earlier claim that it does is withdrawn.** What the
+argument establishes is only the case `s_t >= s_0 > 0` and `m_t <= m_bar`: there,
+on the small-`a` dates `sum a_t s_0^2/4 <= B` bounds `sum a_t`, and on the large-`a`
+dates the square-root term bounds `sum sqrt(a_t)`, so `sum a_t < infinity`. The
+conclusion that the *criterion* is unchanged is false.
 
-What the sharp charge does change is §7 of `SIGNED_VS_CONSERVATIVE.md`: it is still
-a worst case over the market's response, and the realized account can be far
-better than either.
+The counterexample is `s_t = 1/t` with `m_t = t^4`. Then `q_t = s_t sqrt(m_t) = t`,
+so `liminf q_t = infinity` and P1 says the reason is not conservatively affordable
+at any budget; but `L_t(1) = s_t^2/4 = 1/(4t^2)` is summable, so the *constant*
+allocation `a_t = 1` is sharply affordable forever, with total charge under `1/2`.
+`tests/test_sharp_cost.py::TheReviewCounterexample`.
+
+`SHARP_PERSISTENCE.md` gives the correct theorem for a general star-shaped date
+cost: persistence is achievable iff `liminf_t L_t(1) = 0`. It specializes to
+`liminf q_t = 0` for the conservative charge — so P1 and P2 stand exactly as stated
+— and to `liminf s_t = 0` for the sharp one in the regime `s_t^2 <= 4 m_t`. The two
+criteria agree when `m_t` is bounded above and below, which is the case this section
+had in mind and did not state.
+
+The sharp charge is still a worst case over the market's response, and
+`SIGNED_VS_CONSERVATIVE.md` shows the realized account can be far better than
+either.
 
 ## 6. What this does not establish
 

@@ -99,30 +99,55 @@ viability-kernel emptiness witness, equivalently a supermartingale when the
 settlement process carries a measure. That is the exact dual problem to state; no
 theorem is claimed, and the object is not named.
 
-## 5. What the existence results already settle
+## 5. What the existence results settle, and what they do not certify
 
-Two thirds of the insolvency question is now answered for the conservative
-certificate, which limits how much a general dual would add.
+The insolvency question is answered *mathematically* for the exogenous benchmark,
+and that is not the same as being certifiable.
 
-- **One reason:** insolvent iff `liminf_t q^r_t > 0`, and the certificate is a
-  single number — a uniform positive lower bound on the friction. That is as
-  checkable as a certificate gets.
+- **One reason:** insolvent iff `liminf_t L^r_t(1) > 0` — `liminf q^r_t > 0` under
+  the conservative charge, `liminf s^r_t > 0` under the sharp one in the normal
+  regime.
 - **Countably many reasons:** insolvent for `r` iff insolvent for `r` alone, since
-  persistence does not compete. So there is no *joint* insolvency beyond the
-  per-reason ones, and no Hall-type obstruction to look for.
+  persistence does not compete under exogenous independent frictions. So there is no
+  *joint* insolvency beyond the per-reason ones, and no Hall-type obstruction.
 
-What a dynamic dual would still be for: the **rate** problem, where reasons do
-compete and the region is non-convex; the **signed** class, where no criterion in
-terms of the friction sequence can exist; and **adversarial arrivals**, where the
-docket itself is chosen against the scheduler.
+**But `liminf > 0` is a claim about the infinite future, and no finite prefix
+establishes it.** A scheduler that has observed `L_t(1) >= q_0` for a thousand dates
+has observed exactly that and nothing about date one thousand and one. The earlier
+sentence calling the friction floor "as checkable as a certificate gets" is
+withdrawn: a single number is the *content* of the certificate, not the certificate.
+
+An authenticated insolvency certificate therefore has two parts:
+
+    (T, q_0)        the claimed tail bound: L_t(1) >= q_0 for all t >= T
+    a proof object  establishing the universal tail statement
+
+and the second part has to come from somewhere other than observation — from the
+settlement model, from a monotonicity argument about how the live set can shrink,
+from a symbolic property of the row, or from a theorem about the docket. Where no
+such object exists, insolvency may be **true but not settleably certified**, and the
+record should say so rather than record a floor as if it were a proof.
+
+This is the same discipline the round applies elsewhere: a reason is not dropped
+because a scheduler predicts it will become unaffordable. An observed floor licenses
+deferral and an inquiry into whether the floor is permanent; only a proved tail
+bound licenses recording the reason as unaffordable.
+
+What a dynamic dual would still be for: the **rate** problem, where the
+finite-horizon frontier is non-convex and reasons genuinely contend; the **signed**
+class, where no criterion in terms of the friction sequence can exist; the
+**service-admissible** problem, where a per-window floor turns the dip criterion
+into a summability one; and **closed-loop friction**, where the docket and the
+market respond to the scheduler.
 
 ## 6. Feeding it back
 
-An insolvency event should carry the friction floor and the rows it applies to,
-which is what makes it authenticated and checkable: `q^r_t >= q_0` on a tail is a
-finite statement about a computable quantity. An infeasibility event should carry
-its own certificate — the unsupported-authority multipliers, or the failed
-priceability solve.
+An insolvency event should carry `(T, q_0)`, the rows it applies to, **and** the
+proof object for the tail bound; without the third it is an observation with a
+deferral attached rather than a settled impossibility. An infeasibility event should
+carry its own certificate — the unsupported-authority multipliers, or the failed
+priceability solve — and those are genuinely finite, which is the asymmetry between
+the two failures worth recording.
 
 Both are settleable records rather than silent drops, which is the property the
 round wanted from an overload certificate in the first place. The response protocol

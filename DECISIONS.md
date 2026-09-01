@@ -109,6 +109,73 @@ commit.
 
 ## Settled
 
+### 2026-09-01 — the persistence criterion is the date cost, not the conservative friction
+
+**agent-decided, reversible.** For a date-cost function that is increasing,
+vanishing at zero and star-shaped — its cost per unit of authority nonincreasing —
+persistence on a finite lifetime budget is achievable if and only if the cost of a
+fixed positive reference allocation has liminf zero. Sufficiency is a geometric
+tranche construction and uses no structure; necessity uses star-shapedness twice,
+to bound the mass carried by small allocations and to bound the number of large
+ones. The reference level and the budget are both immaterial.
+
+This corrects the previous entry's scope. The conservative charge gives the earlier
+criterion unchanged, but the exact worst-case charge gives a different one — the
+exclusion depth alone, with no engine scale — and the two genuinely differ:
+exclusion depth one over t against engine scale t to the fourth makes the
+conservative friction diverge while a constant allocation remains affordable
+forever. The claim that the criterion was insensitive to which certificate was used
+was proved only for a bounded-friction case and is withdrawn.
+
+The finite-horizon optimum is the largest single-date inverse cost, which recovers
+the earlier squared-budget formula as a special case and shows that an unbounded
+optimum is necessary but not sufficient for persistence — the supremum of achievable
+totals can be infinite while no single schedule attains an infinite total.
+
+*Rejected alternative:* keeping the conservative friction as the primitive, which
+would misclassify as unaffordable every norm whose depth decays while the market's
+own volume grows.
+
+### 2026-09-01 — service admissibility replaces the dip criterion by a summability one
+
+**agent-decided, reversible.** Persistence characterizes when *some* divergent
+allocation is affordable. Answerability admits only some allocation traces, and the
+constraint changes the criterion rather than qualifying it.
+
+Under a per-window service floor — at least a fixed positive allocation in every
+window of the deadline length — affordability holds exactly when the window minima
+of the date cost are summable. A dip sequence spaced more widely than the window
+satisfies the unconstrained criterion and fails this one, so the two are
+genuinely different conditions and the separation is exhibited. Under a cumulative
+service demand, the demand's growth and the running minimum depth must be
+reciprocal.
+
+So the cheap dates and the timely dates are traded against each other, and the
+parameter trading them is how often enforcement is cheap. Answerability should
+therefore export its admissible traces rather than a scalar quota, because which
+windows the service falls in is what decides affordability.
+
+*Rejected alternative:* treating service admissibility as a caveat on the
+persistence theorem rather than as a different theorem.
+
+### 2026-09-01 — insolvency needs a tail proof, not an observed floor
+
+**agent-decided, reversible.** Mathematical insolvency in the exogenous benchmark
+is that the date cost has liminf bounded away from zero. That is a claim about the
+infinite future and no finite prefix establishes it: a scheduler that has watched a
+friction floor hold for a thousand dates has watched exactly that.
+
+An authenticated insolvency certificate is therefore a pair — a claimed tail bound
+and a proof object for it, from the settlement model, a monotonicity argument, or a
+property of the row — and where the second is absent, insolvency may be true and
+not settleably certified. An observed floor licenses deferral and an inquiry into
+whether the floor is permanent; only a proved tail bound licenses recording a reason
+as unaffordable. Infeasibility certificates are genuinely finite, and that asymmetry
+between the two failures is the thing to record.
+
+*Rejected alternative:* treating an observed friction floor as the certificate,
+which would let a scheduler drop a reason on a prediction.
+
 ### 2026-08-31 — persistent enforcement is affordable iff the friction dips to zero
 
 **agent-decided, reversible.** Write the friction of a normative row at a date as

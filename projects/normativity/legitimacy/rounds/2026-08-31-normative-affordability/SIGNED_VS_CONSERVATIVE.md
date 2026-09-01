@@ -1,6 +1,28 @@
 # Conservative underwriting against the signed account
 
-## 1. The two classes
+## 0. Three classes, and the inclusions
+
+    conservative certificate      sum_t q_t sqrt(a_t) <= B
+    sharp robust certificate      sum_t L_t(a_t) <= B, L_t the exact worst case
+    signed-account affordability  V_N(omega) >= -B on the realized trajectory
+
+    conservative  (  sharp robust  (  signed account .
+
+The first inclusion is pointwise — `L_t(a) <= q_t sqrt(a)` at every `a`, since the
+conservative charge assumes both the largest violation the modulus permits and the
+deepest exclusion — and it is strict by `s_t = 1/t`, `m_t = t^4`, where the
+conservative class is empty of persistent schedules and the sharp one contains the
+constant allocation (`SHARP_PERSISTENCE.md` §3). The second is because the sharp
+charge is the worst case over the market's response and the realized response need
+not be worst; it is strict by §2 below, unboundedly.
+
+The first two are **policy guarantees**: they are checkable before the market
+responds, and an existence theorem must deliver one of them. The third is a
+**realized-path fact** about a trajectory that occurred. The fixed-era construction
+consumes only the third — it needs the account to have stayed above the floor — but
+a scheduler can only aim at the first two.
+
+## 1. The two guarantee classes
 
 **Conservative affordability** is a property of the friction sequence alone: a
 schedule is conservatively affordable when `sum_t q_t sqrt(a_t) <= B`, where the

@@ -18,7 +18,12 @@ per-date capacity region. `PERSISTENT_AFFORDABILITY.md`, `CAUSAL_CAPACITY.md`,
 `SIGNED_VS_CONSERVATIVE.md`, `ONLINE_EXISTENCE.md`, `OVERLOAD_TARGET.md`,
 `src/persistence.py` and `tests/test_persistence.py` are the fifth dispatch's, which
 withdraws the fourth's sustainable authority-rate region and its convexity, and
-freezes the fixed-era composition.
+freezes the fixed-era composition. `SHARP_PERSISTENCE.md`,
+`SERVICE_ADMISSIBLE_EXISTENCE.md`, `CLOSED_LOOP_EXISTENCE.md`, `src/sharp_cost.py`
+and `tests/test_sharp_cost.py` are the sixth dispatch's, which withdraws the fifth's
+claim that the sharp charge leaves the criterion unchanged and its online
+competitive-ratio claim, and narrows its rate-region non-convexity to the
+finite-horizon frontier.
 
 The round starts from `main` at
 `292bb2731b0df09aa034ca4abc5ce64a20a41785`. It reads and does not modify:
