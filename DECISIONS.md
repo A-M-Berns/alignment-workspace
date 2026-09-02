@@ -109,6 +109,225 @@ commit.
 
 ## Settled
 
+### 2026-09-02 — the September naming audit
+
+**Maintainer rulings**, taken in conversation after a connected-prose audit of the
+program's coined terms, and applied across the checkpoint and the wiki. Historical
+rounds keep their original vocabulary; `SUPERSESSION.md` §2a is the map between them.
+
+**The main shift: obligation rather than claim.** *Claim* was carrying four jobs at
+once — a traded proposition in the market, an asserted result, a normative
+entitlement, and the quantitative burden `c^r_t`. The last of these is now the
+**obligation stream**, and `mu^r_N` the **obligation measure**; *claim-weighted*
+becomes *obligation-weighted*, and *claim mass*, *claim marginal* and
+*claim-normalized transport error* follow. Symbols are unchanged. The three-level
+distinction the rename protects: an **answerability slice** is the identity-bearing
+historical object, the **obligation stream** is the quantitative amount owed through
+time, and the **obligation measure** is the normalized weighting it induces.
+
+**Enforcement intensity, not allocated authority.** *Authority* is normatively loaded
+elsewhere in this program — practical authority, authority genealogy, authorized
+disposition, standing authority — and `a_t = beta_t` is a mechanical scalar the
+scheduler fixes before the market clears. It is now **enforcement intensity**;
+*allocated service* is retired as a second name for the same thing.
+
+**Service is not identified with enforcement intensity.** Service is the broad
+Answerability-facing relation: an obligation receives the answering work it is owed.
+Intensity is the resource that supplies it *in this realization*. The typing runs
+obligation → service → enforcement intensity → **realized force**, the last being
+endogenous and nobody's to choose. This is what the earlier name got wrong: it made a
+realization-level control variable sound like normative authority itself.
+
+**Consequent renames.** *local authority capacity* → **local enforcement capacity**,
+preserving that it is not lifetime liability safety. *transport stability* →
+**semantic stability**, because the inequality is a property of the reason and not of
+the plan, and because across a self-revision it becomes the central
+semantic-continuity problem. *service parsimony* → **service-to-obligation cap**,
+which is a bound on over-service and not a virtue. *claim-normalized transport error*
+→ **obligation-normalized semantic error**, naming the source of the error rather
+than the algorithm that routes it.
+
+**`nested assessment` → `assessment-set nesting`**, and the reason is kept separate
+from the assumption: the mathematical hypothesis is `A_N ⊆ A_t`; *settlement
+monotonicity* is why it holds. One phrase for both blurred an assumption into its
+justification.
+
+**Friction, reserved.** The word had three referents. **Settlement-friction residual**
+is `F_r(a)` and keeps the word; `L_t(a)` is the **date cost** (equivalently *liability
+cost*); `q_t = D_t sqrt(m_t)` is the **conservative cost coefficient** — a coefficient
+inside one date-cost instance, not a cost of anything by itself. A reader should never
+meet "the friction" and have to infer which was meant.
+
+**Retired as objects.** *settlement-misfit landscape* → **misfit profile**, or simply
+the live-world exclusion deficits. *serviceability frontier* → the scalar **critical
+delay** `H*(B)` plus the **liability–timeliness tradeoff**; the frontier was never a
+primitive. The broader word *serviceability* is unaffected.
+
+**`overload certificate` → `finite-horizon infeasibility certificate`.** The fixed-era
+enforcement layer does not behave like a shared server, and *overload* reimports that
+model. The certificate may witness capacity failure, liability failure, or both. The
+specialized operational object, **deadline insolvency certificate**, keeps its name.
+`PRIORITIES.md` item 74 is reworded; its mathematical question is unchanged.
+
+**`Sharp Timely Service` is kept, with `sharp` defined wherever it is introduced.** It
+names the *sharp robust liability charge* `L_t(a) = a D_t^2/4` on its linear branch,
+not tightness or exactness generically — and that exact charge is what lets one budget
+control the settlement-friction residual's numerator. `PAPER_CANDIDATES.md` records
+that a paper may prefer *Timely Service under Sharp Liability*.
+
+**Kept after review**, because connected prose exposed no collision: answerability
+slice, anchored interpretation, fixed-set contiguity, coercive Actionability,
+persistence region, star-shaped date cost, admissible service trace, critical delay,
+deadline insolvency, realized force, **service measure**, Service Transport, Uptake,
+Progress. *Service measure* was specifically re-examined after the intensity rename
+and still reads correctly: it records where service was delivered, with intensity as
+the realization's resource for delivering it.
+
+**Not in scope.** The ~470 Lean-only declaration names in
+`state/views/NAMING_AUDIT.md` are a separate, mechanical sitting. The view is
+regenerated so the backlog reflects what remains.
+
+*Rejected alternative:* renaming symbols to match. `c^r_t`, `mu^r_N`, `nu^{a,r}_N` and
+`a^r_t` are unchanged; churn in notation buys nothing when the prose names are what
+were ambiguous.
+
+### 2026-09-01 — Progress is claim-weighted
+
+**Maintainer ruling**, taken in conversation and landed here. The bare name
+**Progress** denotes the **claim-weighted** form: `E_{mu^r_N}[d^r] -> 0`, the defect
+vanishing on the dates something was *owed*. The staging is unchanged and stays
+canonical:
+
+    service-weighted Progress  --Service Transport-->  claim-weighted Progress
+
+**service-weighted Progress** keeps its qualified name and remains the learner-side
+mechanism theorem. It is not "Progress" unqualified, and a document that uses the
+bare word means the claim-weighted endpoint.
+
+What this costs, stated because the ruling chose it knowingly: Service Transport and
+its residual `epsbar^r_N(T)` are now inside the settled statement rather than
+downstream of it, so a Progress claim carries a transport hypothesis and cannot be
+made without one. That is the intended reading — the alternative kept a cleaner
+theorem about a quantity Answerability never asks for.
+
+`projects/normativity/legitimacy/checkpoint-2026-09-01/CURRENT_THEORY.md` §3.6 and
+`FINAL_AUDIT.md` Q3 are updated; the queue entry is discharged.
+
+*Rejected alternative:* service-weighted, which keeps the transport interface out of
+the definition at the price of a headline about the dates the reasoner chose to work
+on.
+
+### 2026-09-01 — the September checkpoint freezes at merge; the wiki never does
+
+**Maintainer ruling.** The checkpoint becomes an `agent-consolidated` tree once the
+outstanding decisions are settled — which this pass does. From merge:
+
+- **The existing work is frozen.** `projects/normativity/legitimacy/checkpoint-2026-09-01/`
+  carries an `ORIGIN.md` receipt and its paths join the specification list in
+  `tests/path_gate.py`. The norm is that it is not tweaked; edit it for a
+  correction, a scrub or a supersession, say why in the commit, and record
+  substantive edits here.
+- **Future work builds on it rather than into it.** A later consolidation is a new
+  checkpoint that supersedes this one, not a rewrite of it. That is the same
+  treatment `projects/normativity/consolidation-aug9/` has, and it is why that
+  package has needed no retraction.
+- **The wiki is explicitly excluded and is never permanently frozen.** `wiki/` is
+  the human-facing register and is expected to move as understanding does. Freezing
+  a checkpoint freezes a *record of what was held*, which is exactly the thing an
+  explanation must be free to improve on.
+
+One consequence worth naming: the outstanding **naming audit** over the round's
+provisional names will edit a frozen tree when it lands. That is a maintainer act
+with a stated reason, which is what the norm permits.
+
+*Rejected alternative:* leaving it a living document. Rejected because a checkpoint
+that later rounds amend in place stops being a record of what was held at a date,
+which is the only thing that makes "which of two conflicting statements is current"
+answerable.
+
+### 2026-09-01 — the bounded-delay feasibility proof keeps its citation
+
+**Maintainer ruling.** BD1's sufficiency proof invokes the Gale–Hoffman feasibility
+condition and will continue to. The prior-art ledger records it as a **direct
+mathematical dependency**, which is the honest label, and no rewrite is undertaken.
+
+The self-contained alternative — a busy-period argument on the round's own FIFO
+theorem — stays recorded in `projects/normativity/notes/PRIOR_ART.md` §6.2 as
+available and not taken, for whoever writes the paper. The merged round document is
+not edited to make a proof nicer.
+
+*Rejected alternative:* rewriting the proof now. The defect was the ledger claiming
+independence from a theorem the proof cited; relabelling fixed that, and the
+citation itself was never the problem.
+
+### 2026-09-01 — the legitimacy decomposition is the working framing, and not a claim
+
+**Maintainer ruling.** The decomposition
+
+    Legitimacy  ~  Diachronic Answerability, with its semantic authentication
+                +  Counterfactual non-capture
+                   subject to Affordability as the realizability condition
+
+is **approximately the right framing for the bigger picture** and is adopted as the
+shape future work aims at. It is **not** a frozen claim, not a theorem, and not a
+definition: no legitimacy predicate exists, the terms are not shown independent, and
+joint sufficiency is unproved.
+
+The distinction is the whole content of the ruling. A round may **sequence** work
+against this framing — that is what it is for. A round may **not** cite it as
+established, build a theorem on it as a hypothesis, or present it outside this
+repository as the program's account of legitimacy.
+
+`LEGITIMACY_DECOMPOSITION.md` keeps its assessment and its `=?`; what changes is that
+the framing is now the sanctioned direction rather than one candidate among several.
+Writing the predicate down remains the cheap next step that would settle whether the
+shape survives contact with a statement.
+
+*Rejected alternative:* canonizing it. Three rounds built on a wrong decomposition
+costs more than the delay, and the predicate is an afternoon's work away.
+
+### 2026-09-01 — Pettit is removed from the prior-art ledger
+
+**Maintainer ruling: it was not really used.** The entry recorded an idea — that
+holding-responsible is a relation between parties rather than a property of one —
+without an identified work, and the maintainer confirms no source was read for it.
+It is removed from the conceptual-dependency list rather than left marked
+*unpinned*, because an entry nobody used is not a dependency with a missing citation;
+it is not a dependency.
+
+The record of the correction stays, so the ledger shows the entry was examined and
+dropped rather than silently vanishing. Where the two-place shape of answerability
+needs an antecedent, **Brandom's scorekeeping** is the one the program actually uses,
+and `wiki/Sources.md` separately cites **Fischer & Ravizza** for reasons-responsive
+mechanisms.
+
+*Rejected alternative:* keeping it marked *exact source not yet pinned*. That is the
+right marking for an idea in use whose source is lost, and the wrong one for an idea
+that was never taken.
+
+### 2026-09-01 — a gate checks that cited paths are in the repository
+
+**Maintainer ruling: build it.** `tests/untracked_pointers.py` requires every round
+record's paths, and every rooted citation in a live document that resolves on disk,
+to be **tracked by git** rather than merely present. That is exactly the September
+failure: six rounds sat off `main` behind a merged badge, and the shared checkout
+carried them as untracked files, so `dead_pointers.py` passed locally and failed in
+CI.
+
+Two things were wrong and both are fixed. No gate distinguished *present* from
+*committed*; this one does, and its self-test reproduces the failure by writing an
+uncommitted file and checking git does not see it. And `tests/run.py` ran only the
+*self-tests* of both pointer gates, never their real form, which is why the local run
+could report green against a tree CI would reject — both real forms now run locally.
+
+Verified against a reconstruction of the original bug: an untracked round directory
+plus a citation to it passes `dead_pointers.py` and fails this gate with the right
+message, which names the stacked-merge cause.
+
+*Rejected alternative:* folding it into `dead_pointers.py`. "You deleted something"
+and "you never committed something" call for opposite fixes and deserve different
+messages.
+
 ### 2026-09-01 — the answerability stack is landed on `main`
 
 **agent-decided, reversible.** Six research rounds — CF coverage continuity
@@ -282,6 +501,81 @@ time. It leaves the reason standing.
 *Rejected alternative:* one insolvency notion covering both, which would either
 import an unavailable tail bound into the finite case or claim certification the
 infinite case cannot support.
+
+### 2026-09-01 — the September checkpoint is the current human-facing view
+
+**agent-decided, reversible.** `projects/normativity/legitimacy/checkpoint-2026-09-01/`
+becomes the canonical entry point for the normativity / answerability / legitimacy
+program: current theory with an audited dependency spine, a status ledger, a
+supersession map, open problems, a roadmap, and the reconciliation with the August 9
+consolidation and the diachronic-answerability note.
+
+It **supersedes nothing**. The August 9 consolidation remains authoritative for its
+own content and is reconciled rather than replaced; every research round remains
+untouched as provenance, including those later work corrected. What the checkpoint
+replaces is the *practice* of reading rounds chronologically to learn what the
+program holds.
+
+Four judgments in it are the checkpoint's own rather than inherited, and each says
+so in the document that makes it.
+
+**The four-layer decomposition** — fixed-era dynamics, diachronic legitimacy across
+revision, counterfactual non-capture, and the corrigibility consumer. The division
+is load-bearing because the fixed-era mathematics is strong enough to be mistaken
+for more than it is.
+
+**The dependency spine, audited rather than copied.** Actionability sits *beside*
+service allocation, not after it: the scheduler cannot choose the coercivity
+modulus, which is a property of the response geometry and the enforcement compiler.
+And the normative demand and the force mechanism are separate objects the spine must
+show separately, because affordability is exactly the question of whether the second
+can meet the first, and conflating them makes that question unaskable.
+
+**The two theories meet at divergent attention.** The conceptual answerability
+theory's service dichotomy ends at "attention diverges"; the service mathematics
+begins there. The note names its own missing piece — a reason-to-response structure
+plus a dynamic uptake condition — and that piece is Actionability plus Uptake. Their
+budgets disagree, the note's being renewable per stage and the mathematics' a
+consumable lifetime stock, and the disagreement resolves: the equivalence of
+persistence with eventual full service is the liability-priced version of the note's
+feasibility witness, and non-starvation survives at exactly the price
+`liminf L_t(1) = 0`.
+
+**The candidate legitimacy decomposition is a research framing, not canonical.**
+`Legitimacy = Diachronic Answerability + Affordability + Counterfactual non-capture`
+is the best framing available, with two amendments: the first pillar must be read as
+including its semantic-authentication obligation, or semantic transport belongs to no
+pillar at all; and affordability is better read as a realizability *side condition*
+than a conjunct, since as a conjunct it invites the reading that a cheaper norm is
+more legitimate — which the round's own slogan, *cheap enforcement is not always
+conforming enforcement*, was written to forbid. What would make it canonical is a
+statement of the legitimacy predicate with a conclusion someone downstream wants, and
+no such statement exists.
+
+*Rejected alternative:* rewriting the historical rounds so the current theory reads
+consistently. History stays history; the supersession map carries the current state.
+
+### 2026-09-01 — three fixed-era results are recorded as probable rediscoveries
+
+**agent-decided, reversible.** The service-transfer theorem is in substance a
+standard consequence of Le Cam contiguity — the same definition, a different
+application. The bounded-delay interval feasibility condition is a Gale-Hoffman /
+Horn-1974 specialization. Serve-oldest-first optimality is the Jackson exchange
+argument. Each was derived independently in this repository and none should be
+presented as new mathematics.
+
+Three further places are marked **literature review needed** rather than guessed at:
+whether the sliding-window *cost* form is classical; whether the join-semilattice
+conservation law has a belief-revision antecedent; and whether the persistent-wait
+theorem is a standard fairness argument. The rule adopted is that every extraction
+candidate has its literature review completed before any novelty claim is made
+outside this repository, and that independent derivation is a fact about our process,
+never evidence about the literature.
+
+*Rejected alternative:* leaving the antecedents unrecorded on the grounds that the
+derivations were genuinely independent. Independence of derivation and novelty in the
+literature are different claims, and only the second is the one a reader would take
+from silence.
 
 ### 2026-09-01 — the fixed-era affordability and serviceability layer is finished
 

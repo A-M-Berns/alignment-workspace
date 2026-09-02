@@ -5,6 +5,19 @@ normativity and deference lines, write-separation results, and the
 protection-versus-laundering tension. The relocated bridge round records the
 current fixture results. Future legitimacy rounds land under `rounds/`.
 
+## Start here
+
+**`checkpoint-2026-09-01/`** is the current canonical view of the whole program —
+current theory with a dependency spine, a status ledger, the supersession map, open
+problems, and the roadmap. A reader or agent should not need to reconstruct the
+theory by reading the rounds below in date order; if that is ever necessary, the
+checkpoint has a gap and the gap is the bug.
+
+The checkpoint supersedes nothing. Every round under `rounds/` remains untouched as
+provenance, including the ones later work corrected, and
+`checkpoint-2026-09-01/SUPERSESSION.md` records which of their statements are no
+longer current.
+
 - Bridge round: `rounds/2026-08-13-relational-scorekeeping-bridge/`
 - Legitimacy architecture: `rounds/2026-08-12-legitimacy-architecture/`
 - Procedural sufficiency prosecution: `rounds/2026-08-13-procedural-legitimacy/`

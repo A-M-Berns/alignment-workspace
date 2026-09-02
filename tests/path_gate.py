@@ -36,6 +36,7 @@ SPEC_PATHS = (
     # Consolidated trees. Ordinary content, but not contributors' to edit:
     # the protection that used to be a hash gate is this list plus review.
     "projects/normativity/consolidation-aug9/**",
+    "projects/normativity/legitimacy/checkpoint-2026-09-01/**",
     "projects/normativity/deck-2026-08-10/**",
     "projects/deference/note-dump-2026-06-27/**",
     "projects/deference/note-dump-2026-08-11/**",

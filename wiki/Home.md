@@ -19,7 +19,10 @@ The program has two research lines and one bridge:
   and preserve a future human-guided process. **Paused**, on two decisions.
 - **[Legitimacy](Legitimacy)** asks what must remain true of that process so
   deference does not merely preserve manipulation, self-authorization, or
-  corruption.
+  corruption. This is where the current work is: the fixed-era half —
+  [Serviceability](Serviceability) and [Liability and
+  affordability](Liability-and-Affordability) — is consolidated, and [Diachronic
+  Answerability](Diachronic-Answerability) is the frontier.
 
 The bridge matters because good bookkeeping is not enough. A record may track
 every debt while the surrounding process prevents a challenge from reaching its
@@ -29,8 +32,14 @@ before asking how they compose.
 
 ## Where to start
 
-**New to the project:** read [Architecture](Architecture) for the common shape,
-then follow either [Normativity](Normativity) or [Deference](Deference).
+**New to the project:** read [Why normativity?](Why-Normativity) for what problem
+this is, then [Architecture](Architecture) for the common shape, then follow either
+[Normativity](Normativity) or [Deference](Deference).
+
+**Returning after time away:** [Legitimacy](Legitimacy) now carries a four-layer
+map of where the work has actually got to, and the September 2026 checkpoint in the
+repository is the dry canonical version of it — current theory, status ledger,
+supersession map, open problems and roadmap in one place.
 
 **Looking for current research status:** read the status section on the relevant
 line and then [Roadmap](Roadmap). Each technical page ends with immutable links

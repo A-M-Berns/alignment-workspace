@@ -475,6 +475,14 @@ and its `INTEGRATION_MAP.md` §4;
 ### 40. Is bounded cumulative enforcement liability necessary? — **[open]**
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
+**Reframed at the September 2026 checkpoint, not answered.** The affordability
+line now builds a substantial theory on top of this hypothesis — persistence,
+timeliness, and the endpoint composition all consume it — which raises the item's
+value and sharpens what its failure would cost. Until it is settled, every
+"unaffordable" verdict in the line means *the known route to safety no longer
+applies*, not *no safe policy exists*, and the checkpoint's status ledger says so.
+Context: `projects/normativity/legitimacy/checkpoint-2026-09-01/OPEN_PROBLEMS.md` §6.
+
 The preservation theorem's hypothesis is that the enforcement position's
 cumulative value over the assessed worlds is bounded below:
 
@@ -1924,7 +1932,7 @@ unbounded one with a witness are both better than the present reading.
 
 ---
 
-### 74. Is the overload certificate complete for the causal problem? — **[entry]** — *sequenced behind item 40*
+### 74. Is the finite-horizon infeasibility certificate complete for the causal problem? — **[entry]** — *sequenced behind item 40*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -1941,11 +1949,11 @@ instance every path of which is feasible, which shows no per-path certificate cl
 be complete and moves the question to certificates over policies.
 
 **Sequencing.** Take item 40 first, and the existence of an affordable schedule
-second — with the service variable now typed as allocated authority, that question
-is well posed for the first time: does a schedule with divergent allocated service
+second — with the service variable now typed as enforcement intensity, that question
+is well posed for the first time: does a schedule with divergent enforcement intensity
 for every persistent reason exist inside the per-date liability capacity boxes,
 against an adversarial docket arrival process? Until the necessity of bounded cumulative
-enforcement liability is settled or refuted, an overload certificate for the causal
+enforcement liability is settled or refuted, an finite-horizon infeasibility certificate for the causal
 problem certifies the failure of a hypothesis whose necessity is unknown, and every
 "unaffordable" verdict in this line means "the known route to safety no longer
 applies" rather than "no safe policy exists".
@@ -1975,7 +1983,7 @@ for the synchronic certificate the horizon version extends.
 *A solution ships:* the theorem or the separating instance, and in either case a
 statement of what a certificate can and cannot be fed back into Answerability as.
 
-### 75. Close the loop: policy-dependent enforcement friction — **[entry]** — *sequenced behind item 74*
+### 75. Close the loop: policy-dependent date costs — **[entry]** — *sequenced behind item 74*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -2010,7 +2018,7 @@ survive the loop unchanged.
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
-The canonical Sharp Timely Service bound ends in a single term: the claim-normalized
+The canonical Sharp Timely Service bound ends in a single term: the obligation-normalized
 semantic error incurred while a reason waited to be answered, bounded by the reason's
 temporal modulus at the plan's delay. The round has **no mechanism for establishing
 that modulus** for any reason, which means the theorem's conclusion is exact and its
@@ -2035,6 +2043,59 @@ error the modulus bounds, and `CLOSED_LOOP_EXISTENCE.md` §3 for the deductive a
 empirical channel split.
 *A solution ships:* the certificate class, and what Answerability has to export for it
 to be checkable.
+
+### 77. What licenses authorized disposition? — **[entry]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The answerability calculus lets incurred content leave the account by one of two
+routes: **satisfaction**, and **authorized disposition** — content that legitimately
+ceases to be owed *without* being answered. Satisfaction has an authentication
+obligation. Disposition has a licence predicate, `MayDispose`, and no theory of
+what licenses it.
+
+This is the highest-value unfiled question in the line, because it is three
+questions at once.
+
+**It is where defeat lives.** "Reason `r'` defeats reason `r`" is, in this
+vocabulary, exactly a licence to stop owing `r`'s remaining content. So the open
+Layer II question *when may one reason replace another* is this question.
+
+**It is the laundering channel.** An unaudited disposition term makes every
+insolvency and every unanswered burden disappear; the no-laundering theorem is true
+only because it *assumes* each disposition term is authenticated.
+
+**It changes the affordability question.** The persistence analysis rests on the
+obligation stream diverging. If content can be legitimately disposed of, what has to
+diverge is *undisposed* content, and a reason that looks permanently insolvent may
+be affordable after authorized disposition.
+
+Settle it. Give a licence predicate with an authentication obligation and a
+soundness theorem — disposed content is content that could not have been owed, or
+was answered under a different description, or was superseded by an authorized
+revision whose grounds trace back to the initial rule set — and then say what it
+does to the obligation stream the affordability theory consumes.
+
+**A prior-art check is part of the deliverable.** Horty's priority orderings among
+defaults are the obvious place to look and are probably *not* enough: a priority
+ordering says which reason wins, not what licenses the loser to stop being owed.
+Whether that machinery can express `MayDispose` at all is worth settling before
+building something new.
+
+*Deliverable shape:* a stated theorem with exact-rational fixtures, including a
+legitimate disposition and a laundering attempt the licence rejects.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes.
+
+*Context:*
+`projects/normativity/legitimacy/checkpoint-2026-09-01/ANSWERABILITY_AND_SERVICE.md`
+§6 for why the three questions are one, and that checkpoint's `OPEN_PROBLEMS.md` §2;
+`projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/`
+for the conservation law the disposition term sits in, and
+`projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/`
+for the authentication side.
+*A solution ships:* the licence, its soundness theorem, and a statement of what the
+affordability theory's obligation stream becomes once disposition is available.
 
 ## Workspace friction
 
@@ -2158,6 +2219,48 @@ which is history and cheap; allow a `depends_on_unindexed` field carrying paths 
 than ids, which is a schema change and specification layer; or rule that a research
 checkpoint must be indexed at merge, which is a convention change binding future rounds
 only. The choice is specification layer and was not taken here.
+
+### F8 — A stack of merged pull requests never reached `main` — *closed*
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+Three research rounds developing the diachronic-answerability mathematics —
+*answerability carriers*, *anchored slices and authenticated semantic Transfer*, and
+*faithful semantic preservation*, together with the CF-coverage and proper-exercise
+rounds beside them — **are not on `main`.** Their pull requests are marked MERGED on
+the forge, and they were: into *each other*. The stack was based on
+`round/2026-08-30-liability-theory` and then on
+`round/2026-08-30-answerability-carriers`, and no pull request from the top of that
+stack to `main` was ever opened. The trees exist on those branches and in working
+copies; the repository's history on `main` does not contain them.
+
+**How it was found.** The September consolidation cited two of the rounds by path;
+`tests/dead_pointers.py` failed in CI and passed locally, because the local checkout
+had the directories as untracked files left by another session. The gate did exactly
+its job, and the local pass was the misleading signal.
+
+**Why it matters beyond the citations.** Those rounds' exact fixtures do not run in
+this repository's CI, so results attributed to them are paper-derived only from
+`main`'s point of view. The consolidation now cites the underlying note by section
+and theorem number instead, and its `STATUS_LEDGER.md` marks the affected rows.
+
+**Resolved on 2026-09-01.** The maintainer asked for the fix, and the stack was
+landed: current `main` was merged into `round/2026-08-30-liability-theory` on a new
+branch and opened as one pull request. Three files conflicted and all three were
+additive on both sides — `state/rounds.json` resolved as the union of the two record
+sets, `PROVENANCE.md` keeping both sides' rows, and the generated views regenerated.
+No round document was edited. The repository's runner count went from thirty-five
+projects to forty-one, which is the six recovered rounds' fixtures now running.
+`DECISIONS.md` carries the account, and the September checkpoint's path citations are
+restored.
+
+**The lesson outlives the fix, and is why this entry stays.** A MERGED badge names the
+base the pull request had, not `main`. Nothing in the current gates checks that a round
+directory referenced anywhere actually reached the default branch, and a stacked round
+is exactly the shape that slips through — it was caught here only because a citation
+happened to point at one. A gate comparing `state/rounds.json` against what the default
+branch actually contains would have caught it directly; whether that is worth building
+is a maintainer call and is not filed as an item.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->
