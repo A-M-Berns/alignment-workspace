@@ -214,7 +214,7 @@ actual-run answerability with counterfactual non-capture.
 **Two of these have moved, and the difference is worth stating precisely.**
 *General service under bounded resources* is no longer open — that is exactly what
 the fixed-era serviceability layer answers, and answers exactly. And a fixed-era
-end-to-end composition, from a claim stream to claim-weighted Progress and to
+end-to-end composition, from a obligation stream to obligation-weighted Progress and to
 substrate preservation, now exists. What remains open here is narrower and still
 real: compiling a *normative record* into the region that composition consumes, and
 joining any of it to non-capture.

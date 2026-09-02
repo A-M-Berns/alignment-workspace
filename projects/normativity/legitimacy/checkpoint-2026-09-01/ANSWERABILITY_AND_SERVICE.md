@@ -22,12 +22,12 @@ by its own statement, and is treated here at exactly that strength.
 | conceptual object | mathematical object | fit |
 |---|---|---|
 | matter `m` — the continuing case | the reason `r` whose rows are enforced | good |
-| answerability slice `alpha` — one increment of incurred burden, with birth stage and fixed anchored content `c_alpha` | one arrival in the claim stream — the mass `c^r_t` owed at date `t` | **exact**, and the alignment is the key one |
-| `Remaining_n(alpha)` — content still owed | unserved claim mass at horizon `n` | good |
-| `Satisfied_n(alpha)` | claim mass that has been transported to a service date and discharged | good |
+| answerability slice `alpha` — one increment of incurred burden, with birth stage and fixed anchored content `c_alpha` | one arrival in the obligation stream — the mass `c^r_t` owed at date `t` | **exact**, and the alignment is the key one |
+| `Remaining_n(alpha)` — content still owed | unserved obligation mass at horizon `n` | good |
+| `Satisfied_n(alpha)` | obligation mass that has been transported to a service date and discharged | good |
 | `Disposed_n(alpha)` — content that legitimately ceased to be owed without being answered | **nothing** | **the largest gap** |
 | carriers `Carriers_n(alpha)` — the issues currently representing the content | no analogue; the mathematics has no representation layer | structural gap |
-| service attention `a_n(m)`, `Attention_N(m)` | allocated authority `a^r_t`, `A^r_N` | **exact in form, different in economics** — see §3 |
+| service attention `a_n(m)`, `Attention_N(m)` | enforcement intensity `a^r_t`, `A^r_N` | **exact in form, different in economics** — see §3 |
 | service opportunity `Work_n(m) != {}` | a date at which the reason's row is priceable and its region nonempty | good |
 | anchored interpretation `J_alpha : Rep_alpha -> V_alpha` | *candidate mechanism* for the temporal-stability constants `eps(t,s)` — see §5 | promising, unproved |
 | `Ready`, `Discharged`, prerequisites, routes | no analogue; scheduling in the mathematics has no dependency structure | structural gap |
@@ -110,7 +110,7 @@ for cost rather than dividing a share.
 systems has been constructed and none is claimed. They differ in at least three
 ways: a renewable per-stage share against a lifetime consumable budget; service
 opportunities given by the reachable-work structure against exogenous date costs;
-and discharge semantics — the note's matter is *attended to*, EV1's claim mass is
+and discharge semantics — the note's matter is *attended to*, EV1's obligation mass is
 *transported and discharged*. What is shared is the construction's shape, a
 summable family of shrinking allowances indexed one per case, and the observation
 that this shape survives being priced. A formal reduction, if one exists, would be
@@ -131,7 +131,7 @@ its budget is always spendable.
 The export has five components. Only the first two are currently consumed by the
 mathematics.
 
-1. **A claim stream `c^r_t >= 0`** with provenance — which slice, which matter,
+1. **A obligation stream `c^r_t >= 0`** with provenance — which slice, which matter,
    which admission witness, which birth stage. Consumed.
 2. **A set of admissible service traces.** Consumed, but only in the thin forms the
    mathematics can price: a per-window service floor
@@ -164,7 +164,7 @@ substantive content of Answerability to live in components 3, 4 and 5, not 2.
 | "incurred content cannot silently disappear" | `Remaining` is the residual mass of `mu^r`; T3's residual-density term `D R_N/C_N` is exactly the unserved fraction and must vanish | **realized** |
 | "a matter that stays live gets unbounded attention" | `A^r_N -> infinity`, hypothesis (S) of STS | **realized** (as a hypothesis, discharged by S1's criterion) |
 | "unbounded attention is not improvement" | F1/F2: attention plus coercivity plus Uptake gives vanishing defect at rate `A_N^{-1/2}` | **realized, and this is the note's own named gap closed** |
-| "a burden is owed on the terms it was incurred on" | the claim measure `mu^r_N` weights by *arrival*, not by service; claim-weighted Progress is the statement that the arrival-time weighting is what converges | **realized** |
+| "a burden is owed on the terms it was incurred on" | the obligation measure `mu^r_N` weights by *arrival*, not by service; obligation-weighted Progress is the statement that the arrival-time weighting is what converges | **realized** |
 | "revision must not rewrite what was already owed" | anchored content `c_alpha` fixed at admission; in the mathematics, `c^r_t` is `F_{t-1}`-measurable and never revised | **realized structurally**, unpriced |
 | "semantic content survives representation change" | hypothesis (T): `d_t <= L_r d_s + eps_r(t,s)` | **named, not realized** — see below |
 | "answering may be deferred" | transport `T(t,s)`, delay `H`, temporal modulus `omega_r(H)` | **realized** |
@@ -193,7 +193,7 @@ this is the most concrete route to it currently visible.
 
 ## 6. Disposition: the gap that matters most
 
-In the service mathematics, claim mass has exactly two fates: it is served, or it
+In the service mathematics, obligation mass has exactly two fates: it is served, or it
 remains. There is no third.
 
 In the note there is a third — `disp(t)`, content *"claimed to have legitimately
@@ -203,8 +203,8 @@ and authenticated like everything else.
 This is not a cosmetic difference.
 
 - **It changes the affordability question.** `C^r_N -> infinity` is a hypothesis of
-  EV1 and drives the whole persistence analysis. If claim mass can be legitimately
-  disposed of, the relevant divergence is of *undisposed* claim mass, and a norm
+  EV1 and drives the whole persistence analysis. If obligation mass can be legitimately
+  disposed of, the relevant divergence is of *undisposed* obligation mass, and a norm
   that looks insolvent may be affordable after authorized disposition.
 - **It is the obvious laundering channel**, and the note knows it: disposition is
   the term Theorem 7.5 has to authenticate to make no-laundering true. An

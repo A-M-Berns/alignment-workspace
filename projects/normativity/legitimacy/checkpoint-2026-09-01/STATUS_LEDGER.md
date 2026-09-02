@@ -41,7 +41,7 @@ other, and where prose blurs them this table governs.
 | 1 | **Traderized projection enforcement** — the compiled position is a legal strategy | **lean-proved** | `Workspace.Normativity.Contrib.TraderizedEnforcement`; `projects/normativity/rounds/2026-08-16-traderized-enforcement/PROOF_CLOSURE.md` |
 | 2 | **Per-date conformance modulus** `sum beta g^2 <= eps + M` | **lean-proved** | `…TraderizedEnforcement.weighted_square_le_slack_add_volume` |
 | 3 | **Preservation / no efficient trader exploits** under bounded liability | **lean-proved**, with one transcription obligation | `AssessmentFirm.trading_firm_dominance`, `no_efficient_trader_exploits`; `PROOF_CLOSURE.md` §VII for the modified market's computability |
-| 4 | **Service is allocated authority `a = beta`**, not realized force | **paper-derived**, decisive | `rounds/2026-08-31-normative-affordability/SERVICE_FORCE_TYPING.md` |
+| 4 | **Service is enforcement intensity `a = beta`**, not realized force | **paper-derived**, decisive | `rounds/2026-08-31-normative-affordability/SERVICE_FORCE_TYPING.md` |
 | 5 | **Actionability / coercivity (Theorem F1)** — convergence iff `phi` bounded away from zero away from zero | **paper-derived** + **test-supported** | `…/FIXED_ERA_THEOREM.md` §1 |
 | 6 | **Joint Actionability** — fails reason-relative, holds against the common region | **paper-derived**, with countermodel | `…/JOINT_ACTIONABILITY.md` |
 | 7 | **Uptake = MarketMaker cumulative cap** (not the LI criterion) | **paper-derived**, and a correction of a prior claim | `…/FOLLOWUP_REPORT.md` §B |
@@ -52,8 +52,8 @@ other, and where prose blurs them this table governs.
 | 12 | **Service-weighted Progress (F2)** at rate `A_N^{-1/2}` | **paper-derived** | `…/FIXED_ERA_THEOREM.md` §2; `…/LI_PROGRESS_FROM_SERVICE.md` |
 | 13 | **Service Transfer T1/T2** — contiguity exactly N&S for triangular arrays | **paper-derived** + **test-supported**. *Prior art:* the **definition** of contiguity is Le Cam's and is inherited; the proof invokes no lemma. T1's sufficiency is the standard consequence and must not be claimed as new; any novelty is confined to T2 and the fixed-set separation, both **literature review needed**. `../../notes/PRIOR_ART.md` §6.1 | `…/SERVICE_TRANSFER.md` §1 |
 | 14 | **Fixed-set contiguity strictly weaker** (one-step-delay separation) | **paper-derived** + **witnessed** | `…/SERVICE_TRANSFER.md` §2 |
-| 15 | **Deferred Service Transfer (T3)**, claim-normalized error | **paper-derived** | `…/SERVICE_TRANSFER.md` §4 |
-| 16 | **Surface Fairness does not give claim-weighted Progress** | **paper-derived** + **witnessed** | `…/SERVICE_TRANSFER.md` §3 |
+| 15 | **Deferred Service Transfer (T3)**, obligation-normalized error | **paper-derived** | `…/SERVICE_TRANSFER.md` §4 |
+| 16 | **Surface Fairness does not give obligation-weighted Progress** | **paper-derived** + **witnessed** | `…/SERVICE_TRANSFER.md` §3 |
 | 17 | **Bounded-delay feasibility (BD1), interval condition** | **paper-derived** + **test-supported**, but **not self-contained**: the sufficiency proof *invokes* the Gale–Hoffman feasibility condition, so that theorem is a **direct dependency**, and the statement is very probably a rediscovery of Horn (1974). Necessity is self-contained. `../../notes/PRIOR_ART.md` §6.2 | `…/BOUNDED_DELAY_TRANSPORT.md` |
 | 18 | **FIFO optimal and complete (BD2)** | **paper-derived**, self-contained — a four-line exchange argument invoking nothing. *Prior art:* classical in substance (Jackson 1955), adjacent not inherited | `…/BOUNDED_DELAY_TRANSPORT.md` §3 |
 | 19 | **Exogenous persistence criterion (S1)** `liminf L_t(1) = 0` | **paper-derived** + **test-supported** | `…/SHARP_PERSISTENCE.md` |
@@ -62,12 +62,12 @@ other, and where prose blurs them this table governs.
 | 22 | **Persistence ≡ eventual full service (EV1)** | **paper-derived** + **test-supported** | `…/EVENTUAL_VS_UNIFORM_SERVICE.md` §2 |
 | 23 | **Uniform timeliness strictly stronger (E1); gaps insufficient (E3)** | **witnessed** (exact countermodels) | `…/EVENTUAL_VS_UNIFORM_SERVICE.md` §§3–4 |
 | 24 | **Linear timely-service criterion (D4)**, sliding window | **paper-derived** + **test-supported** | `…/BOUNDED_DELAY_AFFORDABILITY.md` |
-| 25 | **Sharp settlement-friction collapse (SS1)** — `F_r = 0` on the linear branch under nested assessment | **paper-derived** + **test-supported** | `…/SHARP_SERVICEABILITY.md` |
+| 25 | **Sharp settlement-friction collapse (SS1)** — `F_r = 0` on the linear branch under assessment-set nesting | **paper-derived** + **test-supported** | `…/SHARP_SERVICEABILITY.md` |
 | 26 | **Sharp Timely Service (STS)** — the endpoint | **paper-derived** + **test-supported** | `…/SHARP_TIMELY_SERVICE.md` |
 | 27 | **Deadline insolvency certificate (DI1)** | **paper-derived** + **test-supported** | `…/DEADLINE_INSOLVENCY.md` |
 | 28 | **Online persistence has no penalty; no competitive ratio for authority** | **paper-derived** + **witnessed** | `…/ONLINE_EXISTENCE.md`, `…/ONLINE_SERVICEABILITY.md` |
 | 29 | **Joint frontier convex under fractional splitting** | **paper-derived** | `…/JOINT_SERVICEABILITY.md` JS2 |
-| 30 | **Finite-horizon overload certificate**, sound, no converse | **paper-derived**, soundness self-contained; the exactness-under-Slater remark uses LP duality. Converse **open** | `…/EXISTENCE_AND_DUALITY.md` §4; `PRIORITIES.md` item 74 |
+| 30 | **Finite-horizon finite-horizon infeasibility certificate**, sound, no converse | **paper-derived**, soundness self-contained; the exactness-under-Slater remark uses LP duality. Converse **open** | `…/EXISTENCE_AND_DUALITY.md` §4; `PRIORITIES.md` item 74 |
 | 31 | **Temporal-modulus certification (hypothesis T)** | **open** — no mechanism | `…/SHARP_TIMELY_SERVICE.md` §6; `PRIORITIES.md` item 76 |
 | 32 | **Closed-loop affordability (E4/E5)** | **open** | `…/CLOSED_LOOP_EXISTENCE.md`; `PRIORITIES.md` item 75 |
 | 33 | **Signed-account viability / sufficient state** | **open** — the scalar slack is provably insufficient | `…/SIGNED_VS_CONSERVATIVE.md` |

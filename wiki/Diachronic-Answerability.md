@@ -116,7 +116,7 @@ it sounds. It is the obvious laundering channel; it is where **defeat** lives, s
 one reason defeating another just *is* a licence to stop owing the first; and it
 changes the affordability question, because if obligations can legitimately be
 disposed of then what has to be sustained is undisposed obligation. The
-serviceability mathematics has no disposition at all: claim mass is served or it
+serviceability mathematics has no disposition at all: obligation mass is served or it
 persists.
 
 A theory of authorized disposition would supply all three at once, which is why the

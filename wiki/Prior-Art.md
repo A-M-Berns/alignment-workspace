@@ -43,7 +43,7 @@ reduction being a linear program.
 
 **Convex projection** supplies the enforcement direction, and the compiler uses its
 defining variational inequality — a genuine dependency. **Linear-programming duality**
-is thinner than it looks: the overload certificate *has* the shape of a Farkas pair
+is thinner than it looks: the finite-horizon infeasibility certificate *has* the shape of a Farkas pair
 and is called one, but its soundness proof is four self-contained lines; what
 actually leans on duality is the separate remark that the certificate is exact under
 a Slater point. Nothing there is novel and nothing should be presented as such; what
@@ -88,7 +88,7 @@ self-contained alternative exists and was deliberately not taken; the repository
 ledger says why.
 
 **Contiguity — the definition, not the theorem.** The condition under which
-service-weighted convergence transfers to claim-weighted convergence is *contiguity
+service-weighted convergence transfers to obligation-weighted convergence is *contiguity
 of measures*, in exactly Le Cam's 1960 sense. The definition is inherited and so is
 the name; the proof argues from that definition directly and invokes no lemma. The
 sufficiency direction is the standard and expected consequence, and must not be

@@ -109,6 +109,88 @@ commit.
 
 ## Settled
 
+### 2026-09-02 — the September naming audit
+
+**Maintainer rulings**, taken in conversation after a connected-prose audit of the
+program's coined terms, and applied across the checkpoint and the wiki. Historical
+rounds keep their original vocabulary; `SUPERSESSION.md` §2a is the map between them.
+
+**The main shift: obligation rather than claim.** *Claim* was carrying four jobs at
+once — a traded proposition in the market, an asserted result, a normative
+entitlement, and the quantitative burden `c^r_t`. The last of these is now the
+**obligation stream**, and `mu^r_N` the **obligation measure**; *claim-weighted*
+becomes *obligation-weighted*, and *claim mass*, *claim marginal* and
+*claim-normalized transport error* follow. Symbols are unchanged. The three-level
+distinction the rename protects: an **answerability slice** is the identity-bearing
+historical object, the **obligation stream** is the quantitative amount owed through
+time, and the **obligation measure** is the normalized weighting it induces.
+
+**Enforcement intensity, not allocated authority.** *Authority* is normatively loaded
+elsewhere in this program — practical authority, authority genealogy, authorized
+disposition, standing authority — and `a_t = beta_t` is a mechanical scalar the
+scheduler fixes before the market clears. It is now **enforcement intensity**;
+*allocated service* is retired as a second name for the same thing.
+
+**Service is not identified with enforcement intensity.** Service is the broad
+Answerability-facing relation: an obligation receives the answering work it is owed.
+Intensity is the resource that supplies it *in this realization*. The typing runs
+obligation → service → enforcement intensity → **realized force**, the last being
+endogenous and nobody's to choose. This is what the earlier name got wrong: it made a
+realization-level control variable sound like normative authority itself.
+
+**Consequent renames.** *local authority capacity* → **local enforcement capacity**,
+preserving that it is not lifetime liability safety. *transport stability* →
+**semantic stability**, because the inequality is a property of the reason and not of
+the plan, and because across a self-revision it becomes the central
+semantic-continuity problem. *service parsimony* → **service-to-obligation cap**,
+which is a bound on over-service and not a virtue. *claim-normalized transport error*
+→ **obligation-normalized semantic error**, naming the source of the error rather
+than the algorithm that routes it.
+
+**`nested assessment` → `assessment-set nesting`**, and the reason is kept separate
+from the assumption: the mathematical hypothesis is `A_N ⊆ A_t`; *settlement
+monotonicity* is why it holds. One phrase for both blurred an assumption into its
+justification.
+
+**Friction, reserved.** The word had three referents. **Settlement-friction residual**
+is `F_r(a)` and keeps the word; `L_t(a)` is the **date cost** (equivalently *liability
+cost*); `q_t = D_t sqrt(m_t)` is the **conservative cost coefficient** — a coefficient
+inside one date-cost instance, not a cost of anything by itself. A reader should never
+meet "the friction" and have to infer which was meant.
+
+**Retired as objects.** *settlement-misfit landscape* → **misfit profile**, or simply
+the live-world exclusion deficits. *serviceability frontier* → the scalar **critical
+delay** `H*(B)` plus the **liability–timeliness tradeoff**; the frontier was never a
+primitive. The broader word *serviceability* is unaffected.
+
+**`overload certificate` → `finite-horizon infeasibility certificate`.** The fixed-era
+enforcement layer does not behave like a shared server, and *overload* reimports that
+model. The certificate may witness capacity failure, liability failure, or both. The
+specialized operational object, **deadline insolvency certificate**, keeps its name.
+`PRIORITIES.md` item 74 is reworded; its mathematical question is unchanged.
+
+**`Sharp Timely Service` is kept, with `sharp` defined wherever it is introduced.** It
+names the *sharp robust liability charge* `L_t(a) = a D_t^2/4` on its linear branch,
+not tightness or exactness generically — and that exact charge is what lets one budget
+control the settlement-friction residual's numerator. `PAPER_CANDIDATES.md` records
+that a paper may prefer *Timely Service under Sharp Liability*.
+
+**Kept after review**, because connected prose exposed no collision: answerability
+slice, anchored interpretation, fixed-set contiguity, coercive Actionability,
+persistence region, star-shaped date cost, admissible service trace, critical delay,
+deadline insolvency, realized force, **service measure**, Service Transport, Uptake,
+Progress. *Service measure* was specifically re-examined after the intensity rename
+and still reads correctly: it records where service was delivered, with intensity as
+the realization's resource for delivering it.
+
+**Not in scope.** The ~470 Lean-only declaration names in
+`state/views/NAMING_AUDIT.md` are a separate, mechanical sitting. The view is
+regenerated so the backlog reflects what remains.
+
+*Rejected alternative:* renaming symbols to match. `c^r_t`, `mu^r_N`, `nu^{a,r}_N` and
+`a^r_t` are unchanged; churn in notation buys nothing when the prose names are what
+were ambiguous.
+
 ### 2026-09-01 — Progress is claim-weighted
 
 **Maintainer ruling**, taken in conversation and landed here. The bare name

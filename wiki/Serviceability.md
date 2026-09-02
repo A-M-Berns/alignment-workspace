@@ -20,8 +20,8 @@ all, and get to it in time.
 
 Two measures, and almost everything here is about keeping them apart.
 
-The **claim measure** records what is owed and when it was incurred. If a reason
-`r` accumulates exposure `c_t` at each date, the claim measure weights dates by
+The **obligation measure** records what is owed and when it was incurred. If a reason
+`r` accumulates exposure `c_t` at each date, the obligation measure weights dates by
 that exposure. This is Answerability's object; it is fixed by history and no
 scheduler touches it.
 
@@ -35,7 +35,7 @@ nothing was owed. The gap between the two measures is where a great deal of bad
 behaviour can hide, and one of the round's more useful findings is that a natural
 fairness condition — service is spread evenly across the surfaces that need it —
 does **not** close it. A two-surface rotation can satisfy that condition, have
-service-weighted error exactly zero at every horizon, and have claim-weighted error
+service-weighted error exactly zero at every horizon, and have obligation-weighted error
 tending to one half.
 
 ## Why the measures need transport, not matching
@@ -43,7 +43,7 @@ tending to one half.
 The naive repair is to insist that service happen at the date the claim arose. That
 is too strong, and obviously so: answering a challenge next week is not a failure of
 answerability. What is needed is a **transport plan** — a bookkeeping of which
-claim mass, owed when, was discharged when — together with three conditions: the
+obligation mass, owed when, was discharged when — together with three conditions: the
 plan is feasible against the authority actually available; it does not spend
 wildly more service than there was claim; and the reason does not change too much
 between being owed and being answered.
@@ -92,7 +92,7 @@ when an answer is *late* has not yet said anything a scheduler can fail.
 Putting the pieces together: if the claims can be transported onto enforcement
 dates that are both **timely** and **affordable in a specific sharp sense**, then
 the same liability budget that keeps the learner from being exploited also drives
-the enforcement friction to zero — and the only error left is the semantic change
+the settlement-friction residual to zero — and the only error left is the semantic change
 the reason underwent while it waited to be answered.
 
 This is the strongest statement the fixed-era theory makes. It is also
@@ -139,7 +139,7 @@ up.
 
 Also missing: whether a schedule can be timely and sharply affordable *at the same
 time*; whether any of this survives when the cost of enforcing responds to the
-enforcement; and whether the friction residual is ever actually zero for a norm a
+enforcement; and whether the settlement-friction residual is ever actually zero for a norm a
 real practice produces.
 
 ---

@@ -381,7 +381,7 @@ of the section.
 
   **Role: formal substrate for one step; the main theorem is self-contained.**
   Checked against the proof: `EXISTENCE_AND_DUALITY.md`'s Theorem T8 — the soundness
-  of the overload certificate — is four lines of linear algebra over a convex hull and
+  of the finite-horizon infeasibility certificate — is four lines of linear algebra over a convex hull and
   **invokes nothing**. The certificate *has the shape* of a Farkas pair, which is why
   it is called one, but nothing is imported to prove it sound. What does depend on the
   external theory is the adjacent remark that under a Slater point the per-path program

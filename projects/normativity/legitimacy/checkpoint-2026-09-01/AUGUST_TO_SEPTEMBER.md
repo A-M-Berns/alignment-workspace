@@ -41,8 +41,8 @@ neither is rewritten.
 |---|---|
 | Bounded liability as an assumed input to preservation | Reasonwise accounting: per-row floors give the uniform subset ceiling `U + B_tot`, and aggregate safety alone provably does not suffice |
 | Liability as a per-date certificate | The account is **signed and cumulative**; the identity needs the signed misfit, and per-date conservatism is strictly and unboundedly weaker |
-| Affordability as a schematic notion | Exactly characterized for exogenous friction: `liminf L_t(1) = 0`, for any star-shaped date cost, with the finite-horizon optimum and the online equivalence |
-| "The mechanism can operate" | Sharp Timely Service: it can operate *and* deliver claim-weighted Progress up to semantic delay only |
+| Affordability as a schematic notion | Exactly characterized for exogenous date costs: `liminf L_t(1) = 0`, for any star-shaped date cost, with the finite-horizon optimum and the online equivalence |
+| "The mechanism can operate" | Sharp Timely Service: it can operate *and* deliver obligation-weighted Progress up to semantic delay only |
 | Force emits a liability obligation | Unchanged, and now with the surrounding layer's discharge theory written down |
 
 ### Superseded
@@ -67,10 +67,10 @@ should have been held to.
 
 ### Newly opened by later work — not visible in August
 
-- **Which weighting Progress uses.** August had no claim measure, so the
-  service-weighted / claim-weighted distinction could not arise. It was the one
+- **Which weighting Progress uses.** August had no obligation measure, so the
+  service-weighted / obligation-weighted distinction could not arise. It was the one
   question the checkpoint reserved, and it is now settled: **Progress is the
-  claim-weighted form** (`DECISIONS.md`, 2026-09-01), so the transport interface sits
+  obligation-weighted form** (`DECISIONS.md`, 2026-09-01), so the transport interface sits
   inside the settled statement rather than downstream of it.
 - **Transport, and its constants.** No August object corresponds to `T(t,s)`,
   `eps(t,s)`, or `epsbar_N(T)`.
@@ -115,7 +115,7 @@ Three things the note has that Layer I has no analogue for, listed in decreasing
 order of how much they matter:
 
 1. **Disposition** — content that legitimately ceases to be owed without being
-   answered. Layer I claim mass is served or it remains; there is no third fate.
+   answered. Layer I obligation mass is served or it remains; there is no third fate.
    This is the largest single gap and `ANSWERABILITY_AND_SERVICE.md` §6 argues it
    is also where defeat lives.
 2. **Carriers and representations** — the whole `Rep_alpha` / `J_alpha` /
@@ -150,5 +150,5 @@ writings get force, and what force then owes the surrounding layer. The
 answerability line fixed the *audit structure*: what revision may not do to
 already-incurred content, and that a live matter cannot be starved. September
 fixed the *economics*: what service costs, when it can persist, when it can be
-timely, and what all of that buys — which turned out to be claim-weighted Progress
+timely, and what all of that buys — which turned out to be obligation-weighted Progress
 up to semantic delay only, leaving the semantics of that delay as the frontier.

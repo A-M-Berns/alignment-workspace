@@ -1932,7 +1932,7 @@ unbounded one with a witness are both better than the present reading.
 
 ---
 
-### 74. Is the overload certificate complete for the causal problem? — **[entry]** — *sequenced behind item 40*
+### 74. Is the finite-horizon infeasibility certificate complete for the causal problem? — **[entry]** — *sequenced behind item 40*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -1949,11 +1949,11 @@ instance every path of which is feasible, which shows no per-path certificate cl
 be complete and moves the question to certificates over policies.
 
 **Sequencing.** Take item 40 first, and the existence of an affordable schedule
-second — with the service variable now typed as allocated authority, that question
-is well posed for the first time: does a schedule with divergent allocated service
+second — with the service variable now typed as enforcement intensity, that question
+is well posed for the first time: does a schedule with divergent enforcement intensity
 for every persistent reason exist inside the per-date liability capacity boxes,
 against an adversarial docket arrival process? Until the necessity of bounded cumulative
-enforcement liability is settled or refuted, an overload certificate for the causal
+enforcement liability is settled or refuted, an finite-horizon infeasibility certificate for the causal
 problem certifies the failure of a hypothesis whose necessity is unknown, and every
 "unaffordable" verdict in this line means "the known route to safety no longer
 applies" rather than "no safe policy exists".
@@ -1983,7 +1983,7 @@ for the synchronic certificate the horizon version extends.
 *A solution ships:* the theorem or the separating instance, and in either case a
 statement of what a certificate can and cannot be fed back into Answerability as.
 
-### 75. Close the loop: policy-dependent enforcement friction — **[entry]** — *sequenced behind item 74*
+### 75. Close the loop: policy-dependent date costs — **[entry]** — *sequenced behind item 74*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -2018,7 +2018,7 @@ survive the loop unchanged.
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
-The canonical Sharp Timely Service bound ends in a single term: the claim-normalized
+The canonical Sharp Timely Service bound ends in a single term: the obligation-normalized
 semantic error incurred while a reason waited to be answered, bounded by the reason's
 temporal modulus at the plan's delay. The round has **no mechanism for establishing
 that modulus** for any reason, which means the theorem's conclusion is exact and its
@@ -2066,7 +2066,7 @@ insolvency and every unanswered burden disappear; the no-laundering theorem is t
 only because it *assumes* each disposition term is authenticated.
 
 **It changes the affordability question.** The persistence analysis rests on the
-claim stream diverging. If content can be legitimately disposed of, what has to
+obligation stream diverging. If content can be legitimately disposed of, what has to
 diverge is *undisposed* content, and a reason that looks permanently insolvent may
 be affordable after authorized disposition.
 
@@ -2074,7 +2074,7 @@ Settle it. Give a licence predicate with an authentication obligation and a
 soundness theorem — disposed content is content that could not have been owed, or
 was answered under a different description, or was superseded by an authorized
 revision whose grounds trace back to the initial rule set — and then say what it
-does to the claim stream the affordability theory consumes.
+does to the obligation stream the affordability theory consumes.
 
 **A prior-art check is part of the deliverable.** Horty's priority orderings among
 defaults are the obvious place to look and are probably *not* enough: a priority
@@ -2095,7 +2095,7 @@ for the conservation law the disposition term sits in, and
 `projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/`
 for the authentication side.
 *A solution ships:* the licence, its soundness theorem, and a statement of what the
-affordability theory's claim stream becomes once disposition is available.
+affordability theory's obligation stream becomes once disposition is available.
 
 ## Workspace friction
 

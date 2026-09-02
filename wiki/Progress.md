@@ -45,7 +45,7 @@ all. Uptake comes from the market maker's cap, and the earlier claim was withdra
 
 There are two forms of the statement and they are genuinely different:
 
-    service-weighted Progress  --Service Transport-->  claim-weighted Progress
+    service-weighted Progress  --Service Transport-->  obligation-weighted Progress
 
 the first being the learner-side mechanism theorem and the second the
 Answerability-facing endpoint.
@@ -58,16 +58,16 @@ worked*. That is what the learner delivers, and it has a complete derivation wit
 rate — though like almost everything in this program that derivation is on paper and
 not in a proof assistant.
 
-**Claim-weighted** Progress says the defect vanishes *on the dates something was
+**Obligation-weighted** Progress says the defect vanishes *on the dates something was
 owed*. That is what answerability actually asks for.
 
 The second does not follow from the first. A reasoner can drive its service-
-weighted defect to exactly zero at every horizon while its claim-weighted defect
+weighted defect to exactly zero at every horizon while its obligation-weighted defect
 tends to one half, simply by servicing the dates where nothing was wrong. Closing
 the gap requires [Service Transport](Serviceability) — an explicit accounting of
 which obligation, owed when, was discharged when.
 
-The name went to the claim-weighted form, and the tradeoff was taken knowingly:
+The name went to the obligation-weighted form, and the tradeoff was taken knowingly:
 the transport interface and its residual are now inside the settled statement, so a
 Progress claim always carries a transport hypothesis. The alternative would have kept
 a cleaner theorem about a quantity answerability never actually asks for — which is
@@ -81,7 +81,7 @@ fraction of service exposes a surface where this reason can actually be answered
 It is not enough, and the countermodel is embarrassingly simple. Two surfaces, one
 of which always has the defect and one of which never does, serviced in strict
 alternation. The fairness condition holds. Service-weighted defect is exactly zero
-at every horizon. Claim-weighted defect tends to one half.
+at every horizon. Obligation-weighted defect tends to one half.
 
 Of the four candidate interfaces the program considered for this, exactly one
 transfers: exposing a *registered* surface on every service date, with confidence

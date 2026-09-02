@@ -12,7 +12,7 @@ proving.
 
 ## 1. Normative serviceability / Sharp Timely Service
 
-**Core.** A claim stream owed to a normative reason, a schedule of enforcement
+**Core.** A obligation stream owed to a normative reason, a schedule of enforcement
 authority priced by a liability account, and an exact answer to when the second can
 discharge the first: `liminf L_t(1) = 0` for persistence, `sum_t c_t min_{s in [t,t+H]} w_s < infinity`
 for timeliness, and the composition theorem
@@ -37,8 +37,13 @@ against a date-varying concave charge) is classical. Whether the star-shaped ver
 optimum is standard. Whether the "no competitive ratio for the accumulated
 resource, qualitative property survives" phenomenon is named.
 
-**Still needed.** A construction for hypothesis (T). Simultaneous (S) and (L). At
-least the headline in Lean. And the paper would have to be honest that its
+**A title note.** *Sharp Timely Service* is the repository's name and `sharp` there
+means the **sharp robust liability charge**, not tightness. Outside this repository
+that is opaque, and a paper may prefer the explicit **Timely Service under Sharp
+Liability**.
+
+**Still needed.** A construction for hypothesis (T) — the **semantic stability**
+modulus. Simultaneous (S) and (L). At least the headline in Lean. And the paper would have to be honest that its
 scheduling half is a rediscovery with a new application, not new mathematics — and,
 for BD1, an *inherited* theorem rather than a rediscovered one, unless the
 self-contained busy-period proof sketched in the prior-art ledger is written out

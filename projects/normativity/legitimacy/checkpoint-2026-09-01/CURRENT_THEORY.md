@@ -86,16 +86,16 @@ Five distinctions the waist keeps apart, and the program should not let collapse
 | symbol | reading |
 |---|---|
 | `r` | a reason occurrence; owns rows `J_r` |
-| `c^r_t >= 0` | the **claim stream**: normative exposure owed to `r` at date `t`; `C^r_N = sum_{t<N} c^r_t` |
-| `a^r_t >= 0` | **allocated authority** (service), predictable; `A^r_N = sum_{t<N} a^r_t` |
-| `mu^r_N = c/C^r_N` | the **claim measure** — what is owed |
+| `c^r_t >= 0` | the **obligation stream**: normative exposure owed to `r` at date `t`; `C^r_N = sum_{t<N} c^r_t` |
+| `a^r_t >= 0` | **enforcement intensity**, predictable — the resource by which service is supplied here; `A^r_N = sum_{t<N} a^r_t` |
+| `mu^r_N = c/C^r_N` | the **obligation measure** — what is owed |
 | `nu^{a,r}_N = a/A^r_N` | the **service measure** — what was delivered |
 | `d_t in [0,D]` | the **defect**: how badly the reason is answered at `t` |
 | `s^{+,r}_t(omega)` | the **exclusion deficit** of the row at live world `omega` |
 | `D^r_t = sup_{omega in A_t} s^{+,r}_t(omega)` | the worst live **exclusion depth** |
 | `m_t = eps_t + M_t` | the market maker's slack plus the ordinary volume bound |
 | `A_t` | the **live assessment set** at `t` — worlds settlement has not excluded |
-| `T^r(t,s)` | a **transport plan**: claim mass owed at `t`, served at `s` |
+| `T^r(t,s)` | a **transport plan**: obligation mass owed at `t`, served at `s` |
 
 ### 3.1 Force — how a constraint binds a bounded reasoner
 
@@ -131,22 +131,33 @@ transcription obligation recorded in that round's `PROOF_CLOSURE.md` §VII.
 > **Preservation is substrate preservation.** It says the learner survives being
 > made to obey. It is *not* Uptake, and it is not a normative result.
 
-### 3.2 Service is allocated authority, not realized force
+### 3.2 Service is supplied by enforcement intensity, not measured by realized force
 
 `rounds/2026-08-31-normative-affordability/SERVICE_FORCE_TYPING.md`.
 
-The service variable is `a = beta`, the enforcement multiplier fixed *before* the
-market maker picks a price. It is predictable and freely schedulable. The realized
-position `beta·g(P_t)` is decided at the fixed point, is zero exactly when the
-reason is perfectly satisfied, and would count a date as *better served* because
-the reasoner did worse. Three failures of the realized-force reading:
-unschedulable; undefined under perfect compliance; anti-monotone in conformance.
+Three levels, and conflating any two of them breaks something:
+
+| level | object | who fixes it |
+|---|---|---|
+| **service** | an obligation receives the answering work it is owed | Answerability-facing; realization-independent |
+| **enforcement intensity** `a = beta` | the multiplier fixed *before* the market maker picks a price | the scheduler, predictably |
+| **realized force** `beta·g(P_t)` | the corrective position materializing at the fixed point | nobody; it is endogenous |
+
+**Service is not identified with enforcement intensity.** Intensity is how a
+market-embedded reasoner pays for service in this realization; a different
+realization could pay for it otherwise. What the scheduling theory below is about is
+intensity, and what Answerability asks about is service.
+
+**Realized force is not a service measure.** Three failures: it is decided at the
+fixed point, so no scheduler can choose it; it is zero exactly when the reason is
+perfectly satisfied, so the measure is undefined in the best case; and it counts a
+date as *better served* because the reasoner did worse.
 
 > **Successful learning looks like starvation** if service is read as realized
-> force: constant `beta` against geometric defect has divergent allocated service
+> force: constant `beta` against a geometric defect has divergent total intensity
 > and summable realized force.
 
-### 3.3 Actionability — what corrective authority can do
+### 3.3 Actionability — what a unit of enforcement accomplishes
 
 `rounds/2026-08-31-normative-affordability/FIXED_ERA_THEOREM.md` §1 (Theorem F1);
 `LI_PROGRESS_FROM_SERVICE.md`.
@@ -173,7 +184,7 @@ convexity and no separability. In the traderized realization it is true and
 at which a per-reason certificate could be invalidated.
 
 **Where Actionability sits.** *Beside* service allocation, not after it.
-Answerability says what is owed; Actionability says what a unit of authority
+Answerability says what is owed; Actionability says what a unit of enforcement
 accomplishes. Neither derives from the other. See §4.
 
 ### 3.4 Uptake — and where it does not come from
@@ -229,13 +240,13 @@ one compatible world suffices. Liability uses `sup` — it needs a covered mixtu
 `rounds/2026-08-31-normative-affordability/LI_PROGRESS_FROM_SERVICE.md`,
 `FIXED_ERA_THEOREM.md` §2.
 
-**Progress is the claim-weighted form.** Settled by the maintainer on 2026-09-01
+**Progress is the obligation-weighted form.** Settled by the maintainer on 2026-09-01
 (`DECISIONS.md`): the bare name **Progress** denotes `E_{mu^r_N}[d^r] -> 0`, the
 defect vanishing on the dates something was *owed*. The learner-side theorem keeps
 its qualified name, **service-weighted Progress**, and is never the bare word. The
 staging:
 
-    service-weighted Progress  --Service Transport-->  claim-weighted Progress
+    service-weighted Progress  --Service Transport-->  obligation-weighted Progress
     (the learner-side               (§3.7)              (the Answerability-facing
      mechanism theorem)                                 endpoint; also written
                                                         Sustainable Progress)
@@ -248,23 +259,23 @@ staging:
     E_{nu^{a,r}_N}[d]  <=  || s^+_r(omega) ||_{L^2(nu^{a,r}_N)}  +  sqrt( (U + B_tot) / A^r_N ) ,
 
 with the unconditional fallback `sqrt(S_N/A^r_N)`, `S_N = sum_{t<N} m_t`. The rate
-is the inverse square root of allocated service; the residual is the norm's own
+is the inverse square root of total enforcement intensity; the residual is the norm's own
 weighted mean-square exclusion of the still-live worlds. The liability charge grows
 like `sqrt(a)`, which is why divergent service fits a finite lifetime budget.
 
-*Claim-weighted Progress* — `E_{mu^r_N}[d] -> 0`. What Answerability actually asks
+*Obligation-weighted Progress* — `E_{mu^r_N}[d] -> 0`. What Answerability actually asks
 for. It does **not** follow from the service-weighted form without a transport
 hypothesis (§3.7).
 
-**The name is settled: "Progress" is the claim-weighted form.** The cost was
+**The name is settled: "Progress" is the obligation-weighted form.** The cost was
 chosen knowingly — Service Transport and its residual `epsbar^r_N(T)` are now inside
 the settled statement, so a Progress claim carries a transport hypothesis and cannot
 be made without one. The alternative kept a cleaner theorem about a quantity
 Answerability never asks for.
 
-**Surface Fairness is a mass condition and does not deliver claim-weighted
+**Surface Fairness is a mass condition and does not deliver obligation-weighted
 Progress.** A two-surface fair rotation satisfies bounded-deficit `(SF)` with
-service-weighted defect exactly zero at every horizon while the claim-weighted
+service-weighted defect exactly zero at every horizon while the obligation-weighted
 defect tends to one half. Of the four Persistent Relevance interfaces, only
 **interface 1** — a registered surface exposed on every service date with
 `c_n >= c_* > 0` — transfers; it gives `mu_N <= nu_N/c_*` pointwise and therefore
@@ -275,7 +286,7 @@ more; the countermodel *is* a two-surface fair rotation.
 `m live forever ==> A_N(m) -> infinity`; Progress consumes it and adds no queue or
 successor relation of its own.
 
-### 3.7 Service Transport — relating delivered service to inherited claims
+### 3.7 Service Transport — relating delivered service to inherited obligation
 
 `rounds/2026-08-31-normative-affordability/SERVICE_TRANSFER.md`.
 
@@ -290,18 +301,35 @@ weaker **fixed-set contiguity**; one-step delay separates them.
 finite horizon, not quantitative, and false of bounded-delay service.
 
 **Theorem T3 (Deferred Service Transfer)** is the primitive. Given an adapted
-transport plan with the claim marginal, feasibility against `a^r`, stability
-`d_t <= L d_s + eps(t,s)` on its support, service parsimony `W_N <= K C_N`, and
-residual density `R_N/C_N -> 0`:
+transport plan with the obligation marginal, feasibility against `a^r`, the
+**service-to-obligation cap** `W_N <= K C_N`, residual density `R_N/C_N -> 0`, and
+the **semantic stability** bound on the plan's support,
+
+    (semantic stability)   d_t  <=  L_r d_s  +  eps_r(t,s) ,
+
+then
 
     E_{mu_N}[d]  <=  L K E_{nu_N}[d]  +  epsbar_N(T)  +  D R_N/C_N ,
     epsbar_N(T)  =  (1/C_N) sum_{t,s} T_N(t,s) eps(t,s) .
 
-The transport error is **claim-normalized**: a raw sum is extensive and not
-comparable to the claim-weighted average it bounds.
+**The two hypotheses do different jobs, and the names say which.** The
+service-to-obligation cap bounds *over-service*, so the service-weighted
+distribution cannot be distorted at will. **Semantic stability** is not a property of
+the transport plan at all — it is a property of the reason: service at a later date
+must still count as answering what was owed earlier, up to controlled distortion. The
+plan chooses which pairs `(t,s)` are used; semantic stability prices the edges.
+
+`epsbar_N(T)` is the **obligation-normalized semantic error** — the mean semantic
+distortion per unit of inherited obligation mass. Normalized rather than raw, because
+a raw sum is extensive and not comparable to the obligation-weighted average it
+bounds; *semantic* rather than *transport*, because the error comes from the reason
+changing, not from the transportation algorithm.
+
+**Across a self-revision, semantic stability is the whole problem** — it is where
+`OPEN_PROBLEMS.md` §1 lives.
 
 **The two routes are incomparable.** Transport does not derive contiguity — what it
-bounds is the density of the *transported* claim measure.
+bounds is the density of the *transported* obligation measure.
 
 ### 3.8 Bounded-delay transport, and its exact cost
 
@@ -318,17 +346,25 @@ antecedents — see `../../notes/PRIOR_ART.md` §6.
     Cost_H(c)  =  sum_t c_t · min{ w_s : s in [t, t+H] } ,
 
 a **sliding** window minimum. D1 (no splitting) needs **concavity**, not
-star-shapedness; D2/D3 (monotone runs) additionally need **equal claim masses**.
+star-shapedness; D2/D3 (monotone runs) additionally need **equal obligation masses**.
 
 ### 3.9 Affordability — whether such service can persist
 
 `SHARP_PERSISTENCE.md`, `PERSISTENT_AFFORDABILITY.md`, `CAUSAL_CAPACITY.md`,
 `ONLINE_EXISTENCE.md`, `OVERLOAD_TARGET.md`.
 
-A date's **cost function** `L_t(a)` charges the liability account. Two instances:
-conservative `q_t sqrt(a)` with `q_t = D_t sqrt(m_t)`; sharp robust `a D_t^2/4` on
-the linear branch `a <= 4m_t/D_t^2`, and `D_t sqrt(a m_t) - m_t` beyond. Both are
+A date's **date cost** — equivalently **liability cost** — is the function
+`L_t(a)` charging the liability account for intensity `a`. Two instances: the
+conservative charge `L^cons_t(a) = q_t sqrt(a)` with **conservative cost
+coefficient** `q_t = D_t sqrt(m_t)`; and the sharp robust charge `a D_t^2/4` on the
+linear branch `a <= 4 m_t/D_t^2`, `D_t sqrt(a m_t) - m_t` beyond. Both are
 increasing, vanish at zero, and are **star-shaped** (`L(a)/a` nonincreasing).
+
+> **Three objects, one word to avoid.** `L_t(a)` is the *date cost*; `q_t` is only
+> the *conservative cost coefficient* inside one of its instances, not a cost of
+> anything on its own; and `F_r(a)` in §3.6 is the **settlement-friction residual**.
+> The bare word *friction* is reserved for the last of these and is not used for the
+> other two.
 
 **Theorem S1 (persistence).** For increasing star-shaped `L_t` with `L_t(0) = 0`, a
 schedule with `sum a_t = infinity` and `sum L_t(a_t) <= B` exists **iff**
@@ -353,6 +389,14 @@ condition. **Timely service does compete**, because its minimum cost is a defini
 positive number and budgets add — the joint condition is a single sum, sufficient
 and not necessary when reasons share rows.
 
+**The liability–timeliness tradeoff.** `Cost_H` is nonincreasing in the deadline and
+the semantic error is nondecreasing in it, so a larger budget can buy a shorter
+**critical delay** `H*(B) = min{H : Cost_H <= B}` — which may be infinite even when
+unlimited-deferral service is affordable. Semantic stability then converts a shorter
+delay into a smaller residual. That monotone relation is the whole content of what an
+earlier draft called a *serviceability frontier*; the primitive object is the critical
+delay.
+
 **Online.** A doubling-threshold rule achieves persistence whenever an offline
 scheduler can — no online penalty for the *property*. There is **no** positive
 competitive ratio for the *amount* of authority accumulated. Under deadlines the
@@ -366,7 +410,8 @@ failure before any account is consulted. The finite-horizon Farkas certificate i
 sound and has **no converse**.
 
 **Insolvency.** *Persistence* insolvency is a claim about the infinite future and
-needs a proved tail bound; an observed friction floor is not a certificate.
+needs a proved tail bound; an observed floor on the date cost is not a
+certificate.
 *Deadline* insolvency is finite and authenticated:
 `ReqCost = sum_t c_t min{ w_s : s in [max(t,now), t+H] }` (`DEADLINE_INSOLVENCY.md`),
 complete exactly when future weights are certified **from below**.
@@ -384,8 +429,8 @@ claim exists — both equivalent to `liminf L_s(1) = 0`. Forward by a diagonal t
 gives each claim its own cheap date on a geometric tranche of the budget.
 
 **Uniform timeliness is strictly stronger** (countermodel E1), and **no gap
-condition substitutes for D4** (countermodel E3: gaps of exactly two, friction
-dipping to zero, and divergent timely-service cost).
+condition substitutes for D4** (countermodel E3: gaps of exactly two, the date
+cost dipping to zero, and divergent timely-service cost).
 
 > **Unlimited deferral makes "eventually answer every persistent claim" no harder
 > than maintaining divergent service. The substantive Answerability constraint
@@ -393,13 +438,20 @@ dipping to zero, and divergent timely-service cost).
 
 ### 3.11 The endpoint: Sharp Timely Service
 
+**What `sharp` means here.** It names the **sharp robust liability charge** —
+`L_t(a_t) = (1/4) a_t D_t^2` on its linear branch — as against the conservative upper
+bound `q_t sqrt(a)`. It does *not* mean tight, exact, or stronger in any generic
+sense. The distinction is load-bearing: it is precisely because the sharp charge is
+computed from the supremum over live worlds of the same deficit the residual averages
+that one liability budget controls both.
+
 `SHARP_TIMELY_SERVICE.md`. **The canonical positive result of Layer I.**
 
 Hypotheses: **(S)** an adapted transport plan with `A^r_N -> infinity`, parsimony
 `K_r`, vanishing residual density; **(L)** sharp-linear affordability —
 `a^r_t <= 4 m_t/(D^r_t)^2` and `sum (1/4) a^r_t (D^r_t)^2 <= B_r`; **(M)** the
-MarketMaker ceiling `U_r = U + B_tot`; **(N)** nested assessment
-`A_N subseteq A_t`; **(T)** temporal stability `d^r_t <= L_r d^r_s + eps_r(t,s)` on
+MarketMaker ceiling `U_r = U + B_tot`; **(N)** assessment-set nesting
+`A_N subseteq A_t`; **(T)** semantic stability `d^r_t <= L_r d^r_s + eps_r(t,s)` on
 the plan's support.
 
     E_{mu^r_N}[d^r]  <=  L_r K_r ( 2 sqrt(B_r) + sqrt(U_r) ) / sqrt(A^r_N)
@@ -439,28 +491,33 @@ asymptotic compatibility with something still live.
     settlement / interaction semantics
         |
         v
-    Answerability generates claims on future normative capacity
-        |                        (Layer II object; consumed here as the stream c^r_t
-        |                         plus a set of admissible traces)
+    Answerability generates obligations on future normative capacity
+        |                        (Layer II object; consumed here as the obligation
+        |                         stream c^r_t plus a set of admissible service traces)
         +--------------------------+
         |                          |
         v                          v
     Actionability:              traderized force compiles the row;
     what a unit of              LI supplies Uptake under bounded liability
-    authority accomplishes         |
+    enforcement accomplishes       |
         |                          |
         +----------+---------------+
                    v
-    allocated authority a^r_t produces service-weighted Progress
+    a service policy allocates enforcement intensity a^r_t,
+    inside local enforcement capacity and a lifetime liability budget
                    |
                    v
-    Service Transport relates delivered service to inherited claims
+    service-weighted Progress          (the learner-side mechanism theorem)
+                   |
+                   v
+    Service Transport — service-to-obligation cap, semantic stability —
+    relates delivered service to inherited obligation
                    |
                    v
     affordability / serviceability decides whether that service persists
                    |
                    v
-    claim-weighted Sustainable Progress
+    Progress                            (obligation-weighted; the endpoint)
                    |
                    v
     (L) + timely transport  ==>  Progress up to semantic delay only
@@ -516,7 +573,7 @@ is more legitimate — which §3.11's own slogan forbids.
 That sentence is the interface. `ANSWERABILITY_AND_SERVICE.md` states what each
 side actually contains, what the mathematics now realizes, and what the conceptual
 theory demands that no theorem here supplies — chiefly **disposition**, for which
-Layer I has no analogue at all: in the current service theory claim mass is served
+Layer I has no analogue at all: in the current service theory obligation mass is served
 or it persists; it never legitimately ceases to be owed.
 
 ---
@@ -532,7 +589,7 @@ The honest boundary of the endpoint theorem.
 - **(L) in the closed loop.** Every existence result is E0–E2 of
   `CLOSED_LOOP_EXISTENCE.md`: the date costs are exogenous. (Item 75.)
 - **Necessity of bounded liability.** (Item 40.)
-- **A converse to the overload certificate.** (Item 74.)
+- **A converse to the finite-horizon infeasibility certificate.** (Item 74.)
 - **That `F_r` is ever zero for a norm a practice produces.**
 - **Anything across eras.** The residual `eps_r` is a *within-era* deferral
   residual. Cross-era transport needs a semantic bridge nothing in Layer I supplies.

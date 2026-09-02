@@ -28,11 +28,11 @@ this page says which are still worth issuing and which the checkpoint retired.
 Consume these; do not reopen without an actual contradiction. **Closed for research
 sequencing; paper-derived + test-supported unless the ledger marks otherwise.**
 
-- **The fixed-era composition.** Claim stream to claim-weighted Progress and to
+- **The fixed-era composition.** Obligation stream to Progress and to
   substrate preservation, with every arrow carrying a prose derivation and no gap
   left implicit. (`rounds/2026-08-31-normative-affordability/FIXED_ERA_THEOREM.md`,
   frozen.) The composition is complete; it is not formally verified.
-- **The service typing.** Service is allocated authority.
+- **The service typing.** Service is enforcement intensity.
 - **Actionability at its weakest hypothesis.** `phi` bounded away from zero away
   from zero, necessary and sufficient; convexity buys only the rate.
 - **Exogenous persistence.** `liminf L_t(1) = 0`, for any star-shaped date cost,
@@ -41,7 +41,7 @@ sequencing; paper-derived + test-supported unless the ledger marks otherwise.**
   completeness, the sliding-window closed form.
 - **The three service problems.** `persistence == eventual full service ⊊ uniform
   bounded delay`.
-- **The friction collapse.** On the sharp linear branch under nested assessment,
+- **The settlement-friction collapse.** On the sharp linear branch under assessment-set nesting,
   `F_r = 0`.
 - **Sharp Timely Service.** The Layer I endpoint.
 - **Deadline insolvency certificates.**
@@ -116,10 +116,10 @@ it.
 *Shape.* The tractable first question is monotone: if enforcing a reason weakly
 decreases its future depth, does the persistence criterion survive and is the
 greedy tranche rule still causal-optimal? The adversarial one is whether a policy
-can be driven into a friction trap it created.
+can be driven into a cost trap it created.
 
 *Priority note.* Lower than it looks. Every Layer I theorem is conditional on
-exogenous friction, but a legitimacy theorem does not need the closed loop —
+exogenous date costs, but a legitimacy theorem does not need the closed loop —
 it needs the constants of (T) and a disposition theory. Closed-loop work makes
 Layer I *robust*; it does not move the program toward Layer II.
 
@@ -174,7 +174,7 @@ these.
 5. **Improving the exogenous persistence criterion.** It is exact for every
    star-shaped cost. Further generality would need a non-star-shaped charge, and no
    realization produces one.
-6. **A converse to the overload certificate as a near-term target**
+6. **A converse to the finite-horizon infeasibility certificate as a near-term target**
    (`PRIORITIES.md` item 74). It certifies the failure of a hypothesis whose
    necessity is itself unknown (item 40); it stays filed and stays sequenced behind.
 7. **Extending the affordability round.** It is finished. Further passes there

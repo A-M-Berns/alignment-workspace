@@ -12,7 +12,7 @@ The rules-governed system by which a reasoner's history incurs, carries, and
 accounts for normative burdens. Each burden enters as an **answerability slice**
 with a birth stage and fixed anchored content; it is thereafter Satisfied,
 Disposed, or Remaining, and that decomposition is conserved across every
-transition. For the learner it exports a **claim stream** `c^r_t` plus a set of
+transition. For the learner it exports a **obligation stream** `c^r_t` plus a set of
 admissible service traces. → `CURRENT_THEORY.md` §5, `ANSWERABILITY_AND_SERVICE.md` §4.
 
 **2. What is Actionability?**
@@ -25,19 +25,19 @@ choose `phi`. → `CURRENT_THEORY.md` §3.3, §4.
 **3. What is Progress?**
 A two-stage structure, and the staging is canonical even though the bare name is not:
 
-    service-weighted Progress  --Service Transport-->  claim-weighted Progress
+    service-weighted Progress  --Service Transport-->  obligation-weighted Progress
 
 *Service-weighted Progress*, `E_{nu^a_N}[d] -> 0` at rate `A_N^{-1/2}`, is the
 learner-side mechanism theorem — what the machinery delivers; it always carries its
-qualifier. *Claim-weighted Progress*, `E_{mu_N}[d] -> 0`, is the
+qualifier. *Obligation-weighted Progress*, `E_{mu_N}[d] -> 0`, is the
 Answerability-facing endpoint — what was actually owed. The second does not follow
 from the first without a transport hypothesis.
 
-**The bare word "Progress" means the claim-weighted form** (settled 2026-09-01), so
+**The bare word "Progress" means the obligation-weighted form** (settled 2026-09-01), so
 every Progress claim carries a transport hypothesis. → `CURRENT_THEORY.md` §3.6.
 
 **4. What is service?**
-**Allocated authority** `a = beta`, the enforcement multiplier fixed before the
+**Enforcement intensity** `a = beta`, the enforcement multiplier fixed before the
 market maker picks a price. Predictable and freely schedulable. It is *not*
 realized corrective force, which is unschedulable, undefined under perfect
 compliance, and anti-monotone in conformance. → `CURRENT_THEORY.md` §3.2.
@@ -52,26 +52,26 @@ discharge it, and bounded liability is what buys substrate preservation.
 **6. What is affordability?**
 The schematic question of whether the mechanism can meet the normative demand.
 Bounded cumulative liability is *one realization* of it, not its definition.
-Exactly characterized for exogenous friction: a persistent schedule fitting a
+Exactly characterized for exogenous date costs: a persistent schedule fitting a
 finite budget exists **iff** `liminf_t L_t(1) = 0`, for any star-shaped date cost.
 → `CURRENT_THEORY.md` §3.9.
 
 **7. What is Service Transport?**
 The interface primitive relating delivered service to inherited claims: an adapted
-transport plan `T(t,s)` with the claim marginal, service feasibility, stability
-`d_t <= L d_s + eps(t,s)` on its support, and a service-to-claim cap. It replaces
+transport plan `T(t,s)` with the obligation marginal, service feasibility, stability
+`d_t <= L d_s + eps(t,s)` on its support, and a service-to-obligation cap. It replaces
 contiguity, which is exact for the array problem but not checkable at a finite
 horizon, not quantitative, and false of bounded-delay service. The two routes are
 **incomparable**. → `CURRENT_THEORY.md` §3.7.
 
 **8. What does Sharp Timely Service prove?**
 That under service (S), sharp-linear affordability (L), the MarketMaker ceiling
-(M), nested assessment (N) and temporal stability (T),
+(M), assessment-set nesting (N) and semantic stability (T),
 
     E_{mu^r_N}[d^r] <= L_r K_r (2 sqrt(B_r) + sqrt(U_r))/sqrt(A^r_N) + epsbar^r_N(T) + Dbar_r R^r_N/C^r_N ,
 
 so the same liability budget that preserves the learner also drives settlement
-friction to zero, leaving only the semantic change incurred while waiting.
+the settlement-friction residual to zero, leaving only the semantic change incurred while waiting.
 → `CURRENT_THEORY.md` §3.11.
 
 **9. What assumptions does it not construct?**
@@ -107,7 +107,7 @@ The test is whether the canonical proof would still stand if the source vanished
 sufficiency proof. **Formal substrate:** Logical Induction; imprecise-probability
 coherence (Walley, Levi, Williams) for the credal state; convex projection, whose
 variational inequality the enforcement compiler uses; and linear-programming duality,
-for the exactness-under-Slater remark beside the overload certificate. **Conceptual
+for the exactness-under-Slater remark beside the finite-horizon infeasibility certificate. **Conceptual
 dependency:** Brandom's scorekeeping — which is also what gives answerability its
 creditor/debtor shape — and Horty with the TMS line for reason representation.
 **Verification target:** Carroll et al. on influenceable reward, and `Demski`'s learning-normativity

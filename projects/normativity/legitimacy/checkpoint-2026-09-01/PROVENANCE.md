@@ -119,6 +119,30 @@ no theory and opened no research question. What it changed:
   interpretive analogue rather than a reduction, since no map between the systems
   was constructed.
 
+## The September naming audit
+
+A third dispatch on the same branch, after the six decisions landed. A maintainer
+terminology pass: no theory added, no theorem content changed, no research round
+opened.
+
+Fourteen renames, applied across the checkpoint and the wiki and recorded in
+`DECISIONS.md` (2026-09-02) with the map in `SUPERSESSION.md` §2a. The substantive
+ones: *claim stream/measure* became **obligation stream/measure**, because *claim*
+was carrying four meanings at once; *allocated authority* became **enforcement
+intensity**, because a mechanical scalar should not be named for normative authority;
+and the word *friction*, which had three referents, was reserved for the
+**settlement-friction residual** alone.
+
+One conceptual repair travelled with the renames rather than following from them:
+**service is no longer identified with the scheduled scalar.** Service is the
+Answerability-facing relation; enforcement intensity is the resource that supplies it
+in this realization; realized force is what materializes at the fixed point. The old
+name made a realization-level control variable sound like normative authority itself.
+
+Symbols are unchanged. Historical rounds keep their original vocabulary and were not
+rewritten; the Lean declaration backlog in `state/views/NAMING_AUDIT.md` is out of
+scope and the view is regenerated so it reflects what remains.
+
 ## Web use
 
 Seven bibliographic verifications, for `../../notes/PRIOR_ART.md`: the Gale–Hoffman

@@ -51,7 +51,7 @@ without being answered? And what makes a later reason or service count as
 dispose of `r`'s remaining content. The note gives the accounting slot (`disp(t)`,
 Definition 5.2) and the authentication obligation (Theorem 7.5 must authenticate
 `disp` or no-laundering is false); it does not characterize the licence. The
-service mathematics has **no** disposition at all: claim mass is served or it
+service mathematics has **no** disposition at all: obligation mass is served or it
 remains.
 
 **Why it matters three ways.** It supplies defeat; it closes the laundering channel
@@ -68,7 +68,7 @@ revision whose grounds trace back to `R_0`.
 attempt the licence rejects.
 
 **Filed as `PRIORITIES.md` item 77**, which asks what licenses `MayDispose` and what
-the answer does to the claim stream the affordability theory consumes.
+the answer does to the obligation stream the affordability theory consumes.
 
 **Cross-era Answerability may still need its own item.** Item 77 covers the licence;
 it does not cover what makes a later service *count as* answering an earlier claim
@@ -134,14 +134,14 @@ respond to the policy?
 
 **Known.** Every existence result is E0–E2: exogenous date costs. E4 has a
 sufficient forcing condition with no instance; E5 needs a predictable
-account-drift lower bound. The argument that the deductive channel's friction is
+account-drift lower bound. The argument that the deductive channel's date costs are
 policy-independent is a *reading* of the settlement interface's completeness
 clause, not a theorem.
 
 **Solution shape.** Monotone case first — if enforcing weakly decreases future
 depth, does the criterion survive and is the greedy tranche rule still
 causal-optimal? Then the adversarial case: can a policy be driven into a friction
-trap it created?
+cost trap it created?
 
 **`PRIORITIES.md` item 75.** Robustness work; blocks nothing in Layer II.
 
