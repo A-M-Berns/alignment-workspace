@@ -61,12 +61,12 @@ Answerability](Diachronic-Answerability) for what the two ends look like.
    blocks nothing above it and can proceed in parallel.
 
 **What should no longer receive research energy.** Any rate-region or time-sharing
-geometry of authority — the budget is a consumable stock, and this has been got
-wrong twice from two directions. Any density or gap condition on cheap enforcement
-dates as a substitute for the exact criterion — three failed attempts. Realized
-force as a measure of service — it inverts the sign of successful learning.
-Sharpening the online competitive ratio for accumulated authority — proved
-impossible. Extending the fixed-era affordability work at all.
+geometry of enforcement intensity — the budget is a consumable stock, and this has
+been got wrong twice from two directions. Any density or gap condition on cheap
+enforcement dates as a substitute for the exact criterion — three failed attempts.
+Realized force as a measure of service — it inverts the sign of successful learning.
+Sharpening the online competitive ratio for accumulated enforcement intensity —
+proved impossible. Extending the fixed-era affordability work at all.
 
 The standing legitimacy items:
 

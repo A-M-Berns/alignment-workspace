@@ -16,7 +16,7 @@ be discharged?* Not whether the reason is correct, and not whether the answer is
 good — whether a bounded reasoner with finite room to manoeuvre can get to it at
 all, and get to it in time.
 
-## Claims and service
+## Obligations and service
 
 Two measures, and almost everything here is about keeping them apart.
 
@@ -25,9 +25,14 @@ The **obligation measure** records what is owed and when it was incurred. If a r
 that exposure. This is Answerability's object; it is fixed by history and no
 scheduler touches it.
 
-The **service measure** records what was actually delivered. The learner allocates
-some quantity of corrective authority at each date, and the service measure weights
-dates by that allocation. This is the scheduler's object.
+The **service measure** records what was actually delivered. Service is the broad
+Answerability-facing relation — an obligation receives the answering work it is owed
+— and in the traderized realization the learner supplies it by allocating some
+quantity of **enforcement intensity** `a_t` at each date. The service measure weights
+dates by that allocation. This is the scheduler's object. Service is not *identical*
+to enforcement intensity: intensity is how a market-embedded reasoner happens to pay
+for service, and the force actually exerted is decided later, at the market's fixed
+point.
 
 A learner that drives its *service-weighted* error to zero has done something, but
 possibly not the thing that was asked. It may have been servicing the dates where
@@ -40,21 +45,22 @@ tending to one half.
 
 ## Why the measures need transport, not matching
 
-The naive repair is to insist that service happen at the date the claim arose. That
-is too strong, and obviously so: answering a challenge next week is not a failure of
-answerability. What is needed is a **transport plan** — a bookkeeping of which
-obligation mass, owed when, was discharged when — together with three conditions: the
-plan is feasible against the authority actually available; it does not spend
-wildly more service than there was claim; and the reason does not change too much
-between being owed and being answered.
+The naive repair is to insist that service happen at the date the obligation was
+incurred. That is too strong, and obviously so: answering a challenge next week is
+not a failure of answerability. What is needed is **Service Transport**: a
+**transport plan** — a bookkeeping of which obligation mass, owed when, was
+discharged when — together with three conditions: the plan is feasible against the enforcement intensity actually
+available; it does not spend wildly more service than there was obligation, which is
+the **service-to-obligation cap**; and the reason does not change too much between
+being owed and being answered, which is **semantic stability**.
 
 That last condition is the interesting one, and it is the one the mathematics
 cannot yet supply for itself. See *What is still missing*.
 
 There is an exact characterization of when transport with a fixed deadline is
-possible at all — for every window, the claim arriving in it must fit inside the
-authority available over that window extended by the deadline — and serving the
-oldest outstanding claim first turns out to be optimal.
+possible at all — for every window, the obligation mass incurred in it must fit
+inside the enforcement intensity available over that window extended by the deadline
+— and serving the oldest outstanding obligation first turns out to be optimal.
 
 Neither is new. The feasibility criterion is a specialization of a classical
 network-flow theorem, and the repository's proof **cites** that theorem rather than
@@ -67,18 +73,19 @@ exactly what such a ledger is for.
 
 The round's most quotable result is a separation.
 
-- **Persistence** — the reasoner keeps spending authority on this reason forever.
-- **Eventual full service** — every claim is eventually discharged, with no
+- **Persistence** — the reasoner keeps allocating enforcement intensity to this
+  reason forever.
+- **Eventual full service** — every obligation is eventually discharged, with no
   deadline.
-- **Uniform bounded delay** — every claim is discharged within some fixed time.
+- **Uniform bounded delay** — every obligation is discharged within some fixed time.
 
 The first two turn out to be *the same question*. If a reasoner can afford to keep
-spending, it can afford to eventually answer everything — by a diagonal argument
-that gives each claim its own cheap moment rather than batching claims together.
+allocating, it can afford to eventually answer everything — by a diagonal argument
+that gives each obligation its own cheap moment rather than batching them together.
 The third is strictly stronger, and no amount of "cheap moments happen often
 enough" substitutes for the exact criterion.
 
-> Unlimited deferral makes "eventually answer every persistent claim" no harder
+> Unlimited deferral makes "eventually answer every persistent obligation" no harder
 > than maintaining divergent effort. The substantive constraint enters only when
 > **delay itself matters**.
 
@@ -87,13 +94,34 @@ satisfiable at all by a reasoner willing to keep working, then the whole content
 timeliness is in the deadlines — and a theory of answerability that does not say
 when an answer is *late* has not yet said anything a scheduler can fail.
 
+## What a budget buys in timeliness
+
+Once delay matters, budget and timeliness trade against each other, and the trade
+has two named pieces.
+
+The **critical delay** `H*(B)` is the shortest deadline a lifetime budget `B` can
+actually meet. It is a scalar, and it may be infinite even for a reason that is
+perfectly affordable under unlimited deferral — being able to answer eventually says
+nothing about being able to answer by a date.
+
+The monotone relation `B |-> H*(B)` is the **liability–timeliness tradeoff**: paying
+more buys a shorter delay, a shorter delay leaves the reason less time to change, and
+semantic stability converts that into a smaller residual. An earlier draft treated
+this relation as a primitive object in its own right; it is not one. The primitive is
+the critical delay, and the tradeoff is what the scalar does as the budget moves.
+
 ## The endpoint
 
-Putting the pieces together: if the claims can be transported onto enforcement
-dates that are both **timely** and **affordable in a specific sharp sense**, then
-the same liability budget that keeps the learner from being exploited also drives
-the settlement-friction residual to zero — and the only error left is the semantic change
-the reason underwent while it waited to be answered.
+Putting the pieces together — this is **Sharp Timely Service** — if the obligations
+can be transported onto enforcement dates that are both **timely** and **affordable
+in a specific sharp sense**, then the same liability budget that keeps the learner
+from being exploited also drives the settlement-friction residual to zero, leaving
+only the **obligation-normalized semantic error**: how much the reason changed while
+it waited to be answered.
+
+`sharp` there names the **sharp robust liability charge**, not tightness or
+exactness in any generic sense. It is precisely because that charge is computed from
+the same deficit the residual averages that one budget controls both.
 
 This is the strongest statement the fixed-era theory makes. It is also
 conditional in a way worth being precise about: it assumes a bound on that
@@ -103,12 +131,16 @@ semantic change, and nothing in the program yet supplies one.
 
 Two kinds of impossibility, and only one of them is certifiable.
 
-If the claims already on the books cannot be answered by their deadlines, that is a
-**finite** fact about a bounded stretch of dates, and there is an exact certificate
-for it: the minimum cost of serving those claims on time, against the reasoner's
-remaining budget. Every field of it is settled record.
+If the obligations already on the books cannot be answered by their deadlines, that
+is a **finite** fact about a bounded stretch of dates, and there is an exact
+**deadline insolvency certificate** for it: the minimum cost of serving those
+obligations on time, against the reasoner's remaining budget. Every field of it is
+settled record. It is the Answerability-facing specialization of the broader
+**finite-horizon infeasibility certificate** — which may witness a capacity failure,
+a liability failure, or both. The relation is a typing, not a theorem the repository
+states, and the two names are worth keeping distinct.
 
-If a reason can *never* be persistently afforded, that is a claim about the
+If a reason can *never* be persistently afforded, that is an assertion about the
 infinite future, and no finite observation establishes it. Watching the cost stay
 high for a long time is not a certificate. The honest response to that situation is
 deferral and inquiry, not a record that the reason is unanswerable.
@@ -130,8 +162,8 @@ appearance of sustained normative pressure without buying any conformance at all
 
 ## What is still missing
 
-The endpoint theorem ends in a single term — how much the reason changed while
-waiting — and nothing certifies that term. Within a single era it is a technical
+The endpoint theorem ends in a single term — the obligation-normalized semantic
+error, how much the reason changed while waiting — and nothing certifies it. Within a single era it is a technical
 gap. Across a self-revision it is the entire problem, because "how much of a reason
 survives a revision" *is* that constant. This is the program's highest-value open
 problem and it is where [Diachronic Answerability](Diachronic-Answerability) picks

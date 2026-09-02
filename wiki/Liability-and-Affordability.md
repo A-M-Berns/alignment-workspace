@@ -74,8 +74,9 @@ inherits a uniform ceiling.
 
 There is a second, subtler failure. A policy that respects its per-date spending
 limit at every single date can still have an account that falls without bound, if
-the limits themselves do not sum. **Local capacity is not lifetime safety**, and
-conflating them is the sort of mistake that looks fine in every finite check.
+the limits themselves do not sum. **Local enforcement capacity is not lifetime
+safety**, and conflating them is the sort of mistake that looks fine in every finite
+check.
 
 ## Affordability
 
@@ -103,7 +104,7 @@ compete for a finite resource.
 simple rule that waits for cheap moments and spends geometrically shrinking amounts
 achieves persistence whenever a scheduler with perfect foresight could. It loses
 everything on the quantitative question: there is no positive competitive ratio for
-*how much* authority gets accumulated.
+*how much* enforcement intensity gets accumulated.
 
 ## Where this connects
 
