@@ -26,12 +26,13 @@ maintainer ruling. Nothing here is a registered claim.
 - **The standing half of D3 was vacuous**, and every laundering result in the previous
   round in fact rested on one clause while appearing to rest on two.
 
-## The largest caveat
+## What the check rests on
 
-Item 77's prior-art deliverable is **partly** discharged. *Reasons as Defaults* itself
-was not readable from here; the findings rest on the ASPIC+ tutorial, on SEP, and on
-the publisher's description. `HORTY.md` §0 says exactly what that covers and what it
-does not.
+**Horty's own text**, supplied mid-round: *Reasons as Defaults*, Draft #2, 2006 — the
+paper the 2012 book develops, carrying the full apparatus. All five findings are
+checked against it; none was withdrawn when it arrived and two got sharper. The **2012
+book** is still unread, so a claim about what the *book* says is not licensed here.
+`HORTY.md` §0 records both states of the check rather than tidying the first away.
 
 ## Verify
 

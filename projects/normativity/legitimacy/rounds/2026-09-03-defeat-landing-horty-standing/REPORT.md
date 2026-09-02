@@ -6,7 +6,7 @@ PR79's Lean that its report did not flag.
 
 ## Verdict
 
-DEFEAT-PRINCIPLE-LANDED-HORTY-CANNOT-EXPRESS-DISPOSAL-AND-THE-STANDING-CLAUSE-WAS-VACUOUS — the Defeat Principle is adopted by maintainer ruling and its consequences are no longer conditional; Horty's machinery cannot express authorized disposition, and the reason is deeper than item 77 states, since his theory says what to conclude rather than what is owed and therefore has no account for a licence to operate on, while his exclusion mechanism turns out to be challengeable in-system and so is closer to disposal than to settlement, leaving the round's two summands intact rather than collapsed; ASPIC+ has neither a successor nor an authored attack relation, and its reinstatement is computed by the semantics rather than licensed by a participant, which is the opposite of a transfer; PR79's separation condition bound a participant its body never mentioned, so the standing half of D3 was vacuous and every laundering result in that round in fact rested on the foreign-ground clause alone, a defect the Python model did not share and therefore did not catch; with the participant carried into the licence the standing side alone refuses a single-handed disposal, which closes the case of a disposal citing only settlement facts, since such a disposal satisfies the foreign-ground clause vacuously; and the specification PR79 wrote down now has a Lean model, together with a second trace proved to fail it at exactly one clause, which turns the round's first finding from a remark into a checked pair.
+DEFEAT-PRINCIPLE-LANDED-HORTY-CANNOT-EXPRESS-DISPOSAL-AND-THE-STANDING-CLAUSE-WAS-VACUOUS — the Defeat Principle is adopted by maintainer ruling and its consequences are no longer conditional; Horty's machinery cannot express authorized disposition, and the reason is deeper than item 77 states, since his theory says what to conclude rather than what is owed and therefore has no account for a licence to operate on, while his exclusion mechanism turns out to be challengeable in-system and so is closer to disposal than to settlement, leaving the round's two summands intact rather than collapsed, a verdict Horty states himself when he writes that exclusionary reasons can themselves be excluded and rejects a stratified hierarchy of orders; ASPIC+ has neither a successor nor an authored attack relation, and its reinstatement is computed by the semantics rather than licensed by a participant, which is the opposite of a transfer; PR79's separation condition bound a participant its body never mentioned, so the standing half of D3 was vacuous and every laundering result in that round in fact rested on the foreign-ground clause alone, a defect the Python model did not share and therefore did not catch; with the participant carried into the licence the standing side alone refuses a single-handed disposal, which closes the case of a disposal citing only settlement facts, since such a disposal satisfies the foreign-ground clause vacuously; and the specification PR79 wrote down now has a Lean model, together with a second trace proved to fail it at exactly one clause, which turns the round's first finding from a remark into a checked pair.
 
 ## 1. The ruling, landed
 
@@ -82,12 +82,14 @@ pair.
    landed"; `main` was `51898f2` and PR79 was open. This round is **stacked on PR79's
    head** rather than on `main`, since merging is the maintainer's and the ledger says
    a merge is never a queue entry. If #79 merges first this rebases cleanly.
-2. **The Horty check is partial.** The dispatch says "work from the actual texts."
-   *Reasons as Defaults* was **not read** — author-site certificate mismatch, blocked
-   archive, paywall — and neither was Pollock 1987. Findings rest on the ASPIC+ tutorial
-   (read directly), SEP, and the publisher's description. Claims that would need the
-   primary text are marked *unverified* and not asserted. **Item 77 does not close on
-   this.**
+2. **The Horty check began without the primary text and was completed with it.** The
+   first pass could not reach *Reasons as Defaults* — author-site certificate mismatch,
+   blocked archive, paywall — and said so, marking three findings *unverified*. The
+   maintainer then supplied **Horty's 2006 paper**, which carries the whole apparatus,
+   and the findings were rechecked against it: **two sharpened, none withdrawn.**
+   `HORTY.md` §0 records both states rather than presenting the result as if the text
+   had been in hand throughout. The **2012 book** is still unread, so a claim about what
+   the *book* says is not licensed by this round. Pollock 1987 was not read either.
 3. **`PRIOR_ART.md`'s Pollock URL is dead**, though marked "citation verified
    2026-09-01". Recorded rather than quietly repaired; the verification stands as a fact
    about its date, the link does not.
@@ -108,8 +110,9 @@ pair.
 
 ## 7. What this does not establish (standard 9)
 
-- **The Horty check is incomplete** — see deviation 2. This is the largest gap and it
-  is the item's own deliverable.
+- **The 2012 book was not read**, only the 2006 paper it develops. Every finding is
+  about an apparatus that paper carries in full, so the *theory* question is answered;
+  a claim about what the **book** says is not licensed here.
 - **The coalition hole is not closed.** `AnswerableFor` is a *definition* plus a
   one-line theorem, deliberately not offered as the general non-capture predicate. The
   two-participant alternating walk still launders under plain separation.
@@ -120,15 +123,20 @@ pair.
   satisfies it.
 - **T1, T3, T4, T5 of PR79 remain paper-derived**, unchanged by this round.
 - **`Auth` and grounds-nonemptiness still do not re-derive** from ancestry.
-- Findings 1–4 are **readings of secondary sources**, not of the books.
+- Findings 1–4 are readings of **Horty's 2006 paper** and Finding 5 of the ASPIC+
+  tutorial — both primary. No finding now rests on a secondary source alone.
+- **`PRIOR_ART.md`'s Pollock attribution is off**: Horty credits the undercutting
+  distinction to Pollock **1970**, not the 1987 paper the ledger cites.
 
 ## 8. Outstanding maintainer actions (standard 10)
 
 1. **Merge or rebase PR79** — this round is stacked on it and does not stand alone.
-2. **Commission the primary-text Horty check**, or rule that the secondary-source
-   verdict suffices. Item 77 stays open until one or the other.
-3. **Repair `PRIOR_ART.md`'s Pollock link** or drop the URL; the "verified" mark now
-   over-claims.
+2. **Decide whether item 77's prior-art deliverable is discharged.** The theory
+   question is now answered against Horty's own text; only the 2012 book is unread, and
+   its contribution over the paper is a development of §3.2 plus the Dancy material.
+   Either rule the paper sufficient, or obtain the book.
+3. **Repair `PRIOR_ART.md`'s Pollock entry**: the URL is dead, and the attribution
+   should follow Horty in crediting Pollock 1970 for the distinction.
 4. **Three reservations remain in the queue**, untouched: load discount, settlement
    independence, protected participant.
 5. **Wiki changes proposed, not made** (the dispatch forbids editing `wiki/`):

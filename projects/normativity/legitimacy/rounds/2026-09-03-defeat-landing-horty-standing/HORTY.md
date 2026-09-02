@@ -5,22 +5,35 @@ Horty's priority orderings, and predicts they are not enough. `PRIOR_ART.md` §7
 the same thing as "an open question and a good literature target". This settles it, and
 one of the five findings comes out **against** the shape the dispatch predicted.
 
-## 0. What was actually read, and what was not
+## 0. What was read
 
 `AGENTS.md` standard 7 forbids a remembered label. So, precisely:
 
 | source | status |
 | --- | --- |
-| Modgil & Prakken, *The ASPIC+ framework for structured argumentation: a tutorial* (Argument & Computation, 2014) | **read** — PDF fetched from the author's site, <https://webspace.science.uu.nl/~prakk101/pubs/ASPICtutorial.pdf> |
-| *Defeasible Reasoning*, Stanford Encyclopedia of Philosophy, <https://plato.stanford.edu/entries/reasoning-defeasible/> | **read** — the source for Pollock's rebut/undercut definitions and for Horty's undercutting mechanism |
-| Horty, *Reasons as Defaults*, OUP 2012 | **NOT read.** Every copy reachable from here failed: the author's site (`horty.umiacs.io`) serves a certificate that does not cover the host it redirects to, the CiteSeerX draft resolves only into `web.archive.org`, which is blocked, and the Springer/OUP copies are paywalled. |
-| Pollock, *Defeasible Reasoning*, Cognitive Science 11(4), 1987 | **NOT read.** `PRIOR_ART.md` §2 records this citation as "verified 2026-09-01" against a URL on `umiacs.umd.edu`; **that URL is now dead**, by the same redirect-and-certificate failure. Filed below. |
+| **Horty, *Reasons as Defaults*, Draft #2, 16 August 2006** (79 pp.) | **READ** — the maintainer supplied it mid-round. This is the **paper**, the precursor to the 2012 book, and it carries the formal apparatus in full: Definitions 1–7, fixed- and variable-priority default theories, and **threshold default theories**, which is what the book develops into "exclusionary default logic". |
+| Modgil & Prakken, *The ASPIC+ framework for structured argumentation: a tutorial* (2014) | **READ** — PDF, author's site |
+| *Defeasible Reasoning*, Stanford Encyclopedia of Philosophy | **READ** |
+| Horty, *Reasons as Defaults*, **OUP 2012** (the book) | **NOT read** — still unreachable. Every finding below is checked against the 2006 paper; where the book may have moved, that is flagged. |
+| Pollock, *Defeasible Reasoning*, 1987 | **NOT read.** `PRIOR_ART.md` §2 records it as "verified 2026-09-01" against a URL on `umiacs.umd.edu`; **that URL is now dead**. Horty attributes the undercutting distinction to Pollock 1970 and 1995, not 1987, in this paper. |
 
-**So the findings below rest on the ASPIC+ primary text, on SEP, and on the
-publisher's own description of the book's two default-logic variants — not on the book
-itself.** Where a claim about Horty depends on the primary text, it is marked
-*unverified* and is not asserted. That is a smaller check than item 77 asks for, and
-the item does not close on it.
+**This section replaces an earlier one written before the paper arrived**, which
+recorded the primary text as unreachable and marked three findings *unverified*. They
+are now verified against Horty's own text, and **two of them are sharpened rather than
+merely confirmed** — see Findings 1 and 2. Nothing had to be withdrawn.
+
+### The apparatus, quoted
+
+Horty's four definitions, which every finding below turns on (§2.2, pp. 11–16):
+
+    Triggered_{W,D,<}(S)  = {δ ∈ D : W ∪ Conclusion(S) ⊢ Premise(δ)}
+    Conflicted_{W,D,<}(S) = {δ ∈ D : W ∪ Conclusion(S) ⊢ ¬Conclusion(δ)}
+    Defeated_{W,D,<}(S)   = {δ ∈ D : ∃ δ' ∈ Triggered(S) with δ < δ'
+                                     and Conclusion(δ') ⊢ ¬Conclusion(δ)}
+    Binding_{W,D,<}(S)    = Triggered(S) \ (Conflicted(S) ∪ Defeated(S))
+
+A scenario is **stable** when `S = Binding(S)`. Reasons are "identified with the
+premises of triggered defaults" (p. 12).
 
 ## Finding 1 — Expressibility: can a priority ordering express `dispose`?
 
@@ -51,10 +64,16 @@ So the honest statement is not "Horty has defeat but no licence to stop owing". 
 > account, so there is nothing for a disposal to move, and the question "what licenses
 > the loser to stop being owed" does not arise inside it.
 
-*Unverified against the primary text:* whether a defeated default can become binding
-again when the facts change. The apparatus plainly permits it — the default is still in
-`D` — but that is reactivation by *recomputation*, not by any participant's licensed
-act, and nothing is owed in the interim.
+**Verified, and the earlier hedge discharged.** `Defeated_{W,D,<}(S)` is a function of
+the scenario, so a default defeated in one scenario may be binding in another; and
+Horty exhibits the reactivation directly. In the Drug #3 example (§3.2, p. 38) a new
+default forces the undercutter below threshold, and the originally undercut default
+"can now **emerge from below threshold** to support the conclusion that the object is
+red."
+
+So a defeated default is reactivable — but **by recomputation, not by anyone's licensed
+act**, and nothing is owed on its account in the interim. That is the disanalogy with
+`dispose`, stated exactly.
 
 ## Finding 2 — The direction of the gap
 
@@ -70,74 +89,113 @@ The dispatch predicted: grounds (D1) yes, successor (D2) no, separation (D3) no,
 | **D2 routed** | **no.** No successor, no inherited load, nothing carried forward. | prediction correct |
 | **D3 separated** | **no.** | prediction correct, reason wrong |
 
-The reason D3 has no image is **not** that the ordering is exogenous. Horty
-specifically built the variant in which it is *not*: SEP records that he "allows for
-defeasible reasoning about priorities … by means of higher-order default rules." The
-ordering is endogenous in exactly the sense the prediction denies.
+The reason D3 has no image is **not** that the ordering is exogenous — and the paper
+lets this be said exactly, because it contains **both** cases.
 
-What is missing is **authorship, not endogeneity**. A default theory has no
-participants — no openers, no resolvers, nobody who holds standing. Reasoning
-determines the priority; no *one* does. D3 asks a question about *who*, and there is no
-`who` in the ontology to ask it of.
+- **Fixed priority theories** `⟨W, D, <⟩` (§2.1): here the prediction is right. Horty
+  says he considers "the special case in which all priority relations among defaults
+  are fixed in advance, so that there is no need to consider either the source of these
+  priority relations or the way in which they are established."
+- **Variable priority theories** `⟨W, D⟩` (§3.1): here it is wrong. The ordering is
+  *derived from the scenario itself*, `δ <_S δ'` iff `W ∪ Conclusion(S) ⊢ d ≺ d'`, and
+  a scenario is proper for `⟨W, D⟩` exactly when it is proper for `⟨W, D, <_S⟩`
+  (Definition 6). Priorities are established by the very reasoning they guide.
 
-This matters beyond bookkeeping: it says the gap between the two frameworks is not
-repairable by making Horty's priorities more dynamic. It is repairable only by adding
-participants, which is a change of subject.
+So the prediction's reason holds for the theory Horty starts with and fails for the one
+he builds. **What is missing throughout is authorship, not endogeneity.**
+
+And the paper makes that sharp, because Horty *does* model authority — twice. He names
+it as a source of priority (§2.1: "orders from the Colonel override orders from the
+Major"), and in the Nixon example the advice of a church elder and a party official is
+"encoded by supplementing the set `D` with the new defaults `δ₃` and `δ₄`."
+
+> **An authority enters Horty's framework as the content of a default, never as a
+> participant who holds standing.** There is no resolver, no opener, nobody for a
+> separation condition to quantify over. D3 asks a question about *who*, and the
+> ontology has no `who`.
+
+That is why the gap is not repairable by making priorities more dynamic: Horty already
+did that, and it does not produce a participant.
 
 *(The prediction is, however, exactly right about canonical ASPIC+ — see Finding 5.)*
 
 ## Finding 3 — Undercutting: is exclusion answerable? **(the crux)**
 
-**Verdict: yes, exclusion is challengeable in-system. So an exclusionary reason is
-*not* a settlement fact, and the theory does not have one summand where the round has
-two.**
+**Verdict: yes, exclusion is challengeable in-system — and Horty says so in as many
+words. So an exclusionary reason is *not* a settlement fact, and the theory does not
+have one summand where the round has two.**
 
 The dispatch set this up as the crux: *if an exclusionary reason is unchallengeable, it
-is a settlement fact in the round's typing, not a disposal.* The antecedent fails.
+is a settlement fact in the round's typing, not a disposal.* **The antecedent fails**,
+and this is now checked against the primary text rather than inferred from SEP.
 
-SEP states the mechanism: Horty "addresses undercutting by treating it as a triggered
-default that lowers the weight of the undercut rule below some threshold, with the
-result that the undercut rule can no longer be triggered." Three consequences:
+**The mechanism.** Horty rejects treating undercutting as primitive — "the standard
+practice is to postulate undercutting defeat as a separate, and primitive, form of
+defeat … this practice is followed, most notably, by Pollock" — and analyses it instead
+"simply as a special case of priority adjustment". A threshold value `τ` is posited, and
+triggering is revised (Definition 7, §3.2) to
 
-1. **The undercutter is itself a default.** It is triggered, it has premises, and it is
-   subject to the same priority machinery as everything else — so it can itself be
-   defeated or excluded. Exclusion is *not* at a level the system cannot challenge.
-2. **Undercutting is implemented as a priority operation**, not as a separate
-   primitive. Horty's exclusion and his priorities are the same machinery, which is why
-   the book investigates "connections among concepts like exclusion and priorities."
-3. **But the effect leaves no residue.** The undercut rule "can no longer be triggered"
-   — it drops out. No successor, nothing owed.
+    Triggered_{W,D,<}(S) = {δ ∈ D : τ < δ and W ∪ Conclusion(S) ⊢ Premise(δ)}
 
-So in the round's typing, an exclusionary reason is a **`dispose` without D2**: a
-grounded, in-system, challengeable move that moves nothing. It is emphatically not
-`settle`, because `settle` is the kind whose warrant no participant may contest, and
-Horty's exclusions are contestable by construction.
+so "a default is then undercut when our reasoning leads to the conclusion that its
+priority falls below threshold." An undercut default "cannot itself be triggered, and
+therefore, **provides no reason of its own**".
 
-**This is a positive result for the round's two-summand structure.** The worry the
-dispatch raised — that the prior art collapses `dispose` and `settle` into one — does
-not obtain. The round's separation of the two is not a distinction Horty's framework
-lacks the resources to draw; it is a distinction that does not arise there because
-nothing is owed.
+**Exclusion is itself attackable.** Three separate confirmations in the text:
 
-Raz's exclusionary reasons, which Horty is formalizing, are second-order reasons that
-exclude first-order reasons from consideration. SEP's framing — "an exclusionary reason
-is an undercutting defeater in the practical domain" — is the bridge, and it is the
-same bridge the round crosses when it applies Pollock's belief-level distinction to a
-debt.
+1. §3.2, p. 37: "ordinary defeaters and undercutters can themselves be defeated or
+   undercut, both defeaters and undercutters of defeaters and undercutters can likewise
+   be defeated or undercut, and so on."
+2. The Drug #3 example is exactly an **undercutter undercutter**: `δ₅ = D3 → d₄ ≺ t`
+   forces the undercutting default below threshold.
+3. Footnote 16, p. 39, on the practical side: *"just as in the epistemic case, where
+   undercutters can be undercut, **exclusionary reasons can themselves be excluded**:
+   perhaps Colin has promised his mistress to disregard any promises made to his wife."*
+
+Horty goes further and **rejects the stratified reading** the dispatch's worry depends
+on: he disagrees with "the suggestion … that reasons form a kind of hierarchy, so that,
+just as undercutters are 'second-order' reasons, undercutter undercutters are
+'third-order' reasons, and so on … His entire life, and the reasons governing it, could
+be a tangled mess, but the theory would apply all the same."
+
+**So there is no level the system cannot challenge**, which is precisely the property
+the round's `settle` has and `dispose` lacks.
+
+**One qualification, and it is Horty's own.** The *threshold defaults* `δ*_X` are the
+exception: the construction requires that they "must lie above threshold; **they cannot
+be undercut**", though they *can* be defeated — which is how ordinary defaults get
+undercut at all. So the apparatus does contain one unchallengeable layer. But it is
+bookkeeping — the grounding that stops an infinite regress of "is this default above
+threshold?" — not a normative object, and nothing is owed on its account either. It is
+not a `settle` in the round's sense; it is closer to the round's `Settled` being
+monotone by construction.
+
+**This is a positive result for the round's two-summand structure.** The worry that the
+prior art collapses `dispose` and `settle` into one does not obtain. In the round's
+typing an exclusionary reason is a **`dispose` without D2**: grounded, in-system,
+challengeable, and moving nothing.
 
 ## Finding 4 — What survives as new, and what becomes a dependency
 
 **New.** Phrased so a reader of the books can check it:
 
-> In Horty and in ASPIC+, the objects computed — proper scenarios, extensions — are a
-> function of the *current* theory: facts, defaults, priorities, arguments, attacks.
-> **Nothing in either apparatus is a function of the history of defeats.** Delete every
-> record of which defaults lost, and recompute: you get the same answer.
+> `Triggered`, `Conflicted`, `Defeated` and `Binding` are each a function of
+> `⟨W, D, <⟩` and the scenario `S` alone, and a proper scenario is a fixed point of
+> `Binding`. In the variable-priority case `<_S` is itself derived from `S`. **Nothing
+> in the apparatus is a function of the history of defeats.** Delete every record of
+> which defaults lost, recompute, and the answer is unchanged. The same holds of
+> ASPIC+ extensions.
 >
 > The round's defeat theory adds exactly that dependence. A disposed issue leaves a
 > named successor carrying its load; `Live`, `Routes`, and the conservation law all
 > read it; and the trace's future is not recoverable from its current outstanding set
 > alone. Deleting the record of a defeat changes the theorems.
+
+**Said fairly, this is a difference of subject, not a defect in Horty.** His is a
+*static* theory — one default theory, compute its proper scenarios — and it is not
+trying to model a process over positions. That is exactly why it has no ledger, and it
+is the same observation as Finding 1 from the other side: a theory of what to conclude
+does not need to remember what it stopped concluding.
 
 That is the account, and it is what neither framework has. The three clauses D1–D3 are
 the terms on which a defeat is allowed to create such a successor, and none of them has
@@ -192,9 +250,13 @@ here.
    mark now over-claims — the link does not resolve today. Recorded per standard 7,
    with the verification date left standing as a fact about that date and the link
    marked unreachable.
-4. Item 77's prior-art deliverable is **partly** discharged: ASPIC+ and the
-   undercutting question are settled from sources; the book itself was not read, so the
-   item stays open on that.
+4. Item 77's prior-art deliverable is **discharged for the theory, not for the book.**
+   Every finding is now checked against Horty's own 2006 text, which contains the whole
+   apparatus the question was about. What remains unread is the **2012 book**, whose
+   contribution over the paper is the development of §3.2's threshold theories into
+   "exclusionary default logic" plus the Dancy material. A reader wanting to cite the
+   *book* still owes that check; a reader wanting to know whether the machinery can
+   express `MayDispose` has the answer.
 
 ## Reservation
 

@@ -144,11 +144,17 @@ answerability slice.*
   round's `dispose` than to its `settle`, and the two summands do not collapse.
   `.../rounds/2026-09-03-defeat-landing-horty-standing/HORTY.md`.
 
-  **The book itself was not read.** The findings above rest on the Stanford
-  Encyclopedia's *Defeasible Reasoning* entry and on the publisher's description of the
-  book's two default-logic variants; every reachable copy of the primary text failed
-  (author-site certificate mismatch, blocked archive, paywall). Marked so, per
-  standard 7.
+  *Verified against primary text, 2026-09-03*, namely **Horty, *Reasons as Defaults*,
+  Draft #2, 16 August 2006** — the paper the book develops. Definitions 1–4 give
+  `Triggered`, `Conflicted`, `Defeated` and `Binding` as functions of `⟨W, D, <⟩` and a
+  scenario `S`, with a stable scenario a fixed point of `Binding`; §3.1 gives variable
+  priority theories, where `δ <_S δ'` iff `W ∪ Conclusion(S) ⊢ d ≺ d'`; §3.2 gives
+  threshold theories, where undercutting is a priority falling below `τ` and an
+  undercut default "provides no reason of its own". Horty states that exclusionary
+  reasons "can themselves be excluded" (§3.2 n. 16) and rejects a stratified hierarchy
+  of orders. **The OUP 2012 book was not read** and remains unreachable; its
+  contribution over the paper is the development of §3.2 into "exclusionary default
+  logic" plus the Dancy material. A citation *of the book* still owes that check.
 
 - **Pollock, "Defeasible Reasoning", *Cognitive Science* 11(4), 1987,
   pp. 481–518.** <http://www.umiacs.umd.edu/~horty/courses/readings/pollock-1987-defreasoning.pdf>.
@@ -160,7 +166,11 @@ answerability slice.*
   the link does not.* What we take: the undercut/rebut split, which the reason-state
   round reproduces as an ordinary reason for `~App(sigma, c@n)` rather than as an
   attack primitive — and which, since 2026-09-03, is recorded as a **conceptual
-  dependency in the strong sense** for the defeat line: the `answer` / `dispose`
+  dependency in the strong sense** for the defeat line. *A caution on the citation:*
+  Horty's 2006 paper attributes the undercutting distinction to **Pollock 1970**, and
+  cites **Pollock 1995** for the mature treatment, not the 1987 paper this entry names.
+  1987 is a real and citable source for the distinction, but a claim about where it was
+  "first pointed out" should follow Horty and say 1970. The dependency for us is: the `answer` / `dispose`
   distinction *is* rebut/undercut, transposed from a belief's warrant to a debt's.
   `answer` rebuts the challenge-warrant; `dispose` undercuts it. The round did not
   arrive at two kinds independently.
@@ -496,8 +506,14 @@ of the section.
   function of the current theory and of nothing in the history of defeats** — delete
   the record of which defaults lost, recompute, and the answer is unchanged. The
   defeat line's successor-bearing transfer makes the future depend on that history,
-  which is the whole of the difference. The check is partial: the book was not read.
-  See §2 and the round's `HORTY.md`.
+  which is the whole of the difference — and the point is verifiable from the
+  definitions: `Binding` is a function of `⟨W, D, <⟩` and the scenario alone.
+
+  *Said fairly, this is a difference of subject rather than a defect.* Horty's is a
+  static theory — one default theory, compute its proper scenarios — and does not model
+  a process over positions. **Checked against Horty's 2006 paper**, which carries the
+  full apparatus; the 2012 book itself was not read. See §2 and the round's
+  `HORTY.md`.
 
 - **Brandom 1994** (see §3) — **conceptual dependency** for the commitment ledger.
   The slice-wise conservation law `c = Satisfied ∨ Disposed ∨ Remaining` is a

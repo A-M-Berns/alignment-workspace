@@ -2125,13 +2125,20 @@ the undercutter is itself defeasible), so an exclusionary reason is closer to `d
 than to `settle` and the two summands do not collapse. ASPIC+ has no successor, and its
 attack relation is unauthored.
 
-**The item still does not close.** The check rests on the ASPIC+ tutorial, on the
-Stanford Encyclopedia, and on the publisher's description: **`Reasons as Defaults`
-itself was not readable** from the round's environment, and neither was Pollock 1987.
-The coalition hole is also still open. Item 77 closes when the primary text is checked
-— or when a maintainer rules the secondary-source verdict sufficient — and when the
-laundering channel is closed against coalitions rather than against single
-participants.
+**Checked against primary text.** The verdict above is verified against **Horty,
+*Reasons as Defaults*, Draft #2, 16 August 2006** — the paper the 2012 book develops,
+carrying the whole apparatus: Definitions 1–7, fixed- and variable-priority theories,
+and the threshold theories that become "exclusionary default logic". Horty states the
+crux himself: exclusionary reasons "can themselves be excluded", and he rejects a
+stratified hierarchy of reason-orders.
+
+**What still blocks the item.** Two things, and neither is the theory question.
+First, the **OUP 2012 book** was not read — its contribution over the paper is that
+development plus the Dancy material, so a citation *of the book* is not yet licensed.
+Second, and larger, **the laundering channel this item names is closed against single
+participants and not against coalitions**: two participants alternating disposals
+satisfy separation at every edge. The item closes when a maintainer either obtains the
+book or rules the paper sufficient, **and** when the coalition hole is closed.
 
 ## Workspace friction
 

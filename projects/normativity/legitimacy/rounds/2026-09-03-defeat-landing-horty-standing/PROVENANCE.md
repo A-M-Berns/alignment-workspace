@@ -24,8 +24,9 @@ the difference is the round's largest caveat:
 | --- | --- |
 | Modgil & Prakken, *The ASPIC+ framework for structured argumentation: a tutorial* | **read** (PDF, author's site) |
 | Stanford Encyclopedia of Philosophy, *Defeasible Reasoning* | **read** |
-| Horty, *Reasons as Defaults*, OUP 2012 | **NOT read** — certificate mismatch on the author's host, blocked archive, paywall |
-| Pollock, *Defeasible Reasoning*, 1987 | **NOT read** — `PRIOR_ART.md`'s recorded URL no longer resolves |
+| **Horty, *Reasons as Defaults*, Draft #2, 16 Aug 2006** (79 pp.) | **READ** — supplied by the maintainer mid-round, from `~/Downloads`, after the first pass had recorded the primary text as unreachable. Carries Definitions 1–7, fixed- and variable-priority theories, and threshold theories. |
+| Horty, *Reasons as Defaults*, **OUP 2012** (the book) | **NOT read** — certificate mismatch on the author's host, blocked archive, paywall |
+| Pollock, *Defeasible Reasoning*, 1987 | **NOT read** — `PRIOR_ART.md`'s recorded URL no longer resolves. Horty credits the distinction to Pollock **1970**. |
 
 ## What changed outside this directory
 
@@ -45,7 +46,13 @@ the difference is the round's largest caveat:
 
 ## Web use
 
-Three searches and six fetch attempts, all for the prior-art check, all recorded in
-`HORTY.md` §0 **including the four that failed**. No mathematical content was taken
-from a web source: the sources are used for what two published frameworks do and do not
-contain, which is exactly what a prior-art check is for.
+Three searches and six fetch attempts, all for the prior-art check, **including the
+four that failed**. No mathematical content was taken from a web source: the sources
+are used for what two published frameworks do and do not contain, which is exactly what
+a prior-art check is for.
+
+**The check was then redone against a primary text.** The maintainer supplied Horty's
+2006 paper part-way through, and every finding was rechecked against it; two were
+sharpened and none withdrawn. `HORTY.md` §0 records both states of the check rather
+than presenting the second as if it had been the first — the failed-access record is
+part of the provenance, not an embarrassment to tidy away.
