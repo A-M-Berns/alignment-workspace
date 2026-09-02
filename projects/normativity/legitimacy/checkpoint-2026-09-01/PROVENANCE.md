@@ -143,6 +143,24 @@ Symbols are unchanged. Historical rounds keep their original vocabulary and were
 rewritten; the Lean declaration backlog in `state/views/NAMING_AUDIT.md` is out of
 scope and the view is regenerated so it reflects what remains.
 
+### Post-merge terminology corrections, 2026-09-02
+
+Two residual uses of pre-audit terminology survived the audit pass and were corrected
+after this checkpoint was frozen, under the freeze policy's allowance for a scrub with
+a stated reason (`DECISIONS.md`, 2026-09-01):
+
+- `SUPERSESSION.md` §1, the Surface Fairness row — *claim weighting* →
+  **obligation weighting**. The rest of the historical row is unchanged.
+- `CURRENT_THEORY.md` §3.6, Theorem F2's commentary — "divergent *service* fits a
+  finite lifetime budget" → "divergent **total enforcement intensity** can fit within
+  a finite lifetime budget", so that the frozen text does not identify service with
+  the scalar `a_t` that the same audit separated from it.
+
+No theorem, interface, status, or research judgment changed; the mathematical
+statements are the same statements. A wider inventory of pre-audit vocabulary
+remaining in this tree is recorded in `DECISIONS.md` (2026-09-02) and was deliberately
+left for a maintainer to rule on rather than scrubbed here.
+
 ## Web use
 
 Seven bibliographic verifications, for `../../notes/PRIOR_ART.md`: the Gale–Hoffman

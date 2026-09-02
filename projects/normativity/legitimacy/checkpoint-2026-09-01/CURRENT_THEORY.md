@@ -261,7 +261,8 @@ staging:
 with the unconditional fallback `sqrt(S_N/A^r_N)`, `S_N = sum_{t<N} m_t`. The rate
 is the inverse square root of total enforcement intensity; the residual is the norm's own
 weighted mean-square exclusion of the still-live worlds. The liability charge grows
-like `sqrt(a)`, which is why divergent service fits a finite lifetime budget.
+like `sqrt(a)`, which is why divergent **total enforcement intensity** can fit within
+a finite lifetime budget.
 
 *Obligation-weighted Progress* — `E_{mu^r_N}[d] -> 0`. What Answerability actually asks
 for. It does **not** follow from the service-weighted form without a transport

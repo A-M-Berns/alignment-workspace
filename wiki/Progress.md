@@ -26,14 +26,16 @@ observing that unbounded attention is not by itself improvement.
 
 **A reason-to-response structure.** From [Actionability](Actionability-and-Normative-Force):
 a live reason favours some available repair over recognizable non-response, and
-spending authority against a defect does a quantifiable amount of work.
+allocating enforcement intensity against a defect does a quantifiable amount of
+work.
 
 **Uptake.** Something that prevents the pressure from being absorbed without
 effect. In the concrete construction this is the market maker's cumulative cap.
 
-Put together: authority spent against a defect that persists must accumulate work,
-the cap bounds how much work can be accumulated, and therefore the defect goes to
-zero — at a rate that reads off the inverse square root of the authority spent.
+Put together: enforcement intensity allocated against a defect that persists must
+accumulate work, the cap bounds how much work can be accumulated, and therefore the
+defect goes to zero — at a rate that reads off the inverse square root of cumulative
+enforcement intensity.
 
 Where Uptake comes from is a correction worth recording. The program believed for a
 while that it fell out of the underlying learning criterion for free. It does not:

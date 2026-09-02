@@ -109,6 +109,49 @@ commit.
 
 ## Settled
 
+### 2026-09-02 — post-merge terminology corrections in the frozen September checkpoint
+
+**Agent-decided, reversible.** A scrub, not a research decision. After the naming
+audit merged, two residual uses of pre-audit terminology were found in the frozen
+`projects/normativity/legitimacy/checkpoint-2026-09-01/` and corrected under the
+freeze policy's allowance for a scrub with a stated reason (2026-09-01, below):
+
+- `SUPERSESSION.md` §1, the Surface Fairness row: *claim weighting* →
+  **obligation weighting**. The rest of the historical row is unchanged.
+- `CURRENT_THEORY.md` §3.6, the commentary on Theorem F2: "divergent *service* fits a
+  finite lifetime budget" → "divergent **total enforcement intensity** can fit within
+  a finite lifetime budget". The mathematical statement is identical; what changed is
+  that the frozen text no longer identifies service with the scalar `a_t` that the
+  same audit separated from it.
+
+No theorem, interface, status, or research judgment changed. Recorded also in the
+checkpoint's own `PROVENANCE.md`.
+
+**What was found and deliberately not changed.** The audit pass was less complete
+over the checkpoint than over the wiki, and this scrub did not widen to repair that,
+because a systematic re-scrub of a frozen tree is a maintainer act rather than a
+cleanup. The remaining pre-audit vocabulary, for whoever rules on it:
+
+- *obligation*-sense **claim**: `CURRENT_THEORY.md` §§3.10, 3.11, 5;
+  `ANSWERABILITY_AND_SERVICE.md` §§3, 4, 5; `FINAL_AUDIT.md` Q7, Q15;
+  `AUGUST_TO_SEPTEMBER.md` Part B, "where the note is richer"; `STATUS_LEDGER.md`
+  item 47; `OPEN_PROBLEMS.md` §2.
+- scalar-sense **authority** where `a_t` is meant: `CURRENT_THEORY.md` §§3.9, 4;
+  `FINAL_AUDIT.md` Q2, Q16; `ROADMAP.md` §"no longer receive research energy";
+  `ANSWERABILITY_AND_SERVICE.md` §3; `PAPER_CANDIDATES.md` §1.
+- article artifacts left by the rename ("a obligation stream"): `FINAL_AUDIT.md` Q1,
+  `PAPER_CANDIDATES.md` §1.
+
+Uses that are *correct* and should survive any such pass: normative **authority**
+(practical, standing, genealogy, authorized disposition, grants) and **claim** meaning
+a registered assertion, a theorem claim, or a traded proposition. Supersession rows
+naming a retired object by its retired name are the map and are not residue.
+
+*Rejected alternative:* scrubbing all of it here. Rejected because it would make a
+cleanup PR rewrite most of a frozen record's prose, which is the thing the freeze
+exists to prevent, and because the two corrections above are the ones that were
+actually misleading about current typing.
+
 ### 2026-09-02 — the September naming audit
 
 **Maintainer rulings**, taken in conversation after a connected-prose audit of the
