@@ -1,9 +1,10 @@
 # Theorems
 
-Everything here is conditional on the **Defeat Principle** (`DECISIONS.md`,
-2026-09-02, agent-decided and reversible). Where a statement is proved in Lean it says
-so with the declaration name; everything else is **paper-derived and test-supported**,
-which per `AGENTS.md` is not citable as proven.
+Everything here rests on the **Defeat Principle**, which is settled (`DECISIONS.md`,
+2026-09-03, maintainer ruling). This round ran under it as a hypothesis and predates
+the ruling, so the statements below are no longer conditional on it. Where a statement
+is proved in Lean it says so with the declaration name; everything else is
+**paper-derived and test-supported**, which per `AGENTS.md` is not citable as proven.
 
 ## T1 Conservation
 
@@ -122,8 +123,6 @@ both cases the aggregate law alone is exactly what fails to imply it.
 
 ## What is not established
 
-- Every theorem above is **conditional on the Defeat Principle**, which is this
-  round's hypothesis and is not settled.
 - T1 (service layer), T3, T4 and T5 are **paper-derived and test-supported**, not
   Lean. Only T2 and the §5 supporting results are kernel-checked.
 - **D3 does not stop coalitions.** The two-participant alternating walk satisfies it

@@ -2111,6 +2111,28 @@ item asks for was not performed; and the licence **does not stop coalitions** �
 participants alternating disposals satisfy separation at every edge and launder
 indefinitely, so the laundering channel this item names is narrowed and not closed.
 
+*Prior-art check partly done, 2026-09-03*, by
+`projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/HORTY.md`.
+**Verdict: Horty's machinery cannot express `MayDispose`** — and the reason is deeper
+than this item states. A priority ordering does not merely fail to license the loser's
+release; Horty's theory says what to *conclude* rather than what is *owed*, so there is
+no account for a licence to operate on and the question does not arise inside it. Of the
+round's three clauses, grounds have an image and successor and separation do not — the
+last because a default theory has no **participants**, not because the ordering is
+exogenous, which in variable-priority default logic it is not. **Exclusion is
+challengeable in-system** (undercutting is a triggered default lowering a weight, and
+the undercutter is itself defeasible), so an exclusionary reason is closer to `dispose`
+than to `settle` and the two summands do not collapse. ASPIC+ has no successor, and its
+attack relation is unauthored.
+
+**The item still does not close.** The check rests on the ASPIC+ tutorial, on the
+Stanford Encyclopedia, and on the publisher's description: **`Reasons as Defaults`
+itself was not readable** from the round's environment, and neither was Pollock 1987.
+The coalition hole is also still open. Item 77 closes when the primary text is checked
+— or when a maintainer rules the secondary-source verdict sufficient — and when the
+laundering channel is closed against coalitions rather than against single
+participants.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

@@ -1,5 +1,15 @@
 # Answerable disposal, separation, and what separation does not buy
 
+**The Defeat Principle is settled** (`DECISIONS.md`, 2026-09-03, maintainer ruling).
+This round ran under it as a hypothesis and predates the ruling.
+
+**Two corrections from 2026-09-03, recorded here rather than silently applied.**
+D3 as stated below is what this round *intended*; its Lean bound a participant it never
+used, so the standing half was vacuous and §4's laundering theorem in fact rested on
+`foreign_ground` alone. Both are repaired in
+`../2026-09-03-defeat-landing-horty-standing/STANDING_REPAIR.md`, where the laundering
+theorem is reproved from the standing side.
+
 ## 1. The definition
 
 For `q ∈ Res n` with `kind n q = dispose G` and successor `q'`:

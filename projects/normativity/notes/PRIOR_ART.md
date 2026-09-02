@@ -128,19 +128,57 @@ answerability slice.*
   treatment of a reason's *weight* and *priority* as normative content rather
   than as substrate machinery.
 
+  *Checked 2026-09-03*, in answer to the open question recorded in §7. **The
+  machinery cannot express `MayDispose`**, and the reason is deeper than a priority
+  ordering failing to license the loser's release: Horty's apparatus computes a
+  *proper scenario* — which defaults to reason from — so a defeated default is simply
+  not selected, and **there is no account for a licence to operate on.** Nothing is
+  owed, so nothing can be licensed to stop being owed. Of the round's three clauses,
+  grounds have an image (the winning default; and in *variable priority* default logic
+  the ordering is itself established by higher-order defaults, so the ground is in the
+  record), a successor has none, and separation has none — the last because a default
+  theory has **no participants**, not because the ordering is exogenous, which for
+  Horty it is not. **Exclusion is challengeable in-system:** undercutting is a
+  triggered default lowering the undercut rule's weight below a threshold, so the
+  undercutter is itself defeasible. An exclusionary reason is therefore closer to the
+  round's `dispose` than to its `settle`, and the two summands do not collapse.
+  `.../rounds/2026-09-03-defeat-landing-horty-standing/HORTY.md`.
+
+  **The book itself was not read.** The findings above rest on the Stanford
+  Encyclopedia's *Defeasible Reasoning* entry and on the publisher's description of the
+  book's two default-logic variants; every reachable copy of the primary text failed
+  (author-site certificate mismatch, blocked archive, paywall). Marked so, per
+  standard 7.
+
 - **Pollock, "Defeasible Reasoning", *Cognitive Science* 11(4), 1987,
   pp. 481–518.** <http://www.umiacs.umd.edu/~horty/courses/readings/pollock-1987-defreasoning.pdf>.
   Distinguishes **rebutting** defeaters, which give a prima facie reason for the
   denial of the conclusion, from **undercutting** defeaters, which attack the
-  inference without arguing the conclusion false. *Citation verified 2026-09-01.*
-  What we take: the undercut/rebut split, which the reason-state round reproduces as
-  an ordinary reason for `~App(sigma, c@n)` rather than as an attack primitive.
+  inference without arguing the conclusion false. *Citation verified 2026-09-01;
+  **the URL above no longer resolves** as of 2026-09-03 — the host redirects to one
+  its certificate does not cover. The verification stands as a fact about its date;
+  the link does not.* What we take: the undercut/rebut split, which the reason-state
+  round reproduces as an ordinary reason for `~App(sigma, c@n)` rather than as an
+  attack primitive — and which, since 2026-09-03, is recorded as a **conceptual
+  dependency in the strong sense** for the defeat line: the `answer` / `dispose`
+  distinction *is* rebut/undercut, transposed from a belief's warrant to a debt's.
+  `answer` rebuts the challenge-warrant; `dispose` undercuts it. The round did not
+  arrive at two kinds independently.
 
 - **Prakken, "An abstract framework for argumentation with structured
   arguments", Argument & Computation 1(2), 2010 (ASPIC+).** Structured
   argumentation with strict and defeasible rules, preferences, and attack
   relations. What we take: the vocabulary for stating what an attack *is* when
   arguments have internal structure.
+
+  *Checked 2026-09-03* against the Modgil–Prakken tutorial (read directly). A defeated
+  argument is excluded from the extension and leaves **no residue and no successor**;
+  there is **reinstatement**, but it is computed by the semantics rather than being a
+  licensed act with a recorded ground, which is the opposite of a transfer. The
+  preference ordering is **exogenous** in canonical ASPIC+ — making preferences
+  themselves argument conclusions is explicitly non-standard — so the attack relation
+  is unauthored. ASPIC+ therefore has neither the successor clause nor the separation
+  clause.
 
 **Preserved.** Support, provenance and defeat machinery is relevant prior art,
 but reason representation is not normative force. What we do **not** take: the
@@ -449,8 +487,17 @@ of the section.
   needs care. Horty gives priorities among defaults; the answerability line needs
   *authorized disposition*, which is a licence to stop owing something, not a
   priority ordering. **What we do not take:** the identification of defeat with
-  priority. Whether Horty's machinery can express `MayDispose` at all is an open
-  question and a good literature target.
+  priority.
+
+  *The open question is answered, 2026-09-03:* **Horty's machinery cannot express
+  `MayDispose`**, because his theory says what to conclude rather than what is owed,
+  so there is no account for a licence to operate on. What is genuinely new on our
+  side, phrased so a reader of the book can check it: **proper scenarios are a
+  function of the current theory and of nothing in the history of defeats** — delete
+  the record of which defaults lost, recompute, and the answer is unchanged. The
+  defeat line's successor-bearing transfer makes the future depend on that history,
+  which is the whole of the difference. The check is partial: the book was not read.
+  See §2 and the round's `HORTY.md`.
 
 - **Brandom 1994** (see §3) — **conceptual dependency** for the commitment ledger.
   The slice-wise conservation law `c = Satisfied ∨ Disposed ∨ Remaining` is a
