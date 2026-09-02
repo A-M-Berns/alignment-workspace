@@ -13,7 +13,29 @@ unchanged. Every difference is a settlement decision or an erratum of that round
 | `NORMATIVE_CONTINUITY.pdf` | `sha256:24cd56cf8d84738067c83e818f8a21f22c45bf0e7d46a34f40a7fc1e5f88f170` | its render (tectonic, 16 pages) |
 | `src/settled_model.py` | `sha256:5a646c86506aa327964e35d18ad9b7380f7cfbb2a647fcce5f6e3de1151389db` | the whole specification as one checker, with the witness trace `W` |
 | `src/fixtures.py` | `sha256:33db009406a896beb343c05bcdba4563bbb53965e16253ed11093875a55cd920` | the proof pass's fixtures, unchanged (same bytes as the checkpoint's) |
-| `lean/Workspace/Normativity/Contrib/NormativeContinuity.lean` | `sha256:3eab58f437a067b4afd625d200aa5cdd5064c8a04f83f5277de9bf89f785bfd2` | the Lean spine with the settlement additions (§4 of the file); ordinary contributed source, may move |
+| `lean/Workspace/Normativity/Contrib/NormativeContinuity.lean` | `sha256:a27fe04721b1a076a8c5b5509d52e7c3e62e2169e8c85c2d8d18a6778a92ac78` | the Lean spine with the settlement additions (§4 of the file); ordinary contributed source, may move — **and it has moved, see below** |
+
+## The Lean spine has moved since intake, 2026-09-02
+
+The row above is the only digest in this table that has changed, and its "may move"
+note is why it is a detector rather than a prohibition. The settled artifacts —
+`NORMATIVE_CONTINUITY.tex` revision 2, its render, `src/settled_model.py` and
+`src/fixtures.py` — are **unchanged**, and so is the specification they carry.
+
+What changed, by
+`projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat/`:
+§5 was added, and §2 (`StandingTrace`, `Licensing`, the inductive `Grounded`) and §4.2
+(`grounded_replay_admitted`, `grounded_replay_live`, `Adm`) were **deleted as
+primitives** and re-derived on a unified trace. Digest before
+`sha256:3eab58f4…`, after `sha256:a27fe047…`.
+
+**Every theorem of this round's specification still elaborates**, which was the
+condition on the surgery: the `IssueTrace` layer is byte-identical, `DefeatTrace`
+extends it, and the module builds sorry-free with all 35 declarations auditing to
+`[propext, Classical.choice, Quot.sound]`. Two requirements of the *standing* layer did
+not survive as consequences — the `Auth` filter on grounds and the nonemptiness of a
+standing change's grounds — and are carried as side conditions rather than dropped;
+`GROUNDS.md` §3 of that round states them.
 
 Status: **`NORMATIVE-CONTINUITY-MATH-SETTLED`** — the structural mathematical
 specification, its principal modeling choices, theorem dependencies, satisfiability, and

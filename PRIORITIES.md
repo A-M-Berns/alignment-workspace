@@ -2097,6 +2097,20 @@ for the authentication side.
 *A solution ships:* the licence, its soundness theorem, and a statement of what the
 affordability theory's obligation stream becomes once disposition is available.
 
+*Partly answered, 2026-09-02*, by
+`projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat/`,
+conditional on the Defeat Principle (`DECISIONS.md`, queued in *Awaiting the author*).
+**Shipped:** the licence — answerable disposal, grounded and routed and separated — with
+a soundness theorem, a no-self-grounding theorem, and a laundering theorem; the
+disposition term's effect on the obligation stream, which is that disposal is an
+obligation-to-obligation transport step contributing zero to either terminal fate, so
+what must diverge is undisposed content and the F3 bound gains one term `D·κ^r_N`; and
+the type a disposal's grounds live in, which no previous type supplied.
+**Not shipped, and the item stays open for them:** the **Horty prior-art check** this
+item asks for was not performed; and the licence **does not stop coalitions** — two
+participants alternating disposals satisfy separation at every edge and launder
+indefinitely, so the laundering channel this item names is narrowed and not closed.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

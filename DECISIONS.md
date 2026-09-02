@@ -40,6 +40,42 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
+- **Whether the Defeat Principle is adopted.** The round of 2026-09-02 works under
+  it as a hypothesis — no participant extinguishes a debt; a participant may pay it
+  or move it onto the grounds for saying it is not owed; only settlement
+  extinguishes — and every theorem it states is conditional on it. It is the reason
+  `dispose` gets a successor requirement, the reason `Met` reads only discharging
+  resolutions, and the reason the carrier layer's disposition receipt goes to bottom.
+  *Turns on:* whether "authorized disposition" in the answerability calculus is meant
+  as a *terminal exit* — content ceasing to be owed — or as a *transfer* onto
+  contested grounds. The round can show the second is consistent and cannot show the
+  first is wrong.
+
+- **Whether disposal transfers load in full or at a discount.** The round transfers
+  in full: the successor inherits exactly the disposed issue's load, which makes the
+  disposal edge an identity-frame transport step with `L = 1`, `ε = 0`.
+  *Turns on:* taste about second-order liability — whether contesting a debt should
+  itself cost some of it. Changes T4's constants, not its structure.
+
+- **Whether settlement's independence from the disposer's writes is a standing
+  hypothesis of the program or a per-realization assumption.** Fixture 3′ of the
+  round shows it is load-bearing either way: the same trace is refused when the
+  disposer may write `Settled` and accepted when it may not.
+  *Turns on:* where `L_t` comes from in the assessment-process generalization. If
+  the settlement engine is always exogenous the hypothesis is standing; if a
+  realization may let a participant settle, it is per-realization and every such
+  realization owes the check.
+
+- **Whether legitimacy may presuppose a designated protected participant.** The
+  round's separation condition D3 stops a single participant from laundering a debt
+  through a disposal chain and does **not** stop two: an alternating walk satisfies
+  D3 at every edge, because each participant supplies the other's foreign ground and
+  foreign standing. The coalition-indexed repair is unsatisfiable at `C = A` unless
+  some participant — the principal — sits outside every coalition quantified over.
+  *Turns on:* whether a legitimacy predicate may name a party. A structural condition
+  that quantifies over all coalitions cannot exist; one that exempts a designated
+  principal can, at the cost of no longer being purely structural.
+
 - **What the next research step is, given the inertness dichotomy.** The
   end-to-end slice establishes that the unconditional traderization theorem's
   admissibility hypothesis holds exactly for injunctions that change nothing, so
@@ -108,6 +144,67 @@ commit.
   has no evidence about either.
 
 ## Settled
+
+### 2026-09-02 — grounds are unified, and defeat is answerable but not coalition-proof
+
+**Agent-decided, reversible**, and **conditional on the Defeat Principle**, which is
+the round's hypothesis and is *not* settled — it is queued in *Awaiting the author*
+above. Round
+`projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat/`,
+answering `PRIORITIES.md` item 77 in part.
+
+**One ground type.** A disposal may cite prior issues, standing facts, rule revisions
+and settlement facts. The spine held issues in `Q`, standing and a revision's *effect*
+in `N`, settlement facts **nowhere**, and joined the two families by a predicate
+rather than an embedding — so a *mixed* set of grounds had no type at all. That is the
+gap item 77 hits before any question about which grounds suffice. `Ground := Q ⊕ S`
+repairs it.
+
+**The unification is exact, not analogical.** Requirement 1's standing update
+`L(n+1) = (L n \ Ldel n) ∪ Ladd n` **is** Requirement 4's
+`O(n+1) = (O n \ Res n) ∪ Born n`. So `Ladd` is birth, `Ldel` is resolution, `grounds`
+is `par`, and standing occurrences become issues of a licence kind on one trace.
+`StandingTrace`, `Licensing` and the inductive `Grounded` are **deleted as
+primitives**; freshness, Grounded Replay, `standsFor` and `anchor_grounded` are
+re-derived from `anc`, and every pre-existing theorem in the spine re-elaborates.
+
+**Two requirements did not re-derive**, and are carried as side conditions rather than
+quietly dropped: the `Auth` filter on grounds is data ancestry does not supply, and
+nonemptiness of grounds is false of genesis issues. The unification is not free.
+
+**`Met` becomes a definition**, which makes Requirement 9 a theorem and makes a
+disposed root meet nothing. Because `Routes` is ancestry-closed and every disposal
+must open a fresh successor inheriting the disposed issue, a wait on a disposed root
+reroutes with no new axiom: **a prerequisite cannot be disposed away**.
+
+**Two findings, both against expectation.**
+
+*Priority does not refuse self-grounding.* The transition-certificates round's
+postulate 5 collapsed because self-certification died on priority alone. That collapse
+re-derives here for the successor and for anything born in the batch, and **fails for
+the disposed issue itself**, which is by construction in the record strictly before its
+own disposal. Priority refuses grounding in what a record *mints* and cannot refuse
+grounding in what it *consumes*. The `not_self` clause is a clause, not a lemma.
+
+*Separation stops one participant, not two.* An alternating disposal walk in which
+each participant supplies the other's foreign ground and foreign standing satisfies the
+separation condition at every edge and launders indefinitely. The condition is the
+coalition predicate at `C = {resolver}`; the general form needs a designated protected
+participant, and that is queued above.
+
+**Accounting.** Disposal contributes zero to either terminal fate on both layers: the
+carrier layer's `disp` receipt is identically bottom, and on the service layer disposal
+is an obligation-to-obligation transport step with `L = 1`, `ε = 0` through which F3
+factors, so the contest residual adds `D·κ^r_N` to the F3 bound as a corollary of F3
+plus conservation. Nothing in the frozen affordability round is edited.
+
+**Item 77 is not discharged.** The Horty prior-art check that item asks for was **not**
+performed, and the item should not be closed until it is.
+
+*Rejected alternative:* making settlement an issue kind rather than a summand.
+Settlement facts have no birth position, no parents, no resolver and no opener, and
+`born_unique` — the field that makes freshness a theorem — would have to be waived for
+them. A settlement fact is not something a participant did.
 
 ### 2026-09-02 — post-merge terminology corrections in the frozen September checkpoint
 
