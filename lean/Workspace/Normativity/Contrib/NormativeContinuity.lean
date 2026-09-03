@@ -20,10 +20,11 @@ reads them.
   `WaitResponsive`.
 * `IssueTrace.no_structural_abandonment` — paper Theorem 4, parameterized over
   `NonStarving`; the unit-budget constraints on attention are not needed for it.
-* `StandingTrace.grounded_replay` — paper Theorem 1, from Requirement 1 alone. The
-  freshness clause `StandingTrace.Fresh` is stated and not consumed.
-* `anchor_grounded` — the one place the standing layer meets the issue layer
-  (Requirement 2).
+* `DefeatTrace.grounded_replay` — paper Theorem 1 on the unified trace (§5): every
+  issue in the record descends by `anc` from a parentless issue. The freshness clause
+  the standing layer stated and did not consume is now the theorem `DefeatTrace.fresh`.
+* `DefeatTrace.anchor_grounded` — Requirement 2. There is no longer a bridge between
+  two layers, because there is one trace.
 * Fixtures: `Fixtures.fixA_*` is the rotating-prerequisite countermodel — the
   ownership-only gate admits it (`fixA_live_gate_holds`), the Persistent-Wait
   conclusion fails on it (`fixA_persistent_wait_fails`), the reach gate rejects it
@@ -32,11 +33,20 @@ reads them.
   lemma is false at a prerequisite's introduction position; `fixE_cycle_is_work` shows a
   two-node waiting cycle counts as work.
 
+**Unified grounds and answerable defeat (2026-09-02, §5).** `StandingTrace`,
+`Licensing` and the inductive `StandingTrace.Grounded` are **deleted as primitives**.
+Standing occurrences are issues of a licence kind on the same trace — Requirement 1's
+`step` is literally `resolution_continuity` — and `DefeatTrace` adds resolution kinds
+(`answer`, `dispose G`, `settle s`, and deliberately no fourth), a resolver, an opener,
+a monotone `Settled`, one new structural requirement (`dispose_successor`) and `Met` as
+a definition rather than a judgment. `Ground Q S := Q ⊕ S` is the type a disposal's
+grounds live in, which no pre-unification type supplied. Conditional throughout on the
+Defeat Principle (`DECISIONS.md`, 2026-09-02, agent-decided and reversible).
+
 **Settlement additions (2026-08-30, §4).** `IssueTraceCore.mattersOf` is the paper's
 matter construction (roots at birth, designations prospectively) and
 `IssueTraceCore.toIssueTrace` realizes the abstract fields from it, so every theorem above
-applies to the paper's matters; `StandingTrace.grounded_replay_admitted` is Grounded Replay
-over admitted occurrences with the live form as corollary; `IssueTrace.NoPermanentWait` is
+applies to the paper's matters; `IssueTrace.NoPermanentWait` is
 the settled primitive form of wait responsiveness, shown equivalent to the `Met` form;
 `IssueTrace.shareAttention` is the positive-share attention witness with the unit budget
 (`shareAttention_sum_le_one`) and non-starvation (`shareAttention_nonStarving`) for every
@@ -564,94 +574,6 @@ theorem no_structural_abandonment (a : ℕ → Q → ℚ) (m : Q) (n0 : ℕ) (hm
 
 end IssueTrace
 
-/-! ## 2. Standing traces and Grounded Replay -/
-
-/-- A standing trace: which rules are in force, what each batch adds and removes, the
-grounds cited for each addition, and the `Auth` predicate. `grounds n l` is the set of
-authorizers cited by the record adding `l` in batch `n`. -/
-structure StandingTrace (N : Type*) where
-  L : ℕ → Finset N
-  Ladd : ℕ → Finset N
-  Ldel : ℕ → Finset N
-  grounds : ℕ → N → Finset N
-  Auth : N → Prop
-  /-- Requirement 1: the exact update. -/
-  step : ∀ n, L (n + 1) = (L n \ Ldel n) ∪ Ladd n
-  /-- Requirement 1: an addition that changes standing cites standing authorizers. -/
-  grounds_standing : ∀ n l, l ∈ Ladd n → l ∉ L n → grounds n l ⊆ (L n).filter Auth
-  /-- Requirement 1: such grounds are nonempty. -/
-  grounds_nonempty : ∀ n l, l ∈ Ladd n → l ∉ L n → (grounds n l).Nonempty
-
-namespace StandingTrace
-
-variable {N : Type*} (S : StandingTrace N)
-
-/-- `Grounded n l`: `l` has a finite authorization tree whose leaves lie in `G = L 0`,
-whose internal nodes were added at positions strictly decreasing along every branch,
-all below `n`. This inductive predicate *is* the tree. -/
-inductive Grounded : ℕ → N → Prop
-  | genesis {n l} : l ∈ S.L 0 → Grounded n l
-  | node {n k l} : l ∈ S.Ladd k → l ∉ S.L k → k < n →
-      (∀ g ∈ S.grounds k l, Grounded k g) → Grounded n l
-
-lemma Grounded.mono {n k : ℕ} {l : N} (h : S.Grounded n l) (hnk : n ≤ k) : S.Grounded k l := by
-  cases h with
-  | genesis h => exact Grounded.genesis h
-  | node hadd hnot hlt hg => exact Grounded.node hadd hnot (by omega) hg
-
-/-- **Grounded Replay.** Every rule in force has an authorization tree back to `G`.
-Uses Requirement 1 only; freshness of `Ladd` is not needed for existence of the tree. -/
-theorem grounded_replay : ∀ n, ∀ l ∈ S.L n, S.Grounded n l := by
-  intro n
-  induction n with
-  | zero => intro l hl; exact Grounded.genesis hl
-  | succ n ih =>
-    intro l hl
-    rw [S.step n] at hl
-    rcases mem_union.1 hl with h | h
-    · exact Grounded.mono S (ih l (mem_sdiff.1 h).1) (Nat.le_succ n)
-    · by_cases hin : l ∈ S.L n
-      · exact Grounded.mono S (ih l hin) (Nat.le_succ n)
-      · refine Grounded.node h hin (by omega) (fun g hg => ?_)
-        have := S.grounds_standing n l h hin hg
-        exact ih g (mem_filter.1 this).1
-
-/-- Every non-genesis node of the tree cites at least one authorizer. -/
-theorem grounded_nonempty_grounds {k : ℕ} {l : N} (hadd : l ∈ S.Ladd k) (hnot : l ∉ S.L k) :
-    (S.grounds k l).Nonempty := S.grounds_nonempty k l hadd hnot
-
-/-- Freshness of newly admitted standing occurrences (the clause restored by the audit).
-Stated as a definition, not a field: `grounded_replay` does not consume it. -/
-def Fresh : Prop := ∀ n l, l ∈ S.Ladd n → ∀ k, k ≤ n → l ∉ S.L k
-
-end StandingTrace
-
-/-! ### Standing at opening (Requirement 2) -/
-
-/-- A licensing relation `λ ▷ (κ, τ, x)` on rule content. -/
-structure Licensing (N K Ty X : Type*) where
-  lic : N → K → Ty → X → Prop
-
-/-- `κ ⊩_n (τ, x)`: some standing rule licenses `κ` for `(τ, x)`. -/
-def Licensing.standsFor {N K Ty X : Type*} (Li : Licensing N K Ty X) (S : StandingTrace N)
-    (n : ℕ) (κ : K) (τ : Ty) (x : X) : Prop :=
-  ∃ l ∈ S.L n, Li.lic l κ τ x
-
-/-- Requirement 2 for an issue trace with anchors `κ`, kinds `τ`, subjects `x`. -/
-def AnchorStanding {N K Ty X : Type*} (Li : Licensing N K Ty X) (S : StandingTrace N)
-    (T : TraceData Q D) (κ : Q → K) (τ : Q → Ty) (x : Q → X) : Prop :=
-  ∀ n q, q ∈ T.Born n → Li.standsFor S n (κ q) (τ q) (x q)
-
-/-- Where the two layers meet: the rule licensing a fresh issue's protocol has an
-authorization tree back to `G`. -/
-theorem anchor_grounded {N K Ty X : Type*} (Li : Licensing N K Ty X) (S : StandingTrace N)
-    (T : TraceData Q D) (κ : Q → K) (τ : Q → Ty) (x : Q → X)
-    (h : AnchorStanding Li S T κ τ x) {n : ℕ} {q : Q} (hq : q ∈ T.Born n) :
-    ∃ l ∈ S.L n, Li.lic l (κ q) (τ q) (x q) ∧ S.Grounded n l := by
-  obtain ⟨l, hl, hlic⟩ := h n q hq
-  exact ⟨l, hl, hlic, S.grounded_replay n l hl⟩
-
-
 /-! ## 3. Regression fixtures
 
 The Python fixtures of the proof pass, replayed in Lean. Fixture A is the necessity
@@ -1149,51 +1071,6 @@ lemma mem_live_succ_of_parent {m p q : Q} {n : ℕ} (hq : q ∈ C.Born n) (hp : 
 
 end IssueTraceCore
 
-/-! ### 4.2 Grounded Replay over admitted occurrences -/
-
-namespace StandingTrace
-
-variable {N : Type*} (S : StandingTrace N)
-
-/-- `Adm_n`: `G` together with everything that gained standing before `n`, whether or
-not it still stands. -/
-def Adm : ℕ → Finset N
-  | 0 => S.L 0
-  | n + 1 => Adm n ∪ S.Ladd n
-
-lemma L_subset_Adm : ∀ n, S.L n ⊆ S.Adm n := by
-  intro n
-  induction n with
-  | zero => exact subset_rfl
-  | succ n ih =>
-    intro l hl
-    rw [S.step n] at hl
-    rcases mem_union.1 hl with h | h
-    · exact mem_union_left _ (ih (mem_sdiff.1 h).1)
-    · exact mem_union_right _ h
-
-/-- **Grounded Replay, historical form.** Every admitted occurrence has an authorization
-tree back to `G`, whether or not it still stands. -/
-theorem grounded_replay_admitted : ∀ n, ∀ l ∈ S.Adm n, S.Grounded n l := by
-  intro n
-  induction n with
-  | zero => intro l hl; exact Grounded.genesis hl
-  | succ n ih =>
-    intro l hl
-    rcases mem_union.1 hl with h | h
-    · exact Grounded.mono S (ih l h) (Nat.le_succ n)
-    · by_cases hin : l ∈ S.L n
-      · exact Grounded.mono S (S.grounded_replay n l hin) (Nat.le_succ n)
-      · refine Grounded.node h hin (by omega) (fun g hg => ?_)
-        have := S.grounds_standing n l h hin hg
-        exact Grounded.mono S (S.grounded_replay n g (mem_filter.1 this).1) le_rfl
-
-/-- The live form is the corollary. -/
-theorem grounded_replay_live (n : ℕ) (l : N) (hl : l ∈ S.L n) : S.Grounded n l :=
-  S.grounded_replay_admitted n l (S.L_subset_Adm n hl)
-
-end StandingTrace
-
 /-! ### 4.3 Wait responsiveness: the primitive form -/
 
 namespace IssueTrace
@@ -1372,6 +1249,299 @@ theorem fixE_issueTrace_nonvacuous : (fixE_issueTrace.Live 1 BQ.a).Nonempty :=
 
 end Fixtures
 
+/-! ## 5. Unified grounds and answerable defeat (2026-09-02)
+
+Round `2026-09-02-unified-grounds-answerable-defeat`, answering `PRIORITIES.md`
+item 77. Conditional throughout on the **Defeat Principle** (`DECISIONS.md`,
+2026-09-02, agent-decided and reversible): no participant extinguishes a debt; a
+participant may pay it or move it onto the grounds for saying it is not owed; only
+settlement extinguishes.
+
+`StandingTrace`, `Licensing` and `StandingTrace.Grounded` are gone as primitives.
+Standing occurrences are issues of a licence kind on the *same* trace, so that
+`Ladd` is birth, `Ldel` is resolution, `grounds` is `par`, and `Fresh` is
+`born_unique`. What was Requirement 1's `step` is literally `resolution_continuity`.
+Everything the standing layer proved is re-derived here from `anc`, with two
+exceptions recorded honestly in `DEFEAT.md` §2: the `Auth` filter on grounds and
+the nonemptiness of grounds are *not* consequences of ancestry and are carried as
+side conditions on licence-kind issues.
+
+Names are provisional (`AGENTS.md` standard 6). -/
+
+section Unified
+
+/-- A **ground** is a prior issue or a settlement fact. The sum is the point of the
+round: a disposal's grounds may mix issues already in the record with facts the world
+settled, and no pre-unification type held both. -/
+abbrev Ground (Q S : Type*) := Q ⊕ S
+
+/-- The three resolution kinds, and there is deliberately no fourth. `answer` rebuts
+the challenge-warrant and discharges content; `dispose G` undercuts the
+challenge-warrant on grounds `G` and *moves* the content; `settle s` records that the
+world lowered the level of demand. -/
+inductive Kind (Q S : Type*) where
+  | answer : Kind Q S
+  | dispose : Finset (Ground Q S) → Kind Q S
+  | settle : S → Kind Q S
+
+namespace Kind
+
+variable {Q S : Type*}
+
+/-- The Defeat Principle, as a predicate on kinds: `answer` and `settle` extinguish
+content, `dispose` does not. -/
+def Discharges : Kind Q S → Prop
+  | answer => True
+  | dispose _ => False
+  | settle _ => True
+
+/-- `dispose` is the only kind that does not discharge. -/
+lemma discharges_iff_not_dispose (k : Kind Q S) :
+    k.Discharges ↔ ∀ G, k ≠ dispose G := by
+  cases k <;> simp [Discharges]
+
+end Kind
+
+/-- A **defeat trace**: an issue trace whose resolutions carry a kind, a resolver and
+an opener, over a type `S` of settlement facts and a type `A` of participants.
+
+`Settled` is monotone. Its independence from any participant's write set is an
+explicit hypothesis where it is used, not a field, because §5's fixture tests the
+necessity of that independence. -/
+structure DefeatTrace (Q D S A : Type*) extends IssueTrace Q D where
+  /-- Settlement facts, monotone in the prefix. -/
+  Settled : ℕ → S → Prop
+  settled_mono : ∀ n s, Settled n s → Settled (n + 1) s
+  /-- How each resolution resolved. -/
+  kind : ℕ → Q → Kind Q S
+  /-- Who resolved it. -/
+  resolver : ℕ → Q → A
+  /-- Who opened it. -/
+  opener : Q → A
+  /-- **The one new structural requirement.** A disposal in batch `n` is accompanied
+  by a fresh successor carrying the load: this is `fresh_successors` read in reverse,
+  and it is the Defeat Principle made structural. -/
+  dispose_successor : ∀ n q G, q ∈ Res n → kind n q = Kind.dispose G →
+    ∃ q' ∈ Born n, q ∈ par q'
+  /-- **`Met` is no longer a primitive judgment.** A prerequisite is met exactly when
+  every route root was resolved strictly earlier *by answer or settlement*. A disposed
+  root does not meet anything. -/
+  met_def : ∀ n d, Met n d ↔
+    ∀ t ∈ roots d, ∃ k < n, t ∈ Res k ∧ (kind k t).Discharges
+
+namespace DefeatTrace
+
+variable {Q D S A : Type*} (T : DefeatTrace Q D S A)
+
+open TraceData IssueTrace
+
+/-- `Grounded n g`: the ground is available at prefix `n`. An issue is available when
+it is in the record strictly before `n` — outstanding or resolved, it makes no
+difference, what matters is that the record already carried it. A settlement fact is
+available when it is settled. -/
+def Grounded (n : ℕ) : Ground Q S → Prop
+  | Sum.inl q => ∃ j < n, q ∈ T.Born j
+  | Sum.inr s => T.Settled n s
+
+lemma grounded_mono {n k : ℕ} {g : Ground Q S} (h : T.Grounded n g) (hnk : n ≤ k) :
+    T.Grounded k g := by
+  cases g with
+  | inl q => obtain ⟨j, hj, hq⟩ := h; exact ⟨j, by omega, hq⟩
+  | inr s =>
+    induction hnk with
+    | refl => exact h
+    | step _ ih => exact T.settled_mono _ _ ih
+
+/-- Every issue in the record before `n` is grounded, which is the unified reading of
+"in force". -/
+lemma grounded_of_out {n : ℕ} {q : Q} (hq : q ∈ T.O n) : T.Grounded n (Sum.inl q) :=
+  T.out_born q n hq
+
+/-! ### 5.1 What the standing layer proved, re-derived from ancestry -/
+
+/-- **Freshness is `born_unique`.** What `StandingTrace.Fresh` postulated — a newly
+admitted occurrence was in force at no earlier prefix — is a *theorem* of the unified
+trace, from birth uniqueness and the list discipline alone. -/
+theorem fresh : ∀ n q, q ∈ T.Born n → ∀ k, k ≤ n → q ∉ T.O k := by
+  intro n q hq k hk hmem
+  obtain ⟨j, hj, hqj⟩ := T.out_born q k hmem
+  have hnj : n = j := T.born_unique q n j hq hqj
+  omega
+
+/-- **Grounded Replay, unified.** Every issue in the record descends by `anc` from a
+parentless issue: the authorization tree of paper Theorem 1, with the strictly
+decreasing positions now a consequence of `parent_out` rather than a hypothesis.
+
+This replaces `StandingTrace.grounded_replay`. What it does *not* replace is that
+theorem's `Auth` filter — see `DEFEAT.md` §2. -/
+theorem grounded_replay : ∀ n q, q ∈ T.Born n → ∃ r, T.anc r q ∧ T.par r = ∅ := by
+  intro n
+  induction n using Nat.strong_induction_on with
+  | _ n ih =>
+    intro q hq
+    by_cases hpar : T.par q = ∅
+    · exact ⟨q, ReflTransGen.refl, hpar⟩
+    · obtain ⟨p, hp⟩ := Finset.nonempty_iff_ne_empty.2 hpar
+      have hpo : p ∈ T.O n := T.parent_out hq hp
+      obtain ⟨j, hj, hpj⟩ := T.out_born p n hpo
+      obtain ⟨r, hr, hrpar⟩ := ih j hj p hpj
+      exact ⟨r, hr.tail hp, hrpar⟩
+
+/-- The live form: every outstanding issue has an authorization tree. -/
+theorem grounded_replay_live {n : ℕ} {q : Q} (hq : q ∈ T.O n) :
+    ∃ r, T.anc r q ∧ T.par r = ∅ := by
+  obtain ⟨j, _, hqj⟩ := T.out_born q n hq
+  exact T.grounded_replay j q hqj
+
+/-! ### 5.2 Standing derived from live licence-issues -/
+
+/-- A licensing relation carried by the trace itself: `lic q κ τ x` says the
+licence-kind issue `q` licenses anchor `κ` for `(τ, x)`. -/
+structure Licence (Q K Ty X : Type*) where
+  lic : Q → K → Ty → X → Prop
+
+/-- `κ ⊩_n (τ, x)`: some *live issue* licenses `κ`. What was `Licensing.standsFor`
+reading a separate `StandingTrace.L` is now a filter on `O n`. -/
+def standsFor {K Ty X : Type*} (Li : Licence Q K Ty X) (n : ℕ) (κ : K) (τ : Ty)
+    (x : X) : Prop :=
+  ∃ q ∈ T.O n, Li.lic q κ τ x
+
+/-- Requirement 2 on the unified trace. -/
+def AnchorStanding {K Ty X : Type*} (Li : Licence Q K Ty X)
+    (κ : Q → K) (τ : Q → Ty) (x : Q → X) : Prop :=
+  ∀ n q, q ∈ T.Born n → T.standsFor Li n (κ q) (τ q) (x q)
+
+/-- **`anchor_grounded`, re-derived.** The licence-issue licensing a fresh issue's
+protocol is itself in the record and has an authorization tree. One trace, one
+theorem; the two-layer bridge is gone. -/
+theorem anchor_grounded {K Ty X : Type*} (Li : Licence Q K Ty X)
+    (κ : Q → K) (τ : Q → Ty) (x : Q → X) (h : T.AnchorStanding Li κ τ x)
+    {n : ℕ} {q : Q} (hq : q ∈ T.Born n) :
+    ∃ l ∈ T.O n, Li.lic l (κ q) (τ q) (x q) ∧ ∃ r, T.anc r l ∧ T.par r = ∅ := by
+  obtain ⟨l, hl, hlic⟩ := h n q hq
+  exact ⟨l, hl, hlic, T.grounded_replay_live hl⟩
+
+/-! ### 5.3 `Met` as a definition, and what a disposal cannot do -/
+
+/-- **Requirement 9 is now a theorem.** Persistent satisfaction follows from `met_def`
+by weakening `k < n` to `k < n + 1`; it needed no separate postulate once `Met` reads
+the record. -/
+theorem met_persistent' : ∀ n d, T.Met n d → T.Met (n + 1) d := by
+  intro n d h
+  rw [T.met_def] at h ⊢
+  intro t ht
+  obtain ⟨k, hk, hres, hdis⟩ := h t ht
+  exact ⟨k, by omega, hres, hdis⟩
+
+/-- A disposed root never contributes to `Met`. This is the Defeat Principle at the
+structural level: disposal moves a debt, it does not discharge one. -/
+theorem dispose_not_met {n k : ℕ} {d : D} {t : Q} {G : Finset (Ground Q S)}
+    (ht : t ∈ T.roots d) (hk : T.kind k t = Kind.dispose G)
+    (huniq : ∀ j, t ∈ T.Res j → j = k) (hn : T.Met n d) : False := by
+  rw [T.met_def] at hn
+  obtain ⟨j, _, hresj, hdis⟩ := hn t ht
+  rw [huniq j hresj, hk] at hdis
+  exact hdis
+
+/-- **A prerequisite cannot be disposed away.** If a route root is disposed, the route
+is nonempty at the next prefix: the successor the disposal was required to open is
+itself a route root's descendant, so `Routes` — being ancestry-closed — picks it up
+with no new axiom. This is the strengthening of `persistent_wait` the round set out to
+test, and it holds. -/
+theorem routes_survive_dispose {n : ℕ} {d : D} {t : Q} {G : Finset (Ground Q S)}
+    (ht : t ∈ T.roots d) (hres : t ∈ T.Res n) (hk : T.kind n t = Kind.dispose G) :
+    (T.Routes (n + 1) d).Nonempty := by
+  obtain ⟨q', hq', hpar⟩ := T.dispose_successor n t G hres hk
+  refine ⟨q', mem_filter.2 ⟨?_, ⟨t, ht, ReflTransGen.single hpar⟩⟩⟩
+  rw [T.resolution_continuity n]
+  exact mem_union_right _ hq'
+
+/-! ### 5.4 Answerable disposal -/
+
+/-- **Answerable disposal** (D1–D3). `q` is disposed at `n` on grounds `G` with
+successor `q'`, and:
+
+* **D1 grounded** — every ground is available at `n`, and `q` is not among them.
+  The second conjunct is *not* redundant: see `self_grounding_not_excluded_by_priority`.
+* **D2 routed** — the successor is fresh in this batch and inherits `q`'s load.
+* **D3 separated** — someone other than the resolver has standing on the successor,
+  and some ground was opened by someone other than the resolver. -/
+structure Answerable {K Ty X : Type*} (Li : Licence Q K Ty X) (κ : Q → K) (τ : Q → Ty)
+    (x : Q → X) (n : ℕ) (q : Q) (G : Finset (Ground Q S)) (q' : Q) : Prop where
+  /-- D1. -/
+  grounded : ∀ g ∈ G, T.Grounded n g
+  /-- D1, the clause ancestry does not supply. -/
+  not_self : Sum.inl q ∉ G
+  /-- D2. -/
+  born : q' ∈ T.Born n
+  /-- D2. -/
+  inherits : q ∈ T.par q'
+  /-- D3, standing side. -/
+  contested : ∃ b, b ≠ T.resolver n q ∧ T.standsFor Li n (κ q') (τ q') (x q')
+  /-- D3, grounds side. -/
+  foreign_ground : ∃ g ∈ G, ∀ p : Q, g = Sum.inl p → T.opener p ≠ T.resolver n q
+
+/-- A **defeat-disciplined** trace: every resolution answers, disposes answerably, or
+settles a fact that is settled. -/
+def Disciplined {K Ty X : Type*} (Li : Licence Q K Ty X) (κ : Q → K) (τ : Q → Ty)
+    (x : Q → X) : Prop :=
+  ∀ n q, q ∈ T.Res n →
+    T.kind n q = Kind.answer ∨
+    (∃ G q', T.kind n q = Kind.dispose G ∧ T.Answerable Li κ τ x n q G q') ∨
+    (∃ s, T.kind n q = Kind.settle s ∧ T.Settled n s)
+
+/-! ### 5.5 No self-grounding, and exactly where it comes from -/
+
+/-- **The successor cannot ground the disposal**, and neither can anything else born
+in the same batch. This is the transition-certificates round's postulate 5 collapsing
+again: priority alone refuses it, with no dedicated clause. -/
+theorem no_grounding_in_batch {n : ℕ} {q' : Q} (hq' : q' ∈ T.Born n) :
+    ¬ T.Grounded n (Sum.inl q') := by
+  rintro ⟨j, hj, hqj⟩
+  rw [T.born_unique q' n j hq' hqj] at hj
+  omega
+
+/-- **But priority does *not* refuse self-grounding.** A disposed issue is by
+construction in the record strictly before its own disposal, so `Grounded` holds of
+it. Postulate 5 therefore re-derives on the unified trace for the successor and the
+batch, and *fails* for the issue itself — which is why `Answerable.not_self` is a
+clause and not a lemma. Reported as a finding in `DEFEAT.md` §2. -/
+theorem self_grounding_not_excluded_by_priority {n : ℕ} {q : Q} (hq : q ∈ T.Res n) :
+    T.Grounded n (Sum.inl q) :=
+  T.grounded_of_out (T.res_subset n hq)
+
+/-- With the clause in place, no answerable disposal is grounded in itself, its
+successor, or anything born in its batch. -/
+theorem no_self_grounding {K Ty X : Type*} {Li : Licence Q K Ty X} {κ : Q → K}
+    {τ : Q → Ty} {x : Q → X} {n : ℕ} {q q' : Q} {G : Finset (Ground Q S)}
+    (hA : T.Answerable Li κ τ x n q G q') :
+    Sum.inl q ∉ G ∧ ∀ b ∈ T.Born n, Sum.inl b ∉ G :=
+  ⟨hA.not_self, fun _ hb hmem => T.no_grounding_in_batch hb (hA.grounded _ hmem)⟩
+
+/-! ### 5.6 Liveness under defeat -/
+
+/-- **T2's corollary.** A matter whose live issues resolve only by disposal keeps a
+live issue at the next prefix: each disposal hands the load to a fresh descendant, and
+`Live` is ancestry-filtered, so the frontier cannot empty. -/
+theorem live_nonempty_of_dispose_only {m : Q} {n : ℕ} (hlive : (T.Live n m).Nonempty)
+    (hdisp : ∀ q ∈ T.Live n m, q ∈ T.Res n → ∃ G, T.kind n q = Kind.dispose G) :
+    (T.Live (n + 1) m).Nonempty := by
+  obtain ⟨q, hq⟩ := hlive
+  obtain ⟨hqO, hanc⟩ := mem_filter.1 hq
+  by_cases hres : q ∈ T.Res n
+  · obtain ⟨G, hG⟩ := hdisp q hq hres
+    obtain ⟨q', hq', hpar⟩ := T.dispose_successor n q G hres hG
+    refine ⟨q', mem_filter.2 ⟨?_, hanc.tail hpar⟩⟩
+    rw [T.resolution_continuity n]
+    exact mem_union_right _ hq'
+  · refine ⟨q, mem_filter.2 ⟨?_, hanc⟩⟩
+    rw [T.resolution_continuity n]
+    exact mem_union_left _ (mem_sdiff.2 ⟨hqO, hres⟩)
+
+end DefeatTrace
+
+end Unified
+
 end
 
 end Workspace.Normativity.Contrib.NormativeContinuity
@@ -1383,8 +1553,6 @@ end Workspace.Normativity.Contrib.NormativeContinuity
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.persistent_wait
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.persistent_opportunity
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.no_structural_abandonment
-#print axioms Workspace.Normativity.Contrib.NormativeContinuity.StandingTrace.grounded_replay
-#print axioms Workspace.Normativity.Contrib.NormativeContinuity.anchor_grounded
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixA_reach_gate_fails
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixA_live_gate_holds
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixA_other_requirements
@@ -1394,8 +1562,6 @@ end Workspace.Normativity.Contrib.NormativeContinuity
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTraceCore.mattersOf_prior
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTraceCore.mattersOf_not_mem_of_lt
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTraceCore.mem_live_succ_of_parent
-#print axioms Workspace.Normativity.Contrib.NormativeContinuity.StandingTrace.grounded_replay_admitted
-#print axioms Workspace.Normativity.Contrib.NormativeContinuity.StandingTrace.grounded_replay_live
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.noPermanentWait_of_waitResponsive
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.waitResponsive_of_noPermanentWait
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.persistent_opportunity'
@@ -1404,3 +1570,14 @@ end Workspace.Normativity.Contrib.NormativeContinuity
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE_other_requirements
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE_reach_gate
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE_issueTrace_nonvacuous
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.fresh
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.grounded_replay
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.grounded_replay_live
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.anchor_grounded
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.met_persistent'
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.dispose_not_met
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.routes_survive_dispose
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.no_grounding_in_batch
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.self_grounding_not_excluded_by_priority
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.no_self_grounding
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.live_nonempty_of_dispose_only
