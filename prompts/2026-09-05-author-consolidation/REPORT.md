@@ -66,7 +66,12 @@ replaced, are itemized in the `DECISIONS.md` entry of this date.
    broken on the day of the pass; it had been recorded as dead two days earlier. The
    record was corrected rather than the link replaced, and the round's own statement
    that it did not resolve during that round was left standing as history.
-3. **Prompts record.** The dispatch did not ask for a round directory. One is committed
+3. **A defect of this pass, found and fixed after the wiki merge.** To reuse another
+   checkout's Lean build cache the pass planted a symlink at `lean/.lake`; the ignore
+   rule matched directories only, so the symlink was staged with everything else and
+   reached `main` in the Normative Inductor squash. Removed, with the ignore rule
+   widened, in the follow-up commit recorded in `DECISIONS.md` under this date.
+4. **Prompts record.** The dispatch did not ask for a round directory. One is committed
    because standard 12 requires the prompt verbatim, and the round record and provenance
    rows follow from the gates that check them.
 

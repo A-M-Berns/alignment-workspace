@@ -2,8 +2,9 @@ __MACOSX/
 .DS_Store
 __pycache__/
 
-# Lean build artifacts
-lean/.lake/
+# Lean build artifacts. No trailing slash: a symlink named .lake, which a
+# session may plant to share another checkout's cache, must be ignored too.
+lean/.lake
 
 # Agent worktrees: one checkout per concurrent session, inside the repository
 # and untracked. Without this, `git add -A` stages another session's worktree
