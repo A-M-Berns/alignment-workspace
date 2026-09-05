@@ -38,3 +38,12 @@ registered claims, priorities, decisions, and supersession documents controlled 
 historical prose conflicted.
 
 No web source was used.
+
+## Refinement note
+
+The in-place PR82 refinement re-audited the underlying projection-force,
+bounded-liability preservation, effective-compiler, service-transfer, and scheduling
+theorems rather than relying on the first-pass summaries. It added the focused
+`PRESENTATION_AND_VALUE_SEMANTICS.md`, exact-rational counterexamples/tests, and Lean
+bridge declarations. No historical consolidated artifact or claims registry was
+modified, and no local result was promoted beyond its evidence class.

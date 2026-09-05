@@ -7,7 +7,11 @@ from src.realization import (
     approximate_argmax_regret,
     belief_only_response_counterexample,
     incompatible_reason_regions,
+    normalized_euclidean_padding_profile,
+    old_service_amplification,
     progress_certificate,
+    projection_value_counterexample,
+    sup_projection_padding_profile,
 )
 
 
@@ -62,6 +66,34 @@ class RealizationTests(unittest.TestCase):
         self.assertEqual(witness["operative_defect"], 0)
         self.assertEqual(witness["chosen_action_loss"], 1)
         self.assertEqual(witness["required_additive_error"], 1)
+
+    def test_old_normalization_is_not_padding_invariant(self):
+        witness = normalized_euclidean_padding_profile(F(1, 4), 1, 3, F(2))
+        self.assertEqual(witness["defect_squared_before"], F(1, 4))
+        self.assertEqual(witness["defect_squared_after"], F(1, 16))
+        self.assertEqual(witness["service_before"], F(2))
+        self.assertEqual(witness["service_after"], F(8))
+        self.assertEqual(witness["projection_work"], F(1, 2))
+
+    def test_sup_defect_and_lambda_service_ignore_harmless_padding(self):
+        witness = sup_projection_padding_profile([F(1, 2), F(-1, 4)], 7, F(3))
+        self.assertEqual(witness["defect_before"], witness["defect_after"])
+        self.assertEqual(witness["service_before"], witness["service_after"])
+
+    def test_projection_admissibility_is_not_value_truth(self):
+        witness = projection_value_counterexample()
+        self.assertEqual(witness["distance_to_region"], 0)
+        self.assertEqual(witness["chosen_regret"], 1)
+
+    def test_old_service_hypotheses_imply_new_gamma_column_bound(self):
+        load, bound = old_service_amplification(
+            column_mass=F(3), weighted_column=F(6), service_mass=F(4),
+            total_claim=F(10), total_service=F(5), old_lipschitz=F(2),
+            parsimony=F(1, 2),
+        )
+        self.assertEqual(load, F(3, 5))
+        self.assertEqual(bound, F(4, 5))
+        self.assertLessEqual(load, bound)
 
     def test_individually_feasible_reasons_can_conflict_jointly(self):
         self.assertFalse(incompatible_reason_regions(F(1, 10)))

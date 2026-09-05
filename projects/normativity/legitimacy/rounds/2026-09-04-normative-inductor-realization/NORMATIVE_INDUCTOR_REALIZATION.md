@@ -1,15 +1,16 @@
 # Normative Inductor: a concrete realization contract
 
 Status: **provisional construction and conditional end-to-end theorem**.  The LI
-substrate and the three elementary bridge lemmas identified below are Lean-checked.
+substrate and nine elementary bridge declarations identified below are Lean-checked.
 The history, coverage, compiler, scheduling, and semantic modules have mixed status,
 reported explicitly in § 12.  This document does not promote an unregistered round
 result to the current theory.
 
 ## 1. Verdict
 
-The abstract characterization can be realized without changing its public spine or
-adding an error term.  The clean realization is additive:
+The architecture survives the refinement, but its original public normalization does
+not.  The abstract characterization can still be realized without adding an error
+term.  The clean realization remains additive:
 
 \[
   \mathsf{NI}
@@ -24,15 +25,19 @@ Here `+ DecisionAdapter` means a consumer of the market state, not another term 
 the market maker's fixed point.  The compiler is strict-prefix, proof carrying, and
 partial.  At a service occurrence it compiles all simultaneously serviced live
 targets into **one nonempty rational convex region**.  It does not compile independent
-reason traders and hope their guarantees compose.  Euclidean projection supplies the
-intrinsic joint defect and the existing projection trader makes that defect operative.
+reason traders and hope their guarantees compose.  Euclidean projection implements
+the existing enforcement trader.  The theorem-facing defect is instead the sup-norm
+distance to the joint region, and service is the prospective projection multiplier.
+This separation is stable under enforcement-null padding of a presentation.
 
 There is no unconditional arrow from LI beliefs to good action.  The strongest clean
-bridge is a plugin contract: calibrated bounded value coordinates plus an approximate
-optimizer yield a decision defect bounded by `2 sqrt(m)` times normalized projection
-distance; an independently authenticated action/semantic certificate transports that
-defect into each old exposure's anchored loss.  This is enough for the contract's
-effective response certificate and keeps the LI core decision-theory-blind.
+bridge is a plugin contract: a separately authenticated value correspondence, bounded
+ambiguity around externally meaningful counterfactual values, and a randomized
+approximate optimizer yield regret at most `2 d + 2 zeta + eta`; an independently
+authenticated response certificate transports that regret into each old exposure's
+anchored loss.  Membership in the normative region alone says only *admissible*, not
+*true counterfactual value*.  This is enough for the contract's effective response
+certificate and keeps the LI core decision-theory-blind.
 
 The abstract contract has one literal typing defect: because
 `phi : [0,D] -> R_nonnegative`, its definition
@@ -65,7 +70,7 @@ Conflict(conflict_core, successor_issue)
 Unknown(successor_issue)
 ```
 
-`Frag_s` is a nonempty finite security fragment of size `m_s`; `K_s` is a nonempty
+`Frag_s` is a nonempty finite security fragment; `K_s` is a nonempty
 rational polytope contained in `[0,1]^Frag_s`; every nonstructural row carries a live
 reason occurrence and licensing provenance; `semantics_s` contains the response/value
 interpretation needed by the decision adapter.  A conflict or failed feasibility
@@ -75,35 +80,50 @@ row, changes a weight, or presents an empty region to the enforcer.
 For displayed prices `b_s` on `Frag_s`, define
 
 \[
- q_s=\operatorname{proj}_{K_s}(b_s),\qquad
- d_s(b_s)=\frac{\lVert b_s-q_s\rVert_2}{\sqrt{m_s}}\in[0,1].
+ q_s^2=\operatorname{proj}^{,2}_{K_s}(b_s),\qquad
+ d_s(b_s)=\operatorname{dist}_{\infty}(b_s,K_s)
+ =\inf_{u\in K_s}\lVert b_s-u\rVert_\infty\in[0,1].
 \]
 
 Thus the concrete operative state is the LI price vector on the compiled fragment,
-and the defect is normalized intrinsic distance to the **joint** region.  The
-normalization gives a horizon-independent bound even when fragment sizes vary.
-It is not presentation sensitive; row violations remain useful implementation data,
-but are not the public defect.
+and the defect is intrinsic sup-distance to the **joint** region.  Euclidean projection
+is an implementation witness, not the public semantics and not a claim about true
+values.  Row violations remain useful implementation data, but are not the public
+defect.
 
 If the projection trader's intensity is `lambda_s`, set the contract service
 intensity to
 
 \[
- a_s=m_s\lambda_s.
+ a_s=\lambda_s.
 \]
 
 This is prospective scheduled enforcement intensity.  The realized corrective
 position is `lambda_s(q_s-b_s)` and remains endogenous.  It is not service.
-For `phi(x)=x^2`, the projection-force inequality becomes exactly
+For `phi(x)=x^2`, norm comparison and the existing projection-force inequality give
 
 \[
- a_s\phi(d_s)=m_s\lambda_s
-       \frac{\lVert b_s-q_s\rVert_2^2}{m_s}
-   =\lambda_s\lVert b_s-q_s\rVert_2^2.
+ a_s\phi(d_s)=\lambda_s\operatorname{dist}_\infty(b_s,K_s)^2
+ \le\lambda_s\lVert b_s-q_s^2\rVert_2^2\le\rho_s.
 \]
 
-The market maker therefore supplies the contract's work quantity without changing
-units or counting realized force as attention.
+Equality is unnecessary.  The market maker therefore upper-bounds the contract's work
+quantity without changing service units or counting realized force as attention.
+
+The abandoned convention
+`d=dist_2/sqrt(m), a=m lambda` is not padding invariant.  For
+`K^+=K times [0,1]^k` and a quote whose new coordinates already lie in the cube,
+Euclidean work is unchanged, but positive old squared defect `R/m` becomes
+`R/(m+k)` and declared service rises from `m lambda` to `(m+k)lambda`.  Across mixed
+service dates this changes `nu_N`, response constants, `Gamma_N`, and the reported
+bound merely by changing presentation.  By contrast, `(d_infinity,lambda)` is exactly
+invariant when the padding is enforcement-null: restriction recovers `(b,K)`, the
+ordinary book and `rho_s` are unchanged, and projection copies the padded coordinates.
+Adding genuinely tradable securities may change the ordinary market and is therefore
+not harmless padding.  Sup-distance is invariant under permutations and canonical
+duplication, but not arbitrary rescaling; the compiler must use canonical typed
+security identities and reject aliases.  See
+[`PRESENTATION_AND_VALUE_SEMANTICS.md`](PRESENTATION_AND_VALUE_SEMANTICS.md).
 
 ## 3. Abstract-to-concrete witness table
 
@@ -123,19 +143,19 @@ units or counting realized force as attention.
 | Evaluation measure `(X_N,mu_N)` | Predeclared finite sampler over exposure ids in `O_P`; selection seed/rule committed before observing response losses | Contract is new; older claim weights are partial antecedents | Ecology-specific evaluation protocol and anti-selection audit | **Consumer assumption, mechanically checkable** |
 | Anchored response space `(Y_e,ell_e)` | Slice-relative response type and bounded loss certified to quantify immutable `Spec_e` | Anchored spaces exist qualitatively | General quantitative adequacy is not derivable from history | **Semantic/evaluation assumption** |
 | Service atoms | Strict-prefix receipts `(s,h,targetBundle,compilerVersion,SafeCert)` | Service occurrence and schedule machinery exist | Exact adapter from live docket bundle to the contract record | **Paper/test** |
-| Prospective intensity `a_s` | `m_s lambda_s`, chosen before `b_s`; equivalently the promised projection tolerance under calibrated intensity | Typing and projection schedules exist | General closed-loop scheduler satisfying all admissibility demands | **Lean for enforcement schedule; conditional scheduling** |
+| Prospective intensity `a_s` | Projection multiplier `lambda_s`, chosen before `b_s`; it is neither dimension-weighted bookkeeping nor realized force | Typing and projection schedules exist | General closed-loop scheduler satisfying all admissibility demands | **Lean for enforcement schedule; conditional scheduling** |
 | `Safe(S_N,a)` | One of the explicit assessed-liability certificates in § 7, plus effective-strategy and rank checks | Strong sufficient theorems exist | Necessity of bounded liability and adversarial/closed-loop schedule existence remain open | **Lean core; paper/test scheduler results** |
 | Service transport plan `T_N` | Pre-response nonnegative flow from evaluated exposure ids to admissible service receipts; old claim/service flow normalized by total evaluation mass | Yes in old notation | Construction for the chosen evaluation protocol; bounded-delay versions require interval feasibility | **New normalization proof; old paper/test theorem** |
 | Operative learner state `B_s` | Price cube `[0,1]^Frag_s` of the ordinary LI market extended with compiled value/proposition securities | LI prices and fragments exist | Settlement semantics for all added value securities | **LI-native object; semantics conditional** |
-| Operative defect `d_s` | Normalized Euclidean distance from `b_s` to the single compiled joint region `K_s` | Unnormalized projection distance is Lean-proved | Normalization wrapper only | **New paper derivation atop Lean theorem** |
+| Operative defect `d_s` | `dist_infinity(b_s,K_s)` for the single compiled joint region; Euclidean projection is only the enforcement implementation | Euclidean projection distance is Lean-proved | Exact harmless-padding scope is an interface condition | **New paper proof and Lean comparison/padding lemmas** |
 | Coercive modulus `phi` | `phi(x)=x^2` | Projection force already proves the square inequality | None algebraic | **Lean-proved substrate specialization** |
-| Work ratio `chi_N` | `sum_s lambda_s dist_2(b_s,K_s)^2 / sum_s m_s lambda_s` | Per-date numerator bound exists | Aggregate scheduling/accounting wrapper | **Paper derivation from Lean force theorem** |
+| Work ratio `chi_N` | `sum_s lambda_s dist_infinity(b_s,K_s)^2 / sum_s lambda_s` | Euclidean per-date upper bound exists | Aggregate scheduling/accounting wrapper | **Paper derivation plus new Lean comparison lemma** |
 | Coercive uptake modulus `Psi_phi` | Contract tail bound with repaired domain; for the quadratic case one may also use `sqrt(chi_N)` by Jensen/Cauchy–Schwarz | Generic old Actionability theorem exists | Direct Lean port of the contract statement | **Paper-level; elementary** |
 | Decision rule `Pi_s` | Plugin-selected randomized `eta_s`-approximate maximizer of displayed value coordinates, or any plugin satisfying `(D)` | Restricted value proposal exists | No universal optimizer/decision semantics; plugin required | **New generic bridge plus explicit assumption** |
-| Practical-response certificate | Approximate-argmax calibration gives `C_s=2 sqrt(m_s)`; anchored semantic calibration gives `M_es=2 L_es sqrt(m_s)` and `epsilon_es=L_es eta_s+epsilon_sem_es` | Restricted pairwise bridge exists | Settlement-backed counterfactual values and semantic calibration for the selected ecology | **Lean algebra; substantive premise conditional** |
+| Practical-response certificate | Authenticated value correspondence gives calibration radius `d_s+zeta_es`; randomized approximate maximization and anchored response adequacy give `M_es=2L_es` and `epsilon_es=L_es(2zeta_es+eta_s)+epsilon_resp_es` | Restricted pairwise bridge exists | Settlement-backed counterfactual values and response adequacy for the selected ecology | **New Lean algebra; substantive premise conditional** |
 | Admissible edge `R_N(e,s)` | Strict-prefix check of live target citation, identity lineage, service-mode compatibility, and semantic transport certificate | Ingredients exist | Unified checker | **Proposed implementation theorem** |
 | Response map `rho_es` | Certified map from later continuation policy through fixed exterior/outcome semantics into the old anchored response space | Interactive/anchored interfaces exist | Ecology-specific causal and semantic certificate | **Ambient/semantic assumption** |
-| Semantic transport certificate | Qualitative order embedding/no-laundering plus quantitative affine pair `(L,epsilon)`; pure defeat/disposition is `(1,0)` | Qualitative theory and exact-carry decision exist | General constructor for quantitative constants | **New Lean composition law; certificate generation open** |
+| Semantic transport certificate | Qualitative order embedding/no-laundering plus quantitative affine pair `(L,epsilon)`; if an external semantic premise certifies pure defeat/disposition as `(1,0)`, algebraic composition preserves it exactly | Qualitative theory and exact-carry decision exist | General constructor for quantitative constants, including the exact-carry semantic premise | **New Lean composition/identity algebra; certificate generation open** |
 | Residual mass `r_N` | `1-sum_{e,s}T_N(e,s)`; normalized old unmatched claim mass is `R_N/C_N` | Old residual exists | Evaluation-to-old-claim adapter | **New exact bridge; checker-supported** |
 | Amplification `Gamma_N` | Maximum weighted column load: least `Gamma` with `sum_e T(e,s)M_es <= Gamma nu(s)` | Old `LK` special case exists | Boundedness for a concrete scheduler/semantic ecology | **New general definition; old theorem specializes** |
 | Error `bar epsilon_N` | Transport-weighted sum of optimizer, semantic, and action-calibration errors | Old transport residual exists | Concrete certificate rates | **Algebraic identity; assumptions supply rates** |
@@ -157,7 +177,33 @@ by affine rows and compiled by the projection path.
 
 All live constraints serviced at one date are conjoined into `K_s`.  Independent reason
 traders can oppose each other and aggregate uptake does not imply reasonwise uptake.
-The exact compatibility hypothesis is therefore:
+The compiler theorem is not merely an output type.  A successful result must carry:
+
+1. a strict-prefix input hash containing the cited live identities, immutable anchors,
+   standing/licence proofs, settlement receipts, semantic-transport certificates, and
+   compiler schema/version;
+2. canonical typed security identities, with each coordinate marked structural,
+   normative, or value-semantic and with aliases rejected;
+3. for every normative affine row, a cited live obligation, licensed current semantic
+   realization of its anchored specification, and a row-soundness proof;
+4. for every value-semantic row, a distinct authenticated evaluator/settlement receipt;
+   such a row is not made legitimate merely by sharing the normative polytope;
+5. an exact proof that `K_s` is the cube intersected with precisely those rows, plus a
+   nonemptiness witness or independently checkable rational feasibility certificate;
+6. the effective representation required by the projection compiler; and
+7. an authority-separation certificate: the compiler cannot append to `H`, `SetView`,
+   the live docket, standing, licence, or settlement.
+
+Accordingly `CompileSound` says that every emitted operative row is an authenticated
+current realization of the cited live obligation or a separately authenticated
+structural/value row.  It says nothing about completeness.  **Convex
+representability** is the substantive condition that an obligation has a sound compact
+convex price-space realization and a response-adequacy interpretation.  **Compiler
+completeness** says the chosen implementation finds such a realization when one in its
+declared schema exists.  **Joint feasibility** says the simultaneous realizations
+intersect.  These are independent obligations and must not be conflated.
+
+The exact compatibility hypothesis for enforcement is:
 
 > **Joint feasibility.** The authenticated affine rows for the target bundle and the
 > structural cube rows have a certified nonempty intersection.
@@ -168,10 +214,28 @@ A settlement-compatible common mixture is different and can hold for a singleton
 empty ambient interior.  Conversely, an ambient-interior region can exclude every live
 settlement.  These conditions must not be conflated.
 
-When conjunction is infeasible, the right output is a conflict core and a successor
-adjudication issue.  Hierarchical or weighted dropping is legitimate only if an upstream
-licensed conflict rule explicitly makes it part of the anchored answer specification;
-it is not a default compiler behavior.
+The hierarchy is therefore
+
+\[
+ \{\text{affordably enforceable bundles}\}
+ \subseteq \{\text{jointly feasible bundles}\}
+ \subseteq \{\text{individually convex-representable bundles}\}.
+\]
+
+Both inclusions can be strict.  Nonempty intersection is sufficient for Euclidean
+projection even when `K_s` is a singleton or lower-dimensional face.  Affordability
+additionally needs a temporal liability certificate; interior/core structure is one
+way to obtain it, not a projection requirement.  A common settlement-compatible point
+is sufficient for zero assessed liability, but is not necessary for projection.
+
+When conjunction is infeasible or representability is unknown, the right output is a
+conflict core or `Unknown` plus a successor adjudication issue.  `FailureConservation`
+says every cited obligation remains live or is carried by an independently licensed
+history transition; the compiler cannot silently discharge it.  The conflict issue is
+itself a new normative obligation only if an upstream licensed rule says that a failed
+representation triggers adjudication.  Hierarchical or weighted dropping is likewise
+legitimate only if an upstream licensed conflict rule makes it part of the anchored
+answer specification; it is not a default compiler behavior.
 
 ## 5. Traderized uptake and the exact work quantity
 
@@ -184,11 +248,11 @@ Let `rho_s=marketSlack_s+ordinaryAbsBound_s`.  In the calibrated projection sche
  \operatorname{dist}_2(b_s,K_s)\le\delta_s.
 \]
 
-With the normalization in § 2,
+With the public defect and service in § 2,
 
 \[
- W_N=\sum_s a_s d_s^2
-     =\sum_s\lambda_s\operatorname{dist}_2(b_s,K_s)^2
+ W_N=\sum_s\lambda_s\operatorname{dist}_\infty(b_s,K_s)^2
+     \le\sum_s\lambda_s\operatorname{dist}_2(b_s,K_s)^2
      \le\sum_s\rho_s,
 \]
 
@@ -197,7 +261,7 @@ and hence
 \[
  \boxed{\chi_N\le
    \frac{\sum_{s\in S_N}\rho_s}{
-         \sum_{s\in S_N}m_s\lambda_s}.}
+         \sum_{s\in S_N}\lambda_s}.}
 \]
 
 This identifies every quantity in the contract's uptake term.  The LI market maker
@@ -219,50 +283,96 @@ coercive controls.
 
 ## 6. The LI-native decision/value bridge
 
-Assume `Frag_s` contains one bounded value coordinate `V_{s,q}` for each response
-policy in a finite alphabet `Q_s`.  Let `v_s=proj_{K_s}(b_s)`.  Suppose the decision
-plugin returns a distribution satisfying
+Normative admissibility is not value truth.  Let the fragment contain a structural
+coordinate and two displayed policy values, and take
+`K={1/2} times [0,1]^2`, `b=(1/2,0.9,0.1)`.  Then `b` is already in `K`, so both
+projection and public defects are zero.  If authenticated true values are `(0,1)`, an
+argmax of the displayed values chooses the uniquely bad policy and incurs regret one.
+The exact checker records this counterexample.  The Euclidean projection point cannot
+be treated as certified value merely because it is admissible.
+
+The smallest honest bridge separates a normative region from a value correspondence.
+For a finite continuation-policy alphabet `Q_s`, let `V_{es}` be an externally
+authenticated nonempty set of possible counterfactual value vectors. If it is compiled
+into the enforcement region, require a sound convex rational-polyhedral presentation
+(or a sound convex outer approximation). The compiler may
+form
 
 \[
- \max_q b_s(q)-\mathbb E_{q\sim\Pi_s(b_s)}b_s(q)\le\eta_s.
+ K_s=K_s^{norm}\cap\pi_V^{-1}(V_{es}),
 \]
 
-Uniform calibration is bounded by
-`||b_s-v_s||_infinity <= ||b_s-v_s||_2=sqrt(m_s)d_s`.  Applying the new
-approximate-argmax transfer lemma pointwise and averaging gives
+but the second factor has distinct evaluator/settlement provenance.  For the true
+value vector `v^*_{es}` supplied by the declared causal semantics, require
 
 \[
- \mathbb E_q[\max_{q'}v_s(q')-v_s(q)]
- \le 2\sqrt{m_s}\,d_s(b_s)+\eta_s. \tag{NI-D}
+ v^*_{es}\in V_{es},\qquad
+ \sup_{u\in\pi_V(K_s)}\lVert u-v^*_{es}\rVert_\infty\le\zeta_{es}. \tag{VC}
 \]
 
-For each admissible old-exposure/service edge, require the independently authenticated
-calibration
+The directed bound, not membership alone, is the calibration content.  If `u_s` is
+the value-coordinate restriction of a sup-nearest point in the full joint region,
+then `||b_s|_V-u_s||_infinity<=d_s`; equality need not hold when an auxiliary
+coordinate realizes the maximum.  This witness need not equal the Euclidean
+projection and is not declared true.  `(VC)` yields
 
 \[
- \mathbb E_{y\sim\rho_{es}(q)}\ell_e(y)
- \le L_{es}[\max_{q'}v_s(q')-v_s(q)]+\varepsilon^{sem}_{es}. \tag{NI-S}
+ \lVert b_s|_V-v^*_{es}\rVert_\infty\le d_s+\zeta_{es}. \tag{CAL}
 \]
 
-Then the exact contract `(R)` follows with
+Let the decision plugin return a distribution `Pi_s` on finite `Q_s` with
 
 \[
- \boxed{M_{es}=2L_{es}\sqrt{m_s},\qquad
- \epsilon_{es}=L_{es}\eta_s+\varepsilon^{sem}_{es}.}
+ \max_q b_s(q)-\mathbb E_{q\sim\Pi_s}b_s(q)\le\eta_s.
 \]
 
-This is the strongest generic LI-native route found.  It is modular: a different
-decision theory can replace `(NI-D)`, and a different settlement ecology can replace
-`(NI-S)`, without changing the market or compiler.
+The randomized Lean bridge then gives
 
-It is also an honest limit.  LI non-exploitability does not establish that a quoted
-one-shot counterfactual value is correct, and a belief constraint can be exactly
-satisfied while a decision rule selects the uniquely bad action.  Value securities
-help only when their payouts/semantics are supplied by a certified ecology.  If only
-chosen actions settle, unchosen-policy values are not ordinary settlement-backed
-securities; they need a causal model, randomized exploration/identification assumption,
-or a proper-scoring/reporting protocol.  The compiler must not infer such semantics
-from behavioral agreement.
+\[
+ \mathbb E_{q\sim\Pi_s}
+   [\max_{q'}v^*_{es}(q')-v^*_{es}(q)]
+ \le 2d_s+2\zeta_{es}+\eta_s. \tag{NI-D}
+\]
+
+Tie-breaking is arbitrary because the premise is distributional.  Values need only be
+bounded enough to define the market securities and anchored loss; finiteness is used
+to realize the expectation as a finite sum.  Infinite policy spaces require measurable
+selection, integrability, and an approximate essential-sup theorem and are outside the
+first concrete realization.
+
+For each admissible old-exposure/service edge, require an independently authenticated
+response-adequacy certificate
+
+\[
+ \mathbb E_{q\sim\Pi_s,y\sim\rho_{es}(q)}\ell_e(y)
+ \le L_{es}\mathbb E_{q\sim\Pi_s}
+   [\max_{q'}v^*_{es}(q')-v^*_{es}(q)]
+   +\varepsilon^{resp}_{es}. \tag{NI-S}
+\]
+
+Then the contract `(R)` follows with dimension-free constants
+
+\[
+ \boxed{M_{es}=2L_{es},\qquad
+ \epsilon_{es}=L_{es}(2\zeta_{es}+\eta_s)
+                    +\varepsilon^{resp}_{es}.}
+\]
+
+This is modular: a different decision theory can replace `(NI-D)`, and a different
+settlement ecology can replace `(VC)` and `(NI-S)`, without changing the market or
+compiler.  It is also the strongest generic bridge justified here.  LI
+non-exploitability does not identify one-shot counterfactual values.
+
+A concrete target ecology is a finite, precommitted menu of policy hashes; a bounded
+anchored evaluator; replicated randomized evaluation or simulation of *every* policy,
+including unchosen policies; immutable signed receipts; value securities tied rigidly
+to those receipts; and a decision after a designated quote time.  Its external contract
+must assert evaluator integrity and non-capture, causal transport from replicas to
+deployment, exchangeability/domain control, no relevant interference, grain of truth,
+and resistance to manipulation by the deciding agent.  Observing only the chosen
+policy does not identify unchosen values.  Human or model evaluation can instantiate
+the same interface, but then its counterfactual validity is an explicit ambient
+assumption rather than a consequence of naming a security.
 
 For service responses such as `investigate` versus `conceal`, the older typed
 `ServiceCompare` fragment supplies a genuine special case.  It does not prove that
@@ -313,6 +423,24 @@ vanishing unmatched density, and a controlled load factor.  The general adversar
 closed-loop existence theorem is not in the repository.  That is missing realization
 work, not a defect in the abstract service interface.
 
+A fully explicit conditional workload class is available.  In a **predictable-window
+linear workload**, one joint bundle class (or several disjoint-fragment classes) emits
+fungible claim mass `c_t`; every claim has uniform deadline `t+H`; all prospective
+per-unit liability weights `w_s` for `s in [t,t+H]` are known at arrival; service costs
+are linear or lie on the sharp branch; and
+
+\[
+ \sum_t c_t\min_{s\in[t,t+H]}w_s\le B.
+\]
+
+Schedule each claim at a cheapest date in its window, with a fixed earliest-date tie
+break.  This is adapted because the whole window's weights are part of the arrival
+record.  It gives full transport (`r_N=0` after the last open window), claim-to-service
+factor `K=1`, and total assessed liability at most `B`; a temporal modulus gives
+semantic error at most `omega(H)`.  This theorem does not cover overlapping bundle
+classes sharing coordinates, weights revealed only after scheduling, or an arbitrary
+adversarial docket.  Those require a genuine online competitive scheduling theorem.
+
 Unbounded normative funding is unsafe as a default.  The substrate theorem requires a
 uniform assessed floor; merely increasing an external budget or satisfying a per-date
 cap may destroy the premise.  The converse—that every unbounded liability schedule
@@ -322,7 +450,7 @@ sufficient condition, not a proved necessity.
 ## 8. From the old service theorem to `(T1)`–`(T4)`
 
 The old transport theorem uses claim mass `c_e`, total `C_N`, service capacity `w_s`,
-total `A_N`, and an unnormalized flow `T^old` with
+total `W_N=sum_s w_s`, and an unnormalized partial flow `T^old` with
 
 \[
  \sum_sT^{old}(e,s)\le c_e,
@@ -334,7 +462,7 @@ For the contract evaluation `mu_N(e)=c_e/C_N`, define
 
 \[
  T_N(e,s)=T^{old}(e,s)/C_N,
- \qquad \nu_N(s)=w_s/A_N.
+ \qquad \nu_N(s)=w_s/W_N.
 \]
 
 Then `(T1)` holds, `r_N=R_N/C_N`, and the error average is exactly the contract's
@@ -343,16 +471,21 @@ Then `(T1)` holds, `r_N=R_N/C_N`, and the error average is exactly the contract'
 \[
  \sum_eT_N(e,s)M_{es}
  \le L\frac{w_s}{C_N}
- =L\frac{A_N}{C_N}\nu_N(s)
+ =L\frac{W_N}{C_N}\nu_N(s)
  \le LK\nu_N(s),
 \]
 
-so `Gamma_N=LK`.  For edge-dependent decision/semantic multipliers, the contract's
+so one may take `Gamma_N=LK` (the least admissible `Gamma_N` can be smaller).  This
+normalization implication is Lean-proved as `old_service_implies_amplification`; it
+consumes the old theorem's column cap and parsimony conclusions and does not re-prove
+that theorem.  For edge-dependent decision/semantic multipliers, the contract's
 weighted column condition is precisely the needed generalization.  This proves that
 the newer transport interface subsumes the old `L,K,rho,kappa` notation; the old names
 need not appear in the final theorem.
 
-The transport must be committed before realized losses.  Otherwise the scheduler can
+`T_N` is a partial nonnegative transport plan, not a coupling whose service marginal
+must equal or be dominated by `nu_N`.  Shared service is allowed and is controlled by
+the weighted column bound.  The transport must be committed before realized losses.  Otherwise the scheduler can
 route each exposure after the fact to whichever service looks best and manufacture a
 small statistic without having supplied the advertised service.
 
@@ -385,8 +518,10 @@ laundering.  Quantitatively, certificates compose by
    =(L_1L_2,\epsilon_1+L_1\epsilon_2).
 \]
 
-This composition law is newly Lean-proved.  Pure challenge/defeat/disposition is exact
-carry `(1,0)`: it creates neither progress nor semantic erasure.  NI cannot internally
+This composition law is newly Lean-proved.  The semantic theory must separately
+certify that a pure challenge/defeat/disposition edge is exact carry `(1,0)`; only then
+does the Lean lemma `exact_carry_left` show algebraically that composition changes
+nothing.  The algebra alone does not establish that premise.  NI cannot internally
 prove that an external response interpretation remains faithful to an old anchor; it
 can only validate a certificate in a declared semantic model.
 
@@ -404,54 +539,51 @@ enforcer to the aggregate priced by the market maker.  Existing Lean results est
   `IsLogicalInductor` conclusion;
 - eventual coherence for exhausted fixed fragments.
 
-Consequently all ordinary LI consequences that depend only on the original criterion
-transfer once the preservation premise is discharged.  This includes the standard
+For a general assessment-process enforcer, the exact proved preservation statement is
+nonexploitation by every efficient trader under a uniform assessed-liability floor.
+Upgrading that statement to the packaged `IsLogicalInductor` conclusion also requires
+that the augmented market is computable.  The effective rational-polyhedral compiler
+discharges this in the registered deductive/world-inclusive construction; the general
+assessment process with arbitrary normative regions still needs an explicit effective
+compiler premise.  Consequently ordinary LI consequences that depend only on the
+original criterion transfer once both preservation and computability are discharged.
+This includes the standard
 coherence/convergence theorem family of the pinned substrate; NI does not reprove each
 corollary.  Finite perturbations are harmless when their assessed downside is finite.
 Tolerance/order robustness belongs to the intrinsic projection construction; the row
 implementation is presentation sensitive and should not be the theorem-facing object.
 
-Adding bounded value securities is harmless only after they are included in the fixed
-finite fragment and assessment semantics and the added enforcement book retains its
-liability certificate.  An unbounded stream of externally funded normative trades has
+Adding bounded value securities is harmless only after their sentences and settlement
+semantics belong to the fixed substrate language/assessment process, the compiler is
+effective, and the added enforcement book retains its liability certificate.  Changing
+the language, adding semantically untyped securities, or altering settlement timing is
+not a mere bounded-trader perturbation.  An unbounded stream of externally funded normative trades has
 no general preservation theorem.  Computationally, the projection compiler is
 effective, not claimed efficient; polyhedral conversion and max–min expansion may be
 large.
 
 ## 11. Composed theorem spine
 
-The following basis has exact output/input type alignment.
+The smallest clean dependency chain is:
 
-1. **`HistoryRealization`.** Record replay yields `H_t`, strict prefixes, immutable
-   identities, and monotone `SetView`.
-2. **`SettlementIntegrity`.** Every settlement-backed fact/discharge has an external
-   typed receipt, and participants/compiler cannot append one.
-3. **`CoverageRealization`.** A represented applicable target generates an accountable
-   docket occurrence.  **`RobustOpenness` remains an ambient hypothesis** over `J`.
-4. **`AnswerabilityConservation`.** Every exposed identity is answered,
-   settlement-discharged, or carried live; defeat is carry.
-5. **`LegitimateObligationExport`.** The preceding results emit exactly
-   `O_P=(E,Live,Spec,Status)`, without weights.
-6. **`OperativeConstraintSoundness`.** A strict-prefix authenticated target bundle
-   either produces a certified nonempty joint rational `K_s` or an accountable conflict
-   issue; every row has provenance and semantic scope.
-7. **`TraderizedUptake`.** Effective projection compilation plus the market maker gives
-   `W_N<=sum rho_s` and the displayed formula for `chi_N`.
-8. **`AffordableService`.** A tagged SafeCert and scheduler hypotheses give prospective
-   `a_s`, `A_N` growth, bounded assessed liability, and preservation of LIC.
-9. **`PracticalResponseSoundness`.** A decision plugin and semantic calibration give
-   `(R)` with the explicit `M_es,epsilon_es` above.
-10. **`SemanticTransport`.** Authenticated paths compose their affine certificates;
-    disposition contributes `(1,0)`.
-11. **`ServiceTransport`.** The adapted flow normalizes to `(T1)`–`(T4)` and supplies
-    `Gamma_N,r_N,bar epsilon_N`.
-12. **`NormativeInductorProgress`.** The abstract algebra gives the exact three-term
-    bound.
-13. **`NormativeInductorEndToEnd`.** Items 1–11 discharge every premise of item 12 while
-    item 8 retains the underlying LI guarantee.
+| Theorem/interface | Exact output needed next | Status |
+|---|---|---|
+| `LegitimateObligationExport` (including history, settlement, Coverage receipt, and answerability replay) | qualitative `O_P=(E,Live,Spec,Status)` with immutable anchors, no weights | **Conditional paper theorem from mixed existing components; robust openness ambient** |
+| `CompilerSoundness` | every normative row is an authenticated current realization; structural/value rows have distinct provenance | **Open general theorem; restricted compiler fragments exist** |
+| `JointFeasibilityOrAccountableConflict` | nonempty effective rational `K_s`, or conserved originals plus conflict/unknown issue | **Conditional paper theorem; exact feasibility is routine once rows exist** |
+| `NormativeEnforcerPreservesLI` | ordinary LIC plus effective normative market, assuming bounded assessed liability | **Lean substrate proved; generic composition still needs effective-compiler premise** |
+| `ProjectionUptake` | `lambda_s d_infinity(b_s,K_s)^2<=rho_s` and hence concrete `chi_N` | **Strengthened here: Lean norm-comparison algebra atop proved projection force** |
+| `AffordableService` | prospective adapted `lambda_s`, SafeCert, sufficient exposure | **Conditional for old sharp-linear and predictable-window classes; general online problem open** |
+| `ValueCalibration` | `||b_V-v^*||_infinity<=d_s+zeta_es` from an authenticated value correspondence | **Lean algebra strengthened here; substantive ecology ambient/open** |
+| `DecisionAdequacy` | randomized true-value regret `<=2d_s+2zeta_es+eta_s` | **Lean algebra strengthened here for finite policy alphabets** |
+| `AnchoredResponseTransport` | contract `(R)` with `M_es=2L_es` and displayed `epsilon_es` | **Conditional on causal/semantic response certificate** |
+| `ServiceTransport` | `(T1)`–`(T4)` and `Gamma_N,r_N,bar epsilon_N` | **Old paper/checker theorem plus new Lean `LK=>Gamma` normalization bridge** |
+| `NormativeProgress` | exact three-term contract bound | **Abstract contract proof; exact finite witness only in this PR** |
+| `NormativeInductorEndToEnd` | LIC and normative Progress conclusion together | **Conditional paper theorem, not yet unconditional or Lean-composed** |
 
-The compiler does not legitimate its inputs: theorem 5 precedes theorem 6.  The decision
-adapter does not authorize its values: theorem 9 consumes provenance from theorem 6.
+The compiler does not legitimate its inputs: obligation export precedes compilation.
+The decision adapter does not authorize its values: value calibration consumes external
+evaluator/settlement provenance, not mere membership in `K_s`.
 The scheduler does not choose service after seeing force or loss: its adaptedness is a
 hypothesis of theorem 8 and edge commitment is checked again in theorem 11.
 
@@ -463,14 +595,17 @@ hypothesis of theorem 8 and edge commitment is checked again in theorem 11.
 | Current answerability/defeat structural lemmas, grounded replay, principal-relative standing | **Already Lean-proved in contribution files; round results not generally registered as normativity claims** |
 | Coverage factorization, anchored slices, settlement interface, service typing, adapted flow, bounded-delay construction, Sharp Timely Service | **Paper-level derivations with checker/enumeration/witness support as individually reported; not upgraded here** |
 | Common-Mixture Affordability | **Paper-level derivation; finite weighted-sum Lean packaging was reported missing** |
-| Normalized projection defect and exact identification `a=m lambda` | **New proof supplied in this document** |
-| Approximate-argmax calibration bridge | **New Lean proof**: `approximate_argmax_transfer` |
+| Original normalized projection defect with `a=m lambda` | **False as a representation-stable public interface; exact padding counterexample and Lean inequality** |
+| Sup-distance public defect, `a=lambda`, and domination by Euclidean projection work | **New paper proof plus Lean algebra**: `public_work_le_projection_work` |
+| Approximate-argmax calibration bridge, including randomized finite policies | **New Lean proofs**: `approximate_argmax_transfer`, `randomized_approximate_argmax_transfer` |
+| Calibration through an authenticated value correspondence | **New Lean proof**: `calibration_through_value_correspondence`; semantic premise remains external |
 | Decision/semantic effective-certificate composition | **New Lean proof**: `practical_response_compose` |
-| Affine semantic-transport composition and exact carry identity | **New Lean proofs**: `affine_transport_compose`, `exact_carry_left` |
-| Old service-flow normalization to contract transport | **New paper proof and exact checker witness** |
+| Affine semantic-transport composition and exact carry identity | **New Lean algebra**: `affine_transport_compose`, `exact_carry_left`; does not prove that defeat has a `(1,0)` semantic certificate |
+| Old service-flow normalization to contract transport | **New paper proof, exact checker witness, and Lean aggregated-column bridge**: `old_service_implies_amplification` |
 | Contract Progress arithmetic, including shared service | **Abstract proof in contract; exact finite checker witness here** |
 | Independent feasible reasons may have empty conjunction | **False composition rule; exact counterexample/checker** |
 | Belief defect alone controls action loss | **False; exact counterexample/checker** |
+| Membership/projection into a normative region certifies counterfactual action values | **False; exact projection/value counterexample/checker** |
 | General OCG compiler, general settlement-backed value ecology, closed-loop affordable scheduler, quantitative semantic-certificate generator | **Conjecture / plausible implementation targets, not established** |
 | Internal proof of robust non-capture or semantic truth | **Blocked in general by self-sealing/indistinguishability counterexamples; must be ambient** |
 
@@ -481,15 +616,15 @@ For the concrete NI specialization,
 \[
 \begin{aligned}
 \chi_N
- &=\frac{\sum_s\lambda_s\operatorname{dist}_2(b_s,K_s)^2}
-          {\sum_s m_s\lambda_s},\\
+ &=\frac{\sum_s\lambda_s\operatorname{dist}_\infty(b_s,K_s)^2}
+          {\sum_s\lambda_s},\\
 \Psi_\phi(\chi_N)&=\sqrt{\chi_N}\quad\text{for the quadratic specialization},\\
-M_{es}&=2L_{es}\sqrt{m_s},\\
-\epsilon_{es}&=L_{es}\eta_s+\varepsilon^{sem}_{es},\\
+M_{es}&=2L_{es},\\
+\epsilon_{es}&=L_{es}(2\zeta_{es}+\eta_s)+\varepsilon^{resp}_{es},\\
 \Gamma_N&=\inf\{\Gamma:\forall s,\
-  \sum_eT_N(e,s)2L_{es}\sqrt{m_s}\le\Gamma\nu_N(s)\},\\
+  \sum_eT_N(e,s)2L_{es}\le\Gamma\nu_N(s)\},\\
 \bar\epsilon_N&=\sum_{e,s}T_N(e,s)
-   (L_{es}\eta_s+\varepsilon^{sem}_{es}),\\
+   (L_{es}(2\zeta_{es}+\eta_s)+\varepsilon^{resp}_{es}),\\
 r_N&=1-\sum_{e,s}T_N(e,s).
 \end{aligned}
 \]
@@ -515,10 +650,12 @@ represented; service and transport determine their downstream quantitative expos
 > counterfactual intervention class, and robust anchored Coverage.  Suppose the full
 > normative record satisfies the current grounded answerability, standing, Defeat
 > Principle, and semantic-authentication hypotheses and exports `O_P`.  Suppose the
-> strict-prefix joint compiler is sound and complete on the serviced target bundles,
-> every emitted region is nonempty and effectively rational-polyhedral, the scheduler
-> emits an adapted service/transport plan with a valid SafeCert, and the decision and
-> semantic plugins supply `(NI-D)` and `(NI-S)`.  Then the additive market above is an
+> strict-prefix joint compiler is sound on the serviced target bundles and is complete
+> for their declared convex-representability class (otherwise it returns an accountable
+> failure).  Suppose every emitted region is nonempty and effectively rational-polyhedral,
+> the scheduler emits an adapted service/transport plan with a valid SafeCert, the
+> value/decision/semantic plugins supply `(VC)`, `(NI-D)`, and `(NI-S)`, and the
+> augmented market is computable.  Then the additive market above is an
 > ordinary logical inductor relative to the same assessment process, every serviced
 > bundle has finite-time projection conformance, all abstract realization contracts are
 > inhabited, and the displayed Progress bound holds.  If `sup Gamma_N<infinity`,
@@ -532,10 +669,10 @@ represented; service and transport determine their downstream quantitative expos
 |---|---|
 | Ambient/world | causal factorization, target scope, external settlement integrity, intervention class, robust non-capture, settlement/value identifiability |
 | Normative history | immutable anchors, grounded licence/standing, lifecycle accounting, typed discharge, Defeat Principle carry, legitimate `O_P` export |
-| Compiler | strict-prefix provenance, schema soundness, priceability, joint feasibility or accountable conflict, effective rational representation |
+| Compiler | strict-prefix provenance, schema soundness, convex representability where success is required, priceability, joint feasibility or accountable conflict, effective rational representation, no history/settlement write authority |
 | LI/market | market-maker contract, projection force/conformance, effective enforcer, bounded-liability preservation |
 | Scheduler/affordability | prospective `a_s`, SafeCert, sufficient cumulative service, adapted feasible transport, bounded load and residual |
-| Decision theory | approximate optimization or another `(D)` theorem; no authority inference |
+| Decision theory/value ecology | authenticated counterfactual value correspondence and ambiguity bound; finite randomized approximate optimization or another `(D)` theorem; no authority inference |
 | Semantic transport | anchored qualitative fidelity, causal response map, quantitative `(L,epsilon)` certificates and their rates |
 
 ## 14. Contract repairs and remaining work
@@ -567,9 +704,10 @@ normalization hypotheses.  No theorem statement or final error term otherwise ch
 1. Package the current history structures into the exact `O_P` export and prove the
    export theorem.
 2. Implement the proof-carrying joint compiler from typed obligation targets; the
-   restricted `ServiceCompare` compiler is only a fragment.
-3. Supply a concrete settlement/counterfactual-value ecology or retain `(NI-S)` as the
-   decision-semantic hypothesis.
+   restricted `ServiceCompare` compiler is only a fragment.  Completeness can only be
+   relative to a declared convex-representability class.
+3. Establish `(VC)` and `(NI-S)` for a concrete settlement/counterfactual-value ecology,
+   or retain them as decision-semantic hypotheses.
 4. Construct an affordable closed-loop schedule for a declared workload class.  The
    fixed-era sharp-linear theorem gives a strong conditional instance, not a general
    adversarial scheduler.
@@ -580,11 +718,30 @@ normalization hypotheses.  No theorem statement or final error term otherwise ch
 7. Port the abstract Coercive Uptake and Progress sums to Lean if these become theorem
    headlines; their current proofs are elementary but not kernel statements here.
 
-The abstract contract is therefore a viable freeze candidate after the one domain
-repair.  What remains is substantial realization work, but it fits underneath the
-contract rather than forcing a redesign of it.
+The value-correspondence object is an internal sufficient witness for the contract's
+already abstract practical-response certificate `(R)`; it need not be added to the
+public contract.  The abstract contract is therefore a viable freeze candidate after
+the one domain repair.  The architecture is materially stronger and presentation
+stable under the declared harmless-padding relation, but the end-to-end theorem remains
+conditional.  The single most important unsolved bridge is a concrete authenticated
+counterfactual-value ecology proving `(VC)` and anchored response adequacy: without it,
+zero operative defect is compatible with a disastrous action.  The general compiler
+and online scheduler remain important implementation/mathematical gaps, but neither can
+repair missing value semantics.
 
-## 15. Source map for the status judgments
+## 15. Next proof tasks
+
+| Priority | Smallest task | Depends on / unlocks |
+|---|---|---|
+| 1 | Formalize the replicated finite-policy ecology and prove a finite-time `(VC)` interval-width theorem, with manipulation and chosen-only negative controls | External evaluation contract; unlocks nonvacuous `ValueCalibration` |
+| 2 | Prove anchored response adequacy `(NI-S)` for that same evaluator and one nontrivial obligation fixture | Task 1 plus anchored response semantics; unlocks `PracticalResponseSoundness` |
+| 3 | Implement one proof-carrying compiler schema for the fixture, including row provenance, value-row separation, exact feasibility, and conservative `Unknown/Conflict` carry | Existing obligation export and tasks 1–2; unlocks a nonvacuous joint region |
+| 4 | Compose effective compilation with bounded-liability preservation into one assessment-process `IsLogicalInductor` theorem | Task 3 plus existing preservation/effective-market results; unlocks the two-conclusion substrate theorem |
+| 5 | Formalize the predictable-window cheapest-date scheduler and prove liability, full transport, and temporal-error bounds | Existing sharp-linear service theorem; unlocks a concrete `AffordableService` instance |
+| 6 | State the finite shared-service Progress sum theorem in Lean and compose tasks 1–5 into one fixture-level NI theorem | All prior tasks; first kernel-level end-to-end instance |
+| 7 | Generalize only after the fixture closes: broader convex-representability classes, overlapping service bundles, and online unknown-cost scheduling are separate targets | Fixture theorem; unlocks paper-level generality |
+
+## 16. Source map for the status judgments
 
 The LI claims and their current registration are in
 [`CLAIMS.md`](../../../CLAIMS.md), with the paper-facing chain in
@@ -629,3 +786,8 @@ and
 [`SERVICE_RESPONSE_SEMANTICS.md`](../2026-08-30-progress-witness-bridge/SERVICE_RESPONSE_SEMANTICS.md).
 Those documents call themselves unregistered research specifications; this realization
 preserves that status.
+
+The refinement's exact padding analysis, projection/value counterexample, set-valued
+calibration contract, randomized decision bridge, and replicated-evaluation target
+ecology are collected in
+[`PRESENTATION_AND_VALUE_SEMANTICS.md`](PRESENTATION_AND_VALUE_SEMANTICS.md).

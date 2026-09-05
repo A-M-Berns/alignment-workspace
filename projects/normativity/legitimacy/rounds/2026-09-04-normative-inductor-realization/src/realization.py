@@ -46,6 +46,43 @@ def approximate_argmax_regret(
     return regret, 2 * radius + eta
 
 
+def normalized_euclidean_padding_profile(
+    distance_squared: Q, dimension: int, padding: int, intensity: Q
+) -> dict[str, Q]:
+    """Expose the old normalization's exact padding dependence.
+
+    Padding coordinates are assumed unconstrained and copied unchanged by the
+    Euclidean projector, so ``distance_squared`` itself does not change.
+    Squared defects are returned to keep the witness rational.
+    """
+
+    if distance_squared < 0 or dimension <= 0 or padding < 0 or intensity < 0:
+        raise ValueError("invalid distance, dimension, padding, or intensity")
+    padded_dimension = dimension + padding
+    return {
+        "defect_squared_before": distance_squared / dimension,
+        "defect_squared_after": distance_squared / padded_dimension,
+        "service_before": Q(dimension) * intensity,
+        "service_after": Q(padded_dimension) * intensity,
+        "projection_work": intensity * distance_squared,
+    }
+
+
+def sup_projection_padding_profile(errors: Sequence[Q], padding: int, intensity: Q) -> dict[str, Q]:
+    """The projection-point sup error and ``a=lambda`` survive zero-error padding."""
+
+    if not errors or padding < 0 or intensity < 0:
+        raise ValueError("need a nonempty error vector and nonnegative inputs")
+    before = max(abs(x) for x in errors)
+    after = max([*(abs(x) for x in errors), *(Q(0) for _ in range(padding))])
+    return {
+        "defect_before": before,
+        "defect_after": after,
+        "service_before": intensity,
+        "service_after": intensity,
+    }
+
+
 @dataclass(frozen=True)
 class Edge:
     exposure: str
@@ -115,6 +152,46 @@ def belief_only_response_counterexample() -> dict[str, Q]:
         "best_action_loss": Q(0),
         "required_additive_error": Q(1),
     }
+
+
+def projection_value_counterexample() -> dict[str, Q]:
+    """Zero distance to an admissible region need not imply correct policy values.
+
+    The normative coordinate is constrained to 1/2 and both policy-value
+    coordinates are unconstrained.  The displayed point lies in the region and
+    therefore is its own Euclidean and sup projection, but its value ordering is
+    the reverse of the authenticated counterfactual values.
+    """
+
+    return {
+        "normative_coordinate": Q(1, 2),
+        "displayed_value_bad": Q(9, 10),
+        "displayed_value_good": Q(1, 10),
+        "true_value_bad": Q(0),
+        "true_value_good": Q(1),
+        "distance_to_region": Q(0),
+        "chosen_regret": Q(1),
+    }
+
+
+def old_service_amplification(
+    *, column_mass: Q, weighted_column: Q, service_mass: Q,
+    total_claim: Q, total_service: Q, old_lipschitz: Q, parsimony: Q,
+) -> tuple[Q, Q]:
+    """Return the new column load and its old-theorem ``L*K*nu`` bound."""
+
+    values = (column_mass, weighted_column, service_mass, old_lipschitz, parsimony)
+    if min(values) < 0 or total_claim <= 0 or total_service <= 0:
+        raise ValueError("invalid old service data")
+    if column_mass > service_mass:
+        raise ValueError("old column capacity exceeded")
+    if weighted_column > old_lipschitz * column_mass:
+        raise ValueError("old semantic multiplier bound exceeded")
+    if total_service > parsimony * total_claim:
+        raise ValueError("old service parsimony exceeded")
+    new_load = weighted_column / total_claim
+    new_bound = old_lipschitz * parsimony * (service_mass / total_service)
+    return new_load, new_bound
 
 
 def incompatible_reason_regions(margin: Q) -> bool:
