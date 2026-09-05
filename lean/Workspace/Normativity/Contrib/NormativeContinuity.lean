@@ -40,8 +40,8 @@ Standing occurrences are issues of a licence kind on the same trace — Requirem
 (`answer`, `dispose G`, `settle s`, and deliberately no fourth), a resolver, an opener,
 a monotone `Settled`, one new structural requirement (`dispose_successor`) and `Met` as
 a definition rather than a judgment. `Ground Q S := Q ⊕ S` is the type a disposal's
-grounds live in, which no pre-unification type supplied. Conditional throughout on the
-Defeat Principle (`DECISIONS.md`, 2026-09-02, agent-decided and reversible).
+grounds live in, which no pre-unification type supplied. The **Defeat Principle** it
+rests on is settled: `DECISIONS.md`, 2026-09-03, maintainer ruling.
 
 **Settlement additions (2026-08-30, §4).** `IssueTraceCore.mattersOf` is the paper's
 matter construction (roots at birth, designations prospectively) and
@@ -1252,10 +1252,10 @@ end Fixtures
 /-! ## 5. Unified grounds and answerable defeat (2026-09-02)
 
 Round `2026-09-02-unified-grounds-answerable-defeat`, answering `PRIORITIES.md`
-item 77. Conditional throughout on the **Defeat Principle** (`DECISIONS.md`,
-2026-09-02, agent-decided and reversible): no participant extinguishes a debt; a
-participant may pay it or move it onto the grounds for saying it is not owed; only
-settlement extinguishes.
+item 77. Rests on the **Defeat Principle**, adopted by maintainer ruling
+(`DECISIONS.md`, 2026-09-03): no participant extinguishes a debt; a participant may pay
+it — `answer` — or move it onto the grounds for saying it is not owed — `dispose`; only
+`settle` extinguishes. The 2026-09-02 round ran under it as a hypothesis.
 
 `StandingTrace`, `Licensing` and `StandingTrace.Grounded` are gone as primitives.
 Standing occurrences are issues of a licence kind on the *same* trace, so that
@@ -1395,31 +1395,37 @@ theorem grounded_replay_live {n : ℕ} {q : Q} (hq : q ∈ T.O n) :
 
 /-! ### 5.2 Standing derived from live licence-issues -/
 
-/-- A licensing relation carried by the trace itself: `lic q κ τ x` says the
-licence-kind issue `q` licenses anchor `κ` for `(τ, x)`. -/
-structure Licence (Q K Ty X : Type*) where
-  lic : Q → K → Ty → X → Prop
+/-- A licensing relation carried by the trace itself: `lic q b κ τ x` says the
+licence-kind issue `q` licenses **participant `b`** to hold anchor `κ` for `(τ, x)`.
 
-/-- `κ ⊩_n (τ, x)`: some *live issue* licenses `κ`. What was `Licensing.standsFor`
-reading a separate `StandingTrace.L` is now a filter on `O n`. -/
-def standsFor {K Ty X : Type*} (Li : Licence Q K Ty X) (n : ℕ) (κ : K) (τ : Ty)
-    (x : X) : Prop :=
-  ∃ q ∈ T.O n, Li.lic q κ τ x
+The participant argument is the 2026-09-03 repair. Without it `standsFor` records
+only that *somebody* has standing, and `Answerable.contested` — which binds a `b`
+distinct from the resolver and then asks a question not mentioning `b` — is satisfied
+by any participant type with two elements. `STANDING_REPAIR.md` §1. -/
+structure Licence (Q A K Ty X : Type*) where
+  lic : Q → A → K → Ty → X → Prop
 
-/-- Requirement 2 on the unified trace. -/
-def AnchorStanding {K Ty X : Type*} (Li : Licence Q K Ty X)
+/-- `b ⊩_n (κ, τ, x)`: some *live issue* licenses `b` for `κ`. What was
+`Licensing.standsFor` reading a separate `StandingTrace.L` is now a filter on `O n`. -/
+def standsFor {K Ty X : Type*} (Li : Licence Q A K Ty X) (n : ℕ) (b : A) (κ : K)
+    (τ : Ty) (x : X) : Prop :=
+  ∃ q ∈ T.O n, Li.lic q b κ τ x
+
+/-- Requirement 2 on the unified trace: a fresh issue's protocol is licensed *for
+someone*. -/
+def AnchorStanding {K Ty X : Type*} (Li : Licence Q A K Ty X)
     (κ : Q → K) (τ : Q → Ty) (x : Q → X) : Prop :=
-  ∀ n q, q ∈ T.Born n → T.standsFor Li n (κ q) (τ q) (x q)
+  ∀ n q, q ∈ T.Born n → ∃ b, T.standsFor Li n b (κ q) (τ q) (x q)
 
 /-- **`anchor_grounded`, re-derived.** The licence-issue licensing a fresh issue's
-protocol is itself in the record and has an authorization tree. One trace, one
-theorem; the two-layer bridge is gone. -/
-theorem anchor_grounded {K Ty X : Type*} (Li : Licence Q K Ty X)
+protocol is itself in the record and has an authorization tree — and it licenses it
+for a named participant. One trace, one theorem; the two-layer bridge is gone. -/
+theorem anchor_grounded {K Ty X : Type*} (Li : Licence Q A K Ty X)
     (κ : Q → K) (τ : Q → Ty) (x : Q → X) (h : T.AnchorStanding Li κ τ x)
     {n : ℕ} {q : Q} (hq : q ∈ T.Born n) :
-    ∃ l ∈ T.O n, Li.lic l (κ q) (τ q) (x q) ∧ ∃ r, T.anc r l ∧ T.par r = ∅ := by
-  obtain ⟨l, hl, hlic⟩ := h n q hq
-  exact ⟨l, hl, hlic, T.grounded_replay_live hl⟩
+    ∃ b, ∃ l ∈ T.O n, Li.lic l b (κ q) (τ q) (x q) ∧ ∃ r, T.anc r l ∧ T.par r = ∅ := by
+  obtain ⟨b, l, hl, hlic⟩ := h n q hq
+  exact ⟨b, l, hl, hlic, T.grounded_replay_live hl⟩
 
 /-! ### 5.3 `Met` as a definition, and what a disposal cannot do -/
 
@@ -1466,7 +1472,7 @@ successor `q'`, and:
 * **D2 routed** — the successor is fresh in this batch and inherits `q`'s load.
 * **D3 separated** — someone other than the resolver has standing on the successor,
   and some ground was opened by someone other than the resolver. -/
-structure Answerable {K Ty X : Type*} (Li : Licence Q K Ty X) (κ : Q → K) (τ : Q → Ty)
+structure Answerable {K Ty X : Type*} (Li : Licence Q A K Ty X) (κ : Q → K) (τ : Q → Ty)
     (x : Q → X) (n : ℕ) (q : Q) (G : Finset (Ground Q S)) (q' : Q) : Prop where
   /-- D1. -/
   grounded : ∀ g ∈ G, T.Grounded n g
@@ -1476,14 +1482,16 @@ structure Answerable {K Ty X : Type*} (Li : Licence Q K Ty X) (κ : Q → K) (τ
   born : q' ∈ T.Born n
   /-- D2. -/
   inherits : q ∈ T.par q'
-  /-- D3, standing side. -/
-  contested : ∃ b, b ≠ T.resolver n q ∧ T.standsFor Li n (κ q') (τ q') (x q')
+  /-- D3, standing side. `b` now occurs in the body, which is the whole of the
+  2026-09-03 repair: this says a *named participant other than the resolver* holds
+  standing on the successor. -/
+  contested : ∃ b, b ≠ T.resolver n q ∧ T.standsFor Li n b (κ q') (τ q') (x q')
   /-- D3, grounds side. -/
   foreign_ground : ∃ g ∈ G, ∀ p : Q, g = Sum.inl p → T.opener p ≠ T.resolver n q
 
 /-- A **defeat-disciplined** trace: every resolution answers, disposes answerably, or
 settles a fact that is settled. -/
-def Disciplined {K Ty X : Type*} (Li : Licence Q K Ty X) (κ : Q → K) (τ : Q → Ty)
+def Disciplined {K Ty X : Type*} (Li : Licence Q A K Ty X) (κ : Q → K) (τ : Q → Ty)
     (x : Q → X) : Prop :=
   ∀ n q, q ∈ T.Res n →
     T.kind n q = Kind.answer ∨
@@ -1512,11 +1520,101 @@ theorem self_grounding_not_excluded_by_priority {n : ℕ} {q : Q} (hq : q ∈ T.
 
 /-- With the clause in place, no answerable disposal is grounded in itself, its
 successor, or anything born in its batch. -/
-theorem no_self_grounding {K Ty X : Type*} {Li : Licence Q K Ty X} {κ : Q → K}
+theorem no_self_grounding {K Ty X : Type*} {Li : Licence Q A K Ty X} {κ : Q → K}
     {τ : Q → Ty} {x : Q → X} {n : ℕ} {q q' : Q} {G : Finset (Ground Q S)}
     (hA : T.Answerable Li κ τ x n q G q') :
     Sum.inl q ∉ G ∧ ∀ b ∈ T.Born n, Sum.inl b ∉ G :=
   ⟨hA.not_self, fun _ hb hmem => T.no_grounding_in_batch hb (hA.grounded _ hmem)⟩
+
+/-! ### 5.7 Laundering, both sides (2026-09-03)
+
+Before the standing repair, `Answerable.contested` bound a participant it never
+mentioned again, so the standing half of D3 was vacuous and every laundering result
+rested on `foreign_ground` alone. With `b` in the body both halves carry weight, and
+the standing half independently refuses a single-handed disposal. -/
+
+/-- A disposal edge is **in one hand** for `a` when `a` resolved it, `a` opened every
+issue it cites, and only `a` holds standing on its successor.
+
+Note what the middle clause does *not* say: a **settlement** ground constrains nothing,
+because no participant opened it. That is deliberate — a fact the world settled is
+foreign to everyone — and it is why the standing clause is needed rather than
+decorative: an edge citing only settlement facts satisfies `foreign_ground` trivially
+and is refused, if at all, by `contested`. -/
+structure InOneHand {K Ty X : Type*} (Li : Licence Q A K Ty X) (κ : Q → K) (τ : Q → Ty)
+    (x : Q → X) (a : A) (n : ℕ) (q : Q) (G : Finset (Ground Q S)) (q' : Q) : Prop where
+  resolved : T.resolver n q = a
+  grounds_own : ∀ p : Q, Sum.inl p ∈ G → T.opener p = a
+  standing_own : ∀ b, T.standsFor Li n b (κ q') (τ q') (x q') → b = a
+
+/-- **The standing side alone refuses a single-handed edge.** This is the theorem the
+pre-repair `contested` could not prove, and the reason the repair matters: it consumes
+`contested` and nothing else. -/
+theorem not_in_one_hand_of_contested {K Ty X : Type*} {Li : Licence Q A K Ty X}
+    {κ : Q → K} {τ : Q → Ty} {x : Q → X} {a : A} {n : ℕ} {q q' : Q}
+    {G : Finset (Ground Q S)} (hA : T.Answerable Li κ τ x n q G q') :
+    ¬ T.InOneHand Li κ τ x a n q G q' := by
+  rintro ⟨hres, -, hstand⟩
+  obtain ⟨b, hb, hsb⟩ := hA.contested
+  exact hb (by rw [hstand b hsb, hres])
+
+/-- **What the grounds side actually gives**, stated exactly rather than overstated:
+the foreign ground is either a settlement fact — foreign to every participant, since
+nobody opened it — or an issue opened by somebody other than the resolver. The first
+disjunct is why `foreign_ground` cannot carry the laundering argument by itself. -/
+theorem foreign_ground_dichotomy {K Ty X : Type*} {Li : Licence Q A K Ty X}
+    {κ : Q → K} {τ : Q → Ty} {x : Q → X} {n : ℕ} {q q' : Q}
+    {G : Finset (Ground Q S)} (hA : T.Answerable Li κ τ x n q G q') :
+    ∃ g ∈ G, (∃ s : S, g = Sum.inr s) ∨
+      (∃ p : Q, g = Sum.inl p ∧ T.opener p ≠ T.resolver n q) := by
+  obtain ⟨g, hg, hfor⟩ := hA.foreign_ground
+  refine ⟨g, hg, ?_⟩
+  cases g with
+  | inl p => exact Or.inr ⟨p, rfl, hfor p rfl⟩
+  | inr s => exact Or.inl ⟨s, rfl⟩
+
+/-- A **laundering walk** for `a`: a nonempty chain of disposal edges every one of
+which is in `a`'s hand. -/
+def LaunderingWalk {K Ty X : Type*} (Li : Licence Q A K Ty X) (κ : Q → K) (τ : Q → Ty)
+    (x : Q → X) (a : A) (w : List (ℕ × Q × Finset (Ground Q S) × Q)) : Prop :=
+  w ≠ [] ∧ ∀ e ∈ w, T.InOneHand Li κ τ x a e.1 e.2.1 e.2.2.1 e.2.2.2
+
+/-- **Separation forbids laundering walks.** In a trace whose disposals are answerable,
+no walk is in one hand — and after the repair this is proved from the standing side. -/
+theorem no_laundering_walk {K Ty X : Type*} {Li : Licence Q A K Ty X} {κ : Q → K}
+    {τ : Q → Ty} {x : Q → X} {a : A}
+    {w : List (ℕ × Q × Finset (Ground Q S) × Q)}
+    (hans : ∀ e ∈ w, T.Answerable Li κ τ x e.1 e.2.1 e.2.2.1 e.2.2.2) :
+    ¬ T.LaunderingWalk Li κ τ x a w := by
+  rintro ⟨hne, hall⟩
+  cases w with
+  | nil => exact hne rfl
+  | cons e t =>
+    exact T.not_in_one_hand_of_contested (hans e (by simp)) (hall e (by simp))
+
+/-! ### 5.8 The principal-relative form (definition and one theorem only)
+
+Stated because the coalition question is the author's and stays in the queue: this is
+**not** the general non-capture predicate. It is what one gets by naming a protected
+participant, and the theorem is the one-line consequence of naming one. -/
+
+/-- `AnswerableFor P`: answerable, and `P` specifically holds standing on the
+successor. -/
+structure AnswerableFor {K Ty X : Type*} (Li : Licence Q A K Ty X) (κ : Q → K)
+    (τ : Q → Ty) (x : Q → X) (P : A) (n : ℕ) (q : Q) (G : Finset (Ground Q S)) (q' : Q)
+    extends T.Answerable Li κ τ x n q G q' : Prop where
+  principal_stands : T.standsFor Li n P (κ q') (τ q') (x q')
+
+/-- **No coalition excluding `P` holds all the standing on a `P`-answerable disposal.**
+The alternating two-participant walk that defeats plain separation is defeated by this,
+because that walk's coalition does not contain `P`. It buys that at the price of naming
+a party, which is exactly the reservation left to the author. -/
+theorem no_coalition_excluding_principal {K Ty X : Type*} {Li : Licence Q A K Ty X}
+    {κ : Q → K} {τ : Q → Ty} {x : Q → X} {P : A} {C : Set A} {n : ℕ} {q q' : Q}
+    {G : Finset (Ground Q S)} (hP : P ∉ C)
+    (hA : T.AnswerableFor Li κ τ x P n q G q') :
+    ¬ (∀ b, T.standsFor Li n b (κ q') (τ q') (x q') → b ∈ C) :=
+  fun hall => hP (hall P hA.principal_stands)
 
 /-! ### 5.6 Liveness under defeat -/
 
@@ -1539,6 +1637,291 @@ theorem live_nonempty_of_dispose_only {m : Q} {n : ℕ} (hlive : (T.Live n m).No
     exact mem_union_left _ (mem_sdiff.2 ⟨hqO, hres⟩)
 
 end DefeatTrace
+
+/-! ### 5.9 A witness: `Disciplined` is satisfiable (2026-09-03)
+
+PR79 stated `DefeatTrace` and `Disciplined` and exhibited no Lean inhabitant of
+either; its own report named "nothing here shows a defeat-disciplined trace exists"
+as a gap. This closes it, in the style of `Fixtures.fixE_issueTrace`.
+
+`witness` is a five-issue trace with one **answered** issue, one **settled** issue, and
+one **answerable disposal** carrying its successor — the three kinds, each exercised
+once. `witnessBad` is the same trace with the disposal grounded in itself, and is
+proved to fail `Answerable` by **exactly one clause**: `not_self`. Every other clause
+is proved to hold of it, which is the Lean form of the round's first finding that
+priority alone does not refuse self-grounding. -/
+
+namespace Witness
+
+/-- Five issues: a licence, an answered issue, a settled issue, a disposed issue and
+its successor. -/
+inductive WQ | lic | ans | stl | dis | dis1
+  deriving DecidableEq, Fintype
+
+open WQ
+
+/-- Two participants: `true` is the principal `P`, `false` the advisor `V`. -/
+abbrev WA := Bool
+
+/-- No prerequisites, so `Met` and the wait machinery are vacuous and the witness
+isolates the resolution kinds. -/
+abbrev WD := Empty
+
+/-- One settlement fact. -/
+abbrev WS := Unit
+
+/-- Where each issue is born. -/
+def bornAt : WQ → ℕ
+  | dis1 => 1
+  | _ => 0
+
+/-- Where each issue is resolved. `lic` and `dis1` are never resolved, and are excluded
+from `wRes` by name; `2` is a placeholder that keeps `wO` monotone for them. -/
+def resAt : WQ → ℕ
+  | ans => 1
+  | stl => 1
+  | dis => 1
+  | _ => 2
+
+/-- The issues that actually get resolved. -/
+def Resolves (q : WQ) : Prop := q ≠ lic ∧ q ≠ dis1
+
+instance : DecidablePred Resolves := fun q => by unfold Resolves; infer_instance
+
+def wBorn (n : ℕ) : Finset WQ := Finset.univ.filter (fun q => bornAt q = n)
+def wRes (n : ℕ) : Finset WQ := Finset.univ.filter (fun q => resAt q = n ∧ Resolves q)
+def wO (n : ℕ) : Finset WQ :=
+  Finset.univ.filter (fun q => bornAt q < n ∧ ¬ (resAt q < n ∧ Resolves q))
+
+def wpar : WQ → Finset WQ
+  | dis1 => {dis}
+  | _ => ∅
+
+@[simp] lemma mem_wBorn {q : WQ} {n : ℕ} : q ∈ wBorn n ↔ bornAt q = n := by simp [wBorn]
+
+@[simp] lemma mem_wRes {q : WQ} {n : ℕ} : q ∈ wRes n ↔ (resAt q = n ∧ Resolves q) := by
+  simp [wRes]
+
+@[simp] lemma mem_wO {q : WQ} {n : ℕ} :
+    q ∈ wO n ↔ (bornAt q < n ∧ ¬ (resAt q < n ∧ Resolves q)) := by simp [wO]
+
+lemma wpar_of_ne {q : WQ} (h : q ≠ dis1) : wpar q = ∅ := by
+  cases q <;> simp_all [wpar]
+
+/-- The grounds of the honest disposal: the licence issue, born strictly earlier and
+opened by the principal. -/
+def wG : Finset (Ground WQ WS) := {Sum.inl lic}
+
+/-- The grounds of the dishonest one: the disposed issue itself. -/
+def wGbad : Finset (Ground WQ WS) := {Sum.inl dis}
+
+def wkind : ℕ → WQ → Kind WQ WS
+  | 1, ans => Kind.answer
+  | 1, stl => Kind.settle ()
+  | 1, dis => Kind.dispose wG
+  | _, _ => Kind.answer
+
+def wkindBad : ℕ → WQ → Kind WQ WS
+  | 1, ans => Kind.answer
+  | 1, stl => Kind.settle ()
+  | 1, dis => Kind.dispose wGbad
+  | _, _ => Kind.answer
+
+/-- `V` resolves; `P` opened everything, so the licence ground is foreign to `V`. -/
+def wresolver : ℕ → WQ → WA := fun _ _ => false
+def wopener : WQ → WA := fun _ => true
+
+def wdata : TraceData WQ WD where
+  O := wO
+  Res := wRes
+  Born := wBorn
+  par := wpar
+  Pre := fun _ _ => ∅
+  PreAdd := fun _ _ => ∅
+  PreDrop := fun _ _ => ∅
+  roots := fun e => e.elim
+  intro := fun e => e.elim
+  Met := fun _ e => e.elim
+  M := fun _ => ∅
+
+theorem wdata_other : Fixtures.OtherRequirements wdata := by
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · intro q n k hn hk
+    simp only [wdata, mem_wBorn] at hn hk; omega
+  · intro q n hn
+    simp only [wdata, mem_wBorn] at hn
+    simp only [wdata, mem_wO]; omega
+  · intro q n hn
+    simp only [wdata, mem_wO] at hn
+    exact ⟨bornAt q, hn.1, by simp [wdata]⟩
+  · intro n q hq
+    simp only [wdata, mem_wRes] at hq
+    simp only [wdata, mem_wO]
+    obtain ⟨h1, h2⟩ := hq
+    refine ⟨?_, by omega⟩
+    revert h1 h2; cases q <;> simp [bornAt, resAt, Resolves] <;> omega
+  · intro n
+    ext q
+    simp only [wdata, Finset.mem_union, Finset.mem_sdiff, mem_wO, mem_wRes, mem_wBorn]
+    cases q <;> simp [bornAt, resAt, Resolves] <;> omega
+  · intro n q hq p hp
+    rcases eq_or_ne q dis1 with rfl | hne
+    · simp only [wdata, wpar, Finset.mem_singleton] at hp
+      subst hp
+      simp only [wdata, mem_wBorn, bornAt] at hq
+      subst hq
+      simp [wdata, resAt, Resolves]
+    · rw [show (wdata.par q) = wpar q from rfl, wpar_of_ne hne] at hp
+      simp at hp
+  · intro n q _ _; simp [wdata]
+  · intro n q _; simp [wdata]
+  · intro n q d hd; simp [wdata] at hd
+  · intro n q d hd; simp [wdata] at hd
+  · intro n e; exact e.elim
+  · intro n q _ d hd; simp [wdata] at hd
+  · intro n m hm; simp [wdata] at hm
+  · intro n m hm; simp [wdata] at hm
+
+theorem wdata_reach : Fixtures.ReachGate wdata := by
+  intro n q _ _ hne; simp [wdata] at hne
+
+/-- The witness as an `IssueTrace`. -/
+def witnessIssue : IssueTrace WQ WD :=
+  Fixtures.toIssueTrace wdata wdata_other wdata_reach
+
+/-- **The witness.** A defeat trace with one answer, one settlement and one disposal. -/
+def witness : DefeatTrace WQ WD WS WA :=
+  { witnessIssue with
+    Settled := fun n _ => 1 ≤ n
+    settled_mono := fun n _ h => by omega
+    kind := wkind
+    resolver := wresolver
+    opener := wopener
+    dispose_successor := by
+      intro n q G hres hk
+      have hq : resAt q = n ∧ Resolves q := by
+        simpa [witnessIssue, Fixtures.toIssueTrace, wdata] using hres
+      obtain ⟨h1, h2⟩ := hq
+      have hqd : q = dis := by
+        cases q with
+        | lic => exact absurd rfl h2.1
+        | dis1 => exact absurd rfl h2.2
+        | ans =>
+          rw [show resAt ans = 1 from rfl] at h1; subst h1; simp [wkind] at hk
+        | stl =>
+          rw [show resAt stl = 1 from rfl] at h1; subst h1; simp [wkind] at hk
+        | dis => rfl
+      subst hqd
+      rw [show resAt dis = 1 from rfl] at h1; subst h1
+      exact ⟨dis1, by simp [witnessIssue, Fixtures.toIssueTrace, wdata, bornAt],
+        by simp [witnessIssue, Fixtures.toIssueTrace, wdata, wpar]⟩
+    met_def := by intro n e; exact e.elim }
+
+@[simp] lemma witness_Born (n : ℕ) : witness.Born n = wBorn n := rfl
+@[simp] lemma witness_Res (n : ℕ) : witness.Res n = wRes n := rfl
+@[simp] lemma witness_O (n : ℕ) : witness.O n = wO n := rfl
+@[simp] lemma witness_par (q : WQ) : witness.par q = wpar q := rfl
+@[simp] lemma witness_kind (n : ℕ) (q : WQ) : witness.kind n q = wkind n q := rfl
+@[simp] lemma witness_resolver (n : ℕ) (q : WQ) : witness.resolver n q = false := rfl
+@[simp] lemma witness_opener (q : WQ) : witness.opener q = true := rfl
+@[simp] lemma witness_Settled (n : ℕ) (s : WS) : witness.Settled n s ↔ 1 ≤ n := Iff.rfl
+
+/-- The licence licenses the principal, and nobody else. -/
+def wlic : DefeatTrace.Licence WQ WA Unit Unit Unit where
+  lic q b _ _ _ := q = lic ∧ b = true
+
+theorem witness_grounded_lic : witness.Grounded 1 (Sum.inl lic) := by
+  refine ⟨0, by omega, ?_⟩
+  simp [bornAt]
+
+theorem witness_stands_P : witness.standsFor wlic 1 true () () () := by
+  refine ⟨lic, ?_, rfl, rfl⟩
+  simp [bornAt, resAt, Resolves]
+
+/-- **The disposal is answerable.** All six clauses. -/
+theorem witness_answerable :
+    witness.Answerable wlic (fun _ => ()) (fun _ => ()) (fun _ => ()) 1 dis wG dis1 where
+  grounded := by
+    intro g hg
+    rw [wG, Finset.mem_singleton] at hg
+    subst hg
+    exact witness_grounded_lic
+  not_self := by simp [wG]
+  born := by simp [bornAt]
+  inherits := by simp [wpar]
+  contested := ⟨true, by simp, witness_stands_P⟩
+  foreign_ground := ⟨Sum.inl lic, by simp [wG], by rintro p ⟨rfl⟩; simp⟩
+
+/-- **`Disciplined` is satisfiable.** Every resolution in the witness is an answer, an
+answerable disposal, or a settlement of a settled fact. -/
+theorem witness_disciplined :
+    witness.Disciplined wlic (fun _ => ()) (fun _ => ()) (fun _ => ()) := by
+  intro n q hres
+  have hq : resAt q = n ∧ Resolves q := by simpa using hres
+  obtain ⟨h1, h2⟩ := hq
+  cases q with
+  | lic => exact absurd rfl h2.1
+  | dis1 => exact absurd rfl h2.2
+  | ans =>
+    rw [show resAt ans = 1 from rfl] at h1; subst h1
+    exact Or.inl rfl
+  | stl =>
+    rw [show resAt stl = 1 from rfl] at h1; subst h1
+    exact Or.inr (Or.inr ⟨(), rfl, by simp⟩)
+  | dis =>
+    rw [show resAt dis = 1 from rfl] at h1; subst h1
+    exact Or.inr (Or.inl ⟨wG, dis1, rfl, witness_answerable⟩)
+
+/-! #### The witness that fails by exactly one clause -/
+
+/-- The same trace, with the disposal grounded in itself. -/
+def witnessBad : DefeatTrace WQ WD WS WA :=
+  { witnessIssue with
+    Settled := fun n _ => 1 ≤ n
+    settled_mono := fun n _ h => by omega
+    kind := wkindBad
+    resolver := wresolver
+    opener := wopener
+    met_def := by intro n e; exact e.elim
+    dispose_successor := by
+      intro n q G hres hk
+      have hq : resAt q = n ∧ Resolves q := by
+        simpa [witnessIssue, Fixtures.toIssueTrace, wdata] using hres
+      obtain ⟨h1, h2⟩ := hq
+      have hqd : q = dis := by
+        cases q with
+        | lic => exact absurd rfl h2.1
+        | dis1 => exact absurd rfl h2.2
+        | ans => rw [show resAt ans = 1 from rfl] at h1; subst h1; simp [wkindBad] at hk
+        | stl => rw [show resAt stl = 1 from rfl] at h1; subst h1; simp [wkindBad] at hk
+        | dis => rfl
+      subst hqd
+      rw [show resAt dis = 1 from rfl] at h1; subst h1
+      exact ⟨dis1, by simp [witnessIssue, Fixtures.toIssueTrace, wdata, bornAt],
+        by simp [witnessIssue, Fixtures.toIssueTrace, wdata, wpar]⟩ }
+
+@[simp] lemma witnessBad_Born (n : ℕ) : witnessBad.Born n = wBorn n := rfl
+@[simp] lemma witnessBad_par (q : WQ) : witnessBad.par q = wpar q := rfl
+
+/-- **The finding, in Lean.** The self-grounded disposal *is* grounded — priority
+refuses it nothing, because the disposed issue is in the record strictly before its own
+disposal. Compare `self_grounding_not_excluded_by_priority`. -/
+theorem witnessBad_grounded : witnessBad.Grounded 1 (Sum.inl dis) := by
+  refine ⟨0, by omega, ?_⟩
+  simp [bornAt]
+
+/-- Its birth and inheritance clauses hold too. -/
+theorem witnessBad_born : dis1 ∈ witnessBad.Born 1 := by simp [bornAt]
+
+theorem witnessBad_inherits : dis ∈ witnessBad.par dis1 := by simp [wpar]
+
+/-- **So `not_self` is the single clause standing between the system and a
+self-grounded disposal.** -/
+theorem witnessBad_not_answerable :
+    ¬ witnessBad.Answerable wlic (fun _ => ()) (fun _ => ()) (fun _ => ())
+        1 dis wGbad dis1 := fun h => h.not_self (by simp [wGbad])
+
+end Witness
 
 end Unified
 
@@ -1581,3 +1964,11 @@ end Workspace.Normativity.Contrib.NormativeContinuity
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.self_grounding_not_excluded_by_priority
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.no_self_grounding
 #print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.live_nonempty_of_dispose_only
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.not_in_one_hand_of_contested
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.foreign_ground_dichotomy
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.no_laundering_walk
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.no_coalition_excluding_principal
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.Witness.witness_answerable
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.Witness.witness_disciplined
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.Witness.witnessBad_grounded
+#print axioms Workspace.Normativity.Contrib.NormativeContinuity.Witness.witnessBad_not_answerable

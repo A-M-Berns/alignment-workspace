@@ -128,19 +128,68 @@ answerability slice.*
   treatment of a reason's *weight* and *priority* as normative content rather
   than as substrate machinery.
 
+  *Checked 2026-09-03*, in answer to the open question recorded in §7. **The
+  machinery cannot express `MayDispose`**, and the reason is deeper than a priority
+  ordering failing to license the loser's release: Horty's apparatus computes a
+  *proper scenario* — which defaults to reason from — so a defeated default is simply
+  not selected, and **there is no account for a licence to operate on.** Nothing is
+  owed, so nothing can be licensed to stop being owed. Of the round's three clauses,
+  grounds have an image (the winning default; and in *variable priority* default logic
+  the ordering is itself established by higher-order defaults, so the ground is in the
+  record), a successor has none, and separation has none — the last because a default
+  theory has **no participants**, not because the ordering is exogenous, which for
+  Horty it is not. **Exclusion is challengeable in-system:** undercutting is a
+  triggered default lowering the undercut rule's weight below a threshold, so the
+  undercutter is itself defeasible. An exclusionary reason is therefore closer to the
+  round's `dispose` than to its `settle`, and the two summands do not collapse.
+  `.../rounds/2026-09-03-defeat-landing-horty-standing/HORTY.md`.
+
+  *Verified against primary text, 2026-09-03*, namely **Horty, *Reasons as Defaults*,
+  Draft #2, 16 August 2006** — the paper the book develops. Definitions 1–4 give
+  `Triggered`, `Conflicted`, `Defeated` and `Binding` as functions of `⟨W, D, <⟩` and a
+  scenario `S`, with a stable scenario a fixed point of `Binding`; §3.1 gives variable
+  priority theories, where `δ <_S δ'` iff `W ∪ Conclusion(S) ⊢ d ≺ d'`; §3.2 gives
+  threshold theories, where undercutting is a priority falling below `τ` and an
+  undercut default "provides no reason of its own". Horty states that exclusionary
+  reasons "can themselves be excluded" (§3.2 n. 16) and rejects a stratified hierarchy
+  of orders. **The OUP 2012 book was not read** and remains unreachable; its
+  contribution over the paper is the development of §3.2 into "exclusionary default
+  logic" plus the Dancy material. A citation *of the book* still owes that check.
+
 - **Pollock, "Defeasible Reasoning", *Cognitive Science* 11(4), 1987,
-  pp. 481–518.** <http://www.umiacs.umd.edu/~horty/courses/readings/pollock-1987-defreasoning.pdf>.
+  pp. 481–518.** <http://www.horty.umiacs.io/courses/readings/pollock-1987-defreasoning.pdf>,
+  DOI `10.1207/s15516709cog1104_4`.
   Distinguishes **rebutting** defeaters, which give a prima facie reason for the
   denial of the conclusion, from **undercutting** defeaters, which attack the
-  inference without arguing the conclusion false. *Citation verified 2026-09-01.*
-  What we take: the undercut/rebut split, which the reason-state round reproduces as
-  an ordinary reason for `~App(sigma, c@n)` rather than as an attack primitive.
+  inference without arguing the conclusion false. *Citation verified 2026-09-01 and
+  again 2026-09-05, when the PDF was fetched from the URL above and its first page
+  checked against the bibliographic data; the `umiacs.umd.edu` address this entry
+  used to carry now redirects there.* What we take: the undercut/rebut split, which the reason-state
+  round reproduces as an ordinary reason for `~App(sigma, c@n)` rather than as an
+  attack primitive — and which, since 2026-09-03, is recorded as a **conceptual
+  dependency in the strong sense** for the defeat line. *A caution on the citation:*
+  Horty's 2006 paper attributes the undercutting distinction to **Pollock 1970**, and
+  cites **Pollock 1995** for the mature treatment, not the 1987 paper this entry names.
+  1987 is a real and citable source for the distinction, but a claim about where it was
+  "first pointed out" should follow Horty and say 1970. The dependency for us is: the `answer` / `dispose`
+  distinction *is* rebut/undercut, transposed from a belief's warrant to a debt's.
+  `answer` rebuts the challenge-warrant; `dispose` undercuts it. The round did not
+  arrive at two kinds independently.
 
 - **Prakken, "An abstract framework for argumentation with structured
   arguments", Argument & Computation 1(2), 2010 (ASPIC+).** Structured
   argumentation with strict and defeasible rules, preferences, and attack
   relations. What we take: the vocabulary for stating what an attack *is* when
   arguments have internal structure.
+
+  *Checked 2026-09-03* against the Modgil–Prakken tutorial (read directly). A defeated
+  argument is excluded from the extension and leaves **no residue and no successor**;
+  there is **reinstatement**, but it is computed by the semantics rather than being a
+  licensed act with a recorded ground, which is the opposite of a transfer. The
+  preference ordering is **exogenous** in canonical ASPIC+ — making preferences
+  themselves argument conclusions is explicitly non-standard — so the attack relation
+  is unauthored. ASPIC+ therefore has neither the successor clause nor the separation
+  clause.
 
 **Preserved.** Support, provenance and defeat machinery is relevant prior art,
 but reason representation is not normative force. What we do **not** take: the
@@ -449,8 +498,23 @@ of the section.
   needs care. Horty gives priorities among defaults; the answerability line needs
   *authorized disposition*, which is a licence to stop owing something, not a
   priority ordering. **What we do not take:** the identification of defeat with
-  priority. Whether Horty's machinery can express `MayDispose` at all is an open
-  question and a good literature target.
+  priority.
+
+  *The open question is answered, 2026-09-03:* **Horty's machinery cannot express
+  `MayDispose`**, because his theory says what to conclude rather than what is owed,
+  so there is no account for a licence to operate on. What is genuinely new on our
+  side, phrased so a reader of the book can check it: **proper scenarios are a
+  function of the current theory and of nothing in the history of defeats** — delete
+  the record of which defaults lost, recompute, and the answer is unchanged. The
+  defeat line's successor-bearing transfer makes the future depend on that history,
+  which is the whole of the difference — and the point is verifiable from the
+  definitions: `Binding` is a function of `⟨W, D, <⟩` and the scenario alone.
+
+  *Said fairly, this is a difference of subject rather than a defect.* Horty's is a
+  static theory — one default theory, compute its proper scenarios — and does not model
+  a process over positions. **Checked against Horty's 2006 paper**, which carries the
+  full apparatus; the 2012 book itself was not read. See §2 and the round's
+  `HORTY.md`.
 
 - **Brandom 1994** (see §3) — **conceptual dependency** for the commitment ledger.
   The slice-wise conservation law `c = Satisfied ∨ Disposed ∨ Remaining` is a

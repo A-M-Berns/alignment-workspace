@@ -2111,6 +2111,35 @@ item asks for was not performed; and the licence **does not stop coalitions** �
 participants alternating disposals satisfy separation at every edge and launder
 indefinitely, so the laundering channel this item names is narrowed and not closed.
 
+*Prior-art check partly done, 2026-09-03*, by
+`projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/HORTY.md`.
+**Verdict: Horty's machinery cannot express `MayDispose`** — and the reason is deeper
+than this item states. A priority ordering does not merely fail to license the loser's
+release; Horty's theory says what to *conclude* rather than what is *owed*, so there is
+no account for a licence to operate on and the question does not arise inside it. Of the
+round's three clauses, grounds have an image and successor and separation do not — the
+last because a default theory has no **participants**, not because the ordering is
+exogenous, which in variable-priority default logic it is not. **Exclusion is
+challengeable in-system** (undercutting is a triggered default lowering a weight, and
+the undercutter is itself defeasible), so an exclusionary reason is closer to `dispose`
+than to `settle` and the two summands do not collapse. ASPIC+ has no successor, and its
+attack relation is unauthored.
+
+**Checked against primary text.** The verdict above is verified against **Horty,
+*Reasons as Defaults*, Draft #2, 16 August 2006** — the paper the 2012 book develops,
+carrying the whole apparatus: Definitions 1–7, fixed- and variable-priority theories,
+and the threshold theories that become "exclusionary default logic". Horty states the
+crux himself: exclusionary reasons "can themselves be excluded", and he rejects a
+stratified hierarchy of reason-orders.
+
+**What still blocks the item.** Two things, and neither is the theory question.
+First, the **OUP 2012 book** was not read — its contribution over the paper is that
+development plus the Dancy material, so a citation *of the book* is not yet licensed.
+Second, and larger, **the laundering channel this item names is closed against single
+participants and not against coalitions**: two participants alternating disposals
+satisfy separation at every edge. The item closes when a maintainer either obtains the
+book or rules the paper sufficient, **and** when the coalition hole is closed.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

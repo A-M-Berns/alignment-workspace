@@ -40,17 +40,6 @@ maintainer's.
 below.** The next round dispatched from that conversation lands it as its first
 commit.
 
-- **Whether the Defeat Principle is adopted.** The round of 2026-09-02 works under
-  it as a hypothesis — no participant extinguishes a debt; a participant may pay it
-  or move it onto the grounds for saying it is not owed; only settlement
-  extinguishes — and every theorem it states is conditional on it. It is the reason
-  `dispose` gets a successor requirement, the reason `Met` reads only discharging
-  resolutions, and the reason the carrier layer's disposition receipt goes to bottom.
-  *Turns on:* whether "authorized disposition" in the answerability calculus is meant
-  as a *terminal exit* — content ceasing to be owed — or as a *transfer* onto
-  contested grounds. The round can show the second is consistent and cannot show the
-  first is wrong.
-
 - **Whether disposal transfers load in full or at a discount.** The round transfers
   in full: the successor inherits exactly the disposed issue's load, which makes the
   disposal edge an identity-frame transport step with `L = 1`, `ε = 0`.
@@ -145,11 +134,44 @@ commit.
 
 ## Settled
 
+### 2026-09-03 — the Defeat Principle is adopted
+
+**Maintainer ruling**, taken in conversation on 2026-09-03 and landed here as the
+first commit of the round dispatched from it, per the standing practice that a ruling
+taken in conversation is in force only once it is a dated entry.
+
+> **No participant extinguishes a debt.** A participant may pay it — `answer` — or
+> move it onto the grounds for saying it is not owed — `dispose`. Only **settlement**
+> extinguishes.
+
+This settles the hypothesis the 2026-09-02 round ran under, and the consequences it
+already carries are now unconditional rather than conditional:
+
+- `dispose` is required to open a fresh successor inheriting the disposed issue
+  (`DefeatTrace.dispose_successor`), because a moved debt must land somewhere.
+- `Met` reads only *discharging* resolutions, so a disposed root satisfies no
+  prerequisite (`DefeatTrace.dispose_not_met`) and a wait on it reroutes rather than
+  going extinct (`DefeatTrace.routes_survive_dispose`).
+- On the carrier layer the disposition receipt is identically bottom, and on the
+  service layer `dispose` contributes zero to either terminal fate — it is an
+  obligation-to-obligation transport step with `L = 1`, `ε = 0`.
+
+**What the ruling does not settle.** Whether disposal transfers load in full or at a
+discount; whether settlement's independence from the disposer's writes is a standing
+hypothesis or per-realization; and whether legitimacy may presuppose a designated
+protected participant. All three remain in *Awaiting the author*.
+
+*Rejected alternative:* disposition as a terminal exit — content ceasing to be owed
+without being answered, which is how `PRIORITIES.md` item 77 originally posed it. That
+reading makes the disposition term an unaudited hole in every conservation law, which
+is the laundering channel item 77 names; the transfer reading closes it by construction
+at the cost of requiring a successor.
+
 ### 2026-09-02 — grounds are unified, and defeat is answerable but not coalition-proof
 
-**Agent-decided, reversible**, and **conditional on the Defeat Principle**, which is
-the round's hypothesis and is *not* settled — it is queued in *Awaiting the author*
-above. Round
+**Agent-decided, reversible.** The round ran with the Defeat Principle as an
+explicit hypothesis; the principle was **adopted by maintainer ruling on 2026-09-03**
+(entry above), so the results below are no longer conditional on it. Round
 `projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat/`,
 answering `PRIORITIES.md` item 77 in part.
 

@@ -116,9 +116,8 @@ All marked provisional; none is proposed for the wiki or `state/vocabulary.json`
 
 ## 5. What this does not establish (standard 9)
 
-- **Everything is conditional on the Defeat Principle**, which is this round's
-  hypothesis, recorded agent-decided and reversible. No dated entry adopting or
-  rejecting it had landed when this round ran; it was checked at `main` = `51898f2`.
+- **The Defeat Principle is no longer a hypothesis.** The round ran under it as a hypothesis; it was adopted by maintainer ruling on 2026-09-03 (`DECISIONS.md`). The theorem
+  statements below are therefore unconditional on it. Nothing else about them changed.
 - **Only T2 and the §5 supporting results are Lean.** T1 (service layer), T3, T4 and
   T5 are paper-derived and test-supported, which is not citable as proven.
 - **D3 is broken against coalitions** and the round does not fix it.
@@ -147,8 +146,8 @@ All marked provisional; none is proposed for the wiki or `state/vocabulary.json`
 
 ## 7. Outstanding maintainer actions (standard 10)
 
-1. **Rule on the Defeat Principle.** Every theorem in this round is conditional on it.
-   Adopt, reject, or amend — appended to `DECISIONS.md` *Awaiting the author*.
+1. ~~**Rule on the Defeat Principle.**~~ **Done** — adopted by maintainer ruling,
+   `DECISIONS.md` 2026-09-03.
 2. **Decide whether disposal transfers load in full or at a discount.** *Turns on*
    taste about second-order liability; changes T4's constants, not its structure.
 3. **Decide whether settlement's independence from the disposer's writes is a standing

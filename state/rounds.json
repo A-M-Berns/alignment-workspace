@@ -1091,6 +1091,21 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-02-unified-grounds-answerable-defeat/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-03-defeat-landing-horty-standing",
+      "date": "2026-09-03",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing",
+      "verdict": "DEFEAT-PRINCIPLE-LANDED-HORTY-CANNOT-EXPRESS-DISPOSAL-AND-THE-STANDING-CLAUSE-WAS-VACUOUS — the Defeat Principle is adopted by maintainer ruling and its consequences are no longer conditional; Horty's machinery cannot express authorized disposition, and the reason is deeper than item 77 states, since his theory says what to conclude rather than what is owed and therefore has no account for a licence to operate on, while his exclusion mechanism turns out to be challengeable in-system and so is closer to disposal than to settlement, leaving the round's two summands intact rather than collapsed, a verdict Horty states himself when he writes that exclusionary reasons can themselves be excluded and rejects a stratified hierarchy of orders; ASPIC+ has neither a successor nor an authored attack relation, and its reinstatement is computed by the semantics rather than licensed by a participant, which is the opposite of a transfer; PR79's separation condition bound a participant its body never mentioned, so the standing half of D3 was vacuous and every laundering result in that round in fact rested on the foreign-ground clause alone, a defect the Python model did not share and therefore did not catch; with the participant carried into the licence the standing side alone refuses a single-handed disposal, which closes the case of a disposal citing only settlement facts, since such a disposal satisfies the foreign-ground clause vacuously; and the specification PR79 wrote down now has a Lean model, together with a second trace proved to fail it at exactly one clause, which turns the round's first finding from a remark into a checked pair.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/REPORT.md",
+      "depends_on": [
+        "2026-09-02-unified-grounds-answerable-defeat",
+        "2026-08-30-normative-continuity-settlement"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-03-defeat-landing-horty-standing/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
