@@ -134,6 +134,73 @@ commit.
 
 ## Settled
 
+### 2026-09-05 — author consolidation: two rounds landed, the wiki restated as legitimate cognitive evolution
+
+**Maintainer-dispatched consolidation pass**, executed with write scope by the round at
+`prompts/2026-09-05-author-consolidation/`. Not a research round: no theorem is added,
+no claim is registered, no epistemic class moves.
+
+**Merges.** The defeat-landing round (`round/2026-09-03-defeat-landing-horty-standing`)
+squash-merged to `main` as `f7489cf`; the Normative Inductor realization
+(`round/2026-09-04-normative-inductor-realization`) rebased onto that, retargeted from
+its stacked base to `main`, and squash-merged as `caa3ad0`. Both merges went through
+GitHub's asynchronous merge endpoint, which is what it requires of a stacked pull
+request; neither had conflicts. Both squash messages carry their Model attribution.
+
+**Corrections made on the way**, all recorded in the rounds' own documents as dated
+annotations rather than rewrites:
+
+- `projects/normativity/notes/PRIOR_ART.md`, Pollock 1987: the URL the defeat-landing
+  round recorded as dead redirects to a host that serves the paper. The entry carries
+  the resolving address and the DOI, re-verified 2026-09-05 against the PDF's first page,
+  and keeps the caution that Horty credits the distinction to Pollock 1970.
+- The Normative Inductor round: **joint price-space feasibility does not imply joint
+  practical-response compatibility.** One service occurrence realizes one decision
+  distribution, so every exposure matched to it needs its own anchored response
+  certificate against that same distribution; incompatible demands are separated into
+  distinct service contexts, adjudicated under a licensed upstream rule, given a common
+  adequate response, or left as residual mass. Recorded as a realization obligation in
+  the realization document, the presentation note, `THEOREMS.md` and `REPORT.md`; the
+  abstract admissible-edge relation already admits an edge only when its certificate
+  exists, so no abstract-contract change was needed. The `exact_carry_left` docstring
+  now says it consumes an already certified identity edge and does not establish the
+  semantic premise. `PROVENANCE.md` names the governing contract files without a local
+  filesystem path.
+
+**The wiki**, which the freeze policy of 2026-09-01 expects to move, is restated around
+one idea — *legitimacy is a property of cognitive evolution, not a certification of a
+state from first principles* — with the decomposition
+
+    Legitimate Evolution  =  Integrity / Answerability  +  Robust Openness
+
+and two bills issued to external theories: a non-capture certificate relative to a
+declared intervention class, and a counterfactual-value certificate for the
+practical-response interface. Five pages are new (`Settlement-Interface`, `Integrity`,
+`Openness-Coverage-and-Non-Capture`, `Normative-Induction`, `Normative-Inductor`);
+`Legitimacy` and `Diachronic-Answerability` are rewritten; `Home`, `_Sidebar`,
+`Roadmap`, `Glossary`, `Progress`, `Normativity`, `Actionability-and-Normative-Force`,
+`Why-Normativity`, `Prior-Art`, `Architecture`, `Deference`, `Corrigibility` and
+`Normative-Record-and-Inquiry` are amended. The full normative history `H` and its
+settlement view `SetView(H)` are distinguished throughout; defeat is presented as carry,
+not extinguishment; Integrity and Non-Capture are stated as distinct questions; Progress
+is stated relative to a declared evaluation protocol; the dimension-normalized public
+defect appears only as the rejected alternative.
+
+**This supersedes the three-conjunct framing of 2026-09-01 as the sanctioned shape.**
+Affordability is a realizability side condition, as that ruling's own amendment already
+said; the pillar it names *Diachronic Answerability with its semantic authentication*
+is now stated as Integrity plus Answerability, with Integrity the theory of the history
+and Answerability the conservation law over it; *counterfactual non-capture* becomes
+the certificate half of Robust Openness, relative to a declared coverage scope. The
+2026-09-01 ruling's distinction stands unchanged: this is the shape work is sequenced
+against, not a claim, and no legitimacy predicate has been written.
+
+*Rejected alternatives:* keeping the two rounds stacked until a further refinement
+(nothing in either depended on more than what had landed); adding a new abstract
+contract object for joint response compatibility (the admissible-edge relation already
+carries it); a wiki page per round (the wiki is the conceptual register and the round
+directories are the evidence).
+
 ### 2026-09-03 — the Defeat Principle is adopted
 
 **Maintainer ruling**, taken in conversation on 2026-09-03 and landed here as the

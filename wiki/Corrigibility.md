@@ -46,6 +46,27 @@ advisor cannot write the relevant grant relation. That is evidence about the
 declared model. It neither justifies the initial allocation of authority nor
 provides a general theory of efficacy.
 
+## What legitimacy will hand this line
+
+The longer-run target is not a learner that follows norms. It is to prove properties of
+an agent reasoning about a **legitimate future cognitive process** — one that will
+remain answerable to what has reached it and robustly open to what may
+([Legitimacy](Legitimacy)). The deference theorem this line wants should consume three
+things from that theory: a certified legitimate-evolution property of the future
+process; a Normative Progress guarantee that what the process owes comes to bear on
+what it does, relative to a declared evaluation protocol
+([Normative induction](Normative-Induction)); and the decision- and value-facing outputs
+of a realization such as the [Normative Inductor](Normative-Inductor). From those it
+should derive reasons not to preempt, disable, or replace the future process merely
+because its later judgment may differ from the current agent's — reasons that survive
+the current agent's own uncertainty about which of them is right.
+
+That theorem has not been proved, and nothing here claims it. What has changed is that
+the legitimacy side now provides a candidate interface for it: the properties are
+named, their proof obligations and external bills are separated, and the inputs a
+consumer would need are typed. The four stages above remain the plan for the consumer
+side.
+
 ## Current status
 
 > **Established — `lean-proved`, and mostly negative.** The reachable-control

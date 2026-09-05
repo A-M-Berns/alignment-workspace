@@ -77,7 +77,11 @@ In the concrete construction this turns out to be true and *unused*: the compile
 position responds to the actual prices rather than being assembled from per-reason
 commitments, so there is no aggregation step at which a per-reason certificate
 could be invalidated. The failure mode is real for a different architecture, and
-knowing which architecture has it is the point.
+knowing which architecture has it is the point. The [Normative
+Inductor](Normative-Inductor) takes the same side: every constraint serviced at a date
+is compiled into *one* joint convex region, and two individually feasible constraints
+with an empty conjunction are reported as a conflict that conserves both, never run
+as two enforcers against each other.
 
 ## What gets scheduled, and what merely happens
 

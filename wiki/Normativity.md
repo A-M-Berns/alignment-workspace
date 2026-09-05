@@ -63,8 +63,9 @@ interface level. The normative content remains open: there is no satisfactory
 substantive `Due`, no proof of substantive soundness for `Licensed`, no general
 performance theory, and no delivered coverage conclusion. An audit transport
 object for liabilities stated across vocabulary change is also absent. What the
-registered results establish is force, not legitimacy: nothing yet maps a
-normative record to a region a market can be made to respect.
+registered results establish is force, not legitimacy: the map from a normative record
+to a region a market can be made to respect is specified by the
+[Normative Inductor](Normative-Inductor)'s compiler contract and not yet proved.
 
 ## A current research direction: operative force
 
@@ -224,12 +225,15 @@ so far established.
 
 The [response-learning interface](Normative-Response-Learning) governs how an
 agent learns among responses; force governs which credal states it may display.
-Nothing yet connects them: no object in the workspace maps a normative record to
-a region in price space, and until one exists the general reading is a hope with
-deduction as its only instance. For [Deference](Deference) the direction is
-downstream, not a solution — a trusted process's constraint can be made operative
-this way while authorization, corrective control and futurity remain exactly as
-open as before.
+The arrow between a normative record and a region in price space is the
+proof-carrying compiler of the [Normative Inductor](Normative-Inductor): it takes
+legitimately incurred obligations to one joint convex region per service date, and
+the force mechanism here enforces that region. The compiler's soundness and
+completeness are stated as realization obligations, not proved, so the general reading
+is a specified interface with deduction as its only kernel-checked instance. For
+[Deference](Deference) the direction is downstream, not a solution — a trusted
+process's constraint can be made operative this way while authorization, corrective
+control and futurity remain exactly as open as before.
 
 Force also turns out to be **bought rather than granted**. Giving a constraint
 operative force means running an externally funded trader against violations, and

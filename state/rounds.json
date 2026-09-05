@@ -1127,6 +1127,20 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-04-normative-inductor-realization/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-05-author-consolidation",
+      "date": "2026-09-05",
+      "project": null,
+      "path": "prompts/2026-09-05-author-consolidation",
+      "verdict": null,
+      "depends_on": [
+        "2026-09-03-defeat-landing-horty-standing",
+        "2026-09-04-normative-inductor-realization"
+      ],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-05-author-consolidation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

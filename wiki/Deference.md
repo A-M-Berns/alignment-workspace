@@ -32,7 +32,11 @@ efficacy robust to the advisor policies being quantified.
 [Legitimacy](Legitimacy) enters because preserving a channel is not enough. The
 surrounding process must preserve standing, provenance, and write boundaries so
 the advisor cannot manipulate what counts as a correction or the principal
-cannot launder a failure by self-authorization.
+cannot launder a failure by self-authorization. The intended handoff is that a future
+deference theorem consumes a certified legitimate-evolution property, a Normative
+Progress guarantee, and the decision-facing outputs of a realization, and derives
+reasons not to preempt a legitimate future process; [Corrigibility](Corrigibility)
+states the interface and what is not yet proved.
 
 ## Current status
 

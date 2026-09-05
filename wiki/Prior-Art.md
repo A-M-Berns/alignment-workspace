@@ -62,9 +62,25 @@ identity-bearing justification structure — dependency-directed, with the
 environment/label separation that lets several stances be held at once.
 
 **Horty** on reasons as defaults gives the treatment of a reason's weight and
-priority as normative content rather than machinery. The program needs something
-Horty does not provide — a *licence to stop owing* rather than a priority ordering
-— and whether his machinery can express it is an open literature question.
+priority as normative content rather than machinery. Checked against his own 2006
+text, his apparatus cannot express the program's authorized disposition, and for a
+deeper reason than a priority ordering failing to license the loser's release: default
+logic says what to *conclude*, not what is *owed*, so there is no ledger for a licence
+to act on. Proper scenarios are a function of the current theory and of nothing in the
+history of defeats; delete the record of which defaults lost and the answer is
+unchanged. The defeat theory here makes the future depend on that history through a
+named successor. That is a difference of subject rather than a defect in Horty — his is
+a static theory — and the novelty on this side is *authored, history-sensitive
+answerability under defeat*, not endogenous priorities, which Horty's variable-priority
+theories already have. What his framework lacks is participants: an authority enters
+as the content of a default, never as someone who holds standing. Two further
+findings: exclusionary reasons are challengeable in-system, in his own words, so his
+exclusion is closer to disposition than to settlement and the two do not collapse; and
+the program's answer/dispose split *is* Pollock's rebut/undercut distinction
+transposed from a belief's warrant to a debt's — a dependency, not a resemblance.
+Structured argumentation (ASPIC+) likewise has no successor and an unauthored attack
+relation, with reinstatement computed by the semantics rather than licensed. The 2012
+book itself was not read; a claim about what the *book* says is not licensed by this.
 
 What none of these supply: a commitment to inferentialist semantics. The
 architecture uses the scorekeeping shape and leaves the theory of meaning alone.

@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 207 names, 123 of them Lean only
+## deference — 207 names, 122 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -85,7 +85,7 @@ change, and the count of those is the size of the free choice remaining.
 | `totalSetoid` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.totalSetoid` |
 | `transfer` | abbrev | 2026-08-12-cartesian-frames | note, prose | `Workspace.Deference.Contrib.CartesianFrameBridge.transfer` |
 | `Act` | abbrev | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Act` |
-| `J` | def | 2026-08-11-phase-ii-promotion | note | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.J` |
+| `J` | def | 2026-08-11-phase-ii-promotion | wiki, note | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.J` |
 | `Jhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Jhat` |
 | `S` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.S` |
 | `advantage` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.advantage` |
@@ -94,11 +94,11 @@ change, and the count of those is the size of the free choice remaining.
 | `gatedAct` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.gatedAct` |
 | `gradeValuation` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.gradeValuation` |
 | `p` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.p` |
-| `v` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.v` |
+| `v` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.v` |
 | `vhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.vhat` |
 | `EX` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.E1.EX` |
 | `GradeTrust` | def | 2026-08-11-phase-ii-promotion | prose | `Workspace.Deference.Contrib.DelegationBridge.GradeTrust` |
-| `J` | def | 2026-08-11-phase-ii-promotion | note | `Workspace.Deference.Contrib.DelegationBridge.E1.J` |
+| `J` | def | 2026-08-11-phase-ii-promotion | wiki, note | `Workspace.Deference.Contrib.DelegationBridge.E1.J` |
 | `W` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.W` |
 | `c` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.c` |
 | `disagreementMass` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.disagreementMass` |
@@ -117,7 +117,7 @@ change, and the count of those is the size of the free choice remaining.
 | `envelopeGap` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.envelopeGap` |
 | `p` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.p` |
 | `phi` | def | 2026-08-11-stage-iii-fud | prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.phi` |
-| `v` | def | 2026-08-11-stage-iii-fud | note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.v` |
+| `v` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.v` |
 | `valuation` | def | 2026-08-11-stage-iii-fud | note | `Workspace.Deference.Contrib.EnvelopeDominance.valuation` |
 | `F` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.F` |
 | `InWindow` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.InWindow` |
@@ -205,7 +205,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vE` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vE` |
 | `vH` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vH` |
 | `vstep` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vstep` |
-| `Architecture` | structure | 2026-08-11-stage-v-li-native | Lean only | `Workspace.Deference.Contrib.StaticViewFactorization.WorkedCase.Architecture` |
+| `Architecture` | structure | 2026-08-11-stage-v-li-native | prose | `Workspace.Deference.Contrib.StaticViewFactorization.WorkedCase.Architecture` |
 | `FactorsThroughStaticView` | def | 2026-08-11-stage-v-li-native | note | `Workspace.Deference.Contrib.StaticViewFactorization.FactorsThroughStaticView` |
 | `agentAuthorized` | def | 2026-08-11-stage-v-li-native | Lean only | `Workspace.Deference.Contrib.StaticViewFactorization.WorkedCase.agentAuthorized` |
 | `humanAuthorized` | def | 2026-08-11-stage-v-li-native | Lean only | `Workspace.Deference.Contrib.StaticViewFactorization.WorkedCase.humanAuthorized` |
@@ -220,7 +220,7 @@ change, and the count of those is the size of the free choice remaining.
 | `realizedQuantity` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.realizedQuantity` |
 | `schemeDelegate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.schemeDelegate` |
 | `schemeSim` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.schemeSim` |
-| `v` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.SubstitutionSeparation.M.v` |
+| `v` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.SubstitutionSeparation.M.v` |
 | `valuation` | def | 2026-08-11-phase-ii-promotion | note | `Workspace.Deference.Contrib.SubstitutionSeparation.M.valuation` |
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
@@ -483,7 +483,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Kind` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Kind` |
 | `LaunderingWalk` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.LaunderingWalk` |
 | `Licence` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.Licence` |
-| `Live` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Live` |
+| `Live` | def | 2026-08-29-normative-continuity-concordance | wiki, prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Live` |
 | `LiveGate` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.LiveGate` |
 | `NoPermanentWait` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.NoPermanentWait` |
 | `NoRouteWait` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.NoRouteWait` |
@@ -494,7 +494,7 @@ change, and the count of those is the size of the free choice remaining.
 | `ReachGate` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.ReachGate` |
 | `Ready` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Ready` |
 | `Resolves` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.Resolves` |
-| `Routes` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Routes` |
+| `Routes` | def | 2026-08-29-normative-continuity-concordance | wiki, prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Routes` |
 | `TraceData` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData` |
 | `WA` | abbrev | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.WA` |
 | `WD` | abbrev | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.WD` |

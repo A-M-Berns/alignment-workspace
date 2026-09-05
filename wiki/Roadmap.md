@@ -38,35 +38,68 @@ than over a finite model.
 
 ## Legitimacy
 
-**The shortest path, after the September 2026 checkpoint.** The fixed-era layer is
-closed, so the ordering below is what actually stands between here and a legitimacy
-theorem — see [Serviceability](Serviceability) and [Diachronic
-Answerability](Diachronic-Answerability) for what the two ends look like.
+**The shape after the September 2026 consolidation.** The conceptual architecture is
+stated on [Legitimacy](Legitimacy): legitimate evolution as
+[Integrity](Integrity) and [answerability](Diachronic-Answerability) plus
+[robust openness](Openness-Coverage-and-Non-Capture), with
+[normative induction](Normative-Induction) as the quantitative half and the
+[Normative Inductor](Normative-Inductor) as the candidate realization. The remaining
+agenda splits three ways, and the split is the most useful thing to hold onto.
 
-1. **Certify semantic transport** — item 76. The fixed-era endpoint theorem ends in
-   one uncertified term: how much a reason changed while it waited to be answered.
-   Within an era that is a technical gap; across a self-revision it *is* the whole
-   problem. The visible route is the answerability line's anchored interpretation,
-   and the missing step is quantitative — it is an ordering where the theorem needs
-   a metric.
-2. **A theory of authorized disposition.** What licenses content ceasing to be owed
-   without being answered. It supplies defeat, closes the obvious laundering
-   channel, and repairs a hypothesis the whole persistence analysis rests on. Not
-   yet filed as an item; it should be.
-3. **Write the legitimacy predicate.** Cheap, undone, and it determines what
-   non-capture has to protect.
-4. **Counterfactual non-capture** — item 59 below, which is the pillar with no
-   fixed-era analogue at all and will not get easier by waiting.
-5. **Closed-loop affordability** — item 75. Robustness for the fixed-era layer;
-   blocks nothing above it and can proceed in parallel.
+**Specification and theory work** — what the abstract theory still owes itself.
+
+1. **Certify semantic transport** — item 76. The fixed-era endpoint ends in one
+   uncertified term: how much a reason changed while it waited to be answered. Within
+   an era that is a technical gap; across a self-revision it *is* the whole problem.
+   The visible route is the anchored interpretation, and the missing step is
+   quantitative — an ordering where the theorem needs a metric.
+2. **Write the legitimacy predicate.** The decomposition is fixed; a definition with a
+   conclusion a downstream consumer wants is still undone. Its open rulings are in the
+   decision ledger: whether a predicate may name a protected principal, whether
+   settlement's independence is standing or per-realization, whether disposition
+   transfers load in full.
+3. **The content of licences.** The Defeat Principle says what a disposition does;
+   which rules of a practice license contesting which debts — item 77's remainder —
+   is upstream content, and its coalition limit is what the protected-principal ruling
+   decides.
+4. **Closed-loop affordability** — item 75 — and the necessity of bounded liability —
+   item 40. Robustness for the fixed-era layer; blocks nothing above it.
+
+**Realization and agent-sized theorem work** — what the Normative Inductor owes before
+its end-to-end theorem is unconditional.
+
+- one unified concrete representation of the history's events, and the export
+  theorem to the qualitative obligation process;
+- compiler soundness for a declared schema, convex representability of the obligation
+  language, and joint feasibility or accountable conflict;
+- affordable service under a declared workload class beyond the proved
+  predictable-window instance;
+- joint practical-response compatibility across the exposures matched to one service
+  occurrence;
+- quantitative semantic-transport certificates — the composition algebra is
+  kernel-checked, certificate generation is not;
+- effective, computable packaging of the augmented market;
+- the composed end-to-end theorem in Lean, fixture first, then generalized.
+
+**Intentionally external contracts** — bills the theory issues and does not pay.
+
+- A **non-capture certificate**: a theory of counterfactual or institutional capture
+  establishing that coverage, standing and corrective efficacy survive a declared
+  intervention class. Item 59 — a practice producing a burden an advisor cannot select
+  within — is its oldest form.
+- A **counterfactual-value certificate**: a theory of policy evaluation supplying
+  authenticated values for unchosen policies with calibration and ambiguity bounds
+  issued before the response. A replicated policy-evaluation ecology is one
+  illustrative target, with its causal and evaluator assumptions named.
 
 **What should no longer receive research energy.** Any rate-region or time-sharing
-geometry of enforcement intensity — the budget is a consumable stock, and this has
-been got wrong twice from two directions. Any density or gap condition on cheap
-enforcement dates as a substitute for the exact criterion — three failed attempts.
+geometry of enforcement intensity — the budget is a consumable stock. Any density or
+gap condition on cheap enforcement dates as a substitute for the exact criterion.
 Realized force as a measure of service — it inverts the sign of successful learning.
 Sharpening the online competitive ratio for accumulated enforcement intensity —
-proved impossible. Extending the fixed-era affordability work at all.
+proved impossible. Independent per-reason enforcement — individually feasible reasons
+can have an empty conjunction. The dimension-normalized public defect — it is not
+invariant under harmless padding. Extending the fixed-era affordability work at all.
 
 The standing legitimacy items:
 
@@ -74,8 +107,7 @@ The standing legitimacy items:
   which is where substantive authorization content lives.
 - State what a practice owes by way of taking up defeaters, so that basis loss is
   detectable rather than merely defined — item 54.
-- Exhibit a practice producing a burden an advisor cannot select within — item 59
-  — which is what counterfactual non-capture needs and does not derive.
+- Exhibit a practice producing a burden an advisor cannot select within — item 59.
 - State a composition theorem, if one is available, connecting relational
   answerability, auditability, and model-relative efficacy without identifying
   them.

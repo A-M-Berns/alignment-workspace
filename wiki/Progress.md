@@ -2,6 +2,11 @@
 
 **Status: open / unregistered.** Paper-derived research, not Established.
 
+This page is the **fixed-era** instance: one settled semantics, one evaluator, no
+ontology revision. The general statement — Progress relative to a declared evaluation
+protocol, with its three-term bound — is on
+[Normative induction and Progress](Normative-Induction).
+
 ## The word does real work
 
 "Progress" here does not mean the reasoner gets better at some task. It means
@@ -61,7 +66,10 @@ rate — though like almost everything in this program that derivation is on pap
 not in a proof assistant.
 
 **Obligation-weighted** Progress says the defect vanishes *on the dates something was
-owed*. That is what answerability actually asks for.
+owed*. That is what answerability actually asks for. In the general theory the
+obligation measure is the special case of an externally declared evaluation measure
+over historical exposure; the learner does not get to choose it after seeing its
+mistakes.
 
 The second does not follow from the first. A reasoner can drive its service-
 weighted defect to exactly zero at every horizon while its obligation-weighted defect
@@ -100,9 +108,11 @@ It is not closure. Progress is about the trajectory, not about issues eventually
 being resolved.
 
 It is not diachronic. Everything here is within one settled semantics, one
-evaluator, no ontology revision. Progress *through* a self-revision would need the
-content of a reason to be transportable across the revision, and nothing supplies
-that yet.
+evaluator, no ontology revision. Progress *through* a self-revision needs the content
+of a reason to be transportable across the revision — the semantic transport
+certificate that [Diachronic Answerability](Diachronic-Answerability) assumes and the
+[Normative Inductor](Normative-Inductor) lists among its open realization
+obligations.
 
 ---
 
