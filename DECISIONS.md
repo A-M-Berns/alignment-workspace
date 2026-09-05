@@ -201,6 +201,21 @@ contract object for joint response compatibility (the admissible-edge relation a
 carries it); a wiki page per round (the wiki is the conceptual register and the round
 directories are the evidence).
 
+### 2026-09-05 — a symlink into a local build cache reached `main`, and is removed
+
+**Agent-decided, reversible; a scrub.** <!--historical-->The consolidation pass above
+planted a symlink at the Lean build-cache path `lean/.lake`, pointing at another
+checkout's cache to avoid refetching Mathlib; the ignore pattern `lean/.lake/`, with a
+trailing slash, covered directories only, so staging everything picked the symlink up
+and it landed in the Normative Inductor squash (`caa3ad0`).<!--/historical--> CI stayed
+green because the Lean job builds into that path regardless of what is at it. The
+symlink is removed and the ignore rule drops the trailing slash, so it matches a
+directory or a symlink. No content or theorem was affected; the defect is a path into
+one machine's filesystem in a public tree.
+
+*Rejected alternative:* rewriting `caa3ad0` — history is not rewritten here, and the
+squash message is correct about everything but this.
+
 ### 2026-09-03 — the Defeat Principle is adopted
 
 **Maintainer ruling**, taken in conversation on 2026-09-03 and landed here as the
