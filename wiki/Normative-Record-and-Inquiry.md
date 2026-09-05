@@ -30,6 +30,16 @@ constraint.
 > Lean-checked. “Proved” below means a conditional paper derivation in that
 > round, not Established workspace state.
 
+> **Scope.** This page describes the process architecture of the record-and-inquiry
+> subline: seeds, transcripts, due tokens, the reason state, coverage as three
+> questions, and the hand-off to a compiler. The conceptual account of what the whole
+> history must satisfy is on [Integrity](Integrity), [Diachronic
+> Answerability](Diachronic-Answerability) and the [settlement
+> interface](Settlement-Interface); the compiler this page hands off to is specified by
+> the [Normative Inductor](Normative-Inductor). Where the two differ in vocabulary —
+> `N_{≤n}` here is the full normative history `H`, and `Lₙ` the transcript the
+> settlement view is read from — those pages govern.
+
 ## An afoundational start
 
 The seed `S₀` is a small induction into a practice: enough initial authority to

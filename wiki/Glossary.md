@@ -14,6 +14,29 @@ This is the canonical human exposition of vocabulary. The repository's `state/vo
 | **objection family** | A reporting class of objections. **Open — unregistered:** in the finite footprint grammar, useful families are computed rather than authoritative inputs. |
 | **answering** | A recognized response disposition that addresses a due burden, such as acknowledgment, vindication, or a scorekeeper-recognized suspension. |
 
+## Legitimate evolution
+
+| term | meaning |
+|---|---|
+| **full normative history** `H` | The append-only record of every normative move a trajectory made or received: admissions, grounds, objections, answers, standing and licence changes, defeats and dispositions, semantic migrations, service events, settlement receipts. Not itself settled. |
+| **settlement view** `S = SetView(H)` | The monotone projection of the history onto what has been settled through the privileged external interface. The only thing that can ground terminal discharge. |
+| **settlement integrity** | The external hypothesis that settlement facts enter only through that interface, cannot be written or suppressed by the assessed process, and are never retracted. |
+| **Integrity** | A trajectory cannot falsify or silently rewrite its own normative history: authenticated births, immutable anchors, provenance, write permissions, faithful carry, replayability, settlement-backed discharge. Internal and largely formal. |
+| **the three fates** | Every inherited obligation component is answered, settlement-discharged, or faithfully carried live. There is no fourth silent fate. |
+| **Defeat Principle** | A participant may answer an obligation or contest whether it is owed; only an authenticated settlement-backed terminal condition may make an unanswered obligation disappear. Defeat carries; it does not extinguish. |
+| **answerable disposition** | A disposition that is grounded, routed to a fresh successor inheriting the load, and separated — standing and a ground outside the resolver's hand. |
+| **principal relativity** | Answerability is answerability *to someone*; preservation of standing is relative to a protected principal or a declared relation. A party-free condition over all coalitions cannot exist. |
+| **coverage scope** `Γ` | The declared class of concerns an application claims to remain open to. A modeling choice; the theory prevents its silent shrinkage and does not derive it. |
+| **coverage** | An adequate route from an applicable in-scope concern to represented, accountable consideration. |
+| **Robust Openness** | Coverage plus a Non-Capture certificate relative to a declared intervention class. |
+| **Non-Capture** | The process could not improperly control what was able to enter, challenge, or evaluate it. Counterfactual, and billed to an external theory. |
+| **legitimate evolution** | Integrity/Answerability plus Robust Openness: remaining answerable to what has legitimately reached the process and robustly open to what may. A property of the trajectory, not a certificate of the initial state. |
+| **qualitative obligation process** `O_P` | What legitimacy exports: obligation identities, anchored specifications, live status, authenticated lineage. No numerical weights. |
+| **live docket** / **historical exposure** | What remains owed now, consumed by the scheduler; versus everything that ever entered the process's responsibility, consumed by evaluation. |
+| **evaluation measure** `μ` | The externally declared measure over historical exposure against which Progress is stated. Committed before the responses it scores. |
+| **Normative Inductor** | Provisional name for the concrete realization: an ordinary Logical Inductor plus one additive bounded-liability projection enforcer against a single compiled joint region, with an external decision and value plugin. |
+| **public operative defect** | `dist_∞(b, K)`, the sup-distance of the displayed prices to the compiled joint region; service intensity is the projection multiplier `λ`. Euclidean projection is the enforcement implementation, not the public defect. |
+
 ## Book and accounting
 
 | term | meaning |
@@ -96,6 +119,9 @@ Definitions remain the human-authored exposition above.
 | `notation.margin` | `δ_g` | — | `delta_g` |
 
 ## Three senses of admission, kept apart
+
+Admission is an *event* in the full normative history — one of the moves Integrity
+authenticates — and not a layer of the theory in its own right.
 
 | term | meaning |
 |---|---|

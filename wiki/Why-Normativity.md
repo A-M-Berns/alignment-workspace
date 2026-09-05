@@ -39,14 +39,15 @@ It refuses to require any substantive norm to persist. A later reasoner may reje
 an earlier norm, defeat an earlier reason, replace an evaluator, change its
 concepts. That freedom is not a concession; it is what improvement *is*.
 
-What it requires instead is structural, and there are four things.
+What it requires instead is structural, and there are five things.
 
 **That authority has provenance** — every change in what rules apply is licensed by
 rules already applicable, traceable back to where the reasoner started.
 
 **That incurred obligation is conserved** — what was owed is, at every later stage,
-either satisfied, legitimately disposed of, or still remaining, and never merely
-absent. Relabelling discharges nothing.
+either answered, discharged against a settled fact, or still carried live, and never
+merely absent. Relabelling discharges nothing, and neither does defeat: contesting a
+debt moves it onto the grounds for the contest rather than making it disappear.
 
 **That being ignored is a failure** — a live case cannot be kept permanently idle by
 endless internal restructuring; permanent idleness has to stabilize on a named
@@ -56,8 +57,14 @@ blocker.
 something, and a demand no bounded reasoner could ever meet is a fact worth being
 able to state.
 
-None of that is epistemology. It is bookkeeping about authority, plus a theory of
-what the bookkeeping costs.
+**That the process stays open to what may reach it** — within a scope it declares,
+a criticism that applies has a route to being represented and considered, and the
+process cannot arrange for awkward criticism never to arrive.
+
+None of that is epistemology. It is bookkeeping about authority, a condition on
+intake, and a theory of what the bookkeeping costs. Legitimacy, on this account, is a
+property of how a reasoner *evolves* — a later state being a legitimate development of
+an earlier one — and never a certificate that the starting point was good.
 
 ## Why the mathematics has to be there
 
@@ -91,7 +98,8 @@ effective role. Distinguishing those two situations is what this program is for.
 
 ---
 
-**Where to go next:** [Diachronic Answerability](Diachronic-Answerability) for what
-survives revision, [Serviceability](Serviceability) for whether obligations can
-actually be discharged, or [Legitimacy](Legitimacy) for how the pieces are meant to
-combine.
+**Where to go next:** [Legitimacy](Legitimacy) for how the pieces combine,
+[Diachronic Answerability](Diachronic-Answerability) for what survives revision,
+[Openness](Openness-Coverage-and-Non-Capture) for what may reach the process, and
+[Normative induction](Normative-Induction) for whether what is owed comes to bear on
+what is done.

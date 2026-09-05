@@ -15,11 +15,16 @@
 
 **Legitimacy**
 
-- [The Bridge](Legitimacy)
-  - [Normative Record and Inquiry](Normative-Record-and-Inquiry)
+- [Legitimate Cognitive Evolution](Legitimacy)
+  - [Settlement Interface](Settlement-Interface)
+  - [Integrity](Integrity)
   - [Diachronic Answerability](Diachronic-Answerability)
+  - [Openness, Coverage, and Non-Capture](Openness-Coverage-and-Non-Capture)
+  - [Normative Induction and Progress](Normative-Induction)
+  - [Normative Inductor](Normative-Inductor)
   - [Liability and Affordability](Liability-and-Affordability)
   - [Serviceability](Serviceability)
+  - [Normative Record and Inquiry](Normative-Record-and-Inquiry)
 
 **Deference**
 
