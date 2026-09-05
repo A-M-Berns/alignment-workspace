@@ -157,13 +157,14 @@ answerability slice.*
   logic" plus the Dancy material. A citation *of the book* still owes that check.
 
 - **Pollock, "Defeasible Reasoning", *Cognitive Science* 11(4), 1987,
-  pp. 481–518.** <http://www.umiacs.umd.edu/~horty/courses/readings/pollock-1987-defreasoning.pdf>.
+  pp. 481–518.** <http://www.horty.umiacs.io/courses/readings/pollock-1987-defreasoning.pdf>,
+  DOI `10.1207/s15516709cog1104_4`.
   Distinguishes **rebutting** defeaters, which give a prima facie reason for the
   denial of the conclusion, from **undercutting** defeaters, which attack the
-  inference without arguing the conclusion false. *Citation verified 2026-09-01;
-  **the URL above no longer resolves** as of 2026-09-03 — the host redirects to one
-  its certificate does not cover. The verification stands as a fact about its date;
-  the link does not.* What we take: the undercut/rebut split, which the reason-state
+  inference without arguing the conclusion false. *Citation verified 2026-09-01 and
+  again 2026-09-05, when the PDF was fetched from the URL above and its first page
+  checked against the bibliographic data; the `umiacs.umd.edu` address this entry
+  used to carry now redirects there.* What we take: the undercut/rebut split, which the reason-state
   round reproduces as an ordinary reason for `~App(sigma, c@n)` rather than as an
   attack primitive — and which, since 2026-09-03, is recorded as a **conceptual
   dependency in the strong sense** for the defeat line. *A caution on the citation:*

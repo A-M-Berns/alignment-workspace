@@ -130,13 +130,15 @@ pair.
 
 ## 8. Outstanding maintainer actions (standard 10)
 
-1. **Merge or rebase PR79** — this round is stacked on it and does not stand alone.
+1. ~~**Merge or rebase PR79**~~ **Done** — PR79 merged to `main` as `198a86a` on
+   2026-09-03 and this round was rebased onto it.
 2. **Decide whether item 77's prior-art deliverable is discharged.** The theory
    question is now answered against Horty's own text; only the 2012 book is unread, and
    its contribution over the paper is a development of §3.2 plus the Dancy material.
    Either rule the paper sufficient, or obtain the book.
-3. **Repair `PRIOR_ART.md`'s Pollock entry**: the URL is dead, and the attribution
-   should follow Horty in crediting Pollock 1970 for the distinction.
+3. ~~**Repair `PRIOR_ART.md`'s Pollock entry**~~ **Done, 2026-09-05** — the
+   recorded URL redirects to a new host that serves the paper; the entry now carries
+   that address and the DOI, and keeps the Pollock 1970 caution.
 4. **Three reservations remain in the queue**, untouched: load discount, settlement
    independence, protected participant.
 5. **Wiki changes proposed, not made** (the dispatch forbids editing `wiki/`):

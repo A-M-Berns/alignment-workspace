@@ -15,7 +15,7 @@ one of the five findings comes out **against** the shape the dispatch predicted.
 | Modgil & Prakken, *The ASPIC+ framework for structured argumentation: a tutorial* (2014) | **READ** — PDF, author's site |
 | *Defeasible Reasoning*, Stanford Encyclopedia of Philosophy | **READ** |
 | Horty, *Reasons as Defaults*, **OUP 2012** (the book) | **NOT read** — still unreachable. Every finding below is checked against the 2006 paper; where the book may have moved, that is flagged. |
-| Pollock, *Defeasible Reasoning*, 1987 | **NOT read.** `PRIOR_ART.md` §2 records it as "verified 2026-09-01" against a URL on `umiacs.umd.edu`; **that URL is now dead**. Horty attributes the undercutting distinction to Pollock 1970 and 1995, not 1987, in this paper. |
+| Pollock, *Defeasible Reasoning*, 1987 | **NOT read.** `PRIOR_ART.md` §2 records it as "verified 2026-09-01" against a URL on `umiacs.umd.edu`; **that URL did not resolve during this round**. Horty attributes the undercutting distinction to Pollock 1970 and 1995, not 1987, in this paper. *(Annotation, 2026-09-05: the address redirects to `horty.umiacs.io`, which serves the PDF; `PRIOR_ART.md` now carries the resolving address and the DOI.)* |
 
 **This section replaces an earlier one written before the paper arrived**, which
 recorded the primary text as unreachable and marked three findings *unverified*. They
