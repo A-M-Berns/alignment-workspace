@@ -271,6 +271,12 @@ anchored response map      -> old-exposure loss
 ```
 
 Small projection defect entails small practical loss only through `ValueSound`, directed
-ambiguity, approximate optimization, and anchored response adequacy.  These are not new
+ambiguity, approximate optimization, and anchored response adequacy.  Joint feasibility
+of `K_op` is a statement about market states, not about responses: when one service
+occurrence is matched to several exposures, each matched edge needs its own `(AR)`
+certificate against the single `Pi_s` actually realized, and obligations whose adequate
+responses are incompatible cannot both be charged to that occurrence.  The realization
+separates such contexts, defers to a licensed upstream adjudication rule, finds a
+common adequate response, or leaves the mass residual.  These are not new
 public objects in the abstract characterization: they factor its existing effective
 practical-response certificate and contribute only to `M_es` and `epsilon_es`.

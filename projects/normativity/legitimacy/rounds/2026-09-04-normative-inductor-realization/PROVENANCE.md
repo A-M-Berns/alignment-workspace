@@ -10,10 +10,14 @@ and `DecisionAdapter` are provisional.
 
 ## Governing sources
 
-- `/Users/anson/Downloads/abstract_normative_induction_realization_contract.tex` —
-  exact notation and contract statement, read in full.
-- `/Users/anson/Downloads/abstract_normative_induction_realization_contract.pdf` —
-  intended exposition, read in full by layout-preserving extraction and page rendering.
+- `abstract_normative_induction_realization_contract.tex`, supplied by the maintainer
+  outside the repository — exact notation and contract statement, read in full.
+- `abstract_normative_induction_realization_contract.pdf`, the same document's render
+  — intended exposition, read in full by layout-preserving extraction and page
+  rendering.
+
+Neither file is in the repository; the round's summary of the contract in
+`NORMATIVE_INDUCTOR_REALIZATION.md` is the only in-repo record of it.
 
 ## Repository dependencies
 

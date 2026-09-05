@@ -36,3 +36,6 @@ All Lean declarations live in namespace
 - No theorem upgrades the paper/test serviceability results themselves to Lean.
 - The contract's general Progress inequality is instantiated by exact arithmetic but is
   not newly claimed as a Lean theorem.
+- Nothing here certifies joint practical-response compatibility: that every edge
+  matched to one service occurrence is response-adequate against the same realized
+  decision distribution. Joint feasibility of the price region does not supply it.

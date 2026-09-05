@@ -42,6 +42,15 @@ with `M_es=2L_es` and
 internal realization witness for the contract's already abstract response certificate;
 it does not require a new public contract object.
 
+Joint feasibility of `K_s` is a statement about market states and not about
+responses.  One service occurrence realizes one decision distribution, so every
+exposure matched to it needs its own anchored response certificate against that same
+distribution; obligations demanding incompatible responses are separated into distinct
+service contexts, adjudicated under a licensed upstream rule, given a common adequate
+response, or left as residual evaluation mass.  The admissible-edge relation admits an
+edge only when its certificate exists, so this is a realization obligation rather than
+a contract change.
+
 The compiler contract now separates correctness, completeness, convex
 representability, and joint feasibility. A conflict or `Unknown` result conserves the
 original obligations; it creates a new adjudication obligation only under an upstream
@@ -101,7 +110,8 @@ joint-region compiler, and abstract Progress bound are retained.
 
 - general convex representability or completeness of the obligation compiler;
 - a deployed counterfactual-value settlement/evaluation ecology satisfying `(VC)`;
-- anchored response adequacy for arbitrary obligations;
+- anchored response adequacy for arbitrary obligations, or joint practical-response
+  compatibility of the exposures matched to one service occurrence;
 - affordable online scheduling for an adversarial docket;
 - internal proof of Coverage robustness, settlement non-capture, or semantic truth;
 - a general Lean proof of the contract Progress theorem or an unconditional composed

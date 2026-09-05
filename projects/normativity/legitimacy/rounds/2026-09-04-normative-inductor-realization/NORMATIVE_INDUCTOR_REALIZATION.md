@@ -153,7 +153,7 @@ security identities and reject aliases.  See
 | Coercive uptake modulus `Psi_phi` | Contract tail bound with repaired domain; for the quadratic case one may also use `sqrt(chi_N)` by Jensen/Cauchy–Schwarz | Generic old Actionability theorem exists | Direct Lean port of the contract statement | **Paper-level; elementary** |
 | Decision rule `Pi_s` | Plugin-selected randomized `eta_s`-approximate maximizer of displayed value coordinates, or any plugin satisfying `(D)` | Restricted value proposal exists | No universal optimizer/decision semantics; plugin required | **New generic bridge plus explicit assumption** |
 | Practical-response certificate | Authenticated value correspondence gives calibration radius `d_s+zeta_es`; randomized approximate maximization and anchored response adequacy give `M_es=2L_es` and `epsilon_es=L_es(2zeta_es+eta_s)+epsilon_resp_es` | Restricted pairwise bridge exists | Settlement-backed counterfactual values and response adequacy for the selected ecology | **New Lean algebra; substantive premise conditional** |
-| Admissible edge `R_N(e,s)` | Strict-prefix check of live target citation, identity lineage, service-mode compatibility, and semantic transport certificate | Ingredients exist | Unified checker | **Proposed implementation theorem** |
+| Admissible edge `R_N(e,s)` | Strict-prefix check of live target citation, identity lineage, service-mode compatibility, semantic transport certificate, and a practical-response certificate `(NI-S)` for `e` against the response distribution `Pi_s` actually realized at `s`; an edge without that certificate is inadmissible | Ingredients exist | Unified checker; joint practical-response compatibility across the edges matched to one service occurrence | **Proposed implementation theorem** |
 | Response map `rho_es` | Certified map from later continuation policy through fixed exterior/outcome semantics into the old anchored response space | Interactive/anchored interfaces exist | Ecology-specific causal and semantic certificate | **Ambient/semantic assumption** |
 | Semantic transport certificate | Qualitative order embedding/no-laundering plus quantitative affine pair `(L,epsilon)`; if an external semantic premise certifies pure defeat/disposition as `(1,0)`, algebraic composition preserves it exactly | Qualitative theory and exact-carry decision exist | General constructor for quantitative constants, including the exact-carry semantic premise | **New Lean composition/identity algebra; certificate generation open** |
 | Residual mass `r_N` | `1-sum_{e,s}T_N(e,s)`; normalized old unmatched claim mass is `R_N/C_N` | Old residual exists | Evaluation-to-old-claim adapter | **New exact bridge; checker-supported** |
@@ -374,6 +374,28 @@ policy does not identify unchosen values.  Human or model evaluation can instant
 the same interface, but then its counterfactual validity is an explicit ambient
 assumption rather than a consequence of naming a security.
 
+### Joint price-space feasibility is not joint practical-response compatibility
+
+`K_s` being nonempty says the simultaneously serviced obligations admit a common
+operative market state.  It does not say they admit a common response.  One service
+occurrence `s` may be matched to several exposures `e`, but the decision adapter
+realizes **one** distribution `Pi_s`, and every matched edge `(e,s)` must carry its
+`(NI-S)` certificate against that same `Pi_s`.  Two obligations whose anchored losses
+are minimized by incompatible responses can sit inside one feasible `K_s` while no
+single `Pi_s` is adequate for both; the exact strict-comparison counterexample
+`test_individually_feasible_reasons_can_conflict_jointly` shows conflict at the
+region level, and the response-level conflict is the same phenomenon one stage later.
+
+This is a realization obligation, not a contract defect.  The abstract admissible-edge
+relation already allows an edge only when the practical-response certificate exists,
+so incompatible responses are excluded by construction and the excluded evaluation
+mass appears in `r_N`.  When matched obligations demand incompatible responses the
+realization may separate them into distinct service contexts; invoke an upstream
+licensed adjudication or aggregation rule that says which response the joint answer
+specification calls for; find a common response adequate for all matched exposures;
+or leave part of the evaluation mass residual and pay `D r_N` for it.  What it may
+not do is charge both edges to one response that only one of them certifies.
+
 For service responses such as `investigate` versus `conceal`, the older typed
 `ServiceCompare` fragment supplies a genuine special case.  It does not prove that
 every legitimate obligation has a strict action comparison.  Questions, evidence,
@@ -577,6 +599,7 @@ The smallest clean dependency chain is:
 | `ValueCalibration` | `||b_V-v^*||_infinity<=d_s+zeta_es` from an authenticated value correspondence | **Lean algebra strengthened here; substantive ecology ambient/open** |
 | `DecisionAdequacy` | randomized true-value regret `<=2d_s+2zeta_es+eta_s` | **Lean algebra strengthened here for finite policy alphabets** |
 | `AnchoredResponseTransport` | contract `(R)` with `M_es=2L_es` and displayed `epsilon_es` | **Conditional on causal/semantic response certificate** |
+| `JointResponseCompatibility` | every edge matched to one service occurrence is `(NI-S)`-certified against the same realized `Pi_s`, or is separated, adjudicated upstream, or left residual | **Realization obligation; no theorem or fixture here** |
 | `ServiceTransport` | `(T1)`–`(T4)` and `Gamma_N,r_N,bar epsilon_N` | **Old paper/checker theorem plus new Lean `LK=>Gamma` normalization bridge** |
 | `NormativeProgress` | exact three-term contract bound | **Abstract contract proof; exact finite witness only in this PR** |
 | `NormativeInductorEndToEnd` | LIC and normative Progress conclusion together | **Conditional paper theorem, not yet unconditional or Lean-composed** |
@@ -715,7 +738,11 @@ normalization hypotheses.  No theorem statement or final error term otherwise ch
    now proved; certificate synthesis is open.
 6. Close coalition non-capture for the chosen protected-principal policy, or state the
    narrower ambient openness assumption explicitly.
-7. Port the abstract Coercive Uptake and Progress sums to Lean if these become theorem
+7. Certify joint practical-response compatibility: every edge matched to a service
+   occurrence is `(NI-S)`-certified against the one realized response distribution,
+   with incompatible demands separated, adjudicated under a licensed upstream rule,
+   or left as residual mass (§ 6).
+8. Port the abstract Coercive Uptake and Progress sums to Lean if these become theorem
    headlines; their current proofs are elementary but not kernel statements here.
 
 The value-correspondence object is an internal sufficient witness for the contract's

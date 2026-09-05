@@ -126,8 +126,10 @@ theorem affine_transport_compose {x y z L₁ L₂ ε₁ ε₂ : ℝ}
     _ ≤ L₁ * (L₂ * x + ε₂) + ε₁ := by gcongr
     _ = (L₁ * L₂) * x + (ε₁ + L₁ * ε₂) := by ring
 
-/-- Exact carry, used for a pure challenge/defeat disposition, is the identity
-of affine transport. -/
+/-- An affine transport certificate that is already `(1, 0)` composes as the
+identity.  This is the algebra a pure challenge/defeat disposition would use
+*if* the semantic theory certifies that edge as exact carry; the lemma does not
+establish that semantic premise, only what follows from it. -/
 theorem exact_carry_left {x y L ε : ℝ} (h : y ≤ L * x + ε) :
     y ≤ (1 * L) * x + (0 + 1 * ε) := by
   simpa using h
