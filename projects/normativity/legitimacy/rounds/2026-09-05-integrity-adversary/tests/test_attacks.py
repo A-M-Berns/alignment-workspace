@@ -6,6 +6,7 @@ import unittest
 from fractions import Fraction
 
 import attacks as A
+import cross_review_a as X
 import semantic as S
 from integrity_model import ANSWER, DISPOSE, SETTLE, Refused, check, refused_by
 
@@ -170,6 +171,36 @@ class Semantic(unittest.TestCase):
         self.assertTrue(era2_ok)
         self.assertEqual(lost, frozenset({S.B}))
         self.assertEqual(S.mass(S.FULL) - S.mass(S.FULL - lost), Fraction(1, 2))
+
+
+class CrossReviewA(unittest.TestCase):
+
+    def test_local_answer_needs_no_adequacy_certificate(self):
+        local, adequate = X.answer_without_adequacy()
+        self.assertTrue(local)
+        self.assertFalse(adequate)
+
+    def test_local_conservation_ignores_self_grounding(self):
+        local, self_grounded = X.self_grounded_disposal()
+        self.assertTrue(local)
+        self.assertTrue(self_grounded)
+
+    def test_captured_false_settlement_passes_formal_clauses(self):
+        local, external, true = X.captured_false_settlement()
+        self.assertTrue(local)
+        self.assertFalse(external)
+        self.assertFalse(true)
+
+    def test_join_accumulation_forgets_occurrence_multiplicity(self):
+        local, occurrences, ledger_atoms = X.multiplicity_collapse()
+        self.assertTrue(local)
+        self.assertEqual(occurrences, Fraction(2))
+        self.assertEqual(ledger_atoms, Fraction(1))
+
+    def test_recomputing_closes_retroactively_toggles_integrity(self):
+        before, after = X.closes_recomputed()
+        self.assertTrue(before)
+        self.assertFalse(after)
 
 
 if __name__ == "__main__":

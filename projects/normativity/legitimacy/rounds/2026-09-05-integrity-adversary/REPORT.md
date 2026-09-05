@@ -7,7 +7,8 @@ GENERIC-INTEGRITY-DOES-NOT-IMPLY-DEBT-CONSERVATION — append-only replay, immut
 The target is the explicit I1–I9 interface in `TARGET.md`, not every possible theory
 called Integrity. Fifteen attacks and six negative controls are executable. Three
 countermodel families and eight structural limitations are kernel-checked against the
-landed `NormativeContinuity` spine.
+landed `NormativeContinuity` spine. `CROSS_REVIEW_A.md` adds five exact attacks on the
+constructive worker's six-clause `LocalConservation` and records what survives.
 
 ## Result
 
@@ -29,6 +30,14 @@ Three conclusions survive the hostile pass.
    reconsideration of defective closure.
 3. Non-Capture and practical semantics remain separate bills. Neither follows from a
    replayable record, even when the record contains apparent outsider standing.
+
+Cross-review sharpens the first conclusion. The constructive worker's lattice account
+theorem is valid for a fixed authenticated ledger and fixed `Closes`. Its six local
+clauses do not require `Disciplined`, adequate answers, settlement independence/truth,
+or closure provenance. They also accumulate by idempotent join, so equal-content debt
+occurrences lose multiplicity. Its proposed endpoint relation needs to package the
+ledger, admitted slices, initial account, and boundary compatibility before the
+fixed-witness composition theorem applies.
 
 ## Minimal countermodels
 
@@ -176,10 +185,13 @@ and all declarations local to those three namespaces.
   expose missing certificate fields.
 - No general timely-service result is supplied for arbitrary successor chains.
 - No canonical register, priority, decision, vocabulary, or wiki surface is changed.
+- Cross-review does not refute the constructive fixed-ledger conservation or
+  fixed-witness composition theorems. It narrows their interpretation and exposes
+  hypotheses needed by the endpoint relation.
 
 ## Verification
 
-- `python3 tests/run.py`: 20 tests pass.
+- `python3 tests/run.py`: 25 tests pass.
 - `~/.claude/scripts/safe-lake.sh build Workspace.Normativity.Contrib.IntegrityAdversary`:
   builds; every printed axiom set is allowed.
 - `python3 tests/name_lint.py`, `python3 tests/dead_pointers.py`, and

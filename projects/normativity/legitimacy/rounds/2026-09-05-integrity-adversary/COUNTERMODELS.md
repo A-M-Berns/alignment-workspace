@@ -20,6 +20,11 @@
 | C13 | a late parentless root satisfies replay with itself as sole root | exact-witness; lean-proved | `test_a13_*`; `Evasive.evasive_late_root` |
 | C14 | strict pre-state grounds form a diachronic semantic cycle | exact-witness | `test_a14_*` |
 | N0 | six malformed controls are refused at their named I4–I9 clauses | exact-witness | `NegativeControls.test_refusals` |
+| X1 | Agent A local conservation credits an answer with no adequacy certificate | exact-witness | `CrossReviewA.test_local_answer_*` |
+| X2 | Agent A local conservation admits self-grounded disposal with full carry | exact-witness | `CrossReviewA.test_local_conservation_*` |
+| X3 | writer-controlled false settlement passes when `Settled` and `Closes` are supplied true | exact-witness | `CrossReviewA.test_captured_*` |
+| X4 | recomputing historical `Closes` toggles local Integrity | exact-witness | `CrossReviewA.test_recomputing_*` |
+| X5 | join receipts collapse two equal-content occurrences to one atom | exact-witness | `CrossReviewA.test_join_*` |
 
 All Lean declarations in
 `Workspace.Normativity.Contrib.IntegrityAdversary` are `lean-proved`. Their explicit
