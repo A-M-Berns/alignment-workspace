@@ -1,9 +1,9 @@
 # Openness, coverage, and non-capture
 
 **Status: open / unregistered.** The coverage contract and the self-sealing theorem
-are paper-derived with exact fixtures; the DR-MDP legitimacy test is an exact finite
-reproduction of a published example set; no non-capture certificate has been
-constructed, and the general theory is deliberately stated relative to one that is
+are paper-derived with exact fixtures; the dynamic-reward legitimacy test reproduces a
+published example set in exact rationals, all but two table cells whose quantifier the
+finite model does not range over; no non-capture certificate has been constructed, and the general theory is deliberately stated relative to one that is
 supplied from outside.
 
 [Integrity](Integrity) and [answerability](Diachronic-Answerability) govern what
@@ -103,8 +103,8 @@ does.
 ## What exists on the counterfactual side
 
 One test case has been run end to end. The published dynamic-reward examples in which
-an agent manipulates the reward it will later be scored against were reproduced
-exactly, and a legitimacy criterion evaluated on them: an influence is legitimate when a
+an agent manipulates the reward it will later be scored against were reproduced in
+exact arithmetic, and a legitimacy criterion evaluated on them: an influence is legitimate when a
 *live covering authority* stood over it and the covering persists counterfactually under
 excising the intervention's ancestry class of influence episodes. Excision reuses the
 record's own rules, with only the settlement declared. On the bare examples the
