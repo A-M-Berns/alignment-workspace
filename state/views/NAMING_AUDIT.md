@@ -240,7 +240,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 657 names, 525 of them Lean only
+## normativity — 670 names, 532 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -488,6 +488,19 @@ change, and the count of those is the size of the free choice remaining.
 | `wOpen` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wOpen` |
 | `wTwoSat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wTwoSat` |
 | `wTwoUnsat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wTwoUnsat` |
+| `A` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.A` |
+| `Margin` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Margin` |
+| `Region` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Region` |
+| `Within` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.Within` |
+| `b` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.Witness.b` |
+| `hardGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.hardGate` |
+| `massOff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.massOff` |
+| `pref` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.Witness.pref` |
+| `ramp` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.ramp` |
+| `softGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.softGate` |
+| `total` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |
+| `u` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.u` |
+| `weight` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.weight` |
 | `Integrity` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Integrity` |
 | `Local` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Local` |
 | `LocalConservation` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.LocalConservation` |

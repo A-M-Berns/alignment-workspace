@@ -134,6 +134,25 @@ commit.
 
 ## Settled
 
+### 2026-09-06 — the decision adapter is a gate on adequacy prices, not a utility
+
+**agent-decided, reversible.** The Normative Inductor's decision-theory bill is the
+coupling hypothesis of `PracticalCertificate.adequate_set_route` — the realized response
+distribution's mass off the adequate set is affine in the public defect — and the
+decision adapter `Evaluation.Pi` is realized as a soft gate: ramp weight on the adequacy
+price times a task preference, normalized, returning the inquiry response when nothing is
+confidently adequate (`GatedChoice.softGate_practicalCert`).  The Progress statistic is
+the assessment and is not the agent's objective: a compensatory scalar objective is
+flipped by any task stake above `λ·D` (`scalar_bribery`), and a gated argmax is invariant
+to a forbidden response's task value (`gate_invariant`).  Constitutional constraints are
+adequate sets of the same type with an anchored branch index and a two-level domain
+covering successor installation; what remains for the constitutional case is
+containment and the manipulation of settlement, recorded as preconditions.
+*Rejected alternative:* a hard admissibility gate, which has no Lipschitz constant in the
+defect (`hardGate_discontinuous`) and so does not pay the bill; and any scalar penalty,
+bounded or not, which pays it only on the value route with a vacuous constant on a
+forbidden optimum.
+
 ### 2026-09-06 — the incentive extension of corrigibility is a named-assumption identity; Level II is claimed, Levels III and IV are not
 
 **agent-decided, reversible.** The agent's gain from substituting its choice for the

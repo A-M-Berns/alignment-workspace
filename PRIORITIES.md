@@ -2330,6 +2330,34 @@ realize.
 *A solution ships:* the interface with its theorem, or a statement of why the bridge is
 a design choice and not a theorem.
 
+### 85. Margin realization at the realized market — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+`GatedChoice.softGate_practicalCert` pays the Normative Inductor's practical certificate
+with `M = D·|Q|·pmax/(pmin·δ)` under two hypotheses on the region point the displayed
+prices are within `d` of: inadequate responses are priced at most `τ` (`Region`, the
+compiler's soundness) and some adequate response is priced at least `τ + 2δ` (`Margin`).
+The second is a *completeness* condition: a sound-only compiler never marks anything
+adequate, and a market that conforms to a region built from adequacy sentences displays a
+marked adequate response only if its prices on those sentences are accurate — an
+asymptotic Logical-Induction property.  Without `Margin` the gate inquires and the
+Progress statistic charges `D`; with it the bound is affine in the defect.
+
+State the classwise or finite-time condition under which the traderized realization,
+conforming to a compiled region over adequacy sentences, displays some adequate response
+with margin at the service occasions the evaluation transports mass to, or show that no
+finite-time statement exists and the margin must be certified externally.
+
+*Deliverable shape:* the condition and a theorem composing it with `softGate_practicalCert`,
+or the negative with a witness.
+*Acceptance check:* the module audits clean and `python3 tests/run.py` is green.
+
+*Context:* `NORMATIVE_CHOICE_THEOREM.md` §5 and `DECISION_THEORY_BILL.md` §3 of
+`projects/deference/rounds/2026-09-06-decision-theory-bill/`.
+*Consumed by:* the gated decision adapter as the realization of `Evaluation.Pi`.
+*A solution ships:* the condition with its theorem, or the negative.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

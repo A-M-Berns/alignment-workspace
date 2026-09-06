@@ -126,6 +126,7 @@ earlier rows did not record at all.
 | `projects/normativity/legitimacy/rounds/2026-09-08-canonicalization/**`, `prompts/2026-09-08-canonicalization/**`, the state-indexed openness semantics in `lean/Workspace/Normativity/Contrib/LegitimateEvolution.lean` and one witness in `NonCaptureCertificate.lean`, the *legitimacy spine* section of `projects/normativity/CLAIMS.md`, seven rewritten and nine amended pages under `wiki/`, `state/vocabulary.json` and one `state/rounds.json` entry with regenerated `state/views/**`, the 2026-09-08 `DECISIONS.md` entry, `PRIORITIES.md` item 78, and `projects/normativity/legitimacy/README.md` | Claude Fable 5.1 (Anthropic) | `ci-only` | 2026-09-08 | `prompts/2026-09-08-canonicalization/`; canonicalization with wiki and registry scope |
 | `projects/deference/rounds/2026-09-06-corrigibility-architecture/**`, `prompts/2026-09-06-corrigibility-architecture/**`, the rewritten `wiki/Corrigibility.md`, two entries on `wiki/Sources.md`, one `state/rounds.json` entry with regenerated `state/views/**`, the 2026-09-06 `DECISIONS.md` entry, and `PRIORITIES.md` item 83 | Claude Fable 5.1 (Anthropic) | `ci-only` | 2026-09-06 | `prompts/2026-09-06-corrigibility-architecture/`; research round with wiki scope, no Lean, no claim registration |
 | `projects/deference/rounds/2026-09-06-incentive-nonpreemption/**`, `prompts/2026-09-06-incentive-nonpreemption/**`, `lean/Workspace/Deference/Contrib/SelectedTrustNonPreemption.lean`, one `state/rounds.json` entry with regenerated `state/views/**`, the second 2026-09-06 `DECISIONS.md` entry, and `PRIORITIES.md` item 84 | Claude Fable 5.1 (Anthropic) | `ci-only` | 2026-09-06 | `prompts/2026-09-06-incentive-nonpreemption/`; research round, Lean lemma, no claim registration, no wiki edit |
+| `projects/deference/rounds/2026-09-06-decision-theory-bill/**`, `prompts/2026-09-06-decision-theory-bill/**`, `lean/Workspace/Normativity/Contrib/GatedChoice.lean`, one `state/rounds.json` entry with regenerated `state/views/**`, the third 2026-09-06 `DECISIONS.md` entry, and `PRIORITIES.md` item 85 | Claude Fable 5.1 (Anthropic) | `ci-only` | 2026-09-06 | `prompts/2026-09-06-decision-theory-bill/`; exploratory research round, Lean gate theorems, no claim registration, no wiki edit |
 
 ## No originating chat bundle
 
@@ -185,6 +186,7 @@ of thing this file exists to make visible.
 | `2026-09-05-author-consolidation` | the maintainer — authored outside this repository | Claude Fable 5.1 (Anthropic) | 2026-09-05 |
 | `2026-09-06-corrigibility-architecture` | the maintainer — two messages, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-06 |
 | `2026-09-06-incentive-nonpreemption` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-06 |
+| `2026-09-06-decision-theory-bill` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-06 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have

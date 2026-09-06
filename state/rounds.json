@@ -1278,6 +1278,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-06-incentive-nonpreemption/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-06-decision-theory-bill",
+      "date": "2026-09-06",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-06-decision-theory-bill",
+      "verdict": "GATE-NOT-UTILITY — the Normative Inductor's decision-theory bill is one coupling, mass off the adequate set affine in the public defect, and it is paid by a ramped adequacy gate with an explicit constant and refused by any hard gate and by any compensatory scalar objective; the same gate, with an anchored branch index and a two-level domain, is the decision-theoretic object corrigibility needs, and what remains for the constitutional case is containment and the manipulation of settlement, not decision theory.",
+      "verdict_source": "projects/deference/rounds/2026-09-06-decision-theory-bill/README.md",
+      "depends_on": ["2026-09-08-canonicalization", "2026-09-05-practical-certificate", "2026-09-06-corrigibility-architecture", "2026-09-06-incentive-nonpreemption"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-06-decision-theory-bill/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
