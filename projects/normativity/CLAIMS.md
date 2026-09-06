@@ -751,3 +751,426 @@ round register that says what it rests on.
   "note": "A worked example of the schema, not a research result: the house enumeration checker generates the 28 rational simplex points at denominator six and confirms each sums to one. It exists so the registry, the checker and the CI job are exercised by something real before any research claim depends on them."
 }
 ```
+
+### The legitimacy spine
+
+The canonical theory of Legitimate Evolution and Normative Induction, registered at
+the canonicalization of 2026-09-08 against item 78. Statements are exact; the
+conditional Normative Inductor theorems are deliberately absent (see
+`ni.progress-bound`).
+
+### legitimacy.evolution-conservation
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Integrity evolution conserves answerability",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.conservation"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "Answerability Conservation: along an Integrity evolution between accounted states, exposure only grows, every recorded answer or closure receipt persists, and the resolution witness each occurrence's account denotes is transported from the earlier state. Inhabited by `Witness.ev₀₁`. The hypotheses are the certificate data; nothing semantic is assumed beyond the protocol's typed inputs."
+}
+```
+
+### legitimacy.propagate-to-segment
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the target account is the propagation of the source",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.propagate_toSegment"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "An evolution's target account equals the propagation of its source account along the underlying segment: the account is determined by the certificate, so witnesses cannot disagree about either endpoint."
+}
+```
+
+### legitimacy.receipts-immutable
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a transition rewrites no recorded receipt",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals_subst"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "Substitution at live ports keeps every terminal receipt and adds only the terminals of the substituted accounts. With `livePorts_subst` this is the three-fate accounting at the leaf level: terminal fates persist, live leaves are replaced."
+}
+```
+
+### legitimacy.faithful-carry
+
+```json
+{
+  "project": "normativity",
+  "short_name": "carry is faithful by construction",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.evaluate_subst"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "The resolution witness a substituted account denotes is the original account's witness with each live port read through its replacement. Faithful transformation of live content is a consequence of the account type."
+}
+```
+
+### legitimacy.multiplicity-witness
+
+```json
+{
+  "project": "normativity",
+  "short_name": "equal anchors, distinct fates",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.distinct_fates"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "Two occurrences with the same anchor, one answered and one carried by a single transition, have accounts with fates `{answered}` and `{live}`. Occurrence identity lives outside the content type and the accounting is occurrence-indexed; an exact witness that equal content does not collapse debts."
+}
+```
+
+### legitimacy.segment-trans
+
+```json
+{
+  "project": "normativity",
+  "short_name": "legitimate segments compose at a shared state",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.LegitimateEvolution.LegitimateSegment.trans"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "Composition of legitimate-evolution certificates: the underlying evolutions concatenate at the literally shared state and per-state openness composes (`AllStates.trans`). Inhabited by `Witness.composed`, whose composite's accounts keep two equal-anchor occurrences apart."
+}
+```
+
+### legitimacy.endpoint-trans
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the endpoint relation is transitive",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.LegitimateEvolution.Legitimate.trans"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "`Legitimate` is `Nonempty LegitimateSegment`; it hides the witness for consumers and is transitive. The certificate remains available for audit."
+}
+```
+
+### legitimacy.answerable
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Diachronic Answerability, decomposed",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.LegitimateEvolution.LegitimateSegment.answerable"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "A legitimate segment yields Answerability Conservation from Integrity and Robust Openness (coverage of every live concern and the protected party's standing on every applicable one, actual branch and each counterfactual) at both endpoints, and by construction at every state between. Diachronic Answerability is derived, not a third conjunct."
+}
+```
+
+### legitimacy.endpoint-only-insufficient
+
+```json
+{
+  "project": "normativity",
+  "short_name": "endpoint-only openness admits laundered exclusion",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.LegitimateEvolution.Witness.endpoint_only_insufficient"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "Exact counterexample: a two-transition evolution open at both endpoints whose middle state has a live concern with no adequate route; it is not a legitimate segment. This is why openness is required at every state."
+}
+```
+
+### openness.persistence-sufficient
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the persistence bill gives Robust Openness on the actual and counterfactual branches",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpenActual_of_persistence"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "Actual coverage inside the protected route set, actual standing, silent-prefix coverage, componentwise persistence of protected routes, and principal standing give `RobustOpenActual`. A sufficient external certificate, not the contract: `Witness.persistence_not_necessary` separates it from Robust Openness. Inhabited by `Witness.persistence_inhabited`."
+}
+```
+
+### openness.certplus-is-robust-openness
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the split bill is Robust Openness itself",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.NonCapture.Scenario.certPlus_iff_robustOpen"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "Given actual coverage, the bill `(S) ∧ (R+) ∧ (P)` is logically equivalent to counterfactual Robust Openness: the conclusion factored by a case split, not an independent sufficient condition. Recorded so that the bill is not presented as a certificate."
+}
+```
+
+### openness.actual-branch-witness
+
+```json
+{
+  "project": "normativity",
+  "short_name": "counterfactual openness does not contain the actual condition",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.NonCapture.Witness.counterfactual_open_not_actual"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "Exact witness: counterfactual-only Robust Openness holds while the actual prefix has a live concern with no route and no principal standing. The public predicate is therefore `RobustOpenActual`, actual branch explicit."
+}
+```
+
+### progress.edge-bound
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the finite Progress bound at the edge endpoint",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.NormativeInductorComposition.edge_progress_bound"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "Transport-weighted edge response loss plus residual is bounded by the amplification-weighted service-mean defect, the transport-weighted error, and the residual charge, from nonnegative transport and defect, `PracticalCert` on every positive edge, and the weighted column bound. Executed by a Codex worker within the consolidation round."
+}
+```
+
+### progress.edge-bound-quadratic
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the quadratic Progress bound",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.NormativeInductorComposition.edge_progress_bound_quadratic"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "With intensity-normalized service weights and the uptake certificate `λ_s d_s² ≤ ρ_s`, the first term is `Γ √(Σρ/Σλ)`. Inhabited by `edge_progress_witness` with all three terms positive."
+}
+```
+
+### progress.headline-separation
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the headline endpoint is not the edge endpoint",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.NormativeInductorComposition.edge_headline_separation"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "Two equally weighted services with edge losses 0 and 1 average to one half, below a headline loss of one. The exposure-headline theorems remain as an optional corollary needing a dominance premise this shows is not free."
+}
+```
+
+### ni.progress-bound
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the Progress bound on the accounted export",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.progress_bound"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "The quadratic bound typed on `Evaluation (O : ObligationState)`: the practical/uptake certificate at the realized market gives the three-term bound. Inhabited by `Witness.uptake` and `Witness.bound` at the Integrity witness state. The two conditional Normative Inductor theorems consuming it are not registered: the general one's Logical-Induction hypotheses are uninhabited, and the deductive one's joint package has no single witness."
+}
+```

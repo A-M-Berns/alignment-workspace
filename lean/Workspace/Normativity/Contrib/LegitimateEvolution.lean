@@ -18,9 +18,11 @@ the source account and the certificate; there is no freedom to choose it.
 Answerability Conservation: exposure only grows, every recorded receipt persists,
 and the resolution witness each account denotes is transported from the earlier state.
 
-**Openness over time.**  An `OpennessSemantics` gives, for each prefix and concern,
-the actual and counterfactual coverage states — external data.  `LegitimateEvolution`
-requires `RobustOpenActual` for every concern at *every* state of the evolution.
+**Openness over time.**  An `OpennessSemantics` gives, for each accounted state and
+concern, the actual and counterfactual coverage states — external data, indexed by the
+state so that the docket, the ports and the accounts (which carrier holds which
+occurrence's load) are available to it.  `LegitimateSegment` requires
+`RobustOpenActual` for every concern at *every* state of the evolution.
 Because coverage and standing are conditional on liveness and applicability, this is
 already the concern-relative form: nothing is demanded of a concern while it is
 inapplicable or represented.  `Witness.endpoint_only_insufficient` is the exact
@@ -29,7 +31,8 @@ concern with no route, then restored.
 
 **What this does not establish.**  That any `OpennessSemantics` is causally correct,
 that any `Protocol` is authenticated, or that the concerns `Γ` are related to the
-docket in any particular way; the last is part of the semantics' type.
+docket in any particular way; the last is what the semantics' dependence on the state
+is for, and the generic theory does not fix it.
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
@@ -201,33 +204,36 @@ theorem Evolution.conservation {O₀ O₁ : ObligationState S anchor}
 
 /-! ## 4. Openness over time and Legitimate Evolution -/
 
-/-- An intervention semantics: for every history prefix and declared concern, the
-actual and counterfactual coverage states.  External; how concerns relate to the
-docket is part of its type. -/
-def OpennessSemantics (Γ J R : Type) := List Nat → Γ → Scenario J R
+/-- An intervention semantics: for every accounted state and declared concern, the
+actual and counterfactual coverage states.  External.  It sees the whole state — the
+history prefix, the docket and the accounts — so the carrier of a concern's load can
+be read off the accounts rather than reconstructed from the history. -/
+def OpennessSemantics (Γ J R : Type) := ObligationState S anchor → Γ → Scenario J R
 
 variable {Γ J R : Type}
 
-/-- Robust Openness for every concern at one prefix, actual branch included. -/
-def OpenAt (sem : OpennessSemantics Γ J R) (h : List Nat) : Prop :=
-  ∀ c, (sem h c).RobustOpenActual
+variable {S anchor} in
+/-- Robust Openness for every concern at one state, actual branch included. -/
+def OpenAt (sem : OpennessSemantics S anchor Γ J R) (O : ObligationState S anchor) : Prop :=
+  ∀ c, (sem O c).RobustOpenActual
 
-instance [Fintype Γ] [Fintype J] [Fintype R] (sem : OpennessSemantics Γ J R) (h : List Nat) :
-    Decidable (OpenAt sem h) := by
+variable {S anchor} in
+instance [Fintype Γ] [Fintype J] [Fintype R] (sem : OpennessSemantics S anchor Γ J R)
+    (O : ObligationState S anchor) : Decidable (OpenAt sem O) := by
   unfold OpenAt; infer_instance
 
 /-- **Legitimate Evolution**, as a certificate: an Integrity evolution every state of
 which is robustly open.  Proof-relevant; `Legitimate` below hides it. -/
-structure LegitimateSegment (sem : OpennessSemantics Γ J R)
+structure LegitimateSegment (sem : OpennessSemantics S anchor Γ J R)
     (O₀ O₁ : ObligationState S anchor) where
   evolution : Evolution S anchor O₀ O₁
-  openAll : evolution.AllStates fun O => OpenAt sem O.boundary.history
+  openAll : evolution.AllStates (OpenAt sem)
 
 namespace LegitimateSegment
 
-variable {S anchor} {sem : OpennessSemantics Γ J R}
+variable {S anchor} {sem : OpennessSemantics S anchor Γ J R}
 
-def refl (O : ObligationState S anchor) (h : OpenAt sem O.boundary.history) :
+def refl (O : ObligationState S anchor) (h : OpenAt sem O) :
     LegitimateSegment S anchor sem O O :=
   ⟨.refl O, h⟩
 
@@ -243,17 +249,17 @@ receipts are conserved by Integrity, and coverage and standing hold at both endp
 (and, by `openAll`, at every state between). -/
 theorem answerable {O₀ O₁ : ObligationState S anchor}
     (leg : LegitimateSegment S anchor sem O₀ O₁) :
-    Conservation S anchor O₀ O₁ ∧
-    OpenAt sem O₀.boundary.history ∧ OpenAt sem O₁.boundary.history :=
+    Conservation S anchor O₀ O₁ ∧ OpenAt sem O₀ ∧ OpenAt sem O₁ :=
   ⟨leg.evolution.conservation, leg.openAll.head, leg.openAll.last⟩
 
 end LegitimateSegment
 
 /-- The endpoint relation a consumer may use; the witness stays available for audit. -/
-def Legitimate (sem : OpennessSemantics Γ J R) (O₀ O₁ : ObligationState S anchor) : Prop :=
+def Legitimate (sem : OpennessSemantics S anchor Γ J R) (O₀ O₁ : ObligationState S anchor) :
+    Prop :=
   Nonempty (LegitimateSegment S anchor sem O₀ O₁)
 
-theorem Legitimate.trans {sem : OpennessSemantics Γ J R}
+theorem Legitimate.trans {sem : OpennessSemantics S anchor Γ J R}
     {O₀ O₁ O₂ : ObligationState S anchor} (h₁ : Legitimate S anchor sem O₀ O₁)
     (h₂ : Legitimate S anchor sem O₁ O₂) : Legitimate S anchor sem O₀ O₂ :=
   h₁.elim fun l => h₂.elim fun r => ⟨l.trans r⟩
@@ -305,24 +311,24 @@ def closedS : Scenario (Fin 1) (Fin 1) :=
   ⟨st true false false false false false true, ![st true false false true true true true]⟩
 
 /-- Open everywhere. -/
-def semOpen : OpennessSemantics Unit (Fin 1) (Fin 1) := fun _ _ => openS
+def semOpen : OpennessSemantics protocol wAnchor Unit (Fin 1) (Fin 1) := fun _ _ => openS
 
-/-- Open except at the middle prefix `[0, 1]`. -/
-def semMiddle : OpennessSemantics Unit (Fin 1) (Fin 1) :=
-  fun h _ => if h = [0, 1] then closedS else openS
+/-- Open except at the middle state, whose history is `[0, 1]`. -/
+def semMiddle : OpennessSemantics protocol wAnchor Unit (Fin 1) (Fin 1) :=
+  fun O _ => if O.boundary.history = [0, 1] then closedS else openS
 
 def leg₀₁ : LegitimateSegment protocol wAnchor semOpen state₀ state₁ :=
-  ⟨ev₀₁, show OpenAt semOpen state₀.boundary.history ∧ OpenAt semOpen state₁.boundary.history
+  ⟨ev₀₁, show OpenAt semOpen state₀ ∧ OpenAt semOpen state₁
     by decide⟩
 
 def leg₁₂ : LegitimateSegment protocol wAnchor semOpen state₁ state₂ :=
-  ⟨ev₁₂, show OpenAt semOpen state₁.boundary.history ∧ OpenAt semOpen state₂.boundary.history
+  ⟨ev₁₂, show OpenAt semOpen state₁ ∧ OpenAt semOpen state₂
     by decide⟩
 
 /-- **Legitimate segments compose nonvacuously**: the composite is legitimate and its
 accounts keep the two equal-anchor occurrences apart. -/
 theorem composed :
-    (leg₀₁.trans leg₁₂).evolution.AllStates (fun O => OpenAt semOpen O.boundary.history) ∧
+    (leg₀₁.trans leg₁₂).evolution.AllStates (OpenAt semOpen) ∧
     (state₂.account 0 (Finset.mem_univ _)).fates = {Fate.answered} ∧
     (state₂.account 1 (Finset.mem_univ _)).fates = {Fate.live} := by
   refine ⟨(leg₀₁.trans leg₁₂).openAll, ?_, ?_⟩ <;>
@@ -332,15 +338,15 @@ theorem composed :
 /-- **Endpoint-only openness is insufficient.**  Both endpoints of `ev₀₁.trans ev₁₂` are
 open under `semMiddle`, the middle state is not, and the evolution is not legitimate. -/
 theorem endpoint_only_insufficient :
-    OpenAt semMiddle state₀.boundary.history ∧ OpenAt semMiddle state₂.boundary.history ∧
-    ¬ OpenAt semMiddle state₁.boundary.history ∧
-    ¬ (ev₀₁.trans ev₁₂).AllStates (fun O => OpenAt semMiddle O.boundary.history) := by
+    OpenAt semMiddle state₀ ∧ OpenAt semMiddle state₂ ∧
+    ¬ OpenAt semMiddle state₁ ∧
+    ¬ (ev₀₁.trans ev₁₂).AllStates (OpenAt semMiddle) := by
   refine ⟨by decide, by decide, by decide, ?_⟩
   intro h
-  have h' : OpenAt semMiddle state₀.boundary.history ∧
-      OpenAt semMiddle state₁.boundary.history ∧
-      OpenAt semMiddle state₂.boundary.history := h
-  exact (by decide : ¬ OpenAt semMiddle state₁.boundary.history) h'.2.1
+  have h' : OpenAt semMiddle state₀ ∧
+      OpenAt semMiddle state₁ ∧
+      OpenAt semMiddle state₂ := h
+  exact (by decide : ¬ OpenAt semMiddle state₁) h'.2.1
 
 end Witness
 

@@ -400,6 +400,15 @@ theorem counterfactual_open_not_actual :
     ¬ actualClosedS.RobustOpenActual := by
   decide
 
+/-- Every hypothesis of `robustOpenActual_of_persistence` is inhabited, with a live
+concern and an adequate route in the first counterfactual. -/
+theorem persistence_inhabited :
+    nonvacuityS.CoverageActual W1 ∧ nonvacuityS.actual.OpenTo ∧ nonvacuityS.ClauseS ∧
+    nonvacuityS.ClauseRa W1 ∧ nonvacuityS.ClauseRb W1 ∧ nonvacuityS.ClauseRc W1 ∧
+    nonvacuityS.ClauseP ∧ nonvacuityS.RobustOpenActual ∧
+    (nonvacuityS.cf 0).live = true := by
+  decide
+
 end Witness
 
 end Workspace.Normativity.Contrib.NonCapture
@@ -422,3 +431,4 @@ end Workspace.Normativity.Contrib.NonCapture
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.offAdequate
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.persistence_not_necessary
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.counterfactual_open_not_actual
+#print axioms Workspace.Normativity.Contrib.NonCapture.Witness.persistence_inhabited
