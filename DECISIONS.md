@@ -134,6 +134,65 @@ commit.
 
 ## Settled
 
+### 2026-09-08 — the legitimacy / normative-induction phase is canonicalized
+
+**Maintainer-dispatched canonicalization pass**, executed with write scope by the
+round at `prompts/2026-09-08-canonicalization/`. It lands the cumulative content of
+the integrity-synthesis batch, the mathematical consolidation and the final pressure
+pass, and rewrites the canonical surfaces around the surviving theory.
+
+**Landing.** The three stacked pull requests — the integrity synthesis batch on
+`round/2026-09-05-integrity-synthesis`, the consolidation on
+`round/2026-09-06-mathematical-consolidation`, the pressure pass on
+`round/2026-09-07-final-pressure-pass` — were linear on top of `main`, and the first
+alone carried the axiom-audit failure the second repaired. They were landed together
+through one pull request from `round/2026-09-08-canonicalization`, branched from the
+pressure pass's head, merged with a merge commit so every round commit is reachable
+from `main` and commit-pinned citations into them stay valid. The three stacked pull
+requests are closed as superseded, each pointing at the landing pull request. No
+intermediate state with a red required check reached `main`.
+
+**The canonical theory** is the one the final pressure pass stated, with one
+interface change: the intervention semantics is indexed by the accounted obligation
+state rather than by the history prefix, so the carrier of a concern's load is read
+off the accounts (`LegitimateEvolution.OpennessSemantics`). The wiki's Legitimacy,
+Integrity, Diachronic Answerability, Openness, Settlement interface, Normative
+induction and Normative Inductor pages, the Roadmap's legitimacy section, the Glossary
+and `state/vocabulary.json` now describe only that theory. Sixteen claims are
+registered under *The legitimacy spine* in `projects/normativity/CLAIMS.md` against
+item 78; the two conditional Normative Inductor theorems are deliberately not
+registered, the general one because its Logical-Induction hypotheses are uninhabited
+and the deductive one because its joint package has no single witness.
+
+**Decisions promoted to canonical wording.** The 2026-09-06 and 2026-09-07 entries
+below that were marked agent-decided and reversible are adopted as they stand, with
+two superseded: *standing is Robust Openness at the null intervention* is superseded
+by *Robust Openness at a prefix includes the actual branch by definition*, and *the
+Non-Capture certificate is the persistence bill* is superseded by the reading in
+which the persistence certificate is one sufficient way to discharge a certified
+Robust Openness, not the contract. The queued rulings on naming a protected
+principal and on settlement independence remain queued; the canonical text is
+P-indexed because no party-free form exists, and treats settlement independence as
+two typed inputs under either ruling.
+
+**Vocabulary.** `Resolution` replaces `Evidence`; `accounted obligation state`,
+`Integrity evolution`, `Answerability Conservation`, `legitimate segment`,
+`Legitimate`, `Robust Openness` (actual branch included), `persistence certificate`
+and `PracticalCert` are the preferred labels, with `IntegritySegment`,
+`LocalConservation`, `slice ledger`, `settlement integrity`, `null intervention`,
+`persistence bill`, `Non-Capture certificate` and `headline Progress` deprecated.
+
+**Demoted to evidence**, unedited: the lattice ledger and local conservation clause
+of the integrity constructive round; the countermodels of the integrity adversary
+round; the export adapter on the older trace model; the exposure-headline Progress
+theorems; the fixed-era Progress, Serviceability and Liability pages, now marked
+realization material.
+
+*Rejected alternatives:* merging the stack in order, which would have routed the
+audit failure through `main`; squash-merging, which would have left every pinned
+citation into the rounds dangling; registering the conditional realization theorems
+on the strength of their proofs alone.
+
 ### 2026-09-07 — the public obligation state is the accounted state, and Integrity is an evolution of it
 
 **agent-decided, reversible.** The object a consumer reads is

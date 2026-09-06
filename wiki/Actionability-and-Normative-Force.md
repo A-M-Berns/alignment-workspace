@@ -1,7 +1,9 @@
 # Actionability and normative force
 
 **Status:** the enforcement construction's three narrow results are **Established —
-`lean-proved`**. The action theory built on them is open / unregistered.
+`lean-proved`**. The action theory built on them is open / unregistered and is
+realization material: its force, intensity and uptake distinctions enter the canonical
+theory only as the uptake certificate of [normative induction](Normative-Induction).
 
 ## What it means for a reason to have force
 

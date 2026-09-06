@@ -18,24 +18,32 @@ This is the canonical human exposition of vocabulary. The repository's `state/vo
 
 | term | meaning |
 |---|---|
-| **full normative history** `H` | The append-only record of every normative move a trajectory made or received: admissions, grounds, objections, answers, standing and licence changes, defeats and dispositions, semantic migrations, service events, settlement receipts. Not itself settled. |
-| **settlement view** `S = SetView(H)` | The monotone projection of the history onto what has been settled through the privileged external interface. The only thing that can ground terminal discharge. |
-| **settlement integrity** | The external hypothesis that settlement facts enter only through that interface, cannot be written or suppressed by the assessed process, and are never retracted. |
-| **Integrity** | A trajectory cannot falsify or silently rewrite its own normative history: authenticated births, immutable anchors, provenance, write permissions, faithful carry, replayability, settlement-backed discharge. Internal and largely formal. |
-| **the three fates** | Every inherited obligation component is answered, settlement-discharged, or faithfully carried live. There is no fourth silent fate. |
-| **Defeat Principle** | A participant may answer an obligation or contest whether it is owed; only an authenticated settlement-backed terminal condition may make an unanswered obligation disappear. Defeat carries; it does not extinguish. |
-| **answerable disposition** | A disposition that is grounded, routed to a fresh successor inheriting the load, and separated — standing and a ground outside the resolver's hand. |
-| **principal relativity** | Answerability is answerability *to someone*; preservation of standing is relative to a protected principal or a declared relation. A party-free condition over all coalitions cannot exist. |
-| **coverage scope** `Γ` | The declared class of concerns an application claims to remain open to. A modeling choice; the theory prevents its silent shrinkage and does not derive it. |
-| **coverage** | An adequate route from an applicable in-scope concern to represented, accountable consideration. |
-| **Robust Openness** | Coverage plus a Non-Capture certificate relative to a declared intervention class. |
-| **Non-Capture** | The process could not improperly control what was able to enter, challenge, or evaluate it. Counterfactual, and billed to an external theory. |
-| **legitimate evolution** | Integrity/Answerability plus Robust Openness: remaining answerable to what has legitimately reached the process and robustly open to what may. A property of the trajectory, not a certificate of the initial state. |
-| **qualitative obligation process** `O_P` | What legitimacy exports: obligation identities, anchored specifications, live status, authenticated lineage. No numerical weights. |
-| **live docket** / **historical exposure** | What remains owed now, consumed by the scheduler; versus everything that ever entered the process's responsibility, consumed by evaluation. |
-| **evaluation measure** `μ` | The externally declared measure over historical exposure against which Progress is stated. Committed before the responses it scores. |
-| **Normative Inductor** | Provisional name for the concrete realization: an ordinary Logical Inductor plus one additive bounded-liability projection enforcer against a single compiled joint region, with an external decision and value plugin. |
-| **public operative defect** | `dist_∞(b, K)`, the sup-distance of the displayed prices to the compiled joint region; service intensity is the projection multiplier `λ`. Euclidean projection is the enforcement implementation, not the public defect. |
+| **full normative history** | The append-only record of authenticated events a trajectory made or received: admissions, grounds, answers, standing and licence changes, defeats and dispositions with their successors, semantic migrations, service events, settlement receipts. Not itself settled. |
+| **settlement view** | Which externally supplied settlement items are available at a prefix. Interface authenticity and source trust are two separate inputs; there is no single "settlement integrity" hypothesis. |
+| **protocol** | The application's typed interpretation Integrity composes: resolution witnesses, settlement items, warrants, and the predicates for admission, liveness, authority, adequate answer, availability, and internal closure. Semantic authentication of a protocol is an input. |
+| **resolution witness** | Evidence that an anchored requirement has been legitimately accounted for. An adequate answer yields one; so does a valid closure. |
+| **occurrence** / **anchor** | An obligation by immutable identity, distinct from its content; the specification fixed at its admission. Two occurrences with one anchor are two debts. |
+| **accounted obligation state** `O` | The exposed occurrences, their anchors, the live docket of ports, and a proof-relevant account for every exposed occurrence. What legitimacy relates and what it exports. |
+| **account** | A finite tree over one occurrence whose leaves are the three fates and whose internal nodes are authenticated local laws. Status and lineage in one object. |
+| **the three fates** | `answered` — an adequate answer receipt; `closed` — an available settlement item with the internal closure judgment made at that prefix; `live` — a port of the docket. There is no fourth. |
+| **local law** | An authenticated transformation of one requirement into successors carrying maps of resolution witnesses both ways: faithful carry and no growth. Carry, split, refinement, re-representation; unary in the parent. |
+| **Integrity evolution** | A chain of transitions between accounted states, every intermediate state explicit, every target account the propagation of its source. Composes at a shared state. |
+| **Answerability Conservation** | The theorem of an Integrity evolution: no occurrence disappears, receipts persist, live content is transported faithfully, anchoring is by type. |
+| **Defeat Principle** | A participant may answer an obligation or contest whether it is owed; only a settlement-backed closure may make an unanswered obligation disappear. A disposal is the identity local law with its grounds recorded. |
+| **coverage scope** `Γ` | The declared class of concerns an application claims to remain open to. |
+| **Robust Openness** | At a state: every live in-scope concern has an adequate route and the protected party stands on the carrier of every applicable one, on the actual branch and under every declared intervention. The actual branch is a conjunct by definition. |
+| **intervention semantics** | The application's map from an accounted state and a concern to the actual and counterfactual coverage data. External. |
+| **persistence certificate** | Componentwise persistence of protected routes plus actual coverage and standing: one sufficient way to certify Robust Openness, strictly stronger than it. |
+| **legitimate segment** | An Integrity evolution robustly open at every one of its states. Proof-relevant, history-sensitive, composes at a shared state. |
+| **Legitimate** | The endpoint relation: some legitimate segment exists. Transitive; hides the certificate. |
+| **Diachronic Answerability** | Derived: Answerability Conservation from Integrity plus coverage and standing from Robust Openness. Not a third pillar. |
+| **principal relativity** | Preservation of standing is relative to a protected principal or declared relation. A party-free condition over all coalitions cannot exist. |
+| **qualitative handoff** `O_P` | The accounted obligation state, exported without weights, intensities, probabilities, securities, or market geometry. |
+| **evaluation** | A declared measure and transport over exposure, committed before responses, with one realized response per service occurrence and an anchored loss as a function of the anchor. |
+| **PracticalCert** | The edge-local inequality: the anchored loss of the realized response is at most a multiple of the public defect plus an error term. Every edge into a service certifies against the same response. |
+| **Progress** | The transport-weighted edge loss plus the unserved mass at the worst loss; bounded by the amplified uptake modulus, the transported error, and the residual charge. |
+| **Normative Inductor** | Provisional name for the realization: a Logical Inductor plus one bounded-liability projection enforcer against a single compiled joint region, with an external decision and value plugin. |
+| **public operative defect** | `dist_∞(b, K)`, the sup-distance of displayed prices to the compiled joint region; service intensity is the projection multiplier. Euclidean projection is the implementation. |
 
 ## Book and accounting
 
@@ -117,6 +125,18 @@ Definitions remain the human-authored exposition above.
 | `notation.transformation` | `F_g` | — | — |
 | `notation.loss` | `ℓ_t` | — | `ell_t` |
 | `notation.margin` | `δ_g` | — | `delta_g` |
+| `legitimacy.obligation-state` | `accounted obligation state` | `ObligationState`; `O_P` | — |
+| `legitimacy.account` | `account` | — | `slice ledger`; `lifecycle` |
+| `legitimacy.resolution-witness` | `resolution witness` | `Resolution` | `Evidence` |
+| `legitimacy.evolution` | `Integrity evolution` | `Evolution` | `IntegritySegment` |
+| `legitimacy.conservation` | `Answerability Conservation` | `Conservation` | `LocalConservation` |
+| `legitimacy.robust-openness` | `Robust Openness` | `RobustOpenActual` | `null intervention` |
+| `legitimacy.persistence-certificate` | `persistence certificate` | — | `persistence bill`; `Non-Capture certificate` |
+| `legitimacy.legitimate-segment` | `legitimate segment` | `LegitimateSegment` | — |
+| `legitimacy.legitimate` | `Legitimate` | — | — |
+| `legitimacy.settlement-view` | `settlement view` | `SetView` | `settlement integrity` |
+| `ni.practical-cert` | `PracticalCert` | — | — |
+| `ni.progress` | `Progress` | — | `headline Progress` |
 
 ## Three senses of admission, kept apart
 

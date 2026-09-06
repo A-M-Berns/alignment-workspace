@@ -1,8 +1,10 @@
 # Serviceability
 
-**Status: open / unregistered.** The results below are paper-derived with exact
-rational fixtures, from a research round that is merged but registers no claim.
-They are current research, not Established.
+**Status: open / unregistered; realization material.** The results below are
+paper-derived with exact rational fixtures, from a research round that is merged but
+registers no claim. They are not part of the canonical generic theory on
+[Legitimacy](Legitimacy); they are how a realization services what that theory
+exports.
 
 The program treats this layer as **closed for research sequencing** — settled enough
 to build on unless a contradiction appears. That is a statement about where effort

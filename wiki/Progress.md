@@ -1,11 +1,13 @@
 # Progress
 
-**Status: open / unregistered.** Paper-derived research, not Established.
+**Status: open / unregistered; realization material.** Paper-derived research, not
+Established.
 
 This page is the **fixed-era** instance: one settled semantics, one evaluator, no
-ontology revision. The general statement — Progress relative to a declared evaluation
-protocol, with its three-term bound — is on
-[Normative induction and Progress](Normative-Induction).
+ontology revision. The canonical statement — the transport-weighted edge loss plus
+residual, bounded by three terms, on the accounted obligation state — is on
+[Normative induction and Progress](Normative-Induction), and this instance is the
+edge bound with one era and one semantics.
 
 ## The word does real work
 

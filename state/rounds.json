@@ -1239,6 +1239,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-07-final-pressure-pass/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-08-canonicalization",
+      "date": "2026-09-08",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-08-canonicalization",
+      "verdict": "PHASE-CANONICALIZED — the cumulative integrity-synthesis, consolidation and pressure-pass content is landed through one merge, the wiki's legitimacy pages describe only the surviving theory of accounted states, Integrity evolution, Answerability Conservation, Robust Openness at every state, legitimate segments and the edge-loss Progress bound, sixteen claims are registered as the legitimacy spine, and the frontier is three lists.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-08-canonicalization/README.md",
+      "depends_on": ["2026-09-07-final-pressure-pass", "2026-09-06-mathematical-consolidation", "2026-09-05-integrity-synthesis"],
+      "depends_on_source": "report",
+      "registered_classes": ["lean-proved"],
+      "prompt": "prompts/2026-09-08-canonicalization/PROMPT.md",
+      "claim_changes": ["legitimacy.evolution-conservation", "legitimacy.propagate-to-segment", "legitimacy.receipts-immutable", "legitimacy.faithful-carry", "legitimacy.multiplicity-witness", "legitimacy.segment-trans", "legitimacy.endpoint-trans", "legitimacy.answerable", "legitimacy.endpoint-only-insufficient", "openness.persistence-sufficient", "openness.certplus-is-robust-openness", "openness.actual-branch-witness", "progress.edge-bound", "progress.edge-bound-quadratic", "progress.headline-separation", "ni.progress-bound"]
     }
   ]
 }

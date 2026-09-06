@@ -39,3 +39,15 @@ Generated from `state/vocabulary.json` by `python3 -m checkers.workspace_state -
 | notation.transformation | F_g | — | — | theorem interface | transformation |
 | notation.loss | ℓ_t | — | ell_t | theorem interface | charge_vector |
 | notation.margin | δ_g | — | delta_g | theorem interface | margin |
+| legitimacy.obligation-state | accounted obligation state | ObligationState, O_P | — | legitimacy | — |
+| legitimacy.account | account | — | slice ledger, lifecycle | legitimacy | — |
+| legitimacy.resolution-witness | resolution witness | Resolution | Evidence | legitimacy | — |
+| legitimacy.evolution | Integrity evolution | Evolution | IntegritySegment | legitimacy | — |
+| legitimacy.conservation | Answerability Conservation | Conservation | LocalConservation | legitimacy | — |
+| legitimacy.robust-openness | Robust Openness | RobustOpenActual | null intervention | legitimacy | — |
+| legitimacy.persistence-certificate | persistence certificate | — | persistence bill, Non-Capture certificate | legitimacy | — |
+| legitimacy.legitimate-segment | legitimate segment | LegitimateSegment | — | legitimacy | — |
+| legitimacy.legitimate | Legitimate | — | — | legitimacy | — |
+| legitimacy.settlement-view | settlement view | SetView | settlement integrity | legitimacy | — |
+| ni.practical-cert | PracticalCert | — | — | normative induction | — |
+| ni.progress | Progress | — | headline Progress | normative induction | — |

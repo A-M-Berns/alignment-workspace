@@ -1,155 +1,124 @@
 # Openness, coverage, and non-capture
 
-**Status: open / unregistered.** The coverage contract and the self-sealing theorem
-are paper-derived with exact fixtures; the dynamic-reward legitimacy test reproduces a
-published example set in exact rationals, all but two table cells whose quantifier the
-finite model does not range over; no non-capture certificate has been constructed, and the general theory is deliberately stated relative to one that is
-supplied from outside.
+**Status: canonical.** Robust Openness at a state is a definition over
+application-supplied coverage data; that a sufficient external certificate yields it,
+that the earlier split bill is the definition itself, and that counterfactual-only
+openness misses the actual branch are Established `lean-proved`. No application's
+intervention semantics is constructed here, by design.
 
-[Integrity](Integrity) and [answerability](Diachronic-Answerability) govern what
-happens to a criticism once it has reached a process. Openness governs whether
-criticism can reach it at all.
+[Integrity](Integrity) governs what happens to a concern once it has reached a
+process. Openness governs whether concerns can reach it at all, and whether the party
+they matter to can still act on them.
 
-> Openness prevents evasion by exclusion. Answerability and integrity prevent evasion
-> by revision.
+> Openness blocks evasion by exclusion. Integrity blocks evasion by revision.
 
 A process that admits every criticism it receives and then ensures it receives none
-has a perfect record and is not answerable to anyone. That is the failure this page is
-about, and it cannot be seen from inside the record.
+has a perfect record and is not answerable to anyone. That failure cannot be seen
+from inside the record.
 
-## Scope is declared, and that is a modeling choice
+## Scope is declared
 
-No process is open to everything. A theory that demanded openness to every conceivable
-concern would be unsatisfiable and would say nothing about which failures matter. So
-the theory is stated relative to a **declared coverage scope**: a supplied set `Γ` of
-stable criticism identifiers, each carrying a target specification, an applicability
-condition, a receipt criterion, a registration criterion, and a required route-quality
-class. An application must say, at least minimally, which class of concerns it claims
-to remain open to.
+No process is open to everything. The theory is stated relative to a **declared
+coverage scope** `Γ`: a set of stable concern identifiers, each with a target, an
+applicability condition, a receipt criterion, a registration criterion, and a
+required route-quality class. Declaring `Γ` is a modeling choice; the theory prevents
+its silent shrinkage and does not derive it.
 
-Declaring `Γ` is a modeling choice, not an embarrassment. The theory prevents the
-*silent shrinkage* of a named scope — a criticism cannot be made inapplicable by
-changing only its classifier, and dropping it from scope is a recorded, authorized
-disposition — but it does not derive the right scope, and it says so. What the scope
-should be is the application's to declare and the principal's to contest.
+## Coverage at a state
 
-## Coverage
+For a concern at a state, the coverage data are: whether the concern is applicable
+(read by an anchored predicate, never by the process's current recognition of it),
+whether it has been authorizedly disposed, whether it is represented, which routes are
+admissible, efficacious and registration-capable, and whether the protected party
+stands on the carrier of the concern's load. A concern is **live** when applicable,
+undisposed and unrepresented. **Covered** means: if live, some route is adequate.
+**Open to `P`** means: if applicable, `P` stands on its carrier — a disposal moves the
+load to a successor and does not exempt it.
 
-A coverage contract at an anchor pairs the scope `Γ` with an externally auditable
-relevance predicate, an adequacy check on routes, and a record of authorized
-retirements. A criticism is **active** when it is in scope, currently relevant, and
-not retired. The contract is **implemented** when
+Both conditions are conditional on liveness or applicability. Nothing is demanded of
+a concern while it is inapplicable or already represented. This is what makes
+"openness at every state" the concern-relative condition rather than a stronger one.
 
-> every active criticism that is not yet represented has an adequate route from being
-> applicable to being represented and accountably considered.
-
-Coverage means the existence of that route: an admissible inquiry that would expose a
-receipt sufficient for the criticism's target without changing the target, together
-with a registration policy that turns a relevant receipt into a represented obligation
-or an explicit pending issue. Route existence, route exercise, receipt, and
-registration are four distinct states, and coverage is the first — a counterfactual
-capability, not current registration.
-
-Two cautions the contract makes precise. Relevance may not be computed only from the
-process's current internal recognition of a criticism, its current routes, or its
-current ontology; each of those recreates the dogmatism loophole in which a concern
-becomes irrelevant by being forgotten. And a route that preserves the target can still
-be useless — a constant receipt preserves everything and conveys nothing — so adequacy
-is a stated quality class, not mere preservation.
-
-## Self-sealing, and why the record alone cannot stop it
-
-The obvious attack is to destroy the one route a criticism has and then record the
-coverage obligation as resolved. Every structural continuity requirement is satisfied:
-the issue disappears by explicit resolution, nothing leaves the record silently. The
-record has integrity and the process has sealed itself.
-
-The repair is one semantic hypothesis on what an accepted *coverage* resolution may
-certify: that every predicted active criticism is represented or has a named adequate
-route, or an authorized disposition covers it, or a successor transports the contract
-with its unresolved exceptions. Under that **local closure adequacy**, no clean
-self-sealing is a theorem: if a criticism is active, unrepresented and routeless after
-a transition, the coverage matter stays live and the contract is not implemented.
-Without it the result is bookkeeping — "the failure remains answerable" meaning only
-"the matter was not resolved".
-
-## Robust openness and the non-capture certificate
+## Robust Openness
 
 Coverage on the actual run is not enough, for the same reason integrity is not: a
-process can shape which criticisms *become* active, which evaluators *become*
-authoritative, and which routes *remain* available, while every actual-run certificate
-is valid. **Non-Capture** is the property that it could not improperly do so.
+process can shape which concerns *become* live, which evaluators *become*
+authoritative, and which routes *remain* available, while every actual-run
+certificate is valid.
 
-**Robust Openness** is coverage strengthened by a **Non-Capture certificate relative
-to a declared intervention class** `J`: the same coverage witness — relevance,
-standing, route adequacy — survives every intervention in `J` while the exterior
-response policy is held fixed. Which interventions are in `J` is, like `Γ`, declared:
-a class of ways the process, or a coalition it belongs to, might have acted on the
-conditions of its own criticism.
+An application declares an **intervention class** `J` — ways the process, or a
+coalition it belongs to, might have acted on the conditions of its own criticism —
+and an **intervention semantics** producing, for each state and concern, the actual
+coverage data and the coverage data under each intervention. The semantics is indexed
+by the accounted state, so it can read the docket, the ports and the accounts, and
+say which carrier holds which occurrence's load.
 
-The theory does not construct this certificate. It **bills** it:
+> **Robust Openness at a state:** covered and open to `P` on the actual branch, and
+> covered and open to `P` under every declared intervention.
 
-> Give us a certificate establishing that the relevant coverage, standing and efficacy
-> properties survive the declared interventions.
+The actual branch is a conjunct by definition. `J` indexes proper interventions only;
+actual standing is not recovered by treating the actual history as a null
+intervention, and the counterfactual-only predicate provably does not contain it.
 
-That is a bill to an external theory of counterfactual or institutional capture, and it
-is deliberate. Non-Capture is a property of a process *and its alternatives*; it
-depends on counterfactual structure outside the trajectory, and no single universal
-counterfactual semantics is forced by the legitimacy theory. What the theory owes in
-return is exactness about what the certificate must establish — the coverage witness,
-the standing relation, the efficacy of the corrective channel — and what follows once it
-does.
+## Over time
 
-## What exists on the counterfactual side
+A legitimate evolution is robustly open at **every** one of its states. Endpoint-only
+openness is refuted by an exact trajectory: open, then a state at which a live concern
+has no adequate route, then restored. Every named form of laundering by temporary
+exclusion — losing the principal's standing for a while, removing every route for a
+while, suppressing settlement or evaluation access where a route runs through it,
+delaying a concern's representation until it no longer matters — is a failure of
+Robust Openness at the affected state. Because coverage and standing are already
+conditional on liveness and applicability, per-state openness is the weakest form the
+coverage vocabulary can express, and it composes under concatenation of legitimate
+segments.
 
-One test case has been run end to end. The published dynamic-reward examples in which
-an agent manipulates the reward it will later be scored against were reproduced in
-exact arithmetic, and a legitimacy criterion evaluated on them: an influence is legitimate when a
-*live covering authority* stood over it and the covering persists counterfactually under
-excising the intervention's ancestry class of influence episodes. Excision reuses the
-record's own rules, with only the settlement declared. On the bare examples the
-criterion licenses nothing — every case is unresolved, because a reward process alone
-carries no record of authority — which is either the right answer about what such
-models omit or a criterion that declines every case anyone asked about; the program is
-split and has recorded the question rather than the answer.
+## The external contract, and one way to pay it
 
-Two lessons from that test carry into the general theory. Laundering runs through the
-*reason* channel, so a criterion that inspects only settlement is vacuous on it. And
-excision is not monotone: removing more of a history can restore a suspended standing
-and with it a later event, because admission is a replay of the record and not a
-lookup.
+The theory **bills** an application for a certified Robust Openness at each state,
+under its declared scope, intervention class, coupling and protected relation. It
+does not choose a counterfactual semantics, prove a coupling causal, or select a
+scope.
 
-## Principal relativity, again
+One sufficient way to discharge the bill is **componentwise persistence**: actual
+coverage inside a protected route set, actual standing, an adequate route for any
+concern that becomes live only counterfactually, and preservation of each protected
+route's admissibility, efficacy and registration capability under every
+intervention. That yields Robust Openness and is strictly stronger than it — a route
+may be replaced rather than preserved. An earlier bill that allowed replacement turned
+out, given actual coverage, to be Robust Openness itself split on whether the concern
+was live at the actual prefix, and is recorded as such rather than presented as a
+certificate.
 
-Answerability's separation condition stops one participant from laundering a debt and
-not two, and the coalition-proof form names a protected principal. Openness inherits
-the same structure: a certificate that coverage survives interventions is a
-certificate *for* a declared principal or relation, whose standing and whose corrective
-channel are what the intervention class is not allowed to erode. Whether a legitimacy
-predicate may name a party is an open ruling; what is settled is that a party-free
-condition quantifying over all coalitions cannot exist.
+## Self-sealing
 
-## Integrity is not Non-Capture
+The obvious attack is to destroy the one route a criticism has and then record the
+coverage obligation as resolved. Every record condition is satisfied. Under the
+per-state condition the attack fails at the state where the concern is live and
+routeless, whatever is recorded afterwards.
 
-> **Integrity:** did the process faithfully preserve and account for what entered it?
->
-> **Non-Capture:** could the process improperly control what was able to enter,
-> challenge, or evaluate it?
+## Principal relativity
 
-The first is internal and largely formal. The second is counterfactual and external.
-Legitimate evolution needs both, and [Legitimacy](Legitimacy) is where they are put
-together.
+A certificate that coverage survives interventions is a certificate *for* a declared
+principal or relation, whose standing and corrective channel the intervention class
+is not allowed to erode. A party-free condition quantifying over all coalitions
+cannot exist. Whether the canonical predicate may name a party is a queued ruling.
 
 ---
 
-**Evidence.** The coverage contract, the interaction interface and the self-sealing
-audit are
-[`COVERAGE_CONTRACTS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-cf-coverage-continuity-interface/COVERAGE_CONTRACTS.md),
-[`INTERACTION_INTERFACE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-cf-coverage-continuity-interface/INTERACTION_INTERFACE.md)
+**Evidence.** The coverage data, Robust Openness on both branches, the persistence
+theorem, the compression of the split bill, and the two separating witnesses are
+[`NonCaptureCertificate.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean),
+registered as `openness.persistence-sufficient`,
+`openness.certplus-is-robust-openness` and `openness.actual-branch-witness`; the
+per-state requirement and the endpoint-only counterexample are
+[`LegitimateEvolution.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/LegitimateEvolution.lean),
+registered as `legitimacy.endpoint-only-insufficient`. The necessity attacks on the
+persistence bill are the non-capture certificate round's
+[`CERTIFICATE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate/CERTIFICATE.md).
+The coverage contract and the self-sealing audit that preceded them are
+[`COVERAGE_CONTRACTS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-cf-coverage-continuity-interface/COVERAGE_CONTRACTS.md)
 and
-[`SELF_SEALING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-cf-coverage-continuity-interface/SELF_SEALING.md).
-The dynamic-reward legitimacy test is
+[`SELF_SEALING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-cf-coverage-continuity-interface/SELF_SEALING.md);
+the one end-to-end counterfactual test remains the dynamic-reward legitimacy test's
 [`CRITERION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/CRITERION.md).
-The principal-relative standing form is
-[`STANDING_REPAIR.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f7489cf5a610927b9e85e33d5d42228cd64da7de/projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/STANDING_REPAIR.md)
-§4.

@@ -2140,7 +2140,7 @@ participants and not against coalitions**: two participants alternating disposal
 satisfy separation at every edge. The item closes when a maintainer either obtains the
 book or rules the paper sufficient, **and** when the coalition hole is closed.
 
-### 78. Canonicalize the legitimacy spine from the consolidation — **[entry]**
+### 78. Canonicalize the legitimacy spine from the consolidation — **[entry]** — *answered 2026-09-08*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -2175,6 +2175,14 @@ names (protected principal; settlement independence).
 *A solution ships:* the rewritten pages and the registry entries; register also
 `LegitimateEvolution.Evolution.conservation`, `LegitimateSegment.answerable`, and
 `NonCapture.Scenario.robustOpenActual_of_persistence`.
+
+*Answered, 2026-09-08*, by `prompts/2026-09-08-canonicalization/`. **Shipped:** the
+seven core wiki pages, the Roadmap's legitimacy section, the Glossary and vocabulary
+rewritten around the pressure pass's theory; sixteen claims registered as *The
+legitimacy spine* in `projects/normativity/CLAIMS.md`, including the three named
+above. **Not registered, deliberately:** the two conditional Normative Inductor
+theorems, until a witness inhabits their joint hypothesis packages — a realization
+item, not a theory item.
 
 ### 79. Convex representability and compiler completeness for a declared requirement class — **[open]**
 

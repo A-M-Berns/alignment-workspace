@@ -48,7 +48,7 @@ coverage for the relevant burdens to recur.
 > for deduction — the original criterion together with finite-date coherence, from
 > a compiled market that assumes nothing about the deductive process beyond the
 > pinned source's own certificate. The
-> <!--state:workspace:counts.registered_claims_by_project.normativity-->27<!--/state-->
+> <!--state:workspace:counts.registered_claims_by_project.normativity-->43<!--/state-->
 > entries in this line's registry each name a Lean declaration and the priority
 > item it answers.
 

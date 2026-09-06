@@ -1,9 +1,8 @@
 # Integrity
 
-**Status: open / unregistered**, with a kernel-checked structural core. The
-components named below have Lean declarations or exact fixtures in the rounds cited
-at the end; no legitimacy claim is registered, and the settlement-integrity hypothesis
-is external by design.
+**Status: canonical; Established `lean-proved`** for the conservation theorem, the
+propagation law, receipt immutability, faithful carry, and the multiplicity witness.
+The protocol's predicates are typed inputs, stated below as such.
 
 ## The role
 
@@ -13,128 +12,149 @@ specification that is easier to meet, mint the authority it needs, or retire the
 vocabulary the obligation was stated in. Every step is locally defensible and the
 obligation is gone.
 
-**Integrity** is the part of the theory that rules this out:
+**Integrity** rules this out:
 
 > A cognitive trajectory cannot falsify or silently rewrite its own normative history.
 
-It is a theory about the relation between a process and its own record. It says
-nothing about whether the record is *good*, whether the right things reached it, or
-whether anyone outside was allowed to challenge it. Those are the other half of
-[legitimate evolution](Legitimacy) — see *Integrity is not Non-Capture* below.
+It is a relation between two *accounted obligation states* of one history. It says
+nothing about whether the record is good, whether the right things reached it, or
+whether anyone outside was allowed to challenge it. Those belong to
+[Robust Openness](Openness-Coverage-and-Non-Capture).
 
-## What a full integrity theory governs
+## The protocol
 
-The full normative history `H` of the [settlement interface](Settlement-Interface) is
-the object. Integrity constrains how entries may enter it and how they may be read.
+Everything Integrity reads is supplied by an application as a **protocol**: a type of
+resolution witnesses for each requirement, a type of settlement items, a type of
+warrants (the rule, licence and interpretation bundle an authority acts under), and
+six predicates over history prefixes — admission of an occurrence with its anchor,
+liveness of a port, a warrant being in force, adequacy of an answer, availability of a
+settlement item through the external boundary, and the internal closure judgment
+that an available item suffices to close a requirement. Two typed facts connect them:
+an adequate answer resolves the requirement, and an available item with a closure
+judgment resolves it.
 
-- **Authenticated births and admissions.** An obligation, ground, licence or
-  standing enters the history at a recorded position, opened by a named participant,
-  under a protocol that was already in force. Nothing enters retroactively.
-- **Immutable anchors.** Each incurred obligation carries an anchored specification
-  fixed at birth. Later presentations point back to the anchor; they do not redefine
-  it.
-- **Provenance and lineage.** Every change in what rules apply is licensed by rules
-  already applicable, and the citation chain terminates in the recorded initial state.
-  Every successor of an obligation names its predecessor; ancestry is
-  prefix-determined and never revised by a later event.
-- **Write permissions.** Who may append which kind of entry is itself part of the
-  history. A participant does not write another's standing, and no participant writes
-  a settlement fact.
-- **Faithful carry under representation change.** When a representation changes and
-  the process asserts that the thing represented did not, the assertion is a
-  certificate anchored to the increment being carried — an interpretation fixed at
-  the increment's birth, not one the current evaluator supplies. The faithful
-  semantic preservation rounds state this as an order embedding on slice-relative
-  quotients that covers in-place mutation; their *no semantic laundering* result says
-  that under it a change of representation cannot lower what is owed.
-- **Replayability.** The current standing state is a function of the history: replay
-  the history and you recompute it. Grounded replay — that every licence, standing and
-  ground cited at a position has an authorization tree reaching back through the
-  record — is a theorem of the unified trace, not a postulate.
-- **Authenticated settlement receipts and terminal discharge.** Only a receipt
-  arriving through the settlement interface, typed as settling the anchored
-  obligation, can make an unanswered obligation cease to be owed. A participant's
-  challenge, verdict or valuation cannot manufacture that event.
+A **resolution witness** is evidence that a requirement has been *legitimately
+accounted for*. An adequate answer yields one; so does a valid closure. The two are
+different fates — `answered` and `closed` — and no theorem identifies them. A
+settlement-backed discharge is not an answer to the underlying question, and the
+theory never says it is.
 
-The proof technology for most of this is the successor and ancestry machinery of the
-normative-continuity specification — fresh successors, time-indexed ancestry, `Live`
-and `Routes` read off the trace. That machinery is how the invariants are *proved*;
-it is not itself the public definition of integrity, and a different realization
-could discharge the same obligations with different bookkeeping.
+Nothing here authenticates a protocol. That the predicates mean what they say is the
+semantic-authentication input, named as such and never derived.
 
-## No self-grounding, as a theorem
+## The accounted obligation state
 
-The sharpest single consequence: **a transition cannot mint its own reasons or its own
-authority.** Under strict pre-state citation, constitutive immutability and
-answerability continuation, no-self-grounding is derived rather than assumed, and the
-laundering attacks the program has catalogued die without any dedicated
-anti-laundering rule. One clause survives as a clause: priority alone does not refuse
-a disposition grounded in the very issue it disposes of, because that issue is in the
-record strictly before its own disposal, so the `not_self` requirement is stated, and
-the kernel-checked pair of witnesses shows it is exactly the one clause standing
-between the system and a self-grounded disposal.
+At a prefix, the state `O` is:
 
-## Settlement integrity is an external hypothesis
+- the **boundary**: the authenticated history prefix, the finite set of **exposed
+  occurrences** — every obligation ever incurred, by immutable identity — and the
+  **live docket**, a finite family of ports each demanding some content;
+- the **anchor** of each occurrence, fixed at admission and never redefined;
+- the **account** of each exposed occurrence: a finite tree whose leaves are exactly
+  the three fates — a live port, an authenticated answer receipt, or an authenticated
+  closure receipt — and whose internal nodes are authenticated **local laws**
+  transforming one requirement into successors.
 
-Everything above is internal: it quantifies over the history and is checkable against
-it. It rests on one assumption it cannot discharge:
+Occurrence identity lives outside the content type. Two occurrences with the same
+anchor have two accounts, and nothing in the theory can identify them; a single
+receipt discharges two occurrences only if a transition explicitly routes both of
+their ports to it. There is no additive or lattice layer over content because
+multiplicity is in the index.
 
-> **Settlement integrity.** The settled view is written only through the privileged
-> interface, the assessed process cannot write, forge, delay or suppress it, and it is
-> monotone.
+Every receipt and every law carries an **authority**: a fresh event at a strict
+prefix, citing only prior grounds, under a warrant in force there. A transition
+cannot cite itself. A closure receipt stores the settlement item, its availability at
+that prefix, and the closure judgment made at that prefix; a later change of rules or
+interpretation cannot alter whether a historical discharge was properly certified,
+because the certificate is data in the account, not a predicate recomputed later.
 
-That hypothesis is stated on the [settlement interface](Settlement-Interface) page,
-and it is where the internal theory hands off to whatever institution actually
-supplies settlement. An integrity theorem is conditional on it, and the theory is
-better for saying so than for pretending a trajectory could certify its own oracle.
+A **local law** carries maps of resolution witnesses in both directions: resolving
+every successor resolves the parent (faithful carry, no loss) and resolving the
+parent resolves each successor (no growth). Carry, split, refinement and
+re-representation are instances; a disposal under the Defeat Principle is the
+identity law with the grounds recorded in its authority. Local laws are unary in the
+parent: a genuine aggregation of two distinct parents into one successor that only
+their joint resolution resolves is not expressible, and is filed as an extension
+rather than adopted.
+
+## Integrity evolution
+
+A **transition** is one fresh event appended to the history that supplies, for every
+live port of the docket it starts from, an account at the docket it produces, and
+admits fresh occurrences only with an admission credential and a live port demanding
+their anchor. There is no field by which content leaves.
+
+An **Integrity evolution** from `O₀` to `O₁` is a chain of transitions in which every
+intermediate state is explicit and every target account is *the propagation* of its
+source account through the transition: substitution at live ports for occurrences
+already exposed, a fresh live account for new ones. The target account is therefore
+a function of the source account and the certificate; there is no freedom to choose
+it, and two witnesses cannot disagree about either endpoint. Evolutions compose at a
+literally shared state. An initial state is one way to construct a first accounted
+state, not a premise the relation needs.
+
+## Answerability Conservation
+
+The theorem, for any Integrity evolution from `O₀` to `O₁`:
+
+- **no occurrence disappears** — the exposure of `O₀` is contained in that of `O₁`,
+  and since occurrences are elements of a finite set, distinct ones stay distinct;
+- **receipts persist** — for every occurrence exposed at `O₀`, the terminal answer and
+  closure receipts of its account at `O₀` are among those at `O₁`;
+- **live content is transported faithfully** — there is a transport of live-port
+  resolutions from `O₁` back to `O₀` under which every account at `O₁` denotes what
+  the account at `O₀` denoted;
+- **anchoring is by type** — each account is an account *of its occurrence's anchor*.
+
+This is the three-fate conservation stated at the level where it is a consequence of
+the type rather than a clause: the only leaves are the three fates, and a transition
+can only substitute at live ones. The lattice-valued content-conservation clause that
+an earlier formulation required is now an instance of this, and the countermodels
+that showed record integrity alone insufficient are the reason the account type has
+the constructors it has.
+
+## What is blocked, and by what
+
+| evasion | what blocks it |
+|---|---|
+| an unchecked "answered" label | an answer leaf needs an adequacy certificate at a strict prefix |
+| self-grounded or unauthorized disposal | every node carries an authority: fresh event, prior grounds, warrant in force |
+| manufactured settlement or closure | a closure leaf needs external availability and the internal judgment, both stored |
+| retroactive recomputation of a closure | the judgment is data in the receipt at its own prefix; substitution carries it unchanged |
+| an empty ledger passing vacuously | an initial state needs an admission credential and a live port per exposed occurrence; there is no empty account |
+| segment witnesses that disagree at a boundary | evolutions are indexed by their states and compose only at a shared one |
+| collapsing two equal-content occurrences | accounts are occurrence-indexed; the witness with one anchor and fates `{answered}`, `{live}` |
+| weakening or making a successor unanswerable | a local law carries both maps |
 
 ## Integrity is not Non-Capture
-
-The two are easy to run together and the program keeps them apart on purpose.
 
 > **Integrity:** did the process faithfully preserve and account for what entered it?
 >
 > **Non-Capture:** could the process improperly control what was *able* to enter,
 > challenge, or evaluate it?
 
-Integrity is a property of one history and is largely formal: a record that satisfies
-it can be replayed and audited from the inside. Non-Capture is a property of the
-process *and its alternatives* — whether a criticism that would have been raised was
-foreclosed, whether an evaluator was shaped by the thing it evaluates — and it
-necessarily depends on counterfactual structure outside the trajectory. A history can
-have perfect integrity while the process that produced it quietly ensured nothing
-awkward was ever admitted. That failure is the subject of
-[Openness, coverage, and non-capture](Openness-Coverage-and-Non-Capture), and the
-theory deliberately bills it to an external certificate rather than pretending
-integrity covers it.
-
-## Where it sits
-
-Integrity is the deeper theory under the history side of
-[Diachronic Answerability](Diachronic-Answerability): answerability's conservation law
-— every incurred obligation is answered, settlement-discharged, or faithfully carried
-live — is only meaningful if the history it is stated over cannot be rewritten. The
-qualitative obligation process that [Normative Induction](Normative-Induction)
-consumes is exported from a history with integrity; without it the export could be
-tuned after the fact.
+A history can have perfect integrity while the process behind it ensured nothing
+awkward was ever admitted, or lost the protected party's standing on a successor
+whose content it preserved exactly. Standing and access are the subject of
+[Openness, coverage, and non-capture](Openness-Coverage-and-Non-Capture); Integrity's
+liveness credential is the record fact that a port is open, not a standing claim.
 
 ---
 
-**Evidence.** Grounded replay, the unified ground type, `Met` as a definition and
-no-self-grounding are in the unified-grounds round —
-[`GROUNDS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat/GROUNDS.md)
-and
-[`THEOREMS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-09-02-unified-grounds-answerable-defeat/THEOREMS.md)
-— with the Lean witnesses in the defeat-landing round's
-[`WITNESS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f7489cf5a610927b9e85e33d5d42228cd64da7de/projects/normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/WITNESS.md).
-Transition certificates and the three principles are the transition-certificates
-round's
-[`MEMO.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-23-transition-certificates/MEMO.md).
-Anchored slices and authenticated transfer are
-[`ANCHORED_SLICES.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/ANCHORED_SLICES.md)
-and
-[`SEMANTIC_AUTHENTICATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-30-anchored-slices-auth-transfer/SEMANTIC_AUTHENTICATION.md);
-faithful carry and no semantic laundering are
-[`NO_SEMANTIC_LAUNDERING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/198a86ae3e8a45737c3229e95718fa5882d06216/projects/normativity/legitimacy/rounds/2026-08-31-faithful-semantic-preservation/NO_SEMANTIC_LAUNDERING.md).
-The Lean spine is
-[`NormativeContinuity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f7489cf5a610927b9e85e33d5d42228cd64da7de/lean/Workspace/Normativity/Contrib/NormativeContinuity.lean).
+**Evidence.** The account, transition and segment types, the propagation law, receipt
+immutability, faithful carry and the multiplicity witness are
+[`OccurrenceIntegrity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/OccurrenceIntegrity.lean);
+the accounted state, the evolution relation and the conservation theorem are
+[`LegitimateEvolution.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/LegitimateEvolution.lean).
+The registered claims are `legitimacy.evolution-conservation`,
+`legitimacy.propagate-to-segment`, `legitimacy.receipts-immutable`,
+`legitimacy.faithful-carry` and `legitimacy.multiplicity-witness` in the
+[normativity claims registry](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/CLAIMS.md).
+The countermodels that fixed the constructor list are the integrity adversary round's
+[`ATTACKS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/ATTACKS.md),
+and the lattice-ledger formulation they were run against, now an instance, is the
+integrity constructive round's
+[`DEFINITIONS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive/DEFINITIONS.md).
+The older successor-and-ancestry trace model on which the Defeat Principle was first
+checked remains as evidence in
+[`NormativeContinuity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/NormativeContinuity.lean).
