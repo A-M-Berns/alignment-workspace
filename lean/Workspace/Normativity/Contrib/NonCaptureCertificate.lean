@@ -27,8 +27,10 @@ produced is the external semantics and is not modelled here.
 * `certPlus_iff_robustOpen` — given actual coverage, `(S) ∧ (R+) ∧ (P)` is logically
   equivalent to `RobustOpen`: the certificate in that form is the conclusion factored by
   a case split, not an independent sufficient condition.  `robustOpen_of_persistence`
-  is the strictly stronger componentwise bill an external capture theory discharges;
-  `persistence_not_necessary` separates the two.
+  is a strictly stronger sufficient bill; `persistence_not_necessary` separates the two.
+* `RobustOpenActual` — the public predicate at a prefix: openness on the actual branch
+  and on every declared counterfactual.  `counterfactual_open_not_actual` shows the
+  counterfactual-only form does not contain the actual condition.
 
 **Not claimed.** Anything about how `cf` is produced; that `rel` is evaluated by the
 anchored predicate (a requirement on the semantics, argued in the round's prose); that
@@ -332,13 +334,44 @@ theorem certPlus_iff_robustOpen (W : R → Bool) (hA : S.CoverageActual W) :
     · intro j
       exact (h j).2
 
-/-- **The substantive bill.**  Actual coverage inside `W`, silent-prefix coverage `(S)`,
+/-- **A sufficient bill.**  Actual coverage inside `W`, silent-prefix coverage `(S)`,
 componentwise persistence of protected routes, and principal standing give Robust
-Openness.  This is the form an external theory of capture discharges. -/
+Openness on the counterfactual branches.  One way an external theory of capture can
+discharge the bill; not the only way (`Witness.persistence_not_necessary`). -/
 theorem robustOpen_of_persistence (W : R → Bool) (hcov : S.CoverageActual W)
     (hS : S.ClauseS) (ha : S.ClauseRa W) (hb : S.ClauseRb W) (hc : S.ClauseRc W)
     (hP : S.ClauseP) : S.RobustOpen :=
   S.robustOpen_of_cert W hcov hS (S.clauseR_of_components W ha hb hc) hP
+
+/-! ### The actual branch
+
+`RobustOpen` quantifies over `J`, which indexes proper interventions; nothing in
+`Scenario` makes the actual prefix one of them.  The public predicate at a prefix is
+therefore the conjunction of openness on the actual branch and on every declared
+counterfactual.  The actual conjunct is what the standing half of Diachronic
+Answerability reads. -/
+
+/-- Openness on the actual prefix: coverage and principal standing. -/
+def ActualOpen : Prop := S.actual.Covered ∧ S.actual.OpenTo
+
+/-- **Robust Openness at a prefix**, public form: the actual branch and every declared
+counterfactual branch. -/
+def RobustOpenActual : Prop := S.ActualOpen ∧ S.RobustOpen
+
+instance [Fintype R] : Decidable S.ActualOpen := by unfold ActualOpen; infer_instance
+instance [Fintype J] [Fintype R] : Decidable S.RobustOpenActual := by
+  unfold RobustOpenActual; infer_instance
+
+/-- Actual coverage inside `W` and actual standing give the actual conjunct. -/
+theorem actualOpen_of_coverage (W : R → Bool) (hcov : S.CoverageActual W)
+    (hP₀ : S.actual.OpenTo) : S.ActualOpen :=
+  ⟨fun hl => let ⟨r, _, har⟩ := hcov hl; ⟨r, har⟩, hP₀⟩
+
+/-- The sufficient bill, including the actual branch's standing. -/
+theorem robustOpenActual_of_persistence (W : R → Bool) (hcov : S.CoverageActual W)
+    (hP₀ : S.actual.OpenTo) (hS : S.ClauseS) (ha : S.ClauseRa W) (hb : S.ClauseRb W)
+    (hc : S.ClauseRc W) (hP : S.ClauseP) : S.RobustOpenActual :=
+  ⟨S.actualOpen_of_coverage W hcov hP₀, S.robustOpen_of_persistence W hcov hS ha hb hc hP⟩
 
 end Scenario
 
@@ -356,6 +389,17 @@ theorem persistence_not_necessary :
     replacedS.RobustOpen ∧ replacedS.CoverageActual W0 ∧ ¬ replacedS.ClauseR W0 := by
   decide
 
+/-- The counterfactual-only predicate does not see the actual prefix: the concern is
+live with no route and the principal has no standing on the actual branch, while the
+one counterfactual is fully open. -/
+def actualClosedS : Scenario (Fin 1) (Fin 1) :=
+  ⟨st true false false false false false false, ![st true false false true true true true]⟩
+
+theorem counterfactual_open_not_actual :
+    actualClosedS.RobustOpen ∧ ¬ actualClosedS.ActualOpen ∧
+    ¬ actualClosedS.RobustOpenActual := by
+  decide
+
 end Witness
 
 end Workspace.Normativity.Contrib.NonCapture
@@ -366,6 +410,8 @@ end Workspace.Normativity.Contrib.NonCapture
 #print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpen_of_certPlus
 #print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.certPlus_iff_robustOpen
 #print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpen_of_persistence
+#print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.actualOpen_of_coverage
+#print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpenActual_of_persistence
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.nonvacuity
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.attackS_activate
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.attackS_derepresent
@@ -375,3 +421,4 @@ end Workspace.Normativity.Contrib.NonCapture
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.attackP
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.offAdequate
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.persistence_not_necessary
+#print axioms Workspace.Normativity.Contrib.NonCapture.Witness.counterfactual_open_not_actual

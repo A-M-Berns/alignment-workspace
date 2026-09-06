@@ -2166,9 +2166,15 @@ map names as canonical, against this item.
 *Acceptance check:* `python3 -m checkers.run`, `python3 -m checkers.wiki_links` and
 `python3 -m checkers.wiki_state_bindings` pass; `python3 tests/run.py` green.
 
-*Context:* the consolidation round's `CONSOLIDATION.md` and `THEOREMS.md`; the two
-`DECISIONS.md` queue entries it names (protected principal; settlement independence).
-*A solution ships:* the rewritten pages and the registry entries.
+*Context:* the consolidation round's `CONSOLIDATION.md` and `THEOREMS.md`, as amended
+by the final pressure pass's
+`projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md`
+(accounted state, evolution relation, per-state openness, `RobustOpenActual`,
+`Resolution`, unary local laws); the two `DECISIONS.md` queue entries the consolidation
+names (protected principal; settlement independence).
+*A solution ships:* the rewritten pages and the registry entries; register also
+`LegitimateEvolution.Evolution.conservation`, `LegitimateSegment.answerable`, and
+`NonCapture.Scenario.robustOpenActual_of_persistence`.
 
 ### 79. Convex representability and compiler completeness for a declared requirement class — **[open]**
 
@@ -2234,6 +2240,31 @@ witness of each outcome.
 *Context:* `CONSOLIDATION.md` §9.4 of the mathematical-consolidation round; the
 practical-certificate round's `JOINT_COMPATIBILITY.md`.
 *A solution ships:* the adapter, its theorem, and the class it covers.
+
+### 82. Aggregation laws with several parents — **[entry]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+`OccurrenceIntegrity.LocalLaw` transforms one requirement into successors with maps
+of resolution witnesses in both directions. A genuine aggregation `(r₁, r₂) ↦ c` —
+one successor resolved only by resolving both parents jointly — is not expressible:
+each parent would need its own law, and the no-growth map of each demands that the
+parent alone resolves `c`. No landed theorem or application needs aggregation; it is
+filed so that the limitation is a recorded boundary rather than a discovered one.
+
+Settle whether an application needs it. If so, add a law with a finite family of
+parents, a joint no-growth map from the parents' witnesses to the successor's, and a
+faithful-carry map back to each parent, and re-prove `Program.evaluate_subst`,
+`terminals_subst` and `livePorts_subst` for accounts that share such a node across
+occurrences.
+
+*Deliverable shape:* the extended law and the three re-proved lemmas, with a witness
+in which two occurrences are jointly closed by one successor and neither alone.
+*Acceptance check:* the module audits clean and `python3 tests/run.py` is green.
+
+*Context:* `READINESS.md` §1 of the final pressure pass;
+`OccurrenceIntegrity.lean`, the `LocalLaw` docstring.
+*A solution ships:* the extension, or a statement that no application needs it.
 
 ## Workspace friction
 

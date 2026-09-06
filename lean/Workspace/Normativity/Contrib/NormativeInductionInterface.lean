@@ -1,10 +1,11 @@
 /-
 # The Progress interface and the conditional Normative Inductor theorem
 
-Round `projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/`.
+Rounds `2026-09-06-mathematical-consolidation` and `2026-09-07-final-pressure-pass`.
 
-The evaluation consumes exactly two fields of the Integrity export: the finite set of
-exposed occurrences and their anchors.  The Progress statistic is the transport-weighted
+The evaluation is indexed by the accounted obligation state `O : ObligationState S anchor`
+— the qualitative export of a legitimate evolution — and reads two of its fields: the
+finite set of exposed occurrences and their anchors.  It does not inspect the account.  The Progress statistic is the transport-weighted
 edge response loss plus the residual charge,
 
     progress = Σ_{e,s} T(e,s) · Λ_{anchor e, s}(Π_s) + D · (1 − Σ_{e,s} T(e,s)),
@@ -33,7 +34,7 @@ semantic premise; those are how a realization *produces* the hypotheses named he
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
-import Workspace.Normativity.Contrib.OccurrenceIntegrity
+import Workspace.Normativity.Contrib.LegitimateEvolution
 import Workspace.Normativity.Contrib.NormativeInductorComposition
 
 noncomputable section
@@ -44,24 +45,24 @@ open LogicalInduction
 open Workspace.Normativity.Contrib.AssessmentProcess
 open Workspace.Normativity.Contrib.EnforcementPreservation
 open Workspace.Normativity.Contrib.NormativeInductorComposition
-open Workspace.Normativity.Contrib.OccurrenceIntegrity (Boundary)
+open Workspace.Normativity.Contrib.OccurrenceIntegrity (Protocol)
+open Workspace.Normativity.Contrib.LegitimateEvolution (ObligationState)
 
-variable {Occ Req Service : Type*}
+variable {Occ Req Service : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
 
 /-! ## 1. The declared evaluation -/
 
-/-- A declared finite evaluation of the qualitative export.  `Pi` selects the one
+/-- A declared finite evaluation of the qualitative export `O`.  `Pi` selects the one
 response realized at each service from the market history; `loss` is the anchored loss
 functional on responses.  `μ`, `T`, `D` and the constants are the evaluation protocol's
 predeclared data. -/
-structure Evaluation (boundary : Boundary Occ Req) (anchor : Occ → Req)
-    (Service : Type*) where
+structure Evaluation (O : ObligationState S anchor) (Service : Type*) where
   services : Finset Service
   μ : Occ → ℝ
-  μ_prob : ∑ e ∈ boundary.exposed, μ e = 1
+  μ_prob : ∑ e ∈ O.boundary.exposed, μ e = 1
   T : Occ → Service → ℝ
-  T_nonneg : ∀ e ∈ boundary.exposed, ∀ s ∈ services, 0 ≤ T e s
-  T_row : ∀ e ∈ boundary.exposed, ∑ s ∈ services, T e s ≤ μ e
+  T_nonneg : ∀ e ∈ O.boundary.exposed, ∀ s ∈ services, 0 ≤ T e s
+  T_row : ∀ e ∈ O.boundary.exposed, ∑ s ∈ services, T e s ≤ μ e
   Response : Service → Type
   Pi : (s : Service) → History → Response s
   loss : Req → (s : Service) → Response s → ℝ
@@ -75,23 +76,23 @@ structure Evaluation (boundary : Boundary Occ Req) (anchor : Occ → Req)
 
 namespace Evaluation
 
-variable {boundary : Boundary Occ Req} {anchor : Occ → Req}
-variable (E : Evaluation boundary anchor Service)
+variable {O : ObligationState S anchor}
+variable (E : Evaluation O Service)
 
 /-- The anchored loss of the one realized response at `s`, scored for exposure `e`. -/
 def edgeLoss (market : History) (e : Occ) (s : Service) : ℝ :=
   E.loss (anchor e) s (E.Pi s market)
 
 /-- The unserved evaluation mass. -/
-def residual : ℝ := 1 - ∑ e ∈ boundary.exposed, ∑ s ∈ E.services, E.T e s
+def residual : ℝ := 1 - ∑ e ∈ O.boundary.exposed, ∑ s ∈ E.services, E.T e s
 
 /-- **The Progress statistic.** -/
 def progress (market : History) : ℝ :=
-  (∑ e ∈ boundary.exposed, ∑ s ∈ E.services, E.T e s * E.edgeLoss market e s) +
+  (∑ e ∈ O.boundary.exposed, ∑ s ∈ E.services, E.T e s * E.edgeLoss market e s) +
     E.D * E.residual
 
 /-- The transport-weighted semantic/decision error. -/
-def error : ℝ := ∑ e ∈ boundary.exposed, ∑ s ∈ E.services, E.T e s * E.ε e s
+def error : ℝ := ∑ e ∈ O.boundary.exposed, ∑ s ∈ E.services, E.T e s * E.ε e s
 
 /-- **`PracticalCert`.**  The edge-local public certificate, at the realized market. -/
 def PracticalCert (market : History) (e : Occ) (s : Service) : Prop :=
@@ -102,22 +103,22 @@ realizes: nonnegative public defect, `PracticalCert` on every supported edge aga
 the same `Π_s`, the uptake bound, and the amplification bound. -/
 structure PracticalUptake (market : History) : Prop where
   defect_nonneg : ∀ s ∈ E.services, 0 ≤ E.defect s market
-  practical : ∀ e ∈ boundary.exposed, ∀ s ∈ E.services,
+  practical : ∀ e ∈ O.boundary.exposed, ∀ s ∈ E.services,
     0 < E.T e s → E.PracticalCert market e s
   lam_nonneg : ∀ s ∈ E.services, 0 ≤ E.lam s
   lam_pos : 0 < ∑ s ∈ E.services, E.lam s
   work : ∀ s ∈ E.services, E.lam s * E.defect s market ^ 2 ≤ E.ρ s
   Γ_nonneg : 0 ≤ E.Γ
-  amplification : ∀ s ∈ E.services, ∑ e ∈ boundary.exposed, E.T e s * E.M e s ≤
+  amplification : ∀ s ∈ E.services, ∑ e ∈ O.boundary.exposed, E.T e s * E.M e s ≤
     E.Γ * (E.lam s / ∑ t ∈ E.services, E.lam t)
 
 /-- The residual is a mass in `[0, 1]`. -/
 theorem residual_bounds : 0 ≤ E.residual ∧ E.residual ≤ 1 := by
-  have hmass : (∑ e ∈ boundary.exposed, ∑ s ∈ E.services, E.T e s) ≤ 1 := by
+  have hmass : (∑ e ∈ O.boundary.exposed, ∑ s ∈ E.services, E.T e s) ≤ 1 := by
     calc
-      _ ≤ ∑ e ∈ boundary.exposed, E.μ e := Finset.sum_le_sum E.T_row
+      _ ≤ ∑ e ∈ O.boundary.exposed, E.μ e := Finset.sum_le_sum E.T_row
       _ = 1 := E.μ_prob
-  have hnonneg : 0 ≤ ∑ e ∈ boundary.exposed, ∑ s ∈ E.services, E.T e s :=
+  have hnonneg : 0 ≤ ∑ e ∈ O.boundary.exposed, ∑ s ∈ E.services, E.T e s :=
     Finset.sum_nonneg fun e he => Finset.sum_nonneg fun s hs => E.T_nonneg e he s hs
   unfold residual
   constructor <;> linarith
@@ -129,7 +130,7 @@ def modulus : ℝ :=
 /-- **The Progress theorem at the occurrence-indexed export.** -/
 theorem progress_bound (market : History) (C : E.PracticalUptake market) :
     E.progress market ≤ E.modulus + E.error + E.D * E.residual :=
-  edge_progress_bound_quadratic boundary.exposed E.services E.T (E.edgeLoss market)
+  edge_progress_bound_quadratic O.boundary.exposed E.services E.T (E.edgeLoss market)
     E.M E.ε (fun s => E.defect s market) E.lam E.ρ E.Γ E.D E.T_nonneg
     C.defect_nonneg C.practical C.lam_nonneg C.lam_pos C.work C.Γ_nonneg C.amplification
 
@@ -175,7 +176,7 @@ noncomputable def compiledTarget (CS : CompiledSchedule Q) (DP : DeductiveProces
 at most the sup-distance to any point of it; this is the only property of `defect`
 the composition needs, stated as an interface condition on the evaluation. -/
 def DefectDominated (CS : CompiledSchedule Q) (DP : DeductiveProcess)
-    (E : Evaluation boundary anchor ℕ) : Prop :=
+    (E : Evaluation O ℕ) : Prop :=
   ∀ s ∈ E.services, ∀ b : History,
     (∀ φ ∈ (CS.toSchedule.fragment s).toFinset,
       |b s φ - compiledTarget CS DP s φ| ≤ ((CS s).tol : ℝ)) →
@@ -186,20 +187,20 @@ effective end-to-end theorem supplies ordinary Logical Induction and finite-time
 conformance; conformance and defect domination supply the uptake certificate; the edge
 practical certificates and the amplification bound supply the rest.  The hypotheses
 `hC`, `process`, `hadm` are exactly those of the registered theorem. -/
-theorem deductive_normative_inductor (E : Evaluation boundary anchor ℕ)
+theorem deductive_normative_inductor (E : Evaluation O ℕ)
     (CS : CompiledSchedule Q) (hC : CS.toSchedule.Computation)
     {DP : DeductiveProcess} (process : DeductiveProcessComputation DP)
     (hadm : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) →
       (CS n).bundle.RegionR (fun i => restrict (CS.toSchedule.fragment n) v.payout i))
     (hdom : DefectDominated CS DP E)
     (defect_nonneg : ∀ s ∈ E.services, 0 ≤ E.defect s (compiledMarket CS DP))
-    (practical : ∀ e ∈ boundary.exposed, ∀ s ∈ E.services,
+    (practical : ∀ e ∈ O.boundary.exposed, ∀ s ∈ E.services,
       0 < E.T e s → E.PracticalCert (compiledMarket CS DP) e s)
     (lam_nonneg : ∀ s ∈ E.services, 0 ≤ E.lam s)
     (lam_pos : 0 < ∑ s ∈ E.services, E.lam s)
     (budget : ∀ s ∈ E.services, E.lam s * ((CS s).tol : ℝ) ^ 2 ≤ E.ρ s)
     (Γ_nonneg : 0 ≤ E.Γ)
-    (amplification : ∀ s ∈ E.services, ∑ e ∈ boundary.exposed, E.T e s * E.M e s ≤
+    (amplification : ∀ s ∈ E.services, ∑ e ∈ O.boundary.exposed, E.T e s * E.M e s ≤
       E.Γ * (E.lam s / ∑ t ∈ E.services, E.lam t)) :
     IsLogicalInductor (compiledMarket CS DP) DP ∧
     (0 ≤ E.residual ∧ E.residual ≤ 1) ∧
@@ -227,18 +228,19 @@ end Evaluation
 
 /-! ## 4. Nonvacuity of the certificate
 
-Two occurrences sharing one anchor (the Integrity witness boundary), one service, a
-constant response.  Every field of `PracticalUptake` is inhabited and all three terms of
-the bound are positive. -/
+Two occurrences sharing one anchor, at the accounted state after the Integrity witness
+step (one answered, one live), one service, a constant response.  Every field of
+`PracticalUptake` is inhabited and all three terms of the bound are positive. -/
 
 namespace Witness
 
-open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness (finish anchor)
+open Workspace.Normativity.Contrib.LegitimateEvolution.Witness (state₁)
+open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness (finish)
 
-def evaluation : Evaluation finish anchor Unit where
+def evaluation : Evaluation state₁ Unit where
   services := {()}
   μ _ := 1 / 2
-  μ_prob := by norm_num [finish]
+  μ_prob := by norm_num [state₁, finish]
   T _ _ := 1 / 4
   T_nonneg := by intros; norm_num
   T_row := by intros; simp; norm_num
@@ -265,7 +267,7 @@ theorem uptake : evaluation.PracticalUptake market where
   lam_pos := by norm_num [evaluation]
   work := by intros; norm_num [evaluation]
   Γ_nonneg := by norm_num [evaluation]
-  amplification := by intros; simp [evaluation, finish]; norm_num
+  amplification := by intros; simp [evaluation, state₁, finish]; norm_num
 
 /-- The bound holds at the witness, and each of its three terms is positive. -/
 theorem bound :
@@ -274,8 +276,8 @@ theorem bound :
     0 < evaluation.modulus ∧ 0 < evaluation.error ∧ 0 < evaluation.D * evaluation.residual := by
   refine ⟨evaluation.progress_bound market uptake, ?_, ?_, ?_⟩
   · simp [Evaluation.modulus, evaluation]
-  · simp [Evaluation.error, evaluation, finish]
-  · simp [Evaluation.residual, evaluation, finish]; norm_num
+  · simp [Evaluation.error, evaluation, state₁, finish]
+  · simp [Evaluation.residual, evaluation, state₁, finish]; norm_num
 
 end Witness
 

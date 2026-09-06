@@ -9,18 +9,27 @@ occurrences with equal anchors have two accounts, and nothing in this module can
 identify them.  An account is a finite tree whose leaves are exactly the three fates —
 a live port of the current docket, an authenticated answer receipt, or an
 authenticated closure receipt — and whose internal nodes are authenticated local
-transformations of content (carry, split, merge, re-representation), each carrying
-maps of anchored evidence in both directions.
+transformations of one requirement into successors (carry, split, refinement,
+re-representation), each carrying maps of resolution witnesses in both directions.
+Many-to-one aggregation of distinct parents into one successor is not a `LocalLaw`;
+see the note at `LocalLaw`.
+
+A **resolution witness** (`Protocol.Resolution r`) is evidence that `r` has been
+legitimately accounted for.  An adequate answer supplies one and so does a valid
+closure; the two are different fates (`Fate.answered`, `Fate.closed`) and nothing here
+identifies them.  In particular no theorem below says a closed requirement was
+answered.
 
 **The theorem.**  A transition (`Step`) is a single fresh event that supplies, for
 every live port of the docket it starts from, an account at the docket it produces,
 and admits fresh occurrences only with an admission credential.  Then
 `Segment.complete_accounting`: authenticated initial exposure plus a segment of such
 transitions yields an account for every occurrence exposed at the end.  The two
-structural facts behind it: `Program.evaluate_subst` (the anchored evidence an account
+structural facts behind it: `Program.evaluate_subst` (the resolution witness an account
 denotes is preserved through substitution, so carry is faithful by construction) and
 `Program.terminals_subst` / `Program.livePorts_subst` (a step never rewrites a
-recorded receipt and replaces exactly the live leaves).
+recorded receipt and replaces exactly the live leaves).  The accounted state, the
+evolution relation between states, and legitimacy are in `LegitimateEvolution`.
 
 **What this does not establish.**  The protocol's predicates — `Admitted`, `Live`,
 `Authorized`, `AnswerOK`, `SetView`, `Closes` — and the evidence maps of a `LocalLaw`
@@ -54,8 +63,9 @@ structure Boundary (Occ : Type u) (Req : Type v) where
 /-- The application's fixed interpretation.  Every field is an external verification
 relation; the theorems below compose them and do not establish them. -/
 structure Protocol (Occ : Type u) (Req : Type v) where
-  /-- Anchored answer evidence for a requirement: what adequately answers it. -/
-  Evidence : Req → Type w
+  /-- A resolution witness for a requirement: evidence that it has been legitimately
+  accounted for, by an adequate answer or by a valid closure. -/
+  Resolution : Req → Type w
   /-- Externally supplied settlement items. -/
   Settlement : Type w
   /-- The immutable rule/licence/interpretation bundle an authority acts under. -/
@@ -73,8 +83,11 @@ structure Protocol (Occ : Type u) (Req : Type v) where
   /-- Internal closure judgment: under the warrant in force at the prefix, the
   settlement item suffices to close the requirement. -/
   Closes : List Nat → Req → Settlement → Warrant → Prop
-  answer_sound : ∀ h r w, AnswerOK h r w → Evidence r
-  closure_sound : ∀ h r s w, SetView h s → Closes h r s w → Evidence r
+  /-- An adequate answer resolves the requirement. -/
+  answer_resolves : ∀ h r w, AnswerOK h r w → Resolution r
+  /-- An available settlement item with a closure judgment resolves the requirement.
+  It does not answer it: the fate recorded is `closed`, not `answered`. -/
+  closure_resolves : ∀ h r s w, SetView h s → Closes h r s w → Resolution r
 
 variable {Occ : Type u} {Req : Type v} (S : Protocol.{u, v, w} Occ Req)
 
@@ -102,15 +115,22 @@ structure ClosureReceipt (r : Req) extends Authority S where
   available : S.SetView atHistory settlement
   closes : S.Closes atHistory r settlement warrant
 
-/-- An authenticated local transformation of content into `arity + 1` successors.
-`ofChildren` is faithful carry (the successors jointly still owe the parent);
-`toChildren` is no growth (they jointly owe no more).  Carry, split, merge and
-re-representation are all instances; a disposal successor is an identity carry. -/
+/-- An authenticated local transformation of one requirement into `arity + 1`
+successors.  `ofChildren` is faithful carry (resolving every successor resolves the
+parent); `toChildren` is no growth (resolving the parent resolves each successor).
+Carry, split, refinement and re-representation are instances; a disposal successor
+is an identity carry with the grounds in its `Authority`.
+
+This is unary in the parent.  Two occurrences may route to one shared port, but each
+does so by its own law, so `toChildren` demands that each parent alone resolves the
+shared successor.  A genuine aggregation `(r₁, r₂) ↦ c` whose successor is resolved
+only by resolving both parents is not expressible here; it would need a law with
+several parents and a joint no-growth map, and is left as an extension. -/
 structure LocalLaw (r : Req) extends Authority S where
   arity : Nat
   child : Fin (arity + 1) → Req
-  toChildren : S.Evidence r → (i : Fin (arity + 1)) → S.Evidence (child i)
-  ofChildren : ((i : Fin (arity + 1)) → S.Evidence (child i)) → S.Evidence r
+  toChildren : S.Resolution r → (i : Fin (arity + 1)) → S.Resolution (child i)
+  ofChildren : ((i : Fin (arity + 1)) → S.Resolution (child i)) → S.Resolution r
 
 /-- A terminal fate, as immutable data. -/
 inductive Leaf (S : Protocol.{u, v, w} Occ Req) : Type (max v w)
@@ -143,15 +163,15 @@ namespace Program
 
 variable {S} {A B : Boundary Occ Req} {r : Req}
 
-/-- What the account denotes, given evidence for every live port: answers and closures
-supply their own evidence; a local law reassembles its successors' evidence. -/
+/-- The resolution witness an account denotes, given one for every live port: answer
+and closure leaves supply their own; a local law reassembles its successors'. -/
 def evaluate {r : Req} (t : Program S B r)
-    (liveEvidence : (p : Fin B.portCount) → S.Evidence (B.demand p)) : S.Evidence r :=
+    (live : (p : Fin B.portCount) → S.Resolution (B.demand p)) : S.Resolution r :=
   match t with
-  | .live p hp _ => hp ▸ liveEvidence p
-  | .answer a _ => S.answer_sound _ _ _ a.adequate
-  | .close c _ => S.closure_sound _ _ _ _ c.available c.closes
-  | .combine law _ children => law.ofChildren fun i => evaluate (children i) liveEvidence
+  | .live p hp _ => hp ▸ live p
+  | .answer a _ => S.answer_resolves _ _ _ a.adequate
+  | .close c _ => S.closure_resolves _ _ _ _ c.available c.closes
+  | .combine law _ children => law.ofChildren fun i => evaluate (children i) live
 
 /-- Simultaneous substitution of an account at `B` for every live port of `A`.  Terminal
 receipts and local laws are carried unchanged; only their history witness extends. -/
@@ -170,7 +190,7 @@ the original, with each live port read through its replacement. -/
 theorem evaluate_subst (hab : A.history <+: B.history)
     (replacement : (p : Fin A.portCount) → Program S B (A.demand p))
     (t : Program S A r)
-    (values : (p : Fin B.portCount) → S.Evidence (B.demand p)) :
+    (values : (p : Fin B.portCount) → S.Resolution (B.demand p)) :
     (t.subst hab replacement).evaluate values =
       t.evaluate fun p => (replacement p).evaluate values := by
   induction t with
@@ -382,23 +402,25 @@ theorem exposure_mono {A B : Boundary Occ Req} (segment : Segment S anchor A B) 
   | refl => exact fun _ h => h
   | cons step tail ih => exact fun _ h => ih (step.exposures h)
 
-/-- Its account at the end of a segment denotes evidence for an occurrence's own anchor,
-given evidence for the live ports at the end.  This is the typed form of "on the terms
-the obligation was incurred". -/
+/-- Its account at the end of a segment denotes a resolution witness for an
+occurrence's own anchor, given witnesses for the live ports at the end.  This is the
+typed form of "on the terms the obligation was incurred". -/
 def denote {A B : Boundary Occ Req} (segment : Segment S anchor A B)
     (initial : Initial S anchor A)
-    (values : (p : Fin B.portCount) → S.Evidence (B.demand p))
-    (o : Occ) (ho : o ∈ B.exposed) : S.Evidence (anchor o) :=
+    (values : (p : Fin B.portCount) → S.Resolution (B.demand p))
+    (o : Occ) (ho : o ∈ B.exposed) : S.Resolution (anchor o) :=
   (segment.complete_accounting initial o ho).evaluate values
 
 end Segment
 
 omit [DecidableEq Occ] in
-/-- A local law never manufactures an unanswerable successor from an answerable
-parent, nor an answerable parent from unanswerable successors. -/
+/-- A local law never manufactures an unresolvable successor from a resolvable
+parent, nor a resolvable parent from unresolvable successors. -/
 theorem LocalLaw.feasibility {r : Req} (law : LocalLaw S r) :
-    (Nonempty (S.Evidence r) → Nonempty ((i : Fin (law.arity + 1)) → S.Evidence (law.child i))) ∧
-    (Nonempty ((i : Fin (law.arity + 1)) → S.Evidence (law.child i)) → Nonempty (S.Evidence r)) :=
+    (Nonempty (S.Resolution r) →
+      Nonempty ((i : Fin (law.arity + 1)) → S.Resolution (law.child i))) ∧
+    (Nonempty ((i : Fin (law.arity + 1)) → S.Resolution (law.child i)) →
+      Nonempty (S.Resolution r)) :=
   ⟨fun h => h.map law.toChildren, fun h => h.map law.ofChildren⟩
 
 /-! ## 5. Nonvacuity: two occurrences, one anchor, two fates
@@ -412,7 +434,7 @@ namespace Witness
 
 /-- The trivial protocol: everything is authenticated. -/
 def protocol : Protocol.{0, 0, 0} (Fin 2) Unit where
-  Evidence _ := Unit
+  Resolution _ := Unit
   Settlement := Unit
   Warrant := Unit
   Admitted _ _ _ := True
@@ -421,8 +443,8 @@ def protocol : Protocol.{0, 0, 0} (Fin 2) Unit where
   AnswerOK _ _ _ := True
   SetView _ _ := True
   Closes _ _ _ _ := True
-  answer_sound _ _ _ _ := ()
-  closure_sound _ _ _ _ _ _ := ()
+  answer_resolves _ _ _ _ := ()
+  closure_resolves _ _ _ _ _ _ := ()
 
 def anchor : Fin 2 → Unit := fun _ => ()
 

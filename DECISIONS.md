@@ -134,6 +134,71 @@ commit.
 
 ## Settled
 
+### 2026-09-07 — the public obligation state is the accounted state, and Integrity is an evolution of it
+
+**agent-decided, reversible.** The object a consumer reads is
+`ObligationState = (boundary, account)`: the account — one proof-relevant program per
+exposed occurrence — is state, not a certificate, because it is the status and
+lineage the export carries and two states on one boundary with different accounts
+are different states. Integrity between states is `Evolution O₀ O₁`: a chain of
+transitions in which every intermediate state is explicit and every target account is
+the propagation of its source, so the target is determined and witnesses cannot
+disagree about either endpoint. `Initial` is one constructor of a first state.
+Answerability Conservation is the theorem `Evolution.conservation`: exposure grows,
+receipts persist, denotations are transported.
+*Rejected alternative:* an existential `Segment` relation between boundaries, which
+loses the account and lets witnesses disagree about it.
+
+### 2026-09-07 — Robust Openness is required at every state of a legitimate evolution
+
+**agent-decided, reversible.** `LegitimateSegment` requires `RobustOpenActual` for
+every declared concern at every state of the underlying evolution, endpoints included.
+Endpoint-only openness accepts the trajectory open → live concern with no route →
+restored (`LegitimateEvolution.Witness.endpoint_only_insufficient`), which is exactly
+temporary exclusion laundered by later restoration. Per-state is the weakest form
+expressible here: every state is adjacent to a transition, and coverage and standing
+are already conditional on liveness and applicability, so nothing is demanded of a
+concern while it is inapplicable or represented. The relation composes at a shared
+state and is reflexive at open states.
+*Rejected alternative:* openness at the endpoints only, as the consolidation round
+proposed.
+
+### 2026-09-07 — Robust Openness at a prefix includes the actual branch by definition
+
+**agent-decided, reversible.** `Scenario.RobustOpenActual := ActualOpen ∧ RobustOpen`,
+with `J` indexing proper interventions only. The consolidation round read the actual
+standing condition off `(P)` "at the null intervention", but `Scenario` never required
+any `j` to equal the actual state, and `counterfactual_open_not_actual` shows the
+counterfactual-only predicate does not contain it. The external Non-Capture contract
+is a certified `RobustOpenActual` at each prefix under a declared semantics;
+componentwise persistence is one sufficient way to produce it, not the contract.
+*Rejected alternative:* a distinguished `null : J` with `cf null = actual`, which puts
+an element into every application's intervention index and makes the identity a proof
+obligation of the semantics.
+
+### 2026-09-07 — closure yields a resolution witness, not answer evidence
+
+**agent-decided, reversible.** `Protocol.Evidence` is renamed `Resolution`: a witness
+that a requirement has been legitimately accounted for, supplied by an adequate answer
+(`answer_resolves`) or by a valid closure (`closure_resolves`). The fates `answered`
+and `closed` remain distinct in every account; no theorem says a closed requirement
+was answered. A single type suffices because nothing downstream distinguishes the two
+witnesses, while the old name made a closure receipt produce answer evidence.
+*Rejected alternative:* separate answer- and closure-evidence types, which nothing
+consumes.
+
+### 2026-09-07 — local laws are unary in the parent; aggregation is a deferred extension
+
+**agent-decided, reversible.** `LocalLaw` transforms one requirement into successors
+and expresses carry, split, refinement and re-representation. It does not express a
+genuine aggregation `(r₁, r₂) ↦ c` whose successor is resolved only by resolving both
+parents: two occurrences may route to one shared port, but each by its own law, and
+the no-growth map then demands that each parent alone resolves the shared successor.
+The consolidation round's "merge" is withdrawn from the claim; a law with several
+parents and a joint no-growth map is filed as an extension (`PRIORITIES.md` item 82),
+not adopted, because no theorem or application requires it.
+*Rejected alternative:* generalising the account to hypergraphs now.
+
 ### 2026-09-06 — Progress is the transport-weighted edge loss plus residual
 
 **agent-decided, reversible.** The canonical Progress statistic is
