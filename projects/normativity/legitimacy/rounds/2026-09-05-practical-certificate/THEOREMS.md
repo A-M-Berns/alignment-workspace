@@ -15,6 +15,8 @@ Every label is one of the dispatch's allowed evidence classes.
 | PC-P7 | Sharing displayed value coordinates forces two authenticated scalar values to disagree by at most the sum of their calibration radii. | **lean-proved** | `shared_coordinates_bound_disagreement`; scalar-coordinate route only. |
 | PC-P8 | Regret dominance for a zero-regret response of anchored loss `D` forces `epsilon_resp>=D`. | **lean-proved** | `regret_dominance_vacuous_on_forbidden_optimum`. |
 | PC-P9 | Two adequate-set failure-mass bounds imply intersection mass at least `1-theta_1-theta_2`. | **lean-proved** | `union_bound_two`; necessary condition only. |
+| PC-P10 | Headline exposure loss is bounded by transported edge-response loss plus `D` times unmatched mass. | **lean-proved** | `headline_loss_from_edge_losses`; requires row subtransport, `0<=ell(e)<=D`, and `ell(e)<=Lambda_es(Pi_s)` on every positive edge. |
+| PC-D3 | `HeadlineToEdgeDominance`: `T(e,s)>0` implies `ell(e)<=Lambda_es(Pi_s)`. | **proposed definition/interface** | Evaluation/transport adapter, not part of `PracticalCert`; equality is unnecessary. |
 | PC-W1 | Adequate-set constants `(0,1/2)` certify the half mixture for `e1`. | **exact-witness** | Python and `adequate_set_route_inhabited`. |
 | PC-W2 | Two exposures may occupy one feasible `K_s` while no common response has loss below `1/2` on both. | **exact-witness** | Exact Farkas inequality; Lean sum-loss lower bound and attained half mixture. |
 | PC-W3 | A common randomized response may meet tolerance `1/2` when no deterministic response does. | **exact-witness** | Three-response fixture. |
@@ -23,6 +25,7 @@ Every label is one of the dispatch's allowed evidence classes.
 | PC-W6 | Membership `v* in V` is not used by directed calibration algebra. | **exact-witness** | `V=[2/5,3/5]`, `v*=7/10`, `zeta=3/10`; no authentication conclusion. |
 | PC-W7 | Charging separately certifiable edges to one non-common response makes the column Progress inequality false. | **exact-witness** | Realized `1/2`, claimed `0`; `honest_column` rejects the edge. |
 | PC-W8 | Omitting off-set coupling, bounded off-set loss, or adequate-set loss control destroys the adequate-set conclusion. | **exact-witness** | Exact rational necessity tests. |
+| PC-W9 | Residual accounting bridges headline and edge losses when only the zero-loss exposure is transported. | **lean-proved** | `headline_loss_from_edge_losses_inhabited`; two exposures, one service, residual `1/2`. |
 | PC-A1 | Anchoring and causal/evaluation validity of `Lambda_es`. | **ambient assumption** | Practical semantics owner; not established by the inequality. |
 | PC-A2 | Pre-response authenticity of the response receipt and constants. | **ambient assumption** | Required to prevent post-selection/relabeling. |
 | PC-O1 | A complete certificate calculus for infinite or history-dependent response spaces. | **open** | Would require ecology-specific measurability and causal semantics. |
