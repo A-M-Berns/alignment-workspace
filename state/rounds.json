@@ -1213,6 +1213,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-05-integrity-synthesis/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-06-mathematical-consolidation",
+      "date": "2026-09-06",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation",
+      "verdict": "READY-FOR-FULL-CANONICALIZATION — Integrity is a boundary-indexed segment of authenticated per-port accounts whose type carries the three-fate conservation; Robust Openness is the definition and the PR85 bill is its case split; Legitimacy is their product with Diachronic Answerability derived; Progress is the transport-weighted edge loss plus residual; the Normative Inductor is two conditional theorems whose every hypothesis is consumed.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/README.md",
+      "depends_on": ["2026-09-05-integrity-synthesis", "2026-09-05-integrity-constructive", "2026-09-05-integrity-adversary", "2026-09-05-noncapture-certificate", "2026-09-05-practical-certificate", "2026-09-05-ni-gap-audit", "2026-09-04-normative-inductor-realization", "2026-09-03-defeat-landing-horty-standing"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-06-mathematical-consolidation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

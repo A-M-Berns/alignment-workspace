@@ -24,6 +24,11 @@ produced is the external semantics and is not modelled here.
   `attackRa`, `attackRb`, `attackRc`, `attackP`.
 * `nonvacuity` — a scenario inhabiting every hypothesis of the interface theorem with a
   non-vacuous conclusion.
+* `certPlus_iff_robustOpen` — given actual coverage, `(S) ∧ (R+) ∧ (P)` is logically
+  equivalent to `RobustOpen`: the certificate in that form is the conclusion factored by
+  a case split, not an independent sufficient condition.  `robustOpen_of_persistence`
+  is the strictly stronger componentwise bill an external capture theory discharges;
+  `persistence_not_necessary` separates the two.
 
 **Not claimed.** Anything about how `cf` is produced; that `rel` is evaluated by the
 anchored predicate (a requirement on the semantics, argued in the round's prose); that
@@ -299,12 +304,68 @@ theorem offAdequate :
 
 end Witness
 
+/-! ## The certificate is Robust Openness, factored
+
+Given actual coverage, the bill `(S) ∧ (R+) ∧ (P)` is *equivalent* to `RobustOpen`: it
+is the conclusion split on whether the concern is live on the actual prefix, not a
+sufficient condition of independent content.  What an external capture theory
+substantively supplies is the componentwise persistence bill `(S) ∧ (Ra) ∧ (Rb) ∧ (Rc)
+∧ (P)`, which is strictly stronger (`Witness.persistence_not_necessary`). -/
+
+namespace Scenario
+
+variable {J R : Type} (S : Scenario J R)
+
+/-- **Compression.** With actual coverage, the replacement-allowing bill is exactly
+Robust Openness.  A logical identity, not a causal non-capture theorem. -/
+theorem certPlus_iff_robustOpen (W : R → Bool) (hA : S.CoverageActual W) :
+    (S.ClauseS ∧ S.ClauseRPlus W ∧ S.ClauseP) ↔ S.RobustOpen := by
+  constructor
+  · rintro ⟨hs, hr, hp⟩
+    exact S.robustOpen_of_certPlus W hA hs hr hp
+  · intro h
+    refine ⟨?_, ?_, ?_⟩
+    · intro _ j hj
+      exact (h j).1 hj
+    · intro _ j hj
+      exact Or.inr ((h j).1 hj)
+    · intro j
+      exact (h j).2
+
+/-- **The substantive bill.**  Actual coverage inside `W`, silent-prefix coverage `(S)`,
+componentwise persistence of protected routes, and principal standing give Robust
+Openness.  This is the form an external theory of capture discharges. -/
+theorem robustOpen_of_persistence (W : R → Bool) (hcov : S.CoverageActual W)
+    (hS : S.ClauseS) (ha : S.ClauseRa W) (hb : S.ClauseRb W) (hc : S.ClauseRc W)
+    (hP : S.ClauseP) : S.RobustOpen :=
+  S.robustOpen_of_cert W hcov hS (S.clauseR_of_components W ha hb hc) hP
+
+end Scenario
+
+namespace Witness
+
+/-- The protected route is replaced rather than preserved: `RobustOpen` holds, actual
+coverage holds inside `W`, and route persistence `(R)` fails. -/
+def replacedS : Scenario (Fin 1) (Fin 2) :=
+  ⟨⟨true, false, false, ![true, false], ![true, false], ![true, false], true⟩,
+   ![⟨true, false, false, ![false, true], ![false, true], ![false, true], true⟩]⟩
+
+def W0 : Fin 2 → Bool := ![true, false]
+
+theorem persistence_not_necessary :
+    replacedS.RobustOpen ∧ replacedS.CoverageActual W0 ∧ ¬ replacedS.ClauseR W0 := by
+  decide
+
+end Witness
+
 end Workspace.Normativity.Contrib.NonCapture
 
 #print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.clauseR_of_components
 #print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.components_of_clauseR
 #print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpen_of_cert
 #print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpen_of_certPlus
+#print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.certPlus_iff_robustOpen
+#print axioms Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpen_of_persistence
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.nonvacuity
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.attackS_activate
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.attackS_derepresent
@@ -313,3 +374,4 @@ end Workspace.Normativity.Contrib.NonCapture
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.attackRc
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.attackP
 #print axioms Workspace.Normativity.Contrib.NonCapture.Witness.offAdequate
+#print axioms Workspace.Normativity.Contrib.NonCapture.Witness.persistence_not_necessary

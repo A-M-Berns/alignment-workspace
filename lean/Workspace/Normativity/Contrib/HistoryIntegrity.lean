@@ -588,46 +588,43 @@ theorem hollow_account_changes : hollow.account 2 dis ≠ hollow.account 1 dis :
 
 end Witness
 
-/-! ## Axiom audit -/
-
-#print axioms not_out_after_res
-#print axioms res_unique
-#print axioms dispose_not_met'
-#print axioms out_or_res
-#print axioms token_fate
-#print axioms fate_exclusive
-#print axioms anc_through_parent
-#print axioms kind_trichotomy
-#print axioms SliceLedger.integrity_refl
-#print axioms SliceLedger.integrity_compose
-#print axioms SliceLedger.integrity_mono
-#print axioms SliceLedger.mem_live_of_res
-#print axioms SliceLedger.local_succ
-#print axioms SliceLedger.account_succ
-#print axioms SliceLedger.conservation_segment
-#print axioms SliceLedger.conservation
-#print axioms Witness.same_trace_disciplined
-#print axioms Witness.mem_res_iff
-#print axioms Witness.mem_born_iff
-#print axioms Witness.mem_O_iff
-#print axioms Witness.anc_dis
-#print axioms Witness.anc_dis_dis1
-#print axioms Witness.children_dis
-#print axioms Witness.answer_filter
-#print axioms Witness.settle_filter
-#print axioms Witness.receipts_false
-#print axioms Witness.faithful_local
-#print axioms Witness.faithful_step
-#print axioms Witness.faithful_conserves
-#print axioms Witness.hollow_local
-#print axioms Witness.hollow_other_clauses
-#print axioms Witness.hollow_carry_fails
-#print axioms Witness.hollow_not_step
-#print axioms Witness.hollow_account_1
-#print axioms Witness.hollow_account_2
-#print axioms Witness.hollow_account_changes
-
-
 end
 
 end Workspace.Normativity.Contrib.HistoryIntegrity
+
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.not_out_after_res
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.res_unique
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.dispose_not_met'
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.out_or_res
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.token_fate
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.fate_exclusive
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.anc_through_parent
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.kind_trichotomy
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.integrity_refl
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.integrity_compose
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.integrity_mono
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.mem_live_of_res
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.local_succ
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.account_succ
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.conservation_segment
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.conservation
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.same_trace_disciplined
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.mem_res_iff
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.mem_born_iff
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.mem_O_iff
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.anc_dis
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.anc_dis_dis1
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.children_dis
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.answer_filter
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.settle_filter
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.receipts_false
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.faithful_local
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.faithful_step
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.faithful_conserves
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.hollow_local
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.hollow_other_clauses
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.hollow_carry_fails
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.hollow_not_step
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.hollow_account_1
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.hollow_account_2
+#print axioms Workspace.Normativity.Contrib.HistoryIntegrity.Witness.hollow_account_changes

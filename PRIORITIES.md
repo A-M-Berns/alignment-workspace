@@ -2140,6 +2140,101 @@ participants and not against coalitions**: two participants alternating disposal
 satisfy separation at every edge. The item closes when a maintainer either obtains the
 book or rules the paper sufficient, **and** when the coalition hole is closed.
 
+### 78. Canonicalize the legitimacy spine from the consolidation — **[entry]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The mathematical-consolidation round states, in
+`projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md`,
+what the canonical pages should now say: Integrity as a boundary-indexed segment of
+per-port accounts, Robust Openness as the definition with the persistence bill as its
+external certificate, Legitimacy as their product with Diachronic Answerability
+derived, the occurrence-indexed export, Progress at the edge endpoint, and the two
+conditional Normative Inductor theorems. Its §11 is a page-by-page migration map.
+
+Rewrite the wiki's Legitimacy, Integrity, Diachronic Answerability, Openness,
+Settlement interface, Normative induction and Normative Inductor pages from that
+document, and demote the fixed-era pages as the map says. Register the theorems the
+map names as canonical, against this item.
+
+*Deliverable shape:* wiki edits under a dispatch that grants wiki scope, plus
+`projects/normativity/CLAIMS.md` entries of class `lean-proved` for
+`OccurrenceIntegrity.Segment.complete_accounting`, `Program.terminals_subst`,
+`NonCapture.Scenario.certPlus_iff_robustOpen`,
+`NormativeInductorComposition.edge_progress_bound_quadratic`, and
+`NormativeInductionInterface.Evaluation.deductive_normative_inductor`.
+*Acceptance check:* `python3 -m checkers.run`, `python3 -m checkers.wiki_links` and
+`python3 -m checkers.wiki_state_bindings` pass; `python3 tests/run.py` green.
+
+*Context:* the consolidation round's `CONSOLIDATION.md` and `THEOREMS.md`; the two
+`DECISIONS.md` queue entries it names (protected principal; settlement independence).
+*A solution ships:* the rewritten pages and the registry entries.
+
+### 79. Convex representability and compiler completeness for a declared requirement class — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Compiler soundness, Farkas conflict certification, and conservation on failure are
+Lean-proved (`NormativeInductorComposition` §2). What is missing is the object those
+theorems are about: a class of anchored requirements — in the consolidation's terms, a
+class of `Protocol.Evidence` types — for which a sound finite rational-row realization
+over a security fragment exists, and a compiler complete for that class. Keep the five
+properties apart: representability of the class, soundness, completeness within the
+class, joint feasibility of a serviced bundle, affordable enforceability.
+
+*Deliverable shape:* a Lean definition of the class, a compiler for it, and
+soundness and completeness theorems with a nonvacuity witness and a requirement
+outside the class that no row realizes.
+*Acceptance check:* the module audits clean and `python3 tests/run.py` is green.
+
+*Context:* `CONSOLIDATION.md` §9.1 of the mathematical-consolidation round;
+`NORMATIVE_INDUCTOR_REALIZATION.md` §4 of the realization round for the five
+properties.
+*A solution ships:* the class, the compiler, and the two theorems.
+
+### 80. Affordable service on an adaptive docket — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The predictable-window cheapest-date scheduler is Lean-proved for a declared finite
+workload: liability at most the budget, zero residual, claim-to-service factor one
+(`Workload.liability_le`, `residual_zero`). Nothing is proved when the docket grows in
+response to service — a disposal's successor, a reconsideration, a compiler conflict
+opening an adjudication — or when it is adversarially generated. The units are fixed:
+intensity `λ_s` is what `conditional_normative_inductor`'s liability hypothesis is
+produced from, and the connector from the workload budget to the enforcer's assessed
+net worth is an integration item, not part of this one.
+
+*Deliverable shape:* a stated theorem for a declared adaptive workload class with an
+exact-rational fixture, or an impossibility witness for a natural class.
+*Acceptance check:* the round's runner is discovered by `python3 tests/run.py` and
+passes.
+
+*Context:* `CONSOLIDATION.md` §9.2 of the mathematical-consolidation round; the
+normative-affordability round's `CLOSED_LOOP_EXISTENCE.md`.
+*A solution ships:* the class, the theorem, and what it does to the residual term.
+
+### 81. A jointly compatible practical-response ecology — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The public certificate is `PracticalCert(e, s, Π_s; M, ε)` on every edge into a
+service occurrence, against the one response `Π_s` realized there
+(`NormativeInductionInterface.Evaluation.PracticalUptake`). `disjoint_adequate_sets_force_loss`
+shows two obligations can share a feasible region while no response certifies both.
+No adapter is known that, for a declared obligation class and value semantics,
+produces a jointly certifying response or an accountable separation whenever one
+exists.
+
+*Deliverable shape:* an adapter with a theorem that every serviced bundle in the
+class is either jointly certified against one response or accountably split, with a
+witness of each outcome.
+*Acceptance check:* the module audits clean and `python3 tests/run.py` is green.
+
+*Context:* `CONSOLIDATION.md` §9.4 of the mathematical-consolidation round; the
+practical-certificate round's `JOINT_COMPATIBILITY.md`.
+*A solution ships:* the adapter, its theorem, and the class it covers.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

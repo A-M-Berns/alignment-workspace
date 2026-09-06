@@ -8,8 +8,8 @@ Round `2026-09-05-ni-gap-audit`.  Each section mechanizes one arrow of the chain
       -> preservation of ordinary LI
 
 at the level the landed components already type.  Nothing semantic is asserted: the
-Integrity, Non-Capture, settlement and practical certificates enter the final
-statement as fields of `EndToEndHypotheses`, never as axioms.
+practical and uptake certificates enter the conditional theorems of
+`NormativeInductionInterface` as named hypotheses, never as axioms.
 
 Sections:
 
@@ -28,8 +28,16 @@ Sections:
    claim-to-service factor one.
 5. **Practical response, semantic chains, uptake, Progress.**  The packaged `(R)`
    constants, the `n`-step affine transport fold, `χ ≤ Σρ/Σλ`, the Jensen step for the
-   quadratic modulus, and the finite three-term Progress bound.
-6. **The conditional end-to-end statement** as a hypothesis structure and a theorem.
+   quadratic modulus, and the finite three-term Progress bound at its canonical
+   endpoint — the transport-weighted edge response loss plus residual
+   (`edge_progress_bound`, `edge_progress_bound_quadratic`).  The exposure-headline
+   form (`progress_bound`, `progress_bound_quadratic`) is an optional stronger
+   corollary for applications wanting one loss per exposure; it needs the headline
+   to be dominated on every positive edge, and `edge_headline_separation` shows that
+   premise is not free.
+
+The conditional end-to-end theorems live in `NormativeInductionInterface`, typed
+against the occurrence-indexed Integrity export.
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
@@ -870,7 +878,86 @@ section Progress
 
 variable {E S : Type*}
 
-/-- **The finite three-term Progress bound.**  Over finite exposures `E` and services `S`:
+/-- **Finite edge-response Progress.** `Λ e s` is the anchored loss of exposure `e`
+against the one response actually realized at service `s`. The matched statistic
+weights these edges, allowing several services to contribute to one exposure.
+Nonnegative transport and defect, edge-local practical certificates, and the
+weighted column bound imply the three-term estimate. Evaluation normalization and
+row caps give the residual its interpretation; they are not needed for this algebra. -/
+theorem edge_progress_bound (Es : Finset E) (Ss : Finset S)
+    (T Λ M ε : E → S → ℝ) (d ν : S → ℝ) (Γ D : ℝ)
+    (hT : ∀ e ∈ Es, ∀ s ∈ Ss, 0 ≤ T e s)
+    (hd : ∀ s ∈ Ss, 0 ≤ d s)
+    (hedge : ∀ e ∈ Es, ∀ s ∈ Ss, 0 < T e s → Λ e s ≤ M e s * d s + ε e s)
+    (hΓ : ∀ s ∈ Ss, ∑ e ∈ Es, T e s * M e s ≤ Γ * ν s) :
+    (∑ e ∈ Es, ∑ s ∈ Ss, T e s * Λ e s) +
+        D * (1 - ∑ e ∈ Es, ∑ s ∈ Ss, T e s) ≤
+      Γ * (∑ s ∈ Ss, ν s * d s) + (∑ e ∈ Es, ∑ s ∈ Ss, T e s * ε e s) +
+        D * (1 - ∑ e ∈ Es, ∑ s ∈ Ss, T e s) := by
+  have hedge' : ∀ e ∈ Es, ∀ s ∈ Ss,
+      T e s * Λ e s ≤ T e s * (M e s * d s + ε e s) := by
+    intro e he s hs
+    rcases (hT e he s hs).lt_or_eq with hpos | hzero
+    · exact mul_le_mul_of_nonneg_left (hedge e he s hs hpos) hpos.le
+    · rw [← hzero]; simp
+  have hmatched : (∑ e ∈ Es, ∑ s ∈ Ss, T e s * Λ e s) ≤
+      (∑ s ∈ Ss, (∑ e ∈ Es, T e s * M e s) * d s) +
+        ∑ e ∈ Es, ∑ s ∈ Ss, T e s * ε e s := by
+    calc
+      _ ≤ ∑ e ∈ Es, ∑ s ∈ Ss, T e s * (M e s * d s + ε e s) :=
+        Finset.sum_le_sum fun e he => Finset.sum_le_sum fun s hs => hedge' e he s hs
+      _ = (∑ e ∈ Es, ∑ s ∈ Ss, (T e s * M e s) * d s) +
+          ∑ e ∈ Es, ∑ s ∈ Ss, T e s * ε e s := by
+        simp only [mul_add, Finset.sum_add_distrib, mul_assoc]
+      _ = _ := by rw [Finset.sum_comm (s := Es) (t := Ss)]; simp only [Finset.sum_mul]
+  have hamp : (∑ s ∈ Ss, (∑ e ∈ Es, T e s * M e s) * d s) ≤
+      Γ * ∑ s ∈ Ss, ν s * d s := by
+    calc
+      _ ≤ ∑ s ∈ Ss, (Γ * ν s) * d s :=
+        Finset.sum_le_sum fun s hs => mul_le_mul_of_nonneg_right (hΓ s hs) (hd s hs)
+      _ = _ := by simp only [Finset.mul_sum, mul_assoc]
+  linarith
+
+/-- **Quadratic finite edge-response Progress.** Intensity-normalized service weights
+and the uptake certificate `λ_s d_s² ≤ ρ_s` supply the square-root modulus. -/
+theorem edge_progress_bound_quadratic (Es : Finset E) (Ss : Finset S)
+    (T Λ M ε : E → S → ℝ) (d lam ρ : S → ℝ) (Γ D : ℝ)
+    (hT : ∀ e ∈ Es, ∀ s ∈ Ss, 0 ≤ T e s)
+    (hd : ∀ s ∈ Ss, 0 ≤ d s)
+    (hedge : ∀ e ∈ Es, ∀ s ∈ Ss, 0 < T e s → Λ e s ≤ M e s * d s + ε e s)
+    (hlam : ∀ s ∈ Ss, 0 ≤ lam s) (hlampos : 0 < ∑ s ∈ Ss, lam s)
+    (hwork : ∀ s ∈ Ss, lam s * d s ^ 2 ≤ ρ s)
+    (hΓ0 : 0 ≤ Γ)
+    (hΓ : ∀ s ∈ Ss, ∑ e ∈ Es, T e s * M e s ≤ Γ * (lam s / ∑ s' ∈ Ss, lam s')) :
+    (∑ e ∈ Es, ∑ s ∈ Ss, T e s * Λ e s) +
+        D * (1 - ∑ e ∈ Es, ∑ s ∈ Ss, T e s) ≤
+      Γ * Real.sqrt ((∑ s ∈ Ss, ρ s) / (∑ s ∈ Ss, lam s)) +
+        (∑ e ∈ Es, ∑ s ∈ Ss, T e s * ε e s) +
+        D * (1 - ∑ e ∈ Es, ∑ s ∈ Ss, T e s) := by
+  set A := ∑ s ∈ Ss, lam s with hA
+  let ν : S → ℝ := fun s => lam s / A
+  have hν : ∀ s ∈ Ss, 0 ≤ ν s := fun s hs => div_nonneg (hlam s hs) hlampos.le
+  have hνprob : ∑ s ∈ Ss, ν s = 1 := by
+    simp only [ν]
+    rw [← Finset.sum_div, ← hA]
+    exact div_self hlampos.ne'
+  have hmain := edge_progress_bound Es Ss T Λ M ε d ν Γ D hT hd hedge hΓ
+  have hjensen := mean_le_sqrt_mean_sq Ss ν d hν hνprob hd
+  have hχ : ∑ s ∈ Ss, ν s * d s ^ 2 ≤ (∑ s ∈ Ss, ρ s) / A := by
+    have : ∑ s ∈ Ss, ν s * d s ^ 2 = (∑ s ∈ Ss, lam s * d s ^ 2) / A := by
+      rw [Finset.sum_div]
+      apply Finset.sum_congr rfl
+      intro s _
+      simp only [ν]
+      ring
+    rw [this]
+    exact work_ratio_le Ss lam d ρ hwork hlampos
+  have hfirst : Γ * (∑ s ∈ Ss, ν s * d s) ≤
+      Γ * Real.sqrt ((∑ s ∈ Ss, ρ s) / A) :=
+    mul_le_mul_of_nonneg_left (hjensen.trans (Real.sqrt_le_sqrt hχ)) hΓ0
+  linarith
+
+/-- **Optional exposure-headline bound.** Over finite exposures `E` and services `S`:
 `μ` a probability vector; `T` a nonnegative partial transport with `Σ_s T e s ≤ μ e`
 (`T1`); exposure losses `ℓ e ∈ [0, D]`; each edge with positive mass certified by
 `ℓ e ≤ M e s · d s + ε e s` (the `(R)` certificate); `ν` a probability vector of service
@@ -954,9 +1041,9 @@ theorem progress_bound (Es : Finset E) (Ss : Finset S)
   rw [hres, hdistrib] at h2
   linarith
 
-/-- **The quadratic specialization.**  With `ν s = λ s / Σ λ`, per-date work bounds, and
-the Jensen step, the first term is `Γ √(Σρ/Σλ)`; the exact NI bound of § 13 of the
-realization document follows. -/
+/-- **Optional exposure-headline quadratic bound.** This controls one loss per
+exposure using its comparison to every positively weighted service edge. The public
+edge-response statistic is controlled directly by `edge_progress_bound_quadratic`. -/
 theorem progress_bound_quadratic (Es : Finset E) (Ss : Finset S)
     (μ : E → ℝ) (T : E → S → ℝ) (ℓ : E → ℝ) (M ε : E → S → ℝ) (d lam ρ : S → ℝ)
     (Γ D : ℝ)
@@ -1000,129 +1087,42 @@ theorem progress_bound_quadratic (Es : Finset E) (Ss : Finset S)
 
 end Progress
 
-/-! ## 6. The conditional end-to-end statement
-
-Every assumption is a field.  The LI half is stated at the assessment-process level of
-`EnforcementPreservation`: the added enforcer's assessed liability is bounded and the
-augmented market is computable.  The Progress half is the finite data of § 5.  Nothing
-here identifies the two halves' `d` with the market's sup defect — that identification
-is `public_work_le_projection_work` applied at each service date and enters as `hwork`. -/
-
-section EndToEnd
-
-open LogicalInduction
-open Workspace.Normativity.Contrib.AssessmentProcess
-open Workspace.Normativity.Contrib.EnforcementPreservation
-
-/-- The hypothesis package of the conditional Normative Inductor theorem. -/
-structure EndToEndHypotheses (History E S : Type*) where
-  /-- The history state at the strict prefix used for this finite horizon. -/
-  historyState : History
-  /-- Opaque contracts owned by the history and ambient theories. -/
-  Integrity : History → Prop
-  RobustOpenness : History → Prop
-  SettlementTrusted : History → Prop
-  integrity : Integrity historyState
-  robustOpenness : RobustOpenness historyState
-  settlementTrusted : SettlementTrusted historyState
-  /-- Typed connectors from the history through export, compilation, and scheduling.
-  Their semantics are supplied by independently reviewable certificates. -/
-  Exports : History → Finset E → Prop
-  Compiles : History → Finset E → Finset S → Prop
-  Affordable : Finset E → Finset S → (E → S → ℝ) → (S → ℝ) → Prop
-  /-- The assessment process the criterion is relative to. -/
-  L : Assessment
-  /-- The added enforcer, as an adaptive trader. -/
-  enforcer : AdaptiveTrader
-  /-- The enforcer's assessed liability floor. -/
-  B : ℝ
-  /-- **Bounded assessed liability** (`SafeCert`). -/
-  liability : ∀ n (v : PCWorld), L.Live n v →
-    -B ≤ (realizedEnforcer L enforcer).netWorth (history L enforcer) v n
-  /-- **Computability of the augmented market** (the effective-compiler premise). -/
-  market : ComputableMarket (history L enforcer)
-  /-- Evaluated exposures and service occurrences. -/
-  Es : Finset E
-  Ss : Finset S
-  /-- The predeclared evaluation measure. -/
-  μ : E → ℝ
-  μ_nonneg : ∀ e ∈ Es, 0 ≤ μ e
-  μ_prob : ∑ e ∈ Es, μ e = 1
-  /-- The committed transport plan. -/
-  T : E → S → ℝ
-  exported : Exports historyState Es
-  compiled : Compiles historyState Es Ss
-  T_nonneg : ∀ e ∈ Es, ∀ s ∈ Ss, 0 ≤ T e s
-  T_row : ∀ e ∈ Es, ∑ s ∈ Ss, T e s ≤ μ e
-  /-- Anchored losses, bounded by `D`. -/
-  ℓ : E → ℝ
-  D : ℝ
-  ℓ_nonneg : ∀ e ∈ Es, 0 ≤ ℓ e
-  ℓ_le : ∀ e ∈ Es, ℓ e ≤ D
-  /-- Per-service public defect, intensity, and market resistance. -/
-  d : S → ℝ
-  lam : S → ℝ
-  ρ : S → ℝ
-  affordable : Affordable Es Ss T lam
-  d_nonneg : ∀ s ∈ Ss, 0 ≤ d s
-  lam_nonneg : ∀ s ∈ Ss, 0 ≤ lam s
-  lam_pos : 0 < ∑ s ∈ Ss, lam s
-  /-- **Uptake**: per-date work bound `λ d² ≤ ρ`. -/
-  work : ∀ s ∈ Ss, lam s * d s ^ 2 ≤ ρ s
-  /-- **Practical-response certificate `(R)`** on every admissible edge. -/
-  M : E → S → ℝ
-  ε : E → S → ℝ
-  edge : ∀ e ∈ Es, ∀ s ∈ Ss, 0 < T e s → ℓ e ≤ M e s * d s + ε e s
-  /-- **Amplification** `Γ` against the intensity-normalized service weights. -/
-  Γ : ℝ
-  Γ_nonneg : 0 ≤ Γ
-  amplification : ∀ s ∈ Ss, ∑ e ∈ Es, T e s * M e s ≤ Γ * (lam s / ∑ s' ∈ Ss, lam s')
-
-namespace EndToEndHypotheses
-
-variable {History E S : Type*} (H : EndToEndHypotheses History E S)
-
-/-- The Progress statistic. -/
-def Prog : ℝ := ∑ e ∈ H.Es, H.μ e * H.ℓ e
-
-/-- The transport-weighted error. -/
-def εbar : ℝ := ∑ e ∈ H.Es, ∑ s ∈ H.Ss, H.T e s * H.ε e s
-
-/-- The residual evaluation mass. -/
-def residual : ℝ := 1 - ∑ e ∈ H.Es, ∑ s ∈ H.Ss, H.T e s
-
-/-- **The conditional Normative Inductor theorem.**  Under the package, the augmented
-market is a logical inductor relative to `L`, and Progress obeys the three-term bound
-with the quadratic modulus. -/
-theorem end_to_end :
-    H.Integrity H.historyState ∧
-    H.RobustOpenness H.historyState ∧
-    H.SettlementTrusted H.historyState ∧
-    H.Exports H.historyState H.Es ∧
-    H.Compiles H.historyState H.Es H.Ss ∧
-    H.Affordable H.Es H.Ss H.T H.lam ∧
-    H.L.IsLogicalInductor (history H.L H.enforcer) ∧
-    H.Prog ≤ H.Γ * Real.sqrt ((∑ s ∈ H.Ss, H.ρ s) / (∑ s ∈ H.Ss, H.lam s)) +
-      H.εbar + H.D * H.residual := by
-  refine ⟨H.integrity, H.robustOpenness, H.settlementTrusted, H.exported, H.compiled,
-    H.affordable, isLogicalInductor_of_computableMarket H.L H.enforcer H.B H.liability H.market,
-    ?_⟩
-  exact progress_bound_quadratic H.Es H.Ss H.μ H.T H.ℓ H.M H.ε H.d H.lam H.ρ H.Γ H.D
-    H.μ_nonneg H.μ_prob H.T_nonneg H.T_row H.ℓ_nonneg H.ℓ_le H.d_nonneg H.edge
-    H.lam_nonneg H.lam_pos H.work H.Γ_nonneg H.amplification
-
-end EndToEndHypotheses
-
-end EndToEnd
-
 /-! ### A finite inhabitant of the Progress hypotheses
 
 One exposure, one service, full transport, `d = 1/2`, `λ = 1`, `ρ = 1/4`, `M = 1`,
 `ε = 0`, `ℓ = 1/2`, `D = 1`, `Γ = 1`.  This inhabits every field of
-`progress_bound_quadratic`; the LI half of `EndToEndHypotheses` is inhabited separately by
-the registered deductive witness at the `DeductiveProcess` level and is not composed here. -/
+`progress_bound_quadratic`. -/
 
 section ProgressWitness
+
+/-- Every hypothesis of the quadratic edge theorem is inhabited: one exposure,
+one service, transport `1/2`, loss `5/8`, defect `1/2`, multiplier `1`, error `1/8`,
+intensity `1`, work budget `1/4`, amplification `1/2`, residual bound `1`.
+The uptake, semantic-error, and residual terms are all strictly positive. -/
+theorem edge_progress_witness :
+    (∑ e ∈ ({()} : Finset Unit), ∑ s ∈ ({()} : Finset Unit),
+        (1 / 2 : ℝ) * (5 / 8 : ℝ)) +
+        (1 : ℝ) * (1 - ∑ e ∈ ({()} : Finset Unit),
+          ∑ s ∈ ({()} : Finset Unit), (1 / 2 : ℝ)) ≤
+      (1 / 2 : ℝ) * Real.sqrt ((∑ s ∈ ({()} : Finset Unit), (1 / 4 : ℝ)) /
+          (∑ s ∈ ({()} : Finset Unit), (1 : ℝ))) +
+        (∑ e ∈ ({()} : Finset Unit), ∑ s ∈ ({()} : Finset Unit),
+          (1 / 2 : ℝ) * (1 / 8 : ℝ)) +
+        (1 : ℝ) * (1 - ∑ e ∈ ({()} : Finset Unit),
+          ∑ s ∈ ({()} : Finset Unit), (1 / 2 : ℝ)) :=
+  edge_progress_bound_quadratic (E := Unit) (S := Unit) {()} {()}
+    (fun _ _ => 1 / 2) (fun _ _ => 5 / 8) (fun _ _ => 1) (fun _ _ => 1 / 8)
+    (fun _ => 1 / 2) (fun _ => 1) (fun _ => 1 / 4) (1 / 2) 1
+    (by intros; norm_num) (by intros; norm_num) (by intros; norm_num)
+    (by intros; norm_num) (by norm_num) (by intros; norm_num) (by norm_num)
+    (by intros; norm_num)
+
+/-- One exposure can have distinct losses on two services. Their average does not
+control an arbitrarily chosen headline loss. Equal transport, edge losses `0,1`,
+and headline loss `1` give the exact separating witness. -/
+theorem edge_headline_separation :
+    (∑ s : Bool, (1 / 2 : ℝ) * (if s then 1 else 0)) < (1 : ℝ) := by
+  norm_num [Fintype.sum_bool]
 
 theorem progress_witness :
     ∑ e ∈ ({()} : Finset Unit), (1 : ℝ) * (1 / 2 : ℝ) ≤
@@ -1183,7 +1183,10 @@ end Workspace.Normativity.Contrib.NormativeInductorComposition
 #print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.work_ratio_le
 #print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.work_of_calibrated
 #print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.mean_le_sqrt_mean_sq
+#print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.edge_progress_bound
+#print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.edge_progress_bound_quadratic
+#print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.edge_progress_witness
+#print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.edge_headline_separation
 #print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.progress_bound
 #print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.progress_bound_quadratic
-#print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.EndToEndHypotheses.end_to_end
 #print axioms Workspace.Normativity.Contrib.NormativeInductorComposition.progress_witness
