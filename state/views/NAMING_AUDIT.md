@@ -225,7 +225,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 657 names, 528 of them Lean only
+## normativity — 657 names, 525 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -565,7 +565,7 @@ change, and the count of those is the size of the free choice remaining.
 | `ClauseRb` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseRb` |
 | `ClauseRc` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseRc` |
 | `ClauseS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseS` |
-| `CovState` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.CovState` |
+| `CovState` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.NonCapture.CovState` |
 | `CoverageActual` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.CoverageActual` |
 | `Covered` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.CovState.Covered` |
 | `OpenTo` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.CovState.OpenTo` |
@@ -594,7 +594,7 @@ change, and the count of those is the size of the free choice remaining.
 | `AnchorStanding` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.AnchorStanding` |
 | `Answerable` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.Answerable` |
 | `AnswerableFor` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.AnswerableFor` |
-| `Attention` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.Attention` |
+| `Attention` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.Attention` |
 | `BQ` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.BQ` |
 | `DefeatTrace` | structure | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace` |
 | `Discharges` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Kind.Discharges` |
@@ -635,7 +635,7 @@ change, and the count of those is the size of the free choice remaining.
 | `mattersOf` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTraceCore.mattersOf` |
 | `onCycle` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.onCycle` |
 | `only` | structure | 2026-08-29-normative-continuity-concordance | wiki, note, prose | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.only` |
-| `opp` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.opp` |
+| `opp` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.opp` |
 | `resAt` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.resAt` |
 | `shareAttention` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.shareAttention` |
 | `standsFor` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.standsFor` |

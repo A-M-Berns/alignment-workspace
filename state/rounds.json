@@ -1252,6 +1252,19 @@
       "registered_classes": ["lean-proved"],
       "prompt": "prompts/2026-09-08-canonicalization/PROMPT.md",
       "claim_changes": ["legitimacy.evolution-conservation", "legitimacy.propagate-to-segment", "legitimacy.receipts-immutable", "legitimacy.faithful-carry", "legitimacy.multiplicity-witness", "legitimacy.segment-trans", "legitimacy.endpoint-trans", "legitimacy.answerable", "legitimacy.endpoint-only-insufficient", "openness.persistence-sufficient", "openness.certplus-is-robust-openness", "openness.actual-branch-witness", "progress.edge-bound", "progress.edge-bound-quadratic", "progress.headline-separation", "ni.progress-bound"]
+    },
+    {
+      "id": "2026-09-06-corrigibility-architecture",
+      "date": "2026-09-06",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-06-corrigibility-architecture",
+      "verdict": "CONSTITUTIONAL-NOT-INCENTIVE — the defensible corrigibility target is relative constitutional corrigibility under declared protocol, openness and practical semantics: Integrity conserves governance debt, Robust Openness at every state with an authority-failure concern makes affordance loss either amended, disposed, registered as debt or illegitimate, the fast lane is exact monotonicity in a principal-authority preorder and any tolerance is salami-laundered, CAST singularity generates no conservatism (event-triggered warrants are floor-blind and scored dominance is a knife-edge), and trigger integrity, free amendment and boundary completeness remain open causal interfaces.",
+      "verdict_source": "projects/deference/rounds/2026-09-06-corrigibility-architecture/README.md",
+      "depends_on": ["2026-09-08-canonicalization", "2026-09-05-practical-certificate", "2026-08-17-counterfactual-legitimacy", "2026-08-12-reachable-corrective-control"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-06-corrigibility-architecture/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

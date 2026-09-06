@@ -134,6 +134,24 @@ commit.
 
 ## Settled
 
+### 2026-09-06 — corrigibility is targeted as relative constitutional corrigibility, a consumer of the legitimacy spine
+
+**agent-decided, reversible.** The corrigibility line's target is *relative constitutional
+corrigibility under declared protocol, openness and practical semantics*: Integrity conserves
+governance debt; Robust Openness at every state, with an authority-failure concern in the
+declared scope, makes any loss of the principal's correction affordance amended, disposed,
+registered as debt, or illegitimate (given faithfulness of the `eff` and `rep` coverage bits,
+which are external); the fast lane is exact monotonicity in a principal-authority preorder;
+authority expansion is a closure or admission under an amendment warrant.  Logical Induction
+enters on the AI side only as uptake of live correction constraints; `H`/`H⁺`/`A` value
+securities and Total Trust live on the principal side of a slow amendment; the incentive
+bridge is optional and unclaimed.  The round is filed under `projects/deference/` per the
+2026-08-13 ruling; its content consumes the legitimacy spine.  The deference line's two queued
+rulings are untouched.
+*Rejected alternative:* incentive corrigibility as the target — "the agent does not want to run
+the adversarial search" — which nothing on `main` supports and which the round's fixtures show
+is not reached by any combination of Integrity, openness, authentication and eligible service.
+
 ### 2026-09-08 — the legitimacy / normative-induction phase is canonicalized
 
 **Maintainer-dispatched canonicalization pass**, executed with write scope by the
