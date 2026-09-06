@@ -1,152 +1,108 @@
 # Normative induction and Progress
 
-**Status: open / unregistered.** The abstract characterization is a paper-level
-interface theorem; its fixed-era instances are paper-derived with exact fixtures and a
-few kernel-checked lemmas; the general three-term bound is not a Lean theorem.
+**Status: canonical.** The Progress statistic, the edge-local practical certificate,
+and the finite three-term bound on the accounted export are Established
+`lean-proved`, with a nonvacuity witness in which all three terms are positive. The
+practical semantics and the evaluation protocol are typed inputs.
 
-[Legitimacy](Legitimacy) says what a trajectory owes and to whom. Normative induction
-is the quantitative half: given the obligations a legitimate process has incurred, does
-the process *learn from them* — does what it owes come to bear on what it does, at a
-rate, against an accounting nobody can rig after the fact?
+[Legitimacy](Legitimacy) says what a trajectory owes and to whom. Normative
+induction is the quantitative half: given the obligations a legitimate process has
+incurred, does what it owes come to bear on what it does, at a rate, against an
+accounting nobody can rig after the fact?
 
-## The obligation-process handoff
+## The handoff
 
-Legitimacy exports a **qualitative obligation process**. For every obligation it
-determines
+Legitimacy exports the **accounted obligation state** `O_P`: the exposed occurrences
+with their immutable anchors, the live docket, and the proof-relevant account of each
+occurrence. It exports no weights, importance, service intensities, probabilities,
+securities or market geometry. Which obligations matter more is decided downstream by
+an evaluation protocol the application declares, so that the process which incurs
+obligations cannot also set the terms on which it is scored.
 
-- an **identity** — an immutable occurrence fixed at birth;
-- an **anchored specification** — what was owed, on the terms it was incurred;
-- a **live status** — answered, settlement-discharged, or carried, per
-  [Diachronic Answerability](Diachronic-Answerability);
-- an **authenticated lineage** — who opened it, what licensed it, what it became.
+Two views of the same state serve different consumers. The **live docket** is what
+remains owed now — what a scheduler consumes. **Historical exposure** is everything
+that ever entered the process's responsibility — what evaluation consumes. A docket
+cleared by disposal is not a clean record.
 
-It does **not** determine numerical importance weights. Which obligations matter more
-is not something the legitimacy theory decides from first principles, and an export that
-pretended otherwise would let the process that incurs obligations also set the terms on
-which it is scored. Qualitative normative status stays separate from quantitative
-evaluation, which is downstream and externally declared.
+## The evaluation
 
-## Live docket versus historical exposure
+An **evaluation** of `O_P` is indexed by the state and reads two of its fields: the
+exposed occurrences and their anchors. It never inspects the account. It declares:
 
-Two views of the same process, and they serve different consumers.
+- an **evaluation measure** `μ` over exposure and a **transport plan** `T` from
+  exposures to service occurrences, both committed before the responses they score
+  are observed — a learner does not choose its test distribution after seeing its
+  mistakes;
+- for each service occurrence `s`, the **one response** `Π_s` actually realized there
+  from the market state, and a public **operative defect** `d_s`;
+- an **anchored loss** `Λ_{r,s}` of a response, as a function of the *anchor* `r` —
+  two occurrences with one anchor get one loss and two transport rows, so multiplicity
+  is in `μ` and `T`, never in the loss;
+- a worst loss `D` and the certificate constants.
 
-The **live docket** `Live_n` is what remains owed now: the obligations not yet answered
-or discharged, including every successor a disposition opened. This is what a
-scheduler consumes — it is where the answering work has to go.
+## The statistic
 
-**Historical exposure** records what has entered the process's responsibility at all:
-every obligation ever incurred, by its immutable identity, whether or not it is still
-live. This is what *evaluation* consumes. A process is judged on what it was
-responsible for, and a docket that has been cleared by disposition is not thereby a
-clean record.
+    Progress = Σ_{e,s} T(e,s) · Λ_{anchor(e), s}(Π_s)  +  D · (1 − Σ_{e,s} T(e,s))
 
-## Progress is relative to an evaluation protocol
+The transport-weighted loss of every served edge against the response realized at its
+service, plus the unserved evaluation mass charged at the worst loss. This is the
+realization round's statistic. An exposure-level headline loss with one number per
+exposure is a different endpoint — an exact witness separates the two — and the
+theorem about it is an optional corollary, not the canonical bound.
 
-The theory does not decide how legitimately incurred obligations should be weighed
-against each other. Instead Progress is stated relative to an externally supplied
-**evaluation measure** `μ` over historical exposure, together with a protocol `P` for
-producing it:
+## The practical certificate
 
-    Prog_N^{P,μ}
+For each edge with positive transport,
 
-The analogy is a learner evaluated on a declared test distribution. The learner does
-not choose the distribution after seeing its mistakes; the evaluation measure is
-committed before the responses it scores are observed, or it is not an evaluation. An
-application may care about one measure or a family of measures, and the theory's
-statements hold for each. What it refuses to do is supply a canonical measure of moral
-importance inside the generic framework — that would be a new foundational theory of
-correct weighting, and nothing here needs one.
+    PracticalCert(e, s, Π_s):   Λ_{anchor(e), s}(Π_s)  ≤  M_es · d_s + ε_es .
 
-## From obligations to anchored Progress
+One service occurrence realizes one response, and every exposure transported to it
+certifies against that same response. This is where joint practical-response
+compatibility lives: two obligations can share a feasible operative region while no
+single response is adequate for both, and then one of them is not certified and its
+mass is residual. Value correspondences, approximate optimizers, finite policy menus
+and adequate-set semantics are sufficient ways to *produce* the certificate; none is
+public structure.
 
-    O_P  →  service  →  operative uptake  →  practical response  →  anchored Progress
+## The bound
 
-**Service** is the broad relation: an obligation receives the answering work it is
-owed, at some date, possibly later than it was incurred. **Scheduled enforcement
-intensity** is the resource a particular realization spends to supply service; it is
-fixed in advance and is what a scheduler chooses. **Realized corrective force** is what
-actually materializes when the reasoner responds; it is endogenous and nobody's to
-choose. Reading force as service inverts the sign of learning — a reasoner whose defect
-decays under constant intensity looks starved — so the three are kept apart throughout
-([Actionability](Actionability-and-Normative-Force)).
+Under nonnegative transport and defect, `PracticalCert` on every served edge, the
+**uptake certificate** `λ_s d_s² ≤ ρ_s` for the intensity `λ_s` spent at each service,
+and the **amplification bound** `Σ_e T(e,s) M_es ≤ Γ · λ_s / Σλ`:
 
-Operative **uptake** says that intensity spent against a persisting defect accumulates
-work, and that something caps how much work can accumulate without the defect moving.
-A **practical response** then turns an operative state into an action, and an
-**anchored** loss scores that action on the terms the original obligation was incurred
-on, not on whatever the current representation happens to say.
+    Progress  ≤  Γ · √(Σ_s ρ_s / Σ_s λ_s)  +  Σ_{e,s} T(e,s) ε_es  +  D · r ,
 
-## The endpoint
+with `r = 1 − Σ T` the residual mass, which lies in `[0, 1]`. Three terms, three
+failures: serviced constraints not taken up or amplified; decision or semantic error
+in transported responses; evaluation mass left unserved.
 
-Under the abstract interface the Progress statistic obeys
+This is a sufficiency theorem. Any realization that supplies the named certificates
+gets the bound.
 
-    Prog_N^{P,μ}  ≤  Γ_N · Ψ_φ(χ_N)  +  ε̄_N  +  D · r_N .
+## What is billed
 
-Three terms, three failures:
-
-1. **Serviced constraints were not taken up, or the amplification was large.** `χ_N`
-   is the work ratio — how much intensity-weighted defect survived per unit of
-   intensity spent — passed through the coercive uptake modulus `Ψ_φ`; `Γ_N` is how
-   much any one service date's response is amplified across the obligations matched to
-   it.
-2. **Decision or semantic-response error remained.** `ε̄_N` is the transport-weighted
-   sum of optimizer error, value-calibration ambiguity, and the drift a reason suffered
-   between being owed and being answered.
-3. **Legitimate evaluation mass was left unserved.** `r_N` is the share of the
-   evaluation measure no admissible service edge reached, charged at the worst loss
-   `D`.
-
-The coercive modulus is typed on the bounded defect range: with `φ : [0, D] → ℝ≥0`
-the tail quantity is
-
-    φ̌(δ) = inf_{x ∈ [δ, D]} φ(x),   0 < δ ≤ D,
-
-and where an inverse is wanted it is a generalized inverse unless continuity and strict
-monotonicity are assumed explicitly.
-
-This is a **sufficiency theorem**, an interface characterization: any realization that
-supplies the named witnesses gets the bound. A literal converse is not a current
-priority. Within a single era, with one settled semantics, the fixed-era pages —
-[Progress](Progress), [Serviceability](Serviceability),
-[Liability and affordability](Liability-and-Affordability) — give the instance in
-which the first term has a rate and the residual reduces to semantic drift while
-waiting.
-
-## The practical-semantics contract is billed, not solved
-
-The step from operative state to anchored Progress passes through *what an action is
-worth*, and that is a question about counterfactuals: what would have happened under
-the policy the reasoner did not choose. The theory does not attempt a general semantics
-of counterfactual policy value. It specifies what such a theory must provide and proves
-what follows from the certificate:
-
-- a declared policy or response space;
-- authenticated counterfactual value or response semantics for the policies in it;
-- calibration and ambiguity guarantees, stated before the response is observed;
-- the causal relation between the evaluated responses and the deployed one;
-- integrity and non-capture assumptions on the evaluator itself.
-
-Given that certificate, normative induction proves the bound above. Without it, no
-theorem here says that a well-behaved operative state implies a good action, and one
-exact example on the [Normative Inductor](Normative-Inductor) page shows a state with
-zero operative defect whose displayed best action is the uniquely bad one. Logical
-Induction in particular does not determine counterfactual policy values; it prices what
-settles.
-
-This is an architectural choice, not a gap waiting to be filled. A different decision
-theory or a different evaluation ecology plugs into the same interface, and the core
-theory stays neutral about which one is right.
-
-## What this does not claim
-
-That obligations are correct. That the evaluation measure is the right one — it is
-declared. That any actual reasoner satisfies the interface: the concrete candidate is
-the [Normative Inductor](Normative-Inductor), whose end-to-end theorem is conditional.
+The evaluation protocol — `μ`, `T`, `D` — is the application's. The truth of each
+`PracticalCert` is the practical-semantics contract: that `Λ` scores the response
+against the immutable anchor rather than a later substitute, that the map from the
+realized response to the anchored response space has the declared causal meaning,
+and the inequality itself. Logical Induction prices what settles; it does not
+determine counterfactual policy values, and the theory does not derive them from
+market conformance.
 
 ---
 
-**Evidence.** The abstract contract is maintainer-supplied and not in the repository;
-its realization table, theorem spine and the exact final bound are
-[`NORMATIVE_INDUCTOR_REALIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/caa3ad083e2d6d8120fbb54120219e907502ad28/projects/normativity/legitimacy/rounds/2026-09-04-normative-inductor-realization/NORMATIVE_INDUCTOR_REALIZATION.md).
-The fixed-era instances are in the September checkpoint's
-[`CURRENT_THEORY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/939c459974fd1a7365f2c050e883eb1a630123cc/projects/normativity/legitimacy/checkpoint-2026-09-01/CURRENT_THEORY.md).
+**Evidence.** The evaluation on the accounted state, `PracticalCert`, the uptake
+package and the bound are
+[`NormativeInductionInterface.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/NormativeInductionInterface.lean),
+registered as `ni.progress-bound`; the finite algebra and the endpoint separation are
+[`NormativeInductorComposition.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/NormativeInductorComposition.lean),
+registered as `progress.edge-bound`, `progress.edge-bound-quadratic` and
+`progress.headline-separation`. The minimal certificate and the joint-compatibility
+analysis are the practical certificate round's
+[`CERTIFICATE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/CERTIFICATE.md)
+and
+[`JOINT_COMPATIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/JOINT_COMPATIBILITY.md).
+The fixed-era instances — one era, one settled semantics — are on
+[Progress](Progress), [Serviceability](Serviceability) and
+[Liability and affordability](Liability-and-Affordability), and are realization
+material rather than part of the generic theory.

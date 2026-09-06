@@ -85,7 +85,7 @@ change, and the count of those is the size of the free choice remaining.
 | `totalSetoid` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.totalSetoid` |
 | `transfer` | abbrev | 2026-08-12-cartesian-frames | note, prose | `Workspace.Deference.Contrib.CartesianFrameBridge.transfer` |
 | `Act` | abbrev | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Act` |
-| `J` | def | 2026-08-11-phase-ii-promotion | wiki, note | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.J` |
+| `J` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.J` |
 | `Jhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Jhat` |
 | `S` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.S` |
 | `advantage` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.advantage` |
@@ -94,11 +94,11 @@ change, and the count of those is the size of the free choice remaining.
 | `gatedAct` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.gatedAct` |
 | `gradeValuation` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.gradeValuation` |
 | `p` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.p` |
-| `v` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.v` |
+| `v` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.v` |
 | `vhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.vhat` |
 | `EX` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.E1.EX` |
 | `GradeTrust` | def | 2026-08-11-phase-ii-promotion | prose | `Workspace.Deference.Contrib.DelegationBridge.GradeTrust` |
-| `J` | def | 2026-08-11-phase-ii-promotion | wiki, note | `Workspace.Deference.Contrib.DelegationBridge.E1.J` |
+| `J` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.J` |
 | `W` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.W` |
 | `c` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.c` |
 | `disagreementMass` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.disagreementMass` |
@@ -117,7 +117,7 @@ change, and the count of those is the size of the free choice remaining.
 | `envelopeGap` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.envelopeGap` |
 | `p` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.p` |
 | `phi` | def | 2026-08-11-stage-iii-fud | prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.phi` |
-| `v` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.v` |
+| `v` | def | 2026-08-11-stage-iii-fud | note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.v` |
 | `valuation` | def | 2026-08-11-stage-iii-fud | note | `Workspace.Deference.Contrib.EnvelopeDominance.valuation` |
 | `F` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.F` |
 | `InWindow` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.InWindow` |
@@ -185,7 +185,7 @@ change, and the count of those is the size of the free choice remaining.
 | `dec` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.AuthLabel.dec` |
 | `enc` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.AuthLabel.enc` |
 | `hToA` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.hToA` |
-| `live` | def | 2026-08-12-reachable-corrective-control | note, prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.live` |
+| `live` | def | 2026-08-12-reachable-corrective-control | wiki, note, prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.live` |
 | `obs` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.obs` |
 | `resetRun` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.resetRun` |
 | `s0` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.s0` |
@@ -220,12 +220,12 @@ change, and the count of those is the size of the free choice remaining.
 | `realizedQuantity` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.realizedQuantity` |
 | `schemeDelegate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.schemeDelegate` |
 | `schemeSim` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.schemeSim` |
-| `v` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.SubstitutionSeparation.M.v` |
+| `v` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.SubstitutionSeparation.M.v` |
 | `valuation` | def | 2026-08-11-phase-ii-promotion | note | `Workspace.Deference.Contrib.SubstitutionSeparation.M.valuation` |
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 437 names, 368 of them Lean only
+## normativity — 657 names, 528 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -233,14 +233,24 @@ change, and the count of those is the size of the free choice remaining.
 | `admissiblePatterns_complete` | theorem | 2026-08-19-deductive-region | registry | `Workspace.Normativity.Contrib.DeductiveRegion.admissiblePatterns_complete` |
 | `admissiblePatterns_ne_nil_iff` | theorem | 2026-08-19-deductive-region | registry | `Workspace.Normativity.Contrib.DeductiveRegion.admissiblePatterns_ne_nil_iff` |
 | `admissiblePatterns_sound` | theorem | 2026-08-19-deductive-region | registry | `Workspace.Normativity.Contrib.DeductiveRegion.admissiblePatterns_sound` |
+| `answerable` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.LegitimateSegment.answerable` |
 | `budgetedTrader_netWorth_floor` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.AssessmentProcess.budgetedTrader_netWorth_floor` |
+| `certPlus_iff_robustOpen` | theorem | 2026-09-06-mathematical-consolidation | registry, prose | `Workspace.Normativity.Contrib.NonCapture.Scenario.certPlus_iff_robustOpen` |
 | `chain_compiles` | theorem | 2026-08-10-repo-scaffolding | registry | `Workspace.Smoke.chain_compiles` |
+| `conservation` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.conservation` |
+| `counterfactual_open_not_actual` | theorem | 2026-09-07-final-pressure-pass | registry, prose | `Workspace.Normativity.Contrib.NonCapture.Witness.counterfactual_open_not_actual` |
 | `deductiveRegion_eq_convexHull` | theorem | 2026-08-19-deductive-region | registry | `Workspace.Normativity.Contrib.DeductiveRegion.deductiveRegion_eq_convexHull` |
 | `deductive_end_to_end` | theorem | 2026-08-18-projection-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEffective.deductive_end_to_end` |
+| `distinct_fates` | theorem | 2026-09-06-mathematical-consolidation | registry | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.distinct_fates` |
+| `edge_headline_separation` | theorem | 2026-09-06-mathematical-consolidation | registry, prose | `Workspace.Normativity.Contrib.NormativeInductorComposition.edge_headline_separation` |
+| `edge_progress_bound` | theorem | 2026-09-06-mathematical-consolidation | registry | `Workspace.Normativity.Contrib.NormativeInductorComposition.edge_progress_bound` |
+| `edge_progress_bound_quadratic` | theorem | 2026-09-06-mathematical-consolidation | registry, prose | `Workspace.Normativity.Contrib.NormativeInductorComposition.edge_progress_bound_quadratic` |
 | `end_to_end_effective` | theorem | 2026-08-18-projection-enforcement | registry, note, prose | `Workspace.Normativity.Contrib.EnforcedCompiler.ProjectionSchedule.end_to_end_effective` |
 | `end_to_end_of_constraints_effective` | theorem | 2026-08-18-projection-enforcement | registry, note | `Workspace.Normativity.Contrib.EffectiveRepresentation.end_to_end_of_constraints_effective` |
+| `endpoint_only_insufficient` | theorem | 2026-09-07-final-pressure-pass | registry, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.endpoint_only_insufficient` |
 | `enforcement_day_value_nonneg` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.enforcement_day_value_nonneg` |
 | `enforcement_netWorth_nonneg` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.enforcement_netWorth_nonneg` |
+| `evaluate_subst` | theorem | 2026-09-06-mathematical-consolidation | registry, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.evaluate_subst` |
 | `exists_budgetedTrader_exploits` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.AssessmentProcess.exists_budgetedTrader_exploits` |
 | `exists_maxMin_representation` | theorem | 2026-08-18-maxmin-representation | registry | `Workspace.Normativity.Contrib.MaxMinRepresentation.exists_maxMin_representation` |
 | `faf_asympEq_refl` | theorem | 2026-08-10-repo-scaffolding | registry | `Workspace.Smoke.faf_asympEq_refl` |
@@ -252,8 +262,13 @@ change, and the count of those is the size of the free choice remaining.
 | `no_efficient_trader_exploits` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.AssessmentFirm.no_efficient_trader_exploits` |
 | `no_efficient_trader_exploits` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.EnforcementPreservation.no_efficient_trader_exploits` |
 | `no_efficient_trader_exploits_of_worldInclusive` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.no_efficient_trader_exploits_of_worldInclusive` |
+| `progress_bound` | theorem | 2026-09-07-final-pressure-pass | registry | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.progress_bound` |
+| `propagate_toSegment` | theorem | 2026-09-07-final-pressure-pass | registry | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.propagate_toSegment` |
+| `robustOpenActual_of_persistence` | theorem | 2026-09-07-final-pressure-pass | registry, prose | `Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpenActual_of_persistence` |
 | `rowViolation_le_of_intensity_ge` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.EnforcementStrategy.rowViolation_le_of_intensity_ge` |
+| `terminals_subst` | theorem | 2026-09-06-mathematical-consolidation | registry, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals_subst` |
 | `trading_firm_dominance` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.AssessmentFirm.trading_firm_dominance` |
+| `trans` | theorem | 2026-09-07-final-pressure-pass | registry | `Workspace.Normativity.Contrib.LegitimateEvolution.Legitimate.trans` |
 | `witness_market_not_exploited` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.witness_market_not_exploited` |
 | `namespaceIsLive` | def | unrecorded | Lean only | `Workspace.Normativity.namespaceIsLive` |
 | `TradingFirm` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentFirm.TradingFirm` |
@@ -458,14 +473,123 @@ change, and the count of those is the size of the free choice remaining.
 | `wOpen` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wOpen` |
 | `wTwoSat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wTwoSat` |
 | `wTwoUnsat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wTwoUnsat` |
+| `Integrity` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Integrity` |
+| `Local` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Local` |
+| `LocalConservation` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.LocalConservation` |
+| `SliceLedger` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger` |
+| `account` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.account` |
+| `children` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.children` |
+| `faithful` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.Witness.faithful` |
+| `hollow` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.Witness.hollow` |
+| `isAnswer` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.isAnswer` |
+| `isDispose` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.isDispose` |
+| `isSettle` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.isSettle` |
+| `EA` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.EA` |
+| `ED` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.ED` |
+| `EQ` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.EQ` |
+| `ES` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.ES` |
+| `MA` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.MA` |
+| `MD` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.MD` |
+| `MQ` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.MQ` |
+| `MS` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.MS` |
+| `Resolves` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.Resolves` |
+| `Resolves` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.Resolves` |
+| `bornAt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.bornAt` |
+| `bornAt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.bornAt` |
+| `eBorn` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.eBorn` |
+| `eG` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.eG` |
+| `eIssue` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.eIssue` |
+| `eLi` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.eLi` |
+| `eO` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.eO` |
+| `eRes` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.eRes` |
+| `edata` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.edata` |
+| `ekind` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.ekind` |
+| `epar` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.epar` |
+| `evasive` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.evasive` |
+| `gate` | def | unrecorded | prose | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.gate` |
+| `mBorn` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mBorn` |
+| `mIssue` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mIssue` |
+| `mMet` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mMet` |
+| `mO` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mO` |
+| `mPre` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mPre` |
+| `mPreAdd` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mPreAdd` |
+| `mPreDrop` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mPreDrop` |
+| `mRes` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mRes` |
+| `mdata` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mdata` |
+| `mpar` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mpar` |
+| `mroots` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.mroots` |
+| `resAt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Evasive.resAt` |
+| `resAt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.IntegrityAdversary.Gate.resAt` |
 | `IsSupportPresentation` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.IntrinsicCoherence.IsSupportPresentation` |
 | `presentationNet` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.IntrinsicCoherence.presentationNet` |
+| `AllStates` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.AllStates` |
+| `Conservation` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Conservation` |
+| `Evolution` | inductive | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution` |
+| `Legitimate` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Legitimate` |
+| `LegitimateSegment` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.LegitimateSegment` |
+| `ObligationState` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.LegitimateEvolution.ObligationState` |
+| `OpenAt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.OpenAt` |
+| `OpennessSemantics` | def | unrecorded | prose | `Workspace.Normativity.Contrib.LegitimateEvolution.OpennessSemantics` |
+| `_root_.Workspace.Normativity.Contrib.OccurrenceIntegrity.Initial.state` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution._root_.Workspace.Normativity.Contrib.OccurrenceIntegrity.Initial.state` |
+| `closedS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.closedS` |
+| `ev₀₁` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.ev₀₁` |
+| `ev₁₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.ev₁₂` |
+| `final` | def | unrecorded | prose | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.final` |
+| `leg₀₁` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.leg₀₁` |
+| `leg₁₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.leg₁₂` |
+| `ofSegment` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.ofSegment` |
+| `openS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.openS` |
+| `refl` | def | unrecorded | prose | `Workspace.Normativity.Contrib.LegitimateEvolution.LegitimateSegment.refl` |
+| `semMiddle` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.semMiddle` |
+| `semOpen` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.semOpen` |
+| `state₀` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.state₀` |
+| `state₁` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.state₁` |
+| `state₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.state₂` |
+| `step₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.step₂` |
+| `toSegment` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toSegment` |
+| `trans` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.trans` |
+| `trans` | def | unrecorded | registry | `Workspace.Normativity.Contrib.LegitimateEvolution.LegitimateSegment.trans` |
+| `wAnchor` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.wAnchor` |
 | `IsPiecewiseAffineOn` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.IsPiecewiseAffineOn` |
 | `absComponent` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.absComponent` |
 | `absPiece` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.absPiece` |
 | `negLine` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.negLine` |
 | `segmentComponent` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.segmentComponent` |
 | `segmentDomain` | def | 2026-08-18-maxmin-representation | Lean only | `Workspace.Normativity.Contrib.MaxMinRepresentation.segmentDomain` |
+| `ActualOpen` | def | unrecorded | prose | `Workspace.Normativity.Contrib.NonCapture.Scenario.ActualOpen` |
+| `ClauseComp` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseComp` |
+| `ClauseP` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseP` |
+| `ClauseR` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseR` |
+| `ClauseRPlus` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseRPlus` |
+| `ClauseRa` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseRa` |
+| `ClauseRb` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseRb` |
+| `ClauseRc` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseRc` |
+| `ClauseS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.ClauseS` |
+| `CovState` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.CovState` |
+| `CoverageActual` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Scenario.CoverageActual` |
+| `Covered` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.CovState.Covered` |
+| `OpenTo` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.CovState.OpenTo` |
+| `RobustOpen` | def | unrecorded | prose | `Workspace.Normativity.Contrib.NonCapture.Scenario.RobustOpen` |
+| `RobustOpenActual` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NonCapture.Scenario.RobustOpenActual` |
+| `Scenario` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.NonCapture.Scenario` |
+| `W0` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.W0` |
+| `W1` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.W1` |
+| `W2` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.W2` |
+| `active` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.CovState.active` |
+| `actualClosedS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.actualClosedS` |
+| `adequate` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.NonCapture.CovState.adequate` |
+| `attackPS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.attackPS` |
+| `attackRaS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.attackRaS` |
+| `attackRbS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.attackRbS` |
+| `attackRcS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.attackRcS` |
+| `attackS_activateS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.attackS_activateS` |
+| `attackS_derepresentS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.attackS_derepresentS` |
+| `live` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.NonCapture.CovState.live` |
+| `liveActual` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.liveActual` |
+| `nonvacuityS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.nonvacuityS` |
+| `offAdequateS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.offAdequateS` |
+| `replacedS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.replacedS` |
+| `st` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.st` |
 | `AQ` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.AQ` |
 | `AnchorStanding` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.AnchorStanding` |
 | `Answerable` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.Answerable` |
@@ -483,7 +607,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Kind` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Kind` |
 | `LaunderingWalk` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.LaunderingWalk` |
 | `Licence` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.Licence` |
-| `Live` | def | 2026-08-29-normative-continuity-concordance | wiki, prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Live` |
+| `Live` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Live` |
 | `LiveGate` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.LiveGate` |
 | `NoPermanentWait` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.NoPermanentWait` |
 | `NoRouteWait` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.NoRouteWait` |
@@ -494,7 +618,7 @@ change, and the count of those is the size of the free choice remaining.
 | `ReachGate` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.ReachGate` |
 | `Ready` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Ready` |
 | `Resolves` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.Resolves` |
-| `Routes` | def | 2026-08-29-normative-continuity-concordance | wiki, prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Routes` |
+| `Routes` | def | 2026-08-29-normative-continuity-concordance | prose | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.Routes` |
 | `TraceData` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData` |
 | `WA` | abbrev | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.WA` |
 | `WD` | abbrev | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.WD` |
@@ -510,7 +634,7 @@ change, and the count of those is the size of the free choice remaining.
 | `fixE_issueTrace` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.fixE_issueTrace` |
 | `mattersOf` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTraceCore.mattersOf` |
 | `onCycle` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.onCycle` |
-| `only` | structure | 2026-08-29-normative-continuity-concordance | note, prose | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.only` |
+| `only` | structure | 2026-08-29-normative-continuity-concordance | wiki, note, prose | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.only` |
 | `opp` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.TraceData.opp` |
 | `resAt` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.resAt` |
 | `shareAttention` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.IssueTrace.shareAttention` |
@@ -534,8 +658,93 @@ change, and the count of those is the size of the free choice remaining.
 | `wopener` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.wopener` |
 | `wpar` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.wpar` |
 | `wresolver` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Witness.wresolver` |
+| `DefectDominated` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.DefectDominated` |
+| `Evaluation` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation` |
+| `PracticalCert` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.PracticalCert` |
+| `PracticalUptake` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.PracticalUptake` |
+| `compiledMarket` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.compiledMarket` |
+| `compiledTarget` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.compiledTarget` |
+| `edgeLoss` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.edgeLoss` |
+| `error` | def | unrecorded | prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.error` |
+| `evaluation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductionInterface.Witness.evaluation` |
+| `market` | def | unrecorded | note | `Workspace.Normativity.Contrib.NormativeInductionInterface.Witness.market` |
+| `modulus` | def | unrecorded | prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.modulus` |
+| `progress` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.progress` |
+| `residual` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.residual` |
+| `Affordable` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload.Affordable` |
+| `Bundle` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Bundle` |
+| `Bundle.Allowed` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Bundle.Allowed` |
+| `Bundle.Region` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Bundle.Region` |
+| `Bundle.RegionR` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Bundle.RegionR` |
+| `Bundle.WellFormed` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Bundle.WellFormed` |
+| `Bundle.cited` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Bundle.cited` |
+| `CarriedTo` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CarriedTo` |
+| `CitedRow` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CitedRow` |
+| `CompileResult` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CompileResult` |
+| `CompileResult.Valid` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CompileResult.Valid` |
+| `CompiledDay` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CompiledDay` |
+| `CompiledSchedule` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CompiledSchedule` |
+| `CompiledSchedule.toSchedule` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CompiledSchedule.toSchedule` |
+| `FarkasCert` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.FarkasCert` |
+| `Fate` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Fate` |
+| `HasStatus` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.HasStatus` |
+| `InCube` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.InCube` |
+| `Linked` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Linked` |
+| `ObligationExport` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.ObligationExport` |
+| `Row` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Row` |
+| `Row.Sat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Row.Sat` |
+| `Row.SatR` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Row.SatR` |
+| `Status` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Status` |
+| `Status.fate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Status.fate` |
+| `Step` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Step` |
+| `Workload` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload` |
+| `chainCert` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.chainCert` |
+| `cheapest` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload.cheapest` |
+| `checkCompiled` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.checkCompiled` |
+| `cubeLower` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.cubeLower` |
+| `cubeUpper` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.cubeUpper` |
+| `exportObligations` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.exportObligations` |
+| `exposures` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.exposures` |
+| `minWeight` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload.minWeight` |
+| `plan` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload.plan` |
+| `sampleWorkload` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.sampleWorkload` |
+| `totalClaim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload.totalClaim` |
+| `wkindNoSucc` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.wkindNoSucc` |
+| `Accounted` | def | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Accounted` |
+| `AnswerReceipt` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.AnswerReceipt` |
+| `Authority` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Authority` |
+| `Boundary` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Boundary` |
+| `ClosureReceipt` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.ClosureReceipt` |
+| `Fate` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Fate` |
+| `Initial` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Initial` |
+| `Initial.accounted` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Initial.accounted` |
+| `Leaf` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Leaf` |
+| `LocalLaw` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.LocalLaw` |
+| `Program` | inductive | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program` |
+| `Protocol` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Protocol` |
+| `Segment` | inductive | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment` |
+| `Step` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Step` |
+| `Step.propagate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Step.propagate` |
+| `account` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.account` |
+| `anchor` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.anchor` |
+| `complete_accounting` | def | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment.complete_accounting` |
+| `denote` | def | unrecorded | note | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment.denote` |
+| `evaluate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.evaluate` |
+| `fates` | def | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.fates` |
+| `finish` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.finish` |
+| `initial` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.initial` |
+| `livePorts` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.livePorts` |
+| `propagate` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment.propagate` |
+| `protocol` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.protocol` |
+| `receipt` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.receipt` |
+| `segment` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.segment` |
+| `start` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.start` |
+| `step` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.step` |
+| `subst` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.subst` |
+| `terminals` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals` |
+| `trans` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment.trans` |
 | `SemanticAction` | inductive | 2026-08-11-phi-regret-bridge | Lean only | `Workspace.Normativity.Contrib.PhiRegretBridge.SemanticAction` |
-| `actual` | def | 2026-08-11-phi-regret-bridge | note | `Workspace.Normativity.Contrib.PhiRegretBridge.Witness.actual` |
+| `actual` | def | 2026-08-11-phi-regret-bridge | wiki, note, prose | `Workspace.Normativity.Contrib.PhiRegretBridge.Witness.actual` |
 | `cumulativeLoss` | def | 2026-08-11-phi-regret-bridge | Lean only | `Workspace.Normativity.Contrib.PhiRegretBridge.cumulativeLoss` |
 | `decode` | def | 2026-08-11-phi-regret-bridge | Lean only | `Workspace.Normativity.Contrib.PhiRegretBridge.Witness.decode` |
 | `labelLoss` | def | 2026-08-11-phi-regret-bridge | Lean only | `Workspace.Normativity.Contrib.PhiRegretBridge.Witness.labelLoss` |
@@ -561,6 +770,17 @@ change, and the count of those is the size of the free choice remaining.
 | `gramQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.gramQ` |
 | `piece` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.piece` |
 | `rhs` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.rhs` |
+| `anchoredLoss` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.anchoredLoss` |
+| `headlineWitnessEdgeLoss` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.headlineWitnessEdgeLoss` |
+| `headlineWitnessExposures` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.headlineWitnessExposures` |
+| `headlineWitnessLoss` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.headlineWitnessLoss` |
+| `headlineWitnessMu` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.headlineWitnessMu` |
+| `headlineWitnessServices` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.headlineWitnessServices` |
+| `headlineWitnessT` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.headlineWitnessT` |
+| `witnessLam₁` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.witnessLam₁` |
+| `witnessLam₂` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.witnessLam₂` |
+| `witnessMenu` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.witnessMenu` |
+| `witnessP` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PracticalCertificate.witnessP` |
 | `groupOf` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionBridge.groupOf` |
 | `ofGeom` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionBridge.ofGeom` |
 | `repOf` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionBridge.repOf` |
@@ -659,7 +879,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Pt` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.RationalPolytope.Pt` |
 | `_root_.RationalPolytope` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.RationalPolytope._root_.RationalPolytope` |
 | `carrier` | def | unrecorded | Lean only | `RationalPolytope.carrier` |
-| `proj` | def | unrecorded | Lean only | `RationalPolytope.proj` |
+| `proj` | def | unrecorded | wiki | `RationalPolytope.proj` |
 | `toPt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RationalPolytope.toPt` |
 | `vertexSet` | def | unrecorded | Lean only | `RationalPolytope.vertexSet` |
 | `deficit` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.deficit` |

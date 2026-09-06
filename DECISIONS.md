@@ -134,6 +134,199 @@ commit.
 
 ## Settled
 
+### 2026-09-08 — the legitimacy / normative-induction phase is canonicalized
+
+**Maintainer-dispatched canonicalization pass**, executed with write scope by the
+round at `prompts/2026-09-08-canonicalization/`. It lands the cumulative content of
+the integrity-synthesis batch, the mathematical consolidation and the final pressure
+pass, and rewrites the canonical surfaces around the surviving theory.
+
+**Landing.** The three stacked pull requests — the integrity synthesis batch on
+`round/2026-09-05-integrity-synthesis`, the consolidation on
+`round/2026-09-06-mathematical-consolidation`, the pressure pass on
+`round/2026-09-07-final-pressure-pass` — were linear on top of `main`, and the first
+alone carried the axiom-audit failure the second repaired. They were landed together
+through one pull request from `round/2026-09-08-canonicalization`, branched from the
+pressure pass's head, merged with a merge commit so every round commit is reachable
+from `main` and commit-pinned citations into them stay valid. The three stacked pull
+requests are closed as superseded, each pointing at the landing pull request. No
+intermediate state with a red required check reached `main`.
+
+**The canonical theory** is the one the final pressure pass stated, with one
+interface change: the intervention semantics is indexed by the accounted obligation
+state rather than by the history prefix, so the carrier of a concern's load is read
+off the accounts (`LegitimateEvolution.OpennessSemantics`). The wiki's Legitimacy,
+Integrity, Diachronic Answerability, Openness, Settlement interface, Normative
+induction and Normative Inductor pages, the Roadmap's legitimacy section, the Glossary
+and `state/vocabulary.json` now describe only that theory. Sixteen claims are
+registered under *The legitimacy spine* in `projects/normativity/CLAIMS.md` against
+item 78; the two conditional Normative Inductor theorems are deliberately not
+registered, the general one because its Logical-Induction hypotheses are uninhabited
+and the deductive one because its joint package has no single witness.
+
+**Decisions promoted to canonical wording.** The 2026-09-06 and 2026-09-07 entries
+below that were marked agent-decided and reversible are adopted as they stand, with
+two superseded: *standing is Robust Openness at the null intervention* is superseded
+by *Robust Openness at a prefix includes the actual branch by definition*, and *the
+Non-Capture certificate is the persistence bill* is superseded by the reading in
+which the persistence certificate is one sufficient way to discharge a certified
+Robust Openness, not the contract. The queued rulings on naming a protected
+principal and on settlement independence remain queued; the canonical text is
+P-indexed because no party-free form exists, and treats settlement independence as
+two typed inputs under either ruling.
+
+**Vocabulary.** `Resolution` replaces `Evidence`; `accounted obligation state`,
+`Integrity evolution`, `Answerability Conservation`, `legitimate segment`,
+`Legitimate`, `Robust Openness` (actual branch included), `persistence certificate`
+and `PracticalCert` are the preferred labels, with `IntegritySegment`,
+`LocalConservation`, `slice ledger`, `settlement integrity`, `null intervention`,
+`persistence bill`, `Non-Capture certificate` and `headline Progress` deprecated.
+
+**Demoted to evidence**, unedited: the lattice ledger and local conservation clause
+of the integrity constructive round; the countermodels of the integrity adversary
+round; the export adapter on the older trace model; the exposure-headline Progress
+theorems; the fixed-era Progress, Serviceability and Liability pages, now marked
+realization material.
+
+*Rejected alternatives:* merging the stack in order, which would have routed the
+audit failure through `main`; squash-merging, which would have left every pinned
+citation into the rounds dangling; registering the conditional realization theorems
+on the strength of their proofs alone.
+
+### 2026-09-07 — the public obligation state is the accounted state, and Integrity is an evolution of it
+
+**agent-decided, reversible.** The object a consumer reads is
+`ObligationState = (boundary, account)`: the account — one proof-relevant program per
+exposed occurrence — is state, not a certificate, because it is the status and
+lineage the export carries and two states on one boundary with different accounts
+are different states. Integrity between states is `Evolution O₀ O₁`: a chain of
+transitions in which every intermediate state is explicit and every target account is
+the propagation of its source, so the target is determined and witnesses cannot
+disagree about either endpoint. `Initial` is one constructor of a first state.
+Answerability Conservation is the theorem `Evolution.conservation`: exposure grows,
+receipts persist, denotations are transported.
+*Rejected alternative:* an existential `Segment` relation between boundaries, which
+loses the account and lets witnesses disagree about it.
+
+### 2026-09-07 — Robust Openness is required at every state of a legitimate evolution
+
+**agent-decided, reversible.** `LegitimateSegment` requires `RobustOpenActual` for
+every declared concern at every state of the underlying evolution, endpoints included.
+Endpoint-only openness accepts the trajectory open → live concern with no route →
+restored (`LegitimateEvolution.Witness.endpoint_only_insufficient`), which is exactly
+temporary exclusion laundered by later restoration. Per-state is the weakest form
+expressible here: every state is adjacent to a transition, and coverage and standing
+are already conditional on liveness and applicability, so nothing is demanded of a
+concern while it is inapplicable or represented. The relation composes at a shared
+state and is reflexive at open states.
+*Rejected alternative:* openness at the endpoints only, as the consolidation round
+proposed.
+
+### 2026-09-07 — Robust Openness at a prefix includes the actual branch by definition
+
+**agent-decided, reversible.** `Scenario.RobustOpenActual := ActualOpen ∧ RobustOpen`,
+with `J` indexing proper interventions only. The consolidation round read the actual
+standing condition off `(P)` "at the null intervention", but `Scenario` never required
+any `j` to equal the actual state, and `counterfactual_open_not_actual` shows the
+counterfactual-only predicate does not contain it. The external Non-Capture contract
+is a certified `RobustOpenActual` at each prefix under a declared semantics;
+componentwise persistence is one sufficient way to produce it, not the contract.
+*Rejected alternative:* a distinguished `null : J` with `cf null = actual`, which puts
+an element into every application's intervention index and makes the identity a proof
+obligation of the semantics.
+
+### 2026-09-07 — closure yields a resolution witness, not answer evidence
+
+**agent-decided, reversible.** `Protocol.Evidence` is renamed `Resolution`: a witness
+that a requirement has been legitimately accounted for, supplied by an adequate answer
+(`answer_resolves`) or by a valid closure (`closure_resolves`). The fates `answered`
+and `closed` remain distinct in every account; no theorem says a closed requirement
+was answered. A single type suffices because nothing downstream distinguishes the two
+witnesses, while the old name made a closure receipt produce answer evidence.
+*Rejected alternative:* separate answer- and closure-evidence types, which nothing
+consumes.
+
+### 2026-09-07 — local laws are unary in the parent; aggregation is a deferred extension
+
+**agent-decided, reversible.** `LocalLaw` transforms one requirement into successors
+and expresses carry, split, refinement and re-representation. It does not express a
+genuine aggregation `(r₁, r₂) ↦ c` whose successor is resolved only by resolving both
+parents: two occurrences may route to one shared port, but each by its own law, and
+the no-growth map then demands that each parent alone resolves the shared successor.
+The consolidation round's "merge" is withdrawn from the claim; a law with several
+parents and a joint no-growth map is filed as an extension (`PRIORITIES.md` item 82),
+not adopted, because no theorem or application requires it.
+*Rejected alternative:* generalising the account to hypergraphs now.
+
+### 2026-09-06 — Progress is the transport-weighted edge loss plus residual
+
+**agent-decided, reversible.** The canonical Progress statistic is
+`Σ_{e,s} T(e,s) Λ_{anchor e,s}(Π_s) + D (1 − Σ T)`, with `Π_s` the one response
+realized at service `s` and every edge into `s` scored against it. This is the
+realization round's statistic; the exposure-headline form `Σ_e μ(e) ℓ(e)` that the
+NI gap audit proved a bound for is a distinct endpoint
+(`NormativeInductorComposition.edge_headline_separation`), needs a dominance premise
+that is not free, and is kept as an optional corollary. The loss is a function of the
+anchor, not the occurrence; multiplicity enters through `μ` and `T`.
+*Rejected alternative:* adopting the headline endpoint because a Lean proof of it
+existed, and listing the dominance adapter as a missing core arrow.
+
+### 2026-09-06 — Integrity's primitive is the occurrence-indexed account
+
+**agent-decided, reversible.** The Integrity certificate is a boundary-indexed
+segment of transitions, each supplying for every live port an *account* — a term of
+`OccurrenceIntegrity.Program`, whose constructors are the three fates and
+authenticated local laws — and the account of the whole exposure is a dependent
+function on occurrences (`Accounted`). Occurrence identity lives outside the content
+type; there is no additive or multiset layer over content, because multiplicity is in
+the index. A local law carries evidence maps in both directions (no loss, no growth)
+without round-trip laws. Conservation, faithful carry and receipt immutability are
+consequences of the type (`complete_accounting`, `evaluate_subst`,
+`terminals_subst`). The lattice ledger of the integrity-constructive round is an
+instance and is demoted to evidence.
+*Rejected alternative:* a lattice-valued content-conservation clause per transition,
+which restates the conclusion at one step and collapses equal-content occurrences.
+
+### 2026-09-06 — standing is Robust Openness at the null intervention
+
+**agent-decided, reversible.** The protected party's continued standing on the
+carrier of every applicable concern is the `(P)` clause of Robust Openness, and the
+declared intervention class is read as containing the null intervention, so the
+clause binds on the actual history. Integrity's `Live` credential is the record fact
+that a port is open and carries no standing claim. With this, Diachronic
+Answerability is derived — content conservation from the segment, standing from
+`(P)` — and Legitimacy is the product `Segment × RobustOpen_P` with no third
+conjunct. The integrity-adversary round's A6 (faithful carry to an anchor where only
+the resolver stands) is the counterexample to deriving standing from Integrity.
+*Rejected alternative:* a standing-continuation clause inside the content lifecycle,
+which mixes who-may-act into what-is-owed and duplicates `(P)`.
+
+### 2026-09-06 — the Non-Capture certificate is the persistence bill
+
+**agent-decided, reversible.** Given actual coverage, the noncapture-certificate
+round's bill `(S) ∧ (R+) ∧ (P)` is logically equivalent to Robust Openness
+(`NonCapture.Scenario.certPlus_iff_robustOpen`); it is the definition split on whether
+the concern is live at the actual prefix. Robust Openness is therefore stated as the
+definition, and what an external capture theory is billed for is componentwise route
+persistence `(S) ∧ (Ra) ∧ (Rb) ∧ (Rc) ∧ (P)`, which is sufficient
+(`robustOpen_of_persistence`) and strictly stronger (`persistence_not_necessary`).
+The round's necessity attacks attach to that bill. "Settlement integrity" is retired
+as a single hypothesis in favour of six typed conditions, of which only counterfactual
+suppression under a declared intervention is a Robust Openness matter.
+*Rejected alternative:* presenting `(S, R+, P)` as a sufficient condition with
+independent content.
+
+### 2026-09-06 — the conditional Normative Inductor theorem names only what it uses
+
+**agent-decided, reversible.** `EndToEndHypotheses.end_to_end` is removed: six of its
+fields were opaque predicates returned unchanged in its conclusion and consumed by
+nothing. Its replacements, `NormativeInductionInterface.Evaluation.conditional_normative_inductor`
+and `deductive_normative_inductor`, are typed on the Integrity export and name only
+hypotheses their proofs consume; the second derives the uptake certificate from the
+registered effective end-to-end theorem's conformance. Integrity and Robust Openness
+enter the NI theorem through the type of the evaluation, not as predicates.
+*Rejected alternative:* relabelling the structure as a diagnostic and keeping it.
+
 ### 2026-09-05 — author consolidation: two rounds landed, the wiki restated as legitimate cognitive evolution
 
 **Maintainer-dispatched consolidation pass**, executed with write scope by the round at

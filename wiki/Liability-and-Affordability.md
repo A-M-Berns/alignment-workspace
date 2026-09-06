@@ -1,8 +1,10 @@
 # Liability and affordability
 
-**Status: open / unregistered**, except where noted. The enforcement layer's three
-narrow results are registered and carry `lean-proved`; the affordability theory
-built on top of them is current research.
+**Status: open / unregistered; realization material**, except where noted. The
+enforcement layer's three narrow results are registered and carry `lean-proved`; the
+affordability theory built on top of them is how a realization produces the
+bounded-liability hypothesis of the conditional [Normative Inductor](Normative-Inductor)
+theorem, not part of the canonical generic theory.
 
 ## The question nobody asks first
 

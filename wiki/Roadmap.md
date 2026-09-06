@@ -38,79 +38,83 @@ than over a finite model.
 
 ## Legitimacy
 
-**The shape after the September 2026 consolidation.** The conceptual architecture is
-stated on [Legitimacy](Legitimacy): legitimate evolution as
-[Integrity](Integrity) and [answerability](Diachronic-Answerability) plus
-[robust openness](Openness-Coverage-and-Non-Capture), with
-[normative induction](Normative-Induction) as the quantitative half and the
-[Normative Inductor](Normative-Inductor) as the candidate realization. The remaining
-agenda splits three ways, and the split is the most useful thing to hold onto.
+**The phase is canonicalized.** The generic theory of legitimate evolution and
+normative induction is stated on [Legitimacy](Legitimacy) and its component pages,
+its central theorems are registered, and subsequent work is realization,
+instantiation, or downstream deference research. The remaining agenda splits three
+ways, and the split is the thing to hold onto: nothing in the third list is a task for
+the generic theory, and nothing in the second is a conceptual gap.
 
-**Specification and theory work** — what the abstract theory still owes itself.
+**Genuine research** — unsolved mathematics.
 
-1. **Certify semantic transport** — item 76. The fixed-era endpoint ends in one
-   uncertified term: how much a reason changed while it waited to be answered. Within
-   an era that is a technical gap; across a self-revision it *is* the whole problem.
-   The visible route is the anchored interpretation, and the missing step is
-   quantitative — an ordering where the theorem needs a metric.
-2. **Write the legitimacy predicate.** The decomposition is fixed; a definition with a
-   conclusion a downstream consumer wants is still undone. Its open rulings are in the
-   decision ledger: whether a predicate may name a protected principal, whether
-   settlement's independence is standing or per-realization, whether disposition
-   transfers load in full.
-3. **The content of licences.** The Defeat Principle says what a disposition does;
-   which rules of a practice license contesting which debts — item 77's remainder —
-   is upstream content, and its coalition limit is what the protected-principal ruling
-   decides.
-4. **Closed-loop affordability** — item 75 — and the necessity of bounded liability —
-   item 40. Robustness for the fixed-era layer; blocks nothing above it.
+1. **Convex representability and compiler completeness** — item 79. Which anchored
+   requirements admit a sound finite rational-row realization over a security
+   fragment, and a compiler complete for a declared class. Soundness and conflict
+   certification are landed; representability of any nontrivial class is not.
+2. **Affordable service on an adaptive docket** — item 80. The predictable-window
+   scheduler is proved; closed-loop, adversarial, or growing dockets have no theorem.
+3. **Quantitative semantic transport** — item 76. A local law fixes what must be
+   transported through a representation change; the constants that enter the error
+   term are not generated from it.
+4. **A jointly compatible practical-response ecology** — item 81. An adapter
+   certifying every edge into a service occurrence against one realized response,
+   for a declared obligation class.
+5. **Liveness under endogenous contest.** Summability of contest durations is shown
+   only for exogenous durations.
+6. **Aggregation laws with several parents** — item 82 — only if an application
+   needs them; filed as a boundary, not a problem.
 
-**Realization and agent-sized theorem work** — what the Normative Inductor owes before
-its end-to-end theorem is unconditional.
+**Realization and integration** — engineering against a fixed theory.
 
-- one unified concrete representation of the history's events, and the export
-  theorem to the qualitative obligation process;
-- compiler soundness for a declared schema, convex representability of the obligation
-  language, and joint feasibility or accountable conflict;
-- affordable service under a declared workload class beyond the proved
-  predictable-window instance;
-- joint practical-response compatibility across the exposures matched to one service
-  occurrence;
-- quantitative semantic-transport certificates — the composition algebra is
-  kernel-checked, certificate generation is not;
-- effective, computable packaging of the augmented market;
-- the composed end-to-end theorem in Lean, fixture first, then generalized.
+- a `Protocol` implemented over an event log, and the builder that turns a real
+  history into an Integrity evolution with its accounts;
+- the compiler for the declared schema, and effective rows-to-vertices for the
+  compiled region;
+- the connector from the scheduler's rational budget to the enforcer's assessed net
+  worth, which is the liability hypothesis of the general conditional theorem;
+- the transport checker binding every served edge to one response receipt;
+- inhabitation of the conditional theorems' joint hypothesis packages, which is what
+  would let them be registered.
 
-**Intentionally external contracts** — bills the theory issues and does not pay.
+**External by design** — contracts the theory issues and does not pay.
 
-- A **non-capture certificate**: a theory of counterfactual or institutional capture
-  establishing that coverage, standing and corrective efficacy survive a declared
-  intervention class. Item 59 — a practice producing a burden an advisor cannot select
-  within — is its oldest form.
-- A **counterfactual-value certificate**: a theory of policy evaluation supplying
-  authenticated values for unchosen policies with calibration and ambiguity bounds
-  issued before the response. A replicated policy-evaluation ecology is one
-  illustrative target, with its causal and evaluator assumptions named.
+- settlement: interface authenticity and source trust, two separate inputs;
+- the declared coverage scope, intervention class, coupling, and protected
+  principal or relation, and a certified Robust Openness at each state under them —
+  item 59 is its oldest form;
+- semantic authentication of the protocol's predicates and of every local law's two
+  maps;
+- the practical semantics: `PracticalCert` for each served edge against the one
+  realized response, and the counterfactual identification behind it;
+- the evaluation measure and transport, committed before responses;
+- computability of the augmented market for a general assessment process.
 
-**What should no longer receive research energy.** Any rate-region or time-sharing
-geometry of enforcement intensity — the budget is a consumable stock. Any density or
-gap condition on cheap enforcement dates as a substitute for the exact criterion.
-Realized force as a measure of service — it inverts the sign of successful learning.
-Sharpening the online competitive ratio for accumulated enforcement intensity —
-proved impossible. Independent per-reason enforcement — individually feasible reasons
-can have an empty conjunction. The dimension-normalized public defect — it is not
-invariant under harmless padding. Extending the fixed-era affordability work at all.
+**Rulings still queued** in the decision ledger: whether the legitimacy predicate
+may name a protected principal — the mathematics offers no party-free alternative —
+and whether settlement independence is a standing hypothesis or per-realization —
+under either it is the same two typed inputs.
 
-The standing legitimacy items:
+**What should no longer receive research energy.** Another architecture pass over
+the generic theory. Any rate-region or time-sharing geometry of enforcement
+intensity — the budget is a consumable stock. Realized force as a measure of service
+— it inverts the sign of successful learning. Independent per-reason enforcement —
+individually feasible reasons can have an empty conjunction. The dimension-normalized
+public defect — it is not invariant under harmless padding. Extending the fixed-era
+affordability work at all. Endpoint-only openness, the null-intervention convention,
+lattice-valued content conservation as the main Integrity theory, and the
+exposure-headline Progress endpoint — each superseded by an exact witness or a typed
+repair recorded in the decision ledger.
+
+The standing legitimacy items from before the canonicalization:
 
 - Compile versioned `May` rules into certificate-checkable scopes — item 53 —
-  which is where substantive authorization content lives.
+  which is where substantive authorization content lives, now supplied through the
+  protocol's warrants.
 - State what a practice owes by way of taking up defeaters, so that basis loss is
   detectable rather than merely defined — item 54.
 - Exhibit a practice producing a burden an advisor cannot select within — item 59.
-- State a composition theorem, if one is available, connecting relational
-  answerability, auditability, and model-relative efficacy without identifying
-  them.
+- What licenses authorized disposition — item 77 — whose coalition limit is what the
+  protected-principal ruling decides.
 
 ## Deference
 

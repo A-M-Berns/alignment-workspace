@@ -7,16 +7,20 @@ current fixture results. Future legitimacy rounds land under `rounds/`.
 
 ## Start here
 
-**`checkpoint-2026-09-01/`** is the current canonical view of the whole program —
-current theory with a dependency spine, a status ledger, the supersession map, open
-problems, and the roadmap. A reader or agent should not need to reconstruct the
-theory by reading the rounds below in date order; if that is ever necessary, the
-checkpoint has a gap and the gap is the bug.
+The canonical theory is the wiki's Legitimacy page and its component pages, with
+the *legitimacy spine* section of `projects/normativity/CLAIMS.md` as its statement
+of record. The mathematical documents it was canonicalized from are
+`rounds/2026-09-07-final-pressure-pass/READINESS.md` and, beneath it,
+`rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md`; the Lean modules are
+`OccurrenceIntegrity`, `LegitimateEvolution`, `NonCaptureCertificate`,
+`NormativeInductionInterface` and `NormativeInductorComposition` under
+`lean/Workspace/Normativity/Contrib/`.
 
-The checkpoint supersedes nothing. Every round under `rounds/` remains untouched as
-provenance, including the ones later work corrected, and
-`checkpoint-2026-09-01/SUPERSESSION.md` records which of their statements are no
-longer current.
+**`checkpoint-2026-09-01/`** is the frozen September view of the fixed-era
+mathematics and its status ledger. Every round under `rounds/` remains untouched as
+provenance, including the ones later work corrected; the integrity constructive,
+adversarial and synthesis rounds of 2026-09-05 are the evidence for why the canonical
+types are what they are, not statements of the current theory.
 
 - Bridge round: `rounds/2026-08-13-relational-scorekeeping-bridge/`
 - Legitimacy architecture: `rounds/2026-08-12-legitimacy-architecture/`

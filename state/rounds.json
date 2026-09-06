@@ -1141,6 +1141,117 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-05-author-consolidation/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-05-integrity-constructive",
+      "date": "2026-09-05",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive",
+      "verdict": "INTEGRITY-ENTAILS-CONSERVATION-ONLY-WITH-CONTENT-CLAUSE — structural record integrity gives a unique token fate, while the minimal local content-conservation clause plus closure certificates yields three-fate answerability and composes over segments.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive/README.md",
+      "depends_on": ["2026-08-30-answerability-carriers", "2026-08-30-anchored-slices-auth-transfer", "2026-08-30-normative-continuity-settlement", "2026-08-31-faithful-semantic-preservation", "2026-09-03-defeat-landing-horty-standing"],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-05-integrity-constructive/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-05-integrity-adversary",
+      "date": "2026-09-05",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary",
+      "verdict": "GENERIC-INTEGRITY-DOES-NOT-IMPLY-DEBT-CONSERVATION — append-only replay, immutable anchors, strict citation, answerable disposal, faithful quotient carry, and monotone external settlement still admit histories that erase or weaken debt through unchecked answers, untyped closure, representation change, split/merge, mutable licence interpretation, and forged replay roots.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/README.md",
+      "depends_on": ["2026-09-05-integrity-constructive", "2026-09-03-defeat-landing-horty-standing", "2026-08-31-faithful-semantic-preservation"],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-05-integrity-adversary/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-05-noncapture-certificate",
+      "date": "2026-09-05",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate",
+      "verdict": "MINIMAL-NONCAPTURE-BILL-IS-ANCHORED-BRANCH-COVERAGE-PLUS-PRINCIPAL-STANDING — actual coverage composes with a silent-prefix clause, live-prefix route persistence-or-replacement, and principal-relative standing, while coupling authenticity, settlement delivery, and evaluator fidelity remain separately typed inputs.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate/README.md",
+      "depends_on": ["2026-08-25-carroll-legitimacy-test", "2026-09-03-defeat-landing-horty-standing"],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-05-noncapture-certificate/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-05-practical-certificate",
+      "date": "2026-09-05",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate",
+      "verdict": "DIRECT-EDGE-CERTIFICATE-IS-MINIMAL — Normative Induction needs only an anchored affine loss bound against the one response distribution actually realized at each service occurrence; value correspondence and adequate sets are sufficient, non-equivalent realizations.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/README.md",
+      "depends_on": ["2026-09-04-normative-inductor-realization"],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-05-practical-certificate/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-05-ni-gap-audit",
+      "date": "2026-09-05",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-05-ni-gap-audit",
+      "verdict": "CONDITIONAL-SPINE-MECHANIZED — Export accounting, row-compiler soundness, declared-workload scheduling, affine transport, finite Progress, and LI preservation now compose in Lean; semantic bills, representability, and concrete connector certificates remain external or open.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-ni-gap-audit/README.md",
+      "depends_on": ["2026-09-04-normative-inductor-realization", "2026-09-05-noncapture-certificate", "2026-09-05-practical-certificate"],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-05-ni-gap-audit/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-05-integrity-synthesis",
+      "date": "2026-09-05",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-synthesis",
+      "verdict": "INTEGRITY-SEPARATES-RECORD-FAITHFULNESS-FROM-LIFECYCLE-CONSERVATION — the surviving program uses proof-relevant segment certificates, keeps Answerability's content-fate clause explicit, bills intervention-resistant openness and practical response externally, and leaves a finite list of typed NI connectors.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-synthesis/README.md",
+      "depends_on": ["2026-09-05-integrity-constructive", "2026-09-05-integrity-adversary", "2026-09-05-noncapture-certificate", "2026-09-05-practical-certificate", "2026-09-05-ni-gap-audit"],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-05-integrity-synthesis/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-06-mathematical-consolidation",
+      "date": "2026-09-06",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation",
+      "verdict": "READY-FOR-FULL-CANONICALIZATION — Integrity is a boundary-indexed segment of authenticated per-port accounts whose type carries the three-fate conservation; Robust Openness is the definition and the PR85 bill is its case split; Legitimacy is their product with Diachronic Answerability derived; Progress is the transport-weighted edge loss plus residual; the Normative Inductor is two conditional theorems whose every hypothesis is consumed.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/README.md",
+      "depends_on": ["2026-09-05-integrity-synthesis", "2026-09-05-integrity-constructive", "2026-09-05-integrity-adversary", "2026-09-05-noncapture-certificate", "2026-09-05-practical-certificate", "2026-09-05-ni-gap-audit", "2026-09-04-normative-inductor-realization", "2026-09-03-defeat-landing-horty-standing"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-06-mathematical-consolidation/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-07-final-pressure-pass",
+      "date": "2026-09-07",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass",
+      "verdict": "READY-FOR-FULL-CANONICALIZATION — the public state is the accounted obligation state, Integrity is an evolution whose every target account is the propagation of its source, Legitimate Evolution requires Robust Openness on the actual branch and every counterfactual at every state of the evolution, closure yields a resolution witness and not an answer, local laws are unary in the parent, and Normative Induction is indexed by the accounted state.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/README.md",
+      "depends_on": ["2026-09-06-mathematical-consolidation", "2026-09-05-integrity-synthesis", "2026-09-05-noncapture-certificate"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-07-final-pressure-pass/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-08-canonicalization",
+      "date": "2026-09-08",
+      "project": "normativity.legitimacy",
+      "path": "projects/normativity/legitimacy/rounds/2026-09-08-canonicalization",
+      "verdict": "PHASE-CANONICALIZED — the cumulative integrity-synthesis, consolidation and pressure-pass content is landed through one merge, the wiki's legitimacy pages describe only the surviving theory of accounted states, Integrity evolution, Answerability Conservation, Robust Openness at every state, legitimate segments and the edge-loss Progress bound, sixteen claims are registered as the legitimacy spine, and the frontier is three lists.",
+      "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-08-canonicalization/README.md",
+      "depends_on": ["2026-09-07-final-pressure-pass", "2026-09-06-mathematical-consolidation", "2026-09-05-integrity-synthesis"],
+      "depends_on_source": "report",
+      "registered_classes": ["lean-proved"],
+      "prompt": "prompts/2026-09-08-canonicalization/PROMPT.md",
+      "claim_changes": ["legitimacy.evolution-conservation", "legitimacy.propagate-to-segment", "legitimacy.receipts-immutable", "legitimacy.faithful-carry", "legitimacy.multiplicity-witness", "legitimacy.segment-trans", "legitimacy.endpoint-trans", "legitimacy.answerable", "legitimacy.endpoint-only-insufficient", "openness.persistence-sufficient", "openness.certplus-is-robust-openness", "openness.actual-branch-witness", "progress.edge-bound", "progress.edge-bound-quadratic", "progress.headline-separation", "ni.progress-bound"]
     }
   ]
 }

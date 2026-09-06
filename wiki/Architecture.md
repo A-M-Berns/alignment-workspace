@@ -94,10 +94,11 @@ Answerability is owing an answer; auditability is the record knowing what became
 of every debt; efficacy is the answer-demand actually reaching you. Response
 learning uses the first two. Corrigibility uses the first and the third.
 [Legitimacy](Legitimacy) is where their write and trajectory conditions meet, framed
-there as legitimate cognitive evolution: [Integrity](Integrity) and
-[answerability](Diachronic-Answerability) on the history side,
-[robust openness](Openness-Coverage-and-Non-Capture) on the intake side, and
-[normative induction](Normative-Induction) as the quantitative consequence.
+there as legitimate cognitive evolution: an [Integrity](Integrity) evolution of the
+accounted obligation state that is [robustly open](Openness-Coverage-and-Non-Capture)
+at every one of its states, with [Diachronic Answerability](Diachronic-Answerability)
+derived from the two and [normative induction](Normative-Induction) as the
+quantitative consequence.
 
 ## What the theorem does—and does not—cover
 

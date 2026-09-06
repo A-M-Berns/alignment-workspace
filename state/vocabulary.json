@@ -34,6 +34,18 @@
     {"id": "notation.selector", "preferred": "E_g", "deprecated_aliases": [], "scope": "theorem interface", "repo_identifiers": ["selector"]},
     {"id": "notation.transformation", "preferred": "F_g", "deprecated_aliases": [], "scope": "theorem interface", "repo_identifiers": ["transformation"]},
     {"id": "notation.loss", "preferred": "ℓ_t", "deprecated_aliases": ["ell_t"], "scope": "theorem interface", "repo_identifiers": ["charge_vector"]},
-    {"id": "notation.margin", "preferred": "δ_g", "deprecated_aliases": ["delta_g"], "scope": "theorem interface", "repo_identifiers": ["margin"]}
+    {"id": "notation.margin", "preferred": "δ_g", "deprecated_aliases": ["delta_g"], "scope": "theorem interface", "repo_identifiers": ["margin"]},
+    {"id": "legitimacy.obligation-state", "preferred": "accounted obligation state", "aliases": ["ObligationState", "O_P"], "deprecated_aliases": [], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.account", "preferred": "account", "deprecated_aliases": ["slice ledger", "lifecycle"], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.resolution-witness", "preferred": "resolution witness", "aliases": ["Resolution"], "deprecated_aliases": ["Evidence"], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.evolution", "preferred": "Integrity evolution", "aliases": ["Evolution"], "deprecated_aliases": ["IntegritySegment"], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.conservation", "preferred": "Answerability Conservation", "aliases": ["Conservation"], "deprecated_aliases": ["LocalConservation"], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.robust-openness", "preferred": "Robust Openness", "aliases": ["RobustOpenActual"], "deprecated_aliases": ["null intervention"], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.persistence-certificate", "preferred": "persistence certificate", "deprecated_aliases": ["persistence bill", "Non-Capture certificate"], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.legitimate-segment", "preferred": "legitimate segment", "aliases": ["LegitimateSegment"], "deprecated_aliases": [], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.legitimate", "preferred": "Legitimate", "deprecated_aliases": [], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "legitimacy.settlement-view", "preferred": "settlement view", "aliases": ["SetView"], "deprecated_aliases": ["settlement integrity"], "scope": "legitimacy", "replacement_terms": []},
+    {"id": "ni.practical-cert", "preferred": "PracticalCert", "deprecated_aliases": [], "scope": "normative induction", "replacement_terms": []},
+    {"id": "ni.progress", "preferred": "Progress", "deprecated_aliases": ["headline Progress"], "scope": "normative induction", "replacement_terms": []}
   ]
 }

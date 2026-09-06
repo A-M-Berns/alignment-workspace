@@ -19,13 +19,13 @@ The program has two research lines and one bridge:
   and preserve a future human-guided process. **Paused**, on two decisions.
 - **[Legitimacy](Legitimacy)** asks what must remain true of that process so
   deference does not merely preserve manipulation, self-authorization, or
-  corruption. This is where the current work is. Legitimacy is framed as a
-  property of *cognitive evolution* — a later state being a legitimate
-  development of an earlier one — decomposed into [Integrity](Integrity) and
-  [answerability](Diachronic-Answerability) on the history side and
-  [robust openness](Openness-Coverage-and-Non-Capture) on the intake side, with
-  [normative induction](Normative-Induction) as the quantitative half and the
-  [Normative Inductor](Normative-Inductor) as its concrete candidate realization.
+  corruption. Its generic theory is canonical: legitimacy is a property of
+  *cognitive evolution* — a later accounted obligation state being a legitimate
+  development of an earlier one — an [Integrity](Integrity) evolution that is
+  [robustly open](Openness-Coverage-and-Non-Capture) at every state, with
+  [Diachronic Answerability](Diachronic-Answerability) derived from the two,
+  [normative induction](Normative-Induction) as the quantitative half, and the
+  [Normative Inductor](Normative-Inductor) as its conditional realization.
 
 The bridge matters because good bookkeeping is not enough. A record may track
 every debt while the surrounding process prevents a challenge from reaching its
@@ -39,10 +39,10 @@ before asking how they compose.
 this is, then [Architecture](Architecture) for the common shape, then follow either
 [Normativity](Normativity) or [Deference](Deference).
 
-**Returning after time away:** [Legitimacy](Legitimacy) carries the current
-conceptual architecture and links each component to its page; the September 2026
-checkpoint in the repository is the dry statement of the fixed-era mathematics and its
-status ledger, and the decision ledger records what has been ruled since.
+**Returning after time away:** [Legitimacy](Legitimacy) carries the canonical
+theory in ten steps and links each component to its page; the legitimacy spine of
+the normativity claims registry is its statement of record, and the decision ledger
+records what has been ruled since.
 
 **Looking for current research status:** read the status section on the relevant
 line and then [Roadmap](Roadmap). Each technical page ends with immutable links
@@ -63,11 +63,12 @@ to the underlying evidence.
 - **Paused** describes a line that is not being worked, with what it is waiting
   on named.
 
-The normativity line's traderization results and the deference line's finite
-results are registered and carry `lean-proved`. Everything else discussed here is
-open, a living note, or unregistered research: its round verdicts and evidence
-strengths are preserved, and the wiki does not upgrade any of it to Established.
-**Deference is paused** on two decisions; normativity is where the work is.
+The normativity line's traderization results, the legitimacy spine, and the
+deference line's finite results are registered and carry `lean-proved`. Everything
+else discussed here is open, a living note, or unregistered research: its round
+verdicts and evidence strengths are preserved, and the wiki does not upgrade any of
+it to Established. **Deference is paused** on two decisions; the legitimacy theory is
+canonical and its remaining work is realization.
 
 ## Wiki and lab
 
