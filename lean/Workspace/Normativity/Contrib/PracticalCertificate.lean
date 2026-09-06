@@ -337,6 +337,90 @@ theorem union_bound_two {Q : Type*} [DecidableEq Q] (menu A₁ A₂ : Finset Q)
       exact hp q (Finset.mem_sdiff.mp hq).1
   linarith
 
+/-! ## 7. Headline exposure loss versus edge response loss
+
+The public Progress statistic is indexed by exposures, while practical certificates
+are indexed by exposure/service edges.  This adapter lemma is the missing summation
+step: supported edges dominate the headline exposure loss, and unmatched row mass is
+charged at the global loss bound `D`. -/
+
+/-- A subtransport whose supported edge losses dominate the headline exposure loss
+bounds total headline loss by transported edge loss plus the usual residual charge. -/
+theorem headline_loss_from_edge_losses {E S : Type*} [DecidableEq E] [DecidableEq S]
+    (exposures : Finset E) (services : Finset S)
+    {μ ell : E → ℝ} {T edgeLoss : E → S → ℝ} {D : ℝ}
+    (hD : 0 ≤ D)
+    (hμ : ∀ e ∈ exposures, 0 ≤ μ e)
+    (hprob : ∑ e ∈ exposures, μ e = 1)
+    (hT : ∀ e ∈ exposures, ∀ s ∈ services, 0 ≤ T e s)
+    (hrow : ∀ e ∈ exposures, ∑ s ∈ services, T e s ≤ μ e)
+    (hell0 : ∀ e ∈ exposures, 0 ≤ ell e)
+    (hellD : ∀ e ∈ exposures, ell e ≤ D)
+    (hedge : ∀ e ∈ exposures, ∀ s ∈ services, 0 < T e s → ell e ≤ edgeLoss e s) :
+    ∑ e ∈ exposures, μ e * ell e ≤
+      (∑ e ∈ exposures, ∑ s ∈ services, T e s * edgeLoss e s) +
+        D * (1 - ∑ e ∈ exposures, ∑ s ∈ services, T e s) := by
+  have hper : ∀ e ∈ exposures,
+      μ e * ell e ≤ (∑ s ∈ services, T e s * edgeLoss e s) +
+        D * (μ e - ∑ s ∈ services, T e s) := by
+    intro e he
+    have hmatched : (∑ s ∈ services, T e s) * ell e ≤
+        ∑ s ∈ services, T e s * edgeLoss e s := by
+      rw [Finset.sum_mul]
+      apply Finset.sum_le_sum
+      intro s hs
+      by_cases hpos : 0 < T e s
+      · exact mul_le_mul_of_nonneg_left (hedge e he s hs hpos) (hT e he s hs)
+      · have hz : T e s = 0 := le_antisymm (not_lt.mp hpos) (hT e he s hs)
+        simp [hz]
+    have hres0 : 0 ≤ μ e - ∑ s ∈ services, T e s := sub_nonneg.mpr (hrow e he)
+    have hres : (μ e - ∑ s ∈ services, T e s) * ell e ≤
+        D * (μ e - ∑ s ∈ services, T e s) := by
+      nlinarith [mul_le_mul_of_nonneg_left (hellD e he) hres0]
+    nlinarith
+  calc
+    ∑ e ∈ exposures, μ e * ell e ≤
+        ∑ e ∈ exposures, ((∑ s ∈ services, T e s * edgeLoss e s) +
+          D * (μ e - ∑ s ∈ services, T e s)) := by
+            apply Finset.sum_le_sum
+            intro e he
+            exact hper e he
+    _ = (∑ e ∈ exposures, ∑ s ∈ services, T e s * edgeLoss e s) +
+        D * (1 - ∑ e ∈ exposures, ∑ s ∈ services, T e s) := by
+          rw [Finset.sum_add_distrib, ← Finset.mul_sum]
+          rw [Finset.sum_sub_distrib, hprob]
+
+/-! A two-exposure, one-service witness: only the zero-loss exposure is transported;
+the unit-loss exposure is paid entirely through residual mass. -/
+
+def headlineWitnessExposures : Finset (Fin 2) := Finset.univ
+def headlineWitnessServices : Finset (Fin 1) := Finset.univ
+noncomputable def headlineWitnessMu : Fin 2 → ℝ := ![1/2, 1/2]
+noncomputable def headlineWitnessLoss : Fin 2 → ℝ := ![0, 1]
+noncomputable def headlineWitnessT : Fin 2 → Fin 1 → ℝ := fun e _ => ![1/2, 0] e
+noncomputable def headlineWitnessEdgeLoss : Fin 2 → Fin 1 → ℝ := fun e _ => ![0, 1] e
+
+theorem headline_loss_from_edge_losses_inhabited :
+    ∑ e ∈ headlineWitnessExposures, headlineWitnessMu e * headlineWitnessLoss e ≤
+      (∑ e ∈ headlineWitnessExposures, ∑ s ∈ headlineWitnessServices,
+        headlineWitnessT e s * headlineWitnessEdgeLoss e s) +
+        1 * (1 - ∑ e ∈ headlineWitnessExposures, ∑ s ∈ headlineWitnessServices,
+          headlineWitnessT e s) := by
+  apply headline_loss_from_edge_losses headlineWitnessExposures headlineWitnessServices
+      (D := 1)
+  · norm_num
+  · intro e _; fin_cases e <;> simp [headlineWitnessMu]
+  · simp [headlineWitnessExposures, headlineWitnessMu, Fin.sum_univ_two]
+    norm_num
+  · intro e _ s _; fin_cases e <;> fin_cases s <;> simp [headlineWitnessT]
+  · intro e _; fin_cases e <;> simp [headlineWitnessT, headlineWitnessMu,
+      headlineWitnessServices]
+  · intro e _; fin_cases e <;> simp [headlineWitnessLoss]
+  · intro e _; fin_cases e <;> simp [headlineWitnessLoss]
+  · intro e _ s _ hpos
+    fin_cases e <;> fin_cases s <;> simp_all [headlineWitnessT, headlineWitnessLoss,
+      headlineWitnessEdgeLoss]
+
 #print axioms proxy_le_defect
 #print axioms proxy_route
 #print axioms adequate_set_route
@@ -350,5 +434,7 @@ theorem union_bound_two {Q : Type*} [DecidableEq Q] (menu A₁ A₂ : Finset Q)
 #print axioms witness_losses_attained
 #print axioms regret_dominance_vacuous_on_forbidden_optimum
 #print axioms union_bound_two
+#print axioms headline_loss_from_edge_losses
+#print axioms headline_loss_from_edge_losses_inhabited
 
 end Workspace.Normativity.Contrib.PracticalCertificate

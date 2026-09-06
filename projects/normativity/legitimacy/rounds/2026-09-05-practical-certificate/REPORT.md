@@ -35,6 +35,15 @@ this by requiring every positive transport edge `(e,s)` to cite and pass its
 certificate against `responseReceipt(s)`.  Edgewise existence with different response
 witnesses is insufficient.
 
+The end-to-end finite Progress theorem exposes one further adapter obligation because
+its headline loss is `ell(e)` while edge certificates bound `Lambda_es(Pi_s)`.  For
+every evaluated exposure require `0<=ell(e)<=D`; for every positive transport edge
+require `ell(e)<=Lambda_es(Pi_s)`.  This belongs to the evaluation/transport adapter,
+not `PracticalCert`.  `headline_loss_from_edge_losses` Lean-proves that these premises
+bound headline loss by transported edge loss plus the existing `D r_N` charge.
+`CROSS_RESPONSE_E.md` gives the typing and explains why equality and an edge-indexed
+redesign are unnecessary.
+
 ## Factorizations
 
 The landed value-correspondence route remains sufficient.  Its exact public constants
@@ -94,7 +103,8 @@ residual instead gives both sides `1/2`.
 The new Lean module proves proxy composition, adequate-set composition, one-sided
 deterministic and randomized approximate-argmax transfer, the zero-defect bundle
 characterization, a disjoint-adequate-set lower bound, shared-coordinate disagreement,
-the forbidden-optimum necessity fact, and a two-set union bound.  It includes concrete
+the forbidden-optimum necessity fact, a two-set union bound, and the headline-to-edge
+transport summation.  It includes concrete
 inhabitation witnesses and `#print axioms` for every declaration.
 
 The exact-rational checker covers both factorizations, all constant identities, strict
@@ -156,8 +166,8 @@ the gate correctly refuses a live path that is not tracked.
    `PRIORITIES.md` filing for synthesis, not filed here.
 
 No maintainer-only judgment is reserved.  The proposed names
-`PracticalCert`, `JointPracticalAdequacy`, `proxy route`, and `adequate-set route` are
-provisional.
+`PracticalCert`, `JointPracticalAdequacy`, `HeadlineToEdgeDominance`, `proxy route`, and
+`adequate-set route` are provisional.
 
 ## Reproduction
 
