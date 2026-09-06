@@ -1265,6 +1265,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-06-corrigibility-architecture/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-06-incentive-nonpreemption",
+      "date": "2026-09-06",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-06-incentive-nonpreemption",
+      "verdict": "LEVEL-II-MEDIATED-DELEGATION-NOT-INCENTIVE-CORRIGIBILITY — the agent's gain from substituting its own menu choice for the protected principal's is identically a selected gap plus the principal's regret, so selected trust and the cellwise principal-side decision theorem bound choice non-preemption and, composed with the mediation repair lemma, bound admissible preemption by prediction error plus selected gap plus principal error; the constitutional-violation premium is exactly the old foreclosure premium and the only hypothesis that bounds it is strictly stronger than the bound, so Levels III and IV are not reached.",
+      "verdict_source": "projects/deference/rounds/2026-09-06-incentive-nonpreemption/README.md",
+      "depends_on": ["2026-09-06-corrigibility-architecture", "2026-08-11-deference-finite-kernel", "2026-08-12-corpus-reconciliation"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-06-incentive-nonpreemption/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

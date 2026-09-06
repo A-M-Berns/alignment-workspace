@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 207 names, 122 of them Lean only
+## deference — 222 names, 132 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -47,7 +47,7 @@ change, and the count of those is the size of the free choice remaining.
 | `staticView_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note | `Workspace.Deference.Contrib.StaticViewFactorization.staticView_eq` |
 | `unitTrader_netWorth_eq` | theorem | 2026-08-11-phase-ii-prediction | registry, note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader_netWorth_eq` |
 | `unpredictability_separates` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.SubstitutionSeparation.unpredictability_separates` |
-| `value_eq_of_price_realization_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note | `Workspace.Deference.Contrib.StaticViewFactorization.value_eq_of_price_realization_eq` |
+| `value_eq_of_price_realization_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note, prose | `Workspace.Deference.Contrib.StaticViewFactorization.value_eq_of_price_realization_eq` |
 | `namespaceIsLive` | def | unrecorded | Lean only | `Workspace.Deference.namespaceIsLive` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
@@ -205,6 +205,21 @@ change, and the count of those is the size of the free choice remaining.
 | `vE` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vE` |
 | `vH` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vH` |
 | `vstep` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vstep` |
+| `EXanti` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXanti` |
+| `EXnv` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXnv` |
+| `J` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.J` |
+| `W` | def | unrecorded | note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.W` |
+| `agentDiff` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.agentDiff` |
+| `b` | def | unrecorded | wiki | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.b` |
+| `p` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.p` |
+| `pairGap` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.pairGap` |
+| `principalDiff` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.principalDiff` |
+| `principalRegret` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.principalRegret` |
+| `principalRegretPlus` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.principalRegretPlus` |
+| `selected` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.selected` |
+| `selectedGap` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.selectedGap` |
+| `selectedGapPlus` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.selectedGapPlus` |
+| `w` | def | unrecorded | prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.w` |
 | `Architecture` | structure | 2026-08-11-stage-v-li-native | prose | `Workspace.Deference.Contrib.StaticViewFactorization.WorkedCase.Architecture` |
 | `FactorsThroughStaticView` | def | 2026-08-11-stage-v-li-native | note | `Workspace.Deference.Contrib.StaticViewFactorization.FactorsThroughStaticView` |
 | `agentAuthorized` | def | 2026-08-11-stage-v-li-native | Lean only | `Workspace.Deference.Contrib.StaticViewFactorization.WorkedCase.agentAuthorized` |
