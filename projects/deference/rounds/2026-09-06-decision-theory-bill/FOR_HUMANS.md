@@ -17,15 +17,19 @@ preference mass over certified adequate mass, per unit of defect relative to the
 The natural hard gate is not: at every positive defect it can execute an inadequate
 response with certainty.  Continuity is the entire decision-theoretic content.
 
-**What the constant hides.**  The ramp can be at most half the certified margin, so the
-constant is inversely proportional to the margin, and the Progress theorem charges it
-through its amplification hypothesis.  Market error must vanish *relative to the margin*.
-The margin itself is not decision theory: where adequacy is derivable from the compiled
-obligations, Logical Induction supplies it asymptotically along any efficiently codeable
-sequence of adequacy theorems, with no rate; where adequacy is known only by later
-settlement, only weighted-average accuracy is available, which is the classwise Progress
-the general theorem already states.  Traderization controls distance to the region;
-positive action needs a completeness certificate, deductive or external.
+**What the constant hides.**  The constant is charged through the Progress theorem's
+amplification hypothesis, so the exact end-to-end condition is the one already in the
+theorem; the local reading is that market error must shrink relative to the certified
+adequacy margin with the inadequate-to-adequate preference-mass ratio controlled.  The
+margin itself is not decision theory, and it comes in two types that must not be
+confused: a margin the *compiler* places at the region point (completeness — the region
+must positively mark an adequate response, not merely refute inadequate ones), or a
+margin the *market* displays on its own, which a learning theorem about prices could
+supply.  Both are pointwise and apply to adequacy that is derivable or externally
+certified.  Adequacy learned only through later settlement is outside the static theorem
+altogether; the bridge from average calibration to average inadequate-action mass is not
+proved and is recorded as open.  Traderization controls distance to the region; positive
+action needs a separate margin certificate.
 
 **Normativity is not the task objective.**  A finite additive penalty is bought by any
 task stake above the penalty times the loss range; a gate never consults the forbidden

@@ -100,6 +100,17 @@ relative defect*; `|Q|` and `pmin` disappear.  `Margin` is `MarginMass` with one
 (`marginMass_of_margin`), and the coarse bound is the sharp one with `W = pmin` and the
 inadequate mass bounded by `|Q| pmax` (`coarse_le_sharp_bound`).
 
+**Two margin routes.**  `MarginMass` is a condition on the *region point* `u`: the
+compiler positively marks adequate responses (route A, compiler completeness — the region
+must derive `Adequate(q)` for some `q`, not merely refute `Adequate(q')` for inadequate
+`q'`).  `MarginDisplayed` is the same condition on the *displayed* scores `b`
+(`softGate_massOff_le_displayed`, LEAN): the region only excludes, and the market
+independently displays a marked adequate response, with no restriction `d ≤ δ`.  Route A
+implies route B when `d ≤ δ` (`marginDisplayed_of_marginMass`).  A learning theorem about
+`b` — such as provability induction driving the price of an adequacy *theorem* to one —
+is evidence for route B and never for route A; the two must not be conflated.  Neither is
+established at a realized market here.
+
 **Inquiry is a wrapper, not part of these theorems.**  `gateWithInquiry` on `Option Q`
 is the soft gate when `total ≥ W` and the point mass on `none` otherwise; under
 `MarginMass` at mass `W` and `d ≤ δ` the wrapper never fires
@@ -127,31 +138,39 @@ so the smallest admissible `Γ` is `D · sup_s [κ_s · T_s · Σlam / lam s]` w
 D · sup_s [κ_s T_s Σlam / lam s] · √(Σρ / Σlam) + Σ T εad + D · residual .
 ```
 
-Consequences, each exact:
+Consequences:
 
-- `d_s → 0` is not enough.  With `κ_s = (Σ_{∉A} pref)/(W_s δ_s)`, Progress vanishes only
-  if `κ_s d_s` vanishes in the service-weighted sense the modulus expresses, i.e. the
-  certified margin `δ_s` and the adequate mass `W_s` must not shrink faster than the
-  defect.  A menu growing without bound (`Σ_{∉A} pref → ∞`) or a margin vanishing
-  (`δ_s → 0`) defeats Progress at zero defect.  The amplification hypothesis is exactly
-  where this is charged; it was already the theorem-level place, and the gate makes the
-  charge legible.
-- **Optimal ramp.**  `κ_s ∝ 1/δ_s` and `Margin` needs `τ + 2δ_s ≤ u(q₀)`, so the widest
-  admissible ramp is half the certified margin `m_s = u(q₀) − τ`, giving
-  `κ_s = 2 (Σ_{∉A} pref)/(W_s m_s)`.  A wider ramp than the margin allows breaks
-  `Margin`; a narrower one raises `κ`.  The schedule is `δ_s = m_s / 2`, and the rate
-  condition is `d_s / m_s → 0`: **market error must vanish relative to the certified
-  margin.**
-- Task selectivity: within the ramp band adequate responses are down-weighted; a wider
-  ramp is less selective among weakly marked adequate responses.  Task competence is not
-  part of `(R)`, so this trade-off is the application's.
+- **The exact end-to-end condition is the amplification/modulus condition, nothing
+  shorter.**  With the sharp gate `κ_s = P⁻_s / (W_s δ_s)`, `P⁻_s = Σ_{q ∉ A_s} pref_s(q)`,
+  the certificate constants enter Progress only through the `Γ` the amplification
+  hypothesis admits and the modulus `Γ √(Σρ/Σlam)`.  The local intuition — *market error
+  must shrink relative to the certified adequacy margin, with the inadequate/adequate
+  preference-mass ratio controlled* — is what makes `Γ` uniformly bounded; it is a
+  sufficient reading under uniformity in `s`, not the theorem's condition.  A growing
+  menu or a shrinking margin does not "defeat Progress at zero defect": at exact zero
+  defect the local gate loss still vanishes.  What it does is remove a useful uniform
+  certificate, so that no `Γ` bounds the amplification uniformly and the modulus term
+  does not vanish with the defect.
+- **Ramp width.**  `κ_s ∝ 1/δ_s`, and `MarginMass` at `τ + 2δ_s` needs the certified
+  mass `W_s = W_s(δ_s)` of responses marked at that height, which can only fall as
+  `δ_s` grows.  So the constant is `κ_s(δ) = P⁻_s / (W_s(δ) δ)` and the natural design
+  objective is `δ* ∈ argmax_δ W_s(δ) δ` at fixed numerator.  Only when `W_s` is held
+  fixed does "half the certified margin" minimize the explicit `1/δ` factor.
+- **Task selectivity.**  Within the ramp band adequate responses are down-weighted; a
+  wider ramp is less selective among weakly marked adequate responses.  Task competence
+  is not part of `(R)`, so this trade-off is the application's.
 
 ## 6. The bill, stated
 
 Decision theory owes a **sound Lipschitz adapter** (§3), realized by a soft gate (§4),
 with `κ` bounded relative to the market's defect (§5).  Semantics owes `Region` (the
-region refutes inadequacy at its points), `MarginMass` (it marks adequate responses with
-margin and mass — `PRIORITIES.md` item 85), and `(D2)`.  The application owes: the
+region refutes inadequacy at its points), a margin by route A (`MarginMass`, compiler
+completeness) or route B (`MarginDisplayed`, a displayed-score learning theorem) —
+`PRIORITIES.md` item 85 — and `(D2)`.  All of these are pointwise at the occasion: the
+static theorem applies to deductively or externally certified adequacy.  Adequacy that
+is known only through later settlement may not even supply pointwise `Region`, and no
+theorem here converts average calibration of the scores into average inadequate-action
+mass; that bridge is **OPEN** (`NORMATIVE_CHOICE_THEOREM.md` §6).  The application owes: the
 inquiry semantics (`⊥` charged at `D` through the residual, or `Adequate(⊥)` compiled so
 that inquiry is an ordinary response, `NORMATIVE_CHOICE_THEOREM.md` §4), the evaluation
 protocol, the menu, `pref`, and the ramp schedule.  Task competence inside the read-adequate

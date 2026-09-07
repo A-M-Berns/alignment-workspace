@@ -29,6 +29,13 @@ positive task preference and normalizes.
 * `softGate_coupling`, `softGate_practicalCert` — the coupling for every `d ≥ 0` given
   a positive normalizer, and its composition with `adequate_set_route`: `PracticalCert`
   with `M = D κ`, `ε = εad`.
+* Two margin routes.  Route A, `MarginMass`, is a condition on the *region point* `u`:
+  the compiler positively marks adequate responses (completeness).  Route B,
+  `MarginDisplayed`, is the same condition on the *displayed* scores `b`
+  (`softGate_massOff_le_displayed`): the region only excludes inadequate responses and
+  the market independently displays a marked adequate one, e.g. by a learning theorem
+  about `b`.  Route A implies route B when `d ≤ δ` (`marginDisplayed_of_marginMass`).
+  Neither route is established at any realized market here; both are hypotheses.
 * `gateWithInquiry` — the total map on `Option Q`: the soft gate when the normalizer
   reaches a floor `W`, the point mass on inquiry otherwise.  Under `MarginMass` at mass
   `W` and `d ≤ δ` the inquiry branch never fires (`gateWithInquiry_regime`).  Nothing is
@@ -349,6 +356,90 @@ theorem coarse_le_sharp_bound (hmax : ∀ q, pref q ≤ pmax) (hpm : 0 ≤ pmax)
   apply div_le_div_of_nonneg_right _ (mul_nonneg hpmin.le hδ.le)
   exact mul_le_mul_of_nonneg_right hS hd0
 
+
+/-! ### Route B: a margin on the displayed scores
+
+`MarginMass` is a condition on the region point `u` — the compiler positively marks
+adequate responses (route A).  If the region only *excludes* inadequate responses and
+the displayed scores independently carry a marked adequate response (route B, e.g. by a
+learning theorem about `b`), the same bound holds with the margin read on `b` and no
+restriction `d ≤ δ`; the region point is used only for the exclusion. -/
+
+/-- A certified set of adequate responses each displayed at `τ + δ` or above, carrying
+preference mass at least `W`.  A condition on `b`, not on `u`. -/
+def MarginDisplayed (b pref : Q → ℝ) (A A₁ : Finset Q) (τ δ W : ℝ) : Prop :=
+  A₁ ⊆ A ∧ (∀ q ∈ A₁, τ + δ ≤ b q) ∧ W ≤ ∑ q ∈ A₁, pref q
+
+omit [DecidableEq Q] in
+/-- Under `MarginDisplayed` the normalizer is at least `W`, whatever `d`. -/
+theorem total_ge_W_displayed {A₁ : Finset Q} {W : ℝ} (hδ : 0 < δ) (hpref : ∀ q, 0 ≤ pref q)
+    (hM : MarginDisplayed b pref A A₁ τ δ W) :
+    W ≤ total b pref τ δ := by
+  obtain ⟨_, hmark, hmass⟩ := hM
+  have hw : ∀ q ∈ A₁, weight b pref τ δ q = pref q := by
+    intro q hq
+    unfold weight
+    rw [ramp_eq_one, one_mul]
+    rw [le_div_iff₀ hδ]
+    linarith [hmark q hq]
+  calc W ≤ ∑ q ∈ A₁, pref q := hmass
+    _ = ∑ q ∈ A₁, weight b pref τ δ q := (Finset.sum_congr rfl hw).symm
+    _ ≤ total b pref τ δ := by
+        unfold total
+        exact Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _)
+          fun q _ _ => weight_nonneg hpref q
+
+/-- **Soft-gate coupling, displayed-margin route.**  Region exclusion at `u`, `Within b u d`,
+and a displayed margin of mass `W > 0` on `b` give the same sharp bound for every `d ≥ 0`. -/
+theorem softGate_massOff_le_displayed {A₁ : Finset Q} {W : ℝ} (hδ : 0 < δ) (hd0 : 0 ≤ d)
+    (hpref : ∀ q, 0 ≤ pref q) (hWpos : 0 < W)
+    (hR : Region u A τ) (hM : MarginDisplayed b pref A A₁ τ δ W) (hW : Within b u d) :
+    massOff (softGate b pref τ δ) A ≤ ((∑ q ∈ univ \ A, pref q) / W) * (d / δ) := by
+  have hZ : W ≤ total b pref τ δ := total_ge_W_displayed hδ hpref hM
+  have hZpos : 0 < total b pref τ δ := lt_of_lt_of_le hWpos hZ
+  have hnum : ∑ q ∈ univ \ A, weight b pref τ δ q ≤ (∑ q ∈ univ \ A, pref q) * (d / δ) := by
+    rw [Finset.sum_mul]
+    apply Finset.sum_le_sum
+    intro q hq
+    have hqA := (Finset.mem_sdiff.mp hq).2
+    have hb : b q ≤ τ + d := by
+      have := (abs_le.mp (hW q)).2
+      have := hR q hqA
+      linarith
+    have hr : ramp ((b q - τ) / δ) ≤ d / δ := by
+      calc ramp ((b q - τ) / δ) ≤ max 0 ((b q - τ) / δ) := ramp_le _
+        _ ≤ d / δ := by
+            apply max_le (div_nonneg hd0 hδ.le)
+            exact div_le_div_of_nonneg_right (by linarith) hδ.le
+    calc weight b pref τ δ q = ramp ((b q - τ) / δ) * pref q := rfl
+      _ ≤ (d / δ) * pref q := mul_le_mul_of_nonneg_right hr (hpref q)
+      _ = pref q * (d / δ) := by ring
+  have hmass : massOff (softGate b pref τ δ) A
+      = (∑ q ∈ univ \ A, weight b pref τ δ q) / total b pref τ δ := by
+    unfold massOff softGate
+    rw [Finset.sum_div]
+  have hS : 0 ≤ ∑ q ∈ univ \ A, pref q := Finset.sum_nonneg fun q _ => hpref q
+  rw [hmass, div_le_iff₀ hZpos]
+  calc ∑ q ∈ univ \ A, weight b pref τ δ q
+      ≤ (∑ q ∈ univ \ A, pref q) * (d / δ) := hnum
+    _ = ((∑ q ∈ univ \ A, pref q) / W) * (d / δ) * W := by
+        field_simp
+    _ ≤ ((∑ q ∈ univ \ A, pref q) / W) * (d / δ) * total b pref τ δ := by
+        apply mul_le_mul_of_nonneg_left hZ
+        exact mul_nonneg (div_nonneg hS hWpos.le) (div_nonneg hd0 hδ.le)
+
+omit [Fintype Q] [DecidableEq Q] in
+/-- Route A implies route B when `d ≤ δ`: a compiled margin of `2δ` at `u` is a displayed
+margin of `δ` at `b`. -/
+theorem marginDisplayed_of_marginMass {A₁ : Finset Q} {W : ℝ}
+    (hM : MarginMass u pref A A₁ τ δ W) (hW : Within b u d) (hd : d ≤ δ) :
+    MarginDisplayed b pref A A₁ τ δ W := by
+  obtain ⟨hsub, hmark, hmass⟩ := hM
+  refine ⟨hsub, fun q hq => ?_, hmass⟩
+  have := (abs_le.mp (hW q)).1
+  have := hmark q hq
+  linarith
+
 /-! ### Inquiry as a wrapper
 
 The theorems above are stated on the regime where the normalizer is positive.  When no
@@ -508,6 +599,9 @@ end Workspace.Normativity.Contrib.GatedChoice
 #print axioms Workspace.Normativity.Contrib.GatedChoice.softGate_massOff_le_sharp
 #print axioms Workspace.Normativity.Contrib.GatedChoice.marginMass_of_margin
 #print axioms Workspace.Normativity.Contrib.GatedChoice.coarse_le_sharp_bound
+#print axioms Workspace.Normativity.Contrib.GatedChoice.total_ge_W_displayed
+#print axioms Workspace.Normativity.Contrib.GatedChoice.softGate_massOff_le_displayed
+#print axioms Workspace.Normativity.Contrib.GatedChoice.marginDisplayed_of_marginMass
 #print axioms Workspace.Normativity.Contrib.GatedChoice.gateWithInquiry_some
 #print axioms Workspace.Normativity.Contrib.GatedChoice.gateWithInquiry_none
 #print axioms Workspace.Normativity.Contrib.GatedChoice.gateWithInquiry_regime

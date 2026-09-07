@@ -29,10 +29,11 @@ The six answers the exploratory dispatch's §21 asks for, as corrected:
 5. **Reflective stability.**  A representation (`collapse`) plus strict-prestate
    authorization, plus the domain condition; not a theorem about preferences, and the
    "preserving successor dominates" reading is the domain condition restated.
-6. **Where a new theorem is necessary.**  Margin realization with its rate compatibility
-   through the amplification hypothesis (`d_s / m_s → 0`), and gated bounded rationality
-   with endogenous admissibility, where `test_dynamic` shows comparator restriction
-   without dynamic evaluation is vacuous.
+6. **Where a new theorem is necessary.**  Margin realization on either route with the
+   amplification `Γ` uniformly bounded; the averaged calibration bridge for empirical
+   adequacy, which is open; and gated bounded rationality with endogenous admissibility,
+   where `test_dynamic` shows comparator restriction without dynamic evaluation is
+   vacuous.
 
 ## What the pressure pass changed
 
@@ -40,7 +41,9 @@ The six answers the exploratory dispatch's §21 asks for, as corrected:
 |---|---|---|
 | `softGate_practicalCert` discharges soundness, continuity and inquiry | the Lean is on the regime `total > 0`; no `⊥` | inquiry is `gateWithInquiry`, a wrapper; theorems hold on its gate regime |
 | a constraint is non-compensable iff it restricts the domain | not proved; lexicographic and veto orders realize it too | the weaker claim, exactly `scalar_bribery` + `gate_invariant` |
-| `κ = |Q| pmax/(pmin δ)` as an implementation detail | it is charged through amplification; `δ ≤ m/2` | §5 of the bill: rate condition `d_s/m_s → 0`; sharp constant in Lean |
+| `κ = |Q| pmax/(pmin δ)` as an implementation detail | it is charged through amplification; `W = W(δ)` | §5 of the bill: the exact condition is the amplification/modulus condition, `δ* ∈ argmax W(δ)δ`; sharp constant in Lean |
+| margin supplied by provability induction | that is a property of `b`, `MarginMass` is a property of `u` | two routes in Lean: `MarginMass` (route A, on `u`) and `MarginDisplayed` (route B, on `b`) |
+| unbiasedness from feedback gives the coupling in the mean | no such theorem | the empirical averaged bridge is **OPEN**; the static theorem is pointwise and applies to certified adequacy |
 | "two levels suffice", "no regress" | representational | stated as a representation plus authorization; no reflective theorem |
 | trigger/capture/containment "not decision theory" | overdrawn | "not discharged by this gate interface"; preconditions |
 | gated BRIA "fails" with endogenous admissibility | the failure is myopia, and typing restores safety | three ways distinguished (typing, dynamic evaluation, comparator restriction); restriction alone vacuous, exact fixture |
@@ -53,8 +56,8 @@ Takes as hypotheses `2026-09-08-canonicalization`, `2026-09-05-practical-certifi
 `2026-09-06-corrigibility-architecture` and `2026-09-06-incentive-nonpreemption`.
 `Oesterheld, Demski and Conitzer`, "A Theory of Bounded Inductive Rationality", TARK 2023
 (EPTCS 379, pp. 421–440), for BRIA's definitions and its Section 6 guarantee, cited not
-re-proved; `lic_provind_true` of the pinned Logical Induction dependency for the
-deductive margin regime, cited by declaration.
+re-proved; `lic_provind_true` of the pinned Logical Induction dependency as evidence of route B's
+shape, cited by declaration and not composed.
 
 ## Deviations and prompt corrections
 
@@ -73,8 +76,9 @@ deductive margin regime, cited by declaration.
 
 ## What this does not establish
 
-- That any realized market satisfies `Region` or `MarginMass`; the deductive regime is
-  asymptotic without rate, the empirical regime is average-only, finite time is external.
+- That any realized market satisfies `Region`, `MarginMass` or `MarginDisplayed`; route B's
+  asymptotics carry no rate, finite time is external, and the empirical averaged bridge
+  is open.
 - The soft gate's `ℓ¹`-Lipschitz constant; a converse to `adapter_coupling`.
 - Anything about the inquiry branch beyond its definition; anything about infinite
   menus; commutation of typed exclusions for mixed-locus failures.
@@ -92,4 +96,4 @@ deductive margin regime, cited by declaration.
 
 - Prompt author: maintainer, relayed verbatim (two dispatches).
 - Executor: Claude Fable 5.1 (Anthropic).
-- Dates: 2026-09-06 (exploratory pass), 2026-09-07 (pressure pass).
+- Dates: 2026-09-06 (exploratory pass), 2026-09-07 (pressure pass and maintainer integration pass).

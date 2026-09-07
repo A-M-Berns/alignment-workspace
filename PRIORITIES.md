@@ -2335,33 +2335,71 @@ a design choice and not a theorem.
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 `GatedChoice.softGate_practicalCert` pays the Normative Inductor's practical certificate
-with `M = D·κ`, `κ = (Σ_{q∉A} pref q)/(W·δ)` (`softGate_massOff_le_sharp`), under two
-hypotheses on the region point the displayed scores are within `d` of: inadequate
-responses score at most `τ` (`Region`) and adequate responses of preference mass at least
-`W` score at least `τ + 2δ` (`MarginMass`).  Both are deductive at a compiled region point:
-a region refutes only what the obligation logic refutes and marks only what it derives.
-Two regimes are known and neither has a rate.  Deductive: `lic_provind_true` of the pinned
-Logical Induction dependency gives prices `≈_n 1` along any efficiently codeable sequence
-of adequacy theorems, hence `Margin` eventually at any `τ + 2δ < 1`.  Empirical: adequacy
-known only by later settlement gives only unbiasedness from feedback, a transport-weighted
-average, hence the coupling in the mean and the classwise Progress of the general theorem.
-`M = D κ` is charged through `PracticalUptake.amplification`, so the end-to-end condition
-is not `d_s → 0` but `d_s / m_s → 0` with `m_s` the certified margin and `δ_s = m_s / 2`
-the widest admissible ramp (`DECISION_THEORY_BILL.md` §5).
+with `M = D·κ`, `κ = (Σ_{q∉A} pref q)/(W·δ)`, under region exclusion at the projection
+`u` (`Region`: inadequate responses score at most `τ`) and a positive margin, which has
+two types.  **Route A** (`MarginMass`, on `u`): the compiler positively marks adequate
+responses of preference mass `W` at `τ + 2δ` — a completeness condition, not soundness.
+**Route B** (`MarginDisplayed`, on the displayed scores `b`,
+`softGate_massOff_le_displayed`): the region only excludes and the market independently
+displays a marked adequate response; `lic_provind_true` of the pinned Logical Induction
+dependency (prices of an efficiently codeable sequence of adequacy theorems `≈_n 1`) is
+evidence of this route's shape, asymptotic and without rate, and it does not establish
+route A.  Both routes are pointwise at the occasion and apply to deductively or externally
+certified adequacy.  `M = D κ` is charged through `PracticalUptake.amplification`, so the
+end-to-end condition is the existing amplification/modulus condition with `Γ` uniformly
+bounded; the local reading is that market error must shrink relative to the certified
+margin with the inadequate/adequate preference-mass ratio controlled.
 
-State the classwise theorem composing provability induction (deductive case) or
-unbiasedness from feedback (empirical case) with the sharp constant and the amplification
-hypothesis at the service occasions the evaluation transports mass to; or show that no
-finite-time form exists and the margin at service times is an external certificate.
+State, for route A, the compiler completeness condition and its cost; for route B, the
+displayed-margin theorem composed with `softGate_massOff_le_displayed` and the
+amplification hypothesis at the service occasions the evaluation transports mass to; or
+the negative that no finite-time form exists on either route and the margin at service
+times is an external certificate.  Separately: adequacy known only through later
+settlement may not supply pointwise `Region`; the bridge "average score error ⇒ average
+inadequate-action mass or practical loss" is not a theorem and is filed here as open.
 
-*Deliverable shape:* the composed theorem for each regime, or the negative with a witness
-in which the transport-weighted margin shortfall does not vanish.
+*Deliverable shape:* the composed theorem for each route, or the negative with a witness;
+and the empirical averaged bridge or its negative.
 *Acceptance check:* the module audits clean and `python3 tests/run.py` is green.
 
-*Context:* `NORMATIVE_CHOICE_THEOREM.md` §6 and `DECISION_THEORY_BILL.md` §5 of
+*Context:* `NORMATIVE_CHOICE_THEOREM.md` §6 and `DECISION_THEORY_BILL.md` §4–§5 of
 `projects/deference/rounds/2026-09-06-decision-theory-bill/`.
 *Consumed by:* the gated decision adapter as the realization of `Evaluation.Pi`.
-*A solution ships:* the composed theorems, or the negative.
+*A solution ships:* the composed theorems, or the negatives.
+
+### 86. Bounded competence against legitimate continuation policies under endogenous admissibility — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The static gate is sound and Lipschitz at one occasion.  When an admissible action changes
+the next admissible set, `test_dynamic` of the decision-theory-bill round shows: legitimate
+continuation policies induce different admissibility histories, so fixed action-sequence
+regret is ill-typed; the myopic gated learner is itself legitimate and loses linearly to
+the legitimate policy that invests in an authorized amendment, so restricting comparators
+to legitimate policies does not by itself make a myopic learner competent; and domain
+typing of admissibility-changing acts gives safety without competence.  Define `Π_leg` as
+the computable continuation policies that, along their own induced trajectories, choose
+adequately and alter the admissibility process only through authorized slow-lane
+transitions.
+
+Construct a bounded learner that keeps current soft-gate adequacy, alters the
+admissibility process only under the slow-lane relation, and has bounded task regret
+against `Π_leg` — or show that no learner of the bounded-inductive-rationality shape
+(hypotheses proposing continuation policies, tested in gated blocks, scored on realized
+returns) can.  The sharp question: what is the bounded-inductive analogue of policy regret
+when each comparator induces its own legitimate future choice correspondence?  The
+published criterion covers a supplied sequence of decision problems and is myopic with
+respect to how current choices determine future ones; that is exactly what is missing.
+
+*Deliverable shape:* the learner with its guarantee and a witness on the round's
+two-state process, or the negative.
+*Acceptance check:* `python3 tests/run.py` green; any Lean audits clean.
+
+*Context:* `NORMATIVE_CHOICE_THEOREM.md` §5 and `CANDIDATE_DECISION_THEORIES.md` §2.8 of
+`projects/deference/rounds/2026-09-06-decision-theory-bill/`.
+*Consumed by:* the task-competence half of the gated architecture; the corrigibility
+specialization's investing-in-amendment case.
+*A solution ships:* the learner and theorem, or the negative.
 
 ## Workspace friction
 

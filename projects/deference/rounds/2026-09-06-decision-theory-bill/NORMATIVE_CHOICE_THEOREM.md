@@ -16,11 +16,13 @@ anchoredLoss (D b) lam ≤ (D κ) d + (εad + D θ)                  PracticalCe
 ```
 
 **Soft-gate realization** (`softGate_massOff_le_sharp`, `softGate_coupling`,
-`softGate_practicalCert`).  Under `Region u A τ`, `MarginMass u pref A A₁ τ δ W` with
-`W > 0`, `Within b u d`, and on the regime `total b > 0`:
+`softGate_practicalCert`, `softGate_massOff_le_displayed`).  Under `Region u A τ`,
+`Within b u d`, a margin of mass `W > 0` by route A (`MarginMass` on `u`) or route B
+(`MarginDisplayed` on `b`), and on the regime `total b > 0`:
 
 ```
-d ≤ δ:   massOff (softGate b) A ≤ (Σ_{q∉A} pref q) / W · (d/δ)
+d ≤ δ:   massOff (softGate b) A ≤ (Σ_{q∉A} pref q) / W · (d/δ)          (route A, MarginMass on u)
+d ≥ 0:   massOff (softGate b) A ≤ (Σ_{q∉A} pref q) / W · (d/δ)          (route B, MarginDisplayed on b)
 d ≥ 0:   massOff (softGate b) A ≤ κ d,      κ = |Q| pmax / (pmin δ)   (coarse form)
          anchoredLoss (softGate b) lam ≤ (D κ) d + εad .
 ```
@@ -41,7 +43,7 @@ adequate mass, per unit of defect relative to the ramp — is the whole rate sto
 |---|---|---|
 | legitimate reason state | the anchored obligations at a prefix (`ObligationState`) | adequacy semantics |
 | adequacy semantics (EXT) | `A ⊆ Q`, `lam ≤ εad` on `A`, `lam ≤ D` | `adapter_practicalCert`'s loss hypotheses |
-| compiled region (EXT, deductive) | `Region u A τ`, `MarginMass u pref A A₁ τ δ W` at the projection `u` | the soft gate's hypotheses |
+| compiled region (EXT) | `Region u A τ` at the projection `u`; a margin by route A (`MarginMass` on `u`, compiler completeness) or route B (`MarginDisplayed` on `b`, a displayed-score theorem) | the soft gate's hypotheses |
 | market proximity (`NormativeInductor`) | `Within b u d` with `d = defect s market` | the soft gate's `Within` |
 | soft gate (LEAN) | `massOff (softGate b) A ≤ κ d`, `κ = (Σ_{∉A} pref)/(W δ)` | `adequate_set_route`'s `hcouple`; equivalently `adapter_coupling`'s conclusion |
 | practical semantics (LEAN) | `anchoredLoss ≤ (D κ) d + εad`, i.e. `PracticalCert` with `M = D κ`, `ε = εad` | `PracticalUptake.practical` |
@@ -56,10 +58,13 @@ semantics and the rate enter.
 For one finite decision occasion with an exogenous true adequate set `A`, an encoded
 region with `Region` and `MarginMass`, and a fixed task preference:
 
-> **The static finite reason-to-action problem is closed conditional on semantic
-> margin.**  Region soundness + margin mass + a ramped adapter give everything the
-> Normative Inductor's practical-response layer consumes from decision theory, with the
-> constant `κ = (Σ_{∉A} pref)/(W δ)` charged through the amplification hypothesis.
+> **The finite static reason-to-action problem required by the Normative Inductor is
+> closed conditional on a pointwise adequacy-semantics / positive-margin interface.**
+> Region soundness + a margin (route A on `u` or route B on `b`) + a sound stable adapter
+> give everything the practical-response layer consumes from decision theory, with the
+> constant `κ = (Σ_{∉A} pref)/(W δ)` charged through the amplification hypothesis.  The
+> conceptual theorem is *sound at the normative region + stable response to score error
+> ⇒ PracticalCert*; the soft gate is one realization.
 
 Outside the static theorem, by construction: task competence among adequate responses
 (the application's, `CANDIDATE_DECISION_THEORIES.md` §2.8); actions that change the
@@ -104,10 +109,11 @@ through the residual `D · (1 − Σ T)`.  Two consequences:
   wrapper's jump from the soft gate to the point mass on `⊥` happens only when
   `MarginMass` fails at that occasion (`gateWithInquiry_regime`).  At such an occasion
   `(R)` is not claimed, so the occasion must not carry transport: the evaluation protocol,
-  committed before responses, transports mass only to occasions whose region is
-  margin-certified at compile time, and the rest is residual.  Margin is a property of
-  the compiled region point, not of the realized market, so this is decidable when `T`
-  is committed.
+  committed before responses, transports mass only to occasions that are
+  margin-certified, and the rest is residual.  On route A the margin is a property of the
+  compiled region point and is decidable when `T` is committed; on route B it is a
+  property of the realized market and must be certified before the response is scored,
+  which is the same commitment the evaluation protocol already makes for `μ` and `T`.
 - **Inquiry as a response.**  If the reason representation compiles a sentence
   `Adequate(⊥)` — inquiry is adequate exactly when the obligations conflict or
   adequacy is unsettled — then `⊥ ∈ Q` with its own score and the soft gate covers it
@@ -150,23 +156,24 @@ says what the bounded-inductive-rationality formalism would need for (iii).
 1. **Margin realization** (item 85).  Four things the word "margin" conflates:
    semantic existence of an adequate response; compiler completeness (the region
    carries a coordinate positively representing one); settlement truth of that
-   coordinate; and market accuracy (the realized market prices it above `τ + 2δ`).
-   `Region` too is deductive: a compiled region can refute only what the obligation
-   logic refutes, so at a region point inadequate responses are priced at most `τ`
-   only when their inadequacy is derivable.  Two regimes follow.  *Deductive:* when
-   adequacy and inadequacy are derivable from the compiled obligations, `Region`
-   holds at region points and `lic_provind_true` of the pinned Logical Induction
-   dependency gives, for an efficiently codeable sequence of adequacy theorems, prices
-   `≈_n 1` — hence `Margin` at any `τ + 2δ < 1` eventually along the sequence;
-   pointwise asymptotic, no rate.  *Empirical:* when adequacy is known only by later
-   settlement, neither `Region` nor `Margin` holds at the region point, and what is
-   available is unbiasedness from feedback — the transport-weighted average of the
-   price error vanishes — so the coupling holds only in the weighted mean, which is
-   the classwise Progress the general Normative Inductor theorem already states.  No
-   finite-time form exists in either regime; a finite-time margin is an external
-   certificate at service times.  This is the theorem-interface boundary:
-   **traderization controls distance to the region; positive action needs a
-   completeness/margin certificate, deductive or external.**
+   coordinate; and market accuracy (the realized market displays it above threshold).
+   The Lean has two routes with different types.  *Route A* (`MarginMass`) is on the
+   region point `u`: it holds iff the compiler positively marks some adequate response
+   — completeness, not soundness — and traderization then supplies `Within b u d`.
+   *Route B* (`MarginDisplayed`) is on the displayed scores `b`: the region only excludes,
+   and a learning theorem about `b` supplies the displayed margin.  `lic_provind_true` of
+   the pinned Logical Induction dependency is evidence of route B's shape — the price of
+   an efficiently codeable sequence of adequacy *theorems* is `≈_n 1`, asymptotically,
+   with no rate — and it never establishes `MarginMass`, which is a property of `u`.
+   Both routes are **pointwise** at the occasion and apply to deductively or externally
+   certified adequacy.  *Empirical adequacy* — known only through later settlement — is
+   different: the pointwise exclusion `q ∉ A ⇒ u q ≤ τ` may itself be unavailable, the
+   static gate theorem then says nothing, and the needed statement
+   "average score error ⇒ average inadequate-action mass or practical loss" is not a
+   theorem here.  **OPEN.**  The theorem-interface boundary is: *the static gate theorem is
+   pointwise and applies to certified adequacy; empirical adequacy requires a separate
+   averaged calibration bridge.*  No finite-time form exists on any route; a finite-time
+   margin is an external certificate at service times.
 2. **Gated bounded rationality with endogenous admissibility** (§5).
 3. **The soft gate's `ℓ¹`-Lipschitz constant** (minor): the direct proofs bypass it; the
    abstract lemma would then apply to the soft gate as an instance rather than by a

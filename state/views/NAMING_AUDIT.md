@@ -210,7 +210,7 @@ change, and the count of those is the size of the free choice remaining.
 | `J` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.J` |
 | `W` | def | unrecorded | note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.W` |
 | `agentDiff` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.agentDiff` |
-| `b` | def | unrecorded | wiki | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.b` |
+| `b` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.b` |
 | `p` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.p` |
 | `pairGap` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.pairGap` |
 | `principalDiff` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.principalDiff` |
@@ -240,7 +240,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 673 names, 532 of them Lean only
+## normativity — 674 names, 533 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -489,11 +489,12 @@ change, and the count of those is the size of the free choice remaining.
 | `wTwoSat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wTwoSat` |
 | `wTwoUnsat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wTwoUnsat` |
 | `A` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.A` |
-| `Margin` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Margin` |
+| `Margin` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.Margin` |
+| `MarginDisplayed` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.MarginDisplayed` |
 | `MarginMass` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.MarginMass` |
 | `Region` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Region` |
 | `Within` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.Within` |
-| `b` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.Witness.b` |
+| `b` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.b` |
 | `gateWithInquiry` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.gateWithInquiry` |
 | `hardGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.hardGate` |
 | `l1` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.l1` |

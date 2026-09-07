@@ -60,9 +60,10 @@ Pays `(R)` on the regime `total > 0` — `softGate_practicalCert` with the sharp
 Conflicts: the compiler's `conflict` output maps to `⊥`, or `Adequate(⊥)` is compiled and
 `⊥` is an ordinary response (`NORMATIVE_CHOICE_THEOREM.md` §4).  LI-realizable: the gate
 reads scores; adequacy prices are one instance, and the ramp is the summer soft-threshold
-weight in a new role.  **Costs:** `κ ∝ 1/δ` with `δ ≤` half the certified margin, so the
-rate condition is `d_s / m_s → 0` (`DECISION_THEORY_BILL.md` §5); the `ℓ¹`-Lipschitz
-constant of the normalized map is not derived.  **Residual exposure:** endogenous
+weight in a new role.  **Costs:** `κ = P⁻/(W(δ) δ)` is charged through the amplification hypothesis and the
+margin is a separate hypothesis on `u` (route A) or on `b` (route B)
+(`DECISION_THEORY_BILL.md` §4–§5); the `ℓ¹`-Lipschitz constant of the normalized map is
+not derived; empirical adequacy is outside the static theorem.  **Residual exposure:** endogenous
 admissibility (§2.8).
 
 ### 2.5 Lexicographic / non-Archimedean utility

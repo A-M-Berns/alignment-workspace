@@ -161,7 +161,10 @@ the assessment, not the objective: a finite additive penalty is flipped by a sta
 `λ·D` (`scalar_bribery`) and a within-domain argmax never consults the forbidden value
 (`gate_invariant`); non-compensability must appear in the choice ordering itself, of
 which domain restriction is one realization.  The static finite reason-to-action problem
-is thereby closed conditional on a deductive or external margin certificate; the next
+is thereby closed conditional on a pointwise adequacy-semantics and positive-margin
+interface — a margin compiled at the region point (`MarginMass`, route A) or displayed by
+the market (`MarginDisplayed`, route B), with adequacy known only through later
+settlement outside the static theorem and its averaged bridge open; the next
 layer is bounded competence under an admissibility process whose future depends on
 current actions, where domain typing gives safety and comparator restriction alone is
 vacuous (`test_dynamic`).  Constitutional constraints are adequate sets of the same type
