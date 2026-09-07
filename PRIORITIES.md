@@ -2274,6 +2274,31 @@ in which two occurrences are jointly closed by one successor and neither alone.
 `OccurrenceIntegrity.lean`, the `LocalLaw` docstring.
 *A solution ships:* the extension, or a statement that no application needs it.
 
+### 83. Eligible liveness and the NLAL case split in Lean — **[entry]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The corrigibility-architecture round states two results that are exact on finite
+fixtures and not in Lean. (a) **Eligible liveness:** `NormativeContinuity.persistent_opportunity`
+and `no_structural_abandonment` with `opp` and `Attention` restricted to an eligibility
+relation `Eligible(server, m)`, so that a beneficiary servicing its own amendment forever is
+persistent opportunity but zero eligible opportunity. (b) **No Laundered Authority Loss:**
+over `NonCapture.CovState`, under efficacy faithfulness (`eff` = actual affordance) and
+registration faithfulness (`rep` = a live occurrence anchored to the concern is in the
+docket), every state at which the affordance is lost is exactly one of amended, disposed,
+registered debt, or not `ActualOpen`.
+
+*Deliverable shape:* the two restated theorems with the self-service witness for (a) and
+the exhaustive case split for (b), plus a witness that dropping registration faithfulness
+readmits the laundered case.
+*Acceptance check:* the module audits clean and `python3 tests/run.py` is green.
+
+*Context:* `ARCHITECTURE.md` §6 and §10 of `projects/deference/rounds/2026-09-06-corrigibility-architecture/`;
+`src/layers.py`, `src/eligibility.py` there.
+*Consumed by:* the corrigibility theorem stack's T4 and T8.
+*A solution ships:* the two modules, or a statement of which hypothesis the Lean form
+needs that the fixture did not.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
