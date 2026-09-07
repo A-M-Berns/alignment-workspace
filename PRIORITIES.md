@@ -2419,14 +2419,17 @@ sense: pointwise via `lic_provind_true` when every `C_n` settles true, or an ave
 statement with a rate when a fraction fails.  The pointwise rate in the
 mostly-certified regime is open.
 
-**Authorship.**  `ProcessCert` is typed as the clauses designated-session, no-preview,
-no-direct-write, no-coercive-channel, assistance-allowed, each a receipt verifiable
-against the history.  Exhibit an audited protocol under which these receipts hold and
-argue — or find the additional assumption under which it can be proved — that the
-committed `V` is the principal's own.  The no-preview clause must stay narrow: it seals
-the advisor's selection and quotes for this occurrence from the session before the
-commitment and nothing else.  Any candidate that inspects `V` is excluded by
-`Neutral.certifiable_iff`.
+**Authorship.**  The object to realize is `ReasonMediatedAuthorship.Authored` with a
+reason view blind to the declared prohibited channels (`Blind R P`): the binding event is
+the principal's, and at a fixed principal policy the committed payload factors through
+the reason view (reason-mediated-authorship round).  Exhibit an audited protocol — a
+concrete `β`, `R`, `D`, `P` — whose receipts certify `ExclusiveBind`, `ReasonMediated` and
+`Blind R P`, and argue, or find the additional assumption under which it can be proved,
+that the receipts mean what they say.  `R` must be blind to writes, coercion, and the
+advisor's selection, and fine enough to record admissible influence (fixtures D, E).
+Separately certify **selection blindness** on the advisor's whole session policy, not
+merely that the principal did not read the quote (fixture H).  Any candidate that
+inspects `V` is excluded by `Neutral.certifiable_iff`.
 
 *Deliverable shape:* the ecosystem model with its availability theorem; the protocol
 with its receipts and the authorship argument or the named missing assumption; both
@@ -2434,7 +2437,9 @@ with witnesses.
 *Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
 
 *Context:* `projects/deference/rounds/2026-09-07-authority-activated-value/`
-(`AUTHORITY_ACTIVATED_VALUE.md` §§4, 7; `LI_DEFERENCE_COMPOSITION.md` §6).
+(`AUTHORITY_ACTIVATED_VALUE.md` §§4, 7; `LI_DEFERENCE_COMPOSITION.md` §6) and
+`projects/deference/rounds/2026-09-07-reason-mediated-authorship/` (`AUTHORSHIP.md`,
+`ACTIVATION_COMPOSITION.md`).
 *Consumed by:* the `(DV)` bridge of item 84 (an activated security under the no-preview
 receipt is a sealed-target security by construction); the corrigibility line's
 principal-side value.

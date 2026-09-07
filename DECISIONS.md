@@ -134,6 +134,40 @@ commit.
 
 ## Settled
 
+### 2026-09-07 — authorship of a future evaluation is exclusive binding plus reason mediation, read as a derived predicate over the answer receipt and its payload
+
+**agent-decided, reversible.** The authorship condition that enters the activation event
+of an evaluation occurrence is `ReasonMediatedAuthorship.Authored`: the binding event on
+every audited world is the principal's, and at a fixed principal-side policy the
+committed payload factors through the declared reason view
+(`reasonMediated_iff_factor`).  Its content is `blind_of_mediated`: a reason view blind
+to the declared prohibited channels makes the payload blind to them, so the regret
+yardstick cannot be steered through such a channel (`yardstick_invariant`); an
+injective reason view makes the condition vacuous and a constant one recovers the
+isolated-principal reading, so the declared view carries the normative content and is
+external.  Authorship is placed **outside** the generic protocol: `Protocol.AnswerOK` is
+evaluated at the strict prefix and cannot see the answer event, so `Bind` and `Authored`
+are a derived predicate over the receipt's `event`, the payload the authenticated history
+carries there, and the session's process receipts; exclusive binding is the existing
+`Authority.warrant` / `Authorized` typed as the principal role's binding warrant.  The
+future evaluation is a **partial** object `Ṽ` on certified worlds; activated securities
+are completion-invariant (`activated_completion_congr`), activated regret is the
+activation mass times a conditional authoritative regret defined from `Ṽ` alone
+(`regretU_eq_mass_mul_regretAuth`), and every bounded completion's regret lies in the
+exact interval `[R_U, R_U + D·η]` (`availability_transfer_completion`,
+`regret_constant_completion`).  The consumer's Integrity hypothesis is the
+occurrence-local trace `LocalLegit` (`OccurrenceLocalIntegrity.lean`), a projection of
+PR #92's `LegitimateForSegment` (`toLocalLegit`); an unrelated occurrence's Integrity
+failure does not void an intact evaluation (`Witness.unrelated_integrity_failure`).
+Selection blindness is a separate condition on the advisor's whole session policy that
+authorship does not imply (`Witness.leak`).
+*Rejected alternatives:* similarity to a no-AI counterfactual judgment as the authorship
+criterion (it is the constant-reason-view end of the same family); placing `Bind`/`Authored`
+inside `AnswerOK` (not expressible without changing the generic field); the stochastic
+kernel form as the first theorem (a corollary of the per-seed deterministic form under
+seed privacy); literal no-preview as the admissible-domain condition (fixture H);
+global `Evolution` as the consumer's Integrity hypothesis (fixture J).
+
 ### 2026-09-07 — the legitimacy→deference interface is an activated evaluation occurrence, read occurrence-locally
 
 **agent-decided, reversible.** An advisor's deference target is the *actual* future

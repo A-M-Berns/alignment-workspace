@@ -10,6 +10,7 @@
 | `NormativeContinuity.lean` (§1–3) | `prompts/2026-08-29-normative-continuity-concordance/` (executor: Claude Fable 5, Anthropic; prompt author: the maintainer with GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-29 | `prompts/2026-08-29-normative-continuity-concordance/` | — |
 | `NormativeContinuity.lean` (§4, settlement additions) | `prompts/2026-08-30-normative-continuity-settlement/` (executor: Claude Fable 5, Anthropic; prompt author: the maintainer with GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-30 | `prompts/2026-08-30-normative-continuity-settlement/` | — |
 | `AuthorityActivation.lean` | `prompts/2026-09-07-authority-activated-value/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-authority-activated-value/` | — |
+| `OccurrenceLocalIntegrity.lean` | `prompts/2026-09-07-reason-mediated-authorship/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-reason-mediated-authorship/` | — |
 
 `MaxMinRepresentation.lean` proves Ovchinnikov's max–min representation theorem
 (Beiträge zur Algebra und Geometrie 43 (2002) 297–302, Theorem 4.1) for a piecewise

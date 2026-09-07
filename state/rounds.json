@@ -1304,6 +1304,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-07-authority-activated-value/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-07-reason-mediated-authorship",
+      "date": "2026-09-07",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-07-reason-mediated-authorship",
+      "verdict": "REASON-MEDIATED-AUTHORSHIP-COMPOSES — authorship of a future evaluation is exclusive principal binding together with reason mediation, the committed payload factoring through the declared reason view at a fixed principal policy; it enters activation as a derived predicate over the answer receipt and event payload, outside the generic protocol, and its content is that a reason view blind to the prohibited channels makes the payload, and hence the regret yardstick, blind to them; the partial-evaluation defect is repaired by completion invariance, the identity R_U = p·R_auth with the authoritative regret defined from the partial object alone, and the exact completion interval [R_U, R_U + D·η]; Integrity is made occurrence-local by a projection theorem; the declared reason view's blindness and fineness remain external, and selection blindness is a separate condition authorship does not imply.",
+      "verdict_source": "projects/deference/rounds/2026-09-07-reason-mediated-authorship/README.md",
+      "depends_on": ["2026-09-07-authority-activated-value", "2026-08-11-deference-finite-kernel"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-07-reason-mediated-authorship/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

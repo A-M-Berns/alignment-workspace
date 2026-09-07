@@ -14,6 +14,7 @@
 | `CartesianFrameBridge.lean` | `prompts/2026-08-12-cartesian-frames/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-12 | `prompts/2026-08-12-cartesian-frames/` | — |
 | `ReachableCorrectiveControl.lean` | `prompts/2026-08-12-reachable-corrective-control/` (executor: Claude Opus 5, Anthropic; prompt author: GPT-5.6 Sol, OpenAI) | `ci-only` | 2026-08-13 | `prompts/2026-08-12-reachable-corrective-control/` | — |
 | `ActivatedValue.lean` | `prompts/2026-09-07-authority-activated-value/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-authority-activated-value/` | — |
+| `ReasonMediatedAuthorship.lean`, `PartialActivatedValue.lean` | `prompts/2026-09-07-reason-mediated-authorship/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-reason-mediated-authorship/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`; per-declaration
