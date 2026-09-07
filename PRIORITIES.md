@@ -2299,6 +2299,37 @@ readmits the laundered case.
 *A solution ships:* the two modules, or a statement of which hypothesis the Lean form
 needs that the fixture did not.
 
+### 84. The operative-value-security bridge — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The incentive-nonpreemption round shows that every incentive-level statement the
+architecture yields rests on one external contract: that the agent's *operative* action
+value difference between two menu items is the price of a named security with a declared
+realization semantics (`(DV)`), and that the protected values it is compared against are
+settled by an arm the agent's outputs cannot reach. Nothing on `main` is a theorem about
+`(DV)`; the replicated-evaluation ecology is a proposal, the decision adapter is not a
+trader, and `StaticViewFactorization.value_eq_of_price_realization_eq` says a value
+functional on prices and realizations cannot see authorization. Controls 6 and 7 of that
+round show that the selected-trust relation cannot distinguish a predicted or captured
+target from a sealed one.
+
+State the interface under which a decision adapter's objective *is* the price of a
+security, name the settlement provenance, and prove either that selected trust then holds
+with the calibration error as its constant — which is the protected-value-maximizer
+design, to be said so — or that a cross-evaluator relation is needed, which no Logical
+Induction fact supplies.
+
+*Deliverable shape:* the interface, one realization, and the theorem or the negative.
+*Acceptance check:* `python3 tests/run.py` green; any Lean audits clean.
+
+*Context:* `INCENTIVE_CORRIGIBILITY.md` §5 and `OPEN_PROBLEMS.md` of
+`projects/deference/rounds/2026-09-06-incentive-nonpreemption/`.
+*Consumed by:* the Level I/II theorems of that round, whose hypothesis `(ST)` it would
+realize.
+*A solution ships:* the interface with its theorem, or a statement of why the bridge is
+a design choice and not a theorem.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

@@ -134,6 +134,22 @@ commit.
 
 ## Settled
 
+### 2026-09-06 — the incentive extension of corrigibility is a named-assumption identity; Level II is claimed, Levels III and IV are not
+
+**agent-decided, reversible.** The agent's gain from substituting its choice for the
+protected principal's is identically the selected gap plus the principal's regret
+(`SelectedTrustNonPreemption.valuation_sub_eq`). The round claims Level I (choice
+non-preemption under selected trust and principal quality) and Level II
+(incentive-compatible mediated delegation: admissible non-foreclosing preemption gains at
+most prediction error plus selected gap plus the principal's decision error), and names
+the constitutional-violation premium `Φ_C` — exactly the older foreclosure premium — as
+the residual no available hypothesis bounds. Selected trust against a repair, `(CT)`, is
+recorded as strictly stronger than the bound it yields and is not adopted as a programme.
+The `CONSTITUTIONAL-NOT-INCENTIVE` verdict of the architecture round stands.
+*Rejected alternative:* presenting the schematic `(D)` as a theorem programme with `(CT)`
+as its hypothesis, which relabels incentive corrigibility on the violating class rather
+than reducing it.
+
 ### 2026-09-06 — corrigibility is targeted as relative constitutional corrigibility, a consumer of the legitimacy spine
 
 **agent-decided, reversible.** The corrigibility line's target is *relative constitutional
