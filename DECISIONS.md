@@ -134,6 +134,17 @@ commit.
 
 ## Settled
 
+### 2026-09-07 — the bibliography is exempt from the name lint
+
+**Maintainer ruling, taken in conversation and landed by the decision-theory-bill
+round.** `wiki/Sources.md` is added to `tests/name_lint.py`'s `ALLOWED_FILES`: a
+bibliography names the authors of the works it cites, and a maintainer is also an
+external author the program cites (friction F6). The allowance is one file, pinned in
+the lint's self-test; every other wiki page stays in scope, and citations in other
+tracked prose still use the backtick form.
+*Rejected alternative:* a citation-context matching rule, which would change the gate's
+logic over every document it has passed; left as F6's general fix.
+
 ### 2026-09-07 — the decision adapter is a sound Lipschitz reader of adequacy scores; the static choice problem is closed conditional on margin
 
 **agent-decided, reversible.** The Normative Inductor's decision-theory bill is the

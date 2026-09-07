@@ -22,6 +22,9 @@ Scope, deliberately narrow:
 - `DECISIONS.md` is allowed. The ledger is where this repository keeps history,
   including the entry recording a maintainer joining, which cannot be written
   without a name.
+- `wiki/Sources.md` is allowed. It is the bibliography, and a maintainer is also
+  an external author whose published work the program cites; a citation names
+  its authors (friction F6). Every other wiki page stays in scope.
 - Anything inside backticks is allowed: handles, paths, URLs and command lines
   are infrastructure, not prose about a program.
 
@@ -50,7 +53,7 @@ EXCLUDED_DIRS = ("prompts/",) + tuple(d + "/" for d in (
     "projects/deference/dose-response-note-dump-2026-07-02",
     "projects/deference/references-citations-2026-08-11",
 ))
-ALLOWED_FILES = ("DECISIONS.md",)
+ALLOWED_FILES = ("DECISIONS.md", "wiki/Sources.md")
 
 CODE_SPAN = re.compile(r"`[^`]*`")
 LINK_TARGET = re.compile(r"\]\([^)]*\)")
@@ -124,6 +127,12 @@ def self_test() -> int:
          scan("Written up by Demski.\n", "wiki/Home.md") > 0, True),
         ("no exclusion covers the wiki",
          "wiki/Home.md".startswith(EXCLUDED_DIRS), False),
+        # The bibliography is the one wiki page allowed to name an author; the
+        # allowance is a single file, not a directory, and is pinned here.
+        ("the bibliography is not scanned",
+         "wiki/Sources.md" in markdown_files(), False),
+        ("only the bibliography is allowed among wiki pages",
+         [f for f in ALLOWED_FILES if f.startswith("wiki/")], ["wiki/Sources.md"]),
     ]
     import shutil; shutil.rmtree(tmp)
     failures = 0
@@ -149,12 +158,14 @@ def main() -> int:
         for f in failures:
             print(f"  - {f}", file=sys.stderr)
         print("\n  Describe what the work is instead. Handles, paths and URLs are "
-              "fine inside backticks; DECISIONS.md is exempt as the ledger.",
+              "fine inside backticks; DECISIONS.md is exempt as the ledger and "
+              "wiki/Sources.md as the bibliography.",
               file=sys.stderr)
         return 1
 
     print(f"NAME LINT: clean over {len(files)} Markdown files "
-          f"(prompts/ and the consolidated trees out of scope, DECISIONS.md exempt)")
+          f"(prompts/ and the consolidated trees out of scope, DECISIONS.md and "
+          f"wiki/Sources.md exempt)")
     return 0
 
 

@@ -2462,6 +2462,11 @@ bullet, or a name adjacent to a title in quotes and a link. It changes a gate's
 logic, which is specification layer and retroactive over every document the gate
 has already passed, so it was not taken by the round that hit it.
 
+*2026-09-07, partial fix by maintainer direction:* `wiki/Sources.md`, the bibliography,
+is exempt from the lint as a single allowed file (`ALLOWED_FILES`), pinned in the
+lint's self-test. Citations elsewhere in tracked prose still need the backtick form;
+the citation-context matching rule above remains the general fix and is not taken.
+
 ### F7 — A round cannot record a dependency on an unindexed research checkpoint
 
 <!-- workspace-priority: project=none; dispatchable=no -->
