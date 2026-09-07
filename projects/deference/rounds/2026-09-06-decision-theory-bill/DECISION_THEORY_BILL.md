@@ -1,11 +1,10 @@
 # The decision-theory bill of the Normative Inductor theorem
 
-Extracted from `lean/Workspace/Normativity/Contrib/NormativeInductionInterface.lean`,
-`NormativeInductor.lean`, `NormativeInductorComposition.lean` and
-`PracticalCertificate.lean` on `main` at the canonicalization commit.  Types are quoted
-from the Lean; nothing is remembered notation.
+Labels: **LEAN** (`GatedChoice.lean`, `PracticalCertificate.lean`, `NormativeInductionInterface.lean`),
+**FIX** (exact fixture, named test), **PAPER**, **EXT** (external contract), **OPEN**.
+Types are quoted from the Lean on `main` at the canonicalization commit.
 
-## 1. What the theorem consumes
+## 1. What the theorem consumes — LEAN
 
 `Evaluation O Service` declares, for the accounted state `O`:
 
@@ -28,116 +27,146 @@ M ε : Occ → Service → ℝ                          the certificate constant
 PracticalCert market e s :  edgeLoss market e s ≤ M e s * defect s market + ε e s .    (R)
 ```
 
-`PracticalUptake market` packages: `0 ≤ defect`, `(R)` on every edge with `T e s > 0`,
+`PracticalUptake market` packages `(R)` on every supported edge with `0 ≤ defect`,
 `0 ≤ lam`, `0 < Σ lam`, the uptake work `lam s * defect s ^ 2 ≤ ρ s`, `0 ≤ Γ`, and the
-amplification `Σ_e T e s * M e s ≤ Γ * lam s / Σ lam`.  `progress_bound` then gives
+amplification `Σ_e T e s * M e s ≤ Γ * lam s / Σ lam`.  `progress_bound` gives
 
 ```
 progress ≤ Γ √(Σρ / Σlam) + Σ T ε + D · residual .
 ```
 
-So the theorem hands decision theory exactly one obligation: **produce `Pi` and the
-constants `M, ε` such that `(R)` holds at the realized market on every supported edge.**
-`Pi` is the decision adapter — a map from the market history to one response per
-service.  Nothing in the interface says how `Pi` reads the market, what `Response s` is,
-or how `loss` relates to `defect`; `(R)` is the whole contract.
+The theorem hands decision theory exactly one obligation: produce `Pi` and constants
+`M, ε` with `(R)` at the realized market on every supported edge, **and constants `M`
+small enough that the amplification hypothesis holds with a `Γ` that does not swallow
+the modulus** (§5).  `Pi` is the decision adapter.
 
-## 2. The factorization the repository already has
+## 2. The factorization the repository already has — LEAN
 
-`PracticalCertificate.lean` gives three routes to `(R)`; the one that separates the
-arrows is the adequate-set route:
+`adequate_set_route` (`PracticalCertificate.lean`):
 
 ```
-adequate_set_route  (menu adequate : Finset Q) {p lam : Q → ℝ}
-  hsub : adequate ⊆ menu
-  hp, hprob : p is a distribution on menu
   hadequate : ∀ q ∈ adequate, lam q ≤ εad                    (D2a) adequate ⇒ small loss
   hbound    : ∀ q ∈ menu, lam q ≤ D                           (D2b) loss range
   hcouple   : Σ_{q ∈ menu \ adequate} p q ≤ κ * d + θ         (D1)  the coupling
   ⊢ anchoredLoss menu p lam ≤ (D * κ) * d + (εad + D * θ)
 ```
 
-with `anchoredLoss menu p lam = Σ p q * lam q` the expected anchored loss of a response
-*distribution*.  Reading `p = Pi s market` as a distribution over a finite menu:
+(D2) is semantics.  (D1) is the decision-theoretic arrow: the adapter's mass on
+inadequate responses is affine in the public defect.  Nothing new is needed to *state*
+the bill; the dispatch's `d^dec` is `Σ_{q ∉ A} p q`.
 
-- **(D2)** is semantics: which responses are adequate for the anchor and what an
-  inadequate one costs.  It is the practical-semantics contract as the architecture
-  round already records it.
-- **(D1)** is the decision-theoretic arrow the dispatch asks for.  `d^dec` in the
-  dispatch's notation is the **mass the adapter places outside the adequate set**, and
-  (D1) says it is affine in the public normative defect.
+## 3. The abstract form of (D1) — LEAN
 
-The candidate factorization `d^dec ≤ C d^norm + η`, `Λ ≤ L d^dec + ε` is therefore
-already the repository's, with `d^dec := Σ_{q ∉ A} p q`, `C = κ`, `η = θ`, `L = D`,
-`ε = εad`.  Nothing needs to be added to the Lean interface to state the bill; what is
-missing is a theorem *producing* (D1).
+`adapter_coupling`: for any map `D` from score vectors to response vectors,
 
-## 3. What (D1) asks of an adapter
+```
+massOff (D u) A ≤ θ            (sound at the region point u)
+l1 (D b) (D u) ≤ κ · d         (ℓ¹-Lipschitz between b and u, d the sup-distance)
+⊢ massOff (D b) A ≤ κ · d + θ .
+```
 
-`d = dist_∞(b_s, K_s)` is the sup-distance of the displayed prices to the compiled
-region (`NormativeInductor.lean`, chosen for padding invariance).  So (D1) is a
-statement about a map from *price vectors* to *response distributions*:
+`adapter_practicalCert` composes it with `adequate_set_route`: a sound, Lipschitz adapter
+whose output is a distribution pays `(R)` with `M = D κ`, `ε = εad + D θ`.  Algebra, and
+the mature statement of the bill:
 
-> the mass the adapter places on inadequate responses is at most `κ` per unit of
-> sup-distance of the prices from the region, plus `θ`.
+> **sound on the region + Lipschitz in the scores ⇒ PracticalCert.**
 
-Split it once more, because two different things are being asked:
+This is the object decision theory owes.  It is not the soft gate; the soft gate is one
+realization (§4), and its theorems are proved directly rather than through its
+`ℓ¹`-Lipschitz constant, which is not derived (OPEN, minor).
 
-- **(D1a) region soundness** — at every region point `u ∈ K_s`, the adapter's mass off
-  the true adequate set is at most `θ`.
-- **(D1b) Lipschitz continuity** — the adapter's mass off the adequate set moves at most
-  `κ` per unit sup-distance in the prices.
+## 4. The soft-gate realization — LEAN, with its regime stated
 
-(D1a) is not purely decision theory: it says that when the market conforms to the norm
-the adapter chooses adequately, which needs the region to *encode* adequacy and the
-adapter to *read* it.  Split again:
+Scores `b`, region point `u`, threshold `τ`, ramp width `δ`, task preference `pref`:
 
-- the region encodes adequacy: inadequate responses are priced at most `τ` at region
-  points, and some adequate response is priced above `τ` with a margin
-  (`GatedChoice.Region`, `GatedChoice.Margin`) — the compiler's soundness plus the
-  market's accuracy on settling adequacy sentences, both external;
-- the adapter reads it: a gate on the adequacy price.
+```
+Region u A τ       ∀ q ∉ A, u q ≤ τ
+Margin u A τ δ     ∃ q ∈ A, τ + 2δ ≤ u q                (one witness; W = pmin)
+MarginMass ... W   A₁ ⊆ A, all marked at τ + 2δ, Σ_{A₁} pref ≥ W
+Within b u d       ∀ q, |b q − u q| ≤ d
+```
 
-(D1b) is pure decision theory, and it is where a naive adapter fails.
+`softGate b q = ramp((b q − τ)/δ) · pref q / total`.  **On the regime `total > 0`:**
 
-## 4. The bill, stated
+```
+softGate_massOff_le_sharp   d ≤ δ:  massOff ≤ (Σ_{q ∉ A} pref q) / W · (d / δ)
+softGate_massOff_le         d ≤ δ:  massOff ≤ |Q| · pmax / (pmin · δ) · d      (corollary)
+softGate_coupling           d ≥ 0:  massOff ≤ κ d + 0
+softGate_practicalCert              anchoredLoss ≤ (D κ) d + εad
+```
 
-**Decision theory owes the Normative Inductor a gate**: a map `Dec : Prices → Δ(Q ∪ {⊥})`
-such that, given a region encoding of adequacy with margin,
+The sharp constant is *inadequate preference mass over certified adequate mass, per unit
+relative defect*; `|Q|` and `pmin` disappear.  `Margin` is `MarginMass` with one witness
+(`marginMass_of_margin`), and the coarse bound is the sharp one with `W = pmin` and the
+inadequate mass bounded by `|Q| pmax` (`coarse_le_sharp_bound`).
 
-1. **(soundness)** at region points the gate's mass off the read-adequate set is at
-   most `θ`;
-2. **(continuity)** the mass off the read-adequate set is `κ`-Lipschitz in the
-   sup-norm of the prices;
-3. **(inquiry)** when no response is confidently adequate the gate returns `⊥`, which
-   is charged at `D` by the Progress statistic and is not a violation;
-4. **(competence)** among the read-adequate responses the gate's task regret against a
-   declared comparison class is small — a requirement of the application, not of
-   `(R)`, which `progress_bound` never consults.
+**Inquiry is a wrapper, not part of these theorems.**  `gateWithInquiry` on `Option Q`
+is the soft gate when `total ≥ W` and the point mass on `none` otherwise; under
+`MarginMass` at mass `W` and `d ≤ δ` the wrapper never fires
+(`gateWithInquiry_regime`), so on that regime the coupling theorems are theorems about
+it.  Nothing is proved about the inquiry branch beyond its definition; what it is
+charged is the application's inquiry semantics (§6).
 
-Semantics owes: the region encodes adequacy soundly at the realized market
-(`Region`), and adequate responses have anchored loss at most `εad` while every response
-has loss at most `D` (`(D2)`).  Implementation owes: the finite menu, the task preference,
-and the ramp width `δ`.
+**Scores, not prices.**  All hypotheses are on real vectors; adequacy prices are one
+instance.  The same theorems cover a signed adequacy margin `m(q)` with `τ = 0`, or a
+constraint-distance vector under `max_r d_r(q)` after negation.
 
-`softGate_practicalCert` (`GatedChoice.lean`) discharges 1–3 for the soft gate and
-composes with `adequate_set_route`: `(R)` with `M = D · |Q| · pmax / (pmin · δ)` and
-`ε = εad`.  Item 4 is outside `(R)` and is what a BRIA-style learner supplies inside the
-gate (`CANDIDATE_DECISION_THEORIES.md` §5).
+## 5. The rate hidden in `M = Dκ` — PAPER, algebra on the LEAN hypotheses
 
-## 5. Answers to the dispatch's four questions
+`softGate_practicalCert` supplies `M e s = D κ_s` at each service `s`.  The amplification
+hypothesis then reads
 
-1. **What does `d^dec` measure?**  The adapter's mass on inadequate responses.  Not a
-   value gap: `regret_dominance_vacuous_on_forbidden_optimum` already records that a
-   value-optimal forbidden response forces the value route's constant to absorb the whole
-   loss range.
-2. **Minimal decision-theoretic theorem sufficient for `(R)`.**  A Lipschitz, sound
-   gate (`softGate_coupling`).  It is not trivial: the hard gate has no Lipschitz
-   constant (`hardGate_discontinuous`), so continuity forces a randomized or ramped
-   adapter near the adequacy threshold.
-3. **Is `adequate_set_route` hinting at the answer?**  Yes: its `hcouple` is the bill,
-   and the route's absence of any value vector is the point — the adapter needs an
-   adequate *set*, not a utility.
-4. **Which parts are what.**  Semantics: `Region`, `(D2)`.  Decision theory: the gate,
-   its continuity, its inquiry mode, and task competence within it.  Implementation:
-   `δ`, `pref`, the menu, the ramp.
+```
+D κ_s · Σ_e T e s  ≤  Γ · lam s / Σ lam ,
+```
+
+so the smallest admissible `Γ` is `D · sup_s [κ_s · T_s · Σlam / lam s]` with
+`T_s = Σ_e T e s` the transported mass at `s`.  Progress is then bounded by
+
+```
+D · sup_s [κ_s T_s Σlam / lam s] · √(Σρ / Σlam) + Σ T εad + D · residual .
+```
+
+Consequences, each exact:
+
+- `d_s → 0` is not enough.  With `κ_s = (Σ_{∉A} pref)/(W_s δ_s)`, Progress vanishes only
+  if `κ_s d_s` vanishes in the service-weighted sense the modulus expresses, i.e. the
+  certified margin `δ_s` and the adequate mass `W_s` must not shrink faster than the
+  defect.  A menu growing without bound (`Σ_{∉A} pref → ∞`) or a margin vanishing
+  (`δ_s → 0`) defeats Progress at zero defect.  The amplification hypothesis is exactly
+  where this is charged; it was already the theorem-level place, and the gate makes the
+  charge legible.
+- **Optimal ramp.**  `κ_s ∝ 1/δ_s` and `Margin` needs `τ + 2δ_s ≤ u(q₀)`, so the widest
+  admissible ramp is half the certified margin `m_s = u(q₀) − τ`, giving
+  `κ_s = 2 (Σ_{∉A} pref)/(W_s m_s)`.  A wider ramp than the margin allows breaks
+  `Margin`; a narrower one raises `κ`.  The schedule is `δ_s = m_s / 2`, and the rate
+  condition is `d_s / m_s → 0`: **market error must vanish relative to the certified
+  margin.**
+- Task selectivity: within the ramp band adequate responses are down-weighted; a wider
+  ramp is less selective among weakly marked adequate responses.  Task competence is not
+  part of `(R)`, so this trade-off is the application's.
+
+## 6. The bill, stated
+
+Decision theory owes a **sound Lipschitz adapter** (§3), realized by a soft gate (§4),
+with `κ` bounded relative to the market's defect (§5).  Semantics owes `Region` (the
+region refutes inadequacy at its points), `MarginMass` (it marks adequate responses with
+margin and mass — `PRIORITIES.md` item 85), and `(D2)`.  The application owes: the
+inquiry semantics (`⊥` charged at `D` through the residual, or `Adequate(⊥)` compiled so
+that inquiry is an ordinary response, `NORMATIVE_CHOICE_THEOREM.md` §4), the evaluation
+protocol, the menu, `pref`, and the ramp schedule.  Task competence inside the read-adequate
+set is outside `(R)` and is the application's (`CANDIDATE_DECISION_THEORIES.md` §2.8).
+
+## 7. Answers to the dispatch's four questions
+
+1. **What `d^dec` measures.**  The adapter's mass on inadequate responses.
+2. **Minimal theorem sufficient for `(R)`.**  `adapter_coupling` + `adequate_set_route`.
+   Not trivial in the sense that matters: the hard gate is sound at every region point
+   and fails (D1) at every positive defect (`hardGate_discontinuous`), so continuity is
+   the whole decision-theoretic content.
+3. **Is `adequate_set_route` the hint?**  Yes; `hcouple` is the bill and the route's
+   absence of any value vector is the point.
+4. **Which parts are what.**  Semantics: `Region`, `MarginMass`, `(D2)`.  Decision
+   theory: soundness + continuity of the adapter, realized by a ramp.  Implementation:
+   `δ`, `pref`, menu, floor `W`.  Application: inquiry semantics, task competence,
+   evaluation protocol.

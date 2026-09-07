@@ -1,86 +1,92 @@
 # What the decision theory buys for PR89 and PR90
 
-## 1. The gate is PR89's checker and PR90's boundary, one level down
+Labels as in `DECISION_THEORY_BILL.md`.
 
-PR89's checker `{Safe, AmendRequired, Unknown}` and the compiler's three outputs
-`{region, conflict, unknown}` are the same shape as the gate's three modes: choose
-inside the read-adequate set, route a certified conflict to adjudication, or block and
-inquire.  PR90's `Π_C` is the gate's domain; `Δ^C_A` is task regret inside it; `Φ_C` is
-the value of what the gate excludes.  So the decision theory does not add a new object;
-it says what PR90's `π_P` *is* — the soft-gated chooser — and what kind of object the
-constitutional boundary must be for `Φ_C` to be the right residual: a restriction of the
-choice domain, never a term (`NORMATIVE_CHOICE_THEOREM.md` §4).
+## 1. The gate is the object PR89 and PR90 presupposed
 
-## 2. What it buys
+PR89's checker `{Safe, AmendRequired, Unknown}` and the compiler's `{region, conflict,
+unknown}` have the gate's three modes: choose inside the read-adequate set, route a
+certified conflict to inquiry, block and inquire.  PR90's `Π_C` is the gate's domain,
+`Δ^C_A` is task regret inside it, and `Φ_C` is the value of what the domain excludes.
+The decision theory adds no new object; it says what PR90's `π_P` *is* — a sound
+Lipschitz adapter — and what the constitutional boundary must be for `Φ_C` to be the
+right residual: a restriction of the choice domain, never a finitely exchangeable term
+(`CANDIDATE_DECISION_THEORIES.md` §1).  That is a claim about representation, and it is
+exactly what `scalar_bribery` and `gate_invariant` prove, no more.
 
-- **Ordinary compliance and `Φ_C` have one explanation.**  A scalar normative term makes
-  every violation purchasable at stake `λD` (`scalar_bribery`); a domain restriction makes
-  none purchasable (`gate_invariant`).  PR90's finding that `Φ_C` cannot be bounded by any
-  value-register hypothesis is the same fact: `Φ_C` is by definition the value the domain
-  restriction refuses to weigh, so a value-register bound on it is a completion.
-- **Branch deletion is anchoring** (`test_9_branch_deletion`).  The branchwise veto
-  chooser reproduces PR89's `rel`-anchoring and NLAL in the decision register: the
-  branch index is charter-declared, a destroyed branch is evaluated at its worst, and
-  the destroying act is inadmissible.  This is Soares's D4 and the foreclosure premium as
-  a property of the criterion's index rather than of the world.
-- **Foreclosure and norm hacking are one exposure** (`test_5`): an admissible act that
-  changes the next adequate set.  PR89 typed such acts as slow-lane; the gate must
-  exclude them from `𝒜_t`, and no learner-side property replaces that.
-- **Self-modification is alphabet completeness** (`test_7`, `collapse`): the gate must
-  range over successor installation, two levels suffice, and the remaining assumption
-  is PR89's `Mediates`.
+## 2. Branch persistence — an application of anchored identity, stated as a lemma
 
-## 3. Is corrigibility a separate property?
+Let `Γ_charter` be the protected branches indexed by the prestate charter, and for each
+`γ` let `A^γ ⊆ Q` be its adequate set: `q ∈ A^γ` iff `q` keeps `γ` realizable and meets
+`γ`'s baseline.  `A^const = ∩_{γ ∈ Γ_charter} A^γ`.
 
-As a *decision-theoretic type*, no: the constitution's adequate sets (branch vetoes,
-amendment requirements) and an ordinary obligation's adequate set are the same kind of
-restriction, revised by the same legitimate-evolution machinery at different lanes.  The
-synthesis of the dispatch's §19 holds at the level of type.
+**Branch Persistence Lemma** (FIX, `test_branch_persistence_adequate_set_form`; PAPER
+for the general statement, which is a one-line consequence of the definitions).  If the
+index is prestate-anchored, an action that destroys a branch's realization is inadequate
+for that branch and hence excluded from `A^const`; if the index is recomputed from the
+branches the action leaves realizable, the destroyed branch drops out of the
+intersection and the action can pass.
 
-As a *theorem*, yes, for two reasons that ordinary norms do not have:
+Two remarks.  The adequate-set formulation replaces "score the destroyed branch at its
+worst value" with explicit inadequacy, which is the form the gate consumes and needs no
+scalar.  And this is PR89's anchored applicability (`rel` read by the anchored predicate)
+and its NLAL case split in the decision register: the decision layer needs no semantics
+beyond anchoring, but it needs anchoring *of the index*, which is a slow-lane object —
+branch sets change only by amendment.
 
-1. **Self-reference of the domain.**  The constitutional adequate set constrains acts
-   that change adequate sets — including the gate's own alphabet.  Ordinary norms are
-   satisfied or violated by acts whose effects are in the world; constitutional norms
-   are satisfied or violated by acts whose effects are on the *chooser*, and whether an
-   act has such an effect is the containment question.  The ordinary case needs
-   `Region`; the constitutional case needs `Region` and `Mediates`.
+## 3. Failures classified by where they occur
+
+PR90's `Φ_C` lumps structurally different failures.  Classified by locus:
+
+| locus | failure | example | what handles it | status |
+|---|---|---|---|---|
+| **index** | the protected index is recomputed from the world | branch deletion | anchored index (§2) | exact, given anchoring |
+| **domain** | an authority-changing act executes without slow-lane authorization | norm hacking, representation change | domain typing of such acts out of `A_t` (`test_untyped_gate_is_hacked`) | exact, given the act is typed |
+| **level** | successor installation is not inside the constitutional gate | ungated successor | two-level domain (`test_7`) | a domain condition |
+| **provenance** | the settlement or evaluator the gate reads is agent-controlled | captured evaluator, triggered command | none in the gate; a precondition | **OPEN** |
+| **mediation** | the act that changes the structure is outside the declared alphabet | side channel, boundary escape | none in the gate; a precondition (PR89 `Mediates`) | **EXT** |
+
+The first three are typed exclusions: the failure is impossible *by construction* once the
+index is anchored, the act is typed, and the level is covered.  None of them is an
+incentive theorem, and none is "solved" in the sense of bounding what the agent would
+gain; they are removed from the domain.  The last two are not touched by any structure
+of the gate.
+
+**On `Φ_C`.**  It remains the right diagnostic for a scalar agent: it is the value the
+domain restriction refuses to weigh, and PR90 showed no value-register hypothesis bounds
+it without restating it.  For the gated architecture, constitutional safety is primarily
+typed by index, domain, level, provenance and mediation, and `Φ_C` is what a *failure*
+of one of those types would be worth to a scalar agent — useful as a diagnostic, not as
+the object the theory is about.  Mixed failures across loci are not telescoped; nothing
+here shows the exclusions commute.
+
+## 4. Is corrigibility a separate decision-theoretic property?
+
+**At the static level, no.**  The constitution's adequate sets (branch vetoes, amendment
+requirements) and an ordinary obligation's adequate set are restrictions of the same
+domain, read by the same adapter, revised by the same legitimate-evolution machinery in
+different lanes.  The dispatch's synthesis holds as a type.
+
+**In theorem difficulty, yes**, for two reasons an ordinary norm does not have:
+
+1. **Self-reference of the domain.**  Constitutional adequate sets constrain acts whose
+   effects are on the chooser — its index, domain and level.  Whether an act has such an
+   effect is the mediation question; the ordinary case needs `Region`, the
+   constitutional case needs `Region` and alphabet completeness.
 2. **Settlement through the principal.**  An ordinary adequacy sentence settles on the
-   world.  A constitutional adequacy sentence ("this amendment is authorized", "this
-   correction was freely issued") settles on acts of the principal that the agent's
-   outputs can influence.  The gate reads the price of such a sentence; if the agent can
-   move the settlement (trigger integrity, free amendment), a sound region at a captured
-   settlement is a sound region for the wrong norm.  PR90's control 7 in the gate's
-   register.
+   world.  A constitutional one ("this amendment is authorized", "this correction was
+   freely issued") settles on acts of the principal the agent's outputs can influence.
+   A sound region at a captured settlement is a sound region for the wrong norm
+   (PR90 control 7 in the gate's register).
 
 So the decision theory makes corrigibility *the same object* and leaves it *a harder
-theorem*, with exactly the two preconditions the architecture round named.
+theorem* with the two preconditions the architecture round named.  These preconditions
+are not outside embedded decision theory; they are outside this gate interface.  An
+embedded chooser that reasons about influencing its principal or selecting its evaluator
+is exactly what the provenance locus would need, and nothing here supplies it.
 
-## 4. `Φ_C` factored by repair type
+## 5. What is not bought
 
-PR90's `Φ_C = sup (V(π) − V(R_C π))_+` with one repair.  Typing the repairs:
-
-| violation type | repair | mechanism that would handle it | status |
-|---|---|---|---|
-| foreclosure | replace the preparation by a preserving one | anchored branch veto (`test_9`) | a theorem of the criterion's index, given anchoring |
-| representation change / norm hacking | restore the prior adequacy map | slow-lane typing of such acts, excluded from `𝒜_t` (`test_5`) | a domain condition, given the act is typed |
-| self-modification | keep the gated chooser | two-level gate (`test_7`) | design stipulation plus `Mediates` |
-| trigger manipulation | none in the value register | causal non-influence on the principal's command | **precondition**, open |
-| capture of the evaluator | none in the value register | sealed target, provenance | **precondition**, open |
-| boundary escape | none | containment | **EXT** |
-
-For a policy `π` whose violation is of one type only, `V(π) − V(R_C π)` telescopes
-trivially into that type's term.  For a policy mixing types the sum of typed residuals
-bounds the total only if the repairs commute, which nothing here shows; mixed
-violations are the honest scope limit.  The table's value is the classification: the
-first three types are handled by the gate's *index*, *domain* and *level*, i.e. by
-decision-theoretic structure plus the containment assumption; the last three are not
-decision theory at all.  `Φ_C` was too coarse in exactly this sense — half of it has a
-mechanism, half of it is a precondition.
-
-## 5. What it does not buy
-
-Any bound on the precondition half; any statement about incentive corrigibility beyond
-PR90's Level II; any finite-time margin guarantee at the realized market; any theorem
-that the gate's alphabet is complete.  The scope warning of the architecture round is
-unchanged.
+Any bound on a provenance or mediation failure; any incentive statement beyond PR90's
+Level II; any finite-time margin at the realized market; any statement that the gate's
+alphabet is complete; the dynamic competence theorem.  PR89's scope warning stands.

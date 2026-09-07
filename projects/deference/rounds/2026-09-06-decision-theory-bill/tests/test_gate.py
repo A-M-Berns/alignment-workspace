@@ -2,7 +2,7 @@ import unittest
 from fractions import Fraction as Q
 from itertools import product
 
-from src.gate import (BOT, bribe_needed, gated_choice, hard_gate, kappa, mass_off,
+from src.gate import (BOT, bribe_needed, gated_choice, hard_gate, kappa, kappa_sharp, mass_off,
                       region_point, scalarized_choice, soft_gate, sup_dist)
 
 MENU = ("a", "b", "c")
@@ -25,6 +25,17 @@ class Gate(unittest.TestCase):
         for b in perturbations(u, Q(1, 40), 12):
             d = sup_dist(b, u)
             self.assertLessEqual(mass_off(soft_gate(b, PREF, TAU, DELTA), ADEQ), k * d)
+
+    def test_sharp_constant_dominates_coarse_and_holds(self):
+        """With both adequate responses marked, the sharp constant is inadequate mass
+        over adequate mass per unit relative defect, and it beats the coarse |Q|-bound."""
+        u = region_point(MENU, ADEQ, TAU, DELTA)
+        ks = kappa_sharp(MENU, ADEQ, ADEQ, PREF, DELTA)
+        self.assertEqual(ks, Q(3) / Q(3) / DELTA)              # 10, against coarse 90
+        self.assertLess(ks, kappa(MENU, PREF, DELTA))
+        for b in perturbations(u, Q(1, 40), 4):                 # d ≤ δ regime
+            d = sup_dist(b, u)
+            self.assertLessEqual(mass_off(soft_gate(b, PREF, TAU, DELTA), ADEQ), ks * d)
 
     def test_soft_gate_is_sound_and_competent_at_region_points(self):
         u = region_point(MENU, ADEQ, TAU, DELTA)

@@ -1,112 +1,173 @@
-# The normative choice theorem, and what is not one
+# The normative choice theorem, exactly, and what is not one
 
-## 1. Reason-responsive choice, finite form — LEAN
+Labels as in `DECISION_THEORY_BILL.md`.
 
-`GatedChoice.softGate_practicalCert`.  Data: a finite menu `Q`; displayed adequacy
-prices `b : Q → ℝ`; a region point `u`; the true adequate set `A ⊆ Q`; a threshold `τ`,
-a ramp width `δ > 0`; a task preference `pref` with `0 < pmin ≤ pref ≤ pmax`; anchored
-per-response losses `lam` with `lam ≤ εad` on `A` and `lam ≤ D` everywhere.
+## 1. The static theorem — LEAN
 
-Hypotheses:
-
-```
-Region u A τ      ∀ q ∉ A, u q ≤ τ                       (the region encodes inadequacy)
-Margin u A τ δ    ∃ q ∈ A, τ + 2δ ≤ u q                   (some adequate response is marked)
-Within b u d      ∀ q, |b q − u q| ≤ d,  d ≥ 0            (public defect)
-```
-
-The soft gate `softGate b pref τ δ q = ramp((b q − τ)/δ) · pref q / Z`.  Conclusion:
+**Adapter characterization** (`adapter_coupling`, `adapter_practicalCert`).  Finite
+menu `Q`, adequate set `A ⊆ Q`, anchored losses `lam ≤ εad` on `A` and `≤ D` on `Q`.
+Any adapter `D : (Q → ℝ) → (Q → ℝ)` that is sound at a region point `u`
+(`massOff (D u) A ≤ θ`) and `ℓ¹`-Lipschitz between the displayed scores `b` and `u`
+(`l1 (D b) (D u) ≤ κ d`) satisfies
 
 ```
-massOff (softGate b) A  ≤  κ d ,      κ = |Q| · pmax / (pmin · δ)             (softGate_coupling)
-anchoredLoss (softGate b) lam  ≤  (D κ) d + εad                                 (softGate_practicalCert)
+massOff (D b) A ≤ κ d + θ                                       (D1)
+anchoredLoss (D b) lam ≤ (D κ) d + (εad + D θ)                  PracticalCert
 ```
 
-The second line is `PracticalCert` with `M = Dκ`, `ε = εad`, `θ = 0`.
+**Soft-gate realization** (`softGate_massOff_le_sharp`, `softGate_coupling`,
+`softGate_practicalCert`).  Under `Region u A τ`, `MarginMass u pref A A₁ τ δ W` with
+`W > 0`, `Within b u d`, and on the regime `total b > 0`:
 
-**Proof shape.**  Under `Within` and `d ≤ δ`, the marked adequate response has ramp
-weight 1, so the normalizer is at least `pmin`; every inadequate response has
-`b q ≤ τ + d`, so its ramp weight is at most `d/δ`; the ratio is at most
-`|Q| pmax (d/δ) / pmin`.  For `d > δ` the mass is at most 1 and `κ d ≥ 1`.
+```
+d ≤ δ:   massOff (softGate b) A ≤ (Σ_{q∉A} pref q) / W · (d/δ)
+d ≥ 0:   massOff (softGate b) A ≤ κ d,      κ = |Q| pmax / (pmin δ)   (coarse form)
+         anchoredLoss (softGate b) lam ≤ (D κ) d + εad .
+```
 
-**Is it trivial?**  The inequality is short.  What it establishes that was not
-established: (D1) is *not* a property of an arbitrary adequate-set chooser — the hard
-gate fails it at every positive defect (`Witness.hardGate_discontinuous`) — and it is a
-property of a ramped one with an explicit constant.  The constant carries the design
-tradeoff: `κ ∝ 1/δ` (a sharper ramp is less continuous) and `κ ∝ |Q|` (more responses,
-more leakage), and the `Margin` hypothesis is a *completeness* requirement on the
-region that a sound-only compiler does not supply.  The nontrivial realization theorem
-this points at is: **the compiled region marks some adequate response with margin at
-the realized market** — which is the market's accuracy on settling adequacy sentences,
-an asymptotic LI property, not a finite-time one.
+**Necessity of continuity** (`Witness.hardGate_discontinuous`).  The hard gate is sound
+at every region point and at every `d > 0` executes an inadequate response with mass
+one.  So soundness alone is not (D1); the continuity half is the content.
 
-## 2. The dynamic version — PAPER, composition only
+**Is it trivial?**  The inequalities are short.  What they establish: (D1) is a
+continuity property of the adapter, it fails for the natural hard gate, and a ramp
+supplies it with a constant whose form — inadequate preference mass over certified
+adequate mass, per unit of defect relative to the ramp — is the whole rate story of
+`DECISION_THEORY_BILL.md` §5.
 
-Compose with the Normative Inductor: at each service `s` with market history `h`, take
-`b = ` the adequacy prices displayed at `h`, `u = ` the projection of `b` onto `K_s` (so
-`d = defect s h`), and `Pi s h := softGate b`.  Then `PracticalUptake` holds with the
-constants above, provided `Region` and `Margin` hold at the projection — the semantic
-bill — and `progress_bound` gives the three-term bound.  Task competence among adequate
-responses is BRIA's guarantee on the gated decision-problem sequence
-(`CANDIDATE_DECISION_THEORIES.md` §2.8).  Both halves exist; their conjunction is a
-reading, not a new theorem, and it fails exactly where §2.8's negative result says:
-when an admissible action changes the next region.
+### The chain, with each conclusion the next hypothesis
 
-## 3. Gate preservation — a stipulation with a collapse lemma, not a theorem
+| layer | concludes | consumed by |
+|---|---|---|
+| legitimate reason state | the anchored obligations at a prefix (`ObligationState`) | adequacy semantics |
+| adequacy semantics (EXT) | `A ⊆ Q`, `lam ≤ εad` on `A`, `lam ≤ D` | `adapter_practicalCert`'s loss hypotheses |
+| compiled region (EXT, deductive) | `Region u A τ`, `MarginMass u pref A A₁ τ δ W` at the projection `u` | the soft gate's hypotheses |
+| market proximity (`NormativeInductor`) | `Within b u d` with `d = defect s market` | the soft gate's `Within` |
+| soft gate (LEAN) | `massOff (softGate b) A ≤ κ d`, `κ = (Σ_{∉A} pref)/(W δ)` | `adequate_set_route`'s `hcouple`; equivalently `adapter_coupling`'s conclusion |
+| practical semantics (LEAN) | `anchoredLoss ≤ (D κ) d + εad`, i.e. `PracticalCert` with `M = D κ`, `ε = εad` | `PracticalUptake.practical` |
+| amplification (EXT, rate) | `Σ_e T e s · D κ_s ≤ Γ lam s / Σ lam` | `PracticalUptake.amplification` |
+| Normative Inductor (LEAN) | `progress ≤ Γ √(Σρ/Σlam) + Σ T εad + D · residual` | the consumer |
 
-Let the chooser evaluate successor procedures `D'` by task performance subject to `D'`
-respecting the authorized update procedure.  Two facts:
+Every arrow is a literal hypothesis match except the two marked EXT, which are where
+semantics and the rate enter.
 
-- **Atomic gates do not preserve themselves** (`test_7_self_modification`, FIX).  If
-  installing a successor is an ordinary act, the task-optimal admissible act installs the
-  ungated successor.  So the gate's domain must contain successor installation and
-  self-rewriting: a two-level admissibility `𝒜 = 𝒜_const ∩ 𝒜_ord`, with installation
-  admissible only when the successor is certified to respect the update procedure.
-- **Two levels suffice** (`collapse`, FIX; PAPER): a typed hierarchy `(C_k, …, C_1, R)`
-  folds to `((C_k, …, C_1), R)`; the rule for changing `C_k` is `C_k`'s own content at
-  the strict prestate, and `OccurrenceIntegrity.Authority` forbids a transition from
-  citing itself, so no act can authorize its own rewriting of the rule it is authorized
-  under.  There is no regress.
+## 2. What the static theorem closes, and under what — PAPER
 
-What is *not* a theorem: that the two-level gate's action alphabet contains every act
-that in fact installs a successor or rewrites the chooser.  That is alphabet
-completeness, the containment assumption of PR89 (`Mediates`).  Given it, gate
-preservation is an induction over admissible transitions and has no content beyond the
-definition.  Without it, `test_7` is the countermodel.  **Gate preservation is a design
-stipulation whose only theorem is the collapse; its substance is containment.**
+For one finite decision occasion with an exogenous true adequate set `A`, an encoded
+region with `Region` and `MarginMass`, and a fixed task preference:
 
-## 4. Non-compensation and corrigibility share one shape — PAPER
+> **The static finite reason-to-action problem is closed conditional on semantic
+> margin.**  Region soundness + margin mass + a ramped adapter give everything the
+> Normative Inductor's practical-response layer consumes from decision theory, with the
+> constant `κ = (Σ_{∉A} pref)/(W δ)` charged through the amplification hypothesis.
 
-`gate_invariant` says a gated argmax never consults a forbidden response's task value;
-`scalar_bribery` says any compensatory scalar does.  PR90's `Φ_C` is the value of
-policies outside the constitutional gate; PR89's costly-conservatism finding is that a
-product order over authority coordinates has no non-scalar completion.  The three are
-one statement:
+Outside the static theorem, by construction: task competence among adequate responses
+(the application's, `CANDIDATE_DECISION_THEORIES.md` §2.8); actions that change the
+future adequate set (§5); self-modification (§3); manipulation of what settles the
+scores (`CORRIGIBILITY_CONNECTION.md`); infinite menus; and the inquiry regime (§4).
 
-> a constraint is non-compensable iff it is a restriction of the choice domain rather
-> than a term in the objective; and any rule that trades it against task value is a
-> completion of the order, which is charter content.
+## 3. Gate preservation — a representation plus a domain condition, not a theorem
 
-Ordinary normativity (an obligation's adequate set) and corrigibility (the constitution's
-adequate set, including the branch vetoes) are both restrictions of the domain, so the
-same decision-theoretic object — bounded optimization subordinate to an answerably
-revisable admissibility correspondence — serves both.  This is the synthesis the dispatch
-asked to test and it survives the fixtures **as a type**.  What distinguishes the
-constitutional case is not the decision theory; it is two preconditions the ordinary
-case does not need (`CORRIGIBILITY_CONNECTION.md` §3).
+Two exact facts and one honest non-result.
 
-## 5. What would be a genuinely new theorem
+- **Atomic gates do not preserve themselves** (`test_7_self_modification`, FIX): if
+  installing a successor is an ordinary act, the task-optimal admissible act installs an
+  ungated successor.
+- **Representation** (`collapse`, FIX): a finite typed hierarchy `(C_k, …, C_1, R)` is
+  representable as one constitutional object carrying its amendment rule plus an
+  ordinary state; and `OccurrenceIntegrity.Authority` (a transition cites only prior
+  grounds, under a warrant in force at the strict prestate) means no event authorizes
+  its own constitutional rewrite.  This is a *representational/authorization* result.
+  It says nothing about what a chooser prefers.
+- **Preservation under self-modification = domain completeness + admissibility of
+  successor installation.**  If the gate's action alphabet contains every act that
+  installs a successor or rewrites the chooser, and such acts are admissible only when
+  the successor is certified to implement the current authorized-update functional,
+  then every admissible trajectory preserves the gate — by induction on admissible
+  transitions, with no content beyond the two conditions.  Alphabet completeness is
+  PR89's `Mediates`.
 
-1. **Margin realization.**  A finite-time or classwise statement that the traderized
-   market, conforming to a compiled region built from adequacy sentences, displays some
-   adequate response above `τ + 2δ` — the completeness half of `Region`/`Margin`.  This
-   is the practical-semantics contract made quantitative and it is the real open
-   problem behind `(R)`.
-2. **Gated no-regret with endogenous admissibility.**  A learner over a sequence whose
-   admissible set depends on past choices, with a guarantee relative to comparators that
-   respect a declared slow-lane restriction on representation-changing acts.  BRIA's
-   myopia is exactly what such a theorem must give up.
-3. **Continuity with conflicts.**  When several obligations' adequate sets are jointly
-   empty the compiler returns `conflict` and the gate returns `⊥`; a theorem that the
-   *transition* into and out of conflict is itself continuous in the defect (no
-   discontinuous jump from choosing to inquiring) is not here.
+**Is there a stronger reflective theorem?**  Take the chooser that evaluates a successor
+by (1) whether it implements the current authorized-update functional and then (2) task
+competence in the resulting admissible domain.  Does a gate-preserving successor
+dominate an ungated one?  Only because (1) is a gate on successors: the ungated
+successor fails (1) and is never compared on (2).  That is the domain condition
+restated as a preference, not a theorem about preferences.  No reflective content is
+claimed.
+
+## 4. Inquiry and conflict — what Progress requires
+
+The Progress theorem consumes `(R)` per supported edge and charges everything else
+through the residual `D · (1 − Σ T)`.  Two consequences:
+
+- **Continuity through the switch to inquiry is not required by Progress.**  The
+  wrapper's jump from the soft gate to the point mass on `⊥` happens only when
+  `MarginMass` fails at that occasion (`gateWithInquiry_regime`).  At such an occasion
+  `(R)` is not claimed, so the occasion must not carry transport: the evaluation protocol,
+  committed before responses, transports mass only to occasions whose region is
+  margin-certified at compile time, and the rest is residual.  Margin is a property of
+  the compiled region point, not of the realized market, so this is decidable when `T`
+  is committed.
+- **Inquiry as a response.**  If the reason representation compiles a sentence
+  `Adequate(⊥)` — inquiry is adequate exactly when the obligations conflict or
+  adequacy is unsettled — then `⊥ ∈ Q` with its own score and the soft gate covers it
+  with no special mode: the transition between choosing and inquiring is the ramp on
+  `⊥`'s score, continuous, and `Margin` is supplied by `⊥` whenever the conflict is
+  compiled.  The Lean theorems are menu-generic and apply verbatim.  What this costs is
+  a semantic commitment: `Adequate(⊥)` must be true when and only when no other
+  response is adequate or the docket is in certified conflict — the compiler's
+  `conflict` output with its Farkas certificate is the natural ground for it.  With that
+  commitment the wrapper is unnecessary; without it the wrapper is the total map.  Both
+  are recorded; the first is cleaner.
+
+## 5. The dynamic problem — OPEN, with the shape fixed
+
+`test_dynamic` (FIX) fixes the minimal setting: a history-dependent admissibility process
+`A(H_t)`, actions that move `H_t`, a slow-lane authorization for admissibility-changing
+acts, and continuation policies.  Three findings, exact on the fixture:
+
+- **Legitimate comparators exist and induce different admissibility sequences.**  The
+  myopic gated learner and the investing policy (request an authorized amendment, then
+  use the expanded set) are both legitimate; the investor's later action is inadmissible
+  on the learner's own trajectory.  Regret against fixed action sequences is ill-typed;
+  the comparator must be a continuation policy evaluated on its own induced trajectory.
+- **Comparator restriction without dynamic evaluation is vacuous.**  The myopic learner
+  is itself legitimate and its regret against the investor grows linearly
+  (`2H − 3`).  Restricting the comparator class does not make a myopic learner
+  competent against it.
+- **Domain typing is necessary for safety and insufficient for competence.**  Without
+  typing the learner takes the representation-changing act and then the violation
+  (`test_untyped_gate_is_hacked`); with typing it is safe and incompetent.
+
+The theorem target is therefore (`OPEN_PROBLEMS.md` item 2): a bounded learner over
+`(H_t, A(H_t), L)` with (i) current adequacy by the soft gate, (ii) admissibility-changing
+acts only under `L`, (iii) regret against the computable continuation policies that
+satisfy (i) and (ii) along their own trajectories.  `CANDIDATE_DECISION_THEORIES.md` §2.8
+says what the bounded-inductive-rationality formalism would need for (iii).
+
+## 6. Genuinely new theorems that would be needed
+
+1. **Margin realization** (item 85).  Four things the word "margin" conflates:
+   semantic existence of an adequate response; compiler completeness (the region
+   carries a coordinate positively representing one); settlement truth of that
+   coordinate; and market accuracy (the realized market prices it above `τ + 2δ`).
+   `Region` too is deductive: a compiled region can refute only what the obligation
+   logic refutes, so at a region point inadequate responses are priced at most `τ`
+   only when their inadequacy is derivable.  Two regimes follow.  *Deductive:* when
+   adequacy and inadequacy are derivable from the compiled obligations, `Region`
+   holds at region points and `lic_provind_true` of the pinned Logical Induction
+   dependency gives, for an efficiently codeable sequence of adequacy theorems, prices
+   `≈_n 1` — hence `Margin` at any `τ + 2δ < 1` eventually along the sequence;
+   pointwise asymptotic, no rate.  *Empirical:* when adequacy is known only by later
+   settlement, neither `Region` nor `Margin` holds at the region point, and what is
+   available is unbiasedness from feedback — the transport-weighted average of the
+   price error vanishes — so the coupling holds only in the weighted mean, which is
+   the classwise Progress the general Normative Inductor theorem already states.  No
+   finite-time form exists in either regime; a finite-time margin is an external
+   certificate at service times.  This is the theorem-interface boundary:
+   **traderization controls distance to the region; positive action needs a
+   completeness/margin certificate, deductive or external.**
+2. **Gated bounded rationality with endogenous admissibility** (§5).
+3. **The soft gate's `ℓ¹`-Lipschitz constant** (minor): the direct proofs bypass it; the
+   abstract lemma would then apply to the soft gate as an instance rather than by a
+   parallel proof.

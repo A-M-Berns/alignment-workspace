@@ -1,53 +1,62 @@
 # For humans
 
-The legitimacy theory and the Normative Inductor stop at one contract: at each decision
-occasion the agent realizes a response, and the response's anchored loss must be at most
-a constant times the public normative defect plus a constant.  Everything upstream —
-conservation, openness, uptake — is proved.  This round asked what the *decision theory*
-has to be for that contract to hold.
+The Normative Inductor does not need a utility-maximizer that values normativity.  It
+needs a chooser whose probability of taking an inadequate action changes continuously
+with the normative market's error.  A soft adequacy gate supplies that.  The unresolved
+agent-foundations problem begins when actions can change the future gate itself.
 
-The answer is smaller than a theory of value.  The contract already factors, in the
-repository's own Lean, into a semantic half (adequate responses cost little, inadequate
-ones cost at most `D`) and a decision half: the mass the chooser puts on inadequate
-responses must be affine in the defect.  That decision half is a property of a **gate**
-— a map from the market's adequacy prices to a distribution over responses — and it is
-not automatic.  A hard gate ("pick the best task option among those priced adequate")
-fails it at every positive defect, because a price a hair above the threshold lets the
-task-preferred inadequate option through with mass one.  A **soft gate** — ramp the
-weight over a band of width `δ`, and inquire when nothing is confidently adequate — pays
-the contract with an explicit constant, `|Q|·pmax/(pmin·δ)`.  That is the one new
-theorem, and it is in Lean.
+That is the whole picture; the rest is precision about it.
 
-Two things follow that are not about the contract.
+**What is proved.**  The Normative Inductor's contract with decision theory is one
+inequality already in the repository: the chooser's mass on inadequate responses is at
+most a constant times the public defect.  Any chooser that is sound where the market
+conforms to the norm and Lipschitz in the market's scores satisfies it, and then the
+practical certificate and the Progress bound follow (Lean, `adapter_practicalCert`).  A
+ramped gate on adequacy scores is such a chooser, with an explicit constant: inadequate
+preference mass over certified adequate mass, per unit of defect relative to the ramp.
+The natural hard gate is not: at every positive defect it can execute an inadequate
+response with certainty.  Continuity is the entire decision-theoretic content.
 
-**Measurement is not motivation.**  The Progress statistic is a scalar and charges an
-honest "I don't know yet" the same as a violation.  If the agent *optimized* that
-scalar against task reward, any constraint would be purchasable at a price `λ·D`; no
-finite penalty makes a hard constraint non-tradeable.  A gate is immune to the
-forbidden option's task value by construction.  This is the same fact PR89 found about
-conservatism and PR90 found about the constitutional-violation premium: a constraint is
-non-compensable exactly when it restricts the choice domain rather than entering the
-objective, and any rule that trades it away is a completion of a partial order — which
-is charter content, not decision theory.
+**What the constant hides.**  The ramp can be at most half the certified margin, so the
+constant is inversely proportional to the margin, and the Progress theorem charges it
+through its amplification hypothesis.  Market error must vanish *relative to the margin*.
+The margin itself is not decision theory: where adequacy is derivable from the compiled
+obligations, Logical Induction supplies it asymptotically along any efficiently codeable
+sequence of adequacy theorems, with no rate; where adequacy is known only by later
+settlement, only weighted-average accuracy is available, which is the classwise Progress
+the general theorem already states.  Traderization controls distance to the region;
+positive action needs a completeness certificate, deductive or external.
 
-**The same gate serves ordinary norms and corrigibility.**  The constitution's
-constraints (protected intervention branches, amendment requirements) are adequate sets
-like any other, and they must be *anchored*: a branch index read from the world lets the
-agent delete a branch by destroying its affordance; an index declared by the charter,
-with a destroyed branch scored at its worst, keeps the veto.  So corrigibility is not a
-separate decision-theoretic object.  It is a harder theorem for two reasons the ordinary
-case lacks: the constitutional gate must cover acts that change the gate itself — which
-is the containment assumption — and its sentences settle on acts of the principal that
-the agent can influence — which is the manipulation precondition.  The old
-foreclosure premium splits accordingly: half of it is handled by the gate's index,
-domain and level; half of it is a precondition no decision theory supplies.
+**Normativity is not the task objective.**  A finite additive penalty is bought by any
+task stake above the penalty times the loss range; a gate never consults the forbidden
+option's task value.  Non-compensability must live in the choice ordering itself, not
+solely in a finitely exchangeable term — a domain restriction is one clean way, a
+lexicographic order another; a partial order needs an *authorized* completion.  This is
+the same fact PR89 found for conservatism and PR90 for the constitutional-violation
+premium.
 
-What this does not do: it does not show the market ever *marks* an adequate response
-with margin (the completeness half of the semantics, an asymptotic property), it does
-not give a learner that is safe when admissible actions change future admissibility
-(BRIA is myopic by design and the fixture shows the failure), and it does not bound the
-manipulation half of the premium.  The emerging picture is a bounded optimizer
-subordinate to an answerably revisable admissibility correspondence, with legitimacy
-governing revision, normative induction learning the operative state, and a BRIA-style
-learner supplying competence inside the gate.  It survives the fixtures as a type.  Its
-theorems are the gate's; its preconditions are unchanged.
+**Inquiry.**  When nothing is confidently adequate the gate returns "inquire".  In Lean
+that is a wrapper around the theorems, silent under margin; conceptually cleaner is to
+compile "inquiry is adequate" as a sentence when obligations conflict, so that inquiry
+is an ordinary response and the theorems apply verbatim.  Progress does not need
+continuity across the switch: occasions without a certified margin carry no transport
+and are charged to the residual.
+
+**Corrigibility.**  Constitutional constraints are adequate sets of the same kind, with
+one requirement — the protected branch index is anchored in the charter, so destroying a
+branch's realization makes the act inadequate rather than making the branch disappear —
+and two preconditions the ordinary case lacks: the gate's alphabet must cover acts that
+change the gate, and the sentences the gate reads must not settle through a process the
+agent controls.  Failures classify by locus — index, domain, level, provenance,
+mediation — and the first three are removed by typing, not bounded by an incentive
+theorem.  Reflective "gate preservation" is a representation plus a domain condition;
+nothing here is a theorem about what a chooser prefers.
+
+**The new problem.**  Restrict the comparator class to policies that respect the gate
+along their own trajectories and the myopic gated learner is still legitimate — and
+loses linearly to the legitimate policy that invests in an authorized amendment.  Domain
+typing gives safety; it does not give competence; comparator restriction alone is
+vacuous.  Bounded competence under an answerably evolving admissibility process whose
+future depends on current actions is the next layer, and the leading candidate is a
+bounded-inductive-rationality learner whose hypotheses are continuation policies tested
+in gated blocks.  Nothing positive about it is claimed.

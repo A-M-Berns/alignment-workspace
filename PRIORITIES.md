@@ -2330,33 +2330,38 @@ realize.
 *A solution ships:* the interface with its theorem, or a statement of why the bridge is
 a design choice and not a theorem.
 
-### 85. Margin realization at the realized market — **[open]**
+### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 `GatedChoice.softGate_practicalCert` pays the Normative Inductor's practical certificate
-with `M = D·|Q|·pmax/(pmin·δ)` under two hypotheses on the region point the displayed
-prices are within `d` of: inadequate responses are priced at most `τ` (`Region`, the
-compiler's soundness) and some adequate response is priced at least `τ + 2δ` (`Margin`).
-The second is a *completeness* condition: a sound-only compiler never marks anything
-adequate, and a market that conforms to a region built from adequacy sentences displays a
-marked adequate response only if its prices on those sentences are accurate — an
-asymptotic Logical-Induction property.  Without `Margin` the gate inquires and the
-Progress statistic charges `D`; with it the bound is affine in the defect.
+with `M = D·κ`, `κ = (Σ_{q∉A} pref q)/(W·δ)` (`softGate_massOff_le_sharp`), under two
+hypotheses on the region point the displayed scores are within `d` of: inadequate
+responses score at most `τ` (`Region`) and adequate responses of preference mass at least
+`W` score at least `τ + 2δ` (`MarginMass`).  Both are deductive at a compiled region point:
+a region refutes only what the obligation logic refutes and marks only what it derives.
+Two regimes are known and neither has a rate.  Deductive: `lic_provind_true` of the pinned
+Logical Induction dependency gives prices `≈_n 1` along any efficiently codeable sequence
+of adequacy theorems, hence `Margin` eventually at any `τ + 2δ < 1`.  Empirical: adequacy
+known only by later settlement gives only unbiasedness from feedback, a transport-weighted
+average, hence the coupling in the mean and the classwise Progress of the general theorem.
+`M = D κ` is charged through `PracticalUptake.amplification`, so the end-to-end condition
+is not `d_s → 0` but `d_s / m_s → 0` with `m_s` the certified margin and `δ_s = m_s / 2`
+the widest admissible ramp (`DECISION_THEORY_BILL.md` §5).
 
-State the classwise or finite-time condition under which the traderized realization,
-conforming to a compiled region over adequacy sentences, displays some adequate response
-with margin at the service occasions the evaluation transports mass to, or show that no
-finite-time statement exists and the margin must be certified externally.
+State the classwise theorem composing provability induction (deductive case) or
+unbiasedness from feedback (empirical case) with the sharp constant and the amplification
+hypothesis at the service occasions the evaluation transports mass to; or show that no
+finite-time form exists and the margin at service times is an external certificate.
 
-*Deliverable shape:* the condition and a theorem composing it with `softGate_practicalCert`,
-or the negative with a witness.
+*Deliverable shape:* the composed theorem for each regime, or the negative with a witness
+in which the transport-weighted margin shortfall does not vanish.
 *Acceptance check:* the module audits clean and `python3 tests/run.py` is green.
 
-*Context:* `NORMATIVE_CHOICE_THEOREM.md` §5 and `DECISION_THEORY_BILL.md` §3 of
+*Context:* `NORMATIVE_CHOICE_THEOREM.md` §6 and `DECISION_THEORY_BILL.md` §5 of
 `projects/deference/rounds/2026-09-06-decision-theory-bill/`.
 *Consumed by:* the gated decision adapter as the realization of `Evaluation.Pi`.
-*A solution ships:* the condition with its theorem, or the negative.
+*A solution ships:* the composed theorems, or the negative.
 
 ## Workspace friction
 

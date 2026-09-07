@@ -134,24 +134,33 @@ commit.
 
 ## Settled
 
-### 2026-09-06 — the decision adapter is a gate on adequacy prices, not a utility
+### 2026-09-07 — the decision adapter is a sound Lipschitz reader of adequacy scores; the static choice problem is closed conditional on margin
 
 **agent-decided, reversible.** The Normative Inductor's decision-theory bill is the
-coupling hypothesis of `PracticalCertificate.adequate_set_route` — the realized response
-distribution's mass off the adequate set is affine in the public defect — and the
-decision adapter `Evaluation.Pi` is realized as a soft gate: ramp weight on the adequacy
-price times a task preference, normalized, returning the inquiry response when nothing is
-confidently adequate (`GatedChoice.softGate_practicalCert`).  The Progress statistic is
-the assessment and is not the agent's objective: a compensatory scalar objective is
-flipped by any task stake above `λ·D` (`scalar_bribery`), and a gated argmax is invariant
-to a forbidden response's task value (`gate_invariant`).  Constitutional constraints are
-adequate sets of the same type with an anchored branch index and a two-level domain
-covering successor installation; what remains for the constitutional case is
-containment and the manipulation of settlement, recorded as preconditions.
-*Rejected alternative:* a hard admissibility gate, which has no Lipschitz constant in the
-defect (`hardGate_discontinuous`) and so does not pay the bill; and any scalar penalty,
-bounded or not, which pays it only on the value route with a vacuous constant on a
-forbidden optimum.
+coupling hypothesis of `PracticalCertificate.adequate_set_route`.  Its abstract form is
+`GatedChoice.adapter_coupling`: an adapter sound at a region point and `ℓ¹`-Lipschitz in
+the displayed scores has mass off the adequate set affine in the public defect, and
+`adapter_practicalCert` composes it to `PracticalCert`.  The decision adapter
+`Evaluation.Pi` is realized as a soft gate — ramp weight on the adequacy score times a
+task preference, normalized — with the constant `(Σ_{q∉A} pref)/(W δ)`
+(`softGate_massOff_le_sharp`), on the regime where the normalizer is positive; inquiry is
+the wrapper `gateWithInquiry`, silent under margin, and the preferred semantics is a
+compiled `Adequate(⊥)` making inquiry an ordinary response.  The Progress statistic is
+the assessment, not the objective: a finite additive penalty is flipped by a stake above
+`λ·D` (`scalar_bribery`) and a within-domain argmax never consults the forbidden value
+(`gate_invariant`); non-compensability must appear in the choice ordering itself, of
+which domain restriction is one realization.  The static finite reason-to-action problem
+is thereby closed conditional on a deductive or external margin certificate; the next
+layer is bounded competence under an admissibility process whose future depends on
+current actions, where domain typing gives safety and comparator restriction alone is
+vacuous (`test_dynamic`).  Constitutional constraints are adequate sets of the same type
+with a prestate-anchored branch index (Branch Persistence Lemma, adequate-set form);
+gate preservation under self-modification is a representation plus a domain condition,
+not a reflective theorem.
+*Rejected alternative:* the first pass's `GATE-NOT-UTILITY` framing, which made the soft
+gate the conceptual endpoint and read domain restriction as the definition of
+non-compensation; and a hard admissibility gate, which is sound and has no Lipschitz
+constant (`hardGate_discontinuous`).
 
 ### 2026-09-06 — the incentive extension of corrigibility is a named-assumption identity; Level II is claimed, Levels III and IV are not
 

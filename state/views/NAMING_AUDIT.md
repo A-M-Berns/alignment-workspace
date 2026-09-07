@@ -240,7 +240,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 670 names, 532 of them Lean only
+## normativity — 673 names, 532 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -490,12 +490,15 @@ change, and the count of those is the size of the free choice remaining.
 | `wTwoUnsat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wTwoUnsat` |
 | `A` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.A` |
 | `Margin` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Margin` |
+| `MarginMass` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.MarginMass` |
 | `Region` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Region` |
 | `Within` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.Within` |
 | `b` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.Witness.b` |
+| `gateWithInquiry` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.gateWithInquiry` |
 | `hardGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.hardGate` |
+| `l1` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.l1` |
 | `massOff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.massOff` |
-| `pref` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.Witness.pref` |
+| `pref` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.pref` |
 | `ramp` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.ramp` |
 | `softGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.softGate` |
 | `total` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |

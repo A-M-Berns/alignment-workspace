@@ -56,6 +56,14 @@ def kappa(menu, pref, delta):
     return Q(len(menu)) * R / delta
 
 
+def kappa_sharp(menu, adequate, marked, pref, delta):
+    """`(Σ_{q ∉ A} pref) / W / δ` with `W` the preference mass of the marked adequate
+    responses: inadequate preference mass over certified adequate mass."""
+    off = sum(pref[q] for q in menu if q not in adequate)
+    W = sum(pref[q] for q in marked)
+    return off / W / delta
+
+
 def region_point(menu, adequate, tau, delta):
     """A canonical region point with the margin."""
     return {q: (tau + 2 * delta if q in adequate else tau) for q in menu}

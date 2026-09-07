@@ -1,20 +1,19 @@
 # Open problems, ranked
 
-Classes as in the architecture round.  Ranked by how much of the decision-theory bill
-rests on each.
+Classes as in the architecture round.  Ranked by how much of the chain
+`region → adapter → practical loss → Progress` and its dynamic extension rests on each.
 
 | rank | problem | class | what is known | what an answer would be |
 |---|---|---|---|---|
-| 1 | **Margin realization** — the compiled region, at the realized market, marks some adequate response above `τ + 2δ` | wall (LI accuracy on settling adequacy sentences); external at finite time | `Margin` is a hypothesis of `softGate_practicalCert`; sound-only compilation does not give it | a classwise or finite-time statement that conformance to a region built from adequacy sentences displays an adequate response with margin |
-| 2 | **Gated no-regret with endogenous admissibility** | wall | BRIA is myopic; `test_5` shows the failure; the repair is a domain restriction, not a learner property | a learner with a guarantee relative to comparators respecting a declared slow-lane restriction on representation-changing acts |
-| 3 | **Alphabet completeness of the constitutional gate** | external (containment) | `test_7`; `collapse`; PR89 `Mediates` | unchanged from PR89 |
-| 4 | **Manipulation of constitutional settlement** (trigger integrity, capture) | wall (precondition) | the gate reads prices of sentences the agent can move; PR90 control 7 | unchanged |
-| 5 | **Continuity through conflict** — the transition between choosing and inquiring as the defect varies | tractable | the soft gate is continuous inside each mode; the switch to `⊥` is a jump | a ramped inquiry mode, or a proof that the jump is charged correctly by the residual |
-| 6 | **The constant** `κ = |Q|·pmax/(pmin·δ)` — dependence on `|Q|` and `1/δ` | tractable | proved; likely loose | a menu-size-free constant under a concentration or margin-gap hypothesis |
-| 7 | **Infinite menus** | cleanup then tractable | finite only | measurable adequate sets, an integrable ramp, the same bound |
-| 8 | **Joint adequacy under conflicting obligations** — the `conflict` output and the Farkas certificate as an inquiry obligation | cleanup | `conflict_sound`, `failure_conserves` exist; the gate maps `conflict ↦ ⊥` | the adjudication obligation admitted under `Γ_corr^P` from the certificate |
-| 9 | **Commutation of typed repairs** for mixed violations | tractable or counter | the typed table of `CORRIGIBILITY_CONNECTION.md` §4 covers single-type violations | either commuting repairs or a mixed-violation countermodel |
-| 10 | **Completion authority** — which charter act supplies the tradeoff rule for incomparable branches, and how it is anchored | cleanup | PR89 CM-T, `test_branch_incompleteness` | a typed completion in the charter with its own lane |
+| 1 | **Margin realization and end-to-end rate compatibility** — `MarginMass` at the region point at the service occasions the evaluation transports mass to, and `κ_s d_s → 0` in the service-weighted sense the modulus expresses | wall (deductive: asymptotic via `lic_provind_true`, no rate; empirical: weighted-average only); external at finite time | `DECISION_THEORY_BILL.md` §5, `NORMATIVE_CHOICE_THEOREM.md` §6.1; item 85 | the classwise theorem composing provability induction (deductive case) or unbiasedness from feedback (empirical case) with the sharp constant and the amplification hypothesis, or the negative that no finite-time form exists |
+| 2 | **Gated bounded rationality with endogenous admissibility** — competence against legitimate continuation policies | wall; new | `test_dynamic`: the class is nonempty, comparators induce different admissibility sequences, restriction without dynamic evaluation is vacuous, typing gives safety only | a policy-hypothesis learner in gated blocks with a no-overestimation/coverage guarantee, and a proof of which consequences of the criterion survive |
+| 3 | **The abstract adapter characterization** — beyond sufficiency | tractable | `adapter_coupling` is sufficient; the soft gate's own `ℓ¹`-Lipschitz constant is not derived; necessity of continuity is the hard-gate witness | the soft gate as an instance of the abstract lemma; a converse (some Lipschitz-type condition is necessary for (D1) uniformly over region points) |
+| 4 | **Alphabet completeness of the constitutional gate** (level and mediation loci) | external (containment) | `test_7`, `collapse`; PR89 `Mediates` | unchanged |
+| 5 | **Manipulation of constitutional settlement** (provenance locus) | wall (precondition) | the gate reads scores of sentences the agent can move; PR90 control 7 | unchanged |
+| 6 | **Inquiry and conflict semantics** — `Adequate(⊥)` compiled from the `conflict` certificate, or the wrapper with margin-gated transport | cleanup | `NORMATIVE_CHOICE_THEOREM.md` §4; both routes stated, neither in Lean beyond the wrapper's definition | the compiled sentence with its truth condition and the theorem that the gate then needs no wrapper |
+| 7 | **Constants and menus** — `κ` under a margin-distribution hypothesis without `Σ_{∉A} pref`; infinite menus with an integrable ramp | tractable | the sharp constant; finite only | a menu-size-free constant under a concentration hypothesis; the measurable version |
+| 8 | **Commutation of typed exclusions** for mixed-locus failures | tractable or counter | the classification of `CORRIGIBILITY_CONNECTION.md` §3 is per locus | either commuting exclusions or a mixed-locus countermodel |
+| 9 | **Completion authority** — the charter act that supplies a trade-off rule for incomparable branches | cleanup | `test_branch_incompleteness`; PR89 CM-T | a typed completion in the charter with its own lane |
 
-Nothing here is closed.  Items 1, 2, 5, 6, 9 are new as stated; 3, 4, 10 are the
+Nothing here is closed.  Items 1–3 and 6–8 are new as stated; 4, 5, 9 are the
 architecture round's.

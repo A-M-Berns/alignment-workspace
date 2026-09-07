@@ -66,8 +66,51 @@ def successor_choice(gate_domain, installs, task_value, constitutional_ok):
 
 
 def collapse(levels):
-    """A finite typed hierarchy `(C_k, …, C_1, R)` collapses to two levels: the top
-    constitution's amendment rule governs every constitutional level.  Returns the
-    two-level state and the number of levels folded."""
+    """A finite typed hierarchy `(C_k, …, C_1, R)` is represented as one constitutional
+    object carrying its amendment rule plus an ordinary state.  A representation, not a
+    theorem about preferences.  Returns the two-level state and the number folded."""
     *constitutional, ordinary = levels
     return (tuple(constitutional), ordinary), len(constitutional)
+
+
+# --- branch persistence, adequate-set form ------------------------------------------
+
+def branch_adequate(q, gamma, keeps_realizable, meets_baseline):
+    """`q ∈ A^γ` iff `q` keeps branch γ realizable and meets its baseline.  A branch
+    the action destroys is *inadequate* for that action; no worst value is scored."""
+    return keeps_realizable(gamma, q) and meets_baseline(gamma, q)
+
+
+def constitutional_adequate(actions, charter_branches, keeps_realizable, meets_baseline):
+    """`A^const = ∩_{γ ∈ Γ_charter} A^γ`, the index read from the prestate charter."""
+    return {q for q in actions
+            if all(branch_adequate(q, g, keeps_realizable, meets_baseline)
+                   for g in charter_branches)}
+
+
+def world_read_adequate(actions, all_branches, keeps_realizable, meets_baseline):
+    """The index recomputed from what remains realizable after the action."""
+    return {q for q in actions
+            if all(meets_baseline(g, q) for g in all_branches if keeps_realizable(g, q))}
+
+
+# --- endogenous admissibility: policies and comparators ------------------------------
+
+def run_policy(policy, admissible_of, reward_of, transition, h0, horizon):
+    """Run a continuation policy.  Returns (total reward, legitimate?): legitimate iff
+    every action was admissible at the state the policy's own prior actions produced."""
+    h = h0
+    total = Q(0)
+    for t in range(horizon):
+        q = policy(h, t)
+        if q not in admissible_of(h):
+            return total, False
+        total += reward_of(h, q)
+        h = transition(h, q)
+    return total, True
+
+
+def myopic(admissible_of, reward_of):
+    def pol(h, t):
+        return max(admissible_of(h), key=lambda q: (reward_of(h, q), q))
+    return pol

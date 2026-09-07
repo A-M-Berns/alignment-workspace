@@ -16,16 +16,32 @@ region point `u` at which the compiled norm holds — every inadequate response 
 **soft gate** weights each response by the ramp `clamp((b q − τ)/δ, 0, 1)` times a
 positive task preference and normalizes.
 
-* `softGate_massOff_le` — with the margin and `d ≤ δ`, the soft gate's mass off `A` is
-  at most `κ d` with `κ = |Q| · pmax / (pmin · δ)`; and `massOff_le_one` covers `d > δ`.
-  So the coupling holds with `θ = 0` — `softGate_coupling`.
-* `softGate_practicalCert` — composed with `adequate_set_route`: the reason-responsive
-  choice theorem in its finite form.
+* `adapter_coupling` — the abstract form: an adapter sound at a region point (mass off
+  `A` at most `θ`) and `ℓ¹`-Lipschitz in the prices at rate `κ` satisfies the coupling
+  `massOff ≤ κ d + θ`; `adapter_practicalCert` composes it with `adequate_set_route`.
+* `softGate_massOff_le_sharp` — the soft gate's coupling with the sharp constant
+  `(Σ_{q ∉ A} pref q) / W · (1/δ)`, `W` a certified lower bound on the preference mass of
+  adequate responses marked with margin (`MarginMass`); `softGate_massOff_le` is the
+  coarse corollary with one witness and `κ = |Q| · pmax / (pmin · δ)`
+  (`marginMass_of_margin`, `coarse_le_sharp_bound`).  Both are proved directly on the
+  regime where the normalizer is positive; the soft gate's own `ℓ¹`-Lipschitz constant is
+  not derived.
+* `softGate_coupling`, `softGate_practicalCert` — the coupling for every `d ≥ 0` given
+  a positive normalizer, and its composition with `adequate_set_route`: `PracticalCert`
+  with `M = D κ`, `ε = εad`.
+* `gateWithInquiry` — the total map on `Option Q`: the soft gate when the normalizer
+  reaches a floor `W`, the point mass on inquiry otherwise.  Under `MarginMass` at mass
+  `W` and `d ≤ δ` the inquiry branch never fires (`gateWithInquiry_regime`).  Nothing is
+  proved about the inquiry branch beyond its definition.
 * `hardGate_discontinuous` — the hard gate (task-argmax over `{q : b q > τ}`) admits an
   inadequate response with mass one at every positive defect: no `κ` exists.
-* `scalar_bribery` and `gate_invariant` — a compensatory scalar objective is flipped by a
-  task stake above `λ · D`; a gated argmax is invariant to the forbidden response's task
-  value.
+* `scalar_bribery` and `gate_invariant` — a finite additive scalar penalty is flipped by a
+  task stake above `λ · D`; a within-domain argmax never consults a forbidden response's
+  task value.
+
+**Scores, not prices.**  Every hypothesis is stated on real vectors `b`, `u`: `Region`,
+`Margin`, `Within` are conditions on any score whose threshold is `τ`.  Adequacy prices of
+a market are one instance; the theorems do not mention a market.
 
 **What this does not establish.**  That the adequacy prices mean what they say
 (`Region` and `Margin` at the realized market are the compiler's soundness and the
@@ -229,7 +245,200 @@ theorem softGate_practicalCert {lam : Q → ℝ} {εad D : ℝ}
     (fun q _ => hbound q) ?_
   exact softGate_coupling hδ hd0 hpref hmin hmax hpmin hR hM hW hZ
 
+/-! ### The sharper constant: adequate mass in the denominator, inadequate mass in the numerator -/
+
+/-- A certified set of adequate responses each marked with margin, carrying preference mass
+at least `W`.  `Margin` is the case of a single witness with `W = pmin`. -/
+def MarginMass (u pref : Q → ℝ) (A A₁ : Finset Q) (τ δ W : ℝ) : Prop :=
+  A₁ ⊆ A ∧ (∀ q ∈ A₁, τ + 2 * δ ≤ u q) ∧ W ≤ ∑ q ∈ A₁, pref q
+
+omit [DecidableEq Q] in
+/-- Under `MarginMass` and `d ≤ δ`, every marked response has weight exactly its
+preference, so the normalizer is at least `W`. -/
+theorem total_ge_W {A₁ : Finset Q} {W : ℝ} (hδ : 0 < δ) (hpref : ∀ q, 0 ≤ pref q)
+    (hM : MarginMass u pref A A₁ τ δ W) (hW : Within b u d) (hd : d ≤ δ) :
+    W ≤ total b pref τ δ := by
+  obtain ⟨_, hmark, hmass⟩ := hM
+  have hw : ∀ q ∈ A₁, weight b pref τ δ q = pref q := by
+    intro q hq
+    have hb : τ + δ ≤ b q := by
+      have := (abs_le.mp (hW q)).1
+      have := hmark q hq
+      linarith
+    unfold weight
+    rw [ramp_eq_one, one_mul]
+    rw [le_div_iff₀ hδ]
+    linarith
+  calc W ≤ ∑ q ∈ A₁, pref q := hmass
+    _ = ∑ q ∈ A₁, weight b pref τ δ q := (Finset.sum_congr rfl hw).symm
+    _ ≤ total b pref τ δ := by
+        unfold total
+        exact Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _)
+          fun q _ _ => weight_nonneg hpref q
+
+/-- **Soft-gate coupling, sharp form.**  With `MarginMass` at mass `W > 0` and `d ≤ δ`,
+the mass off `A` is at most `(Σ_{q ∉ A} pref q) / W · d / δ`: the inadequate preference
+mass over the certified adequate mass, per unit of relative defect. -/
+theorem softGate_massOff_le_sharp {A₁ : Finset Q} {W : ℝ} (hδ : 0 < δ) (hd0 : 0 ≤ d)
+    (hd : d ≤ δ) (hpref : ∀ q, 0 ≤ pref q) (hWpos : 0 < W)
+    (hR : Region u A τ) (hM : MarginMass u pref A A₁ τ δ W) (hW : Within b u d) :
+    massOff (softGate b pref τ δ) A ≤ ((∑ q ∈ univ \ A, pref q) / W) * (d / δ) := by
+  have hZ : W ≤ total b pref τ δ := total_ge_W hδ hpref hM hW hd
+  have hZpos : 0 < total b pref τ δ := lt_of_lt_of_le hWpos hZ
+  have hnum : ∑ q ∈ univ \ A, weight b pref τ δ q ≤ (∑ q ∈ univ \ A, pref q) * (d / δ) := by
+    rw [Finset.sum_mul]
+    apply Finset.sum_le_sum
+    intro q hq
+    have hqA := (Finset.mem_sdiff.mp hq).2
+    have hb : b q ≤ τ + d := by
+      have := (abs_le.mp (hW q)).2
+      have := hR q hqA
+      linarith
+    have hr : ramp ((b q - τ) / δ) ≤ d / δ := by
+      calc ramp ((b q - τ) / δ) ≤ max 0 ((b q - τ) / δ) := ramp_le _
+        _ ≤ d / δ := by
+            apply max_le (div_nonneg hd0 hδ.le)
+            exact div_le_div_of_nonneg_right (by linarith) hδ.le
+    calc weight b pref τ δ q = ramp ((b q - τ) / δ) * pref q := rfl
+      _ ≤ (d / δ) * pref q := mul_le_mul_of_nonneg_right hr (hpref q)
+      _ = pref q * (d / δ) := by ring
+  have hmass : massOff (softGate b pref τ δ) A
+      = (∑ q ∈ univ \ A, weight b pref τ δ q) / total b pref τ δ := by
+    unfold massOff softGate
+    rw [Finset.sum_div]
+  have hS : 0 ≤ ∑ q ∈ univ \ A, pref q := Finset.sum_nonneg fun q _ => hpref q
+  rw [hmass, div_le_iff₀ hZpos]
+  calc ∑ q ∈ univ \ A, weight b pref τ δ q
+      ≤ (∑ q ∈ univ \ A, pref q) * (d / δ) := hnum
+    _ = ((∑ q ∈ univ \ A, pref q) / W) * (d / δ) * W := by
+        field_simp
+    _ ≤ ((∑ q ∈ univ \ A, pref q) / W) * (d / δ) * total b pref τ δ := by
+        apply mul_le_mul_of_nonneg_left hZ
+        exact mul_nonneg (div_nonneg hS hWpos.le) (div_nonneg hd0 hδ.le)
+
+omit [Fintype Q] [DecidableEq Q] in
+/-- `Margin` is `MarginMass` with one witness and `W = pmin`. -/
+theorem marginMass_of_margin (hmin : ∀ q, pmin ≤ pref q) (hM : Margin u A τ δ) :
+    ∃ A₁, MarginMass u pref A A₁ τ δ pmin := by
+  obtain ⟨q₀, hq₀A, hq₀⟩ := hM
+  refine ⟨{q₀}, Finset.singleton_subset_iff.mpr hq₀A, ?_, ?_⟩
+  · intro q hq
+    rw [Finset.mem_singleton] at hq
+    rw [hq]
+    exact hq₀
+  · rw [Finset.sum_singleton]
+    exact hmin q₀
+
+/-- The coarse constant is the sharp one with `W = pmin` and the inadequate mass bounded
+by `|Q| · pmax`. -/
+theorem coarse_le_sharp_bound (hmax : ∀ q, pref q ≤ pmax) (hpm : 0 ≤ pmax)
+    (hpmin : 0 < pmin) (hδ : 0 < δ) (hd0 : 0 ≤ d) :
+    ((∑ q ∈ univ \ A, pref q) / pmin) * (d / δ) ≤ (Fintype.card Q * pmax / (pmin * δ)) * d := by
+  have hS : ∑ q ∈ univ \ A, pref q ≤ Fintype.card Q * pmax := by
+    calc ∑ q ∈ univ \ A, pref q ≤ ∑ q ∈ univ \ A, pmax := Finset.sum_le_sum fun q _ => hmax q
+      _ = (univ \ A).card * pmax := by rw [Finset.sum_const, nsmul_eq_mul]
+      _ ≤ Fintype.card Q * pmax := by
+          apply mul_le_mul_of_nonneg_right _ hpm
+          exact_mod_cast Finset.card_le_univ _
+  have h1 : ((∑ q ∈ univ \ A, pref q) / pmin) * (d / δ)
+      = (∑ q ∈ univ \ A, pref q) * d / (pmin * δ) := by
+    field_simp
+  have h2 : (Fintype.card Q * pmax / (pmin * δ)) * d = Fintype.card Q * pmax * d / (pmin * δ) := by
+    ring
+  rw [h1, h2]
+  apply div_le_div_of_nonneg_right _ (mul_nonneg hpmin.le hδ.le)
+  exact mul_le_mul_of_nonneg_right hS hd0
+
+/-! ### Inquiry as a wrapper
+
+The theorems above are stated on the regime where the normalizer is positive.  When no
+response is confidently adequate the normalizer can vanish, and the gate must return
+something.  `gateWithInquiry` is the total map: on `Option Q`, it is the soft gate on
+`some q` when the normalizer reaches a floor `W`, and the point mass on `none` (inquiry)
+otherwise.  Under `MarginMass` at mass `W` and `d ≤ δ` the wrapper never fires, so every
+coupling theorem above is a theorem about `gateWithInquiry` restricted to `some`. -/
+
+/-- The total gate, with inquiry. -/
+noncomputable def gateWithInquiry (b pref : Q → ℝ) (τ δ W : ℝ) : Option Q → ℝ :=
+  fun o => if W ≤ total b pref τ δ then
+    (match o with
+     | some q => softGate b pref τ δ q
+     | none => 0)
+  else (match o with
+     | some _ => 0
+     | none => 1)
+
+omit [DecidableEq Q] in
+/-- In the gate regime the wrapper is the soft gate. -/
+theorem gateWithInquiry_some {W : ℝ} (h : W ≤ total b pref τ δ) (q : Q) :
+    gateWithInquiry b pref τ δ W (some q) = softGate b pref τ δ q := by
+  simp [gateWithInquiry, h]
+
+omit [DecidableEq Q] in
+/-- In the inquiry regime the wrapper is the point mass on inquiry. -/
+theorem gateWithInquiry_none {W : ℝ} (h : ¬ W ≤ total b pref τ δ) :
+    gateWithInquiry b pref τ δ W none = 1 ∧ ∀ q, gateWithInquiry b pref τ δ W (some q) = 0 := by
+  simp [gateWithInquiry, h]
+
+omit [DecidableEq Q] in
+/-- Under `MarginMass` at mass `W` and `d ≤ δ`, the wrapper does not fire. -/
+theorem gateWithInquiry_regime {A₁ : Finset Q} {W : ℝ} (hδ : 0 < δ) (hpref : ∀ q, 0 ≤ pref q)
+    (hM : MarginMass u pref A A₁ τ δ W) (hW : Within b u d) (hd : d ≤ δ) (q : Q) :
+    gateWithInquiry b pref τ δ W (some q) = softGate b pref τ δ q :=
+  gateWithInquiry_some (total_ge_W hδ hpref hM hW hd) q
+
 end Soft
+
+/-! ## The abstract adapter lemma
+
+Any decision adapter that is sound at a region point and Lipschitz from the price vector
+into the response distribution (in the `ℓ¹`, i.e. twice-total-variation, norm) satisfies
+the coupling.  The soft gate's theorems above are proved directly and do not derive its
+`ℓ¹`-Lipschitz constant; the lemma is the abstract form of what they establish. -/
+
+section Adapter
+
+variable {A : Finset Q}
+
+/-- The `ℓ¹` distance between two vectors on the menu; twice the total variation for
+probability vectors. -/
+noncomputable def l1 (p p' : Q → ℝ) : ℝ := ∑ q, |p q - p' q|
+
+omit [DecidableEq Q] in
+theorem l1_nonneg (p p' : Q → ℝ) : 0 ≤ l1 p p' :=
+  Finset.sum_nonneg fun _ _ => abs_nonneg _
+
+/-- Mass off a set moves at most the `ℓ¹` distance. -/
+theorem massOff_sub_le_l1 (p p' : Q → ℝ) : massOff p A - massOff p' A ≤ l1 p p' := by
+  unfold massOff l1
+  rw [← Finset.sum_sub_distrib]
+  calc ∑ q ∈ univ \ A, (p q - p' q) ≤ ∑ q ∈ univ \ A, |p q - p' q| :=
+        Finset.sum_le_sum fun q _ => le_abs_self _
+    _ ≤ ∑ q, |p q - p' q| :=
+        Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _)
+          fun q _ _ => abs_nonneg _
+
+/-- **Abstract adapter coupling.**  Sound at the region point `u` (mass off `A` at most
+`θ`) and `ℓ¹`-Lipschitz between `b` and `u` at rate `κ` per unit defect gives the coupling
+hypothesis of `adequate_set_route` at `b`. -/
+theorem adapter_coupling (D : (Q → ℝ) → Q → ℝ) {b u : Q → ℝ} {κ d θ : ℝ}
+    (hsound : massOff (D u) A ≤ θ) (hlip : l1 (D b) (D u) ≤ κ * d) :
+    massOff (D b) A ≤ κ * d + θ := by
+  have := massOff_sub_le_l1 (A := A) (D b) (D u)
+  linarith
+
+/-- Composed with the adequate-set route: a sound, Lipschitz adapter whose output is a
+distribution pays `PracticalCert` with `M = D κ`, `ε = εad + D θ`. -/
+theorem adapter_practicalCert (D : (Q → ℝ) → Q → ℝ) {b u lam : Q → ℝ} {κ d θ εad Dmax : ℝ}
+    (hp : ∀ q, 0 ≤ D b q) (hprob : ∑ q, D b q = 1)
+    (hεad : 0 ≤ εad) (hD : 0 ≤ Dmax)
+    (hadequate : ∀ q ∈ A, lam q ≤ εad) (hbound : ∀ q, lam q ≤ Dmax)
+    (hsound : massOff (D u) A ≤ θ) (hlip : l1 (D b) (D u) ≤ κ * d) :
+    anchoredLoss univ (D b) lam ≤ (Dmax * κ) * d + (εad + Dmax * θ) :=
+  adequate_set_route univ A (Finset.subset_univ _) (fun q _ => hp q) hprob hεad hD hadequate
+    (fun q _ => hbound q) (adapter_coupling D hsound hlip)
+
+end Adapter
 
 /-! ## The hard gate -/
 
@@ -295,6 +504,16 @@ end Workspace.Normativity.Contrib.GatedChoice
 #print axioms Workspace.Normativity.Contrib.GatedChoice.massOff_le_one
 #print axioms Workspace.Normativity.Contrib.GatedChoice.softGate_coupling
 #print axioms Workspace.Normativity.Contrib.GatedChoice.softGate_practicalCert
+#print axioms Workspace.Normativity.Contrib.GatedChoice.total_ge_W
+#print axioms Workspace.Normativity.Contrib.GatedChoice.softGate_massOff_le_sharp
+#print axioms Workspace.Normativity.Contrib.GatedChoice.marginMass_of_margin
+#print axioms Workspace.Normativity.Contrib.GatedChoice.coarse_le_sharp_bound
+#print axioms Workspace.Normativity.Contrib.GatedChoice.gateWithInquiry_some
+#print axioms Workspace.Normativity.Contrib.GatedChoice.gateWithInquiry_none
+#print axioms Workspace.Normativity.Contrib.GatedChoice.gateWithInquiry_regime
+#print axioms Workspace.Normativity.Contrib.GatedChoice.massOff_sub_le_l1
+#print axioms Workspace.Normativity.Contrib.GatedChoice.adapter_coupling
+#print axioms Workspace.Normativity.Contrib.GatedChoice.adapter_practicalCert
 #print axioms Workspace.Normativity.Contrib.GatedChoice.Witness.hardGate_discontinuous
 #print axioms Workspace.Normativity.Contrib.GatedChoice.scalar_bribery
 #print axioms Workspace.Normativity.Contrib.GatedChoice.gate_invariant
