@@ -79,6 +79,59 @@ in transported responses; evaluation mass left unserved.
 This is a sufficiency theorem. Any realization that supplies the named certificates
 gets the bound.
 
+## The decision interface
+
+**Status: the static interface is Lean-proved and unregistered; the margin is a typed
+input with two routes; the dynamic case is open.**  What the bound above asks of decision
+theory is the practical certificate on each supported edge, and the adequate-set route
+factors that into a semantic half — adequate responses cost at most `ε_ad`, every
+response at most `D` — and one decision-theoretic half: the realized response
+distribution's mass off the adequate set is affine in the public defect.  The static
+bill is therefore **a continuity/coupling condition, not expected-utility
+maximization.**
+
+    adequacy semantics → compiled region → market proximity → sound stable adapter
+        → PracticalCert → Progress
+
+- **Adapter abstraction.**  Any map from displayed scores to response distributions
+  that is *sound* at a region point (mass off the adequate set at most `θ`) and
+  *Lipschitz* in the scores at rate `κ` per unit sup-distance satisfies the coupling,
+  and then the certificate with `M = D κ`, `ε = ε_ad + D θ`.  Every arrow from the
+  adapter to Progress is a literal hypothesis match.
+- **Soft gate, one realization.**  Weight each response by a ramp of width `δ` on its
+  adequacy score above a threshold `τ`, times a task preference, and normalize.  With
+  the region excluding inadequate responses at `τ` and a margin of adequate preference
+  mass `W` above `τ + 2δ`, the mass off the adequate set is at most the inadequate
+  preference mass over `W`, per unit of defect relative to `δ`.  The natural hard gate
+  — task-argmax over responses priced above `τ` — is sound and has no Lipschitz
+  constant: at every positive defect it can execute an inadequate response with mass
+  one.  Continuity is the whole decision-theoretic content.
+- **Positive margin is semantic or epistemic, not decision theory.**  Region soundness
+  excludes; it marks nothing.  The margin comes by route A — the compiler positively
+  marks an adequate response at the region point, a completeness condition — or by
+  route B — the market displays one on its own, which a learning theorem about prices
+  could supply asymptotically and without rate.  Both routes are pointwise at the
+  occasion and apply to adequacy that is derivable or externally certified.  Adequacy
+  known only through later settlement is outside the static theorem; the bridge from
+  average calibration to average inadequate-action mass is not proved.
+- **Charged through amplification.**  The constant `M = D κ` enters Progress through
+  the amplification hypothesis, so the exact end-to-end condition is the existing one;
+  the local reading is that market error must shrink relative to the certified margin
+  with the inadequate-to-adequate preference-mass ratio controlled.
+- **Not part of the definition.**  The soft gate is a realization of the adapter
+  `Pi`, not a component of the Normative Inductor; the Inductor's substrate and the
+  evaluation are unchanged by it.  Task competence inside the adequate set is the
+  application's; a bounded-inductive-rationality learner on the gated sequence
+  supplies it for a supplied decision-problem sequence.
+- **Inquiry.**  When no response is confidently adequate the gate returns an inquiry
+  response, charged at `D` through the residual and never a violation; in the Lean
+  this is a wrapper silent under margin, and the cleaner semantics compiles "inquiry is
+  adequate" from a certified conflict so that inquiry is an ordinary response.
+- **Open.**  When an admissible act changes the next admissible set, a myopic gated
+  learner is safe and not competent against legitimate continuation policies; bounded
+  competence under an endogenously changing admissibility process is the next
+  problem ([Corrigibility](Corrigibility)).
+
 ## What is billed
 
 The evaluation protocol — `μ`, `T`, `D` — is the application's. The truth of each
@@ -102,6 +155,14 @@ analysis are the practical certificate round's
 [`CERTIFICATE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/CERTIFICATE.md)
 and
 [`JOINT_COMPATIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/JOINT_COMPATIBILITY.md).
+The decision interface — the adapter abstraction, the soft gate with its sharp constant,
+the hard-gate witness, the two margin routes and the inquiry wrapper — is
+[`GatedChoice.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/lean/Workspace/Normativity/Contrib/GatedChoice.lean),
+with the register in the decision-theory-bill round's
+[`DECISION_THEORY_BILL.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/projects/deference/rounds/2026-09-06-decision-theory-bill/DECISION_THEORY_BILL.md)
+and
+[`NORMATIVE_CHOICE_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/projects/deference/rounds/2026-09-06-decision-theory-bill/NORMATIVE_CHOICE_THEOREM.md);
+its declarations are unregistered.
 The fixed-era instances — one era, one settled semantics — are on
 [Progress](Progress), [Serviceability](Serviceability) and
 [Liability and affordability](Liability-and-Affordability), and are realization

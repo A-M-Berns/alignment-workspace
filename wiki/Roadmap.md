@@ -63,6 +63,10 @@ the generic theory, and nothing in the second is a conceptual gap.
    only for exogenous durations.
 6. **Aggregation laws with several parents** — item 82 — only if an application
    needs them; filed as a boundary, not a problem.
+7. **Margin realization** — item 85. The decision adapter needs a positive adequacy
+   margin at the occasion, compiled at the region point or displayed by the market;
+   neither route is established at a realized market, and adequacy known only through
+   later settlement has no averaged bridge.
 
 **Realization and integration** — engineering against a fixed theory.
 
@@ -134,3 +138,10 @@ see [Deference](Deference) for the two decisions it is waiting on.
   and 25.
 - Settle which route to Value the line's target should be, given that the
   hard-selector route does not survive the punishment menus — items 14 and 34.
+
+Three corrigibility rounds ran without lifting the pause and their state is on
+[Corrigibility](Corrigibility). What they filed: the Lean form of eligible liveness and
+the laundered-loss case split — item 83; the operative-value-security bridge behind
+selected trust — item 84; bounded competence against legitimate continuation policies
+under endogenous admissibility — item 86, the line's central unresolved decision-theory
+problem.

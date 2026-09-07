@@ -134,6 +134,48 @@ commit.
 
 ## Settled
 
+### 2026-09-07 — the bibliography is exempt from the name lint
+
+**Maintainer ruling, taken in conversation and landed by the decision-theory-bill
+round.** `wiki/Sources.md` is added to `tests/name_lint.py`'s `ALLOWED_FILES`: a
+bibliography names the authors of the works it cites, and a maintainer is also an
+external author the program cites (friction F6). The allowance is one file, pinned in
+the lint's self-test; every other wiki page stays in scope, and citations in other
+tracked prose still use the backtick form.
+*Rejected alternative:* a citation-context matching rule, which would change the gate's
+logic over every document it has passed; left as F6's general fix.
+
+### 2026-09-07 — the decision adapter is a sound Lipschitz reader of adequacy scores; the static choice problem is closed conditional on margin
+
+**agent-decided, reversible.** The Normative Inductor's decision-theory bill is the
+coupling hypothesis of `PracticalCertificate.adequate_set_route`.  Its abstract form is
+`GatedChoice.adapter_coupling`: an adapter sound at a region point and `ℓ¹`-Lipschitz in
+the displayed scores has mass off the adequate set affine in the public defect, and
+`adapter_practicalCert` composes it to `PracticalCert`.  The decision adapter
+`Evaluation.Pi` is realized as a soft gate — ramp weight on the adequacy score times a
+task preference, normalized — with the constant `(Σ_{q∉A} pref)/(W δ)`
+(`softGate_massOff_le_sharp`), on the regime where the normalizer is positive; inquiry is
+the wrapper `gateWithInquiry`, silent under margin, and the preferred semantics is a
+compiled `Adequate(⊥)` making inquiry an ordinary response.  The Progress statistic is
+the assessment, not the objective: a finite additive penalty is flipped by a stake above
+`λ·D` (`scalar_bribery`) and a within-domain argmax never consults the forbidden value
+(`gate_invariant`); non-compensability must appear in the choice ordering itself, of
+which domain restriction is one realization.  The static finite reason-to-action problem
+is thereby closed conditional on a pointwise adequacy-semantics and positive-margin
+interface — a margin compiled at the region point (`MarginMass`, route A) or displayed by
+the market (`MarginDisplayed`, route B), with adequacy known only through later
+settlement outside the static theorem and its averaged bridge open; the next
+layer is bounded competence under an admissibility process whose future depends on
+current actions, where domain typing gives safety and comparator restriction alone is
+vacuous (`test_dynamic`).  Constitutional constraints are adequate sets of the same type
+with a prestate-anchored branch index (Branch Persistence Lemma, adequate-set form);
+gate preservation under self-modification is a representation plus a domain condition,
+not a reflective theorem.
+*Rejected alternative:* the first pass's `GATE-NOT-UTILITY` framing, which made the soft
+gate the conceptual endpoint and read domain restriction as the definition of
+non-compensation; and a hard admissibility gate, which is sound and has no Lipschitz
+constant (`hardGate_discontinuous`).
+
 ### 2026-09-06 — the incentive extension of corrigibility is a named-assumption identity; Level II is claimed, Levels III and IV are not
 
 **agent-decided, reversible.** The agent's gain from substituting its choice for the

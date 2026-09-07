@@ -135,13 +135,13 @@ Both are typed inputs. Neither is an unfinished theorem of the generic theory.
 
 ## Where this is going
 
-The longer-run consumer is [Deference](Deference) and its
-[corrigibility](Corrigibility) target: a theorem consuming `Legitimate` or a
-legitimate segment, a Progress guarantee, and the decision-facing outputs of a
-realization, and concluding that there is reason not to preempt, disable or replace
-such a process merely because its later judgment may differ from the current
-agent's. That theorem has not been proved. The present work supplies the object it
-would consume.
+The consumer is [corrigibility](Corrigibility), where the principal's authority is
+represented in the admissibility structure a legitimate evolution conserves and keeps
+open, and the decision interface of [normative induction](Normative-Induction) reads
+that structure exactly as it reads an ordinary obligation.  What legitimacy contributes
+there is conservation of governance debt and per-state procedural availability; it does
+not prove physical authority, behavioural compliance, or an absence of incentive to
+circumvent the process, and the corrigibility page keeps those apart.
 
 ---
 
