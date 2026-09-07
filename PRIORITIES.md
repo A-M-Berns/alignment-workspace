@@ -2405,7 +2405,7 @@ specialization's investing-in-amendment case.
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
-The authority-activated-value round closes the interface: an anchored evaluation
+The authority-activated-value round settles the interface's shape: an anchored evaluation
 occurrence, an activation bit read off its propagated account, occurrence-local
 legitimacy as a projection of the existing segment, ordinary Value on the activated
 securities, and the sharp transfer `regret_V ≤ ε + η`.  Two inputs are typed as external

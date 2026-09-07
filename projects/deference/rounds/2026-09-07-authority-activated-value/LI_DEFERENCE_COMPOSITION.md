@@ -113,8 +113,10 @@ No.  The check against the actual statements:
   a discipline, not a theorem: **the constant option must be activated too**, `C_n · s`,
   or the void branch favours the constant and reopens the certifiability channel
   (`TestWitnessMenuActivation`, **FIX**).  With the activated constant the identity is
-  the conditional Total Trust `𝔼[V | C ∧ E*(U) ≥ s] ≥ s` by `argmax_iff`'s mass
-  factorization.  This is the same linearity, applied to `C_n(X − s)`.
+  the conditional Total Trust `𝔼[V | C ∧ E*(U) ≥ s] ≥ s` after dividing by the mass of
+  `C ∧ [E*(U) ≥ s]`, the same factorization as in `argmax_iff`.  This is the same
+  linearity, applied to `C_n(X − s)`; it is a reading of the ported identity, not a new
+  Lean statement.
 - The novelty is entirely in the semantics of `C_n` (the Normativity-side module) and
   the one transfer lemma.  There is no selected-trust or conditional-trust ingredient
   because activation is common to the menu; the moment it is per-candidate (fixture
