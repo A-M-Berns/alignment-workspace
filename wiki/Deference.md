@@ -41,6 +41,19 @@ principal's, and the static decision interface shared with ordinary normativity.
 is not proved — incentive corrigibility, gate preservation as a preference, provenance
 and containment — is stated there, not here.
 
+**The legitimacy→deference interface** is an anchored *evaluation occurrence*: at
+time `n` the advisor admits, as an ordinary obligation in the account calculus, a
+request that the principal score a fixed menu at a designated session. The actual
+future principal — after interacting with the advisor — answers, and the answer
+activates ordinary value securities iff the occurrence's propagated account is a single
+authenticated answer (never a closure, never a live port) with an occurrence-local
+legitimate lineage. No counterfactual reference evaluator is defined. Ordinary Value
+runs on the activated securities unchanged, and regret against the actual principal
+is at most activated regret plus the void mass, exactly. What remains external is that
+evaluations happen and that a process-certified answer is the principal's own
+(`PRIORITIES.md` item 87). The round is
+[authority-activated value](https://github.com/A-M-Berns/alignment-workspace/tree/027b63d4e2f67155720608660e7f748fc3611a96/projects/deference/rounds/2026-09-07-authority-activated-value).
+
 ## Current status
 
 > **Paused.** The line is not being worked. What it holds is registered and what
