@@ -90,6 +90,11 @@ out, given actual coverage, to be Robust Openness itself split on whether the co
 was live at the actual prefix, and is recorded as such rather than presented as a
 certificate.
 
+This is the access half of non-capture: it concerns who can reach and act on a
+concern, not what an evaluator who does reach it concludes. That an evaluation
+recorded through an open route is the evaluator's own — authorship — is a separate
+external contract, consumed by [deference](Deference) and not part of this one.
+
 ## Self-sealing
 
 The obvious attack is to destroy the one route a criticism has and then record the

@@ -134,6 +134,33 @@ commit.
 
 ## Settled
 
+### 2026-09-07 — the legitimacy→deference interface is an activated evaluation occurrence, read occurrence-locally
+
+**agent-decided, reversible.** An advisor's deference target is the *actual* future
+principal's evaluation, admitted at time `n` as an anchored evaluation occurrence in the
+existing account calculus (`EvalReq` is a value of `Req`, not a constructor).  The
+activation event is `OccurrenceIntegrity.Program.activated`: the occurrence's propagated
+account is exactly one authenticated answer leaf, so `closed` and `live` never activate
+and a second receipt cannot enter once one has (`fates_subst_of_terminal`).  The value
+vector is the payload of the authenticated history at the answer receipt's event.  The
+lineage condition a deference consumer takes is **occurrence-local**:
+`AuthorityActivation.LegitimateForSegment Γ_n`, the same Integrity evolution with
+Robust Openness required only for the concerns declared relevant to the occurrence —
+a projection of `LegitimateSegment` (`LegitimateSegment.project`), not a second theory;
+`Witness.unrelated_failure` is the trajectory on which the global hypothesis voids an
+intact evaluation.  Certification is payload-blind up to a total binding relation
+(`Neutral.certifiable_iff`); the authorship meaning of the process receipts is external.
+Ordinary LI Value runs on the activated securities `C_n · V_n(a)` unchanged, with the
+no-preview receipt as its admissible-domain condition, and the transfer to regret
+against the actual principal is `ε + η` exactly (`ActivatedValue.availability_transfer`).
+Robust Openness is recorded as the *access* half of non-capture; authorship is a separate
+external contract consumed by deference and not a conjunct of legitimacy.
+*Rejected alternatives:* a counterfactual reference evaluator as the value target (fixture
+A); global `Legitimate O_n O_m` as the consumer hypothesis (fixture H); a "resolved"
+(answered-or-closed) activation (fixture E); per-candidate activation (fixture D); a
+`ContinuationWarrant` / `AuthorityLineage` primitive (nothing it would carry is missing
+from the account).
+
 ### 2026-09-07 — the bibliography is exempt from the name lint
 
 **Maintainer ruling, taken in conversation and landed by the decision-theory-bill

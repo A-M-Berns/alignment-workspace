@@ -2401,6 +2401,45 @@ two-state process, or the negative.
 specialization's investing-in-amendment case.
 *A solution ships:* the learner and theorem, or the negative.
 
+### 87. Authoritative future-evaluation availability and process-authorship realization — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The authority-activated-value round closes the interface: an anchored evaluation
+occurrence, an activation bit read off its propagated account, occurrence-local
+legitimacy as a projection of the existing segment, ordinary Value on the activated
+securities, and the sharp transfer `regret_V ≤ ε + η`.  Two inputs are typed as external
+and nothing realizes them.
+
+**Availability.**  `η_n = 𝔼ⁿ[1 − C_n]` must be small *whatever the advisor selects*
+(the selection-dependent-refusal fixture drives `η` to `1` without breaking the bound).
+Build a concrete ecosystem model in which the designated session is sat, the commitment
+is made, and the lineage stays open on `Γ_n`, and prove `C_n → 1` in the criterion's
+sense: pointwise via `lic_provind_true` when every `C_n` settles true, or an averaged
+statement with a rate when a fraction fails.  The pointwise rate in the
+mostly-certified regime is open.
+
+**Authorship.**  `ProcessCert` is typed as the clauses designated-session, no-preview,
+no-direct-write, no-coercive-channel, assistance-allowed, each a receipt verifiable
+against the history.  Exhibit an audited protocol under which these receipts hold and
+argue — or find the additional assumption under which it can be proved — that the
+committed `V` is the principal's own.  The no-preview clause must stay narrow: it seals
+the advisor's selection and quotes for this occurrence from the session before the
+commitment and nothing else.  Any candidate that inspects `V` is excluded by
+`Neutral.certifiable_iff`.
+
+*Deliverable shape:* the ecosystem model with its availability theorem; the protocol
+with its receipts and the authorship argument or the named missing assumption; both
+with witnesses.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
+
+*Context:* `projects/deference/rounds/2026-09-07-authority-activated-value/`
+(`AUTHORITY_ACTIVATED_VALUE.md` §§4, 7; `LI_DEFERENCE_COMPOSITION.md` §6).
+*Consumed by:* the `(DV)` bridge of item 84 (an activated security under the no-preview
+receipt is a sealed-target security by construction); the corrigibility line's
+principal-side value.
+*A solution ships:* the two realizations, or the exact obstruction to either.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

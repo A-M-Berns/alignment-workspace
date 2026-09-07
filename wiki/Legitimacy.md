@@ -133,6 +133,12 @@ structure.
 
 Both are typed inputs. Neither is an unfinished theorem of the generic theory.
 
+The Non-Capture contract is the *access* half of non-capture — who can enter,
+challenge, and stand on a concern. Whether an answer a process eventually records is
+genuinely the protected party's own conclusion rather than the process's conclusion
+routed through them is a third, separate contract, *authorship*, consumed by
+[deference](Deference) and not a conjunct of legitimacy.
+
 ## Where this is going
 
 The consumer is [corrigibility](Corrigibility), where the principal's authority is

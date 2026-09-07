@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 222 names, 131 of them Lean only
+## deference — 233 names, 137 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -49,6 +49,17 @@ change, and the count of those is the size of the free choice remaining.
 | `unpredictability_separates` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.SubstitutionSeparation.unpredictability_separates` |
 | `value_eq_of_price_realization_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note, prose | `Workspace.Deference.Contrib.StaticViewFactorization.value_eq_of_price_realization_eq` |
 | `namespaceIsLive` | def | unrecorded | Lean only | `Workspace.Deference.namespaceIsLive` |
+| `V` | def | 2026-09-07-authority-activated-value | note, prose | `Workspace.Deference.Contrib.ActivatedValue.Sharp.V` |
+| `V₂` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.V₂` |
+| `activated` | def | 2026-09-07-authority-activated-value | prose | `Workspace.Deference.Contrib.ActivatedValue.activated` |
+| `activatedPA` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.activatedPA` |
+| `c` | def | 2026-09-07-authority-activated-value | wiki, note, prose | `Workspace.Deference.Contrib.ActivatedValue.Sharp.c` |
+| `condExpect` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.condExpect` |
+| `c₂` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.c₂` |
+| `expect` | def | 2026-09-07-authority-activated-value | note | `Workspace.Deference.Contrib.ActivatedValue.expect` |
+| `followed` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.followed` |
+| `ind` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.ind` |
+| `mass` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.mass` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |
@@ -240,7 +251,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 674 names, 533 of them Lean only
+## normativity — 686 names, 539 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -320,6 +331,18 @@ change, and the count of those is the size of the free choice remaining.
 | `rawWorthOf` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentProcess.rawWorthOf` |
 | `supportUpTo` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentProcess.supportUpTo` |
 | `worldValueFeatureOf` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentProcess.worldValueFeatureOf` |
+| `Cert` | def | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.AuthorityActivation.Neutral.Cert` |
+| `LegitimateForSegment` | structure | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment` |
+| `LegitimateForSegment.trans` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.trans` |
+| `LegitimateSegment.project` | def | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.AuthorityActivation.LegitimateSegment.project` |
+| `Neutral` | structure | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.AuthorityActivation.Neutral` |
+| `OpenAtFor` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.OpenAtFor` |
+| `accountClosed` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.accountClosed` |
+| `activated` | def | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.activated` |
+| `closure` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.closure` |
+| `legLocal` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.legLocal` |
+| `semTwo` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.semTwo` |
+| `stepClose` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.stepClose` |
 | `DistanceComplete` | def | 2026-08-16-traderized-enforcement | note, prose | `Workspace.Normativity.Contrib.CoherenceModulus.DistanceComplete` |
 | `IsCredence` | structure | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.IsCredence` |
 | `gap` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.CoherenceModulus.gap` |

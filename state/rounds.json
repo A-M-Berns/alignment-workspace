@@ -1291,6 +1291,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-06-decision-theory-bill/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-07-authority-activated-value",
+      "date": "2026-09-07",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-07-authority-activated-value",
+      "verdict": "AUTHORITY-ACTIVATED-VALUE-SURVIVES — the legitimacy→deference interface is an anchored evaluation occurrence whose actual future principal answer activates ordinary value securities iff the occurrence's propagated account is a single authenticated answer with an occurrence-local legitimate lineage; activation is a one-line predicate on the existing three-fate account, occurrence-local legitimacy is a projection of the existing legitimate segment, ordinary LI Value runs on the activated family unchanged with the no-preview receipt as its admissible-domain condition, and the only new theorem is the availability transfer from activated regret to regret against the actual future principal at the sharp constant ε + η; that evaluations happen and that a process-certified answer is the principal's own are typed as external and filed as item 87.",
+      "verdict_source": "projects/deference/rounds/2026-09-07-authority-activated-value/README.md",
+      "depends_on": ["2026-09-08-canonicalization", "2026-09-06-mathematical-consolidation", "2026-09-05-noncapture-certificate", "2026-08-12-corpus-reconciliation", "2026-08-11-faithful-acceleration"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-07-authority-activated-value/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
