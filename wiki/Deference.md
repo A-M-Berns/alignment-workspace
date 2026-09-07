@@ -32,11 +32,14 @@ efficacy robust to the advisor policies being quantified.
 [Legitimacy](Legitimacy) enters because preserving a channel is not enough. The
 surrounding process must preserve standing, provenance, and write boundaries so
 the advisor cannot manipulate what counts as a correction or the principal
-cannot launder a failure by self-authorization. The intended handoff is that a future
-deference theorem consumes a certified legitimate-evolution property, a Normative
-Progress guarantee, and the decision-facing outputs of a realization, and derives
-reasons not to preempt a legitimate future process; [Corrigibility](Corrigibility)
-states the interface and what is not yet proved.
+cannot launder a failure by self-authorization. [Corrigibility](Corrigibility) now
+carries the research state across three rounds: principal authority as part of the
+protected admissibility structure, the constitutional theorems with their bridges, a
+conditional incentive-compatible mediated-delegation result whose hypothesis is a
+selected-trust relation between the agent's operative values and the protected
+principal's, and the static decision interface shared with ordinary normativity.  What
+is not proved — incentive corrigibility, gate preservation as a preference, provenance
+and containment — is stated there, not here.
 
 ## Current status
 

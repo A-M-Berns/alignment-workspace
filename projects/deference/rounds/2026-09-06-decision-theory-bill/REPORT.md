@@ -71,8 +71,11 @@ shape, cited by declaration and not composed.
   coupling theorem) is done as far as the definition and the regime lemma; the coupling
   on the inquiry branch is not a theorem and is not claimed.
 - Lean for speculative dynamic machinery was not written.
-- The wiki `Sources` page gains the bounded-inductive-rationality paper, as dispatched;
-  no other wiki surface was touched.
+- A maintainer-directed integration pass (2026-09-07) separated the two margin routes in
+  Lean, marked the empirical bridge open, filed item 86, and updated the canonical wiki:
+  `Corrigibility` rewritten across the three rounds, the decision interface added to
+  `Normative induction`, and `Normative Inductor`, `Deference`, `Legitimacy`, `Roadmap`,
+  `Glossary` and `Sources` amended.
 
 ## What this does not establish
 
@@ -94,6 +97,7 @@ shape, cited by declaration and not composed.
 
 ## Attribution
 
-- Prompt author: maintainer, relayed verbatim (two dispatches).
+- Prompt author: maintainer, relayed verbatim (two dispatches) and a third maintainer
+  integration dispatch recorded in `prompts/2026-09-06-decision-theory-bill/PROMPT.md`.
 - Executor: Claude Fable 5.1 (Anthropic).
 - Dates: 2026-09-06 (exploratory pass), 2026-09-07 (pressure pass and maintainer integration pass).

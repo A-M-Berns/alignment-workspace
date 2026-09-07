@@ -14,6 +14,22 @@ This is the canonical human exposition of vocabulary. The repository's `state/vo
 | **objection family** | A reporting class of objections. **Open — unregistered:** in the finite footprint grammar, useful families are computed rather than authoritative inputs. |
 | **answering** | A recognized response disposition that addresses a due burden, such as acknowledgment, vindication, or a scorekeeper-recognized suspension. |
 
+## Decision interface and corrigibility
+
+| term | meaning |
+|---|---|
+| **decision adapter** | The map from the market state to the one response realized at a service occasion (`Pi`). What the Normative Inductor asks of it is the practical certificate; nothing about how it reads the market is part of the Inductor. |
+| **coupling** | The decision-theoretic half of the adequate-set route: the adapter's mass off the adequate set is affine in the public defect. The static bill. |
+| **sound stable adapter** | An adapter sound at a region point and Lipschitz in the displayed scores; it satisfies the coupling and hence the practical certificate. |
+| **soft gate** | One realization: ramp weight on each response's adequacy score times a task preference, normalized, inquiring when nothing is confidently adequate. The hard gate — argmax over responses above threshold — has no Lipschitz constant. |
+| **margin** (routes A and B) | A positive mark on adequate responses: compiled at the region point by a complete compiler (route A), or displayed by the market on its own (route B). Pointwise at the occasion; applies to certified adequacy; not decision theory. |
+| **constitutional adequacy** | The intersection over the charter-anchored protected branches of the responses adequate for each; the same static type as ordinary adequacy, read by the same adapter. |
+| **branch persistence** | With the branch index anchored in the prestate charter, an act that destroys a branch's realization is inadequate for that branch; with a world-read index the branch drops out. |
+| **failure loci** | Index, domain, level, provenance, mediation: where a constitutional failure occurs. The first three are typed exclusions; the last two are preconditions. |
+| **constitutional-violation premium** `Φ_C` | The value a policy gains over its constitution-respecting repair. A diagnostic of what a scalar agent assigns to escaping a domain restriction, not the organizing primitive. |
+| **selected trust** | The agent does not, on the events where it would substitute its choice, operatively value its pick more than the protected principal does. The hypothesis of the incentive-compatible mediated-delegation bound. |
+| **endogenous admissibility** | An admissible act changing the next admissible set. Legitimate continuation policies induce different admissibility histories; competence against them is open. |
+
 ## Legitimate evolution
 
 | term | meaning |

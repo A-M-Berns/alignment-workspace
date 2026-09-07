@@ -91,6 +91,17 @@ Reading either signature says exactly why the realization is conditional: the
 compiler, the scheduler, the practical semantics and the market's computability are
 how a realization *produces* the named hypotheses, and none is produced here.
 
+## The adapter is not the Inductor
+
+The decision adapter that consumes the market state is a separate object.  What the
+conditional theorems ask of it is the practical certificate; the adequate-set route
+reduces that to a coupling — mass off the adequate set affine in the public defect —
+which any adapter sound at the region and Lipschitz in the scores satisfies, and which a
+ramped adequacy gate realizes with an explicit constant
+([Normative induction](Normative-Induction)).  The gate is a realization of `Pi`, not a
+component of the architecture above; the positive margin it needs is a semantic or
+epistemic input, and competence inside the adequate set is the application's.
+
 ## What remains
 
 Realization and integration, not conceptual theory: a `Protocol` implemented over an
