@@ -69,6 +69,11 @@ authentication the generic theory already leaves external.  No new field.
 
 ## 3. The activation event
 
+*[corrected by the consolidation round]* The mature event has a seventh clause, the
+protected reason-coverage barrier with faithful representation (`ReasonCoverage.lean`),
+and the authorship clause is the issuance-rooted instantiation; the full list is
+`../2026-09-08-legitimate-deference-consolidation/LEGITIMATE_DEFERENCE.md` §3.
+
 ```
 C_n(h_m) := EvalAnswered(O_m.account o_n, h_m)  ∧  LocalLegit_n
 ```

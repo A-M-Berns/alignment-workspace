@@ -1,6 +1,11 @@
 # Partial evaluations and the three regrets
 
 **Status:** `ci-only`.  Lean: `lean/Workspace/Deference/Contrib/PartialActivatedValue.lean`.
+**Corrected by the consolidation round** (§3 below, marked *[corrected]*): the claimed
+completion interval `[R_U, R_U + D·η]` was false — a world-dependent followed strategy
+can use the void branch to beat every fixed candidate, so completion regret can lie
+*below* activated regret.  The true statement is two-sided, `|R_V̄ − R_U| ≤ D·η`, with
+both constants sharp.
 Fixtures: `tests/test_countermodels.py` (`TestI`, `TestK`, `TestIdentities`).
 
 ## 1. The partial object
@@ -63,22 +68,28 @@ activated regret `R_U(α) ≤ ε`, and for **every** completion `V̄` with value
 R_V̄(α) ≤ ε + D·η .
 ```
 
-**The interval is exact.**  `regret_constant_completion` (**LEAN**): a completion constant
-across candidates on void worlds has `R_V̄ = R_U`.  The previous round's
-`Sharp.transfer_sharp` is a completion attaining `R_V̄ = R_U + D·η` with `D = 1`.  So over
-all completions
+*[corrected]* **The two-sided completion theorem** (`regretV_sub_regretU_abs_le`,
+**LEAN**): for every completion with payoffs in `[L, L + D]`,
 
 ```
-R_V̄(α) ∈ [R_U(α), R_U(α) + D·η]
+|R_V̄(α) − R_U(α)| ≤ D · voidMass ,
 ```
 
-and both ends are attained (fixture **I**, **FIX**, sweeps the grid).  The sharpness
-example of the previous round is unchanged: its void-world payoffs were a completion
-choice, and the bound is tight as a statement over completions.  The constant is `D`,
-not `2D`.
+so with void mass `≤ η`, `R_U − D·η ≤ R_V̄ ≤ R_U + D·η`.  The one-sided upper bound
+above is its corollary.  **Both constants are sharp.**  `Sharp.transfer_sharp` (PR #92)
+attains `R_U + D·η`; `SharpLower.attained` (**LEAN**) attains `R_U − D·η`: two worlds of
+mass `½`, candidate values `(1, 0)` on the certified world and completion `(0, 1)` on the
+void one, strategy following `0` there and `1` here — activated regret `0`, completion
+regret `−½`.  The original claim that `R_V̄ ≥ R_U` for every completion was **false**: it
+holds for a world-independent strategy (the previous fixture) and fails as soon as the
+strategy can exploit the void branch (consolidation fixtures **A**, **B**).
+`regret_constant_completion` (**LEAN**) still holds: a completion constant across
+candidates on void worlds leaves regret unchanged.  Regret is **not** assumed
+nonnegative anywhere; a world-dependent strategy may beat every fixed comparator.
 
-**What this says.**  Failed-evaluation worlds contribute a bounded uncertainty mass
-`D·η` to any total regret one might write down, and nothing else.  No completion is
+**What this says.**  Completions are not authoritative: changing the arbitrary
+void-world completion moves fixed-menu regret by at most `D·η` in either direction, and
+nothing else.  No completion is
 privileged; no reference evaluator is smuggled in through the void branch.  The
 authoritative quantity is `R_auth`, which is defined without one.
 
@@ -86,7 +97,7 @@ authoritative quantity is `R_auth`, which is defined without one.
 
 `C = 0` exactly on the worlds where the principal would disagree with the advisor.
 `R_U = 0`; the anti-selection completion attains `R_V̄ = R_U + η`; every other
-completion on the grid is at most that.  The transfer is a pure identity in one common
+completion on the grid is within `η` of `R_U` *[corrected]*.  The transfer is a pure identity in one common
 event and assumes nothing about how `C` correlates with anything.
 
 ## 5. Perturbation
@@ -94,6 +105,18 @@ event and assumes nothing about how `C` correlates with anything.
 `regretU_perturb` (**LEAN**): if `|V_a(w) − V'_a(w)| ≤ δ` on certified worlds then
 `R_U(V) ≤ R_U(V') + 2·δ·mass`.  `AUTHORSHIP.md` §5 reads it as the quantitative-authorship
 interaction.
+
+## 5b. The authoritative-regret theorem *[added by the consolidation round]*
+
+`regretAuth_le_div` (**LEAN**): with a normalized credence, `R_U ≤ ε`, `0 ≤ ε`, and void
+mass `≤ η < 1`, the activation mass is at least `1 − η` and
+
+```
+R_auth(α) ≤ ε / (1 − η) .
+```
+
+`regretAuth_asymptotic` (**LEAN**): `R_U ≲ₙ 0` and `η_n → 0` give `R_auth ≲ₙ 0`.  This is
+the primary deference conclusion; see `../2026-09-08-legitimate-deference-consolidation/REGRET_AND_AVAILABILITY.md`.
 
 ## 6. What is not established
 

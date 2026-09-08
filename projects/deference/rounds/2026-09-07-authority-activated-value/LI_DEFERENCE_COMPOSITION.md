@@ -57,7 +57,16 @@ Instantiate the menu with `O_a := U_{n,a} = C_n · V_n(a)`.
 So: **ordinary Value runs on `{U_{n,a}}` without modification.**  The activated
 securities are just bounded LUVs; the theorem does not know they are activated.
 
-## 3. The scope condition is the no-preview receipt
+## 3. The scope condition is selection-induced channel blindness *[corrected]*
+
+*[corrected]* The original heading named the no-preview receipt as the scope condition.
+The scope condition is `Blind R P_sel` — the reason trace is blind to the pair class
+induced by the advisor's selection across its whole continuation — which with reason
+mediation gives `SelectionBlind V` (`ReasonMediatedAuthorship.selectionBlind_of_blind`).
+Literal no-preview is one implementation and is insufficient alone: the selection can
+leak through the advisor's other session inputs while the principal never reads it
+(`Witness.leak`; the reason-mediated-authorship round's fixture **H**).  The text below
+stands as the record of the first identification.
 
 The one place the construction touches Value's hypothesis package is `hSoft`.  The
 punishing menu of the corpus is `O_j = 1[j ≠ j*(n)]`: the payoff of an option depends
@@ -160,4 +169,5 @@ This is secondary and is not developed further.
   instantiation; the shape is standard but no `RpnThresholdCodeSeq` witness is built
   here (**OPEN**, formalization work only).
 - Any rate for `η_n → 0`; any pointwise statement in the mostly-certified regime.
-- That the no-preview receipt is enforced by any mechanism (**EXT**).
+- That selection-induced channel blindness (of which the no-preview receipt is one
+  implementation) is enforced by any mechanism (**EXT**).

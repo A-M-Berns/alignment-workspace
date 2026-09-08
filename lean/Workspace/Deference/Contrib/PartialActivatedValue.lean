@@ -14,19 +14,30 @@ exact.
 * `regretU`, `regretAuth`, `regretU_eq_mass_mul_regretAuth` — activated menu regret is the
   activation mass times the **conditional authoritative regret**, which is defined from
   `Vp` alone (it never reads a completion).
-* `availability_transfer_completion` — for **every** bounded completion `Vbar`,
-  `regretVbar ≤ regretU + D·η`.  `regret_constant_completion` — a completion constant across
-  candidates on void worlds attains the lower end `regretVbar = regretU`, and
-  `ActivatedValue.Sharp.transfer_sharp` attains the upper end; the completion interval is
-  exactly `[regretU, regretU + D·η]`.
+* `regretV_sub_regretU_abs_le` — **the completion theorem**: for every completion with
+  payoffs in an interval of width `D`, `|regretVbar − regretU| ≤ D · voidMass`.  Changing
+  the arbitrary void-world completion moves fixed-menu regret by at most `D·η` in *either*
+  direction; a world-dependent followed strategy can use the void branch to beat every
+  fixed candidate, so completion regret can lie *below* activated regret.
+  `availability_transfer_completion` is the one-sided upper corollary;
+  `regret_constant_completion` shows a completion that does not separate candidates on
+  void worlds leaves regret unchanged; `SharpLower.attained` attains `regretU − D·η` and
+  `ActivatedValue.Sharp.transfer_sharp` attains `regretU + D·η`, so both constants are
+  sharp.
+* `regretAuth_le_div` — **the authoritative-regret theorem**: with a normalized credence,
+  `regretU ≤ ε`, `0 ≤ ε`, and void mass `≤ η < 1`, the activation mass is at least `1 − η`
+  and `regretAuth ≤ ε / (1 − η)`.  `regretAuth_asymptotic` is the sequence form:
+  activated regret asymptotically nonpositive and void mass vanishing give conditional
+  authoritative regret asymptotically nonpositive.
 * `regretU_perturb` — two payoffs within `δ` on certified worlds have activated regrets
   within `2·δ·mass`: the quantitative-authorship interaction, stated as algebra.
 
 **What this does not establish.**  Which completion, if any, is "right": none is, and that
-is the point.  Names are provisional (`AGENTS.md` standard 6).
+is the point; the authoritative quantity is `regretAuth`, defined without one.  Names are provisional (`AGENTS.md` standard 6).
 -/
 import Workspace.Deference.Contrib.ActivatedValue
 import Mathlib.Order.Basic
+import Mathlib.Tactic.FinCases
 
 namespace Workspace.Deference.Contrib.ActivatedValue
 
@@ -155,7 +166,7 @@ theorem regretU_eq_mass_mul_regretAuth (π : W → ℚ) (c : W → Bool)
     exact expect_activated_eq_mass_mul π c Vp hVbar a hm
   · exact hm
 
-/-! ## 3. Completion-robust availability transfer -/
+/-! ## 3. The completion theorem -/
 
 /-- Regret in the fixed-`sup'` form is bounded by the pointwise form. -/
 theorem regretV_le_of_pointwise (π : W → ℚ) (V : Q → W → ℚ) (α : W → Q → ℚ) (r : ℚ)
@@ -172,42 +183,102 @@ theorem regretU_ge_pointwise (π : W → ℚ) (c : W → Bool) (V : Q → W → 
   have := Finset.le_sup' (fun a => expect π (activated c V a)) (Finset.mem_univ a)
   linarith
 
-/-- **Completion-robust availability transfer.**  Activated regret `≤ ε`, void mass `≤ η`,
-and for every completion with values in `[L, L + D]`, ordinary regret `≤ ε + D·η`. -/
+/-- The void mass `𝔼[1 − c]`. -/
+def voidMass (π : W → ℚ) (c : W → Bool) : ℚ := expect π fun w => 1 - ind c w
+
+omit [Fintype Q] [Nonempty Q] in
+/-- The followed strategy's unactivated excess lies between `L` and `L + D` times the void
+mass. -/
+theorem followed_excess_bounds [Fintype Q] (π : W → ℚ) (c : W → Bool) (V : Q → W → ℚ)
+    (α : W → Q → ℚ) (L D : ℚ)
+    (hπ : ∀ w, 0 ≤ π w) (hα : ∀ w a, 0 ≤ α w a) (hα1 : ∀ w, ∑ a, α w a = 1)
+    (hlo : ∀ a w, L ≤ V a w) (hhi : ∀ a w, V a w ≤ L + D) :
+    L * voidMass π c ≤ expect π (followed α V) - expect π (followed α (activated c V)) ∧
+    expect π (followed α V) - expect π (followed α (activated c V)) ≤ (L + D) * voidMass π c := by
+  have hexp : expect π (followed α V) - expect π (followed α (activated c V))
+      = ∑ w, π w * ((1 - ind c w) * followed α V w) := by
+    simp only [expect, ← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun w _ => ?_
+    rw [followed_activated]; ring
+  have hbounds : ∀ w, L ≤ followed α V w ∧ followed α V w ≤ L + D := by
+    intro w
+    unfold followed
+    constructor
+    · calc L = ∑ b, α w b * L := by rw [← Finset.sum_mul, hα1 w, one_mul]
+        _ ≤ ∑ b, α w b * V b w :=
+          Finset.sum_le_sum fun b _ => mul_le_mul_of_nonneg_left (hlo b w) (hα w b)
+    · calc ∑ b, α w b * V b w ≤ ∑ b, α w b * (L + D) :=
+          Finset.sum_le_sum fun b _ => mul_le_mul_of_nonneg_left (hhi b w) (hα w b)
+        _ = L + D := by rw [← Finset.sum_mul, hα1 w, one_mul]
+  rw [hexp]
+  unfold voidMass expect
+  constructor
+  · rw [Finset.mul_sum]
+    refine Finset.sum_le_sum fun w _ => ?_
+    have h1c : 0 ≤ 1 - ind c w := by linarith [ind_le_one c w]
+    have := mul_le_mul_of_nonneg_left (hbounds w).1 h1c
+    nlinarith [hπ w]
+  · rw [Finset.mul_sum]
+    refine Finset.sum_le_sum fun w _ => ?_
+    have h1c : 0 ≤ 1 - ind c w := by linarith [ind_le_one c w]
+    have := mul_le_mul_of_nonneg_left (hbounds w).2 h1c
+    nlinarith [hπ w]
+
+/-- A finite supremum shifted by termwise bounded increments moves by at most those bounds. -/
+theorem sup'_add_bounds {ι : Type*} (s : Finset ι) (hs : s.Nonempty) (f e : ι → ℚ) (lo hi : ℚ)
+    (hlo : ∀ i ∈ s, lo ≤ e i) (hhi : ∀ i ∈ s, e i ≤ hi) :
+    s.sup' hs f + lo ≤ s.sup' hs (fun i => f i + e i) ∧
+    s.sup' hs (fun i => f i + e i) ≤ s.sup' hs f + hi := by
+  constructor
+  · obtain ⟨i, hi, hfi⟩ := Finset.exists_mem_eq_sup' hs f
+    rw [hfi]
+    have := Finset.le_sup' (fun i => f i + e i) hi
+    linarith [hlo i hi]
+  · refine Finset.sup'_le hs _ fun i hi => ?_
+    have := Finset.le_sup' f hi
+    linarith [hhi i hi]
+
+/-- **The completion theorem.**  For payoffs in `[L, L + D]`, the completion regret and the
+activated regret differ by at most `D` times the void mass, in either direction. -/
+theorem regretV_sub_regretU_abs_le (π : W → ℚ) (c : W → Bool) (V : Q → W → ℚ)
+    (α : W → Q → ℚ) (L D : ℚ)
+    (hπ : ∀ w, 0 ≤ π w) (hα : ∀ w a, 0 ≤ α w a) (hα1 : ∀ w, ∑ a, α w a = 1)
+    (hlo : ∀ a w, L ≤ V a w) (hhi : ∀ a w, V a w ≤ L + D) :
+    |regretV π V α - regretU π c V α| ≤ D * voidMass π c := by
+  have hcand : ∀ a, L * voidMass π c ≤ expect π (V a) - expect π (activated c V a) ∧
+      expect π (V a) - expect π (activated c V a) ≤ (L + D) * voidMass π c :=
+    fun a => excess_bounds π c V a L D hπ (hlo a) (hhi a)
+  have hsup := sup'_add_bounds Finset.univ Finset.univ_nonempty
+    (fun a => expect π (activated c V a)) (fun a => expect π (V a) - expect π (activated c V a))
+    (L * voidMass π c) ((L + D) * voidMass π c) (fun a _ => (hcand a).1) (fun a _ => (hcand a).2)
+  have heq : (Finset.univ.sup' Finset.univ_nonempty fun a =>
+      expect π (activated c V a) + (expect π (V a) - expect π (activated c V a)))
+      = Finset.univ.sup' Finset.univ_nonempty fun a => expect π (V a) := by
+    refine Finset.sup'_congr _ rfl fun a _ => ?_; ring
+  rw [heq] at hsup
+  have hfoll := followed_excess_bounds π c V α L D hπ hα hα1 hlo hhi
+  unfold regretV regretU
+  rw [abs_le]
+  constructor <;> nlinarith [hsup.1, hsup.2, hfoll.1, hfoll.2]
+
+/-- **Completion-robust availability transfer** (one-sided corollary).  Activated regret
+`≤ ε`, void mass `≤ η`, and for every completion with values in `[L, L + D]`, completion
+regret `≤ ε + D·η`. -/
 theorem availability_transfer_completion (π : W → ℚ) (c : W → Bool)
     (Vp : (w : W) → c w = true → Q → ℚ) (α : W → Q → ℚ) (L D ε η : ℚ) (hD : 0 ≤ D)
     (hπ : ∀ w, 0 ≤ π w) (hα : ∀ w a, 0 ≤ α w a) (hα1 : ∀ w, ∑ a, α w a = 1)
     (hη : expect π (fun w => 1 - ind c w) ≤ η)
-    (Vbar : Q → W → ℚ) (hVbar : Completion c Vp Vbar)
+    (Vbar : Q → W → ℚ) (_hVbar : Completion c Vp Vbar)
     (hlo : ∀ a w, L ≤ Vbar a w) (hhi : ∀ a w, Vbar a w ≤ L + D)
     (hreg : regretU π c Vbar α ≤ ε) :
     regretV π Vbar α ≤ ε + D * η := by
-  refine regretV_le_of_pointwise π Vbar α _ fun a => ?_
-  obtain ⟨_, ha_hi⟩ := excess_bounds π c Vbar a L D hπ (hlo a) (hhi a)
-  have hfoll : L * expect π (fun w => 1 - ind c w)
-      ≤ expect π (followed α Vbar) - expect π (followed α (activated c Vbar)) := by
-    have hexp : expect π (followed α Vbar) - expect π (followed α (activated c Vbar))
-        = ∑ w, π w * ((1 - ind c w) * followed α Vbar w) := by
-      simp only [expect, ← Finset.sum_sub_distrib]
-      refine Finset.sum_congr rfl fun w _ => ?_
-      rw [followed_activated]; ring
-    rw [hexp]
-    unfold expect
-    rw [Finset.mul_sum]
-    refine Finset.sum_le_sum fun w _ => ?_
-    have h1c : 0 ≤ 1 - ind c w := by linarith [ind_le_one c w]
-    have hL : L ≤ followed α Vbar w := by
-      unfold followed
-      calc L = ∑ b, α w b * L := by rw [← Finset.sum_mul, hα1 w, one_mul]
-        _ ≤ ∑ b, α w b * Vbar b w :=
-          Finset.sum_le_sum fun b _ => mul_le_mul_of_nonneg_left (hlo b w) (hα w b)
-    have := mul_le_mul_of_nonneg_left hL h1c
-    nlinarith [hπ w]
-  have := regretU_ge_pointwise π c Vbar α a
+  have h := regretV_sub_regretU_abs_le π c Vbar α L D hπ hα hα1 hlo hhi
+  have hη' : voidMass π c ≤ η := hη
+  have := (abs_le.mp h).2
   nlinarith
 
-/-- **The lower end is attained.**  A completion constant across candidates on void worlds
-has ordinary regret equal to activated regret. -/
+/-- A completion constant across candidates on void worlds leaves regret unchanged: the
+void branch then separates no candidates and no strategy. -/
 theorem regret_constant_completion (π : W → ℚ) (c : W → Bool)
     (Vp : (w : W) → c w = true → Q → ℚ) (α : W → Q → ℚ) (hα1 : ∀ w, ∑ a, α w a = 1)
     (k : ℚ) : regretV π (completeBy c Vp k) α = regretU π c (completeBy c Vp k) α := by
@@ -252,6 +323,96 @@ theorem regret_constant_completion (π : W → ℚ) (c : W → Bool)
         + expect π (fun w => (1 - ind c w) * k)) (Finset.mem_univ a)
   rw [hsup, hfoll]
   ring
+
+/-! ## 3b. Lower sharpness: the void branch can beat every fixed candidate
+
+Two worlds of mass `½`.  On the certified world candidate `0` is worth `1` and candidate `1`
+worth `0`; the completion on the void world reverses them.  The strategy follows `0` on the
+certified world and `1` on the void one.  Activated regret is `0`; completion regret is
+`−½ = regretU − D·voidMass` with `D = 1`, `voidMass = ½`. -/
+
+namespace SharpLower
+
+def π : Fin 2 → ℚ := ![1/2, 1/2]
+def c : Fin 2 → Bool := ![true, false]
+def V : Fin 2 → Fin 2 → ℚ := ![![1, 0], ![0, 1]]
+def α : Fin 2 → Fin 2 → ℚ := ![![1, 0], ![0, 1]]
+
+theorem sup'_pair (f : Fin 2 → ℚ) (h : f 1 ≤ f 0) :
+    Finset.univ.sup' Finset.univ_nonempty f = f 0 := by
+  apply le_antisymm
+  · refine Finset.sup'_le _ _ fun i _ => ?_
+    fin_cases i <;> simp [h]
+  · exact Finset.le_sup' f (Finset.mem_univ 0)
+
+theorem attained :
+    regretU π c V α = 0 ∧ voidMass π c = 1/2 ∧ regretV π V α = 0 - 1 * (1/2) := by
+  refine ⟨?_, ?_, ?_⟩
+  · unfold regretU
+    rw [sup'_pair]
+    · simp [expect, followed, activated, ind, π, c, V, α, Fin.sum_univ_two]
+    · simp [expect, activated, ind, π, c, V, Fin.sum_univ_two]
+  · simp [voidMass, expect, ind, π, c, Fin.sum_univ_two]
+  · unfold regretV
+    rw [sup'_pair]
+    · simp [expect, followed, π, V, α, Fin.sum_univ_two]
+    · simp [expect, π, V, Fin.sum_univ_two]
+
+end SharpLower
+
+/-! ## 3c. The authoritative-regret theorem -/
+
+/-- The activation mass is the total credence less the void mass. -/
+theorem mass_eq (π : W → ℚ) (c : W → Bool) :
+    mass π c = (∑ w, π w) - voidMass π c := by
+  unfold mass voidMass expect
+  rw [← Finset.sum_sub_distrib]
+  refine Finset.sum_congr rfl fun w _ => ?_
+  ring
+
+/-- **Authoritative regret.**  With a normalized credence, activated regret `≤ ε`, `0 ≤ ε`,
+and void mass `≤ η < 1`: the activation mass is at least `1 − η`, and the conditional
+authoritative regret is at most `ε / (1 − η)`. -/
+theorem regretAuth_le_div (π : W → ℚ) (c : W → Bool)
+    (Vp : (w : W) → c w = true → Q → ℚ) {Vbar : Q → W → ℚ} (hVbar : Completion c Vp Vbar)
+    (α : W → Q → ℚ) (ε η : ℚ)
+    (hsum : ∑ w, π w = 1) (hη : voidMass π c ≤ η) (hη1 : η < 1) (hε : 0 ≤ ε)
+    (hreg : regretU π c Vbar α ≤ ε) :
+    1 - η ≤ mass π c ∧ regretAuth π c Vp α ≤ ε / (1 - η) := by
+  have hmass : 1 - η ≤ mass π c := by rw [mass_eq, hsum]; linarith
+  have hm : 0 < mass π c := by linarith
+  refine ⟨hmass, ?_⟩
+  have hid := regretU_eq_mass_mul_regretAuth π c Vp hVbar α hm
+  rw [hid] at hreg
+  have h1η : 0 < 1 - η := by linarith
+  rw [le_div_iff₀ h1η]
+  by_cases hA : 0 ≤ regretAuth π c Vp α
+  · calc regretAuth π c Vp α * (1 - η) ≤ regretAuth π c Vp α * mass π c :=
+          mul_le_mul_of_nonneg_left hmass hA
+      _ = mass π c * regretAuth π c Vp α := by ring
+      _ ≤ ε := hreg
+  · push Not at hA
+    nlinarith
+
+open LogicalInduction in
+/-- **Asymptotic form.**  If `RU n = p n · RA n`, `1 − η n ≤ p n`, `η → 0`, and activated
+regret is asymptotically nonpositive, then conditional authoritative regret is
+asymptotically nonpositive. -/
+theorem regretAuth_asymptotic (RA RU p η : ℕ → ℝ)
+    (hid : ∀ n, RU n = p n * RA n) (hp : ∀ n, 1 - η n ≤ p n)
+    (hη : ConvergesTo η 0) (hRU : RU ≲ₙ fun _ => 0) :
+    RA ≲ₙ fun _ => 0 := by
+  intro δ hδ
+  have hδ2 : 0 < δ / 2 := by positivity
+  obtain ⟨N, hN⟩ := Metric.tendsto_atTop.1 hη (1/2) (by norm_num)
+  filter_upwards [hRU (δ/2) hδ2, Filter.eventually_atTop.2 ⟨N, hN⟩] with n h1 h2
+  have hηn : |η n| < 1/2 := by simpa [Real.dist_eq] using h2
+  have hpn : 1/2 ≤ p n := by linarith [hp n, (abs_lt.1 hηn).2]
+  show RA n ≤ 0 + δ
+  have h1' : p n * RA n ≤ δ / 2 := by rw [← hid]; simpa using h1
+  by_cases hA : 0 ≤ RA n
+  · nlinarith
+  · linarith
 
 /-! ## 4. Perturbation: the quantitative-authorship interaction -/
 
@@ -314,6 +475,13 @@ end Workspace.Deference.Contrib.ActivatedValue
 #print axioms Workspace.Deference.Contrib.ActivatedValue.expect_followed_activated_eq_mass_mul
 #print axioms Workspace.Deference.Contrib.ActivatedValue.sup'_mul_left
 #print axioms Workspace.Deference.Contrib.ActivatedValue.regretU_eq_mass_mul_regretAuth
+#print axioms Workspace.Deference.Contrib.ActivatedValue.followed_excess_bounds
+#print axioms Workspace.Deference.Contrib.ActivatedValue.sup'_add_bounds
+#print axioms Workspace.Deference.Contrib.ActivatedValue.regretV_sub_regretU_abs_le
 #print axioms Workspace.Deference.Contrib.ActivatedValue.availability_transfer_completion
+#print axioms Workspace.Deference.Contrib.ActivatedValue.SharpLower.attained
+#print axioms Workspace.Deference.Contrib.ActivatedValue.mass_eq
+#print axioms Workspace.Deference.Contrib.ActivatedValue.regretAuth_le_div
+#print axioms Workspace.Deference.Contrib.ActivatedValue.regretAuth_asymptotic
 #print axioms Workspace.Deference.Contrib.ActivatedValue.regret_constant_completion
 #print axioms Workspace.Deference.Contrib.ActivatedValue.regretU_perturb

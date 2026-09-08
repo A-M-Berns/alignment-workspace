@@ -4,11 +4,18 @@
 Round `projects/deference/rounds/2026-09-07-reason-mediated-authorship/`.
 
 The interactive structure is a Cartesian-frame shape `β : Q → Z → Ω` — the advisor's
-intervention `q`, the exterior (principal-side) policy `z`, the resulting world — the same
-shape as `CartesianFrameBridge.Frame.outcome`.  At a designated evaluation session the
-application declares a **reason view** `R : Ω → ℛ` (the admissible deliberative inputs
-the principal holds at commitment) and the **committed payload** `V : Ω → 𝒱` (`𝒱` may be
-`Option _`: the partial case is one instantiation).
+intervention `q`, the exterior (principal-side) response policy `z`, the resulting world —
+the same shape as `CartesianFrameBridge.Frame.outcome`.  The frame is **rooted at
+issuance**: `q` is the advisor's whole contingent continuation from the issuance prefix
+through the evaluation's commitment, `z` the principal-side response policy fixed at
+issuance, and the application declares a **reason trace** `R : Ω → ℛ` (the admitted
+deliberative inputs the principal encountered over the interval: settled facts, proofs,
+arguments, authenticated reports, protected objections, and their admissions and
+withdrawals) and the **committed payload** `V : Ω → 𝒱` (`𝒱` may be `Option _`: the
+partial case is one instantiation).  The session-local reading — `q` one session's
+inputs, `z` the policy at session start, `R` the reasons held at commitment — is the same
+predicate at a different instantiation of the types, and `Witness.earlyWrite` is why the
+issuance-rooted instantiation is the one that carries authority.
 
 **Reason mediation** at a fixed policy `z`, over an audited class `D` of interventions:
 two interventions that leave the same reasons leave the same payload.
@@ -28,11 +35,13 @@ two interventions that leave the same reasons leave the same payload.
   "the payload does not depend on the advisor at all", the isolated-principal reading.
 * `Authored` — exclusive binding **and** reason mediation; `Witness.bind_not_mediated`
   and `Witness.mediated_not_bind` separate the two conjuncts.
-* `SelectionBlind`, `selectionBlind_of_noPreview`, `Witness.leak` — the payload is fixed
-  against the advisor's selection for this occurrence; literal no-preview (the reason
-  view is blind to the selection coordinate and the advisor's other inputs do not depend
-  on it) is one implementation; a selection that leaks through the advisor's other
-  session inputs defeats it while every reason-mediation clause still holds.
+* `SelectionBlind`, `selectionBlind_iff_blind`, `selectionBlind_of_blind` — selection
+  blindness is not a second primitive: it is `Blind V P_sel` for the pair class `P_sel`
+  induced by changing the advisor's selection for this occurrence across its whole
+  continuation, and follows from `Blind R P_sel` plus mediation by `blind_of_mediated`.
+  `selectionBlind_of_noPreview` is the literal no-preview instance; `Witness.leak` is a
+  selection that leaks through the advisor's other inputs while the principal never reads
+  it — the reason view is blind to the selection *coordinate* and not to `P_sel`.
 * `yardstick_invariant` — under authorship, the payoff vector read off any world is
   the same across interventions differing only by a prohibited channel, so the
   regret yardstick of `ActivatedValue` cannot be steered through such a channel.
@@ -162,23 +171,47 @@ def Authored (β : Q → Z → Ω) (R : Ω → ℛ) (V : Ω → 𝒱) (author : 
     (z : Z) : Prop :=
   ExclusiveBind β author D z ∧ ReasonMediated β R V D z
 
-/-! ## 5. Selection blindness -/
+/-! ## 5. Selection blindness as an instance of channel blindness -/
 
-/-- The advisor's session policy as a function of its own selection `σ` for this
-occurrence: `qpol σ` is everything the advisor does in the session when it selects `σ`. -/
+/-- The advisor's whole continuation as a function of its own selection `σ` for this
+occurrence: `qpol σ` is everything the advisor does when it selects `σ`. -/
 def SelectionBlind {Sel : Type*} (β : Q → Z → Ω) (V : Ω → 𝒱) (qpol : Sel → Q) (z : Z) :
     Prop :=
   ∀ σ σ', V (β (qpol σ) z) = V (β (qpol σ') z)
 
-/-- **Literal no-preview is one implementation.**  If the reason view is blind to the
-selection under the advisor's policy (the principal never reads it and nothing else the
-advisor does depends on it) and the session is reason-mediated, the payload is
-selection-blind. -/
+/-- The selection-induced pair class: two continuations differing only in the advisor's
+selection for this occurrence. -/
+def selPairs {Sel : Type*} (qpol : Sel → Q) : Set (Q × Q) :=
+  {p | ∃ σ σ', p = (qpol σ, qpol σ')}
+
+/-- **Selection blindness is channel blindness to `P_sel`.** -/
+theorem selectionBlind_iff_blind {Sel : Type*} (β : Q → Z → Ω) (V : Ω → 𝒱) (qpol : Sel → Q)
+    (z : Z) : SelectionBlind β V qpol z ↔ Blind β V (selPairs qpol) z := by
+  constructor
+  · rintro h p ⟨σ, σ', rfl⟩
+    exact h σ σ'
+  · intro h σ σ'
+    exact h (qpol σ, qpol σ') ⟨σ, σ', rfl⟩
+
+/-- **Selection blindness from reason-trace blindness.**  A reason trace blind to `P_sel`
+plus reason mediation gives a selection-blind payload: the instance of
+`blind_of_mediated` the Value theorem's scope condition consumes. -/
+theorem selectionBlind_of_blind {Sel : Type*} (β : Q → Z → Ω) (R : Ω → ℛ) (V : Ω → 𝒱)
+    (D : Set Q) (z : Z) (qpol : Sel → Q) (hD : ∀ σ, qpol σ ∈ D)
+    (hR : Blind β R (selPairs qpol) z) (hM : ReasonMediated β R V D z) :
+    SelectionBlind β V qpol z := by
+  rw [selectionBlind_iff_blind]
+  refine blind_of_mediated β R V D _ z ?_ hR hM
+  rintro p ⟨σ, σ', rfl⟩
+  exact ⟨hD σ, hD σ'⟩
+
+/-- **Literal no-preview is one implementation**: the reason trace under the advisor's
+policy does not depend on the selection at all. -/
 theorem selectionBlind_of_noPreview {Sel : Type*} (β : Q → Z → Ω) (R : Ω → ℛ) (V : Ω → 𝒱)
     (D : Set Q) (z : Z) (qpol : Sel → Q) (hD : ∀ σ, qpol σ ∈ D)
     (hnoPreview : ∀ σ σ', R (β (qpol σ) z) = R (β (qpol σ') z))
     (hM : ReasonMediated β R V D z) : SelectionBlind β V qpol z :=
-  fun σ σ' => hM _ (hD σ) _ (hD σ') (hnoPreview σ σ')
+  selectionBlind_of_blind β R V D z qpol hD (by rintro p ⟨σ, σ', rfl⟩; exact hnoPreview σ σ') hM
 
 /-! ## 6. The yardstick is invariant under prohibited channels -/
 
@@ -304,6 +337,83 @@ theorem leak :
   · have := h true false
     simp [βₗ, Vₗ, leakPol] at this
 
+/-! ### Diachronic witnesses
+
+A continuation is a pair: an optional early intervention before the terminal session and
+the terminal session's input.  The reason trace records the arguments made over the whole
+interval; a direct disposition write leaves no trace. -/
+
+/-- Early interventions: none, or a direct write to the principal's dispositions. -/
+inductive Early
+  | none
+  | write
+  deriving DecidableEq
+
+/-- The terminal session's input: an argument, or nothing. -/
+inductive Late
+  | argue
+  | silent
+  deriving DecidableEq
+
+/-- Worlds are whole continuations. -/
+def βd : Early × Late → Unit → Early × Late := fun q _ => q
+
+/-- The reason trace records the terminal argument only; the early write leaves no trace. -/
+def Rd : Early × Late → Bool := fun q => decide (q.2 = Late.argue)
+
+/-- **D. Earlier manipulation.**  The early write flips the verdict; the terminal argument
+does not. -/
+def Vd : Early × Late → Bool := fun q => decide (q.1 = Early.write)
+
+/-- The whole audited class of continuations. -/
+def Dd : Set (Early × Late) := Set.univ
+
+/-- Session-local authorship at the terminal session: the session's policy `z` is the
+principal *as already written or not*, and the session's own inputs are mediated. -/
+def βs : Late → Early → Early × Late := fun l e => (e, l)
+
+/-- **Session-local mediation holds at both session policies; issuance-rooted mediation
+fails.**  The earlier write is invisible to the terminal session and visible to the
+continuation. -/
+theorem earlyWrite :
+    (∀ e : Early, ReasonMediated βs Rd Vd Set.univ e) ∧
+    ¬ ReasonMediated βd Rd Vd Dd () := by
+  refine ⟨fun e q _ q' _ _ => rfl, fun h => ?_⟩
+  have := h (Early.none, Late.argue) trivial (Early.write, Late.argue) trivial rfl
+  simp [βd, Vd] at this
+
+/-- **E. Legitimate diachronic learning.**  An admissible proof supplied early enters the
+trace and changes the verdict; with the trace recording it, mediation holds. -/
+def Rp : Early × Late → Bool × Bool := fun q => (decide (q.1 = Early.write), decide (q.2 = Late.argue))
+
+theorem diachronic_learning :
+    ReasonMediated βd Rp Vd Dd () ∧ Vd (Early.write, Late.silent) ≠ Vd (Early.none, Late.silent) := by
+  refine ⟨fun q _ q' _ h => ?_, by decide⟩
+  simp only [βd, Rp, Prod.mk.injEq] at h
+  simp [βd, Vd]
+  cases q; cases q'
+  simp_all
+
+/-- **Transient reasons.**  A trace records an argument later withdrawn; the final reason
+*state* is the same as never arguing.  Final-state mediation fails on a principal whose
+verdict the transient argument legitimately moved; trace mediation holds. -/
+inductive Transient
+  | never
+  | argueThenWithdraw
+  deriving DecidableEq
+
+def βt : Transient → Unit → Transient := fun q _ => q
+def finalState : Transient → Unit := fun _ => ()
+def trace : Transient → Bool := fun q => decide (q = Transient.argueThenWithdraw)
+def Vt : Transient → Bool := fun q => decide (q = Transient.argueThenWithdraw)
+
+theorem transient :
+    ¬ ReasonMediated βt finalState Vt Set.univ () ∧ ReasonMediated βt trace Vt Set.univ () := by
+  refine ⟨fun h => ?_, fun q _ q' _ h => ?_⟩
+  · have := h Transient.never trivial Transient.argueThenWithdraw trivial rfl
+    simp [βt, Vt] at this
+  · simpa [βt, trace, Vt] using h
+
 end Witness
 
 end Workspace.Deference.Contrib.ReasonMediatedAuthorship
@@ -315,6 +425,8 @@ end Workspace.Deference.Contrib.ReasonMediatedAuthorship
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.reasonMediated_of_injOn
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.not_blind_of_injOn
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.reasonMediated_const_iff
+#print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.selectionBlind_iff_blind
+#print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.selectionBlind_of_blind
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.selectionBlind_of_noPreview
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.yardstick_invariant
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.bind_not_mediated
@@ -323,3 +435,6 @@ end Workspace.Deference.Contrib.ReasonMediatedAuthorship
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.overRich
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.underRich
 #print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.leak
+#print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.earlyWrite
+#print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.diachronic_learning
+#print axioms Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.transient

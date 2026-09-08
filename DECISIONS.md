@@ -134,6 +134,40 @@ commit.
 
 ## Settled
 
+### 2026-09-08 — legitimate deference lands as one stack: conditional authoritative regret is the target, the completion bound is two-sided, authorship is issuance-rooted, and reason coverage is a barrier
+
+**agent-decided, reversible.** The authority-activated-value and reason-mediated-authorship
+rounds land on `main` together with this consolidation, with their known defects repaired
+in place and marked *[corrected]*.  (1) **The completion interval recorded on 2026-09-07 was
+false**: a world-dependent followed strategy can use the void branch to beat every fixed
+candidate, so completion regret can lie below activated regret.  The theorem is
+`|R_V̄ − R_U| ≤ D·voidMass` (`regretV_sub_regretU_abs_le`), both constants sharp
+(`Sharp.transfer_sharp`, `SharpLower.attained`); completions are not authoritative.  (2) The
+**primary deference conclusion is conditional authoritative regret**: `R_U = p·R_auth`,
+`R_auth ≤ ε/(1 − η)` under a normalized credence with `0 ≤ ε` and `η < 1`
+(`regretAuth_le_div`), and `R_U ≲ 0 ∧ η → 0 ⇒ R_auth ≲ 0` (`regretAuth_asymptotic`);
+regret is against the best *fixed* candidate (`max` outside `𝔼`) and is not assumed
+nonnegative.  (3) **Authorship is issuance-rooted**: the frame's `q` is the advisor's whole
+continuation from issuance to commitment, `R` a reason trace over the interval, and the
+same `ReasonMediated` predicate at that instantiation is the notion; the session-local
+form is its instance and is defeated by an earlier disposition write
+(`Witness.earlyWrite`).  Selection blindness is `Blind V P_sel` for the selection-induced
+pair class (`selectionBlind_iff_blind`), a derived name for the Value theorem's domain
+condition and not part of `C_n`.  (4) **Reason supply** is closed narrowly: the bridge
+`Rep ⇒ InTrace` on the protected scope and the barrier `C = 1 ⇒ no live protected concern`
+give certified reason coverage (`covered_of_barrier`), omission voids (`void_of_omitted`),
+and suppression mass is at most the void mass (`covFail_mass_le`); Robust Openness
+supplies route availability for a live concern (`route_of_live`) and nothing about its
+exercise.  (5) The activation event `C_n` is the seven clauses of
+`LEGITIMATE_DEFERENCE.md` §3; the consumer's Integrity hypothesis is the occurrence-local
+`LocalLegit`, a projection and not a legitimacy notion; generic Legitimate Evolution and
+`Protocol.AnswerOK` are unchanged.  (6) `PRIORITIES.md` item 87 is rewritten as the single
+realization bill.  Nothing is registered.
+*Rejected alternatives:* landing the two rounds as opened, leaving `main` with the false
+interval and the `AnswerOK` placement; a "Legitimate Total Trust" theorem; putting selection
+blindness inside `C_n`; a broad epistemic-adequacy layer for reason supply; filing the bill
+as several items.
+
 ### 2026-09-07 — authorship of a future evaluation is exclusive binding plus reason mediation, read as a derived predicate over the answer receipt and its payload
 
 **agent-decided, reversible.** The authorship condition that enters the activation event
@@ -153,9 +187,10 @@ carries there, and the session's process receipts; exclusive binding is the exis
 future evaluation is a **partial** object `Ṽ` on certified worlds; activated securities
 are completion-invariant (`activated_completion_congr`), activated regret is the
 activation mass times a conditional authoritative regret defined from `Ṽ` alone
-(`regretU_eq_mass_mul_regretAuth`), and every bounded completion's regret lies in the
-exact interval `[R_U, R_U + D·η]` (`availability_transfer_completion`,
-`regret_constant_completion`).  The consumer's Integrity hypothesis is the
+(`regretU_eq_mass_mul_regretAuth`), and every bounded completion's regret lies within
+`D·η` of activated regret in either direction (`regretV_sub_regretU_abs_le`; *corrected
+by the 2026-09-08 consolidation entry* — the one-sided interval first recorded here was
+false for world-dependent strategies).  The consumer's Integrity hypothesis is the
 occurrence-local trace `LocalLegit` (`OccurrenceLocalIntegrity.lean`), a projection of
 PR #92's `LegitimateForSegment` (`toLocalLegit`); an unrelated occurrence's Integrity
 failure does not void an intact evaluation (`Witness.unrelated_integrity_failure`).

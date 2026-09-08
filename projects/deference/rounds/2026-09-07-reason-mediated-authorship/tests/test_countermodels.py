@@ -146,6 +146,9 @@ class TestI_PartialEvaluation(unittest.TestCase):
         self.assertTrue(all(t == tables[0] for t in tables))
 
     def test_regret_interval(self):
+        # Corrected by the consolidation round: for a world-INDEPENDENT strategy the
+        # completion regret lies in [R_U, R_U + eta]; the general statement is the
+        # two-sided |R_V - R_U| <= D*eta (see the consolidation round's fixtures A, B).
         eta = void_mass(self.pi, self.C)
         RU = {regret_U(self.pi, self.C, Vbar, self.alpha, self.cands)
               for Vbar in self.completions()}
@@ -153,7 +156,7 @@ class TestI_PartialEvaluation(unittest.TestCase):
         RVs = [regret_V(self.pi, Vbar, self.alpha, self.cands) for Vbar in self.completions()]
         self.assertEqual(min(RVs), F(0))            # candidate-constant completions
         self.assertEqual(max(RVs), F(0) + eta)      # the anti-selection completion
-        self.assertTrue(all(F(0) <= r <= eta for r in RVs))
+        self.assertTrue(all(abs(r - F(0)) <= eta for r in RVs))
 
     def test_authoritative_regret_is_completion_free(self):
         p = mass(self.pi, self.C)

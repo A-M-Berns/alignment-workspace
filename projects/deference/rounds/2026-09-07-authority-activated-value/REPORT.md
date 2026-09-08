@@ -106,6 +106,24 @@ menu), and `2026-08-11-faithful-acceleration` (`InheritedAlgebra.lean`).  Cites
 - Full incentive corrigibility; the PR #90 remark supplies an object for item 84,
   not the bridge.
 
+## Corrections applied by the consolidation round
+
+Recorded here so the round's original claims are legible against the repair
+(`../2026-09-08-legitimate-deference-consolidation/MAIN_READINESS.md`):
+
+- **`AnswerOK` placement.**  §3 of `AUTHORITY_ACTIVATED_VALUE.md` put `Bind(V)` inside
+  `AnswerOK`; the field is evaluated at the strict prefix and takes no event.  Repaired
+  to a derived predicate over the receipt's `event` and the history's payload.
+- **Total `V`.**  The evaluation is a partial object on certified worlds; the total `V`
+  survives as a completion, and activated securities are completion-invariant.
+- **"Occurrence-local legitimacy".**  `LegitimateForSegment` is scope-local openness
+  over global Integrity; the occurrence-local object is `LocalLegit`.
+- **No-preview as the scope condition.**  The scope condition is selection-induced
+  channel blindness `Blind R P_sel`; no-preview is one implementation and is
+  insufficient alone (leakage).
+- The verdict line's "no-preview receipt" clause is amended accordingly in `README.md`
+  and `state/rounds.json`.
+
 ## Outstanding maintainer actions
 
 1. None reserved.  Two decisions are adopted agent-decided in `DECISIONS.md`

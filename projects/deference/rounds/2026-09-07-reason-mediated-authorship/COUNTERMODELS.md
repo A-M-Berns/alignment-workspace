@@ -57,7 +57,9 @@ punished and no selection is an argmax.  `TestH`; Lean `Witness.leak`.
 Worlds `{0 (mass ¾, certified), 1 (mass ¼, void)}`; `Ṽ` defined on world `0` only, both
 candidates worth `½`; strategy follows `b`.  Over the `3×3` grid of completions on the
 void world: the activated securities are identical; `R_U = 0` for all; `R_V̄` ranges over
-`[0, ¼]` with both ends attained; `R_U = p · R_auth` for every completion.  `TestI`; Lean
+`[0, ¼]` for this *world-independent* strategy; `R_U = p · R_auth` for every completion.
+*[corrected]*: for a world-dependent strategy completion regret can fall below `R_U`
+(consolidation fixtures **A**, **B**); the general statement is `|R_V̄ − R_U| ≤ D·η`.  `TestI`; Lean
 `activated_completion_congr`, `regret_constant_completion`,
 `regretU_eq_mass_mul_regretAuth`.
 

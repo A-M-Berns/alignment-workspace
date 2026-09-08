@@ -1,7 +1,12 @@
 # Authority-activated value
 
 **Status:** `ci-only`; verification register for
-`prompts/2026-09-07-authority-activated-value/`.  Lean:
+`prompts/2026-09-07-authority-activated-value/`.  **Corrected by the consolidation
+round** (`../2026-09-08-legitimate-deference-consolidation/`): §3's placement of the
+binding relation inside `AnswerOK` was not expressible and is replaced by the derived
+predicate; the value vector is a partial object; the no-preview receipt is one
+implementation of selection-induced channel blindness, not the scope condition itself.
+Each correction is marked *[corrected]* in place.  Lean:
 `lean/Workspace/Deference/Contrib/ActivatedValue.lean` (the algebra) and
 `lean/Workspace/Normativity/Contrib/AuthorityActivation.lean` (the activation
 semantics).  Fixtures: `src/`, `tests/`.  Names are provisional.
@@ -26,7 +31,7 @@ expectation and the history; the two are separated here.
 | `α_n` | the matter evaluated | its identity, yes | its representation, by an authorized `LocalLaw` (re-representation) |
 | `Q_n` | finite candidate set, by identity | yes | candidate *semantics* may be transported by an authorized law; candidate *identity* never; a change of set is a fresh occurrence (§6) |
 | `s_n` | designated evaluation slot | yes | rescheduling is an authorized `LocalLaw` whose child carries `s' ≠ s_n`; visible in the account |
-| `τ` | output type: `V : Q_n → [0,1] ∩ ℚ`, plus a process receipt `ρ` | yes | never |
+| `τ` | output type: `V : Q_n → [0,1] ∩ ℚ`, plus a process receipt `ρ`; *[corrected]* the evaluation is a **partial** object, defined only on certified worlds (`PartialActivatedValue.Completion`) | yes | never |
 | `e_n` | the answer event at the slot; payload `(V_n, ρ_n)` read from `h_m` | — | — |
 | `P⁺` | the actual future principal, after interacting with `A` | — | epistemic state, deliberation, representatives, tools, assistance: all free, provided each change is itself authorized |
 
@@ -76,23 +81,33 @@ it stores which event is the answer, and the history is append-only.  That the
 payload at that event is what `P⁺` committed to is the semantic-authentication input
 the generic theory already names (**EXT**).
 
-## 3. Adequacy of an evaluation answer
+## 3. Adequacy of an evaluation answer *[corrected]*
 
-The protocol predicate `AnswerOK h r w` for `r = EvalReq(…)` is declared as
+The original text declared `AnswerOK h r w := SessionOK ∧ ProcessCert ∧ Bind(ρ.key, V)`
+with `ρ` and `V` "read from the answer event".  That is not expressible: the generic
+field is `Protocol.AnswerOK : List ℕ → Req → Warrant → Prop`, and an `AnswerReceipt`
+stores `adequate : AnswerOK atHistory r warrant` at the **strict prefix before the
+event** (`Authority.event_fresh`), so `AnswerOK` takes no event and cannot see the
+payload.  The repaired typing (`../2026-09-07-reason-mediated-authorship/ACTIVATION_COMPOSITION.md`
+§2) keeps `AnswerOK` generic — *under warrant `w`, at this prefix, an answer to `r` is
+admissible* — and puts the evaluation-specific content in a derived predicate over the
+receipt and the event payload:
 
 ```
-AnswerOK h r w  :=  SessionOK(h, s)  ∧  ProcessCert(h, r, w, ρ.proc)  ∧  Bind(ρ.key, V)
+EvalAnswered(T, h_m) :=
+  activated T                                       -- account layer, LEAN
+  ∧ (V, key, proc) := payload(h_m, ρ.event)         -- event layer, EXT authentication
+  ∧ Bind key V                                      -- who bound it
+  ∧ ExclusiveBind (ρ.warrant is the binding warrant; Authorized only for principal events)
+  ∧ the process receipts in proc certify authorship (§4)
 ```
-
-with `ρ = (ρ.proc, ρ.key)` the process receipt at the answer event.
 
 - `SessionOK`: the answer event is at the designated slot (or at the slot an
-  authorized rescheduling law moved it to — the law is in the account).
-- `ProcessCert`: the process receipts hold.  Reads `ρ.proc` and the history; does
-  **not** read `V`.  Its content is §4.
-- `Bind`: `ρ.key` is a commitment by the holder of `ρ_P` to exactly `V`.
+  authorized rescheduling law moved it to — the law is in the account).  This is the
+  one clause that is legitimately part of `AnswerOK` at the prefix.
+- `Bind`: `key` is a commitment by the holder of `ρ_P` to exactly `V`.
 
-**Epistemic neutrality (LEAN, `Neutral.certifiable_iff`).**  With `ProcessCert` blind
+**Epistemic neutrality (LEAN, `Neutral.certifiable_iff`).**  With the process part blind
 to the payload and `Bind` total (the principal can commit to any vector),
 
 ```
@@ -102,10 +117,9 @@ to the payload and `Bind` total (the principal can commit to any vector),
 so certifiability of the occurrence is a property of the process alone, and
 `Neutral.certifiable_congr`: two payloads are certifiable or not together.  The
 certificate cannot be literally value-independent (the signature is over `V`); what is
-value-independent is *whether a certificate exists*.  This is the strongest
-factorization statement that is true, and fixture **B** is what fails without it: a
-certificate that inspects `V` turns activation into a selection on the payload and
-flips the argmax (`COUNTERMODELS.md` §B).
+value-independent is *whether a certificate exists*.  Fixture **B** is what fails
+without it: a certificate that inspects `V` turns activation into a selection on the
+payload and flips the argmax (`COUNTERMODELS.md` §B).
 
 The totality of `Bind` is a requirement on the commitment scheme (**EXT**).  A scheme
 under which some vectors cannot be committed is a value-dependent certificate by
@@ -119,7 +133,8 @@ solved.  Its clauses are receipts of protocol events, each verifiable against `h
 | clause | receipt | what it rules out |
 |---|---|---|
 | designated session | the answer event sits in the session the anchor names | cherry-picking (fixture **C**) |
-| no-preview | the commitment `ρ.key` is timestamped before the reveal of `𝔸`'s selection and quotes for `o_n` | the self-referential menu (fixture **I**) |
+| selection-induced channel blindness *[corrected]* | the reason trace is blind to the pair class induced by changing the advisor's selection for `o_n` across its whole continuation (`selPairs`); literal no-preview — commitment timestamped before the reveal of the selection, with the advisor's other inputs fixed — is one implementation | the self-referential menu (fixture **I**); leakage through the advisor's other inputs is the case no-preview misses (`Witness.leak`) |
+| reason mediation *[corrected]* | over the issuance-rooted continuation, interventions leaving the same reason trace leave the same payload (`ReasonMediated`), with the trace blind to the declared prohibited channels (`Blind R P`): direct writes, coercion, side channels | bypass of the reason interface (`blind_of_mediated`) |
 | no direct write | no event in the session is a write to the principal's preference state by `A` | substitution of authorship |
 | no coercive channel | the session's channel class is in the declared admissible set | coercion |
 | assistance allowed | authenticated evidence, proofs, ordinary argument from `A` are admissible session events | nothing — this is what makes `P⁺` AI-informed rather than isolated |
@@ -131,11 +146,12 @@ and changed their mind radically is still the author of their conclusion — is
 generic theory leaves it external on purpose.  The prompt's phrase "genuinely
 P-authored" is not derived here and is not claimed.
 
-The no-preview clause is narrow.  It seals the exact self-referential object (the
-selection and quotes for this occurrence) from the session before the commitment; it
+*[corrected]* The selection-blindness clause is narrow: it seals the exact
+self-referential object (the advisor's selection and quotes for this occurrence) and
 does not isolate `P⁺` from `A` in general.  Its mathematical role is §3 of
-`LI_DEFERENCE_COMPOSITION.md`: it is the admissible-domain condition of the
-inherited Value theorem, realized as a receipt.
+`LI_DEFERENCE_COMPOSITION.md`: it is the admissible-domain condition of the inherited
+Value theorem.  It is a *theorem-domain* condition, kept separate from the semantic
+activation event `C_n` (`../2026-09-08-legitimate-deference-consolidation/LEGITIMATE_DEFERENCE.md`).
 
 ## 5. The activated securities
 
@@ -262,7 +278,7 @@ residual bridge, filed as `PRIORITIES.md` item 87.
 ## 8. The end-to-end statement
 
 ```
-Value_{H→A} on {U_{n,a}}          (PAPER: tower on U + novice expprovind; scope: no-preview)
+Value_{H→A} on {U_{n,a}}          (PAPER: tower on U + novice expprovind; scope: selection-induced channel blindness)
    ⇒  ∀a. 𝔼ⁿ[U_{n,a}] − 𝔼ⁿ[Ŝ_n^U] ≲ₙ 0                                  [ε_n → 0]
 +  𝔼ⁿ[1 − C_n] ≤ η_n              (availability; PAPER via provind when all certified)
    ⇒  ∀a. 𝔼ⁿ[V_n(a)] − 𝔼ⁿ[Ŝ_n^V] ≲ₙ η_n                                  [LEAN transfer]
@@ -270,6 +286,12 @@ Value_{H→A} on {U_{n,a}}          (PAPER: tower on U + novice expprovind; scop
    ⇒  the novice expects following A to do as well, by the actual AI-informed
       principal's certified evaluation, as any fixed candidate.
 ```
+
+*[corrected]* The primary conclusion is the **conditional authoritative regret**
+`R_auth = R_U / p ≤ ε_n / (1 − η_n)` (`PartialActivatedValue.regretAuth_le_div`), defined
+from the partial evaluation on certified worlds alone; the transfer to a total
+completion is the robustness lemma `|R_V̄ − R_U| ≤ D·η`
+(`regretV_sub_regretU_abs_le`), two-sided.
 
 No reference evaluator appears.  No property of a human who did not interact with `A`
 is used.  The future evaluation is not required to resemble the present one.  The

@@ -137,7 +137,11 @@ The Non-Capture contract is the *access* half of non-capture — who can enter,
 challenge, and stand on a concern. Whether an answer a process eventually records is
 genuinely the protected party's own conclusion rather than the process's conclusion
 routed through them is a third, separate contract, *authorship*, consumed by
-[deference](Deference) and not a conjunct of legitimacy.
+[deference](Deference) and not a conjunct of legitimacy. That consumer reads
+legitimacy through an *occurrence-local projection* — the trace of one occurrence's
+account with openness at each snapshot for the concerns relevant to it — which is a
+projection of a legitimate segment, not a second definition; an application may still
+require the global segment as an evidentiary policy about the record-keeper.
 
 ## Where this is going
 

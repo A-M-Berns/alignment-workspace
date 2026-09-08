@@ -10,8 +10,10 @@ theorem that a reason view blind to the prohibited channels makes the payload bl
 to them, so the regret yardstick cannot be steered through such a channel.  The
 partial-evaluation defect is repaired: activated securities are completion-invariant,
 activated regret is the activation mass times a conditional authoritative regret
-defined from the partial object alone, and every bounded completion's regret lies in
-the exact interval `[R_U, R_U + D·η]`.  Integrity is made occurrence-local by a
+defined from the partial object alone, and every bounded completion's regret lies
+within `D·η` of activated regret in either direction (*[corrected]*: the original
+verdict claimed the one-sided interval `[R_U, R_U + D·η]`, which is false for
+world-dependent strategies).  Integrity is made occurrence-local by a
 projection theorem.  The verdict is conditional on the declared reason view being
 blind to what it should be and fine enough for the session, which is external, and
 selection blindness is a separate condition that authorship does not imply.
@@ -39,7 +41,7 @@ selection blindness is a separate condition that authorship does not imply.
 |---|---|---|---|
 | C1 | completion invariance of `U` | LEAN | `activated_completion_congr` |
 | C2 | `R_U = p · R_auth`, `R_auth` from `Ṽ` alone | LEAN | `regretU_eq_mass_mul_regretAuth` |
-| C3 | completion-robust transfer `R_V̄ ≤ ε + D·η` for every bounded completion; lower end `R_V̄ = R_U` attained; upper end attained by PR #92's sharp fixture | LEAN | `availability_transfer_completion`, `regret_constant_completion`, `Sharp.transfer_sharp` |
+| C3 | *[corrected]* two-sided completion theorem `\|R_V̄ − R_U\| ≤ D·voidMass`; upper end attained by PR #92's sharp fixture, lower end by `SharpLower.attained`; the one-sided upper transfer is a corollary | LEAN | `regretV_sub_regretU_abs_le`, `availability_transfer_completion`, `SharpLower.attained`, `Sharp.transfer_sharp` |
 | C4 | perturbation `R_U(V) ≤ R_U(V') + 2δ·mass` | LEAN | `regretU_perturb` |
 | C5 | `yardstick_invariant`: under authorship with `Blind R P`, the payload read off the world is the same across prohibited-channel variants | LEAN | `ReasonMediatedAuthorship.lean` |
 
@@ -50,7 +52,9 @@ and `η_n → 0` remains `PRIORITIES.md` item 87 (this round refines its stateme
 
 - **Survived:** the fixed-`z` counterfactual (the only reading with content); equality
   of `R` as the general case via the closure lemma; the deterministic first theorem;
-  the two-conjunct decomposition; the `[R_U, R_U + D·η]` interval with `D`, not `2D`.
+  the two-conjunct decomposition; the constant `D` (not `2D`) in the completion bound —
+  *[corrected]*: the bound is two-sided, `|R_V̄ − R_U| ≤ D·η`, not the one-sided interval
+  this report first claimed.
 - **Failed and repaired:** PR #92's placement of `Bind(V)` inside `AnswerOK` (the field
   is evaluated at the strict prefix and takes no event; a derived predicate over
   receipt + payload is used instead); PR #92's "occurrence-local legitimacy" (scope-local
@@ -113,6 +117,19 @@ it (the frame is restated as `β : Q → Z → Ω` to keep the module dependency
 - Anything stochastic beyond the stated per-seed reduction.
 - The tower on activated securities; any rate for `η`.
 - Full incentive corrigibility, or anything about Part D.
+
+## Corrections applied by the consolidation round
+
+- **The completion interval.**  This report and `PARTIAL_VALUE_AND_REGRET.md` claimed
+  `R_V̄ ∈ [R_U, R_U + D·η]` for every completion.  The lower bound is false for a
+  world-dependent followed strategy (`SharpLower.attained`: `R_V̄ = R_U − D·η`).  The
+  correct theorem is `|R_V̄ − R_U| ≤ D·voidMass` (`regretV_sub_regretU_abs_le`), both
+  constants sharp.  The verdict line in `README.md` and `state/rounds.json` is amended.
+- **Session-local authorship.**  `AUTHORSHIP.md` §2.1 left earlier shaping of the
+  principal policy outside the notion; the frame is now rooted at issuance with a reason
+  trace, and `Witness.earlyWrite` is the reason.
+- **Selection blindness** is recorded as an instance of channel blindness
+  (`selectionBlind_iff_blind`), not a second primitive.
 
 ## Outstanding maintainer actions
 

@@ -2401,49 +2401,58 @@ two-state process, or the negative.
 specialization's investing-in-amendment case.
 *A solution ships:* the learner and theorem, or the negative.
 
-### 87. Authoritative future-evaluation availability and process-authorship realization — **[open]**
+### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
-The authority-activated-value round settles the interface's shape: an anchored evaluation
-occurrence, an activation bit read off its propagated account, occurrence-local
-legitimacy as a projection of the existing segment, ordinary Value on the activated
-securities, and the sharp transfer `regret_V ≤ ε + η`.  Two inputs are typed as external
-and nothing realizes them.
+The legitimate-deference stack (authority-activated value, reason-mediated authorship,
+and the consolidation round's `LEGITIMATE_DEFERENCE.md`) supplies every abstract
+interface: the activation event on the propagated account, the occurrence-local
+Integrity trace and scoped openness, issuance-rooted reason-mediated authorship with
+channel blindness, the protected reason-coverage barrier, the completion-invariant
+activated securities, and the theorems `R_U = p·R_auth`, `R_auth ≤ ε/(1 − η)`,
+`|R_V̄ − R_U| ≤ D·η`, `P(suppression) ≤ η`.  What does not exist is a **concrete
+evaluation ecosystem** that realizes their hypotheses.  Those hypotheses are one bill,
+not several items:
 
-**Availability.**  `η_n = 𝔼ⁿ[1 − C_n]` must be small *whatever the advisor selects*
-(the selection-dependent-refusal fixture drives `η` to `1` without breaking the bound).
-Build a concrete ecosystem model in which the designated session is sat, the commitment
-is made, and the lineage stays open on `Γ_n`, and prove `C_n → 1` in the criterion's
-sense: pointwise via `lic_provind_true` when every `C_n` settles true, or an averaged
-statement with a rate when a fraction fails.  The pointwise rate in the
-mostly-certified regime is open.
+1. **Authenticated principal-exclusive binding.**  A commitment endpoint whose events
+   are `Authorized` under the principal role's binding warrant and no other party's,
+   with the payload at the answer event authentic (`Bind key V`).
+2. **The issuance-rooted reason-trace factorization.**  A concrete continuation frame
+   `β_n : Q_n^A → Z_n^P → Ω_n`, a declared reason trace `R_{n:m}`, an audited class `D`,
+   and receipts under which `ReasonMediated` and `ExclusiveBind` hold — and an argument,
+   or the named missing assumption, that the receipts mean what they say.
+3. **Correctness of the declared abstraction.**  `R_{n:m}` blind to the declared
+   prohibited class `P` (direct writes, coercion, side channels) and fine enough to record
+   admissible influence: neither the injective (vacuous) nor the constant
+   (isolated-principal) end.
+4. **Representation faithfulness.**  The `Rep(c) ⇒ InTrace(c)` bridge for the protected
+   scope `Γ_eval`, as a property of the concrete trace encoding.
+5. **Protected reason-supply liveness.**  Routes supplied by Robust Openness are
+   exercised in time, so that with the barrier `NoBindLive` imposed, evaluations
+   certify: the step neither RO nor any theorem in the stack supplies.
+6. **Selection-induced target sealing.**  `Blind R P_sel` for the advisor's *whole*
+   selection-conditioned continuation (not merely no literal preview), as the Value
+   theorem's domain condition.
+7. **Availability at the consumed strength.**  `η_n = 𝔼ⁿ[1 − C_n] → 0` whatever the
+   advisor selects — pointwise via `lic_provind_true` when every `C_n` settles true, or an
+   averaged statement with a rate otherwise; the pointwise rate in the mostly-certified
+   regime is open.
 
-**Authorship.**  The object to realize is `ReasonMediatedAuthorship.Authored` with a
-reason view blind to the declared prohibited channels (`Blind R P`): the binding event is
-the principal's, and at a fixed principal policy the committed payload factors through
-the reason view (reason-mediated-authorship round).  Exhibit an audited protocol — a
-concrete `β`, `R`, `D`, `P` — whose receipts certify `ExclusiveBind`, `ReasonMediated` and
-`Blind R P`, and argue, or find the additional assumption under which it can be proved,
-that the receipts mean what they say.  `R` must be blind to writes, coercion, and the
-advisor's selection, and fine enough to record admissible influence (fixtures D, E).
-Separately certify **selection blindness** on the advisor's whole session policy, not
-merely that the principal did not read the quote (fixture H).  Any candidate that
-inspects `V` is excluded by `Neutral.certifiable_iff`.
+None of these is solved by having its type.  A partial realization that discharges some
+clauses and names the exact obstruction to the others is a valid deliverable.
 
-*Deliverable shape:* the ecosystem model with its availability theorem; the protocol
-with its receipts and the authorship argument or the named missing assumption; both
-with witnesses.
+*Deliverable shape:* a concrete ecosystem model with the clauses it discharges, each with
+a witness, and the exact residual for each it does not.
 *Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
 
-*Context:* `projects/deference/rounds/2026-09-07-authority-activated-value/`
-(`AUTHORITY_ACTIVATED_VALUE.md` §§4, 7; `LI_DEFERENCE_COMPOSITION.md` §6) and
-`projects/deference/rounds/2026-09-07-reason-mediated-authorship/` (`AUTHORSHIP.md`,
-`ACTIVATION_COMPOSITION.md`).
-*Consumed by:* the `(DV)` bridge of item 84 (an activated security under the no-preview
-receipt is a sealed-target security by construction); the corrigibility line's
+*Context:* `projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/`
+(`LEGITIMATE_DEFERENCE.md`, `REASON_SUPPLY.md` §4, `DIACHRONIC_AUTHORSHIP.md` §5), on the
+two rounds it consolidates.
+*Consumed by:* the `(DV)` bridge of item 84 (an activated security under selection-induced
+sealing is a sealed-target security by construction); the corrigibility line's
 principal-side value.
-*A solution ships:* the two realizations, or the exact obstruction to either.
+*A solution ships:* the ecosystem model, or the exact obstruction.
 
 ## Workspace friction
 

@@ -65,11 +65,20 @@ is exactly the influence the condition permits.  Two wrong readings:
 - If `z` is dropped (no factorization of the world into advisor and exterior), there is
   no counterfactual to state.
 
-What fixing `z` does **not** cover: the advisor shaping `z` itself across sessions —
-changing who the principal is by long-run interaction.  That is a change of the
-principal role's holder or dispositions and belongs to Legitimate Evolution
-(authorized succession, amendment), not to authorship-at-a-session.  Authorship is
-session-relative and `z`-relative by design.
+*[corrected by the consolidation round]* The original text left the advisor shaping `z`
+across earlier sessions outside the notion.  That is not acceptable for a diachronic
+mandate: an earlier direct disposition write changes the terminal verdict with the same
+admitted reasons while the terminal session is perfectly mediated
+(`Witness.earlyWrite`; consolidation fixture **D**).  The frame is therefore **rooted at
+issuance**: `q` is the advisor's whole contingent continuation from the issuance prefix
+through commitment, `z` the principal-side response policy fixed at issuance, and `R`
+a **reason trace** over the interval rather than a final reason state (a transient
+argument later withdrawn is recorded; `Witness.transient`).  The same `ReasonMediated`
+predicate at that instantiation is the diachronic notion; the session-local reading is
+the same predicate with `q` one session's inputs and `z` the policy at session start.
+What remains outside: a change of the principal role's *holder* by authorized
+succession, which belongs to Legitimate Evolution.  See
+`../2026-09-08-legitimate-deference-consolidation/DIACHRONIC_AUTHORSHIP.md`.
 
 ### 2.2 Equality of `R`, or an equivalence?
 
@@ -151,7 +160,12 @@ across seeds is invisible to the law.  The per-seed form is therefore the strong
 the right one; the kernel form is a corollary, and the seed-privacy assumption is
 **EXT**.  No stochastic Lean is written; the reduction is stated here only.
 
-## 4. Selection blindness
+## 4. Selection blindness *[corrected: an instance, not a second primitive]*
+
+`selectionBlind_iff_blind` (**LEAN**): `SelectionBlind V qpol` is exactly `Blind V P_sel`
+for the selection-induced pair class `selPairs qpol`, and `selectionBlind_of_blind`:
+`Blind R P_sel` plus mediation gives it, as an instance of `blind_of_mediated`.  The
+name is kept as a derived abbreviation for the Value theorem's scope condition.
 
 Reason mediation does not by itself put the activated menu on the Value theorem's
 admissible domain.  Define the advisor's session policy as a function of its own
@@ -200,6 +214,8 @@ are kept separate: **OPEN** whether a single quantity ties them.
 
 - That any declared `R`, `D`, `P` is correct for a session; that `β` is the causal
   structure of anything; that the binding endpoint is principal-controlled (**EXT**).
-- Authorship across sessions (the advisor shaping `z`): outside this notion.
+- Authorship across a change of the principal role's holder: outside this notion
+  (*[corrected]*: shaping of `z` within the mandate's interval is inside it, by the
+  issuance-rooted instantiation).
 - The converse of the seed reduction; any stochastic Lean.
 - A single quantity connecting `χ` to regret.

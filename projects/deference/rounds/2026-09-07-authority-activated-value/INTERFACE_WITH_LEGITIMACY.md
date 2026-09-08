@@ -14,7 +14,7 @@ that matters: is a new primitive needed?
 | designated slot `s_n` | a component of the anchor value; enforced by `AnswerOK` reading the history position | `Protocol.AnswerOK` | no |
 | the actual future session `e_n` | the answer event at `receipt.event`, in `h_m` | `AnswerReceipt` | no |
 | value vector `V_n` | the payload of `h_m` at `receipt.event` | history (external data) | no — the history already carries event content |
-| adequacy | `AnswerOK h r w` instantiated at `EvalReq` as `SessionOK ∧ ProcessCert ∧ Bind` | `Protocol.AnswerOK` | no — a declaration of the protocol's predicate for one `Req` value |
+| adequacy *[corrected]* | `AnswerOK h r w` at `EvalReq` is `SessionOK` at the prefix; `Bind` and authorship are a derived predicate over the receipt's `event` and the history's payload there, since `AnswerOK` is evaluated at the strict prefix and cannot see the event | `Protocol.AnswerOK` + `AnswerReceipt.event` | no — a derived predicate, not a protocol change |
 | authority of the answer | `Authority`: fresh event, prior grounds, warrant in force at a strict prefix | `OccurrenceIntegrity.Authority` | no |
 | rescheduling / re-representation / representatives / tools | `LocalLaw` with its own `Authority`; `Program.combine` | same | no |
 | `C_n` (account part) | `Program.activated := decide (fates = {answered})` | `AuthorityActivation.lean` | a **definition** over existing data |
@@ -91,6 +91,15 @@ contract consumed by deference, not a conjunct of legitimacy.  That is the minim
 wiki edit this round makes.
 
 ## 5. Global versus occurrence-local legitimacy (question 5)
+
+*[corrected]* `LegitimateForSegment Γ'` below is **scope-local in openness over global
+Integrity**: it still carries an `Evolution` propagating every occurrence.  The
+occurrence-local object is `OccurrenceLocalIntegrity.LocalLegit`
+(`../2026-09-07-reason-mediated-authorship/ACTIVATION_COMPOSITION.md` §4), a projection of
+`LegitimateForSegment` that keeps only this occurrence's account trace and the openness
+snapshots; an unrelated occurrence's Integrity failure leaves it inhabited
+(`Witness.unrelated_integrity_failure`).  The text below is kept as the record of the
+first projection step.
 
 The consumer needs, for one occurrence: its propagated account (Integrity) and
 openness on the concerns relevant to it.  Both project:
