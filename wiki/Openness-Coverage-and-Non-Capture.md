@@ -116,7 +116,8 @@ routeless, whatever is recorded afterwards.
 A certificate that coverage survives interventions is a certificate *for* a declared
 principal or relation, whose standing and corrective channel the intervention class
 is not allowed to erode. A party-free condition quantifying over all coalitions
-cannot exist. Whether the canonical predicate may name a party is a queued ruling.
+cannot exist. That the canonical predicate may name a party is ruled (`DECISIONS.md`,
+2026-09-08).
 
 ---
 

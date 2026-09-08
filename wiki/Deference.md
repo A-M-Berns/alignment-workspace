@@ -98,11 +98,14 @@ whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
 
 ## Current status
 
-> **Two targets.** The original target — endpoint preservation and the corrigibility
-> model with temporal depth — is **paused** on the two decisions below; what it holds
-> is registered and what it waits on is a decision, not a proof. The legitimate-deference
-> consumer above is **active research state**, unregistered, landed in three rounds;
-> it consumes the legitimacy spine and does not lift the pause on the older target.
+> **Two targets.** The original target — the corrigibility model with temporal depth
+> and what foreclosure loses — is **paused** on the one decision below; what it holds
+> is registered and what it waits on is a decision, not a proof. Endpoint preservation,
+> the other decision it once waited on, is **ruled out** (`DECISIONS.md`, 2026-09-08):
+> legitimate influence is causal factorization through declared reasons, not
+> convergence location. The legitimate-deference consumer above is **active research
+> state**, unregistered, landed in three rounds; it consumes the legitimacy spine and
+> does not lift the pause on the older target.
 
 > **Established — `lean-proved`.** The
 > <!--state:workspace:counts.registered_claims_by_project.deference-->31<!--/state-->
@@ -122,11 +125,10 @@ advisor cooperation. A hard-selector route to Value does not survive the relevan
 punishment menus, while a classwise, domain-relative route does; which of the two
 the line's target should be is live as items 14 and 34.
 
-**What the pause on the older target is on.** Two decisions sit in `DECISIONS.md`'s
-*Awaiting the author*: whether the two candidate objects for what foreclosure loses are enough
-for that question to graduate, and what succeeds item 28; and whether
-endpoint-preservation is a target this program wants at all, which is *what is
-worth proving* and no round's to decide. Until those are answered, the remaining
+**What the pause on the older target is on.** One decision sits in `DECISIONS.md`'s
+*Awaiting the author*: whether the two candidate objects for what foreclosure loses are
+enough for that question to graduate, and what succeeds item 28, which is *what is
+worth proving* and no round's to decide. Until that is answered, the remaining
 work is specified and not started: Logical-Induction-native work supplies bounded
 belief and forcing tools under explicit assumptions but no resource-indexed proof
 that the quoted future process is unavailable now, and the corrigibility model

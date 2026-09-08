@@ -132,7 +132,8 @@ residual is the realization bill, item 87.
 
 - Decide whether the candidate objects for what foreclosure loses are enough for
   that question to graduate, and what succeeds item 28.
-- Decide whether endpoint-preservation is a target this program wants.
+- Endpoint preservation is ruled out (`DECISIONS.md`, 2026-09-08); the older target's
+  one remaining decision is what succeeds item 28.
 - Build a corrigibility model with temporal depth, a principal-exclusive effect,
   and protection across the declared class of advisor policies — item 27, with
   the two exact requirements item 60 established as currently unmet.

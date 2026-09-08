@@ -54,27 +54,16 @@ commit.
   the settlement engine is always exogenous the hypothesis is standing; if a
   realization may let a participant settle, it is per-realization and every such
   realization owes the check.
-
-- **Whether legitimacy may presuppose a designated protected participant.** The
-  round's separation condition D3 stops a single participant from laundering a debt
-  through a disposal chain and does **not** stop two: an alternating walk satisfies
-  D3 at every edge, because each participant supplies the other's foreign ground and
-  foreign standing. The coalition-indexed repair is unsatisfiable at `C = A` unless
-  some participant — the principal — sits outside every coalition quantified over.
-  *Turns on:* whether a legitimacy predicate may name a party. A structural condition
-  that quantifies over all coalitions cannot exist; one that exempts a designated
-  principal can, at the cost of no longer being purely structural.
-
-- **What the next research step is, given the inertness dichotomy.** The
-  end-to-end slice establishes that the unconditional traderization theorem's
-  admissibility hypothesis holds exactly for injunctions that change nothing, so
-  every contentful injunction depends on a summable-liability condition nothing
-  in the repository establishes — `PRIORITIES.md` item 61. The round recommends
-  answering that before expanding the toy, and cannot say whether it is right.
-  *Turns on:* external knowledge the round lacks — whether a paper, a
-  collaborator, or the real-normative-practice term of the programme's benchmark
-  needs the exact toy widened first. Both orders are defensible on the internal
-  evidence.
+  *Maintainer note, 2026-09-08 (not a ruling):* what counts as settling is itself a
+  declared, substantive choice, and a protocol may carry sentences that are
+  *observational about a party's moves* — for those, that party's move is the
+  settlement channel by construction, and the party "writing `Settled`" is just the
+  party moving. The independence the laundering fixture needs is therefore typed: it
+  bears on sentences that are not observations of the writer's own moves. The
+  evaluation ecosystem of `PRIORITIES.md` item 87 is the first concrete consumer — the
+  principal's commitment settles the evaluation and the principal may also dispose of
+  objections — so the entry stays queued until that realization says which sentences
+  are observational and which are not.
 
 - **Where the answerability layer's code lives.** The theory is authoritative in
   `projects/normativity/consolidation-aug9/` and the only implementation is in
@@ -95,44 +84,70 @@ commit.
   exhibit candidates and cannot say they are enough, which is the judgment
   *Where ingenuity is the bottleneck* exists to hold.
 
-- **Whether returning `Unresolved` on every bare DR-MDP example is the shape
-  this program wants.** The Carroll round's criterion licenses nothing on any of
-  the five finite examples of the source it was dispatched against: with no
-  enriched record, all five return `Unresolved`. That is either the correct
-  result about what a DR-MDP omits — the round's own reading, and the reading its
-  non-factorization witness supports — or a legitimacy layer that declines every
-  case anyone actually asked about. Read
-  `projects/normativity/legitimacy/rounds/2026-08-25-carroll-legitimacy-test/`
-  `CRITERION.md` §6 and `README.md`'s verdict. *Turns on:* where the program is
-  going — whether the next thing wanted is a criterion that decides bare cases,
-  or an account of what a record must carry before any criterion can. The round
-  is genuinely split and has no evidence either way.
-
-- **Whether endpoint-preservation is a target this program wants.** The source
-  corpus proposes that an advisor's influence is legitimate when it changes how
-  fast the principal's deliberation converges and not where it converges to. It
-  is conjecture-grade by its author's own declaration and is a claim about belief
-  rather than authority, so it is a coherent adjacent target rather than a
-  component of the current one. Read
-  `projects/deference/note-dump-2026-08-11/notes/legitimacy-theory-v1.md` §§2,
-  6–7 and §§2–4 of
-  `projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md`.
-  *Turns on:* where the program is going — this is *what is worth proving*, which
-  no round decides.
-
-- **Whether the deference kernel's grade acquires an index.** `GradeTrust` types
-  the principal's grade as `C -> P -> Q` with no time, process or standing on it,
-  so the legitimacy premise a cross-process deference theorem would consume has
-  nowhere to attach. The change is one field — `W : A -> C -> P -> Q` — plus a
-  stated hypothesis that the grade is a function of the authority in force, and
-  it revises no registered statement, since `delegation_bridge` is proved for
-  every `W`. Read
-  `projects/normativity/legitimacy/rounds/2026-08-25-legitimate-evolution/CONSUMER_TEST.md`
-  §§2 and 6. *Turns on:* whether the deference line is being restarted, and what
-  a paper needs. It is a specification-layer edit in a paused line, and the round
-  has no evidence about either.
-
 ## Settled
+
+### 2026-09-08 — the canonical legitimacy predicate may name a designated principal role
+
+**Maintainer ruling, taken in conversation and landed by the consolidation round.** A
+legitimacy predicate may presuppose a designated protected participant. The mathematics
+offers no party-free alternative — a structural condition quantifying over all coalitions
+is defeated by the alternating walk, and the coalition-indexed repair is unsatisfiable at
+`C = A` unless some participant sits outside every coalition — and the legitimate-deference
+stack already presupposes the role: the evaluation requirement anchors a principal role
+identity, binding is principal-exclusive, and Robust Openness is stated for a declared
+principal or relation. The role *identity* is anchored; its *holder* changes only by
+authorized succession, which is a `LocalLaw` in the account.
+*Rejected alternative:* a purely structural, party-free predicate, which does not exist.
+
+### 2026-09-08 — the deference grade acquires an activation index
+
+**Maintainer ruling, taken in conversation and landed by the consolidation round.** The
+principal's grade in the deference kernel is indexed by the authority in force: the
+one-field change `W : A → C → P → Q`, with the stated hypothesis that the grade is a
+function of that authority. The legitimate-deference stack supplies the index concretely —
+the protected principal's value is the partial evaluation `Ṽ_n`, defined only on the
+certified worlds of one anchored occurrence — so the change records what the consumer
+already uses. `delegation_bridge` is proved for every `W`; no registered statement is
+revised.
+*Rejected alternative:* an unindexed grade `C → P → Q`, which gives the legitimacy premise
+nowhere to attach.
+
+### 2026-09-08 — `Unresolved` on a bare record is the wanted shape
+
+**Maintainer ruling, taken in conversation and landed by the consolidation round.** A
+legitimacy criterion that returns `Unresolved` on every bare DR-MDP example is the correct
+result about what such a record omits, not a criterion declining the cases anyone asked
+about. The program's answer is proof-carrying: authority is read off receipts a record
+must carry, and where the record carries none the activation event is `0`. The next thing
+wanted is an account of what a record must carry before any criterion can decide, which
+the legitimate-deference stack's activation event is for one kind of record.
+*Rejected alternative:* a criterion that decides bare cases, which would have to supply
+the missing structure from a counterfactual — the reference-evaluator move in another
+form.
+
+### 2026-09-08 — endpoint preservation is not a target of this program
+
+**Maintainer ruling, taken in conversation and landed by the consolidation round.** The
+source corpus's proposal — an advisor's influence is legitimate when it changes how fast
+the principal's deliberation converges and not where it converges to — is not adopted. It
+is a claim about belief rather than authority, and the program's notion of legitimate
+influence is now the causal one: the committed payload factors through the declared reason
+trace at a fixed principal policy, with the trace blind to the prohibited channels, and
+the verdict is free to change radically under admissible reasons. The deference line's
+older target retains one queued decision (what succeeds item 28); the endpoint-preservation
+decision leaves the queue.
+*Rejected alternative:* authorship as convergence location (endpoint preservation).
+
+### 2026-09-08 — the inertness-dichotomy "next step" entry is retired in favour of a filed presentation priority
+
+**Maintainer ruling, taken in conversation and landed by the consolidation round.** The
+queue entry asking whether to answer `PRIORITIES.md` item 61 before widening the toy
+predates the affordability line and is retired. Item 61 stays open as stated — no source is
+shown to satisfy summable enforcement liability. What the maintainer names as pending is a
+mature presentation of affordability from the general traderization perspective, filed as
+`PRIORITIES.md` item 88, against which item 61 is to be measured.
+*Rejected alternative:* leaving the entry as a choice between two orders neither of which
+the current theory poses.
 
 ### 2026-09-08 — legitimate deference lands as one stack: conditional authoritative regret is the target, the completion bound is two-sided, authorship is issuance-rooted, and reason coverage is a barrier
 

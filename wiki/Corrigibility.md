@@ -3,8 +3,9 @@
 **Status: research-state note, 2026-09-07, integrating three rounds.**  Nothing on this
 page is a registered claim.  Statements are labelled *existing theorem support* (a Lean
 declaration on `main`), *exact fixture* (a finite model checked in a round), *conjectured
-extension*, *open problem*, or *known limitation*.  The deference line's pause and its
-two queued rulings are unchanged.
+extension*, *open problem*, or *known limitation*.  The deference line's older target
+keeps one queued ruling (what succeeds item 28); endpoint preservation is ruled out
+(`DECISIONS.md`, 2026-09-08).
 
 ## Thesis
 

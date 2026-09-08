@@ -88,9 +88,10 @@ through the protocol's warrants and not derived here.
 Preservation of standing is relative to a protected principal or a declared relation.
 A structural condition quantifying over all coalitions cannot exist — take the
 coalition to be everyone — so the openness half names a party, and pays for it by no
-longer being purely structural. Whether the canonical predicate may name a party is
-a ruling still queued in the decision ledger; the mathematics offers no party-free
-alternative.
+longer being purely structural. That the canonical predicate may name a party is
+ruled (`DECISIONS.md`, 2026-09-08); the mathematics offers no party-free alternative,
+and the role identity is anchored while its holder changes only by authorized
+succession.
 
 ## Being ignored is a failure too
 

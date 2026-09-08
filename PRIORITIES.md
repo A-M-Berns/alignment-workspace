@@ -2454,6 +2454,39 @@ sealing is a sealed-target security by construction); the corrigibility line's
 principal-side value.
 *A solution ships:* the ecosystem model, or the exact obstruction.
 
+### 88. Affordability from the traderization perspective: a canonical presentation — **[open]**
+
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+The affordability line (the 2026-08-31 normative-affordability round and its nine
+dispatches) established the fixed-era theory: date costs, star-shaped persistence and its
+`liminf L_t(1) = 0` criterion, the sharp robust liability charge, bounded-delay
+serviceability and the liability–timeliness tradeoff, the claim-normalized transport
+residual, and the sharp timely-service theorem. Every one of those is stated over
+schedules, budgets and deficits. What does not exist is the same theory presented from
+the **general traderization perspective** of the traderized-enforcement round: enforcement
+intensity as what the market maker's cumulative cap supplies, liability as the signed
+cumulative account, service and persistence as statements about the positions traders
+are permitted to hold, and Progress as the market's own exclusion of still-live worlds.
+
+Produce that presentation: one document, with the fixed-era results restated as
+consequences of the traderized objects (naming which are identities, which need the
+force interface, which need the settlement assumptions), the vocabulary map to the
+canonical terms, and the list of what the traderized reading *cannot* express — the
+places where the schedule-side theory has content the market-side objects do not
+carry. Item 61 (a source with summable enforcement liability) is to be read against this
+presentation: the condition it asks for should appear as a property of the traderized
+account, or the presentation should say why it cannot.
+
+*Deliverable shape:* the presentation, its vocabulary map, and its list of
+inexpressibles; fixtures where a restatement changes a constant.
+*Acceptance check:* `python3 tests/run.py` green; any Lean audits clean.
+
+*Context:* `projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/`,
+`projects/normativity/rounds/2026-08-16-traderized-enforcement/`, item 61.
+*Consumed by:* item 61; the paper candidates for the affordability line.
+*A solution ships:* the presentation, or the exact obstruction.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
