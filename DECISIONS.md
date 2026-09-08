@@ -119,7 +119,12 @@ promise–treatment alignment with the whole-block lease as the canonical realiz
 observed return and the external evaluator are typed separately.  `PRIORITIES.md` item 86
 is refined accordingly — recoverability of the slow lane (catch-up cost), a
 performance-recognizability interface that is not legitimacy's duty, and their
-composition — and not closed.  Nothing is registered.
+composition — and not closed.  *Final correctness pass, same day:* the record condition is
+`inf_K ℓ^h_K > −∞` (the pressure pass's form was vacuous); the one-step criterion forces
+only testing and permits asymptotic myopia on the revocable amendment (the exact original
+fixture is absorbing and there every BRIA is competent); the auction's bidders are the
+ever-activated frontier, allowance the current support; the recoverability distinction is
+joinable versus foreclosing, not reversible versus irreversible.  Nothing is registered.
 *Rejected alternatives:* applying the unweighted criterion to a variable-length block
 sequence (a covered, refuted hypothesis can then hold most of primitive time);
 normalising block returns by a running maximum (does not control the weighted sum);

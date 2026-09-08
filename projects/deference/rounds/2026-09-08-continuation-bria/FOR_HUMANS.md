@@ -32,9 +32,14 @@ an untried option would have paid, and a limited agent can actually run it.
    all.  The paper's learner is *obliged* to try the investment, because an adviser keeps
    claiming it pays, and on that fixture one try is enough.  The learner that lost was a
    plain one-step optimizer, which the theory would reject for never testing the claim.
-   The genuine failure needs an investment that takes several steps, or one that has to
-   be bought again and again; there, no one-step claim can connect the payoff to its
-   cause.
+   What the theory itself requires, though, is only that a persistent claim be *tried*,
+   not adopted: on a version of the fixture where the amendment can be undone, an agent
+   that tries the investment now and then, always undoes it, and mostly stays put obeys
+   every rule of the theory — the rules force testing, not learning from the test.  The
+   paper's own construction happens to keep the benefit on that fixture; on investments
+   that take several steps or must be bought again, it does not.  Either way, the fix is
+   the same: let an adviser make a claim about the *whole* investment, so the claim can
+   be kept.
 
 2. *If the payoff can be arbitrarily far away, the plans must be allowed to grow, and
    then the theory does change.*  With plans of growing length, "average over rounds"
@@ -53,12 +58,14 @@ an untried option would have paid, and a limited agent can actually run it.
 
 3. *Even the growing-horizon theory does not say the agent does as well as the best plan
    would have done on its own path.*  Our theory tests plans from where the agent
-   actually is.  If an early irreversible choice put the agent on the wrong side of a
-   door, no amount of testing from there recovers the value behind it, and no learner of
-   any kind can have small regret in that world.  The gap between "how well the plan
+   actually is.  If an early choice put the agent on the wrong side of a door that
+   cannot be reopened and has no equivalent, no amount of testing from there recovers
+   the value behind it, and no learner of any kind can have small regret in that world.  The gap between "how well the plan
    does from where I am" and "how well the plan does on the path it would have made" is
    a separate quantity.  It vanishes when the world resets, mixes, or lets amendments be
-   redone; it does not vanish for irreversible branches.  A future theorem about
+   redone or caught up with — even an amendment that cannot be undone, as long as the
+   lagging agent can still make the same one; it does not vanish when a choice
+   forecloses the other path.  A future theorem about
    performance against the best legitimate policy needs that quantity as an extra
    assumption, and this round leaves it there rather than pretending the learning theory
    supplies it.

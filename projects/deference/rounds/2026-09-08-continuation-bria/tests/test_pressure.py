@@ -110,13 +110,13 @@ class C_CriterionVersusConstruction(unittest.TestCase):
         self.assertTrue(all(r.state == "expanded" for r in rounds[requests[-1]:]))
 
     def test_criterion_forces_only_what_coverage_forces(self):
-        """CRITERION: what every BRIA must do is conditional.  If the agent is at `base`
-        with positive density, no overestimation caps its estimate below 1 there on a
-        positive-density set, so `(request, 1)` is rejected infinitely often and must be
-        tested infinitely often.  An agent that is at `base` only on a density-zero set
-        may estimate 1 there and never reject it: the finite arithmetic below is the
-        inequality the argument uses — with `p` the density of `base` rounds and
-        `α^e = 1` on all of them, average overestimation is at least `2p/3`."""
+        """CRITERION arithmetic: with `p` the density of `base` rounds and `α^e = 1` on all
+        of them, average overestimation is at least `2p/3`, so an agent at `base` with
+        positive density must reject `(request, 1)` on a positive-density set and hence
+        test it infinitely often.  *The pressure pass concluded from this that positive
+        `base` density is forbidden; that was wrong* — infinitely many tests of any
+        density suffice, and `test_final.B_SparseTestMyopicBRIA` is the agent that stays
+        at `base` with density → 1.  The arithmetic is kept; the conclusion is not."""
         for p in (Q(1), Q(1, 2), Q(1, 10)):
             over = p * (1 - Q(1, 3)) + (1 - p) * (1 - 1)
             self.assertEqual(over, Q(2, 3) * p)

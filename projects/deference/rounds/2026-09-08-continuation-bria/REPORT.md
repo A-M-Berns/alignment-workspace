@@ -1,9 +1,20 @@
 # Report
 
-Two passes on one round.  The first pass's verdict was
+Three passes on one round.  The first pass's verdict was
 `GROWING-HORIZON-CONTINUATION-BRIA-SURVIVES-UNDER-NON-DOMINANCE-POLICY-REGRET-NEEDS-RECOVERABILITY`;
-the pressure pass dispatched against it supersedes it.  Verdict after pressure:
-**CONTINUATION-BRIA-READY-NONDOMINANCE-IFF-REPAIRED.**
+the pressure pass superseded it with `CONTINUATION-BRIA-READY-NONDOMINANCE-IFF-REPAIRED`;
+the final correctness pass (`PRESSURE_PASS.md` §12) supersedes that.  Verdict:
+**CONTINUATION-BRIA-READY-AFTER-FINAL-CORRECTNESS-PASS.**
+
+## Final correctness pass (third dispatch) — what changed
+
+| pressure-pass claim | finding | repair |
+|---|---|---|
+| condition (R): `ℓ ≥ −C` at infinitely many rejection rounds | asserts `B_h` infinite, which coverage then contradicts: vacuous | (BR) `inf_K ℓ^h_K > −∞`; hierarchy sound ⇒ finite wrong tests ⇒ finite tested overpromise ⇒ (BR) (LEAN `record_ge_neg_overpromise`); fixture `test_final.A` |
+| "a BRIA cannot remain at `base` on a set of positive density" | false on the revocable variant: coverage needs infinitely many tests of any density | the sparse-test agent is a BRIA and asymptotically myopic (`test_final.B`, proof in `FIXED_HORIZON.md` §4A); the exact original fixture is *sticky* and there every BRIA is competent; the auction keeps the benefit on both (`test_final.C`) |
+| "only `s(k)` hypotheses need to be simulated" | an activated hypothesis outside the current support still bids with its wealth | bidders = frontier `s*(k) = max_{j≤k} s(j)`, allowance on `s(k)`; runtime `O(s*(k) g(k) + m_k·exec)`; `Enumerated` in `src/bria.py`; `test_final.D` |
+| "an irreversible amendment has no finite catch-up cost" | the sticky amendment is irreversible and joinable at cost `d` | bounded catch-up / joinability versus **foreclosure** (`test_final.E`, `F`); prose repaired in every document and in item 86 |
+
 
 ## Pressure pass (second dispatch) — what changed
 
@@ -13,18 +24,19 @@ the pressure pass dispatched against it supersedes it.  Verdict after pressure:
 |---|---|---|
 | a computable weighted BRIA exists iff `m_K/S_K → 0`, via a computable majorant `ρ̄` of the convergence | the majorant is a modulus a computable convergent sequence need not have | the prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k`, reading only `(S_k, M_k)`; bound `𝒜_K ≤ 2√(S_K M_K) + √S_K(1+ln K)` from `Σ ΔM/√M ≤ 2√M` (LEAN); the iff holds with a uniform online witness and no effectivity assumption |
 | necessity via `D = {K : m_K ≥ (c/2) S_K}`, `c` the limsup | `c` is not computable; `D` was called computable | a rational `q` below the limsup; `D_q` decidable; the adversarial hypotheses e.c. whenever the schedule is; existential in `q`, uniform given `q`, criterion-level |
-| "the learner cannot underperform any hypothesis whose promises are sound" | true of promises, read as true of the controller's value | three theorems: promise competence (Theorem 1, condition (R)), actual-history (add `SLACK ≤ o(T)`), own-trajectory (add `SHIFT ≤ o(T)`); fixture D shows value 1 / promise 0 gives nothing |
+| "the learner cannot underperform any hypothesis whose promises are sound" | true of promises, read as true of the controller's value | three theorems: promise competence (Theorem 1, condition (BR) after the final pass), actual-history (add `SLACK ≤ o(T)`), own-trajectory (add `SHIFT ≤ o(T)`); fixture D shows value 1 / promise 0 gives nothing |
 | `G_k(π\|H^α)` "realized when tested, undefined otherwise", then summed over every block | observed and external returns conflated | `G^obs` (the only feedback) versus the external evaluator `Ĝ`; the identity retyped (LEAN `regret_decomposition`, `regret_le_of_bounds`); fixture H |
-| an estimate that is not a lower bound "buys nothing" | false; the source construction runs on hypotheses being wrong | generic claim; soundness variants are theorem hypotheses; the weakest consumed is (R), the negation of the divergence clause; hierarchy with the sublinear-overpromise negative (fixture G) |
+| an estimate that is not a lower bound "buys nothing" | false; the source construction runs on hypotheses being wrong | generic claim; soundness variants are theorem hypotheses; the hypothesis consumed is (BR); hierarchy with the sublinear-overpromise negative (fixture G) |
 | the whole-block lease is "the weakest useful lease" | overstated; alignment of test with claimed treatment is what necessity shows | promise–treatment alignment as the primitive, the lease as the canonical realization (fixtures I, J); treatments advisor-side only |
-| "every one-step BRIA invests infinitely often" | unquantified; a BRIA that leaves `base` for good need not | "a BRIA cannot remain at `base` on a set of positive density"; criterion / construction / fixture separated (fixture C) |
+| "every one-step BRIA invests infinitely often" | unquantified; a BRIA that leaves `base` for good need not | replaced by "a BRIA cannot remain at `base` on a set of positive density", itself withdrawn by the final pass: the criterion forces testing, not adoption |
 | discounted returns "reduce" to bounded weight | true for finite truncated leases only | infinite-horizon discounted claims need a settlement mechanism: OPEN (fixtures K, L) |
 | "easy policy, hard value" | no resource separation was proved | reduced to the type distinction; the recognizability limit is the paper's Theorem 2 diagonal |
 | item 86 asked how a promise is produced "from the constitution's own certificates" | legitimacy does not certify task value | item 86: recoverability (catch-up cost) + performance recognizability + composition |
 
 Fixtures added: `test_pressure.py` A–N (16).  Lean added: `regret_le_of_bounds`, the
 typed `learnErr`/`slack`/`shift`, `jump_div_sqrt_le`, `sum_jump_div_sqrt_le`,
-`sum_support_jump_le`.  All 19 declarations audit clean.
+`sum_support_jump_le`; the final pass adds `record_ge_neg_overpromise` and
+`test_final.py` (9).  All 20 declarations audit clean.
 
 
 ## The two questions of §21
@@ -40,7 +52,7 @@ tests it is scored by the realized gated block average against `L`; it may be ig
 only once its `m`-weighted record on those tests has diverged.  The learner's own
 estimates must not, in `m`-weighted primitive-time average, exceed what it obtains.  A
 learner meeting this has learning error `Σ m_k (L_k − G^obs_k) ≤ o(T)` against every such
-claim whose tested record does not diverge (`GROWING_HORIZON.md` §1) — competence
+claim whose tested record is bounded below (`GROWING_HORIZON.md` §1, (BR)) — competence
 against *claims*, not against the controller's value.  A computable such learner exists
 for every declared schedule in which no block is a fixed fraction of all time so far,
 uniformly and online from the schedule's prefix, and for no other
@@ -50,9 +62,9 @@ uniformly and online from the schedule's prefix, and for no other
 continuation policy on its own trajectory"?**  Two: the policy has an efficiently
 computable contextual claim with vanishing slack, `SLACK_T(π) ≤ o(T)`, and its history
 shift `SHIFT_T(π) = Σ_k m_k (Ĝ_k(π; H^π) − Ĝ_k(π; H^α)) ≤ o(T)` — supplied by uniform block
-recovery (reset, mixing, bounded memory, the catch-up cost of a reversible amendment)
-with average block length growing, and not by anything the learning theory controls.
-Fixture D shows the first cannot be dropped, the irreversible branch the second
+recovery (reset, mixing, bounded memory, bounded catch-up of a joinable amendment) with
+average block length growing, and not by anything the learning theory controls.  Fixture
+D shows the first cannot be dropped, the foreclosing branch the second
 (`POLICY_REGRET_FRONTIER.md`).  The two questions are kept apart throughout.
 
 ## What ports from the paper unchanged
@@ -102,23 +114,25 @@ round is.
 Continuation-promise competence with the Existence Theorem: for any non-dominant
 schedule there is a learner, computable uniformly and online from the schedule's prefix,
 whose learning error `Σ_k m_k (e_{h,k} − G^obs_k)` is `o(T)` against every e.c.
-continuation hypothesis whose tested record does not diverge; with vanishing promise
+continuation hypothesis whose tested record is bounded below; with vanishing promise
 slack this is competence against the controller's actual-history value, and every fixed
 finite investment delay, persistent or renewable, is learned (Corollary B).
 
 ## Strongest impossibility
 
-Two.  Under a dominant schedule no weighted BRIA covering the e.c. class exists.  And in
-the irreversible-branch environment no learner has sublinear regret against the
-unrestricted legitimate policy class while continuation competence holds exactly.
+Three.  Under a dominant schedule no weighted BRIA covering the e.c. class exists.  In
+the foreclosing-branch environment no learner has sublinear regret against the
+unrestricted legitimate policy class while continuation competence holds exactly.  And
+the one-step criterion permits an asymptotically myopic BRIA on the revocable amendment.
 
 ## Corrections to the dispatch's premises
 
-- "Ordinary one-step gated BRIA can rationally remain myopic" on the exact existing
-  fixture: the *criterion* permits it on density-zero excursions; no BRIA can remain at
-  `base` on a set of positive density; the *construction* invests finitely often and
-  keeps the benefit.  The learner that lost `2H−3` is not a BRIA (it never tests a
-  hypothesis that outpromises it forever).  Item 86's premise that
+- "Ordinary one-step gated BRIA can rationally remain myopic": on the exact existing
+  fixture, which keeps `expanded` under `work`, no — every BRIA is competent there,
+  because one forced test is absorbing; on the revocable variant, yes — the sparse-test
+  agent is a BRIA and asymptotically myopic.  The *construction* keeps the benefit on
+  both.  The learner that lost `2H−3` is not a BRIA (it never tests a hypothesis that
+  outpromises it forever).  Item 86's premise that
   "the myopic gated learner is itself legitimate and loses linearly" stands as a fact
   about that learner, not about bounded inductive rationality.
 - The candidate condition `A_i(K)/m_K → ∞` is stronger than needed; the proof uses the
@@ -186,13 +200,14 @@ for the replay-versus-local divergence that the history-shift term specialises.
 continuation hypothesis; execution treatment; promise–treatment alignment; execution
 lease; transparent gate; weighted BRIA; capital adequacy `A_i(K) − m_K → ∞`;
 non-dominance `m_K/S_K → 0`; prefix constructor; attention bound; continuation-promise /
-actual-history / own-trajectory competence; tested overpromise; condition (R);
+actual-history / own-trajectory competence; tested overpromise; condition (BR);
 horizon-stable promise; `m`-detectable advantage; history-shift discrepancy `SHIFT_T(π)`;
-three-bridge theorem; uniform block recovery; catch-up cost; `Π_rec,prom`.
+three-bridge theorem; uniform block recovery; bounded catch-up (joinability);
+foreclosure; `Π_rec,prom`; sticky / revocable amendment.
 
 ## Attribution
 
 - Prompt author: the maintainer, relayed verbatim in
   `prompts/2026-09-08-continuation-bria/PROMPT.md`.
 - Executor: Claude Fable 5.1 (Anthropic).
-- Date: 2026-09-08.
+- Dates: 2026-09-08 (first pass, pressure pass and final correctness pass: three dispatches).

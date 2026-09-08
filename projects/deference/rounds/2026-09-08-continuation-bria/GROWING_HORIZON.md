@@ -2,7 +2,7 @@
 
 Labels as in `FIXED_HORIZON.md`.  Provisional names: *continuation-promise competence*,
 *actual-history continuation competence*, *own-trajectory continuation competence*,
-*tested overpromise*, *horizon-stable promise*, *m-detectable advantage*.
+*tested overpromise*, condition *(BR)*, *horizon-stable promise*, *m-detectable advantage*.
 
 ## 0. Two returns, one observed
 
@@ -18,8 +18,9 @@ below uses only `G^obs`; §2 uses `Ĝ`.
 
 A continuation hypothesis `h = (q_h, e_h)` makes an accountable contextual claim `e_{h,k}`
 at each block; the claim may be wrong.  Let `M_h` be the learner's test set for `h`
-(rounds where `h`'s controller is executed under `h`'s declared treatment) and define
-`h`'s **weighted record** and **tested overpromise**
+(rounds where `h`'s controller is executed under `h`'s declared treatment), `B_h` the
+rounds at which `α` rejects `h`, and define `h`'s **weighted record** and **tested
+overpromise**
 
 ```
 ℓ^h_K  := Σ_{k ∈ M_h, k ≤ K} m_k (G^obs_k − e_{h,k})
@@ -28,53 +29,67 @@ O^h_K  := Σ_{k ∈ M_h, k ≤ K} m_k (e_{h,k} − G^obs_k)_+ .
 Both are functions of realized data only.
 
 **Theorem 1 — continuation-promise competence** (DERIVED from the weighted criterion;
-the paper's Theorem 3 argument with weights and the weakest hypothesis it uses).  Let
-`α` be a weighted continuation-BRIA covering `h`.  If
+the paper's Theorem 3 argument with weights).  Let `α` be a weighted continuation-BRIA
+covering `h` with test set `M_h`.  If the record is **bounded below**,
 
 ```
-(R)   for some C,  ℓ^h_K ≥ −C  for infinitely many rounds K at which α rejects h
+(BR)   inf_K ℓ^h_K  >  −∞,
 ```
-— exactly the negation of coverage's divergence clause, so in particular if `ℓ^h_K` is
-bounded below, in particular if `sup_K O^h_K < ∞` (finite total tested overpromise), in
-particular if
-`h` overpromises on at most finitely many of its tests, in particular if `h` is sound on
-every test — then `α` rejects `h` finitely often, `α^e_k ≥ e_{h,k}` for `k ≥ k_0`, and the
-**learning error**
+then `α` rejects `h` finitely often, `α^e_k ≥ e_{h,k}` for `k ≥ k_0`, and the **learning
+error**
 
 ```
 LEARN_K(h) := Σ_{k≤K} m_k (e_{h,k} − G^obs_k(α))  ≤  S_{k_0} + Σ_{k≤K} m_k (α^e_k − G^obs_k(α))  =  o(S_K).
 ```
 
-Proof.  Coverage says: `B_h` finite, or `ℓ^h_K → −∞` along `B_h`.  (R) excludes the
-second, so `B_h` is finite; then `LEARN_K = Σ m_k (e_k − α^e_k) + Σ m_k (α^e_k − G^obs_k)`,
-the first sum is at most `S_{k_0}`, the second is `o(S_K)` by weighted no
+Proof.  Coverage says: `B_h` finite, or `ℓ^h_K → −∞` along `K ∈ B_h`.  Under (BR) the
+sequence `ℓ^h_K` is bounded below on all of `ℕ`, hence along `B_h`, so it does not tend to
+`−∞` there; hence `B_h` is finite.  Then `LEARN_K = Σ m_k (e_k − α^e_k) + Σ m_k (α^e_k −
+G^obs_k)`; the first sum is at most `S_{k_0}`, the second is `o(S_K)` by weighted no
 overestimation.  ∎
 
-What the theorem says and does not say.  It compares the learner's observed reward with
-the hypothesis's *promises*, not with the controller's value.  A controller worth 1
-whose hypothesis promises 0 yields `LEARN ≤ 0` and no competence against 1 (FIX
-`test_pressure.D_PromiseVersusValue`).  The first version of this document stated the
-conclusion as "cannot underperform a hypothesis whose promises are sound"; that is
-Theorem 1 read as a statement about promises, and every sentence that read it as a
-statement about the controller's value is withdrawn.
+*[Final correctness pass.]*  The pressure pass stated the hypothesis as "for some `C`,
+`ℓ^h_K ≥ −C` at infinitely many rejection rounds".  That asserts `B_h` infinite, and
+coverage then forces `ℓ → −∞` along `B_h`; the two are contradictory, so the theorem was
+vacuous.  (FIX `test_final.A_RecordCondition`: a sound hypothesis followed from the
+first round has no rejection round at all, so the old condition has no witness, while
+(BR) holds with `ℓ ≡ 0`.)  The logically weakest hypothesis the proof accepts is "if
+`B_h` is infinite then `ℓ^h_K` does not tend to `−∞` along `B_h`"; it is stated here once
+and not used, because (BR) is simple, nonvacuous, and what every natural hypothesis
+class satisfies.  (BR) is the canonical hypothesis.
 
-**The promise hierarchy** (FIX `test_pressure.E`, `F`, `G`):
+What the theorem says and does not say.  It compares the learner's observed reward with
+the hypothesis's *claims*, not with the controller's value.  A controller worth 1 whose
+hypothesis claims 0 yields `LEARN ≤ 0` and no competence against 1 (FIX
+`test_pressure.D_PromiseVersusValue`).  The first version of this document stated the
+conclusion as "cannot underperform a hypothesis whose promises are sound"; every reading
+of that as a statement about the controller's value is withdrawn.
+
+**The promise hierarchy** (FIX `test_pressure.E`, `F`, `G`, `test_final.A`; LEAN
+`record_ge_neg_overpromise`):
+
+```
+sound on every test          e_k ≤ G^obs_k on each k ∈ M_h                  ⇒ ℓ ≥ 0
+   ⇒  wrong on finitely many tests, bounded total                          ⇒ ℓ ≥ −(that total)
+   ⇒  finite total tested overpromise  Σ_{M_h} m_k (e_k − G^obs_k)_+ < ∞   ⇒ ℓ ≥ −Σ (Lean)
+   ⇒  (BR) record bounded below                                            ⇒ Theorem 1
+```
 
 | condition on `h` | Theorem 1 | witness |
 |---|---|---|
-| sound on every test | yes | the sound hypotheses of every fixture |
-| eventually sound: wrong on finitely many tests, bounded total | yes | `F_FiniteOverpromise`: promise 1 on three early tests of a controller worth 2/3, record `−3`, then followed |
-| record bounded below (or merely `≥ −C` infinitely often along rejections) | yes — this is (R) | — |
-| sublinear tested overpromise, `O^h_K = o(S_K)` but `→ ∞` | **no** | `G_SublinearOverpromise`: overpromise `1/k` per test; a BRIA may test it on a density-zero set with divergent harmonic sum, satisfy coverage as the record tends to `−∞`, reject it elsewhere and obtain nothing there |
+| sound on every test | yes | the sound hypotheses of every fixture; `test_final.A` |
+| finitely many wrong tests, bounded total | yes | `F_FiniteOverpromise`: claim 1 on three early tests of a controller worth 2/3, record `−3`, then followed |
+| finite total tested overpromise | yes | the implication `ℓ ≥ −Σ m (e − G)_+` |
+| (BR) record bounded below | yes — the theorem hypothesis | — |
+| sublinear but divergent tested overpromise | **no** | `G_SublinearOverpromise`: overpromise `1/k` per test on a density-zero test set with divergent harmonic sum; the record tends to `−∞`, coverage is satisfied, and a BRIA may reject the hypothesis everywhere else and obtain nothing there |
 
-So the hierarchy the dispatch hoped for stops at (R): at the criterion level, a
-hypothesis whose record diverges *at any rate* may be rejected forever.  The construction
-is more forgiving — its wealth `W = A_i + record + (paid < promised)` keeps a slowly
-diverging hypothesis in play as long as `A_i(K) + ℓ^h_K` stays above the block's
-liability — but that is a property of one auction and one allowance, not of the
-criterion, and it is not a theorem here.  A hypothesis that *learns* its promise
-(`test_frontier.O_LearningHypothesis`) is the eventually-sound row: one refutation per
-state class, then (R).
+So the hierarchy stops at (BR): at the criterion level, a hypothesis whose record
+diverges *at any rate* may be rejected forever.  The construction is more forgiving —
+its wealth `W = A_i + record + (paid < promised)` keeps a slowly diverging hypothesis in
+play as long as `A_i(K) + ℓ^h_K` stays above the block's liability — but that is a
+property of one auction and one allowance, not of the criterion, and it is not a theorem
+here.  A hypothesis that *learns* its claim (`test_frontier.O_LearningHypothesis`) is the
+second row: one refutation per state class, then (BR).
 
 ## 2. Actual-history and own-trajectory competence
 
@@ -86,9 +101,9 @@ SLACK_K(h) := Σ_{k≤K} m_k ( Ĝ_k(q; H^α_{t_k}) − e_{h,k} )
 SHIFT_K(π) := Σ_{k≤K} m_k ( Ĝ_k(π; H^π_{t_k}) − Ĝ_k(π; H^α_{t_k}) ).
 ```
 
-**Theorem 2 — actual-history continuation competence.**  Under (R) and
+**Theorem 2 — actual-history continuation competence.**  Under (BR) and
 `SLACK_K(h) ≤ o(S_K)` (one-sided: the promise is not too *loose*; overpromising on
-untested blocks only helps this inequality and only hurts (R) if it happens on tests),
+untested blocks only helps this inequality and only hurts (BR) if it happens on tests),
 
 ```
 Σ_{k≤K} m_k ( Ĝ_k(q; H^α_{t_k}) − G^obs_k(α) )  =  SLACK_K + LEARN_K  ≤  o(S_K).
@@ -147,14 +162,14 @@ and the following block would see it only after an investment nothing scores);
 environment-dependent finite delay `d(H)` (fixed `m` fails whenever `d(H) ≥ m` on block
 starts of positive weighted density; a growing schedule with `m_k > 3d(H_{t_k})/2`
 eventually catches each); growing delay `d_k → ∞` (the schedule must outrun it, which
-nothing in the criterion supplies); an irreversible amendment whose value appears much
+nothing in the criterion supplies); a foreclosing amendment whose value appears much
 later (the previous case on the trajectory where the value appears,
 `POLICY_REGRET_FRONTIER.md` on the other).
 
 ## 5. Promise recognizability versus controller complexity
 
 The comparator class of Theorems 1–2 is a class of *hypotheses*: pairs `(controller,
-contextual claim)` in the covered class, with (R) and small slack.  It is not a class of
+contextual claim)` in the covered class, with (BR) and small slack.  It is not a class of
 controllers.  The paper's Theorem 3 has the same shape (efficiently identifiable option
 *and* e.c. lower bound); Theorem 4 relaxes the claim to one unrefuted on e.c. averages.
 Three cases, stated at the level the round can support:
@@ -185,6 +200,8 @@ Three cases, stated at the level the round can support:
   about promises (`D_PromiseVersusValue`).
 - Any criterion-level result under sublinear-but-divergent tested overpromise
   (`G_SublinearOverpromise`); the construction's tolerance is not a theorem.
+- Anything under the logically weakest rejection-conditional form of the hypothesis;
+  (BR) is what is used.
 - Any own-trajectory statement without `SHIFT ≤ o(S_K)`; any certificate of it from
   realized data.
 - A complexity separation between controllers and promises.

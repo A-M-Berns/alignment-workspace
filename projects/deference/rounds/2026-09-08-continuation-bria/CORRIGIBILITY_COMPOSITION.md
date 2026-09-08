@@ -31,7 +31,7 @@ constitution's own certificates", which was the wrong address.
 
 ```
 B. CONTINUATION-BRIA over Exec^G, schedule (m_k) with m_K/S_K → 0
-   ⟹  for every covered continuation hypothesis h satisfying (R),
+   ⟹  for every covered continuation hypothesis h satisfying (BR),
        LEARN_T(h) = Σ_k m_k (e_{h,k} − G^obs_k(α)) ≤ o(T):
        the learner's observed m-weighted average is asymptotically at least the
        m-weighted average of h's CLAIMS                        (GROWING_HORIZON.md §1)
@@ -39,14 +39,14 @@ B. CONTINUATION-BRIA over Exec^G, schedule (m_k) with m_K/S_K → 0
 
 Legitimacy enters B twice, by typing: the leases run through the gate, so every test is
 constitutionally executed; and a gate-transparent controller's gated block average is
-its ungated one, so every legitimate controller with a claim satisfying (R) is in the
+its ungated one, so every legitimate controller with a claim satisfying (BR) is in the
 comparator class.  Illegitimate controllers are in the operational domain and lose their
 tests through the gate.  B says nothing about a controller's *value*; that is C₁.
 
 ## 3. Performance recognizability — promise slack
 
 ```
-C₁. PROMISE RECOGNIZABILITY for π:  a covered hypothesis h_π = (π, L) with (R) and
+C₁. PROMISE RECOGNIZABILITY for π:  a covered hypothesis h_π = (π, L) with (BR) and
     SLACK_T(π) = Σ_k m_k (Ĝ_k(π; H^α_{t_k}) − L_k) ≤ o(T)
    ⟹  with B: Σ_k m_k (Ĝ_k(π; H^α_{t_k}) − G^obs_k(α)) ≤ o(T)   (GROWING_HORIZON.md §2, Theorem 2)
 ```
@@ -65,20 +65,24 @@ External to B and to C₁.  For the corrigibility line the relevant instance is 
 **catch-up cost** of the slow lane: an amendment `π` requested can still be requested
 from the learner's history at a cost bounded by the investment length `d`, so the
 per-block shift is at most `d` and `SHIFT_T ≤ dK = o(T)` once the average block length
-grows (`POLICY_REGRET_FRONTIER.md` §4, FIX `M_RecoverableAmendment`).  An irreversible
-amendment has no finite catch-up cost; the policy that made it is outside the class of
-C₂, not "bad".
+grows (`POLICY_REGRET_FRONTIER.md` §4, FIX `M_RecoverableAmendment`,
+`test_final.E_CatchUpWithoutReversibility`).  This is **joinability**, and it does not
+need reversibility: the sticky amendment has no path back and is still joinable at cost
+`d`.  What defeats C₂ is **foreclosure** — a choice after which the comparator's state
+can be neither reached nor matched in value by any legitimate continuation
+(`test_final.F_Foreclosure`); the policy that made a foreclosing choice the learner did
+not is outside the class of C₂, not "bad".
 
 ## 5. The composed corollary
 
 ```
 D.  B + C₁ + C₂   ⟹   Regret_T(α, π) = SHIFT_T + SLACK_T + LEARN_T ≤ o(T)
-    for every π ∈ Π_rec,prom := { legitimate π : covered h_π with (R), SLACK ≤ o(T), SHIFT ≤ o(T) }
+    for every π ∈ Π_rec,prom := { legitimate π : covered h_π with (BR), SLACK ≤ o(T), SHIFT ≤ o(T) }
 ```
 LEAN `regret_decomposition`, `regret_le_of_bounds`.  Every term typed; none registered.
 This is the corrigibility competence statement the round can support: **low external
 regret against legitimate, recognizable, recoverable continuation policies.**  It is not
-regret against all of `Π_leg`, which the irreversible branch refutes.
+regret against all of `Π_leg`, which the foreclosing branch refutes.
 
 ## 6. The interface into item 86, as refined
 
@@ -91,10 +95,10 @@ regret against `Π_leg`, or the negative.  The round supplies:
    uniformly and online (`WEIGHTED_BRIA.md` §4).
 3. **The negative for the unrestricted class**: fixture L.
 4. **What remains, and is the item**: C₂ — a recoverability certificate for legitimate
-   slow-lane continuations (catch-up cost of authorized amendment as the candidate
-   theorem shape); C₁ — a promise-recognizability interface for task or value
-   performance, which is *not* legitimacy's duty; and the composition D on the round's
-   two-state process with a reversible amendment.
+   slow-lane continuations (bounded catch-up / joinability of authorized amendments as
+   the theorem shape, foreclosure as the excluded case); C₁ — a promise-recognizability
+   interface for task or value performance, which is *not* legitimacy's duty; and the
+   composition D on the round's two-state process with a joinable amendment.
 
 ## 7. What a future corrigibility theorem would consume
 
@@ -103,7 +107,8 @@ gate-transparent class.  From B: the learning-error bound for a generic bounded 
 return.  From C₁: whatever supplies claims with vanishing slack for the policies one
 wants to compete with — a property of the value's settlement and of the hypothesis
 class, not of the constitution.  From C₂: the catch-up cost of the slow lane, a property
-of the constitution's reversibility.  The sealed-arm and trigger-integrity preconditions
+of which authorized transitions are joinable from a lagging history — not of
+reversibility.  The sealed-arm and trigger-integrity preconditions
 of the incentive rounds are unchanged: B inherits whatever the return's settlement
 provenance is.
 

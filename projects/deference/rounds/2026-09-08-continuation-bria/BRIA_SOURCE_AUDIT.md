@@ -101,7 +101,7 @@ the alternatives are estimates (the paper's) or independent randomization.
 | wealth in reward units, bid `min(h^e, w)` | wealth in total-reward units, per-step bid `min(e, W / m_k)`, winner pays `m_k · bid`, receives `m_k · G_k` |
 | `Σ_n A(n,i) = ∞` | `A_i(k) − m_k → ∞` (capital adequacy); witness the prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k` |
 | `(1/N) Σ_{n≤N} Σ_i A(n,i) → 0` | `Σ_{k≤K} Σ_i A(k,i) / Σ_{k≤K} m_k → 0` (weaker per macro-round) |
-| Theorem 3 | Fixed-Horizon and continuation-promise competence (`FIXED_HORIZON.md` §3, `GROWING_HORIZON.md` §1), under condition (R) — the negation of Definition 6's divergence clause — which is the weakest hypothesis the paper's own proof uses |
+| Theorem 3 | Fixed-Horizon and continuation-promise competence (`FIXED_HORIZON.md` §3, `GROWING_HORIZON.md` §1), under condition (BR) — the record bounded below, which rules out Definition 6's divergence clause — the hypothesis the paper's own proof uses in the form `record ≥ 0` |
 | Appendix D | `CONTINUATION_HYPOTHESES.md` §3, fixtures G/H |
 
 The mapping is a typing of the same criterion; the paper's theorems are cited through it

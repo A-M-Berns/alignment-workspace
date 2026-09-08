@@ -76,9 +76,10 @@ def execute(env, s, t, controller, m, gated=True):
 # generalised by the investment length d and the optional expiry e.
 
 
-def investment_env(d=1, e=None, typed=True, revoke_at=None):
+def investment_env(d=1, e=None, typed=True, revoke_at=None, sticky=False):
     """`revoke_at`: primitive time from which the principal prohibits the benefit
-    action (an exterior correction arriving mid-lease)."""
+    action (an exterior correction arriving mid-lease).  `sticky`: the amendment is
+    irreversible — `work` at `expanded` keeps the state (no path back to `base`)."""
 
     def benefit_state():
         return "expanded" if e is None else ("harvest", 1)
@@ -98,7 +99,7 @@ def investment_env(d=1, e=None, typed=True, revoke_at=None):
 
     def step(s, a, t):
         if a == "work":
-            return "base"
+            return "expanded" if (sticky and s == "expanded") else "base"
         if a == "request":
             return ("pending", 1) if d >= 2 else benefit_state()
         if a == "continue":

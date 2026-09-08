@@ -56,12 +56,13 @@ weighted BRIA          no overestimation and coverage of every h ∈ H
 
 - Lemma 6: dropping tests at rounds with `h^e_k = 0` lowers the record by
   `Σ w_k G_k ≥ 0`, so it still diverges.
-- Theorem 3 → **weighted guaranteed option**, in the weakest form the proof consumes: a
-  hypothesis whose weighted record on `α`'s test set for it is *bounded below* cannot
-  have that record diverge to `−∞`, hence is rejected finitely often, hence
-  `α^e_k ≥ L_k` for `k ≥ k_0`, hence `Σ_{k≤K} w_k (G_k − L_k) ≥ −o(S_K) − S_{k_0}`.
-  A sound promise (`ℓ ≥ 0` on every test set) is the special case; finite total tested
-  overpromise is the intermediate one (`GROWING_HORIZON.md` §1).  This needs only
+- Theorem 3 → **weighted guaranteed option**, under the record condition (BR): a
+  hypothesis whose weighted record on `α`'s test set for it is bounded below,
+  `inf_K ℓ^h_K > −∞`, cannot have that record diverge to `−∞` along its rejection
+  rounds, hence is rejected finitely often, hence `α^e_k ≥ L_k` for `k ≥ k_0`, hence
+  `Σ_{k≤K} w_k (G_k − L_k) ≥ −o(S_K) − S_{k_0}`.  A sound promise (`ℓ ≥ 0` on every test
+  set) is the special case; finite total tested overpromise is the intermediate one
+  (`GROWING_HORIZON.md` §1; LEAN `record_ge_neg_overpromise`).  This needs only
   `S_K → ∞`.
 - Theorem 2: the diagonal hypothesis is the same.
 - Theorem 4 does **not** port as stated: it needs a notion of randomness for a
@@ -130,11 +131,20 @@ candidate `A_i(K)/m_K → ∞` is stronger than needed: `m_k = k`, `A_i(k) = k +
 ratio `→ 1` and difference `→ ∞`, and the proof uses only the difference.  Its
 `Σ_i A_i(K) / S_K → 0` is exactly (ii).
 
-**Computability** (DERIVED, as in the paper's part 4): with `A(k, ·)` supported on
-`i ≤ s(k)`, `s` computable with `s(k) → ∞` (monotonicity is not needed), only `s(k)`
-hypotheses are simulated at round
+**Computability** (DERIVED, as in the paper's part 4; *[final correctness pass]*): with
+`A(k, ·)` supported on `i ≤ s(k)`, `s` computable with `s(k) → ∞`, the **bidders** at
+round `k` are the ever-activated frontier `s*(k) := max_{j≤k} s(j)` — a hypothesis
+activated when `i ≤ s(j)` keeps its wealth and keeps bidding after `s` drops below `i`,
+and cannot be dropped from the auction merely because its current allowance is zero.
+`s*` is nondecreasing, finite and computable from the prefix.  A hypothesis with
+`i > s*(k)` has wealth 0 and bid 0 and is never the winner while some active bid is
+positive (ties among zero bids go to the lowest active index).  So `s*(k)` hypotheses
+are simulated at round
 `k`, each once; the winner's controller runs for `m_k` gated steps.  Cost per macro-round
-`O(s(k) g(k) + m_k · (controller + gate))`.
+`O(s*(k) g(k) + m_k · (controller + gate))`; the subsidy `𝒜_K` counts only `s(k)`, since
+only current allowance costs subsidy.  FIX `test_final.D_NonmonotoneSupport`: a spike
+drops `s` from 3 to 1, and the hypothesis activated at 3 still bids with its wealth and
+wins the spike round.
 
 **Weighted BRIA construction theorem** (DERIVED from the above, the algebra LEAN):
 *for any schedule `(w_k)` and allowance `A` with finite e.c. support satisfying (i′) and
@@ -215,10 +225,14 @@ Both are computed from `(S_k, M_k)` alone — no modulus of convergence, no tail
 information, no code for the schedule.  If `m_K/S_K → 0` then (i′) and (ii) hold:
 
 - (i′).  `M_K/S_K → 0` (a dominant running maximum is dominant at its own index:
-  `m_j = M_K ≥ c S_K ≥ c S_j`), so `S_k/M_k → ∞` and `s(k) → ∞`; hence every `i` is
-  active for all `k ≥ k_i`.  Then
-  `A_i(K) ≥ M_K − M_{k_i − 1} + Σ_{k=k_i}^{K} 1/k`, so
-  `A_i(K) − m_K ≥ −M_{k_i−1} + ln(K/k_i) → ∞`.
+  `m_j = M_K ≥ c S_K ≥ c S_j`), so `S_k/M_k → ∞` and `s(k) → ∞`; hence for every `i`
+  there is a last round `k_i − 1` with `s(k) < i`, and `i` receives allowance at every
+  `k ≥ k_i` (allowance gaps before `k_i` only lower `A_i` by a constant, and a gap never
+  reduces wealth).  Then `A_i(K) ≥ M_K − M_{k_i − 1} + Σ_{k=k_i}^{K} 1/k`, so
+  `A_i(K) − m_K ≥ −M_{k_i−1} + ln(K/k_i) → ∞`.  A hypothesis outside the current
+  support still bids (it is in the frontier), so the coverage argument (A′)/(C′) applies
+  to it unchanged: (A′) uses only that wealth is nondecreasing between wins and that
+  allowance arrives at all large `k`; (C′) uses only the wealth identity per hypothesis.
 - (ii).  `𝒜_K = Σ_{k≤K} s(k) (M_k − M_{k−1}) + Σ_{k≤K} s(k)/k`.  For the first sum,
   `s(k) ≤ √(S_k/M_k) ≤ √S_K / √M_k`, so `s(k)(M_k − M_{k−1}) ≤ √S_K · (M_k − M_{k−1})/√M_k`,
   and `Σ_k (M_k − M_{k−1})/√M_k ≤ 2√M_K` because
@@ -241,9 +255,10 @@ version's `ρ̄` argument, which assumed a computable nonincreasing majorant of
 that a computable convergent sequence need not have.
 
 Computability of the resulting learner: the allowance adds one comparison and one
-addition per active hypothesis per round; with the paper's simulation argument the
-learner is computable in `O(s(k) g(k) + m_k (controller + gate))` whenever the class is
-c.e. and e.c. and the schedule is computable.  For a non-computable schedule presented
+addition per active hypothesis per round; with the paper's simulation argument over the
+frontier `s*(k)` the learner is computable in `O(s*(k) g(k) + m_k (controller + gate))`
+whenever the class is c.e. and e.c. and the schedule is computable (`Enumerated` in
+`src/bria.py` is the lazy activation).  For a non-computable schedule presented
 online (block lengths revealed as blocks begin) the same learner runs relative to that
 presentation.
 
@@ -294,8 +309,8 @@ the primitive time it consumes is `Σ_{M_i} m_k ≤ A_i(K)/β`.  Under (ii) that
 This is an identity of the construction, not an analogy; the liability register of the
 workspace is not invoked.
 
-The same bound is what makes the one-step auction myopic on a renewable investment
-(`FIXED_HORIZON.md` §4A): an investing action is a refuted one-step test, and the
+The same bound is what makes the one-step auction myopic on a renewable investment and
+what makes the sparse-test agent's excursions density-zero (`FIXED_HORIZON.md` §4A): an investing action is a refuted one-step test, and the
 refuted tests of every hypothesis together consume at most `𝒜_K/β` rounds.
 
 **Fixture I — monopoly under the unweighted charge** (FIX `test_weighted.I_Monopoly`).

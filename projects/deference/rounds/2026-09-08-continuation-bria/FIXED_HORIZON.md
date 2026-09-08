@@ -95,43 +95,82 @@ yields a vacuous conclusion (`test_pressure.D_PromiseVersusValue`).
 
 ## 4. The amendment fixture, exactly
 
-`src/envs.py`, `investment_env(d, e)`: the decision-theory-bill process with rewards
-divided by three, `d` investment steps, and either a persistent benefit (`e = None`, the
-benefit state absorbing) or a renewable one (`e` harvest steps, then back to `base`).
-`d = 1`, persistent, is the existing fixture; its `2H − 3` becomes `(2H − 3)/3`.
+`src/envs.py`, `investment_env(d, e, sticky)`: the decision-theory-bill process with
+rewards divided by three, `d` investment steps, and either a persistent benefit
+(`e = None`) or a renewable one (`e` harvest steps, then back to `base`).  `d = 1`,
+persistent, `sticky=True` is the existing fixture (its `2H − 3` becomes `(2H − 3)/3`);
+with `sticky=False`, the default, `work` at `expanded` returns to `base`.
 
 **A. One-step BRIA** — the prompt's premise corrected, in three registers (FIX
-`test_fixed_horizon.A_OneStep`, `test_pressure.C_CriterionVersusConstruction`).
-*[repaired by the pressure pass: criterion, construction and fixture are separated.]*
+`test_fixed_horizon.A_OneStep`, `test_pressure.C_CriterionVersusConstruction`,
+`test_final.B_SparseTestMyopicBRIA`, `test_final.C_AuctionContrast`).
+*[Final correctness pass: the criterion register is rewritten; the pressure pass's
+"positive density" claim is withdrawn.]*
 
-*CRITERION — what every one-step BRIA covering the e.c. class must do on the existing
-fixture (`d = 1`, persistent).*  Let `h = (request, 1)`, which never outpromises `α` at a
-round where `α^e = 1`.  If `α` is at `base` on a set of rounds of positive upper density,
-then no overestimation forces `α^e < 1` on a positive-density subset of them (with
-`α^e = 1` on all `base` rounds of density `p`, the average overestimation is at least
-`2p/3`), so `h` is rejected infinitely often and must be tested infinitely often — and
-each test is the investment.  If `α` is at `base` only on a density-zero set, it may
-estimate 1 there, never reject `h`, and never invest again; and an `α` that never returns
-to `base` after entering the absorbing benefit state is never obliged to invest again
-either.  So the exact quantified statement is: **a BRIA cannot remain at `base` on a set
-of positive density; it either invests infinitely often or leaves `base` for good, and
-between those it may run sparse excursions.**  The first version's "every one-step BRIA
-invests infinitely often" is withdrawn to this.
+*Two variants of the one-step fixture.*  The decision-theory-bill fixture keeps the
+state under `work` (its transition map returns the state for any action other than
+`request`/`hack`), so there `base → expanded` has no path back: the amendment is
+**sticky**.  This round's `investment_env(d = 1)` lets `work` at `expanded` return to
+`base` by default: the amendment is **revocable**.  `sticky=True` reproduces the
+original.  The two behave differently at the criterion level.
 
-*The decision-theory-bill learner is not a BRIA.*  It never chooses `request` while `h`
-outpromises it at every round with `α^e ≤ 1/3`: coverage fails.  Item 86's "myopic gated
-learner" is an argmax, not a bounded inductive learner, and the `2H − 3` it loses is a fact
-about that argmax.
+*CRITERION — what every one-step BRIA covering the e.c. class must do.*  Let
+`h = (request, 1)` at `base`.  Coverage requires: either `h` is rejected finitely often,
+or `h`'s record tends to `−∞` along its rejection rounds — which needs `h` to be tested
+infinitely often, and nothing more: the tests may be a set of density zero, and each
+test contributes exactly `−1`.  Hence:
 
-*CONSTRUCTION — what the wealth auction does.*  With the ecology `{work, invest, stay}` it
-requests finitely often — twice in the run of `test_auction_invests_once_and_stays`,
-because after the first investment `invest` has spent its wealth, `stay` cannot yet
-afford its bid and `work` wins the state back — and once a sound hypothesis at `expanded`
-holds wealth `≥ 1/3` it never returns to `base`.  The count is an artefact of the
-ecology's wealths, not of the criterion.
+- *Sticky (the exact original).*  If `α` stayed at `base` forever, `base` would have
+  density 1, no overestimation would force `α^e < 1` on a positive-density set of
+  `base` rounds, `h` would be rejected infinitely often, hence tested — and one test
+  leaves `base` for good.  At `expanded` the sound claim `(expanded, 1)` has record
+  `≥ 0` on every test set, so it is rejected finitely often, `α^e ≥ 1` for all but
+  finitely many rounds, and no overestimation forces average reward `→ 1`.  **On the
+  exact original fixture every BRIA is competent.**
+- *Revocable.*  An agent that runs the published auction on `base` rounds and, at
+  `expanded`, chooses `work` with estimate 1 is a BRIA (proof below) and is
+  asymptotically myopic: it is at `base` on a set of density tending to 1, rejects `h`
+  on almost every `base` round, tests `h` on a sparse infinite set at which its record
+  tends to `−∞`, and returns to `base` after each test.  FIX
+  `test_final.B_SparseTestMyopicBRIA`: over 4000 rounds, 92 tests at growing gaps,
+  record `−92`, `base` density `0.977`, average overestimation `0.023`, average reward
+  `0.326`; the `stay` claim is never rejected because `α^e = 1` at `expanded`.  The same
+  agent on the sticky fixture is stuck at `expanded` with estimate 1 and reward `1/3`,
+  overestimation `2/3`, and is not a BRIA there.  **On the revocable variant the
+  criterion permits asymptotic myopia.**  So the one-step criterion is already too weak
+  for dynamic competence: it forces only that an outpromising claim be tested infinitely
+  often, and a claim about `request` at `base` is refuted by every test.
 
-*FIX — the exact simulated ecologies.*  `test_existing_fixture_one_step_auction_invests`:
-the tail of 500 rounds is at `expanded` at reward 1.
+  Proof that the composite agent is a BRIA (DERIVED from the paper's Theorem 1).  The
+  `base` rounds form a decision problem sequence in the paper's sense (menu
+  `{work, request}`, rewards determined by the choices), and the auction run on that
+  subsequence is a BRIA for it: no overestimation relative to the number of `base`
+  rounds, coverage of every e.c. hypothesis restricted to `base` rounds with the
+  auction's wins as test set.  At `expanded` rounds `α^e = 1`, so no hypothesis is
+  rejected there.  The `expanded` rounds are exactly the rounds after a win by a
+  `request`-recommending hypothesis at `base`; each such win costs its winner a bid of at
+  least `1/3` (the sound `work` claim's bid) and returns 0, so their number by time `K`
+  is at most `3𝒜_K + O(1)`, of density zero (`WEIGHTED_BRIA.md` §5).  Total overestimation
+  is the `base`-auction's `o(#base)` plus `2/3` per `expanded` round, hence `o(T)`.
+  Coverage of an arbitrary e.c. `h'`: its rejection rounds lie in `base` rounds, where
+  the `base`-auction covers it.  ∎
+
+*The decision-theory-bill learner is not a BRIA on either variant.*  It never chooses
+`request` while `h` outpromises it at every round with `α^e ≤ 1/3`: coverage fails.  Item
+86's "myopic gated learner" is an argmax, not a bounded inductive learner, and the
+`2H − 3` it loses is a fact about that argmax.
+
+*CONSTRUCTION — what the wealth auction does* (FIX `test_final.C_AuctionContrast`).  With
+the ecology `{work, request, stay}` and allowance `1/(i²√k)` it reaches `expanded` and
+keeps it: one request on the sticky original, two on the revocable variant (after the
+first, `request` has spent its wealth, `stay` cannot yet afford its bid and `work` wins
+the state back; once `stay` holds `1/3` the state never returns).  The counts are
+artefacts of the ecology's wealths.  So on the one-step fixture the construction happens
+to be competent where the criterion permits myopia; that is a property of the auction's
+capital dynamics, not of bounded inductive rationality.
+
+*FIX — the multi-step and renewable ecologies*, where the construction's temporal credit
+assignment fails more robustly:
 
 - With a three-step persistent investment (`d = 3`) the auction with the ecology
   `{work, invest, continue, stay}` stays at `base` for 3000 rounds: the `continue`
@@ -142,26 +181,24 @@ the tail of 500 rounds is at `expanded` at reward 1.
   the hypotheses (a `continue` hypothesis with more allowance than the `request`
   hypothesis outruns the drain); the criterion neither forbids nor requires it.
 - With a *renewable* benefit (`d = 1, e = 2` or `d = 2, e = 4`) the auction is myopic
-  (average below `0.37` against the investor's `2/3`), and this is DERIVED for the
-  construction, not an accident of the ecology: no one-step claim can attribute a harvest
-  reward to the `request` that caused it, so `request` is chosen only as a test of a
-  hypothesis that overpromised at `base`, each such test costs that hypothesis its bid,
-  and a sound hypothesis bids `1/3` there.  Hence the number of `request` rounds by time
-  `K` is at most `3 𝒜_K + O(1)`, of density zero (`test_attention_bound_on_investing_actions`;
-  the identity is `WEIGHTED_BRIA.md` §5).  At the criterion level, a BRIA that mostly
-  follows the investor also exists (estimate `2/3`, test `work`-claims sparsely).
-- The criterion *permits* myopia in every case, the existing fixture included: the
-  auction restricted to `base` rounds, with `α^e = 1` and `α^c = work` at every
-  non-`base` state, never rejects a continuation or stay hypothesis there, overestimates
-  only on the density-zero set of non-`base` rounds, and covers every e.c. hypothesis at
-  `base` by the paper's own argument.  It returns to `base` after every forced excursion.
-  (Stated, not implemented; it is the paper's construction with a two-line override.)
+  (average below `0.37` against the investor's `2/3`), DERIVED for the construction: no
+  one-step claim can attribute a harvest reward to the `request` that caused it, so
+  `request` is chosen only as a test of a hypothesis that overpromised at `base`, each
+  such test costs that hypothesis its bid, and a sound hypothesis bids `1/3` there.
+  Hence the number of `request` rounds by time `K` is at most `3 𝒜_K + O(1)`, of density
+  zero (`test_attention_bound_on_investing_actions`).  At the criterion level, a BRIA
+  that mostly follows the investor also exists (estimate `2/3`, test `work`-claims
+  sparsely).
 
-So: on the exact existing fixture the criterion forces the investment to be tried
-whenever the learner keeps returning to `base`, and the auction keeps it; the loss the
-fixture records belongs to a learner that is not a BRIA.  The criterion itself is silent
-on keeping a benefit, and it cannot see a benefit that needs more than one step to reach
-or that must be re-bought: there the failure is exactly temporal credit assignment.
+So: the one-step *criterion* forces testing, not adoption — asymptotic myopia is
+permitted whenever the amendment can be revoked, and forced competence on the sticky
+original is an accident of absorption, not of credit assignment.  The one-step
+*construction* keeps the persistent benefit and fails on multi-step and renewable
+investments.  What removes the weakness at the criterion level is a sound claim about
+the whole investment: at `m = 2` the macro claim `(invest, 1/2)` from `base` has record
+`≥ 0`, so a macro-BRIA must estimate at least `1/2` at `base` and, by no overestimation,
+invest on all but a density-zero set of `base` rounds, on both variants.  That is
+temporal credit assignment at the testing granularity.
 
 **B. Fixed-horizon rescue** (FIX, `B_FixedHorizonRescue`).  `m = 2` on `d = 1` persistent:
 the sound macro-hypothesis for the investing controller promises `1/2 > 1/3` from `base`,

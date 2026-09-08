@@ -49,45 +49,84 @@ class Round:
     refused: int = 0
 
 
+class Enumerated:
+    """A countable hypothesis class `h_1, h_2, …` given by `make(i) -> Hyp`, activated
+    lazily.  The auction simulates the **ever-activated frontier**
+    `s*(k) = max_{j ≤ k} s(j)` of the allowance's current support `s(k)`: a hypothesis
+    activated when `i ≤ s(j)` keeps bidding with its wealth after `s` has dropped below
+    `i`, and receives allowance again whenever `i ≤ s(k)`."""
+    def __init__(self, make):
+        self.make = make
+        self.active = []          # h_1 … h_{s*(k)}
+        self.frontier = 0
+
+    def extend(self, s_k):
+        while self.frontier < s_k:
+            self.frontier += 1
+            self.active.append(self.make(self.frontier))
+        return self.active
+
+
 def run_auction(env, hyps, schedule, allowance, K, weight="duration", start=None,
-                t0=0, gated=True, reset=None):
+                t0=0, gated=True, reset=None, override=None):
     """Run K macro-rounds.  Returns the list of `Round`s; hypotheses are mutated.
 
     `schedule(k)` = block length m_k (k from 1);  `allowance(k, i)` with i the
     hypothesis index from 1;  `reset(state)` optionally maps the state at a block
-    boundary (episodic fixtures)."""
+    boundary (episodic fixtures).  `hyps` is a finite list or an `Enumerated` class,
+    in which case `allowance.support(k)` gives the current support `s(k)` and the
+    bidders are the frontier `s*(k)`.  `override(state) -> (controller, estimate)` or
+    `None`: a round on which the agent acts outside the auction (no auction round is
+    counted, no allowance paid, nothing tested); used for the criterion-level
+    sparse-test agent of `test_final.py`."""
     s = env.start if start is None else start
     t = t0
     rounds = []
     history = []
+    k_auction = 0
     for k in range(1, K + 1):
         m = schedule(k)
         w = Q(m) if weight == "duration" else Q(1)
-        for i, h in enumerate(hyps, 1):
-            h.wealth += allowance(k, i)
+        forced = override(s) if override is not None else None
+        if forced is None:
+            k_auction += 1
+            if isinstance(hyps, Enumerated):
+                active = hyps.extend(allowance.support(k_auction))
+            else:
+                active = hyps
+            for i, h in enumerate(active, 1):
+                h.wealth += allowance(k_auction, i)
+        else:
+            active = hyps.active if isinstance(hyps, Enumerated) else hyps
         ctx = {"state": s, "t": t, "k": k, "m": m, "history": history}
         proposals = []
         bids = []
-        for h in hyps:
+        for h in active:
             ctrl, e = h.propose(dict(ctx, own=h.own))
             e = Q(e)
             assert 0 <= e <= 1
             proposals.append((ctrl, e))
             bids.append(min(e, h.wealth / w))
-        star = max(range(len(hyps)), key=lambda i: (bids[i], -i))
-        alpha_e = bids[star]
-        ctrl, e_star = proposals[star]
+        if forced is None:
+            star = max(range(len(active)), key=lambda i: (bids[i], -i))
+            alpha_e = bids[star]
+            ctrl, e_star = proposals[star]
+        else:
+            star = -1
+            ctrl, alpha_e = forced
+            alpha_e = Q(alpha_e)
         if hasattr(env, "block"):
             G, s2, refused = env.block(s, t, ctrl, m)
             t2 = t + m
         else:
             G, s2, t2, traj, refused = execute(env, s, t, ctrl, m, gated)
-        win = hyps[star]
-        win.wealth += w * (G - alpha_e)
-        win.wins.append(k)
-        win.record += w * (G - e_star)
-        win.own.append((s, m, G))
-        for i, h in enumerate(hyps):
+        if forced is None:
+            win = active[star]
+            win.wealth += w * (G - alpha_e)
+            win.wins.append(k)
+            win.record += w * (G - e_star)
+            win.own.append((s, m, G))
+        for i, h in enumerate(active):
             if proposals[i][1] > alpha_e:
                 h.rejections.append(k)
         rounds.append(Round(k, t, s, m, star, alpha_e, G, tuple(bids),

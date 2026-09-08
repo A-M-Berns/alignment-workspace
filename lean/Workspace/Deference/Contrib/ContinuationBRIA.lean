@@ -31,6 +31,9 @@ average `G k ≥ 0`.  The bid is wealth-bounded: `w k · b k ≤ W k (star k)`.
 * `wealth_ge_of_no_win` — a hypothesis that stops winning keeps all later allowance, so
   under the same condition it eventually bids its full promise: coverage's test-set
   clause.
+* `record_ge_neg_overpromise` — the record is at least minus the tested overpromise, so
+  finite total tested overpromise gives a record bounded below (the hypothesis of
+  continuation-promise competence).
 
 **Gate transparency** (`trajGated_eq_traj_of_admitted`): if every proposal of a
 controller is admitted along its gated trajectory, the gated and ungated trajectories
@@ -238,6 +241,22 @@ theorem record_lt_of_rejected' (e : ℕ → Fin n → ℝ) (hpaid : ∀ k, a.b k
     have := mul_le_mul_of_nonneg_left (he K i) hw.le
     simpa using this
   linarith
+
+/-- The record is bounded below by minus the tested overpromise:
+`Σ_{wins} w (G − e) ≥ −Σ_{wins} w · max (e − G) 0`.  So finite total tested overpromise
+gives a record bounded below, which is the theorem hypothesis of continuation-promise
+competence. -/
+theorem record_ge_neg_overpromise (e : ℕ → Fin n → ℝ) (i : Fin n) (K : ℕ) :
+    a.record e i K ≥ -(∑ k ∈ range K, if i = a.star k then a.w k * max (e k i - a.G k) 0 else 0) := by
+  unfold record
+  rw [← Finset.sum_neg_distrib]
+  refine Finset.sum_le_sum fun k _ => ?_
+  by_cases h : i = a.star k
+  · simp only [h, if_true]
+    have hw := a.w_pos k
+    have : e k (a.star k) - a.G k ≤ max (e k (a.star k) - a.G k) 0 := le_max_left _ _
+    nlinarith
+  · simp [h]
 
 /-- A hypothesis that never wins from `K₀` on keeps every later allowance. -/
 theorem wealth_ge_of_no_win (hf : a.Feasible) (i : Fin n) (K₀ : ℕ)
@@ -448,6 +467,7 @@ end Workspace.Deference.ContinuationBRIA
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.record_lt_of_rejected
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.record_lt_of_rejected'
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.wealth_ge_of_no_win
+#print axioms Workspace.Deference.ContinuationBRIA.Auction.record_ge_neg_overpromise
 #print axioms Workspace.Deference.ContinuationBRIA.trajGated_eq_traj_of_admitted
 #print axioms Workspace.Deference.ContinuationBRIA.regret_decomposition
 #print axioms Workspace.Deference.ContinuationBRIA.regret_le_of_bounds

@@ -29,7 +29,7 @@ its relatives are *theorem hypotheses* on top of the generic type
 ```
 sound on tests          e_{h,k} ≤ G^obs_k on every test
 eventually sound        wrong on finitely many tests, bounded total overpromise
-bounded record          ℓ^h_K bounded below on the learner's test set              — (R), the weakest
+bounded record          inf_K ℓ^h_K > −∞ on the learner's test set               — (BR), the theorem hypothesis
 tight / vanishing slack Σ_k m_k (Ĝ_k(q; H^α) − e_{h,k}) ≤ o(S_K)                    — external, §POLICY_REGRET_FRONTIER
 ```
 

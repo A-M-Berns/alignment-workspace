@@ -1,7 +1,8 @@
 # Dispatch — 2026-09-08 continuation BRIA
 
-Two messages, both verbatim as sent.  The second is the pressure pass dispatched
-against the first's result.
+Three messages, all verbatim as sent.  The second is the pressure pass dispatched
+against the first's result; the third is the final correctness pass dispatched against
+the second's.
 
 ## Message 1
 
@@ -2224,3 +2225,580 @@ The desired answer is:
     which the learner can actually test it.
 
 Pressure until those two sentences are literally true.
+
+---
+
+## Message 3
+
+You are working in `A-M-Berns/alignment-workspace`, on open PR #95:
+
+    Continuation BRIA: leases, the weighted auction, and the policy-regret frontier
+
+Branch:
+
+    round/2026-09-08-continuation-bria
+
+This is a FINAL CORRECTNESS PASS before merge consideration.
+
+Do NOT start a new research round.
+Do NOT broaden the agenda.
+Do NOT redesign the weighted-BRIA construction unless one of the four issues below
+forces it.
+Do NOT merge.
+
+The current core result is promising and should be preserved if correct:
+
+    fixed-horizon continuation options
+        -> ordinary BRIA
+
+    unbounded horizons
+        -> duration-weighted BRIA
+
+    non-dominant schedules
+        -> computable online weighted auction
+
+    continuation-promise competence
+        + promise recognizability
+        + history recoverability
+        -> external policy-level competence.
+
+But there are four residual issues which must be resolved exactly.
+
+======================================================================
+1. REPAIR CONDITION (R): THE CURRENT STATEMENT IS VACUOUS
+======================================================================
+
+Current `GROWING_HORIZON.md` defines:
+
+    (R) for some C,
+        ℓ^h_K ≥ -C
+        for infinitely many rounds K at which α rejects h.
+
+Coverage says:
+
+    either B_h is finite,
+    or ℓ^h_K -> -∞ along K ∈ B_h.
+
+The document then uses (R) to rule out the divergence case and concludes B_h is finite.
+
+But (R), as currently written, already asserts infinitely many rejection rounds.
+So coverage + (R) implies both:
+
+    B_h finite
+    and
+    B_h infinite.
+
+That makes the theorem vacuous.
+
+Repair this from first principles.
+
+The proof only needs a condition which rules out
+
+    ℓ^h_K -> -∞ along rejection rounds.
+
+Possible clean theorem-facing conditions:
+
+A. GLOBAL BOUNDED-RECORD CONDITION
+
+    inf_K ℓ^h_K > -∞.
+
+This is strong, simple, and nonvacuous.
+
+B. REJECTION-CONDITIONAL FORM
+
+    if B_h is infinite, then ℓ^h_K does not tend to -∞ along K ∈ B_h.
+
+This is logically weakest but uglier.
+
+C. AN EQUIVALENT FORM YOU FIND CLEANER.
+
+Pressure which should be canonical.
+
+Strong preference:
+- use a simple sufficient theorem hypothesis if the maximally weak form adds little;
+- do not call something "the weakest exact condition" unless it really is.
+
+Rebuild the implication hierarchy correctly:
+
+    sound on every test
+      ->
+    eventually sound / finite total tested overpromise
+      ->
+    record bounded below
+      ->
+    continuation-promise competence.
+
+Check carefully whether:
+- finitely many wrong tests is enough;
+- finite total weighted overpromise is enough;
+- bounded-below record is enough;
+- sublinear but divergent overpromise is still insufficient.
+
+Preserve the existing negative fixture if correct.
+
+Repair everywhere:
+- GROWING_HORIZON.md
+- WEIGHTED_BRIA.md
+- PRESSURE_PASS.md
+- REPORT.md
+- PR body
+- PRIORITIES item 86
+- COUNTERMODELS.md
+- FOR_HUMANS.md if affected.
+
+The final theorem should be nonvacuous and literally true.
+
+======================================================================
+2. REPAIR THE ONE-STEP PERSISTENT-AMENDMENT CLAIM:
+   CRITERION VS CONSTRUCTION VS FIXTURE
+======================================================================
+
+The current pressure pass says:
+
+    a BRIA cannot remain at `base` on a set of positive density.
+
+But elsewhere the same branch says the BRIA criterion still permits a myopic learner
+which:
+- stays at `base` almost all the time;
+- rejects the request hypothesis almost all the time;
+- tests it on a sparse infinite set;
+- accumulates record -> -∞ on those tests;
+- returns to `base` after each excursion.
+
+These appear incompatible.
+
+Re-analyze the d=1 persistent fixture from the BRIA criterion itself.
+
+Let:
+
+    h = (request, 1)
+
+at base, with request producing an immediate low reward and moving to a persistent
+benefit state.
+
+Ask exactly what coverage requires.
+
+Important possibility:
+
+    h may be rejected on a positive-density set
+    while being tested only on a sparse infinite set,
+    provided the record on those sparse tests tends to -∞.
+
+If that is true, then the criterion does NOT force:
+- positive-density investment;
+- permanent adoption of the benefit state;
+- eventual departure from base.
+
+It only rules out NEVER testing the outpromising hypothesis.
+
+Separate three registers cleanly:
+
+A. BRIA CRITERION
+
+What every BRIA must do.
+
+B. PUBLISHED AUCTION CONSTRUCTION
+
+What the specific wealth auction does.
+
+C. EXACT FIXTURE
+
+What the current simulation does for the chosen ecology and allowance.
+
+Strong candidate correction:
+
+    - the old greedy argmax is not a BRIA because it never tests the outpromising
+      request hypothesis;
+    - the BRIA criterion nevertheless permits asymptotically myopic behavior via
+      sparse losing tests;
+    - the published auction happens to invest and keep the persistent benefit on
+      the one-step fixture;
+    - multi-step / renewable fixtures show failure of the particular auction's
+      temporal credit assignment more robustly.
+
+If this is right, repair every sentence that currently says:
+
+    "the genuine failure needs a multi-step or renewable investment"
+
+to distinguish:
+
+    criterion-level insufficiency
+    from
+    construction-level insufficiency.
+
+Add an exact fixture implementing the sparse-test myopic BRIA if practical.
+If not, prove its existence carefully enough that it is not merely asserted.
+
+This correction matters a lot conceptually:
+the one-step BRIA criterion itself may already be too weak for dynamic competence,
+even though the published auction behaves well on one persistent fixture.
+
+======================================================================
+3. REPAIR COMPUTABILITY OF THE PREFIX CONSTRUCTOR:
+   ALLOWANCE SUPPORT IS NOT THE ACTIVE BIDDER SET
+======================================================================
+
+Current online constructor:
+
+    s(k) = floor sqrt(S_k / M_k)
+
+and allowance is given to:
+
+    i <= s(k).
+
+The document says monotonicity of s is unnecessary and therefore only s(k)
+hypotheses need to be simulated at round k.
+
+But s(k) need not be monotone.
+
+A hypothesis i may:
+- receive allowance earlier when i <= s(j);
+- retain positive wealth;
+- later have i > s(k).
+
+It is still a bidder. It cannot be dropped from the auction merely because it receives
+zero current allowance.
+
+Repair this by separating:
+
+    current allowance support:
+        s(k)
+
+from
+
+    ever-activated bidder frontier:
+        s*(k) := max_{j<=k} s(j).
+
+Then:
+- allocate allowance only to i <= s(k);
+- simulate/bid every previously activated hypothesis i <= s*(k);
+- keep their wealth even when outside current allowance support.
+
+Check whether this is sufficient.
+
+Then repair:
+- the computability theorem;
+- runtime bound;
+- Python implementation if it currently drops previously active hypotheses;
+- any fixture depending on current support;
+- PR prose.
+
+Expected runtime shape:
+
+    O(s*(k) g(k) + m_k * execution_cost)
+
+or the exact version implied by the source paper's enumeration model.
+
+The subsidy proof should remain based on s(k), not s*(k), because only current
+allowance support costs subsidy.
+
+Pressure whether s*(k) remains finite and computable at each k:
+it obviously should, but state the proof.
+
+Also inspect the Python implementation of `prefix_allowance` and the auction driver.
+The current test implementation appears to receive a fixed finite list of hypotheses,
+which may conceal this issue.
+
+The theorem is about the c.e. infinite class, so the proof must explicitly explain
+how activation and simulation work there.
+
+======================================================================
+4. REPAIR RECOVERABILITY LANGUAGE:
+   THE REAL DISTINCTION IS NOT REVERSIBLE VS IRREVERSIBLE
+======================================================================
+
+Current corrigibility prose sometimes says:
+
+    an irreversible amendment has no finite catch-up cost.
+
+But the round's own persistent amendment can be irreversible in the sense that:
+
+    base -> expanded
+
+has no path back,
+
+while still having finite catch-up cost:
+if π amended earlier and α did not, α can later make the SAME amendment and reach
+the same/equivalent expanded state at cost d.
+
+So "irreversible" is not the obstruction.
+
+The genuine obstruction in the branch example is closer to:
+
+    mutually exclusive / foreclosing branch choices
+
+where after α chooses A, the state reachable by π choosing B cannot later be reached
+or matched in value.
+
+Find the right theorem-facing concept.
+
+Candidates:
+- bounded catch-up;
+- joinability;
+- recoverable divergence;
+- bounded synchronization cost;
+- value-equivalent catch-up.
+
+Try to define the weakest object actually consumed by SHIFT.
+
+For example:
+
+    CatchUp_d(H^α, H^π)
+
+if from the learner's history there exists a legitimate continuation which, within
+cost d, reaches a state whose future π-value differs from π's own state by at most ε.
+
+Or a simpler direct value statement if that is all the theorem needs.
+
+The key conceptual distinction should become:
+
+    irreversible but joinable / catch-up-able:
+        fine for regret;
+
+    foreclosing / mutually exclusive:
+        history shift may remain linear.
+
+Repair:
+- POLICY_REGRET_FRONTIER.md
+- CORRIGIBILITY_COMPOSITION.md
+- PRESSURE_PASS.md
+- PRIORITIES item 86
+- PR body.
+
+Do not overbuild a new theory here.
+The main point is to stop canonizing the wrong binary distinction.
+
+======================================================================
+5. RECHECK THE THREE-BRIDGE THEOREM AFTER THESE REPAIRS
+======================================================================
+
+The desired mature decomposition remains:
+
+    Regret
+      =
+    LEARN
+      +
+    SLACK
+      +
+    SHIFT.
+
+Where:
+
+    LEARN
+        is controlled by continuation-BRIA under the corrected nonvacuous
+        record condition;
+
+    SLACK
+        is performance recognizability / near-tight claim;
+
+    SHIFT
+        is history recoverability / bounded catch-up / joinability.
+
+Re-state the theorem after all repairs.
+
+The clean class should look roughly like:
+
+    Π_rec,prom
+      =
+    {
+      legitimate π :
+        there is a covered continuation hypothesis h_π
+        whose test record satisfies the nonvacuous competence condition,
+        SLACK_π <= o(T),
+        SHIFT_π <= o(T)
+    }.
+
+Do not quantify over all Π_leg.
+
+The irreversible-branch / foreclosure fixture should remain the negative boundary.
+
+======================================================================
+6. RECHECK THE NON-DOMINANCE EXISTENCE THEOREM, BUT DO NOT REOPEN IT
+   WITHOUT CAUSE
+======================================================================
+
+The pressure pass replaced the broken modulus argument with the online prefix
+constructor:
+
+    s(k) = floor sqrt(S_k / M_k)
+    a_k = ΔM_k + 1/k.
+
+The current claimed subsidy bound is:
+
+    𝒜_K
+      <=
+    2 sqrt(S_K M_K)
+      +
+    sqrt(S_K)(1 + log K).
+
+Under M_K/S_K -> 0 this is o(S_K).
+
+This appears to repair the previous effectivity gap.
+
+Do one final audit only for interactions with §3's active-set correction.
+
+Check:
+
+- allowance existence still iff non-dominance;
+- activation frontier does not increase subsidy;
+- capital adequacy still holds for each fixed hypothesis;
+- a previously activated hypothesis that stops receiving allowance temporarily
+  does not break the coverage proof;
+- eventual activation of every fixed index follows from s(k) -> infinity;
+- the necessity theorem's rational threshold argument remains correctly typed.
+
+Do not redesign this theorem if these checks pass.
+
+======================================================================
+7. TESTS / EXACT WITNESSES
+======================================================================
+
+Add or repair exact tests for:
+
+A. CONDITION-R VACUITY
+   Construct a covered hypothesis that is eventually never rejected.
+   Verify the old (R) fails despite soundness.
+   Verify the repaired condition succeeds.
+
+B. SPARSE-TEST MYOPIC BRIA
+   On the d=1 persistent amendment, demonstrate or formally specify a BRIA which:
+   - is at base on density tending to 1;
+   - rejects request on most base rounds;
+   - tests request on sparse infinite rounds;
+   - its request-hypothesis record tends to -∞;
+   - satisfies no overestimation;
+   - remains asymptotically myopic.
+   This is the key criterion-level witness.
+
+C. AUCTION CONTRAST
+   Published auction on the same fixture invests and keeps the benefit.
+   Show criterion != construction behavior.
+
+D. NONMONOTONE SUPPORT
+   Give a schedule where s(k) decreases.
+   Activate some hypothesis i at an earlier round with i <= s(j),
+   later have i > s(k),
+   give it positive remaining wealth,
+   verify it still participates under the corrected active-frontier implementation.
+
+E. CATCH-UP WITHOUT REVERSIBILITY
+   base -> expanded is irreversible,
+   but α can later take the same amendment and synchronize with π at bounded cost.
+   SHIFT per block is bounded.
+
+F. FORECLOSURE
+   A/B irreversible mutually exclusive branch.
+   No bounded catch-up; SHIFT linear.
+
+======================================================================
+8. LEAN TARGETS
+======================================================================
+
+Keep Lean small.
+
+Useful only if natural:
+
+- corrected regret theorem unchanged;
+- any finite algebra needed for the record-condition implication;
+- monotone ever-active frontier fact, if useful;
+- no need to formalize BRIA criterion itself;
+- no need to formalize density-zero sparse testing unless trivial.
+
+The main work here is correctness of theorem statements and quantifiers.
+
+======================================================================
+9. DOCUMENT / PR AUDIT
+======================================================================
+
+Repair at minimum:
+
+- PRESSURE_PASS.md
+- REPORT.md
+- FIXED_HORIZON.md
+- GROWING_HORIZON.md
+- WEIGHTED_BRIA.md
+- POLICY_REGRET_FRONTIER.md
+- CORRIGIBILITY_COMPOSITION.md
+- COUNTERMODELS.md
+- FOR_HUMANS.md
+- PRIORITIES.md item 86
+- PR body
+- src/bria.py if active-set logic is implicated
+- tests.
+
+Search the whole PR for phrases like:
+
+    "positive density"
+    "infinitely often"
+    "(R)"
+    "irreversible amendment"
+    "reversible"
+    "only s(k) hypotheses"
+    "genuine failure needs"
+    "every BRIA"
+
+and audit each occurrence.
+
+======================================================================
+10. FINAL VERDICT
+======================================================================
+
+Choose exactly one.
+
+Preferred if all four repairs succeed:
+
+    CONTINUATION-BRIA-READY-AFTER-FINAL-CORRECTNESS-PASS
+
+Other examples:
+
+    CORE-SURVIVES-CRITERION-WEAKNESS-RECHARACTERIZED
+
+    NOT-READY-RECORD-CONDITION-BLOCKS-COMPETENCE-THEOREM
+
+    NOT-READY-ACTIVE-SET-BREAKS-COMPUTABLE-CONSTRUCTION
+
+READY requires all four issues to be explicitly repaired.
+
+======================================================================
+11. FINAL QUESTIONS TO ANSWER
+======================================================================
+
+At the end, answer these literally:
+
+1. What does the BRIA CRITERION itself force about long-term plans?
+
+2. What additional behavior comes only from the WEALTH AUCTION construction?
+
+3. What exactly is the theorem hypothesis replacing the broken condition (R)?
+
+4. For which schedules does the computable weighted learner exist, with the
+   corrected active-set semantics?
+
+5. What exactly does continuation-BRIA control?
+
+6. What exactly does promise recognizability add?
+
+7. What exactly does history recoverability add?
+
+8. What structural property distinguishes:
+       "I did not amend yet but can still catch up"
+   from
+       "I chose a branch that permanently foreclosed the comparator's branch"?
+
+The final conceptual picture should be:
+
+    continuation-BRIA
+        = bounded learning against empirically accountable continuation claims
+          on histories actually reached;
+
+    performance recognizability
+        = those claims are close enough to actual continuation value;
+
+    recoverability / joinability
+        = the learner can still compare meaningfully with the policy's own
+          counterfactual history;
+
+    policy competence
+        = all three.
+
+Do not collapse these.
