@@ -30,7 +30,10 @@ covering `H` is computable in `O(g(t) q(t))`.  The construction:
 - wealth `w_0(i) = 0`; winner `i*_t ∈ argmax_i min(h^e_{i,t}, w_t(i))`, arbitrary ties;
   `α_t = (h^c_{i*,t}, e*_t)` with `e*_t` the maximal wealth-bounded bid;
 - update: non-winners `w_{t+1}(i) = w_t(i) + A(t, i)`; the winner additionally
-  `+ r_t − e*_t` — it pays the *bid*, not the promise;
+  `+ r_t − e*_t` — it pays the *bid*, not the promise.  **Timing:** the bid at `t` is
+  bounded by `w_t(i)`, which contains `A(1..t−1, i)`; `A(t, i)` is credited *after* round
+  `t` (settlement timing).  `A` is a fixed function of `(n, i)`; nothing in the
+  construction lets it read the round's decision problem;
 - no overestimation: `Σ_{i ∈ B⁺_T} w_T(i) = Σ_i Σ_{n≤T} A(n,i) + Σ_{t≤T} (r_t − α^e_t)`
   with all wealths `≥ 0`, so `L_T/T ≤ (1/T) Σ_{n≤T} Σ_i A(n,i) → 0`;
 - coverage of `h_i` outpromising infinitely often, with `M_i` = its winning rounds:
@@ -85,6 +88,10 @@ the alternatives are estimates (the paper's) or independent randomization.
 - No combinatorial-auction construction; footnote 2 is a remark.
 - No claim that a BRIA's *behaviour* is determined by the criterion beyond the limit
   frequencies its theorems state; Theorem 1's auction is one BRIA.
+- Definition 5's record sums tests `t ≤ T` (inclusive); the proof of Theorem 1 part (C)
+  sums `t < T`.  For unit weights the two differ by at most 1 and the proof is
+  unaffected; for block weights they differ by `w_T`, which is why the weighted coverage
+  condition carries a factor 2 (`WEIGHTED_BRIA.md` §3).
 - The paper's "myopic" is about the *criterion*, not a property of the auction: the auction
   tests every outpromising hypothesis, including ones whose recommendation changes future
   `DP_t`.  What the criterion does not require is any credit for a later reward.
@@ -98,12 +105,17 @@ the alternatives are estimates (the paper's) or independent randomization.
 | testing `h` at `t` = choosing `h^c_t` | testing `h` at `k` = executing `q_{h,k}` through the gate for the whole block: the **execution lease** |
 | `L_T/T ≤ 0` | fixed horizon: unchanged; variable horizon: `Σ m_k (α^e_k − G_k) / Σ m_k ≤ 0` |
 | record `Σ_M (r_t − h^e_t)` | fixed: unchanged; variable: `Σ_{M} m_k (G_k − h^e_k)` |
-| wealth in reward units, bid `min(h^e, w)` | wealth in total-reward units, per-step bid `min(e, W / m_k)`, winner pays `m_k · bid`, receives `m_k · G_k` |
-| `Σ_n A(n,i) = ∞` | `A_i(k) − m_k → ∞` (capital adequacy); witness the prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k` |
+| wealth in reward units, bid `min(h^e, w_t)` from the carried wealth, allowance credited after the round | wealth in total-reward units, per-step bid `min(e, B_k / m_k)` from the **opening capital** `B_k = W_k + A(k,i)` — the round's subsidy is credited at the opening, after `m_k` is revealed and before bids; winner pays `m_k · bid`, receives `m_k · G_k`.  The same auction as the paper's under the reindexed allowance `A'(k) = A(k+1)` with initial endowment `A(1,i)`; the modification is that the subsidy funding block `k` may read `m_k` |
+| `Σ_n A(n,i) = ∞` | `A_i(k) − 2 m_k → ∞` (capital adequacy, opening timing, inclusive record); witness the prefix rule `s(k) = ⌊√(S_k/M_k)⌋`, `A(k,i) = 2ΔM_k + 1/k`.  Under the paper's own timing no prefix-online rule serves every non-dominant schedule (`WEIGHTED_BRIA.md` §4.1 III′) |
 | `(1/N) Σ_{n≤N} Σ_i A(n,i) → 0` | `Σ_{k≤K} Σ_i A(k,i) / Σ_{k≤K} m_k → 0` (weaker per macro-round) |
 | Theorem 3 | Fixed-Horizon and continuation-promise competence (`FIXED_HORIZON.md` §3, `GROWING_HORIZON.md` §1), under condition (BR) — the record bounded below, which rules out Definition 6's divergence clause — the hypothesis the paper's own proof uses in the form `record ≥ 0` |
 | Appendix D | `CONTINUATION_HYPOTHESES.md` §3, fixtures G/H |
 
 The mapping is a typing of the same criterion; the paper's theorems are cited through it
-and not re-proved, except where the round's weights change the algebra, and then the
-weighted algebra is proved (Lean `ContinuationBRIA.lean`).
+and not re-proved, except where the round's weights change the algebra or the timing,
+and then the weighted algebra is proved (Lean `ContinuationBRIA.lean`, with the source
+timing as `Feasible` and the weighted timing as `FeasibleOpening`).  Three registers, kept
+apart: the fixed-horizon **criterion** reduction is the paper verbatim (Definitions 1–7,
+Theorems 1–4); the paper's **construction** has settlement timing with a schedule-blind
+allowance; the **weighted construction** has opening timing with a prefix-reading
+subsidy, a modification the round makes and names.

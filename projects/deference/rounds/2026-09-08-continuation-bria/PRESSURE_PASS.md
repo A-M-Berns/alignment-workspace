@@ -1,20 +1,21 @@
-# Pressure pass (2026-09-08, second dispatch on PR #95) and final correctness pass (third dispatch)
+# Pressure pass (2026-09-08, second dispatch on PR #95), final correctness pass (third) and allowance-timing audit (fourth)
 
-Verdict after the pressure pass was `CONTINUATION-BRIA-READY-NONDOMINANCE-IFF-REPAIRED`;
-the final correctness pass (§12) supersedes it with
-**CONTINUATION-BRIA-READY-AFTER-FINAL-CORRECTNESS-PASS.**  Every document marked
-*[repaired by the pressure pass]* or *[final correctness pass]* carries its corrections in
-place; `test_pressure.py` (16 fixtures) and `test_final.py` (9) are the evidence added.
-Sections 1–11 are the pressure pass's register, corrected in place where §12 found them
-wrong.
+Verdicts in order: `CONTINUATION-BRIA-READY-NONDOMINANCE-IFF-REPAIRED` (second),
+`CONTINUATION-BRIA-READY-AFTER-FINAL-CORRECTNESS-PASS` (third), and, after the timing
+audit of §13, **CONTINUATION-BRIA-READY-TIMING-ALIGNED.**  Every document marked
+*[repaired by the pressure pass]*, *[final correctness pass]* or *[timing aligned in the
+fourth pass]* carries its corrections in place; `test_pressure.py` (16 fixtures),
+`test_final.py` (9) and `test_timing.py` (5) are the evidence added.  Sections 1–12 are
+the earlier registers, corrected in place where a later pass found them wrong.
 
 ## 1. Strongest true existence theorem
 
-For a declared schedule `(m_k)`, `S_K = Σ_{k≤K} m_k`, `M_K = max_{k≤K} m_k`, the following
-are equivalent: `m_K/S_K → 0`; allowances with capital adequacy `A_i(K) − m_K → ∞` (every
-`i`) and negligible subsidy `𝒜_K/S_K → 0` exist; the prefix constructor
-`s(k) = ⌊√(S_k/M_k)⌋`, `a_k = (M_k − M_{k−1}) + 1/k` on `i ≤ s(k)` makes the weighted
-auction a weighted BRIA covering every c.e. class of e.c. continuation hypotheses.  If
+For a schedule `(m_k)` revealed block by block, `S_K = Σ_{k≤K} m_k`, `M_K = max_{k≤K} m_k`,
+the following are equivalent: `m_K/S_K → 0`; opening subsidies with capital adequacy
+`A_i(K) − 2 m_K → ∞` (every `i`) and negligible subsidy `𝒜_K/S_K → 0` exist; the prefix
+rule `s(k) = ⌊√(S_k/M_k)⌋`, `A(k,i) = 2(M_k − M_{k−1}) + 1/k` on `i ≤ s(k)`, credited at
+the opening of block `k`, makes the weighted auction a weighted BRIA covering every c.e.
+class of e.c. continuation hypotheses.  *[Coefficient and timing from §13.]*  If
 `limsup m_K/S_K > 0`, some rational `q` has `{K : m_K ≥ q S_K}` infinite and the two e.c.
 hypotheses `(good, γ)`, `(liar, 1 on that set)` in the constant-reward environment defeat
 every estimating agent.  (`WEIGHTED_BRIA.md` §4.1; LEAN `sum_support_jump_le`,
@@ -23,17 +24,19 @@ every estimating agent.  (`WEIGHTED_BRIA.md` §4.1; LEAN `sum_support_jump_le`,
 
 ## 2. Exact effectivity assumptions
 
-Sufficiency: **none beyond mathematical non-dominance.**  The constructor reads only the
-observed prefix `(S_k, M_k)`; the bound `𝒜_K ≤ 2√(S_K M_K) + √S_K (1 + ln K)` is proved
-from `Σ_k (M_k − M_{k−1})/√M_k ≤ 2√M_K`; no modulus, majorant, or code for the schedule
-is used.  The first pass's `ρ̄`-majorant argument is withdrawn.  The learner is computable
+Sufficiency: **none beyond mathematical non-dominance**, given opening timing.  The rule
+reads only the prefix `(S_k, M_k)` once `m_k` is revealed; the bound
+`𝒜_K ≤ 4√(S_K M_K) + √S_K (1 + ln K)` is proved from `Σ_k (M_k − M_{k−1})/√M_k ≤ 2√M_K`; no
+modulus, majorant, code for the schedule, or information about `m_{k+1}, …` is used.
+Under the source paper's settlement timing no prefix-online rule works (§13).  The first pass's `ρ̄`-majorant argument is withdrawn.  The learner is computable
 uniformly in the schedule when the schedule is computable, and runs relative to an
 online presentation otherwise.  Necessity: existential in the rational threshold `q`
 (the limsup is not computable from a code); given `q`, uniform; the adversarial
 hypotheses are e.c. whenever the schedule is; criterion-level, for any class containing
 those two hypotheses.  Layers I (criterion impossibility), II (auction sufficiency under
-(i′)+(ii)) and III (allowance existence iff non-dominance, with the uniform witness) are
-stated separately and the "iff" is their conjunction with the quantifiers above.
+(i″)+(ii)) and III (allowance existence iff non-dominance, with the uniform witness) are
+stated separately and the "iff" is their conjunction with the quantifiers above; III′
+is the settlement-timing negative.
 
 ## 3. Strongest continuation-BRIA theorem
 
@@ -218,3 +221,96 @@ continuation reaches, within `d` steps, a state value-equivalent for `π` to `π
    can have; "chose a branch that foreclosed the comparator's" means no legitimate
    continuation reaches or matches that state at any cost, so the per-block shift is a
    fixed fraction.
+
+## 13. Allowance-timing audit (fourth dispatch)
+
+1. **Source paper's timing.**  Theorem 1: the bid at `t` is `min(h^e_{i,t}, w_t(i))` with
+   `w_t` the wealth carried in; `w_{t+1}(i) = w_t(i) + A(t,i) [+ r_t − e*_t]`.  The
+   allowance of round `t` is credited *after* round `t`, and `A` is a fixed function of
+   `(t, i)`.
+2. **Old Lean timing.**  The same: `Feasible` bounds `w_k b_k` by `W k`, and `A k` enters
+   `W (k+1)`.  Source-faithful; it was not the construction Python ran.
+3. **Old Python timing.**  `h.wealth += A(k,i)` before bids: the round's allowance funds
+   the round's bid.  Opening (prefunded) timing.
+4. **Why it matters.**  The prefix rule's `ΔM_k = M_k − M_{k−1}` term is the capital meant
+   for a block just revealed as a new maximum.  Under settlement timing it arrives one
+   block late.  On a non-dominant schedule whose spikes dwarf every earlier maximum, a
+   hypothesis that promises only at spikes carries at most the previous maximum plus a
+   harmonic sum into each spike, bids a vanishing fraction of the block, loses to any
+   competitor with a positive floor, and is never tested while outpromising infinitely
+   often: coverage fails.  FIX `test_timing.SurpriseSpike`: on the fixture-A schedule the
+   spike liar bids at most `0.58` at every spike under settlement timing and wins none;
+   under opening timing with coefficient 2 it bids 1 at spikes 64, 256, 1024 and is tested
+   at each.  The general impossibility, for every prefix-online rule with negligible
+   subsidy under settlement timing, is `WEIGHTED_BRIA.md` §4.1 III′ (an adversarial
+   schedule built stage by stage against the rule).
+5. **Chosen weighted timing: opening subsidy.**  `m_k` is revealed; hypotheses are
+   activated; `A(k,i)` is credited to `i ≤ s(k)`; hypotheses emit claims; bids are
+   bounded by the opening capital; winner; execution; observation; settlement.  Nothing
+   about `m_{k+1}, …` is needed: the headline "uniform online" theorem means exactly
+   that the rule reads `(S_k, M_k)` after `m_k` is revealed and before bids.
+6. **Exact wealth recursion.**  `W_1 = 0`; `B_k(i) = W_k(i) + A(k,i)`;
+   `b_{i,k} = min(e_{i,k}, B_k(i)/w_k)`; `W_{k+1}(i) = B_k(i) + 1[i = i*_k] w_k (G_k − b*_k)`.
+   As a sequence of bids it is the paper's auction under `A'(k) = A(k+1)` with initial
+   endowment `A(1,i)` (FIX `test_timing.Reindexing`, bid-for-bid equality); the
+   modification is that the subsidy funding block `k` may read `m_k`.  In Lean the two
+   timings share `Auction.W` and differ in `Feasible` versus `FeasibleOpening`.
+7. **Exact capital-adequacy condition.**  `A_i(K) − 2 w_K → ∞` with `A_i(K)` the subsidy
+   through `K` inclusive.  Derivation: at a rejection `K`, `B_K(i) < w_K e_{i,K}` and
+   `B_K(i) = A_i(K) + chargedRecord_i(K−1)`, so the record over tests before `K` is
+   `< w_K e − A_i(K)` (LEAN `record_lt_of_rejected_opening`); the criterion's inclusive
+   record may add a wealth-constrained win at `K` itself, at most `w_K`, giving
+   `ℓ_K < 2 w_K − A_i(K)` (LEAN `record_succ_lt_of_rejected_opening`).  Constant 2 is
+   forced by Definition 5's inclusive sum; the paper's strict proof needs 1.  The
+   earlier `A_i(K) − m_K → ∞` is replaced.
+8. **Corrected prefix theorem.**  Rule `A(k,i) = 2ΔM_k + 1/k` on `i ≤ ⌊√(S_k/M_k)⌋`,
+   credited at the opening: `A_i(K) − 2m_K ≥ −2M_{k_i−1} + ln(K/k_i) → ∞`, and
+   `𝒜_K ≤ 4√(S_K M_K) + √S_K(1 + ln K) = o(S_K)` (LEAN `sum_support_jump_le` for the
+   jump sum).  FIX `test_pressure.A`/`B` retuned, `test_timing.Bounds`.
+9. **Non-dominance remains iff.**  Only-if is unchanged for any fixed coefficient
+   (`𝒜_K ≥ A_1(K) ≥ 2m_K − C`); if is the corrected rule.  Layer I (criterion
+   impossibility under dominance) is timing-independent.  III′ adds: under settlement
+   timing the "if" direction has no prefix-online witness.
+10. **Source-fidelity consequences.**  Three registers: the fixed-horizon *criterion*
+    reduction is PAPER verbatim; the paper's *construction* has settlement timing with a
+    schedule-blind allowance; the *weighted construction* is DERIVED — the paper's
+    auction with opening subsidy, a small modification forced by online variable
+    liabilities.  For `m ≡ 1` the opening-timed auction is literally the paper's auction
+    after reindexing the allowance and adding an initial endowment; it is not "the paper's
+    construction verbatim", and the phrase is withdrawn wherever it stood for the Python
+    auction.  The attention bound now counts the current round's opening subsidy: no
+    experimental capital credited before a test escapes the accounting (LEAN
+    `chargedRecord_ge_neg_allowance`).
+
+**The nine answers.**
+
+1. *The paper's auction or a modified one?*  Modified: the paper's auction with the
+   round's subsidy credited at the opening of the round it funds, and with the subsidy
+   allowed to read the block length just revealed.  Bid-for-bid it is the paper's auction
+   under a reindexed allowance with an initial endowment.
+2. *When does a hypothesis receive `A(k,i)`?*  At the opening of round `k`, after `m_k` is
+   revealed and before bids, if `i ≤ s(k)`.
+3. *Does the current `ΔM_k` finance block `k`?*  Yes; that is what opening timing is for.
+4. *What wealth forms the bid?*  The opening capital `B_k(i) = W_k(i) + A(k,i)`.
+5. *Exact cumulative-capital condition for coverage.*  `A_i(K) − 2 w_K → ∞` for every
+   `i`, `A_i` through `K` inclusive (constant 1 suffices for the paper's strict record).
+6. *Does the prefix rule work for every non-dominant schedule?*  Yes, with coefficient 2
+   under opening timing; no prefix-online rule works under settlement timing.
+7. *Is one-step lookahead needed?*  Under settlement timing, yes — the subsidy credited
+   after round `k` must read `m_{k+1}`; that is opening timing with a shifted index.
+   Under opening timing, no.
+8. *Is non-dominance the sharp criterion-level boundary?*  Yes: layer I is timing-
+   independent, and layer III's iff holds with the corrected coefficient.
+9. *PAPER / DERIVED / LEAN / FIX after this repair.*  PAPER: Definitions 1–7, Lemma 6,
+   Theorems 1–4, Appendices C–D, and the fixed-horizon reduction as their instance.
+   DERIVED: the weighted criterion, the opening-timed auction and its coverage under
+   (i″)+(ii), the existence theorem I/II/III/III′, the sparse-test agent's BRIA-ness,
+   Theorems 1–3 of `GROWING_HORIZON.md`, the three-bridge theorem.  LEAN: block
+   accounting, the timing-independent wealth identities, both timings' feasibility
+   consequences, the rejection and attention bounds, the record lower bound, gate
+   transparency, the regret decomposition, the dominance inequality, the jump-sum
+   bound.  FIX: 67 exact fixtures across `test_fixed_horizon`, `test_lease`,
+   `test_weighted`, `test_frontier`, `test_pressure`, `test_final`, `test_timing`.
+   EXT: any claim that a gate or a return corresponds to actual corrigible execution.
+   OPEN: weighted Theorem 4, infinite-horizon discounted claims, certifying `SHIFT`
+   from realized data, the construction's tolerance of slowly diverging records.

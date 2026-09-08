@@ -1,6 +1,6 @@
 # Countermodels and fixtures A–O
 
-All exact (`fractions.Fraction`), run by `tests/run.py` (62 tests, under three seconds).
+All exact (`fractions.Fraction`), run by `tests/run.py` (67 tests, under three seconds).
 Environments in `src/envs.py`; the auction in `src/bria.py`.  Rewards of the
 decision-theory-bill process divided by 3: work `1/3`, invest `0`, benefit `1`.
 
@@ -36,8 +36,8 @@ cases, and is *false* for the construction on the existing one-step fixture.
 
 | fixture | test | what it shows | class |
 |---|---|---|---|
-| **A** effectivity gap | `A_EffectivityGap` | The prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k` on a spiky non-dominant schedule (spikes at `4^j` of share `1/(j+1)`) and on log / constant / linear ones: total allowance within `2√(S_K M_K) + √S_K(1 + ln K)`, share of time decreasing, `A_1(K) − m_K` increasing; the liar tested 68 times in 1024 rounds with weighted overestimation below `0.06`. | FIX; LEAN `sum_support_jump_le` |
-| **B** explicit effective schedule | `B_ExplicitSchedule` | `m_k = ⌊log₂k⌋+1` under the prefix constructor: liar tested at 32 and 1024, overestimation below `1/500`, `s(K)² M_K ≤ S_K`. | FIX |
+| **A** effectivity gap | `A_EffectivityGap` | The prefix rule `s(k) = ⌊√(S_k/M_k)⌋`, `A(k,i) = 2ΔM_k + 1/k` (opening timing) on a spiky non-dominant schedule (spikes at `4^j` of share `1/(j+1)`) and on log / constant / linear ones: total subsidy within `4√(S_K M_K) + √S_K(1 + ln K)`, share of time decreasing, `A_1(K) − 2m_K` increasing; the liar tested repeatedly (record below −300) with weighted overestimation within `𝒜_K/S_K`. | FIX; LEAN `sum_support_jump_le` |
+| **B** explicit effective schedule | `B_ExplicitSchedule` | `m_k = ⌊log₂k⌋+1` under the prefix rule: liar tested at 15, 32 and 240, overestimation below `1/500`, `s(K)² M_K ≤ S_K`. | FIX |
 | **C** criterion vs construction | `C_CriterionVersusConstruction` | The auction on the revocable one-step amendment requests twice (an artefact of wealths) and stays; the arithmetic `α^e = 1` on `base` rounds of density `p` costs overestimation `2p/3`.  *The conclusion drawn from it in the pressure pass — that positive `base` density is forbidden — was wrong; see `test_final.B`.* | FIX |
 | **D** promise vs value | `D_PromiseVersusValue` | Controller worth 1, promise 0: never followed, learner obtains `1/3`, `LEARN ≤ 0` trivially. | FIX |
 | **E** vanishing slack | `E_VanishingSlack` | Same controller, promise `1 − 1/(k+1)`: followed from the first round, tail average exactly 1, slack `o(S_K)`. | FIX |
@@ -61,3 +61,13 @@ cases, and is *false* for the construction on the existing one-step fixture.
 | **D** non-monotone support | `D_NonmonotoneSupport` | Spike `m_16 = 15` drops `s` from 3 to 1; hypothesis 3, activated at round 9, gets no allowance at 16 and still bids and wins it; the frontier is monotone and finite. | FIX |
 | **E** catch-up without reversibility | `E_CatchUpWithoutReversibility` | Sticky amendment: no path back, per-block shift exactly `d` for all `m ≥ d`. | FIX |
 | **F** foreclosure | `F_Foreclosure` | Mutually exclusive branches: only `go` from either state; shift `(2/3) m`. | FIX |
+
+## Allowance-timing fixtures (`test_timing.py`, 5 tests)
+
+| fixture | test | what it shows | class |
+|---|---|---|---|
+| surprise spike, settlement timing | `SurpriseSpike.test_settlement_timing_never_tests_the_spike_liar` | Fixture-A schedule; a liar promising 1 only at the spikes `4^j`; under the paper's timing (subsidy credited after the round) it bids at most `0.58` at every spike, is rejected at every spike, tested at none, record 0 — coverage fails, under either coefficient. | FIX (negative) |
+| surprise spike, opening timing | `SurpriseSpike.test_opening_timing_finances_the_current_spike` | Same schedule and liar; coefficient 2: bids 1 at spikes 64, 256, 1024, wins each, record −320.  Coefficient 1: wins only at 256 (after a loss `ΔM_k` alone is short of `m_k`). | FIX; LEAN `record_succ_lt_of_rejected_opening` |
+| reindexing | `Reindexing` | Opening timing with `A` equals settlement timing with `A'(k) = A(k+1)` and initial wealth `A(1,i)`: every bid, winner and estimate identical over 300 rounds. | FIX |
+| bounds | `Bounds.test_overestimation_and_attention_with_opening_subsidy` | Weighted overestimation `≤ 𝒜_K/S_K` and per-hypothesis shortfall `≤ A_i(K)`, both with the subsidy through `K` inclusive. | FIX; LEAN `overestimation_le_allowance_opening`, `chargedRecord_ge_neg_allowance` |
+| capital adequacy | `Bounds.test_capital_adequacy_with_coefficient_two` | `A_1(K) − 2m_K` increasing at the spikes with coefficient 2; with coefficient 1 on `m_k = k` it is below −300 at K = 400. | FIX |

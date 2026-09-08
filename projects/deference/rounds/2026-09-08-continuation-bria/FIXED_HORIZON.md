@@ -64,8 +64,10 @@ bound with a factor `m` for the wrapper.
 boundary the two averages differ by at most `m/T`.  So every macro-time limit statement is a
 primitive-time limit statement for equal blocks.  The Reduction test
 (`test_one_step_is_the_m_equals_one_case`) shows the same auction code at `m = 1` with
-single-action controllers *is* the paper's construction, and duration and block weighting
-coincide there.
+single-action controllers has identical runs under duration and block weighting.  At
+`m ≡ 1` that code is the paper's auction with its allowance reindexed by one round and
+an initial endowment (`WEIGHTED_BRIA.md` §3): the same bids and winners, a different
+statement of *when* the subsidy is credited.
 
 ## 3. Fixed-Horizon Continuation Competence — PAPER + DERIVED
 

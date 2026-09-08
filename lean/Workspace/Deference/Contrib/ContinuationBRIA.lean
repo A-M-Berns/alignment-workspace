@@ -14,20 +14,26 @@ rest on.
   `S k = Σ_{j<k} m j`: the primitive-time total is `Σ_k m_k · G_k`, so the primitive-time
   average is the `m`-weighted mean of the block averages, not the macro-round mean.
 
-**The weighted auction** (`Auction`): `n` hypotheses, round weights `w k > 0` (block
-durations in the round's first model), allowance `A k i ≥ 0`, a winner `star k`, the
-charged per-unit bid `b k` (the learner's estimate `α^e_k`) and the realized block
-average `G k ≥ 0`.  The bid is wealth-bounded: `w k · b k ≤ W k (star k)`.
-* `wealth_nonneg` — every wealth stays nonnegative.
-* `wealth_sum_eq` — `Σ_i W_K i = 𝒜_K + Σ_{k<K} w_k (G_k − b_k)`; hence
-  `overestimation_le_allowance`: the weighted cumulative overestimation is at most the
-  total allowance distributed.
+**The auction** (`Auction`): `n` hypotheses, round weights `w k > 0` (block durations in
+the round's first model), allowance `A k i ≥ 0`, a winner `star k`, the charged per-unit
+bid `b k` (the learner's estimate `α^e_k`) and the realized block average `G k ≥ 0`.  The
+wealth recursion `W (k+1) = W k + A k + payoff` is shared by two timings:
+* **source-paper timing** (`Feasible`): the bid at `k` is bounded by the carried wealth
+  `W k`, and `A k` is credited after the round — `wealth_nonneg`, `overestimation_le_allowance`,
+  `record_lt_of_rejected`: at a rejection `ℓ_K i < w_K · e_K i − A_K i` with `A_K i` the
+  allowance *before* round `K`;
+* **weighted-construction timing** (`FeasibleOpening`): the bid at `k` is bounded by the
+  opening capital `B k = W k + A k` — `wealth_nonneg_opening`,
+  `overestimation_le_allowance_opening`, `B_eq`, `record_lt_of_rejected_opening` (record
+  over tests before `K`: `< w_K · e_K i − A_i(K)` with `A_i(K)` the allowance *through*
+  round `K`), `record_succ_lt_of_rejected_opening` (the criterion's inclusive record:
+  `< 2 w_K − A_i(K)`), and the attention bound `chargedRecord_ge_neg_allowance`.
+  Coverage's divergence clause follows from `A_i(K) − 2 w_K → ∞`, the round's
+  capital-adequacy condition under opening timing.
+* `wealth_sum_eq` — `Σ_i W_K i = 𝒜_K + Σ_{k<K} w_k (G_k − b_k)`, timing-independent.
 * `wealth_eq` — per hypothesis, wealth is its allowance plus its charged record.
-* `record_le`, `record_lt_of_rejected` — the record with promises `e` (paid ≤ promised) is
-  at most wealth minus allowance; at a round where `i` outpromises the winner and its
-  wealth-bounded bid does not exceed the winning bid, `ℓ_K i < w_K · e_K i − A_K i ≤
-  w_K − A_K i`.  Coverage's divergence clause therefore follows from `A_i(K) − w_K → ∞`
-  along the rejection rounds, which is the round's capital-adequacy condition.
+* `record_le` — the record with promises `e` (paid ≤ promised) is at most wealth minus
+  allowance.
 * `wealth_ge_of_no_win` — a hypothesis that stops winning keeps all later allowance, so
   under the same condition it eventually bids its full promise: coverage's test-set
   clause.
@@ -47,7 +53,8 @@ bound the gap.
 
 **Uniform allowance constructor** (`sum_support_jump_le`): support-weighted jumps of the
 running maximum sum to at most `2 B (√M_K − √M_0)` when the support is bounded by
-`B / √M`; with `B = √S_K` this is the modulus-free allowance bound of the pressure pass.
+`B / √M`; with `B = √S_K` this is the modulus-free subsidy bound of the pressure pass (the
+fourth pass doubles the jump coefficient, so the bound is `4√(S_K M_K) + …`).
 
 **Dominance** (`dominant_block_lower_bound`): when the current block carries a fraction
 `c` of all primitive time so far, one test on which the estimate exceeds the realized
@@ -122,13 +129,14 @@ namespace Auction
 
 variable {n : ℕ} (a : Auction n)
 
-/-- Wealth entering round `k`: allowance is paid at the end of each round, the winner
-receives `w k · G k` and pays `w k · b k`. -/
+/-- Wealth carried into round `k`.  The recursion credits `A k` and the winner's payoff
+`w k · G k − w k · b k` in the step to `k+1`; which capital the bid at `k` is bounded by is
+the timing (`Feasible` vs `FeasibleOpening`). -/
 def W : ℕ → Fin n → ℝ
   | 0, _ => 0
   | k + 1, i => W k i + a.A k i + (if i = a.star k then a.w k * (a.G k - a.b k) else 0)
 
-/-- The bid is wealth-bounded: the winner can pay what it bid. -/
+/-- Source-paper timing: the winner can pay its bid from the wealth carried in. -/
 def Feasible : Prop := ∀ k, a.w k * a.b k ≤ a.W k (a.star k)
 
 theorem W_succ (k : ℕ) (i : Fin n) :
@@ -270,6 +278,122 @@ theorem wealth_ge_of_no_win (hf : a.Feasible) (i : Fin n) (K₀ : ℕ)
     have : ¬ i = a.star K := fun h => hno K hK h.symm
     simp only [this, if_false, add_zero]
     linarith
+
+
+/-! ### 2a. Opening-subsidy timing — the weighted construction
+
+The recursion `W (k+1) = W k + A k + payoff` is the same; what changes is the capital the
+bid is bounded by.  Under the source paper's timing (`Feasible`) the bid at round `k` is
+bounded by the wealth carried in, `W k`.  Under the weighted construction's timing
+(`FeasibleOpening`) the round's allowance is credited at the *opening* of the round, so
+the bid is bounded by `W k + A k` — the current block's subsidy finances the current
+block.  Every identity below is the same algebra; the difference appears exactly where
+the allowance index enters the rejection bound. -/
+
+/-- Opening capital: carried wealth plus the round's allowance. -/
+def B (k : ℕ) (i : Fin n) : ℝ := a.W k i + a.A k i
+
+/-- The weighted construction's wealth bound: the winner can pay its bid from its
+opening capital. -/
+def FeasibleOpening : Prop := ∀ k, a.w k * a.b k ≤ a.B k (a.star k)
+
+theorem wealth_nonneg_opening (hf : a.FeasibleOpening) : ∀ k i, 0 ≤ a.W k i := by
+  intro k
+  induction k with
+  | zero => intro i; simp [W]
+  | succ k ih =>
+    intro i
+    rw [W_succ]
+    by_cases h : i = a.star k
+    · subst h
+      have := hf k
+      simp only [B] at this
+      have hG := a.G_nonneg k
+      have hw := a.w_pos k
+      simp only [if_true]
+      nlinarith [mul_nonneg hw.le hG]
+    · simp only [h, if_false, add_zero]
+      exact add_nonneg (ih i) (a.A_nonneg k i)
+
+/-- Weighted cumulative overestimation is at most the allowance distributed, under
+opening timing as well: the identity `wealth_sum_eq` does not depend on timing. -/
+theorem overestimation_le_allowance_opening (hf : a.FeasibleOpening) (K : ℕ) :
+    ∑ k ∈ range K, a.w k * (a.b k - a.G k) ≤ a.totalAllowance K := by
+  have h := a.wealth_sum_eq K
+  have hnn : 0 ≤ ∑ i, a.W K i :=
+    Finset.sum_nonneg fun i _ => a.wealth_nonneg_opening hf K i
+  have : ∑ k ∈ range K, a.w k * (a.b k - a.G k)
+      = -(∑ k ∈ range K, a.w k * (a.G k - a.b k)) := by
+    rw [← Finset.sum_neg_distrib]
+    exact Finset.sum_congr rfl fun k _ => by ring
+  linarith
+
+/-- Opening capital is allowance through the round (inclusive) plus the charged record of
+the rounds before it. -/
+theorem B_eq (i : Fin n) (K : ℕ) :
+    a.B K i = a.allowanceOf i (K + 1) + a.chargedRecord i K := by
+  simp only [B, wealth_eq, allowanceOf, Finset.sum_range_succ]
+  ring
+
+/-- Rejection bound, opening timing, record over the tests *before* `K`: if `i` outpromises
+the winner at `K` and its opening-capital-bounded bid does not exceed the winning bid,
+its record is below `w_K · e_K i − A_i(K)` with `A_i(K)` the allowance through round `K`
+inclusive. -/
+theorem record_lt_of_rejected_opening (e : ℕ → Fin n → ℝ) (hpaid : ∀ k, a.b k ≤ e k (a.star k))
+    (i : Fin n) (K : ℕ) (hrej : a.b K < e K i)
+    (hbid : min (e K i) (a.B K i / a.w K) ≤ a.b K) :
+    a.record e i K < a.w K * e K i - a.allowanceOf i (K + 1) := by
+  have hw := a.w_pos K
+  have hmin : a.B K i / a.w K ≤ a.b K := by
+    rcases min_le_iff.mp hbid with h | h
+    · exact absurd h (not_le.mpr hrej)
+    · exact h
+  have hB : a.B K i ≤ a.w K * a.b K := by
+    rwa [div_le_iff₀ hw, mul_comm] at hmin
+  have h1 : a.record e i K ≤ a.chargedRecord i K := by
+    unfold record chargedRecord
+    refine Finset.sum_le_sum fun k _ => ?_
+    by_cases h : i = a.star k
+    · subst h; simp only [if_true]
+      have := hpaid k; have := a.w_pos k; nlinarith
+    · simp [h]
+  have h2 := a.B_eq i K
+  have : a.w K * a.b K < a.w K * e K i := mul_lt_mul_of_pos_left hrej hw
+  linarith
+
+/-- The same, for the criterion's *inclusive* record (Definition 5: tests `t ≤ T`), which
+may include a wealth-constrained win at the rejection round itself: with promises and
+returns in `[0, 1]`, the record through `K` is below `2 w_K − A_i(K)`.  Coverage's
+divergence clause therefore follows from `A_i(K) − 2 w_K → ∞`. -/
+theorem record_succ_lt_of_rejected_opening (e : ℕ → Fin n → ℝ)
+    (hpaid : ∀ k, a.b k ≤ e k (a.star k)) (he : ∀ k i, e k i ≤ 1) (he0 : ∀ k i, 0 ≤ e k i)
+    (hG1 : ∀ k, a.G k ≤ 1) (i : Fin n) (K : ℕ) (hrej : a.b K < e K i)
+    (hbid : min (e K i) (a.B K i / a.w K) ≤ a.b K) :
+    a.record e i (K + 1) < 2 * a.w K - a.allowanceOf i (K + 1) := by
+  have h := a.record_lt_of_rejected_opening e hpaid i K hrej hbid
+  have hw := a.w_pos K
+  have hstep : a.record e i (K + 1) ≤ a.record e i K + a.w K := by
+    unfold record
+    rw [Finset.sum_range_succ]
+    have : (if i = a.star K then a.w K * (a.G K - e K i) else 0) ≤ a.w K := by
+      by_cases hi : i = a.star K
+      · simp only [hi, if_true]
+        have := hG1 K; have := he0 K (a.star K); nlinarith
+      · simp [hi, hw.le]
+    linarith
+  have : a.w K * e K i ≤ a.w K := by
+    have := mul_le_mul_of_nonneg_left (he K i) hw.le
+    simpa using this
+  linarith
+
+/-- The attention bound: the weighted shortfall a hypothesis inflicts on its tests
+through round `K` is at most the allowance it received through round `K`, the round's
+own opening subsidy included. -/
+theorem chargedRecord_ge_neg_allowance (hf : a.FeasibleOpening) (i : Fin n) (K : ℕ) :
+    -(a.chargedRecord i K) ≤ a.allowanceOf i K := by
+  have := a.wealth_eq i K
+  have := a.wealth_nonneg_opening hf K i
+  linarith
 
 end Auction
 
@@ -468,6 +592,12 @@ end Workspace.Deference.ContinuationBRIA
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.record_lt_of_rejected'
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.wealth_ge_of_no_win
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.record_ge_neg_overpromise
+#print axioms Workspace.Deference.ContinuationBRIA.Auction.wealth_nonneg_opening
+#print axioms Workspace.Deference.ContinuationBRIA.Auction.overestimation_le_allowance_opening
+#print axioms Workspace.Deference.ContinuationBRIA.Auction.B_eq
+#print axioms Workspace.Deference.ContinuationBRIA.Auction.record_lt_of_rejected_opening
+#print axioms Workspace.Deference.ContinuationBRIA.Auction.record_succ_lt_of_rejected_opening
+#print axioms Workspace.Deference.ContinuationBRIA.Auction.chargedRecord_ge_neg_allowance
 #print axioms Workspace.Deference.ContinuationBRIA.trajGated_eq_traj_of_admitted
 #print axioms Workspace.Deference.ContinuationBRIA.regret_decomposition
 #print axioms Workspace.Deference.ContinuationBRIA.regret_le_of_bounds

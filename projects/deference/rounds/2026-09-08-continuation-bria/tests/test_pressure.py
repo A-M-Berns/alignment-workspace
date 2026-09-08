@@ -41,11 +41,11 @@ def nasty_schedule():
 
 class A_EffectivityGap(unittest.TestCase):
     def test_prefix_constructor_needs_no_modulus(self):
-        """`s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k`, computed from the observed prefix.
-        On the spiky schedule and on log / constant / linear ones: total allowance is
-        within the proved bound `2√(S_K M_K) + √S_K (1 + ln K)`, its share of primitive
-        time decreases, and `A_1(K) − m_K` grows (it is the harmonic sum when the
-        schedule is nondecreasing)."""
+        """`s(k) = ⌊√(S_k/M_k)⌋`, `a_k = 2ΔM_k + 1/k`, computed from the observed prefix
+        at the opening of each block.  On the spiky schedule and on log / constant /
+        linear ones: total allowance is within the proved bound
+        `4√(S_K M_K) + √S_K (1 + ln K)`, its share of primitive time decreases, and
+        `A_1(K) − 2m_K` grows (it is the harmonic sum when the schedule is nondecreasing)."""
         for sched in (nasty_schedule(), lambda k: k.bit_length(), lambda k: 1, lambda k: k):
             A = prefix_allowance(sched)
             prev_ratio, prev_gap = None, None
@@ -53,34 +53,40 @@ class A_EffectivityGap(unittest.TestCase):
                 S, M = A.prefix(K)
                 tot = sum(A(k, i) for k in range(1, K + 1) for i in range(1, A.support(k) + 1))
                 A1 = cumulative_allowance(A, K, 1)
-                bound = 2 * (math.isqrt(S * M) + 1) + (math.isqrt(S) + 1) * (1 + K.bit_length())
+                bound = 4 * (math.isqrt(S * M) + 1) + (math.isqrt(S) + 1) * (1 + K.bit_length())
                 self.assertLess(tot, bound)
-                ratio, gap = tot / S, A1 - sched(K)
+                ratio, gap = tot / S, A1 - 2 * sched(K)
                 if prev_ratio is not None:
                     self.assertLess(ratio, prev_ratio)
                     self.assertGreater(gap, prev_gap)
                 prev_ratio, prev_gap = ratio, gap
 
-    def test_spiky_schedule_covers_the_liar_with_small_overestimation(self):
+    def test_spiky_schedule_covers_the_liar_within_the_subsidy_bound(self):
+        """The always-lying hypothesis is tested repeatedly (record below −300) and the
+        weighted overestimation stays within `𝒜_K / S_K`, which on this slowly converging
+        schedule is still large at K = 1024 and tends to 0."""
         env = constant_block_env(GOOD_LIAR)
         sched = nasty_schedule()
+        A = prefix_allowance(sched)
         hyps = [const_hyp("good", "good", Q(3, 4)), const_hyp("liar", "liar", Q(1))]
-        rounds = run_auction(env, hyps, sched, prefix_allowance(sched), 1024)
+        rounds = run_auction(env, hyps, sched, A, 1024)
         self.assertGreater(len(hyps[1].wins), 5)
-        self.assertLess(weighted_overestimation(rounds), Q(6, 100))
-        self.assertLess(hyps[1].record, -30)
+        self.assertLess(hyps[1].record, -300)
+        S, _ = A.prefix(1024)
+        total = sum(A(k, i) for k in range(1, 1025) for i in (1, 2))
+        self.assertLessEqual(weighted_overestimation(rounds), total / S)
 
 
 class B_ExplicitSchedule(unittest.TestCase):
     def test_log_schedule_under_the_prefix_constructor(self):
-        """`m_k = ⌊log₂k⌋+1`: the liar is tested at 32 and 1024 within 1024 rounds,
+        """`m_k = ⌊log₂k⌋+1`: the liar is tested at 15, 32 and 240 within 1024 rounds,
         weighted overestimation below 1/500, and the paper-style bound on the support."""
         env = constant_block_env(GOOD_LIAR)
         sched = lambda k: k.bit_length()
         A = prefix_allowance(sched)
         hyps = [const_hyp("good", "good", Q(3, 4)), const_hyp("liar", "liar", Q(1))]
         rounds = run_auction(env, hyps, sched, A, 1024)
-        self.assertEqual(hyps[1].wins, [32, 1024])
+        self.assertEqual(hyps[1].wins, [15, 32, 240])
         self.assertLess(weighted_overestimation(rounds), Q(1, 500))
         for K in (64, 256, 1024):
             S, M = A.prefix(K)

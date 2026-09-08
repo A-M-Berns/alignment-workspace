@@ -50,7 +50,10 @@ an untried option would have paid, and a limited agent can actually run it.
    that wants a long lease must be able to cover a long lease's worth of disappointment.
    Two exact facts fall out.  If long leases are *not* charged by length, a dishonest
    adviser can save up and then hold most of the agent's time while looking, round by
-   round, like a well-behaved refuted adviser (fixture I).  And there is a sharp condition
+   round, like a well-behaved refuted adviser (fixture I).  And the stake an adviser is
+   given to cover a newly announced long lease must be handed over *before* the bidding
+   on that lease, not after it: the paper credits its allowance after each round, and
+   with that timing a surprise long block always finds every adviser short.  And there is a sharp condition
    on the schedule of plan lengths: as long as no single plan is a fixed fraction of all
    the time so far, a computable weighted learner exists that covers every efficiently
    computable adviser; if some plans are that long, no learner of this kind can exist,

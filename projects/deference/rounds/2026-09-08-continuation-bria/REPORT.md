@@ -1,10 +1,21 @@
 # Report
 
-Three passes on one round.  The first pass's verdict was
+Four passes on one round.  The first pass's verdict was
 `GROWING-HORIZON-CONTINUATION-BRIA-SURVIVES-UNDER-NON-DOMINANCE-POLICY-REGRET-NEEDS-RECOVERABILITY`;
 the pressure pass superseded it with `CONTINUATION-BRIA-READY-NONDOMINANCE-IFF-REPAIRED`;
-the final correctness pass (`PRESSURE_PASS.md` §12) supersedes that.  Verdict:
-**CONTINUATION-BRIA-READY-AFTER-FINAL-CORRECTNESS-PASS.**
+the final correctness pass with `CONTINUATION-BRIA-READY-AFTER-FINAL-CORRECTNESS-PASS`;
+the allowance-timing audit (`PRESSURE_PASS.md` §13) supersedes that.  Verdict:
+**CONTINUATION-BRIA-READY-TIMING-ALIGNED.**
+
+## Allowance-timing audit (fourth dispatch) — what changed
+
+| earlier claim | finding | repair |
+|---|---|---|
+| the Python weighted auction is "the paper's construction" | Python credited the round's allowance *before* bids (opening timing); the paper and the old Lean credit it *after* (settlement timing) | one timeline (`WEIGHTED_BRIA.md` §3); the weighted construction is the paper's auction with opening subsidy — DERIVED, named as a modification; bid-for-bid the paper's auction under a reindexed allowance with an initial endowment (`test_timing.Reindexing`) |
+| the prefix rule works under the stated (settlement) timing | false: on a spiky non-dominant schedule the current `ΔM_k` arrives one block late and a spike-only liar is never tested (`test_timing.SurpriseSpike`); for every prefix-online rule under settlement timing there is such a schedule (III′) | opening timing; `Feasible` (source) and `FeasibleOpening` (weighted) in Lean, sharing the recursion |
+| capital adequacy `A_i(K) − m_K → ∞` | the criterion's record is inclusive (Definition 5), so a wealth-constrained win at the rejection round adds up to `w_K` | `A_i(K) − 2 w_K → ∞` with `A_i` through `K` inclusive (Lean `record_succ_lt_of_rejected_opening`); rule coefficient 2; subsidy bound `4√(S_K M_K) + √S_K(1+ln K)` |
+| attention bound over allowance before the round | the opening subsidy is capital available for the test | bound over the subsidy through `K` inclusive (Lean `chargedRecord_ge_neg_allowance`, `test_timing.Bounds`) |
+
 
 ## Final correctness pass (third dispatch) — what changed
 
@@ -84,13 +95,17 @@ round is.
    back to the paper, unbounded ones do not.  The auction in total-reward units with
    wealth-bounded per-unit bids satisfies the wealth identity (LEAN `wealth_sum_eq`),
    weighted no overestimation from `𝒜_K/S_K → 0` (LEAN `overestimation_le_allowance`),
-   and coverage from the **capital-adequacy** condition `A_i(K) − m_K → ∞` (LEAN
-   `record_lt_of_rejected'`, `wealth_ge_of_no_win`), which replaces `Σ_n A(n,i) = ∞`.
+   and coverage from the **capital-adequacy** condition `A_i(K) − 2 m_K → ∞` under
+   opening-subsidy timing (LEAN `record_succ_lt_of_rejected_opening`,
+   `wealth_ge_of_no_win`), which replaces `Σ_n A(n,i) = ∞`.  The weighted auction is the
+   paper's with the round's subsidy credited at its opening — a modification, not the
+   paper's construction.
 2. **Existence theorem, sharp, with the quantifiers of the pressure pass.**  Allowances
    with capital adequacy and negligible subsidy exist iff `m_K / S_K → 0`
-   (**non-dominance**); the prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`,
-   `a_k = (M_k − M_{k−1}) + 1/k` is a uniform online witness needing no effectivity
-   assumption; `m_k = ⌊log₂k⌋+1` with `A = i^{-2}⌊√k⌋^{-1}` is an explicit schedule; the
+   (**non-dominance**); the prefix rule `s(k) = ⌊√(S_k/M_k)⌋`,
+   `A(k,i) = 2(M_k − M_{k−1}) + 1/k`, credited at the opening of the block just
+   revealed, is a uniform online witness needing no effectivity assumption, and no
+   prefix-online rule works under the paper's settlement timing; `m_k = ⌊log₂k⌋+1` with `A = i^{-2}⌊√k⌋^{-1}` is an explicit schedule; the
    obstruction is a liar that promises only on the blocks above a rational threshold
    (LEAN `dominant_block_lower_bound`), criterion-level.
 3. **The attention bound** `Σ_{wins} m_k (b_k − G_k) ≤ A_i(K)`: wealth is a claim on
@@ -167,10 +182,11 @@ for the replay-versus-local divergence that the history-shift term specialises.
   `e`, because on the exact existing fixture (`d = 1`, persistent) the myopic failure it
   asks for does not occur for a BRIA.  The existing fixture is the `d = 1` case and is run.
 - The Lean scope is the algebraic cores listed in the module header; no MDP library, no
-  criterion, no policy regret.  The asymptotic conditions (i′), (ii) and the schedule's
+  criterion, no policy regret.  The asymptotic conditions (i″), (ii) and the schedule's
   asymptotics are proved in prose and checked at finite points.
-- The sparse-excursion BRIA that shows the criterion permits myopia is stated, not
-  implemented.
+- The sparse-test agent that shows the criterion permits myopia is implemented
+  (`test_final.B`); its BRIA-ness against the full e.c. class is a prose theorem from the
+  paper's Theorem 1, not mechanically checked.
 - Section 14 ends open on certifying `B_T(π)` from inside, as the dispatch allows.
 - No wiki edit: nothing registered, no theorem-level correction to a canonical page;
   `Corrigibility`'s dynamic-admissibility paragraph is refined through item 86 only.
@@ -198,7 +214,8 @@ for the replay-versus-local divergence that the history-shift term specialises.
 ## New names introduced (provisional)
 
 continuation hypothesis; execution treatment; promise–treatment alignment; execution
-lease; transparent gate; weighted BRIA; capital adequacy `A_i(K) − m_K → ∞`;
+lease; transparent gate; weighted BRIA; opening subsidy / opening capital; capital
+adequacy `A_i(K) − 2 m_K → ∞`;
 non-dominance `m_K/S_K → 0`; prefix constructor; attention bound; continuation-promise /
 actual-history / own-trajectory competence; tested overpromise; condition (BR);
 horizon-stable promise; `m`-detectable advantage; history-shift discrepancy `SHIFT_T(π)`;
@@ -210,4 +227,5 @@ foreclosure; `Π_rec,prom`; sticky / revocable amendment.
 - Prompt author: the maintainer, relayed verbatim in
   `prompts/2026-09-08-continuation-bria/PROMPT.md`.
 - Executor: Claude Fable 5.1 (Anthropic).
-- Dates: 2026-09-08 (first pass, pressure pass and final correctness pass: three dispatches).
+- Dates: 2026-09-08 (first pass, pressure pass, final correctness pass and allowance-timing
+  audit: four dispatches).

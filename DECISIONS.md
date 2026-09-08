@@ -89,7 +89,7 @@ commit.
 ### 2026-09-08 — continuation bounded inductive rationality is weighted by lease duration, and its competence statement is about hypotheses on the learner's own histories
 
 **agent-decided, reversible.** The dynamic-competence layer of the corrigibility program
-takes the following shape.  (1) For a fixed horizon `m`, bounded inductive rationality over
+takes the following shape (as amended by the three later passes recorded below).  (1) For a fixed horizon `m`, bounded inductive rationality over
 blocks of `m`-step contingent controllers, scored on the realized gated block average, is
 the published setting verbatim; testing a continuation hypothesis is an **execution
 lease** — the learner's selection committed for the block, every step through the gate,
@@ -124,7 +124,12 @@ composition — and not closed.  *Final correctness pass, same day:* the record 
 only testing and permits asymptotic myopia on the revocable amendment (the exact original
 fixture is absorbing and there every BRIA is competent); the auction's bidders are the
 ever-activated frontier, allowance the current support; the recoverability distinction is
-joinable versus foreclosing, not reversible versus irreversible.  Nothing is registered.
+joinable versus foreclosing, not reversible versus irreversible.  *Allowance-timing audit,
+same day:* the weighted auction credits the round's subsidy at the opening of the round
+it funds (the paper credits it after) — a named modification, bid-for-bid the paper's
+auction under a reindexed allowance; capital adequacy is `A_i(K) − 2m_K → ∞` under the
+criterion's inclusive record; the prefix rule carries coefficient 2; under the paper's
+timing no prefix-online rule serves every non-dominant schedule.  Nothing is registered.
 *Rejected alternatives:* applying the unweighted criterion to a variable-length block
 sequence (a covered, refuted hypothesis can then hold most of primitive time);
 normalising block returns by a running maximum (does not control the weighted sum);

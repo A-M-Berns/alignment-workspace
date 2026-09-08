@@ -1,8 +1,8 @@
 # Dispatch — 2026-09-08 continuation BRIA
 
-Three messages, all verbatim as sent.  The second is the pressure pass dispatched
-against the first's result; the third is the final correctness pass dispatched against
-the second's.
+Four messages, all verbatim as sent.  The second is the pressure pass dispatched
+against the first's result; the third the final correctness pass dispatched against the
+second's; the fourth the allowance-timing audit dispatched against the third's.
 
 ## Message 1
 
@@ -2802,3 +2802,633 @@ The final conceptual picture should be:
         = all three.
 
 Do not collapse these.
+
+---
+
+## Message 4
+
+You are working in `A-M-Berns/alignment-workspace`, on open PR #95:
+
+    Continuation BRIA: leases, the weighted auction, and the policy-regret frontier
+
+Branch:
+
+    round/2026-09-08-continuation-bria
+
+Current head before this dispatch:
+
+    c75e05ce475fdc00f73636257e01188015c4ad51
+
+This is a FOURTH AND FINAL TECHNICAL PASS.
+
+Do NOT open a new research direction.
+Do NOT broaden into LI integration, normative induction, or corrigibility beyond fixing
+downstream wording if the theorem changes.
+Do NOT merge.
+
+There is one central unresolved issue:
+
+    the weighted prefix-constructor theorem currently mixes two different
+    allowance timings.
+
+Resolve that exactly.
+
+======================================================================
+0. READ FIRST
+======================================================================
+
+Read the current PR95 branch, especially:
+
+- BRIA_SOURCE_AUDIT.md
+- WEIGHTED_BRIA.md
+- REPORT.md
+- PRESSURE_PASS.md
+- GROWING_HORIZON.md
+- FIXED_HORIZON.md
+- src/bria.py
+- tests/test_weighted.py
+- tests/test_pressure.py
+- tests/test_final.py
+- lean/Workspace/Deference/Contrib/ContinuationBRIA.lean
+- PR body
+
+Re-read the source paper's Theorem 1 construction directly if needed.
+
+Do not trust the current prose about timing until you have reconstructed the round order
+yourself.
+
+======================================================================
+1. THE TIMING MISMATCH
+======================================================================
+
+The current source audit says the paper construction has:
+
+    winner at t bids from w_t(i)
+
+then after the round:
+
+    w_{t+1}(i)
+      =
+    w_t(i)
+      +
+    A(t,i)
+      +
+    winner payoff.
+
+The current Lean model matches this:
+
+    W k = wealth entering round k
+
+    Feasible:
+        w_k b_k <= W_k(winner)
+
+    W_{k+1}
+      =
+    W_k + A_k + winner payoff.
+
+The current Python implementation does something different:
+
+    reveal m_k
+    add A(k,i) to h.wealth
+    THEN compute bids.
+
+So the current Python weighted auction is PREFUNDED for the current round.
+
+This distinction is harmless-ish for constant unit weights but is load-bearing for the
+prefix constructor:
+
+    A(k,i)
+      =
+    ΔM_k + 1/k.
+
+The ΔM_k term is designed to capitalize hypotheses against a newly revealed large block
+m_k.
+
+If ΔM_k arrives only AFTER the auction on block k, it cannot finance a bid on that block.
+
+This matters on non-dominant but highly spiky schedules.
+
+======================================================================
+2. FIRST DECIDE THE OPERATIONAL TIMELINE
+======================================================================
+
+Write down the exact timeline of one weighted macro-round.
+
+At minimum distinguish:
+
+    1. block length / weight w_k becomes known
+    2. hypotheses are activated
+    3. allowance is credited or not
+    4. hypotheses emit (q, treatment, claim)
+    5. bids are computed
+    6. winner selected
+    7. block executed
+    8. realized return observed
+    9. wealth settled
+
+There are two serious candidate constructions.
+
+----------------------------------------------------------------------
+A. PRE-BID / OPENING ALLOWANCE
+----------------------------------------------------------------------
+
+At round k:
+
+    opening wealth from the past:
+        W_k
+
+    current subsidy:
+        A(k,i)
+
+    bid capital:
+        B_k(i) := W_k(i) + A(k,i)
+
+    bid:
+        b_{i,k} = min(e_{i,k}, B_k(i)/w_k)
+
+    settlement:
+        W_{k+1}(i)
+          =
+        B_k(i)
+          +
+        1[i=winner] w_k(G_k - b_k).
+
+This matches the existing Python implementation and lets ΔM_k finance the current spike.
+
+It is NOT literally the paper's timing.
+
+If this is the right weighted construction, say so clearly:
+
+    fixed-horizon criterion reduction = PAPER VERBATIM;
+    weighted prefunded auction = DERIVED MODIFICATION OF THE PAPER'S CONSTRUCTION.
+
+Do not call the weighted construction "the paper's construction verbatim."
+
+----------------------------------------------------------------------
+B. END-OF-ROUND / SOURCE-PAPER TIMING
+----------------------------------------------------------------------
+
+At round k:
+
+    bid from W_k
+
+then:
+
+    W_{k+1}
+      =
+    W_k + A(k) + payoff.
+
+This matches the source audit and current Lean model.
+
+If retaining this timing, determine whether the claimed prefix theorem survives.
+
+In particular, can an online rule depending only on the prefix through k finance a
+surprise spike at k when the current ΔM_k is unavailable until k+1?
+
+Do not assume yes.
+
+If it requires:
+- one-block lookahead;
+- a predictable schedule;
+- an allowance based on m_{k+1};
+- or a weaker schedule condition,
+
+state that exactly.
+
+======================================================================
+3. PRESS THE END-OF-ROUND VERSION WITH A SPIKY COUNTERMODEL
+======================================================================
+
+Construct a non-dominant schedule with sparse surprise spikes:
+
+    m_k = 1 most rounds,
+
+and at spike times k_j:
+
+    m_{k_j} << S_{k_j}
+    but
+    m_{k_j} >> M_{k_j-1},
+
+with
+
+    m_{k_j}/S_{k_j} -> 0.
+
+Choose gaps large enough that each new spike dwarfs all previous maximum block lengths.
+
+Now use a hypothesis which:
+- promises 0 off the spikes;
+- promises 1 on the spikes;
+- has a controller returning 0.
+
+Ask:
+
+    under end-of-round timing with the current prefix allowance,
+    does it have enough PRE-SPIKE wealth to bid meaningfully on infinitely many spikes?
+
+If not:
+- make this an exact fixture;
+- state that the current prefix theorem is false under source timing.
+
+This is the core diagnostic.
+
+The fixture should distinguish:
+
+    current-round ΔM_k available before bidding
+
+from
+
+    current-round ΔM_k arriving only after the test opportunity has passed.
+
+======================================================================
+4. IF USING PRE-BID ALLOWANCE, REPROVE THE WEIGHTED AUCTION FROM SCRATCH
+======================================================================
+
+Do not merely reindex the old Lean statements.
+
+Define the exact pre-bid capital object.
+
+Suggested notation:
+
+    W_k(i)      wealth carried into round k from prior settlements
+    B_k(i)      opening bid capital after current subsidy
+                = W_k(i) + A(k,i)
+
+Then prove exact finite statements for:
+
+A. nonnegativity;
+
+B. total wealth identity;
+
+C. weighted overestimation bound;
+
+D. per-hypothesis wealth / record identity;
+
+E. rejection-record bound;
+
+F. stopped-winning accumulation;
+
+G. attention bound.
+
+Be especially careful about the rejection round itself.
+
+At a rejection K, h_i may itself be the winner while wealth-constrained:
+
+    b_{i,K} < e_{i,K}.
+
+Coverage's record includes test outcomes according to the criterion's indexing.
+
+So derive the exact inequality rather than assuming the old one:
+
+    ℓ_K < w_K - A_i(K)
+
+may or may not survive unchanged.
+
+Possibilities include a constant-factor condition such as:
+
+    cumulativeAllowance_i(K) - c w_K -> ∞
+
+for c = 1, 2, or another exact constant.
+
+Find the SHARPEST CLEAN condition the proof really needs.
+
+Do not preserve:
+
+    A_i(K) - m_K -> ∞
+
+by inertia if the prefunded timing changes the proof.
+
+======================================================================
+5. RECHECK THE NON-DOMINANCE IFF AFTER THE EXACT COVERAGE CONDITION
+======================================================================
+
+Suppose the corrected prefunded auction needs:
+
+    A_i(K) - c m_K -> ∞
+
+for some fixed c > 0.
+
+Determine whether the schedule-level theorem remains:
+
+    m_K / S_K -> 0
+        iff
+    suitable negligible allowances exist.
+
+It probably does for any fixed constant c, but prove it.
+
+If the prefix rule needs a coefficient:
+
+    A(k,i)
+      =
+    C (M_k - M_{k-1}) + 1/k
+
+with C > c,
+
+then:
+- choose the cleanest C;
+- redo the subsidy bound;
+- show it is still o(S_K);
+- state the exact constant.
+
+Do not care about optimizing C unless the sharp value is easy.
+
+The important theorem is the schedule-level boundary.
+
+======================================================================
+6. LEAN SHOULD MODEL THE ACTUAL WEIGHTED CONSTRUCTION
+======================================================================
+
+Right now Lean proves the end-of-round auction while Python executes the prefunded one.
+
+That is unacceptable for the headline weighted construction.
+
+Preferred repair:
+
+OPTION 1:
+    retain the current `Auction` as the PAPER-TIMED / end-of-round algebra,
+    and add a distinct `PrefundedAuction` (or better name) for the weighted construction.
+
+This has the virtue of keeping source fidelity explicit.
+
+OPTION 2:
+    refactor `Auction` to the actual prefunded weighted construction,
+    but then make very clear that it is DERIVED rather than literally the paper's auction.
+
+I weakly prefer OPTION 1 because it preserves the distinction:
+
+    original BRIA auction
+    vs
+    weighted continuation-BRIA auction.
+
+But choose whichever produces the cleanest theory.
+
+At minimum Lean should kernel-check:
+- the actual wealth identity used by Python;
+- the actual overestimation bound;
+- the actual rejection / coverage inequality;
+- the actual attention bound or its finite algebraic core.
+
+The prefix sum lemma can remain unchanged if its combinatorics are unchanged.
+
+======================================================================
+7. SOURCE FIDELITY AUDIT
+======================================================================
+
+Audit every phrase:
+
+    "the paper's construction"
+    "verbatim"
+    "same auction"
+    "m = 1 is the paper's construction"
+    "allowance is paid"
+    "wealth entering the round"
+
+Separate:
+
+A. PAPER CRITERION:
+   fixed-horizon macro reduction really is verbatim at the level of Definitions 1–7 and
+   Theorems 1–4.
+
+B. PAPER CONSTRUCTION:
+   exact Theorem-1 wealth timing.
+
+C. WEIGHTED CONSTRUCTION:
+   whatever timing this pass settles on.
+
+If pre-bid funding is adopted, say explicitly that the weighted auction is a small but
+important modification necessitated by online variable liabilities.
+
+For m ≡ 1, determine whether prefunding is:
+- literally identical after reindexing;
+- only asymptotically equivalent;
+- or genuinely a slightly different BRIA construction.
+
+State the truth, not the convenient slogan.
+
+======================================================================
+8. ONLINE INFORMATION MODEL
+======================================================================
+
+The current branch mixes:
+
+    "schedule declared in advance"
+
+and
+
+    "one online rule reading only the revealed prefix."
+
+Clarify exactly what is known when.
+
+For the strongest theorem, I suggest:
+
+    before bidding on block k, m_k is revealed;
+    no information about m_{k+1}, m_{k+2}, ... is required.
+
+Then the prefunded constructor may use:
+
+    S_k, M_k, m_k
+
+to set current opening subsidy.
+
+If instead the proof requires the entire schedule in advance, say so.
+
+The headline "uniform online" theorem should mean something precise.
+
+======================================================================
+9. PYTHON FIXTURE: SURPRISE SPIKE
+======================================================================
+
+Add a test that directly demonstrates the timing issue.
+
+Run the SAME non-dominant spiky schedule under:
+
+A. prefunded timing;
+
+B. end-of-round timing with the same prefix allowance.
+
+Use a spike-only outpromising hypothesis.
+
+Expected diagnostic if the concern is real:
+
+    prefunded:
+        current ΔM spike capital is available;
+        hypothesis can eventually meet coverage obligations;
+
+    end-of-round:
+        hypothesis repeatedly arrives at surprise spikes undercapitalized;
+        current ΔM arrives too late.
+
+Do not merely test wealth identities.
+
+Test the causal thing the theorem needs:
+ability to bid on the current large block.
+
+======================================================================
+10. ATTENTION BOUND
+======================================================================
+
+Re-derive the attention bound under the settled timing.
+
+The desired interpretation remains:
+
+    wealth is a claim on experimental execution time.
+
+But make sure the algebra uses the correct notion of:
+- subsidy through K;
+- opening capital;
+- settled wealth.
+
+If a prefunded auction gives a bad hypothesis current subsidy before its test, that subsidy
+must be counted in the attention budget.
+
+No free current-round experimental capital should disappear from the accounting.
+
+======================================================================
+11. COMPETENCE THEOREMS SHOULD NOT CHANGE UNLESS NECESSARY
+======================================================================
+
+The criterion-level theorems:
+
+    (BR) -> LEARN <= o(T)
+    + SLACK -> actual-history competence
+    + SHIFT -> own-trajectory competence
+
+do not depend on the auction's allowance timing once a weighted BRIA exists.
+
+Preserve them.
+
+This pass is about the EXISTENCE CONSTRUCTION, not the criterion.
+
+Likewise preserve:
+- promise-treatment alignment;
+- criterion vs construction distinction;
+- joinability vs foreclosure;
+- external typing of Gobs and Ĝ.
+
+Do not reopen those.
+
+======================================================================
+12. DOWNSTREAM WORDING
+======================================================================
+
+If the existence theorem changes, repair:
+
+- WEIGHTED_BRIA.md
+- REPORT.md
+- PRESSURE_PASS.md
+- BRIA_SOURCE_AUDIT.md
+- FOR_HUMANS.md
+- PRIORITIES item 86
+- PR body
+- Lean module header
+- src/bria.py comments
+- tests.
+
+Also clean the two stale items already visible:
+- any remaining reference to condition `(R)` should be `(BR)`;
+- REPORT should not say the sparse-test witness is "stated, not implemented" now that
+  `test_final.B` exists, except insofar as full BRIA-ness is a prose theorem rather than
+  mechanically checked.
+
+======================================================================
+13. FINAL THEOREM SHAPE
+======================================================================
+
+The desired result, if prefunding works, is something like:
+
+WEIGHTED CONTINUATION-BRIA EXISTENCE.
+
+At the start of block k, after its weight w_k is revealed, a negligible opening subsidy
+is distributed. Hypotheses bid in total-reward units against that opening capital.
+For every non-dominant schedule
+
+    w_K / S_K -> 0,
+
+there is one prefix-online finite-support subsidy rule such that the resulting auction is
+a weighted BRIA for every c.e. e.c. hypothesis class.
+
+Conversely, if
+
+    limsup w_K / S_K > 0,
+
+the weighted BRIA criterion itself is unsatisfiable for a two-hypothesis e.c. class.
+
+Do NOT use this wording unless the exact proof supports every quantifier.
+
+======================================================================
+14. DELIVERABLE
+======================================================================
+
+Add a final section to PRESSURE_PASS.md, e.g.
+
+    §13 Allowance-timing audit
+
+which states:
+
+1. the source paper's timing;
+2. the old Lean timing;
+3. the old Python timing;
+4. why the difference matters for spikes;
+5. the chosen weighted timing;
+6. the exact new wealth recursion;
+7. the exact capital-adequacy condition;
+8. the corrected prefix theorem;
+9. whether non-dominance remains iff;
+10. source-fidelity consequences.
+
+======================================================================
+15. FINAL VERDICT
+======================================================================
+
+Choose exactly one:
+
+    CONTINUATION-BRIA-READY-TIMING-ALIGNED
+
+    CORE-SURVIVES-PREFUNDED-WEIGHTED-AUCTION
+
+    EXISTENCE-THEOREM-WEAKENED-TO-PREDICTABLE-SCHEDULES
+
+    NOT-READY-PREFIX-CONSTRUCTOR-FAILS-UNDER-CORRECT-TIMING
+
+Do not choose READY merely because tests pass.
+
+READY requires:
+
+- one operational round timeline everywhere;
+- Lean and Python modeling the same weighted construction;
+- the spike test;
+- coverage reproved under that timing;
+- exact capital adequacy;
+- source-paper timing distinguished from weighted timing;
+- non-dominance theorem re-audited.
+
+======================================================================
+16. FINAL QUESTIONS
+======================================================================
+
+Answer these literally:
+
+1. Is the weighted auction the paper's auction, or a modified auction?
+
+2. Exactly when does a hypothesis receive A(k,i)?
+
+3. Does current ΔM_k capital finance block k?
+
+4. What wealth is used to form the bid?
+
+5. What exact cumulative-capital condition proves coverage?
+
+6. Does the prefix constructor still work for every non-dominant schedule?
+
+7. Is one-step lookahead needed?
+
+8. Does non-dominance remain the sharp criterion-level schedule boundary?
+
+9. Which parts of the round remain PAPER, DERIVED, LEAN, and FIX after this repair?
+
+The pass is done only when there is no remaining ambiguity between:
+
+    capital available before a test
+
+and
+
+    capital credited after the test.

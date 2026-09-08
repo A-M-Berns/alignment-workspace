@@ -68,7 +68,7 @@ class Enumerated:
 
 
 def run_auction(env, hyps, schedule, allowance, K, weight="duration", start=None,
-                t0=0, gated=True, reset=None, override=None):
+                t0=0, gated=True, reset=None, override=None, timing="opening"):
     """Run K macro-rounds.  Returns the list of `Round`s; hypotheses are mutated.
 
     `schedule(k)` = block length m_k (k from 1);  `allowance(k, i)` with i the
@@ -78,7 +78,15 @@ def run_auction(env, hyps, schedule, allowance, K, weight="duration", start=None
     bidders are the frontier `s*(k)`.  `override(state) -> (controller, estimate)` or
     `None`: a round on which the agent acts outside the auction (no auction round is
     counted, no allowance paid, nothing tested); used for the criterion-level
-    sparse-test agent of `test_final.py`."""
+    sparse-test agent of `test_final.py`.
+
+    `timing`: **"opening"** (the weighted construction, PRESSURE_PASS.md §13) credits the
+    round's allowance `A(k, i)` *before* bids, so the opening capital
+    `B_k(i) = W_k(i) + A(k, i)` — including the current block's `ΔM_k` term — finances the
+    bid on block `k`; **"settlement"** (the source paper's Theorem 1 timing) bids from the
+    carried wealth `W_k(i)` and credits `A(k, i)` after the round.  The two are the same
+    auction under a reindexed allowance with an initial endowment; they differ in whether
+    the subsidy that funds block `k` may read `m_k`."""
     s = env.start if start is None else start
     t = t0
     rounds = []
@@ -94,8 +102,9 @@ def run_auction(env, hyps, schedule, allowance, K, weight="duration", start=None
                 active = hyps.extend(allowance.support(k_auction))
             else:
                 active = hyps
-            for i, h in enumerate(active, 1):
-                h.wealth += allowance(k_auction, i)
+            if timing == "opening":
+                for i, h in enumerate(active, 1):
+                    h.wealth += allowance(k_auction, i)
         else:
             active = hyps.active if isinstance(hyps, Enumerated) else hyps
         ctx = {"state": s, "t": t, "k": k, "m": m, "history": history}
@@ -126,6 +135,9 @@ def run_auction(env, hyps, schedule, allowance, K, weight="duration", start=None
             win.wins.append(k)
             win.record += w * (G - e_star)
             win.own.append((s, m, G))
+            if timing == "settlement":
+                for i, h in enumerate(active, 1):
+                    h.wealth += allowance(k_auction, i)
         for i, h in enumerate(active):
             if proposals[i][1] > alpha_e:
                 h.rejections.append(k)
@@ -240,13 +252,16 @@ def replenishing_allowance(schedule, support):
     return A
 
 
-def prefix_allowance(schedule):
-    """The uniform online constructor of the pressure pass (WEIGHTED_BRIA.md §4).
+def prefix_allowance(schedule, coef=2):
+    """The uniform online constructor (WEIGHTED_BRIA.md §4, PRESSURE_PASS.md §13).
 
-    Support `s(k) = ⌊√(S_k / M_k)⌋` and allowance `a_k = (M_k − M_{k−1}) + 1/k` for
-    `i ≤ s(k)`, both computed from the observed prefix `(S_k, M_k)` alone.  Needs no
-    modulus of convergence: under `m_K / S_K → 0` it satisfies capital adequacy and
-    `𝒜_K ≤ 2 √(S_K M_K) + √S_K (1 + ln K)`."""
+    Support `s(k) = ⌊√(S_k / M_k)⌋` and allowance `a_k = coef·(M_k − M_{k−1}) + 1/k` for
+    `i ≤ s(k)`, both computed from the prefix `(S_k, M_k)` once `m_k` is revealed at the
+    opening of block `k`.  Credited at the opening (`timing="opening"`), it satisfies
+    capital adequacy `A_i(K) − coef·m_K → ∞` and `𝒜_K ≤ 2·coef·√(S_K M_K) + √S_K (1 + ln K)`
+    with no modulus of convergence.  `coef = 2` is what coverage needs under the
+    criterion's inclusive record (Definition 5 of the paper); `coef = 1` suffices for the
+    strict record of the paper's proof."""
     import math
     cache = {}
 
@@ -265,7 +280,7 @@ def prefix_allowance(schedule):
         if i > math.isqrt(S // M):
             return Q(0)
         Mprev = prefix(k - 1)[1] if k > 1 else 0
-        return Q(M - Mprev) + Q(1, k)
+        return coef * Q(M - Mprev) + Q(1, k)
     A.support = lambda k: math.isqrt(prefix(k)[0] // prefix(k)[1])
     A.prefix = prefix
     return A

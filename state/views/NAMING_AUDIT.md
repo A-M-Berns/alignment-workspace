@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 293 names, 181 of them Lean only
+## deference — 295 names, 182 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -108,7 +108,9 @@ change, and the count of those is the size of the free choice remaining.
 | `v` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.v` |
 | `vhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.vhat` |
 | `Auction` | structure | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction` |
+| `B` | def | 2026-09-08-continuation-bria | wiki, note, prose | `Workspace.Deference.ContinuationBRIA.Auction.B` |
 | `Feasible` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.Feasible` |
+| `FeasibleOpening` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.FeasibleOpening` |
 | `W` | def | 2026-09-08-continuation-bria | wiki, note, prose | `Workspace.Deference.ContinuationBRIA.Auction.W` |
 | `allowanceOf` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.allowanceOf` |
 | `boundary` | def | 2026-09-08-continuation-bria | wiki, prose | `Workspace.Deference.ContinuationBRIA.boundary` |
