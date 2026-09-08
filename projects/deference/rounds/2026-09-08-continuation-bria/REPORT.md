@@ -1,35 +1,59 @@
 # Report
 
-Verdict: **GROWING-HORIZON-CONTINUATION-BRIA-SURVIVES-UNDER-NON-DOMINANCE-POLICY-REGRET-NEEDS-RECOVERABILITY.**
+Two passes on one round.  The first pass's verdict was
+`GROWING-HORIZON-CONTINUATION-BRIA-SURVIVES-UNDER-NON-DOMINANCE-POLICY-REGRET-NEEDS-RECOVERABILITY`;
+the pressure pass dispatched against it supersedes it.  Verdict after pressure:
+**CONTINUATION-BRIA-READY-NONDOMINANCE-IFF-REPAIRED.**
 
-Outcome A of the dispatch's decision tree, with the weighted construction's existence
-condition carried in the verdict because it is sharp; outcome D's content is the last
-clause.
+## Pressure pass (second dispatch) — what changed
+
+`PRESSURE_PASS.md` is the register.  In one table:
+
+| first-pass claim | finding | repair |
+|---|---|---|
+| a computable weighted BRIA exists iff `m_K/S_K → 0`, via a computable majorant `ρ̄` of the convergence | the majorant is a modulus a computable convergent sequence need not have | the prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k`, reading only `(S_k, M_k)`; bound `𝒜_K ≤ 2√(S_K M_K) + √S_K(1+ln K)` from `Σ ΔM/√M ≤ 2√M` (LEAN); the iff holds with a uniform online witness and no effectivity assumption |
+| necessity via `D = {K : m_K ≥ (c/2) S_K}`, `c` the limsup | `c` is not computable; `D` was called computable | a rational `q` below the limsup; `D_q` decidable; the adversarial hypotheses e.c. whenever the schedule is; existential in `q`, uniform given `q`, criterion-level |
+| "the learner cannot underperform any hypothesis whose promises are sound" | true of promises, read as true of the controller's value | three theorems: promise competence (Theorem 1, condition (R)), actual-history (add `SLACK ≤ o(T)`), own-trajectory (add `SHIFT ≤ o(T)`); fixture D shows value 1 / promise 0 gives nothing |
+| `G_k(π\|H^α)` "realized when tested, undefined otherwise", then summed over every block | observed and external returns conflated | `G^obs` (the only feedback) versus the external evaluator `Ĝ`; the identity retyped (LEAN `regret_decomposition`, `regret_le_of_bounds`); fixture H |
+| an estimate that is not a lower bound "buys nothing" | false; the source construction runs on hypotheses being wrong | generic claim; soundness variants are theorem hypotheses; the weakest consumed is (R), the negation of the divergence clause; hierarchy with the sublinear-overpromise negative (fixture G) |
+| the whole-block lease is "the weakest useful lease" | overstated; alignment of test with claimed treatment is what necessity shows | promise–treatment alignment as the primitive, the lease as the canonical realization (fixtures I, J); treatments advisor-side only |
+| "every one-step BRIA invests infinitely often" | unquantified; a BRIA that leaves `base` for good need not | "a BRIA cannot remain at `base` on a set of positive density"; criterion / construction / fixture separated (fixture C) |
+| discounted returns "reduce" to bounded weight | true for finite truncated leases only | infinite-horizon discounted claims need a settlement mechanism: OPEN (fixtures K, L) |
+| "easy policy, hard value" | no resource separation was proved | reduced to the type distinction; the recognizability limit is the paper's Theorem 2 diagonal |
+| item 86 asked how a promise is produced "from the constitution's own certificates" | legitimacy does not certify task value | item 86: recoverability (catch-up cost) + performance recognizability + composition |
+
+Fixtures added: `test_pressure.py` A–N (16).  Lean added: `regret_le_of_bounds`, the
+typed `learnErr`/`slack`/`shift`, `jump_div_sqrt_le`, `sum_jump_div_sqrt_le`,
+`sum_support_jump_le`.  All 19 declarations audit clean.
+
 
 ## The two questions of §21
 
 **What does bounded inductive rationality require of the claim "from the state you are
 in, give me the advisor-side continuation for long enough, under the constitution, and I
 deliver at least `L`"?**  Exactly what it requires of a one-step claim, retyped: the claim
-is a continuation hypothesis `(q, L)` at the actual history; if it keeps outpromising
-the learner's estimate it must be tested, and a test is an execution lease — the
-learner's selection committed to `q` for the block, every step through the gate, the
-exterior live; on its tests it is scored by the realized gated block average against
-`L`; it may be ignored only once its `m`-weighted record on those tests has diverged.
-The learner's own estimates must not, in `m`-weighted primitive-time average, exceed
-what it obtains.  A learner meeting this cannot asymptotically underperform any such
-claim that is sound on the leases it is granted (`GROWING_HORIZON.md` §1).  A computable
-such learner exists for every declared schedule in which no block is a fixed fraction of
-all time so far, and for no other (`WEIGHTED_BRIA.md` §4).
+is a continuation hypothesis `(q, τ, L)` at the actual history — a controller, a declared
+advisor-side treatment (the whole-block lease canonically), and an accountable claim that
+may be wrong; if it keeps outpromising the learner's estimate it must be tested, and a
+test is an execution of `q` under `τ` through the gate with the exterior live; on its
+tests it is scored by the realized gated block average against `L`; it may be ignored
+only once its `m`-weighted record on those tests has diverged.  The learner's own
+estimates must not, in `m`-weighted primitive-time average, exceed what it obtains.  A
+learner meeting this has learning error `Σ m_k (L_k − G^obs_k) ≤ o(T)` against every such
+claim whose tested record does not diverge (`GROWING_HORIZON.md` §1) — competence
+against *claims*, not against the controller's value.  A computable such learner exists
+for every declared schedule in which no block is a fixed fraction of all time so far,
+uniformly and online from the schedule's prefix, and for no other
+(`WEIGHTED_BRIA.md` §4).
 
 **Under what additional assumptions does that imply "nearly as well as the best legitimate
 continuation policy on its own trajectory"?**  Two: the policy has an efficiently
-computable contextual promise with vanishing slack, and the history-shift discrepancy
-`Δ_T(π) = Σ_k m_k (G_k(π|H^π) − G_k(π|H^α))` is `o(T)` — supplied by uniform block
-recovery (reset, mixing, bounded memory, reversible amendments) with average block length
-growing, and not by anything the learning theory controls.  The irreversible-branch
-fixture shows the second cannot be dropped (`POLICY_REGRET_FRONTIER.md`).  The two
-questions are kept apart throughout.
+computable contextual claim with vanishing slack, `SLACK_T(π) ≤ o(T)`, and its history
+shift `SHIFT_T(π) = Σ_k m_k (Ĝ_k(π; H^π) − Ĝ_k(π; H^α)) ≤ o(T)` — supplied by uniform block
+recovery (reset, mixing, bounded memory, the catch-up cost of a reversible amendment)
+with average block length growing, and not by anything the learning theory controls.
+Fixture D shows the first cannot be dropped, the irreversible branch the second
+(`POLICY_REGRET_FRONTIER.md`).  The two questions are kept apart throughout.
 
 ## What ports from the paper unchanged
 
@@ -50,32 +74,37 @@ round is.
    weighted no overestimation from `𝒜_K/S_K → 0` (LEAN `overestimation_le_allowance`),
    and coverage from the **capital-adequacy** condition `A_i(K) − m_K → ∞` (LEAN
    `record_lt_of_rejected'`, `wealth_ge_of_no_win`), which replaces `Σ_n A(n,i) = ∞`.
-2. **Existence theorem, sharp.**  A computable weighted BRIA covering the e.c. class
-   exists for a schedule iff `m_K / S_K → 0` (**non-dominance**); the replenishing
-   allowance `a_k = (M_k − M_{k−1}) + 1/k` with a slowly growing support is the witness,
-   `m_k = ⌊log₂k⌋+1` with `A = i^{-2}⌊√k⌋^{-1}` the exact schedule; the obstruction is a
-   liar that promises only on dominant blocks (LEAN `dominant_block_lower_bound`).
+2. **Existence theorem, sharp, with the quantifiers of the pressure pass.**  Allowances
+   with capital adequacy and negligible subsidy exist iff `m_K / S_K → 0`
+   (**non-dominance**); the prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`,
+   `a_k = (M_k − M_{k−1}) + 1/k` is a uniform online witness needing no effectivity
+   assumption; `m_k = ⌊log₂k⌋+1` with `A = i^{-2}⌊√k⌋^{-1}` is an explicit schedule; the
+   obstruction is a liar that promises only on the blocks above a rational threshold
+   (LEAN `dominant_block_lower_bound`), criterion-level.
 3. **The attention bound** `Σ_{wins} m_k (b_k − G_k) ≤ A_i(K)`: wealth is a claim on
    execution time.  Its two faces: without it (unweighted charge on variable blocks) a
    refuted hypothesis of a legitimate macro-BRIA can hold most of primitive time
    (fixture I); with it the one-step auction is provably myopic on a renewable
    investment (fixture A).
-4. **The lease** as the weakest test semantics for a temporally extended promise, with
-   necessity by fixture D and the gate composed by transparency (LEAN
-   `trajGated_eq_traj_of_admitted`), plus the biased-testing argument in dynamic form
-   (G/H).
+4. **Promise–treatment alignment** as the test semantics for a temporally extended
+   claim, with the whole-block lease as its canonical realization, necessity by fixtures
+   D/I, an alternative treatment validly tested by interruption (J), the gate composed by
+   transparency (LEAN `trajGated_eq_traj_of_admitted`), and the biased-testing argument
+   in dynamic form (G/H).
 5. **The frontier.**  Continuation competence does not imply policy regret (fixture L);
-   the exact decomposition `regret = history-shift + slack + learning` (LEAN
-   `regret_decomposition`); uniform block recovery as the single consumer condition.
+   the exact decomposition `Regret = SHIFT + SLACK + LEARN` with observed and external
+   returns separately typed (LEAN `regret_decomposition`, `regret_le_of_bounds`); the
+   three-bridge theorem; `SHIFT ≤ o(T)` one-sided as the consumer condition, uniform
+   block recovery and the catch-up cost as checkable schemas.
 
 ## Strongest theorem
 
-Growing-Horizon Continuation Competence with the Existence Theorem: for any non-dominant
-schedule there is a computable learner that cannot asymptotically underperform, in
-`m`-weighted primitive-time average, any e.c. continuation hypothesis whose contextual
-promises are sound on the constitutional leases it is granted from the learner's actual
-histories; hence every fixed finite investment delay, persistent or renewable, is learned
-(Corollary B).
+Continuation-promise competence with the Existence Theorem: for any non-dominant
+schedule there is a learner, computable uniformly and online from the schedule's prefix,
+whose learning error `Σ_k m_k (e_{h,k} − G^obs_k)` is `o(T)` against every e.c.
+continuation hypothesis whose tested record does not diverge; with vanishing promise
+slack this is competence against the controller's actual-history value, and every fixed
+finite investment delay, persistent or renewable, is learned (Corollary B).
 
 ## Strongest impossibility
 
@@ -86,9 +115,10 @@ unrestricted legitimate policy class while continuation competence holds exactly
 ## Corrections to the dispatch's premises
 
 - "Ordinary one-step gated BRIA can rationally remain myopic" on the exact existing
-  fixture: the *criterion* permits it; the *construction* does not do it, and every BRIA
-  is forced to try the investment infinitely often.  The learner that lost `2H−3` is not a
-  BRIA (it never tests a hypothesis that outpromises it forever).  Item 86's premise that
+  fixture: the *criterion* permits it on density-zero excursions; no BRIA can remain at
+  `base` on a set of positive density; the *construction* invests finitely often and
+  keeps the benefit.  The learner that lost `2H−3` is not a BRIA (it never tests a
+  hypothesis that outpromises it forever).  Item 86's premise that
   "the myopic gated learner is itself legitimate and loses linearly" stands as a fact
   about that learner, not about bounded inductive rationality.
 - The candidate condition `A_i(K)/m_K → ∞` is stronger than needed; the proof uses the
@@ -100,12 +130,14 @@ unrestricted legitimate policy class while continuation competence holds exactly
 
 ## Downstream implication for item 86
 
-Refined in place.  The item's fixture is answered by the paper's own construction (the
-witness at `m = 2` and at every growing schedule); the item's "bounded task regret against
-`Π_leg`" is false for the unrestricted class by fixture L and is replaced by: competence
-against e.c. continuation hypotheses (this round, done, unregistered), plus a
-recoverability certificate for the slow lane and a promise class for `Π_leg`, which is
-what remains open.  `CORRIGIBILITY_COMPOSITION.md` §5.
+Refined in place twice.  The item's fixture is answered by the paper's own construction
+(the witness at `m = 2` and at every growing schedule); the item's "bounded task regret
+against `Π_leg`" is false for the unrestricted class by fixture L and is replaced by:
+learning error controlled against accountable continuation claims (this round, done,
+unregistered), plus a recoverability certificate for legitimate slow-lane continuations
+(catch-up cost), plus a performance-recognizability interface for the values one wants to
+compete on — which is not legitimacy's duty — plus their composition.
+`CORRIGIBILITY_COMPOSITION.md` §6.
 
 ## Dependencies
 
@@ -143,17 +175,20 @@ for the replay-versus-local divergence that the history-shift term specialises.
 
 ## Outstanding maintainer actions
 
-1. Whether `Auction.wealth_sum_eq` / `overestimation_le_allowance` / the Existence Theorem
-   should be registered as statements of record; no filed item is answered at the
-   strength registration needs, so nothing is registered here.
-2. Item 86 is refined, not closed; the refined text names the two remaining objects.
+1. Whether `Auction.wealth_sum_eq` / `overestimation_le_allowance` /
+   `sum_support_jump_le` / the Existence Theorem should be registered as statements of
+   record; no filed item is answered at the strength registration needs, so nothing is
+   registered here.
+2. Item 86 is refined, not closed; the refined text names the three remaining objects.
 
 ## New names introduced (provisional)
 
-continuation hypothesis; execution lease; transparent gate; weighted BRIA; capital
-adequacy `A_i(K) − m_K → ∞`; non-dominance `m_K/S_K → 0`; attention bound;
-horizon-stable promise; `m`-detectable advantage; history-shift discrepancy `Δ_T(π)`;
-uniform block recovery.
+continuation hypothesis; execution treatment; promise–treatment alignment; execution
+lease; transparent gate; weighted BRIA; capital adequacy `A_i(K) − m_K → ∞`;
+non-dominance `m_K/S_K → 0`; prefix constructor; attention bound; continuation-promise /
+actual-history / own-trajectory competence; tested overpromise; condition (R);
+horizon-stable promise; `m`-detectable advantage; history-shift discrepancy `SHIFT_T(π)`;
+three-bridge theorem; uniform block recovery; catch-up cost; `Π_rec,prom`.
 
 ## Attribution
 

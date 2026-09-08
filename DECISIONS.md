@@ -107,8 +107,19 @@ irreversible branch shows no learner reaches the latter, and the own-trajectory
 statement is deferred to a separately typed recoverability condition (uniform block
 recovery) together with the exact decomposition regret = history-shift + slack +
 learning.  (4) The decision-theory-bill round's "myopic gated learner" is recorded as not
-a BRIA; on that round's exact fixture the published construction is competent.
-`PRIORITIES.md` item 86 is refined accordingly and not closed.  Nothing is registered.
+a BRIA; on that round's exact fixture no BRIA can remain at `base` on a set of positive
+density and the published construction keeps the benefit.  *Pressure pass, same day:* the
+existence witness is the prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k`,
+uniform and online with no modulus of convergence, replacing a majorant argument that
+assumed one; the competence statement is against *claims* (learning error), with
+actual-history and own-trajectory competence as the two further levels under vanishing
+slack and vanishing history shift; a continuation hypothesis is `(controller, treatment,
+claim)` and the claim is not by definition a lower bound; test validity is
+promise–treatment alignment with the whole-block lease as the canonical realization; the
+observed return and the external evaluator are typed separately.  `PRIORITIES.md` item 86
+is refined accordingly — recoverability of the slow lane (catch-up cost), a
+performance-recognizability interface that is not legitimacy's duty, and their
+composition — and not closed.  Nothing is registered.
 *Rejected alternatives:* applying the unweighted criterion to a variable-length block
 sequence (a covered, refuted hypothesis can then hold most of primitive time);
 normalising block returns by a running maximum (does not control the weighted sum);

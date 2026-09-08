@@ -63,7 +63,15 @@ an untried option would have paid, and a limited agent can actually run it.
    assumption, and this round leaves it there rather than pretending the learning theory
    supplies it.
 
+   Two things about this are easy to get wrong, and the second pass over the round
+   corrected both.  The agent's guarantee is against what advisers *claim*, not against
+   how good their plans really are: an excellent plan whose adviser claims nothing earns
+   nothing.  And the agent never sees what an untried plan would have done; the
+   statement about "how good the plan really is" belongs to whoever has a model of the
+   world, not to the learner.
+
 **In one line.**  A limited agent can be made to take seriously the claim "give me the
 wheel for a while, under the rules, and I will deliver at least this" — provided
-"a while" is charged for, no single "while" is most of history, and the agent is not
-asked to know what would have happened behind doors it did not open.
+"a while" is charged for, no single "while" is most of history, the claim is close to
+what the plan actually delivers, and the agent is not asked to know what would have
+happened behind doors it did not open.

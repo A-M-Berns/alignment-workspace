@@ -2371,56 +2371,79 @@ and the empirical averaged bridge or its negative.
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
-*Refined by the continuation-BRIA round (2026-09-08).*  The static gate is sound and
-Lipschitz at one occasion.  When an admissible action changes the next admissible set,
-`test_dynamic` of the decision-theory-bill round shows legitimate continuation policies
-induce different admissibility histories, so fixed action-sequence regret is ill-typed.
-Two of that item's premises are corrected: the "myopic gated learner" that loses linearly
-there is an argmax that never tests a hypothesis outpromising it forever, hence **not a
-bounded inductive learner**; and on that exact fixture the published auction is
-competent (it is obliged to try the one-step investment and keeps the persistent benefit).
-The failure a bounded inductive learner actually has is temporal credit assignment: a
-multi-step or renewable investment that no one-step promise can connect to its payoff.
+*Refined by the continuation-BRIA round and its pressure pass (2026-09-08).*  The static
+gate is sound and Lipschitz at one occasion.  When an admissible action changes the next
+admissible set, `test_dynamic` of the decision-theory-bill round shows legitimate
+continuation policies induce different admissibility histories, so fixed action-sequence
+regret is ill-typed.  Two of the item's original premises are corrected: the "myopic gated
+learner" that loses linearly there is an argmax that never tests a hypothesis outpromising
+it forever, hence **not a bounded inductive learner**; and on that exact fixture no BRIA
+can remain at `base` on a set of positive density, while the published auction invests
+finitely often and keeps the persistent benefit.  The failure a bounded inductive learner
+actually has is temporal credit assignment: a multi-step or renewable investment that no
+one-step claim can connect to its payoff.
 
 What the round supplies (`projects/deference/rounds/2026-09-08-continuation-bria/`,
-unregistered): continuation hypotheses `(controller, contextual promise)` tested by
-execution leases through the gate; for a fixed horizon the published criterion verbatim
-and its guaranteed-option theorem; for unbounded horizons the duration-weighted
-criterion, the auction in total-reward units, capital adequacy `A_i(K) − m_K → ∞`, and
-existence of a computable weighted learner covering the e.c. class iff the schedule is
-non-dominant (`m_K / Σ_{k≤K} m_k → 0`); Growing-Horizon Continuation Competence — the
-learner's `m`-weighted primitive-time average is asymptotically at least that of any e.c.
-continuation hypothesis whose promises are sound on the leases it is granted from the
-learner's actual histories — which learns every fixed finite investment delay; and the
-irreversible-branch witness that this does **not** yield regret against `Π_leg` on its
-own trajectories, with the exact decomposition regret = history-shift + promise slack +
-learning error.  The item's "bounded task regret against `Π_leg`" is false for the
-unrestricted class.
+unregistered): continuation hypotheses `(controller, declared advisor-side treatment,
+accountable claim)` — the claim may be wrong — tested by executing the pair through the
+gate with the exterior live, the whole-block lease being the canonical treatment; for a
+fixed horizon the published criterion verbatim and its guaranteed-option theorem; for
+unbounded horizons the duration-weighted criterion, the auction in total-reward units,
+capital adequacy `A_i(K) − m_K → ∞`, and allowances satisfying it with negligible subsidy
+existing iff the schedule is non-dominant (`m_K / Σ_{k≤K} m_k → 0`), with the prefix
+constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k` as a uniform online witness needing
+no modulus of convergence; **continuation-promise competence** — the learner's observed
+`m`-weighted average is asymptotically at least the `m`-weighted average of the *claims*
+of every covered hypothesis whose tested record does not diverge — which with vanishing
+promise slack is competence against the controller's actual-history value and learns
+every fixed finite investment delay; and the irreversible-branch witness that this does
+**not** yield regret against `Π_leg` on its own trajectories.  The exact identity, with
+the learner's observed return `G^obs` and an external rollout evaluator `Ĝ` typed
+separately, is `Regret_T(α, π) = SHIFT_T + SLACK_T + LEARN_T`
+(`SHIFT = Σ m_k (Ĝ(π;H^π) − Ĝ(π;H^α))`, `SLACK = Σ m_k (Ĝ(π;H^α) − L)`,
+`LEARN = Σ m_k (L − G^obs(α))`), and low external regret holds exactly for
+`Π_rec,prom = {legitimate π : covered claim with non-divergent record, SLACK ≤ o(T), SHIFT ≤ o(T)}`.
+The item's "bounded task regret against `Π_leg`" is false for the unrestricted class.
 
-What remains, and is the item: (1) a **recoverability certificate** for the slow lane —
-the condition under which the history-shift discrepancy
-`Δ_T(π) = Σ_k m_k (G_k(π|H^π) − G_k(π|H^α))` is `o(T)` for `π ∈ Π_leg` (uniform block
-recovery holds for reversible amendments and fails for irreversible ones; a form the
-constitution can certify, or the learner can check from realized data, is open); (2) the
-**promise class** of `Π_leg` — which legitimate continuation policies carry an
-efficiently computable contextual promise with vanishing slack on the learner's
-histories, and how such a promise is produced from the constitution's own certificates;
-(3) with (1) and (2), the composed corollary `V_T(π) − V_T(α) ≤ o(T)` for that class on
-the round's two-state process with a reversible amendment.  A weighted analogue of the
-published Theorem 4 (unrefuted averaged promises) is a side question.
+Legitimacy certifies admissibility, authorization, protected correction and legitimate
+transition — hence which continuations are allowed comparators — and does **not** certify
+task reward or future-principal value.  The item therefore asks for three things, and
+task-value recognition is not a duty of legitimacy:
 
-*Deliverable shape:* the certificate and the promise class with their witnesses, or the
-negative for either.
+1. **Recoverability of legitimate slow-lane continuations** — the condition under which
+   `SHIFT_T(π) ≤ o(T)` for `π ∈ Π_leg`, one-sided along the learner's actual block starts.
+   The candidate theorem shape is the **catch-up cost**: an amendment `π` requested can be
+   requested from the learner's history at cost bounded by the investment length `d`, so
+   the per-block shift is at most `d` and `SHIFT_T ≤ dK = o(T)` with growing average
+   blocks (exact on the round's fixture).  Wanted: this as a property of the slow-lane
+   relation — which authorized transitions have finite catch-up cost — and whether any
+   form is certifiable by the constitution or checkable by the learner from realized
+   data.  Irreversible amendments have no finite catch-up cost; the policies that make
+   them fall outside the class, which is a statement about the class and not a defect.
+2. **A promise-recognizability interface for performance** — which legitimate
+   continuation policies carry an efficiently computable contextual claim with
+   `SLACK_T ≤ o(T)` on the learner's histories, and where such claims come from (a
+   learning hypothesis after finitely many refutations; a certified lower bound supplied
+   with the value; an averaged claim of the published Theorem 4's kind, whose weighted
+   form is a side question).  This is an interface on the value's settlement and the
+   hypothesis class, separate from the legitimacy certificate.
+3. **Composition** — with (1) and (2), the corollary `Regret_T(α, π) ≤ o(T)` for
+   `π ∈ Π_rec,prom` on the round's two-state process with a reversible amendment, stated
+   with the three bridges explicit.
+
+*Deliverable shape:* the recoverability condition on the slow lane with its witness; the
+recognizability interface with one realization; the composed corollary — or the negative
+for any of the three.
 *Acceptance check:* `python3 tests/run.py` green; any Lean audits clean.
 
-*Context:* `CORRIGIBILITY_COMPOSITION.md` §5 and `POLICY_REGRET_FRONTIER.md` §4 of
+*Context:* `PRESSURE_PASS.md`, `CORRIGIBILITY_COMPOSITION.md` §6 and
+`POLICY_REGRET_FRONTIER.md` §3–4 of
 `projects/deference/rounds/2026-09-08-continuation-bria/`; `NORMATIVE_CHOICE_THEOREM.md`
 §5 and `CANDIDATE_DECISION_THEORIES.md` §2.8 of
 `projects/deference/rounds/2026-09-06-decision-theory-bill/`.
 *Consumed by:* the task-competence half of the gated architecture; the corrigibility
 specialization's investing-in-amendment case.
-*A solution ships:* the certificate and class with the composed corollary, or the
-negative.
+*A solution ships:* the three objects with the composed corollary, or the negative.
 
 ### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]**
 

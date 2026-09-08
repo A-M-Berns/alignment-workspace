@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 290 names, 180 of them Lean only
+## deference — 293 names, 181 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -113,7 +113,10 @@ change, and the count of those is the size of the free choice remaining.
 | `allowanceOf` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.allowanceOf` |
 | `boundary` | def | 2026-09-08-continuation-bria | wiki, prose | `Workspace.Deference.ContinuationBRIA.boundary` |
 | `chargedRecord` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.chargedRecord` |
+| `learnErr` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.learnErr` |
 | `record` | def | 2026-09-08-continuation-bria | wiki, prose | `Workspace.Deference.ContinuationBRIA.Auction.record` |
+| `shift` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.shift` |
+| `slack` | def | 2026-09-08-continuation-bria | wiki | `Workspace.Deference.ContinuationBRIA.slack` |
 | `totalAllowance` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.totalAllowance` |
 | `traj` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.traj` |
 | `trajPlain` | abbrev | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.trajPlain` |
@@ -216,7 +219,7 @@ change, and the count of those is the size of the free choice remaining.
 | `enc` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.AuthLabel.enc` |
 | `hToA` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.hToA` |
 | `live` | def | 2026-08-12-reachable-corrective-control | wiki, note, prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.live` |
-| `obs` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.obs` |
+| `obs` | def | 2026-08-12-reachable-corrective-control | prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.obs` |
 | `resetRun` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.resetRun` |
 | `s0` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.s0` |
 | `s1a` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.s1a` |

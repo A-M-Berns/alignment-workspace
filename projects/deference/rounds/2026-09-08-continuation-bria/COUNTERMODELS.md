@@ -1,6 +1,6 @@
 # Countermodels and fixtures A–O
 
-All exact (`fractions.Fraction`), run by `tests/run.py` (37 tests, under a second).
+All exact (`fractions.Fraction`), run by `tests/run.py` (53 tests, under two seconds).
 Environments in `src/envs.py`; the auction in `src/bria.py`.  Rewards of the
 decision-theory-bill process divided by 3: work `1/3`, invest `0`, benefit `1`.
 
@@ -20,14 +20,33 @@ decision-theory-bill process divided by 3: work `1/3`, invest `0`, benefit `1`.
 | dominance | `test_weighted.Dominance` | `m_k = 2^k`: at every liar test the weighted overestimation exceeds `1/5` and the block is at least half of all time. | FIX; LEAN `dominant_block_lower_bound` |
 | algebra | `test_weighted.Algebra` | wealth identity exact under both charges, wealths nonnegative; macro vs primitive averages differ (`0` vs `→ δ`); bounded horizons rescale to the ordinary criterion. | FIX; LEAN `wealth_sum_eq`, `wealth_nonneg` |
 | **L** history-shift impossibility | `test_frontier.L_IrreversibleBranch` | Blind prior at the branch; learner takes `A`, environment makes `B` good; continuation competence exact (every promise kept, learning error 0); regret `(2/3)(T−1)`, all history-shift but 2 units of slack at the branch block.  No deterministic learner escapes. | FIX |
-| decomposition | `test_frontier.RegretDecomposition` | `V(π) − V(α) = Δ + slack + learning` exact on a generic run. | FIX; LEAN `regret_decomposition` |
+| decomposition | `test_frontier.RegretDecomposition` | `V(π) − V(α) = SHIFT + SLACK + LEARN` exact on a generic run (external terms with `Ĝ`; see pressure fixture H for the typing). | FIX; LEAN `regret_decomposition` |
 | **M** recoverable environment | `test_frontier.M_Recoverable` | Episodic reset: the two block values coincide.  Mixing: they differ by exactly one step per block, `Δ/T ≤ 1/m`.  Irreversible branch: differ by `(2/3)m`. | FIX |
-| **N** easy policy, hard value | `test_frontier.N_EasyPolicyHardValue` | Controller paying the `t`-th bit of `√2`; promise `2/5` unrefuted over 4000 steps (record above 300). | FIX (PAPER Thm 4's class) |
+| **N** controller code vs promise code | `test_frontier.N_EasyPolicyHardValue` | Controller paying the `t`-th bit of `√2`; promise `2/5` unrefuted over 4000 steps (record above 300).  A type distinction only; no complexity separation is claimed (pressure pass §9). | FIX (PAPER Thm 4's class), conceptual |
 | **O** learning hypothesis | `test_frontier.O_LearningHypothesis` | Min-observed-minus-margin promise; must start optimistic to be tested; refuted once (record `−1`), then promises `2/3 − 1/10` from `base` and keeps it; the pessimistic prior is never tested. | FIX |
 | reduction | `test_fixed_horizon.Reduction` | `m ≡ 1` with single-action controllers: duration and block weighting give identical runs; equal-block average identity. | FIX; LEAN `blockAverage_eq` |
 
 Fixtures A, D, I and L are the negative results the round rests on; B, F, H, J
 (replenishing), K, M and O are the positive witnesses.  The dispatch's A ("one-step
-BRIA can rationally remain myopic") is established for the criterion in every case and
-for the construction in the three-step and renewable cases, and is *false* for the
-construction on the existing one-step fixture.
+BRIA can rationally remain myopic") is established for the criterion in every case
+(density-zero excursions) and for the construction in the three-step and renewable
+cases, and is *false* for the construction on the existing one-step fixture.
+
+## Pressure-pass fixtures (`test_pressure.py`, 16 tests)
+
+| fixture | test | what it shows | class |
+|---|---|---|---|
+| **A** effectivity gap | `A_EffectivityGap` | The prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k` on a spiky non-dominant schedule (spikes at `4^j` of share `1/(j+1)`) and on log / constant / linear ones: total allowance within `2√(S_K M_K) + √S_K(1 + ln K)`, share of time decreasing, `A_1(K) − m_K` increasing; the liar tested 68 times in 1024 rounds with weighted overestimation below `0.06`. | FIX; LEAN `sum_support_jump_le` |
+| **B** explicit effective schedule | `B_ExplicitSchedule` | `m_k = ⌊log₂k⌋+1` under the prefix constructor: liar tested at 32 and 1024, overestimation below `1/500`, `s(K)² M_K ≤ S_K`. | FIX |
+| **C** criterion vs construction | `C_CriterionVersusConstruction` | The auction on the persistent one-step amendment requests twice (an artefact of wealths) and stays; the criterion-level arithmetic: `α^e = 1` on `base` rounds of density `p` costs overestimation `2p/3`, so density-zero excursions are permitted and positive density is not. | FIX |
+| **D** promise vs value | `D_PromiseVersusValue` | Controller worth 1, promise 0: never followed, learner obtains `1/3`, `LEARN ≤ 0` trivially. | FIX |
+| **E** vanishing slack | `E_VanishingSlack` | Same controller, promise `1 − 1/(k+1)`: followed from the first round, tail average exactly 1, slack `o(S_K)`. | FIX |
+| **F** finite overpromise | `F_FiniteOverpromise` | Promise 1 on three early tests of a controller worth `2/3` (record `−3`, rejected only while wealth-bound), then sound and followed at exactly `2/3`. | FIX |
+| **G** sublinear overpromise | `G_SublinearOverpromise` | Overpromise `1/k` per test on a density-zero test set with divergent harmonic sum: coverage satisfied, no overestimation, average reward below `1/14` while the controller is worth `1/2` — the criterion gives nothing. | FIX (negative) |
+| **H** counterfactual typing | `H_CounterfactualTyping` | Comparator executed on fewer than 6 of 60 blocks; `G^obs` exists only there and equals `Ĝ` there; `Regret = SHIFT + SLACK + LEARN` exact with `Ĝ`. | FIX; LEAN `regret_decomposition` |
+| **I** treatment mismatch | `I_TreatmentMismatch` | Lease-claim `1/2` versus prefix-execution return `5/18`; `valid_test` false. | FIX |
+| **J** alternative treatment | `J_AlternativeTreatment` | Claim `5/18` under "one step, then work" is exactly kept by that treatment; record 0. | FIX |
+| **K** discounted finite block | `K_DiscountedFiniteBlock` | Truncated discount weights `≤ 1/(1−γ)`; weighted overestimation is `W` times the rescaled unweighted one. | FIX |
+| **L** infinite discounted claim | `L_InfiniteDiscountedClaim` | Two environments agreeing on the first `m` rewards differ in discounted value by `γ^m Δ`; no finite test settles the claim. | FIX; OPEN |
+| **M** recoverable amendment | `M_RecoverableAmendment` | Per-block history shift of the investor between `base` and `expanded` is exactly `d` for every `m ≥ d`: the catch-up cost. | FIX |
+| **N** irreversible branch | `N_IrreversibleBranch` | Shift `(2/3) m` per block; unchanged impossibility. | FIX |

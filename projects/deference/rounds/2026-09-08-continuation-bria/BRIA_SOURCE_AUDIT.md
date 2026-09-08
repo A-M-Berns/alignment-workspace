@@ -94,14 +94,14 @@ the alternatives are estimates (the paper's) or independent randomization.
 | paper | this round |
 |---|---|
 | round `t`, `DP_t`, `c_t`, `r_t` | macro-round `k`, menu `DP'_k` of `m_k`-step controllers, chosen controller, block average `G_k` |
-| hypothesis `(h^c_t, h^e_t)` | continuation hypothesis `(q_{h,k}, e_{h,k})`: contingent controller from the actual history, per-step promise about its gated block average |
+| hypothesis `(h^c_t, h^e_t)` | continuation hypothesis `(q_{h,k}, τ_{h,k}, e_{h,k})`: contingent controller from the actual history, declared advisor-side treatment, per-step *claim* about its gated block average under that treatment — a claim that may be wrong, as in the paper |
 | testing `h` at `t` = choosing `h^c_t` | testing `h` at `k` = executing `q_{h,k}` through the gate for the whole block: the **execution lease** |
 | `L_T/T ≤ 0` | fixed horizon: unchanged; variable horizon: `Σ m_k (α^e_k − G_k) / Σ m_k ≤ 0` |
 | record `Σ_M (r_t − h^e_t)` | fixed: unchanged; variable: `Σ_{M} m_k (G_k − h^e_k)` |
 | wealth in reward units, bid `min(h^e, w)` | wealth in total-reward units, per-step bid `min(e, W / m_k)`, winner pays `m_k · bid`, receives `m_k · G_k` |
-| `Σ_n A(n,i) = ∞` | `A_i(k) − m_k → ∞` (capital adequacy) |
+| `Σ_n A(n,i) = ∞` | `A_i(k) − m_k → ∞` (capital adequacy); witness the prefix constructor `s(k) = ⌊√(S_k/M_k)⌋`, `a_k = ΔM_k + 1/k` |
 | `(1/N) Σ_{n≤N} Σ_i A(n,i) → 0` | `Σ_{k≤K} Σ_i A(k,i) / Σ_{k≤K} m_k → 0` (weaker per macro-round) |
-| Theorem 3 | Fixed-Horizon and Growing-Horizon Continuation Competence (`FIXED_HORIZON.md` §3, `GROWING_HORIZON.md` §1) |
+| Theorem 3 | Fixed-Horizon and continuation-promise competence (`FIXED_HORIZON.md` §3, `GROWING_HORIZON.md` §1), under condition (R) — the negation of Definition 6's divergence clause — which is the weakest hypothesis the paper's own proof uses |
 | Appendix D | `CONTINUATION_HYPOTHESES.md` §3, fixtures G/H |
 
 The mapping is a typing of the same criterion; the paper's theorems are cited through it

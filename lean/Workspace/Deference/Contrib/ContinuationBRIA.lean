@@ -36,8 +36,15 @@ average `G k ≥ 0`.  The bid is wealth-bounded: `w k · b k ≤ W k (star k)`.
 controller is admitted along its gated trajectory, the gated and ungated trajectories
 coincide for the length of the lease.
 
-**Regret decomposition** (`regret_decomposition`): the own-trajectory value gap
-splits exactly into history-shift, promise slack and learning error.
+**Regret decomposition** (`regret_decomposition`, `regret_le_of_bounds`): with the
+learner's observed return, the external actual-history comparator return and the external
+own-history comparator return typed separately, the own-trajectory value gap splits
+exactly into history shift, promise slack and learning error, and bounds on the three
+bound the gap.
+
+**Uniform allowance constructor** (`sum_support_jump_le`): support-weighted jumps of the
+running maximum sum to at most `2 B (√M_K − √M_0)` when the support is bounded by
+`B / √M`; with `B = √S_K` this is the modulus-free allowance bound of the pressure pass.
 
 **Dominance** (`dominant_block_lower_bound`): when the current block carries a fraction
 `c` of all primitive time so far, one test on which the estimate exceeds the realized
@@ -50,6 +57,7 @@ Names are provisional (`AGENTS.md` standard 6).
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Algebra.Order.BigOperators.Group.Finset
 import Mathlib.Algebra.BigOperators.Field
+import Mathlib.Analysis.SpecialFunctions.Sqrt
 import Mathlib.Tactic
 
 namespace Workspace.Deference.ContinuationBRIA
@@ -280,17 +288,106 @@ theorem trajGated_eq_traj_of_admitted (gate : S → Act → Act) (step : S → A
 
 end Gate
 
-/-! ## 4. The regret decomposition -/
+/-! ## 4. The external regret decomposition
 
-/-- `Σ m (Gown − Gα) = Σ m (Gown − Gfrom) + Σ m (Gfrom − L) + Σ m (L − Gα)`: own-trajectory
-value gap = history-shift + promise slack + learning error, exactly. -/
-theorem regret_decomposition (m Gown Gfrom L Gα : ℕ → ℝ) (K : ℕ) :
-    ∑ k ∈ range K, m k * (Gown k - Gα k)
-      = ∑ k ∈ range K, m k * (Gown k - Gfrom k)
-        + ∑ k ∈ range K, m k * (Gfrom k - L k)
-        + ∑ k ∈ range K, m k * (L k - Gα k) := by
+Three separately typed return sequences: `Gobs` is the learner's *observed* block
+average (the only one the criterion and the auction see); `Gext` is an external
+evaluator's value of the comparator `π` started from the learner's actual block-start
+history; `Gown` is the same evaluator's value of `π` on `π`'s own trajectory.  `L` is the
+promise `π`'s hypothesis makes.  The last two exist only under a declared rollout
+semantics and are never consumed by the learner. -/
+
+/-- Learning error: promises against the learner's observed returns. -/
+def learnErr (m L Gobs : ℕ → ℝ) (K : ℕ) : ℝ := ∑ k ∈ range K, m k * (L k - Gobs k)
+
+/-- Promise slack: the comparator's external actual-history value against its promise. -/
+def slack (m Gext L : ℕ → ℝ) (K : ℕ) : ℝ := ∑ k ∈ range K, m k * (Gext k - L k)
+
+/-- History shift: the comparator's own-trajectory value against its actual-history value. -/
+def shift (m Gown Gext : ℕ → ℝ) (K : ℕ) : ℝ := ∑ k ∈ range K, m k * (Gown k - Gext k)
+
+/-- At a block boundary, `Σ m (Gown − Gobs) = shift + slack + learnErr`, exactly. -/
+theorem regret_decomposition (m Gobs Gext Gown L : ℕ → ℝ) (K : ℕ) :
+    ∑ k ∈ range K, m k * (Gown k - Gobs k)
+      = shift m Gown Gext K + slack m Gext L K + learnErr m L Gobs K := by
+  unfold shift slack learnErr
   rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
   exact Finset.sum_congr rfl fun k _ => by ring
+
+/-- The three-bridge corollary: bounds on the three terms bound the regret. -/
+theorem regret_le_of_bounds (m Gobs Gext Gown L : ℕ → ℝ) (K : ℕ) (a b c : ℝ)
+    (hl : learnErr m L Gobs K ≤ a) (hs : slack m Gext L K ≤ b)
+    (hh : shift m Gown Gext K ≤ c) :
+    ∑ k ∈ range K, m k * (Gown k - Gobs k) ≤ a + b + c := by
+  rw [regret_decomposition m Gobs Gext Gown L K]
+  linarith
+
+/-! ## 4a. The uniform allowance constructor
+
+With `M` the running maximum of the schedule (nondecreasing, nonnegative) and a support
+`s k` bounded by `B / √(M (k+1))`, the support-weighted jumps sum to at most
+`2 B (√(M K) − √(M 0))`.  With `B = √S_K` and `s k = ⌊√(S_k / M_k)⌋ ≤ √(S_K / M_k)` this
+is the `2√(S_K M_K)` part of the allowance bound, which needs no modulus of
+convergence. -/
+
+theorem jump_div_sqrt_le (a b : ℝ) (hb : 0 ≤ b) (hab : b ≤ a) :
+    (a - b) / Real.sqrt a ≤ 2 * (Real.sqrt a - Real.sqrt b) := by
+  rcases eq_or_lt_of_le (hb.trans hab) with ha | ha
+  · have hb0 : b = 0 := by linarith
+    subst ha; subst hb0; simp
+  · have hsa : 0 < Real.sqrt a := Real.sqrt_pos.mpr ha
+    have hsb : 0 ≤ Real.sqrt b := Real.sqrt_nonneg b
+    have hle : Real.sqrt b ≤ Real.sqrt a := Real.sqrt_le_sqrt hab
+    rw [div_le_iff₀ hsa]
+    have ea : Real.sqrt a * Real.sqrt a = a := Real.mul_self_sqrt ha.le
+    have eb : Real.sqrt b * Real.sqrt b = b := Real.mul_self_sqrt hb
+    nlinarith [mul_nonneg hsb (sub_nonneg.mpr hle)]
+
+theorem sum_jump_div_sqrt_le (M : ℕ → ℝ) (hM0 : 0 ≤ M 0) (hmono : ∀ k, M k ≤ M (k + 1))
+    (K : ℕ) :
+    ∑ k ∈ range K, (M (k + 1) - M k) / Real.sqrt (M (k + 1))
+      ≤ 2 * (Real.sqrt (M K) - Real.sqrt (M 0)) := by
+  have hnn : ∀ k, 0 ≤ M k := by
+    intro k
+    induction k with
+    | zero => exact hM0
+    | succ k ih => exact ih.trans (hmono k)
+  induction K with
+  | zero => simp
+  | succ K ih =>
+    rw [Finset.sum_range_succ]
+    have := jump_div_sqrt_le (M (K + 1)) (M K) (hnn K) (hmono K)
+    linarith
+
+/-- Support-weighted jumps: `s k · ΔM_k ≤ B · ΔM_k / √M_{k+1}` termwise, hence the sum
+is at most `2 B (√M_K − √M_0)`. -/
+theorem sum_support_jump_le (M s : ℕ → ℝ) (B : ℝ) (hB : 0 ≤ B) (hM0 : 0 ≤ M 0)
+    (hmono : ∀ k, M k ≤ M (k + 1))
+    (hs : ∀ k, s k * Real.sqrt (M (k + 1)) ≤ B) (K : ℕ) :
+    ∑ k ∈ range K, s k * (M (k + 1) - M k) ≤ 2 * B * (Real.sqrt (M K) - Real.sqrt (M 0)) := by
+  have hnn : ∀ k, 0 ≤ M k := by
+    intro k
+    induction k with
+    | zero => exact hM0
+    | succ k ih => exact ih.trans (hmono k)
+  have hterm : ∀ k, s k * (M (k + 1) - M k) ≤ B * ((M (k + 1) - M k) / Real.sqrt (M (k + 1))) := by
+    intro k
+    rcases eq_or_lt_of_le (hnn (k + 1)) with h0 | hpos
+    · have : M k = 0 := le_antisymm (by rw [h0]; exact hmono k) (hnn k)
+      rw [← h0, this]; simp
+    · have hsq : 0 < Real.sqrt (M (k + 1)) := Real.sqrt_pos.mpr hpos
+      have hd : 0 ≤ M (k + 1) - M k := sub_nonneg.mpr (hmono k)
+      rw [mul_div_assoc', le_div_iff₀ hsq]
+      have := hs k
+      nlinarith
+  calc ∑ k ∈ range K, s k * (M (k + 1) - M k)
+      ≤ ∑ k ∈ range K, B * ((M (k + 1) - M k) / Real.sqrt (M (k + 1))) :=
+        Finset.sum_le_sum fun k _ => hterm k
+    _ = B * ∑ k ∈ range K, (M (k + 1) - M k) / Real.sqrt (M (k + 1)) := by
+        rw [Finset.mul_sum]
+    _ ≤ B * (2 * (Real.sqrt (M K) - Real.sqrt (M 0))) :=
+        mul_le_mul_of_nonneg_left (sum_jump_div_sqrt_le M hM0 hmono K) hB
+    _ = 2 * B * (Real.sqrt (M K) - Real.sqrt (M 0)) := by ring
 
 /-! ## 5. The dominance obstruction -/
 
@@ -353,4 +450,8 @@ end Workspace.Deference.ContinuationBRIA
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.wealth_ge_of_no_win
 #print axioms Workspace.Deference.ContinuationBRIA.trajGated_eq_traj_of_admitted
 #print axioms Workspace.Deference.ContinuationBRIA.regret_decomposition
+#print axioms Workspace.Deference.ContinuationBRIA.regret_le_of_bounds
+#print axioms Workspace.Deference.ContinuationBRIA.jump_div_sqrt_le
+#print axioms Workspace.Deference.ContinuationBRIA.sum_jump_div_sqrt_le
+#print axioms Workspace.Deference.ContinuationBRIA.sum_support_jump_le
 #print axioms Workspace.Deference.ContinuationBRIA.dominant_block_lower_bound

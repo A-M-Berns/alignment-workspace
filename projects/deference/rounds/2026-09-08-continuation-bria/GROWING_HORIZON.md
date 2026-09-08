@@ -1,147 +1,191 @@
-# Growing-horizon continuation competence
+# Growing-horizon continuation competence — *[repaired by the pressure pass]*
 
-Labels as in `FIXED_HORIZON.md`.  Provisional names: *horizon-stable promise*,
-*m-detectable advantage*.
+Labels as in `FIXED_HORIZON.md`.  Provisional names: *continuation-promise competence*,
+*actual-history continuation competence*, *own-trajectory continuation competence*,
+*tested overpromise*, *horizon-stable promise*, *m-detectable advantage*.
 
-## 1. The theorem
+## 0. Two returns, one observed
 
-**Growing-Horizon Continuation Competence** (DERIVED from the weighted criterion; the
-algebra of the construction LEAN; the criterion's consequence is the paper's Theorem 3
-argument with weights).
+Block `k` has an **observed** return `G^obs_k ∈ [0,1]`: the realized gated block average
+of the controller actually executed.  This is all the criterion, the records and the
+auction ever see.  An **external** block evaluator `Ĝ_k(q; H)` — the value a declared
+rollout semantics assigns to controller `q` started from history `H` — is a theorist's
+object; it agrees with `G^obs_k` on the block where `q` was executed from `H`, and it is
+otherwise unobserved.  `POLICY_REGRET_FRONTIER.md` §1 fixes the typing.  Everything in §1
+below uses only `G^obs`; §2 uses `Ĝ`.
 
-Let `(m_k)` be a declared schedule with `S_K → ∞`, and `α` a weighted continuation-BRIA
-covering a class `H_cont` of continuation hypotheses.  Let `h ∈ H_cont` make **sound
-contextual promises on its tests**: whenever `h`'s controller is executed through the gate
-for block `k` from the learner's actual history, the realized block average satisfies
-`G_k ≥ L_k := h^e_k`.  Then
+## 1. The theorem, with the promise condition it actually consumes
+
+A continuation hypothesis `h = (q_h, e_h)` makes an accountable contextual claim `e_{h,k}`
+at each block; the claim may be wrong.  Let `M_h` be the learner's test set for `h`
+(rounds where `h`'s controller is executed under `h`'s declared treatment) and define
+`h`'s **weighted record** and **tested overpromise**
 
 ```
-liminf_K  Σ_{k≤K} m_k (G_k(α) − L_k) / S_K  ≥ 0.
+ℓ^h_K  := Σ_{k ∈ M_h, k ≤ K} m_k (G^obs_k − e_{h,k})
+O^h_K  := Σ_{k ∈ M_h, k ≤ K} m_k (e_{h,k} − G^obs_k)_+ .
+```
+Both are functions of realized data only.
+
+**Theorem 1 — continuation-promise competence** (DERIVED from the weighted criterion;
+the paper's Theorem 3 argument with weights and the weakest hypothesis it uses).  Let
+`α` be a weighted continuation-BRIA covering `h`.  If
+
+```
+(R)   for some C,  ℓ^h_K ≥ −C  for infinitely many rounds K at which α rejects h
+```
+— exactly the negation of coverage's divergence clause, so in particular if `ℓ^h_K` is
+bounded below, in particular if `sup_K O^h_K < ∞` (finite total tested overpromise), in
+particular if
+`h` overpromises on at most finitely many of its tests, in particular if `h` is sound on
+every test — then `α` rejects `h` finitely often, `α^e_k ≥ e_{h,k}` for `k ≥ k_0`, and the
+**learning error**
+
+```
+LEARN_K(h) := Σ_{k≤K} m_k (e_{h,k} − G^obs_k(α))  ≤  S_{k_0} + Σ_{k≤K} m_k (α^e_k − G^obs_k(α))  =  o(S_K).
 ```
 
-Proof.  `h`'s weighted record on every test set is `Σ m_k (G_k − L_k) ≥ 0`, so `h` is
-rejected finitely often: `α^e_k ≥ L_k` for `k ≥ k_0`.  Then
-`Σ_{k≤K} m_k (G_k − L_k) = Σ m_k (G_k − α^e_k) + Σ m_k (α^e_k − L_k) ≥ −o(S_K) − S_{k_0}`.
-∎
+Proof.  Coverage says: `B_h` finite, or `ℓ^h_K → −∞` along `B_h`.  (R) excludes the
+second, so `B_h` is finite; then `LEARN_K = Σ m_k (e_k − α^e_k) + Σ m_k (α^e_k − G^obs_k)`,
+the first sum is at most `S_{k_0}`, the second is `o(S_K)` by weighted no
+overestimation.  ∎
 
-Existence of such an `α` for the full e.c. class is `WEIGHTED_BRIA.md` §4: exactly when
-`m_K / S_K → 0`.  The theorem itself needs only `S_K → ∞`; non-dominance is the price of
-having a learner to apply it to.
+What the theorem says and does not say.  It compares the learner's observed reward with
+the hypothesis's *promises*, not with the controller's value.  A controller worth 1
+whose hypothesis promises 0 yields `LEARN ≤ 0` and no competence against 1 (FIX
+`test_pressure.D_PromiseVersusValue`).  The first version of this document stated the
+conclusion as "cannot underperform a hypothesis whose promises are sound"; that is
+Theorem 1 read as a statement about promises, and every sentence that read it as a
+statement about the controller's value is withdrawn.
 
-**Primitive-time form.**  With `ℓ_t := L_k` for `t` in block `k`,
-`liminf_T (1/T) Σ_{t≤T} (r_t − ℓ_t) ≥ 0` at block boundaries (LEAN
-`sum_blocks_eq_weighted`), and at other `T` the error is at most `M_K / S_K → 0` under
-non-dominance — which is a second place the condition is needed, and the reason the
-dispatch's `max_{j≤K} m_j / Σ_{j≤K} m_j → 0` is the right non-dominance to state.
+**The promise hierarchy** (FIX `test_pressure.E`, `F`, `G`):
 
-## 2. Which delayed plans become learnable
+| condition on `h` | Theorem 1 | witness |
+|---|---|---|
+| sound on every test | yes | the sound hypotheses of every fixture |
+| eventually sound: wrong on finitely many tests, bounded total | yes | `F_FiniteOverpromise`: promise 1 on three early tests of a controller worth 2/3, record `−3`, then followed |
+| record bounded below (or merely `≥ −C` infinitely often along rejections) | yes — this is (R) | — |
+| sublinear tested overpromise, `O^h_K = o(S_K)` but `→ ∞` | **no** | `G_SublinearOverpromise`: overpromise `1/k` per test; a BRIA may test it on a density-zero set with divergent harmonic sum, satisfy coverage as the record tends to `−∞`, reject it elsewhere and obtain nothing there |
 
-The theorem is about promises; what a plan gains from growing horizons is that a promise
-sound at every long enough horizon eventually competes.
+So the hierarchy the dispatch hoped for stops at (R): at the criterion level, a
+hypothesis whose record diverges *at any rate* may be rejected forever.  The construction
+is more forgiving — its wealth `W = A_i + record + (paid < promised)` keeps a slowly
+diverging hypothesis in play as long as `A_i(K) + ℓ^h_K` stays above the block's
+liability — but that is a property of one auction and one allowance, not of the
+criterion, and it is not a theorem here.  A hypothesis that *learns* its promise
+(`test_frontier.O_LearningHypothesis`) is the eventually-sound row: one refutation per
+state class, then (R).
 
-**Definition** (provisional).  A continuation policy `π` has a **horizon-stable lower
-bound** `L(H)` at a history `H` from horizon `m_0` if for every `m ≥ m_0` its gated
-`m`-block average from `H` is at least `L(H)`.  It has an **`m`-detectable advantage**
-`δ` over `π'` at `H` if its `m`-block average from `H` exceeds `π'`'s by `δ`.
+## 2. Actual-history and own-trajectory competence
 
-**Corollary A — fixed horizons are subsumed.**  If `π`'s hypothesis promises a
-horizon-stable lower bound `L_k = L(H_{t_k})` from `m_0` and `m_k ≥ m_0` for `k ≥ k_1`,
-then `α`'s primitive-time reward is asymptotically at least the `m_k`-weighted average of
-`L_k`.  (Blocks before `k_1` contribute a constant.)  This is not "every fixed-`m`
-advantage transfers": a controller whose value over `m` steps is high and over `2m` steps
-is low has no horizon-stable bound above its `2m` value, and the theorem does not credit
-it.  What transfers is what is sustainable.
+With the external evaluator, define for `h = (q, e)` the **promise slack** and, for a
+policy `π` with its own trajectory, the **history shift**:
+
+```
+SLACK_K(h) := Σ_{k≤K} m_k ( Ĝ_k(q; H^α_{t_k}) − e_{h,k} )
+SHIFT_K(π) := Σ_{k≤K} m_k ( Ĝ_k(π; H^π_{t_k}) − Ĝ_k(π; H^α_{t_k}) ).
+```
+
+**Theorem 2 — actual-history continuation competence.**  Under (R) and
+`SLACK_K(h) ≤ o(S_K)` (one-sided: the promise is not too *loose*; overpromising on
+untested blocks only helps this inequality and only hurts (R) if it happens on tests),
+
+```
+Σ_{k≤K} m_k ( Ĝ_k(q; H^α_{t_k}) − G^obs_k(α) )  =  SLACK_K + LEARN_K  ≤  o(S_K).
+```
+FIX `test_pressure.E_VanishingSlack`: promise `1 − 1/(k+1)` for a controller worth 1;
+slack `Σ m_k/(k+1) = o(S_K)`; the learner's tail average is exactly 1.
+
+**Theorem 3 — own-trajectory continuation competence.**  Add `SHIFT_K(π) ≤ o(S_K)`:
+`Σ m_k (Ĝ_k(π; H^π) − G^obs_k(α)) ≤ o(S_K)`.  This is `POLICY_REGRET_FRONTIER.md`'s
+three-bridge theorem (LEAN `regret_decomposition`, `regret_le_of_bounds`).
+
+Existence of a learner for Theorems 1–3 is `WEIGHTED_BRIA.md` §4: for every non-dominant
+schedule, uniformly and online.  The theorems themselves need only `S_K → ∞`; the
+primitive-time form at non-boundary times needs `M_K/S_K → 0` for the boundary term.
+
+## 3. Which delayed plans become learnable
+
+What a plan gains from growing horizons is that a claim sound at every long enough
+horizon eventually competes.
+
+**Definition** (provisional).  A continuation policy `π` has a **horizon-stable promise**
+`L(H)` at `H` from horizon `m_0` if for every `m ≥ m_0` its gated `m`-block value from `H`
+under the declared treatment is at least `L(H)`; it has an **`m`-detectable advantage**
+`δ` over `π'` at `H` if its `m`-block value from `H` exceeds `π'`'s by `δ`.
+
+**Corollary A — fixed horizons are subsumed.**  If `h` promises a horizon-stable
+`L_k = L(H_{t_k})` from `m_0` and `m_k ≥ m_0` for `k ≥ k_1`, then Theorem 1 gives
+`Σ m_k (L_k − G^obs_k(α)) ≤ o(S_K)`; with `SLACK ≤ o(S_K)` Theorem 2 gives competence
+against `π`'s actual-history value.  Not "every fixed-`m` advantage transfers": a
+controller whose `m`-block value is high and whose `2m`-block value is low has no
+horizon-stable claim above the latter.
 
 **Corollary B — fixed finite delay is learned** (FIX `B_FixedHorizonRescue`,
-`D_HorizonTooShort` for the mechanism at fixed `m`).  Persistent benefit after `d`
-investment steps: the investing controller's `m`-block value from `base` is `(m−d)/m`,
-horizon-stable from any `m_0 ≥ d` with bound `(m_0 − d)/m_0`, and from the benefit state it
-is 1.  With `m_k → ∞`, for every `η > 0` the hypothesis promising `(m_k − d)/m_k` from
-`base` and 1 from `expanded` is sound and eventually promises above `1 − η`; the learner's
-average is at least `1 − η` in the limit.  Renewable benefit with cycle `d + e`: the
-`m`-block value from `base` is at least `⌊m/(d+e)⌋ e / m → e/(d+e)`, so the learner reaches
-`e/(d+e) − η` for every `η`.  Any fixed `d` is learned; no fixed `m` learns every `d`
-(`C_MinimalHorizon`: `m > 3d/2` is needed against `work`).
+`D_HorizonTooShort`).  Persistent benefit after `d` investment steps: the investing
+controller's `m`-block value from `base` is `(m−d)/m`, horizon-stable from `m_0 ≥ d`, and
+from the benefit state it is 1.  With `m_k → ∞` the hypothesis promising `(m_k − d)/m_k`
+from `base` and 1 from `expanded` is sound with slack 0, so Theorem 2 gives the learner's
+average `→ 1`.  Renewable benefit with cycle `d + e`: `⌊m/(d+e)⌋ e/m → e/(d+e)`, slack
+`O(K(d+e)) = o(S_K)` once the average block length grows.  Any fixed `d` is learned; no
+fixed `m` learns every `d` (`C_MinimalHorizon`: `m > 3d/2` against `work`).
 
-**Corollary C — uniformly-often detectable advantages are captured.**  If at every
-block start `π` has a horizon-stable bound `L_k` and the learner's own eventual estimates
-fall below `L_k − δ` on a set of blocks of positive `m`-weighted density, the theorem is
-contradicted.  So the learner's `m`-weighted average shortfall against any such `L` is
-zero in the limit.
+**Corollary C — uniformly-often detectable advantages are captured.**  If at every block
+start `π` has a horizon-stable promise `L_k` and the learner's estimates fall below
+`L_k − δ` on a set of blocks of positive `m`-weighted density, Theorem 1 is contradicted.
 
-**The truncation error.**  A plan with long-run average `v` and cycle length `c` has
-`m`-block value at least `v − c/m` from a cycle boundary; the loss against `v` over the
-first `K` blocks is at most `Σ_k c = cK`, which is `o(S_K)` iff the *average* block
-length `S_K/K → ∞`.  So `m_k → ∞` is needed twice: to make the promise sound at all
-(`m_k ≥ d`) and to make the per-block truncation negligible in primitive time.
+**The truncation error** is promise slack: a plan with long-run average `v` and cycle `c`
+has `m`-block value at least `v − c/m`, and its tightest sound claim has slack
+`≤ Σ_k c = cK`, which is `o(S_K)` iff `S_K/K → ∞`.  So `m_k → ∞` is needed twice: for
+the claim to be sound at all (`m_k ≥ d`) and for its slack to be negligible.
 
-## 3. Where fixed `m` fails, exactly
+## 4. Where fixed `m` fails, exactly
 
-Families (all on `investment_env`; the mechanism is `D_HorizonTooShort`):
+Families on `investment_env` (mechanism `D_HorizonTooShort`): benefit at `m+1` (`d = m`:
+the invest block from `base` is worth 0, not `m`-detectable); benefit at `2m` (the same,
+and the following block would see it only after an investment nothing scores);
+environment-dependent finite delay `d(H)` (fixed `m` fails whenever `d(H) ≥ m` on block
+starts of positive weighted density; a growing schedule with `m_k > 3d(H_{t_k})/2`
+eventually catches each); growing delay `d_k → ∞` (the schedule must outrun it, which
+nothing in the criterion supplies); an irreversible amendment whose value appears much
+later (the previous case on the trajectory where the value appears,
+`POLICY_REGRET_FRONTIER.md` on the other).
 
-- **benefit at `m+1`** — `d = m`: the invest block from `base` is worth 0; not
-  `m`-detectable; the fixed-`m` learner is myopic.
-- **benefit at `2m`** — `d = 2m − 1`: the same, and the block after it would see the
-  benefit only if the learner had invested in the previous block, which nothing scores.
-- **environment-dependent finite delay** `d(H)` — fixed `m` fails whenever `d(H) ≥ m` on a
-  set of block starts of positive weighted density; a growing schedule with
-  `m_k > 3 d(H_{t_k})/2` eventually catches each.
-- **growing delay** `d_k → ∞` — no fixed `m`; a growing `m_k` needs `m_k / d_k` bounded
-  away from `3/2` eventually, otherwise the sound promises stay at 0.  Growth of the
-  schedule must outrun growth of the delay; nothing in the criterion supplies that.
-- **irreversible amendment whose value appears much later** — this is the previous case
-  if the learner is in the trajectory where the value appears, and
-  `POLICY_REGRET_FRONTIER.md` if it is not: an irreversible act moves every later block
-  start, and no lease from the other side of it sees the value.
+## 5. Promise recognizability versus controller complexity
 
-`m`-detectable advantage isolates the point: fixed-horizon competence credits exactly the
-advantages visible in one block from the actual history.  The term is used above and not
-canonised beyond this round.
+The comparator class of Theorems 1–2 is a class of *hypotheses*: pairs `(controller,
+contextual claim)` in the covered class, with (R) and small slack.  It is not a class of
+controllers.  The paper's Theorem 3 has the same shape (efficiently identifiable option
+*and* e.c. lower bound); Theorem 4 relaxes the claim to one unrefuted on e.c. averages.
+Three cases, stated at the level the round can support:
 
-## 4. Promise complexity versus policy complexity
+1. **Controller code and promise code are distinct objects** (conceptual, PAPER-shaped).
+   The controller "always `a`" whose reward at step `t` is the `t`-th binary digit of `√2`
+   (FIX `test_frontier.N_EasyPolicyHardValue`) illustrates the *type* distinction: the
+   pointwise value is the digit itself, and the claim that survives 4000 steps is the
+   averaged `2/5`.  **No complexity separation is claimed**: the digits of `√2` are
+   computable, the round names no resource class in which the promise is harder than the
+   controller, and the paper's π-digit example is a stance on pseudorandomness relative to
+   a class, not a theorem.  The first version's "hard value" wording is withdrawn to this.
+2. **A hypothesis that learns its promise** (FIX `test_frontier.O_LearningHypothesis`):
+   eventually sound after one refutation per state class; inside Theorem 1 by the
+   hierarchy of §1.  The class is broader than pointwise-sound claims.
+3. **What genuinely limits recognition** is the paper's Theorem 2 diagonal: an
+   `O(g)`-computable learner is diagonalised by an `O(g)`-computable hypothesis that
+   promises 1 and recommends whatever the learner does not.  Read for promises: a bounded
+   learner cannot be required to follow every good computable plan, because "good" is not
+   a property it can check from the plan's code.  What it can be required to follow is a
+   plan *with a claim that survives its own tests* — case 2's route, or Theorem 4's
+   averaged claims.  That is what `H_cont` says, and it is the paper's stance made
+   explicit, not a separation theorem.
 
-The comparator class of the theorem is the class of *hypotheses*: efficiently
-computable `(controller, contextual promise)` pairs whose promises are sound on their
-tests.  It is not the class of efficiently computable controllers.  The paper's Theorem 3
-has the same shape (efficiently identifiable option *and* e.c. lower bound), and so does
-Theorem 4 (e.c. means).  Three cases:
+## 6. What is not established
 
-1. **Easy policy, hard value** (FIX `test_frontier.N_EasyPolicyHardValue`; the canonical
-   instance is the paper's π-digit option).  The controller "always `a`" pays the `t`-th
-   binary digit of `√2`; the pointwise value is the digit, and a promise equal to it is
-   the sequence itself.  The hypothesis promising `2/5` is not refuted over 4000 steps and
-   its record grows.  So the learner competes with the *averaged* promise, not the
-   pointwise one — Theorem 4's class, whose promises need only be unrefuted on the
-   learner's e.c. test sets.
-2. **A hypothesis that learns its promise** (FIX `test_frontier.O_LearningHypothesis`).
-   Promise := minimum block average observed on its own past leases from the same state,
-   less a margin.  It must be tested to learn, and a test needs a bid above the
-   incumbent's, so it starts optimistic (prior 1), is refuted once (record `−1`), and
-   thereafter promises `2/3 − 1/10` from `base`, which it keeps on every lease; its record
-   then rises by the margin per lease.  The same hypothesis with prior 0 is never tested
-   and never learns.  So a learning hypothesis pays for its education in exactly one
-   refutation per state class, and this is inside the theorem: the record stays bounded
-   below, coverage holds, and once the promise is sound the guaranteed-option argument
-   applies from that round.  The class is therefore broader than pointwise-sound
-   promises: promises sound *from some round on* suffice, and promises whose record is
-   bounded below suffice for coverage.
-3. **A good plan with no accessible recognition.**  A controller whose block values are
-   1 on a set of blocks that every e.c. selection sees as having density 0 has no e.c.
-   promise above 0 that survives its own tests, and the learner is not required to follow
-   it.  This is the paper's stance made exact by Theorem 2's diagonalisation: an e.c.
-   learner obliged to follow every good computable plan would be diagonalised by a plan
-   whose goodness it cannot check.  A bounded learner should be required to compete with
-   cases 1 and 2 and not with case 3, and that is what `H_cont` says.
-
-Unavoidable, then, and exactly the paper's; broadenable by case 2 to promises that
-become sound after finitely many refutations, and, by Theorem 4's route, to promises that
-are correct on e.c. averages.
-
-## 5. What is not established
-
-- Any own-trajectory statement: the promises are about blocks from the learner's actual
-  histories, and the theorem compares the learner with what those blocks would have
-  returned on those histories only.  `POLICY_REGRET_FRONTIER.md`.
-- Anything about a benefit hidden behind an irreversible act the learner did not take.
-- Any future-principal value semantics: `G_k` is a generic bounded realized return.
-- A rate, or a weighted Theorem 4.
+- Competence against a controller's *value* without a slack condition; Theorem 1 is
+  about promises (`D_PromiseVersusValue`).
+- Any criterion-level result under sublinear-but-divergent tested overpromise
+  (`G_SublinearOverpromise`); the construction's tolerance is not a theorem.
+- Any own-trajectory statement without `SHIFT ≤ o(S_K)`; any certificate of it from
+  realized data.
+- A complexity separation between controllers and promises.
+- A rate; a weighted Theorem 4.

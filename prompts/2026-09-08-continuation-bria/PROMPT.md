@@ -1,3 +1,10 @@
+# Dispatch — 2026-09-08 continuation BRIA
+
+Two messages, both verbatim as sent.  The second is the pressure pass dispatched
+against the first's result.
+
+## Message 1
+
 You are working in `A-M-Berns/alignment-workspace`.
 
 This is a focused research round on the dynamic-competence gap in the corrigibility
@@ -1135,3 +1142,1085 @@ The first is the non-myopic BRIA problem.
 The second is the policy-regret problem.
 
 Do not collapse them.
+
+---
+
+## Message 2
+
+You are working in `A-M-Berns/alignment-workspace`, on the current open PR #95:
+
+    Continuation BRIA: leases, the weighted auction, and the policy-regret frontier
+
+Branch:
+
+    round/2026-09-08-continuation-bria
+
+This is a PRESSURE + REFINEMENT pass on PR95 before merge.
+
+Do NOT start a new broad research direction.
+Do NOT redesign BRIA.
+Do NOT redesign the corrigibility architecture.
+Do NOT merge.
+
+The goal is to determine the strongest version of the current result that is actually
+true, correctly typed, and useful downstream — and to repair PR95 in place.
+
+The round has found a promising spine:
+
+    fixed-horizon continuation options
+        -> ordinary BRIA
+        -> variable horizons
+        -> weighted BRIA / execution-time accounting
+        -> growing-horizon competence against continuation hypotheses
+        -> promise slack + history shift
+        -> conditional policy-regret corollary under recoverability.
+
+That spine should survive if possible.
+
+But several claims need hard pressure before they are ready for main.
+
+======================================================================
+0. READ FIRST
+======================================================================
+
+Read the current PR95 branch, not only the PR description.
+
+At minimum:
+
+- projects/deference/rounds/2026-09-08-continuation-bria/
+  - REPORT.md
+  - BRIA_SOURCE_AUDIT.md
+  - FIXED_HORIZON.md
+  - CONTINUATION_HYPOTHESES.md
+  - WEIGHTED_BRIA.md
+  - GROWING_HORIZON.md
+  - POLICY_REGRET_FRONTIER.md
+  - CORRIGIBILITY_COMPOSITION.md
+  - COUNTERMODELS.md
+  - FOR_HUMANS.md
+
+- lean/Workspace/Deference/Contrib/ContinuationBRIA.lean
+
+- tests and `src/`
+
+- PRIORITIES.md item 86 as modified by PR95
+
+Also re-read the source paper sections actually used:
+
+    Oesterheld, Demski, Conitzer
+    “A Theory of Bounded Inductive Rationality”
+
+especially:
+- setting;
+- BRIA criterion;
+- construction / allowance proof;
+- guaranteed-option theorem;
+- biased-testing discussion;
+- regret discussion.
+
+The source paper is the authority on what is PAPER.
+
+======================================================================
+1. FIRST PRESSURE POINT: THE EXISTENCE THEOREM HAS AN EFFECTIVITY ISSUE
+======================================================================
+
+PR95 currently claims, roughly:
+
+    a computable weighted BRIA covering the e.c. class exists
+    iff
+    m_K / S_K -> 0.
+
+The sufficiency proof currently chooses a computable decreasing upper envelope
+
+    ρ̄_K >= ρ_K
+    ρ̄_K -> 0
+
+for
+
+    ρ_K := (M_K + 1 + log K) / S_K,
+
+and defines the active support from ρ̄.
+
+This is NOT automatic for an arbitrary computable sequence ρ_K -> 0.
+
+A computable convergent sequence need not have a computable modulus of convergence.
+A computable monotone majorant tending effectively to zero would itself provide such
+information.
+
+So audit the theorem from scratch.
+
+Distinguish at least these claims:
+
+A. Mathematical non-dominance:
+
+       m_K / S_K -> 0.
+
+B. Effective non-dominance:
+
+       the schedule comes with enough computable tail information / a computable
+       majorant / modulus to construct the support and allowances.
+
+C. Uniform construction:
+
+       one algorithm takes a code for any computable non-dominant schedule and
+       produces the weighted BRIA.
+
+D. Nonuniform existence:
+
+       for each computable non-dominant schedule, some computable weighted BRIA exists,
+       without necessarily being uniformly obtainable from the schedule code.
+
+These are different.
+
+Determine exactly which are true.
+
+Do not settle for “the current construction uses a modulus” if a better construction avoids it.
+
+Try hard to answer:
+
+    Is there a computable allowance/support construction depending only on the
+    OBSERVED prefix of a computable non-dominant schedule that always achieves
+
+        A_i(K) - m_K -> ∞       for every fixed i
+
+    and
+
+        totalAllowance(K) / S_K -> 0
+
+    without assuming an effective convergence rate?
+
+If YES:
+- construct it;
+- prove it;
+- replace the current ρ̄ argument.
+
+If NO:
+- give a precise impossibility/diagonal argument;
+- weaken the existence theorem accordingly.
+
+At minimum preserve the explicit usable case:
+
+    m_k = floor(log_2 k) + 1
+
+or another clean declared schedule with fully proved computable allowance.
+
+For our downstream corrigibility application we choose the schedule, so
+
+    explicit effective schedules
+
+may be all that is actually needed.
+
+But do not call the theorem “sharp iff non-dominance” unless the computability quantifiers
+really support that statement.
+
+======================================================================
+2. AUDIT THE NECESSITY DIRECTION WITH THE SAME EFFECTIVITY DISCIPLINE
+======================================================================
+
+The dominant-block impossibility uses
+
+    c := limsup m_K / S_K > 0
+
+and an infinite set
+
+    D = { K : m_K >= (c/2) S_K }.
+
+For the adversarial hypothesis to belong to the e.c. class, the set on which it promises 1
+must be effectively recognizable at the required complexity.
+
+Do not casually call D computable if c is an arbitrary noncomputable real.
+
+Repair the proof using the strongest true form, probably:
+
+    if limsup m_K/S_K > 0,
+    then there EXISTS a positive rational q such that
+
+        D_q := {K : m_K/S_K >= q}
+
+    is infinite,
+
+and for a computable rational-valued schedule D_q is computable.
+
+Check all quantifiers carefully.
+
+State whether the impossibility is:
+
+- for every computable dominant schedule;
+- uniform in the schedule;
+- merely existential;
+- or something else.
+
+Keep the criterion-level impossibility separate from failure of the particular auction.
+
+======================================================================
+3. SECOND PRESSURE POINT: TYPE THE POLICY-REGRET DECOMPOSITION CORRECTLY
+======================================================================
+
+Current `POLICY_REGRET_FRONTIER.md` says both:
+
+    G_k(π | H^α)
+
+is observed when π is tested and undefined otherwise,
+
+and later sums
+
+    G_k(π | H^α)
+
+over every block in an exact regret identity.
+
+Those cannot be the same object.
+
+Repair the ontology.
+
+There should probably be TWO layers.
+
+A. BRIA-INTERNAL / REALIZED FEEDBACK
+
+For block k only the executed controller has an observed return:
+
+    G_k^obs ∈ [0,1].
+
+This is all the BRIA criterion and wealth construction see.
+
+No counterfactual reward vector is supplied.
+
+B. EXTERNAL THEOREM SEMANTICS
+
+The theorist may declare an interactive environment giving a counterfactual block evaluator
+
+    Ĝ_k(π ; H)
+
+or equivalently a rollout semantics
+
+    β(H, π, z)
+
+from which such a return can be computed.
+
+This object may be used to STATE external policy regret and history shift.
+
+It is not observed by the learner unless π is actually tested.
+
+Then type the exact decomposition using Ĝ:
+
+    V_T(π) - V_T(α)
+      =
+    Σ m_k [ Ĝ_k(π ; H^π_k) - Ĝ_k(π ; H^α_k) ]
+      +
+    Σ m_k [ Ĝ_k(π ; H^α_k) - L_k ]
+      +
+    Σ m_k [ L_k - G_k^obs(α) ]
+      + boundary.
+
+Call the terms whatever survives:
+
+    history shift
+    promise slack
+    learning error
+    boundary.
+
+Prove the finite identity in Lean if useful.
+
+The important conceptual statement is:
+
+    continuation-BRIA never consumes counterfactual rewards;
+    the policy-regret theorem does.
+
+Make that distinction impossible to miss.
+
+======================================================================
+4. THIRD PRESSURE POINT: THE MAIN CONTINUATION theorem IS ABOUT PROMISES,
+NOT ACTUAL POLICY PERFORMANCE
+======================================================================
+
+PR95 sometimes says things like:
+
+    “the learner cannot asymptotically underperform any continuation hypothesis
+     whose promises are sound”
+
+or
+
+    “its average is at least that of the continuation hypothesis.”
+
+Pressure this.
+
+The theorem currently proves, roughly:
+
+    learner reward >= L_k
+
+in weighted average,
+
+where L_k is the hypothesis’s accountable promise.
+
+It does NOT give
+
+    learner reward >= actual block value of q_h
+
+unless the promise is tight enough.
+
+An excellent controller with a vacuous promise
+
+    L_k = 0
+
+does not force competence against its actual value 1.
+
+So split the notions explicitly.
+
+A continuation hypothesis is:
+
+    h = (q, e)
+
+where e is an ACCOUNTABLE CONTEXTUAL CLAIM.
+
+It may be wrong.
+It may start optimistic.
+It may learn.
+It may be refuted.
+
+A SOUND comparator hypothesis satisfies, eventually or on the relevant tests,
+
+    e_k <= Ĝ_k(q ; H^α_k).
+
+A TIGHT / VANISHING-SLACK comparator additionally satisfies
+
+    Σ m_k [Ĝ_k(q ; H^α_k) - e_k] = o(S_K).
+
+Then:
+
+THEOREM 1 — Continuation-promise competence
+
+    learning error <= o(S_K)
+
+against every sound covered hypothesis.
+
+THEOREM 2 — Actual-history continuation competence
+
+    if promise slack is o(S_K),
+
+    Σ m_k [
+      Ĝ_k(q ; H^α_k) - G_k^obs(α)
+    ] <= o(S_K).
+
+THEOREM 3 — Own-trajectory policy competence
+
+    add history shift o(S_K).
+
+This three-level hierarchy may be the mature theorem stack.
+
+Repair every sentence in:
+- PR description;
+- REPORT;
+- GROWING_HORIZON;
+- PRIORITIES item 86
+
+that skips the promise-slack term.
+
+======================================================================
+5. DO NOT DEFINE A BRIA PROMISE AS A LOWER BOUND
+======================================================================
+
+Current prose sometimes says that an “estimate” which is not a lower bound buys nothing.
+
+That is too strong.
+
+Original BRIA hypotheses are allowed to be wrong.
+Their promise is what creates empirical accountability.
+
+The learner discovers overpromising through losses.
+
+This is essential to:
+- the source construction;
+- the learning-hypothesis fixture;
+- the entire point of hypothesis wealth.
+
+Use:
+
+    continuation hypothesis
+      = controller + contextual promise/estimate/claim.
+
+Then define special classes:
+
+    sound-on-tests
+    eventually sound
+    bounded-record
+    tight
+    vanishing-slack
+
+as theorem hypotheses.
+
+Do not bake “lower bound” into the generic hypothesis type.
+
+Ask whether Theorem-3-style competence really needs pointwise soundness,
+or whether the weakest useful condition is something like
+
+    cumulative promise slack on test occasions is o(S_K)
+
+or merely bounded below empirical record.
+
+Find the weakest clean condition the proof actually consumes.
+
+This could materially improve the theorem.
+
+======================================================================
+6. PRESS THE LEASE: WHAT IS REALLY NECESSARY?
+======================================================================
+
+The round currently calls a whole-block exclusive execution lease “the weakest useful lease.”
+
+That may overstate the necessity result.
+
+The true logical requirement seems closer to:
+
+    the empirical treatment used to test h must match the treatment that h's promise
+    is about.
+
+If h promises:
+
+    “if q receives uninterrupted advisor-side control for m steps, return >= L,”
+
+then executing only a prefix of q and completing with another controller is not a test.
+
+But there may be OTHER valid promise types, e.g.
+
+    “if q is run under the declared interruption/exploration protocol τ, return >= L.”
+
+Then an interrupted run could be a legitimate test of THAT claim.
+
+So consider parameterizing the hypothesis by a declared execution treatment:
+
+    τ_k
+
+and interpret
+
+    e_h,k
+
+as a promise about
+
+    Exec_{τ_k}(H_k, q_h,k).
+
+Then:
+
+    TestValidity:
+       data counts against h only if generated by the same declared treatment.
+
+A whole-block selection lease is one especially clean treatment.
+
+It may remain the preferred realization because it gives temporally extended plans enough
+causal continuity to exhibit their benefits while leaving the principal/exterior live.
+
+But do not claim uniqueness unless proved.
+
+Try to end with:
+
+    semantic primitive:
+        promise-treatment alignment;
+
+    canonical realization:
+        advisor-side execution lease through the constitutional gate.
+
+This would make the theory more general and more precise.
+
+======================================================================
+7. KEEP CORRIGIBILITY LIVE DURING A TEST
+======================================================================
+
+Re-audit the execution-lease interpretation.
+
+The lease may commit:
+
+    which advisor-side continuation controller is being tested.
+
+It must not commit:
+
+- principal response policy;
+- protected correction;
+- gate behavior;
+- authenticated settlement arrivals;
+- authorized amendment;
+- inquiry.
+
+The clean interactive picture is still:
+
+    q fixed for the test window,
+    z live.
+
+But check a deeper issue:
+
+Suppose principal correction changes the state in such a way that q’s original promise
+becomes impossible.
+
+That should not be called an unjustified refutation if the original promise was explicitly
+conditional on no such correction.
+
+Conversely, if the promise was about the actual gated/exterior-live treatment, then the
+correction IS part of the test outcome.
+
+So force hypotheses to say what treatment they are promising under.
+
+Do not smuggle counterfactual “absent intervention” assumptions into the score.
+
+======================================================================
+8. AUDIT THE DISCOUNTED-RETURN REMARK
+======================================================================
+
+WEIGHTED_BRIA currently suggests that discounted returns are essentially a bounded-weight
+case because
+
+    Σ_{j<m} γ^j <= 1/(1-γ).
+
+Separate algebra from execution semantics.
+
+For a FINITE truncated discounted lease, yes: its total weight is uniformly bounded.
+
+For a genuinely infinite-horizon discounted return, the payoff is not available at a
+finite atomic test time unless another settlement mechanism is supplied.
+
+So do not claim:
+
+    infinite discounted non-myopic BRIA reduces to ordinary BRIA
+
+merely because discount mass is finite.
+
+State exactly what is proved:
+
+    uniformly bounded FINITE test weight
+       -> rescaling to ordinary BRIA.
+
+If you want to discuss infinite discounted promises, label the required deferred-settlement
+mechanism OPEN.
+
+======================================================================
+9. AUDIT “EASY POLICY, HARD VALUE”
+======================================================================
+
+The current fixture uses a simple controller and a digit sequence such as sqrt(2) to argue
+that policy complexity and value/promise complexity differ.
+
+That does not establish the desired separation merely because the value is nontrivial.
+
+The BRIA source uses explicit computational classes.
+
+A sequence can be computable and still be “easy” in the only complexity class currently
+named unless a resource separation is proved.
+
+So either:
+
+A. state the example only as conceptual:
+       controller code and promise code are distinct computational objects;
+
+or
+
+B. build an actual complexity separation relative to a declared g(t):
+       q computable in O(g)
+       but no promise of the desired strength belongs to the covered hypothesis class;
+
+or
+
+C. use a diagonal / source-paper-style example that genuinely establishes the
+   recognizability limitation.
+
+Do not overclaim a complexity separation from “digit computation looks hard.”
+
+======================================================================
+10. CRITERION VS CONSTRUCTION VS FIXTURE
+======================================================================
+
+The current round discovered an important correction to item 86:
+
+the old “myopic gated learner” was not a BRIA.
+
+But there is still some slippage between:
+
+    every BRIA satisfying the criterion
+
+and
+
+    the published auction construction.
+
+Audit every fixture.
+
+In particular, for the d=1 persistent amendment:
+
+- a BRIA need not “invest infinitely often” once it enters an absorbing expanded state;
+- the correct statement is conditional on revisiting base;
+- the published auction may invest once and then remain expanded;
+- the BRIA criterion itself can permit sparse experiments and later return to base,
+  if its coverage/no-overestimation obligations remain satisfied.
+
+State separately:
+
+PAPER/CRITERION:
+    what EVERY BRIA must do.
+
+CONSTRUCTION:
+    what the particular wealth auction does.
+
+FIX:
+    what the exact simulated ecology does.
+
+Do not transfer behavior from the auction to the criterion.
+
+Repair the sentence:
+
+    “every one-step BRIA invests infinitely often”
+
+to its actual quantified form.
+
+======================================================================
+11. RECHECK THE “SHARP” NON-DOMINANCE BOUNDARY
+======================================================================
+
+Assuming the effectivity repair in §§1–2, pressure whether non-dominance is really the
+right criterion boundary.
+
+The intuitive conflict is:
+
+    coverage demands a test,
+    but one test may consume a fixed fraction of all primitive time,
+    and no-overestimation forbids paying that cost infinitely often.
+
+This is elegant.
+
+Try to state the strongest clean theorem in three layers:
+
+I. Criterion impossibility:
+   dominant blocks make weighted coverage + weighted no-overestimation jointly impossible
+   for some tiny e.c. hypothesis class.
+
+II. Auction sufficiency:
+   under capital adequacy + negligible total allowance, the weighted auction is a weighted BRIA.
+
+III. Schedule existence:
+   characterize when allowances satisfying II exist, with the correct COMPUTABILITY qualifier.
+
+Do not compress all three into one “iff” unless all quantifiers line up.
+
+======================================================================
+12. TRY TO STRENGTHEN THE GUARANTEED-CONTINUATION THEOREM
+======================================================================
+
+Current theorem assumes sound promises on tests.
+
+Find the weakest useful empirical condition.
+
+Original BRIA coverage only needs that an outpromising hypothesis cannot be rejected while
+its record fails to diverge negatively.
+
+So perhaps the continuation theorem can use:
+
+    the hypothesis's weighted empirical record on its valid tests is bounded below,
+
+rather than:
+
+    every test satisfies G_k >= L_k.
+
+Or an asymptotic condition:
+
+    [Σ_{tests} m_k (L_k - G_k)]_+ = o(S_K).
+
+Work out the exact theorem.
+
+This matters for hypotheses that LEARN:
+- they may overpromise finitely;
+- they may have bounded calibration error;
+- they may converge to a sound claim.
+
+A mature theorem should not require perfect soundness from birth if the BRIA criterion does
+not.
+
+Try to derive a hierarchy:
+
+    pointwise sound             => easiest corollary;
+    finite total overpromise    => same asymptotic result;
+    sublinear overpromise       => quantitative degraded result.
+
+If this works, it may be more valuable than several of the current fixtures.
+
+======================================================================
+13. POLICY REGRET SHOULD BECOME A CLEAN THREE-BRIDGE COROLLARY
+======================================================================
+
+After repairs, shoot for one exact composition theorem.
+
+For a legitimate continuation policy π with external block evaluator Ĝ:
+
+Define
+
+    LEARN_T(π)
+      :=
+    Σ_k m_k [L_k - G_k^obs(α)]
+
+    SLACK_T(π)
+      :=
+    Σ_k m_k [Ĝ_k(π ; H^α_k) - L_k]
+
+    SHIFT_T(π)
+      :=
+    Σ_k m_k [Ĝ_k(π ; H^π_k) - Ĝ_k(π ; H^α_k)].
+
+Then at block boundaries:
+
+    Regret_T(α,π)
+      =
+    SHIFT_T(π)
+      +
+    SLACK_T(π)
+      +
+    LEARN_T(π).
+
+And off boundaries add the exact boundary term.
+
+Then the ultimate consumer theorem is simply:
+
+if
+
+    LEARN_T(π) = o(T)      [continuation-BRIA]
+    SLACK_T(π) = o(T)      [promise recognizability]
+    SHIFT_T(π) = o(T)      [recoverability]
+
+then
+
+    Regret_T(α,π) = o(T).
+
+This should become the canonical frontier statement.
+
+It is much better than saying “BRIA plus recoverability gives policy regret,” because it
+makes the PROMISE gap equally explicit.
+
+Then determine how to quantify over a class:
+
+    Π_rec,prom
+      :=
+    legitimate policies with
+      - a covered continuation hypothesis,
+      - vanishing promise slack,
+      - vanishing history shift.
+
+The strongest legitimate-policy regret statement should quantify only over this class.
+
+======================================================================
+14. DO NOT ASK THE CONSTITUTION TO PRODUCE TASK-VALUE PROMISES
+======================================================================
+
+Current item 86 asks how a promise is produced “from the constitution’s own certificates.”
+
+Pressure this.
+
+The constitution certifies things like:
+
+- admissibility;
+- authorization;
+- protected correction structure;
+- legitimate transition;
+- maybe some certified safety/lower-bound properties if explicitly supplied.
+
+It does not generically certify task reward or future-principal value.
+
+So separate:
+
+    LEGITIMACY CERTIFICATE
+       -> q is an allowed comparator / gate-transparent continuation.
+
+from:
+
+    PERFORMANCE/PROMISE CERTIFICATE
+       -> L is a computationally accessible claim about q's return.
+
+These may compose.
+They are not the same interface.
+
+Repair item 86 so that it asks for:
+
+1. recoverability of legitimate slow-lane continuations;
+2. a promise-recognizability interface for task/value performance;
+3. composition.
+
+Do not make task-value recognition a duty of legitimacy itself.
+
+======================================================================
+15. PRESS THE RECOVERABILITY CONDITION
+======================================================================
+
+Current “uniform block recovery” is:
+
+    m * |Ĝ_m(π ; H) - Ĝ_m(π ; H^π)| <= φ(m)
+    with φ(m)/m -> 0.
+
+This is promising, but ask whether it is too strong.
+
+The policy-regret decomposition only needs the weighted aggregate:
+
+    SHIFT_T(π) = o(T).
+
+Potentially weaker sufficient forms include:
+
+- average recovery along learner-reached block starts;
+- one-sided recovery, because regret only needs an upper bound;
+- policy-class-uniform versus per-policy recovery;
+- recovery in expectation rather than pathwise;
+- amortized repair cost.
+
+Try to characterize:
+
+    weakest condition consumed by the theorem:
+        SHIFT_T(π) = o(T).
+
+Then present uniform block recovery as one CHECKABLE SUFFICIENT schema, not as the
+definition unless that is truly useful.
+
+For corrigibility, pay special attention to authorized amendment.
+
+Perhaps a legitimate policy can differ from the learner because it requested an amendment
+earlier, but the learner can later request the same amendment at bounded cost d.
+
+Then history shift may satisfy an amortized bound of exactly “cost to catch up.”
+
+If this gives a theorem-shaped notion of recoverable admissibility state, develop it.
+
+But do not claim irreversible amendment is bad per se:
+irreversible choices may simply fall outside the comparator class for which policy regret
+is achievable.
+
+======================================================================
+16. WHAT THIS SHOULD MEAN FOR CORRIGIBILITY
+======================================================================
+
+At the end, restate the dynamic competence interface without overselling.
+
+The mature picture should be approximately:
+
+    Constitution / legitimacy
+        -> safe execution wrapper
+        -> class of legitimate continuations
+
+    Continuation BRIA
+        -> learning error controlled
+           against accountable continuation promises
+
+    Performance recognizability
+        -> promise slack controlled
+
+    Recoverability
+        -> history shift controlled
+
+    therefore
+        -> low external regret
+           against legitimate, recognizable, recoverable continuation policies.
+
+This is probably a better corrigibility competence theorem than regret against all
+`Π_leg`.
+
+Do not change the canonical Corrigibility wiki unless this pass produces a theorem-level
+statement worth landing.
+
+======================================================================
+17. REQUIRED COUNTERMODELS / TESTS
+======================================================================
+
+Add or repair exact fixtures for at least:
+
+A. EFFECTIVITY GAP
+   A computable non-dominant schedule with very poor apparent convergence behavior.
+   Test candidate allowance constructors against it.
+   If proving a uniform-construction impossibility, make the diagonal explicit.
+
+B. EXPLICIT EFFECTIVE SCHEDULE
+   `m_k = floor(log_2 k)+1` or equivalent, with all allowance properties exact.
+
+C. CRITERION VS CONSTRUCTION
+   Persistent one-step amendment:
+   auction invests and stays expanded;
+   criterion-level statement says only what coverage actually forces.
+
+D. PROMISE VS VALUE
+   Controller has block value 1, promise 0.
+   Continuation-promise theorem gives no competence against actual value.
+
+E. VANISHING SLACK
+   Same controller with promise `1 - ε_k`, weighted ε-average -> 0.
+   Actual-history continuation competence follows.
+
+F. FINITE OVERPROMISE
+   Hypothesis is wrong on finitely many early tests, then sound.
+   The asymptotic theorem should survive.
+
+G. SUBLINEAR OVERPROMISE
+   If the strengthened theorem permits it, exact schedule showing degraded but vanishing
+   error.
+
+H. COUNTERFACTUAL TYPING
+   Policy not tested on most blocks:
+   observed return absent,
+   external evaluator defined,
+   regret identity still typed externally.
+
+I. TREATMENT MISMATCH
+   Whole-lease promise falsely refuted by prefix execution.
+
+J. ALTERNATIVE TREATMENT
+   Hypothesis explicitly promises performance under a known interruption protocol;
+   interrupted execution is now a valid test.
+   Shows “full lease” is realization-specific, treatment matching is abstract.
+
+K. DISCOUNTED FINITE BLOCK
+   bounded discount mass rescaling works.
+
+L. INFINITE DISCOUNTED CLAIM
+   cannot settle in one finite test without extra semantics.
+   Keep OPEN rather than fake-resolve.
+
+M. RECOVERABLE AMENDMENT
+   learner can enter π's admissibility state after bounded catch-up cost;
+   history shift sublinear with growing blocks.
+
+N. IRREVERSIBLE BRANCH
+   unchanged impossibility.
+
+======================================================================
+18. LEAN TARGETS
+======================================================================
+
+Keep Lean small.
+
+Useful possible additions:
+
+- corrected external regret decomposition with separately typed:
+    learner-observed return,
+    external actual-history comparator return,
+    external own-history comparator return;
+
+- theorem:
+    learning + slack + shift bounds
+      -> regret bound;
+
+- finite-overpromise / cumulative-slack algebra;
+
+- any exact allowance inequality needed for the repaired existence theorem;
+
+- rational-threshold form of the dominance impossibility.
+
+Do NOT formalize:
+- computability theory broadly;
+- a general modulus-of-convergence library;
+- an MDP framework.
+
+If the effectivity question needs recursion/diagonal mathematics that is not worth Lean
+yet, prove it carefully on paper and keep the Lean algebra beneath it.
+
+======================================================================
+19. DOCUMENT REPAIR
+======================================================================
+
+Audit and repair at least:
+
+REPORT.md
+- verdict;
+- “iff non-dominance” if needed;
+- promise vs actual performance;
+- criterion vs construction.
+
+WEIGHTED_BRIA.md
+- effectivity quantifiers;
+- sufficiency construction;
+- necessity computability;
+- discounted-return wording.
+
+GROWING_HORIZON.md
+- theorem conclusion should name promises, not actual controller value unless slack is
+  controlled;
+- strengthen to eventual/sublinear soundness if possible.
+
+CONTINUATION_HYPOTHESES.md
+- generic promise is not by definition a lower bound;
+- treatment semantics / lease abstraction.
+
+FIXED_HORIZON.md
+- repair “every BRIA invests infinitely often”;
+- criterion vs auction.
+
+POLICY_REGRET_FRONTIER.md
+- observed vs counterfactual evaluator typing;
+- exact three-term theorem;
+- recoverability weakest consumer condition.
+
+CORRIGIBILITY_COMPOSITION.md
+- constitution supplies admissibility, not generic task-value promises.
+
+PRIORITIES.md item 86
+- recoverability + performance-recognizability + composition;
+- no false claim of unrestricted `Π_leg` regret.
+
+PR description
+- no headline theorem stronger than the repaired result.
+
+======================================================================
+20. FINAL DELIVERABLE
+======================================================================
+
+Add a short follow-up document, e.g.
+
+    projects/deference/rounds/2026-09-08-continuation-bria/PRESSURE_PASS.md
+
+or amend REPORT.md with a clearly marked pressure-pass section.
+
+It should state:
+
+1. strongest true existence theorem;
+2. exact effectivity assumptions;
+3. strongest continuation-BRIA theorem;
+4. exact promise condition it consumes;
+5. exact external policy-regret decomposition;
+6. weakest policy-regret consumer assumptions;
+7. what the constitution supplies;
+8. what it does NOT supply;
+9. remaining open problem.
+
+======================================================================
+21. FINAL VERDICT
+======================================================================
+
+Choose exactly one verdict.
+
+Examples:
+
+    CONTINUATION-BRIA-READY-EFFECTIVE-NONDOMINANCE-REQUIRED
+
+    CONTINUATION-BRIA-READY-NONDOMINANCE-IFF-REPAIRED
+
+    FIXED-AND-WEIGHTED-CORE-SURVIVE-EXISTENCE-THEOREM-WEAKENED
+
+    NOT-READY-BLOCKED-BY-EFFECTIVITY
+
+Do not choose READY because tests pass.
+
+READY requires:
+
+- the effectivity gap in the existence theorem resolved honestly;
+- observed and counterfactual returns separately typed;
+- promise competence not misstated as actual-policy competence;
+- criterion vs auction behavior separated;
+- the one-step amendment quantifier repaired;
+- generic promises allowed to be wrong;
+- lease necessity stated at the correct abstraction level;
+- item 86 no longer asks legitimacy to certify generic task value;
+- the final policy-regret theorem has explicit learning/slack/history-shift terms.
+
+The question this pass should leave answered is:
+
+    Exactly what has continuation-BRIA solved?
+
+The desired mature answer is something like:
+
+    It solves bounded learning against empirically accountable,
+    temporally extended continuation claims on the histories the learner actually reaches.
+
+And:
+
+    Exactly what remains before corrigible policy regret?
+
+The desired answer is:
+
+    A policy must additionally have a computationally accessible near-tight promise
+    and its own induced history must be recoverable, in value, from the histories on
+    which the learner can actually test it.
+
+Pressure until those two sentences are literally true.
