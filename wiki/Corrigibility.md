@@ -173,21 +173,51 @@ least one half from every quote.  **This is not incentive corrigibility.**  Sele
 trust over constitution-violating repairs is strictly stronger than the bound it yields,
 so Levels III and IV are not reached.
 
-## Dynamic admissibility — the open decision problem
+## Dynamic admissibility — continuation BRIA and the three bridges
 
 The static adapter is sound and stable at one occasion.  When an admissible act changes
 the next admissible set — including the legitimate act of requesting an authorized
-amendment — legitimate continuation policies induce different admissibility histories,
-fixed action-sequence regret is ill-typed, the myopic gated learner is itself legitimate
-and loses linearly to the policy that invests in an amendment, and typing
-admissibility-changing acts gives safety without competence (*exact fixture*).  The
-target is bounded competence against the computable continuation policies that choose
-adequately and alter the admissibility process only through authorized slow-lane
-transitions along their own trajectories.  Bounded inductive rationality covers a
-supplied sequence of decision problems and is myopic with respect to how current choices
-determine future ones; that is exactly what is missing.  This is the corrigibility
-specialization's investing-in-amendment case and the architecture's central unresolved
-decision-theory problem.
+amendment — legitimate continuation policies induce different admissibility histories
+and fixed action-sequence regret is ill-typed (*exact fixture*).  The decision-theory
+bill's "myopic gated learner", which loses linearly to the investing policy, is an
+argmax that never tests a hypothesis outpromising it forever: it is not a bounded
+inductive learner.  The one-step criterion itself forces testing, not adoption — on the
+original fixture, where the amendment is absorbing, every learner satisfying it is
+competent; on the revocable variant an agent that sparsely tests and always reverts is a
+bounded inductive learner and stays myopic — and what forces adoption is a sound claim
+about the *whole* investment.  That is the dynamic-competence layer,
+[Continuation BRIA](Continuation-BRIA): hypotheses emit a causal advisor continuation for
+the system's next block plus an accountable claim, winning means the continuation is
+executed through the live constitutional wrapper, the realized score settles the claim,
+and a duration-weighted auction guarantees accountable long-horizon experimentation
+exactly on non-dominant block schedules.
+
+**The positive theorem target, retyped.**  Against a legitimate policy `π` with an
+external rollout evaluator, at block boundaries
+
+```
+Regret = LEARN + SLACK + SHIFT
+```
+exactly: `LEARN` is what continuation BRIA controls (`o(T)` for every covered claim whose
+tested record is bounded below); `SLACK` is promise recognizability — the claim is
+near-tight for `π`'s value from the learner's actual history; `SHIFT` is history
+recoverability — `π`'s own-history value is joinable from the learner's.  The
+corrigibility competence statement the architecture can support is therefore
+
+```
+constitutional preservation  +  continuation learning  +  promise recognizability  +  joinability
+    ⟹   low external regret against legitimate, recognizable, joinable continuation policies.
+```
+**Regret against all of `Π_leg` remains false**: two mutually exclusive branches whose
+values are hidden until after commitment defeat every learner while continuation
+competence holds exactly.  The distinction that matters is joinability versus
+foreclosure, not reversibility: an authorized amendment with no path back is joinable at
+bounded catch-up cost (per-block shift exactly the investment length), and it is fine
+for regret; a foreclosing choice is not, and the policy that made it lies outside the
+class.  The constitution supplies the wrapper, the gate-transparent comparator class and
+the slow lane's joinability; it does not certify task value, so `SLACK` is a
+performance-recognizability interface and not a legitimacy certificate.  What item 86
+now asks for is exactly the two external bridges and their composition.
 
 ## Soares et al. and CAST
 
@@ -217,8 +247,9 @@ Ranked; the class is in parentheses; the registers carry the detail.
    provenance locus).
 3. Loss-detection semantics — faithfulness of the efficacy and registration bits at
    every state (external).
-4. Bounded competence against legitimate continuation policies under endogenous
-   admissibility (wall; item 86).
+4. Promise recognizability and joinability certificates for the slow lane, composed
+   into corrigible policy competence; continuation learning itself is done
+   ([Continuation BRIA](Continuation-BRIA); item 86).
 5. Margin realization on either route and the empirical averaged bridge (item 85).
 6. The operative-value-security bridge behind selected trust (item 84).
 7. Containment — alphabet completeness of the constitutional gate (external).

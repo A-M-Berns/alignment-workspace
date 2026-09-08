@@ -3,6 +3,7 @@
 **The Research Program**
 
 - [Architecture](Architecture)
+- [Theorem Spine](Theorem-Spine)
 - [Why normativity?](Why-Normativity)
 
 **Normativity**
@@ -32,6 +33,7 @@
   - [Logical Induction and Deference](Logical-Induction-and-Deference)
   - [What Deference Requires](What-Deference-Requires)
   - [Corrigibility](Corrigibility)
+  - [Continuation BRIA](Continuation-BRIA)
 
 **Reference**
 

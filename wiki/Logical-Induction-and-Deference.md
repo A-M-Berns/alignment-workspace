@@ -60,6 +60,16 @@ authority. A favorable prediction or decision comparison does not say who is
 authorized to act, who retains a corrective capability, or whether a demand is
 efficacious in a transition model.
 
+**The bridge to accountable claims.**  Logical Induction predicts; the learning layer
+that allocates realized experiments among temporally extended continuations is
+[Continuation BRIA](Continuation-BRIA), which scores accountable claims on realized block
+outcomes only.  A deferential value prediction — the activated future evaluation of the
+legitimate-deference stack, or an LI price of it — can potentially be the claim a
+continuation hypothesis is held to, and if such claims are near-tight for the
+continuation's realized value (the `SLACK` bridge) continuation competence becomes
+competence against that value.  This is an interface with a named open realization, not
+a theorem; the two wealth accounts stay semantically distinct.
+
 ## Evidence and verification
 
 - [LI-native deference note](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/LI_NATIVE_DEFERENCE.md)

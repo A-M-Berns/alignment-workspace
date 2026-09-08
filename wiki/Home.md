@@ -16,7 +16,8 @@ The program has two research lines and one bridge:
 - **[Normativity](Normativity)** asks when a reasoner counts as responding
   appropriately to reasons and improving within a public practice.
 - **[Deference](Deference)** asks when a more capable reasoner can safely trust
-  and preserve a future human-guided process. **Paused**, on two decisions.
+  and preserve a future human-guided process; its consumer is the legitimate-deference
+  stack, and its dynamic-competence layer is [Continuation BRIA](Continuation-BRIA).
 - **[Legitimacy](Legitimacy)** asks what must remain true of that process so
   deference does not merely preserve manipulation, self-authorization, or
   corruption. Its generic theory is canonical: legitimacy is a property of
@@ -44,6 +45,11 @@ theory in ten steps and links each component to its page; the legitimacy spine o
 the normativity claims registry is its statement of record, and the decision ledger
 records what has been ruled since.
 
+**Looking for the mathematics:** the [Theorem Spine](Theorem-Spine) states the
+program's results at theorem level — hypotheses, conclusions, Lean names, and the
+strength each one actually has — from the account calculus through Progress,
+legitimate deference, corrigibility and continuation BRIA.
+
 **Looking for current research status:** read the status section on the relevant
 line and then [Roadmap](Roadmap). Each technical page ends with immutable links
 to the underlying evidence.
@@ -60,15 +66,13 @@ to the underlying evidence.
 - **Aspirational** describes a research direction and claims no mathematical
   backing.
 
-- **Paused** describes a line that is not being worked, with what it is waiting
-  on named.
-
 The normativity line's traderization results, the legitimacy spine, and the
 deference line's finite results are registered and carry `lean-proved`. Everything
 else discussed here is open, a living note, or unregistered research: its round
 verdicts and evidence strengths are preserved, and the wiki does not upgrade any of
-it to Established. **Deference is paused** on two decisions; the legitimacy theory is
-canonical and its remaining work is realization.
+it to Established. The legitimacy theory is canonical and its remaining work is
+realization; the deference line's older target waits on one decision, the succession of
+item 28, and its temporal-depth half is supplied by continuation BRIA.
 
 ## Wiki and lab
 
