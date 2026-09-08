@@ -10,7 +10,8 @@ thing: what a process may do to the conditions of its own correction.
 `lean-proved`.** The objects below have Lean definitions, the theorems are registered
 in the normativity claims registry, and every assumption the theory does not
 discharge is a typed input named on the page that consumes it. The realization is
-conditional and says so on its own page.
+conditional and says so on its own page. The theorems themselves, stated with
+hypotheses, conclusions and Lean names, are on the [Theorem Spine](Theorem-Spine).
 
 ## Legitimacy is a property of evolution, not of a state
 

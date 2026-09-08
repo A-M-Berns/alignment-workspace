@@ -122,9 +122,9 @@ The standing legitimacy items from before the canonicalization:
 
 ## Deference
 
-**The older target is paused; the legitimate-deference consumer is active.** The items
-below are what the endpoint-preservation target would resume on, not work in
-progress; see [Deference](Deference) for the two decisions it is waiting on. The
+**Both targets are live.** The items below are what the older corrigibility target
+still needs; its temporal-depth half is now [Continuation BRIA](Continuation-BRIA), and
+its one decision is the succession of item 28. The
 legitimate-deference stack — activation of the actual future principal's partial
 evaluation, diachronic reason-mediated authorship, protected reason coverage, and the
 conditional authoritative-regret theorem — is landed as research state, and its one
@@ -145,9 +145,9 @@ residual is the realization bill, item 87.
 - Settle which route to Value the line's target should be, given that the
   hard-selector route does not survive the punishment menus — items 14 and 34.
 
-Three corrigibility rounds ran without lifting the pause and their state is on
-[Corrigibility](Corrigibility). What they filed: the Lean form of eligible liveness and
-the laundered-loss case split — item 83; the operative-value-security bridge behind
-selected trust — item 84; bounded competence against legitimate continuation policies
-under endogenous admissibility — item 86, the line's central unresolved decision-theory
-problem.
+Three corrigibility rounds and the continuation-BRIA round ran and their state is on
+[Corrigibility](Corrigibility) and [Continuation BRIA](Continuation-BRIA). What they
+filed: the Lean form of eligible liveness and the laundered-loss case split — item 83;
+the operative-value-security bridge behind selected trust — item 84; and item 86, now
+refined to what continuation BRIA leaves: promise recognizability, joinability
+certificates for the slow lane, and their composition into corrigible policy competence.

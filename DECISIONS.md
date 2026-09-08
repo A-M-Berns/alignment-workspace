@@ -111,10 +111,20 @@ settlement timing no prefix-online rule serves every non-dominant schedule.  (6)
 controls `LEARN` under the bounded-record condition (BR); promise recognizability and
 joinability are external; `Π_leg`-wide regret stays false.  Nothing is registered: no
 filed item is answered at registration strength (item 86 keeps recognizability,
-joinability and composition).
+joinability and composition).  (7) Two maintainer instructions given during the pass:
+the deference line is no longer described as **paused** on the wiki — both of its
+targets are live, the older one waiting on the succession of item 28 and its
+temporal-depth half now supplied by continuation BRIA — and the wiki gains a
+`Theorem-Spine` page stating the program's mature results at theorem level, labelled by
+strength and citing Lean names and claim ids; that page is a presentation of the record,
+not a registry, and the claims registries and the checkpoint status ledger remain the
+statements of record.  It also states, for the first time on the wiki, the withdrawal of
+the one-sided completion interval and the sign hypothesis of the authoritative-regret
+bound.
 *Rejected alternatives:* keeping `τ` as a hypothesis component; letting bidders request
 durations now; the settlement-timed auction with a lookahead rule; registering the
-existence theorem as a statement of record ahead of a consumer.
+existence theorem as a statement of record ahead of a consumer; leaving the "paused"
+label with a footnote; mirroring registry rows onto the theorem-spine page.
 
 ### 2026-09-08 — continuation bounded inductive rationality is weighted by lease duration, and its competence statement is about hypotheses on the learner's own histories
 

@@ -188,8 +188,15 @@ for the replay-versus-local divergence that the history-shift term specialises.
   (`test_final.B`); its BRIA-ness against the full e.c. class is a prose theorem from the
   paper's Theorem 1, not mechanically checked.
 - Section 14 ends open on certifying `B_T(π)` from inside, as the dispatch allows.
-- No wiki edit: nothing registered, no theorem-level correction to a canonical page;
-  `Corrigibility`'s dynamic-admissibility paragraph is refined through item 86 only.
+- The first four passes made no wiki edit.  The closing pass promoted the result to
+  `wiki/Continuation-BRIA.md` and, on the maintainer's two mid-turn additions, removed
+  the "paused" status of the deference line from every page that carried it and wrote
+  `wiki/Theorem-Spine.md`, a theorem-level statement of the program's mature results
+  across the legitimacy spine, Progress, the conditional Normative Inductor, the
+  fixed-era layer, legitimate deference, corrigibility and continuation BRIA, each
+  labelled by strength (registered / LEAN / FIX / paper-derived / PAPER / conditional /
+  EXT / OPEN).  `Deference.md` now records the withdrawal of the one-sided completion
+  interval, which the wiki had not stated before.  Nothing is registered.
 
 ## What this does not establish
 

@@ -37,6 +37,32 @@ because it lowers loss, and a licensed response need not improve loss. Coverage
 is also separate: a theorem about responding on due occasions cannot make those
 occasions occur.
 
+Above the static interface sits a dynamic-competence layer for temporally extended
+behaviour, and it is a separate object from legitimacy:
+
+```text
+   Legitimate Evolution / normative state
+             ↓
+   traderized Logical Induction — bounded belief, normative enforcement
+             ↓
+   constitutional execution interface — the gate, the admissible envelope
+             ↓
+   continuation BRIA — accountable selection among executable continuations
+             ↓
+   temporally extended behaviour
+```
+
+Logical Induction predicts and enforces; [Continuation BRIA](Continuation-BRIA)
+allocates realized experiments among causal continuations of the system's next block,
+scoring accountable claims on realized outcomes only. The two keep separate wealth
+accounts and separate theorems; a prediction that becomes an accountable claim is the
+bridge between them, and that bridge is an interface rather than a theorem. BRIA is not
+part of legitimacy: the constitution supplies the wrapper and the class of legitimate
+continuations, nothing about their value.
+
+The results each layer rests on, stated at theorem level with their strength labels,
+are collected on the [Theorem Spine](Theorem-Spine).
+
 ## Current mathematical shape
 
 Let `S` be public pre-action states, `D` public burdens, and `A` a finite response

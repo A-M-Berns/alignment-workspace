@@ -102,6 +102,20 @@ ramped adequacy gate realizes with an explicit constant
 component of the architecture above; the positive margin it needs is a semantic or
 epistemic input, and competence inside the adequate set is the application's.
 
+## The dynamic layer after the envelope
+
+The Inductor's decision adapter selects one response per service occasion inside the
+admissible envelope the normative constraints determine.  When responses have temporal
+extent — a plan that pays now for an amendment that pays later — the selection among
+*continuations* is a further learning problem, and the candidate learner for it is
+[Continuation BRIA](Continuation-BRIA): a duration-weighted bounded-inductive auction
+over causal advisor continuations of the system's next block, run through the
+constitutional wrapper, with accountable claims settled on realized block scores.  It
+is a separate layer with a separate wealth account: traderized Logical Induction
+supplies bounded belief and normative enforcement; BRIA allocates actual execution among
+temporally extended continuations.  Nothing about the concrete Inductor realization is
+thereby complete, and the coupling of LI predictions to BRIA claims is an open interface.
+
 ## What remains
 
 Realization and integration, not conceptual theory: a `Protocol` implemented over an

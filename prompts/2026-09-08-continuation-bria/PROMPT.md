@@ -1,8 +1,9 @@
 # Dispatch — 2026-09-08 continuation BRIA
 
-Four messages, all verbatim as sent.  The second is the pressure pass dispatched
+Five messages, all verbatim as sent.  The second is the pressure pass dispatched
 against the first's result; the third the final correctness pass dispatched against the
-second's; the fourth the allowance-timing audit dispatched against the third's.
+second's; the fourth the allowance-timing audit dispatched against the third's; the fifth
+the closing pass with merge authorization and two mid-dispatch additions.
 
 ## Message 1
 
@@ -3432,3 +3433,1022 @@ The pass is done only when there is no remaining ambiguity between:
 and
 
     capital credited after the test.
+
+---
+
+## Message 5
+
+You are working in `A-M-Berns/alignment-workspace`, on PR #95:
+
+    Continuation BRIA: leases, the weighted auction, and the policy-regret frontier
+
+Branch:
+
+    round/2026-09-08-continuation-bria
+
+Last inspected head:
+
+    17507972bb9dc9b7daf3a1434b72a964c3aa44ee
+
+This is the CLOSING PASS.
+
+The maintainer explicitly authorizes you to MERGE PR #95 once the acceptance criteria
+below are satisfied.
+
+Do not start another research round.
+Do not broaden into a new LI/BRIA unification project.
+Do not add speculative machinery.
+Do not preserve old abstractions merely because they are already written.
+
+The goals are:
+
+1. repair the last theorem-hygiene issue in opening-timed coverage;
+2. compress the continuation-hypothesis type to its mature formulation;
+3. make the round documents internally consistent;
+4. promote the settled results into the canonical wiki;
+5. run the full repository checks;
+6. merge PR #95 if and only if all checks and audits pass.
+
+======================================================================
+0. READ CURRENT STATE FIRST
+======================================================================
+
+Before changing anything, inspect the CURRENT branch and PR, not merely this prompt.
+
+Read at minimum:
+
+- PR #95 body
+- projects/deference/rounds/2026-09-08-continuation-bria/
+  - REPORT.md
+  - PRESSURE_PASS.md
+  - BRIA_SOURCE_AUDIT.md
+  - FIXED_HORIZON.md
+  - CONTINUATION_HYPOTHESES.md
+  - WEIGHTED_BRIA.md
+  - GROWING_HORIZON.md
+  - POLICY_REGRET_FRONTIER.md
+  - CORRIGIBILITY_COMPOSITION.md
+  - COUNTERMODELS.md
+  - FOR_HUMANS.md
+- src/bria.py
+- all tests, especially test_timing.py
+- lean/Workspace/Deference/Contrib/ContinuationBRIA.lean
+- PRIORITIES.md
+- DECISIONS.md
+- PROVENANCE.md
+- wiki/Architecture.md
+- wiki/Corrigibility.md
+- wiki/Deference.md
+- wiki/Normative-Induction.md
+- wiki/Normative-Inductor.md
+- wiki/Logical-Induction-and-Deference.md
+- wiki/Glossary.md
+- wiki/Home.md
+- wiki/CONVENTIONS.md
+
+Check repo rules for canonical wiki status labels, registration, provenance, and merge
+workflow.
+
+======================================================================
+1. SHARPEN THE OPENING-TIMING COVERAGE BOUND
+======================================================================
+
+The current fourth pass claims that because BRIA Definition 5 uses the inclusive record,
+
+    ℓ_K = Σ_{tests t ≤ K} w_t (G_t - e_t),
+
+opening-timed coverage requires
+
+    A_i(K) - 2 w_K -> ∞,
+
+and hence the prefix subsidy has coefficient 2:
+
+    A(k,i) = 2 ΔM_k + 1/k.
+
+This appears unnecessarily loose.
+
+Re-derive the inclusive rejection inequality carefully.
+
+At a rejection round K, opening capital satisfies
+
+    B_K(i) = W_K(i) + A(K,i)
+
+and because i's wealth-bounded bid is below the winning estimate while
+
+    α^e_K < e_{i,K},
+
+we have
+
+    B_K(i) < w_K e_{i,K}.
+
+Using
+
+    B_K(i)
+      =
+    A_i(K) + chargedRecord_i(<K),
+
+and paid bid ≤ promise, derive
+
+    ℓ^i_{<K}
+      <
+    w_K e_{i,K} - A_i(K).
+
+Now split on whether i is the winner at K.
+
+CASE 1: i does not win.
+
+Then
+
+    ℓ^i_K = ℓ^i_{<K},
+
+so
+
+    ℓ^i_K < w_K - A_i(K).
+
+CASE 2: i wins while wealth-constrained.
+
+Then the inclusive record adds exactly
+
+    w_K (G_K - e_{i,K}),
+
+not an arbitrary +w_K.
+
+Therefore
+
+    ℓ^i_K
+      <
+    w_K e_{i,K} - A_i(K)
+      + w_K(G_K - e_{i,K})
+      =
+    w_K G_K - A_i(K)
+      ≤
+    w_K - A_i(K).
+
+So the expected sharp uniform inequality is:
+
+    BOX:
+        ℓ^i_K < w_K - A_i(K)
+
+at every rejection K.
+
+If this derivation is correct, replace the current factor-2 condition by:
+
+    capital adequacy:
+        A_i(K) - w_K -> ∞.
+
+Then restore the prefix subsidy to:
+
+    A(k,i) = ΔM_k + 1/k
+
+on the support
+
+    s(k) = floor sqrt(S_k / M_k).
+
+The subsidy bound should return to:
+
+    𝒜_K
+      ≤
+    2 sqrt(S_K M_K)
+      +
+    sqrt(S_K)(1 + ln K)
+      =
+    o(S_K).
+
+Do not assume this prompt is right:
+kernel-check the finite inequality and try to break it.
+
+If there is a hidden indexing issue, identify it exactly.
+But do not retain coefficient 2 merely because a finite fixture with coefficient 1 fails
+to test every early spike: BRIA coverage does NOT require every rejection to be tested.
+
+======================================================================
+2. LEAN THE SHARP OPENING-TIMING ARGUMENT
+======================================================================
+
+Update the Lean algebra to prove the ACTUAL bound used by the theorem.
+
+Preferred theorem shape:
+
+    record_succ_lt_of_rejected_opening
+      ...
+      :
+      record e i (K+1)
+        <
+      w K - allowanceOf i (K+1)
+
+under the correct bounded-return / bounded-promise assumptions.
+
+The proof should exploit cancellation of `e_K` when i wins, not separately bound the
+current record increment by `w_K`.
+
+Also fix the current no-win accumulation gap.
+
+The existing:
+
+    wealth_ge_of_no_win
+
+assumes source-paper `Feasible`.
+
+The opening-timed construction has only:
+
+    FeasibleOpening.
+
+Add either:
+
+    wealth_ge_of_no_win_opening
+
+or generalize the lemma so it only consumes the nonnegativity fact it actually needs.
+
+Then ensure the opening-timing coverage proof has a completely coherent Lean-supported
+finite spine:
+
+- opening wealth nonnegative;
+- no-win subsidy accumulation;
+- rejection record bound;
+- inclusive rejection record bound;
+- overestimation bound;
+- attention bound.
+
+Do not formalize the whole BRIA criterion unless this becomes unexpectedly necessary.
+
+======================================================================
+3. RETUNE THE PREFIX CONSTRUCTOR AND TIMING FIXTURES
+======================================================================
+
+If coefficient 1 is restored:
+
+    prefix subsidy:
+        A(k,i) = ΔM_k + 1/k
+
+and:
+
+    A_i(K) - m_K -> ∞.
+
+Retune:
+
+- src/bria.py
+- test_timing.py
+- test_pressure.py
+- test_weighted.py
+- all prose.
+
+The surprise-spike test should test the ACTUAL distinction:
+
+SOURCE / SETTLEMENT TIMING:
+    current ΔM_k cannot finance the surprise spike;
+    there exists a non-dominant adversarial schedule on which a spike-only hypothesis
+    remains uncovered.
+
+OPENING TIMING:
+    current ΔM_k is available;
+    the theorem's asymptotic capital-adequacy and coverage argument succeeds.
+
+Do NOT require:
+
+    "the liar wins every spike"
+
+or even:
+
+    "the liar wins all sufficiently large spikes"
+
+unless actually proved.
+
+Coverage is about:
+
+    finite rejection
+    OR
+    record -> -∞ along rejection rounds.
+
+Use fixtures as finite diagnostics, not as substitutes for the asymptotic theorem.
+
+Keep the settlement-timing impossibility theorem if it survives the sharpened audit.
+
+======================================================================
+4. COMPRESS THE CONTINUATION-HYPOTHESIS TYPE
+======================================================================
+
+The current canonical type is approximately:
+
+    h(H_k) = (q_k, τ_k, e_k)
+
+where q is a controller and τ an advisor-side execution treatment.
+
+This was useful scaffolding for discovering the pseudo-test / treatment-mismatch issue,
+but it is not needed as the mature primitive.
+
+Canonicalize the theory around ONE executable continuation object.
+
+The new core type should be:
+
+    h(H_k) = (c_{h,k}, e_{h,k})
+
+where
+
+    c_{h,k} ∈ C_{m_k}(H_k)
+
+is a finite-horizon CAUSAL ADVISOR CONTINUATION for the next block.
+
+Preferred abstract type:
+
+    c :
+      ObsHist_{H_k,<m_k}
+        ->
+      Proposal
+
+or an equivalent typed causal strategy.
+
+The existing implementation type
+
+    (state, within-block step, absolute time) -> action/proposal
+
+is acceptable as a concrete sufficient representation when state is history-sufficient.
+
+Be explicit:
+
+- c is NOT an open-loop action list;
+- c may react to gate refusals, external observations, amendments, principal actions, etc.;
+- c controls only the advisor/proposal side;
+- the gate and exterior remain live;
+- c is finite-horizon because the surrounding block contract fixes m_k.
+
+The SYSTEM, not the bidder, supplies the block contract:
+
+    χ_k =
+      (
+        actual start history H_k,
+        block duration m_k,
+        constitutional execution wrapper Exec^G,
+        bounded score functional R_k
+      ).
+
+Then:
+
+    h(χ_k) = (c_{h,k}, e_{h,k})
+
+and if h wins:
+
+    ω_k = Exec^G_{m_k}(H_k, c_{h,k})
+    G_k = R_k(ω_k).
+
+The hypothesis's claim e is accountable against this realized G_k.
+
+======================================================================
+5. REMOVE τ AS A CANONICAL PRIMITIVE, BUT PRESERVE THE LESSON
+======================================================================
+
+Do not erase the important treatment-alignment insight.
+
+Instead demote `(q, τ)` to an explanatory FACTORIZATION of a continuation:
+
+    c = τ(q).
+
+For example:
+
+    "q for three steps, then baseline"
+
+is simply a different continuation c from:
+
+    "q for the whole block."
+
+The mature test-validity principle becomes:
+
+    BOX:
+      Data is evidence about a continuation claim only when it is generated by executing
+      the continuation named by that claim under the standard block semantics.
+
+So:
+
+    c ≠ c'
+        =>
+    an observation from c' is not a test of a claim about c.
+
+This is the direct continuation analogue of ordinary BRIA:
+
+    ordinary hypothesis:
+        (action, promise)
+
+    continuation hypothesis:
+        (continuation, claim).
+
+Testing is NOT a third object supplied by the bidder.
+
+A TEST is the derived event:
+
+    Test(h,k)
+      iff
+    h is selected at k and c_{h,k} is actually executed under χ_k.
+
+Keep `q/τ` only:
+- in the historical explanation of how the pseudo-test problem was found;
+- as an optional representation lemma / explanatory note;
+- in fixtures if convenient internally.
+
+Do not make readers carry τ through the headline theorem.
+
+======================================================================
+6. BE EXACT ABOUT WHO CHOOSES THE HORIZON
+======================================================================
+
+Current continuation-BRIA does NOT let bidders request arbitrary lease lengths.
+
+The global schedule supplies:
+
+    m_k.
+
+Every bidder at block k competes for the SAME next block of length m_k.
+
+So the mature object is:
+
+    system parcels the future into blocks m_k;
+    hypotheses bid for which continuation occupies the next block.
+
+The headline non-dominance theorem concerns the system schedule:
+
+    m_k / S_k -> 0.
+
+Do not write language suggesting each bidder currently chooses how much lifetime to buy.
+
+Hypothesis-requested horizons / combinatorial bids for duration remain OPEN.
+
+This distinction belongs prominently in the wiki.
+
+======================================================================
+7. REWRITE THE ROUND DOCUMENTS AROUND THE MATURE TYPE
+======================================================================
+
+Update at minimum:
+
+- CONTINUATION_HYPOTHESES.md
+- FIXED_HORIZON.md
+- WEIGHTED_BRIA.md
+- GROWING_HORIZON.md
+- POLICY_REGRET_FRONTIER.md
+- CORRIGIBILITY_COMPOSITION.md
+- PRESSURE_PASS.md
+- REPORT.md
+- FOR_HUMANS.md
+- BRIA_SOURCE_AUDIT.md
+- PR body.
+
+Use terminology consistently:
+
+Preferred:
+    continuation
+    continuation hypothesis
+    accountable contextual claim
+    block contract
+    execution wrapper
+    realized test
+    opening subsidy
+    weighted BRIA
+    non-dominance
+    continuation-promise competence
+    promise recognizability
+    history shift
+    joinability / bounded catch-up
+    foreclosure
+
+Avoid making these canonical unless needed:
+    protocol
+    treatment
+    lease object
+    policy
+
+"Execution lease" may remain as an intuitive description of what winning a block means,
+but should not be a separate component of the hypothesis type.
+
+======================================================================
+8. STATE THE HEADLINE THEOREM CLEANLY
+======================================================================
+
+The canonical theorem should have a human-readable form close to:
+
+CONTINUATION-BRIA EXISTENCE / NON-DOMINANCE THEOREM.
+
+Let block k have duration m_k ≥ 1 and
+
+    S_K = Σ_{k≤K} m_k.
+
+At each block start, after m_k is revealed, hypotheses from a c.e. class emit a causal
+continuation for that block and an accountable claim about its realized bounded block
+score.
+
+Then:
+
+    m_K / S_K -> 0
+
+iff suitable negligible opening subsidies exist for the weighted auction; under this
+condition there is a single prefix-online computable weighted-BRIA learner covering every
+c.e. class of e.c. continuation hypotheses.
+
+If
+
+    limsup m_K / S_K > 0,
+
+there is a computable environment and a two-hypothesis e.c. class for which NO estimating
+agent satisfies the weighted BRIA criterion.
+
+Keep the exact quantifiers correct.
+
+The converse is criterion-level.
+The positive result uses the opening-timed weighted auction.
+
+Do not call the weighted auction literally the paper's construction:
+- fixed-horizon BRIA criterion reduction: PAPER verbatim;
+- source paper auction: settlement-timed;
+- weighted auction: DERIVED opening-subsidy modification.
+
+======================================================================
+9. STATE THE COMPETENCE RESULT CLEANLY
+======================================================================
+
+For a covered continuation hypothesis h with bounded-below test record:
+
+    (BR)
+      inf_K ℓ^h_K > -∞,
+
+continuation BRIA controls:
+
+    LEARN_K(h)
+      =
+    Σ_{k≤K} m_k (e_{h,k} - G^obs_k)
+      ≤
+    o(S_K).
+
+Interpretation:
+
+    the learner cannot asymptotically underperform the accountable claims of a continuation
+    that survives its actual tests.
+
+Then preserve the clean external decomposition:
+
+    Regret
+      =
+    LEARN
+      +
+    SLACK
+      +
+    SHIFT.
+
+Where:
+
+    LEARN:
+      continuation BRIA;
+
+    SLACK:
+      the claim is near-tight for the continuation's value from the learner's actual
+      history;
+
+    SHIFT:
+      the comparator's own-history value is recoverable from / joinable with the learner's
+      actual history.
+
+Do not imply BRIA itself supplies counterfactual policy values.
+
+======================================================================
+10. PROMOTE THE RESULT TO THE WIKI
+======================================================================
+
+This round is mature enough to stop living only in `projects/deference/rounds/...`.
+
+Create a canonical wiki page, preferably:
+
+    wiki/Continuation-BRIA.md
+
+unless repo conventions strongly prefer another name.
+
+This page should be concise and theorem-oriented, not a dump of the round.
+
+Suggested structure:
+
+# Continuation BRIA
+
+## Status
+Clearly label:
+- source BRIA facts: PAPER;
+- fixed-horizon reduction: DERIVED;
+- weighted algebra: LEAN-backed DERIVED;
+- non-dominance theorem: DERIVED, finite algebra Lean-backed;
+- policy-regret bridges: DERIVED / EXT as appropriate;
+- remaining open questions.
+
+## 1. Problem
+Original BRIA is one-step/myopic.
+We need empirically accountable temporally extended choice without counterfactual reward
+tables.
+
+## 2. Canonical type
+System block contract χ_k.
+Hypothesis:
+
+    h(χ_k) = (c_{h,k}, e_{h,k})
+
+with causal advisor continuation
+
+    c : ObsHist_{<m_k} -> Proposal.
+
+Test is realized execution, not another primitive.
+
+Mention `c = τ(q)` only as an optional factorization explaining treatment mismatch.
+
+## 3. Fixed horizon
+Macro-reduction to original BRIA.
+
+## 4. Variable horizon / weighted BRIA
+Primitive-time weighting.
+Opening-subsidy auction.
+Attention interpretation.
+
+## 5. Headline theorem
+Non-dominance:
+
+    m_K / S_K -> 0
+
+is the sharp schedule-level boundary.
+
+State positive and negative sides carefully.
+
+## 6. Competence theorem
+(BR) -> LEARN = o(S).
+
+## 7. Policy frontier
+LEARN + SLACK + SHIFT.
+
+## 8. Corrigibility interface
+Constitution supplies:
+- execution gate;
+- legitimate/gate-transparent continuation class;
+- possibly joinability/catch-up structure.
+
+It does NOT supply task-value claims.
+
+## 9. Open
+At least:
+- promise/value recognizability;
+- recovery/joinability certificates;
+- weighted analogue of BRIA Theorem 4 if still open;
+- hypothesis-requested horizons / combinatorial duration allocation;
+- infinite-horizon discounted settlement;
+- deeper LI/BRIA coupling (do not solve here).
+
+======================================================================
+11. UPDATE EXISTING WIKI PAGES, BUT KEEP LAYER BOUNDARIES
+======================================================================
+
+Update only where the new result materially changes the canonical architecture.
+
+At minimum inspect and likely update:
+
+### wiki/Architecture.md
+Add continuation BRIA as the bounded dynamic-competence layer:
+
+    Legitimate Evolution / normative state
+      ->
+    traderized LI / bounded epistemic enforcement
+      ->
+    constitutional execution interface
+      ->
+    continuation BRIA
+      ->
+    temporally extended behavior.
+
+Do not say BRIA is part of legitimacy.
+
+### wiki/Corrigibility.md
+Update the positive theorem target to distinguish:
+
+    constitutional preservation
+      +
+    continuation learning
+      +
+    promise recognizability
+      +
+    joinability/recoverability.
+
+Use:
+
+    Regret = LEARN + SLACK + SHIFT.
+
+Make clear that unrestricted Π_leg regret remains false.
+
+### wiki/Normative-Inductor.md
+Explain that continuation BRIA is a candidate dynamic response-selection/competence layer
+AFTER normative constraints determine the execution envelope.
+
+Traderized LI and BRIA remain separate layers:
+- LI: bounded beliefs / normative enforcement;
+- BRIA: allocation of actual execution among temporally extended continuations.
+
+Do not claim the concrete Normative Inductor realization is complete.
+
+### wiki/Normative-Induction.md
+Only add the interface if helpful:
+the Progress theorem is agnostic about how responses are selected; continuation BRIA is one
+candidate learner supplying good dynamic responses.
+
+### wiki/Deference.md and/or wiki/Logical-Induction-and-Deference.md
+Add the precise bridge:
+future authoritative evaluation / LI can potentially supply accountable continuation-value
+claims, which would discharge SLACK.
+Mark this as an interface/open realization unless actually proved.
+
+### wiki/Glossary.md
+Add concise entries for:
+- continuation
+- continuation BRIA
+- non-dominance
+- opening subsidy
+- continuation-promise competence
+- promise recognizability
+- history shift
+- joinability / bounded catch-up
+- foreclosure
+
+Do not add obsolete `τ` as a canonical glossary primitive.
+
+### wiki/Home.md
+Add the new page to navigation / current theory map if conventions call for it.
+
+======================================================================
+12. KEEP LI AND BRIA MODULAR
+======================================================================
+
+Do not turn this closing pass into a deeper synthesis.
+
+Canonical current picture:
+
+    Logical Induction / traderization:
+      bounded epistemics, prediction, normative enforcement.
+
+    Continuation BRIA:
+      bounded experimental selection among actual executable continuations.
+
+Potential bridge:
+
+    LI-derived / deferential value prediction
+      ->
+    accountable continuation claim e
+      ->
+    BRIA empirical testing.
+
+But this bridge is not yet a theorem unless the repo already has one.
+
+In particular:
+
+    LI predicts;
+    BRIA allocates realized experiments.
+
+Keep the wealth accounts semantically distinct.
+
+======================================================================
+13. PRIORITIES / DECISIONS / PROVENANCE
+======================================================================
+
+Update PRIORITIES item 86 to reflect the result now established.
+
+Do NOT close item 86 if its remaining substance is still:
+
+- promise recognizability;
+- joinability/recoverability realization;
+- composition into corrigible policy competence.
+
+But remove work that PR95 has genuinely discharged.
+
+Update DECISIONS.md if the repo records architectural decisions there. Candidate decisions:
+
+- canonical continuation hypothesis is `(continuation, claim)`, not `(q, τ, claim)`;
+- test is derived realized execution;
+- horizon is system-scheduled, not bidder-requested;
+- opening subsidy is the weighted construction's timing;
+- non-dominance is the sharp schedule-level boundary;
+- LEARN / SLACK / SHIFT are separate interfaces.
+
+Update provenance everywhere required.
+
+======================================================================
+14. REGISTRATION DECISION
+======================================================================
+
+Inspect repo conventions for "statement of record."
+
+Do NOT register a theorem merely to make the PR look stronger.
+
+But if the repository's canonicalization rules imply that a theorem promoted to the wiki
+should receive a registered statement, make the minimal appropriate registration.
+
+Be explicit about levels:
+
+PAPER:
+    source BRIA theorem.
+
+DERIVED:
+    continuation reduction / weighted criterion / existence theorem / policy decomposition.
+
+LEAN:
+    exact finite algebra supporting the derived theorem.
+
+EXT:
+    constitutional meaning of gate, rollout semantics, task/principal value semantics.
+
+OPEN:
+    the unresolved interfaces.
+
+If no registration is appropriate, say why in the final report.
+
+======================================================================
+15. FULL CONSISTENCY SEARCH
+======================================================================
+
+Search the branch for stale language and repair every meaningful occurrence:
+
+    "(q, τ, e)"
+    "treatment"
+    "protocol"
+    "weakest useful lease"
+    "test is"
+    "coefficient 2"
+    "2 ΔM"
+    "A_i(K) − 2"
+    "4√"
+    "every spike"
+    "declared in advance"
+    "known to hypotheses"
+    "reversible"
+    "condition (R)"
+    "paper's construction verbatim"
+    "policy"
+
+For "policy", do not mechanically replace every occurrence.
+Use:
+- continuation/controller for the BRIA object;
+- policy only for the external own-trajectory comparator where that is genuinely the type.
+
+======================================================================
+16. TESTS
+======================================================================
+
+Run and repair:
+
+- round-local tests;
+- root `python3 tests/run.py`;
+- Lean build for ContinuationBRIA;
+- full Lean audit required by repo convention;
+- round_records;
+- lean_scope;
+- DCO;
+- any wiki/link consistency checks;
+- any registry/checker suite if registration changed.
+
+All exact fixtures should remain meaningful after the semantic compression.
+
+Add one small test or specification fixture if useful showing:
+
+    c_full
+      !=
+    c_prefix_then_baseline
+
+and that an outcome from the latter does not count as a test of a claim about the former.
+
+This can replace τ-level language.
+
+======================================================================
+17. FINAL HUMAN AUDIT BEFORE MERGE
+======================================================================
+
+Before merging, answer these exactly:
+
+1. What is the canonical type of a continuation hypothesis?
+
+2. Who chooses the block duration m_k?
+
+3. What exactly does a continuation control?
+
+4. What remains live outside the continuation?
+
+5. What event constitutes a test?
+
+6. Is τ still a primitive?
+   Expected mature answer: no; `(q,τ)` is at most an explanatory factorization of one
+   executable continuation.
+
+7. What is the sharp opening-timing capital-adequacy condition?
+
+8. What is the prefix subsidy rule?
+
+9. What is the headline schedule condition?
+
+10. What is the positive existence theorem?
+
+11. What is the criterion-level impossibility theorem?
+
+12. What exactly does continuation-promise competence guarantee?
+
+13. What do SLACK and SHIFT add?
+
+14. What does this solve for corrigibility?
+
+15. What remains open?
+
+If any answer is still ambiguous across the docs/wiki/code, do not merge yet.
+
+======================================================================
+18. MERGE CRITERIA
+======================================================================
+
+You are authorized to merge PR #95 when ALL of the following hold:
+
+- the opening-timing coverage inequality is correct and Lean-backed;
+- the coefficient is sharp enough that no known avoidable factor remains in the canonical
+  theorem;
+- Python and Lean implement/model the same weighted construction;
+- the prefix theorem is still valid;
+- the settlement-timing negative is correctly scoped;
+- canonical type is `(continuation, claim)`;
+- τ is demoted from primitive to optional explanatory factorization;
+- block duration is clearly system-scheduled;
+- round docs are consistent;
+- wiki/Continuation-BRIA.md exists and is canonical;
+- relevant architecture/corrigibility/normative-inductor/deference wiki pages are updated;
+- PRIORITIES / DECISIONS / PROVENANCE are consistent;
+- all tests and audits pass;
+- PR body reflects the final result;
+- branch is mergeable against current main.
+
+If main moved and causes conflicts, rebase/update safely, rerun all checks, and re-audit
+the changed interfaces.
+
+Then MERGE PR #95 using the repository's normal merge strategy.
+
+Do not leave it open merely because previous round prompts said "maintainer decides":
+the maintainer has now explicitly decided that this closing dispatch should merge once
+the above criteria pass.
+
+======================================================================
+19. FINAL VERDICT
+======================================================================
+
+If merged, final verdict:
+
+    CONTINUATION-BRIA-CANONICALIZED-AND-MERGED
+
+If not merged, choose one precise blocker, e.g.:
+
+    NOT-MERGED-SHARP-COVERAGE-BOUND-FAILS
+
+    NOT-MERGED-NONDOMINANCE-THEOREM-CHANGED
+
+    NOT-MERGED-WIKI-AND-ROUND-DISAGREE
+
+    NOT-MERGED-CI-FAILURE
+
+Do not say READY if you did not actually merge.
+
+======================================================================
+20. FINAL REPORT
+======================================================================
+
+The final response/report should be compact and answer:
+
+- final PR head and merge commit;
+- exact headline theorem;
+- final continuation-hypothesis type;
+- final subsidy/capital condition;
+- what was changed from the fourth pass;
+- wiki pages created/updated;
+- what remains in item 86;
+- whether anything was registered;
+- all tests/audits run;
+- final verdict.
+
+The desired conceptual compression is:
+
+    system chooses a vanishing-share block;
+    hypothesis proposes a causal advisor continuation plus an accountable claim;
+    winning means that continuation is actually executed through the live constitutional
+    wrapper;
+    realized score settles the claim;
+    weighted BRIA guarantees accountable long-horizon experimentation exactly on
+    non-dominant schedules.
+
+And the downstream frontier remains:
+
+    policy regret
+      =
+    LEARN
+      +
+    SLACK
+      +
+    SHIFT.
+
+Do not collapse those three terms.
+
+---
+
+Mid-dispatch additions from the maintainer, verbatim:
+
+> Can you also remove stuff about how the deference line is "paused"?
+
+> Please also try to incorporate the most important mathematical results presented in
+> their most mature form into the wiki. you can use the most recent pdf (might be in
+> downloads, legitimate evo and etc) as a guide to some extent, and any agent
+> consolidated/agent canonicalized results from the repo

@@ -127,10 +127,13 @@ maximization.**
   response, charged at `D` through the residual and never a violation; in the Lean
   this is a wrapper silent under margin, and the cleaner semantics compiles "inquiry is
   adequate" from a certified conflict so that inquiry is an ordinary response.
-- **Open.**  When an admissible act changes the next admissible set, a myopic gated
-  learner is safe and not competent against legitimate continuation policies; bounded
-  competence under an endogenously changing admissibility process is the next
-  problem ([Corrigibility](Corrigibility)).
+- **The dynamic layer.**  Progress is agnostic about how responses are selected.  When
+  an admissible act changes the next admissible set, a myopic gated learner is safe and
+  not competent against legitimate continuation policies; the learner that supplies
+  temporally extended responses is [Continuation BRIA](Continuation-BRIA), which
+  controls learning error against accountable continuation claims on every
+  non-dominant block schedule, and leaves promise recognizability and joinability as
+  the external bridges ([Corrigibility](Corrigibility)).
 
 ## What is billed
 

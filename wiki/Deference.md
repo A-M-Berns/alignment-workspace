@@ -82,8 +82,12 @@ fixed candidate of the issued menu. With Value's bound `ε` and availability `�
 ≤ η < 1`, that regret is at most `ε/(1 − η)`; as both vanish it vanishes. Any total
 regret written against an arbitrary completion of the void worlds lies within the
 payoff diameter times `η` of activated regret, in either direction — a robustness
-lemma, not a target. Under sound activation the credence of worlds where a protected
-reason was suppressed is at most `η`, relative to the declared scope.
+lemma, not a target; the one-sided interval an earlier round stated is withdrawn, since a
+world-dependent strategy on the void branch can push completion regret *below* activated
+regret. Under sound activation the credence of worlds where a protected reason was
+suppressed is at most `η`, relative to the declared scope. The theorem-level statements,
+with their Lean names and the sign hypothesis the bound needs, are on the
+[Theorem Spine](Theorem-Spine).
 
 **What is not claimed.** That legitimacy chooses the correct answer; that Robust
 Openness makes the principal consider anything — it supplies a route for a live
@@ -98,14 +102,17 @@ whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
 
 ## Current status
 
-> **Two targets.** The original target — the corrigibility model with temporal depth
-> and what foreclosure loses — is **paused** on the one decision below; what it holds
-> is registered and what it waits on is a decision, not a proof. Endpoint preservation,
-> the other decision it once waited on, is **ruled out** (`DECISIONS.md`, 2026-09-08):
-> legitimate influence is causal factorization through declared reasons, not
-> convergence location. The legitimate-deference consumer above is **active research
-> state**, unregistered, landed in three rounds; it consumes the legitimacy spine and
-> does not lift the pause on the older target.
+> **Two targets, both live.** The legitimate-deference consumer above is **active
+> research state**, unregistered, landed in three rounds; it consumes the legitimacy
+> spine. The original target — the corrigibility model with temporal depth and what
+> foreclosure loses — now has its temporal-depth half supplied by
+> [Continuation BRIA](Continuation-BRIA): bounded learning against accountable
+> continuation claims on the histories the learner reaches, with foreclosure named
+> exactly as the case in which a comparator's own history is not joinable from the
+> learner's. What it holds is registered; what remains is the succession of item 28
+> (`DECISIONS.md`, *Awaiting the author*), a decision about what is worth proving.
+> Endpoint preservation is **ruled out** (`DECISIONS.md`, 2026-09-08): legitimate
+> influence is causal factorization through declared reasons, not convergence location.
 
 > **Established — `lean-proved`.** The
 > <!--state:workspace:counts.registered_claims_by_project.deference-->31<!--/state-->
@@ -125,14 +132,26 @@ advisor cooperation. A hard-selector route to Value does not survive the relevan
 punishment menus, while a classwise, domain-relative route does; which of the two
 the line's target should be is live as items 14 and 34.
 
-**What the pause on the older target is on.** One decision sits in `DECISIONS.md`'s
+**What the older target still waits on.** One decision sits in `DECISIONS.md`'s
 *Awaiting the author*: whether the two candidate objects for what foreclosure loses are
 enough for that question to graduate, and what succeeds item 28, which is *what is
-worth proving* and no round's to decide. Until that is answered, the remaining
-work is specified and not started: Logical-Induction-native work supplies bounded
-belief and forcing tools under explicit assumptions but no resource-indexed proof
-that the quoted future process is unavailable now, and the corrigibility model
-needs temporal depth and an authorization relation at once.
+worth proving* and no round's to decide. The temporal-depth requirement is now met at
+the learning layer: [Continuation BRIA](Continuation-BRIA) supplies bounded competence
+against accountable continuation claims for every non-dominant block schedule, and the
+policy-regret frontier `Regret = LEARN + SLACK + SHIFT` types what foreclosure loses as
+the `SHIFT` term. What remains specified and not started is the authorization relation
+at that depth, and the Logical-Induction-native side still supplies bounded belief and
+forcing tools under explicit assumptions but no resource-indexed proof that the quoted
+future process is unavailable now.
+
+**The bridge to continuation claims.** Future authoritative evaluation — the activated
+value `C_n · V_n(a)` of the legitimate-deference stack, settled on the principal side —
+is one candidate source of the realized block scores continuation BRIA settles claims
+against, and of the accountable claims themselves: a prediction of that value that a
+hypothesis is willing to be held to is a claim with slack, and discharging the `SLACK`
+bridge is what would make continuation competence competence against the principal's
+value. That is an interface, not a theorem; nothing here proves that Logical Induction's
+prices are near-tight claims about realized activated value.
 
 ## Evidence and deeper reading
 

@@ -339,7 +339,16 @@ continuation reaches, within `d` steps, a state value-equivalent for `π` to `π
    `m_k`.
 3. **Promoted to the wiki**: `Continuation-BRIA.md`, with the Architecture,
    Corrigibility, Normative-Inductor, Normative-Induction, Deference,
-   Logical-Induction-and-Deference, Glossary and Home pages amended.
+   Logical-Induction-and-Deference, Glossary and Home pages amended.  Two mid-turn
+   additions from the maintainer: (a) the deference line is no longer described as
+   "paused" anywhere on the wiki — both targets are live, the older one waiting on the
+   succession of item 28 and now supplied its temporal-depth half by continuation BRIA
+   (`Deference.md`, `Home.md`, `Roadmap.md`); (b) `Theorem-Spine.md`, a theorem-level
+   page of the program's mature results, using the maintainer's manuscript draft 0.4 as
+   the guide to presentation and the consolidated repository results (Lean names, claim
+   ids, checkpoint status ledger) as the statement of record; it names the withdrawal of
+   the one-sided completion interval and the `0 ≤ ε` hypothesis of `regretAuth_le_div`,
+   neither of which the wiki had stated.
 4. **Fixtures.**  `test_timing.py` retuned to the sharp bound; `test_pressure.I`/`J`
    renamed to continuation language.  68 fixtures.
 
