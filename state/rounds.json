@@ -1291,6 +1291,45 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-06-decision-theory-bill/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-07-authority-activated-value",
+      "date": "2026-09-07",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-07-authority-activated-value",
+      "verdict": "AUTHORITY-ACTIVATED-VALUE-SURVIVES — the legitimacy→deference interface is an anchored evaluation occurrence whose actual future principal answer activates ordinary value securities iff the occurrence's propagated account is a single authenticated answer with an occurrence-local legitimate lineage; activation is a one-line predicate on the existing three-fate account, occurrence-local legitimacy is a projection of the existing legitimate segment, ordinary LI Value runs on the activated family unchanged with selection-induced channel blindness as its admissible-domain condition, and the only new theorem is the availability transfer from activated regret to regret against the actual future principal at the sharp constant ε + η; that evaluations happen and that a process-certified answer is the principal's own are typed as external and filed as item 87.",
+      "verdict_source": "projects/deference/rounds/2026-09-07-authority-activated-value/README.md",
+      "depends_on": ["2026-09-08-canonicalization", "2026-09-06-mathematical-consolidation", "2026-09-05-noncapture-certificate", "2026-08-12-corpus-reconciliation", "2026-08-11-faithful-acceleration"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-07-authority-activated-value/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-07-reason-mediated-authorship",
+      "date": "2026-09-07",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-07-reason-mediated-authorship",
+      "verdict": "REASON-MEDIATED-AUTHORSHIP-COMPOSES — authorship of a future evaluation is exclusive principal binding together with reason mediation, the committed payload factoring through the declared reason view at a fixed principal policy; it enters activation as a derived predicate over the answer receipt and event payload, outside the generic protocol, and its content is that a reason view blind to the prohibited channels makes the payload, and hence the regret yardstick, blind to them; the partial-evaluation defect is repaired by completion invariance, the identity R_U = p·R_auth with the authoritative regret defined from the partial object alone, and the two-sided completion bound |R_V̄ − R_U| ≤ D·η with both constants sharp; Integrity is made occurrence-local by a projection theorem; the declared reason view's blindness and fineness remain external, and selection blindness is a separate condition authorship does not imply.",
+      "verdict_source": "projects/deference/rounds/2026-09-07-reason-mediated-authorship/README.md",
+      "depends_on": ["2026-09-07-authority-activated-value", "2026-08-11-deference-finite-kernel"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-07-reason-mediated-authorship/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-08-legitimate-deference-consolidation",
+      "date": "2026-09-08",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-08-legitimate-deference-consolidation",
+      "verdict": "LEGITIMATE-DEFERENCE-ABSTRACTION-READY-FOR-MAIN — the legitimate-deference stack lands as one coherent state: the false completion interval of the authorship round is replaced by the two-sided theorem |R_V̄ − R_U| ≤ D·η with both constants sharp, the primary conclusion is conditional authoritative regret R_auth = R_U/p ≤ ε/(1 − η) against the best fixed candidate by the actual future principal on the worlds where its evaluation has authority, authorship is rooted at issuance over a reason trace with selection blindness an instance of channel blindness, protected reason coverage is a barrier plus a representation bridge with Robust Openness supplying route availability only and suppression mass bounded by the void mass, the activation event is seven typed clauses with no new legitimacy conjunct and no protocol change, the #92 typing defect is repaired in place, the wiki tells the corrected story, and item 87 is the single realization bill that remains open.",
+      "verdict_source": "projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/README.md",
+      "depends_on": ["2026-09-07-reason-mediated-authorship", "2026-09-07-authority-activated-value"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-08-legitimate-deference-consolidation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

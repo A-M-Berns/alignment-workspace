@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 222 names, 131 of them Lean only
+## deference — 280 names, 173 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -49,6 +49,17 @@ change, and the count of those is the size of the free choice remaining.
 | `unpredictability_separates` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.SubstitutionSeparation.unpredictability_separates` |
 | `value_eq_of_price_realization_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note, prose | `Workspace.Deference.Contrib.StaticViewFactorization.value_eq_of_price_realization_eq` |
 | `namespaceIsLive` | def | unrecorded | Lean only | `Workspace.Deference.namespaceIsLive` |
+| `V` | def | 2026-09-07-authority-activated-value | note, prose | `Workspace.Deference.Contrib.ActivatedValue.Sharp.V` |
+| `V₂` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.V₂` |
+| `activated` | def | 2026-09-07-authority-activated-value | prose | `Workspace.Deference.Contrib.ActivatedValue.activated` |
+| `activatedPA` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.activatedPA` |
+| `c` | def | 2026-09-07-authority-activated-value | wiki, note, prose | `Workspace.Deference.Contrib.ActivatedValue.Sharp.c` |
+| `condExpect` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.condExpect` |
+| `c₂` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.c₂` |
+| `expect` | def | 2026-09-07-authority-activated-value | note | `Workspace.Deference.Contrib.ActivatedValue.expect` |
+| `followed` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.followed` |
+| `ind` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.ind` |
+| `mass` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.mass` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |
@@ -97,7 +108,7 @@ change, and the count of those is the size of the free choice remaining.
 | `v` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.v` |
 | `vhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.vhat` |
 | `EX` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.E1.EX` |
-| `GradeTrust` | def | 2026-08-11-phase-ii-promotion | prose | `Workspace.Deference.Contrib.DelegationBridge.GradeTrust` |
+| `GradeTrust` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.GradeTrust` |
 | `J` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.J` |
 | `W` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.W` |
 | `c` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.c` |
@@ -151,6 +162,15 @@ change, and the count of those is the size of the free choice remaining.
 | `signedSum` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.signedSum` |
 | `squaredSum` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.squaredSum` |
 | `unitTrader` | def | 2026-08-11-phase-ii-prediction | note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader` |
+| `Completion` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.Completion` |
+| `V` | def | 2026-09-07-reason-mediated-authorship | note, prose | `Workspace.Deference.Contrib.ActivatedValue.SharpLower.V` |
+| `c` | def | 2026-09-07-reason-mediated-authorship | wiki, note, prose | `Workspace.Deference.Contrib.ActivatedValue.SharpLower.c` |
+| `completeBy` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.completeBy` |
+| `condExpectPartial` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.condExpectPartial` |
+| `regretAuth` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.regretAuth` |
+| `regretU` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.regretU` |
+| `regretV` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.regretV` |
+| `voidMass` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ActivatedValue.voidMass` |
 | `AAct` | inductive | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.AAct` |
 | `CanCorrect` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.CanCorrect` |
 | `CanCorrectFuture` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.CanCorrectFuture` |
@@ -199,12 +219,50 @@ change, and the count of those is the size of the free choice remaining.
 | `step` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.step` |
 | `stepHFirst` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.stepHFirst` |
 | `stillRun` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.stillRun` |
-| `trace` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.trace` |
+| `trace` | def | 2026-08-12-reachable-corrective-control | prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.trace` |
 | `unexercised` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.unexercised` |
 | `vA` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vA` |
 | `vE` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vE` |
 | `vH` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vH` |
 | `vstep` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vstep` |
+| `CoverageData` | structure | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.CoverageData` |
+| `Covered` | def | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.CoverageData.Covered` |
+| `NoBindLive` | def | 2026-09-08-legitimate-deference-consolidation | prose | `Workspace.Deference.Contrib.ReasonCoverage.CoverageData.NoBindLive` |
+| `RepFaithful` | def | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.CoverageData.RepFaithful` |
+| `covFail` | def | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.CoverageData.covFail` |
+| `dG` | def | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.Witness.dG` |
+| `dI` | def | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.Witness.dI` |
+| `dJ` | def | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.Witness.dJ` |
+| `live` | def | 2026-09-08-legitimate-deference-consolidation | wiki, note, prose | `Workspace.Deference.Contrib.ReasonCoverage.CoverageData.live` |
+| `Authored` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Authored` |
+| `Blind` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Blind` |
+| `Dd` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Dd` |
+| `Early` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Early` |
+| `ExclusiveBind` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.ExclusiveBind` |
+| `FiberInvariant` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.FiberInvariant` |
+| `Invariant` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Invariant` |
+| `Late` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Late` |
+| `Party` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Party` |
+| `Q₀` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Q₀` |
+| `R` | def | 2026-09-07-reason-mediated-authorship | wiki, note, prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.R` |
+| `Rd` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Rd` |
+| `ReasonMediated` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.ReasonMediated` |
+| `Rp` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Rp` |
+| `Rₗ` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Rₗ` |
+| `SelectionBlind` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.SelectionBlind` |
+| `Transient` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Transient` |
+| `V_F` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.V_F` |
+| `V_G` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.V_G` |
+| `Vd` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Vd` |
+| `Vt` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Vt` |
+| `Vₗ` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Vₗ` |
+| `author_F` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.author_F` |
+| `author_G` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.author_G` |
+| `finalState` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.finalState` |
+| `leakPol` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.leakPol` |
+| `sealedPol` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.sealedPol` |
+| `selPairs` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.selPairs` |
+| `trace` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.trace` |
 | `EXanti` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXanti` |
 | `EXnv` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXnv` |
 | `J` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.J` |
@@ -240,7 +298,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 674 names, 533 of them Lean only
+## normativity — 700 names, 548 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -320,6 +378,18 @@ change, and the count of those is the size of the free choice remaining.
 | `rawWorthOf` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentProcess.rawWorthOf` |
 | `supportUpTo` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentProcess.supportUpTo` |
 | `worldValueFeatureOf` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentProcess.worldValueFeatureOf` |
+| `Cert` | def | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.AuthorityActivation.Neutral.Cert` |
+| `LegitimateForSegment` | structure | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment` |
+| `LegitimateForSegment.trans` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.trans` |
+| `LegitimateSegment.project` | def | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.AuthorityActivation.LegitimateSegment.project` |
+| `Neutral` | structure | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.AuthorityActivation.Neutral` |
+| `OpenAtFor` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.OpenAtFor` |
+| `accountClosed` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.accountClosed` |
+| `activated` | def | 2026-09-07-authority-activated-value | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.activated` |
+| `closure` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.closure` |
+| `legLocal` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.legLocal` |
+| `semTwo` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.semTwo` |
+| `stepClose` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.stepClose` |
 | `DistanceComplete` | def | 2026-08-16-traderized-enforcement | note, prose | `Workspace.Normativity.Contrib.CoherenceModulus.DistanceComplete` |
 | `IsCredence` | structure | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.IsCredence` |
 | `gap` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.CoherenceModulus.gap` |
@@ -744,7 +814,7 @@ change, and the count of those is the size of the free choice remaining.
 | `wkindNoSucc` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.wkindNoSucc` |
 | `Accounted` | def | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Accounted` |
 | `AnswerReceipt` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.AnswerReceipt` |
-| `Authority` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Authority` |
+| `Authority` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Authority` |
 | `Boundary` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Boundary` |
 | `ClosureReceipt` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.ClosureReceipt` |
 | `Fate` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Fate` |
@@ -775,6 +845,20 @@ change, and the count of those is the size of the free choice remaining.
 | `subst` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.subst` |
 | `terminals` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals` |
 | `trans` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment.trans` |
+| `LocalLegit` | inductive | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalLegit` |
+| `LocalStep` | structure | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalStep` |
+| `LocalTrace` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalTrace` |
+| `_root_.Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.toLocalLegit` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity._root_.Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.toLocalLegit` |
+| `_root_.Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toLocalLegit` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity._root_.Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toLocalLegit` |
+| `_root_.Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toLocalTrace` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity._root_.Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toLocalTrace` |
+| `_root_.Workspace.Normativity.Contrib.OccurrenceIntegrity.Step.toLocal` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity._root_.Workspace.Normativity.Contrib.OccurrenceIntegrity.Step.toLocal` |
+| `cast` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalTrace.cast` |
+| `dropped` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Witness.dropped` |
+| `droppedState` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Witness.droppedState` |
+| `localLegit` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Witness.localLegit` |
+| `localStep` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Witness.localStep` |
+| `propagate` | def | 2026-09-07-reason-mediated-authorship | wiki | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalStep.propagate` |
+| `substOn` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.substOn` |
 | `SemanticAction` | inductive | 2026-08-11-phi-regret-bridge | Lean only | `Workspace.Normativity.Contrib.PhiRegretBridge.SemanticAction` |
 | `actual` | def | 2026-08-11-phi-regret-bridge | wiki, note, prose | `Workspace.Normativity.Contrib.PhiRegretBridge.Witness.actual` |
 | `cumulativeLoss` | def | 2026-08-11-phi-regret-bridge | Lean only | `Workspace.Normativity.Contrib.PhiRegretBridge.cumulativeLoss` |
@@ -838,7 +922,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Fragment` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionCompiler.Fragment` |
 | `Fragment.toFinset` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionCompiler.Fragment.toFinset` |
 | `Group` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionCompiler.Group` |
-| `Rep` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionCompiler.Rep` |
+| `Rep` | abbrev | unrecorded | prose | `Workspace.Normativity.Contrib.ProjectionCompiler.Rep` |
 | `affineEF` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionCompiler.affineEF` |
 | `coefEF` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionCompiler.coefEF` |
 | `groupEF` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionCompiler.groupEF` |

@@ -122,12 +122,18 @@ The standing legitimacy items from before the canonicalization:
 
 ## Deference
 
-**The line is paused.** These are what it would resume on, not work in progress;
-see [Deference](Deference) for the two decisions it is waiting on.
+**The older target is paused; the legitimate-deference consumer is active.** The items
+below are what the endpoint-preservation target would resume on, not work in
+progress; see [Deference](Deference) for the two decisions it is waiting on. The
+legitimate-deference stack — activation of the actual future principal's partial
+evaluation, diachronic reason-mediated authorship, protected reason coverage, and the
+conditional authoritative-regret theorem — is landed as research state, and its one
+residual is the realization bill, item 87.
 
 - Decide whether the candidate objects for what foreclosure loses are enough for
   that question to graduate, and what succeeds item 28.
-- Decide whether endpoint-preservation is a target this program wants.
+- Endpoint preservation is ruled out (`DECISIONS.md`, 2026-09-08); the older target's
+  one remaining decision is what succeeds item 28.
 - Build a corrigibility model with temporal depth, a principal-exclusive effect,
   and protection across the declared class of advisor policies — item 27, with
   the two exact requirements item 60 established as currently unmet.

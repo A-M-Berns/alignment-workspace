@@ -41,10 +41,71 @@ principal's, and the static decision interface shared with ordinary normativity.
 is not proved — incentive corrigibility, gate preservation as a preference, provenance
 and containment — is stated there, not here.
 
+## Legitimate deference — the active consumer
+
+*Research state, unregistered; three stacked rounds, landed together.*
+
+**The interface.** At time `n` the advisor admits, as an ordinary obligation in the
+account calculus, an anchored *evaluation occurrence*: a request that the principal
+score a fixed menu at a designated session. The actual future principal — after
+interacting with the advisor — may answer. There is no counterfactual no-AI evaluator
+and no ideal-value oracle; on worlds where no evaluation occurs there is no value
+vector, and none is invented. The evaluation is a **partial** object on the worlds where
+it exists.
+
+**Activation.** A common event `C_n` says whether that evaluation validly inherits the
+present mandate's authority: exactly one authenticated answer receipt in the
+occurrence's propagated account (never a closure, never a live port); an authentic
+event payload binding the exact vector, at a principal-exclusive endpoint; an
+occurrence-local Integrity trace with the evaluation's concern scope robustly open at
+every snapshot — a *consumer projection* of a legitimate segment, not a new legitimacy
+notion; issuance-rooted **reason-mediated authorship** — over the advisor's whole
+continuation from issuance to commitment, interventions that leave the same admitted
+reason trace leave the same committed payload, with the trace blind to the declared
+prohibited channels, and the binding event the principal's; and the **protected
+reason-coverage barrier** — no protected live concern at commitment, with
+representation faithful into the trace. Authorship is not a conjunct of legitimacy and
+`AnswerOK` is unchanged; the evaluation-specific clauses are derived predicates over
+the receipt, the event payload and the session's receipts.
+
+**Deference.** Ordinary Logical Induction Value runs unchanged on the activated
+securities `C_n · Ṽ_n(a)`, which are bounded securities independent of how the partial
+evaluation is completed. Its scope condition — the menu must not reference the
+advisor's selection — is selection-induced channel blindness of the reason trace
+across the advisor's whole continuation, a theorem-domain condition kept apart from
+`C_n`; a sealed commitment is one implementation and is not sufficient alone.
+
+**The conclusion is conditional authoritative regret.** Activated regret equals the
+activation mass times the regret *by the actual authoritative future principal,
+conditional on the worlds where that principal's evaluation exists*, against the best
+fixed candidate of the issued menu. With Value's bound `ε` and availability `𝔼[1 − C_n]
+≤ η < 1`, that regret is at most `ε/(1 − η)`; as both vanish it vanishes. Any total
+regret written against an arbitrary completion of the void worlds lies within the
+payoff diameter times `η` of activated regret, in either direction — a robustness
+lemma, not a target. Under sound activation the credence of worlds where a protected
+reason was suppressed is at most `η`, relative to the declared scope.
+
+**What is not claimed.** That legitimacy chooses the correct answer; that Robust
+Openness makes the principal consider anything — it supplies a route for a live
+protected concern, not its exercise; that authorship alone puts the menu on Value's
+domain; that any concrete protocol realizes authorship, coverage, or `η → 0`. Those are
+the realization bill, `PRIORITIES.md` item 87. The stack is
+[authority-activated value](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-authority-activated-value),
+[reason-mediated authorship](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-reason-mediated-authorship)
+and the
+[consolidation](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation),
+whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
+
 ## Current status
 
-> **Paused.** The line is not being worked. What it holds is registered and what
-> it is waiting on is a decision, not a proof.
+> **Two targets.** The original target — the corrigibility model with temporal depth
+> and what foreclosure loses — is **paused** on the one decision below; what it holds
+> is registered and what it waits on is a decision, not a proof. Endpoint preservation,
+> the other decision it once waited on, is **ruled out** (`DECISIONS.md`, 2026-09-08):
+> legitimate influence is causal factorization through declared reasons, not
+> convergence location. The legitimate-deference consumer above is **active research
+> state**, unregistered, landed in three rounds; it consumes the legitimacy spine and
+> does not lift the pause on the older target.
 
 > **Established — `lean-proved`.** The
 > <!--state:workspace:counts.registered_claims_by_project.deference-->31<!--/state-->
@@ -64,11 +125,10 @@ advisor cooperation. A hard-selector route to Value does not survive the relevan
 punishment menus, while a classwise, domain-relative route does; which of the two
 the line's target should be is live as items 14 and 34.
 
-**What the pause is on.** Two decisions sit in `DECISIONS.md`'s *Awaiting the
-author*: whether the two candidate objects for what foreclosure loses are enough
-for that question to graduate, and what succeeds item 28; and whether
-endpoint-preservation is a target this program wants at all, which is *what is
-worth proving* and no round's to decide. Until those are answered, the remaining
+**What the pause on the older target is on.** One decision sits in `DECISIONS.md`'s
+*Awaiting the author*: whether the two candidate objects for what foreclosure loses are
+enough for that question to graduate, and what succeeds item 28, which is *what is
+worth proving* and no round's to decide. Until that is answered, the remaining
 work is specified and not started: Logical-Induction-native work supplies bounded
 belief and forcing tools under explicit assumptions but no resource-indexed proof
 that the quoted future process is unavailable now, and the corrigibility model

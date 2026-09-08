@@ -90,6 +90,20 @@ out, given actual coverage, to be Robust Openness itself split on whether the co
 was live at the actual prefix, and is recorded as such rather than presented as a
 certificate.
 
+This is the access half of non-capture: it concerns who can reach and act on a
+concern, not what an evaluator who does reach it concludes. That an evaluation
+recorded through an open route is the evaluator's own — authorship — is a separate
+external contract, consumed by [deference](Deference) and not part of this one.
+
+Downstream, the distinction is exact. Robust Openness supplies *route availability*:
+a live concern in scope has an adequate route by which it can become represented. It
+does not say the route is exercised, and it does not say an evaluation has already
+seen every protected concern. The deference consumer adds, at its own level and not
+here, a bridge — a represented protected concern is in the evaluation's reason
+trace — and a barrier — a certified evaluation has no live protected concern at
+commitment — and from those two derives that certification implies coverage; that
+routes are exercised in time is neither Robust Openness nor any theorem of this page.
+
 ## Self-sealing
 
 The obvious attack is to destroy the one route a criticism has and then record the
@@ -102,7 +116,8 @@ routeless, whatever is recorded afterwards.
 A certificate that coverage survives interventions is a certificate *for* a declared
 principal or relation, whose standing and corrective channel the intervention class
 is not allowed to erode. A party-free condition quantifying over all coalitions
-cannot exist. Whether the canonical predicate may name a party is a queued ruling.
+cannot exist. That the canonical predicate may name a party is ruled (`DECISIONS.md`,
+2026-09-08).
 
 ---
 
