@@ -90,10 +90,10 @@ Openness makes the principal consider anything — it supplies a route for a liv
 protected concern, not its exercise; that authorship alone puts the menu on Value's
 domain; that any concrete protocol realizes authorship, coverage, or `η → 0`. Those are
 the realization bill, `PRIORITIES.md` item 87. The stack is
-[authority-activated value](https://github.com/A-M-Berns/alignment-workspace/tree/c690fa70c5a8189d5efff964418750ebe0e70f96/projects/deference/rounds/2026-09-07-authority-activated-value),
-[reason-mediated authorship](https://github.com/A-M-Berns/alignment-workspace/tree/c690fa70c5a8189d5efff964418750ebe0e70f96/projects/deference/rounds/2026-09-07-reason-mediated-authorship)
+[authority-activated value](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-authority-activated-value),
+[reason-mediated authorship](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-07-reason-mediated-authorship)
 and the
-[consolidation](https://github.com/A-M-Berns/alignment-workspace/tree/c690fa70c5a8189d5efff964418750ebe0e70f96/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation),
+[consolidation](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation),
 whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
 
 ## Current status
