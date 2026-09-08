@@ -1,107 +1,134 @@
-# Continuation hypotheses: controllers, contextual promises, leases, and the gate
+# Continuation hypotheses: the block contract, the continuation, the claim, and the gate
 
-Labels as in `FIXED_HORIZON.md`.  Names provisional: *continuation hypothesis*,
-*execution treatment*, *promise–treatment alignment*, *execution lease*, *transparent gate*.
+Labels as in `FIXED_HORIZON.md`.  Names provisional: *block contract*, *continuation*,
+*continuation hypothesis*, *accountable contextual claim*, *realized test*, *transparent
+gate*.  *[Canonical form fixed by the closing pass; the earlier `(q, τ, e)` form is
+retained only as an explanatory factorization in §2.]*
 
-## 1. The type — *[repaired by the pressure pass]*
+## 1. The type
 
-A continuation hypothesis is a map from the actual history to a triple
+At the start of block `k` the **system** supplies the **block contract**
 
 ```
-h(H_{t_k}) = (q_{h,k}, τ_{h,k}, e_{h,k})
-q_{h,k}  : (state, step, time) → action     an m_k-step contingent controller
-τ_{h,k}                                     a declared advisor-side execution treatment (§2)
-e_{h,k} ∈ [0, 1]                            an accountable contextual CLAIM about the block
-                                            average obtained if q is executed under τ through
-                                            the gate for the whole block from THIS history
+χ_k = ( H_k,  m_k,  Exec^G,  R_k )
+      actual start history;  block duration, revealed now;  the constitutional execution
+      wrapper;  a bounded score functional on block trajectories (here the block average
+      of realized primitive rewards, in [0, 1])
 ```
 
-This is the paper's `(recommendation, promise)` with the recommendation a program and a
-protocol instead of a term.  **The claim is not, by definition, a lower bound.**  As in
-the paper, a hypothesis may be wrong: it may start optimistic, learn, be refuted, and be
-right from some round on.  The promise is what creates empirical accountability — the
-learner discovers overpromising through losses on tests — and the wealth construction is
-built on hypotheses being wrong.  The first version of this section said an estimate
-that is not a lower bound "buys nothing"; that was false and is withdrawn.  Soundness and
-its relatives are *theorem hypotheses* on top of the generic type
+A **continuation hypothesis** is a map from block contracts to pairs
+
+```
+h(χ_k) = ( c_{h,k},  e_{h,k} )
+c_{h,k} ∈ C_{m_k}(H_k)      a causal advisor continuation for the block
+e_{h,k} ∈ [0, 1]            an accountable contextual claim about R_k of its realized execution
+```
+
+A **continuation** `c : ObsHist_{H_k, <m_k} → Proposal` maps what has been observed so
+far within the block — from the actual start history — to the next proposal.  It is not
+an open-loop action list; it reacts to gate refusals, external observations, amendments
+and principal actions as they arrive; it controls only the advisor side (proposals); the
+gate and the exterior stay live; it is finite-horizon because the contract fixes `m_k`.
+The repository's concrete representation `(state, step, time) → action` is a sufficient
+instance when the state is history-sufficient.
+
+If `h` wins block `k`, the system executes its continuation:
+
+```
+ω_k = Exec^G_{m_k}(H_k, c_{h,k}),        G_k = R_k(ω_k),
+```
+and the claim `e_{h,k}` is settled against the realized `G_k`.  A **test** of `h` at `k` is
+the derived event "`h` was selected at `k` and `c_{h,k}` was executed under `χ_k`"; it is
+not a third component the bidder supplies.  This is the paper's `(recommendation,
+promise)` with the recommendation an executable block object instead of a term:
+
+```
+ordinary hypothesis        (action, promise)
+continuation hypothesis    (continuation, claim)
+```
+
+**The claim is not, by definition, a lower bound.**  As in the paper, a hypothesis may
+be wrong: it may start optimistic, learn, be refuted, and be right from some round on.
+The claim is what creates empirical accountability, and the wealth construction runs on
+hypotheses being wrong.  Soundness and its relatives are theorem hypotheses
 (`GROWING_HORIZON.md` §1):
 
 ```
 sound on tests          e_{h,k} ≤ G^obs_k on every test
 eventually sound        wrong on finitely many tests, bounded total overpromise
 bounded record          inf_K ℓ^h_K > −∞ on the learner's test set               — (BR), the theorem hypothesis
-tight / vanishing slack Σ_k m_k (Ĝ_k(q; H^α) − e_{h,k}) ≤ o(S_K)                    — external, §POLICY_REGRET_FRONTIER
+tight / vanishing slack Σ_k m_k (Ĝ_k(c; H^α) − e_{h,k}) ≤ o(S_K)                   — external, POLICY_REGRET_FRONTIER.md
 ```
 
-The candidates the dispatch lists are not alternatives to the type: *policy plus value
-estimate* is this triple when the estimate is the claim; a *stateful decision procedure*
-is what a hypothesis (reading the whole history) plus a controller (reading the block)
-already is; a *policy generator* is what a hypothesis does; *controller plus continuation
-message* is a representation of the history channel.  What must not be dropped is the
-claim, and what must not be dropped from the claim is its argument — the actual history
-(§3) — and its treatment (§2).
+**Who chooses the horizon.**  The system schedule supplies `m_k`; every bidder at block
+`k` competes for the same next block of length `m_k`.  The system parcels the future
+into blocks and hypotheses bid for which continuation occupies the next one.  A bidder
+does not choose how much lifetime to buy; hypothesis-requested horizons and
+combinatorial bids for duration are OPEN.  The headline non-dominance condition
+(`WEIGHTED_BRIA.md` §4) is a condition on the system schedule.
 
-## 2. Testing a continuation: promise–treatment alignment, and the lease as its canonical realization — *[repaired by the pressure pass]*
+The candidates the first dispatch listed are not alternatives to the type: *policy plus
+value estimate* is this pair when the estimate is the claim; a *stateful decision
+procedure* is what a hypothesis (reading the whole history) plus a continuation (reading
+the block) already is; a *policy generator* is what a hypothesis does; *controller plus
+continuation message* is a representation of the history channel.
+
+## 2. Testing a continuation: realized execution, and why an early hand-back is no test
 
 **Paper.**  Testing `h` at `t` is choosing `h^c_t`; the round is atomic, so the test is.
 
-**The semantic primitive.**  A claim is about the return of `q` under a declared
-treatment `τ` — an advisor-side execution protocol the wrapper can run inside the block:
-which proposals of `q` reach the gate at which steps, whether and when control passes to
-another controller, what exploration is interleaved.  The whole-block lease is the
-identity treatment; "one step of `q`, then `work`" is another (`src/bria.py`,
-`prefix_then`).  **Test validity:** data counts against `h` only if it was generated by
-executing `(q, τ)`; the observed return of `(q, τ')` for `τ' ≠ τ` is the realized return
-of a different object and is no evidence about the claim.  In the auction this is
-automatic — the winner's own pair is executed — and the criterion's "test = `α^c_k = h^c_k`"
-reads "the executed pair is `h`'s".
+**Round.**  Testing `h` at `k` is executing `c_{h,k}` under `χ_k`.  The test-validity
+principle:
 
-**Necessity, at this level** (FIX `test_lease.D_PseudoTest`, `test_pressure.I_TreatmentMismatch`).
-On `investment_env(d = 3)` with `m = 6`, the investing plan's claim under the whole-block
-lease is `1/2`, sound.  Every execution that hands control back early returns strictly
-less (`5/18` after one step, at most `1/3` for any prefix shorter than the investment,
-whatever follows), so scoring the lease-claim on such data "refutes" a true claim.  The
-general statement: a claim about `Exec_τ(H, q)` can be tested only by realizing
-`Exec_τ(H, q)`, and the environment can make `Exec_{τ'}(H, q)` arbitrarily far from it
-(here by paying the benefit only after the whole investment).  That is all the necessity
-result says.  It does **not** say the whole-block lease is the only valid treatment
-(FIX `test_pressure.J_AlternativeTreatment`): a hypothesis that claims `5/18` under
-"one step, then `work`" is exactly kept by that treatment, and an interrupted run is a
-valid test of *that* claim.  The first version called the whole-block lease "the weakest
-useful lease"; the correct statement is that promise–treatment alignment is the
-requirement and the lease is one treatment.
+> **Data is evidence about a continuation claim only when it is generated by executing
+> the continuation named by that claim under the standard block semantics.**  If
+> `c ≠ c'`, an observation from `c'` is not a test of a claim about `c`.
 
-**Why the lease is the canonical realization.**  A temporally extended plan exhibits its
-benefit only if its steps are causally connected; the identity treatment is the one
-under which every sound claim about the plan's own block value is testable, and it is
-the treatment under which a legitimate controller's gated and ungated executions
-coincide (§4).  Other treatments are legitimate objects with their own claims; none is
-needed for the theorems, and the round's fixtures use the lease throughout.
+**Necessity** (FIX `test_lease.D_PseudoTest`, `test_pressure.I_DistinctContinuations`).
+On `investment_env(d = 3)` with `m = 6`, let `c_full` be the investing plan for the whole
+block and `c_prefix` be "one step of the plan, then `work`".  They are different
+continuations: from `base`, `R(c_full) = 1/2` and `R(c_prefix) = 5/18`; every early
+hand-back is at most `1/3` when shorter than the investment, whatever follows.  A claim
+of `1/2` about `c_full` scored on an outcome of `c_prefix` is "refuted" though true.  The
+general statement is immediate: a claim about `Exec^G(H, c)` can be tested only by
+realizing `Exec^G(H, c)`, and the environment can make `Exec^G(H, c')` arbitrarily far
+from it (here by paying the benefit only after the whole investment).
 
-**What the lease commits, and what stays live** (FIX `test_lease.F_GatedLease`,
-`test_correction_mid_lease_changes_the_return_not_the_lease`).  The lease commits the
-learner's *selection* — which hypothesis's `(q, τ)` runs — for the block.  It does not
-commit the action sequence (the controller is contingent), the gate, the principal's
+**Explanatory factorization** (`test_pressure.J_ClaimAboutAnotherContinuation`).  The
+earlier passes wrote a continuation as `c = τ(q)`, a base controller `q` under an
+advisor-side "treatment" `τ` (whole block; first `j` steps then a baseline; interleaved
+exploration).  That factorization is how the pseudo-test problem was found and is kept
+here as an explanation: "`q` for three steps, then baseline" and "`q` for the whole
+block" are simply two continuations, and a hypothesis whose continuation is the former
+with claim `5/18` is exactly kept by executing it.  `τ` is not a component of the
+hypothesis and does not appear in any theorem.  The pressure pass's phrase "the
+whole-block lease is the weakest useful lease" is superseded: winning a block *is* the
+execution of the winner's continuation for that block — the intuitive reading
+"execution lease" is fine — and there is no separate lease object to be weakest.
+
+**What winning a block commits, and what stays live** (FIX `test_lease.F_GatedLease`,
+`test_correction_mid_lease_changes_the_return_not_the_lease`).  Winning commits the
+learner's *selection* — which hypothesis's continuation runs — for the block.  It does
+not commit the action sequence (the continuation is causal), the gate, the principal's
 response policy, protected correction, authenticated settlement arrivals, authorized
 amendment, or inquiry.  In the reason-mediated-authorship round's interactive
 factorization — `β : Q → Z → Ω`, `Frame.outcome` of `CartesianFrameBridge.lean`, rooted
-at issuance — the lease fixes `q` on the advisor side for the block and leaves `z`
-untouched.  The same controller under the same lease, with the principal revoking the
-benefit action at `t = 2`, at `t = 5`, or never, returns `1/6`, `2/3`, `5/6`, and the sound
-contextual claim is each of these.
+at issuance — the block fixes `q` on the advisor side and leaves `z` untouched.  The same
+continuation in the same block, with the principal revoking the benefit action at
+`t = 2`, at `t = 5`, or never, scores `1/6`, `2/3`, `5/6`, and the sound contextual claim is
+each of these.
 
-**Treatments are advisor-side only.**  A treatment may specify how `q`'s proposals are
-scheduled; it may not specify the exterior.  So a claim "if no correction arrives, `q`
-returns at least `L`" is a claim about a treatment the wrapper cannot execute — the
-exterior is not the learner's to hold still — and it is not in the class.  Every claim in
-the class is about the actual gated, exterior-live execution: a correction that arrives
-mid-lease is part of the test outcome, a hypothesis whose claim it defeats has
-overpromised, and no "absent intervention" counterfactual enters any score.  A claim that
-wants to be conditional on the exterior must be *contextual* instead: computed from the
-actual history at the block start, which is the only place the exterior's past is
-visible.
+**Continuations are advisor-side only.**  A continuation may specify how proposals are
+made; it may not specify the exterior.  So a claim "if no correction arrives, `c` scores
+at least `L`" is a claim about an execution the wrapper cannot produce — the exterior is
+not the learner's to hold still — and it is not in the class.  Every claim in the class
+is about the actual gated, exterior-live execution: a correction that arrives mid-block
+is part of the test outcome, a hypothesis whose claim it defeats has overpromised, and
+no "absent intervention" counterfactual enters any score.  A claim that wants to be
+conditional on the exterior must be *contextual* instead: computed from the actual
+history at the block start, the only place the exterior's past is visible.
 
-## 3. Biased testing and why the promise is contextual
+## 3. Biased testing and why the claim is contextual
 
 **Paper, Appendix D.**  Without promises, a meta law of effect over policies is defeated
 by biased testing: the max policy tested on rounds where every option is `≤ 1/2`, the
@@ -109,81 +136,75 @@ worse policy on rounds with options `> 1/2`, so raw averages rank them backwards
 every deterministic testing procedure there is a decision process that biases it.
 
 **Dynamic form** (FIX, `test_lease.G_BiasedTesting`).  Two contexts alternate with time.
-Controller `a` pays `1` on easy and `3/10` on hard; `b` pays `9/10` and `1/5`.  `a`
+Continuation `a` pays `1` on easy and `3/10` on hard; `b` pays `9/10` and `1/5`.  `a`
 dominates pointwise.  The scheduler that tests `a` on hard steps and `b` on easy steps
 records `a: 3/10`, `b: 9/10`.  In the round's setting the scheduler is the learner's own
-past: which history a controller is tested from is determined by what the learner did
+past: which history a continuation is tested from is determined by what the learner did
 before, and the learner cannot know which features of that history matter — that is
 Appendix D's "we do not know what the relevant aspects are", now with the bias
 endogenous.
 
-**Repair** (FIX, `test_lease.H_ContextualPromiseRepair`).  Hypotheses promise from the
-actual context: `a` promises `1` on easy and `3/10` on hard, `b` promises `9/10` and
-`1/5`.  Promises are compared *within* the same decision problem (`h^e_k` against
-`α^e_k` at the same `k`), and records are relative to promises, not to raw averages.  So
-`a` outpromises `b` at every step, both records stay at 0, the auction follows `a`, and
-the average is `13/20`.  A context-free hypothesis for `a` promising its easy value
-everywhere is tested and loses `7/10` on every hard step.
+**Repair** (FIX, `test_lease.H_ContextualPromiseRepair`).  Hypotheses claim from the
+actual context: `a` claims `1` on easy and `3/10` on hard, `b` claims `9/10` and `1/5`.
+Claims are compared *within* the same block contract (`h^e_k` against `α^e_k` at the same
+`k`), and records are relative to claims, not to raw averages.  So `a` outpromises `b` at
+every step, both records stay at 0, the auction follows `a`, and the average is `13/20`.
+A context-free claim for `a` at its easy value everywhere is tested and loses `7/10` on
+every hard step.
 
-This is why continuation-BRIA is a theory of **plans with accountable contextual
-claims** and not a bandit over named policies: a bandit scores a named arm by the
-average of what it got, and Appendix D's argument shows that average is not evidence
-about the arm once the test distribution is chosen by anything — least of all by the
-arm's own history.  A promise indexed by the history is a claim that can be kept or broken
-on the trajectory it is about, and no claim about a trajectory the learner did not
-produce is ever scored.
+This is why continuation-BRIA is a theory of **continuations with accountable contextual
+claims** and not a bandit over named policies: a bandit scores a named arm by the average
+of what it got, and Appendix D's argument shows that average is not evidence about the
+arm once the test distribution is chosen by anything — least of all by the arm's own
+history.  A claim indexed by the history is a claim that can be kept or broken on the
+trajectory it is about, and no claim about a trajectory the learner did not produce is
+ever scored.
 
 ## 4. Gating composes without the BRIA layer knowing legitimacy
 
-**Wrapper.**  `Exec^G_m(H, q)`: at each primitive step the controller proposes, the gate
-returns the action actually executed (the proposal if admissible at the current state
-and time, the inquiry step `⊥` otherwise), the environment moves.  The gate is the
+**Wrapper.**  `Exec^G_m(H, c)`: at each primitive step the continuation proposes, the
+gate returns the action actually executed (the proposal if admissible at the current
+state and time, the inquiry step `⊥` otherwise), the environment moves.  The gate is the
 existing admissibility structure; here it is a set-valued `admissible(state, t)`, the
 hard form; the soft gate of `GatedChoice.lean` is a distribution over responses and enters
 the wrapper as a randomized gate once a seed is part of the state.  The BRIA layer sees
 only `Exec^G`.
 
-**Which comparator.**  Three candidate classes:
-
-- A. *legitimate controllers*: every proposal admitted along the controller's own gated
-  trajectory;
-- B. *arbitrary controllers*, scored on their gated execution;
-- C. both, B as the operational domain and A as the comparator class of the theorem.
-
-C is right, and nothing has to be chosen.  Every hypothesis may be tested through the
-gate: the hacking controller's gated execution is well-defined (every step refused,
-return 0, `test_illegitimate_controller_is_tested_through_the_gate`), so its promise 1 is
-refuted without a prohibited action being executed, and the competence theorem quantifies
-over hypotheses with sound promises about *gated* execution, which includes every
-legitimate controller with a sound promise and excludes nothing the gate would have
+**Which comparator.**  Three candidate classes: A, *legitimate continuations* — every
+proposal admitted along the continuation's own gated trajectory; B, *arbitrary
+continuations*, scored on their gated execution; C, both, B as the operational domain
+and A as the comparator class of the theorem.  C is right, and nothing has to be chosen.
+Every hypothesis may be tested through the gate: the hacking continuation's gated
+execution is well-defined (every step refused, score 0,
+`test_illegitimate_controller_is_tested_through_the_gate`), so its claim 1 is refuted
+without a prohibited action being executed, and the competence theorem quantifies over
+hypotheses whose claims survive their tests of *gated* execution, which includes every
+legitimate continuation with such a claim and excludes nothing the gate would have
 refused anyway.
 
 **Transparency lemma** (LEAN `trajGated_eq_traj_of_admitted`, FIX
 `test_transparency_for_a_legitimate_controller`).  If for every step `j < m` the gate
-admits the controller's proposal at the state the gated trajectory reaches, then the gated
-and ungated trajectories coincide for `j ≤ m`.  Proof: induction on `j`.  So for a
-legitimate controller the wrapper is invisible, and a promise about its ungated execution
-is a promise about its gated one.  Constitutional safety is not re-proved: the wrapper
-executes only admitted proposals by definition, and what "admitted" means is the gate's
-business.
+admits the continuation's proposal at the state the gated trajectory reaches, then the
+gated and ungated trajectories coincide for `j ≤ m`.  Proof: induction on `j`.  So for a
+legitimate continuation the wrapper is invisible, and a claim about its ungated
+execution is a claim about its gated one.  Constitutional safety is not re-proved: the
+wrapper executes only admitted proposals by definition, and what "admitted" means is the
+gate's business.
 
-**Fixture E** (FIX, `test_lease.E_HardCommitment`).  A lease that freezes the gate — the
-plan runs ungated for its block — executes three prohibited `expanded` actions after the
-principal revokes them at `t = 3` and returns `5/6`; the gated lease refuses them and
-returns `1/3`.  The ungated claim `5/6` is about a trajectory the constitution does not
-permit, and a learner that could test it would be testing a violation.  The gated lease
-keeps the plan testable and the correction live: that is the middle object the dispatch
-asks for, and it is not a compromise but the definition of the wrapper.  In the terms of
-§2: a treatment that suspends the gate is not an advisor-side treatment and no claim
-about it is in the class.
+**Fixture E** (FIX, `test_lease.E_HardCommitment`).  A block that freezes the gate — the
+plan runs ungated — executes three prohibited `expanded` actions after the principal
+revokes them at `t = 3` and scores `5/6`; the gated block refuses them and scores `1/3`.
+The ungated claim `5/6` is about a trajectory the constitution does not permit, and a
+learner that could test it would be testing a violation.  The gated block keeps the plan
+testable and the correction live; a continuation that suspends the gate is not an
+advisor-side continuation and no claim about it is in the class.
 
 ## 5. What is not established
 
 - That the soft gate's randomized wrapper has the transparency property in any sense
-  beyond the deterministic one proved; with a seed in the state it is the same lemma, and
-  that is a remark, not a theorem here.
+  beyond the deterministic one proved; with a seed in the state it is the same lemma.
 - That contextual claims with small slack are *available* — the promise-recognizability
   question of `GROWING_HORIZON.md` §5.
 - Anything about a hypothesis whose claim depends on what the learner would do off the
-  lease, or on the exterior holding still; the type does not admit either, on purpose.
-- Uniqueness of the lease among treatments; only alignment is required (§2).
+  block, or on the exterior holding still; the type does not admit either, on purpose.
+- Bidder-chosen block durations; the schedule is the system's (OPEN).

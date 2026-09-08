@@ -27,9 +27,10 @@ wealth recursion `W (k+1) = W k + A k + payoff` is shared by two timings:
   `overestimation_le_allowance_opening`, `B_eq`, `record_lt_of_rejected_opening` (record
   over tests before `K`: `< w_K · e_K i − A_i(K)` with `A_i(K)` the allowance *through*
   round `K`), `record_succ_lt_of_rejected_opening` (the criterion's inclusive record:
-  `< 2 w_K − A_i(K)`), and the attention bound `chargedRecord_ge_neg_allowance`.
-  Coverage's divergence clause follows from `A_i(K) − 2 w_K → ∞`, the round's
-  capital-adequacy condition under opening timing.
+  `< w_K − A_i(K)`, the promise cancelling when `i` is the wealth-constrained winner),
+  `B_ge_of_no_win_opening` (no-win accumulation of opening capital), and the attention
+  bound `chargedRecord_ge_neg_allowance`.  Coverage's divergence clause follows from
+  `A_i(K) − w_K → ∞`, the round's capital-adequacy condition under opening timing.
 * `wealth_sum_eq` — `Σ_i W_K i = 𝒜_K + Σ_{k<K} w_k (G_k − b_k)`, timing-independent.
 * `wealth_eq` — per hypothesis, wealth is its allowance plus its charged record.
 * `record_le` — the record with promises `e` (paid ≤ promised) is at most wealth minus
@@ -53,8 +54,7 @@ bound the gap.
 
 **Uniform allowance constructor** (`sum_support_jump_le`): support-weighted jumps of the
 running maximum sum to at most `2 B (√M_K − √M_0)` when the support is bounded by
-`B / √M`; with `B = √S_K` this is the modulus-free subsidy bound of the pressure pass (the
-fourth pass doubles the jump coefficient, so the bound is `4√(S_K M_K) + …`).
+`B / √M`; with `B = √S_K` this is the modulus-free subsidy bound `2√(S_K M_K) + …`.
 
 **Dominance** (`dominant_block_lower_bound`): when the current block carries a fraction
 `c` of all primitive time so far, one test on which the estimate exceeds the realized
@@ -266,13 +266,14 @@ theorem record_ge_neg_overpromise (e : ℕ → Fin n → ℝ) (i : Fin n) (K : �
     nlinarith
   · simp [h]
 
-/-- A hypothesis that never wins from `K₀` on keeps every later allowance. -/
-theorem wealth_ge_of_no_win (hf : a.Feasible) (i : Fin n) (K₀ : ℕ)
+/-- A hypothesis that never wins from `K₀` on keeps every later allowance.  Consumes only
+the nonnegativity of its wealth at `K₀`, so it serves both timings. -/
+theorem wealth_ge_of_no_win (i : Fin n) (K₀ : ℕ) (hnn : 0 ≤ a.W K₀ i)
     (hno : ∀ k, K₀ ≤ k → a.star k ≠ i) :
     ∀ K, K₀ ≤ K → a.W K i ≥ ∑ k ∈ Ico K₀ K, a.A k i := by
   intro K hK
   induction K, hK using Nat.le_induction with
-  | base => simp [a.wealth_nonneg hf K₀ i]
+  | base => simp [hnn]
   | succ K hK ih =>
     rw [W_succ, Finset.sum_Ico_succ_top hK]
     have : ¬ i = a.star K := fun h => hno K hK h.symm
@@ -361,29 +362,43 @@ theorem record_lt_of_rejected_opening (e : ℕ → Fin n → ℝ) (hpaid : ∀ k
   have : a.w K * a.b K < a.w K * e K i := mul_lt_mul_of_pos_left hrej hw
   linarith
 
-/-- The same, for the criterion's *inclusive* record (Definition 5: tests `t ≤ T`), which
-may include a wealth-constrained win at the rejection round itself: with promises and
-returns in `[0, 1]`, the record through `K` is below `2 w_K − A_i(K)`.  Coverage's
-divergence clause therefore follows from `A_i(K) − 2 w_K → ∞`. -/
+/-- The same, for the criterion's *inclusive* record (Definition 5: tests `t ≤ T`).  If
+`i` is itself the wealth-constrained winner at `K`, the record gains exactly
+`w_K (G_K − e_K i)` and the promise cancels: `ℓ_K < w_K G_K − A_i(K)`; otherwise
+`ℓ_K = ℓ_{<K} < w_K e_K i − A_i(K)`.  With promises and returns at most 1 both cases give
+`ℓ_K < w_K − A_i(K)`, so coverage's divergence clause follows from `A_i(K) − w_K → ∞` —
+no factor 2. -/
 theorem record_succ_lt_of_rejected_opening (e : ℕ → Fin n → ℝ)
-    (hpaid : ∀ k, a.b k ≤ e k (a.star k)) (he : ∀ k i, e k i ≤ 1) (he0 : ∀ k i, 0 ≤ e k i)
+    (hpaid : ∀ k, a.b k ≤ e k (a.star k)) (he : ∀ k i, e k i ≤ 1)
     (hG1 : ∀ k, a.G k ≤ 1) (i : Fin n) (K : ℕ) (hrej : a.b K < e K i)
     (hbid : min (e K i) (a.B K i / a.w K) ≤ a.b K) :
-    a.record e i (K + 1) < 2 * a.w K - a.allowanceOf i (K + 1) := by
+    a.record e i (K + 1) < a.w K - a.allowanceOf i (K + 1) := by
   have h := a.record_lt_of_rejected_opening e hpaid i K hrej hbid
   have hw := a.w_pos K
-  have hstep : a.record e i (K + 1) ≤ a.record e i K + a.w K := by
+  have hstep : a.record e i (K + 1)
+      = a.record e i K + (if i = a.star K then a.w K * (a.G K - e K i) else 0) := by
     unfold record
     rw [Finset.sum_range_succ]
-    have : (if i = a.star K then a.w K * (a.G K - e K i) else 0) ≤ a.w K := by
-      by_cases hi : i = a.star K
-      · simp only [hi, if_true]
-        have := hG1 K; have := he0 K (a.star K); nlinarith
-      · simp [hi, hw.le]
-    linarith
-  have : a.w K * e K i ≤ a.w K := by
+  rw [hstep]
+  by_cases hi : i = a.star K
+  · simp only [hi, if_true]
+    have hG := mul_le_mul_of_nonneg_left (hG1 K) hw.le
+    rw [hi] at h
+    nlinarith
+  · simp only [hi, if_false, add_zero]
     have := mul_le_mul_of_nonneg_left (he K i) hw.le
-    simpa using this
+    linarith
+
+/-- No-win accumulation for the opening capital: a hypothesis that never wins from `K₀`
+on has opening capital at `K` at least its subsidy over `[K₀, K]`, the round `K`
+included. -/
+theorem B_ge_of_no_win_opening (hf : a.FeasibleOpening) (i : Fin n) (K₀ : ℕ)
+    (hno : ∀ k, K₀ ≤ k → a.star k ≠ i) :
+    ∀ K, K₀ ≤ K → a.B K i ≥ ∑ k ∈ Ico K₀ (K + 1), a.A k i := by
+  intro K hK
+  have hW := a.wealth_ge_of_no_win i K₀ (a.wealth_nonneg_opening hf K₀ i) hno K hK
+  rw [Finset.sum_Ico_succ_top hK]
+  unfold B
   linarith
 
 /-- The attention bound: the weighted shortfall a hypothesis inflicts on its tests
@@ -598,6 +613,7 @@ end Workspace.Deference.ContinuationBRIA
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.record_lt_of_rejected_opening
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.record_succ_lt_of_rejected_opening
 #print axioms Workspace.Deference.ContinuationBRIA.Auction.chargedRecord_ge_neg_allowance
+#print axioms Workspace.Deference.ContinuationBRIA.Auction.B_ge_of_no_win_opening
 #print axioms Workspace.Deference.ContinuationBRIA.trajGated_eq_traj_of_admitted
 #print axioms Workspace.Deference.ContinuationBRIA.regret_decomposition
 #print axioms Workspace.Deference.ContinuationBRIA.regret_le_of_bounds

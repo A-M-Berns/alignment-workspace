@@ -90,8 +90,9 @@ the alternatives are estimates (the paper's) or independent randomization.
   frequencies its theorems state; Theorem 1's auction is one BRIA.
 - Definition 5's record sums tests `t ≤ T` (inclusive); the proof of Theorem 1 part (C)
   sums `t < T`.  For unit weights the two differ by at most 1 and the proof is
-  unaffected; for block weights they differ by `w_T`, which is why the weighted coverage
-  condition carries a factor 2 (`WEIGHTED_BRIA.md` §3).
+  unaffected; for block weights they differ by `w_T`, but the weighted rejection bound
+  `ℓ_T < w_T − A_i(T)` holds for the inclusive record too, because the promise cancels
+  when the rejected hypothesis is the wealth-constrained winner (`WEIGHTED_BRIA.md` §3).
 - The paper's "myopic" is about the *criterion*, not a property of the auction: the auction
   tests every outpromising hypothesis, including ones whose recommendation changes future
   `DP_t`.  What the criterion does not require is any credit for a later reward.
@@ -101,12 +102,12 @@ the alternatives are estimates (the paper's) or independent randomization.
 | paper | this round |
 |---|---|
 | round `t`, `DP_t`, `c_t`, `r_t` | macro-round `k`, menu `DP'_k` of `m_k`-step controllers, chosen controller, block average `G_k` |
-| hypothesis `(h^c_t, h^e_t)` | continuation hypothesis `(q_{h,k}, τ_{h,k}, e_{h,k})`: contingent controller from the actual history, declared advisor-side treatment, per-step *claim* about its gated block average under that treatment — a claim that may be wrong, as in the paper |
-| testing `h` at `t` = choosing `h^c_t` | testing `h` at `k` = executing `q_{h,k}` through the gate for the whole block: the **execution lease** |
+| hypothesis `(h^c_t, h^e_t)` | continuation hypothesis `(c_{h,k}, e_{h,k})` at the block contract `χ_k`: a causal advisor continuation for the block and an accountable contextual *claim* about its realized gated block score — a claim that may be wrong, as in the paper |
+| testing `h` at `t` = choosing `h^c_t` | testing `h` at `k` = the derived event that `h` is selected and `c_{h,k}` is executed through the gate for the block (intuitively, an execution lease) |
 | `L_T/T ≤ 0` | fixed horizon: unchanged; variable horizon: `Σ m_k (α^e_k − G_k) / Σ m_k ≤ 0` |
 | record `Σ_M (r_t − h^e_t)` | fixed: unchanged; variable: `Σ_{M} m_k (G_k − h^e_k)` |
 | wealth in reward units, bid `min(h^e, w_t)` from the carried wealth, allowance credited after the round | wealth in total-reward units, per-step bid `min(e, B_k / m_k)` from the **opening capital** `B_k = W_k + A(k,i)` — the round's subsidy is credited at the opening, after `m_k` is revealed and before bids; winner pays `m_k · bid`, receives `m_k · G_k`.  The same auction as the paper's under the reindexed allowance `A'(k) = A(k+1)` with initial endowment `A(1,i)`; the modification is that the subsidy funding block `k` may read `m_k` |
-| `Σ_n A(n,i) = ∞` | `A_i(k) − 2 m_k → ∞` (capital adequacy, opening timing, inclusive record); witness the prefix rule `s(k) = ⌊√(S_k/M_k)⌋`, `A(k,i) = 2ΔM_k + 1/k`.  Under the paper's own timing no prefix-online rule serves every non-dominant schedule (`WEIGHTED_BRIA.md` §4.1 III′) |
+| `Σ_n A(n,i) = ∞` | `A_i(k) − m_k → ∞` (capital adequacy, opening timing, `A_i` through `k` inclusive); witness the prefix rule `s(k) = ⌊√(S_k/M_k)⌋`, `A(k,i) = ΔM_k + 1/k`.  Under the paper's own timing no prefix-online rule serves every non-dominant schedule (`WEIGHTED_BRIA.md` §4.1 III′) |
 | `(1/N) Σ_{n≤N} Σ_i A(n,i) → 0` | `Σ_{k≤K} Σ_i A(k,i) / Σ_{k≤K} m_k → 0` (weaker per macro-round) |
 | Theorem 3 | Fixed-Horizon and continuation-promise competence (`FIXED_HORIZON.md` §3, `GROWING_HORIZON.md` §1), under condition (BR) — the record bounded below, which rules out Definition 6's divergence clause — the hypothesis the paper's own proof uses in the form `record ≥ 0` |
 | Appendix D | `CONTINUATION_HYPOTHESES.md` §3, fixtures G/H |

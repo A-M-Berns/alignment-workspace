@@ -1,6 +1,6 @@
-"""Allowance-timing fixtures (PRESSURE_PASS.md §13): the surprise-spike diagnostic under
-opening and settlement timing, the reindexing equivalence, the coverage coefficient, and
-the attention bound with the opening subsidy counted."""
+"""Allowance-timing fixtures (PRESSURE_PASS.md §13–14): the surprise-spike diagnostic under
+opening and settlement timing, the reindexing equivalence, the sharp per-rejection
+record bound, and the attention bound with the opening subsidy counted."""
 import math
 import unittest
 from fractions import Fraction as Q
@@ -15,7 +15,7 @@ SPIKES = [4 ** j for j in range(1, 6)]
 
 
 def spike_liar():
-    """Promises 1 exactly at the spikes, 0 elsewhere; its controller returns 0."""
+    """Claims 1 exactly at the spikes, 0 elsewhere; its continuation returns 0."""
     return Hyp("spike-liar", lambda ctx: ("liar", Q(1) if ctx["k"] in SPIKES else Q(0)))
 
 
@@ -27,48 +27,67 @@ class SurpriseSpike(unittest.TestCase):
         """Source-paper timing: the current `ΔM_k` is credited after block k.  At every
         spike the liar's carried wealth is at most the previous maximum plus a harmonic
         sum, its bid stays below `good`'s 3/4, it is rejected at every spike, tested at
-        none, record 0 while outpromising infinitely often: coverage fails, under either
-        coefficient."""
-        env = constant_block_env(GOOD_LIAR)
-        sched = nasty_schedule()
-        for coef in (1, 2):
-            hyps = [const_hyp("good", "good", Q(3, 4)), spike_liar()]
-            rounds = run_auction(env, hyps, sched, prefix_allowance(sched, coef=coef), 1024,
-                                 timing="settlement")
-            liar = hyps[1]
-            self.assertEqual(liar.wins, [])
-            self.assertEqual(liar.record, 0)
-            self.assertEqual([k for k in liar.rejections if k in SPIKES], SPIKES)
-            for k in SPIKES:
-                self.assertLess(rounds[k - 1].bids[1], Q(3, 4))
-
-    def test_opening_timing_finances_the_current_spike(self):
-        """Weighted timing with `coef = 2`: at spikes 64, 256, 1024 the opening capital
-        covers the whole block, the liar bids 1, wins, and pays: record −320.  With
-        `coef = 1` the liar wins only at 256 — after a loss it carries nothing and
-        `ΔM_k = m_k − M_{k−1}` alone is short of `m_k`, which is why coverage needs
-        `A_i(K) − 2 m_K → ∞`."""
+        none, record 0 while outpromising infinitely often: coverage fails."""
         env = constant_block_env(GOOD_LIAR)
         sched = nasty_schedule()
         hyps = [const_hyp("good", "good", Q(3, 4)), spike_liar()]
-        rounds = run_auction(env, hyps, sched, prefix_allowance(sched, coef=2), 1024)
-        self.assertEqual(hyps[1].wins, [64, 256, 1024])
-        self.assertEqual(hyps[1].record, -(24 + 71 + 225))
-        for k in (64, 256, 1024):
-            self.assertEqual(rounds[k - 1].bids[1], Q(1))
-        hyps1 = [const_hyp("good", "good", Q(3, 4)), spike_liar()]
-        run_auction(env, hyps1, sched, prefix_allowance(sched, coef=1), 1024)
-        self.assertEqual(hyps1[1].wins, [256])
+        rounds = run_auction(env, hyps, sched, prefix_allowance(sched), 1024, timing="settlement")
+        liar = hyps[1]
+        self.assertEqual(liar.wins, [])
+        self.assertEqual(liar.record, 0)
+        self.assertEqual([k for k in liar.rejections if k in SPIKES], SPIKES)
+        for k in SPIKES:
+            self.assertLess(rounds[k - 1].bids[1], Q(3, 4))
+
+    def test_opening_timing_makes_the_current_spike_biddable(self):
+        """Weighted timing: the opening capital at a spike includes the current `ΔM_k`.
+        The liar is tested at spike 256 (bid 0.93, record −71); at 1024 it carries
+        nothing after that loss and bids `ΔM/m = 154/225 ≈ 0.68 < 3/4`, so it is rejected
+        there — which coverage permits, since the sharp bound `ℓ_K < w_K − A_i(K)` holds
+        at that rejection and `A_i(K) − m_K` grows.  Coverage asks for divergence along
+        rejections, not a win at every spike."""
+        env = constant_block_env(GOOD_LIAR)
+        sched = nasty_schedule()
+        A = prefix_allowance(sched)
+        hyps = [const_hyp("good", "good", Q(3, 4)), spike_liar()]
+        rounds = run_auction(env, hyps, sched, A, 1024)
+        liar = hyps[1]
+        self.assertEqual(liar.wins, [256])
+        self.assertEqual(liar.record, -71)
+        self.assertGreater(rounds[255].bids[1], Q(9, 10))
+        self.assertGreater(rounds[1023].bids[1], Q(6, 10))
+        self.assertLess(rounds[1023].bids[1], Q(3, 4))
+
+    def test_sharp_record_bound_at_every_rejection(self):
+        """At every round K at which the liar is rejected, its inclusive record satisfies
+        `ℓ_K < w_K − A_i(K)` with `A_i` through K inclusive (Lean
+        `record_succ_lt_of_rejected_opening`), including the round it wins while
+        wealth-constrained."""
+        env = constant_block_env(GOOD_LIAR)
+        sched = nasty_schedule()
+        A = prefix_allowance(sched)
+        hyps = [const_hyp("good", "good", Q(3, 4)), spike_liar()]
+        rounds = run_auction(env, hyps, sched, A, 1024)
+        record = Q(0)
+        checked = 0
+        for r in rounds:
+            if r.winner == 1:
+                record += r.m * (r.G - r.promises[1])
+            if r.promises[1] > r.alpha_e:                       # rejected at K
+                self.assertLess(record, r.m - cumulative_allowance(A, r.k, 2))
+                checked += 1
+        self.assertEqual(checked, len(hyps[1].rejections))
+        self.assertGreaterEqual(checked, 5)
 
 
 class Reindexing(unittest.TestCase):
     def test_opening_equals_settlement_with_shifted_allowance_and_endowment(self):
-        """The opening-timed auction with allowance `A` is, bid for bid, the settlement-
-        timed auction with allowance `A'(k) = A(k+1)` and initial wealth `A(1, i)`.  The
+        """The opening-timed auction with subsidy `A` is, bid for bid, the settlement-timed
+        auction with allowance `A'(k) = A(k+1)` and initial wealth `A(1, i)`.  The
         difference between the two timings is only what the funding rule may read."""
         env = constant_block_env(GOOD_LIAR)
         sched = nasty_schedule()
-        A = prefix_allowance(sched, coef=2)
+        A = prefix_allowance(sched)
         h_open = [const_hyp("good", "good", Q(3, 4)), spike_liar()]
         r_open = run_auction(env, h_open, sched, A, 300, timing="opening")
         h_set = [const_hyp("good", "good", Q(3, 4)), spike_liar()]
@@ -77,19 +96,18 @@ class Reindexing(unittest.TestCase):
         r_set = run_auction(env, h_set, sched, lambda k, i: A(k + 1, i), 300, timing="settlement")
         self.assertEqual([(r.winner, r.alpha_e, r.bids) for r in r_open],
                          [(r.winner, r.alpha_e, r.bids) for r in r_set])
-        # settlement has additionally credited A'(300) = A(301) after the last round
         self.assertEqual([h.wealth + A(301, i) for i, h in enumerate(h_open, 1)], [h.wealth for h in h_set])
 
 
 class Bounds(unittest.TestCase):
     def test_overestimation_and_attention_with_opening_subsidy(self):
-        """Weighted overestimation `≤ 𝒜_K / S_K` with the allowance through K inclusive
-        (Lean `overestimation_le_allowance_opening`); per hypothesis, the weighted
-        shortfall on its wins is at most its allowance through K inclusive (Lean
+        """Weighted overestimation `≤ 𝒜_K / S_K` with the subsidy through K inclusive (Lean
+        `overestimation_le_allowance_opening`); per hypothesis, the weighted shortfall on
+        its wins is at most its subsidy through K inclusive (Lean
         `chargedRecord_ge_neg_allowance`) — the current-round subsidy is counted."""
         env = constant_block_env(GOOD_LIAR)
         sched = nasty_schedule()
-        A = prefix_allowance(sched, coef=2)
+        A = prefix_allowance(sched)
         hyps = [const_hyp("good", "good", Q(3, 4)), const_hyp("liar", "liar", Q(1))]
         rounds = run_auction(env, hyps, sched, A, 512)
         S = sum(r.m for r in rounds)
@@ -99,19 +117,16 @@ class Bounds(unittest.TestCase):
             shortfall = sum(r.m * (r.alpha_e - r.G) for r in rounds if r.winner == idx - 1)
             self.assertLessEqual(shortfall, cumulative_allowance(A, 512, idx))
 
-    def test_capital_adequacy_with_coefficient_two(self):
-        """`A_i(K) − 2 m_K` grows without bound under the coefficient-2 prefix rule on the
-        spiky schedule (checked at the spikes, where it is smallest), and would not with
-        coefficient 1 on a nondecreasing schedule."""
+    def test_capital_adequacy_at_the_spikes(self):
+        """`A_i(K) − m_K` grows without bound under the prefix rule on the spiky schedule,
+        checked at the spikes where it is smallest, and under the paper's own allowance
+        on `m_k = k` it does not."""
         sched = nasty_schedule()
-        A2 = prefix_allowance(sched, coef=2)
-        gaps = [cumulative_allowance(A2, k, 1) - 2 * sched(k) for k in SPIKES]
+        A = prefix_allowance(sched)
+        gaps = [cumulative_allowance(A, k, 1) - sched(k) for k in SPIKES]
         self.assertTrue(all(b > a for a, b in zip(gaps, gaps[1:])))
-        lin = lambda k: k
-        A1 = prefix_allowance(lin, coef=1)
-        self.assertLess(cumulative_allowance(A1, 400, 1) - 2 * 400, -300)
-        A2l = prefix_allowance(lin, coef=2)
-        self.assertGreater(cumulative_allowance(A2l, 400, 1) - 2 * 400, 5)
+        paper = lambda k, i: Q(1, k * i * i)
+        self.assertLess(cumulative_allowance(paper, 400, 1) - 400, -390)
 
 
 if __name__ == "__main__":

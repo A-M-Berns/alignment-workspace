@@ -16,9 +16,9 @@ below uses only `G^obs`; §2 uses `Ĝ`.
 
 ## 1. The theorem, with the promise condition it actually consumes
 
-A continuation hypothesis `h = (q_h, e_h)` makes an accountable contextual claim `e_{h,k}`
+A continuation hypothesis `h = (c_h, e_h)` makes an accountable contextual claim `e_{h,k}`
 at each block; the claim may be wrong.  Let `M_h` be the learner's test set for `h`
-(rounds where `h`'s controller is executed under `h`'s declared treatment), `B_h` the
+(rounds where `h`'s continuation is executed under the block contract), `B_h` the
 rounds at which `α` rejects `h`, and define `h`'s **weighted record** and **tested
 overpromise**
 
@@ -93,11 +93,11 @@ second row: one refutation per state class, then (BR).
 
 ## 2. Actual-history and own-trajectory competence
 
-With the external evaluator, define for `h = (q, e)` the **promise slack** and, for a
+With the external evaluator, define for `h = (c, e)` the **promise slack** and, for a
 policy `π` with its own trajectory, the **history shift**:
 
 ```
-SLACK_K(h) := Σ_{k≤K} m_k ( Ĝ_k(q; H^α_{t_k}) − e_{h,k} )
+SLACK_K(h) := Σ_{k≤K} m_k ( Ĝ_k(c; H^α_{t_k}) − e_{h,k} )
 SHIFT_K(π) := Σ_{k≤K} m_k ( Ĝ_k(π; H^π_{t_k}) − Ĝ_k(π; H^α_{t_k}) ).
 ```
 
@@ -106,7 +106,7 @@ SHIFT_K(π) := Σ_{k≤K} m_k ( Ĝ_k(π; H^π_{t_k}) − Ĝ_k(π; H^α_{t_k}) ).
 untested blocks only helps this inequality and only hurts (BR) if it happens on tests),
 
 ```
-Σ_{k≤K} m_k ( Ĝ_k(q; H^α_{t_k}) − G^obs_k(α) )  =  SLACK_K + LEARN_K  ≤  o(S_K).
+Σ_{k≤K} m_k ( Ĝ_k(c; H^α_{t_k}) − G^obs_k(α) )  =  SLACK_K + LEARN_K  ≤  o(S_K).
 ```
 FIX `test_pressure.E_VanishingSlack`: promise `1 − 1/(k+1)` for a controller worth 1;
 slack `Σ m_k/(k+1) = o(S_K)`; the learner's tail average is exactly 1.
@@ -126,7 +126,7 @@ horizon eventually competes.
 
 **Definition** (provisional).  A continuation policy `π` has a **horizon-stable promise**
 `L(H)` at `H` from horizon `m_0` if for every `m ≥ m_0` its gated `m`-block value from `H`
-under the declared treatment is at least `L(H)`; it has an **`m`-detectable advantage**
+is at least `L(H)`; it has an **`m`-detectable advantage**
 `δ` over `π'` at `H` if its `m`-block value from `H` exceeds `π'`'s by `δ`.
 
 **Corollary A — fixed horizons are subsumed.**  If `h` promises a horizon-stable

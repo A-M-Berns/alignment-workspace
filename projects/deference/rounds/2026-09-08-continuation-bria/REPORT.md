@@ -1,11 +1,12 @@
 # Report
 
-Four passes on one round.  The first pass's verdict was
+Five passes on one round.  The first pass's verdict was
 `GROWING-HORIZON-CONTINUATION-BRIA-SURVIVES-UNDER-NON-DOMINANCE-POLICY-REGRET-NEEDS-RECOVERABILITY`;
 the pressure pass superseded it with `CONTINUATION-BRIA-READY-NONDOMINANCE-IFF-REPAIRED`;
 the final correctness pass with `CONTINUATION-BRIA-READY-AFTER-FINAL-CORRECTNESS-PASS`;
-the allowance-timing audit (`PRESSURE_PASS.md` §13) supersedes that.  Verdict:
-**CONTINUATION-BRIA-READY-TIMING-ALIGNED.**
+the allowance-timing audit with `CONTINUATION-BRIA-READY-TIMING-ALIGNED`; the closing pass
+(`PRESSURE_PASS.md` §14) canonicalised and merged.  Verdict:
+**CONTINUATION-BRIA-CANONICALIZED-AND-MERGED.**
 
 ## Allowance-timing audit (fourth dispatch) — what changed
 
@@ -13,7 +14,7 @@ the allowance-timing audit (`PRESSURE_PASS.md` §13) supersedes that.  Verdict:
 |---|---|---|
 | the Python weighted auction is "the paper's construction" | Python credited the round's allowance *before* bids (opening timing); the paper and the old Lean credit it *after* (settlement timing) | one timeline (`WEIGHTED_BRIA.md` §3); the weighted construction is the paper's auction with opening subsidy — DERIVED, named as a modification; bid-for-bid the paper's auction under a reindexed allowance with an initial endowment (`test_timing.Reindexing`) |
 | the prefix rule works under the stated (settlement) timing | false: on a spiky non-dominant schedule the current `ΔM_k` arrives one block late and a spike-only liar is never tested (`test_timing.SurpriseSpike`); for every prefix-online rule under settlement timing there is such a schedule (III′) | opening timing; `Feasible` (source) and `FeasibleOpening` (weighted) in Lean, sharing the recursion |
-| capital adequacy `A_i(K) − m_K → ∞` | the criterion's record is inclusive (Definition 5), so a wealth-constrained win at the rejection round adds up to `w_K` | `A_i(K) − 2 w_K → ∞` with `A_i` through `K` inclusive (Lean `record_succ_lt_of_rejected_opening`); rule coefficient 2; subsidy bound `4√(S_K M_K) + √S_K(1+ln K)` |
+| capital adequacy `A_i(K) − m_K → ∞` with `A_i` before the round | under opening timing the current subsidy is bid capital | `A_i(K) − w_K → ∞` with `A_i` through `K` inclusive (Lean `record_succ_lt_of_rejected_opening`, the claim cancelling at a wealth-constrained win); the fourth pass's interim factor 2 was removed by the closing pass |
 | attention bound over allowance before the round | the opening subsidy is capital available for the test | bound over the subsidy through `K` inclusive (Lean `chargedRecord_ge_neg_allowance`, `test_timing.Bounds`) |
 
 
@@ -38,7 +39,7 @@ the allowance-timing audit (`PRESSURE_PASS.md` §13) supersedes that.  Verdict:
 | "the learner cannot underperform any hypothesis whose promises are sound" | true of promises, read as true of the controller's value | three theorems: promise competence (Theorem 1, condition (BR) after the final pass), actual-history (add `SLACK ≤ o(T)`), own-trajectory (add `SHIFT ≤ o(T)`); fixture D shows value 1 / promise 0 gives nothing |
 | `G_k(π\|H^α)` "realized when tested, undefined otherwise", then summed over every block | observed and external returns conflated | `G^obs` (the only feedback) versus the external evaluator `Ĝ`; the identity retyped (LEAN `regret_decomposition`, `regret_le_of_bounds`); fixture H |
 | an estimate that is not a lower bound "buys nothing" | false; the source construction runs on hypotheses being wrong | generic claim; soundness variants are theorem hypotheses; the hypothesis consumed is (BR); hierarchy with the sublinear-overpromise negative (fixture G) |
-| the whole-block lease is "the weakest useful lease" | overstated; alignment of test with claimed treatment is what necessity shows | promise–treatment alignment as the primitive, the lease as the canonical realization (fixtures I, J); treatments advisor-side only |
+| the whole-block lease is "the weakest useful lease" | overstated; what necessity shows is that an outcome of one continuation is no test of a claim about another | test validity as realized execution of the named continuation (fixtures I, J); the closing pass then demoted the interim `(q, τ)` component to an explanatory factorization |
 | "every one-step BRIA invests infinitely often" | unquantified; a BRIA that leaves `base` for good need not | replaced by "a BRIA cannot remain at `base` on a set of positive density", itself withdrawn by the final pass: the criterion forces testing, not adoption |
 | discounted returns "reduce" to bounded weight | true for finite truncated leases only | infinite-horizon discounted claims need a settlement mechanism: OPEN (fixtures K, L) |
 | "easy policy, hard value" | no resource separation was proved | reduced to the type distinction; the recognizability limit is the paper's Theorem 2 diagonal |
@@ -55,10 +56,10 @@ typed `learnErr`/`slack`/`shift`, `jump_div_sqrt_le`, `sum_jump_div_sqrt_le`,
 **What does bounded inductive rationality require of the claim "from the state you are
 in, give me the advisor-side continuation for long enough, under the constitution, and I
 deliver at least `L`"?**  Exactly what it requires of a one-step claim, retyped: the claim
-is a continuation hypothesis `(q, τ, L)` at the actual history — a controller, a declared
-advisor-side treatment (the whole-block lease canonically), and an accountable claim that
-may be wrong; if it keeps outpromising the learner's estimate it must be tested, and a
-test is an execution of `q` under `τ` through the gate with the exterior live; on its
+is a continuation hypothesis `(c, L)` at the block contract — a causal advisor
+continuation for the system-scheduled block and an accountable claim that may be wrong;
+if it keeps outpromising the learner's estimate it must be tested, and a test is the
+execution of `c` through the gate with the exterior live; on its
 tests it is scored by the realized gated block average against `L`; it may be ignored
 only once its `m`-weighted record on those tests has diverged.  The learner's own
 estimates must not, in `m`-weighted primitive-time average, exceed what it obtains.  A
@@ -95,7 +96,7 @@ round is.
    back to the paper, unbounded ones do not.  The auction in total-reward units with
    wealth-bounded per-unit bids satisfies the wealth identity (LEAN `wealth_sum_eq`),
    weighted no overestimation from `𝒜_K/S_K → 0` (LEAN `overestimation_le_allowance`),
-   and coverage from the **capital-adequacy** condition `A_i(K) − 2 m_K → ∞` under
+   and coverage from the **capital-adequacy** condition `A_i(K) − m_K → ∞` under
    opening-subsidy timing (LEAN `record_succ_lt_of_rejected_opening`,
    `wealth_ge_of_no_win`), which replaces `Σ_n A(n,i) = ∞`.  The weighted auction is the
    paper's with the round's subsidy credited at its opening — a modification, not the
@@ -103,7 +104,7 @@ round is.
 2. **Existence theorem, sharp, with the quantifiers of the pressure pass.**  Allowances
    with capital adequacy and negligible subsidy exist iff `m_K / S_K → 0`
    (**non-dominance**); the prefix rule `s(k) = ⌊√(S_k/M_k)⌋`,
-   `A(k,i) = 2(M_k − M_{k−1}) + 1/k`, credited at the opening of the block just
+   `A(k,i) = (M_k − M_{k−1}) + 1/k`, credited at the opening of the block just
    revealed, is a uniform online witness needing no effectivity assumption, and no
    prefix-online rule works under the paper's settlement timing; `m_k = ⌊log₂k⌋+1` with `A = i^{-2}⌊√k⌋^{-1}` is an explicit schedule; the
    obstruction is a liar that promises only on the blocks above a rational threshold
@@ -113,11 +114,10 @@ round is.
    refuted hypothesis of a legitimate macro-BRIA can hold most of primitive time
    (fixture I); with it the one-step auction is provably myopic on a renewable
    investment (fixture A).
-4. **Promise–treatment alignment** as the test semantics for a temporally extended
-   claim, with the whole-block lease as its canonical realization, necessity by fixtures
-   D/I, an alternative treatment validly tested by interruption (J), the gate composed by
-   transparency (LEAN `trajGated_eq_traj_of_admitted`), and the biased-testing argument
-   in dynamic form (G/H).
+4. **Realized execution as the test** of a temporally extended claim: an outcome of one
+   continuation is no test of a claim about another (fixtures D/I/J), the gate composed
+   by transparency (LEAN `trajGated_eq_traj_of_admitted`), and the biased-testing
+   argument in dynamic form (G/H).
 5. **The frontier.**  Continuation competence does not imply policy regret (fixture L);
    the exact decomposition `Regret = SHIFT + SLACK + LEARN` with observed and external
    returns separately typed (LEAN `regret_decomposition`, `regret_le_of_bounds`); the
@@ -213,9 +213,9 @@ for the replay-versus-local divergence that the history-shift term specialises.
 
 ## New names introduced (provisional)
 
-continuation hypothesis; execution treatment; promise–treatment alignment; execution
-lease; transparent gate; weighted BRIA; opening subsidy / opening capital; capital
-adequacy `A_i(K) − 2 m_K → ∞`;
+block contract; continuation; continuation hypothesis `(continuation, claim)`;
+accountable contextual claim; realized test; transparent gate; weighted BRIA; opening
+subsidy / opening capital; capital adequacy `A_i(K) − m_K → ∞`;
 non-dominance `m_K/S_K → 0`; prefix constructor; attention bound; continuation-promise /
 actual-history / own-trajectory competence; tested overpromise; condition (BR);
 horizon-stable promise; `m`-detectable advantage; history-shift discrepancy `SHIFT_T(π)`;
@@ -227,5 +227,5 @@ foreclosure; `Π_rec,prom`; sticky / revocable amendment.
 - Prompt author: the maintainer, relayed verbatim in
   `prompts/2026-09-08-continuation-bria/PROMPT.md`.
 - Executor: Claude Fable 5.1 (Anthropic).
-- Dates: 2026-09-08 (first pass, pressure pass, final correctness pass and allowance-timing
-  audit: four dispatches).
+- Dates: 2026-09-08 (first pass, pressure pass, final correctness pass, allowance-timing
+  audit and closing pass: five dispatches).

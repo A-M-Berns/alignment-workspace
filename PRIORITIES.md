@@ -2371,8 +2371,8 @@ and the empirical averaged bridge or its negative.
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
-*Refined by the continuation-BRIA round, its pressure pass and its final correctness
-pass (2026-09-08).*  The static
+*Refined by the continuation-BRIA round and its four later passes (2026-09-08); the
+canonical statement is `wiki/Continuation-BRIA.md`.*  The static
 gate is sound and Lipschitz at one occasion.  When an admissible action changes the next
 admissible set, `test_dynamic` of the decision-theory-bill round shows legitimate
 continuation policies induce different admissibility histories, so fixed action-sequence
@@ -2389,17 +2389,18 @@ not adoption; what forces adoption is a sound claim about the whole investment, 
 temporal credit assignment at the testing granularity.
 
 What the round supplies (`projects/deference/rounds/2026-09-08-continuation-bria/`,
-unregistered): continuation hypotheses `(controller, declared advisor-side treatment,
-accountable claim)` — the claim may be wrong — tested by executing the pair through the
-gate with the exterior live, the whole-block lease being the canonical treatment; for a
+unregistered): continuation hypotheses `(continuation, accountable claim)` at the system's
+block contract — the claim may be wrong — tested by the realized execution of the
+selected continuation through the gate with the exterior live; for a
 fixed horizon the published criterion verbatim and its guaranteed-option theorem; for
 unbounded horizons the duration-weighted criterion, the auction in total-reward units
 with the round's subsidy credited at its opening (the paper's auction, modified so the
 subsidy that funds a block may read that block's length), capital adequacy
-`A_i(K) − 2 m_K → ∞`, and subsidies satisfying it with negligible total existing iff the
-schedule is non-dominant (`m_K / Σ_{k≤K} m_k → 0`), with the prefix rule
-`s(k) = ⌊√(S_k/M_k)⌋`, `A(k,i) = 2ΔM_k + 1/k` as a uniform online witness needing no modulus
-of convergence — and no prefix-online rule under the paper's own settlement timing; **continuation-promise competence** — the learner's observed
+`A_i(K) − m_K → ∞` with the subsidy through the round inclusive, and subsidies satisfying
+it with negligible total existing iff the schedule is non-dominant
+(`m_K / Σ_{k≤K} m_k → 0`), with the prefix rule `s(k) = ⌊√(S_k/M_k)⌋`,
+`A(k,i) = ΔM_k + 1/k` as a uniform online witness needing no modulus of convergence — and
+no prefix-online rule under the paper's own settlement timing; **continuation-promise competence** — the learner's observed
 `m`-weighted average is asymptotically at least the `m`-weighted average of the *claims*
 of every covered hypothesis whose tested record is bounded below (BR) — which with vanishing
 promise slack is competence against the controller's actual-history value and learns

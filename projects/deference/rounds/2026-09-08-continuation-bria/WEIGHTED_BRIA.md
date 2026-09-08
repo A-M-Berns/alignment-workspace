@@ -73,7 +73,7 @@ Coverage's divergence clause is a design choice fixed by what the construction d
 the weighted guaranteed-option theorem uses only "record `≥ 0` ⇒ finitely many
 rejections", which any coverage clause of this shape gives.
 
-## 3. The construction — *[timing aligned in the fourth pass]*
+## 3. The construction — *[timing aligned in the fourth pass; coefficient sharpened in the closing pass]*
 
 Hypotheses `h_i`, `i ∈ ℕ`, activated lazily (§4.1).  Wealth in total-reward units.  One
 weighted macro-round `k`, in order:
@@ -82,10 +82,10 @@ weighted macro-round `k`, in order:
 1. the block length m_k (weight w_k) is revealed;        nothing about m_{k+1}, … is known
 2. hypotheses i ≤ s*(k) are active (the frontier, §4.1)
 3. the OPENING subsidy A(k, i) is credited to i ≤ s(k):   B_k(i) := W_k(i) + A(k, i)
-4. each active hypothesis emits (q_{i,k}, τ_{i,k}, e_{i,k})
+4. each active hypothesis emits (c_{i,k}, e_{i,k}): a continuation and a claim
 5. per-unit bid            b_{i,k} = min( e_{i,k},  B_k(i) / w_k )
 6. winner                  i*_k ∈ argmax_i b_{i,k}   (ties: lowest active index);  α^e_k = b*_k
-7. the winner's (q, τ) is executed through the gate for the block
+7. the winner's continuation is executed through the gate for the block
 8. the block average G_k is observed
 9. settlement              W_{k+1}(i*) = B_k(i*) + w_k (G_k − b*_k);   W_{k+1}(i) = B_k(i) otherwise
 ```
@@ -140,27 +140,30 @@ inclusive.
   least `w_k e_{i,k}`, then `b_{i,k} = e_{i,k} > b*_k`, contradicting `b*_k` maximal.  So it
   suffices that `A_i(k) − w_k → ∞`.
 - (C′) The record diverges.  At a rejection `K ∈ B_i` the opening-capital-bounded bid is
-  below the promise, so `B_K(i) ≤ w_K b*_K < w_K e_{i,K}`, and
-  `B_K(i) = A_i(K) + chargedRecord_i(K−1)` (LEAN `B_eq`).  Paid ≤ promised gives the
+  below the claim, so `B_K(i) ≤ w_K b*_K < w_K e_{i,K}`, and
+  `B_K(i) = A_i(K) + chargedRecord_i(K−1)` (LEAN `B_eq`).  Paid ≤ claimed gives the
   record over the tests *before* `K`: `ℓ^i_{<K} < w_K e_{i,K} − A_i(K)` (LEAN
   `record_lt_of_rejected_opening`).  The criterion's record (Definition 5) is *inclusive*,
-  `ℓ^i_K = Σ_{k ∈ M_i, k ≤ K}`, and at the rejection round `i` may itself be the
-  wealth-constrained winner, contributing `w_K (G_K − e_{i,K}) ≤ w_K`; hence
-  `ℓ^i_K < 2 w_K − A_i(K)` (LEAN `record_succ_lt_of_rejected_opening`), which tends to
-  `−∞` along `B_i` under
+  `ℓ^i_K = Σ_{k ∈ M_i, k ≤ K}`.  If `i` is not the winner at `K`, `ℓ^i_K = ℓ^i_{<K} <
+  w_K e_{i,K} − A_i(K) ≤ w_K − A_i(K)`.  If `i` is itself the wealth-constrained winner at
+  `K`, the record gains exactly `w_K (G_K − e_{i,K})` and the claim cancels:
+  `ℓ^i_K < w_K G_K − A_i(K) ≤ w_K − A_i(K)`.  So uniformly
 
   ```
-  (i″)   A_i(K) − 2 w_K → ∞      for every i        (capital adequacy, opening timing)
+  ℓ^i_K  <  w_K − A_i(K)      at every rejection K            (LEAN record_succ_lt_of_rejected_opening)
   ```
-  (i″) implies the (A′) condition.  The paper's proof uses the strict record
-  `Σ_{t<T}` and needs only `A_i(K) − w_K → ∞`; the factor 2 is the price of the inclusive
-  definition the criterion actually states, and it is exact — a hypothesis with no carried
-  wealth needs `w_K` of opening capital to bid its promise and may lose a further `w_K` on
-  that very test (FIX `test_timing.test_opening_timing_finances_the_current_spike`:
-  with coefficient 1 the spike liar, carrying nothing after a loss, bids `0.69 < 3/4` at
-  the next spike).  The first three passes' `A_i(K) − m_K → ∞` is replaced by (i″).
+  which tends to `−∞` along `B_i` under
 
-(i″) replaces the paper's `Σ_n A(n,i) = ∞`, which is (i″) at `w ≡ 1` up to the constant.
+  ```
+  (i′)   A_i(K) − w_K → ∞      for every i        (capital adequacy, opening timing)
+  ```
+  with `A_i` through `K` inclusive.  (i′) implies the (A′) condition.  The fourth pass
+  wrote this with a factor 2, bounding the winner's increment by `w_K` instead of using
+  the cancellation; the closing pass removed it (FIX
+  `test_timing.test_sharp_record_bound_at_every_rejection`: the inequality holds at every
+  rejection round of the spike liar, including the round it wins while constrained).
+
+(i′) replaces the paper's `Σ_n A(n,i) = ∞`, which is (i′) at `w ≡ 1`.
 
 **Computability** (DERIVED, as in the paper's part 4): with `A(k, ·)` supported on
 `i ≤ s(k)`, `s` computable with `s(k) → ∞`, the **bidders** at round `k` are the
@@ -174,7 +177,7 @@ subsidy `𝒜_K` counts only `s(k)`.  FIX `test_final.D_NonmonotoneSupport`.
 
 **Weighted BRIA construction theorem** (DERIVED from the above, the algebra LEAN):
 *for any schedule `(w_k)` and any opening subsidy rule `A` with finite support satisfying
-(i″) and (ii), the opening-timed auction is a weighted BRIA covering every c.e. class of
+(i′) and (ii), the opening-timed auction is a weighted BRIA covering every c.e. class of
 e.c. continuation hypotheses, computable with finitely many active hypotheses per
 round.*
 
@@ -227,40 +230,39 @@ this argument.  The failure of the auction under dominance is a corollary: nothi
 satisfies the criterion there.
 
 **II. Auction sufficiency** (DERIVED from §3, the algebra LEAN).  For any schedule and any
-opening subsidy rule with finite support satisfying capital adequacy (i″)
-`A_i(k) − 2 m_k → ∞` for every `i` and negligible subsidy (ii) `𝒜_K / S_K → 0`, the
+opening subsidy rule with finite support satisfying capital adequacy (i′)
+`A_i(k) − m_k → ∞` for every `i` and negligible subsidy (ii) `𝒜_K / S_K → 0`, the
 opening-timed auction of §3 is a weighted BRIA covering every c.e. class of e.c.
-continuation hypotheses.  No condition on the schedule beyond what (i″) and (ii) say.
+continuation hypotheses.  No condition on the schedule beyond what (i′) and (ii) say.
 
 **III. Existence of allowances, with a uniform online witness** (DERIVED; the sum bound
 LEAN `sum_support_jump_le`, `sum_jump_div_sqrt_le`; FIX `test_pressure.A_EffectivityGap`,
 `B_ExplicitSchedule`, `test_timing`).  *[Timing aligned in the fourth pass: opening
-subsidy, coefficient 2.]*
+subsidy; coefficient sharpened to 1 in the closing pass.]*
 
-*(a) Opening subsidies satisfying (i″) and (ii) exist iff `m_K / S_K → 0`.*  Only if:
-(i″) for `i = 1` gives `𝒜_K ≥ A_1(K) ≥ 2 m_K − C` eventually, so
-`𝒜_K / S_K ≥ 2 m_K/S_K − o(1)`, and (ii) forces `m_K/S_K → 0`.  (The same one line works
-for any fixed coefficient `c > 0` in place of 2.)
+*(a) Opening subsidies satisfying (i′) and (ii) exist iff `m_K / S_K → 0`.*  Only if:
+(i′) for `i = 1` gives `𝒜_K ≥ A_1(K) ≥ m_K − C` eventually, so
+`𝒜_K / S_K ≥ m_K/S_K − o(1)`, and (ii) forces `m_K/S_K → 0`.
 
 *(b) Uniform online construction.*  At the opening of block `k`, after `m_k` is
 revealed, with `S_k = Σ_{j≤k} m_j` and `M_k = max_{j≤k} m_j`:
 
 ```
 support     s(k) := ⌊ √(S_k / M_k) ⌋
-subsidy     A(k, i) := 2 (M_k − M_{k−1}) + 1/k     for i ≤ s(k),   0 otherwise,
+subsidy     A(k, i) := (M_k − M_{k−1}) + 1/k       for i ≤ s(k),   0 otherwise,
 ```
 credited before bids.  Both read `(S_k, M_k)` alone — no modulus of convergence, no
-information about `m_{k+1}, …`, no code for the schedule.  If `m_K/S_K → 0` then (i″)
+information about `m_{k+1}, …`, no code for the schedule.  If `m_K/S_K → 0` then (i′)
 and (ii) hold:
 
-- (i″).  `M_K/S_K → 0` (a dominant running maximum is dominant at its own index:
+- (i′).  `M_K/S_K → 0` (a dominant running maximum is dominant at its own index:
   `m_j = M_K ≥ c S_K ≥ c S_j`), so `S_k/M_k → ∞` and `s(k) → ∞`; hence for every `i` there
   is a last round `k_i − 1` with `s(k) < i`, and `i` receives subsidy at every `k ≥ k_i`
   (gaps before `k_i` lower `A_i` by a constant; a gap never reduces wealth).  Then
-  `A_i(K) ≥ 2(M_K − M_{k_i − 1}) + Σ_{k=k_i}^{K} 1/k`, so
-  `A_i(K) − 2 m_K ≥ −2 M_{k_i−1} + ln(K/k_i) → ∞`.  A hypothesis outside the current
+  `A_i(K) ≥ M_K − M_{k_i − 1} + Σ_{k=k_i}^{K} 1/k`, so
+  `A_i(K) − m_K ≥ −M_{k_i−1} + ln(K/k_i) → ∞`.  A hypothesis outside the current
   support still bids (it is in the frontier), so (A′)/(C′) apply to it unchanged.
-- (ii).  `𝒜_K = 2 Σ_{k≤K} s(k) (M_k − M_{k−1}) + Σ_{k≤K} s(k)/k`.  For the first sum,
+- (ii).  `𝒜_K = Σ_{k≤K} s(k) (M_k − M_{k−1}) + Σ_{k≤K} s(k)/k`.  For the first sum,
   `s(k) ≤ √(S_k/M_k) ≤ √S_K / √M_k`, so `s(k)(M_k − M_{k−1}) ≤ √S_K · (M_k − M_{k−1})/√M_k`,
   and `Σ_k (M_k − M_{k−1})/√M_k ≤ 2√M_K` because `(a − b)/√a ≤ 2(√a − √b)` for
   `0 ≤ b ≤ a` (LEAN `jump_div_sqrt_le`) and the right side telescopes (LEAN
@@ -268,7 +270,7 @@ and (ii) hold:
   `B = √S_K`).  For the second, `s(k) ≤ √S_K` and `Σ_{k≤K} 1/k ≤ 1 + ln K`.  Hence
 
   ```
-  𝒜_K  ≤  4 √(S_K M_K)  +  √S_K (1 + ln K)  =  S_K · [ 4√(M_K/S_K) + (1 + ln K)/√S_K ]  =  o(S_K),
+  𝒜_K  ≤  2 √(S_K M_K)  +  √S_K (1 + ln K)  =  S_K · [ 2√(M_K/S_K) + (1 + ln K)/√S_K ]  =  o(S_K),
   ```
   using `S_K ≥ K` for the last term.
 
@@ -293,11 +295,15 @@ wealth at `k_j` is at most `A_liar(k_j − 1) ≤ 𝒜_{k_j−1} < S_{k_j−1}/(
 below `1/(4j) < 3/4` and `good` wins; the liar is rejected at every spike and tested at
 none, record 0.  The final schedule is non-dominant (`m_{k_j}/S_{k_j} ≤ 1/j`, and `1/S`
 elsewhere).  ∎  FIX `test_timing.SurpriseSpike`: on the schedule of fixture A
-(`m_{4^j} = ⌊S_{4^j−1}/j⌋`) under settlement timing the spike liar bids at most `0.58`
-at every spike and is never tested, under either coefficient; under opening timing with
-coefficient 2 it bids 1 at spikes 64, 256, 1024 and is tested at each.  So under the
-source paper's timing the prefix theorem needs one-block lookahead — the subsidy credited
-after round `k` may read `m_{k+1}` — which is exactly opening timing with a shifted index.
+(`m_{4^j} = ⌊S_{4^j−1}/j⌋`) under settlement timing the spike liar bids at most `0.30` at
+every spike and is never tested; under opening timing it is tested at spike 256 (bid
+`0.93`), and at 1024, carrying nothing after that loss, it bids `0.68 < 3/4` and is
+rejected there — which coverage permits: the sharp bound holds at that rejection and
+`A_i(K) − m_K` grows, so its record diverges along its rejections as the theorem
+requires.  Coverage asks for divergence along rejections, not a win at every spike.  So
+under the source paper's timing the prefix theorem needs one-block lookahead — the
+subsidy credited after round `k` may read `m_{k+1}` — which is exactly opening timing with
+a shifted index.
 
 Computability of the resulting learner: the subsidy adds one comparison and one
 addition per active hypothesis per round; with the paper's simulation argument over the
@@ -309,7 +315,7 @@ presentation.
 
 **Existence Theorem for weighted BRIA** (I + II + III).  *For a declared schedule `(m_k)`
 with integer (or rational) lengths revealed block by block, the following are
-equivalent: (1) `m_K/S_K → 0`; (2) opening subsidies satisfying (i″) and (ii) exist; (3)
+equivalent: (1) `m_K/S_K → 0`; (2) opening subsidies satisfying (i′) and (ii) exist; (3)
 the prefix rule above, credited at the opening of each block, makes the auction a
 weighted BRIA covering every c.e. class of e.c. continuation hypotheses.  If (1) fails,
 then for some rational `q > 0` no estimating agent covers the two e.c. hypotheses of
@@ -323,21 +329,20 @@ III′.
 schedule with `m_k = 1` except at `k = 4^j`, where `m_k = ⌊S_{k−1}/j⌋`: non-dominant with
 the spike a `1/(j+1)` share of time, converging as slowly as one likes.  The prefix rule's
 total subsidy is within the bound above at `K = 64, 256, 1024`, its share of primitive
-time decreases (`0.90, 0.77, 0.66` — slowly, by design), `A_1(K) − 2m_K` grows, the
-always-lying hypothesis is tested repeatedly (record below `−300`) and the weighted
+time decreases (slowly, by design), `A_1(K) − m_K` grows, the always-lying hypothesis
+is tested repeatedly (record below `−30`) and the weighted
 overestimation stays within `𝒜_K/S_K`.  The same rule on `m_k = ⌊log₂k⌋+1` tests the
-liar at rounds 15, 32 and 240 with overestimation below `1/500`.
+liar at rounds 32 and 1024 with overestimation below `1/500`.
 
 **Fixture K** (FIX `test_weighted.K_FeasibleSchedule`, retained): the declared schedule
 `m_k = ⌊log₂ k⌋ + 1` with the explicit allowance `A(k, i) = i^{-2} / ⌊√k⌋` for `i ≤ k`.
-(i″): `A_i(k) ≥ i^{-2} (2√(k+1) − 2 − i)` since `Σ_{n≤k} n^{-1/2} ≥ 2(√(k+1) − 1)` and the
-first `i` terms are at most `i`; minus `2 m_k ≤ 2 log₂ k + 2` this tends to `∞`.  This
-explicit schedule is declared in advance, so its allowance may be credited at either
-timing; the factor-2 condition holds because `√k` outruns any multiple of `log k`.
+(i′): `A_i(k) ≥ i^{-2} (2√(k+1) − 2 − i)` since `Σ_{n≤k} n^{-1/2} ≥ 2(√(k+1) − 1)` and the
+first `i` terms are at most `i`; minus `m_k ≤ log₂ k + 1` this tends to `∞`.  For this
+fixed, known-in-advance schedule the allowance may be credited at either timing.
 (ii): `Σ_{n≤K} 1/⌊√n⌋ ≤ 2√K + ln K + 3`, so `𝒜_K ≤ ζ(2)(2√K + ln K + 3)`, while
 `S_K ≥ log₂ K! ≥ K log₂ K − 1.45 K`; the ratio tends to 0.  Checked at `K = 10², …, 10⁵`.
 The dispatch's family `m_k ≍ log k`, `A(k,i) ≍ i^{-2} k^{-a}` works for every `a ∈ [0, 1)`
-by the same integrals; the paper's `a = 1` fails (i″) for this schedule, since
+by the same integrals; the paper's `a = 1` fails (i′) for this schedule, since
 `A_i(k) ≍ i^{-2} ln k < log₂ k`.  For the downstream application, where the schedule is
 chosen, either this explicit allowance or the prefix constructor serves; the prefix
 constructor is preferred because it is one rule for every schedule.
@@ -380,7 +385,7 @@ weighted overestimation is `≤ 0`, and the primitive-time average is the good c
 
 So the unweighted macro-BRIA satisfies the paper's criterion on the macro sequence and
 has primitive-time average reward tending to 0 along a subsequence in an environment
-where a sound hypothesis guarantees `3/4`.  The weighted charge is necessary, and (i″) is
+where a sound hypothesis guarantees `3/4`.  The weighted charge is necessary, and (i′) is
 the price of it.
 
 ## 6. Answers to the dispatch's §8 questions
@@ -390,7 +395,7 @@ the price of it.
    criterion; infinite-horizon discounted claims need a settlement mechanism, OPEN (§1).
 3. Yes, the primitive is a positive weight; the theorems are stated for `w_k`.
 4. Lemma 6, Theorems 1–3 port with the algebra above; Theorem 1's two allowance
-   conditions become (i″) and (ii), and its allowance timing becomes opening timing (§3).
+   conditions become (i′) and (ii), and its allowance timing becomes opening timing (§3).
 5. Theorem 4 does not port as stated (OPEN); the paper's allowance fails capital adequacy
    as soon as `w_k` is unbounded, however slowly it grows; the first version's
    modulus-based support is withdrawn for the prefix constructor of §4.1; and under the
@@ -402,16 +407,13 @@ the price of it.
 
 ## 7. What is not established
 
-- Any rate: (i″) and (ii) are asymptotic; the geometric spacing of tests in fixture J is
+- Any rate: (i′) and (ii) are asymptotic; the geometric spacing of tests in fixture J is
   the auction's, not a bound.
-- Sharpness of (i″) per hypothesis; the sharp condition is the schedule-level
-  non-dominance, and (i″) is a sufficient uniform condition.  The constant 2 is forced
-  by the inclusive record; whether a smaller allowance coefficient serves under a
-  different tie-breaking or bidding rule is not asked.
+- Sharpness of (i′) per hypothesis; the sharp condition is the schedule-level
+  non-dominance, and (i′) is a sufficient uniform condition.
 - Any bound on the *rate* at which the prefix constructor's `𝒜_K/S_K` vanishes beyond
-  `4√(M_K/S_K) + (1 + ln K)/√S_K`; on the spiky schedule that is slow by design.
+  `2√(M_K/S_K) + (1 + ln K)/√S_K`; on the spiky schedule that is slow by design.
 - A weighted Theorem 4.
-- That the learner may *choose* `m_k` adaptively; the schedule here is declared in
-  advance and known to hypotheses.  Hypothesis-requested lease lengths are a
-  combinatorial-auction question the paper's footnote gestures at and this round does not
-  touch.
+- That the learner or a bidder may *choose* `m_k`; the schedule is the system's, revealed
+  block by block.  Hypothesis-requested block lengths are a combinatorial-auction
+  question the paper's footnote gestures at and this round does not touch.
