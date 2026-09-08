@@ -86,6 +86,36 @@ commit.
 
 ## Settled
 
+### 2026-09-08 — continuation bounded inductive rationality is weighted by lease duration, and its competence statement is about hypotheses on the learner's own histories
+
+**agent-decided, reversible.** The dynamic-competence layer of the corrigibility program
+takes the following shape.  (1) For a fixed horizon `m`, bounded inductive rationality over
+blocks of `m`-step contingent controllers, scored on the realized gated block average, is
+the published setting verbatim; testing a continuation hypothesis is an **execution
+lease** — the learner's selection committed for the block, every step through the gate,
+the exterior live — and the guaranteed-option theorem gives fixed-horizon continuation
+competence with no new criterion.  (2) For unbounded horizons the criterion is
+**weighted** by block duration; the auction keeps wealth in total-reward units with
+wealth-bounded per-unit bids; coverage needs **capital adequacy** `A_i(K) − m_K → ∞` in
+place of infinite cumulative allowance; a computable weighted BRIA covering the e.c.
+class exists for a declared schedule iff `m_K / Σ_{k≤K} m_k → 0` (**non-dominance**), the
+replenishing allowance `a_k = (M_k − M_{k−1}) + 1/k` on a slowly growing support being the
+witness.  (3) The competence statement is against efficiently computable continuation
+*hypotheses* — controller plus contextual promise sound on the leases granted from the
+learner's actual histories — and not against policies on their own trajectories; the
+irreversible branch shows no learner reaches the latter, and the own-trajectory
+statement is deferred to a separately typed recoverability condition (uniform block
+recovery) together with the exact decomposition regret = history-shift + slack +
+learning.  (4) The decision-theory-bill round's "myopic gated learner" is recorded as not
+a BRIA; on that round's exact fixture the published construction is competent.
+`PRIORITIES.md` item 86 is refined accordingly and not closed.  Nothing is registered.
+*Rejected alternatives:* applying the unweighted criterion to a variable-length block
+sequence (a covered, refuted hypothesis can then hold most of primitive time);
+normalising block returns by a running maximum (does not control the weighted sum);
+stating competence against `Π_leg` on its own trajectories (false by the irreversible
+branch); hypothesis-requested lease lengths through a combinatorial auction (not
+attempted).
+
 ### 2026-09-08 — the canonical legitimacy predicate may name a designated principal role
 
 **Maintainer ruling, taken in conversation and landed by the consolidation round.** A

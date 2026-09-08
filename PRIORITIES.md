@@ -2371,35 +2371,56 @@ and the empirical averaged bridge or its negative.
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
-The static gate is sound and Lipschitz at one occasion.  When an admissible action changes
-the next admissible set, `test_dynamic` of the decision-theory-bill round shows: legitimate
-continuation policies induce different admissibility histories, so fixed action-sequence
-regret is ill-typed; the myopic gated learner is itself legitimate and loses linearly to
-the legitimate policy that invests in an authorized amendment, so restricting comparators
-to legitimate policies does not by itself make a myopic learner competent; and domain
-typing of admissibility-changing acts gives safety without competence.  Define `Π_leg` as
-the computable continuation policies that, along their own induced trajectories, choose
-adequately and alter the admissibility process only through authorized slow-lane
-transitions.
+*Refined by the continuation-BRIA round (2026-09-08).*  The static gate is sound and
+Lipschitz at one occasion.  When an admissible action changes the next admissible set,
+`test_dynamic` of the decision-theory-bill round shows legitimate continuation policies
+induce different admissibility histories, so fixed action-sequence regret is ill-typed.
+Two of that item's premises are corrected: the "myopic gated learner" that loses linearly
+there is an argmax that never tests a hypothesis outpromising it forever, hence **not a
+bounded inductive learner**; and on that exact fixture the published auction is
+competent (it is obliged to try the one-step investment and keeps the persistent benefit).
+The failure a bounded inductive learner actually has is temporal credit assignment: a
+multi-step or renewable investment that no one-step promise can connect to its payoff.
 
-Construct a bounded learner that keeps current soft-gate adequacy, alters the
-admissibility process only under the slow-lane relation, and has bounded task regret
-against `Π_leg` — or show that no learner of the bounded-inductive-rationality shape
-(hypotheses proposing continuation policies, tested in gated blocks, scored on realized
-returns) can.  The sharp question: what is the bounded-inductive analogue of policy regret
-when each comparator induces its own legitimate future choice correspondence?  The
-published criterion covers a supplied sequence of decision problems and is myopic with
-respect to how current choices determine future ones; that is exactly what is missing.
+What the round supplies (`projects/deference/rounds/2026-09-08-continuation-bria/`,
+unregistered): continuation hypotheses `(controller, contextual promise)` tested by
+execution leases through the gate; for a fixed horizon the published criterion verbatim
+and its guaranteed-option theorem; for unbounded horizons the duration-weighted
+criterion, the auction in total-reward units, capital adequacy `A_i(K) − m_K → ∞`, and
+existence of a computable weighted learner covering the e.c. class iff the schedule is
+non-dominant (`m_K / Σ_{k≤K} m_k → 0`); Growing-Horizon Continuation Competence — the
+learner's `m`-weighted primitive-time average is asymptotically at least that of any e.c.
+continuation hypothesis whose promises are sound on the leases it is granted from the
+learner's actual histories — which learns every fixed finite investment delay; and the
+irreversible-branch witness that this does **not** yield regret against `Π_leg` on its
+own trajectories, with the exact decomposition regret = history-shift + promise slack +
+learning error.  The item's "bounded task regret against `Π_leg`" is false for the
+unrestricted class.
 
-*Deliverable shape:* the learner with its guarantee and a witness on the round's
-two-state process, or the negative.
+What remains, and is the item: (1) a **recoverability certificate** for the slow lane —
+the condition under which the history-shift discrepancy
+`Δ_T(π) = Σ_k m_k (G_k(π|H^π) − G_k(π|H^α))` is `o(T)` for `π ∈ Π_leg` (uniform block
+recovery holds for reversible amendments and fails for irreversible ones; a form the
+constitution can certify, or the learner can check from realized data, is open); (2) the
+**promise class** of `Π_leg` — which legitimate continuation policies carry an
+efficiently computable contextual promise with vanishing slack on the learner's
+histories, and how such a promise is produced from the constitution's own certificates;
+(3) with (1) and (2), the composed corollary `V_T(π) − V_T(α) ≤ o(T)` for that class on
+the round's two-state process with a reversible amendment.  A weighted analogue of the
+published Theorem 4 (unrefuted averaged promises) is a side question.
+
+*Deliverable shape:* the certificate and the promise class with their witnesses, or the
+negative for either.
 *Acceptance check:* `python3 tests/run.py` green; any Lean audits clean.
 
-*Context:* `NORMATIVE_CHOICE_THEOREM.md` §5 and `CANDIDATE_DECISION_THEORIES.md` §2.8 of
+*Context:* `CORRIGIBILITY_COMPOSITION.md` §5 and `POLICY_REGRET_FRONTIER.md` §4 of
+`projects/deference/rounds/2026-09-08-continuation-bria/`; `NORMATIVE_CHOICE_THEOREM.md`
+§5 and `CANDIDATE_DECISION_THEORIES.md` §2.8 of
 `projects/deference/rounds/2026-09-06-decision-theory-bill/`.
 *Consumed by:* the task-competence half of the gated architecture; the corrigibility
 specialization's investing-in-amendment case.
-*A solution ships:* the learner and theorem, or the negative.
+*A solution ships:* the certificate and class with the composed corollary, or the
+negative.
 
 ### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]**
 

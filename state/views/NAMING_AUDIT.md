@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 280 names, 173 of them Lean only
+## deference — 290 names, 180 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -107,6 +107,16 @@ change, and the count of those is the size of the free choice remaining.
 | `p` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.p` |
 | `v` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.v` |
 | `vhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.vhat` |
+| `Auction` | structure | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction` |
+| `Feasible` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.Feasible` |
+| `W` | def | 2026-09-08-continuation-bria | wiki, note, prose | `Workspace.Deference.ContinuationBRIA.Auction.W` |
+| `allowanceOf` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.allowanceOf` |
+| `boundary` | def | 2026-09-08-continuation-bria | wiki, prose | `Workspace.Deference.ContinuationBRIA.boundary` |
+| `chargedRecord` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.chargedRecord` |
+| `record` | def | 2026-09-08-continuation-bria | wiki, prose | `Workspace.Deference.ContinuationBRIA.Auction.record` |
+| `totalAllowance` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.totalAllowance` |
+| `traj` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.traj` |
+| `trajPlain` | abbrev | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.trajPlain` |
 | `EX` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.E1.EX` |
 | `GradeTrust` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.GradeTrust` |
 | `J` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.J` |

@@ -1,0 +1,10 @@
+GROWING-HORIZON-CONTINUATION-BRIA-SURVIVES-UNDER-NON-DOMINANCE-POLICY-REGRET-NEEDS-RECOVERABILITY — for a fixed horizon, bounded inductive rationality over blocks of contingent controllers scored on their realized gated block average is the published setting verbatim and its guaranteed-option theorem is fixed-horizon continuation competence, so endogenous admissibility was never the missing structure and temporal credit assignment at the testing granularity is; testing a temporally extended promise requires an execution lease, a commitment of the learner's selection through the constitutional gate with the exterior live, and contextual promises are what defeat biased testing; for unbounded horizons the criterion must be weighted by block duration, the auction in total-reward units with wealth-bounded per-unit bids is a weighted BRIA under capital adequacy A_i(K) − m_K → ∞ and negligible total allowance per primitive time, a computable such learner covering the efficiently computable class exists for a declared schedule if and only if no block is a fixed fraction of all time so far, and the resulting growing-horizon continuation competence learns every fixed finite investment delay; continuation competence does not imply policy regret, the irreversible branch defeats every learner while continuation competence holds exactly, and the own-trajectory statement needs the history-shift discrepancy to vanish, which uniform block recovery supplies and the learning theory does not.
+
+Reading order: [`REPORT.md`](REPORT.md), [`BRIA_SOURCE_AUDIT.md`](BRIA_SOURCE_AUDIT.md),
+[`FIXED_HORIZON.md`](FIXED_HORIZON.md), [`CONTINUATION_HYPOTHESES.md`](CONTINUATION_HYPOTHESES.md),
+[`WEIGHTED_BRIA.md`](WEIGHTED_BRIA.md), [`GROWING_HORIZON.md`](GROWING_HORIZON.md),
+[`POLICY_REGRET_FRONTIER.md`](POLICY_REGRET_FRONTIER.md),
+[`CORRIGIBILITY_COMPOSITION.md`](CORRIGIBILITY_COMPOSITION.md),
+[`COUNTERMODELS.md`](COUNTERMODELS.md), [`FOR_HUMANS.md`](FOR_HUMANS.md).
+Lean: `lean/Workspace/Deference/Contrib/ContinuationBRIA.lean`.  Fixtures: `src/`, run by
+`tests/run.py`.  Nothing is registered.

@@ -1330,6 +1330,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-08-legitimate-deference-consolidation/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-08-continuation-bria",
+      "date": "2026-09-08",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-08-continuation-bria",
+      "verdict": "GROWING-HORIZON-CONTINUATION-BRIA-SURVIVES-UNDER-NON-DOMINANCE-POLICY-REGRET-NEEDS-RECOVERABILITY — for a fixed horizon, bounded inductive rationality over blocks of contingent controllers scored on their realized gated block average is the published setting verbatim and its guaranteed-option theorem is fixed-horizon continuation competence, so endogenous admissibility was never the missing structure and temporal credit assignment at the testing granularity is; testing a temporally extended promise requires an execution lease, a commitment of the learner's selection through the constitutional gate with the exterior live, and contextual promises are what defeat biased testing; for unbounded horizons the criterion must be weighted by block duration, the auction in total-reward units with wealth-bounded per-unit bids is a weighted BRIA under capital adequacy A_i(K) − m_K → ∞ and negligible total allowance per primitive time, a computable such learner covering the efficiently computable class exists for a declared schedule if and only if no block is a fixed fraction of all time so far, and the resulting growing-horizon continuation competence learns every fixed finite investment delay; continuation competence does not imply policy regret, the irreversible branch defeats every learner while continuation competence holds exactly, and the own-trajectory statement needs the history-shift discrepancy to vanish, which uniform block recovery supplies and the learning theory does not.",
+      "verdict_source": "projects/deference/rounds/2026-09-08-continuation-bria/README.md",
+      "depends_on": ["2026-09-06-decision-theory-bill", "2026-09-08-legitimate-deference-consolidation"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-08-continuation-bria/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

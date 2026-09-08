@@ -16,6 +16,7 @@
 | `ActivatedValue.lean` | `prompts/2026-09-07-authority-activated-value/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-authority-activated-value/` | — |
 | `ReasonMediatedAuthorship.lean`, `PartialActivatedValue.lean` | `prompts/2026-09-07-reason-mediated-authorship/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-reason-mediated-authorship/` | — |
 | `ReasonCoverage.lean`; corrections and extensions to `PartialActivatedValue.lean` and `ReasonMediatedAuthorship.lean` | `prompts/2026-09-08-legitimate-deference-consolidation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-08 | `prompts/2026-09-08-legitimate-deference-consolidation/` | — |
+| `ContinuationBRIA.lean` | `prompts/2026-09-08-continuation-bria/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-08 | `prompts/2026-09-08-continuation-bria/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`; per-declaration
