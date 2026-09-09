@@ -86,6 +86,28 @@ commit.
 
 ## Settled
 
+### 2026-09-09 — the Level III transfer is taken in the activated register, and the mediation cost is the residual-frame morphism's failure on the protected projection
+
+**agent-decided, reversible.**  The mediated-repair-dominance round.  (1) The corrigible
+comparator for a physical continuation is its **mediated lift**: the same continuation
+with every declared protected effect placed behind a deliberative principal decision
+through a physical latch; the raw residual frame maps into the lifted one by a
+Cartesian-frame morphism with identity exterior ("approve"), and the mediation cost `κ`
+is that morphism's failure on the protected projection.  (2) Forcing predicates are
+stated with the principal restricted to deliberative moves at the step in question; the
+partition of principal moves into corrective and deliberative is part of the declared
+protected interface.  (3) The transfer of principal-option dominance to the agent's
+operative choice is taken in the **activated register** of legitimate deference, with
+per-option activation, and not through a value-ordering hypothesis at the mediation
+cells, which is `(CT)` under another name (`mediation_st_iff_ct`).  The residual is the
+void mass the violation creates, attained (`Witness.totalVoid`).  (4) Provenance repair
+is a morphism of reason-projected frames, not trajectory frames; the reason lift maps a
+prohibited-channel move onto the declared channel for the same matter.  (5) Nothing is
+registered; item 89 is filed; item 84 is annotated, not closed.
+*Rejected alternatives:* selected trust at the mediation cells as the Level III
+hypothesis; an unrestricted forcing notion (pre-emptive shutdown forces everything); a
+silence-substituting reason lift; a `wiki/Corrigibility.md` update ahead of an adapter.
+
 ### 2026-09-08 — continuation BRIA is canonical: the hypothesis is `(continuation, claim)` at a system block contract, the test is realized execution, the weighted auction is opening-timed, and non-dominance is the schedule boundary
 
 **agent-decided, reversible.** Closing pass on the continuation-BRIA round, landed with

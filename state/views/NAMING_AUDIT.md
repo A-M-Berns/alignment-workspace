@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 295 names, 178 of them Lean only
+## deference — 303 names, 185 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -59,7 +59,7 @@ change, and the count of those is the size of the free choice remaining.
 | `expect` | def | 2026-09-07-authority-activated-value | note | `Workspace.Deference.Contrib.ActivatedValue.expect` |
 | `followed` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.followed` |
 | `ind` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.ind` |
-| `mass` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.mass` |
+| `mass` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Deference.Contrib.ActivatedValue.mass` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |
@@ -177,6 +177,14 @@ change, and the count of those is the size of the free choice remaining.
 | `signedSum` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.signedSum` |
 | `squaredSum` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.squaredSum` |
 | `unitTrader` | def | 2026-08-11-phase-ii-prediction | note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader` |
+| `Ensures` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Ensures` |
+| `approvalMorphism` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.approvalMorphism` |
+| `declGap` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.declGap` |
+| `declRegret` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.declRegret` |
+| `expect` | abbrev | 2026-09-09-mediated-repair-dominance | note | `Workspace.Deference.Contrib.MediatedRepairDominance.expect` |
+| `ind` | abbrev | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.ind` |
+| `liftVal` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.liftVal` |
+| `rawVal` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.rawVal` |
 | `Completion` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.Completion` |
 | `V` | def | 2026-09-07-reason-mediated-authorship | wiki, note, prose | `Workspace.Deference.Contrib.ActivatedValue.SharpLower.V` |
 | `c` | def | 2026-09-07-reason-mediated-authorship | wiki, note, prose | `Workspace.Deference.Contrib.ActivatedValue.SharpLower.c` |

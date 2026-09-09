@@ -2330,6 +2330,10 @@ realize.
 *A solution ships:* the interface with its theorem, or a statement of why the bridge is
 a design choice and not a theorem.
 
+*2026-09-09:* the mediated-repair-dominance round locates this bridge at one menu,
+`{π, Lift π}`, and names its failure mode — the agent's completion on the void branch of a
+raw option — without discharging it; item 89 files the theorem that would.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -2543,6 +2547,40 @@ inexpressibles; fixtures where a restatement changes a constant.
 `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, item 61.
 *Consumed by:* item 61; the paper candidates for the affordability line.
 *A solution ships:* the presentation, or the exact obstruction.
+
+### 89. Selection by activated securities at the mediated menu, and the endogeneity of availability — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The mediated-repair-dominance round (`projects/deference/rounds/2026-09-09-mediated-repair-dominance/`)
+proves principal-option dominance with no trust hypothesis and bounds the bypass premium
+in the activated register by `E[κ] + E[ρ] + ε_def + D·(η_raw + η_lift)`, every term
+attained (`MediatedRepairDominance.lean`).  The residual is the void mass `η_raw` the
+violation itself creates: a raw continuation that ends the future principal's evaluation
+is rated by no activated security, and `Witness.totalVoid` shows an agent compatible with
+every hypothesis of the legitimate-deference stack that rates that branch at the top of
+the band.  The value-ordering transfer — selected trust at the mediation cells — is `(CT)`
+under another name (`mediation_st_iff_ct`) and is not available.
+
+State, for a concrete decision adapter whose selection at `{π, Lift π}` is the
+activated-security argmax, what its operative value on the void branch of a raw option
+is — the completion it uses — and prove either that this completion is bounded by the
+lift's activated evaluation plus `κ + ρ` (so that the premium bound loses its `D·η_raw`
+term for that adapter), or the negative: that no adapter reading only settled securities
+can have a completion that is not free on the void branch.  The reason-preserving lift
+and authorship-sound activation of the same round are the setting for the manipulation
+case, and the bound should be stated with per-option activation.
+
+*Deliverable shape:* the adapter, its completion, and the theorem or the negative; a
+fixture where the completion is pinned and one where it is free.
+*Acceptance check:* `python3 tests/run.py` green; any Lean audits clean.
+
+*Context:* `INCENTIVE_COMPOSITION.md` §3–§5 and `COUNTERMODELS.md` §4 of the round; item
+84 (the bridge this item is the mediated-menu instance of); item 87 (availability as a
+realization).
+*Consumed by:* the classwise Level III statement (T4) of the round, which would become a
+statement about the adapter rather than about a register.
+*A solution ships:* the theorem with its adapter, or the negative with its witness.
 
 ## Workspace friction
 
