@@ -134,6 +134,9 @@ conditional authoritative-regret theorem — is landed as research state, and it
 residual is the realization bill, item 87, now partially discharged by the
 [evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/57b373bfe542d0c7b1ee78ba7e170fade4cc9003/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization): clauses 1, 3, 4 discharged, 2 for the reading
 principal, 6 partial, 5 and 7 residual with exact criteria.
+The [committed-principal-program round](https://github.com/A-M-Berns/alignment-workspace/tree/899d9c67b9a1a3779ec38de1ccd4e7419c5a03a4/projects/deference/rounds/2026-09-10-committed-principal-program) closes clause 2 on log authenticity
+(registered `authorship.mediation-by-reexecution`) and repairs three of the earlier
+discharges; 5 and 7 remain residual, 6 partial.
 
 - Decide whether the candidate objects for what foreclosure loses are enough for
   that question to graduate, and what succeeds item 28.

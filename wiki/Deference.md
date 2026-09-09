@@ -114,6 +114,16 @@ the sealed advisor class with the leak exhibited; reason-supply liveness and
 availability are residual with their exact criteria named — the bounded-delay
 affordability criterion for the concern stream, and a vanishing void frequency
 against which the ecosystem's price tracks the empirical frequency within `3/(n+2)`.
+The [committed-principal-program round](https://github.com/A-M-Berns/alignment-workspace/tree/899d9c67b9a1a3779ec38de1ccd4e7419c5a03a4/projects/deference/rounds/2026-09-10-committed-principal-program)
+then closes clause 2 on log authenticity: the mandate carries the principal's decision
+procedure as a program whose only input is the reason trace, the verifier re-executes it
+at commitment, and reason mediation holds by construction for every audited class of
+activated continuations (registered, `authorship.mediation-by-reexecution`); a
+coincident computation yields the same log and payload and a non-coincident one voids,
+so computational integrity is not a hypothesis. Its pressure pass repaired three of the
+earlier discharges (a stolen key, an advisor-written representation, pinned
+counterfactual branches) and found the earlier intervention class had no counterfactual
+content; the advisor-side transfer is refused because the view leaks the selection back.
 
 ## Current status
 
