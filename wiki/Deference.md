@@ -130,7 +130,7 @@ against which the ecosystem's price tracks the empirical frequency within `3/(n+
 > influence is causal factorization through declared reasons, not convergence location.
 
 > **Established — `lean-proved`.** The
-> <!--state:workspace:counts.registered_claims_by_project.deference-->31<!--/state-->
+> <!--state:workspace:counts.registered_claims_by_project.deference-->32<!--/state-->
 > entries in this line's registry are its finite results: the delegation bridge
 > and the certificate, exposure and substitution lemmas; the signed-versus-magnitude
 > separation; the static-view factorization; and the corrective-control model. Each

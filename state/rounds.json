@@ -1356,6 +1356,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-09-evaluation-ecosystem-realization/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-10-committed-principal-program",
+      "date": "2026-09-10",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-10-committed-principal-program",
+      "verdict": "COMMITTED-PROGRAM-CLOSES-CLAUSE-TWO-ON-LOG-AUTHENTICITY — with the principal's decision procedure committed at issuance as a program whose only input is the reason trace, and the verifier re-executing it at commitment, reason-mediated authorship holds by construction for every audited class of activated continuations (a generic kernel-checked theorem with factor map eval π_P), exclusive binding follows from a party-bound warrant registry, computational integrity is shown not to be a hypothesis of authorship (a coincident computation yields the same log and the same payload, a non-coincident one voids), and item 87's clause 2 closes on log authenticity with only issuance authenticity and the declared trace remaining; the pressure pass on the previous round breaks and repairs three discharges (key theft, advisor-written representation, pinned counterfactual branches — now declared log transforms, with the previous intervention class shown to have had no counterfactual content), states the exclusion content references need, tables both readings of the prohibited-event clause without ruling, and finds the typed settlement rule needs two log-checkable clauses and still admits a chain through earlier activated evaluations; the advisor-side transfer is refused because the view leaks the selection back.",
+      "verdict_source": "projects/deference/rounds/2026-09-10-committed-principal-program/README.md",
+      "depends_on": ["2026-09-09-evaluation-ecosystem-realization"],
+      "depends_on_source": "report",
+      "registered_classes": ["lean-proved"],
+      "prompt": "prompts/2026-09-10-committed-principal-program/PROMPT.md",
+      "claim_changes": ["authorship.mediation-by-reexecution"]
     }
   ]
 }
