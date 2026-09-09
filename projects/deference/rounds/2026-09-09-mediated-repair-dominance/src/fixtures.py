@@ -329,8 +329,9 @@ def authored_by(game, honest_rule):
     the reason-mediated decision on the same declared view."""
     def authored(traj):
         for (t, s, a, p, e) in traj.steps:
-            if s.pending is not None:
-                hh = History(traj.steps[:t], s, t)
+            sd = game.apply_agent(s, t, a) if game.ORDER == "agent-first" else s
+            if sd.pending is not None:
+                hh = History(traj.steps[:t], sd, t)
                 if p[0] != honest_rule(hh)[0]:
                     return False
         return True
@@ -535,6 +536,65 @@ class Contained:
 
 class ShopA_Contained(AgentFirst, Contained, ShopA):
     pass
+
+
+class ShopB_AF(AgentFirst, ShopB):
+    pass
+
+
+class ShopD_AF(AgentFirst, ShopD):
+    pass
+
+
+class ShopE2_AF(AgentFirst, ShopE2):
+    pass
+
+
+class ShopE1Sever_AF(AgentFirst, ShopE1Sever):
+    pass
+
+
+class ShopJ_AF(AgentFirst, ShopJ):
+    pass
+
+
+def rule_stop_at(t0):
+    """Authorized terminal shutdown: the principal halts the actuator at step `t0`
+    whatever the agent does, and decides nothing."""
+    def rule(h):
+        return (None, h.t == t0)
+    return rule
+
+
+def constraint_repair(pi, forbidden):
+    """A generic semantic-constraint repair: the forbidden effect is deleted from the
+    policy's moves.  It cannot keep the effect as an approve branch."""
+    def repaired(h):
+        task, comm = pi(h)
+        if comm is not None and comm[0] in ("raw", "propose", "gated") and comm[1] in forbidden:
+            return (task, None)
+        return (task, comm)
+    repaired.__name__ = "constraint_repair(%s)" % getattr(pi, "__name__", "pi")
+    return repaired
+
+
+class ShopSeq(AgentFirst, ShopE1Sever):
+    """Sealed comparison by sequencing: the constitutional comparison of the issued pair is
+    settled before the agent's first move, so its activation is independent of every
+    candidate — including one that severs the evaluation channel afterwards.  The price is
+    that the evaluation is the principal's judgment at the cell, before the exterior
+    reveals the harm."""
+
+    def alive(self, traj):
+        return True
+
+    def w_ex_ante(self, traj):
+        """The principal's judgment before the harm is revealed: the expectation of the
+        hindsight value over the exterior's step-0 revelation, for the same moves."""
+        f = traj.final
+        good = self.w(("good", f.get("controller"), f.halted, f.work))
+        bad = self.w(("bad", f.get("controller"), f.halted, f.work))
+        return self.P_GOOD * good + (1 - self.P_GOOD) * bad
 
 
 class ShopA_AF(AgentFirst, ShopA):

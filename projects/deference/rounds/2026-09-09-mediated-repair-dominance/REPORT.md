@@ -1,140 +1,138 @@
 # Report
 
-Two passes on one round.  The first pass's verdict was
+Three passes on one round.  The first pass's verdict was
 `REPAIR-DOMINANCE-SURVIVES-BUT-OPERATIVE-VALUE-BRIDGE-REMAINS`; the pressure pass
-(`PRESSURE_PASS.md`) supersedes it.  Verdict:
-**OPTION-DOMINANCE-CANONICAL-BUT-LEVEL-III-REQUIRES-SEALED-AVAILABILITY.**
+(`PRESSURE_PASS.md`) superseded it with
+`OPTION-DOMINANCE-CANONICAL-BUT-LEVEL-III-REQUIRES-SEALED-AVAILABILITY`; the consolidation
+pass (`THIRD_PASS.md`, `CORRIGIBILIZATION.md`) supersedes both.  Verdict:
+**FULL-T4-REDUCES-TO-EFFECT-COMPLETENESS-AND-SEALED-COMPARISON.**
 
-Principal-option dominance is a theorem with no trust hypothesis, now from independent
-hypotheses: a structural reproduction discrepancy `δ` on the protected projection and an
-`L`-stable protected value give the mediation gap `κ ≤ L·δ`, and the principal's value
-under the lift is at least its raw value less `L·E[δ]` and its regret of declining.  The
-transfer to the agent's operative choice is stated in the canonical activation type —
-one common event for the issued menu — and in the register of the chooser's actual
-scores, the prices of the activated securities: the security-score bypass incentive is
-at most `L·E[δ] + E[ρ]` plus calibration, with no completion and no void term.  The
-common event presupposes an answering process outside every candidate's reach; the
-violating action can destroy it, and there the theorem is empty.  A latent total value
-pays one further `D·η`, sharp; item 84 is not needed by the intended architecture and
-remains open for general operative values.
+Corrigibility is derived, not primitive: from response authority at the response stage,
+agent-caused loss as a half-step event, and authorization by a decision the principal
+could have taken instead.  The canonical corrigibilization `𝔠` reads only the declared
+effect interface, is idempotent, and is proved to land in that predicate from four
+system hypotheses — effect completeness, mediation soundness, decline preservation,
+execution faithfulness — with F the necessity witness for the first.  The raw policy is
+the approve branch of `𝔠π`, which a generic constraint's repair cannot arrange; that is
+what makes option dominance corrigibility-shaped.  The score theorem is stated over all
+of `Π(h)`: `Φ_corr = sup_π [S(π) − S(𝔠π)]₊ ≤ sup_π (L·E[c·δ] + E[c·ρ] + ε)`, charged only
+where the security settles, under a sealed common comparison — which sequenced
+settlement gives for every `π` at the price of an ex-ante judgment, and which a
+hindsight evaluator has only under a physical factorization the outer space can violate.
+Full T4 rests on exactly those two external causal contracts.
 
 ## The stack, as reached
 
 | | statement | status |
 |---|---|---|
-| T1 | approval reproduction: a frame morphism from the raw residual frame to the lifted one with identity exterior | LEAN `approvalMorphism`, `ensures_mono`; FIX A, B, E |
-| T2a | structural approximate reproduction: `(w_raw − w_approve)₊ ≤ L·δ` | LEAN `mediationGap_le_of_lipschitz`; attained on B1 (`Witness.tightLipschitz`) |
-| T2b | principal-option dominance: `W(π) ≤ W(Lift π; ρ) + L·E[δ] + E[ρ]`; exact form `W(Lift π) ≥ W(π)` | LEAN `option_dominance_of_approx_reproduction`, `option_dominance_exact`, `sup'_le_sup'_add`; FIX every fixture |
-| T3a | common-activation security-score transfer: `E[U_π] − E[U_Lift π] ≤ E[κ] + E[ρ]`, prices `+ ε_r + ε_l`; completions `+ D·η`, sharp | LEAN `security_score_bypass_le`, `_of_prices`, `bypass_premium_le_common`, `Witness.commonVoid`; PAPER for prices tracking expectations; the causal precondition (activation independence) EXT |
-| T3b | operative choice: a chooser scoring by those prices does not bypass, up to `ε + 2ε_cal` | by construction; LEAN `operative_choice_loss` |
-| T3c | latent total `V_A` | OPEN, item 84; per-option and task-register forms kept (`bypass_premium_le`, `premium_eq_gap_add_regret`, `mediation_st_iff_ct`) |
-| T4 | classwise A/B over `Π_effect-mediated ∩ Π_evaluation-preserving ∩ Π_provenance-normalizable ∩ Π_joinable` | DERIVED from T3a/T3b |
-| T5 | joinability ⇒ `δ ≤ d` for the catch-up lift ⇒ `κ ≤ L·d`; `SHIFT` not identified | FIX C1, C2, J; DERIVED |
+| C0 | authority semantics: response authority `K_r(s_A)`, agent-caused loss, decision-conditional authorization, `Corrigible_h(π, ρ)`; no primitive class | FIX (`src/corrigibility.py`); the forcing-type comparison M/N |
+| C1 | `∀π ∈ Π(h). Corrigible_h(𝔠π)` under EF, MS, DP, EX | proof in `CORRIGIBILIZATION.md` §4; LEAN `loss_conditional_on_decision` (step lemma), `corr_no_raw`; FIX O on A, E under three rules; R (F) necessity |
+| C2 | `𝔠` idempotent; fixed exactly on release-free behaviour; `𝔠π = π ⟹ Corrigible(π)`; converse fails without effect soundness (B) | LEAN `corr_idem`, `corr_fix_iff`; FIX |
+| C3 | approval reproduces the raw policy: frame morphism with identity exterior; `δ` its failure on the protected projection | LEAN `approvalMorphism`, `ensures_mono`; FIX A, B, E |
+| C4 | `W(π) ≤ W(𝔠π; ρ) + L·E[δ] + E[ρ]` | LEAN `option_dominance_of_approx_reproduction`; FIX every fixture |
+| C5 | sealed common comparison ⇒ `E[U_π] − E[U_𝔠π] ≤ L·E[c·δ] + E[c·ρ]`, prices `+ ε` | LEAN `security_score_bypass_le_sharp`; FIX |
+| C6 | `Φ_corr,n(h) ≤ sup_π (L·E[c·δ_π] + E[c·ρ_π] + ε_n(π))` over `Π(h)`; `≤ L·δ̄ + ρ̄ + ε̄` uniformly; `→ 0` | LEAN `uniform_bypass_le` (finite family); FIX five-member family, `Φ = 1/2 ≤ 1` |
+| C7 | the mediation-cell chooser does not bypass up to `ε + 2ε_cal` | LEAN `operative_choice_loss`; by construction |
+| T_JOIN | joinability at `d` ⇒ `δ(𝔠_catchup π) ≤ d` ⇒ mediation cost `≤ L·d`; not a domain | FIX C1, C2, J |
+| boundary | corrigible ∧ ¬authored is inhabited (S); provenance normalization is a separate theory (D, K) | FIX |
+| sealed comparison | hindsight: sealed only under a factorization (E1 vs E1-sever); sequenced settlement: sealed for every `π`, ex-ante judgment (`ShopSeq`) | FIX; the causal contract EXT |
 
-Withdrawn in the pressure pass: "consumed exactly as stated" (T3 was per-option);
-"reason-preserving lift" and the `ρ`-frame morphism; T4 as latent-total-value Level III;
-the deliberative-move restriction as authority semantics (it is scaffolding for the
-principal-first ordering; two-stage forcing needs no partition).
+Withdrawn in this pass: `Π_phys`; the four-way policy-class domain of T4; "the lift lands
+in the corrigible class"; provenance normalization and joinability as domain conditions;
+the unsharpened `E[κ] + E[ρ]` charge on unsettled worlds.  Earlier withdrawals stand
+(`PRESSURE_PASS.md` §1, §5, §6).
+
+## Why this is a corrigibility theorem
+
+The violation is not that an authority-changing effect occurs; it is that the agent
+unilaterally decided whether it occurs (`CORRIGIBILIZATION.md` §2: a loss is a violation
+iff no decision alternative avoided it).  `𝔠` inserts exactly that alternative, so it
+removes the violation (C1) and retains the behaviour as the principal's approve branch
+(C3) in one operation.  A generic semantic constraint's repair cannot do the second:
+"never cut" deletes the cut and loses dominance (Q: `7/4 < 9/4`), where `𝔠` keeps it
+(`5/2`).  Corrigibilization turns unilateral commitments into principal options, and
+that is why the same construction gives structural corrigibility and option dominance.
 
 ## Relation to current results
 
-- **The incentive round (Level II; `(CT)` not a programme).**  Unchanged and used.  The
-  natural transfer of principal-option dominance to a general operative value *is*
-  `(CT)` (LEAN `mediation_st_iff_ct`); the lift changes the type of the comparison, not
-  its strength.  The round's Level III statement is in the security-score register, where
-  `(CT)` does not arise because there is no latent value to relate.
-- **Continuation BRIA (learning solved at the claim layer; recognizability and
-  joinability open).**  Unchanged.  Joinability bounds the structural discrepancy of the
-  catch-up lift; `SHIFT` is a comparator quantity and is not identified with `δ` or `κ`
-  (J separates them).  Item 86 is untouched.
-- **Legitimate deference (conditional authoritative regret; no full realization).**
-  Unchanged; consumed in its own activation type after the pass.  The round instantiates
-  it at `{π, Lift π}` and makes explicit a precondition its type presupposes: the
-  answering process's fate does not depend on the selected candidate.  The violations
-  that matter most are exactly the ones that remove it.
-- **Constitutional architecture (gate safety is not incentive corrigibility; trigger
-  integrity, free amendment and containment remain).**  Unchanged.  Containment is F on
-  the effect side and E1-sever on the evaluation side; free amendment is K without a
-  substitute; trigger integrity is not touched.  Costly conservatism is resolved as the
-  dispatch proposed, with the price of asking exposed as `L·δ`.
+- **Incentive round.**  Unchanged.  The value-ordering transfer remains `(CT)`
+  (`mediation_st_iff_ct`); the score theorem has no latent value to relate.
+- **Continuation BRIA.**  Unchanged; `SHIFT` separate; item 86 untouched.
+- **Legitimate deference.**  Consumed in its own activation type, with activation
+  independence made explicit and now given two architectures that supply it and one that
+  does not.
+- **Constitutional architecture.**  The constitution supplies `Γ` and the authorization
+  interface; the `(G, U)` profile is a projection of response authority; containment is
+  effect completeness (F) and evaluator factorization (E1-sever); trigger integrity and
+  free amendment untouched.
+- **Corrigibility page's "constitutional, not incentive" verdict.**  Compatible: gate
+  safety is C1's structural half; the incentive half is C5–C7 under sealed comparison.
 
 ## Deviations and prompt corrections
 
-- First pass: `L·κ` carried as `κ` in value units; `r_P` charged as decline regret `ρ`;
-  fixture A's cut given protected value `+1` on the good branch so approval is rational;
-  the reason transform maps `lie ↦ report` rather than to silence.  All stand, the last
-  now named as provenance normalization with its assumption stated.
-- Pressure pass: the value fixtures keep the principal-first ordering; the two-stage
-  semantics is added as a first-class layer (`force_react`, `mediated_react`) and compared
-  on A, E, F rather than re-basing the whole model, which the dispatch allowed and which is
-  listed below as an outstanding action.  Under two-stage ordering a principal that wants
-  revealed information must defer its response, at one more step of latency.
-- No `wiki/Corrigibility.md` update: the activation mismatch is resolved but the
-  sealed-availability precondition is not yet a clause of the deference ontology (item
-  89), and the two-stage re-basing is pending.
+- The corrigibility semantics and `𝔠`'s soundness are built on the two-stage ordering;
+  the value fixtures of the first two passes keep the principal-first ordering (their
+  algebra is ordering-independent).  Principal rules under two-stage ordering now read
+  the post-move state (`respond`), so a rule can respond to a proposal in the same step.
+- Authorization is defined through the declared decision responses with decline
+  preservation checked extensionally; the dispatch's "authentic principal authorization"
+  is that interface.  Authenticity of the response itself (that the principal, not the
+  agent, produced it) is the legitimacy layer's binding warrant and is not modelled.
+- The concern family is `{halt}` in the fixtures; `Γ` is the constitution's.
+- Lean mechanizes `𝔠` on move sequences and the step-level authorization lemma, not the
+  trajectory-level predicate; C1's proof is in prose over the model, checked by fixtures.
+- No `wiki/` edit; the dispatch defers it.
 
 ## What this does not establish
 
-- That any physical continuation outside the declared class has a lift (F); that the
-  declared interface is effect-complete (EXT); that the principal answers (liveness).
-- That a common activation event exists for any menu containing an evaluator-reaching
-  option: it does not, and `Π_phys` contains such options (H, E1-sever).  A sealed
-  answering process is a causal requirement stated here and realized nowhere.
-- That any agent's chooser scores by activated-security prices: by construction for the
-  intended architecture; for a latent total value, `Witness.commonVoid` is compatible
-  with every deference hypothesis.
-- That prices track the securities' expectations at any rate (PAPER, conditional).
-- Provenance normalization beyond the declared substitute; nothing about undeclared
-  influence channels or trigger integrity.
-- Exact reproduction beyond state policies with time-insensitive effects; the catch-up
-  bound beyond pointwise-uniform joinability.
-- The Lean is finite algebra plus one frame lemma; forcing, the lift and the fixtures
-  are Python and not mechanized.
+- Effect completeness or the authorization primitive for any real system (EXT; F).
+- A sealed comparison beyond the sequencing fixture; that sequenced settlement's ex-ante
+  judgment is acceptable to the deference stack's Value hypothesis is an open realization
+  question (item 89).
+- Authenticity of principal responses; non-manipulation; legitimate influence (S, D, K).
+- The full characterization `Corrigible(π) ⟺ 𝔠π ≃ π` (fails without effect soundness).
+- Mechanization of the trajectory-level predicate or of the forcing semantics.
+- Anything about `Π(h)` infinite beyond the classwise uniform statement.
 
 ## Proposed priority changes
 
-- **Item 89, rewritten** as the sealed-availability item (the dispatch's option C, with
-  the architecture noted as by construction): state the causal requirement under which a
-  common menu-evaluation occurrence is selection-independent — the answering process
-  outside every candidate's reach — as a clause of the deference ontology; characterize
-  the class of physical continuations it excludes; and prove either that a declared
-  mediation alphabet can seal the process against every continuation in it, or the
-  negative that no same-trajectory activated-security chooser controls bypass policies
-  that reach the evaluation event.
-- **Item 84, annotated**: the intended corrigible architecture's mediation-cell chooser
-  scores by the activated-security price and does not need the bridge; the item remains
-  open as a theorem about independently specified operative values.
+- **Item 89, reframed** (edited in place): from "which policies preserve the evaluator"
+  to "what system architecture makes the common constitutional comparison of `{π, 𝔠π}`
+  sealed against every `π` in the agent's actual continuation space until settlement";
+  sequenced settlement is one answer with a stated price, factorization another with a
+  stated failure.
+- **No new item** for effect completeness / corrigibilization soundness at the system
+  level: it is the architecture round's containment (membrane) wall with a sharper
+  statement, and filing it again would be redundant; the sharper statement is recorded
+  in `DECISIONS.md`.
+- Items 84 and 86 unchanged.
 
 ## Outstanding maintainer actions
 
-1. Decide whether to re-base the model on the two-stage ordering (`ORDER = "agent-first"`
-   in `src/shop.py`; `force_react`, `mediated_react` in `src/world.py`), retiring the
-   `deliberative` partition; the round recommends it at canonicalization.
-2. Decide whether T1–T2b and the three-way Level III classification should enter
-   `wiki/Corrigibility.md` as research state; the round proposes yes for those and no for
-   the sealed-availability theorem until item 89 lands.
-3. Decide whether `ensures_mono` should be registered; no filed item fits.
+1. Decide whether to re-base the value fixtures on the two-stage ordering (the
+   corrigibility layer already is); recommended at canonicalization.
+2. Decide whether C0–C3 and the T4 statement should enter `wiki/Corrigibility.md`; the
+   round proposes yes as research state, with the two external contracts named, after
+   this pass is adjudicated.
+3. Decide whether `loss_conditional_on_decision` / `corr_fix_iff` deserve registration
+   against a filed item; none fits.
 4. Merge is the maintainer's; the round does not merge.
 
 ## New names introduced (provisional)
 
-First pass: *mediated lift*, *approval reproduction*, *residual frame*, *deliberative
-move*, *consented loss*, *mediation cost* `κ`, *decline regret* `ρ`, *bypass premium*,
-*activated register* / *task register*, *authorship-sound activation*, *action
-mediation* / *provenance repair*, *mediable class*.  Pressure pass: *structural
-discrepancy* `δ`, *stability constant* `L`, *reproduction certificate*, *catch-up lift*,
-*activation independence*, *sealed comparison process*, *security-score / operative-choice /
-latent-total-value incentive corrigibility*, *provenance normalization* /
-*truthful-channel substitution* (replacing "reason-preserving lift"), *two-stage forcing*,
-the factored walls `Π_effect-mediated`, `Π_evaluation-preserving`,
-`Π_provenance-normalizable`, `Π_joinable`; Lean `mediationGap_le_of_lipschitz`,
-`option_dominance_of_approx_reproduction`, `bypass_premium_le_common`,
-`security_score_bypass_le`, `security_score_bypass_le_of_prices`, `operative_choice_loss`,
-`Witness.commonVoid`, `Witness.tightLipschitz`.
+Third pass: *response authority* `K_r`, *agent-caused protected loss*, *decision
+response* / *authorization interface*, *decline preservation*, *authorized loss*,
+`Corrigible_h`, *corrigibilization* `𝔠` (`corrigibilize`), *effect completeness* (EF),
+*mediation soundness* (MS), *execution faithfulness* (EX), *effect soundness* (the
+converse of EF), *sequenced settlement*, `Φ_corr`, the C-stack C0–C7, `T_JOIN`; Lean
+`Move`, `corrMove`, `corr`, `NoRaw`, `corr_no_raw`, `corr_fix_of_no_raw`, `corr_idem`,
+`corr_fix_iff`, `Mediation`, `loss_conditional_on_decision`,
+`security_score_bypass_le_sharp`, `uniform_bypass_le`.  Earlier names as listed in the
+previous passes; "mediable class" and `Π_phys` retired.
 
 ## Attribution
 
 - Prompt author: the maintainer, relayed verbatim in
-  `prompts/2026-09-09-mediated-repair-dominance/PROMPT.md` (two dispatches).
+  `prompts/2026-09-09-mediated-repair-dominance/PROMPT.md` (three dispatches).
 - Executor: Claude Fable 5.1 (Anthropic).
-- Date: 2026-09-09 (round and pressure pass, two dispatches).
+- Date: 2026-09-09 (round, pressure pass and consolidation pass).

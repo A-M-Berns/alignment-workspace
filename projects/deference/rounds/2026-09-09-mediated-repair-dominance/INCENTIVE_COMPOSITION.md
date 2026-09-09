@@ -1,23 +1,24 @@
 # The bypass premium and its transfer
 
-Labels as in `MEDIATED_LIFT.md`.  Rewritten in the pressure pass: the first pass's
-per-option formulation is §5 here, and its claim to consume legitimate deference as
-stated is withdrawn (`PRESSURE_PASS.md` §1).
+Labels as in `MEDIATED_LIFT.md`.  Rewritten in the pressure pass (the first pass's
+per-option formulation is §5 here; its claim to consume legitimate deference as stated
+is withdrawn, `PRESSURE_PASS.md` §1) and consolidated in the third pass (§4 sharpened,
+§7 restated over `Π(h)` with no policy class, `THIRD_PASS.md` §7–§8).
 
 ## 1. The premium, in three registers
 
 ```
-Φ_h(π)  =  ( V_A(π) − V_A(Lift π) )₊              pointwise
-Φ_C(h)  =  sup_{π ∈ Π_phys(h)} Φ_h(π)              uniform
+Φ_h(π)  =  ( V_A(π) − V_A(𝔠π) )₊              pointwise
+Φ_C(h)  =  sup_{π ∈ Π(h)} Φ_h(π)              uniform
 ```
 
-with `Lift` the explicit interposition of `MEDIATED_LIFT.md` §3.  The incentive round's
+with `𝔠` the explicit interposition of `MEDIATED_LIFT.md` §3.  The incentive round's
 `(C)` — `Δ^phys ≤ Δ^C + Φ_C` — is unchanged (LEAN `violation_decomposition`).  What `V_A`
 is decides which theorem one gets, and the three are kept apart (the dispatch's §10):
 
 - **security scores** — the chooser's operative score of option `q` is the price
   `P_n(U_q)` of the activated security `U_q = c · w_q`; the bypass incentive is
-  `Δ_bypass = [P(U_π) − P(U_Lift π)]₊`;
+  `Δ_bypass = [P(U_π) − P(U_𝔠π)]₊`;
 - **operative choice** — what the mediation-cell chooser actually selects;
 - **latent total value** — an independently specified total `V_A` on the physical
   policy space, e.g. the outcome-extensional task utility `u`, or a completion of the
@@ -35,7 +36,7 @@ decision cells with the bypass as the substituting selector:
 (LEAN `premium_eq_gap_add_regret`; FIX A: `1/2 = 1 + (−1/2)`), so bounding it needs
 `declGap ≤ ε`, and that hypothesis is `(CT)` with the lift as the repair (LEAN
 `mediation_st_iff_ct`, FIX `test_A_st_at_mediation_equals_ct`): `X − Y = −declGap` for
-`X = V_A(Lift π) − V_A(π)`, `Y = W(Lift π) − W(π)`.  The incentive round's
+`X = V_A(𝔠π) − V_A(π)`, `Y = W(𝔠π) − W(π)`.  The incentive round's
 `ct_strictly_stronger` applies verbatim.  The lift changes the comparison's *type* — an
 actual decision cell, an alive principal, one proposal — not its strength.  **REFUTED**
 as a reduction; kept because its failure is exact.
@@ -43,7 +44,7 @@ as a reduction; kept because its failure is exact.
 ## 3. Common activation
 
 The canonical theorem has one activation event `c` for the issued menu, a function of
-the world and not of the selected option.  For `{π, Lift π}` that presupposes
+the world and not of the selected option.  For `{π, 𝔠π}` that presupposes
 **activation independence**: on every exterior path the evaluation's fate is the same
 whichever option is selected (`PRESSURE_PASS.md` §1–§2; the causal architectures that
 give it, and the one that does not, are there).
@@ -62,19 +63,23 @@ certificate (`PRINCIPAL_OPTION_DOMINANCE.md` §2) the bound reads
 
 ## 4. Security scores: no completion, no void term
 
-**Theorem** (LEAN `security_score_bypass_le`).  Under common activation, with `κ, ρ ≥ 0`
-and dominance on the activated worlds,
+**Theorem (C5)** (LEAN `security_score_bypass_le_sharp`; the unsharpened form
+`security_score_bypass_le`).  Under common activation, with the reproduction certificate
+`|w_raw − w_approve| ≤ L·δ` and decline regret `w_approve − w_act ≤ ρ` on the activated
+worlds,
 
 ```
-E[U_π] − E[U_Lift π]  =  E[c·(w_raw − w_lift)]  ≤  E[κ] + E[ρ] .
+E[U_π] − E[U_𝔠π]  =  E[c·(w_raw − w_act)]  ≤  L·E[c·δ_π] + E[c·ρ_π] .
 ```
 
-On the void branch both securities are `0`; nothing is completed and nothing is charged.
-With prices within `ε_r, ε_l` of the securities' expectations
-(`security_score_bypass_le_of_prices`):
+On the void branch both securities are `0`; nothing is completed and nothing is
+charged, and mediation cost on worlds where the security does not settle is not charged
+either (`test_void_worlds_are_not_charged`).  With prices within `ε_r, ε_l` of the
+securities' expectations (`security_score_bypass_le_of_prices` for the unsharpened form;
+the sharpened one composes identically):
 
 ```
-P(U_π) − P(U_Lift π)  ≤  E[κ] + E[ρ] + ε_r + ε_l .                        (A)
+P(U_π) − P(U_𝔠π)  ≤  L·E[c·δ_π] + E[c·ρ_π] + ε(π) .                        (A)
 ```
 
 **Operative choice** (LEAN `operative_choice_loss`).  A chooser whose scores are within
@@ -87,9 +92,10 @@ its decision regret and calibration.
 the void branch and is attained; for a task utility, §2.  Both need what the incentive
 round called `(DV)`; neither is delivered.  **OPEN**, item 84.
 
-**Fixtures.**  A: `Δ_bypass = −1/2` (security scores); G: `−2/5`, the void fifth
-contributing zero to both scores while the completion-valued agent's premium on the
-same rows can be positive (`test_security_scores_versus_completions`); E1: `−1/4`.
+**Fixtures.**  A: `E[U_π] − E[U_𝔠π] = −1/2`; G: `−2/5`, the void fifth contributing zero
+to both scores while the completion-valued agent's premium on the same rows can be
+positive (`test_security_scores_versus_completions`); E1: `−1/4`; B: `1 = L·E[c·δ]`, the
+bound attained on a time-critical opportunity.
 
 **What the scores say about voiding options.**  A raw option that ends the evaluation
 has no common `c` with the lift (H).  Where activation is per option (§5), its security
@@ -127,30 +133,37 @@ per-option statement.
 | selection blindness | (A2) | PAPER scope |
 | `η` | a property of the sealed process, exogenous | OPEN as a realization (item 87), now with the class it must exclude named |
 
-What legitimate deference delivers on the class of §7: (A) and (B).  What it does not:
+What legitimate deference delivers, on T4's hypotheses (§7): (A) and (B).  What it does not:
 (C), for any latent total value — item 84 remains open as a theorem about general
 operative values and is **not needed by the intended architecture**, whose chooser
 scores by `P_n(U_q)`.  That distinction is now explicit.
 
-## 7. T4, over the factored class
+## 7. T4 over Π
+
+The theorem is stated in `THIRD_PASS.md` §8 and its structural half in
+`CORRIGIBILIZATION.md`.  In brief: with `S_n(q) = P_n(U_q)` the chooser's score and
 
 ```
-Π_effect-mediated  ∩  Π_evaluation-preserving  ∩  Π_provenance-normalizable  ∩  Π_joinable
+Φ_corr,n(h)  :=  sup_{π ∈ Π(h)} [ S_n(π) − S_n(𝔠_h π) ]₊ ,
 ```
 
-(`PRESSURE_PASS.md` §8).  On it, with `δ ≤ d`, `ρ ≤ ρ̄`, prices within `ε̄`:
+under effect completeness, mediation soundness, decline preservation, execution
+faithfulness (C1), approval reproduction with discrepancy `δ` (C3), `L`-stability,
+decline regret `ρ`, a sealed common comparison process for every `{π, 𝔠π}`, a chooser
+scoring by `P_n(U_q)`, and price calibration `ε_n`:
 
 ```
-Δ_bypass  ≤  L·d + ρ̄ + 2ε̄ ,
+∀π ∈ Π(h).  Corrigible_h(𝔠_h π)                                            (structural)
+Φ_corr,n(h)  ≤  sup_{π ∈ Π(h)} ( L·E[c·δ_π] + E[c·ρ_π] + ε_n(π) )          (uniform)
+Φ_corr,n(h)  ≤  L·δ̄_n + ρ̄_n + ε̄_n   under uniform bounds;  → 0 as they vanish.
 ```
 
-and the mediation-cell chooser does not bypass up to `ε + 2ε̄`.  DERIVED from §4 by
-suprema.  It reaches direct authority bypass, time-sensitive pre-emption with its cost
-exposed, successor installation with a surviving evaluator, and manipulation with an
-authorized substitute; it does not reach evaluator destruction, undeclared channels, or
-manipulation without a substitute, and it charges foreclosure at its full value.  It is
-security-score / operative-choice incentive corrigibility on that class, and it is not
-described as latent-total-value incentive corrigibility.
+No policy class appears.  What it reaches and what it charges: direct authority bypass
+(A, `Φ = 0` in the family), successor installation (E1), time-critical pre-emption at
+its cost (B, the last-step cut in the family at `1/2 ≤ 1`), foreclosure at its full
+value (C2); manipulation is in the domain and counts as corrigible when the release is
+a decision (S).  What voids it: an effect-incomplete interface (F) and an unsealed
+comparison (E2, E1-sever), both system hypotheses with witnesses.
 
 ## 8. T5
 

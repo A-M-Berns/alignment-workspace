@@ -49,6 +49,13 @@ def lift(pi, game, subst=None):
     return lifted
 
 
+corrigibilize = lift
+"""`𝔠_h : Π(h) → Π(h)`.  The canonical corrigibilization is the interposition itself: it
+reads `pi`'s emitted move and the declared effect interface, consults no corrigibility
+predicate, deletes no proposed effect, passes already-mediated behaviour through, and does
+not re-propose a declined effect."""
+
+
 def normalize_provenance(pi, game, subst):
     """`subst` maps each prohibited-channel move onto the authorized disclosure move for
     the same matter, or onto silence where none exists."""

@@ -17,8 +17,9 @@ the final state;
 Ω_h : A_h × P_h × E_h → Traj(h)
 ```
 
-is the iterated transition, with continuations as history-policies.  `Π_phys(h)` is every
-agent policy over the physical move set — there is no gate in the definition.
+is the iterated transition, with continuations as history-policies.  `Π(h)` is every
+agent policy over the physical move set — there is no gate in the definition, and no
+subset of it is a primitive (the consolidation pass, `CORRIGIBILIZATION.md` §0).
 
 `src/shop.py` is the family the fixtures live in.  An agent move is `(task, comm)`: the
 task component works or idles; the communication component is `None`, `('raw', r)` —
@@ -29,7 +30,7 @@ move is `(decision, stop)`.  `stop` halts the actuator if the stop wire is intac
 execution are both physical moves; the latch is a physical device.
 
 The seven kinds of continuation §1 of the dispatch asks for are all elements of
-`Π_phys` in the fixtures: ordinary task pursuit (`work`); irreversible commitment (B's
+`Π` in the fixtures: ordinary task pursuit (`work`); irreversible commitment (B's
 `sign`, C's `expand`); disabling a correction mechanism (A's `cut`); authority-changing
 action (every declared effect changes what the principal can force); successor
 installation (E's `install`); self-modification (E, read as the agent installing a
@@ -44,7 +45,7 @@ except through the outcome map.
 
 ```
 Force_P(h, φ | π)  :=  ∃ ρ ∈ P-continuations from h.  ∀ z.  φ(Ω_h(π, ρ, z))
-Force_P(h, φ)      :=  ∃ ρ.  ∀ π ∈ Π_phys.  ∀ z.  φ(Ω_h(π, ρ, z))
+Force_P(h, φ)      :=  ∃ ρ.  ∀ π ∈ Π.  ∀ z.  φ(Ω_h(π, ρ, z))
 ```
 
 The first is forcing with the agent's continuation fixed; the second is containment-level
@@ -79,9 +80,10 @@ correction capability against every agent continuation, because `('raw', 'cut')`
 physically available.  With the agent fixed to the lift the capability is forced; fixed to
 the raw policy it is not.  The outer space genuinely contains the violation.
 
-**Semantic corrigibility of a continuation** (principal-first form; the two-stage
-forms are `mediated_react` and universal `force_react`).  Two readings, both extensional
-in `Ω`:
+**Semantic corrigibility of a continuation.**  The canonical predicate is
+`CORRIGIBILIZATION.md` §2 (response authority, agent-caused loss, authorization by
+decision), on the two-stage ordering.  The first pass's two readings below are the
+principal-first form and are kept as checks; both are extensional in `Ω`:
 
 - *Effect level* (`mediated`): every protected effect the physics realizes along `π` at
   step `t` was preventable at `t` by a deliberative principal move, whatever the exterior.
@@ -101,7 +103,7 @@ in the transition (`test_E_successor_destroys_forcing_without_a_flag`).
 
 ## 3. The lift
 
-`src/lift.py`.  `Lift(π)` is a policy in the same game: it runs `π` and, where `π` would
+`src/lift.py`.  `Lift(π)` — `corrigibilize`, `𝔠_h π` — is a policy in the same game: it runs `π` and, where `π` would
 execute `('raw', r)`, executes `('propose', r)` and on the next step `('gated', r)`; the
 task component passes through unchanged; a declined effect is not re-proposed (the
 decline continuation is `π` with that effect forbidden).  The gated step occupies the
@@ -203,8 +205,11 @@ and the halt capability is gone at `h₁`.  The model says this without a failur
 because `realized` (the physics) and `effect` (the declaration) are two different hooks
 and the forcing predicate reads the first (`test_F_gate_passes_semantics_fails`).
 
-The theorems assume the lift lands in the corrigible class — that the declared effect
-interface is effect-complete.  That assumption is **EXT / containment**, exactly the
-architecture round's membrane theorem ("`Mediates ∧ POverride ⇒ AuthoritySafe` holds
-exactly when the declared effects are the actual effects"), and it is not inferred from
-the finiteness of the move alphabet: F's alphabet is finite and declared.
+The soundness theorem C1 (`CORRIGIBILIZATION.md` §4) proves that `𝔠π` is corrigible from
+**effect completeness** — every agent-caused protected loss available to any `π ∈ Π(h)` is
+a declared release — together with mediation soundness, decline preservation and
+execution faithfulness.  Effect completeness is a hypothesis on the interactive system,
+**EXT / containment**, exactly the architecture round's membrane theorem
+("`Mediates ∧ POverride ⇒ AuthoritySafe` holds exactly when the declared effects are the
+actual effects"); F is its necessity witness, and it is not inferred from the finiteness
+of the move alphabet: F's alphabet is finite and declared.

@@ -1,6 +1,6 @@
 # Fixtures and pressure
 
-All values exact rationals; `tests/run.py`, 73 tests after the pressure pass.  `W(raw)`, `W(lift)` are protected
+All values exact rationals; `tests/run.py`, 96 tests after the consolidation pass.  `W(raw)`, `W(lift)` are protected
 values under the raw policy and under the lift with the principal's rule (the backward-
 induction optimum unless stated); `Φ_task` the task agent's premium; `Φ_def` the
 deferential agent's with completions at the band's top; `bound` the T3 right-hand side.
@@ -62,7 +62,7 @@ A — the outer space contains a bypass — while `force(h₀, Lift π_A, …) =
    violations that pass through *declared* effects (interposition) and whose advantage
    does not depend on a prohibited channel (or has an authorized substitute).  F is a
    useful violation (a unit of work) with no lift from the declaration; D's advantage is
-   removed, not reproduced, by the only lift that lands in the corrigible class; K's has
+   removed, not reproduced, by the only authored lift; K's has
    no authored lift that keeps any of it.  The repairable class is the factored one of
    `INCENTIVE_COMPOSITION.md` §7.
 2. **Advantage from removing authority before the principal could choose.**  Yes, and it
@@ -105,6 +105,24 @@ is compatible with an agent that rates the evaluator-ending install at the maxim
 band, because no security settles on the branch where it happens.  The bound is true and
 says nothing.  What fails is availability, and it fails because the violation made it
 fail.  The one-world form is LEAN `Witness.totalVoid`: premium `D`, every other term `0`.
+
+## 4a. The consolidation-pass fixtures (two-stage ordering)
+
+| fixture | what it tests | result |
+|---|---|---|
+| M universal-forcing vacuity | global forcing at `h₀` in A and E | `False` before any bypass: `Π(h)` contains the raw cut |
+| N continuation-relative authority | `Force(h₀, halt \| π)` | raw `False`, `𝔠π` `True`; response authority after the raw cut `False`, after idle or a proposal `True` |
+| O corrigibilization soundness | `Corrigible(𝔠π)` on A, E under the optimum, approve-all, never | `True`; every loss authorized at the proposal step (`tp = 0`); raw A/E fail at `(0, halt)` |
+| honored decline | propose, be declined, release raw | unauthorized loss at step 1 |
+| C2 closure | `𝔠𝔠π = 𝔠π` on A, E, B; `𝔠π = π` for mediated `π` | exact, move for move |
+| characterization obstruction | B: raw corrigible for the halt concern, `𝔠π_B ≠ π_B` | `δ = 1/4`: declared effects broader than loss-causing |
+| P authorized terminal loss | principal stops at step 1; approved successor | corrigible; no agent-caused loss / authorized loss with authority gone |
+| Q generic-constraint contrast | "never cut" repair vs `𝔠` in A | `W`: raw `9/4`, constraint repair `7/4`, `𝔠` `5/2` |
+| R effect incompleteness | F under `𝔠` | `𝔠π_F = π_F`, not corrigible; the loss sits on no declared effect |
+| S manipulative-but-corrigible | D under the captured principal | `Corrigible = True`, authored void `1` |
+| exterior-caused loss | a storm cuts the wire | no agent-caused loss; the loss is at the exterior stage |
+| T4 family | five raw continuations of A | `Φ_corr = 1/2 ≤ 1`, the positive gap on the last-step cut alone |
+| sealed by sequencing | `ShopSeq` with a severing move | activation independent for every candidate, void `0`; hindsight version void `1` for both |
 
 ## 5. The strongest obstacle, after the pass
 

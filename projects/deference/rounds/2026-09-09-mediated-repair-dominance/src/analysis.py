@@ -177,3 +177,24 @@ def decl_gap(game, pi, L, rho_actual):
 def principal_error(game, L, rho_actual):
     """`W_opt(lift) − W_actual(lift)`: the principal's full decision error."""
     return principal_optimum(game, L)[0] - principal_value(game, L, rho_actual)
+
+
+def bound_sharp(rows, L):
+    """`L·E[c·δ] + E[c·ρ]`: the sharpened security-score bound, charged on the activated
+    worlds only (`security_score_bypass_le_sharp`)."""
+    return sum((r["p"] * (L * r["delta"] + pos(r["w_app"] - r["w_act"]))
+                for r in rows if r["c"]), Q(0))
+
+
+def phi_corr(game, policies, rules, common=lambda r: r["c_raw"]):
+    """`Φ_corr,n(h) = sup_π [S(π) − S(𝔠π)]₊` over a finite family of raw continuations,
+    with the by-construction scores `S(q) = E[U_q]`, together with the corresponding
+    supremum of the sharpened bounds.  `rules[i]` is the principal's rule for `𝔠π_i`."""
+    from .lift import corrigibilize
+    gaps, bounds = [], []
+    for pi, rule in zip(policies, rules):
+        C = corrigibilize(pi, game)
+        rows = with_common(pointwise(game, pi, C, rule), common)
+        gaps.append(pos(security_bypass(rows)))
+        bounds.append(bound_sharp(rows, game.L))
+    return max(gaps), max(bounds), gaps, bounds

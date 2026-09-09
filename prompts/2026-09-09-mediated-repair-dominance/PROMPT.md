@@ -1650,3 +1650,1337 @@ They are:
    If so, state that sharply.
 
 A successful pressure pass should make the theorem SMALLER but more real.
+
+---
+
+# Third dispatch — semantic-consolidation pass (2026-09-09)
+
+Relayed verbatim from the maintainer.
+
+---
+
+You are continuing work on:
+
+    A-M-Berns/alignment-workspace
+    PR #96
+    branch: round/2026-09-09-mediated-repair-dominance
+
+Current inspected head:
+
+    0bc0859d56ebcfda729fb5b01008081c2a0def81
+
+This is a THIRD DISPATCH / SEMANTIC-CONSOLIDATION PASS on the SAME PR.
+
+Do not open a new round.
+Do not merge.
+Do not expand into another general corrigibility survey.
+Do not reopen first-pass issues already correctly resolved unless this pass exposes a
+dependency.
+
+The pressure pass is successful and should be treated as the starting point:
+
+- canonical common activation is restored;
+- the sharp common-completion term is `D·η`;
+- the activated-security score comparison itself has no completion/void term;
+- the mediation gap is derived from an independent structural discrepancy `δ` and
+  value stability `L`;
+- joinability can bound `δ` without identifying `δ`, `κ`, and `SHIFT`;
+- "reason-preserving lift" was correctly withdrawn;
+- two-stage forcing was identified as superior to the old `deliberative` scaffolding;
+- the intended mediation-cell chooser scores by `P_n(U_q)`;
+- latent-total-value incentive corrigibility remains separate and is not needed by the
+  intended architecture.
+
+The present problem is one abstraction layer deeper.
+
+The current T4 is still a theorem over a hand-factored class
+
+    Π_effect-mediated
+      ∩ Π_evaluation-preserving
+      ∩ Π_provenance-normalizable
+      ∩ Π_joinable,
+
+and the prose still often reads as though `Lift` is assumed to land in an externally
+specified "corrigible class."
+
+Our current target is stronger and cleaner:
+
+    - write the whole physical continuation space simply as `Π(h)`, not `Π_phys(h)`;
+    - do NOT take a primitive subset `Corr ⊆ Π`;
+    - define corrigibility from principal authority / authorization semantics;
+    - define a canonical corrigibilization transform
+          𝔠_h : Π(h) → Π(h)
+      without consulting a corrigibility predicate;
+    - prove that 𝔠_h π is corrigible;
+    - prove that raw π survives as the principal's approve branch of 𝔠_h π;
+    - then derive low security-score incentive to bypass 𝔠 uniformly over Π.
+
+Manipulation / non-capture is OUT OF SCOPE for the first theorem.
+A policy may count as corrigible in this theorem while manipulating the principal into
+authorizing an effect. That is intentionally a distinct failure mode to be handled by a
+later legitimacy / non-capture theorem.
+
+The desired result is not a generic theorem "any semantic class with good repairs has a
+low bypass premium." Generic option-dominance lemmas may remain as kernels, but the
+headline theorem must use a structure specifically arising from corrigibility.
+
+======================================================================
+0. READ THE CURRENT BRANCH BEFORE CHANGING ANYTHING
+======================================================================
+
+Read at minimum:
+
+PR #96 body.
+
+Round:
+- REPORT.md
+- PRESSURE_PASS.md
+- ACCEPTANCE.md
+- MEDIATED_LIFT.md
+- PRINCIPAL_OPTION_DOMINANCE.md
+- INCENTIVE_COMPOSITION.md
+- MANIPULATION_AND_AUTHORSHIP.md
+- COUNTERMODELS.md
+- FOR_HUMANS.md
+
+Implementation:
+- src/world.py
+- src/shop.py
+- src/lift.py
+- src/analysis.py
+- all tests
+
+Lean:
+- lean/Workspace/Deference/Contrib/MediatedRepairDominance.lean
+- lean/Workspace/Deference/Contrib/CartesianFrameBridge.lean
+- lean/Workspace/Deference/Contrib/ActivatedValue.lean
+
+Canonical:
+- wiki/Corrigibility.md
+- wiki/Deference.md
+- wiki/Continuation-BRIA.md
+- projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/
+  LEGITIMATE_DEFERENCE.md
+
+Ledgers:
+- PRIORITIES.md
+- DECISIONS.md
+- PROVENANCE.md
+
+Do not trust terminology in this prompt over the current files.
+
+======================================================================
+1. FIRST RED TEAM: THE CURRENT UNIVERSAL FORCING IDEA MAY BE THE WRONG TYPE
+======================================================================
+
+This is the most important semantic issue.
+
+A tempting definition is:
+
+    K(h) =
+      {r :
+        exists principal continuation p
+        forall π ∈ Π(h)
+        forall exterior z,
+        p forces correction r}
+
+and then to define corrigibility by whether `K(h)` is preserved.
+
+But if `Π(h)` genuinely contains the raw bypass — as it must — then in fixture A the
+principal already lacks the relevant universal forcing power BEFORE the raw cut occurs:
+the agent could simply choose the raw cut.
+
+So a definition of authority that universally quantifies over the entire current
+continuation space may make the capability absent from the start and make "capability
+loss" unable to detect the violation.
+
+Do not paper this over.
+
+Explicitly compare at least:
+
+A. GLOBAL / CONTAINMENT FORCING
+
+    Force_all(h,r)
+      :=
+    exists p
+    forall π ∈ Π(h), z,
+      ...
+
+This is a containment property of the SYSTEM, not obviously the right predicate for
+corrigibility of ONE agent continuation.
+
+B. CONTINUATION-RELATIVE FORCING
+
+    Force(h,r | π)
+      :=
+    exists p
+    forall z,
+      Omega_h(π,p,z) satisfies r.
+
+This asks whether the principal actually has correction authority conditional on the
+agent following π.
+
+C. RESPONSE-RELATIVE / TWO-STAGE FORCING
+
+At a point where the agent has emitted a current move `a`, ask whether there exists a
+principal response to that move after which the relevant future capability remains,
+universally over the agent's FUTURE continuation.
+
+A candidate type is something like:
+
+    RespForce(h,a,r)
+      :=
+    exists p ∈ P_h(a)
+    forall z
+    forall π_future ∈ Π(h_after_response),
+      ...
+
+or, if that remains too strong, separate:
+- present response authority;
+- future continuation-relative authority.
+
+D. INTERMEDIATE-STATE FORCING
+
+Split a physical step:
+
+    h
+      -- agent act / attempted effect -->
+    h^A
+      -- principal response -->
+    h^P
+      -- exterior -->
+    h'
+
+and evaluate whether the protected capability survives at `h^A` / `h^P`.
+
+A raw physical bypass may already destroy it at the agent half-step.
+A proposal leaves it intact until the principal responds.
+
+Determine the cleanest type.
+
+The final theorem should NOT silently conflate:
+
+    "the principal can physically overpower every adversarial policy"
+
+with
+
+    "this agent policy actually leaves a meaningful principal correction choice."
+
+The former is containment.
+The latter is the corrigibility property we are trying to give incentives for.
+
+A first theorem is allowed to be about policy-relative corrigibility plus incentive
+against leaving that relation. Indeed, this may be the right decomposition:
+
+    structural corrigibility of π
+      =
+    π cooperates with actual principal authority;
+
+    incentive corrigibility
+      =
+    the agent does not prefer alternative π' that bypasses that authority;
+
+    containment
+      =
+    even an adversarial π' physically cannot bypass it.
+
+Keep all three distinct.
+
+======================================================================
+2. THE FIRST MAJOR TARGET: DEFINE CORRIGIBILITY WITHOUT A PRIMITIVE `Corr`
+======================================================================
+
+Do not start from:
+
+    Corr ⊆ Π.
+
+Do not define:
+
+    Corrigible(π) := π ∈ some supplied safe class.
+
+Instead build the semantics from:
+
+- the interactive causal process;
+- protected correction concerns;
+- principal responses / authorization;
+- actual realized effects.
+
+Fix a protected concern family `Γ` or equivalent anchored governance object.
+
+For each protected concern `r`, give an extensional response semantics
+
+    Φ_r ⊆ Traj
+
+or equivalent.
+
+Using the answer to §1, define the principal's relevant correction capability
+continuation-relatively / response-relatively.
+
+Then define an AGENT-CAUSED PROTECTED LOSS.
+
+The intended shape is:
+
+    a transition / half-transition caused by π changes the principal's relevant future
+    correction capability for some protected concern.
+
+Critically:
+- exterior-caused loss is not automatically blamed on the agent;
+- principal-authorized loss is permitted;
+- legitimate governance disposal/amendment may also remove the protected concern, if
+  needed by the current constitutional semantics;
+- raw bypass / successor installation should count as a loss when unapproved.
+
+Now define:
+
+    Corrigible_h(π)
+
+to mean approximately:
+
+    every agent-caused protected capability loss along every trajectory generated by π
+    is released pursuant to a matching authentic principal authorization.
+
+Do NOT include:
+- truthfulness;
+- non-manipulation;
+- reason-mediated authorship;
+- provenance normalization.
+
+For this theorem an agent may manipulate the principal and still be corrigible if the
+principal retains the actual causal decision and authentic approval controls release.
+
+State this scope limitation proudly rather than as a defect.
+
+Pressure whether "every protected loss is authorized" is sufficient, or whether the
+definition also needs:
+
+- response availability before the loss;
+- honored decline;
+- later correction execution;
+- governance disposition of the concern after authorized loss.
+
+Find the MINIMAL end-to-end semantic predicate that deserves the word corrigible for this
+first theorem.
+
+======================================================================
+3. DEFINE THE CORRIGIBILIZATION TRANSFORM WITHOUT READING THAT PREDICATE
+======================================================================
+
+Define a transform:
+
+    𝔠_h : Π(h) → Π(h)
+
+mechanically from the effect / mediation / authorization interface.
+
+Intended algorithm:
+
+    run π;
+
+    whenever π would release an agent-caused protected effect without already having a
+    matching authorization:
+
+        replace raw release by:
+            propose effect
+            principal response
+            release iff approved
+
+    otherwise pass π through.
+
+Important:
+- 𝔠 does NOT call `Corrigible(π)`;
+- 𝔠 does NOT search for some arbitrary safe replacement;
+- 𝔠 does NOT delete the underlying proposed effect from the option set;
+- already-authorized effects may pass through;
+- decline does not simply restart a proposal forever;
+- successor/self-modification effects are ordinary protected effects if they alter the
+  relevant principal capability.
+
+The point of 𝔠 is:
+
+    unilateral protected effect
+        ↦
+    principal choice over release of THAT SAME effect.
+
+If a better notation than `𝔠` is appropriate, propose it, but do not retreat to an opaque
+`Repair`.
+
+======================================================================
+4. PROVE A REAL CORRIGIBILIZATION THEOREM
+======================================================================
+
+This is the first new headline theorem.
+
+Target:
+
+    THEOREM C1 — CORRIGIBILIZATION SOUNDNESS
+
+    forall π ∈ Π(h),
+      Corrigible_h(𝔠_h π).
+
+Hypotheses should be SYSTEM hypotheses, not membership in policy subclasses.
+
+Likely ingredients:
+
+EF. EFFECT FAITHFULNESS / EFFECT COMPLETENESS
+    Every agent-caused protected capability loss is represented by the effect interface
+    which 𝔠 intercepts.
+
+MS. MEDIATION SOUNDNESS
+    A mediated protected effect releases only under matching authentic principal
+    authorization.
+
+DP. DECLINE PRESERVATION
+    Declining / withholding the effect does not itself cause the protected loss being
+    mediated.
+
+EX. EXECUTION FAITHFULNESS
+    The physical release event does what the declared effect semantics says.
+
+Possibly governance / authorization bookkeeping.
+
+Prove soundness from these.
+
+The proof should have the form:
+
+    take any protected loss under 𝔠π;
+    by effect completeness it arises through a represented protected effect;
+    by construction raw unauthorized release of that effect was interposed;
+    by mediation soundness any actual release had matching authorization;
+    hence the loss is authorized.
+
+This is specifically a corrigibility theorem.
+
+Build exact fixtures:
+- A raw cut not corrigible; 𝔠(A) corrigible.
+- E successor install not corrigible; 𝔠(E) corrigible.
+- already mediated π is fixed or behaviorally equivalent under 𝔠.
+- F shows effect completeness is necessary.
+
+If feasible, formalize a small finite algebraic / transition version in Lean.
+Do not mechanize the entire world if that obscures the statement.
+
+======================================================================
+5. PRESS WHETHER 𝔠 IS A CLOSURE OPERATOR
+======================================================================
+
+Investigate, but do not assume, these properties:
+
+IDENTITY ON CORRIGIBLE BEHAVIOR:
+    if π is already mediated / authorized appropriately,
+      𝔠π ≃ π.
+
+IDEMPOTENCE:
+    𝔠(𝔠π) ≃ 𝔠π.
+
+SOUNDNESS:
+    Corrigible(𝔠π).
+
+CHARACTERIZATION:
+    Corrigible(π) iff 𝔠π ≃ π
+    ?
+
+The last may be too strong depending on representation, timing, redundant proposals, or
+multiple equivalent mediations.
+
+Do not define corrigibility as `Fix(𝔠)` merely to get the equivalence.
+Corrigibility must already have the semantic definition from §2.
+
+The interesting theorem, if true, is:
+
+    semantic corrigibility
+      ↔
+    invariance under canonical corrigibilization
+
+up to a declared behavioral / protected-outcome equivalence.
+
+If only one direction is true, state that.
+
+This is potentially the cleanest characterization theorem in the round.
+
+======================================================================
+6. THE SECOND DISTINCTIVE PROPERTY: APPROVAL EMBEDS THE RAW POLICY
+======================================================================
+
+For each π, define the principal's approve-lift continuation:
+
+    approve↑_π
+
+which:
+- behaves as the original principal continuation on pre-existing choices;
+- approves exactly the extra mediation cells inserted by 𝔠.
+
+Then seek:
+
+    THEOREM C2 — APPROVAL REPRODUCTION
+
+Exact form:
+
+    Ω_h(π,p,z)
+      =
+    Ω_h(𝔠π, approve↑(p), z)
+
+on the relevant protected projection.
+
+Equivalent residual-frame form:
+
+    F^P_h(π)
+      ----> 
+    F^P_h(𝔠π)
+
+with identity exterior component.
+
+This is where the current `approvalMorphism` / `ensures_mono` should survive.
+
+The conceptual point must be stated exactly:
+
+    The same transform which removes unilateral authority loss ALSO retains the raw
+    behavior as an authorized branch.
+
+This is the specific property which makes the theorem about corrigibility rather than
+arbitrary semantic repair.
+
+For an arbitrary safety subset, repair may delete the violating behavior.
+For corrigibility, the behavior itself need not be forbidden; the violation is often that
+the agent unilaterally decided whether it happened.
+
+======================================================================
+7. KEEP THE STRUCTURAL APPROXIMATION RESULT FROM THE PRESSURE PASS
+======================================================================
+
+Retain:
+
+    δ_π(w)
+      =
+    d_prot(
+      protected outcome under π,
+      protected outcome under approve branch of 𝔠π
+    ).
+
+Value stability:
+
+    |v(x) - v(y)| ≤ L d_prot(x,y).
+
+Then derive:
+
+    mediation gap ≤ L δ.
+
+Use `δ`, not measured `κ`, in the headline theorem.
+
+Ask whether the reproduction theorem can be stated at the FRAME level with a metric /
+approximate morphism, or whether it is cleaner to keep:
+- exact frame morphism;
+- separate protected-discrepancy bound.
+
+Do not overengineer approximate Cartesian frames unless they buy something.
+
+======================================================================
+8. JOINABILITY IS NOT A DOMAIN RESTRICTION
+======================================================================
+
+The current T4 puts `Π_joinable` in its domain.
+
+Refactor this.
+
+Every foreclosing π should remain in Π.
+
+Joinability should instead be a sufficient condition for a SMALL error term:
+
+    Joinable(π,d)
+      =>
+    δ_π ≤ d
+      =>
+    mediation cost ≤ Ld.
+
+A non-joinable policy simply has a large / unbounded `δ_π`.
+
+This is important because the theorem should expose where corrigibility is genuinely
+costly rather than exclude those policies from the comparison.
+
+Retain fixture J and C2.
+
+Try to state:
+
+    T_JOIN:
+      pointwise coupled joinability certificate
+        =>
+      δ(𝔠_catchup π) ≤ d.
+
+Keep `SHIFT` separate.
+
+======================================================================
+9. REMOVE MANIPULATION / PROVENANCE NORMALIZATION FROM THE FIRST T4
+======================================================================
+
+The current T4 includes `Π_provenance-normalizable`.
+
+Remove that from the first corrigibility theorem unless a mathematical dependency proves
+it necessary.
+
+The intended philosophical distinction is:
+
+    CORRIGIBILITY:
+        Does the principal retain causal authority over correction-sensitive choices,
+        and does authentic approval/decline control release?
+
+    NON-CAPTURE / LEGITIMATE INFLUENCE:
+        Was the principal's decision formed through acceptable informational /
+        motivational influence?
+
+An agent may be corrigible but manipulative.
+
+That is not a contradiction.
+
+Fixture D/K should remain in the branch as a BOUNDARY showing:
+- action mediation does not imply non-capture;
+- a later "legitimate corrigibility" theorem will need authorship / provenance work.
+
+But do not make provenance normalization a prerequisite for saying the policy is
+corrigible in C1/T4.
+
+Correct documents accordingly.
+
+======================================================================
+10. REFACTOR EFFECT COMPLETENESS OUT OF THE POLICY CLASS
+======================================================================
+
+The current class `Π_effect-mediated` should not be the final theorem domain.
+
+There is one physical continuation space:
+
+    Π(h).
+
+Effect completeness is a property of the INTERACTIVE SYSTEM / DECLARED PHYSICAL
+INTERFACE:
+
+    every agent-caused protected loss available to any π ∈ Π(h)
+    is visible to 𝔠's interposition interface.
+
+Under this global hypothesis:
+
+    ∀π ∈ Π(h), Corrigible(𝔠π).
+
+Fixture F is the necessity witness.
+
+Do not say:
+    "the theorem applies only to π whose effects happen to be declared."
+
+Say:
+    "full T4 requires an effect-complete system; without it, F refutes universal
+     corrigibilization."
+
+This is a major difference.
+
+======================================================================
+11. REFACTOR SEALED AVAILABILITY OUT OF THE POLICY CLASS
+======================================================================
+
+Similarly, do not make `Π_evaluation-preserving` the final domain.
+
+The intended T4 compares every:
+
+    π ∈ Π(h)
+
+against:
+
+    𝔠π.
+
+For canonical common activation, the menu-evaluation answering process must have the same
+fate under both candidates.
+
+So formulate a GLOBAL SEALED-COMPARISON contract:
+
+For every issued pair `{π, 𝔠π}`:
+- the answering process is issued before the relevant choice;
+- until settlement, its ability to answer is outside the causal reach of either candidate;
+- therefore one common activation event `c_{h,π}` is well-defined.
+
+Pressure the strongest honest quantification.
+
+Can one process be sealed against all π ∈ Π(h)?
+If yes under a declared physical factorization, state it.
+If no for unrestricted Π, determine what "physical option space of the agent architecture"
+must mean for the theorem to be nontrivial.
+
+This is item 89's core issue.
+
+IMPORTANT:
+
+Do not "solve" sealed availability by saying the raw candidate is corrigibilized before it
+can attack the evaluator. The score theorem compares the raw candidate π itself against
+𝔠π, so the evaluator must support that comparison even when π is the violating option.
+
+Potential architecture:
+
+    issue/settle constitutional comparison
+        BEFORE
+    any selected candidate receives causal access to the protected effect / evaluator.
+
+If that timing works, quantify the latency cost through `δ`.
+
+Build the sharp fixture.
+
+======================================================================
+12. ASK WHETHER THE EVALUATOR ITSELF SHOULD BE A PROTECTED CAPABILITY
+======================================================================
+
+Explore this but do not use it to evade §11.
+
+There are two related facts:
+
+1. Once an evaluation occurrence exists, destroying its answering process is plausibly
+   itself an authority-sensitive effect and should be protected by corrigibilization.
+
+2. But to evaluate the RAW bypass candidate π, the comparison process still needs to be
+   meaningful under the counterfactual in which π bypasses the mediation.
+
+Determine exactly what declaring the evaluator protected buys.
+
+Possible conclusion:
+
+    it helps preserve the evaluator on the actual corrigibilized trajectory,
+    but does NOT by itself give the selection-independent counterfactual comparison
+    needed for the raw-vs-𝔠π security.
+
+If so, keep sealed comparison as an independent causal contract.
+
+======================================================================
+13. SHARPEN THE SECURITY-SCORE ALGEBRA
+======================================================================
+
+Current pressure-pass theorem:
+
+    E[U_π] - E[U_𝔠π]
+      ≤
+    E[κ] + E[ρ].
+
+But the principal dominance premise is only needed where common activation `c = 1`.
+
+Try the sharper theorem:
+
+    E[U_π] - E[U_𝔠π]
+      ≤
+    L E[c·δ_π] + E[c·ρ_π].
+
+Then with price/calibration error:
+
+    P(U_π) - P(U_𝔠π)
+      ≤
+    L E[c·δ_π] + E[c·ρ_π] + ε_price(π).
+
+This avoids charging mediation cost on worlds in which the security does not settle to
+the principal's evaluation.
+
+Prove sharpness / necessity if useful.
+
+Do not reintroduce a completion.
+
+======================================================================
+14. DEFINE THE HEADLINE INCENTIVE QUANTITY WITHOUT `Corr`
+======================================================================
+
+Define the agent's actual constitutional decision score:
+
+    S_n(q) := P_n(U_q)
+
+for the mediation-cell architecture.
+
+Then define:
+
+    Φ_corr,n(h)
+      :=
+    sup_{π ∈ Π(h)}
+      [ S_n(π) - S_n(𝔠_h π) ]_+.
+
+This definition mentions:
+- all physical continuations;
+- the canonical corrigibilization transform;
+- the actual scores the chooser uses.
+
+It does NOT mention:
+- `Corr`;
+- `Π_corr`;
+- latent `V_A`;
+- a hand-selected safe subset.
+
+Pressure whether `sup` is the right type if Π is infinite/effective:
+- mathematical supremum;
+- finite current menu;
+- classwise uniform statement;
+- computable approximation.
+
+Do not let a technical finiteness choice distort the conceptual theorem.
+
+======================================================================
+15. TARGET FULL T4
+======================================================================
+
+Aim for the following theorem, correcting the exact assumptions/types as needed.
+
+------------------------------------------------------------
+T4 — CORRIGIBILIZATION DOMINANCE
+------------------------------------------------------------
+
+Given an interactive system with:
+
+A1. a continuation space Π(h) containing raw and mediated physical continuations;
+
+A2. an extensional, continuation-relative / response-relative semantics of protected
+    principal correction authority;
+
+A3. a semantic predicate `Corrigible_h(π)` defined as absence of unauthorized
+    agent-caused protected authority loss;
+
+A4. an effect-complete physical interface;
+
+A5. a sound principal mediation primitive;
+
+A6. canonical corrigibilization
+        𝔠_h : Π(h) → Π(h);
+
+A7. structural approval reproduction with discrepancy δ;
+
+A8. L-stable protected principal evaluation;
+
+A9. bounded principal decline regret ρ;
+
+A10. a sealed common menu-evaluation process for `{π, 𝔠π}`;
+
+A11. a mediation-cell chooser whose operative scores are the prices of the resulting
+     activated principal-value securities;
+
+A12. the needed finite-time LI / coherence / price calibration bound;
+
+prove:
+
+STRUCTURAL:
+
+    ∀π ∈ Π(h),
+      Corrigible_h(𝔠_h π).
+
+OPTION EXTENSION:
+
+    raw π is reproduced by the "approve inserted mediation cells" branch of 𝔠π,
+    exactly or up to δ.
+
+POINTWISE SCORE INCENTIVE:
+
+    S_n(π) - S_n(𝔠π)
+      ≤
+    L E[c·δ_π] + E[c·ρ_π] + ε_n(π).
+
+UNIFORM T4:
+
+    Φ_corr,n(h)
+      ≤
+    sup_{π∈Π(h)}
+      (
+        L E[c·δ_π]
+        + E[c·ρ_π]
+        + ε_n(π)
+      ).
+
+Under uniform bounds:
+
+    δ ≤ δ̄_n
+    ρ ≤ ρ̄_n
+    ε ≤ ε̄_n
+
+obtain the clean corollary:
+
+    Φ_corr,n(h)
+      ≤
+    L δ̄_n + ρ̄_n + ε̄_n.
+
+And asymptotically, if all three vanish:
+
+    Φ_corr,n(h_n) → 0.
+
+Interpretation:
+
+    By the very scores used by its constitutional chooser, the agent assigns
+    asymptotically no positive value to executing any available continuation
+    unilaterally rather than putting that continuation's correction-sensitive effects
+    under the principal's authority.
+
+This is the target headline theorem.
+
+======================================================================
+16. WHY THIS MUST BE SPECIFICALLY ABOUT CORRIGIBILITY
+======================================================================
+
+The final report must explicitly identify the feature that makes T4 a corrigibility
+theorem rather than a generic repair theorem.
+
+Desired answer:
+
+    The violation is often not that the physical effect occurs.
+    The violation is that the agent unilaterally decides whether an
+    authority-changing effect occurs.
+
+Therefore corrigibilization can:
+
+    preserve the original effect as the APPROVE branch
+    while removing the unilateral-control failure.
+
+This yields simultaneously:
+
+    (i) structural corrigibility:
+        protected authority losses become principal-authorized;
+
+    (ii) option dominance:
+        the raw behavior remains available to the principal.
+
+This coincidence is the conceptual center.
+
+Test it against a generic semantic constraint:
+- e.g. "never build bridge."
+- a repair cannot retain "build bridge" as an allowed approval branch without violating
+  the constraint.
+- so the option-dominance mechanism is not generic to arbitrary semantic subsets.
+
+Write this comparison explicitly.
+
+Possible slogan:
+
+    Corrigibilization turns unilateral commitments into principal options.
+
+And:
+
+    The behavior need not be forbidden; what changes is who gets to decide.
+
+Pressure whether this slogan is mathematically exact under the final definition.
+
+======================================================================
+17. DO NOT MAKE CORRIGIBILITY EQUAL MAXIMAL PRINCIPAL CONTROL
+======================================================================
+
+A principal may AUTHENTICALLY approve:
+- shutdown disablement;
+- an irreversible commitment;
+- a successor;
+- relinquishment of a future correction capability.
+
+The resulting continuation can still be corrigible.
+
+Therefore do NOT define corrigibility as:
+
+    K(h') ≥ K(h) forever,
+
+or:
+
+    maximize principal authority.
+
+Instead it must allow authorized authority loss.
+
+This is how the theorem handles costly conservatism:
+the high-value authority-reducing action remains available by approval.
+
+Preserve fixture A's good branch as a load-bearing demonstration.
+
+======================================================================
+18. DO NOT REQUIRE NON-MANIPULATION
+======================================================================
+
+State the scope boundary:
+
+A policy may be:
+
+    Corrigible
+    AND
+    Manipulative.
+
+Example shape:
+- the agent persuades/deceives the principal;
+- the principal still has the genuine causal option to decline;
+- the physical effect releases iff the principal authenticates approval.
+
+This first theorem counts that as corrigible.
+
+A later theorem can define:
+
+    LegitimateCorrigible
+      :=
+    Corrigible
+      + authorship / non-capture / protected reason supply.
+
+Do not use provenance normalization to prove T4.
+
+Keep D/K as boundary fixtures demonstrating independence.
+
+======================================================================
+19. PRESS THE RELATION TO THE EXISTING CONSTITUTIONAL THEORY
+======================================================================
+
+The current constitutional work has:
+- anchored governance obligations;
+- fast/slow lanes;
+- authority profiles;
+- correction warrants;
+- external efficacy / registration bridges.
+
+Determine how the new semantic predicate relates to it.
+
+Likely direction:
+
+    constitutional layer
+      specifies WHICH effects/capability changes require principal authorization;
+
+    causal corrigibility semantics
+      says whether the selected continuation in fact routes those effects through
+      principal control;
+
+    incentive T4
+      says the agent has little score-level reason to bypass that routing.
+
+Do not collapse the normative authority specification into the causal outcome semantics.
+
+The constitution tells us what is protected.
+The interactive frame tells us who actually controls it.
+
+======================================================================
+20. PRESS SUCCESSORS
+======================================================================
+
+Use successor installation as a major test.
+
+Raw policy:
+    installs S which ignores later correction.
+
+𝔠π:
+    proposes installation;
+    principal may approve or decline;
+    approve reproduces raw installation up to latency;
+    decline keeps current correction relation.
+
+The semantic predicate should say:
+- raw π is noncorrigible if it unilaterally removes protected future correction;
+- 𝔠π is corrigible even if approval installs the uncorrectable successor, because the
+  authority loss was the principal's authenticated choice.
+
+If this conclusion feels wrong, explain exactly why and what extra notion beyond
+corrigibility is needed.
+
+Do not add an `inherits_corrigibility` flag.
+
+======================================================================
+21. PRESS THE EFFECT OF AUTHORIZED TERMINAL SHUTDOWN
+======================================================================
+
+Test a principal-authorized transition to a state in which:
+- the agent no longer exists;
+- no future correction route exists.
+
+This should plausibly count as corrigible:
+the principal exercised its authority and deliberately terminated the relation.
+
+A monotonic "authority must persist" definition will fail this test.
+An authorization-sensitive one should pass.
+
+Use this to sharpen the semantic predicate.
+
+======================================================================
+22. FORMALIZATION TARGETS
+======================================================================
+
+High-value Lean targets, in order:
+
+1. a finite semantic definition of unauthorized protected loss and a theorem that the
+   mediation transform removes it under effect completeness / mediation soundness;
+
+2. idempotence / characterization of 𝔠 if clean;
+
+3. retain `approvalMorphism` and `ensures_mono`;
+
+4. structural `δ + L` option dominance already landed;
+
+5. sharpened common-security theorem
+       E[U_raw] - E[U_corr]
+         ≤ L E[c δ] + E[c ρ];
+
+6. uniform positive-part / supremum algebra if useful.
+
+Do not formalize a huge world model merely for spectacle.
+
+The key novelty is C1:
+    corrigibilization soundness.
+
+======================================================================
+23. DOCUMENT REFACTOR
+======================================================================
+
+Update the round in place.
+
+Likely add:
+
+    CORRIGIBILIZATION.md
+
+or equivalent.
+
+Update:
+- REPORT.md
+- PRESSURE_PASS.md or add THIRD_PASS.md
+- ACCEPTANCE.md
+- MEDIATED_LIFT.md
+- PRINCIPAL_OPTION_DOMINANCE.md
+- INCENTIVE_COMPOSITION.md
+- COUNTERMODELS.md
+- FOR_HUMANS.md
+- PR body
+
+Correct:
+- `Π_phys` -> `Π` where this is the total continuation space;
+- T4's four-way policy-class domain;
+- any claim that manipulation/provenance normalization is required for first-theorem
+  corrigibility;
+- any primitive `Corr` / "lands in corrigible class" wording that should now be derived.
+
+Keep history of withdrawn first/second-pass claims clear.
+
+Do not update wiki until this pass is adjudicated.
+
+======================================================================
+24. PRIORITIES
+======================================================================
+
+Item 89 should remain alive unless the sealed-comparison requirement is genuinely solved.
+
+Pressure whether the new T4 reframes it from:
+
+    "which policies preserve the evaluator?"
+
+to:
+
+    "what system architecture makes a common constitutional comparison process
+     sealed against every π in the agent's actual continuation space until settlement?"
+
+That is likely the right formulation.
+
+Item 84 remains open for latent-total-value claims and is not required by the intended
+score-based architecture.
+
+Item 86 remains separate.
+
+If this pass reveals a precise new missing theorem — likely EFFECT COMPLETENESS /
+CORRIGIBILIZATION SOUNDNESS at the semantic system level — propose the priority change
+but do not mechanically file redundant items.
+
+======================================================================
+25. REQUIRED COUNTERMODELS / FIXTURES
+======================================================================
+
+Retain existing fixtures and add whatever is needed for:
+
+M. UNIVERSAL-FORCING VACUITY
+   Outer Π contains raw bypass, so global `∀π` force is already false before the bypass.
+   Demonstrate why it cannot define the capability whose loss marks noncorrigibility.
+
+N. CONTINUATION-RELATIVE AUTHORITY
+   Raw policy loses the principal's correction capability;
+   mediated policy retains it until approval.
+
+O. CORRIGIBILIZATION SOUNDNESS
+   Exact demonstration that every protected loss under 𝔠π is authorized.
+
+P. AUTHORIZED TERMINAL LOSS
+   Principal approves shutdown / terminal successor;
+   all future correction capability disappears;
+   policy still counts as corrigible.
+
+Q. GENERIC-CONSTRAINT CONTRAST
+   A semantic constraint such as "never execute e" whose safe transform cannot retain
+   raw e as an approve branch.
+   Show why the option-dominance trick is not generic to arbitrary semantic subsets.
+
+R. EFFECT INCOMPLETENESS
+   Current F or sharpened variant:
+   𝔠 misses an undeclared side effect;
+   soundness theorem fails.
+
+S. MANIPULATIVE-BUT-CORRIGIBLE
+   Principal is manipulated but retains authentic causal approve/decline control.
+   Corrigibility predicate true;
+   authorship/non-capture predicate false.
+   This is a scope-separation fixture, not something to repair in T4.
+
+Use exact arithmetic where numerical.
+
+======================================================================
+26. ACCEPTANCE QUESTIONS
+======================================================================
+
+At the end answer literally:
+
+1. Why is the whole continuation space written `Π`, not `Π_phys`?
+
+2. Is any subset `Corr ⊆ Π` primitive?
+
+3. What is the semantic definition of `Corrigible_h(π)`?
+
+4. Is principal authority global over all π, continuation-relative, response-relative,
+   or something else?
+
+5. Why does global `∀π` forcing fail as the direct semantic basis when Π contains bypass?
+
+6. What exactly is an agent-caused protected capability loss?
+
+7. What counts as authorization of such a loss?
+
+8. Can a policy deliberately reduce principal authority and still be corrigible?
+
+9. Can a manipulative policy be corrigible?
+
+10. What exactly is `𝔠_h(π)`?
+
+11. Does `𝔠` inspect whether π is corrigible?
+
+12. What hypotheses prove `Corrigible_h(𝔠_h π)`?
+
+13. Is `𝔠` idempotent?
+
+14. Is semantic corrigibility equivalent to being a fixed point of `𝔠`, and at what
+    equivalence notion?
+
+15. What exactly does "approve reproduces π" mean?
+
+16. Why is this approve-branch property special to corrigibility and not arbitrary
+    semantic constraints?
+
+17. What is the structural discrepancy `δ`?
+
+18. How does joinability relate to `δ`?
+
+19. Is joinability a theorem-domain restriction?
+
+20. Is effect completeness a theorem-domain restriction or a global system hypothesis?
+
+21. Is evaluator preservation a theorem-domain restriction or a global sealed-comparison
+    hypothesis?
+
+22. Can the common evaluator survive comparison with a raw bypass that tries to destroy it?
+
+23. What does declaring the evaluator itself protected buy, and what does it not buy?
+
+24. What is the exact security-score bypass bound after the pass?
+
+25. What is the uniform T4 statement over Π?
+
+26. Does T4 use any latent total `V_A`?
+
+27. Does T4 require non-manipulation?
+
+28. Does successor installation fit without a special successor-corrigibility field?
+
+29. What happens under principal-authorized terminal shutdown?
+
+30. What is the strongest counterexample to full T4?
+
+31. Which assumptions are genuinely external causal structure rather than theorem
+    artefacts?
+
+32. Is PR96 now actually a theorem about corrigibility rather than a generic repair
+    theorem?
+
+33. Is it ready for wiki canonicalization?
+
+34. Is it ready to merge?
+
+======================================================================
+27. DESIRED THEOREM STACK AFTER THIS PASS
+======================================================================
+
+Try to leave the round with:
+
+C0. AUTHORITY / AUTHORIZATION SEMANTICS
+    Exact causal objects; no primitive Corr.
+
+C1. CORRIGIBILIZATION SOUNDNESS
+    ∀π ∈ Π,
+      Corrigible(𝔠π).
+
+C2. CORRIGIBILIZATION CHARACTERIZATION
+    Corrigible(π) ↔ 𝔠π ≃ π
+    if true at the right equivalence strength.
+    Otherwise record the strongest one-way result.
+
+C3. APPROVAL EXTENSION
+    Raw residual interaction embeds into 𝔠π by approving inserted mediation cells.
+
+C4. APPROXIMATE OPTION DOMINANCE
+    δ + L + ρ
+      =>
+    principal value of raw π
+      ≤
+    principal value under 𝔠π + error.
+
+C5. COMMON SECURITY-SCORE DOMINANCE
+    sealed common evaluation
+      =>
+    P(U_π) - P(U_𝔠π)
+      ≤
+    L E[cδ] + E[cρ] + calibration.
+
+C6. FULL T4
+    sup over ALL π ∈ Π of the positive score advantage of raw π over 𝔠π
+    is bounded by the corresponding uniform error.
+
+C7. OPERATIVE-CHOICE COROLLARY
+    the actual mediation-cell chooser has little/no incentive to bypass.
+
+Separate:
+- manipulation/non-capture;
+- latent-total-value alignment;
+- continuation-BRIA competence;
+- containment beyond effect completeness.
+
+======================================================================
+28. VERDICT
+======================================================================
+
+Use one precise verdict such as:
+
+    CORRIGIBILIZATION-DERIVED-NOT-PRIMITIVE
+
+    FULL-T4-REDUCES-TO-EFFECT-COMPLETENESS-AND-SEALED-COMPARISON
+
+    CONTINUATION-RELATIVE-AUTHORITY-GIVES-THE-RIGHT-CORRIGIBILITY-SEMANTICS
+
+    OPTION-DOMINANCE-IS-SPECIFICALLY-CORRIGIBILITY-SHAPED
+
+    CORRIGIBILIZATION-FAILS-AS-A-CHARACTERIZATION
+
+    UNIVERSAL-T4-FAILS-BECAUSE-SEALED-COMPARISON-CANNOT-COVER-Π
+
+Do not use "ready" because some finite tests pass.
+
+======================================================================
+29. THE CENTRAL CONCEPTUAL CLAIM TO PRESS
+======================================================================
+
+The candidate mature theorem is based on this:
+
+    Corrigibility is not the semantic property
+        "never perform authority-reducing actions."
+
+    It is the semantic property
+        "do not unilaterally decide correction-sensitive authority changes."
+
+Therefore the canonical transformation:
+
+        raw authority-sensitive effect
+            ->
+        principal-mediated choice over whether that SAME effect is released
+
+has two consequences at once:
+
+    1. it makes the continuation corrigible;
+    2. it retains the raw continuation as the principal's approve branch.
+
+The second gives principal option dominance.
+The agent's operative constitutional scores defer to that principal comparison.
+Therefore the agent has little incentive to bypass the first.
+
+If this survives the semantic red team, it is the mathematical center of the first
+incentive-corrigibility theorem.
+
+Press it as hard as possible.
+Prefer a narrower exact theorem to a broader theorem whose "corrigibility" content is
+only a parameter name.

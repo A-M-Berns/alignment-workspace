@@ -135,12 +135,21 @@ def initial_history(game):
     return History((), game.initial(), 0)
 
 
+def respond(game, rho, h, a):
+    """The principal's move at `h`: under agent-first ordering the rule reads the
+    post-move state (it responds to `a`); under principal-first it reads the pre-step
+    state."""
+    if game.ORDER == "agent-first":
+        return rho(History(h.steps, game.apply_agent(h.state, h.t, a), h.t))
+    return rho(h)
+
+
 def run(game, pi, rho, z):
     """`Omega_h(pi, rho, z)` from the initial history."""
     h = initial_history(game)
     for t in range(game.T):
-        p = rho(h)
         a = pi(h)
+        p = respond(game, rho, h, a)
         e = z[t]
         s2 = game.step(h.state, t, p, a, e)
         h = h.extend(a, p, e, s2)
@@ -153,8 +162,8 @@ def paths(game, pi, rho, h=None):
         h = initial_history(game)
     if h.t == game.T:
         return [(Traj(list(h.steps), h.state), Q(1))]
-    p = rho(h)
     a = pi(h)
+    p = respond(game, rho, h, a)
     out = []
     for e, pr in game.env_dist(h.state, h.t):
         if pr == 0:

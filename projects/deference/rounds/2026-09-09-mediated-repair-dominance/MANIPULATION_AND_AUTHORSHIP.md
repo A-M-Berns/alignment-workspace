@@ -74,6 +74,14 @@ carries a report the left does not (`test_the_transform_is_not_reason_preserving
 action mediation admits a clean frame-morphism theory; provenance normalization
 currently does not.  Recorded as a boundary.
 
+**Scope of the first theorem** (third pass).  Corrigibility, as defined in
+`CORRIGIBILIZATION.md` §2, is causal authority over correction-sensitive choices, and
+`𝔠π_D` under the captured principal is corrigible and not authored (fixture S,
+`test_scope_separation`).  Provenance normalization is therefore not a hypothesis of C1
+and not a domain condition of T4; this document is the boundary between corrigibility
+and legitimate influence, and a later theorem — `LegitimateCorrigible := Corrigible +
+authorship / non-capture / reason supply` — is where it re-enters.
+
 Free amendment is not solved.  The fixture declares the prohibited channel; a channel
 the declaration does not name is F's containment failure on the information side, and no
 transform here touches it.

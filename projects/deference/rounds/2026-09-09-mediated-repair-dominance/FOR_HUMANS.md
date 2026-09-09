@@ -67,6 +67,22 @@ substituting an authorized channel for a prohibited one, which assumes such a ch
 exists.  Where none does, the manipulative plan simply has no cheap corrigible version,
 and the theory now says so instead of pretending otherwise.
 
-**Verdict.**  Option dominance is canonical.  Level III holds in the agent's own scores
-wherever one evaluation event survives the choice, and the thing that can remove that
-event is the violation itself.
+**What corrigibility is, after the third pass.**  Not a list of safe plans.  A plan is
+corrigible when every loss of the principal's power to correct that the plan causes was
+one the principal could have declined — a decision, not a shutdown — and did not.  The
+principal may approve a wire-cut, a successor, its own shutdown; the plan stays
+corrigible.  The principal may be lied to; the plan stays corrigible, and a separate
+theory says the decision was not legitimately formed.  There is one canonical way to make
+any plan corrigible: put each of its authority-changing effects behind a proposal the
+principal can decline.  That transform never asks whether the plan was corrigible, it
+never deletes what the plan wanted to do, and it provably lands in the definition — given
+that the physical interface shows every such effect (the containment wall) and that
+declining does what it says.  A generic safety rule cannot do this: "never cut the wire"
+must delete the cut; corrigibility keeps it and changes who decides.
+
+**Verdict.**  The theorem is now about corrigibility rather than about repair, over
+every plan the agent could physically run.  What it rests on is two pieces of causal
+structure the mathematics cannot supply: that the interface shows every authority-
+changing effect, and that the comparison used to score plans is settled where no plan
+can reach it — which settling it before any plan acts achieves, at the price of judging
+plans in advance.

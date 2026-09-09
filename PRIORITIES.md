@@ -2552,7 +2552,7 @@ inexpressibles; fixtures where a restatement changes a constant.
 *Consumed by:* item 61; the paper candidates for the affordability line.
 *A solution ships:* the presentation, or the exact obstruction.
 
-### 89. Sealed availability: the common menu-evaluation occurrence as a clause of the deference ontology — **[open]**
+### 89. Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2571,13 +2571,24 @@ corrigibility matters.  The mediation-cell chooser that scores by `P_n(U_q)` is 
 construction and is not this item; the value-ordering transfer is `(CT)`
 (`mediation_st_iff_ct`) and is not available.
 
+*Reframed by the consolidation pass (`THIRD_PASS.md` §4).*  The question is not which
+policies preserve the evaluator but what **system architecture** makes the common
+constitutional comparison of the issued pair `{π, 𝔠π}` sealed against every `π` in the
+agent's actual continuation space `Π(h)` until settlement.  Two answers are on the
+branch: a hindsight evaluator sealed by a declared physical factorization, which an
+undeclared move violates (E1-sever); and **sequenced settlement** — the comparison
+settled before any candidate receives causal access to the protected effects or the
+evaluator (`ShopSeq`) — sealed for every `π` by timing, at the price that the security
+pays the principal's ex-ante judgment at the cell rather than an outcome evaluation.
+
 State activation independence as a clause of the activation event (alongside the seven
-of `LEGITIMATE_DEFERENCE.md` §3), with its causal meaning; characterize the class of
-physical continuations a declared mediation alphabet can seal the answering process
-against; and prove either that such an alphabet exists for a nontrivial protected
-interface — so the common event survives every continuation in it — or the negative
-that no same-trajectory activated-security chooser can control bypass policies that
-reach the evaluation event, with the reach relation made exact in the round's model.
+of `LEGITIMATE_DEFERENCE.md` §3), with its causal meaning; decide whether the
+legitimate-deference Value hypothesis tolerates ex-ante settlement, or whether a
+hindsight evaluator with a physical factorization is required; and in the latter case
+prove either that a declared mediation alphabet can seal the answering process against
+every continuation in `Π(h)`, or the negative that no same-trajectory activated-security
+chooser controls bypass policies that reach the evaluation event, with the reach
+relation made exact in the round's model.
 
 *Deliverable shape:* the clause, the sealing construction or its impossibility, and
 fixtures where the answering process is and is not reachable.
@@ -2586,8 +2597,8 @@ fixtures where the answering process is and is not reachable.
 *Context:* `INCENTIVE_COMPOSITION.md` §3–§7 and `COUNTERMODELS.md` §5 of the round; item
 84 (the latent-total-value bridge, which the intended architecture does not need); item
 87 (availability as a realization, of which this is the incentive-facing instance).
-*Consumed by:* the round's T4, which becomes a theorem about a sealed interface rather
-than about a register.
+*Consumed by:* the round's T4 (C5–C6), whose sealed-comparison hypothesis A10 this item
+realizes or refutes.
 *A solution ships:* the clause with its sealing theorem, or the negative with its witness.
 
 ## Workspace friction

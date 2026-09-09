@@ -100,6 +100,16 @@ class Shop(Game):
             decisions = ["decline", "approve", None]
         return [(d, stop) for d in decisions for stop in (False, True)]
 
+    def null_response(self):
+        return (None, False)
+
+    def decision_responses(self, s, t):
+        """The declared authorization interface: responses that act on a pending proposal
+        and on nothing else."""
+        if s.pending is None:
+            return []
+        return [("decline", False), ("approve", False)]
+
     # --- transition
 
     def apply_principal(self, s, t, p):

@@ -128,6 +128,34 @@ sealed-availability item.
 `κ` measured; a latent `V_A` as the object of Level III; re-basing the whole model in a
 pressure pass.
 
+**Consolidation pass, same day (agent-decided, reversible).**  (11) Corrigibility is
+**derived, not primitive**: on the two-stage ordering, a protected concern has an
+immediate response semantics, response authority is whether some principal response
+realizes it at the response stage, an agent-caused loss is a move after which that
+authority is gone and after an idle move would not be, and a loss is authorized when a
+decision response the principal could have taken instead — declining a proposal, not
+exercising a correction — would have avoided it; no subset of the continuation space is
+a primitive, and the space is written `Π(h)`.  (12) The canonical corrigibilization `𝔠`
+is the interposition on the declared effect interface; `Corrigible(𝔠π)` is a theorem
+from effect completeness, mediation soundness, decline preservation and execution
+faithfulness, with F the necessity witness; `𝔠` is idempotent and fixed exactly on
+release-free behaviour; the characterization `Corrigible(π) ⟺ 𝔠π ≃ π` holds one way and
+fails without effect soundness, and corrigibility is not defined as the fixed points.
+(13) T4 is stated over all of `Π(h)`: effect completeness and sealed comparison are
+system hypotheses, joinability bounds the discrepancy and is no domain condition, and
+provenance normalization is out of the first theorem — a manipulated principal who
+retains the decision makes the policy corrigible and not authored, by design.  (14) The
+score bound is charged only where the security settles, `L·E[c·δ] + E[c·ρ]`.  (15)
+Sequenced settlement — the constitutional comparison settled before any candidate acts —
+is recorded as one architecture that seals the comparison against every `π`, at the
+price of an ex-ante judgment; item 89 is reframed to that architecture question.  No
+new priority is filed for effect completeness: it is the architecture round's membrane
+wall, restated.
+*Rejected alternatives:* defining corrigibility as `Fix(𝔠)`; global forcing as the
+authority semantics (false before any bypass where `Π(h)` contains one); keeping a
+policy-class domain; requiring non-manipulation in the first theorem; a new priority
+duplicating containment.
+
 ### 2026-09-08 — continuation BRIA is canonical: the hypothesis is `(continuation, claim)` at a system block contract, the test is realized execution, the weighted auction is opening-timed, and non-dominance is the schedule boundary
 
 **agent-decided, reversible.** Closing pass on the continuation-BRIA round, landed with

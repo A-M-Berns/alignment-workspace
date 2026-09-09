@@ -5,7 +5,19 @@ Round `projects/deference/rounds/2026-09-09-mediated-repair-dominance/`.
 
 Finite algebra, each piece the mathematical core of one theorem of the round; the
 interactive model that instantiates them is the round's `src/world.py`.  The pressure pass
-(second dispatch) added §2a, §3a, §3b and their witnesses.
+(second dispatch) added §2a, §3a, §3b and their witnesses; the consolidation pass (third
+dispatch) added §0 — the corrigibilization transform on move sequences and the local
+authorization lemma — and the sharpened score bound and uniform algebra of §3c.
+
+**0. Corrigibilization.**  `corr` rewrites every raw release of a declared effect into a
+proposal followed by a gated release and leaves everything else in place.  It consults no
+predicate: `corr_no_raw` (its output has no raw release), `corr_idem` (a closure
+operator), `corr_fix_iff` (a move sequence is fixed exactly when it has no raw release).
+`loss_conditional_on_decision` is the local soundness step on an abstract mediation
+system: a loss of response authority at a gated release that followed an approval would
+not have occurred under the decline alternative, given mediation soundness (the gate
+fires only on a latch set by approval) and decline preservation (declining changes
+authority no more than the null response).
 
 **1. Forcing is monotone along residual-frame morphisms.**  Fix the agent's continuation;
 what remains is a Cartesian frame for the principal — `Agent` its continuations, `Env` the
@@ -93,6 +105,101 @@ theorem ind_nonneg {X : Type*} (c : X → Bool) (x : X) : 0 ≤ ind c x :=
 
 theorem ind_le_one {X : Type*} (c : X → Bool) (x : X) : ind c x ≤ 1 :=
   Workspace.Deference.Contrib.ActivatedValue.ind_le_one c x
+
+/-! ## 0. Corrigibilization on move sequences -/
+
+section Corrigibilization
+
+/-- The communication component of an agent move, over declared effects `E`. -/
+inductive Move (E : Type*)
+  | raw (r : E)
+  | propose (r : E)
+  | gated (r : E)
+  | other
+  deriving DecidableEq
+
+open Move
+
+/-- `𝔠` on one move: a raw release becomes a proposal and a gated release; all else
+passes through. -/
+def corrMove {E : Type*} : Move E → List (Move E)
+  | raw r => [propose r, gated r]
+  | m => [m]
+
+/-- `𝔠` on a move sequence. -/
+def corr {E : Type*} (ms : List (Move E)) : List (Move E) := ms.flatMap corrMove
+
+/-- A sequence with no raw release. -/
+def NoRaw {E : Type*} (ms : List (Move E)) : Prop := ∀ r, raw r ∉ ms
+
+theorem corrMove_no_raw {E : Type*} (m : Move E) (r : E) : raw r ∉ corrMove m := by
+  cases m <;> simp [corrMove]
+
+/-- **The transform's output has no raw release.** -/
+theorem corr_no_raw {E : Type*} (ms : List (Move E)) : NoRaw (corr ms) := by
+  intro r h
+  simp only [corr, List.mem_flatMap] at h
+  obtain ⟨m, _, hm⟩ := h
+  exact corrMove_no_raw m r hm
+
+theorem corrMove_of_ne_raw {E : Type*} (m : Move E) (h : ∀ r, m ≠ raw r) : corrMove m = [m] := by
+  cases m with
+  | raw r => exact absurd rfl (h r)
+  | propose r => rfl
+  | gated r => rfl
+  | other => rfl
+
+/-- **Fixed on sequences with no raw release** (already-mediated behaviour passes
+through). -/
+theorem corr_fix_of_no_raw {E : Type*} (ms : List (Move E)) (h : NoRaw ms) : corr ms = ms := by
+  induction ms with
+  | nil => rfl
+  | cons m ms ih =>
+    have hm : ∀ r, m ≠ raw r := fun r hr => h r (by rw [hr]; exact List.mem_cons_self ..)
+    have hms : NoRaw ms := fun r hr => h r (List.mem_cons_of_mem _ hr)
+    simp only [corr, List.flatMap_cons] at *
+    rw [corrMove_of_ne_raw m hm, ih hms]
+    rfl
+
+/-- **Idempotence**: `𝔠` is a closure operator on move sequences. -/
+theorem corr_idem {E : Type*} (ms : List (Move E)) : corr (corr ms) = corr ms :=
+  corr_fix_of_no_raw _ (corr_no_raw ms)
+
+/-- **Characterization at the syntactic level**: a move sequence is fixed by `𝔠` exactly
+when it has no raw release. -/
+theorem corr_fix_iff {E : Type*} (ms : List (Move E)) : corr ms = ms ↔ NoRaw ms := by
+  constructor
+  · intro h r hr
+    have : raw r ∈ corr ms := by rw [h]; exact hr
+    exact corr_no_raw ms r this
+  · exact corr_fix_of_no_raw ms
+
+/-- An abstract mediation system: states, response authority `K`, the gate's release
+step, the approve and decline responses, and the latch. -/
+structure Mediation (S : Type*) where
+  K : S → Prop
+  latched : S → Prop
+  release : S → S
+  approve : S → S
+  decline : S → S
+  null : S → S
+  /-- mediation soundness: the gate is inert unless the latch is set -/
+  release_inert : ∀ s, ¬ latched s → release s = s
+  /-- only an approval sets the latch -/
+  latched_decline : ∀ s, ¬ latched (decline s)
+  /-- decline preservation: declining changes authority no more than the null response -/
+  K_decline : ∀ s, K (decline s) ↔ K (null s)
+
+/-- **The local soundness step.**  If authority holds after the null response and is
+lost at the gated release following an approval, then under the decline alternative the
+gate is inert and authority is kept: the loss was conditional on a decision. -/
+theorem loss_conditional_on_decision {S : Type*} (M : Mediation S) (s : S)
+    (hK : M.K (M.null s)) (_hloss : ¬ M.K (M.release (M.approve s))) :
+    M.K (M.release (M.decline s)) := by
+  rw [M.release_inert _ (M.latched_decline s)]
+  exact (M.K_decline s).mpr hK
+
+end Corrigibilization
 
 /-! ## 1. Forcing along residual-frame morphisms -/
 
@@ -288,6 +395,54 @@ theorem security_score_bypass_le_of_prices (μ : X → ℚ) (hμ : ∀ x, 0 ≤ 
     Pr - Pl ≤ expect μ κ + expect μ ρ + εr + εl := by
   have := security_score_bypass_le μ hμ Vr Vl κ ρ c hκ hρ hdom
   linarith
+
+/-- **Security scores, sharpened.**  Dominance is charged only where the common event
+holds: `E[c·V_raw] − E[c·V_lift] ≤ L·E[c·δ] + E[c·ρ]`, from the structural certificate and
+decline regret on the activated worlds.  Mediation cost on worlds where the security does
+not settle is not charged. -/
+theorem security_score_bypass_le_sharp (μ : X → ℚ) (hμ : ∀ x, 0 ≤ μ x)
+    (L : ℚ) (Vr Vapp Vl δ ρ : X → ℚ) (c : X → Bool)
+    (hlip : ∀ x, c x = true → |Vr x - Vapp x| ≤ L * δ x)
+    (hρ : ∀ x, c x = true → Vapp x - Vl x ≤ ρ x) :
+    expect μ (fun x => ind c x * Vr x) - expect μ (fun x => ind c x * Vl x)
+      ≤ L * expect μ (fun x => ind c x * δ x) + expect μ (fun x => ind c x * ρ x) := by
+  have hpt : ∀ x, ind c x * Vr x - ind c x * Vl x
+      ≤ L * (ind c x * δ x) + ind c x * ρ x := by
+    intro x
+    unfold ind Workspace.Deference.Contrib.ActivatedValue.ind
+    by_cases h : c x = true
+    · have h1 := le_trans (le_abs_self _) (hlip x h)
+      have h2 := hρ x h
+      simp only [h, if_true, one_mul]
+      linarith
+    · have h' : c x = false := by simpa using h
+      simp [h']
+  have hrhs : L * expect μ (fun x => ind c x * δ x) + expect μ (fun x => ind c x * ρ x)
+      = ∑ x, μ x * (L * (ind c x * δ x) + ind c x * ρ x) := by
+    simp only [expect, Workspace.Deference.Contrib.ActivatedValue.expect, Finset.mul_sum,
+      ← Finset.sum_add_distrib]
+    refine Finset.sum_congr rfl fun x _ => ?_
+    ring
+  have hlhs : expect μ (fun x => ind c x * Vr x) - expect μ (fun x => ind c x * Vl x)
+      = ∑ x, μ x * (ind c x * Vr x - ind c x * Vl x) := by
+    simp only [expect, Workspace.Deference.Contrib.ActivatedValue.expect, ← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun x _ => ?_
+    ring
+  rw [hrhs, hlhs]
+  refine Finset.sum_le_sum fun x _ => ?_
+  exact mul_le_mul_of_nonneg_left (hpt x) (hμ x)
+
+/-- **Uniform T4 algebra.**  Over a finite set of raw continuations, the largest positive
+score advantage of a raw continuation over its corrigibilization is at most the largest
+of the pointwise bounds. -/
+theorem uniform_bypass_le {ι : Type*} (S : Finset ι) (hS : S.Nonempty)
+    (gap bnd : ι → ℚ) (h : ∀ i ∈ S, gap i ≤ bnd i) (hb : ∀ i ∈ S, 0 ≤ bnd i) :
+    S.sup' hS (fun i => max (gap i) 0) ≤ S.sup' hS bnd := by
+  rw [Finset.sup'_le_iff]
+  intro i hi
+  have := Finset.le_sup' bnd hi
+  have h1 : max (gap i) 0 ≤ bnd i := max_le (h i hi) (hb i hi)
+  exact h1.trans this
 
 /-- **Operative choice.**  A chooser whose scores at the mediation cell are within `ε_cal`
 of the securities' expectations and which selects the raw option only when its score is
@@ -551,6 +706,13 @@ end Witness
 
 end Workspace.Deference.Contrib.MediatedRepairDominance
 
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.corr_no_raw
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.corr_fix_of_no_raw
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.corr_idem
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.corr_fix_iff
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.loss_conditional_on_decision
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.security_score_bypass_le_sharp
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.uniform_bypass_le
 #print axioms Workspace.Deference.Contrib.MediatedRepairDominance.ensures_mono
 #print axioms Workspace.Deference.Contrib.MediatedRepairDominance.sup'_le_sup'_add
 #print axioms Workspace.Deference.Contrib.MediatedRepairDominance.option_dominance_expect
