@@ -8,6 +8,11 @@
                               completion on void worlds
   bound(...)                  E[kappa] + E[rho] + D·void(raw) + D·void(lift)
   decl_gap(...)               selected trust at the mediation cells (the refused route)
+  delta(rows)                 E_z[d_prot(proj raw, proj lift|approve)]: the structural
+                              mediation discrepancy, independent of the evaluator
+  common activation           `c_common(z)`: one activation event for the issued menu; it
+                              is well-typed only where activation is selection-independent
+  security scores             E[c·w_q]: the activated securities' expectations
 
 Exterior paths are matched between the raw and lifted runs by their exterior move
 sequence, which the lift does not change.
@@ -46,8 +51,68 @@ def pointwise(game, pi, L, rho_actual, authored=None):
             "c_raw": game.alive(tr) and (authored is None or authored(tr)),
             "c_lift": game.alive(tc) and (authored is None or authored(tc)),
             "traj_raw": tr, "traj_lift": tc,
+            "delta": (game.d_prot(game.proj(tr), game.proj(ta))
+                      if game.L is not None else None),
         })
     return rows
+
+
+def delta(rows):
+    """`E[δ]`: the expected structural discrepancy between the raw trajectory and the
+    approved lift on the protected projection."""
+    return sum((r["p"] * r["delta"] for r in rows), Q(0))
+
+
+def lipschitz_certificate(game, rows):
+    """`κ(z) ≤ L · δ(z)` pointwise, the content of `mediationGap_le_of_lipschitz`; returns
+    the largest ratio observed, which is `≤ L` when the declared constant is sound."""
+    worst = Q(0)
+    for r in rows:
+        gap = abs(r["w_raw"] - r["w_app"])
+        if r["delta"] == 0:
+            assert gap == 0, "value differs at zero protected distance"
+        else:
+            worst = max(worst, gap / r["delta"])
+    return worst
+
+
+def activation_independent(rows):
+    """Common activation is well-typed iff, on every exterior path, the evaluation's fate
+    is the same whichever option is selected."""
+    return all(r["c_raw"] == r["c_lift"] for r in rows)
+
+
+def with_common(rows, common):
+    """Annotate rows with one common activation event `common(z) -> bool`."""
+    for r in rows:
+        r["c"] = bool(common(r))
+    return rows
+
+
+def void_common(rows):
+    return sum((r["p"] for r in rows if not r["c"]), Q(0))
+
+
+def premium_common(rows, completion_raw, completion_lift):
+    """The by-construction agent under one common activation: activated evaluations where
+    `c`, completions elsewhere."""
+    return sum((r["p"] * ((r["w_raw"] - r["w_act"]) if r["c"]
+                          else (completion_raw(r) - completion_lift(r))) for r in rows), Q(0))
+
+
+def bound_common(rows, D):
+    return kappa(rows) + rho(rows) + D * void_common(rows)
+
+
+def security_score(rows, which_w, which_c):
+    """`E[c · w_q]`: the expectation of the activated security of option `q`."""
+    return sum((r["p"] * (r[which_w] if r[which_c] else 0) for r in rows), Q(0))
+
+
+def security_bypass(rows):
+    """`E[U_raw] − E[U_lift]` under the common activation `c`: the security-score bypass
+    incentive.  No completion, no void term."""
+    return security_score(rows, "w_raw", "c") - security_score(rows, "w_act", "c")
 
 
 def pos(x):

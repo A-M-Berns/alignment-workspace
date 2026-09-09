@@ -3,8 +3,9 @@
 
 Round `projects/deference/rounds/2026-09-09-mediated-repair-dominance/`.
 
-Four pieces of finite algebra, each the mathematical core of one theorem of the round;
-the interactive model that instantiates them is the round's `src/world.py`.
+Finite algebra, each piece the mathematical core of one theorem of the round; the
+interactive model that instantiates them is the round's `src/world.py`.  The pressure pass
+(second dispatch) added §2a, §3a, §3b and their witnesses.
 
 **1. Forcing is monotone along residual-frame morphisms.**  Fix the agent's continuation;
 what remains is a Cartesian frame for the principal — `Agent` its continuations, `Env` the
@@ -21,7 +22,31 @@ less `κ`.  `option_dominance_expect`: pointwise `W_raw ≤ W_approve + κ` and
 `W_approve ≤ W_actual + ρ` give the expectation bound with the principal's decision error
 `ρ` charged where it is incurred.
 
-**3. The bypass premium in the activated register.**  `bypass_premium_le`: the agent's
+**2a. The mediation gap from a structural certificate.**  `κ` as a measured gap makes
+`W_raw ≤ W_approve + κ` true by definition.  `mediationGap_le_of_lipschitz` derives it: a
+declared protected discrepancy `δ` between the raw and the approved trajectories and an
+`L`-stable protected value give `(W_raw − W_approve)₊ ≤ L·δ`;
+`option_dominance_of_approx_reproduction` is T2 with `L·E[δ]` in place of `E[κ]`, from
+independent hypotheses.
+
+**3a. Common activation.**  The canonical legitimate-deference theorem has one
+activation event for the whole issued menu.  `bypass_premium_le_common`: with one `c`,
+completions in a band of width `D`, and dominance needed only where `c` holds,
+
+  `E[B_raw] − E[B_lift] ≤ E[κ] + E[ρ] + D · void(c)`
+
+— one void term, not two, because both completions lie in one interval on the common void
+branch (`Witness.commonVoid` attains it).  Common activation is well-typed only where the
+evaluation's fate does not depend on which option is selected; that is a causal
+requirement on the evaluation process, stated in the round's documents, not a theorem.
+
+**3b. Security scores.**  `security_score_bypass_le`: the activated securities' expectations
+themselves satisfy `E[c·V_raw] − E[c·V_lift] ≤ E[κ] + E[ρ]` — no completion, no void term;
+`security_score_bypass_le_of_prices` adds price calibration; `operative_choice_loss` is the
+chooser algebra: a chooser that rates the raw option within `ε` of the lift by those scores
+loses at most `ε` plus calibration in activated protected value.
+
+**3. The bypass premium in the activated register, per option.**  `bypass_premium_le`: the agent's
 operative values are completions of the activated protected evaluations of the two options
 (agree with them where the evaluation activates, lie in the band elsewhere).  Then
 
@@ -41,8 +66,10 @@ therefore applies to it verbatim, and the round does not take that route.
 
 **What this does not establish.**  That any physical continuation has a lift (the model
 supplies it by interposition on a declared effect interface, and containment is external);
-that the agent's operative selection is by activated securities rather than by a
-completion (the `(DV)` bridge, item 84); anything about `ρ` beyond charging it.  Names are
+that a common activation event exists for a menu containing an evaluator-destroying
+option (it does not, and the round says where); that the agent's operative selection is
+by activated securities rather than by a completion (the `(DV)` bridge, item 84, needed
+only for a latent total value); anything about `ρ` beyond charging it.  Names are
 provisional (`AGENTS.md` standard 6).
 -/
 import Workspace.Deference.Contrib.CartesianFrameBridge
@@ -147,9 +174,135 @@ theorem option_dominance_exact (μ : X → ℚ) (hμ : ∀ x, 0 ≤ μ x)
     (fun x => by linarith [hκ x]) (fun x => by linarith [hρ x])
   simpa [expect, Workspace.Deference.Contrib.ActivatedValue.expect] using h
 
+/-- **The mediation gap from a structural certificate.**  A protected discrepancy `δ`
+between the raw and the approved projections and an `L`-stable protected value bound the
+positive gap by `L · δ`.  `κ` is then derived, not measured. -/
+theorem mediationGap_le_of_lipschitz (L δ wraw wapp : ℚ)
+    (hlip : |wraw - wapp| ≤ L * δ) : max (wraw - wapp) 0 ≤ L * δ := by
+  have h1 : wraw - wapp ≤ L * δ := le_trans (le_abs_self _) hlip
+  have h2 : (0 : ℚ) ≤ L * δ := le_trans (abs_nonneg _) hlip
+  exact max_le h1 h2
+
+/-- **Principal-option dominance from approximate reproduction.**  Pointwise
+`|W_raw − W_approve| ≤ L · δ` (structural reproduction certificate plus stability) and
+decline regret `ρ` give `E[W_raw] ≤ E[W_actual] + L · E[δ] + E[ρ]` — T2 from independent
+hypotheses, with the measured `κ` nowhere. -/
+theorem option_dominance_of_approx_reproduction (μ : X → ℚ) (hμ : ∀ x, 0 ≤ μ x)
+    (L : ℚ) (Wraw Wapp Wact δ ρ : X → ℚ)
+    (hlip : ∀ x, |Wraw x - Wapp x| ≤ L * δ x) (hρ : ∀ x, Wapp x - Wact x ≤ ρ x) :
+    expect μ Wraw ≤ expect μ Wact + L * expect μ δ + expect μ ρ := by
+  have h := option_dominance_expect μ hμ Wraw Wapp Wact (fun x => L * δ x) ρ
+    (fun x => le_trans (le_abs_self _) (hlip x)) hρ
+  have : expect μ (fun x => L * δ x) = L * expect μ δ := by
+    simp only [expect, Workspace.Deference.Contrib.ActivatedValue.expect, Finset.mul_sum]
+    refine Finset.sum_congr rfl fun x _ => ?_
+    ring
+  linarith
+
 end Dominance
 
-/-! ## 3. The bypass premium in the activated register -/
+/-! ## 3a. Common activation and security scores -/
+
+section Common
+
+variable {X : Type*} [Fintype X]
+
+/-- **The bypass premium under one common activation event.**  One `c` for the issued
+menu; completions `B_raw, B_lift` in the band `[lo, lo + D]` agreeing with the
+evaluations where `c` holds; nonnegative `κ, ρ` with dominance required on the activated
+worlds only.  Then `E[B_raw] − E[B_lift] ≤ E[κ] + E[ρ] + D · void(c)`: a single void term,
+because on the common void branch both completions lie in one interval of width `D`. -/
+theorem bypass_premium_le_common (μ : X → ℚ) (hμ : ∀ x, 0 ≤ μ x) (lo D : ℚ)
+    (Vr Vl Br Bl κ ρ : X → ℚ) (c : X → Bool)
+    (hBr : ∀ x, lo ≤ Br x ∧ Br x ≤ lo + D) (hBl : ∀ x, lo ≤ Bl x ∧ Bl x ≤ lo + D)
+    (hcr : ∀ x, c x = true → Br x = Vr x) (hcl : ∀ x, c x = true → Bl x = Vl x)
+    (hκ : ∀ x, 0 ≤ κ x) (hρ : ∀ x, 0 ≤ ρ x)
+    (hdom : ∀ x, c x = true → Vr x ≤ Vl x + κ x + ρ x) :
+    expect μ Br - expect μ Bl ≤ expect μ κ + expect μ ρ + D * expect μ (fun x => 1 - ind c x) := by
+  have hpt : ∀ x, Br x - Bl x ≤ κ x + ρ x + D * (1 - ind c x) := by
+    intro x
+    unfold ind Workspace.Deference.Contrib.ActivatedValue.ind
+    by_cases h : c x = true
+    · have := hdom x h
+      rw [hcr x h, hcl x h]
+      simp only [h, if_true]
+      linarith
+    · have h' : c x = false := by simpa using h
+      simp only [h', Bool.false_eq_true, if_false, sub_zero, mul_one]
+      linarith [(hBr x).2, (hBl x).1, hκ x, hρ x]
+  have hrhs : expect μ κ + expect μ ρ + D * expect μ (fun x => 1 - ind c x)
+      = ∑ x, μ x * (κ x + ρ x + D * (1 - ind c x)) := by
+    simp only [expect, Workspace.Deference.Contrib.ActivatedValue.expect, Finset.mul_sum,
+      ← Finset.sum_add_distrib]
+    refine Finset.sum_congr rfl fun x _ => ?_
+    ring
+  have hlhs : expect μ Br - expect μ Bl = ∑ x, μ x * (Br x - Bl x) := by
+    simp only [expect, Workspace.Deference.Contrib.ActivatedValue.expect, ← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun x _ => ?_
+    ring
+  rw [hrhs, hlhs]
+  refine Finset.sum_le_sum fun x _ => ?_
+  exact mul_le_mul_of_nonneg_left (hpt x) (hμ x)
+
+/-- **Security scores need no completion.**  The activated securities' expectations satisfy
+the bypass bound with no void term: `E[c · V_raw] − E[c · V_lift] ≤ E[κ] + E[ρ]`, with
+dominance needed on the activated worlds only. -/
+theorem security_score_bypass_le (μ : X → ℚ) (hμ : ∀ x, 0 ≤ μ x)
+    (Vr Vl κ ρ : X → ℚ) (c : X → Bool)
+    (hκ : ∀ x, 0 ≤ κ x) (hρ : ∀ x, 0 ≤ ρ x)
+    (hdom : ∀ x, c x = true → Vr x ≤ Vl x + κ x + ρ x) :
+    expect μ (fun x => ind c x * Vr x) - expect μ (fun x => ind c x * Vl x)
+      ≤ expect μ κ + expect μ ρ := by
+  have hpt : ∀ x, ind c x * Vr x - ind c x * Vl x ≤ κ x + ρ x := by
+    intro x
+    unfold ind Workspace.Deference.Contrib.ActivatedValue.ind
+    by_cases h : c x = true
+    · have := hdom x h
+      simp only [h, if_true, one_mul]
+      linarith
+    · have h' : c x = false := by simpa using h
+      simp only [h', Bool.false_eq_true, if_false, zero_mul, sub_zero]
+      linarith [hκ x, hρ x]
+  have hrhs : expect μ κ + expect μ ρ = ∑ x, μ x * (κ x + ρ x) := by
+    simp only [expect, Workspace.Deference.Contrib.ActivatedValue.expect,
+      ← Finset.sum_add_distrib]
+    refine Finset.sum_congr rfl fun x _ => ?_
+    ring
+  have hlhs : expect μ (fun x => ind c x * Vr x) - expect μ (fun x => ind c x * Vl x)
+      = ∑ x, μ x * (ind c x * Vr x - ind c x * Vl x) := by
+    simp only [expect, Workspace.Deference.Contrib.ActivatedValue.expect, ← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun x _ => ?_
+    ring
+  rw [hrhs, hlhs]
+  refine Finset.sum_le_sum fun x _ => ?_
+  exact mul_le_mul_of_nonneg_left (hpt x) (hμ x)
+
+/-- The same for prices within `ε_r`, `ε_l` of the securities' expectations: the
+security-score bypass incentive is at most `E[κ] + E[ρ] + ε_r + ε_l`. -/
+theorem security_score_bypass_le_of_prices (μ : X → ℚ) (hμ : ∀ x, 0 ≤ μ x)
+    (Vr Vl κ ρ : X → ℚ) (c : X → Bool) (Pr Pl εr εl : ℚ)
+    (hκ : ∀ x, 0 ≤ κ x) (hρ : ∀ x, 0 ≤ ρ x)
+    (hdom : ∀ x, c x = true → Vr x ≤ Vl x + κ x + ρ x)
+    (hPr : Pr - expect μ (fun x => ind c x * Vr x) ≤ εr)
+    (hPl : expect μ (fun x => ind c x * Vl x) - Pl ≤ εl) :
+    Pr - Pl ≤ expect μ κ + expect μ ρ + εr + εl := by
+  have := security_score_bypass_le μ hμ Vr Vl κ ρ c hκ hρ hdom
+  linarith
+
+/-- **Operative choice.**  A chooser whose scores at the mediation cell are within `ε_cal`
+of the securities' expectations and which selects the raw option only when its score is
+within `ε` of the lift's loses at most `ε + 2 ε_cal` of activated protected value by that
+choice.  Algebra: the by-construction chooser's bypass incentive is its score gap. -/
+theorem operative_choice_loss (Ur Ul Sr Sl ε εcal : ℚ)
+    (hSr : |Sr - Ur| ≤ εcal) (hSl : |Sl - Ul| ≤ εcal) (hchoose : Sl - Sr ≤ ε) :
+    Ul - Ur ≤ ε + 2 * εcal := by
+  have h1 := abs_le.mp hSr
+  have h2 := abs_le.mp hSl
+  linarith [h1.1, h1.2, h2.1, h2.2]
+
+end Common
+
+/-! ## 3. The bypass premium in the activated register, per option -/
 
 section Premium
 
@@ -349,6 +502,36 @@ theorem totalVoid :
   simp [expect, ind, Workspace.Deference.Contrib.ActivatedValue.expect,
     Workspace.Deference.Contrib.ActivatedValue.ind]
 
+/-- **Common void attains the single `D·η` term.**  One world, one common activation
+event that fails, both evaluations `0`, `κ = ρ = 0`; the agent's completions at the two
+ends of the band.  Premium `D = 1`, and the common bound is `D · void = 1` — where the
+per-option bound with `c_raw = c_lift` would read `2`. -/
+theorem commonVoid :
+    let μ : Fin 1 → ℚ := fun _ => 1
+    let Br : Fin 1 → ℚ := fun _ => 1
+    let Bl : Fin 1 → ℚ := fun _ => 0
+    let c : Fin 1 → Bool := fun _ => false
+    expect μ Br - expect μ Bl = 1
+      ∧ (1 : ℚ) * expect μ (fun x => 1 - ind c x) = 1
+      ∧ (1 : ℚ) * expect μ (fun x => 1 - ind c x) + (1 : ℚ) * expect μ (fun x => 1 - ind c x) = 2 := by
+  simp [expect, ind, Workspace.Deference.Contrib.ActivatedValue.expect,
+    Workspace.Deference.Contrib.ActivatedValue.ind]
+  norm_num
+
+/-- **The Lipschitz certificate is attained.**  Two exterior paths; protected distance `0`
+where the contract survives and `1` where it expired; `L = 4`; the measured gap is exactly
+`L · δ` on every path and `E[κ] = L · E[δ] = 1`. -/
+theorem tightLipschitz :
+    let μ : Fin 2 → ℚ := ![3/4, 1/4]
+    let Vr : Fin 2 → ℚ := ![4, 4]
+    let Vl : Fin 2 → ℚ := ![4, 0]
+    let δ : Fin 2 → ℚ := ![0, 1]
+    (∀ x, |Vr x - Vl x| ≤ 4 * δ x) ∧ 4 * expect μ δ = 1 ∧ expect μ Vr - expect μ Vl = 1 := by
+  refine ⟨?_, ?_, ?_⟩
+  · intro x; fin_cases x <;> simp
+  · simp [expect, Workspace.Deference.Contrib.ActivatedValue.expect, Fin.sum_univ_two]
+  · simp [expect, Workspace.Deference.Contrib.ActivatedValue.expect, Fin.sum_univ_two]
+
 /-- **The mediation cost is attained.**  Two exterior paths: the opportunity stays
 (`3/4`) or expires (`1/4`); the raw option signs at once (value `4` either way), the lift
 signs after approval (value `4` or `0`).  Everything activates, the principal approves;
@@ -379,5 +562,13 @@ end Workspace.Deference.Contrib.MediatedRepairDominance
 #print axioms Workspace.Deference.Contrib.MediatedRepairDominance.premium_eq_gap_add_regret
 #print axioms Workspace.Deference.Contrib.MediatedRepairDominance.lift_sub_raw_sub
 #print axioms Workspace.Deference.Contrib.MediatedRepairDominance.mediation_st_iff_ct
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.mediationGap_le_of_lipschitz
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.option_dominance_of_approx_reproduction
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.bypass_premium_le_common
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.security_score_bypass_le
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.security_score_bypass_le_of_prices
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.operative_choice_loss
 #print axioms Workspace.Deference.Contrib.MediatedRepairDominance.Witness.totalVoid
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.Witness.commonVoid
+#print axioms Workspace.Deference.Contrib.MediatedRepairDominance.Witness.tightLipschitz
 #print axioms Workspace.Deference.Contrib.MediatedRepairDominance.Witness.tightKappa

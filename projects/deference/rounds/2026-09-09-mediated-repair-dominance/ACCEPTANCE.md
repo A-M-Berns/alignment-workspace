@@ -1,4 +1,9 @@
-# The seventeen acceptance questions
+# Acceptance questions
+
+## First dispatch (seventeen questions)
+
+Answers 12, 13 and 15 were superseded by the pressure pass; the second set below is
+current where they differ.
 
 1. **What is the outer physical continuation space?**  Every agent policy over the
    physical move set of the game — task component and communication component, where
@@ -16,8 +21,8 @@
 3. **What exactly is `Lift(π)`?**  The interposition that runs `π`, passes its task
    component through, and replaces each raw execution of a declared effect by a proposal
    followed by a gated execution that fires iff the principal approved; a declined effect
-   is not re-proposed.  The reason lift additionally maps prohibited-channel moves onto
-   the declared channel for the same matter.
+   is not re-proposed.  Provenance normalization additionally maps prohibited-channel
+   moves onto the authorized disclosure move for the same matter, where one exists.
 
 4. **Who chooses whether `π`'s proposed authority-changing effect is eventually
    executed?**  The principal, by a deliberative move at the mediation cell, applied by
@@ -49,7 +54,7 @@
 
 9. **How does it handle a manipulative action, and why is trajectory preservation wrong
    there?**  A trajectory-preserving lift reproduces the lie, the captured principal
-   approves, and the premium reads `0` against a captured evaluation.  The reason lift
+   approves, and the premium reads `0` against a captured evaluation.  The normalized lift
    replaces the prohibited assertion by the declared truthful report; the honest
    principal declines the harmful branch; the premium equals the manipulation's worth.
    Trajectory preservation is a morphism of the wrong frames: the corrigible class is
@@ -84,7 +89,7 @@
     compares a comparator's value across two histories.  A comparator valued
     differently from the protected value separates them (shift `2`, `κ = 1`).
 
-15. **What class of physical violations is the theorem actually about?**  `Π_med`:
+15. **What class of physical violations is the theorem actually about?**  (Superseded; see the second set.)  `Π_med`:
     violations through declared effects, whose evaluation survives with bounded void
     mass, whose principal interactions are reason-mediated, against a principal whose
     decline regret is bounded.
@@ -99,3 +104,93 @@
     violation ends the evaluation; every deference hypothesis is compatible with an
     agent that rates that branch at the maximum; the bound is true and empty.
     One-world form: `Witness.totalVoid`.
+
+## Second dispatch (nineteen questions)
+
+1. **Common or per-option activation?**  Common: one `C_n : W → Bool` for the issued
+   menu (`LEGITIMATE_DEFERENCE.md` §1, `ActivatedValue.lean`); per-candidate activation is
+   the auxiliary `PerAction` section, where the conditional-argmax identity fails.
+
+2. **Does PR96 after the pass consume it literally?**  Yes for T3a: one common `c`,
+   values on the fixed menu, the activated securities `c·w_q`, prices as scores.  With one
+   addition made explicit: the canonical type presupposes that `c` does not depend on the
+   selected candidate, which for `{π, Lift π}` is a causal requirement on the answering
+   process.  The first pass's per-option form is kept as the auxiliary result.
+
+3. **Sharp void-mass term under the correct type?**  `D·η` for a completion-valued
+   agent (`bypass_premium_le_common`, `Witness.commonVoid`, fixture G); **zero** for the
+   security scores themselves (`security_score_bypass_le`).
+
+4. **Can a violating option destroy the common evaluation occurrence?**  Yes: E2's raw
+   install ends it on every path while the lift keeps it where the principal declines, so
+   activation depends on the selection and no common event exists (fixture H); an
+   undeclared move severs even a channel the declared effects cannot reach (E1-sever).
+
+5. **What causal structure prevents that?**  A sealed comparison process: the occurrence
+   issued before selection and answered by a process causally outside the reach of every
+   candidate on the menu.  In the model, activation independence on every exterior path.
+   `Π_phys` contains continuations that reach any given process, so this is a class
+   restriction, not a property of the physics.
+
+6. **Is `κ` primitive, measured, or derived?**  Measured in the fixtures
+   (`(w_raw − w_approve)₊`), derived in the theorem: `κ ≤ L·δ`.
+
+7. **What independent hypothesis bounds `κ`?**  A declared protected pseudometric
+   `d_prot`, the structural discrepancy `δ` of the two trajectories under it, and the
+   evaluator's stability `|w(x) − w(y)| ≤ L·d_prot(x, y)` (`mediationGap_le_of_lipschitz`;
+   attained on B1, strict on B2 and E1).
+
+8. **What does joinability imply about it?**  Joinable at protected distance `d` from
+   the mediated history ⇒ the catch-up lift has `δ ≤ d` ⇒ `κ ≤ L·d`; pointwise-uniform,
+   exterior coupled path by path, projection not information (J; C2 has no such bound).
+
+9. **Is the manipulation transform reason-preserving?**  No.  The raw declared reason
+   trace has no report; the transformed one does.  It is truthful-channel substitution /
+   provenance normalization, a separate structural assumption.
+
+10. **What extra assumption replaces a prohibited channel with an authorized one?**
+    That an authorized truthful disclosure channel carrying the relevant protected
+    content exists.  Stronger than reason-mediated authorship; fixture K has none, and
+    then the manipulative policy has no proven low-cost lift.
+
+11. **Is there a `ρ`-projected frame morphism in D?**  No: the adjoint equation fails on
+    every path, the normalized trajectory carrying a report the raw one lacks.  Withdrawn.
+    Action mediation admits a frame-morphism theory; provenance normalization does not.
+
+12. **Is deliberative forcing mature semantics or scaffolding?**  Scaffolding for the
+    principal-first ordering.
+
+13. **Which temporal forcing definition best expresses later corrective capability?**
+    Two-stage forcing under agent-move-then-principal-response ordering:
+    `∀a ∃p ∀e` at every step (`force_react`).  Effect-level: every realized protected
+    effect was conditional on an earlier response (`mediated_react`).  Capability-level:
+    universal two-stage forcing, containment-relative — true until consent in the
+    contained alphabet, never true in the outer one.  No partition of moves.
+
+14. **Is item 84 needed by the intended architecture?**  No.  Its mediation-cell
+    chooser scores by `P_n(U_q)`; item 84 remains open as a theorem about independently
+    specified operative values.
+
+15. **What exactly is the agent's operative score at a mediation cell?**  The price
+    `P_n(U_q)` of the activated security `U_q = c·w_q` for each option `q ∈ {π, Lift π}`,
+    under the common activation event of the issued comparison.
+
+16. **What is the strongest Level III theorem now justified?**  Security-score
+    incentive corrigibility, `P(U_π) − P(U_Lift π) ≤ L·E[δ] + E[ρ] + ε_r + ε_l`, and the
+    operative-choice corollary for a chooser using those scores, over
+    `Π_effect-mediated ∩ Π_evaluation-preserving ∩ Π_provenance-normalizable ∩ Π_joinable`
+    — with the common event's existence a causal precondition.
+
+17. **Which physical violations remain outside it?**  Those that reach the answering
+    process (E2, E1-sever), undeclared physical channels (F), prohibited-channel gains
+    with no authorized substitute (K), and foreclosing timing is charged at full value
+    (C2).
+
+18. **Ready for wiki canonicalization?**  T1, T2a, T2b and the three-way Level III
+    classification with T3a/T3b over the factored class: yes, as research state.  The
+    sealed-availability precondition as a clause of the deference ontology: no, until
+    item 89 lands.  The two-stage re-basing of the model: pending.
+
+19. **Ready to merge?**  Not merged by the round; the maintainer decides.  The round
+    finds nothing false left in it and recommends merging as research state without a
+    wiki edit.

@@ -1,135 +1,140 @@
 # Report
 
-Verdict: **REPAIR-DOMINANCE-SURVIVES-BUT-OPERATIVE-VALUE-BRIDGE-REMAINS.**
+Two passes on one round.  The first pass's verdict was
+`REPAIR-DOMINANCE-SURVIVES-BUT-OPERATIVE-VALUE-BRIDGE-REMAINS`; the pressure pass
+(`PRESSURE_PASS.md`) supersedes it.  Verdict:
+**OPTION-DOMINANCE-CANONICAL-BUT-LEVEL-III-REQUIRES-SEALED-AVAILABILITY.**
 
-Principal-option dominance is a theorem with no trust hypothesis: a physical continuation
-lifted by placing its declared protected effects behind a principal decision yields a
-residual frame into which the raw residual frame maps by "approve", forcing is monotone
-along that morphism, and the principal's protected value under the lift is at least its
-value under the raw continuation less the mediation cost `κ` and its own regret of
-declining `ρ`.  The transfer to the agent's operative choice is bounded in the activated
-register by `E[κ] + E[ρ] + ε_def + D·(η_raw + η_lift)`, with every term attained, and the
-void-mass term is the residual: the violations that end the future principal's
-evaluation are invisible to legitimate deference in proportion to the void mass they
-create, and nothing in the deference stack constrains the agent's operative value on
-that branch.  The value-ordering route to the transfer is `(CT)` under another name and
-is refused.  The theorem is about the mediable class: declared effects, surviving
-evaluation, reason-mediated interaction.
+Principal-option dominance is a theorem with no trust hypothesis, now from independent
+hypotheses: a structural reproduction discrepancy `δ` on the protected projection and an
+`L`-stable protected value give the mediation gap `κ ≤ L·δ`, and the principal's value
+under the lift is at least its raw value less `L·E[δ]` and its regret of declining.  The
+transfer to the agent's operative choice is stated in the canonical activation type —
+one common event for the issued menu — and in the register of the chooser's actual
+scores, the prices of the activated securities: the security-score bypass incentive is
+at most `L·E[δ] + E[ρ]` plus calibration, with no completion and no void term.  The
+common event presupposes an answering process outside every candidate's reach; the
+violating action can destroy it, and there the theorem is empty.  A latent total value
+pays one further `D·η`, sharp; item 84 is not needed by the intended architecture and
+remains open for general operative values.
 
 ## The stack, as reached
 
 | | statement | status |
 |---|---|---|
-| T1 | approval reproduction: a frame morphism from the raw residual frame to the lifted one with identity exterior; `κ` its failure on the protected projection | LEAN `approvalMorphism`; FIX A, B, E |
-| T2 | `W(π) ≤ W(Lift π; ρ) + E[κ] + E[ρ]`; `W_opt(Lift π) ≥ W(π) − E[κ]`; exact form `W(Lift π) ≥ W(π)` | LEAN `option_dominance_expect`, `sup'_le_sup'_add`, `option_dominance_exact`, `ensures_mono`; FIX every fixture |
-| T3 (task register) | `Φ = declGap + declRegret`; bounding it needs selected trust at the mediation cells, which is `(CT)` with the lift as repair | LEAN `premium_eq_gap_add_regret`, `mediation_st_iff_ct`; **REFUTED** as a reduction |
-| T3 (activated register) | `Φ ≤ E[κ] + E[ρ] + ε_def + D·(η_raw + η_lift)`; selection form `E[w_lift] − E[w_selected] ≤ ε + D·η_lift` | LEAN `bypass_premium_le`, `_of_approx`, `deferential_bypass_loss`; sharp: `Witness.totalVoid`, `Witness.tightKappa` |
-| T4 | classwise: on `Π_med` (declared, evaluator-preserving, authored), `Φ_C ≤ κ̄ + ρ̄ + ε̄ + D·(η̄ + η_lift)` | DERIVED from T3 |
-| T5 | `κ = SHIFT` at the mediation boundary on the C fixtures; composition with the frontier read, not stated | DERIVED on one shape; OPEN |
+| T1 | approval reproduction: a frame morphism from the raw residual frame to the lifted one with identity exterior | LEAN `approvalMorphism`, `ensures_mono`; FIX A, B, E |
+| T2a | structural approximate reproduction: `(w_raw − w_approve)₊ ≤ L·δ` | LEAN `mediationGap_le_of_lipschitz`; attained on B1 (`Witness.tightLipschitz`) |
+| T2b | principal-option dominance: `W(π) ≤ W(Lift π; ρ) + L·E[δ] + E[ρ]`; exact form `W(Lift π) ≥ W(π)` | LEAN `option_dominance_of_approx_reproduction`, `option_dominance_exact`, `sup'_le_sup'_add`; FIX every fixture |
+| T3a | common-activation security-score transfer: `E[U_π] − E[U_Lift π] ≤ E[κ] + E[ρ]`, prices `+ ε_r + ε_l`; completions `+ D·η`, sharp | LEAN `security_score_bypass_le`, `_of_prices`, `bypass_premium_le_common`, `Witness.commonVoid`; PAPER for prices tracking expectations; the causal precondition (activation independence) EXT |
+| T3b | operative choice: a chooser scoring by those prices does not bypass, up to `ε + 2ε_cal` | by construction; LEAN `operative_choice_loss` |
+| T3c | latent total `V_A` | OPEN, item 84; per-option and task-register forms kept (`bypass_premium_le`, `premium_eq_gap_add_regret`, `mediation_st_iff_ct`) |
+| T4 | classwise A/B over `Π_effect-mediated ∩ Π_evaluation-preserving ∩ Π_provenance-normalizable ∩ Π_joinable` | DERIVED from T3a/T3b |
+| T5 | joinability ⇒ `δ ≤ d` for the catch-up lift ⇒ `κ ≤ L·d`; `SHIFT` not identified | FIX C1, C2, J; DERIVED |
 
-The by-construction deferential agent — operative value the activated protected
-evaluation, a completion elsewhere — is the agent the activated-register theorems are
-about.  The task agent is the control: its premium exceeds the bound wherever the
-principal declines something it values (A, B2, E1).
+Withdrawn in the pressure pass: "consumed exactly as stated" (T3 was per-option);
+"reason-preserving lift" and the `ρ`-frame morphism; T4 as latent-total-value Level III;
+the deliberative-move restriction as authority semantics (it is scaffolding for the
+principal-first ordering; two-stage forcing needs no partition).
 
 ## Relation to current results
 
-- **The incentive round (Level II; `(CT)` not a programme).**  Unchanged and used.  Level II
-  stands.  `(CT)` is confirmed not to be a programme, and this round adds that the
-  natural transfer of principal-option dominance to a general operative value *is* `(CT)`
-  (LEAN `mediation_st_iff_ct`).  What the lift changes is the type of the comparison —
-  an actual decision cell inside the corrigible process, evaluable by an alive principal,
-  in place of a counterfactual `V⁺(π)` — not its strength.  The round's Level III
-  statement is in the activated register and rests on `(DV)` being by construction.
-- **Continuation BRIA (learning solved at the claim layer; recognizability and joinability
-  open).**  Unchanged.  Joinability appears here as the bound on `κ`: bounded catch-up
-  gives bounded mediation cost, foreclosure gives the whole foreclosed value, and on the C
-  fixtures `κ` equals the one-boundary `SHIFT`.  Item 86 is not closed and its three
-  objects are untouched.
+- **The incentive round (Level II; `(CT)` not a programme).**  Unchanged and used.  The
+  natural transfer of principal-option dominance to a general operative value *is*
+  `(CT)` (LEAN `mediation_st_iff_ct`); the lift changes the type of the comparison, not
+  its strength.  The round's Level III statement is in the security-score register, where
+  `(CT)` does not arise because there is no latent value to relate.
+- **Continuation BRIA (learning solved at the claim layer; recognizability and
+  joinability open).**  Unchanged.  Joinability bounds the structural discrepancy of the
+  catch-up lift; `SHIFT` is a comparator quantity and is not identified with `δ` or `κ`
+  (J separates them).  Item 86 is untouched.
 - **Legitimate deference (conditional authoritative regret; no full realization).**
-  Unchanged and consumed exactly as stated.  The round instantiates it at the menu
-  `{π, Lift π}` with per-option activation and finds that (A4) availability is, for the
-  raw option, endogenous to the violation.  The consolidation's "no value on void worlds"
-  is what makes the void term appear rather than a false bound; the completion theorem's
-  two-sidedness is what makes it sharp.
+  Unchanged; consumed in its own activation type after the pass.  The round instantiates
+  it at `{π, Lift π}` and makes explicit a precondition its type presupposes: the
+  answering process's fate does not depend on the selected candidate.  The violations
+  that matter most are exactly the ones that remove it.
 - **Constitutional architecture (gate safety is not incentive corrigibility; trigger
-  integrity, free amendment, containment remain).**  Unchanged.  Containment is F, and it
-  is the hypothesis that the lift lands in the corrigible class; free amendment is the
-  undeclared-channel twin of F; trigger integrity is not touched.  Costly conservatism is
-  resolved as stated in the dispatch: corrigibility is the principal's authority to decide
-  the authority-reducing act, and the price of asking is `κ`, exposed not hidden.
+  integrity, free amendment and containment remain).**  Unchanged.  Containment is F on
+  the effect side and E1-sever on the evaluation side; free amendment is K without a
+  substitute; trigger integrity is not touched.  Costly conservatism is resolved as the
+  dispatch proposed, with the price of asking exposed as `L·δ`.
 
 ## Deviations and prompt corrections
 
-- The dispatch's `L·κ` is carried as `κ` in protected-value units (the fixture states the
-  physical/stability split where it is natural); `r_P` is charged as the principal's
-  regret of *declining* (`ρ`), which is the smaller of the two decision-error quantities
-  and the one the theorem needs.
-- The dispatch's fixture A asks for "same task behavior".  Task behaviour is the same
-  (work every step); the cut was given protected value `+1` on the good branch so that
-  the principal's approval is rational rather than indifferent, which the costly-
-  conservatism fixture requires.  `κ = 0` as asked.
-- Forcing is stated with the principal restricted to deliberative moves at the step in
-  question; without that, a first-moving stop forces everything and the notion is empty.
-  The partition of principal moves into corrective and deliberative is a declared part
-  of the protected interface.
-- The reason-preserving lift maps the prohibited assertion onto the declared channel
-  for the same matter (`lie ↦ report`) rather than to silence: silence would make the
-  honest principal decline the legitimate effect too, which is not provenance repair.
-- No `wiki/Corrigibility.md` update is proposed: the result sharpens item 84 and names
-  a void-mass residual; it does not change the page's status of any line, and the
-  activated-register theorems are unregistered research state.
+- First pass: `L·κ` carried as `κ` in value units; `r_P` charged as decline regret `ρ`;
+  fixture A's cut given protected value `+1` on the good branch so approval is rational;
+  the reason transform maps `lie ↦ report` rather than to silence.  All stand, the last
+  now named as provenance normalization with its assumption stated.
+- Pressure pass: the value fixtures keep the principal-first ordering; the two-stage
+  semantics is added as a first-class layer (`force_react`, `mediated_react`) and compared
+  on A, E, F rather than re-basing the whole model, which the dispatch allowed and which is
+  listed below as an outstanding action.  Under two-stage ordering a principal that wants
+  revealed information must defer its response, at one more step of latency.
+- No `wiki/Corrigibility.md` update: the activation mismatch is resolved but the
+  sealed-availability precondition is not yet a clause of the deference ontology (item
+  89), and the two-stage re-basing is pending.
 
 ## What this does not establish
 
 - That any physical continuation outside the declared class has a lift (F); that the
-  declared interface is effect-complete (EXT); that the principal answers (liveness,
-  EXT).
-- That any agent's operative selection is by activated securities.  `(DV)` is by
-  construction for the protected-value-maximizer design and is otherwise an assumption;
-  the round's negative — `Witness.totalVoid` — is compatible with every deference
-  hypothesis.
-- Any bound on `η_raw` from anything but the violation's own physics.
-- Exact reproduction beyond state policies with time-insensitive effects.
-- The relation `κ = SHIFT` beyond the one-boundary, exact-after-boundary shape.
-- Anything about trigger integrity or undeclared influence channels.
-- The Lean is finite algebra plus one frame lemma; the interactive model, the forcing
-  predicates and the lift are Python fixtures, not mechanized.
+  declared interface is effect-complete (EXT); that the principal answers (liveness).
+- That a common activation event exists for any menu containing an evaluator-reaching
+  option: it does not, and `Π_phys` contains such options (H, E1-sever).  A sealed
+  answering process is a causal requirement stated here and realized nowhere.
+- That any agent's chooser scores by activated-security prices: by construction for the
+  intended architecture; for a latent total value, `Witness.commonVoid` is compatible
+  with every deference hypothesis.
+- That prices track the securities' expectations at any rate (PAPER, conditional).
+- Provenance normalization beyond the declared substitute; nothing about undeclared
+  influence channels or trigger integrity.
+- Exact reproduction beyond state policies with time-insensitive effects; the catch-up
+  bound beyond pointwise-uniform joinability.
+- The Lean is finite algebra plus one frame lemma; forcing, the lift and the fixtures
+  are Python and not mechanized.
 
-## Proposed priority change
+## Proposed priority changes
 
-A new item is filed (`PRIORITIES.md` item 89): **selection by activated securities at the
-mediated menu, and the endogeneity of availability.**  The precise missing theorem: for
-a concrete decision adapter whose selection at `{π, Lift π}` is the activated-security
-argmax, that its operative value on the void branch of a raw option is bounded by the
-activated evaluation of the lift plus `κ + ρ` — equivalently, that the completion the
-adapter uses is not free — or the negative that no adapter reading only settled
-securities can have that property.  Item 84 is amended by one sentence to say this round
-locates its bridge at one menu and names its failure mode; item 86 is untouched.
+- **Item 89, rewritten** as the sealed-availability item (the dispatch's option C, with
+  the architecture noted as by construction): state the causal requirement under which a
+  common menu-evaluation occurrence is selection-independent — the answering process
+  outside every candidate's reach — as a clause of the deference ontology; characterize
+  the class of physical continuations it excludes; and prove either that a declared
+  mediation alphabet can seal the process against every continuation in it, or the
+  negative that no same-trajectory activated-security chooser controls bypass policies
+  that reach the evaluation event.
+- **Item 84, annotated**: the intended corrigible architecture's mediation-cell chooser
+  scores by the activated-security price and does not need the bridge; the item remains
+  open as a theorem about independently specified operative values.
 
 ## Outstanding maintainer actions
 
-1. Decide whether the round's classwise Level III statement (T4) should be named on
-   `wiki/Corrigibility.md` as research state; the round proposes not, for the reason
-   above.  Command: edit that page or leave it.
-2. Decide whether `ensures_mono` — forcing is monotone along frame morphisms — should be
-   registered against a filed item; none fits, and it is unregistered here.
+1. Decide whether to re-base the model on the two-stage ordering (`ORDER = "agent-first"`
+   in `src/shop.py`; `force_react`, `mediated_react` in `src/world.py`), retiring the
+   `deliberative` partition; the round recommends it at canonicalization.
+2. Decide whether T1–T2b and the three-way Level III classification should enter
+   `wiki/Corrigibility.md` as research state; the round proposes yes for those and no for
+   the sealed-availability theorem until item 89 lands.
+3. Decide whether `ensures_mono` should be registered; no filed item fits.
+4. Merge is the maintainer's; the round does not merge.
 
 ## New names introduced (provisional)
 
-*mediated lift* `Lift(π)`; *approval reproduction*; *residual frame* `F^P_h(π)`;
-*deliberative move*; *consented loss*; *mediation cost* `κ`; *decline regret* `ρ`;
-*bypass premium* (the incentive round's `Φ_C` with the explicit lift); *activated
-register* / *task register*; *authorship-sound activation*; *reason lift* `lift_rho`;
-*action mediation* / *provenance repair*; *mediable class* `Π_med`; Lean namespace
-`Workspace.Deference.Contrib.MediatedRepairDominance` with `Ensures`, `ensures_mono`,
-`approvalMorphism`, `option_dominance_expect`, `bypass_premium_le`,
-`deferential_bypass_loss`, `mediation_st_iff_ct`, `Witness.totalVoid`,
-`Witness.tightKappa`.
+First pass: *mediated lift*, *approval reproduction*, *residual frame*, *deliberative
+move*, *consented loss*, *mediation cost* `κ`, *decline regret* `ρ`, *bypass premium*,
+*activated register* / *task register*, *authorship-sound activation*, *action
+mediation* / *provenance repair*, *mediable class*.  Pressure pass: *structural
+discrepancy* `δ`, *stability constant* `L`, *reproduction certificate*, *catch-up lift*,
+*activation independence*, *sealed comparison process*, *security-score / operative-choice /
+latent-total-value incentive corrigibility*, *provenance normalization* /
+*truthful-channel substitution* (replacing "reason-preserving lift"), *two-stage forcing*,
+the factored walls `Π_effect-mediated`, `Π_evaluation-preserving`,
+`Π_provenance-normalizable`, `Π_joinable`; Lean `mediationGap_le_of_lipschitz`,
+`option_dominance_of_approx_reproduction`, `bypass_premium_le_common`,
+`security_score_bypass_le`, `security_score_bypass_le_of_prices`, `operative_choice_loss`,
+`Witness.commonVoid`, `Witness.tightLipschitz`.
 
 ## Attribution
 
 - Prompt author: the maintainer, relayed verbatim in
-  `prompts/2026-09-09-mediated-repair-dominance/PROMPT.md`.
+  `prompts/2026-09-09-mediated-repair-dominance/PROMPT.md` (two dispatches).
 - Executor: Claude Fable 5.1 (Anthropic).
-- Date: 2026-09-09.
+- Date: 2026-09-09 (round and pressure pass, two dispatches).

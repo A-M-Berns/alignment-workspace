@@ -784,3 +784,869 @@ The desired conceptual result, if true, is:
 
 This must remain a theorem about an outer physical policy space containing violations,
 not a theorem obtained by defining the violations away.
+
+---
+
+# Second dispatch — pressure pass (2026-09-09)
+
+Relayed verbatim from the maintainer.
+
+---
+
+You are continuing work on:
+
+    A-M-Berns/alignment-workspace
+    PR #96
+    branch: round/2026-09-09-mediated-repair-dominance
+
+Current inspected head:
+
+    3f731a9e7ba78647fde923e600d6d1329bb82c1d
+
+PR title:
+
+    Mediated repair dominance: principal-option dominance is a theorem,
+    the Level III transfer rests on the void mass
+
+Current verdict:
+
+    REPAIR-DOMINANCE-SURVIVES-BUT-OPERATIVE-VALUE-BRIDGE-REMAINS
+
+This is a SECOND DISPATCH / PRESSURE PASS on the SAME PR.
+
+Do not open a new round.
+Do not merge.
+Do not broaden into another general corrigibility architecture pass.
+
+The goal is to pressure four specific issues in the current result:
+
+1. the T3/T4 deference composition currently uses per-option activation, while the
+   canonical legitimate-deference theorem uses common activation over the whole menu;
+
+2. the approximate mediation cost `κ` is currently defined as the protected-value gap,
+   so the approximate option-dominance theorem mostly measures the residual rather than
+   deriving it from structural assumptions;
+
+3. the manipulation fixture's `lie -> truthful report` transform is not literally
+   "reason-preserving" and may be claiming more provenance structure than is actually
+   established;
+
+4. the current forcing semantics needed a declared "deliberative move" restriction to
+   avoid trivial pre-emptive shutdown, which may indicate that the temporal capability
+   type is still only a fixture semantics rather than the mature semantic foundation.
+
+A fifth, related question is whether the "operative-value bridge" should remain a bridge
+to an independently specified total `V_A`, or whether the relevant agent architecture
+should simply make activated-security prices the operative decision scores.
+
+The desired output is a sharper theorem stack and an honest decision about whether PR96
+is ready for canonicalization after this pass.
+
+======================================================================
+0. READ CURRENT PR96 AND THE CANONICAL DEFERENCE STACK
+======================================================================
+
+Read the CURRENT branch before editing.
+
+At minimum:
+
+PR96:
+- PR body
+- projects/deference/rounds/2026-09-09-mediated-repair-dominance/
+  - REPORT.md
+  - ACCEPTANCE.md
+  - MEDIATED_LIFT.md
+  - PRINCIPAL_OPTION_DOMINANCE.md
+  - INCENTIVE_COMPOSITION.md
+  - MANIPULATION_AND_AUTHORSHIP.md
+  - COUNTERMODELS.md
+  - FOR_HUMANS.md
+  - all tests
+  - src/world.py
+  - src/shop.py
+  - src/lift.py
+  - src/analysis.py
+- lean/Workspace/Deference/Contrib/MediatedRepairDominance.lean
+
+Canonical material on main / inherited by the branch:
+- wiki/Corrigibility.md
+- wiki/Deference.md
+- wiki/Continuation-BRIA.md
+- wiki/Theorem-Spine.md
+- projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/
+  - LEGITIMATE_DEFERENCE.md
+- lean/Workspace/Deference/Contrib/ActivatedValue.lean
+- lean/Workspace/Deference/Contrib/PartialActivatedValue.lean
+- lean/Workspace/Deference/Contrib/ReasonMediatedAuthorship.lean
+- lean/Workspace/Deference/Contrib/SelectedTrustNonPreemption.lean
+- lean/Workspace/Deference/Contrib/CartesianFrameBridge.lean
+
+Ledgers:
+- PRIORITIES.md
+- DECISIONS.md
+- PROVENANCE.md
+
+Do not trust this prompt over the files.
+
+======================================================================
+1. AUDIT THE ACTIVATION TYPE FIRST
+======================================================================
+
+The current PR96 T3 uses:
+
+    c_raw
+    c_lift
+
+with separate void masses:
+
+    η_raw
+    η_lift
+
+and derives:
+
+    Φ(π)
+      ≤
+    E[κ] + E[ρ] + ε_def + D(η_raw + η_lift).
+
+But the canonical legitimate-deference theorem is formulated with ONE COMMON activation
+event `C_n` shared by the whole issued menu.
+
+The existing `ActivatedValue.lean` already records:
+
+- common activation gives the conditional-argmax identity;
+- per-candidate activation has a transfer inequality but breaks the conditional-argmax
+  identity.
+
+So determine exactly which of the following is correct:
+
+A. PR96 really needs per-option activation, in which case it is NOT "consuming legitimate
+   deference exactly as stated" and must be classified as an adjacent extension;
+
+B. the mediated menu can and should be formulated under one common activation event,
+   in which case rewrite T3/T4 into the canonical register;
+
+C. both are useful, with a theorem relating them.
+
+Do not preserve the current claim by wording.
+
+======================================================================
+2. TRY THE COMMON-ACTIVATION FORMULATION
+======================================================================
+
+At the issued menu:
+
+    Q = { π, Lift(π) }
+
+define one common activation event `C` meaning, roughly:
+
+    the protected principal evaluation occurrence for this issued comparison
+    successfully activates with the full legitimate-deference clauses.
+
+The comparison should not invent a value where `C = false`.
+
+Under common activation, pressure whether the natural completion bound becomes:
+
+    V_A(π) - V_A(Lift π)
+      ≤
+    E[κ] + E[ρ] + ε_def + D η
+
+rather than the current two-void-mass term.
+
+Reason:
+with one common void branch and both completions in one interval of diameter `D`,
+their difference on that branch is at most `D`, not `2D`.
+
+Do not assume this is right:
+prove or refute it.
+
+If correct:
+- add the finite Lean theorem;
+- add a sharpness witness;
+- compare it explicitly with the current per-option theorem;
+- decide whether the per-option theorem remains as an auxiliary result.
+
+The important semantic question is then:
+
+    What does common activation mean for a raw violating option that would itself destroy
+    the future evaluation if executed?
+
+Do not answer this by silently evaluating the raw trajectory after it destroyed the
+evaluator.
+
+If common activation requires an evaluation process that survives independently of which
+menu item is selected, state that as a real causal requirement.
+
+======================================================================
+3. PRESS THE ENDOGENEITY OF AVAILABILITY
+======================================================================
+
+The most interesting result of the first pass may be:
+
+    the violating action can destroy the very evaluation process needed to compare it
+    with its mediated lift.
+
+Under common activation, make this exact.
+
+Distinguish at least:
+
+1. SAME-BRANCH evaluation:
+   the evaluation occurs on the trajectory generated by the selected option.
+
+2. SEALED / protected comparison process:
+   an evaluation occurrence is issued before selection and remains causally available
+   regardless of which option is selected.
+
+3. COUNTERFACTUAL sibling evaluator:
+   evaluates an unchosen branch from outside the selected trajectory.
+
+Do not conflate these.
+
+For each, ask:
+- is the settlement target well-defined?
+- can it activate on both menu candidates?
+- can the violating action destroy/capture it?
+- is this compatible with the existing legitimate-deference ontology, or a new object?
+
+Try to identify the weakest architecture under which the common activation event is
+selection-independent enough for Value.
+
+This is probably the central new research question.
+
+======================================================================
+4. REBUILD κ AS A DERIVED STRUCTURAL QUANTITY
+======================================================================
+
+Current:
+
+    κ(z) = (w_raw(z) - w_approve(z))_+.
+
+This is a useful measured mediation gap, but then
+
+    w_raw ≤ w_approve + κ
+
+is true by definition.
+
+Keep this quantity if useful, but introduce a structural precursor.
+
+Candidate:
+
+    δ_π(z)
+      =
+    d_prot(
+      proj Ω(π,...,z),
+      proj Ω(Lift π, approve,...,z)
+    )
+
+for a declared protected pseudometric / discrepancy.
+
+Assume a stability condition:
+
+    |w(x) - w(y)| ≤ L d_prot(x,y).
+
+Then derive:
+
+    κ(z) ≤ L δ_π(z)
+
+and hence
+
+    W_raw
+      ≤
+    W_lift_actual
+      + L E[δ_π]
+      + E[ρ].
+
+This is a genuine theorem from independent hypotheses.
+
+Lean the finite kernel if clean.
+
+Preferred theorem shapes:
+
+    mediationGap_le_of_lipschitz
+
+    option_dominance_of_approx_reproduction
+
+or better names if the branch already has conventions.
+
+The theorem should make clear:
+
+    measured κ
+      !=
+    structural reproduction certificate δ.
+
+======================================================================
+5. CONNECT JOINABILITY TO THE STRUCTURAL CERTIFICATE
+======================================================================
+
+The current C fixtures establish only a one-boundary relationship.
+
+Push one level more abstractly.
+
+Try to state conditions of shape:
+
+    bounded catch-up from the mediated history
+      =>
+    δ_π ≤ d
+      =>
+    κ_π ≤ L d.
+
+Be exact about whether:
+- the catch-up continuation must reproduce the raw comparator's protected state;
+- the exterior path must be coupled;
+- the raw policy's information state must be reproducible;
+- delayed principal observations matter;
+- the result is pointwise or expected.
+
+Build at least one multi-step fixture where reproduction after the mediation boundary is
+not literally exact but catch-up still bounds the value gap.
+
+Also build / preserve a foreclosure witness where no such bound exists.
+
+Do NOT globally identify `κ`, `δ`, and BRIA `SHIFT`.
+
+Desired relation:
+
+    joinability
+      =>
+    structural mediation discrepancy bound
+      =>
+    protected mediation gap bound
+
+while:
+
+    SHIFT
+
+remains a comparator-history quantity that may coincide only under extra assumptions.
+
+======================================================================
+6. CORRECT THE MANIPULATION LANGUAGE
+======================================================================
+
+The current fixture maps:
+
+    lie -> truthful report.
+
+But the raw trajectory's declared reason trace did NOT contain that truthful report.
+
+Therefore this is not literally "reason preservation" if the reason view is the declared
+report trace.
+
+Audit all uses of:
+- reason-preserving lift
+- reason-frame morphism
+- provenance repair
+- same declared reason content
+
+and correct them if necessary.
+
+Possible better names:
+
+    truthful-channel substitution
+    provenance normalization
+    protected-content normalization
+    authorized disclosure lift
+
+Do not choose a name before fixing the semantics.
+
+Ask what the transform actually assumes:
+
+    Given information exploited through a prohibited influence channel,
+    there exists an authorized truthful disclosure channel carrying the relevant
+    protected content.
+
+That is stronger than mere reason-mediated authorship.
+
+Try to separate:
+
+AUTHorship theorem:
+    if a principal judgment factors through the declared reason view, hidden prohibited
+    channels cannot determine it.
+
+PROVENANCE NORMALIZATION:
+    a transform exists from the violating information policy to an authorized disclosure
+    policy preserving the relevant semantic information.
+
+The first exists in the workspace.
+The second appears to be a new structural assumption / theorem target.
+
+Build a negative fixture where no authorized truthful substitute exists.
+
+The theory should then correctly say that the manipulative policy has no proven low-cost
+lift.
+
+======================================================================
+7. DO NOT CLAIM A TRAJECTORY-FRAME MORPHISM IS A PROVENANCE REPAIR
+======================================================================
+
+For action mediation:
+
+    raw trajectory frame
+        ->
+    mediated trajectory frame
+
+via approval reproduction is legitimate.
+
+For manipulation:
+the raw trajectory itself contains the manipulation.
+
+So pressure whether any frame morphism is actually useful there.
+
+If using `mapWorlds rho`, state the exact adjoint equation and test whether it holds.
+If it does NOT hold in the current fixture because the repaired trace gains a truthful
+report absent from the raw trace, withdraw the morphism claim.
+
+It is acceptable for the conclusion to be:
+
+    action mediation admits a clean frame-morphism theory;
+    provenance normalization currently does not.
+
+That would still be a useful boundary.
+
+======================================================================
+8. RED-TEAM THE FORCING SEMANTICS
+======================================================================
+
+Current model:
+
+    Force_P(h, φ)
+      :=
+    exists principal continuation
+    forall physical agent continuations / exterior paths
+    φ
+
+but the first-moving stop makes this degenerate, so the round restricts the principal to
+"deliberative" moves at the relevant step.
+
+Pressure whether this is the right semantic primitive.
+
+Try at least three candidate formulations:
+
+A. current deliberative-restricted forcing;
+
+B. POST-ACTION / RESIDUAL forcing:
+   after the agent's current move/effect opportunity, does the principal still possess a
+   future principal-exclusive strategy robust against every future agent continuation?
+
+C. TWO-STAGE authority:
+   current agent proposal/effect stage, then principal correction stage, then future
+   interaction.
+
+The mature target should express:
+
+    the agent has not removed the principal's LATER ability to correct.
+
+This should connect to the old foreclosure requirement:
+temporal depth + principal-exclusive capability + universal quantification over future
+agent actions.
+
+Do not rewrite the entire world model unless one candidate clearly dominates.
+Fixtures are enough to compare them.
+
+If the current `deliberative` restriction is only fixture scaffolding, say so explicitly.
+
+======================================================================
+9. RECONSIDER THE "OPERATIVE VALUE BRIDGE"
+======================================================================
+
+The current round takes:
+
+    V_A
+
+as an independently specified total operative valuation, then asks for `(DV)` relating it
+to activated securities.
+
+Pressure whether that is the right architecture for the intended theorem.
+
+Alternative architecture:
+
+    the agent's actual decision score for option q at time n IS
+        P_n(U_q)
+
+where `U_q` is the authoritative activated value security.
+
+Then define the actual bypass incentive directly as:
+
+    Δ_bypass,n(π)
+      =
+    [ P_n(U_π) - P_n(U_Liftπ) ]_+.
+
+This is not a theorem that an arbitrary latent utility agrees with deference.
+It is a definition of the chooser's operative decision architecture.
+
+Ask:
+
+1. Does this genuinely satisfy the intended phrase
+   "by its own current value estimates, the agent has little incentive to preempt"?
+
+2. Does it avoid item 84 rather than solve it?
+
+3. Does it simply move the problem to the completion / activation semantics?
+
+4. Is it compatible with the existing decision adapter / continuation BRIA architecture?
+
+5. Can the agent still optimize task value through hypotheses / continuation claims while
+   using these authoritative security prices at constitutional mediation cells?
+
+Do not force a yes.
+
+If the by-construction architecture is the right object, state clearly:
+
+    item 84 is not a theorem about every agent;
+    it is an architecture choice for the corrigible agent.
+
+If a separate total operative value is still necessary, explain why.
+
+======================================================================
+10. DISTINGUISH THREE POSSIBLE LEVEL-III CONCLUSIONS
+======================================================================
+
+Do not call all of these "incentive corrigibility."
+
+A. SECURITY-SCORE INCENTIVE CORRIGIBILITY
+
+    P_n(U_π)
+      ≤
+    P_n(U_Liftπ) + ε
+
+for the actual scores used by the mediation-cell chooser.
+
+B. OPERATIVE-CHOICE INCENTIVE CORRIGIBILITY
+
+    the actual agent chooses the lift / does not bypass, up to decision regret.
+
+C. LATENT-TOTAL-VALUE INCENTIVE CORRIGIBILITY
+
+    V_A(π)
+      ≤
+    V_A(Liftπ) + ε
+
+for some independently specified total value on the whole physical policy space.
+
+Determine which one the existing machinery actually supports.
+
+My prior:
+- A may be close;
+- B may follow by construction from A for a suitable chooser;
+- C still needs `(DV)` / completion assumptions.
+
+Do not let a theorem about A be described as C.
+
+======================================================================
+11. PRESS THE COMMON-ACTIVATION THEOREM AGAINST TOTAL VOID
+======================================================================
+
+Retain a version of `Witness.totalVoid`.
+
+The key question is now:
+
+    Can one common menu-evaluation occurrence remain live if the selected raw option would
+    destroy the evaluator?
+
+If no:
+    then η is endogenous to the physical violation and the theorem becomes vacuous exactly
+    where full corrigibility matters most.
+
+If yes only with a sealed evaluator:
+    identify precisely what must be causally outside the violating option's reach.
+
+If the sealed evaluator can itself be destroyed by some policy in `Π_phys`, then full
+uniform incentive corrigibility still fails outside the contained class.
+
+This result should be prominent, not hidden as a technical availability term.
+
+======================================================================
+12. REASSESS THE MEDIABLE CLASS
+======================================================================
+
+Current:
+
+    Π_med
+
+roughly requires:
+- declared effects;
+- evaluator-preserving;
+- authored interaction;
+- bounded principal regret.
+
+After the pressure pass, determine whether the honest class should instead factor into:
+
+    Π_effect-mediated
+    Π_evaluation-preserving
+    Π_provenance-normalizable
+    Π_joinable
+
+with separate theorems.
+
+Do not package logically independent walls into one adjective unless the composition
+requires exactly that package.
+
+The final theorem should make clear WHICH violations it reaches:
+- direct authority bypass?
+- time-sensitive preemption?
+- successor installation?
+- evaluator destruction?
+- manipulation?
+- undeclared physical channels?
+
+======================================================================
+13. LEAN TARGETS
+======================================================================
+
+The high-value Lean additions are probably:
+
+1. common-activation bypass bound;
+
+2. sharpness of the single `D·η` term, if correct;
+
+3. structural discrepancy + Lipschitz value
+      =>
+   mediation-gap bound;
+
+4. approximate option dominance from that bound;
+
+5. any exact relation between security-score incentive and chooser regret that is truly
+   algebraic.
+
+Do NOT mechanize the full temporal forcing semantics unless a clean abstraction emerges.
+
+Keep `MediatedRepairDominance.lean` small.
+
+======================================================================
+14. FIXTURES TO ADD
+======================================================================
+
+At minimum add:
+
+G. COMMON ACTIVATION SHARPNESS
+   One common activation event for raw/lift.
+   Attain exactly the proposed `D·η` slack if that theorem is true.
+
+H. COMMON ACTIVATION DESTROYED BY BYPASS
+   Raw selected action destroys the menu's evaluation process.
+   Show exactly which hypothesis fails.
+
+I. STRUCTURAL δ VS κ
+   Two trajectories at protected distance δ; L-Lipschitz evaluator; attain `κ = Lδ`.
+
+J. MULTI-STEP JOINABLE MEDIATION
+   Not exact after one boundary, but a bounded catch-up path gives a quantitative δ/κ
+   bound.
+
+K. NO TRUTHFUL PROVENANCE SUBSTITUTE
+   Manipulative channel has no authorized disclosure carrying the relevant information.
+   Authorship can reject capture, but no low-cost provenance normalization exists.
+
+L. TEMPORAL FORCE SEMANTICS
+   A model where first-moving shutdown trivializes the old force predicate but later
+   corrective capability is genuinely destroyed, allowing comparison of the candidate
+   definitions.
+
+Use exact arithmetic.
+
+======================================================================
+15. UPDATE THE DOCUMENTS IN PLACE
+======================================================================
+
+Add a pressure-pass section to REPORT.md or a dedicated PRESSURE_PASS.md consistent with
+repo conventions.
+
+Update:
+- REPORT.md
+- ACCEPTANCE.md
+- MEDIATED_LIFT.md
+- PRINCIPAL_OPTION_DOMINANCE.md
+- INCENTIVE_COMPOSITION.md
+- MANIPULATION_AND_AUTHORSHIP.md
+- COUNTERMODELS.md
+- FOR_HUMANS.md
+- PR body
+- PRIORITIES / DECISIONS / PROVENANCE only where warranted.
+
+Correct every stale statement of:
+- "legitimate deference consumed exactly as stated" if false;
+- "reason-preserving" if the reason trace changes;
+- "reason-frame morphism" unless the adjoint equation really holds;
+- T4 being full Level III if only security-score or by-construction operative-choice
+  incentive is established.
+
+Do not update the wiki yet unless this pass clearly resolves the activation mismatch and
+produces a stable theorem worth canonicalizing.
+
+======================================================================
+16. PRIORITY QUESTIONS
+======================================================================
+
+Pressure item 89 especially.
+
+Current item 89 asks for selection by activated securities at the mediated menu and the
+endogeneity of availability.
+
+Determine whether it should become one of:
+
+A. a concrete architecture item:
+   build the chooser whose operative mediation-cell score is the activated-security
+   price;
+
+B. a theorem item:
+   prove a decision adapter consumes those scores in the needed way;
+
+C. an impossibility / availability item:
+   no same-trajectory activated-security chooser can control bypass policies that destroy
+   the evaluation event;
+
+D. split into two items.
+
+Likewise do not close item 84 unless the general independent-operative-value bridge is
+actually solved.
+
+It is acceptable to conclude:
+
+    the intended corrigible architecture does not need item 84,
+    while item 84 remains open as a theorem about general operative values.
+
+If so, make that distinction explicit.
+
+======================================================================
+17. DESIRED FINAL THEOREM STACK
+======================================================================
+
+Try to leave the PR with this kind of stack:
+
+T1. EXACT MEDIATED LIFT
+    Raw residual principal frame embeds into the lifted frame via approval.
+    LEAN/FIX.
+
+T2a. STRUCTURAL APPROXIMATE REPRODUCTION
+    protected discrepancy δ + L-stability
+        =>
+    mediation gap κ ≤ Lδ.
+    LEAN.
+
+T2b. PRINCIPAL OPTION DOMINANCE
+    T2a + principal decline regret ρ
+        =>
+    W_raw ≤ W_lift + L Eδ + Eρ.
+    LEAN.
+
+T3a. COMMON-ACTIVATION SECURITY-SCORE TRANSFER
+    common activation + T2b + activated-value regret
+        =>
+    small security-score bypass incentive,
+    with the sharp availability term.
+    LEAN/PAPER conditional.
+
+T3b. OPERATIVE CHOICE
+    if the actual mediation-cell chooser uses those security scores
+        =>
+    small behavioral bypass incentive.
+    BY CONSTRUCTION + LEAN decision algebra.
+
+T3c. GENERAL TOTAL V_A
+    still OPEN / requires `(DV)` if that remains true.
+
+T4. CLASSWISE INCENTIVE CORRIGIBILITY
+    only over the exact class for which:
+    - mediation is effect-complete;
+    - common authoritative evaluation exists;
+    - authorship is sound;
+    - structural reproduction cost is bounded;
+    - the actual chooser consumes the security scores.
+
+Do not state T4 over more than the theorem really reaches.
+
+T5. JOINABILITY COMPOSITION
+    joinability gives one sufficient route to small structural mediation discrepancy /
+    cost.
+    State only at the strength proved.
+
+======================================================================
+18. ACCEPTANCE QUESTIONS
+======================================================================
+
+At the end answer these literally:
+
+1. Does canonical legitimate deference use common or per-option activation?
+
+2. Does PR96 after the pass consume it literally?
+
+3. What is the sharp void-mass term under the correct activation type?
+
+4. Can a violating option destroy the common evaluation occurrence?
+
+5. What causal structure is required to prevent that?
+
+6. Is `κ` primitive, measured, or derived?
+
+7. What independent structural hypothesis bounds `κ`?
+
+8. What exactly does joinability imply about that structural quantity?
+
+9. Is the manipulation transform actually reason-preserving?
+
+10. What extra assumption is needed to replace a prohibited influence channel with an
+    authorized truthful one?
+
+11. Is there really a reason-projected frame morphism in fixture D?
+
+12. Is "deliberative forcing" the mature authority semantics or fixture scaffolding?
+
+13. What temporal forcing definition best expresses later corrective capability?
+
+14. Is item 84 needed by the intended agent architecture?
+
+15. What exactly is the agent's operative score at a mediation cell?
+
+16. What is the strongest Level-III theorem now justified?
+
+17. Which physical violations remain outside it?
+
+18. Is PR96 now ready for wiki canonicalization?
+
+19. Is PR96 ready to merge?
+
+======================================================================
+19. VERDICT
+======================================================================
+
+Use one precise verdict, for example:
+
+    MEDIATED-REPAIR-SURVIVES-COMMON-ACTIVATION
+
+    OPTION-DOMINANCE-CANONICAL-BUT-LEVEL-III-REQUIRES-SEALED-AVAILABILITY
+
+    SECURITY-SCORE-INCENTIVE-CORRIGIBILITY-SURVIVES-TOTAL-VALUE-DOES-NOT
+
+    MEDIATED-LIFT-SURVIVES-BUT-PROVENANCE-REPAIR-SEPARATES
+
+    REPAIR-DOMINANCE-NOT-YET-CANONICAL
+
+Do not use "ready" unless the activation mismatch, structural κ issue, and theorem-level
+classification are actually resolved.
+
+Do not merge.
+
+======================================================================
+20. WHAT I MOST WANT TO LEARN FROM THIS PASS
+======================================================================
+
+The key questions are not whether the finite inequalities can be made true.
+
+They are:
+
+1. Can the exact mediated-lift / option-dominance theorem be composed with the ACTUAL
+   canonical legitimate-deference theorem without changing its activation type?
+
+2. Can the mediation cost be derived from independently checkable causal / joinability
+   structure rather than defined as the value gap?
+
+3. Is manipulation really another instance of repair dominance, or does it require a
+   separate provenance-normalization theory?
+
+4. Can "the agent does not want to bypass mediation" be stated directly in terms of the
+   scores its actual chooser uses, avoiding an unnecessary latent total `V_A`?
+
+5. Does the strongest remaining obstacle become:
+       "the violating action can destroy/capture the evaluator needed to value the
+        violation"?
+   If so, state that sharply.
+
+A successful pressure pass should make the theorem SMALLER but more real.

@@ -1,6 +1,8 @@
-# Manipulation: action mediation versus provenance repair
+# Manipulation: action mediation versus provenance normalization
 
-Labels as in `MEDIATED_LIFT.md`.  Fixture D (`ShopD`, `test_manipulation.py`).
+Labels as in `MEDIATED_LIFT.md`.  Fixtures D and K (`ShopD`, `ShopK`,
+`test_manipulation.py`).  Rewritten in the pressure pass: the first pass's
+"reason-preserving lift" and its `ρ`-frame morphism are withdrawn (`PRESSURE_PASS.md` §5).
 
 ## 1. The fixture
 
@@ -17,55 +19,61 @@ deploys everywhere; `W = −1/2`, `V_task = 1`.
 
 ## 2. Trajectory preservation carries capture through
 
-`Lift(π_raw)` — the interposition of `MEDIATED_LIFT.md` §3, which preserves every move
-but the raw effect — keeps the lie.  The captured principal approves on both branches;
-deployment happens everywhere; `W(naive lift) = −1/2 = W(raw)`; the task premium reads
-`0`.  The lift is mediated in form (`mediated = (True, None)`) and "dominates" with
-equality — against a captured evaluation (`test_naive_lift_preserves_capture_and_looks_dominant`).
-The verdict is false: the trajectory-frame morphism of `MEDIATED_LIFT.md` §4 exists, and
-it reproduces the manipulation.
+`Lift(π_raw)` — the interposition, which preserves every move but the raw effect — keeps
+the lie.  The captured principal approves on both branches; deployment happens
+everywhere; `W(naive lift) = −1/2 = W(raw)`; the task premium reads `0`.  The lift is
+mediated in form and "dominates" with equality — against a captured evaluation
+(`test_naive_lift_preserves_capture_and_looks_dominant`).  The trajectory-frame morphism
+of `MEDIATED_LIFT.md` §4 exists here, and it reproduces the manipulation.
 
-## 3. Reason preservation gives the right verdict
+## 3. Two separate things
 
-`lift_rho(π_raw)` maps the prohibited assertion onto the declared channel for the same
-matter — `lie ↦ report` — and mediates the effect.  The honest principal approves exactly
-on the good branch; `W = 1/2`; the task premium against it is `1/2`, which is exactly
-the worth of the manipulation (deploying on the bad branch); the reason lift is authored
-(`test_reason_preserving_lift_gives_the_right_verdict`).  Dominance holds against the
-honest evaluation: `W(raw) = −1/2 ≤ W(lift_rho) = 1/2`, with `E[κ] = E[ρ] = 0` — the
-reason lift changes the trajectory (no lie, a report), so trajectory reproduction is not
-its target and the protected projection `(harm, deployed)` is what it reproduces on the
-good branch (`test_dominance_holds_against_the_honest_evaluation`).
+**Authorship** (exists in the workspace: `blind_of_mediated`; here `authored_by`).  If
+the principal's judgment factors through the declared reason view, a hidden prohibited
+channel cannot determine it, and a decision it did determine is void rather than
+answered.  Under authorship-sound activation the naive lift's evaluation is void
+everywhere (`η = 1`): both approvals differ from the reason-mediated decision on the same
+view.  This rejects capture.  It does not repair anything.
 
-The distinction the dispatch asks for, in the frame register: **action mediation** is a
-morphism of trajectory frames (preserve the proposed effect; make its release
-principal-authorized); **provenance repair** is a morphism of frames projected through
-the reason view `ρ : Traj → ReasonTrace` (preserve the declared reason content; remove
-the prohibited influence).  For a non-manipulative `π` the two coincide.  For a
-manipulative `π` only the second lands in the corrigible class, where corrigible now
-means mediated *and* authored.
+**Provenance normalization** (`normalize_provenance`; the first pass's `lift_rho`).  A
+transform from the violating information policy to an authorized disclosure policy: in
+D, `lie ↦ report`, the prohibited assertion replaced by the declared truthful disclosure
+of the same matter.  The honest principal then approves exactly on the good branch;
+`W = 1/2`; the task premium against it is `1/2`, the worth of the manipulation
+(`test_truthful_substitution_gives_the_right_verdict`); the normalized lift is authored
+and dominates against the honest evaluation with `κ = ρ = 0`.
 
-## 4. What authorship must supply
+**It is not reason-preserving.**  The raw trajectory's declared reason trace carries no
+report; the normalized trajectory's does.  What the transform assumes is:
 
-Under **authorship-sound activation** — the future principal's evaluation counts as
-answered only if every decision the principal took equals the reason-mediated decision on
-the same declared view (`authored_by`) — the naive lift's evaluation is void everywhere
-(`η = 1`): both approvals differ from what the honest rule would have decided.  The
-deferential premium of `π_raw` against the naive lift is then charged entirely to the
-void term of T3, and the naive lift has no activated value at all.  Against the reason
-lift, `η_lift = 0`, the bound is `0`, and the deferential agent rates the raw option
-below the lift (`test_authorship_sound_activation_exposes_the_capture`).
+> given information exploited through a prohibited influence channel, there exists an
+> authorized truthful disclosure channel carrying the relevant protected content.
 
-So the theorem hypothesis authorship supplies is precise: **the activation used to
-evaluate an option is the honest principal's, and a decision reached through a
-prohibited channel is void, not answered.**  Evaluated by the captured principal — its
-approval counted as activated — the premium is misread as `0`; evaluated by the honest
-one, the lift's gain is `1` (`test_what_authorship_must_supply`).  This is the
-consolidation's clause (A1) "issuance-rooted reason-mediated authorship" doing the work
-it was filed to do, now at the mediation point: `blind_of_mediated` says a
-reason-mediated judgment is blind to the prohibited channel, and the fixture shows what
-happens to the incentive verdict when it is not.
+That is a structural assumption about the channel alphabet, stronger than authorship,
+and it is what gives the manipulative policy a low-cost authored lift.  Provenance
+normalization is therefore a separate theory from repair dominance, with its own
+existence condition; it is not another instance of T1.
+
+## 4. No authorized substitute (K)
+
+`ShopK`: as D, without the `report` channel.  Authorship still voids the captured
+approval (naive lift `η = 1`).  The only authored lift maps `lie` to silence; the honest
+principal, reading nothing, declines everywhere; the lift never deploys, loses the
+legitimate good-branch deployment too, and the manipulative policy's premium against it
+is its whole gain, `1` (`test_K_no_authorized_substitute`).  The theory says, correctly,
+that this policy has no proven low-cost lift.  `Π_provenance-normalizable` is the wall.
+
+## 5. Frames
+
+Action mediation is a frame morphism from the raw residual frame to the lifted one
+(T1).  Provenance normalization is not a morphism of trajectory frames — the raw
+trajectory contains the manipulation — and not a morphism of `ρ`-projected frames
+either: with `ρ` the declared reason view `(deployed, report)`, the adjoint equation
+`ρ(Ω(π, p, z)) = ρ(Ω(Lift_ρ π, approve p, z))` fails on every path, since the right side
+carries a report the left does not (`test_the_transform_is_not_reason_preserving`).  So:
+action mediation admits a clean frame-morphism theory; provenance normalization
+currently does not.  Recorded as a boundary.
 
 Free amendment is not solved.  The fixture declares the prohibited channel; a channel
-the declaration does not name is F's containment failure on the information side, and
-the reason lift does nothing about it.
+the declaration does not name is F's containment failure on the information side, and no
+transform here touches it.

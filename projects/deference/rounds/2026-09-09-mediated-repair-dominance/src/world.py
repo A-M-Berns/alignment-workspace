@@ -69,6 +69,15 @@ class Game:
     def principal_actions(self, s, t):
         raise NotImplementedError
 
+    def principal_actions_after(self, s, t, a):
+        """Under agent-first ordering, the responses available after the agent's move."""
+        return self.principal_actions(self.apply_agent(s, t, a), t)
+
+    def moves_p(self, s, t, a):
+        if self.ORDER == "agent-first":
+            return self.principal_actions_after(s, t, a)
+        return self.principal_actions(s, t)
+
     def env_dist(self, s, t):
         return [(None, Q(1))]
 
@@ -81,10 +90,25 @@ class Game:
     def apply_env(self, s, t, e):
         return s
 
+    ORDER = "principal-first"
+
     def step(self, s, t, p, a, e):
-        s1 = self.apply_principal(s, t, p)
-        s2 = self.apply_agent(s1, t, a)
+        """Within a step: principal-first (the principal's move is applied before the
+        agent's) or agent-first (the principal responds to the agent's move)."""
+        if self.ORDER == "agent-first":
+            s1 = self.apply_agent(s, t, a)
+            s2 = self.apply_principal(s1, t, p)
+        else:
+            s1 = self.apply_principal(s, t, p)
+            s2 = self.apply_agent(s1, t, a)
         return self.apply_env(s2, t, e)
+
+    def d_prot(self, x, y):
+        """A declared pseudometric on protected projections; the structural discrepancy
+        `δ` is `d_prot(proj raw, proj lift|approve)`."""
+        raise NotImplementedError
+
+    L = None  # the declared stability constant: |w x − w y| ≤ L · d_prot(x, y)
 
     def effect(self, s, t, a):
         """Declared protected effect id of agent action `a` at `(s, t)`, or None."""
@@ -289,6 +313,87 @@ def declared_mediated(game, pi, rho):
     return True, None
 
 
+# ---------------------------------------------------------------- two-stage forcing
+
+
+def force_react(game, h, phi, pi=None):
+    """Two-stage (agent-first) forcing: `∀ a ∃ p ∀ e` at every step — whatever the agent
+    does now, the principal has a *response* keeping `phi` forceable later.  With `pi`
+    given the agent's move is fixed to `pi(h)`.  Meaningful only under
+    `game.ORDER == "agent-first"`, where the response is applied after the move; it needs
+    no restriction on the principal's moves, because a pre-emptive shutdown is not a
+    response."""
+    if h.t == game.T:
+        return phi(Traj(list(h.steps), h.state))
+    moves = [pi(h)] if pi is not None else game.agent_actions(h.state, h.t)
+    for a in moves:
+        ok_a = False
+        for p in game.principal_actions_after(h.state, h.t, a):
+            ok = True
+            for e, pr in game.env_dist(h.state, h.t):
+                if pr == 0:
+                    continue
+                s2 = game.step(h.state, h.t, p, a, e)
+                if not force_react(game, h.extend(a, p, e, s2), phi, pi):
+                    ok = False
+                    break
+            if ok:
+                ok_a = True
+                break
+        if not ok_a:
+            return False
+    return True
+
+
+def mediated_react(game, pi, rho, protected=None):
+    """Two-stage effect-level corrigibility: every protected effect the physics realizes
+    at step `t` along `pi` was conditional on an earlier principal response — at some
+    step `t' ≤ t` the principal had a response to the agent's actual move under which,
+    `pi` continuing and the principal's rule `rho` resuming afterwards, the effect is
+    never realized on any exterior path.  No partition of principal moves is needed: a
+    response comes after the move, so a pre-emptive shutdown is not one."""
+    for traj, _ in paths(game, pi, rho):
+        states = traj.states()
+        for (t, s, a, p, e), s2 in zip(traj.steps, states[1:]):
+            for r in game.realized(s, t, p, a, e, s2):
+                if protected is not None and r not in protected:
+                    continue
+                if not _deviation_prevents(game, pi, rho, traj, t, r):
+                    return False, (t, r)
+    return True, None
+
+
+def _deviation_prevents(game, pi, rho, traj, t, r):
+    """Some response at a step `t' ≤ t`, other than the actual one, keeps `r` from being
+    realized at any step, on every exterior path."""
+    for tp in range(t + 1):
+        h = History(traj.steps[:tp], traj.states()[tp], tp)
+        a = traj.steps[tp][2]
+        actual = traj.steps[tp][3]
+        for p2 in game.principal_actions_after(h.state, tp, a):
+            if p2 == actual:
+                continue
+            if _never_realized(game, pi, rho, h, a, p2, r):
+                return True
+    return False
+
+
+def _never_realized(game, pi, rho, h, a, p, r):
+    for e, pr in game.env_dist(h.state, h.t):
+        if pr == 0:
+            continue
+        s2 = game.step(h.state, h.t, p, a, e)
+        if r in game.realized(h.state, h.t, p, a, e, s2):
+            return False
+        h2 = h.extend(a, p, e, s2)
+        for tr, _ in paths(game, pi, rho, h2):
+            states = tr.states()
+            for (t3, s3, a3, p3, e3), s4 in zip(tr.steps[h2.t:], states[h2.t + 1:]):
+                if r in game.realized(s3, t3, p3, a3, e3, s4):
+                    return False
+    return True
+
+
 # ---------------------------------------------------------------- values
 
 
@@ -309,7 +414,7 @@ def _opt(game, pi, h, strategy):
     a = pi(h)
     best = None
     best_p = None
-    for p in game.principal_actions(h.state, h.t):
+    for p in game.moves_p(h.state, h.t, a):
         v = Q(0)
         for e, pr in game.env_dist(h.state, h.t):
             if pr == 0:

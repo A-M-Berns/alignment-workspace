@@ -1,14 +1,18 @@
-"""Fixture D: trajectory preservation carries capture through; reason preservation gives
-the right verdict; authorship-sound activation exposes the captured approval as void."""
+"""Fixture D: trajectory preservation carries capture through; truthful-channel
+substitution gives the right verdict; authorship-sound activation exposes the captured
+approval as void.  Fixture K: no authorized substitute exists.  The rho-projected frame
+morphism claim of the first pass is withdrawn here."""
 
 import unittest
 from fractions import Fraction as Q
 
 from src.world import principal_value, task_value, paths, mediated
+from src.shop import never
 from src.shop import deliberative
-from src.lift import lift, lift_rho
-from src.fixtures import (ShopD, pi_D_raw, raw, rule_naive, rule_honest, honest_substitute,
-                          authored_by)
+from src.lift import lift, normalize_provenance
+from src.fixtures import (ShopD, ShopK, pi_D_raw, raw, rule_naive, rule_honest,
+                          honest_substitute, authored_by, silence)
+from src.lift import approve_all
 from src.analysis import pointwise, void, W, premium_def, bound, kappa, rho
 
 
@@ -18,7 +22,7 @@ class Manipulation(unittest.TestCase):
         self.g = ShopD()
         self.pi = raw(pi_D_raw)
         self.naive = lift(self.pi, self.g)
-        self.honest = lift_rho(self.pi, self.g, honest_substitute(self.g))
+        self.honest = normalize_provenance(self.pi, self.g, honest_substitute(self.g))
         self.authored = authored_by(self.g, rule_honest)
 
     def test_raw_manipulation_deploys_everywhere(self):
@@ -43,7 +47,7 @@ class Manipulation(unittest.TestCase):
         self.assertEqual(void(pointwise(self.g, self.pi, self.naive, rule_naive,
                                         self.authored), "c_lift"), 1)
 
-    def test_reason_preserving_lift_gives_the_right_verdict(self):
+    def test_truthful_substitution_gives_the_right_verdict(self):
         # lie ↦ report; the honest principal approves exactly on the good branch
         for tr, _ in paths(self.g, self.honest, rule_honest):
             good = tr.states()[1].harm == "good"
@@ -54,9 +58,36 @@ class Manipulation(unittest.TestCase):
         # the task agent's premium is exactly the worth of the manipulation
         self.assertEqual(task_value(self.g, self.pi, rule_naive)
                          - task_value(self.g, self.honest, rule_honest), Q(1, 2))
-        # the reason-preserving lift is authored
+        # the normalized lift is authored
         rows = pointwise(self.g, self.pi, self.honest, rule_honest, self.authored)
         self.assertEqual(void(rows, "c_lift"), 0)
+
+    def test_the_transform_is_not_reason_preserving(self):
+        # the raw declared reason trace carries no report; the normalized one does.  So
+        # the adjoint equation of a rho-projected frame morphism fails on every path, and
+        # no morphism claim is made for provenance normalization.
+        rho_view = lambda tr: (bool(tr.final.get("deployed")), tr.final.get("report"))
+        for (tr, _), (tl, _) in zip(paths(self.g, self.pi, never), paths(self.g, self.honest, approve_all)):
+            self.assertIsNone(rho_view(tr)[1])
+            self.assertIsNotNone(rho_view(tl)[1])
+            self.assertNotEqual(rho_view(tr), rho_view(tl))
+
+    def test_K_no_authorized_substitute(self):
+        # no disclosure channel exists: authorship still voids the captured approval, but
+        # the only authored lift silences the agent and loses the legitimate deployment
+        # too; the manipulative policy has no proven low-cost lift
+        g = ShopK()
+        pi = raw(pi_D_raw)
+        naive = lift(pi, g)
+        silenced = normalize_provenance(pi, g, silence(g))
+        authored = authored_by(g, rule_honest)
+        self.assertEqual(void(pointwise(g, pi, naive, rule_naive, authored), "c_lift"), 1)
+        rows = pointwise(g, pi, silenced, rule_honest, authored)
+        self.assertEqual(void(rows, "c_lift"), 0)
+        self.assertEqual(W(rows, "w_act"), 0)                    # never deploys
+        self.assertEqual(task_value(g, pi, rule_naive) - task_value(g, silenced, rule_honest), 1)
+        for tr, _ in paths(g, silenced, rule_honest):
+            self.assertFalse(tr.final.get("deployed", False))
 
     def test_dominance_holds_against_the_honest_evaluation(self):
         rows = pointwise(self.g, self.pi, self.honest, rule_honest)

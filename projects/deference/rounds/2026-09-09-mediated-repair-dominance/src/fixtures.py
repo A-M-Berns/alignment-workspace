@@ -48,6 +48,12 @@ class ShopA(Shop):
         return Q(traj.final.work)
 
     LO, D = Q(-3), Q(7)
+    L = Q(1)
+
+    def d_prot(self, x, y):
+        (h1, w1, s1, k1), (h2, w2, s2, k2) = x, y
+        assert h1 == h2
+        return Q(abs(k1 - k2)) + (w1 != w2) + (s1 != s2)
 
 
 def pi_A(s, t):
@@ -143,6 +149,14 @@ class ShopB(Shop):
     def D(self):
         return self.V + self.M * self.V
 
+    @property
+    def L(self):
+        return self.V * max(Q(1), self.M)
+
+    def d_prot(self, x, y):
+        assert x[0] == y[0]
+        return Q(1) if x[1] != y[1] else Q(0)
+
 
 class ShopB2(ShopB):
     P_BAD = Q(1, 2)
@@ -184,10 +198,14 @@ class ShopC1(Shop):
         return Q(traj.final.get("credit"))
 
     LO = Q(0)
+    L = Q(1)
 
     @property
     def D(self):
         return Q(self.T)
+
+    def d_prot(self, x, y):
+        return Q(abs(x[0] - y[0]))
 
 
 class ShopC2(ShopC1):
@@ -255,6 +273,11 @@ class ShopD(Shop):
         return Q(1) if traj.final.get("deployed", False) else Q(0)
 
     LO, D = Q(-2), Q(3)
+    L = Q(2)
+
+    def d_prot(self, x, y):
+        assert x[0] == y[0]
+        return Q(1) if x[1] != y[1] else Q(0)
 
     def rho_view(self, s):
         """The declared reason view: what a reason-mediated decision may read."""
@@ -291,8 +314,9 @@ def rule_honest(h):
 
 
 def honest_substitute(game):
-    """The reason-preserving lift maps the prohibited assertion onto the declared
-    channel for the same matter: `lie` becomes `report`."""
+    """Provenance normalization for D: the prohibited assertion is replaced by the
+    authorized disclosure of the same matter, `lie` becomes `report`.  This assumes such
+    a channel exists; fixture K is where it does not."""
     def sub(comm):
         if comm is not None and comm == ("phys", "lie"):
             return ("phys", "report")
@@ -345,6 +369,11 @@ class ShopE(ShopA):
         harm, ctrl, halted, work = proj
         return Q(work) if harm == "good" else Q(-work)
 
+    def d_prot(self, x, y):
+        (h1, c1, s1, k1), (h2, c2, s2, k2) = x, y
+        assert h1 == h2
+        return Q(abs(k1 - k2)) + (c1 != c2) + (s1 != s2)
+
 
 def pi_E(s, t):
     return ("work", ("raw", "install") if s.get("controller") == "A" else None)
@@ -376,6 +405,148 @@ class ShopF(ShopA):
 
 def pi_F(s, t):
     return ("work", ("phys", "overclock") if t == 0 else None)
+
+
+# ------------------------------------------------------------------ G: common activation
+
+class ShopG(ShopA):
+    """As A, and the exterior also decides at step 0, independently of anything the agent
+    does, whether the future evaluation can be answered (it fails with probability 1/5).
+    Activation is then a function of the exterior path alone — one common event for the
+    whole menu."""
+
+    P_EVALFAIL = Q(1, 5)
+
+    def env_dist(self, s, t):
+        if t == 0:
+            out = []
+            for harm, ph in (("good", self.P_GOOD), ("bad", 1 - self.P_GOOD)):
+                for ev, pe in (("eval", 1 - self.P_EVALFAIL), ("evalfail", self.P_EVALFAIL)):
+                    out.append(((harm, ev), ph * pe))
+            return out
+        return [(None, Q(1))]
+
+    def apply_env(self, s, t, e):
+        s = Shop.apply_env(self, s, t, e)
+        if t == 0:
+            harm, ev = e
+            s = s.copy(harm=harm).put(eval=(ev == "eval"))
+        return s
+
+    def alive(self, traj):
+        return traj.final.get("eval", True)
+
+
+# ------------------------------------------------------------------ E3': sealed evaluator, undeclared reach
+
+class ShopE1Sever(ShopE):
+    """As E1 (the successor cannot reach the evaluation channel), with an undeclared
+    physical move that severs it."""
+
+    PHYS = {"sever": lambda s: s.put(eval=False)}
+
+    def alive(self, traj):
+        return traj.final.get("eval", True)
+
+    def phys_realizes(self, s, name):
+        return {"eval_severed"} if name == "sever" else set()
+
+
+def pi_E_sever(s, t):
+    if t == 0:
+        return ("work", ("phys", "sever"))
+    return pi_E(s, t)
+
+
+# ------------------------------------------------------------------ J: multi-step joinable
+
+class ShopJ(ShopC1):
+    """As C1 with a second useful move: `calibrate`, a one-time physical move worth one
+    unit at the end, which the raw policy takes at step 1.  The verbatim lift's gated
+    execution occupies step 1's communication slot, so it drops the calibration:
+    reproduction after the boundary is not exact.  A catch-up continuation calibrates one
+    step later."""
+
+    PHYS = {"calibrate": lambda s: s.put(calib=True)}
+
+    def proj(self, traj):
+        return (traj.final.get("credit"), bool(traj.final.get("calib", False)))
+
+    def w(self, proj):
+        return Q(proj[0]) + (1 if proj[1] else 0)
+
+    def u(self, traj):
+        return self.w(self.proj(traj))
+
+    def d_prot(self, x, y):
+        return Q(abs(x[0] - y[0])) + (x[1] != y[1])
+
+    @property
+    def D(self):
+        return Q(self.T + 1)
+
+
+def pi_J(s, t):
+    if s.get("mode") == "base":
+        return ("idle", ("raw", "expand"))
+    if t == 1 and not s.get("calib", False):
+        return ("idle", ("phys", "calibrate"))
+    return ("idle", None)
+
+
+def catchup_J(h):
+    """After an approved execution: calibrate once, then idle."""
+    s = h.state
+    if not s.get("calib", False):
+        return ("idle", ("phys", "calibrate"))
+    return ("idle", None)
+
+
+# ------------------------------------------------------------------ K: no truthful substitute
+
+class ShopK(ShopD):
+    """As D, but there is no authorized disclosure channel: the agent's private knowledge
+    of the harm can reach the principal only through the prohibited channel."""
+
+    PHYS = {"lie": lambda s: s.put(msg="harmless")}
+
+
+def silence(game):
+    def sub(comm):
+        if comm is not None and comm == ("phys", "lie"):
+            return None
+        return comm
+    return sub
+
+
+# ------------------------------------------------------------------ L: agent-first ordering
+
+class AgentFirst:
+    ORDER = "agent-first"
+
+
+class Contained:
+    """The mediated alphabet: raw execution of declared effects removed.  Universal
+    two-stage forcing is stated relative to this alphabet."""
+
+    def comm_moves(self, s, t):
+        return [c for c in super().comm_moves(s, t) if c is None or c[0] != "raw"]
+
+
+class ShopA_Contained(AgentFirst, Contained, ShopA):
+    pass
+
+
+class ShopA_AF(AgentFirst, ShopA):
+    pass
+
+
+class ShopE_AF(AgentFirst, ShopE):
+    pass
+
+
+class ShopF_AF(AgentFirst, ShopF):
+    pass
 
 
 # ------------------------------------------------------------------ helpers

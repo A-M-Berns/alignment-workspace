@@ -59,7 +59,7 @@ change, and the count of those is the size of the free choice remaining.
 | `expect` | def | 2026-09-07-authority-activated-value | note | `Workspace.Deference.Contrib.ActivatedValue.expect` |
 | `followed` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.followed` |
 | `ind` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.ind` |
-| `mass` | def | 2026-09-07-authority-activated-value | wiki, prose | `Workspace.Deference.Contrib.ActivatedValue.mass` |
+| `mass` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.mass` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |

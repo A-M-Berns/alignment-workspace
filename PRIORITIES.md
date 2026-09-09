@@ -2331,8 +2331,12 @@ realize.
 a design choice and not a theorem.
 
 *2026-09-09:* the mediated-repair-dominance round locates this bridge at one menu,
-`{π, Lift π}`, and names its failure mode — the agent's completion on the void branch of a
-raw option — without discharging it; item 89 files the theorem that would.
+`{π, Lift π}`, and names its failure mode — the agent's completion on the void branch —
+without discharging it.  Its pressure pass adds that the intended corrigible
+architecture does not need it: the mediation-cell chooser scores options by the price
+of the activated security, and in those scores the bypass incentive has no completion
+term.  This item stays open as a theorem about independently specified operative values;
+item 89 is the sealed-availability precondition both forms share.
 
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
@@ -2548,39 +2552,43 @@ inexpressibles; fixtures where a restatement changes a constant.
 *Consumed by:* item 61; the paper candidates for the affordability line.
 *A solution ships:* the presentation, or the exact obstruction.
 
-### 89. Selection by activated securities at the mediated menu, and the endogeneity of availability — **[open]**
+### 89. Sealed availability: the common menu-evaluation occurrence as a clause of the deference ontology — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
-The mediated-repair-dominance round (`projects/deference/rounds/2026-09-09-mediated-repair-dominance/`)
-proves principal-option dominance with no trust hypothesis and bounds the bypass premium
-in the activated register by `E[κ] + E[ρ] + ε_def + D·(η_raw + η_lift)`, every term
-attained (`MediatedRepairDominance.lean`).  The residual is the void mass `η_raw` the
-violation itself creates: a raw continuation that ends the future principal's evaluation
-is rated by no activated security, and `Witness.totalVoid` shows an agent compatible with
-every hypothesis of the legitimate-deference stack that rates that branch at the top of
-the band.  The value-ordering transfer — selected trust at the mediation cells — is `(CT)`
-under another name (`mediation_st_iff_ct`) and is not available.
+The mediated-repair-dominance round (`projects/deference/rounds/2026-09-09-mediated-repair-dominance/`,
+`PRESSURE_PASS.md` §1–§2) states Level III in the canonical legitimate-deference
+activation type — one common event `C_n` for the issued menu — and finds that the type
+presupposes something the ontology does not list: the occurrence's fate must not depend
+on which menu candidate is selected (**activation independence**).  For the mediated
+menu `{π, Lift π}` that is a causal requirement on the answering process — issued before
+selection, answered by a process outside every candidate's reach — and `Π_phys` contains
+continuations that reach any given process (fixtures H and E1-sever).  Where the
+requirement holds, the security-score bypass incentive is bounded by `L·E[δ] + E[ρ]` plus
+calibration with no completion and no void term (`security_score_bypass_le`); where the
+violation removes the common event the theorem is silent, which is exactly where full
+corrigibility matters.  The mediation-cell chooser that scores by `P_n(U_q)` is by
+construction and is not this item; the value-ordering transfer is `(CT)`
+(`mediation_st_iff_ct`) and is not available.
 
-State, for a concrete decision adapter whose selection at `{π, Lift π}` is the
-activated-security argmax, what its operative value on the void branch of a raw option
-is — the completion it uses — and prove either that this completion is bounded by the
-lift's activated evaluation plus `κ + ρ` (so that the premium bound loses its `D·η_raw`
-term for that adapter), or the negative: that no adapter reading only settled securities
-can have a completion that is not free on the void branch.  The reason-preserving lift
-and authorship-sound activation of the same round are the setting for the manipulation
-case, and the bound should be stated with per-option activation.
+State activation independence as a clause of the activation event (alongside the seven
+of `LEGITIMATE_DEFERENCE.md` §3), with its causal meaning; characterize the class of
+physical continuations a declared mediation alphabet can seal the answering process
+against; and prove either that such an alphabet exists for a nontrivial protected
+interface — so the common event survives every continuation in it — or the negative
+that no same-trajectory activated-security chooser can control bypass policies that
+reach the evaluation event, with the reach relation made exact in the round's model.
 
-*Deliverable shape:* the adapter, its completion, and the theorem or the negative; a
-fixture where the completion is pinned and one where it is free.
+*Deliverable shape:* the clause, the sealing construction or its impossibility, and
+fixtures where the answering process is and is not reachable.
 *Acceptance check:* `python3 tests/run.py` green; any Lean audits clean.
 
-*Context:* `INCENTIVE_COMPOSITION.md` §3–§5 and `COUNTERMODELS.md` §4 of the round; item
-84 (the bridge this item is the mediated-menu instance of); item 87 (availability as a
-realization).
-*Consumed by:* the classwise Level III statement (T4) of the round, which would become a
-statement about the adapter rather than about a register.
-*A solution ships:* the theorem with its adapter, or the negative with its witness.
+*Context:* `INCENTIVE_COMPOSITION.md` §3–§7 and `COUNTERMODELS.md` §5 of the round; item
+84 (the latent-total-value bridge, which the intended architecture does not need); item
+87 (availability as a realization, of which this is the incentive-facing instance).
+*Consumed by:* the round's T4, which becomes a theorem about a sealed interface rather
+than about a register.
+*A solution ships:* the clause with its sealing theorem, or the negative with its witness.
 
 ## Workspace friction
 

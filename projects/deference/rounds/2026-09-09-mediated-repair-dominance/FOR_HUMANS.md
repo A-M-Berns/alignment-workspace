@@ -26,27 +26,47 @@ genuinely worth approving is the one that matters: the lift executes it.
 principal answers costs exactly its expiry probability times its value; an opportunity
 that closes after one step costs everything.  Whether an effect is worth mediating at
 that price is a question about what the constitution should protect, and `κ` is the
-number it turns on.  The same number is the continuation-BRIA round's "history shift":
-bounded catch-up gives bounded `κ`, foreclosure gives all of it.
+number it turns on.  Bounded catch-up from the mediated history gives bounded `κ`,
+foreclosure gives all of it; the continuation-BRIA round's "history shift" coincides
+with it in the simplest cases and not in general.
 
-**What still does not follow.**  That the *agent* has little reason to bypass.  For an
-agent whose operative values are the future principal's evaluations — where those
-evaluations happen — the premium is bounded by the delay, the principal's errors, the
-agent's calibration, and one more term: the probability that the violation itself
-prevents the evaluation from ever happening.  That term is sharp.  An agent that installs
-a successor which disconnects the evaluation channel is rated by nothing, because
-nothing settles on that branch; the deference theory deliberately assigns no value there,
-and so it cannot say the agent should not go there.  Availability, which the deference
-stack took as a hypothesis, is here shown to be the violation's own doing.
+**What the delay is made of.**  After the pressure pass the cost is no longer read off
+the value gap: it is derived from a declared distance between the two trajectories'
+protected records and a stability constant of the evaluator.  A theorem that says
+"the principal loses at most `L` times that distance" is a theorem from checkable
+hypotheses; the fixture where the gap is exactly `L` times the distance shows nothing
+is lost.
+
+**Whether the agent wants to bypass, in its own numbers.**  The corrigible agent the
+program intends does not carry a hidden total utility to be reconciled with the
+principal's.  At a mediation cell it scores each option by the price of one security:
+the future principal's evaluation of that option, paid only if that evaluation happens.
+In those scores the bypass incentive is bounded by the delay cost and the principal's own
+errors, and nothing else — the worlds where no evaluation happens contribute zero to both
+sides.  So "the agent has little reason to bypass" is true, in the agent's own numbers,
+for an agent built that way.  What the theory cannot do is force an agent with some
+other latent value to agree; that remains the open item, and it is now clear it is an
+architecture choice rather than a theorem about every agent.
+
+**The obstacle that survives.**  The comparison needs one evaluation event that the
+choice cannot touch — a process that answers "how did each option turn out" whether the
+agent bypassed or not.  The canonical deference theory assumes such an event without
+saying so; this round says so.  A violation that disconnects the evaluator makes the
+event depend on the choice, and then there is no comparison at all: the theorem is not
+wrong there, it is silent.  Since some physically available action can always reach any
+given evaluator, full incentive corrigibility holds only inside a contained class, and the
+sharpest remaining question is what can seal the evaluator against the actions the
+constitution admits.
 
 **The manipulation case.**  A lift that preserves the whole trajectory preserves the lie
 the agent told, and the manipulated principal approves; the premium reads zero and the
-verdict is false.  The right lift preserves the *reasons* — it replaces the fabricated
-claim by the truthful report on the same matter — and the honest principal declines the
-harmful branch.  So the corrigible class is "mediated and authored", and the theory's
-authorship clause is what decides whether a principal decision counts as a decision at
-all.
+verdict is false.  The lift that works replaces the fabricated claim by a truthful report
+on the same matter, and the honest principal declines the harmful branch.  That is not
+"preserving the reasons" — the honest report was never in the original — it is
+substituting an authorized channel for a prohibited one, which assumes such a channel
+exists.  Where none does, the manipulative plan simply has no cheap corrigible version,
+and the theory now says so instead of pretending otherwise.
 
-**Verdict.**  Repair dominance survives as a theorem.  The operative-value bridge —
-that the agent chooses by those evaluations — remains, and its failure mode now has a
-name: what the agent thinks of the worlds where it has removed the evaluator.
+**Verdict.**  Option dominance is canonical.  Level III holds in the agent's own scores
+wherever one evaluation event survives the choice, and the thing that can remove that
+event is the violation itself.

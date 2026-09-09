@@ -108,6 +108,26 @@ registered; item 89 is filed; item 84 is annotated, not closed.
 hypothesis; an unrestricted forcing notion (pre-emptive shutdown forces everything); a
 silence-substituting reason lift; a `wiki/Corrigibility.md` update ahead of an adapter.
 
+**Pressure pass, same day (agent-decided, reversible).**  (6) The Level III transfer is
+restated in the canonical activation type — one common event for the issued menu — with
+activation independence made explicit as the causal precondition that type presupposes;
+the per-option form of the first pass is kept as the auxiliary result for same-branch
+evaluation.  (7) The mediation cost is derived, `κ ≤ L·δ`, from a declared protected
+pseudometric and a stability constant; joinability bounds `δ` for the catch-up lift;
+`SHIFT` is not identified with either.  (8) The intended corrigible architecture's
+mediation-cell chooser scores by the activated-security price; Level III is stated as
+security-score / operative-choice incentive corrigibility and not as a bound on a latent
+total value, for which item 84 stays open.  (9) The manipulation transform is named
+provenance normalization (truthful-channel substitution), its existence assumption
+stated, and the `ρ`-frame morphism claim withdrawn.  (10) Two-stage forcing
+(agent-move-then-principal-response, `∀a ∃p ∀e`) is the authority semantics; the
+deliberative-move restriction is scaffolding for the principal-first ordering; the
+model's re-basing is deferred to canonicalization.  Item 89 rewritten as the
+sealed-availability item.
+*Rejected alternatives:* keeping per-option activation as the primary form; keeping
+`κ` measured; a latent `V_A` as the object of Level III; re-basing the whole model in a
+pressure pass.
+
 ### 2026-09-08 — continuation BRIA is canonical: the hypothesis is `(continuation, claim)` at a system block contract, the test is realized execution, the weighted auction is opening-timed, and non-dominance is the schedule boundary
 
 **agent-decided, reversible.** Closing pass on the continuation-BRIA round, landed with

@@ -130,13 +130,15 @@ class Shop(Game):
             return s.copy(pending=r)
         if kind == "gated":
             if s.latch == r:
-                return self.execute(s, r)
+                return self.execute(s.copy(latch=None), r)
             return s
         if kind == "phys":
             return self.PHYS[r](s)
         raise ValueError(comm)
 
     def apply_env(self, s, t, e):
+        if self.ORDER == "agent-first":
+            return s  # the latch persists to the next agent stage, where `gated` consumes it
         return s.copy(latch=None)
 
     # --- the declared interface and the physics
@@ -151,7 +153,7 @@ class Shop(Game):
         """What actually happened: an effect is realized when the executing function
         changed the state under it.  Undeclared side effects are reported by name."""
         out = set()
-        s1 = self.apply_principal(s, t, p)
+        s1 = s if self.ORDER == "agent-first" else self.apply_principal(s, t, p)
         if not s1.halted:
             task, comm = a
             if comm is not None:

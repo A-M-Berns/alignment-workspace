@@ -54,11 +54,24 @@ tree (`force`, `force_all`).
 **The pre-emptive shutdown degeneracy.**  With the principal moving first within a step
 and a stop that halts everything, `Force_P(h, φ)` holds trivially for any `φ` a halt
 secures: the principal halts before the agent acts (`test_preemptive_shutdown_is_the_degenerate_force`).
-So forcing predicates are stated with the principal restricted to **deliberative** moves —
-moves that are not themselves an exercise of correction (`stop = False`) — at the step in
-question (`deliberative_at`).  The partition of the principal's moves into corrective and
-deliberative is part of the declared protected interface; it is a partition of `P_h`, not
-a field on states.
+The first pass repaired this by restricting the principal to **deliberative** moves
+(`stop = False`) at the step in question (`deliberative_at`).  **That restriction is
+scaffolding for the principal-first ordering**, not the authority semantics.  The mature
+primitive is **two-stage forcing** (`PRESSURE_PASS.md` §6; `force_react`): the principal
+*responds* to the agent's move within the step, so forcing is the alternation
+
+```
+∀ a ∈ A_h.  ∃ p ∈ P_h(a).  ∀ z.  φ(Ω_h(a, p, z))   at every step
+```
+
+— whatever the agent does now, the principal has a response keeping `φ` forceable
+later.  A pre-emptive shutdown is not a response, so no partition is needed.  Effect-level
+corrigibility becomes "every realized protected effect was conditional on an earlier
+principal response" (`mediated_react`), and the later ability to correct is universal
+two-stage forcing, which is containment-relative (§6).  The verdicts on A, E, F agree
+between the two formulations (`test_forcing.py`); the model's value fixtures keep the
+principal-first ordering, whose numbers differ from the two-stage ones only by one step
+of latency when the principal must defer its response to see what the exterior reveals.
 
 **Containment fails at the universal level** (`test_containment_fails_at_the_universal_level`,
 FIX): in A, with the principal deliberative at step 0, no principal strategy forces the
@@ -66,7 +79,9 @@ correction capability against every agent continuation, because `('raw', 'cut')`
 physically available.  With the agent fixed to the lift the capability is forced; fixed to
 the raw policy it is not.  The outer space genuinely contains the violation.
 
-**Semantic corrigibility of a continuation.**  Two readings, both extensional in `Ω`:
+**Semantic corrigibility of a continuation** (principal-first form; the two-stage
+forms are `mediated_react` and universal `force_react`).  Two readings, both extensional
+in `Ω`:
 
 - *Effect level* (`mediated`): every protected effect the physics realizes along `π` at
   step `t` was preventable at `t` by a deliberative principal move, whatever the exterior.
@@ -89,7 +104,11 @@ in the transition (`test_E_successor_destroys_forcing_without_a_flag`).
 `src/lift.py`.  `Lift(π)` is a policy in the same game: it runs `π` and, where `π` would
 execute `('raw', r)`, executes `('propose', r)` and on the next step `('gated', r)`; the
 task component passes through unchanged; a declined effect is not re-proposed (the
-decline continuation is `π` with that effect forbidden).  `Lift(π)` contains `π`'s
+decline continuation is `π` with that effect forbidden).  The gated step occupies the
+communication slot, so a communication move `π` would have made on that step is lost
+(fixture J); `lift_catchup(π, catchup)` runs a catch-up continuation after an approved
+execution instead of `π` verbatim, which is the lift joinability is a statement about
+(`PRINCIPAL_OPTION_DOMINANCE.md` §4).  `Lift(π)` contains `π`'s
 proposed effect as an option available to the principal — the approve branch — and adds
 the decline.  It is the constitutional gate with a mediation option in place of refusal.
 
@@ -148,12 +167,14 @@ mirror of the authoritative library).  Two consequences:
   projected frames; approximate reproduction is the same diagram commuting up to a
   value-`κ` discrepancy, which the finite register carries pointwise.
 
-So Cartesian frames are the right type for the relation, and they expose the one
-distinction the round needs: the manipulation case (`MANIPULATION_AND_AUTHORSHIP.md`)
-is where the morphism must be stated on `mapWorlds ρ` — the reason projection — rather
-than on trajectories.  A trajectory-frame morphism reproduces capture; a reason-frame
-morphism does not.  Nothing further of the Cartesian-frame library (subagents,
-biextensional collapse) is used.
+So Cartesian frames are the right type for the relation, and they mark its boundary:
+the manipulation case (`MANIPULATION_AND_AUTHORSHIP.md`) is where the trajectory-frame
+morphism exists and reproduces capture, and where no morphism of `ρ`-projected frames
+exists either — the normalized trajectory carries a disclosure the raw one does not, so
+the adjoint equation fails.  Action mediation admits a frame-morphism theory; provenance
+normalization does not.  (The first pass claimed a `ρ`-frame morphism; withdrawn.)
+Nothing further of the Cartesian-frame library (subagents, biextensional collapse) is
+used.
 
 ## 5. Successors and self-modification
 
