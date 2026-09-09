@@ -2458,7 +2458,7 @@ for any of the three.
 specialization's investing-in-amendment case.
 *A solution ships:* the three objects with the composed corollary, or the negative.
 
-### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]**
+### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]** — *partially realized by the evaluation-ecosystem round: clauses 1, 3, 4 discharged, 2 discharged for the reading principal with the receipts residual, 6 partial, 5 and 7 residual with exact criteria (`projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization/CLAUSE_LEDGER.md`)*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
