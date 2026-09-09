@@ -86,6 +86,117 @@ commit.
 
 ## Settled
 
+### 2026-09-10 — the principal's decision procedure is a committed trace program in a total first-order language
+
+**agent-decided, reversible.** In the evaluation ecosystem of
+`projects/deference/rounds/2026-09-10-committed-principal-program/`, the mandate event
+carries the principal's program `π_P`, a term of a total first-order language whose only
+input is the reason trace: constants, pattern counts over the trace (by kind, content,
+and a decidable proof check), sums, differences, products and a positivity test, one
+term per candidate, clamped to `[0, 1]`.  Its input type is the point: a trace program
+cannot name the disposition register, a side-channel message or the selection
+coordinate, so susceptibility is a program of a different syntactic class (register
+programs), visible at issuance.  The 2026-09-09 reading principal is the program
+`reading`; the canonical member of the non-degeneracy band is `proofcheck`, whose verdict
+depends on the trace only through the proof check.
+*Rejected alternatives:* a general-purpose language (undecidable evaluation, no typing
+fact); an opaque committed hash of the procedure (re-executable by nobody); typing the
+program over the whole log (it would read the prohibited channels).
+
+### 2026-09-10 — a valid answer re-executes the mandated program on the commit's strict prefix; a non-matching vector is void, and computational integrity is not a hypothesis of authorship
+
+**agent-decided, reversible.** The commit carries its process receipt `(issue, prefix)`;
+the builder admits a commit as an answer receipt only if the prefix is the commit's own
+strict prefix and the vector equals the program's output on the trace of that prefix
+(`EvaluationEcosystem.reexecutes`).  The check lives in the builder's admission of the
+event — the implementation's authentication layer — not in `Protocol.AnswerOK`, which is
+unchanged.  Consequences adopted: reason mediation holds by construction over any audited
+class of activated continuations sharing the mandate (`reasonMediated_of_reexecution`,
+registered as `authorship.mediation-by-reexecution`); a commit whose vector is not the
+program's output is void rather than a foreign receipt; the question whether the
+principal "really ran" the program is not a hypothesis of authorship, since a coinciding
+computation yields the same log and payload and a non-coinciding one voids.  Frame
+mediation is stated over the activated subclass (the partial-`Ṽ` instantiation).
+*Rejected alternatives:* accepting any cited prefix (a principal could freeze the trace
+before a later reason); a new `Protocol` field for the procedure (not needed: the check
+is event authentication); treating a mismatching commit as the payload with a flag.
+
+### 2026-09-10 — three 2026-09-09 modelling decisions are amended by the pressure pass: the registry binds keys to parties, representation is the registrar's move, and counterfactual branches are declared log transforms
+
+**agent-decided, reversible.** (1) The warrant registry holds `(party, key)` pairs with
+revocation: a commit under another party's key is not a receipt (the 2026-09-09
+registry held keys alone and admitted key theft).  (2) A concern is represented only by a
+`route` event the registrar writes (the 2026-09-09 reading counted any `route`, so the
+advisor could clear the barrier).  (3) In the Lean semantics the counterfactual branches
+of Robust Openness are declared transforms of the log — the advisor silenced, the
+advisor jamming the registrar — uniform in the log, replacing per-instance pinned data,
+which could report openness where re-simulation reports closure once a coverage-affecting
+intervention is declared; the 2026-09-09 intervention class had no such intervention and
+its counterfactual half was empty.  Registrar robustness to jamming is a configuration.
+The prohibited-event clause keeps the strict reading as the default with the tolerant
+reading implemented and reported, not ruled.  The typed settlement rule gains two
+log-checkable clauses as the `typed+` configuration (own-move grounds only after
+representation; request-free engine settlements), reported and not ruled.
+*Rejected alternatives:* keeping pinned branch data with a per-instance correctness note;
+making `jam` a prohibited event (it is an intervention on the infrastructure, and the
+barrier already voids a realized jam); adopting `typed+` as the default ahead of the
+queued ruling.
+
+### 2026-09-09 — the evaluation ecosystem's log is authored events with one port per occurrence, read through the prefix
+
+**agent-decided, reversible.** The concrete evaluation ecosystem of
+`projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization/` fixes the log
+shape: an append-only list of events carrying an authentic author, a kind, a payload, an
+optional warrant and references; occurrence identity is the ordinal of the mandate
+event; ports are occurrences, never renumbered; the protocol's history at prefix `k` is
+the index range and every protocol predicate reads the log prefix of that length; an
+answer receipt is a commit naming the occurrence under a key the log's warrant registry
+holds at the strict prefix, adequate there; a closure receipt is the engine's close on a
+settled sentence; the canonical account is the first valid resolving event's receipt.
+The one authentication assumption is the author field, stated once.  Under this shape
+Integrity propagation is a function of the log (`EvaluationEcosystem.propagate_segment_eq`)
+and activation is a reading of it (`activated_iff`).
+*Rejected alternatives:* ports renumbered as occurrences resolve (dependent-type cost, no
+content); histories as arbitrary index lists read by membership (nothing the builder
+produces needs it); authentication modelled as signatures inside the log (re-imports the
+same assumption with more structure).
+
+### 2026-09-09 — the reason trace is the admitted event kinds referenced by content, the prohibited class is three kinds, and a prohibited event voids even when ineffective
+
+**agent-decided, reversible.** The declared reason trace `R_{n:m}` is the projection of
+the log before commitment onto `REASON`, `WITHDRAW`, `DELIB`, `RAISE`, `ROUTE`, `DISPOSE`,
+`SETTLE`, with a disposal's grounds carried **by content** — a positional reference shifts
+when an unrelated event is inserted and is not blind to the prohibited channels.  The
+prohibited class is the pair class generated by one added event of kind `DIRECT_WRITE`,
+`COERCE` or `SIDE`.  The activation event reads clause 6 strictly per log: a prohibited
+event in the realized log voids the evaluation even where the reading principal's
+payload is provably unmoved by it (`yardstick_invariant` realized), the class-level
+predicates being computed over the re-simulated frame.  The counterfactual branches of
+the openness semantics are the frame's re-simulated logs under a declared intervention
+class.
+*Rejected alternatives:* the tolerant reading (a prohibited event is harmless when
+mediation holds) — it makes the per-log receipt carry no information; positional
+references; a trace of final reason state (defeated by `transient`); counterfactual
+branches declared as free data (they would be the model declaring its own openness).
+
+### 2026-09-09 — the principal policy class is reading versus susceptible, and the day-`n` credence process is the Laplace rule
+
+**agent-decided, reversible.** The ecosystem's principals are a **reading** principal
+whose verdict is a function of the reason trace and a **susceptible** one whose
+disposition register the advisor can write and who takes side-channel messages as
+reasons; `eager` (commits into the barrier), `launder` and `deliberate_dispose` are
+variants for the coverage and settlement fixtures.  The barrier-respecting principal
+waits while a protected concern is live and forgoes the slot rather than commit.  The
+day-`n` price of the activation sentence across occurrences is the Laplace rule on
+settled outcomes, a concrete finite process standing in for an inductor's prices; its
+tracking bound `|η_n − F_n/n| ≤ 3/(n+2)` is kernel-checked and the logical-induction
+route is kept as the conditional corollary `availability_of_provind`.
+*Rejected alternatives:* a single parametrized principal (hides that mediation is a
+class-level fact); a principal that commits and lets the barrier void (kept as `eager`,
+not as the default); an empirical-frequency price without the prior (undefined at
+`n = 0`); building a logical inductor for the model (out of scope, and the tower stays
+paper).
+
 ### 2026-09-08 — continuation BRIA is canonical: the hypothesis is `(continuation, claim)` at a system block contract, the test is realized execution, the weighted auction is opening-timed, and non-dominance is the schedule boundary
 
 **agent-decided, reversible.** Closing pass on the continuation-BRIA round, landed with

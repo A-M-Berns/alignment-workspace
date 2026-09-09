@@ -100,6 +100,31 @@ and the
 [consolidation](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation),
 whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
 
+**Realization, partial.** The
+[evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/57b373bfe542d0c7b1ee78ba7e170fade4cc9003/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization)
+runs the theorem end to end in a concrete model: an authenticated event log, a
+protocol read off the log with Integrity propagation proved a function of the log,
+a simulated continuation frame, and an exact market on finite worlds, with
+`R_auth = ε/(1 − η)` attained on the worked trace. Of the bill's seven clauses,
+principal-exclusive binding, non-degeneracy of the reason trace and representation
+faithfulness are discharged (the last in Lean for every log and scope); frame
+factorization is discharged for the reading principal, with the receipts' meaning as
+the one thing a log cannot certify about itself; selection sealing is discharged for
+the sealed advisor class with the leak exhibited; reason-supply liveness and
+availability are residual with their exact criteria named — the bounded-delay
+affordability criterion for the concern stream, and a vanishing void frequency
+against which the ecosystem's price tracks the empirical frequency within `3/(n+2)`.
+The [committed-principal-program round](https://github.com/A-M-Berns/alignment-workspace/tree/899d9c67b9a1a3779ec38de1ccd4e7419c5a03a4/projects/deference/rounds/2026-09-10-committed-principal-program)
+then closes clause 2 on log authenticity: the mandate carries the principal's decision
+procedure as a program whose only input is the reason trace, the verifier re-executes it
+at commitment, and reason mediation holds by construction for every audited class of
+activated continuations (registered, `authorship.mediation-by-reexecution`); a
+coincident computation yields the same log and payload and a non-coincident one voids,
+so computational integrity is not a hypothesis. Its pressure pass repaired three of the
+earlier discharges (a stolen key, an advisor-written representation, pinned
+counterfactual branches) and found the earlier intervention class had no counterfactual
+content; the advisor-side transfer is refused because the view leaks the selection back.
+
 ## Current status
 
 > **Two targets, both live.** The legitimate-deference consumer above is **active
@@ -115,7 +140,7 @@ whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
 > influence is causal factorization through declared reasons, not convergence location.
 
 > **Established — `lean-proved`.** The
-> <!--state:workspace:counts.registered_claims_by_project.deference-->31<!--/state-->
+> <!--state:workspace:counts.registered_claims_by_project.deference-->32<!--/state-->
 > entries in this line's registry are its finite results: the delegation bridge
 > and the certificate, exposure and substitution lemmas; the signed-versus-magnitude
 > separation; the static-view factorization; and the corrective-control model. Each

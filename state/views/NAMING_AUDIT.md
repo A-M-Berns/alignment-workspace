@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 295 names, 178 of them Lean only
+## deference — 387 names, 258 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -37,6 +37,7 @@ change, and the count of those is the size of the free choice remaining.
 | `netWorth_eq_zero` | theorem | 2026-08-11-phase-ii-prediction | registry | `Workspace.Deference.Contrib.MagnitudePrediction.CoherentMixture.netWorth_eq_zero` |
 | `override_bound` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.override_bound` |
 | `principal_has_no_exclusive_effect` | theorem | 2026-08-12-reachable-corrective-control | registry | `Workspace.Deference.Contrib.ReachableCorrectiveControl.principal_has_no_exclusive_effect` |
+| `reasonMediated_of_reexecution` | theorem | 2026-09-10-committed-principal-program | registry, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.reasonMediated_of_reexecution` |
 | `selection_eq_of_margin` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.selection_eq_of_margin` |
 | `separation_requires_disagreement` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.SubstitutionSeparation.separation_requires_disagreement` |
 | `sharpTrader_netWorth_eq` | theorem | 2026-08-11-phase-ii-prediction | registry | `Workspace.Deference.Contrib.MagnitudePrediction.sharpTrader_netWorth_eq` |
@@ -145,6 +146,97 @@ change, and the count of those is the size of the free choice remaining.
 | `phi` | def | 2026-08-11-stage-iii-fud | prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.phi` |
 | `v` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.v` |
 | `valuation` | def | 2026-08-11-stage-iii-fud | note | `Workspace.Deference.Contrib.EnvelopeDominance.valuation` |
+| `C1` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.C1` |
+| `EvalReq` | structure | unrecorded | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.EvalReq` |
+| `Event` | structure | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Event` |
+| `Kind` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Kind` |
+| `Log` | abbrev | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Log` |
+| `PROOF_B` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.PROOF_B` |
+| `Party` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Party` |
+| `Pat` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Pat` |
+| `Prog` | abbrev | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Prog` |
+| `REC_A` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.REC_A` |
+| `REC_B` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.REC_B` |
+| `RParty` | abbrev | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.RParty` |
+| `Register` | abbrev | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Register` |
+| `Term` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Term` |
+| `TermR` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.TermR` |
+| `TermR.ofTerm` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.TermR.ofTerm` |
+| `Warrant` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Warrant` |
+| `accountAt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.accountAt` |
+| `accountAux` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.accountAux` |
+| `accountsAt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.accountsAt` |
+| `actualCov` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.actualCov` |
+| `admittedKind` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.admittedKind` |
+| `advisorTrace` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.advisorTrace` |
+| `anchor` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.anchor` |
+| `answerReceipt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.answerReceipt` |
+| `authorOf` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.authorOf` |
+| `bindPairs` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.bindPairs` |
+| `boundary` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.boundary` |
+| `cfOf` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.cfOf` |
+| `clamp` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.clamp` |
+| `closeReceipt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.closeReceipt` |
+| `closeSentence` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.closeSentence` |
+| `commitIndex` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.commitIndex` |
+| `commitVector` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.commitVector` |
+| `constant` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.constant` |
+| `count` | def | unrecorded | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.count` |
+| `covData` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.covData` |
+| `covDataAdvisor` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.covDataAdvisor` |
+| `decAllStates` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.decAllStates` |
+| `disposed` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.disposed` |
+| `ev` | def | unrecorded | wiki | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.ev` |
+| `evalProg` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.evalProg` |
+| `evalProgR` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.evalProgR` |
+| `evalTerm` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.evalTerm` |
+| `evalTermR` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.evalTermR` |
+| `firstResolver` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.firstResolver` |
+| `frame2` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.frame2` |
+| `groundOk` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.groundOk` |
+| `honestExec` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.honestExec` |
+| `inTrace` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.inTrace` |
+| `initial` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.initial` |
+| `issueIndex` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.issueIndex` |
+| `issueProg` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.issueProg` |
+| `issueReq` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.issueReq` |
+| `issuedReqs` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.issuedReqs` |
+| `jamOf` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.jamOf` |
+| `jammedAt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.jammedAt` |
+| `localLegit` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.localLegit` |
+| `localTrace` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.localTrace` |
+| `logOf` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.logOf` |
+| `matchPat` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.matchPat` |
+| `otherExec` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.otherExec` |
+| `payload` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.payload` |
+| `progOf` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.progOf` |
+| `proofcheck` | def | unrecorded | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.proofcheck` |
+| `protocol` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.protocol` |
+| `raised` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.raised` |
+| `reading` | def | unrecorded | note, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.reading` |
+| `reexecutes` | def | unrecorded | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.reexecutes` |
+| `routeOpenAt` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.routeOpenAt` |
+| `routed` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.routed` |
+| `segmentTo` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.segmentTo` |
+| `sem` | def | unrecorded | wiki | `Workspace.Deference.Contrib.EvaluationEcosystem.sem` |
+| `semPinned` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.semPinned` |
+| `sessionOpen` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.sessionOpen` |
+| `settled` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.settled` |
+| `silentOf` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.silentOf` |
+| `state` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.state` |
+| `step` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.step` |
+| `susceptible` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.susceptible` |
+| `trace` | def | unrecorded | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.trace` |
+| `traceAtCommit` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.traceAtCommit` |
+| `validAnswer` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.validAnswer` |
+| `validClose` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.validClose` |
+| `w1` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.w1` |
+| `w1Delegated` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.w1Delegated` |
+| `w1Forged` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.w1Forged` |
+| `w1Mis` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.w1Mis` |
+| `w1Revoked` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.w1Revoked` |
+| `w1Side` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.w1Side` |
+| `w1Stolen` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.w1Stolen` |
 | `F` | def | 2026-08-11-phase-ii-promotion | note, prose | `Workspace.Deference.Contrib.ExposureGeometry.Greedy.F` |
 | `InWindow` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.InWindow` |
 | `Pierces` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.ExposureGeometry.Pierces` |
@@ -313,7 +405,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 700 names, 534 of them Lean only
+## normativity — 700 names, 533 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -783,7 +875,7 @@ change, and the count of those is the size of the free choice remaining.
 | `compiledTarget` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.compiledTarget` |
 | `edgeLoss` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.edgeLoss` |
 | `error` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.error` |
-| `evaluation` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductionInterface.Witness.evaluation` |
+| `evaluation` | def | unrecorded | prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Witness.evaluation` |
 | `market` | def | unrecorded | note | `Workspace.Normativity.Contrib.NormativeInductionInterface.Witness.market` |
 | `modulus` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.modulus` |
 | `progress` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.NormativeInductionInterface.Evaluation.progress` |
@@ -860,7 +952,7 @@ change, and the count of those is the size of the free choice remaining.
 | `subst` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.subst` |
 | `terminals` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals` |
 | `trans` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment.trans` |
-| `LocalLegit` | inductive | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalLegit` |
+| `LocalLegit` | inductive | 2026-09-07-reason-mediated-authorship | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalLegit` |
 | `LocalStep` | structure | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalStep` |
 | `LocalTrace` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalTrace` |
 | `_root_.Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.toLocalLegit` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity._root_.Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.toLocalLegit` |
