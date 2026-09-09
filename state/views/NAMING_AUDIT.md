@@ -910,7 +910,7 @@ change, and the count of those is the size of the free choice remaining.
 | `subst` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.subst` |
 | `terminals` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals` |
 | `trans` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment.trans` |
-| `LocalLegit` | inductive | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalLegit` |
+| `LocalLegit` | inductive | 2026-09-07-reason-mediated-authorship | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalLegit` |
 | `LocalStep` | structure | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalStep` |
 | `LocalTrace` | inductive | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.LocalTrace` |
 | `_root_.Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.toLocalLegit` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Normativity.Contrib.OccurrenceLocalIntegrity._root_.Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.toLocalLegit` |
