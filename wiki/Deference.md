@@ -100,6 +100,21 @@ and the
 [consolidation](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation),
 whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
 
+**Realization, partial.** The
+[evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/57b373bfe542d0c7b1ee78ba7e170fade4cc9003/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization)
+runs the theorem end to end in a concrete model: an authenticated event log, a
+protocol read off the log with Integrity propagation proved a function of the log,
+a simulated continuation frame, and an exact market on finite worlds, with
+`R_auth = ε/(1 − η)` attained on the worked trace. Of the bill's seven clauses,
+principal-exclusive binding, non-degeneracy of the reason trace and representation
+faithfulness are discharged (the last in Lean for every log and scope); frame
+factorization is discharged for the reading principal, with the receipts' meaning as
+the one thing a log cannot certify about itself; selection sealing is discharged for
+the sealed advisor class with the leak exhibited; reason-supply liveness and
+availability are residual with their exact criteria named — the bounded-delay
+affordability criterion for the concern stream, and a vanishing void frequency
+against which the ecosystem's price tracks the empirical frequency within `3/(n+2)`.
+
 ## Current status
 
 > **Two targets, both live.** The legitimate-deference consumer above is **active
