@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 295 names, 178 of them Lean only
+## deference — 308 names, 190 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -177,6 +177,19 @@ change, and the count of those is the size of the free choice remaining.
 | `signedSum` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.signedSum` |
 | `squaredSum` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.squaredSum` |
 | `unitTrader` | def | 2026-08-11-phase-ii-prediction | note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader` |
+| `Ensures` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Ensures` |
+| `Mediation` | structure | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Mediation` |
+| `Move` | inductive | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Move` |
+| `NoRaw` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.NoRaw` |
+| `approvalMorphism` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.approvalMorphism` |
+| `corr` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.corr` |
+| `corrMove` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.corrMove` |
+| `declGap` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.declGap` |
+| `declRegret` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.declRegret` |
+| `expect` | abbrev | 2026-09-09-mediated-repair-dominance | note | `Workspace.Deference.Contrib.MediatedRepairDominance.expect` |
+| `ind` | abbrev | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.ind` |
+| `liftVal` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.liftVal` |
+| `rawVal` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.rawVal` |
 | `Completion` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.Completion` |
 | `V` | def | 2026-09-07-reason-mediated-authorship | wiki, note, prose | `Workspace.Deference.Contrib.ActivatedValue.SharpLower.V` |
 | `c` | def | 2026-09-07-reason-mediated-authorship | wiki, note, prose | `Workspace.Deference.Contrib.ActivatedValue.SharpLower.c` |

@@ -86,6 +86,76 @@ commit.
 
 ## Settled
 
+### 2026-09-09 — the Level III transfer is taken in the activated register, and the mediation cost is the residual-frame morphism's failure on the protected projection
+
+**agent-decided, reversible.**  The mediated-repair-dominance round.  (1) The corrigible
+comparator for a physical continuation is its **mediated lift**: the same continuation
+with every declared protected effect placed behind a deliberative principal decision
+through a physical latch; the raw residual frame maps into the lifted one by a
+Cartesian-frame morphism with identity exterior ("approve"), and the mediation cost `κ`
+is that morphism's failure on the protected projection.  (2) Forcing predicates are
+stated with the principal restricted to deliberative moves at the step in question; the
+partition of principal moves into corrective and deliberative is part of the declared
+protected interface.  (3) The transfer of principal-option dominance to the agent's
+operative choice is taken in the **activated register** of legitimate deference, with
+per-option activation, and not through a value-ordering hypothesis at the mediation
+cells, which is `(CT)` under another name (`mediation_st_iff_ct`).  The residual is the
+void mass the violation creates, attained (`Witness.totalVoid`).  (4) Provenance repair
+is a morphism of reason-projected frames, not trajectory frames; the reason lift maps a
+prohibited-channel move onto the declared channel for the same matter.  (5) Nothing is
+registered; item 89 is filed; item 84 is annotated, not closed.
+*Rejected alternatives:* selected trust at the mediation cells as the Level III
+hypothesis; an unrestricted forcing notion (pre-emptive shutdown forces everything); a
+silence-substituting reason lift; a `wiki/Corrigibility.md` update ahead of an adapter.
+
+**Pressure pass, same day (agent-decided, reversible).**  (6) The Level III transfer is
+restated in the canonical activation type — one common event for the issued menu — with
+activation independence made explicit as the causal precondition that type presupposes;
+the per-option form of the first pass is kept as the auxiliary result for same-branch
+evaluation.  (7) The mediation cost is derived, `κ ≤ L·δ`, from a declared protected
+pseudometric and a stability constant; joinability bounds `δ` for the catch-up lift;
+`SHIFT` is not identified with either.  (8) The intended corrigible architecture's
+mediation-cell chooser scores by the activated-security price; Level III is stated as
+security-score / operative-choice incentive corrigibility and not as a bound on a latent
+total value, for which item 84 stays open.  (9) The manipulation transform is named
+provenance normalization (truthful-channel substitution), its existence assumption
+stated, and the `ρ`-frame morphism claim withdrawn.  (10) Two-stage forcing
+(agent-move-then-principal-response, `∀a ∃p ∀e`) is the authority semantics; the
+deliberative-move restriction is scaffolding for the principal-first ordering; the
+model's re-basing is deferred to canonicalization.  Item 89 rewritten as the
+sealed-availability item.
+*Rejected alternatives:* keeping per-option activation as the primary form; keeping
+`κ` measured; a latent `V_A` as the object of Level III; re-basing the whole model in a
+pressure pass.
+
+**Consolidation pass, same day (agent-decided, reversible).**  (11) Corrigibility is
+**derived, not primitive**: on the two-stage ordering, a protected concern has an
+immediate response semantics, response authority is whether some principal response
+realizes it at the response stage, an agent-caused loss is a move after which that
+authority is gone and after an idle move would not be, and a loss is authorized when a
+decision response the principal could have taken instead — declining a proposal, not
+exercising a correction — would have avoided it; no subset of the continuation space is
+a primitive, and the space is written `Π(h)`.  (12) The canonical corrigibilization `𝔠`
+is the interposition on the declared effect interface; `Corrigible(𝔠π)` is a theorem
+from effect completeness, mediation soundness, decline preservation and execution
+faithfulness, with F the necessity witness; `𝔠` is idempotent and fixed exactly on
+release-free behaviour; the characterization `Corrigible(π) ⟺ 𝔠π ≃ π` holds one way and
+fails without effect soundness, and corrigibility is not defined as the fixed points.
+(13) T4 is stated over all of `Π(h)`: effect completeness and sealed comparison are
+system hypotheses, joinability bounds the discrepancy and is no domain condition, and
+provenance normalization is out of the first theorem — a manipulated principal who
+retains the decision makes the policy corrigible and not authored, by design.  (14) The
+score bound is charged only where the security settles, `L·E[c·δ] + E[c·ρ]`.  (15)
+Sequenced settlement — the constitutional comparison settled before any candidate acts —
+is recorded as one architecture that seals the comparison against every `π`, at the
+price of an ex-ante judgment; item 89 is reframed to that architecture question.  No
+new priority is filed for effect completeness: it is the architecture round's membrane
+wall, restated.
+*Rejected alternatives:* defining corrigibility as `Fix(𝔠)`; global forcing as the
+authority semantics (false before any bypass where `Π(h)` contains one); keeping a
+policy-class domain; requiring non-manipulation in the first theorem; a new priority
+duplicating containment.
+
 ### 2026-09-08 — continuation BRIA is canonical: the hypothesis is `(continuation, claim)` at a system block contract, the test is realized execution, the weighted auction is opening-timed, and non-dominance is the schedule boundary
 
 **agent-decided, reversible.** Closing pass on the continuation-BRIA round, landed with
