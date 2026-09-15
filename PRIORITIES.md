@@ -2348,6 +2348,14 @@ than its conclusion, no cross-evaluator relation supplied by Logical Induction g
 it.  The score-based chooser of the canonical architecture is by construction and is
 not this item.
 
+*2026-09-15 (li-corrigibility round):* in the security-score register the calibration
+term is gone.  Expectation Provability Induction gives
+`E_n(U_raw,n) − E_n(U_corr,n) ≲_n L·E_n(Δ_n) + E_n(R_n) + D·E_n(M_n)` between the
+inductor's own expectations (`projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md`
+T3, Lean `LICorrigibility.li_bypass_le`).  The latent-value bridge of this item is
+unchanged: for an operative value that is not the price of the activated security, the
+completion term and `(CT)` stand as before.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -2641,6 +2649,76 @@ chooser controls a continuation that reaches the evaluation event.
 *Consumed by:* the round's T4 (C5–C6), whose sealed-comparison hypothesis A10 this item
 realizes or refutes.
 *A solution ships:* the clause with its sealing theorem, or the negative with its witness.
+
+*2026-09-15 (li-corrigibility round):* sealed comparison is now the zero case of a
+learned inequality rather than a Boolean hypothesis.  With per-option activation the
+bypass bound carries the directional mismatch term `D·E[c_raw ∧ ¬c_corr]`, sharp in `D`,
+with the marginal-rate form refuted, and Expectation Provability Induction learns the
+whole inequality including that term
+(`projects/deference/rounds/2026-09-15-li-corrigibility/UNSEALED_COMPARISON.md`,
+`THEOREM.md` T2–T3, Lean `LICorrigibility.mismatch_bound`, `Witness.marginal_refuted`).
+The deliverable of this item is therefore an architecture under which
+`E_n(c_raw ∧ ¬c_corr)` is small for every continuation of the advisor class — sequenced
+settlement gives `0` by timing at its ex-ante price; a hindsight evaluator needs the
+factorization — and the activation-independence clause is the statement that the
+joint mismatch event is empty.
+
+### 90. The generability certificate of the soft-weighted finite-menu constraint — **[open]** — *narrowed 2026-09-15: T3's own certificate is constructed (`LICorrigibilityCertificate.lean`); what remains is T3′'s*
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The li-corrigibility round (`projects/deference/rounds/2026-09-15-li-corrigibility/`)
+learns the corrigibility inequality by `thm:expprovind`, and its landing pass constructs
+the pinned-interface generability certificate for the compiled pair constraint
+(`MediatedPair.syntaxOf`, `li_bypass_le_compiled`, inhabited by `Witness.li_instance`).
+The finite-menu form T3′ — `max_{q ∈ Q_n} [E_n(U_q) − E_n(U_𝔠q) − λ E_n(G_δ,q) − E_n(G_ρ,q)
+− E_n(G_M,q)] ≲_n 0` over a polynomial-size efficiently generated menu — is proved
+through the near-argmax weighting whose kernel is Lean (`softWeight_aggregate_ge`,
+`uniform_of_soft`) but whose `P`-generability is paper-level: the weights are
+expressible features folded over the growing menu (`max` chains, a sum, one safe
+reciprocal, and the mesh-expectation scores of every pair), and the pinned splice suite
+mirrors the feature constructors one at a time (`RpnSpliceStream.serialize_*`) with a
+variable-width fold only for token concatenation (`concatVar`).  Build the feature-chain
+fold and the `LUVCombinationSyntax` of `(B'_n)`, so that T3′ is mechanized end to end as
+T3 is.
+
+*Deliverable shape:* Lean declarations discharging `LUVCombinationSyntax` for the
+soft-weighted combination of a polynomial-size generated menu of compiled pairs, audited
+to the three axioms, with the T3′ endpoint stated in the form of `li_bypass_le_compiled`.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
+
+*Context:* `LUV_COMPILATION.md` §2 and §4, `LI_CORRIGIBILITY.md` §3 of the round; the
+pinned formalization's `Construction/Witnesses/LUVSyntax.lean` for the certificate shape
+and its own `triangularSoftmaxPoly` for a fold of the same kind.
+*Consumed by:* T3′ of the round; any registration of the finite-menu theorem.
+*A solution ships:* the certificate, or the exact combinator the pinned suite lacks.
+
+### 91. Empirical settlement of activated securities: an oracle-relativized inductor — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The li-corrigibility round states its feedback extension by `thm:wubexp` for
+comparisons *determined via `Γ`* — the sequenced-settlement pair with a finite horizon in
+a closed finite model (`FEEDBACK_BOUNDARY.md`).  The paper's deductive process is
+computable (`def:dedproc`); a trace of physical observations is not computable from the
+day, so an activated security read off a real log is outside the framework as stated.
+State and prove the oracle-relativized form: an inductor, traders and a deductive
+process computable relative to an observation stream, with `thm:expprovind` and
+`thm:wubexp` relative to the stream, and "determined via `Γ`" read as determined by `Γ`
+plus the observed prefix; then show that a real log's activated securities, with an
+explicit finite horizon on the occurrence, are determined relative to the stream.  This
+is an extension of the feedback boundary, not a hypothesis of T1–T3′.
+
+*Deliverable shape:* a paper-level theorem with its exact hypotheses and a witness that
+a real log's securities are determined relative to the stream; Lean where the pinned
+formalization's relativization admits it.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
+
+*Context:* `FEEDBACK_BOUNDARY.md` §4 of the round; item 87 (availability) for what the
+securities are; item 90 for the certificate side.
+*Consumed by:* T4 of the round, whose "determined via `Γ`" hypothesis this item realizes
+for empirical logs.
+*A solution ships:* the relativized theorem, or the negative with its witness.
 
 ## Workspace friction
 

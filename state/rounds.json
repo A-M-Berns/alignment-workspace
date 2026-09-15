@@ -1393,6 +1393,19 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-15-corrigibility-consolidation-landing/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-15-li-corrigibility",
+      "date": "2026-09-15",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-15-li-corrigibility",
+      "verdict": "LI-LEARNS-THE-CORRIGIBILITY-INEQUALITY-UNIFORMLY-OVER-EFFICIENT-MENUS-WITH-A-DIRECTIONAL-MISMATCH-TERM — the structural bypass inequality of the corrigibilization theorem compiles into a bounded LUV-combination with constant coefficients once every activation-gated product is taken as one gated LUV, which the paper's definition of a logically uncertain variable admits outright and the pinned formalization admits through a threshold-level gating interface; the exact pointwise algebra of an unsealed comparison is U_raw − U_corr = both·(w_raw − w_act) + M·w_raw − M'·w_act with M = c_raw ∧ ¬c_corr the joint directional mismatch in one world, so the correct charge is L·E[both·δ] + E[both·ρ] + D·E[M], the coefficient D is sharp, the marginal-rate form D·(E[c_raw] − E[c_corr]) is false on a two-world fixture, and perfect sealing is the case M ≡ 0; validity in every world consistent with Γ needs Γ to carry the interaction model — effect and transition semantics, the gate and latch programs, activation and expiry semantics, the evaluator's L-stability certificate — as a specification of the modeled system, effect completeness being the corrigibility theorem's hypothesis and not the inequality's; Expectation Provability Induction then gives E_n(U_raw,n) − E_n(U_corr,n) ≲ L·E_n(Δ_n) + E_n(R_n) + D·E_n(M_n) with no calibration hypothesis and no reference to what the deductive process has proved, and a normalised near-argmax weighting, which is an expressible feature where a hard argmax is not, gives the same uniformly over every polynomially enumerable menu; the feedback theorem applies only to comparisons determined via the theory — the sequenced-settlement pair with a finite horizon, not the same-branch comparison — and forbids persistent efficiently detectable positive-margin overvaluation of bypass rather than bypass itself, a switching margin converting that into finitely many bypasses when realized costs vanish, while genuinely empirical logs are outside the paper's computable deductive process; and the existing authorization clause \"no loss at step t or later\" is refuted for repeated protected effects by a two-effect fixture and restored in its per-event form, which is the form the Lean step lemma already states; nothing here reaches manipulation, authorship, undeclared channels, superpolynomial menus, or the size of the right-hand side.",
+      "verdict_source": "projects/deference/rounds/2026-09-15-li-corrigibility/README.md",
+      "depends_on": ["2026-09-09-mediated-repair-dominance", "2026-09-10-committed-principal-program", "2026-09-08-legitimate-deference-consolidation"],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-15-li-corrigibility/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

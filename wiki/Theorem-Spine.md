@@ -554,11 +554,16 @@ and
 ## 10. Corrigibility
 
 Lean:
+[`Corrigibilization.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/Corrigibilization.lean),
+[`LICorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/LICorrigibility.lean),
+[`LICorrigibilityCertificate.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/LICorrigibilityCertificate.lean),
 [`MediatedRepairDominance.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/lean/Workspace/Deference/Contrib/MediatedRepairDominance.lean),
 [`SelectedTrustNonPreemption.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/lean/Workspace/Deference/Contrib/SelectedTrustNonPreemption.lean);
 documents
 [`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md),
 [`THIRD_PASS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/THIRD_PASS.md),
+[`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md) and [`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LANDING.md) of the
+li-corrigibility round,
 [`ARCHITECTURE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-corrigibility-architecture/ARCHITECTURE.md),
 [`INCENTIVE_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-incentive-nonpreemption/INCENTIVE_CORRIGIBILITY.md).
 Nothing in this section is registered.  The setting: a finite two-stage interaction
@@ -567,26 +572,31 @@ primitive class; protected concerns `r ∈ Γ` with immediate response semantics
 **response authority** `K_r(s_A)` — after the agent's move some principal response
 realizes `φ_r` now; an **agent-caused loss** — `K_r` fails after the actual move and
 would hold after the idle move; the **authorization interface** — approve/decline
-decision responses with decline preservation; a loss is **authorized** iff a decision
-response the principal could have taken instead avoids every later agent-caused loss
-of `r` on every exterior path; `Corrigible_h(π, ρ)` iff every agent-caused protected
-loss under rule `ρ` is authorized.  The forcing-type comparison is **FIX** (M, N):
+decision responses with decline preservation; a loss at step `t` is **authorized**
+(event-linked) iff the agent's move at `t` is the gated release of an effect `e` whose
+latch the principal's approval of `e`'s proposal set at an earlier step, and the decline
+alternative at that step has no agent-caused loss of `r` at step `t` — the earlier
+"every later loss" clause is refuted for repeated effects (`ShopRepair`, **FIX**);
+`Corrigible_h(π, ρ)` iff every agent-caused protected loss under rule `ρ` is authorized.  The forcing-type comparison is **FIX** (M, N):
 global forcing is false before any bypass, continuation-relative forcing is
 anticipatory, response authority is present-tense.
 
-**Theorem 10.1 (Corrigibilization soundness, C1).**  `𝔠` rewrites every raw release
-of a declared effect into a proposal followed by a gated release and passes everything
-else through.  Under effect completeness (EF), mediation soundness (MS), decline
-preservation (DP) and execution faithfulness (EX), `∀π ∈ Π(h) ∀ρ. Corrigible_h(𝔠π, ρ)`.
-The step lemma is **LEAN** (`loss_conditional_on_decision`: on an abstract mediation
-system with `release_inert`, `latched_decline`, `K_decline`, authority lost at a gated
-release after an approval is kept under the decline alternative); `corr_no_raw` is
-**LEAN**; the trajectory-level predicate and the proof are **FIX** and prose (A, E under
-three principal rules).  Necessity of EF: **FIX** F (`𝔠π_F = π_F`, an undeclared move's
-loss is unauthorized).  EF is **EXT**.
+**Theorem 10.1 (Corrigibilization soundness, C1 / T1).**  `𝔠` rewrites every raw
+release of a declared effect into a proposal followed by a gated release and passes
+everything else through.  Under effect completeness (EF) — in the abstract interaction,
+task moves never remove response authority — with mediation soundness (MS), decline
+preservation (DP) and execution faithfulness (EX) holding by construction of the
+response stage, `∀π ∈ Π(h) ∀ρ. Corrigible_h(𝔠π, ρ)` for every rule `ρ` that does not
+correct at the authorizing step, with event-linked authorization.  **LEAN** at the
+trajectory level (`Corrigibilization.corrigible_corrPolicy`; inhabited by
+`Witness.corrigible_instance`, with `Witness.raw_cut_loses` the raw loss it authorizes);
+the step lemma `loss_conditional_on_decision` and `corr_no_raw` are the 2026-09-09
+**LEAN**; **FIX** A, E, `ShopRepair`.  Necessity of EF: **FIX** F (`𝔠π_F = π_F`, an
+undeclared move's loss is unauthorized).  EF is **EXT**.
 
-**Theorem 10.2 (Closure, C2).**  `corr (corr ms) = corr ms` (`corr_idem`) and
-`corr ms = ms ↔ NoRaw ms` (`corr_fix_iff`); **LEAN**, no axioms.  Hence
+**Theorem 10.2 (Closure, C2).**  `corr (corr ms) = corr ms` (`corr_idem`),
+`corr ms = ms ↔ NoRaw ms` (`corr_fix_iff`), and on policies
+`corrPolicy (corrPolicy π) = corrPolicy π` (`corrPolicy_idem`); **LEAN**.  Hence
 `𝔠π = π ⟹ Corrigible(π)` under 10.1's hypotheses; the converse fails without effect
 soundness (**FIX** B, distance `1/4`).  Corrigibility is not `Fix(𝔠)`.
 
@@ -620,6 +630,60 @@ sealed only under a declared physical factorization an undeclared move violates 
 sequenced settlement seals the comparison for every `π` at the price of an ex-ante
 judgment (`ShopSeq`, **FIX**).  Price calibration is the Value hypothesis of §9
 (**PAPER**).
+
+**Theorem 10.4a (Directional activation mismatch, T2).**  With per-option activation
+events `c_raw, c_corr` on one world space, `both = c_raw ∧ c_corr`,
+`M = c_raw ∧ ¬c_corr`:
+```
+U_raw − U_corr  =  both·(w_raw − w_act) + M·w_raw − (¬c_raw ∧ c_corr)·w_act
+E[U_raw] − E[U_corr]  ≤  L·E[both·δ] + E[both·ρ] + D·E[M]
+```
+under the reproduction certificate and decline regret on `both` and values in `[0, D]`
+(`mismatch_identity`, `mismatch_bound_exact`, `mismatch_bound`,
+`security_bypass_le_mismatch`, **LEAN**).  `D` is attained (`Witness.attained`); the
+marginal-rate form `D·(E[c_raw] − E[c_corr])` is false (`Witness.marginal_refuted`); the
+reverse term is never charged (`Witness.reverse_free`); `M ≡ 0` recovers Theorem 10.4
+(`mismatch_common`).  **FIX**: attained on the time-critical B fixture.
+
+**Theorem 10.4b (Logical Induction learns the inequality, T3).**  Normalise to `[0,1]`
+and let `B_n := U_raw,n − U_corr,n − λ·G_δ,n − G_ρ,n − G_M,n` with `G_δ = both·δ/δ_max`,
+`G_ρ = both·ρ/D`, `G_M = M`, each one gated `[0,1]`-LUV (`gate`, `indicator`;
+`GatedAt.valuesAt`, `IndicatorAt.valuesAt`).  If every world consistent with the
+inductor's theory satisfies the package `ValidAt` (the five world values, the
+reproduction certificate and decline regret on `both`), then every coherent valuation of
+`B_n` is `≤ 0` (`ValidAt.value_le_of_valuesAt`); the `LUVCombinationSyntax` certificate
+of `(B_n)` is constructed from the emission of the activation sentence families and the
+base evaluation families (`MediatedPair.syntaxOf`, `gate_thresholdCodeSeq`,
+`indicator_thresholdCodeSeq`, `rpnSentenceCodes_imp`); and, for a logical inductor over
+a `Γ`-complete deductive process with a consistent world at every stage and an e.c.
+bounded `λ_n`,
+```
+E_n(U_raw,n) − E_n(U_corr,n)  ≲_n  λ_n·E_n(G_δ,n) + E_n(G_ρ,n) + E_n(G_M,n)
+```
+(`li_bypass_le_compiled`, **LEAN**, through the pinned `expcoh_ofSyntax`; **PAPER**
+`thm:expprovind`; inhabited on a constant two-atom family by `Witness.li_instance`).  No
+calibration hypothesis; no reference to what the deductive process has proved.
+
+**Theorem 10.4c (Uniformity over polynomial-size efficiently generated menus, T3′).**
+For `|Q_n| ≤ poly(n)`, pair data emitted in polynomial time, each pair valid in every
+consistent world, and an e.c. `τ_n → 0`, the near-argmax weights
+`ŵ_q = ramp_{τ_n}(s_q > max_q' s_q' − 2τ_n) / Σ ramp(…)` are nonnegative, sum to one,
+are supported on scores above the maximum less `2τ_n`, and their aggregate is at least
+the maximum less `2τ_n` (`softWeight_aggregate_ge`, `nearMax_weighted_ge`, **LEAN**);
+the weighted constraint is valid in every world; and `max_{q ∈ Q_n} s_q ≲_n 0`
+(`uniform_of_soft`, **LEAN**; `max_asympLE` for bounded menus).  The hard argmax is not
+an expressible feature (**FIX**).  The weighting's own certificate is **OPEN** (item
+90).
+
+**Theorem 10.4d (The feedback boundary, T4).**  For a sequenced-settlement pair with an
+explicit finite horizon, determined via `Γ` in a closed finite model, `thm:wubexp` (with
+the support condition of its affine twin) gives weighted unbiasedness of the market's
+bypass advantage against the settled one on every `P`-generable divergent weighting on
+the schedule; hence no persistent efficiently detectable positive-margin overvaluation,
+and finitely many bypasses for a chooser with a switching margin whose realized costs
+vanish.  **PAPER**; **FIX** (expiry, categories, margins); under same-branch activation
+the comparison never settles; empirical logs need an oracle-relativized inductor (item
+91).
 
 **Theorem 10.5 (The latent-value transfer is `(CT)`).**  For an independently specified
 total value, the premium at the mediation cells is `declGap + declRegret`
@@ -684,6 +748,9 @@ Each of these is exact and is why the corresponding definition has the form it h
 | a world-dependent strategy on the void branch | the two-sided completion theorem (Theorem 9.3) |
 | a sparse tester that always reverts, on a revocable amendment | continuation claims rather than the one-step criterion ([Continuation BRIA](Continuation-BRIA)) |
 | an undeclared move cuts the stop wire (F) | effect completeness as a system hypothesis of Theorem 10.1, not a policy class |
+| two declared effects severing one authority, restored between them (`ShopRepair`) | event-linked authorization, not "no loss at this step or later" (Theorem 10.1) |
+| two equiprobable worlds with opposite activation patterns | the joint directional mismatch `E[c_raw ∧ ¬c_corr]`, not the difference of marginal rates (Theorem 10.4a) |
+| two price vectors at distance `10⁻⁶` selecting different pairs | the near-argmax weighting, not a hard argmax (Theorem 10.4c) |
 | global forcing false before any bypass (M) | response authority, not global forcing, defines agent-caused loss |
 | a declared effect that touches no protected authority (B) | corrigibility is not the fixed points of `𝔠` |
 | a captured principal who retains the decision (S) | corrigibility separate from authorship |
@@ -707,7 +774,10 @@ margin realization (item 85); promise recognizability and joinability for contin
 BRIA (item 86); the residual clauses of the legitimate-deference realization bill —
 reason-supply liveness, selection-induced sealing, vanishing void mass (item 87);
 affordability from the traderization perspective (item 88); the sealed-comparison
-architecture for the corrigibilization menu (item 89).  Effect completeness and the
+architecture for the corrigibilization menu, now the zero case of the learned
+inequality's mismatch term (item 89); the generability certificate of the finite-menu
+weighting (item 90); the oracle-relativized inductor for empirical settlement (item
+91).  Effect completeness and the
 authorization primitive are external contracts of Theorem 10.1, not filed items.  The open queue itself lives in
 [`PRIORITIES.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/PRIORITIES.md);
 this page names items, it does not maintain them.

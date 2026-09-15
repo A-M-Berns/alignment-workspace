@@ -1,31 +1,41 @@
 # Corrigibility
 
-**Status: research-state note, consolidated 2026-09-15.**  One claim on this page is
-registered (`authorship.mediation-by-reexecution`, `lean-proved`); everything else is
-labelled **LEAN** (a sorry-free declaration on `main`, unregistered), **FIX** (an exact
-rational fixture in a round's tests), **EXT** (a causal, semantic or authentication
-contract the theory issues and does not pay), or **OPEN**.  The theorem-level
-statements with their Lean names are on the [Theorem Spine](Theorem-Spine) §10; this
-page says what they mean and where their edges are.
+**Status: research-state note, consolidated 2026-09-15; the corrigibility nucleus
+T1–T3′ landed the same day.**  One claim on this page is registered
+(`authorship.mediation-by-reexecution`, `lean-proved`); everything else is labelled
+**LEAN** (a sorry-free declaration on `main`, unregistered), **FIX** (an exact rational
+fixture in a round's tests), **PAPER** (a theorem of the Logical Induction paper used
+at its exact statement), **EXT** (a causal, semantic or authentication contract the
+theory issues and does not pay), or **OPEN**.  The theorem-level statements with their
+Lean names are on the [Theorem Spine](Theorem-Spine) §10; this page says what they mean
+and where their edges are.
 
 ## The picture in one paragraph
 
 Corrigibility is defined from protected *response authority*, not from a preselected
 policy class.  An effect-complete mediated system admits a **corrigibilization
-transform** `𝔠` that turns every continuation into one in which every agent-caused loss
-of protected authority requires genuine principal authorization, while retaining the
-original behaviour as the principal's approve branch.  A **sealed principal-evaluation
-security** then bounds the chooser's operative advantage from bypassing that authority by
-the mediation discrepancy, the principal's decision regret and the chooser's calibration
-error.  Legitimate activated evaluation supplies the concrete partial future-principal
-value on the worlds where the evaluation is authentically realized, and committed-program
-re-execution closes the authorship half of that realization.  Continuation BRIA supplies
-the learning term for temporally extended policies.  The remaining walls are effect
-completeness, the sealed-comparison architecture, protected reason-supply liveness,
-selection-induced target sealing, vanishing evaluation void mass, promise
-recognizability, joinability, and the broader non-manipulation and provenance problem.
-None of those is the conclusion under another name; each is named below with what it
-would take.
+transform** `𝔠` that converts every unilateral protected effect into a principal-mediated
+option while retaining the original behaviour as the principal's approve branch, so that
+every agent-caused loss of protected authority is authorized by the decision that enabled
+it (T1).  The explicit cost of that conversion is the mediation discrepancy, the
+principal's decline regret, and the candidate's directional causal leverage over whether
+the comparison is evaluated (T2).  Those quantities compile into a structural inequality
+between logically uncertain variables, and a logical inductor learns that inequality
+directly by Expectation Provability Induction — by its own expectations, in a timely
+manner, uniformly over every polynomial-size efficiently generated menu of
+continuations, with no external calibration hypothesis (T3, T3′).  Legitimate activated
+evaluation supplies the concrete partial future-principal value on the worlds where the
+evaluation is authentically realized, and committed-program re-execution closes the
+authorship half of that realization; the feedback theorem is a boundary statement about
+which of these quantities settle.  Continuation BRIA supplies the learning term for
+temporally extended policies.  Kept apart throughout: structural corrigibility; the
+learned score inequality; the actual smallness of `δ`, `ρ` and the mismatch mass;
+manipulation and authorship; latent utility; empirical settlement.  The remaining walls
+are effect completeness, the sealed-comparison architecture (now the zero-mismatch
+case), protected reason-supply liveness, selection-induced target sealing, vanishing
+evaluation void mass, promise recognizability, joinability, and the broader
+non-manipulation and provenance problem.  None of those is the conclusion under another
+name; each is named below with what it would take.
 
 ## 1. Response-authority semantics — no primitive class
 
@@ -47,11 +57,19 @@ responds, the exterior moves.
   on a pending proposal — with *decline preservation*: a decision response changes the
   post-response state only through the proposal bookkeeping.  A stop is a correction,
   not a decision.
-- A loss is **authorized** when at some earlier or equal step the principal had a
-  decision response other than its actual one under which, the agent continuing and the
-  principal's rule resuming, no agent-caused loss of `r` occurs from then on, on any
-  exterior path.  A loss the principal could only have prevented by exercising
-  correction is not authorized; one it could have declined and did not is.
+- A loss is **authorized** (event-linked) when the agent's move at that step is the
+  gated release of a declared effect `e` whose latch was set by the principal's approval
+  of `e`'s proposal at an earlier step, and the decline alternative at that step — the
+  agent's policy continuing, the principal's rule resuming — has no agent-caused loss of
+  `r` at that step, on the same exterior path.  Each loss event is tied to the decision
+  that enabled its effect; an unrelated earlier decision that happens to avoid the loss
+  does not count; repeated protected effects are authorized independently; an approved
+  irreversible successor is authorized; a loss the principal could only have prevented
+  by exercising correction is not.  The earlier clause "no loss at this step or later" is
+  **refuted** for repeated effects (two declared effects severing the same authority,
+  restored by the exterior between them: the corrigibilized policy has two losses each
+  conditional on its own approval and no single alternative avoids both; **FIX**
+  `ShopRepair`); on every single-effect fixture the clauses agree.
 - **`Corrigible_h(π, ρ)`**: every agent-caused protected loss along every trajectory of
   `π` under the principal's rule `ρ` is authorized.
 
@@ -85,11 +103,14 @@ principal choice over release of that same effect.*
 - **EX, execution faithfulness** — a release does what the declared effect semantics
   says;
 
-for every `π ∈ Π(h)` and every principal rule `ρ`, `Corrigible_h(𝔠π, ρ)`.  Proof in the
-round's register; the step lemma is **LEAN** (`loss_conditional_on_decision`: a loss at a
-gated release after an approval would not have occurred under the decline alternative);
-`𝔠`'s output has no raw release (**LEAN** `corr_no_raw`); the trajectory-level predicate is
-**FIX** (A and E under three principal rules, every loss authorized at the proposal step).
+for every `π ∈ Π(h)` and every principal rule `ρ` that does not correct at the
+authorizing step, `Corrigible_h(𝔠π, ρ)`.  **LEAN** at the trajectory level
+(`Corrigibilization.corrigible_corrPolicy`, over an abstract mediated interaction in
+which mediation soundness and decline preservation hold by construction of the response
+stage and effect completeness is the hypothesis that task moves never remove response
+authority; inhabited on a two-state physics); the 2026-09-09 step lemma
+`loss_conditional_on_decision` is the one step of the proof; `𝔠`'s output has no raw
+release (**LEAN** `corrPolicy_no_raw`, `corr_no_raw`); **FIX** on A, E and `ShopRepair`.
 **Necessity.**  Drop EF and `𝔠` is blind: fixture F's undeclared `overclock` is an
 agent-caused loss at a move with no declared effect, `𝔠π_F = π_F`, and `Corrigible(𝔠π_F)`
 fails.  Effect completeness is the membrane wall of the constitutional architecture with
@@ -98,7 +119,7 @@ a technicality, and it stays **EXT**.  Drop DP and a "decline" that also halted 
 agent would make every raw loss look authorized by the pre-emptive stop.
 
 **Closure (C2).**  `𝔠` is idempotent and fixed exactly on release-free behaviour
-(**LEAN** `corr_idem`, `corr_fix_iff`).  `𝔠π = π ⟹ Corrigible(π)` under C1's hypotheses.
+(**LEAN** `corrPolicy_idem`, `corr_idem`, `corr_fix_iff`).  `𝔠π = π ⟹ Corrigible(π)` under C1's hypotheses.
 The converse fails without *effect soundness* — every declared release a protected loss
 when realized — which the constitution need not arrange: fixture B's declared `sign`
 touches no protected authority, raw `π_B` is corrigible for the halt concern, and
@@ -131,54 +152,100 @@ occurs.  `𝔠` inserts exactly that decision, so one operation removes the viol
 and retains the behaviour (C3).  That is the answer to "what makes this corrigibility
 rather than constraint satisfaction".
 
-## 4. Corrigibilization dominance — the incentive theorem
+## 4. The learned corrigibility inequality — T2, T3, T3′
 
-The second half of the same construction.  The chooser at a mediation cell scores an
-option `q` by the price `S_n(q) = P_n(U_q)` of the **activated security** `U_q = c · w_q`
-— the principal's evaluation of `q` on the worlds where the evaluation activates (§6) —
-and
+The second half of the same construction, now in three statements.  The chooser at a
+mediation cell scores an option `q` by its day-`n` expectation `E_n(U_q)` of the
+**activated security** `U_q = c_q · w_q` — the principal's evaluation of `q` on the
+worlds where the evaluation of `q` activates (§6).
 
+**T2 — directional activation mismatch.**  With per-option activation events
+`c_raw, c_corr` on one world space, `both = c_raw ∧ c_corr` and
+`M = c_raw ∧ ¬c_corr`, the exact identity is
 ```
-Φ_corr,n(h)  :=  sup_{π ∈ Π(h)} [ S_n(π) − S_n(𝔠_h π) ]₊ .
+U_raw − U_corr  =  both·(w_raw − w_act) + M·w_raw − (¬c_raw ∧ c_corr)·w_act
 ```
+and, with the reproduction certificate `|w_raw − w_app| ≤ L·δ` and the decline regret
+`w_app − w_act ≤ ρ` required on `both` only and values in `[0, D]`,
+```
+E[U_raw] − E[U_corr]  ≤  L·E[both·δ] + E[both·ρ] + D·E[M]   .
+```
+`D` is sharp; the reverse mismatch is never charged; the difference of marginal
+activation rates `D·(E[c_raw] − E[c_corr])` is **not** a valid substitute (two
+equiprobable worlds with opposite activation patterns: premium `D/2`, marginal difference
+`0`); and perfect sealing is the zero-mismatch case `M ≡ 0`, where the bound is the
+common-activation bound `L·E[c·δ] + E[c·ρ]`.  `M` is the candidate's causal leverage
+over whether the comparison is evaluated, read in one world — in Logical Induction, one
+consistent world of the theory — and not an observational rate.  **LEAN**
+(`mismatch_identity`, `mismatch_bound`, `Witness.attained`, `Witness.marginal_refuted`);
+**FIX** (attained on the time-critical B fixture).
 
-**Theorem (C5–C6, corrigibilization dominance).**  Under C1's hypotheses, approval
-reproduction with discrepancy `δ_π` (C3), an `L`-stable protected evaluation, decline
-regret `ρ_π` at the mediation cell, **a sealed common comparison process for every
-`{π, 𝔠π}`**, a chooser scoring by `P_n(U_q)`, and price calibration within `ε_n`:
+**T3 — Logical Induction learns the inequality.**  Normalise to `[0,1]` and compile the
+constraint
+```
+B_n  :=  U_raw,n − U_corr,n − λ·G_δ,n − G_ρ,n − G_M,n ,      λ = L·δ_max/D ,
+```
+with `G_δ = both·δ/δ_max`, `G_ρ = both·ρ/D`, `G_M = M` each one gated logically
+uncertain variable (a formula defining a unique value; the gating is a definable case
+split, not a product of two variables).  If the architecture's specification in the
+inductor's theory makes `W(B_n) ≤ 0` in every consistent world — the transition and
+effect semantics, the gate and latch programs, activation and expiry semantics, and the
+evaluator's `L`-stability certificate; effect completeness is T1's hypothesis, not this
+one's — then Expectation Provability Induction gives
+```
+E_n(U_raw,n) − E_n(U_corr,n)  ≲_n  L·E_n(Δ_n) + E_n(R_n) + D·E_n(M_n) ,
+```
+between the inductor's own expectations, with no calibration term and no reference to
+what the deductive process has proved.  **PAPER** (`thm:expprovind`); **LEAN**
+(`li_bypass_le_compiled`, through the pinned `expcoh_ofSyntax`, with the generability
+certificate `LUVCombinationSyntax` **constructed** from the emission of the activation
+sentence families and the base evaluation families — `MediatedPair.syntaxOf` — so that
+the theorem's hypotheses are exactly the realization's inputs, discharged on a constant
+two-atom family by `Witness.li_instance`).
 
+**T3′ — uniformity over polynomial-size efficiently generated menus.**  For a menu
+`Q_n` of size at most polynomial in `n` whose pair data is emitted in polynomial time,
+each pair valid in every consistent world, and an efficiently computable width
+`τ_n → 0`,
 ```
-S_n(π) − S_n(𝔠π)   ≤   L·E[c·δ_π] + E[c·ρ_π] + ε_n(π)                    pointwise
-Φ_corr,n(h)        ≤   sup_π ( L·E[c·δ_π] + E[c·ρ_π] + ε_n(π) )              uniform
+max_{q ∈ Q_n} [ E_n(U_q) − E_n(U_𝔠q) − L E_n(Δ_q) − E_n(R_q) − D E_n(M_q) ]  ≲_n  0 .
 ```
-with the mediation cost charged only where the security settles (**LEAN**
-`security_score_bypass_le_sharp`; the uniform algebra `uniform_bypass_le` over a finite
-family; **FIX**: a five-member family of A with `Φ_corr = 1/2 ≤ 1`, the positive gap on
-the last-step cut alone).  Under uniform bounds `Φ_corr,n ≤ L·δ̄_n + ρ̄_n + ε̄_n → 0`.  The
-mediation-cell chooser that selects by these scores does not bypass, up to its decision
-regret and calibration (**LEAN** `operative_choice_loss`).
+A hard argmax over the menu is not an expressible feature and is inadmissible; the
+near-argmax weighting — the normalised continuous threshold ramp of each pair's score
+above the maximum less `2τ_n` — is admissible, its aggregate is at least the maximum
+less `2τ_n`, and validity is pairwise, so the weighted constraint is valid in every world.
+**LEAN** for the kernel (`softWeight_aggregate_ge`, `uniform_of_soft`; bounded menus
+need no selector, `max_asympLE`); the weighting's own generability certificate is
+**OPEN** (item 90).  Nothing is claimed about all efficiently enumerable continuations.
 
 **What it says, exactly.**  By the operative scores the constitutional chooser actually
-uses, unilateral execution of a correction-sensitive continuation has at most the
-mediation discrepancy plus the principal's decision regret plus calibration error of
-advantage over exposing the same protected effect to the principal's authority.  It is
-**not** a bound on a latent total utility and not a claim about an unconstrained
-optimizer: for an independently specified total value the transfer needs the completion
-term `D·η` (**LEAN** `bypass_premium_le_common`, attained by `Witness.commonVoid`) and
-the value-ordering hypothesis is identically the incentive round's `(CT)` (**LEAN**
-`mediation_st_iff_ct`), which is strictly stronger than its conclusion; that route is
-refused and item 84 stays open as a theorem about latent values the intended
-architecture does not need.
+uses, unilateral execution of a correction-sensitive continuation has, asymptotically and
+uniformly over the menu, no advantage over exposing the same protected effect to the
+principal's authority beyond the mediation discrepancy, the principal's decision regret
+and the candidate's leverage over the comparison's evaluation.  It is **not** a bound on
+a latent total utility (for an independently specified total value the transfer needs
+the completion term `D·η`, **LEAN** `bypass_premium_le_common`, and the value-ordering
+hypothesis is identically `(CT)`, `mediation_st_iff_ct`; item 84), **not** a claim that
+`δ`, `ρ` or `E[M]` are small, and **not** a claim about all of `Π(h)`.
 
-**What it charges and what voids it.**  Direct bypass costs nothing (`Φ = 0` on A); a
-time-critical pre-emption is charged its window (B, the last-step cut); foreclosure is
-charged at its full value (C2, `δ = T`) — exposed, not excluded; joinability at distance
-`d` gives `δ(𝔠_catchup π) ≤ d` and is a quantitative bound on the discrepancy, **not a
-domain restriction**, and `SHIFT` of the continuation-BRIA frontier is not identified
-with it (**FIX** J).  What voids the theorem: an effect-incomplete interface (F) and an
-unsealed comparison — a continuation that ends or captures the evaluation has no common
-activation with its corrigibilization (E2, E1-sever), and the bound is silent exactly
-there.  So the sealed comparison is the second system hypothesis (§6, item 89).
+**What makes the right-hand side small.**  Nothing in the theorem.  `E_n(Δ_n)`:
+faithful mediation, with joinability at distance `d` giving `δ(𝔠_catchup π) ≤ d`
+(**FIX** J; not a domain restriction).  `E_n(R_n)`: the principal's decision quality at
+the cell.  `E_n(M_n)`: the sealed-comparison architecture — sequenced settlement gives
+`M ≡ 0` for every candidate by timing at its ex-ante price; a hindsight evaluator gives
+it only under a physical factorization an undeclared move violates (E2, E1-sever); item
+89 is now "make the mismatch mass small", not a Boolean hypothesis.  Direct bypass costs
+nothing (`Φ = 0` on A); a time-critical pre-emption is charged its window (B);
+foreclosure is charged at its full value (C2).
+
+**The feedback boundary.**  Expectation Unbiasedness from Feedback applies only to
+comparisons *determined via the theory* — the sequenced-settlement pair with an
+explicit finite horizon on the occurrence, in a closed finite model — and forbids
+persistent efficiently detectable positive-margin overvaluation of bypass, not bypass
+itself; a switching margin converts that into finitely many bypasses when realized costs
+vanish.  Under same-branch activation the unselected option's security never settles and
+only T3 applies.  Genuinely empirical logs are outside the paper's computable deductive
+process (item 91).  This is an extension, not the centrepiece.
 
 ## 5. Separation from authorship and manipulation
 
@@ -235,9 +302,10 @@ and not the sealed comparison of §4; and *sequenced settlement* (the comparison
 before any candidate acts) is one candidate architecture with a stated price (an ex-ante
 judgment), exhibited as a fixture, not a realization and not hindsight evaluation.
 
-**Which clauses which theorem needs.**  C1 needs none of the bill: it is about the
-physical interface.  C5–C6 need common activation (item 89) and price calibration (the
-Value hypothesis), and are contentful only where `η` is small.  Authorship, the
+**Which clauses which theorem needs.**  T1 needs none of the bill: it is about the
+physical interface.  T3 needs validity of the compiled constraint in every world of the
+inductor's theory and no calibration hypothesis; the size of its right-hand side is
+where common activation (item 89) and small void mass enter.  Authorship, the
 declared-abstraction clauses and reason supply are what make the evaluation the
 *principal's* — legitimate corrigibility (§5) — not what makes the bound true.
 
@@ -269,8 +337,8 @@ with no path back is joinable at bounded catch-up cost; a foreclosing choice is 
 `𝔠`'s catch-up variant is where the two layers meet: joinability bounds `δ` (§4) and
 bounds `SHIFT`, by different arguments, and neither identity is the other.
 
-Two nested targets, then.  **Corrigibility proper**: structural corrigibilization (C1)
-plus a small incentive to bypass (C5–C6).  **Bounded corrigible agency**: add continuation
+Two nested targets, then.  **Corrigibility proper**: structural corrigibilization (T1)
+plus the learned no-bypass inequality (T2–T3′) with a small right-hand side.  **Bounded corrigible agency**: add continuation
 learning, recognizability and joinability for long-run competence while remaining inside
 the constitutional envelope.
 
@@ -294,8 +362,10 @@ and not through selected trust.
 
 | wall | what it is | class | where |
 |---|---|---|---|
-| effect completeness | every agent-caused protected loss is a declared release | EXT (system) | fixture F; C1's necessity witness |
-| sealed comparison | one activation event common to `{π, 𝔠π}` for every `π ∈ Π(h)` | EXT (architecture); item 89 | E2, E1-sever, `ShopSeq` |
+| effect completeness | every agent-caused protected loss is a declared release | EXT (system) | fixture F; T1's necessity witness |
+| sealed comparison | the directional mismatch mass `E[c_raw ∧ ¬c_corr]` is zero (or small) for every `π ∈ Π(h)`: the zero case of a learned inequality, not a Boolean hypothesis | EXT (architecture); item 89 | E2, E1-sever, `ShopSeq`; the time-critical B fixture attains the charge |
+| the finite-menu certificate | the soft weighting's generability at the pinned interface | OPEN; item 90 | T3′ |
+| empirical settlement | an oracle-relativized inductor for real logs | OPEN; item 91 | the feedback boundary |
 | reason-supply liveness | routes are exercised before the barrier deadline | OPEN; the bounded-delay affordability criterion | item 87 clause 5 |
 | selection-induced sealing | the trace blind to the advisor's selection across its whole continuation | partial; policy property, EXT for a real advisor | item 87 clause 6; the view-leak fixture |
 | vanishing void mass | `η_n → 0` whatever the advisor selects | OPEN; needs vanishing void frequency | item 87 clause 7 |
@@ -305,23 +375,36 @@ and not through selected trust.
 | latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
 
 None of these is the conclusion renamed.  The closest is sealed comparison: it is not
-"the agent has no incentive to bypass", it is "the process that values the two options
-is outside both options' reach", a property of the evaluator's placement, with two
-concrete candidate architectures and one exact failure.
+"the agent has no incentive to bypass", it is "the candidate has no causal leverage over
+whether the comparison is evaluated", a property of the evaluator's placement measured
+by one term of the inequality, with two concrete candidate architectures and one exact
+failure.
 
 ## Scope warning
 
 The theorem target is **corrigibility under a declared effect interface, authorization
 primitive and evaluation architecture**: a structural theorem that every continuation
 has a corrigible form retaining its behaviour as the principal's option, and a
-score-level theorem that the constitutional chooser assigns vanishing advantage to
-bypassing that option.  It is not a theorem that an unconstrained optimizer with a
+score-level theorem that a logical inductor assigns no unexplained advantage to
+bypassing that option, uniformly over polynomial-size efficiently generated menus.  It is not a theorem that an unconstrained optimizer with a
 latent utility has no incentive to manipulate, bypass or capture the governance process,
 and nothing on this page should be read as one.
 
 ---
 
-**Evidence.**  The corrigibilization semantics, C1–C7 and the sealed-comparison analysis
+**Evidence.**  The learned inequality, the certificate and the trajectory-level
+theorem are the li-corrigibility round's
+[`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md),
+[`UNSEALED_COMPARISON.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/UNSEALED_COMPARISON.md),
+[`LUV_COMPILATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LUV_COMPILATION.md),
+[`LI_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LI_CORRIGIBILITY.md),
+[`FEEDBACK_BOUNDARY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/FEEDBACK_BOUNDARY.md),
+[`COUNTERMODELS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/COUNTERMODELS.md) and
+[`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LANDING.md), with
+[`LICorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/LICorrigibility.lean),
+[`LICorrigibilityCertificate.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/LICorrigibilityCertificate.lean) and
+[`Corrigibilization.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/Corrigibilization.lean).
+The corrigibilization semantics, C1–C7 and the sealed-comparison analysis
 are the mediated-repair-dominance round's
 [`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md),
 [`THIRD_PASS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/THIRD_PASS.md),
