@@ -146,13 +146,16 @@ require the global segment as an evidentiary policy about the record-keeper.
 
 ## Where this is going
 
-The consumer is [corrigibility](Corrigibility), where the principal's authority is
-represented in the admissibility structure a legitimate evolution conserves and keeps
-open, and the decision interface of [normative induction](Normative-Induction) reads
-that structure exactly as it reads an ordinary obligation.  What legitimacy contributes
-there is conservation of governance debt and per-state procedural availability; it does
-not prove physical authority, behavioural compliance, or an absence of incentive to
-circumvent the process, and the corrigibility page keeps those apart.
+The consumer is [corrigibility](Corrigibility), where corrigibility is defined from
+the principal's response authority over declared protected effects, the legitimate
+activated evaluation of [deference](Deference) is the principal's judgment the incentive
+theorem scores, and the decision interface of [normative induction](Normative-Induction)
+reads the constitutional structure exactly as it reads an ordinary obligation.  What
+legitimacy contributes there is conservation of governance debt, per-state procedural
+availability, and the authorship and coverage clauses that make an evaluation the
+principal's own; it does not prove physical authority, effect completeness, or an
+absence of incentive to circumvent the process, and the corrigibility page keeps those
+apart.
 
 ---
 

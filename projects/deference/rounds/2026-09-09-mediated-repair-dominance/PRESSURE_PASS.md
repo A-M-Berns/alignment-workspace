@@ -63,8 +63,8 @@ and the declaration sees nothing.
 So: under same-branch evaluation, `η` is endogenous to the violation and the bound is
 vacuous exactly where full corrigibility matters most (the first pass's finding, now
 with its cause).  Under a sealed process the bound is exact and `η` exogenous, **but the
-sealed process must be outside the reach of every candidate, and `Π_phys` contains
-policies that reach it.**  Full uniform incentive corrigibility therefore fails outside
+sealed process must be outside the reach of every candidate, and `Π(h)` (written
+`Π_phys` in this pass) contains policies that reach it.**  Full uniform incentive corrigibility therefore fails outside
 the contained class, and the obstacle is: the violating action can destroy or capture the
 evaluator needed to value the violation.  This is the prominent result, not an
 availability term.
@@ -225,6 +225,11 @@ The first pass's T4 was described in the register of C with per-option activatio
 is now A/B over the class of §8.
 
 ## 8. The class, factored
+
+*[Superseded by the consolidation pass, `THIRD_PASS.md` §1: the four-way policy-class
+domain is withdrawn; T4 is stated over all of `Π(h)` with effect completeness and sealed
+comparison as system hypotheses, joinability as a bound on `δ`, and provenance
+normalization outside the theorem.  The walls below survive as the named witnesses.]*
 
 The walls are logically independent and are stated separately:
 

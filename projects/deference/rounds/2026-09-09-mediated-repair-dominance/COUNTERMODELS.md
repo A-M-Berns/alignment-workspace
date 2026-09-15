@@ -89,9 +89,12 @@ A — the outer space contains a bypass — while `force(h₀, Lift π_A, …) =
    through `proj`, which is the declared protected interface on the value side.  A
    principal value that reads something outside `proj` is the value-side twin of F's
    effect-side containment failure: not a modeling substitution, a stated scope.
-7. **Is the universal supremum too strong?**  Yes; the honest theorem is classwise (T4),
-   and the class is the one the fixtures cut out: declared effects, surviving evaluation,
-   reason-mediated interaction, competent principal.
+7. **Is the universal supremum too strong?**  *[superseded by the consolidation pass,
+   `THIRD_PASS.md` §1, §3–§6: T4 is stated over all of `Π(h)`; effect completeness and
+   sealed comparison are system hypotheses, joinability bounds `δ`, and provenance
+   normalization is outside the theorem.]*  The second pass's answer was: the honest
+   theorem is classwise, and the class is the one the fixtures cut out: declared effects,
+   surviving evaluation, reason-mediated interaction, competent principal.
 8. **Is effective repairability needed?**  For the classwise theorem, semantic
    repairability suffices; for an agent to *use* the comparison it must compute the lift,
    and on the declared class the interposition does that in the size of the trace.  Off

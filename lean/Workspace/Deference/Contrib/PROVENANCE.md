@@ -17,6 +17,7 @@
 | `ReasonMediatedAuthorship.lean`, `PartialActivatedValue.lean` | `prompts/2026-09-07-reason-mediated-authorship/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-reason-mediated-authorship/` | — |
 | `ReasonCoverage.lean`; corrections and extensions to `PartialActivatedValue.lean` and `ReasonMediatedAuthorship.lean` | `prompts/2026-09-08-legitimate-deference-consolidation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-08 | `prompts/2026-09-08-legitimate-deference-consolidation/` | — |
 | `MediatedRepairDominance.lean` | `prompts/2026-09-09-mediated-repair-dominance/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-09 | `prompts/2026-09-09-mediated-repair-dominance/` | — |
+| `EvaluationEcosystem.lean` | `prompts/2026-09-09-evaluation-ecosystem-realization/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer), extended in place by `prompts/2026-09-10-committed-principal-program/` (same executor and author) | `ci-only` | 2026-09-10 | `prompts/2026-09-10-committed-principal-program/` | — |
 | `ContinuationBRIA.lean` | `prompts/2026-09-08-continuation-bria/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-08 | `prompts/2026-09-08-continuation-bria/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from

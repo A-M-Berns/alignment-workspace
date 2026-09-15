@@ -125,19 +125,30 @@ The standing legitimacy items from before the canonicalization:
 
 ## Deference
 
-**Both targets are live.** The items below are what the older corrigibility target
-still needs; its temporal-depth half is now [Continuation BRIA](Continuation-BRIA), and
-its one decision is the succession of item 28. The
-legitimate-deference stack — activation of the actual future principal's partial
-evaluation, diachronic reason-mediated authorship, protected reason coverage, and the
-conditional authoritative-regret theorem — is landed as research state, and its one
-residual is the realization bill, item 87, now partially discharged by the
-[evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/57b373bfe542d0c7b1ee78ba7e170fade4cc9003/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization): clauses 1, 3, 4 discharged, 2 for the reading
-principal, 6 partial, 5 and 7 residual with exact criteria.
-The [committed-principal-program round](https://github.com/A-M-Berns/alignment-workspace/tree/899d9c67b9a1a3779ec38de1ccd4e7419c5a03a4/projects/deference/rounds/2026-09-10-committed-principal-program) closes clause 2 on log authenticity
-(registered `authorship.mediation-by-reexecution`) and repairs three of the earlier
-discharges; 5 and 7 remain residual, 6 partial.
+**Both targets are live.** The corrigibility theorem program is consolidated on
+[Corrigibility](Corrigibility): corrigibility from response authority over one
+continuation space, corrigibilization soundness under effect completeness, the
+corrigibilization-dominance bound `Φ_corr` under sealed comparison, separation from
+authorship, and the two nested targets — corrigibility proper and bounded corrigible
+agency.  The legitimate-deference stack is its principal evaluation, realized in the
+evaluation ecosystem with the authorship clause closed on log authenticity
+(`authorship.mediation-by-reexecution`, registered); what remains of item 87 is
+reason-supply liveness, selection-induced sealing and vanishing void mass.  The items
+below are what the two targets still need.
 
+- Sealed comparison — item 89: an architecture under which the constitutional
+  comparison of `{π, 𝔠π}` has one activation event for every continuation in
+  `Π(h)`; sequenced settlement is one candidate at the price of an ex-ante judgment,
+  a hindsight evaluator under a physical factorization another; the ecosystem realizes
+  neither yet.
+- The residual clauses of the realization bill — item 87: liveness against the
+  bounded-delay affordability criterion, sealing of the advisor's whole
+  selection-conditioned continuation, and `η_n → 0`.
+- Promise recognizability, joinability certificates for the slow lane, and their
+  composition into corrigible policy competence — item 86.
+- The Lean form of eligible liveness and the laundered-loss case split — item 83.
+- The latent-value bridge behind selected trust — item 84 — open as a theorem about
+  independently specified operative values and not needed by the score-based chooser.
 - Decide whether the candidate objects for what foreclosure loses are enough for
   that question to graduate, and what succeeds item 28.
 - Endpoint preservation is ruled out (`DECISIONS.md`, 2026-09-08); the older target's
@@ -153,9 +164,6 @@ discharges; 5 and 7 remain residual, 6 partial.
 - Settle which route to Value the line's target should be, given that the
   hard-selector route does not survive the punishment menus — items 14 and 34.
 
-Three corrigibility rounds and the continuation-BRIA round ran and their state is on
-[Corrigibility](Corrigibility) and [Continuation BRIA](Continuation-BRIA). What they
-filed: the Lean form of eligible liveness and the laundered-loss case split — item 83;
-the operative-value-security bridge behind selected trust — item 84; and item 86, now
-refined to what continuation BRIA leaves: promise recognizability, joinability
-certificates for the slow lane, and their composition into corrigible policy competence.
+Effect completeness and the authorization primitive are external contracts of the
+corrigibilization theorem, restated from the architecture round's containment wall,
+and are not filed as items.

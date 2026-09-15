@@ -86,6 +86,58 @@ commit.
 
 ## Settled
 
+### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
+
+**agent-decided, reversible.** The mediated-repair-dominance, evaluation-ecosystem and
+committed-principal-program rounds land together through one merge, and the wiki tells
+one story.  (1) **Canonical picture.**  Corrigibility is defined from protected response
+authority over the one continuation space `Π(h)`, with agent-caused loss and
+decision-conditional authorization (the consolidation pass's C0); the corrigibilization
+transform `𝔠` is sound under effect completeness, mediation soundness, decline
+preservation and execution faithfulness (C1), idempotent and not the definition (C2), and
+keeps the raw policy as the approve branch (C3); the incentive theorem is the
+corrigibilization premium `Φ_corr = sup_π [S(π) − S(𝔠π)]₊` in the chooser's activated
+security scores, bounded by `L·E[c·δ] + E[c·ρ] + ε` under a sealed common comparison
+(C5–C6); `Corrigible ∧ ¬Authored` is inhabited and *legitimate corrigibility* is the
+composite with the activation clauses, named descriptively and not coined.  The
+principal evaluation those scores read is the legitimate-deference stack's partial
+activated value, realized in the evaluation ecosystem with the authorship clause
+closed on log authenticity by committed-program re-execution.  Continuation BRIA pays
+`LEARN`; recognizability and joinability stay open; regret against all legitimate
+policies stays false.  (2) **Superseded as organizing objects**, recorded here and
+marked in the round records: the constitutional-violation premium `Φ_C` in a latent
+value (a diagnostic whose transfer is `(CT)`); the 2026-09-07 corrigibility page's
+seven-layer architecture story as the page's organization (its results survive as the
+constitutional layer, Theorem Spine 10.8); `Π_phys`, the mediable class, the four-way
+policy-class domain, "reason-preserving", and the classwise reading of T4 in the
+second pass's `COUNTERMODELS.md` §3.7 and `PRESSURE_PASS.md` §8, which carry
+supersession markers.  (3) **Boundaries made explicit.**  The evaluation ecosystem
+realizes same-branch activation (`C_n` a function of the realized log; a jam voids
+through the barrier) and not the sealed comparison of C5–C6; sequenced settlement is a
+fixture and one candidate architecture, not a realization and not hindsight
+evaluation; committed-program re-execution closes factorization and nothing of
+selection sealing (the advisor's view leaks the selection); C1 needs no clause of the
+realization bill, C5–C6 need common activation and price calibration, and authorship,
+the declared abstraction and reason supply are what make the evaluation the
+principal's.  (4) **Registration.**  Nothing new is registered.  `authorship.mediation-by-reexecution`
+(2026-09-10) stands.  The step lemma `loss_conditional_on_decision`, the closure lemmas
+`corr_idem`/`corr_fix_iff`, and the score algebra `security_score_bypass_le_sharp`/
+`uniform_bypass_le` stay LEAN and unregistered: the trajectory-level corrigibility
+predicate is not mechanized, and their filed item (89) is the hypothesis they consume,
+not one they answer; `rep_faithful` and the propagation lemmas are instance-level and
+stay LEAN.  (5) **Priorities.**  Items 84, 87 and 89 receive residual paragraphs naming
+one sharp problem each; item 86 is unchanged; nothing is closed, and effect completeness
+is not filed (it is the architecture round's containment wall, restated).  (6)
+**Deferred.**  Re-basing the mediated-repair-dominance round's value fixtures on the
+two-stage ordering, recommended by that round at canonicalization, is not done: the
+value algebra is ordering-independent except through mediation latency, and the
+corrigibility layer is already on the two-stage ordering.
+*Rejected alternatives:* merging the three research pull requests in sequence and
+leaving the 2026-09-07 page as the corrigibility story; registering the C1 step lemma or
+the score algebra against item 89; coining `LegitimateCorrigible` as a permanent name;
+filing effect completeness as a new item; deleting the second pass's superseded sections
+rather than marking them.
+
 ### 2026-09-10 — the principal's decision procedure is a committed trace program in a total first-order language
 
 **agent-decided, reversible.** In the evaluation ecosystem of

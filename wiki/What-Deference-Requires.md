@@ -51,13 +51,18 @@ neither a stable selector nor a positive margin.
 
 ## Current status
 
-> **Open / unregistered research.** Finite models expose substitution and
+> **Research state, one registered claim.** Finite models expose substitution and
 > factorization failures, and the notes state conditional competence and
-> calibration interfaces. No registered theorem connects all these relations.
+> calibration interfaces. The one registered theorem here is reason mediation by
+> re-execution of a committed principal program (`authorship.mediation-by-reexecution`);
+> no registered theorem connects all these relations.
 
-The open representation problem is to type authorization and capability
-separately, retain a principal-exclusive effect, connect competence to a usable
-margin, and state which advisor policies an efficacy claim quantifies.
+The representation problem — type authorization and capability separately, retain a
+principal-exclusive effect, connect competence to a usable margin, and state which
+advisor policies an efficacy claim quantifies — is now answered in one concrete model:
+the evaluation ecosystem's warrant registry binds keys to parties, the advisor's own
+commit is a write and not a receipt, and [corrigibility](Corrigibility) quantifies over
+the one physical continuation space with the system contracts named.
 
 ## Evidence and verification
 

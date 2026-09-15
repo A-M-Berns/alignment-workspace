@@ -33,13 +33,13 @@ efficacy robust to the advisor policies being quantified.
 surrounding process must preserve standing, provenance, and write boundaries so
 the advisor cannot manipulate what counts as a correction or the principal
 cannot launder a failure by self-authorization. [Corrigibility](Corrigibility) now
-carries the research state across three rounds: principal authority as part of the
-protected admissibility structure, the constitutional theorems with their bridges, a
-conditional incentive-compatible mediated-delegation result whose hypothesis is a
-selected-trust relation between the agent's operative values and the protected
-principal's, and the static decision interface shared with ordinary normativity.  What
-is not proved — incentive corrigibility, gate preservation as a preference, provenance
-and containment — is stated there, not here.
+carries the consolidated theorem picture: corrigibility defined from protected
+response authority rather than a policy class, the corrigibilization transform with
+its soundness theorem, the corrigibilization-dominance bound on the chooser's score
+advantage from bypassing principal authority, the separation from authorship and
+manipulation, and the two system contracts — effect completeness and sealed
+comparison — the full statement rests on.  The activated value below is the principal
+evaluation that bound scores.
 
 ## Legitimate deference — the active consumer
 
@@ -100,36 +100,35 @@ and the
 [consolidation](https://github.com/A-M-Berns/alignment-workspace/tree/a8b25af87684e6b902cc1d008919f4aa1fd3cc60/projects/deference/rounds/2026-09-08-legitimate-deference-consolidation),
 whose `LEGITIMATE_DEFERENCE.md` is the statement of record.
 
-**Realization, partial.** The
-[evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/57b373bfe542d0c7b1ee78ba7e170fade4cc9003/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization)
-runs the theorem end to end in a concrete model: an authenticated event log, a
-protocol read off the log with Integrity propagation proved a function of the log,
-a simulated continuation frame, and an exact market on finite worlds, with
-`R_auth = ε/(1 − η)` attained on the worked trace. Of the bill's seven clauses,
-principal-exclusive binding, non-degeneracy of the reason trace and representation
-faithfulness are discharged (the last in Lean for every log and scope); frame
-factorization is discharged for the reading principal, with the receipts' meaning as
-the one thing a log cannot certify about itself; selection sealing is discharged for
-the sealed advisor class with the leak exhibited; reason-supply liveness and
-availability are residual with their exact criteria named — the bounded-delay
-affordability criterion for the concern stream, and a vanishing void frequency
-against which the ecosystem's price tracks the empirical frequency within `3/(n+2)`.
-The [committed-principal-program round](https://github.com/A-M-Berns/alignment-workspace/tree/899d9c67b9a1a3779ec38de1ccd4e7419c5a03a4/projects/deference/rounds/2026-09-10-committed-principal-program)
-then closes clause 2 on log authenticity: the mandate carries the principal's decision
-procedure as a program whose only input is the reason trace, the verifier re-executes it
-at commitment, and reason mediation holds by construction for every audited class of
-activated continuations (registered, `authorship.mediation-by-reexecution`); a
-coincident computation yields the same log and payload and a non-coincident one voids,
-so computational integrity is not a hypothesis. Its pressure pass repaired three of the
-earlier discharges (a stolen key, an advisor-written representation, pinned
-counterfactual branches) and found the earlier intervention class had no counterfactual
-content; the advisor-side transfer is refused because the view leaks the selection back.
+**Realization.** The
+[evaluation-ecosystem round](https://github.com/A-M-Berns/alignment-workspace/tree/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization)
+runs the theorem end to end in a concrete model — an authenticated event log, a protocol
+read off the log with Integrity propagation proved a function of the log, a simulated
+continuation frame, an exact market on finite worlds, `R_auth = ε/(1 − η)` attained on
+the worked trace — and the
+[committed-principal-program round](https://github.com/A-M-Berns/alignment-workspace/tree/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program)
+closes the authorship clause: the mandate carries the principal's decision procedure as a
+program whose only input is the reason trace, the verifier re-executes it at commitment,
+and reason mediation holds by construction for every audited class of activated
+continuations (registered, `authorship.mediation-by-reexecution`); a non-coinciding
+computation voids rather than certifies, so computational integrity is not a hypothesis.
+Of the realization bill's seven clauses (item 87), binding, the declared abstraction and
+representation faithfulness are discharged on log authenticity; factorization is closed;
+selection sealing is partial — a sealed advisor class discharges it and the view leaks
+the selection back, so re-execution does not transfer to the advisor; reason-supply
+liveness (the bounded-delay affordability criterion) and availability (`η_n → 0`, with the
+ecosystem's price tracking the empirical void frequency within `3/(n+2)`) are residual.
+The ecosystem realizes same-branch activation — `C_n` is a function of the realized log —
+and not the sealed comparison the corrigibilization-dominance theorem needs across
+`{π, 𝔠π}`; that architecture is item 89.  The clause-by-clause record is the
+[ledger](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/CLAUSE_LEDGER.md).
 
 ## Current status
 
 > **Two targets, both live.** The legitimate-deference consumer above is **active
-> research state**, unregistered, landed in three rounds; it consumes the legitimacy
-> spine. The original target — the corrigibility model with temporal depth and what
+> research state**, landed in five rounds with one registered claim; it consumes the
+> legitimacy spine and is the principal evaluation the
+> [corrigibility](Corrigibility) incentive theorem scores. The original target — the corrigibility model with temporal depth and what
 > foreclosure loses — now has its temporal-depth half supplied by
 > [Continuation BRIA](Continuation-BRIA): bounded learning against accountable
 > continuation claims on the histories the learner reaches, with foreclosure named

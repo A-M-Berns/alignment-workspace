@@ -1382,6 +1382,17 @@
       "registered_classes": ["lean-proved"],
       "prompt": "prompts/2026-09-10-committed-principal-program/PROMPT.md",
       "claim_changes": ["authorship.mediation-by-reexecution"]
+    },
+    {
+      "id": "2026-09-15-corrigibility-consolidation-landing",
+      "date": "2026-09-15",
+      "project": null,
+      "path": "prompts/2026-09-15-corrigibility-consolidation-landing",
+      "verdict": null,
+      "depends_on": ["2026-09-09-mediated-repair-dominance", "2026-09-09-evaluation-ecosystem-realization", "2026-09-10-committed-principal-program", "2026-09-08-legitimate-deference-consolidation", "2026-09-08-continuation-bria"],
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-15-corrigibility-consolidation-landing/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
