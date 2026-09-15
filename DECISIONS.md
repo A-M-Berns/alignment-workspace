@@ -4111,3 +4111,35 @@ system hypothesis (the 2026-09-09 A10) — was rejected because the bound with t
 term is sharp, its marginal-rate variant is false, and the Logical-Induction form
 learns the term along with the rest. Item 89's deliverable is restated accordingly
 (`PRIORITIES.md`).
+
+### 2026-09-15 — authorization is event-linked, and the theorem is mechanized
+
+Agent-decided, reversible; refines the same-day per-event entry above. The canonical
+clause: an agent-caused loss at step `t` is authorized when the agent's move at `t` is
+the gated release of a declared effect `e` whose latch was set by the principal's
+approval of `e`'s proposal at an earlier step, and the decline alternative at that
+step — the policy continuing, the rule resuming — has no agent-caused loss of the
+concern at step `t` (`Corrigibilization.Authorized`). It ties each loss event to the
+decision that enabled its effect, so an unrelated earlier decision that happens to
+avoid the loss does not count; it handles repeated effects independently; it counts
+an approved irreversible successor as authorized; and it does not count the
+principal's own stop or an exterior-caused loss as an agent violation. Under effect
+completeness every corrigibilization is corrigible for every rule that does not
+correct at the authorizing step (`corrigible_corrPolicy`, Lean, inhabited). The
+rejected alternative — the bare per-event clause — was rejected because it admits
+authorization by coincidence. The 2026-09-09 register keeps its printed "or later"
+clause and its single-effect fixtures; the wiki and the glossary carry the canonical
+clause.
+
+### 2026-09-15 — the corrigibility nucleus is landed; item 90 is split
+
+Agent-decided under the landing dispatch, reversible. PR #100 lands T1–T3′ as the
+mathematical spine of `wiki/Corrigibility.md`: structural corrigibilization
+(Lean, trajectory level), the directional-mismatch bound, the compiled constraint with
+its pinned-interface generability certificate, Expectation Provability Induction with
+no calibration term, and the soft-selector uniformity over polynomial-size
+efficiently generated menus. The feedback theorem is a boundary statement. Item 90 is
+narrowed to the certificate of the soft-weighted finite-menu combination; the
+oracle-relativized inductor for empirical logs is item 91. Nothing is registered:
+item 90's remaining half is what the theorem family answers as a whole, and item 89
+is an architecture question the structural theorem does not close.

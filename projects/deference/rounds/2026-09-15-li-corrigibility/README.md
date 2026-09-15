@@ -4,7 +4,10 @@ Reading order: [`THEOREM.md`](THEOREM.md) (T1–T4), [`UNSEALED_COMPARISON.md`](
 [`LUV_COMPILATION.md`](LUV_COMPILATION.md), [`LI_CORRIGIBILITY.md`](LI_CORRIGIBILITY.md),
 [`FEEDBACK_BOUNDARY.md`](FEEDBACK_BOUNDARY.md), [`COUNTERMODELS.md`](COUNTERMODELS.md),
 [`REPORT.md`](REPORT.md).  Lean: `lean/Workspace/Deference/Contrib/LICorrigibility.lean`.
+`LICorrigibilityCertificate.lean` (the pinned-interface generability certificate, T3
+mechanized end to end), `Corrigibilization.lean` (the trajectory-level structural
+theorem with event-linked authorization).  Landing report: [`LANDING.md`](LANDING.md).
 Fixtures: `src/`, run by `python3 tests/run.py` (45 tests; the 2026-09-09 model is loaded
 by path and not modified).  Consumes `../2026-09-09-mediated-repair-dominance/`,
 `../2026-09-10-committed-principal-program/` and the pinned Logical-Induction
-formalization.  Nothing is registered; not merged by the round.
+formalization.  Landed on `main` by the landing pass (PR #100); nothing is registered.

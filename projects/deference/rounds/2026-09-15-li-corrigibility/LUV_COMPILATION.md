@@ -75,13 +75,28 @@ variable; the menu maximum is an iterated `max`; the normaliser `1/Σ_q ramp(·)
 safe reciprocal, exact because the argmax's ramp is `1` so the sum is at least `1`.  A
 hard argmax is not expressible (discontinuous, **FIX**).
 
-**Not shown in Lean.**  The pinned `LUVCombination.PolySequence` requires the expanded
-threshold mesh to be an `AffineCombination.PolySequence` (poly-fueled emission with
-`RpnSpliceStream` serialization).  Building that certificate for the compiled templates
-is the same labour the pinned library spends on its own witnesses
-(`Construction/Witnesses/`), and is not done here; `li_bypass_le` takes `BoundedSequence`,
-`MeshSoftmaxOperationalWitness` and `RpnThresholdCodes` as named hypotheses, which is
-the `AGENTS.md` standard-4 form for imported theory.
+**Constructed in Lean (landing pass).**  The pinned library derives `PolySequence`, the
+mesh-softmax operational witness and the threshold codes from one syntactic certificate,
+`LUVCombinationSyntax` (`Construction/Witnesses/LUVSyntax.lean`): term count, coefficient
+stream, LUV stream, threshold emission, and the term equation, with each stream
+polynomially emitted.  `LICorrigibilityCertificate.lean` constructs it for `(B_n)`
+(`MediatedPair.syntaxOf`): term count `5`; the coefficient stream by a three-way
+`RpnSpliceStream.ifZero` dispatch over `serialize_const` and `serialize_const_comp` on
+the e.c. code of `−λ_n`; the LUV stream by a five-way `RpnSentenceCodes.ifZero`
+dispatch of the component families' threshold emission reindexed along the flattened
+paired index (`luvOf_thresholdCodeSeq`); and the component families' emission from
+their inputs — `gate_thresholdCodeSeq` (a gated family from its gate sentences and base
+thresholds, by `RpnSentenceCodes.and` since every threshold ratio is `≥ 0`),
+`indicator_thresholdCodeSeq` (the test `(i + 1 − k)·k = 0` decides `i/k < 1` on the
+paired index), `rpnSentenceCodes_imp` (the implication twin of the pinned `.and`, parser
+tag `2`, for the negation inside `M`), and `constLUV_thresholdCodeSeq_pos/zero` for
+constant families.  `MediatedPair.boundedSequence` is the `def:blcp` object.
+`li_bypass_le_compiled` then has as hypotheses exactly the realization's inputs — the
+emission of the two activation sentence families and the four base evaluation
+families, an e.c. bounded `λ_n`, validity in every completed-theory world, a
+consistent world at every stage — and `Witness.li_instance` discharges all but the
+last on a constant family.  The certificate is not a named hypothesis anywhere in the
+compiled endpoint.
 
 ## 3. Semantic validity: what `Γ` must contain
 
@@ -133,9 +148,16 @@ transition model — so it cannot be moved into the gate.
 
 ## 4. The obstruction, stated exactly
 
-There is no representational obstruction.  The obstruction to *mechanizing* T3 end to
-end is the `P`-generability certificate at the pinned interface (§2, last paragraph) and
-the object-level gating derivation at the threshold interface (§1, last paragraph);
-both are formalization labour, not mathematics.  The obstruction to *applying* T3 to a
+There is no representational obstruction, and after the landing pass no certificate
+obstruction for T3: `li_bypass_le_compiled` is mechanized end to end through the
+pinned syntax certificate (§2).  What remains for **T3′** is the certificate of the
+soft-weighted combination `(B'_n)`: its coefficients are expressible features folded
+over a growing menu (`max` chains, sums, one safe reciprocal, and the mesh-expectation
+scores of every pair), and the pinned splice suite (`RpnSpliceStream.serialize_*`)
+mirrors the feature constructors one at a time but exposes a variable-width fold only for
+token concatenation (`concatVar`), not for feature chains.  Building the fold is labour
+of the same kind as the pinned library's own witnesses, not a mathematical obstruction;
+it is item 90's remaining half.  The object-level gating derivation at the threshold
+interface (§1, last paragraph) is likewise labour.  The obstruction to *applying* T3 to a
 real system is that `Γ` must carry the system's specification (§3); that is the
 architecture's contract, not the inductor's.

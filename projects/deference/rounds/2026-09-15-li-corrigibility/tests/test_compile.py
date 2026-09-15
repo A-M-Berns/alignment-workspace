@@ -58,7 +58,7 @@ class Compilation(unittest.TestCase):
             self.assertLessEqual(C.expectation(mu, WORLDS, lambda w: C.constraint(w, L, D, DMAX)), 0)
 
     def test_coefficients_bounded(self):
-        self.assertEqual(C.coefficient_l1(L, D, DMAX), Q(3) + Q(1, 2))
+        self.assertEqual(C.coefficient_l1(L, D, DMAX), Q(4) + Q(1, 2))
 
     def test_mismatch_branch_attains_zero(self):
         self.assertEqual(C.constraint(WORLDS[2], L, D, DMAX), Q(0))
@@ -68,12 +68,12 @@ class Compilation(unittest.TestCase):
 
 class SoftSelector(unittest.TestCase):
 
-    def check(self, scores, delta):
-        w = C.soft_weights(scores, delta)
+    def check(self, scores, tau):
+        w = C.soft_weights(scores, tau)
         self.assertTrue(all(x >= 0 for x in w))
         self.assertEqual(sum(w, Q(0)), Q(1))
-        self.assertTrue(C.support_near_max(scores, w, delta))
-        self.assertLessEqual(max(scores) - 2 * delta, C.aggregate(scores, w))
+        self.assertTrue(C.support_near_max(scores, w, tau))
+        self.assertLessEqual(max(scores) - 2 * tau, C.aggregate(scores, w))
         return w
 
     def test_bounded_menu(self):
@@ -85,12 +85,12 @@ class SoftSelector(unittest.TestCase):
         self.assertEqual(w[2], Q(0))
 
     def test_growing_menu(self):
-        # menu size n², window 1/n: the aggregate is within 2/n of the maximum
+        # menu size n², window τ_n = 1/n: the aggregate is within 2/n of the maximum
         for n in range(1, 8):
             scores = [Q((-1) ** q * q, n * n + q + 1) for q in range(n * n)]
-            delta = Q(1, n)
-            w = self.check(scores, delta)
-            self.assertLessEqual(max(scores), C.aggregate(scores, w) + 2 * delta)
+            tau = Q(1, n)
+            w = self.check(scores, tau)
+            self.assertLessEqual(max(scores), C.aggregate(scores, w) + 2 * tau)
 
     def test_hard_argmax_is_discontinuous(self):
         eps = Q(1, 10 ** 6)
@@ -99,7 +99,7 @@ class SoftSelector(unittest.TestCase):
         dist, flipped = C.hard_selector_jump(a, b)
         self.assertEqual(dist, eps)
         self.assertTrue(flipped)
-        # the soft weights move continuously: within eps/δ of each other
+        # the soft weights move continuously: within eps/τ of each other
         wa, wb = C.soft_weights(a, Q(1, 10)), C.soft_weights(b, Q(1, 10))
         self.assertLessEqual(max(abs(x - y) for x, y in zip(wa, wb)), eps / Q(1, 10))
 

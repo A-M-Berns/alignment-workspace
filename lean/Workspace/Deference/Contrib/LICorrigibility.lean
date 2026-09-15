@@ -40,9 +40,12 @@ expectations.
 
 **5. Finite-menu uniformisation.**  A hard argmax over a menu is not an expressible
 feature; the near-argmax weighting `softWeight` (a normalised continuous threshold
-indicator) is, and `softWeight_aggregate_ge` shows its weighted aggregate is at least
-the maximum less `2δ`.  `uniform_of_soft` turns `aggregate ≲ₙ 0` into `max ≲ₙ 0` as
-`δₙ → 0`; `max_asympLE` is the bounded-menu case, where no selector is needed.
+indicator of width `τ`) is, and `softWeight_aggregate_ge` shows its weighted aggregate is
+at least the maximum less `2τ`.  `uniform_of_soft` turns `aggregate ≲ₙ 0` into
+`max ≲ₙ 0` as `τₙ → 0`; `max_asympLE` is the bounded-menu case, where no selector is
+needed.  The generability certificate of the compiled constraint is
+`LICorrigibilityCertificate.lean`; the trajectory-level corrigibility theorem is
+`Corrigibilization.lean`.
 
 **6. Witnesses.**  `Witness.pair` is a concrete pair over atoms `0, 1` for which `ValidAt`
 holds in *every* world (`Witness.valid`), with `B` valued exactly `0` both on a
@@ -560,83 +563,83 @@ variable {ι : Type*}
 
 /-- A weighted aggregate whose weights are supported on near-maximal scores is at least
 the maximum less the window. -/
-theorem nearMax_weighted_ge (s : Finset ι) (w sc : ι → ℝ) (m δ : ℝ)
+theorem nearMax_weighted_ge (s : Finset ι) (w sc : ι → ℝ) (m τ : ℝ)
     (hw : ∀ i ∈ s, 0 ≤ w i) (hsum : ∑ i ∈ s, w i = 1)
-    (hsupp : ∀ i ∈ s, 0 < w i → m - 2 * δ ≤ sc i) :
-    m - 2 * δ ≤ ∑ i ∈ s, w i * sc i := by
-  have h : ∑ i ∈ s, w i * (m - 2 * δ) ≤ ∑ i ∈ s, w i * sc i := by
+    (hsupp : ∀ i ∈ s, 0 < w i → m - 2 * τ ≤ sc i) :
+    m - 2 * τ ≤ ∑ i ∈ s, w i * sc i := by
+  have h : ∑ i ∈ s, w i * (m - 2 * τ) ≤ ∑ i ∈ s, w i * sc i := by
     refine Finset.sum_le_sum fun i hi => ?_
     rcases (hw i hi).lt_or_eq with hpos | hzero
     · exact mul_le_mul_of_nonneg_left (hsupp i hi hpos) (hw i hi)
     · rw [← hzero]; simp
-  calc m - 2 * δ = ∑ i ∈ s, w i * (m - 2 * δ) := by rw [← Finset.sum_mul, hsum, one_mul]
+  calc m - 2 * τ = ∑ i ∈ s, w i * (m - 2 * τ) := by rw [← Finset.sum_mul, hsum, one_mul]
     _ ≤ ∑ i ∈ s, w i * sc i := h
 
-/-- The continuous threshold ramp `min 1 (max 0 ((x − y)/δ))`, an expressible feature of
-`x` and `y` for rational `δ`. -/
-noncomputable def ramp (δ x y : ℝ) : ℝ := min 1 (max 0 ((x - y) / δ))
+/-- The continuous threshold ramp `min 1 (max 0 ((x − y)/τ))`, an expressible feature of
+`x` and `y` for rational `τ`. -/
+noncomputable def ramp (τ x y : ℝ) : ℝ := min 1 (max 0 ((x - y) / τ))
 
-theorem ramp_nonneg (δ x y : ℝ) : 0 ≤ ramp δ x y := by
+theorem ramp_nonneg (τ x y : ℝ) : 0 ≤ ramp τ x y := by
   unfold ramp; exact le_min zero_le_one (le_max_left _ _)
 
-theorem ramp_le_one (δ x y : ℝ) : ramp δ x y ≤ 1 := by
+theorem ramp_le_one (τ x y : ℝ) : ramp τ x y ≤ 1 := by
   unfold ramp; exact min_le_left _ _
 
-theorem ramp_eq_one (δ x y : ℝ) (hδ : 0 < δ) (h : y + δ ≤ x) : ramp δ x y = 1 := by
+theorem ramp_eq_one (τ x y : ℝ) (hτ : 0 < τ) (h : y + τ ≤ x) : ramp τ x y = 1 := by
   unfold ramp
-  have : 1 ≤ (x - y) / δ := by rw [le_div_iff₀ hδ]; linarith
+  have : 1 ≤ (x - y) / τ := by rw [le_div_iff₀ hτ]; linarith
   rw [max_eq_right (zero_le_one.trans this), min_eq_left this]
 
-theorem lt_of_ramp_pos (δ x y : ℝ) (hδ : 0 < δ) (h : 0 < ramp δ x y) : y < x := by
+theorem lt_of_ramp_pos (τ x y : ℝ) (hτ : 0 < τ) (h : 0 < ramp τ x y) : y < x := by
   unfold ramp at h
   by_contra hxy
-  have : (x - y) / δ ≤ 0 := div_nonpos_of_nonpos_of_nonneg (by linarith) hδ.le
+  have : (x - y) / τ ≤ 0 := div_nonpos_of_nonpos_of_nonneg (by linarith) hτ.le
   rw [max_eq_left this, min_eq_right zero_le_one] at h
   exact lt_irrefl _ h
 
-/-- The near-argmax weight: ramp of the score above `m − 2δ`, normalised. -/
-noncomputable def softWeight (s : Finset ι) (δ : ℝ) (sc : ι → ℝ) (m : ℝ) (i : ι) : ℝ :=
-  ramp δ (sc i) (m - 2 * δ) / ∑ j ∈ s, ramp δ (sc j) (m - 2 * δ)
+/-- The near-argmax weight: ramp of the score above `m − 2τ`, normalised. -/
+noncomputable def softWeight (s : Finset ι) (τ : ℝ) (sc : ι → ℝ) (m : ℝ) (i : ι) : ℝ :=
+  ramp τ (sc i) (m - 2 * τ) / ∑ j ∈ s, ramp τ (sc j) (m - 2 * τ)
 
-/-- **The soft selector.**  With `m` the menu's maximal score and `δ > 0`, the
+/-- **The soft selector.**  With `m` the menu's maximal score and `τ > 0`, the
 near-argmax weights are nonnegative, sum to one, and their aggregate is at least
-`m − 2δ`. -/
-theorem softWeight_aggregate_ge (s : Finset ι) (hs : s.Nonempty) (δ : ℝ) (hδ : 0 < δ)
+`m − 2τ`. -/
+theorem softWeight_aggregate_ge (s : Finset ι) (hs : s.Nonempty) (τ : ℝ) (hτ : 0 < τ)
     (sc : ι → ℝ) :
-    (∀ i ∈ s, 0 ≤ softWeight s δ sc (s.sup' hs sc) i) ∧
-    (∑ i ∈ s, softWeight s δ sc (s.sup' hs sc) i = 1) ∧
-    s.sup' hs sc - 2 * δ ≤ ∑ i ∈ s, softWeight s δ sc (s.sup' hs sc) i * sc i := by
+    (∀ i ∈ s, 0 ≤ softWeight s τ sc (s.sup' hs sc) i) ∧
+    (∑ i ∈ s, softWeight s τ sc (s.sup' hs sc) i = 1) ∧
+    s.sup' hs sc - 2 * τ ≤ ∑ i ∈ s, softWeight s τ sc (s.sup' hs sc) i * sc i := by
   set m := s.sup' hs sc with hm
   obtain ⟨i₀, hi₀, hmax⟩ := Finset.exists_mem_eq_sup' hs sc
-  have hone : ramp δ (sc i₀) (m - 2 * δ) = 1 :=
-    ramp_eq_one δ _ _ hδ (by rw [hm, hmax]; linarith)
-  have hZ : 1 ≤ ∑ j ∈ s, ramp δ (sc j) (m - 2 * δ) := by
-    calc (1 : ℝ) = ramp δ (sc i₀) (m - 2 * δ) := hone.symm
-      _ ≤ ∑ j ∈ s, ramp δ (sc j) (m - 2 * δ) :=
-        Finset.single_le_sum (fun j _ => ramp_nonneg δ (sc j) _) hi₀
-  have hZpos : 0 < ∑ j ∈ s, ramp δ (sc j) (m - 2 * δ) := by linarith
-  have hnn : ∀ i ∈ s, 0 ≤ softWeight s δ sc m i := fun i _ =>
+  have hone : ramp τ (sc i₀) (m - 2 * τ) = 1 :=
+    ramp_eq_one τ _ _ hτ (by rw [hm, hmax]; linarith)
+  have hZ : 1 ≤ ∑ j ∈ s, ramp τ (sc j) (m - 2 * τ) := by
+    calc (1 : ℝ) = ramp τ (sc i₀) (m - 2 * τ) := hone.symm
+      _ ≤ ∑ j ∈ s, ramp τ (sc j) (m - 2 * τ) :=
+        Finset.single_le_sum (fun j _ => ramp_nonneg τ (sc j) _) hi₀
+  have hZpos : 0 < ∑ j ∈ s, ramp τ (sc j) (m - 2 * τ) := by linarith
+  have hnn : ∀ i ∈ s, 0 ≤ softWeight s τ sc m i := fun i _ =>
     div_nonneg (ramp_nonneg _ _ _) hZpos.le
-  have hsum : ∑ i ∈ s, softWeight s δ sc m i = 1 := by
+  have hsum : ∑ i ∈ s, softWeight s τ sc m i = 1 := by
     unfold softWeight
     rw [← Finset.sum_div, div_self hZpos.ne']
-  refine ⟨hnn, hsum, nearMax_weighted_ge s _ sc m δ hnn hsum fun i _ hpos => ?_⟩
-  have hr : 0 < ramp δ (sc i) (m - 2 * δ) := by
+  refine ⟨hnn, hsum, nearMax_weighted_ge s _ sc m τ hnn hsum fun i _ hpos => ?_⟩
+  have hr : 0 < ramp τ (sc i) (m - 2 * τ) := by
     unfold softWeight at hpos
     exact (div_pos_iff_of_pos_right hZpos).mp hpos
-  exact (lt_of_ramp_pos δ _ _ hδ hr).le
+  exact (lt_of_ramp_pos τ _ _ hτ hr).le
 
 /-- **Uniformisation.**  If the soft aggregate is asymptotically nonpositive and the
 window vanishes, the menu maximum is asymptotically nonpositive. -/
-theorem uniform_of_soft (m δ agg : ℕ → ℝ) (hagg : agg ≲ₙ fun _ => 0)
-    (hδ : Tendsto δ atTop (𝓝 0)) (hlow : ∀ n, m n - 2 * δ n ≤ agg n) :
+theorem uniform_of_soft (m τ agg : ℕ → ℝ) (hagg : agg ≲ₙ fun _ => 0)
+    (hτ : Tendsto τ atTop (𝓝 0)) (hlow : ∀ n, m n - 2 * τ n ≤ agg n) :
     m ≲ₙ fun _ => 0 := by
   intro ε hε
   have hε2 : 0 < ε / 4 := by positivity
   filter_upwards [hagg (ε / 2) (by positivity),
-    (Metric.tendsto_atTop.1 hδ (ε / 4) hε2).choose_spec |> fun h =>
+    (Metric.tendsto_atTop.1 hτ (ε / 4) hε2).choose_spec |> fun h =>
       eventually_atTop.2 ⟨_, h⟩] with n h1 h2
-  have h3 : |δ n - 0| < ε / 4 := by simpa [Real.dist_eq] using h2
+  have h3 : |τ n - 0| < ε / 4 := by simpa [Real.dist_eq] using h2
   have := (abs_lt.1 h3).2
   linarith [hlow n]
 

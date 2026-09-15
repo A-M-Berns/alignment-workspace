@@ -29,6 +29,9 @@ declarations, `[propext, Classical.choice, Quot.sound]` throughout.  Fixtures: 4
    formula contains the case split (`def:luv` admits any formula); at the pinned
    threshold interface it is `GatedAt`, with `gate φ X` the concrete family.  No closure
    theorem is needed; the only obstruction is formalization labour.
+   *Landing pass:* the certificate is constructed at the pinned interface
+   (`MediatedPair.syntaxOf`), and `li_bypass_le_compiled` has only the realization's
+   inputs as hypotheses (`LUV_COMPILATION.md` §2).
 3. **What lives in `Γ`?**  The interaction model as definitions and theorems: the
    transition and effect semantics (EX), the gate and latch programs (MS, DP), the
    activation and expiry semantics, the evaluator's `L`-stability certificate, the
@@ -97,16 +100,18 @@ declarations, `[propext, Classical.choice, Quot.sound]` throughout.  Fixtures: 4
 
 ## What is not established
 
-- `P`-generability of the compiled sequence at the pinned interface
-  (`LUVCombination.PolySequence` with `RpnSpliceStream` serialization); taken as named
-  hypotheses in `li_bypass_le`.
+- `P`-generability of the soft-weighted finite-menu combination `(B'_n)` at the pinned
+  interface (the variable-width feature fold); T3's own certificate is constructed
+  (landing pass).
 - The object-level derivation of `GatedAt` from a first-order gated formula (the
   frontend's arithmetic-closure boundary).
 - T4 in Lean (the pinned feedback lane has one constant inhabitant).
 - Any rate, any smallness of the right-hand side, anything about manipulation,
   authorship, undeclared channels, superpolynomial menus, or a latent utility.
 - The oracle-relativized inductor for empirical logs.
-- The trajectory-level C1 in Lean (the step lemma is; the predicate is FIX).
+- Approval reproduction, forcing preservation and the value clauses at the trajectory
+  level in Lean beyond the 2026-09-09 kernel (the structural theorem C1 is now Lean:
+  `Corrigibilization.corrigible_corrPolicy`, landing pass).
 
 ## Proposed priority changes
 
@@ -118,17 +123,30 @@ declarations, `[propext, Classical.choice, Quot.sound]` throughout.  Fixtures: 4
 - **New item 90**: relativized logical induction for empirical settlement of activated
   securities, and the `P`-generability certificate of the compiled sequence.
 
+## Landing pass (2026-09-15, same day)
+
+The maintainer's second dispatch closed the residuals and landed the round: the
+pinned-interface generability certificate is constructed
+(`LICorrigibilityCertificate.lean`; `li_bypass_le_compiled`, inhabited by
+`Witness.li_instance`); the trajectory-level structural theorem is mechanized with the
+event-linked authorization clause (`Corrigibilization.lean`;
+`corrigible_corrPolicy`, inhabited by `Witness.corrigible_instance`); the
+soft-selector width is `τ_n`; the menu of T3′ is stated as polynomial-size and
+efficiently generated; the wiki is canonicalized (`Corrigibility`, `Theorem-Spine`,
+`Deference`, `Logical-Induction-and-Deference`, `Roadmap`, `Glossary`); item 90 is
+narrowed to the T3′ certificate and the oracle-relative inductor is item 91.  The
+landing report is `LANDING.md`.
+
 ## Outstanding maintainer actions
 
-1. Decide whether the per-event authorization clause replaces the "or later" clause in
-   the 2026-09-09 register and on `wiki/Corrigibility.md` §1 (the round adopts it,
-   agent-decided, reversible; `DECISIONS.md`).
-2. Decide whether T2–T3′ enter `wiki/Corrigibility.md` §4 and `wiki/Theorem-Spine.md`
-   §10 as research state after this pass is adjudicated; the round does not edit the
-   wiki.
-3. Decide whether `li_bypass_le` and `softWeight_aggregate_ge` are registered against
-   item 90 (the round files the item; registration is the merge).
-4. Merge is the maintainer's; the round does not merge.
+1. Decide whether `li_bypass_le_compiled` and `corrigible_corrPolicy` are registered
+   against items 90 and 89 respectively; the landing pass registers nothing, because
+   item 90's remaining half (the T3′ certificate) is what the theorem family answers as a
+   whole and item 89 is an architecture question the structural theorem does not close.
+2. The 2026-09-09 round tree is not edited; its `authorized` implements the "or later"
+   clause and its fixtures pass because they have one effect each.  Decide whether that
+   register receives an errata note (the wiki and the glossary carry the canonical
+   clause).
 
 ## New names introduced (provisional)
 

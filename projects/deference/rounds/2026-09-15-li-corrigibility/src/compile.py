@@ -12,7 +12,7 @@ and the constraint is `B = U_raw − U_corr − λ·G_δ − G_ρ − G_M` with 
 Every world with a sound reproduction certificate has `B ≤ 0`; hence every credence has
 `E[B] ≤ 0`, and every convex combination of pair constraints with nonnegative weights
 is `≤ 0` in every world.  The soft selector is the normalised ramp of each pair's score
-above the menu maximum less `2δ`.
+above the menu maximum less `2τ` (`τ` the selector width; `δ` is the mediation discrepancy).
 """
 from fractions import Fraction as Q
 
@@ -69,24 +69,24 @@ def expectation(credence, worlds, f):
 
 
 def coefficient_l1(L, D, dmax):
-    """`‖B‖₁` including the (zero) trailing coefficient: `3 + λ`."""
-    return Q(3) + abs(lam(L, D, dmax))
+    """`‖B‖₁` including the (zero) trailing coefficient: `4 + |λ|`."""
+    return Q(4) + abs(lam(L, D, dmax))
 
 
 # ---------------------------------------------------------------- the soft selector
 
 
-def ramp(delta, x, y):
-    """`min(1, max(0, (x − y)/δ))`: an expressible feature of `x, y`."""
-    return min(Q(1), max(Q(0), (x - y) / delta))
+def ramp(tau, x, y):
+    """`min(1, max(0, (x − y)/τ))`: an expressible feature of `x, y`."""
+    return min(Q(1), max(Q(0), (x - y) / tau))
 
 
-def soft_weights(scores, delta):
-    """Near-argmax weights: ramp of each score above `max − 2δ`, normalised.  The
+def soft_weights(scores, tau):
+    """Near-argmax weights: ramp of each score above `max − 2τ`, normalised.  The
     argmax has ramp `1`, so the normaliser is at least `1` and the safe reciprocal
     `1/max(1, Σ)` is the exact reciprocal."""
     m = max(scores)
-    raw = [ramp(delta, s, m - 2 * delta) for s in scores]
+    raw = [ramp(tau, s, m - 2 * tau) for s in scores]
     Z = sum(raw, Q(0))
     assert Z >= 1
     return [r / Z for r in raw]
@@ -96,9 +96,9 @@ def aggregate(scores, weights):
     return sum((w * s for w, s in zip(weights, scores)), Q(0))
 
 
-def support_near_max(scores, weights, delta):
+def support_near_max(scores, weights, tau):
     m = max(scores)
-    return all(s > m - 2 * delta for s, w in zip(scores, weights) if w > 0)
+    return all(s > m - 2 * tau for s, w in zip(scores, weights) if w > 0)
 
 
 def argmax(scores):

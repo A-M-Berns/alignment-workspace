@@ -12,19 +12,21 @@ paper proves it from `thm:expcoh` in two lines.  With `A_n := B_n`, `b := 0`:
 | hypothesis of the theorem | supplied by | where |
 |---|---|---|
 | `Γ` represents computations | the base theory of the inductor (`PA` suffices) | assumed |
-| `(B_n)` is `P`-generable | e.c. emission of the five formula templates from the codes of `π_n, 𝔠π_n`; constant coefficients | `LUV_COMPILATION.md` §2, paper-level |
-| `‖B_n‖₁ ≤ b` | `3 + λ_n` with uniform `L, δ_max, D` | immediate |
+| `(B_n)` is `P`-generable | the pinned syntactic certificate `LUVCombinationSyntax`, constructed from the emission of the activation sentence families and the base evaluation families | **LEAN** `MediatedPair.syntaxOf`, `LUV_COMPILATION.md` §2 |
+| `‖B_n‖₁ ≤ b` | `4 + |λ_n|` with uniform `L, δ_max, D` (**LEAN** `MediatedPair.boundedSequence`) | immediate |
 | `W(B_n) ≤ 0` for every `W ∈ PC(Γ)` | the architecture specification in `Γ` (MS, EX, activation semantics, the stability certificate) and the finite T2 algebra | `LUV_COMPILATION.md` §3; **LEAN** `ValidAt.value_le_of_valuesAt` |
 | conclusion `E_n(B_n) ≲_n 0` | **PAPER**; **LEAN** `li_constraint_le` through the pinned `thm:expcoh` | — |
 | linearity of `E_n` on a combination | the definition of `E_n` on LUV-combinations (`def:e` applied "analogously") | **LEAN** `MediatedPair.expect_eq` |
 
-The Lean corollary `li_bypass_le` takes the pinned library's operational premises —
-`BoundedSequence`, `MeshSoftmaxOperationalWitness`, `RpnThresholdCodes` on every term,
-`shareNorm ≤ b`, a consistent world at every stage — as named hypotheses, derives
-`WorldValued` from validity, bounds the completed values above by `0` and below by
-`−(3 + b)`, and concludes through `expcoh`'s chain
-`limsup E_n(B_n) ≤ limsup completedHigh ≤ 0`.  Nothing about the market is assumed
-beyond `IsLogicalInductor`.
+Two Lean endpoints.  `li_bypass_le` (first pass) takes the pinned library's
+operational premises as named hypotheses.  `li_bypass_le_compiled` (landing pass)
+constructs them: from the emission of the activation sentence families and the base
+evaluation families it builds the syntactic certificate, the bounded sequence, and the
+`WorldValued` premise, and concludes through `expcoh_ofSyntax`'s chain
+`limsup E_n(B_n) ≤ limsup completedHigh ≤ 0`.  Its hypotheses are the realization's
+inputs; `Witness.li_instance` discharges all but the deductive process's stage
+consistency on a constant two-atom family.  Nothing about the market is assumed beyond
+`IsLogicalInductor`.
 
 ## 2. What is imported from Logical Induction, exactly
 
@@ -54,28 +56,30 @@ inadmissible as a coefficient (**FIX** `test_hard_argmax_is_discontinuous`: two 
 vectors at sup-distance `10⁻⁶` select different pairs).  The admissible form is the
 **near-argmax weighting**
 ```
-ŵ_q  :=  ramp_{δ_n}(s_q > m_n − 2δ_n) / Σ_q' ramp_{δ_n}(s_q' > m_n − 2δ_n),
+ŵ_q  :=  ramp_{τ_n}(s_q > m_n − 2τ_n) / Σ_q' ramp_{τ_n}(s_q' > m_n − 2τ_n),
 m_n := max_q s_q,     ramp_δ(x > y) := min(1, max(0, (x − y)/δ)),
 ```
-with `δ_n → 0` an e.c. rational sequence.  Then:
+with `τ_n → 0` an e.c. rational sequence (`τ`, not `δ`: `δ` is the mediation discrepancy).  Then:
 
-1. `ŵ_q ≥ 0`, `Σ_q ŵ_q = 1`, and `ŵ_q > 0 ⇒ s_q > m_n − 2δ_n` (**LEAN**
+1. `ŵ_q ≥ 0`, `Σ_q ŵ_q = 1`, and `ŵ_q > 0 ⇒ s_q > m_n − 2τ_n` (**LEAN**
    `softWeight_aggregate_ge`); the argmax's ramp is `1`, so the normaliser is `≥ 1` and the
    safe reciprocal is exact.
-2. `B'_n := Σ_q ŵ_q B_q` has `‖B'_n‖₁ ≤ 3 + λ` and `W(B'_n) = Σ_q ŵ_q W(B_q) ≤ 0` in every
+2. `B'_n := Σ_q ŵ_q B_q` has `‖B'_n‖₁ ≤ 4 + |λ|` and `W(B'_n) = Σ_q ŵ_q W(B_q) ≤ 0` in every
    consistent world, because validity is pairwise and the weights are nonnegative
    (**FIX** `test_convex_combination_valid_in_every_world`).  The coefficients are
    evaluated at the realized market, which is what `def:ece` and `thm:expprovind` read.
-3. `E_n(B'_n) = Σ_q ŵ_q s_q ≥ m_n − 2δ_n` (**LEAN** `nearMax_weighted_ge`).
+3. `E_n(B'_n) = Σ_q ŵ_q s_q ≥ m_n − 2τ_n` (**LEAN** `nearMax_weighted_ge`).
 4. `thm:expprovind` on `(B'_n)` gives `E_n(B'_n) ≲_n 0`, hence `m_n ≲_n 0` (**LEAN**
    `uniform_of_soft`).
 
 So `max_{q ∈ Q_n} s_q ≲_n 0`: the market assigns no pair of the menu an unexplained
-bypass advantage, uniformly, for any menu with `|Q_n| ≤ poly(n)` and e.c. pair data.
-Ties are handled without a rule (all near-maximal pairs share the weight).  An
-efficiently *enumerable* menu is covered on its first `poly(n)` elements.  A menu of
-superpolynomial size breaks `P`-generability: the weights read superpolynomially many
-prices.
+bypass advantage, uniformly, for any **polynomial-size efficiently generated** menu:
+`|Q_n| ≤ poly(n)` and the pair data emitted in polynomial time.  Ties are handled
+without a rule (all near-maximal pairs share the weight).  Nothing is claimed about all
+efficiently enumerable continuations: an enumerable menu is covered only on a
+polynomial-size generated prefix, and a menu of superpolynomial size breaks
+`P`-generability, since the weights read superpolynomially many prices.  The pinned-
+interface certificate for `(B'_n)` is not constructed (`LUV_COMPILATION.md` §4).
 
 **No reflective pathology.**  Prices enter only through continuous coefficients, which
 is exactly the continuity `def:tf` imposes to make the market's fixed point exist; no
@@ -89,8 +93,8 @@ A hard selector would break the admissible class before it could create a parado
   outputs, and has resolved no world; the instances may be arbitrarily hard for `D̄`.
   A Bayesian with a prior over `PC(Γ)` respects it trivially and computes nothing; a
   resource-bounded reasoner that checks instances respects it only after checking.
-- **Uniformity over growing menus** (§3), which a reasoner checking pairs one at a
-  time cannot have.
+- **Uniformity over polynomial-size efficiently generated menus** (§3), which a
+  reasoner checking pairs one at a time cannot have.
 - **A register in which no calibration hypothesis is needed** (§5).
 - **The boundary** (`FEEDBACK_BOUNDARY.md`): which quantities the inductor can be held
   to by settlement and which only by logic.
@@ -117,8 +121,8 @@ a same-branch `G_δ,n`, which never settles, nothing does.
 > behaviour as the principal's approve branch up to an explicit discrepancy, and the
 > architecture's specification makes the resulting security inequality valid in every
 > world of the inductor's theory, then the inductor learns — in a timely manner,
-> uniformly over every efficiently enumerable menu of continuations, by its own
-> expectations, with no calibration hypothesis — that unilateral bypass has no
+> uniformly over every polynomial-size efficiently generated menu of continuations, by
+> its own expectations, with no calibration hypothesis — that unilateral bypass has no
 > advantage over principal-mediated execution beyond the mediation discrepancy, the
 > principal's decline regret, and the candidate's causal leverage over whether the
 > comparison is evaluated.
@@ -128,7 +132,7 @@ logical reasoning and comparison securities.  It is not a theorem about
 non-manipulation or authorship (`Corrigible ∧ ¬Authored` is inhabited and the pair
 satisfies the inequality with `B = 0`), about undeclared channels (`𝔠π_F = π_F`,
 `B = 0`, silent), about a latent utility maximizer (the chooser scores by `E_n(U_q)`),
-about all of `Π(h)` (only the efficiently enumerated menu), or about the size of the
+about all of `Π(h)` (only a polynomial-size generated menu), or about the size of the
 right-hand side.  The stronger target — vanishing incentive to bypass an
 *authentically reason-responsive* principal — needs the authorship and non-capture
 layer as hypotheses on the evaluator, which this round does not consume.

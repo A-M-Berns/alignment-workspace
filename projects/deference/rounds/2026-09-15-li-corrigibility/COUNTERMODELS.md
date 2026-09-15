@@ -19,9 +19,15 @@ at 2, releases it at 3; under approve-all there are agent-caused losses at steps
 
 The raw policy fails under both.  On every 2026-09-09 fixture (one declared effect) the
 two clauses agree (`test_single_effect_clauses_agree`).  C1 as printed is refuted for
-repeated protected effects and holds under the per-event clause; the Lean step lemma
-already states the per-event form.  Recorded as an agent-decided repair
-(`DECISIONS.md`); the 2026-09-09 tree is not edited.
+repeated protected effects and holds under the per-event clause.  The canonical form
+(landing pass) is the **event-linked** clause: the loss at `t` is the gated release of
+an effect `e`, its latch was set by the approval of `e`'s proposal at `t' < t`, and the
+decline alternative at `t'` has no loss at `t` (`Corrigibilization.Authorized`,
+**LEAN**; `corrigible_corrPolicy` proves C1 for it).  The event-linked clause implies
+the per-event one and rules out an unrelated earlier decision counting as
+authorization; on `ShopRepair` and on every single-effect fixture the two agree.
+Recorded as an agent-decided repair (`DECISIONS.md`); the 2026-09-09 tree is not
+edited.
 
 ## 2. The mismatch term (T2)
 
@@ -53,9 +59,9 @@ already states the per-event form.  Recorded as an agent-decided repair
 
 | # | test | witness | forces |
 |---|---|---|---|
-| 7 | market-dependent worst offender | hard argmax flips at price distance `10⁻⁶` (`test_hard_argmax_is_discontinuous`); soft weights move by at most `ε/δ` | the hard selector is not an expressible feature; the soft one is |
+| 7 | market-dependent worst offender | hard argmax flips at price distance `10⁻⁶` (`test_hard_argmax_is_discontinuous`); soft weights move by at most `ε/τ` | the hard selector is not an expressible feature; the soft one is |
 | — | ties | two maximal scores share weight `1/2`, the third gets `0` | no tie rule needed |
-| 8 | growing menu | `|Q_n| = n²`, `δ_n = 1/n`: `max ≤ aggregate + 2/n` for `n ≤ 7` | uniformity with vanishing window; polynomial size is the limit of `P`-generability |
+| 8 | growing menu | `|Q_n| = n²`, `τ_n = 1/n`: `max ≤ aggregate + 2/n` for `n ≤ 7` | uniformity with vanishing window; polynomial size is the limit of `P`-generability |
 | — | convex validity | three pair families, soft weights, `Σ ŵ_q B_q ≤ 0` at every world | pairwise validity plus nonnegative weights |
 
 ## 5. Settlement (T4)
