@@ -4143,3 +4143,20 @@ narrowed to the certificate of the soft-weighted finite-menu combination; the
 oracle-relativized inductor for empirical logs is item 91. Nothing is registered:
 item 90's remaining half is what the theorem family answers as a whole, and item 89
 is an architecture question the structural theorem does not close.
+
+### 2026-09-16 — the reason-side residual is scope and supply, not interface completeness
+
+Agent-decided, reversible; a research-branch finding (PR #101), not canonical. The
+non-capture compilation round shows that the trace-steering comparison has the
+effect-side algebra and compiles into the landed constraint verbatim, and that the
+residual against the fully-informed comparator is *not* removed by completeness,
+authentication, canonicalization, the protected coverage barrier and liveness of a
+declared reason interface: one omitted unprotected true declared counterreason passes
+every clause and is worth its weight. The round records the two repairs — protecting
+every declared reason type, or a supply obligation on a party other than the advisor —
+as scope and ecosystem decisions and does not choose between them; the canonical
+`wiki/Corrigibility.md` §5 separation of authorship, non-capture and reason supply is
+left as it stands. The alternative rejected: presenting the two-interface symmetry as
+the round's conclusion on the strength of its elegance; it holds only strengthened by
+total scope, ecosystem-supplied liveness and an extensional program, and the round
+says so.

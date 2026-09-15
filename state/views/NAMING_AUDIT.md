@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 450 names, 293 of them Lean only
+## deference — 454 names, 297 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -467,6 +467,10 @@ change, and the count of those is the size of the free choice remaining.
 | `valuation` | def | 2026-08-11-phase-ii-promotion | wiki, note | `Workspace.Deference.Contrib.SubstitutionSeparation.M.valuation` |
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
+| `Extensional` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.Extensional` |
+| `openUnder` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.openUnder` |
+| `steering_validAt` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.steering_validAt` |
+| `weightedCount` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.weightedCount` |
 
 ## normativity — 700 names, 531 of them Lean only
 

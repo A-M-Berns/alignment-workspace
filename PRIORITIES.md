@@ -2720,6 +2720,42 @@ securities are; item 90 for the certificate side.
 for empirical logs.
 *A solution ships:* the relativized theorem, or the negative with its witness.
 
+### 92. The reason-side supply obligation: total scope or ecosystem supply of declared reasons — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The non-capture compilation round (`projects/deference/rounds/2026-09-16-noncapture-compilation/`)
+compiles the trace-steering inequality into the landed corrigibility constraint and
+refutes the thesis that completeness, authentication, canonicalization, coverage and
+liveness of a declared reason interface remove the residual: a true unprotected declared
+counterreason nobody raises passes every clause and is worth its weight (fixture 2).
+The residual against the fully-informed comparator is removed by exactly one of two
+decisions that are not interface properties — total protected scope (every declared
+reason type protected, so an omission voids; `content_residual_zero_of_total_scope`) or
+a supply obligation on the registrar, the engine or third parties to raise every true
+declared reason before the commitment deadline.  Under the deadline the second is the
+affordability theory's timeliness case: budgets add and declared reasons compete.
+Decide which the realization adopts, state the supply obligation as a clause of the
+evaluation-ecosystem bill alongside item 87's clause 5, and give the bounded-delay
+criterion for it; then the strengthened two-interface statement of the round's
+`REASON_INTERFACE.md` §5 is a candidate for canonicalization.
+
+*Deliverable shape:* a clause with its discharge condition (who supplies, by when, at
+what budget), an exact fixture in which the supply obligation is met and the content
+residual against the fully-informed comparator is zero on every audited world, and the
+timeliness-affordability bound for the supplier.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
+
+*Context:* `REASON_INTERFACE.md` §3 and `AFFORDABILITY_INTERFACE.md` §§1–3 of the round;
+`wiki/Openness-Coverage-and-Non-Capture.md` (route availability is not exercise); item 87
+clause 5 (protected reason-supply liveness) for the protected half of the same
+obligation.
+*Consumed by:* any canonicalization of the reason-side corrigibility inequality; the
+measurability claims of the round's `AFFORDABILITY_INTERFACE.md` §4.
+*A solution ships:* the clause and its fixture, or the negative — that no affordable
+supply obligation exists under the deadline for the declared interface — with its
+witness.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

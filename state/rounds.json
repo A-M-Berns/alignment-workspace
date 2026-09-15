@@ -1406,6 +1406,23 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-15-li-corrigibility/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-16-noncapture-compilation",
+      "date": "2026-09-16",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-16-noncapture-compilation",
+      "verdict": "NONCAPTURE-COMPILES-BUT-REASON-COMPLETENESS-FAILS — the trace-steering comparison has exactly the algebra of the effect-side corrigibility inequality: on one world U(T) − U(N) = both·(V(T) − V(N)) + M·V(T) − M'·V(N) with M = C(T) ∧ ¬C(N) the audit mismatch, so the advisor's advantage from steering the principal's trace is at most L·E[both·d_canon] + E[both·(κ(T) + κ(N))] + D·E[M], a content residual charged at the committed program's content-Lipschitz constant, a form residual equal to the program's non-extensionality, and the audit-mismatch mass at the sharp coefficient D; it supplies the landed compiled pair's validity package verbatim, so Expectation Provability Induction and the finite-menu uniformity over polynomial-size efficiently generated menus transfer with nothing re-proved; scoped Robust Openness over a finite declared class of log transforms is a finite computation and hence Γ-valid under committed-program re-execution, while the claim that a declared transform is the causal counterfactual of the intervention it names remains external and is where reason-truth dependence and reason-generation dynamics live; but the residual does not reduce to completeness plus liveness of a declared reason interface: truthful cherry-picking of a true unprotected counterreason inside the declared interface passes authentication, authorship, canonicalization, the protected coverage barrier and liveness and is worth exactly the omitted reason's weight, and the two repairs, protecting every declared reason type or a supply obligation discharged by someone other than the advisor, are scope and ecosystem decisions rather than interface properties; the comparator is not canonical, canonicalization is independently necessary, undeclared reason types and insufficient granularity are invisible to every interface-local predicate, and the two-interface thesis survives only strengthened by total scope, ecosystem-supplied liveness, an extensional program, effect-side containment of world-changing interventions and the declared-transform contract.",
+      "verdict_source": "projects/deference/rounds/2026-09-16-noncapture-compilation/README.md",
+      "depends_on": [
+        "2026-09-15-li-corrigibility",
+        "2026-09-10-committed-principal-program",
+        "2026-09-09-evaluation-ecosystem-realization"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-16-noncapture-compilation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
