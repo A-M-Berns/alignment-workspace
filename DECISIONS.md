@@ -4080,3 +4080,34 @@ concrete reasoner, and does not call the legitimacy project settled. The
 origin. The paper's matter construction is proved to realize the Lean
 abstraction with no extra property; the whole specification is inhabited in
 Lean and jointly satisfied by a witness trace.
+
+### 2026-09-15 — authorization is per event, not "at step `t` or later"
+
+Agent-decided, reversible. The 2026-09-09 definition of an *authorized* loss
+(`CORRIGIBILIZATION.md` §2, `corrigibility.authorized`) requires a decision
+alternative under which no agent-caused loss of the concern occurs at step `t`
+**or later**. With two declared effects that each remove the same authority and an
+exterior that restores it between them, the corrigibilized policy has two losses
+each conditional on its own approval and no single alternative avoids both, so the
+first loss is unauthorized and `Corrigible(𝔠π)` fails
+(`projects/deference/rounds/2026-09-15-li-corrigibility/COUNTERMODELS.md` §1,
+`ShopRepair`). The per-event clause — the alternative avoids the loss *at step `t`*
+— restores C1 and is the form the Lean step lemma `loss_conditional_on_decision`
+already states; on every single-effect fixture the two clauses agree. The rejected
+alternative, keeping "or later" and restricting C1 to single-effect interfaces, was
+rejected because the clause's purpose (blocking a merely delayed loss) is already
+served by the no-re-proposal rule of `𝔠` and by each later loss carrying its own
+authorization. The 2026-09-09 tree is not edited; the wiki restatement waits on
+adjudication of the round.
+
+### 2026-09-15 — sealed comparison is the zero case of a learned inequality
+
+Agent-decided, reversible. The security-score bypass bound is stated with
+per-option activation and a directional mismatch term,
+`E[U_raw] − E[U_corr] ≤ L·E[both·δ] + E[both·ρ] + D·E[c_raw ∧ ¬c_corr]`, and the
+common-activation ("sealed") case is `E[c_raw ∧ ¬c_corr] = 0`, not a hypothesis of
+the theorem. The rejected alternative — keeping sealed comparison as a Boolean
+system hypothesis (the 2026-09-09 A10) — was rejected because the bound with the
+term is sharp, its marginal-rate variant is false, and the Logical-Induction form
+learns the term along with the rest. Item 89's deliverable is restated accordingly
+(`PRIORITIES.md`).

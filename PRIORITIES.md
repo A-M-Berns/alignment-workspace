@@ -2348,6 +2348,14 @@ than its conclusion, no cross-evaluator relation supplied by Logical Induction g
 it.  The score-based chooser of the canonical architecture is by construction and is
 not this item.
 
+*2026-09-15 (li-corrigibility round):* in the security-score register the calibration
+term is gone.  Expectation Provability Induction gives
+`E_n(U_raw,n) − E_n(U_corr,n) ≲_n L·E_n(Δ_n) + E_n(R_n) + D·E_n(M_n)` between the
+inductor's own expectations (`projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md`
+T3, Lean `LICorrigibility.li_bypass_le`).  The latent-value bridge of this item is
+unchanged: for an operative value that is not the price of the activated security, the
+completion term and `(CT)` stand as before.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -2641,6 +2649,56 @@ chooser controls a continuation that reaches the evaluation event.
 *Consumed by:* the round's T4 (C5–C6), whose sealed-comparison hypothesis A10 this item
 realizes or refutes.
 *A solution ships:* the clause with its sealing theorem, or the negative with its witness.
+
+*2026-09-15 (li-corrigibility round):* sealed comparison is now the zero case of a
+learned inequality rather than a Boolean hypothesis.  With per-option activation the
+bypass bound carries the directional mismatch term `D·E[c_raw ∧ ¬c_corr]`, sharp in `D`,
+with the marginal-rate form refuted, and Expectation Provability Induction learns the
+whole inequality including that term
+(`projects/deference/rounds/2026-09-15-li-corrigibility/UNSEALED_COMPARISON.md`,
+`THEOREM.md` T2–T3, Lean `LICorrigibility.mismatch_bound`, `Witness.marginal_refuted`).
+The deliverable of this item is therefore an architecture under which
+`E_n(c_raw ∧ ¬c_corr)` is small for every continuation of the advisor class — sequenced
+settlement gives `0` by timing at its ex-ante price; a hindsight evaluator needs the
+factorization — and the activation-independence clause is the statement that the
+joint mismatch event is empty.
+
+### 90. Empirical settlement of activated securities: a relativized inductor and the generability certificate — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The li-corrigibility round (`projects/deference/rounds/2026-09-15-li-corrigibility/`)
+learns the corrigibility inequality by `thm:expprovind` and states the feedback
+extension by `thm:wubexp` for comparisons *determined via `Γ`* — the sequenced-settlement
+pair with a finite horizon in a closed finite model.  Two ingredients are missing before
+the feedback result applies to a real evaluation log.  (1) The paper's deductive process
+is computable (`def:dedproc`); a trace of physical observations is not computable from
+the day, so an activated security read off a real log is outside the framework as
+stated.  State and prove the oracle-relativized form: an inductor, traders and a
+deductive process computable relative to an observation stream, with `thm:expprovind`
+and `thm:wubexp` relative to the stream, and "determined via `Γ`" read as determined by
+`Γ` plus the observed prefix.  (2) The Lean corollary `li_bypass_le` takes the pinned
+library's operational premises (`LUVCombination.BoundedSequence`,
+`MeshSoftmaxOperationalWitness`, `RpnThresholdCodes`) as named hypotheses; build the
+`P`-generability certificate for the compiled templates — the five formula families
+instantiated with the codes of `π_n`, `𝔠π_n`, the occurrence and the horizon — and for
+the near-argmax weighting of the finite-menu form, and discharge them, so that the
+theorem's hypotheses reduce to validity in every consistent world.  Either half may be
+delivered alone.
+
+*Deliverable shape:* for (1) a paper-level theorem with its exact hypotheses and a
+witness that a real log's securities are determined relative to the stream; for (2)
+Lean declarations discharging the named hypotheses of `li_bypass_le` for a concrete
+template family, audited to the three axioms.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
+
+*Context:* `FEEDBACK_BOUNDARY.md` §4 and `LUV_COMPILATION.md` §2 of the round; the
+pinned formalization's `Construction/Witnesses/` for the certificate style; item 87
+(availability) and item 89 (the mismatch term) for what the securities are.
+*Consumed by:* T4 of the round, whose "determined via `Γ`" hypothesis this item
+realizes for empirical logs; any registration of `li_bypass_le` against a filed item.
+*A solution ships:* the relativized theorem or the discharged certificate, or the
+negative with its witness.
 
 ## Workspace friction
 

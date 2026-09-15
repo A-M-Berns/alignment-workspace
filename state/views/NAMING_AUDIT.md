@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 400 names, 264 of them Lean only
+## deference — 421 names, 279 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -224,7 +224,7 @@ change, and the count of those is the size of the free choice remaining.
 | `settled` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.settled` |
 | `silentOf` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.silentOf` |
 | `state` | def | 2026-09-09-evaluation-ecosystem-realization | wiki, note, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.state` |
-| `step` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.step` |
+| `step` | def | 2026-09-09-evaluation-ecosystem-realization | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.step` |
 | `susceptible` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.susceptible` |
 | `trace` | def | 2026-09-09-evaluation-ecosystem-realization | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.trace` |
 | `traceAtCommit` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.traceAtCommit` |
@@ -258,6 +258,27 @@ change, and the count of those is the size of the free choice remaining.
 | `weightEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weightEF` |
 | `Pr` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.Pr` |
 | `X` | def | 2026-08-11-faithful-acceleration | wiki, note, prose | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.X` |
+| `GatedAt` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.GatedAt` |
+| `IndicatorAt` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.IndicatorAt` |
+| `MediatedPair` | structure | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.MediatedPair` |
+| `MediatedPair.B` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.MediatedPair.B` |
+| `ValidAt` | structure | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.ValidAt` |
+| `ValidAt.ofGated` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.ValidAt.ofGated` |
+| `bot` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.bot` |
+| `both` | def | 2026-09-15-li-corrigibility | note, prose | `Workspace.Deference.Contrib.LICorrigibility.Witness.both` |
+| `canonicalValue` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.canonicalValue` |
+| `constLUV` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.constLUV` |
+| `expectR` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.expectR` |
+| `gate` | def | 2026-09-15-li-corrigibility | prose | `Workspace.Deference.Contrib.LICorrigibility.gate` |
+| `indR` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.indR` |
+| `indicator` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.indicator` |
+| `neg` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.neg` |
+| `pair` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.Witness.pair` |
+| `ramp` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.ramp` |
+| `rawOnly` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.Witness.rawOnly` |
+| `softWeight` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.softWeight` |
+| `top` | def | 2026-09-15-li-corrigibility | prose | `Workspace.Deference.Contrib.LICorrigibility.top` |
+| `valid` | def | 2026-09-15-li-corrigibility | prose | `Workspace.Deference.Contrib.LICorrigibility.Witness.valid` |
 | `CoherentMixture` | structure | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.CoherentMixture` |
 | `coinMixture` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.coinMixture` |
 | `coinPrices` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.coinPrices` |
@@ -336,7 +357,7 @@ change, and the count of those is the size of the free choice remaining.
 | `s3a` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.s3a` |
 | `s3b` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.s3b` |
 | `setTag` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.setTag` |
-| `step` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.step` |
+| `step` | def | 2026-08-12-reachable-corrective-control | prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.step` |
 | `stepHFirst` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.stepHFirst` |
 | `stillRun` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.stillRun` |
 | `trace` | def | 2026-08-12-reachable-corrective-control | prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.trace` |
@@ -418,7 +439,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 700 names, 533 of them Lean only
+## normativity — 700 names, 532 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -961,7 +982,7 @@ change, and the count of those is the size of the free choice remaining.
 | `receipt` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.receipt` |
 | `segment` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.segment` |
 | `start` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.start` |
-| `step` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.step` |
+| `step` | def | unrecorded | prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.step` |
 | `subst` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.subst` |
 | `terminals` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals` |
 | `trans` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Segment.trans` |

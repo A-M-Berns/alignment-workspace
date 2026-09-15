@@ -203,6 +203,7 @@ of thing this file exists to make visible.
 | `2026-09-09-evaluation-ecosystem-realization` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-09 |
 | `2026-09-10-committed-principal-program` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-10 |
 | `2026-09-15-corrigibility-consolidation-landing` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-15 |
+| `2026-09-15-li-corrigibility` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-15 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have
