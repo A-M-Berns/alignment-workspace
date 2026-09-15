@@ -1,0 +1,9 @@
+COMMITTED-PROGRAM-CLOSES-CLAUSE-TWO-ON-LOG-AUTHENTICITY — with the principal's decision procedure committed at issuance as a program whose only input is the reason trace, and the verifier re-executing it at commitment, reason-mediated authorship holds by construction for every audited class of activated continuations (a generic kernel-checked theorem with factor map eval π_P), exclusive binding follows from a party-bound warrant registry, computational integrity is shown not to be a hypothesis of authorship (a coincident computation yields the same log and the same payload, a non-coincident one voids), and item 87's clause 2 closes on log authenticity with only issuance authenticity and the declared trace remaining; the pressure pass on the previous round breaks and repairs three discharges (key theft, advisor-written representation, pinned counterfactual branches — now declared log transforms, with the previous intervention class shown to have had no counterfactual content), states the exclusion content references need, tables both readings of the prohibited-event clause without ruling, and finds the typed settlement rule needs two log-checkable clauses and still admits a chain through earlier activated evaluations; the advisor-side transfer is refused because the view leaks the selection back.
+
+Reading order: [`FOR_HUMANS.md`](FOR_HUMANS.md), [`PRESSURE.md`](PRESSURE.md),
+[`PRINCIPAL_PROGRAM.md`](PRINCIPAL_PROGRAM.md), [`CLAUSE_LEDGER.md`](CLAUSE_LEDGER.md),
+[`COUNTERMODELS.md`](COUNTERMODELS.md), [`SETTLEMENT_CHANNEL.md`](SETTLEMENT_CHANNEL.md),
+[`REPORT.md`](REPORT.md).  Lean: `lean/Workspace/Deference/Contrib/EvaluationEcosystem.lean`
+(extended in place).  Model: `src/` (the 2026-09-09 model extended; its 48 fixtures re-run
+here, two adapted and marked), run by `python3 tests/run.py` (87 fixtures).  Consumes
+`../2026-09-09-evaluation-ecosystem-realization/`.  Nothing is registered.
