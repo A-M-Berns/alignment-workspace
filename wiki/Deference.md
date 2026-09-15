@@ -33,13 +33,15 @@ efficacy robust to the advisor policies being quantified.
 surrounding process must preserve standing, provenance, and write boundaries so
 the advisor cannot manipulate what counts as a correction or the principal
 cannot launder a failure by self-authorization. [Corrigibility](Corrigibility) now
-carries the consolidated theorem picture: corrigibility defined from protected
-response authority rather than a policy class, the corrigibilization transform with
-its soundness theorem, the corrigibilization-dominance bound on the chooser's score
-advantage from bypassing principal authority, the separation from authorship and
-manipulation, and the two system contracts — effect completeness and sealed
-comparison — the full statement rests on.  The activated value below is the principal
-evaluation that bound scores.
+carries the landed theorem nucleus: corrigibility defined from protected response
+authority rather than a policy class, the corrigibilization transform with its
+trajectory-level soundness theorem under event-linked authorization, the directional
+activation-mismatch bound, and the compiled inequality a logical inductor learns by
+Expectation Provability Induction with no calibration hypothesis, uniformly over
+polynomial-size efficiently generated menus; the separation from authorship and
+manipulation; and the contracts — effect completeness, and the mismatch mass the sealed
+comparison makes zero — the size of its right-hand side rests on.  The activated value
+below is the principal evaluation those securities score.
 
 ## Legitimate deference — the active consumer
 

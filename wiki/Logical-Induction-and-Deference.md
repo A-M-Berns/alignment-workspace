@@ -70,6 +70,29 @@ continuation's realized value (the `SLACK` bridge) continuation competence becom
 competence against that value.  This is an interface with a named open realization, not
 a theorem; the two wealth accounts stay semantically distinct.
 
+## What Logical Induction now supplies to corrigibility
+
+The [Corrigibility](Corrigibility) nucleus uses one Logical-Induction theorem, at its
+exact statement: Expectation Provability Induction.  The corrigibilization inequality
+between the activated securities of a raw continuation and its corrigibilized
+counterpart, with the mediation discrepancy, the decline regret and the directional
+activation mismatch as its explicit costs, compiles into a bounded combination of gated
+logically uncertain variables whose generability certificate is constructed at the
+pinned interface; if the architecture's specification makes that combination
+nonpositive in every world consistent with the inductor's theory, the inductor's own
+expectations respect it asymptotically — before any instance is proved, with no
+calibration hypothesis, and uniformly over any polynomial-size efficiently generated
+menu through a continuous near-argmax weighting, since a hard argmax is not an
+expressible feature.  Logical Induction contributes the passage from validity in every
+world to the market's expectations and the uniformity; it contributes no rate, no
+smallness of the costs, and nothing about non-settling quantities.  Expectation
+Unbiasedness from Feedback is a boundary statement: it applies only to comparisons the
+theory determines — a sequenced-settlement pair with an explicit finite horizon — and
+genuinely empirical logs need an oracle-relativized inductor, which the paper's
+computable deductive process does not provide.  Register:
+[`LI_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LI_CORRIGIBILITY.md),
+[`FEEDBACK_BOUNDARY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/FEEDBACK_BOUNDARY.md).
+
 ## Evidence and verification
 
 - [LI-native deference note](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/LI_NATIVE_DEFERENCE.md)

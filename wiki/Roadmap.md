@@ -125,22 +125,28 @@ The standing legitimacy items from before the canonicalization:
 
 ## Deference
 
-**Both targets are live.** The corrigibility theorem program is consolidated on
+**Both targets are live.** The corrigibility theorem nucleus is landed on
 [Corrigibility](Corrigibility): corrigibility from response authority over one
-continuation space, corrigibilization soundness under effect completeness, the
-corrigibilization-dominance bound `Φ_corr` under sealed comparison, separation from
-authorship, and the two nested targets — corrigibility proper and bounded corrigible
-agency.  The legitimate-deference stack is its principal evaluation, realized in the
+continuation space, trajectory-level corrigibilization soundness under effect
+completeness with event-linked authorization (T1), the directional activation-mismatch
+bound (T2), the compiled inequality a logical inductor learns by Expectation
+Provability Induction with no calibration term (T3) uniformly over polynomial-size
+efficiently generated menus (T3′), separation from authorship, and the two nested
+targets — corrigibility proper and bounded corrigible agency.  The legitimate-deference stack is its principal evaluation, realized in the
 evaluation ecosystem with the authorship clause closed on log authenticity
 (`authorship.mediation-by-reexecution`, registered); what remains of item 87 is
 reason-supply liveness, selection-induced sealing and vanishing void mass.  The items
 below are what the two targets still need.
 
-- Sealed comparison — item 89: an architecture under which the constitutional
-  comparison of `{π, 𝔠π}` has one activation event for every continuation in
-  `Π(h)`; sequenced settlement is one candidate at the price of an ex-ante judgment,
-  a hindsight evaluator under a physical factorization another; the ecosystem realizes
-  neither yet.
+- Sealed comparison — item 89: an architecture under which the directional mismatch
+  mass `E[c_raw ∧ ¬c_corr]` of the constitutional comparison of `{π, 𝔠π}` is small for
+  every continuation in `Π(h)`; sequenced settlement gives zero at the price of an
+  ex-ante judgment, a hindsight evaluator under a physical factorization another; the
+  ecosystem realizes neither yet.
+- The generability certificate of the finite-menu weighting — item 90 — so that T3′ is
+  mechanized end to end as T3 is.
+- An oracle-relativized inductor for empirical settlement of activated securities —
+  item 91 — the feedback boundary's missing ingredient, not a hypothesis of the nucleus.
 - The residual clauses of the realization bill — item 87: liveness against the
   bounded-delay affordability criterion, sealing of the advisor's whole
   selection-conditioned continuation, and `η_n → 0`.
