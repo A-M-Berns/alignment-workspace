@@ -51,13 +51,18 @@ neither a stable selector nor a positive margin.
 
 ## Current status
 
-> **Open / unregistered research.** Finite models expose substitution and
+> **Research state, one registered claim.** Finite models expose substitution and
 > factorization failures, and the notes state conditional competence and
-> calibration interfaces. No registered theorem connects all these relations.
+> calibration interfaces. The one registered theorem here is reason mediation by
+> re-execution of a committed principal program (`authorship.mediation-by-reexecution`);
+> no registered theorem connects all these relations.
 
-The open representation problem is to type authorization and capability
-separately, retain a principal-exclusive effect, connect competence to a usable
-margin, and state which advisor policies an efficacy claim quantifies.
+The representation problem — type authorization and capability separately, retain a
+principal-exclusive effect, connect competence to a usable margin, and state which
+advisor policies an efficacy claim quantifies — is now answered in one concrete model:
+the evaluation ecosystem's warrant registry binds keys to parties, the advisor's own
+commit is a write and not a receipt, and [corrigibility](Corrigibility) quantifies over
+the one physical continuation space with the system contracts named.
 
 ## Evidence and verification
 
@@ -65,3 +70,5 @@ margin, and state which advisor policies an efficacy claim quantifies.
 - [LI-native assumption ledger](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/notes/LI_NATIVE_DEFERENCE.md)
 - [Reachable-control substitution witnesses](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-reachable-corrective-control/REACHABLE_CORRECTIVE_CONTROL.md)
 - [Corpus reconciliation and grade distinctions](https://github.com/A-M-Berns/alignment-workspace/blob/76b65e5cc327ca2f334e829a76548514813ab4b0/projects/deference/rounds/2026-08-12-corpus-reconciliation/RECONCILIATION.md)
+- [Evaluation-ecosystem realization: the seven-clause ledger](https://github.com/A-M-Berns/alignment-workspace/blob/57b373bfe542d0c7b1ee78ba7e170fade4cc9003/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization/CLAUSE_LEDGER.md) — a concrete log in which the principal-exclusive effect is a reading of the warrant registry, authorization and capability are separated (the advisor's own commit is a write, not a receipt), and the efficacy claim quantifies over a stated advisor class
+- [Committed principal program: clause 2 closed on log authenticity](https://github.com/A-M-Berns/alignment-workspace/blob/899d9c67b9a1a3779ec38de1ccd4e7419c5a03a4/projects/deference/rounds/2026-09-10-committed-principal-program/PRINCIPAL_PROGRAM.md) — the principal's procedure typed by its input and re-executed by the verifier; the registered `authorship.mediation-by-reexecution`

@@ -86,6 +86,238 @@ commit.
 
 ## Settled
 
+### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
+
+**agent-decided, reversible.** The mediated-repair-dominance, evaluation-ecosystem and
+committed-principal-program rounds land together through one merge, and the wiki tells
+one story.  (1) **Canonical picture.**  Corrigibility is defined from protected response
+authority over the one continuation space `Π(h)`, with agent-caused loss and
+decision-conditional authorization (the consolidation pass's C0); the corrigibilization
+transform `𝔠` is sound under effect completeness, mediation soundness, decline
+preservation and execution faithfulness (C1), idempotent and not the definition (C2), and
+keeps the raw policy as the approve branch (C3); the incentive theorem is the
+corrigibilization premium `Φ_corr = sup_π [S(π) − S(𝔠π)]₊` in the chooser's activated
+security scores, bounded by `L·E[c·δ] + E[c·ρ] + ε` under a sealed common comparison
+(C5–C6); `Corrigible ∧ ¬Authored` is inhabited and *legitimate corrigibility* is the
+composite with the activation clauses, named descriptively and not coined.  The
+principal evaluation those scores read is the legitimate-deference stack's partial
+activated value, realized in the evaluation ecosystem with the authorship clause
+closed on log authenticity by committed-program re-execution.  Continuation BRIA pays
+`LEARN`; recognizability and joinability stay open; regret against all legitimate
+policies stays false.  (2) **Superseded as organizing objects**, recorded here and
+marked in the round records: the constitutional-violation premium `Φ_C` in a latent
+value (a diagnostic whose transfer is `(CT)`); the 2026-09-07 corrigibility page's
+seven-layer architecture story as the page's organization (its results survive as the
+constitutional layer, Theorem Spine 10.8); `Π_phys`, the mediable class, the four-way
+policy-class domain, "reason-preserving", and the classwise reading of T4 in the
+second pass's `COUNTERMODELS.md` §3.7 and `PRESSURE_PASS.md` §8, which carry
+supersession markers.  (3) **Boundaries made explicit.**  The evaluation ecosystem
+realizes same-branch activation (`C_n` a function of the realized log; a jam voids
+through the barrier) and not the sealed comparison of C5–C6; sequenced settlement is a
+fixture and one candidate architecture, not a realization and not hindsight
+evaluation; committed-program re-execution closes factorization and nothing of
+selection sealing (the advisor's view leaks the selection); C1 needs no clause of the
+realization bill, C5–C6 need common activation and price calibration, and authorship,
+the declared abstraction and reason supply are what make the evaluation the
+principal's.  (4) **Registration.**  Nothing new is registered.  `authorship.mediation-by-reexecution`
+(2026-09-10) stands.  The step lemma `loss_conditional_on_decision`, the closure lemmas
+`corr_idem`/`corr_fix_iff`, and the score algebra `security_score_bypass_le_sharp`/
+`uniform_bypass_le` stay LEAN and unregistered: the trajectory-level corrigibility
+predicate is not mechanized, and their filed item (89) is the hypothesis they consume,
+not one they answer; `rep_faithful` and the propagation lemmas are instance-level and
+stay LEAN.  (5) **Priorities.**  Items 84, 87 and 89 receive residual paragraphs naming
+one sharp problem each; item 86 is unchanged; nothing is closed, and effect completeness
+is not filed (it is the architecture round's containment wall, restated).  (6)
+**Deferred.**  Re-basing the mediated-repair-dominance round's value fixtures on the
+two-stage ordering, recommended by that round at canonicalization, is not done: the
+value algebra is ordering-independent except through mediation latency, and the
+corrigibility layer is already on the two-stage ordering.
+*Rejected alternatives:* merging the three research pull requests in sequence and
+leaving the 2026-09-07 page as the corrigibility story; registering the C1 step lemma or
+the score algebra against item 89; coining `LegitimateCorrigible` as a permanent name;
+filing effect completeness as a new item; deleting the second pass's superseded sections
+rather than marking them.
+
+### 2026-09-10 — the principal's decision procedure is a committed trace program in a total first-order language
+
+**agent-decided, reversible.** In the evaluation ecosystem of
+`projects/deference/rounds/2026-09-10-committed-principal-program/`, the mandate event
+carries the principal's program `π_P`, a term of a total first-order language whose only
+input is the reason trace: constants, pattern counts over the trace (by kind, content,
+and a decidable proof check), sums, differences, products and a positivity test, one
+term per candidate, clamped to `[0, 1]`.  Its input type is the point: a trace program
+cannot name the disposition register, a side-channel message or the selection
+coordinate, so susceptibility is a program of a different syntactic class (register
+programs), visible at issuance.  The 2026-09-09 reading principal is the program
+`reading`; the canonical member of the non-degeneracy band is `proofcheck`, whose verdict
+depends on the trace only through the proof check.
+*Rejected alternatives:* a general-purpose language (undecidable evaluation, no typing
+fact); an opaque committed hash of the procedure (re-executable by nobody); typing the
+program over the whole log (it would read the prohibited channels).
+
+### 2026-09-10 — a valid answer re-executes the mandated program on the commit's strict prefix; a non-matching vector is void, and computational integrity is not a hypothesis of authorship
+
+**agent-decided, reversible.** The commit carries its process receipt `(issue, prefix)`;
+the builder admits a commit as an answer receipt only if the prefix is the commit's own
+strict prefix and the vector equals the program's output on the trace of that prefix
+(`EvaluationEcosystem.reexecutes`).  The check lives in the builder's admission of the
+event — the implementation's authentication layer — not in `Protocol.AnswerOK`, which is
+unchanged.  Consequences adopted: reason mediation holds by construction over any audited
+class of activated continuations sharing the mandate (`reasonMediated_of_reexecution`,
+registered as `authorship.mediation-by-reexecution`); a commit whose vector is not the
+program's output is void rather than a foreign receipt; the question whether the
+principal "really ran" the program is not a hypothesis of authorship, since a coinciding
+computation yields the same log and payload and a non-coinciding one voids.  Frame
+mediation is stated over the activated subclass (the partial-`Ṽ` instantiation).
+*Rejected alternatives:* accepting any cited prefix (a principal could freeze the trace
+before a later reason); a new `Protocol` field for the procedure (not needed: the check
+is event authentication); treating a mismatching commit as the payload with a flag.
+
+### 2026-09-10 — three 2026-09-09 modelling decisions are amended by the pressure pass: the registry binds keys to parties, representation is the registrar's move, and counterfactual branches are declared log transforms
+
+**agent-decided, reversible.** (1) The warrant registry holds `(party, key)` pairs with
+revocation: a commit under another party's key is not a receipt (the 2026-09-09
+registry held keys alone and admitted key theft).  (2) A concern is represented only by a
+`route` event the registrar writes (the 2026-09-09 reading counted any `route`, so the
+advisor could clear the barrier).  (3) In the Lean semantics the counterfactual branches
+of Robust Openness are declared transforms of the log — the advisor silenced, the
+advisor jamming the registrar — uniform in the log, replacing per-instance pinned data,
+which could report openness where re-simulation reports closure once a coverage-affecting
+intervention is declared; the 2026-09-09 intervention class had no such intervention and
+its counterfactual half was empty.  Registrar robustness to jamming is a configuration.
+The prohibited-event clause keeps the strict reading as the default with the tolerant
+reading implemented and reported, not ruled.  The typed settlement rule gains two
+log-checkable clauses as the `typed+` configuration (own-move grounds only after
+representation; request-free engine settlements), reported and not ruled.
+*Rejected alternatives:* keeping pinned branch data with a per-instance correctness note;
+making `jam` a prohibited event (it is an intervention on the infrastructure, and the
+barrier already voids a realized jam); adopting `typed+` as the default ahead of the
+queued ruling.
+
+### 2026-09-09 — the evaluation ecosystem's log is authored events with one port per occurrence, read through the prefix
+
+**agent-decided, reversible.** The concrete evaluation ecosystem of
+`projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization/` fixes the log
+shape: an append-only list of events carrying an authentic author, a kind, a payload, an
+optional warrant and references; occurrence identity is the ordinal of the mandate
+event; ports are occurrences, never renumbered; the protocol's history at prefix `k` is
+the index range and every protocol predicate reads the log prefix of that length; an
+answer receipt is a commit naming the occurrence under a key the log's warrant registry
+holds at the strict prefix, adequate there; a closure receipt is the engine's close on a
+settled sentence; the canonical account is the first valid resolving event's receipt.
+The one authentication assumption is the author field, stated once.  Under this shape
+Integrity propagation is a function of the log (`EvaluationEcosystem.propagate_segment_eq`)
+and activation is a reading of it (`activated_iff`).
+*Rejected alternatives:* ports renumbered as occurrences resolve (dependent-type cost, no
+content); histories as arbitrary index lists read by membership (nothing the builder
+produces needs it); authentication modelled as signatures inside the log (re-imports the
+same assumption with more structure).
+
+### 2026-09-09 — the reason trace is the admitted event kinds referenced by content, the prohibited class is three kinds, and a prohibited event voids even when ineffective
+
+**agent-decided, reversible.** The declared reason trace `R_{n:m}` is the projection of
+the log before commitment onto `REASON`, `WITHDRAW`, `DELIB`, `RAISE`, `ROUTE`, `DISPOSE`,
+`SETTLE`, with a disposal's grounds carried **by content** — a positional reference shifts
+when an unrelated event is inserted and is not blind to the prohibited channels.  The
+prohibited class is the pair class generated by one added event of kind `DIRECT_WRITE`,
+`COERCE` or `SIDE`.  The activation event reads clause 6 strictly per log: a prohibited
+event in the realized log voids the evaluation even where the reading principal's
+payload is provably unmoved by it (`yardstick_invariant` realized), the class-level
+predicates being computed over the re-simulated frame.  The counterfactual branches of
+the openness semantics are the frame's re-simulated logs under a declared intervention
+class.
+*Rejected alternatives:* the tolerant reading (a prohibited event is harmless when
+mediation holds) — it makes the per-log receipt carry no information; positional
+references; a trace of final reason state (defeated by `transient`); counterfactual
+branches declared as free data (they would be the model declaring its own openness).
+
+### 2026-09-09 — the principal policy class is reading versus susceptible, and the day-`n` credence process is the Laplace rule
+
+**agent-decided, reversible.** The ecosystem's principals are a **reading** principal
+whose verdict is a function of the reason trace and a **susceptible** one whose
+disposition register the advisor can write and who takes side-channel messages as
+reasons; `eager` (commits into the barrier), `launder` and `deliberate_dispose` are
+variants for the coverage and settlement fixtures.  The barrier-respecting principal
+waits while a protected concern is live and forgoes the slot rather than commit.  The
+day-`n` price of the activation sentence across occurrences is the Laplace rule on
+settled outcomes, a concrete finite process standing in for an inductor's prices; its
+tracking bound `|η_n − F_n/n| ≤ 3/(n+2)` is kernel-checked and the logical-induction
+route is kept as the conditional corollary `availability_of_provind`.
+*Rejected alternatives:* a single parametrized principal (hides that mediation is a
+class-level fact); a principal that commits and lets the barrier void (kept as `eager`,
+not as the default); an empirical-frequency price without the prior (undefined at
+`n = 0`); building a logical inductor for the model (out of scope, and the tower stays
+paper).
+### 2026-09-09 — the Level III transfer is taken in the activated register, and the mediation cost is the residual-frame morphism's failure on the protected projection
+
+**agent-decided, reversible.**  The mediated-repair-dominance round.  (1) The corrigible
+comparator for a physical continuation is its **mediated lift**: the same continuation
+with every declared protected effect placed behind a deliberative principal decision
+through a physical latch; the raw residual frame maps into the lifted one by a
+Cartesian-frame morphism with identity exterior ("approve"), and the mediation cost `κ`
+is that morphism's failure on the protected projection.  (2) Forcing predicates are
+stated with the principal restricted to deliberative moves at the step in question; the
+partition of principal moves into corrective and deliberative is part of the declared
+protected interface.  (3) The transfer of principal-option dominance to the agent's
+operative choice is taken in the **activated register** of legitimate deference, with
+per-option activation, and not through a value-ordering hypothesis at the mediation
+cells, which is `(CT)` under another name (`mediation_st_iff_ct`).  The residual is the
+void mass the violation creates, attained (`Witness.totalVoid`).  (4) Provenance repair
+is a morphism of reason-projected frames, not trajectory frames; the reason lift maps a
+prohibited-channel move onto the declared channel for the same matter.  (5) Nothing is
+registered; item 89 is filed; item 84 is annotated, not closed.
+*Rejected alternatives:* selected trust at the mediation cells as the Level III
+hypothesis; an unrestricted forcing notion (pre-emptive shutdown forces everything); a
+silence-substituting reason lift; a `wiki/Corrigibility.md` update ahead of an adapter.
+
+**Pressure pass, same day (agent-decided, reversible).**  (6) The Level III transfer is
+restated in the canonical activation type — one common event for the issued menu — with
+activation independence made explicit as the causal precondition that type presupposes;
+the per-option form of the first pass is kept as the auxiliary result for same-branch
+evaluation.  (7) The mediation cost is derived, `κ ≤ L·δ`, from a declared protected
+pseudometric and a stability constant; joinability bounds `δ` for the catch-up lift;
+`SHIFT` is not identified with either.  (8) The intended corrigible architecture's
+mediation-cell chooser scores by the activated-security price; Level III is stated as
+security-score / operative-choice incentive corrigibility and not as a bound on a latent
+total value, for which item 84 stays open.  (9) The manipulation transform is named
+provenance normalization (truthful-channel substitution), its existence assumption
+stated, and the `ρ`-frame morphism claim withdrawn.  (10) Two-stage forcing
+(agent-move-then-principal-response, `∀a ∃p ∀e`) is the authority semantics; the
+deliberative-move restriction is scaffolding for the principal-first ordering; the
+model's re-basing is deferred to canonicalization.  Item 89 rewritten as the
+sealed-availability item.
+*Rejected alternatives:* keeping per-option activation as the primary form; keeping
+`κ` measured; a latent `V_A` as the object of Level III; re-basing the whole model in a
+pressure pass.
+
+**Consolidation pass, same day (agent-decided, reversible).**  (11) Corrigibility is
+**derived, not primitive**: on the two-stage ordering, a protected concern has an
+immediate response semantics, response authority is whether some principal response
+realizes it at the response stage, an agent-caused loss is a move after which that
+authority is gone and after an idle move would not be, and a loss is authorized when a
+decision response the principal could have taken instead — declining a proposal, not
+exercising a correction — would have avoided it; no subset of the continuation space is
+a primitive, and the space is written `Π(h)`.  (12) The canonical corrigibilization `𝔠`
+is the interposition on the declared effect interface; `Corrigible(𝔠π)` is a theorem
+from effect completeness, mediation soundness, decline preservation and execution
+faithfulness, with F the necessity witness; `𝔠` is idempotent and fixed exactly on
+release-free behaviour; the characterization `Corrigible(π) ⟺ 𝔠π ≃ π` holds one way and
+fails without effect soundness, and corrigibility is not defined as the fixed points.
+(13) T4 is stated over all of `Π(h)`: effect completeness and sealed comparison are
+system hypotheses, joinability bounds the discrepancy and is no domain condition, and
+provenance normalization is out of the first theorem — a manipulated principal who
+retains the decision makes the policy corrigible and not authored, by design.  (14) The
+score bound is charged only where the security settles, `L·E[c·δ] + E[c·ρ]`.  (15)
+Sequenced settlement — the constitutional comparison settled before any candidate acts —
+is recorded as one architecture that seals the comparison against every `π`, at the
+price of an ex-ante judgment; item 89 is reframed to that architecture question.  No
+new priority is filed for effect completeness: it is the architecture round's membrane
+wall, restated.
+*Rejected alternatives:* defining corrigibility as `Fix(𝔠)`; global forcing as the
+authority semantics (false before any bypass where `Π(h)` contains one); keeping a
+policy-class domain; requiring non-manipulation in the first theorem; a new priority
+duplicating containment.
+
 ### 2026-09-08 — continuation BRIA is canonical: the hypothesis is `(continuation, claim)` at a system block contract, the test is realized execution, the weighted auction is opening-timed, and non-dominance is the schedule boundary
 
 **agent-decided, reversible.** Closing pass on the continuation-BRIA round, landed with

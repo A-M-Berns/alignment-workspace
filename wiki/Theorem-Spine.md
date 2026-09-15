@@ -18,7 +18,7 @@ statement of record and the manuscript's numbering is given for orientation.
 
 | label | meaning |
 |---|---|
-| **registered** | a Lean declaration listed in a claims registry ([normativity](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/CLAIMS.md), [deference](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/CLAIMS.md)) at class `lean-proved`; the registry row, not this page, is the record |
+| **registered** | a Lean declaration listed in a claims registry ([normativity](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/CLAIMS.md), [deference](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/CLAIMS.md)) at class `lean-proved`; the registry row, not this page, is the record |
 | **LEAN** | sorry-free, audits to `propext`, `Classical.choice`, `Quot.sound`; deliberately unregistered because no filed priority is answered at registration strength |
 | **FIX** | an exact rational fixture in a round's `tests/`, exhaustive where the statement is finite |
 | **paper-derived** | proved in a maintainer note or a round document by ordinary mathematics, not mechanized; the checkpoint [status ledger](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/normativity/legitimacy/checkpoint-2026-09-01/STATUS_LEDGER.md) governs how strongly each is held |
@@ -519,70 +519,151 @@ Logical-Induction Value on the activated securities giving `R_U ≤ ε` (**PAPER
 `InheritedAlgebra.value_asymptotic`), and availability `η_n < 1` (**OPEN**, item 87)
 together give Theorems 9.2 and 9.3.  The activation semantics is **EXT**.
 
+**Theorem 9.7 (Reason mediation by re-execution — registered).**  In the evaluation
+ecosystem — a `Protocol` read off an authenticated event log, with Integrity propagation
+proved a function of the log (`propagate_segment_eq`, `complete_accounting_eq`) and
+activation a reading of it (`activated_iff`) — let the mandate carry a principal program
+`π_P : ℛ → 𝒱` in a total first-order language over the reason trace and let a valid
+answer re-execute it on the commit's strict prefix.  Then for any frame `β : Q → Z → Log`,
+any audited class `D` of activated continuations sharing the mandate, and any policy `z`,
+
+```
+ReasonMediated β (traceAtCommit · o) (payload · o) D z ,      factor map  eval π_P
+```
+(`reasonMediated_of_reexecution`, **registered** `authorship.mediation-by-reexecution`;
+inhabited by `Instance.mediation_witness`, two continuations with equal traces and
+different logs).  Blindness transfers (`blind_payload_of_reexecution`) and exclusive
+binding follows from a party-bound warrant registry (`exclusiveBind_of_registry`).  A
+commit whose vector is not the program's output is void, not a foreign receipt
+(`Instance.miscomputation_void`); a coincident computation yields the same log
+(`Instance.logs_equal`), so computational integrity is not a hypothesis.  Register
+programs are a separate syntactic class (`Programs.susceptible_not_trace`).  The
+representation-faithfulness bridge holds for every log and scope
+(`rep_faithful`, **LEAN**).  What remains of item 87 after this: reason-supply liveness
+(the bounded-delay affordability criterion for the concern stream), selection-induced
+sealing (partial; the advisor's view leaks the selection back, so re-execution does not
+transfer to the advisor), and availability (`η_n → 0`; the ecosystem's Laplace price
+tracks the empirical void frequency within `3/(n+2)`, `laplace_eta_sub_freq_abs_le`).
+Lean:
+[`EvaluationEcosystem.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/lean/Workspace/Deference/Contrib/EvaluationEcosystem.lean);
+records
+[`CLAUSE_LEDGER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/CLAUSE_LEDGER.md)
+and
+[`PRINCIPAL_PROGRAM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/PRINCIPAL_PROGRAM.md).
+
 ## 10. Corrigibility
 
 Lean:
+[`MediatedRepairDominance.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/lean/Workspace/Deference/Contrib/MediatedRepairDominance.lean),
 [`SelectedTrustNonPreemption.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/lean/Workspace/Deference/Contrib/SelectedTrustNonPreemption.lean);
 documents
+[`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md),
+[`THIRD_PASS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/THIRD_PASS.md),
 [`ARCHITECTURE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-corrigibility-architecture/ARCHITECTURE.md),
-[`INCENTIVE_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-incentive-nonpreemption/INCENTIVE_CORRIGIBILITY.md),
-[`NORMATIVE_CHOICE_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-decision-theory-bill/NORMATIVE_CHOICE_THEOREM.md).
-Nothing registered.
+[`INCENTIVE_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/projects/deference/rounds/2026-09-06-incentive-nonpreemption/INCENTIVE_CORRIGIBILITY.md).
+Nothing in this section is registered.  The setting: a finite two-stage interaction
+(agent move, principal response, exterior move); one continuation space `Π(h)`, no
+primitive class; protected concerns `r ∈ Γ` with immediate response semantics `φ_r`;
+**response authority** `K_r(s_A)` — after the agent's move some principal response
+realizes `φ_r` now; an **agent-caused loss** — `K_r` fails after the actual move and
+would hold after the idle move; the **authorization interface** — approve/decline
+decision responses with decline preservation; a loss is **authorized** iff a decision
+response the principal could have taken instead avoids every later agent-caused loss
+of `r` on every exterior path; `Corrigible_h(π, ρ)` iff every agent-caused protected
+loss under rule `ρ` is authorized.  The forcing-type comparison is **FIX** (M, N):
+global forcing is false before any bypass, continuation-relative forcing is
+anticipatory, response authority is present-tense.
 
-**Theorem 10.1 (No Laundered Authority Loss).**  Under the bridges B1 (efficacy
-faithfulness: the `eff` bit tracks actual affordance), B2 (registration faithfulness: the
-docket enters coverage through `rep`) and B3 (disposition places the load on a
-successor), at any state where the correction affordance is lost exactly one of the
-following holds: *amended* (relevance false, with a closure receipt); *disposed*;
-*registered debt* (a live restoration occurrence, conserved by Theorem 1.3); or *not open*
-(the state fails `OpenAt`).  The fourth combination — loss, open, no amendment,
-disposition or docket entry — is unreachable, and dropping B2 readmits it.  **FIX**
-(exhaustive over coverage states and docket) and **paper-derived** from Theorems 2.1 and
-3.3; the Lean form is item 83.  It is a corollary of per-state Robust Openness plus
-conservation, not a new pillar.
+**Theorem 10.1 (Corrigibilization soundness, C1).**  `𝔠` rewrites every raw release
+of a declared effect into a proposal followed by a gated release and passes everything
+else through.  Under effect completeness (EF), mediation soundness (MS), decline
+preservation (DP) and execution faithfulness (EX), `∀π ∈ Π(h) ∀ρ. Corrigible_h(𝔠π, ρ)`.
+The step lemma is **LEAN** (`loss_conditional_on_decision`: on an abstract mediation
+system with `release_inert`, `latched_decline`, `K_decline`, authority lost at a gated
+release after an approval is kept under the decline alternative); `corr_no_raw` is
+**LEAN**; the trajectory-level predicate and the proof are **FIX** and prose (A, E under
+three principal rules).  Necessity of EF: **FIX** F (`𝔠π_F = π_F`, an undeclared move's
+loss is unauthorized).  EF is **EXT**.
 
-**Theorem 10.2 (Level I identity and non-preemption).**  For a selected-trust index `σ`
-and the principal's choice `J`,
+**Theorem 10.2 (Closure, C2).**  `corr (corr ms) = corr ms` (`corr_idem`) and
+`corr ms = ms ↔ NoRaw ms` (`corr_fix_iff`); **LEAN**, no axioms.  Hence
+`𝔠π = π ⟹ Corrigible(π)` under 10.1's hypotheses; the converse fails without effect
+soundness (**FIX** B, distance `1/4`).  Corrigibility is not `Fix(𝔠)`.
+
+**Theorem 10.3 (Approval reproduces the raw policy, C3).**  The raw residual frame maps
+into `𝔠π`'s by a Cartesian-frame morphism with agent component "approve" and identity
+exterior; forcing is monotone along it (`ensures_mono`, `approvalMorphism`, **LEAN**).
+The morphism's failure on the protected projection is the structural discrepancy `δ`;
+with an `L`-stable protected value, `(w_raw − w_approve)₊ ≤ L·δ`
+(`mediationGap_le_of_lipschitz`) and `W(π) ≤ W(𝔠π; ρ) + L·E[δ] + E[ρ]`
+(`option_dominance_of_approx_reproduction`), **LEAN**.  A generic constraint's repair
+cannot keep the effect as an approve branch (**FIX** Q: `7/4 < 9/4 < 5/2`).
+
+**Theorem 10.4 (Corrigibilization dominance, C5–C6).**  With one activation event `c`
+common to `{π, 𝔠π}`, `|w_raw − w_approve| ≤ L·δ` and `w_approve − w_act ≤ ρ` on the
+activated worlds,
 
 ```
-valuation σ − valuation J  =  selectedGap + principalRegret
+E[c·w_raw] − E[c·w_act]  ≤  L·E[c·δ] + E[c·ρ]
 ```
-(`valuation_sub_eq`), so `selectedGap ≤ ε` and `principalRegret ≤ r` give gain at most
-`ε + r` (`nonpreemption`); the weakest form against `max(Y, 0)` is the conclusion itself
-when the principal never regrets (`nonpreemption_plus`); the delegation bridge is the
-pointwise instance (`delegation_bridge_of_nonpreemption`).  **LEAN**.
+(`security_score_bypass_le_sharp`, **LEAN**; mediation cost on unsettled worlds is not
+charged); with prices within `ε` of the securities' expectations the score gap is at
+most that plus `ε` (`security_score_bypass_le_of_prices` for the unsharpened form);
+over a finite family the largest positive gap is at most the largest bound
+(`uniform_bypass_le`, **LEAN**; **FIX**: five raw continuations of A, `Φ_corr = 1/2 ≤ 1`).
+So `Φ_corr,n(h) := sup_{π∈Π(h)} [S_n(π) − S_n(𝔠π)]₊ ≤ sup_π (L·E[c·δ_π] + E[c·ρ_π] + ε_n(π))`,
+and under uniform bounds `≤ L·δ̄ + ρ̄ + ε̄ → 0`.  The chooser scoring by `P_n(U_q)` loses at
+most `ε + 2ε_cal` by its choice (`operative_choice_loss`, **LEAN**).  The sealed common
+comparison is **EXT** (item 89): under same-branch evaluation the raw candidate can end
+the evaluation (**FIX** E2, `η_raw = 1`, `Witness.totalVoid`); a hindsight evaluator is
+sealed only under a declared physical factorization an undeclared move violates (E1-sever);
+sequenced settlement seals the comparison for every `π` at the price of an ex-ante
+judgment (`ShopSeq`, **FIX**).  Price calibration is the Value hypothesis of §9
+(**PAPER**).
 
-**Theorem 10.3 (Principal-side calibration).**  Cellwise `|w − b| ≤ δ`, `|W − w| ≤ ζ` and an
-`η`-approximate argmax give `principalRegret ≤ 2δ + 2ζ + η`
-(`principalRegret_le_of_calibration`), hence a choice gap of at most
-`ε_ST + 2δ + 2ζ + η` (`nonpreemption_of_calibration`, nonvacuous by `Witness.nonvacuous`);
-**LEAN**, through Theorem 6.1.  If the sealed target reads the quote, `ζ ≥ ½` and the
-bound is vacuous (**FIX**): a sealed arm is needed.
+**Theorem 10.5 (The latent-value transfer is `(CT)`).**  For an independently specified
+total value, the premium at the mediation cells is `declGap + declRegret`
+(`premium_eq_gap_add_regret`), the completion-valued bound carries the void term
+`E[κ] + E[ρ] + D·η` (`bypass_premium_le_common`, attained by `Witness.commonVoid`), and
+bounding the gap by selected trust at the cells is identically the incentive round's
+`(CT)` (`mediation_st_iff_ct`), which `ct_strictly_stronger` shows is stronger than its
+conclusion.  **LEAN**.  The route is refused; item 84 stays open and is not needed by
+the score-based architecture.
 
-**Theorem 10.4 (Level II, mediated delegation).**  Over non-foreclosing conducts the
-admissible-preemption deficit splits exactly as accounting deficit plus selected gap plus
-principal regret on the override region, giving
+**Theorem 10.6 (Separation: corrigible and not authored).**  Under a captured principal,
+`𝔠π_D` is corrigible and every decision differs from the reason-mediated one (**FIX** S);
+provenance normalization is not reason-preserving and is a separate theory with its own
+existence condition (**FIX** D, K).  Corrigibility is causal authority over
+correction-sensitive choices; legitimate influence is Theorems 9.4–9.7.
 
-```
-Δ^{admissible preemption}  ≤  2B · eps_pred + ε_ST + r_P,     r_P ≤ 2δ + 2ζ + η
-```
-**FIX** (exhaustive over four episodes); not Lean.
+**Theorem 10.7 (Joinability bounds the discrepancy, T_JOIN).**  A pointwise,
+exterior-coupled joinability certificate at protected distance `d` gives
+`δ(𝔠_catchup π) ≤ d`, hence mediation cost `≤ L·d`; a foreclosing `π` has `δ = T` and is
+charged, not excluded; `SHIFT` of §10.9 is not identified with `δ` (**FIX** J, C1, C2).
 
-**Theorem 10.5 (Violation decomposition and the foreclosure premium).**
-`Δ^phys ≤ Δ^C + Φ_C` with `Φ_C = sup_π (V(π) − V(R_C π))₊` (`violation_decomposition`);
-selected repair trust gives `Φ_C ≤ ε_C` (`premium_of_selected_repair_trust`) but is
-strictly stronger than its conclusion (`ct_strictly_stronger`), so the higher levels of
-the hierarchy are relabelings and are not reached.  **LEAN**.
+**Theorem 10.8 (The constitutional layer).**  *No Laundered Authority Loss*: under the
+efficacy and registration bridges, every affordance loss is amended, disposed, registered
+debt, or not open (**FIX**, exhaustive; Lean form item 83).  The Level I identity
+`valuation σ − valuation J = selectedGap + principalRegret` (`valuation_sub_eq`,
+**LEAN**), principal-side calibration `principalRegret ≤ 2δ + 2ζ + η`
+(`principalRegret_le_of_calibration`, **LEAN**), the Level II bound
+`2B·eps_pred + ε_ST + r_P` over non-foreclosing conducts (**FIX**), and the violation
+decomposition `Δ^phys ≤ Δ^C + Φ_C` with `Φ_C ≤ ε_C` under selected repair trust
+(`violation_decomposition`, `premium_of_selected_repair_trust`, `ct_strictly_stronger`,
+**LEAN**) remain as the value-ordering register; Theorem 10.4 is the same question
+answered in security scores, where no such hypothesis is needed.  The static decision
+type is shared with ordinary normativity (Theorem 6.2, `adapter_practicalCert`);
+non-compensability must appear in the ordering (`scalar_bribery`, `gate_invariant`).
 
-**Theorem 10.6 (Dynamic admissibility).**  When an admissible act changes the next
+**Theorem 10.9 (Dynamic admissibility).**  When an admissible act changes the next
 admissible set, a myopic gated learner is legitimate but loses `2H − 3` to the investing
 policy over horizon `H`; an untyped gate is hacked; a typed gate is safe and incompetent
-(**FIX**).  The learner that closes this is [Continuation BRIA](Continuation-BRIA), whose
-own results are on that page: duration-weighted bounded inductive rationality over block
-continuations, the sharp rejection bound `ℓ_K < w_K − A_i(K)`, existence exactly on
-non-dominant block schedules, the settlement-timing impossibility, and the exact
-decomposition `Regret = LEARN + SLACK + SHIFT` with `LEARN` controlled and the two
-bridges open (item 86).
+(**FIX**).  The learner that closes this is [Continuation BRIA](Continuation-BRIA):
+duration-weighted bounded inductive rationality over block continuations, existence
+exactly on non-dominant block schedules, and `Regret = LEARN + SLACK + SHIFT` with
+`LEARN` controlled and the two bridges open (item 86).  Regret against all legitimate
+policies is false (the foreclosing-branch witness); joinability, not reversibility, is the
+class boundary.
 
 ## 11. The counterexamples that fix the shape
 
@@ -602,6 +683,14 @@ Each of these is exact and is why the corresponding definition has the form it h
 | zero defect, worse policy ranked first | the practical-response certificate as an independent bridge (6.5) |
 | a world-dependent strategy on the void branch | the two-sided completion theorem (Theorem 9.3) |
 | a sparse tester that always reverts, on a revocable amendment | continuation claims rather than the one-step criterion ([Continuation BRIA](Continuation-BRIA)) |
+| an undeclared move cuts the stop wire (F) | effect completeness as a system hypothesis of Theorem 10.1, not a policy class |
+| global forcing false before any bypass (M) | response authority, not global forcing, defines agent-caused loss |
+| a declared effect that touches no protected authority (B) | corrigibility is not the fixed points of `𝔠` |
+| a captured principal who retains the decision (S) | corrigibility separate from authorship |
+| the raw candidate ends the evaluation (E2); an undeclared move severs the channel (E1-sever) | sealed comparison as a system hypothesis of Theorem 10.4 |
+| a commit under the principal's key authored by the advisor | the warrant registry binds keys to parties (Theorem 9.7) |
+| the same program, one executor honest, one coincident | computational integrity is not a hypothesis of authorship (Theorem 9.7) |
+| the market publishes the advisor's selection and its program echoes it | re-execution does not seal the advisor |
 
 ## 12. What is external, what is open
 
@@ -615,7 +704,10 @@ interface table lists each supplier's obligation.
 7.2; the semilattice conservation theorem as one Lean declaration (§1); the Lean form of
 No Laundered Authority Loss (item 83); the operative-value-security bridge (item 84);
 margin realization (item 85); promise recognizability and joinability for continuation
-BRIA (item 86); the realization bill for legitimate deference (item 87); affordability
-from the traderization perspective (item 88).  The open queue itself lives in
+BRIA (item 86); the residual clauses of the legitimate-deference realization bill —
+reason-supply liveness, selection-induced sealing, vanishing void mass (item 87);
+affordability from the traderization perspective (item 88); the sealed-comparison
+architecture for the corrigibilization menu (item 89).  Effect completeness and the
+authorization primitive are external contracts of Theorem 10.1, not filed items.  The open queue itself lives in
 [`PRIORITIES.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/PRIORITIES.md);
 this page names items, it does not maintain them.

@@ -846,3 +846,29 @@ round produced.
   "note": "A refutation, and the sharpest: it exhibits an advisor policy that destroys the capability at every horizon while the preservation predicate certifies it."
 }
 ```
+
+### authorship.mediation-by-reexecution
+
+```json
+{
+  "project": "deference",
+  "short_name": "reason mediation by construction under a committed, re-executed principal program",
+  "origin_round": "2026-09-10-committed-principal-program",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EvaluationEcosystem.reasonMediated_of_reexecution"
+  },
+  "answers_item": "87",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-10-committed-principal-program",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-10-committed-principal-program/PRINCIPAL_PROGRAM.md",
+    "context": "prompts/2026-09-10-committed-principal-program/REPORT.md"
+  },
+  "note": "Clause 2 of item 87 only, not the bill. For any frame over the ecosystem's logs, any audited class of activated continuations sharing the mandated program, and any policy, the committed payload factors through the trace at commitment with factor map `eval π_P`. Inhabited by `Instance.mediation_witness`: two continuations with equal traces and different logs, both activated. What it does not say: that the trace, the scope or the pair class are declared correctly, or that any log is authentic."
+}
+```

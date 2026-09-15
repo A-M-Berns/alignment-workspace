@@ -2330,6 +2330,24 @@ realize.
 *A solution ships:* the interface with its theorem, or a statement of why the bridge is
 a design choice and not a theorem.
 
+*2026-09-09:* the mediated-repair-dominance round locates this bridge at one menu,
+`{π, 𝔠π}`, and names its failure mode — the agent's completion on the void branch —
+without discharging it.  Its pressure pass adds that the intended corrigible
+architecture does not need it: the mediation-cell chooser scores options by the price
+of the activated security, and in those scores the bypass incentive has no completion
+term.  This item stays open as a theorem about independently specified operative values;
+item 89 is the sealed-availability precondition both forms share.
+
+*2026-09-15 (consolidation landing):* the sharp residual is one statement.  For an
+operative value `V_A` on `Π(h)` that is **not** the price of the activated security,
+either exhibit an interface under which `V_A(π) − V_A(𝔠π) ≤ L·E[c·δ] + E[c·ρ] + D·η + ε`
+with the completion term `D·η` charged to the void branch (`bypass_premium_le_common`,
+attained by `Witness.commonVoid`), or the negative: since the value-ordering hypothesis at
+the mediation cells is identically `(CT)` (`mediation_st_iff_ct`) and strictly stronger
+than its conclusion, no cross-evaluator relation supplied by Logical Induction gives
+it.  The score-based chooser of the canonical architecture is by construction and is
+not this item.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -2458,7 +2476,7 @@ for any of the three.
 specialization's investing-in-amendment case.
 *A solution ships:* the three objects with the composed corollary, or the negative.
 
-### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]**
+### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]** — *landed 2026-09-15: clauses 1–4 discharged on log authenticity (2 by committed-program re-execution, registered `authorship.mediation-by-reexecution`); what remains is clauses 5, 6, 7 — liveness, sealing, void mass — as stated in the residual paragraph below*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2503,6 +2521,25 @@ clauses and names the exact obstruction to the others is a valid deliverable.
 a witness, and the exact residual for each it does not.
 *Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
 
+*Residual after the 2026-09-15 landing* (`projects/deference/rounds/2026-09-10-committed-principal-program/CLAUSE_LEDGER.md`).
+Clauses 1–4 are discharged in the evaluation ecosystem on log authenticity, each with
+its semantic exclusion stated (the registry binds keys to parties; the trace references
+by content intrinsic to the admitted history; representation is the registrar's move).
+Three sharp problems remain, and this item now asks for exactly them:
+**(5) liveness** — for the stream of raised protected concerns, timely route exercise
+within the barrier deadline is affordable iff the bounded-delay affordability criterion
+(`projects/normativity/legitimacy/rounds/2026-08-31-normative-affordability/BOUNDED_DELAY_AFFORDABILITY.md`,
+Theorem D4) holds for that stream with the scheduler's cost; the ecosystem certifies its
+horizon, not the criterion; **(6) sealing** — `Blind R P_sel` for the advisor's whole
+selection-conditioned continuation, which a committed advisor program does not give
+because the ecosystem's view can carry the selection back (`test_view_leak`); a
+sealed class discharges it by construction and nothing in the log distinguishes that
+class; **(7) availability** — `η_n → 0` whatever the advisor selects: the ecosystem's
+price tracks the empirical void frequency within `3/(n+2)`, so the residual is a
+vanishing void frequency under admissible selection-conditioned continuations and an
+executing principal.  The sealed comparison the corrigibilization theorem needs across
+`{π, 𝔠π}` is item 89, not this item.
+
 *Context:* `projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/`
 (`LEGITIMATE_DEFERENCE.md`, `REASON_SUPPLY.md` §4, `DIACHRONIC_AUTHORSHIP.md` §5), on the
 two rounds it consolidates.
@@ -2543,6 +2580,67 @@ inexpressibles; fixtures where a restatement changes a constant.
 `projects/normativity/rounds/2026-08-16-traderized-enforcement/`, item 61.
 *Consumed by:* item 61; the paper candidates for the affordability line.
 *A solution ships:* the presentation, or the exact obstruction.
+
+### 89. Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The mediated-repair-dominance round (`projects/deference/rounds/2026-09-09-mediated-repair-dominance/`,
+`PRESSURE_PASS.md` §1–§2) states Level III in the canonical legitimate-deference
+activation type — one common event `C_n` for the issued menu — and finds that the type
+presupposes something the ontology does not list: the occurrence's fate must not depend
+on which menu candidate is selected (**activation independence**).  For the mediated
+menu `{π, Lift π}` that is a causal requirement on the answering process — issued before
+selection, answered by a process outside every candidate's reach — and `Π_phys` contains
+continuations that reach any given process (fixtures H and E1-sever).  Where the
+requirement holds, the security-score bypass incentive is bounded by `L·E[δ] + E[ρ]` plus
+calibration with no completion and no void term (`security_score_bypass_le`); where the
+violation removes the common event the theorem is silent, which is exactly where full
+corrigibility matters.  The mediation-cell chooser that scores by `P_n(U_q)` is by
+construction and is not this item; the value-ordering transfer is `(CT)`
+(`mediation_st_iff_ct`) and is not available.
+
+*Reframed by the consolidation pass (`THIRD_PASS.md` §4).*  The question is not which
+policies preserve the evaluator but what **system architecture** makes the common
+constitutional comparison of the issued pair `{π, 𝔠π}` sealed against every `π` in the
+agent's actual continuation space `Π(h)` until settlement.  Two answers are on the
+branch: a hindsight evaluator sealed by a declared physical factorization, which an
+undeclared move violates (E1-sever); and **sequenced settlement** — the comparison
+settled before any candidate receives causal access to the protected effects or the
+evaluator (`ShopSeq`) — sealed for every `π` by timing, at the price that the security
+pays the principal's ex-ante judgment at the cell rather than an outcome evaluation.
+
+State activation independence as a clause of the activation event (alongside the seven
+of `LEGITIMATE_DEFERENCE.md` §3), with its causal meaning; decide whether the
+legitimate-deference Value hypothesis tolerates ex-ante settlement, or whether a
+hindsight evaluator with a physical factorization is required; and in the latter case
+prove either that a declared mediation alphabet can seal the answering process against
+every continuation in `Π(h)`, or the negative that no same-trajectory activated-security
+chooser controls bypass policies that reach the evaluation event, with the reach
+relation made exact in the round's model.
+
+*Deliverable shape:* the clause, the sealing construction or its impossibility, and
+fixtures where the answering process is and is not reachable.
+*Acceptance check:* `python3 tests/run.py` green; any Lean audits clean.
+
+*2026-09-15 (consolidation landing):* the evaluation ecosystem of item 87 realizes
+**same-branch** activation — `C_n` is a function of the realized log, and a continuation
+that jams the registrar voids it through the reason-coverage barrier
+(`projects/deference/rounds/2026-09-10-committed-principal-program/PRESSURE.md` P2) — so
+it does not realize the sealed comparison this item asks for; the jam fixture is the
+reach relation made concrete in that model.  Sequenced settlement remains a fixture
+(`ShopSeq`), one candidate architecture with its ex-ante price, not a realization and not
+hindsight evaluation.  The sharp problem: state activation independence as a clause, and
+either build the sealed answering process in the ecosystem against every continuation
+of its advisor class (jam included) or prove that no same-trajectory activated-security
+chooser controls a continuation that reaches the evaluation event.
+
+*Context:* `INCENTIVE_COMPOSITION.md` §3–§7 and `COUNTERMODELS.md` §5 of the round; item
+84 (the latent-total-value bridge, which the intended architecture does not need); item
+87 (availability as a realization, of which this is the incentive-facing instance).
+*Consumed by:* the round's T4 (C5–C6), whose sealed-comparison hypothesis A10 this item
+realizes or refutes.
+*A solution ships:* the clause with its sealing theorem, or the negative with its witness.
 
 ## Workspace friction
 
