@@ -25,6 +25,13 @@ some world of every repertoire cell, residual at least the cell's gap
 `V(certain K) − min_{ω ∈ K} V(Truth ω)`; the exhaustive policy attains exactly the gap.
 So the least worst-case residual with unbounded budget is the largest cell gap.
 
+**3b. The general obstruction** (`bestResp_antitone`, `residual_ge_cellGap'`,
+`exhaustive_attains_cellGap'`, `cellGap'_eq_cellGap`): for an arbitrary extensional
+program the advisor is a strategic content-adder, the residual is its best-response gain
+over the docket, larger dockets never help it, so the exhaustive docket is optimal and
+the least worst-case residual is the general cell gap; the antitone theorem is the case
+where the best response is the docket's own verdict.
+
 **4. Progress under a witness-completeness hypothesis** (`potential_decay`): if every
 step exposes a fixed fraction `γ` of the remaining potential, the potential decays
 geometrically; the countermodels show the hypothesis fails for direct-query repertoires.
@@ -193,6 +200,119 @@ theorem exhaustive_attains_cellGap (M : Model Ω ι) (ω : Ω) :
 
 end Cells
 
+/-! ## 2b. The general obstruction: arbitrary extensional programs
+
+The advisor is a strategic content-adder: given the engine's docket `D` it adds whatever
+true reasons raise its candidate's verdict.  Its **best response** on a world with truth
+`T` is `sup_{S ⊆ T \ D} V (D ∪ S)`, and the general residual is that value minus
+`V T`.  Larger dockets only shrink the advisor's option set, so the exhaustive docket
+is optimal for *every* extensional program; the antitone theorem is the case where the
+best response is `V D` itself. -/
+
+section General
+
+variable {Ω ι : Type*} [Fintype Ω] [DecidableEq Ω] [Fintype ι] [DecidableEq ι]
+
+/-- The advisor's best-response verdict over a docket `D` on a world of truth `T`. -/
+noncomputable def bestResp (V : Finset ι → ℝ) (D T : Finset ι) : ℝ :=
+  (T \ D).powerset.sup' ⟨∅, Finset.empty_mem_powerset _⟩ (fun S => V (D ∪ S))
+
+omit [Fintype ι] in
+theorem bestResp_ge (V : Finset ι → ℝ) (D T : Finset ι) (S : Finset ι) (hS : S ⊆ T \ D) :
+    V (D ∪ S) ≤ bestResp V D T :=
+  Finset.le_sup' (fun S => V (D ∪ S)) (Finset.mem_powerset.mpr hS)
+
+omit [Fintype ι] in
+theorem bestResp_le (V : Finset ι → ℝ) (D T : Finset ι) (b : ℝ)
+    (h : ∀ S ⊆ T \ D, V (D ∪ S) ≤ b) : bestResp V D T ≤ b :=
+  Finset.sup'_le _ _ (fun S hS => h S (Finset.mem_powerset.mp hS))
+
+omit [Fintype ι] in
+/-- **A larger docket never helps the advisor.** -/
+theorem bestResp_antitone (V : Finset ι → ℝ) (D D' T : Finset ι) (hD : D ⊆ D') (hT : D' ⊆ T) :
+    bestResp V D' T ≤ bestResp V D T := by
+  apply bestResp_le
+  intro S hS
+  have hmem : S ∪ (D' \ D) ⊆ T \ D := by
+    intro x hx
+    rcases Finset.mem_union.mp hx with hx | hx
+    · have h := Finset.mem_sdiff.mp (hS hx)
+      exact Finset.mem_sdiff.mpr ⟨h.1, fun hxD => h.2 (hD hxD)⟩
+    · exact Finset.mem_sdiff.mpr ⟨hT (Finset.mem_sdiff.mp hx).1, (Finset.mem_sdiff.mp hx).2⟩
+  have heq : D' ∪ S = D ∪ (S ∪ (D' \ D)) := by
+    ext x
+    simp only [Finset.mem_union, Finset.mem_sdiff]
+    constructor
+    · rintro (h | h)
+      · by_cases hx : x ∈ D
+        · exact Or.inl hx
+        · exact Or.inr (Or.inr ⟨h, hx⟩)
+      · exact Or.inr (Or.inl h)
+    · rintro (h | h | h)
+      · exact Or.inl (hD h)
+      · exact Or.inr h
+      · exact Or.inl h.1
+  rw [heq]
+  exact bestResp_ge V D T _ hmem
+
+omit [Fintype ι] in
+/-- For an antitone verdict the best response is the docket's own verdict. -/
+theorem bestResp_of_antitone (V : Finset ι → ℝ) (hanti : ∀ s t, s ⊆ t → V t ≤ V s)
+    (D T : Finset ι) : bestResp V D T = V D := by
+  apply le_antisymm
+  · exact bestResp_le V D T _ (fun S _ => hanti _ _ Finset.subset_union_left)
+  · simpa using bestResp_ge V D T ∅ (Finset.empty_subset _)
+
+/-- The general cell gap: the worst world's best-response residual over the certain
+docket. -/
+noncomputable def Model.cellGap' (M : Model Ω ι) (ω : Ω) : ℝ :=
+  (M.cell ω).sup' ⟨ω, M.mem_cell_self ω⟩
+    (fun ω' => bestResp M.V (M.certain ω) (M.truth ω') - M.V (M.truth ω'))
+
+/-- **The general obstruction.**  For every extensional program, every sound policy has,
+on some world of every cell, best-response residual at least the general cell gap. -/
+theorem residual_ge_cellGap' {M : Model Ω ι} (P : SoundPolicy M) (ω : Ω) :
+    ∃ ω' ∈ M.cell ω,
+      M.cellGap' ω ≤ bestResp M.V (P.D ω') (M.truth ω') - M.V (M.truth ω') := by
+  obtain ⟨ω', hω', hmax⟩ := Finset.exists_max_image (M.cell ω)
+    (fun ω' => bestResp M.V (M.certain ω) (M.truth ω') - M.V (M.truth ω'))
+    ⟨ω, M.mem_cell_self ω⟩
+  refine ⟨ω', hω', ?_⟩
+  have hgap : M.cellGap' ω = bestResp M.V (M.certain ω) (M.truth ω') - M.V (M.truth ω') := by
+    unfold Model.cellGap'
+    apply le_antisymm
+    · exact Finset.sup'_le _ _ (fun x hx => hmax x hx)
+    · exact Finset.le_sup' (fun ω' => bestResp M.V (M.certain ω) (M.truth ω') - M.V (M.truth ω')) hω'
+  have hI : M.Indist ω ω' := (Finset.mem_filter.mp hω').2
+  have hD : P.D ω' = P.D ω := (P.blind ω ω' hI).symm
+  have hsub : P.D ω ⊆ M.certain ω := P.subset_certain ω
+  have hcert : M.certain ω ⊆ M.truth ω' := M.certain_subset ω ω' hω'
+  have := bestResp_antitone M.V (P.D ω) (M.certain ω) (M.truth ω') hsub hcert
+  rw [hgap, hD]
+  linarith
+
+/-- **The exhaustive policy attains the general gap.** -/
+theorem exhaustive_attains_cellGap' (M : Model Ω ι) (ω : Ω) :
+    ∀ ω' ∈ M.cell ω,
+      bestResp M.V ((M.exhaustive).D ω') (M.truth ω') - M.V (M.truth ω') ≤ M.cellGap' ω := by
+  intro ω' hω'
+  have hI : M.Indist ω ω' := (Finset.mem_filter.mp hω').2
+  have : (M.exhaustive).D ω' = M.certain ω := ((M.exhaustive).blind ω ω' hI).symm
+  rw [this]
+  unfold Model.cellGap'
+  exact Finset.le_sup' (fun ω' => bestResp M.V (M.certain ω) (M.truth ω') - M.V (M.truth ω')) hω'
+
+/-- **The antitone theorem is the special case**: for an antitone verdict the general gap
+is the antitone gap. -/
+theorem cellGap'_eq_cellGap (M : Model Ω ι) (hanti : ∀ s t, s ⊆ t → M.V t ≤ M.V s) (ω : Ω) :
+    M.cellGap' ω = M.cellGap ω := by
+  unfold Model.cellGap' Model.cellGap
+  congr 1
+  funext ω'
+  rw [bestResp_of_antitone M.V hanti]
+
+end General
+
 /-! ## 3. Progress under witness completeness -/
 
 section Progress
@@ -262,5 +382,10 @@ end Workspace.Deference.Contrib.ReasonDiscovery
 #print axioms Workspace.Deference.Contrib.ReasonDiscovery.SoundPolicy.subset_certain
 #print axioms Workspace.Deference.Contrib.ReasonDiscovery.residual_ge_cellGap
 #print axioms Workspace.Deference.Contrib.ReasonDiscovery.exhaustive_attains_cellGap
+#print axioms Workspace.Deference.Contrib.ReasonDiscovery.bestResp_antitone
+#print axioms Workspace.Deference.Contrib.ReasonDiscovery.bestResp_of_antitone
+#print axioms Workspace.Deference.Contrib.ReasonDiscovery.residual_ge_cellGap'
+#print axioms Workspace.Deference.Contrib.ReasonDiscovery.exhaustive_attains_cellGap'
+#print axioms Workspace.Deference.Contrib.ReasonDiscovery.cellGap'_eq_cellGap
 #print axioms Workspace.Deference.Contrib.ReasonDiscovery.potential_decay
 #print axioms Workspace.Deference.Contrib.ReasonDiscovery.li_noncapture_chain

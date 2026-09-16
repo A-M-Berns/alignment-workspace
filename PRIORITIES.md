@@ -2484,7 +2484,7 @@ for any of the three.
 specialization's investing-in-amendment case.
 *A solution ships:* the three objects with the composed corollary, or the negative.
 
-### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]** — *landed 2026-09-15: clauses 1–4 discharged on log authenticity (2 by committed-program re-execution, registered `authorship.mediation-by-reexecution`); what remains is clauses 5, 6, 7 — liveness, sealing, void mass — as stated in the residual paragraph below*
+### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]** — *landed 2026-09-15: clauses 1–4 discharged on log authenticity (2 by committed-program re-execution, registered `authorship.mediation-by-reexecution`); narrowed 2026-09-16: clause 5's exercise half is the suffix-cut service theorem of item 92 (`unit_servable_iff_cut`) and its discovery half is item 93, so what remains here is clauses 6 and 7 — sealing, void mass — as stated in the residual paragraph below*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2589,7 +2589,7 @@ inexpressibles; fixtures where a restatement changes a constant.
 *Consumed by:* item 61; the paper candidates for the affordability line.
 *A solution ships:* the presentation, or the exact obstruction.
 
-### 89. Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement — **[open]**
+### 89. Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement — **[open]** — *at the 2026-09-16 landing this is hypothesis A4 of the combined theorem (`FINAL_THEOREM.md` §2): the zero case of the activation-mismatch term, charged when absent*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2720,7 +2720,7 @@ securities are; item 90 for the certificate side.
 for empirical logs.
 *A solution ships:* the relativized theorem, or the negative with its witness.
 
-### 92. The reason-side supply obligation: total scope or ecosystem supply of declared reasons — **[open]** — *narrowed 2026-09-16: the service half is a theorem (`ReasonSupply.lean`: suffix-cut obstruction, hybrid bound, composition `li_noncapture`); what remains is the realization's protection rule; the discovery residual moved to item 93 on 2026-09-16*
+### 92. The reason-side supply obligation: the realization's protection rule and the general-cost optimum — **[open]** — *narrowed 2026-09-16: the service half is a theorem (`ReasonSupply.lean`: suffix-cut obstruction, hybrid bound, composition `li_noncapture`) and is canonical; what remains is the realization's choice of protected set (`hybrid_bound`'s rule, recorded not adopted) and the general-cost weighted optimum beyond the cut bound; the discovery residual is item 93*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2768,7 +2768,7 @@ measurability claims of the round's `AFFORDABILITY_INTERFACE.md` §4.
 supply obligation exists under the deadline for the declared interface — with its
 witness.
 
-### 93. Discovery of decision-relevant reasons: the repertoire and the budget — **[open]**
+### 93. Discovery of decision-relevant reasons: the repertoire and the budget — **[open]** — *at the 2026-09-16 landing the obstruction is general (`residual_ge_cellGap'`, best-response form for every extensional program); what remains is the realizable repertoire, witness completeness, and the link to the record's inquiry docket*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 

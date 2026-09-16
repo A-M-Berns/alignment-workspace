@@ -7,7 +7,8 @@ from fractions import Fraction as Q
 from itertools import product
 
 from src.inquiry import Inquiry, Action, query, greedy_frontier
-from src.sensitivity import WeightedCount, Defeat, Redundant, adverse, omission_gain
+from src.sensitivity import (WeightedCount, Defeat, GroundedDefeat, Redundant, adverse,
+                             omission_gain, subsets)
 from src.attacks_discovery import cases, W
 from src.supply import Reason, Instance
 
@@ -128,6 +129,50 @@ class Obstruction(unittest.TestCase):
             self.assertEqual(I.minimax(B=B), best(frozenset(I.worlds), B))
         self.assertEqual(I.minimax(B=1), Q(1, 8))   # ask about the heavy one
         self.assertEqual(I.minimax(B=2), Q(0))
+
+
+class GeneralObstruction(unittest.TestCase):
+    """The best-response form for arbitrary extensional programs."""
+
+    def test_general_gap_equals_antitone_gap_on_antitone_models(self):
+        rng = random.Random(6)
+        for _ in range(40):
+            I = random_inquiry(rng, rng.randint(1, 3), rng.randint(1, 4), rng.randint(1, 3))
+            for K in I.cells(I.actions):
+                self.assertEqual(I.gap_general(K), I.gap(K))
+
+    def test_larger_dockets_never_help_the_advisor(self):
+        rng = random.Random(7)
+        F = GroundedDefeat({"for": W, "d": Q(0), "e": Q(0)}, {"for": {"d"}, "d": {"e"}})
+        for _ in range(30):
+            T = frozenset(r for r in ["d", "e"] if rng.random() < 0.6)
+            I = Inquiry({"w": T}, [], F, pro={"for"})
+            for D in subsets(sorted(T)):
+                for D2 in subsets(sorted(T)):
+                    if D <= D2:
+                        self.assertLessEqual(I.best_response(D2, T), I.best_response(D, T))
+
+    def test_general_gap_is_exact_for_a_non_antitone_program(self):
+        """`d` defeats `for` (adverse), `e` defeats `d` (pro): the verdict is not antitone in
+        the universe {d, e}.  Every sound docket, with the advisor's best response, is
+        bounded below by the general gap, and the exhaustive docket attains it."""
+        F = GroundedDefeat({"for": W, "d": Q(0), "e": Q(0)}, {"for": {"d"}, "d": {"e"}})
+        worlds = {"w0": set(), "wd": {"d"}, "wde": {"d", "e"}, "we": {"e"}}
+        I = Inquiry(worlds, [query("e")], F, pro={"for"})
+        self.assertFalse(I.is_antitone())
+        for K in I.cells(I.actions):
+            cert = I.certain(K)
+            gap = I.gap_general(K)
+            for D in subsets(sorted(cert)):
+                worst = max(I.best_response(D, I.worlds[w]) - I.V(I.worlds[w]) for w in K)
+                self.assertGreaterEqual(worst, gap)
+            self.assertEqual(max(I.best_response(cert, I.worlds[w]) - I.V(I.worlds[w]) for w in K), gap)
+        # the cell {w0, wd} (e false): docket ∅; in wd the advisor gains W from d's absence
+        Kd = I.cell("wd", I.actions)
+        self.assertEqual(Kd, frozenset({"w0", "wd"})); self.assertEqual(I.gap_general(Kd), W)
+        # the cell {we, wde}: docket {e}; in wde, d is defeated by e: no gain
+        Ke = I.cell("wde", I.actions)
+        self.assertEqual(I.gap_general(Ke), Q(0))
 
 
 class Countermodels(unittest.TestCase):

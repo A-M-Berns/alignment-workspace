@@ -1,5 +1,56 @@
 # Report
 
+**Landing (2026-09-16).**  The statement of record is
+[`FINAL_THEOREM.md`](FINAL_THEOREM.md); the landing dispatch's twenty questions are
+answered in [`LANDING.md`](LANDING.md).  The consolidation pass settled the one open
+abstraction question: **GENERALIZATION-CHEAP** — the information-cell obstruction
+extends to every extensional program by taking the advisor as a strategic content-adder
+whose best response over the docket defines the residual; larger dockets never help it
+(`bestResp_antitone`), so the exhaustive docket is optimal and the general cell gap
+`max_ω [bestResp(certain K, Truth ω) − V(Truth ω)]` is the exact obstruction
+(`residual_ge_cellGap'`, `exhaustive_attains_cellGap'`, Lean), with the antitone theorem
+as its corollary (`cellGap'_eq_cellGap`).  A reinstatement chain (a defeater of a
+defeater) is the fixture on which the verdict is not antitone and the general form is
+exact (`test_general_gap_is_exact_for_a_non_antitone_program`).  Final verdict:
+**CORRIGIBILITY-NUCLEUS-CANONICALIZED-AND-LANDED.**  The canonical wiki is reconciled
+(`wiki/Corrigibility.md`, `Theorem-Spine.md` §10.10–10.13, `Deference.md`,
+`Logical-Induction-and-Deference.md`, `Openness-Coverage-and-Non-Capture.md`,
+`Normative-Record-and-Inquiry.md`, `Liability-and-Affordability.md`, `Roadmap.md`,
+`Glossary.md`).  Nothing is registered: the combined theorem is a schema assembled from
+Lean components with named external contracts, not one declaration.
+
+## Recommendations at the stopping point
+
+**Paper.**  A self-contained result is ready: the corrigibility nucleus as two
+instances of one compiled inequality learned by Expectation Provability Induction — the
+authority side (corrigibilization, event-linked authorization, directional activation
+mismatch, the generability certificate, finite-menu uniformity) and the deliberative side
+(trace steering, the suffix-cut service obstruction, the information-cell discovery
+obstruction in best-response form, the composed bound through the discovered
+comparator) — with the twenty-attack table as its adversarial appendix and the
+hypothesis classes as its scope statement.  The imported mathematics (EPI, Hall, matroid
+greedy, decision-tree minimax) is cited, not re-proved.
+
+**Legitimacy / normativity.**  The theorem now names exactly what the broader agenda
+supplies: defeat semantics determine the conditional inquiry obligations (the frontier;
+items 54, 64); inquiry theory bounds `β_n` (a realizable repertoire with certified cell
+gap; witness completeness; item 93); affordability and scheduling bound `α_n` (the
+budget half by D4, the capacity half by the suffix cut; the protection rule; item 92);
+settlement and authentication control false and missing certified content; the
+committed-program architecture determines whose judgment the trace binds (item 87's
+sealing and void-mass clauses).  These are supplier questions with a concrete consumer,
+not further conditions of corrigibility.
+
+**Dynamic extension.**  The nucleus is occurrence-level.  Moving to an evolving agent
+needs: the authorization relation at temporal depth (item 27's requirements), the
+`SLACK` and `SHIFT` bridges of Continuation BRIA (item 86) so that continuation
+competence is competence against the principal's activated value, the sealed
+comparison across a continuation (item 89), and the legitimate-evolution conditions
+under which the declared interfaces themselves may change without laundering
+authority.  None of these is needed for the theorem stated here.
+
+---
+
 Three passes.  The **third pass** (discovery, 2026-09-16) is reported first; the second
 pass's twenty answers and the first pass's sixteen are retained below, each with the
 verdict it reached.
@@ -65,7 +116,9 @@ reason-representation round `../../../normativity/legitimacy/rounds/2026-08-23-r
     needle refutes any fractional progress for direct queries.
 11. **Sharp obstruction / dual.**  Yes: the information-cell gap, with the lower bound
     for every sound policy and attainment by the exhaustive policy (Lean); a minimax
-    recursion for budgets, exact against enumerated decision trees.
+    recursion for budgets, exact against enumerated decision trees.  At the landing the
+    gap is stated in best-response form for every extensional program
+    (`residual_ge_cellGap'`), the antitone form being its corollary.
 12. **Minimum achievable residual.**  Unbounded budget: the largest cell gap.  Budget `B`:
     `V(Ω, B)`, no closed form.
 13. **Does adaptive inquiry matter?**  Yes: binary search on a chain closes with two

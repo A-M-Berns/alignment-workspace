@@ -51,6 +51,29 @@ class Defeat:
         return clamp(x)
 
 
+class GroundedDefeat:
+    """Reinstatement semantics on an acyclic defeat graph: a present reason is *active*
+    iff none of its present defeaters is active; `weights[r]` counts iff `r` is active.
+    A defeater of a defeater reinstates: the verdict is not antitone in general."""
+    def __init__(self, weights, defeaters, base=Q(1, 2)):
+        self.weights = {k: Q(v) for k, v in weights.items()}
+        self.defeaters = {k: frozenset(v) for k, v in defeaters.items()}
+        self.base = Q(base)
+        self.universe = frozenset(weights) | frozenset(chain.from_iterable(self.defeaters.values()))
+
+    def active(self, c, r, seen=()):
+        if r not in c:
+            return False
+        for d in self.defeaters.get(r, frozenset()):
+            if d in c and d not in seen and self.active(c, d, seen + (r,)):
+                return False
+        return True
+
+    def __call__(self, c):
+        c = frozenset(c)
+        return clamp(self.base + sum((w for r, w in self.weights.items() if self.active(c, r)), Q(0)))
+
+
 class Redundant:
     """`groups`: list of (weight, set of reasons); a group counts once if any member is present."""
     def __init__(self, groups, base=Q(1, 2)):

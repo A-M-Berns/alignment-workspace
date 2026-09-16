@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 473 names, 314 of them Lean only
+## deference — 475 names, 316 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -408,9 +408,11 @@ change, and the count of those is the size of the free choice remaining.
 | `Model` | structure | 2026-09-16-noncapture-compilation | prose | `Workspace.Deference.Contrib.ReasonDiscovery.Model` |
 | `Model.cell` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.cell` |
 | `Model.cellGap` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.cellGap` |
+| `Model.cellGap'` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.cellGap'` |
 | `Model.certain` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.certain` |
 | `Model.exhaustive` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.exhaustive` |
 | `SoundPolicy` | structure | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.SoundPolicy` |
+| `bestResp` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.bestResp` |
 | `Authored` | def | 2026-09-07-reason-mediated-authorship | wiki, prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Authored` |
 | `Blind` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Blind` |
 | `Dd` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Dd` |

@@ -1957,3 +1957,651 @@ Even with an explicit declared ontology and independent inquiry, no useful compo
 A or B would be a major success.
 
 Do not protect either from C.
+
+---
+
+# Fourth dispatch — landing pass (2026-09-16)
+
+Work in `A-M-Berns/alignment-workspace`.
+
+Continue from PR #101 / branch:
+
+`round/2026-09-16-noncapture-compilation`
+
+This is the **final consolidation pass for this line of research**.
+
+The goal is not another open-ended discovery round.
+
+The goal is:
+
+1. pressure the one remaining mathematical abstraction question enough to know its status;
+2. state the mature combined corrigibility theorem at exactly the strength now supported;
+3. reconcile the three passes of PR #101 with landed PR #100 and the surrounding legitimacy/deference architecture;
+4. update the canonical repository so it tells one coherent story;
+5. verify everything;
+6. **merge PR #101 to `main`**;
+7. leave a clear natural stopping point for the corrigibility line.
+
+Unless a genuine contradiction appears, do not open another residual-decomposition program.
+
+---
+
+# I. TREAT THE CURRENT RESULTS AS THE STARTING POINT
+
+PR #100 is already landed and establishes the effect-side corrigibility nucleus:
+
+* structural corrigibilization `𝔠`;
+* event-linked authorization;
+* principal-option preservation;
+* directional activation mismatch;
+* gated-LUV compilation;
+* actual `P`-generability certificate;
+* Expectation Provability Induction;
+* finite-menu uniformity.
+
+PR #101 now has three passes.
+
+## Pass 1 — trace steering
+
+Established:
+
+`U(T) − U(N)
+= both·(V(T)−V(N))
+
+* M·V(T)
+  − M'·V(N)`
+
+and hence a directional steering bound in terms of:
+
+* content discrepancy;
+* form/non-extensionality discrepancy;
+* audit mismatch.
+
+The steering package instantiates the landed `ValidAt`, so EPI transfers literally through the same compiled theorem.
+
+Canonicalization/extensionality eliminates form steering.
+
+The naive "complete reason interface + ordinary coverage/liveness" thesis is false.
+
+## Pass 2 — service
+
+Established the content quantity as directional adverse sensitivity mass.
+
+For discovered reasons, pre-commitment supply is a common-deadline scheduling problem:
+
+* suffix-cut condition;
+* Hall sufficiency in the unit case;
+* exact deficiency / matroid characterization of optimal weighted service in the unit case;
+* general-cost hardness boundary;
+* hybrid protected-scope bound;
+* composition into:
+
+`𝔼ₙ(U_T) − 𝔼ₙ(U_disc) ≲ₙ service residual`.
+
+The old affordability theory supplies the underwriting/budget resource; the new Hall/scheduling theory supplies temporal capacity.
+
+## Pass 3 — discovery
+
+Established:
+
+* direct discovery residual:
+  `V(Disc) − V(Truth)`;
+* conditional adverse sensitivity certificate;
+* live inquiry frontier;
+* empty frontier implies no positive discovery residual;
+* finite hypothesis-space inquiry model;
+* information-cell obstruction;
+* unbounded-budget minimax discovery loss equals the maximum cell gap in the antitone adverse-reason model;
+* finite-budget discovery is an adaptive minimax decision-tree problem;
+* no general fractional-progress result for direct queries;
+* stronger progress under witness-complete inquiry repertoires;
+* composition:
+
+`𝔼ₙ(U_T) − 𝔼ₙ(U_full)
+ ≲ₙ A_tot·(α_n + β_n)`
+
+where `α_n` is service loss and `β_n` is discovery loss.
+
+The remaining outside-theorem walls are representation/ontology adequacy and causal faithfulness of declared inquiry/intervention models.
+
+Treat this as the current result unless this pass finds an actual error.
+
+---
+
+# II. ONE FINAL MATHEMATICAL PRESSURE QUESTION
+
+The current sharp information-cell theorem assumes an adverse-reason model in which the verdict is antitone in the discovered adverse content.
+
+This is the one abstraction question worth pressing before canonicalization.
+
+Do **not** spend an entire new research program on it.
+
+Spend enough effort to decide one of:
+
+### A. GENERALIZATION-CHEAP
+
+The exact obstruction theorem extends cleanly to arbitrary extensional principal programs by replacing:
+
+`gap(K) = max_ω [V(certain K) − V(Truth ω)]`
+
+with the correct minimax docket quantity, perhaps:
+
+`gap*(K)
+ := inf_{D admissible from K}
+      sup_{ω∈K} [V(D) − V(Truth ω)]_+`
+
+or an equivalent formulation.
+
+If so:
+
+* state the general theorem cleanly;
+* prove/mechanize the algebraically stable part if reasonable;
+* recover the current antitone theorem as the simple corollary where `D = certain(K)` is optimal;
+* update the discovery theorem accordingly.
+
+### B. GENERALIZATION-NOT-CHEAP
+
+The antitone adverse-reason decomposition is doing essential work and the arbitrary-program result becomes substantially more complicated.
+
+If so:
+
+* **do not delay the landing**;
+* retain the antitone theorem;
+* state precisely why that is the theorem's scope;
+* record the arbitrary-extensional-program version as a future generalization;
+* make clear that the broader steering inequality itself does *not* require global antitonicity—only the exact closed-form discovery obstruction does.
+
+### C. CURRENT-CLAIM-NEEDS-CORRECTION
+
+If a counterexample shows the current information-cell statement is overstated even under its intended hypotheses, repair it before proceeding.
+
+The purpose of this section is to know the boundary, not to erase it at all costs.
+
+---
+
+# III. STATE THE MATURE COMBINED CORRIGIBILITY THEOREM
+
+After adjudicating the previous question, write the strongest theorem schema now justified.
+
+Organize it explicitly into two halves.
+
+## A. Protected-authority / bypass half
+
+For each efficiently represented candidate continuation `q`, the architecture constructs `𝔠q`.
+
+Under:
+
+* effect completeness;
+* mediation soundness;
+* decline preservation;
+* execution faithfulness;
+* protected-value stability;
+* whatever comparison/sealing hypothesis is required for the activated pair;
+
+we have structurally:
+
+* `Corrigible_h(𝔠q,ρ)`;
+* approve-branch reproduction;
+* idempotence / fixed-point facts;
+* principal-option preservation.
+
+And the logical inductor learns:
+
+`Adv_bypass,n(q)
+≲ₙ
+mediation discrepancy
+
+* principal decision regret
+* directional activation mismatch`.
+
+Uniformize over polynomial-size efficiently generated menus using the landed soft-selector result.
+
+## B. Deliberative non-capture half
+
+Relative to a declared reason representation and hypothesis space, assume:
+
+* committed principal program re-executed on the authenticated trace;
+* trace mediation;
+* an extensional/canonical principal program;
+* independent inquiry:
+
+  * world/evidence-determined outcomes;
+  * engine-owned policy and stopping;
+  * engine-owned candidate generation;
+  * exogenous inquiry costs;
+* independent supply:
+
+  * advisor-proof capacity;
+  * exogenous service/authentication cost;
+* sound authentication;
+* content-monotone/sealed audit;
+* causal faithfulness for any declared transform interpreted counterfactually.
+
+Then:
+
+`Adv_steering,n
+≲ₙ
+service residual α_n
+
+* discovery residual β_n
+* authentication/audit terms`
+
+with the exact normalization from the proved theorem.
+
+In the currently compiled two-stage form:
+
+`𝔼ₙ(U_T) − 𝔼ₙ(U_full)
+ ≲ₙ A_tot·(α_n + β_n)`
+
+under zero form/audit terms.
+
+Where:
+
+* `α_n` is characterized by the reason-supply scheduling theorem;
+* `β_n` is characterized by the inquiry obstruction / decision-tree value.
+
+If both vanish:
+
+`Adv_steering,n ≲ₙ 0`.
+
+---
+
+# IV. WRITE THE COMBINED INTERPRETATION CAREFULLY
+
+The mature interpretation should be approximately:
+
+> Relative to declared effect and reason interfaces, a bounded logical reasoner has no asymptotically unexplained advantage either from bypassing protected principal authority or from selectively controlling the decision-relevant information on which that authority is exercised. Any remaining advantage is accounted for by explicit physical mediation costs, principal decision error, comparison failure, finite inquiry limitations, finite service capacity, or representation assumptions.
+
+Do **not** say:
+
+* "the agent values human control";
+* "corrigibility is solved unconditionally";
+* "all manipulation is eliminated";
+* "all relevant reasons are discovered";
+* "ontology completeness is learned";
+* "the principal cannot be manipulated by changing the world";
+* "Logical Induction itself creates corrigibility."
+
+The theorem is relative to declared interfaces and external physical/causal realization assumptions.
+
+---
+
+# V. IDENTIFY THE TRUE STOPPING BOUNDARY
+
+The final canonical account should make clear that the following are **not unfinished pieces of the same theorem**.
+
+They are boundary conditions / next-agenda questions:
+
+### Representation adequacy
+
+Does the declared reason ontology/hypothesis space contain the distinctions that actually matter?
+
+No interface-local theorem can measure omitted concepts from inside the interface.
+
+### Physical effect completeness
+
+Does every relevant authority-changing causal path actually pass through the declared effect interface?
+
+This remains an external realization boundary.
+
+### Inquiry causal faithfulness
+
+Do declared inquiry outcomes correspond to the physical/evidential processes they claim to model?
+
+### Dynamic competence
+
+Can the agent/principal continue to satisfy these conditions over long interaction horizons?
+
+This connects to continuation BRIA / legitimate evolution but is not needed to land the static/occurrence-level corrigibility theorem.
+
+### Richer normativity
+
+How should reason representations, defeat relations, amendment, and normative learning themselves evolve?
+
+That belongs to the legitimacy/normativity agenda.
+
+Do not leave the wiki suggesting these are all "corrigibility residuals."
+
+---
+
+# VI. CONSOLIDATE THE LANGUAGE
+
+Clean up provisional terminology.
+
+At minimum adjudicate:
+
+* `corrigibilization`;
+* `directional activation mismatch`;
+* `trace steering`;
+* `form residual`;
+* `content residual`;
+* `adverse sensitivity`;
+* `conditional adverse sensitivity`;
+* `service residual`;
+* `discovery residual`;
+* `information-cell gap`;
+* `inquiry frontier`;
+* `independent inquiry`;
+* `independent supplier`;
+* `fully-informed comparator`;
+* `discovered comparator`.
+
+Prefer a small stable vocabulary.
+
+Avoid proliferating synonyms across passes.
+
+In particular, make a clear choice about whether the paper-level quantity is called:
+
+* `steering advantage`;
+* `non-capture gap`;
+* `deliberative capture premium`;
+* or another term.
+
+Use one.
+
+---
+
+# VII. RECONCILE THE THREE PR #101 PASSES
+
+The round currently contains a history of refinements and refutations.
+
+Keep the research record, but make the final state easy to understand.
+
+Produce a concise final document, e.g.:
+
+`FINAL_THEOREM.md`
+
+containing only:
+
+1. setup;
+2. authority theorem;
+3. trace-steering theorem;
+4. service theorem;
+5. discovery theorem;
+6. composition;
+7. combined corrigibility theorem;
+8. assumptions/boundaries;
+9. verification status.
+
+Then update `REPORT.md` so the top-level summary points to this final statement rather than requiring someone to reconstruct the result chronologically.
+
+The old first-/second-/third-pass documents should remain as research provenance but not be the main reading path.
+
+---
+
+# VIII. UPDATE THE CANONICAL WIKI
+
+Unlike the earlier research passes, this pass **should canonicalize the mature result**.
+
+Update at least:
+
+* `wiki/Corrigibility.md`
+* `wiki/Theorem-Spine.md`
+* `wiki/Deference.md`
+* `wiki/Logical-Induction-and-Deference.md`
+* `wiki/Openness-Coverage-and-Non-Capture.md`
+* `wiki/Normative-Record-and-Inquiry.md`
+* `wiki/Liability-and-Affordability.md`
+* `wiki/Roadmap.md`
+* `wiki/Glossary.md`
+
+Only touch pages where the new result genuinely changes the canonical story.
+
+The main conceptual organization should now be:
+
+## Corrigibility
+
+### 1. Protected authority
+
+`effect interface -> mediation -> corrigibilization -> LI non-bypass`
+
+### 2. Deliberative non-capture
+
+`reason representation
+ -> inquiry
+ -> authentication
+ -> service
+ -> canonical trace
+ -> LI non-steering`
+
+### 3. Explicit theorem boundaries
+
+`representation adequacy / physical completeness / causal faithfulness`
+
+Do not return to the old seven-layer organization as the primary story unless it materially clarifies the result.
+
+---
+
+# IX. CONNECT THE NORMATIVITY AGENDA AS A SUPPLIER
+
+Clarify exactly how the broader legitimacy/normativity work feeds this theorem.
+
+The point should not be:
+
+> legitimacy is another condition of corrigibility.
+
+Instead:
+
+* defeat / reason semantics determine conditional inquiry obligations;
+* inquiry theory bounds `β_n`;
+* affordability + scheduling bound `α_n`;
+* settlement/authentication controls false/missing certified content;
+* answerability / committed-program architecture determines whose judgment the trace binds;
+* corrigibility consumes those outputs.
+
+This should give the legitimacy agenda a concrete downstream consumer without pretending that the full legitimacy theory is already closed.
+
+---
+
+# X. PRIORITIES / CLAIM REGISTRY / DECISIONS
+
+Review all priorities touched by #100/#101.
+
+For each item:
+
+* close it if the exact registered result really answers it;
+* narrow it if only one component remains;
+* split it if it currently conflates unrelated future work;
+* do not leave stale wording such as "reason-supply liveness open" if service now has a theorem and only discovery/representation remains.
+
+In particular review items around:
+
+* 84;
+* 87;
+* 89;
+* 90;
+* 91;
+* 92;
+* 93;
+* any newly created discovery/inquiry item.
+
+Do not register claims merely because a theorem is interesting.
+
+For any registration, identify:
+
+* exact statement of record;
+* exact Lean declaration;
+* exact hypothesis strength;
+* whether it is `LEAN`, `PAPER`, `EXT`, `FIX`, `OPEN`.
+
+The combined corrigibility theorem may remain a theorem schema assembled from components rather than a single monolithic Lean declaration if that is the honest state.
+
+---
+
+# XI. PRESSURE THE FINAL COMBINED STATEMENT
+
+Before landing, test at least the following attacks against the final theorem statement:
+
+1. undeclared effect;
+2. undeclared reason type;
+3. insufficient reason granularity;
+4. approved irreversible effect;
+5. repeated independently approved effects;
+6. raw policy destroys evaluator;
+7. advisor truthfully cherry-picks;
+8. advisor manipulates reason order only;
+9. advisor floods inquiry candidates;
+10. advisor raises inquiry cost;
+11. advisor raises service cost;
+12. finite service bottleneck;
+13. information-cell indistinguishability;
+14. direct-query needle;
+15. adaptive-query advantage;
+16. world manipulation makes a counterreason false;
+17. evidence tampering;
+18. principal program reads metadata;
+19. principal program has defeat-sensitive reasoning;
+20. actual world outside declared `Ω`.
+
+For every case, the final theorem should either:
+
+* cover it;
+* charge it to a named residual;
+* or identify the hypothesis that excludes it.
+
+No attack should disappear into prose.
+
+---
+
+# XII. CHECK THE ANTITONE / DEFEAT STORY ONE LAST TIME
+
+Make the relationship crystal clear:
+
+* the general trace-steering bound works for arbitrary values satisfying the relevant stability certificate;
+* conditional adverse sensitivity handles some defeat/context dependence;
+* the clean `max cell gap` discovery theorem currently uses the adverse/antitone discovery model unless generalized in Section II;
+* richer arbitrary principal programs may require the general minimax-docket formulation.
+
+Do not let the final wiki accidentally advertise the antitone special case as universal.
+
+---
+
+# XIII. VERIFY EVERYTHING
+
+Before merge, run all repository checks expected for a canonical landing.
+
+At minimum:
+
+* root test suite;
+* all #101 tests;
+* all relevant #100 tests;
+* `lake build`;
+* complete axiom audit;
+* `python3 -m checkers.run`;
+* name lint;
+* dead pointers;
+* untracked pointers;
+* wiki links;
+* wiki/state bindings;
+* workspace state check;
+* round-record checks;
+* DCO;
+* conservativity / scope checks;
+* any claim-registry validation.
+
+All new Lean declarations should remain sorry-free and within the repository's allowed axiom policy.
+
+Check that the branch is based on the actual current `main`; reconcile if `main` moved.
+
+---
+
+# XIV. FINAL LANDING REPORT
+
+Write:
+
+`LANDING.md`
+
+with concise answers to:
+
+1. What is the final definition of structural corrigibility?
+2. What exactly does corrigibilization guarantee?
+3. What exactly does LI learn on the authority side?
+4. What is trace steering?
+5. What are the final non-capture residuals?
+6. What theorem characterizes service failure?
+7. What theorem characterizes discovery failure?
+8. What is the role of conditional adverse sensitivity / defeat?
+9. What is the strongest non-capture theorem?
+10. What is the strongest combined corrigibility theorem?
+11. Which assumptions are logical/semantic?
+12. Which assumptions are architectural/physical?
+13. Which assumptions are representation choices?
+14. Which claims are Lean-proved?
+15. Which are imported mathematical facts?
+16. Which remain fixture/paper-level?
+17. What remains open?
+18. Why are those open questions no longer reasons to keep this PR open?
+19. What should the next research line be?
+20. Why is this a natural stopping point?
+
+The final answer to 20 should be substantive:
+
+> The effect-side and declared-reason-side incentive problems have both been reduced to structural inequalities with explicit, independently characterized residuals, and Logical Induction learns those inequalities. The remaining questions concern adequacy and evolution of the interfaces that supply the theorem, rather than another missing corrigibility mechanism.
+
+Use different wording if the final theorem picture changes, but preserve the distinction.
+
+---
+
+# XV. MERGE PR #101
+
+Once:
+
+* the final theorem has survived the pressure pass;
+* the canonical wiki is reconciled;
+* state/provenance/priorities are correct;
+* the test and audit suite is clean;
+
+**merge PR #101 into `main`.**
+
+Use the repository-appropriate merge strategy and preserve research-round commit reachability where canonical documentation cites those commits.
+
+After the merge:
+
+* verify `main` contains all intended changes;
+* verify the PR is actually marked merged;
+* verify canonical pages resolve;
+* verify state views are current.
+
+Do not leave this as an open research PR after the landing work is done.
+
+---
+
+# XVI. STOP
+
+After merging #101, do **not** immediately create PR #102 for another corrigibility residual.
+
+Instead, leave recommendations for the maintainer under three headings:
+
+### Paper
+
+What is now ready to write as a self-contained corrigibility result?
+
+### Legitimacy / normativity
+
+Which supplier questions should the broader agenda now attack?
+
+### Dynamic extension
+
+What would be needed later to move from occurrence-level corrigibility/non-capture to long-run evolving-agent corrigibility?
+
+The purpose of this final section is to enforce a real research stopping point.
+
+---
+
+# Final verdict
+
+End with exactly one of:
+
+### CORRIGIBILITY-NUCLEUS-CANONICALIZED-AND-LANDED
+
+The combined authority + non-capture theorem is mature enough to be the canonical result; remaining open questions are interface/realization/dynamic extensions.
+
+### CORRIGIBILITY-LANDED-WITH-ANTITONE-DISCOVERY-SCOPE
+
+Same, but the exact discovery obstruction remains explicitly scoped to the antitone adverse-reason model; arbitrary-program discovery is future work.
+
+### LANDING-BLOCKED-BY-A-SUBSTANTIVE-ERROR
+
+Only use this if the final pressure pass finds an actual mathematical or architectural flaw that invalidates a central theorem, not merely an attractive generalization that remains open.
+
+The default goal is a clean landing, not a fourth exploratory pass.

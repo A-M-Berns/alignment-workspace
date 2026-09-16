@@ -37,6 +37,30 @@ difference between the content they share and the content of the worse one (rows
 This is the discovery analogue of the service cut: **information-cell diameter** in the
 verdict.
 
+### 1b. The general form (landing pass)
+
+The lower bound above uses antitonicity once: a sound policy's docket `D ⊆ certain(K)`
+has `V(D) ≥ V(certain K)`.  For an arbitrary extensional program the right residual
+treats the advisor as a **strategic content-adder**: over a docket `D` on a world of
+truth `T` it adds whatever true reasons raise its verdict, so its best response is
+`bestResp(D, T) := max_{S ⊆ T \ D} V(D ∪ S)` and the residual is `bestResp(D, T) −
+V(T)`.  **Larger dockets never help the advisor** (`bestResp_antitone`, LEAN: anything
+reachable from a larger docket is reachable from a smaller one), so the exhaustive
+docket is optimal for every program, and
+
+```
+gap*(K) := max_{ω ∈ K} [ bestResp(certain K, Truth ω) − V(Truth ω) ]
+```
+
+is the exact obstruction: every sound policy is at least `gap*` on some world of every
+cell and the exhaustive policy attains it (`residual_ge_cellGap'`,
+`exhaustive_attains_cellGap'`, LEAN).  When the verdict is antitone the best response is
+`V(certain K)` (`bestResp_of_antitone`) and `gap* = gap` (`cellGap'_eq_cellGap`): the
+antitone theorem is the corollary.  The fixture on which the two differ is a
+reinstatement chain (`GroundedDefeat`: `d` defeats the advisor's `for`, `e` defeats `d`),
+where `e` raises the verdict and the antitone lower bound does not apply
+(`test_general_gap_is_exact_for_a_non_antitone_program`).
+
 ## 2. With a budget: the minimax value
 
 ```

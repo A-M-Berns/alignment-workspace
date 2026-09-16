@@ -274,3 +274,20 @@ shared; `β` is `Γ`-valid relative to the declared hypothesis space.
 | the budgeted residual has a cut-like formula | no: decision-tree value (R20) |
 | `N_full` needs an oracle | no: bounded by the cell gap relative to the declared hypothesis space (R23) |
 | an interface-incompleteness mass can be defined | rejected: no measurable object in the declared representation |
+
+---
+
+# Landing pass
+
+## R24. The general information-cell obstruction — **survives** (LEAN, FIX)
+
+For every extensional program, with the advisor as a strategic content-adder
+(`bestResp V D T := max_{S ⊆ T \ D} V(D ∪ S)`): larger dockets never help the advisor
+(`bestResp_antitone`); every sound policy has on some world of every cell a
+best-response residual at least the general cell gap and the exhaustive docket attains
+it (`residual_ge_cellGap'`, `exhaustive_attains_cellGap'`); for an antitone verdict the
+best response is the docket's verdict and the gap is the antitone gap
+(`bestResp_of_antitone`, `cellGap'_eq_cellGap`).  Fixture: a reinstatement chain
+(`GroundedDefeat`, `d` defeats `for`, `e` defeats `d`) on which the verdict is not
+antitone and the general gap is exact against every sound docket.  Section II of the
+landing dispatch: GENERALIZATION-CHEAP.

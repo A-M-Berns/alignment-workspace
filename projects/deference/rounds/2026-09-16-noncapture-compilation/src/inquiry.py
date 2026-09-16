@@ -99,6 +99,20 @@ class Inquiry:
         D = self.certain(K) if D is None else frozenset(D)
         return max(self.V(D) - self.V(self.worlds[w]) for w in K)
 
+    def best_response(self, D, T):
+        """The advisor's best-response verdict over the docket `D` on a world of truth `T`:
+        it adds whatever true reasons raise its candidate's verdict."""
+        D, T = frozenset(D), frozenset(T)
+        return max(self.V(D | S) for S in subsets(sorted(T - D)))
+
+    def gap_general(self, K, D=None):
+        """The general cell gap: worst world's best-response residual over the docket."""
+        D = self.certain(K) if D is None else frozenset(D)
+        return max(self.best_response(D, self.worlds[w]) - self.V(self.worlds[w]) for w in K)
+
+    def obstruction_general(self):
+        return max(self.gap_general(K) for K in self.cells(self.actions))
+
     def obstruction(self):
         """The repertoire obstruction: the largest gap of a cell of the full repertoire."""
         return max(self.gap(K) for K in self.cells(self.actions))

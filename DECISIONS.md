@@ -4194,3 +4194,26 @@ carried as the ontology wall rather than as a residual. The frontier — undeter
 reasons of positive conditional adverse mass — is recorded as the engine's obligation.
 The alternative rejected: an "interface-incompleteness mass", for which the declared
 representation supplies no measurable object.
+
+### 2026-09-16 — the corrigibility nucleus is landed as two halves of one inequality; the discovery obstruction is general
+
+Agent-decided under the landing dispatch, reversible.  PR #101 lands the deliberative
+half of corrigibility alongside the authority half of PR #100 as the canonical story of
+`wiki/Corrigibility.md`: protected authority (effect interface → mediation →
+corrigibilization → learned non-bypass) and deliberative non-capture (reason
+representation → inquiry → authentication → service → canonical trace → learned
+non-steering), with explicit theorem boundaries (representation adequacy, physical
+completeness, causal faithfulness) that are next-agenda questions rather than
+corrigibility residuals.  The information-cell obstruction is stated for every
+extensional program in best-response form, the antitone form being its corollary
+(`residual_ge_cellGap'`, `cellGap'_eq_cellGap`), so the wiki does not advertise a
+special case as universal.  Vocabulary is fixed to one term each — *steering
+advantage* for the paper-level quantity; *content*, *form* and *audit-mismatch
+residuals*; *service* and *discovery residuals*; *adverse* and *conditional adverse
+sensitivity*; *information-cell gap*; *inquiry frontier*; *independent inquiry* and
+*independent supplier*; *discovered* and *fully-informed comparator* — and the
+synonyms of the passes ("undetected steering", "missed adverse mass", "omission gain"
+as a term) are retired.  Nothing is registered: the combined theorem is a schema of
+Lean components with named external contracts.  The alternative rejected: holding the
+landing for a single monolithic Lean statement of the combined theorem, which would
+add no mathematics.
