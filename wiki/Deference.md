@@ -130,7 +130,13 @@ and not the sealed comparison the corrigibilization-dominance theorem needs acro
 > **Two targets, both live.** The legitimate-deference consumer above is **active
 > research state**, landed in five rounds with one registered claim; it consumes the
 > legitimacy spine and is the principal evaluation the
-> [corrigibility](Corrigibility) incentive theorem scores. The original target — the corrigibility model with temporal depth and what
+> [corrigibility](Corrigibility) incentive theorem scores.  Since 2026-09-16 the
+> corrigibility nucleus has both halves: the advisor gains nothing, in the inductor's
+> expectations, from bypassing the principal's authority (T1–T3′) or from steering which
+> declared reasons reach the committed program beyond the service and discovery
+> residuals (Theorems 10.10–10.13 of the [spine](Theorem-Spine)); the reason-supply
+> liveness clause of item 87 is now the suffix-cut service theorem plus the
+> information-cell discovery theorem. The original target — the corrigibility model with temporal depth and what
 > foreclosure loses — now has its temporal-depth half supplied by
 > [Continuation BRIA](Continuation-BRIA): bounded learning against accountable
 > continuation claims on the histories the learner reaches, with foreclosure named

@@ -89,7 +89,17 @@ smallness of the costs, and nothing about non-settling quantities.  Expectation
 Unbiasedness from Feedback is a boundary statement: it applies only to comparisons the
 theory determines — a sequenced-settlement pair with an explicit finite horizon — and
 genuinely empirical logs need an oracle-relativized inductor, which the paper's
-computable deductive process does not provide.  Register:
+computable deductive process does not provide.  The deliberative half uses the same theorem once more: the trace-steering package
+supplies the compiled pair's validity verbatim, a gated family bounded in every
+consistent world has expectation at most the bound (a degenerate pair fed to the same
+compiled theorem, constants removed by single-variable Expectation Provability
+Induction), and the chain through the discovered comparator adds, so the inductor
+learns `𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)` with the service and discovery residuals
+certified as computations on the docket and the declared hypothesis space
+(`li_steering_le`, `li_gated_le`, `li_noncapture`, `li_noncapture_chain`).  Register:
+[`LI_TRANSFER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/LI_TRANSFER.md),
+[`COMPOSITION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/COMPOSITION.md),
+[`DISCOVERY_COMPOSITION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_COMPOSITION.md),
 [`LI_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LI_CORRIGIBILITY.md),
 [`FEEDBACK_BOUNDARY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/FEEDBACK_BOUNDARY.md).
 

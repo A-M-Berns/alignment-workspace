@@ -2484,7 +2484,7 @@ for any of the three.
 specialization's investing-in-amendment case.
 *A solution ships:* the three objects with the composed corollary, or the negative.
 
-### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]** — *landed 2026-09-15: clauses 1–4 discharged on log authenticity (2 by committed-program re-execution, registered `authorship.mediation-by-reexecution`); what remains is clauses 5, 6, 7 — liveness, sealing, void mass — as stated in the residual paragraph below*
+### 87. Realizing legitimate deference: the evaluation-ecosystem bill — **[open]** — *landed 2026-09-15: clauses 1–4 discharged on log authenticity (2 by committed-program re-execution, registered `authorship.mediation-by-reexecution`); narrowed 2026-09-16: clause 5's exercise half is the suffix-cut service theorem of item 92 (`unit_servable_iff_cut`) and its discovery half is item 93, so what remains here is clauses 6 and 7 — sealing, void mass — as stated in the residual paragraph below*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2589,7 +2589,7 @@ inexpressibles; fixtures where a restatement changes a constant.
 *Consumed by:* item 61; the paper candidates for the affordability line.
 *A solution ships:* the presentation, or the exact obstruction.
 
-### 89. Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement — **[open]**
+### 89. Sealed comparison: an architecture under which the constitutional comparison of `{π, 𝔠π}` is sealed against every continuation until settlement — **[open]** — *at the 2026-09-16 landing this is hypothesis A4 of the combined theorem (`FINAL_THEOREM.md` §2): the zero case of the activation-mismatch term, charged when absent*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2719,6 +2719,91 @@ securities are; item 90 for the certificate side.
 *Consumed by:* T4 of the round, whose "determined via `Γ`" hypothesis this item realizes
 for empirical logs.
 *A solution ships:* the relativized theorem, or the negative with its witness.
+
+### 92. The reason-side supply obligation: the realization's protection rule and the general-cost optimum — **[open]** — *narrowed 2026-09-16: the service half is a theorem (`ReasonSupply.lean`: suffix-cut obstruction, hybrid bound, composition `li_noncapture`) and is canonical; what remains is the realization's choice of protected set (`hybrid_bound`'s rule, recorded not adopted) and the general-cost weighted optimum beyond the cut bound; the discovery residual is item 93*
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The non-capture compilation round (`projects/deference/rounds/2026-09-16-noncapture-compilation/`)
+compiles the trace-steering inequality into the landed corrigibility constraint and
+refutes the thesis that completeness, authentication, canonicalization, coverage and
+liveness of a declared reason interface remove the residual: a true unprotected declared
+counterreason nobody raises passes every clause and is worth its weight (fixture 2).
+The residual against the fully-informed comparator is removed by exactly one of two
+decisions that are not interface properties — total protected scope (every declared
+reason type protected, so an omission voids; `content_residual_zero_of_total_scope`) or
+a supply obligation on the registrar, the engine or third parties to raise every true
+declared reason before the commitment deadline.  Under the deadline the second is the
+affordability theory's timeliness case: budgets add and declared reasons compete.
+Decide which the realization adopts, state the supply obligation as a clause of the
+evaluation-ecosystem bill alongside item 87's clause 5, and give the bounded-delay
+criterion for it; then the strengthened two-interface statement of the round's
+`REASON_INTERFACE.md` §5 is a candidate for canonicalization.
+
+*Update 2026-09-16 (second pass of the round).*  The supply obligation now has a theorem:
+with the docket's release times and costs and the supplier's capacity, every true declared
+reason is served before commitment iff every suffix cut is underwritten
+(`unit_servable_iff_cut`), the least missed adverse mass is the layered cut excess, and the
+certified bound composes with the landed inequality (`li_noncapture`).  What is left for
+this item: (a) the realization's choice of protected set — the round records the rule
+"protect a servable set of largest adverse mass" (`hybrid_bound`) and does not adopt it;
+(b) the exogenous-cost hypothesis (the advisor must not be able to raise a counterreason's
+service cost); (c) the discovery residual, the adverse mass of true declared reasons no
+independent process raises before commitment, which is an inquiry question and not a
+service one.
+
+*Deliverable shape:* a clause with its discharge condition (who supplies, by when, at
+what budget), an exact fixture in which the supply obligation is met and the content
+residual against the fully-informed comparator is zero on every audited world, and the
+timeliness-affordability bound for the supplier.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
+
+*Context:* `REASON_INTERFACE.md` §3 and `AFFORDABILITY_INTERFACE.md` §§1–3 of the round;
+`wiki/Openness-Coverage-and-Non-Capture.md` (route availability is not exercise); item 87
+clause 5 (protected reason-supply liveness) for the protected half of the same
+obligation.
+*Consumed by:* any canonicalization of the reason-side corrigibility inequality; the
+measurability claims of the round's `AFFORDABILITY_INTERFACE.md` §4.
+*A solution ships:* the clause and its fixture, or the negative — that no affordable
+supply obligation exists under the deadline for the declared interface — with its
+witness.
+
+### 93. Discovery of decision-relevant reasons: the repertoire and the budget — **[open]** — *at the 2026-09-16 landing the obstruction is general (`residual_ge_cellGap'`, best-response form for every extensional program); what remains is the realizable repertoire, witness completeness, and the link to the record's inquiry docket*
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The third pass of the non-capture compilation round
+(`projects/deference/rounds/2026-09-16-noncapture-compilation/`) states the discovery
+residual as the omission gain of the undiscovered adverse reasons, bounds it by their
+conditional adverse sensitivity above the docket, and characterizes its least worst-case
+value: with unbounded inquiry budget, exactly the largest information-cell gap of the
+declared repertoire (`residual_ge_cellGap`, `exhaustive_attains_cellGap`); with a budget, a
+decision-tree minimax value with no closed form, and no fractional-progress theorem for
+direct-query repertoires (the needle).  The frontier — undetermined reasons of positive
+conditional adverse mass — is the engine's obligation (`residual_le_zero_of_frontier_empty`),
+and the bound composes with the second-pass theorem (`li_noncapture_chain`).  What is open:
+(a) a realizable inquiry engine whose declared repertoire separates what the committed
+program's verdict separates, with a certified budget, so that `β_n = 0` is attained rather
+than assumed; (b) the witness-completeness property of a repertoire (aggregate tests that
+split every high-residual cell by a fixed fraction), under which the geometric progress
+theorem (`potential_decay`) applies, and which classes of declared interfaces admit such
+tests; (c) the relation between the engine's declared hypothesis space and the normativity
+record's docketed inquiry obligations (items 54 and 64), so that the frontier of this round
+and the `Do(investigate …)` obligations of `wiki/Normative-Record-and-Inquiry.md` are one
+object.
+
+*Deliverable shape:* a repertoire and budget for a concrete declared interface with the
+cell gap computed and certified zero, or the exact obstruction cell exhibited; the
+witness-completeness certificate for a named class of tests; a fixture in which the
+frontier and the record's inquiry docket coincide.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
+
+*Context:* `DISCOVERY_THEOREM.md`, `INQUIRY_MODEL.md` §5, `DISCOVERY_COMPOSITION.md` §3 of
+the round; item 92 for the service half; items 54 and 64 for the record side.
+*Consumed by:* any canonicalization of the deliberative non-capture theorem; the
+measurability claims of the round.
+*A solution ships:* the certified repertoire, or the negative — that no affordable
+repertoire separates the interface's value classes — with its cell.
 
 ## Workspace friction
 

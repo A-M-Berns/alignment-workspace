@@ -4143,3 +4143,77 @@ narrowed to the certificate of the soft-weighted finite-menu combination; the
 oracle-relativized inductor for empirical logs is item 91. Nothing is registered:
 item 90's remaining half is what the theorem family answers as a whole, and item 89
 is an architecture question the structural theorem does not close.
+
+### 2026-09-16 — the reason-side residual is scope and supply, not interface completeness
+
+Agent-decided, reversible; a research-branch finding (PR #101), not canonical. The
+non-capture compilation round shows that the trace-steering comparison has the
+effect-side algebra and compiles into the landed constraint verbatim, and that the
+residual against the fully-informed comparator is *not* removed by completeness,
+authentication, canonicalization, the protected coverage barrier and liveness of a
+declared reason interface: one omitted unprotected true declared counterreason passes
+every clause and is worth its weight. The round records the two repairs — protecting
+every declared reason type, or a supply obligation on a party other than the advisor —
+as scope and ecosystem decisions and does not choose between them; the canonical
+`wiki/Corrigibility.md` §5 separation of authorship, non-capture and reason supply is
+left as it stands. The alternative rejected: presenting the two-interface symmetry as
+the round's conclusion on the strength of its elegance; it holds only strengthened by
+total scope, ecosystem-supplied liveness and an extensional program, and the round
+says so.
+
+### 2026-09-16 — the content residual is charged as adverse sensitivity mass, and protected scope is a dial
+
+Agent-decided, reversible; a research-branch finding (PR #101, second pass), not
+canonical. The steering inequality's content term is taken to be the adverse
+sensitivity mass of the true declared reasons not served before commitment — the
+smallest quantity a committed program class certifies statically — rather than the
+count or the weight table; the service loss is characterized by the suffix-cut
+condition on the supplier's docket (Hall on nested release windows), exact for unit
+service, a lower bound otherwise; the end-to-end theorem is stated against the
+*discovered* comparator, whose content term is a computation on the log, and the
+discovery residual is carried outside as the manipulation side's one open quantity.
+Protected scope is treated as a design parameter (the hybrid bound), not as the
+all-or-nothing choice the first pass posed; the rule "protect a servable set of
+largest adverse mass" is recorded, not adopted. The alternative rejected: presenting
+the fully-informed comparator as the theorem's comparator, which would have hidden the
+discovery loss behind an uncertified per-world bound.
+
+### 2026-09-16 — the discovery residual is charged against a declared hypothesis space, and its obstruction is the cell gap
+
+Agent-decided, reversible; a research-branch finding (PR #101, third pass), not
+canonical. The manipulation side's last open quantity, the adverse mass of true declared
+reasons no independent inquiry puts on the docket in time, is stated as the omission gain
+of the undiscovered adverse reasons and certified by their conditional adverse
+sensitivity above the docket; its exact worst-case value with unbounded inquiry budget is
+the largest information-cell gap of the declared repertoire, and with a budget it is a
+decision-tree minimax value with no closed form, the needle instance refuting any
+fractional-progress theorem for direct queries. The bound is taken to be `Γ`-valid
+*relative to a declared hypothesis space of reason states*, so that the fully-informed
+comparator becomes a bounded ideal without an oracle, and adequacy of that space is
+carried as the ontology wall rather than as a residual. The frontier — undetermined
+reasons of positive conditional adverse mass — is recorded as the engine's obligation.
+The alternative rejected: an "interface-incompleteness mass", for which the declared
+representation supplies no measurable object.
+
+### 2026-09-16 — the corrigibility nucleus is landed as two halves of one inequality; the discovery obstruction is general
+
+Agent-decided under the landing dispatch, reversible.  PR #101 lands the deliberative
+half of corrigibility alongside the authority half of PR #100 as the canonical story of
+`wiki/Corrigibility.md`: protected authority (effect interface → mediation →
+corrigibilization → learned non-bypass) and deliberative non-capture (reason
+representation → inquiry → authentication → service → canonical trace → learned
+non-steering), with explicit theorem boundaries (representation adequacy, physical
+completeness, causal faithfulness) that are next-agenda questions rather than
+corrigibility residuals.  The information-cell obstruction is stated for every
+extensional program in best-response form, the antitone form being its corollary
+(`residual_ge_cellGap'`, `cellGap'_eq_cellGap`), so the wiki does not advertise a
+special case as universal.  Vocabulary is fixed to one term each — *steering
+advantage* for the paper-level quantity; *content*, *form* and *audit-mismatch
+residuals*; *service* and *discovery residuals*; *adverse* and *conditional adverse
+sensitivity*; *information-cell gap*; *inquiry frontier*; *independent inquiry* and
+*independent supplier*; *discovered* and *fully-informed comparator* — and the
+synonyms of the passes ("undetected steering", "missed adverse mass", "omission gain"
+as a term) are retired.  Nothing is registered: the combined theorem is a schema of
+Lean components with named external contracts.  The alternative rejected: holding the
+landing for a single monolithic Lean statement of the combined theorem, which would
+add no mathematics.

@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 450 names, 293 of them Lean only
+## deference — 475 names, 314 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -160,7 +160,7 @@ change, and the count of those is the size of the free choice remaining.
 | `IsCellMaximiser` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.IsCellMaximiser` |
 | `St` | abbrev | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.St` |
 | `X` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.X` |
-| `cell` | def | 2026-08-11-stage-iii-fud | note | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.cell` |
+| `cell` | def | 2026-08-11-stage-iii-fud | wiki, note | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.cell` |
 | `cellMass` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.cellMass` |
 | `cellValue` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.cellValue` |
 | `delta` | def | 2026-08-11-stage-iii-fud | prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.delta` |
@@ -249,7 +249,7 @@ change, and the count of those is the size of the free choice remaining.
 | `state` | def | 2026-09-09-evaluation-ecosystem-realization | wiki, note, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.state` |
 | `step` | def | 2026-09-09-evaluation-ecosystem-realization | wiki, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.step` |
 | `susceptible` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.susceptible` |
-| `trace` | def | 2026-09-09-evaluation-ecosystem-realization | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.trace` |
+| `trace` | def | 2026-09-09-evaluation-ecosystem-realization | wiki, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.trace` |
 | `traceAtCommit` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.traceAtCommit` |
 | `validAnswer` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.validAnswer` |
 | `validClose` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.validClose` |
@@ -389,7 +389,7 @@ change, and the count of those is the size of the free choice remaining.
 | `step` | def | 2026-08-12-reachable-corrective-control | wiki, prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.step` |
 | `stepHFirst` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.stepHFirst` |
 | `stillRun` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.stillRun` |
-| `trace` | def | 2026-08-12-reachable-corrective-control | prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.trace` |
+| `trace` | def | 2026-08-12-reachable-corrective-control | wiki, prose | `Workspace.Deference.Contrib.ReachableCorrectiveControl.trace` |
 | `unexercised` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.unexercised` |
 | `vA` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vA` |
 | `vE` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.EnvBlame.vE` |
@@ -404,6 +404,15 @@ change, and the count of those is the size of the free choice remaining.
 | `dI` | def | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.Witness.dI` |
 | `dJ` | def | 2026-09-08-legitimate-deference-consolidation | Lean only | `Workspace.Deference.Contrib.ReasonCoverage.Witness.dJ` |
 | `live` | def | 2026-09-08-legitimate-deference-consolidation | wiki, note, prose | `Workspace.Deference.Contrib.ReasonCoverage.CoverageData.live` |
+| `AdverseAbove` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.AdverseAbove` |
+| `Model` | structure | 2026-09-16-noncapture-compilation | prose | `Workspace.Deference.Contrib.ReasonDiscovery.Model` |
+| `Model.cell` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.cell` |
+| `Model.cellGap` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.cellGap` |
+| `Model.cellGap'` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.cellGap'` |
+| `Model.certain` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.certain` |
+| `Model.exhaustive` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.Model.exhaustive` |
+| `SoundPolicy` | structure | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonDiscovery.SoundPolicy` |
+| `bestResp` | def | 2026-09-16-noncapture-compilation | wiki | `Workspace.Deference.Contrib.ReasonDiscovery.bestResp` |
 | `Authored` | def | 2026-09-07-reason-mediated-authorship | wiki, prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Authored` |
 | `Blind` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Blind` |
 | `Dd` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.Dd` |
@@ -432,7 +441,19 @@ change, and the count of those is the size of the free choice remaining.
 | `leakPol` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.leakPol` |
 | `sealedPol` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.sealedPol` |
 | `selPairs` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.selPairs` |
-| `trace` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.trace` |
+| `trace` | def | 2026-09-07-reason-mediated-authorship | wiki, prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.trace` |
+| `Adverse` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Adverse` |
+| `Instance` | structure | 2026-09-16-noncapture-compilation | wiki | `Workspace.Deference.Contrib.ReasonSupply.Instance` |
+| `Instance.Cap` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Instance.Cap` |
+| `Instance.CutCondition` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Instance.CutCondition` |
+| `Instance.Demand` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Instance.Demand` |
+| `Instance.late` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Instance.late` |
+| `Schedule` | structure | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Schedule` |
+| `Schedule.ServesAll` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Schedule.ServesAll` |
+| `Schedule.served` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Schedule.served` |
+| `Sensitive` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Sensitive` |
+| `gatedPair` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair` |
+| `gatedPair_validAt` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair_validAt` |
 | `EXanti` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXanti` |
 | `EXnv` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXnv` |
 | `J` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.J` |
@@ -467,8 +488,12 @@ change, and the count of those is the size of the free choice remaining.
 | `valuation` | def | 2026-08-11-phase-ii-promotion | wiki, note | `Workspace.Deference.Contrib.SubstitutionSeparation.M.valuation` |
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
+| `Extensional` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.Extensional` |
+| `openUnder` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.openUnder` |
+| `steering_validAt` | def | 2026-09-16-noncapture-compilation | wiki | `Workspace.Deference.Contrib.TraceSteering.steering_validAt` |
+| `weightedCount` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.weightedCount` |
 
-## normativity — 700 names, 531 of them Lean only
+## normativity — 700 names, 530 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1045,8 +1070,8 @@ change, and the count of those is the size of the free choice remaining.
 | `AffineForm.eval` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.AffineForm.eval` |
 | `Face` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face` |
 | `Regular` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.Regular` |
-| `candidate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate` |
-| `cell` | def | unrecorded | note | `Workspace.Normativity.Contrib.PolyhedralProjection.cell` |
+| `candidate` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate` |
+| `cell` | def | unrecorded | wiki, note | `Workspace.Normativity.Contrib.PolyhedralProjection.cell` |
 | `coefQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coefQ` |
 | `coord` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coord` |
 | `dim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.dim` |

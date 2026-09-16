@@ -729,6 +729,69 @@ exactly on non-dominant block schedules, and `Regret = LEARN + SLACK + SHIFT` wi
 policies is false (the foreclosing-branch witness); joinability, not reversibility, is the
 class boundary.
 
+**Theorem 10.10 (Trace steering, S1–S4).**  With the principal's program committed and
+re-executed on the authenticated trace, the audit `C(T)` and the activated security
+`U(T) = C(T)·V(T)`, for a steered trace `T` and a comparator `N` on one world
+```
+U(T) − U(N)  =  both·(V(T) − V(N)) + M·V(T) − M'·V(N)
+U(T) − U(N)  ≤  both·(L·d + κ(T) + κ(N)) + D·M
+```
+with `d` the content discrepancy under a content-Lipschitz certificate, `κ` the
+program's non-extensionality, `M = C(T) ∧ ¬C(N)` (`steering_identity`,
+`steering_bound`, **LEAN**; `D` sharp, the form branch attained).  An extensional program
+has `κ ≡ 0` and canonicalization is necessary (`extensional_form_free`,
+`not_extensional_of_form`, **LEAN**).  The package supplies Theorem 10.4b's `ValidAt`
+(`steering_validAt`) so `li_bypass_le_compiled` applies verbatim (`li_steering_le`,
+**LEAN**).  Robust Openness over a finite declared class of log transforms is a finite
+conjunction of audit verdicts (`openUnder_iff`, **LEAN**); its causal reading is
+**EXT**.  Completeness, authentication, canonicalization, coverage and liveness of a
+declared reason interface do not remove the content residual (**FIX**: truthful
+omission of an unprotected declared counterreason).
+
+**Theorem 10.11 (Service, C1–C4).**  The advisor's gain from a missing set is at most
+its adverse sensitivity mass (`adverse_union`, `sensitive_symmDiff`; weighted counts
+`weightedCount_adverse`, **LEAN**).  With releases `a_r`, costs `c_r` and per-slot
+capacity before the deadline `T`: service from reasons released at or after `s` is at
+most `Cap(s)` (`served_cut_le`); full service forces `∀s: Demand(s) ≤ Cap(s)`
+(`cut_of_servesAll`); for unit service the condition suffices (`unit_servable_iff_cut`,
+Hall on nested neighbourhoods; **LEAN**); the least unserved count is the maximal cut
+excess and the least adverse miss the matroid layer formula, attained by
+heaviest-available-first offline and online (**FIX**, random instances against
+exhaustive search); general costs are knapsack-hard (**FIX**).  On the audited branch
+only the unprotected missing adverse mass is charged and a missing protected reason
+voids (`hybrid_bound`, **LEAN**).  The service residual `α` is a computation on the
+docket.
+
+**Theorem 10.12 (Discovery, D1–D4).**  With `A_{r|D} := sup_{c ⊇ D, r ∉ c} (V(c) − V(c ∪
+{r}))⁺`, `V(D) − V(D ∪ S) ≤ Σ_{r∈S} A_{r|D}` (`adverseAbove_union`), and an empty
+frontier forces `V(D) − V(Truth) ≤ 0` (`residual_le_zero_of_frontier_empty`), **LEAN**.
+In a finite inquiry model (declared hypothesis space, repertoire of outcome functions,
+sound docket policies): with the advisor's best response
+`bestResp(D, T) := max_{S ⊆ T \ D} V(D ∪ S)`, larger dockets never help
+(`bestResp_antitone`), every sound policy has on some world of every repertoire cell a
+best-response residual at least `gap*(K) = max_{ω∈K} [bestResp(certain K, Truth ω) −
+V(Truth ω)]` and the exhaustive docket attains it (`residual_ge_cellGap'`,
+`exhaustive_attains_cellGap'`, **LEAN**); for an antitone verdict `gap* = gap =
+max_ω [V(certain K) − V(Truth ω)]` (`bestResp_of_antitone`, `cellGap'_eq_cellGap`,
+`residual_ge_cellGap`, `exhaustive_attains_cellGap`, **LEAN**).  The budgeted value is a
+decision-tree minimax, exact against enumerated trees, with no closed form; the needle
+refutes fractional progress for direct queries; adaptive inquiry strictly beats
+nonadaptive (**FIX**); geometric decay under witness completeness (`potential_decay`,
+**LEAN**).
+
+**Theorem 10.13 (Composition, E1–E3).**  A gated family bounded by `α` in every
+consistent world has expectation `≲ₙ α` (`li_gated_le`, through a degenerate pair and
+`expect_constLUV`); with a certified content bound, an extensional program and a
+content-monotone audit, `𝔼ₙ(U_T) − 𝔼ₙ(U_N) ≲ₙ L·α` (`li_noncapture`); through the
+discovered comparator as shared middle, `𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)`
+(`li_noncapture_chain`), **LEAN**.  The combined corrigibility theorem is the schema of
+Theorems 10.1–10.4c and 10.10–10.13 with the hypothesis classes of the non-capture
+round's
+[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md) §8; it is not one declaration.  Lean:
+[`TraceSteering.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/TraceSteering.lean),
+[`ReasonSupply.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonSupply.lean),
+[`ReasonDiscovery.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonDiscovery.lean).
+
 ## 11. The counterexamples that fix the shape
 
 Each of these is exact and is why the corresponding definition has the form it has.
@@ -758,6 +821,12 @@ Each of these is exact and is why the corresponding definition has the form it h
 | a commit under the principal's key authored by the advisor | the warrant registry binds keys to parties (Theorem 9.7) |
 | the same program, one executor honest, one coincident | computational integrity is not a hypothesis of authorship (Theorem 9.7) |
 | the market publishes the advisor's selection and its program echoes it | re-execution does not seal the advisor |
+| a true unprotected declared counterreason nobody raises | the content residual is not removed by interface completeness, coverage or liveness (Theorem 10.10) |
+| a defeater with weight `0` and symmetric sensitivity `W` | the adverse sensitivity certificate, not the weight table (Theorem 10.11) |
+| a cost-2 reason against two unit reasons in two slots | greedy fails for general costs; the cut bound is a bound (Theorem 10.11) |
+| `n` candidates each true in one world, direct queries | no fractional-progress theorem; the budgeted value is a decision tree (Theorem 10.12) |
+| two worlds indistinguishable by the repertoire, different values | the information-cell gap is the exact obstruction (Theorem 10.12) |
+| a defeater of a defeater | the general best-response obstruction, not the antitone gap (Theorem 10.12) |
 
 ## 12. What is external, what is open
 
@@ -772,12 +841,17 @@ interface table lists each supplier's obligation.
 No Laundered Authority Loss (item 83); the operative-value-security bridge (item 84);
 margin realization (item 85); promise recognizability and joinability for continuation
 BRIA (item 86); the residual clauses of the legitimate-deference realization bill —
-reason-supply liveness, selection-induced sealing, vanishing void mass (item 87);
+selection-induced sealing, vanishing void mass (item 87; the liveness clause's exercise
+half is Theorem 10.11 and its discovery half Theorem 10.12);
 affordability from the traderization perspective (item 88); the sealed-comparison
 architecture for the corrigibilization menu, now the zero case of the learned
 inequality's mismatch term (item 89); the generability certificate of the finite-menu
 weighting (item 90); the oracle-relativized inductor for empirical settlement (item
-91).  Effect completeness and the
+91); the realization's protection rule and the general-cost service optimum (item 92);
+a realizable inquiry repertoire with certified zero cell gap, witness completeness, and
+the link to the record's inquiry docket (item 93).  Representation adequacy, physical
+effect completeness and inquiry causal faithfulness are boundaries of Theorems
+10.10–10.13, not filed items.  Effect completeness and the
 authorization primitive are external contracts of Theorem 10.1, not filed items.  The open queue itself lives in
 [`PRIORITIES.md`](https://github.com/A-M-Berns/alignment-workspace/blob/aed09a697121e1d575473e3e7d87058ea85a49a3/PRIORITIES.md);
 this page names items, it does not maintain them.

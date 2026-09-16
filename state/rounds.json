@@ -1406,6 +1406,23 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-15-li-corrigibility/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-16-noncapture-compilation",
+      "date": "2026-09-16",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-16-noncapture-compilation",
+      "verdict": "CORRIGIBILITY-NUCLEUS-CANONICALIZED-AND-LANDED — the combined authority and non-capture theorem is the canonical result: on the authority side the corrigibilization transform, event-linked authorization, the directional activation mismatch and the compiled inequality Logical Induction learns uniformly over polynomial-size efficiently generated menus; on the deliberative side the trace-steering inequality with its content, form and audit-mismatch residuals, the suffix-cut service obstruction, the information-cell discovery obstruction in its general best-response form for every extensional program with the antitone case as its corollary, and the composed bound E_n(U_T) − E_n(U_full) ≲ A_tot·(α + β) through the discovered comparator; the residuals are explicit and independently characterized, the hypotheses are named as logical, architectural, representation and causal-contract classes, and what remains open is the adequacy and evolution of the interfaces that supply the theorem rather than another corrigibility mechanism.",
+      "verdict_source": "projects/deference/rounds/2026-09-16-noncapture-compilation/README.md",
+      "depends_on": [
+        "2026-09-15-li-corrigibility",
+        "2026-09-10-committed-principal-program",
+        "2026-09-09-evaluation-ecosystem-realization"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-16-noncapture-compilation/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

@@ -125,18 +125,25 @@ The standing legitimacy items from before the canonicalization:
 
 ## Deference
 
-**Both targets are live.** The corrigibility theorem nucleus is landed on
-[Corrigibility](Corrigibility): corrigibility from response authority over one
-continuation space, trajectory-level corrigibilization soundness under effect
-completeness with event-linked authorization (T1), the directional activation-mismatch
-bound (T2), the compiled inequality a logical inductor learns by Expectation
-Provability Induction with no calibration term (T3) uniformly over polynomial-size
-efficiently generated menus (T3′), separation from authorship, and the two nested
-targets — corrigibility proper and bounded corrigible agency.  The legitimate-deference stack is its principal evaluation, realized in the
-evaluation ecosystem with the authorship clause closed on log authenticity
+**The corrigibility nucleus is landed and at a natural stopping point.**  On
+[Corrigibility](Corrigibility): the protected-authority half — corrigibility from
+response authority over one continuation space, trajectory-level corrigibilization
+soundness under effect completeness with event-linked authorization (T1), the
+directional activation-mismatch bound (T2), the compiled inequality a logical inductor
+learns by Expectation Provability Induction with no calibration term (T3) uniformly over
+polynomial-size efficiently generated menus (T3′) — and the deliberative non-capture
+half — trace steering with its content, form and audit-mismatch residuals, the
+suffix-cut service obstruction, the information-cell discovery obstruction in
+best-response form for every extensional program, and the composed bound through the
+discovered comparator (Theorems 10.10–10.13).  The remaining questions concern the
+adequacy and evolution of the interfaces that supply the theorem — representation
+adequacy, physical effect completeness, causal faithfulness of declared inquiry and
+transforms, dynamic competence — not another corrigibility mechanism.  The
+legitimate-deference stack is its principal evaluation, realized in the evaluation
+ecosystem with the authorship clause closed on log authenticity
 (`authorship.mediation-by-reexecution`, registered); what remains of item 87 is
-reason-supply liveness, selection-induced sealing and vanishing void mass.  The items
-below are what the two targets still need.
+selection-induced sealing and vanishing void mass.  The items below are what the two
+targets still need.
 
 - Sealed comparison — item 89: an architecture under which the directional mismatch
   mass `E[c_raw ∧ ¬c_corr]` of the constitutional comparison of `{π, 𝔠π}` is small for
@@ -147,9 +154,15 @@ below are what the two targets still need.
   mechanized end to end as T3 is.
 - An oracle-relativized inductor for empirical settlement of activated securities —
   item 91 — the feedback boundary's missing ingredient, not a hypothesis of the nucleus.
-- The residual clauses of the realization bill — item 87: liveness against the
-  bounded-delay affordability criterion, sealing of the advisor's whole
-  selection-conditioned continuation, and `η_n → 0`.
+- The residual clauses of the realization bill — item 87: sealing of the advisor's
+  whole selection-conditioned continuation, and `η_n → 0`; the liveness clause's
+  exercise half is the suffix-cut service theorem and its discovery half the
+  information-cell theorem.
+- The realization's protection rule (which declared reasons to protect: a servable set
+  of largest adverse mass) and the general-cost service optimum — item 92.
+- A realizable inquiry repertoire with certified zero information-cell gap, witness
+  completeness for geometric progress, and the identification of the inquiry frontier
+  with the record's docketed inquiry obligations — item 93.
 - Promise recognizability, joinability certificates for the slow lane, and their
   composition into corrigible policy competence — item 86.
 - The Lean form of eligible liveness and the laundered-loss case split — item 83.
