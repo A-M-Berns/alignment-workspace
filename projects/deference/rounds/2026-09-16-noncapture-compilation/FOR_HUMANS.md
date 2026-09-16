@@ -51,7 +51,56 @@ log-determined one only neutralizes form, the fully-informed one needs the engin
 settle reasons nobody raised, and the declared-transform one is Robust Openness with its
 usual external contract about what the transforms mean.
 
-**Verdict.**  Non-capture compiles; reason completeness does not carry the residual.  The
-two-interface symmetry survives only strengthened by total scope, ecosystem-supplied
-liveness and an extensional program, and even then leaves what the declaration cannot
-see.
+**Verdict, first pass.**  Non-capture compiles; reason completeness does not carry the
+residual.  The two-interface symmetry survives only strengthened by total scope,
+ecosystem-supplied liveness and an extensional program, and even then leaves what the
+declaration cannot see.
+
+---
+
+## Second pass: turning the leftover into a theorem
+
+**The question.**  The first pass ended with a leftover: the value of the true reasons
+nobody put on the table.  The second pass asks when that leftover is small, and whether
+"small" can be a theorem rather than a hope.
+
+**What to count.**  Not how many reasons are missing.  A missing reason matters by how
+much its presence would have lowered the advisor's score, and that number is a
+property of the principal's committed program that can be read off in advance, reason
+by reason.  For the ordinary weighted program it is the weight of a counterreason and
+zero for anything else.  For a program with defeaters it is subtler, and a per-weight
+count gets it wrong; the per-reason "adverse sensitivity" gets it right.  Two lemmas,
+checked by machine, say that the advisor's gain from any set of omissions is at most the
+sum of those numbers.
+
+**Who supplies, and with what.**  Someone other than the advisor learns that reasons are
+true at various moments, and has a limited amount of routing-and-authenticating capacity
+in each period before the commitment deadline.  A reason discovered late can only use the
+capacity that remains.  The exact statement, and it is exactly Hall's marriage theorem:
+everything can be served if and only if, for every moment, what is discovered from that
+moment on fits into the capacity left from that moment on.  When it does not fit, the
+least you can miss is the largest such overflow, and if you serve the most damaging
+reason first whenever you have a free slot you achieve the least possible missed value,
+whether or not you can see the future.  With reasons of unequal cost this last part
+fails, and the problem is as hard as packing a knapsack; the overflow bound still holds.
+
+**Why this is a theorem and not a promise.**  The supplier's docket, capacities and
+schedule are on the log, so "the service loss this round is at most such-and-such" is
+a sentence the theory settles, and the previous round's machinery accepts exactly such
+sentences.  A short bridge lemma feeds it in, and the result is that the bounded agent
+learns it has no advantage from steering beyond the certified service loss, which is
+zero whenever the fit condition holds.  What the log cannot settle is which true reasons
+nobody discovered at all.  That is the one thing left over, and the theorem says so
+rather than hiding it in a comparator.
+
+**Protection is a dial.**  Protecting a reason means the evaluation voids if it is
+missing; not protecting it means the advisor gains its value if it is missing.  So the
+right thing to protect is what you can afford to serve: the most damaging reasons that
+fit.  Protecting everything is right only when everything fits.
+
+**What was wrong before.**  The first pass said reason supply was "the timeliness case
+of affordability".  Half right: the existing affordability theory supplies the budget
+half, and it has no shared-slot structure and no missed-mass bound.  The capacity half,
+where the fit condition lives, is new.  And the first pass silently assumed the advisor
+cannot make a counterreason expensive to authenticate; it can, and that becomes an
+explicit hypothesis.

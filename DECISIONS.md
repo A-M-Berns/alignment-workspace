@@ -4160,3 +4160,20 @@ left as it stands. The alternative rejected: presenting the two-interface symmet
 the round's conclusion on the strength of its elegance; it holds only strengthened by
 total scope, ecosystem-supplied liveness and an extensional program, and the round
 says so.
+
+### 2026-09-16 — the content residual is charged as adverse sensitivity mass, and protected scope is a dial
+
+Agent-decided, reversible; a research-branch finding (PR #101, second pass), not
+canonical. The steering inequality's content term is taken to be the adverse
+sensitivity mass of the true declared reasons not served before commitment — the
+smallest quantity a committed program class certifies statically — rather than the
+count or the weight table; the service loss is characterized by the suffix-cut
+condition on the supplier's docket (Hall on nested release windows), exact for unit
+service, a lower bound otherwise; the end-to-end theorem is stated against the
+*discovered* comparator, whose content term is a computation on the log, and the
+discovery residual is carried outside as the manipulation side's one open quantity.
+Protected scope is treated as a design parameter (the hybrid bound), not as the
+all-or-nothing choice the first pass posed; the rule "protect a servable set of
+largest adverse mass" is recorded, not adopted. The alternative rejected: presenting
+the fully-informed comparator as the theorem's comparator, which would have hidden the
+discovery loss behind an uncertified per-world bound.

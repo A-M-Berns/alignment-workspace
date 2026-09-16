@@ -2720,7 +2720,7 @@ securities are; item 90 for the certificate side.
 for empirical logs.
 *A solution ships:* the relativized theorem, or the negative with its witness.
 
-### 92. The reason-side supply obligation: total scope or ecosystem supply of declared reasons — **[open]**
+### 92. The reason-side supply obligation: total scope or ecosystem supply of declared reasons — **[open]** — *narrowed 2026-09-16: the service half is a theorem (`ReasonSupply.lean`: suffix-cut obstruction, hybrid bound, composition `li_noncapture`); what remains is the realization's protection rule and the discovery residual*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2739,6 +2739,18 @@ Decide which the realization adopts, state the supply obligation as a clause of 
 evaluation-ecosystem bill alongside item 87's clause 5, and give the bounded-delay
 criterion for it; then the strengthened two-interface statement of the round's
 `REASON_INTERFACE.md` §5 is a candidate for canonicalization.
+
+*Update 2026-09-16 (second pass of the round).*  The supply obligation now has a theorem:
+with the docket's release times and costs and the supplier's capacity, every true declared
+reason is served before commitment iff every suffix cut is underwritten
+(`unit_servable_iff_cut`), the least missed adverse mass is the layered cut excess, and the
+certified bound composes with the landed inequality (`li_noncapture`).  What is left for
+this item: (a) the realization's choice of protected set — the round records the rule
+"protect a servable set of largest adverse mass" (`hybrid_bound`) and does not adopt it;
+(b) the exogenous-cost hypothesis (the advisor must not be able to raise a counterreason's
+service cost); (c) the discovery residual, the adverse mass of true declared reasons no
+independent process raises before commitment, which is an inquiry question and not a
+service one.
 
 *Deliverable shape:* a clause with its discharge condition (who supplies, by when, at
 what budget), an exact fixture in which the supply obligation is met and the content

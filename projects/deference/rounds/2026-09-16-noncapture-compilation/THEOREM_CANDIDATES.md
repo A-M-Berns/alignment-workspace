@@ -146,3 +146,76 @@ activation mismatch and is charged at `D`.
 | granularity failures are visible to the theory | fixture 8: canonically identical traces |
 | Robust Openness as a causal claim is `Γ`-valid | R4: only the declared-transform form is |
 | the reason-side normalization is realizable by rewriting the advisor | R6: omitted content is not in the advisor's outputs |
+
+---
+
+# Second pass: the supply theorem
+
+Labels as above; Lean names in `lean/Workspace/Deference/Contrib/ReasonSupply.lean`.
+
+## R9. The content residual is the adverse sensitivity mass — **survives** (LEAN, FIX)
+
+For an extensional program with per-reason adverse certificates `A_r`, the advisor's
+gain from the absence of a set `S` is at most `Σ_{r ∈ S} A_r` (`adverse_union`); the
+symmetric telescoping bound is `sensitive_symmDiff`; weighted-count programs have
+`A_r = (−w_r)⁺` and `L_r = |w_r|` (`weightedCount_adverse`, `weightedCount_sensitive`).
+Per-weight charging is wrong for defeat programs and every static certificate is loose
+under redundancy (fixtures 7, 8 of the second pass).  `CONTENT_RESIDUAL.md`.
+
+## R10. The service obstruction — **survives** (LEAN, FIX, PAPER)
+
+Service received by reasons released at or after `s` is at most `Cap(s)`
+(`served_cut_le`); full service forces the suffix-cut condition (`cut_of_servesAll`); the
+unserved cost is at least the cut excess (`unserved_ge_excess`); for unit service the
+suffix-cut condition is also sufficient (`unit_servable_iff_cut`, Hall).  The least
+unserved count is the maximal cut excess and the least adverse miss is the matroid layer
+formula, attained by heaviest-first (random-instance checks against exhaustive search).
+`SUPPLY_THEOREM.md` §2.
+
+## R11. Online equals offline for unit service — **survives** (FIX)
+
+Serving the heaviest discovered unserved reason at each free slot attains the offline
+optimum for a common deadline (`test_online_greedy_is_offline_optimal`); the
+affordability round's online gap is about prices revealed later, absent here.
+
+## R12. The hybrid protection bound — **survives** (LEAN)
+
+On the audited branch only the unprotected missing adverse mass is charged; a missing
+protected reason voids (`hybrid_bound`).  Total protection is right iff the whole
+interface is servable; otherwise protect a servable set of largest adverse mass.
+
+## R13. The composition — **survives** (LEAN)
+
+`li_gated_le`: a gated family bounded by `α` in every consistent world has expectation
+`≲ α` (a degenerate pair fed to the landed compiled theorem, constants removed by
+`expect_constLUV`).  `li_noncapture`: with a certified content bound, an extensional
+program and a sealed audit, `𝔼ₙ(U_T) − 𝔼ₙ(U_N) ≲ₙ L·α`.  `COMPOSITION.md`.
+
+## R14. "Reason supply is the affordability round's timeliness case" — **NARROWED**
+
+The budget half is (D4 over the release window, M1's additivity); the capacity half,
+where the Hall form and the missed-mass bound live, is not in that theory and is new
+here.  `AFFORDABILITY_REFINEMENT.md` §5.
+
+## R15. Greedy by weight is optimal for general costs — **REFUTED** (FIX)
+
+Fixture 17: greedy misses `1/2`, the optimum `3/8`; the weighted problem is knapsack-hard.
+
+## R16. An independent supplier has exogenous costs — **made explicit** (FIX)
+
+Fixture 12: the advisor raising a counterreason's authentication cost from `1` to `3`
+breaks the cut.  This was an implicit hypothesis of the first pass and is now a named
+one; without it the certified bound ranges over the advisor's cost-influence class.
+
+## Refuted or narrowed in the second pass
+
+| statement | status |
+|---|---|
+| the content term should be the count `d_canon` | replaced by the adverse mass (R9) |
+| coverage/liveness suffice once a supplier exists | no: the supplier's cut condition is the criterion (R10) |
+| greedy is optimal for general costs | refuted (R15) |
+| static certificates are tight | refuted under redundancy (fixture 8) |
+| discovery is a property of the docket | refuted: it is policy-dependent (fixture 9) |
+| `N_full` is the comparator to certify against | replaced by `N_disc` for the certified theorem |
+| reason supply is exactly affordability's timeliness case | narrowed (R14) |
+| an independent supplier needs no cost hypothesis | refuted (R16) |

@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 454 names, 297 of them Lean only
+## deference — 466 names, 308 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -433,6 +433,18 @@ change, and the count of those is the size of the free choice remaining.
 | `sealedPol` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.sealedPol` |
 | `selPairs` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.selPairs` |
 | `trace` | def | 2026-09-07-reason-mediated-authorship | prose | `Workspace.Deference.Contrib.ReasonMediatedAuthorship.Witness.trace` |
+| `Adverse` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Adverse` |
+| `Instance` | structure | 2026-09-16-noncapture-compilation | wiki | `Workspace.Deference.Contrib.ReasonSupply.Instance` |
+| `Instance.Cap` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Instance.Cap` |
+| `Instance.CutCondition` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Instance.CutCondition` |
+| `Instance.Demand` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Instance.Demand` |
+| `Instance.late` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Instance.late` |
+| `Schedule` | structure | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Schedule` |
+| `Schedule.ServesAll` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Schedule.ServesAll` |
+| `Schedule.served` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Schedule.served` |
+| `Sensitive` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.Sensitive` |
+| `gatedPair` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair` |
+| `gatedPair_validAt` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.ReasonSupply.gatedPair_validAt` |
 | `EXanti` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXanti` |
 | `EXnv` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.EXnv` |
 | `J` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Contrib.SelectedTrustNonPreemption.Witness.J` |

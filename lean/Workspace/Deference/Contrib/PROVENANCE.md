@@ -21,6 +21,7 @@
 | `ContinuationBRIA.lean` | `prompts/2026-09-08-continuation-bria/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-08 | `prompts/2026-09-08-continuation-bria/` | — |
 | `LICorrigibility.lean`, `LICorrigibilityCertificate.lean`, `Corrigibilization.lean` | `prompts/2026-09-15-li-corrigibility/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer; the last two from its landing dispatch) | `ci-only` | 2026-09-15 | `prompts/2026-09-15-li-corrigibility/` | — |
 | `TraceSteering.lean` | `prompts/2026-09-16-noncapture-compilation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-noncapture-compilation/` | — |
+| `ReasonSupply.lean` | `prompts/2026-09-16-noncapture-compilation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer; the refinement dispatch) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-noncapture-compilation/` | — |
 
 `InheritedAlgebra.lean` transcribes statements from
 `projects/deference/note-dump-2026-06-27/lean/LeanDeference.lean`; per-declaration

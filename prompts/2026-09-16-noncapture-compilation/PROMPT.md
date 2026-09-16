@@ -695,3 +695,586 @@ Do not update the canonical wiki with Phase II's speculative conclusions unless 
 The crucial sequencing requirement is:
 
 **Finish, canonicalize, verify, and merge #100 first. Then branch PR #101 from that new `main`.**
+
+---
+
+# Second dispatch — refinement and pressure pass (2026-09-16)
+
+Continue work on PR #101 / branch:
+
+`round/2026-09-16-noncapture-compilation`
+
+in `A-M-Berns/alignment-workspace`.
+
+This is a **refinement and pressure pass on the existing PR**, not a fresh broad research round.
+
+The first pass has already established the important shape:
+
+* trace steering admits the same directional algebra as effect-side bypass;
+* the steering comparison compiles into the landed corrigibility `ValidAt` package;
+* Logical Induction learns the steering inequality by the existing EPI theorem;
+* form steering is eliminated by extensional/canonical principal programs;
+* audit mismatch is the directional activation term;
+* the naive claim that reason-interface completeness + coverage/liveness eliminates content steering is false;
+* the minimal counterexample is truthful omission of a true declared but unprotected counterreason;
+* unlike effect mediation, omitted content cannot be restored by rewriting the advisor's own output.
+
+Treat those conclusions as the current research state unless this pass finds a genuine error.
+
+The central question for this refinement is now:
+
+> **What exact reason-supply / affordability theorem is sufficient to make the content-steering term small, and therefore turn the PR #101 steering inequality into an actual non-capture/corrigibility theorem rather than merely a decomposition?**
+
+Do not broaden the ontology or invent another definition of corrigibility unless forced.
+
+---
+
+# 1. Start from the surviving steering inequality
+
+Use the strongest current form, approximately:
+
+`E_n(U_steered) − E_n(U_comparator)
+≲_n
+L·E_n[both·d_content]
+
+* E_n[both·κ_form]
+* D·E_n(M_audit)`.
+
+Under an extensional principal program:
+
+`κ_form = 0`.
+
+Under a sufficiently sealed / symmetric audit architecture:
+
+`M_audit` is zero or separately small.
+
+So the central residual is:
+
+`E_n[both·d_content]`.
+
+The entire purpose of this pass is to understand **when and why that term is small**.
+
+Do not merely rename it "liveness."
+
+---
+
+# 2. Define the service problem precisely
+
+At each evaluation occurrence `n`, define a declared reason interface `I_n`.
+
+For each reason `r ∈ I_n`, distinguish at least:
+
+* whether `r` is true/relevant in the current world;
+* whether it is protected by the coverage barrier;
+* whether a route exists to submit it;
+* whether it is actually supplied before commitment;
+* whether it is authenticated;
+* its contribution/sensitivity to the principal program;
+* the resource cost of discovering/authenticating/routing it before the deadline.
+
+The supplier must not simply be the strategic advisor whose selective disclosure is under analysis.
+
+Model one or more **independent supply processes**:
+
+* registrar;
+* inquiry engine;
+* third-party reason providers;
+* adversarially robust mixture of providers;
+* whatever abstraction is minimal.
+
+The critical distinction is:
+
+`route available`
+≠
+`reason actually surfaced before commitment`.
+
+Make the latter the theorem's object.
+
+---
+
+# 3. Choose the correct content-loss quantity
+
+The current `d_canon` is often a count / symmetric difference of declared reason states.
+
+Pressure whether raw count is really the right quantity for the theorem.
+
+Candidates include:
+
+### Count loss
+
+`D_n := # { true declared reasons not supplied by commitment }`.
+
+### Weighted loss
+
+`D_n^w := Σ_{r true but unsupplied} w_{n,r}`.
+
+### Program-sensitivity loss
+
+For reason-specific influence bounds `L_{n,r}`:
+
+`D_n^L := Σ_{r true but unsupplied} L_{n,r}`.
+
+### Direct value discrepancy
+
+`|V(T_actual) − V(T_full)|`.
+
+Try to prove relations between these.
+
+For weighted-count programs, we expect:
+
+`|V(T_actual) − V(T_full)|
+ ≤ Σ_{r missing} |w_r|`.
+
+For richer defeat-sensitive programs, identify the right local sensitivity certificate.
+
+The final non-capture theorem should charge the **smallest natural quantity actually needed by the principal program**, not an unnecessarily coarse number of missing reasons.
+
+---
+
+# 4. State the exact service theorem we want
+
+Try to derive a theorem of this general shape.
+
+Let:
+
+* `R_n` be the finite set of true declared reasons relevant to occurrence `n`;
+* `c_{n,r}(t)` be the minimum resource cost of getting reason `r` validly supplied by time `t`;
+* `T_n` be the commitment deadline;
+* `B_n` be the supplier's available service budget/capacity;
+* `w_{n,r}` or `L_{n,r}` be the reason's value sensitivity.
+
+Define the missed weighted mass:
+
+`Miss_n := Σ_{r∈R_n, r not supplied by T_n} w_{n,r}`.
+
+Find useful necessary and sufficient, or at least sharp sufficient, conditions for:
+
+`E[Miss_n] → 0`
+
+or
+
+`limsup E[Miss_n] ≤ ε`.
+
+This is the quantity that should feed the steering theorem.
+
+Do not assume all reasons can simply be served.
+
+The theorem should expose the real competition induced by the deadline.
+
+---
+
+# 5. Connect rigorously to the existing affordability theory
+
+Read the current affordability / underwriting work in the workspace rather than paraphrasing it from memory.
+
+Determine exactly which existing theorem or abstraction can serve the reason-supply problem.
+
+In particular, separate:
+
+### Persistence
+
+A concern can eventually be serviced repeatedly over an unbounded horizon.
+
+### Timeliness
+
+A concern must be serviced **before a fixed commitment deadline**.
+
+PR #101's claim is that reason supply is fundamentally the second case.
+
+Pressure this.
+
+Ask:
+
+* Does the existing affordability theory already imply a bounded-delay service theorem?
+* Is a new finite-horizon underwriting theorem required?
+* Are costs additive across reasons?
+* Is capacity fungible?
+* Does service of one reason interfere with another?
+* Are reasons divisible / partially serviceable?
+* Is there an optimal scheduling theorem hiding here?
+* Is the right mathematical object a deadline scheduling problem, a covering problem, an online knapsack, a flow/cut condition, or the existing authority-underwriting geometry?
+
+Do not force the previous affordability vocabulary if a cleaner existing mathematical framework applies.
+
+Search existing mathematical literature if useful.
+
+---
+
+# 6. Look for an exact characterization, not just a sufficient condition
+
+The ideal result is not:
+
+> if capacity is very large, all reasons arrive.
+
+Try for a theorem with the feel of:
+
+`reason supply is affordable iff every relevant deadline cut is underwritten`.
+
+For example, perhaps for a finite occurrence:
+
+`∀ S ⊆ R_n,
+   Σ_{r∈S} required_cost_before_deadline(r)
+   ≤ available_capacity_on_their_feasible_service_window`
+
+or an appropriate Hall/max-flow/min-cut condition.
+
+Or, in an expected / weighted setting, perhaps an optimal uncovered-mass characterization:
+
+`minimum achievable Miss_n  = value of a dual obstruction`.
+
+Investigate whether the service problem has a clean primal/dual form.
+
+A strong result would give an exact quantity `A_n` such that:
+
+`minimal possible content residual = A_n`
+
+and then the steering theorem becomes:
+
+`steering advantage ≤ L·A_n + audit/form terms + o(1)`.
+
+That would be much stronger than simply assuming "reason-supply liveness."
+
+---
+
+# 7. Separate three sources of missing content
+
+Do not collapse all missing reasons together.
+
+Distinguish:
+
+1. **discovery failure**:
+   the ecosystem does not know the reason is true/relevant;
+
+2. **service failure**:
+   the reason is known but cannot be routed/authenticated before the deadline;
+
+3. **scope failure**:
+   the reason type is outside the declared representation.
+
+Only (2) is directly an affordability problem.
+
+Possibly (1) is inquiry / epistemic coverage.
+
+(3) is the representation wall and should remain explicitly external.
+
+Try to obtain a decomposition such as:
+
+`d_content
+≤ discovery_loss
+
+* deadline_service_loss
+* authentication_loss`
+
+with interface incompleteness outside the theorem rather than hidden inside one term.
+
+---
+
+# 8. Pressure the role of protected scope
+
+The first pass identified two repairs:
+
+* total protected scope;
+* an independent supply obligation.
+
+Do not simply choose one.
+
+Investigate their exact relationship.
+
+Questions:
+
+* Is total protected scope merely a way of converting missing content into void mass?
+* Does that solve steering at the price of destroying availability?
+* Can partial protected scope plus weighted independent supply give a strictly better theorem?
+* Is there an optimal choice of which reasons to protect versus merely service?
+* Should high-impact reasons be protected and low-impact reasons merely charged through the residual?
+* Can the theory express a risk-sensitive hybrid?
+
+A potentially useful theorem form is:
+
+`steering advantage
+≤ value of unprotected missing content
+
+* void/availability cost of protected missing content`.
+
+That could turn protected scope into a design parameter rather than a Boolean all-or-nothing choice.
+
+Pressure this mathematically.
+
+---
+
+# 9. Try to derive an end-to-end non-capture theorem
+
+The strongest target for this pass is something like:
+
+### Reason-Supplied Non-Capture Theorem
+
+Suppose:
+
+1. the principal's committed program is re-executed solely on the authenticated reason trace;
+2. the program is extensional with respect to canonical declared content;
+3. its value is Lipschitz / reason-sensitive with constants `L_{n,r}`;
+4. the audit mismatch term is `M_n`;
+5. an independent supplier has a certified service policy whose expected missed weighted reason mass is at most `α_n`;
+6. authentication error contributes at most `β_n`.
+
+Then Logical Induction learns:
+
+`E_n(U_steered) − E_n(U_full)
+ ≲_n
+ α_n + β_n + D·E_n(M_n)`,
+
+up to the exact constants.
+
+Hence if:
+
+`α_n → 0`,
+`β_n → 0`,
+`E_n(M_n) → 0`,
+
+then:
+
+`E_n(U_steered) − E_n(U_full) ≲_n 0`.
+
+Interpretation:
+
+> the bounded agent asymptotically assigns no advantage to steering the principal's deliberative inputs over allowing an independently serviced, authenticated, canonical reason process to reach the principal.
+
+Determine whether this theorem is actually sound.
+
+Do not claim it if the comparator still hides a counterfactual oracle.
+
+---
+
+# 10. Re-examine the comparator
+
+The current `N_full` uses every true declared reason.
+
+Pressure whether that is a legitimate comparator.
+
+Questions:
+
+* Is `N_full` only a mathematical yardstick or a realizable process?
+* If the truth of an absent reason is not known before commitment, does the comparator require an oracle?
+* Can the independent service process itself define the comparator instead:
+  `N_service(T)` = trace produced by the certified supplier policy?
+* Would this make the theorem weaker but more operationally honest?
+* Can we state both:
+
+  * ideal fully-informed comparator;
+  * realizable supplier comparator?
+
+Prefer a theorem against a realizable process if the difference is material.
+
+The distinction should be explicit:
+
+`ideal completeness regret`
+versus
+`realizable service regret`.
+
+---
+
+# 11. Attack the theorem with small countermodels
+
+Build exact fixtures for at least:
+
+* two reasons competing for one pre-deadline service slot;
+* high-value and low-value reasons with one slot;
+* protected high-value reason versus unprotected low-value reason;
+* supplier knows both reasons but can service one;
+* supplier learns a reason only near the deadline;
+* authentication itself consumes capacity;
+* one reason defeats another and changes its marginal importance;
+* duplicate reasons / redundant evidence;
+* correlated reasons where servicing one reveals another;
+* adversarial arrival times;
+* advisor strategically floods the docket;
+* advisor can influence service cost;
+* multiple independent suppliers;
+* a reason impossible to discover before commitment;
+* a reason type outside the declared ontology;
+* a comparator that assumes content no realizable process could have produced.
+
+Use these to identify which hypotheses are structural and which are wishful.
+
+---
+
+# 12. Press the affordability connection at theorem level
+
+The current `AFFORDABILITY_INTERFACE.md` says that deadline reason supply is the timeliness side of affordability.
+
+Turn that into a theorem-shaped interface.
+
+The supplier theorem should ideally output exactly the object the steering theorem consumes:
+
+`E[both·d_content] ≤ α_n`
+
+or its weighted/sensitivity version.
+
+Then the composition should be literally:
+
+`Affordability/Supply theorem`
+→ `small content residual`
+
+`Canonicalization theorem`
+→ `κ = 0`
+
+`Audit/sealing theorem`
+→ `small M`
+
+`LI steering theorem`
+→ `small learned steering advantage`.
+
+Make the conclusions of one theorem have exactly the type needed by the next.
+
+Avoid prose-only bridges.
+
+---
+
+# 13. Ask whether this closes the manipulation side of corrigibility
+
+At the end of the pass, answer carefully:
+
+Can we now say:
+
+> under a declared reason representation, an independent affordable reason-supply process, an extensional principal program, and a sealed audit, the agent has asymptotically no incentive to steer the principal's deliberation?
+
+Or is there still a missing notion of:
+
+* relevance;
+* inquiry;
+* defeat;
+* world manipulation;
+* causal intervention semantics;
+* principal-process capture?
+
+If something remains, isolate one precise residual rather than reopening a seven-clause bill.
+
+---
+
+# 14. Reassess the full corrigibility theorem
+
+If the service theorem succeeds, write the strongest combined theorem you now believe:
+
+### Effect side
+
+For every candidate continuation `q`:
+
+`q -> 𝔠q`
+
+and LI learns no unexplained advantage to bypass.
+
+### Deliberation side
+
+For every candidate's principal evaluation:
+
+`steered trace -> independently serviced canonical trace`
+
+and LI learns no unexplained advantage to steering.
+
+The combined theorem should look roughly like:
+
+`Adv_correction_bypass
+≤ mediation_cost
+
+* principal_decision_regret
+* activation_mismatch
+* o(1)`
+
+and
+
+`Adv_deliberative_steering
+≤ missed_reason_cost
+
+* representation_cost
+* audit_mismatch
+* o(1)`.
+
+If all RHS quantities vanish:
+
+> the agent has asymptotically no operative advantage either from bypassing the principal's protected decision authority or from steering the declared reasons on which that authority is exercised.
+
+Be explicit that this remains relative to:
+
+* effect completeness;
+* a declared reason representation;
+* whatever external causal contracts are still required.
+
+---
+
+# 15. Do not spend time on these unless needed
+
+Do not:
+
+* reopen the definition of structural corrigibility;
+* redo the LI EPI proof;
+* develop oracle-relativized LI;
+* pursue continuation BRIA;
+* broaden to full philosophical normativity;
+* invent a general non-manipulation ontology;
+* canonicalize the speculative two-interface thesis before this pass settles it.
+
+The goal is to turn **one residual quantity** into a real theorem.
+
+---
+
+# Deliverables
+
+Update the existing PR #101 round rather than starting a new round unless repository conventions strongly require a second-pass subdirectory.
+
+Add at least:
+
+* `SUPPLY_THEOREM.md`
+* `AFFORDABILITY_REFINEMENT.md`
+* `CONTENT_RESIDUAL.md`
+* `COMPOSITION.md`
+* `COUNTERMODELS_SECOND_PASS.md`
+* updated `REPORT.md`
+* updated `THEOREM_CANDIDATES.md`
+* Lean and exact fixtures where the mathematics is stable.
+
+If the service problem maps cleanly to known mathematics, add a brief `RELATED_MATH.md` with precise citations and explain what is imported versus new.
+
+---
+
+# Final questions
+
+The revised report must answer:
+
+1. What is the exact quantity that represents missing deliberative content?
+2. Should it be a count, weighted mass, sensitivity-weighted mass, or direct value discrepancy?
+3. What is the exact independent supplier model?
+4. What resource/capacity object does the supplier consume?
+5. What is the commitment deadline model?
+6. What theorem makes the missed-content quantity small?
+7. Is there an iff / dual characterization?
+8. Is the problem best understood as affordability, scheduling, flow, covering, or something else?
+9. How do discovery failure and service failure separate?
+10. What role should protected scope play?
+11. Is total protected scope actually desirable?
+12. Can a hybrid protected/unprotected theorem dominate it?
+13. Is `N_full` a legitimate comparator?
+14. Is there a realizable supplier comparator?
+15. Does the service theorem compose directly with `li_steering_le`?
+16. What assumptions make the content residual vanish?
+17. What remains after it vanishes?
+18. Can we now state a serious non-capture theorem?
+19. Can that theorem compose with the landed effect-side corrigibility theorem?
+20. What is the strongest honest combined corrigibility statement after this pass?
+
+The desired outcome is **not** another catalog of residuals.
+
+It is either:
+
+### A. CONTENT-RESIDUAL-CLOSED-BY-SUPPLY-AFFORDABILITY
+
+A precise service theorem supplies the missing hypothesis of PR #101 and yields a genuine non-capture theorem.
+
+### B. CONTENT-RESIDUAL-REDUCED-TO-A-SHARP-SERVICE-OBSTRUCTION
+
+The residual cannot generally vanish, but there is an exact capacity/dual obstruction characterizing the best achievable bound.
+
+### C. REASON-SUPPLY-IS-NOT-THE-RIGHT-REDUCTION
+
+A counterexample shows that even perfect independent timely supply over the declared interface does not eliminate the relevant steering advantage; identify the missing structure exactly.
+
+Push hard for A or B, but do not protect them from C.
