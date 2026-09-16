@@ -12,6 +12,7 @@
 | `AuthorityActivation.lean` | `prompts/2026-09-07-authority-activated-value/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-authority-activated-value/` | — |
 | `OccurrenceLocalIntegrity.lean` | `prompts/2026-09-07-reason-mediated-authorship/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-07 | `prompts/2026-09-07-reason-mediated-authorship/` | — |
 | `SeedStatics.lean` | `prompts/2026-09-16-seed-statics/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-seed-statics/` | — |
+| `ConvergenceMeasure.lean` | `prompts/2026-09-17-convergence-measure/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-17 | `prompts/2026-09-17-convergence-measure/` | — |
 
 `MaxMinRepresentation.lean` proves Ovchinnikov's max–min representation theorem
 (Beiträge zur Algebra und Geometrie 43 (2002) 297–302, Theorem 4.1) for a piecewise

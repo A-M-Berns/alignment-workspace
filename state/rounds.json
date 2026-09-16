@@ -1423,6 +1423,23 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-16-seed-statics/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-17-convergence-measure",
+      "date": "2026-09-17",
+      "project": "normativity",
+      "path": "projects/normativity/seed/rounds/2026-09-17-convergence-measure",
+      "verdict": "CONVERGENCE-IS-A-PROFILE-HULL-FALLS-UNDER-EVERY-NARROWING-DISCORD-IS-CERTIFIED-AND-REMOVED-ONLY-BY-DEFEAT-OR-REFUTATION-AND-HIDDEN-DISCORD-ESCAPES-THE-FRAGMENT — the convergence profile (Hull, Ovl, Disc) is defined on interval data over a declared fragment with declared positive weights and Lean-stated with its inequalities, of which the dispatch's Disc = 0 → Ovl > 0 is false on touching intervals while Disc = 0 is exactly \"no declared coordinate in discord\" under positive weights; fragment dilution, coordinate splitting, discord hiding and weight capture all succeed against a naive reading and are blocked by the unpinned normalization, pull-back through the transport rule, the product order on hull and discord, and declared weights respectively, while hidden discord — a merged bundle infeasible with every common interval nonempty, two reasoners or three with no pairwise incompatibility — is blocked by nothing and is certified only by the merged Farkas certificate; hull and overlap mass are nonincreasing and discord persists under every nesting, so settlement, shared narrowing and private narrowing lower the hull and never remove discord, private narrowing creates discord, and sharing the private warrant either leaves the discord or refutes the receiver, discord being removed only by defeat or by giving up a named item; hull mass converges under summable reopenings of the hull endpoints and oscillates without them; under exhaustive sharing read as equal live sets the discord set is eventually constant and every persistent discord is a certified incompatibility between substantive items, with the merged-bundle limit the dispatch stated corrected to one direction; discord is pairwise by Helly in dimension one and merged feasibility is not; hull mass for two reasoners is the sum of their unforced masses minus the overlap plus the discord gap; a lock is width or certified discord and stops no convergence; overlapping consensus — identical intervals on disjoint dockets — is exhibited and breaks under one one-sided defeater; the moral aggregation disagreement ends as discord with a certificate naming exactly the prioritarian and sum items; and Logical Induction's two-inductor guarantee, cited by declaration, is agreement on what settles and nothing on what does not, where this round's property lives.",
+      "verdict_source": "projects/normativity/seed/rounds/2026-09-17-convergence-measure/README.md",
+      "depends_on": [
+            "2026-09-16-seed-statics",
+            "2026-09-05-ni-gap-audit",
+            "2026-09-03-defeat-landing-horty-standing"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-17-convergence-measure/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
