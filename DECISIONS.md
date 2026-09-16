@@ -4177,3 +4177,20 @@ all-or-nothing choice the first pass posed; the rule "protect a servable set of
 largest adverse mass" is recorded, not adopted. The alternative rejected: presenting
 the fully-informed comparator as the theorem's comparator, which would have hidden the
 discovery loss behind an uncertified per-world bound.
+
+### 2026-09-16 — the discovery residual is charged against a declared hypothesis space, and its obstruction is the cell gap
+
+Agent-decided, reversible; a research-branch finding (PR #101, third pass), not
+canonical. The manipulation side's last open quantity, the adverse mass of true declared
+reasons no independent inquiry puts on the docket in time, is stated as the omission gain
+of the undiscovered adverse reasons and certified by their conditional adverse
+sensitivity above the docket; its exact worst-case value with unbounded inquiry budget is
+the largest information-cell gap of the declared repertoire, and with a budget it is a
+decision-tree minimax value with no closed form, the needle instance refuting any
+fractional-progress theorem for direct queries. The bound is taken to be `Γ`-valid
+*relative to a declared hypothesis space of reason states*, so that the fully-informed
+comparator becomes a bounded ideal without an oracle, and adequacy of that space is
+carried as the ontology wall rather than as a residual. The frontier — undetermined
+reasons of positive conditional adverse mass — is recorded as the engine's obligation.
+The alternative rejected: an "interface-incompleteness mass", for which the declared
+representation supplies no measurable object.

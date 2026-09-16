@@ -219,3 +219,58 @@ one; without it the certified bound ranges over the advisor's cost-influence cla
 | `N_full` is the comparator to certify against | replaced by `N_disc` for the certified theorem |
 | reason supply is exactly affordability's timeliness case | narrowed (R14) |
 | an independent supplier needs no cost hypothesis | refuted (R16) |
+
+---
+
+# Third pass: the discovery residual
+
+Labels as above; Lean names in `lean/Workspace/Deference/Contrib/ReasonDiscovery.lean`.
+
+## R17. The discovery residual is bounded by the conditional adverse mass — **survives** (LEAN, FIX)
+
+`V(Disc) − V(Truth) ≤ Σ_{r ∈ Truth \ Disc} A_{r|Disc}` (`adverseAbove_union`); the
+conditional certificate vanishes for a defeated counterreason once the defeater is
+docketed and for a redundant reason once its partner is found.  `DISCOVERY_RESIDUAL.md`.
+
+## R18. The frontier theorem — **survives** (LEAN, FIX)
+
+Empty frontier ⇒ residual `≤ 0` (`residual_le_zero_of_frontier_empty`); contrapositively
+an unresolved reason of positive conditional adverse mass is an explicit inquiry obligation.
+
+## R19. The information-cell obstruction — **survives** (LEAN, FIX)
+
+Every sound docket policy has, on some world of every repertoire cell, residual at least
+the cell gap (`residual_ge_cellGap`); the exhaustive policy attains it
+(`exhaustive_attains_cellGap`); the least worst-case residual with unbounded budget is the
+largest cell gap, zero iff the repertoire separates what the verdict separates.
+
+## R20. The budgeted value is a decision-tree minimax — **survives, no closed form** (FIX)
+
+`V(K, B)` by the recursion, checked against enumerated decision trees; monotone in the
+budget; between the obstruction and the best nonadaptive value.
+
+## R21. A fractional-progress theorem for direct queries — **REFUTED** (FIX)
+
+The needle: worst-case residual at its full value until the last query.  Geometric decay
+holds only under witness completeness (`potential_decay`), a repertoire property.
+
+## R22. Adaptivity is inessential — **REFUTED** (FIX)
+
+Level queries on a chain: adaptive binary search closes the residual with two queries;
+every fixed pair leaves a cell of gap `1/8`.
+
+## R23. The chain composes — **survives** (LEAN)
+
+`li_noncapture_chain`: `𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)` with the middle family
+shared; `β` is `Γ`-valid relative to the declared hypothesis space.
+
+## Refuted or narrowed in the third pass
+
+| statement | status |
+|---|---|
+| additive adverse mass is the discovery residual | replaced by the omission gain, certified by the *conditional* mass (R17) |
+| "discover every true reason" is the target | replaced by decision-sufficient discovery (frontier empty) |
+| a progress theorem holds for any repertoire | refuted for direct queries (R21) |
+| the budgeted residual has a cut-like formula | no: decision-tree value (R20) |
+| `N_full` needs an oracle | no: bounded by the cell gap relative to the declared hypothesis space (R23) |
+| an interface-incompleteness mass can be defined | rejected: no measurable object in the declared representation |

@@ -104,3 +104,52 @@ half, and it has no shared-slot structure and no missed-mass bound.  The capacit
 where the fit condition lives, is new.  And the first pass silently assumed the advisor
 cannot make a counterreason expensive to authenticate; it can, and that becomes an
 explicit hypothesis.
+
+---
+
+## Third pass: what nobody found
+
+**The question.**  After the second pass one quantity was left: the value of the true
+reasons that nobody put on the table because nobody found them.  Can "finding" be a
+theorem?
+
+**What "finding" means.**  There is a finite list of ways the world could be as far as
+the declared reasons go, and a finite list of questions the inquiry engine can ask, each
+with a cost.  Asking narrows the list.  A reason can be docketed once every remaining
+possibility agrees it is true.  The residual is what the advisor's candidate gains from
+the true reasons that are still not on the docket when the deadline comes.
+
+**The obstruction.**  If two possible worlds answer every available question the same
+way, no engine can tell them apart, and the docket must be the same in both.  The
+reasons they share can be docketed; the value difference between that shared content and
+the worse of the two worlds is a floor no policy beats.  The exhaustive engine reaches
+exactly that floor.  So with unlimited budget the least possible residual is the largest
+such floor over the classes of indistinguishable worlds, and it is zero exactly when the
+questions separate everything the principal's verdict separates.  That is the discovery
+analogue of the service cut.
+
+**With a budget, no formula.**  The least residual within a budget is the value of a
+game: the engine asks, the world answers as unhelpfully as it can.  It can be computed
+exactly for small cases and it has no cut-like closed form.  One instance shows why: `n`
+candidate counterreasons, each true in one possible world, and questions that ask about
+one candidate at a time.  The worst case stays at full value until the very last
+question.  So no theorem of the form "each question makes definite progress" can hold for
+such engines, while for engines with aggregate tests (which of these many reasons hold
+at all?) progress can be geometric, and asking adaptively can beat any fixed list of
+questions.
+
+**The obligation.**  What the engine owes at any moment is precise: the reasons that are
+still undetermined and would still lower the candidate's verdict given what is already on
+the docket.  If that list is empty, the residual is zero in every possibility that
+remains.  Defeat is built in: a counterreason whose defeater is on the docket no longer
+counts, and a defeater of the advisor's own reason starts counting the moment that
+reason is docketed.
+
+**What it buys.**  The fully-informed comparator, which the second pass could not certify
+against, is now bounded without an oracle: relative to the declared list of possible
+worlds and questions, the discovery residual is a number the engine can compute.  The
+chain "what was served" to "what was found" to "everything true" adds up, in Lean, and
+the bounded reasoner learns the sum.  What is still outside is whether the declared list
+of possibilities contains the truth at all, whether the answers the engine gets are
+honest, and whether the advisor can make questions expensive or stop the engine early.
+Those are named hypotheses now, not residuals.

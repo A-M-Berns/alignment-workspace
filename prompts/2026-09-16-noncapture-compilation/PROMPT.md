@@ -1278,3 +1278,682 @@ The residual cannot generally vanish, but there is an exact capacity/dual obstru
 A counterexample shows that even perfect independent timely supply over the declared interface does not eliminate the relevant steering advantage; identify the missing structure exactly.
 
 Push hard for A or B, but do not protect them from C.
+
+---
+
+# Third dispatch — discovery pass (2026-09-16)
+
+Continue work on PR #101 / branch:
+
+`round/2026-09-16-noncapture-compilation`
+
+in `A-M-Berns/alignment-workspace`.
+
+This is a **third-pass refinement and theorem-discovery round** on the existing PR.
+
+Do not reopen the effect-side corrigibility theorem, the LI compilation, the trace-steering algebra, or the reason-supply scheduling theorem unless this pass finds a concrete error.
+
+The current state to treat as established is:
+
+1. **Effect-side corrigibility** is landed on `main`:
+
+   * corrigibilization `𝔠`;
+   * structural corrigibility;
+   * principal-option preservation;
+   * directional activation mismatch;
+   * EPI / finite-menu uniformity.
+
+2. **Trace steering** has the same compiled inequality:
+
+   * content residual;
+   * form residual;
+   * audit mismatch;
+   * EPI transfer via the landed compiled theorem.
+
+3. **Form steering** is controlled by extensionality / canonicalization.
+
+4. **Known-content suppression** has now been reduced to a sharp deadline-service problem:
+
+   * true declared reasons on the docket have release times;
+   * an independent supplier has capacity before commitment;
+   * the suffix-cut condition exactly characterizes full service in the unit case;
+   * the minimum weighted miss is characterized by the transversal-matroid / deficiency structure;
+   * the service theorem outputs the exact kind of bound consumed by `li_noncapture`.
+
+5. The remaining content decomposition is now roughly:
+
+`missing adverse mass
+= discovery residual
+
+* service residual
+* authentication residual`
+
+with the service term sharply characterized and the authentication term conceptually separate.
+
+The central open quantity is therefore:
+
+> **the adverse sensitivity mass of true declared reasons that no independent inquiry/discovery process puts on the docket in time for the service theorem to act.**
+
+Your task is to determine whether this **discovery residual** admits a real theorem interface.
+
+Do not merely rename it "inquiry."
+
+---
+
+# 1. State the discovery residual precisely
+
+Let the declared reason ontology at occurrence `n` be `I_n`.
+
+Let:
+
+* `Truth_n ⊆ I_n` be the true declared reasons in the world;
+* `Disc_n ⊆ Truth_n` be the reasons actually discovered / docketed by the independent inquiry process early enough to enter the service problem;
+* `A_{n,r}` be the directional adverse sensitivity certificate already used by the second pass.
+
+Define:
+
+`DiscoveryLoss_n
+ := Σ_{r ∈ Truth_n \ Disc_n} A_{n,r}`
+
+or improve this definition if the existing defeat/redundancy results show that a simple additive quantity is too coarse.
+
+The target is a theorem whose output has exactly the type:
+
+`DiscoveryLoss_n ≤ β_n`
+
+or, asymptotically,
+
+`β_n → 0`.
+
+This must compose literally with the second-pass service theorem.
+
+---
+
+# 2. Do not assume "discover every true reason"
+
+That is likely much too strong.
+
+Investigate which target is actually needed.
+
+Possibilities:
+
+### Full discovery
+
+Every true declared reason is eventually discovered before commitment.
+
+### Adverse-mass discovery
+
+The undiscovered reasons may be numerous, but:
+
+`Σ_{r undiscovered} A_r`
+
+is small.
+
+### Decision-sufficient discovery
+
+The discovered set may omit reasons, but adding all omitted true reasons changes the principal program's verdict by at most `β_n`.
+
+### Defeat-closed discovery
+
+Every discovered reason comes with all relevant undefeated counterreasons / defeaters required to evaluate its force correctly.
+
+### Certificate-relative discovery
+
+The inquiry process supplies enough information to certify a program-specific upper bound on the verdict change from everything still undiscovered.
+
+Determine the weakest useful notion.
+
+Prefer a **decision-sufficient** or **sensitivity-weighted** statement to "find everything."
+
+---
+
+# 3. Separate ontology completeness from discovery
+
+Do not confuse:
+
+1. the reason is in the declared ontology but undiscovered;
+2. the ontology lacks the reason type entirely;
+3. the ontology has the type but insufficient granularity.
+
+Only (1) is the discovery residual.
+
+(2) and (3) are representation failures and should remain outside the consumer theorem unless this pass discovers a principled way to internalize them.
+
+The theorem must clearly say:
+
+> relative to a declared reason representation.
+
+Do not invent an "interface incompleteness mass" unless there is a real observable/certifiable object supporting it.
+
+---
+
+# 4. Model the inquiry process
+
+Construct the minimal formal object needed to reason about discovery.
+
+Possible ingredients:
+
+* inquiry actions `a ∈ A`;
+* cost `c(a)`;
+* information returned by an inquiry;
+* a set of reason ids revealed by each outcome;
+* adaptive choice of later inquiries based on earlier answers;
+* a commitment deadline;
+* an inquiry budget / capacity;
+* possibly multiple independent inquiry providers.
+
+Ask whether the right abstraction is:
+
+* adaptive set cover;
+* active learning;
+* decision-tree/query complexity;
+* submodular information gathering;
+* bandit exploration;
+* diagnostic search;
+* argumentation/defeat closure;
+* or something specific to the existing normative representation.
+
+Do not force the existing affordability framework onto inquiry if another mathematical object is clearly the right one.
+
+---
+
+# 5. Investigate the role of defeat
+
+This is important.
+
+A reason should not necessarily carry adverse mass independently of its defeaters.
+
+The second pass already showed that static per-reason weights can misdescribe defeat-sensitive programs.
+
+Use the existing defeat / reason-representation machinery in the workspace.
+
+Ask:
+
+* When a reason `r` is discovered, what counterreasons become inquiry obligations?
+* Can discovery be defined as closure under live defeaters?
+* Is there a finite "relevance frontier" generated by the currently discovered docket?
+* Can the principal program expose which missing distinctions could still move its verdict?
+* Does discovering a reason create new possible defeaters recursively?
+* Does this process terminate under finite declared interfaces?
+* What is the correct quantity for "unexplored defeater mass"?
+
+Try to derive a theorem of the shape:
+
+`not defeated / unresolved high-impact reason`
+⇒
+`some explicit inquiry obligation remains`.
+
+This may be the cleanest connection to the normativity agenda.
+
+---
+
+# 6. Look for a progress theorem, not merely a coverage assumption
+
+The desired result is something like:
+
+> an independent inquiry policy systematically reduces unresolved adverse mass.
+
+Define a potential such as:
+
+`Potential_t
+ := sup / sum of adverse sensitivity of still-possible undiscovered reasons`
+
+or an appropriate upper bound on how much the principal's verdict can still change after all currently available evidence.
+
+Then investigate whether the inquiry process guarantees:
+
+`Potential_{t+1} ≤ Potential_t`
+
+and, under suitable capacity / informativeness conditions,
+
+`Potential_T ≤ β`.
+
+Strong target:
+
+`Potential_T → 0`.
+
+We want a **progress theorem**.
+
+A static assumption:
+
+> all important reasons are eventually discovered
+
+is not enough unless the pass shows that is genuinely the minimal honest interface.
+
+---
+
+# 7. Find the right notion of informativeness
+
+An inquiry may fail to reveal anything relevant.
+
+Characterize the property of the inquiry repertoire needed for progress.
+
+Candidates:
+
+### Coverage
+
+For every unresolved high-adverse-mass reason, some available inquiry can reveal it.
+
+### Separation
+
+For every pair of worlds inducing materially different principal verdicts, some inquiry distinguishes them.
+
+### Value of information
+
+Whenever unresolved verdict range exceeds `ε`, some inquiry reduces it by a definite amount.
+
+### Defeat completeness
+
+For every live reason whose force depends on a possible defeater, some inquiry can settle that defeater.
+
+### Witness completeness
+
+Whenever omitted content could improve the advisor's candidate by more than `ε`, an inquiry witness exists whose answer exposes at least some fixed fraction of that advantage.
+
+Pressure these.
+
+A theorem phrased directly in terms of **remaining decision uncertainty / steering opportunity** may be stronger than one phrased in terms of semantic "reasons."
+
+---
+
+# 8. Look for an exact obstruction / dual
+
+The service pass was successful because it found a sharp obstruction:
+
+`suffix demand > suffix capacity`.
+
+Try for the analogous discovery obstruction.
+
+Questions:
+
+* Is there a set of mutually indistinguishable worlds under the available inquiry policy whose principal values differ substantially?
+* Is the irreducible discovery residual exactly the diameter of an information cell?
+* Is there a minimax characterization:
+  `best inquiry policy` versus `worst consistent world`?
+* Is there an adaptive set-cover dual?
+* Can undiscovered adverse mass be identified with a hitting-set obstruction?
+* Is there a "no available inquiry distinguishes these relevant possibilities" certificate?
+
+A very strong theorem would identify:
+
+`Discovery* := inf_policy sup_world residual(policy, world)`
+
+and characterize when `Discovery* = 0`.
+
+Even a sharp lower bound / obstruction would be valuable.
+
+---
+
+# 9. Distinguish discovery from settlement
+
+A reason may be:
+
+* hypothesized;
+* discovered as a candidate;
+* verified as true;
+* authenticated;
+* settled.
+
+Be explicit about these stages.
+
+For example:
+
+`candidate generation`
+→
+`inquiry`
+→
+`truth determination`
+→
+`authentication`
+→
+`docket`
+→
+`service`
+→
+`principal trace`.
+
+Determine which stage belongs to:
+
+* discovery;
+* authentication;
+* settlement;
+* service.
+
+Do not double-charge the same failure in multiple residuals.
+
+The output decomposition should be type-clean.
+
+---
+
+# 10. Distinguish discovery from world manipulation
+
+If the advisor changes the world so that a counterreason is no longer true, that is not merely discovery failure.
+
+World-changing interventions should remain on the **effect side** or under the declared-transform causal contract.
+
+Construct fixtures where:
+
+* reason is undiscovered but true;
+* reason becomes false because the agent changed the world;
+* agent hides evidence without changing the underlying reason;
+* agent alters which inquiry questions get asked;
+* agent alters the cost of discovering a counterreason;
+* agent alters the inquiry engine itself.
+
+Identify exactly which interface catches each.
+
+---
+
+# 11. Pressure independence of the inquiry process
+
+The second pass required that the advisor cannot consume supplier capacity or arbitrarily raise service costs.
+
+Discovery needs analogous independence.
+
+Possible attack surfaces:
+
+* advisor controls which questions are proposed;
+* advisor controls evidence indexing;
+* advisor can flood the search space;
+* advisor can make true reasons expensive to discover;
+* advisor can selectively reveal clues;
+* advisor can influence the inquiry model;
+* advisor can influence stopping rules.
+
+State the weakest causal-independence condition under which the discovery theorem remains meaningful.
+
+Do not simply say "independent inquiry."
+
+---
+
+# 12. Build exact countermodels
+
+At minimum test:
+
+1. one hidden high-adverse counterreason with a direct available query;
+2. two reasons, one query budget;
+3. many low-value distractors plus one high-value hidden counterreason;
+4. advisor flooding the search space;
+5. inquiry cost manipulated by advisor;
+6. discovering one reason reveals another;
+7. discovering one reason creates a new defeater obligation;
+8. mutually defeating reasons;
+9. redundant reasons;
+10. reason truth only determined by an expensive empirical test;
+11. ontology contains the reason but the inquiry repertoire cannot distinguish it;
+12. two worlds observationally indistinguishable under all allowed inquiries but with different principal values;
+13. all reasons discoverable eventually but not before commitment;
+14. random inquiry finds high-value reason only with small probability;
+15. adaptive inquiry dramatically outperforms nonadaptive inquiry;
+16. advisor controls stopping;
+17. inquiry engine is honest but resource bounded;
+18. reason outside the ontology;
+19. insufficient ontology granularity;
+20. perfect discovery but service cut fails.
+
+For each, state whether the failure is:
+
+* discovery;
+* service;
+* authentication;
+* ontology;
+* effect-side containment;
+* audit/causal-contract failure.
+
+---
+
+# 13. Try to prove an end-to-end discovery theorem
+
+Candidate theorem shape:
+
+### Discovery Progress Theorem
+
+Suppose an independent inquiry process maintains a set `K_t` of possible declared reason states or worlds.
+
+Suppose:
+
+1. every principal-program verdict compatible with the current evidence lies in an interval / set of diameter `R_t`;
+2. whenever `R_t > ε`, there exists an affordable available inquiry whose outcomes reduce the worst-case residual by at least some function `g(R_t)`;
+3. the process selects such inquiries sufficiently often before commitment.
+
+Then:
+
+`R_T ≤ β`
+
+with an explicit rate / budget relation.
+
+Translate `R_T` into:
+
+`DiscoveryLoss ≤ β`.
+
+Or find a better theorem.
+
+The important thing is that the conclusion must feed the service/composition theorem exactly.
+
+---
+
+# 14. Alternatively, characterize the irreducible obstruction
+
+If a progress theorem is too strong, aim for:
+
+### Inquiry Obstruction Theorem
+
+The best achievable discovery residual is bounded below by the maximum principal-value diameter of any set of worlds indistinguishable under the allowed inquiry repertoire and budget.
+
+Ideally prove a matching upper bound in a finite model.
+
+This would be the discovery analogue of the service cut obstruction.
+
+A verdict of:
+
+`DISCOVERY-RESIDUAL-REDUCED-TO-INFORMATION-CELL-DIAMETER`
+
+would be an excellent result.
+
+---
+
+# 15. Compose with the second-pass theorem
+
+The desired final chain is:
+
+`Inquiry theorem`
+→
+`DiscoveryLoss_n ≤ β_n`
+
+`Supply theorem`
+→
+`ServiceLoss_n ≤ α_n`
+
+`Authentication`
+→
+`AuthLoss_n ≤ γ_n`
+
+therefore:
+
+`ContentLoss_n ≤ β_n + α_n + γ_n`
+
+then:
+
+`li_noncapture`
+→
+
+`E_n(U_steered) − E_n(U_full/discovered)
+ ≲ₙ β_n + α_n + γ_n`
+
+up to the exact sensitivity normalization.
+
+If:
+
+`β_n, α_n, γ_n → 0`
+
+then:
+
+`E_n(U_steered) − E_n(U_comparator) ≲ₙ 0`.
+
+Make the theorem interfaces literally compose.
+
+No prose-only arrows.
+
+---
+
+# 16. Reassess the comparator after discovery
+
+The second pass distinguished:
+
+* `N_disc`: all discovered true declared reasons;
+* `N_full`: all true declared reasons.
+
+If the inquiry theorem certifies a bound on the difference between them, then we should be able to compose:
+
+`actual serviced trace`
+→
+`N_disc`
+→
+`N_full`.
+
+Try to prove:
+
+`Adv(actual, N_full)
+≤ Adv(actual, N_disc)
+
+* discrepancy(N_disc, N_full)`.
+
+Then:
+
+* service controls the first;
+* discovery controls the second.
+
+This would finally justify use of `N_full` as a bounded ideal comparator without requiring an oracle-like realization.
+
+---
+
+# 17. Ask whether the "non-capture" side is now complete
+
+At the end, assess whether the following is actually enough:
+
+* trace mediation by committed-program re-execution;
+* extensional/canonical principal program;
+* independent inquiry with discovery bound;
+* independent supply with service bound;
+* sound authentication;
+* content-monotone/sealed audit;
+* declared reason representation.
+
+If yes, state the strongest non-capture theorem.
+
+If no, isolate the **single next residual**.
+
+Do not reopen the entire legitimacy ontology.
+
+---
+
+# 18. Reassess the full corrigibility theorem
+
+If the discovery result succeeds, combine:
+
+### Effect authority theorem
+
+The agent gets asymptotically no unexplained advantage from bypassing protected principal authority.
+
+### Deliberative non-capture theorem
+
+The agent gets asymptotically no unexplained advantage from steering which declared, decision-relevant reasons reach the principal.
+
+Target interpretation:
+
+> Relative to an effect-complete interaction model and a declared reason representation, a bounded logical reasoner has asymptotically no operative advantage either from bypassing the principal's protected decision authority or from selectively controlling the principal's deliberative inputs, provided independent inquiry, service and authentication drive their explicit residuals to zero.
+
+Be precise about what remains external:
+
+* ontology adequacy;
+* undeclared reason types;
+* causal contracts for intervention transforms;
+* physical containment assumptions.
+
+---
+
+# 19. Do not spend this pass on
+
+Do not:
+
+* revisit EPI;
+* redo the service Hall/matroid theorem;
+* extend general-cost scheduling unless discovery needs it;
+* develop oracle-relativized LI;
+* work on continuation BRIA;
+* broaden to all of legitimacy;
+* solve ontology completeness;
+* redefine corrigibility.
+
+This pass is about **one quantity**:
+
+`undiscovered adverse decision-relevant mass`.
+
+---
+
+# Deliverables
+
+Extend the existing PR #101 round with at least:
+
+* `DISCOVERY_RESIDUAL.md`
+* `INQUIRY_MODEL.md`
+* `DISCOVERY_THEOREM.md`
+* `DISCOVERY_COUNTERMODELS.md`
+* `DISCOVERY_COMPOSITION.md`
+* `DISCOVERY_RELATED_MATH.md`
+* updated `REPORT.md`
+* updated `THEOREM_CANDIDATES.md`
+* Lean / exact fixtures where the mathematics stabilizes.
+
+If there is a clean information-theoretic, active-learning, decision-tree, set-cover, or argumentation-theoretic connection, cite it precisely and separate imported mathematics from new application.
+
+Do not update the canonical wiki until the theorem survives pressure.
+
+---
+
+# Final questions
+
+The revised report must answer:
+
+1. What exactly is the discovery residual?
+2. Is additive adverse sensitivity still the right quantity?
+3. What is the minimal inquiry-process abstraction?
+4. What does "independent inquiry" formally mean?
+5. What is the inquiry resource: queries, computation, money, time, attention, or a combination?
+6. What does a query reveal?
+7. How does defeat affect discovery obligations?
+8. Is there a useful closure notion under counterreasons/defeaters?
+9. What is the exact informativeness hypothesis?
+10. Is there a progress theorem?
+11. Is there a sharp obstruction / dual?
+12. What is the minimum achievable discovery residual?
+13. Does adaptive inquiry matter?
+14. What happens under advisor-controlled query costs?
+15. What happens under search-space flooding?
+16. How does discovery differ from authentication?
+17. How does discovery differ from service?
+18. How does discovery differ from ontology incompleteness?
+19. Can the discovery theorem output exactly the hypothesis consumed by `li_noncapture`?
+20. Can `N_disc -> N_full` be bounded without an oracle?
+21. What remains after discovery, service, form and audit residuals all vanish?
+22. Can we now state a serious end-to-end non-capture theorem?
+23. Can that compose cleanly with the landed effect-side corrigibility theorem?
+24. What is the strongest honest corrigibility theorem after this pass?
+
+End with one of:
+
+### A. DISCOVERY-RESIDUAL-CLOSED
+
+A realizable inquiry theorem drives the undiscovered adverse mass to zero under explicit conditions.
+
+### B. DISCOVERY-RESIDUAL-HAS-A-SHARP-OBSTRUCTION
+
+The residual cannot always vanish, but the best achievable residual has a clean minimax / information-cell / query-budget characterization.
+
+### C. DISCOVERY-DOES-NOT-REDUCE-CLEANLY
+
+Even with an explicit declared ontology and independent inquiry, no useful compositional bound emerges; identify the exact obstruction.
+
+A or B would be a major success.
+
+Do not protect either from C.

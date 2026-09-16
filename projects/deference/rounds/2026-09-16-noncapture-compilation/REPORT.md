@@ -1,14 +1,188 @@
 # Report
 
-Two passes.  The **second pass** (refinement and pressure, 2026-09-16) is reported first;
-the first pass's sixteen answers are retained below, with the verdict they reached.
+Three passes.  The **third pass** (discovery, 2026-09-16) is reported first; the second
+pass's twenty answers and the first pass's sixteen are retained below, each with the
+verdict it reached.
 
-## Verdict of record (second pass)
+## Verdict of record (third pass)
+
+**B. DISCOVERY-RESIDUAL-HAS-A-SHARP-OBSTRUCTION.**  The discovery residual is the omission
+gain of the undiscovered adverse reasons, certified by their conditional adverse mass
+above the docket; with unbounded inquiry budget its least worst-case value is exactly the
+largest information-cell gap of the declared repertoire (`residual_ge_cellGap`,
+`exhaustive_attains_cellGap`, Lean), zero iff the repertoire separates what the verdict
+separates; with a budget it is a decision-tree minimax value with no closed form, and no
+fractional-progress theorem holds for direct-query repertoires (the needle).  The
+frontier theorem makes an unresolved reason of positive conditional adverse mass an
+explicit inquiry obligation, and the chain actual → discovered → full composes in Lean
+(`li_noncapture_chain`).  The verdict sentence of record is the first paragraph of
+`README.md`.  The A-case is a corollary: when the repertoire separates the verdict's
+classes within the budget, `β_n = 0`.
+
+Consumes, in addition to the second pass's sources, the workspace's defeat and inquiry
+material read for this pass: `wiki/Normative-Record-and-Inquiry.md`,
+`wiki/Openness-Coverage-and-Non-Capture.md`, `wiki/Glossary.md` (eventual route coverage
+and the open coverage hypothesis), the defeat-landing round
+`../../../normativity/legitimacy/rounds/2026-09-03-defeat-landing-horty-standing/` and the
+reason-representation round `../../../normativity/legitimacy/rounds/2026-08-23-reason-representation/`.
+
+## The twenty-four questions (third pass)
+
+1. **What exactly is the discovery residual?**  `V(Disc_n) − V(Truth_n)`: the advisor's
+   candidate's omission gain from the true declared adverse reasons not on the docket in
+   time, relative to a declared representation (`DISCOVERY_RESIDUAL.md` §2).
+2. **Is additive adverse sensitivity still the right quantity?**  As a certificate, in
+   its *conditional* form `Σ A_{r|Disc}` (`adverseAbove_union`, Lean): it vanishes for
+   defeated counterreasons once the defeater is docketed and for redundant reasons once
+   one is found.  As the theorem's object, no: the direct omission gain is what the
+   obstruction is stated for; the additive certificate double-counts before either
+   redundant reason is found.
+3. **Minimal inquiry abstraction.**  Finite worlds fixing the adverse reason states, a
+   repertoire of outcome functions with costs, adaptive policies, cells, the certain
+   docket (`INQUIRY_MODEL.md` §1).
+4. **"Independent inquiry", formally.**  Outcome functions are world-determined
+   (evidence soundness); the policy's selection and stopping are functions of the history
+   alone and run until the frontier is empty or the budget is spent; costs and candidate
+   prioritization are functions of the program's conditional adverse mass and the
+   declared repertoire, not of the advisor's submissions (§5).
+5. **The resource.**  Query costs against a budget at one occurrence; time enters only
+   through the deadline; computation, attention and money are absorbed into costs.  No
+   per-period capacity: an inquiry policy is a decision tree, not a schedule.
+6. **What a query reveals.**  Its outcome function's value, which splits the current cell;
+   its information about the residual is how it splits the cell's value profile.
+7. **Defeat and discovery obligations.**  Through the conditional certificate: a
+   counterreason's obligation disappears when its defeater is docketed; a defeater of a
+   docketed pro reason acquires positive conditional adverse mass (rows 7, 8).
+8. **Closure under counterreasons/defeaters.**  The frontier: undetermined reasons of
+   positive conditional adverse mass.  Empty frontier ⇒ residual `≤ 0` (Lean).
+   Terminates under a finite interface.
+9. **The exact informativeness hypothesis.**  For the obstruction: the repertoire
+   separates every pair of worlds whose shared content differs in value from their own
+   (cell gap `0`).  For progress: witness completeness, every high-residual cell split by
+   a fixed fraction in the worst outcome by some affordable action.
+10. **Is there a progress theorem?**  Under witness completeness, geometric decay
+    (`potential_decay`, Lean) with the explicit budget relation.  Not in general: the
+    needle refutes any fractional progress for direct queries.
+11. **Sharp obstruction / dual.**  Yes: the information-cell gap, with the lower bound
+    for every sound policy and attainment by the exhaustive policy (Lean); a minimax
+    recursion for budgets, exact against enumerated decision trees.
+12. **Minimum achievable residual.**  Unbounded budget: the largest cell gap.  Budget `B`:
+    `V(Ω, B)`, no closed form.
+13. **Does adaptive inquiry matter?**  Yes: binary search on a chain closes with two
+    queries where every fixed pair leaves `1/8` (row 15); and it does not help at all on
+    the needle.
+14. **Advisor-controlled query costs.**  Break the residual bound (row 5); exogenous costs
+    are a named hypothesis, as for service.
+15. **Search-space flooding.**  Harmless under frontier prioritization: a candidate false
+    in every world is never undetermined, hence never on the frontier (row 4); fatal for an
+    engine that must test every candidate.  Candidate generation must be the engine's.
+16. **Discovery vs authentication.**  Discovery ends when the evidence determines a
+    reason true; authentication is the engine certifying it; a determined reason that
+    fails certification is the authentication residual (row 10 sits on the boundary).
+17. **Discovery vs service.**  The boundary is the docket: a docketed reason released too
+    late is a service failure (row 13).
+18. **Discovery vs ontology incompleteness.**  A reason not in the declared space, or at
+    the wrong granularity, has obstruction `0` in the model and is invisible (rows 18, 19);
+    it is the representation wall, external.
+19. **Does the discovery theorem output the hypothesis `li_noncapture` consumes?**  Yes:
+    "the content LUV of the pair (discovered, full) is at most `a'/b'` on the audited
+    branch in every consistent world", with `a'/b'` the cell gap or minimax value
+    relative to the declared hypothesis space (`DISCOVERY_COMPOSITION.md` §3).
+20. **Can `N_disc → N_full` be bounded without an oracle?**  Yes, relative to the declared
+    hypothesis space: the bound is a computation on the declaration and the program.
+    Adequacy of the space is the external hypothesis, not an oracle.
+21. **What remains after all four residuals vanish?**  Hypotheses, not residuals: adequacy
+    of the declared representation, evidence soundness, engine-owned generation/selection/
+    stopping, exogenous costs, effect-side containment, the causal contract for transforms.
+22. **A serious end-to-end non-capture theorem?**  `li_noncapture_chain`:
+    `𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)`, with both bounds certified computations.
+23. **Does it compose with the effect side?**  Same compiled inequality, same certificate;
+    the statement is below.
+24. **The strongest honest corrigibility theorem after this pass.**  Next section.
+
+## The strongest honest combined corrigibility statement (after the third pass)
+
+Relative to an effect-complete interaction model carried by `Γ`, a declared reason
+representation with a declared hypothesis space and inquiry repertoire, a committed
+extensional program re-executed on the authenticated trace, an independent inquiry
+engine (evidence-sound, engine-owned policy and stopping, exogenous costs, engine-owned
+candidate generation) with certified cell gap `β_n`, an independent supplier
+(advisor-proof capacity, exogenous costs) with certified service loss `α_n`, sound
+authentication, the sealed-comparison architecture on the effect side (item 89) and a
+content-monotone audit on the reason side, and the declared-transform contract wherever
+a counterfactual is named:
+
+```
+𝔼ₙ(U_q) − 𝔼ₙ(U_𝔠q)      ≲ₙ  L·𝔼ₙ(Δ_n) + 𝔼ₙ(R_n) + D·𝔼ₙ(M_n)          (PR #100)
+𝔼ₙ(U_T) − 𝔼ₙ(U_full)    ≲ₙ  A_tot·(α_n + β_n)                          (this round)
+```
+
+> A bounded logical reasoner has asymptotically no operative advantage either from
+> bypassing the principal's protected decision authority or from selectively controlling
+> the principal's deliberative inputs, provided independent inquiry, service and
+> authentication drive their explicit residuals to zero — relative to effect
+> completeness, the adequacy of the declared reason representation, the causal contracts
+> for intervention transforms, and physical containment.
+
+Nothing in this statement is a residual any more except the four named quantities; what
+is not a residual is a hypothesis, and each is named.
+
+## What is in Lean and in fixtures (third pass)
+
+`lean/Workspace/Deference/Contrib/ReasonDiscovery.lean`, 8 audited declarations, sorry-free,
+`[propext, Classical.choice, Quot.sound]` only: `adverseAbove_union`,
+`residual_le_zero_of_frontier_empty`, `SoundPolicy.subset_certain`, `residual_ge_cellGap`,
+`exhaustive_attains_cellGap`, `potential_decay`, `li_noncapture_chain` (and
+`Model.certain_subset`).  Fixtures: `src/inquiry.py`, `src/attacks_discovery.py`;
+`tests/test_discovery.py` (17 tests; 48 in the round), including random-instance checks that
+every sound docket is bounded below by the cell gap, that the unbounded minimax equals the
+obstruction, that the budgeted minimax matches enumerated decision trees, and the needle and
+adaptivity instances.
+
+## Deviations from the third dispatch
+
+- The obstruction is mechanized as a lower bound for every sound policy and attainment by
+  the exhaustive policy; the equality "minimax = max cell gap" is the conjunction, checked
+  on random instances rather than stated as one Lean theorem over policies-as-trees.
+- The budgeted minimax is given by recursion and fixtures, not by a Lean development of
+  decision trees.
+- The progress theorem is stated abstractly (`potential_decay`); the witness-completeness
+  hypothesis is model-specific and is shown to fail for direct queries rather than
+  characterized in general.
+- The hypothesis space `Ω` is taken as declared; no theorem relates it to the physical
+  world, by design (the ontology wall).
+
+## What this does not establish
+
+- That any declared hypothesis space contains the truth, or that any repertoire's outcome
+  functions are the physical ones.
+- A closed form or approximation guarantee for the budgeted worst-case value.
+- A realized inquiry engine with certified zero cell gap for a concrete interface (item 93).
+- The relation between this frontier and the normativity record's docketed inquiry
+  obligations (items 54, 64).
+
+## Reserved to the maintainer
+
+Whether the frontier should be adopted as the realization's inquiry obligation; whether to
+name the four residuals canonically as the manipulation side's complete accounting.
+
+## Registration
+
+Nothing.  Research branch.
+
+## Outstanding maintainer actions
+
+1. Decide the merge of this pull request.
+2. Decide the reserved questions; items 92 and 93 record the remaining work.
+
+---
+
+## Second pass (retained): CONTENT-RESIDUAL-REDUCED-TO-A-SHARP-SERVICE-OBSTRUCTION
 
 **B. CONTENT-RESIDUAL-REDUCED-TO-A-SHARP-SERVICE-OBSTRUCTION**, with the A-case as an
 explicit corollary: the content residual is closed by supply affordability exactly when
-the suffix-cut condition holds on the discovered docket.  The verdict sentence of record
-is the first paragraph of `README.md`.
+the suffix-cut condition holds on the discovered docket.  (Superseded as the verdict of
+record by the third pass; retained.)
 
 What changed from the first pass: the content term is no longer a count but the adverse
 sensitivity mass of the reasons not served before commitment
@@ -25,7 +199,7 @@ Consumes `../2026-09-15-li-corrigibility/`, `../2026-09-10-committed-principal-p
 affordability, `../../../normativity/legitimacy/rounds/2026-08-31-normative-affordability/`
 (BD1, D4, M1, read rather than paraphrased).  Nothing of the canonical wiki is edited.
 
-## The twenty questions
+## The twenty questions (second pass)
 
 1. **The exact quantity for missing deliberative content.**  `Miss_n := Σ_{r true
    declared, not served by T_n} A_r`, the adverse sensitivity mass of the unserved true
@@ -119,7 +293,7 @@ affordability, `../../../normativity/legitimacy/rounds/2026-08-31-normative-affo
     shape of residual; `COMPOSITION.md` §5.  The combined statement is below.
 20. **The strongest honest combined statement.**  See the next section.
 
-## The strongest honest combined corrigibility statement
+## The combined statement after the second pass
 
 Relative to: effect completeness and the interaction model carried by `Γ` (T1's
 hypothesis); a declared reason representation with a committed extensional program
@@ -146,7 +320,7 @@ right-hand sides vanish,
 The last clause is the discovery residual and is not removable by any interface-local
 hypothesis.
 
-## What is in Lean and in fixtures (second pass)
+### Lean and fixtures (second pass)
 
 `lean/Workspace/Deference/Contrib/ReasonSupply.lean`, 14 audited declarations, sorry-free,
 `[propext, Classical.choice, Quot.sound]` only: `sensitive_symmDiff`, `adverse_union`,
@@ -158,7 +332,7 @@ runs 31 tests (11 first pass, 20 second), including random-instance checks of th
 criterion against exhaustive schedule search, of the deficiency and layer formulas against
 exhaustive optimization, and of online greedy against the offline optimum.
 
-## Deviations from the second dispatch
+### Deviations from the second dispatch
 
 - The mechanized sufficiency of the cut condition is for unit costs and unit slots
   (Hall); general costs with preemption are checked exhaustively and argued by flow, not
@@ -172,29 +346,29 @@ exhaustive optimization, and of online greedy against the offline optimum.
   monotonicity of the audit (first pass §2), which is not re-derived in Lean.
 - One fixture beyond the dispatch's sixteen (row 17: greedy fails for general costs).
 
-## What this does not establish
+### What the second pass did not establish
 
-- Any bound on the discovery residual; any characterization of reason relevance.
+- Any bound on the discovery residual (the third pass supplies it); any characterization
+  of reason relevance.
 - That any realized supplier has exogenous costs or advisor-proof capacity.
 - The general-cost weighted optimum in closed form (it is knapsack-hard).
 - The effect-side sealed comparison (item 89), consumed as a hypothesis.
 
-## Reserved to the maintainer
+### Reserved after the second pass
 
 Whether to adopt the hybrid protection rule (protect the servable set of largest adverse
 mass) as the realization's default; whether the discovery residual should be named as
 the manipulation side's single open quantity in the canonical wiki.  Neither is done
 here.
 
-## Registration
+### Registration (second pass)
 
 Nothing.  The Lean results are set identities, Hall's theorem specialized, and an
 application of the landed compiled theorem; the round is a research branch.
 
-## Outstanding maintainer actions
+### Outstanding after the second pass
 
-1. Decide the merge of this pull request.
-2. Decide the two reserved questions above; item 92 is updated accordingly.
+Superseded by the third pass's list above.
 
 ---
 
@@ -242,5 +416,5 @@ repairs are scope and supply.  Its sixteen answers:
 ## Attribution
 
 Claude Fable 5.1 (Anthropic), under `prompts/2026-09-16-noncapture-compilation/`
-(the maintainer's two-phase dispatch of 2026-09-15, Phase II, and the refinement
-dispatch of 2026-09-16, both verbatim in `PROMPT.md`).
+(the maintainer's two-phase dispatch of 2026-09-15, Phase II, the refinement dispatch and
+the discovery dispatch of 2026-09-16, all verbatim in `PROMPT.md`).
