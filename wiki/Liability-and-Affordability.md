@@ -115,6 +115,16 @@ is one of the three candidate pillars of [Legitimacy](Legitimacy) — though the
 checkpoint argues it is better read as a *side condition* than a conjunct, since a
 cheaper norm is not thereby a more legitimate one.
 
+It also has a downstream consumer on the deference side.  The corrigibility theorem's
+**service residual** — the adverse mass of discovered reasons an independent supplier
+cannot route before commitment — has two resources: a *capacity* resource in release
+windows, where the exact criterion is the suffix-cut condition (Hall on nested
+neighbourhoods) and the least miss is the cut excess, and a *budget* resource, where
+the criterion is this page's sliding-window sum D4 taken over the release window and
+budgets add across reasons (M1).  A supplier is affordable when both hold
+([Corrigibility](Corrigibility) §5; the non-capture round's
+[`AFFORDABILITY_REFINEMENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/AFFORDABILITY_REFINEMENT.md)).
+
 ## What is open
 
 Whether bounded liability is **necessary** for preservation or merely sufficient.

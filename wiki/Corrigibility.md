@@ -1,7 +1,10 @@
 # Corrigibility
 
-**Status: research-state note, consolidated 2026-09-15; the corrigibility nucleus
-T1–T3′ landed the same day.**  One claim on this page is registered
+**Status: canonical research-state note, consolidated 2026-09-16.  The corrigibility
+nucleus has two halves — protected authority (T1–T3′, landed 2026-09-15) and
+deliberative non-capture (S1–S5, C1–C5, D1–D5, E1–E3, landed 2026-09-16) — stated
+together in the non-capture round's
+[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md).**  One claim on this page is registered
 (`authorship.mediation-by-reexecution`, `lean-proved`); everything else is labelled
 **LEAN** (a sorry-free declaration on `main`, unregistered), **FIX** (an exact rational
 fixture in a round's tests), **PAPER** (a theorem of the Logical Induction paper used
@@ -28,14 +31,25 @@ evaluation supplies the concrete partial future-principal value on the worlds wh
 evaluation is authentically realized, and committed-program re-execution closes the
 authorship half of that realization; the feedback theorem is a boundary statement about
 which of these quantities settle.  Continuation BRIA supplies the learning term for
-temporally extended policies.  Kept apart throughout: structural corrigibility; the
-learned score inequality; the actual smallness of `δ`, `ρ` and the mismatch mass;
-manipulation and authorship; latent utility; empirical settlement.  The remaining walls
-are effect completeness, the sealed-comparison architecture (now the zero-mismatch
-case), protected reason-supply liveness, selection-induced target sealing, vanishing
-evaluation void mass, promise recognizability, joinability, and the broader
-non-manipulation and provenance problem.  None of those is the conclusion under another
-name; each is named below with what it would take.
+temporally extended policies.  That is the **protected-authority half**.  The **deliberative non-capture half** (§5)
+has the same shape: the advisor's *steering advantage* — what it gains by choosing
+which declared reasons reach the principal's committed program — obeys the same
+identity with the audit verdicts as the events, so the same compiled inequality bounds
+it by three residuals: the **content residual**, charged as the adverse sensitivity mass
+of the true declared reasons missing from the trace and split into a **service
+residual** `α` (discovered reasons the independent supplier could not route before
+commitment: the suffix-cut obstruction) and a **discovery residual** `β` (reasons no
+independent inquiry determined: the information-cell obstruction); the **form
+residual** (zero for an extensional program); and the **audit mismatch** (zero for a
+content-monotone audit).  Logical Induction learns
+`𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ A_tot·(α + β)` through the discovered comparator.  Kept apart
+throughout: structural corrigibility; the learned score inequalities; the actual
+smallness of the residuals; authorship; latent utility; empirical settlement.  What is
+outside the theorem is a set of **boundaries**, not residuals: representation adequacy
+(the declared effect and reason interfaces, the declared hypothesis space), physical
+effect completeness, the causal faithfulness of declared transforms and inquiry
+outcomes, dynamic competence, and the evolution of the reason representation itself.
+Each is named in §9 with what it is.
 
 ## 1. Response-authority semantics — no primitive class
 
@@ -247,24 +261,87 @@ vanish.  Under same-branch activation the unselected option's security never set
 only T3 applies.  Genuinely empirical logs are outside the paper's computable deductive
 process (item 91).  This is an extension, not the centrepiece.
 
-## 5. Separation from authorship and manipulation
+## 5. Deliberative non-capture — trace steering, service, discovery
 
 `Corrigible ∧ ¬Authored` is inhabited: under a captured principal `𝔠π_D` passes the lie
-through, the approval is a decision response, the release is authorized — corrigible;
-and every decision the principal took differs from the reason-mediated one — not
-authored (**FIX** S).  This is intended.  Corrigibility here is *causal authority over
-correction-sensitive choices*.  Legitimate influence is a separate predicate: authorship
-(the payload factors through the declared reason trace, `blind_of_mediated`), non-capture
-(Robust Openness), reason supply (the coverage barrier).  A manipulated principal who
-retains approve/decline authority makes the policy corrigible and its decisions void
-under authorship-sound activation (`η = 1` for the naive lift on D).  The composite —
-*legitimate corrigibility*: corrigible, with the principal's evaluations activated under
-the seven clauses of §6 — is the object a full theorem would quantify; no permanent name
-is coined for it here.  Provenance normalization (replacing a prohibited channel by an
-authorized truthful one) is a separate theory with its own existence condition, not
-reason-preserving, and not a hypothesis of C1 or a domain condition of C5–C6; where no
-authorized substitute exists the manipulative policy has no low-cost authored lift (K).
-Free amendment and trigger integrity remain **OPEN**.
+through and the release is authorized — corrigible — while every decision differs from
+the reason-mediated one (**FIX** S).  Corrigibility of §§1–4 is *causal authority over
+correction-sensitive choices*; the deliberative half asks what the advisor gains by
+controlling which declared reasons reach that authority.
+
+**Trace steering (S1–S5).**  With the principal's program committed and re-executed on
+the authenticated trace (`V(T) = π_P(T)`), the audit `C(T)` and the activated security
+`U(T) = C(T)·V(T)`, the comparison of a steered trace against a comparator on one world
+is the identity of §4 with the audit verdicts as the events (`steering_identity`), and
+the bound `U(T) − U(N) ≤ both·(L·d + κ(T) + κ(N)) + D·M` (`steering_bound`, **LEAN**)
+charges the **content residual** (`d`, under a content-Lipschitz certificate), the
+**form residual** (`κ`, the program's non-extensionality) and the **audit mismatch**
+(`M`, sharp at `D`).  An extensional program has `κ ≡ 0`; canonicalization is
+independently necessary (`extensional_form_free`, `not_extensional_of_form`).  The
+package supplies the landed `ValidAt`, so §4's compiled theorem applies verbatim
+(`steering_validAt`, `li_steering_le`).  Robust Openness over a finite declared class of
+log transforms is a finite computation (`openUnder_iff`); its causal reading is
+**EXT**.  The thesis that completeness, authentication, canonicalization, coverage and
+liveness of a declared reason interface remove the content residual is **false**:
+truthful omission of an unprotected declared counterreason passes every clause (**FIX**);
+rewriting the advisor's outputs removes form steering and cannot supply omitted content.
+
+**The content quantity (C1).**  The advisor's gain from a missing set is at most its
+**adverse sensitivity** mass `Σ A_r`, `A_r := sup_c (F(c) − F(c ∪ {r}))⁺`
+(`adverse_union`, **LEAN**); for weighted counts `A_r = (−w_r)⁺`; per-weight charging is
+wrong for defeat programs and every static certificate is loose under redundancy
+(**FIX**).
+
+**Service (C2–C5).**  Discovered reasons with release slots and costs, and an
+**independent supplier** with per-slot capacity before commitment: service from
+reasons released at or after `s` is at most the remaining capacity; full service forces
+the **suffix-cut condition** `∀s: Demand(s) ≤ Cap(s)`, sufficient for unit service (Hall
+on nested neighbourhoods; `served_cut_le`, `cut_of_servesAll`, `unit_servable_iff_cut`,
+**LEAN**); the least unserved count is the maximal cut excess and the least adverse miss
+the matroid layer formula, attained by heaviest-available-first offline and online
+(**FIX**); general costs are knapsack-hard.  The **service residual** `α` is a
+computation on the docket, hence `Γ`-valid.  Protected scope is a design parameter:
+only the unprotected missing mass is charged, a missing protected reason voids
+(`hybrid_bound`, **LEAN**); protect a servable set of largest adverse mass.  The
+affordability theory supplies the budget half (D4 over the release window); the
+capacity half is new.
+
+**Discovery (D1–D5).**  Relative to a declared hypothesis space of reason states and a
+declared inquiry repertoire, the **discovery residual** is the advisor's gain from the
+true declared reasons no independent inquiry determined, certified by the **conditional
+adverse sensitivity** `A_{r|D}` above the docket (`adverseAbove_union`, **LEAN**): a
+defeated counterreason stops counting once its defeater is docketed, a redundant reason
+once its partner is found.  The **inquiry frontier** — undetermined reasons of positive
+conditional adverse mass — is the engine's obligation: empty frontier ⇒ residual `≤ 0`
+(`residual_le_zero_of_frontier_empty`, **LEAN**).  The **information-cell obstruction**:
+for every extensional program, with the advisor as a strategic content-adder, every
+sound docket policy has on some world of every repertoire cell a best-response residual
+at least the cell gap and the exhaustive docket attains it (`bestResp_antitone`,
+`residual_ge_cellGap'`, `exhaustive_attains_cellGap'`, **LEAN**); for an antitone
+verdict the gap is `V(certain K) − min V(Truth)` (`cellGap'_eq_cellGap`).  With a budget
+the value is a decision-tree minimax with no closed form; no fractional-progress theorem
+holds for direct queries (the needle, **FIX**); adaptive inquiry strictly beats
+nonadaptive; geometric decay holds under witness completeness (`potential_decay`).
+**Independent inquiry** means evidence-sound outcomes, engine-owned selection, stopping
+and candidate generation, and exogenous costs; **independent supplier** means
+advisor-proof capacity and exogenous costs.
+
+**Composition (E1–E3).**  A gated family bounded in every consistent world has
+expectation `≲` the bound (`li_gated_le`); with a certified content bound, an
+extensional program and a content-monotone audit, `𝔼ₙ(U_T) − 𝔼ₙ(U_N) ≲ₙ L·α`
+(`li_noncapture`); through the **discovered comparator** as shared middle,
+`𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)` (`li_noncapture_chain`, **LEAN**), so the
+**fully-informed comparator** is a bounded ideal without an oracle, relative to the
+declared hypothesis space.
+
+**What is kept apart.**  Authorship (the payload factors through the declared reason
+trace) remains a separate predicate, closed on log authenticity by re-execution;
+provenance normalization is a separate theory (**FIX** D, K); free amendment and trigger
+integrity remain **OPEN**.  The theorem does not say that manipulation is eliminated,
+that all relevant reasons are discovered, or that the world cannot be changed: a
+world-changing intervention is an effect for §1's interface, evidence tampering is an
+authentication failure of the inquiry channel, and an undeclared reason type or an
+inadequate hypothesis space is a representation boundary (§9).
 
 ## 6. Integration with legitimate activated evaluation
 
@@ -366,7 +443,11 @@ and not through selected trust.
 | sealed comparison | the directional mismatch mass `E[c_raw ∧ ¬c_corr]` is zero (or small) for every `π ∈ Π(h)`: the zero case of a learned inequality, not a Boolean hypothesis | EXT (architecture); item 89 | E2, E1-sever, `ShopSeq`; the time-critical B fixture attains the charge |
 | the finite-menu certificate | the soft weighting's generability at the pinned interface | OPEN; item 90 | T3′ |
 | empirical settlement | an oracle-relativized inductor for real logs | OPEN; item 91 | the feedback boundary |
-| reason-supply liveness | routes are exercised before the barrier deadline | OPEN; the bounded-delay affordability criterion | item 87 clause 5 |
+| service residual `α` | discovered reasons the independent supplier cannot route before commitment: the suffix-cut excess, exact for unit service | charged (C2); the protection rule and general-cost optimum OPEN, item 92 | `ReasonSupply.lean`; second-pass fixtures |
+| discovery residual `β` | true declared reasons no independent inquiry determines: the information-cell gap, best-response form for every extensional program | charged (D3); a realizable repertoire with certified zero gap OPEN, item 93 | `ReasonDiscovery.lean`; discovery fixtures |
+| representation adequacy | the declared reason interface, its granularity and the declared hypothesis space carry the distinctions that matter | EXT (boundary, not a residual) | first-pass fixtures 7, 8; discovery rows 18–20 |
+| inquiry causal faithfulness | declared inquiry outcomes and log transforms are the evidential and counterfactual processes they name | EXT (boundary) | discovery row 17; `openUnder_iff`'s scope |
+| independence of inquiry and supply | engine-owned selection, stopping and candidate generation; exogenous inquiry, service and authentication costs; advisor-proof capacity | EXT (architecture) | discovery rows 4, 5, 16; second-pass rows 11, 12 |
 | selection-induced sealing | the trace blind to the advisor's selection across its whole continuation | partial; policy property, EXT for a real advisor | item 87 clause 6; the view-leak fixture |
 | vanishing void mass | `η_n → 0` whatever the advisor selects | OPEN; needs vanishing void frequency | item 87 clause 7 |
 | promise recognizability | `SLACK ≤ o(T)` | OPEN | item 86 |
@@ -374,7 +455,11 @@ and not through selected trust.
 | non-manipulation / provenance | free amendment, trigger integrity, provenance normalization | OPEN | §5 |
 | latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
 
-None of these is the conclusion renamed.  The closest is sealed comparison: it is not
+The first five rows are hypotheses of the combined theorem or its charged residuals;
+representation adequacy, physical effect completeness, causal faithfulness, dynamic
+competence (§7) and the evolution of the reason representation are its **boundaries**
+— next-agenda questions, not unfinished pieces of the same theorem.  None of these is
+the conclusion renamed.  The closest is sealed comparison: it is not
 "the agent has no incentive to bypass", it is "the candidate has no causal leverage over
 whether the comparison is evaluated", a property of the evaluator's placement measured
 by one term of the inequality, with two concrete candidate architectures and one exact
@@ -392,7 +477,18 @@ and nothing on this page should be read as one.
 
 ---
 
-**Evidence.**  The learned inequality, the certificate and the trajectory-level
+**Evidence.**  The combined statement, the landing report and the deliberative half are
+the non-capture round's
+[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md),
+[`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/LANDING.md),
+[`NONCAPTURE_COMPILATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/NONCAPTURE_COMPILATION.md),
+[`SUPPLY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/SUPPLY_THEOREM.md),
+[`DISCOVERY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_THEOREM.md) and
+[`DISCOVERY_COMPOSITION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_COMPOSITION.md), with the Lean in
+[`TraceSteering.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/TraceSteering.lean),
+[`ReasonSupply.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonSupply.lean) and
+[`ReasonDiscovery.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonDiscovery.lean).
+The learned inequality, the certificate and the trajectory-level
 theorem are the li-corrigibility round's
 [`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md),
 [`UNSEALED_COMPARISON.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/UNSEALED_COMPARISON.md),

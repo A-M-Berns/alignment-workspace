@@ -325,6 +325,19 @@ Guillory–Bilmes is useful where worst-case compatible responses are preferable
 to a prior. It still describes a scheduler class, not the authority by which a
 service objective enters the record.
 
+The corrigibility line now supplies a concrete downstream consumer for docketed
+inquiry.  Relative to a committed principal program, the inquiry obligation at any
+time is the **inquiry frontier**: the declared reasons still undetermined by the
+evidence whose conditional adverse sensitivity above the docket is positive; an empty
+frontier forces the discovery residual to zero, and the least worst-case residual any
+inquiry policy achieves is the information-cell gap of the declared repertoire
+([Corrigibility](Corrigibility) §5; the non-capture round's
+[`DISCOVERY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_THEOREM.md)).  Whether that frontier and
+the record's `Do(investigate …)` obligations are one object, and which repertoires are
+witness-complete so that inquiry makes geometric progress, is `PRIORITIES.md` item 93;
+the defeater-uptake and inquiry-interface questions (items 54, 64) are the record-side
+halves of the same interface.
+
 ## External evaluation and counterfactual legitimacy
 
 An external evaluator may state which demands deserved confrontation from a

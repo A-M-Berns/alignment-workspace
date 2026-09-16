@@ -103,6 +103,15 @@ here, a bridge — a represented protected concern is in the evaluation's reason
 trace — and a barrier — a certified evaluation has no live protected concern at
 commitment — and from those two derives that certification implies coverage; that
 routes are exercised in time is neither Robust Openness nor any theorem of this page.
+On the deference side that exercise now has its own theorems: whether the discovered
+reasons are *routed* before commitment is the suffix-cut service obstruction, and
+whether the true reasons are *determined* at all is the information-cell discovery
+obstruction ([Corrigibility](Corrigibility) §5; the non-capture round's
+[`SUPPLY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/SUPPLY_THEOREM.md) and
+[`DISCOVERY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_THEOREM.md)).  Robust Openness over a
+finite declared class of log transforms is itself a finite computation once the
+principal's program is committed (`openUnder_iff`); what stays external is that the
+declared transforms are the interventions they name.
 
 ## Self-sealing
 
