@@ -84,7 +84,49 @@ commit.
   exhibit candidates and cannot say they are enough, which is the judgment
   *Where ingenuity is the bottleneck* exists to hold.
 
+- **Whether a re-selection of a warrant strength is a past-self charge.**  The
+  seed-statics round shows strength selection among candidate bounds is order-dependent
+  and that only reopening under a canonical joint rule removes the dependence
+  (`STABILIZATION.md` §4 of `projects/normativity/seed/rounds/2026-09-16-seed-statics/`).
+  A reopened selection is a charge against the reasoner's own earlier selection; under
+  the 2026-08-08 burn ruling as the dispatch states it, a mechanically filed one burns,
+  and the hysteresis then stands unless an external challenger files.  The round's
+  recommendation is a narrow exception — a strength selection is recomputed state, not a
+  commitment — and it does not amend the ruling.
+  *Turns on:* taste about what a selection *is*.  If it is a commitment the past self
+  made, the burn ruling protects the record from mechanical self-relitigation and the
+  legal reading (binding precedent, item 93) is the intended one; if it is recomputed
+  state, the exception is right and precedent needs its own lock.  The round cannot
+  choose between them.
+
 ## Settled
+
+### 2026-09-16 — humility is read three ways, and seed-independence takes the strict reading
+
+**agent-decided, reversible.**  The seed-statics round keeps three predicates apart:
+*item-level humility* (every substantive strength in `(0,1)`, the dispatch's reading),
+*level neutrality* (the structural layer alone bounds no coordinate away from `[0,1]`,
+the checkable half of non-dogmatism), and *strict humility* (a substantive endorsement is
+the open halfspace `μ(g) > 0`).  Seed-independence on the point-forced fragment is false
+under the first — two strengths of one half pin a coordinate (`c3_refuted`) — and proved
+under the third (`seed_independence_strict`), so the round states C3′ with strictness as
+its hypothesis and records that a humble seed narrows or breaks and never pins.
+*Rejected alternative:* bundle-level non-pinning as the humility hypothesis ("the
+substantive layer pins nothing the closed layer does not") — it restates the conclusion.
+
+### 2026-09-16 — the landed defeat calculus is read as a trace discipline; grounded conformance is a hypothesis on a trace
+
+**agent-decided, reversible.**  `DefeatTrace` admits a disposal whose grounds are
+*available* (born earlier or settled), whether or not they are themselves undercut; it
+computes no extension, and under exhaustive exchange the live warrant set is a function
+of the trace.  The round therefore does not prove C2 against a grounded notion, defines
+the grounded extension of the attack graph on top (least fixed point, unique on finite
+graphs, computed in the fixture), and states seed-independence for traces that conform
+to it as a hypothesis.
+*Rejected alternative:* reading D1's availability as vindication (a ground undercut on
+the record is unavailable) — it would import a semantics the landed calculus does not
+have and would make admissibility depend on the attack structure, which Finding 4 of
+the Horty check says the calculus deliberately does not.
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
 

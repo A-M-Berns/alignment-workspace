@@ -468,7 +468,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 700 names, 531 of them Lean only
+## normativity — 762 names, 577 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -522,7 +522,7 @@ change, and the count of those is the size of the free choice remaining.
 | `firmTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.firmTrader` |
 | `history` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.AssessmentFirm.history` |
 | `quote` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentFirm.quote` |
-| `states` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.AssessmentFirm.states` |
+| `states` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.AssessmentFirm.states` |
 | `tradingFirmTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.tradingFirmTrader` |
 | `Assessment` | structure | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentProcess.Assessment` |
 | `BudgeterAt` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentProcess.BudgeterAt` |
@@ -600,7 +600,7 @@ change, and the count of those is the size of the free choice remaining.
 | `realizedAggregate` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedAggregate` |
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedEnforcer` |
 | `realizedFirm` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedFirm` |
-| `states` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.states` |
+| `states` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.DeductiveEnforcement.states` |
 | `witnessEnforcer` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.witnessEnforcer` |
 | `witnessPres` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.witnessPres` |
 | `witnessProcess` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.witnessProcess` |
@@ -690,7 +690,7 @@ change, and the count of those is the size of the free choice remaining.
 | `realizedAggregate` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedAggregate` |
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedEnforcer` |
 | `realizedFirm` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedFirm` |
-| `states` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.EnforcementPreservation.states` |
+| `states` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.EnforcementPreservation.states` |
 | `Presentation` | structure | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.Presentation` |
 | `Row` | structure | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.Row` |
 | `coefficientFeature` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.coefficientFeature` |
@@ -717,7 +717,7 @@ change, and the count of those is the size of the free choice remaining.
 | `elim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.elim` |
 | `elimStep` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.elimStep` |
 | `eval` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.eval` |
-| `feasible` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.feasible` |
+| `feasible` | def | unrecorded | prose | `Workspace.Normativity.Contrib.FourierMotzkin.feasible` |
 | `lastCoeff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.lastCoeff` |
 | `of` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.of` |
 | `strict` | abbrev | unrecorded | note | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.strict` |
@@ -861,7 +861,7 @@ change, and the count of those is the size of the free choice remaining.
 | `nonvacuityS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.nonvacuityS` |
 | `offAdequateS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.offAdequateS` |
 | `replacedS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.replacedS` |
-| `st` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.st` |
+| `st` | def | unrecorded | prose | `Workspace.Normativity.Contrib.NonCapture.Witness.st` |
 | `AQ` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.AQ` |
 | `AnchorStanding` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.AnchorStanding` |
 | `Answerable` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.Answerable` |
@@ -1168,6 +1168,68 @@ change, and the count of those is the size of the free choice remaining.
 | `proj` | def | unrecorded | wiki | `RationalPolytope.proj` |
 | `toPt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RationalPolytope.toPt` |
 | `vertexSet` | def | unrecorded | Lean only | `RationalPolytope.vertexSet` |
+| `BoundCert` | structure | 2026-09-16-seed-statics | prose | `Workspace.Normativity.Contrib.SeedStatics.BoundCert` |
+| `BoundCert.value` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.BoundCert.value` |
+| `Cite` | inductive | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Cite` |
+| `Constitutive` | structure | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Constitutive` |
+| `DocketState` | structure | 2026-09-16-seed-statics | prose | `Workspace.Normativity.Contrib.SeedStatics.DocketState` |
+| `DocketState.quiet` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.DocketState.quiet` |
+| `Form` | inductive | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Form` |
+| `IsForcedInterval` | structure | 2026-09-16-seed-statics | prose | `Workspace.Normativity.Contrib.SeedStatics.IsForcedInterval` |
+| `LowerBound` | def | 2026-09-16-seed-statics | prose | `Workspace.Normativity.Contrib.SeedStatics.LowerBound` |
+| `MinimalInfeasible` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.MinimalInfeasible` |
+| `NonStrict` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.NonStrict` |
+| `Pinned` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.Pinned` |
+| `Pins` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Pins` |
+| `Refuted` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Refuted` |
+| `Seed` | structure | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed` |
+| `Seed.Humble` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.Humble` |
+| `Seed.HumbleItems` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.HumbleItems` |
+| `Seed.LevelNeutral` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.LevelNeutral` |
+| `Seed.liveStr` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.liveStr` |
+| `Seed.liveSub` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.liveSub` |
+| `Seed.merge` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.merge` |
+| `Seed.structural` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.structural` |
+| `Settlement` | structure | 2026-09-16-seed-statics | prose | `Workspace.Normativity.Contrib.SeedStatics.Settlement` |
+| `Settlement.PinnedR` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.PinnedR` |
+| `StrItem` | structure | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.StrItem` |
+| `StrKind` | inductive | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.StrKind` |
+| `StrictSatR` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.StrictSatR` |
+| `SubItem` | structure | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.SubItem` |
+| `SureLoss` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.SureLoss` |
+| `UpperBound` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.UpperBound` |
+| `c` | def | 2026-09-16-seed-statics | wiki, note, prose | `Workspace.Normativity.Contrib.SeedStatics.Form.c` |
+| `c0` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.c0` |
+| `cubeRows` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.cubeRows` |
+| `disguisedSeed` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.disguisedSeed` |
+| `empty` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.empty` |
+| `emptySeed` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.emptySeed` |
+| `forcedBundle` | def | 2026-09-16-seed-statics | prose | `Workspace.Normativity.Contrib.SeedStatics.forcedBundle` |
+| `forcedInterval` | def | 2026-09-16-seed-statics | prose | `Workspace.Normativity.Contrib.SeedStatics.forcedInterval` |
+| `forcedRegion` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.forcedRegion` |
+| `forcedRegionR` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.forcedRegionR` |
+| `hi1` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.hi1` |
+| `le` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.le` |
+| `leverage` | def | 2026-09-16-seed-statics | wiki | `Workspace.Normativity.Contrib.SeedStatics.leverage` |
+| `lo1` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.lo1` |
+| `lowerList` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.lowerList` |
+| `negCoherence` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.negCoherence` |
+| `of` | class | 2026-09-16-seed-statics | wiki, note, prose | `Workspace.Normativity.Contrib.SeedStatics.of` |
+| `pinCited` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.pinCited` |
+| `pinRows` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.pinRows` |
+| `pinRowsAt` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.pinRowsAt` |
+| `pos` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.pos` |
+| `project` | def | 2026-09-16-seed-statics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.project` |
+| `row` | def | 2026-09-16-seed-statics | wiki, note, prose | `Workspace.Normativity.Contrib.SeedStatics.Form.row` |
+| `sandwichSeed` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.sandwichSeed` |
+| `settledTerm` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.settledTerm` |
+| `specialize` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.specialize` |
+| `system` | def | 2026-09-16-seed-statics | wiki | `Workspace.Normativity.Contrib.SeedStatics.system` |
+| `toLinCon` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.toLinCon` |
+| `transport` | def | 2026-09-16-seed-statics | wiki | `Workspace.Normativity.Contrib.SeedStatics.transport` |
+| `truth` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.truth` |
+| `upperList` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.upperList` |
+| `widenSeed` | def | 2026-09-16-seed-statics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.widenSeed` |
 | `deficit` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.deficit` |
 | `pair` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.pair` |
 | `position` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.position` |

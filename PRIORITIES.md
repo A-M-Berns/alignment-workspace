@@ -2201,6 +2201,8 @@ soundness and completeness theorems with a nonvacuity witness and a requirement
 outside the class that no row realizes.
 *Acceptance check:* the module audits clean and `python3 tests/run.py` is green.
 
+*2026-09-16, seed-statics round:* the class is supplied — finitely many rational-coefficient endorsements over a fragment, into which a seed's three layers and a settlement compile (`SeedStatics.forcedBundle`) — and completeness of forced intervals is computed and proved on the existing elimination (`forcedInterval_spec`).  What remains is the map from `Protocol.Evidence` types to rows and the duality half of certificate completeness (item 94); joint feasibility and affordability are untouched.  Not closed.
+
 *Context:* `CONSOLIDATION.md` §9.1 of the mathematical-consolidation round;
 `NORMATIVE_INDUCTOR_REALIZATION.md` §4 of the realization round for the five
 properties.
@@ -2720,6 +2722,55 @@ securities are; item 90 for the certificate side.
 for empirical logs.
 *A solution ships:* the relativized theorem, or the negative with its witness.
 
+### 93. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The seed-statics round (`projects/normativity/seed/rounds/2026-09-16-seed-statics/`)
+shows that strength selection among candidate bounds is order-dependent — the same seed
+and warrant set end in the disjoint forced intervals `[9/10, 19/20]` and `[3/10, 1/2]`
+under the two arrival orders — and that reopening a selection against the whole docket
+does not remove it, because both outcomes are maximal joint selections; only reopening
+under a fixed canonical rule on joint selections does.  The legal fixture wants the
+opposite: *stare decisis* is a selection that must not be reopened, and the docket state
+has no object for a sealed selection.  Define the canonical joint rule; define a lock the
+docket state can carry; state when a locked selection is a past-self charge (the
+2026-08-08 burn ruling, as the dispatch states it) and when it is recomputed state.
+
+*Deliverable shape:* the rule and the lock as definitions on `DocketState`, an
+order-independence theorem for the rule, and the two fixtures (moral: no lock; legal:
+locked precedent) run through one model.
+*Acceptance check:* `python3 tests/run.py` green; the Lean audits clean.
+
+*Context:* `STABILIZATION.md` §4 and `FIXTURES.md` §4 of the round; the queued
+*Awaiting the author* entry on re-selection and the burn ruling.
+*Consumed by:* any dynamics claim of the form "start from `S`, end in `L`"; the legal
+reading of the seed type.
+*A solution ships:* the rule, the lock, the theorem, and the fixtures.
+
+### 94. Rational attainment and certificate completeness for the computed forced interval — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+`SeedStatics.forcedInterval_spec` proves the computed endpoints valid and attained at
+*real* points, because `FourierMotzkin` states satisfaction over `ℝ`; attainment at a
+rational point — the fact that a rational system feasible over `ℝ` is feasible over `ℚ`
+— is not in the repository, so the rational predicate `IsForcedInterval` is not
+inhabited by the computed pair.  Separately, `BoundCert.sound` gives soundness of
+endpoint certificates and nothing gives tightness (LP duality).  Either transfer the
+elimination's completeness direction to `ℚ` or give the vertex argument, and prove that
+every valid bound is certified.  This is the duality half of item 79's completeness.
+
+*Deliverable shape:* `IsForcedInterval S W st F φ lo hi` inhabited by
+`forcedInterval`, and `∀ c, LowerBound … c → ∃ cert, −cert.value ≥ c` (or the
+statement that fails, with its witness).
+*Acceptance check:* the Lean audits clean.
+
+*Context:* `STATICS.md` §§2, 5 of the seed-statics round; `FourierMotzkin.lean`'s
+header on why satisfaction lives in `ℝ`.
+*Consumed by:* item 79; any registration of `forcedInterval_spec`.
+*A solution ships:* the two theorems.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
@@ -2889,6 +2940,19 @@ is exactly the shape that slips through — it was caught here only because a ci
 happened to point at one. A gate comparing `state/rounds.json` against what the default
 branch actually contains would have caught it directly; whether that is worth building
 is a maintainer call and is not filed as an item.
+
+### F9 — Rulings the program relies on have no dated entry
+
+<!-- workspace-priority: project=none; dispatchable=no -->
+
+The seed-statics dispatch cites three rulings by date — 2026-08-08 (1), mechanically
+filed past-self charges burn; 2026-08-08 (6), the seam ordering "reasons constraining →
+revising reasons → both"; 2026-08-09, warrant strength is learnable by selection among
+nearby live candidate bounds — and none has a dated entry in `DECISIONS.md` or any text
+in the repository that a search for its content finds.  A round that must reason against
+a ruling it cannot cite reasons against the dispatch's paraphrase and says so (standard
+7), which is what the seed-statics round did.  The fix is the maintainer's: land the
+three as dated entries, or record where they live.  Not taken by the round that hit it.
 
 ### 28. Can any valuation price a jurisdiction assignment? — **[open]** — *answered in Lean, unregistered*
 <!-- workspace-priority: project=deference; dispatchable=yes -->
