@@ -101,6 +101,35 @@ commit.
 
 ## Settled
 
+### 2026-09-17 — convergence between normative reasoners is a profile on a declared fragment, and discord is removed by defeat or refutation, never by sharing
+
+**agent-decided, reversible.**  The convergence-measure round takes the program's
+position that convergence is the profile `(Hull, Ovl, Disc)` on a declared fragment
+with declared positive weights, ordered by the product order on hull and discord with
+overlap diagnostic, read against the closed layer's reference profile.  Two readings
+were forced by the mathematics: every nesting — settlement, shared narrowing, private
+narrowing — lowers hull mass and preserves discord (`discord_persists`), so a private
+discovery becomes discord that sharing cannot dissolve (sharing either leaves it or
+refutes the receiver), and discord leaves only by defeat or by a reasoner giving up an
+item the certificate names; and the profile is measured on the declared fragment pulled
+back through the transport rule, not on a refined fragment, because splitting a
+coordinate hides its discord.
+*Rejected alternatives:* the dispatch's "discord dissolved by sharing" (false on every
+fixture); overlap as a target (it rewards ignorance, `overlapMass_anti`); inherited
+weights on refined coordinates (hides discord).
+
+### 2026-09-17 — exhaustive sharing is read as equal live sets, and H3's limit is one-directional
+
+**agent-decided, reversible.**  H3 is stated under the condition that the reasoners'
+live substantive-and-warrant row sets eventually coincide, not under "every private
+warrant is eventually shared", because the latter does not equalize live sets on
+trace-constitutive dockets (defeats are per trace).  Its limit is stated as the set of
+declared sentences with empty common interval, each certified, with merged infeasibility
+implied by it and not conversely (hidden discord).
+*Rejected alternative:* the dispatch's limit "the set of sentences on which the merged
+bundle is infeasible" — merged infeasibility is global and can hold with no sentence in
+discord.
+
 ### 2026-09-16 — humility is read three ways, and seed-independence takes the strict reading
 
 **agent-decided, reversible.**  The seed-statics round keeps three predicates apart:

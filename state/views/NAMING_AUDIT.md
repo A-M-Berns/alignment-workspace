@@ -468,7 +468,7 @@ change, and the count of those is the size of the free choice remaining.
 | `vh` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vh` |
 | `vhAccurate` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.SubstitutionSeparation.M.vhAccurate` |
 
-## normativity — 762 names, 577 of them Lean only
+## normativity — 782 names, 596 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -590,6 +590,26 @@ change, and the count of those is the size of the free choice remaining.
 | `target` | def | unrecorded | wiki, note | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.target` |
 | `targetAt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.targetAt` |
 | `vertexData` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.vertexData` |
+| `Discord` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.Discord` |
+| `IntervalData` | abbrev | 2026-09-17-convergence-measure | prose | `Workspace.Normativity.Contrib.ConvergenceMeasure.IntervalData` |
+| `Nested` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.Nested` |
+| `Valid` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.Valid` |
+| `Weights` | structure | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.Weights` |
+| `blockedHull` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.blockedHull` |
+| `commonHi` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.commonHi` |
+| `commonLo` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.commonLo` |
+| `commonWidth` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.commonWidth` |
+| `discordMass` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.discordMass` |
+| `hullHi` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullHi` |
+| `hullLo` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullLo` |
+| `hullMass` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullMass` |
+| `hullSum` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullSum` |
+| `hullWidth` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullWidth` |
+| `mergeCert` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.mergeCert` |
+| `naiveHull` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.naiveHull` |
+| `overlapMass` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.overlapMass` |
+| `touching` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.touching` |
+| `unpinned` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.unpinned` |
 | `deductivePolytopeEff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductivePolytopeEff` |
 | `deductiveProjectionSchedule` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductiveProjectionSchedule` |
 | `deductiveReps` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductiveReps` |

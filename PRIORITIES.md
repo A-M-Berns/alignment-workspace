@@ -2771,6 +2771,51 @@ header on why satisfaction lives in `ℝ`.
 *Consumed by:* item 79; any registration of `forcedInterval_spec`.
 *A solution ships:* the two theorems.
 
+### 95. Hidden discord: a region-level convergence measure — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The convergence-measure round (`projects/normativity/seed/rounds/2026-09-17-convergence-measure/`)
+shows that the coordinate-wise profile `(Hull, Ovl, Disc)` on a declared fragment can
+report `Disc = 0` while the merged bundle is infeasible — two humble reasoners holding
+`y ≥ (9/10)x, x ≥ (9/10)y` and `x ≥ 4/5, y ≤ 3/10`, and three reasoners pairwise
+compatible and jointly not (`hidden_discord`).  Helly in dimension one makes coordinate
+discord pairwise (`discord_iff_pair`); nothing makes merged feasibility so.  No
+declaration of fragment or weights blocks this.  Define a region-level component of the
+profile — a merged-feasibility mass, or a relational discord over declared *pairs* of
+sentences, or the affine dimension of the merged region — that sees relational
+incompatibility, prove its monotonicity under nesting, and give its certificate.
+
+*Deliverable shape:* the definition on `IntervalData` or on regions, the analogue of
+`discord_persists`, and the two hidden-discord fixtures scored positive by it.
+*Acceptance check:* `python3 tests/run.py` green; the Lean audits clean.
+
+*Context:* `MANY.md` §2 and `GAMEABILITY.md` (what is not blocked) of the round.
+*Consumed by:* any use of `Disc = 0` as "the reasoners could jointly hold their bundles".
+*A solution ships:* the component, its monotonicity theorem, and the fixtures.
+
+### 96. Exhaustive sharing on trace-constitutive dockets: what exchange equalizes live sets — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+H3 of the convergence-measure round holds under *exhaustive sharing* read as "the
+reasoners' live substantive-and-warrant row sets eventually coincide".  Sharing every
+warrant does not give this: a warrant defeated on one docket and live on another is a
+one-sided defeater (the `consensus` fixture), and the landed defeat calculus fixes the
+live docket per trace.  Say which exchange protocol — sharing warrants *and* their
+disposals, a shared docket, or a synchronization event — makes live sets coincide on
+`DefeatTrace`, state it on the existing docket types, and prove H3's eventual constancy
+against it in Lean (the round composes it from `eventually_const_of_finite` in prose).
+
+*Deliverable shape:* the protocol as a predicate on a family of traces, the theorem that
+it equalizes `liveSub ++ W`, and H3 stated and proved on `IntervalData` from it.
+*Acceptance check:* the Lean audits clean.
+
+*Context:* `DYNAMICS.md` §3 of the round; the seed round's `CONFINEMENT.md` §2 (the
+calculus computes no extension).
+*Consumed by:* any claim that persistent discord is never an artifact of order.
+*A solution ships:* the predicate and the two theorems.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
