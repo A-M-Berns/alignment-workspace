@@ -84,6 +84,19 @@ commit.
   exhibit candidates and cannot say they are enough, which is the judgment
   *Where ingenuity is the bottleneck* exists to hold.
 
+- **Whether a third exported contract — the *reference fidelity* of a named channel to a
+  declared reference, `Realizes` in Lean — enters the wiki beside Non-Capture and
+  authorship, and whether the activation-locality lemma is promoted to item 89's row now.**
+  The transparent-channel round (`projects/deference/rounds/2026-09-24-transparent-channel/`)
+  shows the mathematics is one composition and, in its second pass, that the existential
+  form (`Transparent`, "transparent mediation") is vacuous or false on the concrete reason
+  channel without the advisor's declaration, so the round recommends the name *reference
+  fidelity*, recommends against canonicalizing before item 97's advisor-mandate event, and
+  recommends promoting `TransparentEcosystem.payload_take` /
+  `activation_eq_of_shared_prefix` to `wiki/Corrigibility.md` §9's sealed-comparison row.
+  *Turns on:* vocabulary authority, and whether a third exported contract is wanted where
+  the wiki now lists two; the round's names are provisional.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -4217,3 +4230,56 @@ as a term) are retired.  Nothing is registered: the combined theorem is a schema
 Lean components with named external contracts.  The alternative rejected: holding the
 landing for a single monolithic Lean statement of the combined theorem, which would
 add no mathematics.
+
+### 2026-09-24 — transparency is the reference-relative form of reason mediation, stated on the frame, and its defect is the pathwise disagreement mass
+
+Agent-decided, reversible; a research-branch finding
+(`projects/deference/rounds/2026-09-24-transparent-channel/`), not canonical.  A channel
+of the frame — reason trace, activation event, inquiry outcome, specification — is
+*transparent* to its declared inputs when it is reason-mediated by the declared-input
+view at every exterior (`Transparent`), and *realizes a reference* when the factor map is
+declared (`Realizes`); the two coincide up to declaring the reference
+(`transparent_iff_realizes`).  This is taken as the primitive behind selection sealing
+(item 87 clause 6), activation independence (item 89), provenance adequacy (item 68),
+inquiry causal faithfulness, trigger integrity and secret evaluator change, each of which
+is the hypothesis that a named channel realizes its declared reference.  The approximate
+form is the pathwise disagreement mass with the reference, entering the landed
+inequalities where the mismatch and content terms sit
+(`security_bypass_le_defects`); total variation is recorded as a lower bound on it and
+not adopted, because the advisor chooses the coupling and the payoff algebra is
+pointwise in the exterior.  Provenance normalization is placed as the reason-side
+corrigibilization — a substitution on the move alphabet whose existence condition is the
+truthful completeness of the authorized alphabet — and is recorded as unable to repair
+selection failures, which belong to supply.  Nothing is registered.  Alternatives
+rejected: channel equality of marginal kernels as the primitive (too weak for the joint
+mismatch event, `Witness.marginal_refuted`); posterior equality as the primitive (a
+prior-dependent corollary); a stochastic-kernel formalism beside the frame (the frame's
+exterior already carries the exogenous coordinate); total variation as the defect.
+
+### 2026-09-24 — in the evaluation ecosystem the declared-input view is the advisor's permitted view, activation is a reading of the pre-commit prefix, and the exportable contract is reference fidelity
+
+Agent-decided, reversible; a research-branch finding (second pass of
+`projects/deference/rounds/2026-09-24-transparent-channel/`), not canonical.  (1) The
+declared-input view of the ecosystem is the pre-commitment events another party wrote
+(`TransparentEcosystem.view`): the whole log makes every channel realize the identity and
+the empty view makes honest persuasion opaque, both witnessed.  (2) The reason channel's
+reference is the admitted part of the view plus the advisor's declared program on the view,
+on the trace read as a multiset (every trace program is extensional on it,
+`evalProg_perm`); the channel realizes it exactly when the advisor's admitted contribution
+is that program's output (`realizes_reason`), and item 87 clause 6 follows from that with a
+selection-blind view (`selectionBlind_ecosystem`).  The declaration is carried as public
+frame data; binding it in the log is item 97.  (3) Activation and payload are readings of
+the prefix through the commit event (`payload_take`), so item 89's sealed comparison is the
+condition that the two candidates' logs agree through the commit — sequenced settlement —
+under which the mismatch is empty and without which it is attained; an isolated hindsight
+evaluator is not expressible in one log and stays external.  (4) The three-link chain is
+`li_noncapture` three times (`li_noncapture_chain3`) with the content defect `tauR`, the
+sensitivity mass of the symmetric difference between actual and reference content, as the
+first link's quantity, zero under fidelity.  (5) Vocabulary: the existential `Transparent`
+is kept as a class-relative mathematical notion; the contract with content is `Realizes`,
+read as *reference fidelity*; "transparent mediation" is not adopted, and canonicalization
+waits on the advisor-mandate event.  Alternatives rejected: the whole pre-commit log or the
+advisor-authored events as the view (vacuous or wrong-signed); reading the market
+publication out of the view to save selection blindness (it would misclassify a declared
+input as a hidden read; the fix is not to publish before commitment); a second evaluator
+log to express factorization (outside the model); promoting "transparent mediation" now.

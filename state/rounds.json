@@ -1423,6 +1423,29 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-16-noncapture-compilation/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-24-transparent-channel",
+      "date": "2026-09-24",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-24-transparent-channel",
+      "verdict": "REALIZATION-SUCCEEDS-ON-THE-ACTIVATION-AND-REASON-CHANNELS-AND-THE-EXPORTABLE-CONTRACT-IS-REFERENCE-FIDELITY — in the landed evaluation ecosystem the activation channel realizes its reference for every log because activation and payload are readings of the prefix through the commit event, so item 89's sealed comparison is the checkable log condition that the two candidates' logs agree through the commit, under which the directional mismatch is empty and without which it is attained; the reason channel's declared input is the advisor's permitted view, the non-advisor pre-commitment events, with the whole log vacuous and the empty view opaque to honest persuasion, its reference is the admitted view plus the advisor's declared program on the view, every trace program is extensional on the multiset trace, and the channel realizes its reference exactly when the advisor's contribution is its declared program's output, from which clause 6 of item 87 follows given a selection-blind view, so clause 6 reduces to an advisor-mandate event and no pre-commit publication of the selection; the specification channel has depth zero and a secret evaluator change is a realization failure the builder voids; the three-link chain is mechanized as the landed non-capture theorem applied three times with the content defect, the sensitivity mass of the symmetric difference between actual and reference content, as the first link's certified quantity, zero under fidelity, so manipulation is charged apart from service and discovery; the existential notion is vacuous or false on the reason channel without the declaration, so the contract to export is reference fidelity and canonicalization waits on the mandate event, with the activation-locality lemma promoted to item 89's row.",
+      "verdict_source": "projects/deference/rounds/2026-09-24-transparent-channel/README.md",
+      "depends_on": [
+        "2026-09-16-noncapture-compilation",
+        "2026-09-15-li-corrigibility",
+        "2026-09-10-committed-principal-program",
+        "2026-09-09-mediated-repair-dominance",
+        "2026-09-07-reason-mediated-authorship",
+        "2026-08-25-legitimate-evolution",
+        "2026-08-25-carroll-legitimacy-test",
+        "2026-08-17-counterfactual-legitimacy",
+        "2026-08-27-legitimate-improvement"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-24-transparent-channel/PROMPT.md",
+      "claim_changes": []
     }
-  ]
+]
 }
