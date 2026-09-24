@@ -2838,6 +2838,23 @@ paragraph (clause 6); item 89's 2026-09-15 note; item 68's acceptance check.
 mediation" as a contract (queued in `DECISIONS.md`).
 *A solution ships:* the declarations with their witnesses, or the negative with its channel.
 
+*2026-09-24 (second pass of the round, `ECOSYSTEM_REALIZATION.md`).*  Delivered: (a) the view
+as a reading of the log (`TransparentEcosystem.view`, the non-advisor pre-commitment events;
+over-rich and under-rich ends witnessed); (b) the activation reference for every log
+(`payload_take`, `realizes_activation`: activation is a reading of the prefix through the
+commit, so sealed comparison is the shared-prefix condition, `mismatch_zero_sequenced`, and
+same-branch attains the mismatch), the reason reference (`κR`, `realizes_reason`: admitted
+view plus the advisor's declared program on the view, realized iff the advisor's contribution
+is that program's output) and the specification reference (`realizes_spec`, depth zero); (c)
+the witnesses; (d) the three-link chain (`TransparentChain.li_noncapture_chain3`, with `tauR`
+as the first link's quantity).  What remains of this item: an **advisor-mandate event kind**
+binding the advisor's program in the log, so that `realizes_reason`'s hypothesis is a
+re-execution check as clause 2's is (the second pass carries the declaration as public frame
+data); an **amendment event kind** for the mandate, so the specification tower has depth
+above zero; the Logical-Induction transfer of the activation defect indicators (a compiled
+`G_M ≤ G_τ` with its generability certificate); and the declared inquiry policy under which
+the engine-ownership clauses of independence become `Realizes` hypotheses.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

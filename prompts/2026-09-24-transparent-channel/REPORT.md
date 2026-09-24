@@ -1,12 +1,16 @@
 # Report — transparent channel (2026-09-24)
 
-See `projects/deference/rounds/2026-09-24-transparent-channel/REPORT.md`; the verdict is in
-that round's `README.md`, the Lean is `lean/Workspace/Deference/Contrib/TransparentChannel.lean`,
-the fixtures run with `python3 tests/run.py` in the round directory.
+Two dispatches.  The first pass is
+`projects/deference/rounds/2026-09-24-transparent-channel/REPORT.md` (the abstract
+primitive, Lean `TransparentChannel.lean`); the second pass is `ECOSYSTEM_REALIZATION.md`
+there (the realization in the evaluation ecosystem and the three-link chain, Lean
+`TransparentEcosystem.lean` and `TransparentChain.lean`).  The verdict is in that round's
+`README.md`; the fixtures run with `python3 tests/run.py` in the round directory.
 
-Deviations from the prompt, what is not shown, and outstanding maintainer actions are the
-last three sections of that report.  Filed within scope: `PRIORITIES.md` item 97; one
-`DECISIONS.md` entry (agent-decided, reversible) and one *Awaiting the author* entry.
+Deviations from each prompt, what is not shown, and outstanding maintainer actions are the
+closing sections of the two reports.  Filed within scope: `PRIORITIES.md` item 97 with its
+second-pass note; two `DECISIONS.md` entries (agent-decided, reversible) and one *Awaiting
+the author* entry.
 
 ## Attribution
 

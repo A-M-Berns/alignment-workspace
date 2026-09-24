@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 483 names, 318 of them Lean only
+## deference — 500 names, 331 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -101,7 +101,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Jhat` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.Jhat` |
 | `S` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.S` |
 | `advantage` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.advantage` |
-| `defect` | def | 2026-08-11-phase-ii-promotion | wiki | `Workspace.Deference.Contrib.CertificateBounds.defect` |
+| `defect` | def | 2026-08-11-phase-ii-promotion | wiki, prose | `Workspace.Deference.Contrib.CertificateBounds.defect` |
 | `eta` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.WorkedCase.eta` |
 | `gatedAct` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.gatedAct` |
 | `gradeValuation` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.CertificateBounds.gradeValuation` |
@@ -492,14 +492,31 @@ change, and the count of those is the size of the free choice remaining.
 | `openUnder` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.openUnder` |
 | `steering_validAt` | def | 2026-09-16-noncapture-compilation | wiki | `Workspace.Deference.Contrib.TraceSteering.steering_validAt` |
 | `weightedCount` | def | 2026-09-16-noncapture-compilation | Lean only | `Workspace.Deference.Contrib.TraceSteering.weightedCount` |
+| `tauR` | def | 2026-09-24-transparent-channel | prose | `Workspace.Deference.Contrib.TransparentChain.tauR` |
 | `Q₁` | inductive | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentChannel.Witness.Q₁` |
 | `Realizes` | def | 2026-09-24-transparent-channel | prose | `Workspace.Deference.Contrib.TransparentChannel.Realizes` |
 | `R₁` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentChannel.Witness.R₁` |
 | `Transparent` | def | 2026-09-24-transparent-channel | prose | `Workspace.Deference.Contrib.TransparentChannel.Transparent` |
-| `defect` | def | 2026-09-24-transparent-channel | wiki | `Workspace.Deference.Contrib.TransparentChannel.defect` |
+| `defect` | def | 2026-09-24-transparent-channel | wiki, prose | `Workspace.Deference.Contrib.TransparentChannel.defect` |
 | `disagree` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentChannel.disagree` |
 | `is` | class | 2026-09-24-transparent-channel | wiki, note, prose | `Workspace.Deference.Contrib.TransparentChannel.Witness.is` |
 | `x₁` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentChannel.Witness.x₁` |
+| `activated` | def | 2026-09-24-transparent-channel | wiki, prose | `Workspace.Deference.Contrib.TransparentEcosystem.activated` |
+| `advisorPart` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.advisorPart` |
+| `content` | def | 2026-09-24-transparent-channel | wiki, prose | `Workspace.Deference.Contrib.TransparentEcosystem.content` |
+| `evalA` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.Witness.evalA` |
+| `issueIdx` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.issueIdx` |
+| `notAdvisor` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.notAdvisor` |
+| `prefixThroughCommit` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.prefixThroughCommit` |
+| `view` | def | 2026-09-24-transparent-channel | wiki, prose | `Workspace.Deference.Contrib.TransparentEcosystem.view` |
+| `viewPart` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.viewPart` |
+| `w1Market` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.Witness.w1Market` |
+| `w1Other` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.Witness.w1Other` |
+| `w1Silent` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.Witness.w1Silent` |
+| `wCorrLate` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.Witness.wCorrLate` |
+| `wRawSeq` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.Witness.wRawSeq` |
+| `xR` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.xR` |
+| `xSpec` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.xSpec` |
 
 ## normativity — 700 names, 529 of them Lean only
 

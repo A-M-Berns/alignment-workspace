@@ -84,16 +84,18 @@ commit.
   exhibit candidates and cannot say they are enough, which is the judgment
   *Where ingenuity is the bottleneck* exists to hold.
 
-- **Whether *transparent mediation* becomes a named contract in the wiki beside
-  Non-Capture and authorship — "legitimate influence = Legitimate Evolution +
-  transparent mediation" — and under what name.** The transparent-channel round
-  (`projects/deference/rounds/2026-09-24-transparent-channel/`) shows the
-  mathematics is one composition (a transparent reason channel and a
-  reason-mediated payload give a payload mediated by the declared inputs) and adds
-  nothing to Legitimate Evolution itself.
-  *Turns on:* vocabulary authority, and whether a third exported contract is wanted
-  where the wiki now lists two; the round's names (`Realizes`, `Transparent`,
-  "transparency defect") are provisional.
+- **Whether a third exported contract — the *reference fidelity* of a named channel to a
+  declared reference, `Realizes` in Lean — enters the wiki beside Non-Capture and
+  authorship, and whether the activation-locality lemma is promoted to item 89's row now.**
+  The transparent-channel round (`projects/deference/rounds/2026-09-24-transparent-channel/`)
+  shows the mathematics is one composition and, in its second pass, that the existential
+  form (`Transparent`, "transparent mediation") is vacuous or false on the concrete reason
+  channel without the advisor's declaration, so the round recommends the name *reference
+  fidelity*, recommends against canonicalizing before item 97's advisor-mandate event, and
+  recommends promoting `TransparentEcosystem.payload_take` /
+  `activation_eq_of_shared_prefix` to `wiki/Corrigibility.md` §9's sealed-comparison row.
+  *Turns on:* vocabulary authority, and whether a third exported contract is wanted where
+  the wiki now lists two; the round's names are provisional.
 
 ## Settled
 
@@ -4253,3 +4255,31 @@ rejected: channel equality of marginal kernels as the primitive (too weak for th
 mismatch event, `Witness.marginal_refuted`); posterior equality as the primitive (a
 prior-dependent corollary); a stochastic-kernel formalism beside the frame (the frame's
 exterior already carries the exogenous coordinate); total variation as the defect.
+
+### 2026-09-24 — in the evaluation ecosystem the declared-input view is the advisor's permitted view, activation is a reading of the pre-commit prefix, and the exportable contract is reference fidelity
+
+Agent-decided, reversible; a research-branch finding (second pass of
+`projects/deference/rounds/2026-09-24-transparent-channel/`), not canonical.  (1) The
+declared-input view of the ecosystem is the pre-commitment events another party wrote
+(`TransparentEcosystem.view`): the whole log makes every channel realize the identity and
+the empty view makes honest persuasion opaque, both witnessed.  (2) The reason channel's
+reference is the admitted part of the view plus the advisor's declared program on the view,
+on the trace read as a multiset (every trace program is extensional on it,
+`evalProg_perm`); the channel realizes it exactly when the advisor's admitted contribution
+is that program's output (`realizes_reason`), and item 87 clause 6 follows from that with a
+selection-blind view (`selectionBlind_ecosystem`).  The declaration is carried as public
+frame data; binding it in the log is item 97.  (3) Activation and payload are readings of
+the prefix through the commit event (`payload_take`), so item 89's sealed comparison is the
+condition that the two candidates' logs agree through the commit — sequenced settlement —
+under which the mismatch is empty and without which it is attained; an isolated hindsight
+evaluator is not expressible in one log and stays external.  (4) The three-link chain is
+`li_noncapture` three times (`li_noncapture_chain3`) with the content defect `tauR`, the
+sensitivity mass of the symmetric difference between actual and reference content, as the
+first link's quantity, zero under fidelity.  (5) Vocabulary: the existential `Transparent`
+is kept as a class-relative mathematical notion; the contract with content is `Realizes`,
+read as *reference fidelity*; "transparent mediation" is not adopted, and canonicalization
+waits on the advisor-mandate event.  Alternatives rejected: the whole pre-commit log or the
+advisor-authored events as the view (vacuous or wrong-signed); reading the market
+publication out of the view to save selection blindness (it would misclassify a declared
+input as a hidden read; the fix is not to publish before commitment); a second evaluator
+log to express factorization (outside the model); promoting "transparent mediation" now.

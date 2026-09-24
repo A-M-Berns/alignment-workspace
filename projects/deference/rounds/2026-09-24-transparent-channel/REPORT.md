@@ -1,6 +1,10 @@
 # Transparency as faithful implementation of a declared influence channel
 
-Dispatch: `prompts/2026-09-24-transparent-channel/PROMPT.md`.  Lean:
+First pass.  The second pass, which realizes this abstraction in the evaluation ecosystem
+and mechanizes the three-link chain, is `ECOSYSTEM_REALIZATION.md`; where the two differ on
+a status or a name, the second governs.
+
+Dispatch: `prompts/2026-09-24-transparent-channel/PROMPT.md` (first dispatch).  Lean:
 `lean/Workspace/Deference/Contrib/TransparentChannel.lean` (28 audited declarations,
 axioms `propext`, `Classical.choice`, `Quot.sound` only).  Fixtures: `src/transparency.py`,
 `tests/` (27 tests; the foreign fixtures run in their own rounds' interpreters).

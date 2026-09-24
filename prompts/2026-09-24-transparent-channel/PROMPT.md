@@ -594,3 +594,467 @@ At minimum include:
    Give the most compressed mature diagram/theorem story you think the repo should ultimately use if this idea works.
 
 Be skeptical. The goal is not to vindicate the transparency idea. The goal is to determine whether it really compresses the repo's outstanding manipulation/provenance problems into one reusable mathematical interface, and to find the strongest form in which that claim is actually true.
+
+
+---
+
+## Second dispatch (2026-09-24)
+
+Relayed verbatim as sent.
+
+Continue the transparent-channel investigation in `alignment-workspace`, building directly on:
+
+- PR #104 / branch `round/2026-09-24-transparent-channel`
+- `projects/deference/rounds/2026-09-24-transparent-channel/REPORT.md`
+- `lean/Workspace/Deference/Contrib/TransparentChannel.lean`
+- newly filed `PRIORITIES.md` item 97.
+
+The first round established the abstract algebra:
+
+\[
+\text{declared inputs }x
+\overset{\kappa}{\longrightarrow}
+\text{channel output}
+\]
+
+with
+
+\[
+\operatorname{Realizes}\,\beta\,x\,f\,\kappa\,D
+\iff
+\forall q\in D,\forall z,\quad
+f(\beta q z)=\kappa(x(\beta q z),z),
+\]
+
+and showed that this is the reference-relative form of the same fiber-invariance primitive already used by `ReasonMediated`.
+
+The important conceptual composition is:
+
+\[
+x
+\overset{\text{transparency}}{\longrightarrow}
+R
+\overset{\text{authorship}}{\longrightarrow}
+V.
+\]
+
+The first round also proved abstract corollaries for selection sealing, activation independence, approximate pathwise defects, and oracle replacement.
+
+This followup should **not** spend much time re-arguing the abstraction. Its job is to determine whether the abstraction actually becomes a useful concrete theorem interface in the repo.
+
+## Primary objective
+
+Realize the transparent-channel abstraction inside the existing evaluation ecosystem and connect it end-to-end to the landed reason-supply / reason-discovery / LI non-capture machinery.
+
+The target is to replace several currently external or freestanding assumptions by one concrete architecture:
+
+\[
+\text{actual channel}
+\longrightarrow
+\text{declared reference channel}
+\longrightarrow
+\text{existing non-capture theorem}.
+\]
+
+The strongest desired result is a mechanically checked three-link comparison:
+
+\[
+U_{\mathrm{actual}}
+\to
+U_{\mathrm{reference}}
+\to
+U_{\mathrm{discovered}}
+\to
+U_{\mathrm{full}},
+\]
+
+with a final inequality decomposing manipulation from boundedness.
+
+## 1. Declare the actual input view \(x\)
+
+The previous round proposed that, in `EvaluationEcosystem`, the declared-input view should be some reading of the log such as the non-advisor pre-commitment events.
+
+Do not take that on faith.
+
+Inspect the concrete ecosystem carefully and determine the minimal \(x\) that:
+
+1. includes every input the legitimate reference process really should be allowed to use;
+2. excludes the advisor-controlled variables whose influence we want to forbid;
+3. is rich enough that the reference process can actually compute the intended channel output;
+4. is not so rich that `Realizes` becomes vacuous.
+
+Explicitly test the over-rich / under-rich ends.
+
+For each candidate \(x\), run:
+- the existing `leak` fixture;
+- `view_prog`;
+- the sealed advisor;
+- secret evaluator change;
+- permitted ordinary influence;
+- candidate-selection leak.
+
+The question is not “can some \(x\) make the theorem true?” but:
+
+> **Is there a natural declared-input interface whose semantic interpretation matches what the ecosystem was already trying to express?**
+
+If there is, make it an explicit object in the ecosystem rather than a prose reading.
+
+## 2. Declare concrete references \(\kappa\)
+
+Construct explicit reference maps for at least:
+
+### A. Reason-trace channel
+\[
+\kappa_R : X_R \to Z \to \mathcal R.
+\]
+
+This should represent the legitimate reason-generation / routing process:
+- authenticated inquiry outcomes;
+- registrar routing;
+- supplier docket/service;
+- whatever current concrete mechanisms determine the admitted trace.
+
+Be extremely careful about which parts belong to:
+- reference design;
+- actual realization;
+- service limitation;
+- discovery limitation.
+
+Do not bake \(\alpha\) or \(\beta\) into “transparency failure.” A bounded but honestly implemented reference process should remain transparent.
+
+### B. Activation channel
+\[
+\kappa_C : X_C \to Z \to \mathrm{Bool}.
+\]
+
+Candidate identity should be absent from \(X_C\) if the intended architecture is candidate-blind.
+
+Try both currently live realization routes:
+- sequenced settlement;
+- isolated / factored evaluator.
+
+Prove or refute `Realizes` for the existing ecosystem architecture.
+
+### C. Specification / evaluator channel
+Define the reference by which the principal program / evaluator / mandate is fixed and, if amendments are allowed, changed.
+
+The first round's `tower_factor` supplied only the abstract shape. Realize it concretely:
+- what is the floor?
+- what event authorizes amendment?
+- what grounds are visible?
+- which actor may write the amendment?
+- what prevents a secret evaluator change?
+
+Determine exactly how much existing Integrity machinery supplies here.
+
+## 3. Prove concrete `Realizes` witnesses
+
+For each channel above, prove actual realization lemmas in Lean where possible.
+
+The desired pattern is analogous to the already-landed:
+
+`reasonMediated_of_reexecution`
+
+but now upstream.
+
+Prefer constructions of the form:
+
+> the reference is committed as a program / log transform and re-executed,
+
+or:
+
+> the channel is owned by a component outside the advisor's write boundary.
+
+For every positive theorem, include a nearby negative fixture showing which assumption matters.
+
+In particular:
+- `leak` should fail for the relevant \(x\) or fail its selection-blindness premise;
+- secret evaluator change should fail realization;
+- declared evaluator amendment should not be mislabeled as a transparency violation merely because the evaluator changes.
+
+## 4. Mechanize the item 87 reduction concretely
+
+The abstract theorem gave:
+
+\[
+\text{selection-blind }x
++
+\operatorname{Realizes}(\beta,x,R,\kappa_R,D)
++
+\operatorname{ReasonMediated}(\beta,R,V,D,z)
+\Rightarrow
+\operatorname{SelectionBlind}V.
+\]
+
+Instantiate this in the concrete evaluation ecosystem.
+
+Do not leave “selection-blind \(x\)” as prose.
+
+Either:
+- prove it for a concrete ecosystem architecture; or
+- produce the exact counterexample showing the current architecture cannot satisfy it.
+
+If the current market publishes advisor selection and therefore \(x\) is not selection-blind, identify the smallest architectural change that restores the theorem.
+
+Determine whether item 87 clause 6 can now be considered:
+- discharged;
+- reduced to a single explicit system-design choice;
+- or still substantially open.
+
+## 5. Mechanize the item 89 reduction concretely
+
+Instantiate:
+
+\[
+\operatorname{Realizes}(\beta,x,c,\kappa_C,D)
++
+x_{\rm raw}=x_{\rm corr}
+\Rightarrow
+c_{\rm raw}=c_{\rm corr}.
+\]
+
+Do this for the actual `{π, 𝔠π}` comparison.
+
+The key issue is the existing directional mismatch term:
+
+\[
+M = c_{\rm raw}\wedge \neg c_{\rm corr}.
+\]
+
+For each proposed evaluator architecture:
+- prove \(M=0\); or
+- compute/bound the transparency defects that imply a bound on \(E[M]\).
+
+Preserve the pathwise/common-exterior semantics. Do not replace the result by equality of marginal activation rates.
+
+If sequenced settlement is the only clean realization, say so. If an isolated hindsight evaluator works, formalize the exact factorization/isolation requirement.
+
+## 6. Build the third non-capture link
+
+The existing landed chain is approximately:
+
+\[
+U_T
+\to
+U_{\mathrm{disc}}
+\to
+U_{\mathrm{full}}.
+\]
+
+Insert the reference process:
+
+\[
+U_{\mathrm{actual}}
+\to
+U_{\mathrm{ref}}
+\to
+U_{\mathrm{disc}}
+\to
+U_{\mathrm{full}}.
+\]
+
+Use the existing:
+- `TraceSteering`
+- `ReasonSupply`
+- `ReasonDiscovery`
+- `li_noncapture`
+- `li_noncapture_chain`
+- `li_gated_le`
+- `sensitive_symmDiff`
+- `asympLE_add`
+
+rather than creating a parallel theorem family.
+
+The first link should charge **departure from the declared reference process**, not generic reason omission.
+
+Find the exact quantity that fits the current content algebra. The previous round proposed the expected adverse sensitivity mass of the symmetric difference between actual and reference dockets.
+
+Formalize this if correct.
+
+The desired schematic result is:
+
+\[
+\boxed{
+E_n(U_{\mathrm{actual}})
+-
+E_n(U_{\mathrm{full}})
+\lesssim_n
+L(\tau_R+\alpha+\beta)
++
+\text{form residual}
++
+D(\tau_C^{\rm raw}+\tau_C^{\rm corr})
+}
+\]
+
+where:
+- \(\tau_R\) is the reason-channel transparency defect;
+- \(\alpha\) is service limitation of the reference supplier;
+- \(\beta\) is discovery limitation of the reference inquiry;
+- \(\tau_C\) bounds activation-channel departure from its reference.
+
+Do not force this exact syntax if the existing theorem naturally gives a sharper expression.
+
+The key requirement is conceptual separation:
+
+\[
+\boxed{
+\text{manipulation}
+\neq
+\text{bounded discovery}
+\neq
+\text{bounded service}.
+}
+\]
+
+## 7. Test the claim that “independent inquiry/supplier” are realization lemmas
+
+The previous round suggested reinterpreting:
+- engine-owned inquiry;
+- exogenous stopping/candidate generation;
+- advisor-proof capacity;
+- independent supplier;
+
+as implementation patterns for a declared advisor-independent reference.
+
+Test this carefully.
+
+Determine which current independence assumptions really reduce to `Realizes`, and which remain separate because they constrain:
+- resource costs;
+- evidence truth/soundness;
+- availability;
+- adversarial scheduling;
+- the design of the reference itself.
+
+Produce a decomposition table rather than casually declaring independence solved.
+
+## 8. Pressure-test the vocabulary
+
+The first round proposed:
+
+\[
+\text{Legitimate influence}
+=
+\text{Legitimate Evolution}
++
+\text{Transparent Mediation}.
+\]
+
+with
+
+\[
+\text{Transparent Mediation}
+=
+\text{transparent reason channel}
++
+\text{reason-mediated authorship}.
+\]
+
+Before recommending canonicalization, decide whether this remains the clearest vocabulary after the concrete realization.
+
+In particular, compare:
+- `transparent mediation`
+- `transparent reason mediation`
+- `transparent influence`
+- `declared-channel fidelity`
+- `reference fidelity`
+
+A possible concern is that existential `Transparent` is too weak to carry the ordinary-language meaning of “transparent,” whereas `Realizes κ` captures faithfulness to a publicly declared process.
+
+Consider whether:
+- `Transparent` should remain only a mathematical/class-relative notion;
+- `Realizes` or a renamed version should be the exported normative contract.
+
+Do not canonicalize names unless the concrete realization makes the intended reading unambiguous.
+
+## 9. Revisit the old loose ends only after the realization
+
+At the end, update the status of:
+
+- Priority 68 provenance adequacy;
+- Priority 72 CM2 / CM5;
+- item 87 clause 6;
+- item 89;
+- inquiry causal faithfulness;
+- trigger integrity;
+- free amendment;
+- provenance normalization;
+- independent inquiry/supplier.
+
+For each, classify:
+
+- **discharged by the realization**
+- **reduced to a clean system-design condition**
+- **given a precise interface but still externally assumed**
+- **clarified only**
+- **independent**
+
+Be stricter than the first round. Do not call something “reduced” unless the remaining obligation is materially simpler and precisely stated.
+
+## 10. Deliverables
+
+Produce:
+
+### A. A short verdict
+Answer:
+1. Does the transparent-channel abstraction actually simplify the concrete ecosystem?
+2. Does it eliminate any existing open item rather than merely reorganize it?
+3. Does the full quantitative theorem become cleaner?
+4. Should the concept become canonical after this round?
+
+### B. Concrete theorem spine
+State the final theorem stack in dependency order, with exact Lean names.
+
+### C. Ecosystem diagram
+Show:
+
+\[
+\text{advisor/world}
+\to
+x
+\to
+R
+\to
+V
+\]
+
+and separately:
+- activation;
+- specification/evaluator;
+- inquiry/supplier.
+
+Mark every edge as:
+- landed theorem;
+- new theorem;
+- reference-design hypothesis;
+- external causal/authentication contract.
+
+### D. Mechanized three-link chain
+This is the most important technical deliverable.
+
+### E. Countermodels
+At minimum preserve:
+- leak;
+- marginal-refuted activation;
+- secret evaluator;
+- public evaluator amendment;
+- cherry-picker;
+- honest bounded inquiry;
+- `ShopK`.
+
+### F. Canonicalization recommendation
+Conclude either:
+- promote the concept and say exactly where in the wiki;
+- or keep it as a research-layer abstraction and explain what failed.
+
+## Research attitude
+
+The first round already established elegant abstract algebra. Do not reward elegance again.
+
+This round should be judged by **realization pressure**:
+
+> Does a natural concrete system actually admit the declared input views and reference maps the abstraction requires?
+
+If yes, mechanize the consequences and compress the architecture.
+
+If no, the negative result is equally valuable: identify exactly which real channel resists the abstraction and why.
