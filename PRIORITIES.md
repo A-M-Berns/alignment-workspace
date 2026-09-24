@@ -2805,6 +2805,39 @@ measurability claims of the round.
 *A solution ships:* the certified repertoire, or the negative — that no affordable
 repertoire separates the interface's value classes — with its cell.
 
+### 94. Declare each channel's reference in the evaluation ecosystem, and certify its realization — **[substantial]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The transparent-channel round (`projects/deference/rounds/2026-09-24-transparent-channel/`)
+states one primitive behind item 87 clause 6, item 89, item 68 and the causal-contract wall:
+a channel of the frame realizes a publicly declared reference on its declared inputs
+(`TransparentChannel.Realizes`), with the reason-mediated payload as the downstream half
+(`reasonMediated_of_reexecution`).  The theorems are algebra; what does not exist is the
+declaration.  For the evaluation ecosystem of `EvaluationEcosystem.lean`: (a) the
+declared-input view `x` as a reading of the log — the round uses the non-advisor
+pre-commitment events, under which the `leak` advisor is a transparency failure and
+`view_prog` in the market world is a non-blind `x`; (b) the reference `κ` of the reason
+channel (the registrar's routing composed with the supplier's docket), of the activation
+channel (the answering process, candidate-blind by sequencing or isolation) and of the
+specification channel (an amendment event kind for the mandate); (c) `Realizes` witnesses
+for the ecosystem frame in the shape of `Instance.mediation_witness`, and the failure
+witnesses for `leak` and for a secret evaluator change; (d) the third link of the
+non-capture chain, actual supplier to reference supplier, as `li_noncapture` applied a
+third time, with the mismatch branch fed by `expect_mismatch_le_defects` through
+`li_gated_le` in place of the Boolean `hsealed`.
+
+*Deliverable shape:* the three declarations as readings of the log, the Lean witnesses, and
+the mechanized three-link chain; or the exact channel whose reference the ecosystem cannot
+declare, with the fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the round's
+`SelectionSealing` and `Priority68` fixtures reproduced against the declared `x`.
+*Context:* `REPORT.md` §§4, 7, 8 of the round; `TransparentChannel.lean`; item 87's residual
+paragraph (clause 6); item 89's 2026-09-15 note; item 68's acceptance check.
+*Consumed by:* items 68, 72, 87 (clause 6), 89; any canonicalization of "transparent
+mediation" as a contract (queued in `DECISIONS.md`).
+*A solution ships:* the declarations with their witnesses, or the negative with its channel.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

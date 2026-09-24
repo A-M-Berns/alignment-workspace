@@ -84,6 +84,17 @@ commit.
   exhibit candidates and cannot say they are enough, which is the judgment
   *Where ingenuity is the bottleneck* exists to hold.
 
+- **Whether *transparent mediation* becomes a named contract in the wiki beside
+  Non-Capture and authorship — "legitimate influence = Legitimate Evolution +
+  transparent mediation" — and under what name.** The transparent-channel round
+  (`projects/deference/rounds/2026-09-24-transparent-channel/`) shows the
+  mathematics is one composition (a transparent reason channel and a
+  reason-mediated payload give a payload mediated by the declared inputs) and adds
+  nothing to Legitimate Evolution itself.
+  *Turns on:* vocabulary authority, and whether a third exported contract is wanted
+  where the wiki now lists two; the round's names (`Realizes`, `Transparent`,
+  "transparency defect") are provisional.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -4217,3 +4228,28 @@ as a term) are retired.  Nothing is registered: the combined theorem is a schema
 Lean components with named external contracts.  The alternative rejected: holding the
 landing for a single monolithic Lean statement of the combined theorem, which would
 add no mathematics.
+
+### 2026-09-24 — transparency is the reference-relative form of reason mediation, stated on the frame, and its defect is the pathwise disagreement mass
+
+Agent-decided, reversible; a research-branch finding
+(`projects/deference/rounds/2026-09-24-transparent-channel/`), not canonical.  A channel
+of the frame — reason trace, activation event, inquiry outcome, specification — is
+*transparent* to its declared inputs when it is reason-mediated by the declared-input
+view at every exterior (`Transparent`), and *realizes a reference* when the factor map is
+declared (`Realizes`); the two coincide up to declaring the reference
+(`transparent_iff_realizes`).  This is taken as the primitive behind selection sealing
+(item 87 clause 6), activation independence (item 89), provenance adequacy (item 68),
+inquiry causal faithfulness, trigger integrity and secret evaluator change, each of which
+is the hypothesis that a named channel realizes its declared reference.  The approximate
+form is the pathwise disagreement mass with the reference, entering the landed
+inequalities where the mismatch and content terms sit
+(`security_bypass_le_defects`); total variation is recorded as a lower bound on it and
+not adopted, because the advisor chooses the coupling and the payoff algebra is
+pointwise in the exterior.  Provenance normalization is placed as the reason-side
+corrigibilization — a substitution on the move alphabet whose existence condition is the
+truthful completeness of the authorized alphabet — and is recorded as unable to repair
+selection failures, which belong to supply.  Nothing is registered.  Alternatives
+rejected: channel equality of marginal kernels as the primitive (too weak for the joint
+mismatch event, `Witness.marginal_refuted`); posterior equality as the primitive (a
+prior-dependent corollary); a stochastic-kernel formalism beside the frame (the frame's
+exterior already carries the exogenous coordinate); total variation as the defect.

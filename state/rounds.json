@@ -1423,6 +1423,29 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-16-noncapture-compilation/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-24-transparent-channel",
+      "date": "2026-09-24",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-24-transparent-channel",
+      "verdict": "TRANSPARENCY-IS-THE-UPSTREAM-HALF-OF-AUTHORSHIP-AND-THE-SAME-PRIMITIVE — transparency of a channel to its declared inputs is fiber invariance over the audited class at a fixed exterior, the primitive of reason mediation with the declared-input view in the reason view's place and a publicly declared reference in the factor map's; class-relative transparency is the existence of some reference the class realizes and reference-relative transparency is that reference declared, the form the committed principal program, the registrar's routing and the declared log transforms already use; composed with authorship it gives oracle replacement, and it discharges item 87 clause 6 and the zero mismatch of item 89 as corollaries of a selection-blind declared-input view plus a realized reference, the pathwise form being necessary because equality of marginals leaves the joint mismatch at D/2; the approximate form is the pathwise disagreement mass, of which total variation is only a lower bound, and it enters the landed inequalities where the mismatch and content terms already sit, so the steering advantage is bounded by transparency defect plus service plus discovery residuals with no new norm; Priority 68's condition is transparency over the frame's re-simulated variation class, no record-internal condition can replace it and the unlinked split-episode arm is the witness; provenance normalization is the reason-side corrigibilization, a substitution on the move alphabet whose existence is the truthful completeness of the authorized alphabet and which cannot repair selection failures; pre-demonstration suppression and evaluator shedding are public amendments of the reference and so reference-design and trigger-design questions, their secret variants transparency failures; free amendment and trigger integrity are transparency of the specification and activation channels above a fixed floor; representation adequacy, reference design and the realization of the reference stay external.",
+      "verdict_source": "projects/deference/rounds/2026-09-24-transparent-channel/README.md",
+      "depends_on": [
+        "2026-09-16-noncapture-compilation",
+        "2026-09-15-li-corrigibility",
+        "2026-09-10-committed-principal-program",
+        "2026-09-09-mediated-repair-dominance",
+        "2026-09-07-reason-mediated-authorship",
+        "2026-08-25-legitimate-evolution",
+        "2026-08-25-carroll-legitimacy-test",
+        "2026-08-17-counterfactual-legitimacy",
+        "2026-08-27-legitimate-improvement"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-24-transparent-channel/PROMPT.md",
+      "claim_changes": []
     }
-  ]
+]
 }
