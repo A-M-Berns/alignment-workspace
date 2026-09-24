@@ -2805,7 +2805,7 @@ measurability claims of the round.
 *A solution ships:* the certified repertoire, or the negative — that no affordable
 repertoire separates the interface's value classes — with its cell.
 
-### 94. Declare each channel's reference in the evaluation ecosystem, and certify its realization — **[substantial]**
+### 97. Declare each channel's reference in the evaluation ecosystem, and certify its realization — **[substantial]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 

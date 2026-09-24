@@ -5,7 +5,7 @@ that round's `README.md`, the Lean is `lean/Workspace/Deference/Contrib/Transpar
 the fixtures run with `python3 tests/run.py` in the round directory.
 
 Deviations from the prompt, what is not shown, and outstanding maintainer actions are the
-last three sections of that report.  Filed within scope: `PRIORITIES.md` item 94; one
+last three sections of that report.  Filed within scope: `PRIORITIES.md` item 97; one
 `DECISIONS.md` entry (agent-decided, reversible) and one *Awaiting the author* entry.
 
 ## Attribution

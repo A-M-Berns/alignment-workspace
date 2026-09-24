@@ -12,4 +12,4 @@ mediated-repair-dominance, committed-principal-program and non-capture rounds ar
 their own interpreters).  Consumes `../2026-09-16-noncapture-compilation/`,
 `../2026-09-15-li-corrigibility/`, `../2026-09-10-committed-principal-program/`,
 `../2026-09-09-mediated-repair-dominance/`, `../2026-09-07-reason-mediated-authorship/`, and
-the legitimacy rounds named above.  Nothing is registered; item 94 is filed.
+the legitimacy rounds named above.  Nothing is registered; item 97 is filed.

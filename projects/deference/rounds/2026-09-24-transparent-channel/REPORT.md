@@ -336,7 +336,8 @@ provisional (`AGENTS.md` standard 6): `Realizes`, `Transparent`, `defect`, `disa
   causal-contract row of `FINAL_THEOREM.md` §8 and the §9 wall of `wiki/Corrigibility.md`.
 - `ShopK` is a fixture of the mediated-repair-dominance round, not of `PRIORITIES.md`; the
   prompt's "`ShopK`-style obstruction" is read as that fixture.
-- Items 94–100 do not exist; the next free number is 94, which this round files.
+- Items 94–100 do not exist on `main`; the open pull requests #102 and #103 file 94–96 on
+  their branches, so this round files its item as 97 to avoid a collision at merge.
 - The TV formulation the prompt proposed is replaced by the pathwise disagreement mass; the
   prompt asked for exactly that if TV was wrong.
 
@@ -344,5 +345,5 @@ provisional (`AGENTS.md` standard 6): `Realizes`, `Transparent`, `defect`, `disa
 
 1. Rule on the `Awaiting the author` entry this round adds: whether *transparent mediation*
    enters the wiki as a named layer beside Non-Capture and authorship, and under which name.
-2. Decide whether item 94 (filed here) is dispatched before or after item 89's architecture
+2. Decide whether item 97 (filed here) is dispatched before or after item 89's architecture
    question, since T4 makes them one construction.
