@@ -2356,6 +2356,12 @@ T3, Lean `LICorrigibility.li_bypass_le`).  The latent-value bridge of this item 
 unchanged: for an operative value that is not the price of the activated security, the
 completion term and `(CT)` stand as before.
 
+*2026-09-25 (protected-authority-theorem round):* the lexical evaluator
+`S = S_ord − ϖ·n`, `ϖ > D`, is one realization of a `(DV)`-free chooser — its score is the
+price of the ordinary security less an exact violation count — and under it the sign of
+the bypass comparison is fixed whatever the forecast terms (`sign_invariance`,
+`sign_invariance_outcome`); no latent value enters.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -2673,6 +2679,12 @@ occurrence produces under sequenced settlement (`payload_take`).  Its price is
 is hypothesis (L) of item 98.  Whether the hindsight alternative is retired for authority
 comparisons is queued in `DECISIONS.md`.
 
+*2026-09-25 (protected-authority-theorem round):* the fallback window `(D − ϖ, 0]` of the
+allocation theorem is the completion band of the void branch under the lexical score
+(`capture_window`, `capture_window_converse`): a response that does not count is
+replaced by the fallback's value rather than voiding the occurrence, and consulting beats
+bypass in every world iff that value exceeds `D − ϖ`.
+
 ### 90. The generability certificate of the soft-weighted finite-menu constraint — **[open]** — *narrowed 2026-09-15: T3's own certificate is constructed (`LICorrigibilityCertificate.lean`); what remains is T3′'s*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -2871,6 +2883,11 @@ of the dossier and the operative evaluator has no declared reference; its defect
 (`ProtectedAuthority.expect_execDiv_le`), and manufactured divergence is charged nowhere
 else.  Filed as item 98.
 
+*2026-09-25 (protected-authority-theorem round):* the declared amendment effects
+`IsAmend` of the allocation theorem are the amendment event kind the specification tower
+needs; a reallocation is authorized only through their gated release, not through
+ordinary approval (`ReallocAt`, `authPolicy_no_realloc`).
+
 ### 98. The response channel: its reference, its defect in the chain, and the nondelegation certificate — **[substantial]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -2917,6 +2934,52 @@ world to the void-response rule.
 of `wiki/Corrigibility.md` §4 (queued in `DECISIONS.md`).
 *A solution ships:* the reference with its witness and the composed link, or the negative
 with its channel.
+
+*2026-09-25 (protected-authority-theorem round):* the response channel's "counts" is the
+allocation theorem's admissibility condition and its fallback trigger; the lexical
+certificate `ϖ > D` on the committed evaluator is filed beside this item's nondelegation
+certificate as item 99, with delegation safety, allocation completeness, the exact
+reporting duty and the reach cone.
+
+### 99. The allocation floor: delegation safety, allocation completeness, exact shortfall reporting, and the reach cone — **[substantial]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The protected-authority-theorem round (`projects/deference/rounds/2026-09-25-protected-authority-theorem/`)
+states corrigibility as faithfulness to an allocation of authority on the landed
+interaction frame: six violation predicates, the transform `𝔱` extending `𝔠`, and the
+lexical score `S = S_ord − ϖ·n` with `ϖ > D` (`ProtectedAuthorityTheorem.lean`,
+`THEOREM.md`).  Its results rest on four constitutional properties the theorem takes as
+hypotheses and nothing on `main` certifies: (a) **delegation safety** — a delegated effect
+never removes response authority (`DelSafe`; without it `𝔱π` is not corrigible,
+`Witness.delegated_cut`); (b) **allocation completeness** — task moves preserve the
+allocation, an allocation-changing effect is a declared amendment, no amendment is
+delegated (`AllocComplete`; the "approved uncorrectable successor requires amendment, not
+ordinary approval" rule); (c) the **exact reporting duty** — a report required at every
+strict increase of the control shortfall, with no materiality threshold, since any
+threshold admits a salami (`erosion_reported_or_missed`, `Witness.salami`); (d) the
+**reach cone** for foreclosure — a contrastive rollout relation on physical states whose
+faithfulness is external and which must quantify the agent's own future in a way the
+`ReachableCorrectiveControl` §12 defects do not defeat (the round's finite model uses the
+final-step cone with the agent's future fixed to idle).  Also unrealized: `ϖ > D` as a
+certified property of the committed evaluator (the lexical twin of item 98's
+nondelegation certificate), and a state-dependent `Del` for conditional delegation.
+
+*Deliverable shape:* the four properties as declared clauses of the evaluation ecosystem
+with checkers (a delegated-scope filter that rejects authority-removing effects; an
+allocation-change detector on declared effects; a shortfall monitor with a threshold-free
+reporting trigger; a reach cone with the agent quantified universally) and their `Realizes`
+witnesses; the reachable set, shortfall and materiality of the round's §4 Q7 as readings
+of the log; the lexical certificate on committed programs beside the nondelegation
+certificate of item 98; or the exact obstruction with its fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the round's
+delayed-effect, delegated-cut, salami and approved-successor fixtures reproduced against
+the declared clauses.
+*Context:* `REPORT.md` §§2, 4 (Q1, Q7, Q8), 7 and `THEOREM.md` of the round;
+`ProtectedAuthorityTheorem.lean` §§1, 2, 5; `ReachableCorrectiveControl.lean` §12; item 98.
+*Consumed by:* any adoption of `THEOREM.md` as `wiki/Corrigibility.md` §4 (queued in
+`DECISIONS.md`); items 89, 97, 98.
+*A solution ships:* the clauses with their witnesses, or the negative with its fixture.
 
 ## Workspace friction
 

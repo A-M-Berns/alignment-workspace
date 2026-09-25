@@ -107,6 +107,16 @@ commit.
   comparison.  *Turns on:* whether the post's thesis (ii) — authority preservation valued
   separately — is to be a constitutional certificate on the evaluator, a design commitment
   and a vocabulary choice the round cannot make.
+- **Whether `THEOREM.md` of the protected-authority-theorem round becomes
+  `wiki/Corrigibility.md` §4 — corrigibility as faithfulness to an allocation of authority
+  with the lexical evaluator `S = S_ord − ϖ·n`, `ϖ > D` — and whether §1's response-authority
+  framing then sits under it.**  The round
+  (`projects/deference/rounds/2026-09-25-protected-authority-theorem/`) lands the target
+  statement on the landed frame with six corrections and 34 Lean declarations; the lexical
+  evaluator and the protected-authority round's nondelegation certificate are two program
+  properties that both fix the sign of the bypass comparison, and only one is to be the
+  program's design.  *Turns on:* the design commitment (a lexical weight above the ordinary
+  range, or a per-world provenance sign), and the vocabulary of the wiki's central section.
 
 ## Settled
 
@@ -4341,3 +4351,27 @@ time-consistency statement recommitment violates by design.
 licence; identifying drift with joinability; a fully-updated-deference proof (ruled out
 2026-08-11; the companion identity is a reading of that argument's terms, not a theorem
 about it).
+
+### 2026-09-25 — corrigibility as faithfulness to an allocation is stated on the landed frame, with delegation safety, amendment-not-approval, a rule-side fallback, rollout foreclosure and exact reporting as the corrections to the informal statement
+
+Agent-decided, reversible.  The protected-authority-theorem round.  (1) The allocation is
+a datum over the landed interaction (delegated scope, declared amendment effects, an
+allocation reading, a reporting interface); the six violations are predicates on a policy
+at a step of a landed trajectory, pre-emption being the landed unauthorized agent-caused
+loss and foreclosure a contrastive rollout over a reach relation.  (2) The transform `𝔱`
+extends `𝔠` conservatively (`authPolicy_eq_corr`), is violation-free by construction for
+bypass, missed report and exploitation, free of reallocation under allocation
+completeness, and corrigible in the landed sense under effect completeness and delegation
+safety (`corrigible_authPolicy`); a delegated authority-removing effect is the exact
+obstruction (`Witness.delegated_cut`).  (3) The lexical score `S = S_ord − ϖ·n` with
+`ϖ > D` gives belief-independent lexical protection, policy dominance by
+`(ϖ − D)·Pr(violates)`, the capture window `(D − ϖ, 0]` as the exact condition, sign
+invariance over the protected-authority round's terms, and the finite-time claim at every
+day of a logical inductor from the price range alone.  (4) The gradual-erosion conjecture
+is adopted for threshold-free reporting only; any materiality threshold admits a salami.
+(5) Symbols: `ϖ, n, S, 𝔱` for the dispatch's `λ, N, R, T`; `D` kept.  (6) Nothing is
+registered; item 99 is filed; the wiki is untouched pending the queued decision.
+*Rejected alternatives:* counting an approved uncorrectable successor as authorized
+reallocation; the fallback as a policy transform; a materiality threshold on the reporting
+duty; the transient-authority reach cone (misses delayed effects); stating Result 1 for
+foreclosure without a reach hypothesis.

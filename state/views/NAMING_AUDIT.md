@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 518 names, 345 of them Lean only
+## deference — 533 names, 355 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -279,7 +279,7 @@ change, and the count of those is the size of the free choice remaining.
 | `tradeEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.tradeEF` |
 | `weight` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weight` |
 | `weightEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weightEF` |
-| `Pr` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.Pr` |
+| `Pr` | def | 2026-08-11-faithful-acceleration | prose | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.Pr` |
 | `X` | def | 2026-08-11-faithful-acceleration | wiki, note, prose | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.X` |
 | `GatedAt` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.LICorrigibility.GatedAt` |
 | `IndicatorAt` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.LICorrigibility.IndicatorAt` |
@@ -359,6 +359,21 @@ change, and the count of those is the size of the free choice remaining.
 | `respVal` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.respVal` |
 | `valid` | def | 2026-09-24-protected-authority | prose | `Workspace.Deference.Contrib.ProtectedAuthority.Witness.valid` |
 | `vetoValue` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.vetoValue` |
+| `AllocComplete` | structure | 2026-09-25-protected-authority-theorem | prose | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.AllocComplete` |
+| `Allocation` | structure | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.Allocation` |
+| `BypassAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.BypassAt` |
+| `DelSafe` | def | 2026-09-25-protected-authority-theorem | prose | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.DelSafe` |
+| `ExploitAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.ExploitAt` |
+| `ForecloseAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.ForecloseAt` |
+| `Kphys` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.Kphys` |
+| `MissedReportAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.MissedReportAt` |
+| `PreemptAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.PreemptAt` |
+| `ReallocAt` | def | 2026-09-25-protected-authority-theorem | prose | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.ReallocAt` |
+| `ViolAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.ViolAt` |
+| `Violates` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.Violates` |
+| `authMove` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.authMove` |
+| `authPolicy` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.authPolicy` |
+| `score` | def | 2026-09-25-protected-authority-theorem | wiki, prose | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.score` |
 | `AAct` | inductive | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.AAct` |
 | `CanCorrect` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.CanCorrect` |
 | `CanCorrectFuture` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.CanCorrectFuture` |
