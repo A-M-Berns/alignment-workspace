@@ -2663,6 +2663,16 @@ settlement gives `0` by timing at its ex-ante price; a hindsight evaluator needs
 factorization — and the activation-independence clause is the statement that the
 joint mismatch event is empty.
 
+*2026-09-24 (protected-authority round):* for the *authority* comparison the ex-ante
+settled evaluation is the comparison itself, not a price: typing the three values
+`vu, vp, vm` as the operative program's judgments on the branch-common dossier removes the
+hindsight-ratification defect and makes the landed `w_app` (the hindsight evaluator on the
+approve-all trajectory, a counterfactual-principal object) a menu value the activated
+occurrence produces under sequenced settlement (`payload_take`).  Its price is
+`E[ξ_d]` against the information the response legitimately uses beyond the dossier, which
+is hypothesis (L) of item 98.  Whether the hindsight alternative is retired for authority
+comparisons is queued in `DECISIONS.md`.
+
 ### 90. The generability certificate of the soft-weighted finite-menu constraint — **[open]** — *narrowed 2026-09-15: T3's own certificate is constructed (`LICorrigibilityCertificate.lean`); what remains is T3′'s*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -2854,6 +2864,59 @@ data); an **amendment event kind** for the mandate, so the specification tower h
 above zero; the Logical-Induction transfer of the activation defect indicators (a compiled
 `G_M ≤ G_τ` with its generability certificate); and the declared inquiry policy under which
 the engine-ownership clauses of independence become `Realizes` hypotheses.
+
+*2026-09-24 (protected-authority round):* a fourth channel.  The response `r` as a function
+of the dossier and the operative evaluator has no declared reference; its defect
+`τ_resp = P(r ≠ argmax)` bounds the execution divergence `E[ξ_d] ≤ D·τ_resp`
+(`ProtectedAuthority.expect_execDiv_le`), and manufactured divergence is charged nowhere
+else.  Filed as item 98.
+
+### 98. The response channel: its reference, its defect in the chain, and the nondelegation certificate — **[substantial]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The protected-authority round (`projects/deference/rounds/2026-09-24-protected-authority/`)
+signs the incentive half: at a decision point `vu − v_r = ξ_d − ξ_c` exactly, with `ξ_c` the
+consultation premium (provenance premium plus veto value) and `ξ_d = M − v_r ≥ 0` the
+execution divergence of the principal's response from her operative evaluator's argmax
+(`ProtectedAuthority.identity`).  Under nondelegation (`ξ_p ≥ 0` in every world) and a
+legitimate response (`ξ_d = 0`) unasked release scores below the response in every world
+for every credence (`legit_nondelegation_le_zero`, `expect_sub_le_of_pointwise`).  Two
+things the statement rests on do not exist on `main`.  (a) **The response channel's
+reference.**  The transparent-channel round declares references for the reason,
+activation and specification channels and none for the response: `r` as a function of the
+dossier and the operative evaluator, reference the amended evaluator's argmax
+(`argmaxResp`), defect `τ_resp = P(r ≠ ref)`, with `E[ξ_d] ≤ D·τ_resp`
+(`expect_execDiv_le`).  A randomized binding consultation audit calibrates `E_n(ξ_d)` on
+the audited subsequence (`thm:wubexp`-shaped, under the feedback boundary's conditions)
+and bounds nothing off it (`test_manufactured_divergence…`): steering the principal into a
+non-legitimate response, and preventing her response, are defects of this channel and are
+charged nowhere in the non-capture chain.  (b) **Hypothesis (L)** — a legitimate live
+response is an amendment of the operative evaluator, so `ξ_d = 0` — needs the amendment
+event kind item 97 leaves open and a legitimacy predicate on `Amend` under which an
+impairment is a write outside the declared inputs (`tower_factor`'s failure mode); a
+response that legitimately uses information the cell's dossier lacks otherwise registers
+as divergent (`Seq` at cell 0, `E[ξ_d] = 1/8`).  (c) **Nondelegation as a certificate**:
+`π_P(R)(Cᵘ) ≤ π_P(R)(C⁺)` for every dossier and every nondelegated effect is a program
+property checkable at commitment, as extensionality is; conditional delegation `Del(e, R)`
+is a declared predicate extending `Corrigibilization.Authorized`.
+
+*Deliverable shape:* the response channel's declared reference and `Realizes` witness in
+the evaluation ecosystem, the fourth link `E[ξ_d] ≤ D·τ_resp` composed into
+`li_noncapture_chain3` (a gated `Ξ_d ≤ D·G_τ` with its generability certificate), the
+amendment event kind with the predicate under which the head-injury response is a write
+outside the tower, and the nondelegation checker on committed programs with the delegation
+predicate in `Authorized`; or the exact obstruction with its fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the round's
+head-injury, manufactured-divergence and delayed-awakening fixtures reproduced against the
+declared reference, with the manufactured world charged to `τ_resp` and the head-injury
+world to the void-response rule.
+*Context:* `REPORT.md` §§3 (T-A6, T-A9), 7, 8 of the round; `ProtectedAuthority.lean`
+§§1, 6; item 97's residual paragraph; item 89's 2026-09-24 note.
+*Consumed by:* items 87 (a clause the bill does not list), 89, 97; any signed restatement
+of `wiki/Corrigibility.md` §4 (queued in `DECISIONS.md`).
+*A solution ships:* the reference with its witness and the composed link, or the negative
+with its channel.
 
 ## Workspace friction
 

@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 500 names, 331 of them Lean only
+## deference — 518 names, 345 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -160,7 +160,7 @@ change, and the count of those is the size of the free choice remaining.
 | `IsCellMaximiser` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.IsCellMaximiser` |
 | `St` | abbrev | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.St` |
 | `X` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.X` |
-| `cell` | def | 2026-08-11-stage-iii-fud | wiki, note | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.cell` |
+| `cell` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.cell` |
 | `cellMass` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.cellMass` |
 | `cellValue` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.cellValue` |
 | `delta` | def | 2026-08-11-stage-iii-fud | prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.delta` |
@@ -341,6 +341,24 @@ change, and the count of those is the size of the free choice remaining.
 | `regretU` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.regretU` |
 | `regretV` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.regretV` |
 | `voidMass` | def | 2026-09-07-reason-mediated-authorship | wiki, prose | `Workspace.Deference.Contrib.ActivatedValue.voidMass` |
+| `AuthValidAt` | structure | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.AuthValidAt` |
+| `AuthValidAt.ofGated` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.AuthValidAt.ofGated` |
+| `AuthorityPair` | structure | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.AuthorityPair` |
+| `AuthorityPair.Bg` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.AuthorityPair.Bg` |
+| `AuthorityPair.Bl` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.AuthorityPair.Bl` |
+| `argmaxResp` | def | 2026-09-24-protected-authority | prose | `Workspace.Deference.Contrib.ProtectedAuthority.argmaxResp` |
+| `bestResp` | def | 2026-09-24-protected-authority | wiki | `Workspace.Deference.Contrib.ProtectedAuthority.bestResp` |
+| `both` | def | 2026-09-24-protected-authority | wiki, note, prose | `Workspace.Deference.Contrib.ProtectedAuthority.Witness.both` |
+| `consultPremium` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.consultPremium` |
+| `drift` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.drift` |
+| `execDiv` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.execDiv` |
+| `outcomeRes1` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.outcomeRes1` |
+| `outcomeRes2` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.outcomeRes2` |
+| `pair` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.Witness.pair` |
+| `provPremium` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.provPremium` |
+| `respVal` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.respVal` |
+| `valid` | def | 2026-09-24-protected-authority | prose | `Workspace.Deference.Contrib.ProtectedAuthority.Witness.valid` |
+| `vetoValue` | def | 2026-09-24-protected-authority | Lean only | `Workspace.Deference.Contrib.ProtectedAuthority.vetoValue` |
 | `AAct` | inductive | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.AAct` |
 | `CanCorrect` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.CanCorrect` |
 | `CanCorrectFuture` | def | 2026-08-12-reachable-corrective-control | Lean only | `Workspace.Deference.Contrib.ReachableCorrectiveControl.CanCorrectFuture` |
@@ -612,7 +630,7 @@ change, and the count of those is the size of the free choice remaining.
 | `stepClose` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Normativity.Contrib.AuthorityActivation.Witness.stepClose` |
 | `DistanceComplete` | def | 2026-08-16-traderized-enforcement | note, prose | `Workspace.Normativity.Contrib.CoherenceModulus.DistanceComplete` |
 | `IsCredence` | structure | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.IsCredence` |
-| `gap` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.CoherenceModulus.gap` |
+| `gap` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.CoherenceModulus.gap` |
 | `l1` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.l1` |
 | `mixture` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.CoherenceModulus.mixture` |
 | `Computation` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.Computation` |
@@ -1096,7 +1114,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Face` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face` |
 | `Regular` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.Regular` |
 | `candidate` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate` |
-| `cell` | def | unrecorded | wiki, note | `Workspace.Normativity.Contrib.PolyhedralProjection.cell` |
+| `cell` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.PolyhedralProjection.cell` |
 | `coefQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coefQ` |
 | `coord` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coord` |
 | `dim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.dim` |

@@ -96,6 +96,17 @@ commit.
   `activation_eq_of_shared_prefix` to `wiki/Corrigibility.md` §9's sealed-comparison row.
   *Turns on:* vocabulary authority, and whether a third exported contract is wanted where
   the wiki now lists two; the round's names are provisional.
+- **Whether the incentive half of `wiki/Corrigibility.md` §4 (T2–T3′) is restated in the
+  signed protected-authority form, with nondelegation as a certified program property on
+  the committed evaluator, and whether item 89's hindsight-evaluator alternative is retired
+  for authority comparisons.**  The protected-authority round
+  (`projects/deference/rounds/2026-09-24-protected-authority/`) shows the identity is the
+  landed one at the best-response reference, that the signed conclusion needs a per-world
+  sign certificate on the evaluator the landed theorem does not need and the time-critical
+  fixtures fail, and that the ex-ante typing is what makes the comparison an authority
+  comparison.  *Turns on:* whether the post's thesis (ii) — authority preservation valued
+  separately — is to be a constitutional certificate on the evaluator, a design commitment
+  and a vocabulary choice the round cannot make.
 
 ## Settled
 
@@ -4283,3 +4294,50 @@ advisor-authored events as the view (vacuous or wrong-signed); reading the marke
 publication out of the view to save selection blindness (it would misclassify a declared
 input as a hidden read; the fix is not to publish before commitment); a second evaluator
 log to express factorization (outside the model); promoting "transparent mediation" now.
+
+### 2026-09-24 — the incentive half signs as the landed identity at the best-response reference, nondelegation is a program property, and the response channel is the wall it rests on
+
+Agent-decided, reversible.  The protected-authority round.  (1) The bypass premium at a
+decision point is `vu − v_r = ξ_d − ξ_c` with the reference `M = max(vp, vm)`, the
+consultation premium `ξ_c = ξ_p + ξ_v` (provenance premium plus veto value) and the
+execution divergence `ξ_d = M − v_r ≥ 0`; pointwise the landed decline regret is
+`(ξ_d − ξ_v)₊` and the landed mediation gap `(−ξ_p)₊`, so the restatement is a re-reading
+of `LICorrigibility.mismatch_identity`, not a new decomposition (Lean
+`ProtectedAuthority.identity`, the re-scored fixtures).  (2) The corrigibility condition
+is per-world nondelegation `ξ_p ≥ 0`, a property of the committed evaluator checkable at
+commitment; per-world `ξ_c ≥ 0` coincides with it on legitimate approve worlds and is
+weaker only on decline worlds where the veto value covers a delay cost, and the expected
+condition is belief-dependent (predicted approval).  (3) The three values are typed as the
+operative program's ex-ante judgments on the branch-common dossier; the landed hindsight
+`w_app` is the counterfactual-principal object and the typing is its repair.  (4) The
+symbols are `ξ_p, ξ_v, ξ_c, ξ_d, o₁, o₂`; the dispatch's `γ, ν, χ, ξ, η₁, η₂` are not used
+because `γ, ν, χ, η` are bound.  (5) Nothing is registered; item 98 is filed; the wiki is
+untouched.
+*Rejected alternatives:* keeping the dispatch's symbols; per-world `ξ_c ≥ 0` as the
+condition; presenting the signed form as a strict improvement on T2–T3′ as theorems
+(the hypothesis packages are incomparable); a wiki restatement ahead of the maintainer's
+vocabulary decision.
+
+### 2026-09-24 — hypothesis (L) is a typing decision that puts the content of a legitimate response into the amendment tower, and the randomized audit calibrates the divergence without controlling it
+
+Agent-decided, reversible.  (1) "A legitimate live response is an amendment of the
+operative evaluator, so `ξ_d = 0`" is circular by construction and is adopted as the
+reading: `ξ_d = 0` iff the response is the amended evaluator's argmax
+(`legit_execDiv_zero`), two continuations agreeing on the declared amendment inputs share
+their divergence (`execDiv_of_tower`, on `tower_factor`), and all content sits in what
+`Amend` admits, which is where Integrity and Robust Openness of the principal's own
+deliberation are stated; Legitimacy is not redefined.  (2) `ξ_d > 0` detects either an
+illegitimate response or an amendment the tower failed to record, and the identity cannot
+tell them apart: the head-injury and the manufactured world carry the same numbers and
+the same override licence `ξ_d > ξ_c`; the head-injury case the post wants is a
+conditional delegation for incapacity declared in advance, not a bypass.  (3) The
+randomized binding consultation audit calibrates `E_n(ξ_d)` on the audited subsequence
+under the feedback boundary's conditions and bounds nothing off it; the control is the
+response channel's reference fidelity, `E[ξ_d] ≤ D·τ_resp`, a fourth link the chain does
+not have (item 98).  (4) Drift under one fixed evaluator is not `SHIFT`; the node-wise
+statement is the target for corrigibility proper and the global comparison is a
+time-consistency statement recommitment violates by design.
+*Rejected alternatives:* stating (L) as a theorem; reading `ξ_d > 0` as an override
+licence; identifying drift with joinability; a fully-updated-deference proof (ruled out
+2026-08-11; the companion identity is a reading of that argument's terms, not a theorem
+about it).

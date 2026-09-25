@@ -1446,6 +1446,25 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-24-transparent-channel/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-24-protected-authority",
+      "date": "2026-09-24",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-24-protected-authority",
+      "verdict": "SIGNED-RESTATEMENT-IS-THE-LANDED-IDENTITY-AT-THE-BEST-RESPONSE-REFERENCE-AND-THE-RESPONSE-CHANNEL-IS-THE-NEW-WALL — the protected-authority identity vu − v_r = ξ_d − ξ_c = ξ_d − ξ_p − ξ_v is the landed directional-mismatch identity with the reference moved from the approve branch to the evaluator's best response, exact in every world, with the landed decline regret equal to (ξ_d − ξ_v)₊ and the landed mediation gap equal to (−ξ_p)₊ pointwise, so the restatement renames nothing and signs what the landed bound takes positive parts of; under nondelegation, a per-world sign certificate on the committed evaluator that prices provenance above every delay cost and is checkable at commitment like extensionality, and a legitimate response, unasked release scores below the response in every world and strictly below it wherever the consultation premium is positive, for every credence, with no stability certificate, and Logical Induction learns the identity in both directions through the pinned expectation-coherence theorem; the landed hypothesis package holds for every evaluator and the signed one does not, the time-critical fixtures failing it, so the two are incomparable and the candidate improves the bound where the constitution makes nondelegation true; the counterfactual-principal defect is real of the landed hindsight w_app and is removed by typing all three values as the operative program's ex-ante judgments on the branch-common dossier, which makes sequenced settlement the definition of the authority comparison rather than a price, at the cost that a response legitimately using information the dossier lacks registers as divergent unless it is an amendment of the evaluator, which is hypothesis (L), a typing decision that puts all content into the amendment tower's admission rule; per-world ξ_c ≥ 0 and ξ_p ≥ 0 coincide on legitimate approve worlds and differ on decline worlds whose veto value covers a delay cost, while predicted approval separates the expected condition from both, so nondelegation is the corrigibility condition; the execution divergence ξ_d carries content on decline worlds only, is the defect of a response channel nothing on main declares a reference for, is calibrated and not controlled by a randomized binding audit, and licenses an override exactly when it exceeds the consultation premium whether the divergence is an impairment or was manufactured, which the identity cannot distinguish; the outcome-scoring companion isolates the provenance value outcome scoring discards and the forecast disagreement with the evaluator, the latter the term through which the fully-updated-deference argument's specificity vanishes, while the evaluator's veto value is forecast-invariant; the sequential bound is a union bound, the global comparison under one fixed evaluator picks up a nonnegative drift that legitimate recommitment creates by design and that is not SHIFT; an undeclared route's motive is removed by concern completeness of the evaluator and nondelegation of the concern, not by the gate; an approved uncorrectable successor satisfies every hypothesis; the architecture is an effect interface plus a reason interface joined by a uniform authority score, with the response channel and concern completeness added to the walls and sealed comparison reduced to a typing.",
+      "verdict_source": "projects/deference/rounds/2026-09-24-protected-authority/README.md",
+      "depends_on": [
+        "2026-09-24-transparent-channel",
+        "2026-09-16-noncapture-compilation",
+        "2026-09-15-li-corrigibility",
+        "2026-09-10-committed-principal-program",
+        "2026-09-09-mediated-repair-dominance"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-24-protected-authority/PROMPT.md",
+      "claim_changes": []
     }
 ]
 }
