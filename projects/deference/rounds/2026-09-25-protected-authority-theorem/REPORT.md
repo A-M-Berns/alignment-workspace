@@ -32,7 +32,8 @@ transform of *her* rule, foreclosure needs a rollout the landed loss does not ha
 the erosion conjecture holds only for threshold-free reporting.  What remains external is
 the same trio as before — effect completeness, now with its delegation and allocation
 twins; the evaluator's certificate (`ϖ > D` is a program property); the reach relation's
-faithfulness — plus the response channel of item 98.
+faithfulness — plus the legitimacy of the segment through each evaluation, which the
+gate consumes (the legitimacy-internal-external round specifies it).
 
 The theorem is *not* stronger than the corrigibility nucleus already landed; it is that
 nucleus with an allocation on top and a lexical evaluator underneath.  What the lexical
@@ -249,8 +250,8 @@ compiled `AuthorityPair` with the bypass indicator.
 |---|---|
 | 84 | the lexical evaluator is one realization of a `(DV)`-free chooser: the score is the price of the ordinary security less an exact count; no latent value |
 | 89 | the fallback window is the completion band for the void branch under the lexical score; ex-ante typing as before |
-| 97 | the response channel's reference (item 98) is where "counts" is decided; `IsAmend` is the amendment event kind the specification tower needs |
-| 98 | (DS), (AC) and the exact reporting duty join the response reference as the floor's certificates; filed as item 99 |
+| 97 | "counts" is the segment gate — legitimacy of the segment through the evaluation; `IsAmend` is the amendment event kind the specification tower needs |
+| 98 | (DS), (AC) and the exact reporting duty join the nondelegation certificate as the floor's certificates; filed as item 99 |
 
 ## Deviations from the prompt
 

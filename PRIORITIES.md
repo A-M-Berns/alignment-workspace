@@ -2685,6 +2685,13 @@ allocation theorem is the completion band of the void branch under the lexical s
 replaced by the fallback's value rather than voiding the occurrence, and consulting beats
 bypass in every world iff that value exceeds `D − ϖ`.
 
+*2026-09-25 (legitimacy-internal-external round):* recorded: the ex-ante typing of the
+three values on the branch-common dossier is the typing of the authority comparison in the
+protected-authority round's identity (its Result 5 in the lexical theorem); the lexical
+theorem itself does not depend on it.  The gate window `(D − ϖ, 0]` is the completion band
+of a tainted segment, and a void response inside a legitimate segment is settled by the
+fallback and scored normally.
+
 ### 90. The generability certificate of the soft-weighted finite-menu constraint — **[open]** — *narrowed 2026-09-15: T3's own certificate is constructed (`LICorrigibilityCertificate.lean`); what remains is T3′'s*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -2888,7 +2895,15 @@ else.  Filed as item 98.
 needs; a reallocation is authorized only through their gated release, not through
 ordinary approval (`ReallocAt`, `authPolicy_no_realloc`).
 
-### 98. The response channel: its reference, its defect in the chain, and the nondelegation certificate — **[substantial]**
+*2026-09-25 (legitimacy-internal-external round):* transparency covers every channel of
+influence on the principal's cognition, including the **consultation protocol** — how and
+when she is asked — and disclosed actions in the world; which influence is admissible is the
+declared reference's to decide.  The reason channel's declared scope is therefore where
+asking-at-a-chosen-moment, framing and dark patterns are charged; no separate response
+channel exists (item 98).  The amendment event kind is what hypothesis (L) of item 98 and
+the specification tower both need.
+
+### 98. The nondelegation certificate and the amendment event kind — **[substantial]** — *rewritten 2026-09-25: the response-channel contract this item first filed is dissolved; its failure modes are covered by transparency (the consultation protocol in scope), authentication (Integrity), the pre-emption and foreclosure violations, the void-response rule, and constitutional design*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
 
@@ -2897,49 +2912,49 @@ signs the incentive half: at a decision point `vu − v_r = ξ_d − ξ_c` exact
 consultation premium (provenance premium plus veto value) and `ξ_d = M − v_r ≥ 0` the
 execution divergence of the principal's response from her operative evaluator's argmax
 (`ProtectedAuthority.identity`).  Under nondelegation (`ξ_p ≥ 0` in every world) and a
-legitimate response (`ξ_d = 0`) unasked release scores below the response in every world
-for every credence (`legit_nondelegation_le_zero`, `expect_sub_le_of_pointwise`).  Two
-things the statement rests on do not exist on `main`.  (a) **The response channel's
-reference.**  The transparent-channel round declares references for the reason,
-activation and specification channels and none for the response: `r` as a function of the
-dossier and the operative evaluator, reference the amended evaluator's argmax
-(`argmaxResp`), defect `τ_resp = P(r ≠ ref)`, with `E[ξ_d] ≤ D·τ_resp`
-(`expect_execDiv_le`).  A randomized binding consultation audit calibrates `E_n(ξ_d)` on
-the audited subsequence (`thm:wubexp`-shaped, under the feedback boundary's conditions)
-and bounds nothing off it (`test_manufactured_divergence…`): steering the principal into a
-non-legitimate response, and preventing her response, are defects of this channel and are
-charged nowhere in the non-capture chain.  (b) **Hypothesis (L)** — a legitimate live
-response is an amendment of the operative evaluator, so `ξ_d = 0` — needs the amendment
+response that is the evaluator's argmax (`ξ_d = 0`), unasked release scores below the
+response in every world for every credence (`argmax_nondelegation_le_zero`,
+`expect_sub_le_of_pointwise`); the lexical protected-authority theorem of the
+2026-09-25 rounds dominates the same comparison with one weight and is the adopted
+incentive half, so this result is its non-lexical special case.  What remains of the item:
+
+(a) **Nondelegation as a certificate**: `π_P(R)(Cᵘ) ≤ π_P(R)(C⁺)` for every dossier and
+every nondelegated effect is a program property checkable at commitment, as extensionality
+is; beside it the lexical certificate `ϖ > D` of item 99; and a conditional delegation
+`Del(e, R)` as a declared predicate extending `Corrigibilization.Authorized`.
+(b) **The amendment event kind**: a legitimate live response is an amendment of the
+operative evaluator (`ξ_d = 0` against the amended evaluator), which needs the amendment
 event kind item 97 leaves open and a legitimacy predicate on `Amend` under which an
 impairment is a write outside the declared inputs (`tower_factor`'s failure mode); a
 response that legitimately uses information the cell's dossier lacks otherwise registers
-as divergent (`Seq` at cell 0, `E[ξ_d] = 1/8`).  (c) **Nondelegation as a certificate**:
-`π_P(R)(Cᵘ) ≤ π_P(R)(C⁺)` for every dossier and every nondelegated effect is a program
-property checkable at commitment, as extensionality is; conditional delegation `Del(e, R)`
-is a declared predicate extending `Corrigibilization.Authorized`.
+as divergent (`Seq` at cell 0, `E[ξ_d] = 1/8`).
 
-*Deliverable shape:* the response channel's declared reference and `Realizes` witness in
-the evaluation ecosystem, the fourth link `E[ξ_d] ≤ D·τ_resp` composed into
-`li_noncapture_chain3` (a gated `Ξ_d ≤ D·G_τ` with its generability certificate), the
-amendment event kind with the predicate under which the head-injury response is a write
-outside the tower, and the nondelegation checker on committed programs with the delegation
-predicate in `Authorized`; or the exact obstruction with its fixture.
+`ξ_d` is read as the measure of *uncaused* divergence — an impairment, a lapse — handled by
+the void-response rule and the declared fallback inside a legitimate segment.  Every
+*caused* divergence is covered by an existing piece and is not a channel the agent can
+exploit: asking at a chosen moment, framing and dark patterns are transparency failures
+with the consultation protocol in the reason channel's declared scope (item 97); forged or
+replayed approvals and answers recorded early are authentication failures under Integrity;
+blocking her answer, withdrawing the question and delaying her awakening are pre-emption or
+foreclosure violations of the allocation theorem; impaired answers are void and the fallback
+decides; her own uncaused lapses are constitutional design (confirmation steps) plus the
+reporting duty.  The segment gate of the legitimacy-internal-external round makes a
+manipulated segment score the window value whatever caused it, so routing a decision to a
+favourable fallback by manipulation is dominated (`Legitimacy.Witness.routing`).
+
+*Deliverable shape:* the nondelegation checker on committed programs with the delegation
+predicate in `Authorized`; the amendment event kind with the predicate under which the
+head-injury response is a write outside the tower, so that `ξ_d = 0` against the amended
+evaluator is a re-execution check; or the exact obstruction with its fixture.
 *Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the round's
-head-injury, manufactured-divergence and delayed-awakening fixtures reproduced against the
-declared reference, with the manufactured world charged to `τ_resp` and the head-injury
-world to the void-response rule.
-*Context:* `REPORT.md` §§3 (T-A6, T-A9), 7, 8 of the round; `ProtectedAuthority.lean`
-§§1, 6; item 97's residual paragraph; item 89's 2026-09-24 note.
-*Consumed by:* items 87 (a clause the bill does not list), 89, 97; any signed restatement
-of `wiki/Corrigibility.md` §4 (queued in `DECISIONS.md`).
-*A solution ships:* the reference with its witness and the composed link, or the negative
-with its channel.
-
-*2026-09-25 (protected-authority-theorem round):* the response channel's "counts" is the
-allocation theorem's admissibility condition and its fallback trigger; the lexical
-certificate `ϖ > D` on the committed evaluator is filed beside this item's nondelegation
-certificate as item 99, with delegation safety, allocation completeness, the exact
-reporting duty and the reach cone.
+head-injury and manufactured-divergence fixtures reproduced with the manufactured world
+charged as a tainted segment and the head-injury world to the void-response rule.
+*Context:* `REPORT.md` §§3 (T-A6, T-A9), 7, 8 of the protected-authority round;
+`ProtectedAuthority.lean` §§1, 6; `Legitimacy.lean` §2; item 97's residual paragraph;
+item 99.
+*Consumed by:* items 87, 89, 97, 99; the segment gate of `wiki/Corrigibility.md` §4.
+*A solution ships:* the certificate and the event kind with their witnesses, or the
+negative with its fixture.
 
 ### 99. The allocation floor: delegation safety, allocation completeness, exact shortfall reporting, and the reach cone — **[substantial]**
 
@@ -2980,6 +2995,13 @@ the declared clauses.
 *Consumed by:* any adoption of `THEOREM.md` as `wiki/Corrigibility.md` §4 (queued in
 `DECISIONS.md`); items 89, 97, 98.
 *A solution ships:* the clauses with their witnesses, or the negative with its fixture.
+
+*2026-09-25 (legitimacy-internal-external round):* the salami obstruction is against a
+*per-step* threshold only; a *cumulative* threshold (report when the shortfall has grown by
+`θ` since the last report) bounds unreported erosion by `θ` at every time
+(`Legitimacy.unreported_lt`), so the exact-reporting clause may be relaxed to a cumulative
+one.  The floor's certificates sit beside the segment gate, which is legitimacy's (not the
+floor's) to supply.
 
 ## Workspace friction
 

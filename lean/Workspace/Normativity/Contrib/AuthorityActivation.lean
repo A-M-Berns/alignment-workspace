@@ -21,11 +21,11 @@ is already pointwise in the occurrence.
 * `Step.propagate_congr`, `Segment.propagate_congr` — **propagation is occurrence-local**:
   the propagated account of `o` depends only on `o`'s own source account and the
   certificate, not on any other occurrence's account.
-* `OpenAtFor`, `LegitimateForSegment`, `LegitimateSegment.project` — **occurrence-local
+* `OpenAtFor`, `OpenIntegrityForSegment`, `OpenIntegritySegment.project` — **occurrence-local
   legitimacy** is a projection of the existing certificate onto a declared concern set:
   the same evolution, openness required only for the concerns in scope.
 * `Witness.unrelated_failure` — an exact trajectory that is legitimate for the concern in
-  scope and not globally legitimate, because an unrelated concern is routeless at the
+  scope and not globally open, because an unrelated concern is routeless at the
   middle state.
 * `Witness.closed_not_activated` — a closure receipt discharging the same occurrence does
   not activate.
@@ -37,7 +37,7 @@ principal committed to (semantic authentication of the history), that any proces
 certificate means what it says, or that any account is ever answered.  Names are
 provisional (`AGENTS.md` standard 6).
 -/
-import Workspace.Normativity.Contrib.LegitimateEvolution
+import Workspace.Normativity.Contrib.OpenIntegrityEvolution
 import Mathlib.Algebra.BigOperators.Fin
 import Mathlib.Algebra.Order.BigOperators.Group.Finset
 
@@ -162,7 +162,7 @@ end Workspace.Normativity.Contrib.OccurrenceIntegrity.Program
 namespace Workspace.Normativity.Contrib.AuthorityActivation
 
 open Workspace.Normativity.Contrib.OccurrenceIntegrity
-open Workspace.Normativity.Contrib.LegitimateEvolution
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution
 open Workspace.Normativity.Contrib.NonCapture
 
 variable {Occ : Type u} {Req : Type v} {S : Protocol.{u, v, w} Occ Req}
@@ -211,10 +211,10 @@ theorem OpenAtFor.of_openAt (scope : Finset Γ) {sem : OpennessSemantics S ancho
     {O : ObligationState S anchor} (h : OpenAt sem O) : OpenAtFor scope sem O :=
   fun c _ => h c
 
-/-- **Occurrence-local legitimacy**: the same Integrity evolution, open at every state for
+/-- **Occurrence-local open Integrity**: the same Integrity evolution, open at every state for
 the concerns in `scope`.  For an evaluation occurrence, `scope` is the concern set the
 application declares relevant to it. -/
-structure LegitimateForSegment (scope : Finset Γ) (sem : OpennessSemantics S anchor Γ J R)
+structure OpenIntegrityForSegment (scope : Finset Γ) (sem : OpennessSemantics S anchor Γ J R)
     (O₀ O₁ : ObligationState S anchor) where
   evolution : Evolution S anchor O₀ O₁
   openAll : evolution.AllStates (OpenAtFor scope sem)
@@ -229,35 +229,35 @@ theorem Evolution.AllStates.mono {P P' : ObligationState S anchor → Prop}
 
 /-- **Projection.**  A globally legitimate segment is legitimate for every scope, with the
 same evolution. -/
-def LegitimateSegment.project (scope : Finset Γ) {sem : OpennessSemantics S anchor Γ J R}
-    {O₀ O₁ : ObligationState S anchor} (leg : LegitimateSegment S anchor sem O₀ O₁) :
-    LegitimateForSegment scope sem O₀ O₁ :=
+def OpenIntegritySegment.project (scope : Finset Γ) {sem : OpennessSemantics S anchor Γ J R}
+    {O₀ O₁ : ObligationState S anchor} (leg : OpenIntegritySegment S anchor sem O₀ O₁) :
+    OpenIntegrityForSegment scope sem O₀ O₁ :=
   ⟨leg.evolution, Evolution.AllStates.mono (fun _ => OpenAtFor.of_openAt scope) leg.openAll⟩
 
-theorem LegitimateSegment.project_evolution (scope : Finset Γ)
+theorem OpenIntegritySegment.project_evolution (scope : Finset Γ)
     {sem : OpennessSemantics S anchor Γ J R} {O₀ O₁ : ObligationState S anchor}
-    (leg : LegitimateSegment S anchor sem O₀ O₁) :
-    (LegitimateSegment.project scope leg).evolution = leg.evolution := rfl
+    (leg : OpenIntegritySegment S anchor sem O₀ O₁) :
+    (OpenIntegritySegment.project scope leg).evolution = leg.evolution := rfl
 
 /-- Local certificates compose at a shared state, like global ones. -/
-def LegitimateForSegment.trans {scope : Finset Γ} {sem : OpennessSemantics S anchor Γ J R}
+def OpenIntegrityForSegment.trans {scope : Finset Γ} {sem : OpennessSemantics S anchor Γ J R}
     {O₀ O₁ O₂ : ObligationState S anchor}
-    (left : LegitimateForSegment scope sem O₀ O₁)
-    (right : LegitimateForSegment scope sem O₁ O₂) :
-    LegitimateForSegment scope sem O₀ O₂ :=
+    (left : OpenIntegrityForSegment scope sem O₀ O₁)
+    (right : OpenIntegrityForSegment scope sem O₁ O₂) :
+    OpenIntegrityForSegment scope sem O₀ O₂ :=
   ⟨left.evolution.trans right.evolution, left.openAll.trans right.openAll⟩
 
 /-- A local certificate carries the conservation theorem unchanged. -/
-theorem LegitimateForSegment.conservation {scope : Finset Γ}
+theorem OpenIntegrityForSegment.conservation {scope : Finset Γ}
     {sem : OpennessSemantics S anchor Γ J R} {O₀ O₁ : ObligationState S anchor}
-    (leg : LegitimateForSegment scope sem O₀ O₁) : Conservation S anchor O₀ O₁ :=
+    (leg : OpenIntegrityForSegment scope sem O₀ O₁) : Conservation S anchor O₀ O₁ :=
   leg.evolution.conservation
 
 /-- **The activation read at the end of a local certificate is determined by the
 occurrence's own account at the start and the certificate's segment.** -/
-theorem LegitimateForSegment.activation_local {scope : Finset Γ}
+theorem OpenIntegrityForSegment.activation_local {scope : Finset Γ}
     {sem : OpennessSemantics S anchor Γ J R} {O₀ O₁ : ObligationState S anchor}
-    (leg : LegitimateForSegment scope sem O₀ O₁) (o : Occ) (h₁ : o ∈ O₁.boundary.exposed)
+    (leg : OpenIntegrityForSegment scope sem O₀ O₁) (o : Occ) (h₁ : o ∈ O₁.boundary.exposed)
     (account' : Accounted S anchor O₀.boundary)
     (h : ∀ h₀, O₀.account o h₀ = account' o h₀) :
     (O₁.account o h₁).activated
@@ -305,7 +305,7 @@ end Neutral
 namespace Witness
 
 open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness
-open Workspace.Normativity.Contrib.LegitimateEvolution.Witness
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness
 open Workspace.Normativity.Contrib.NonCapture.Witness (st)
 
 /-- A closure of the same anchor, by settlement, at the same event. -/
@@ -362,7 +362,7 @@ def semTwo : OpennessSemantics protocol wAnchor (Fin 2) (Fin 1) (Fin 1) :=
   fun O c => if c = 1 ∧ O.boundary.history = [0, 1] then closedS else openS
 
 /-- **Unrelated global failure.**  The trajectory is legitimate for the scope `{0}` and not
-globally legitimate. -/
+globally open. -/
 theorem unrelated_failure :
     (ev₀₁.trans ev₁₂).AllStates (OpenAtFor {0} semTwo) ∧
     ¬ (ev₀₁.trans ev₁₂).AllStates (OpenAt semTwo) := by
@@ -374,7 +374,7 @@ theorem unrelated_failure :
     exact (by decide : ¬ OpenAt semTwo state₁) h'.2.1
 
 /-- The local certificate exists where the global one does not. -/
-def legLocal : LegitimateForSegment {0} semTwo state₀ state₂ :=
+def segLocal : OpenIntegrityForSegment {0} semTwo state₀ state₂ :=
   ⟨ev₀₁.trans ev₁₂, unrelated_failure.1⟩
 
 end Witness
@@ -394,13 +394,13 @@ end Workspace.Normativity.Contrib.AuthorityActivation
 #print axioms Workspace.Normativity.Contrib.AuthorityActivation.Step.propagate_congr
 #print axioms Workspace.Normativity.Contrib.AuthorityActivation.Segment.propagate_congr
 #print axioms Workspace.Normativity.Contrib.AuthorityActivation.OpenAtFor.of_openAt
-#print axioms Workspace.Normativity.Contrib.AuthorityActivation.LegitimateSegment.project
-#print axioms Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.trans
-#print axioms Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.conservation
-#print axioms Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.activation_local
+#print axioms Workspace.Normativity.Contrib.AuthorityActivation.OpenIntegritySegment.project
+#print axioms Workspace.Normativity.Contrib.AuthorityActivation.OpenIntegrityForSegment.trans
+#print axioms Workspace.Normativity.Contrib.AuthorityActivation.OpenIntegrityForSegment.conservation
+#print axioms Workspace.Normativity.Contrib.AuthorityActivation.OpenIntegrityForSegment.activation_local
 #print axioms Workspace.Normativity.Contrib.AuthorityActivation.Neutral.certifiable_iff
 #print axioms Workspace.Normativity.Contrib.AuthorityActivation.Neutral.certifiable_congr
 #print axioms Workspace.Normativity.Contrib.AuthorityActivation.Witness.closed_not_activated
 #print axioms Workspace.Normativity.Contrib.AuthorityActivation.Witness.activation_persists
 #print axioms Workspace.Normativity.Contrib.AuthorityActivation.Witness.unrelated_failure
-#print axioms Workspace.Normativity.Contrib.AuthorityActivation.Witness.legLocal
+#print axioms Workspace.Normativity.Contrib.AuthorityActivation.Witness.segLocal

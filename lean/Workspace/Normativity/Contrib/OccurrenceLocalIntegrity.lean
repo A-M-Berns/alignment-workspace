@@ -3,7 +3,7 @@
 
 Round `projects/deference/rounds/2026-09-07-reason-mediated-authorship/`.
 
-`AuthorityActivation.LegitimateForSegment` scopes Robust Openness to the concerns relevant
+`AuthorityActivation.OpenIntegrityForSegment` scopes Robust Openness to the concerns relevant
 to one occurrence but still carries a global `Evolution`: every occurrence's account is
 propagated through every step.  This module isolates the weakest Integrity object the
 evaluation consumer needs — the **local trace** of one occurrence's own account — and
@@ -18,9 +18,9 @@ shows it is a projection of the global object.
 * `Step.toLocal`, `Evolution.toLocalTrace` — **projection**: a global step or evolution
   restricts to a local step or trace of any occurrence exposed at the start, and the
   local trace's endpoint is the globally propagated account.
-* `LocalLegit` — the occurrence-local legitimacy certificate: a local trace whose states
+* `LocalOpenIntegrity` — the occurrence-local legitimacy certificate: a local trace whose states
   are explicit snapshots, each robustly open for the declared scope.
-  `LegitimateForSegment.toLocalLegit` projects the scoped-openness certificate to it.
+  `OpenIntegrityForSegment.toLocalOpenIntegrity` projects the scoped-openness certificate to it.
 * `Witness.unrelated_integrity_failure` — a trajectory on which occurrence `1` disappears
   (no global `Evolution` exists, by conservation of exposure) while occurrence `0`'s
   account propagates and its scope is open: the local certificate is inhabited.
@@ -72,7 +72,7 @@ end Workspace.Normativity.Contrib.OccurrenceIntegrity.Program
 namespace Workspace.Normativity.Contrib.OccurrenceLocalIntegrity
 
 open Workspace.Normativity.Contrib.OccurrenceIntegrity
-open Workspace.Normativity.Contrib.LegitimateEvolution
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution
 open Workspace.Normativity.Contrib.AuthorityActivation
 
 variable {Occ : Type u} {Req : Type v} {S : Protocol.{u, v, w} Occ Req}
@@ -149,7 +149,7 @@ theorem Step.toLocal_propagate {A B : Boundary Occ Req} (step : Step S anchor A 
 
 /-- **Projection.**  A global evolution restricts to a local trace of any occurrence
 exposed at its start, ending at the globally propagated account. -/
-def _root_.Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toLocalTrace :
+def _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.toLocalTrace :
     {O₀ O₁ : ObligationState S anchor} → (ev : Evolution S anchor O₀ O₁) →
     (h₀ : o ∈ O₀.boundary.exposed) →
     LocalTrace (S := S) (anchor := anchor) o O₀.boundary (O₀.account o h₀) O₁.boundary
@@ -165,51 +165,51 @@ def _root_.Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toLocalTr
 
 variable {Γ J R : Type}
 
-/-- **Occurrence-local legitimacy**: explicit state snapshots, each robustly open for the
+/-- **Occurrence-local open Integrity**: explicit state snapshots, each robustly open for the
 declared scope, with the occurrence's own account propagated locally between consecutive
 snapshots.  Other occurrences' accounts are unconstrained. -/
-inductive LocalLegit (scope : Finset Γ) (sem : OpennessSemantics S anchor Γ J R) :
+inductive LocalOpenIntegrity (scope : Finset Γ) (sem : OpennessSemantics S anchor Γ J R) :
     (O : ObligationState S anchor) → o ∈ O.boundary.exposed →
     (O' : ObligationState S anchor) → o ∈ O'.boundary.exposed → Type (max u v w)
   | refl (O) (h : o ∈ O.boundary.exposed) (open_ : OpenAtFor scope sem O) :
-      LocalLegit scope sem O h O h
+      LocalOpenIntegrity scope sem O h O h
   | cons {O₁ O₂ O₃ : ObligationState S anchor} {h₁ : o ∈ O₁.boundary.exposed}
       {h₂ : o ∈ O₂.boundary.exposed} {h₃ : o ∈ O₃.boundary.exposed}
       (open_ : OpenAtFor scope sem O₁)
       (ls : LocalStep (S := S) (anchor := anchor) o O₁.boundary O₂.boundary (O₁.account o h₁))
       (hprop : ls.propagate = O₂.account o h₂)
-      (tail : LocalLegit scope sem O₂ h₂ O₃ h₃) : LocalLegit scope sem O₁ h₁ O₃ h₃
+      (tail : LocalOpenIntegrity scope sem O₂ h₂ O₃ h₃) : LocalOpenIntegrity scope sem O₁ h₁ O₃ h₃
 
 /-- The recursive projection: an evolution open at every state for the scope gives a local
 certificate for any occurrence exposed at its start. -/
-def _root_.Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toLocalLegit
+def _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.toLocalOpenIntegrity
     {scope : Finset Γ} {sem : OpennessSemantics S anchor Γ J R} :
     {O₀ O₁ : ObligationState S anchor} → (ev : Evolution S anchor O₀ O₁) →
     ev.AllStates (OpenAtFor scope sem) → (h₀ : o ∈ O₀.boundary.exposed) →
-    LocalLegit (S := S) (anchor := anchor) o scope sem O₀ h₀ O₁
+    LocalOpenIntegrity (S := S) (anchor := anchor) o scope sem O₀ h₀ O₁
       (ev.conservation.exposure h₀)
   | _, _, .refl O, openAll, h₀ => .refl O h₀ openAll
   | O₀, O₂, .cons (O₁ := O₁) step propagates tail, openAll, h₀ =>
       let h₁ : o ∈ O₁.boundary.exposed := step.exposures h₀
       .cons openAll.1 (step.toLocal o h₀ (O₀.account o h₀))
         (by rw [Step.toLocal_propagate (o := o) step h₀ O₀.account h₁, propagates])
-        (tail.toLocalLegit openAll.2 h₁)
+        (tail.toLocalOpenIntegrity openAll.2 h₁)
 
 /-- **Projection of the scoped-openness certificate.** -/
-def _root_.Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.toLocalLegit
+def _root_.Workspace.Normativity.Contrib.AuthorityActivation.OpenIntegrityForSegment.toLocalOpenIntegrity
     {scope : Finset Γ} {sem : OpennessSemantics S anchor Γ J R}
     {O₀ O₁ : ObligationState S anchor}
-    (leg : LegitimateForSegment scope sem O₀ O₁) (h₀ : o ∈ O₀.boundary.exposed) :
-    LocalLegit (S := S) (anchor := anchor) o scope sem O₀ h₀ O₁
+    (leg : OpenIntegrityForSegment scope sem O₀ O₁) (h₀ : o ∈ O₀.boundary.exposed) :
+    LocalOpenIntegrity (S := S) (anchor := anchor) o scope sem O₀ h₀ O₁
       (leg.evolution.conservation.exposure h₀) :=
-  leg.evolution.toLocalLegit o leg.openAll h₀
+  leg.evolution.toLocalOpenIntegrity o leg.openAll h₀
 
 /-! ## 4. Witness: an unrelated Integrity failure -/
 
 namespace Witness
 
 open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness
-open Workspace.Normativity.Contrib.LegitimateEvolution.Witness
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness
 open Workspace.Normativity.Contrib.AuthorityActivation.Witness (semTwo)
 
 /-- The boundary after occurrence `1` has vanished from the record: one port, only
@@ -242,15 +242,15 @@ theorem open_dropped : OpenAtFor {0} semTwo droppedState := by decide
 
 /-- **The local certificate is inhabited**: occurrence `0`'s account propagates, and the
 scope is open at both snapshots. -/
-def localLegit : LocalLegit (S := protocol) (anchor := wAnchor) 0 {0} semTwo
+def localOpenIntegrity : LocalOpenIntegrity (S := protocol) (anchor := wAnchor) 0 {0} semTwo
     state₀ (Finset.mem_univ _) droppedState (by simp [droppedState, dropped]) :=
   .cons open_start localStep rfl (.refl _ _ open_dropped)
 
 theorem unrelated_integrity_failure :
     IsEmpty (Evolution protocol wAnchor state₀ droppedState) ∧
-    Nonempty (LocalLegit (S := protocol) (anchor := wAnchor) 0 {0} semTwo
+    Nonempty (LocalOpenIntegrity (S := protocol) (anchor := wAnchor) 0 {0} semTwo
       state₀ (Finset.mem_univ _) droppedState (by simp [droppedState, dropped])) :=
-  ⟨no_evolution, ⟨localLegit⟩⟩
+  ⟨no_evolution, ⟨localOpenIntegrity⟩⟩
 
 end Witness
 
@@ -258,8 +258,8 @@ end Workspace.Normativity.Contrib.OccurrenceLocalIntegrity
 
 #print axioms Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.substOn_eq_subst
 #print axioms Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Step.toLocal_propagate
-#print axioms Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.toLocalTrace
-#print axioms Workspace.Normativity.Contrib.AuthorityActivation.LegitimateForSegment.toLocalLegit
+#print axioms Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.toLocalTrace
+#print axioms Workspace.Normativity.Contrib.AuthorityActivation.OpenIntegrityForSegment.toLocalOpenIntegrity
 #print axioms Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Witness.no_evolution
-#print axioms Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Witness.localLegit
+#print axioms Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Witness.localOpenIntegrity
 #print axioms Workspace.Normativity.Contrib.OccurrenceLocalIntegrity.Witness.unrelated_integrity_failure

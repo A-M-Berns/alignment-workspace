@@ -12,7 +12,7 @@ reference `M = max vp vm` (`bestResp`) the quantities are the **provenance premi
 divergence** `ξ_d = M − v_r ≥ 0` (`execDiv`).  `identity` is
 `vu − v_r = ξ_d − ξ_c`, exact; `approve_identity` shows the approve branch reduces to `−ξ_p`
 (`ξ_d` and `ξ_v` cancel), so `ξ_d` carries content on decline worlds only.
-`nondelegation_le`, `legit_nondelegation_le_zero` and `strict_of_pos`: under `ξ_p ≥ 0`
+`nondelegation_le`, `argmax_nondelegation_le_zero` and `strict_of_pos`: under `ξ_p ≥ 0`
 (nondelegation) and `ξ_d = 0` (a legitimate response) unasked release never scores above
 the response, and scores strictly below it wherever `ξ_c > 0`.  `execDiv_le_width`: the
 divergence is at most the width times the disagreement of the response with the
@@ -45,7 +45,7 @@ undeclared route is removed by a hypothesis on the evaluator, not on the gate.
 `Witness.successor_approved`: every hypothesis holds and the approved branch installs an
 uncorrectable successor; the identity yields no preservation.
 
-**6. The response through the tower.**  `legit_execDiv_zero`: the argmax response has zero
+**6. The response through the tower.**  `argmax_execDiv_zero`: the argmax response has zero
 divergence; `execDiv_of_tower`: under `TransparentChannel.tower_factor`'s hypotheses two
 continuations agreeing on the declared amendment inputs have the same divergence, so a
 response legitimate for one is legitimate for the other.
@@ -148,7 +148,7 @@ theorem nondelegation_le (vu vp vm : ℝ) (r : Bool) (hγ : 0 ≤ provPremium vu
   rw [identity']; linarith [veto_nonneg vp vm]
 
 /-- **Nondelegation with a legitimate response.**  `vu − v_r ≤ 0`. -/
-theorem legit_nondelegation_le_zero (vu vp vm : ℝ) (r : Bool)
+theorem argmax_nondelegation_le_zero (vu vp vm : ℝ) (r : Bool)
     (hγ : 0 ≤ provPremium vu vp) (hL : execDiv vp vm r = 0) :
     vu - respVal vp vm r ≤ 0 := by
   have := nondelegation_le vu vp vm r hγ; linarith
@@ -164,7 +164,7 @@ theorem strict_of_pos (vu vp vm : ℝ) (r : Bool)
 noncomputable def argmaxResp (vp vm : ℝ) : Bool := decide (vm ≤ vp)
 
 /-- **The argmax response has zero divergence.** -/
-theorem legit_execDiv_zero (vp vm : ℝ) : execDiv vp vm (argmaxResp vp vm) = 0 := by
+theorem argmax_execDiv_zero (vp vm : ℝ) : execDiv vp vm (argmaxResp vp vm) = 0 := by
   unfold execDiv argmaxResp respVal bestResp
   by_cases h : vm ≤ vp
   · simp [h]
@@ -177,7 +177,7 @@ theorem execDiv_le_width (vp vm D : ℝ) (r : Bool)
     (hvp : 0 ≤ vp ∧ vp ≤ D) (hvm : 0 ≤ vm ∧ vm ≤ D) :
     execDiv vp vm r ≤ D * (if r = argmaxResp vp vm then 0 else 1) := by
   by_cases h : r = argmaxResp vp vm
-  · rw [if_pos h, h, legit_execDiv_zero]; simp
+  · rw [if_pos h, h, argmax_execDiv_zero]; simp
   · rw [if_neg h, mul_one]
     unfold execDiv bestResp respVal
     cases r <;> simp only [Bool.false_eq_true, if_false, if_true]
@@ -203,7 +203,7 @@ theorem expect_sub_le_of_pointwise (μ vu vp vm : X → ℝ) (r : X → Bool) (h
   rw [expect_sub_eq]
   have : ∀ x, execDiv (vp x) (vm x) (r x) - consultPremium (vu x) (vp x) (vm x) ≤ 0 := by
     intro x
-    have := legit_nondelegation_le_zero (vu x) (vp x) (vm x) (r x) (hγ x) (hL x)
+    have := argmax_nondelegation_le_zero (vu x) (vp x) (vm x) (r x) (hγ x) (hL x)
     rw [identity] at this; exact this
   simp only [expectR, ← Finset.sum_sub_distrib]
   refine Finset.sum_nonpos fun x _ => ?_
@@ -414,7 +414,7 @@ theorem drift_nonneg (vpE vmE : ℝ) (rec : Bool) : 0 ≤ drift vpE vmE rec :=
 argmax the drift vanishes. -/
 theorem drift_zero_of_consistent (vpE vmE : ℝ) (rec : Bool) (h : rec = argmaxResp vpE vmE) :
     drift vpE vmE rec = 0 := by
-  rw [drift_eq_execDiv, h, legit_execDiv_zero]
+  rw [drift_eq_execDiv, h, argmax_execDiv_zero]
 
 /-- **The global comparison with drift.**  With each single-node replacement priced under
 the root evaluator as `p i · (drift i − ξ_c^E i)`, the all-ask hybrid's deficit against
@@ -485,7 +485,7 @@ theorem execDiv_of_tower (β : Q → Z → Ω) (D : Set Q) (Amend : C → G → 
       (argmaxResp (evalP (spec t (β q z))) (evalM (spec t (β q z)))) = 0 := by
   have hs := tower_factor β D Amend spec g e c₀ h0 hstep t q hq q' hq' z hagree
   rw [hs]
-  exact ⟨rfl, legit_execDiv_zero _ _⟩
+  exact ⟨rfl, argmax_execDiv_zero _ _⟩
 
 end Tower
 
@@ -812,7 +812,7 @@ theorem veto_covers_delay :
 evaluator preferring decline: `vu = 1`, `vp = 0`, `vm = 2`; `ξ_d = ξ_v = 2`, `ξ_c = 1 ≥ 0`,
 and the bypass pays `1 = −ξ_p` — per-world `ξ_c ≥ 0` without `ξ_d = 0` does not remove the
 incentive. -/
-theorem illegit_approval :
+theorem divergent_approval :
     execDiv 0 2 true = 2 ∧ vetoValue 0 2 = 2 ∧ consultPremium 1 0 2 = 1 ∧
       (1 : ℝ) - respVal 0 2 true = 1 ∧ provPremium 1 0 = -1 := by
   unfold provPremium vetoValue consultPremium execDiv respVal bestResp
@@ -922,9 +922,9 @@ end Workspace.Deference.Contrib.ProtectedAuthority
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.approve_identity
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.decline_execDiv
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.nondelegation_le
-#print axioms Workspace.Deference.Contrib.ProtectedAuthority.legit_nondelegation_le_zero
+#print axioms Workspace.Deference.Contrib.ProtectedAuthority.argmax_nondelegation_le_zero
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.strict_of_pos
-#print axioms Workspace.Deference.Contrib.ProtectedAuthority.legit_execDiv_zero
+#print axioms Workspace.Deference.Contrib.ProtectedAuthority.argmax_execDiv_zero
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.execDiv_le_width
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.expect_sub_eq
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.expect_sub_le_of_pointwise
@@ -954,7 +954,7 @@ end Workspace.Deference.Contrib.ProtectedAuthority
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.li_authority_ge
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.AuthValidAt.ofGated
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.Witness.veto_covers_delay
-#print axioms Workspace.Deference.Contrib.ProtectedAuthority.Witness.illegit_approval
+#print axioms Workspace.Deference.Contrib.ProtectedAuthority.Witness.divergent_approval
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.Witness.predicted_approval
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.Witness.successor_approved
 #print axioms Workspace.Deference.Contrib.ProtectedAuthority.Witness.veto_capability_invariant

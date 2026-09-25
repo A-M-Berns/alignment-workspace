@@ -24,6 +24,7 @@
 | `TransparentChannel.lean`; second pass: `TransparentEcosystem.lean`, `TransparentChain.lean` | `prompts/2026-09-24-transparent-channel/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-24 | `prompts/2026-09-24-transparent-channel/` | — |
 | `ProtectedAuthority.lean` | `prompts/2026-09-24-protected-authority/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-24 | `prompts/2026-09-24-protected-authority/` | — |
 | `ProtectedAuthorityTheorem.lean` | `prompts/2026-09-25-protected-authority-theorem/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-25 | `prompts/2026-09-25-protected-authority-theorem/` | — |
+| `Legitimacy.lean` | `prompts/2026-09-25-legitimacy-internal-external/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-25 | `prompts/2026-09-25-legitimacy-internal-external/` | — |
 | `ReasonSupply.lean` | `prompts/2026-09-16-noncapture-compilation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer; the refinement dispatch) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-noncapture-compilation/` | — |
 | `ReasonDiscovery.lean` | `prompts/2026-09-16-noncapture-compilation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer; the third-pass dispatch) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-noncapture-compilation/` | — |
 

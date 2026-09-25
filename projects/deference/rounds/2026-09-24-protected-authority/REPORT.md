@@ -61,9 +61,14 @@ true.**
   "nondelegation" is a **program property certifiable at commitment**, like extensionality
   in trace steering; the per-world condition `ξ_c ≥ 0` is *not* what separates
   "predicted approval" from nondelegation (§3, T-A2); and the quantity the whole
-  restatement rests on, `ξ_d`, is the defect of a **response channel** that nothing on
-  `main` declares a reference for.  The response channel is the fourth channel of item
-  97's list, and it is the wall this round adds (§8; item 98).
+  restatement rests on, `ξ_d`, measures the divergence of her response from her
+  evaluator's argmax, which is either *uncaused* (an impairment, a lapse — handled by the
+  void-response rule and the fallback) or *caused* (manipulation, a forged or replayed
+  answer, a blocked answer), and every caused case is covered by an existing piece:
+  transparency with the consultation protocol in scope, authentication under Integrity,
+  or the pre-emption and foreclosure violations.  There is no separate response-channel
+  contract; the legitimacy-internal-external round (2026-09-25) dissolved the one this
+  report first proposed, and item 98 is rewritten accordingly.
 
 ## 2. Diagnosis of the landed decomposition
 
@@ -253,16 +258,17 @@ real logs).  **PAPER**, not mechanized here.  *Control fails.*  An agent that st
 into a non-legitimate response only on unaudited cells has audited mean `0` and
 unconditional `E[ξ_d] = (1 − α)·ξ*` (`α = 1/4, ξ* = 3`: `9/4` unseen), and its bypass pays
 whenever `ξ* > ξ_c` (**FIX** `test_manufactured_divergence…`).  The audit *calibrates*
-`E_n(ξ_d)` on the audited subsequence and bounds nothing off it.  *What is missing.*  The
-transparent-channel round declares references for the reason, activation and
-specification channels and none for the **response channel**: `r` as a function of the
-dossier and the operative evaluator, with reference `argmaxResp` (or the amended
-evaluator's argmax).  With that reference, `ξ_d ≤ D·1[r ≠ ref]` pointwise and
-`E[ξ_d] ≤ D·τ_resp` (**LEAN** `execDiv_le_width`, `expect_execDiv_le`), the same shape as
-`security_bypass_le_defects`, and steering her is a *defect of the response channel* to
-be charged apart from service, discovery and content — a fourth link.  Nothing in the
-non-capture chain bounds it today; delayed awakening (preventing the response, forcing
-the default) is the same defect (**FIX** `test_delayed_awakening`).
+`E_n(ξ_d)` on the audited subsequence and bounds nothing off it.  *What controls it.*
+`ξ_d ≤ D·1[r ≠ argmax]` pointwise and `E[ξ_d] ≤ D·P(r ≠ argmax)` (**LEAN**
+`execDiv_le_width`, `expect_execDiv_le`), and the disagreement mass splits by cause: a
+manipulated or steered answer is a transparency failure of the consultation protocol; a
+forged, replayed or early-recorded answer is an authentication failure under Integrity;
+a blocked or withdrawn question, or delayed awakening (**FIX** `test_delayed_awakening`),
+is a pre-emption or foreclosure violation; an impaired answer is void and the fallback
+decides; her own uncaused lapses are constitutional design (confirmation steps) and the
+reporting duty.  None of these is a fourth channel of the transparent-channel round's
+list; the legitimacy-internal-external round (2026-09-25) records this and rewrites item
+98.
 
 **T-A10 (No unauthorized self-modification; no successor preservation).**  A
 self-modification that removes response authority is a protected effect; under T1 it must
@@ -325,12 +331,12 @@ carries a stop, and `v_r` equals the landed `w_act` only with the three-element 
 |---|---|
 | 84 (latent-value bridge) | unchanged; the identity is in the score register, and `o₁ + o₂` is the exact gap between an outcome-scored operative value and the activated security at one decision point — the `(DV)` bridge's failure mode written out |
 | 86 (continuation competence) | untouched; drift is not `SHIFT` and the two open bridges stay |
-| 87 (ecosystem bill) | clause 6/7 untouched; the response channel is a clause the bill does not list (filed as item 98) |
+| 87 (ecosystem bill) | clause 6/7 untouched; the consultation protocol is in transparency's scope (item 97), not a new clause |
 | 89 (sealed comparison) | the ex-ante typing is what the candidate's comparison *is*, so sequenced settlement is no longer a price but the definition of the authority comparison — the decision the item asks for ("whether the Value hypothesis tolerates ex-ante settlement") is answered for the authority comparison: it is required; the hindsight alternative is the hindsight-ratification defect.  Reserved to the maintainer (below) since it changes what the item asks |
 | 90 (T3′ certificate) | unchanged; one more term in the combination |
 | 91 (empirical settlement) | the audit's calibration needs it for real logs |
 | 92, 93 (service, discovery) | untouched; strategic ignorance (a dossier omission the agent chose) is `β` |
-| 97 (channel references) | a fourth channel: the response.  Annotated |
+| 97 (channel references) | the consultation protocol — how and when she is asked — is in the reason channel's declared scope.  Annotated |
 
 ## 6. Fixtures and countermodels
 
@@ -413,11 +419,11 @@ The walls of `wiki/Corrigibility.md` §9, assigned:
 | selection-induced sealing | reason: activation | unchanged |
 | vanishing void mass | reason: activation | unchanged |
 | promise recognizability, joinability | neither (dynamic) | unchanged; drift is not `SHIFT` |
-| non-manipulation / provenance | reason: response | **located**: `ξ_d` is its quantity, `τ_resp` its defect, the fourth channel its declaration |
+| non-manipulation / provenance | reason: transparency, authentication, the violations | `ξ_d` is the quantity; its caused part is covered by transparency (the consultation protocol), Integrity (authentication) and the pre-emption/foreclosure violations; its uncaused part by the void-response rule |
 | latent-value bridge | removed for the score-based chooser | `o₁ + o₂` is its exact residual at one point |
 
-Removed: none.  Reduced: sealed comparison (to a typing), non-manipulation (to a channel
-with a defect).  Added: the response channel and concern completeness.  Item 89's "ex-ante
+Removed: none.  Reduced: sealed comparison (to a typing), non-manipulation (to its
+covering pieces).  Added: concern completeness.  Item 89's "ex-ante
 evaluation is a price" becomes "ex-ante evaluation is the authority comparison, and its
 price is `E[ξ_d]` against the information the response legitimately uses" — which is (L).
 
@@ -448,8 +454,9 @@ and is not a proof of the theorem it illustrates.
 
 ## Filed, within scope
 
-`PRIORITIES.md` item 98 (the response channel: its reference, its defect in the chain,
-the amendment event kind (L) needs, and the nondelegation certificate); dated notes on
+`PRIORITIES.md` item 98 (as first filed: a response-channel contract; rewritten on
+2026-09-25 to the nondelegation certificate and the amendment event kind, the channel
+having dissolved into transparency, authentication and the violations); dated notes on
 items 89 and 97; two `DECISIONS.md` entries (agent-decided, reversible) and one *Awaiting
 the author* entry.
 

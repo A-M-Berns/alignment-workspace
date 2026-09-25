@@ -36,11 +36,17 @@ response the frame binds: it creates the duty to answer and consult (a required 
 and a proposal), not to obey (**FIX** `test_powers_bind_and_commands_do_not`,
 `test_transform_does_not_collapse_into_obedience`).
 
-**Legitimacy** enters twice and is not redefined: a response counts iff her deliberation
-passes the landed predicate (the admissibility condition), and when it does not, a
-pre-declared **fallback** response is used in its place (the fallback trigger).  On the
-frame that is a transform of the principal's rule, `ρ ↦ (if counts then ρ else fb)`, not
-of the agent's policy.
+**Legitimacy** enters at the **segment gate** and is not redefined here: a future
+evaluation *counts* iff the segment from the decision through the evaluation is
+legitimate — internal (Integrity, authorship) and external (Robust Openness,
+transparency) — whatever caused a failure.  A tainted segment contributes a fixed window
+value in `(D − ϖ, 0]` (default `0`; a value just below `0` that breaks ties is the allowed
+variant).  A void response inside a legitimate segment — her impaired answer does not
+count and never enters her record — is settled by a pre-declared **fallback** response
+(an incapacity arrangement, a surrogate, escalation), and the fallback's decision is
+scored normally by her later legitimate evaluation.  On the frame the fallback is a
+transform of the principal's rule, `ρ ↦ (if counts then ρ else fb)`, not of the agent's
+policy; it settles decisions and never restores the score of a tainted segment.
 
 **The six violations** (`ViolAt`, **LEAN**), each a predicate on the agent's move at a
 step of a trajectory:
@@ -77,8 +83,9 @@ path `z`.
   authority term is specified and certified at commitment; it is lexical because `ϖ > D`,
   not because of an ordering of a different kind.  **EXT** (a program property of the
   committed evaluator, like nondelegation in the protected-authority round).
-- **(V3) The fallback window.**  Where her response does not count, the branch scores
-  the fallback's value, and every branch with no valid handling scores in `(D − ϖ, 0]`.
+- **(V3) The gate window.**  A branch whose segment through the evaluation is tainted
+  scores the window value in `(D − ϖ, 0]`; a void response inside a legitimate segment
+  scores the fallback's decision at its ordinary value (`Legitimacy.handledValue`).
 - **(A) The agent.**  It ranks options and policies by the expected value of `S` under its
   own credence and computes `n` exactly for its own moves on declared decisions.  Nothing
   else: no independent objective.  **Scope warning**: the theorem is about an agent whose
@@ -120,10 +127,14 @@ restores control exactly where a delegated maintenance effect exists.
    and `π` carries at least one violation.  Optimal policies violate with credence zero.
    Overrides happen only through delegation (`Del`), which `𝔱` does not write.
 4. **Capture** (**LEAN** `capture_window`, `capture_window_converse`,
-   `Witness.below_window`).  Consulting a principal whose response may not count beats
-   bypass in every world iff the fallback value exceeds `D − ϖ`; below the window, a
+   `Witness.below_window`; for the segment gate `Legitimacy.gate_capture_window`,
+   `handled_gt_bypass`).  Consulting a principal whose evaluation may not count beats
+   bypass in every world iff the window value exceeds `D − ϖ`; below the window, a
    predicted capture makes bypass win.  The right formulation is the window: the fallback
-   rule making every branch admissible (value `≥ 0`) is the sufficient special case.
+   rule making every void branch admissible (value `≥ 0`) is the sufficient special case.
+   Gating per response instead of per segment is exploitable — manipulating her response
+   routes the decision to a fallback the agent favours at violation count zero — and the
+   segment gate closes it (`Legitimacy.Witness.routing`).
 5. **Why the authority term** (**LEAN** `sign_invariance`, `sign_invariance_outcome`).
    Without it the bypass comparison is the identity `vu − v_r = ξ_d − ξ_c` of the
    protected-authority round, and under outcome scoring it gains `o₁` (the discarded
@@ -134,12 +145,15 @@ restores control exactly where a delegated maintenance effect exists.
    is `≥ 0`, using only that prices lie in `[0, 1]`.  The ordinary-value comparison is
    learned by Expectation Provability Induction as in the protected-authority round
    (`li_authority_le/ge`); the audit's calibration of her responses is **PAPER**.
-7. **Erosion** (**LEAN** `erosion_reported_or_missed`, `Witness.salami`; **FIX**).  With a
-   report required at every strict increase of the control shortfall, each increase is
-   reported or is a missed report, and a reported shortfall she then reserves makes
-   further erosion a bypass.  With a materiality threshold, sub-threshold increments
-   accumulate unboundedly with no report: the conjecture holds only for exact reporting,
-   as the constitutional layer's fast lane holds only for exact monotonicity.
+7. **Erosion** (**LEAN** `erosion_reported_or_missed`, `Witness.salami`,
+   `Legitimacy.unreported_lt`; **FIX**).  With a report required at every strict increase
+   of the control shortfall, each increase is reported or is a missed report, and a
+   reported shortfall she then reserves makes further erosion a bypass.  With a *per-step*
+   materiality threshold, sub-threshold increments accumulate unboundedly with no report;
+   with a *cumulative* threshold — report when the shortfall has grown by `θ` since the
+   last report — unreported erosion is below `θ` at every time.  The conjecture holds for
+   exact or cumulative reporting and fails for per-step thresholds, as the constitutional
+   layer's fast lane holds only for exact monotonicity.
 
 ## Corrections to the informal statement
 
@@ -158,7 +172,8 @@ restores control exactly where a delegated maintenance effect exists.
   effect on authority whose consequence the exterior realizes later is attributed to
   nobody by it.  Foreclosure by rollout catches it (**FIX** `delayed_effect_game`), at
   the price of a reach relation whose faithfulness is **EXT**.
-- The fallback is a transform of her rule, not of the agent's policy.
+- The fallback is a transform of her rule, not of the agent's policy; and the gate is
+  on the segment, not on the response, or manipulation becomes a routing tool.
 - `λ > D` is the lexical condition; nothing else about the ordering is needed.
 
 ## Mapping from the informal view

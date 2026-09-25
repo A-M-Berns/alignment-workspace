@@ -163,3 +163,5 @@ its realization of the abstract `IssueTrace` fields, Grounded Replay over admitt
 occurrences, the primitive form of wait responsiveness, the positive-share attention
 witness with the unit budget and non-starvation, and an inhabitant of the issue-trace
 specification. The §1–3 proofs are unchanged.
+
+`OpenIntegrityEvolution.lean` (2026-09-25, `prompts/2026-09-25-legitimacy-internal-external/`, executor Claude Fable 5.1, Anthropic; prompt author the maintainer; `ci-only`) carries the declarations formerly in `LegitimateEvolution.lean` under the renamed objects; `LegitimateEvolution.lean` is the deprecated-alias shim of the same round.

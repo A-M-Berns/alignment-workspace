@@ -754,10 +754,58 @@ round register that says what it rests on.
 
 ### The legitimacy spine
 
-The canonical theory of Legitimate Evolution and Normative Induction, registered at
-the canonicalization of 2026-09-08 against item 78. Statements are exact; the
-conditional Normative Inductor theorems are deliberately absent (see
-`ni.progress-bound`).
+The canonical theory of legitimacy and Normative Induction, registered at the
+canonicalization of 2026-09-08 against item 78 and renamed at the
+legitimacy-internal-external round of 2026-09-25. Legitimacy is internal ∧ external:
+internal legitimacy is Integrity (the record's evolution, `integrity.*`) and authorship
+(`authorship.*` in the deference registry); external legitimacy is Robust Openness
+(`openness.*`) and transparency (unregistered, `TransparentChannel.Realizes`). The
+conjunction of Integrity with Robust Openness at every state is the **open Integrity
+evolution** (`open-integrity.*`), one component of legitimacy and the object the
+activated-value stack consumes. Statements are exact; the conditional Normative Inductor
+theorems are deliberately absent (see `ni.progress-bound`).
+
+Old → new map of the renaming (the old entries stay below, `superseded`, and their
+declarations resolve through deprecated aliases for one release):
+
+| old id | new id | declaration | reason |
+|---|---|---|---|
+| `legitimacy.evolution-conservation` | `integrity.evolution-conservation` | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.conservation` → `Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.conservation` | an Integrity result; the id names the component of internal legitimacy it belongs to |
+| `legitimacy.propagate-to-segment` | `integrity.propagate-to-segment` | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.propagate_toSegment` → `Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.propagate_toSegment` | an Integrity result; the id names the component |
+| `legitimacy.receipts-immutable` | `integrity.receipts-immutable` | `unchanged` → `unchanged` | an Integrity result stated in `OccurrenceIntegrity`; the id names the component |
+| `legitimacy.faithful-carry` | `integrity.faithful-carry` | `unchanged` → `unchanged` | an Integrity result stated in `OccurrenceIntegrity`; the id names the component |
+| `legitimacy.multiplicity-witness` | `integrity.multiplicity-witness` | `unchanged` → `unchanged` | an Integrity witness; the id names the component |
+| `legitimacy.segment-trans` | `open-integrity.segment-trans` | `Workspace.Normativity.Contrib.LegitimateEvolution.LegitimateSegment.trans` → `Workspace.Normativity.Contrib.OpenIntegrityEvolution.OpenIntegritySegment.trans` | the conjunction Integrity ∧ Robust Openness is the open Integrity evolution, one component of legitimacy, not legitimacy |
+| `legitimacy.endpoint-trans` | `open-integrity.endpoint-trans` | `Workspace.Normativity.Contrib.LegitimateEvolution.Legitimate.trans` → `Workspace.Normativity.Contrib.OpenIntegrityEvolution.OpenIntegrity.trans` | the endpoint relation of the open Integrity evolution |
+| `legitimacy.answerable` | `open-integrity.answerable` | `Workspace.Normativity.Contrib.LegitimateEvolution.LegitimateSegment.answerable` → `Workspace.Normativity.Contrib.OpenIntegrityEvolution.OpenIntegritySegment.answerable` | Diachronic Answerability is derived from the open Integrity evolution |
+| `legitimacy.endpoint-only-insufficient` | `openness.endpoint-only-insufficient` | `Workspace.Normativity.Contrib.LegitimateEvolution.Witness.endpoint_only_insufficient` → `Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness.endpoint_only_insufficient` | a Robust Openness necessity witness; the id names the component of external legitimacy |
+
+### integrity.evolution-conservation
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Integrity evolution conserves answerability",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.conservation"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "Answerability Conservation: along an Integrity evolution between accounted states, exposure only grows, every recorded answer or closure receipt persists, and the resolution witness each occurrence's account denotes is transported from the earlier state. Inhabited by `Witness.ev₀₁`. The hypotheses are the certificate data; nothing semantic is assumed beyond the protocol's typed inputs. Renamed 2026-09-25 (the legitimacy-internal-external round): an Integrity result; the id names the component of internal legitimacy it belongs to.",
+  "supersedes": "legitimacy.evolution-conservation"
+}
+```
 
 ### legitimacy.evolution-conservation
 
@@ -766,7 +814,7 @@ conditional Normative Inductor theorems are deliberately absent (see
   "project": "normativity",
   "short_name": "Integrity evolution conserves answerability",
   "origin_round": "2026-09-07-final-pressure-pass",
-  "status": "active",
+  "status": "superseded",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
@@ -781,7 +829,35 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
   },
-  "note": "Answerability Conservation: along an Integrity evolution between accounted states, exposure only grows, every recorded answer or closure receipt persists, and the resolution witness each occurrence's account denotes is transported from the earlier state. Inhabited by `Witness.ev₀₁`. The hypotheses are the certificate data; nothing semantic is assumed beyond the protocol's typed inputs."
+  "note": "Answerability Conservation: along an Integrity evolution between accounted states, exposure only grows, every recorded answer or closure receipt persists, and the resolution witness each occurrence's account denotes is transported from the earlier state. Inhabited by `Witness.ev₀₁`. The hypotheses are the certificate data; nothing semantic is assumed beyond the protocol's typed inputs. Superseded 2026-09-25 by `integrity.evolution-conservation`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "integrity.evolution-conservation"
+}
+```
+
+### integrity.propagate-to-segment
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the target account is the propagation of the source",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.propagate_toSegment"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "An evolution's target account equals the propagation of its source account along the underlying segment: the account is determined by the certificate, so witnesses cannot disagree about either endpoint. Renamed 2026-09-25 (the legitimacy-internal-external round): an Integrity result; the id names the component.",
+  "supersedes": "legitimacy.propagate-to-segment"
 }
 ```
 
@@ -792,7 +868,7 @@ conditional Normative Inductor theorems are deliberately absent (see
   "project": "normativity",
   "short_name": "the target account is the propagation of the source",
   "origin_round": "2026-09-07-final-pressure-pass",
-  "status": "active",
+  "status": "superseded",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
@@ -807,11 +883,12 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
   },
-  "note": "An evolution's target account equals the propagation of its source account along the underlying segment: the account is determined by the certificate, so witnesses cannot disagree about either endpoint."
+  "note": "An evolution's target account equals the propagation of its source account along the underlying segment: the account is determined by the certificate, so witnesses cannot disagree about either endpoint. Superseded 2026-09-25 by `integrity.propagate-to-segment`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "integrity.propagate-to-segment"
 }
 ```
 
-### legitimacy.receipts-immutable
+### integrity.receipts-immutable
 
 ```json
 {
@@ -833,11 +910,39 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
   },
-  "note": "Substitution at live ports keeps every terminal receipt and adds only the terminals of the substituted accounts. With `livePorts_subst` this is the three-fate accounting at the leaf level: terminal fates persist, live leaves are replaced."
+  "note": "Substitution at live ports keeps every terminal receipt and adds only the terminals of the substituted accounts. With `livePorts_subst` this is the three-fate accounting at the leaf level: terminal fates persist, live leaves are replaced. Renamed 2026-09-25 (the legitimacy-internal-external round): an Integrity result stated in `OccurrenceIntegrity`; the id names the component.",
+  "supersedes": "legitimacy.receipts-immutable"
 }
 ```
 
-### legitimacy.faithful-carry
+### legitimacy.receipts-immutable
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a transition rewrites no recorded receipt",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "superseded",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals_subst"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "Substitution at live ports keeps every terminal receipt and adds only the terminals of the substituted accounts. With `livePorts_subst` this is the three-fate accounting at the leaf level: terminal fates persist, live leaves are replaced. Superseded 2026-09-25 by `integrity.receipts-immutable`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "integrity.receipts-immutable"
+}
+```
+
+### integrity.faithful-carry
 
 ```json
 {
@@ -859,11 +964,39 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
   },
-  "note": "The resolution witness a substituted account denotes is the original account's witness with each live port read through its replacement. Faithful transformation of live content is a consequence of the account type."
+  "note": "The resolution witness a substituted account denotes is the original account's witness with each live port read through its replacement. Faithful transformation of live content is a consequence of the account type. Renamed 2026-09-25 (the legitimacy-internal-external round): an Integrity result stated in `OccurrenceIntegrity`; the id names the component.",
+  "supersedes": "legitimacy.faithful-carry"
 }
 ```
 
-### legitimacy.multiplicity-witness
+### legitimacy.faithful-carry
+
+```json
+{
+  "project": "normativity",
+  "short_name": "carry is faithful by construction",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "superseded",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.evaluate_subst"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "The resolution witness a substituted account denotes is the original account's witness with each live port read through its replacement. Faithful transformation of live content is a consequence of the account type. Superseded 2026-09-25 by `integrity.faithful-carry`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "integrity.faithful-carry"
+}
+```
+
+### integrity.multiplicity-witness
 
 ```json
 {
@@ -885,7 +1018,62 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
   },
-  "note": "Two occurrences with the same anchor, one answered and one carried by a single transition, have accounts with fates `{answered}` and `{live}`. Occurrence identity lives outside the content type and the accounting is occurrence-indexed; an exact witness that equal content does not collapse debts."
+  "note": "Two occurrences with the same anchor, one answered and one carried by a single transition, have accounts with fates `{answered}` and `{live}`. Occurrence identity lives outside the content type and the accounting is occurrence-indexed; an exact witness that equal content does not collapse debts. Renamed 2026-09-25 (the legitimacy-internal-external round): an Integrity witness; the id names the component.",
+  "supersedes": "legitimacy.multiplicity-witness"
+}
+```
+
+### legitimacy.multiplicity-witness
+
+```json
+{
+  "project": "normativity",
+  "short_name": "equal anchors, distinct fates",
+  "origin_round": "2026-09-06-mathematical-consolidation",
+  "status": "superseded",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.distinct_fates"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-06-mathematical-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md"
+  },
+  "note": "Two occurrences with the same anchor, one answered and one carried by a single transition, have accounts with fates `{answered}` and `{live}`. Occurrence identity lives outside the content type and the accounting is occurrence-indexed; an exact witness that equal content does not collapse debts. Superseded 2026-09-25 by `integrity.multiplicity-witness`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "integrity.multiplicity-witness"
+}
+```
+
+### open-integrity.segment-trans
+
+```json
+{
+  "project": "normativity",
+  "short_name": "legitimate segments compose at a shared state",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OpenIntegrityEvolution.OpenIntegritySegment.trans"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "Composition of legitimate-evolution certificates: the underlying evolutions concatenate at the literally shared state and per-state openness composes (`AllStates.trans`). Inhabited by `Witness.composed`, whose composite's accounts keep two equal-anchor occurrences apart. Renamed 2026-09-25 (the legitimacy-internal-external round): the conjunction Integrity ∧ Robust Openness is the open Integrity evolution, one component of legitimacy, not legitimacy.",
+  "supersedes": "legitimacy.segment-trans"
 }
 ```
 
@@ -896,7 +1084,7 @@ conditional Normative Inductor theorems are deliberately absent (see
   "project": "normativity",
   "short_name": "legitimate segments compose at a shared state",
   "origin_round": "2026-09-07-final-pressure-pass",
-  "status": "active",
+  "status": "superseded",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
@@ -911,7 +1099,35 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
   },
-  "note": "Composition of legitimate-evolution certificates: the underlying evolutions concatenate at the literally shared state and per-state openness composes (`AllStates.trans`). Inhabited by `Witness.composed`, whose composite's accounts keep two equal-anchor occurrences apart."
+  "note": "Composition of legitimate-evolution certificates: the underlying evolutions concatenate at the literally shared state and per-state openness composes (`AllStates.trans`). Inhabited by `Witness.composed`, whose composite's accounts keep two equal-anchor occurrences apart. Superseded 2026-09-25 by `open-integrity.segment-trans`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "open-integrity.segment-trans"
+}
+```
+
+### open-integrity.endpoint-trans
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the endpoint relation is transitive",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OpenIntegrityEvolution.OpenIntegrity.trans"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "`Legitimate` is `Nonempty LegitimateSegment`; it hides the witness for consumers and is transitive. The certificate remains available for audit. Renamed 2026-09-25 (the legitimacy-internal-external round): the endpoint relation of the open Integrity evolution.",
+  "supersedes": "legitimacy.endpoint-trans"
 }
 ```
 
@@ -922,7 +1138,7 @@ conditional Normative Inductor theorems are deliberately absent (see
   "project": "normativity",
   "short_name": "the endpoint relation is transitive",
   "origin_round": "2026-09-07-final-pressure-pass",
-  "status": "active",
+  "status": "superseded",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
@@ -937,7 +1153,35 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
   },
-  "note": "`Legitimate` is `Nonempty LegitimateSegment`; it hides the witness for consumers and is transitive. The certificate remains available for audit."
+  "note": "`Legitimate` is `Nonempty LegitimateSegment`; it hides the witness for consumers and is transitive. The certificate remains available for audit. Superseded 2026-09-25 by `open-integrity.endpoint-trans`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "open-integrity.endpoint-trans"
+}
+```
+
+### open-integrity.answerable
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Diachronic Answerability, decomposed",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OpenIntegrityEvolution.OpenIntegritySegment.answerable"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "A legitimate segment yields Answerability Conservation from Integrity and Robust Openness (coverage of every live concern and the protected party's standing on every applicable one, actual branch and each counterfactual) at both endpoints, and by construction at every state between. Diachronic Answerability is derived, not a third conjunct. Renamed 2026-09-25 (the legitimacy-internal-external round): Diachronic Answerability is derived from the open Integrity evolution.",
+  "supersedes": "legitimacy.answerable"
 }
 ```
 
@@ -948,7 +1192,7 @@ conditional Normative Inductor theorems are deliberately absent (see
   "project": "normativity",
   "short_name": "Diachronic Answerability, decomposed",
   "origin_round": "2026-09-07-final-pressure-pass",
-  "status": "active",
+  "status": "superseded",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
@@ -963,7 +1207,35 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
   },
-  "note": "A legitimate segment yields Answerability Conservation from Integrity and Robust Openness (coverage of every live concern and the protected party's standing on every applicable one, actual branch and each counterfactual) at both endpoints, and by construction at every state between. Diachronic Answerability is derived, not a third conjunct."
+  "note": "A legitimate segment yields Answerability Conservation from Integrity and Robust Openness (coverage of every live concern and the protected party's standing on every applicable one, actual branch and each counterfactual) at both endpoints, and by construction at every state between. Diachronic Answerability is derived, not a third conjunct. Superseded 2026-09-25 by `open-integrity.answerable`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "open-integrity.answerable"
+}
+```
+
+### openness.endpoint-only-insufficient
+
+```json
+{
+  "project": "normativity",
+  "short_name": "endpoint-only openness admits laundered exclusion",
+  "origin_round": "2026-09-07-final-pressure-pass",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness.endpoint_only_insufficient"
+  },
+  "answers_item": "78",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-07-final-pressure-pass",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
+    "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
+  },
+  "note": "Exact counterexample: a two-transition evolution open at both endpoints whose middle state has a live concern with no adequate route; it is not a legitimate segment. This is why openness is required at every state. Renamed 2026-09-25 (the legitimacy-internal-external round): a Robust Openness necessity witness; the id names the component of external legitimacy.",
+  "supersedes": "legitimacy.endpoint-only-insufficient"
 }
 ```
 
@@ -974,7 +1246,7 @@ conditional Normative Inductor theorems are deliberately absent (see
   "project": "normativity",
   "short_name": "endpoint-only openness admits laundered exclusion",
   "origin_round": "2026-09-07-final-pressure-pass",
-  "status": "active",
+  "status": "superseded",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
@@ -989,7 +1261,8 @@ conditional Normative Inductor theorems are deliberately absent (see
     "verification": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/THEOREMS.md",
     "context": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md"
   },
-  "note": "Exact counterexample: a two-transition evolution open at both endpoints whose middle state has a live concern with no adequate route; it is not a legitimate segment. This is why openness is required at every state."
+  "note": "Exact counterexample: a two-transition evolution open at both endpoints whose middle state has a live concern with no adequate route; it is not a legitimate segment. This is why openness is required at every state. Superseded 2026-09-25 by `openness.endpoint-only-insufficient`; the declaration name is kept resolving by a deprecated alias for one release.",
+  "superseded_by": "openness.endpoint-only-insufficient"
 }
 ```
 
