@@ -1,0 +1,16 @@
+# The protected-authority theorem (2026-09-25)
+
+THE-ALLOCATION-THEOREM-LANDS-ON-THE-LANDED-FRAME-WITH-DELEGATION-SAFETY-AMENDMENT-NOT-APPROVAL-A-RULE-SIDE-FALLBACK-A-ROLLOUT-FORECLOSURE-AND-EXACT-REPORTING-AS-ITS-CORRECTIONS — corrigibility as faithfulness to an allocation of authority is stated on the landed interaction frame with one allocation datum (a delegated scope, the declared amendment effects, a reading of the allocation, a reporting interface), its six violations are predicates on a policy at a step of a landed trajectory with pre-emption the landed unauthorized agent-caused loss, the transform extends the landed corrigibilization conservatively and is free of bypass, missed report and exploitation by construction, free of unauthorized reallocation under allocation completeness, and corrigible in the landed sense under effect completeness and delegation safety, with a delegated authority-removing effect the exact obstruction; under a committed evaluation that charges every declared violation more than the ordinary range, a violating option scores strictly below every compliant one at every decision point for every credence and every forecast, the transform's policy dominates by the authority weight less the width times the violation credence so optimal policies violate with credence zero, consulting a principal whose response may not count beats bypass in every world exactly when the fallback branch scores above the negative of that margin, the sign of the bypass comparison is fixed whatever the divergence, the consultation premium and the two outcome-scoring residues of the protected-authority round, and for a logical inductor the ranking holds at every finite day from the price range alone; the target statement is corrected in six places, a delegated scope cannot carry authority away, ordinary approval does not reallocate and only a declared amendment does, the fallback is a transform of her rule, the per-step loss misses delayed effects which a contrastive rollout foreclosure catches, the gradual-erosion conjecture holds exactly for threshold-free reporting and fails to any threshold by a salami, and her powers are three kinds of object; the allocation floor's certificates are the new external wall, filed as item 99.
+
+Reading order: [`THEOREM.md`](THEOREM.md) (the wiki-ready statement with the mapping from
+the informal view), then [`REPORT.md`](REPORT.md) (verdict, corrections, theorem spine
+T-B1–T-B9, the eight research questions, repo mapping, fixtures, item impact).  Lean:
+`lean/Workspace/Deference/Contrib/ProtectedAuthorityTheorem.lean` (34 audited
+declarations), importing the landed `Corrigibilization.lean` and the protected-authority
+round's `ProtectedAuthority.lean`.  Fixtures: `src/lexical.py` (the lexical score at a
+decision point, the arrangement's powers, erosion), `src/frame.py` (violations on the
+mediated-repair-dominance interaction, the causation-baseline witness, the landed
+fixtures re-scored), run by `python3 tests/run.py` (25 tests).  Consumes
+`../2026-09-24-protected-authority/`, `../2026-09-15-li-corrigibility/`,
+`../2026-09-09-mediated-repair-dominance/`, `../2026-09-06-incentive-nonpreemption/`.
+Nothing is registered; item 99 is filed.

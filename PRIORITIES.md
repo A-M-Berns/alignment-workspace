@@ -2356,6 +2356,12 @@ T3, Lean `LICorrigibility.li_bypass_le`).  The latent-value bridge of this item 
 unchanged: for an operative value that is not the price of the activated security, the
 completion term and `(CT)` stand as before.
 
+*2026-09-25 (protected-authority-theorem round):* the lexical evaluator
+`S = S_ord − ϖ·n`, `ϖ > D`, is one realization of a `(DV)`-free chooser — its score is the
+price of the ordinary security less an exact violation count — and under it the sign of
+the bypass comparison is fixed whatever the forecast terms (`sign_invariance`,
+`sign_invariance_outcome`); no latent value enters.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -2663,6 +2669,29 @@ settlement gives `0` by timing at its ex-ante price; a hindsight evaluator needs
 factorization — and the activation-independence clause is the statement that the
 joint mismatch event is empty.
 
+*2026-09-24 (protected-authority round):* for the *authority* comparison the ex-ante
+settled evaluation is the comparison itself, not a price: typing the three values
+`vu, vp, vm` as the operative program's judgments on the branch-common dossier removes the
+hindsight-ratification defect and makes the landed `w_app` (the hindsight evaluator on the
+approve-all trajectory, a counterfactual-principal object) a menu value the activated
+occurrence produces under sequenced settlement (`payload_take`).  Its price is
+`E[ξ_d]` against the information the response legitimately uses beyond the dossier, which
+is hypothesis (L) of item 98.  Whether the hindsight alternative is retired for authority
+comparisons is queued in `DECISIONS.md`.
+
+*2026-09-25 (protected-authority-theorem round):* the fallback window `(D − ϖ, 0]` of the
+allocation theorem is the completion band of the void branch under the lexical score
+(`capture_window`, `capture_window_converse`): a response that does not count is
+replaced by the fallback's value rather than voiding the occurrence, and consulting beats
+bypass in every world iff that value exceeds `D − ϖ`.
+
+*2026-09-25 (legitimacy-internal-external round):* recorded: the ex-ante typing of the
+three values on the branch-common dossier is the typing of the authority comparison in the
+protected-authority round's identity (its Result 5 in the lexical theorem); the lexical
+theorem itself does not depend on it.  The gate window `(D − ϖ, 0]` is the completion band
+of a tainted segment, and a void response inside a legitimate segment is settled by the
+fallback and scored normally.
+
 ### 90. The generability certificate of the soft-weighted finite-menu constraint — **[open]** — *narrowed 2026-09-15: T3's own certificate is constructed (`LICorrigibilityCertificate.lean`); what remains is T3′'s*
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -2854,6 +2883,125 @@ data); an **amendment event kind** for the mandate, so the specification tower h
 above zero; the Logical-Induction transfer of the activation defect indicators (a compiled
 `G_M ≤ G_τ` with its generability certificate); and the declared inquiry policy under which
 the engine-ownership clauses of independence become `Realizes` hypotheses.
+
+*2026-09-24 (protected-authority round):* a fourth channel.  The response `r` as a function
+of the dossier and the operative evaluator has no declared reference; its defect
+`τ_resp = P(r ≠ argmax)` bounds the execution divergence `E[ξ_d] ≤ D·τ_resp`
+(`ProtectedAuthority.expect_execDiv_le`), and manufactured divergence is charged nowhere
+else.  Filed as item 98.
+
+*2026-09-25 (protected-authority-theorem round):* the declared amendment effects
+`IsAmend` of the allocation theorem are the amendment event kind the specification tower
+needs; a reallocation is authorized only through their gated release, not through
+ordinary approval (`ReallocAt`, `authPolicy_no_realloc`).
+
+*2026-09-25 (legitimacy-internal-external round):* transparency covers every channel of
+influence on the principal's cognition, including the **consultation protocol** — how and
+when she is asked — and disclosed actions in the world; which influence is admissible is the
+declared reference's to decide.  The reason channel's declared scope is therefore where
+asking-at-a-chosen-moment, framing and dark patterns are charged; no separate response
+channel exists (item 98).  The amendment event kind is what hypothesis (L) of item 98 and
+the specification tower both need.
+
+### 98. The nondelegation certificate and the amendment event kind — **[substantial]** — *rewritten 2026-09-25: the response-channel contract this item first filed is dissolved; its failure modes are covered by transparency (the consultation protocol in scope), authentication (Integrity), the pre-emption and foreclosure violations, the void-response rule, and constitutional design*
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The protected-authority round (`projects/deference/rounds/2026-09-24-protected-authority/`)
+signs the incentive half: at a decision point `vu − v_r = ξ_d − ξ_c` exactly, with `ξ_c` the
+consultation premium (provenance premium plus veto value) and `ξ_d = M − v_r ≥ 0` the
+execution divergence of the principal's response from her operative evaluator's argmax
+(`ProtectedAuthority.identity`).  Under nondelegation (`ξ_p ≥ 0` in every world) and a
+response that is the evaluator's argmax (`ξ_d = 0`), unasked release scores below the
+response in every world for every credence (`argmax_nondelegation_le_zero`,
+`expect_sub_le_of_pointwise`); the lexical protected-authority theorem of the
+2026-09-25 rounds dominates the same comparison with one weight and is the adopted
+incentive half, so this result is its non-lexical special case.  What remains of the item:
+
+(a) **Nondelegation as a certificate**: `π_P(R)(Cᵘ) ≤ π_P(R)(C⁺)` for every dossier and
+every nondelegated effect is a program property checkable at commitment, as extensionality
+is; beside it the lexical certificate `ϖ > D` of item 99; and a conditional delegation
+`Del(e, R)` as a declared predicate extending `Corrigibilization.Authorized`.
+(b) **The amendment event kind**: a legitimate live response is an amendment of the
+operative evaluator (`ξ_d = 0` against the amended evaluator), which needs the amendment
+event kind item 97 leaves open and a legitimacy predicate on `Amend` under which an
+impairment is a write outside the declared inputs (`tower_factor`'s failure mode); a
+response that legitimately uses information the cell's dossier lacks otherwise registers
+as divergent (`Seq` at cell 0, `E[ξ_d] = 1/8`).
+
+`ξ_d` is read as the measure of *uncaused* divergence — an impairment, a lapse — handled by
+the void-response rule and the declared fallback inside a legitimate segment.  Every
+*caused* divergence is covered by an existing piece and is not a channel the agent can
+exploit: asking at a chosen moment, framing and dark patterns are transparency failures
+with the consultation protocol in the reason channel's declared scope (item 97); forged or
+replayed approvals and answers recorded early are authentication failures under Integrity;
+blocking her answer, withdrawing the question and delaying her awakening are pre-emption or
+foreclosure violations of the allocation theorem; impaired answers are void and the fallback
+decides; her own uncaused lapses are constitutional design (confirmation steps) plus the
+reporting duty.  The segment gate of the legitimacy-internal-external round makes a
+manipulated segment score the window value whatever caused it, so routing a decision to a
+favourable fallback by manipulation is dominated (`Legitimacy.Witness.routing`).
+
+*Deliverable shape:* the nondelegation checker on committed programs with the delegation
+predicate in `Authorized`; the amendment event kind with the predicate under which the
+head-injury response is a write outside the tower, so that `ξ_d = 0` against the amended
+evaluator is a re-execution check; or the exact obstruction with its fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the round's
+head-injury and manufactured-divergence fixtures reproduced with the manufactured world
+charged as a tainted segment and the head-injury world to the void-response rule.
+*Context:* `REPORT.md` §§3 (T-A6, T-A9), 7, 8 of the protected-authority round;
+`ProtectedAuthority.lean` §§1, 6; `Legitimacy.lean` §2; item 97's residual paragraph;
+item 99.
+*Consumed by:* items 87, 89, 97, 99; the segment gate of `wiki/Corrigibility.md` §4.
+*A solution ships:* the certificate and the event kind with their witnesses, or the
+negative with its fixture.
+
+### 99. The allocation floor: delegation safety, allocation completeness, exact shortfall reporting, and the reach cone — **[substantial]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The protected-authority-theorem round (`projects/deference/rounds/2026-09-25-protected-authority-theorem/`)
+states corrigibility as faithfulness to an allocation of authority on the landed
+interaction frame: six violation predicates, the transform `𝔱` extending `𝔠`, and the
+lexical score `S = S_ord − ϖ·n` with `ϖ > D` (`ProtectedAuthorityTheorem.lean`,
+`THEOREM.md`).  Its results rest on four constitutional properties the theorem takes as
+hypotheses and nothing on `main` certifies: (a) **delegation safety** — a delegated effect
+never removes response authority (`DelSafe`; without it `𝔱π` is not corrigible,
+`Witness.delegated_cut`); (b) **allocation completeness** — task moves preserve the
+allocation, an allocation-changing effect is a declared amendment, no amendment is
+delegated (`AllocComplete`; the "approved uncorrectable successor requires amendment, not
+ordinary approval" rule); (c) the **exact reporting duty** — a report required at every
+strict increase of the control shortfall, with no materiality threshold, since any
+threshold admits a salami (`erosion_reported_or_missed`, `Witness.salami`); (d) the
+**reach cone** for foreclosure — a contrastive rollout relation on physical states whose
+faithfulness is external and which must quantify the agent's own future in a way the
+`ReachableCorrectiveControl` §12 defects do not defeat (the round's finite model uses the
+final-step cone with the agent's future fixed to idle).  Also unrealized: `ϖ > D` as a
+certified property of the committed evaluator (the lexical twin of item 98's
+nondelegation certificate), and a state-dependent `Del` for conditional delegation.
+
+*Deliverable shape:* the four properties as declared clauses of the evaluation ecosystem
+with checkers (a delegated-scope filter that rejects authority-removing effects; an
+allocation-change detector on declared effects; a shortfall monitor with a threshold-free
+reporting trigger; a reach cone with the agent quantified universally) and their `Realizes`
+witnesses; the reachable set, shortfall and materiality of the round's §4 Q7 as readings
+of the log; the lexical certificate on committed programs beside the nondelegation
+certificate of item 98; or the exact obstruction with its fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the round's
+delayed-effect, delegated-cut, salami and approved-successor fixtures reproduced against
+the declared clauses.
+*Context:* `REPORT.md` §§2, 4 (Q1, Q7, Q8), 7 and `THEOREM.md` of the round;
+`ProtectedAuthorityTheorem.lean` §§1, 2, 5; `ReachableCorrectiveControl.lean` §12; item 98.
+*Consumed by:* any adoption of `THEOREM.md` as `wiki/Corrigibility.md` §4 (queued in
+`DECISIONS.md`); items 89, 97, 98.
+*A solution ships:* the clauses with their witnesses, or the negative with its fixture.
+
+*2026-09-25 (legitimacy-internal-external round):* the salami obstruction is against a
+*per-step* threshold only; a *cumulative* threshold (report when the shortfall has grown by
+`θ` since the last report) bounds unreported erosion by `θ` at every time
+(`Legitimacy.unreported_lt`), so the exact-reporting clause may be relaxed to a cumulative
+one.  The floor's certificates sit beside the segment gate, which is legitimacy's (not the
+floor's) to supply.
 
 ## Workspace friction
 

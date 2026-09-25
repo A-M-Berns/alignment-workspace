@@ -46,8 +46,13 @@ Generated from `state/vocabulary.json` by `python3 -m checkers.workspace_state -
 | legitimacy.conservation | Answerability Conservation | Conservation | LocalConservation | legitimacy | — |
 | legitimacy.robust-openness | Robust Openness | RobustOpenActual | null intervention | legitimacy | — |
 | legitimacy.persistence-certificate | persistence certificate | — | persistence bill, Non-Capture certificate | legitimacy | — |
-| legitimacy.legitimate-segment | legitimate segment | LegitimateSegment | — | legitimacy | — |
-| legitimacy.legitimate | Legitimate | — | — | legitimacy | — |
+| legitimacy.open-integrity-segment | open Integrity segment | OpenIntegritySegment | legitimate segment, LegitimateSegment | legitimacy | — |
+| legitimacy.open-integrity | OpenIntegrity | — | Legitimate | legitimacy | — |
+| legitimacy.authorship | authorship | ReasonMediated, reason-mediated authorship | — | legitimacy | — |
+| legitimacy.transparency | transparency | Realizes, reference fidelity | transparent mediation | legitimacy | — |
+| legitimacy.internal | internal legitimacy | — | — | legitimacy | — |
+| legitimacy.external | external legitimacy | — | — | legitimacy | — |
+| legitimacy.legitimacy | Legitimacy | Legitimacy.Segment | Legitimate Evolution | legitimacy | — |
 | legitimacy.settlement-view | settlement view | SetView | settlement integrity | legitimacy | — |
 | ni.practical-cert | PracticalCert | — | — | normative induction | — |
 | ni.progress | Progress | — | headline Progress | normative induction | — |

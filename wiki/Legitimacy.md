@@ -3,33 +3,94 @@
 Legitimacy is the bridge between [Normativity](Normativity) and
 [Deference](Deference). Normative learning needs public reasons and responses that
 the learner cannot rewrite for convenience. Corrigible deference needs a human
-corrective power that the advisor cannot quietly preempt. Both depend on the same
-thing: what a process may do to the conditions of its own correction.
+corrective power that the advisor cannot quietly preempt, and a judgment that is the
+principal's own. Both depend on the same thing: what may happen to a trajectory's
+record, its verdicts, and its channels of influence.
 
-**Status: the generic theory is canonical; its central theorems are Established
-`lean-proved`.** The objects below have Lean definitions, the theorems are registered
-in the normativity claims registry, and every assumption the theory does not
-discharge is a typed input named on the page that consumes it. The realization is
-conditional and says so on its own page. The theorems themselves, stated with
-hypotheses, conclusions and Lean names, are on the [Theorem Spine](Theorem-Spine).
+**Status: the generic theory is canonical; its record half is Established
+`lean-proved`.** The record objects below have Lean definitions and registered
+theorems; authorship has one registered theorem; transparency is a Lean definition
+with unregistered theorems. The definition of legitimacy as a whole is a Lean
+structure conjoining them. Every assumption the theory does not discharge is a typed
+input named on the page that consumes it. The theorems, stated with hypotheses,
+conclusions and Lean names, are on the [Theorem Spine](Theorem-Spine).
 
-## Legitimacy is a property of evolution, not of a state
+## Legitimacy has two halves
 
-> Legitimacy is a property of cognitive evolution, not an absolute certification of a
-> state from first principles.
+> **Legitimacy = internal legitimacy ∧ external legitimacy.**
 
-A later obligation state is or is not a **legitimate evolution** of an earlier one.
-The theory does not certify the goodness of the initial state: a trajectory may
-inherit a wrong norm, a captured evaluator, an unjust allocation of standing, and
-nothing here detects that from inside. What it constrains is *how those commitments
-may subsequently be revised, challenged, answered, defeated, discharged, or
-extended*. Improvement is allowed; erasure is not. This is built into the definition:
-a legitimate segment places no condition on its starting state beyond openness at
-that state's own prefix.
+**Internal legitimacy** is factorization *within* the trajectory: all change factors
+through the normative reasons.
 
-## The theory in ten steps
+- **Integrity**, including authentication of the record: no erasure, no rewriting, no
+  unaccounted change — [Integrity](Integrity).
+- **Authorship**: the verdicts factor through the reason trace, `V = F(R)`; a verdict
+  that is not hers fails here — [Deference](Deference).
 
-This is the order the component pages follow.
+**External legitimacy** is the two conditions on the trajectory's *boundary*.
+
+- **Robust Openness**, the inward direction: what should reach the trajectory can. Every
+  live in-scope concern has an adequate route and the protected party stands on it, on
+  the actual branch and under every declared counterfactual intervention —
+  [Openness, coverage, and non-capture](Openness-Coverage-and-Non-Capture).
+- **Transparency**, the direction of entry: what reaches the trajectory does so only
+  through declared channels, `R = κ(x, z)` — the reason channel realizes a publicly
+  declared reference on the declared inputs, pathwise in the exterior.
+
+The transparent-channel round's composition `V = G ∘ x` is internal ∘ external: under
+legitimacy the payload is a function of the declared inputs, because transparency makes
+the reason trace a function of them and authorship makes the verdict a function of the
+trace (Lean `Legitimacy.Segment.payload_of_view`).
+
+**Why Robust Openness is external.** Its first gloss placed it inside, as part of the
+trajectory's continuity. The landed definitions decide otherwise. Integrity is a
+relation between two accounted states of the actual history and never leaves it;
+Robust Openness is a condition at one state that reaches into the counterfactual
+branches an application declares, and the Non-Capture contract it issues is the
+*access* half of non-capture — who can enter, challenge, and stand on a concern. That
+is a condition on what crosses the boundary, in the direction opposite to
+transparency's, and the two boundary conditions are the two directions of one seam.
+The alternative placement is recorded in the decision ledger and is not settled by a
+theorem; it is a choice of vocabulary that makes the four components sort by where they
+act.
+
+## Scope, relationality, and what is not part of it
+
+**Transparency covers every channel** through which any party's choices influence the
+principal's cognition: what she is told, how and when she is asked (a declared
+*consultation protocol*), and actions in the world that shape her beliefs or values.
+Which kinds of influence are admissible is decided by the declared reference. Honest
+persuasion is admissible; shaping through the world is admissible when disclosed.
+
+**Non-capture is stated for all influencers.** A third party who manipulates her, or a
+compromised interface, fails external legitimacy exactly as the agent would.
+
+**Legitimacy is relational.** It is a property of her trajectory *within an interaction
+whose channels of influence are declared*. Earlier statements presented legitimacy as
+intrinsic to the trajectory's evolution; the record half still is, and the whole is not:
+the same trajectory is legitimate within one declared frame and not within another.
+
+**Unchanged:** legitimacy does not certify the starting state. A trajectory may inherit
+a wrong norm, a captured evaluator, an unjust allocation of standing, and nothing here
+detects that from inside. What it constrains is how those commitments may subsequently
+be revised, challenged, answered, defeated, discharged, extended, and by whom.
+
+**Settled placements.** Authentication is part of Integrity. *Hollow ratification* —
+she rubber-stamps the agent's recommendation without having declared a delegation — is
+a refinement of authorship; counterfactual responsiveness of her verdict to her own
+reasons and values is a diagnostic for it, not its definition. *Informedness* is not
+part of legitimacy: an uninformed decision is still hers, and the agent's failure to
+inform is a violation (a missed report) and an effectiveness shortfall. *Affordability*
+is not part of legitimacy; it belongs to effectiveness, and read as a conjunct it would
+say a cheaper norm is more legitimate. The *influenceable-preferences* problem — the
+agent shaping the evaluator that scores it — is handled by transparency's scope, not by
+a separate conjunct: covert or undeclared-aim influence fails transparency, and
+legitimate, disclosed influence yields a legitimately evolved evaluator whose judgment
+is authoritative.
+
+## The record half in ten steps
+
+The order the component pages follow.
 
 1. **History and trusted interfaces.** An append-only history of authenticated
    events, read against externally supplied interfaces: which settlement items are
@@ -54,61 +115,55 @@ This is the order the component pages follow.
    and the protected party stands on the carrier of every applicable one, on the
    actual branch and under every declared counterfactual intervention —
    [Openness, coverage, and non-capture](Openness-Coverage-and-Non-Capture).
-6. **Legitimate Evolution.** An Integrity evolution that is robustly open at *every*
-   one of its states. Endpoint-only openness is refuted by an exact counterexample.
-   The certificate composes at a shared state; the endpoint relation hides the
-   certificate for consumers — below.
-7. **The qualitative handoff `O_P`.** The accounted state itself: exposure, anchors,
+6. **The open Integrity evolution.** An Integrity evolution that is robustly open at
+   *every* one of its states: the record's conjunct of internal legitimacy with the
+   inward conjunct of external legitimacy, and the object the activated-value stack
+   consumes. Endpoint-only openness is refuted by an exact counterexample. The
+   certificate composes at a shared state; the endpoint relation hides the certificate
+   for consumers — below.
+7. **Authorship and transparency.** The two channel conditions, stated on a declared
+   interaction frame; their conjunction with the open Integrity evolution is
+   legitimacy — [Deference](Deference).
+8. **The qualitative handoff `O_P`.** The accounted state itself: exposure, anchors,
    docket, account. No weights, intensities, probabilities, or market data —
    [Normative induction](Normative-Induction).
-8. **Evaluation, `PracticalCert`, Progress.** A declared evaluation of the handoff
+9. **Evaluation, `PracticalCert`, Progress.** A declared evaluation of the handoff
    scores each transported exposure against the one response realized at each
    service occurrence; the three-term bound follows from edge-local certificates —
    [Normative induction](Normative-Induction).
-9. **The Normative Inductor.** A Logical Inductor with one bounded-liability
-   projection enforcer against a compiled joint region, whose end-to-end theorems
-   are conditional on named hypotheses — [Normative Inductor](Normative-Inductor).
-10. **External contracts and the frontier** — [Roadmap](Roadmap).
+10. **The Normative Inductor and the frontier.** A Logical Inductor with one
+    bounded-liability projection enforcer against a compiled joint region, whose
+    end-to-end theorems are conditional on named hypotheses —
+    [Normative Inductor](Normative-Inductor), [Roadmap](Roadmap).
 
-## The decomposition
+## The open Integrity evolution
 
-> **Legitimate Evolution = Integrity evolution + Robust Openness at every state.**
+> **Open Integrity evolution = Integrity evolution + Robust Openness at every state.**
 
-The two halves close two different escape routes. Integrity blocks evasion by
+The two components close two different escape routes. Integrity blocks evasion by
 revision: no transition has a constructor by which content leaves, and no recorded
 receipt is rewritten. Robust Openness blocks evasion by exclusion: coverage and
 standing are required at every state, so a concern cannot be shut out while it is
-live and readmitted once it no longer matters.
-
-The two are stated over different objects on purpose. Integrity is a relation between
-two accounted states of the actual history. Robust Openness is a condition at one
-state that reaches into the counterfactual branches an application declares. Their
+live and readmitted once it no longer matters. They are stated over different objects
+on purpose — a relation between two accounted states of the actual history, and a
+condition at one state that reaches into declared counterfactual branches — and their
 conjunction is a trajectory certificate, not a predicate on a single history.
 
-**Diachronic Answerability is derived, not a third conjunct.** Its content half is
-the conservation theorem of the Integrity evolution; its standing half is the
-protected party's standing on carriers, which is part of Robust Openness on the
-actual branch. See [Diachronic Answerability](Diachronic-Answerability) for the exact
-statement.
-
-**Affordability** is a realizability side condition on a concrete realization, not a
-source of legitimacy: read as a conjunct it would say a cheaper norm is more
-legitimate.
-
-## The two objects a consumer meets
-
-A **legitimate segment** is the fundamental object: the Integrity evolution with its
-explicit intermediate states, together with openness at each of them. It is
+An **open Integrity segment** is the fundamental object: the Integrity evolution with
+its explicit intermediate states, together with openness at each of them. It is
 proof-relevant and history-sensitive — two trajectories with the same endpoints are
-distinguished by it — and it is what an auditor reads.
+distinguished by it — and it is what an auditor reads. The **endpoint relation**
+`OpenIntegrity O₀ O₁` says only that some such segment from `O₀` to `O₁` exists; it is
+transitive and is what a downstream theorem consumes. Both compose at a literally
+shared state and nothing composes across states that merely look alike. A legitimate
+segment projects to an open Integrity segment by forgetting authorship and
+transparency (Lean `Legitimacy.Segment.toOpenIntegrity`), and legitimacy composes at a
+shared state the same way.
 
-The **endpoint relation** `Legitimate O₀ O₁` says only that some legitimate segment
-from `O₀` to `O₁` exists. It is transitive and is what a downstream theorem, such as
-a future deference result, consumes. The certificate is hidden from the consumer and
-available to the audit.
-
-Both compose. The composite of two legitimate segments at a literally shared state is
-a legitimate segment; nothing composes across states that merely look alike.
+**Diachronic Answerability is derived.** Its content half is the conservation theorem
+of the Integrity evolution; its standing half is the protected party's standing on
+carriers, which is part of Robust Openness on the actual branch. See
+[Diachronic Answerability](Diachronic-Answerability) for the exact statement.
 
 ## What legitimacy exports
 
@@ -117,7 +172,7 @@ more is decided downstream by an evaluation protocol the application declares, s
 that the process which incurs obligations cannot also set the terms on which it is
 scored.
 
-## Two contracts the theory issues on purpose
+## The contracts the theory issues on purpose
 
 **The Non-Capture contract.** An application declares its scope of concerns, its
 class of interventions, the coupling that produces each counterfactual branch, and
@@ -126,52 +181,66 @@ them. Componentwise route persistence is one sufficient way to produce that
 certificate and is strictly stronger than necessary; it is a plugin, not the
 contract.
 
+**The reference contract.** An application declares, for each channel of influence, the
+declared inputs and the reference the channel realizes, and certifies transparency
+against them; the committed principal program re-executed on the authenticated trace is
+one way to certify authorship, and the shared pre-commit prefix is one way to certify
+the activation channel.
+
 **The practical-semantics contract.** A theory of policy evaluation certifies, for
 each transported exposure and each service occurrence, the edge-local inequality
 between the anchored loss of the one realized response and the public defect. Value
 correspondences and approximate optimizers are ways of producing it, not public
 structure.
 
-Both are typed inputs. Neither is an unfinished theorem of the generic theory.
-
-The Non-Capture contract is the *access* half of non-capture — who can enter,
-challenge, and stand on a concern. Whether an answer a process eventually records is
-genuinely the protected party's own conclusion rather than the process's conclusion
-routed through them is a third, separate contract, *authorship*, consumed by
-[deference](Deference) and not a conjunct of legitimacy. That consumer reads
-legitimacy through an *occurrence-local projection* — the trace of one occurrence's
-account with openness at each snapshot for the concerns relevant to it — which is a
-projection of a legitimate segment, not a second definition; an application may still
-require the global segment as an evidentiary policy about the record-keeper.
+All are typed inputs. None is an unfinished theorem of the generic theory. Earlier
+statements of this page listed authorship as a third contract *outside* legitimacy,
+consumed by deference and not a conjunct; that ruling is superseded. Authorship is a
+conjunct of internal legitimacy because a verdict that does not factor through the
+reason trace is not the trajectory's own change, whatever the record says about it,
+and the record half alone could certify a trajectory whose every verdict was routed
+through the principal by the process it was meant to constrain. The deference consumer
+reads the record half through an *occurrence-local projection* — the trace of one
+occurrence's account with openness at each snapshot for the concerns relevant to it —
+which is a projection of an open Integrity segment, not a second definition.
 
 ## Where this is going
 
-The consumer is [corrigibility](Corrigibility), where corrigibility is defined from
-the principal's response authority over declared protected effects, the legitimate
-activated evaluation of [deference](Deference) is the principal's judgment the incentive
-theorem scores, and the decision interface of [normative induction](Normative-Induction)
-reads the constitutional structure exactly as it reads an ordinary obligation.  What
-legitimacy contributes there is conservation of governance debt, per-state procedural
-availability, and the authorship and coverage clauses that make an evaluation the
-principal's own; it does not prove physical authority, effect completeness, or an
-absence of incentive to circumvent the process, and the corrigibility page keeps those
-apart.
+The consumer is [corrigibility](Corrigibility), where corrigibility is faithfulness to
+an allocation of authority and legitimacy enters at one place: the **segment gate** on
+future evaluations. A future evaluation counts iff the segment from the decision
+through the evaluation is legitimate — internal and external — whatever caused a
+failure; a tainted segment contributes a fixed value in the capture window, and a void
+response inside a legitimate segment is settled by the declared fallback and scored by
+her later legitimate evaluation. What legitimacy contributes there is conservation of
+governance debt, per-state procedural availability, and the authorship and transparency
+conditions that make an evaluation the principal's own within the declared interaction;
+it does not prove physical authority, effect completeness, or an absence of incentive
+to circumvent the process, and the corrigibility page keeps those apart.
 
 ---
 
-**Evidence.** The canonical statement is the final pressure pass's
+**Evidence.** The definition of legitimacy, the segment gate and the composition
+`V = G ∘ x` are the legitimacy-internal-external round's
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-legitimacy-internal-external/REPORT.md)
+with
+[`Legitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/Legitimacy.lean).
+The record half's canonical statement is the final pressure pass's
 [`READINESS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/READINESS.md),
 built on the consolidation round's
-[`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md).
-The Lean spine is
-[`LegitimateEvolution.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/LegitimateEvolution.lean)
+[`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md),
+under the names those documents used at the time. The Lean spine is
+[`OpenIntegrityEvolution.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Normativity/Contrib/OpenIntegrityEvolution.lean)
 over
-[`OccurrenceIntegrity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/OccurrenceIntegrity.lean)
+[`OccurrenceIntegrity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Normativity/Contrib/OccurrenceIntegrity.lean)
 and
-[`NonCaptureCertificate.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean);
+[`NonCaptureCertificate.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Normativity/Contrib/NonCaptureCertificate.lean);
+authorship is
+[`ReasonMediatedAuthorship.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/ReasonMediatedAuthorship.lean)
+and transparency
+[`TransparentChannel.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/TransparentChannel.lean);
 the registered claims are the *legitimacy spine* section of the
-[normativity claims registry](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/CLAIMS.md).
-The research history that produced this shape — the integrity constructive and
-adversarial rounds, their synthesis, and the two consolidation passes — is preserved
-under the legitimacy rounds directory and cited from each component page as
-evidence, not as the current statement.
+[normativity claims registry](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/normativity/CLAIMS.md),
+which carries the old-to-new map of the renaming. The research history that produced
+this shape is preserved under the legitimacy rounds directory and cited from each
+component page as evidence, not as the current statement.

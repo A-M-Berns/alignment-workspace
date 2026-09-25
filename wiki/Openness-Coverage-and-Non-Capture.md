@@ -62,7 +62,8 @@ intervention, and the counterfactual-only predicate provably does not contain it
 
 ## Over time
 
-A legitimate evolution is robustly open at **every** one of its states. Endpoint-only
+An open Integrity evolution — the record half of [legitimacy](Legitimacy) — is robustly
+open at **every** one of its states. Endpoint-only
 openness is refuted by an exact trajectory: open, then a state at which a live concern
 has no adequate route, then restored. Every named form of laundering by temporary
 exclusion — losing the principal's standing for a while, removing every route for a
@@ -91,9 +92,12 @@ was live at the actual prefix, and is recorded as such rather than presented as 
 certificate.
 
 This is the access half of non-capture: it concerns who can reach and act on a
-concern, not what an evaluator who does reach it concludes. That an evaluation
-recorded through an open route is the evaluator's own — authorship — is a separate
-external contract, consumed by [deference](Deference) and not part of this one.
+concern, not what an evaluator who does reach it concludes. Robust Openness is the
+inward conjunct of external [legitimacy](Legitimacy): what should reach the trajectory
+can. Its partner, transparency, is the conjunct of entry: what reaches the trajectory
+does so only through declared channels. That an evaluation recorded through an open
+route is the evaluator's own — authorship — is a conjunct of internal legitimacy and is
+stated on [deference](Deference); none of it is part of this page's contract.
 
 Downstream, the distinction is exact. Robust Openness supplies *route availability*:
 a live concern in scope has an adequate route by which it can become represented. It

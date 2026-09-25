@@ -72,7 +72,7 @@ obligation, which no participant's challenge, verdict or quote can manufacture.
 **Evidence.** The protocol's settlement fields, the closure receipt and its
 immutability under substitution are
 [`OccurrenceIntegrity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/OccurrenceIntegrity.lean),
-registered as `legitimacy.receipts-immutable`; the six-way separation is §3 of the
+registered as `integrity.receipts-immutable`; the six-way separation is §3 of the
 consolidation round's
 [`CONSOLIDATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/CONSOLIDATION.md).
 The attacks that forced the item/judgment distinction — genuine settlement with

@@ -20,13 +20,15 @@ The program has two research lines and one bridge:
   stack, and its dynamic-competence layer is [Continuation BRIA](Continuation-BRIA).
 - **[Legitimacy](Legitimacy)** asks what must remain true of that process so
   deference does not merely preserve manipulation, self-authorization, or
-  corruption. Its generic theory is canonical: legitimacy is a property of
-  *cognitive evolution* — a later accounted obligation state being a legitimate
-  development of an earlier one — an [Integrity](Integrity) evolution that is
-  [robustly open](Openness-Coverage-and-Non-Capture) at every state, with
-  [Diachronic Answerability](Diachronic-Answerability) derived from the two,
-  [normative induction](Normative-Induction) as the quantitative half, and the
-  [Normative Inductor](Normative-Inductor) as its conditional realization.
+  corruption. Its generic theory is canonical: legitimacy is a property of a
+  trajectory *within an interaction whose channels of influence are declared*, with
+  an internal half — an [Integrity](Integrity) evolution of the accounted obligation
+  state, and authorship of its verdicts — and an external half — the trajectory
+  [robustly open](Openness-Coverage-and-Non-Capture) at every state, and every channel
+  of influence transparent to its declared reference. [Diachronic
+  Answerability](Diachronic-Answerability) is derived from the record half,
+  [normative induction](Normative-Induction) is the quantitative half, and the
+  [Normative Inductor](Normative-Inductor) is its conditional realization.
 
 The bridge matters because good bookkeeping is not enough. A record may track
 every debt while the surrounding process prevents a challenge from reaching its
@@ -66,8 +68,12 @@ to the underlying evidence.
 - **Aspirational** describes a research direction and claims no mathematical
   backing.
 
-The normativity line's traderization results, the legitimacy spine, and the
-deference line's finite results are registered and carry `lean-proved`. Everything
+The normativity line's traderization results, the record half of the legitimacy
+spine, and the deference line's finite results are registered and carry
+`lean-proved`; the corrigibility nucleus — corrigibility as faithfulness to an
+allocation of authority, with the lexical protected-authority theorem as its incentive
+half and legitimacy entering through the segment gate — is stated in Lean and
+unregistered. Everything
 else discussed here is open, a living note, or unregistered research: its round
 verdicts and evidence strengths are preserved, and the wiki does not upgrade any of
 it to Established. The legitimacy theory is canonical and its remaining work is

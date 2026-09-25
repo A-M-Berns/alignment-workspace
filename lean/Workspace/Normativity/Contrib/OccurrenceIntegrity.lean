@@ -29,7 +29,7 @@ structural facts behind it: `Program.evaluate_subst` (the resolution witness an 
 denotes is preserved through substitution, so carry is faithful by construction) and
 `Program.terminals_subst` / `Program.livePorts_subst` (a step never rewrites a
 recorded receipt and replaces exactly the live leaves).  The accounted state, the
-evolution relation between states, and legitimacy are in `LegitimateEvolution`.
+evolution relation between states, and the open Integrity evolution are in `OpenIntegrityEvolution`.
 
 **What this does not establish.**  The protocol's predicates — `Admitted`, `Live`,
 `Authorized`, `AnswerOK`, `SetView`, `Closes` — and the evidence maps of a `LocalLaw`

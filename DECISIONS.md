@@ -84,18 +84,6 @@ commit.
   exhibit candidates and cannot say they are enough, which is the judgment
   *Where ingenuity is the bottleneck* exists to hold.
 
-- **Whether a third exported contract — the *reference fidelity* of a named channel to a
-  declared reference, `Realizes` in Lean — enters the wiki beside Non-Capture and
-  authorship, and whether the activation-locality lemma is promoted to item 89's row now.**
-  The transparent-channel round (`projects/deference/rounds/2026-09-24-transparent-channel/`)
-  shows the mathematics is one composition and, in its second pass, that the existential
-  form (`Transparent`, "transparent mediation") is vacuous or false on the concrete reason
-  channel without the advisor's declaration, so the round recommends the name *reference
-  fidelity*, recommends against canonicalizing before item 97's advisor-mandate event, and
-  recommends promoting `TransparentEcosystem.payload_take` /
-  `activation_eq_of_shared_prefix` to `wiki/Corrigibility.md` §9's sealed-comparison row.
-  *Turns on:* vocabulary authority, and whether a third exported contract is wanted where
-  the wiki now lists two; the round's names are provisional.
 
 ## Settled
 
@@ -4283,3 +4271,153 @@ advisor-authored events as the view (vacuous or wrong-signed); reading the marke
 publication out of the view to save selection blindness (it would misclassify a declared
 input as a hidden read; the fix is not to publish before commitment); a second evaluator
 log to express factorization (outside the model); promoting "transparent mediation" now.
+
+### 2026-09-24 — the incentive half signs as the landed identity at the best-response reference, nondelegation is a program property, and the response channel is the wall it rests on
+
+Agent-decided, reversible.  The protected-authority round.  (1) The bypass premium at a
+decision point is `vu − v_r = ξ_d − ξ_c` with the reference `M = max(vp, vm)`, the
+consultation premium `ξ_c = ξ_p + ξ_v` (provenance premium plus veto value) and the
+execution divergence `ξ_d = M − v_r ≥ 0`; pointwise the landed decline regret is
+`(ξ_d − ξ_v)₊` and the landed mediation gap `(−ξ_p)₊`, so the restatement is a re-reading
+of `LICorrigibility.mismatch_identity`, not a new decomposition (Lean
+`ProtectedAuthority.identity`, the re-scored fixtures).  (2) The corrigibility condition
+is per-world nondelegation `ξ_p ≥ 0`, a property of the committed evaluator checkable at
+commitment; per-world `ξ_c ≥ 0` coincides with it on legitimate approve worlds and is
+weaker only on decline worlds where the veto value covers a delay cost, and the expected
+condition is belief-dependent (predicted approval).  (3) The three values are typed as the
+operative program's ex-ante judgments on the branch-common dossier; the landed hindsight
+`w_app` is the counterfactual-principal object and the typing is its repair.  (4) The
+symbols are `ξ_p, ξ_v, ξ_c, ξ_d, o₁, o₂`; the dispatch's `γ, ν, χ, ξ, η₁, η₂` are not used
+because `γ, ν, χ, η` are bound.  (5) Nothing is registered; item 98 is filed; the wiki is
+untouched.
+*Rejected alternatives:* keeping the dispatch's symbols; per-world `ξ_c ≥ 0` as the
+condition; presenting the signed form as a strict improvement on T2–T3′ as theorems
+(the hypothesis packages are incomparable); a wiki restatement ahead of the maintainer's
+vocabulary decision.
+
+### 2026-09-24 — hypothesis (L) is a typing decision that puts the content of a legitimate response into the amendment tower, and the randomized audit calibrates the divergence without controlling it
+
+Agent-decided, reversible.  (1) "A legitimate live response is an amendment of the
+operative evaluator, so `ξ_d = 0`" is circular by construction and is adopted as the
+reading: `ξ_d = 0` iff the response is the amended evaluator's argmax
+(`legit_execDiv_zero`), two continuations agreeing on the declared amendment inputs share
+their divergence (`execDiv_of_tower`, on `tower_factor`), and all content sits in what
+`Amend` admits, which is where Integrity and Robust Openness of the principal's own
+deliberation are stated; Legitimacy is not redefined.  (2) `ξ_d > 0` detects either an
+illegitimate response or an amendment the tower failed to record, and the identity cannot
+tell them apart: the head-injury and the manufactured world carry the same numbers and
+the same override licence `ξ_d > ξ_c`; the head-injury case the post wants is a
+conditional delegation for incapacity declared in advance, not a bypass.  (3) The
+randomized binding consultation audit calibrates `E_n(ξ_d)` on the audited subsequence
+under the feedback boundary's conditions and bounds nothing off it; the control is the
+response channel's reference fidelity, `E[ξ_d] ≤ D·τ_resp`, a fourth link the chain does
+not have (item 98).  (4) Drift under one fixed evaluator is not `SHIFT`; the node-wise
+statement is the target for corrigibility proper and the global comparison is a
+time-consistency statement recommitment violates by design.
+*Rejected alternatives:* stating (L) as a theorem; reading `ξ_d > 0` as an override
+licence; identifying drift with joinability; a fully-updated-deference proof (ruled out
+2026-08-11; the companion identity is a reading of that argument's terms, not a theorem
+about it).
+
+### 2026-09-25 — corrigibility as faithfulness to an allocation is stated on the landed frame, with delegation safety, amendment-not-approval, a rule-side fallback, rollout foreclosure and exact reporting as the corrections to the informal statement
+
+Agent-decided, reversible.  The protected-authority-theorem round.  (1) The allocation is
+a datum over the landed interaction (delegated scope, declared amendment effects, an
+allocation reading, a reporting interface); the six violations are predicates on a policy
+at a step of a landed trajectory, pre-emption being the landed unauthorized agent-caused
+loss and foreclosure a contrastive rollout over a reach relation.  (2) The transform `𝔱`
+extends `𝔠` conservatively (`authPolicy_eq_corr`), is violation-free by construction for
+bypass, missed report and exploitation, free of reallocation under allocation
+completeness, and corrigible in the landed sense under effect completeness and delegation
+safety (`corrigible_authPolicy`); a delegated authority-removing effect is the exact
+obstruction (`Witness.delegated_cut`).  (3) The lexical score `S = S_ord − ϖ·n` with
+`ϖ > D` gives belief-independent lexical protection, policy dominance by
+`(ϖ − D)·Pr(violates)`, the capture window `(D − ϖ, 0]` as the exact condition, sign
+invariance over the protected-authority round's terms, and the finite-time claim at every
+day of a logical inductor from the price range alone.  (4) The gradual-erosion conjecture
+is adopted for threshold-free reporting only; any materiality threshold admits a salami.
+(5) Symbols: `ϖ, n, S, 𝔱` for the dispatch's `λ, N, R, T`; `D` kept.  (6) Nothing is
+registered; item 99 is filed; the wiki is untouched pending the queued decision.
+*Rejected alternatives:* counting an approved uncorrectable successor as authorized
+reallocation; the fallback as a policy transform; a materiality threshold on the reporting
+duty; the transient-authority reach cone (misses delayed effects); stating Result 1 for
+foreclosure without a reach hypothesis.
+
+### 2026-09-25 — legitimacy is internal ∧ external; Robust Openness is external; the registered spine is renamed under an old-to-new map
+
+Maintainer decision, landed by the legitimacy-internal-external round.  (1)
+**Legitimacy = internal legitimacy ∧ external legitimacy**, of a segment of the principal's
+trajectory within an interaction whose channels of influence are declared.  Internal
+legitimacy is Integrity (with authentication of the record) and authorship (`V = F(R)`);
+external legitimacy is Robust Openness (what should reach the trajectory can) and
+transparency (what reaches it does so only through declared channels, `R = κ(x, z)`).
+Lean `Legitimacy.Segment` with `Internal`, `External`, `Segment.trans`,
+`Segment.toOpenIntegrity`, `Segment.payload_of_view` (`V = G ∘ x` is internal ∘ external).
+(2) **Robust Openness is external** (this placement and the names *internal/external*
+are agent-decided, reversible; the rest is the maintainer's).  Integrity is a relation
+between two accounted states
+of the actual history; Robust Openness is a condition at one state reaching into the
+declared counterfactual branches, and the Non-Capture contract it issues is the access half
+of non-capture — a boundary condition in the direction opposite to transparency's.  The
+alternative placement (openness as part of the trajectory's continuity, the maintainer's
+first gloss) is recorded and rejected: under it the two halves would be "record" and
+"channel", which is a different axis from where the conditions act.  The names
+*internal/external* are kept over *continuity/boundary*; the risk of reading them as
+"inside her head / outside" is met by stating that both halves are properties of her
+trajectory within a declared interaction.  (3) **The registered conjunction straddles
+the halves and is kept as an intermediate object**, the **open Integrity evolution**
+(`OpenIntegritySegment`, `OpenIntegrity`), because the activated-value stack consumes
+exactly it (the occurrence-local projection of Theorem 9.6).  The claims are renamed:
+`legitimacy.evolution-conservation`, `.propagate-to-segment`, `.receipts-immutable`,
+`.faithful-carry`, `.multiplicity-witness` → `integrity.*`; `legitimacy.segment-trans`,
+`.endpoint-trans`, `.answerable` → `open-integrity.*`; `legitimacy.endpoint-only-insufficient`
+→ `openness.endpoint-only-insufficient`; the Lean namespace `LegitimateEvolution` →
+`OpenIntegrityEvolution` with `LegitimateSegment` → `OpenIntegritySegment` and
+`Legitimate` → `OpenIntegrity`, deprecated aliases kept for one release in
+`LegitimateEvolution.lean`; the old entries stay in the registry `superseded`.  The map
+is in the registry's legitimacy-spine preamble and the round's report; every renamed
+statement is re-verified by the build and keeps `lean-proved`.  (4) **This supersedes the
+ruling that authorship is not a conjunct of legitimacy** (`wiki/Legitimacy.md`'s "third
+contract" paragraph, `wiki/Deference.md`, `wiki/Openness-Coverage-and-Non-Capture.md`):
+a verdict that does not factor through the reason trace is not the trajectory's own
+change, whatever the record says of it.  (5) Placements: authentication is part of
+Integrity; hollow ratification is a refinement of authorship, counterfactual
+responsiveness its diagnostic; informedness and affordability are not part of legitimacy;
+the influenceable-preferences problem is transparency's scope; non-capture is stated for
+all influencers; legitimacy does not certify the starting state.  (6) The queued
+reference-fidelity entry of the transparent-channel round is closed: transparency enters
+as a conjunct of external legitimacy, with *reference fidelity* as its alias.
+*Rejected alternatives:* Robust Openness internal (and the registered conjunction as
+internal legitimacy); retiring the conjunction outright; renaming without deprecated
+aliases; keeping the old claim ids with new prose.
+
+### 2026-09-25 — the lexical protected-authority theorem is the incentive half of corrigibility, with the segment gate, amendment-not-approval, and the item 98 rewrite
+
+Maintainer decision, landed by the legitimacy-internal-external round.  (1)
+`wiki/Corrigibility.md` §4 is replaced by the protected-authority-theorem round's
+statement: corrigibility is faithfulness to an allocation of authority, the transform `𝔱`
+extends `𝔠`, her committed evaluation is lexical in the declared violations, and §1's
+response-authority framing sits under the allocation.  The protected-authority round's
+nondelegation result stays as the non-lexical special case.  (2) **The gate on future
+evaluations is segment-level**: an evaluation counts iff the segment from the decision
+through it is legitimate (internal ∧ external), whatever caused a failure; a tainted
+segment scores a fixed value in `(D − ϖ, 0]`, default `0`, with a tie-breaking value just
+below `0` an allowed variant (both recorded, the choice open); the fallback settles void
+responses inside legitimate segments and never restores a tainted segment's score.  The
+per-response gate of the theorem round as first stated admitted a routing exploit
+(`Legitimacy.Witness.routing`), closed by the segment gate; Result 4 holds for the segment
+gate (`gate_capture_window`, `handled_gt_bypass`).  (3) **Amendment is not approval**: an
+approved uncorrectable successor through the ordinary gate is a reallocation unless the
+install is a declared amendment; the corrigibility page's earlier reading of it as
+authorized is kept in the response-authority sense and qualified.  (4) **Item 89**: the
+ex-ante typing is the typing of the authority comparison in the signed identity; the
+lexical theorem does not depend on it.  (5) **Item 98 is rewritten**: the response-channel
+contract dissolves into transparency with the consultation protocol in scope,
+authentication under Integrity, the pre-emption and foreclosure violations, the
+void-response rule and constitutional design; `ξ_d` measures uncaused divergence.  (6)
+**The salami obstruction is per-step only**: a cumulative threshold bounds unreported
+erosion by the threshold (`Legitimacy.unreported_lt`); the erosion result is updated.  (7)
+The two queued entries of the protected-authority rounds are closed by this decision.
+*Rejected alternatives:* keeping T2–T3′ as §4 with the lexical theorem as a note; gating
+per response; treating the response channel as a fourth contract; exact reporting as the
+only closure of erosion.

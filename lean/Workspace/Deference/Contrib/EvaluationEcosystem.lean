@@ -30,7 +30,7 @@ prefix and compares (§2, `reexecutes`).
 * §8 the concrete instance `w1`: activation, payload, the void fixtures of the pressure
   pass, pair two (`logs_equal`, `payload_regardless`), openness under transforms versus
   pinned data (`openAll_robust`, `not_openAll_fragile`, `openAll_pinned_fragile`),
-  `localLegit` by projection.
+  `localOpenIntegrity` by projection.
 * §9 the trace encoding (clause 4): `rep_faithful`, `advisorTrace_unfaithful`,
   `forged_route_not_represented`.
 * §10 availability (clause 7): the Laplace facts and `availability_of_provind`.
@@ -51,7 +51,7 @@ namespace Workspace.Deference.Contrib.EvaluationEcosystem
 universe u v w
 
 open Workspace.Normativity.Contrib.OccurrenceIntegrity
-open Workspace.Normativity.Contrib.LegitimateEvolution
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution
 open Workspace.Normativity.Contrib.AuthorityActivation
 open Workspace.Normativity.Contrib.OccurrenceLocalIntegrity
 open Workspace.Normativity.Contrib.NonCapture
@@ -1009,11 +1009,11 @@ theorem openAll_pinned_fragile :
 
 theorem exposed_1 : (0 : ℕ) ∈ (boundary w1 1).exposed := by decide +kernel
 
-/-- **`LocalLegit` on the real trace** under the transform semantics, by projection. -/
-def localLegit :
-    LocalLegit (S := protocol w1) (anchor := anchor w1) 0 {1} (sem true w1) (state 1) exposed_1
+/-- **`LocalOpenIntegrity` on the real trace** under the transform semantics, by projection. -/
+def localOpenIntegrity :
+    LocalOpenIntegrity (S := protocol w1) (anchor := anchor w1) 0 {1} (sem true w1) (state 1) exposed_1
       _ (ev.conservation.exposure exposed_1) :=
-  ev.toLocalLegit 0 openAll_robust exposed_1
+  ev.toLocalOpenIntegrity 0 openAll_robust exposed_1
 
 theorem endpoint_activated (h : (0 : ℕ) ∈ (boundary w1 (1 + 8)).exposed) :
     (((segmentTo w1 1 8).propagate (accountsAt w1 1)) 0 h).activated = true := by
@@ -1172,7 +1172,7 @@ end Workspace.Deference.Contrib.EvaluationEcosystem
 #print axioms Workspace.Deference.Contrib.EvaluationEcosystem.Instance.openAll_robust
 #print axioms Workspace.Deference.Contrib.EvaluationEcosystem.Instance.not_openAll_fragile
 #print axioms Workspace.Deference.Contrib.EvaluationEcosystem.Instance.openAll_pinned_fragile
-#print axioms Workspace.Deference.Contrib.EvaluationEcosystem.Instance.localLegit
+#print axioms Workspace.Deference.Contrib.EvaluationEcosystem.Instance.localOpenIntegrity
 #print axioms Workspace.Deference.Contrib.EvaluationEcosystem.Instance.endpoint_activated
 #print axioms Workspace.Deference.Contrib.EvaluationEcosystem.Instance.localTrace
 #print axioms Workspace.Deference.Contrib.EvaluationEcosystem.rep_faithful

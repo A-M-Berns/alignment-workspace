@@ -1,51 +1,462 @@
 {
   "terms": [
-    {"id": "project.normativity", "preferred": "Normativity", "deprecated_aliases": ["Leverage"], "scope": "project", "replacement_terms": []},
-    {"id": "project.legitimacy", "preferred": "Legitimacy", "deprecated_aliases": [], "scope": "subproject", "replacement_terms": []},
-    {"id": "quantity.leverage", "preferred": "leverage", "deprecated_aliases": [], "scope": "technical quantity", "replacement_terms": []},
-    {"id": "concept.answerability", "preferred": "answerability", "aliases": ["relational answerability", "relational normative answerability"], "deprecated_aliases": [], "scope": "relational status", "replacement_terms": []},
-    {"id": "property.auditability", "preferred": "auditability", "deprecated_aliases": ["diachronic bookkeeping"], "scope": "record property", "replacement_terms": []},
-    {"id": "property.efficacy", "preferred": "efficacy", "deprecated_aliases": ["effective causal access"], "scope": "model-relative transition-system property", "replacement_terms": []},
-    {"id": "gap.audit-discontinuity", "preferred": "audit discontinuity", "deprecated_aliases": [], "scope": "auditability", "replacement_terms": []},
-    {"id": "book.bounds", "preferred": "bounds", "deprecated_aliases": [], "scope": "book", "replacement_terms": []},
-    {"id": "book.holdings", "preferred": "holdings", "deprecated_aliases": [], "scope": "book", "replacement_terms": []},
-    {"id": "practice.objection", "preferred": "objection", "deprecated_aliases": [], "scope": "objection grammar", "replacement_terms": []},
-    {"id": "practice.objection-family", "preferred": "objection family", "deprecated_aliases": [], "scope": "objection grammar", "replacement_terms": []},
-    {"id": "accounting.charge", "preferred": "charge", "deprecated_aliases": [], "scope": "accounting", "replacement_terms": []},
-    {"id": "accounting.charges-run", "preferred": "charges run", "deprecated_aliases": [], "scope": "accounting", "replacement_terms": []},
-    {"id": "accounting.cap", "preferred": "cap", "deprecated_aliases": [], "scope": "accounting", "replacement_terms": []},
-    {"id": "accounting.fencing", "preferred": "fencing", "deprecated_aliases": [], "scope": "accounting", "replacement_terms": []},
-    {"id": "model.mechanism", "preferred": "mechanism", "deprecated_aliases": [], "scope": "general construction", "replacement_terms": []},
-    {"id": "model.instance", "preferred": "instance", "deprecated_aliases": [], "scope": "concrete model", "replacement_terms": []},
-    {"id": "response.answering", "preferred": "answering", "deprecated_aliases": [], "scope": "response disposition", "replacement_terms": []},
-    {"id": "coverage.eventual-route", "preferred": "eventual route coverage", "deprecated_aliases": [], "scope": "learning criterion", "replacement_terms": []},
-    {"id": "pipeline.failure-pattern", "preferred": "failure pattern", "deprecated_aliases": [], "scope": "learning pipeline", "replacement_terms": []},
-    {"id": "pipeline.certified-lawful-edit", "preferred": "certified lawful edit", "deprecated_aliases": [], "scope": "learning pipeline", "replacement_terms": []},
-    {"id": "pipeline.remediable-pattern", "preferred": "remediable pattern", "deprecated_aliases": [], "scope": "learning pipeline", "replacement_terms": []},
-    {"id": "pipeline.filing", "preferred": "filing", "deprecated_aliases": [], "scope": "learning pipeline", "replacement_terms": []},
-    {"id": "pipeline.exposed-failure", "preferred": "exposed failure", "deprecated_aliases": [], "scope": "learning pipeline", "replacement_terms": []},
-    {"id": "pipeline.lesson", "preferred": "lesson", "deprecated_aliases": [], "scope": "learning pipeline", "replacement_terms": []},
-    {"id": "criterion.immanent-self-correction", "preferred": "immanent self-correction", "deprecated_aliases": [], "scope": "learning criterion", "replacement_terms": []},
-    {"id": "notation.commitment", "preferred": "C_i(j)", "deprecated_aliases": [], "scope": "human notation", "repo_identifiers": ["commitments"]},
-    {"id": "notation.entitlement", "preferred": "E_i(j)", "deprecated_aliases": [], "scope": "human notation", "repo_identifiers": ["entitlements"]},
-    {"id": "notation.incompatibility", "preferred": "K_i(j)", "deprecated_aliases": [], "scope": "human notation", "repo_identifiers": ["incompatibilities"]},
-    {"id": "notation.due", "preferred": "Due", "deprecated_aliases": [], "scope": "human notation", "repo_identifiers": ["due"]},
-    {"id": "notation.answers", "preferred": "Answers", "deprecated_aliases": [], "scope": "human notation", "repo_identifiers": ["answers"]},
-    {"id": "notation.selector", "preferred": "E_g", "deprecated_aliases": [], "scope": "theorem interface", "repo_identifiers": ["selector"]},
-    {"id": "notation.transformation", "preferred": "F_g", "deprecated_aliases": [], "scope": "theorem interface", "repo_identifiers": ["transformation"]},
-    {"id": "notation.loss", "preferred": "ℓ_t", "deprecated_aliases": ["ell_t"], "scope": "theorem interface", "repo_identifiers": ["charge_vector"]},
-    {"id": "notation.margin", "preferred": "δ_g", "deprecated_aliases": ["delta_g"], "scope": "theorem interface", "repo_identifiers": ["margin"]},
-    {"id": "legitimacy.obligation-state", "preferred": "accounted obligation state", "aliases": ["ObligationState", "O_P"], "deprecated_aliases": [], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.account", "preferred": "account", "deprecated_aliases": ["slice ledger", "lifecycle"], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.resolution-witness", "preferred": "resolution witness", "aliases": ["Resolution"], "deprecated_aliases": ["Evidence"], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.evolution", "preferred": "Integrity evolution", "aliases": ["Evolution"], "deprecated_aliases": ["IntegritySegment"], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.conservation", "preferred": "Answerability Conservation", "aliases": ["Conservation"], "deprecated_aliases": ["LocalConservation"], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.robust-openness", "preferred": "Robust Openness", "aliases": ["RobustOpenActual"], "deprecated_aliases": ["null intervention"], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.persistence-certificate", "preferred": "persistence certificate", "deprecated_aliases": ["persistence bill", "Non-Capture certificate"], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.legitimate-segment", "preferred": "legitimate segment", "aliases": ["LegitimateSegment"], "deprecated_aliases": [], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.legitimate", "preferred": "Legitimate", "deprecated_aliases": [], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "legitimacy.settlement-view", "preferred": "settlement view", "aliases": ["SetView"], "deprecated_aliases": ["settlement integrity"], "scope": "legitimacy", "replacement_terms": []},
-    {"id": "ni.practical-cert", "preferred": "PracticalCert", "deprecated_aliases": [], "scope": "normative induction", "replacement_terms": []},
-    {"id": "ni.progress", "preferred": "Progress", "deprecated_aliases": ["headline Progress"], "scope": "normative induction", "replacement_terms": []}
+    {
+      "id": "project.normativity",
+      "preferred": "Normativity",
+      "deprecated_aliases": [
+        "Leverage"
+      ],
+      "scope": "project",
+      "replacement_terms": []
+    },
+    {
+      "id": "project.legitimacy",
+      "preferred": "Legitimacy",
+      "deprecated_aliases": [],
+      "scope": "subproject",
+      "replacement_terms": []
+    },
+    {
+      "id": "quantity.leverage",
+      "preferred": "leverage",
+      "deprecated_aliases": [],
+      "scope": "technical quantity",
+      "replacement_terms": []
+    },
+    {
+      "id": "concept.answerability",
+      "preferred": "answerability",
+      "aliases": [
+        "relational answerability",
+        "relational normative answerability"
+      ],
+      "deprecated_aliases": [],
+      "scope": "relational status",
+      "replacement_terms": []
+    },
+    {
+      "id": "property.auditability",
+      "preferred": "auditability",
+      "deprecated_aliases": [
+        "diachronic bookkeeping"
+      ],
+      "scope": "record property",
+      "replacement_terms": []
+    },
+    {
+      "id": "property.efficacy",
+      "preferred": "efficacy",
+      "deprecated_aliases": [
+        "effective causal access"
+      ],
+      "scope": "model-relative transition-system property",
+      "replacement_terms": []
+    },
+    {
+      "id": "gap.audit-discontinuity",
+      "preferred": "audit discontinuity",
+      "deprecated_aliases": [],
+      "scope": "auditability",
+      "replacement_terms": []
+    },
+    {
+      "id": "book.bounds",
+      "preferred": "bounds",
+      "deprecated_aliases": [],
+      "scope": "book",
+      "replacement_terms": []
+    },
+    {
+      "id": "book.holdings",
+      "preferred": "holdings",
+      "deprecated_aliases": [],
+      "scope": "book",
+      "replacement_terms": []
+    },
+    {
+      "id": "practice.objection",
+      "preferred": "objection",
+      "deprecated_aliases": [],
+      "scope": "objection grammar",
+      "replacement_terms": []
+    },
+    {
+      "id": "practice.objection-family",
+      "preferred": "objection family",
+      "deprecated_aliases": [],
+      "scope": "objection grammar",
+      "replacement_terms": []
+    },
+    {
+      "id": "accounting.charge",
+      "preferred": "charge",
+      "deprecated_aliases": [],
+      "scope": "accounting",
+      "replacement_terms": []
+    },
+    {
+      "id": "accounting.charges-run",
+      "preferred": "charges run",
+      "deprecated_aliases": [],
+      "scope": "accounting",
+      "replacement_terms": []
+    },
+    {
+      "id": "accounting.cap",
+      "preferred": "cap",
+      "deprecated_aliases": [],
+      "scope": "accounting",
+      "replacement_terms": []
+    },
+    {
+      "id": "accounting.fencing",
+      "preferred": "fencing",
+      "deprecated_aliases": [],
+      "scope": "accounting",
+      "replacement_terms": []
+    },
+    {
+      "id": "model.mechanism",
+      "preferred": "mechanism",
+      "deprecated_aliases": [],
+      "scope": "general construction",
+      "replacement_terms": []
+    },
+    {
+      "id": "model.instance",
+      "preferred": "instance",
+      "deprecated_aliases": [],
+      "scope": "concrete model",
+      "replacement_terms": []
+    },
+    {
+      "id": "response.answering",
+      "preferred": "answering",
+      "deprecated_aliases": [],
+      "scope": "response disposition",
+      "replacement_terms": []
+    },
+    {
+      "id": "coverage.eventual-route",
+      "preferred": "eventual route coverage",
+      "deprecated_aliases": [],
+      "scope": "learning criterion",
+      "replacement_terms": []
+    },
+    {
+      "id": "pipeline.failure-pattern",
+      "preferred": "failure pattern",
+      "deprecated_aliases": [],
+      "scope": "learning pipeline",
+      "replacement_terms": []
+    },
+    {
+      "id": "pipeline.certified-lawful-edit",
+      "preferred": "certified lawful edit",
+      "deprecated_aliases": [],
+      "scope": "learning pipeline",
+      "replacement_terms": []
+    },
+    {
+      "id": "pipeline.remediable-pattern",
+      "preferred": "remediable pattern",
+      "deprecated_aliases": [],
+      "scope": "learning pipeline",
+      "replacement_terms": []
+    },
+    {
+      "id": "pipeline.filing",
+      "preferred": "filing",
+      "deprecated_aliases": [],
+      "scope": "learning pipeline",
+      "replacement_terms": []
+    },
+    {
+      "id": "pipeline.exposed-failure",
+      "preferred": "exposed failure",
+      "deprecated_aliases": [],
+      "scope": "learning pipeline",
+      "replacement_terms": []
+    },
+    {
+      "id": "pipeline.lesson",
+      "preferred": "lesson",
+      "deprecated_aliases": [],
+      "scope": "learning pipeline",
+      "replacement_terms": []
+    },
+    {
+      "id": "criterion.immanent-self-correction",
+      "preferred": "immanent self-correction",
+      "deprecated_aliases": [],
+      "scope": "learning criterion",
+      "replacement_terms": []
+    },
+    {
+      "id": "notation.commitment",
+      "preferred": "C_i(j)",
+      "deprecated_aliases": [],
+      "scope": "human notation",
+      "repo_identifiers": [
+        "commitments"
+      ]
+    },
+    {
+      "id": "notation.entitlement",
+      "preferred": "E_i(j)",
+      "deprecated_aliases": [],
+      "scope": "human notation",
+      "repo_identifiers": [
+        "entitlements"
+      ]
+    },
+    {
+      "id": "notation.incompatibility",
+      "preferred": "K_i(j)",
+      "deprecated_aliases": [],
+      "scope": "human notation",
+      "repo_identifiers": [
+        "incompatibilities"
+      ]
+    },
+    {
+      "id": "notation.due",
+      "preferred": "Due",
+      "deprecated_aliases": [],
+      "scope": "human notation",
+      "repo_identifiers": [
+        "due"
+      ]
+    },
+    {
+      "id": "notation.answers",
+      "preferred": "Answers",
+      "deprecated_aliases": [],
+      "scope": "human notation",
+      "repo_identifiers": [
+        "answers"
+      ]
+    },
+    {
+      "id": "notation.selector",
+      "preferred": "E_g",
+      "deprecated_aliases": [],
+      "scope": "theorem interface",
+      "repo_identifiers": [
+        "selector"
+      ]
+    },
+    {
+      "id": "notation.transformation",
+      "preferred": "F_g",
+      "deprecated_aliases": [],
+      "scope": "theorem interface",
+      "repo_identifiers": [
+        "transformation"
+      ]
+    },
+    {
+      "id": "notation.loss",
+      "preferred": "ℓ_t",
+      "deprecated_aliases": [
+        "ell_t"
+      ],
+      "scope": "theorem interface",
+      "repo_identifiers": [
+        "charge_vector"
+      ]
+    },
+    {
+      "id": "notation.margin",
+      "preferred": "δ_g",
+      "deprecated_aliases": [
+        "delta_g"
+      ],
+      "scope": "theorem interface",
+      "repo_identifiers": [
+        "margin"
+      ]
+    },
+    {
+      "id": "legitimacy.obligation-state",
+      "preferred": "accounted obligation state",
+      "aliases": [
+        "ObligationState",
+        "O_P"
+      ],
+      "deprecated_aliases": [],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.account",
+      "preferred": "account",
+      "deprecated_aliases": [
+        "slice ledger",
+        "lifecycle"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.resolution-witness",
+      "preferred": "resolution witness",
+      "aliases": [
+        "Resolution"
+      ],
+      "deprecated_aliases": [
+        "Evidence"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.evolution",
+      "preferred": "Integrity evolution",
+      "aliases": [
+        "Evolution"
+      ],
+      "deprecated_aliases": [
+        "IntegritySegment"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.conservation",
+      "preferred": "Answerability Conservation",
+      "aliases": [
+        "Conservation"
+      ],
+      "deprecated_aliases": [
+        "LocalConservation"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.robust-openness",
+      "preferred": "Robust Openness",
+      "aliases": [
+        "RobustOpenActual"
+      ],
+      "deprecated_aliases": [
+        "null intervention"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.persistence-certificate",
+      "preferred": "persistence certificate",
+      "deprecated_aliases": [
+        "persistence bill",
+        "Non-Capture certificate"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.open-integrity-segment",
+      "preferred": "open Integrity segment",
+      "aliases": [
+        "OpenIntegritySegment"
+      ],
+      "deprecated_aliases": [
+        "legitimate segment",
+        "LegitimateSegment"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.open-integrity",
+      "preferred": "OpenIntegrity",
+      "deprecated_aliases": [
+        "Legitimate"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.authorship",
+      "preferred": "authorship",
+      "aliases": [
+        "ReasonMediated",
+        "reason-mediated authorship"
+      ],
+      "deprecated_aliases": [],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.transparency",
+      "preferred": "transparency",
+      "aliases": [
+        "Realizes",
+        "reference fidelity"
+      ],
+      "deprecated_aliases": [
+        "transparent mediation"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.internal",
+      "preferred": "internal legitimacy",
+      "aliases": [],
+      "deprecated_aliases": [],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.external",
+      "preferred": "external legitimacy",
+      "aliases": [],
+      "deprecated_aliases": [],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.legitimacy",
+      "preferred": "Legitimacy",
+      "aliases": [
+        "Legitimacy.Segment"
+      ],
+      "deprecated_aliases": [
+        "Legitimate Evolution"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "legitimacy.settlement-view",
+      "preferred": "settlement view",
+      "aliases": [
+        "SetView"
+      ],
+      "deprecated_aliases": [
+        "settlement integrity"
+      ],
+      "scope": "legitimacy",
+      "replacement_terms": []
+    },
+    {
+      "id": "ni.practical-cert",
+      "preferred": "PracticalCert",
+      "deprecated_aliases": [],
+      "scope": "normative induction",
+      "replacement_terms": []
+    },
+    {
+      "id": "ni.progress",
+      "preferred": "Progress",
+      "deprecated_aliases": [
+        "headline Progress"
+      ],
+      "scope": "normative induction",
+      "replacement_terms": []
+    }
   ]
 }

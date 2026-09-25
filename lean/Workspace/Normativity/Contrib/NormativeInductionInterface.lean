@@ -4,7 +4,7 @@
 Rounds `2026-09-06-mathematical-consolidation` and `2026-09-07-final-pressure-pass`.
 
 The evaluation is indexed by the accounted obligation state `O : ObligationState S anchor`
-— the qualitative export of a legitimate evolution — and reads two of its fields: the
+— the qualitative export of an open Integrity evolution — and reads two of its fields: the
 finite set of exposed occurrences and their anchors.  It does not inspect the account.  The Progress statistic is the transport-weighted
 edge response loss plus the residual charge,
 
@@ -34,7 +34,7 @@ semantic premise; those are how a realization *produces* the hypotheses named he
 
 Names are provisional (`AGENTS.md` standard 6).
 -/
-import Workspace.Normativity.Contrib.LegitimateEvolution
+import Workspace.Normativity.Contrib.OpenIntegrityEvolution
 import Workspace.Normativity.Contrib.NormativeInductorComposition
 
 noncomputable section
@@ -46,7 +46,7 @@ open Workspace.Normativity.Contrib.AssessmentProcess
 open Workspace.Normativity.Contrib.EnforcementPreservation
 open Workspace.Normativity.Contrib.NormativeInductorComposition
 open Workspace.Normativity.Contrib.OccurrenceIntegrity (Protocol)
-open Workspace.Normativity.Contrib.LegitimateEvolution (ObligationState)
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution (ObligationState)
 
 variable {Occ Req Service : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
 
@@ -234,7 +234,7 @@ step (one answered, one live), one service, a constant response.  Every field of
 
 namespace Witness
 
-open Workspace.Normativity.Contrib.LegitimateEvolution.Witness (state₁)
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness (state₁)
 open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness (finish)
 
 def evaluation : Evaluation state₁ Unit where
