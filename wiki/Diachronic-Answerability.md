@@ -1,10 +1,10 @@
 # Diachronic answerability
 
-**Status: canonical, derived.** Diachronic Answerability is not a third pillar of
-legitimacy. It is what a legitimate evolution yields: content conservation from
-[Integrity](Integrity) and standing and access from
-[Robust Openness](Openness-Coverage-and-Non-Capture). The theorem giving that
-decomposition is Established `lean-proved`.
+**Status: canonical, derived.** Diachronic Answerability is not a conjunct of
+[legitimacy](Legitimacy). It is what the record half of legitimacy — an open Integrity
+evolution — yields: content conservation from [Integrity](Integrity) and standing and
+access from [Robust Openness](Openness-Coverage-and-Non-Capture). The theorem giving
+that decomposition is Established `lean-proved`.
 
 ## The problem
 
@@ -117,8 +117,8 @@ which rules license which contests is the practice's.
 
 **Evidence.** The decomposition theorem is
 [`LegitimateEvolution.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/LegitimateEvolution.lean),
-registered as `legitimacy.answerable`; the conservation theorem is
-`legitimacy.evolution-conservation`. The counterexample to deriving standing from
+registered as `open-integrity.answerable`; the conservation theorem is
+`integrity.evolution-conservation`. The counterexample to deriving standing from
 Integrity is attack A6 of the integrity adversary round's
 [`ATTACKS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/ATTACKS.md).
 The Defeat Principle ruling is in the decision ledger; its first model, the

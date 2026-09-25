@@ -135,39 +135,62 @@ every counterfactual branch open and the actual branch lacking standing:
 `RobustOpen ∧ ¬ActualOpen ∧ ¬RobustOpenActual`.
 `Witness.counterfactual_open_not_actual`; **registered** `openness.actual-branch-witness`.
 
-## 3. Legitimate Evolution
+## 3. The open Integrity evolution, and legitimacy
 
 **Definition 3.1 (manuscript 10.1).**  An openness semantics assigns a scenario to each
-accounted state and concern; `OpenAt sem O` is `RobustOpenActual` for every concern; a
-*legitimate segment* is an Integrity evolution with `OpenAt` at every state,
+accounted state and concern; `OpenAt sem O` is `RobustOpenActual` for every concern; an
+*open Integrity segment* is an Integrity evolution with `OpenAt` at every state,
 
 ```
-LegitimateSegment sem O₀ O₁  :=  ⟨ ev : Evolution O₀ O₁,  ev.AllStates (OpenAt sem) ⟩
+OpenIntegritySegment sem O₀ O₁  :=  ⟨ ev : Evolution O₀ O₁,  ev.AllStates (OpenAt sem) ⟩
 ```
-and `Legitimate sem O₀ O₁` is its inhabitation.  The semantics is state-indexed, which
-is the canonicalization's one interface change.
+and `OpenIntegrity sem O₀ O₁` is its inhabitation.  The semantics is state-indexed, which
+is the canonicalization's one interface change.  This conjunction — the Integrity
+conjunct of internal legitimacy with the Robust Openness conjunct of external legitimacy
+— is the record half of legitimacy and the object the activated-value stack of §9
+consumes.
 
-**Theorem 3.2 (Composition; manuscript 10.2).**  `LegitimateSegment.trans` composes two
-segments at a literally shared state; `Legitimate.trans` is the endpoint relation's
-transitivity.  **registered** `legitimacy.segment-trans`, `legitimacy.endpoint-trans`;
-inhabited by `Witness.composed`.
+**Theorem 3.2 (Composition; manuscript 10.2).**  `OpenIntegritySegment.trans` composes
+two segments at a literally shared state; `OpenIntegrity.trans` is the endpoint
+relation's transitivity.  **registered** `open-integrity.segment-trans`,
+`open-integrity.endpoint-trans`; inhabited by `Witness.composed`.
 
-**Theorem 3.3 (Diachronic answerability; manuscript 10.3).**  For every legitimate segment,
+**Theorem 3.3 (Diachronic answerability; manuscript 10.3).**  For every open Integrity
+segment,
 
 ```
 Conservation O₀ O₁  ∧  OpenAt sem O₀  ∧  OpenAt sem O₁
 ```
-`LegitimateSegment.answerable`; **registered** `legitimacy.answerable`.  Diachronic
-answerability to the protected party decomposes exactly as conservation from Integrity
-plus access and standing from Robust Openness; there is no characterization theorem
-beyond the definition, and legitimacy certifies nothing about the correctness of the
-commitments it carries.
+`OpenIntegritySegment.answerable`; **registered** `open-integrity.answerable`.
+Diachronic answerability to the protected party decomposes exactly as conservation from
+Integrity plus access and standing from Robust Openness; there is no characterization
+theorem beyond the definition, and nothing here certifies the correctness of the
+commitments the record carries.
 
 **Witness 3.4 (endpoint openness is not enough; manuscript 19.6).**  An evolution whose
-endpoints are open and whose middle state is not is not legitimate:
-`Witness.endpoint_only_insufficient`; **registered** `legitimacy.endpoint-only-insufficient`.
+endpoints are open and whose middle state is not is not an open Integrity evolution:
+`Witness.endpoint_only_insufficient`; **registered** `openness.endpoint-only-insufficient`.
 Openness is required at every state along a segment, which is why segments carry their
 intermediate states.
+
+**Definition 3.5 (Legitimacy).**  Over a declared interaction frame `(β, x, R, V, D)` —
+the continuation frame, the declared-input view, the reason trace, the payload and the
+audited class — a segment of the principal's trajectory is **legitimate** iff it is
+*internally* legitimate — an Integrity evolution of the record, and authorship
+`ReasonMediated β R V D z` at every exterior (the payload factors through the reason
+trace) — and *externally* legitimate — Robust Openness at every state, and transparency
+`Realizes β x R κ D` (the reason channel realizes its declared reference `κ` on the
+declared inputs).  **LEAN** `Legitimacy.Segment`, `Legitimacy.Internal`,
+`Legitimacy.External`.  Legitimacy composes at a shared state (`Segment.trans`) and
+projects to an open Integrity segment (`Segment.toOpenIntegrity`), so Theorem 3.3 holds
+of it (`Segment.answerable`).  It certifies nothing about the starting state.
+
+**Theorem 3.6 (The payload factors through the declared inputs).**  Under legitimacy,
+two audited continuations with the same declared inputs at an exterior yield the same
+payload: `V = G ∘ x`, internal (authorship) composed with external (transparency).
+**LEAN** `Segment.payload_of_view`; inhabited by `Witness.segment`.  The renaming of the
+registered spine to this vocabulary is recorded with its old-to-new map in the normativity
+claims registry.
 
 ## 4. Structural liveness
 
@@ -514,7 +537,10 @@ instantiated on the advisor's whole continuation and a reason trace.
 **Theorem 9.6 (The characterization, A1–A4).**  Sound activation (the seven clauses of the
 record: answer receipt, authentic binding, principal-exclusive endpoint, occurrence-local
 Integrity trace, scoped Robust Openness, issuance-rooted reason-mediated authorship, the
-reason-coverage barrier), the value-domain condition (**PAPER** scope), ordinary
+reason-coverage barrier — the occurrence-local reading of legitimacy's four conjuncts,
+with authentic binding under Integrity, the trace and openness the record half, authorship
+the internal channel conjunct and channel blindness a face of transparency), the
+value-domain condition (**PAPER** scope), ordinary
 Logical-Induction Value on the activated securities giving `R_U ≤ ε` (**PAPER**,
 `InheritedAlgebra.value_asymptotic`), and availability `η_n < 1` (**OPEN**, item 87)
 together give Theorems 9.2 and 9.3.  The activation semantics is **EXT**.
@@ -785,12 +811,55 @@ consistent world has expectation `≲ₙ α` (`li_gated_le`, through a degenerat
 content-monotone audit, `𝔼ₙ(U_T) − 𝔼ₙ(U_N) ≲ₙ L·α` (`li_noncapture`); through the
 discovered comparator as shared middle, `𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)`
 (`li_noncapture_chain`), **LEAN**.  The combined corrigibility theorem is the schema of
-Theorems 10.1–10.4c and 10.10–10.13 with the hypothesis classes of the non-capture
-round's
+Theorems 10.1–10.4c, 10.10–10.13 and 10.14–10.16 with the hypothesis classes of the
+non-capture round's
 [`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md) §8; it is not one declaration.  Lean:
 [`TraceSteering.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/TraceSteering.lean),
 [`ReasonSupply.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonSupply.lean),
 [`ReasonDiscovery.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonDiscovery.lean).
+
+**Theorem 10.14 (The allocation and the transform).**  Over the interaction of Theorem
+10.1 an allocation declares a delegated scope, the declared amendment effects, an
+allocation reading and a reporting interface; the six declared violations — bypass,
+pre-emption (`LossAt ∧ ¬Authorized`), foreclosure (contrastive, by rollout over a reach
+relation), unauthorized reallocation (a change of the allocation not by the firing gated
+release of a declared amendment), missed report, exploitation — are predicates on a
+policy at a step (`ViolAt`).  The transform `𝔱` (`authPolicy`) extends `𝔠`
+(`authPolicy_eq_corr`), is idempotent, reproduces `π`'s task on the approval branch up
+to the report, commits no bypass, missed report or exploitation, no reallocation under
+allocation completeness (`authPolicy_no_realloc`), and is corrigible under effect
+completeness and delegation safety (`corrigible_authPolicy`); a delegated
+authority-removing effect is the obstruction (`Witness.delegated_cut`).  **LEAN**;
+foreclosure's reach relation **EXT**.
+
+**Theorem 10.15 (Lexical protection and policy dominance).**  With her committed
+evaluation `S = S_ord − ϖ·n`, `0 ≤ S_ord ≤ D`, `ϖ > D`, and the agent ranking by the
+expected value of `S` with `n` exact: a violating option scores at most `D − ϖ < 0`,
+strictly below every compliant one, for every credence and estimate (`lexical_local`,
+`lexical_expect`); `Q(𝔱π) ≥ Q(π) + (ϖ − D)·Pr(π violates)` and optimal policies violate
+with credence zero (`policy_dominance`, `optimal_no_violation`); with the identity of the
+protected-authority round the sign of the bypass comparison is invariant to `ξ_d, ξ_c`
+and to the outcome-scoring residues `o₁, o₂` (`sign_invariance`,
+`sign_invariance_outcome`); at every day `n` of a logical inductor the ranking holds from
+the price range alone (`li_lexical_finite`).  **LEAN**.  The non-lexical special case is
+the nondelegation result `argmax_nondelegation_le_zero`, `expect_sub_le_of_pointwise`
+(**LEAN**), whose per-world sign certificate the time-critical fixtures fail (**FIX**).
+
+**Theorem 10.16 (The segment gate, the capture window, and erosion).**  A future
+evaluation counts iff the segment from the decision through it is legitimate (Definition
+3.5), whatever caused a failure; a tainted segment scores the window value, a void
+response inside a legitimate segment is settled by the declared fallback and scored
+normally (`gateValue`, `Handling`).  Bypass scores below every gated branch iff the
+window value exceeds `D − ϖ` (`gate_capture_window`, `handled_gt_bypass`,
+`gate_capture_window_converse`); per-response gating admits the routing exploit and the
+segment gate closes it (`Witness.routing`).  With a report required at every strict
+increase of the control shortfall each increase is reported or is a missed report
+(`erosion_reported_or_missed`); a per-step threshold admits a salami (`Witness.salami`);
+a cumulative threshold bounds unreported erosion by the threshold at every time
+(`unreported_lt`).  **LEAN**.  Lean:
+[`ProtectedAuthorityTheorem.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/ProtectedAuthorityTheorem.lean),
+[`ProtectedAuthority.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/ProtectedAuthority.lean),
+[`Legitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/Legitimacy.lean).
 
 ## 11. The counterexamples that fix the shape
 
@@ -827,6 +896,11 @@ Each of these is exact and is why the corresponding definition has the form it h
 | `n` candidates each true in one world, direct queries | no fractional-progress theorem; the budgeted value is a decision tree (Theorem 10.12) |
 | two worlds indistinguishable by the repertoire, different values | the information-cell gap is the exact obstruction (Theorem 10.12) |
 | a defeater of a defeater | the general best-response obstruction, not the antitone gap (Theorem 10.12) |
+| a delegated effect that removes response authority | delegation safety as a hypothesis of Theorem 10.14 |
+| an approved uncorrectable successor through the ordinary gate | amendment, not approval, is what may change the allocation (Theorem 10.14) |
+| a per-step materiality threshold on the reporting duty | the salami; exact or cumulative reporting (Theorem 10.16) |
+| a manipulated response routed to a favourable fallback at violation count zero | the segment gate, not per-response gating (Theorem 10.16) |
+| a fallback branch valued below `D − ϖ` under predicted capture | the capture window is exact (Theorem 10.16) |
 
 ## 12. What is external, what is open
 
@@ -849,7 +923,10 @@ inequality's mismatch term (item 89); the generability certificate of the finite
 weighting (item 90); the oracle-relativized inductor for empirical settlement (item
 91); the realization's protection rule and the general-cost service optimum (item 92);
 a realizable inquiry repertoire with certified zero cell gap, witness completeness, and
-the link to the record's inquiry docket (item 93).  Representation adequacy, physical
+the link to the record's inquiry docket (item 93); the amendment event kind and the
+channel references of the evaluation ecosystem (item 97); the allocation floor —
+delegation safety, allocation completeness, the reporting duty, the reach cone, the
+lexical certificate (item 99).  Representation adequacy, physical
 effect completeness and inquiry causal faithfulness are boundaries of Theorems
 10.10–10.13, not filed items.  Effect completeness and the
 authorization primitive are external contracts of Theorem 10.1, not filed items.  The open queue itself lives in

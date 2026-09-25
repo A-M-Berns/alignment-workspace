@@ -67,7 +67,7 @@ This is the canonical human exposition of vocabulary. The repository's `state/vo
 | **selected trust** | The agent does not, on the events where it would substitute its choice, operatively value its pick more than the protected principal does. The hypothesis of the incentive-compatible mediated-delegation bound. |
 | **endogenous admissibility** | An admissible act changing the next admissible set. Legitimate continuation policies induce different admissibility histories; continuation BRIA pays the learning term, and recognizability and joinability are the open bridges. |
 
-## Legitimate evolution
+## Legitimacy
 
 | term | meaning |
 |---|---|
@@ -87,9 +87,15 @@ This is the canonical human exposition of vocabulary. The repository's `state/vo
 | **Robust Openness** | At a state: every live in-scope concern has an adequate route and the protected party stands on the carrier of every applicable one, on the actual branch and under every declared intervention. The actual branch is a conjunct by definition. |
 | **intervention semantics** | The application's map from an accounted state and a concern to the actual and counterfactual coverage data. External. |
 | **persistence certificate** | Componentwise persistence of protected routes plus actual coverage and standing: one sufficient way to certify Robust Openness, strictly stronger than it. |
-| **legitimate segment** | An Integrity evolution robustly open at every one of its states. Proof-relevant, history-sensitive, composes at a shared state. |
-| **Legitimate** | The endpoint relation: some legitimate segment exists. Transitive; hides the certificate. |
-| **Diachronic Answerability** | Derived: Answerability Conservation from Integrity plus coverage and standing from Robust Openness. Not a third pillar. |
+| **open Integrity segment** | An Integrity evolution robustly open at every one of its states: the record half of legitimacy. Proof-relevant, history-sensitive, composes at a shared state. |
+| **OpenIntegrity** | The endpoint relation: some open Integrity segment exists. Transitive; hides the certificate. |
+| **authorship** | The verdicts factor through the reason trace, `V = F(R)`: interventions leaving the same admitted reason trace leave the same committed payload. The second conjunct of internal legitimacy; hollow ratification is its refinement. |
+| **transparency** | A channel of influence realizes a publicly declared reference on its declared inputs, `R = κ(x, z)`, pathwise in the exterior; covers what she is told, how and when she is asked, and actions in the world that shape her. The conjunct of entry of external legitimacy. |
+| **internal legitimacy** | Integrity (with authentication of the record) and authorship: all change factors through the normative reasons. |
+| **external legitimacy** | Robust Openness and transparency: what should reach the trajectory can, and what reaches it does so only through declared channels. |
+| **Legitimacy** | Internal legitimacy and external legitimacy, of a segment of a trajectory within an interaction whose channels of influence are declared. Composes at a shared state; projects to an open Integrity segment. |
+| **the segment gate** | A future evaluation counts iff the segment from the decision through it is legitimate, whatever caused a failure; a tainted segment contributes a fixed value in the capture window, and a void response inside a legitimate segment is settled by the declared fallback. |
+| **Diachronic Answerability** | Derived: Answerability Conservation from Integrity plus coverage and standing from Robust Openness. Not a conjunct of legitimacy. |
 | **principal relativity** | Preservation of standing is relative to a protected principal or declared relation. A party-free condition over all coalitions cannot exist. |
 | **qualitative handoff** `O_P` | The accounted obligation state, exported without weights, intensities, probabilities, securities, or market geometry. |
 | **evaluation** | A declared measure and transport over exposure, committed before responses, with one realized response per service occurrence and an anchored loss as a function of the anchor. |
@@ -185,8 +191,13 @@ Definitions remain the human-authored exposition above.
 | `legitimacy.conservation` | `Answerability Conservation` | `Conservation` | `LocalConservation` |
 | `legitimacy.robust-openness` | `Robust Openness` | `RobustOpenActual` | `null intervention` |
 | `legitimacy.persistence-certificate` | `persistence certificate` | — | `persistence bill`; `Non-Capture certificate` |
-| `legitimacy.legitimate-segment` | `legitimate segment` | `LegitimateSegment` | — |
-| `legitimacy.legitimate` | `Legitimate` | — | — |
+| `legitimacy.open-integrity-segment` | `open Integrity segment` | `OpenIntegritySegment` | `legitimate segment`; `LegitimateSegment` |
+| `legitimacy.open-integrity` | `OpenIntegrity` | — | `Legitimate` |
+| `legitimacy.authorship` | `authorship` | `ReasonMediated`; `reason-mediated authorship` | — |
+| `legitimacy.transparency` | `transparency` | `Realizes`; `reference fidelity` | `transparent mediation` |
+| `legitimacy.internal` | `internal legitimacy` | — | — |
+| `legitimacy.external` | `external legitimacy` | — | — |
+| `legitimacy.legitimacy` | `Legitimacy` | `Legitimacy.Segment` | `Legitimate Evolution` |
 | `legitimacy.settlement-view` | `settlement view` | `SetView` | `settlement integrity` |
 | `ni.practical-cert` | `PracticalCert` | — | — |
 | `ni.progress` | `Progress` | — | `headline Progress` |

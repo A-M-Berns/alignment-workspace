@@ -16,7 +16,7 @@
 
 **Legitimacy**
 
-- [Legitimate Cognitive Evolution](Legitimacy)
+- [Legitimacy](Legitimacy)
   - [Settlement Interface](Settlement-Interface)
   - [Integrity](Integrity)
   - [Diachronic Answerability](Diachronic-Answerability)

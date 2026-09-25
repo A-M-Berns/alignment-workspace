@@ -60,15 +60,16 @@ present mandate's authority: exactly one authenticated answer receipt in the
 occurrence's propagated account (never a closure, never a live port); an authentic
 event payload binding the exact vector, at a principal-exclusive endpoint; an
 occurrence-local Integrity trace with the evaluation's concern scope robustly open at
-every snapshot — a *consumer projection* of a legitimate segment, not a new legitimacy
-notion; issuance-rooted **reason-mediated authorship** — over the advisor's whole
+every snapshot — a *consumer projection* of an open Integrity segment, the record half
+of legitimacy; issuance-rooted **reason-mediated authorship** — over the advisor's whole
 continuation from issuance to commitment, interventions that leave the same admitted
 reason trace leave the same committed payload, with the trace blind to the declared
 prohibited channels, and the binding event the principal's; and the **protected
 reason-coverage barrier** — no protected live concern at commitment, with
-representation faithful into the trace. Authorship is not a conjunct of legitimacy and
-`AnswerOK` is unchanged; the evaluation-specific clauses are derived predicates over
-the receipt, the event payload and the session's receipts.
+representation faithful into the trace. Authorship is the second conjunct of internal
+legitimacy, and channel blindness is one face of transparency, the second conjunct of
+external legitimacy; `AnswerOK` is unchanged, and the evaluation-specific clauses are
+derived predicates over the receipt, the event payload and the session's receipts.
 
 **Deference.** Ordinary Logical Induction Value runs unchanged on the activated
 securities `C_n · Ṽ_n(a)`, which are bounded securities independent of how the partial

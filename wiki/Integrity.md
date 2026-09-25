@@ -146,9 +146,9 @@ immutability, faithful carry and the multiplicity witness are
 [`OccurrenceIntegrity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/OccurrenceIntegrity.lean);
 the accounted state, the evolution relation and the conservation theorem are
 [`LegitimateEvolution.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/lean/Workspace/Normativity/Contrib/LegitimateEvolution.lean).
-The registered claims are `legitimacy.evolution-conservation`,
-`legitimacy.propagate-to-segment`, `legitimacy.receipts-immutable`,
-`legitimacy.faithful-carry` and `legitimacy.multiplicity-witness` in the
+The registered claims are `integrity.evolution-conservation`,
+`integrity.propagate-to-segment`, `integrity.receipts-immutable`,
+`integrity.faithful-carry` and `integrity.multiplicity-witness` in the
 [normativity claims registry](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/CLAIMS.md).
 The countermodels that fixed the constructor list are the integrity adversary round's
 [`ATTACKS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/c24159764974232dfd5b47a10b671f12d6f9c244/projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/ATTACKS.md),

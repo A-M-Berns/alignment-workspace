@@ -63,8 +63,10 @@ process cannot arrange for awkward criticism never to arrive.
 
 None of that is epistemology. It is bookkeeping about authority, a condition on
 intake, and a theory of what the bookkeeping costs. Legitimacy, on this account, is a
-property of how a reasoner *evolves* — a later state being a legitimate development of
-an earlier one — and never a certificate that the starting point was good.
+property of how a reasoner *evolves* within an interaction whose channels of influence
+are declared — a later state being a legitimate development of an earlier one, its
+verdicts its own, nothing having entered except through declared channels — and never
+a certificate that the starting point was good.
 
 ## Why the mathematics has to be there
 

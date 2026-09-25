@@ -119,12 +119,13 @@ created a laundering route.
 Answerability is owing an answer; auditability is the record knowing what became
 of every debt; efficacy is the answer-demand actually reaching you. Response
 learning uses the first two. Corrigibility uses the first and the third.
-[Legitimacy](Legitimacy) is where their write and trajectory conditions meet, framed
-there as legitimate cognitive evolution: an [Integrity](Integrity) evolution of the
-accounted obligation state that is [robustly open](Openness-Coverage-and-Non-Capture)
-at every one of its states, with [Diachronic Answerability](Diachronic-Answerability)
-derived from the two and [normative induction](Normative-Induction) as the
-quantitative consequence.
+[Legitimacy](Legitimacy) is where their write and trajectory conditions meet: an
+internal half — an [Integrity](Integrity) evolution of the accounted obligation state
+whose verdicts factor through its reasons — and an external half — the trajectory
+[robustly open](Openness-Coverage-and-Non-Capture) at every one of its states and
+every channel of influence transparent to its declared reference — with
+[Diachronic Answerability](Diachronic-Answerability) derived from the record half and
+[normative induction](Normative-Induction) as the quantitative consequence.
 
 ## What the theorem does—and does not—cover
 
