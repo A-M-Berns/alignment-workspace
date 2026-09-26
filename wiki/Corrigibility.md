@@ -306,8 +306,9 @@ instance of one consultation model and is decided from the definitions.
    the classification table and this result are the same content.  **Except where a
    deviation is self-checkable** (`deviation_finite`, `Rows.deviation_boundary`): a
    deviation from a *declared* protocol clause — framing, timing, menu, inquiry,
-   interference, disclosure of a declared record — is a discrete act the agent can
-   check about itself, counts into `n` as a violation, and is finite-time like bypass;
+   interference, a nudge, the selection from a declared pool — is a discrete act the
+   agent can check about itself, counts into `n` as a violation, and is finite-time like
+   bypass;
    undisclosed shaping through the world and third-party capture are not the agent's
    protocol acts and stay asymptotic.  The ordinary-value comparison is learned
    asymptotically as in result 5, and the audit's calibration of her responses is

@@ -24,8 +24,13 @@ through the normative reasons.
 
 - **Integrity**, including authentication of the record: no erasure, no rewriting, no
   unaccounted change — [Integrity](Integrity).
-- **Authorship**: the verdicts factor through the reason trace, `V = F(R)`; a verdict
-  that is not hers fails here — [Deference](Deference).
+- **Authorship**: relational — at each step there is a grounding selection from the
+  reason trace's pre-state prefix, and the verdict she enters lies in the set of verdicts
+  those grounds *license*; the license is a parameter, and the extensional `V = F(R)`
+  (interventions leaving the same grounds leave the same verdict) is the case of
+  singleton licenses. A verdict nothing in her grounds licenses fails here — a followed
+  recommendation with no trust among her grounds, for one — while a free choice between
+  two licensed options does not — [Deference](Deference).
 
 **External legitimacy** is the two conditions on the trajectory's *boundary*.
 
@@ -45,11 +50,14 @@ trace (Lean `Legitimacy.Segment.payload_of_view`).
 **Time-indexing.** Both halves are required only at the *steps inside the segment*.
 The reason trace is read through an interface on the record's own clock — the
 contributions entered at each record event, each attributed to the party that entered
-it — and authorship at a step is a grounding selection from the per-party prefix of the
-trace at the pre-history on which the verdict entered at the event depends (equivalent
-to reason mediation on that prefix, the whole prefix being the degenerate selection);
-transparency at a step is the realization condition on each non-principal party's
-contributions at the event. Segments compose step by step, a segment starting after a
+it — and authorship at a step is relational as above, on the per-party prefix of the
+trace at the pre-history (Lean `GateIsLegitimacy.LicensedAt`; the extensional form
+`GroundedAt` is equivalent to reason mediation on that prefix and is the singleton-license
+case, `grounded_iff_licensed_singleton`); transparency at a step is the realization
+condition on each non-principal party's contributions at the event. *Tie-breaking is
+transparency's, not authorship's*: when several verdicts are licensed, a non-principal
+party's influence on which she takes must enter through the declared inputs, or the step
+fails transparency (Lean `tiebreak_transparency`). Segments compose step by step, a segment starting after a
 tainted step can be legitimate (the *restart property*), and the frame-level statement
 above is the special case over the trivial interface in which the opaque trace is
 re-entered at every event (Lean `GateIsLegitimacy.Segment`, `Segment.trans`,
@@ -89,6 +97,22 @@ the same trajectory is legitimate within one declared frame and not within anoth
 a wrong norm, a captured evaluator, an unjust allocation of standing, and nothing here
 detects that from inside. What it constrains is how those commitments may subsequently
 be revised, challenged, answered, defeated, discharged, extended, and by whom.
+
+**Declared inputs are pools, not selections.** When the agent selects what to present
+from a larger body of material — a track record, the set of reasons, the options offered,
+the evidence investigated — the declared input is the *pool*, and the selection must
+follow the declared reference: the declared selection rule, or the whole pool where none
+is declared. The selected subset is never itself a declared input. Selective disclosure
+from a declared pool therefore fails transparency (and is a self-checkable deviation from
+the protocol); selection by a declared rule counts; selection by anything else under a
+declared rule is a deviation. This is declared-input adequacy, a matter of legitimacy.
+
+**The content residual is outside legitimacy.** Legitimacy concerns how her deliberation
+came about, not whether what she was told is true. A false recommendation through the
+declared recommendation channel is transparent and counts under legitimacy; its falsity
+is a non-capture content-term matter, and a disclosure-duty matter at the level of a
+violation. The two are distinct: selection from a pool is legitimacy; truth of content is
+not.
 
 **Settled placements.** Authentication is part of Integrity. *Rubber-stamping* —
 following a trusted advisor's recommendation without independent evaluation — is a
@@ -245,19 +269,28 @@ definitions and settled in Lean by `decide`. All match.
 | disclosed shaping through the world | counts | — (the disclosure is a declared input) |
 | undisclosed shaping through the world aimed at her values | tainted | transparency |
 | legitimately formed trust, followed without independent evaluation | counts | — |
-| trust manufactured by selective disclosure of a *declared* record, then followed | tainted | transparency |
+| trust manufactured by selective disclosure from the declared pool, then followed | tainted | transparency (the selection) |
 | third-party manipulation the agent did not cause | tainted | transparency, for all influencers |
 | head injury: impaired response not admitted, fallback decides | legitimate segment; void handled | Integrity (record) |
 | a forged or replayed approval | tainted | Integrity (authentication): no receipt exists |
 | a manipulation at one step, then a clean segment after it | the later segment counts | restart |
 | the routing exploit | tainted, window value | transparency |
+| selective disclosure from a declared pool, no selection rule declared | tainted | transparency (the selection) |
+| selection by a declared selection rule, applied uniformly | counts | — |
+| permissive choice: the same grounds license A and B; she picks B on her own | counts | — (relational authorship) |
+| permissive choice where the agent's undeclared nudge decides between A and B | tainted | transparency (the tie-break lemma) |
+| a false recommendation through the declared channel | counts | — (flagged: the content residual) |
 
-Two boundaries the table makes visible. Transparency is fidelity of *channels*: selective
-disclosure through a channel with no declared obligation on its content is a declared
-input and *counts*, and nothing in legitimacy checks the truth of what enters through a
-declared channel (the content residual stays with the non-capture content term). And a
-forged approval never reaches the record: authentication refuses the receipt, so there
-is no state for a segment to exclude.
+Beyond the rows, two theorems over the whole model class (Lean `Consult.class_taint`,
+`class_conform`): any dependence of a reference-fixed dimension of the presentation on
+the agent's wanted answer excludes the segment through that consultation; and
+conformance on those dimensions, with no third-party entry, no impairment, no undisclosed
+shaping and trust among her grounds where she follows, makes the first-round segment
+counted. Three boundaries the table makes visible. Transparency is fidelity of
+*channels*, and nothing in legitimacy checks the truth of what enters through a declared
+channel. Following without trust among her grounds fails authorship, not transparency:
+the license refuses it. And a forged approval never reaches the record: authentication
+refuses the receipt, so there is no state for a segment to exclude.
 
 ## Where this is going
 

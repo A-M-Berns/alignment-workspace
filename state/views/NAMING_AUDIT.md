@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 641 names, 425 of them Lean only
+## deference — 657 names, 438 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -231,7 +231,7 @@ change, and the count of those is the size of the free choice remaining.
 | `logOf` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.logOf` |
 | `matchPat` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.matchPat` |
 | `otherExec` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.otherExec` |
-| `payload` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.payload` |
+| `payload` | def | 2026-09-09-evaluation-ecosystem-realization | wiki | `Workspace.Deference.Contrib.EvaluationEcosystem.payload` |
 | `progOf` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.progOf` |
 | `proofcheck` | def | 2026-09-09-evaluation-ecosystem-realization | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.proofcheck` |
 | `protocol` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.protocol` |
@@ -281,16 +281,17 @@ change, and the count of those is the size of the free choice remaining.
 | `weightEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weightEF` |
 | `Answer` | abbrev | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Answer` |
 | `Counted` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Counted` |
-| `Decl` | structure | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Decl` |
+| `Decl` | structure | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Decl` |
 | `DeclView` | structure | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.DeclView` |
-| `Disclosure` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Disclosure` |
 | `Entry` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Entry` |
 | `EventKind` | inductive | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.EventKind` |
 | `External` | structure | 2026-09-25-gate-is-legitimacy | wiki, note, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.External` |
 | `Framing` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Framing` |
-| `GroundedAt` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.GroundedAt` |
+| `GroundedAt` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.GroundedAt` |
 | `Internal` | structure | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Internal` |
 | `LegitOn` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.LegitOn` |
+| `LicensedAt` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.LicensedAt` |
+| `LicensedWhole` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.LicensedWhole` |
 | `MediatedAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.MediatedAt` |
 | `Menu` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Menu` |
 | `Model` | structure | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Model` |
@@ -299,6 +300,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Policy.present` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Policy.present` |
 | `Presentation` | structure | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation` |
 | `Presentation.deviates` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation.deviates` |
+| `Presentation.shapingOK` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation.shapingOK` |
 | `Presentation.view` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation.view` |
 | `Prog` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Prog` |
 | `Prog.decideOn` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Prog.decideOn` |
@@ -308,6 +310,8 @@ change, and the count of those is the size of the free choice remaining.
 | `Resp.isValid` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Resp.isValid` |
 | `Run` | abbrev | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Run` |
 | `Segment` | structure | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Segment` |
+| `SelRule` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.SelRule` |
+| `SelRule.apply` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.SelRule.apply` |
 | `Slot` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Slot` |
 | `St` | abbrev | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.St` |
 | `TFrame` | structure | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.TFrame` |
@@ -317,7 +321,6 @@ change, and the count of those is the size of the free choice remaining.
 | `_root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy._root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps` |
 | `admit` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.admit` |
 | `admittedAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.admittedAt` |
-| `after` | def | 2026-09-25-gate-is-legitimacy | wiki, note | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.after` |
 | `anchor` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.anchor` |
 | `atHistory` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.TraceInterface.atHistory` |
 | `bd` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.bd` |
@@ -335,26 +338,37 @@ change, and the count of those is the size of the free choice remaining.
 | `evTwo` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.evTwo` |
 | `evVoid` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.evVoid` |
 | `evalAt` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.evalAt` |
+| `followUntrusted` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.followUntrusted` |
 | `frame` | def | 2026-09-25-gate-is-legitimacy | wiki, note | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.frame` |
 | `gatedValue` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.gatedValue` |
 | `handlingOf` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.handlingOf` |
 | `initial` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.initial` |
 | `interface` | def | 2026-09-25-gate-is-legitimacy | wiki, note, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.interface` |
+| `licensed` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.licensed` |
+| `licensedB` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.licensedB` |
 | `liftFrame` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.liftFrame` |
+| `liftLic` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.liftLic` |
 | `liftRef` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.liftRef` |
 | `ofFrameLevel` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.ofFrameLevel` |
 | `one` | def | 2026-09-25-gate-is-legitimacy | wiki, note, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.one` |
 | `parts` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.TraceInterface.parts` |
 | `presAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.presAt` |
 | `ref` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.ref` |
+| `refProj` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.refProj` |
+| `refValues` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.refValues` |
 | `row1` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row1` |
 | `row10` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row10` |
-| `row10'` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row10'` |
 | `row11` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row11` |
 | `row12` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row12` |
 | `row14` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row14` |
 | `row15` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row15` |
+| `row16` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row16` |
+| `row17` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row17` |
+| `row17'` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row17'` |
+| `row18` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row18` |
+| `row19` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row19` |
 | `row2` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row2` |
+| `row20` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row20` |
 | `row3` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row3` |
 | `row4` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row4` |
 | `row5` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.row5` |
@@ -368,11 +382,13 @@ change, and the count of those is the size of the free choice remaining.
 | `stTwo` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.stTwo` |
 | `stVoid` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.stVoid` |
 | `state₀` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.state₀` |
-| `steps` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Segment.steps` |
+| `steps` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Segment.steps` |
 | `stepsFrom` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.stepsFrom` |
+| `thirdAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.thirdAt` |
 | `toOpenIntegrity` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Segment.toOpenIntegrity` |
 | `trans` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Segment.trans` |
 | `trivialInterface` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.trivialInterface` |
+| `trusted` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.trusted` |
 | `vAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.vAt` |
 | `verdictAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.verdictAt` |
 | `Pr` | def | 2026-08-11-faithful-acceleration | wiki, prose | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.Pr` |

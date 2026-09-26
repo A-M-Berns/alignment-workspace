@@ -184,18 +184,20 @@ declared inputs).  **LEAN** `Legitimacy.Segment`, `Legitimacy.Internal`,
 `Legitimacy.External`.  Legitimacy composes at a shared state (`Segment.trans`) and
 projects to an open Integrity segment (`Segment.toOpenIntegrity`), so Theorem 3.3 holds
 of it (`Segment.answerable`).  It certifies nothing about the starting state.  This is
-the *frame-level* form; the general form is time-indexed — authorship and transparency
-required only at the steps inside the segment, on a reason-trace interface with the
-record's own clock — and the frame-level form is its special case over the trivial
-interface (**LEAN** `GateIsLegitimacy.Segment`, `ofFrameLevel`; the gate on future
+the *frame-level* form; the general form is time-indexed — authorship (relational, under a
+license parameter, the extensional form its singleton case) and transparency required only
+at the steps inside the segment, on a reason-trace interface with the record's own clock —
+and the frame-level form is its special case over the trivial interface (**LEAN** `GateIsLegitimacy.Segment`, `ofFrameLevel`; the gate on future
 evaluations is the existence of a time-indexed segment, `Counted`).
 
 **Theorem 3.6 (The payload factors through the declared inputs).**  Under legitimacy,
 two audited continuations with the same declared inputs at an exterior yield the same
 payload: `V = G ∘ x`, internal (authorship) composed with external (transparency).
 **LEAN** `Segment.payload_of_view`; inhabited by `Witness.segment`.  In the time-indexed
-form the same conclusion takes the segment's starting prefix and the principal's own
-earlier entries as hypotheses (`GateIsLegitimacy.Segment.payload_of_view`).  The renaming of the
+form the conclusion is that both verdicts lie in the licensed set of the same grounds,
+equality returning under singleton licenses, with the segment's starting prefix and the
+principal's own earlier entries as hypotheses (`GateIsLegitimacy.Segment.payload_of_view`,
+`payload_of_view_singleton`).  The renaming of the
 registered spine to this vocabulary is recorded with its old-to-new map in the normativity
 claims registry.
 

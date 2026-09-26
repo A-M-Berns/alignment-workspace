@@ -164,3 +164,73 @@ as an *instance*, without restating anything proved here.
 
 Record these choices in the round report under a short "Interface for the normativity
 side" heading. List which of 1–6 were adopted, and for any that weren't, say why.
+
+---
+
+# Follow-up — refining the gate-is-legitimacy round (PR #107)
+
+Work on PR #107's branch. This amends the round. The maintainer rules on the report's three outstanding actions below, and adds two refinements. Where this conflicts with the original prompt, this wins.
+
+## 1. Rulings on the outstanding actions
+
+**(a) Row 10 and declared inputs: the pool, not the selection.** Selective disclosure is not the content residual. It is a question of **declared-input adequacy**. When the agent *selects* what to present from a larger body of material (a track record, the set of reasons, the set of options, the evidence investigated), the declared input is the **pool**, and the selection must follow the declared reference. The selected subset is not itself a declared input.
+
+- Make this the model's default for every dimension where content is chosen from a pool. Currently `Decl`/`view` treat the shown record as a declared input unless a disclosure obligation is declared. Replace that with: the pool is declared; the selection is reference-fixed unless the protocol explicitly declares a selection rule.
+- With this default, `row10'` (selective disclosure with no declared obligation) should come out **tainted by transparency**. Verify it.
+- A protocol may still *declare* a selection rule (for example "the three most recent outcomes"). Then selection by that rule counts, and selection by anything else is a deviation.
+- Re-run the D.3 table under the new default. Selective disclosure should now be a self-checkable deviation, and finite-time, whenever a pool is declared. The world-channel variant (shaping the record itself through the world) stays asymptotic.
+- The D.3 split as reported is confirmed for the world channel.
+
+**(b) Authorship becomes relational.** The extensional form (the verdict is a function of the grounds) is too strong. It fails a principal who, given the same reasons, legitimately chooses between two permissible options. That is ordinary free choice, and it's the permissive-entitlement structure the normativity side needs. Restate authorship at a step as:
+
+> there is a grounding selection from the pre-state prefix, **and** the verdict lies in the set of verdicts those grounds **license**.
+
+Here `License : grounds → Set 𝒱` is a parameter.
+
+- The extensional form is the special case where every license is a singleton. Prove that the extensional form implies the relational one, and that they're equivalent under singleton licenses.
+- **Tie-breaking is covered by transparency, not authorship.** Show that when the licensed set has several elements, any non-principal party's influence on *which* licensed verdict she takes has to enter through a declared channel. Otherwise transparency fails at that step. State this as a lemma.
+- Check what the relational form does to `payload_of_view`. Expect it to weaken to "the verdict lies in the licensed set of the declared inputs' grounds." Record the new statement.
+- Check `Counted`, `Segment.trans`, restart, and every row. None of the fifteen rows should change classification. If one does, report it.
+- For this round, the license can be given as data. For the Consult model, a natural default: "follow" is licensed whenever trust in the agent is among the grounds, and "own verdict" is licensed whenever her committed program's verdict is.
+
+**(c) The content residual stays outside legitimacy.** Legitimacy concerns how her deliberation came about, not whether what she was told is true. A false recommendation through the declared recommendation channel stays a non-capture content-term matter, and a disclosure-duty matter at the level of a violation. State this plainly in `wiki/Legitimacy.md` ("Scope, relationality, and what is not part of it"). Separate it explicitly from (a): selection from a pool is legitimacy; truth of content is not.
+
+## 2. New rows
+
+Add these as instances of the same model, derived and proved by `decide`:
+
+| # | example | expected |
+|---|---|---|
+| 16 | selective disclosure from a declared pool, no selection rule declared | tainted: transparency (the selection) |
+| 17 | selection by a declared selection rule, applied uniformly | counts |
+| 18 | permissive choice: the same grounds license A and B; she picks B on her own | counts: relational authorship |
+| 19 | permissive choice where the agent's undeclared nudge decides between A and B | tainted: transparency (the tie-break lemma) |
+| 20 | a false recommendation through the declared channel | counts under legitimacy; flagged as the content residual |
+
+Row 20 is the explicit statement that legitimacy doesn't check truth.
+
+## 3. From instances to a class
+
+Currently every classification is an instance settled by `decide`. Add at least one theorem over the **whole model class**, so the result isn't only a battery of well-chosen cases:
+
+- **Selection dependence taints.** For any `Model` in which some reference-fixed dimension of the presentation (framing, slot, menu, inquiry, selection from a pool, interference) depends on the agent's wanted answer `w`, the segment through that consultation is not `Counted`.
+- **Protocol conformance at the consultation.** For any `Model` whose presentation policy is constant in `w` on the undeclared dimensions, and in which there is no third-party entry, no impairment and no undisclosed shaping, the first-round segment is `Counted`. This is non-vacuity as a class theorem.
+
+If either needs extra hypotheses, state them. If either is false, give the witness.
+
+## 4. Deliverables and merge
+
+- Update `REPORT.md` with a short section recording the rulings, the new default, relational authorship and its lemmas, rows 16–20, and the class theorems. Keep the existing sections; mark what changed.
+- Update `wiki/Legitimacy.md`:
+  - authorship as relational, with the license as a parameter;
+  - the pool-not-selection default for declared inputs;
+  - the content residual stated as out of scope;
+  - rows 16–20 added to the worked examples.
+- Update `wiki/Corrigibility.md` §4 if the D.3 table changes.
+- Add `DECISIONS.md` entries: (a) the pool-not-selection default; (b) relational authorship, superseding the extensional statement; (c) the content residual's placement. Close the three *Awaiting the author* entries this round filed.
+- `#print axioms` for all new declarations. No `sorry`.
+- Merge #107 when CI is green, every row (1–20) matches its expectation or has its mismatch reported and resolved, and the two class theorems are proved or refuted with a witness.
+
+## Constraints
+
+As before: `AGENTS.md` labels, names provisional, nothing registered, the scope warning kept, and at most one new `PRIORITIES.md` item.

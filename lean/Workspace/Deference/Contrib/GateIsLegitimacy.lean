@@ -13,48 +13,57 @@ case (§4).
 
 **2. Time-indexed legitimacy.**  `Evolution.steps` lists the (pre-history, event) pairs of
 an Integrity evolution; `steps_determined`: every evolution between two states has the same
-steps, since the target history is the source history followed by the events.  Authorship
-at a step (`GroundedAt`) is the existence of a grounding selection from the pre-state
-trace on which the verdict entered at the event depends; `groundedAt_iff_mediated`: it is
-the extensional `ReasonMediated` on the pre-state prefix, the whole prefix being the
-degenerate selection.  Transparency at a step (`TransparentAt`) is the landed `Realizes`
-on each non-principal party's contributions at the event.  `Internal`, `External`,
-`Segment` ask for both only at the steps inside the segment; `Segment.trans` composes the
-two halves' proofs step by step (`steps_trans`); `toOpenIntegrity`, `answerable` and
-`payload_of_view` are re-established, the last now with the starting prefix and the
-principal's own earlier entries as hypotheses (they are no longer functions of the declared
-inputs).  `ofFrameLevel`: a landed segment lifts to a time-indexed one over the trivial
-interface.
+steps.  Authorship at a step is **relational** (`LicensedAt`): there is a grounding
+selection from the per-party prefix of the trace at the pre-history, and the verdict
+entered at the event lies in the set of verdicts those grounds *license*; `Lic` is a
+parameter.  The extensional form (`GroundedAt`: the verdict is a function of the grounds,
+equivalent to `ReasonMediated` on the prefix, `groundedAt_iff_mediated`) is the case of
+singleton licenses: `grounded_iff_licensed_singleton`.  Tie-breaking among several licensed
+verdicts is transparency's business, not authorship's: `tiebreak_transparency` — a
+non-principal party's influence on which licensed verdict she takes that does not enter
+through the declared inputs fails `TransparentAt` at that step.  Transparency at a step
+(`TransparentAt`) is the landed `Realizes` on each non-principal party's contributions at
+the event.  `Internal`, `External`, `Segment` ask for both only at the steps inside the
+segment; `Segment.trans` composes step by step (`steps_trans`); `toOpenIntegrity`,
+`answerable` and `payload_of_view` are re-established, the last as "both verdicts lie in
+the licensed set of the same grounds" (`payload_of_view_singleton` recovers equality),
+with the starting prefix and the principal's own earlier entries as hypotheses.
+`ofFrameLevel`: a landed segment lifts to a time-indexed one over the trivial interface,
+extensional at every step (`ofFrameLevel_grounded`).
 
 **3. The gate.**  `Counted` is the existence of a time-indexed segment; `gatedValue` is
 built from it, and `gate_capture_window`, `handled_gt_bypass` are restated on it with
 `Handling` derived (`handlingOf`).  `not_counted_of_step`: a failure of either half at a
-step every evolution contains excludes the segment — manipulation implies no segment
-implies the window value, by derivation.
+step every evolution contains excludes the segment.
 
-**4. One consultation model** (`Consult`): a declared protocol (`Decl`), the agent's
-presentation policy as a function of its wanted answer (`Policy.present`), her evaluator as
-a state updated only by licensed amendments (`evalAt`), a third party, her condition, and
-the record substrate (`consultProtocol`, `carry`/`admit`/`close` steps).  The frame, trace
-interface, reference `κ` and openness semantics are read off a `Model`; every row of the
-classification table is a `Model`, and its classification is settled by `decide` through
-the `Decidable` instances of §2 (`Rows`).  Forged and replayed approvals have no receipt
-(`forged_no_receipt`, `replay_no_receipt`).
+**4. One consultation model** (`Consult`): a declared protocol (`Decl`: framing convention,
+slot, menu, inquiry, the declared *pool* of the track record and the declared selection
+rule), the agent's presentation policy as a function of its wanted answer
+(`Policy.present`), her evaluator as a state updated only by licensed amendments
+(`evalAt`), her trust and the true answer, a third party, her condition, and the record
+substrate (`consultProtocol`, `carry`/`admit`/`close`).  **Declared inputs are pools, not
+selections**: the shown record must be the declared rule applied to the declared pool
+(`canonical`), as the menu must be the declared menu; the selection is never itself a
+declared input.  The license (`licensed`): her committed program's own verdict; both
+answers under free choice; the followed recommendation when trust is among the grounds.
+Every row of the classification table is a `Model`, settled by `decide` (`Rows`).  Two
+theorems over the class: `class_taint` — any dependence of a reference-fixed dimension on
+the wanted answer excludes the segment through that consultation — and `class_conform` —
+conformance on the reference-fixed dimensions with no third party, no impairment, no
+undisclosed shaping and trust where she follows makes the first-round segment counted.
 
-**5. Logical induction.**  `gatedValue_affine`: the gated value is an affine image of a
-`[0, 1]` quantity, so `li_gate_finite` bounds a logical inductor's day-`n` expectation of
-it inside `[window, D]` from `expect_mem_Icc` alone — consulting beats bypassing at every
-finite day whatever the inductor believes about legitimacy.  `li_manip_le`: when the
-manipulated option's gated value is the window value in every world of the theory, its
-expectation is asymptotically at most the window (`li_gated_le`).  `deviation_finite`: a
-self-checkable deviation from the declared protocol counts as a violation and scores below
-`D − ϖ`; `Rows.deviation_boundary` separates the rows this closes from those it does not.
+**5. Logical induction.**  `gatedValue_affine`, `li_gate_finite`: the capture window is
+finite-time from `expect_mem_Icc` alone, whatever the inductor believes about legitimacy.
+`li_manip_le`: the classification read through `li_gated_le`.  `deviation_finite`: a
+self-checkable deviation from the declared protocol — now including the selection from a
+declared pool — counts as a violation; `Rows.deviation_boundary` separates the rows this
+closes from those it does not.
 
 **What this does not establish.**  That any real interaction's channels are the declared
-ones; that the model's semantics, checker and reference are theorems of any particular
-inductor's theory; a generability certificate (item 90); anything about interleaving order
-across parties (authorship is stated on the per-party prefixes).  Names are provisional
-(`AGENTS.md` standard 6).
+ones; the truth of anything entered through a declared channel (`Rows.r20`: the content
+residual is outside legitimacy); that the model's semantics, checker and reference are
+theorems of any inductor's theory; a generability certificate (item 90); anything about
+interleaving order across parties.  Names are provisional (`AGENTS.md` standard 6).
 -/
 import Workspace.Deference.Contrib.Legitimacy
 import Workspace.Deference.Contrib.ReasonSupply
@@ -150,50 +159,57 @@ theorem mem_stepsFrom_fst (h : List ℕ) (es : List ℕ) {s : List ℕ × ℕ}
       exact ⟨e :: pre, by simp [hpre], by rw [List.cons_append]; exact List.cons_prefix_cons.mpr ⟨rfl, hp⟩⟩
 
 /-- The events of an evolution, in order. -/
-def _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.events {O₀ O₁ : ObligationState S anchor} : Evolution S anchor O₀ O₁ → List ℕ
+def _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.events
+    {O₀ O₁ : ObligationState S anchor} : Evolution S anchor O₀ O₁ → List ℕ
   | .refl _ => []
   | .cons step _ tail => step.event :: tail.events
 
 /-- The steps of an evolution: each event with the history it was appended to. -/
-def _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps {O₀ O₁ : ObligationState S anchor} (ev : Evolution S anchor O₀ O₁) :
+def _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps
+    {O₀ O₁ : ObligationState S anchor} (ev : Evolution S anchor O₀ O₁) :
     List (List ℕ × ℕ) :=
   stepsFrom O₀.boundary.history ev.events
 
 /-- The target history is the source history followed by the events. -/
-theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.history_eq {O₀ O₁ : ObligationState S anchor} (ev : Evolution S anchor O₀ O₁) :
+theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.history_eq
+    {O₀ O₁ : ObligationState S anchor} (ev : Evolution S anchor O₀ O₁) :
     O₁.boundary.history = O₀.boundary.history ++ ev.events := by
   induction ev with
   | refl O => simp [Evolution.events]
   | cons step _ _ ih => rw [ih, step.append]; simp [Evolution.events]
 
-theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.events_trans {O₀ O₁ O₂ : ObligationState S anchor} (left : Evolution S anchor O₀ O₁)
+theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.events_trans
+    {O₀ O₁ O₂ : ObligationState S anchor} (left : Evolution S anchor O₀ O₁)
     (right : Evolution S anchor O₁ O₂) : (left.trans right).events = left.events ++ right.events := by
   induction left with
   | refl => simp [Evolution.trans, Evolution.events]
   | cons _ _ _ ih => simp [Evolution.trans, Evolution.events, ih]
 
 /-- **Composition of steps.** -/
-theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_trans {O₀ O₁ O₂ : ObligationState S anchor} (left : Evolution S anchor O₀ O₁)
+theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_trans
+    {O₀ O₁ O₂ : ObligationState S anchor} (left : Evolution S anchor O₀ O₁)
     (right : Evolution S anchor O₁ O₂) : (left.trans right).steps = left.steps ++ right.steps := by
   simp only [Evolution.steps, Evolution.events_trans, stepsFrom_append, ← left.history_eq]
 
 /-- **The steps are determined by the endpoints.** -/
-theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.events_determined {O₀ O₁ : ObligationState S anchor}
+theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.events_determined
+    {O₀ O₁ : ObligationState S anchor}
     (ev ev' : Evolution S anchor O₀ O₁) : ev.events = ev'.events :=
   List.append_cancel_left (ev.history_eq.symm.trans ev'.history_eq)
 
-theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_determined {O₀ O₁ : ObligationState S anchor}
+theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_determined
+    {O₀ O₁ : ObligationState S anchor}
     (ev ev' : Evolution S anchor O₀ O₁) : ev.steps = ev'.steps := by
   simp only [Evolution.steps, Evolution.events_determined ev ev']
 
 /-- The steps, read off the endpoint histories. -/
-theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_eq_of_history {O₀ O₁ : ObligationState S anchor} (ev : Evolution S anchor O₀ O₁)
+theorem _root_.Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_eq_of_history
+    {O₀ O₁ : ObligationState S anchor} (ev : Evolution S anchor O₀ O₁)
     (es : List ℕ) (h : O₁.boundary.history = O₀.boundary.history ++ es) :
     ev.steps = stepsFrom O₀.boundary.history es := by
   simp only [Evolution.steps]
   congr 1
   exact List.append_cancel_left (ev.history_eq.symm.trans h)
-
 
 variable {Γ J R : Type} {Q Z Ω X ℛ 𝒱 Party E : Type*}
 
@@ -214,9 +230,8 @@ def MediatedAt (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱) (
     (z : Z) : Prop :=
   ReasonMediated F.β (fun ω => I.parts (F.R ω) h) (fun ω => F.V ω e) F.D z
 
-/-- **Authorship at a step, as grounding**: there is a selection of grounds from the
-pre-state trace, party by party, on which the verdict entered at `e` depends.  Transition
-certificates instantiate the selection. -/
+/-- **Authorship as grounding, extensional**: there is a selection of grounds from the
+pre-state trace, party by party, on which the verdict entered at `e` depends. -/
 def GroundedAt (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱) (h : List ℕ) (e : ℕ)
     (z : Z) : Prop :=
   ∃ sel : (Party → List E) → (Party → List E),
@@ -224,6 +239,25 @@ def GroundedAt (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱) (
     ∀ q ∈ F.D, ∀ q' ∈ F.D,
       sel (I.parts (F.R (F.β q z)) h) = sel (I.parts (F.R (F.β q' z)) h) →
         F.V (F.β q z) e = F.V (F.β q' z) e
+
+/-- **Authorship at a step, relational**: there is a selection of grounds from the pre-state
+trace, and the verdict entered at `e` lies in the set of verdicts those grounds license.
+`Lic` is a parameter; transition certificates instantiate the selection and the license. -/
+def LicensedAt (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (Lic : (Party → List E) → Set 𝒱) (h : List ℕ) (e : ℕ) (z : Z) : Prop :=
+  ∃ sel : (Party → List E) → (Party → List E),
+    (∀ f p, ∀ x ∈ sel f p, x ∈ f p) ∧
+    ∀ q ∈ F.D, F.V (F.β q z) e ∈ Lic (sel (I.parts (F.R (F.β q z)) h))
+
+/-- The relational form with the whole prefix as the grounds; decidable on finite models. -/
+def LicensedWhole (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (Lic : (Party → List E) → Set 𝒱) (h : List ℕ) (e : ℕ) (z : Z) : Prop :=
+  ∀ q ∈ F.D, F.V (F.β q z) e ∈ Lic (I.parts (F.R (F.β q z)) h)
+
+theorem licensedAt_of_whole {I : TraceInterface ℛ Party E} {F : TFrame Q Z Ω X ℛ 𝒱}
+    {Lic : (Party → List E) → Set 𝒱} {h : List ℕ} {e : ℕ} {z : Z}
+    (hw : LicensedWhole I F Lic h e z) : LicensedAt I F Lic h e z :=
+  ⟨id, fun _ _ _ hx => hx, hw⟩
 
 /-- **Grounding is the extensional form**: it implies it (grounds selected from equal
 prefixes are equal), and the whole prefix is the degenerate selection. -/
@@ -240,6 +274,38 @@ theorem grounded_implies_mediated {I : TraceInterface ℛ Party E} {F : TFrame Q
     {h : List ℕ} {e : ℕ} {z : Z} (hg : GroundedAt I F h e z) : MediatedAt I F h e z :=
   (groundedAt_iff_mediated I F h e z).mp hg
 
+/-- **Singleton licenses give the extensional form.** -/
+theorem licensed_singleton_implies_grounded {I : TraceInterface ℛ Party E}
+    {F : TFrame Q Z Ω X ℛ 𝒱} {h : List ℕ} {e : ℕ} {z : Z} (ℓ : (Party → List E) → 𝒱)
+    (hl : LicensedAt I F (fun g => {ℓ g}) h e z) : GroundedAt I F h e z := by
+  obtain ⟨sel, hsub, hlic⟩ := hl
+  refine ⟨sel, hsub, fun q hq q' hq' hs => ?_⟩
+  have h1 := hlic q hq
+  have h2 := hlic q' hq'
+  simp only [Set.mem_singleton_iff] at h1 h2
+  rw [h1, h2, hs]
+
+open scoped Classical in
+/-- **The extensional form is the relational form under singleton licenses**: a grounded
+verdict is licensed by the singleton of the value the grounds determine. -/
+theorem grounded_implies_licensed {I : TraceInterface ℛ Party E} {F : TFrame Q Z Ω X ℛ 𝒱}
+    {h : List ℕ} {e : ℕ} {z : Z} [Nonempty 𝒱] (hg : GroundedAt I F h e z) :
+    ∃ ℓ : (Party → List E) → 𝒱, LicensedAt I F (fun g => {ℓ g}) h e z := by
+  obtain ⟨sel, hsub, hdet⟩ := hg
+  let ℓ : (Party → List E) → 𝒱 := fun g =>
+    if hq : ∃ q, q ∈ F.D ∧ sel (I.parts (F.R (F.β q z)) h) = g then F.V (F.β hq.choose z) e
+    else Classical.arbitrary 𝒱
+  refine ⟨ℓ, sel, hsub, fun q hq => ?_⟩
+  have hex : ∃ q', q' ∈ F.D ∧ sel (I.parts (F.R (F.β q' z)) h) = sel (I.parts (F.R (F.β q z)) h) :=
+    ⟨q, hq, rfl⟩
+  simp only [Set.mem_singleton_iff, ℓ, dif_pos hex]
+  exact hdet q hq _ hex.choose_spec.1 hex.choose_spec.2.symm
+
+theorem grounded_iff_licensed_singleton (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (h : List ℕ) (e : ℕ) (z : Z) [Nonempty 𝒱] :
+    GroundedAt I F h e z ↔ ∃ ℓ : (Party → List E) → 𝒱, LicensedAt I F (fun g => {ℓ g}) h e z :=
+  ⟨grounded_implies_licensed, fun ⟨ℓ, hl⟩ => licensed_singleton_implies_grounded ℓ hl⟩
+
 /-- **Transparency at a step**: every non-principal party's contributions at the event
 realize the declared reference on the declared inputs entered at the event. -/
 def TransparentAt (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
@@ -247,12 +313,41 @@ def TransparentAt (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱
   ∀ p, p ≠ I.principal →
     Realizes F.β (fun ω => F.x ω e) (fun ω => sourced p (I.entriesAt (F.R ω) e)) (κ p) F.D
 
-/-- **Internal legitimacy, time-indexed**: the Integrity evolution, and authorship at each
-of its steps. -/
+/-- **Tie-breaking is transparency's, not authorship's.**  If two audited continuations
+enter the same declared inputs at an event but a non-principal party's contributions at
+that event differ — the party's influence on which licensed verdict she takes did not
+enter through the declared inputs — then the step is not transparent.  The verdicts and
+the license play no role: the lemma is about the channel. -/
+theorem tiebreak_transparency {I : TraceInterface ℛ Party E} {F : TFrame Q Z Ω X ℛ 𝒱}
+    {κ : Party → X → Z → List E} {e : ℕ} (p : Party) (hp : p ≠ I.principal) (q q' : Q)
+    (hq : q ∈ F.D) (hq' : q' ∈ F.D) (z : Z) (hx : F.x (F.β q z) e = F.x (F.β q' z) e)
+    (hne : sourced p (I.entriesAt (F.R (F.β q z)) e) ≠ sourced p (I.entriesAt (F.R (F.β q' z)) e)) :
+    ¬ TransparentAt I F κ e := by
+  intro ht
+  have h1 : sourced p (I.entriesAt (F.R (F.β q z)) e) = κ p (F.x (F.β q z) e) z := ht p hp q hq z
+  have h2 : sourced p (I.entriesAt (F.R (F.β q' z)) e) = κ p (F.x (F.β q' z) e) z := ht p hp q' hq' z
+  exact hne (by rw [h1, h2, hx])
+
+/-- The tie-break lemma with the verdicts in view: several licensed verdicts on the same
+grounds, a different verdict under a different non-principal contribution with the same
+declared inputs — the step fails transparency (and authorship is untouched). -/
+theorem tiebreak_of_licensed {I : TraceInterface ℛ Party E} {F : TFrame Q Z Ω X ℛ 𝒱}
+    {Lic : (Party → List E) → Set 𝒱} {κ : Party → X → Z → List E} {h : List ℕ} {e : ℕ} {z : Z}
+    (p : Party) (hp : p ≠ I.principal) (q q' : Q) (hq : q ∈ F.D) (hq' : q' ∈ F.D)
+    (hlic : LicensedWhole I F Lic h e z)
+    (_hV : F.V (F.β q z) e ≠ F.V (F.β q' z) e)
+    (hx : F.x (F.β q z) e = F.x (F.β q' z) e)
+    (hne : sourced p (I.entriesAt (F.R (F.β q z)) e) ≠ sourced p (I.entriesAt (F.R (F.β q' z)) e)) :
+    F.V (F.β q z) e ∈ Lic (I.parts (F.R (F.β q z)) h) ∧
+      F.V (F.β q' z) e ∈ Lic (I.parts (F.R (F.β q' z)) h) ∧ ¬ TransparentAt I F κ e :=
+  ⟨hlic q hq, hlic q' hq', tiebreak_transparency p hp q q' hq hq' z hx hne⟩
+
+/-- **Internal legitimacy, time-indexed**: the Integrity evolution, and relational
+authorship at each of its steps. -/
 structure Internal (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
-    (O₀ O₁ : ObligationState S anchor) where
+    (Lic : (Party → List E) → Set 𝒱) (O₀ O₁ : ObligationState S anchor) where
   evolution : Evolution S anchor O₀ O₁
-  authored : ∀ s ∈ evolution.steps, ∀ z, GroundedAt I F s.1 s.2 z
+  authored : ∀ s ∈ evolution.steps, ∀ z, LicensedAt I F Lic s.1 s.2 z
 
 /-- **External legitimacy, time-indexed**: Robust Openness at every state, and
 transparency at each step. -/
@@ -264,28 +359,28 @@ structure External (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ �
 
 /-- **Legitimacy of a segment, time-indexed**: internal ∧ external on its own steps. -/
 structure Segment (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
-    (sem : OpennessSemantics S anchor Γ J R) (κ : Party → X → Z → List E)
-    (O₀ O₁ : ObligationState S anchor) where
-  internal : Internal I F O₀ O₁
+    (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics S anchor Γ J R)
+    (κ : Party → X → Z → List E) (O₀ O₁ : ObligationState S anchor) where
+  internal : Internal I F Lic O₀ O₁
   external : External I F sem κ O₀ O₁ internal.evolution
 
 namespace Segment
 
-variable {I : TraceInterface ℛ Party E} {F : TFrame Q Z Ω X ℛ 𝒱}
+variable {I : TraceInterface ℛ Party E} {F : TFrame Q Z Ω X ℛ 𝒱} {Lic : (Party → List E) → Set 𝒱}
   {sem : OpennessSemantics S anchor Γ J R} {κ : Party → X → Z → List E}
   {O₀ O₁ O₂ : ObligationState S anchor}
 
 /-- The registered projection to the open Integrity evolution still holds. -/
-def toOpenIntegrity (L : Segment I F sem κ O₀ O₁) : OpenIntegritySegment S anchor sem O₀ O₁ :=
+def toOpenIntegrity (L : Segment I F Lic sem κ O₀ O₁) : OpenIntegritySegment S anchor sem O₀ O₁ :=
   ⟨L.internal.evolution, L.external.openAll⟩
 
-theorem answerable (L : Segment I F sem κ O₀ O₁) :
+theorem answerable (L : Segment I F Lic sem κ O₀ O₁) :
     Conservation S anchor O₀ O₁ ∧ OpenAt sem O₀ ∧ OpenAt sem O₁ :=
   L.toOpenIntegrity.answerable
 
 /-- **Composition at a shared state, step by step.** -/
-def trans (left : Segment I F sem κ O₀ O₁) (right : Segment I F sem κ O₁ O₂) :
-    Segment I F sem κ O₀ O₂ where
+def trans (left : Segment I F Lic sem κ O₀ O₁) (right : Segment I F Lic sem κ O₁ O₂) :
+    Segment I F Lic sem κ O₀ O₂ where
   internal :=
     ⟨left.internal.evolution.trans right.internal.evolution, by
       intro s hs z
@@ -302,14 +397,13 @@ def trans (left : Segment I F sem κ O₀ O₁) (right : Segment I F sem κ O₁
       · exact right.external.transparent s hs⟩
 
 /-- The steps of a segment. -/
-def steps (L : Segment I F sem κ O₀ O₁) : List (List ℕ × ℕ) := L.internal.evolution.steps
+def steps (L : Segment I F Lic sem κ O₀ O₁) : List (List ℕ × ℕ) := L.internal.evolution.steps
 
-/-- **The payload factors through the declared inputs**, time-indexed: at a step of the
-segment, two audited continuations with the same per-party prefix at the segment's start,
-the same declared inputs at every earlier event of the segment, and the same entries of the
-principal's own at those events, enter the same verdict. -/
-theorem payload_of_view (L : Segment I F sem κ O₀ O₁) {pre : List ℕ} {e : ℕ}
-    (hs : (O₀.boundary.history ++ pre, e) ∈ L.steps)
+/-- **The prefix factors through the declared inputs**: two audited continuations with the
+same per-party prefix at the segment's start, the same declared inputs at every earlier
+event of the segment, and the same entries of the principal's own at those events, have
+the same per-party prefix at the step. -/
+theorem prefix_of_view (L : Segment I F Lic sem κ O₀ O₁) {pre : List ℕ}
     (hpre : ∀ e' ∈ pre, ∃ h', (h', e') ∈ L.steps)
     (z : Z) (q q' : Q) (hq : q ∈ F.D) (hq' : q' ∈ F.D)
     (hstart : I.parts (F.R (F.β q z)) O₀.boundary.history =
@@ -317,13 +411,12 @@ theorem payload_of_view (L : Segment I F sem κ O₀ O₁) {pre : List ℕ} {e :
     (hx : ∀ e' ∈ pre, F.x (F.β q z) e' = F.x (F.β q' z) e')
     (hp : ∀ e' ∈ pre, sourced I.principal (I.entriesAt (F.R (F.β q z)) e') =
       sourced I.principal (I.entriesAt (F.R (F.β q' z)) e')) :
-    F.V (F.β q z) e = F.V (F.β q' z) e := by
-  apply grounded_implies_mediated (L.internal.authored _ hs z) q hq q' hq'
+    I.parts (F.R (F.β q z)) (O₀.boundary.history ++ pre) =
+      I.parts (F.R (F.β q' z)) (O₀.boundary.history ++ pre) := by
   funext p
   simp only [TraceInterface.parts_append, hstart]
   congr 1
   simp only [TraceInterface.atHistory]
-  clear hs
   induction pre with
   | nil => rfl
   | cons e' pre ih =>
@@ -340,22 +433,57 @@ theorem payload_of_view (L : Segment I F sem κ O₀ O₁) {pre : List ℕ} {e :
     · exact ih (fun e'' he'' => hpre e'' (by simp [he''])) (fun e'' he'' => hx e'' (by simp [he'']))
         (fun e'' he'' => hp e'' (by simp [he'']))
 
+/-- **The payload lies in the licensed set of the declared inputs' grounds**, time-indexed
+and relational: at a step of the segment, under the hypotheses of `prefix_of_view`, both
+verdicts lie in the set licensed by the same selected grounds. -/
+theorem payload_of_view (L : Segment I F Lic sem κ O₀ O₁) {pre : List ℕ} {e : ℕ}
+    (hs : (O₀.boundary.history ++ pre, e) ∈ L.steps)
+    (hpre : ∀ e' ∈ pre, ∃ h', (h', e') ∈ L.steps)
+    (z : Z) (q q' : Q) (hq : q ∈ F.D) (hq' : q' ∈ F.D)
+    (hstart : I.parts (F.R (F.β q z)) O₀.boundary.history =
+      I.parts (F.R (F.β q' z)) O₀.boundary.history)
+    (hx : ∀ e' ∈ pre, F.x (F.β q z) e' = F.x (F.β q' z) e')
+    (hp : ∀ e' ∈ pre, sourced I.principal (I.entriesAt (F.R (F.β q z)) e') =
+      sourced I.principal (I.entriesAt (F.R (F.β q' z)) e')) :
+    ∃ g, F.V (F.β q z) e ∈ Lic g ∧ F.V (F.β q' z) e ∈ Lic g := by
+  obtain ⟨sel, -, hlic⟩ := L.internal.authored _ hs z
+  have hpref := L.prefix_of_view hpre z q q' hq hq' hstart hx hp
+  refine ⟨sel (I.parts (F.R (F.β q z)) (O₀.boundary.history ++ pre)), hlic q hq, ?_⟩
+  rw [hpref]
+  exact hlic q' hq'
+
+/-- Under singleton licenses the landed conclusion returns: the verdicts are equal. -/
+theorem payload_of_view_singleton (ℓ : (Party → List E) → 𝒱)
+    (L : Segment I F (fun g => {ℓ g}) sem κ O₀ O₁) {pre : List ℕ} {e : ℕ}
+    (hs : (O₀.boundary.history ++ pre, e) ∈ L.steps)
+    (hpre : ∀ e' ∈ pre, ∃ h', (h', e') ∈ L.steps)
+    (z : Z) (q q' : Q) (hq : q ∈ F.D) (hq' : q' ∈ F.D)
+    (hstart : I.parts (F.R (F.β q z)) O₀.boundary.history =
+      I.parts (F.R (F.β q' z)) O₀.boundary.history)
+    (hx : ∀ e' ∈ pre, F.x (F.β q z) e' = F.x (F.β q' z) e')
+    (hp : ∀ e' ∈ pre, sourced I.principal (I.entriesAt (F.R (F.β q z)) e') =
+      sourced I.principal (I.entriesAt (F.R (F.β q' z)) e')) :
+    F.V (F.β q z) e = F.V (F.β q' z) e := by
+  obtain ⟨g, h1, h2⟩ := L.payload_of_view hs hpre z q q' hq hq' hstart hx hp
+  simp only [Set.mem_singleton_iff] at h1 h2
+  rw [h1, h2]
+
 end Segment
 
 /-- **The gate: a branch counts iff a time-indexed segment exists.** -/
 def Counted (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
-    (sem : OpennessSemantics S anchor Γ J R) (κ : Party → X → Z → List E)
-    (O₀ O₁ : ObligationState S anchor) : Prop :=
-  Nonempty (Segment I F sem κ O₀ O₁)
+    (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics S anchor Γ J R)
+    (κ : Party → X → Z → List E) (O₀ O₁ : ObligationState S anchor) : Prop :=
+  Nonempty (Segment I F Lic sem κ O₀ O₁)
 
 /-- **Localization**: a failure of either half at a step every evolution between the
 endpoints contains excludes every segment. -/
 theorem not_counted_of_step {I : TraceInterface ℛ Party E} {F : TFrame Q Z Ω X ℛ 𝒱}
-    {sem : OpennessSemantics S anchor Γ J R} {κ : Party → X → Z → List E}
-    {O₀ O₁ : ObligationState S anchor} (s : List ℕ × ℕ)
+    {Lic : (Party → List E) → Set 𝒱} {sem : OpennessSemantics S anchor Γ J R}
+    {κ : Party → X → Z → List E} {O₀ O₁ : ObligationState S anchor} (s : List ℕ × ℕ)
     (hs : ∀ ev : Evolution S anchor O₀ O₁, s ∈ ev.steps)
-    (hfail : (∃ z, ¬ GroundedAt I F s.1 s.2 z) ∨ ¬ TransparentAt I F κ s.2) :
-    ¬ Counted I F sem κ O₀ O₁ := by
+    (hfail : (∃ z, ¬ LicensedAt I F Lic s.1 s.2 z) ∨ ¬ TransparentAt I F κ s.2) :
+    ¬ Counted I F Lic sem κ O₀ O₁ := by
   rintro ⟨L⟩
   rcases hfail with ⟨z, hz⟩ | ht
   · exact hz (L.internal.authored s (hs _) z)
@@ -400,6 +528,11 @@ instance (h : List ℕ) (e : ℕ) (z : Z) [Fintype Q] [DecidablePred (· ∈ F.D
     [DecidableEq E] [DecidableEq 𝒱] : Decidable (GroundedAt I F h e z) :=
   decidable_of_iff _ (groundedAt_iff_mediated I F h e z).symm
 
+instance (Lic : (Party → List E) → Set 𝒱) (h : List ℕ) (e : ℕ) (z : Z) [Fintype Q]
+    [DecidablePred (· ∈ F.D)] [∀ g, DecidablePred (· ∈ Lic g)] :
+    Decidable (LicensedWhole I F Lic h e z) := by
+  unfold LicensedWhole; infer_instance
+
 instance (κ : Party → X → Z → List E) (e : ℕ) [Fintype Q] [Fintype Z] [DecidablePred (· ∈ F.D)]
     [Fintype Party] [DecidableEq E] : Decidable (TransparentAt I F κ e) := by
   unfold TransparentAt; infer_instance
@@ -424,6 +557,11 @@ principal's is unconstrained. -/
 def liftRef (κ : X → Z → ℛ) : Bool → X → Z → List ℛ :=
   fun p x z => if p then [κ x z] else []
 
+/-- The lifted license: the payloads of the audited continuations whose trace is among the
+grounds. -/
+def liftLic (F : Frame Q Z Ω X ℛ 𝒱) : (Bool → List ℛ) → Set 𝒱 :=
+  fun g => {v | ∃ q ∈ F.D, ∃ z, F.R (F.β q z) ∈ g true ∧ F.V (F.β q z) = v}
+
 omit [DecidableEq Occ] in
 theorem trivial_parts_true (r : ℛ) (h : List ℕ) :
     (trivialInterface ℛ).parts r h true = List.replicate h.length r := by
@@ -435,31 +573,44 @@ theorem trivial_parts_true (r : ℛ) (h : List ℕ) :
     simp [sourced, trivialInterface, List.replicate_succ] at ih ⊢
     exact ih
 
+omit [DecidableEq Occ] in
+/-- Over the trivial interface, a landed segment's authorship is the extensional form at
+every step with a nonempty pre-history. -/
+theorem lifted_grounded (hauth : ∀ z, ReasonMediated F.β F.R F.V F.D z) {h : List ℕ}
+    (hne : h ≠ []) (e : ℕ) (z : Z) : GroundedAt (trivialInterface ℛ) (liftFrame F) h e z := by
+  rw [groundedAt_iff_mediated]
+  intro q hq q' hq' hR
+  have hlen : h.length ≠ 0 := fun h0 => hne (List.length_eq_zero_iff.mp h0)
+  have this : (trivialInterface ℛ).parts (F.R (F.β q z)) h true =
+      (trivialInterface ℛ).parts (F.R (F.β q' z)) h true := congrFun hR true
+  rw [trivial_parts_true, trivial_parts_true] at this
+  have hRR : F.R (F.β q z) = F.R (F.β q' z) := by
+    have hm : F.R (F.β q z) ∈ List.replicate h.length (F.R (F.β q z)) :=
+      List.mem_replicate.mpr ⟨hlen, rfl⟩
+    rw [this] at hm
+    exact (List.mem_replicate.mp hm).2
+  exact hauth z q hq q' hq' hRR
+
 /-- **The landed definition is the special case**: over the trivial interface, a landed
-segment whose starting history is nonempty is a time-indexed segment of the lifted frame. -/
+segment whose starting history is nonempty is a time-indexed segment of the lifted frame
+under the lifted license. -/
 def ofFrameLevel {sem : OpennessSemantics S anchor Γ J R} {κ : X → Z → ℛ}
     {O₀ O₁ : ObligationState S anchor} (hne : O₀.boundary.history ≠ [])
     (L : Workspace.Deference.Contrib.Legitimacy.Segment F sem κ O₀ O₁) :
-    Segment (trivialInterface ℛ) (liftFrame F) sem (liftRef κ) O₀ O₁ where
+    Segment (trivialInterface ℛ) (liftFrame F) (liftLic F) sem (liftRef κ) O₀ O₁ where
   internal :=
     ⟨L.internal.evolution, by
       intro s hs z
-      rw [groundedAt_iff_mediated]
-      intro q hq q' hq' hR
+      refine ⟨id, fun _ _ _ hx => hx, fun q hq => ?_⟩
       obtain ⟨pre, hpre, -⟩ := mem_stepsFrom_fst _ _ hs
       have hlen : (s.1).length ≠ 0 := by
         rw [hpre, List.length_append]
         intro h0
         exact hne (List.length_eq_zero_iff.mp (by omega))
-      have this : (trivialInterface ℛ).parts (F.R (F.β q z)) s.1 true =
-          (trivialInterface ℛ).parts (F.R (F.β q' z)) s.1 true := congrFun hR true
-      rw [trivial_parts_true, trivial_parts_true] at this
-      have hRR : F.R (F.β q z) = F.R (F.β q' z) := by
-        have hm : F.R (F.β q z) ∈ List.replicate s.1.length (F.R (F.β q z)) :=
-          List.mem_replicate.mpr ⟨hlen, rfl⟩
-        rw [this] at hm
-        exact (List.mem_replicate.mp hm).2
-      exact L.internal.authored z q hq q' hq' hRR⟩
+      refine ⟨q, hq, z, ?_, rfl⟩
+      show F.R (F.β q z) ∈ (trivialInterface ℛ).parts (F.R (F.β q z)) s.1 true
+      rw [trivial_parts_true]
+      exact List.mem_replicate.mpr ⟨hlen, rfl⟩⟩
   external :=
     ⟨L.external.openAll, by
       intro s _ p hp q hq z
@@ -467,6 +618,19 @@ def ofFrameLevel {sem : OpennessSemantics S anchor Γ J R} {κ : X → Z → ℛ
       | false => exact absurd rfl hp
       | true => simp [trivialInterface, sourced, liftRef, liftFrame,
           L.external.transparent q hq z]⟩
+
+/-- The lifted segment is extensional at every step: the landed authorship carries over. -/
+theorem ofFrameLevel_grounded {sem : OpennessSemantics S anchor Γ J R} {κ : X → Z → ℛ}
+    {O₀ O₁ : ObligationState S anchor} (hne : O₀.boundary.history ≠ [])
+    (L : Workspace.Deference.Contrib.Legitimacy.Segment F sem κ O₀ O₁) :
+    ∀ s ∈ (ofFrameLevel hne L).steps, ∀ z,
+      GroundedAt (trivialInterface ℛ) (liftFrame F) s.1 s.2 z := by
+  intro s hs z
+  obtain ⟨pre, hpre, -⟩ := mem_stepsFrom_fst _ _ hs
+  refine lifted_grounded L.internal.authored ?_ s.2 z
+  rw [hpre]
+  intro h0
+  exact hne (List.eq_nil_of_append_eq_nil h0).1
 
 end FrameLevel
 
@@ -479,35 +643,35 @@ section Gate
 universe u v w
 variable {Occ : Type u} {Req : Type v} [DecidableEq Occ] {S : Protocol.{u, v, w} Occ Req}
   {anchor : Occ → Req} {Γ J R : Type} {Q Z Ω X ℛ 𝒱 Party E : Type*} [DecidableEq Party]
-variable (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+variable (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱) (Lic : (Party → List E) → Set 𝒱)
   (sem : OpennessSemantics S anchor Γ J R) (κ : Party → X → Z → List E)
   (O₀ O₁ : ObligationState S anchor)
 
 open scoped Classical in
 /-- The gated value of a branch, built from `Counted`. -/
 noncomputable def gatedValue (ord window : ℝ) : ℝ :=
-  if Counted I F sem κ O₀ O₁ then ord else window
+  if Counted I F Lic sem κ O₀ O₁ then ord else window
 
 open scoped Classical in
 theorem gatedValue_eq (ord window : ℝ) :
-    gatedValue I F sem κ O₀ O₁ ord window =
-      gateValue (decide (Counted I F sem κ O₀ O₁)) ord window := by
+    gatedValue I F Lic sem κ O₀ O₁ ord window =
+      gateValue (decide (Counted I F Lic sem κ O₀ O₁)) ord window := by
   unfold gatedValue gateValue
-  by_cases h : Counted I F sem κ O₀ O₁ <;> simp [h]
+  by_cases h : Counted I F Lic sem κ O₀ O₁ <;> simp [h]
 
-theorem gatedValue_of_counted (h : Counted I F sem κ O₀ O₁) (ord window : ℝ) :
-    gatedValue I F sem κ O₀ O₁ ord window = ord := by
+theorem gatedValue_of_counted (h : Counted I F Lic sem κ O₀ O₁) (ord window : ℝ) :
+    gatedValue I F Lic sem κ O₀ O₁ ord window = ord := by
   unfold gatedValue; simp [h]
 
-theorem gatedValue_of_not_counted (h : ¬ Counted I F sem κ O₀ O₁) (ord window : ℝ) :
-    gatedValue I F sem κ O₀ O₁ ord window = window := by
+theorem gatedValue_of_not_counted (h : ¬ Counted I F Lic sem κ O₀ O₁) (ord window : ℝ) :
+    gatedValue I F Lic sem κ O₀ O₁ ord window = window := by
   unfold gatedValue; simp [h]
 
 /-- **The capture window for the gate**, on `Counted`: bypass scores below every gated
 branch whenever the window value exceeds `D − ϖ`. -/
 theorem gate_capture_window (ϖ D ordU ord window : ℝ) (hϖ : D < ϖ) (hU : ordU ≤ D)
     (hord : 0 ≤ ord) (hw : D - ϖ < window) :
-    score ϖ ordU 1 < gatedValue I F sem κ O₀ O₁ ord window := by
+    score ϖ ordU 1 < gatedValue I F Lic sem κ O₀ O₁ ord window := by
   rw [gatedValue_eq]
   exact Workspace.Deference.Contrib.Legitimacy.gate_capture_window ϖ D ordU ord window hϖ hU
     hord hw _
@@ -516,34 +680,34 @@ open scoped Classical in
 /-- **The handling, derived**: tainted iff no segment exists; otherwise the void fallback
 when her response was not admitted, else counted. -/
 noncomputable def handlingOf (admitted : Bool) (ord : ℝ) : Handling :=
-  if Counted I F sem κ O₀ O₁ then (if admitted then .counted ord else .voidFallback ord)
+  if Counted I F Lic sem κ O₀ O₁ then (if admitted then .counted ord else .voidFallback ord)
   else .tainted
 
-theorem handlingOf_tainted (h : ¬ Counted I F sem κ O₀ O₁) (admitted : Bool) (ord : ℝ) :
-    handlingOf I F sem κ O₀ O₁ admitted ord = .tainted := by
+theorem handlingOf_tainted (h : ¬ Counted I F Lic sem κ O₀ O₁) (admitted : Bool) (ord : ℝ) :
+    handlingOf I F Lic sem κ O₀ O₁ admitted ord = .tainted := by
   unfold handlingOf; simp [h]
 
-theorem handlingOf_void (h : Counted I F sem κ O₀ O₁) (ord : ℝ) :
-    handlingOf I F sem κ O₀ O₁ false ord = .voidFallback ord := by
+theorem handlingOf_void (h : Counted I F Lic sem κ O₀ O₁) (ord : ℝ) :
+    handlingOf I F Lic sem κ O₀ O₁ false ord = .voidFallback ord := by
   unfold handlingOf; simp [h]
 
-theorem handlingOf_counted (h : Counted I F sem κ O₀ O₁) (ord : ℝ) :
-    handlingOf I F sem κ O₀ O₁ true ord = .counted ord := by
+theorem handlingOf_counted (h : Counted I F Lic sem κ O₀ O₁) (ord : ℝ) :
+    handlingOf I F Lic sem κ O₀ O₁ true ord = .counted ord := by
   unfold handlingOf; simp [h]
 
 /-- The derived handling scores the gated value. -/
 theorem handledValue_handlingOf (admitted : Bool) (ord window : ℝ) :
-    handledValue window (handlingOf I F sem κ O₀ O₁ admitted ord) =
-      gatedValue I F sem κ O₀ O₁ ord window := by
+    handledValue window (handlingOf I F Lic sem κ O₀ O₁ admitted ord) =
+      gatedValue I F Lic sem κ O₀ O₁ ord window := by
   unfold handlingOf gatedValue
-  by_cases h : Counted I F sem κ O₀ O₁ <;> cases admitted <;> simp [h, handledValue]
+  by_cases h : Counted I F Lic sem κ O₀ O₁ <;> cases admitted <;> simp [h, handledValue]
 
 /-- **Bypass never beats a handled branch**, on the derived handling. -/
 theorem handled_gt_bypass (ϖ D ordU ord window : ℝ) (hϖ : D < ϖ) (hU : ordU ≤ D)
     (hord : 0 ≤ ord) (hw : D - ϖ < window) (admitted : Bool) :
-    score ϖ ordU 1 < handledValue window (handlingOf I F sem κ O₀ O₁ admitted ord) := by
+    score ϖ ordU 1 < handledValue window (handlingOf I F Lic sem κ O₀ O₁ admitted ord) := by
   rw [handledValue_handlingOf]
-  exact gate_capture_window I F sem κ O₀ O₁ ϖ D ordU ord window hϖ hU hord hw
+  exact gate_capture_window I F Lic sem κ O₀ O₁ ϖ D ordU ord window hϖ hU hord hw
 
 end Gate
 
@@ -577,15 +741,20 @@ inductive Menu
   | only (a : Answer)
   deriving DecidableEq, Repr
 
-/-- The track record shown. -/
-inductive Disclosure
-  | full
-  | favourable
+/-- A declared selection rule on the declared pool: everything, or the most recent `k`. -/
+inductive SelRule
+  | all
+  | recent (k : ℕ)
   deriving DecidableEq, Repr
+
+def SelRule.apply : SelRule → List Bool → List Bool
+  | .all, l => l
+  | .recent k, l => l.take k
 
 /-- The agent's contribution at a consultation: content, framing, timing, the options
 offered, what it investigated, shaping through the world (with whether it was disclosed),
-the track record shown, and interference with her response channel. -/
+the track record shown (a selection from the declared pool), interference with her
+response channel, and a nudge on her choice through no declared channel. -/
 structure Presentation where
   recommend : Option Answer
   framing : Framing
@@ -593,37 +762,91 @@ structure Presentation where
   menu : Menu
   inquired : Bool
   shaping : Option (Answer × Bool)
-  disclosure : Disclosure
+  disclosure : List Bool
   interfere : Bool
+  nudge : Option Answer
   deriving DecidableEq, Repr
 
 /-- The declared consultation protocol: the framing convention, when she is asked, which
-options are offered, whether inquiry is in scope, and the disclosure obligation if one is
-declared. -/
+options are offered, whether inquiry is in scope, the declared pool of the track record and
+the declared selection rule on it. -/
 structure Decl where
   convention : Framing
   slot : Slot
   menu : Menu
   inquiry : Bool
-  disclosure : Option Disclosure
+  pool : List Bool
+  rule : SelRule
   deriving DecidableEq, Repr
 
-/-- The declared-input view of a presentation: the recommendation, the disclosed shaping,
-and the track record where no obligation fixes it. -/
+/-- The declared-input view of a presentation: the recommendation and the disclosed
+shaping.  A selection from a pool is never a declared input. -/
 structure DeclView where
   recommend : Option Answer
   shaping : Option Answer
-  disclosure : Option Disclosure
   deriving DecidableEq, Repr
 
-def Presentation.view (d : Decl) (p : Presentation) : DeclView :=
-  ⟨p.recommend, match p.shaping with | some (a, true) => some a | _ => none,
-    match d.disclosure with | some _ => none | none => some p.disclosure⟩
+def Presentation.view (p : Presentation) : DeclView :=
+  ⟨p.recommend, match p.shaping with | some (a, true) => some a | _ => none⟩
 
-/-- The declared reference: the canonical presentation for a declared-input view. -/
+/-- The declared reference: the canonical presentation for a declared-input view — every
+reference-fixed dimension at its declared value, the selection by the declared rule. -/
 def canonical (d : Decl) (v : DeclView) : Presentation :=
   ⟨v.recommend, d.convention, d.slot, d.menu, d.inquiry, v.shaping.map fun a => (a, true),
-    match d.disclosure with | some o => o | none => v.disclosure.getD .full, false⟩
+    d.rule.apply d.pool, false, none⟩
+
+/-- The reference-fixed dimensions of a presentation. -/
+def refProj (p : Presentation) :
+    Framing × Slot × Menu × Bool × List Bool × Bool × Option Answer :=
+  (p.framing, p.slot, p.menu, p.inquired, p.disclosure, p.interfere, p.nudge)
+
+/-- Their declared values. -/
+def refValues (d : Decl) : Framing × Slot × Menu × Bool × List Bool × Bool × Option Answer :=
+  (d.convention, d.slot, d.menu, d.inquiry, d.rule.apply d.pool, false, none)
+
+theorem refProj_canonical (d : Decl) (v : DeclView) : refProj (canonical d v) = refValues d := rfl
+
+/-- A self-checkable deviation from the declared protocol: a reference-fixed dimension off
+its declared value — a discrete act of the agent's against a declared clause, the selection
+from the declared pool included.  Shaping through the world is not one. -/
+def Presentation.deviates (d : Decl) (p : Presentation) : Bool :=
+  !(decide (p.framing = d.convention) && decide (p.slot = d.slot) && decide (p.menu = d.menu) &&
+    decide (p.inquired = d.inquiry) && decide (p.disclosure = d.rule.apply d.pool) &&
+    decide (p.interfere = false) && decide (p.nudge = none))
+
+theorem deviates_false_iff (d : Decl) (p : Presentation) :
+    p.deviates d = false ↔ refProj p = refValues d := by
+  simp [Presentation.deviates, refProj, refValues, Prod.mk.injEq, and_assoc]
+
+/-- No undisclosed shaping. -/
+def Presentation.shapingOK (p : Presentation) : Bool :=
+  match p.shaping with
+  | some (_, false) => false
+  | _ => true
+
+/-- A presentation that conforms on the reference-fixed dimensions and shapes only
+disclosedly is its own canonical presentation. -/
+theorem canonical_view_eq (d : Decl) (p : Presentation) (hr : p.deviates d = false)
+    (hs : p.shapingOK = true) : canonical d p.view = p := by
+  rw [deviates_false_iff] at hr
+  obtain ⟨rec, fr, sl, me, inq, sh, di, int, nu⟩ := p
+  simp only [refProj, refValues, Prod.mk.injEq] at hr
+  obtain ⟨h1, h2, h3, h4, h5, h6, h7⟩ := hr
+  subst h1 h2 h3 h4 h5 h6 h7
+  rcases sh with _ | ⟨a, b⟩
+  · rfl
+  · cases b
+    · simp [Presentation.shapingOK] at hs
+    · rfl
+
+/-- A deviating presentation is not its canonical presentation. -/
+theorem ne_canonical_of_deviates (d : Decl) (p : Presentation) (hr : p.deviates d = true) :
+    canonical d p.view ≠ p := by
+  intro h
+  have := congrArg refProj h
+  rw [refProj_canonical] at this
+  rw [(deviates_false_iff d p).mpr this.symm] at hr
+  exact Bool.false_ne_true hr
 
 /-! ### Presentation policies -/
 
@@ -638,11 +861,12 @@ inductive Policy
   | shapeUndisclosed
   | selectiveDisclosure
   | interfereByWant
+  | nudgeByWant
   deriving DecidableEq, Repr
 
 def Policy.present (d : Decl) (pol : Policy) (w : Answer) : Presentation :=
   let base : Presentation :=
-    ⟨some w, d.convention, d.slot, d.menu, d.inquiry, none, d.disclosure.getD .full, false⟩
+    ⟨some w, d.convention, d.slot, d.menu, d.inquiry, none, d.rule.apply d.pool, false, none⟩
   match pol with
   | .honest => base
   | .frameByWant => { base with framing := .slant w }
@@ -651,28 +875,27 @@ def Policy.present (d : Decl) (pol : Policy) (w : Answer) : Presentation :=
   | .ignoreByWant => { base with inquired := !w }
   | .shapeDisclosed => { base with shaping := some (w, true) }
   | .shapeUndisclosed => { base with shaping := some (w, false) }
-  | .selectiveDisclosure => { base with disclosure := .favourable }
+  | .selectiveDisclosure => { base with disclosure := d.pool.filter id }
   | .interfereByWant => { base with interfere := w }
-
-/-- A self-checkable deviation from the declared protocol: a discrete act of the agent's
-against a declared clause.  Shaping through the world is not one. -/
-def Presentation.deviates (d : Decl) (p : Presentation) : Bool :=
-  p.framing != d.convention || p.slot != d.slot || p.menu != d.menu ||
-    p.inquired != d.inquiry || p.interfere ||
-    (match d.disclosure with | some o => p.disclosure != o | none => false)
+  | .nudgeByWant => { base with recommend := none, nudge := some w }
 
 /-! ### Her evaluator as a state -/
 
-/-- Her program: a verdict of her own, or trust — follow the recommendation. -/
+/-- Her program: a verdict of her own; trust — follow the recommendation; free choice
+between the two permissible options, taking `a`; or taking whatever she is nudged to. -/
 inductive Prog
   | own (a : Answer)
   | follow
+  | free (a : Answer)
+  | nudged
   deriving DecidableEq, Repr
 
 def Prog.decideOn (p : Prog) (pres : Presentation) : Answer :=
   match p with
   | .own a => a
   | .follow => pres.recommend.getD false
+  | .free a => a
+  | .nudged => pres.nudge.getD false
 
 /-- Record event kinds with a license slot: consultation events, and amendments and
 allocation changes each naming the prior authority act that licenses it.  The license sort
@@ -708,14 +931,17 @@ theorem evalAt_const {L : Type} (p : Prog) (ks : List (EventKind L))
 /-! ### The model -/
 
 /-- One consultation model: the declared protocol, the agent's policy per round, her
-committed evaluator, a third party's advice in the first round, and her condition in the
-first round.  Round `i` presents at event `2i+1` and responds at event `2i+2`. -/
+committed evaluator, a third party's advice in the first round, her condition in the first
+round, whether trust in the agent is among her grounds, and the true answer.  Round `i`
+presents at event `2i+1` and responds at event `2i+2`. -/
 structure Model where
   decl : Decl
   policies : List Policy
   prog : Prog
   third : Option Answer
   impaired : Bool
+  trusts : Bool
+  truth : Answer
   deriving DecidableEq
 
 /-- A run: the model under one wanted answer. -/
@@ -736,33 +962,50 @@ def verdictAt (ω : Run) (i : ℕ) : Option Answer :=
   | none => none
   | some p => if admittedAt ω i then some (ω.1.prog.decideOn p) else none
 
-/-- The trace entries at an event: the presentation (and third-party advice) at a present
-event, her admitted verdict at a respond event. -/
+/-- The trace entries: the presentation (and third-party advice) at a present event, her
+admitted verdict at a respond event, her trust at the anchor event. -/
 inductive Entry
   | pres (p : Presentation)
   | advice (a : Answer)
   | verdict (a : Answer)
+  | trust
   deriving DecidableEq, Repr
 
+def thirdAt (ω : Run) (i : ℕ) : List (Party × Entry) :=
+  if i = 0 then (match ω.1.third with | some a => [(Party.third, Entry.advice a)] | none => [])
+  else []
+
 def entriesAt (ω : Run) : ℕ → List (Party × Entry)
-  | 0 => []
+  | 0 => if ω.1.trusts then [(Party.principal, Entry.trust)] else []
   | e + 1 =>
     let i := e / 2
     if e % 2 = 0 then
-      (match presAt ω i with | some p => [(Party.agent, Entry.pres p)] | none => []) ++
-        (match i, ω.1.third with | 0, some a => [(Party.third, Entry.advice a)] | _, _ => [])
+      (match presAt ω i with | some p => [(Party.agent, Entry.pres p)] | none => []) ++ thirdAt ω i
     else
       match verdictAt ω i with | some a => [(Party.principal, Entry.verdict a)] | none => []
 
 /-- The declared inputs entered at an event. -/
 def declAt (ω : Run) : ℕ → Option DeclView
   | 0 => none
-  | e + 1 => if e % 2 = 0 then (presAt ω (e / 2)).map (Presentation.view ω.1.decl) else none
+  | e + 1 => if e % 2 = 0 then (presAt ω (e / 2)).map Presentation.view else none
 
 /-- Her admitted verdict at an event. -/
 def vAt (ω : Run) : ℕ → Option Answer
   | 0 => none
   | e + 1 => if e % 2 = 0 then none else verdictAt ω (e / 2)
+
+theorem entriesAt_zero (ω : Run) :
+    entriesAt ω 0 = if ω.1.trusts then [(Party.principal, Entry.trust)] else [] := rfl
+theorem entriesAt_one (ω : Run) :
+    entriesAt ω 1 = (match presAt ω 0 with | some p => [(Party.agent, Entry.pres p)] | none => [])
+      ++ thirdAt ω 0 := rfl
+theorem entriesAt_two (ω : Run) :
+    entriesAt ω 2 = match verdictAt ω 0 with
+      | some a => [(Party.principal, Entry.verdict a)] | none => [] := rfl
+theorem declAt_one (ω : Run) : declAt ω 1 = (presAt ω 0).map Presentation.view := rfl
+theorem declAt_two (ω : Run) : declAt ω 2 = none := rfl
+theorem vAt_one (ω : Run) : vAt ω 1 = none := rfl
+theorem vAt_two (ω : Run) : vAt ω 2 = verdictAt ω 0 := rfl
 
 /-- The trace interface of the model. -/
 def interface : TraceInterface Run Party Entry := ⟨entriesAt, .agent, .principal⟩
@@ -776,6 +1019,43 @@ canonical presentation; nothing is declared for a third party. -/
 def ref (M : Model) : Party → Option DeclView → Unit → List Entry
   | .agent, some v, _ => [.pres (canonical M.decl v)]
   | _, _, _ => []
+
+/-! ### The license -/
+
+/-- Trust in the agent is among the grounds. -/
+def trusted (g : Party → List Entry) : Bool := decide (Entry.trust ∈ g Party.principal)
+
+/-- The verdicts the grounds license, for a model: no verdict is always fine; her committed
+program's own verdict; either answer under free choice or a nudged choice (both
+permissible); the followed recommendation when trust is among the grounds. -/
+def licensedB (M : Model) (g : Party → List Entry) : Option Answer → Bool
+  | none => true
+  | some v =>
+    (match M.prog with
+      | .own a => v == a
+      | .free _ => true
+      | .nudged => true
+      | .follow => false) ||
+    (trusted g && (g Party.agent).any fun x =>
+      match x with
+      | .pres p => p.recommend.getD false == v
+      | _ => false)
+
+def licensed (M : Model) (g : Party → List Entry) : Set (Option Answer) :=
+  {v | licensedB M g v = true}
+
+instance (M : Model) (g : Party → List Entry) : DecidablePred (· ∈ licensed M g) :=
+  fun v => decEq (licensedB M g v) true
+
+/-- Under free choice the same grounds license both answers. -/
+theorem free_licenses_both (M : Model) (a : Answer) (hM : M.prog = .free a) (g : Party → List Entry) :
+    some false ∈ licensed M g ∧ some true ∈ licensed M g := by
+  simp [licensed, licensedB, hM]
+
+/-- Following without trust among the grounds is not licensed by her own program. -/
+theorem follow_needs_trust (M : Model) (hM : M.prog = .follow) (g : Party → List Entry)
+    (hg : trusted g = false) (v : Answer) : some v ∉ licensed M g := by
+  simp [licensed, licensedB, hM, hg]
 
 /-! ### The record substrate -/
 
@@ -900,11 +1180,6 @@ abbrev St := ObligationState consultProtocol anchor
 
 def state₀ : St := initial.state
 
-/-- The state after a step, by propagation. -/
-def after {A B : Boundary (Fin 2) Unit} (O : St) (hO : O.boundary = A)
-    (step : Step consultProtocol anchor A B) : St :=
-  ⟨B, Step.propagate consultProtocol step (hO ▸ O.account)⟩
-
 /-- The one-round record with her answer admitted at event `2`. -/
 def stAdmit (a : Answer) : St :=
   ⟨bd [0, 1, 2] 1, Step.propagate consultProtocol (admit [0, 1] 2 1 a (by decide))
@@ -949,10 +1224,10 @@ def evTwo (a b : Answer) : Evolution consultProtocol anchor state₀ (stTwo a b)
 
 instance (M : Model) : DecidablePred (· ∈ (frame M).D) := fun _ => isTrue trivial
 
-/-- The segment predicate of a model, on a given evolution: authorship and transparency at
-its steps, openness at its states.  Decidable. -/
+/-- The segment predicate of a model, on a given evolution: relational authorship on the
+whole prefix and transparency at its steps, openness at its states.  Decidable. -/
 def LegitOn (M : Model) {O₀ O₁ : St} (ev : Evolution consultProtocol anchor O₀ O₁) : Prop :=
-  (∀ s ∈ ev.steps, ∀ z : Unit, GroundedAt interface (frame M) s.1 s.2 z) ∧
+  (∀ s ∈ ev.steps, ∀ z : Unit, LicensedWhole interface (frame M) (licensed M) s.1 s.2 z) ∧
     ev.AllStates (OpenAt semOpen) ∧ (∀ s ∈ ev.steps, TransparentAt interface (frame M) (ref M) s.2)
 
 instance (M : Model) {O₀ O₁ : St} (ev : Evolution consultProtocol anchor O₀ O₁) :
@@ -961,8 +1236,8 @@ instance (M : Model) {O₀ O₁ : St} (ev : Evolution consultProtocol anchor O�
 
 /-- A model's branch is counted from a decided `LegitOn`. -/
 def counted_of_legitOn (M : Model) {O₀ O₁ : St} (ev : Evolution consultProtocol anchor O₀ O₁)
-    (h : LegitOn M ev) : Counted interface (frame M) semOpen (ref M) O₀ O₁ :=
-  ⟨⟨⟨ev, h.1⟩, ⟨h.2.1, h.2.2⟩⟩⟩
+    (h : LegitOn M ev) : Counted interface (frame M) (licensed M) semOpen (ref M) O₀ O₁ :=
+  ⟨⟨⟨ev, fun s hs z => licensedAt_of_whole (h.1 s hs z)⟩, ⟨h.2.1, h.2.2⟩⟩⟩
 
 /-- The steps of every evolution from `state₀` to a one-round admitted state. -/
 theorem steps_admit (a : Answer) (ev : Evolution consultProtocol anchor state₀ (stAdmit a)) :
@@ -986,28 +1261,144 @@ theorem steps_second (a b : Answer)
 through the admitted or the void record. -/
 theorem not_counted_admit (M : Model) (a : Answer)
     (h : ¬ TransparentAt interface (frame M) (ref M) 1) :
-    ¬ Counted interface (frame M) semOpen (ref M) state₀ (stAdmit a) :=
+    ¬ Counted interface (frame M) (licensed M) semOpen (ref M) state₀ (stAdmit a) :=
   not_counted_of_step ([0], 1) (fun ev => by rw [steps_admit]; simp) (Or.inr h)
 
 theorem not_counted_void (M : Model)
     (h : ¬ TransparentAt interface (frame M) (ref M) 1) :
-    ¬ Counted interface (frame M) semOpen (ref M) state₀ stVoid :=
+    ¬ Counted interface (frame M) (licensed M) semOpen (ref M) state₀ stVoid :=
   not_counted_of_step ([0], 1) (fun ev => by rw [steps_void]; simp) (Or.inr h)
 
 theorem not_counted_two (M : Model) (a b : Answer)
     (h : ¬ TransparentAt interface (frame M) (ref M) 1) :
-    ¬ Counted interface (frame M) semOpen (ref M) state₀ (stTwo a b) :=
+    ¬ Counted interface (frame M) (licensed M) semOpen (ref M) state₀ (stTwo a b) :=
   not_counted_of_step ([0], 1) (fun ev => by rw [steps_two]; simp) (Or.inr h)
+
+/-! ### Two theorems over the class -/
+
+/-- **Selection dependence taints.**  For any model whose first-round policy puts a
+reference-fixed dimension of the presentation — framing, slot, menu, inquiry, the selection
+from the declared pool, interference, a nudge — off its declared value at some wanted
+answer, the first consultation is not transparent, so no segment through it is counted. -/
+theorem class_taint (M : Model) (pol : Policy) (rest : List Policy)
+    (hpol : M.policies = pol :: rest) (w : Answer)
+    (hdev : (pol.present M.decl w).deviates M.decl = true) :
+    ¬ TransparentAt interface (frame M) (ref M) 1 := by
+  intro ht
+  have h := ht Party.agent (by decide) w (Set.mem_univ _) ()
+  have hthird : sourced Party.agent (thirdAt (M, w) 0) = [] := by
+    rcases hM : M.third with _ | a <;> simp [thirdAt, sourced, hM]
+  simp only [frame, interface, id_eq, entriesAt_one, declAt_one, presAt, hpol,
+    List.getElem?_cons_zero, Option.map_some, sourced_append, ref, hthird] at h
+  simp [sourced] at h
+  exact ne_canonical_of_deviates M.decl _ hdev h.symm
+
+/-- A reference-fixed dimension that varies with the wanted answer is off its declared value
+at one of the two answers. -/
+theorem deviates_of_depends (d : Decl) (pol : Policy)
+    (h : refProj (pol.present d false) ≠ refProj (pol.present d true)) :
+    (pol.present d false).deviates d = true ∨ (pol.present d true).deviates d = true := by
+  cases hb1 : (pol.present d false).deviates d
+  · cases hb2 : (pol.present d true).deviates d
+    · exact absurd (((deviates_false_iff _ _).mp hb1).trans
+        ((deviates_false_iff _ _).mp hb2).symm) h
+    · exact Or.inr rfl
+  · exact Or.inl rfl
+
+theorem class_taint_admit (M : Model) (pol : Policy) (rest : List Policy)
+    (hpol : M.policies = pol :: rest) (w : Answer)
+    (hdev : (pol.present M.decl w).deviates M.decl = true) (a : Answer) :
+    ¬ Counted interface (frame M) (licensed M) semOpen (ref M) state₀ (stAdmit a) :=
+  not_counted_admit M a (class_taint M pol rest hpol w hdev)
+
+theorem class_taint_void (M : Model) (pol : Policy) (rest : List Policy)
+    (hpol : M.policies = pol :: rest) (w : Answer)
+    (hdev : (pol.present M.decl w).deviates M.decl = true) :
+    ¬ Counted interface (frame M) (licensed M) semOpen (ref M) state₀ stVoid :=
+  not_counted_void M (class_taint M pol rest hpol w hdev)
+
+/-- Every state is open under `semOpen`. -/
+theorem open_any (O : St) : OpenAt semOpen O := by
+  have h : OpenAt semOpen state₀ := by decide
+  exact fun c => h c
+
+theorem allOpen_admit (a : Answer) : (evAdmit a).AllStates (OpenAt semOpen) :=
+  ⟨open_any _, open_any _, open_any _⟩
+
+/-- **Protocol conformance at the consultation.**  For any model whose first-round policy
+conforms on the reference-fixed dimensions at every wanted answer and shapes only
+disclosedly, with no third-party entry, no impairment, and trust among her grounds where
+her program follows, the first-round segment through the admitted record is counted. -/
+theorem class_conform (M : Model) (pol : Policy) (rest : List Policy)
+    (hpol : M.policies = pol :: rest)
+    (hdev : ∀ w, (pol.present M.decl w).deviates M.decl = false)
+    (hsh : ∀ w, (pol.present M.decl w).shapingOK = true)
+    (hthird : M.third = none) (himp : M.impaired = false)
+    (htrust : M.prog = .follow → M.trusts = true) (a : Answer) :
+    Counted interface (frame M) (licensed M) semOpen (ref M) state₀ (stAdmit a) := by
+  apply counted_of_legitOn M (evAdmit a)
+  have hsteps : (evAdmit a).steps = [([0], 1), ([0, 1], 2)] := rfl
+  have hint : ∀ w, (pol.present M.decl w).interfere = false := by
+    intro w
+    have := (deviates_false_iff _ _).mp (hdev w)
+    simp only [refProj, refValues, Prod.mk.injEq] at this
+    exact this.2.2.2.2.2.1
+  have hpres : ∀ w, presAt (M, w) 0 = some (pol.present M.decl w) := by
+    intro w; simp [presAt, hpol]
+  have hadm : ∀ w, admittedAt (M, w) 0 = true := by
+    intro w; simp [admittedAt, hpres, hint, himp]
+  have hverdict : ∀ w, verdictAt (M, w) 0 = some (M.prog.decideOn (pol.present M.decl w)) := by
+    intro w; simp [verdictAt, hpres, hadm]
+  have hparts : ∀ w, interface.parts (M, w) [0, 1] = fun p =>
+      sourced p ((if M.trusts then [(Party.principal, Entry.trust)] else []) ++
+        [(Party.agent, Entry.pres (pol.present M.decl w))]) := by
+    intro w
+    funext p
+    simp [interface, TraceInterface.parts, TraceInterface.atHistory, entriesAt_zero, entriesAt_one,
+      hpres, thirdAt, hthird]
+  refine ⟨?_, allOpen_admit a, ?_⟩
+  · rw [hsteps]
+    intro s hs z w _
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hs
+    rcases hs with rfl | rfl
+    · simp [frame, vAt_one, licensed, licensedB]
+    · simp only [frame, id_eq, vAt_two, hverdict, licensed, Set.mem_setOf_eq, hparts]
+      cases hprog : M.prog with
+      | own b => simp [licensedB, Prog.decideOn, hprog]
+      | free b => simp [licensedB, hprog]
+      | nudged => simp [licensedB, hprog]
+      | follow =>
+        have ht := htrust hprog
+        simp [licensedB, trusted, sourced, Prog.decideOn, ht, hprog]
+  · rw [hsteps]
+    intro s hs
+    simp only [List.mem_cons, List.not_mem_nil, or_false] at hs
+    intro p hp w _ z
+    rcases hs with rfl | rfl
+    · cases p with
+      | principal => exact absurd rfl hp
+      | agent =>
+        simp [frame, interface, id_eq, entriesAt_one, declAt_one, hpres, thirdAt, hthird, sourced,
+          ref, canonical_view_eq M.decl _ (hdev w) (hsh w)]
+      | third =>
+        simp [frame, interface, id_eq, entriesAt_one, hpres, thirdAt, hthird, sourced, ref]
+    · cases p with
+      | principal => exact absurd rfl hp
+      | agent =>
+        simp [frame, interface, id_eq, entriesAt_two, declAt_two, ref, hverdict, sourced]
+      | third =>
+        simp [frame, interface, id_eq, entriesAt_two, ref, hverdict, sourced]
 
 /-! ### The rows -/
 
 namespace Rows
 
 /-- The default declared protocol: neutral framing, asked by day, both options, inquiry in
-scope, full disclosure. -/
-def decl : Decl := ⟨.neutral, .day, .both, true, some .full⟩
+scope, a three-outcome pool shown whole. -/
+def decl : Decl := ⟨.neutral, .day, .both, true, [true, false, true], .all⟩
 
-def one (pol : Policy) (prog : Prog) : Model := ⟨decl, [pol], prog, none, false⟩
+def one (pol : Policy) (prog : Prog) : Model :=
+  ⟨decl, [pol], prog, none, false, false, false⟩
 
 def row1 : Model := one .honest (.own false)
 def row2 : Model := one .frameByWant (.own false)
@@ -1015,74 +1406,88 @@ def row3 : Model := one .timeByWant (.own false)
 def row4 : Model := one .menuByWant (.own false)
 def row5 : Model := one .ignoreByWant (.own false)
 /-- A slanted convention she agreed to, applied uniformly. -/
-def row6 : Model := ⟨⟨.slant true, .day, .both, true, some .full⟩, [.honest], .own false, none, false⟩
+def row6 : Model := ⟨⟨.slant true, .day, .both, true, [true, false, true], .all⟩, [.honest],
+  .own false, none, false, false, false⟩
 def row7 : Model := one .shapeDisclosed (.own false)
 def row8 : Model := one .shapeUndisclosed (.own false)
-def row9 : Model := one .honest .follow
-def row10 : Model := one .selectiveDisclosure .follow
-def row11 : Model := ⟨decl, [.honest], .own false, some true, false⟩
-def row12 : Model := ⟨decl, [.honest], .own false, none, true⟩
-def row14 : Model := ⟨decl, [.frameByWant, .honest], .own false, none, false⟩
+/-- Legitimately formed trust, followed: trust is among her grounds. -/
+def row9 : Model := ⟨decl, [.honest], .follow, none, false, true, false⟩
+/-- Trust manufactured by selective disclosure from the declared pool, then followed. -/
+def row10 : Model := ⟨decl, [.selectiveDisclosure], .follow, none, false, true, false⟩
+def row11 : Model := ⟨decl, [.honest], .own false, some true, false, false, false⟩
+def row12 : Model := ⟨decl, [.honest], .own false, none, true, false, false⟩
+def row14 : Model := ⟨decl, [.frameByWant, .honest], .own false, none, false, false, false⟩
 def row15 : Model := one .interfereByWant (.own false)
-/-- Row 10 without a declared disclosure obligation. -/
-def row10' : Model := ⟨⟨.neutral, .day, .both, true, none⟩, [.selectiveDisclosure], .follow, none, false⟩
+/-- Selective disclosure from the declared pool, no selection rule declared. -/
+def row16 : Model := one .selectiveDisclosure (.own false)
+/-- Selection by a declared rule (the two most recent), applied uniformly. -/
+def row17 : Model := ⟨⟨.neutral, .day, .both, true, [true, false, true], .recent 2⟩, [.honest],
+  .own false, none, false, false, false⟩
+/-- Selection by something else under a declared rule. -/
+def row17' : Model := ⟨⟨.neutral, .day, .both, true, [true, false, true], .recent 2⟩,
+  [.selectiveDisclosure], .own false, none, false, false, false⟩
+/-- Permissive choice: the same grounds license A and B; she picks B on her own. -/
+def row18 : Model := one .honest (.free true)
+/-- Permissive choice where the agent's undeclared nudge decides. -/
+def row19 : Model := one .nudgeByWant .nudged
+/-- A false recommendation through the declared channel: the true answer is A, the agent
+recommends what it wants. -/
+def row20 : Model := ⟨decl, [.honest], .own false, none, false, false, false⟩
+/-- Following with no trust among the grounds. -/
+def followUntrusted : Model := one .honest .follow
 
 /-- Row 1: honest, disclosed persuasion counts. -/
-theorem r1 : Counted interface (frame row1) semOpen (ref row1) state₀ (stAdmit false) :=
+theorem r1 : Counted interface (frame row1) (licensed row1) semOpen (ref row1) state₀ (stAdmit false) :=
   counted_of_legitOn row1 (evAdmit false) (by decide)
 
-theorem r2 : ¬ Counted interface (frame row2) semOpen (ref row2) state₀ (stAdmit false) :=
+theorem r2 : ¬ Counted interface (frame row2) (licensed row2) semOpen (ref row2) state₀ (stAdmit false) :=
   not_counted_admit row2 false (by decide)
 
-theorem r3 : ¬ Counted interface (frame row3) semOpen (ref row3) state₀ (stAdmit false) :=
+theorem r3 : ¬ Counted interface (frame row3) (licensed row3) semOpen (ref row3) state₀ (stAdmit false) :=
   not_counted_admit row3 false (by decide)
 
-theorem r4 : ¬ Counted interface (frame row4) semOpen (ref row4) state₀ (stAdmit false) :=
+theorem r4 : ¬ Counted interface (frame row4) (licensed row4) semOpen (ref row4) state₀ (stAdmit false) :=
   not_counted_admit row4 false (by decide)
 
-theorem r5 : ¬ Counted interface (frame row5) semOpen (ref row5) state₀ (stAdmit false) :=
+theorem r5 : ¬ Counted interface (frame row5) (licensed row5) semOpen (ref row5) state₀ (stAdmit false) :=
   not_counted_admit row5 false (by decide)
 
-theorem r6 : Counted interface (frame row6) semOpen (ref row6) state₀ (stAdmit false) :=
+theorem r6 : Counted interface (frame row6) (licensed row6) semOpen (ref row6) state₀ (stAdmit false) :=
   counted_of_legitOn row6 (evAdmit false) (by decide)
 
-theorem r7 : Counted interface (frame row7) semOpen (ref row7) state₀ (stAdmit false) :=
+theorem r7 : Counted interface (frame row7) (licensed row7) semOpen (ref row7) state₀ (stAdmit false) :=
   counted_of_legitOn row7 (evAdmit false) (by decide)
 
-theorem r8 : ¬ Counted interface (frame row8) semOpen (ref row8) state₀ (stAdmit false) :=
+theorem r8 : ¬ Counted interface (frame row8) (licensed row8) semOpen (ref row8) state₀ (stAdmit false) :=
   not_counted_admit row8 false (by decide)
 
-/-- Row 9: rubber-stamping counts; her verdict follows the recommendation. -/
-theorem r9 : Counted interface (frame row9) semOpen (ref row9) state₀ (stAdmit true) ∧
+/-- Row 9: rubber-stamping counts; her verdict follows the recommendation, licensed by the
+trust among her grounds. -/
+theorem r9 : Counted interface (frame row9) (licensed row9) semOpen (ref row9) state₀ (stAdmit true) ∧
     vAt (row9, true) 2 = some true :=
   ⟨counted_of_legitOn row9 (evAdmit true) (by decide), by decide⟩
 
-theorem r10 : ¬ Counted interface (frame row10) semOpen (ref row10) state₀ (stAdmit true) :=
+theorem r10 : ¬ Counted interface (frame row10) (licensed row10) semOpen (ref row10) state₀ (stAdmit true) :=
   not_counted_admit row10 true (by decide)
 
-/-- Row 10 without the declared obligation: selective disclosure passes through the declared
-channel and counts. -/
-theorem r10' : Counted interface (frame row10') semOpen (ref row10') state₀ (stAdmit true) :=
-  counted_of_legitOn row10' (evAdmit true) (by decide)
-
-theorem r11 : ¬ Counted interface (frame row11) semOpen (ref row11) state₀ (stAdmit false) :=
+theorem r11 : ¬ Counted interface (frame row11) (licensed row11) semOpen (ref row11) state₀ (stAdmit false) :=
   not_counted_admit row11 false (by decide)
 
 /-- Row 12: her impaired response is not admitted; the segment through the fallback's
 closure is legitimate, and the handling is the void fallback. -/
-theorem r12 : Counted interface (frame row12) semOpen (ref row12) state₀ stVoid ∧
+theorem r12 : Counted interface (frame row12) (licensed row12) semOpen (ref row12) state₀ stVoid ∧
     admittedAt (row12, false) 0 = false ∧
-    ∀ ord, handlingOf interface (frame row12) semOpen (ref row12) state₀ stVoid false ord =
-      .voidFallback ord :=
+    ∀ ord, handlingOf interface (frame row12) (licensed row12) semOpen (ref row12) state₀ stVoid
+      false ord = .voidFallback ord :=
   have hc := counted_of_legitOn row12 evVoid (by decide)
-  ⟨hc, by decide, fun ord => handlingOf_void _ _ _ _ _ _ hc ord⟩
+  ⟨hc, by decide, fun ord => handlingOf_void _ _ _ _ _ _ _ hc ord⟩
 
 /-- Row 14, the restart property: the first round taints every segment from `state₀`, and
 the segment of the second round alone counts. -/
 theorem r14 :
-    ¬ Counted interface (frame row14) semOpen (ref row14) state₀ (stAdmit false) ∧
-    ¬ Counted interface (frame row14) semOpen (ref row14) state₀ (stTwo false false) ∧
-    Counted interface (frame row14) semOpen (ref row14) (stAdmit false) (stTwo false false) :=
+    ¬ Counted interface (frame row14) (licensed row14) semOpen (ref row14) state₀ (stAdmit false) ∧
+    ¬ Counted interface (frame row14) (licensed row14) semOpen (ref row14) state₀ (stTwo false false) ∧
+    Counted interface (frame row14) (licensed row14) semOpen (ref row14) (stAdmit false) (stTwo false false) :=
   ⟨not_counted_admit row14 false (by decide), not_counted_two row14 false false (by decide),
     counted_of_legitOn row14 (evSecond false false) (by decide)⟩
 
@@ -1090,23 +1495,85 @@ theorem r14 :
 transparency failure at the first consultation, so no segment exists through the void
 record and the branch scores the window value, while the honest branch counts. -/
 theorem r15 (ord window : ℝ) :
-    ¬ Counted interface (frame row15) semOpen (ref row15) state₀ stVoid ∧
-    gatedValue interface (frame row15) semOpen (ref row15) state₀ stVoid ord window = window ∧
-    handlingOf interface (frame row15) semOpen (ref row15) state₀ stVoid false ord = .tainted ∧
-    gatedValue interface (frame row1) semOpen (ref row1) state₀ (stAdmit false) ord window = ord :=
+    ¬ Counted interface (frame row15) (licensed row15) semOpen (ref row15) state₀ stVoid ∧
+    gatedValue interface (frame row15) (licensed row15) semOpen (ref row15) state₀ stVoid ord window
+      = window ∧
+    handlingOf interface (frame row15) (licensed row15) semOpen (ref row15) state₀ stVoid false ord
+      = .tainted ∧
+    gatedValue interface (frame row1) (licensed row1) semOpen (ref row1) state₀ (stAdmit false) ord
+      window = ord :=
   have hn := not_counted_void row15 (by decide)
-  ⟨hn, gatedValue_of_not_counted _ _ _ _ _ _ hn ord window, handlingOf_tainted _ _ _ _ _ _ hn _ _,
-    gatedValue_of_counted _ _ _ _ _ _ r1 ord window⟩
+  ⟨hn, gatedValue_of_not_counted _ _ _ _ _ _ _ hn ord window,
+    handlingOf_tainted _ _ _ _ _ _ _ hn _ _, gatedValue_of_counted _ _ _ _ _ _ _ r1 ord window⟩
 
 /-- The routing exploit's values: the fallback the agent favours at `3`, her honest
 response at `1`, the window at `0` — the manipulated branch scores `0 < 1`. -/
 theorem routing :
-    gatedValue interface (frame row15) semOpen (ref row15) state₀ stVoid 3 0 <
-      gatedValue interface (frame row1) semOpen (ref row1) state₀ (stAdmit false) 1 0 := by
+    gatedValue interface (frame row15) (licensed row15) semOpen (ref row15) state₀ stVoid 3 0 <
+      gatedValue interface (frame row1) (licensed row1) semOpen (ref row1) state₀ (stAdmit false) 1 0 := by
   rw [(r15 3 0).2.1, (r15 1 0).2.2.2]; norm_num
 
-/-- The self-checkable deviations, per row, at the wanted answer `B`: rows 2–5, 10 and 15
-deviate from a declared clause; rows 8 and 11 do not, yet are tainted. -/
+/-- Row 16: selection from the declared pool with no rule declared is a transparency failure
+(the selection), and a self-checkable deviation. -/
+theorem r16 : ¬ Counted interface (frame row16) (licensed row16) semOpen (ref row16) state₀ (stAdmit false) ∧
+    (Policy.selectiveDisclosure.present decl true).deviates decl = true :=
+  ⟨not_counted_admit row16 false (by decide), by decide⟩
+
+/-- Row 17: selection by the declared rule counts; selection by anything else under the rule
+is tainted and a deviation. -/
+theorem r17 : Counted interface (frame row17) (licensed row17) semOpen (ref row17) state₀ (stAdmit false) ∧
+    ¬ Counted interface (frame row17') (licensed row17') semOpen (ref row17') state₀ (stAdmit false) ∧
+    (Policy.selectiveDisclosure.present row17'.decl true).deviates row17'.decl = true :=
+  ⟨counted_of_legitOn row17 (evAdmit false) (by decide), not_counted_admit row17' false (by decide),
+    by decide⟩
+
+/-- Row 18: permissive choice — the same grounds license both answers and she picks B on
+her own; counts by relational authorship. -/
+theorem r18 : Counted interface (frame row18) (licensed row18) semOpen (ref row18) state₀ (stAdmit true) ∧
+    vAt (row18, false) 2 = some true ∧
+    (∀ g, some false ∈ licensed row18 g ∧ some true ∈ licensed row18 g) :=
+  ⟨counted_of_legitOn row18 (evAdmit true) (by decide), by decide,
+    fun g => free_licenses_both row18 true rfl g⟩
+
+/-- Row 19: permissive choice decided by the agent's undeclared nudge — both verdicts are
+licensed, authorship holds, and the step fails transparency by the tie-break lemma. -/
+theorem r19 : ¬ Counted interface (frame row19) (licensed row19) semOpen (ref row19) state₀ (stAdmit true) ∧
+    (∀ z, LicensedWhole interface (frame row19) (licensed row19) [0, 1] 2 z) ∧
+    vAt (row19, false) 2 ≠ vAt (row19, true) 2 ∧
+    declAt (row19, false) 1 = declAt (row19, true) 1 ∧
+    ¬ TransparentAt interface (frame row19) (ref row19) 1 :=
+  have ht : ¬ TransparentAt interface (frame row19) (ref row19) 1 :=
+    tiebreak_transparency (I := interface) (F := frame row19) Party.agent (by decide) false true
+      (Set.mem_univ _) (Set.mem_univ _) () (by decide) (by decide)
+  ⟨not_counted_admit row19 true ht, by decide, by decide, by decide, ht⟩
+
+/-- Row 20: a false recommendation through the declared channel counts under legitimacy;
+the falsity is flagged and lies outside it. -/
+theorem r20 : Counted interface (frame row20) (licensed row20) semOpen (ref row20) state₀ (stAdmit false) ∧
+    (Policy.honest.present decl true).recommend ≠ some row20.truth :=
+  ⟨counted_of_legitOn row20 (evAdmit false) (by decide), by decide⟩
+
+/-- Following without trust among the grounds fails relational authorship at the response,
+whatever the selection of grounds: the selection can only shrink them. -/
+theorem follow_untrusted :
+    ¬ LicensedWhole interface (frame followUntrusted) (licensed followUntrusted) [0, 1] 2 () ∧
+    ¬ Counted interface (frame followUntrusted) (licensed followUntrusted) semOpen
+      (ref followUntrusted) state₀ (stAdmit true) := by
+  refine ⟨by decide, ?_⟩
+  refine not_counted_of_step ([0, 1], 2) (fun ev => by rw [steps_admit]; simp) (Or.inl ⟨(), ?_⟩)
+  rintro ⟨sel, hsub, hlic⟩
+  have h := hlic true (Set.mem_univ _)
+  have hV : (frame followUntrusted).V ((frame followUntrusted).β true ()) 2 = some true := by decide
+  rw [hV] at h
+  have hg : ∀ g, some true ∈ licensed followUntrusted g → Entry.trust ∈ g Party.principal := by
+    intro g hg
+    simp [licensed, licensedB, followUntrusted, one, trusted] at hg
+    exact hg.1
+  have hmem := hsub _ Party.principal Entry.trust (hg _ h)
+  exact absurd hmem (by decide)
+
+/-- The self-checkable deviations, per row, at the wanted answer `B`: rows 2–5, 10, 15, 16,
+17′ and 19 deviate from a declared clause; rows 8 and 11 do not, yet are tainted. -/
 theorem deviation_boundary :
     (Policy.frameByWant.present decl true).deviates decl = true ∧
     (Policy.timeByWant.present decl true).deviates decl = true ∧
@@ -1114,6 +1581,7 @@ theorem deviation_boundary :
     (Policy.ignoreByWant.present decl true).deviates decl = true ∧
     (Policy.selectiveDisclosure.present decl true).deviates decl = true ∧
     (Policy.interfereByWant.present decl true).deviates decl = true ∧
+    (Policy.nudgeByWant.present decl true).deviates decl = true ∧
     (Policy.shapeUndisclosed.present decl true).deviates decl = false ∧
     (Policy.honest.present decl true).deviates decl = false := by
   decide
@@ -1123,6 +1591,13 @@ theorem amendment :
     evalAt (L := Unit) .follow [.present, .respond, .amend () (.own true), .present] = .own true ∧
     evalAt (L := Unit) .follow [.present, .respond, .present, .respond] = .follow := by
   decide
+
+/-- The class theorems at the rows: row 1 by conformance, row 2 by dependence. -/
+theorem class_at_rows :
+    Counted interface (frame row1) (licensed row1) semOpen (ref row1) state₀ (stAdmit false) ∧
+    ¬ Counted interface (frame row2) (licensed row2) semOpen (ref row2) state₀ (stAdmit false) :=
+  ⟨class_conform row1 .honest [] rfl (by decide) (by decide) rfl rfl (by decide) false,
+    class_taint_admit row2 .frameByWant [] rfl true (by decide) false⟩
 
 end Rows
 
@@ -1135,7 +1610,7 @@ section LI
 universe u v w
 variable {Occ : Type u} {Req : Type v} [DecidableEq Occ] {S : Protocol.{u, v, w} Occ Req}
   {anchor : Occ → Req} {Γ J R : Type} {Q Z Ω X ℛ 𝒱 Party E : Type*} [DecidableEq Party]
-variable (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+variable (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱) (Lic : (Party → List E) → Set 𝒱)
   (sem : OpennessSemantics S anchor Γ J R) (κ : Party → X → Z → List E)
   (O₀ O₁ : ObligationState S anchor)
 
@@ -1145,8 +1620,8 @@ with `g` the counted branch's normalized ordinary value, `0` when tainted. -/
 theorem gatedValue_affine (ord window D : ℝ) (hw : window ≤ 0) (hord : 0 ≤ ord) (hD : ord ≤ D)
     (hwD : window < D) :
     ∃ g : ℝ, 0 ≤ g ∧ g ≤ 1 ∧
-      gatedValue I F sem κ O₀ O₁ ord window = window + (D - window) * g := by
-  refine ⟨if Counted I F sem κ O₀ O₁ then (ord - window) / (D - window) else 0, ?_, ?_, ?_⟩
+      gatedValue I F Lic sem κ O₀ O₁ ord window = window + (D - window) * g := by
+  refine ⟨if Counted I F Lic sem κ O₀ O₁ then (ord - window) / (D - window) else 0, ?_, ?_, ?_⟩
   · split_ifs
     · exact div_nonneg (by linarith) (by linarith)
     · exact le_rfl
@@ -1217,15 +1692,25 @@ end Workspace.Deference.Contrib.GateIsLegitimacy
 #print axioms Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_trans
 #print axioms Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_determined
 #print axioms Workspace.Normativity.Contrib.OpenIntegrityEvolution.Evolution.steps_eq_of_history
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.licensedAt_of_whole
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.groundedAt_iff_mediated
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.grounded_implies_mediated
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.licensed_singleton_implies_grounded
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.grounded_implies_licensed
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.grounded_iff_licensed_singleton
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.tiebreak_transparency
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.tiebreak_of_licensed
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Segment.answerable
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Segment.trans
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Segment.prefix_of_view
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Segment.payload_of_view
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Segment.payload_of_view_singleton
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.not_counted_of_step
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.steps_forced
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.trivial_parts_true
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.lifted_grounded
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.ofFrameLevel
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.ofFrameLevel_grounded
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.gatedValue_eq
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.gatedValue_of_counted
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.gatedValue_of_not_counted
@@ -1235,7 +1720,12 @@ end Workspace.Deference.Contrib.GateIsLegitimacy
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.handlingOf_counted
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.handledValue_handlingOf
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.handled_gt_bypass
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.deviates_false_iff
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.canonical_view_eq
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.ne_canonical_of_deviates
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.evalAt_const
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.free_licenses_both
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.follow_needs_trust
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.forged_no_receipt
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.replay_no_receipt
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.impaired_no_receipt
@@ -1247,6 +1737,13 @@ end Workspace.Deference.Contrib.GateIsLegitimacy
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.not_counted_admit
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.not_counted_void
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.not_counted_two
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.class_taint
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.deviates_of_depends
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.class_taint_admit
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.class_taint_void
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.open_any
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.allOpen_admit
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.class_conform
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r1
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r2
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r3
@@ -1257,14 +1754,20 @@ end Workspace.Deference.Contrib.GateIsLegitimacy
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r8
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r9
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r10
-#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r10'
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r11
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r12
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r14
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r15
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.routing
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r16
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r17
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r18
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r19
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.r20
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.follow_untrusted
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.deviation_boundary
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.amendment
+#print axioms Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.class_at_rows
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.gatedValue_affine
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.li_gate_finite
 #print axioms Workspace.Deference.Contrib.GateIsLegitimacy.li_manip_le

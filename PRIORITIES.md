@@ -3027,19 +3027,21 @@ protocol-deviation clause to the floor's checkers beside the six declared violat
 
 The gate-is-legitimacy round (`projects/deference/rounds/2026-09-25-gate-is-legitimacy/`)
 states legitimacy on a reason-trace *interface* (`GateIsLegitimacy.TraceInterface`:
-step-indexed, source-attributed entries on the record's own clock), authorship as a
-grounding selection from the per-party pre-state prefix (`GroundedAt`), transparency on
-attributed entries per step (`TransparentAt`), record event kinds with a license slot
-(`EventKind L`), and her evaluator as a state updated only by licensed amendments
-(`evalAt`).  Its only instances are the opaque trace (`trivialInterface`) and the
+step-indexed, source-attributed entries on the record's own clock), authorship as
+relational — a grounding selection from the per-party pre-state prefix with the verdict in
+the set those grounds license, the license a parameter (`LicensedAt`; the extensional
+`GroundedAt` its singleton case) — transparency on attributed entries per step
+(`TransparentAt`), record event kinds with a license slot (`EventKind L`), and her
+evaluator as a state updated only by licensed amendments (`evalAt`).  Its only instances are the opaque trace (`trivialInterface`) and the
 consultation model (`Consult.interface`).  Supply the normativity side as an instance: the
 notebook of reason occurrences as `entriesAt`, transition certificates (grounds, license,
 lineage) as the grounding selection, the license sort as `L` with the allocation `J` as
 what licenses cite, and the stance as the evaluator state — without restating anything
-the round proved.  Two facts to meet on the way: authorship is extensional
-(`groundedAt_iff_mediated`), so a license permitting several verdicts on the same grounds
-fails it as stated; and `EventKind` is a type beside the Integrity `Step`, so binding the
-license slot to `Step.event` is the instance's work.
+the round proved.  Two facts to meet on the way: the license `Lic : grounds → Set 𝒱` is the instance's to
+supply from its transition certificates (a permissive license is the relational form's
+purpose; tie-breaking among licensed verdicts is transparency's, `tiebreak_transparency`);
+and `EventKind` is a type beside the Integrity `Step`, so binding the license slot to
+`Step.event` is the instance's work.
 
 *Deliverable shape:* the instance in Lean (a `TraceInterface` over the reason state, the
 grounding selection from transition certificates, `L` the license sort) with the rows of

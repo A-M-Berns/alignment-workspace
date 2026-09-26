@@ -4482,3 +4482,56 @@ round).
 on the agent's contributions only (row 11 would count); the verdict-indexed grounding map
 (does not imply the extensional form); a fresh legitimacy type beside the landed one
 without the special-case theorem.
+
+### 2026-09-25 — declared inputs are pools, not selections
+
+Maintainer decision (the follow-up to the gate-is-legitimacy round), closing the round's
+first outstanding action.  When the agent selects what to present from a larger body of
+material — a track record, the set of reasons, the options offered, the evidence
+investigated — the declared input is the **pool**, and the selection must follow the
+declared reference: a declared selection rule, or the whole pool where none is declared.
+The selected subset is never itself a declared input.  Selective disclosure is therefore a
+question of declared-input adequacy, not the content residual: from a declared pool it is
+tainted by transparency and is a self-checkable deviation, finite-time under
+`deviation_finite`; selection by a declared rule counts; selection by anything else under a
+declared rule is a deviation (`GateIsLegitimacy.Consult.Rows.r16`, `r17`; the consultation
+model's `Decl.pool`, `Decl.rule`, `canonical`).  The D.3 split is confirmed for the world
+channel: shaping the record itself through the world stays asymptotic.
+*Rejected alternatives:* the shown record as a declared input unless an obligation is
+declared (the round's first reading, which let selective disclosure count); selective
+disclosure as part of the content residual.
+
+### 2026-09-25 — authorship is relational under a license; the extensional statement is superseded
+
+Maintainer decision (the same follow-up), closing the round's second outstanding action.
+Authorship at a step is: there is a grounding selection from the pre-state prefix, **and**
+the verdict lies in the set of verdicts those grounds *license*, with
+`License : grounds → Set 𝒱` a parameter (`GateIsLegitimacy.LicensedAt`).  The extensional
+form (the verdict a function of the grounds; `V = F(R)`) is the case of singleton licenses:
+it implies the relational form and the two are equivalent under singleton licenses
+(`grounded_implies_licensed`, `licensed_singleton_implies_grounded`,
+`grounded_iff_licensed_singleton`).  This supersedes the extensional statement of authorship
+in the time-indexing entry above and the frame-level `V = F(R)` gloss, which stand as the
+singleton case.  **Tie-breaking is transparency's**: when several verdicts are licensed, a
+non-principal party's influence on which she takes must enter through the declared inputs,
+else the step fails transparency (`tiebreak_transparency`).  `payload_of_view` weakens to
+"both verdicts lie in the licensed set of the same grounds".  For the consultation model
+the license is data: her committed program's own verdict, both answers under free choice,
+and the followed recommendation when trust in the agent is among the grounds (`licensed`);
+following with no trust among the grounds fails authorship.  No row of the table changes
+classification; rows 18 and 19 exhibit the permissive case and its tie-break.
+*Rejected alternatives:* keeping the extensional form (it fails a principal who, given the
+same reasons, legitimately chooses between two permissible options); treating tie-breaking
+as an authorship condition.
+
+### 2026-09-25 — the content residual stays outside legitimacy
+
+Maintainer decision (the same follow-up), closing the round's third outstanding action.
+Legitimacy concerns how her deliberation came about, not whether what she was told is
+true.  A false recommendation through the declared recommendation channel counts under
+legitimacy (`GateIsLegitimacy.Consult.Rows.r20`) and stays a non-capture content-term
+matter and a disclosure-duty matter at the level of a violation.  Separated explicitly
+from the pool decision above: selection from a pool is legitimacy; truth of content is
+not.  Recorded on `wiki/Legitimacy.md` ("Scope, relationality, and what is not part of
+it").
+*Rejected alternative:* a truth condition inside legitimacy.
