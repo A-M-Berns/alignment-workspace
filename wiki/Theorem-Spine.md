@@ -999,7 +999,7 @@ influence by provenance (`influenced`, `influenced_iff_flag`, `rows_agree`); set
 under delay (`DAuction`, `cash_nonneg`, `delayed_overestimation`, `tests_le_of_lag`); the
 linear-allowance witness (`Witness.linear_allowance_constant_rate`).  `cross_block_bound`
 is removed.  **LEAN**.  Lean:
-[`BRIAFollowup.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/PINSHA/lean/Workspace/Deference/Contrib/BRIAFollowup.lean).
+[`BRIAFollowup.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/9e7f89d946e04022289e3aa5c6bf7c496a4d6bc3/lean/Workspace/Deference/Contrib/BRIAFollowup.lean).
 
 ## 11. The counterexamples that fix the shape
 
