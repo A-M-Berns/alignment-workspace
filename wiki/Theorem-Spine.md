@@ -1049,7 +1049,7 @@ the counterexample to the noise hypothesis on "not an incident" (`Witness.consta
 `sum_periodic5`, `nonincident_noise_linear`, `incidents_constant_rate`,
 `all_blocks_noise_bounded`, `nonincident_forces_linear`,
 `signed_bound_allows_constant_rate`, `constantRisk_facts`).  **LEAN**.  Lean:
-[`BRIAFollowup2.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f96c5fdecb0f5d8174eecdf95bd33e4cd47b58f7/lean/Workspace/Deference/Contrib/BRIAFollowup2.lean).
+[`BRIAFollowup2.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/71800ff0ff17e78758fd84316cd7ed9e4e25115e/lean/Workspace/Deference/Contrib/BRIAFollowup2.lean).
 
 ## 11. The counterexamples that fix the shape
 
