@@ -397,11 +397,13 @@ theorem incident_loss_pos : 0 < P.ϖ - P.D + P.w := by linarith [P.window]
 
 end LexParams
 
-/-- **The incident count against the allowance.**  With a per-block loss of at least `ℓ`
-on incident blocks and block weights at least `wmin`, the weighted incident count is at
-most the allowance distributed plus the underpromise mass of the other blocks — the
-number of incidents is bounded by the allowance, which replenishes, so it is the *rate*
-that is bounded, and only net of the credit the winners earn by underpromising. -/
+/-- **The incident count against the allowance, positive-part form.**  With a per-block
+loss of at least `ℓ` on incident blocks and block weights at least `wmin`, the weighted
+incident count is at most the allowance distributed plus the *positive part* of the
+other blocks' underpromise.  **Corrected by the follow-up (`BRIAFollowup`):** with noisy
+outcomes honest winners underpromise on a positive fraction of blocks, so that positive
+part is `Θ(K)` and this bound allows a *constant* incident rate; the signed form
+`incidents_le_signed` with the competitiveness hypothesis is the replacement. -/
 theorem incidents_le {n : ℕ} (a : Auction n) (hf : a.FeasibleOpening) (inc : ℕ → Bool)
     (ℓ wmin : ℝ) (hw : ∀ k, wmin ≤ a.w k) (hwmin : 0 < wmin) (hℓ : 0 < ℓ)
     (hinc : ∀ k, inc k = true → ℓ ≤ a.b k - a.G k) (K : ℕ) :
@@ -431,12 +433,6 @@ theorem incidents_le {n : ℕ} (a : Auction n) (hf : a.FeasibleOpening) (inc : �
     have := le_max_left (a.G k - a.b k) 0
     nlinarith
   linarith
-
-/-- **Cross-block recovery is bounded by the advantage's total**: a hypothesis that lost
-`ℓ` to an incident and monetizes an advantage `Δ_j` in each later block gains nothing net
-when `Σ Δ_j ≤ ℓ`. -/
-theorem cross_block_bound (ℓ : ℝ) (Δ : ℕ → ℝ) (m : ℕ) (hsum : ∑ j ∈ range m, Δ j ≤ ℓ) :
-    ∑ j ∈ range m, Δ j - ℓ ≤ 0 := by linarith
 
 /-- **The cross-block witness**: a persistent uncontested advantage recovers any incident
 loss over enough blocks. -/
@@ -1320,7 +1316,6 @@ end Witness
 #print axioms LexParams.incident_loss
 #print axioms LexParams.incident_loss_pos
 #print axioms incidents_le
-#print axioms cross_block_bound
 #print axioms cross_block_witness
 #print axioms debited
 #print axioms debited_overestimation

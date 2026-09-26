@@ -3182,6 +3182,23 @@ chosen path are calibrated — is a named hypothesis whose derivation from the i
 properties needs the drilled event as a security; the incident bound in `q` and the
 allowance is a conjecture.
 
+*2026-09-26 (BRIA-corrigibility follow-up):* the drill-calibration target is reduced to
+two external results the pinned library carries — affine unbiasedness from feedback
+(thm:wubaff, `LogicalInduction.lic_not_frequently_positive_feedback_return`) on the
+drilled-and-chosen weighting, and learning pseudorandom frequencies (thm:prand) for the
+schedule — entered by content as `BRIAFollowup.UnbiasedFromFeedback` and
+`DrillPseudorandom`; under them the shortfall price is unbiased on the chosen path
+(`chosen_path_unbiased`) and the low-price bin's blind-spot fraction is at most
+`θhi + γ` (`blind_rate_le`).  **What this item must now supply for them to fire:** the
+drilled-and-chosen indicator as a `P`-generable weighting, the feedback-trader emission
+for the shortfall sentences, and the deferral function under which each drill's outcome
+is settled before the next block is priced.  Two more companions filed here:
+**description faithfulness** (the priced sentences are about interface-supplied
+descriptions, `PricedInterface`; a proposer-written description passes,
+`misdescription_witness`) and **the actuator condition** as a well-formedness condition
+on `J` (`WellFormed`).  The rate of unbiasedness in the drilled mass, which the incident
+bound in `q` needs, is open.
+
 ### 102. BRIA's bids against the market: block claims as priced securities — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -3216,6 +3233,17 @@ residual as a security: the bid on it checked against prices, feasibility stated
 against them, and its settlement at a test as an assessed world.  The block-`0`
 feasibility of the default bidder after the rescaling is a condition on the allowance
 schedule (`default_affordable`), which any pricing restatement must carry.
+
+*2026-09-26 (BRIA-corrigibility follow-up):* corrected — the block-`0` allowance suffices
+under bounded block weights (`BRIAFollowup.default_affordable_block0`), and with unbounded
+weights the minimal schedule tracks the running maximum of the weights
+(`default_affordable_of_schedule`); the incident-rate statement any pricing restatement
+must carry is the signed bound under competitiveness (`incidents_le_signed`,
+`Competitive`) with an `o(K)` allowance, the landed prefix rule's `O(√K log K)` — a
+linear allowance gives a constant rate.  Settlement under delay now has its algebra
+(`DAuction`, `cash_nonneg`, `delayed_overestimation`): bids feasible against cash net of
+escrow; a claim-as-security restatement must state feasibility against prices net of the
+same escrow.
 
 ## Workspace friction
 

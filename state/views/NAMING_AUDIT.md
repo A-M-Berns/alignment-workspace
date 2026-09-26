@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 792 names, 525 of them Lean only
+## deference — 818 names, 537 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -177,6 +177,32 @@ change, and the count of those is the size of the free choice remaining.
 | `unfrozenDrill` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.unfrozenDrill` |
 | `vAt2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.vAt2` |
 | `verdictAt2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.verdictAt2` |
+| `Competitive` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.Competitive` |
+| `DAuction` | structure | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.DAuction` |
+| `DrillPseudorandom` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.DrillPseudorandom` |
+| `FeasibleEscrow` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.DAuction.FeasibleEscrow` |
+| `IO` | structure | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.IO` |
+| `PricedInterface` | structure | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.PricedInterface` |
+| `Ratifies` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Ratifies` |
+| `Source` | inductive | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Source` |
+| `Source.undeclaredNonPrincipal` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Source.undeclaredNonPrincipal` |
+| `Standards` | structure | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Standards` |
+| `Step` | inductive | 2026-09-26-bria-corrigibility | prose | `Workspace.Deference.Contrib.BRIAFollowup.Step` |
+| `UnbiasedFromFeedback` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.UnbiasedFromFeedback` |
+| `WellFormed` | structure | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.WellFormed` |
+| `cash` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.DAuction.cash` |
+| `event` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.PricedInterface.event` |
+| `helperCharge` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.helperCharge` |
+| `influenced` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup.influenced` |
+| `io3` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Witness.io3` |
+| `linearAllowance` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Witness.linearAllowance` |
+| `provenanceOf` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.provenanceOf` |
+| `settledBy` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.DAuction.settledBy` |
+| `standingStandards` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup.standingStandards` |
+| `taintAfter` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.taintAfter` |
+| `taintStep` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.taintStep` |
+| `testsBy` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.DAuction.testsBy` |
+| `uses` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.uses` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |
@@ -412,7 +438,7 @@ change, and the count of those is the size of the free choice remaining.
 | `holdEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.holdEF` |
 | `softInd` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.softInd` |
 | `tradeEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.tradeEF` |
-| `weight` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weight` |
+| `weight` | def | 2026-08-11-faithful-acceleration | wiki | `Workspace.Deference.Contrib.FaithfulAcceleration.weight` |
 | `weightEF` | def | 2026-08-11-faithful-acceleration | Lean only | `Workspace.Deference.Contrib.FaithfulAcceleration.weightEF` |
 | `Answer` | abbrev | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Answer` |
 | `Counted` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Counted` |
@@ -810,7 +836,7 @@ change, and the count of those is the size of the free choice remaining.
 | `xR` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.xR` |
 | `xSpec` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.xSpec` |
 
-## normativity — 713 names, 528 of them Lean only
+## normativity — 713 names, 527 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1095,7 +1121,7 @@ change, and the count of those is the size of the free choice remaining.
 | `softGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.softGate` |
 | `total` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |
 | `u` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.u` |
-| `weight` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.weight` |
+| `weight` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.weight` |
 | `Integrity` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Integrity` |
 | `Local` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Local` |
 | `LocalConservation` | structure | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.LocalConservation` |
