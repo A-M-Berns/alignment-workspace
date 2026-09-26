@@ -248,17 +248,38 @@ loses at least `ϖ − D + w` on each (`helper_charged`); beyond the horizon it 
 (`helper_beyond_horizon`), which is why the horizon is a named hypothesis; an
 uncorrectable successor and a self-granted scope are declared violations caught in
 advance.  For violations counted only after the fact the hypothesis whose continuation
-won loses at least `ϖ − D + w` per incident (`incident_loss`), and against the opening
-allowance the weighted incident count is at most the allowance distributed plus the
-winners' underpromise credit (`incidents_le`): allowances replenish, so the *rate* of
-incidents is bounded and their number is not; a persistent uncontested advantage
-recovers any incident loss (`cross_block_witness`), and late detection is booked
-against future allowance with the algebra intact (`debited_overestimation`).  Under
+won loses at least `ℓ = ϖ − D + w` per incident (`incident_loss`), and against the
+opening allowance the weighted incident count is at most the allowance distributed plus
+the winners' *signed* margin on the other blocks (`BRIAFollowup.incidents_le_signed`;
+the round's positive-part form allowed a constant rate and is corrected): under
+**competitiveness** — the signed margin `o(K)`, a named hypothesis coverage does not
+supply, since a class in which every hypothesis underpromises has no closer bidder
+(`uniform_underpromise_margin`) — the incident rate is at most
+`(𝒜_K + Mf K)/(ℓ · w_min · K)`, vanishing iff the allowance and the margin are `o(K)`
+(`rate_le_of_competitive`), which the landed prefix rule's `O(√K log K)` allowance gives
+and a linear allowance does not (`Witness.linear_allowance_constant_rate`).  **Standing
+violations.**  A violation stands from commission until remedied — undone, ratified by a
+counted decision of hers, or restored under a maintenance mandate — and its *fruits* are
+tracked through state components on the declared interface, not by counterfactual
+dependence: a violating act taints what it writes, an act reading taint taints what it
+writes, a remedy clears (`taintStep`, decidable on finite instances); a continuation that
+reads a tainted component exploits the fruits and is counted at that block.  So each block
+of use is charged at least `ℓ` whatever advantage the fruits carry, an advantage carried
+by tracked fruits recovers nothing (`cross_block_blocked`), remedy stops the charge and
+self-reporting is incentive-compatible while violating-then-reporting still loses `ℓ`
+(`remedy_stops_charge`, `violate_then_report_loses`), and manipulated ratification is not
+a remedy.  The residual is *knowledge*: fruits written to the agent's own memory leave no
+taint (`knowledge_residual`), and the structural treatment — tracking the observation
+channel — charges every later block until a reset (`observation_taints_all`).  Late
+detection is booked against future allowance with the algebra intact
+(`debited_overestimation`).  Under
 uncertainty lexical becomes an exchange rate — a clean option beats inquiry iff its
 priced risk is below `(bid − w)/ϖ` (`implied_threshold`), only inquiry survives once
 `ϖ ≥ (D − w)/p_min` (`paralysis`), and inquiry absorbs the risk (`asks_iff`) — so `ϖ` is
-set at the lexical minimum with a margin and drills, not weight, correct the market's
-pricing.  Beliefs stay honest: the layer reads prices and adds no trader
+chosen inside the band `D − w < ϖ < (D − w)/p_min` (`BRIAFollowup.weight_band`), where it
+trades the incident rate `∝ 1/ℓ` and blind-spot protection `ϖ(1 − p)` against consultation
+frequency — in the upper half of the band, not at the lexical minimum, with drills lowering
+the effective `p_min`.  Beliefs stay honest: the layer reads prices and adds no trader
 (`DecisionComponent.noninterference`), and the objective-independent results of the
 first round — structural and forecast safety for *any* bounded preference
 (`cgate_zero_of_viol`, `cgate_zero_of_forecast`, `cgate_le_ramp`, `eventually_excluded`,
@@ -267,10 +288,21 @@ even for a misaligned chooser; the lexical design is the instance in which corri
 is preferred.  **The named hypotheses** the design rests on and does not discharge:
 *count integrity* (tampering with the count, the drill schedule, the audits or her
 evaluation channel raises the realized score, `tamper_raises`; the recognizable cases
-are declared violations, the rest is item 101's companion), *the settlement horizon*, and
-*the generability of the declared control model* whose sentences the shortfall and
-taint prices are — no price conditions on the agent's own untaken action
-(`factors_through_description`).  **The scored chooser below is the special case** in
+are declared violations, the rest is item 101's companion), *the settlement horizon* for
+helpers she can correct (a helper she cannot halt is a standing shortfall charged every
+block, `uncorrectable_helper_charged`), *the generability of the declared control model*
+whose sentences the shortfall and taint prices are, *description faithfulness* — the
+descriptions those sentences are about come from the interface, not the proposer
+(`PricedInterface`; a proposer-written description passes a short option,
+`misdescription_witness`), *the actuator condition* — every reserved resolution declares
+an actuator independent of the agent, a well-formedness condition on `J` under which
+frozen drills run and without which `CS` fails by construction (`WellFormed`,
+`frozen_drill_runs`, `ill_formed_fails_cs`), *competitiveness* (above), and for the
+forecast side the two external logical-induction results stated by content — affine
+unbiasedness from feedback on the drilled-and-chosen subsequence and the schedule's
+pseudorandomness — under which the shortfall price is unbiased on the chosen path and the
+low-price bin's blind-spot fraction is at most `θhi + γ` (`chosen_path_unbiased`,
+`blind_rate_le`), the rate of `γ → 0` in the drilled mass open.  **The scored chooser below is the special case** in
 which the objective is her evaluation and the authority term is carried in the score.
 **Why not the enforcer.**  Compiling authority rows into the enforcer — violating options'
 value prices forced below compliant ones, settling to her ordinary valuation — gives it a
@@ -630,9 +662,17 @@ delay, under the third (`harm_weight`, `random_positive`); the mixture never ful
 settles and is settled in pieces with the unsettled error at most the remaining weight
 times `D` (`partial_settlement`), the random time settles once with a random lag whose
 tail trades weight on long delays against expected lag; and the draw's concealment is a
-count-integrity question.  The round recommends the random time with `ρ_n` geometric
-from `n` at rate `1/(n + 2)`.  Part A's single evaluation stays the default until the
-maintainer rules; the decision is queued in `DECISIONS.md`.
+count-integrity question.  On the follow-up's algebra for settlement under delay — bids
+feasible against cash net of escrow, wealth nonnegative and the settled overestimation
+bounded under any lag (`BRIAFollowup.cash_nonneg`, `delayed_overestimation`), a test
+delayed by the lag (`tests_le_of_lag`) — what separates the options is the escrow: the
+random time locks every bid for a lag of mean `n + 2`, the mixture releases each
+evaluation time's share as it settles.  The round's recommendation is therefore the
+**mixture with per-time gates and piecewise settlement** (the random time was its first
+recommendation): the same weight on every delay in expectation, no hidden draw, escrow
+released as weight settles, at the cost of the settlement record.  Part A's single
+evaluation stays the default until the maintainer rules; the decision is queued in
+`DECISIONS.md`.
 
 ## 8. The constitutional layer, condensed
 
@@ -672,7 +712,8 @@ and not through selected trust.
 | generability of the priced events; BRIA's bids against the market | the shortfall and taint events, and BRIA's block claims, as sentences or bounded variables the market prices | OPEN; items 101, 102 | §4; `DecisionComponent.eventually_excluded` takes the price as its hypothesis |
 | free amendment, trigger integrity, provenance normalization | the specification and activation channels' transparency above a fixed floor; the reason-side normalization | OPEN | §5; item 97 |
 | latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
-| count integrity; the settlement horizon; generability of the control model | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees; helper violations detected within `H` of the block; the shortfall and taint sentences of the declared control model as securities | named hypotheses of the BRIA design; item 101 (with its companion) | §4; `BRIACorrigibility.tamper_raises`, `helper_beyond_horizon`, `factors_through_description` |
+| count integrity; the settlement horizon; generability of the control model; description faithfulness; the actuator condition; competitiveness | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees; violations of helpers she can correct detected within `H` of the block; the shortfall and taint sentences of the declared control model as securities, about interface-supplied descriptions; every reserved resolution with an agent-independent actuator; the winners' signed margins `o(K)` | named hypotheses of the BRIA design; item 101 (with its companions) | §4; `BRIACorrigibility.tamper_raises`, `BRIAFollowup.correctable_helper_horizon`, `misdescription_witness`, `WellFormed`, `Competitive` |
+| unbiasedness from feedback; pseudorandomness of the drill schedule | Garrabrant et al. thm:wubaff and thm:prand, present in the pinned library and stated by content, instantiated for the drilled shortfall sentences by item 101's certificate | external results as named hypotheses; item 101 | §4; `BRIAFollowup.UnbiasedFromFeedback`, `DrillPseudorandom`, `chosen_path_unbiased` |
 | the allowance covers the rescaled window | opening timing at block `0` needs `A_0 ≥ w_0 · ϖN̄/(D − w + ϖN̄)` for the default bidder to be feasible | EXT (the arrangement's schedule) | §4; `default_affordable`; the round's fixture |
 
 The first six rows are hypotheses of the combined theorem or its charged residuals;

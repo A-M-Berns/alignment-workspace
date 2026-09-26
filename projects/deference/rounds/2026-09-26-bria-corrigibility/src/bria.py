@@ -242,3 +242,109 @@ def partial_settlement(alpha: List[Q], U: List[Q], settled: set) -> Tuple[Q, Q]:
     part = sum(alpha[t] * U[t] for t in settled)
     remaining = sum(alpha[t] for t in range(len(alpha)) if t not in settled)
     return part, remaining
+
+
+# ----------------------------------------------------------------------------- follow-up
+
+def taint_after(reads: Dict[str, set], writes: Dict[str, set], steps) -> set:
+    """Taint tracked through state components: a violating act taints its writes, an act
+    reading taint taints its writes, a remedy clears.  `steps` are ('act', name, viol) or
+    ('remedy',)."""
+    T: set = set()
+    for s in steps:
+        if s[0] == "remedy":
+            T = set()
+        else:
+            _, a, viol = s
+            if viol or (reads[a] & T):
+                T = T | writes[a]
+    return T
+
+
+def uses(reads: Dict[str, set], T: set, a: str) -> bool:
+    return bool(reads[a] & T)
+
+
+def standing_record(P: Lex, bids: List[Q], gords: List[Q], used: List[bool]) -> Q:
+    """Net record over blocks: a block using tracked fruits carries a count of one."""
+    return sum((resid_i(P, g, 1 if u else 0) - b) for b, g, u in zip(bids, gords, used))
+
+
+def signed_margin(log, weights, incident: Callable[[dict], bool]) -> Tuple[Q, Q]:
+    """(signed margin, positive-part margin) over non-incident blocks of an auction log."""
+    signed = sum(weights(e["block"]) * (e["G"] - e["b"]) for e in log if not incident(e))
+    pos = sum(weights(e["block"]) * max(e["G"] - e["b"], Q(0)) for e in log if not incident(e))
+    return signed, pos
+
+
+def landed_allowance_total(m: List[int]) -> Q:
+    """The landed prefix rule's total subsidy bound `2√(S_K M_K) + √S_K (1 + ln K)`, as the
+    exact per-block rule `(M_k − M_{k−1}) + 1/k` summed over the active frontier
+    `s(k) = ⌊√(S_k/M_k)⌋`."""
+    import math
+    S, M, total = 0, 0, Q(0)
+    for k, mk in enumerate(m, start=1):
+        S += mk
+        Mprev = M
+        M = max(M, mk)
+        s = int(math.isqrt(S // M)) if M else 0
+        total += s * (Q(M - Mprev) + Q(1, k))
+    return total
+
+
+def run_delayed_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation],
+                        blocks: int, allowance, weight, lag: Callable[[int], int], N: int = 2):
+    """The auction with block `k` settled at `k + L_k`; bids feasible against cash net of
+    escrow.  Returns the log and the cash history."""
+    log, pending, cash_hist = [], [], []
+    for h in hyps:
+        h.wealth = Q(0)
+    for k in range(blocks):
+        # settle what is due
+        due = [p for p in pending if p["settle_at"] <= k]
+        pending = [p for p in pending if p["settle_at"] > k]
+        for p in due:
+            p["hyp"].wealth += p["w"] * p["G"]
+        wk = weight(k)
+        for h in hyps:
+            h.wealth += allowance(k, h.name)
+        best = None
+        for h in hyps:
+            for cname, c in menu.items():
+                bid = h.bid_of(cname, k)
+                if bid is None:
+                    continue
+                bid = min(bid, P.D)
+                if wk * rescale(P, N, bid) > h.wealth:       # cash is net of escrow already
+                    continue
+                ev = eval_of(P, bid, c.n_known, c.pS, c.pT)
+                key = (ev, c.is_inquiry)
+                if best is None or key > best[0]:
+                    best = (key, h, cname, bid)
+        if best is None:
+            raise RuntimeError(f"no feasible bid at block {k}")
+        _, h, cname, bid = best
+        c = menu[cname]
+        resid = resid_ii(P, c.gord, c.n_fore, c.n_late, c.pS, c.pT)
+        G, b = rescale(P, N, resid), rescale(P, N, bid)
+        h.wealth -= wk * b                                    # escrow the bid now
+        pending.append(dict(hyp=h, w=wk, G=G, settle_at=k + lag(k)))
+        log.append(dict(block=k, winner=h.name, cont=cname, G=G, b=b))
+        cash_hist.append({hh.name: hh.wealth for hh in hyps})
+    return log, cash_hist, len(pending)
+
+
+def drilled_price(true_freq: Q, market_p: Q, q: Q, blocks: int, seed: int = 7) -> List[Q]:
+    """A toy inductor whose price on the chosen path moves toward the drilled frequency: at
+    each drilled block (rate q) the price is updated by the settled outcome; undrilled
+    blocks give no feedback.  Deterministic pseudo-random schedule."""
+    import random
+    rng = random.Random(seed)
+    p, out, seen, shorts = market_p, [], 0, 0
+    for k in range(blocks):
+        out.append(p)
+        if rng.random() < float(q):
+            seen += 1
+            shorts += 1 if rng.random() < float(true_freq) else 0
+            p = Q(shorts, seen)
+    return out

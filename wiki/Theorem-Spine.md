@@ -982,6 +982,24 @@ is the tail weight (`harm_weight`), zero beyond a deterministic lookahead
 support (`random_positive`); settlement in pieces (`partial_settlement`).  **LEAN**.
 Lean:
 [`BRIACorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/1604d43cb7de7414fc85ba6834c6dccd8021953e/lean/Workspace/Deference/Contrib/BRIACorrigibility.lean).
+**The follow-up** (`BRIAFollowup`): the default bidder feasible at every block from a
+block-`0` allowance under bounded weights (`default_affordable_block0`,
+`default_affordable_of_schedule`); the weight band (`weight_band`); description
+faithfulness (`PricedInterface`, `misdescription_witness`); standing violations with
+taint-tracked fruits (`taintStep`, `taintAfter`, `uses`, `standing_block_loss`,
+`cross_block_blocked`, `knowledge_residual`, `observation_taints_all`,
+`remedy_stops_charge`, `violate_then_report_loses`, `manipulated_ratification_not_remedy`,
+`implant_standing`, `uncorrectable_helper_charged`, `correctable_helper_horizon`); the
+signed rate bound under competitiveness (`incidents_le_signed`, `Competitive`,
+`incidents_le_of_competitive`, `rate_le_of_competitive`, `uniform_underpromise_margin`,
+`charge_le_signed`); drill calibration reduced to two external results stated by content
+(`UnbiasedFromFeedback`, `DrillPseudorandom`, `chosen_path_unbiased`, `blind_rate_le`);
+the actuator condition (`WellFormed`, `frozen_drill_runs`, `ill_formed_fails_cs`);
+influence by provenance (`influenced`, `influenced_iff_flag`, `rows_agree`); settlement
+under delay (`DAuction`, `cash_nonneg`, `delayed_overestimation`, `tests_le_of_lag`); the
+linear-allowance witness (`Witness.linear_allowance_constant_rate`).  `cross_block_bound`
+is removed.  **LEAN**.  Lean:
+[`BRIAFollowup.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/9e7f89d946e04022289e3aa5c6bf7c496a4d6bc3/lean/Workspace/Deference/Contrib/BRIAFollowup.lean).
 
 ## 11. The counterexamples that fix the shape
 

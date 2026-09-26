@@ -244,10 +244,22 @@ score is rescaled affinely onto `[0, 1]` with at most `N̄` violations per block
 default bidder's bid on inquiry is then the rescaled window `ϖN̄/(D − w + ϖN̄)`, which
 the block-`0` allowance must cover (`default_affordable`), and it never goes broke
 (`default_wealth_mono`).  Against the opening allowance the weighted count of
-after-the-fact incidents is bounded by the allowance plus the winners' underpromise
-credit (`incidents_le`) — a rate, since allowances replenish; late detection is booked
-against future allowance (`debited_overestimation`); and coverage forces the test of a
-hypothesis whose allowance outgrows its bounded record (`coverage_forces_test`).
+after-the-fact incidents is bounded by the allowance plus the winners' *signed* margin
+(`BRIAFollowup.incidents_le_signed`; the positive-part form allowed a constant rate), a
+vanishing rate under competitiveness and an `o(K)` allowance — the landed prefix rule's,
+not a linear one (`rate_le_of_competitive`, `Witness.linear_allowance_constant_rate`);
+late detection is booked against future allowance (`debited_overestimation`); and
+coverage forces the test of a hypothesis whose allowance outgrows its bounded record
+(`coverage_forces_test`) but not a win stream, which is why competitiveness is a
+hypothesis.  **Settlement under delay** (`BRIAFollowup.DAuction`): with block `k` settled
+at `k + L_k`, a hypothesis's cash is its allowance plus settled winnings minus every bid
+placed — unsettled bids in escrow — and bids are feasible against cash net of escrow;
+wealth stays nonnegative (`cash_nonneg`), the settled overestimation is at most the
+allowance and the escrowed exposure at most the allowance plus the settled underpromise
+(`delayed_overestimation`), and by time `K` at most `K − λ` tests have arrived under a
+lag of at least `λ` (`tests_le_of_lag`).  The mixture over evaluation times settles in
+pieces and releases escrow as weight settles; a random evaluation time of mean lag
+`n + 2` locks half the capital at any time ([Corrigibility](Corrigibility) §7).
 
 ## 9. Open
 
@@ -267,8 +279,9 @@ hypothesis whose allowance outgrows its bounded record (`coverage_forces_test`).
   answer: the forecast part of a bid is already the market's (the prices), and what the
   hypothesis bids on is the residual.
 - When her evaluation happens: the three timing options compared on
-  [Corrigibility](Corrigibility) §7, with settlement in pieces for the mixture
-  (`partial_settlement`) and a delayed-feedback criterion still needed for the others.
+  [Corrigibility](Corrigibility) §7 on the escrow algebra; the weighted BRIA criterion
+  itself under delayed or partial feedback — what "no overestimation" and coverage mean
+  when the record lags — is still open for every option.
 
 ## Evidence
 

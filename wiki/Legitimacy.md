@@ -298,7 +298,15 @@ party's — keeps tainted every segment whose authorship depends on those standa
 license requiring the influence disclosed among the grounds; after disclosure restart
 applies to the next decision, while the manipulation of a single decision still restarts
 on its own (row 14, `r14_restated`).  Failing to disclose its own past covert influence
-is the agent's missed report under the derived duties (`Model2.missedDisclosure`).  And
+is the agent's missed report under the derived duties (`Model2.missedDisclosure`).
+Disclosure cures is the instance of the corrigibility line's **standing violations**
+([Corrigibility](Corrigibility) §4) in which the fruit is her standards component and the
+remedy is the disclosure (`BRIAFollowup.standingStandards`, `implant_standing`).  The
+general form of "her standards were influenced" is by provenance: an entry of her
+standards component whose provenance includes an undeclared non-principal input
+(`influenced`), agreeing with the model's flag on every row (`influenced_iff_flag`,
+`rows_agree`); it decides a recorded provenance, and whether the record is complete is
+count integrity, not legitimacy.  And
 the **criteria are anchored at the decision**: the reference is evaluated under the
 criteria in force when the decision was made (`ref2 crit`, `critAt`), invariant under
 every later amendment (`anchored_invariant`); under the latest criteria instead, a

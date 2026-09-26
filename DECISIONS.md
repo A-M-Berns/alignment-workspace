@@ -85,16 +85,17 @@ commit.
   *Where ingenuity is the bottleneck* exists to hold.
 
 
-- **Whether to adopt a random evaluation time in place of the single evaluation of
-  the BRIA design, and with which tail.**  The BRIA-corrigibility round (Part F)
-  compares a deterministic growing lookahead (a known time leaves a free delay at every
-  day), a mixture over evaluation times (never fully settles; settled in pieces) and a
-  random time `T ~ ρ_n` (one settlement, a hidden draw), and recommends the random time
-  with `ρ_n` geometric from `n` at rate `1/(n + 2)`; Part A's single evaluation stays the
-  default.
-  *Turns on:* how much expected settlement lag the arrangement will pay for weight on
-  long delays — a heavier tail covers longer delay reaches and lengthens the lag one for
-  one — and where the draw lives so the agent cannot read it (count integrity).
+- **Whether to adopt a mixture over evaluation times, settled in pieces, in place of
+  the single evaluation of the BRIA design, and with which weights.**  The
+  BRIA-corrigibility round (Part F) compares a deterministic growing lookahead (a known
+  time leaves a free delay at every day), a mixture over evaluation times with per-time
+  gates (settled in pieces) and a random time `T ~ ρ_n` (one settlement, a hidden draw);
+  its follow-up, on the escrow algebra for settlement under delay, re-derives the
+  recommendation as the **mixture** — the same weight on every delay as the random time
+  in expectation, no hidden draw, escrow released as weight settles — where the round had
+  recommended the random time; Part A's single evaluation stays the default.
+  *Turns on:* how much escrowed capital and settlement record the arrangement will carry
+  for weight on long delays, and the weights' tail against the agent's delay reach.
 
 ## Settled
 
@@ -4796,3 +4797,60 @@ meta level and a declared violation; what the recognizer does not see is count
 integrity, a named hypothesis filed as item 101's companion.
 *Rejected alternative:* treating undisclosed-but-stoppable influence as a legitimacy
 failure rather than a transparency one (row 8 already covers it).
+
+### 2026-09-26 — standing violations with taint-tracked fruits: a violation is charged at every block its fruits are used until remedied
+
+Maintainer decision, formalized and landed by the BRIA-corrigibility follow-up.  A
+violation stands from commission until remedied — undone, ratified by a counted decision
+of hers, or restored under a maintenance mandate; while it stands the disposition of its
+fruits is a matter of `J` held by her, and a continuation that uses them is exploiting
+them under the authority module's factoring, counted at each block of use.  Fruits are
+tracked through state components on the declared interface, not by counterfactual
+dependence (`BRIAFollowup.taintStep`, `taintAfter`, `uses`; decidable on finite instances,
+`Witness.taint_decides`): a violating act taints what it writes, an act reading a tainted
+component taints what it writes, a remedy clears.  Each block of use is charged at least
+`ℓ = ϖ − D + w` whatever advantage the fruits carry, so an advantage carried by tracked
+fruits recovers nothing (`cross_block_blocked`), remedy stops the charge and self-reporting
+is incentive-compatible (`remedy_stops_charge`, `violate_then_report_loses`), and
+manipulated ratification is not a remedy (`manipulated_ratification_not_remedy`).
+Disclosure cures is the instance for her standards (`implant_standing`); a helper she
+cannot halt is a standing shortfall charged every block, the settlement horizon a
+hypothesis for helpers she can correct only.  The residual is knowledge
+(`knowledge_residual`); tracking the observation channel charges every later block until
+a reset (`observation_taints_all`) and meets the agent's indifference in tainted worlds,
+out of scope.
+*Rejected alternatives:* counterfactual dependence as the definition of fruits (1b);
+charging commission only (the round's cross-block witness).
+
+### 2026-09-26 — the actuator condition is a well-formedness condition on `J`
+
+Maintainer decision, landed by the follow-up.  Every required resolution of a reserved
+matter declares an actuator independent of the agent (`BRIAFollowup.WellFormed`); under
+it every frozen drill runs (`frozen_drill_runs`), and a `J` violating it fails `CS` for
+that matter by construction, `CS` quantifying the agent idle (`ill_formed_fails_cs`).
+*Rejected alternative:* leaving the freezing requirement a per-drill obstruction.
+
+### 2026-09-26 — description faithfulness is a named hypothesis: the priced sentences are about interface-supplied descriptions
+
+Maintainer decision, landed by the follow-up.  The shortfall and taint events are
+sentences of the declared control model about an option's *interface-supplied*
+description (`BRIAFollowup.PricedInterface`, `event_reads_interface`); a proposer-written
+description passes a short option (`misdescription_witness`).  `ViolC` covers the
+structurally declared releases; effect completeness is the clause that the interface's
+descriptions are the effects, of which faithfulness is the representation half.  Added to
+the corrigibility page's named hypotheses.
+*Rejected alternative:* descriptions written by the proposer of the option.
+
+### 2026-09-26 — the corrected recommendation for `ϖ`: inside the band, weighing the incident rate
+
+Maintainer decision, landed by the follow-up, superseding the round's "lexical minimum
+with a margin".  The admissible band is `D − w < ϖ < (D − w)/p_min`, nonempty iff
+`p_min < 1` (`BRIAFollowup.weight_band`); inside it `ϖ` trades the incident rate
+`∝ 1/(ϖ − D + w)` and blind-spot protection `ϖ(1 − p)` against consultation frequency.
+Recommended: the upper half of the band — the per-incident loss a fixed fraction of
+`D − w`, say `ϖ = 2(D − w)` when `p_min < 1/2` — with drills lowering the effective
+`p_min`; not the lexical minimum, which sets the per-incident loss to the margin.  The
+incident-rate statement it weighs is the signed bound under competitiveness with an
+`o(K)` allowance (`incidents_le_signed`, `rate_le_of_competitive`); the round's
+positive-part bound allowed a constant rate and is corrected.
+*Rejected alternative:* `ϖ = D − w + margin`.
