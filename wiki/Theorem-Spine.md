@@ -981,7 +981,7 @@ is the tail weight (`harm_weight`), zero beyond a deterministic lookahead
 (`deterministic_tail`, `timing_witness`, `race_deterministic`), positive under full
 support (`random_positive`); settlement in pieces (`partial_settlement`).  **LEAN**.
 Lean:
-[`BRIACorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/PINSHA/lean/Workspace/Deference/Contrib/BRIACorrigibility.lean).
+[`BRIACorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/1604d43cb7de7414fc85ba6834c6dccd8021953e/lean/Workspace/Deference/Contrib/BRIACorrigibility.lean).
 
 ## 11. The counterexamples that fix the shape
 
