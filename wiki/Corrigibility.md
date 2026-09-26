@@ -247,32 +247,77 @@ unconstrained helper is charged the helper's violations detected within the hori
 loses at least `ϖ − D + w` on each (`helper_charged`); beyond the horizon it is not
 (`helper_beyond_horizon`), which is why the horizon is a named hypothesis; an
 uncorrectable successor and a self-granted scope are declared violations caught in
-advance.  For violations counted only after the fact the hypothesis whose continuation
-won loses at least `ℓ = ϖ − D + w` per incident (`incident_loss`), and against the
-opening allowance the weighted incident count is at most the allowance distributed plus
-the winners' *signed* margin on the other blocks (`BRIAFollowup.incidents_le_signed`;
-the round's positive-part form allowed a constant rate and is corrected): under
-**competitiveness** — the signed margin `o(K)`, a named hypothesis coverage does not
-supply, since a class in which every hypothesis underpromises has no closer bidder
-(`uniform_underpromise_margin`) — the incident rate is at most
-`(𝒜_K + Mf K)/(ℓ · w_min · K)`, vanishing iff the allowance and the margin are `o(K)`
-(`rate_le_of_competitive`), which the landed prefix rule's `O(√K log K)` allowance gives
-and a linear allowance does not (`Witness.linear_allowance_constant_rate`).  **Standing
+advance.  **Violations counted after the fact and forecast-class violations together are
+governed by an exchange rate, not a vanishing rate.**  A violation risk a continuation
+knowingly carries is priced: its honest bid includes `−ϖ p`, and it beats inquiry iff
+`gord − w ≥ ϖ p` (`BRIAFollowup2.priced_risk_wins_iff`) — C.5's exchange rate, the same
+quantity as the implied threshold `(bid − w)/ϖ ≤ (D − w)/ϖ` (`threshold_le`, `asks_iff`).
+So the agent accepts such risk at a rate that does not go to zero, and what vanishes is
+only the overclaimed part.  **The theorem** (`violation_rate_le_exchange`,
+`violation_rate_le_exchange_rescaled`): for every `K` the weighted average expected
+violation count per winning block, `π_k` the expected number of violations of every class
+counted in block `k` given the history at opening, is at most
+`(D − w)/ϖ + (ρ 𝒜_K + M(K))/(ϖ Σ_{k<K} w_k)` — from the landed overestimation bound
+(`overestimation_le_allowance_opening`) through the settlement's consistency (under (ii)
+evaluation less the realized score is bid less the realized residual, whatever the
+prices, `eval_sub_score_ii`, `design_consistent`; under (i) the market's pricing error
+would remain, `eval_sub_score_i`), winners evaluating at least `w` (inquiry on the menu,
+`evalOf_le_bid`), the expected score given opening at most `D − ϖ π_k`, and **the noise
+hypothesis over all blocks**: the weighted signed noise of the realized score summed over
+every winning block — a selection fixed at opening — is `M(K) = o(K)` (`NoiseBounded` at
+the constant indicator; Azuma–Hoeffding's content for a bounded increment,
+`realized_range`, `noise_increment_le`, the per-`K` tail `√(2K(w̄ρ)² log(1/δ))` derived
+from the pinned Mathlib, `azuma_selected_tail`, the conditional sub-Gaussianity of each
+increment and the uniform-in-`K` sure bound named).  **`ϖ` sets the tolerated rate
+`(D − w)/ϖ`**: inside the band `D − w < ϖ < (D − w)/p_min` it lies strictly between
+`p_min` and `1` (`tolerated_rate_band`); drills sharpen the prices toward the realized
+frequencies and do not lower it.  The per-incident loss `ℓ = ϖ − D + w` of a block won at
+the window still holds (`incident_loss`), and the weighted incident count is at most the
+allowance plus the winners' signed margin on the other blocks
+(`BRIAFollowup.incidents_le_signed`) — but that margin is over a selection decided with
+each block's outcome, on which the noise is not `o(K)` whenever the risk persists
+(`BRIAFollowup2.Witness.nonincident_forces_linear`, `incidents_constant_rate`,
+`signed_bound_allows_constant_rate`), so no vanishing rate follows from it; the
+competitiveness and honest-tracker results are true lemmas on the
+[Continuation-BRIA](Continuation-BRIA) page and the violation claim does not rest on
+them.  **Standing
 violations.**  A violation stands from commission until remedied — undone, ratified by a
 counted decision of hers, or restored under a maintenance mandate — and its *fruits* are
 tracked through state components on the declared interface, not by counterfactual
-dependence: a violating act taints what it writes, an act reading taint taints what it
-writes, a remedy clears (`taintStep`, decidable on finite instances); a continuation that
-reads a tainted component exploits the fruits and is counted at that block.  So each block
-of use is charged at least `ℓ` whatever advantage the fruits carry, an advantage carried
-by tracked fruits recovers nothing (`cross_block_blocked`), remedy stops the charge and
+dependence, **per violation**: a violating act taints what it writes with its own
+identifier, an act reading tainted components taints what it writes with every violation
+read (taint joins at reads), and the remedy of a violation clears that violation's taint
+only, so a component tainted by several stays tainted until all are remedied
+(`BRIAFollowup2.taintStep2`, `taint_joins`, `remedy_clears2`, `taintedBy_remedy`; the
+first follow-up's rule, which cleared every taint at any remedy, is the one-identifier
+case, `old_is_new_with_one_identifier`, and freed an unremedied violation's fruits,
+`Witness.two_violations_one_remedy_old`).  A continuation that reads a tainted component
+exploits the fruits.  **The headline: after detection the fruits are never used.**  Once
+a violation is detected and its taint recorded, use is decidable at choice time from the
+interface and compiles into the structural count (`nKnownWith`), so a using option
+evaluates below inquiry by ranges alone and is never chosen (`after_detection_never_used`,
+through `declared_loses` and `filter_slack`).  **The window before detection**: a
+violation committed at `k₀` and detected at `k₁ > k₀` — taint applies from commission,
+recomputed at detection over the record (`detectAt`, `taint_only_from_commission`), and
+each window block, won at an evaluation at or above the window and settled with the use
+uncounted, is charged after the fact by a debit of `ϖ` against its winner's allowance:
+late debit equals late settlement, so the block loses at least `ℓ` under convention (ii)
+with nonzero prices (`standing_block_loss_ii`, `cross_block_blocked_ii`,
+`window_block_charged`; the `residI` form is the zero-price case); the greedy schedule
+collects the charge by `K` iff the hypothesis's cumulative allowance covers it
+(`greedy_collects`, `collected_iff`, the carry-over condition), and what remains exposed
+is the window's length times the per-block advantage `D − w` before the debit and only the
+uncollected debits after it (`window_exposure`).  Remedy stops the charge and
 self-reporting is incentive-compatible while violating-then-reporting still loses `ℓ`
 (`remedy_stops_charge`, `violate_then_report_loses`), and manipulated ratification is not
-a remedy.  The residual is *knowledge*: fruits written to the agent's own memory leave no
-taint (`knowledge_residual`), and the structural treatment — tracking the observation
-channel — charges every later block until a reset (`observation_taints_all`).  Late
-detection is booked against future allowance with the algebra intact
-(`debited_overestimation`).  Under
+a remedy.  Two residuals, kept apart: a violation *never detected* is a record no step of
+which commits it, and the design does nothing with its fruits — undetected commission,
+the count-integrity boundary (`never_detected_never_charged`); and *knowledge* — a
+flagged commission whose fruits are written to the agent's own memory, outside the tracked
+components, leaving no taint (`knowledge_residual`), where the structural treatment —
+tracking the observation channel — charges every later block until that violation's
+remedy (`observation_taints_all2`).  Late detection is booked against future allowance
+with the algebra intact (`debited_overestimation`).  Under
 uncertainty lexical becomes an exchange rate — a clean option beats inquiry iff its
 priced risk is below `(bid − w)/ϖ` (`implied_threshold`), only inquiry survives once
 `ϖ ≥ (D − w)/p_min` (`paralysis`), and inquiry absorbs the risk (`asks_iff`) — so `ϖ` is
@@ -297,7 +342,12 @@ descriptions those sentences are about come from the interface, not the proposer
 `misdescription_witness`), *the actuator condition* — every reserved resolution declares
 an actuator independent of the agent, a well-formedness condition on `J` under which
 frozen drills run and without which `CS` fails by construction (`WellFormed`,
-`frozen_drill_runs`, `ill_formed_fails_cs`), *competitiveness* (above), and for the
+`frozen_drill_runs`, `ill_formed_fails_cs`), *the noise hypothesis over all blocks* — the
+weighted signed noise of the realized score over every winning block, a selection fixed
+at opening, is `o(K)` (`NoiseBounded`; Azuma–Hoeffding's content, the per-`K` tail
+derived, `azuma_selected_tail`; not valid on "not an incident") — with *the
+conditional-expectation bound* beside it — the expected score given opening at most
+`D − ϖ π_k` — and for the
 forecast side the two external logical-induction results stated by content — affine
 unbiasedness from feedback on the drilled-and-chosen subsequence and the schedule's
 pseudorandomness — under which the shortfall price is unbiased on the chosen path and the
@@ -665,12 +715,21 @@ tail trades weight on long delays against expected lag; and the draw's concealme
 count-integrity question.  On the follow-up's algebra for settlement under delay — bids
 feasible against cash net of escrow, wealth nonnegative and the settled overestimation
 bounded under any lag (`BRIAFollowup.cash_nonneg`, `delayed_overestimation`), a test
-delayed by the lag (`tests_le_of_lag`) — what separates the options is the escrow: the
-random time locks every bid for a lag of mean `n + 2`, the mixture releases each
-evaluation time's share as it settles.  The round's recommendation is therefore the
-**mixture with per-time gates and piecewise settlement** (the random time was its first
-recommendation): the same weight on every delay in expectation, no hidden draw, escrow
-released as weight settles, at the cost of the settlement record.  Part A's single
+delayed by the lag (`tests_le_of_lag`) — the escrow does *not* separate the options in
+expectation: the random time's expected locked capital `E[bid · 1[T > t]]` equals the
+mixture's remaining weight times the bid at every `t`
+(`BRIAFollowup2.expected_escrow_eq`, `locked_eq_tail`).  What differs is the variance of
+the locked capital (Bernoulli, `bid² p(1 − p)`, against zero), of settlement timing, and
+the timing of partial signal; and a fourth option, the **hybrid** — `k` hidden draws per
+decision scored by their average — has the same expected weight on every delay for every
+`k` (`average_mean`), a score variance falling like `1/k` (`average_variance`,
+`variance_falls`), escrow released in `k` pieces and `k` hidden draws.  The criterion
+the earlier passes missed is **her evaluation load**: one evaluation per decision at a
+public time (option 1), one at each time in the support — unbounded, or truncated at a
+cost bounded by the tail weight times `D` (`truncation_cost`) — (option 2), one at a
+hidden time (option 3), `k` at hidden times (option 4).  The recommendation is
+**reserved**: the decision turns on her evaluation load against the variance of the score
+and of the escrow, and on whether a hidden draw is acceptable.  Part A's single
 evaluation stays the default until the maintainer rules; the decision is queued in
 `DECISIONS.md`.
 
@@ -712,7 +771,7 @@ and not through selected trust.
 | generability of the priced events; BRIA's bids against the market | the shortfall and taint events, and BRIA's block claims, as sentences or bounded variables the market prices | OPEN; items 101, 102 | §4; `DecisionComponent.eventually_excluded` takes the price as its hypothesis |
 | free amendment, trigger integrity, provenance normalization | the specification and activation channels' transparency above a fixed floor; the reason-side normalization | OPEN | §5; item 97 |
 | latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
-| count integrity; the settlement horizon; generability of the control model; description faithfulness; the actuator condition; competitiveness | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees; violations of helpers she can correct detected within `H` of the block; the shortfall and taint sentences of the declared control model as securities, about interface-supplied descriptions; every reserved resolution with an agent-independent actuator; the winners' signed margins `o(K)` | named hypotheses of the BRIA design; item 101 (with its companions) | §4; `BRIACorrigibility.tamper_raises`, `BRIAFollowup.correctable_helper_horizon`, `misdescription_witness`, `WellFormed`, `Competitive` |
+| count integrity; the settlement horizon; generability of the control model; description faithfulness; the actuator condition; the noise hypothesis over all blocks; the conditional-expectation bound | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees (a violation never detected charges nothing: undetected commission is this boundary); violations of helpers she can correct detected within `H` of the block; the shortfall and taint sentences of the declared control model as securities, about interface-supplied descriptions; every reserved resolution with an agent-independent actuator; the weighted signed noise of the realized score over every winning block `o(K)` — Azuma–Hoeffding by content for a bounded increment, the per-`K` tail derived, invalid on selections decided with the block's outcome; the expected score given opening at most `D − ϖ π_k` | named hypotheses of the BRIA design; item 101 (with its companions) | §4; `BRIACorrigibility.tamper_raises`, `BRIAFollowup.correctable_helper_horizon`, `misdescription_witness`, `WellFormed`, `BRIAFollowup2.NoiseBounded`, `violation_rate_le_exchange`, `azuma_selected_tail`, `never_detected_never_charged` |
 | unbiasedness from feedback; pseudorandomness of the drill schedule | Garrabrant et al. thm:wubaff and thm:prand, present in the pinned library and stated by content, instantiated for the drilled shortfall sentences by item 101's certificate | external results as named hypotheses; item 101 | §4; `BRIAFollowup.UnbiasedFromFeedback`, `DrillPseudorandom`, `chosen_path_unbiased` |
 | the allowance covers the rescaled window | opening timing at block `0` needs `A_0 ≥ w_0 · ϖN̄/(D − w + ϖN̄)` for the default bidder to be feasible | EXT (the arrangement's schedule) | §4; `default_affordable`; the round's fixture |
 

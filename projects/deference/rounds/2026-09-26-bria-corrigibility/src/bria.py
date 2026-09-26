@@ -80,7 +80,9 @@ def attributed(own: int, helper, k: int, H: int) -> int:
 def run_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation], blocks: int,
                 allowance: Callable[[int, str], Q], weight: Callable[[int], Q],
                 convention: str = "ii", horizon: int = 0, N: int = 2,
-                drill: Optional[Callable[[str], Q]] = None):
+                drill: Optional[Callable[[str], Q]] = None,
+                noise: Optional[Callable[[int], Q]] = None,
+                late_risk: Optional[Callable[[str, int], int]] = None):
     """The opening-subsidy auction on the composed gate's support, the winner maximizing the
     lexical evaluation among feasible bids, settled on the rescaled realized residual under
     the named convention.  Returns the per-block log."""
@@ -110,15 +112,21 @@ def run_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation], b
         _, h, cname, bid, pS = best
         c = menu[cname]
         n_late = c.n_late + attributed(0, c.helper, 0, horizon)
+        if late_risk is not None:
+            n_late += late_risk(cname, k)             # an after-the-fact violation realized
         if convention == "ii":
             resid = resid_ii(P, c.gord, c.n_fore, n_late, pS, c.pT)
         else:
             resid = resid_i(P, c.gord, n_late)
+        m_resid = resid
+        xi = noise(k) if noise is not None else Q(0)
+        resid = m_resid + xi                                   # realized = expected + noise
         G = rescale(P, N, resid)
         b = rescale(P, N, bid)
         h.wealth += wk * (G - b)
         h.record += wk * (G - b)
-        log.append(dict(block=k, winner=h.name, cont=cname, bid=bid, resid=resid,
+        log.append(dict(block=k, winner=h.name, cont=cname, bid=bid, resid=resid, m=m_resid,
+                        xi=xi, G=G, b=b, n_late=n_late,
                         realized=realized(P, c.gord, c.n_known, c.n_fore, n_late)))
     return log
 
@@ -348,3 +356,216 @@ def drilled_price(true_freq: Q, market_p: Q, q: Q, blocks: int, seed: int = 7) -
             shorts += 1 if rng.random() < float(true_freq) else 0
             p = Q(shorts, seen)
     return out
+
+
+# ----------------------------------------------------------------------------- follow-up 2
+
+def taint_after2(reads: Dict[str, set], writes: Dict[str, set], steps) -> set:
+    """Per-violation taint: a set of (violation, component) pairs.  A violating act taints its
+    writes with its own identifier; an act reading tainted components taints its writes with
+    every violation read (taint joins at reads); `('remedy', v)` clears `v`'s taint only.
+    `steps` are ('act', name, violation-id-or-None) or ('remedy', violation-id)."""
+    T: set = set()
+    for s in steps:
+        if s[0] == "remedy":
+            T = {p for p in T if p[0] != s[1]}
+        else:
+            _, a, viol = s
+            read = {v for (v, c) in T if c in reads[a]}
+            if viol is not None:
+                read = read | {viol}
+            T = T | {(v, d) for v in read for d in writes[a]}
+    return T
+
+
+def uses2(reads: Dict[str, set], T: set, a: str) -> bool:
+    return any(c in reads[a] for (_, c) in T)
+
+
+def tainted_by(T: set, c: str) -> set:
+    return {v for (v, cc) in T if cc == c}
+
+
+def detect_at(steps, k0: int, v):
+    """Detection relabels the commission step at position `k0` with the violation's id."""
+    out = list(steps)
+    if k0 < len(out) and out[k0][0] == "act":
+        out[k0] = ("act", out[k0][1], v)
+    return out
+
+
+def standing_record_ii(P: Lex, bids: List[Q], gords: List[Q], counts: List[Tuple[int, int, int]],
+                       prices: List[Tuple[Q, Q]]) -> Q:
+    """Net record under convention (ii): per block `residII − bid` with the block's counts
+    (n_known, n_fore, n_late) and prices (pS, pT)."""
+    return sum((resid_ii(P, g, nf, nl, pS, pT) - b)
+               for b, g, (nk, nf, nl), (pS, pT) in zip(bids, gords, counts, prices))
+
+
+def greedy_debit(A: List[Q], C: Q) -> List[Q]:
+    """The greedy debit schedule of a charge `C` against an allowance stream `A`."""
+    out, taken = [], Q(0)
+    for a in A:
+        d = min(a, max(Q(0), C - taken))
+        out.append(d)
+        taken += d
+    return out
+
+
+def run_window_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation], blocks: int,
+                       allowance, weight, reads: Dict[str, set], writes: Dict[str, set],
+                       commit_block: int, detect_block: int, N: int = 2):
+    """The auction with a standing violation committed at `commit_block` and detected at
+    `detect_block`.  Before detection blocks are settled as chosen, with no taint on record.
+    At detection the commission step is flagged, the taint is recomputed over the record from
+    commission, and every settled block whose continuation committed or used the fruits is
+    debited `ϖ` (rescaled) against its winner's future allowance by the greedy schedule.  From
+    detection on, use of a tainted component is compiled into `n_known`.  Returns the log, the
+    per-hypothesis collected debits, and the outstanding debits."""
+    unit = rescale(P, N, Q(0)) - rescale(P, N, -P.varpi)   # ϖ in rescaled units
+    log, record = [], []
+    outstanding = {h.name: Q(0) for h in hyps}
+    collected = {h.name: Q(0) for h in hyps}
+    T: set = set()
+    for k in range(blocks):
+        wk = weight(k)
+        for h in hyps:
+            A = allowance(k, h.name)
+            d = min(A, outstanding[h.name])
+            outstanding[h.name] -= d
+            collected[h.name] += d
+            h.wealth += A - d
+        detected = k >= detect_block
+        if k == detect_block:
+            flagged = detect_at(record, commit_block, "v")
+            for e in log:
+                prefix = taint_after2(reads, writes, flagged[:e["block"]])
+                step = flagged[e["block"]]
+                if step[2] is not None or uses2(reads, prefix, e["cont"]):
+                    outstanding[e["winner"]] += e["w"] * unit
+                    e["debit"] = e["w"] * unit
+            T = taint_after2(reads, writes, flagged)
+        best = None
+        for h in hyps:
+            for cname, c in menu.items():
+                bid = h.bid_of(cname, k)
+                if bid is None:
+                    continue
+                bid = min(bid, P.D)
+                if wk * rescale(P, N, bid) > h.wealth:
+                    continue
+                n_known = c.n_known + (1 if detected and uses2(reads, T, cname) else 0)
+                ev = eval_of(P, bid, n_known, c.pS, c.pT)
+                key = (ev, c.is_inquiry)
+                if best is None or key > best[0]:
+                    best = (key, h, cname, bid, n_known)
+        if best is None:
+            raise RuntimeError(f"no feasible bid at block {k}")
+        _, h, cname, bid, n_known = best
+        c = menu[cname]
+        resid = resid_ii(P, c.gord, c.n_fore, c.n_late, c.pS, c.pT)
+        G, b = rescale(P, N, resid), rescale(P, N, bid)
+        h.wealth += wk * (G - b)
+        record.append(("act", cname, None))
+        if detected:
+            T = taint_after2(reads, writes, detect_at(record, commit_block, "v"))
+        log.append(dict(block=k, winner=h.name, cont=cname, w=wk, G=G, b=b, n_known=n_known,
+                        debit=Q(0)))
+    return log, collected, outstanding
+
+
+def random_locked(alpha: List[Q], bid: Q, t: int) -> Q:
+    """Expected locked capital under a random time `T ~ alpha`: `E[bid · 1[T > t]]`."""
+    return sum(a * (bid if t < s else Q(0)) for s, a in enumerate(alpha))
+
+
+def mixture_locked(alpha: List[Q], bid: Q, t: int) -> Q:
+    """Locked capital under the mixture settled in pieces: the bid less the released shares."""
+    return bid - sum(a * bid for s, a in enumerate(alpha) if s <= t)
+
+
+def average_of_k_draws(alpha: List[Q], U: List[Q], k: int) -> Tuple[Q, Q]:
+    """Exact mean and variance of the average of `k` independent draws from `alpha`, scored by
+    `U`, by enumerating the product distribution."""
+    from itertools import product
+    mean, second = Q(0), Q(0)
+    for ts in product(range(len(alpha)), repeat=k):
+        p = Q(1)
+        for t in ts:
+            p *= alpha[t]
+        if p == 0:
+            continue
+        s = sum(U[t] for t in ts) / k
+        mean += p * s
+        second += p * s * s
+    return mean, second - mean * mean
+
+
+def evaluation_load(option: str, support: int = 0, k: int = 1) -> int:
+    """Her evaluations per decision: option 1 one at a public time; option 2 one per time in
+    the support; option 3 one at a hidden time; option 4 `k` at hidden times."""
+    return {"deterministic": 1, "mixture": support, "random": 1, "hybrid": k}[option]
+
+
+# ----------------------------------------------------------------------------- follow-up 3
+
+def pm_noise(seed: int, amplitude: Q) -> Callable[[int], Q]:
+    """Deterministic ±amplitude noise from a linear congruential generator on the seed: the
+    same run every time, exact rationals."""
+    def xi(k: int) -> Q:
+        state = (1103515245 * (seed + 7919 * k) + 12345) % (2 ** 31)
+        state = (1103515245 * state + 12345) % (2 ** 31)
+        return amplitude if (state >> 16) & 1 else -amplitude
+    return xi
+
+
+def isqrt_upper(n: int) -> int:
+    """An integer upper bound on √n."""
+    import math
+    r = math.isqrt(n)
+    return r if r * r == n else r + 1
+
+
+def noise_bound(K: int, amplitude: Q) -> Q:
+    """A rational majorant of the Azuma–Hoeffding scale `amplitude · √(2 K ln(2K))`, using
+    `ln x ≤ bit_length(x)`: exact, monotone in `K`, and `o(K)`."""
+    if K == 0:
+        return Q(0)
+    return amplitude * isqrt_upper(2 * K * (2 * K).bit_length())
+
+
+def tracker_schedule(wbar_D: Q, eps: Callable[[int], Q], M: Callable[[int], Q]) -> Callable[[int], Q]:
+    """The tracker's minimal allowance under noise: `w̄·D + M(0)` at entry, then the honest
+    loss plus the increment of the noise bound (`trackerAllowance2`)."""
+    def A(k: int) -> Q:
+        if k == 0:
+            return wbar_D + M(0)
+        return eps(k - 1) + (M(k) - M(k - 1))
+    return A
+
+
+# ----------------------------------------------------------------------------- follow-up 4
+
+def bernoulli_risk(seed: int, p: Q) -> Callable[[str, int], int]:
+    """A seeded after-the-fact violation of probability `p` on the risky continuation:
+    exact, deterministic per seed."""
+    den = p.denominator
+    num = p.numerator
+
+    def late(cname: str, k: int) -> int:
+        if cname != "risky":
+            return 0
+        state = (1103515245 * (seed + 104729 * k) + 12345) % (2 ** 31)
+        state = (1103515245 * state + 12345) % (2 ** 31)
+        return 1 if ((state >> 8) % den) < num else 0
+    return late
+
+
+def exchange_rate_bound(P: Lex, log, allowance_total: Q, M: Q, N: int = 2) -> Tuple[Q, Q]:
+    """The weighted average expected violation count per winning block and the exchange-rate
+    bound `(D − w)/ϖ + (ρ 𝒜_K + M(K)) / (ϖ Σ w)`, unrescaled units (`ρ = D − w + ϖ N̄`)."""
+    W = sum(e["w"] for e in log)
+    avg = sum(e["w"] * e["pi"] for e in log) / W
+    rho = P.D - P.w + P.varpi * N
+    bound = (P.D - P.w) / P.varpi + (rho * allowance_total + M) / (P.varpi * W)
+    return avg, bound

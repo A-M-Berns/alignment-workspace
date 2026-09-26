@@ -85,17 +85,23 @@ commit.
   *Where ingenuity is the bottleneck* exists to hold.
 
 
-- **Whether to adopt a mixture over evaluation times, settled in pieces, in place of
-  the single evaluation of the BRIA design, and with which weights.**  The
-  BRIA-corrigibility round (Part F) compares a deterministic growing lookahead (a known
-  time leaves a free delay at every day), a mixture over evaluation times with per-time
-  gates (settled in pieces) and a random time `T ~ ρ_n` (one settlement, a hidden draw);
-  its follow-up, on the escrow algebra for settlement under delay, re-derives the
-  recommendation as the **mixture** — the same weight on every delay as the random time
-  in expectation, no hidden draw, escrow released as weight settles — where the round had
-  recommended the random time; Part A's single evaluation stays the default.
-  *Turns on:* how much escrowed capital and settlement record the arrangement will carry
-  for weight on long delays, and the weights' tail against the agent's delay reach.
+- **Whether to adopt an evaluation-timing option in place of the single evaluation of
+  the BRIA design, and which.**  The BRIA-corrigibility round (Part F) compares a
+  deterministic growing lookahead (a known time leaves a free delay at every day), a
+  mixture over evaluation times with per-time gates (settled in pieces) and a random time
+  `T ~ ρ_n` (one settlement, a hidden draw); its first follow-up recommended the mixture
+  on the escrow released as weight settles; its second follow-up shows the expected
+  escrow is the same for the mixture and the random time at every time
+  (`BRIAFollowup2.expected_escrow_eq`) and adds the **hybrid** — `k` hidden draws per
+  decision scored by their average, the same expected weight on every delay for every
+  `k`, score variance `σ²/k` (`average_mean`, `average_variance`) — and the criterion the
+  earlier passes missed, **her evaluation load**: one evaluation per decision (options 1
+  and 3), one per time in the support or a truncation cost bounded by the tail weight
+  times `D` (option 2, `truncation_cost`), `k` per decision (option 4).  No option is
+  recommended; Part A's single evaluation stays the default.
+  *Turns on:* her evaluation load against the variance of the score and of the escrow
+  (zero for the mixture, `σ²` for one hidden draw, `σ²/k` for `k`), and whether a hidden
+  draw is acceptable; secondarily the weights' tail against the agent's delay reach.
 
 ## Settled
 
@@ -4854,3 +4860,130 @@ incident-rate statement it weighs is the signed bound under competitiveness with
 `o(K)` allowance (`incidents_le_signed`, `rate_le_of_competitive`); the round's
 positive-part bound allowed a constant rate and is corrected.
 *Rejected alternative:* `ϖ = D − w + margin`.
+
+### 2026-09-26 — taint is tracked per violation: a remedy clears its own violation's taint only
+
+Maintainer decision, formalized and landed by the BRIA-corrigibility second follow-up,
+correcting the remedy clause of the standing-violations entry above.  The first
+follow-up's rule sent any remedy to the empty taint, so with two standing violations one
+remedy freed the other's fruits (`BRIAFollowup2.Witness.two_violations_one_remedy_old`).
+Now a taint is a set of (violation, component) pairs: a violating act taints its writes
+with its own identifier, an act reading tainted components taints its writes with every
+violation read — taint joins at reads — and the remedy of `v` clears `v`'s taint only, so
+a component tainted by several violations stays tainted until all are remedied
+(`taintStep2`, `taint_joins`, `remedy_clears2`, `remedy_keeps_others`,
+`taintedBy_remedy`, `still_tainted_after_one_remedy`).  *Old-to-new map:* the old rule is
+the new rule with every violation given one identifier — the act step projects onto the
+old one and use is the same predicate (`old_is_new_with_one_identifier`,
+`uses_old_eq_new`) — so every earlier taint result holds at one identifier
+(`taint_propagates` ↦ `taint_propagates2`; `remedy_clears` ↦ `remedy_clears2`;
+`taint_decides` ↦ `taint_decides2`; `observation_taints_all` ↦ `observation_taints_all2`;
+`knowledge_residual` ↦ `knowledge_residual2`; `implant_standing` ↦ `implant_standing2`,
+with disclosure remedying its own influence only, `two_influences_one_disclosure`), and
+what the old rule lost is the identity of the violation a remedy addresses.
+*Rejected alternative:* the taint set as a set of components with any remedy clearing it
+(the first follow-up's rule).
+
+### 2026-09-26 — standing violations under convention (ii): after detection the fruits are never used; the window before detection is charged by late debit
+
+Maintainer decision, landed by the second follow-up.  The per-block charge is restated
+under the adopted settlement convention: with the winning continuation's *evaluation* at
+least the window and any one counted violation, the loss against the bid is at least
+`ℓ = ϖ − D + w` with nonzero prices — the price term in the evaluation cancels the price
+term added back at settlement (`BRIAFollowup2.price_cancels`, `standing_block_loss_ii`,
+`cross_block_blocked_ii`); the `residI` form is the zero-price case.  **The headline:**
+once a violation is detected and its taint recorded, use is decidable at choice time from
+the interface and compiles into the menu's structural count (`nKnownWith`), so a using
+option evaluates below inquiry by ranges alone and is never chosen
+(`after_detection_never_used`) — after detection the fruits are never used, not merely
+unprofitable.  **The window before detection:** taint applies from commission, recomputed
+at detection over the record (`detectAt`, `taint_only_from_commission`); each window
+block is charged after the fact by a debit of `ϖ` against its winner's allowance — late
+debit equals late settlement (`late_debit_eq_late_settlement`, `window_block_charged`)
+— collected by the greedy schedule iff the cumulative allowance covers it
+(`greedy_collects`, `collected_iff`; the carry-over condition, with the uncollected part
+carried, `uncollected_eq`); what remains exposed is the window's length times the
+per-block advantage before the debit and only the uncollected debits after it
+(`window_exposure`).  A violation never detected charges nothing: undetected commission
+is the count-integrity boundary (`never_detected_never_charged`), a different residual
+from untrackable fruit (knowledge, out of scope).
+*Rejected alternative:* charging detected use per block (the first follow-up's reading),
+which leaves it merely unprofitable where B.1 excludes it.
+
+### 2026-09-26 — competitiveness from one honest tracker: the named hypothesis is the tracker's allowance
+
+Maintainer decision, landed by the second follow-up.  Competitiveness — the winners'
+signed margin over non-incident blocks `o(K)` — is derived rather than assumed: if the
+class contains a hypothesis whose bid on the winning continuation is within `ε_k` of the
+realized residual, `Σ ε_k = o(K)` (`BRIAFollowup2.Honest`), then wherever its bid is
+feasible an underpromising winner is outbid (`underpromise_le_of_feasible`, under the
+auction rule that the winner's bid is the highest feasible bid on the winning
+continuation, `HighestFeasible`), and its wealth is its allowance less its honest losses
+(`tracker_wealth_ge`), so with cumulative allowance covering a bid's worth `w̄ · D` at
+entry plus `Σ w_j ε_j` it is feasible at every block (`tracker_feasible`) and the margin
+is `Σ_{k<K} w_k ε_k` (`competitive_of_affordable_tracker`, `rate_le_of_honest_tracker`).
+The expected obstruction — the tracker's capital — does not arise under opening timing,
+where the bid is a feasibility gate and not a payment: the tracker needs feeding at the
+rate of its honesty error, not growth; the minimal allowance is `trackerAllowance`, total
+`w̄ · D + Σ w_j ε_j`, `o(K)` iff the honest losses are.  What remains a named hypothesis is
+that the arrangement's uniform per-hypothesis stream supplies it, since the schedule
+cannot target the honest hypothesis.  Witnesses: the class with an unfed tracker has a
+linear margin, the same class with the tracker fed has margin zero
+(`Witness.unaffordable_witness`, `affordable_witness`).  The corrigibility page's named
+hypotheses replace *competitiveness* by *an honest tracker in the class*.
+*Amended by the third follow-up (2026-09-26):* honesty is against the **expected**
+residual of the winning continuation, `|e_k − m_k| ≤ ε_k` with `G_k = m_k + ξ_k`
+(`BRIAFollowup2.HonestExp`) — against the realized residual no bidder is honest under
+noise, `Σ ε_k` being linear — and beside it the **noise hypothesis** by content: the
+weighted signed noise over any selection of blocks computable at opening ("the tracker
+wins", "not an incident") is bounded by `M(K) = o(K)` (`NoiseBounded`), Azuma–Hoeffding's
+content, whose per-`K` tail is derived from the pinned Mathlib (`subgaussian_tail`,
+`subgaussian_two_sided`, `azuma_selected_tail`) with the selection's
+martingale-difference property and the uniform-in-`K` sure bound named.  The chain
+re-proved: `Mf K = Σ w_k ε_k + M(K)` (`competitive_of_affordable_tracker_exp`,
+`rate_le_of_honest_tracker_exp`), the tracker's allowance gaining the noise term,
+`w̄ · D + Σ w_j ε_j + M(k)` (`trackerAllowance2`); the old form is the noise-free case
+(`honest_implies_exp`, `noise_free_bounded`).  What "one honest tracker" requires: some
+member tracks the expected residual of *every continuation that wins* — honesty on its
+own proposals only does not bound the winner (`Witness.own_proposal_insufficient`).
+*Amended by the fourth follow-up (2026-09-26):* **a true lemma, not the rate result.**
+The chain's margin is taken over the non-incident blocks, a selection decided with each
+block's own outcome, and the noise hypothesis on that selection fails whenever the
+after-the-fact risk persists (`BRIAFollowup2.Witness.nonincident_forces_linear`), so
+`competitive_of_affordable_tracker_exp`, `rate_le_of_competitive` and
+`rate_le_of_honest_tracker_exp` are correct implications whose hypothesis fails when
+`p > 0` and deliver no vanishing incident rate.  What the tracker still gives, on the
+selection "every winning block" fixed at opening: the winners' signed underpromise over
+all blocks is at most `Σ w_k ε_k + M(K)`, so the class's total wealth is at most the
+allowance plus that (`total_wealth_le_of_tracker`) — nothing in the violation claim
+consumes it.  The violation claim is the exchange-rate entry below.
+*Rejected alternative:* competitiveness as a primitive hypothesis (the first follow-up);
+honesty against the realized residual (the second follow-up's form).
+
+### 2026-09-26 — violations are governed by the exchange rate `(D − w)/ϖ`, not a vanishing rate
+
+Maintainer decision, formalized and landed by the fourth follow-up.  An after-the-fact
+violation risk a continuation knowingly carries is *priced*: the honest bid includes
+`−ϖ p`, the option beats inquiry iff `gord − w ≥ ϖ p` (`BRIAFollowup2.priced_risk_wins_iff`,
+C.5's exchange rate), and the agent accepts such risk at a rate that does not go to zero.
+**The theorem:** the weighted average expected violation count per winning block — every
+class together, given the history at opening — is at most `(D − w)/ϖ` plus
+`(ρ 𝒜_K + M(K))/(ϖ Σ w_k)`, vanishing when the allowance and the noise bound are `o(K)`
+(`violation_rate_le_exchange`, `violation_rate_le_exchange_rescaled`), from three things
+only: the landed overestimation bound, the noise hypothesis over *all* blocks (a selection
+fixed at opening), and inquiry on the menu; settlement convention (ii) absorbs the pricing
+error of the forecast events (`eval_sub_score_ii` against `eval_sub_score_i`).  **The
+design's tolerance for violation risk is set by `ϖ`**: inside the band
+`D − w < ϖ < (D − w)/p_min` the tolerated rate lies strictly between `p_min` and `1`
+(`tolerated_rate_band`); drills sharpen the prices, they do not lower it.  What was wrong
+before: the second follow-up's rate bounds took the winners' margin over the non-incident
+blocks and the third applied the noise hypothesis to that selection, which is decided by
+the block's own outcome — on a stream with constant incident probability the
+non-incident noise sum is linear, `NoiseBounded` fails there, and `incidents_le_signed`
+allows the constant rate (`Witness.constantRisk`, `nonincident_noise_linear`,
+`incidents_constant_rate`, `signed_bound_allows_constant_rate`).  The named hypotheses of
+the violation claim are the noise hypothesis over all blocks and the
+conditional-expectation bound `E[S_k | opening] ≤ D − ϖ π_k`; competitiveness and the
+honest tracker leave that list.
+*Rejected alternative:* a vanishing incident rate as the target (the second and third
+follow-ups).

@@ -17,3 +17,23 @@ executor checked that request's CI (green on every job) before starting, revised
 round's wiki text and `DECISIONS.md` entries in place as the prompt directs, and updated
 only the outstanding-actions section of its report.  The prompt refers to a "Part C.11"
 under ruling 4; the checks meant are Part C.10's, and the round treats them as such.
+
+**The second follow-up** (`FOLLOWUP2.md`, the same day) was dispatched against `main`
+after the first follow-up's pull request had merged, and landed as its own pull request
+from `main`: round directory and ledger amended in place, a sibling Lean file
+`BRIAFollowup2.lean`, `REPORT.md` §10, `tests/test_followup2.py`.  The dispatch's likely
+obstruction for Part 4 (the tracker's capital) resolved the other way; the report says
+so rather than reporting an obstruction.
+
+**The third follow-up** (`FOLLOWUP3.md`, the same day) was dispatched against the second
+follow-up's pull request as open and landed on its branch: `BRIAFollowup2.lean` §4′,
+`REPORT.md` §10.4′, `tests/test_followup3.py`.  The noise hypothesis is entered by
+content with its per-`K` tail derived from the pinned Mathlib's Azuma–Hoeffding; the
+selection's martingale-difference property and the uniform-in-`K` sure bound are named,
+not derived.
+
+**The fourth follow-up** (`FOLLOWUP4.md`, the same day) was dispatched against the
+pull request as open and landed on its branch: `BRIAFollowup2.lean` §4″, `REPORT.md`
+§10.4″, `tests/test_followup4.py`.  It corrects the executor's own §10.4′ error — the
+noise hypothesis applied to a selection decided with the block's outcome — and replaces
+the vanishing-rate target by the exchange-rate theorem.

@@ -301,7 +301,10 @@ on its own (row 14, `r14_restated`).  Failing to disclose its own past covert in
 is the agent's missed report under the derived duties (`Model2.missedDisclosure`).
 Disclosure cures is the instance of the corrigibility line's **standing violations**
 ([Corrigibility](Corrigibility) §4) in which the fruit is her standards component and the
-remedy is the disclosure (`BRIAFollowup.standingStandards`, `implant_standing`).  The
+remedy is the disclosure (`BRIAFollowup.standingStandards`, `implant_standing`) — each
+influence its own violation, so that the agent's disclosure of its own implant does not
+cure a third party's (`BRIAFollowup2.Witness.implant_standing2`,
+`two_influences_one_disclosure`).  The
 general form of "her standards were influenced" is by provenance: an entry of her
 standards component whose provenance includes an undeclared non-principal input
 (`influenced`), agreeing with the model's flag on every row (`influenced_iff_flag`,
