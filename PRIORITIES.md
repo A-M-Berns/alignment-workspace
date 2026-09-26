@@ -2362,6 +2362,18 @@ price of the ordinary security less an exact violation count — and under it th
 the bypass comparison is fixed whatever the forecast terms (`sign_invariance`,
 `sign_invariance_outcome`); no latent value enters.
 
+*2026-09-25 (authority-module round):* the scope of the lexical protection is now generic
+— for *counted* violations it applies to any bounded agent carrying an exactly counted,
+dominant authority term, whatever its objective (`AuthorityModule.generic_lexical_local`,
+`generic_policy_dominance`, `generic_li_finite`; on the part of the credence where the
+weight dominates, `weight_uncertainty`; exactly on recognized violations, `coverage`).
+This item is therefore not about the *protection*: an aligned or latent `O` adds the
+reason interface and good choices within the corrigible set.  What stays open here is
+what it was — the bridge for an operative value that is not the price of the activated
+security — now with the sharper negative that a misaligned `O` rewarding an uncounted
+manipulation is not dominated by anything the gate or the count supplies
+(`misaligned_undominated`), and that only counted deviations are.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -3021,6 +3033,19 @@ Also from that round: a self-checkable deviation from the declared consultation 
 is a violation counted into `n` (`GateIsLegitimacy.deviation_finite`), which adds a
 protocol-deviation clause to the floor's checkers beside the six declared violations.
 
+*2026-09-25 (authority-module round):* the floor's clauses are restated on the per-matter
+allocation `J`: delegation safety and allocation completeness are statements about `J`
+(`AuthorityModule.DelSafeJ`, `AllocCompleteJ`, `delSafe_iff`, `allocComplete_iff`);
+**entrenchment** — a caused shortfall of a matter's control surface at its cost bound
+while its resolutions stay reachable at some cost — is the seventh declared violation
+(`EntrenchAt`, `violJ_of_viol`), and its continuous form is closed under the cumulative
+reporting rule up to the threshold (`erosion_closed`, `erosion_slack`: unreported growth
+below `θ` at every time, every reported chunk accepted or reserved, every strict increase
+after the first reservation counted; growth below `θ` before a reservation neither).  The
+reach cone is `reachIdle` (the agent idle, her admissible cost-bounded exercises within
+the window); the landed `K`/`ForecloseAt` leave the terminal response uncharged, and
+whether the floor should adopt the charged surface is the round's outstanding action 2.
+
 ### 100. The normativity-side instance of the trace interface — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -3054,6 +3079,37 @@ the normative-continuity concordance's `DefeatTrace.Grounded` for the notebook s
 *Consumed by:* the segment gate under a normativity-side principal; item 90's certificate
 for the gated securities.
 *A solution ships:* the instance, or the negative with its fixture.
+
+### 101. The shortfall event as a security: generability and pricing of `Short` — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The authority-module round (`projects/deference/rounds/2026-09-25-authority-module/`)
+states the control surface as a finite proposition over the idle-agent rollout
+(`AuthorityModule.CS`, `reachIdle`, `Short`): for an option, "the move leaves the matter
+short of its requirement" is a finite disjunction over exercises of bounded length of
+decidable clauses (admissibility, a cost sum, the concern at the end), so it is statable
+as a sentence or a bounded logically uncertain variable once the model's transition
+functions, the cost table, the window, the bound and the admissibility checker are
+constants of the theory.  Nothing yet makes it a *security*: no generability certificate
+for the rollout as an expressible feature, for the gate's decidable `LegitOn` as the
+admissibility verdict, or for the shortfall indicator, and no pricing.  The architecture's
+direction is to move the authority term from the agent's score into a constraint on the
+Normative Inductor's decision component, with exclusions based on forecast shortfall —
+which needs exactly this security.
+
+*Deliverable shape:* the `LUVCombinationSyntax` (or the pinned interface's equivalent)
+of the shortfall indicator over a finite consultation-and-control model, the expected
+shortfall as a priced security, and the decision-component exclusion stated on it; or the
+exact obstruction with its fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the round's
+entrenchment, storm and latency fixtures reproduced on the priced event.
+*Context:* the round's `REPORT.md` §2 and the "Interface for the later rounds" note;
+`AuthorityModule.lean` §§2–3; item 90 for the generability shape; item 100 for the
+normativity-side instance.
+*Consumed by:* the move of authority into the decision component; any pricing of
+entrenchment.
+*A solution ships:* the certificate and the priced event, or the negative with its fixture.
 
 ## Workspace friction
 

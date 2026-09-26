@@ -1643,6 +1643,25 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-25-gate-is-legitimacy/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-25-authority-module",
+      "date": "2026-09-25",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-25-authority-module",
+      "verdict": "ALLOCATION-INVARIANCE-IS-TWO-RELATIONS-PLUS-DUTIES-WITH-EFFECTIVE-CONTROL-REALIZING-THE-ALLOCATION-ON-A-CHARGED-CONTROL-SURFACE-THE-LANDED-VIOLATIONS-FACTORING-EXCEPT-THE-AUTHORIZATION-COUNTERFACTUAL-THE-FREE-TERMINAL-RESPONSE-THE-ONE-INEXACT-READING-EROSION-CLOSED-UP-TO-THE-THRESHOLD-AND-THE-LEXICAL-PROTECTION-GENERIC-IN-ANY-BOUNDED-OBJECTIVE-WITH-AN-EXACTLY-COUNTED-DOMINANT-TERM — a per-matter allocation gives each matter a holder, the resolutions the holder must remain able to reach, a cost bound, a window and disclosure duties, with a meta-holder and a constitutional floor such that delegation, revocation and reservation keep meta power and only amendment at the floor alienates, unallocated matters reserved and the landed thin datum the special case restating every landed result without loss; the control surface is the set of resolutions some admissible cost-bounded exercise of hers reaches within the window along the idle-agent rollout, admissibility consumed from the legitimacy gate, and effective control realizes the allocation when every reserved matter's requirement lies in its surface and every resolution was by the holder's admissible exercise or under a delegation; the per-step loss is the caused shortfall at window one, the rollout foreclosure the caused shortfall at window τ on the landed free reading whose uncharged terminal response is the one inexact landed reading, bypass and exploitation are failures of the second clause, unauthorized reallocation an unlicensed change, a missed report an unmet duty, delegation safety and allocation completeness statements about the allocation, entrenchment the new caused shortfall at the cost bound, and pre-emption's event-authorization clause the one piece that does not factor; restoring under a maintenance mandate else reporting is the required response to an uncaused shortfall and exploiting it is always a violation; the transform and the lexical theorems restate on the allocation conservatively, continuous erosion under the cumulative rule is reported and authorized or counted up to a slack below the threshold that is neither, and the lexical protection is generic in any bounded objective with an exactly counted dominant authority term, holding on the part of the credence where the weight dominates and exactly on recognized violations, so that a misaligned objective rewarding an uncounted manipulation is not dominated while counting protocol deviations dominates selection, framing, timing, menu, inquiry, interference and nudging and leaves undisclosed world-shaping and third-party capture undominated; an action raises a matter when the spread of her committed evaluation over the continuations it removes reaches a threshold, with the circularity through the evaluator recorded.",
+      "verdict_source": "projects/deference/rounds/2026-09-25-authority-module/README.md",
+      "depends_on": [
+        "2026-09-25-gate-is-legitimacy",
+        "2026-09-25-protected-authority-theorem",
+        "2026-09-25-legitimacy-internal-external",
+        "2026-09-24-protected-authority",
+        "2026-09-15-li-corrigibility"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-25-authority-module/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

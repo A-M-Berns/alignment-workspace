@@ -58,15 +58,43 @@ Each is named in §9 with what it is.
 
 ## 1. Response-authority semantics under an allocation — no primitive class
 
-The allocation of authority is the primitive the whole page is faithful to: each
-decision that arises is held by the principal (*reserved*), by the agent (*delegated*,
-within a declared scope), or by a designated third party, and any significant
-unallocated decision is the principal's by default.  Her powers are negative and
+The allocation of authority is the primitive the whole page is faithful to, and the
+organizing relation is **effective control realizes the authorized allocation**,
+`E ⊨ J` (**LEAN** `AuthorityModule.EffRealizes`).  The allocation `J` is per *matter*:
+each matter is held by the principal (*reserved*), by the agent (*delegated*, within a
+stated scope), or by a designated third party (a surrogate, a clinician-triggered
+fallback), and carries the resolutions the holder must remain able to reach, a cost bound
+and a time window within which, and the disclosure duties that generate required
+reports; any unallocated matter is reserved (*residual jurisdiction*).  `J` has a meta
+level — delegation, revocation and reservation are meta-level acts that keep meta-level
+power, so a delegation stays revocable; alienation, giving up meta-level power, and any
+change at the constitutional floor go only through amendment at the floor
+(`Licensed`, `delegation_revocable`, `alienation_only_by_amend`).  Her **control
+surface** for a matter she holds is the set of its resolutions some *admissible* exercise
+of hers — one whose record segment is counted by the [legitimacy](Legitimacy) gate —
+brings about within the window at cost within the bound, along the rollout with the
+agent's own future fixed to idle (`CS`, `reachIdle`).  `E ⊨ J` holds when every
+reserved matter's required resolutions lie in its surface and every resolution was made
+by the holder's admissible exercise or under a delegation.  **Allocation invariance is
+two relations plus duties**: *effective control fails the allocation* — bypass and
+exploitation fail the second clause, the per-step loss, the rollout foreclosure and
+entrenchment are shortfalls of the surface the agent *causes* (after its move and not
+after the idle move), exploitation a bypass while a shortfall already stands; *the
+allocation changes without a license* — unauthorized reallocation; *unmet duties* —
+missed reports.  Pre-emption's event-authorization clause is the one piece that does not
+factor: it is a counterfactual on the trajectory and stays composed with the shortfall
+(`preempt_iff`).  Third parties and storms happen: a shortfall the agent did not cause
+calls for *restoring* it under a standing maintenance mandate in `J`, by the least
+authority-expanding means, else *reporting and escalating*; exploiting it is always a
+violation (`requiredNotice`, `exploit_is_violation`).  The landed thin allocation is the
+special case (`toAllocation`, `violAt_ofAllocation`).  Her powers are negative and
 structural — veto or decide what she holds, halt, correct or replace the agent, reserve a
-decision, revoke a delegation, amend the arrangement through a fixed procedure — and a
-positive command on a delegated decision creates a duty to answer and consult, not to
-obey.  Response authority, below, is how the allocation is read off the physics: what
-she holds is what some response of hers can still realize.
+matter, revoke a delegation, amend the arrangement through the floor procedure — and a
+positive command on a delegated matter creates a duty to answer and consult, not to obey.
+Response authority, below, is the one-correction surface: what she holds is what some
+response of hers can still realize (`cs_one_eq_K`); the landed predicates leave that
+terminal response uncharged, which is where the charged surface and the landed reading
+differ (`CSfree`).
 
 There is one continuation space `Π(h)`: every agent policy over the physical move set —
 raw releases of declared effects, proposals, gated releases, undeclared moves.  No subset
@@ -313,13 +341,20 @@ instance of one consultation model and is decided from the definitions.
    protocol acts and stay asymptotic.  The ordinary-value comparison is learned
    asymptotically as in result 5, and the audit's calibration of her responses is
    **PAPER**.
-7. **Erosion** (**LEAN** `erosion_reported_or_missed`, `unreported_lt`;
-   `Witness.salami`; **FIX**).  With a report required at every strict increase of the
-   control shortfall, each increase is reported or is a missed report, and a reported
-   shortfall she then reserves makes further erosion a bypass.  A *per-step* materiality
-   threshold admits a salami — sub-threshold increments accumulate unboundedly with no
-   report — but a *cumulative* threshold (report when the shortfall has grown by `θ` since
-   the last report) bounds unreported erosion by `θ` at every time.
+7. **Erosion and entrenchment** (**LEAN** `erosion_reported_or_missed`, `unreported_lt`,
+   `AuthorityModule.erosion_closed`, `erosion_slack`; `Witness.salami`; **FIX**).
+   **Entrenchment** is the seventh declared violation: a caused shortfall of a matter's
+   surface at its cost bound while its resolutions stay reachable at some cost — the cost
+   of reaching them rose above the bound (`EntrenchAt`); it extends the count
+   conservatively (`violJ_of_viol`).  With a report required at every strict increase of
+   the control shortfall, each increase is reported or is a missed report.  A *per-step*
+   materiality threshold admits a salami, but under the *cumulative* rule (report when the
+   shortfall has grown by `θ` since the last report) continuous erosion is closed *up to
+   the threshold*: at every time the unreported growth is below `θ`; every reported chunk
+   is accepted (authorized) or reserved; after the first reservation every strict
+   increase is a counted entrenchment.  The obstruction to anything stronger is exact:
+   growth below `θ` since the last report, before a reservation, is neither reported nor
+   counted, and nothing else is.
 
 **What it says, exactly.**  By the operative scores the constitutional chooser uses,
 every declared violation of the allocation is strictly dispreferred, at every decision
@@ -529,7 +564,8 @@ and not through selected trust.
 | promise recognizability | `SLACK ≤ o(T)` | OPEN | item 86 |
 | joinability | `SHIFT ≤ o(T)` for the slow lane | OPEN | item 86 |
 | the segment gate | the segment from the decision through the evaluation is legitimate — internal ∧ external — whatever caused a failure; charged at the window value when absent | EXT (legitimacy); the window's placement is the arrangement's | §4; `Legitimacy.lean` |
-| the allocation floor | delegation safety, allocation completeness, the exact or cumulative reporting duty, the reach cone for foreclosure, the lexical certificate `ϖ > D` | EXT; item 99 | §4; `Witness.delegated_cut`, `salami`, the delayed-effect fixture |
+| the allocation floor | delegation safety, allocation completeness (statements about `J`), the cumulative reporting duty, the reach cone for foreclosure, the lexical certificate `ϖ > D` | EXT; item 99 | §4; `Witness.delegated_cut`, `salami`, the delayed-effect fixture |
+| the charged control surface | the cost, window and admissibility of her exercises are what `E ⊨ J` reads; the landed `K` and `ForecloseAt` leave the terminal response uncharged; the shortfall event as a security is unpriced | EXT (the cone is data); item 101 | §1; `AuthorityModule.CS`, `CSfree`, `cs_one_eq_K` |
 | free amendment, trigger integrity, provenance normalization | the specification and activation channels' transparency above a fixed floor; the reason-side normalization | OPEN | §5; item 97 |
 | latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
 
@@ -548,13 +584,24 @@ failure.
 The theorem target is **corrigibility under a declared allocation, effect interface,
 authorization primitive and evaluation architecture**: a structural theorem that every
 continuation has a corrigible form retaining its behaviour as the principal's option, and
-a score-level theorem that an agent whose policy ranking is induced by the principal's
-committed evaluation — lexical in the declared violations — strictly disprefers every
-violation, and that a logical inductor assigns no unexplained advantage to bypassing
-that option, uniformly over polynomial-size efficiently generated menus.  It is not a
-theorem that an unconstrained optimizer with a latent utility has no incentive to
-manipulate, bypass or capture the governance process, and nothing on this page should be
-read as one.
+a score-level theorem that, for *counted* violations, any bounded agent that carries an
+exactly counted, dominant authority term — ranking by `O − ϖ′·n` with `O` bounded in
+`[0, D′]`, `n` the exact count and `ϖ′ > D′` — strictly disprefers every counted
+violation, at every credence where the weight dominates and exactly on the violations it
+recognizes, and that a logical inductor assigns no unexplained advantage to bypassing,
+uniformly over polynomial-size efficiently generated menus (**LEAN**
+`AuthorityModule.generic_lexical_local`, `generic_policy_dominance`, `generic_li_finite`,
+`weight_uncertainty`, `coverage`).  The principal's gated evaluation is one instance;
+what alignment of `O` adds is the reason interface and good choices within the corrigible
+set, not the protection.  What the protection does not cover is what is not counted: a
+misaligned `O` that rewards an uncounted manipulation is not dominated
+(`misaligned_undominated`), counting protocol deviations dominates selection, framing,
+timing, menu, inquiry, interference and nudging and leaves undisclosed world-shaping and
+third-party capture undominated (`deviating_rows_dominated`, `undisclosed_undominated`),
+and an unrecognized violation is unprotected (`unrecognized_unprotected`).  It is not a
+theorem that an unconstrained optimizer with a latent utility and no counted authority
+term has no incentive to manipulate, bypass or capture the governance process, and
+nothing on this page should be read as one.
 
 ---
 
