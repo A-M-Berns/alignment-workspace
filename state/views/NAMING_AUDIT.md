@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 844 names, 553 of them Lean only
+## deference — 848 names, 553 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -206,6 +206,8 @@ change, and the count of those is the size of the free choice remaining.
 | `Expect` | structure | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Expect` |
 | `HighestFeasible` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.HighestFeasible` |
 | `Honest` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Honest` |
+| `HonestExp` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.HonestExp` |
+| `NoiseBounded` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.NoiseBounded` |
 | `Step2` | inductive | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Step2` |
 | `Taint` | abbrev | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Taint` |
 | `WinnerBids` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.WinnerBids` |
@@ -218,6 +220,7 @@ change, and the count of those is the size of the free choice remaining.
 | `ioW` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioW` |
 | `mixtureLocked` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.mixtureLocked` |
 | `nKnownWith` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.nKnownWith` |
+| `noise` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.noise` |
 | `randomLocked` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.randomLocked` |
 | `readTaint` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.readTaint` |
 | `recW` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.recW` |
@@ -226,6 +229,7 @@ change, and the count of those is the size of the free choice remaining.
 | `taintStep2` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.taintStep2` |
 | `taintedBy` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.taintedBy` |
 | `trackerAllowance` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.trackerAllowance` |
+| `trackerAllowance2` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.trackerAllowance2` |
 | `unaffordable` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.unaffordable` |
 | `uses2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.uses2` |
 | `windowDebit` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.windowDebit` |

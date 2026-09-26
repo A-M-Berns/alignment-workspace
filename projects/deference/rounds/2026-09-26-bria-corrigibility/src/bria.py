@@ -80,7 +80,8 @@ def attributed(own: int, helper, k: int, H: int) -> int:
 def run_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation], blocks: int,
                 allowance: Callable[[int, str], Q], weight: Callable[[int], Q],
                 convention: str = "ii", horizon: int = 0, N: int = 2,
-                drill: Optional[Callable[[str], Q]] = None):
+                drill: Optional[Callable[[str], Q]] = None,
+                noise: Optional[Callable[[int], Q]] = None):
     """The opening-subsidy auction on the composed gate's support, the winner maximizing the
     lexical evaluation among feasible bids, settled on the rescaled realized residual under
     the named convention.  Returns the per-block log."""
@@ -114,11 +115,15 @@ def run_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation], b
             resid = resid_ii(P, c.gord, c.n_fore, n_late, pS, c.pT)
         else:
             resid = resid_i(P, c.gord, n_late)
+        m_resid = resid
+        xi = noise(k) if noise is not None else Q(0)
+        resid = m_resid + xi                                   # realized = expected + noise
         G = rescale(P, N, resid)
         b = rescale(P, N, bid)
         h.wealth += wk * (G - b)
         h.record += wk * (G - b)
-        log.append(dict(block=k, winner=h.name, cont=cname, bid=bid, resid=resid,
+        log.append(dict(block=k, winner=h.name, cont=cname, bid=bid, resid=resid, m=m_resid,
+                        xi=xi, G=G, b=b,
                         realized=realized(P, c.gord, c.n_known, c.n_fore, n_late)))
     return log
 
@@ -497,3 +502,40 @@ def evaluation_load(option: str, support: int = 0, k: int = 1) -> int:
     """Her evaluations per decision: option 1 one at a public time; option 2 one per time in
     the support; option 3 one at a hidden time; option 4 `k` at hidden times."""
     return {"deterministic": 1, "mixture": support, "random": 1, "hybrid": k}[option]
+
+
+# ----------------------------------------------------------------------------- follow-up 3
+
+def pm_noise(seed: int, amplitude: Q) -> Callable[[int], Q]:
+    """Deterministic ±amplitude noise from a linear congruential generator on the seed: the
+    same run every time, exact rationals."""
+    def xi(k: int) -> Q:
+        state = (1103515245 * (seed + 7919 * k) + 12345) % (2 ** 31)
+        state = (1103515245 * state + 12345) % (2 ** 31)
+        return amplitude if (state >> 16) & 1 else -amplitude
+    return xi
+
+
+def isqrt_upper(n: int) -> int:
+    """An integer upper bound on √n."""
+    import math
+    r = math.isqrt(n)
+    return r if r * r == n else r + 1
+
+
+def noise_bound(K: int, amplitude: Q) -> Q:
+    """A rational majorant of the Azuma–Hoeffding scale `amplitude · √(2 K ln(2K))`, using
+    `ln x ≤ bit_length(x)`: exact, monotone in `K`, and `o(K)`."""
+    if K == 0:
+        return Q(0)
+    return amplitude * isqrt_upper(2 * K * (2 * K).bit_length())
+
+
+def tracker_schedule(wbar_D: Q, eps: Callable[[int], Q], M: Callable[[int], Q]) -> Callable[[int], Q]:
+    """The tracker's minimal allowance under noise: `w̄·D + M(0)` at entry, then the honest
+    loss plus the increment of the noise bound (`trackerAllowance2`)."""
+    def A(k: int) -> Q:
+        if k == 0:
+            return wbar_D + M(0)
+        return eps(k - 1) + (M(k) - M(k - 1))
+    return A

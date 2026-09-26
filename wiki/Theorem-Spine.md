@@ -1027,7 +1027,17 @@ honest tracker (`HighestFeasible`, `WinnerBids`, `Honest`, `underpromise_le_of_f
 `tracker_wealth_ge`, `tracker_feasible`, `competitive_of_honest_tracker`,
 `competitive_of_affordable_tracker`, `rate_le_of_honest_tracker`, `trackerAllowance`,
 `trackerAllowance_covers`, `trackerAllowance_total`) with both witnesses
-(`Witness.unaffordable_witness`, `affordable_witness`).  **LEAN**.  Lean:
+(`Witness.unaffordable_witness`, `affordable_witness`); and, from the third follow-up,
+the tracker under noise — honesty against the expected residual and the noise hypothesis
+by content (`HonestExp`, `noise`, `NoiseBounded`), the old form as the noise-free case
+(`honest_implies_exp`, `noise_free_bounded`), the chain re-proved
+(`underpromise_le_of_feasible_exp`, `tracker_wealth_ge_exp`, `tracker_feasible_exp`,
+`competitive_of_honest_tracker_exp`, `competitive_of_affordable_tracker_exp`,
+`rate_le_of_honest_tracker_exp`), the schedule with the noise term (`trackerAllowance2`,
+`trackerAllowance2_nonneg`, `trackerAllowance2_total`, `trackerAllowance2_covers`,
+`trackerAllowance2_zero`), the per-`K` tail from the pinned Mathlib's Azuma–Hoeffding
+(`subgaussian_tail`, `subgaussian_two_sided`, `azuma_selected_tail`) and the witnesses
+(`Witness.own_proposal_insufficient`, `noisy_honesty_witness`).  **LEAN**.  Lean:
 [`BRIAFollowup2.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3f515d476d00616cac4a17c3389a56951964db48/lean/Workspace/Deference/Contrib/BRIAFollowup2.lean).
 
 ## 11. The counterexamples that fix the shape

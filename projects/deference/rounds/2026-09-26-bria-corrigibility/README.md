@@ -10,7 +10,11 @@ reduced to two external results, the sharpened hypotheses, settlement under dela
 the second follow-up**: per-violation taint with the old-to-new map, the headline for
 standing violations — after detection the fruits are never used — with the window before
 detection charged by late debit and its exposure bound, Part F's criterion revised with a
-fourth option and her evaluation load, competitiveness derived from one honest tracker).
+fourth option and her evaluation load, competitiveness derived from one honest tracker;
+**§10.4′ the third follow-up**: the honest tracker restated against the expected residual
+with the noise hypothesis by content and its per-`K` tail derived from Mathlib's
+Azuma–Hoeffding, the schedule with the noise term, and what "one honest tracker"
+requires).
 Lean:
 `lean/Workspace/Deference/Contrib/BRIACorrigibility.lean` (the rulings, the design, the
 four tests, the exchange rate, the pressure-test lemmas, the extended consultation model
@@ -19,8 +23,8 @@ with its rows, the anchoring lemma and witnesses, Part F's statements, the witne
 reduction of drill calibration, the actuator condition, influence by provenance, the escrow
 algebra) and `BRIAFollowup2.lean` (per-violation taint, the restatement under (ii), use
 compiled into the structural count, the window before detection and the late-debit
-collection, Part F's escrow and variance, the honest tracker).  Fixtures: `src/bria.py`,
-run by `python3 tests/run.py` (45 tests).  Wiki:
+collection, Part F's escrow and variance, the honest tracker, and the tracker under
+noise).  Fixtures: `src/bria.py`, run by `python3 tests/run.py` (49 tests).  Wiki:
 `Corrigibility.md` (§4 rewritten, §6 and the wall restated, Part F as an open question,
 the scope statement), `Normative-Inductor.md` and `Normative-Induction.md` (revised in
 place), `Continuation-BRIA.md`, `Legitimacy.md`, `Glossary.md`, `Theorem-Spine.md`.

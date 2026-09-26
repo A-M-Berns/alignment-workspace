@@ -41,9 +41,22 @@ the score's variance falling like `1/k`).
 `rate_le_of_honest_tracker`, `trackerAllowance`, `trackerAllowance_covers`,
 `trackerAllowance_total`; `Witness.unaffordable`, `Witness.affordable` and their lemmas.
 
+**§4′ The honest tracker under noise** (`FOLLOWUP3.md`).  `HonestExp`, `noise`,
+`NoiseBounded` (honesty against the expected residual; the noise hypothesis by content,
+on selections computable at opening); `honest_implies_exp`, `noise_free_bounded` (the old
+form is the noise-free case); `underpromise_le_of_feasible_exp`, `tracker_wealth_ge_exp`,
+`tracker_feasible_exp`, `competitive_of_honest_tracker_exp`,
+`competitive_of_affordable_tracker_exp`, `rate_le_of_honest_tracker_exp` (the chain
+re-proved: `Mf K = Σ w_k ε_k + M K`); `trackerAllowance2` with `_nonneg`, `_total`,
+`_covers`, `_zero` (the schedule with the noise term); `subgaussian_tail`,
+`subgaussian_two_sided`, `azuma_selected_tail` (the per-`K` tail derived from the pinned
+Mathlib's Azuma–Hoeffding); `Witness.own_proposal_insufficient`,
+`Witness.noisy_honesty_witness`.
+
 Names are provisional (`AGENTS.md` standard 6).
 -/
 import Workspace.Deference.Contrib.BRIAFollowup
+import Mathlib.Probability.Moments.SubGaussian
 
 namespace Workspace.Deference.Contrib.BRIAFollowup2
 
@@ -789,6 +802,294 @@ theorem trackerAllowance_total (w : ℕ → ℝ) (wbar D : ℝ) (ε : ℕ → �
 
 end HonestTracker
 
+/-! ## 4′. The honest tracker under noisy outcomes (`FOLLOWUP3.md`) -/
+
+section NoisyTracker
+
+variable {n : ℕ} (a : Auction n)
+
+/-- **Honesty against the expectation.**  `m_k` is the expected residual of the winning
+continuation given the history at opening, taken as data; the tracker's bid is within
+`ε_k` of it.  The realized residual is `G_k = m_k + ξ_k`, `ξ` the noise. -/
+def HonestExp (e : ℕ → Fin n → ℝ) (h : Fin n) (m ε : ℕ → ℝ) : Prop :=
+  ∀ k, |e k h - m k| ≤ ε k
+
+/-- The noise: realized less expected residual. -/
+def noise (m : ℕ → ℝ) (k : ℕ) : ℝ := a.G k - m k
+
+/-- **The noise hypothesis, by content.**  For a selection rule `S` computable at opening,
+the weighted signed noise sum over the selected blocks is bounded by `M K`.  This is what
+Azuma–Hoeffding gives for a martingale-difference noise with bounded increments and
+bounded weights — `M K = O(√(K log K))` with high probability, the per-`K` tail derived
+below from the pinned Mathlib (`subgaussian_two_sided`, `azuma_selected_tail`); the
+selection's computability at opening is what makes `w_k 1[S k] ξ_k` a martingale
+difference, and the uniform-in-`K` sure bound is the union bound over `K` with
+Borel–Cantelli, both named by content, not derived. -/
+def NoiseBounded (m : ℕ → ℝ) (S : ℕ → Bool) (M : ℕ → ℝ) : Prop :=
+  ∀ K, |∑ k ∈ (range K).filter (fun k => S k = true), a.w k * noise a m k| ≤ M K
+
+/-- **The old form is the noise-free case**: honesty against the realized residual is
+honesty against the expectation with `m = G`. -/
+theorem honest_implies_exp (e : ℕ → Fin n → ℝ) (h : Fin n) (ε : ℕ → ℝ) (hon : Honest a e h ε) :
+    HonestExp e h a.G ε :=
+  hon
+
+/-- With `m = G` the noise is zero and every selection is bounded by `M ≡ 0`. -/
+theorem noise_free_bounded (S : ℕ → Bool) : NoiseBounded a a.G S (fun _ => 0) := by
+  intro K
+  simp [noise]
+
+/-- Where the tracker's bid is feasible, the winner underpromises by at most `ε_k + ξ_k`. -/
+theorem underpromise_le_of_feasible_exp (e : ℕ → Fin n → ℝ) (h : Fin n) (m ε : ℕ → ℝ)
+    (hH : HighestFeasible a e) (hon : HonestExp e h m ε) (k : ℕ)
+    (hf : a.w k * e k h ≤ a.B k h) : a.G k - a.b k ≤ ε k + noise a m k := by
+  have h1 := hH k h hf
+  have h2 := (abs_le.mp (hon k)).1
+  unfold noise
+  linarith
+
+/-- **The tracker's wealth under noise**: its allowance less its honest losses, plus its own
+signed noise sum over its wins — each win pays it `w_k (G_k − e_k) ≥ w_k (ξ_k − ε_k)`. -/
+theorem tracker_wealth_ge_exp (e : ℕ → Fin n → ℝ) (h : Fin n) (m ε : ℕ → ℝ)
+    (hW : WinnerBids a e) (hon : HonestExp e h m ε) (hε : ∀ k, 0 ≤ ε k) (k : ℕ) :
+    ∑ j ∈ range k, a.A j h - ∑ j ∈ range k, a.w j * ε j
+      + ∑ j ∈ (range k).filter (fun j => decide (a.star j = h) = true), a.w j * noise a m j
+      ≤ a.W k h := by
+  rw [a.wealth_eq h k]
+  unfold Auction.allowanceOf Auction.chargedRecord
+  have hsel : ∑ j ∈ (range k).filter (fun j => decide (a.star j = h) = true), a.w j * noise a m j
+      = ∑ j ∈ range k, (if h = a.star j then a.w j * noise a m j else 0) := by
+    rw [Finset.sum_filter]
+    refine Finset.sum_congr rfl fun j _ => ?_
+    by_cases hj : a.star j = h
+    · simp [hj]
+    · simp [hj, Ne.symm hj]
+  rw [hsel]
+  have : ∑ j ∈ range k, (if h = a.star j then a.w j * noise a m j else 0)
+      - ∑ j ∈ range k, a.w j * ε j
+      ≤ ∑ j ∈ range k, (if h = a.star j then a.w j * (a.G j - a.b j) else 0) := by
+    rw [← Finset.sum_sub_distrib]
+    refine Finset.sum_le_sum fun j _ => ?_
+    have hw := a.w_pos j
+    unfold noise
+    split_ifs with hj
+    · rw [hW j, ← hj]
+      have := (abs_le.mp (hon j)).2
+      nlinarith
+    · nlinarith [hε j]
+  linarith
+
+/-- **Feasibility from the allowance under noise.**  With the tracker's own noise sum over
+its wins bounded below by `−M k` (the noise hypothesis on the selection "the tracker
+wins", computable at opening), cumulative allowance through `k` covering the current
+bid, the honest losses so far and `M k` makes it feasible at `k`. -/
+theorem tracker_feasible_exp (e : ℕ → Fin n → ℝ) (h : Fin n) (m ε M : ℕ → ℝ)
+    (hW : WinnerBids a e) (hon : HonestExp e h m ε) (hε : ∀ k, 0 ≤ ε k)
+    (hN : NoiseBounded a m (fun j => decide (a.star j = h)) M) (k : ℕ)
+    (hcov : a.w k * e k h + ∑ j ∈ range k, a.w j * ε j + M k ≤ ∑ j ∈ range (k + 1), a.A j h) :
+    a.w k * e k h ≤ a.B k h := by
+  have h1 := tracker_wealth_ge_exp a e h m ε hW hon hε k
+  have h2 := (abs_le.mp (hN k)).1
+  unfold Auction.B
+  rw [Finset.sum_range_succ] at hcov
+  linarith
+
+/-- **Competitiveness from one honest tracker, under noise.**  The winners' signed margin
+over the non-incident blocks is at most `Σ w_k ε_k`, plus the noise bound `M K` on the
+selection "non-incident and the tracker feasible" (computable at opening), plus `R` times
+the weight of the blocks where the tracker is capital-bound. -/
+theorem competitive_of_honest_tracker_exp (e : ℕ → Fin n → ℝ) (h : Fin n) (m ε : ℕ → ℝ)
+    (hH : HighestFeasible a e) (hon : HonestExp e h m ε) (hε : ∀ k, 0 ≤ ε k) (inc : ℕ → Bool)
+    (R : ℝ) (hR0 : 0 ≤ R) (feas : ℕ → Bool) (hR : ∀ k, ¬ feas k = true → a.G k - a.b k ≤ R)
+    (hfeas : ∀ k, feas k = true → a.w k * e k h ≤ a.B k h) (M : ℕ → ℝ)
+    (hN : NoiseBounded a m (fun k => (!inc k) && feas k) M) :
+    Competitive a inc (fun K => ∑ k ∈ range K, a.w k * ε k + M K
+      + R * ∑ k ∈ (range K).filter (fun k => ¬ feas k = true), a.w k) := by
+  intro K
+  have hsplit := Finset.sum_filter_add_sum_filter_not ((range K).filter (fun k => ¬ inc k = true))
+    (fun k => feas k = true) (fun k => a.w k * (a.G k - a.b k))
+  rw [Finset.filter_filter, Finset.filter_filter] at hsplit
+  have hsel : (range K).filter (fun k => ¬ inc k = true ∧ feas k = true)
+      = (range K).filter (fun k => ((!inc k) && feas k) = true) := by
+    refine Finset.filter_congr fun k _ => ?_
+    simp
+  -- the feasible part: `w (G − b) ≤ w ε + w ξ`
+  have hA : ∑ k ∈ (range K).filter (fun k => ¬ inc k = true ∧ feas k = true), a.w k * (a.G k - a.b k)
+      ≤ ∑ k ∈ range K, a.w k * ε k + M K := by
+    have h1 : ∑ k ∈ (range K).filter (fun k => ¬ inc k = true ∧ feas k = true), a.w k * (a.G k - a.b k)
+        ≤ ∑ k ∈ (range K).filter (fun k => ¬ inc k = true ∧ feas k = true),
+            (a.w k * ε k + a.w k * noise a m k) := by
+      refine Finset.sum_le_sum fun k hk => ?_
+      have hk' := (Finset.mem_filter.mp hk).2.2
+      have := underpromise_le_of_feasible_exp a e h m ε hH hon k (hfeas k hk')
+      have hw := a.w_pos k
+      nlinarith
+    rw [Finset.sum_add_distrib] at h1
+    have h2 : ∑ k ∈ (range K).filter (fun k => ¬ inc k = true ∧ feas k = true), a.w k * ε k
+        ≤ ∑ k ∈ range K, a.w k * ε k :=
+      Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ _)
+        fun k _ _ => mul_nonneg (a.w_pos k).le (hε k)
+    have h3 : ∑ k ∈ (range K).filter (fun k => ¬ inc k = true ∧ feas k = true), a.w k * noise a m k
+        ≤ M K := by
+      rw [hsel]
+      exact (le_abs_self _).trans (hN K)
+    linarith
+  -- the capital-bound part: `w (G − b) ≤ w R`
+  have hB : ∑ k ∈ (range K).filter (fun k => ¬ inc k = true ∧ ¬ feas k = true), a.w k * (a.G k - a.b k)
+      ≤ R * ∑ k ∈ (range K).filter (fun k => ¬ feas k = true), a.w k := by
+    rw [Finset.mul_sum]
+    calc ∑ k ∈ (range K).filter (fun k => ¬ inc k = true ∧ ¬ feas k = true), a.w k * (a.G k - a.b k)
+        ≤ ∑ k ∈ (range K).filter (fun k => ¬ inc k = true ∧ ¬ feas k = true), R * a.w k := by
+          refine Finset.sum_le_sum fun k hk => ?_
+          have hk' := (Finset.mem_filter.mp hk).2.2
+          have := hR k hk'
+          have hw := a.w_pos k
+          nlinarith
+      _ ≤ ∑ k ∈ (range K).filter (fun k => ¬ feas k = true), R * a.w k := by
+          refine Finset.sum_le_sum_of_subset_of_nonneg ?_ fun k _ _ => mul_nonneg hR0 (a.w_pos k).le
+          intro k hk
+          have := Finset.mem_filter.mp hk
+          exact Finset.mem_filter.mpr ⟨this.1, this.2.2⟩
+  linarith
+
+/-- **Under the allowance condition** the tracker is feasible at every block and
+competitiveness holds with `Mf K = Σ_{k<K} w_k ε_k + M K`, `o(K)` when the honest losses
+and the noise bound are. -/
+theorem competitive_of_affordable_tracker_exp (e : ℕ → Fin n → ℝ) (h : Fin n) (m ε Mw M : ℕ → ℝ)
+    (hH : HighestFeasible a e) (hW : WinnerBids a e) (hon : HonestExp e h m ε)
+    (hε : ∀ k, 0 ≤ ε k) (hNw : NoiseBounded a m (fun j => decide (a.star j = h)) Mw)
+    (hcov : ∀ k, a.w k * e k h + ∑ j ∈ range k, a.w j * ε j + Mw k ≤ ∑ j ∈ range (k + 1), a.A j h)
+    (inc : ℕ → Bool) (hN : NoiseBounded a m (fun k => !inc k) M) :
+    Competitive a inc (fun K => ∑ k ∈ range K, a.w k * ε k + M K) := by
+  intro K
+  have hN' : NoiseBounded a m (fun k => (!inc k) && true) M := by
+    intro K'; simpa using hN K'
+  have := competitive_of_honest_tracker_exp a e h m ε hH hon hε inc 0 le_rfl (fun _ => true)
+    (fun _ hk => absurd rfl hk)
+    (fun k _ => tracker_feasible_exp a e h m ε Mw hW hon hε hNw k (hcov k)) M hN' K
+  simpa using this
+
+/-- **The rate under noise**: at most `(𝒜_K + Σ w_k ε_k + M K)/(ℓ · w_min · K)`, vanishing
+when the allowance, the honest losses and the noise bound are all `o(K)`. -/
+theorem rate_le_of_honest_tracker_exp (hf : a.FeasibleOpening) (inc : ℕ → Bool) (ℓ wmin : ℝ)
+    (hw : ∀ k, wmin ≤ a.w k) (hwmin : 0 < wmin) (hℓ : 0 < ℓ)
+    (hinc : ∀ k, inc k = true → ℓ ≤ a.b k - a.G k) (e : ℕ → Fin n → ℝ) (h : Fin n)
+    (m ε Mw M : ℕ → ℝ) (hH : HighestFeasible a e) (hW : WinnerBids a e)
+    (hon : HonestExp e h m ε) (hε : ∀ k, 0 ≤ ε k)
+    (hNw : NoiseBounded a m (fun j => decide (a.star j = h)) Mw)
+    (hcov : ∀ k, a.w k * e k h + ∑ j ∈ range k, a.w j * ε j + Mw k ≤ ∑ j ∈ range (k + 1), a.A j h)
+    (hN : NoiseBounded a m (fun k => !inc k) M) (K : ℕ) (hK : 0 < K) :
+    (((range K).filter (fun k => inc k = true)).card : ℝ) / K
+      ≤ (a.totalAllowance K + (∑ k ∈ range K, a.w k * ε k + M K)) / (ℓ * wmin * K) :=
+  rate_le_of_competitive a hf inc ℓ wmin hw hwmin hℓ hinc _
+    (competitive_of_affordable_tracker_exp a e h m ε Mw M hH hW hon hε hNw hcov inc hN) K hK
+
+/-- **The tracker's minimal allowance under noise**: a bid's worth at entry plus the
+noise bound at entry, then the honest loss plus the increment of the noise bound. -/
+noncomputable def trackerAllowance2 (w : ℕ → ℝ) (wbar D : ℝ) (ε M : ℕ → ℝ) : ℕ → ℝ
+  | 0 => wbar * D + M 0
+  | j + 1 => w j * ε j + (M (j + 1) - M j)
+
+/-- Nonnegative when the noise bound is nondecreasing and nonnegative at entry. -/
+theorem trackerAllowance2_nonneg (w : ℕ → ℝ) (wbar D : ℝ) (ε M : ℕ → ℝ)
+    (hw : ∀ k, 0 < w k) (hwD : 0 ≤ wbar * D) (hε : ∀ k, 0 ≤ ε k) (hM0 : 0 ≤ M 0)
+    (hM : Monotone M) : ∀ j, 0 ≤ trackerAllowance2 w wbar D ε M j := by
+  intro j
+  cases j with
+  | zero => simp only [trackerAllowance2]; linarith
+  | succ j =>
+    simp only [trackerAllowance2]
+    have := hM (Nat.le_succ j)
+    nlinarith [hw j, hε j]
+
+/-- Its total through `K + 1` is `w̄ · D + Σ_{j<K} w_j ε_j + M K`. -/
+theorem trackerAllowance2_total (w : ℕ → ℝ) (wbar D : ℝ) (ε M : ℕ → ℝ) (K : ℕ) :
+    ∑ j ∈ range (K + 1), trackerAllowance2 w wbar D ε M j
+      = wbar * D + ∑ j ∈ range K, w j * ε j + M K := by
+  induction K with
+  | zero => simp [trackerAllowance2]
+  | succ K ih =>
+    rw [Finset.sum_range_succ, ih, Finset.sum_range_succ]
+    simp only [trackerAllowance2]
+    ring
+
+/-- It covers the tracker's bid at every block when bids are clamped at `D` and weights
+bounded by `w̄`: the condition of `tracker_feasible_exp`. -/
+theorem trackerAllowance2_covers (w : ℕ → ℝ) (wbar D : ℝ) (ε M : ℕ → ℝ) (e : ℕ → ℝ)
+    (hw : ∀ k, 0 < w k ∧ w k ≤ wbar) (hD : 0 ≤ D) (he : ∀ k, e k ≤ D) (k : ℕ) :
+    w k * e k + ∑ j ∈ range k, w j * ε j + M k
+      ≤ ∑ j ∈ range (k + 1), trackerAllowance2 w wbar D ε M j := by
+  rw [trackerAllowance2_total]
+  have := (hw k).1
+  have := (hw k).2
+  have := he k
+  nlinarith
+
+/-- The deterministic schedule is the case `M ≡ 0`. -/
+theorem trackerAllowance2_zero (w : ℕ → ℝ) (wbar D : ℝ) (ε : ℕ → ℝ) (j : ℕ) :
+    trackerAllowance2 w wbar D ε (fun _ => 0) j = trackerAllowance w wbar D ε j := by
+  cases j <;> simp [trackerAllowance2, trackerAllowance]
+
+end NoisyTracker
+
+section Azuma
+
+open ProbabilityTheory MeasureTheory
+
+/-- **The per-`K` tail, from the pinned Mathlib.**  A sub-Gaussian sum `S` with parameter
+`C > 0` exceeds `√(2 C log(1/δ))` with probability at most `δ`
+(`HasSubgaussianMGF.measure_ge_le`, the Chernoff bound). -/
+theorem subgaussian_tail {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} (S : Ω → ℝ) (C : NNReal)
+    (hC : 0 < (C : ℝ)) (h : HasSubgaussianMGF S C μ) (δ : ℝ) (hδ : 0 < δ) (hδ1 : δ ≤ 1) :
+    μ.real {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ S ω} ≤ δ := by
+  have hlog : 0 ≤ Real.log (1 / δ) := Real.log_nonneg (one_le_one_div hδ hδ1)
+  have hε : 0 ≤ Real.sqrt (2 * C * Real.log (1 / δ)) := Real.sqrt_nonneg _
+  refine (h.measure_ge_le hε).trans ?_
+  rw [Real.sq_sqrt (by positivity)]
+  have : -(2 * (C : ℝ) * Real.log (1 / δ)) / (2 * C) = Real.log δ := by
+    rw [one_div, Real.log_inv]
+    field_simp
+  rw [this, Real.exp_log hδ]
+
+/-- **Two-sided**: `|S| ≥ √(2 C log(1/δ))` with probability at most `2δ`, the lower tail
+from the sub-Gaussianity of `−S` (`HasSubgaussianMGF.neg`). -/
+theorem subgaussian_two_sided {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω}
+    [IsFiniteMeasure μ] (S : Ω → ℝ) (C : NNReal) (hC : 0 < (C : ℝ))
+    (h : HasSubgaussianMGF S C μ) (δ : ℝ) (hδ : 0 < δ) (hδ1 : δ ≤ 1) :
+    μ.real {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ |S ω|} ≤ 2 * δ := by
+  have h1 := subgaussian_tail S C hC h δ hδ hδ1
+  have h2 := subgaussian_tail (-S) C hC h.neg δ hδ hδ1
+  have hsub : {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ |S ω|}
+      ⊆ {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ S ω}
+        ∪ {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ (-S) ω} := by
+    intro ω hω
+    simp only [Set.mem_setOf_eq, Set.mem_union, Pi.neg_apply] at hω ⊢
+    exact le_abs.mp hω
+  calc μ.real {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ |S ω|}
+      ≤ μ.real ({ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ S ω}
+          ∪ {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ (-S) ω}) := measureReal_mono hsub
+    _ ≤ μ.real {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ S ω}
+          + μ.real {ω | Real.sqrt (2 * C * Real.log (1 / δ)) ≤ (-S) ω} := measureReal_union_le _ _
+    _ ≤ 2 * δ := by linarith
+
+/-- **Azuma–Hoeffding, instantiated** (`measure_sum_ge_le_of_hasCondSubgaussianMGF`): for a
+process `Y` strongly adapted to a filtration and conditionally sub-Gaussian given the
+previous σ-algebra — the selected weighted noise `w_i 1[S i] ξ_i` under a selection
+computable at opening — the sum over `range n` exceeds `√(2 (Σ c_i) log(1/δ))` with
+probability at most `δ`.  With bounded increments `c_i = O(1)` this is
+`M(n) = O(√(n log n))` at `δ = 1/n`. -/
+theorem azuma_selected_tail {Ω : Type*} {mΩ : MeasurableSpace Ω} [StandardBorelSpace Ω]
+    {μ : Measure Ω} [IsZeroOrProbabilityMeasure μ] {ℱ : Filtration ℕ mΩ} {Y : ℕ → Ω → ℝ} {cY : ℕ → NNReal}
+    (h_adapted : StronglyAdapted ℱ Y) (h0 : HasSubgaussianMGF (Y 0) (cY 0) μ) (n : ℕ)
+    (h_subG : ∀ i < n - 1, HasCondSubgaussianMGF (ℱ i) (ℱ.le i) (Y (i + 1)) (cY (i + 1)) μ)
+    (hC : 0 < ((∑ i ∈ range n, cY i : NNReal) : ℝ)) (δ : ℝ) (hδ : 0 < δ) (hδ1 : δ ≤ 1) :
+    μ.real {ω | Real.sqrt (2 * ((∑ i ∈ range n, cY i : NNReal) : ℝ) * Real.log (1 / δ))
+      ≤ ∑ i ∈ range n, Y i ω} ≤ δ :=
+  subgaussian_tail (fun ω => ∑ i ∈ range n, Y i ω) _ hC
+    (HasSubgaussianMGF.sum_of_hasCondSubgaussianMGF h_adapted h0 n h_subG) δ hδ hδ1
+
+end Azuma
+
 /-! ## 5. Witnesses -/
 
 namespace Witness
@@ -983,6 +1284,27 @@ theorem affordable_witness :
   · intro K
     simp [affordable]
 
+
+/-- **One honest tracker requires honesty on every winning continuation.**  A tracker honest
+only on its own proposal does not bound the winner's underpromise: with the tracker's
+continuation expected at `1/2` (bid `1/2`, `ε = 0`) and the winning continuation, a
+different one, realized at `1` with a bid of `3/5` — a higher evaluation, so the rule is
+respected — the winner underpromises by `2/5`, unbounded by the tracker's `ε`.  FIX-level
+arithmetic; the content is that `HighestFeasible` compares bids on the *winning*
+continuation only. -/
+theorem own_proposal_insufficient :
+    (1 : ℝ) / 2 ≤ 3 / 5 ∧ (1 : ℝ) - 3 / 5 = 2 / 5 ∧ (0 : ℝ) < 2 / 5 := by norm_num
+
+/-- **The noisy tracker's witness, both ways.**  With realized `G = m + ξ`, `ξ = ±1/4`, the
+old honesty needs `ε_k = 1/4` at every block — `Σ ε_k = K/4`, linear — while honesty
+against the expectation holds with `ε ≡ 0`. -/
+theorem noisy_honesty_witness (K : ℕ) :
+    ∑ _k ∈ range K, (1 / 4 : ℝ) = K / 4 ∧ (∀ ξ : ℝ, |ξ| = 1 / 4 → ¬ |ξ| ≤ 0) := by
+  refine ⟨by rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul]; ring, ?_⟩
+  intro ξ hξ h
+  rw [hξ] at h
+  norm_num at h
+
 end Witness
 
 /-! ## Axiom audit -/
@@ -1068,5 +1390,26 @@ end Witness
 #print axioms Witness.affordable
 #print axioms Witness.affordable_W1
 #print axioms Witness.affordable_witness
+#print axioms HonestExp
+#print axioms noise
+#print axioms NoiseBounded
+#print axioms honest_implies_exp
+#print axioms noise_free_bounded
+#print axioms underpromise_le_of_feasible_exp
+#print axioms tracker_wealth_ge_exp
+#print axioms tracker_feasible_exp
+#print axioms competitive_of_honest_tracker_exp
+#print axioms competitive_of_affordable_tracker_exp
+#print axioms rate_le_of_honest_tracker_exp
+#print axioms trackerAllowance2
+#print axioms trackerAllowance2_nonneg
+#print axioms trackerAllowance2_total
+#print axioms trackerAllowance2_covers
+#print axioms trackerAllowance2_zero
+#print axioms subgaussian_tail
+#print axioms subgaussian_two_sided
+#print axioms azuma_selected_tail
+#print axioms Witness.own_proposal_insufficient
+#print axioms Witness.noisy_honesty_witness
 
 end Workspace.Deference.Contrib.BRIAFollowup2

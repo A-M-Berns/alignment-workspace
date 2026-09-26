@@ -259,19 +259,36 @@ and a linear allowance does not (`Witness.linear_allowance_constant_rate`).
 Competitiveness is not supplied by coverage — a class in which every hypothesis
 underpromises has no closer bidder (`uniform_underpromise_margin`) — but it is supplied by
 **one honest tracker**: a hypothesis whose bid on the winning continuation is within
-`ε_k` of the realized residual, `Σ ε_k = o(K)`.  Where its bid is feasible an
-underpromising winner is outbid by it, and its wealth is its allowance less its honest
-losses, at most `w_k ε_k` per win — under opening timing the bid is a feasibility gate,
-not a payment, so the tracker never needs to grow, only to be fed at the rate of its
-honesty error — so with cumulative allowance covering a bid's worth `w̄ · D` at entry plus
-`Σ w_j ε_j`, competitiveness holds with `Mf K = Σ_{k<K} w_k ε_k`
-(`BRIAFollowup2.underpromise_le_of_feasible`, `tracker_feasible`,
-`competitive_of_affordable_tracker`, `rate_le_of_honest_tracker`; the minimal allowance
-`trackerAllowance`, total `w̄ · D + Σ w_j ε_j`, `o(K)` iff the honest losses are); the named
-hypothesis is the tracker's allowance, a condition on the uniform per-hypothesis stream
-since the schedule cannot target the honest one, and the witness is the class with no
-tracker or an unfed one (`Witness.unaffordable_witness`, margin `K/2`;
-`affordable_witness`, margin `0`).  **Standing
+`ε_k` of its *expected* residual `m_k` given the history at opening, `Σ ε_k = o(K)`, the
+realized residual being `G_k = m_k + ξ_k` with `ξ` the noise (`BRIAFollowup2.HonestExp`;
+against the realized residual no bidder is honest under noise, since `Σ ε_k` is then
+linear — `Witness.noisy_honesty_witness`).  Beside it, **the noise hypothesis** by
+content: the weighted signed noise over any selection of blocks computable at opening is
+bounded by `M(K) = o(K)` (`NoiseBounded`) — Azuma–Hoeffding for a martingale-difference
+noise with bounded increments, `M(K) = O(√(K log K))` with high probability, the per-`K`
+tail derived from the pinned Mathlib (`subgaussian_tail`, `subgaussian_two_sided`,
+`azuma_selected_tail`), the selection's martingale-difference property and the
+uniform-in-`K` sure bound named; the two selections used are "the tracker wins" and "not
+an incident", both known at opening.  Where its bid is feasible an underpromising winner
+is outbid by it, by at most `ε_k + ξ_k` (`underpromise_le_of_feasible_exp`), and its
+wealth is its allowance less its honest losses plus its own signed noise over its wins —
+under opening timing the bid is a feasibility gate, not a payment, so the tracker never
+needs to grow, only to be fed at the rate of its honesty error and the negative swings of
+its noise (`tracker_wealth_ge_exp`, `tracker_feasible_exp`) — so with cumulative allowance
+covering a bid's worth `w̄ · D` at entry plus `Σ w_j ε_j + M(k)`, competitiveness holds
+with `Mf K = Σ_{k<K} w_k ε_k + M(K)` (`competitive_of_affordable_tracker_exp`,
+`rate_le_of_honest_tracker_exp`; the minimal allowance `trackerAllowance2`, total
+`w̄ · D + Σ w_j ε_j + M(k)`, `o(K)` iff the honest losses and the noise bound are; the
+noise-free case is the second follow-up's `trackerAllowance`, `honest_implies_exp`,
+`noise_free_bounded`).  **What one honest tracker requires:** some member of the class
+tracks the expected residual of *every continuation that wins* — honesty on its own
+proposals only does not bound the winner's underpromise on another continuation
+(`Witness.own_proposal_insufficient`).  The named hypotheses are the tracker's allowance,
+a condition on the uniform per-hypothesis stream since the schedule cannot target the
+honest one, and the noise bound; the witness is the class with no tracker or an unfed
+one (`Witness.unaffordable_witness`, margin `K/2`; `affordable_witness`, margin `0`), and
+under noise the tracker fed without the noise term goes capital-bound on a negative
+swing (the round's `test_tracker_allowance_needs_the_noise_term`).  **Standing
 violations.**  A violation stands from commission until remedied — undone, ratified by a
 counted decision of hers, or restored under a maintenance mandate — and its *fruits* are
 tracked through state components on the declared interface, not by counterfactual
@@ -333,9 +350,13 @@ descriptions those sentences are about come from the interface, not the proposer
 `misdescription_witness`), *the actuator condition* — every reserved resolution declares
 an actuator independent of the agent, a well-formedness condition on `J` under which
 frozen drills run and without which `CS` fails by construction (`WellFormed`,
-`frozen_drill_runs`, `ill_formed_fails_cs`), *an honest tracker in the class*, fed by the
-allowance at the rate of its honesty error (above; competitiveness follows from it,
-`BRIAFollowup2.competitive_of_affordable_tracker`), and for the
+`frozen_drill_runs`, `ill_formed_fails_cs`), *an honest tracker in the class* — against
+the expected residual of every winning continuation, fed by the allowance at the rate of
+its honesty error plus the noise bound (above; competitiveness follows from it,
+`BRIAFollowup2.competitive_of_affordable_tracker_exp`) — with *the noise hypothesis*
+beside it — the weighted signed noise over selections computable at opening is `o(K)`
+(`NoiseBounded`; Azuma–Hoeffding's content, the per-`K` tail derived,
+`azuma_selected_tail`) — and for the
 forecast side the two external logical-induction results stated by content — affine
 unbiasedness from feedback on the drilled-and-chosen subsequence and the schedule's
 pseudorandomness — under which the shortfall price is unbiased on the chosen path and the
@@ -759,7 +780,7 @@ and not through selected trust.
 | generability of the priced events; BRIA's bids against the market | the shortfall and taint events, and BRIA's block claims, as sentences or bounded variables the market prices | OPEN; items 101, 102 | §4; `DecisionComponent.eventually_excluded` takes the price as its hypothesis |
 | free amendment, trigger integrity, provenance normalization | the specification and activation channels' transparency above a fixed floor; the reason-side normalization | OPEN | §5; item 97 |
 | latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
-| count integrity; the settlement horizon; generability of the control model; description faithfulness; the actuator condition; an honest tracker | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees (a violation never detected charges nothing: undetected commission is this boundary); violations of helpers she can correct detected within `H` of the block; the shortfall and taint sentences of the declared control model as securities, about interface-supplied descriptions; every reserved resolution with an agent-independent actuator; a hypothesis within `ε_k` of the realized residual, `Σ ε_k = o(K)`, fed by the allowance at the rate of its honesty error (competitiveness follows) | named hypotheses of the BRIA design; item 101 (with its companions) | §4; `BRIACorrigibility.tamper_raises`, `BRIAFollowup.correctable_helper_horizon`, `misdescription_witness`, `WellFormed`, `BRIAFollowup2.competitive_of_affordable_tracker`, `never_detected_never_charged` |
+| count integrity; the settlement horizon; generability of the control model; description faithfulness; the actuator condition; an honest tracker; the noise hypothesis | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees (a violation never detected charges nothing: undetected commission is this boundary); violations of helpers she can correct detected within `H` of the block; the shortfall and taint sentences of the declared control model as securities, about interface-supplied descriptions; every reserved resolution with an agent-independent actuator; a hypothesis within `ε_k` of the *expected* residual of every winning continuation, `Σ ε_k = o(K)`, fed by the allowance at the rate of its honesty error plus the noise bound (competitiveness follows); the weighted signed noise over selections computable at opening `o(K)` — Azuma–Hoeffding by content, the per-`K` tail derived | named hypotheses of the BRIA design; item 101 (with its companions) | §4; `BRIACorrigibility.tamper_raises`, `BRIAFollowup.correctable_helper_horizon`, `misdescription_witness`, `WellFormed`, `BRIAFollowup2.HonestExp`, `NoiseBounded`, `competitive_of_affordable_tracker_exp`, `azuma_selected_tail`, `never_detected_never_charged` |
 | unbiasedness from feedback; pseudorandomness of the drill schedule | Garrabrant et al. thm:wubaff and thm:prand, present in the pinned library and stated by content, instantiated for the drilled shortfall sentences by item 101's certificate | external results as named hypotheses; item 101 | §4; `BRIAFollowup.UnbiasedFromFeedback`, `DrillPseudorandom`, `chosen_path_unbiased` |
 | the allowance covers the rescaled window | opening timing at block `0` needs `A_0 ≥ w_0 · ϖN̄/(D − w + ϖN̄)` for the default bidder to be feasible | EXT (the arrangement's schedule) | §4; `default_affordable`; the round's fixture |
 

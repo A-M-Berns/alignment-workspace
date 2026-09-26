@@ -24,3 +24,10 @@ from `main`: round directory and ledger amended in place, a sibling Lean file
 `BRIAFollowup2.lean`, `REPORT.md` §10, `tests/test_followup2.py`.  The dispatch's likely
 obstruction for Part 4 (the tracker's capital) resolved the other way; the report says
 so rather than reporting an obstruction.
+
+**The third follow-up** (`FOLLOWUP3.md`, the same day) was dispatched against the second
+follow-up's pull request as open and landed on its branch: `BRIAFollowup2.lean` §4′,
+`REPORT.md` §10.4′, `tests/test_followup3.py`.  The noise hypothesis is entered by
+content with its per-`K` tail derived from the pinned Mathlib's Azuma–Hoeffding; the
+selection's martingale-difference property and the uniform-in-`K` sure bound are named,
+not derived.

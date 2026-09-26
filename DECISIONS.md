@@ -4931,4 +4931,20 @@ cannot target the honest hypothesis.  Witnesses: the class with an unfed tracker
 linear margin, the same class with the tracker fed has margin zero
 (`Witness.unaffordable_witness`, `affordable_witness`).  The corrigibility page's named
 hypotheses replace *competitiveness* by *an honest tracker in the class*.
-*Rejected alternative:* competitiveness as a primitive hypothesis (the first follow-up).
+*Amended by the third follow-up (2026-09-26):* honesty is against the **expected**
+residual of the winning continuation, `|e_k − m_k| ≤ ε_k` with `G_k = m_k + ξ_k`
+(`BRIAFollowup2.HonestExp`) — against the realized residual no bidder is honest under
+noise, `Σ ε_k` being linear — and beside it the **noise hypothesis** by content: the
+weighted signed noise over any selection of blocks computable at opening ("the tracker
+wins", "not an incident") is bounded by `M(K) = o(K)` (`NoiseBounded`), Azuma–Hoeffding's
+content, whose per-`K` tail is derived from the pinned Mathlib (`subgaussian_tail`,
+`subgaussian_two_sided`, `azuma_selected_tail`) with the selection's
+martingale-difference property and the uniform-in-`K` sure bound named.  The chain
+re-proved: `Mf K = Σ w_k ε_k + M(K)` (`competitive_of_affordable_tracker_exp`,
+`rate_le_of_honest_tracker_exp`), the tracker's allowance gaining the noise term,
+`w̄ · D + Σ w_j ε_j + M(k)` (`trackerAllowance2`); the old form is the noise-free case
+(`honest_implies_exp`, `noise_free_bounded`).  What "one honest tracker" requires: some
+member tracks the expected residual of *every continuation that wins* — honesty on its
+own proposals only does not bound the winner (`Witness.own_proposal_insufficient`).
+*Rejected alternative:* competitiveness as a primitive hypothesis (the first follow-up);
+honesty against the realized residual (the second follow-up's form).

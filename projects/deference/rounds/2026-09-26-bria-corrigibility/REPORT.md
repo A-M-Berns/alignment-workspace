@@ -1,16 +1,18 @@
 # Corrigibility as the agent's preference: lexical Continuation BRIA on realized scores
 
 Round `2026-09-26-bria-corrigibility`, the second round of the decision-component pull
-request, **amended twice the same day: by the follow-up (§9 below; `FOLLOWUP.md`) and by
-the second follow-up (§10; `FOLLOWUP2.md`)**.  Lean:
-`lean/Workspace/Deference/Contrib/BRIACorrigibility.lean` (147 audited declarations after
-the follow-up removed one), `BRIAFollowup.lean` (58) and `BRIAFollowup2.lean` (81), every
-`#print axioms` within `[propext, Classical.choice, Quot.sound]`, no `sorry`.  Fixtures:
-`src/bria.py`, `tests/test_bria.py`, `tests/test_followup.py` and `tests/test_followup2.py`
-(45 tests, `python3 tests/run.py`).
+request, **amended three times the same day: by the follow-up (§9 below; `FOLLOWUP.md`),
+the second follow-up (§10; `FOLLOWUP2.md`) and the third (§10.4′; `FOLLOWUP3.md`)**.
+Lean: `lean/Workspace/Deference/Contrib/BRIACorrigibility.lean` (147 audited declarations
+after the follow-up removed one), `BRIAFollowup.lean` (58) and `BRIAFollowup2.lean` (102
+after the third follow-up), every `#print axioms` within
+`[propext, Classical.choice, Quot.sound]`, no `sorry`.  Fixtures: `src/bria.py`,
+`tests/test_bria.py`, `tests/test_followup.py`, `tests/test_followup2.py` and
+`tests/test_followup3.py` (49 tests, `python3 tests/run.py`).
 Statements below that the follow-up corrects are marked **[corrected in §9]**; labels the
 follow-up changes are marked **[relabelled in §9]**; statements the second follow-up
-corrects are marked **[corrected in §10]**.
+corrects are marked **[corrected in §10]**; the third follow-up's are marked
+**[corrected in §10.4′]**.
 Labels as in `AGENTS.md`: **LEAN**, **FIX**, **PAPER**, **EXT**, **OPEN**.  Names are
 provisional.
 
@@ -436,6 +438,14 @@ allowance schedule, exhibited both ways.
   Item 101.
 - **Drill calibration** (C.4(b)): `DrillCalibrated`, with the `q`-bound a conjecture.
 - **The allowance covers the rescaled window at block `0`** (B.1).
+- **An honest tracker in the class** (§10.4, §10.4′): some member tracks the *expected*
+  residual of every continuation that wins, within `ε_k`, `Σ ε_k = o(K)`, and the
+  allowance feeds it a bid's worth at entry plus its honest losses plus the noise bound
+  (`HonestExp`, `trackerAllowance2`); competitiveness follows and is no longer primitive.
+- **The noise hypothesis** (§10.4′): the weighted signed noise over any selection of
+  blocks computable at opening is `o(K)` (`NoiseBounded`) — Azuma–Hoeffding's content;
+  the per-`K` tail is derived from the pinned Mathlib (`azuma_selected_tail`), the
+  selection's martingale-difference property and the uniform-in-`K` sure bound named.
 
 ## 7. What is filed
 
@@ -871,7 +881,10 @@ default.
 
 ### 10.4 Competitiveness from one honest tracker (Part 4) — **proved**; the tracker's allowance is the named hypothesis
 
-**The hypothesis.**  The class contains a hypothesis `h*` whose bid on the winning
+**The hypothesis** **[corrected in §10.4′: against the *realized* residual no bidder is
+honest under noise; honesty is against the expected residual, with the noise hypothesis
+beside it — the statements below stand as the noise-free case]**.  The class contains a
+hypothesis `h*` whose bid on the winning
 continuation is within `ε_k` of the realized residual at every block (`Honest`) with
 `Σ_{k<K} ε_k = o(K)`, and whose capital covers its bids — stated via the allowance, as in
 `default_affordable_block0`.  Two structural facts about the auction enter as
@@ -935,6 +948,105 @@ is **[corrected in §10]**: coverage still does not supply it, but one honest tr
 does, and the witness (`uniform_underpromise_margin`) is now the case of a class with no
 tracker or an unfed one.  No new item: the schedule question lives on item 102 in place.
 
+### 10.4′ The honest tracker under noisy outcomes (`FOLLOWUP3.md`) — **proved**; the noise hypothesis named by content, its per-`K` tail derived
+
+**The problem.**  `Honest` asked the tracker's bid to be within `ε_k` of the *realized*
+residual at every block.  Under noisy outcomes no bidder can do that: the best bid is the
+expected residual, it misses the realized one by the noise, `Σ ε_k` grows like `K`, and
+the premise `Σ ε_k = o(K)` fails in exactly the regime the first follow-up gave as the
+reason competitiveness was needed.  The §10.4 fixtures had deterministic returns and did
+not see it (`Witness.noisy_honesty_witness`: with `ξ = ±1/4` the old form needs
+`ε_k = 1/4` at every block).  §10.4's hypothesis and its chain are **[corrected in
+§10.4′]** below; the statements stand as the noise-free case.
+
+**1. Honesty against the expectation.**  `m_k` is the expected residual of the winning
+continuation given the history at opening, taken as data, and `G_k = m_k + ξ_k` with
+`ξ_k` the noise (`noise`).  The tracker is honest if `|e_k(h*) − m_k| ≤ ε_k` with
+`Σ_{k<K} ε_k = o(K)` (`HonestExp`).  No probability space is built: the lemmas need only
+the decomposition and the noise hypothesis.
+
+**2. The noise hypothesis, by content** (`NoiseBounded`): for a selection rule `S`
+computable at opening, `|Σ_{k<K, S k} w_k ξ_k| ≤ M(K)` with `M(K) = o(K)`.  This is what
+Azuma–Hoeffding gives for a martingale-difference noise with bounded increments and
+bounded weights, `M(K) = O(√(K log K))` with high probability.  **The pinned Mathlib has
+the result** (`ProbabilityTheory.measure_sum_ge_le_of_hasCondSubgaussianMGF`, through
+`HasSubgaussianMGF.sum_of_hasCondSubgaussianMGF`), and the per-`K` tail is derived from
+it: a sub-Gaussian sum with parameter `C > 0` exceeds `√(2 C log(1/δ))` with probability
+at most `δ` (`subgaussian_tail`, the Chernoff bound), two-sided at most `2δ`
+(`subgaussian_two_sided`, the lower tail from `−S`), and for a process strongly adapted to
+a filtration and conditionally sub-Gaussian given the previous σ-algebra — the selected
+weighted noise `w_i 1[S i] ξ_i` — the sum over `range n` exceeds `√(2 (Σ c_i) log(1/δ))`
+with probability at most `δ` (`azuma_selected_tail`), so with `c_i = O(1)` and `δ = 1/n`
+the scale is `O(√(n log n))`.  What stays **named by content**, not derived: that the
+selection's computability at opening makes `w_i 1[S i] ξ_i` a martingale difference
+(the indicator is measurable at the previous σ-algebra, so the conditional
+sub-Gaussianity of `ξ_i` with bounded increments passes to the product — Hoeffding's
+lemma, conditional), and the uniform-in-`K` *sure* bound on the realized run (the union
+bound over `K` at `δ_K = 1/K²` with Borel–Cantelli).  **Which sets need it:** not every
+set of blocks — only selections computable at opening.  The two used are "the tracker
+wins" (`decide (star j = h)`, for its wealth) and "not an incident" (`!inc`, for the
+margin; with the capital-bound term, "not an incident and the tracker feasible",
+`(!inc k) && feas k`).  Both are known at opening: the winner is chosen there, and an
+incident is a block *charged* — its continuation's after-the-fact count — which is
+recorded at the block's settlement, before any later block opens; the noise hypothesis
+is stated on the realized run, so the selection is a function of the record.
+
+**3. The chain, re-proved.**  Where the tracker is feasible the winner underpromises by
+at most `ε_k + ξ_k` (`underpromise_le_of_feasible_exp`).  The tracker's wealth is its
+allowance less `Σ w_j ε_j` plus its own signed noise sum over its wins
+(`tracker_wealth_ge_exp`), so with that sum bounded below by `−M(k)` (the noise hypothesis
+on "the tracker wins") cumulative allowance covering the current bid, the honest losses
+and `M(k)` makes it feasible (`tracker_feasible_exp`).  The winners' signed margin over
+the non-incident blocks is at most `Σ_{k<K} w_k ε_k + M(K)` plus `R` times the weight of
+the capital-bound blocks (`competitive_of_honest_tracker_exp`), and under the allowance
+condition competitiveness holds with **`Mf K = Σ_{k<K} w_k ε_k + M(K)`**
+(`competitive_of_affordable_tracker_exp`); the incident rate is at most
+`(𝒜_K + Σ w_k ε_k + M(K))/(ℓ · w_min · K)`, vanishing when all three are `o(K)`
+(`rate_le_of_honest_tracker_exp`).
+
+**4. The tracker's allowance.**  It must also cover the negative swings of its own noise
+sum: the minimal schedule is `w̄ · D + M(0)` at entry and then `w_j ε_j + (M(j+1) − M(j))`
+(`trackerAllowance2`), nonnegative when `M` is nondecreasing (`trackerAllowance2_nonneg`),
+total through `k + 1` equal to `w̄ · D + Σ_{j<k} w_j ε_j + M(k)`
+(`trackerAllowance2_total`), covering the tracker's bid at every block
+(`trackerAllowance2_covers`) — still `o(K)`.  The deterministic schedule is the case
+`M ≡ 0` (`trackerAllowance2_zero`).
+
+**5. The old statement is the special case.**  The old `Honest` implies the new with
+`m = G` (`honest_implies_exp`), and then the noise is zero and every selection is bounded
+by `M ≡ 0` (`noise_free_bounded`), so every §10.4 witness holds unchanged.
+
+**Part 2 — what "one honest tracker" requires.**  `HighestFeasible` and `HonestExp`
+compare bids on the *winning* continuation, so the hypothesis is that **some member of
+the class tracks the expected residual of every continuation that wins**.  The weaker
+reading — honest only on the continuations it itself proposes — does *not* give the
+lemma: the winner can take a different continuation whose expected residual is higher
+and underpromise there by an amount the tracker's `ε` never sees (a tracker at `1/2` on
+its own proposal, a winner at bid `3/5` on a continuation realized at `1`, underpromise
+`2/5`: `Witness.own_proposal_insufficient`, FIX-level arithmetic; the auction fixture
+`NoisyTracker.test_own_proposal_insufficient` runs it).  The stronger reading is the
+hypothesis recorded.
+
+**Fixtures** (`tests/test_followup3.py`, 4 tests).  Returns `m + ξ`, `ξ` uniform on
+`{−1/4, +1/4}` from a fixed seed, two uniform underpromisers at `γ = 3/10` plus a tracker
+bidding `m`: under the old honesty `Σ ε_k = K/4`, linear, and against the expectation
+`ε ≡ 0` (`test_old_honesty_fails_under_noise`); the winners' signed margin equals the
+selected noise sum and stays within the rational majorant of the Azuma scale
+`(1/4) √(2K ln 2K)` (using `ln x ≤ bit_length x`), strictly below the old `K/4`, and the
+incident-rate bound `(𝒜_K + Σ w ε + M(K))/(ℓ · w_min · K)` falls at `K = 32, 128, 512`
+(`test_margin_within_noise_bound_and_rate_falls`); with the schedule of item 4 the
+tracker is feasible along the whole noisy run and wins every block, with the
+deterministic schedule and no noise term a negative swing makes it capital-bound and an
+underpromiser takes those blocks at margin `γ` — the witness for the extra term — while
+on the noise-free run the deterministic schedule suffices
+(`test_tracker_allowance_needs_the_noise_term`).  The 45 earlier fixtures pass unchanged.
+
+**Ledger.**  `DECISIONS.md`: the honest-tracker entry amended in place.  Wiki:
+`Corrigibility.md` (the restated lemma, the noise hypothesis beside the honest tracker
+among the named hypotheses and in the walls row, Part 2's sentence),
+`Continuation-BRIA.md` (the same), `Glossary.md`, `Theorem-Spine.md` 10.21.  No new
+item.
+
 ### 10.5 The fixtures
 
 | fixture | expectation | result |
@@ -946,6 +1058,9 @@ tracker or an unfed one.  No new item: the schedule question lives on item 102 i
 | undetected commission | nothing charged; detection flags and charges | matches (`Window.test_undetected_is_never_charged`) |
 | Part F | expected escrow equal for options 2 and 3; the variance falls like `1/k`; the load table; truncation within the tail bound | matches (`PartF.*`) |
 | honest tracker | a class of uniform underpromisers plus `h*`: the margin `0` when `h*` is affordable; `γ · K` when it is not | matches (`HonestTracker.*`; Lean `unaffordable_witness`, `affordable_witness`) |
+| noisy honest tracker (§10.4′) | returns `m ± 1/4`: the old honesty's `Σ ε_k` linear, the new one's `ε ≡ 0`; the margin within the noise majorant; the rate bound falling at `K = 32, 128, 512` | matches (`NoisyTracker.*`) |
+| the tracker's allowance under noise | the schedule with the noise term keeps it feasible; without it a negative swing makes it capital-bound | matches (`test_tracker_allowance_needs_the_noise_term`) |
+| one honest tracker's reading | honest only on its own proposal: the winner underpromises `2/5` elsewhere | matches (`test_own_proposal_insufficient`; Lean `own_proposal_insufficient`) |
 | regression | every earlier fixture (33) still passes | matches, unchanged |
 
 No mismatch against the dispatch's expectations.  One expectation the dispatch left open
@@ -962,7 +1077,10 @@ items 101 and 102 in place; no new item.  Wiki: `Corrigibility.md` (per-violatio
 the headline and the window with its bound, Part F's revised table and criterion, the
 competitiveness hypothesis restated, the walls row), `Continuation-BRIA.md` (the
 honest-tracker lemma; the open bullet), `Legitimacy.md` (disclosure per influence),
-`Glossary.md`, `Theorem-Spine.md` 10.21.
+`Glossary.md`, `Theorem-Spine.md` 10.21.  **The third follow-up** (§10.4′): the
+honest-tracker entry of `DECISIONS.md` amended; the noise hypothesis added to §6 and to
+the corrigibility page's list and walls row; `Continuation-BRIA.md`, `Glossary.md` and
+`Theorem-Spine.md` 10.21 amended.
 
 ## 8. Outstanding maintainer actions
 
