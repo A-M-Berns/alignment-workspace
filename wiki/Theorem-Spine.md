@@ -1028,7 +1028,7 @@ honest tracker (`HighestFeasible`, `WinnerBids`, `Honest`, `underpromise_le_of_f
 `competitive_of_affordable_tracker`, `rate_le_of_honest_tracker`, `trackerAllowance`,
 `trackerAllowance_covers`, `trackerAllowance_total`) with both witnesses
 (`Witness.unaffordable_witness`, `affordable_witness`).  **LEAN**.  Lean:
-`lean/Workspace/Deference/Contrib/BRIAFollowup2.lean` (pinned at landing).
+[`BRIAFollowup2.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3f515d476d00616cac4a17c3389a56951964db48/lean/Workspace/Deference/Contrib/BRIAFollowup2.lean).
 
 ## 11. The counterexamples that fix the shape
 
