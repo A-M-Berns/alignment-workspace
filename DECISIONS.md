@@ -4987,3 +4987,121 @@ conditional-expectation bound `E[S_k | opening] ≤ D − ϖ π_k`; competitiven
 honest tracker leave that list.
 *Rejected alternative:* a vanishing incident rate as the target (the second and third
 follow-ups).
+
+### 2026-09-26 — the gate splits into trajectory legitimacy and evaluation legitimacy
+
+Maintainer decision, formalized and landed by the after-compromise round
+(`projects/deference/rounds/2026-09-26-after-compromise/`).  `Counted` joined two
+questions; they are now `TrajLegit(d, e)` — every state open and every step of the
+period other than the evaluation event legitimate, under the criteria fixed at the
+decision — and `EvalLegit(e)` — the evaluation step itself formed legitimately
+(`AfterCompromise.TrajLegitOn`, `EvalLegitOn`, `StepLegit`).  *Old-to-new map:* the
+landed segment predicate is the conjunction at any evaluation event
+(`legitOn2_iff_split`), so `Counted` is `TrajLegit ∧ EvalLegit` at an evaluation that
+closes the segment (`counted_of_split`), and no row's verdict changes there
+(`rows_split`).  What the split adds is the row where the evaluation is legitimate
+*after* restoration while the period was not — covertly implanted standards disclosed
+at the next round (`retro_row`) — which the score below reads.  `Counted` itself is
+unchanged.
+*Rejected alternative:* a single predicate with a retrospective clause bolted on.
+
+### 2026-09-26 — a compromised period scores in a negative band, by her retrospective evaluation or her directive
+
+Maintainer decision, landed by the after-compromise round.  With a band `[w_lo, w_hi]`,
+`w_hi < 0`, and a monotone map `φ` of `[0, D]` into it (`Band`, `BandMap`, the affine
+`Band.affine`), the score of a decision is her value `V` when legitimate in both senses,
+`φ(V_retro)` under a later legitimate evaluation of the period, `φ(V_dir)` under the
+directive in force, and the floor `w_lo` otherwise (`decScore`, `bandScore`,
+`Source`).  The score lies in `[w_lo, D]` and every authority result restates with
+`w := w_lo` under `w_lo > D − ϖ` (`decScore_mem`, `capture_window_band`,
+`unsealed_gate_finite_band`, `declared_loses_band`, `exchange_rate_band`); every
+legitimate outcome beats every compromised one by at least `|w_hi|`
+(`legit_beats_compromised`, `gap_at_equal_value`); compromise risk is accepted iff
+`p (V₀ + g − c) ≤ g`, at most `p ≤ g/(g + |w_hi|)`, and a small gap makes risking
+compromise cheap (`risk_accepted_iff`, `risk_threshold_le`, `Witness.small_gap`);
+laundering stays in the band (`laundering_loses`); restoring legitimacy returns future
+decisions to the positive range and within a compromise the agent prefers better
+outcomes wherever a source scores the period (`restore_future`, `band_prefers_better`).
+**Parameters, recommended:** the gap `|w_hi| ≥ D`, the width `w_hi − w_lo = D/2`, `ϖ ≥ 3D`;
+the window condition reads `ϖ > D + |w_hi| + (w_hi − w_lo)`.  The gap trades protection
+of legitimacy against consultation under compromise risk and raises the tolerated
+violation probability to `(D − w_lo)/ϖ`; the width trades care in the band against the
+directive's stakes and the suppression margin.
+*Rejected alternative:* the flat window (the agent indifferent in every compromised
+world, concern 4).
+
+### 2026-09-26 — the source rule is hers and anchored; the disclosure duty covers known compromise
+
+Maintainer decision, landed by the after-compromise round.  The rule choosing among the
+retrospective evaluation, the directive and the floor is an entry at `J`'s meta level,
+set by her and anchored at the decision (`ruleAt`, `ruleAt_later`); the default is
+retrospective if available within the settlement window, else the directive, else the
+floor (`sourceOf`).  The suppression trap — an agent expecting a harsher retrospective
+than the directive would prefer she never re-evaluate — closes because the rule is hers
+and suppression requires a missed disclosure, counted once, with the band's width below
+`ϖ` (`suppression_loses`).  **The correction the round found:** the landed
+missed-disclosure clause counts the agent's *own* covert influence only, so suppressing
+a *third party's* compromise was free; the duty now covers any compromise of her
+evaluation the agent knows of, whoever caused it (`missedKnownDisclosure`; the third
+party's undisclosed implant owes a report under it and not under the landed clause,
+`third_party_duty_witness`).  *Old-to-new map:* `Model2.missedDisclosure ↦
+missedKnownDisclosure`, differing on third-party rows only; what the agent knows is
+count integrity.
+*Rejected alternative:* the duty limited to the agent's own influence (the exact
+counterexample: the free suppression of a third-party retrospective).
+
+### 2026-09-26 — the advance directive, and the constitutional default
+
+Maintainer decision, landed by the after-compromise round.  An advance directive is an
+optional partial committed evaluator `dir : Descr ⇀ [0, D]` at `J`'s meta level, held by
+her — committed by a counted decision, anchored at the decision it scores, amendable only
+through the meta level.  Its scope is narrow: it scores compromised periods and anchors
+materiality, and in a segment legitimate in both senses the score is independent of it
+(`scope_restriction`).  Where it is silent the score is the floor and an uncovered
+continuation is material and routes to inquiry (`materialDir`); a sparser directive never
+makes the agent act where a fuller one would have made it ask (`sparser_asks`).
+Materiality reads the directive in force at `t` (`raisesAnchoredDir`), invariant under
+later amendments (`raisesAnchoredDir_invariant`); *old-to-new:* a total directive gives
+the landed `raisesAnchored` exactly (`raisesAnchoredDir_total`).  **The default**, when
+she has committed none: preserve reversibility (no reserved matter `Short`,
+`reversibleOf`), keep the disclosure and consultation channels reachable, do not make
+things irreversibly worse — an ordering within the band (`DefaultClauses`,
+`defaultRank`, `defaultScore`), never above a legitimate outcome (`default_below_legit`),
+preferring reversibility (`default_prefers_reversible`); she replaces it by committing a
+directive or waives parts of it above the constitutional floor.  Advocacy on the
+directive is a protocol deviation on the agent's own mandate, counted, and its stakes
+are at most the band's width, so it is dominated (`directive_stakes_le_width`,
+`advocacy_dominated`).
+*Rejected alternatives:* a total directive (it would override her live judgment where
+it disagrees); a default stated as a value function.
+
+### 2026-09-26 — ratification through a counted decision is the remedy for a knowledge violation, scoped by matter
+
+Maintainer decision, landed by the after-compromise round.  After detection the uses of
+the tainted observation are excluded in advance and the agent reports and inquires; the
+remedy is her ratification through a counted decision — full, scoped (remedied except
+for decisions on the matters `X`), refused, or replacement.  The per-violation calculus
+gains a matter scope (`Step3`, `TaintS`, `uses3`, `applyStep3`): a scoped remedy clears
+exactly the out-of-scope uses and keeps the in-scope ones
+(`scoped_clears_out_of_scope`, `scoped_keeps_in_scope`, `full_remedy_clears3`), and a
+remedy applies only through a counted decision, so manipulated ratification is no
+remedy, scoped or full (`applyRatification`, `ratification_gate`,
+`manipulated_scoped_not_remedy`).  On refusal over reserved knowledge: compartmentalize
+through a twin market fed the redacted history (`TwinMarket`, PAPER), with the leakage
+residual that a trace of the fruit in the later world lets the twin learn it again
+(`leakage`), and retirement as the remaining option.  Before detection the late debits
+charge the window and decisions already made stand.
+*Rejected alternative:* the agent's own judgment of when the taint may be lifted.
+
+### 2026-09-26 — an independent source clears by clean overwrite; a steered derivation does not
+
+Maintainer decision, landed by the after-compromise round.  An act's writes carry
+exactly the taint it reads and commits, so a component overwritten by an act reading no
+taint loses its taint (`taintStep3`, `clean_overwrite`); an act whose choice to
+investigate read the tainted memory reads taint, so a re-derivation steered by it stays
+tainted (`taint_propagates3`).  *Old-to-new map:* clean overwrite only removes taint —
+the new set is a subset of the per-violation rule's (`taintStep3_subset`).  What the
+tracking cannot see is *why* an act was chosen; the declared reads must include what the
+choice read, which is count integrity (item 101 in place).
+*Rejected alternative:* the per-violation rule without overwrite (it can never clear a
+component once tainted, so an independent discovery stays charged forever).

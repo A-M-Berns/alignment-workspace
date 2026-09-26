@@ -1698,6 +1698,24 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-26-bria-corrigibility/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-26-after-compromise",
+      "date": "2026-09-26",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-26-after-compromise",
+      "verdict": "AFTER-COMPROMISE-THE-GATE-SPLITS-INTO-TRAJECTORY-AND-EVALUATION-LEGITIMACY-A-COMPROMISED-PERIOD-SCORES-IN-A-NEGATIVE-BAND-BY-HER-RETROSPECTIVE-EVALUATION-OR-HER-DIRECTIVE-SO-THE-AGENT-STILL-CARES-HOW-THINGS-GO-BUT-NEVER-ENOUGH-TO-WANT-THEM-TO-GO-WRONG-THE-AUTHORITY-RESULTS-SURVIVE-AT-THE-FLOOR-LEGITIMACY-IS-WORTH-THE-GAP-LAUNDERING-LOSES-RESTORATION-IS-PREFERRED-SUPPRESSION-IS-COUNTED-ONCE-THE-DISCLOSURE-DUTY-COVERS-KNOWN-THIRD-PARTY-COMPROMISE-THE-DIRECTIVE-NEVER-OVERRIDES-HER-LIVE-JUDGMENT-AND-A-SPARSER-ONE-ONLY-ASKS-MORE-THE-DEFAULT-ORDERS-THE-BAND-BY-REVERSIBILITY-CHANNELS-AND-HARM-KNOWLEDGE-ACQUIRING-VIOLATIONS-ARE-COVERED-BY-THE-EXCHANGE-RATE-RATIFICATION-IS-THE-REMEDY-SCOPED-BY-MATTER-CLEAN-OVERWRITE-CLEARS-AN-INDEPENDENT-SOURCE-AND-NOT-A-STEERED-DERIVATION-THE-TWIN-MARKET-LEAKS-THROUGH-TRACES-AND-PRIVATE-KNOWLEDGE-IS-WHERE-THE-MOTIVE-SURVIVES — the landed Counted is the conjunction of TrajLegit and EvalLegit at an evaluation that closes the segment, with no row's verdict changed; a decision whose period was compromised but which a later legitimate evaluation or a committed directive scores lies in the band [w_lo, w_hi] below zero by a monotone map of that value, and at the floor w_lo otherwise; every authority result restates with w := w_lo under w_lo > D − ϖ; every legitimate outcome beats every compromised one by at least |w_hi|, compromise risk has an exchange rate p ≤ g/(g + |w_hi|) and a small gap makes it cheap; manipulate-disclose-evaluate stays in the band; restoring legitimacy returns future decisions to the positive range and within a compromise the agent prefers better outcomes wherever a source scores them; suppressing a harsh retrospective loses once suppression is a counted missed disclosure with the band's width below ϖ, which needs the disclosure duty extended to known third-party compromise (the counterexample without it is exact); the directive never enters a legitimate segment's score, a sparser directive only routes more to inquiry, the default ranks compromised outcomes by reversibility, reachable channels and harm and never above a legitimate one, and advocacy on the directive is dominated because its stakes are the band's width; knowledge-acquiring violations fall under the exchange-rate bound, ratification through a counted decision is the remedy with a matter scope clearing exactly the out-of-scope uses, a clean overwrite by an act reading no taint clears while a derivation steered by the taint stays tainted, the twin market's redaction leaks through injective traces of the fruit, and public knowledge is competed away on the post-commission selection while private knowledge is the surviving motive.",
+      "verdict_source": "projects/deference/rounds/2026-09-26-after-compromise/README.md",
+      "depends_on": [
+        "2026-09-26-bria-corrigibility",
+        "2026-09-25-gate-is-legitimacy",
+        "2026-09-25-authority-module",
+        "2026-09-25-decision-component"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-26-after-compromise/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

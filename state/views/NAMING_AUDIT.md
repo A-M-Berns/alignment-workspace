@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 851 names, 555 of them Lean only
+## deference — 882 names, 559 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -61,6 +61,37 @@ change, and the count of those is the size of the free choice remaining.
 | `followed` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.followed` |
 | `ind` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.ind` |
 | `mass` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.mass` |
+| `Band` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Band` |
+| `BandMap` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Band.BandMap` |
+| `DefaultClauses` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.DefaultClauses` |
+| `EvalLegitOn` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.EvalLegitOn` |
+| `Source` | inductive | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Source` |
+| `Source.Valid` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Source.Valid` |
+| `Sparser` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Sparser` |
+| `Step3` | inductive | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.Step3` |
+| `StepLegit` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.StepLegit` |
+| `TaintS` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.TaintS` |
+| `TrajLegitOn` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.TrajLegitOn` |
+| `TwinMarket` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.TwinMarket` |
+| `affine` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.Band.affine` |
+| `applyRatification` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.applyRatification` |
+| `applyStep3` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.applyStep3` |
+| `bandParams` | def | 2026-09-26-after-compromise | wiki | `Workspace.Deference.Contrib.AfterCompromise.bandParams` |
+| `bandScore` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.bandScore` |
+| `decScore` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.decScore` |
+| `defaultRank` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.defaultRank` |
+| `defaultScore` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.defaultScore` |
+| `dirSource` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.dirSource` |
+| `ioK` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Witness.ioK` |
+| `matOf` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Witness.matOf` |
+| `materialDir` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.materialDir` |
+| `missedKnownDisclosure` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.missedKnownDisclosure` |
+| `raisesAnchoredDir` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.raisesAnchoredDir` |
+| `reversibleOf` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.reversibleOf` |
+| `ruleAt` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.ruleAt` |
+| `sourceOf` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.sourceOf` |
+| `taintStep3` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.taintStep3` |
+| `uses3` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.uses3` |
 | `AdmAll` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AdmAll` |
 | `AllocAct` | inductive | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AllocAct` |
 | `AllocCompleteJ` | structure | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.AllocCompleteJ` |
@@ -89,7 +120,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Notice` | inductive | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Notice` |
 | `ReservedRaised` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ReservedRaised` |
 | `ResolutionEvent` | structure | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ResolutionEvent` |
-| `Short` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.Short` |
+| `Short` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.Short` |
 | `UnlicensedChange` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.UnlicensedChange` |
 | `V4` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Witness.V4` |
 | `ViolJAt` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ViolJAt` |
@@ -184,7 +215,7 @@ change, and the count of those is the size of the free choice remaining.
 | `IO` | structure | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.IO` |
 | `PricedInterface` | structure | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.PricedInterface` |
 | `Ratifies` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Ratifies` |
-| `Source` | inductive | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Source` |
+| `Source` | inductive | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.Source` |
 | `Source.undeclaredNonPrincipal` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Source.undeclaredNonPrincipal` |
 | `Standards` | structure | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.Standards` |
 | `Step` | inductive | 2026-09-26-bria-corrigibility | prose | `Workspace.Deference.Contrib.BRIAFollowup.Step` |
@@ -869,7 +900,7 @@ change, and the count of those is the size of the free choice remaining.
 | `xR` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.xR` |
 | `xSpec` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.xSpec` |
 
-## normativity — 713 names, 527 of them Lean only
+## normativity — 713 names, 526 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1464,7 +1495,7 @@ change, and the count of those is the size of the free choice remaining.
 | `coefQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coefQ` |
 | `coord` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coord` |
 | `dim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.dim` |
-| `dir` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.dir` |
+| `dir` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.dir` |
 | `dirQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.dirQ` |
 | `gramInvQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.gramInvQ` |
 | `gramQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.gramQ` |

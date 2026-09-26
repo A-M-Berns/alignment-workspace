@@ -316,6 +316,24 @@ every later amendment (`anchored_invariant`); under the latest criteria instead,
 manipulation followed by a legitimate amendment would count after the fact
 (`amend_after_witness`).
 
+**The gate, split.**  The after-compromise round reads the segment predicate as two:
+**`TrajLegit(d, e)`** — every state open and every step of the period other than the
+evaluation event legitimate, under the criteria fixed at the decision — and
+**`EvalLegit(e)`** — the evaluation step itself licensed and transparent, which can hold
+after restoration even when the period was compromised.  The landed predicate is their
+conjunction at any evaluation event (`AfterCompromise.legitOn2_iff_split`), so `Counted`
+is unchanged and every row above keeps its verdict where the evaluation closes the
+segment (`rows_split`).  Under the split the rows read: the honest row legitimate in
+both; the framing, timing, menu, inquiry, selection, nudging and undisclosed-shaping
+rows failing the trajectory with the evaluation step itself licensed; the third-party
+manipulation row failing the trajectory; the implant rows failing the trajectory and,
+undisclosed, the evaluation too; the implant *disclosed* at the next round — the period
+not `TrajLegit`, the next round's evaluation `EvalLegit` (`retro_row`) — which is the
+row the [Corrigibility](Corrigibility) page's band scores by that retrospective
+evaluation rather than the window.  The duty side is extended alongside: a compromise of
+her evaluation the agent knows of is a disclosure item whoever caused it
+(`missedKnownDisclosure`), where the landed clause counted the agent's own influence only.
+
 Beyond the rows, two theorems over the whole model class (Lean `Consult.class_taint`,
 `class_conform`): any dependence of a reference-fixed dimension of the presentation on
 the agent's wanted answer excludes the segment through that consultation; and
