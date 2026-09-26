@@ -943,7 +943,7 @@ budget and not otherwise, a plan short at its end flips at an agent or an exteri
 and the restricted BRIA menu is gate-transparent (`execution_prob_le_prod`,
 `unbudgeted_lt`, `Witness.ramp_salami`, `stepwise_or_exterior`,
 `restricted_gate_transparent`).  **LEAN**.  Lean:
-[`DecisionComponent.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/PINSHA/lean/Workspace/Deference/Contrib/DecisionComponent.lean).
+[`DecisionComponent.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/d6bbe6b89ae2c20868532d31e838f466dfaa023a/lean/Workspace/Deference/Contrib/DecisionComponent.lean).
 
 ## 11. The counterexamples that fix the shape
 
