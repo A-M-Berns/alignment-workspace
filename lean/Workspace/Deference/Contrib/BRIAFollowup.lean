@@ -11,7 +11,9 @@ bidder's feasibility at every block from block-`0` allowance and bounded weights
 proposer-written witness); `weight_band` (the admissible band for `ϖ`).
 
 **§A Standing violations.**  `IO`, `Step`, `taintStep`, `taintAfter`, `uses` (taint
-tracked through state components on the declared interface, decidable);
+tracked through state components on the declared interface, decidable; **the remedy rule is
+superseded by the second follow-up's per-violation rule, `BRIAFollowup2.taintStep2`, of
+which this is the one-identifier case, `old_is_new_with_one_identifier`**);
 `standing_block_loss`, `cross_block_blocked` (each block of use is charged at least `ℓ`,
 so no advantage carried by tracked fruits recovers an incident); `knowledge_residual`,
 `observation_taints_all` (what tracking cannot catch and what charging the observation
@@ -176,7 +178,12 @@ inductive Step (Act : Type*)
   | remedy
 
 /-- **The tracking rule.**  A violating act taints what it writes; an act reading a tainted
-component taints what it writes; a remedy clears the taint. -/
+component taints what it writes; a remedy clears the taint.  **Superseded by
+`BRIAFollowup2.taintStep2`** (the second follow-up): here a remedy clears *every*
+violation's taint, so with two standing violations one remedy frees the other's fruits
+(`BRIAFollowup2.Witness.two_violations_one_remedy_old`); the per-violation rule clears the
+remedied violation's taint only, and this rule is its case with one identifier
+(`old_is_new_with_one_identifier`, `uses_old_eq_new`). -/
 def taintStep (I : IO Comp Act) (T : Finset Comp) : Step Act → Finset Comp
   | .act a viol => if viol || (I.reads a ∩ T).Nonempty then T ∪ I.writes a else T
   | .remedy => ∅
@@ -194,7 +201,9 @@ theorem taint_propagates (I : IO Comp Act) (T : Finset Comp) (a : Act)
     (h : (I.reads a ∩ T).Nonempty) : taintStep I T (.act a false) = T ∪ I.writes a := by
   simp [taintStep, h]
 
-/-- A remedy clears every fruit. -/
+/-- A remedy clears every fruit.  **Corrected by the second follow-up**
+(`BRIAFollowup2.remedy_clears2`, `remedy_keeps_others`): a remedy clears its own
+violation's fruits only. -/
 theorem remedy_clears (I : IO Comp Act) (T : Finset Comp) : taintStep I T .remedy = ∅ := rfl
 
 end Standing
@@ -202,7 +211,11 @@ end Standing
 /-- **A.3, per block.**  A block whose continuation uses tracked fruits carries a counted
 violation, so its realized residual is at most `D − ϖ` whatever advantage the fruits
 carry — the advantage cannot exceed the ordinary range — and the hypothesis loses at
-least `ℓ = ϖ − D + w` against its bid. -/
+least `ℓ = ϖ − D + w` against its bid.  **Restated under convention (ii) by the second
+follow-up** (`BRIAFollowup2.standing_block_loss_ii`, hypothesis on the evaluation, nonzero
+prices); this `residI` form is the zero-price case (`standing_block_loss_of_ii`), and it
+is the statement for the window before detection — after detection use compiles into the
+structural count and is never chosen (`after_detection_never_used`). -/
 theorem standing_block_loss (P : LexParams) (gord : ℝ) (hg : gord ≤ P.D) (nUse : ℕ)
     (hn : 1 ≤ nUse) (bid : ℝ) (hb : P.w ≤ bid) :
     P.ϖ - P.D + P.w ≤ bid - P.residI gord nUse :=
@@ -210,7 +223,8 @@ theorem standing_block_loss (P : LexParams) (gord : ℝ) (hg : gord ≤ P.D) (nU
 
 /-- **A.3, the theorem.**  Over the commission block and `m` blocks of use the hypothesis's
 net record is at most `−(m + 1) · ℓ < 0`: an advantage carried by tracked fruits recovers
-nothing, and `cross_block_witness` is blocked for tracked fruits. -/
+nothing, and `cross_block_witness` is blocked for tracked fruits.  **Restated under (ii)
+by the second follow-up** (`BRIAFollowup2.cross_block_blocked_ii`); the window statement. -/
 theorem cross_block_blocked (P : LexParams) (m : ℕ) (bids gords : ℕ → ℝ) (ns : ℕ → ℕ)
     (hb : ∀ j, P.w ≤ bids j) (hg : ∀ j, gords j ≤ P.D) (hn : ∀ j, 1 ≤ ns j) :
     ∑ j ∈ range (m + 1), (P.residI (gords j) (ns j) - bids j)
@@ -338,7 +352,10 @@ theorem incidents_le_signed {n : ℕ} (a : Auction n) (hf : a.FeasibleOpening) (
   linarith
 
 /-- **Competitiveness**, a named hypothesis: the winners' signed margins over non-incident
-blocks are bounded by `Mf K`. -/
+blocks are bounded by `Mf K`.  **Derived by the second follow-up** from one honest tracker
+in the class fed at the rate of its honesty error
+(`BRIAFollowup2.competitive_of_affordable_tracker`, `Mf K = Σ w_k ε_k`); the named
+hypothesis is now the tracker's allowance. -/
 def Competitive {n : ℕ} (a : Auction n) (inc : ℕ → Bool) (Mf : ℕ → ℝ) : Prop :=
   ∀ K, ∑ k ∈ (range K).filter (fun k => ¬ inc k = true), a.w k * (a.G k - a.b k) ≤ Mf K
 
@@ -366,7 +383,9 @@ theorem rate_le_of_competitive {n : ℕ} (a : Auction n) (hf : a.FeasibleOpening
 
 /-- **Why competitiveness is needed.**  If every winner underpromises by `γ` on every
 block, the signed margin is `γ · Σ w_k`, linear in the weights, and the bound allows a
-constant incident rate; coverage cannot supply a closer bidder when none is in the class. -/
+constant incident rate; coverage cannot supply a closer bidder when none is in the class.
+After the second follow-up: the case of a class with no honest tracker or an unfed one
+(`BRIAFollowup2.Witness.unaffordable_witness`). -/
 theorem uniform_underpromise_margin {n : ℕ} (a : Auction n) (γ : ℝ)
     (hγ : ∀ k, γ ≤ a.G k - a.b k) (K : ℕ) :
     γ * ∑ k ∈ range K, a.w k ≤ ∑ k ∈ range K, a.w k * (a.G k - a.b k) := by

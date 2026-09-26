@@ -1000,6 +1000,35 @@ under delay (`DAuction`, `cash_nonneg`, `delayed_overestimation`, `tests_le_of_l
 linear-allowance witness (`Witness.linear_allowance_constant_rate`).  `cross_block_bound`
 is removed.  **LEAN**.  Lean:
 [`BRIAFollowup.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/9e7f89d946e04022289e3aa5c6bf7c496a4d6bc3/lean/Workspace/Deference/Contrib/BRIAFollowup.lean).
+**The second follow-up** (`BRIAFollowup2`): taint per violation, joining at reads, a
+remedy clearing its own violation's taint only (`taintStep2`, `taint_joins`,
+`remedy_clears2`, `remedy_keeps_others`, `taintedBy_remedy`,
+`still_tainted_after_one_remedy`), the old rule its one-identifier case
+(`old_is_new_with_one_identifier`, `uses_old_eq_new`), the re-proved lemmas
+(`taint_propagates2`, `knowledge_residual2`, `observation_taints_all2`,
+`Witness.taint_decides2`, `implant_standing2`, `two_influences_one_disclosure`) and the
+bug's witness (`Witness.two_violations_one_remedy_old`, `_new`, `two_violations_charged`);
+the per-block charge under convention (ii) with the price term cancelling
+(`price_cancels`, `standing_block_loss_ii`, `cross_block_blocked_ii`, the `residI` form as
+the zero-price case `standing_block_loss_of_ii`); after detection use compiles into the
+structural count and is never chosen (`nKnownWith`, `use_is_known`,
+`after_detection_never_used`); the window before detection — taint from commission
+(`detectAt`, `taint_only_from_commission`, `taint_persists_without_remedy`), late debit
+equal to late settlement (`late_debit_eq_late_settlement`, `window_block_charged`), the
+greedy collection and the carry-over condition (`greedyDebit`, `greedy_collects`,
+`collected_iff`, `uncollected_eq`, `windowDebit_bounds`), the exposure bound
+(`window_exposure`), the fixture (`Witness.window_before_detection`,
+`window_debit_collected`) — and the count-integrity boundary
+(`never_detected_never_charged`); Part F's criterion — expected escrow the same for the
+mixture and the random time (`expected_escrow_eq`, `locked_eq_tail`), the truncation
+cost (`truncation_cost`), the hybrid's mean and `1/k` variance (`Expect`, `average_mean`,
+`average_variance`, `variance_falls`, `bernoulli_variance`); competitiveness from one
+honest tracker (`HighestFeasible`, `WinnerBids`, `Honest`, `underpromise_le_of_feasible`,
+`tracker_wealth_ge`, `tracker_feasible`, `competitive_of_honest_tracker`,
+`competitive_of_affordable_tracker`, `rate_le_of_honest_tracker`, `trackerAllowance`,
+`trackerAllowance_covers`, `trackerAllowance_total`) with both witnesses
+(`Witness.unaffordable_witness`, `affordable_witness`).  **LEAN**.  Lean:
+`lean/Workspace/Deference/Contrib/BRIAFollowup2.lean` (pinned at landing).
 
 ## 11. The counterexamples that fix the shape
 

@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 818 names, 537 of them Lean only
+## deference — 844 names, 553 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -161,7 +161,7 @@ change, and the count of those is the size of the free choice remaining.
 | `realized` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.realized` |
 | `ref2` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.ref2` |
 | `rescale` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.rescale` |
-| `residI` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.residI` |
+| `residI` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.residI` |
 | `residII` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.residII` |
 | `route` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.route` |
 | `rowImplant` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Rows2.rowImplant` |
@@ -203,6 +203,32 @@ change, and the count of those is the size of the free choice remaining.
 | `taintStep` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.taintStep` |
 | `testsBy` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.DAuction.testsBy` |
 | `uses` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.uses` |
+| `Expect` | structure | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Expect` |
+| `HighestFeasible` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.HighestFeasible` |
+| `Honest` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Honest` |
+| `Step2` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Step2` |
+| `Taint` | abbrev | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Taint` |
+| `WinnerBids` | def | unrecorded | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.WinnerBids` |
+| `affordable` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.affordable` |
+| `detectAt` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.detectAt` |
+| `eU` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.eU` |
+| `greedyDebit` | def | unrecorded | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.greedyDebit` |
+| `io4` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.io4` |
+| `ioStd` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioStd` |
+| `ioW` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioW` |
+| `mixtureLocked` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.mixtureLocked` |
+| `nKnownWith` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.nKnownWith` |
+| `randomLocked` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.randomLocked` |
+| `readTaint` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.readTaint` |
+| `recW` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.recW` |
+| `standing2` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.standing2` |
+| `taintAfter2` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.taintAfter2` |
+| `taintStep2` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.taintStep2` |
+| `taintedBy` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.taintedBy` |
+| `trackerAllowance` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.trackerAllowance` |
+| `unaffordable` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.unaffordable` |
+| `uses2` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.uses2` |
+| `windowDebit` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.windowDebit` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |
@@ -1094,7 +1120,7 @@ change, and the count of those is the size of the free choice remaining.
 | `elim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.elim` |
 | `elimStep` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.elimStep` |
 | `eval` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.eval` |
-| `feasible` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.FourierMotzkin.feasible` |
+| `feasible` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.FourierMotzkin.feasible` |
 | `lastCoeff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.lastCoeff` |
 | `of` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.of` |
 | `strict` | abbrev | unrecorded | note | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.strict` |
@@ -1119,7 +1145,7 @@ change, and the count of those is the size of the free choice remaining.
 | `pref` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.pref` |
 | `ramp` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.ramp` |
 | `softGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.softGate` |
-| `total` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |
+| `total` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |
 | `u` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.u` |
 | `weight` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.weight` |
 | `Integrity` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Integrity` |

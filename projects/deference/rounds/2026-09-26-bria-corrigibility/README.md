@@ -6,13 +6,21 @@ Reading order: [`REPORT.md`](REPORT.md) (Part 0's rulings, the design with the a
 settlement convention, the four tests with status, each pressure test with its verdict,
 Part F's table and recommendation, the fixtures, the named hypotheses; **§9 the
 follow-up**: the corrections, standing violations, the signed rate bound, drill calibration
-reduced to two external results, the sharpened hypotheses, settlement under delay).  Lean:
+reduced to two external results, the sharpened hypotheses, settlement under delay; **§10
+the second follow-up**: per-violation taint with the old-to-new map, the headline for
+standing violations — after detection the fruits are never used — with the window before
+detection charged by late debit and its exposure bound, Part F's criterion revised with a
+fourth option and her evaluation load, competitiveness derived from one honest tracker).
+Lean:
 `lean/Workspace/Deference/Contrib/BRIACorrigibility.lean` (the rulings, the design, the
 four tests, the exchange rate, the pressure-test lemmas, the extended consultation model
 with its rows, the anchoring lemma and witnesses, Part F's statements, the witnesses) and
 `BRIAFollowup.lean` (the corrections, taint-tracked fruits, the signed bound, the
 reduction of drill calibration, the actuator condition, influence by provenance, the escrow
-algebra).  Fixtures: `src/bria.py`, run by `python3 tests/run.py` (33 tests).  Wiki:
+algebra) and `BRIAFollowup2.lean` (per-violation taint, the restatement under (ii), use
+compiled into the structural count, the window before detection and the late-debit
+collection, Part F's escrow and variance, the honest tracker).  Fixtures: `src/bria.py`,
+run by `python3 tests/run.py` (45 tests).  Wiki:
 `Corrigibility.md` (§4 rewritten, §6 and the wall restated, Part F as an open question,
 the scope statement), `Normative-Inductor.md` and `Normative-Induction.md` (revised in
 place), `Continuation-BRIA.md`, `Legitimacy.md`, `Glossary.md`, `Theorem-Spine.md`.

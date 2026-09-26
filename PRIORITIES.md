@@ -3199,6 +3199,16 @@ descriptions, `PricedInterface`; a proposer-written description passes,
 on `J` (`WellFormed`).  The rate of unbiasedness in the drilled mass, which the incident
 bound in `q` needs, is open.
 
+*2026-09-26 (BRIA-corrigibility second follow-up):* the count-integrity boundary has a
+formal face on the fruits side — a violation never detected is a record no step of which
+commits it, and the design charges nothing for its fruits
+(`BRIAFollowup2.never_detected_never_charged`); this is *undetected commission*, a
+different residual from the untrackable fruit of a flagged commission (knowledge), and it
+is exactly what the count, the drill schedule and the audits this item's companion names
+must turn into a flagged step.  Detection at `k₁` after commission at `k₀` recomputes the
+taint from commission and charges the window by late debit (`detectAt`,
+`window_block_charged`, `collected_iff`).
+
 ### 102. BRIA's bids against the market: block claims as priced securities — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -3244,6 +3254,20 @@ linear allowance gives a constant rate.  Settlement under delay now has its alge
 (`DAuction`, `cash_nonneg`, `delayed_overestimation`): bids feasible against cash net of
 escrow; a claim-as-security restatement must state feasibility against prices net of the
 same escrow.
+
+*2026-09-26 (BRIA-corrigibility second follow-up):* competitiveness is no longer the
+primitive hypothesis a pricing restatement must carry — one honest tracker in the class,
+fed by the allowance at the rate of its honesty error, gives it with margin
+`Σ_{k<K} w_k ε_k` (`BRIAFollowup2.competitive_of_affordable_tracker`,
+`rate_le_of_honest_tracker`), under the auction rule that the winner's bid is the highest
+feasible bid on the winning continuation (`HighestFeasible`) and with the tracker's
+minimal allowance `w̄ · D` at entry plus `w_j ε_j` per block (`trackerAllowance`).  What a
+restatement against prices must carry is (i) that rule stated on priced claims and (ii)
+whether the arrangement's uniform per-hypothesis allowance stream — the landed prefix
+rule's, over a countable class — dominates `Σ_{j<k} w_j ε_j` for the honest hypothesis,
+which is a condition on `ε` against the rule and is not derived here.  The escrow
+comparison among evaluation-timing options is settled in expectation
+(`expected_escrow_eq`): what a priced restatement carries is the variance, not the mean.
 
 ## Workspace friction
 

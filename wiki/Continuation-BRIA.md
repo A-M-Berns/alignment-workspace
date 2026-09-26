@@ -251,15 +251,26 @@ not a linear one (`rate_le_of_competitive`, `Witness.linear_allowance_constant_r
 late detection is booked against future allowance (`debited_overestimation`); and
 coverage forces the test of a hypothesis whose allowance outgrows its bounded record
 (`coverage_forces_test`) but not a win stream, which is why competitiveness is a
-hypothesis.  **Settlement under delay** (`BRIAFollowup.DAuction`): with block `k` settled
+hypothesis — and **one honest tracker supplies it**: a hypothesis whose bid on the winning
+continuation is within `ε_k` of the realized residual, `Σ ε_k = o(K)`, outbids every
+underpromiser wherever its bid is feasible (`BRIAFollowup2.underpromise_le_of_feasible`,
+under the auction rule `HighestFeasible`), and its wealth is its allowance less its honest
+losses (`tracker_wealth_ge`), so cumulative allowance covering a bid's worth at entry plus
+`Σ w_j ε_j` keeps it feasible (`tracker_feasible`) and the winners' signed margin is
+`Σ_{k<K} w_k ε_k` (`competitive_of_affordable_tracker`, `rate_le_of_honest_tracker`); the
+named hypothesis moves to the tracker's allowance (`trackerAllowance`, total
+`w̄ · D + Σ w_j ε_j`), and the witness is the class with no tracker or an unfed one
+(`Witness.unaffordable_witness`, `affordable_witness`).  **Settlement under delay** (`BRIAFollowup.DAuction`): with block `k` settled
 at `k + L_k`, a hypothesis's cash is its allowance plus settled winnings minus every bid
 placed — unsettled bids in escrow — and bids are feasible against cash net of escrow;
 wealth stays nonnegative (`cash_nonneg`), the settled overestimation is at most the
 allowance and the escrowed exposure at most the allowance plus the settled underpromise
 (`delayed_overestimation`), and by time `K` at most `K − λ` tests have arrived under a
 lag of at least `λ` (`tests_le_of_lag`).  The mixture over evaluation times settles in
-pieces and releases escrow as weight settles; a random evaluation time of mean lag
-`n + 2` locks half the capital at any time ([Corrigibility](Corrigibility) §7).
+pieces and a random evaluation time settles once, but their expected locked capital is
+the same at every time (`BRIAFollowup2.expected_escrow_eq`); what differs is the variance
+of the escrow and of the score, which `k` hidden draws averaged cut by `1/k`
+(`average_variance`), against her evaluation load ([Corrigibility](Corrigibility) §7).
 
 ## 9. Open
 
@@ -278,8 +289,9 @@ pieces and releases escrow as weight settles; a random evaluation time of mean l
   at a test as an assessed world.  The evaluation decomposition above is the partial
   answer: the forecast part of a bid is already the market's (the prices), and what the
   hypothesis bids on is the residual.
-- When her evaluation happens: the three timing options compared on
-  [Corrigibility](Corrigibility) §7 on the escrow algebra; the weighted BRIA criterion
+- When her evaluation happens: the four timing options compared on
+  [Corrigibility](Corrigibility) §7 — the same expected escrow and harm weight, her
+  evaluation load against the variance and the hidden draw; the weighted BRIA criterion
   itself under delayed or partial feedback — what "no overestimation" and coverage mean
   when the record lags — is still open for every option.
 

@@ -17,3 +17,10 @@ executor checked that request's CI (green on every job) before starting, revised
 round's wiki text and `DECISIONS.md` entries in place as the prompt directs, and updated
 only the outstanding-actions section of its report.  The prompt refers to a "Part C.11"
 under ruling 4; the checks meant are Part C.10's, and the round treats them as such.
+
+**The second follow-up** (`FOLLOWUP2.md`, the same day) was dispatched against `main`
+after the first follow-up's pull request had merged, and landed as its own pull request
+from `main`: round directory and ledger amended in place, a sibling Lean file
+`BRIAFollowup2.lean`, `REPORT.md` §10, `tests/test_followup2.py`.  The dispatch's likely
+obstruction for Part 4 (the tracker's capital) resolved the other way; the report says
+so rather than reporting an obstruction.
