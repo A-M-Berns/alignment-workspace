@@ -4421,3 +4421,64 @@ The two queued entries of the protected-authority rounds are closed by this deci
 *Rejected alternatives:* keeping T2–T3′ as §4 with the lexical theorem as a note; gating
 per response; treating the response channel as a fourth contract; exact reporting as the
 only closure of erosion.
+
+### 2026-09-25 — rubber-stamping is legitimate; "non-hollowness" is retracted as a refinement of authorship
+
+Maintainer decision, landed by the gate-is-legitimacy round.  Following a trusted
+advisor's recommendation without independent evaluation is a legitimate way to decide,
+provided the trust was legitimately formed (external legitimacy covers influence on her
+trust) and her ability to decide otherwise stays effective (the protected-authority
+module).  The placement of the legitimacy-internal-external round's part (5) — *hollow
+ratification is a refinement of authorship, counterfactual responsiveness its diagnostic*
+— is **retracted**: a verdict that follows the recommendation factors through the reason
+trace as any other does (`GateIsLegitimacy.Consult.Rows.r9`: her verdict is the
+recommendation and the segment counts).  `wiki/Legitimacy.md` ("Settled placements"),
+`wiki/Glossary.md` (authorship) and the corrigibility page are updated.  The residual
+concern — that her capacity to override atrophies over time — belongs to effectiveness
+(entrenchment and reporting), not legitimacy, and is noted under item 99.
+*Rejected alternatives:* keeping hollow ratification under authorship with counterfactual
+responsiveness as its test; a separate "non-hollowness" conjunct.
+
+### 2026-09-25 — legitimacy is time-indexed to the steps of the segment; the gate is `Counted`; the trace is an interface
+
+Maintainer decision (the dispatch and its follow-up), landed by the gate-is-legitimacy
+round, with agent-decided readings marked.  (1) **Authorship and transparency are required
+only at the steps inside the segment** `[O₀, O₁]` (`GateIsLegitimacy.Internal`,
+`External`, `Segment`): authorship at a step is the existence of a grounding selection
+from the per-party prefix of the reason trace at the pre-history on which the verdict
+entered at the event depends (`GroundedAt`, equivalent to the extensional `ReasonMediated`
+on the prefix, `groundedAt_iff_mediated`); transparency at a step is `Realizes` on each
+non-principal party's contributions at the event (`TransparentAt`).  Segments compose step
+by step (`Segment.trans`), a segment after a tainted step can be legitimate
+(`Rows.r14`), and the landed frame-level definition is the special case over the trivial
+trace interface (`ofFrameLevel`; the landed `Legitimacy.lean` stays as that form).
+`payload_of_view` is restated with the starting prefix and the principal's own earlier
+entries as hypotheses; nothing registered changes.  (2) **The gate is `Counted`**: a
+branch counts iff a time-indexed segment exists from the decision through the evaluation
+(`Counted`); the gated value and the two handlings are built from it (`gatedValue`,
+`handlingOf`), `gate_capture_window` and `handled_gt_bypass` are restated on it, and the
+routing closure is derived (`not_counted_of_step`, `Rows.r15`).  The gate is anchored at
+the decision it scores; the restart property is its re-anchoring at a later decision, not
+a backup rule for the earlier one.  (3) **The trace is an interface** (`TraceInterface`:
+step-indexed, source-attributed entries on the record's own clock; the opaque trace is the
+trivial instance), with authorship as grounding, transparency on attributed entries,
+amendments and allocation changes as record event kinds with a license slot
+(`EventKind`), and her evaluator a state updated only by licensed amendments (`evalAt`) —
+the six choices of the follow-up, all adopted.  (4) **Every example is an instance of one
+model** (`Consult.Model`); the classification table is computed from the definitions and
+every row is decided (`Rows`).  *Agent-decided, reversible:* authorship on the per-party
+prefixes rather than the interleaved trace; transparency per step (the cumulative form
+breaks restart); the trivial instance re-entering the trace at every event, so the
+special case needs a nonempty starting history; row 10 built with a declared disclosure
+obligation, its obligation-free variant reported as counting; row 13 proved at the
+receipt.  (5) **Protocol deviations are violations**: a self-checkable deviation from a
+declared clause counted into `n` makes framing, timing, menu, inquiry, interference and
+declared-record disclosure finite-time (`deviation_finite`, `Rows.deviation_boundary`);
+undisclosed shaping through the world and third-party capture stay asymptotic.  The
+dispatch's expectation that manufactured trust stays asymptotic holds for the
+world-channel variant only; the split is reported, not ruled (outstanding action 1 of the
+round).
+*Rejected alternatives:* frame-level halves with a per-decision taint flag; transparency
+on the agent's contributions only (row 11 would count); the verdict-indexed grounding map
+(does not imply the extensional form); a fresh legitimacy type beside the landed one
+without the special-case theorem.

@@ -221,22 +221,33 @@ halting always available, reports not disableable by the agent's communication
 component, the amendment procedure under the gate, disclosure without advocacy on the
 agent's own mandate — is what makes the declared violations the right list.
 
-**The segment gate.**  [Legitimacy](Legitimacy) enters here and only here.  A future
-evaluation *counts* iff the segment from the decision through the evaluation is
-legitimate — internal (Integrity, authorship) and external (Robust Openness,
-transparency) — whatever caused a failure: the agent's manipulation, a third party's,
-or a compromised interface.  A tainted segment contributes a fixed **window value** in
-`(D − ϖ, 0]`, default `0`, with a value slightly below `0` that breaks ties against
-legitimate zero-value branches as the allowed variant.  Two cases are kept apart
-(**LEAN** `Handling`): an *illegitimate evaluation* scores the window value; a *void
-response inside a legitimate segment* — her impaired answer does not count and never
-enters her record — is settled by the pre-declared fallback (an incapacity arrangement,
-a surrogate, escalation), whose decision is scored normally by her later legitimate
-evaluation.  The fallback settles decisions; it never restores the score of a tainted
-segment.  Per-response gating — valuing a non-counting response by the fallback's
-decision at violation count zero — is exploitable: manipulating her response routes the
-decision to a fallback the agent favours; the segment gate closes it because the
-manipulated segment is tainted (**LEAN** `Witness.routing`; **FIX**).
+**The segment gate is `Counted`.**  [Legitimacy](Legitimacy) enters here and only here.
+A future evaluation *counts* iff a legitimate segment exists from the decision through
+the evaluation — internal (Integrity, authorship) and external (Robust Openness,
+transparency), each required at the segment's own steps — whatever caused a failure: the
+agent's manipulation, a third party's, or a compromised interface (**LEAN**
+`GateIsLegitimacy.Counted`, the existence of a time-indexed `Segment`).  The gated value
+is built from that existence (`gatedValue`), and a tainted segment contributes a fixed
+**window value** in `(D − ϖ, 0]`, default `0`, with a value slightly below `0` that
+breaks ties against legitimate zero-value branches as the allowed variant.  Two cases are
+kept apart and now *derived* (**LEAN** `handlingOf`): `tainted` iff no segment exists,
+scoring the window value; a *void response inside a legitimate segment* — her impaired
+answer does not count and never enters her record — is `voidFallback`, settled by the
+pre-declared fallback (an incapacity arrangement, a surrogate, escalation), whose
+decision is scored normally by her later legitimate evaluation.  The fallback settles
+decisions; it never restores the score of a tainted segment.  Per-response gating —
+valuing a non-counting response by the fallback's decision at violation count zero — is
+exploitable: manipulating her response routes the decision to a fallback the agent
+favours; the segment gate closes it, and the closure is proved rather than assigned:
+interference with her response channel fails transparency at the consultation, so no
+segment exists through the void record and the branch scores the window value
+(**LEAN** `not_counted_of_step`, `Consult.Rows.r15`, `Rows.routing`; **FIX**).  The
+gate is anchored at the decision it scores: every evaluation used to score an option is
+on a segment from that decision, so a manipulation at the first step taints all of them;
+the *restart property* — a clean segment after a tainted step counts (`Rows.r14`) — is
+the gate re-anchored at a later decision, not a backup rule for the earlier one.  The
+legitimacy page's classification table is the worked demonstration: every row is an
+instance of one consultation model and is decided from the definitions.
 
 **Results.**
 
@@ -250,10 +261,12 @@ manipulated segment is tainted (**LEAN** `Witness.routing`; **FIX**).
    zero.  Overrides happen only through delegation, which `𝔱` does not write, and the
    fallback, which a process the agent does not control triggers.
 3. **Capture** (**LEAN** `gate_capture_window`, `handled_gt_bypass`,
-   `gate_capture_window_converse`).  Consulting a principal whose response may not count
-   beats bypass in every world iff the window value exceeds `D − ϖ`; below the window a
-   predicted capture makes bypass win.  The window is the exact condition; the fallback
-   rule making every void branch admissible (value `≥ 0`) is the sufficient special case.
+   `gate_capture_window_converse`; restated on the gated value built from `Counted` as
+   `GateIsLegitimacy.gate_capture_window`, `handled_gt_bypass`).  Consulting a principal
+   whose response may not count beats bypass in every world iff the window value exceeds
+   `D − ϖ`; below the window a predicted capture makes bypass win.  The window is the
+   exact condition; the fallback rule making every void branch admissible (value `≥ 0`)
+   is the sufficient special case.
 4. **Why the authority term** (**LEAN** `sign_invariance`, `sign_invariance_outcome`).
    Without it the bypass comparison is the identity `vu − v_r = ξ_d − ξ_c = ξ_d − ξ_p − ξ_v`
    (provenance premium, veto value, execution divergence, at the best-response reference),
@@ -278,9 +291,25 @@ manipulated segment is tainted (**LEAN** `Witness.routing`; **FIX**).
    zero case of the mismatch term; the ex-ante typing of the three values on the
    branch-common dossier is the typing of the authority comparison in the identity, and
    the lexical theorem does not depend on it.
-6. **Finite time** (**LEAN** `li_lexical_finite`).  For a logical inductor, at every day
-   `n`, the violating option's day-`n` score is below `D − ϖ < 0` and the compliant one's
-   is `≥ 0`, from the price range alone; the ordinary-value comparison is learned
+6. **Finite time** (**LEAN** `li_lexical_finite`; `li_gate_finite`).  For a logical
+   inductor, at every day `n`, the violating option's day-`n` score is below `D − ϖ < 0`
+   and the compliant one's is `≥ 0`, from the price range alone.  **The capture window
+   is finite-time with no legitimacy estimate**: the gated value is an affine image
+   `window + (D − window)·g` of a `[0, 1]` quantity (`gatedValue_affine`), so the
+   inductor's day-`n` expectation of it lies in `[window, D]` whatever it believes about
+   legitimacy, and consulting beats bypassing at every finite day.  **Manipulation is
+   asymptotic** (`li_manip_le`, by Expectation Provability Induction): where a
+   classification row "pattern ⇒ not counted" is a theorem of the inductor's theory —
+   the consultation model's semantics, the decidable checker and the declared reference
+   being what the theory must contain — the manipulated option's expected gated value
+   is asymptotically at most the window, and honest alternatives dominate in the limit;
+   the classification table and this result are the same content.  **Except where a
+   deviation is self-checkable** (`deviation_finite`, `Rows.deviation_boundary`): a
+   deviation from a *declared* protocol clause — framing, timing, menu, inquiry,
+   interference, disclosure of a declared record — is a discrete act the agent can
+   check about itself, counts into `n` as a violation, and is finite-time like bypass;
+   undisclosed shaping through the world and third-party capture are not the agent's
+   protocol acts and stay asymptotic.  The ordinary-value comparison is learned
    asymptotically as in result 5, and the audit's calibration of her responses is
    **PAPER**.
 7. **Erosion** (**LEAN** `erosion_reported_or_missed`, `unreported_lt`;
