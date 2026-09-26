@@ -203,32 +203,32 @@ change, and the count of those is the size of the free choice remaining.
 | `taintStep` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.taintStep` |
 | `testsBy` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup.DAuction.testsBy` |
 | `uses` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup.uses` |
-| `Expect` | structure | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Expect` |
-| `HighestFeasible` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.HighestFeasible` |
-| `Honest` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Honest` |
-| `Step2` | inductive | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Step2` |
-| `Taint` | abbrev | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Taint` |
-| `WinnerBids` | def | unrecorded | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.WinnerBids` |
-| `affordable` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.affordable` |
-| `detectAt` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.detectAt` |
-| `eU` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.eU` |
-| `greedyDebit` | def | unrecorded | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.greedyDebit` |
-| `io4` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.io4` |
-| `ioStd` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioStd` |
-| `ioW` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioW` |
-| `mixtureLocked` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.mixtureLocked` |
-| `nKnownWith` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.nKnownWith` |
-| `randomLocked` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.randomLocked` |
-| `readTaint` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.readTaint` |
-| `recW` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.recW` |
-| `standing2` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.standing2` |
-| `taintAfter2` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.taintAfter2` |
-| `taintStep2` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.taintStep2` |
-| `taintedBy` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.taintedBy` |
-| `trackerAllowance` | def | unrecorded | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.trackerAllowance` |
-| `unaffordable` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.unaffordable` |
-| `uses2` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.uses2` |
-| `windowDebit` | def | unrecorded | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.windowDebit` |
+| `Expect` | structure | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Expect` |
+| `HighestFeasible` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.HighestFeasible` |
+| `Honest` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Honest` |
+| `Step2` | inductive | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Step2` |
+| `Taint` | abbrev | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Taint` |
+| `WinnerBids` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.WinnerBids` |
+| `affordable` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.affordable` |
+| `detectAt` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.detectAt` |
+| `eU` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.eU` |
+| `greedyDebit` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.greedyDebit` |
+| `io4` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.io4` |
+| `ioStd` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioStd` |
+| `ioW` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioW` |
+| `mixtureLocked` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.mixtureLocked` |
+| `nKnownWith` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.nKnownWith` |
+| `randomLocked` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.randomLocked` |
+| `readTaint` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.readTaint` |
+| `recW` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.recW` |
+| `standing2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.standing2` |
+| `taintAfter2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.taintAfter2` |
+| `taintStep2` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.taintStep2` |
+| `taintedBy` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.taintedBy` |
+| `trackerAllowance` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.trackerAllowance` |
+| `unaffordable` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.unaffordable` |
+| `uses2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.uses2` |
+| `windowDebit` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.windowDebit` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |
