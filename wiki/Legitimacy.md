@@ -330,7 +330,14 @@ manipulation row failing the trajectory; the implant rows failing the trajectory
 undisclosed, the evaluation too; the implant *disclosed* at the next round — the period
 not `TrajLegit`, the next round's evaluation `EvalLegit` (`retro_row`) — which is the
 row the [Corrigibility](Corrigibility) page's band scores by that retrospective
-evaluation rather than the window.  The duty side is extended alongside: a compromise of
+evaluation rather than the window.  `EvalLegit` is over the evaluation's **formation
+segment** — every step from the formation point `r`, the latest of the restoration event
+and the opening of the consultation producing `e`, through `e`, the criteria fixed at
+`r` (`EvalLegitOn2`); the single step is the case `r = e`, and the landed predicate is
+the conjunction with `r ≤ e` under one set of criteria (`legitOn2_iff_split2`,
+`rows_split2`).  A manipulation between the restoration and her retrospective evaluation
+— a framing, or undisclosed shaping — fails the formation segment where it passed the
+single step (`formation_counterexample`).  The duty side is extended alongside: a compromise of
 her evaluation the agent knows of is a disclosure item whoever caused it
 (`missedKnownDisclosure`), where the landed clause counted the agent's own influence only.
 

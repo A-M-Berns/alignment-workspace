@@ -5003,7 +5003,18 @@ closes the segment (`counted_of_split`), and no row's verdict changes there
 *after* restoration while the period was not — covertly implanted standards disclosed
 at the next round (`retro_row`) — which the score below reads.  `Counted` itself is
 unchanged.
-*Rejected alternative:* a single predicate with a retrospective clause bolted on.
+*Amended by the follow-up (2026-09-26):* `EvalLegit` is legitimacy of the evaluation's
+**formation segment** — every step from the formation point `r` through `e`, the
+criteria fixed at `r`, where `r` is the latest of the restoration event and the opening
+of the consultation producing `e` (`EvalLegitOn2`); the single step at `e` is the case
+`r = e` (`evalLegitOn2_single`), and the map holds with `r ≤ e` under one set of
+criteria (`legitOn2_iff_split2`), the rows re-run unchanged (`rows_split2`).  Without it
+a manipulation between the restoration and her retrospective evaluation left
+`EvalLegit(e)` true and scored the period from a manipulated evaluation — counted for a
+framing, *uncounted* for undisclosed shaping (`formation_counterexample`, both ways);
+the third-party variant is an obstruction on the model and is stated.
+*Rejected alternative:* a single predicate with a retrospective clause bolted on; the
+single-step `EvalLegit` (the round's first form).
 
 ### 2026-09-26 — a compromised period scores in a negative band, by her retrospective evaluation or her directive
 
@@ -5022,11 +5033,17 @@ compromise cheap (`risk_accepted_iff`, `risk_threshold_le`, `Witness.small_gap`)
 laundering stays in the band (`laundering_loses`); restoring legitimacy returns future
 decisions to the positive range and within a compromise the agent prefers better
 outcomes wherever a source scores the period (`restore_future`, `band_prefers_better`).
-**Parameters, recommended:** the gap `|w_hi| ≥ D`, the width `w_hi − w_lo = D/2`, `ϖ ≥ 3D`;
-the window condition reads `ϖ > D + |w_hi| + (w_hi − w_lo)`.  The gap trades protection
-of legitimacy against consultation under compromise risk and raises the tolerated
-violation probability to `(D − w_lo)/ϖ`; the width trades care in the band against the
-directive's stakes and the suppression margin.
+**Parameters, recommended** *(amended by the follow-up, 2026-09-26 — the recommendation
+`ϖ ≥ 3D` tolerated a worst-case violation probability of `5/6` and is replaced by a
+derivation)*: fix a worst-case target `τ*` for the tolerated violation probability with
+`p_min < τ* < 1`; then `ϖ ≥ (D − w_lo)/τ*` meets it and the window condition follows
+(`varpiOfTarget`, `target_gives_tolerance`, `target_gives_window`, `tolerance_of_ge`);
+the normal-operation rate is `≈ (D − c̄)/ϖ` by the per-block bound
+(`violation_rate_le_exchange_perblock`), `c̄` the compliant option's typical evaluation.
+**The coupling:** at fixed `ϖ` a larger gap or width raises the worst-case tolerated
+rate (`coupling`); holding the tolerance fixed, raising the gap raises `ϖ`, toward
+paralysis.  Worked: `D = 1`, band `[−3/2, −1]`, `τ* = 1/10` gives `ϖ = 25`, normal
+operation `1/50` at `c̄ = 1/2`, paralysis floor `p_min < 1/10` (`worked_parameters`).
 *Rejected alternative:* the flat window (the agent indifferent in every compromised
 world, concern 4).
 
@@ -5105,3 +5122,32 @@ tracking cannot see is *why* an act was chosen; the declared reads must include 
 choice read, which is count integrity (item 101 in place).
 *Rejected alternative:* the per-violation rule without overwrite (it can never clear a
 component once tainted, so an independent discovery stays charged forever).
+
+### 2026-09-26 — the known-compromise disclosure falls due at or before the earliest close of an affected settlement window
+
+Maintainer decision, landed by the after-compromise follow-up.  The source rule takes a
+retrospective evaluation only within the settlement window; a duty falling due after the
+window would let a late disclosure push the period to the directive uncounted
+(`AfterCompromise.late_disclosure_free`).  The duty's due time is therefore at or before
+the earliest close of an affected settlement window, so every later disclosure is a
+missed report (`prompt_deadline_counts`) and suppression by delay loses like suppression
+outright (`suppression_by_delay_loses`); the consultation model's clause is already
+prompt — due at every round from the first until disclosed (`known_due_each_round`).
+*Rejected alternative:* a fixed disclosure deadline independent of the settlement
+windows.
+
+### 2026-09-26 — observation completeness is a named hypothesis: every observation enters the shared history before the next block opens
+
+Maintainer decision, landed by the after-compromise follow-up.  The observation-side twin
+of effect completeness: the shared history at the opening of block `k` is the record of
+every observation the agent made before it (`AfterCompromise.ObsComplete`); knowledge the
+agent is entitled not to share with bidders still enters the record, through the twin
+market's redaction rather than a hidden channel.  Under it every selection built from the
+agent's observations is a function of the shared history at the opening
+(`obs_complete_public`), the noise hypothesis applies to it, and the post-commission
+tracker bound covers every knowledge-acquiring violation (`knowledge_motive_covered`) —
+the knowledge motive adds nothing beyond the exchange rate.  Its failure is the
+private-knowledge residual (`Witness.private_selection`); its interaction with reserved
+knowledge is the twin market's leakage residual.  Filed beside effect completeness and
+description faithfulness; on item 101 as count integrity's observation side.
+*Rejected alternative:* leaving the private-knowledge residual open.

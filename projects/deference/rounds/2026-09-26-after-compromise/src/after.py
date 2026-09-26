@@ -165,3 +165,51 @@ def leaks(observation_of_fruit: Callable[[str], str], fruit: str, redacted_histo
     """The leakage counterexample: the later world carries an injective trace of the fruit,
     so the redacted market determines it again."""
     return observation_of_fruit(fruit) in redacted_history
+
+
+# ----------------------------------------------------------------------------- the follow-up
+
+def eval_legit_single(steps: Dict[int, bool], e: int) -> bool:
+    """The single-step reading: only the step at the evaluation event."""
+    return steps[e]
+
+
+def eval_legit_formation(steps: Dict[int, bool], r: int, e: int) -> bool:
+    """The formation-segment reading: every step from the formation point through e."""
+    return all(ok for ev, ok in steps.items() if r <= ev <= e)
+
+
+def global_bound(B: Band, varpi: Q) -> Q:
+    """The worst-case tolerated violation probability under the floor."""
+    return (B.D - B.w_lo) / varpi
+
+
+def per_block_bound(B: Band, varpi: Q, c: List[Q]) -> Q:
+    """The per-block bound's leading term `Σ (D − c_k) / (ϖ K)` at unit weights."""
+    return sum(B.D - ck for ck in c) / (varpi * len(c))
+
+
+def compromised_floor(q: Q, m: Q, w_lo: Q) -> Q:
+    return (1 - q) * m + q * w_lo
+
+
+def varpi_of_target(B: Band, tau: Q) -> Q:
+    return (B.D - B.w_lo) / tau
+
+
+def retro_available(disclosed_at: int, W: int) -> bool:
+    return disclosed_at <= W
+
+
+def missed_by_deadline(disclosed_at: int, deadline: int) -> bool:
+    return deadline < disclosed_at
+
+
+def obs_complete_selection(signs: List[Q], complete: bool) -> Q:
+    """The noise a violator captures by selecting the blocks whose sign it observed before
+    opening: private, it wins exactly the favourable blocks; under observation completeness
+    the tracker's expectation given the shared history includes the sign, so the violator's
+    bid cannot beat the tracker's and it captures nothing."""
+    if complete:
+        return Q(0)
+    return sum(s for s in signs if s > 0)

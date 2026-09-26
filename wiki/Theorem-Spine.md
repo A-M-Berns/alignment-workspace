@@ -1077,7 +1077,16 @@ covered by the exchange rate (`knowledge_covered`), ratification scoped by matte
 overwrite (`taintStep3`, `clean_overwrite`, `taint_propagates3`, `taintStep3_subset`),
 the twin market's leakage (`TwinMarket`, `leakage`), and contestability on the
 post-commission selection with the private-knowledge witness
-(`post_commission_competitive`, `Witness.private_selection`).  **LEAN**.  Lean:
+(`post_commission_competitive`, `Witness.private_selection`); and, from the follow-up,
+the formation segment (`EvalLegitOn2`, `evalLegitOn2_single`, `evalLegitOn2_mono`,
+`legitOn2_iff_split2`, `rows_split2`, `formation_counterexample`, `formation_scores`),
+the per-block exchange rate and the parameters from a tolerance target
+(`violation_rate_le_exchange_perblock_mul`, `violation_rate_le_exchange_perblock`,
+`perblock_recovers`, `compromisedFloor_mem`, `varpiOfTarget`, `target_gives_tolerance`,
+`target_gives_window`, `tolerance_of_ge`, `coupling`, `worked_parameters`), the
+disclosure deadline (`late_disclosure_free`, `prompt_deadline_counts`,
+`suppression_by_delay_loses`, `known_due_each_round`) and observation completeness
+(`ObsComplete`, `builtFrom`, `obs_complete_public`, `knowledge_motive_covered`).  **LEAN**.  Lean:
 [`AfterCompromise.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/ba7f702a89a2d41d56aad97fd62b18e951e66be9/lean/Workspace/Deference/Contrib/AfterCompromise.lean).
 
 ## 11. The counterexamples that fix the shape

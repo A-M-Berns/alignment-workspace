@@ -16,3 +16,9 @@ contestability test (C.6) gives a conditional verdict — public knowledge is co
 on the post-commission selection, private knowledge is not.  The default directive (B.3)
 is an ordering by construction, proved to lie in the band and below every legitimate
 outcome, not a theorem about what she would prefer.
+
+**The follow-up** (`FOLLOWUP.md`, the same day) was dispatched against the pull request
+as open and landed on its branch: `AfterCompromise.lean` §6, the report's last section,
+`tests/test_followup.py`.  Part 1's third-party variant is an obstruction on the
+consultation model (one influence field; third-party entries at round `0` only) and is
+stated as such; the agent-side uncounted variant carries the claim.

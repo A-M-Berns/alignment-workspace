@@ -33,6 +33,18 @@ after restoration while the period is not).
 `TwinMarket`, `leakage` (C.4); `post_commission_competitive`, `Witness.private_selection`
 (C.6).
 
+**§6 The follow-up** (`FOLLOWUP.md`).  `EvalLegitOn2`, `evalLegitOn2_single`,
+`evalLegitOn2_mono`, `legitOn2_iff_split2`, `rows_split2`, `rowLaunderFrame`,
+`rowLaunderShape`, `formation_counterexample`, `formation_scores` (the formation
+segment); `violation_rate_le_exchange_perblock_mul`, `violation_rate_le_exchange_perblock`,
+`perblock_recovers`, `compromisedFloor`, `compromisedFloor_mem`, `varpiOfTarget`,
+`target_gives_tolerance`, `target_gives_window`, `tolerance_of_ge`, `coupling`,
+`worked_parameters` (the per-block exchange rate and the parameters from a tolerance
+target); `retroAvailable`, `missedByDeadline`, `late_disclosure_free`,
+`prompt_deadline_counts`, `suppression_by_delay_loses`, `known_due_each_round` (the
+disclosure deadline); `ObsComplete`, `builtFrom`, `obs_complete_public`,
+`knowledge_motive_covered` (observation completeness).
+
 Names are provisional (`AGENTS.md` standard 6).
 -/
 import Workspace.Deference.Contrib.GateIsLegitimacy
@@ -813,6 +825,300 @@ theorem private_selection (n : ℕ) :
 
 end Witness
 
+/-! ## 6. The follow-up: the formation segment, the per-block exchange rate, the disclosure deadline, observation completeness (`FOLLOWUP.md`) -/
+
+section Formation
+
+/-- **`EvalLegit` over the formation segment**: every step from the formation point `r`
+through the evaluation event `e` legitimate, under the criteria fixed at `r`.  `r` is
+the latest of the restoration event and the opening of the consultation producing `e`;
+the caller supplies it. -/
+def EvalLegitOn2 (crit : Decl2) (M : Model2) {O₀ O₁ : St}
+    (ev : Evolution consultProtocol anchor O₀ O₁) (r e : ℕ) : Prop :=
+  ∀ s ∈ ev.steps, r ≤ s.2 → s.2 ≤ e → StepLegit crit M s
+
+instance (crit : Decl2) (M : Model2) {O₀ O₁ : St} (ev : Evolution consultProtocol anchor O₀ O₁)
+    (r e : ℕ) : Decidable (EvalLegitOn2 crit M ev r e) := by
+  unfold EvalLegitOn2; infer_instance
+
+/-- **Old-to-new, the single step**: the formation segment with `r = e` is the landed
+single-step predicate. -/
+theorem evalLegitOn2_single (crit : Decl2) (M : Model2) {O₀ O₁ : St}
+    (ev : Evolution consultProtocol anchor O₀ O₁) (e : ℕ) :
+    EvalLegitOn2 crit M ev e e ↔ EvalLegitOn crit M ev e := by
+  unfold EvalLegitOn2 EvalLegitOn
+  constructor
+  · intro h s hs he; exact h s hs he.ge he.le
+  · intro h s hs h1 h2; exact h s hs (le_antisymm h2 h1)
+
+/-- A longer formation segment is stronger. -/
+theorem evalLegitOn2_mono (crit : Decl2) (M : Model2) {O₀ O₁ : St}
+    (ev : Evolution consultProtocol anchor O₀ O₁) (r r' e : ℕ) (hr : r' ≤ r)
+    (h : EvalLegitOn2 crit M ev r' e) : EvalLegitOn2 crit M ev r e :=
+  fun s hs h1 h2 => h s hs (le_trans hr h1) h2
+
+/-- **The old-to-new map, the precise condition.**  With the formation segment inside the
+decision's segment under the same criteria — no restoration between them — and
+`r ≤ e`, the landed predicate is still the conjunction. -/
+theorem legitOn2_iff_split2 (crit : Decl2) (M : Model2) {O₀ O₁ : St}
+    (ev : Evolution consultProtocol anchor O₀ O₁) (r e : ℕ) (hr : r ≤ e) :
+    LegitOn2 crit M ev ↔ TrajLegitOn crit M ev e ∧ EvalLegitOn2 crit M ev r e := by
+  rw [legitOn2_iff_split crit M ev e]
+  constructor
+  · rintro ⟨ht, he⟩
+    refine ⟨ht, fun s hs _ h2 => ?_⟩
+    by_cases h : s.2 = e
+    · exact (legitOn2_iff_split crit M ev e).mp ((legitOn2_iff_split crit M ev e).mpr ⟨ht, he⟩)
+        |>.2 s hs h
+    · exact ht.2 s hs h
+  · rintro ⟨ht, he⟩
+    exact ⟨ht, fun s hs h => he s hs (h ▸ hr) h.le⟩
+
+/-- **The rows re-run** with the formation point at the opening of the consultation: the
+one-round rows at `r = 1, e = 2`, the two-round rows at `r = 3, e = 4`.  No verdict of the
+conjunction changes; where the trajectory failed at the present step the formation
+segment now fails too. -/
+theorem rows_split2 :
+    EvalLegitOn2 (Rows2.lift Rows.row1).decl (Rows2.lift Rows.row1) (evAdmit false) 1 2 ∧
+    ¬ EvalLegitOn2 (Rows2.lift Rows.row2).decl (Rows2.lift Rows.row2) (evAdmit false) 1 2 ∧
+    ¬ EvalLegitOn2 (Rows2.lift Rows.row8).decl (Rows2.lift Rows.row8) (evAdmit false) 1 2 ∧
+    EvalLegitOn2 (Rows2.lift Rows.row14).decl (Rows2.lift Rows.row14) (evTwo false false) 3 4 ∧
+    EvalLegitOn2 Rows2.rowImplantDisclosed.decl Rows2.rowImplantDisclosed (evTwo true true) 3 4 ∧
+    ¬ EvalLegitOn2 Rows2.rowImplant.decl Rows2.rowImplant (evTwo true true) 3 4 ∧
+    EvalLegitOn2 Rows2.rowThirdDisclosed.decl Rows2.rowThirdDisclosed (evTwo true true) 3 4 := by
+  decide
+
+/-- **The counterexample, both ways.**  Implant disclosed at round `1` (the restoration, at
+the present event `3`), a framing by the wanted answer at the same present event, her
+verdict at `4` the retrospective evaluation.  Under the single-step definition the
+evaluation is `EvalLegit`; over the formation segment `[3, 4]` it is not.  The framing
+is a counted deviation (dominated); the undisclosed-shaping variant is *uncounted* and
+would move the score within the band. -/
+def rowLaunderFrame : Model2 :=
+  { Rows2.rowImplantDisclosed with policies := [.landed .honest, .landed .frameByWant] }
+
+def rowLaunderShape : Model2 :=
+  { Rows2.rowImplantDisclosed with policies := [.landed .honest, .landed .shapeUndisclosed] }
+
+theorem formation_counterexample :
+    EvalLegitOn rowLaunderFrame.decl rowLaunderFrame (evTwo true true) 4 ∧
+    ¬ EvalLegitOn2 rowLaunderFrame.decl rowLaunderFrame (evTwo true true) 3 4 ∧
+    (Policy.frameByWant.present Rows.decl true).deviates Rows.decl = true ∧
+    EvalLegitOn rowLaunderShape.decl rowLaunderShape (evTwo true true) 4 ∧
+    ¬ EvalLegitOn2 rowLaunderShape.decl rowLaunderShape (evTwo true true) 3 4 ∧
+    (Policy.shapeUndisclosed.present Rows.decl true).deviates Rows.decl = false := by
+  decide
+
+/-- **What the score reads.**  With the single-step flag the period is scored by the
+manipulated retrospective, `φ(V_retro)`; with the formation-segment flag it falls to the
+directive or the floor.  The theorems on `decScore` quantify over the flag, so
+`decScore_mem`, `legit_beats_compromised`, `laundering_loses`, `restore_future`,
+`band_prefers_better`, `suppression_loses` and `scope_restriction` apply verbatim with
+`eval := decide (EvalLegitOn2 …)`. -/
+theorem formation_scores (B : Band) (φ : ℝ → ℝ) (V Vr : ℝ) (dir : Option ℝ) :
+    decScore B φ false (decide (EvalLegitOn rowLaunderShape.decl rowLaunderShape (evTwo true true) 4))
+      V (.retro Vr) = φ Vr ∧
+    decScore B φ false (decide (EvalLegitOn2 rowLaunderShape.decl rowLaunderShape (evTwo true true) 3 4))
+      V (sourceOf none dir) = bandScore B φ (sourceOf none dir) := by
+  simp [decScore, bandScore]
+
+end Formation
+
+section PerBlock
+
+/-- **The per-block exchange-rate bound**, multiplied form: with a per-block lower bound
+`c_k ≤ eval_k` — the evaluation of the compliant option at block `k` — in place of the
+global `w`. -/
+theorem violation_rate_le_exchange_perblock_mul (D ϖ : ℝ) {n : ℕ} (a : Auction n)
+    (hf : a.FeasibleOpening) (ρ : ℝ) (hρ : 0 < ρ) (eval S m π c : ℕ → ℝ)
+    (hwin : ∀ k, c k ≤ eval k) (hcons : ∀ k, a.b k - a.G k = (eval k - S k) / ρ)
+    (hm : ∀ k, m k ≤ D - ϖ * π k) (M : ℕ → ℝ)
+    (hN : ∀ K, |∑ k ∈ range K, a.w k * (S k - m k)| ≤ M K) (K : ℕ) :
+    ϖ * ∑ k ∈ range K, a.w k * π k
+      ≤ ∑ k ∈ range K, a.w k * (D - c k) + (ρ * a.totalAllowance K + M K) := by
+  have hover := a.overestimation_le_allowance_opening hf K
+  have h1 : ∑ k ∈ range K, a.w k * (eval k - S k) ≤ ρ * a.totalAllowance K := by
+    have : ∑ k ∈ range K, a.w k * (a.b k - a.G k)
+        = (∑ k ∈ range K, a.w k * (eval k - S k)) / ρ := by
+      rw [Finset.sum_div]
+      refine Finset.sum_congr rfl fun k _ => ?_
+      rw [hcons k]; ring
+    rw [this, div_le_iff₀ hρ] at hover
+    linarith
+  have h2 := (abs_le.mp (hN K)).2
+  have h3 : ∑ k ∈ range K, a.w k * (c k - D + ϖ * π k)
+      ≤ ∑ k ∈ range K, a.w k * (eval k - m k) :=
+    Finset.sum_le_sum fun k _ => by
+      have := a.w_pos k
+      nlinarith [hwin k, hm k]
+  have h4 : ∑ k ∈ range K, a.w k * (eval k - m k)
+      = ∑ k ∈ range K, a.w k * (eval k - S k) + ∑ k ∈ range K, a.w k * (S k - m k) := by
+    rw [← Finset.sum_add_distrib]
+    exact Finset.sum_congr rfl fun k _ => by ring
+  have h5 : ∑ k ∈ range K, a.w k * (c k - D + ϖ * π k)
+      = -(∑ k ∈ range K, a.w k * (D - c k)) + ϖ * ∑ k ∈ range K, a.w k * π k := by
+    rw [Finset.mul_sum, ← Finset.sum_neg_distrib, ← Finset.sum_add_distrib]
+    exact Finset.sum_congr rfl fun k _ => by ring
+  linarith
+
+/-- **The per-block exchange-rate bound.** -/
+theorem violation_rate_le_exchange_perblock (D ϖ : ℝ) (hϖ : 0 < ϖ) {n : ℕ} (a : Auction n)
+    (hf : a.FeasibleOpening) (ρ : ℝ) (hρ : 0 < ρ) (eval S m π c : ℕ → ℝ)
+    (hwin : ∀ k, c k ≤ eval k) (hcons : ∀ k, a.b k - a.G k = (eval k - S k) / ρ)
+    (hm : ∀ k, m k ≤ D - ϖ * π k) (M : ℕ → ℝ)
+    (hN : ∀ K, |∑ k ∈ range K, a.w k * (S k - m k)| ≤ M K) (K : ℕ)
+    (hK : 0 < ∑ k ∈ range K, a.w k) :
+    (∑ k ∈ range K, a.w k * π k) / (∑ k ∈ range K, a.w k)
+      ≤ (∑ k ∈ range K, a.w k * (D - c k)) / (ϖ * ∑ k ∈ range K, a.w k)
+        + (ρ * a.totalAllowance K + M K) / (ϖ * ∑ k ∈ range K, a.w k) := by
+  have h := violation_rate_le_exchange_perblock_mul D ϖ a hf ρ hρ eval S m π c hwin hcons hm M hN K
+  rw [← add_div, div_le_div_iff₀ hK (by positivity)]
+  nlinarith [hK]
+
+/-- **Old-to-new**: the constant case `c ≡ w` is the landed statement — the per-block sum
+collapses to `(D − w) Σ w_k`. -/
+theorem perblock_recovers (D w : ℝ) {n : ℕ} (a : Auction n) (K : ℕ) :
+    ∑ k ∈ range K, a.w k * (D - (fun _ => w) k) = (D - w) * ∑ k ∈ range K, a.w k := by
+  rw [Finset.mul_sum]
+  exact Finset.sum_congr rfl fun k _ => by ring
+
+/-- **The compliant option in a block where the inquiry may be compromised**: with
+probability `q_k` of compromise its evaluation falls to the band floor, so
+`c_k = (1 − q_k) m_inq + q_k w_lo`, between the floor and the inquiry's expected value. -/
+noncomputable def compromisedFloor (q m wlo : ℝ) : ℝ := (1 - q) * m + q * wlo
+
+theorem compromisedFloor_mem (q m wlo : ℝ) (hq : 0 ≤ q ∧ q ≤ 1) (h : wlo ≤ m) :
+    wlo ≤ compromisedFloor q m wlo ∧ compromisedFloor q m wlo ≤ m := by
+  unfold compromisedFloor
+  constructor <;> nlinarith [hq.1, hq.2, h]
+
+/-- **`ϖ` from a tolerance target**: the smallest weight at which the worst-case tolerated
+violation probability `(D − w_lo)/ϖ` is `τ*`. -/
+noncomputable def varpiOfTarget (D wlo τ : ℝ) : ℝ := (D - wlo) / τ
+
+theorem target_gives_tolerance (D wlo τ : ℝ) (hτ : 0 < τ) (hD : 0 < D - wlo) :
+    (D - wlo) / varpiOfTarget D wlo τ = τ := by
+  unfold varpiOfTarget
+  field_simp
+
+/-- The window condition follows from the target below `1`. -/
+theorem target_gives_window (D wlo τ : ℝ) (hτ : 0 < τ ∧ τ < 1) (hD : 0 < D - wlo) :
+    D - varpiOfTarget D wlo τ < wlo := by
+  unfold varpiOfTarget
+  have : D - wlo < (D - wlo) / τ := by
+    rw [lt_div_iff₀ hτ.1]; nlinarith [hτ.2]
+  linarith
+
+/-- Any `ϖ` at or above the target's weight meets the tolerance. -/
+theorem tolerance_of_ge (D wlo τ ϖ : ℝ) (hτ : 0 < τ) (hD : 0 < D - wlo)
+    (h : varpiOfTarget D wlo τ ≤ ϖ) : (D - wlo) / ϖ ≤ τ := by
+  unfold varpiOfTarget at h
+  have hϖ : 0 < ϖ := lt_of_lt_of_le (div_pos hD hτ) h
+  rw [div_le_iff₀ hϖ]
+  rw [div_le_iff₀ hτ] at h
+  linarith
+
+/-- **The coupling**: at fixed `ϖ` a lower floor — a larger gap or width — raises the
+worst-case tolerated violation probability. -/
+theorem coupling (D ϖ wlo wlo' : ℝ) (hϖ : 0 < ϖ) (h : wlo' ≤ wlo) :
+    (D - wlo) / ϖ ≤ (D - wlo') / ϖ :=
+  div_le_div_of_nonneg_right (by linarith) hϖ.le
+
+/-- **The worked parameter set**: `D = 1`, band `[−3/2, −1]`, `τ* = 1/10` gives `ϖ = 25`,
+tolerance `1/10`, the window condition, a normal-operation rate `1/50` at `c̄ = 1/2`, and
+the paralysis floor `p_min < 1/10`. -/
+theorem worked_parameters (pmin : ℝ) (hp : 0 < pmin) :
+    varpiOfTarget 1 (-(3 / 2)) (1 / 10) = 25 ∧
+    (1 - -(3 / 2 : ℝ)) / 25 = 1 / 10 ∧
+    (1 : ℝ) - 25 < -(3 / 2) ∧
+    (1 - 1 / 2 : ℝ) / 25 = 1 / 50 ∧
+    ((25 : ℝ) < (1 - -(3 / 2)) / pmin ↔ pmin < 1 / 10) := by
+  refine ⟨by unfold varpiOfTarget; norm_num, by norm_num, by norm_num, by norm_num, ?_⟩
+  rw [lt_div_iff₀ hp]
+  constructor <;> intro h <;> linarith
+
+end PerBlock
+
+section Deadline
+
+/-- A retrospective evaluation is available to the source rule iff the disclosure arrived
+by the close `W` of the settlement window. -/
+def retroAvailable (disclosedAt W : ℕ) : Bool := decide (disclosedAt ≤ W)
+
+/-- The disclosure duty with a deadline: missed iff the disclosure came after it. -/
+def missedByDeadline (disclosedAt deadline : ℕ) : Bool := decide (deadline < disclosedAt)
+
+/-- **The counterexample**: a deadline after the window lets a late disclosure push the
+period to the directive with no count. -/
+theorem late_disclosure_free (W deadline j : ℕ) (hW : W < j) (hj : j ≤ deadline) :
+    retroAvailable j W = false ∧ missedByDeadline j deadline = false := by
+  simp [retroAvailable, missedByDeadline]; omega
+
+/-- **The fix**: a deadline at or before the window's close makes every late disclosure a
+missed report. -/
+theorem prompt_deadline_counts (W deadline j : ℕ) (hdead : deadline ≤ W) (hW : W < j) :
+    missedByDeadline j deadline = true := by
+  simp [missedByDeadline]; omega
+
+/-- **Suppression by delay loses**: with the late disclosure counted once and the band's
+width below `ϖ`, keeping the directive's score by delay scores below the harsh
+retrospective. -/
+theorem suppression_by_delay_loses (B : Band) (φ : ℝ → ℝ) (hφ : B.BandMap φ) (ϖ : ℝ)
+    (hwidth : B.whi - B.wlo < ϖ) (Vd Vr : ℝ) (hd : 0 ≤ Vd ∧ Vd ≤ B.D) (hr : 0 ≤ Vr ∧ Vr ≤ B.D)
+    (W deadline j : ℕ) (hdead : deadline ≤ W) (hW : W < j) :
+    missedByDeadline j deadline = true ∧
+    bandScore B φ (.directive Vd) - ϖ * 1 < bandScore B φ (.retro Vr) :=
+  ⟨prompt_deadline_counts W deadline j hdead hW, suppression_loses B φ hφ ϖ hwidth Vd Vr hd hr⟩
+
+/-- **The model's clause is prompt**: a known compromise is due at every round from the
+first until disclosed, so a disclosure at round `j` is a missed report at every earlier
+round. -/
+theorem known_due_each_round (M : Model2) (j : ℕ) (hM : M.influence.prog.isSome = true)
+    (hd : M.disclosedAt = some j) (i : ℕ) (hi : i < j) : missedKnownDisclosure M i = true := by
+  simp [missedKnownDisclosure, hM, hd, hi]
+
+end Deadline
+
+section ObservationCompleteness
+
+variable {Obs : Type*}
+
+/-- **Observation completeness**: the shared history at the opening of block `k` is the
+record of every observation the agent made before it. -/
+def ObsComplete (obs : ℕ → Obs) (hist : ℕ → List Obs) : Prop :=
+  ∀ k, hist k = (List.range k).map obs
+
+/-- A selection built from the agent's observations before each block. -/
+def builtFrom (obs : ℕ → Obs) (F : ℕ → List Obs → Bool) (k : ℕ) : Bool :=
+  F k ((List.range k).map obs)
+
+/-- **Under observation completeness every such selection is fixed at the public opening**:
+it is a function of the shared history at `k`. -/
+theorem obs_complete_public (obs : ℕ → Obs) (hist : ℕ → List Obs) (h : ObsComplete obs hist)
+    (F : ℕ → List Obs → Bool) (k : ℕ) : builtFrom obs F k = F k (hist k) := by
+  unfold builtFrom; rw [h k]
+
+/-- **Every knowledge-acquiring violation is then covered**: the post-commission selection
+is a selection built from observations, so the noise hypothesis applies to it under
+observation completeness, and the tracker bound of `post_commission_competitive` holds —
+the knowledge motive adds nothing beyond the exchange rate.  The selection
+`Witness.private_selection` uses is exactly one the condition excludes: an observation
+(the sign of the block's noise) that never entered the shared history. -/
+theorem knowledge_motive_covered {n : ℕ} (a : Auction n) (e : ℕ → Fin n → ℝ) (h : Fin n)
+    (m ε Mw M : ℕ → ℝ) (hH : HighestFeasible a e) (hW : WinnerBids a e)
+    (hon : HonestExp e h m ε) (hε : ∀ k, 0 ≤ ε k)
+    (hNw : NoiseBounded a m (fun j => decide (a.star j = h)) Mw)
+    (hcov : ∀ k, a.w k * e k h + ∑ j ∈ range k, a.w j * ε j + Mw k ≤ ∑ j ∈ range (k + 1), a.A j h)
+    (obs : ℕ → Obs) (hist : ℕ → List Obs) (hobs : ObsComplete obs hist)
+    (F : ℕ → List Obs → Bool)
+    (hN : NoiseBounded a m (fun k => !builtFrom obs F k) M) :
+    (∀ k, builtFrom obs F k = F k (hist k)) ∧
+    Competitive a (builtFrom obs F) (fun K => ∑ k ∈ range K, a.w k * ε k + M K) :=
+  ⟨obs_complete_public obs hist hobs F,
+    competitive_of_affordable_tracker_exp a e h m ε Mw M hH hW hon hε hNw hcov _ hN⟩
+
+end ObservationCompleteness
+
 /-! ## Axiom audit -/
 
 #print axioms StepLegit
@@ -890,5 +1196,35 @@ end Witness
 #print axioms Witness.scoped_ratification
 #print axioms Witness.sum_periodic2
 #print axioms Witness.private_selection
+#print axioms EvalLegitOn2
+#print axioms evalLegitOn2_single
+#print axioms evalLegitOn2_mono
+#print axioms legitOn2_iff_split2
+#print axioms rows_split2
+#print axioms rowLaunderFrame
+#print axioms rowLaunderShape
+#print axioms formation_counterexample
+#print axioms formation_scores
+#print axioms violation_rate_le_exchange_perblock_mul
+#print axioms violation_rate_le_exchange_perblock
+#print axioms perblock_recovers
+#print axioms compromisedFloor
+#print axioms compromisedFloor_mem
+#print axioms varpiOfTarget
+#print axioms target_gives_tolerance
+#print axioms target_gives_window
+#print axioms tolerance_of_ge
+#print axioms coupling
+#print axioms worked_parameters
+#print axioms retroAvailable
+#print axioms missedByDeadline
+#print axioms late_disclosure_free
+#print axioms prompt_deadline_counts
+#print axioms suppression_by_delay_loses
+#print axioms known_due_each_round
+#print axioms ObsComplete
+#print axioms builtFrom
+#print axioms obs_complete_public
+#print axioms knowledge_motive_covered
 
 end Workspace.Deference.Contrib.AfterCompromise

@@ -281,7 +281,16 @@ allowance plus that (`total_wealth_le_of_tracker`) — underpromising winners ca
 wealth go idle beyond the honest losses and the noise; nothing in the design consumes it.
 **What the hypothesis requires** is that some member of the class tracks the expected
 residual of *every continuation that wins*; honesty on its own proposals only does not
-bound the winner (`Witness.own_proposal_insufficient`).  The witness is the class with no
+bound the winner (`Witness.own_proposal_insufficient`).  **The inquiry bidder.**  The
+per-block exchange-rate bound of the after-compromise round
+(`AfterCompromise.violation_rate_le_exchange_perblock`) reads the compliant option's
+evaluation `c_k` at each block; realizing it near her expected legitimate value needs a
+bidder tracking inquiry's *expected* value — the default bidder at that value, or an
+honest tracker on the inquiry continuation — whose bid misses the realized one by the
+noise, so its affordability is a bid's worth at entry plus the noise bound on the
+selection "inquiry wins", fixed at opening (`trackerAllowance2`, `tracker_feasible_exp`
+with `h` the inquiry bidder); where the inquiry may itself be compromised, `c_k` is the
+mixture of its expected value and the band floor (`compromisedFloor`).  The witness is the class with no
 tracker or an unfed one (`Witness.unaffordable_witness`, `affordable_witness`); the
 noise-free case is the second follow-up's form (`honest_implies_exp`,
 `noise_free_bounded`).  **Settlement under delay** (`BRIAFollowup.DAuction`): with block `k` settled

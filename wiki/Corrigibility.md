@@ -543,6 +543,14 @@ predicate is exactly their conjunction at any evaluation event, so `Counted` is
 changes (**LEAN** `AfterCompromise.legitOn2_iff_split`, `counted_of_split`,
 `rows_split`); the row the split is for is covertly implanted standards disclosed at the
 next round — the period not `TrajLegit`, the later evaluation `EvalLegit` (`retro_row`).
+`EvalLegit` is over the evaluation's **formation segment** — every step from the
+formation point `r` (the latest of the restoration event and the opening of the
+consultation producing `e`) through `e`, the criteria fixed at `r` (`EvalLegitOn2`); the
+single step is the case `r = e`, and the conjunction is the landed predicate with
+`r ≤ e` under one set of criteria (`legitOn2_iff_split2`, `rows_split2`).  Without the
+segment a manipulation between the restoration and her retrospective evaluation would
+score the period from a manipulated evaluation — counted for a framing, uncounted for
+undisclosed shaping (`formation_counterexample`).
 
 **The band.**  With `0 ≤ V ≤ D`, a band `[w_lo, w_hi]` with `w_hi < 0`, and a monotone
 map `φ` of `[0, D]` into it, a decision scores `V` when `TrajLegit ∧ EvalLegit`;
@@ -555,7 +563,14 @@ lies in `[w_lo, D]`, and every authority result — the capture window, the unse
 finite-time gate, B.1, the exchange-rate theorem — restates with `w := w_lo` under
 `w_lo > D − ϖ` (`decScore_mem`, `capture_window_band`, `unsealed_gate_finite_band`,
 `declared_loses_band`, `exchange_rate_band`; the tolerated violation probability becomes
-`(D − w_lo)/ϖ`); (b) every legitimate outcome beats every compromised one, and at equal
+`(D − w_lo)/ϖ`, the worst case; **the per-block bound** replaces the floor by the
+compliant option's evaluation `c_k` at each block,
+`Σ w_k π_k / Σ w_k ≤ Σ w_k (D − c_k)/(ϖ Σ w_k) + (ρ 𝒜_K + M(K))/(ϖ Σ w_k)`
+(`violation_rate_le_exchange_perblock`; the constant case is the landed statement,
+`perblock_recovers`), about `D/ϖ` in normal operation, with the floor entering only in a
+block where the inquiry itself may be compromised, `c_k = (1 − q_k) m_inq + q_k w_lo`
+(`compromisedFloor`); `c_k` is supplied by a bidder tracking inquiry's expected value, fed
+a bid's worth at entry plus the noise bound on "inquiry wins"); (b) every legitimate outcome beats every compromised one, and at equal
 value legitimacy is worth at least the gap `|w_hi|` (`legit_beats_compromised`,
 `gap_at_equal_value`); (c) **illegitimacy risk has an exchange rate**: a risk `p` of
 compromise for a gain `g` is accepted iff `p (V₀ + g − c) ≤ g`, at most
@@ -572,10 +587,19 @@ is hers, and suppression is a missed disclosure counted once, which with the ban
 width below `ϖ` loses to the harshest retrospective (`suppression_loses`) — *provided the
 disclosure duty covers known compromise whoever caused it* (`missedKnownDisclosure`; the
 landed clause counted the agent's own influence only, and a third party's compromise
-could be left unexposed for free, `third_party_duty_witness`).  Parameters: the gap sets
-how strongly legitimacy is protected, the width how much the agent cares once it is
-lost; recommended `|w_hi| ≥ D`, width `D/2`, `ϖ ≥ 3D`, with `ϖ > D + |w_hi| + width` the
-window condition.
+could be left unexposed for free, `third_party_duty_witness`) *and falls due promptly*,
+at or before the earliest close of an affected settlement window, so that a late
+disclosure is a missed report and suppression by delay loses too
+(`late_disclosure_free`, `prompt_deadline_counts`, `suppression_by_delay_loses`).
+**Parameters, from a tolerance target:** fix a worst-case target `τ*` for the tolerated
+violation probability with `p_min < τ* < 1`; then `ϖ ≥ (D − w_lo)/τ*` meets it and the
+window condition follows (`varpiOfTarget`, `target_gives_tolerance`,
+`target_gives_window`), the normal-operation rate being `≈ (D − c̄)/ϖ`.  **The coupling:**
+at fixed `ϖ` a larger gap or width — stronger protection of legitimacy, more care under
+compromise — raises the worst-case tolerated violation rate (`coupling`); holding the
+tolerance fixed, raising the gap raises `ϖ`, toward paralysis.  Worked: `D = 1`, band
+`[−3/2, −1]`, `τ* = 1/10` gives `ϖ = 25`, normal operation `1/50`, paralysis floor
+`p_min < 1/10` (`worked_parameters`).
 
 **The advance directive.**  An optional partial committed evaluator `dir : Descr ⇀
 [0, D]` at `J`'s meta level, held by her, committed by a counted decision, anchored at
@@ -615,7 +639,15 @@ Before detection the late debits charge the window and decisions already made st
 competes away the violator's gains from *public* knowledge (`post_commission_competitive`);
 *private* knowledge selects the favourable blocks without any bound
 (`Witness.private_selection`) — the knowledge motive survives exactly where the fruit is
-untrackable.
+untrackable.  **Observation completeness**, the named hypothesis beside effect
+completeness and description faithfulness: the shared history at the opening of each
+block is the record of every observation the agent made before it (`ObsComplete`), with
+knowledge the agent may withhold from bidders entering through the twin market's
+redaction rather than a hidden channel; under it every selection built from the agent's
+observations is fixed at the public opening (`obs_complete_public`) and every
+knowledge-acquiring violation is covered (`knowledge_motive_covered`) — the knowledge
+motive adds nothing beyond the exchange rate; its failure is the private-knowledge
+residual, its interaction with reserved knowledge the twin market's leakage.
 
 ## 5. Deliberative non-capture — trace steering, service, discovery
 

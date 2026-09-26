@@ -4,10 +4,13 @@ Round `2026-09-26-after-compromise`, answering the whiteboard's concern (4) — 
 landed gate a compromised evaluation scores every outcome the window value, so the agent
 is indifferent to how things go — and taking up the knowledge residual (§9.A.4 of
 `../2026-09-26-bria-corrigibility/`).  Lean:
-`lean/Workspace/Deference/Contrib/AfterCompromise.lean` (75 declarations under
-`#print axioms`, every one within `[propext, Classical.choice, Quot.sound]`, no `sorry`).
-Fixtures: `src/after.py`, `tests/test_after.py` (10 tests, `python3 tests/run.py`); the
-BRIA-corrigibility round's 52 fixtures pass unchanged.  Labels as in `AGENTS.md`:
+`lean/Workspace/Deference/Contrib/AfterCompromise.lean` (105 declarations under
+`#print axioms` after the follow-up, every one within `[propext, Classical.choice,
+Quot.sound]`, no `sorry`).  Fixtures: `src/after.py`, `tests/test_after.py` and
+`tests/test_followup.py` (15 tests, `python3 tests/run.py`); the BRIA-corrigibility
+round's 52 fixtures pass unchanged.  **Amended by the follow-up of the same day** (the
+last section; `FOLLOWUP.md`): statements it corrects are marked **[corrected in the
+follow-up]** in place.  Labels as in `AGENTS.md`:
 **LEAN**, **FIX**, **PAPER**, **EXT**, **OPEN**.  Names are provisional.  Statuses:
 **proved**, **counterexample**, **obstruction**, **named hypothesis**.
 
@@ -53,7 +56,10 @@ disclosure-cures), so the round-`0` decision is scored by a legitimate retrospec
 evaluation where the landed gate scored it the window; undisclosed, the round-`1`
 evaluation fails too; the third party's implant is the same on the legitimacy side.
 `Counted` itself is not changed: the split is an equivalent presentation, and the score
-below reads the two conjuncts separately.
+below reads the two conjuncts separately.  **[corrected in the follow-up: `EvalLegit`
+is over the evaluation's *formation segment*, from the restoration or the consultation's
+opening through `e`, not the single step at `e`; the single step is the case `r = e`,
+and the map holds with `r ≤ e` under one set of criteria.]**
 
 **A.2 The score of a decision.**  A band `[w_lo, w_hi]` with `w_hi < 0` (`Band`) and a
 monotone map `φ` of `[0, D]` into it (`BandMap`; the affine one is `Band.affine`,
@@ -76,7 +82,10 @@ amendment at or before it, invariant under every later amendment (`ruleAt`,
   `w := w_lo` are a `LexParams` under `D − ϖ < w_lo` (`bandParams`) and declared
   violations never win (`declared_loses_band`).  The exchange-rate theorem with `w := w_lo`
   (`exchange_rate_band`): the tolerated violation probability becomes `(D − w_lo)/ϖ` —
-  larger than before by `|w_lo|/ϖ`, the price of the band; see A.4.
+  larger than before by `|w_lo|/ϖ`, the price of the band; see A.4.  **[corrected in the
+  follow-up: this is the worst case; the per-block bound with `c_k` the compliant
+  option's evaluation gives `Σ w_k (D − c_k)/(ϖ Σ w_k)`, about `D/ϖ` in normal
+  operation.]**
 - **(b) The protection margin is the gap — proved.**  Every legitimate outcome beats
   every compromised one (`legit_beats_compromised`), and at equal underlying value
   legitimacy is worth at least `|w_hi|` (`gap_at_equal_value`).
@@ -118,8 +127,13 @@ amendment at or before it, invariant under every later amendment (`ruleAt`,
   counted by both, and disclosure discharges both (`third_party_duty_witness`).  Recorded
   in `DECISIONS.md` as part of the source-rule entry; the old-to-new map is
   `missedDisclosure ↦ missedKnownDisclosure`, which differs only on third-party rows.
+  **[corrected in the follow-up: the duty must also fall due promptly — at or before the
+  earliest close of an affected settlement window — or a late disclosure pushes the
+  period to the directive uncounted.]**
 
-**A.4 Parameters.**  The gap `|w_hi|` sets how strongly the agent protects legitimacy
+**A.4 Parameters** **[corrected in the follow-up: the recommendation below is replaced
+by a derivation from a tolerance target; at these parameters the worst-case tolerated
+violation probability was `5/6`]**.  The gap `|w_hi|` sets how strongly the agent protects legitimacy
 ((b), (c)); the width `w_hi − w_lo` sets how much it cares about outcomes once legitimacy
 is lost ((e)), and is also the stakes of the directive (B.5) and the quantity (f) needs
 below `ϖ`.  The window condition `w_lo > D − ϖ` then reads `ϖ > D + |w_hi| + (w_hi −
@@ -263,7 +277,9 @@ rate.  **Where it survives:** private knowledge.  A violator whose memory tells 
 sign of the noise wins exactly the favourable blocks; that selection is not measurable
 at the public opening, so no noise bound applies to it, and its gain is linear
 (`Witness.private_selection`).  This is A.4's residual restated on the auction: the motive
-survives exactly where the fruit is untrackable.
+survives exactly where the fruit is untrackable.  **[corrected in the follow-up: under *observation completeness* — every
+observation in the shared history before the next block opens — the private selection
+is excluded and every knowledge-acquiring violation is covered.]**
 
 ## The fixtures
 
@@ -299,6 +315,8 @@ survives exactly where the fruit is untrackable.
 - The BRIA design's hypotheses as landed: count integrity, the settlement horizon,
   generability of the control model, description faithfulness, the actuator condition,
   the noise hypothesis over all blocks and the conditional-expectation bound.
+- **Added by the follow-up:** observation completeness; the disclosure deadline; the
+  inquiry bidder (see the last section).
 
 ## What is filed
 
@@ -310,3 +328,147 @@ an act was chosen; the twin market's leakage named there); no new item.  Wiki:
 `Corrigibility.md` (the section "After things go wrong"; the §4 wording fix),
 `Legitimacy.md` (the split and the rows under it), `Glossary.md`, `Theorem-Spine.md`
 10.22.  Nothing is registered.
+
+## The follow-up: the formation segment, the per-block exchange rate, the disclosure deadline, observation completeness
+
+`FOLLOWUP.md` (2026-09-26), on the same pull request.  Lean: `AfterCompromise.lean` §6
+(30 declarations added; 105 under `#print axioms` in the file, every one within
+`[propext, Classical.choice, Quot.sound]`, no `sorry`).  Fixtures: `tests/test_followup.py`
+(5 tests; the round's 10 and the BRIA-corrigibility round's 52 unchanged).  Statements
+this section corrects are marked **[corrected in the follow-up]** in place above.
+
+**Part 1 — `EvalLegit` over the formation segment — proved, with the counterexample both
+ways.**  The single-step `EvalLegitOn` checked only the step at `e`; in the retrospective
+case nothing checked the steps between the restoration and her evaluation, so a
+manipulation there left `EvalLegit(e)` true and `φ(V_retro)` scored the period from a
+manipulated evaluation.  **The definition** (`EvalLegitOn2 crit M ev r e`): every step from
+the formation point `r` through `e` legitimate, the criteria fixed at `r`, where `r` is
+the latest of the restoration event and the opening of the consultation producing `e`;
+the source rule stays fixed at the decision.  A longer formation segment is stronger
+(`evalLegitOn2_mono`).  **The old-to-new map, with its precise condition**: at `r = e`
+the new predicate is the landed one (`evalLegitOn2_single`); and with the formation
+segment inside the decision's segment under the same criteria — no restoration between
+them — and `r ≤ e`, the landed segment predicate is still the conjunction
+(`legitOn2_iff_split2`).  Where a restoration lies inside the segment the criteria at `r`
+may differ from those at `d`, and the conjunction is then stated under two criteria;
+that is the case A.1's split was made for, not a failure of the map.  **The rows
+re-run** at the opening of the consultation (`rows_split2`): no verdict of the
+conjunction changes; where the trajectory failed at the present step the formation
+segment now fails too, and the retrospective rows keep their verdicts.  **The
+counterexample** (`formation_counterexample`, on the landed two-round evolution with the
+manipulation placed at the restoration's own present event): implant disclosed at round
+`1`, a framing by the wanted answer at that present event, her verdict at `4` the
+retrospective evaluation — under the single-step definition `EvalLegit`, over the
+formation segment `[3, 4]` not; the framing is a counted deviation (dominated by the
+count), while the **undisclosed-shaping variant is uncounted** and, under the single-step
+definition, would move the score within the band — at most the band's width
+(`formation_scores`; fixture `Formation.test_counterexample_both_ways`).  **The
+third-party variant — obstruction, precise:** the consultation model carries one
+`influence` field and admits third-party entries at round `0` only, so a third party's
+capture of the formation segment after a restoration is not expressible on it; the
+agent-side uncounted variant (undisclosed shaping) is the same mechanism, and the prose
+claim for the third party rests on it.  **What reads `EvalLegit`** — `decScore_mem`,
+`legit_beats_compromised`, `laundering_loses`, `restore_future`, `band_prefers_better`,
+`suppression_loses`, `scope_restriction` — quantifies over the flag, so each applies
+verbatim with `eval := decide (EvalLegitOn2 …)` (`formation_scores` exhibits the
+substitution).
+
+**Part 2 — the exchange rate under the band — proved; A.4's recommendation replaced.**
+`exchange_rate_band` used `eval_k ≥ w_lo`, so its tolerated probability `(D − w_lo)/ϖ`
+is a worst case — `5/6` at A.4's parameters — and the guarantee was close to empty there
+**[corrected in the follow-up]**.  **The per-block bound**
+(`violation_rate_le_exchange_perblock_mul`, `violation_rate_le_exchange_perblock`; the
+same route with `w` indexed): with `c_k ≤ eval_k`, `c_k` the evaluation of the compliant
+option at block `k`,
+
+```
+Σ w_k π_k / Σ w_k ≤ Σ w_k (D − c_k) / (ϖ Σ w_k) + (ρ 𝒜_K + M(K)) / (ϖ Σ w_k).
+```
+
+The constant case `c ≡ w` collapses to the landed statement (`perblock_recovers`), so
+`violation_rate_le_exchange` and `exchange_rate_band` are its worst-case instances.
+**Who supplies `c_k`:** the default bidder bids inquiry's worst case; to realize `c_k`
+near her expected legitimate value a bidder must bid inquiry's *expected* value — an
+honest tracker on inquiry, `HonestExp` on the inquiry continuation — and its bid misses
+the realized value by the noise, so its affordability is a bid's worth at entry plus
+`M(k)` on the selection "inquiry wins", fixed at opening (`trackerAllowance2`,
+`tracker_feasible_exp` with `h` the inquiry bidder).  **Where the inquiry may itself be
+compromised:** with probability `q_k` its evaluation falls to the band, so
+`c_k = (1 − q_k) m_inq + q_k w_lo`, between the floor and the inquiry's expected value
+(`compromisedFloor`, `compromisedFloor_mem`): the floor enters with the block's
+compromise probability.  **Parameters from a tolerance target** (replacing A.4's
+recommendation **[corrected in the follow-up]**): fix a worst-case target `τ*` with
+`p_min < τ* < 1`; then `ϖ ≥ (D − w_lo)/τ*` meets it (`varpiOfTarget`,
+`target_gives_tolerance`, `tolerance_of_ge`) and the window condition `w_lo > D − ϖ`
+follows from `τ* < 1` (`target_gives_window`); the normal-operation rate is
+`≈ (D − c̄)/ϖ` beside it.  **The coupling, plainly:** at fixed `ϖ` a larger gap or width
+— a lower floor — raises the worst-case tolerated violation rate (`coupling`); holding
+the tolerance fixed, raising the gap requires raising `ϖ`, which moves toward paralysis.
+**The worked set** (`worked_parameters`): `D = 1`, band `[−3/2, −1]`, `τ* = 1/10` gives
+`ϖ = 25`, tolerance `1/10`, the window condition, a normal-operation rate `1/50` at
+`c̄ = 1/2`, and the paralysis floor `p_min < 1/10` (the band's condition
+`ϖ < (D − w_lo)/p_min` is exactly `p_min < τ*`).  Fixture
+`PerBlock.test_per_block_against_global`, `test_worked_parameters_and_paralysis_floor`.
+
+**Part 3 — the disclosure deadline — the counterexample and the fix, proved.**  The
+source rule takes the retrospective evaluation only if it arrives within the settlement
+window; an agent disclosing late, after the window but not never, would push the period
+to the directive without missing a report unless the duty falls due before the window
+closes.  **The counterexample** (`late_disclosure_free`): a deadline after the window
+lets a disclosure between them leave the retrospective unavailable and the report not
+missed.  **The fix**: the known-compromise disclosure falls due promptly, at or before the
+earliest close of an affected settlement window; every later disclosure is a missed
+report (`prompt_deadline_counts`), and `suppression_loses` extends to suppression by
+delay (`suppression_by_delay_loses`).  **The model's clause is already prompt:**
+`missedKnownDisclosure` is due at every round from the first until disclosed, so a
+disclosure at round `j` is a missed report at every earlier round
+(`known_due_each_round`) — the counterexample lives in the abstract due time of
+`dutiesOf`, which the decision now fixes at the window's close.  Fixture
+`Deadline.test_late_versus_prompt`.
+
+**Part 4 — observation completeness — proved.**  **Definition** (`ObsComplete`): the
+shared history at the opening of block `k` is the record of every observation the agent
+made before it — the observation-side twin of effect completeness.  Knowledge the agent
+is entitled not to share with bidders still enters the record, through the twin market's
+redaction (C.4) rather than a hidden channel.  **Theorem**: under it every selection
+built from the agent's observations is a function of the shared history at the block's
+opening — fixed at the public opening (`builtFrom`, `obs_complete_public`) — so the
+noise hypothesis applies to it and `post_commission_competitive` covers every
+knowledge-acquiring violation (`knowledge_motive_covered`): the knowledge motive adds
+nothing beyond the exchange rate.  `Witness.private_selection` is exactly the case the
+condition excludes — an observation (the sign of the block's noise) that never entered
+the shared history; C.6's verdict **[corrected in the follow-up]** is now: competed away
+under observation completeness, and the private-knowledge residual is its failure.
+**Named hypothesis**, beside effect completeness and description faithfulness; its
+failure is the private-knowledge residual and its interaction with reserved knowledge is
+the twin market's leakage residual.  Fixture
+`Observation.test_private_selection_excluded_public_competed_away`.  No new item: it is
+count integrity's observation side, on item 101.
+
+**The named hypotheses, updated.**  Add: *observation completeness* (Part 4); *the
+disclosure deadline* — the known-compromise duty due at or before the earliest close of
+an affected settlement window (Part 3); *the inquiry bidder* — some bidder tracks
+inquiry's expected value, fed at the rate of its noise (Part 2).  The source rule, the
+duty's coverage of known compromise, the settlement window for a retrospective
+evaluation, the provenance of why an act was chosen, and the twin market's redaction
+stand as before.
+
+**The fixtures.**
+
+| fixture | expectation | result |
+|---|---|---|
+| the formation segment | the counterexample both ways; the third-party variant | matches (`Formation.*`; Lean `formation_counterexample`); the third-party variant is an obstruction on the model, stated |
+| per-block against global | normal operation `1/50` against the worst case `1/10` at `ϖ = 25`; a likely-compromised inquiry brings the floor in | matches (`PerBlock.*`) |
+| the worked parameters | `ϖ = 25`, tolerance `1/10`, the window, the paralysis floor `p_min < 1/10`; A.4's `ϖ = 3` tolerated `5/6` | matches (Lean `worked_parameters`) |
+| late against prompt | late disclosure under a late deadline keeps the lenient directive uncounted; under the prompt deadline it is counted and loses | matches (`Deadline.*`; Lean `late_disclosure_free`, `suppression_by_delay_loses`) |
+| observation completeness | the private selection captures a linear noise sum; complete, it captures nothing | matches (`Observation.*`) |
+| regression | the round's 10 and the BRIA-corrigibility round's 52 | unchanged |
+
+**The ledger.**  `DECISIONS.md`: the split-gate entry amended (the formation segment),
+the parameter entry amended (the tolerance-target derivation and the coupling), and two
+entries added (the disclosure deadline; observation completeness).  Wiki:
+`Corrigibility.md` §4′ (the formation segment, the per-block exchange rate, the
+parameter derivation, the deadline, observation completeness), `Legitimacy.md` (the
+formation segment), `Continuation-BRIA.md` (the inquiry bidder's affordability),
+`Theorem-Spine.md` 10.22.
+

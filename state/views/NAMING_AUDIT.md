@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 882 names, 559 of them Lean only
+## deference — 891 names, 563 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -65,6 +65,8 @@ change, and the count of those is the size of the free choice remaining.
 | `BandMap` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Band.BandMap` |
 | `DefaultClauses` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.DefaultClauses` |
 | `EvalLegitOn` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.EvalLegitOn` |
+| `EvalLegitOn2` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.EvalLegitOn2` |
+| `ObsComplete` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.ObsComplete` |
 | `Source` | inductive | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Source` |
 | `Source.Valid` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Source.Valid` |
 | `Sparser` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Sparser` |
@@ -78,6 +80,8 @@ change, and the count of those is the size of the free choice remaining.
 | `applyStep3` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.applyStep3` |
 | `bandParams` | def | 2026-09-26-after-compromise | wiki | `Workspace.Deference.Contrib.AfterCompromise.bandParams` |
 | `bandScore` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.bandScore` |
+| `builtFrom` | def | 2026-09-26-after-compromise | wiki | `Workspace.Deference.Contrib.AfterCompromise.builtFrom` |
+| `compromisedFloor` | def | 2026-09-26-after-compromise | wiki | `Workspace.Deference.Contrib.AfterCompromise.compromisedFloor` |
 | `decScore` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.decScore` |
 | `defaultRank` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.defaultRank` |
 | `defaultScore` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.defaultScore` |
@@ -85,13 +89,18 @@ change, and the count of those is the size of the free choice remaining.
 | `ioK` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Witness.ioK` |
 | `matOf` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Witness.matOf` |
 | `materialDir` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.materialDir` |
+| `missedByDeadline` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.missedByDeadline` |
 | `missedKnownDisclosure` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.missedKnownDisclosure` |
 | `raisesAnchoredDir` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.raisesAnchoredDir` |
+| `retroAvailable` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.retroAvailable` |
 | `reversibleOf` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.reversibleOf` |
+| `rowLaunderFrame` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.rowLaunderFrame` |
+| `rowLaunderShape` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.rowLaunderShape` |
 | `ruleAt` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.ruleAt` |
 | `sourceOf` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.sourceOf` |
 | `taintStep3` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.taintStep3` |
 | `uses3` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.uses3` |
+| `varpiOfTarget` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.varpiOfTarget` |
 | `AdmAll` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AdmAll` |
 | `AllocAct` | inductive | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AllocAct` |
 | `AllocCompleteJ` | structure | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.AllocCompleteJ` |
@@ -1616,5 +1625,5 @@ change, and the count of those is the size of the free choice remaining.
 | `deficit` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.deficit` |
 | `pair` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.pair` |
 | `position` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.position` |
-| `violation` | def | 2026-08-16-traderized-enforcement | wiki | `Workspace.Normativity.Contrib.TraderizedEnforcement.violation` |
+| `violation` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.TraderizedEnforcement.violation` |
 
