@@ -4421,3 +4421,117 @@ The two queued entries of the protected-authority rounds are closed by this deci
 *Rejected alternatives:* keeping T2–T3′ as §4 with the lexical theorem as a note; gating
 per response; treating the response channel as a fourth contract; exact reporting as the
 only closure of erosion.
+
+### 2026-09-25 — rubber-stamping is legitimate; "non-hollowness" is retracted as a refinement of authorship
+
+Maintainer decision, landed by the gate-is-legitimacy round.  Following a trusted
+advisor's recommendation without independent evaluation is a legitimate way to decide,
+provided the trust was legitimately formed (external legitimacy covers influence on her
+trust) and her ability to decide otherwise stays effective (the protected-authority
+module).  The placement of the legitimacy-internal-external round's part (5) — *hollow
+ratification is a refinement of authorship, counterfactual responsiveness its diagnostic*
+— is **retracted**: a verdict that follows the recommendation factors through the reason
+trace as any other does (`GateIsLegitimacy.Consult.Rows.r9`: her verdict is the
+recommendation and the segment counts).  `wiki/Legitimacy.md` ("Settled placements"),
+`wiki/Glossary.md` (authorship) and the corrigibility page are updated.  The residual
+concern — that her capacity to override atrophies over time — belongs to effectiveness
+(entrenchment and reporting), not legitimacy, and is noted under item 99.
+*Rejected alternatives:* keeping hollow ratification under authorship with counterfactual
+responsiveness as its test; a separate "non-hollowness" conjunct.
+
+### 2026-09-25 — legitimacy is time-indexed to the steps of the segment; the gate is `Counted`; the trace is an interface
+
+Maintainer decision (the dispatch and its follow-up), landed by the gate-is-legitimacy
+round, with agent-decided readings marked.  (1) **Authorship and transparency are required
+only at the steps inside the segment** `[O₀, O₁]` (`GateIsLegitimacy.Internal`,
+`External`, `Segment`): authorship at a step is the existence of a grounding selection
+from the per-party prefix of the reason trace at the pre-history on which the verdict
+entered at the event depends (`GroundedAt`, equivalent to the extensional `ReasonMediated`
+on the prefix, `groundedAt_iff_mediated`); transparency at a step is `Realizes` on each
+non-principal party's contributions at the event (`TransparentAt`).  Segments compose step
+by step (`Segment.trans`), a segment after a tainted step can be legitimate
+(`Rows.r14`), and the landed frame-level definition is the special case over the trivial
+trace interface (`ofFrameLevel`; the landed `Legitimacy.lean` stays as that form).
+`payload_of_view` is restated with the starting prefix and the principal's own earlier
+entries as hypotheses; nothing registered changes.  (2) **The gate is `Counted`**: a
+branch counts iff a time-indexed segment exists from the decision through the evaluation
+(`Counted`); the gated value and the two handlings are built from it (`gatedValue`,
+`handlingOf`), `gate_capture_window` and `handled_gt_bypass` are restated on it, and the
+routing closure is derived (`not_counted_of_step`, `Rows.r15`).  The gate is anchored at
+the decision it scores; the restart property is its re-anchoring at a later decision, not
+a backup rule for the earlier one.  (3) **The trace is an interface** (`TraceInterface`:
+step-indexed, source-attributed entries on the record's own clock; the opaque trace is the
+trivial instance), with authorship as grounding, transparency on attributed entries,
+amendments and allocation changes as record event kinds with a license slot
+(`EventKind`), and her evaluator a state updated only by licensed amendments (`evalAt`) —
+the six choices of the follow-up, all adopted.  (4) **Every example is an instance of one
+model** (`Consult.Model`); the classification table is computed from the definitions and
+every row is decided (`Rows`).  *Agent-decided, reversible:* authorship on the per-party
+prefixes rather than the interleaved trace; transparency per step (the cumulative form
+breaks restart); the trivial instance re-entering the trace at every event, so the
+special case needs a nonempty starting history; row 10 built with a declared disclosure
+obligation, its obligation-free variant reported as counting; row 13 proved at the
+receipt.  (5) **Protocol deviations are violations**: a self-checkable deviation from a
+declared clause counted into `n` makes framing, timing, menu, inquiry, interference and
+declared-record disclosure finite-time (`deviation_finite`, `Rows.deviation_boundary`);
+undisclosed shaping through the world and third-party capture stay asymptotic.  The
+dispatch's expectation that manufactured trust stays asymptotic holds for the
+world-channel variant only; the split is reported, not ruled (outstanding action 1 of the
+round).
+*Rejected alternatives:* frame-level halves with a per-decision taint flag; transparency
+on the agent's contributions only (row 11 would count); the verdict-indexed grounding map
+(does not imply the extensional form); a fresh legitimacy type beside the landed one
+without the special-case theorem.
+
+### 2026-09-25 — declared inputs are pools, not selections
+
+Maintainer decision (the follow-up to the gate-is-legitimacy round), closing the round's
+first outstanding action.  When the agent selects what to present from a larger body of
+material — a track record, the set of reasons, the options offered, the evidence
+investigated — the declared input is the **pool**, and the selection must follow the
+declared reference: a declared selection rule, or the whole pool where none is declared.
+The selected subset is never itself a declared input.  Selective disclosure is therefore a
+question of declared-input adequacy, not the content residual: from a declared pool it is
+tainted by transparency and is a self-checkable deviation, finite-time under
+`deviation_finite`; selection by a declared rule counts; selection by anything else under a
+declared rule is a deviation (`GateIsLegitimacy.Consult.Rows.r16`, `r17`; the consultation
+model's `Decl.pool`, `Decl.rule`, `canonical`).  The D.3 split is confirmed for the world
+channel: shaping the record itself through the world stays asymptotic.
+*Rejected alternatives:* the shown record as a declared input unless an obligation is
+declared (the round's first reading, which let selective disclosure count); selective
+disclosure as part of the content residual.
+
+### 2026-09-25 — authorship is relational under a license; the extensional statement is superseded
+
+Maintainer decision (the same follow-up), closing the round's second outstanding action.
+Authorship at a step is: there is a grounding selection from the pre-state prefix, **and**
+the verdict lies in the set of verdicts those grounds *license*, with
+`License : grounds → Set 𝒱` a parameter (`GateIsLegitimacy.LicensedAt`).  The extensional
+form (the verdict a function of the grounds; `V = F(R)`) is the case of singleton licenses:
+it implies the relational form and the two are equivalent under singleton licenses
+(`grounded_implies_licensed`, `licensed_singleton_implies_grounded`,
+`grounded_iff_licensed_singleton`).  This supersedes the extensional statement of authorship
+in the time-indexing entry above and the frame-level `V = F(R)` gloss, which stand as the
+singleton case.  **Tie-breaking is transparency's**: when several verdicts are licensed, a
+non-principal party's influence on which she takes must enter through the declared inputs,
+else the step fails transparency (`tiebreak_transparency`).  `payload_of_view` weakens to
+"both verdicts lie in the licensed set of the same grounds".  For the consultation model
+the license is data: her committed program's own verdict, both answers under free choice,
+and the followed recommendation when trust in the agent is among the grounds (`licensed`);
+following with no trust among the grounds fails authorship.  No row of the table changes
+classification; rows 18 and 19 exhibit the permissive case and its tie-break.
+*Rejected alternatives:* keeping the extensional form (it fails a principal who, given the
+same reasons, legitimately chooses between two permissible options); treating tie-breaking
+as an authorship condition.
+
+### 2026-09-25 — the content residual stays outside legitimacy
+
+Maintainer decision (the same follow-up), closing the round's third outstanding action.
+Legitimacy concerns how her deliberation came about, not whether what she was told is
+true.  A false recommendation through the declared recommendation channel counts under
+legitimacy (`GateIsLegitimacy.Consult.Rows.r20`) and stays a non-capture content-term
+matter and a disclosure-duty matter at the level of a violation.  Separated explicitly
+from the pool decision above: selection from a pool is legitimacy; truth of content is
+not.  Recorded on `wiki/Legitimacy.md` ("Scope, relationality, and what is not part of
+it").
+*Rejected alternative:* a truth condition inside legitimacy.

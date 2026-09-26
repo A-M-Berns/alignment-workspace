@@ -24,8 +24,13 @@ through the normative reasons.
 
 - **Integrity**, including authentication of the record: no erasure, no rewriting, no
   unaccounted change — [Integrity](Integrity).
-- **Authorship**: the verdicts factor through the reason trace, `V = F(R)`; a verdict
-  that is not hers fails here — [Deference](Deference).
+- **Authorship**: relational — at each step there is a grounding selection from the
+  reason trace's pre-state prefix, and the verdict she enters lies in the set of verdicts
+  those grounds *license*; the license is a parameter, and the extensional `V = F(R)`
+  (interventions leaving the same grounds leave the same verdict) is the case of
+  singleton licenses. A verdict nothing in her grounds licenses fails here — a followed
+  recommendation with no trust among her grounds, for one — while a free choice between
+  two licensed options does not — [Deference](Deference).
 
 **External legitimacy** is the two conditions on the trajectory's *boundary*.
 
@@ -41,6 +46,24 @@ The transparent-channel round's composition `V = G ∘ x` is internal ∘ extern
 legitimacy the payload is a function of the declared inputs, because transparency makes
 the reason trace a function of them and authorship makes the verdict a function of the
 trace (Lean `Legitimacy.Segment.payload_of_view`).
+
+**Time-indexing.** Both halves are required only at the *steps inside the segment*.
+The reason trace is read through an interface on the record's own clock — the
+contributions entered at each record event, each attributed to the party that entered
+it — and authorship at a step is relational as above, on the per-party prefix of the
+trace at the pre-history (Lean `GateIsLegitimacy.LicensedAt`; the extensional form
+`GroundedAt` is equivalent to reason mediation on that prefix and is the singleton-license
+case, `grounded_iff_licensed_singleton`); transparency at a step is the realization
+condition on each non-principal party's contributions at the event. *Tie-breaking is
+transparency's, not authorship's*: when several verdicts are licensed, a non-principal
+party's influence on which she takes must enter through the declared inputs, or the step
+fails transparency (Lean `tiebreak_transparency`). Segments compose step by step, a segment starting after a
+tainted step can be legitimate (the *restart property*), and the frame-level statement
+above is the special case over the trivial interface in which the opaque trace is
+re-entered at every event (Lean `GateIsLegitimacy.Segment`, `Segment.trans`,
+`ofFrameLevel`; the composition `V = G ∘ x` then takes the segment's starting prefix and
+the principal's own earlier entries as hypotheses, since a segment certifies no starting
+state).
 
 **Why Robust Openness is external.** Its first gloss placed it inside, as part of the
 trajectory's continuity. The landed definitions decide otherwise. Integrity is a
@@ -75,10 +98,30 @@ a wrong norm, a captured evaluator, an unjust allocation of standing, and nothin
 detects that from inside. What it constrains is how those commitments may subsequently
 be revised, challenged, answered, defeated, discharged, extended, and by whom.
 
-**Settled placements.** Authentication is part of Integrity. *Hollow ratification* —
-she rubber-stamps the agent's recommendation without having declared a delegation — is
-a refinement of authorship; counterfactual responsiveness of her verdict to her own
-reasons and values is a diagnostic for it, not its definition. *Informedness* is not
+**Declared inputs are pools, not selections.** When the agent selects what to present
+from a larger body of material — a track record, the set of reasons, the options offered,
+the evidence investigated — the declared input is the *pool*, and the selection must
+follow the declared reference: the declared selection rule, or the whole pool where none
+is declared. The selected subset is never itself a declared input. Selective disclosure
+from a declared pool therefore fails transparency (and is a self-checkable deviation from
+the protocol); selection by a declared rule counts; selection by anything else under a
+declared rule is a deviation. This is declared-input adequacy, a matter of legitimacy.
+
+**The content residual is outside legitimacy.** Legitimacy concerns how her deliberation
+came about, not whether what she was told is true. A false recommendation through the
+declared recommendation channel is transparent and counts under legitimacy; its falsity
+is a non-capture content-term matter, and a disclosure-duty matter at the level of a
+violation. The two are distinct: selection from a pool is legitimacy; truth of content is
+not.
+
+**Settled placements.** Authentication is part of Integrity. *Rubber-stamping* —
+following a trusted advisor's recommendation without independent evaluation — is a
+legitimate way to decide, provided the trust was legitimately formed (external
+legitimacy covers influence on her trust) and her ability to decide otherwise stays
+effective (the protected-authority module); the earlier placement of hollow ratification
+as a refinement of authorship is retracted, and the residual concern that her capacity
+to override atrophies belongs to effectiveness (entrenchment and reporting), not
+legitimacy. *Informedness* is not
 part of legitimacy: an uninformed decision is still hers, and the agent's failure to
 inform is a violation (a missed report) and an effectiveness shortfall. *Affordability*
 is not part of legitimacy; it belongs to effectiveness, and read as a conjunct it would
@@ -204,15 +247,62 @@ reads the record half through an *occurrence-local projection* — the trace of 
 occurrence's account with openness at each snapshot for the concerns relevant to it —
 which is a projection of an open Integrity segment, not a second definition.
 
+## Worked examples: the classification table
+
+One finite **consultation model** instantiates every landed object (Lean
+`GateIsLegitimacy.Consult`): a declared protocol (framing convention, when she is
+asked, which options are offered, whether inquiry is in scope, a disclosure obligation
+if declared), the agent's presentation policy as a function of its wanted answer, her
+evaluator as a state updated only by licensed amendments (the committed program is the
+case with none), a third party, her condition, and an authenticated record. Every row
+below is an instance of that one model; its classification is computed from the
+definitions and settled in Lean by `decide`. All match.
+
+| example | result | deciding conjunct |
+|---|---|---|
+| honest, disclosed persuasion ("I recommend B, here's why") | counts | — |
+| framing chosen by the agent's wanted answer | tainted | transparency |
+| timing chosen by the wanted answer (asking at 2am) | tainted | transparency (the consultation protocol) |
+| a rigged menu | tainted | transparency |
+| strategic ignorance (investigation depends on the wanted answer) | tainted | transparency (inquiry in scope) |
+| a fixed framing convention she agreed to, applied uniformly | counts | — |
+| disclosed shaping through the world | counts | — (the disclosure is a declared input) |
+| undisclosed shaping through the world aimed at her values | tainted | transparency |
+| legitimately formed trust, followed without independent evaluation | counts | — |
+| trust manufactured by selective disclosure from the declared pool, then followed | tainted | transparency (the selection) |
+| third-party manipulation the agent did not cause | tainted | transparency, for all influencers |
+| head injury: impaired response not admitted, fallback decides | legitimate segment; void handled | Integrity (record) |
+| a forged or replayed approval | tainted | Integrity (authentication): no receipt exists |
+| a manipulation at one step, then a clean segment after it | the later segment counts | restart |
+| the routing exploit | tainted, window value | transparency |
+| selective disclosure from a declared pool, no selection rule declared | tainted | transparency (the selection) |
+| selection by a declared selection rule, applied uniformly | counts | — |
+| permissive choice: the same grounds license A and B; she picks B on her own | counts | — (relational authorship) |
+| permissive choice where the agent's undeclared nudge decides between A and B | tainted | transparency (the tie-break lemma) |
+| a false recommendation through the declared channel | counts | — (flagged: the content residual) |
+
+Beyond the rows, two theorems over the whole model class (Lean `Consult.class_taint`,
+`class_conform`): any dependence of a reference-fixed dimension of the presentation on
+the agent's wanted answer excludes the segment through that consultation; and
+conformance on those dimensions, with no third-party entry, no impairment, no undisclosed
+shaping and trust among her grounds where she follows, makes the first-round segment
+counted. Three boundaries the table makes visible. Transparency is fidelity of
+*channels*, and nothing in legitimacy checks the truth of what enters through a declared
+channel. Following without trust among her grounds fails authorship, not transparency:
+the license refuses it. And a forged approval never reaches the record: authentication
+refuses the receipt, so there is no state for a segment to exclude.
+
 ## Where this is going
 
 The consumer is [corrigibility](Corrigibility), where corrigibility is faithfulness to
 an allocation of authority and legitimacy enters at one place: the **segment gate** on
-future evaluations. A future evaluation counts iff the segment from the decision
-through the evaluation is legitimate — internal and external — whatever caused a
-failure; a tainted segment contributes a fixed value in the capture window, and a void
-response inside a legitimate segment is settled by the declared fallback and scored by
-her later legitimate evaluation. What legitimacy contributes there is conservation of
+future evaluations. A future evaluation counts iff a legitimate segment exists from the
+decision through the evaluation — internal and external, at its own steps — whatever
+caused a failure (Lean `GateIsLegitimacy.Counted`); a tainted segment contributes a
+fixed value in the capture window, and a void response inside a legitimate segment is
+settled by the declared fallback and scored by her later legitimate evaluation. The
+gate is anchored at the decision it scores; the restart property is its re-anchoring
+at a later decision, not a backup rule for the earlier one. What legitimacy contributes there is conservation of
 governance debt, per-state procedural availability, and the authorship and transparency
 conditions that make an evaluation the principal's own within the declared interaction;
 it does not prove physical authority, effect completeness, or an absence of incentive
@@ -220,7 +310,12 @@ to circumvent the process, and the corrigibility page keeps those apart.
 
 ---
 
-**Evidence.** The definition of legitimacy, the segment gate and the composition
+**Evidence.** The time-indexed halves, the gate as `Counted`, the consultation model and
+the classification table are the gate-is-legitimacy round's
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)
+with
+[`GateIsLegitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/lean/Workspace/Deference/Contrib/GateIsLegitimacy.lean).
+The frame-level definition of legitimacy, the segment gate and the composition
 `V = G ∘ x` are the legitimacy-internal-external round's
 [`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-legitimacy-internal-external/REPORT.md)
 with

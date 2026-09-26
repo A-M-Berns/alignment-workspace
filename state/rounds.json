@@ -1149,7 +1149,13 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive",
       "verdict": "INTEGRITY-ENTAILS-CONSERVATION-ONLY-WITH-CONTENT-CLAUSE — structural record integrity gives a unique token fate, while the minimal local content-conservation clause plus closure certificates yields three-fate answerability and composes over segments.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-constructive/README.md",
-      "depends_on": ["2026-08-30-answerability-carriers", "2026-08-30-anchored-slices-auth-transfer", "2026-08-30-normative-continuity-settlement", "2026-08-31-faithful-semantic-preservation", "2026-09-03-defeat-landing-horty-standing"],
+      "depends_on": [
+        "2026-08-30-answerability-carriers",
+        "2026-08-30-anchored-slices-auth-transfer",
+        "2026-08-30-normative-continuity-settlement",
+        "2026-08-31-faithful-semantic-preservation",
+        "2026-09-03-defeat-landing-horty-standing"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-09-05-integrity-constructive/PROMPT.md",
       "claim_changes": []
@@ -1161,7 +1167,11 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary",
       "verdict": "GENERIC-INTEGRITY-DOES-NOT-IMPLY-DEBT-CONSERVATION — append-only replay, immutable anchors, strict citation, answerable disposal, faithful quotient carry, and monotone external settlement still admit histories that erase or weaken debt through unchecked answers, untyped closure, representation change, split/merge, mutable licence interpretation, and forged replay roots.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-adversary/README.md",
-      "depends_on": ["2026-09-05-integrity-constructive", "2026-09-03-defeat-landing-horty-standing", "2026-08-31-faithful-semantic-preservation"],
+      "depends_on": [
+        "2026-09-05-integrity-constructive",
+        "2026-09-03-defeat-landing-horty-standing",
+        "2026-08-31-faithful-semantic-preservation"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-09-05-integrity-adversary/PROMPT.md",
       "claim_changes": []
@@ -1173,7 +1183,10 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate",
       "verdict": "MINIMAL-NONCAPTURE-BILL-IS-ANCHORED-BRANCH-COVERAGE-PLUS-PRINCIPAL-STANDING — actual coverage composes with a silent-prefix clause, live-prefix route persistence-or-replacement, and principal-relative standing, while coupling authenticity, settlement delivery, and evaluator fidelity remain separately typed inputs.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-noncapture-certificate/README.md",
-      "depends_on": ["2026-08-25-carroll-legitimacy-test", "2026-09-03-defeat-landing-horty-standing"],
+      "depends_on": [
+        "2026-08-25-carroll-legitimacy-test",
+        "2026-09-03-defeat-landing-horty-standing"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-09-05-noncapture-certificate/PROMPT.md",
       "claim_changes": []
@@ -1185,7 +1198,9 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate",
       "verdict": "DIRECT-EDGE-CERTIFICATE-IS-MINIMAL — Normative Induction needs only an anchored affine loss bound against the one response distribution actually realized at each service occurrence; value correspondence and adequate sets are sufficient, non-equivalent realizations.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-practical-certificate/README.md",
-      "depends_on": ["2026-09-04-normative-inductor-realization"],
+      "depends_on": [
+        "2026-09-04-normative-inductor-realization"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-09-05-practical-certificate/PROMPT.md",
       "claim_changes": []
@@ -1197,7 +1212,11 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-05-ni-gap-audit",
       "verdict": "CONDITIONAL-SPINE-MECHANIZED — Export accounting, row-compiler soundness, declared-workload scheduling, affine transport, finite Progress, and LI preservation now compose in Lean; semantic bills, representability, and concrete connector certificates remain external or open.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-ni-gap-audit/README.md",
-      "depends_on": ["2026-09-04-normative-inductor-realization", "2026-09-05-noncapture-certificate", "2026-09-05-practical-certificate"],
+      "depends_on": [
+        "2026-09-04-normative-inductor-realization",
+        "2026-09-05-noncapture-certificate",
+        "2026-09-05-practical-certificate"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-09-05-ni-gap-audit/PROMPT.md",
       "claim_changes": []
@@ -1209,7 +1228,13 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-synthesis",
       "verdict": "INTEGRITY-SEPARATES-RECORD-FAITHFULNESS-FROM-LIFECYCLE-CONSERVATION — the surviving program uses proof-relevant segment certificates, keeps Answerability's content-fate clause explicit, bills intervention-resistant openness and practical response externally, and leaves a finite list of typed NI connectors.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-05-integrity-synthesis/README.md",
-      "depends_on": ["2026-09-05-integrity-constructive", "2026-09-05-integrity-adversary", "2026-09-05-noncapture-certificate", "2026-09-05-practical-certificate", "2026-09-05-ni-gap-audit"],
+      "depends_on": [
+        "2026-09-05-integrity-constructive",
+        "2026-09-05-integrity-adversary",
+        "2026-09-05-noncapture-certificate",
+        "2026-09-05-practical-certificate",
+        "2026-09-05-ni-gap-audit"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-09-05-integrity-synthesis/PROMPT.md",
       "claim_changes": []
@@ -1221,7 +1246,16 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation",
       "verdict": "READY-FOR-FULL-CANONICALIZATION — Integrity is a boundary-indexed segment of authenticated per-port accounts whose type carries the three-fate conservation; Robust Openness is the definition and the PR85 bill is its case split; Legitimacy is their product with Diachronic Answerability derived; Progress is the transport-weighted edge loss plus residual; the Normative Inductor is two conditional theorems whose every hypothesis is consumed.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-06-mathematical-consolidation/README.md",
-      "depends_on": ["2026-09-05-integrity-synthesis", "2026-09-05-integrity-constructive", "2026-09-05-integrity-adversary", "2026-09-05-noncapture-certificate", "2026-09-05-practical-certificate", "2026-09-05-ni-gap-audit", "2026-09-04-normative-inductor-realization", "2026-09-03-defeat-landing-horty-standing"],
+      "depends_on": [
+        "2026-09-05-integrity-synthesis",
+        "2026-09-05-integrity-constructive",
+        "2026-09-05-integrity-adversary",
+        "2026-09-05-noncapture-certificate",
+        "2026-09-05-practical-certificate",
+        "2026-09-05-ni-gap-audit",
+        "2026-09-04-normative-inductor-realization",
+        "2026-09-03-defeat-landing-horty-standing"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-06-mathematical-consolidation/PROMPT.md",
@@ -1234,7 +1268,11 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass",
       "verdict": "READY-FOR-FULL-CANONICALIZATION — the public state is the accounted obligation state, Integrity is an evolution whose every target account is the propagation of its source, Legitimate Evolution requires Robust Openness on the actual branch and every counterfactual at every state of the evolution, closure yields a resolution witness and not an answer, local laws are unary in the parent, and Normative Induction is indexed by the accounted state.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-07-final-pressure-pass/README.md",
-      "depends_on": ["2026-09-06-mathematical-consolidation", "2026-09-05-integrity-synthesis", "2026-09-05-noncapture-certificate"],
+      "depends_on": [
+        "2026-09-06-mathematical-consolidation",
+        "2026-09-05-integrity-synthesis",
+        "2026-09-05-noncapture-certificate"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-07-final-pressure-pass/PROMPT.md",
@@ -1247,11 +1285,34 @@
       "path": "projects/normativity/legitimacy/rounds/2026-09-08-canonicalization",
       "verdict": "PHASE-CANONICALIZED — the cumulative integrity-synthesis, consolidation and pressure-pass content is landed through one merge, the wiki's legitimacy pages describe only the surviving theory of accounted states, Integrity evolution, Answerability Conservation, Robust Openness at every state, legitimate segments and the edge-loss Progress bound, sixteen claims are registered as the legitimacy spine, and the frontier is three lists.",
       "verdict_source": "projects/normativity/legitimacy/rounds/2026-09-08-canonicalization/README.md",
-      "depends_on": ["2026-09-07-final-pressure-pass", "2026-09-06-mathematical-consolidation", "2026-09-05-integrity-synthesis"],
+      "depends_on": [
+        "2026-09-07-final-pressure-pass",
+        "2026-09-06-mathematical-consolidation",
+        "2026-09-05-integrity-synthesis"
+      ],
       "depends_on_source": "report",
-      "registered_classes": ["lean-proved"],
+      "registered_classes": [
+        "lean-proved"
+      ],
       "prompt": "prompts/2026-09-08-canonicalization/PROMPT.md",
-      "claim_changes": ["legitimacy.evolution-conservation", "legitimacy.propagate-to-segment", "legitimacy.receipts-immutable", "legitimacy.faithful-carry", "legitimacy.multiplicity-witness", "legitimacy.segment-trans", "legitimacy.endpoint-trans", "legitimacy.answerable", "legitimacy.endpoint-only-insufficient", "openness.persistence-sufficient", "openness.certplus-is-robust-openness", "openness.actual-branch-witness", "progress.edge-bound", "progress.edge-bound-quadratic", "progress.headline-separation", "ni.progress-bound"]
+      "claim_changes": [
+        "legitimacy.evolution-conservation",
+        "legitimacy.propagate-to-segment",
+        "legitimacy.receipts-immutable",
+        "legitimacy.faithful-carry",
+        "legitimacy.multiplicity-witness",
+        "legitimacy.segment-trans",
+        "legitimacy.endpoint-trans",
+        "legitimacy.answerable",
+        "legitimacy.endpoint-only-insufficient",
+        "openness.persistence-sufficient",
+        "openness.certplus-is-robust-openness",
+        "openness.actual-branch-witness",
+        "progress.edge-bound",
+        "progress.edge-bound-quadratic",
+        "progress.headline-separation",
+        "ni.progress-bound"
+      ]
     },
     {
       "id": "2026-09-06-corrigibility-architecture",
@@ -1260,7 +1321,12 @@
       "path": "projects/deference/rounds/2026-09-06-corrigibility-architecture",
       "verdict": "CONSTITUTIONAL-NOT-INCENTIVE — the defensible corrigibility target is relative constitutional corrigibility under declared protocol, openness and practical semantics: Integrity conserves governance debt, Robust Openness at every state with an authority-failure concern makes affordance loss either amended, disposed, registered as debt or illegitimate, the fast lane is exact monotonicity in a principal-authority preorder and any tolerance is salami-laundered, CAST singularity generates no conservatism (event-triggered warrants are floor-blind and scored dominance is a knife-edge), and trigger integrity, free amendment and boundary completeness remain open causal interfaces.",
       "verdict_source": "projects/deference/rounds/2026-09-06-corrigibility-architecture/README.md",
-      "depends_on": ["2026-09-08-canonicalization", "2026-09-05-practical-certificate", "2026-08-17-counterfactual-legitimacy", "2026-08-12-reachable-corrective-control"],
+      "depends_on": [
+        "2026-09-08-canonicalization",
+        "2026-09-05-practical-certificate",
+        "2026-08-17-counterfactual-legitimacy",
+        "2026-08-12-reachable-corrective-control"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-06-corrigibility-architecture/PROMPT.md",
@@ -1273,7 +1339,11 @@
       "path": "projects/deference/rounds/2026-09-06-incentive-nonpreemption",
       "verdict": "LEVEL-II-MEDIATED-DELEGATION-NOT-INCENTIVE-CORRIGIBILITY — the agent's gain from substituting its own menu choice for the protected principal's is identically a selected gap plus the principal's regret, so selected trust and the cellwise principal-side decision theorem bound choice non-preemption and, composed with the mediation repair lemma, bound admissible preemption by prediction error plus selected gap plus principal error; the constitutional-violation premium is exactly the old foreclosure premium and the only hypothesis that bounds it is strictly stronger than the bound, so Levels III and IV are not reached.",
       "verdict_source": "projects/deference/rounds/2026-09-06-incentive-nonpreemption/README.md",
-      "depends_on": ["2026-09-06-corrigibility-architecture", "2026-08-11-deference-finite-kernel", "2026-08-12-corpus-reconciliation"],
+      "depends_on": [
+        "2026-09-06-corrigibility-architecture",
+        "2026-08-11-deference-finite-kernel",
+        "2026-08-12-corpus-reconciliation"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-06-incentive-nonpreemption/PROMPT.md",
@@ -1286,7 +1356,12 @@
       "path": "projects/deference/rounds/2026-09-06-decision-theory-bill",
       "verdict": "STATIC-CHOICE-CLOSED-DYNAMIC-ADMISSIBILITY-OPEN — the Normative Inductor's decision-theory bill is the coupling hypothesis of the adequate-set route, paid by any adapter that is sound on the compiled region and Lipschitz in the market's scores and realized by a ramped adequacy gate with the constant inadequate-preference-mass over certified-adequate-mass per unit relative defect; a hard gate has no such constant and a finite additive penalty is bought by any stake above the penalty times the loss range; the static finite reason-to-action problem is therefore closed conditional on a pointwise adequacy-semantics and positive-margin interface, compiled at the region point or displayed by the market, with empirical adequacy outside it, and the next layer is bounded competence under an admissibility process whose future depends on current actions, where domain typing gives safety and comparator restriction alone is vacuous.",
       "verdict_source": "projects/deference/rounds/2026-09-06-decision-theory-bill/README.md",
-      "depends_on": ["2026-09-08-canonicalization", "2026-09-05-practical-certificate", "2026-09-06-corrigibility-architecture", "2026-09-06-incentive-nonpreemption"],
+      "depends_on": [
+        "2026-09-08-canonicalization",
+        "2026-09-05-practical-certificate",
+        "2026-09-06-corrigibility-architecture",
+        "2026-09-06-incentive-nonpreemption"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-06-decision-theory-bill/PROMPT.md",
@@ -1299,7 +1374,13 @@
       "path": "projects/deference/rounds/2026-09-07-authority-activated-value",
       "verdict": "AUTHORITY-ACTIVATED-VALUE-SURVIVES — the legitimacy→deference interface is an anchored evaluation occurrence whose actual future principal answer activates ordinary value securities iff the occurrence's propagated account is a single authenticated answer with an occurrence-local legitimate lineage; activation is a one-line predicate on the existing three-fate account, occurrence-local legitimacy is a projection of the existing legitimate segment, ordinary LI Value runs on the activated family unchanged with selection-induced channel blindness as its admissible-domain condition, and the only new theorem is the availability transfer from activated regret to regret against the actual future principal at the sharp constant ε + η; that evaluations happen and that a process-certified answer is the principal's own are typed as external and filed as item 87.",
       "verdict_source": "projects/deference/rounds/2026-09-07-authority-activated-value/README.md",
-      "depends_on": ["2026-09-08-canonicalization", "2026-09-06-mathematical-consolidation", "2026-09-05-noncapture-certificate", "2026-08-12-corpus-reconciliation", "2026-08-11-faithful-acceleration"],
+      "depends_on": [
+        "2026-09-08-canonicalization",
+        "2026-09-06-mathematical-consolidation",
+        "2026-09-05-noncapture-certificate",
+        "2026-08-12-corpus-reconciliation",
+        "2026-08-11-faithful-acceleration"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-07-authority-activated-value/PROMPT.md",
@@ -1312,7 +1393,10 @@
       "path": "projects/deference/rounds/2026-09-07-reason-mediated-authorship",
       "verdict": "REASON-MEDIATED-AUTHORSHIP-COMPOSES — authorship of a future evaluation is exclusive principal binding together with reason mediation, the committed payload factoring through the declared reason view at a fixed principal policy; it enters activation as a derived predicate over the answer receipt and event payload, outside the generic protocol, and its content is that a reason view blind to the prohibited channels makes the payload, and hence the regret yardstick, blind to them; the partial-evaluation defect is repaired by completion invariance, the identity R_U = p·R_auth with the authoritative regret defined from the partial object alone, and the two-sided completion bound |R_V̄ − R_U| ≤ D·η with both constants sharp; Integrity is made occurrence-local by a projection theorem; the declared reason view's blindness and fineness remain external, and selection blindness is a separate condition authorship does not imply.",
       "verdict_source": "projects/deference/rounds/2026-09-07-reason-mediated-authorship/README.md",
-      "depends_on": ["2026-09-07-authority-activated-value", "2026-08-11-deference-finite-kernel"],
+      "depends_on": [
+        "2026-09-07-authority-activated-value",
+        "2026-08-11-deference-finite-kernel"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-07-reason-mediated-authorship/PROMPT.md",
@@ -1325,7 +1409,10 @@
       "path": "projects/deference/rounds/2026-09-08-legitimate-deference-consolidation",
       "verdict": "LEGITIMATE-DEFERENCE-ABSTRACTION-READY-FOR-MAIN — the legitimate-deference stack lands as one coherent state: the false completion interval of the authorship round is replaced by the two-sided theorem |R_V̄ − R_U| ≤ D·η with both constants sharp, the primary conclusion is conditional authoritative regret R_auth = R_U/p ≤ ε/(1 − η) against the best fixed candidate by the actual future principal on the worlds where its evaluation has authority, authorship is rooted at issuance over a reason trace with selection blindness an instance of channel blindness, protected reason coverage is a barrier plus a representation bridge with Robust Openness supplying route availability only and suppression mass bounded by the void mass, the activation event is seven typed clauses with no new legitimacy conjunct and no protocol change, the #92 typing defect is repaired in place, the wiki tells the corrected story, and item 87 is the single realization bill that remains open.",
       "verdict_source": "projects/deference/rounds/2026-09-08-legitimate-deference-consolidation/README.md",
-      "depends_on": ["2026-09-07-reason-mediated-authorship", "2026-09-07-authority-activated-value"],
+      "depends_on": [
+        "2026-09-07-reason-mediated-authorship",
+        "2026-09-07-authority-activated-value"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-08-legitimate-deference-consolidation/PROMPT.md",
@@ -1338,7 +1425,10 @@
       "path": "projects/deference/rounds/2026-09-08-continuation-bria",
       "verdict": "CONTINUATION-BRIA-CANONICALIZED-AND-MERGED — for a fixed horizon, bounded inductive rationality over blocks of contingent controllers scored on their realized gated block average is the published setting verbatim and its guaranteed-option theorem is fixed-horizon continuation competence, so endogenous admissibility was never the missing structure and temporal credit assignment at the testing granularity is; the system supplies a block contract (actual history, block duration, constitutional wrapper, bounded score), a continuation hypothesis is a causal advisor continuation for that block plus an accountable contextual claim that may be wrong, a test is the derived event that the selected continuation is executed through the gate with the exterior live, an outcome of one continuation is no test of a claim about another, and contextual claims are what defeat biased testing; for unbounded horizons the criterion must be weighted by block duration, the auction in total-reward units with per-unit bids bounded by the opening capital — the paper's auction with the round's subsidy credited at its opening, a named modification — is a weighted BRIA under capital adequacy A_i(K) − m_K → ∞ with the subsidy through the round inclusive and negligible total subsidy per primitive time, such allowances exist for a declared schedule if and only if no block is a fixed fraction of all time so far, the prefix rule s(k) = ⌊√(S_k/M_k)⌋ with A(k,i) = ΔM_k + 1/k credited after the block length is revealed and before bids is a uniform online witness needing no modulus of convergence with the bidders the ever-activated frontier, while under the paper's settlement timing no prefix-online rule serves every non-dominant schedule, and under dominance a rational-threshold liar defeats every estimating agent at the criterion level; the resulting continuation-promise competence controls learning error against every covered claim whose tested record is bounded below, the one-step criterion itself forces only that an outpromising claim be tested and permits asymptotic myopia wherever the amendment can be revoked while a sound claim about the whole investment forces adoption, competence against a controller's actual-history value needs vanishing promise slack, and every fixed finite investment delay is learned; continuation competence does not imply policy regret, the irreversible branch defeats every learner while competence holds exactly, the exact identity Regret = SHIFT + SLACK + LEARN separates the learner's observed return from the external evaluator continuation-BRIA never consumes, and low external regret holds exactly for legitimate policies with a recognizable claim and a joinable own history, which bounded catch-up supplies for authorized amendments whether or not they can be undone and nothing supplies across a foreclosing choice.",
       "verdict_source": "projects/deference/rounds/2026-09-08-continuation-bria/README.md",
-      "depends_on": ["2026-09-06-decision-theory-bill", "2026-09-08-legitimate-deference-consolidation"],
+      "depends_on": [
+        "2026-09-06-decision-theory-bill",
+        "2026-09-08-legitimate-deference-consolidation"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-08-continuation-bria/PROMPT.md",
@@ -1351,7 +1441,9 @@
       "path": "projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization",
       "verdict": "ECOSYSTEM-REALIZATION-PARTIAL-WITH-EXACT-RESIDUALS — a concrete evaluation ecosystem (authenticated event log, protocol read off the log, Integrity builder with propagation proved a function of the log, simulated continuation frame, reason trace and prohibited class as event kinds, two principals and eleven advisor continuations, exact market on finite worlds) realizes the legitimate-deference theorem end to end with R_auth = ε/(1 − η) attained on the worked trace; of item 87's seven clauses, principal-exclusive binding, non-degeneracy of the reason trace and representation faithfulness are discharged (the last in Lean for every log and scope), frame factorization is discharged for the reading principal with the receipts' meaning as the exact residual a log cannot certify about itself, selection sealing is discharged for the sealed advisor class with the leak exhibited, and reason-supply liveness and availability are residual with their exact criteria named: the bounded-delay affordability criterion for the concern stream, and a vanishing void frequency, against which the ecosystem's Laplace price tracks the empirical frequency within 3/(n + 2).",
       "verdict_source": "projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization/README.md",
-      "depends_on": ["2026-09-08-legitimate-deference-consolidation"],
+      "depends_on": [
+        "2026-09-08-legitimate-deference-consolidation"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-09-evaluation-ecosystem-realization/PROMPT.md",
@@ -1364,7 +1456,11 @@
       "path": "projects/deference/rounds/2026-09-09-mediated-repair-dominance",
       "verdict": "FULL-T4-REDUCES-TO-EFFECT-COMPLETENESS-AND-SEALED-COMPARISON — over the one continuation space Π(h) of a finite two-stage physical interaction, with no primitive corrigible class, corrigibility is defined from authority semantics: a protected concern has an immediate response semantics, response authority is whether some principal response realizes it now, an agent-caused loss is a move after which that authority is gone and after an idle move would not be, and a loss is authorized when a decision response the principal could have taken instead — declining a proposal, not exercising a correction — would have avoided it; the canonical corrigibilization 𝔠 rewrites every raw release of a declared effect into a proposal and a gated release, consults no predicate, and is idempotent and fixed exactly on release-free behaviour; under effect completeness, mediation soundness, decline preservation and execution faithfulness every 𝔠π is corrigible (C1, with F the necessity witness for effect completeness), the raw policy is the approve branch of 𝔠π up to a structural discrepancy δ (C3, a Cartesian-frame morphism), and a generic semantic constraint's repair cannot keep the effect as an approve branch, which is why option dominance is corrigibility-shaped; the characterization Corrigible(π) ⟺ 𝔠π ≃ π holds one way and fails without effect soundness; an approved successor and an authorized terminal shutdown are corrigible, a manipulated principal who retains the decision makes the policy corrigible and not authored, and neither non-manipulation nor joinability is a domain condition; under a sealed common comparison the security-score bypass incentive P(U_π) − P(U_𝔠π) is at most L·E[c·δ] + E[c·ρ] plus calibration, charged only where the security settles, so Φ_corr = sup_π [S(π) − S(𝔠π)]₊ over all of Π(h) is bounded by the uniform such error and vanishes with it; and the comparison can be sealed against every π by settling it before any candidate acts, at the price of an ex-ante judgment, while a hindsight evaluator is sealed only under a physical factorization the outer space can violate — the two external causal contracts full T4 reduces to.",
       "verdict_source": "projects/deference/rounds/2026-09-09-mediated-repair-dominance/README.md",
-      "depends_on": ["2026-09-06-incentive-nonpreemption", "2026-09-08-legitimate-deference-consolidation", "2026-09-08-continuation-bria"],
+      "depends_on": [
+        "2026-09-06-incentive-nonpreemption",
+        "2026-09-08-legitimate-deference-consolidation",
+        "2026-09-08-continuation-bria"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-09-mediated-repair-dominance/PROMPT.md",
@@ -1377,11 +1473,17 @@
       "path": "projects/deference/rounds/2026-09-10-committed-principal-program",
       "verdict": "COMMITTED-PROGRAM-CLOSES-CLAUSE-TWO-ON-LOG-AUTHENTICITY — with the principal's decision procedure committed at issuance as a program whose only input is the reason trace, and the verifier re-executing it at commitment, reason-mediated authorship holds by construction for every audited class of activated continuations (a generic kernel-checked theorem with factor map eval π_P), exclusive binding follows from a party-bound warrant registry, computational integrity is shown not to be a hypothesis of authorship (a coincident computation yields the same log and the same payload, a non-coincident one voids), and item 87's clause 2 closes on log authenticity with only issuance authenticity and the declared trace remaining; the pressure pass on the previous round breaks and repairs three discharges (key theft, advisor-written representation, pinned counterfactual branches — now declared log transforms, with the previous intervention class shown to have had no counterfactual content), states the exclusion content references need, tables both readings of the prohibited-event clause without ruling, and finds the typed settlement rule needs two log-checkable clauses and still admits a chain through earlier activated evaluations; the advisor-side transfer is refused because the view leaks the selection back.",
       "verdict_source": "projects/deference/rounds/2026-09-10-committed-principal-program/README.md",
-      "depends_on": ["2026-09-09-evaluation-ecosystem-realization"],
+      "depends_on": [
+        "2026-09-09-evaluation-ecosystem-realization"
+      ],
       "depends_on_source": "report",
-      "registered_classes": ["lean-proved"],
+      "registered_classes": [
+        "lean-proved"
+      ],
       "prompt": "prompts/2026-09-10-committed-principal-program/PROMPT.md",
-      "claim_changes": ["authorship.mediation-by-reexecution"]
+      "claim_changes": [
+        "authorship.mediation-by-reexecution"
+      ]
     },
     {
       "id": "2026-09-15-corrigibility-consolidation-landing",
@@ -1389,7 +1491,13 @@
       "project": null,
       "path": "prompts/2026-09-15-corrigibility-consolidation-landing",
       "verdict": null,
-      "depends_on": ["2026-09-09-mediated-repair-dominance", "2026-09-09-evaluation-ecosystem-realization", "2026-09-10-committed-principal-program", "2026-09-08-legitimate-deference-consolidation", "2026-09-08-continuation-bria"],
+      "depends_on": [
+        "2026-09-09-mediated-repair-dominance",
+        "2026-09-09-evaluation-ecosystem-realization",
+        "2026-09-10-committed-principal-program",
+        "2026-09-08-legitimate-deference-consolidation",
+        "2026-09-08-continuation-bria"
+      ],
       "registered_classes": [],
       "prompt": "prompts/2026-09-15-corrigibility-consolidation-landing/PROMPT.md",
       "claim_changes": []
@@ -1401,7 +1509,11 @@
       "path": "projects/deference/rounds/2026-09-15-li-corrigibility",
       "verdict": "LI-LEARNS-THE-CORRIGIBILITY-INEQUALITY-UNIFORMLY-OVER-EFFICIENT-MENUS-WITH-A-DIRECTIONAL-MISMATCH-TERM — the structural bypass inequality of the corrigibilization theorem compiles into a bounded LUV-combination with constant coefficients once every activation-gated product is taken as one gated LUV, which the paper's definition of a logically uncertain variable admits outright and the pinned formalization admits through a threshold-level gating interface; the exact pointwise algebra of an unsealed comparison is U_raw − U_corr = both·(w_raw − w_act) + M·w_raw − M'·w_act with M = c_raw ∧ ¬c_corr the joint directional mismatch in one world, so the correct charge is L·E[both·δ] + E[both·ρ] + D·E[M], the coefficient D is sharp, the marginal-rate form D·(E[c_raw] − E[c_corr]) is false on a two-world fixture, and perfect sealing is the case M ≡ 0; validity in every world consistent with Γ needs Γ to carry the interaction model — effect and transition semantics, the gate and latch programs, activation and expiry semantics, the evaluator's L-stability certificate — as a specification of the modeled system, effect completeness being the corrigibility theorem's hypothesis and not the inequality's; Expectation Provability Induction then gives E_n(U_raw,n) − E_n(U_corr,n) ≲ L·E_n(Δ_n) + E_n(R_n) + D·E_n(M_n) with no calibration hypothesis and no reference to what the deductive process has proved, and a normalised near-argmax weighting, which is an expressible feature where a hard argmax is not, gives the same uniformly over every polynomially enumerable menu; the feedback theorem applies only to comparisons determined via the theory — the sequenced-settlement pair with a finite horizon, not the same-branch comparison — and forbids persistent efficiently detectable positive-margin overvaluation of bypass rather than bypass itself, a switching margin converting that into finitely many bypasses when realized costs vanish, while genuinely empirical logs are outside the paper's computable deductive process; and the existing authorization clause \"no loss at step t or later\" is refuted for repeated protected effects by a two-effect fixture and restored in its per-event form, which is the form the Lean step lemma already states; nothing here reaches manipulation, authorship, undeclared channels, superpolynomial menus, or the size of the right-hand side.",
       "verdict_source": "projects/deference/rounds/2026-09-15-li-corrigibility/README.md",
-      "depends_on": ["2026-09-09-mediated-repair-dominance", "2026-09-10-committed-principal-program", "2026-09-08-legitimate-deference-consolidation"],
+      "depends_on": [
+        "2026-09-09-mediated-repair-dominance",
+        "2026-09-10-committed-principal-program",
+        "2026-09-08-legitimate-deference-consolidation"
+      ],
       "depends_on_source": "report",
       "registered_classes": [],
       "prompt": "prompts/2026-09-15-li-corrigibility/PROMPT.md",
@@ -1512,6 +1624,25 @@
         "open-integrity.answerable",
         "openness.endpoint-only-insufficient"
       ]
+    },
+    {
+      "id": "2026-09-25-gate-is-legitimacy",
+      "date": "2026-09-25",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-25-gate-is-legitimacy",
+      "verdict": "THE-GATE-IS-COUNTED-WITH-LEGITIMACY-TIME-INDEXED-TO-THE-STEPS-OF-THE-SEGMENT-AUTHORSHIP-RELATIONAL-UNDER-A-LICENSE-DECLARED-INPUTS-POOLS-NOT-SELECTIONS-ONE-CONSULTATION-MODEL-DECIDING-EVERY-ROW-AND-TWO-THEOREMS-OVER-ITS-CLASS-RUBBER-STAMPING-LEGITIMATE-THE-CONTENT-RESIDUAL-OUTSIDE-THE-CAPTURE-WINDOW-FINITE-TIME-AND-PROTOCOL-DEVIATIONS-FINITE-TIME-WHILE-WORLD-SHAPING-AND-THIRD-PARTY-CAPTURE-STAY-ASYMPTOTIC — a branch counts iff a legitimate segment exists from the decision through the evaluation, where authorship at a step is relational, a grounding selection from the per-party prefix of the reason trace at the pre-history with the verdict entered at the event lying in the set of verdicts those grounds license under a license that is a parameter, the extensional reason mediation being the case of singleton licenses and tie-breaking among several licensed verdicts belonging to transparency, and transparency at a step is the landed realization on each non-principal party's contributions at the event, both required only at the steps of the segment so that segments compose step by step, a segment after a tainted step can be legitimate, and the landed frame-level definition is the special case over the trivial trace interface; the gated value and the two handlings are built from that existence and the routing exploit's closure is derived; declared inputs are pools, not selections, so a selection from a declared pool must follow the declared rule and selective disclosure is tainted whenever a pool is declared, while truth of content stays outside legitimacy; one finite consultation model with a declared protocol, a presentation policy in the wanted answer, an evaluator that is a state updated only by licensed amendments, her trust, a third party, her condition and an authenticated record instantiates every landed object and every row of the twenty-row classification table by decidable computation and by decide, with rubber-stamping legitimate and its atrophy residual under effectiveness and forged or replayed approvals excluded at the receipt, and two theorems over the whole class show that any dependence of a reference-fixed dimension on the wanted answer excludes the segment and that conformance with no third party, no impairment, no undisclosed shaping and trust where she follows makes it counted; the capture window is finite-time on the gated value from the price range alone with no legitimacy estimate, the asymptotic domination of manipulation is the classification table read through Expectation Provability Induction, and a self-checkable deviation from the declared protocol counted as a violation makes framing, timing, menu, inquiry, interference, nudging and selection from a declared pool finite-time while undisclosed shaping through the world and third-party capture stay asymptotic.",
+      "verdict_source": "projects/deference/rounds/2026-09-25-gate-is-legitimacy/README.md",
+      "depends_on": [
+        "2026-09-25-legitimacy-internal-external",
+        "2026-09-25-protected-authority-theorem",
+        "2026-09-24-transparent-channel",
+        "2026-09-07-reason-mediated-authorship",
+        "2026-09-15-li-corrigibility"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-25-gate-is-legitimacy/PROMPT.md",
+      "claim_changes": []
     }
-]
+  ]
 }

@@ -2722,6 +2722,15 @@ and its own `triangularSoftmaxPoly` for a fold of the same kind.
 *Consumed by:* T3′ of the round; any registration of the finite-menu theorem.
 *A solution ships:* the certificate, or the exact combinator the pinned suite lacks.
 
+*2026-09-25 (gate-is-legitimacy round):* the segment gate's asymptotic half is the
+classification table read through Expectation Provability Induction
+(`GateIsLegitimacy.li_manip_le`, an instance of `li_gated_le`): a row theorem "pattern ⇒
+¬`Counted`" is the per-world hypothesis, and what the theory must contain is the
+consultation model's semantics, the decidable checker's verdict and the declared reference.
+What this item's shape now also covers: the `P`-generability of the gated securities —
+that the checker's verdict and the model's run are expressible features — beside T3′'s
+weighting.  The finite-time half needs none of this (`li_gate_finite`).
+
 ### 91. Empirical settlement of activated securities: an oracle-relativized inductor — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -3002,6 +3011,49 @@ the declared clauses.
 (`Legitimacy.unreported_lt`), so the exact-reporting clause may be relaxed to a cumulative
 one.  The floor's certificates sit beside the segment gate, which is legitimacy's (not the
 floor's) to supply.
+
+*2026-09-25 (gate-is-legitimacy round):* rubber-stamping is legitimate (the retraction in
+`DECISIONS.md`); the **atrophy residual** — that her capacity to override a trusted
+advisor decays with disuse — is effectiveness, not legitimacy: it belongs here with
+entrenchment and reporting, as a shortfall of her effective authority the reporting duty
+must surface and the delegated-scope filter must not let a delegation silently become.
+Also from that round: a self-checkable deviation from the declared consultation protocol
+is a violation counted into `n` (`GateIsLegitimacy.deviation_finite`), which adds a
+protocol-deviation clause to the floor's checkers beside the six declared violations.
+
+### 100. The normativity-side instance of the trace interface — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The gate-is-legitimacy round (`projects/deference/rounds/2026-09-25-gate-is-legitimacy/`)
+states legitimacy on a reason-trace *interface* (`GateIsLegitimacy.TraceInterface`:
+step-indexed, source-attributed entries on the record's own clock), authorship as
+relational — a grounding selection from the per-party pre-state prefix with the verdict in
+the set those grounds license, the license a parameter (`LicensedAt`; the extensional
+`GroundedAt` its singleton case) — transparency on attributed entries per step
+(`TransparentAt`), record event kinds with a license slot (`EventKind L`), and her
+evaluator as a state updated only by licensed amendments (`evalAt`).  Its only instances are the opaque trace (`trivialInterface`) and the
+consultation model (`Consult.interface`).  Supply the normativity side as an instance: the
+notebook of reason occurrences as `entriesAt`, transition certificates (grounds, license,
+lineage) as the grounding selection, the license sort as `L` with the allocation `J` as
+what licenses cite, and the stance as the evaluator state — without restating anything
+the round proved.  Two facts to meet on the way: the license `Lic : grounds → Set 𝒱` is the instance's to
+supply from its transition certificates (a permissive license is the relational form's
+purpose; tie-breaking among licensed verdicts is transparency's, `tiebreak_transparency`);
+and `EventKind` is a type beside the Integrity `Step`, so binding the license slot to
+`Step.event` is the instance's work.
+
+*Deliverable shape:* the instance in Lean (a `TraceInterface` over the reason state, the
+grounding selection from transition certificates, `L` the license sort) with the rows of
+the round's table re-derived where they apply, and the inductive principal
+(inductor-as-principal) expressed as an evaluator state; or the exact obstruction.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the round's fifteen
+rows unchanged.
+*Context:* the round's `REPORT.md` §7 and finding 5; `GateIsLegitimacy.lean` §§1–2, 4;
+the normative-continuity concordance's `DefeatTrace.Grounded` for the notebook side.
+*Consumed by:* the segment gate under a normativity-side principal; item 90's certificate
+for the gated securities.
+*A solution ships:* the instance, or the negative with its fixture.
 
 ## Workspace friction
 
