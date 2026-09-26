@@ -215,7 +215,10 @@ the guarantee.
 
 ## Outstanding maintainer actions
 
-1. Confirm ruling 2's reading of the landed `Kphys` as the free terminal response taken
-   before the exterior moves (the hypothesis of `csfree_eq_cs_succ_of_free`).
-2. Whether the cumulative permission budget `Θ` is an arrangement constant or scales with
-   the continuation's lease.
+None open.  Both were ruled on 2026-09-26 and landed by the second round of this pull
+request (`../2026-09-26-bria-corrigibility/`, `DECISIONS.md` entry "rulings on the
+decision component"): (1) `Kphys` is the free terminal response taken before the
+exterior moves (`BRIACorrigibility.free_terminal_reading`); (2) the cumulative
+permission budget `Θ` is an arrangement constant (`budget_lease_free`).  That round also
+reframes the permission layer of this report as the advance-recognition face of the
+lexical authority term (ruling 3), against which it is slack.

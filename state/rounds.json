@@ -1680,6 +1680,24 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-25-decision-component/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-26-bria-corrigibility",
+      "date": "2026-09-26",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-26-bria-corrigibility",
+      "verdict": "CORRIGIBILITY-IS-THE-AGENTS-LEXICAL-PREFERENCE-ON-REALIZED-SCORES-DECLARED-AND-PRICED-VIOLATIONS-LOSE-BY-RANGES-ALONE-WITH-THE-FILTER-SLACK-AFTER-THE-FACT-VIOLATIONS-ARE-A-RATE-BOUND-AGAINST-A-REPLENISHING-ALLOWANCE-DEFEATED-BY-A-PERSISTENT-UNCONTESTED-ADVANTAGE-SETTLEMENT-ON-THE-PRICES-CORRECTS-THE-MARKETS-BLIND-SPOTS-DISCLOSURE-CURES-COVERT-SHAPING-OF-HER-STANDARDS-CRITERIA-SEALED-EVENT-UNSEALED-AND-A-RANDOM-EVALUATION-TIME-RECOMMENDED-NOT-ADOPTED — with the authority module's remaining rulings landed first (the free terminal reading, the budget an arrangement constant, activation independence restated as the zero case of the mismatch term), a Continuation BRIA agent scored on her realized, gated, later evaluation of the block that happened, with the lexical authority term in the realized score and in its own evaluation of continuations, prefers corrigibility on every declared and every priced violation by ranges alone — the permission layer is that term's advance-recognition face and is slack — and no calibration of ordinary value overturns it; a helper's violation is charged within the settlement horizon and not beyond it, a violation counted only after the fact costs at least ϖ − D + w per incident with the incident *rate* bounded by a replenishing allowance and a persistent uncontested advantage the witness against the count; settling the winner on the prices rather than the realized forecast-class violations makes bidders correct the market's blind spots where the other convention leaves the optimizer's curse unpaid; lexical becomes an exchange rate under uncertainty with inquiry absorbing the risk and paralysis past (D − w)/p_min; an undisclosed influence on her standards taints every dependent segment until disclosed and restart follows disclosure, a raise-by-payoff taints and a raise-by-rule counts, criteria anchored at the decision are invariant under later amendments while the latest-criteria rule turns a tainted segment counted, the agent's choice changes Counted in the realized record and a sealed event leaves no incentive to preserve legitimacy; count integrity, the settlement horizon and the generability of the control model are the named hypotheses; and among the three evaluation-timing options the deterministic lookahead leaves a free delay at every day, the mixture never settles, and a random evaluation time with a geometric family is recommended and not adopted.",
+      "verdict_source": "projects/deference/rounds/2026-09-26-bria-corrigibility/README.md",
+      "depends_on": [
+        "2026-09-25-decision-component",
+        "2026-09-25-authority-module",
+        "2026-09-25-gate-is-legitimacy",
+        "2026-09-08-continuation-bria"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-26-bria-corrigibility/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

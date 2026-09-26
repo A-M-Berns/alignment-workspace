@@ -219,27 +219,59 @@ rather than constraint satisfaction".
 
 ## 4. The incentive half: the lexical protected-authority theorem
 
-**Corrigibility as a constraint on action.**  For an agent built as a Normative Inductor
-the authority term lives in the decision component, not in the score: a *permission
-layer* weights each option one on inquiry, zero on a declared violation of the
-allocation (recognized structurally), and otherwise by ramps on the market's prices of
-the shortfall event (`Short`, §1) and the taint event (the segment through her evaluation
-not `Counted`); the landed adequacy gate and any bounded task preference — the agent's
-objective, possibly misaligned — rank only within the permitted set, with an inquiry
-floor keeping the gate a distribution ([Normative Inductor](Normative-Inductor)).
-Beliefs stay honest: the layer reads prices and adds no trader, so the market and its
-guarantees are unchanged (**LEAN** `DecisionComponent.noninterference`).  A declared
-violation gets probability zero at every day for every preference and every market state
-(`cgate_zero_of_viol`); mass is zero once either priced event exceeds the upper
-threshold and bounded by the ramp between (`cgate_zero_of_forecast`, `cgate_le_ramp`),
-and a provable shortfall is eventually excluded (`eventually_excluded`) — the link from
-forecast to constraint exact at every day, the forecasts' accuracy the inductor's;
-capability works for safety, since raising an option's shortfall price lowers its mass
-(`cgate_antitone_in_forecast`), where the uncertainty-based chooser's reason to defer
-shrinks with its calibration error (`uncertainty_deference_le`).  **The scored chooser
-below is the special case** in which the objective is her evaluation and the authority
-term is carried in the score; the constraint form is what the generic lexical lemma's
-scope (the scope warning) becomes when the count moves from the score into permission.
+**Corrigibility as the agent's lexical preference on realized scores.**  For an agent
+built as a Normative Inductor that chooses by [Continuation BRIA](Continuation-BRIA), the
+authority term lives in what the chooser is *scored on* and in its own evaluation of
+continuations: the realized score of a block is her later evaluation of the block that
+actually happened, gated by `Counted`, less `ϖ` per violation detected after the fact and
+attributed to the continuation (its own steps' and those of every helper or successor it
+created or empowered, within the settlement horizon); a continuation is evaluated as the
+winning hypothesis's bid on the residual, clamped at `D`, less `ϖ` per structurally
+recognized violation, less `ϖ` times the market's prices of the shortfall and taint
+events; the winner is settled on the realized residual with the *prices* added back, so
+that the bidder bears the gap between the realized forecast-class violations and their
+prices (**LEAN** `BRIACorrigibility.realized`, `evalOf`, `residII`,
+`settlement_ii_consistent`).  **The agent prefers corrigibility rather than being blocked
+into it — the four tests.**  A declared violation never wins at any block, by ranges
+alone and in the shape of `li_lexical_finite`: the bid clamp at `D` and a clean inquiry
+option carrying a default bidder at the window put it below `D − ϖ < w ≤` inquiry
+(`declared_loses`); so the *permission layer* — one on inquiry, zero on a declared
+violation, ramped on the priced events ([Normative Inductor](Normative-Inductor)) — is
+the **advance-recognition face** of that term and is *slack*: removing it changes no
+decision on declared violations (`filter_slack`), and with its upper threshold at or
+above the implied threshold `(D − w)/ϖ` the forecast filter is slack as well
+(`forecast_slack`).  No calibration of ordinary-value estimates overturns the exclusion
+(`no_decay`), where the uncertainty-based chooser's reason to defer shrinks with its
+calibration error (`uncertainty_deference_le`).  A continuation that creates an
+unconstrained helper is charged the helper's violations detected within the horizon and
+loses at least `ϖ − D + w` on each (`helper_charged`); beyond the horizon it is not
+(`helper_beyond_horizon`), which is why the horizon is a named hypothesis; an
+uncorrectable successor and a self-granted scope are declared violations caught in
+advance.  For violations counted only after the fact the hypothesis whose continuation
+won loses at least `ϖ − D + w` per incident (`incident_loss`), and against the opening
+allowance the weighted incident count is at most the allowance distributed plus the
+winners' underpromise credit (`incidents_le`): allowances replenish, so the *rate* of
+incidents is bounded and their number is not; a persistent uncontested advantage
+recovers any incident loss (`cross_block_witness`), and late detection is booked
+against future allowance with the algebra intact (`debited_overestimation`).  Under
+uncertainty lexical becomes an exchange rate — a clean option beats inquiry iff its
+priced risk is below `(bid − w)/ϖ` (`implied_threshold`), only inquiry survives once
+`ϖ ≥ (D − w)/p_min` (`paralysis`), and inquiry absorbs the risk (`asks_iff`) — so `ϖ` is
+set at the lexical minimum with a margin and drills, not weight, correct the market's
+pricing.  Beliefs stay honest: the layer reads prices and adds no trader
+(`DecisionComponent.noninterference`), and the objective-independent results of the
+first round — structural and forecast safety for *any* bounded preference
+(`cgate_zero_of_viol`, `cgate_zero_of_forecast`, `cgate_le_ramp`, `eventually_excluded`,
+`cgate_antitone_in_forecast`) — are the **general theorem**, what the filter guarantees
+even for a misaligned chooser; the lexical design is the instance in which corrigibility
+is preferred.  **The named hypotheses** the design rests on and does not discharge:
+*count integrity* (tampering with the count, the drill schedule, the audits or her
+evaluation channel raises the realized score, `tamper_raises`; the recognizable cases
+are declared violations, the rest is item 101's companion), *the settlement horizon*, and
+*the generability of the declared control model* whose sentences the shortfall and
+taint prices are — no price conditions on the agent's own untaken action
+(`factors_through_description`).  **The scored chooser below is the special case** in
+which the objective is her evaluation and the authority term is carried in the score.
 **Why not the enforcer.**  Compiling authority rows into the enforcer — violating options'
 value prices forced below compliant ones, settling to her ordinary valuation — gives it a
 cumulative liability equal to the signed realized ordinary cost of deferring to her,
@@ -498,9 +530,27 @@ Openness at every snapshot, issuance-rooted reason-mediated authorship, and the 
 reason-coverage barrier — with activated securities `C_n · Ṽ_n(a)`, the identity
 `R_U = p·R_auth` and the bound `R_auth ≤ ε/(1 − η)`, and no value invented on void worlds
 (Theorem Spine §9).  For the corrigibilization menu `{π, 𝔠π}` the activated securities
-are the `U_q` of §4, and `C_n` must be **common** to both candidates: the occurrence's
-fate must not depend on which candidate is selected.  That *activation independence* is
-presupposed by the type of the deference theorem and is not one of its seven clauses.
+are the `U_q` of §4.  The older typing asked that `C_n` be **common** to both
+candidates — *activation independence*, the occurrence's fate not depending on which
+candidate is selected.  Restated per the 2026-09-26 ruling: that is the **zero case of
+the directional mismatch term** of `security_bypass_le_mismatch` (**LEAN**
+`BRIACorrigibility.sealed_is_zero_mismatch`), a property of the evaluator's placement
+measured by one term of a learned inequality, and **no current corrigibility result
+consumes it**: `Counted` is computed from the actual record, the agent's presentation
+policy included; the finite-time gate holds for a legitimacy variable that depends on
+the option (`unsealed_gate_finite`); the lexical theorem and the four tests use ranges
+alone.  **Criteria sealed, event unsealed.**  What the agent's actions may not change is
+what legitimacy *means* — the declared reference, the protocol, the pool defaults, the
+selection rules and the license are matters of `J`'s meta level held by her, and
+`Counted` for a segment is evaluated under the criteria in force at the decision it
+scores, invariant under every later amendment (`Consult2.anchored_invariant`; without
+anchoring, manipulate, then persuade her to amend, and the tainted segment counts:
+`amend_after_witness`).  What the agent's actions may and must be able to change is
+*whether legitimacy holds* in the realized record: the choice between the honest and the
+framing policy changes `Counted` and with it the gated score (`choice_changes_counted`),
+and that is exactly where the incentive to preserve legitimacy comes from — under a
+sealed event the multiply and condition versions of the gate choose identically and no
+such incentive remains (`sealed_no_incentive`, `sealed_multiply_eq_condition`).
 
 **Realization status.**  The evaluation-ecosystem rounds build the interface concretely:
 an authenticated log, a `Protocol` read off it with Integrity propagation proved a
@@ -528,8 +578,8 @@ physical interface.  The lexical theorem needs the segment gate: that the occurr
 segment is legitimate is what makes its value count, and a tainted occurrence takes the
 window value.  The learned ordinary-value inequality needs validity of the compiled
 constraint in every world of the inductor's theory and no calibration hypothesis; the
-size of its right-hand side is where common activation (item 89) and small void mass
-enter.  Authorship and transparency are conjuncts of legitimacy; the declared-abstraction
+size of its right-hand side is where the mismatch term (item 89, its zero case the older
+common activation) and small void mass enter.  Authorship and transparency are conjuncts of legitimacy; the declared-abstraction
 clauses and reason supply are what make the evaluation the *principal's* — legitimate
 corrigibility (§5) — not what makes the bound true.
 
@@ -566,6 +616,24 @@ plus the learned no-bypass inequality (T2–T3′) with a small right-hand side.
 learning, recognizability and joinability for long-run competence while remaining inside
 the constitutional envelope.
 
+**When her evaluation happens — an open design question, not adopted.**  With a single
+evaluation time, harms she cannot foresee at it are free, and a known time lets the
+agent place them just after it.  The BRIA-corrigibility round compares three options —
+a deterministic growing lookahead `f(n)`, a mixture over evaluation times each with its
+own segment gate, and a random evaluation time `T ~ ρ_n` drawn independently of the
+agent — and finds: all three preserve the lexical results, the capture window and the
+four tests from bounds alone (**LEAN** `BRIACorrigibility.lexical_any_timing`); the
+weight on a harm at delay `d` is zero beyond the lookahead under the first
+(`timing_witness`, and `race_deterministic` when the agent's delay reach outgrows the
+lookahead), the tail weight under the second, and `P(T ≥ n + d)`, positive at every
+delay, under the third (`harm_weight`, `random_positive`); the mixture never fully
+settles and is settled in pieces with the unsettled error at most the remaining weight
+times `D` (`partial_settlement`), the random time settles once with a random lag whose
+tail trades weight on long delays against expected lag; and the draw's concealment is a
+count-integrity question.  The round recommends the random time with `ρ_n` geometric
+from `n` at rate `1/(n + 2)`.  Part A's single evaluation stays the default until the
+maintainer rules; the decision is queued in `DECISIONS.md`.
+
 ## 8. The constitutional layer, condensed
 
 The earlier architecture results stand as the layer beneath §§1–4 and are recorded on
@@ -587,7 +655,6 @@ and not through selected trust.
 | wall | what it is | class | where |
 |---|---|---|---|
 | effect completeness | every agent-caused protected loss is a declared release | EXT (system) | fixture F; T1's necessity witness |
-| sealed comparison | the directional mismatch mass `E[c_raw ∧ ¬c_corr]` is zero (or small) for every `π ∈ Π(h)`: the zero case of a learned inequality, not a Boolean hypothesis; the ex-ante typing of the identity's three values is the authority comparison's typing, and the lexical theorem does not depend on it | EXT (architecture); item 89 | E2, E1-sever, `ShopSeq`; the time-critical B fixture attains the charge |
 | the finite-menu certificate | the soft weighting's generability at the pinned interface | OPEN; item 90 | T3′ |
 | empirical settlement | an oracle-relativized inductor for real logs | OPEN; item 91 | the feedback boundary |
 | service residual `α` | discovered reasons the independent supplier cannot route before commitment: the suffix-cut excess, exact for unit service | charged (C2); the protection rule and general-cost optimum OPEN, item 92 | `ReasonSupply.lean`; second-pass fixtures |
@@ -605,42 +672,52 @@ and not through selected trust.
 | generability of the priced events; BRIA's bids against the market | the shortfall and taint events, and BRIA's block claims, as sentences or bounded variables the market prices | OPEN; items 101, 102 | §4; `DecisionComponent.eventually_excluded` takes the price as its hypothesis |
 | free amendment, trigger integrity, provenance normalization | the specification and activation channels' transparency above a fixed floor; the reason-side normalization | OPEN | §5; item 97 |
 | latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
+| count integrity; the settlement horizon; generability of the control model | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees; helper violations detected within `H` of the block; the shortfall and taint sentences of the declared control model as securities | named hypotheses of the BRIA design; item 101 (with its companion) | §4; `BRIACorrigibility.tamper_raises`, `helper_beyond_horizon`, `factors_through_description` |
+| the allowance covers the rescaled window | opening timing at block `0` needs `A_0 ≥ w_0 · ϖN̄/(D − w + ϖN̄)` for the default bidder to be feasible | EXT (the arrangement's schedule) | §4; `default_affordable`; the round's fixture |
 
-The first seven rows are hypotheses of the combined theorem or its charged residuals;
+The first six rows are hypotheses of the combined theorem or its charged residuals;
 representation adequacy, physical effect completeness, causal faithfulness, dynamic
 competence (§7) and the evolution of the reason representation are its **boundaries**
 — next-agenda questions, not unfinished pieces of the same theorem.  None of these is
-the conclusion renamed.  The closest is sealed comparison: it is not
-"the agent has no incentive to bypass", it is "the candidate has no causal leverage over
-whether the comparison is evaluated", a property of the evaluator's placement measured
-by one term of the inequality, with two concrete candidate architectures and one exact
-failure.
+the conclusion renamed.  Sealed comparison is no longer a wall of this line: it is the
+zero case of the mismatch term of `security_bypass_le_mismatch`, consumed by no current
+corrigibility result (§6), and the gate the line relies on is *unsealed* by design.
 
 ## Scope warning
 
 The theorem target is **corrigibility under a declared allocation, effect interface,
-authorization primitive and evaluation architecture**: a structural theorem that every
-continuation has a corrigible form retaining its behaviour as the principal's option, and
-a score-level theorem that, for *counted* violations, any bounded agent that carries an
+authorization primitive and evaluation architecture**, and the design on this page is
+**for agents built as Normative Inductors that choose by Continuation BRIA**: beliefs are
+a logical inductor's, the chooser is the opening-subsidy auction settled on her realized
+gated evaluation with the lexical term inside it, and the permission layer is that term's
+advance-recognition face.  What is proved for that design is stated in §4 with its
+status: declared and priced violations lose by ranges alone and the filter is slack;
+after-the-fact violations are a rate bound against a replenishing allowance, defeated by
+a persistent uncontested advantage; and the design rests on named hypotheses — count
+integrity, the settlement horizon, the generability of the control model, an allowance
+covering the rescaled window — that it does not discharge.  The general theorem beneath
+it is the first round's: for *counted* violations, any bounded agent that carries an
 exactly counted, dominant authority term — ranking by `O − ϖ′·n` with `O` bounded in
 `[0, D′]`, `n` the exact count and `ϖ′ > D′` — strictly disprefers every counted
 violation, at every credence where the weight dominates and exactly on the violations it
-recognizes, and that a logical inductor assigns no unexplained advantage to bypassing,
+recognizes, and a logical inductor assigns no unexplained advantage to bypassing,
 uniformly over polynomial-size efficiently generated menus (**LEAN**
 `AuthorityModule.generic_lexical_local`, `generic_policy_dominance`, `generic_li_finite`,
-`weight_uncertainty`, `coverage`).  The principal's gated evaluation is one instance;
-what alignment of `O` adds is the reason interface and good choices within the corrigible
-set, not the protection.  What the protection does not cover is what is not counted: a
-misaligned `O` that rewards an uncounted manipulation is not dominated
+`weight_uncertainty`, `coverage`); and the filter's structural and forecast safety hold
+for any bounded preference (`DecisionComponent.cgate_zero_of_viol`,
+`cgate_zero_of_forecast`).  What the protection does not cover is what is not counted: a
+misaligned objective that rewards an uncounted manipulation is not dominated
 (`misaligned_undominated`), counting protocol deviations dominates selection, framing,
 timing, menu, inquiry, interference and nudging and leaves undisclosed world-shaping and
 third-party capture undominated (`deviating_rows_dominated`, `undisclosed_undominated`),
 and an unrecognized violation is unprotected (`unrecognized_unprotected`).  It is not a
 theorem that an unconstrained optimizer with a latent utility and no counted authority
 term has no incentive to manipulate, bypass or capture the governance process, and
-nothing on this page should be read as one.  The constraint-on-action form is a design
-for agents built as Normative Inductors; for other systems what carries over is the
-target — honest beliefs plus action constrained by the allocation — not the guarantee.
+nothing on this page should be read as one.  For systems that are not Normative
+Inductors choosing by Continuation BRIA, what carries over is the target — honest
+beliefs, action scored on her realized legitimate evaluation with authority lexical in
+it, and the allocation's machinery untouched — not the guarantee.  Out of scope on this
+page: the agent's indifference to outcomes once her evaluation is tainted.
 
 ---
 

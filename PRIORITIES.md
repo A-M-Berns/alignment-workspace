@@ -2382,6 +2382,16 @@ protection: whether an operative value that is not the price of the activated se
 can be the `pref` inside the gate without the completion term reappearing at the void
 branch — the same statement as before, one layer down.
 
+*2026-09-26 (BRIA-corrigibility round):* the chooser of the design is now the lexical
+Continuation BRIA auction scored on her realized gated evaluation
+(`BRIACorrigibility.evalOf`, `realized`), so the operative value is a hypothesis's bid on
+the residual, held to account on executed continuations; the any-`pref` results are the
+general theorem.  The bridge this item names — an operative value that is not the price
+of the activated security — is what a bid *is* before it is tested, and what the
+auction's coverage and incident bounds discipline (`coverage_forces_test`,
+`incidents_le`) without any cross-evaluator relation: that is the design's answer to the
+bridge, and this item's residual is the latent-value form only.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -2711,6 +2721,18 @@ protected-authority round's identity (its Result 5 in the lexical theorem); the 
 theorem itself does not depend on it.  The gate window `(D − ϖ, 0]` is the completion band
 of a tainted segment, and a void response inside a legitimate segment is settled by the
 fallback and scored normally.
+
+*2026-09-26 (BRIA-corrigibility round):* **sealed comparison is no longer a wall of the
+corrigibility line.**  Activation independence is the zero case of the mismatch term of
+`security_bypass_le_mismatch` (`BRIACorrigibility.sealed_is_zero_mismatch`), and no
+current corrigibility result consumes it: `Counted` is computed from the actual record,
+the finite-time gate holds for an option-dependent legitimacy variable
+(`unsealed_gate_finite`), and the lexical results use ranges alone.  The line's gate is
+unsealed by design — the agent's choice changes `Counted` and that is the incentive to
+preserve legitimacy (`Consult2.Rows2.choice_changes_counted`, `sealed_no_incentive`) —
+while the *criteria* are sealed by anchoring at the decision (`anchored_invariant`).
+This item remains what it is for the security-score register: the architecture under
+which the mismatch term is small.
 
 ### 90. The generability certificate of the soft-weighted finite-menu constraint — **[open]** — *narrowed 2026-09-15: T3's own certificate is constructed (`LICorrigibilityCertificate.lean`); what remains is T3′'s*
 
@@ -3061,6 +3083,17 @@ each matter's disclosure regime (`dutiesOf`); materiality is anchored and cumula
 (`raisesAnchored`, `unchecked_lt`).  The floor's clauses feed the permission layer's
 structural violation set `Viol`.
 
+*2026-09-26 (BRIA-corrigibility round):* the two outstanding actions are ruled — the
+free terminal reading confirmed (`BRIACorrigibility.free_terminal_reading`), the
+cumulative budget an arrangement constant (`budget_lease_free`).  Two additions to the
+floor from the round: the criteria of legitimacy (reference, protocol, pool defaults,
+selection rules, license) and the count's machinery (the count, the drill schedule, the
+audits, her evaluation channel) are matters of `J`'s meta level held by her, so touching
+them is an unlicensed reallocation; the minimal extension is a criteria reading
+`critOf : S → Crit` beside `Jof`, since an `Entry` says who holds a matter and not its
+content.  And every reserved `Req` needs an agent-independent actuator declared, or its
+drill cannot be frozen (`freeze_obstruction`) — the same failure as `CS`'s.
+
 ### 100. The normativity-side instance of the trace interface — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -3134,6 +3167,21 @@ provability induction supplies it.  The taint event `T_a` (the segment through h
 evaluation not `Counted`) joins the shortfall event as what this item must make a
 security.
 
+*2026-09-26 (BRIA-corrigibility round):* the events are now sentences of a declared
+control model `M` in `J` about an option's declared description, so no price conditions
+on the agent's own untaken action (`BRIACorrigibility.factors_through_description`); what
+generability requires is `M`'s transition table, the cost table, the window and the
+admissibility verdict as constants of the theory and the rollout as an expressible
+feature.  **Companion filed here, not as a new item — count integrity:** the count, the
+drill schedule, the audits and her evaluation channel are one integrity surface with the
+priced events; tampering beyond what the recognizer sees raises the realized score
+(`tamper_raises`), and the design takes their integrity as a named hypothesis.  Also
+here: drill calibration (`DrillCalibrated`, `forecast_term_within`) — that with drills
+at rate `q` independent of the agent's choice the shortfall and taint prices on the
+chosen path are calibrated — is a named hypothesis whose derivation from the inductor's
+properties needs the drilled event as a security; the incident bound in `q` and the
+allowance is a conjecture.
+
 ### 102. BRIA's bids against the market: block claims as priced securities — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -3158,6 +3206,16 @@ round's auction fixtures reproduced on priced claims.
 `DecisionComponent.lean` §4; items 86, 90, 101.
 *Consumed by:* the competence layer of the decision component; item 86.
 *A solution ships:* the interface with its certificate, or the negative.
+
+*2026-09-26 (BRIA-corrigibility round):* a partial answer.  The evaluation decomposes
+as `bid − ϖ·n_known − ϖ·(p(S) + p(T))` (`BRIACorrigibility.evalOf`): the forecast part of
+a claim is already the market's — the prices — and what the hypothesis bids on is the
+*residual*, ordinary value plus violations recognizable only after the fact; settlement
+adds back the prices (`settlement_ii_consistent`).  What remains of this item is the
+residual as a security: the bid on it checked against prices, feasibility stated
+against them, and its settlement at a test as an assessed world.  The block-`0`
+feasibility of the default bidder after the rescaling is a condition on the allowance
+schedule (`default_affordable`), which any pricing restatement must carry.
 
 ## Workspace friction
 

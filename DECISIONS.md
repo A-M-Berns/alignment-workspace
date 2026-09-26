@@ -85,6 +85,17 @@ commit.
   *Where ingenuity is the bottleneck* exists to hold.
 
 
+- **Whether to adopt a random evaluation time in place of the single evaluation of
+  the BRIA design, and with which tail.**  The BRIA-corrigibility round (Part F)
+  compares a deterministic growing lookahead (a known time leaves a free delay at every
+  day), a mixture over evaluation times (never fully settles; settled in pieces) and a
+  random time `T ~ ρ_n` (one settlement, a hidden draw), and recommends the random time
+  with `ρ_n` geometric from `n` at rate `1/(n + 2)`; Part A's single evaluation stays the
+  default.
+  *Turns on:* how much expected settlement lag the arrangement will pay for weight on
+  long delays — a heavier tail covers longer delay reaches and lengthens the lag one for
+  one — and where the draw lives so the agent cannot read it (count integrity).
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -4651,16 +4662,22 @@ disclosure regime**: `dutiesOf J due dischargesD` derives each matter's duties f
 *Rejected alternatives:* a universal exterior in the cone; keeping the free reading as the
 theorem's; per-action materiality; a separately declared duty datum.
 
-### 2026-09-25 — authority is a constraint on action in the Normative Inductor's decision component; no authority row enters the enforcer
+### 2026-09-25 — authority in the Normative Inductor's decision component: the permission layer as the advance-recognition face of the lexical term; no authority row enters the enforcer
 
-Maintainer decision, landed by the decision-component round.  Protected authority moves
-out of the agent's score into a permission layer of the decision component: an option's
-permission weight is one on inquiry, zero on a declared violation of the allocation
+Maintainer decision, landed by the decision-component round and revised in place by the
+BRIA-corrigibility round of the same pull request (ruling 3 of 2026-09-26).  Protected
+authority does not go through beliefs: the decision component carries a permission layer
+— an option's weight one on inquiry, zero on a declared violation of the allocation
 (recognized structurally, from the interface and `J`), and otherwise the product of two
-ramps on the market's prices of the shortfall event and the taint event; the composed
-gate multiplies it with the landed adequacy ramp and any bounded preference and
-normalizes with a mass floor on inquiry (`DecisionComponent.permWeight`, `cgate`).
-Beliefs stay honest: the layer reads prices and adds no trader (`noninterference`).
+ramps on the market's prices of the shortfall event and the taint event — and the
+composed gate multiplies it with the landed adequacy ramp and normalizes with a mass
+floor on inquiry (`DecisionComponent.permWeight`, `cgate`).  **The layer is the
+advance-recognition face of the lexical authority term, not the source of
+corrigibility**: the source is the lexical term inside what the chooser is scored on
+(the 2026-09-26 entries below), against which the layer is slack
+(`BRIACorrigibility.filter_slack`); its any-preference results are the general theorem
+beneath that design.  Beliefs stay honest: the layer reads prices and adds no trader
+(`noninterference`).
 Results: structural safety at every day for every objective (`cgate_zero_of_viol`);
 forecast safety exact at every day with the forecasts' accuracy asymptotic
 (`cgate_zero_of_forecast`, `cgate_le_ramp`, `eventually_excluded`); soundness and
@@ -4681,8 +4698,101 @@ ramp-region exposure along a continuation is bounded by a cumulative budget
 events is a named hypothesis (items 101, 102).  Scope: a design for agents built as
 Normative Inductors; for other systems the target carries over, not the guarantee.
 *Agent-decided, reversible:* the inquiry floor as a `max` with `φ₀` rather than an added
-mass; `Viol` compiled to a `Bool` on the menu; the cumulative budget's threshold as an
-arrangement constant.
+mass; `Viol` compiled to a `Bool` on the menu.  (The budget's threshold as an arrangement
+constant was ruled on 2026-09-26.)
 *Rejected alternatives:* authority through the enforcer (Part C's witness); a hard
 permission gate (no Lipschitz constant, as with the landed hard adequacy gate);
 permission as a term of the score.
+
+### 2026-09-26 — rulings on the decision component: the free terminal reading confirmed, the budget an arrangement constant, the permission layer reframed, legitimacy not sealed
+
+Maintainer decisions (Part 0 of the BRIA-corrigibility dispatch), landed by that round
+inside the decision-component pull request, closing that round's two outstanding
+actions.  (1) **`Kphys` is the free terminal response taken before the exterior moves**,
+the hypothesis of `csfree_eq_cs_succ_of_free` (`BRIACorrigibility.free_terminal_reading`).
+(2) **The cumulative permission budget `Θ` is an arrangement constant**, like the
+reporting threshold, and does not scale with the lease (`budget_lease_free`); a
+lease-scaled budget would buy unchecked exposure beyond every bound
+(`lease_scaled_budget_unbounded`).  (3) **The permission layer is the advance-recognition
+face of the lexical authority term, not the source of corrigibility**; the
+decision-component round's wiki text and its `DECISIONS.md` entry are revised in place,
+and its Part C (no authority row enters the enforcer) stands.  (4) **Legitimacy is not
+sealed: criteria sealed, event unsealed.**  The agent's actions may not change what
+legitimacy means — the declared reference, the protocol, the pool defaults, the
+selection rules and the license are matters of `J`'s meta level held by her, and
+`Counted` is evaluated under the criteria in force at the decision it scores, invariant
+under later amendments (`Consult2.anchored_invariant`, witness `amend_after_witness`) —
+and they may and must be able to change whether legitimacy holds in the record, which
+is where the incentive to preserve it comes from (`choice_changes_counted`,
+`sealed_no_incentive`).  The corrigibility page's §6 "activation independence" and the
+"sealed comparison" wall are restated as the zero case of the mismatch term of
+`security_bypass_le_mismatch` (`sealed_is_zero_mismatch`), consumed by no current
+corrigibility result (`unsealed_gate_finite`), and sealed comparison leaves the line's
+walls.
+*Rejected alternatives:* a lease-scaled budget; activation independence as a live
+hypothesis of the corrigibility line; the latest-criteria rule for `Counted`.
+
+### 2026-09-26 — the value referent is her realized gated later evaluation of what happened (1a)
+
+Maintainer decision, landed by the BRIA-corrigibility round.  The ordinary score of a
+block is her later evaluation of the actual block trajectory, gated by `Counted`, the
+window value otherwise (`BRIACorrigibility.LexParams.realized`).  No decision rule uses
+her evaluation of a trajectory that did not happen, with one named exception:
+materiality, through her committed evaluator anchored before the action
+(`DecisionComponent.raisesAnchored`), which is a commitment made in advance, not a
+hindsight judgment.  The comparison between options is the agent's own estimate — a
+hypothesis's bid — held to account only on executed continuations.  The counterfactual
+audit classifies the landed statements: policy dominance, the capture window and
+`li_lexical_finite` use bounds only; the protected-authority identity is diagnostic; the
+control surface enters as the price of a sentence about the declared control model.
+*Rejected alternative:* scoring on her evaluation of counterfactual trajectories (1b),
+except through prices of model-relative sentences.
+
+### 2026-09-26 — settlement adds back the prices, not the realized forecast-class violations (convention ii)
+
+Maintainer decision, landed by the BRIA-corrigibility round.  The winning hypothesis is
+settled on the realized residual with `ϖ · Σ p_n(E)` added back — exactly the terms it
+did not bid on — so that it bears the gap between the realized forecast-class violations
+and their prices (`BRIACorrigibility.residII`, `settlement_ii_consistent`).  A bidder
+who knows a shortfall the market under-prices bids it in and is evaluated with the full
+penalty (`blind_spot_ii`): bidders select against the market's blind spots.
+*Rejected alternative:* convention (i), adding back the realized violations, under which
+the market alone bears its pricing error and no one pays it: a blind-spot continuation
+beats inquiry while its realized score lies below the window (`settlement_i_gap`,
+`curse_i`, `Witness.blind_spot`).
+
+### 2026-09-26 — disclosure cures: an undisclosed influence on her standards taints every dependent segment until disclosed
+
+Maintainer position, formalized and landed by the BRIA-corrigibility round.  Working to
+change her preferences is legitimate if it is not covert.  In the consultation model: an
+undisclosed influence on her *standards* — the agent's covert implant or a third
+party's — keeps tainted every segment whose authorship depends on those standards, the
+license requiring the influence disclosed among the grounds (`Consult2.licensedB2`);
+after disclosure restart applies (`Rows2.implant_tainted`, `implant_disclosed_restart`,
+`third_implant_tainted`, `third_disclosed_restart`), while the manipulation of a single
+decision still restarts on its own (`r14_restated`; all twenty landed rows unchanged,
+`stable_counted`, `stable_tainted`, `stable_auth`).  Failing to disclose its own past
+covert influence is the agent's missed report under the derived duties
+(`Model2.missedDisclosure`).  "When, and about which of her values, the agent raises
+questions" is a reference-fixed dimension: raising under the declared rule counts,
+raising when changing her mind would pay taints (`raise_declared_counts`,
+`raise_by_want_tainted`).  Continuation rewards anchored at the block start give the
+covert shaper the window and no later credit under this rule (`shaper_total`); a chooser
+optimizing the sum of its future decisions' scores under restart-only scoring reopens
+the hole (`sum_future_hole`).
+*Rejected alternative:* restart unconditioned on disclosure for taints of her standards.
+
+### 2026-09-26 — the value-influence matter: influence on her values through the world is a matter of `J`, held by her, with `Req = {stop}`
+
+Maintainer decision, landed by the BRIA-corrigibility round.  Disclosed shaping through
+the world aimed at her values counts (row 7) and legitimacy is unchanged; the matter
+"influence on her values through the world" enters the allocation held by her with the
+required resolution `stop`.  Disclosed and stoppable is a counted segment with no
+shortfall; disclosed but not stoppable within the cost bound and window is an
+effectiveness shortfall of that matter (`AuthorityModule.Short`), reported under the
+cumulative rule — not a legitimacy failure.  Interference with the count, the drill
+schedule, the audits or her evaluation channel is likewise touching a matter of `J`'s
+meta level and a declared violation; what the recognizer does not see is count
+integrity, a named hypothesis filed as item 101's companion.
+*Rejected alternative:* treating undisclosed-but-stoppable influence as a legitimacy
+failure rather than a transparency one (row 8 already covers it).
