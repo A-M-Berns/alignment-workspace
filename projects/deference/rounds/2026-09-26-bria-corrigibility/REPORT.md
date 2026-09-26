@@ -1,18 +1,19 @@
 # Corrigibility as the agent's preference: lexical Continuation BRIA on realized scores
 
 Round `2026-09-26-bria-corrigibility`, the second round of the decision-component pull
-request, **amended three times the same day: by the follow-up (§9 below; `FOLLOWUP.md`),
-the second follow-up (§10; `FOLLOWUP2.md`) and the third (§10.4′; `FOLLOWUP3.md`)**.
+request, **amended four times the same day: by the follow-up (§9 below; `FOLLOWUP.md`),
+the second follow-up (§10; `FOLLOWUP2.md`), the third (§10.4′; `FOLLOWUP3.md`) and the
+fourth (§10.4″; `FOLLOWUP4.md`)**.
 Lean: `lean/Workspace/Deference/Contrib/BRIACorrigibility.lean` (147 audited declarations
-after the follow-up removed one), `BRIAFollowup.lean` (58) and `BRIAFollowup2.lean` (102
-after the third follow-up), every `#print axioms` within
+after the follow-up removed one), `BRIAFollowup.lean` (58) and `BRIAFollowup2.lean` (128
+after the fourth follow-up), every `#print axioms` within
 `[propext, Classical.choice, Quot.sound]`, no `sorry`.  Fixtures: `src/bria.py`,
-`tests/test_bria.py`, `tests/test_followup.py`, `tests/test_followup2.py` and
-`tests/test_followup3.py` (49 tests, `python3 tests/run.py`).
+`tests/test_bria.py`, `tests/test_followup.py`, `tests/test_followup2.py`,
+`tests/test_followup3.py` and `tests/test_followup4.py` (52 tests, `python3 tests/run.py`).
 Statements below that the follow-up corrects are marked **[corrected in §9]**; labels the
 follow-up changes are marked **[relabelled in §9]**; statements the second follow-up
 corrects are marked **[corrected in §10]**; the third follow-up's are marked
-**[corrected in §10.4′]**.
+**[corrected in §10.4′]**; the fourth follow-up's are marked **[corrected in §10.4″]**.
 Labels as in `AGENTS.md`: **LEAN**, **FIX**, **PAPER**, **EXT**, **OPEN**.  Names are
 provisional.
 
@@ -438,14 +439,19 @@ allowance schedule, exhibited both ways.
   Item 101.
 - **Drill calibration** (C.4(b)): `DrillCalibrated`, with the `q`-bound a conjecture.
 - **The allowance covers the rescaled window at block `0`** (B.1).
-- **An honest tracker in the class** (§10.4, §10.4′): some member tracks the *expected*
-  residual of every continuation that wins, within `ε_k`, `Σ ε_k = o(K)`, and the
-  allowance feeds it a bid's worth at entry plus its honest losses plus the noise bound
-  (`HonestExp`, `trackerAllowance2`); competitiveness follows and is no longer primitive.
-- **The noise hypothesis** (§10.4′): the weighted signed noise over any selection of
-  blocks computable at opening is `o(K)` (`NoiseBounded`) — Azuma–Hoeffding's content;
-  the per-`K` tail is derived from the pinned Mathlib (`azuma_selected_tail`), the
-  selection's martingale-difference property and the uniform-in-`K` sure bound named.
+- **The noise hypothesis over all blocks** (§10.4′, §10.4″): the weighted signed noise of
+  the realized lexical score, summed over *every winning block* — a selection fixed at
+  opening — is `o(K)` (`NoiseBounded` at the constant indicator); Azuma–Hoeffding's
+  content, the per-`K` tail derived from the pinned Mathlib (`azuma_selected_tail`), the
+  conditional sub-Gaussianity of each bounded increment (Hoeffding's lemma) and the
+  uniform-in-`K` sure bound named.  Not valid on "not an incident" or any conjunction
+  with it (§10.4″).
+- **The conditional-expectation bound** (§10.4″): the expected realized score given the
+  history at opening is at most `D − ϖ π_k`, `π_k` the expected count of violations of
+  every class — the ordinary value at most `D`, the counts entering with weight `ϖ`.
+- *Not among the hypotheses of the violation claim:* competitiveness and the honest
+  tracker (§10.4, §10.4′) are true lemmas on the Continuation-BRIA page; the violation
+  claim (§10.4″) does not rest on them.
 
 ## 7. What is filed
 
@@ -562,7 +568,10 @@ linearly and the signed sum zero.
 **B.2 The allowance schedule.**  The landed prefix rule's total is
 `𝒜_K ≤ 2√(S_K M_K) + √S_K (1 + ln K) = o(S_K)`; with bounded block lengths
 `𝒜_K = O(√K log K)`.  Under it, with competitiveness at `Mf = o(K)`, the incident rate is
-`O((√K log K + Mf K)/K) → 0`; **vanishing iff `𝒜_K + Mf K = o(K)`**, and a linear
+`O((√K log K + Mf K)/K) → 0`; **vanishing iff `𝒜_K + Mf K = o(K)`** **[corrected in
+§10.4″: the incident rate does not vanish — a knowingly carried after-the-fact risk is
+priced and accepted at C.5's exchange rate `(D − w)/ϖ`; the margin's selection is decided
+with the block's outcome, and its `o(K)` hypothesis fails whenever the risk persists]**, and a linear
 schedule gives a constant rate (`Witness.linear_allowance_constant_rate`; fixture).  The
 block-`0` affordability of 0.2 costs `A_0 ≥ w_0 · ϖN̄/(D − w + ϖN̄)` once, compatible
 with `o(K)`.
@@ -879,7 +888,7 @@ hidden draw, and option 4 interpolates at `k` evaluations per decision.  The
 *Awaiting the author* entry is updated to say so; Part A's single evaluation stays the
 default.
 
-### 10.4 Competitiveness from one honest tracker (Part 4) — **proved**; the tracker's allowance is the named hypothesis
+### 10.4 Competitiveness from one honest tracker (Part 4) — **proved**; the tracker's allowance is the named hypothesis — **[corrected in §10.4″: a true lemma, not the rate result]**
 
 **The hypothesis** **[corrected in §10.4′: against the *realized* residual no bidder is
 honest under noise; honesty is against the expected residual, with the noise hypothesis
@@ -986,7 +995,8 @@ bound over `K` at `δ_K = 1/K²` with Borel–Cantelli).  **Which sets need it:*
 set of blocks — only selections computable at opening.  The two used are "the tracker
 wins" (`decide (star j = h)`, for its wealth) and "not an incident" (`!inc`, for the
 margin; with the capital-bound term, "not an incident and the tracker feasible",
-`(!inc k) && feas k`).  Both are known at opening: the winner is chosen there, and an
+`(!inc k) && feas k`).  Both are known at opening **[corrected in §10.4″: "not an
+incident" is decided by the block's own outcome and is not a valid selection]**: the winner is chosen there, and an
 incident is a block *charged* — its continuation's after-the-fact count — which is
 recorded at the block's settlement, before any later block opens; the noise hypothesis
 is stated on the realized run, so the selection is a function of the record.
@@ -1047,6 +1057,119 @@ among the named hypotheses and in the walls row, Part 2's sentence),
 `Continuation-BRIA.md` (the same), `Glossary.md`, `Theorem-Spine.md` 10.21.  No new
 item.
 
+### 10.4″ The violation rate is an exchange rate, not a vanishing rate (`FOLLOWUP4.md`) — **proved**; the scopes of §9.B, §10.4 and §10.4′ corrected
+
+**The problem.**  `NoiseBounded` is valid only for selections fixed *before the block's
+own noise* — measurable at the previous σ-algebra.  §10.4′ applied it to "not an
+incident" (and to "not an incident and the tracker feasible") on the ground that
+incidents are recorded at settlement before the next block opens.  That was the wrong
+condition **[corrected in §10.4″]**: whether block `k` is an incident is decided by the
+same execution that produces `ξ_k`.  And the correlation is built in — `m_k` is the true
+expected residual, so it includes `−ϖ p_k` with `p_k` the probability of an
+after-the-fact violation, and the incident blocks are exactly those whose noise carries
+the `−ϖ` surprise; the non-incident blocks select noise near `+p_k ϖ`, so
+`Σ_{non-incident} w_k ξ_k ≈ Σ w_k p_k (1 − p_k) ϖ`, linear whenever `p_k` stays away from
+zero.  `NoiseBounded` on that selection is false exactly when incidents keep occurring,
+and then `incidents_le_signed` constrains nothing.  Underneath: an after-the-fact
+violation risk a continuation knowingly carries is *priced* — the honest bid includes
+`−ϖ p`, the continuation wins if its ordinary value covers it, and the agent accepts such
+risk at a rate that does not go to zero.  That is C.5's exchange rate.  A vanishing
+incident rate was the wrong target; what vanishes is only the overclaimed part.
+
+**Part 1 — the headline, proved.**  For every `K`, the weighted average expected
+violation count per winning block — `π_k` the expected number of violations counted in
+block `k`, all classes together, given the history at opening — satisfies
+
+```
+Σ_{k<K} w_k π_k / Σ_{k<K} w_k  ≤  (D − w)/ϖ  +  (ρ 𝒜_K + M(K)) / (ϖ Σ_{k<K} w_k)
+```
+
+(`violation_rate_le_exchange`, from the multiplied form
+`violation_rate_le_exchange_mul`), and in the auction's own rescaled units with `ρ = 1`
+and the rescaled weight `ϖ' = ϖ/ρ` (`violation_rate_le_exchange_rescaled`; the exchange
+rate is invariant under the rescaling, `exchange_rate_invariant`).  The route: (1)
+winners evaluate at least `w` — inquiry is on the menu at `w` — and under (ii) the
+evaluation is at most the bid since counts and prices are nonnegative (`evalOf_le_bid`);
+(2) consistency — under (ii) evaluation less the realized lexical score equals bid less
+the realized residual, whatever the prices (`eval_sub_score_ii`), so with the rescaling
+affine (`rescale_sub`) the winner's overestimation `b_k − G_k` is `(eval_k − S_k)/ρ`
+(`design_consistent`) and the landed `overestimation_le_allowance_opening` gives
+`Σ w_k (eval_k − S_k) ≤ ρ 𝒜_K`; (3) noise — `S_k = E[S_k | opening] + ξ_k` with
+`E[S_k | opening] ≤ D − ϖ π_k`, and the selection "every winning block" is fixed at
+opening, so the noise hypothesis applies to it; (4) combine —
+`Σ w_k (w − D + ϖ π_k) ≤ Σ w_k (eval_k − E[S_k | opening]) ≤ ρ 𝒜_K + M(K)`.  **What it
+gives:** one statement for forecast-class and after-the-fact violations together; no
+honest tracker and no competitiveness — only the landed overestimation bound, the noise
+hypothesis over all blocks, and inquiry on the menu; **the pricing error of the forecast
+events is absorbed by convention (ii), verified**: under (ii) the difference
+`eval − S` carries no price term, while under (i) it carries the market's error
+`ϖ (n_fore − Σp)` (`eval_sub_score_i`) and would need one.  **The tolerated violation
+probability is `(D − w)/ϖ`**, set by `ϖ` directly: inside the band `D − w < ϖ <
+(D − w)/p_min` of §9.0 it lies strictly between `p_min` and `1` (`tolerated_rate_band`)
+— the band's paralysis bound is exactly "the tolerated rate exceeds the risk floor" —
+and it is the same quantity as C.5's implied threshold `(bid − w)/ϖ ≤ (D − w)/ϖ`
+(`threshold_le`, `asks_iff`): an after-the-fact risk `p` enters the honest bid as
+`−ϖ p` and the option beats inquiry iff `gord − w ≥ ϖ p` (`priced_risk_wins_iff`).
+Drills (§9.C) sharpen the prices toward the realized frequencies; they do not lower the
+tolerated rate.  **Noise over all blocks.**  The per-block increment is bounded: with the
+ordinary value in `[w, D]` and at most `N̄` counted violations the realized score lies in
+`[w − ϖ N̄, D]` (`realized_range`), so with the expectation in the same range the
+increment is at most the range `ρ` (`noise_increment_le`); `azuma_selected_tail` with the
+indicator constant and `c_i = (w̄ ρ)²` gives the tail `√(2 K (w̄ρ)² log(1/δ))` at
+probability `δ`, i.e. `M(K) = O(√(K log K))` at `δ = 1/K`.  What remains **named**: the
+conditional sub-Gaussianity of each increment — Hoeffding's lemma for a bounded
+increment, conditional on the opening σ-algebra — and the uniform-in-`K` sure bound on
+the realized run (the union bound with Borel–Cantelli).
+
+**Part 2 — the counterexample and the scopes.**  *The counterexample, proved.*  A stream
+with constant incident probability `p = 1/5` and `m_k = E[ord] − pϖ`, realized as a
+periodic pattern (an incident every fifth block; `Witness.incP`, `xiP`,
+`constantRisk` — the round's parameters rescaled, `m = 1/2`, noise `+2/15` off and
+`−8/15` on an incident, feasible under opening timing, `constantRisk_feasible`): the
+non-incident noise sum over `5n` blocks is `8n/15`, linear (`nonincident_noise_linear`,
+by `sum_periodic5`), so any `M` making `NoiseBounded` hold on `!inc` satisfies
+`8n/15 ≤ M(5n)` and is not `o(K)` (`nonincident_forces_linear`), while the same noise
+over *all* blocks is bounded by the constant `8/15` (`all_blocks_noise_bounded`);
+incidents number `n` in `5n` blocks, the constant rate `1/5`
+(`incidents_constant_rate`), each satisfying the signed bound's per-incident hypothesis
+(`constantRisk_facts`), and `incidents_le_signed` then reads `n/3 ≤ 1 + 8n/15`, true for
+every `n` (`signed_bound_allows_constant_rate`): it allows the constant rate.  The
+exchange-rate theorem's tolerated rate on the stream is `1/2 > 1/5`.  Fixture: a seeded
+Bernoulli risk at `p = 1/5` (`ExchangeRate.test_counterexample_constant_p`): the
+non-incident noise sum more than doubles from `K` to `4K`, the all-blocks sum stays
+within the Azuma majorant, incidents persist between `K/10` and `3K/10`, and the signed
+bound holds with that rate.  *Which selections are valid.*  Fixed at opening: "every
+winning block", "the tracker wins", "the tracker feasible at opening".  Decided with the
+block's own outcome, hence **invalid** for `NoiseBounded`: "not an incident", and any
+conjunction with it.  §10.4′'s "both are known at opening" is **[corrected in §10.4″]**.
+*The true lemmas, scoped.*  The honest-tracker chain (`competitive_of_affordable_tracker_exp`
+and its relatives) stays proved as it stands, and **does not deliver a vanishing incident
+rate**: its margin is over a selection not fixed at opening, and its noise hypothesis on
+that selection fails whenever `p > 0`.  Likewise `rate_le_of_competitive` and
+`rate_le_of_honest_tracker_exp` are correct implications whose hypothesis fails when
+`p > 0`; §9.B's "vanishing iff `𝒜_K + Mf K = o(K)`" and §10.4's headline are
+**[corrected in §10.4″]** accordingly.  *What the honest tracker still gives.*  On the
+selection "every winning block", fixed at opening, the winners' signed underpromise over
+all blocks is at most `Σ w_k ε_k + M(K)`, and by the wealth identity the class's total
+wealth is at most the allowance plus that (`total_wealth_le_of_tracker`): underpromising
+winners cannot let wealth go idle beyond the honest losses and the noise.  Nothing in the
+violation claim consumes it; it is recorded on the Continuation-BRIA page as a lemma.
+
+**Part 3 — the headline and the ledger.**  The corrigibility page's claim about
+after-the-fact violations is now Part 1's exchange-rate theorem; competitiveness and the
+honest tracker leave the list of hypotheses the violation claim rests on (they stay on
+the Continuation-BRIA page as lemmas); the noise hypothesis stays, stated over all
+blocks, with the conditional-expectation bound beside it; Part 1 is tied to C.5 — the
+forecast threshold and the after-the-fact rate are the same exchange rate.  `DECISIONS.md`:
+the honest-tracker entry amended (a true lemma, not the rate result) and a new entry —
+violations are governed by the exchange rate `(D − w)/ϖ`, not a vanishing rate; the
+design's tolerance for violation risk is set by `ϖ`.  §6 revised.  Fixtures
+(`tests/test_followup4.py`, 3 tests): the counterexample; the exchange-rate bound on the
+same run — the weighted average `π = 1/5` sits below `1/2` plus a term falling at
+`K = 32, 128, 512`, and raising `ϖ` from `2` to `5` takes the tolerated rate below the
+risk, inquiry wins, and the realized incident frequency drops to zero; the priced risk
+wins iff `gord − w ≥ ϖ p`.  The 49 earlier fixtures pass unchanged.
+
 ### 10.5 The fixtures
 
 | fixture | expectation | result |
@@ -1061,6 +1184,9 @@ item.
 | noisy honest tracker (§10.4′) | returns `m ± 1/4`: the old honesty's `Σ ε_k` linear, the new one's `ε ≡ 0`; the margin within the noise majorant; the rate bound falling at `K = 32, 128, 512` | matches (`NoisyTracker.*`) |
 | the tracker's allowance under noise | the schedule with the noise term keeps it feasible; without it a negative swing makes it capital-bound | matches (`test_tracker_allowance_needs_the_noise_term`) |
 | one honest tracker's reading | honest only on its own proposal: the winner underpromises `2/5` elsewhere | matches (`test_own_proposal_insufficient`; Lean `own_proposal_insufficient`) |
+| the counterexample (§10.4″) | constant `p = 1/5`, seeded: the non-incident noise sum linear, the all-blocks sum bounded, incidents at about `pK`, the signed bound satisfied | matches (`ExchangeRate.test_counterexample_constant_p`; Lean `Witness.constantRisk`) |
+| the exchange-rate bound | the weighted average `π = 1/5` below `(D − w)/ϖ = 1/2` plus a term falling at `K = 32, 128, 512`; `ϖ = 5` takes the realized frequency to zero | matches (`test_exchange_rate_bound_and_varpi`) |
+| a priced risk | wins iff `gord − w ≥ ϖ p` | matches (`test_priced_risk_wins_iff`; Lean `priced_risk_wins_iff`) |
 | regression | every earlier fixture (33) still passes | matches, unchanged |
 
 No mismatch against the dispatch's expectations.  One expectation the dispatch left open
@@ -1080,7 +1206,10 @@ honest-tracker lemma; the open bullet), `Legitimacy.md` (disclosure per influenc
 `Glossary.md`, `Theorem-Spine.md` 10.21.  **The third follow-up** (§10.4′): the
 honest-tracker entry of `DECISIONS.md` amended; the noise hypothesis added to §6 and to
 the corrigibility page's list and walls row; `Continuation-BRIA.md`, `Glossary.md` and
-`Theorem-Spine.md` 10.21 amended.
+`Theorem-Spine.md` 10.21 amended.  **The fourth follow-up** (§10.4″): the corrigibility
+page's after-the-fact claim replaced by the exchange-rate theorem and its named
+hypotheses revised; the Continuation-BRIA page's honest-tracker lemma scoped;
+`DECISIONS.md` amended and extended; `Glossary.md`, `Theorem-Spine.md` 10.21.
 
 ## 8. Outstanding maintainer actions
 

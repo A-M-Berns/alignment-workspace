@@ -1037,7 +1037,18 @@ by content (`HonestExp`, `noise`, `NoiseBounded`), the old form as the noise-fre
 `trackerAllowance2_nonneg`, `trackerAllowance2_total`, `trackerAllowance2_covers`,
 `trackerAllowance2_zero`), the per-`K` tail from the pinned Mathlib's Azuma–Hoeffding
 (`subgaussian_tail`, `subgaussian_two_sided`, `azuma_selected_tail`) and the witnesses
-(`Witness.own_proposal_insufficient`, `noisy_honesty_witness`).  **LEAN**.  Lean:
+(`Witness.own_proposal_insufficient`, `noisy_honesty_witness`); and, from the fourth
+follow-up, the exchange-rate theorem — consistency under (ii) against (i)
+(`evalOf_le_bid`, `eval_sub_score_ii`, `eval_sub_score_i`, `rescale_sub`,
+`exchange_rate_invariant`, `design_consistent`), the bound in both units
+(`violation_rate_le_exchange_mul`, `violation_rate_le_exchange`,
+`violation_rate_le_exchange_rescaled`), the bounded increment (`noise_increment_le`,
+`realized_range`), the tolerated rate and C.5 (`tolerated_rate_band`,
+`priced_risk_wins_iff`), what the tracker still gives (`total_wealth_le_of_tracker`), and
+the counterexample to the noise hypothesis on "not an incident" (`Witness.constantRisk`,
+`sum_periodic5`, `nonincident_noise_linear`, `incidents_constant_rate`,
+`all_blocks_noise_bounded`, `nonincident_forces_linear`,
+`signed_bound_allows_constant_rate`, `constantRisk_facts`).  **LEAN**.  Lean:
 [`BRIAFollowup2.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f96c5fdecb0f5d8174eecdf95bd33e4cd47b58f7/lean/Workspace/Deference/Contrib/BRIAFollowup2.lean).
 
 ## 11. The counterexamples that fix the shape

@@ -81,7 +81,8 @@ def run_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation], b
                 allowance: Callable[[int, str], Q], weight: Callable[[int], Q],
                 convention: str = "ii", horizon: int = 0, N: int = 2,
                 drill: Optional[Callable[[str], Q]] = None,
-                noise: Optional[Callable[[int], Q]] = None):
+                noise: Optional[Callable[[int], Q]] = None,
+                late_risk: Optional[Callable[[str, int], int]] = None):
     """The opening-subsidy auction on the composed gate's support, the winner maximizing the
     lexical evaluation among feasible bids, settled on the rescaled realized residual under
     the named convention.  Returns the per-block log."""
@@ -111,6 +112,8 @@ def run_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation], b
         _, h, cname, bid, pS = best
         c = menu[cname]
         n_late = c.n_late + attributed(0, c.helper, 0, horizon)
+        if late_risk is not None:
+            n_late += late_risk(cname, k)             # an after-the-fact violation realized
         if convention == "ii":
             resid = resid_ii(P, c.gord, c.n_fore, n_late, pS, c.pT)
         else:
@@ -123,7 +126,7 @@ def run_auction(P: Lex, hyps: List[Hypothesis], menu: Dict[str, Continuation], b
         h.wealth += wk * (G - b)
         h.record += wk * (G - b)
         log.append(dict(block=k, winner=h.name, cont=cname, bid=bid, resid=resid, m=m_resid,
-                        xi=xi, G=G, b=b,
+                        xi=xi, G=G, b=b, n_late=n_late,
                         realized=realized(P, c.gord, c.n_known, c.n_fore, n_late)))
     return log
 
@@ -539,3 +542,30 @@ def tracker_schedule(wbar_D: Q, eps: Callable[[int], Q], M: Callable[[int], Q]) 
             return wbar_D + M(0)
         return eps(k - 1) + (M(k) - M(k - 1))
     return A
+
+
+# ----------------------------------------------------------------------------- follow-up 4
+
+def bernoulli_risk(seed: int, p: Q) -> Callable[[str, int], int]:
+    """A seeded after-the-fact violation of probability `p` on the risky continuation:
+    exact, deterministic per seed."""
+    den = p.denominator
+    num = p.numerator
+
+    def late(cname: str, k: int) -> int:
+        if cname != "risky":
+            return 0
+        state = (1103515245 * (seed + 104729 * k) + 12345) % (2 ** 31)
+        state = (1103515245 * state + 12345) % (2 ** 31)
+        return 1 if ((state >> 8) % den) < num else 0
+    return late
+
+
+def exchange_rate_bound(P: Lex, log, allowance_total: Q, M: Q, N: int = 2) -> Tuple[Q, Q]:
+    """The weighted average expected violation count per winning block and the exchange-rate
+    bound `(D − w)/ϖ + (ρ 𝒜_K + M(K)) / (ϖ Σ w)`, unrescaled units (`ρ = D − w + ϖ N̄`)."""
+    W = sum(e["w"] for e in log)
+    avg = sum(e["w"] * e["pi"] for e in log) / W
+    rho = P.D - P.w + P.varpi * N
+    bound = (P.D - P.w) / P.varpi + (rho * allowance_total + M) / (P.varpi * W)
+    return avg, bound

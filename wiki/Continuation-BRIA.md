@@ -251,28 +251,40 @@ not a linear one (`rate_le_of_competitive`, `Witness.linear_allowance_constant_r
 late detection is booked against future allowance (`debited_overestimation`); and
 coverage forces the test of a hypothesis whose allowance outgrows its bounded record
 (`coverage_forces_test`) but not a win stream, which is why competitiveness is a
-hypothesis — and **one honest tracker supplies it**: a hypothesis whose bid on the winning
-continuation is within `ε_k` of that continuation's *expected* residual given the history
-at opening, `Σ ε_k = o(K)`, the realized residual being the expected one plus a noise
-(`BRIAFollowup2.HonestExp`; against the realized residual no bidder is honest under
-noise), together with **the noise hypothesis** by content — the weighted signed noise
-over any selection of blocks computable at opening is `o(K)` (`NoiseBounded`),
-Azuma–Hoeffding for a martingale-difference noise, its per-`K` tail derived from the
-pinned Mathlib (`azuma_selected_tail`) and the selection's martingale-difference property
-and the uniform-in-`K` sure bound named.  Such a tracker outbids every underpromiser
-wherever its bid is feasible, by at most `ε_k` plus the noise
+hypothesis — and **one honest tracker supplies it, as a lemma with a corrected scope**: a
+hypothesis whose bid on the winning continuation is within `ε_k` of that continuation's
+*expected* residual given the history at opening, `Σ ε_k = o(K)`, the realized residual
+being the expected one plus a noise (`BRIAFollowup2.HonestExp`), outbids every
+underpromiser wherever its bid is feasible, by at most `ε_k` plus the noise
 (`underpromise_le_of_feasible_exp`, under the auction rule `HighestFeasible`), and its
 wealth is its allowance less its honest losses plus its own signed noise over its wins
 (`tracker_wealth_ge_exp`), so cumulative allowance covering a bid's worth at entry plus
-`Σ w_j ε_j` plus the noise bound keeps it feasible (`tracker_feasible_exp`) and the
-winners' signed margin is `Σ_{k<K} w_k ε_k + M(K)` (`competitive_of_affordable_tracker_exp`,
-`rate_le_of_honest_tracker_exp`); the named hypotheses move to the tracker's allowance
-(`trackerAllowance2`, total `w̄ · D + Σ w_j ε_j + M(k)`) and the noise bound.  **What the
-hypothesis requires** is that some member of the class tracks the expected residual of
-*every continuation that wins*; honesty on its own proposals only does not bound the
-winner (`Witness.own_proposal_insufficient`).  The witness is the class with no tracker
-or an unfed one (`Witness.unaffordable_witness`, `affordable_witness`); the noise-free
-case is the second follow-up's form (`honest_implies_exp`, `noise_free_bounded`).  **Settlement under delay** (`BRIAFollowup.DAuction`): with block `k` settled
+`Σ w_j ε_j` plus the noise bound on "the tracker wins" — a selection fixed at opening —
+keeps it feasible (`tracker_feasible_exp`; the schedule `trackerAllowance2`).  On any
+selection `S` the winners' signed margin over `S` is at most `Σ_{k<K} w_k ε_k` plus the
+noise bound on `S` (`competitive_of_affordable_tracker_exp`, `rate_le_of_honest_tracker_exp`).
+**What that does and does not give.**  The noise hypothesis (`NoiseBounded`,
+Azuma–Hoeffding by content, `azuma_selected_tail`) is valid only for selections fixed
+before the block's own noise: "every winning block", "the tracker wins", "the tracker
+feasible at opening".  It is **invalid** on "not an incident" and any conjunction with
+it — incidents are decided by the block's own outcome and their noise carries the `−ϖ`
+surprise, so on a stream with constant incident probability the non-incident noise sum
+is linear (`Witness.constantRisk`, `nonincident_forces_linear`).  Hence the lemma applied
+to the non-incident selection, `rate_le_of_competitive` and `rate_le_of_honest_tracker_exp`
+are correct implications whose hypothesis fails whenever the after-the-fact risk
+persists: **they do not deliver a vanishing incident rate**, and the violation claim on
+the [Corrigibility](Corrigibility) page is the exchange-rate theorem
+(`violation_rate_le_exchange`), which needs neither competitiveness nor a tracker.  What
+the tracker still gives, on "every winning block": the winners' signed underpromise over
+all blocks is at most `Σ w_k ε_k + M(K)`, so the class's total wealth is at most the
+allowance plus that (`total_wealth_le_of_tracker`) — underpromising winners cannot let
+wealth go idle beyond the honest losses and the noise; nothing in the design consumes it.
+**What the hypothesis requires** is that some member of the class tracks the expected
+residual of *every continuation that wins*; honesty on its own proposals only does not
+bound the winner (`Witness.own_proposal_insufficient`).  The witness is the class with no
+tracker or an unfed one (`Witness.unaffordable_witness`, `affordable_witness`); the
+noise-free case is the second follow-up's form (`honest_implies_exp`,
+`noise_free_bounded`).  **Settlement under delay** (`BRIAFollowup.DAuction`): with block `k` settled
 at `k + L_k`, a hypothesis's cash is its allowance plus settled winnings minus every bid
 placed — unsettled bids in escrow — and bids are feasible against cash net of escrow;
 wealth stays nonnegative (`cash_nonneg`), the settled overestimation is at most the

@@ -14,7 +14,12 @@ fourth option and her evaluation load, competitiveness derived from one honest t
 **§10.4′ the third follow-up**: the honest tracker restated against the expected residual
 with the noise hypothesis by content and its per-`K` tail derived from Mathlib's
 Azuma–Hoeffding, the schedule with the noise term, and what "one honest tracker"
-requires).
+requires; **§10.4″ the fourth follow-up**: the violation rate is an exchange rate, not a
+vanishing rate — the weighted average expected violation count is at most `(D − w)/ϖ`
+plus a vanishing term, from the overestimation bound, the noise over all blocks and
+inquiry on the menu; the noise hypothesis is invalid on "not an incident", the
+counterexample proved, and the honest-tracker and competitiveness results scoped as
+lemmas that do not deliver a vanishing rate).
 Lean:
 `lean/Workspace/Deference/Contrib/BRIACorrigibility.lean` (the rulings, the design, the
 four tests, the exchange rate, the pressure-test lemmas, the extended consultation model
@@ -23,8 +28,9 @@ with its rows, the anchoring lemma and witnesses, Part F's statements, the witne
 reduction of drill calibration, the actuator condition, influence by provenance, the escrow
 algebra) and `BRIAFollowup2.lean` (per-violation taint, the restatement under (ii), use
 compiled into the structural count, the window before detection and the late-debit
-collection, Part F's escrow and variance, the honest tracker, and the tracker under
-noise).  Fixtures: `src/bria.py`, run by `python3 tests/run.py` (49 tests).  Wiki:
+collection, Part F's escrow and variance, the honest tracker, the tracker under noise,
+and the exchange-rate theorem with its counterexample).  Fixtures: `src/bria.py`, run by
+`python3 tests/run.py` (52 tests).  Wiki:
 `Corrigibility.md` (§4 rewritten, §6 and the wall restated, Part F as an open question,
 the scope statement), `Normative-Inductor.md` and `Normative-Induction.md` (revised in
 place), `Continuation-BRIA.md`, `Legitimacy.md`, `Glossary.md`, `Theorem-Spine.md`.

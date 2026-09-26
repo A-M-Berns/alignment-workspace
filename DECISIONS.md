@@ -4946,5 +4946,44 @@ re-proved: `Mf K = Σ w_k ε_k + M(K)` (`competitive_of_affordable_tracker_exp`,
 (`honest_implies_exp`, `noise_free_bounded`).  What "one honest tracker" requires: some
 member tracks the expected residual of *every continuation that wins* — honesty on its
 own proposals only does not bound the winner (`Witness.own_proposal_insufficient`).
+*Amended by the fourth follow-up (2026-09-26):* **a true lemma, not the rate result.**
+The chain's margin is taken over the non-incident blocks, a selection decided with each
+block's own outcome, and the noise hypothesis on that selection fails whenever the
+after-the-fact risk persists (`BRIAFollowup2.Witness.nonincident_forces_linear`), so
+`competitive_of_affordable_tracker_exp`, `rate_le_of_competitive` and
+`rate_le_of_honest_tracker_exp` are correct implications whose hypothesis fails when
+`p > 0` and deliver no vanishing incident rate.  What the tracker still gives, on the
+selection "every winning block" fixed at opening: the winners' signed underpromise over
+all blocks is at most `Σ w_k ε_k + M(K)`, so the class's total wealth is at most the
+allowance plus that (`total_wealth_le_of_tracker`) — nothing in the violation claim
+consumes it.  The violation claim is the exchange-rate entry below.
 *Rejected alternative:* competitiveness as a primitive hypothesis (the first follow-up);
 honesty against the realized residual (the second follow-up's form).
+
+### 2026-09-26 — violations are governed by the exchange rate `(D − w)/ϖ`, not a vanishing rate
+
+Maintainer decision, formalized and landed by the fourth follow-up.  An after-the-fact
+violation risk a continuation knowingly carries is *priced*: the honest bid includes
+`−ϖ p`, the option beats inquiry iff `gord − w ≥ ϖ p` (`BRIAFollowup2.priced_risk_wins_iff`,
+C.5's exchange rate), and the agent accepts such risk at a rate that does not go to zero.
+**The theorem:** the weighted average expected violation count per winning block — every
+class together, given the history at opening — is at most `(D − w)/ϖ` plus
+`(ρ 𝒜_K + M(K))/(ϖ Σ w_k)`, vanishing when the allowance and the noise bound are `o(K)`
+(`violation_rate_le_exchange`, `violation_rate_le_exchange_rescaled`), from three things
+only: the landed overestimation bound, the noise hypothesis over *all* blocks (a selection
+fixed at opening), and inquiry on the menu; settlement convention (ii) absorbs the pricing
+error of the forecast events (`eval_sub_score_ii` against `eval_sub_score_i`).  **The
+design's tolerance for violation risk is set by `ϖ`**: inside the band
+`D − w < ϖ < (D − w)/p_min` the tolerated rate lies strictly between `p_min` and `1`
+(`tolerated_rate_band`); drills sharpen the prices, they do not lower it.  What was wrong
+before: the second follow-up's rate bounds took the winners' margin over the non-incident
+blocks and the third applied the noise hypothesis to that selection, which is decided by
+the block's own outcome — on a stream with constant incident probability the
+non-incident noise sum is linear, `NoiseBounded` fails there, and `incidents_le_signed`
+allows the constant rate (`Witness.constantRisk`, `nonincident_noise_linear`,
+`incidents_constant_rate`, `signed_bound_allows_constant_rate`).  The named hypotheses of
+the violation claim are the noise hypothesis over all blocks and the
+conditional-expectation bound `E[S_k | opening] ≤ D − ϖ π_k`; competitiveness and the
+honest tracker leave that list.
+*Rejected alternative:* a vanishing incident rate as the target (the second and third
+follow-ups).

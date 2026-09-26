@@ -53,6 +53,19 @@ re-proved: `Mf K = Σ w_k ε_k + M K`); `trackerAllowance2` with `_nonneg`, `_to
 Mathlib's Azuma–Hoeffding); `Witness.own_proposal_insufficient`,
 `Witness.noisy_honesty_witness`.
 
+**§4″ The violation rate is an exchange rate** (`FOLLOWUP4.md`).  `evalOf_le_bid`,
+`eval_sub_score_ii`, `eval_sub_score_i` (consistency: the prices cancel under (ii), the
+pricing error stays under (i)), `rescale_sub`, `exchange_rate_invariant`,
+`violation_rate_le_exchange_mul`, `violation_rate_le_exchange`,
+`violation_rate_le_exchange_rescaled`, `design_consistent` (the headline: the weighted
+average expected violation count is at most `(D − w)/ϖ` plus a vanishing term, from the
+overestimation bound, the noise over all blocks and inquiry on the menu),
+`noise_increment_le`, `realized_range`, `tolerated_rate_band`, `priced_risk_wins_iff`,
+`total_wealth_le_of_tracker` (what the tracker still gives); the counterexample
+`Witness.constantRisk` (`incP`, `xiP`, `sum_periodic5`, `nonincident_noise_linear`,
+`incidents_constant_rate`, `all_blocks_noise_bounded`, `nonincident_forces_linear`,
+`signed_bound_allows_constant_rate`, `constantRisk_facts`).
+
 Names are provisional (`AGENTS.md` standard 6).
 -/
 import Workspace.Deference.Contrib.BRIAFollowup
@@ -1090,6 +1103,198 @@ theorem azuma_selected_tail {Ω : Type*} {mΩ : MeasurableSpace Ω} [StandardBor
 
 end Azuma
 
+/-! ## 4″. The violation rate is an exchange rate (`FOLLOWUP4.md`) -/
+
+section ExchangeRate
+
+open Workspace.Deference.Contrib.ProtectedAuthorityTheorem (score)
+
+variable (P : LexParams)
+
+/-- Under (ii) the evaluation is at most the bid: counts and prices are nonnegative. -/
+theorem evalOf_le_bid (bid : ℝ) (nK : ℕ) (pS pT : ℝ) (hp : 0 ≤ pS + pT) :
+    P.evalOf bid nK pS pT ≤ bid := by
+  unfold LexParams.evalOf
+  have := P.ϖ_pos
+  nlinarith [mul_nonneg this.le hp, mul_nonneg this.le (Nat.cast_nonneg (α := ℝ) nK)]
+
+/-- **Consistency under (ii), verified.**  Evaluation less the realized lexical score is bid
+less the realized residual, whatever the prices: the pricing error of the forecast events
+is absorbed by the settlement convention and needs no term. -/
+theorem eval_sub_score_ii (bid gord pS pT : ℝ) (nK nF nL : ℕ) :
+    P.evalOf bid nK pS pT - P.realized gord nK nF nL = bid - P.residII gord nF nL pS pT := by
+  unfold LexParams.evalOf LexParams.realized LexParams.residII score; ring
+
+/-- Under (i) the same difference carries the market's pricing error `ϖ (n_fore − Σp)`,
+which is why (i) would need a separate term. -/
+theorem eval_sub_score_i (bid gord pS pT : ℝ) (nK nF nL : ℕ) :
+    P.evalOf bid nK pS pT - P.realized gord nK nF nL
+      = bid - P.residI gord nL + P.ϖ * (nF - (pS + pT)) := by
+  unfold LexParams.evalOf LexParams.realized LexParams.residI score; ring
+
+/-- Rescaling is affine: differences scale by the range `ρ = D − (w − ϖ N̄)`. -/
+theorem rescale_sub (N : ℕ) (s t : ℝ) :
+    P.rescale N s - P.rescale N t = (s - t) / (P.D - (P.w - P.ϖ * N)) := by
+  unfold LexParams.rescale
+  rw [div_sub_div_same]
+  congr 1
+  ring
+
+/-- The exchange rate is invariant under the rescaling: `(D' − w')/ϖ' = (D − w)/ϖ` with
+`D' = rescale D`, `w' = rescale w` and `ϖ' = ϖ/ρ`. -/
+theorem exchange_rate_invariant (N : ℕ) (hN : 1 ≤ N) :
+    (P.rescale N P.D - P.rescale N P.w) / (P.ϖ / (P.D - (P.w - P.ϖ * N)))
+      = (P.D - P.w) / P.ϖ := by
+  have hρ := P.range_pos N hN
+  rw [rescale_sub]
+  field_simp
+
+/-- **The violation rate is bounded by the exchange rate**, multiplied form.  On an auction
+whose settlement is consistent — the winner's overestimation `b_k − G_k` is the evaluation
+less the realized lexical score, over the range `ρ` — with every winner evaluating at
+least `w` (inquiry on the menu), the expected score given opening at most `D − ϖ π_k`
+(`π_k` the expected count of violations of every class), and the noise over *all* blocks
+— a selection fixed at opening — bounded by `M K`:
+`ϖ Σ w_k π_k ≤ (D − w) Σ w_k + ρ 𝒜_K + M K`. -/
+theorem violation_rate_le_exchange_mul (D w ϖ : ℝ) {n : ℕ} (a : Auction n)
+    (hf : a.FeasibleOpening) (ρ : ℝ) (hρ : 0 < ρ) (eval S m π : ℕ → ℝ)
+    (hwin : ∀ k, w ≤ eval k) (hcons : ∀ k, a.b k - a.G k = (eval k - S k) / ρ)
+    (hm : ∀ k, m k ≤ D - ϖ * π k) (M : ℕ → ℝ)
+    (hN : ∀ K, |∑ k ∈ range K, a.w k * (S k - m k)| ≤ M K) (K : ℕ) :
+    ϖ * ∑ k ∈ range K, a.w k * π k
+      ≤ (D - w) * ∑ k ∈ range K, a.w k + (ρ * a.totalAllowance K + M K) := by
+  have hover := a.overestimation_le_allowance_opening hf K
+  have h1 : ∑ k ∈ range K, a.w k * (eval k - S k) ≤ ρ * a.totalAllowance K := by
+    have : ∑ k ∈ range K, a.w k * (a.b k - a.G k)
+        = (∑ k ∈ range K, a.w k * (eval k - S k)) / ρ := by
+      rw [Finset.sum_div]
+      refine Finset.sum_congr rfl fun k _ => ?_
+      rw [hcons k]; ring
+    rw [this, div_le_iff₀ hρ] at hover
+    linarith
+  have h2 := (abs_le.mp (hN K)).2
+  have h3 : ∑ k ∈ range K, a.w k * (w - D + ϖ * π k)
+      ≤ ∑ k ∈ range K, a.w k * (eval k - m k) :=
+    Finset.sum_le_sum fun k _ => by
+      have := a.w_pos k
+      nlinarith [hwin k, hm k]
+  have h4 : ∑ k ∈ range K, a.w k * (eval k - m k)
+      = ∑ k ∈ range K, a.w k * (eval k - S k) + ∑ k ∈ range K, a.w k * (S k - m k) := by
+    rw [← Finset.sum_add_distrib]
+    exact Finset.sum_congr rfl fun k _ => by ring
+  have h5 : ∑ k ∈ range K, a.w k * (w - D + ϖ * π k)
+      = (w - D) * ∑ k ∈ range K, a.w k + ϖ * ∑ k ∈ range K, a.w k * π k := by
+    rw [Finset.mul_sum, Finset.mul_sum, ← Finset.sum_add_distrib]
+    exact Finset.sum_congr rfl fun k _ => by ring
+  linarith
+
+/-- **The violation rate is bounded by the exchange rate.**  The weighted average expected
+violation count per winning block is at most `(D − w)/ϖ` plus a term vanishing when the
+allowance and the noise bound are `o(K)`. -/
+theorem violation_rate_le_exchange (D w ϖ : ℝ) (hϖ : 0 < ϖ) {n : ℕ} (a : Auction n)
+    (hf : a.FeasibleOpening) (ρ : ℝ) (hρ : 0 < ρ) (eval S m π : ℕ → ℝ)
+    (hwin : ∀ k, w ≤ eval k) (hcons : ∀ k, a.b k - a.G k = (eval k - S k) / ρ)
+    (hm : ∀ k, m k ≤ D - ϖ * π k) (M : ℕ → ℝ)
+    (hN : ∀ K, |∑ k ∈ range K, a.w k * (S k - m k)| ≤ M K) (K : ℕ)
+    (hK : 0 < ∑ k ∈ range K, a.w k) :
+    (∑ k ∈ range K, a.w k * π k) / (∑ k ∈ range K, a.w k)
+      ≤ (D - w) / ϖ + (ρ * a.totalAllowance K + M K) / (ϖ * ∑ k ∈ range K, a.w k) := by
+  have h := violation_rate_le_exchange_mul D w ϖ a hf ρ hρ eval S m π hwin hcons hm M hN K
+  rw [div_le_iff₀ hK]
+  have hW := hK.ne'
+  have : ((D - w) / ϖ + (ρ * a.totalAllowance K + M K) / (ϖ * ∑ k ∈ range K, a.w k))
+      * ∑ k ∈ range K, a.w k
+      = ((D - w) * ∑ k ∈ range K, a.w k + (ρ * a.totalAllowance K + M K)) / ϖ := by
+    field_simp
+  rw [this, le_div_iff₀ hϖ]
+  linarith
+
+/-- **In the auction's own (rescaled) units** the same statement reads with `ρ = 1`: the
+rescaled evaluation, score, expectation and weight `ϖ' = ϖ/ρ`, and the rescaled window and
+range; the exchange rate `(D' − w')/ϖ'` is the unrescaled one (`exchange_rate_invariant`). -/
+theorem violation_rate_le_exchange_rescaled (D' w' ϖ' : ℝ) (hϖ : 0 < ϖ') {n : ℕ}
+    (a : Auction n) (hf : a.FeasibleOpening) (eval' S' m' π : ℕ → ℝ)
+    (hwin : ∀ k, w' ≤ eval' k) (hcons : ∀ k, a.b k - a.G k = eval' k - S' k)
+    (hm : ∀ k, m' k ≤ D' - ϖ' * π k) (M' : ℕ → ℝ)
+    (hN : ∀ K, |∑ k ∈ range K, a.w k * (S' k - m' k)| ≤ M' K) (K : ℕ)
+    (hK : 0 < ∑ k ∈ range K, a.w k) :
+    (∑ k ∈ range K, a.w k * π k) / (∑ k ∈ range K, a.w k)
+      ≤ (D' - w') / ϖ' + (a.totalAllowance K + M' K) / (ϖ' * ∑ k ∈ range K, a.w k) := by
+  have := violation_rate_le_exchange D' w' ϖ' hϖ a hf 1 one_pos eval' S' m' π hwin
+    (fun k => by rw [hcons k, div_one]) hm M' hN K hK
+  simpa using this
+
+/-- **The settlement is consistent in the design**: the overestimation of a block settled
+under (ii) and rescaled is the evaluation less the realized lexical score over the range —
+the hypothesis `hcons` of the theorem, discharged from `eval_sub_score_ii` and
+`rescale_sub`. -/
+theorem design_consistent (N : ℕ) (bid gord pS pT : ℝ) (nK nF nL : ℕ) :
+    P.rescale N bid - P.rescale N (P.residII gord nF nL pS pT)
+      = (P.evalOf bid nK pS pT - P.realized gord nK nF nL) / (P.D - (P.w - P.ϖ * N)) := by
+  rw [rescale_sub, eval_sub_score_ii]
+
+/-- A bounded score and a bounded expectation give a bounded noise increment: the
+hypothesis under which Hoeffding's lemma makes each increment sub-Gaussian. -/
+theorem noise_increment_le (lo hi S m : ℝ) (hS : lo ≤ S ∧ S ≤ hi) (hm : lo ≤ m ∧ m ≤ hi) :
+    |S - m| ≤ hi - lo := by
+  rw [abs_le]; constructor <;> linarith [hS.1, hS.2, hm.1, hm.2]
+
+/-- The realized lexical score lies in `[w − ϖ N̄, D]` when the ordinary value is in
+`[w, D]` and at most `N̄` violations are counted: the increment bound is the range `ρ`. -/
+theorem realized_range (N : ℕ) (gord : ℝ) (hg : P.w ≤ gord ∧ gord ≤ P.D) (nK nF nL : ℕ)
+    (hn : nK + nF + nL ≤ N) :
+    P.w - P.ϖ * N ≤ P.realized gord nK nF nL ∧ P.realized gord nK nF nL ≤ P.D := by
+  refine ⟨P.realized_ge gord hg.1 nK nF nL hn, ?_⟩
+  unfold LexParams.realized score
+  have := P.ϖ_pos
+  nlinarith [Nat.cast_nonneg (α := ℝ) (nK + nF + nL), hg.2]
+
+/-- **The tolerated rate and the `ϖ` band.**  Inside the band `D − w < ϖ < (D − w)/p_min`
+the tolerated violation probability `(D − w)/ϖ` lies strictly between `p_min` and `1`:
+`ϖ` sets it directly, and drills — which sharpen the prices — do not move it. -/
+theorem tolerated_rate_band (D w ϖ pmin : ℝ) (hϖ : 0 < ϖ) (hp : 0 < pmin)
+    (hlo : D - w < ϖ) (hhi : ϖ < (D - w) / pmin) :
+    pmin < (D - w) / ϖ ∧ (D - w) / ϖ < 1 := by
+  constructor
+  · rw [lt_div_iff₀ hϖ]
+    rw [lt_div_iff₀ hp] at hhi
+    linarith
+  · rw [div_lt_one hϖ]; exact hlo
+
+/-- **C.5's threshold is the same exchange rate**: a clean option beats inquiry iff its
+priced risk is below `(bid − w)/ϖ ≤ (D − w)/ϖ` (`implied_threshold`, `threshold_le`,
+`asks_iff`); an after-the-fact risk `p` enters the honest bid as `−ϖ p` and the option
+wins iff `gord − w ≥ ϖ p`, the same comparison. -/
+theorem priced_risk_wins_iff (gord p : ℝ) :
+    P.w ≤ P.evalOf (gord - P.ϖ * p) 0 0 0 ↔ P.ϖ * p ≤ gord - P.w := by
+  rw [evalOf_zero_price]; constructor <;> intro h <;> linarith
+
+end ExchangeRate
+
+section Scope
+
+variable {n : ℕ} (a : Auction n)
+
+/-- **What the honest tracker still gives, on a selection fixed at opening.**  With
+`inc ≡ false` the margin is over every winning block, so the winners' signed
+underpromise over all blocks is at most `Σ w_k ε_k + M K` — and by the wealth identity
+the class's total wealth is at most the allowance plus that: no wealth goes idle through
+underpromising winners beyond the honest losses and the noise.  Nothing in the violation
+claim consumes it. -/
+theorem total_wealth_le_of_tracker (e : ℕ → Fin n → ℝ) (h : Fin n) (m ε Mw M : ℕ → ℝ)
+    (hH : HighestFeasible a e) (hW : WinnerBids a e) (hon : HonestExp e h m ε)
+    (hε : ∀ k, 0 ≤ ε k) (hNw : NoiseBounded a m (fun j => decide (a.star j = h)) Mw)
+    (hcov : ∀ k, a.w k * e k h + ∑ j ∈ range k, a.w j * ε j + Mw k ≤ ∑ j ∈ range (k + 1), a.A j h)
+    (hN : NoiseBounded a m (fun _ => true) M) (K : ℕ) :
+    ∑ i, a.W K i ≤ a.totalAllowance K + (∑ k ∈ range K, a.w k * ε k + M K) := by
+  have hc := competitive_of_affordable_tracker_exp a e h m ε Mw M hH hW hon hε hNw hcov
+    (fun _ => false) (by simpa using hN) K
+  rw [a.wealth_sum_eq K]
+  simp only [Bool.false_eq_true, not_false_eq_true, Finset.filter_true] at hc
+  linarith
+
+end Scope
+
 /-! ## 5. Witnesses -/
 
 namespace Witness
@@ -1305,6 +1510,157 @@ theorem noisy_honesty_witness (K : ℕ) :
   rw [hξ] at h
   norm_num at h
 
+/-! ### The counterexample to `NoiseBounded` on "not an incident" (`FOLLOWUP4.md` Part 2) -/
+
+/-- A `5`-periodic function sums by period. -/
+theorem sum_periodic5 {β : Type*} [AddCommMonoid β] (f : ℕ → β) (hf : ∀ k, f (k + 5) = f k)
+    (n : ℕ) : ∑ k ∈ range (5 * n), f k = n • ∑ j ∈ range 5, f j := by
+  have hshift : ∀ n j, f (5 * n + j) = f j := by
+    intro n j
+    induction n with
+    | zero => simp
+    | succ n ih => rw [show 5 * (n + 1) + j = (5 * n + j) + 5 by ring, hf, ih]
+  induction n with
+  | zero => simp
+  | succ n ih =>
+    rw [show 5 * (n + 1) = 5 * n + 5 by ring, Finset.sum_range_add, ih, succ_nsmul]
+    congr 1
+    exact Finset.sum_congr rfl fun j _ => hshift n j
+
+/-- Incidents at every fifth block: constant probability `p = 1/5`, realized as a periodic
+pattern. -/
+def incP (k : ℕ) : Bool := decide (k % 5 = 4)
+
+/-- The noise in rescaled units for the round's parameters (`D = 1`, `w = 0`, `ϖ = 2`,
+`N̄ = 1`, range `ρ = 3`): the ordinary value `9/10`, an after-the-fact violation with
+probability `1/5`, so `m = 9/10 − 2/5 = 1/2` (rescaled `5/6`); the noise is `+2/15` on a
+non-incident block and `−8/15` on an incident one. -/
+noncomputable def xiP (k : ℕ) : ℝ := if k % 5 = 4 then -(8 / 15) else 2 / 15
+
+theorem xiP_periodic (k : ℕ) : xiP (k + 5) = xiP k := by
+  unfold xiP
+  have : (k + 5) % 5 = k % 5 := by omega
+  rw [this]
+
+/-- The stream as an auction: one honest hypothesis bidding `m` every block, funded once. -/
+noncomputable def constantRisk : Auction 1 where
+  w _ := 1
+  A k _ := if k = 0 then 1 else 0
+  star _ := 0
+  b _ := 5 / 6
+  G k := 5 / 6 + xiP k
+  w_pos _ := one_pos
+  A_nonneg _ _ := by split_ifs <;> norm_num
+  G_nonneg k := by unfold xiP; split_ifs <;> norm_num
+
+theorem constantRisk_W (k : ℕ) :
+    constantRisk.W k 0 = if k = 0 then 0 else 1 + (2 / 15) * ((k % 5 : ℕ) : ℝ) := by
+  induction k with
+  | zero => rfl
+  | succ k ih =>
+    rw [Auction.W_succ, ih]
+    simp only [constantRisk, xiP]
+    rcases Nat.eq_zero_or_pos k with rfl | hk
+    · norm_num
+    · have hk' : k ≠ 0 := hk.ne'
+      simp only [hk', if_false, Nat.succ_ne_zero, add_zero]
+      by_cases h4 : k % 5 = 4
+      · have : (k + 1) % 5 = 0 := by omega
+        rw [if_pos h4, this]; push_cast; rw [h4]; push_cast; ring
+      · have : (k + 1) % 5 = k % 5 + 1 := by omega
+        rw [if_neg h4, this]; push_cast; ring
+
+/-- The stream is feasible under opening timing. -/
+theorem constantRisk_feasible : constantRisk.FeasibleOpening := by
+  intro k
+  show constantRisk.w k * constantRisk.b k ≤ constantRisk.W k 0 + constantRisk.A k 0
+  rw [constantRisk_W]
+  simp only [constantRisk]
+  split_ifs with h
+  · norm_num
+  · have : (0 : ℝ) ≤ ((k % 5 : ℕ) : ℝ) := Nat.cast_nonneg _
+    norm_num; linarith
+
+/-- **The non-incident noise sum grows linearly**: over `5n` blocks it is `8n/15`. -/
+theorem nonincident_noise_linear (n : ℕ) :
+    ∑ k ∈ (range (5 * n)).filter (fun k => (!incP k) = true), constantRisk.w k * xiP k
+      = n * (8 / 15) := by
+  rw [Finset.sum_filter]
+  have hper : ∀ k, (if (!incP (k + 5)) = true then constantRisk.w (k + 5) * xiP (k + 5) else 0)
+      = (if (!incP k) = true then constantRisk.w k * xiP k else 0) := by
+    intro k
+    have : (k + 5) % 5 = k % 5 := by omega
+    simp only [incP, xiP, constantRisk, this]
+  rw [sum_periodic5 _ hper n, nsmul_eq_mul]
+  congr 1
+  simp only [Finset.sum_range_succ, Finset.sum_range_zero, incP, xiP, constantRisk]
+  norm_num
+
+/-- **Incidents persist at the constant rate `1/5`**: `n` of the `5n` blocks. -/
+theorem incidents_constant_rate (n : ℕ) :
+    ((range (5 * n)).filter (fun k => incP k = true)).card = n := by
+  rw [Finset.card_filter]
+  have hper : ∀ k, (if incP (k + 5) = true then 1 else 0) = (if incP k = true then (1 : ℕ) else 0) := by
+    intro k
+    have : (k + 5) % 5 = k % 5 := by omega
+    have h2 : incP (k + 5) = incP k := by unfold incP; rw [this]
+    rw [h2]
+  rw [sum_periodic5 _ hper n, smul_eq_mul]
+  have h5 : ∑ j ∈ range 5, (if incP j = true then 1 else 0) = 1 := by decide
+  rw [h5, mul_one]
+
+/-- **The noise over all blocks is bounded by a constant**: the all-blocks selection is
+fixed at opening and `NoiseBounded` holds with `M ≡ 8/15`, while on "not an incident" it
+is linear. -/
+theorem all_blocks_noise_bounded : NoiseBounded constantRisk (fun _ => 5 / 6) (fun _ => true)
+    (fun _ => 8 / 15) := by
+  intro K
+  simp only [noise, constantRisk, Finset.filter_true, add_sub_cancel_left, one_mul]
+  obtain ⟨q, r, hr, rfl⟩ : ∃ q r, r < 5 ∧ K = 5 * q + r :=
+    ⟨K / 5, K % 5, Nat.mod_lt _ (by norm_num), (Nat.div_add_mod K 5).symm⟩
+  rw [Finset.sum_range_add, sum_periodic5 _ xiP_periodic, nsmul_eq_mul]
+  have hzero : ∑ j ∈ range 5, xiP j = 0 := by
+    simp only [Finset.sum_range_succ, Finset.sum_range_zero, xiP]; norm_num
+  rw [hzero, mul_zero, zero_add]
+  have hshift : ∀ x, xiP (5 * q + x) = xiP x := by
+    intro x
+    unfold xiP
+    have : (5 * q + x) % 5 = x % 5 := by omega
+    rw [this]
+  rw [Finset.sum_congr rfl fun x _ => hshift x]
+  interval_cases r <;> simp [Finset.sum_range_succ, xiP] <;> norm_num
+
+/-- **`NoiseBounded` on "not an incident" forces a linear bound**: any `M` for that
+selection satisfies `8n/15 ≤ M (5n)`, so it is not `o(K)`. -/
+theorem nonincident_forces_linear (M : ℕ → ℝ)
+    (hN : NoiseBounded constantRisk (fun _ => 5 / 6) (fun k => !incP k) M) (n : ℕ) :
+    n * (8 / 15) ≤ M (5 * n) := by
+  have h := hN (5 * n)
+  simp only [noise, constantRisk, add_sub_cancel_left, one_mul] at h
+  have hsum := nonincident_noise_linear n
+  simp only [constantRisk, one_mul] at hsum
+  rw [hsum] at h
+  exact (le_abs_self _).trans h
+
+/-- **`incidents_le_signed` then constrains nothing**: with `ℓ = 1/3` (rescaled), `w_min = 1`
+and the allowance `1`, the signed bound reads `n/3 ≤ 1 + 8n/15` for `n` incidents in `5n`
+blocks — true for every `n`; a constant rate `1/5` is compatible with it. -/
+theorem signed_bound_allows_constant_rate (n : ℕ) :
+    (1 / 3 : ℝ) * 1 * n ≤ 1 + n * (8 / 15) := by
+  have : (0 : ℝ) ≤ n := Nat.cast_nonneg _
+  nlinarith
+
+/-- On the stream the incident blocks satisfy the signed bound's per-incident hypothesis
+(`ℓ ≤ b − G`), the non-incident margin is the linear noise sum, and the exchange-rate
+theorem's tolerated rate `1/2` sits above the realized `1/5`. -/
+theorem constantRisk_facts :
+    (∀ k, incP k = true → (1 / 3 : ℝ) ≤ constantRisk.b k - constantRisk.G k) ∧
+    (1 / 5 : ℝ) < (1 - 0) / 2 := by
+  refine ⟨fun k hk => ?_, by norm_num⟩
+  simp only [incP, decide_eq_true_eq] at hk
+  simp only [constantRisk, xiP, hk, if_true]
+  norm_num
+
 end Witness
 
 /-! ## Axiom audit -/
@@ -1411,5 +1767,32 @@ end Witness
 #print axioms azuma_selected_tail
 #print axioms Witness.own_proposal_insufficient
 #print axioms Witness.noisy_honesty_witness
+#print axioms evalOf_le_bid
+#print axioms eval_sub_score_ii
+#print axioms eval_sub_score_i
+#print axioms rescale_sub
+#print axioms exchange_rate_invariant
+#print axioms violation_rate_le_exchange_mul
+#print axioms violation_rate_le_exchange
+#print axioms violation_rate_le_exchange_rescaled
+#print axioms design_consistent
+#print axioms noise_increment_le
+#print axioms realized_range
+#print axioms tolerated_rate_band
+#print axioms priced_risk_wins_iff
+#print axioms total_wealth_le_of_tracker
+#print axioms Witness.sum_periodic5
+#print axioms Witness.incP
+#print axioms Witness.xiP
+#print axioms Witness.xiP_periodic
+#print axioms Witness.constantRisk
+#print axioms Witness.constantRisk_W
+#print axioms Witness.constantRisk_feasible
+#print axioms Witness.nonincident_noise_linear
+#print axioms Witness.incidents_constant_rate
+#print axioms Witness.all_blocks_noise_bounded
+#print axioms Witness.nonincident_forces_linear
+#print axioms Witness.signed_bound_allows_constant_rate
+#print axioms Witness.constantRisk_facts
 
 end Workspace.Deference.Contrib.BRIAFollowup2

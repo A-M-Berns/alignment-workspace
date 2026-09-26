@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 848 names, 553 of them Lean only
+## deference — 851 names, 555 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -212,15 +212,17 @@ change, and the count of those is the size of the free choice remaining.
 | `Taint` | abbrev | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Taint` |
 | `WinnerBids` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.WinnerBids` |
 | `affordable` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.affordable` |
+| `constantRisk` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.constantRisk` |
 | `detectAt` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.detectAt` |
 | `eU` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.eU` |
 | `greedyDebit` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.greedyDebit` |
+| `incP` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.incP` |
 | `io4` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.io4` |
 | `ioStd` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioStd` |
 | `ioW` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.ioW` |
 | `mixtureLocked` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.mixtureLocked` |
 | `nKnownWith` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.nKnownWith` |
-| `noise` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIAFollowup2.noise` |
+| `noise` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIAFollowup2.noise` |
 | `randomLocked` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.randomLocked` |
 | `readTaint` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.readTaint` |
 | `recW` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.recW` |
@@ -233,6 +235,7 @@ change, and the count of those is the size of the free choice remaining.
 | `unaffordable` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.unaffordable` |
 | `uses2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.uses2` |
 | `windowDebit` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.windowDebit` |
+| `xiP` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIAFollowup2.Witness.xiP` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |
@@ -1149,7 +1152,7 @@ change, and the count of those is the size of the free choice remaining.
 | `pref` | def | unrecorded | prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.pref` |
 | `ramp` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.ramp` |
 | `softGate` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.GatedChoice.softGate` |
-| `total` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |
+| `total` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.GatedChoice.total` |
 | `u` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.GatedChoice.Witness.u` |
 | `weight` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.GatedChoice.weight` |
 | `Integrity` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.HistoryIntegrity.SliceLedger.Integrity` |

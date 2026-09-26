@@ -31,3 +31,9 @@ follow-up's pull request as open and landed on its branch: `BRIAFollowup2.lean` 
 content with its per-`K` tail derived from the pinned Mathlib's Azuma–Hoeffding; the
 selection's martingale-difference property and the uniform-in-`K` sure bound are named,
 not derived.
+
+**The fourth follow-up** (`FOLLOWUP4.md`, the same day) was dispatched against the
+pull request as open and landed on its branch: `BRIAFollowup2.lean` §4″, `REPORT.md`
+§10.4″, `tests/test_followup4.py`.  It corrects the executor's own §10.4′ error — the
+noise hypothesis applied to a selection decided with the block's outcome — and replaces
+the vanishing-rate target by the exchange-rate theorem.
