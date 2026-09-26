@@ -279,9 +279,9 @@ to circumvent the process, and the corrigibility page keeps those apart.
 
 **Evidence.** The time-indexed halves, the gate as `Counted`, the consultation model and
 the classification table are the gate-is-legitimacy round's
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/PINSHA/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3ba123740adac30bfb4100faeee5ae40a9025d35/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)
 with
-[`GateIsLegitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/PINSHA/lean/Workspace/Deference/Contrib/GateIsLegitimacy.lean).
+[`GateIsLegitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3ba123740adac30bfb4100faeee5ae40a9025d35/lean/Workspace/Deference/Contrib/GateIsLegitimacy.lean).
 The frame-level definition of legitimacy, the segment gate and the composition
 `V = G ∘ x` are the legitimacy-internal-external round's
 [`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-legitimacy-internal-external/REPORT.md)
