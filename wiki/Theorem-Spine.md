@@ -1078,7 +1078,7 @@ overwrite (`taintStep3`, `clean_overwrite`, `taint_propagates3`, `taintStep3_sub
 the twin market's leakage (`TwinMarket`, `leakage`), and contestability on the
 post-commission selection with the private-knowledge witness
 (`post_commission_competitive`, `Witness.private_selection`).  **LEAN**.  Lean:
-`lean/Workspace/Deference/Contrib/AfterCompromise.lean` (pinned at landing).
+[`AfterCompromise.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/ba7f702a89a2d41d56aad97fd62b18e951e66be9/lean/Workspace/Deference/Contrib/AfterCompromise.lean).
 
 ## 11. The counterexamples that fix the shape
 
