@@ -23,6 +23,20 @@ prices against, with bounded liability. The decision adapter *consumes* the mark
 state; it is not another trader and does not feed back into prices. Enforcement is
 additive, which is why every theorem about the underlying inductor survives.
 
+**Authority is a constraint on action, not on beliefs.**  The decision adapter now
+carries a *permission layer* in front of the adequacy gate: an option is weighted one if
+it is an inquiry, zero if it is a declared violation of the allocation (recognized
+structurally, from the interface and the allocation, never from prices), and otherwise
+by ramps on the market's own prices of two events — that the option leaves a reserved
+matter's control surface short, and that it makes the segment through her evaluation
+uncounted.  The layer reads prices and adds no trader, so the market and every property
+of it are the same with and without it (**LEAN** `DecisionComponent.noninterference`); a
+declared violation receives probability zero at every day for every task preference
+(`cgate_zero_of_viol`).  Compiling authority into the enforcer instead would make its
+liability the realized cost of deferring to her, bounded only while she is not
+systematically outperformed ([Corrigibility](Corrigibility) §4) — which is why no
+authority row enters the enforcer.
+
 ## From the accounted state to a region
 
 At a strict prefix, the compiler receives the live docket of the accounted state with
@@ -101,6 +115,23 @@ ramped adequacy gate realizes with an explicit constant
 ([Normative induction](Normative-Induction)).  The gate is a realization of `Pi`, not a
 component of the architecture above; the positive margin it needs is a semantic or
 epistemic input, and competence inside the adequate set is the application's.
+
+**The layered decision procedure.**  Beliefs — what is true, including what is valuable —
+are the market's, unchanged.  *Permission* — what the agent may do — is the allocation's:
+zero on declared violations, ramped on the priced shortfall and taint events, one on
+inquiry.  *Adequacy* — what legitimately incurred obligations require — is the region's,
+through the soft gate.  *Competence* — what is best over time among permitted, adequate
+options — is [Continuation BRIA](Continuation-BRIA)'s, on the menu of continuations whose
+every step lies in the composed gate's support.  *Inquiry* — ask, report, escalate, idle —
+is always available and carries a mass floor that keeps the composed gate a distribution.
+The composed gate `π(a) ∝ w_perm(a) · w_ad(a) · pref(a)` is sound with the two layers'
+error terms added and Lipschitz with the ramps' constants multiplied
+(`cgate_massOff_permitted_le`, `cgate_massOff_adequate_le`, `cgate_l1_lipschitz`), so the
+practical certificate and the Progress bound hold with the composed constants
+(`cgate_practicalCert`, `progress_under_permission`).  When an obligation calls for an act
+on a matter reserved to her, the compiler marks inquiry to the holder as adequate and the
+obligation is discharged by raising the matter (`jurisdiction_nonempty`,
+`reserved_act_excluded`).
 
 ## The dynamic layer after the envelope
 

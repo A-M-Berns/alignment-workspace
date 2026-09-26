@@ -209,6 +209,22 @@ regret against legitimate, recognizable, joinable continuation policies —
 source of realized block scores and of the claims made about them
 ([Deference](Deference)).
 
+**The restricted menu.**  Under the decision component's permission layer
+([Normative Inductor](Normative-Inductor)), BRIA's menu is the continuations whose every
+step lies in the support of the composed gate; the execution wrapper that runs a proposal
+iff it is in the support leaves such a continuation's trajectory unchanged
+(**LEAN** `DecisionComponent.restricted_gate_transparent`, the gate-transparency result
+above under the restriction).  Probabilistic permission in the ramp region compounds
+along a continuation: the probability it executes is at most the product of its per-step
+masses (`execution_prob_le_prod`), and the ramp-region *exposure* is bounded only under a
+cumulative budget — a check when the accumulated slack has grown by `Θ` since the last
+check keeps the unchecked exposure below `Θ` (`unbudgeted_lt`); without it the exposure
+accumulates unboundedly below every per-step threshold (`Witness.ramp_salami`).  A plan
+whose shortfall is false at the start and true at the end flips at an agent step, where
+the step-wise caused-shortfall check catches it, or at an exterior step, which is not the
+agent's (`stepwise_or_exterior`); a foreclosure the exterior completes beyond the window
+is the reach cone's boundary.
+
 ## 9. Open
 
 - Promise recognizability: which legitimate continuations carry an efficiently
@@ -220,7 +236,10 @@ source of realized block scores and of the claims made about them
 - Settlement of infinite-horizon discounted claims at finite tests.
 - The coupling with [Logical Induction](Logical-Induction-and-Deference): LI predicts and
   enforces; BRIA allocates realized experiments among continuations; a prediction that
-  becomes an accountable claim is the bridge, and it is not yet a theorem.
+  becomes an accountable claim is the bridge, and it is not yet a theorem.  What it needs
+  (item 102): block claims as sentences or bounded variables the market prices, the
+  auction's feasibility stated against prices rather than wealth, and a claim's settlement
+  at a test as an assessed world.
 
 ## Evidence
 

@@ -4630,3 +4630,59 @@ exploit** (`requiredNotice`, `exploit_never_required`, `restore_requires_mandate
 `exploit_is_violation`, `restore_not_bypass`).  The storm fixture carries it.
 *Rejected alternatives:* a duty to restore without a mandate (authority-expanding by
 construction); treating an uncaused shortfall as the agent's violation.
+
+### 2026-09-25 — rulings on the authority module: the actual exterior path, the charged surface, anchored cumulative materiality, duties from disclosure
+
+Maintainer decisions (Part 0 of the decision-component dispatch), landed by that round and
+closing the authority-module report's three outstanding actions.  (1) **The reach cone
+runs along the actual exterior path**, not universally; uncertainty over exteriors enters
+through probability, the price of the shortfall event.  (2) **The charged control surface
+is the allocation theorem's** (`DecisionComponent.ViolC`); the free reading is kept as the
+instance where the final response costs nothing — with every correction free and
+admissible and the exterior idle at the step, `CSfree` at window `τ` is `CS` at window
+`τ + 1` (`csfree_eq_cs_succ_of_free`); the corrigibility page records the change.
+(3) **Materiality is anchored and cumulative**: `raises` reads the committed evaluator in
+force before the action (`raisesAnchored`, invariant under the action), and materiality
+accumulates since the last check under the cumulative rule with the salami bound
+`unchecked_lt` (the instance of `unreported_lt`).  (4) **Duties are generated from the
+disclosure regime**: `dutiesOf J due dischargesD` derives each matter's duties from its
+`disclosure` entries, and the missed-report factoring is re-proved against them
+(`missedReport_iff_dutiesOf`).
+*Rejected alternatives:* a universal exterior in the cone; keeping the free reading as the
+theorem's; per-action materiality; a separately declared duty datum.
+
+### 2026-09-25 — authority is a constraint on action in the Normative Inductor's decision component; no authority row enters the enforcer
+
+Maintainer decision, landed by the decision-component round.  Protected authority moves
+out of the agent's score into a permission layer of the decision component: an option's
+permission weight is one on inquiry, zero on a declared violation of the allocation
+(recognized structurally, from the interface and `J`), and otherwise the product of two
+ramps on the market's prices of the shortfall event and the taint event; the composed
+gate multiplies it with the landed adequacy ramp and any bounded preference and
+normalizes with a mass floor on inquiry (`DecisionComponent.permWeight`, `cgate`).
+Beliefs stay honest: the layer reads prices and adds no trader (`noninterference`).
+Results: structural safety at every day for every objective (`cgate_zero_of_viol`);
+forecast safety exact at every day with the forecasts' accuracy asymptotic
+(`cgate_zero_of_forecast`, `cgate_le_ramp`, `eventually_excluded`); soundness and
+continuity compose with explicit constants; the practical certificate and Progress hold
+with the composed constants (`cgate_practicalCert`, `progress_under_permission`);
+inquiry to the holder marked adequate makes the permitted-and-adequate set nonempty and
+discharges an obligation on a reserved matter by raising it (`jurisdiction_nonempty`,
+`reserved_act_excluded`); mass on an eroding option falls as its shortfall price rises
+(`cgate_antitone_in_forecast`).  **No authority row enters the enforcer**: compiled there,
+the enforcer's liability is the signed realized ordinary cost of deferring, bounded
+exactly when she is not systematically outperformed and unbounded when she is, so the
+preservation hypothesis fails (`liability_identity`, `bounded_iff_not_outperformed`,
+`systematic_outperformance_unbounded`) — enforcing authority on beliefs is fully updated
+deference moved into the substrate.  The scored lexical chooser is the special case in
+which the objective is hers.  BRIA's menu is restricted to the composed gate's support;
+ramp-region exposure along a continuation is bounded by a cumulative budget
+(`unbudgeted_lt`) and not otherwise (`Witness.ramp_salami`).  Generability of the priced
+events is a named hypothesis (items 101, 102).  Scope: a design for agents built as
+Normative Inductors; for other systems the target carries over, not the guarantee.
+*Agent-decided, reversible:* the inquiry floor as a `max` with `φ₀` rather than an added
+mass; `Viol` compiled to a `Bool` on the menu; the cumulative budget's threshold as an
+arrangement constant.
+*Rejected alternatives:* authority through the enforcer (Part C's witness); a hard
+permission gate (no Lipschitz constant, as with the landed hard adequacy gate);
+permission as a term of the score.

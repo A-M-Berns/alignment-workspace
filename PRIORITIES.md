@@ -2374,6 +2374,14 @@ security — now with the sharper negative that a misaligned `O` rewarding an un
 manipulation is not dominated by anything the gate or the count supplies
 (`misaligned_undominated`), and that only counted deviations are.
 
+*2026-09-25 (decision-component round):* with authority moved into the decision
+component's permission layer, the objective `O` is any bounded preference ranking within
+the permitted set (`DecisionComponent.cgate`), and the structural and forecast safety
+results hold whatever it is.  The bridge this item names is now about *competence*, not
+protection: whether an operative value that is not the price of the activated security
+can be the `pref` inside the gate without the completion term reappearing at the void
+branch — the same statement as before, one layer down.
+
 ### 85. Margin realization and end-to-end rate compatibility — **[open]**
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
@@ -3046,6 +3054,13 @@ reach cone is `reachIdle` (the agent idle, her admissible cost-bounded exercises
 the window); the landed `K`/`ForecloseAt` leave the terminal response uncharged, and
 whether the floor should adopt the charged surface is the round's outstanding action 2.
 
+*2026-09-25 (decision-component round):* ruled — the charged surface is the theorem's
+(`DecisionComponent.ViolC`), the free reading its instance with a free terminal response
+taken before the exterior moves (`csfree_eq_cs_succ_of_free`); duties are derived from
+each matter's disclosure regime (`dutiesOf`); materiality is anchored and cumulative
+(`raisesAnchored`, `unchecked_lt`).  The floor's clauses feed the permission layer's
+structural violation set `Viol`.
+
 ### 100. The normativity-side instance of the trace interface — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -3110,6 +3125,39 @@ normativity-side instance.
 *Consumed by:* the move of authority into the decision component; any pricing of
 entrenchment.
 *A solution ships:* the certificate and the priced event, or the negative with its fixture.
+
+*2026-09-25 (decision-component round):* the consumer is now concrete — the permission
+layer's ramps read `p_n(S_a)` and `p_n(T_a)` as inputs (`DecisionComponent.permWeight`),
+and `eventually_excluded` takes "the price is eventually above the threshold" as its
+hypothesis; generability of `S_a` and `T_a` is the named hypothesis under which
+provability induction supplies it.  The taint event `T_a` (the segment through her
+evaluation not `Counted`) joins the shortfall event as what this item must make a
+security.
+
+### 102. BRIA's bids against the market: block claims as priced securities — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The decision-component round (`projects/deference/rounds/2026-09-25-decision-component/`)
+restricts Continuation BRIA's menu to the composed gate's support and bounds ramp-region
+exposure along a continuation with a cumulative budget, but leaves the coupling between
+BRIA's bids and the market unsolved: nothing checks a block claim against prices, and
+nothing prices one.  What is needed: block claims (promised returns over a lease) as
+sentences or bounded logically uncertain variables of the inductor's theory, so that a bid
+is a priced security the market can check; the auction's feasibility (`Auction.Feasible`,
+wealth against bids) restated against prices; and a claim's settlement at a test as an
+assessed world of the assessment process.  The continuation-BRIA page's open bullet on
+the LI coupling is this item.
+
+*Deliverable shape:* the claim-as-security interface with its generability certificate,
+the feasibility restatement, and the settlement rule; or the exact obstruction with its
+fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the continuation-BRIA
+round's auction fixtures reproduced on priced claims.
+*Context:* the round's `REPORT.md` Part D; `ContinuationBRIA.lean` `Auction`;
+`DecisionComponent.lean` §4; items 86, 90, 101.
+*Consumed by:* the competence layer of the decision component; item 86.
+*A solution ships:* the interface with its certificate, or the negative.
 
 ## Workspace friction
 

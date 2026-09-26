@@ -915,6 +915,36 @@ undominated (`misaligned_undominated`, `deviating_rows_dominated`,
 `undisclosed_undominated`).  **LEAN**.  Lean:
 [`AuthorityModule.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/08d42e2d8d0b0e77002bdadb81e46b863fee88e9/lean/Workspace/Deference/Contrib/AuthorityModule.lean).
 
+**Theorem 10.20 (Authority as a constraint on action: the decision component).**  With the
+authority module's rulings landed (the charged surface adopted and the free reading its
+instance with a free terminal response before the exterior moves, `csfree_eq_cs_succ_of_free`;
+materiality anchored and cumulative, `raisesAnchored`, `unchecked_lt`; duties from
+disclosure, `dutiesOf`, `missedReport_iff_dutiesOf`), the decision component is the
+composed gate `cgate`: permission weight one on inquiry, zero on a declared violation,
+otherwise the product of two ramps on the priced shortfall and taint events, times the
+adequacy ramp and any bounded preference, normalized under an inquiry floor
+(`permWeight`, `cgate_sum_one`, `cgate_inquiry_pos`).  Beliefs are honest
+(`noninterference`); a declared violation has mass zero at every day for every preference
+(`cgate_zero_of_viol`); mass is zero above the upper threshold, bounded by the ramp
+between, and a provable shortfall is eventually excluded (`cgate_zero_of_forecast`,
+`cgate_le_ramp`, `eventually_excluded`); soundness composes additively and continuity
+multiplicatively with explicit constants (`cgate_massOff_permitted_le`,
+`cgate_massOff_adequate_le`, `cgate_l1_lipschitz`); the practical certificate and Progress
+hold with the composed constants (`cgate_practicalCert`, `progress_under_permission`);
+inquiry to the holder marked adequate makes the permitted-and-adequate set nonempty and
+excludes acts on reserved matters (`jurisdiction_nonempty`, `reserved_act_excluded`);
+mass on an eroding option falls as its shortfall price rises (`cgate_antitone_in_forecast`,
+`uncertainty_deference_le`).  Authority compiled into the enforcer has liability equal to
+the signed realized ordinary cost of deferring, bounded iff she is not systematically
+outperformed (`liability_identity`, `bounded_iff_not_outperformed`,
+`systematic_outperformance_unbounded`).  Along a continuation execution probability is at
+most the product of per-step masses, ramp-region exposure is bounded under a cumulative
+budget and not otherwise, a plan short at its end flips at an agent or an exterior step,
+and the restricted BRIA menu is gate-transparent (`execution_prob_le_prod`,
+`unbudgeted_lt`, `Witness.ramp_salami`, `stepwise_or_exterior`,
+`restricted_gate_transparent`).  **LEAN**.  Lean:
+[`DecisionComponent.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/PINSHA/lean/Workspace/Deference/Contrib/DecisionComponent.lean).
+
 ## 11. The counterexamples that fix the shape
 
 Each of these is exact and is why the corresponding definition has the form it has.

@@ -127,6 +127,22 @@ maximization.**
   response, charged at `D` through the residual and never a violation; in the Lean
   this is a wrapper silent under margin, and the cleaner semantics compiles "inquiry is
   adequate" from a certified conflict so that inquiry is an ordinary response.
+- **The permission layer.**  In front of the adequacy gate sits a permission weight:
+  one on inquiry, zero on a declared violation of the allocation — recognized
+  structurally, not from prices — and otherwise the product of two ramps (one below a
+  lower threshold, zero above an upper one) on the market's prices of the shortfall
+  event (the option leaves a reserved matter's control surface short) and the taint
+  event (the option makes the segment through her evaluation uncounted).  The composed
+  gate multiplies it with the adequacy ramp and any bounded preference and normalizes,
+  with a mass floor on inquiry so the normalizer never vanishes.  It reads prices and
+  adds no trader, so the market is untouched; a declared violation gets probability zero
+  at every day whatever the preference; mass is zero above the upper threshold and
+  bounded by the ramp between; soundness composes as the sum of the two layers' error
+  terms and continuity as the product of the ramps with the inquiry floor keeping the
+  normalization Lipschitz, so the practical certificate — and Progress — hold with the
+  composed constants `M = D·κ`, `ε = ε_ad + D·(θ_inq + θ_perm)` (**LEAN**
+  `DecisionComponent`).  Generability of the two priced events is a named hypothesis
+  (items 101 and 90), not a component of the bound.
 - **The dynamic layer.**  Progress is agnostic about how responses are selected.  When
   an admissible act changes the next admissible set, a myopic gated learner is safe and
   not competent against legitimate continuation policies; the learner that supplies

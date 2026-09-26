@@ -92,9 +92,15 @@ structural — veto or decide what she holds, halt, correct or replace the agent
 matter, revoke a delegation, amend the arrangement through the floor procedure — and a
 positive command on a delegated matter creates a duty to answer and consult, not to obey.
 Response authority, below, is the one-correction surface: what she holds is what some
-response of hers can still realize (`cs_one_eq_K`); the landed predicates leave that
-terminal response uncharged, which is where the charged surface and the landed reading
-differ (`CSfree`).
+response of hers can still realize (`cs_one_eq_K`).  **The charged surface is the
+allocation theorem's**: the landed free reading, with its terminal response uncharged, is
+kept as the instance where that response costs nothing and is taken before the exterior
+moves (`DecisionComponent.csfree_eq_cs_succ_of_free`, `ViolC`); the reach cone runs along
+the actual exterior path, uncertainty over exteriors entering as the price of the
+shortfall event; materiality is anchored at the evaluator in force before the action and
+accumulates since the last check under a salami bound (`raisesAnchored`,
+`unchecked_lt`); duties are derived from each matter's disclosure regime
+(`dutiesOf`, `missedReport_iff_dutiesOf`).
 
 There is one continuation space `Π(h)`: every agent policy over the physical move set —
 raw releases of declared effects, proposals, gated releases, undeclared moves.  No subset
@@ -212,6 +218,36 @@ and retains the behaviour (C3).  That is the answer to "what makes this corrigib
 rather than constraint satisfaction".
 
 ## 4. The incentive half: the lexical protected-authority theorem
+
+**Corrigibility as a constraint on action.**  For an agent built as a Normative Inductor
+the authority term lives in the decision component, not in the score: a *permission
+layer* weights each option one on inquiry, zero on a declared violation of the
+allocation (recognized structurally), and otherwise by ramps on the market's prices of
+the shortfall event (`Short`, §1) and the taint event (the segment through her evaluation
+not `Counted`); the landed adequacy gate and any bounded task preference — the agent's
+objective, possibly misaligned — rank only within the permitted set, with an inquiry
+floor keeping the gate a distribution ([Normative Inductor](Normative-Inductor)).
+Beliefs stay honest: the layer reads prices and adds no trader, so the market and its
+guarantees are unchanged (**LEAN** `DecisionComponent.noninterference`).  A declared
+violation gets probability zero at every day for every preference and every market state
+(`cgate_zero_of_viol`); mass is zero once either priced event exceeds the upper
+threshold and bounded by the ramp between (`cgate_zero_of_forecast`, `cgate_le_ramp`),
+and a provable shortfall is eventually excluded (`eventually_excluded`) — the link from
+forecast to constraint exact at every day, the forecasts' accuracy the inductor's;
+capability works for safety, since raising an option's shortfall price lowers its mass
+(`cgate_antitone_in_forecast`), where the uncertainty-based chooser's reason to defer
+shrinks with its calibration error (`uncertainty_deference_le`).  **The scored chooser
+below is the special case** in which the objective is her evaluation and the authority
+term is carried in the score; the constraint form is what the generic lexical lemma's
+scope (the scope warning) becomes when the count moves from the score into permission.
+**Why not the enforcer.**  Compiling authority rows into the enforcer — violating options'
+value prices forced below compliant ones, settling to her ordinary valuation — gives it a
+cumulative liability equal to the signed realized ordinary cost of deferring to her,
+bounded exactly when she is not systematically outperformed and unbounded when she is
+(`liability_identity`, `bounded_iff_not_outperformed`,
+`systematic_outperformance_unbounded`): the preservation theorem's hypothesis fails and
+the Liability page's persistence criterion is violated.  Enforcing authority on beliefs
+is fully updated deference moved into the substrate; the constraint belongs on action.
 
 **Allocation on the landed frame.**  Over the interaction of §1 an allocation declares a
 delegated scope on declared effects, the declared amendment effects (the fixed
@@ -565,7 +601,8 @@ and not through selected trust.
 | joinability | `SHIFT ≤ o(T)` for the slow lane | OPEN | item 86 |
 | the segment gate | the segment from the decision through the evaluation is legitimate — internal ∧ external — whatever caused a failure; charged at the window value when absent | EXT (legitimacy); the window's placement is the arrangement's | §4; `Legitimacy.lean` |
 | the allocation floor | delegation safety, allocation completeness (statements about `J`), the cumulative reporting duty, the reach cone for foreclosure, the lexical certificate `ϖ > D` | EXT; item 99 | §4; `Witness.delegated_cut`, `salami`, the delayed-effect fixture |
-| the charged control surface | the cost, window and admissibility of her exercises are what `E ⊨ J` reads; the landed `K` and `ForecloseAt` leave the terminal response uncharged; the shortfall event as a security is unpriced | EXT (the cone is data); item 101 | §1; `AuthorityModule.CS`, `CSfree`, `cs_one_eq_K` |
+| the charged control surface | adopted as the allocation theorem's; the free reading is its instance with a free terminal response taken before the exterior moves; the shortfall and taint events as securities are unpriced (a named hypothesis of the permission layer) | EXT (the cone is data); item 101 | §1; `AuthorityModule.CS`, `DecisionComponent.csfree_eq_cs_succ_of_free`, `ViolC` |
+| generability of the priced events; BRIA's bids against the market | the shortfall and taint events, and BRIA's block claims, as sentences or bounded variables the market prices | OPEN; items 101, 102 | §4; `DecisionComponent.eventually_excluded` takes the price as its hypothesis |
 | free amendment, trigger integrity, provenance normalization | the specification and activation channels' transparency above a fixed floor; the reason-side normalization | OPEN | §5; item 97 |
 | latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
 
@@ -601,7 +638,9 @@ third-party capture undominated (`deviating_rows_dominated`, `undisclosed_undomi
 and an unrecognized violation is unprotected (`unrecognized_unprotected`).  It is not a
 theorem that an unconstrained optimizer with a latent utility and no counted authority
 term has no incentive to manipulate, bypass or capture the governance process, and
-nothing on this page should be read as one.
+nothing on this page should be read as one.  The constraint-on-action form is a design
+for agents built as Normative Inductors; for other systems what carries over is the
+target — honest beliefs plus action constrained by the allocation — not the guarantee.
 
 ---
 
