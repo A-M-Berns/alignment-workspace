@@ -913,7 +913,7 @@ rewarding an uncounted manipulation is not dominated; counting protocol deviatio
 dominates the deviating consultation rows and leaves undisclosed world-shaping
 undominated (`misaligned_undominated`, `deviating_rows_dominated`,
 `undisclosed_undominated`).  **LEAN**.  Lean:
-[`AuthorityModule.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/PINSHA/lean/Workspace/Deference/Contrib/AuthorityModule.lean).
+[`AuthorityModule.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/08d42e2d8d0b0e77002bdadb81e46b863fee88e9/lean/Workspace/Deference/Contrib/AuthorityModule.lean).
 
 ## 11. The counterexamples that fix the shape
 
