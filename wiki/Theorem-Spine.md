@@ -1087,7 +1087,7 @@ the per-block exchange rate and the parameters from a tolerance target
 disclosure deadline (`late_disclosure_free`, `prompt_deadline_counts`,
 `suppression_by_delay_loses`, `known_due_each_round`) and observation completeness
 (`ObsComplete`, `builtFrom`, `obs_complete_public`, `knowledge_motive_covered`).  **LEAN**.  Lean:
-[`AfterCompromise.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/ba7f702a89a2d41d56aad97fd62b18e951e66be9/lean/Workspace/Deference/Contrib/AfterCompromise.lean).
+[`AfterCompromise.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/8e59d68848f7215f2e0fccd45cade36f5b40617a/lean/Workspace/Deference/Contrib/AfterCompromise.lean).
 
 ## 11. The counterexamples that fix the shape
 
