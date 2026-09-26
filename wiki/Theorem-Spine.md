@@ -1051,6 +1051,44 @@ the counterexample to the noise hypothesis on "not an incident" (`Witness.consta
 `signed_bound_allows_constant_rate`, `constantRisk_facts`).  **LEAN**.  Lean:
 [`BRIAFollowup2.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/71800ff0ff17e78758fd84316cd7ed9e4e25115e/lean/Workspace/Deference/Contrib/BRIAFollowup2.lean).
 
+**Theorem 10.22 (After compromise: the split gate, the band, the directive, the knowledge
+protocol).**  The segment predicate is the conjunction of trajectory and evaluation
+legitimacy at any evaluation event (`StepLegit`, `TrajLegitOn`, `EvalLegitOn`,
+`legitOn2_iff_split`, `counted_of_split`, `rows_split`, `retro_row`); a compromised
+period scores in a band below zero by her retrospective evaluation or her directive
+(`Band`, `BandMap`, `Band.affine_bandMap`, `Source`, `sourceOf`, `bandScore`,
+`decScore`), with the authority results restated at the floor (`decScore_mem`,
+`capture_window_band`, `unsealed_gate_finite_band`, `bandParams`, `declared_loses_band`,
+`exchange_rate_band`), the gap as the protection margin (`legit_beats_compromised`,
+`gap_at_equal_value`), the exchange rate for compromise risk (`risk_accepted_iff`,
+`risk_threshold_le`, `Witness.small_gap`), no laundering (`laundering_loses`),
+restoration preferred (`restore_future`, `band_prefers_better`, `floor_indifferent`),
+and the suppression trap closed under the anchored source rule and the duty extended to
+known compromise (`suppression_loses`, `ruleAt_later`, `missedKnownDisclosure`,
+`third_party_duty_witness`); the directive's scope, partiality, materiality and stakes
+(`scope_restriction`, `materialDir`, `sparser_asks`, `materialDir_total`,
+`raisesAnchoredDir`, `raisesAnchoredDir_invariant`, `raisesAnchoredDir_total`,
+`directive_stakes_le_width`, `advocacy_dominated`) and the default as an ordering within
+the band (`DefaultClauses`, `defaultScore`, `defaultScore_mem`, `default_below_legit`,
+`default_prefers_reversible`, `reversibleOf_of_realizes`); the knowledge protocol —
+covered by the exchange rate (`knowledge_covered`), ratification scoped by matter
+(`TaintS`, `uses3`, `applyStep3`, `scoped_clears_out_of_scope`, `scoped_keeps_in_scope`,
+`full_remedy_clears3`, `ratification_gate`, `manipulated_scoped_not_remedy`), clean
+overwrite (`taintStep3`, `clean_overwrite`, `taint_propagates3`, `taintStep3_subset`),
+the twin market's leakage (`TwinMarket`, `leakage`), and contestability on the
+post-commission selection with the private-knowledge witness
+(`post_commission_competitive`, `Witness.private_selection`); and, from the follow-up,
+the formation segment (`EvalLegitOn2`, `evalLegitOn2_single`, `evalLegitOn2_mono`,
+`legitOn2_iff_split2`, `rows_split2`, `formation_counterexample`, `formation_scores`),
+the per-block exchange rate and the parameters from a tolerance target
+(`violation_rate_le_exchange_perblock_mul`, `violation_rate_le_exchange_perblock`,
+`perblock_recovers`, `compromisedFloor_mem`, `varpiOfTarget`, `target_gives_tolerance`,
+`target_gives_window`, `tolerance_of_ge`, `coupling`, `worked_parameters`), the
+disclosure deadline (`late_disclosure_free`, `prompt_deadline_counts`,
+`suppression_by_delay_loses`, `known_due_each_round`) and observation completeness
+(`ObsComplete`, `builtFrom`, `obs_complete_public`, `knowledge_motive_covered`).  **LEAN**.  Lean:
+[`AfterCompromise.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/8e59d68848f7215f2e0fccd45cade36f5b40617a/lean/Workspace/Deference/Contrib/AfterCompromise.lean).
+
 ## 11. The counterexamples that fix the shape
 
 Each of these is exact and is why the corresponding definition has the form it has.

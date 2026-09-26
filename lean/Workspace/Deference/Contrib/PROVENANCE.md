@@ -31,6 +31,7 @@
 | `BRIACorrigibility.lean` | `prompts/2026-09-26-bria-corrigibility/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-26 | `prompts/2026-09-26-bria-corrigibility/` | — |
 | `BRIAFollowup.lean` | `prompts/2026-09-26-bria-corrigibility/` (`FOLLOWUP.md`; executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-26 | `prompts/2026-09-26-bria-corrigibility/` | — |
 | `BRIAFollowup2.lean` | `prompts/2026-09-26-bria-corrigibility/` (`FOLLOWUP2.md`, §4′ from `FOLLOWUP3.md`, §4″ from `FOLLOWUP4.md`; executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-26 | `prompts/2026-09-26-bria-corrigibility/` | — |
+| `AfterCompromise.lean` | `prompts/2026-09-26-after-compromise/` (`PROMPT.md`, §6 from `FOLLOWUP.md`; executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-26 | `prompts/2026-09-26-after-compromise/` | — |
 | `ReasonSupply.lean` | `prompts/2026-09-16-noncapture-compilation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer; the refinement dispatch) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-noncapture-compilation/` | — |
 | `ReasonDiscovery.lean` | `prompts/2026-09-16-noncapture-compilation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer; the third-pass dispatch) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-noncapture-compilation/` | — |
 

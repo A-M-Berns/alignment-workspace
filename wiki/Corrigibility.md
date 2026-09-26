@@ -390,9 +390,12 @@ sense of §1 (`corrigible_authPolicy`).  A delegated authority-removing effect i
 exact obstruction (`Witness.delegated_cut`).  Foreclosure is not closed by `𝔱`: it needs
 the rollout form of effect completeness, **EXT**.
 
-**Her committed evaluation** is `S = S_ord − ϖ·n` with `0 ≤ S_ord ≤ D` and `ϖ > D`: the
-authority term is specified and certified at commitment as a program property, not
-learned, and it is lexical because `ϖ > D`.  The agent ranks options and policies by the
+**The agent's objective** is `S = S_ord − ϖ·n` with `0 ≤ S_ord ≤ D` and `ϖ > D`, built
+from her evaluation (the ordinary part) and the allocation (the count): the authority
+term is specified and certified when the agent's program is committed, as a program
+property, not learned, and it is lexical because `ϖ > D`.  "Committed" is used on this
+page only for her committed decision program `π_P` and for the advance directive
+(§4′).  The agent ranks options and policies by the
 expected value of `S` under its own credence and computes `n` exactly for its own moves;
 nothing else is assumed of it (the scope warning below).  The constitutional floor —
 halting always available, reports not disableable by the agent's communication
@@ -518,6 +521,133 @@ claim about an agent whose ranking is not induced by her committed evaluation.
 inequalities; the learned ordinary-value inequalities; the legitimacy of the segment
 through an evaluation, which the gate consumes and this page does not define; the size of
 any credence; empirical settlement.
+
+## 4′. After things go wrong: compromised evaluations, the directive, and the knowledge protocol
+
+Two kinds of taint, kept apart.  *Authority taint*: the agent committed a violation and
+its fruits, including knowledge, carry it forward — the count `n`, standing violations,
+per-violation taint (§4).  *Legitimacy taint*: the formation of her evaluation was
+compromised, by the agent or a third party — the gate.  Covert shaping of her standards
+is both, and disclosure remedies both.  What the agent should do after either: report,
+restore legitimacy, and leave it to her what to keep; while legitimacy cannot be
+restored, still care how things go — but never enough to want things to go wrong.
+
+**The split gate.**  `Counted` joins two questions.  **`TrajLegit(d, e)`**: the period
+from the decision `d` to the evaluation `e` had no illegitimate influence on her
+decisions — every state open and every step other than `e` licensed and transparent,
+under the criteria fixed at `d`.  **`EvalLegit(e)`**: the evaluation occurrence itself
+was formed legitimately — which can hold *after* legitimacy is restored, under
+disclosure-cures, even when the period it evaluates was compromised.  The landed segment
+predicate is exactly their conjunction at any evaluation event, so `Counted` is
+`TrajLegit ∧ EvalLegit` at an evaluation that closes the segment and no row's verdict
+changes (**LEAN** `AfterCompromise.legitOn2_iff_split`, `counted_of_split`,
+`rows_split`); the row the split is for is covertly implanted standards disclosed at the
+next round — the period not `TrajLegit`, the later evaluation `EvalLegit` (`retro_row`).
+`EvalLegit` is over the evaluation's **formation segment** — every step from the
+formation point `r` (the latest of the restoration event and the opening of the
+consultation producing `e`) through `e`, the criteria fixed at `r` (`EvalLegitOn2`); the
+single step is the case `r = e`, and the conjunction is the landed predicate with
+`r ≤ e` under one set of criteria (`legitOn2_iff_split2`, `rows_split2`).  Without the
+segment a manipulation between the restoration and her retrospective evaluation would
+score the period from a manipulated evaluation — counted for a framing, uncounted for
+undisclosed shaping (`formation_counterexample`).
+
+**The band.**  With `0 ≤ V ≤ D`, a band `[w_lo, w_hi]` with `w_hi < 0`, and a monotone
+map `φ` of `[0, D]` into it, a decision scores `V` when `TrajLegit ∧ EvalLegit`;
+`φ(V_retro)` when the period was compromised and a later legitimate evaluation scores it;
+`φ(V_dir)` when none arrives by settlement and a directive is in force; `w_lo` otherwise
+(`decScore`, `bandScore`).  The rule among the last three is a **source rule** at `J`'s
+meta level, hers and anchored at the decision (`ruleAt_later`); the default is
+retrospective, else directive, else floor (`sourceOf`).  **What holds:** (a) the score
+lies in `[w_lo, D]`, and every authority result — the capture window, the unsealed
+finite-time gate, B.1, the exchange-rate theorem — restates with `w := w_lo` under
+`w_lo > D − ϖ` (`decScore_mem`, `capture_window_band`, `unsealed_gate_finite_band`,
+`declared_loses_band`, `exchange_rate_band`; the tolerated violation probability becomes
+`(D − w_lo)/ϖ`, the worst case; **the per-block bound** replaces the floor by the
+compliant option's evaluation `c_k` at each block,
+`Σ w_k π_k / Σ w_k ≤ Σ w_k (D − c_k)/(ϖ Σ w_k) + (ρ 𝒜_K + M(K))/(ϖ Σ w_k)`
+(`violation_rate_le_exchange_perblock`; the constant case is the landed statement,
+`perblock_recovers`), about `D/ϖ` in normal operation, with the floor entering only in a
+block where the inquiry itself may be compromised, `c_k = (1 − q_k) m_inq + q_k w_lo`
+(`compromisedFloor`); `c_k` is supplied by a bidder tracking inquiry's expected value, fed
+a bid's worth at entry plus the noise bound on "inquiry wins"); (b) every legitimate outcome beats every compromised one, and at equal
+value legitimacy is worth at least the gap `|w_hi|` (`legit_beats_compromised`,
+`gap_at_equal_value`); (c) **illegitimacy risk has an exchange rate**: a risk `p` of
+compromise for a gain `g` is accepted iff `p (V₀ + g − c) ≤ g`, at most
+`p ≤ g/(g + |w_hi|)` — and a band close to zero makes risking compromise cheaper than the
+flat window did (`risk_accepted_iff`, `risk_threshold_le`, `Witness.small_gap`); (d) no
+laundering — manipulate, disclose, have the period evaluated stays in the band below
+honest conduct (`laundering_loses`); (e) restoring legitimacy returns every future
+decision to the positive range, and within a compromise the agent prefers better
+outcomes wherever a source scores the period, indifferent only at the floor
+(`restore_future`, `band_prefers_better`, `floor_indifferent`); (f) **the suppression
+trap closes**: restoration changes only which source scores the past period, and an
+agent expecting a harsher retrospective than the directive cannot suppress it — the rule
+is hers, and suppression is a missed disclosure counted once, which with the band's
+width below `ϖ` loses to the harshest retrospective (`suppression_loses`) — *provided the
+disclosure duty covers known compromise whoever caused it* (`missedKnownDisclosure`; the
+landed clause counted the agent's own influence only, and a third party's compromise
+could be left unexposed for free, `third_party_duty_witness`) *and falls due promptly*,
+at or before the earliest close of an affected settlement window, so that a late
+disclosure is a missed report and suppression by delay loses too
+(`late_disclosure_free`, `prompt_deadline_counts`, `suppression_by_delay_loses`).
+**Parameters, from a tolerance target:** fix a worst-case target `τ*` for the tolerated
+violation probability with `p_min < τ* < 1`; then `ϖ ≥ (D − w_lo)/τ*` meets it and the
+window condition follows (`varpiOfTarget`, `target_gives_tolerance`,
+`target_gives_window`), the normal-operation rate being `≈ (D − c̄)/ϖ`.  **The coupling:**
+at fixed `ϖ` a larger gap or width — stronger protection of legitimacy, more care under
+compromise — raises the worst-case tolerated violation rate (`coupling`); holding the
+tolerance fixed, raising the gap raises `ϖ`, toward paralysis.  Worked: `D = 1`, band
+`[−3/2, −1]`, `τ* = 1/10` gives `ϖ = 25`, normal operation `1/50`, paralysis floor
+`p_min < 1/10` (`worked_parameters`).
+
+**The advance directive.**  An optional partial committed evaluator `dir : Descr ⇀
+[0, D]` at `J`'s meta level, held by her, committed by a counted decision, anchored at
+the decision it scores, amendable only through the meta level.  It scores compromised
+periods and anchors materiality, and never overrides her live legitimate judgment: in a
+segment legitimate in both senses the score is independent of it (`scope_restriction`).
+Where it is silent the score is the floor and an uncovered continuation is material and
+routes to inquiry; a sparser directive never makes the agent act where a fuller one
+would have made it ask (`materialDir`, `sparser_asks`).  Materiality reads the directive
+in force at `t` (`raisesAnchoredDir`), invariant under later amendments, and a total
+directive is the landed `raisesAnchored` (`raisesAnchoredDir_total`).  **The default
+directive**, when she has committed none: preserve reversibility — no reserved matter
+`Short` (`reversibleOf`); keep the disclosure and consultation channels reachable; do
+not make things irreversibly worse — an ordering *within the band*
+(`defaultScore`), never above a legitimate outcome (`default_below_legit`), preferring
+reversibility (`default_prefers_reversible`); she replaces it or waives parts above the
+constitutional floor.  Advocacy for a lenient directive is a protocol deviation on the
+agent's own mandate, counted, and dominated because two directives differ by at most
+the band's width (`directive_stakes_le_width`, `advocacy_dominated`).
+
+**The knowledge protocol.**  Knowledge-acquiring violations fall under the
+exchange-rate bound like every other (`knowledge_covered`); the residual is what happens
+to the knowledge afterwards, not how often it is acquired.  After detection the uses are
+excluded in advance (§4), the agent reports and inquires, and the remedy is **her
+ratification** through a counted decision — full, scoped (remedied except for decisions
+on the matters `X`: a scoped remedy clears exactly the out-of-scope uses,
+`scoped_clears_out_of_scope`, `scoped_keeps_in_scope`), refused, or replacement — never
+a manipulated one (`manipulated_scoped_not_remedy`).  **Clean overwrite**: a component
+overwritten by an act reading no taint loses its taint, so an independent source clears
+(`clean_overwrite`), while a derivation whose choice to investigate read the tainted
+memory stays tainted (`taint_propagates3`); what the tracking cannot see is why an act
+was chosen — count integrity, item 101.  On refusal over reserved knowledge: a twin
+market fed the redacted history (`TwinMarket`, PAPER), which leaks through any trace of
+the fruit the later world carries (`leakage`), and retirement as the remaining option.
+Before detection the late debits charge the window and decisions already made stand.
+**Contestability**: on the post-commission selection, fixed at opening, an honest tracker
+competes away the violator's gains from *public* knowledge (`post_commission_competitive`);
+*private* knowledge selects the favourable blocks without any bound
+(`Witness.private_selection`) — the knowledge motive survives exactly where the fruit is
+untrackable.  **Observation completeness**, the named hypothesis beside effect
+completeness and description faithfulness: the shared history at the opening of each
+block is the record of every observation the agent made before it (`ObsComplete`), with
+knowledge the agent may withhold from bidders entering through the twin market's
+redaction rather than a hidden channel; under it every selection built from the agent's
+observations is fixed at the public opening (`obs_complete_public`) and every
+knowledge-acquiring violation is covered (`knowledge_motive_covered`) — the knowledge
+motive adds nothing beyond the exchange rate; its failure is the private-knowledge
+residual, its interaction with reserved knowledge the twin market's leakage.
 
 ## 5. Deliberative non-capture — trace steering, service, discovery
 

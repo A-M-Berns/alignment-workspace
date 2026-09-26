@@ -3209,6 +3209,17 @@ must turn into a flagged step.  Detection at `k₁` after commission at `k₀` r
 taint from commission and charges the window by late debit (`detectAt`,
 `window_block_charged`, `collected_iff`).
 
+*2026-09-26 (after-compromise round):* count integrity now also covers **the provenance
+of why an act was chosen**.  Under clean overwrite an independent source clears a
+component's taint while a derivation steered by the tainted memory keeps it
+(`AfterCompromise.clean_overwrite`, `taint_propagates3`); the distinction is whether the
+act's *choice* read the memory, which the tracking sees only if the declared reads
+include it — an integrity fact about the interface, not a legitimacy fact.  Also here:
+the twin market's redaction on refusal over reserved knowledge (`TwinMarket`) and its
+leakage residual (`leakage`), and the extension of the disclosure duty to *known*
+third-party compromise (`missedKnownDisclosure`) — what the agent knows is this item's
+companion again.
+
 ### 102. BRIA's bids against the market: block claims as priced securities — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
