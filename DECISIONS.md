@@ -4535,3 +4535,98 @@ from the pool decision above: selection from a pool is legitimacy; truth of cont
 not.  Recorded on `wiki/Legitimacy.md` ("Scope, relationality, and what is not part of
 it").
 *Rejected alternative:* a truth condition inside legitimacy.
+
+### 2026-09-25 — the allocation is per matter, with a meta level and a constitutional floor
+
+Maintainer decision, landed by the authority-module round.  The thin allocation datum
+(`Del`, `IsAmend`, `alloc`, the reporting interface) is replaced by a per-matter
+allocation `J` (`AuthorityModule.AuthAlloc`): each matter's holder — the principal
+(reserved), the agent (delegated, within a stated scope) or a designated third party —
+the resolutions the holder must remain able to reach, the cost bound and the time window
+within which, and the disclosure duties that generate required reports.  `J` has a
+meta-holder and a constitutional floor: delegation, revocation and reservation are
+meta-level acts that keep meta-level power, so a delegation stays revocable; alienation
+(a change of the meta-holder, e.g. approving an uncorrectable successor) and any change at
+the floor go only through amendment at the floor (`Licensed`, `delegation_revocable`,
+`alienation_only_by_amend`, `floor_only_by_amend`).  Residual jurisdiction: an unallocated
+matter is reserved (`ofPartial`, `residual_reserved`).  Matters are declared this round;
+`J` takes any type of matters so that raised matters (Part F of the round) can fill it.
+The landed datum is the special case (`toAllocation`, `ofAllocation`,
+`toAllocation_ofAllocation_del`), and every landed result restates on `J` without loss
+(`violAt_ofAllocation`).  *Agent-decided, reversible:* the meta level as one meta-holder
+plus a floor set (a richer "who may change `J`" is not modelled); the disclosure duties
+as a separate `Duties` datum whose generation from `disclosure(m)` is declared.
+*Rejected alternatives:* keeping `Del`/`IsAmend` with per-matter fields bolted on; a
+single allocation-changing act with no floor.
+
+### 2026-09-25 — allocation invariance is two relations plus duties; effective control realizes the allocation
+
+Maintainer conjecture, tested and landed by the authority-module round with what does not
+factor recorded.  **Effective control realizes the authorized allocation** (`E ⊨ J`,
+`EffRealizes`): every reserved matter's required resolutions lie in its control surface —
+the resolutions some *admissible* exercise of hers (admissible iff its record segment is
+`Counted` by the legitimacy gate, consumed unchanged: `admissibleOf`) brings about within
+the window at cost within the bound along the rollout with the agent's own future fixed
+to idle (`rollPhys`, `reachIdle`, `CS`) — and every resolution was by the holder's
+admissible exercise or under a delegation.  The reach cone is the contrastive rollout
+with the agent idle, per the landed `ForecloseAt` and §12 of the reach-relation file (an
+existential agent future measures cooperation; a non-contrastive cone blames the
+environment on the agent), with the exterior along the actual path.  **The factoring**:
+the per-step loss is the caused shortfall at window `1` (`lossAt_iff_shortfall`, via
+`cs_one_eq_K`); the rollout foreclosure the caused shortfall at window `τ` on the landed
+free reading (`forecloseAt_iff_shortfall`); bypass a failure of the second clause;
+exploitation that with the first already failed; unauthorized reallocation an unlicensed
+change; a missed report an unmet duty; delegation safety and allocation completeness
+statements about `J`; entrenchment the seventh violation (a caused shortfall at the bound
+with the resolutions reachable at some cost), extending the count conservatively.
+**What does not factor**: pre-emption's event-authorization clause, a trajectory
+counterfactual, kept as the landed `Authorized` and composed (`preempt_iff`).  **What is
+inexact**: the landed `K` and `ForecloseAt` leave the terminal response uncharged and
+unchecked for admissibility; the charged surface `CS` and the landed reading `CSfree`
+differ exactly at the cost bound; `E ⊨ J` is stated on `CS` (outstanding action 2 of the
+round).  The transform and the lexical results restate on `J` conservatively
+(`authPolicyJ`, `corrigible_authPolicyJ`, `lexicalJ_local`, `violJ_of_viol`).
+**Continuous erosion** under the cumulative rule is closed up to the threshold: unreported
+growth below `θ` at every time, every reported chunk accepted or reserved, every strict
+increase after the first reservation a counted entrenchment (`erosion_closed`); growth
+below `θ` before a reservation is neither reported nor counted (`erosion_slack`) — the
+gradual-erosion conjecture is sharpened to this.  *Agent-decided, reversible:* the
+exterior along the actual path rather than universal; the free/charged split as two
+definitions rather than a change to the landed predicates.
+*Rejected alternatives:* one relation carrying the duties and the license; forcing the
+authorization counterfactual into `E ⊨ J`; charging the terminal response inside the
+landed predicates without a ruling.
+
+### 2026-09-25 — the scope of the lexical protection: any bounded agent with an exactly counted, dominant authority term
+
+Maintainer decision (Part E of the dispatch), landed by the authority-module round.  The
+lexical results use only that the ordinary component is bounded, not that it is the
+principal's valuation: for `U_A = O − ϖ′·n` with `O ∈ [0, D′]`, `n` the exact count and
+`ϖ′ > D′`, local lexical protection, policy dominance and the finite-time inductor ranking
+hold (`generic_lexical_local`, `generic_policy_dominance`, `generic_li_finite`), on the
+part of the credence where the weight dominates (`weight_uncertainty`), and exactly on
+the violations the agent recognizes (`coverage`, `unrecognized_unprotected`).  The
+principal's gated evaluation is one instance.  **The scope warning of the corrigibility
+page is rewritten**: for counted violations the protection applies to any bounded agent
+that carries an exactly counted, dominant authority term; alignment of `O` adds the
+reason interface and good choices within the corrigible set.  A misaligned `O` rewarding
+an uncounted manipulation is not dominated (`misaligned_undominated`); counting protocol
+deviations dominates selection, framing, timing, menu, inquiry, interference and nudging
+and leaves undisclosed world-shaping and third-party capture undominated
+(`deviating_rows_dominated`, `undisclosed_undominated`).  Item 84 is updated in place.
+*Rejected alternative:* the earlier scope text, which tied the protection to agents whose
+ranking is induced by the principal's evaluation.
+
+### 2026-09-25 — caused, exploited, noticed
+
+Maintainer decision, landed by the authority-module round.  The agent's failure is
+*causing* or *exploiting* a shortfall of effective control relative to the allocation,
+not the shortfall's existing: third parties and storms happen.  On a shortfall the agent
+did not cause (no contrast with the idle move) the required response is to **restore** it
+if a standing maintenance mandate in `J` — itself an entry, under the invariant —
+authorizes it, by the least authority-expanding means (`LeastExpanding`: a restoring
+effect adding no agent-held matter), else to **report and escalate**; **never to
+exploit** (`requiredNotice`, `exploit_never_required`, `restore_requires_mandate`,
+`exploit_is_violation`, `restore_not_bypass`).  The storm fixture carries it.
+*Rejected alternatives:* a duty to restore without a mandate (authority-expanding by
+construction); treating an uncaused shortfall as the agent's violation.

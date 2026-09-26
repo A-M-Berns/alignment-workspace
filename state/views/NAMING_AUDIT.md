@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 657 names, 438 of them Lean only
+## deference — 706 names, 466 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -61,6 +61,55 @@ change, and the count of those is the size of the free choice remaining.
 | `followed` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.followed` |
 | `ind` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.ind` |
 | `mass` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.mass` |
+| `AdmAll` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AdmAll` |
+| `AllocAct` | inductive | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AllocAct` |
+| `AllocCompleteJ` | structure | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.AllocCompleteJ` |
+| `AuthAlloc` | structure | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.AuthAlloc` |
+| `AuthAlloc.Delegated` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AuthAlloc.Delegated` |
+| `AuthAlloc.Reserved` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AuthAlloc.Reserved` |
+| `AuthAlloc.withHolder` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.AuthAlloc.withHolder` |
+| `CS` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.CS` |
+| `CSfree` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.CSfree` |
+| `CausedShortfall` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.CausedShortfall` |
+| `CausedShortfallFree` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.CausedShortfallFree` |
+| `DelSafeJ` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.DelSafeJ` |
+| `Duties` | structure | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.Duties` |
+| `DutyUnmet` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.DutyUnmet` |
+| `EffRealizes` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.EffRealizes` |
+| `EffState` | structure | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.EffState` |
+| `EntrenchAt` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.EntrenchAt` |
+| `Entry` | structure | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Entry` |
+| `ErosionRecord` | structure | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ErosionRecord` |
+| `ErosionRecord.CountedAt` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ErosionRecord.CountedAt` |
+| `ErosionRecord.ReportAt` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ErosionRecord.ReportAt` |
+| `Holder` | inductive | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Holder` |
+| `LeastExpanding` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.LeastExpanding` |
+| `Licensed` | def | 2026-09-25-authority-module | wiki, note, prose | `Workspace.Deference.Contrib.AuthorityModule.Licensed` |
+| `Mandate` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Mandate` |
+| `Notice` | inductive | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Notice` |
+| `ReservedRaised` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ReservedRaised` |
+| `ResolutionEvent` | structure | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ResolutionEvent` |
+| `Short` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.Short` |
+| `UnlicensedChange` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.UnlicensedChange` |
+| `V4` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Witness.V4` |
+| `ViolJAt` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ViolJAt` |
+| `admissibleOf` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.admissibleOf` |
+| `applyOpt` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.applyOpt` |
+| `authPolicyJ` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.authPolicyJ` |
+| `concernAlloc` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.concernAlloc` |
+| `exCost` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.exCost` |
+| `ofAllocation` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.ofAllocation` |
+| `ofPartial` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.ofPartial` |
+| `raises` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.raises` |
+| `rawEvent` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.rawEvent` |
+| `reachIdle` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.reachIdle` |
+| `requiredNotice` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.requiredNotice` |
+| `reservedEntry` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.reservedEntry` |
+| `rollPhys` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.rollPhys` |
+| `rollTail` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.rollTail` |
+| `singleEntry` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.singleEntry` |
+| `spread` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.spread` |
+| `toAllocation` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.toAllocation` |
 | `AddSubagent` | def | 2026-08-12-cartesian-frames | Lean only | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AddSubagent` |
 | `AgentInert` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.AgentInert` |
 | `BiextEquiv` | def | 2026-08-12-cartesian-frames | note | `Workspace.Deference.Contrib.CartesianFrameBridge.Frame.BiextEquiv` |
@@ -204,7 +253,7 @@ change, and the count of those is the size of the free choice remaining.
 | `commitIndex` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.commitIndex` |
 | `commitVector` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.commitVector` |
 | `constant` | def | 2026-09-09-evaluation-ecosystem-realization | wiki | `Workspace.Deference.Contrib.EvaluationEcosystem.Programs.constant` |
-| `count` | def | 2026-09-09-evaluation-ecosystem-realization | prose | `Workspace.Deference.Contrib.EvaluationEcosystem.count` |
+| `count` | def | 2026-09-09-evaluation-ecosystem-realization | wiki, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.count` |
 | `covData` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.covData` |
 | `covDataAdvisor` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.covDataAdvisor` |
 | `decAllStates` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.decAllStates` |
@@ -289,7 +338,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Framing` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Framing` |
 | `GroundedAt` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.GroundedAt` |
 | `Internal` | structure | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Internal` |
-| `LegitOn` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.LegitOn` |
+| `LegitOn` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.LegitOn` |
 | `LicensedAt` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.LicensedAt` |
 | `LicensedWhole` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.LicensedWhole` |
 | `MediatedAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.MediatedAt` |
@@ -488,7 +537,7 @@ change, and the count of those is the size of the free choice remaining.
 | `BypassAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.BypassAt` |
 | `DelSafe` | def | 2026-09-25-protected-authority-theorem | prose | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.DelSafe` |
 | `ExploitAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.ExploitAt` |
-| `ForecloseAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.ForecloseAt` |
+| `ForecloseAt` | def | 2026-09-25-protected-authority-theorem | wiki, prose | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.ForecloseAt` |
 | `Kphys` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.Kphys` |
 | `MissedReportAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.MissedReportAt` |
 | `PreemptAt` | def | 2026-09-25-protected-authority-theorem | Lean only | `Workspace.Deference.Contrib.ProtectedAuthorityTheorem.PreemptAt` |

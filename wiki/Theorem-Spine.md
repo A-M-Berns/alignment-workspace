@@ -870,6 +870,51 @@ a cumulative threshold bounds unreported erosion by the threshold at every time
 [`ProtectedAuthority.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/ProtectedAuthority.lean),
 [`Legitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/Legitimacy.lean).
 
+**Definition 10.17 (The allocation, the control surface, effective realization).**  The
+allocation `J` gives each matter a holder (reserved, delegated, third party), the
+resolutions the holder must remain able to reach, a cost bound, a window and disclosure
+duties, with a meta-holder and a constitutional floor; delegation, revocation and
+reservation are licensed acts keeping the meta-holder, and only the floor amendment
+alienates (`AuthAlloc`, `Licensed`, `delegation_revocable`, `alienation_only_by_amend`,
+`floor_only_by_amend`, `residual_reserved`).  The control surface of a matter she holds
+is the set of its resolutions some admissible exercise of hers — admissible iff its
+record segment is `Counted` (Definition 3.5's gate, `admissibleOf`) — brings about within
+the window at cost within the bound, along the rollout with the agent's future fixed to
+idle (`rollPhys`, `reachIdle`, `CS`).  **`E ⊨ J`** (`EffRealizes`): every reserved
+matter's requirement lies in its surface, and every resolution was by the holder's
+admissible exercise or under a delegation.  The landed thin allocation is the special
+case (`toAllocation`, `violAt_ofAllocation`).
+
+**Theorem 10.18 (The factoring).**  Allocation invariance is two relations plus duties:
+the landed per-step loss is the caused shortfall of the surface at window `1`
+(`lossAt_iff_shortfall`, via `cs_one_eq_K`), the rollout foreclosure the caused shortfall
+at window `τ` on the landed free reading whose terminal response is uncharged
+(`forecloseAt_iff_shortfall`, `CSfree`), bypass a failure of the second clause
+(`bypassAt_iff_clause2`), exploitation that with the first already failed
+(`exploitAt_iff`), unauthorized reallocation an unlicensed change
+(`reallocAt_iff_unlicensed`), a missed report an unmet duty (`missedReport_iff_duty`),
+delegation safety and allocation completeness statements about `J` (`delSafe_iff`,
+`allocComplete_iff`); entrenchment — a caused shortfall at the bound with the resolutions
+reachable at some cost — is the seventh violation and extends the count conservatively
+(`EntrenchAt`, `violJ_of_viol`, `violJ_iff_of_no_entrench`).  Pre-emption's
+event-authorization clause is a trajectory counterfactual and does not factor
+(`preempt_iff`).  On an uncaused shortfall the required response is to restore under a
+maintenance mandate else report; exploiting it is a violation (`requiredNotice`,
+`exploit_is_violation`, `restore_not_bypass`).  Under the cumulative rule continuous
+erosion is closed up to the threshold (`erosion_closed`, `erosion_slack`).  **LEAN**.
+
+**Theorem 10.19 (The generic lexical lemma).**  For any bounded objective `O ∈ [0, D′]`
+with an exactly counted authority term of weight `ϖ′ > D′`: local lexical protection,
+policy dominance and the finite-time inductor ranking (`generic_lexical_local`,
+`generic_policy_dominance`, `generic_li_finite`); on the part of the credence where the
+weight dominates (`weight_uncertainty`, `weight_uncertainty_expect`); exactly on
+recognized violations (`coverage`, `unrecognized_unprotected`).  A misaligned objective
+rewarding an uncounted manipulation is not dominated; counting protocol deviations
+dominates the deviating consultation rows and leaves undisclosed world-shaping
+undominated (`misaligned_undominated`, `deviating_rows_dominated`,
+`undisclosed_undominated`).  **LEAN**.  Lean:
+[`AuthorityModule.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/PINSHA/lean/Workspace/Deference/Contrib/AuthorityModule.lean).
+
 ## 11. The counterexamples that fix the shape
 
 Each of these is exact and is why the corresponding definition has the form it has.
