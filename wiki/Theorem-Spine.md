@@ -1038,7 +1038,7 @@ by content (`HonestExp`, `noise`, `NoiseBounded`), the old form as the noise-fre
 `trackerAllowance2_zero`), the per-`K` tail from the pinned Mathlib's Azuma–Hoeffding
 (`subgaussian_tail`, `subgaussian_two_sided`, `azuma_selected_tail`) and the witnesses
 (`Witness.own_proposal_insufficient`, `noisy_honesty_witness`).  **LEAN**.  Lean:
-[`BRIAFollowup2.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3f515d476d00616cac4a17c3389a56951964db48/lean/Workspace/Deference/Contrib/BRIAFollowup2.lean).
+[`BRIAFollowup2.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f96c5fdecb0f5d8174eecdf95bd33e4cd47b58f7/lean/Workspace/Deference/Contrib/BRIAFollowup2.lean).
 
 ## 11. The counterexamples that fix the shape
 
