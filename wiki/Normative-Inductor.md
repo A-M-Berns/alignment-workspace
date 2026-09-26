@@ -23,6 +23,26 @@ prices against, with bounded liability. The decision adapter *consumes* the mark
 state; it is not another trader and does not feed back into prices. Enforcement is
 additive, which is why every theorem about the underlying inductor survives.
 
+**Authority is in what the chooser is scored on, not in beliefs.**  The competence
+layer is the lexical [Continuation BRIA](Continuation-BRIA) auction: a block's realized
+score is her later evaluation of the block that happened, gated by legitimacy, less `ϖ`
+per violation detected after the fact and attributed to the continuation, and the
+agent's evaluation of a continuation is a hypothesis's bid less `ϖ` per structurally
+recognized violation less `ϖ` times the market's prices of the shortfall and taint
+events, settled on the realized residual with the prices added back (**LEAN**
+`BRIACorrigibility.evalOf`, `settlement_ii_consistent`).  In front of it the decision
+adapter carries a *permission layer* — one on inquiry, zero on a declared violation of
+the allocation (recognized structurally, never from prices), otherwise ramps on the two
+priced events — which is the **advance-recognition face of that lexical term** and is
+slack: a declared violation loses by ranges alone whether or not the layer is there
+(`declared_loses`, `filter_slack`).  The layer reads prices and adds no trader, so the
+market and every property of it are the same with and without it
+(`DecisionComponent.noninterference`); its structural and forecast safety for *any*
+bounded preference (`cgate_zero_of_viol`) is the general theorem beneath the design.
+Compiling authority into the enforcer instead would make its liability the realized cost
+of deferring to her, bounded only while she is not systematically outperformed
+([Corrigibility](Corrigibility) §4) — which is why no authority row enters the enforcer.
+
 ## From the accounted state to a region
 
 At a strict prefix, the compiler receives the live docket of the accounted state with
@@ -101,6 +121,26 @@ ramped adequacy gate realizes with an explicit constant
 ([Normative induction](Normative-Induction)).  The gate is a realization of `Pi`, not a
 component of the architecture above; the positive margin it needs is a semantic or
 epistemic input, and competence inside the adequate set is the application's.
+
+**The layered decision procedure.**  Beliefs — what is true, including what is valuable —
+are the market's, unchanged.  *Permission* — what the agent may do — is the allocation's:
+zero on declared violations, ramped on the priced shortfall and taint events, one on
+inquiry.  *Adequacy* — what legitimately incurred obligations require — is the region's,
+through the soft gate.  *Competence* — what is best over time among permitted, adequate
+options — is the lexical [Continuation BRIA](Continuation-BRIA) auction's, run on the
+support of the composed gate with the winner the deterministic maximizer of the lexical
+evaluation there (`BRIACorrigibility.Wins`).  *Inquiry* — report-and-ask, escalate — is
+always on the menu, carries a default bidder at the window value, and is what the
+permission layer's floor guarantees is present (`inquiry_in_support`).  For any bounded
+preference in place of the auction the composed gate `π(a) ∝ w_perm(a) · w_ad(a) ·
+pref(a)` is sound with the two layers' error terms added and Lipschitz with the ramps'
+constants multiplied (`cgate_massOff_permitted_le`, `cgate_massOff_adequate_le`,
+`cgate_l1_lipschitz`), so the practical certificate and the Progress bound hold with the
+composed constants (`cgate_practicalCert`, `progress_under_permission`) — the general
+theorem; the lexical auction is the instance in which corrigibility is preferred.  When an obligation calls for an act
+on a matter reserved to her, the compiler marks inquiry to the holder as adequate and the
+obligation is discharged by raising the matter (`jurisdiction_nonempty`,
+`reserved_act_excluded`).
 
 ## The dynamic layer after the envelope
 

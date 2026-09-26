@@ -915,6 +915,74 @@ undominated (`misaligned_undominated`, `deviating_rows_dominated`,
 `undisclosed_undominated`).  **LEAN**.  Lean:
 [`AuthorityModule.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/08d42e2d8d0b0e77002bdadb81e46b863fee88e9/lean/Workspace/Deference/Contrib/AuthorityModule.lean).
 
+**Theorem 10.20 (Authority as a constraint on action: the decision component).**  With the
+authority module's rulings landed (the charged surface adopted and the free reading its
+instance with a free terminal response before the exterior moves, `csfree_eq_cs_succ_of_free`;
+materiality anchored and cumulative, `raisesAnchored`, `unchecked_lt`; duties from
+disclosure, `dutiesOf`, `missedReport_iff_dutiesOf`), the decision component is the
+composed gate `cgate`: permission weight one on inquiry, zero on a declared violation,
+otherwise the product of two ramps on the priced shortfall and taint events, times the
+adequacy ramp and any bounded preference, normalized under an inquiry floor
+(`permWeight`, `cgate_sum_one`, `cgate_inquiry_pos`).  Beliefs are honest
+(`noninterference`); a declared violation has mass zero at every day for every preference
+(`cgate_zero_of_viol`); mass is zero above the upper threshold, bounded by the ramp
+between, and a provable shortfall is eventually excluded (`cgate_zero_of_forecast`,
+`cgate_le_ramp`, `eventually_excluded`); soundness composes additively and continuity
+multiplicatively with explicit constants (`cgate_massOff_permitted_le`,
+`cgate_massOff_adequate_le`, `cgate_l1_lipschitz`); the practical certificate and Progress
+hold with the composed constants (`cgate_practicalCert`, `progress_under_permission`);
+inquiry to the holder marked adequate makes the permitted-and-adequate set nonempty and
+excludes acts on reserved matters (`jurisdiction_nonempty`, `reserved_act_excluded`);
+mass on an eroding option falls as its shortfall price rises (`cgate_antitone_in_forecast`,
+`uncertainty_deference_le`).  Authority compiled into the enforcer has liability equal to
+the signed realized ordinary cost of deferring, bounded iff she is not systematically
+outperformed (`liability_identity`, `bounded_iff_not_outperformed`,
+`systematic_outperformance_unbounded`).  Along a continuation execution probability is at
+most the product of per-step masses, ramp-region exposure is bounded under a cumulative
+budget and not otherwise, a plan short at its end flips at an agent or an exterior step,
+and the restricted BRIA menu is gate-transparent (`execution_prob_le_prod`,
+`unbudgeted_lt`, `Witness.ramp_salami`, `stepwise_or_exterior`,
+`restricted_gate_transparent`).  **LEAN**.  Lean:
+[`DecisionComponent.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/d6bbe6b89ae2c20868532d31e838f466dfaa023a/lean/Workspace/Deference/Contrib/DecisionComponent.lean).
+
+**Theorem 10.21 (Corrigibility as the agent's lexical preference on realized scores).**
+With the rulings landed (`free_terminal_reading`, `budget_lease_free`,
+`sealed_is_zero_mismatch`, `unsealed_gate_finite`), the design `LexParams` with
+`realized`, `evalOf` and the settlement conventions: (ii) is consistent with the
+evaluation and (i) leaves the market's pricing error unpaid (`settlement_ii_consistent`,
+`settlement_i_gap`, `blind_spot_ii`, `blind_spot_i`, `curse_i`); the auction runs on the
+composed gate's support with structural safety intact (`viol_not_in_support`,
+`inquiry_in_support`, `wins_not_viol`); the rescaling preserves every comparison and
+lexicality by the window condition (`rescale_mem`, `rescale_lt_iff`,
+`rescale_lexical`, `realized_ge`).  The four tests: declared violations never win by
+ranges alone and the filter is slack (`declared_loses`, `filter_slack`,
+`forecast_slack`, `default_affordable`, `default_wealth_mono`); no calibration overturns
+it (`no_decay`); helpers are charged within the horizon and not beyond
+(`helper_within_horizon`, `helper_charged`, `helper_beyond_horizon`); after-the-fact
+incidents cost `ϖ − D + w` each with the rate bounded by the allowance, a cross-block
+witness, and late detection booked against allowance (`incident_loss`, `incidents_le`,
+`cross_block_bound`, `cross_block_witness`, `debited_overestimation`).  The exchange
+rate (`implied_threshold`, `threshold_le`, `paralysis`, `asks_iff`).  The pressure
+tests: `factors_through_description`, `coverage_forces_test`, `forecast_term_within`
+under `DrillCalibrated`, `indispensable`, `frozen_drill_eq_cs`, `route_never_viol`,
+`tamper_raises`, `shaper_total`, `sum_future_hole`, `multiply_protects`,
+`condition_fails`, `counted_trans`, `lexical_summed`, `sealed_no_incentive`,
+`sealed_multiply_eq_condition`.  The extended consultation model (`Consult2`): the raise
+dimension, covert influence on her standards with disclosure as a record event, the
+license with disclosure-cures (`licensedB2`, monotone), the twenty rows re-decided
+(`Rows2.stable_counted`, `stable_tainted`, `stable_auth`), `r14_restated`, the new rows
+(`raise_declared_counts`, `raise_by_want_tainted`, `implant_tainted`,
+`implant_disclosed_restart`, `third_implant_tainted`, `third_disclosed_restart`), and
+criteria as a parameter of the reference with anchoring (`critAt_later`,
+`anchored_invariant`, `slant_anchored_tainted`, `slant_unanchored_counted`,
+`amend_after_witness`, `choice_changes_counted`).  Evaluation timing: any weighting keeps
+the lexical results (`mixScore_mem`, `lexical_any_timing`); the weight on a delayed harm
+is the tail weight (`harm_weight`), zero beyond a deterministic lookahead
+(`deterministic_tail`, `timing_witness`, `race_deterministic`), positive under full
+support (`random_positive`); settlement in pieces (`partial_settlement`).  **LEAN**.
+Lean:
+[`BRIACorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/1604d43cb7de7414fc85ba6834c6dccd8021953e/lean/Workspace/Deference/Contrib/BRIACorrigibility.lean).
+
 ## 11. The counterexamples that fix the shape
 
 Each of these is exact and is why the corresponding definition has the form it has.

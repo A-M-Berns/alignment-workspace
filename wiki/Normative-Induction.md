@@ -127,6 +127,31 @@ maximization.**
   response, charged at `D` through the residual and never a violation; in the Lean
   this is a wrapper silent under margin, and the cleaner semantics compiles "inquiry is
   adequate" from a certified conflict so that inquiry is an ordinary response.
+- **The competence layer is the lexical Continuation BRIA auction.**  A block's
+  realized score is her later evaluation of the block that happened, gated by
+  legitimacy, less `ϖ` per violation detected after the fact and attributed to the
+  continuation; a continuation is evaluated as a hypothesis's bid on the residual less
+  `ϖ` per structurally recognized violation less `ϖ` times the market's prices of the
+  shortfall and taint events; the winner is settled on the realized residual with the
+  prices added back (**LEAN** `BRIACorrigibility`).  A declared violation loses at every
+  block by ranges alone, no calibration overturns it, and the priced risk enters as an
+  exchange rate with inquiry absorbing it.
+- **The permission layer is that term's advance-recognition face.**  In front of the
+  adequacy gate sits a permission weight: one on inquiry, zero on a declared violation
+  of the allocation — recognized structurally, not from prices — and otherwise the
+  product of two ramps (one below a lower threshold, zero above an upper one) on the
+  market's prices of the shortfall event and the taint event.  It is slack for the
+  lexical auction (`filter_slack`, `forecast_slack`) and kept as defence in depth.  For
+  *any* bounded preference in place of the auction the composed gate multiplies it with
+  the adequacy ramp and normalizes with a mass floor on inquiry; it reads prices and adds
+  no trader, so the market is untouched; a declared violation gets probability zero at
+  every day whatever the preference; mass is zero above the upper threshold and bounded
+  by the ramp between; soundness composes as the sum of the two layers' error terms and
+  continuity as the product of the ramps with the inquiry floor keeping the normalization
+  Lipschitz, so the practical certificate — and Progress — hold with the composed
+  constants `M = D·κ`, `ε = ε_ad + D·(θ_inq + θ_perm)` (**LEAN** `DecisionComponent`) —
+  the general theorem.  Generability of the two priced events is a named hypothesis
+  (items 101 and 90), not a component of the bound.
 - **The dynamic layer.**  Progress is agnostic about how responses are selected.  When
   an admissible act changes the next admissible set, a myopic gated learner is safe and
   not competent against legitimate continuation policies; the learner that supplies

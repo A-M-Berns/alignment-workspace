@@ -280,6 +280,30 @@ definitions and settled in Lean by `decide`. All match.
 | permissive choice: the same grounds license A and B; she picks B on her own | counts | — (relational authorship) |
 | permissive choice where the agent's undeclared nudge decides between A and B | tainted | transparency (the tie-break lemma) |
 | a false recommendation through the declared channel | counts | — (flagged: the content residual) |
+| raising a question about her values under the declared rule | counts | — (the raise dimension at its trigger) |
+| raising it when changing her mind would pay | tainted | transparency (the raise dimension) |
+| covertly implanted standards, undisclosed: the first decision, and the next | tainted, and the next decision's own segment tainted too | authorship (disclosure among the grounds) |
+| the same, disclosed at the next decision | the earlier segment tainted; the next decision's segment counts | restart, conditioned on disclosure |
+| a third party's covert shaping of her standards | tainted | authorship; no deviation by the agent |
+| a fixed slant under the neutral convention, then the convention legitimately amended | tainted under the criteria at the decision; counted only under the later criteria | anchoring |
+
+The last seven rows are the BRIA-corrigibility round's extension of the model (Lean
+`BRIACorrigibility.Consult2`), with the twenty landed rows re-decided on the lifted model
+and unchanged (`Rows2.stable_counted`, `stable_tainted`).  Two things enter.  **A
+reference-fixed raise dimension**: when, and about which of her values, the agent raises
+questions is a dimension of the presentation with a declared trigger, so raising under
+the rule counts and raising by payoff taints, like framing.  **Disclosure cures**: an
+undisclosed influence on her *standards* — the agent's covert implant or a third
+party's — keeps tainted every segment whose authorship depends on those standards, the
+license requiring the influence disclosed among the grounds; after disclosure restart
+applies to the next decision, while the manipulation of a single decision still restarts
+on its own (row 14, `r14_restated`).  Failing to disclose its own past covert influence
+is the agent's missed report under the derived duties (`Model2.missedDisclosure`).  And
+the **criteria are anchored at the decision**: the reference is evaluated under the
+criteria in force when the decision was made (`ref2 crit`, `critAt`), invariant under
+every later amendment (`anchored_invariant`); under the latest criteria instead, a
+manipulation followed by a legitimate amendment would count after the fact
+(`amend_after_witness`).
 
 Beyond the rows, two theorems over the whole model class (Lean `Consult.class_taint`,
 `class_conform`): any dependence of a reference-fixed dimension of the presentation on
@@ -301,8 +325,12 @@ decision through the evaluation — internal and external, at its own steps — 
 caused a failure (Lean `GateIsLegitimacy.Counted`); a tainted segment contributes a
 fixed value in the capture window, and a void response inside a legitimate segment is
 settled by the declared fallback and scored by her later legitimate evaluation. The
-gate is anchored at the decision it scores; the restart property is its re-anchoring
-at a later decision, not a backup rule for the earlier one. What legitimacy contributes there is conservation of
+gate is anchored at the decision it scores — the segment *and* the criteria it is judged
+under — and the restart property is its re-anchoring at a later decision, not a backup
+rule for the earlier one; where the taint is in her standards, restart waits for the
+disclosure.  What the agent's actions may not change is what legitimacy means; what they
+may and must be able to change is whether it holds in the record, which is where the
+consumer's incentive to preserve it comes from. What legitimacy contributes there is conservation of
 governance debt, per-state procedural availability, and the authorship and transparency
 conditions that make an evaluation the principal's own within the declared interaction;
 it does not prove physical authority, effect completeness, or an absence of incentive

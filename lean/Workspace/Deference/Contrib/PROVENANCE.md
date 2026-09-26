@@ -27,6 +27,8 @@
 | `Legitimacy.lean` | `prompts/2026-09-25-legitimacy-internal-external/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-25 | `prompts/2026-09-25-legitimacy-internal-external/` | — |
 | `GateIsLegitimacy.lean` | `prompts/2026-09-25-gate-is-legitimacy/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-25 | `prompts/2026-09-25-gate-is-legitimacy/` | — |
 | `AuthorityModule.lean` | `prompts/2026-09-25-authority-module/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-25 | `prompts/2026-09-25-authority-module/` | — |
+| `DecisionComponent.lean` | `prompts/2026-09-25-decision-component/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-25 | `prompts/2026-09-25-decision-component/` | — |
+| `BRIACorrigibility.lean` | `prompts/2026-09-26-bria-corrigibility/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-09-26 | `prompts/2026-09-26-bria-corrigibility/` | — |
 | `ReasonSupply.lean` | `prompts/2026-09-16-noncapture-compilation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer; the refinement dispatch) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-noncapture-compilation/` | — |
 | `ReasonDiscovery.lean` | `prompts/2026-09-16-noncapture-compilation/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer; the third-pass dispatch) | `ci-only` | 2026-09-16 | `prompts/2026-09-16-noncapture-compilation/` | — |
 

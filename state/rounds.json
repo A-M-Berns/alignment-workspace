@@ -1662,6 +1662,42 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-25-authority-module/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-25-decision-component",
+      "date": "2026-09-25",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-25-decision-component",
+      "verdict": "AUTHORITY-IS-A-CONSTRAINT-ON-ACTION-INSIDE-THE-NORMATIVE-INDUCTOR-A-PERMISSION-LAYER-ZERO-ON-DECLARED-VIOLATIONS-AND-RAMPED-ON-THE-PRICED-SHORTFALL-AND-TAINT-EVENTS-COMPOSED-WITH-THE-LANDED-SOFT-GATE-UNDER-AN-INQUIRY-FLOOR-LEAVING-BELIEFS-HONEST-STRUCTURALLY-SAFE-FOR-ANY-OBJECTIVE-FORECAST-SAFE-EXACTLY-AT-EVERY-DAY-WITH-SOUNDNESS-CONTINUITY-AND-PROGRESS-COMPOSING-UNDER-EXPLICIT-CONSTANTS-INQUIRY-TO-THE-HOLDER-DISCHARGING-OBLIGATIONS-ON-RESERVED-MATTERS-CAPABILITY-TIGHTENING-EXCLUSION-AND-THE-ENFORCER-ROUTE-REFUTED-BY-ITS-LIABILITY-BEING-THE-COST-OF-DEFERENCE — with the authority module's rulings landed first, the reach cone along the actual exterior path, the charged control surface adopted in the allocation theorem with the free reading its instance where the terminal response costs nothing, materiality anchored at the pre-action evaluator and cumulative under a salami bound, and duties derived from each matter's disclosure regime, the Normative Inductor's decision component is a layered procedure in which beliefs are the market's, a permission weight is one on inquiry, zero on a declared violation recognized structurally and the product of two ramps on the priced shortfall and taint events otherwise, the landed adequacy ramp and any bounded preference rank within the permitted set, and an inquiry floor keeps the normalizer positive; the layer reads prices and adds no trader so every inductor guarantee is unchanged, a declared violation has mass zero at every day for every preference, mass is zero above the upper threshold and bounded by the ramp between, a provable shortfall is eventually excluded, soundness composes as the sum of the two layers' error terms and continuity as the product of the ramps with the inquiry floor keeping normalization Lipschitz, the practical certificate holds with the composed constants and feeds the landed Progress bound unchanged, inquiry to the holder marked adequate makes the permitted-and-adequate set nonempty with acts on reserved matters excluded, mass on an eroding option falls as its shortfall price rises while the uncertainty-based chooser's reason to defer shrinks with its calibration error; compiling authority into the enforcer instead gives it a cumulative liability equal to the signed realized ordinary cost of deferring, bounded exactly when she is not systematically outperformed and unbounded when she is, so the preservation hypothesis fails and the constraint belongs on action; a continuation executes with probability at most the product of its per-step masses, ramp-region exposure is bounded by a cumulative budget and accumulates unboundedly without one, a plan short at its end and not at its start flips at an agent step where the step-wise check catches it or at an exterior step that is not the agent's, and each executed act carries grounds, a license bound to the allocation and the event-kind slot, and lineage.",
+      "verdict_source": "projects/deference/rounds/2026-09-25-decision-component/README.md",
+      "depends_on": [
+        "2026-09-25-authority-module",
+        "2026-09-25-gate-is-legitimacy",
+        "2026-09-08-continuation-bria",
+        "2026-09-15-li-corrigibility"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-25-decision-component/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-26-bria-corrigibility",
+      "date": "2026-09-26",
+      "project": "deference",
+      "path": "projects/deference/rounds/2026-09-26-bria-corrigibility",
+      "verdict": "CORRIGIBILITY-IS-THE-AGENTS-LEXICAL-PREFERENCE-ON-REALIZED-SCORES-DECLARED-AND-PRICED-VIOLATIONS-LOSE-BY-RANGES-ALONE-WITH-THE-FILTER-SLACK-AFTER-THE-FACT-VIOLATIONS-ARE-A-RATE-BOUND-AGAINST-A-REPLENISHING-ALLOWANCE-DEFEATED-BY-A-PERSISTENT-UNCONTESTED-ADVANTAGE-SETTLEMENT-ON-THE-PRICES-CORRECTS-THE-MARKETS-BLIND-SPOTS-DISCLOSURE-CURES-COVERT-SHAPING-OF-HER-STANDARDS-CRITERIA-SEALED-EVENT-UNSEALED-AND-A-RANDOM-EVALUATION-TIME-RECOMMENDED-NOT-ADOPTED — with the authority module's remaining rulings landed first (the free terminal reading, the budget an arrangement constant, activation independence restated as the zero case of the mismatch term), a Continuation BRIA agent scored on her realized, gated, later evaluation of the block that happened, with the lexical authority term in the realized score and in its own evaluation of continuations, prefers corrigibility on every declared and every priced violation by ranges alone — the permission layer is that term's advance-recognition face and is slack — and no calibration of ordinary value overturns it; a helper's violation is charged within the settlement horizon and not beyond it, a violation counted only after the fact costs at least ϖ − D + w per incident with the incident *rate* bounded by a replenishing allowance and a persistent uncontested advantage the witness against the count; settling the winner on the prices rather than the realized forecast-class violations makes bidders correct the market's blind spots where the other convention leaves the optimizer's curse unpaid; lexical becomes an exchange rate under uncertainty with inquiry absorbing the risk and paralysis past (D − w)/p_min; an undisclosed influence on her standards taints every dependent segment until disclosed and restart follows disclosure, a raise-by-payoff taints and a raise-by-rule counts, criteria anchored at the decision are invariant under later amendments while the latest-criteria rule turns a tainted segment counted, the agent's choice changes Counted in the realized record and a sealed event leaves no incentive to preserve legitimacy; count integrity, the settlement horizon and the generability of the control model are the named hypotheses; and among the three evaluation-timing options the deterministic lookahead leaves a free delay at every day, the mixture never settles, and a random evaluation time with a geometric family is recommended and not adopted.",
+      "verdict_source": "projects/deference/rounds/2026-09-26-bria-corrigibility/README.md",
+      "depends_on": [
+        "2026-09-25-decision-component",
+        "2026-09-25-authority-module",
+        "2026-09-25-gate-is-legitimacy",
+        "2026-09-08-continuation-bria"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-26-bria-corrigibility/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }

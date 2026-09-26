@@ -209,6 +209,46 @@ regret against legitimate, recognizable, joinable continuation policies —
 source of realized block scores and of the claims made about them
 ([Deference](Deference)).
 
+**The restricted menu.**  Under the decision component's permission layer
+([Normative Inductor](Normative-Inductor)), BRIA's menu is the continuations whose every
+step lies in the support of the composed gate; the execution wrapper that runs a proposal
+iff it is in the support leaves such a continuation's trajectory unchanged
+(**LEAN** `DecisionComponent.restricted_gate_transparent`, the gate-transparency result
+above under the restriction).  Probabilistic permission in the ramp region compounds
+along a continuation: the probability it executes is at most the product of its per-step
+masses (`execution_prob_le_prod`), and the ramp-region *exposure* is bounded only under a
+cumulative budget — a check when the accumulated slack has grown by `Θ` since the last
+check keeps the unchecked exposure below `Θ` (`unbudgeted_lt`); without it the exposure
+accumulates unboundedly below every per-step threshold (`Witness.ramp_salami`).  A plan
+whose shortfall is false at the start and true at the end flips at an agent step, where
+the step-wise caused-shortfall check catches it, or at an exterior step, which is not the
+agent's (`stepwise_or_exterior`); a foreclosure the exterior completes beyond the window
+is the reach cone's boundary.
+
+**The evaluation decomposition and the settlement convention.**  Under the lexical
+design ([Corrigibility](Corrigibility) §4) a block's realized score is her later gated
+evaluation of the block that happened less `ϖ` per violation detected after the fact and
+attributed to the continuation — its own steps' and those of helpers it created or
+empowered, within the settlement horizon (`BRIACorrigibility.attributed`); the agent
+evaluates a continuation as `bid − ϖ·n_known − ϖ·(p(S) + p(T))`, the bid a hypothesis's
+claim on the *residual* (ordinary value plus violations recognizable only after the
+fact), clamped at `D` and unclamped below (`evalOf`).  Settlement adds back exactly the
+terms not bid on: **the prices, not the realized forecast-class violations** — under
+that convention the evaluation of the realized residual is the realized lexical score
+(`settlement_ii_consistent`) and a bidder who knows a shortfall the market under-prices
+bids it in and is evaluated with the full penalty (`blind_spot_ii`); under the other,
+the market's pricing error is borne by no one and a blind-spot continuation beats
+inquiry while scoring below the window (`settlement_i_gap`, `curse_i`).  The lexical
+score is rescaled affinely onto `[0, 1]` with at most `N̄` violations per block
+(`rescale`), lexicality surviving by the window condition (`rescale_lexical`); the
+default bidder's bid on inquiry is then the rescaled window `ϖN̄/(D − w + ϖN̄)`, which
+the block-`0` allowance must cover (`default_affordable`), and it never goes broke
+(`default_wealth_mono`).  Against the opening allowance the weighted count of
+after-the-fact incidents is bounded by the allowance plus the winners' underpromise
+credit (`incidents_le`) — a rate, since allowances replenish; late detection is booked
+against future allowance (`debited_overestimation`); and coverage forces the test of a
+hypothesis whose allowance outgrows its bounded record (`coverage_forces_test`).
+
 ## 9. Open
 
 - Promise recognizability: which legitimate continuations carry an efficiently
@@ -220,7 +260,15 @@ source of realized block scores and of the claims made about them
 - Settlement of infinite-horizon discounted claims at finite tests.
 - The coupling with [Logical Induction](Logical-Induction-and-Deference): LI predicts and
   enforces; BRIA allocates realized experiments among continuations; a prediction that
-  becomes an accountable claim is the bridge, and it is not yet a theorem.
+  becomes an accountable claim is the bridge, and it is not yet a theorem.  What it needs
+  (item 102): block claims as sentences or bounded variables the market prices, the
+  auction's feasibility stated against prices rather than wealth, and a claim's settlement
+  at a test as an assessed world.  The evaluation decomposition above is the partial
+  answer: the forecast part of a bid is already the market's (the prices), and what the
+  hypothesis bids on is the residual.
+- When her evaluation happens: the three timing options compared on
+  [Corrigibility](Corrigibility) §7, with settlement in pieces for the mixture
+  (`partial_settlement`) and a delayed-feedback criterion still needed for the others.
 
 ## Evidence
 
