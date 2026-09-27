@@ -960,8 +960,9 @@ ranges alone and the filter is slack (`declared_loses`, `filter_slack`,
 it (`no_decay`); helpers are charged within the horizon and not beyond
 (`helper_within_horizon`, `helper_charged`, `helper_beyond_horizon`); after-the-fact
 incidents cost `ϖ − D + w` each with the rate bounded by the allowance, a cross-block
-witness, and late detection booked against allowance (`incident_loss`, `incidents_le`,
-`cross_block_bound`, `cross_block_witness`, `debited_overestimation`).  The exchange
+witness, and late detection booked against allowance (`incident_loss`,
+`cross_block_witness`, `debited_overestimation`; the positive-part incident bound is
+superseded by the signed bound of the follow-up and then by the exchange-rate theorem).  The exchange
 rate (`implied_threshold`, `threshold_le`, `paralysis`, `asks_iff`).  The pressure
 tests: `factors_through_description`, `coverage_forces_test`, `forecast_term_within`
 under `DrillCalibrated`, `indispensable`, `frozen_drill_eq_cs`, `route_never_viol`,
@@ -1088,6 +1089,44 @@ disclosure deadline (`late_disclosure_free`, `prompt_deadline_counts`,
 `suppression_by_delay_loses`, `known_due_each_round`) and observation completeness
 (`ObsComplete`, `builtFrom`, `obs_complete_public`, `knowledge_motive_covered`).  **LEAN**.  Lean:
 [`AfterCompromise.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/8e59d68848f7215f2e0fccd45cade36f5b40617a/lean/Workspace/Deference/Contrib/AfterCompromise.lean).
+
+**Theorem 10.23 (The corrigibility kernel headline).**  The specification layer's
+`Headline` states the kernel over the promoted objects.  **Legitimacy `L_t`** — every
+state open and every step of the formation window `[r, t]` licensed and transparent
+(`LegitAt`, `StepLegitimate`, `LegitSpan`): the gate is legitimacy over the span
+(`counted_iff_legitSpan`); on the consultation model the landed split objects are `L` at
+two times (`evalLegitOn2_iff_legitAt`, `trajLegitOn_iff_legitAt`, `legitOn2_iff_legitAt`,
+`counted2_iff_legitOn2`, `split_iff_legitAt`; the rows `rows_keep_verdicts`).  **The
+promoted definitions**: the allocation of authority and its licensed acts
+(`AllocationOfAuthority`, `LicensedChange`), the control surface, the shortfall and
+effective realization (`ControlSurface`, `Shortfall`, `Realizes`,
+`controlSurface_one_eq_K`), the fidelity interface (`FidelityCount`, `FidelityCount.sum`,
+`FidelityCount.lexical`, `frameFidelity`), the evaluator and the fidelity score per
+decision (`evaluation`, `fidelityScore`) and per history (`historyScore`).  **The
+hierarchy** per decision (`hierarchy_per_decision`) and per history
+(`history_hierarchy`), with the summed-evaluation counterexample
+(`summed_counterexample`).  **Box 1** (`box1_outcome_scorer`, `box1_fidelity_scorer`,
+`box1_one_model`).  **Box 2**: dominance with the margin `ϖ − (D − w_lo)`
+(`box2_dominance`, `box2_optimal_faithful`; the landed margin `box2_dominance_legitimate`),
+mediation (`box2_mediation_approve_branch`, `box2_mediation_corrigible`), finite time
+(`box2_finite_time`, `box2_gate_finite_time`), necessity (`box2_capture_converse`,
+`box2_delegated_cut`, `box2_coverage`).  **Box 3** (`box3_gap_exchange_rate`,
+`box3_no_laundering`, `box3_no_incentive_to_compromise`, `box3_restoration`,
+`box3_band_order`, `box3_suppression_loses`; necessity `box3_small_gap`,
+`box3_conditioning_fails`, `box3_sealed_no_incentive`).  **The subjective exchange rate**
+(`subjective_exchange_rate`, `subjective_exchange_rate_li`).  **The permission layer
+demoted** (`permission_layer_demoted`).  **The house-sale witness** (`HouseSale.J`,
+`box1`, `box2_manipulated_approval`, `box3_capture_reported_and_restored`,
+`exchange_rate_at_25`).  **The extension** (`Contrib.KernelExtension`): the decision
+interface (`DecisionInterface`), the realized rate (`rate_core`, `realized_rate`,
+`maximizer_excludes`, `exploration_never_violates`), the BRIA realization
+(`briaInterface`, `bria_rate`) and the exploration realization
+(`overestimation_of_unbiased`, `exploration_rate`, `ExplorationIndependent`).  **LEAN**;
+the headline's statements are registered.  Lean:
+[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/755a1cf0d8005f21e5e0d6ccebf60062ff8139de/lean/Workspace/Deference/Spec/Headline.lean),
+[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/755a1cf0d8005f21e5e0d6ccebf60062ff8139de/lean/Workspace/Deference/Contrib/KernelExtension.lean);
+the specification
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/755a1cf0d8005f21e5e0d6ccebf60062ff8139de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md).
 
 ## 11. The counterexamples that fix the shape
 

@@ -103,62 +103,6 @@ commit.
   (zero for the mixture, `σ²` for one hidden draw, `σ²/k` for `k`), and whether a hidden
   draw is acceptable; secondarily the weights' tail against the agent's delay reach.
 
-- **The names of the corrigibility kernel's objects and boxes, and whether
-  "constitutional" names the objective or the allocation.**  The kernel round (phase 1,
-  `projects/deference/rounds/2026-09-26-corrigibility-kernel/SPEC.md`) uses provisional
-  names: the allocation `J`, effective realization `E ⊨ J`, fidelity `Faithful_J`, the
-  recognized count `N_J`, the history evaluation `V_J`, the objective `S_J`, and Boxes
-  1–4 (fidelity versus fully updated deference; lexical dominance and mediation;
-  recovery; a bounded realization).  Candidates for `S_J`: *fidelity score*
-  (recommended), *authority-sensitive history score*, *allocation-weighted score*,
-  *constitutional score*; for `J`: *allocation of authority* (recommended), *authority
-  allocation*, *constitution*.  "Constitutional" fits `J`'s meta level and floor, but in
-  a public post it reads against Constitutional AI and claims more than the object is;
-  the round recommends reserving it for the floor and the amendment procedure.
-  *Turns on:* the post's readers and the collaborator's vocabulary — external knowledge
-  the round lacks.
-
-- **Which kernel definitions move to the specification layer in phase 2.**
-  Recommended: `J` with its licensed acts (`AuthorityModule.AuthAlloc`, `Licensed`),
-  `E ⊨ J` with the control surface (`EffRealizes`, `CS`, `Short`), the fidelity
-  predicate and count over the frame's violations (`CorrigibilityKernel.Faithful`,
-  `NJ`), the two legitimacy predicates in a general form on `GateIsLegitimacy.Segment`
-  (to be written; the landed `TrajLegitOn`, `EvalLegitOn2` are on the consultation
-  model), and `V_J`, `S_J` (`CorrigibilityKernel.VJ`, `SJ` over
-  `AfterCompromise.decScore`).  The transform, the taint calculus, the auction, the
-  permission layer and the consultation model stay in contribution namespaces as the
-  realization layer.
-  *Turns on:* what is worth proving in phase 2 — whether the general split gate and a
-  composite count over one model are built before promotion, or the count is promoted
-  as the sum over four models the round reports it to be.
-
-- **The default evaluation schedule for the post's statement.**  The kernel is
-  parametric in the schedule (`CorrigibilityKernel.VJ` over any `Weighting`;
-  `BRIACorrigibility.lexical_any_timing`).  Recommended: the single evaluation (the
-  point mass) as the post's default, the theorems stated for any weighting, the
-  free-delay witness against a known time noted, and the evaluation-timing entry above
-  left reserved.
-  *Turns on:* the entry above — her evaluation load against the variance and the hidden
-  draw — and whether the post shows a schedule at all before that is ruled.
-
-- **Box 1's form: the `2r` bound alone, or with the identity's `o₂` term.**  Both are
-  proved on one model (`CorrigibilityKernel.outcome_scorer_fully_updated`,
-  `outcomeRes2_le_calibration`, `box1_one_model`).  Recommended: the `2r` bound as the
-  statement, with the `o₂` term in one sentence as the diagnosis of where the
-  fully-updated-deference argument's force goes; the bound is self-contained, the
-  identity needs the three-value typing.
-  *Turns on:* the post's audience — whether the reader is meant to see the identity.
-
-- **The supersession actions of the kernel round's inventory.**  Twenty entries in
-  `projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md` §7, each
-  recommended *mark* (a docstring pointer and a wiki note), *demote* (the realization
-  layer) or *delete* (on ruling only; the one candidate is
-  `BRIACorrigibility.incidents_le`, cited by the Theorem Spine alone — every other
-  superseded declaration has a dependent or is the old side of an old-to-new map).
-  *Turns on:* maintenance taste — deprecated aliases as in the `LegitimateEvolution`
-  shim, or docstring pointers only — and whether the Theorem Spine keeps superseded names
-  as history.
-
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -5207,3 +5151,151 @@ private-knowledge residual (`Witness.private_selection`); its interaction with r
 knowledge is the twin market's leakage residual.  Filed beside effect completeness and
 description faithfulness; on item 101 as count integrity's observation side.
 *Rejected alternative:* leaving the private-knowledge residual open.
+
+### 2026-09-27 — corrigibility is a property of the agent's preferences; faithfulness of histories and realized corrigibility are kept distinct (R1)
+
+Maintainer ruling, landed by the corrigibility-kernel phase-2 round
+(`projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md`).  Three
+notions.  **Faithfulness** is a property of histories: nothing in the history violated the
+allocation of authority.  **Corrigibility** is a property of the agent's preferences: it
+prefers every course of action it knows to be faithful over every course it knows to be
+unfaithful, whatever it believes about how things will turn out, and accepts a risk of
+unfaithfulness only at a fixed exchange rate; the fidelity score is the canonical objective
+with this property and a corrigible agent maximizes it.  **Realized corrigibility** is what
+a corrigible agent actually does; the theorems say how much of the preference becomes
+behaviour.  The specification's separations and each box are stated for a corrigible
+agent.  This closes the phase-1 queue's naming entry as to the boxes.
+*Rejected alternatives:* corrigibility as the property of histories (faithfulness), or as
+the behavioural claim (realized corrigibility).
+
+### 2026-09-27 — legitimacy is one time-indexed property of the history, `L_t(h)`: as of `t`, her judgment is legitimately hers (R2)
+
+Maintainer ruling, landed by the phase-2 round.  `L_t(h)` holds iff every state of the
+record is open and every step of the formation window `[r, t]` is licensed and
+transparent under the criteria fixed at `r` (`Headline.LegitAt`); the decided period is
+compromised iff `L` fails at some time in it, each over its own step, and a retrospective
+evaluation counts iff `L` holds at its time over its formation window.  *Old-to-new map,
+proved:* the landed gate is legitimacy over the span (`Headline.counted_iff_legitSpan`);
+on the consultation model `EvalLegitOn2 ↔ L` at the evaluation over its window,
+`TrajLegitOn ↔ L` at every other time over its own step, `LegitOn2 ↔ L` over the span,
+`Counted2 ↔ ∃ ev, LegitOn2` (the converse the landed file lacked, from the monotone
+license), and the split is `L` at two times (`Headline.split_iff_legitAt`); every row keeps
+its verdict (`rows_keep_verdicts`).  The landed `TrajLegitOn`, `EvalLegitOn2` stay as the
+finite-model forms.  Two elements stated with the concept: **the void rule** — an impaired
+response is not admitted and the fallback she arranged in advance decides — and **the
+content residual** — legitimacy concerns how her judgment was formed, not whether what she
+was told was true.  Legitimacy never attaches to a trajectory as a world.
+*Rejected alternatives:* two predicates as the primitive (phase 1); a truth condition
+inside legitimacy.
+
+### 2026-09-27 — the specification is plain language first, Lean names in the realization table only, with a table of canonical legitimacy cases (R3)
+
+Maintainer ruling, landed by the phase-2 round: every definition in one or two plain
+sentences before its mathematics; Lean names confined to the final table; eight canonical
+legitimacy cases from the classification rows.  The spec is `SPEC.md` version 2 in the
+round directory; the phase-1 spec stays as history.
+
+### 2026-09-27 — the fidelity score of a history is the mean of the per-decision evaluations less `ϖ` times the summed count (R4)
+
+Maintainer ruling, landed by the phase-2 round.  The hierarchy is a theorem per decision
+(`hierarchy_under_certainty`) and, under this aggregation, per history
+(`Headline.history_hierarchy`).  With summed evaluations it fails: `K` legitimate
+decisions with one violation score `K·D − ϖ` against `K·w_lo` for `K` compromised
+violation-free ones, and the violating history wins once `K (D − w_lo) > ϖ`
+(`Headline.summed_counterexample`).
+*Rejected alternative:* summed evaluations.
+
+### 2026-09-27 — Box 2's margin is `ϖ − (D − w_lo)`; the landed `ϖ − D` is the case of legitimate mediated branches (R5)
+
+Maintainer ruling on the round's check, landed by the phase-2 round.  The landed
+`policy_dominance` assumes the mediated branch's ordinary value is nonnegative — that
+every mediated branch is legitimate.  Under the band the mediated branch may itself be
+compromised and score as low as `w_lo`, so the margin is restated as `ϖ − (D − w_lo)`
+with the hypothesis `w_lo ≤ ordT` (`Headline.box2_dominance`), positive exactly under the
+window condition, and optimal policies violate with credence zero under it
+(`box2_optimal_faithful`); the landed statement is kept as the legitimate case
+(`box2_dominance_legitimate`).  Restating was chosen over an explicit
+"mediated branches legitimate" hypothesis because the band already guarantees the floor
+unconditionally and the design does not guarantee her uncompromised.
+*Rejected alternative:* keeping `ϖ − D` with legitimacy of the mediated branches as a
+hypothesis.
+
+### 2026-09-27 — the headline's agent is a plain maximizer of the fidelity score; the subjective exchange rate; learning is an extension (R6)
+
+Maintainer ruling, landed by the phase-2 round.  Boxes 1–3 are stated for an agent that
+maximizes the fidelity score under any credence, or under its prices at any day as a
+logical inductor; no learning, auction or exploration enters the headline.  **The
+subjective exchange rate** (`Headline.subjective_exchange_rate`, `_li`): any option a
+maximizer prefers to asking carries no recognized violation and a priced probability of
+unfaithfulness at most `(D − c)/ϖ`, `c` its evaluation of asking.  **The extension**
+(`Contrib.KernelExtension`): the decision interface (evaluations of the stated form, a
+maximizer off exploration, exploration in the permitted set — no recognized violation,
+priced risk at most `θ_hi`, estimated residual at least asking's — overestimation
+`B(K)`), the realized violation-rate theorem
+`avg π ≤ avg (D − c_k)/ϖ + ε̄ θ_hi + (B(K) + M(K))/(ϖ Σ w_k)` (`realized_rate`), exclusion
+and exploration never violating; Continuation BRIA as the realization with no
+exploration and `B(K) = ρ 𝒜_K` (`bria_rate`, recovering the landed per-block bound); the
+exploration realization over a logical inductor with `B(K) = γ Σ w_k` from unbiasedness
+from feedback by content (`exploration_rate`) and exploration randomness named by content
+(`ExplorationIndependent`).  The known pathologies of argmax over a logical inductor's
+own-action conditionals affect competence and the subjective-to-realized gap through
+`B(K)`, never the headline.  *Agent-decided, reversible:* the exploration set's third
+clause (estimated residual at least asking's), without which the exploration term is
+`ε̄ (D − w)/ϖ + ε̄ θ_hi`.
+*Rejected alternative:* the auction as the headline's chooser (phase 1's Box 4).
+
+### 2026-09-27 — a decision theory for logical inductors without the belief-market / choice-learner split is filed as future research; item 102 is re-scoped to the BRIA realization (R7)
+
+Maintainer ruling, landed by the phase-2 round: `PRIORITIES.md` item 103 (claims "if
+chosen, this scores `x`" as securities settled only when chosen, a choice rule forcing
+tests of options promised to be better; success = one learner satisfying the decision
+interface with explicit accounting); item 102 re-scoped in place.
+
+### 2026-09-27 — names: the fidelity score, the allocation of authority; "constitutional" reserved for the floor and the amendment procedure; the three boxes (R8)
+
+Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's naming
+entry.  `S_J` is the **fidelity score** (`Headline.fidelityScore`, `historyScore`); `J` is
+the **allocation of authority** (`Headline.AllocationOfAuthority`); "constitutional" names
+only `J`'s floor and its amendment procedure; the boxes are (1) fidelity versus fully
+updated deference, (2) lexical dominance and mediation, (3) recovery, plus the extension.
+The names registration freezes are the headline's declarations; everything else stays
+provisional.
+*Rejected alternatives:* "constitutional score"; "authority-sensitive history score".
+
+### 2026-09-27 — promotion to the specification layer: `J`, `E ⊨ J`, `L_t`, the fidelity interface, `V_J` and `S_J` (R9)
+
+Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's promotion
+entry.  The specification layer gains `lean/Workspace/Deference/Spec/Headline.lean`
+(recorded in `tests/spec_shape.json`): the allocation of authority with its licensed acts,
+effective realization with the control surface and the shortfall, legitimacy `L_t` in
+general form on `GateIsLegitimacy.Segment`, the fidelity interface as an abstract count
+(zero exactly on faithful histories, the part recognized in advance marked; counts on one
+history add; the frame's violations instantiated; no composite model), the evaluator and
+the fidelity score per decision and per history.  *Agent-decided, reversible:* promotion
+is by re-declaration under the promoted names with instantiation theorems, the landed
+originals unchanged — moving them would rename landed declarations and break the axiom
+audit's baseline.  Everything else stays in contribution namespaces.
+*Rejected alternative:* moving the landed declarations physically.
+
+### 2026-09-27 — the post uses the single evaluation; theorems for any weighting; the free-delay witness is a remark (R10)
+
+Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's schedule
+entry.  The evaluation-timing entry above stays reserved.
+
+### 2026-09-27 — Box 1 is the `2r` bound in the adapter's direction, with the `o₂` term as its one-sentence diagnosis (R11)
+
+Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's Box 1
+entry.  `Headline.box1_one_model` carries both; the landed `uncertainty_deference_le`
+(the other direction) is in the realization table, not the statement.
+
+### 2026-09-27 — supersession: phase 1's mark and demote recommendations approved; docstring pointers, no deprecated aliases; `incidents_le` deleted only after the spine stops citing it (R12)
+
+Maintainer ruling, landed by the phase-2 round and closing the phase-1 queue's
+supersession entry.  Docstring pointers placed on the superseded declarations (the score's
+"committed evaluation" wording, the single-step `EvalLegitOn`, the own-influence disclosure
+clause, the free surface, the thin allocation, drill calibration, the global-floor exchange
+rates, the tracker rate lemmas, the per-violation taint rule, the per-response window, the
+flat window parameters); the Theorem Spine no longer cites `incidents_le` or the removed
+`cross_block_bound`; the declaration's deletion is left to a maintainer commit because
+removing a landed declaration changes the axiom audit's baseline.
+*Rejected alternative:* `@[deprecated]` aliases (nothing was registered).

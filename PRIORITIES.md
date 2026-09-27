@@ -3280,6 +3280,70 @@ which is a condition on `ε` against the rule and is not derived here.  The escr
 comparison among evaluation-timing options is settled in expectation
 (`expected_escrow_eq`): what a priced restatement carries is the variance, not the mean.
 
+*2026-09-27 (kernel phase 2, R7):* **re-scoped to the Continuation BRIA realization
+only.**  The kernel's headline is stated for a plain maximizer of the fidelity score and
+consumes no auction; the decision interface of the extension
+(`Contrib.KernelExtension.DecisionInterface`) is what any learner must meet, and BRIA
+meets it with no exploration and `B(K) = ρ 𝒜_K` (`bria_rate`).  What this item still asks
+— block claims as priced securities, feasibility against prices, settlement at a test as
+an assessed world — is a problem of that realization: it sharpens `B(K)` and the
+competence of the BRIA chooser, and nothing in the headline or the interface theorem waits
+on it.  The learner-level question it was standing in for is item 103.
+
+### 103. A decision theory for logical inductors without the split between a belief market and a choice learner — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The kernel's extension (`projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md`
+§6) realizes the decision interface twice — Continuation BRIA beside the inductor, and a
+maximizer over the inductor with exploration restricted to the permitted set — and both
+keep the split the pinned Logical Induction paper leaves open: the market prices sentences,
+a separate learner chooses, and the coupling is a named hypothesis (unbiasedness from
+feedback; the auction's budget accounting).  The known pathologies of argmax over the
+inductor's own-action conditionals live in that split.  Wanted: a principled decision
+theory for logical inductors with no separate choice learner.  The candidate direction:
+claims of the form "if chosen, this option scores `x`" as securities of the inductor,
+settled only when the option is chosen, with a choice rule that forces tests of options
+promised to be better — the bounded-inductive-rationality criterion stated inside the
+market rather than beside it.
+
+*Deliverable shape:* a single learner over the inductor that satisfies the extension's
+decision interface (evaluations of the stated form; a maximizer off exploration;
+exploration in the permitted set; overestimation `B(K) = o(K)`) with explicit accounting of
+`B(K)`; Lean where the pinned formalization admits it, paper-level elsewhere with named
+hypotheses.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean; the extension's rate
+theorem instantiated on the learner (`realized_rate`) with its `B(K)` discharged rather
+than assumed.
+*Context:* the phase-2 round's `SPEC.md` §6 and `REPORT.md`; `KernelExtension.lean`;
+`Continuation-BRIA.md` §9 (the LI coupling); items 86, 90, 102.
+*Consumed by:* the extension's exploration realization; item 102's re-scoped question.
+*A solution ships:* the learner with its accounting, or the obstruction.
+
+### 104. The corrigibility kernel headline: the registered statements and what they leave open — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The kernel's headline (`lean/Workspace/Deference/Spec/Headline.lean`, the phase-2 round's
+`SPEC.md`) states Boxes 1–3, the hierarchy per decision and per history, the subjective
+exchange rate, the legitimacy map and the promoted definitions, with the house-sale
+witness inhabiting the package; the registrations in `projects/deference/CLAIMS.md`
+answer this item.  What the headline leaves open, for later rounds against this item:
+the general split gate proved on `GateIsLegitimacy.Segment` beyond the consultation
+model's rows (the map is general, the rows are the model's); a recognized count on one
+model carrying all four instances of the fidelity interface, if one is ever wanted; the
+evaluator-to-auction bridge stated on the band rather than through `bandParams` at the
+floor; and the mediation results restated on the allocation of authority directly rather
+than through the thin datum.
+
+*Deliverable shape:* registered claims against the headline's declarations (this round);
+later, any of the four open pieces as Lean declarations with witnesses.
+*Acceptance check:* `python3 -m checkers.run` green on the registry; Lean audits clean.
+*Context:* the phase-2 round's `SPEC.md` §8 and `REPORT.md`; the phase-1 round's
+`REPORT.md` §6 (what did not compress).
+*Consumed by:* the post; any round extending the headline.
+*A solution ships:* the registrations, and later the open pieces or their obstructions.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

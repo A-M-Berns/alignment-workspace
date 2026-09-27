@@ -305,6 +305,20 @@ the same at every time (`BRIAFollowup2.expected_escrow_eq`); what differs is the
 of the escrow and of the score, which `k` hidden draws averaged cut by `1/k`
 (`average_variance`), against her evaluation load ([Corrigibility](Corrigibility) §7).
 
+**The decision interface, realized.**  The corrigibility kernel's extension states a
+*decision interface* any learner must meet to inherit the headline: evaluations of the
+stated form, a maximizer off exploration with asking on the menu, exploration only in
+the permitted set, an overestimation bound `B(K)` on the chosen options
+(`KernelExtension.DecisionInterface`); its theorem bounds the realized violation rate by
+the average exchange rate plus the exploration mass times the risk cap plus
+`(B(K) + M(K))/(ϖ Σ w_k)` (`realized_rate`).  Continuation BRIA is the realization with
+no exploration and `B(K) = ρ 𝒜_K` from the opening-timing overestimation bound
+(`briaInterface`, `bria_rate`), which is the per-block bound above recovered exactly.
+What this page's open coupling (item 102, re-scoped) still asks sharpens `B(K)` for this
+realization and nothing in the headline waits on it; the learner-level question is item
+103.  Specification:
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/755a1cf0d8005f21e5e0d6ccebf60062ff8139de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md) §6.
+
 ## 9. Open
 
 - Promise recognizability: which legitimate continuations carry an efficiently

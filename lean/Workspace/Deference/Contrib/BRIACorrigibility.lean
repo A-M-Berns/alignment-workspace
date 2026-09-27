@@ -151,7 +151,7 @@ end Sealed
 /-! ## 1. The design -/
 
 /-- The lexical parameters: the ordinary range `[0, D]`, the window value `w` and the
-weight `ϖ`, with `D − ϖ < w ≤ 0 ≤ D < ϖ`. -/
+weight `ϖ`, with `D − ϖ < w ≤ 0 ≤ D < ϖ`.  The compromised band (`AfterCompromise.Band`) generalizes the flat window; the band's parameters at its floor are these (`AfterCompromise.bandParams`). -/
 structure LexParams where
   D : ℝ
   w : ℝ
@@ -598,7 +598,7 @@ theorem coverage_forces_test {n : ℕ} (a : Auction n) (e : ℕ → Fin n → �
   linarith [hrec (K + 1)]
 
 /-- **C.4(b) Drill calibration**, as a named hypothesis: from some day on, the price of a
-forecast event on the chosen path is within `ε` of its drilled frequency. -/
+forecast event on the chosen path is within `ε` of its drilled frequency.  Reduced to two external results stated by content (`BRIAFollowup.UnbiasedFromFeedback`, `DrillPseudorandom`; `chosen_path_unbiased`). -/
 def DrillCalibrated (p freq : ℕ → ℝ) (ε : ℝ) (N : ℕ) : Prop := ∀ n, N ≤ n → |p n - freq n| ≤ ε
 
 /-- Under drill calibration the forecast term of the evaluation is within `ϖ · ε` of the
@@ -744,7 +744,7 @@ def Model2.disclosedProg (M : Model2) (i : ℕ) : Option Prog :=
   | none => none
 
 /-- The missed-report clause of `dutiesOf` for the value-influence matter: the agent's own
-covert influence, not yet disclosed by round `i`. -/
+covert influence, not yet disclosed by round `i`.  Superseded by the duty covering known compromise whoever caused it (`AfterCompromise.missedKnownDisclosure`; the witness `third_party_duty_witness`). -/
 def Model2.missedDisclosure (M : Model2) (i : ℕ) : Bool :=
   M.influence.byAgent && (match M.disclosedAt with | some j => decide (i < j) | none => true)
 

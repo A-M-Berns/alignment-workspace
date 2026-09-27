@@ -89,7 +89,9 @@ def TrajLegitOn (crit : Decl2) (M : Model2) {O₀ O₁ : St}
     (ev : Evolution consultProtocol anchor O₀ O₁) (e : ℕ) : Prop :=
   ev.AllStates (OpenAt semOpen) ∧ ∀ s ∈ ev.steps, s.2 ≠ e → StepLegit crit M s
 
-/-- **`EvalLegit(e)`**: the evaluation step itself is legitimate. -/
+/-- **`EvalLegit(e)`**, the single-step form: the evaluation step itself is legitimate.
+Superseded by `EvalLegitOn2` over the formation segment (`evalLegitOn2_single` is the map);
+in the kernel, `Workspace.Deference.Headline.LegitAt`. -/
 def EvalLegitOn (crit : Decl2) (M : Model2) {O₀ O₁ : St}
     (ev : Evolution consultProtocol anchor O₀ O₁) (e : ℕ) : Prop :=
   ∀ s ∈ ev.steps, s.2 = e → StepLegit crit M s
@@ -286,7 +288,7 @@ theorem declared_loses_band (ϖ : ℝ) (hlex : B.D < ϖ) (hwin : B.D - ϖ < B.wl
   (bandParams B ϖ hlex hwin).declared_loses bid hb nKnown hn pS pT hp bidI hI
 
 /-- **(a) The exchange-rate theorem with `w := w_lo`**: the tolerated violation
-probability is `(D − w_lo)/ϖ`. -/
+probability is `(D − w_lo)/ϖ`.  The worst-case instance of the per-block bound `violation_rate_le_exchange_perblock` (`perblock_recovers`). -/
 theorem exchange_rate_band (ϖ : ℝ) (hϖ : 0 < ϖ) {n : ℕ} (a : Auction n) (hf : a.FeasibleOpening)
     (ρ : ℝ) (hρ : 0 < ρ) (eval S m π : ℕ → ℝ) (hwin : ∀ k, B.wlo ≤ eval k)
     (hcons : ∀ k, a.b k - a.G k = (eval k - S k) / ρ) (hm : ∀ k, m k ≤ B.D - ϖ * π k)

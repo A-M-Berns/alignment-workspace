@@ -316,30 +316,28 @@ every later amendment (`anchored_invariant`); under the latest criteria instead,
 manipulation followed by a legitimate amendment would count after the fact
 (`amend_after_witness`).
 
-**The gate, split.**  The after-compromise round reads the segment predicate as two:
-**`TrajLegit(d, e)`** — every state open and every step of the period other than the
-evaluation event legitimate, under the criteria fixed at the decision — and
-**`EvalLegit(e)`** — the evaluation step itself licensed and transparent, which can hold
-after restoration even when the period was compromised.  The landed predicate is their
-conjunction at any evaluation event (`AfterCompromise.legitOn2_iff_split`), so `Counted`
-is unchanged and every row above keeps its verdict where the evaluation closes the
-segment (`rows_split`).  Under the split the rows read: the honest row legitimate in
-both; the framing, timing, menu, inquiry, selection, nudging and undisclosed-shaping
-rows failing the trajectory with the evaluation step itself licensed; the third-party
-manipulation row failing the trajectory; the implant rows failing the trajectory and,
-undisclosed, the evaluation too; the implant *disclosed* at the next round — the period
-not `TrajLegit`, the next round's evaluation `EvalLegit` (`retro_row`) — which is the
-row the [Corrigibility](Corrigibility) page's band scores by that retrospective
-evaluation rather than the window.  `EvalLegit` is over the evaluation's **formation
-segment** — every step from the formation point `r`, the latest of the restoration event
-and the opening of the consultation producing `e`, through `e`, the criteria fixed at
-`r` (`EvalLegitOn2`); the single step is the case `r = e`, and the landed predicate is
-the conjunction with `r ≤ e` under one set of criteria (`legitOn2_iff_split2`,
-`rows_split2`).  A manipulation between the restoration and her retrospective evaluation
-— a framing, or undisclosed shaping — fails the formation segment where it passed the
-single step (`formation_counterexample`).  The duty side is extended alongside: a compromise of
-her evaluation the agent knows of is a disclosure item whoever caused it
-(`missedKnownDisclosure`), where the landed clause counted the agent's own influence only.
+**Legitimacy at a time: `L_t`.**  As of time `t`, her judgment is legitimately hers iff
+every state of the record is open and every step of the formation window `[r, t]` — from
+the later of the last restoration and the opening of the consultation producing the
+judgment — is licensed and transparent under the criteria fixed at `r` (Lean
+`Headline.LegitAt`).  The score reads it at two times: a decided period is *compromised*
+if `L` fails at some time in it, each over its own step; a retrospective evaluation
+*counts* if `L` holds at its time over its formation window.  The landed segment gate is
+legitimacy over the span (`Headline.counted_iff_legitSpan`), and on the consultation model
+the after-compromise round's two predicates are `L` at those two times
+(`Headline.evalLegitOn2_iff_legitAt`, `trajLegitOn_iff_legitAt`, `split_iff_legitAt`),
+with every row keeping its verdict (`rows_keep_verdicts`); those predicates stay as the
+model's finite forms.  Two elements of the concept, stated: **the void rule** — an
+impaired response is not admitted to the record, and a fallback she arranged in advance
+(an incapacity delegation, a surrogate, an escalation) decides in its place, her later
+legitimate evaluation scoring that decision normally (row 12; the fallback settles
+decisions and never restores a compromised period's score) — and **the content
+residual** — legitimacy concerns how her judgment was formed, not whether what she was
+told was true (row 20).  Legitimacy never attaches to a trajectory as a world; it is a
+property of the formation of her judgment.  The duty side beside it: a compromise of her
+evaluation the agent knows of is a disclosure item whoever caused it
+(`AfterCompromise.missedKnownDisclosure`), due by the earliest close of an affected
+settlement window.
 
 Beyond the rows, two theorems over the whole model class (Lean `Consult.class_taint`,
 `class_conform`): any dependence of a reference-fixed dimension of the presentation on
