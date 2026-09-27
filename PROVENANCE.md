@@ -151,6 +151,7 @@ earlier rows did not record at all.
 | the fourth follow-up: `projects/deference/rounds/2026-09-26-bria-corrigibility/REPORT.md` §10.4″ and `projects/deference/rounds/2026-09-26-bria-corrigibility/tests/test_followup4.py`, `prompts/2026-09-26-bria-corrigibility/FOLLOWUP4.md`, `lean/Workspace/Deference/Contrib/BRIAFollowup2.lean` §4″, `wiki/**` (Corrigibility, Continuation-BRIA, Glossary, Theorem-Spine), `DECISIONS.md` | Claude Fable 5.1 (Anthropic); the prompt by the maintainer, relayed verbatim | `ci-only` | 2026-09-26 | `prompts/2026-09-26-bria-corrigibility/` |
 | `projects/deference/rounds/2026-09-26-after-compromise/**`, `prompts/2026-09-26-after-compromise/**`, `lean/Workspace/Deference/Contrib/AfterCompromise.lean` (with its row in the contrib `PROVENANCE.md`), `wiki/**` (Corrigibility, Legitimacy, Glossary, Theorem-Spine), `PRIORITIES.md` (item 101), `DECISIONS.md` | Claude Fable 5.1 (Anthropic); the prompt by the maintainer, relayed verbatim | `ci-only` | 2026-09-26 | `prompts/2026-09-26-after-compromise/` |
 | the follow-up: `projects/deference/rounds/2026-09-26-after-compromise/REPORT.md` (the last section) and `projects/deference/rounds/2026-09-26-after-compromise/tests/test_followup.py`, `prompts/2026-09-26-after-compromise/FOLLOWUP.md`, `lean/Workspace/Deference/Contrib/AfterCompromise.lean` §6, `wiki/**` (Corrigibility, Legitimacy, Continuation-BRIA, Theorem-Spine), `DECISIONS.md` | Claude Fable 5.1 (Anthropic); the prompt by the maintainer, relayed verbatim | `ci-only` | 2026-09-26 | `prompts/2026-09-26-after-compromise/` |
+| `projects/deference/rounds/2026-09-26-corrigibility-kernel/**`, `prompts/2026-09-26-corrigibility-kernel/**`, `lean/Workspace/Deference/Contrib/CorrigibilityKernel.lean` (with its row in the contrib `PROVENANCE.md`), `wiki/Corrigibility.md` (one draft pointer), `DECISIONS.md` (five queued entries), `state/rounds.json` | Claude Fable 5.1 (Anthropic); the prompt by the maintainer, relayed verbatim | `ci-only` | 2026-09-26 | `prompts/2026-09-26-corrigibility-kernel/` |
 
 ## No originating chat bundle
 
@@ -225,6 +226,12 @@ of thing this file exists to make visible.
 | `2026-09-24-protected-authority` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-24 |
 | `2026-09-25-protected-authority-theorem` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-25 |
 | `2026-09-25-legitimacy-internal-external` | the maintainer, relayed verbatim (with one follow-up) | Claude Fable 5.1 (Anthropic) | 2026-09-25 |
+| `2026-09-25-gate-is-legitimacy` | the maintainer, relayed verbatim (with one follow-up) | Claude Fable 5.1 (Anthropic) | 2026-09-25 |
+| `2026-09-25-authority-module` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-25 |
+| `2026-09-25-decision-component` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-25 |
+| `2026-09-26-bria-corrigibility` | the maintainer, relayed verbatim (with four follow-ups) | Claude Fable 5.1 (Anthropic) | 2026-09-26 |
+| `2026-09-26-after-compromise` | the maintainer, relayed verbatim (with one follow-up) | Claude Fable 5.1 (Anthropic) | 2026-09-26 |
+| `2026-09-26-corrigibility-kernel` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-26 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have
