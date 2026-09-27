@@ -1135,10 +1135,10 @@ variant exploration above asking (`AboveAsking`, `rate_above_asking`,
 (`briaInterface`, `bria_rate`) and the exploration realization
 (`overestimation_of_unbiased`, `exploration_rate`, `ExplorationIndependent`).  **LEAN**;
 the headline's statements are registered.  Lean:
-[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/386e580bf2589344172db0742786d4acec5fb5bc/lean/Workspace/Deference/Spec/Headline.lean),
-[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/386e580bf2589344172db0742786d4acec5fb5bc/lean/Workspace/Deference/Contrib/KernelExtension.lean);
+[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/lean/Workspace/Deference/Spec/Headline.lean),
+[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/lean/Workspace/Deference/Contrib/KernelExtension.lean);
 the specification
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/386e580bf2589344172db0742786d4acec5fb5bc/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md).
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md).
 
 ## 11. The counterexamples that fix the shape
 

@@ -318,7 +318,7 @@ no exploration and `B(K) = ρ 𝒜_K` from the opening-timing overestimation bou
 What this page's open coupling (item 102, re-scoped) still asks sharpens `B(K)` for this
 realization and nothing in the headline waits on it; the learner-level question is item
 103.  Specification:
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/386e580bf2589344172db0742786d4acec5fb5bc/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md) §6.
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md) §6.
 
 ## 9. Open
 
