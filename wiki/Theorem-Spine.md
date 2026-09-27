@@ -1123,10 +1123,10 @@ interface (`DecisionInterface`), the realized rate (`rate_core`, `realized_rate`
 (`briaInterface`, `bria_rate`) and the exploration realization
 (`overestimation_of_unbiased`, `exploration_rate`, `ExplorationIndependent`).  **LEAN**;
 the headline's statements are registered.  Lean:
-[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/755a1cf0d8005f21e5e0d6ccebf60062ff8139de/lean/Workspace/Deference/Spec/Headline.lean),
-[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/755a1cf0d8005f21e5e0d6ccebf60062ff8139de/lean/Workspace/Deference/Contrib/KernelExtension.lean);
+[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/386e580bf2589344172db0742786d4acec5fb5bc/lean/Workspace/Deference/Spec/Headline.lean),
+[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/386e580bf2589344172db0742786d4acec5fb5bc/lean/Workspace/Deference/Contrib/KernelExtension.lean);
 the specification
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/755a1cf0d8005f21e5e0d6ccebf60062ff8139de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md).
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/386e580bf2589344172db0742786d4acec5fb5bc/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md).
 
 ## 11. The counterexamples that fix the shape
 

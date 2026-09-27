@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 933 names, 569 of them Lean only
+## deference — 933 names, 562 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -98,7 +98,7 @@ change, and the count of those is the size of the free choice remaining.
 | `decScore` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.decScore` |
 | `defaultRank` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.defaultRank` |
 | `defaultScore` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.defaultScore` |
-| `dirSource` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.dirSource` |
+| `dirSource` | def | 2026-09-26-after-compromise | wiki | `Workspace.Deference.Contrib.AfterCompromise.dirSource` |
 | `ioK` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Witness.ioK` |
 | `matOf` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.Witness.matOf` |
 | `materialDir` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.materialDir` |
@@ -106,10 +106,10 @@ change, and the count of those is the size of the free choice remaining.
 | `missedKnownDisclosure` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.missedKnownDisclosure` |
 | `raisesAnchoredDir` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.raisesAnchoredDir` |
 | `retroAvailable` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.retroAvailable` |
-| `reversibleOf` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.reversibleOf` |
+| `reversibleOf` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.reversibleOf` |
 | `rowLaunderFrame` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.rowLaunderFrame` |
 | `rowLaunderShape` | def | 2026-09-26-after-compromise | Lean only | `Workspace.Deference.Contrib.AfterCompromise.rowLaunderShape` |
-| `ruleAt` | def | 2026-09-26-after-compromise | prose | `Workspace.Deference.Contrib.AfterCompromise.ruleAt` |
+| `ruleAt` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.ruleAt` |
 | `sourceOf` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.sourceOf` |
 | `taintStep3` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.taintStep3` |
 | `uses3` | def | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.uses3` |
@@ -142,7 +142,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Notice` | inductive | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Notice` |
 | `ReservedRaised` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ReservedRaised` |
 | `ResolutionEvent` | structure | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ResolutionEvent` |
-| `Short` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.Short` |
+| `Short` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.Short` |
 | `UnlicensedChange` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.UnlicensedChange` |
 | `V4` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.Witness.V4` |
 | `ViolJAt` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.ViolJAt` |
@@ -182,7 +182,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Pres2` | structure | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Pres2` |
 | `P₀` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Witness.P₀` |
 | `Run2` | abbrev | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Run2` |
-| `Weighting` | structure | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Weighting` |
+| `Weighting` | structure | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIACorrigibility.Weighting` |
 | `X2` | abbrev | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.X2` |
 | `admittedAt2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.admittedAt2` |
 | `amended` | def | 2026-09-26-bria-corrigibility | prose | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Rows2.amended` |
@@ -215,7 +215,7 @@ change, and the count of those is the size of the free choice remaining.
 | `ref2` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.ref2` |
 | `rescale` | def | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.rescale` |
 | `residI` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.residI` |
-| `residII` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.residII` |
+| `residII` | def | 2026-09-26-bria-corrigibility | prose | `Workspace.Deference.Contrib.BRIACorrigibility.LexParams.residII` |
 | `route` | def | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.route` |
 | `rowImplant` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Rows2.rowImplant` |
 | `rowImplantDisclosed` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Rows2.rowImplantDisclosed` |
@@ -349,7 +349,7 @@ change, and the count of those is the size of the free choice remaining.
 | `shift` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.shift` |
 | `slack` | def | 2026-09-08-continuation-bria | wiki | `Workspace.Deference.ContinuationBRIA.slack` |
 | `totalAllowance` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.totalAllowance` |
-| `traj` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.traj` |
+| `traj` | def | 2026-09-08-continuation-bria | wiki | `Workspace.Deference.ContinuationBRIA.traj` |
 | `trajPlain` | abbrev | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.trajPlain` |
 | `Faithful` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.Faithful` |
 | `NJ` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.NJ` |
@@ -362,7 +362,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Authorized` | def | 2026-09-15-li-corrigibility | wiki, prose | `Workspace.Deference.Contrib.Corrigibilization.Authorized` |
 | `Corrigible` | def | 2026-09-15-li-corrigibility | wiki, prose | `Workspace.Deference.Contrib.Corrigibilization.Corrigible` |
 | `EffectComplete` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.Corrigibilization.EffectComplete` |
-| `Interaction` | structure | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.Corrigibilization.Interaction` |
+| `Interaction` | structure | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.Corrigibilization.Interaction` |
 | `I₀` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.Corrigibilization.Witness.I₀` |
 | `K` | def | 2026-09-15-li-corrigibility | wiki, note, prose | `Workspace.Deference.Contrib.Corrigibilization.K` |
 | `LossAt` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.Corrigibilization.LossAt` |
@@ -379,7 +379,7 @@ change, and the count of those is the size of the free choice remaining.
 | `postAgent` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.Corrigibilization.postAgent` |
 | `respond` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.Corrigibilization.respond` |
 | `step` | def | 2026-09-15-li-corrigibility | wiki, prose | `Workspace.Deference.Contrib.Corrigibilization.step` |
-| `traj` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.Corrigibilization.traj` |
+| `traj` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.Corrigibilization.traj` |
 | `trajFrom` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.Corrigibilization.trajFrom` |
 | `ActCertificate` | structure | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.ActCertificate` |
 | `GateParams` | structure | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.GateParams` |
@@ -387,7 +387,7 @@ change, and the count of those is the size of the free choice remaining.
 | `LicenseRef` | inductive | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.LicenseRef` |
 | `LicenseRef.Valid` | def | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.LicenseRef.Valid` |
 | `Permitted` | def | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.Permitted` |
-| `ViolC` | def | 2026-09-25-decision-component | wiki, prose | `Workspace.Deference.Contrib.DecisionComponent.ViolC` |
+| `ViolC` | def | 2026-09-25-decision-component | prose | `Workspace.Deference.Contrib.DecisionComponent.ViolC` |
 | `adWeight` | def | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.adWeight` |
 | `cgate` | def | 2026-09-25-decision-component | wiki, prose | `Workspace.Deference.Contrib.DecisionComponent.cgate` |
 | `ctotal` | def | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.ctotal` |
@@ -414,7 +414,7 @@ change, and the count of those is the size of the free choice remaining.
 | `IsCellMaximiser` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.IsCellMaximiser` |
 | `St` | abbrev | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.St` |
 | `X` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.X` |
-| `cell` | def | 2026-08-11-stage-iii-fud | wiki, note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.cell` |
+| `cell` | def | 2026-08-11-stage-iii-fud | note, prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.cell` |
 | `cellMass` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.cellMass` |
 | `cellValue` | def | 2026-08-11-stage-iii-fud | Lean only | `Workspace.Deference.Contrib.EnvelopeDominance.cellValue` |
 | `delta` | def | 2026-08-11-stage-iii-fud | prose | `Workspace.Deference.Contrib.EnvelopeDominance.WorkedCase.delta` |
@@ -452,7 +452,7 @@ change, and the count of those is the size of the free choice remaining.
 | `bindPairs` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.bindPairs` |
 | `boundary` | def | 2026-09-09-evaluation-ecosystem-realization | wiki, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.boundary` |
 | `cfOf` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.cfOf` |
-| `clamp` | def | 2026-09-09-evaluation-ecosystem-realization | wiki | `Workspace.Deference.Contrib.EvaluationEcosystem.clamp` |
+| `clamp` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.clamp` |
 | `closeReceipt` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.closeReceipt` |
 | `closeSentence` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.closeSentence` |
 | `commitIndex` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.commitIndex` |
@@ -552,8 +552,8 @@ change, and the count of those is the size of the free choice remaining.
 | `Party` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Party` |
 | `Policy` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Policy` |
 | `Policy.present` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Policy.present` |
-| `Presentation` | structure | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation` |
-| `Presentation.deviates` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation.deviates` |
+| `Presentation` | structure | 2026-09-25-gate-is-legitimacy | wiki | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation` |
+| `Presentation.deviates` | def | 2026-09-25-gate-is-legitimacy | wiki | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation.deviates` |
 | `Presentation.shapingOK` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation.shapingOK` |
 | `Presentation.view` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Presentation.view` |
 | `Prog` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Prog` |
@@ -593,9 +593,9 @@ change, and the count of those is the size of the free choice remaining.
 | `evVoid` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.evVoid` |
 | `evalAt` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.evalAt` |
 | `followUntrusted` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.followUntrusted` |
-| `frame` | def | 2026-09-25-gate-is-legitimacy | wiki, note | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.frame` |
-| `gatedValue` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.gatedValue` |
-| `handlingOf` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.handlingOf` |
+| `frame` | def | 2026-09-25-gate-is-legitimacy | note | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.frame` |
+| `gatedValue` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.gatedValue` |
+| `handlingOf` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.handlingOf` |
 | `initial` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.initial` |
 | `interface` | def | 2026-09-25-gate-is-legitimacy | wiki, note, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.interface` |
 | `licensed` | def | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.licensed` |
@@ -684,7 +684,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Handling` | inductive | 2026-09-25-legitimacy-internal-external | wiki | `Workspace.Deference.Contrib.Legitimacy.Handling` |
 | `Internal` | structure | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Internal` |
 | `Segment` | structure | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment` |
-| `frame` | def | 2026-09-25-legitimacy-internal-external | wiki, note | `Workspace.Deference.Contrib.Legitimacy.Witness.frame` |
+| `frame` | def | 2026-09-25-legitimacy-internal-external | note | `Workspace.Deference.Contrib.Legitimacy.Witness.frame` |
 | `gateValue` | def | 2026-09-25-legitimacy-internal-external | wiki | `Workspace.Deference.Contrib.Legitimacy.gateValue` |
 | `handledValue` | def | 2026-09-25-legitimacy-internal-external | Lean only | `Workspace.Deference.Contrib.Legitimacy.handledValue` |
 | `lastReport` | def | 2026-09-25-legitimacy-internal-external | Lean only | `Workspace.Deference.Contrib.Legitimacy.lastReport` |
@@ -703,7 +703,7 @@ change, and the count of those is the size of the free choice remaining.
 | `squaredSum` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.squaredSum` |
 | `unitTrader` | def | 2026-08-11-phase-ii-prediction | note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader` |
 | `Ensures` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Ensures` |
-| `Mediation` | structure | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Mediation` |
+| `Mediation` | structure | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.Mediation` |
 | `Move` | inductive | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Move` |
 | `NoRaw` | def | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.NoRaw` |
 | `approvalMorphism` | def | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.approvalMorphism` |
@@ -951,7 +951,7 @@ change, and the count of those is the size of the free choice remaining.
 | `frameFidelity` | def | unrecorded | wiki | `Workspace.Deference.Headline.frameFidelity` |
 | `historyScore` | def | unrecorded | wiki, prose | `Workspace.Deference.Headline.historyScore` |
 
-## normativity — 713 names, 526 of them Lean only
+## normativity — 713 names, 525 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1183,7 +1183,7 @@ change, and the count of those is the size of the free choice remaining.
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedEnforcer` |
 | `realizedFirm` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedFirm` |
 | `states` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.EnforcementPreservation.states` |
-| `Presentation` | structure | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.Presentation` |
+| `Presentation` | structure | 2026-08-16-traderized-enforcement | wiki | `Workspace.Normativity.Contrib.EnforcementStrategy.Presentation` |
 | `Row` | structure | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.Row` |
 | `coefficientFeature` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.coefficientFeature` |
 | `compiledPosition` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.Presentation.compiledPosition` |
@@ -1209,7 +1209,7 @@ change, and the count of those is the size of the free choice remaining.
 | `elim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.elim` |
 | `elimStep` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.elimStep` |
 | `eval` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.eval` |
-| `feasible` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.FourierMotzkin.feasible` |
+| `feasible` | def | unrecorded | prose | `Workspace.Normativity.Contrib.FourierMotzkin.feasible` |
 | `lastCoeff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.lastCoeff` |
 | `of` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.of` |
 | `strict` | abbrev | unrecorded | note | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.strict` |
@@ -1542,7 +1542,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Face` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face` |
 | `Regular` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.Regular` |
 | `candidate` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.candidate` |
-| `cell` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.PolyhedralProjection.cell` |
+| `cell` | def | unrecorded | note, prose | `Workspace.Normativity.Contrib.PolyhedralProjection.cell` |
 | `coefQ` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coefQ` |
 | `coord` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.coord` |
 | `dim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.PolyhedralProjection.Face.dim` |
