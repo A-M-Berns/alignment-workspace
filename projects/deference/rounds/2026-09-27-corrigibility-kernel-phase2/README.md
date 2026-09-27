@@ -17,3 +17,11 @@ realized-rate theorem, the two realizations).  Fixtures: `src/house_sale.py`, ru
 `Continuation-BRIA.md`, `Theorem-Spine.md`, `Glossary.md`.  Registry:
 `projects/deference/CLAIMS.md`, the `kernel.*` entries against item 104.  Consumes
 `../2026-09-26-corrigibility-kernel/` and the rounds it consumed.
+
+Amended the same day by the follow-up
+(`prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP.md`; `REPORT.md`, final
+section): corrigibility is the preference property, not "maximizes the fidelity score"
+(`Headline.Corrigible`, the generic and the not-aligned witness); `L_t(h)` is one property
+of the history at a canonical formation point computed from it (`Headline.Legitimate`);
+the exploration set's third clause is dropped and kept as the variant "exploration above
+asking", with the lock-in fixture `src/exploration_lockin.py`.

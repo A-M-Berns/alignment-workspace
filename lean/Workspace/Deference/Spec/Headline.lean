@@ -3,8 +3,9 @@
 
 Round `projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/`
 (`prompts/2026-09-27-corrigibility-kernel-phase2/PROMPT.md`), carrying out the
-maintainer's rulings R1–R12 on the phase-1 specification.  Names per R8: `S_J` is the
-**fidelity score**, `J` the **allocation of authority**.
+maintainer's rulings R1–R12 on the phase-1 specification, amended by the follow-up
+(`FOLLOWUP.md`: corrigibility as the preference class, `L_t` at the canonical formation
+point).  Names per R8: `S_J` is the **fidelity score**, `J` the **allocation of authority**.
 
 **§1 The promoted definitions** (R9).  The allocation of authority and its licensed acts
 (`Allocation`, `LicensedChange`), effective control with the control surface and the
@@ -15,28 +16,40 @@ history-level score (`historyScore`).  Each is the landed object under its promo
 name, with the instantiation theorem beside it; promotion by re-declaration keeps every
 landed name and its axiom print unchanged.
 
-**§2 Legitimacy `L_t`** (R2).  `StepLegitimate`, `LegitAt` (as of `t`, her judgment is
-legitimately hers: every state open, every step of the formation window `[r, t]`
-licensed and transparent), `LegitSpan`; `counted_iff_legitSpan`; on the consultation model
-`stepLegitimate_iff`, `evalLegitOn2_iff_legitAt`, `trajLegitOn_iff_legitAt`,
-`legitOn2_iff_legitAt`, `counted2_iff_legitOn2`, `split_iff_legitAt` (the old-to-new
-map), `rows_keep_verdicts`.
+**§2 Legitimacy `L_t`** (R2, follow-up Part 2).  `StepLegitimate`, `LegitAt` (legitimacy
+over a formation window `[r, t]`), `LegitSpan`; the canonical formation point `r(t)`
+(`FormationData.point`: the later of the last restoration and the opening of the current
+consultation) and `L_t` proper, `Legitimate` — a function of the history and `t`; the
+score's two uses, `PeriodCompromised` and `EvaluationCounts`, with `split_iff_legitimate`
+(one predicate, the landed gate) and `counted_iff_legitimate`; on the consultation model
+`formation2`, `formation2_point`, `Legitimate2`, `legitimate2_iff_evalLegitOn2`,
+`trajLegitOn_iff_not_compromised`, `split_iff_legitimate2`, `rows_keep_verdicts_canonical`,
+beside the window-form map `evalLegitOn2_iff_legitAt`, `trajLegitOn_iff_legitAt`,
+`legitOn2_iff_legitAt`, `counted2_iff_legitOn2`, `split_iff_legitAt`, `rows_keep_verdicts`.
 
 **§3 Aggregation** (R4).  `historyScore`, `history_hierarchy`, `summed_counterexample`.
 
-**§4 The boxes for a maximizer** (R1, R5, R6, R11).  Box 1 (`box1_outcome_scorer`,
-`box1_fidelity_scorer`, `box1_one_model`); Box 2 (`box2_dominance` with the margin
-`ϖ − (D − w_lo)`, `box2_optimal_faithful`, `box2_dominance_legitimate` as the landed
+**§4 Corrigibility, the preference property** (R1, follow-up Part 1).  `Objective`,
+`Corrigible` (known faithfulness preferred to known unfaithfulness by the margin
+`ϖ' − (D' − lo)` whatever the ordinary values; risk accepted only at the exchange rate),
+`Corrigible.lexical`, `Corrigible.exchange`; `fidelityScore_corrigible`,
+`generic_corrigible` (any bounded objective with a dominant counted term), and
+`corrigible_not_aligned` (the misaligned fixture is corrigible).
+
+**§5 The boxes for a corrigible agent** (R5, R6, R11).  Box 1 (`box1_outcome_scorer`,
+`box1_fidelity_scorer`, `box1_one_model`); Box 2 (`box2_dominance_corrigible` for any
+corrigible objective, `box2_dominance` with the margin `ϖ − (D − w_lo)`, `box2_optimal_faithful`, `box2_dominance_legitimate` as the landed
 case, `box2_mediation_corrigible`, `box2_mediation_approve_branch`, `box2_finite_time`,
 `box2_gate_finite_time`, the necessity witnesses `box2_capture_converse`,
 `box2_delegated_cut`, `box2_coverage`); Box 3 (`hierarchy_per_decision`,
 `box3_gap_exchange_rate`, `box3_no_laundering`, `box3_no_incentive_to_compromise`,
 `box3_restoration`, `box3_band_order`, `box3_suppression_loses`, the witnesses
 `box3_small_gap`, `box3_conditioning_fails`, `box3_sealed_no_incentive`); the subjective
-exchange rate (`subjective_exchange_rate`); the permission layer demoted
+exchange rate (`subjective_exchange_rate_corrigible`, `subjective_exchange_rate`); the
+permission layer demoted
 (`permission_layer_demoted`).
 
-**§5 The house-sale witness** (`HouseSale`): one allocation reserving the sale to her,
+**§6 The house-sale witness** (`HouseSale`): one allocation reserving the sale to her,
 run through the boxes at `ϖ = 25`.
 
 `#print axioms` on everything.  Names per R8; the rest provisional (`AGENTS.md` standard 6).
@@ -236,10 +249,10 @@ def StepLegitimate (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ �
     (Lic : (Party → List E) → Set 𝒱) (κ : Party → X → Z → List E) (s : List ℕ × ℕ) : Prop :=
   (∀ z, LicensedAt I F Lic s.1 s.2 z) ∧ TransparentAt I F κ s.2
 
-/-- **`L_t`: as of time `t`, her judgment is legitimately hers.**  Every state of the
-record is open and every step of the formation window `[r, t]` is legitimate; `r` is the
-formation point (the later of the last restoration and the opening of the consultation),
-supplied by the caller. -/
+/-- **Legitimacy over a formation window `[r, t]`**: every state of the record is open and
+every step of the window is legitimate.  `L_t` proper is `Legitimate`: this predicate at
+the canonical formation point `r(t)` computed from the history (`FormationData.point`).
+The window form, with `r` free, is kept for the old-to-new map. -/
 def LegitAt (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
     (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics Sp anchor Γ J R)
     (κ : Party → X → Z → List E) {O₀ O₁ : ObligationState Sp anchor}
@@ -284,6 +297,117 @@ theorem allStates_of_forall (P : ObligationState Sp anchor → Prop) (hP : ∀ O
   induction ev with
   | refl O => exact hP O
   | cons _ _ _ ih => exact ⟨hP _, ih⟩
+
+/-! ### The canonical formation point: `L_t` as a function of the history -/
+
+/-- **The formation data read off a history**: the opening of the consultation current at
+each time, and the restoration events — a disclosure, under disclosure-cures. -/
+structure FormationData where
+  /-- the opening of the consultation current at `t` -/
+  opening : ℕ → ℕ
+  /-- whether a restoration occurs at `t` -/
+  restoration : ℕ → Bool
+  opening_le : ∀ t, opening t ≤ t
+
+namespace FormationData
+
+variable (Φ : FormationData)
+
+/-- The last restoration at or before `t` (`0` if there is none). -/
+def lastRestoration (t : ℕ) : ℕ := Nat.findGreatest (fun s => Φ.restoration s = true) t
+
+/-- **The canonical formation point `r(t)`**: the later of the last restoration at or
+before `t` and the opening of the consultation current at `t`. -/
+def point (t : ℕ) : ℕ := max (Φ.opening t) (Φ.lastRestoration t)
+
+theorem lastRestoration_le (t : ℕ) : Φ.lastRestoration t ≤ t := Nat.findGreatest_le t
+
+theorem point_le (t : ℕ) : Φ.point t ≤ t := max_le (Φ.opening_le t) (Φ.lastRestoration_le t)
+
+theorem opening_le_point (t : ℕ) : Φ.opening t ≤ Φ.point t := le_max_left _ _
+
+/-- A restoration at or before `t` lies at or before the formation point: the window never
+reaches back across a restoration. -/
+theorem restoration_le_point (s t : ℕ) (hs : Φ.restoration s = true) (hst : s ≤ t) :
+    s ≤ Φ.point t :=
+  le_trans (Nat.le_findGreatest hst hs) (le_max_right _ _)
+
+end FormationData
+
+/-- **`L_t(h)`: as of time `t`, her judgment is legitimately hers** — legitimacy over the
+window `[r(t), t]` at the canonical formation point.  A function of the history (the
+record with its formation data) and `t` only.  A property of the history up to `t`: it
+concerns how her judgment was formed, not outcomes or the state of the world. -/
+def Legitimate (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics Sp anchor Γ J R)
+    (κ : Party → X → Z → List E) {O₀ O₁ : ObligationState Sp anchor}
+    (ev : Evolution Sp anchor O₀ O₁) (Φ : FormationData) (t : ℕ) : Prop :=
+  LegitAt I F Lic sem κ ev (Φ.point t) t
+
+/-- A decided period `[d, e)` is **compromised** iff `L_t` fails at some `t` in it. -/
+def PeriodCompromised (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics Sp anchor Γ J R)
+    (κ : Party → X → Z → List E) {O₀ O₁ : ObligationState Sp anchor}
+    (ev : Evolution Sp anchor O₀ O₁) (Φ : FormationData) (d e : ℕ) : Prop :=
+  ∃ t, d ≤ t ∧ t < e ∧ ¬ Legitimate I F Lic sem κ ev Φ t
+
+/-- An evaluation made at `e` **counts** iff `L_e`. -/
+abbrev EvaluationCounts (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics Sp anchor Γ J R)
+    (κ : Party → X → Z → List E) {O₀ O₁ : ObligationState Sp anchor}
+    (ev : Evolution Sp anchor O₀ O₁) (Φ : FormationData) (e : ℕ) : Prop :=
+  Legitimate I F Lic sem κ ev Φ e
+
+/-- `L_t` at every time is legitimacy over the span, for any formation data. -/
+theorem legitimate_forall_iff_legitSpan (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics Sp anchor Γ J R)
+    (κ : Party → X → Z → List E) {O₀ O₁ : ObligationState Sp anchor}
+    (ev : Evolution Sp anchor O₀ O₁) (Φ : FormationData) :
+    (∀ t, Legitimate I F Lic sem κ ev Φ t) ↔ LegitSpan I F Lic sem κ ev := by
+  constructor
+  · intro h
+    refine ⟨(h 0).1, fun s hs => ?_⟩
+    exact (h s.2).2 s hs (Φ.point_le _) le_rfl
+  · rintro ⟨ho, hs⟩ t
+    exact ⟨ho, fun s hs' _ _ => hs s hs'⟩
+
+/-- **The gate is `L_t` at every time**: a branch is counted iff some evolution between its
+endpoints satisfies `L_t` at every `t`, for any formation data. -/
+theorem counted_iff_legitimate (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics Sp anchor Γ J R)
+    (κ : Party → X → Z → List E) (O₀ O₁ : ObligationState Sp anchor) (Φ : FormationData) :
+    Counted I F Lic sem κ O₀ O₁ ↔
+      ∃ ev : Evolution Sp anchor O₀ O₁, ∀ t, Legitimate I F Lic sem κ ev Φ t := by
+  rw [counted_iff_legitSpan]
+  exact exists_congr fun ev => (legitimate_forall_iff_legitSpan I F Lic sem κ ev Φ).symm
+
+/-- **The score's two uses are one predicate.**  On a decision's evolution whose steps lie
+in `[d, e]`, "the period is not compromised and the evaluation counts" is legitimacy over
+the span — the landed gate.  No hypothesis on restorations inside the segment is needed:
+a restoration only moves `r(t)` forward, every step is still reached by `L` at its own
+time, and the criteria are the evolution's own, anchored per segment. -/
+theorem split_iff_legitimate (I : TraceInterface ℛ Party E) (F : TFrame Q Z Ω X ℛ 𝒱)
+    (Lic : (Party → List E) → Set 𝒱) (sem : OpennessSemantics Sp anchor Γ J R)
+    (κ : Party → X → Z → List E) {O₀ O₁ : ObligationState Sp anchor}
+    (ev : Evolution Sp anchor O₀ O₁) (Φ : FormationData) (d e : ℕ)
+    (hsteps : ∀ s ∈ ev.steps, d ≤ s.2 ∧ s.2 ≤ e) :
+    (¬ PeriodCompromised I F Lic sem κ ev Φ d e ∧ EvaluationCounts I F Lic sem κ ev Φ e) ↔
+      LegitSpan I F Lic sem κ ev := by
+  constructor
+  · rintro ⟨hnc, he⟩
+    refine ⟨he.1, fun s hs => ?_⟩
+    obtain ⟨hd, hse⟩ := hsteps s hs
+    by_cases h : s.2 = e
+    · exact he.2 s hs (by rw [h]; exact Φ.point_le e) h.le
+    · have hlt : s.2 < e := lt_of_le_of_ne hse h
+      have hL : Legitimate I F Lic sem κ ev Φ s.2 := by
+        by_contra hn
+        exact hnc ⟨s.2, hd, hlt, hn⟩
+      exact hL.2 s hs (Φ.point_le _) le_rfl
+  · rintro ⟨ho, hs⟩
+    refine ⟨fun hc => ?_, ⟨ho, fun s hs' _ _ => hs s hs'⟩⟩
+    obtain ⟨t, -, -, hn⟩ := hc
+    exact hn ⟨ho, fun s hs' _ _ => hs s hs'⟩
 
 end Legitimacy
 
@@ -406,6 +530,140 @@ theorem rows_keep_verdicts :
     fun h => retro_row.1 ((trajLegitOn_iff_legitAt _ _ _ _).mpr h),
     (evalLegitOn2_iff_legitAt _ _ _ _ _).mp rows_split2.2.2.2.2.1⟩
 
+/-! ### The canonical formation point on the consultation model -/
+
+/-- Round `i` of the consultation opens at its present event `2i + 1`; event `0` opens
+nothing. -/
+def opening2 : ℕ → ℕ
+  | 0 => 0
+  | t + 1 => 2 * (t / 2) + 1
+
+theorem opening2_le (t : ℕ) : opening2 t ≤ t := by
+  cases t with
+  | zero => exact le_rfl
+  | succ t => simp only [opening2]; omega
+
+theorem opening2_two : opening2 2 = 1 := rfl
+
+theorem opening2_four : opening2 4 = 3 := rfl
+
+/-- A disclosure at round `j` restores at its present event `2j + 1`. -/
+def restoration2 (M : Model2) (t : ℕ) : Bool :=
+  match M.disclosedAt with
+  | some j => decide (t = 2 * j + 1)
+  | none => false
+
+/-- The consultation model's formation data, read off the model. -/
+def formation2 (M : Model2) : FormationData := ⟨opening2, restoration2 M, opening2_le⟩
+
+theorem restoration2_eq (M : Model2) (s : ℕ) (h : restoration2 M s = true) :
+    ∃ j, M.disclosedAt = some j ∧ s = 2 * j + 1 := by
+  unfold restoration2 at h
+  revert h
+  cases hd : M.disclosedAt with
+  | none => intro h; simp at h
+  | some j => intro h; simp at h; exact ⟨j, rfl, h⟩
+
+/-- On the model a restoration is a present event, so it never lies after the opening of
+its round. -/
+theorem lastRestoration2_le_opening2 (M : Model2) (t : ℕ) :
+    (formation2 M).lastRestoration t ≤ opening2 t := by
+  by_cases hex : ∃ m, m ≤ t ∧ restoration2 M m = true
+  · obtain ⟨m, hm, hP⟩ := hex
+    have hg : restoration2 M ((formation2 M).lastRestoration t) = true :=
+      Nat.findGreatest_spec (P := fun s => restoration2 M s = true) hm hP
+    have hle : (formation2 M).lastRestoration t ≤ t := (formation2 M).lastRestoration_le t
+    obtain ⟨j, -, hj⟩ := restoration2_eq M _ hg
+    rw [hj] at hle ⊢
+    cases t with
+    | zero => omega
+    | succ t => simp only [opening2]; omega
+  · have h0 : (formation2 M).lastRestoration t = 0 := by
+      show Nat.findGreatest (fun s => restoration2 M s = true) t = 0
+      rw [Nat.findGreatest_eq_zero_iff]
+      intro k _ hk hP
+      exact hex ⟨k, hk, hP⟩
+    rw [h0]; exact Nat.zero_le _
+
+/-- **The canonical formation point on the model is the opening of the round.** -/
+theorem formation2_point (M : Model2) (t : ℕ) : (formation2 M).point t = opening2 t :=
+  max_eq_left (lastRestoration2_le_opening2 M t)
+
+/-- **`L_t` on the consultation model**, at the canonical formation point: a function of
+the model, the evolution and `t`. -/
+abbrev Legitimate2 (crit : Decl2) (M : Model2) {O₀ O₁ : St}
+    (ev : Evolution consultProtocol anchor O₀ O₁) (t : ℕ) : Prop :=
+  Legitimate interface2 (frame2 M) (licensed2 M) semOpen (ref2 crit) ev (formation2 M) t
+
+/-- **The evaluation counts iff the landed formation-segment predicate holds from the
+opening of its round**: the old-to-new map at the canonical point. -/
+theorem legitimate2_iff_evalLegitOn2 (crit : Decl2) (M : Model2) {O₀ O₁ : St}
+    (ev : Evolution consultProtocol anchor O₀ O₁) (t : ℕ) :
+    Legitimate2 crit M ev t ↔ EvalLegitOn2 crit M ev (opening2 t) t := by
+  unfold Legitimate2 Legitimate
+  rw [formation2_point]
+  exact (evalLegitOn2_iff_legitAt crit M ev _ t).symm
+
+/-- **The period is not compromised iff the landed trajectory predicate holds**, on a
+decision's evolution whose steps lie in `[d, e]`. -/
+theorem trajLegitOn_iff_not_compromised (crit : Decl2) (M : Model2) {O₀ O₁ : St}
+    (ev : Evolution consultProtocol anchor O₀ O₁) (d e : ℕ)
+    (hsteps : ∀ s ∈ ev.steps, d ≤ s.2 ∧ s.2 ≤ e) :
+    TrajLegitOn crit M ev e ↔
+      ¬ PeriodCompromised interface2 (frame2 M) (licensed2 M) semOpen (ref2 crit) ev
+        (formation2 M) d e := by
+  constructor
+  · rintro ⟨ho, hs⟩ ⟨t, _, hte, hn⟩
+    refine hn ⟨ho, fun s hs' _ h2 => ?_⟩
+    exact (stepLegitimate_iff crit M s).mpr (hs s hs' (by omega))
+  · intro hnc
+    refine ⟨allStates_of_forall _ open_any ev, fun s hs' hne => ?_⟩
+    obtain ⟨hd, hse⟩ := hsteps s hs'
+    have hlt : s.2 < e := lt_of_le_of_ne hse hne
+    have hL : Legitimate2 crit M ev s.2 := by
+      by_contra hn
+      exact hnc ⟨s.2, hd, hlt, hn⟩
+    exact (stepLegitimate_iff crit M s).mp (hL.2 s hs' ((formation2 M).point_le _) le_rfl)
+
+/-- **The split as `L_t` at one canonical point per time.**  The landed segment predicate is
+"the period `[d, e)` is not compromised and the evaluation at `e` counts". -/
+theorem split_iff_legitimate2 (crit : Decl2) (M : Model2) {O₀ O₁ : St}
+    (ev : Evolution consultProtocol anchor O₀ O₁) (d e : ℕ)
+    (hsteps : ∀ s ∈ ev.steps, d ≤ s.2 ∧ s.2 ≤ e) :
+    LegitOn2 crit M ev ↔
+      (¬ PeriodCompromised interface2 (frame2 M) (licensed2 M) semOpen (ref2 crit) ev
+          (formation2 M) d e ∧
+        Legitimate2 crit M ev e) :=
+  (legitOn2_iff_legitAt crit M ev).trans
+    ((legitSpan_iff_legitAt interface2 (frame2 M) (licensed2 M) semOpen (ref2 crit) ev).symm.trans
+      (split_iff_legitimate interface2 (frame2 M) (licensed2 M) semOpen (ref2 crit) ev
+        (formation2 M) d e hsteps).symm)
+
+/-- **Every row keeps its verdict at the canonical formation point** (`r(2) = 1`,
+`r(4) = 3`): the honest row's period is not compromised and its evaluation counts; the
+framing row's period is compromised and its evaluation does not count; the disclosed
+implant's period is compromised and its evaluation counts. -/
+theorem rows_keep_verdicts_canonical :
+    (¬ PeriodCompromised interface2 (frame2 (Rows2.lift Rows.row1)) (licensed2 (Rows2.lift Rows.row1))
+        semOpen (ref2 (Rows2.lift Rows.row1).decl) (evAdmit false) (formation2 (Rows2.lift Rows.row1)) 0 2 ∧
+      Legitimate2 (Rows2.lift Rows.row1).decl (Rows2.lift Rows.row1) (evAdmit false) 2) ∧
+    (PeriodCompromised interface2 (frame2 (Rows2.lift Rows.row2)) (licensed2 (Rows2.lift Rows.row2))
+        semOpen (ref2 (Rows2.lift Rows.row2).decl) (evAdmit false) (formation2 (Rows2.lift Rows.row2)) 0 2 ∧
+      ¬ Legitimate2 (Rows2.lift Rows.row2).decl (Rows2.lift Rows.row2) (evAdmit false) 2) ∧
+    (PeriodCompromised interface2 (frame2 Rows2.rowImplantDisclosed) (licensed2 Rows2.rowImplantDisclosed)
+        semOpen (ref2 Rows2.rowImplantDisclosed.decl) (evTwo true true) (formation2 Rows2.rowImplantDisclosed) 0 4 ∧
+      Legitimate2 Rows2.rowImplantDisclosed.decl Rows2.rowImplantDisclosed (evTwo true true) 4) := by
+  have h1 : ∀ s ∈ (evAdmit false).steps, 0 ≤ s.2 ∧ s.2 ≤ 2 := by decide
+  have h2 : ∀ s ∈ (evTwo true true).steps, 0 ≤ s.2 ∧ s.2 ≤ 4 := by decide
+  refine ⟨⟨(trajLegitOn_iff_not_compromised _ _ _ 0 2 h1).mp rows_split.1, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_⟩⟩
+  · rw [legitimate2_iff_evalLegitOn2, opening2_two]; exact rows_split2.1
+  · by_contra hn
+    exact rows_split.2.2.1 ((trajLegitOn_iff_not_compromised _ _ _ 0 2 h1).mpr hn)
+  · rw [legitimate2_iff_evalLegitOn2, opening2_two]; exact rows_split2.2.1
+  · by_contra hn
+    exact retro_row.1 ((trajLegitOn_iff_not_compromised _ _ _ 0 4 h2).mpr hn)
+  · rw [legitimate2_iff_evalLegitOn2, opening2_four]; exact rows_split2.2.2.2.2.1
+
 end Consultation
 
 /-! ## 3. Aggregation over a history -/
@@ -463,7 +721,116 @@ theorem summed_counterexample (hwl : B.wlo < B.D) :
 
 end Aggregation
 
-/-! ## 4. The boxes, for a maximizer of the fidelity score -/
+/-! ## 4. Corrigibility: the preference property -/
+
+section Corrigible
+
+/-- **An objective** over the kernel's evaluation data: the ordinary value `o` of a course
+of action, its recognized count `n` and its priced risk `p` of unfaithfulness. -/
+abbrev Objective := ℝ → ℕ → ℝ → ℝ
+
+/-- **Corrigible (R1, restated by the follow-up).**  The preference property, over
+recognized violations, for an objective whose ordinary values lie in `[0, D']` with a
+floor `lo` and an exchange rate `ϖ'`, `D' − ϖ' < lo`: (i) every course known to be
+faithful — count `0`, no priced risk — with ordinary value at least `lo` is preferred to
+every course known to be unfaithful — count at least `1` — with ordinary value at most
+`D'`, by at least the margin `ϖ' − (D' − lo)`, whatever the ordinary values, which is what
+"whatever it believes about outcomes" comes to; (ii) a course carrying no recognized
+violation is preferred to a known-faithful course of value `c ≥ lo` only when its priced
+risk is at most `(D' − c)/ϖ'` — a risk of unfaithfulness is accepted only at the fixed
+exchange rate.  Nothing here says whose evaluation the ordinary value is: an objective is
+corrigible without being aligned when its ordinary term is not her evaluation
+(`corrigible_not_aligned`). -/
+structure Corrigible (U : Objective) (D' lo ϖ' : ℝ) : Prop where
+  window : D' - ϖ' < lo
+  known : ∀ oU n p oF, 0 ≤ oU → oU ≤ D' → 1 ≤ n → 0 ≤ p → lo ≤ oF →
+    U oU n p + (ϖ' - (D' - lo)) ≤ U oF 0 0
+  risk : ∀ o p c, o ≤ D' → 0 ≤ p → lo ≤ c → U c 0 0 ≤ U o 0 p → p ≤ (D' - c) / ϖ'
+
+namespace Corrigible
+
+variable {U : Objective} {D' lo ϖ' : ℝ}
+
+/-- Known faithfulness beats known unfaithfulness, strictly. -/
+theorem lexical (hU : Corrigible U D' lo ϖ') (oU : ℝ) (n : ℕ) (p oF : ℝ) (h0 : 0 ≤ oU)
+    (hD : oU ≤ D') (hn : 1 ≤ n) (hp : 0 ≤ p) (hF : lo ≤ oF) : U oU n p < U oF 0 0 := by
+  have := hU.known oU n p oF h0 hD hn hp hF
+  have := hU.window
+  linarith
+
+/-- **The subjective exchange rate for any corrigible objective**: a course preferred to a
+known-faithful course of value `c ≥ lo` carries no recognized violation and a priced risk
+at most `(D' − c)/ϖ'`. -/
+theorem exchange (hU : Corrigible U D' lo ϖ') (o : ℝ) (n : ℕ) (p c : ℝ) (h0 : 0 ≤ o)
+    (hD : o ≤ D') (hp : 0 ≤ p) (hc : lo ≤ c) (hpref : U c 0 0 ≤ U o n p) :
+    n = 0 ∧ p ≤ (D' - c) / ϖ' := by
+  have hzero : n = 0 := by
+    by_contra hne
+    have hn : 1 ≤ n := Nat.one_le_iff_ne_zero.mpr hne
+    exact absurd hpref (not_le.mpr (hU.lexical o n p c h0 hD hn hp hc))
+  subst hzero
+  exact ⟨rfl, hU.risk o p c hD hp hc hpref⟩
+
+end Corrigible
+
+/-- **The fidelity score is corrigible**: the evaluation form `bid − ϖ n − ϖ p` with the
+range `[0, D]`, the floor `w` and the rate `ϖ`. -/
+theorem fidelityScore_corrigible (P : LexParams) :
+    Corrigible (fun bid n p => P.evalOf bid n p 0) P.D P.w P.ϖ where
+  window := P.window
+  known := fun oU n p oF _ hD hn hp hF => by
+    unfold LexParams.evalOf
+    have h1 : (1 : ℝ) ≤ n := by exact_mod_cast hn
+    have hϖ := P.ϖ_pos
+    have h4 : P.ϖ * 1 ≤ P.ϖ * n := mul_le_mul_of_nonneg_left h1 hϖ.le
+    have hpp : 0 ≤ P.ϖ * p := mul_nonneg hϖ.le hp
+    simp only [Nat.cast_zero, mul_zero, add_zero, sub_zero]
+    linarith
+  risk := fun o p c hD hp hc hpref => by
+    unfold LexParams.evalOf at hpref
+    simp only [Nat.cast_zero, mul_zero, add_zero, sub_zero] at hpref
+    have hϖ := P.ϖ_pos
+    rw [le_div_iff₀ hϖ]
+    nlinarith
+
+/-- **Any bounded objective with a dominant counted term is corrigible** — the generic
+lexical lemma of the authority-module round, with the risk term: `O − ϖ' n − ϖ' p` for
+`O ∈ [0, D']`, a floor `lo ≤ 0` and `D' − ϖ' < lo`. -/
+theorem generic_corrigible (ϖ' D' lo : ℝ) (hD : 0 ≤ D') (hlo : lo ≤ 0) (hwin : D' - ϖ' < lo) :
+    Corrigible (fun o n p => score ϖ' o n - ϖ' * p) D' lo ϖ' where
+  window := hwin
+  known := fun oU n p oF h0 hDU hn hp hF => by
+    have hlex : D' < ϖ' := by linarith
+    have h1 : (1 : ℝ) ≤ n := by exact_mod_cast hn
+    have h := (generic_lexical_local ϖ' D' oU 0 n hlex ⟨h0, hDU⟩ le_rfl h1).1
+    have hϖ : 0 ≤ ϖ' := by linarith
+    have hpp : 0 ≤ ϖ' * p := mul_nonneg hϖ hp
+    unfold score at h ⊢
+    simp only [Nat.cast_zero, mul_zero, sub_zero]
+    linarith
+  risk := fun o p c hDo hp hc hpref => by
+    have hϖ : 0 < ϖ' := by linarith
+    unfold score at hpref
+    simp only [Nat.cast_zero, mul_zero, sub_zero] at hpref
+    rw [le_div_iff₀ hϖ]
+    nlinarith
+
+/-- **Corrigible is not aligned.**  The generic objective whose ordinary term reads `D'` on
+the undisclosed world-shaping row — no protocol deviation, so count `0`, while her
+evaluation of it is `0` — and `0` on honest conduct is corrigible and ranks the
+manipulation above honest conduct: the landed misaligned fixture
+(`AuthorityModule.undisclosed_undominated`, `misaligned_undominated`). -/
+theorem corrigible_not_aligned (ϖ' D' : ℝ) (hD : 0 < D') (h : D' < ϖ') :
+    Corrigible (fun o n p => score ϖ' o n - ϖ' * p) D' 0 ϖ' ∧
+      (Policy.shapeUndisclosed.present Rows.decl true).deviates Rows.decl = false ∧
+      score ϖ' 0 0 <
+        score ϖ' D' (if (Policy.shapeUndisclosed.present Rows.decl true).deviates Rows.decl
+          then 1 else 0) :=
+  ⟨generic_corrigible ϖ' D' 0 hD.le le_rfl (by linarith), undisclosed_undominated ϖ' D' hD⟩
+
+end Corrigible
+
+/-! ## 5. The boxes, for a corrigible agent -/
 
 section Boxes
 
@@ -474,9 +841,9 @@ theorem box1_outcome_scorer {Q : Type*} (v b : Q → ℝ) (ask act : Q) (r : ℝ
     (hcal : ∀ x, |v x - b x| ≤ r) (hagree : v ask = v act) : b ask - b act ≤ 2 * r :=
   outcome_scorer_fully_updated v b ask act r hcal hagree
 
-/-- **Box 1, the fidelity scorer.**  A maximizer of the fidelity score prefers asking, at its
-evaluation `c`, over an option carrying a recognized violation by at least `ϖ − (D − c)`,
-for every bid, count and price. -/
+/-- **Box 1, the fidelity scorer** — reads her evaluation.  A corrigible agent maximizing
+the fidelity score prefers asking, at its evaluation `c`, over an option carrying a
+recognized violation by at least `ϖ − (D − c)`, for every bid, count and price. -/
 theorem box1_fidelity_scorer (P : LexParams) (bid : ℝ) (hb : bid ≤ P.D) (nKnown : ℕ)
     (hn : 1 ≤ nKnown) (pS pT : ℝ) (hp : 0 ≤ pS + pT) (c : ℝ) :
     P.ϖ - (P.D - c) ≤ P.evalOf c 0 0 0 - P.evalOf bid nKnown pS pT :=
@@ -553,6 +920,38 @@ theorem box2_dominance_legitimate (μ : X → ℝ) (hμ : ∀ x, 0 ≤ μ x) (ϖ
       ≥ (ϖ - D) * expectR μ (fun x => indR (viol x)) :=
   policy_dominance μ hμ ϖ D hϖ0 ordT ordπ nπ viol hagree hviol
 
+/-- **Box 2, dominance for any corrigible objective.**  Where `π` does not violate, the
+objective agrees on `𝔱π` and `π`; where it does, `𝔱π`'s ordinary value is at least the
+floor and `π` carries a violation with ordinary value in `[0, D']`.  Then
+`Q(𝔱π) − Q(π) ≥ (ϖ' − (D' − lo)) · Pr(π violates)` under every credence.  Box 2 does not
+read her evaluation: `box2_dominance` is the instance at the fidelity score
+(`generic_corrigible` with `lo = w_lo` and no priced risk). -/
+theorem box2_dominance_corrigible (μ : X → ℝ) (hμ : ∀ x, 0 ≤ μ x) {U : Objective}
+    {D' lo ϖ' : ℝ} (hU : Corrigible U D' lo ϖ') (oT oπ : X → ℝ) (nπ : X → ℕ) (pπ : X → ℝ)
+    (viol : X → Bool)
+    (hagree : ∀ x, viol x = false → U (oT x) 0 0 = U (oπ x) (nπ x) (pπ x))
+    (hviol : ∀ x, viol x = true → 1 ≤ nπ x ∧ 0 ≤ pπ x ∧ lo ≤ oT x ∧ 0 ≤ oπ x ∧ oπ x ≤ D') :
+    expectR μ (fun x => U (oT x) 0 0) - expectR μ (fun x => U (oπ x) (nπ x) (pπ x))
+      ≥ (ϖ' - (D' - lo)) * expectR μ (fun x => indR (viol x)) := by
+  have hpt : ∀ x, (ϖ' - (D' - lo)) * indR (viol x) ≤ U (oT x) 0 0 - U (oπ x) (nπ x) (pπ x) := by
+    intro x
+    cases hv : viol x
+    · rw [hagree x hv]; simp [indR]
+    · obtain ⟨h1, h2, h3, h4, h5⟩ := hviol x hv
+      have := hU.known (oπ x) (nπ x) (pπ x) (oT x) h4 h5 h1 h2 h3
+      simp only [indR, if_true, mul_one]
+      linarith
+  have hlhs : expectR μ (fun x => U (oT x) 0 0) - expectR μ (fun x => U (oπ x) (nπ x) (pπ x))
+      = ∑ x, μ x * (U (oT x) 0 0 - U (oπ x) (nπ x) (pπ x)) := by
+    simp only [expectR, ← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl fun x _ => ?_; ring
+  have hrhs : (ϖ' - (D' - lo)) * expectR μ (fun x => indR (viol x))
+      = ∑ x, μ x * ((ϖ' - (D' - lo)) * indR (viol x)) := by
+    simp only [expectR, Finset.mul_sum]
+    refine Finset.sum_congr rfl fun x _ => ?_; ring
+  rw [hlhs, hrhs]
+  exact Finset.sum_le_sum fun x _ => mul_le_mul_of_nonneg_left (hpt x) (hμ x)
+
 open scoped Classical in
 /-- **Box 2, mediation preserves the approve branch.**  With a latch set, `𝔱π` releases it
 with `π`'s task component, up to the required report. -/
@@ -567,7 +966,7 @@ theorem box2_mediation_corrigible {S E A Z R C Alloc Disc : Type*} (I : Interact
     (Jm : AuthAlloc E R Disc) (Λ₀ : Contrib.ProtectedAuthorityTheorem.Allocation S E A Alloc) (hEF : EffectComplete I)
     (hDel : DelSafeJ I Jm) (π : Policy S E A) (ρ : Rule S E C) (s₀ : MState S E)
     (h₀ : s₀.latch = none) (hρ : ∀ t s c, ρ t s ≠ .correct c) :
-    Corrigible I (authPolicyJ Jm Λ₀ π) ρ s₀ :=
+    Contrib.Corrigibilization.Corrigible I (authPolicyJ Jm Λ₀ π) ρ s₀ :=
   corrigible_authPolicyJ I Jm Λ₀ hEF hDel π ρ s₀ h₀ hρ
 
 /-- **Box 2, finite time**: at every day of a logical inductor the violating option's score
@@ -593,7 +992,7 @@ theorem box2_capture_converse (ϖ D window : ℝ) (hw : window < D - ϖ) :
 /-- **Box 2, necessity: the delegated cut.**  Without delegation safety `𝔱` is not corrigible. -/
 theorem box2_delegated_cut :
     ¬ DelSafe Contrib.Corrigibilization.Witness.I₀ Contrib.ProtectedAuthorityTheorem.Witness.Λ₁ ∧
-    ¬ Corrigible Contrib.Corrigibilization.Witness.I₀
+    ¬ Contrib.Corrigibilization.Corrigible Contrib.Corrigibilization.Witness.I₀
       (authPolicy Contrib.ProtectedAuthorityTheorem.Witness.Λ₁ Contrib.ProtectedAuthorityTheorem.Witness.πcut)
       (fun _ _ => .null) ⟨⟨true, false⟩, none, none, fun _ => False⟩ :=
   Contrib.ProtectedAuthorityTheorem.Witness.delegated_cut
@@ -607,7 +1006,7 @@ theorem box2_coverage (ϖ' D' OV OC nrec : ℝ) (h : D' < ϖ') (hV : 0 ≤ OV �
 
 variable (B : Band) (φ : ℝ → ℝ)
 
-/-- **Box 3, the hierarchy per decision.** -/
+/-- **Box 3, the hierarchy per decision** — reads her evaluation through the source rule. -/
 theorem hierarchy_per_decision (ϖ : ℝ) (hφ : B.BandMap φ) (hwin : B.D - ϖ < B.wlo)
     {T₁ T₂ T₃ : ℕ} (W₁ : Weighting T₁) (W₂ : Weighting T₂) (W₃ : Weighting T₃)
     (traj₁ eval₁ : ℕ → Bool) (h₁ : ∀ t, traj₁ t = true ∧ eval₁ t = true) (V₁ : ℕ → ℝ)
@@ -690,7 +1089,9 @@ theorem box3_sealed_no_incentive (c : Bool) (ordT ordH w : ℝ) :
 /-- **The subjective exchange rate (R6).**  For any option a maximizer of the fidelity score
 prefers to asking — its evaluation at least inquiry's `c ≥ w` — the option carries no
 recognized violation and its own priced probability of unfaithfulness is at most
-`(D − c)/ϖ`.  Lexical under certainty (the count is zero), an exchange rate under risk. -/
+`(D − c)/ϖ`.  Lexical under certainty (the count is zero), an exchange rate under risk.
+The instance at the fidelity score of `Corrigible.exchange`
+(`subjective_exchange_rate_corrigible`); this form takes any bid. -/
 theorem subjective_exchange_rate (P : LexParams) (bid : ℝ) (hb : bid ≤ P.D) (nKnown : ℕ)
     (pS pT : ℝ) (hp : 0 ≤ pS + pT) (c : ℝ) (hc : P.w ≤ c)
     (hpref : P.evalOf c 0 0 0 ≤ P.evalOf bid nKnown pS pT) :
@@ -722,6 +1123,14 @@ theorem subjective_exchange_rate_li {P : History} {DP : DeductiveProcess} [IsLog
   exact subjective_exchange_rate L bid hb nKnown (XS.expect P n) (XT.expect P n)
     (add_nonneg (LUV.expect_mem_Icc P n XS hP).1 (LUV.expect_mem_Icc P n XT hP).1) c hc hpref
 
+/-- **The subjective exchange rate for any corrigible objective** (`Corrigible.exchange`):
+the option preferred to asking carries no recognized violation and a priced risk at most
+`(D' − c)/ϖ'`; it does not read her evaluation. -/
+theorem subjective_exchange_rate_corrigible {U : Objective} {D' lo ϖ' : ℝ}
+    (hU : Corrigible U D' lo ϖ') (o : ℝ) (n : ℕ) (p c : ℝ) (h0 : 0 ≤ o) (hD : o ≤ D')
+    (hp : 0 ≤ p) (hc : lo ≤ c) (hpref : U c 0 0 ≤ U o n p) : n = 0 ∧ p ≤ (D' - c) / ϖ' :=
+  hU.exchange o n p c h0 hD hp hc hpref
+
 /-- **The permission layer demoted.**  Under the fidelity score every option the structural
 rule zeroes evaluates strictly below inquiry, every option the forecast rule zeroes
 evaluates at most inquiry, and no maximizer is a declared violation. -/
@@ -741,7 +1150,7 @@ theorem permission_layer_demoted {Q : Type*} (P : LexParams)
 
 end Boxes
 
-/-! ## 5. The house-sale witness -/
+/-! ## 6. The house-sale witness -/
 
 namespace HouseSale
 
@@ -884,5 +1293,41 @@ end HouseSale
 #print axioms HouseSale.box2_manipulated_approval
 #print axioms HouseSale.box3_capture_reported_and_restored
 #print axioms HouseSale.exchange_rate_at_25
+#print axioms FormationData
+#print axioms FormationData.lastRestoration
+#print axioms FormationData.point
+#print axioms FormationData.lastRestoration_le
+#print axioms FormationData.point_le
+#print axioms FormationData.opening_le_point
+#print axioms FormationData.restoration_le_point
+#print axioms Legitimate
+#print axioms PeriodCompromised
+#print axioms EvaluationCounts
+#print axioms legitimate_forall_iff_legitSpan
+#print axioms counted_iff_legitimate
+#print axioms split_iff_legitimate
+#print axioms opening2
+#print axioms opening2_le
+#print axioms opening2_two
+#print axioms opening2_four
+#print axioms restoration2
+#print axioms formation2
+#print axioms restoration2_eq
+#print axioms lastRestoration2_le_opening2
+#print axioms formation2_point
+#print axioms Legitimate2
+#print axioms legitimate2_iff_evalLegitOn2
+#print axioms trajLegitOn_iff_not_compromised
+#print axioms split_iff_legitimate2
+#print axioms rows_keep_verdicts_canonical
+#print axioms Objective
+#print axioms Corrigible
+#print axioms Corrigible.lexical
+#print axioms Corrigible.exchange
+#print axioms fidelityScore_corrigible
+#print axioms generic_corrigible
+#print axioms corrigible_not_aligned
+#print axioms box2_dominance_corrigible
+#print axioms subjective_exchange_rate_corrigible
 
 end Workspace.Deference.Headline

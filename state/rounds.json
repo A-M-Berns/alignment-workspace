@@ -1777,7 +1777,9 @@
         "kernel.hierarchy-history",
         "kernel.subjective-exchange-rate",
         "kernel.extension-realized-rate",
-        "kernel.extension-bria-realization"
+        "kernel.extension-bria-realization",
+        "kernel.corrigible-fidelity-score",
+        "kernel.corrigible-generic"
       ]
     }
   ]

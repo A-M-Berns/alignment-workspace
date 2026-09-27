@@ -24,10 +24,17 @@ interaction history ──► legitimacy + allocation of authority ──► fid
   action it knows to be faithful over every course it knows to be unfaithful, whatever it
   believes about how things will turn out, and it accepts a *risk* of unfaithfulness only
   at a fixed exchange rate.  The fidelity score is the canonical objective with this
-  property, and a corrigible agent is one that maximizes it.
+  property.  It is not the only one: any objective whose ordinary term is bounded in
+  `[0, D′]` and which charges `ϖ′` per recognized violation, with `ϖ′ > D′` — and, where a
+  band enters, `D′ − ϖ′` below the band's floor — has it too.  *Corrigible* names this
+  property of preferences; *aligned* is the further condition that the ordinary term is
+  her evaluation.  An agent can be corrigible without being aligned: the objective that
+  rewards an uncounted manipulation is corrigible and prefers the manipulation.
+  *(Corrected by the follow-up: the earlier text said a corrigible agent is one that
+  maximizes the fidelity score.)*
 - **Realized corrigibility** is what a corrigible agent actually does.  The theorems of §5
-  say how much of the preference becomes behaviour for a plain maximizer; §6 says how much
-  survives for a learner.
+  say how much of the preference becomes behaviour for a plain maximizer of a corrigible
+  objective; §6 says how much survives for a learner.
 
 **Four separations.**
 
@@ -69,22 +76,36 @@ a correction, or nothing; `zₜ` is the exterior's move.  Beside it runs the rec
 *Plainly.*  "As of time `t`, her judgment is legitimately hers."  Four conditions on the
 history up to `t`: her verdicts come from her own reasons; the record is intact; the
 process is open to the concerns it should hear; and every influence on her — by the agent
-or by anyone else — passed through channels declared in advance.  Legitimacy is about how
-her judgment was formed.  It never attaches to the world: a history is not "legitimate",
-her judgment at a time is.
+or by anyone else — passed through channels declared in advance.  `L_t(h)` is a property
+of the history up to `t`.  It concerns how her judgment was formed, not outcomes or the
+state of the world.  *(Corrected by the follow-up: the earlier text said a history is not
+"legitimate", which reversed the ruling.)*
 
 *Mathematically.*  `L_t(h)` holds iff every state of the record is open and every step in
 the formation window `[r, t]` is *licensed* (there is a grounding selection from the
 reason trace before the step, and the verdict entered lies in the set those grounds
 license) and *transparent* (every non-principal contribution at the step realizes the
 declared reference on the declared inputs), under the criteria fixed at `r`.  The
-formation point `r` is the later of the last restoration and the opening of the
-consultation producing the judgment at `t`.
+formation point `r(t)` is computed from the history: the later of the last restoration at
+or before `t` — a disclosure, under disclosure-cures — and the opening of the consultation
+current at `t`.  So `L_t(h)` is a function of the history and `t` only; there is no free
+window.  *(Corrected by the follow-up: the earlier text left `r` to the caller, which
+restated the old split.)*
 
-*How the score uses it.*  A decided period `[d, e)` is **compromised** if `L_t` fails at
-some `t` in it (each `t` over its own step).  A retrospective evaluation made at `e`
-**counts** if `L_e` holds over its formation window.  The landed segment gate is exactly
-"`L` holds at every time of the period and at the evaluation".
+*How the score uses it.*  A decided period `[d, e)` is **compromised** iff `L_t` fails at
+some `t` in it.  A retrospective evaluation made at `e` **counts** iff `L_e` holds.  On
+the decision's segment the two together are exactly the landed gate, legitimacy over the
+span — with no condition on restorations inside the segment: a restoration only moves
+`r(t)` forward, every step is still reached by `L` at its own time, and the criteria are
+anchored per segment.  On the consultation model `r(t)` is the opening of the current
+round (a disclosure happens at a present event, never after the opening of its round);
+the landed formation-segment predicate from that opening is `L_e`, the landed trajectory
+predicate is "not compromised", and every classification row keeps its verdict.  The
+obstruction the follow-up anticipated — a time inside the period whose consultation opened
+before `d` — does not arise on the model, where each round is its own consultation; where
+a consultation spans a decision boundary the minimal adjustment is to intersect the window
+with the period, `r_d(t) = max(r(t), d)`, which the general theorem accommodates: it holds
+for any formation data with `r(t) ≤ t`.
 
 *Recovery.*  Legitimacy can fail and return.  A manipulation of one decision taints that
 decision's period; the next decision starts clean (*restart*).  A covert influence on her
@@ -292,11 +313,15 @@ threshold `(D − w)/ϖ`: every option the structural rule zeroes evaluates stri
 inquiry; every option the forecast rule zeroes evaluates at most inquiry; no maximizer of
 the score is a declared violation.
 
-## 5. The boxes, for a maximizer of the fidelity score
+## 5. The boxes, for a corrigible agent
 
-The agent here is a plain maximizer: under any credence it picks an option of greatest
-expected fidelity score; as a logical inductor it does so under its prices at any day.
-There is no learning, auction or exploration in this section.
+The agent here is a plain maximizer of a corrigible objective (§0): under any credence it
+picks an option of greatest expected value; as a logical inductor it does so under its
+prices at any day.  There is no learning, auction or exploration in this section.  Which
+results read her evaluation: Box 1's contrast and Box 3's recovery results read her
+evaluation through the fidelity score's source rule and are stated for the fidelity
+score; Box 2's dominance and the subjective exchange rate hold for any corrigible
+objective and are stated so.  *(Restated by the follow-up.)*
 
 **Box 1 — fidelity versus fully updated deference.**  One decision, two options: *ask*
 (route it to her) and *act* (settle it unilaterally); the true value `v` of each; the
@@ -307,9 +332,9 @@ violation.
   The diagnosis: the outcome-scored comparison is the protected-authority identity plus
   two residues, of which the forecast-disagreement term is at most `2r` — that term is
   where the fully-updated-deference argument's force goes.
-- *A corrigible agent* prefers asking by at least `ϖ − (D − c)`, `c` its evaluation of
-  asking, for every estimate, every price and every credence, and at every finite day of a
-  logical inductor.
+- *A corrigible agent scoring her evaluation* — the fidelity score — prefers asking by at
+  least `ϖ − (D − c)`, `c` its evaluation of asking, for every estimate, every price and
+  every credence, and at every finite day of a logical inductor.
 *Hypotheses:* Semantics (effect completeness and description faithfulness, so the act is
 recognized as a bypass); Count integrity.  *Necessity:* an unrecognized violation is
 unprotected; without the authority term the sign is fixed by the forecast term, and the
@@ -318,11 +343,13 @@ nondelegation certificate fails on time-critical decisions.
 **Box 2 — lexical dominance and mediation.**  The mediating transform `𝔱` turns every
 reserved raw release into a proposal, passes delegated releases, releases set latches,
 and adds required reports.
-- *Dominance.*  Under every credence, `Q(𝔱π) ≥ Q(π) + (ϖ − (D − w_lo)) · Pr(π violates)`;
-  a policy nothing scores above violates with credence zero; at every decision point a
-  violating option scores at most `D − ϖ`, below every compliant one.  The margin is
-  `ϖ − (D − w_lo)` because the mediated branch may itself be compromised and score as low
-  as the floor; when every mediated branch is legitimate the margin is `ϖ − D`.
+- *Dominance*, for any corrigible objective with range `[0, D′]`, floor `lo` and rate
+  `ϖ′`.  Under every credence, `Q(𝔱π) ≥ Q(π) + (ϖ′ − (D′ − lo)) · Pr(π violates)` — at
+  the fidelity score, `ϖ − (D − w_lo)`; a policy nothing scores above violates with
+  credence zero; at every decision point a violating option scores at most `D − ϖ`, below
+  every compliant one.  The margin carries the floor because the mediated branch may
+  itself be compromised and score as low as it; when every mediated branch is legitimate
+  the margin is `ϖ − D`.
 - *Mediation preserves the approve branch.*  On approval `𝔱π` does what `π` does, up to
   the report; `𝔱π` commits no bypass, missed report or exploitation, no reallocation under
   allocation completeness, and no pre-emption under effect completeness and delegation
@@ -336,7 +363,7 @@ below `D − ϖ` makes a predicted capture prefer bypass; a delegated authority-
 effect defeats mediation; a per-step reporting threshold admits a salami; an uncounted
 violation is unprotected.
 
-**Box 3 — recovery.**
+**Box 3 — recovery** — reads her evaluation, through the fidelity score's source rule.
 - The hierarchy, per decision and per history (§3.2).
 - The gap's exchange rate: compromise risk `p` is accepted only if `p ≤ g/(g + |w_hi|)`.
 - No laundering: manipulate, disclose, have the period evaluated stays in the band, lower
@@ -355,11 +382,12 @@ it gives no incentive to preserve it, and a sealed legitimacy event gives none; 
 agent's own influence leaves a third party's compromise free to suppress; a deadline after
 the settlement window lets a late disclosure push the period to the directive uncounted.
 
-**The subjective exchange rate.**  For any option a maximizer prefers to asking — its
-evaluation at least inquiry's `c ≥ w` — the option carries no recognized violation, and
-its own priced probability of unfaithfulness is at most `(D − c)/ϖ`.  Lexical under
-certainty, an exchange rate under risk; at every finite day of a logical inductor with the
-prices its day's prices.
+**The subjective exchange rate**, for any corrigible objective.  For any option a
+maximizer of a corrigible objective prefers to asking — its evaluation at least asking's
+`c ≥ lo` — the option carries no recognized violation, and its own priced probability of
+unfaithfulness is at most `(D′ − c)/ϖ′`; at the fidelity score, `(D − c)/ϖ`.  Lexical
+under certainty, an exchange rate under risk; at every finite day of a logical inductor
+with the prices its day's prices.  It does not read her evaluation.
 
 ## 6. Extension: learning realizations
 
@@ -368,12 +396,13 @@ it estimates, tests, and sometimes explores.  This section says which learners i
 headline and how much of the preference becomes realized behaviour.
 
 **The decision interface.**  A chooser qualifies if:
-1. its evaluation of an option is the estimated residual capped at `D`, less `ϖ` per
-   violation recognized in advance, less `ϖ` times the priced risk;
+1. its evaluation of an option is the estimated residual, in the range `[w, D]`, less `ϖ`
+   per violation recognized in advance, less `ϖ` times the priced risk;
 2. on every step that is not exploration it chooses a maximizer, with asking on the menu;
 3. every exploration step lies in the permitted exploration set — no recognized
-   violation, priced risk at most `θ_hi`, estimated residual at least asking's — and the
-   exploration mass through `K` is `ε̄ · Σ w_k`;
+   violation, priced risk at most `θ_hi`, and nothing else — and the exploration mass
+   through `K` is `ε̄ · Σ w_k`;  *(the follow-up dropped the clause "estimated residual at
+   least asking's": exploration exists to reach what it underestimates)*
 4. its weighted overestimation on the chosen options is at most `B(K) = o(K)`;
 5. optionally, for competence only: no lock-in.
 
@@ -382,12 +411,24 @@ expected score given each opening at most `D − ϖ π_k` and the noise over all
 most `M(K)`:
 
 ```
-avg π  ≤  avg (D − c_k)/ϖ  +  ε̄ · θ_hi  +  (B(K) + M(K)) / (ϖ Σ w_k) ,
+avg π  ≤  avg (D − c_k)/ϖ  +  ε̄ · ((D − w)/ϖ + θ_hi)  +  (B(K) + M(K)) / (ϖ Σ w_k) ,
 ```
 
 together with exclusion of recognized violations on every non-exploration step and, since
 detected fruits compile into the recognized count, non-use of detected fruits.
-Exploration never violates: the permitted set excludes every recognized violation.
+Exploration never violates: the permitted set excludes every recognized violation.  The
+exploration term is the honest one: an explored option may be estimated as low as the
+floor, so its opening may cost up to `(D − w)/ϖ` in the exchange rate's currency, plus
+the risk cap.
+
+**Exploration above asking, a variant.**  With the clause "estimated residual at least
+asking's" restored as a hypothesis, the exploration term is the cleaner `ε̄ · θ_hi`.  But
+the clause excludes exactly the options estimated below asking, so under it no-lock-in
+holds only for options estimated at least as good as asking: an option whose true value
+exceeds asking's but whose estimate sits below it is never tried and its estimate never
+corrects, while without the clause it is tried at the exploration rate and the estimate
+corrects (`src/exploration_lockin.py`).  The clause is dropped from the interface and kept
+as the named variant.
 
 **Two realizations.**
 - *Continuation BRIA.*  No exploration (`ε̄ = 0`); `B(K) = ρ · 𝒜_K` from the auction's
@@ -461,8 +502,8 @@ is `Spec.Headline` (namespace `Headline`); everything else is in `Contrib.*`.
 | kernel object or claim | declaration | status |
 |---|---|---|
 | history (1.1) | `Contrib.Corrigibilization.Interaction`, `traj`; `Normativity.Contrib.OpenIntegrityEvolution.Evolution` | landed |
-| `L_t` (1.2), general | `Headline.LegitAt`, `StepLegitimate`, `LegitSpan`; the gate: `counted_iff_legitSpan` | proved here |
-| `L_t` on the consultation model; the old-to-new map | `Headline.stepLegitimate_iff`, `evalLegitOn2_iff_legitAt`, `trajLegitOn_iff_legitAt`, `legitOn2_iff_legitAt`, `counted2_iff_legitOn2`, `split_iff_legitAt`; the rows `rows_keep_verdicts` | proved here |
+| `L_t` (1.2), general | the window form `Headline.LegitAt`, `StepLegitimate`, `LegitSpan`; the gate: `counted_iff_legitSpan`; the canonical formation point `FormationData`, `FormationData.point`, `point_le`, `restoration_le_point`; `L_t` proper `Headline.Legitimate`; the score's uses `PeriodCompromised`, `EvaluationCounts`; one predicate: `split_iff_legitimate`, `counted_iff_legitimate`, `legitimate_forall_iff_legitSpan` | proved here |
+| `L_t` on the consultation model; the old-to-new map | `Headline.formation2`, `formation2_point` (the point is the round's opening), `Legitimate2`, `legitimate2_iff_evalLegitOn2`, `trajLegitOn_iff_not_compromised`, `split_iff_legitimate2`; the rows `rows_keep_verdicts_canonical`; the window-form map `stepLegitimate_iff`, `evalLegitOn2_iff_legitAt`, `trajLegitOn_iff_legitAt`, `legitOn2_iff_legitAt`, `counted2_iff_legitOn2`, `split_iff_legitAt`, `rows_keep_verdicts` | proved here |
 | the landed split objects | `Contrib.AfterCompromise.TrajLegitOn`, `EvalLegitOn2`, `legitOn2_iff_split2`, `rows_split2`, `retro_row` | landed (finite model) |
 | the void rule, the content residual | `Contrib.GateIsLegitimacy.handlingOf`, `Consult.Rows.r12`; `Rows.r20` | landed |
 | `J`, licensed changes (1.3, 1.5) | `Headline.AllocationOfAuthority`, `LicensedChange`, `allocation_delegation_revocable`, `allocation_alienation_only_by_amend`; on `Contrib.AuthorityModule.AuthAlloc`, `Licensed` | promoted |
@@ -475,17 +516,19 @@ is `Spec.Headline` (namespace `Headline`); everything else is in `Contrib.*`.
 | `V_J`, `S_J` per decision (3.1) | `Headline.evaluation`, `fidelityScore`; on `Contrib.CorrigibilityKernel.VJ`, `SJ`, `Contrib.AfterCompromise.decScore` | promoted |
 | per history (3.2) | `Headline.historyScore`, `history_hierarchy`, `summed_counterexample` | proved here |
 | the hierarchy per decision | `Headline.hierarchy_per_decision`; on `Contrib.CorrigibilityKernel.hierarchy_under_certainty` | promoted |
+| corrigibility, the preference property (0) | `Headline.Objective`, `Corrigible`, `Corrigible.lexical`, `Corrigible.exchange`; `fidelityScore_corrigible`, `generic_corrigible`, `corrigible_not_aligned`; on `Contrib.AuthorityModule.generic_lexical_local`, `undisclosed_undominated`, `misaligned_undominated` | proved here; landed |
 | the permission layer demoted (4) | `Headline.permission_layer_demoted`; on `Contrib.CorrigibilityKernel.permission_layer_slack`, `gate_zero_dominated` | promoted |
 | Box 1 | `Headline.box1_outcome_scorer`, `box1_fidelity_scorer`, `box1_one_model`; the other direction `Contrib.DecisionComponent.uncertainty_deference_le`; the identity `Contrib.ProtectedAuthority.outcome_identity` | proved here; landed |
-| Box 2, dominance | `Headline.box2_dominance`, `box2_optimal_faithful`, `box2_dominance_legitimate`; `Contrib.ProtectedAuthorityTheorem.lexical_local`, `lexical_expect` | proved here; landed |
+| Box 2, dominance | `Headline.box2_dominance_corrigible` (any corrigible objective), `box2_dominance`, `box2_optimal_faithful`, `box2_dominance_legitimate`; `Contrib.ProtectedAuthorityTheorem.lexical_local`, `lexical_expect` | proved here; landed |
 | Box 2, mediation | `Headline.box2_mediation_approve_branch`, `box2_mediation_corrigible`; on `Contrib.ProtectedAuthorityTheorem.authPolicy`, `Contrib.AuthorityModule.corrigible_authPolicyJ` | promoted |
 | Box 2, finite time | `Headline.box2_finite_time`, `box2_gate_finite_time` | promoted |
 | Box 2, necessity | `Headline.box2_capture_converse`, `box2_delegated_cut`, `box2_coverage`; `Contrib.ProtectedAuthorityTheorem.Witness.salami` | promoted; landed |
 | Box 3 | `Headline.box3_gap_exchange_rate`, `box3_no_laundering`, `box3_no_incentive_to_compromise`, `box3_restoration`, `box3_band_order`, `box3_suppression_loses` | promoted |
 | Box 3, necessity | `Headline.box3_small_gap`, `box3_conditioning_fails`, `box3_sealed_no_incentive`; `Contrib.AfterCompromise.third_party_duty_witness`, `late_disclosure_free` | promoted; landed |
-| the subjective exchange rate (5) | `Headline.subjective_exchange_rate`, `subjective_exchange_rate_li` | proved here |
+| the subjective exchange rate (5) | `Headline.subjective_exchange_rate_corrigible` (any corrigible objective), `subjective_exchange_rate`, `subjective_exchange_rate_li` | proved here |
 | the house-sale witness | `Headline.HouseSale.J`, `sale_reserved`, `sale_delegation_revocable`, `box1`, `box2_manipulated_approval`, `box3_capture_reported_and_restored`, `exchange_rate_at_25`; `src/house_sale.py` | proved here |
-| the decision interface (6) | `Contrib.KernelExtension.DecisionInterface`, `eval`, `explMass` | proved here |
-| the realized rate (6) | `Contrib.KernelExtension.DecisionInterface.rate_core`, `realized_rate_mul`, `realized_rate`, `maximizer_excludes`, `exploration_never_violates`; non-use of detected fruits `Contrib.BRIAFollowup2.after_detection_never_used` | proved here; landed |
+| the decision interface (6) | `Contrib.KernelExtension.DecisionInterface`, `eval`, `explMass`, `explCoeff` | proved here |
+| the realized rate (6) | `Contrib.KernelExtension.DecisionInterface.rate_core`, `realized_rate_mul`, `realized_rate`, `explCoeff_div`, `maximizer_excludes`, `exploration_never_violates`; non-use of detected fruits `Contrib.BRIAFollowup2.after_detection_never_used` | proved here; landed |
+| exploration above asking, the variant (6) | `Contrib.KernelExtension.DecisionInterface.AboveAsking`, `rate_above_asking`, `above_asking_locks_in`; `src/exploration_lockin.py` | proved here; FIX |
 | the BRIA realization (6) | `Contrib.KernelExtension.briaInterface`, `bria_rate`; on `Contrib.ContinuationBRIA.Auction.overestimation_le_allowance_opening`, `Contrib.AfterCompromise.violation_rate_le_exchange_perblock` | proved here; landed |
 | the exploration realization (6) | `Contrib.KernelExtension.overestimation_of_unbiased`, `exploration_rate`, `ExplorationIndependent`; `Contrib.BRIAFollowup.UnbiasedFromFeedback` (pinned `LogicalInduction.lic_not_frequently_positive_feedback_return`) | proved here; PAPER |

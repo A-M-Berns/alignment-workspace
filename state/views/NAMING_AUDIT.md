@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 933 names, 562 of them Lean only
+## deference — 949 names, 568 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -37,7 +37,9 @@ change, and the count of those is the size of the free choice remaining.
 | `exposure_harvest_attained` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.ExposureGeometry.exposure_harvest_attained` |
 | `exposure_harvest_bound` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.ExposureGeometry.exposure_harvest_bound` |
 | `extensional_admits_both` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.SubstitutionSeparation.extensional_admits_both` |
+| `fidelityScore_corrigible` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.fidelityScore_corrigible` |
 | `forecloses_iff` | theorem | 2026-08-12-reachable-corrective-control | registry | `Workspace.Deference.Contrib.ReachableCorrectiveControl.forecloses_iff` |
+| `generic_corrigible` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.generic_corrigible` |
 | `gradeRegister_strict` | theorem | 2026-08-11-phase-ii-promotion | registry, note | `Workspace.Deference.Contrib.CertificateBounds.gradeRegister_strict` |
 | `gradeTrust_of_refinement` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.DelegationBridge.gradeTrust_of_refinement` |
 | `greedy_duality` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.ExposureGeometry.greedy_duality` |
@@ -647,10 +649,12 @@ change, and the count of those is the size of the free choice remaining.
 | `verdictAt` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.verdictAt` |
 | `Pr` | def | 2026-08-11-faithful-acceleration | wiki, prose | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.Pr` |
 | `X` | def | 2026-08-11-faithful-acceleration | wiki, note, prose | `Workspace.Deference.Contrib.InheritedAlgebra.AntiExpert.X` |
+| `AboveAsking` | def | 2026-09-27-corrigibility-kernel-phase2 | wiki, prose | `Workspace.Deference.Contrib.KernelExtension.DecisionInterface.AboveAsking` |
 | `DecisionInterface` | structure | 2026-09-27-corrigibility-kernel-phase2 | wiki, prose | `Workspace.Deference.Contrib.KernelExtension.DecisionInterface` |
 | `ExplorationIndependent` | def | 2026-09-27-corrigibility-kernel-phase2 | wiki, prose | `Workspace.Deference.Contrib.KernelExtension.ExplorationIndependent` |
 | `briaInterface` | def | 2026-09-27-corrigibility-kernel-phase2 | wiki | `Workspace.Deference.Contrib.KernelExtension.briaInterface` |
 | `eval` | def | 2026-09-27-corrigibility-kernel-phase2 | Lean only | `Workspace.Deference.Contrib.KernelExtension.DecisionInterface.eval` |
+| `explCoeff` | def | 2026-09-27-corrigibility-kernel-phase2 | Lean only | `Workspace.Deference.Contrib.KernelExtension.DecisionInterface.explCoeff` |
 | `explMass` | def | 2026-09-27-corrigibility-kernel-phase2 | Lean only | `Workspace.Deference.Contrib.KernelExtension.DecisionInterface.explMass` |
 | `GatedAt` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.LICorrigibility.GatedAt` |
 | `IndicatorAt` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.LICorrigibility.IndicatorAt` |
@@ -935,21 +939,33 @@ change, and the count of those is the size of the free choice remaining.
 | `xSpec` | def | 2026-09-24-transparent-channel | Lean only | `Workspace.Deference.Contrib.TransparentEcosystem.xSpec` |
 | `AllocationOfAuthority` | abbrev | unrecorded | wiki, prose | `Workspace.Deference.Headline.AllocationOfAuthority` |
 | `ControlSurface` | abbrev | unrecorded | wiki | `Workspace.Deference.Headline.ControlSurface` |
+| `Corrigible` | structure | unrecorded | wiki, prose | `Workspace.Deference.Headline.Corrigible` |
+| `EvaluationCounts` | abbrev | unrecorded | wiki, prose | `Workspace.Deference.Headline.EvaluationCounts` |
 | `FidelityCount` | structure | unrecorded | wiki | `Workspace.Deference.Headline.FidelityCount` |
 | `FidelityCount.sum` | def | unrecorded | wiki | `Workspace.Deference.Headline.FidelityCount.sum` |
+| `FormationData` | structure | unrecorded | wiki, prose | `Workspace.Deference.Headline.FormationData` |
 | `J` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.HouseSale.J` |
 | `LegitAt` | def | unrecorded | wiki, prose | `Workspace.Deference.Headline.LegitAt` |
 | `LegitSpan` | def | unrecorded | wiki | `Workspace.Deference.Headline.LegitSpan` |
+| `Legitimate` | def | unrecorded | wiki, prose | `Workspace.Deference.Headline.Legitimate` |
+| `Legitimate2` | abbrev | unrecorded | Lean only | `Workspace.Deference.Headline.Legitimate2` |
 | `LicensedChange` | abbrev | unrecorded | wiki | `Workspace.Deference.Headline.LicensedChange` |
+| `Objective` | abbrev | unrecorded | wiki | `Workspace.Deference.Headline.Objective` |
 | `P` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.HouseSale.P` |
+| `PeriodCompromised` | def | unrecorded | wiki, prose | `Workspace.Deference.Headline.PeriodCompromised` |
 | `Realizes` | abbrev | unrecorded | wiki, prose | `Workspace.Deference.Headline.Realizes` |
 | `Shortfall` | abbrev | unrecorded | wiki | `Workspace.Deference.Headline.Shortfall` |
 | `StepLegitimate` | def | unrecorded | wiki | `Workspace.Deference.Headline.StepLegitimate` |
 | `band` | def | unrecorded | wiki, prose | `Workspace.Deference.Headline.HouseSale.band` |
 | `evaluation` | abbrev | unrecorded | wiki, prose | `Workspace.Deference.Headline.evaluation` |
 | `fidelityScore` | abbrev | unrecorded | wiki, prose | `Workspace.Deference.Headline.fidelityScore` |
+| `formation2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.formation2` |
 | `frameFidelity` | def | unrecorded | wiki | `Workspace.Deference.Headline.frameFidelity` |
 | `historyScore` | def | unrecorded | wiki, prose | `Workspace.Deference.Headline.historyScore` |
+| `lastRestoration` | def | unrecorded | Lean only | `Workspace.Deference.Headline.FormationData.lastRestoration` |
+| `opening2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.opening2` |
+| `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
+| `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
 ## normativity — 713 names, 525 of them Lean only
 

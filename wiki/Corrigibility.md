@@ -19,7 +19,13 @@ history violated the allocation of authority.  **Corrigibility** is a property o
 agent's preferences: it prefers every course of action it knows to be faithful over every
 course it knows to be unfaithful, whatever it believes about how things will turn out, and
 it accepts a *risk* of unfaithfulness only at a fixed exchange rate.  The **fidelity score**
-is the canonical objective with this property, and a corrigible agent maximizes it.
+is the canonical objective with this property; any objective whose ordinary term is bounded
+in `[0, D′]` and which charges `ϖ′ > D′` per recognized violation (and `D′ − ϖ′` below the
+floor where a band enters) has it too (**LEAN** `Headline.Corrigible`,
+`fidelityScore_corrigible`, `generic_corrigible`).  *Corrigible* is this property of
+preferences; *aligned* is the further condition that the ordinary term is her evaluation,
+and an agent can be corrigible without being aligned: the objective rewarding an uncounted
+manipulation is corrigible and prefers the manipulation (`corrigible_not_aligned`).
 **Realized corrigibility** is what a corrigible agent actually does; the theorems say how
 much of the preference becomes behaviour.
 
@@ -52,17 +58,22 @@ the exterior moves; each move that enters the record is an authenticated event (
 `Corrigibilization.Interaction`, `traj`; the record `OpenIntegrityEvolution.Evolution`).
 
 **Legitimacy at a time, `L_t(h)`.**  As of time `t`, her judgment is legitimately hers:
-every state of the record is open, and every step of the formation window `[r, t]` is
+every state of the record is open, and every step of the formation window `[r(t), t]` is
 *licensed* (a grounding selection from the reason trace before the step, the verdict in
 the set those grounds license) and *transparent* (every non-principal contribution at the
 step realizes the declared reference on the declared inputs), under the criteria fixed at
-`r`, the later of the last restoration and the opening of the consultation producing the
-judgment (**LEAN** `Headline.LegitAt`).  The score reads it at two times: a decided
-period is *compromised* if `L` fails at some time in it, each over its own step; a
-retrospective evaluation *counts* if `L` holds at its time over its formation window.
-The landed gate is `L` over the span (`Headline.counted_iff_legitSpan`), and on the
-consultation model the after-compromise round's two predicates are `L` at those two times
-with every row's verdict kept (`Headline.split_iff_legitAt`, `rows_keep_verdicts`).
+`r(t)`.  The formation point is computed from the history — the later of the last
+restoration at or before `t` (a disclosure, under disclosure-cures) and the opening of the
+consultation current at `t` — so `L_t(h)` is a function of the history and `t` only
+(**LEAN** `Headline.FormationData.point`, `Legitimate`; the window form `LegitAt`).  The
+score's two uses are one predicate: a decided period `[d, e)` is *compromised* iff `L_t`
+fails at some `t` in it, a retrospective evaluation at `e` *counts* iff `L_e` holds, and
+on the decision's segment the two together are the landed gate, legitimacy over the span
+(`Headline.PeriodCompromised`, `EvaluationCounts`, `split_iff_legitimate`).  On the
+consultation model `r(t)` is the round's opening (`formation2_point`), the after-compromise
+round's two predicates are `L_e` and "not compromised" (`legitimate2_iff_evalLegitOn2`,
+`trajLegitOn_iff_not_compromised`), and every row keeps its verdict
+(`rows_keep_verdicts_canonical`).
 Legitimacy recovers: a manipulation of one decision taints that decision's period and the
 next decision starts clean (*restart*); a covert influence on her standards keeps every
 dependent judgment tainted until disclosed, after which the next judgment is hers
@@ -71,7 +82,8 @@ void rule**: an impaired response is not admitted; a fallback she arranged in ad
 decides, and her later legitimate evaluation scores that decision normally; the fallback
 settles decisions and never restores a compromised period's score.  **The content
 residual**: legitimacy concerns how her judgment was formed, not whether what she was told
-was true.  Legitimacy never attaches to a trajectory as a world.  Eight cases, from the
+was true.  `L_t(h)` is a property of the history up to `t`: of how her judgment was formed,
+not of outcomes or the state of the world.  Eight cases, from the
 [classification table](Legitimacy):
 
 | what happened | her judgment hers? | why |
@@ -193,10 +205,13 @@ provable shortfall, soundness, continuity and Progress composing with explicit c
 compiled there its liability is the signed cost of deferring, unbounded when she is
 systematically outperformed (`liability_identity`, `bounded_iff_not_outperformed`).
 
-## 5. The three boxes, for a maximizer of the fidelity score
+## 5. The three boxes, for a corrigible agent
 
-The agent here maximizes the fidelity score under any credence, or under its prices at
-any day as a logical inductor; no learning, auction or exploration enters.
+The agent here maximizes a corrigible objective under any credence, or under its prices at
+any day as a logical inductor; no learning, auction or exploration enters.  Box 1's
+contrast and Box 3's recovery results read her evaluation through the fidelity score's
+source rule and are stated for it; Box 2's dominance and the subjective exchange rate hold
+for any corrigible objective.
 
 **Box 1 — fidelity versus fully updated deference.**  One decision, ask or act; the true
 value `v`, the agent's estimate `b` within `r` of it; acting is a bypass.  An agent
@@ -213,11 +228,12 @@ fails on the time-critical fixtures (**FIX**).
 
 **Box 2 — lexical dominance and mediation.**  The transform `𝔱` turns every reserved raw
 release into a proposal, passes delegated releases, releases set latches, adds required
-reports.  *Dominance*: under every credence `Q(𝔱π) ≥ Q(π) + (ϖ − (D − w_lo)) · Pr(π violates)`,
-and a policy nothing scores above violates with credence zero; the margin carries `w_lo`
-because the mediated branch may itself be compromised, and is `ϖ − D` when every mediated
-branch is legitimate (**LEAN** `Headline.box2_dominance`, `box2_optimal_faithful`,
-`box2_dominance_legitimate`).  *Mediation preserves the approve branch*: on approval `𝔱π`
+reports.  *Dominance*, for any corrigible objective: under every credence
+`Q(𝔱π) ≥ Q(π) + (ϖ′ − (D′ − lo)) · Pr(π violates)` — at the fidelity score
+`(ϖ − (D − w_lo))` — and a policy nothing scores above violates with credence zero; the
+margin carries the floor because the mediated branch may itself be compromised, and is
+`ϖ − D` when every mediated branch is legitimate (**LEAN** `Headline.box2_dominance_corrigible`,
+`box2_dominance`, `box2_optimal_faithful`, `box2_dominance_legitimate`).  *Mediation preserves the approve branch*: on approval `𝔱π`
 does what `π` does up to the report, and `𝔱` is corrigible under effect completeness and
 delegation safety (`box2_mediation_approve_branch`, `box2_mediation_corrigible`).  *Finite
 time*: the ranking holds at every day of a logical inductor from the price range, and
@@ -240,11 +256,13 @@ gives none; the small gap; the third party's implant under the own-influence dut
 disclosure (`box3_conditioning_fails`, `box3_sealed_no_incentive`, `box3_small_gap`,
 `AfterCompromise.third_party_duty_witness`, `late_disclosure_free`).
 
-**The subjective exchange rate.**  Any option a maximizer prefers to asking — its
-evaluation at least inquiry's `c ≥ w` — carries no recognized violation, and its own
-priced probability of unfaithfulness is at most `(D − c)/ϖ`; lexical under certainty, an
-exchange rate under risk, at every finite day with the inductor's prices (**LEAN**
-`Headline.subjective_exchange_rate`, `subjective_exchange_rate_li`).
+**The subjective exchange rate.**  Any option a maximizer of a corrigible objective
+prefers to asking — its evaluation at least asking's `c ≥ lo` — carries no recognized
+violation, and its own priced probability of unfaithfulness is at most `(D′ − c)/ϖ′`, at
+the fidelity score `(D − c)/ϖ`; lexical under certainty, an exchange rate under risk, at
+every finite day with the inductor's prices; it does not read her evaluation (**LEAN**
+`Headline.subjective_exchange_rate_corrigible`, `subjective_exchange_rate`,
+`subjective_exchange_rate_li`).
 
 **The house-sale witness.**  One allocation reserving the sale to her, at `ϖ = 25`: a
 delegation of the sale is licensed and revocable; her value of selling and of stopping
@@ -258,16 +276,20 @@ judgment is hers and a restored decision scores her value; the subjective exchan
 
 Separate from the headline.  A learner estimates, tests and sometimes explores; the
 **decision interface** says which learners inherit the headline: evaluations of the stated
-form (the estimated residual capped at `D`, less `ϖ` per violation recognized in advance,
+form (the estimated residual in `[w, D]`, less `ϖ` per violation recognized in advance,
 less `ϖ` times the priced risk); a maximizer on every non-exploration step, asking on the
 menu; exploration only in the permitted set (no recognized violation, priced risk at most
-`θ_hi`, estimated residual at least asking's), with mass `ε̄`; overestimation on the chosen
-options at most `B(K) = o(K)` (**LEAN** `KernelExtension.DecisionInterface`).  **The
-realized violation-rate theorem**: with the expected score given each opening at most
-`D − ϖ π_k` and the noise over all blocks at most `M(K)`,
-`avg π ≤ avg (D − c_k)/ϖ + ε̄ θ_hi + (B(K) + M(K))/(ϖ Σ w_k)`; recognized violations are
-excluded on every non-exploration step and exploration never violates
-(`DecisionInterface.realized_rate`, `maximizer_excludes`, `exploration_never_violates`);
+`θ_hi`, and nothing else), with mass `ε̄`; overestimation on the chosen options at most
+`B(K) = o(K)` (**LEAN** `KernelExtension.DecisionInterface`).  **The realized
+violation-rate theorem**: with the expected score given each opening at most `D − ϖ π_k`
+and the noise over all blocks at most `M(K)`,
+`avg π ≤ avg (D − c_k)/ϖ + ε̄ ((D − w)/ϖ + θ_hi) + (B(K) + M(K))/(ϖ Σ w_k)`; recognized
+violations are excluded on every non-exploration step and exploration never violates
+(`DecisionInterface.realized_rate`, `maximizer_excludes`, `exploration_never_violates`).
+The exploration term is the honest one: restricting exploration to options estimated at
+least at asking's gives the cleaner `ε̄ θ_hi` (the variant `AboveAsking`, `rate_above_asking`)
+but excludes exactly the options estimated below asking, whose lock-in is then permanent
+(`above_asking_locks_in`; **FIX** `src/exploration_lockin.py`);
 detected fruits are never used because use compiles into the recognized count
 (`BRIAFollowup2.after_detection_never_used`).  **Two realizations.**  [Continuation
 BRIA](Continuation-BRIA): no exploration, `B(K) = ρ 𝒜_K` from the opening-timing budget

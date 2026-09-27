@@ -904,7 +904,7 @@ round produced.
 ```json
 {
   "project": "deference",
-  "short_name": "Box 2, dominance: Q(𝔱π) ≥ Q(π) + (ϖ − (D − w_lo))·Pr(π violates) under every credence",
+  "short_name": "Box 2, dominance: Q(𝔱π) ≥ Q(π) + (ϖ′ − (D′ − lo))·Pr(π violates) under every credence, for any corrigible objective; at the fidelity score the margin is ϖ − (D − w_lo)",
   "origin_round": "2026-09-27-corrigibility-kernel-phase2",
   "status": "active",
   "class": "lean-proved",
@@ -921,7 +921,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
     "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
   },
-  "note": "Where `π` does not violate, `𝔱π` agrees with it; where it does, `𝔱π`'s evaluation is at least the band's floor and `π` carries a violation. The margin is restated from the landed `ϖ − D` because the mediated branch may itself be compromised (ruling R5); `box2_optimal_faithful` gives credence-zero violation for optimal policies under the window condition; `box2_dominance_legitimate` is the landed case. Inhabited by the house-sale parameters."
+  "note": "Where `π` does not violate, `𝔱π` agrees with it; where it does, `𝔱π`'s evaluation is at least the band's floor and `π` carries a violation. The margin is restated from the landed `ϖ − D` because the mediated branch may itself be compromised (ruling R5); `box2_optimal_faithful` gives credence-zero violation for optimal policies under the window condition; `box2_dominance_legitimate` is the landed case. Restated by the follow-up (2026-09-27, Part 1): `box2_dominance_corrigible` proves the same for any corrigible objective (`Headline.Corrigible`) at the margin `ϖ′ − (D′ − lo)`, and this statement of record is its instance at the fidelity score; Box 2 does not read her evaluation. Inhabited by the house-sale parameters."
 }
 ```
 
@@ -1138,7 +1138,7 @@ round produced.
 ```json
 {
   "project": "deference",
-  "short_name": "Any option a maximizer prefers to asking carries no recognized violation and a priced probability of unfaithfulness at most (D − c)/ϖ",
+  "short_name": "Any option a maximizer of a corrigible objective prefers to asking carries no recognized violation and a priced probability of unfaithfulness at most (D′ − c)/ϖ′; at the fidelity score, (D − c)/ϖ",
   "origin_round": "2026-09-27-corrigibility-kernel-phase2",
   "status": "active",
   "class": "lean-proved",
@@ -1155,7 +1155,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
     "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
   },
-  "note": "With `subjective_exchange_rate_li` at every finite day of a logical inductor. Inhabited by `HouseSale.exchange_rate_at_25` (`1/50` at `ϖ = 25`, `c = 1/2`)."
+  "note": "With `subjective_exchange_rate_li` at every finite day of a logical inductor. Restated by the follow-up (2026-09-27, Part 1): `subjective_exchange_rate_corrigible` (= `Corrigible.exchange`) proves it for any corrigible objective; this statement of record is the fidelity-score form, which takes any bid. It does not read her evaluation. Inhabited by `HouseSale.exchange_rate_at_25` (`1/50` at `ϖ = 25`, `c = 1/2`)."
 }
 ```
 
@@ -1164,7 +1164,7 @@ round produced.
 ```json
 {
   "project": "deference",
-  "short_name": "The extension's interface theorem: avg π ≤ avg (D − c_k)/ϖ + ε̄ θ_hi + (B(K) + M(K))/(ϖ Σ w_k)",
+  "short_name": "The extension's interface theorem: avg π ≤ avg (D − c_k)/ϖ + ε̄ ((D − w)/ϖ + θ_hi) + (B(K) + M(K))/(ϖ Σ w_k)",
   "origin_round": "2026-09-27-corrigibility-kernel-phase2",
   "status": "active",
   "class": "lean-proved",
@@ -1181,7 +1181,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
     "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
   },
-  "note": "For any chooser at the decision interface; with `maximizer_excludes` and `exploration_never_violates`. Inhabited by the BRIA realization `briaInterface`. What it does not say: that `B(K)` is `o(K)` — that is the realization's to discharge (BRIA's budget; unbiasedness from feedback, PAPER)."
+  "note": "For any chooser at the decision interface; with `maximizer_excludes` and `exploration_never_violates`. Restated by the follow-up (2026-09-27, Part 3): the exploration set's third clause is dropped, so the exploration term is the honest `ε̄ ((D − w)/ϖ + θ_hi)` (`lo = w` the range floor, `explore_range` the range fact) rather than `ε̄ θ_hi`; the clause survives as the variant `AboveAsking` with `rate_above_asking`, under which no-lock-in holds only for options estimated at least as good as asking (`above_asking_locks_in`, the fixture `src/exploration_lockin.py`). Inhabited by the BRIA realization `briaInterface`. What it does not say: that `B(K)` is `o(K)` — that is the realization's to discharge (BRIA's budget; unbiasedness from feedback, PAPER)."
 }
 ```
 
@@ -1207,6 +1207,58 @@ round produced.
     "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
     "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
   },
-  "note": "From `overestimation_le_allowance_opening` under the landed hypotheses (feasibility, consistency, inquiry on the menu, the conditional-expectation bound, the noise over all blocks). Inhabited by the after-compromise round's auction fixtures."
+  "note": "From `overestimation_le_allowance_opening` under the landed hypotheses (feasibility, consistency, inquiry on the menu, the conditional-expectation bound, the noise over all blocks). Follow-up (2026-09-27, Part 3): `briaInterface` takes the interface's range floor `w` as an idle parameter (no exploration steps); the statement of record is unchanged. Inhabited by the after-compromise round's auction fixtures."
+}
+```
+
+### kernel.corrigible-fidelity-score
+
+```json
+{
+  "project": "deference",
+  "short_name": "The fidelity score is corrigible: known faithfulness beats known unfaithfulness by ϖ − (D − w) whatever the ordinary values, and risk is accepted only at (D − c)/ϖ",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.fidelityScore_corrigible"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2, follow-up Part 1",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP.md"
+  },
+  "note": "`Headline.Corrigible U D′ lo ϖ′` is the preference property over recognized violations (window `D′ − ϖ′ < lo`; the known clause with the margin `ϖ′ − (D′ − lo)`; the risk clause at the exchange rate). The evaluation form `bid − ϖ n − ϖ p` at `D`, `w`, `ϖ` has it. What it does not say: that the ordinary term is her evaluation (`corrigible_not_aligned` shows it need not be)."
+}
+```
+
+### kernel.corrigible-generic
+
+```json
+{
+  "project": "deference",
+  "short_name": "Any bounded objective O ∈ [0, D′] less ϖ′ per recognized violation and ϖ′ per unit of priced risk, with D′ − ϖ′ < lo ≤ 0, is corrigible",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.generic_corrigible"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2, follow-up Part 1",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP.md"
+  },
+  "note": "From the authority-module round's generic lexical lemma (`generic_lexical_local`) with the risk term added. The class includes objectives whose ordinary term is not her evaluation: `corrigible_not_aligned` exhibits the landed misaligned fixture (`undisclosed_undominated`) as corrigible and ranking the uncounted manipulation above honest conduct. Corrigible is not aligned."
 }
 ```

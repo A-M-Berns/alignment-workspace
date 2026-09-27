@@ -2,10 +2,11 @@
 
 Round `2026-09-27-corrigibility-kernel-phase2`, on the phase-1 branch (its pull request
 was open at dispatch; the maintainer confirmed building on it).  Deliverables: `SPEC.md`
-(version 2), `NOTATION.md`, `Headline.lean` in the specification layer (71 declarations
-under `#print axioms`), `KernelExtension.lean` (17 declarations), the house-sale witness
-in Lean and as an exact fixture (6 tests), the registrations, the wiki, the decisions and
-the items.  Every declaration audits to `[propext, Classical.choice, Quot.sound]`, no
+(version 2), `NOTATION.md`, `Headline.lean` in the specification layer (106 declarations
+under `#print axioms` after the follow-up), `KernelExtension.lean` (23 declarations), the
+house-sale witness in Lean and as an exact fixture (6 tests), the lock-in fixture (3
+tests), the registrations, the wiki, the decisions and the items.  The follow-up
+(`FOLLOWUP.md`, the same day) is recorded in its own section at the end.  Every declaration audits to `[propext, Classical.choice, Quot.sound]`, no
 `sorry`; no landed definition changed.  Labels as in `AGENTS.md`: **LEAN**, **FIX**,
 **PAPER**, **EXT**, **OPEN**.  Names per R8; the rest provisional.
 
@@ -146,3 +147,104 @@ namespace prefixes `Headline.` and `Contrib.` outside §8, which finds none.
    cites it; the deletion changes the axiom audit's baseline).
 2. Read through the promoted definitions listed in the pull request body (R9).
 3. The evaluation-timing entry stays reserved (R10).
+
+## The follow-up (2026-09-27): Parts 1–3, as carried out
+
+Dispatch `prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP.md`, on PR #114's branch
+before the merge, since merging registers claims and freezes names.  Every new or changed
+declaration audits to `[propext, Classical.choice, Quot.sound]`, no `sorry`; the house-sale
+witness and every earlier fixture pass unchanged.
+
+**Part 1 — corrigibility is the preference property.**  `SPEC.md` §0 no longer says a
+corrigible agent maximizes the fidelity score: the fidelity score is the canonical objective
+with the property; any objective with a bounded ordinary term in `[0, D′]` charging `ϖ′ > D′`
+per recognized violation (and `D′ − ϖ′` below the floor where a band enters) has it too;
+*corrigible* is the property of preferences, *aligned* the further condition that the
+ordinary term is her evaluation.  In Lean: `Headline.Objective` (ordinary value, recognized
+count, priced risk) and `Headline.Corrigible U D′ lo ϖ′`, a `Prop`-valued structure with the
+window `D′ − ϖ′ < lo`, the **known** clause — every known-faithful course with ordinary
+value at least `lo` beats every known-unfaithful course with ordinary value in `[0, D′]` by
+at least `ϖ′ − (D′ − lo)`, whatever the ordinary values — and the **risk** clause — a course
+without recognized violation preferred to asking at `c ≥ lo` carries priced risk at most
+`(D′ − c)/ϖ′`.  `Corrigible.lexical` (strict), `Corrigible.exchange` (the subjective
+exchange rate for any corrigible objective).  `fidelityScore_corrigible` (the evaluation
+form `bid − ϖ n − ϖ p` at `D`, `w`, `ϖ`); `generic_corrigible` (any bounded objective with
+a dominant counted term and the risk term, reusing the landed `generic_lexical_local`);
+`corrigible_not_aligned` (the generic objective reading `D′` on the undisclosed
+world-shaping row — count `0`, her evaluation `0` — is corrigible and ranks the
+manipulation above honest conduct, from the landed `undisclosed_undominated`).  **The boxes
+restated:** the section is "for a corrigible agent"; `box2_dominance_corrigible` proves
+dominance for any corrigible objective at the margin `ϖ′ − (D′ − lo)` with `box2_dominance`
+its instance; `subjective_exchange_rate_corrigible` is `Corrigible.exchange`; Box 1's
+contrast and Box 3's recovery results read her evaluation through the source rule and stay
+stated for the fidelity score, and say so.  *One design choice:* the known clause carries
+the margin, not only the strict inequality, because Box 2 needs a quantity; the margin is
+what the fixed exchange rate `ϖ′` fixes.  *One deviation of form:* the landed
+`Corrigibilization.Corrigible` (a policy property) is now shadowed inside the `Headline`
+namespace and is written with its full name in the two mediation theorems.
+
+**Part 2 — legitimacy as one property of the history.**  Wording: `SPEC.md` §1.2,
+`wiki/Legitimacy.md`, `wiki/Corrigibility.md` and the Glossary now say `L_t(h)` is a
+property of the history up to `t`, about how her judgment was formed and not about outcomes
+or the state of the world; "a history is not legitimate" is removed.  The free window:
+`Headline.FormationData` is the formation data read off a history — the opening of the
+consultation current at each time and the restoration events (a disclosure, under
+disclosure-cures) — and `FormationData.point t` is the canonical `r(t)`, the later of the
+last restoration at or before `t` (`Nat.findGreatest`) and the current opening;
+`point_le`, `restoration_le_point`.  `Headline.Legitimate … ev Φ t := LegitAt … ev (Φ.point t) t`
+is `L_t(h)`, a function of the history and `t` only; `LegitAt` stays as the window form
+for the map.  The score's uses: `PeriodCompromised … d e` (`L_t` fails at some `t ∈ [d, e)`)
+and `EvaluationCounts … e` (`L_e`).  **Proved:** `split_iff_legitimate` — on a decision's
+evolution whose steps lie in `[d, e]`, "not compromised and the evaluation counts" is
+legitimacy over the span, for *any* formation data, with no hypothesis on restorations
+inside the segment (a restoration only moves `r(t)` forward, every step is still reached by
+`L` at its own time, the criteria are the evolution's own); `counted_iff_legitimate`;
+`legitimate_forall_iff_legitSpan`.  On the consultation model: `formation2 M` (round `i`
+opens at `2i + 1`; a disclosure at round `j` restores at `2j + 1`), `formation2_point`
+(the canonical point is the round's opening — a restoration is a present event, never after
+the opening of its round), `Legitimate2`, `legitimate2_iff_evalLegitOn2` (the landed
+formation-segment predicate from the opening is `L_e`), `trajLegitOn_iff_not_compromised`
+(the landed trajectory predicate is "not compromised"), `split_iff_legitimate2`, and the
+rows re-run at the canonical point, `rows_keep_verdicts_canonical`: honest — period not
+compromised, evaluation counts; framing — period compromised, evaluation does not count;
+disclosed implant — period compromised, evaluation counts.  Every verdict kept.  **The
+anticipated obstruction** (a time inside the period in a consultation opened before `d`)
+does not arise on the model, where each round is its own consultation; in general the
+minimal adjustment is `r_d(t) = max(r(t), d)`, formation data the general theorem already
+accepts.  The legitimacy semantics are unchanged; every statement is proved equivalent.
+
+**Part 3 — exploration must reach what it underestimates.**  The third clause is dropped:
+`DecisionInterface.explore_permitted` is `nKnown k = 0 ∧ p k ≤ θ_hi` and nothing else.
+The interface gains `lo` (the ordinary range's floor, the window `w`) and the range fact
+`explore_range` (on an exploration step the chosen option's estimate is at least `lo` and
+inquiry's evaluation at most `D`; on a non-exploration step the second follows from the
+maximizer) — a fact about the evaluation form, not a restriction of the set.  **Proved:**
+the honest term.  `block_bound` carries `((D − lo) + ϖ θ_hi)` per exploration block
+(`explCoeff`), and `realized_rate` is
+`avg π ≤ avg (D − c_k)/ϖ + ε̄ ((D − lo)/ϖ + θ_hi) + (B(K) + M(K))/(ϖ Σ w_k)` — exactly the
+dispatch's `ε̄ (D − w)/ϖ + ε̄ θ_hi` with `lo = w`; `exploration_rate` likewise.  **The
+variant:** `AboveAsking` (every exploration option estimated at least at asking's) gives
+`rate_above_asking` with the term `ε̄ θ_hi`; `above_asking_locks_in` states the static half
+of the lock-in (an option with no recognized violation, risk under the cap and estimate
+below asking is in the permitted set, not above asking, and never a maximizer's choice).
+**The fixture** `src/exploration_lockin.py` (3 tests): an option worth `4/5` against
+asking's `1/2`, estimated at `2/5`; under the clause it is never tried over 40 blocks and
+the estimate stays `2/5`; without it, it is tried on the first exploration block that
+reaches it (mass `1/5`), the estimate corrects to `4/5`, and every later non-exploration
+block takes it; no violation under either rule, both bounds hold, the honest term is the
+larger.  `briaInterface` takes the idle floor `w` as a parameter; `bria_rate`'s statement
+is unchanged.  `DECISIONS.md`'s R6 entry and `SPEC.md` §6 record the choice: clause
+dropped, variant kept.
+
+**Registration.**  Statements restated: `kernel.box2-dominance` (now also for any
+corrigible objective), `kernel.subjective-exchange-rate` (likewise),
+`kernel.extension-realized-rate` (the honest exploration term), `kernel.extension-bria-realization`
+(the idle floor parameter; the statement unchanged) — each note says what changed.  Added:
+`kernel.corrigible-fidelity-score` (`fidelityScore_corrigible`), `kernel.corrigible-generic`
+(`generic_corrigible`).  The read-through check still passes (§8 is the only section
+naming Lean declarations; the check below is re-run).
+
+**Read-through check, re-run.**  `SPEC.md` is 534 lines; no `Headline.` or `Contrib.` prefix
+appears before §8; the underscore scan outside §8 finds only the post's letters (`w_lo`,
+`w_hi`, `S_J`, `V_J`, `N_J`, `L_t`, `r_d`, `θ_hi`, `p_min`, `V_retro`, `V_dir`, `d_k`,
+`c_k`, `w_k`, `π_k`).

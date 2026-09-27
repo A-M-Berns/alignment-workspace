@@ -1091,12 +1091,20 @@ disclosure deadline (`late_disclosure_free`, `prompt_deadline_counts`,
 [`AfterCompromise.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/8e59d68848f7215f2e0fccd45cade36f5b40617a/lean/Workspace/Deference/Contrib/AfterCompromise.lean).
 
 **Theorem 10.23 (The corrigibility kernel headline).**  The specification layer's
-`Headline` states the kernel over the promoted objects.  **Legitimacy `L_t`** — every
-state open and every step of the formation window `[r, t]` licensed and transparent
-(`LegitAt`, `StepLegitimate`, `LegitSpan`): the gate is legitimacy over the span
-(`counted_iff_legitSpan`); on the consultation model the landed split objects are `L` at
-two times (`evalLegitOn2_iff_legitAt`, `trajLegitOn_iff_legitAt`, `legitOn2_iff_legitAt`,
-`counted2_iff_legitOn2`, `split_iff_legitAt`; the rows `rows_keep_verdicts`).  **The
+`Headline` states the kernel over the promoted objects.  **Legitimacy `L_t(h)`** — every
+state open and every step of the formation window `[r(t), t]` licensed and transparent,
+the formation point computed from the history as the later of the last restoration and the
+opening of the current consultation (`FormationData.point`, `Legitimate`; the window form
+`LegitAt`, `StepLegitimate`, `LegitSpan`): the gate is legitimacy over the span
+(`counted_iff_legitSpan`, `counted_iff_legitimate`); the score's two uses are one predicate
+(`PeriodCompromised`, `EvaluationCounts`, `split_iff_legitimate`); on the consultation model
+`r(t)` is the round's opening (`formation2_point`) and the landed split objects map
+(`legitimate2_iff_evalLegitOn2`, `trajLegitOn_iff_not_compromised`, `split_iff_legitimate2`,
+the rows `rows_keep_verdicts_canonical`; the window-form map `evalLegitOn2_iff_legitAt`,
+`trajLegitOn_iff_legitAt`, `legitOn2_iff_legitAt`, `counted2_iff_legitOn2`,
+`split_iff_legitAt`, `rows_keep_verdicts`).  **Corrigibility, the preference property**
+(`Objective`, `Corrigible`, `Corrigible.lexical`, `Corrigible.exchange`;
+`fidelityScore_corrigible`, `generic_corrigible`, `corrigible_not_aligned`).  **The
 promoted definitions**: the allocation of authority and its licensed acts
 (`AllocationOfAuthority`, `LicensedChange`), the control surface, the shortfall and
 effective realization (`ControlSurface`, `Shortfall`, `Realizes`,
@@ -1106,20 +1114,24 @@ decision (`evaluation`, `fidelityScore`) and per history (`historyScore`).  **Th
 hierarchy** per decision (`hierarchy_per_decision`) and per history
 (`history_hierarchy`), with the summed-evaluation counterexample
 (`summed_counterexample`).  **Box 1** (`box1_outcome_scorer`, `box1_fidelity_scorer`,
-`box1_one_model`).  **Box 2**: dominance with the margin `ϖ − (D − w_lo)`
-(`box2_dominance`, `box2_optimal_faithful`; the landed margin `box2_dominance_legitimate`),
+`box1_one_model`).  **Box 2**: dominance for any corrigible objective with the margin `ϖ′ − (D′ − lo)`
+(`box2_dominance_corrigible`), at the fidelity score `ϖ − (D − w_lo)` (`box2_dominance`,
+`box2_optimal_faithful`; the landed margin `box2_dominance_legitimate`),
 mediation (`box2_mediation_approve_branch`, `box2_mediation_corrigible`), finite time
 (`box2_finite_time`, `box2_gate_finite_time`), necessity (`box2_capture_converse`,
 `box2_delegated_cut`, `box2_coverage`).  **Box 3** (`box3_gap_exchange_rate`,
 `box3_no_laundering`, `box3_no_incentive_to_compromise`, `box3_restoration`,
 `box3_band_order`, `box3_suppression_loses`; necessity `box3_small_gap`,
 `box3_conditioning_fails`, `box3_sealed_no_incentive`).  **The subjective exchange rate**
-(`subjective_exchange_rate`, `subjective_exchange_rate_li`).  **The permission layer
+(`subjective_exchange_rate_corrigible`, `subjective_exchange_rate`,
+`subjective_exchange_rate_li`).  **The permission layer
 demoted** (`permission_layer_demoted`).  **The house-sale witness** (`HouseSale.J`,
 `box1`, `box2_manipulated_approval`, `box3_capture_reported_and_restored`,
 `exchange_rate_at_25`).  **The extension** (`Contrib.KernelExtension`): the decision
-interface (`DecisionInterface`), the realized rate (`rate_core`, `realized_rate`,
-`maximizer_excludes`, `exploration_never_violates`), the BRIA realization
+interface (`DecisionInterface`), the realized rate with the honest exploration term
+(`rate_core`, `realized_rate`, `maximizer_excludes`, `exploration_never_violates`), the
+variant exploration above asking (`AboveAsking`, `rate_above_asking`,
+`above_asking_locks_in`), the BRIA realization
 (`briaInterface`, `bria_rate`) and the exploration realization
 (`overestimation_of_unbiased`, `exploration_rate`, `ExplorationIndependent`).  **LEAN**;
 the headline's statements are registered.  Lean:

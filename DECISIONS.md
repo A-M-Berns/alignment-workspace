@@ -5161,12 +5161,24 @@ allocation of authority.  **Corrigibility** is a property of the agent's prefere
 prefers every course of action it knows to be faithful over every course it knows to be
 unfaithful, whatever it believes about how things will turn out, and accepts a risk of
 unfaithfulness only at a fixed exchange rate; the fidelity score is the canonical objective
-with this property and a corrigible agent maximizes it.  **Realized corrigibility** is what
+with this property (the follow-up amendment below corrects "and a corrigible agent
+maximizes it").  **Realized corrigibility** is what
 a corrigible agent actually does; the theorems say how much of the preference becomes
 behaviour.  The specification's separations and each box are stated for a corrigible
 agent.  This closes the phase-1 queue's naming entry as to the boxes.
 *Rejected alternatives:* corrigibility as the property of histories (faithfulness), or as
 the behavioural claim (realized corrigibility).
+*Amended by the follow-up (2026-09-27, `FOLLOWUP.md` Part 1):* corrigibility is the
+preference property, not "maximizes the fidelity score".  The fidelity score is the
+canonical objective with the property; any bounded objective `O ∈ [0, D′]` less `ϖ′` per
+recognized violation with `ϖ′ > D′` (and the window condition where a band enters) has it
+too (`Headline.Corrigible`, `fidelityScore_corrigible`, `generic_corrigible`, from the
+landed generic lexical lemma).  *Corrigible* is the preference property; *aligned* is the
+further condition that the ordinary term is her evaluation; the landed misaligned fixture
+is corrigible and not aligned (`corrigible_not_aligned`).  The boxes are stated for any
+corrigible objective where the proofs allow — Box 2's dominance and the subjective exchange
+rate (`box2_dominance_corrigible`, `subjective_exchange_rate_corrigible`) — and for the
+fidelity score where they read her evaluation (Box 1's contrast, Box 3's recovery).
 
 ### 2026-09-27 — legitimacy is one time-indexed property of the history, `L_t(h)`: as of `t`, her judgment is legitimately hers (R2)
 
@@ -5187,6 +5199,24 @@ content residual** — legitimacy concerns how her judgment was formed, not whet
 was told was true.  Legitimacy never attaches to a trajectory as a world.
 *Rejected alternatives:* two predicates as the primitive (phase 1); a truth condition
 inside legitimacy.
+*Amended by the follow-up (2026-09-27, `FOLLOWUP.md` Part 2):* two corrections.  The
+wording: `L_t(h)` is a property of the history up to `t`, about how her judgment was formed
+and not about outcomes or the state of the world; "a history is not legitimate" and
+"legitimacy never attaches to a trajectory as a world" are withdrawn.  The window: the
+formation point is canonical, `r(t)` = the later of the last restoration at or before `t`
+(a disclosure, under disclosure-cures) and the opening of the consultation current at `t`,
+computed from the history (`Headline.FormationData.point`), and `L_t(h)` is
+`Headline.Legitimate`, a function of the history and `t` only; `LegitAt` with a free `r`
+stays as the window form for the map.  The score's uses: a decided period is compromised
+iff `L_t` fails at some `t` in it (`PeriodCompromised`); an evaluation at `e` counts iff
+`L_e` (`EvaluationCounts`); together they are the landed gate on the decision's segment
+(`split_iff_legitimate`), with no condition on restorations inside the segment.  On the
+consultation model `r(t)` is the round's opening (`formation2_point`), the landed
+formation-segment predicate from it is `L_e` and the landed trajectory predicate is "not
+compromised" (`legitimate2_iff_evalLegitOn2`, `trajLegitOn_iff_not_compromised`,
+`split_iff_legitimate2`), every row keeping its verdict (`rows_keep_verdicts_canonical`).
+Where a consultation spans a decision boundary the adjustment is `r_d(t) = max(r(t), d)`,
+formation data the general theorem accepts; no second predicate.  Semantics unchanged.
 
 ### 2026-09-27 — the specification is plain language first, Lean names in the realization table only, with a table of canonical legitimacy cases (R3)
 
@@ -5243,6 +5273,17 @@ own-action conditionals affect competence and the subjective-to-realized gap thr
 clause (estimated residual at least asking's), without which the exploration term is
 `ε̄ (D − w)/ϖ + ε̄ θ_hi`.
 *Rejected alternative:* the auction as the headline's chooser (phase 1's Box 4).
+*Amended by the follow-up (2026-09-27, `FOLLOWUP.md` Part 3):* the agent-decided clause
+is **dropped**.  The permitted exploration set is: no recognized violation, priced risk at
+most `θ_hi`, and nothing else; exploration exists to reach what it underestimates, and the
+clause excluded exactly the options estimated below asking, making their lock-in permanent.
+The realized-rate theorem carries the honest term, `ε̄ ((D − w)/ϖ + θ_hi)`
+(`KernelExtension.DecisionInterface.realized_rate`, with the range floor `lo = w` and the
+range fact `explore_range`).  The clause's version is **kept as a named variant**,
+"exploration above asking" (`AboveAsking`, `rate_above_asking`), with the term `ε̄ θ_hi`;
+under it no-lock-in holds only for options estimated at least as good as asking
+(`above_asking_locks_in`; the fixture `src/exploration_lockin.py`).  The headline's agent
+is a plain maximizer of a corrigible objective (see the R1 amendment).
 
 ### 2026-09-27 — a decision theory for logical inductors without the belief-market / choice-learner split is filed as future research; item 102 is re-scoped to the BRIA realization (R7)
 

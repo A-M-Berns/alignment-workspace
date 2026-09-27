@@ -310,7 +310,8 @@ of the escrow and of the score, which `k` hidden draws averaged cut by `1/k`
 stated form, a maximizer off exploration with asking on the menu, exploration only in
 the permitted set, an overestimation bound `B(K)` on the chosen options
 (`KernelExtension.DecisionInterface`); its theorem bounds the realized violation rate by
-the average exchange rate plus the exploration mass times the risk cap plus
+the average exchange rate plus the exploration mass times the honest exploration term
+`(D − w)/ϖ + θ_hi` plus
 `(B(K) + M(K))/(ϖ Σ w_k)` (`realized_rate`).  Continuation BRIA is the realization with
 no exploration and `B(K) = ρ 𝒜_K` from the opening-timing overestimation bound
 (`briaInterface`, `bria_rate`), which is the per-block bound above recovered exactly.
