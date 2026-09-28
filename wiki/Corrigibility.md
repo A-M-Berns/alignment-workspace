@@ -7,10 +7,10 @@ theorem.  Labels: **LEAN** (a sorry-free declaration on `main`), **FIX** (an exa
 rational fixture), **PAPER** (an external theorem used at its statement), **EXT** (a
 contract the theory issues and does not pay), **OPEN**.  The specification this page
 follows is the kernel round's
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md);
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md);
 the theorem-level statements with their Lean names are on the [Theorem Spine](Theorem-Spine)
 §10; the plain letters map to Lean names in the round's
-[`NOTATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/NOTATION.md).
+[`NOTATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/NOTATION.md).
 
 ## 0. What corrigibility is
 
@@ -369,15 +369,15 @@ the decision interface, the realized rate; not the guarantee.
 ---
 
 **Evidence.**  The kernel: the phase-2 round's
-[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)
 and
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/REPORT.md)
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/REPORT.md)
 with
-[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/lean/Workspace/Deference/Spec/Headline.lean)
+[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Spec/Headline.lean)
 and
-[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/lean/Workspace/Deference/Contrib/KernelExtension.lean);
+[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Contrib/KernelExtension.lean);
 the phase-1 derivation and its inventory,
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3f94009db9a14202eb9e549b3932ed55cfae38e6/projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md).
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md).
 The landed rounds the kernel is stated over: the protected-authority theorem
 ([`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-protected-authority-theorem/THEOREM.md)),
 the authority module
