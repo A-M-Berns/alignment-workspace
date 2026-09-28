@@ -16,7 +16,7 @@ and its Lean core is
 | the weighted algebra (wealth identity, nonnegativity, overestimation bound, rejection bounds, attention bound, gate transparency, regret decomposition, the jump-sum bound) | **LEAN** — sorry-free, audits to the three allowed axioms; unregistered |
 | the existence / non-dominance theorem | **DERIVED** on the Lean algebra, with the criterion-level obstruction's inequality in Lean |
 | continuation-promise competence and the three-bridge decomposition | **DERIVED** on the Lean algebra |
-| that any gate, return, or rollout corresponds to actual corrigible execution | **EXT** |
+| that any gate, return, or rollout corresponds to actual faithful execution | **EXT** |
 | promise recognizability, joinability certificates, a weighted Theorem 4, bidder-chosen horizons, infinite-horizon discounted settlement | **OPEN** |
 
 Nothing here is registered; no filed priority is answered at registration strength.

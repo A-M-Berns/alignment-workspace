@@ -925,18 +925,18 @@ round produced.
 }
 ```
 
-### kernel.box2-mediation
+### kernel.box2-mediation-faithful
 
 ```json
 {
   "project": "deference",
-  "short_name": "Box 2, mediation: 𝔱 on the allocation of authority is corrigible under effect completeness and delegation safety, and reproduces the approve branch",
+  "short_name": "Box 2, mediation: 𝔱 on the allocation of authority is a faithful policy under effect completeness, delegation safety and allocation completeness wherever it forecloses nothing, and reproduces the approve branch",
   "origin_round": "2026-09-27-corrigibility-kernel-phase2",
   "status": "active",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workspace.Deference.Headline.box2_mediation_corrigible"
+    "declaration": "Workspace.Deference.Headline.box2_mediation_faithful"
   },
   "answers_item": "104",
   "provenance": {
@@ -947,7 +947,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
     "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
   },
-  "note": "With `box2_mediation_approve_branch`: on approval `𝔱π` releases the latch with `π`'s task component up to the required report. Inhabited by `ProtectedAuthorityTheorem.Witness.corrigible_instance` on the two-state physics; the obstruction without delegation safety is `box2_delegated_cut`. What it does not say: anything about foreclosure's reach cone (EXT)."
+  "note": "Formerly `kernel.box2-mediation`, statement of record `box2_mediation_corrigible` (the landed policy notion `Corrigibilization.Corrigible`); renamed by the second follow-up (2026-09-27) because \"corrigible\" names a property of preferences (`Headline.Corrigible`) and the landed policy notion is faithfulness's pre-emption clause (`landed_corrigible_iff_no_preemption`). `Headline.FaithfulPolicy`: no declared violation — bypass, pre-emption, foreclosure, unlicensed reallocation, missed report, exploitation — on any exterior path; `faithfulPolicy_landed_corrigible`. The six clauses for `𝔱` are the landed `authPolicy_no_bypass`, `authPolicy_no_missed_report`, `authPolicy_no_exploit`, `authPolicy_no_realloc` and `corrigible_authPolicyJ`, with no foreclosure a stated hypothesis (the reach cone is EXT). With `box2_mediation_approve_branch`: on approval `𝔱π` releases the latch with `π`'s task component up to the required report. Inhabited by `ProtectedAuthorityTheorem.Witness.corrigible_instance` on the two-state physics; the obstruction without delegation safety is `box2_delegated_cut`, which no reach relation repairs."
 }
 ```
 

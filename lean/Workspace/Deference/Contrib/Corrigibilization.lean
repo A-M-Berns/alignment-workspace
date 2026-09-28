@@ -194,7 +194,11 @@ def Authorized (π : Policy S E A) (ρ : Rule S E C) (z : ℕ → Z) (s₀ : MSt
     (traj I π ρ z s₀ t).latch = some e ∧
     ¬ LossAt I π (altTraj I π ρ z s₀ t' .decline) t r
 
-/-- **Corrigible**: every agent-caused loss along every exterior path is authorized. -/
+/-- **Corrigible** (the landed policy notion): every agent-caused loss along every exterior
+path is authorized.  In the kernel's terms this is faithfulness of the policy — its
+pre-emption clause (`ProtectedAuthorityTheorem.no_preempt_iff_corrigible`,
+`Headline.FaithfulPolicy`); *corrigible* names a property of preferences
+(`Headline.Corrigible`). -/
 def Corrigible (π : Policy S E A) (ρ : Rule S E C) (s₀ : MState S E) : Prop :=
   ∀ (z : ℕ → Z) (t : ℕ) (r : R), LossAt I π (traj I π ρ z s₀) t r →
     Authorized I π ρ z s₀ t r

@@ -1767,7 +1767,7 @@
       "claim_changes": [
         "kernel.box1-fidelity-versus-fully-updated-deference",
         "kernel.box2-dominance",
-        "kernel.box2-mediation",
+        "kernel.box2-mediation-faithful",
         "kernel.box2-finite-time",
         "kernel.box3-gap-exchange-rate",
         "kernel.box3-no-laundering",

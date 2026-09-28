@@ -16,7 +16,7 @@ omitted; `Headline.*` is the specification layer, `Contrib.*` the realization la
 | `CS(m; t, x)` | the control surface | `Headline.ControlSurface` (= `Contrib.AuthorityModule.CS`) |
 | `Short(m)` | a shortfall | `Headline.Shortfall` (= `Contrib.AuthorityModule.Short`) |
 | `E ⊨ J` | effective realization | `Headline.Realizes` (= `Contrib.AuthorityModule.EffRealizes`) |
-| `Faithful_J(h)` | no declared violation along the history | `Headline.FidelityCount.faithful`; on the frame `Contrib.CorrigibilityKernel.Faithful` |
+| `Faithful_J(h)` | no declared violation along the history | `Headline.FidelityCount.faithful`; on the frame `Contrib.CorrigibilityKernel.Faithful`; of a policy, on every exterior path, `Headline.FaithfulPolicy` (the landed `Contrib.Corrigibilization.Corrigible` is its pre-emption clause, `landed_corrigible_iff_no_preemption`) |
 | `N_J(h)` | the recognized count | `Headline.FidelityCount.count`; on the frame `Contrib.CorrigibilityKernel.NJ` |
 | the violations | bypass, pre-emption, foreclosure, reallocation, missed report, exploitation, entrenchment | `Contrib.ProtectedAuthorityTheorem.BypassAt`, `PreemptAt`, `ForecloseAt`, `ReallocAt`, `MissedReportAt`, `ExploitAt`; `Contrib.AuthorityModule.EntrenchAt`, `ViolJAt` |
 | a protocol deviation | a reference-fixed dimension off its declared value | `Contrib.GateIsLegitimacy.Consult.Presentation.deviates` |

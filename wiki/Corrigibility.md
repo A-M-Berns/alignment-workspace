@@ -233,9 +233,14 @@ reports.  *Dominance*, for any corrigible objective: under every credence
 `(ϖ − (D − w_lo))` — and a policy nothing scores above violates with credence zero; the
 margin carries the floor because the mediated branch may itself be compromised, and is
 `ϖ − D` when every mediated branch is legitimate (**LEAN** `Headline.box2_dominance_corrigible`,
-`box2_dominance`, `box2_optimal_faithful`, `box2_dominance_legitimate`).  *Mediation preserves the approve branch*: on approval `𝔱π`
-does what `π` does up to the report, and `𝔱` is corrigible under effect completeness and
-delegation safety (`box2_mediation_approve_branch`, `box2_mediation_corrigible`).  *Finite
+`box2_dominance`, `box2_optimal_faithful`, `box2_dominance_legitimate`).  *Mediation is
+faithful and preserves the approve branch*: `𝔱π` is a faithful policy — no bypass, missed
+report or exploitation, no unlicensed reallocation, no pre-emption, no foreclosure wherever
+the reach cone allows none — under effect completeness, delegation safety and allocation
+completeness, and on approval it does what `π` does up to the report
+(`Headline.FaithfulPolicy`, `box2_mediation_faithful`, `box2_mediation_approve_branch`; the
+landed policy notion is faithfulness's pre-emption clause, `landed_corrigible_iff_no_preemption`).
+*Finite
 time*: the ranking holds at every day of a logical inductor from the price range, and
 consulting beats bypass at every day whatever it believes about legitimacy
 (`box2_finite_time`, `box2_gate_finite_time`).  *Necessity*: the capture converse, the
@@ -310,9 +315,10 @@ realization only.
 
 ## 7. Deliberative non-capture
 
-`Corrigible ∧ ¬Authored` is inhabited: under a captured principal the mediated policy
-passes the lie through and the release is authorized — corrigible — while every decision
-differs from the reason-mediated one (**FIX**).  Faithfulness is causal authority over
+Faithful-and-not-authored is inhabited (the landed `Corrigible ∧ ¬Authored`, the policy
+notion being faithfulness's pre-emption clause): under a captured principal the mediated
+policy passes the lie through and the release is authorized — faithful — while every
+decision differs from the reason-mediated one (**FIX**).  Faithfulness is causal authority over
 correction-sensitive choices; the deliberative half asks what the advisor gains by
 controlling which declared reasons reach that authority.  With the principal's program
 committed and re-executed on the authenticated trace, the comparison of a steered trace

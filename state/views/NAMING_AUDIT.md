@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 949 names, 568 of them Lean only
+## deference — 950 names, 569 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -22,7 +22,7 @@ change, and the count of those is the size of the free choice remaining.
 | `box1_one_model` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.box1_one_model` |
 | `box2_dominance` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.box2_dominance` |
 | `box2_finite_time` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki | `Workspace.Deference.Headline.box2_finite_time` |
-| `box2_mediation_corrigible` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki | `Workspace.Deference.Headline.box2_mediation_corrigible` |
+| `box2_mediation_faithful` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.box2_mediation_faithful` |
 | `box3_gap_exchange_rate` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki | `Workspace.Deference.Headline.box3_gap_exchange_rate` |
 | `box3_no_incentive_to_compromise` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki | `Workspace.Deference.Headline.box3_no_incentive_to_compromise` |
 | `box3_no_laundering` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki | `Workspace.Deference.Headline.box3_no_laundering` |
@@ -707,7 +707,7 @@ change, and the count of those is the size of the free choice remaining.
 | `squaredSum` | def | 2026-08-11-phase-ii-prediction | Lean only | `Workspace.Deference.Contrib.MagnitudePrediction.squaredSum` |
 | `unitTrader` | def | 2026-08-11-phase-ii-prediction | note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader` |
 | `Ensures` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Ensures` |
-| `Mediation` | structure | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.Mediation` |
+| `Mediation` | structure | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Mediation` |
 | `Move` | inductive | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.Move` |
 | `NoRaw` | def | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.NoRaw` |
 | `approvalMorphism` | def | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.approvalMorphism` |
@@ -941,6 +941,7 @@ change, and the count of those is the size of the free choice remaining.
 | `ControlSurface` | abbrev | unrecorded | wiki | `Workspace.Deference.Headline.ControlSurface` |
 | `Corrigible` | structure | unrecorded | wiki, prose | `Workspace.Deference.Headline.Corrigible` |
 | `EvaluationCounts` | abbrev | unrecorded | wiki, prose | `Workspace.Deference.Headline.EvaluationCounts` |
+| `FaithfulPolicy` | def | unrecorded | wiki, prose | `Workspace.Deference.Headline.FaithfulPolicy` |
 | `FidelityCount` | structure | unrecorded | wiki | `Workspace.Deference.Headline.FidelityCount` |
 | `FidelityCount.sum` | def | unrecorded | wiki | `Workspace.Deference.Headline.FidelityCount.sum` |
 | `FormationData` | structure | unrecorded | wiki, prose | `Workspace.Deference.Headline.FormationData` |

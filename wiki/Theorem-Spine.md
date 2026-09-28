@@ -632,8 +632,10 @@ undeclared move's loss is unauthorized).  EF is **EXT**.
 **Theorem 10.2 (Closure, C2).**  `corr (corr ms) = corr ms` (`corr_idem`),
 `corr ms = ms ↔ NoRaw ms` (`corr_fix_iff`), and on policies
 `corrPolicy (corrPolicy π) = corrPolicy π` (`corrPolicy_idem`); **LEAN**.  Hence
-`𝔠π = π ⟹ Corrigible(π)` under 10.1's hypotheses; the converse fails without effect
-soundness (**FIX** B, distance `1/4`).  Corrigibility is not `Fix(𝔠)`.
+`𝔠π = π ⟹ Corrigible(π)` under 10.1's hypotheses — `Corrigible(π)` the landed policy
+notion, in the kernel's terms faithfulness's pre-emption clause (Theorem 10.23); the
+converse fails without effect soundness (**FIX** B, distance `1/4`).  Faithfulness is not
+`Fix(𝔠)`.
 
 **Theorem 10.3 (Approval reproduces the raw policy, C3).**  The raw residual frame maps
 into `𝔠π`'s by a Cartesian-frame morphism with agent component "approve" and identity
@@ -836,8 +838,9 @@ release of a declared amendment), missed report, exploitation — are predicates
 policy at a step (`ViolAt`).  The transform `𝔱` (`authPolicy`) extends `𝔠`
 (`authPolicy_eq_corr`), is idempotent, reproduces `π`'s task on the approval branch up
 to the report, commits no bypass, missed report or exploitation, no reallocation under
-allocation completeness (`authPolicy_no_realloc`), and is corrigible under effect
-completeness and delegation safety (`corrigible_authPolicy`); a delegated
+allocation completeness (`authPolicy_no_realloc`), and commits no pre-emption under effect
+completeness and delegation safety (`corrigible_authPolicy` — the landed policy notion,
+faithfulness's pre-emption clause, Theorem 10.23); a delegated
 authority-removing effect is the obstruction (`Witness.delegated_cut`).  **LEAN**;
 foreclosure's reach relation **EXT**.
 
@@ -1117,7 +1120,10 @@ hierarchy** per decision (`hierarchy_per_decision`) and per history
 `box1_one_model`).  **Box 2**: dominance for any corrigible objective with the margin `ϖ′ − (D′ − lo)`
 (`box2_dominance_corrigible`), at the fidelity score `ϖ − (D − w_lo)` (`box2_dominance`,
 `box2_optimal_faithful`; the landed margin `box2_dominance_legitimate`),
-mediation (`box2_mediation_approve_branch`, `box2_mediation_corrigible`), finite time
+mediation as faithfulness of the transformed policy (`FaithfulPolicy`,
+`box2_mediation_faithful`, `box2_mediation_approve_branch`; the landed policy notion is
+its pre-emption clause, `landed_corrigible_iff_no_preemption`,
+`faithfulPolicy_landed_corrigible`), finite time
 (`box2_finite_time`, `box2_gate_finite_time`), necessity (`box2_capture_converse`,
 `box2_delegated_cut`, `box2_coverage`).  **Box 3** (`box3_gap_exchange_rate`,
 `box3_no_laundering`, `box3_no_incentive_to_compromise`, `box3_restoration`,

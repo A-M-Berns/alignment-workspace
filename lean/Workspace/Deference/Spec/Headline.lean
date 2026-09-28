@@ -39,7 +39,9 @@ beside the window-form map `evalLegitOn2_iff_legitAt`, `trajLegitOn_iff_legitAt`
 **§5 The boxes for a corrigible agent** (R5, R6, R11).  Box 1 (`box1_outcome_scorer`,
 `box1_fidelity_scorer`, `box1_one_model`); Box 2 (`box2_dominance_corrigible` for any
 corrigible objective, `box2_dominance` with the margin `ϖ − (D − w_lo)`, `box2_optimal_faithful`, `box2_dominance_legitimate` as the landed
-case, `box2_mediation_corrigible`, `box2_mediation_approve_branch`, `box2_finite_time`,
+case, `FaithfulPolicy` with `box2_mediation_faithful` and `box2_mediation_approve_branch`
+(the landed policy notion is faithfulness's pre-emption clause,
+`landed_corrigible_iff_no_preemption`, `faithfulPolicy_landed_corrigible`), `box2_finite_time`,
 `box2_gate_finite_time`, the necessity witnesses `box2_capture_converse`,
 `box2_delegated_cut`, `box2_coverage`); Box 3 (`hierarchy_per_decision`,
 `box3_gap_exchange_rate`, `box3_no_laundering`, `box3_no_incentive_to_compromise`,
@@ -960,14 +962,55 @@ theorem box2_mediation_approve_branch {S E A Alloc : Type*} (Λ : Contrib.Protec
     authPolicy Λ π t s = (if Λ.Required t s then Λ.withReport (π t s).1 else (π t s).1, .gated e) :=
   authPolicy_of_latch Λ π t s e h
 
-/-- **Box 2, mediation is faithful**: `𝔱` on `J` is corrigible in the landed sense under
-effect completeness and delegation safety. -/
-theorem box2_mediation_corrigible {S E A Z R C Alloc Disc : Type*} (I : Interaction S E A Z R C)
-    (Jm : AuthAlloc E R Disc) (Λ₀ : Contrib.ProtectedAuthorityTheorem.Allocation S E A Alloc) (hEF : EffectComplete I)
-    (hDel : DelSafeJ I Jm) (π : Policy S E A) (ρ : Rule S E C) (s₀ : MState S E)
-    (h₀ : s₀.latch = none) (hρ : ∀ t s c, ρ t s ≠ .correct c) :
-    Contrib.Corrigibilization.Corrigible I (authPolicyJ Jm Λ₀ π) ρ s₀ :=
-  corrigible_authPolicyJ I Jm Λ₀ hEF hDel π ρ s₀ h₀ hρ
+/-- **A faithful policy**: it commits no declared violation of the allocation on any
+exterior path — bypass, pre-emption, foreclosure, unlicensed reallocation, missed report,
+exploitation, at every step of every trajectory.  Faithfulness is a property of policies
+and histories; *corrigible* (`Corrigible`) is a property of preferences. -/
+def FaithfulPolicy {S E A Z R C Alloc : Type*} (I : Interaction S E A Z R C)
+    (Λ : Contrib.ProtectedAuthorityTheorem.Allocation S E A Alloc) (Reach : S → S → Prop)
+    (rdec : R) (π : Policy S E A) (ρ : Rule S E C) (s₀ : MState S E) : Prop :=
+  ∀ z, ¬ Violates I Λ Reach rdec π ρ z s₀
+
+/-- **The landed policy notion is the pre-emption clause of faithfulness**: the
+corrigibilization round's `Corrigible` — every agent-caused loss authorized — is "no
+pre-emption on any exterior path".  It is not corrigibility in the kernel's sense, which
+is a property of preferences. -/
+theorem landed_corrigible_iff_no_preemption {S E A Z R C : Type*} (I : Interaction S E A Z R C)
+    (π : Policy S E A) (ρ : Rule S E C) (s₀ : MState S E) :
+    Contrib.Corrigibilization.Corrigible I π ρ s₀ ↔ ∀ z t r, ¬ PreemptAt I π ρ z s₀ t r :=
+  (no_preempt_iff_corrigible I π ρ s₀).symm
+
+/-- A faithful policy satisfies the landed policy notion. -/
+theorem faithfulPolicy_landed_corrigible {S E A Z R C Alloc : Type*} (I : Interaction S E A Z R C)
+    (Λ : Contrib.ProtectedAuthorityTheorem.Allocation S E A Alloc) (Reach : S → S → Prop)
+    (rdec : R) (π : Policy S E A) (ρ : Rule S E C) (s₀ : MState S E)
+    (h : FaithfulPolicy I Λ Reach rdec π ρ s₀) : Contrib.Corrigibilization.Corrigible I π ρ s₀ :=
+  (landed_corrigible_iff_no_preemption I π ρ s₀).mpr
+    fun z t r hp => h z ⟨t, Or.inr (Or.inl ⟨r, hp⟩)⟩
+
+/-- **Box 2, mediation is faithful.**  Under effect completeness, delegation safety and
+allocation completeness, and wherever `𝔱π` forecloses nothing (the reach cone is EXT), `𝔱`
+on `J` is a faithful policy: no bypass, missed report or exploitation, no unlicensed
+reallocation, no pre-emption, on any exterior path.  The pre-emption clause is the landed
+`corrigible_authPolicyJ`. -/
+theorem box2_mediation_faithful {S E A Z R C Alloc Disc : Type*} (I : Interaction S E A Z R C)
+    (Jm : AuthAlloc E R Disc) (Λ₀ : Contrib.ProtectedAuthorityTheorem.Allocation S E A Alloc)
+    (Reach : S → S → Prop) (rdec : R) (hEF : EffectComplete I) (hDel : DelSafeJ I Jm)
+    (hA : AllocComplete I (toAllocation Jm Λ₀)) (π : Policy S E A) (ρ : Rule S E C)
+    (s₀ : MState S E) (h₀ : s₀.latch = none) (hρ : ∀ t s c, ρ t s ≠ .correct c)
+    (hFore : ∀ z t r, ¬ ForecloseAt I Reach (authPolicyJ Jm Λ₀ π)
+      (traj I (authPolicyJ Jm Λ₀ π) ρ z s₀) t r) :
+    FaithfulPolicy I (toAllocation Jm Λ₀) Reach rdec (authPolicyJ Jm Λ₀ π) ρ s₀ := by
+  intro z hz
+  obtain ⟨t, hv⟩ := hz
+  have hcorr := corrigible_authPolicyJ I Jm Λ₀ hEF hDel π ρ s₀ h₀ hρ
+  rcases hv with hb | ⟨r, hp⟩ | ⟨r, hf⟩ | hre | hm | hex
+  · exact authPolicy_no_bypass (toAllocation Jm Λ₀) π _ t hb
+  · exact (landed_corrigible_iff_no_preemption I _ ρ s₀).mp hcorr z t r hp
+  · exact hFore z t r hf
+  · exact authPolicy_no_realloc I (toAllocation Jm Λ₀) hA π _ t hre
+  · exact authPolicy_no_missed_report (toAllocation Jm Λ₀) π _ t hm
+  · exact authPolicy_no_exploit I (toAllocation Jm Λ₀) rdec π _ t hex
 
 /-- **Box 2, finite time**: at every day of a logical inductor the violating option's score
 is below `D − ϖ < 0` and the compliant one's is nonnegative, from the price range alone. -/
@@ -989,13 +1032,23 @@ theorem box2_capture_converse (ϖ D window : ℝ) (hw : window < D - ϖ) :
     Workspace.Deference.Contrib.Legitimacy.gateValue false 0 window < score ϖ D 1 :=
   Workspace.Deference.Contrib.Legitimacy.gate_capture_window_converse ϖ D window hw
 
-/-- **Box 2, necessity: the delegated cut.**  Without delegation safety `𝔱` is not corrigible. -/
+/-- **Box 2, necessity: the delegated cut.**  Without delegation safety `𝔱` is not faithful:
+the landed witness fails the pre-emption clause, so no reach relation makes it a faithful
+policy. -/
 theorem box2_delegated_cut :
     ¬ DelSafe Contrib.Corrigibilization.Witness.I₀ Contrib.ProtectedAuthorityTheorem.Witness.Λ₁ ∧
     ¬ Contrib.Corrigibilization.Corrigible Contrib.Corrigibilization.Witness.I₀
       (authPolicy Contrib.ProtectedAuthorityTheorem.Witness.Λ₁ Contrib.ProtectedAuthorityTheorem.Witness.πcut)
-      (fun _ _ => .null) ⟨⟨true, false⟩, none, none, fun _ => False⟩ :=
-  Contrib.ProtectedAuthorityTheorem.Witness.delegated_cut
+      (fun _ _ => .null) ⟨⟨true, false⟩, none, none, fun _ => False⟩ ∧
+    ∀ Reach : Contrib.Corrigibilization.Witness.W → Contrib.Corrigibilization.Witness.W → Prop,
+      ¬ FaithfulPolicy Contrib.Corrigibilization.Witness.I₀ Contrib.ProtectedAuthorityTheorem.Witness.Λ₁
+        Reach ()
+        (authPolicy Contrib.ProtectedAuthorityTheorem.Witness.Λ₁ Contrib.ProtectedAuthorityTheorem.Witness.πcut)
+        (fun _ _ => .null) ⟨⟨true, false⟩, none, none, fun _ => False⟩ :=
+  ⟨Contrib.ProtectedAuthorityTheorem.Witness.delegated_cut.1,
+    Contrib.ProtectedAuthorityTheorem.Witness.delegated_cut.2,
+    fun Reach h => Contrib.ProtectedAuthorityTheorem.Witness.delegated_cut.2
+      (faithfulPolicy_landed_corrigible _ _ Reach () _ _ _ h)⟩
 
 /-- **Box 2, necessity: coverage.**  Protection holds exactly on recognized violations; an
 unrecognized one is unprotected. -/
@@ -1265,7 +1318,10 @@ end HouseSale
 #print axioms box2_optimal_faithful
 #print axioms box2_dominance_legitimate
 #print axioms box2_mediation_approve_branch
-#print axioms box2_mediation_corrigible
+#print axioms FaithfulPolicy
+#print axioms landed_corrigible_iff_no_preemption
+#print axioms faithfulPolicy_landed_corrigible
+#print axioms box2_mediation_faithful
 #print axioms box2_finite_time
 #print axioms box2_gate_finite_time
 #print axioms box2_capture_converse

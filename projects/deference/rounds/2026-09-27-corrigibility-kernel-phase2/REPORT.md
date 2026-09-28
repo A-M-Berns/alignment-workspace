@@ -2,8 +2,8 @@
 
 Round `2026-09-27-corrigibility-kernel-phase2`, on the phase-1 branch (its pull request
 was open at dispatch; the maintainer confirmed building on it).  Deliverables: `SPEC.md`
-(version 2), `NOTATION.md`, `Headline.lean` in the specification layer (106 declarations
-under `#print axioms` after the follow-up), `KernelExtension.lean` (23 declarations), the
+(version 2), `NOTATION.md`, `Headline.lean` in the specification layer (109 declarations
+under `#print axioms` after the follow-ups), `KernelExtension.lean` (23 declarations), the
 house-sale witness in Lean and as an exact fixture (6 tests), the lock-in fixture (3
 tests), the registrations, the wiki, the decisions and the items.  The follow-up
 (`FOLLOWUP.md`, the same day) is recorded in its own section at the end.  Every declaration audits to `[propext, Classical.choice, Quot.sound]`, no
@@ -248,3 +248,91 @@ naming Lean declarations; the check below is re-run).
 appears before §8; the underscore scan outside §8 finds only the post's letters (`w_lo`,
 `w_hi`, `S_J`, `V_J`, `N_J`, `L_t`, `r_d`, `θ_hi`, `p_min`, `V_retro`, `V_dir`, `d_k`,
 `c_k`, `w_k`, `π_k`).
+
+## The second follow-up (2026-09-27): faithful versus corrigible; the spec as the post's source
+
+Dispatch `prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP2.md`, on PR #114's branch
+before the merge.  Every new or changed declaration audits to
+`[propext, Classical.choice, Quot.sound]`, no `sorry`; every fixture passes unchanged.
+
+**Part 1 — "corrigible" names a preference; mediation is about faithfulness.**  The
+landed `Corrigibilization.Corrigible` (every agent-caused loss authorized) is a property of
+a policy: under R1 that is faithfulness, and exactly its pre-emption clause
+(`Headline.landed_corrigible_iff_no_preemption`, from the landed `no_preempt_iff_corrigible`).
+It is unchanged, with a docstring note saying so.  `Headline.FaithfulPolicy I Λ Reach rdec π ρ s₀`
+is the policy-level notion: no declared violation — bypass, pre-emption, foreclosure,
+unlicensed reallocation, missed report, exploitation — on any exterior path
+(`∀ z, ¬ Violates …`); `faithfulPolicy_landed_corrigible` proves it implies the landed notion
+(the converse fails: the landed notion is one clause of six).  `box2_mediation_corrigible` is
+replaced by `box2_mediation_faithful`: under effect completeness, delegation safety and
+allocation completeness, and wherever `𝔱π` forecloses nothing, `𝔱` on `J` is a faithful
+policy; the six clauses are discharged by the landed `authPolicy_no_bypass`,
+`authPolicy_no_missed_report`, `authPolicy_no_exploit`, `authPolicy_no_realloc` and
+`corrigible_authPolicyJ`, with the no-foreclosure hypothesis stated explicitly because the
+reach cone is EXT.  `box2_delegated_cut` gains the conjunct that no reach relation makes the
+delegated-cut witness a faithful policy.  **Occurrences corrected:** `Headline.lean` (two
+docstrings, the header), `SPEC.md` §5 (the mediation bullet now says "faithful"),
+`wiki/Corrigibility.md` §5 and §7 ("`Corrigible ∧ ¬Authored`" is the landed policy notion,
+read as faithfulness), `wiki/Glossary.md` (the agent-caused-loss row), `wiki/Theorem-Spine.md`
+(Theorems 10.2, 10.19, 10.23), `wiki/Continuation-BRIA.md` ("corrigible execution" →
+"faithful execution").  Left as they are: "corrigible" of an agent or a disposition
+(`wiki/Home.md`, `wiki/Legitimacy.md`'s introduction) and the historical item text in
+`wiki/Roadmap.md`.  **Registration:** `kernel.box2-mediation` is renamed
+`kernel.box2-mediation-faithful`, statement of record `box2_mediation_faithful`, the note
+carrying the former identifier and declaration; `state/rounds.json` follows.
+
+**Part 2 — faithfulness is a fact; the count is what the agent can see.**  `SPEC.md` §2
+gains the paragraph: faithfulness is a fact about what happened; the count is the part of
+it the agent's objective can see; corrigibility is a preference over known faithfulness; so
+a corrigible agent can still produce an unfaithful history through a violation nobody
+recognizes, which is the coverage limit and the reason the contracts carry count integrity
+and effect completeness.  §8 points to `box2_coverage`, `frameFidelity_faithful_iff`,
+`AuthorityModule.coverage`, `unrecognized_unprotected`.
+
+**Part 3 — what corrigibility alone buys, what alignment adds.**  A paragraph at the head of
+§5: any corrigible agent strictly disprefers counted manipulation — the protocol deviations
+and every other declared violation — by the generic lexical result and the counting of
+protocol deviations (`generic_lexical_local`, `deviation_dominated`, `deviating_rows_dominated`);
+only an agent whose objective reads her legitimacy-gated evaluation is also protected
+against uncounted influence (undisclosed shaping through the world, exploiting a third
+party's capture), through the gate — Box 3's no incentive to cause compromise
+(`box3_no_incentive_to_compromise`) — to the extent the compromise is eventually recognized:
+asymptotically for a logical inductor (`GateIsLegitimacy.li_manip_le`, the expectation
+provability induction transfer of the manipulated option's gated value to the window), and
+finite-time only where the deviation is counted (`deviation_finite`).  The witness is
+`corrigible_not_aligned`.  §8 has the row.
+
+**Part 4 — the spec as the post's source.**  (1) The four correction notes are removed from
+the body; the record is here and in `DECISIONS.md`.  (2) §1.2's "how the score uses it" is
+the two plain statements and the one sentence relating them to the landed gate; the moved
+material is below.  (3) `dec(t)`'s first line reads "if the period is not compromised and
+`L_t` holds".  (4) The hierarchy's justification is in chain order, with the sentence that
+mixed histories lie between the pure cases and the hierarchy compares the pure cases.
+(5) Box 2's per-decision ceiling is `D′ − ϖ′` for a generic corrigible objective, `D − ϖ`
+at the fidelity score.  (6) The subjective exchange rate states its plain reading first —
+for any option a corrigible agent prefers to asking, its own expected probability of
+committing a violation is at most `(D′ − c)/ϖ′` — with the bid-and-price form second.  No
+claim changes strength; no clarity edit was withheld.
+
+*Moved from §1.2.*  On the decision's segment "not compromised and the evaluation counts"
+is legitimacy over the span with no condition on restorations inside the segment: a
+restoration only moves `r(t)` forward, every step is still reached by `L` at its own time,
+and the criteria are anchored per segment (`split_iff_legitimate`, for any formation data
+with `r(t) ≤ t`).  On the consultation model `r(t)` is the opening of the current round — a
+disclosure happens at a present event, never after the opening of its round
+(`formation2_point`) — the landed formation-segment predicate from that opening is `L_e`
+(`legitimate2_iff_evalLegitOn2`), the landed trajectory predicate is "not compromised"
+(`trajLegitOn_iff_not_compromised`), and every classification row keeps its verdict
+(`rows_keep_verdicts_canonical`).  The obstruction the first follow-up anticipated — a time
+inside the period whose consultation opened before `d` — does not arise on the model, where
+each round is its own consultation; where a consultation spans a decision boundary the
+minimal adjustment is to intersect the window with the period, `r_d(t) = max(r(t), d)`,
+formation data the general theorem already accepts.
+
+**Read-through check, re-run.**  `SPEC.md` is 556 lines: §§0–5 are 411 lines, §§6–8 are
+145 (§8 begins at line 517).  No "(Corrected" or "(Restated" remains.  No `Headline.` or
+`Contrib.` prefix appears before §8.  The underscore scan outside §8 finds the post's
+letters only (`Faithful_J`, `L_e`, `L_t`, `N_J`, `S_J`, `V_J`, `V_dir`, `V_retro`, `c_k`,
+`d_k`, `mean_k`, `p_min`, `w_hi`, `w_k`, `w_lo`, `θ_hi`, `π_k`) and the fixture's file name
+in §6.  The check is scripted (`fu2_spec.py` in the session's scratchpad; its four
+assertions are the ones listed here).

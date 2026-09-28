@@ -7,7 +7,8 @@
 | Round directory | `projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/` |
 | Lean | `lean/Workspace/Deference/Spec/Headline.lean` (specification layer), `lean/Workspace/Deference/Contrib/KernelExtension.lean` |
 | Landing | a pull request stacked on the phase-1 branch, which was open and unmerged at dispatch |
-| Follow-up | `FOLLOWUP.md` (the maintainer, verbatim), carried out on the same branch before the merge; recorded in the round's `REPORT.md`, final section |
+| Follow-up | `FOLLOWUP.md` (the maintainer, verbatim), carried out on the same branch before the merge; recorded in the round's `REPORT.md` |
+| Second follow-up | `FOLLOWUP2.md` (the maintainer, verbatim), the same; recorded in the round's `REPORT.md`, final section |
 
 One deviation from the dispatch's premise: PR #113 (phase 1) was not merged when this
 round was dispatched, so the round builds on that branch and its pull request targets it;
@@ -31,3 +32,12 @@ the history with the formation point computed from it, not a free window.  No de
 from the follow-up's dispatch, beyond one of form: the landed `Corrigibilization.Corrigible`
 is written with its full name inside the `Headline` namespace, which now has its own
 `Corrigible`.
+
+The second follow-up renamed the mediation result to say what it proves — the
+transformed policy is *faithful* (`box2_mediation_faithful`, the claim
+`kernel.box2-mediation-faithful`, formerly `kernel.box2-mediation`) — and made the
+specification the post's source: correction notes out of the body, the score's uses in two
+plain statements, the hierarchy in chain order, the generic ceiling `D′ − ϖ′`, the
+subjective exchange rate's plain reading first, and two new paragraphs (faithfulness is a
+fact and the count is what the agent sees; what corrigibility alone buys against
+manipulation and what alignment adds).  No deviation from the dispatch.

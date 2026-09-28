@@ -5340,3 +5340,24 @@ flat window parameters); the Theorem Spine no longer cites `incidents_le` or the
 `cross_block_bound`; the declaration's deletion is left to a maintainer commit because
 removing a landed declaration changes the axiom audit's baseline.
 *Rejected alternative:* `@[deprecated]` aliases (nothing was registered).
+
+### 2026-09-27 — "corrigible" names a property of preferences only; the mediation results are about faithfulness (second follow-up)
+
+Maintainer ruling (`prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP2.md`), landed on
+the phase-2 branch before its merge.  Under R1 the landed `Corrigibilization.Corrigible` —
+every agent-caused loss along every exterior path authorized — is a property of a policy,
+hence faithfulness, and exactly its pre-emption clause
+(`Headline.landed_corrigible_iff_no_preemption`).  The policy-level notion is
+`Headline.FaithfulPolicy` (no declared violation on any exterior path), which implies the
+landed notion (`faithfulPolicy_landed_corrigible`).  The Box 2 mediation result is
+`box2_mediation_faithful` — `𝔱` on `J` is a faithful policy under effect completeness,
+delegation safety and allocation completeness wherever it forecloses nothing — and its claim
+is `kernel.box2-mediation-faithful` (formerly `kernel.box2-mediation`, statement of record
+`box2_mediation_corrigible`, retired).  The landed declaration keeps its name (conservativity)
+with a docstring note.  "Corrigible" applies to objectives, preferences and agents only;
+every occurrence applied to a policy, a history or behaviour in the headline, the extension,
+the specification, the wiki and the registry was corrected.  The specification is now the
+source of the post's formal section: the record of corrections lives in the round's
+`REPORT.md` and here, not in the specification's body.
+*Rejected alternative:* keeping "corrigible" for the mediated policy as a legacy term —
+registration would have frozen the conflation R1 removed.
