@@ -5211,7 +5211,7 @@ else's.  The lint that matched maintainer surnames in tracked prose
 and its `tests/run.py` wiring; the pointers to it in this ledger and in `PROVENANCE.md`
 are historical spans; friction F6 closes with it.  The rule is a review matter.
 *Rejected alternative:* a lint with a narrowed name list, which still fired on citations
-of the co-maintainer's work and cannot express the distinction the rule draws — the
+of a maintainer's published work and cannot express the distinction the rule draws — the
 role in the repository against the author in the literature.
 
 ### 2026-09-29 — the decision-theory line is a top-level project, and continuation BRIA stays in the deference line

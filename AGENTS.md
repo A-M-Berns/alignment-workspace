@@ -242,7 +242,7 @@ beyond that local context do not belong in repository deliverables. A padded but
 glossed contribution remains a legitimate rejection under the slop discipline.
 
 **People are named by role.** A maintainer acting as a maintainer is *the
-maintainer* — or *a maintainer*, *the co-maintainer* — in every repository
+maintainer* — or *a maintainer* — in every repository
 document and on the wiki: a ruling, a dispatch, a hold or a review is attributed
 to the role, and no document reads as a record of what one person said to
 another. A maintainer's published work is cited like anyone else's, by author
