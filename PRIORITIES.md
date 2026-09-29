@@ -3280,6 +3280,60 @@ which is a condition on `ε` against the rule and is not derived here.  The escr
 comparison among evaluation-timing options is settled in expectation
 (`expected_escrow_eq`): what a priced restatement carries is the variance, not the mean.
 
+### 105. Belief–decision compatibility as a theorem: the claim tracks the market's expectation of the chosen block score — **[substantial]**
+
+<!-- workspace-priority: project=decision-theory; dispatchable=yes -->
+
+`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §2 R4 states, for an agent that publishes a market and
+selects `(continuation, claim)` at a block contract, that on every `P`-generable divergent
+weighting the weighted mean of `e_k − E_k(Ĝ_k)` tends to `0`, `Ĝ_k` the realized score of
+the selected continuation and `E_k` the market's expectation at the opening after the
+selection; and sketches its derivation from the LI criterion relative to the
+observation stream (R2(c)) and the weighted BRIA criterion over the market-reading class
+`H^P` (R3): the upper half from no overestimation and unbiasedness from feedback, the
+lower half from coverage with the hypotheses `(c, E_k(Ĝ(c)))`.  Prove it, with the
+hypotheses made exact — the deferral under which the block score settles, the
+`P`-generability of the construction's test and rejection sets, the relativization of
+`thm:wubaff`/`thm:wubexp` to the stream (item 91) — or exhibit the countermodel.
+
+*Deliverable shape:* a paper-level theorem with named hypotheses and a witness (the
+paper's auction over a logical inductor on a finite environment), or the exact
+obstruction with its fixture; Lean for the algebraic core where the pinned formalization
+admits it.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean if any.
+*Context:* the round's `PROBLEM_STATEMENT.md` §2 R4 and §3; `TEST_SUITE.md` T11; the
+cross-subsidy fixture `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/tests/test_cm.py`; items 91, 102.
+*Consumed by:* item 106; item 102 (a bid checked against prices is this theorem's
+lower half stated on priced claims).
+*A solution ships:* the theorem, or the negative with its witness.
+
+### 106. A candidate LI/BRIA synthesis against the specification — **[open]**
+
+<!-- workspace-priority: project=decision-theory; dispatchable=yes -->
+
+Construct a computable agent of the type in `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §1 and check
+it against the acceptance checklist of §6: existence with the comparison classes named
+(R1); the LI criterion on the active trajectory (R2(c), or R2(b) declared); the weighted
+BRIA criterion over `H^P` at a non-dominant system schedule (R3); compatibility (item
+105); the criterion-level rows of `TEST_SUITE.md` passed and the construction-level rows
+reported, including T3(d), T3(e), T4(ii), T6, T8, T10.  The declared choices of
+`AUDIT.md` §3 — scoring granularity and schedule authority, lease publicity,
+randomization, the scope of the counterfactual register — are stated before any
+benchmark is scored, and the four queued in `DECISIONS.md` are taken as ruled or as the
+round's own reversible defaults.
+
+*Deliverable shape:* the construction with its existence proof; the checklist, item by
+item, with what is proved, what is fixture-supported, and what is not shown; the suite's
+rows scored on the construction with exact fixtures.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean if any.
+*Context:* the round's three documents; `wiki/Continuation-BRIA.md` for the block
+contract and the weighted criterion; items 86, 91, 102, 105.
+*Consumed by:* the decision-theory line's first registered claims; the deference line's
+learning layer if the construction realizes the coupling of item 102.
+*A solution ships:* the construction against the checklist, or a proof that some
+checklist item is unsatisfiable by any agent of the type, which reopens the
+specification.
+
 ## Workspace friction
 
 **Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a

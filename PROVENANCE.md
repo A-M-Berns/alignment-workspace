@@ -151,6 +151,7 @@ earlier rows did not record at all.
 | the fourth follow-up: `projects/deference/rounds/2026-09-26-bria-corrigibility/REPORT.md` §10.4″ and `projects/deference/rounds/2026-09-26-bria-corrigibility/tests/test_followup4.py`, `prompts/2026-09-26-bria-corrigibility/FOLLOWUP4.md`, `lean/Workspace/Deference/Contrib/BRIAFollowup2.lean` §4″, `wiki/**` (Corrigibility, Continuation-BRIA, Glossary, Theorem-Spine), `DECISIONS.md` | Claude Fable 5.1 (Anthropic); the prompt by the maintainer, relayed verbatim | `ci-only` | 2026-09-26 | `prompts/2026-09-26-bria-corrigibility/` |
 | `projects/deference/rounds/2026-09-26-after-compromise/**`, `prompts/2026-09-26-after-compromise/**`, `lean/Workspace/Deference/Contrib/AfterCompromise.lean` (with its row in the contrib `PROVENANCE.md`), `wiki/**` (Corrigibility, Legitimacy, Glossary, Theorem-Spine), `PRIORITIES.md` (item 101), `DECISIONS.md` | Claude Fable 5.1 (Anthropic); the prompt by the maintainer, relayed verbatim | `ci-only` | 2026-09-26 | `prompts/2026-09-26-after-compromise/` |
 | the follow-up: `projects/deference/rounds/2026-09-26-after-compromise/REPORT.md` (the last section) and `projects/deference/rounds/2026-09-26-after-compromise/tests/test_followup.py`, `prompts/2026-09-26-after-compromise/FOLLOWUP.md`, `lean/Workspace/Deference/Contrib/AfterCompromise.lean` §6, `wiki/**` (Corrigibility, Legitimacy, Continuation-BRIA, Theorem-Spine), `DECISIONS.md` | Claude Fable 5.1 (Anthropic); the prompt by the maintainer, relayed verbatim | `ci-only` | 2026-09-26 | `prompts/2026-09-26-after-compromise/` |
+| `projects/decision-theory/README.md`, `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/**`, `prompts/2026-09-29-li-bria-synthesis-spec/**`, `state/projects.json` (the new line), `state/rounds.json`, `PRIORITIES.md` (items 105, 106), `DECISIONS.md`, `projects/deference/README.md` (one cross-link) | Claude Fable 5.1 (Anthropic); the prompt by the maintainer, relayed verbatim | `ci-only` | 2026-09-29 | `prompts/2026-09-29-li-bria-synthesis-spec/` |
 
 ## No originating chat bundle
 
@@ -225,6 +226,7 @@ of thing this file exists to make visible.
 | `2026-09-24-protected-authority` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-24 |
 | `2026-09-25-protected-authority-theorem` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-25 |
 | `2026-09-25-legitimacy-internal-external` | the maintainer, relayed verbatim (with one follow-up) | Claude Fable 5.1 (Anthropic) | 2026-09-25 |
+| `2026-09-29-li-bria-synthesis-spec` | the maintainer | Claude Fable 5.1 (Anthropic) | 2026-09-29 |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have

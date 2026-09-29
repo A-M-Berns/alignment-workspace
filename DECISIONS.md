@@ -103,6 +103,38 @@ commit.
   (zero for the mixture, `σ²` for one hidden draw, `σ²/k` for `k`), and whether a hidden
   draw is acceptable; secondarily the weights' tail against the agent's delay reach.
 
+- **Who sets the block schedule, and whether bidders may request horizons.**  The
+  LI/BRIA specification round takes the system-scheduled, non-dominant schedule of
+  continuation BRIA as the default: every commitment representable is one that pays
+  within a block the system opened.  *Turns on:* whether the program wants agents that
+  choose how long to commit — bidder-chosen horizons and an allocation rule for duration
+  (`wiki/Continuation-BRIA.md` §9) — which no round has a shape for, and which decides
+  the verdicts of `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/TEST_SUITE.md` T6 and T7.
+
+- **Lease publicity: what predictors and other agents may read.**  The realized register
+  treats the agent's published outputs — the selection and the estimate — as public
+  state; the winning index and a bounded simulation of the agent are further options.
+  The round's default is selection and estimate public.  *Turns on:* the design cost
+  the tentative troll exhibits (T3(d): a public estimate lets a predictor punish
+  tentative tests, and the paper's auction is then stuck while the criterion is met)
+  against the modelling cost of hiding an output the criterion is stated on; and what
+  a paper's readers will accept as "the predictor can see the agent".
+
+- **Whether a private random source is a menu option, and which randomness notion the
+  random-reward clause uses.**  The paper's Theorem 4 uses bounded vMWC randomness
+  relative to the class; the criterion itself does not require a random source
+  (Theorem 5 uses one in its construction).  The round's default: no random option in
+  the minimum, T5 scored with and without it.  *Turns on:* taste about whether
+  adversarial-predictor problems belong to the synthesis at all, and whether "mental
+  randomization" should be modelled as predictable.
+
+- **Whether one-shot verdicts are wanted from a synthesis.**  Every guarantee of the
+  minimum is an asymptotic average; the suite marks one-shot rows invisible rather than
+  scoring them by a proxy, and the counterfactual-dependence register is the stronger
+  target S2.  *Turns on:* whether the program's decision-theory line aims at the
+  classical one-shot problems at all, which is where the field's disagreements live and
+  where no candidate in the audit has a theorem.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -5165,3 +5197,36 @@ are historical spans; friction F6 closes with it.  The rule is a review matter.
 *Rejected alternative:* a lint with a narrowed name list, which still fired on citations
 of the co-maintainer's work and cannot express the distinction the rule draws — the
 role in the repository against the author in the literature.
+
+### 2026-09-29 — the decision-theory line is a top-level project, and continuation BRIA stays in the deference line
+
+**Agent-decided, reversible** (the LI/BRIA specification round).  `projects/decision-theory/`
+is a line beside normativity and deference, registered in `state/projects.json`, holding
+the specification of what a synthesis of logical induction and bounded inductive
+rationality must satisfy and, later, the constructions judged against it.  Continuation
+BRIA remains at `projects/deference/rounds/2026-09-08-continuation-bria/` with its
+canonical statement on the wiki and its Lean under `Deference/Contrib`: it is
+corrigibility's learning layer, consumes the deference gate, and is cited by pinned path
+from the wiki, `state/rounds.json`, this ledger and the priority items.  The new line
+consumes its block contract and weighted criterion and cross-links it.
+*Rejected alternative:* moving the continuation-BRIA round and its Lean module into the
+new line, which rewrites every pinned pointer for no change in what either line proves;
+and a subproject under deference, which would file the synthesis as a corrigibility
+consumer when it is a foundation both lines consume.
+
+### 2026-09-29 — the minimum credible synthesis is the target of the line's construction rounds; the counterfactual register is outside it
+
+**Agent-decided, reversible** (the LI/BRIA specification round).  The target a candidate
+synthesis is checked against is `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §4: existence with named
+comparison classes, the LI criterion on the active trajectory relative to the stream, the
+weighted BRIA criterion over the market-reading class at a non-dominant system schedule,
+belief–decision compatibility as the interaction theorem (item 105), coverage as the
+accountability clause with menu safety named, and the suite's criterion-level rows.
+One-shot verdicts, logical counterfactuals, cross-block commitment, policy regret's
+`SHIFT` and `SLACK`, exploration safety beyond the gate and randomization against
+adversarial predictors are stronger targets S1–S5, not conditions of the minimum.
+*Rejected alternative:* a single unified criterion from which every benchmark verdict
+follows, which the round found either vacuous (satisfied by a logical inductor and a
+BRIA side by side) or false (per-round compatibility with cross-round commitment,
+Proposition P1); and folding the one-shot register into the minimum, for which no
+candidate in the audit has a theorem.

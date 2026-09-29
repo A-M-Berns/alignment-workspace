@@ -1716,6 +1716,22 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-26-after-compromise/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-29-li-bria-synthesis-spec",
+      "date": "2026-09-29",
+      "project": "decision-theory",
+      "path": "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec",
+      "verdict": "LI-BRIA-SYNTHESIS-SPECIFIED-THE-MINIMUM-IS-LI-ON-THE-ACTIVE-TRAJECTORY-PLUS-WEIGHTED-BRIA-OVER-A-MARKET-READING-CLASS-WITH-BELIEF-DECISION-COMPATIBILITY-AS-THE-INTERACTION-THEOREM-PER-ROUND-COMPATIBILITY-IS-INCOMPATIBLE-WITH-CROSS-ROUND-COMMITMENT-AND-ONE-SHOT-VERDICTS-ARE-OUTSIDE-THE-REALIZED-FEEDBACK-REGISTER — a candidate synthesis is a computable agent that publishes a market and selects a continuation with an accountable claim at a system-scheduled block contract; the minimum credible synthesis is the logical induction criterion relative to the deductive process and the observation stream on every environment, the duration-weighted bounded-inductive-rationality criterion over hypotheses that read the published prices, and belief–decision compatibility — the claim and the market's expectation of the same block score agree on every P-generable weighting — which is a theorem target from the first two rather than an axiom and is what excludes a logical inductor and a BRIA placed side by side; BRIA's estimates are not beliefs, so a BRIA may pay in repeated counterfactual mugging by cross-subsidizing its estimates, and per-round compatibility removes that permission, forcing asymptotic refusal where paying is better on average, so the conflict between action-level BRIA and binding commitment is exactly between per-round compatibility and cross-round payoff and is resolved only by declaring the scoring granularity at which the commitment pays; coverage is the defensible accountability clause because a test is the winning claim's execution and not a flagged exploration, at the named cost that a trap in the menu is tested once; the criterion is silent on the tentative-estimate and belief-disagreement trolls, on copies, and on every one-shot problem, which the suite marks as construction-level or invisible rather than scoring by a proxy.",
+      "verdict_source": "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/README.md",
+      "depends_on": [
+        "2026-09-08-continuation-bria",
+        "2026-09-06-decision-theory-bill"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-29-li-bria-synthesis-spec/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
