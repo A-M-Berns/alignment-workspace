@@ -5,20 +5,29 @@ the review in `prompts/2026-09-29-li-bria-synthesis-spec/REVISION.md`, corrected
 mathematics and separated the general target from the block specialization; the third,
 against `REVISION2.md`, encoded the maintainer's endpoint, fixed the recovery domains,
 made integration an obligation with three separated achievements, corrected the
-remaining overclaims, and reduced the advance diagnostics to what is well posed.  This
-is the state after the third pass; §9 lists what each later pass changed.
+remaining overclaims, and reduced the advance diagnostics; the fourth, against
+`REVISION3.md`, removed A1 from the definition of success, gave the advance a
+qualification standard, marked A1 provisional with its missing semantics, corrected
+T10's control, and made active LI the endpoint's requirement with passive recovery a
+weaker milestone.  This is the state after the fourth pass; §9 lists what each later
+pass changed.
 
 ## 1. The final recommended acceptance standard
 
 `PROBLEM_STATEMENT.md` §0, in one sentence: a candidate is a **successful outcome** if it
 establishes the **supporting milestones** (M1 computable existence with named classes;
-M2 LI on the active trajectory; M3 BRIA recovery with its four domains declared; M4
-coverage as accountability with menu safety named), proves the **integration results**
-I1 (market information improves decision performance, T10 with explicit accounting)
-and I3 (accountability excludes the belief–action self-confirmation of A1), states I2
-at least as W1, passes the recovery and integration rows of the suite under their
-assumptions, and demonstrates **one advance** on a recognized obstruction under a
-matched environment — A1 is at present the only well-posed one and is also I3.
+M2 LI on the **active** trajectory — passive recovery is a weaker supporting milestone,
+not an alternative; M3 BRIA recovery with its four domains declared; M4 coverage as
+accountability with menu safety named), meets the **integration obligation** — I1
+(market information improves decision performance, T10 with explicit accounting), I2
+at least as W1, and I3 (a formal result that its integrated process excludes a
+precisely specified failure mode of the belief–decision coupling) — passes the recovery
+and integration rows of the suite under their assumptions, and demonstrates **one
+advance** on a recognized obstruction by a diagnostic meeting the qualification
+standard (complete semantics, quantified success condition, justified relationship to
+the obstruction, matched assumptions, what existing guarantees fail to establish).
+One theorem may discharge both I3 and the advance; an information-transfer theorem
+alone is not an advance.  A1 is one proposed diagnostic and is provisional.
 **Updatelessness is an ideal extension** (A2), and its recovery domain is an open
 specification question.  A candidate with the milestones and I1 alone has a publishable
 integration theorem and is not the endpoint.  Architecture is not specified; a modular
@@ -26,10 +35,12 @@ implementation qualifies.
 
 ## 2. The most discriminating formal tests
 
-- **A1 / T3(e)**, the belief-disagreement troll: two fixed points satisfy M1–M4; the
-  success condition is crossing with density 1 from every M2-consistent initial market,
-  with no channel beyond the prices the belief component publishes anyway.  The one
-  well-posed advance test, and I3.
+- **A1 / T3(e)**, the belief-disagreement troll: a precise success condition (crossing
+  with density 1 from every M2-consistent initial market) on a target that is not yet
+  defined — the semantics of the pre-selection forecast the troll reads (conditional
+  expectation, contract price, selectively evaluated forecast, or an outside report)
+  is open, the two configurations are proposed failure configurations unchecked against
+  M1–M4, and a favourable report changes the environment.  **Provisional.**
 - **T10**, rewards decided by logic: the integration theorem I1, with its four steps
   named (pointwise pre-decision accuracy; the `ε`-shifted market-reading bidder's
   refutation resistance; adoption; the blind lower bound by a density diagonal against
@@ -156,9 +167,22 @@ ideal extension; the four recovery domains and the open domain question; the
 integration obligation with I1–I3 separated; the conditional fixed-schedule
 obstruction with its warning example; the R4 status corrected to "derivation fails,
 implication unresolved" with the timing and generability conditions for feedback
-theorems; D3 demoted and D1 withdrawn; A1 as the one well-posed advance and A2 as the
+theorems; D3 demoted and D1 withdrawn; A1 as the proposed advance and A2 as the
 extension; role, status and supplied structure on every suite row; the verdict, the
 ledgers, the items and the pull request updated.
+
+**Fourth pass.**  Removed A1 from the acceptance statement; I3 is now a formal result on
+a failure mode the candidate specifies to a qualification standard, and the advance is
+by any diagnostic meeting that standard, one theorem being allowed to discharge both;
+A1 marked provisional with its three missing elements (forecast semantics, witness
+status of its configurations, report-changes-environment); T10's control corrected to
+"the stated pre-decision deduction argument no longer guarantees an advantage"; active
+LI required for the endpoint and passive recovery a weaker milestone in §0, M2, the
+checklist and T0.
+
+**Remaining provisional items.**  A1 (three missing elements); D3 (runtime accounting);
+D2 (construction-level, published estimates); A2 (the recovery domain).  Every
+acceptance judgment that depends on them is listed in §0 of the problem statement.
 
 ## 10. Outstanding maintainer actions
 

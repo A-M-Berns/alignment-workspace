@@ -5238,11 +5238,15 @@ maintainer's stated position).  The target a candidate is checked against is
 named classes; logical induction on the active trajectory; BRIA recovery on a declared
 recovery domain with witness estimates that need not be public; coverage as
 accountability with menu safety named), the integration obligation (market information
-provably improves decision performance under explicit accounting, and decision
-accountability provably excludes the belief–action self-confirmation of the
-belief-disagreement troll, with the compatibility relation stated at least in its
-established one-sided form), the recovery and integration rows of the suite, and one
-advance on a recognized obstruction under a matched environment.  The endpoint may be
+provably improves decision performance under explicit accounting, the compatibility
+relation stated at least in its established one-sided form, and a formal result that
+the integrated process excludes a precisely specified failure mode of the
+belief–decision coupling), the recovery and integration rows of the suite, and one
+advance on a recognized obstruction by a diagnostic meeting the round's qualification
+standard — the belief-disagreement troll is one proposed, provisional instance, and one
+theorem may discharge both the failure-mode result and the advance.  Logical induction
+is required on the active trajectory; passive recovery is a weaker supporting
+milestone.  The endpoint may be
 updateful; updatelessness is an ideal extension whose recovery domain is an open
 specification question (queued in *Awaiting the author*).  Architecture is not specified; a modular
 implementation qualifies; the continuation-BRIA block contract is one route.  A

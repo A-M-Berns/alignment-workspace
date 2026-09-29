@@ -13,35 +13,43 @@ extension*, *witness estimates*, *market-relative hypothesis class*, *recovery d
 
 > A candidate counts as a **successful outcome** if it establishes the **supporting
 > milestones** — computable existence with named comparison classes (M1), logical
-> induction on the active trajectory (M2), bounded-inductive-rationality recovery on a
-> declared recovery domain (M3), and coverage as accountability with menu safety named
-> (M4) — **and** an **integration result** of the form of §3, which is at least
-> achievement I1 (market information provably improves decision performance, T10 under
-> its stated accounting) **and** achievement I3 (decision accountability provably
-> excludes the belief–action self-confirmation of A1), with achievement I2 (a
-> compatibility relation) stated at least in its established form W1; **and** passes
-> the recovery and integration rows of `TEST_SUITE.md` under their stated assumptions;
-> **and** demonstrates **one substantive advance** on a recognized obstruction of
-> logical-induction decision theory, under the matched environment and information
-> structure of a well-posed diagnostic of §7 (A1 counts, and is also I3).
-> **Updatelessness is an additional ideal target**: policy-level guarantees on
-> environments where the agent's rewards depend on its policy rather than on its
-> history and current choice (§7, A2), with a recovery domain that is not yet defined
-> (§2, M3).  A candidate meeting the milestones and I1 alone has a publishable
-> integration theorem and is not yet the endpoint.
+> induction on the **active** trajectory (M2(c)), bounded-inductive-rationality recovery
+> on a declared recovery domain (M3), and coverage as accountability with menu safety
+> named (M4) — **and** meets the **integration obligation** of §3: achievement I1
+> (market information provably improves decision performance, T10 under its stated
+> accounting), achievement I2 stated at least in its established form W1, and
+> achievement I3 (a formal interaction result proving that the candidate's integrated
+> belief–decision process excludes a **precisely specified failure mode** of that
+> coupling, specified to the qualification standard of §7); **and** passes the recovery
+> and integration rows of `TEST_SUITE.md` under their stated assumptions; **and**
+> demonstrates **one substantive advance** on a recognized obstruction of
+> logical-induction decision theory, by a diagnostic meeting the qualification standard
+> of §7 under a matched environment and information structure.  **Updatelessness is an
+> additional ideal target**: policy-level guarantees on environments where the agent's
+> rewards depend on its policy rather than on its history and current choice (§7, A2),
+> with a recovery domain that is not yet defined (§2, M3).
 
-*Logical structure.*  A1 is at present the only well-posed advance diagnostic; a
-candidate claiming a different advance first states it to the standard of §7.  All of
-M1–M4 are required.  I1 and I3 are both required; I2 is
-required only in its established form, its strong form being a further target.  The
-advance is required, and A1 satisfies it together with I3.  A2 is an extension.
-*What no open choice prevents.*  The judgments "milestones met", "I1 met", "I3 met",
-"A1 met" can each be made now under the assumptions their rows state.  *What the open
-choices prevent* (§2 M3, `AUDIT.md` §3): the judgment that an updateless candidate has
-"recovered BRIA where it should", because the maximal recovery domain for the extension
-is undefined; and the judgment that a channel-dependent verdict (T4(i), T6(iii), T7) is
-an advance rather than a conditional result, which depends on which commitment source
-the maintainer holds candidates to.
+*Logical structure.*  All of M1–M4 are required, M2 in its active grade (c); passive
+recovery (M2(b)) is a weaker supporting milestone and does not satisfy the endpoint's
+claim about the agent's beliefs during decision-making.  I1, I2 (as W1) and I3 are all
+required; I2's strong form is a further target.  The advance is required.  **One
+theorem may discharge both I3 and the advance** if it establishes both — an
+interaction result on a failure mode whose relationship to a recognized obstruction is
+justified — and a theorem that discharges I1 alone is an information-transfer result,
+not a decision-theoretic advance.  A1 (§7) is one proposed diagnostic for I3 and the
+advance, at present **provisional**; it is not the unique route.  A2 is an extension.
+A candidate meeting the milestones and I1 alone has a publishable integration theorem
+and is not yet the endpoint.
+
+*What can be judged now.*  "Milestones met", "I1 met" and "W1 met" can each be judged
+under the assumptions their rows state.  *What waits on the candidate*: I3 and the
+advance can be judged only once the candidate's chosen diagnostic meets the
+qualification standard of §7 — A1 does not yet (its report semantics are undefined,
+§7).  *What the open choices prevent* (§2 M3, `AUDIT.md` §3): the judgment that an
+updateless candidate has "recovered BRIA where it should", because the maximal recovery
+domain for the extension is undefined; and the judgment that a channel-dependent
+verdict (T4(i), T6(iii), T7) is an advance rather than a conditional result, which
+depends on which commitment source the maintainer holds candidates to.
 
 The rest of this document defines the terms of the statement and gives the boundary
 results that shaped them.
@@ -105,7 +113,10 @@ behaviour: **rejected**, vacuous.  (b) *Passive implication* — on `|C_k| = 1` 
 `k`, `P̄` satisfies the LI criterion relative to `D̄`.  (c) *Active implication* — on
 every environment in `E`, `P̄` satisfies the LI criterion relative to `D̄` and the
 observation stream, traders being allowed to bet on sentences about realized scores.
-**Required in grade (c)**, (b) the declared fallback (relativization is item 91).
+**Required in grade (c)** for the endpoint (relativization is item 91).  Grade (b) is
+a weaker supporting milestone: a candidate with passive recovery only reports that
+achievement separately and does not claim the endpoint's guarantee about its beliefs
+during decision-making.
 
 ### M3. BRIA recovery, with its domains
 
@@ -236,12 +247,17 @@ acceptance statement names.
   agree on a poor score.  **Required in the W1 form; the strong form is a further
   target and does not monopolize integration.**
 - **I3 — decision accountability prevents a specified self-confirming belief–action
-  failure.**  On the belief-disagreement environment A1 (§7), where the outcome of a
-  choice depends on the agent's own published forecasts about it, the candidate provably
-  reaches the good fixed point from every belief state consistent with M2.  *Necessary
-  strength*: for every satisfying agent, or for the designated construction with the
-  criterion refinement stated.  *Does not establish*: I1 or I2.  **Required**, and it
-  is the advance A1.
+  failure.**  The candidate names a failure mode of the coupling between its beliefs
+  and its choices — an environment or environment family in which the outcome of a
+  choice depends on the agent's own assessments of it, with the assessments' semantics
+  and timing fixed — and proves that its integrated process excludes it: from every
+  belief state consistent with M2, the good configuration is reached.  The failure mode
+  is specified to the qualification standard of §7; A1 is the proposed instance and is
+  provisional until its report semantics are fixed.  *Necessary strength*: for every
+  satisfying agent, or for the designated construction with the criterion refinement
+  stated.  *Does not establish*: I1 or I2.  **Required.**  When the named failure mode
+  is justified as a form of a recognized obstruction, the same theorem is also the
+  advance of §7.
 
 **What is dissolved.**  Self-confirming pessimism about a *claimable* option — an
 option `b` some e.c. hypothesis promotes — is already excluded by M4 on the full class:
@@ -382,9 +398,19 @@ result and is stated as one; it is not an advance.  One-shot success is not requ
 where a repeated setting preserves the obstruction and the guarantee can see the
 improvement.
 
-### Well-posed
+**Qualification standard.**  A diagnostic is an acceptance test only when it has all of:
+complete semantics (every variable a rule reads is defined, including what a forecast
+of an unselected option is and how it settles); a quantified success condition with its
+mode and quantifiers; a justified relationship to an existing obstruction (which one,
+and what of it is preserved); matched assumptions (predictor access, menu, channels,
+class, stated against the primary source); and an explanation of what existing
+guarantees fail to establish on it.  An unproved target can be a valid test; an
+undefined one cannot.  A diagnostic missing any element is **provisional**.
 
-**A1 — the belief-disagreement troll (I3).**  *Obstruction matched*: Troll Bridge's
+### Proposed, provisional
+
+**A1 — the belief-disagreement troll (a proposed instance of I3).**  *Obstruction
+related*: Troll Bridge's
 "punished for the reason", with the reason the realized register can see — acting
 against one's own published forecasts (Demski 2019; the LIDT variant, where the troll
 reads which clause fired).  *Environment*: options `stay` (`1/2`), `cross` (`1` unless
@@ -401,11 +427,37 @@ forecasting `1` for it, and staying with the market forecasting `0` for crossing
 latter self-consistent because every test of crossing happens while the forecast is
 low, the troll fires, and the market's forecast on tested rounds is confirmed at `0`
 (**FIX**-shape as T3(e); the fixture does not simulate a market).  *Negative control*: a
-troll reading the action only (T3(b)), where coverage crosses.  *Status*: proposed
-acceptance target; nothing here passes it.
+troll reading the action only (T3(b)), where coverage crosses.
+
+*Status: provisional.*  The success condition is precise; the target is not yet defined,
+because three things are missing.  (1) **What `F_k(c)` is.**  §5 says the score of an
+unselected option has no settlement, so "the market's pre-selection forecast for
+`cross`" must be one of: the conditional expectation of a specified variable (the score
+given `cross` is selected — a conditional LUV whose settlement rule on unselected rounds
+must be stated); the price of an explicitly defined contract (which one, and what it
+pays when `cross` is not selected); a selectively evaluated forecast (formed only on
+rounds where the option is selected, undefined otherwise — then the troll's rule needs
+a value on the other rounds); or a report outside the LI market (then it is not held to
+M2 and its accountability is a separate obligation).  These are alternatives, not
+descriptions of one thing, and the troll's rule and the success condition change
+meaning with the choice.  (2) **That the two configurations are witnesses.**  The
+"two fixed points satisfy M1–M4" claim above is downgraded: each is a *proposed failure
+configuration* — a self-consistent forecast–action pair — whose compatibility with the
+full LI criterion (no e.c. trader exploits the market on the unsettled forecast) and the
+full BRIA criterion (coverage of every e.c. hypothesis, the constant crossing bidder
+included, on the agent's actual test sets) remains to be checked; until it is, "why not
+delivered" is a conjecture.  (3) **What a solution would show.**  A candidate may pass
+by making a favourable report that changes the environment — a report of `cross` above
+`stay` makes crossing succeed, so a report–action coordination result may satisfy the
+success condition without touching the epistemic obstacle (an agent that holds a
+forecast for a reason it cannot test).  A solution states which of the two it
+establishes.  *Relationship to Troll Bridge*: a resemblance in shape (punished for a
+legible reason), not an established equivalence; the original's Löbian mechanism is
+absent here.
 
 **A2 — per-round counterfactual mugging under the policy predictor (ideal
-extension).**  *Obstruction matched*: no logical updatelessness (Garrabrant 2017,
+extension).**  Meets the qualification standard except that its recovery-domain clause
+refers to an undefined domain.  *Obstruction matched*: no logical updatelessness (Garrabrant 2017,
 obstacle 2), in the repeated realized-feedback setting with the original access — the
 predictor reads the agent's policy, unit scoring, no channel.  *Environment*: T6 per
 round with access (i).  *Success condition*: paying with density `1` **and** BRIA
@@ -417,7 +469,7 @@ no theorem.  *Status*: proposed target, **blocked as an acceptance judgment** by
 undefined recovery domain (§2, M3): a candidate can be scored on this row but cannot
 yet be certified as having recovered BRIA "where it should".
 
-### Provisional (not acceptance tests)
+### Provisional, further
 
 - **D3 — bounded-simulation Newcomb.**  The predictor simulates the agent's algorithm
   for `g(n)` steps and defaults to two-boxing.  Distinct from Agent Simulates Predictor
@@ -458,19 +510,22 @@ exploration-safety certificate.
    menu and realized feedback; witness estimates exhibited (public or not, stated
    which); the scored unit; the commitment source (M5); the four domains of M3.
 2. **M1** existence with `E` and both comparison classes stated.
-3. **M2(c)** relative to the stream, or M2(b) declared, and T0 passed.
+3. **M2(c)** relative to the stream, and T0 passed; a candidate with only M2(b)
+   reports that as a supporting milestone and does not claim the endpoint.
 4. **M3** on `E_rec` at the unit; Thm 3/Thm 4-form consequences; the boundary results
    of §4 respected (no unconditional adaptivity claim; the fixed-schedule condition).
 5. **M4** with the menu-safety assumption named.
 6. **Integration** (§3): the five exhibits; I1 proved on a stated class with its
-   accounting; I3 proved on A1; I2 at least as W1, the strong form only if proved with
-   §5's timing and generability conditions.
+   accounting; I3 proved on a failure mode specified to the qualification standard of
+   §7; I2 at least as W1, the strong form only if proved with §5's timing and
+   generability conditions.
 7. **The suite**: recovery and integration rows passed under their assumptions;
    construction-level rows reported; every negative control reported; for each row the
    access model, the scored unit and any supplied channel, contract, oracle or menu
    restriction stated against the primary source.
-8. **The advance**: which well-posed diagnostic, under the matched environment, and
-   why the existing guarantees did not already deliver it.
+8. **The advance**: which diagnostic, shown to meet the qualification standard of §7,
+   under the matched environment, and why the existing guarantees did not already
+   deliver it; whether one theorem discharges both this and I3.
 9. **The extension, if claimed**: A2 with the declared recovery domain, and the
    statement that the domain question of M3 is open.
 10. **Not shown**: the candidate's own list against §0, with the registers of §8.

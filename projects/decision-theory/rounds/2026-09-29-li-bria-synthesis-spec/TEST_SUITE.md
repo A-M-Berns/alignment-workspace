@@ -21,8 +21,8 @@ statement.
 - *Timing.*  Prices at each decision; nothing to choose.
 - *Access.*  Traders read prices and `D̄`; polynomial time.
 - *Class.*  E.c. traders.
-- *Success.*  The LI criterion relative to `D̄` (M2(b)); under M2(c), relative to the
-  stream.  *Mode.*  Asymptotic; sure.  *For whom.*  Every satisfying agent.
+- *Success.*  The LI criterion relative to `D̄` (M2(b), a supporting milestone); for
+  the endpoint, relative to the stream (M2(c)), which this row cannot see.  *Mode.*  Asymptotic; sure.  *For whom.*  Every satisfying agent.
 - *Control.*  Constant prices on an e.c. sequence of theorems: exploited.
 - *Role / status / supplied.*  Recovery / established consequence of M2 / none.
 - *Why this condition.*  On the passive restriction the candidate is its market.
@@ -88,9 +88,12 @@ theory; every repeated variant changes the register and the troll's access.
   the published pre-selection forecasts).  Two self-consistent fixed points; the
   criterion does not select.  *This is A1*, `PROBLEM_STATEMENT.md` §7, with its success
   condition (crossing with density `1` from every M2-consistent initial market).
-  *Role / status / supplied:* updateful advance test and I3 / proposed acceptance
-  target / the troll reads prices the belief component publishes anyway — no new
-  channel.  The fixture does not simulate a market and does not score this row.
+  *Role / status / supplied:* proposed instance of I3 and of the advance /
+  **provisional** — the semantics of the pre-selection forecast the troll reads is
+  undefined, the two configurations are proposed failure configurations not checked
+  against M1–M4, and a favourable report changes the environment / the troll reads
+  prices the belief component publishes anyway — no new channel, once those prices are
+  defined.  The fixture does not simulate a market and does not score this row.
 - **(f) Consistency troll** (fires iff `Γ` is inconsistent).  A fixed fact; `(cross, 1)`
   is sound iff `Γ` is consistent and coverage adopts it whatever the Löbian prices.
   *Role / status:* recovery / established; a caution that it says nothing about (a).
@@ -231,8 +234,8 @@ provably silent by a published theorem.
   an e.c. sequence of sentences each decided by `D̄` **before** decision `k` (`φ_k` or
   `¬φ_k ∈ D_k`), the deciding computation costing `T(k)`.
 - *Timing.*  `D_k` formed; market published (its price of `φ_k` informed by `D_k`);
-  hypotheses read prices; choose; observe.  A sentence settled after the decision gives
-  no advantage before it: eventual settlement is not pre-decision predictability.
+  hypotheses read prices; choose; observe.  Eventual settlement is not pre-decision
+  predictability: the deduction argument below needs `φ_k` decided before `k`.
 - *Access and computation, both sides.*  Both decision components see the history
   (past rewards reveal past truth values) and run in time `t(k)` per round.  The
   synthesis's decision component additionally reads the published prices; the market's
@@ -266,8 +269,11 @@ provably silent by a published theorem.
      on the best of a sequence of predictors of growing index.
 - *Mode.*  Asymptotic average; sure.  *For whom.*  Every satisfying agent with class
   `H^P`, once steps 1–4 are proved.
-- *Control.*  `φ_k` decided only after `k`: the market has no advantage before the
-  decision; both sides at chance.
+- *Control.*  `φ_k` decided only after `k`: the stated pre-decision deduction argument
+  no longer guarantees an advantage.  It does not follow that the market is at chance —
+  a market may predict a sentence before its deductive settlement from other patterns
+  or arguments — so no chance-performance control is claimed without an explicit
+  unpredictability assumption on the sequence, which this row does not supply.
 - *The fixture* (**FIX** `test_interaction`, `src/logic_rewards.py`): three fixed blind
   predictors, a truth sequence diagonal against those three, a market modelled as an
   oracle publishing the truth after a warm-up; the blind auction over the three stays
@@ -309,7 +315,7 @@ one-shot versions of every row (register (iii), invisible).
 
 T6 per round (the recovery boundary; the same environment is A2's target with the
 opposite success condition), T4(ii) (the scored unit flips the verdict; the conditional
-fixed-schedule obstruction), T3(e) = A1 (the criterion admits both fixed points; the
-one well-posed advance), T10 (the integration theorem, with four unproved steps named
+fixed-schedule obstruction), T3(e) = A1 (a proposed failure configuration, provisional
+until its forecast semantics is fixed), T10 (the integration theorem, with four unproved steps named
 and its fixture marked as an illustration), T8(b) (an incomplete diagnostic whose
 verdict waits on a runtime accounting).

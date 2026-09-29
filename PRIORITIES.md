@@ -3323,11 +3323,13 @@ its checklist §9: the supporting milestones M1–M4 with the four recovery doma
 declared and the commitment source of M5 named; the integration obligation of §3 — the
 five exhibits, I1 proved on a stated environment class with explicit computational
 accounting (the four steps of T10), I3 proved on the belief-disagreement environment
-A1, I2 at least as W1 (item 105); the recovery and integration rows of `TEST_SUITE.md`
+a failure mode specified to §7's qualification standard (A1 is the proposed, provisional
+instance), I2 at least as W1 (item 105); the recovery and integration rows of `TEST_SUITE.md`
 passed under their assumptions and the construction-level rows reported, each with its
 access model, scored unit and any supplied channel, contract, oracle or menu
-restriction stated against the primary source; and the advance — A1, or another
-diagnostic first stated to the standard of §7.  Updatelessness (A2) is an extension,
+restriction stated against the primary source; and the advance — by a diagnostic
+meeting the qualification standard of §7 (A1 is a proposed, provisional instance), one
+theorem being allowed to discharge both I3 and the advance.  Updatelessness (A2) is an extension,
 and a candidate claiming it declares its recovery domain and states that the domain
 question of M3 is open.  The continuation-BRIA specialization is one admissible shape.
 A candidate meeting the milestones and I1 alone is an integration theorem, reported as

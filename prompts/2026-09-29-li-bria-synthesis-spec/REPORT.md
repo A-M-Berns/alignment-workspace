@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Prompt author | the maintainer (`PROMPT.md`, `REVISION.md`, `REVISION2.md`, verbatim) |
+| Prompt author | the maintainer (`PROMPT.md`, `REVISION.md`, `REVISION2.md`, `REVISION3.md`, verbatim) |
 | Executor | Claude Fable 5.1 (Anthropic), in Claude Code; two literature subagents of the same model in the first pass |
 | Round directory | `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/` |
 | Lean | none |
@@ -18,8 +18,11 @@ recovery domains and the open domain question, made integration an obligation wi
 three separated achievements, corrected the fixed-schedule claim to its conditional
 form, restated the compatibility implication as unresolved, demoted the bounded-
 simulation Newcomb row, withdrew the self-confirming-pessimism diagnostic, and marked
-every suite row with role, status and supplied structure.  `REPORT.md` §9 lists the
-changes by pass.
+every suite row with role, status and supplied structure; the fourth, against
+`REVISION3.md`, removed the belief-disagreement troll from the definition of success,
+gave the advance a qualification standard, marked that diagnostic provisional with its
+missing semantics, corrected the logic-reward row's control, and made active LI the
+endpoint's requirement.  `REPORT.md` §9 lists the changes by pass.
 
 Deviations, in one place: the section is a new top-level line and continuation BRIA is
 cross-linked rather than moved; later passes edited the earlier passes' unlanded ledger
