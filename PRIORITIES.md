@@ -3358,10 +3358,10 @@ rather than an error and which every gate here passed. The maintainer ruled that
 ignore rule does not need a gate behind it; the gitlink check the entry also
 proposed is not built.
 
-### F6 — The name lint cannot see a citation
+### F6 — The name lint cannot see a citation — *closed*
 <!-- workspace-priority: project=none; dispatchable=no -->
 
-`tests/name_lint.py` matches maintainer surnames anywhere in tracked prose
+<!--historical-->`tests/name_lint.py`<!--/historical--> matches maintainer surnames anywhere in tracked prose
 outside `prompts/`, the consolidated trees and `DECISIONS.md`. It cannot
 distinguish naming the program after a person — the failure it exists to prevent
 — from citing a third party's published work in a bibliography. A maintainer of
@@ -3383,6 +3383,11 @@ has already passed, so it was not taken by the round that hit it.
 is exempt from the lint as a single allowed file (`ALLOWED_FILES`), pinned in the
 lint's self-test. Citations elsewhere in tracked prose still need the backtick form;
 the citation-context matching rule above remains the general fix and is not taken.
+
+*2026-09-29, closed by maintainer ruling (`DECISIONS.md`, 2026-09-29):* the lint is
+retired and the rule it approximated is stated in `AGENTS.md` — people are named by
+role, and an author is cited by name.  Kept for the lesson: a lint on surnames cannot
+express a distinction that is about the capacity in which a person is named.
 
 ### F7 — A round cannot record a dependency on an unindexed research checkpoint
 

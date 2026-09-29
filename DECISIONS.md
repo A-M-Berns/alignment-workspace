@@ -590,7 +590,7 @@ from the account).
 ### 2026-09-07 — the bibliography is exempt from the name lint
 
 **Maintainer ruling, taken in conversation and landed by the decision-theory-bill
-round.** `wiki/Sources.md` is added to `tests/name_lint.py`'s `ALLOWED_FILES`: a
+round.** `wiki/Sources.md` is added to <!--historical-->`tests/name_lint.py`<!--/historical-->'s `ALLOWED_FILES`: a
 bibliography names the authors of the works it cites, and a maintainer is also an
 external author the program cites (friction F6). The allowance is one file, pinned in
 the lint's self-test; every other wiki page stays in scope, and citations in other
@@ -2359,7 +2359,7 @@ the same thing.
 
 ### 2026-08-25 — a citation may be written in backticks where the name lint would otherwise refuse it
 
-**agent-decided, reversible.** `tests/name_lint.py` cannot distinguish naming
+**agent-decided, reversible.** <!--historical-->`tests/name_lint.py`<!--/historical--> cannot distinguish naming
 the program after a person from citing a third party's published work, and a
 maintainer of this repository is also an external author the normativity line
 needs to cite. `projects/normativity/notes/PRIOR_ART.md` ships with the one
@@ -3540,7 +3540,7 @@ true. `unrecorded` is a correct answer; a guess is not.
 against the standing names-off posture. Rewritten as a description of what the
 program is. **The program is not named**, and naming it is reserved.
 
-`tests/name_lint.py` scans tracked Markdown outside `prompts/` and `frozen/` for
+<!--historical-->`tests/name_lint.py`<!--/historical--> scans tracked Markdown outside `prompts/` and `frozen/` for
 maintainers' personal names, exempting this ledger and anything inside backticks.
 It exists because the licensing round's residue sweep reported clean while that
 README line sat in plain sight: the sweep searched for change-memorial phrasing
@@ -5151,3 +5151,17 @@ private-knowledge residual (`Witness.private_selection`); its interaction with r
 knowledge is the twin market's leakage residual.  Filed beside effect completeness and
 description faithfulness; on item 101 as count integrity's observation side.
 *Rejected alternative:* leaving the private-knowledge residual open.
+
+### 2026-09-29 — people are named by role: the name lint is retired and the rule moves to `AGENTS.md`
+
+**Maintainer ruling, taken in conversation and landed by the decision-theory
+specification round.**  `AGENTS.md` now states the rule directly, under *Registers and
+interpretation*: a maintainer acting as one is *the maintainer* in repository prose and
+on the wiki, and a maintainer's published work is cited by author name like anyone
+else's.  The lint that matched maintainer surnames in tracked prose
+(<!--historical-->`tests/name_lint.py`<!--/historical-->) is removed with its CI steps
+and its `tests/run.py` wiring; the pointers to it in this ledger and in `PROVENANCE.md`
+are historical spans; friction F6 closes with it.  The rule is a review matter.
+*Rejected alternative:* a lint with a narrowed name list, which still fired on citations
+of the co-maintainer's work and cannot express the distinction the rule draws — the
+role in the repository against the author in the literature.
