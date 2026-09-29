@@ -2,10 +2,12 @@
 
 Labels: **PAPER** (a theorem of arXiv:1609.03543 v5 or of TARK 2023 EPTCS 379 pp.
 421–440, cited at its statement), **DERIVED** (follows from cited results by an argument
-given here), **FIX** (exact fixture in `tests/`, run by `tests/run.py`), **EXT** (a
-contract the specification names and does not pay), **OPEN**.  Names are provisional:
-*minimum credible synthesis*, *market-relative hypothesis class*, *belief–decision
-compatibility*, *scoring granularity*, *lease publicity*, *realized-feedback register*.
+given here, hypotheses named), **FIX** (exact fixture in `tests/`, run by `tests/run.py`;
+a finite prefix check against fixed bidders, never a proof of a quantified statement),
+**CONJ** (conjectured), **EXT** (a contract the specification names and does not pay),
+**OPEN**.  Names are provisional: *minimum credible synthesis*, *market-relative
+hypothesis class*, *belief–decision compatibility*, *scoring granularity*, *lease
+publicity*, *realized-feedback register*, *witness estimates*.
 
 ## 1. The objective
 
@@ -23,388 +25,404 @@ of the chosen option only, such that (**PAPER**, Defs. 1–7) *no overestimation
 `limsup_T (1/T) Σ_{t≤T} (α^e_t − r_t) ≤ 0` and *coverage*: for every hypothesis `h` in a
 class `H` of e.c. maps `(history) ↦ (option, promise)`, either `h` outpromises `ᾱ`
 (`h^e_t > α^e_t`) at finitely many `t`, or along the rejection times the record
-`Σ_{t∈M, t≤T} (r_t − h^e_t)` on a test set `M` (rounds where `α^c_t = h^c_t`) tends to
-`−∞`.  Counterfactual rewards are undefined; the menu may depend on past choices; the
-criterion is myopic by design (§2, §7 of the paper).
-
-**The type of a candidate.**  A synthesis is a computable agent `A` that, at each block
-`k` of a system-supplied schedule, publishes a market `P_k`, and selects from a finite
-menu `C_k` of continuations a pair `(c_k, e_k)` — a continuation to execute for the block
-and an accountable claim about its realized block score `G_k ∈ [0,1]` — observing `G_k`
-at the block's end.  With `m_k ≡ 1` and one-step continuations this is the paper's
-setting; the block form is `wiki/Continuation-BRIA.md` §2, with the score `R_k` and the
-execution wrapper supplied by the system.  Nothing in the type fixes a shared market, a
-single budget, an auction, bundles or a commitment mechanism; those are constructions.
-In particular the type admits both a separate choice learner beside the market and a
-single learner inside it — the direction the corrigibility-kernel phase-2 round's
-priority item names (claims "if chosen, this option scores `x`" as securities of the
-inductor, settled when the option is chosen, with a choice rule that forces tests);
-this specification is what either would have to satisfy.
+`Σ_{t∈M, t≤T} (r_t − h^e_t)` on a test set `M` (rounds where `α^c_t = h^c_t`, chosen
+by the agent) tends to `−∞`.  Counterfactual rewards are undefined; the menu may depend
+on past choices; the criterion is myopic by design (§2, §7 of the paper).  Two
+consequences of the definition used throughout: the agent may choose any subset of the
+matching rounds as the test set, so the record most favourable to coverage keeps only
+the matching rounds where the reward falls short of the promise; and coverage quantifies
+over *every* e.c. hypothesis, adaptive and time-varying promises included, so a check
+against fixed bidders never establishes it.
 
 **Three registers, kept apart throughout.**  (i) *Learning from realized feedback*:
-claims about executed continuations, settled by observation.  (ii) *Honoring a
-commitment*: a selection, once published, is executed for its block.  (iii)
-*Evaluating a policy under logical or counterfactual dependence*: a value assigned to a
-continuation that is not executed.  BRIA lives in (i); the block contract supplies (ii)
-at block granularity; nothing in either component supplies (iii).  A result in one
-register is not a result in another, and §5 says which register each requirement
-occupies.
+claims about executed options, settled by observation.  (ii) *Honoring a commitment*:
+a selection, once made, is executed for its term.  (iii) *Evaluating a policy under
+logical or counterfactual dependence*: a value assigned to an option that is not
+executed.  BRIA lives in (i); nothing in either component supplies (iii); (ii) is
+supplied by whatever commitment source the specialization declares (§4).  A result in
+one register is not a result in another.
 
-## 2. The eight candidate requirements, examined
+## 2. General acceptance requirements
 
-Each requirement is stated, then: the failure it excludes; its assumptions and
-evaluation standpoint; compatibility; classification (**core**, **stronger**,
-**unresolved**, **rejected**).
+These are stated for any computable agent `A` with a *belief component* — a published
+market `P̄` — and a *decision component* that chooses `c_k` from a finite menu `C_k` at
+each decision `k` and observes the realized score `G_k ∈ [0,1]` of its choice.  A
+decision may be a single action or an executed continuation; the requirements do not
+fix which, and they do not require the agent to publish any number beyond its prices.
+Estimates enter as **witness estimates**: a sequence `e_k` that may be internal, or
+merely a mathematical object exhibited in the proof of G3, and is public only where the
+specialization says so.
 
-### R1. Computable existence
+### G1. Computable existence
 
-*Statement.*  There is a computable `A` such that for every environment in a declared
-class `E` — every computable `D̄`, every observation stream, every block schedule
-satisfying non-dominance `m_K / Σ_{k≤K} m_k → 0`, every menu and score process — `A`
-satisfies the criterion, with the comparison classes named: e.c. traders for the
-market, and the *market-relative* e.c. hypothesis class `H^P` for the decision layer —
-`O(g(t))`-computable maps from the history *and the published prices* to
-`(continuation, claim)`.
+*Statement.*  `A` is computable and satisfies G2–G5 on every environment in a declared
+class `E`, with the comparison classes named: e.c. traders for the market, and the
+hypothesis class `H` for the decision component — at least the e.c. maps of the history,
+and *market-relative* (`H^P`: e.c. maps of the history and the published prices) where
+G4(a) is claimed.
 
-*Excludes.*  Criteria met only by uncomputable agents (proof-based decision theory with a
-halting oracle; Bayesian updatelessness over an uncomputable prior).
+*Excludes.*  Criteria met only by uncomputable agents.  *Assumptions.*  No
+`O(g)`-computable agent covers the `O(g)`-computable class (**PAPER**, Thm 2); the market
+relative to an observation stream is the oracle-relativized inductor, `PRIORITIES.md`
+item 91 (**EXT**).  *Compatibility.*  A logical inductor beside the paper's auction with
+a blind class satisfies G1, G2, G3, G5 at once; only G4 separates that from a
+synthesis.  **Core.**
 
-*Assumptions.*  `A` is computable, not e.c.: no `O(g)`-computable agent covers the
-`O(g)`-computable class (**PAPER**, Thm 2), so the comparison class is strictly below the
-agent.  The market's computability relative to an observation stream is the
-oracle-relativized inductor, `PRIORITIES.md` item 91 (**EXT**).
+### G2. LI recovery
 
-*Compatibility.*  The trivial witness — run a logical inductor and the paper's auction
-side by side, with a hypothesis class that cannot read the market — satisfies R1, R2,
-R3 and R5 at once.  That is why R4 and the interaction diagnostics of
-`TEST_SUITE.md` (T10, T11) are part of the minimum: existence is cheap, integration is
-not.  **Core.**
+*Grades.*  (a) *Compatible component* — some logical inductor's prices are consistent
+with `A`'s behaviour: **rejected**, vacuous.  (b) *Passive implication* — on `|C_k| = 1`
+for all `k`, `P̄` satisfies the LI criterion relative to `D̄`.  (c) *Active implication* —
+on every environment in `E`, `P̄` satisfies the LI criterion relative to `D̄` and the
+observation stream, traders being allowed to bet on sentences about realized scores.
+*Excludes.*  A market exploitable once decisions are in play.  *Standpoint.*  (c) is
+relative to the stream through the relativized deductive process (item 91).
+**Core in grade (c)**, (b) the declared fallback.
 
-### R2. LI recovery
+### G3. BRIA recovery
 
-*Statement, three grades.*  (a) *Compatible component*: some logical inductor's prices
-are consistent with `A`'s behaviour.  (b) *Passive implication*: on the passive
-restriction `|C_k| = 1` for all `k`, the published `P̄` satisfies the LI criterion
-relative to `D̄`.  (c) *Active implication*: on every environment in `E`, `P̄`
-satisfies the LI criterion relative to `D̄` and the observation stream, the traders
-being allowed to bet on sentences about realized scores.
+*Statement.*  There are witness estimates `e_k` such that `(c_k, e_k)` satisfies Defs.
+1–7 with respect to `H` on every environment in `E`: no overestimation and coverage of
+every `h ∈ H`, with the quantifiers of §1.  Acceptance tests are the paper's
+consequences: the guaranteed-option theorem (**PAPER**, Thm 3), the random-reward
+theorem (**PAPER**, Thm 4), and for continuations the block form of Thm 3
+(`wiki/Continuation-BRIA.md` §6 under the bounded-record hypothesis).
 
-*Excludes.*  A market that is exploitable once decisions are in play — for instance one
-whose prices on the block-score variables are moved by the decision layer's wealth
-rather than by evidence.
+*Excludes.*  Persistently claiming more than is realized; ignoring an e.c. hypothesis
+that keeps promising more.  And, by a direct argument (§3), cross-round commitment at
+the criterion's own granularity whenever the subsidizing reward is efficiently
+trackable.
 
-*Standpoint.*  (c) is stated relative to the stream; the sentences about realized
-outcomes are empirical and enter through the relativized deductive process (item 91),
-not as theorems of `Γ`.
+*What the criterion does and does not force* (**FIX** `test_cm`).  Global
+no-overestimation *alone* permits cross-subsidy: the agent that pays on all but a
+density-zero set of tails rounds, estimating `1/2` on tails and `0` on heads, has
+cumulative overestimation `≤ 0` on every prefix.  Coverage over the full class removes
+the permission: the hypothesis `(noop, 1)` on heads, `(pay, 0)` on tails outpromises it
+on every heads round with a least record of exactly `0`, so it is not a BRIA
+(`test_heads_tracker_breaks_coverage`, the regression for the first pass's error, which
+checked two refusing bidders and no heads bidder).  Fixed test schedules are never BRIAs
+(**DERIVED**, **FIX** `FixedSchedules`): against an agent that tests option `b` only on
+an e.c.-recognizable schedule, the hypothesis promising `1` for `b` off the schedule
+and `0` for the agent's option on it is never matched, has record `0`, and outpromises
+forever.  Test sets must respond to outpromising, which is what the paper's auction
+does.
 
-*Compatibility.*  (a) is satisfied by the side-by-side witness and says nothing.  (b) is
-implied by (c).  (c) is what R4 consumes: LI's unbiasedness from feedback on
-`P`-generable weightings (**PAPER**, `thm:wubaff`/`thm:wubexp`, with the deferral
-condition the pinned formalization records) is the theorem that makes the market's
-expectation of a block score track the realized score on the tested subsequence.
-**Core in grade (c)**; (b) is the fallback if relativization fails and is then a
-weakening to be declared; (a) **rejected**.
+**Core**, with the class named.
 
-### R3. BRIA recovery
+### G4. Interaction
 
-*Statement.*  On every environment in `E`, the sequence `(c_k, e_k)` satisfies the
-duration-weighted criterion of `wiki/Continuation-BRIA.md` §4 with respect to `H^P`:
+The requirement that separates a synthesis from two components side by side.  Two
+forms, either sufficient, both stated so that what is claimed is a theorem and not an
+architecture.
 
-```
-no overestimation   limsup_K  Σ_{k≤K} m_k (e_k − G_k) / S_K  ≤ 0,   S_K = Σ_{k≤K} m_k
-coverage            ∀ h ∈ H^P:  B_h finite,  or  ℓ^h_K = Σ_{k∈M_h, k≤K} m_k (G_k − e_{h,k}) → −∞ along B_h
-```
+(a) **Market-informed decision guarantee.**  G3 holds with the market-relative class
+`H^P`, and there is an environment class in `E` on which G3 over `H^P` yields an average
+score that G3 over any blind class of the same runtime cannot — a theorem, not a
+fixture (T10 in `TEST_SUITE.md` states what it must be).  This is satisfied by a
+modular architecture whose prices materially inform its decision learner; modularity is
+not what is excluded.
 
-with `B_h` the blocks at which `h` outpromises `A` and `M_h` the blocks at which `h`'s
-continuation was executed.  With `m_k ≡ 1` this is Defs. 1–7 verbatim, and the paper's
-consequences are the acceptance tests: the guaranteed-option theorem (**PAPER**, Thm 3:
-if an efficiently identifiable option guarantees an e.c. lower bound `L̄` then
-`liminf (1/T) Σ (r_t − L_t) ≥ 0`), its block form *continuation competence*
-(`wiki/Continuation-BRIA.md` §6, under the bounded-record hypothesis (BR)), and the
-random-reward form (**PAPER**, Thm 4: rewards boundedly vMWC-random with e.c. means are
-attained on average).
+(b) **Belief–decision compatibility** (R4 of the first pass), audited in §5.  Its
+established form is weak and one-sided (§5, W1); its strong form is a proposed
+requirement whose derivability from G2–G3 fails on the stated gaps.  A candidate
+claiming (b) proves the strong form for its construction; a countermodel to
+derivability is information about the specification, not a passing synthesis.
 
-*Excludes.*  Two things, and the slogan "no missed opportunities" is neither.  First,
-persistently claiming more than is realized.  Second, ignoring an e.c. hypothesis that
-keeps promising more: coverage forces a test, and forces the estimate up once the
-promise survives its tests.
+**Core** in the form: at least one of (a), (b) proved for the candidate.
 
-*What the criterion does not force* (**FIX** `test_cm.P2_CrossSubsidyIsABRIA`).  The
-estimates are not beliefs.  In repeated counterfactual mugging with per-round scoring
-(`src/cm.py`), the agent that pays on every tails round but a density-zero set,
-estimating `1/2` on tails and `0` on heads, has cumulative overestimation `≤ 0` on every
-prefix and covers every refusing hypothesis: the one promising exactly `1/2` never
-outpromises it, and one promising `1/2 + δ` is rejected at every tails round while its
-record on the sparse tests falls by `δ` per test.  So a BRIA may pay in counterfactual
-mugging, funding the estimate on the losing rounds with underestimation on the winning
-ones.  The paper's auction does not do this — it is the criterion, not the construction,
-that permits it — and R4 is what removes the permission.
+### G5. Accountability for unchosen alternatives
 
-*Standpoint.*  Realized feedback only; the comparator is a hypothesis's claim at the
-same block contract, and what is held fixed is the contract and the published
-selection.
+*Statement.*  Coverage read as an obligation: every `h ∈ H` that outpromises infinitely
+often is executed on an infinite test set along which its record diverges — tests
+chosen in response to outpromising, by §2 G3's fixed-schedule lemma.
 
-*Compatibility.*  With R4, see §3.  With R6/R7 the block contract is the whole
-interface.  **Core**, at block granularity, with the class `H^P`.
+*Defensible without assuming exploration is safe or informative.*  A test is the
+chosen option, not an exploration step distinct from choice, so a predictor reading the
+agent's public choices sees a choice and not a flag (the explored-versus-deliberate
+distinction of Garrabrant 2017 does not arise *for that access model*; a predictor with
+another access model, T3(d), is a different environment).  A test is informative by
+construction: the claim is about the executed option from the actual history
+(`CONTINUATION_HYPOTHESES.md` §3 of the continuation-BRIA round).  A test is only as
+safe as the menu: the named assumption is **no traps in the menu**; a trap promoted by
+some hypothesis is tested at least once (**EXT**; Kosoy's trap problem is placed, not
+solved).
 
-### R4. Belief–decision compatibility
-
-*Statement.*  Let `Ĝ_k` be the bounded variable "the realized score of the selected
-continuation of block `k`", settled by observation at the block's end, and `E_k(Ĝ_k)`
-the market's expectation of it at the block's opening, after the selection is
-published.  For every `P`-generable divergent weighting `w̄` (**PAPER** §4.3 sense, with
-`P` the published market),
-
-```
-Σ_{k≤K} w_k m_k (e_k − E_k(Ĝ_k)) / Σ_{k≤K} w_k m_k  →  0 .
-```
-
-Same quantity, same conditions: the claim and the expectation are both about the
-executed continuation from the actual start history, both formed at the opening after
-the selection.  The ex ante value of a *policy* is a different quantity from the value
-of the *action conditional on later information* — in counterfactual mugging the paying
-policy is worth `1/2` ex ante and paying is worth `0` given tails — and the statement
-compares neither of those with the other.
-
-*Excludes.*  The cross-subsidy of R3 (**FIX** `test_cm.P1`: with claims at the market's
-limit on the tails subsequence — the realized reward of the chosen option — the
-exact-promise refuser outpromises at every paying tails round while its record on the
-tests stays at `0`, so coverage fails; the agent must refuse on all but a density-zero
-set).  And, in the other direction, a market that keeps expecting more of the chosen
-continuation than the decision layer claims.
-
-*Derivation* (**DERIVED**, hypotheses named).  The upper half `e_k ≲ E_k(Ĝ_k)` on `w̄`
-follows from no overestimation and the market's unbiasedness from feedback on `w̄`
-(R2(c); needs the settlement of `Ĝ_k` to be computable within a deferral, which the
-block's end supplies, and `w̄` `P`-generable).  The lower half follows from coverage with
-the market-reading hypotheses `h_c = (c, E_k(Ĝ(c)))` for e.c. selectors `c` — a sound
-promise wherever the market is unbiased on `c`'s tests — so the claim cannot lag any
-e.c. option's market value, hence not the chosen one's.  Both halves need the test sets
-and rejection sets of the construction to be `P`-generable, which for the paper's
-auction they are (the round is `O(g q)`-computable from the published prices).  So R4 is
-a **theorem target**, not an axiom: for a candidate it is proved from R2(c) and R3 with
-the class `H^P`, or a countermodel is exhibited.  A candidate whose class cannot read
-the market fails it by the cross-subsidy.
-
-*Consequence.*  Under R2(c)+R3+R4 the agent's claim is asymptotically the market's
-expectation of the chosen continuation and at least the market's expectation of every
-e.c. selector: the "argmax of the market's expectations" that logical-inductor decision
-theory wanted, obtained through accountable claims rather than through conditional
-expectations of untaken actions.  **Core**, as the interaction requirement.
-
-### R5. Accountability for unchosen alternatives
-
-*Statement.*  Coverage, read as an obligation: for every `h ∈ H^P` that outpromises `A`
-infinitely often, `A` executes `h`'s continuation on an infinite test set along which
-`h`'s record diverges to `−∞`.  Nothing weaker survives: with finitely many tests the
-record is bounded and coverage fails; with tests whose record stays bounded the
-hypothesis was right.
-
-*Excludes.*  Self-confirming pessimism about an option some e.c. hypothesis promotes
-(**FIX** `test_troll.SafeBridge`, `test_interaction`): the agent cannot decline forever
-an option whose promise it has never refuted.
-
-*Why it is defensible without assuming exploration is safe or informative.*  A test is
-not an exploration step distinct from choice: it *is* the choice, the executed
-continuation of the winning claim, so a predictor reading the public state sees a
-choice and not a flag (Garrabrant's 2017 obstacle — that explored and deliberate
-actions differ for a predictor — has no purchase; `AUDIT.md` §1).  A test is informative
-by construction: the claim is about the executed continuation from the actual history
-(`CONTINUATION_HYPOTHESES.md` §3 of the continuation-BRIA round on biased testing).  And
-a test is only as safe as the menu: the menu is the admissible set, so an option outside
-it is neither testable nor claimable.  What the requirement therefore assumes, and names:
-**no traps in the menu** — an outpromising hypothesis whose continuation forecloses is
-tested at least once.  Kosoy's trap problem is not solved here; it is placed at the
-gate (**EXT**).  A stronger target is an exploration-safety certificate (§4, S5).
-
-*Compatibility.*  R5 is R3's coverage clause; it conflicts with nothing in the list and
-with the auction's finite-time behaviour only where the environment reads unpublished
-internals (T3 in `TEST_SUITE.md`).  **Core** (as the coverage clause with the menu
+*What it does not deliver.*  Any improvement that no hypothesis in `H` can claim —
+counterfactual improvements (register (iii)), and improvements recognizable only by
+computations above the class.  **Core** (it is G3's coverage clause with the menu
 assumption named).
 
-### R6. Temporally extended decision adequacy
+### G6. Temporally extended decisions and commitment
 
-*Statement.*  On block-scored environments, the weighted criterion of R3 and hence
-continuation competence: for a covered hypothesis with bounded record, the learner's
-`m`-weighted average is asymptotically at least the average of its claims
-(`wiki/Continuation-BRIA.md` §6, **DERIVED** there on the Lean algebra).  Policy regret
-against a comparator class `Π` decomposes exactly as `SHIFT + SLACK + LEARN` (§7 there,
-**LEAN** `regret_decomposition`), and only `LEARN` is the criterion's; regret against
-all legitimate policies is false (the irreversible-branch witness, `COUNTERMODELS.md`
-of that round).
+Three sources of commitment, kept apart because a benchmark verdict depends on which is
+in force:
 
-*Excludes.*  Myopia with respect to investments that pay within a block: the one-step
-criterion forces testing, not adoption; a sound claim about the whole investment forces
-adoption (`PRIORITIES.md` item 86).
+- **External execution contract.**  The environment or system executes the selected
+  continuation for a term; the agent's choice is the selection.  This is what the
+  specialization of §4 supplies, and what T6/T7's block verdicts assume.
+- **Self-entered contract.**  The agent chooses, among its options, to enter such a
+  contract; the contract is then external but the entry is a decision the criterion
+  scores.  Representable in the specialization as an option whose execution is a
+  longer continuation, subject to the schedule (§4, open).
+- **Self-stability without enforcement.**  The agent's own future decisions keep the
+  earlier plan with nothing holding them to it.  Nothing in G1–G5 delivers this; the
+  Bayesian tiling theorems for updateless agents (Demski 2025) are the nearest results
+  and have no bounded-agent analogue (**OPEN**).
 
-*Standpoint.*  What is held fixed is the block contract; the comparator is a claim at
-that contract; the schedule is the system's and non-dominant.
+*Statement.*  Where an external contract is in force, the requirements G3–G5 apply at
+the contract's granularity and yield continuation competence; regret against a
+comparator class decomposes as `SHIFT + SLACK + LEARN` with only `LEARN` the
+criterion's (`wiki/Continuation-BRIA.md` §7); regret against all legitimate policies is
+false.  **Core** for the first source at the declared granularity; **unresolved** for the
+second (the allocation of duration); **open** for the third.
 
-*Compatibility.*  With R7 (below).  **Core** for continuation competence at system
-scheduled horizons; **stronger** for policy regret against recognizable, joinable
-policies (item 86's three parts).
+### G7. Logical learning
 
-### R7. Commitment and reflection
-
-Four notions, each precise, and their compatibility.
-
-(a) *Commitment consistency* = honoring the lease: the published selection is executed
-for its block whatever the market comes to believe inside the block.  Definitional in
-the block contract; the continuation stays causal and the exterior live.  **Core**.
-
-(b) *Beneficial revision* = coverage between blocks: at the next contract the selection
-is open to any hypothesis whose claim survives.  **Core**; it is R3.
-
-(c) *Cross-block commitment*: a commitment whose value depends on not being revised
-across blocks is representable only as a continuation of a longer block.  Under a
-non-dominant system schedule of growing blocks every finite commitment length is
-eventually available, but *choosing* to commit longer is not the agent's: bidder-chosen
-horizons are **OPEN** (`wiki/Continuation-BRIA.md` §9).  The missing definition is the
-allocation rule for duration.  **Unresolved.**
-
-(d) *Reflective stability*: no e.c. rival decision rule, run as a hypothesis on the
-same contracts, asymptotically beats the agent's realized scores on its sound claims.
-This is coverage again, because a rival rule *is* a hypothesis in `H^P`; it covers
-exactly the advantages a rival realizes within blocks.  Advantages that need a
-different history (foreclosure, self-modification with cross-block payoff) are `SHIFT`
-and not delivered.  **Core** in the within-block form as a consequence of R3;
-**stronger** for the market's self-trust form `E_n(score | keep) ≥ E_n(score |
-replace by X) − o(1)`, which the Bayesian tiling theorems for updateless agents (Demski
-2025, `AUDIT.md` §1) prove under a fairness hypothesis and no bounded-agent analogue
-has.
-
-### R8. Logical learning
-
-*Statement.*  Two parts.  (i) The hypothesis class reads the published prices (`H^P`),
-so an improvement in reasoning power — a stronger `D̄`, a longer run of the market —
-reaches the decision layer through the market without changing the class; R2(c) gives
-timely learning on the price side (**PAPER** §4.2).  (ii) The market's prices on the
-block-score variables of the *active* trajectory obey LI's guarantees (R2(c)), so a
-fact discovered late about an earlier block's score moves the market's retrospective
-expectation and every later claim that reads it.
-
-*Excludes.*  A decision layer insulated from the market: on rewards decided by logic the
-market learns and a blind class cannot (**FIX** `test_interaction`: each blind predictor
-is wrong on its own residue class of a diagonal truth sequence; the blind auction's
-average stays below `9/10`; the market-reading auction's exceeds `99/100`).
-
-*What is missing.*  A score for an earlier decision in the light of a later fact — a
-hindsight regret — needs a value for continuations that were not executed at that
-block, i.e. the rollout evaluator `Ĝ_k(π; H)` of the policy frontier, which is register
-(iii).  No definition in the realized-feedback register supplies it, and the requirement
-should not pretend to.  **(i), (ii) core as design choices; the hindsight form
-unresolved**, with the missing object named.
+*Statement.*  (i) A stronger deductive process or a longer market run reaches the
+decision component without changing `H`, which is what `H^P` gives; (ii) the market's
+prices on the settled scores of the active trajectory obey LI's guarantees (G2(c)), so
+a fact discovered late moves every later market-reading claim.  *Missing.*  A score for
+an earlier decision in the light of a later fact needs a value for the option not taken
+at that decision — register (iii), no definition here.  **(i), (ii) core as design
+choices; the hindsight form unresolved**, with the missing object named.
 
 ## 3. The conflict: action-level BRIA against binding policy commitments
 
-Stated at the paper's granularity, `m_k ≡ 1`, with R4 in force per round.
+At the paper's granularity (unit rounds), in repeated counterfactual mugging (heads:
+single option paying `1` iff the predictor predicts paying; tails: `pay` at `0`,
+`refuse` at `1/2`).
 
-**Proposition P1** (**DERIVED**, **FIX** `test_cm.P1`).  In repeated counterfactual
-mugging with per-round scoring, a predictor that reads the agent's policy, and rounds
-alternating heads (single option, paying `1` iff the predictor predicts paying) and
-tails (`pay` at `0`, `refuse` at `1/2`): no agent satisfying R2(c), R3 and R4 per round
-pays on a positive-density set of tails rounds.  Proof: R2(c) and R4 force the claim on
-paying tails rounds to the market's expectation of the realized reward of paying, which
-unbiasedness on that `P`-generable subsequence drives to `0`; the hypothesis
-`(refuse, 1/2)` then outpromises on every such round with a record of `0` on any test
-set; coverage forbids that unless the paying rounds have density zero.  The paying
-agent is better on average (`1/2` against `1/4`), and the criterion excludes it.
+**Proposition P1′** (**DERIVED** from **PAPER** Defs. 1–7; **FIX** `test_cm`).  Suppose
+the heads reward is an e.c. function of the history (true for a predictor reading the
+past paying frequency; true for a predictor reading the agent's policy when the
+prediction is eventually constant).  Then every BRIA covering the e.c. class pays on a
+density-zero set of tails rounds.  Proof.  The tracker `h₁ = (noop, ρ_t)` on heads with
+`ρ_t` the heads reward and `(pay, 0)` on tails has a nonnegative record on every test
+set, so coverage forces `α^e_t ≥ ρ_t = r_t` on all but finitely many heads rounds.  The
+refuser `h₂ = (refuse, 1/2)` on tails, `(noop, 0)` on heads, has a nonnegative record
+on every test set, so coverage forces `α^e_t ≥ 1/2` on all but finitely many tails
+rounds.  No overestimation then gives `Σ_{t≤T} (α^e_t − r_t) ≥ (1/2)·#{paying tails
+rounds ≤ T} − O(1) ≤ o(T)`.  ∎  The same argument with Thm 3 (option `(noop, refuse)`,
+lower bound `(ρ_t, 1/2)`) gives the average form.  Paying is better on average (`1/2`
+against `1/4` when the predictor reads the policy), and the criterion excludes it
+**by itself**: no compatibility requirement is used.
 
-**Proposition P2** (**FIX** `test_cm.P2`).  Dropping R4 restores the paying agent, by the
-cross-subsidy of §2 R3.  So the conflict is exactly between per-round belief–decision
-compatibility and cross-round commitment, not between BRIA and commitment as such.
+**What P2 showed, corrected.**  The cross-subsidy witness of the first pass satisfies
+global no-overestimation and is refuted by `h₁`.  Its residual content: no
+overestimation *alone* is a global average and cannot see a subsequence; coverage over
+trackers is what localizes it.  Where the subsidizing reward is **not** e.c.-trackable —
+a heads reward that flips unpredictably for every e.c. function of the history — `h₁`'s
+record diverges on its tests, coverage is satisfied by refutation, and no fixed bidder
+excludes the cross-subsidy; whether some adaptive e.c. hypothesis does is **OPEN**.  So
+the per-round obstruction follows from BRIA itself exactly on the environments where the
+cross-round payoff is efficiently trackable, which includes every predictor in
+`TEST_SUITE.md` T6.
+
+**The first pass's conclusion is retracted.**  The conflict is not "exactly between
+belief–decision compatibility and commitment"; it is between action-level coverage of
+the full class and any commitment whose payoff accrues outside the scored unit.
 
 **Resolution, declared.**  Score at the granularity at which the commitment pays: a
-block containing both branches, with the predictor reading the block's published
-continuation.  Then the paying continuation's claim `1/2` is sound, refusing's is `1/4`,
-coverage settles on paying, and R4 holds at block granularity (**FIX**
-`test_cm.BlockScoring.test_lease_predictor_pays`).  This changes the *scoring
-granularity* and the *information held fixed* (the block contract and the published
-selection) and says so; it does not change the comparator class — hypotheses are still
-all of `H^P` — and it does not change the information the predictor has beyond what
-the lease publicity choice (§6) declares.  **What it leaves out**: commitments whose
-payoff accrues outside any block — the one-shot problem, and a predictor that reads
-only past blocks (**FIX** `test_lagging_predictor_refuses`: the criterion then settles on
-refusing, at `1/4`).  Those are register (iii) and register (ii) across blocks
-respectively, and the minimum synthesis does not claim them.
+unit containing both branches, with the predictor reading the unit's published
+continuation (**FIX** `BlockScoring.test_lease_predictor_pays`: the paying
+continuation's claim `1/2` is sound, refusing's is `1/4`).  This changes the scored unit
+and the information held fixed — the contract and the published selection — and says
+so; the comparator class is unchanged.  It leaves out commitments paying outside any
+unit — the one-shot problem, and a predictor reading only past units (**FIX**
+`test_lagging_predictor_refuses`).  Those are registers (iii) and (ii)-across-units.
 
-## 4. The minimum credible synthesis, and what is stronger
+## 4. The continuation-BRIA specialization
 
-**Minimum credible synthesis (MCS).**  A computable agent of the type in §1 for which
-the following are proved, each with its hypotheses stated:
+The instantiation the repository already has, marked as one way to meet §2 and not as
+the definition of the target.
 
-1. R1 — existence on `E`, with the comparison classes named (e.c. traders; `H^P`).
-2. R2(c) — the LI criterion relative to `D̄` and the observation stream on every
-   environment in `E` (or R2(b) with the weakening declared).
-3. R3 — the weighted BRIA criterion with respect to `H^P` at the system's non-dominant
-   schedule, hence Thm 3/Thm 4-form competence and continuation competence.
-4. R4 — belief–decision compatibility, as a theorem from 2 and 3 or with its
-   countermodel; and the interaction diagnostics T10, T11 passed at criterion level.
-5. R5 — coverage as the accountability clause, with the menu-safety assumption named.
-6. R7(a),(b),(d-within-block) — which are 3 restated, and R8(i),(ii).
-7. The criterion-level rows of `TEST_SUITE.md` passed, and the construction-level rows
-   reported either way.
+- **Type.**  At block `k` of a *system-supplied* schedule the agent publishes `P_k` and
+  selects from a finite menu of continuations a pair `(c_k, e_k)`; the system executes
+  `c_k` for `m_k` steps through the constitutional wrapper; `G_k` is the realized
+  block score (`wiki/Continuation-BRIA.md` §2).  The estimate is **published** — a
+  modelling choice with a known cost (T3(d)) — and the commitment source is the
+  **external execution contract** of G6.
+- **G3 instantiated.**  The duration-weighted criterion of `wiki/Continuation-BRIA.md`
+  §4 over `H^P`; with `m_k ≡ 1` it is Defs. 1–7 verbatim.  Existence with negligible
+  subsidy iff the schedule is non-dominant, `m_K / Σ_{k≤K} m_k → 0` (**DERIVED** there).
+- **G4 instantiated.**  (a) with the class `H^P`; (b) in the form of §5 with the
+  post-selection forecast.
+- **G6 instantiated.**  Continuation competence at system-scheduled horizons; the
+  self-entered contract is bidder-chosen horizons (**OPEN**, §9 there).
+- **What the specialization fixes that the general target does not.**  System-scheduled
+  blocks; published claims; the auction's opening-subsidy timing; the gate as the menu.
+  A candidate may reject any of these and still meet §2.
 
-*What satisfying the minimum establishes.*  One computable agent whose beliefs are a
-logical inductor on the active trajectory, whose realized-score learning is bounded
-inductively rational at block granularity against every efficiently computable
-market-reading hypothesis, and whose claims agree with its own market's expectations of
-the same quantity — so that side-by-side LI and BRIA are excluded, spurious beliefs
-about untested options cannot block a test, and within-block commitments (Newcomb with
-a lease-reading predictor, counterfactual mugging with both branches in the block,
-Parfit's hitchhiker as a two-stage block) are handled in the realized-feedback register.
+## 5. Belief–decision compatibility, audited
 
-*What it leaves open.*  Every one-shot verdict; logical counterfactuals; commitments
-that pay across blocks; policy regret's `SHIFT` and `SLACK`; exploration safety beyond
-the gate; randomization against adversarial predictors (BRIA's Thm 5 needs a random
-source the criterion does not require); equilibrium selection among self-consistent
-belief–action pairs (T3(e), T9); rates (every guarantee is asymptotic).
+**Timing.**  The order within a decision: (1) the market publishes prices, including
+forecasts `F_k(c)` for each option `c ∈ C_k`; (2) hypotheses read them and emit
+`(recommendation, promise)`; (3) the decision component selects `c_k` (and, in the
+specialization, publishes `e_k`); (4) optionally the market publishes a post-selection
+forecast `F⁺_k := E_k(Ĝ_k | c_k)` of the realized score of the selected option; (5)
+execution; (6) settlement of `Ĝ_k`.  A forecast at (1) guides selection; a forecast at
+(4) is about a variable that will settle.  Compatibility compares claims with (4).
 
-**Stronger decision-theoretic ambitions**, each an independent target:
+**Semantics.**  `Ĝ_k` is the realized score of the selected option, settled at (6).  For
+an option `c` not selected at `k`, "its score at `k`" has no settlement; the first pass
+wrote `Ĝ_k(c)` for it and thereby assumed the counterfactual semantics the register
+distinction forbids.  The only settling variable indexed by `c` is `X^c_k := Ĝ_k` on the
+decisions where `c_k = c`, undefined elsewhere; a forecast `F_k(c)` on a decision where
+`c` is not selected is held to nothing by any feedback theorem.
 
-- **S1** Policy regret `≤ o(T)` against recognizable, joinable legitimate policies (item
-  86's certificate pair).
-- **S2** The counterfactual-dependence register: a principled value for unexecuted
-  continuations that agrees with realized feedback wherever both apply, delivering
-  one-shot verdicts (transparent Newcomb, XOR blackmail, Parfit one-shot).  No candidate
-  in the audit has it; the FDT paper calls it its largest open problem.
-- **S3** Randomization as a menu option with a private source, and the criterion's
-  random-reward clause made sufficient for Death in Damascus.
-- **S4** Cross-block reflective stability: self-trust of the market about the agent's
-  own future scores, the bounded analogue of the 2025 UDT tiling theorems.
-- **S5** An exploration-safety certificate: coverage restricted so that a foreclosing
-  test is never forced, with the loss of competence that costs, stated.
+**R4, strong form (proposed requirement).**  For every `P`-generable divergent
+weighting `w̄`, `Σ_k w_k (e_k − F⁺_k) / Σ_k w_k → 0`, both sides being about the
+selected option after selection.
 
-## 5. Registers of the requirements
+**The five gaps in the first pass's derivation, and their status.**
+
+1. *Subsequence gap.*  Global no-overestimation bounds the whole-sequence average of
+   `e_k − Ĝ_k`; on a `P`-generable weighting it bounds nothing (the cross-subsidy is the
+   witness).  What would establish weighted no-overestimation: coverage of a tracker
+   whose promise equals the realized score of the agent's *own* choice on that
+   weighting — available exactly when that score is an e.c. function of public data
+   (single-option rounds; trackable predictors), as in P1′.  In general **OPEN**, and a
+   candidate that needs it states it as a hypothesis ("weighted no-overestimation").
+2. *Cumulative-loss gap.*  A bidder promising the market's forecast is refuted when the
+   forecast's errors on its tests have vanishing average but divergent sum (errors of
+   order `−1/√k`).  Repair: the `ε`-shifted bidders `(c, F_k(c) − ε)` for rational `ε`,
+   whose record is `Σ (Ĝ − F + ε) ≥ ε·#tests − o(#tests)` under average unbiasedness on
+   the tests — the device of **PAPER** Thm 4.  The repaired conclusion is a `−ε` bound,
+   not equality.
+3. *Computational-access gap.*  The auction's round is `O(g q)`-computable, above the
+   e.c. class and above the traders, so its selection, test sets and rejection sets are
+   not e.c. functions of the prices.  Repair: **publicity** — the selection is an
+   observation, so "c selected at k" is an e.c. function of the stream and every
+   weighting built from it is `P`-generable relative to the stream, given the
+   stream-relative inductor (item 91).  Without publicity, no feedback theorem applies to
+   the tests, and the gap stands.
+4. *Semantic gap.*  The lower half used a sound promise for every e.c. selector `c`
+   from the market's forecast `F_k(c)`.  On decisions where `c` is not selected, `F_k(c)`
+   settles against nothing, so `(c, F_k(c) − ε)` is sound on its tests and yet may
+   outpromise on every decision where `c` is not selected while its record stays
+   bounded (it has no tests there).  Coverage then forces the claim `e_k ≥ F_k(c) − ε`
+   cofinitely — or forces the agent to select `c` until its forecast is corrected — but
+   the market may forecast `c` highly on exactly the decisions where it is not selected,
+   since the selection follows the forecast: this is Garrabrant's first obstacle
+   (untaken actions are not observable) relocated from conditional expectations to
+   option forecasts, and G5 does not remove it because the bidder's promise on untested
+   decisions is held to nothing.  **Not derivable** as stated; the strong lower half is
+   a proposed requirement.
+5. *Timing gap.*  Resolved by the order above: the strong form is about `F⁺_k`; the
+   guiding forecasts `F_k(c)` are what hypotheses read.
+
+**Three statements, separated.**
+
+1. *R4 as an independently proposed requirement*: the strong form above.  **Stronger
+   optional target**, with the semantics of this section.
+2. *R4 as a conjectured consequence of G2(c) and G3*: **refuted as a derivation** by gaps
+   1, 3 and 4; **CONJ** only under the added hypotheses weighted no-overestimation,
+   publicity with the stream-relative inductor, and a sound market-reading bidder for
+   the selected option — the last being what the obstacle denies in general.
+3. *What is established* (**DERIVED**, hypotheses named).  **W1**: under G2(c) relative
+   to the stream, the post-selection forecast `F⁺_k` published as an observation, and
+   `Ĝ_k` settling within a computable deferral, the *whole-sequence* averages satisfy
+   `limsup (1/K) Σ_{k≤K} (e_k − F⁺_k) ≤ 0` — from no overestimation and unbiasedness
+   from feedback (**PAPER** `thm:wubaff` with the deferral condition the pinned
+   formalization records) on the trivial weighting.  One-sided, unweighted; it says the
+   agent's claims do not on average exceed its own market's post-selection forecasts,
+   and nothing about subsequences or about the lower direction.
+
+**Consequence for the acceptance checklist.**  A candidate claiming G4(b) proves the
+strong form for its construction (with the timing and semantics of this section); a
+candidate claiming only W1 has met a weaker statement and says so; a countermodel to
+derivability revises this section and passes nothing.
+
+## 6. Two levels of achievement, and the minimum credible synthesis
+
+**Level 1 — a substantive synthesis theorem.**  A computable agent for which G1, G2(c)
+(or (b) declared), G3 with its class named, G5 with menu safety named, and at least one
+of G4(a) as a theorem or G4(b) in its strong form are proved, with the criterion-level
+rows of `TEST_SUITE.md` passed and the construction-level rows reported.  This is the
+**minimum credible synthesis**.  It establishes one computable agent whose beliefs are
+a logical inductor on the active trajectory, whose realized-score learning is bounded
+inductively rational against the full efficiently computable class, and in which the
+market's information provably changes what the decision learner achieves.  It leaves
+open every one-shot verdict; logical counterfactuals; commitment outside the scored
+unit; `SHIFT` and `SLACK`; exploration safety beyond the menu; randomization against
+adversarial predictors; equilibrium selection (T3(e), T9); rates.
+
+**Level 2 — an advance on a recognized LI decision-theory obstacle.**  A result that
+addresses one existing difficulty *under a matched environment and information
+structure* — the same predictor access, the same menu, no new oracle, no externally
+supplied commitment channel, no restriction of the comparison class beyond what the
+original allowed — and whose improvement is visible to the proposed guarantee.  Level 2
+is not required for Level 1 and is what would make the synthesis an advance in decision
+theory rather than a synthesis theorem.  Candidate diagnostics, each with its success
+condition and why existing guarantees do not deliver it:
+
+- **D1 — untested optimism (Garrabrant's obstacle 1, block form).**  Environment: an
+  option `b` whose value is decided by logic (T10's shape) and a market whose forecast
+  for `b` is low on decisions where `b` is not selected; no blind hypothesis promotes
+  `b`.  Success: average → the optimum for every logical inductor as belief component,
+  including adversarially initialized ones.  Why not delivered: LI allows a persistent
+  forecast on an unsettled variable; BRIA covers only hypotheses that promise, and the
+  market-reading promoter of `b` promises the low forecast.  Matched: the predictor,
+  menu and class are the original's.
+- **D2 — the tentative troll (T3(d)) as a criterion refinement.**  Environment: the
+  troll reads the published estimate.  Success: crossing with density 1 forced by a
+  stated refinement of the criterion, with the loss of competence it costs quantified.
+  Why not delivered: the criterion is satisfied by the stuck auction (Thm 1) and by the
+  confident agent alike; Thm 3 does not apply.  Matched only for specializations that
+  publish estimates; for one that does not, the environment is different and the row
+  says so.
+- **D3 — Agent Simulates Predictor with simulation access (T8(b)).**  Environment: the
+  predictor simulates the agent's algorithm for `g(n) < n` steps and defaults to
+  two-box; no commitment channel.  Success: one-boxing with density 1.  Why not
+  delivered: the agent's decision is `O(g q)`-computable (Thm 2), the simulation does
+  not finish, two-boxing is the sound higher claim, and the criterion settles there —
+  the original obstruction (the more capable agent loses) preserved.  A solution changes
+  the agent's decision cost for that decision without giving up coverage, or proves it
+  cannot.
+- **D4 — per-round counterfactual mugging (T6 per round, policy predictor).**
+  Environment: the original access, unit scoring.  Success: paying with density 1 while
+  G3 still holds on the subclass of environments without cross-round dependence.  Why
+  not delivered: P1′ — BRIA over the full class excludes it; policy selection over LI
+  claims it with no theorem.  A solution is a criterion, not a re-scoring.
+
+**Stronger ambitions** (independent targets beyond both levels): S1 policy regret
+against recognizable, joinable policies (item 86); S2 the counterfactual-dependence
+register; S3 randomization as a menu option with a private source; S4 self-stability
+without enforcement (G6's third source); S5 an exploration-safety certificate.
+
+## 7. Registers of the requirements
 
 | requirement | register | what is held fixed |
 |---|---|---|
-| R2, R8(ii) | epistemic (LI) | `D̄`, the stream |
-| R3, R4, R5, R6 (competence), R7(b),(d) | (i) realized feedback | the block contract, the published selection |
-| R7(a) | (ii) commitment | the selection, for the block |
-| R7(c), S1 (`SHIFT`), S2, R8 (hindsight) | (iii) counterfactual dependence | a rollout evaluator, not supplied |
+| G2, G7(ii) | epistemic (LI) | `D̄`, the stream |
+| G3, G4, G5, G6 (competence), G7(i) | (i) realized feedback | the scored unit, the selection |
+| G6 (external contract) | (ii) commitment | the selection, for the term |
+| G6 (self-entered), S1 (`SHIFT`), S2, G7 (hindsight), D4 | (ii) across units / (iii) | a rollout evaluator, not supplied |
 
-## 6. The acceptance checklist
+## 8. The acceptance checklist
 
 If a candidate synthesis is proposed, these are checked or proved before it is called an
 advance.
 
-1. **Type.**  It publishes a market and selects `(continuation, claim)` at a block
-   contract; if it does not publish claims, it cannot be held to R3 and is not a
-   candidate for this specification.
-2. **Existence** (R1): a computable construction, with `E` and the two comparison
-   classes stated; the class `H^P` reads the published prices.
-3. **LI on the active trajectory** (R2(c)), relative to the stream; or R2(b) with the
-   weakening declared and T0 passed.
-4. **The weighted criterion** (R3) at the system schedule, with the non-dominance
-   condition stated; Thm 3/Thm 4-form consequences and continuation competence.
-5. **Compatibility** (R4): the theorem from 3 and 4, or the countermodel; T11.
-6. **Interaction** (T10): the candidate reaches what the blind class cannot.
-7. **Declared choices** (`AUDIT.md` §3): scoring granularity and who sets the schedule;
-   lease publicity — what predictors may read; randomization; the scope of register
-   (iii).  A candidate that answers a benchmark by changing one of these silently has not
-   answered it.
-8. **The test suite**: every criterion-level row passed; every construction-level row
-   reported; every negative control reported.
-9. **Not shown**: the candidate's own list of what it leaves open against §4, with the
-   registers of §5.
+1. **Type.**  A belief component that publishes a market; a decision component with a
+   finite menu and realized feedback; the witness estimates of G3 exhibited (published
+   or not, stated which); the commitment source of G6 declared.
+2. **Existence** (G1): a computable construction, with `E` and the comparison classes
+   stated.
+3. **LI on the active trajectory** (G2(c)), relative to the stream; or G2(b) declared
+   and T0 passed.
+4. **The BRIA criterion** (G3) over the named class, with the fixed-schedule lemma
+   respected (tests respond to outpromising); Thm 3/Thm 4-form consequences.
+5. **Interaction** (G4): (a) proved as a theorem on a stated environment class, or (b)
+   proved in its strong form with §5's timing and semantics.  W1 alone is not (b).
+6. **Accountability** (G5) with the menu-safety assumption named.
+7. **Declared choices** (`AUDIT.md` §3): scored unit and who sets it; publicity of the
+   selection and of any estimate; randomization; the commitment source; the scope of
+   register (iii).  A benchmark answered by changing one of these silently is not
+   answered.
+8. **The test suite**: criterion-level rows passed; construction-level rows reported;
+   negative controls reported; for every row, the access model and scored unit stated
+   against the benchmark's primary-source formulation.
+9. **Level 2, if claimed**: which of D1–D4, under the matched environment, and why the
+   existing guarantees did not already deliver it.
+10. **Not shown**: the candidate's own list against §6, with the registers of §7.

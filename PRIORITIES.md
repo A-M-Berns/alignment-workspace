@@ -3280,54 +3280,65 @@ which is a condition on `ε` against the rule and is not derived here.  The escr
 comparison among evaluation-timing options is settled in expectation
 (`expected_escrow_eq`): what a priced restatement carries is the variance, not the mean.
 
-### 105. Belief–decision compatibility as a theorem: the claim tracks the market's expectation of the chosen block score — **[substantial]**
+### 105. Belief–decision compatibility: the established one-sided form as a theorem of record, and the status of the strong form — **[substantial]**
 
 <!-- workspace-priority: project=decision-theory; dispatchable=yes -->
 
-`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §2 R4 states, for an agent that publishes a market and
-selects `(continuation, claim)` at a block contract, that on every `P`-generable divergent
-weighting the weighted mean of `e_k − E_k(Ĝ_k)` tends to `0`, `Ĝ_k` the realized score of
-the selected continuation and `E_k` the market's expectation at the opening after the
-selection; and sketches its derivation from the LI criterion relative to the
-observation stream (R2(c)) and the weighted BRIA criterion over the market-reading class
-`H^P` (R3): the upper half from no overestimation and unbiasedness from feedback, the
-lower half from coverage with the hypotheses `(c, E_k(Ĝ(c)))`.  Prove it, with the
-hypotheses made exact — the deferral under which the block score settles, the
-`P`-generability of the construction's test and rejection sets, the relativization of
-`thm:wubaff`/`thm:wubexp` to the stream (item 91) — or exhibit the countermodel.
+`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §5 audits the first pass's claim that belief–decision
+compatibility follows from LI recovery and BRIA recovery, and finds it does not: the
+subsequence gap (global no-overestimation says nothing on a `P`-generable weighting),
+the cumulative-loss gap (repaired by `ε`-shifted bidders), the computational-access gap
+(repaired only by publicity of the selection and the stream-relative inductor, item 91),
+and the semantic gap (a forecast for an unselected option settles against nothing — the
+first logical-inductor obstacle relocated), with the timing fixed by the stated order.
+What survives is **W1**: under G2(c) relative to the stream, a published post-selection
+forecast `F⁺_k` of the selected option's realized score, and settlement within a
+computable deferral, `limsup (1/K) Σ_{k≤K} (e_k − F⁺_k) ≤ 0` — from no overestimation
+and `thm:wubaff` on the trivial weighting.  Two deliverables.  (i) Prove W1 as a
+statement of record with its hypotheses exact, and its witness (the paper's auction over
+a logical inductor on a finite environment).  (ii) Settle the strong form on a
+`P`-generable weighting: either an added hypothesis under which it follows (weighted
+no-overestimation; a sound market-reading bidder for the selected option), with the
+proof, or the exact obstruction as a fixture — the untested-optimism environment D1 of
+§6 is the candidate.
 
-*Deliverable shape:* a paper-level theorem with named hypotheses and a witness (the
-paper's auction over a logical inductor on a finite environment), or the exact
-obstruction with its fixture; Lean for the algebraic core where the pinned formalization
-admits it.
+*Deliverable shape:* paper-level theorems with named hypotheses and witnesses; Lean for
+the algebraic core where the pinned formalization admits it; or the obstruction with
+its fixture.
 *Acceptance check:* `python3 tests/run.py` green; Lean audits clean if any.
-*Context:* the round's `PROBLEM_STATEMENT.md` §2 R4 and §3; `TEST_SUITE.md` T11; the
-cross-subsidy fixture `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/tests/test_cm.py`; items 91, 102.
-*Consumed by:* item 106; item 102 (a bid checked against prices is this theorem's
+*Context:* the round's `PROBLEM_STATEMENT.md` §5 and §6 (D1); `TEST_SUITE.md` T11; the
+cross-subsidy and heads-tracker fixtures in `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/tests/test_cm.py`; items 91, 102.
+*Consumed by:* item 106; item 102 (a bid checked against prices is the strong form's
 lower half stated on priced claims).
-*A solution ships:* the theorem, or the negative with its witness.
+*A solution ships:* W1 of record and the strong form's status, or the negative with its
+witness.
 
 ### 106. A candidate LI/BRIA synthesis against the specification — **[open]**
 
 <!-- workspace-priority: project=decision-theory; dispatchable=yes -->
 
-Construct a computable agent of the type in `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §1 and check
-it against the acceptance checklist of §6: existence with the comparison classes named
-(R1); the LI criterion on the active trajectory (R2(c), or R2(b) declared); the weighted
-BRIA criterion over `H^P` at a non-dominant system schedule (R3); compatibility (item
-105); the criterion-level rows of `TEST_SUITE.md` passed and the construction-level rows
-reported, including T3(d), T3(e), T4(ii), T6, T8, T10.  The declared choices of
-`AUDIT.md` §3 — scoring granularity and schedule authority, lease publicity,
-randomization, the scope of the counterfactual register — are stated before any
-benchmark is scored, and the four queued in `DECISIONS.md` are taken as ruled or as the
-round's own reversible defaults.
+Construct a computable agent meeting the general acceptance requirements of
+`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §2 and check it against the checklist of §8: existence
+with the comparison classes named (G1); the LI criterion on the active trajectory
+(G2(c), or G2(b) declared); the BRIA criterion over the named class with witness
+estimates, tests responding to outpromising (G3); one proved interaction result — a
+market-informed decision guarantee unreachable by a blind decision component of lower
+runtime than the deductive process (G4(a), the theorem T10 states), or the strong form
+of compatibility (G4(b), item 105); coverage with menu safety named (G5); the commitment
+source declared (G6).  The criterion-level rows of `TEST_SUITE.md` are passed and the
+construction-level rows reported, each with its access model stated against the
+benchmark's primary source; a supplied channel, oracle, contract or restricted menu is
+a declared change of environment, never a solved benchmark.  The continuation-BRIA
+specialization of §4 is one admissible shape and not the target.  If a level-2 advance
+(§6, D1–D4) is claimed, it is claimed under the matched environment with the reason
+the existing guarantees did not already deliver it.
 
 *Deliverable shape:* the construction with its existence proof; the checklist, item by
 item, with what is proved, what is fixture-supported, and what is not shown; the suite's
 rows scored on the construction with exact fixtures.
 *Acceptance check:* `python3 tests/run.py` green; Lean audits clean if any.
-*Context:* the round's three documents; `wiki/Continuation-BRIA.md` for the block
-contract and the weighted criterion; items 86, 91, 102, 105.
+*Context:* the round's three documents; `wiki/Continuation-BRIA.md` for the
+specialization; items 86, 91, 102, 105.
 *Consumed by:* the decision-theory line's first registered claims; the deference line's
 learning layer if the construction realizes the coupling of item 102.
 *A solution ships:* the construction against the checklist, or a proof that some

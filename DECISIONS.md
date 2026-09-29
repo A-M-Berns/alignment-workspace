@@ -114,7 +114,11 @@ commit.
 - **Lease publicity: what predictors and other agents may read.**  The realized register
   treats the agent's published outputs — the selection and the estimate — as public
   state; the winning index and a bounded simulation of the agent are further options.
-  The round's default is selection and estimate public.  *Turns on:* the design cost
+  The round's default is selection and estimate public; publicity of the
+  selection is also what any feedback theorem about the agent's tests needs
+  (`PROBLEM_STATEMENT.md` §5, gap 3), and the commitment source a candidate is held to
+  — external execution contract, self-entered contract, or self-stability (G6) —
+  is declared with it.  *Turns on:* the design cost
   the tentative troll exhibits (T3(d): a public estimate lets a predictor punish
   tentative tests, and the paper's auction is then stuck while the criterion is met)
   against the modelling cost of hiding an output the criterion is stated on; and what
@@ -5220,13 +5224,14 @@ consumer when it is a foundation both lines consume.
 synthesis is checked against is `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §4: existence with named
 comparison classes, the LI criterion on the active trajectory relative to the stream, the
 weighted BRIA criterion over the market-reading class at a non-dominant system schedule,
-belief–decision compatibility as the interaction theorem (item 105), coverage as the
+one proved interaction result — a market-informed decision guarantee or
+belief–decision compatibility in its strong form (item 105) —, coverage as the
 accountability clause with menu safety named, and the suite's criterion-level rows.
 One-shot verdicts, logical counterfactuals, cross-block commitment, policy regret's
 `SHIFT` and `SLACK`, exploration safety beyond the gate and randomization against
 adversarial predictors are stronger targets S1–S5, not conditions of the minimum.
 *Rejected alternative:* a single unified criterion from which every benchmark verdict
 follows, which the round found either vacuous (satisfied by a logical inductor and a
-BRIA side by side) or false (per-round compatibility with cross-round commitment,
-Proposition P1); and folding the one-shot register into the minimum, for which no
+BRIA side by side) or false (per-round coverage of the full efficient class with cross-round commitment,
+Proposition P1′, which uses no compatibility requirement); and folding the one-shot register into the minimum, for which no
 candidate in the audit has a theorem.

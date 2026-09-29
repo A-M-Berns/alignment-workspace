@@ -30,16 +30,26 @@ class FrequencyPredictorPerRound(unittest.TestCase):
         self.assertGreater(rejections, 2000)
         self.assertEqual(rec, Q(0))
 
-    def test_two_boxing_agent_is_covered(self):
+    def test_two_boxing_agent_covers_the_two_fixed_bidders(self):
+        """Against the sound contextual one-boxer and the non-contextual one claiming
+        999/1000, the two-boxing agent with sparse one-box tests is fine on the prefix."""
         rounds = newcomb.frequency_agent(2048, newcomb.TWO)
         rejections, _ = newcomb.coverage_of(rounds, newcomb.ONE)
         self.assertEqual(rejections, 0)
-        # the non-contextual one-boxer claiming 999/1000 outpromises every round and
-        # loses its whole claim on each sparse test
         tests = [r for r in rounds if r[0] == newcomb.ONE]
         self.assertEqual(sum((r[2] - Q(999, 1000) for r in tests), Q(0)),
                          -Q(999, 1000) * len(tests))
         self.assertEqual(len(tests), 10)
+
+    def test_two_boxing_agent_with_a_fixed_schedule_is_not_a_bria(self):
+        """The off-schedule attacker: promise 1 for one-boxing off the sparse schedule,
+        promise 0 for two-boxing on it; never matched, record 0, outpromises on every
+        off-schedule round.  Fixed test schedules never cover the full class."""
+        rounds = newcomb.frequency_agent(2048, newcomb.TWO)
+        rejections, rec, tests = newcomb.coverage_of_off_schedule_attacker(rounds, newcomb.TWO)
+        self.assertEqual(tests, 0)
+        self.assertEqual(rec, Q(0))
+        self.assertEqual(rejections, 2048 - 10)
 
     def test_auction_cycles_at_finite_horizon(self):
         """The paper's auction under the frequency predictor: both options win with

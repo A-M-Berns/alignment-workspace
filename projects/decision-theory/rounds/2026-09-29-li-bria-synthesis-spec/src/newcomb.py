@@ -109,6 +109,25 @@ def frequency_agent(T: int, main: str):
     return rounds
 
 
+def coverage_of_off_schedule_attacker(rounds, main: str):
+    """The hypothesis that recommends the option the agent does not take (with promise
+    1) off the sparse schedule and the agent's main option (with promise 0) on it: never
+    matched, so its record is 0 on every test set while it outpromises whenever the
+    agent's estimate is below 1."""
+    other = TWO if main == ONE else ONE
+    rejections = 0
+    rec = Q(0)
+    tests = 0
+    for t, (option, est, r, _, _) in enumerate(rounds, start=1):
+        h_opt, h_prom = (main, Q(0)) if sparse(t) else (other, Q(1))
+        if h_prom > est:
+            rejections += 1
+        if option == h_opt:
+            rec += r - h_prom
+            tests += 1
+    return rejections, rec, tests
+
+
 def coverage_of(rounds, recommended: str):
     """Rejections and record of the sound contextual hypothesis recommending `recommended`
     against an agent whose rounds are given."""

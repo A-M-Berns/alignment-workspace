@@ -1,128 +1,167 @@
 # Report — the LI/BRIA synthesis specification round
 
+Two passes: the first delivered the section and the specification; the second, against
+the review in `prompts/2026-09-29-li-bria-synthesis-spec/REVISION.md`, corrected its
+mathematics and separated the general target from the block specialization.  What
+follows is the state after the second pass; §9 lists what the second pass changed.
+
 ## 1. What was added and reorganized
 
-- A new line, `projects/decision-theory/`, with its entry README, registered in
-  `state/projects.json`; this round under `rounds/`.
-- Three specification documents: `PROBLEM_STATEMENT.md`, `TEST_SUITE.md`, `AUDIT.md`.
-- Fixtures in `src/` and `tests/` (23 tests, exact arithmetic): the paper's first-price
-  auction; repeated counterfactual mugging under three scorings and three predictors;
-  the troll family; Newcomb under a lease-reading and a frequency predictor, per round
-  and per block; rewards decided by logic with a blind and a market-reading class.
-- Continuation BRIA is **not moved**.  It is the deference line's learning layer,
-  consumes that line's gate, and is cited by pinned path from the wiki, the round
-  index, the ledger and the priority items; moving it would rewrite those pointers for
-  no gain in organization.  The line's README cross-links it and says why
-  (`DECISIONS.md`, 2026-09-29, agent-decided).
-- Two items filed (`PRIORITIES.md` 105, 106); four choices queued for the maintainer.
-  The numbers 103 and 104 are taken by the open corrigibility-kernel phase-2 pull
-  request, whose item 103 asks for a decision theory for logical inductors without
-  the split between a belief market and a choice learner; that item is the closest
-  antecedent of this specification and is cited in `PROBLEM_STATEMENT.md` §1 and
-  `AUDIT.md` §3.
-- The wiki is untouched; the dispatch did not grant it.
+- A new line, `projects/decision-theory/`, registered in `state/projects.json`; this
+  round under `rounds/`.
+- Three specification documents: `PROBLEM_STATEMENT.md` (general requirements G1–G7,
+  the conflict, the continuation-BRIA specialization, the compatibility audit, two
+  levels of achievement with diagnostics D1–D4, the checklist), `TEST_SUITE.md`,
+  `AUDIT.md`.
+- Fixtures in `src/` and `tests/` (26 tests, exact arithmetic): the paper's first-price
+  auction; repeated counterfactual mugging (fixed agents against fixed bidders, the
+  per-round auction under a frequency predictor, block scoring under a lease-reading
+  and a lagging predictor); the troll family; Newcomb under two predictors; rewards
+  decided by logic (an interface illustration).
+- Continuation BRIA is **not moved**: it is the deference line's learning layer and is
+  cited by pinned path everywhere; the line's README cross-links it (`DECISIONS.md`,
+  2026-09-29, agent-decided).
+- Two items filed (`PRIORITIES.md` 105, 106; numbers 103–104 are taken by the open
+  corrigibility-kernel phase-2 pull request, whose item 103 — a decision theory for
+  logical inductors without the belief-market/choice-learner split — is the closest
+  antecedent and is cited); four choices queued for the maintainer.
+- The wiki is untouched.
 
 ## 2. The recommended core specification
 
-The **minimum credible synthesis** of `PROBLEM_STATEMENT.md` §4: a computable agent of
-the type "publish a market, select `(continuation, claim)` at a system-scheduled block
-contract" for which R1 (existence, comparison classes named), R2(c) (the LI criterion
-relative to the deductive process and the observation stream on every environment), R3
-(the duration-weighted BRIA criterion over the market-reading class `H^P` at a
-non-dominant schedule), R4 (belief–decision compatibility, as a theorem from R2(c) and
-R3 or with its countermodel), R5 (coverage as the accountability clause, menu safety
-named) hold, and the criterion-level rows of the suite pass.  R4 is the interaction
-requirement: it is derivable — its upper half from no overestimation and unbiasedness
-from feedback, its lower half from coverage with market-reading hypotheses — and a
-side-by-side LI and BRIA fails it by the cross-subsidy witness.  Its consequence is the
-statement logical-inductor decision theory wanted: the claim is asymptotically the
-market's expectation of the chosen continuation and at least that of every e.c.
-selector, obtained through accountable claims and never through the conditional
-expectation of an untaken action.
+**General acceptance requirements** (`PROBLEM_STATEMENT.md` §2), for any computable
+agent with a published market and a decision component learning from realized feedback:
+G1 existence with the comparison classes named; G2(c) the LI criterion on the active
+trajectory relative to the observation stream (G2(b) the declared fallback); G3 the
+BRIA criterion over a named class with *witness estimates* that need not be public,
+test sets responding to outpromising; G4 one proved interaction result — (a) a
+market-informed decision guarantee unreachable by a blind decision component of runtime
+below the deductive process, or (b) belief–decision compatibility in its strong form;
+G5 coverage as accountability, with menu safety named; G6 the commitment source
+declared (external contract, self-entered, or self-stability); G7 market-relative
+hypotheses and LI on settled scores.  **Level 1** = G1–G5 proved with G4 in one form.
+**Level 2** = an advance on a recognized obstacle under a matched environment (D1–D4).
 
-## 3. Requirements weakened, rejected, or unresolved
+**The continuation-BRIA specialization** (§4): system-scheduled blocks, a published
+claim, an external execution contract, the weighted criterion with existence iff
+non-dominance.  One way to instantiate G3 and G6; marked as such; a candidate may
+reject any of its choices.
 
-- **Weakened.**  BRIA recovery is stated at block granularity with the class relative to
-  the published prices, not at the paper's unit rounds with a blind class; LI recovery
-  is stated on the active trajectory relative to the stream, with the passive form as a
-  declared fallback.
-- **Rejected.**  R2(a), a compatible LI component (vacuous).  Regret against all
-  legitimate policies (false; the irreversible-branch witness of the continuation-BRIA
-  round).  Per-round belief–decision compatibility as a requirement on environments
-  with cross-round payoff (Proposition P1: it forces asymptotic refusal in repeated
-  counterfactual mugging where paying averages `1/2` against `1/4`).  Hindsight
-  re-scoring of executed blocks (needs a rollout evaluator the realized register does
-  not have).
-- **Unresolved, with the missing object named.**  R7(c) cross-block commitment: the
-  allocation rule for duration.  R8 hindsight: the rollout evaluator `Ĝ_k(π; H)`.  S2
-  the counterfactual-dependence register: a value for unexecuted continuations that
-  agrees with realized feedback wherever both apply.  The observation-relative inductor
-  (item 91), on which R2(c) and R4 rest.  The exact reading power of `H^P`.
+## 3. Corrected mathematical findings
 
-## 4. The most discriminating benchmarks
+- **P2 retracted as a BRIA witness.**  The cross-subsidy agent satisfies global
+  no-overestimation only; the hypothesis `(noop, 1)` on heads, `(pay, 0)` on tails
+  outpromises it on every heads round with least record `0` (**FIX**
+  `test_heads_tracker_breaks_coverage`).  Retained content: no overestimation alone is a
+  whole-sequence average and permits cross-subsidy.
+- **P1′ (DERIVED from the paper's definitions).**  At unit granularity, whenever the
+  heads reward is an e.c. function of the history, every BRIA covering the e.c. class
+  pays on a density-zero set of tails rounds — coverage of the heads tracker and of the
+  exact refuser, then global no-overestimation.  No compatibility requirement is used.
+  The first pass's "exactly between compatibility and commitment" is retracted; the
+  conflict is between action-level coverage of the full class and a commitment paying
+  outside the scored unit.  Where the subsidizing reward is not e.c.-trackable, the
+  exclusion by a fixed bidder fails and the general case is open.
+- **Fixed test schedules are never BRIAs** (DERIVED; **FIX** `FixedSchedules`,
+  `test_two_boxing_agent_with_a_fixed_schedule_is_not_a_bria`): the off-schedule
+  attacker is never matched and outpromises forever with record `0`.  Every
+  "criterion-level" fixture in this round checks fixed bidders on a prefix and says so.
+- **R4 is not derivable** from G2(c) and G3 (§5): the subsequence gap (global
+  no-overestimation says nothing on a weighting), the cumulative-loss gap (repaired by
+  `ε`-shifted bidders, the device of the paper's Thm 4), the computational-access gap
+  (repaired only by publicity of the selection and the stream-relative inductor), the
+  semantic gap (a forecast for an unselected option settles against nothing —
+  Garrabrant's first obstacle relocated; not repaired), the timing gap (repaired by the
+  stated order).  **Established**: W1, the whole-sequence one-sided statement that
+  claims do not on average exceed post-selection forecasts.  R4 strong is a proposed
+  requirement; a countermodel to its derivability passes nothing.
+- **T10 is an interface illustration**, not a separation: three fixed blind predictors;
+  the full e.c. class can approach the diagonal's accuracy.  The theorem needed is a
+  runtime separation between the decision component and the deductive process, with
+  the deductive process deciding the sentence *before* the decision.
+- **T8(a) is not Agent Simulates Predictor**: a predictor reading a supplied commitment
+  channel is a different environment.  Under bounded simulation (T8(b)) the original
+  obstruction is preserved at criterion level: the synthesis two-boxes because its
+  decision is `O(g q)`-computable (Thm 2), the same structural reason the proof-based
+  agent loses.
+- **The tentative troll** (T3(d)) stands: the paper's auction is a BRIA on every reward
+  sequence (Thm 1) and is stuck at `1/2`; the confident agent is a BRIA at `1`; a
+  full-confidence bidding rule crosses.  Criterion silent; applies only to
+  specializations that publish estimates.
 
-T6 (repeated counterfactual mugging: per round the criterion with compatibility excludes
-paying, per block with a lease-reading predictor it selects paying, per block with a
-lagging predictor it selects refusing); T3(d) (the tentative troll: the paper's auction
-is stuck while the criterion is met; a full-confidence bidding rule crosses); T3(e) (the
-belief-disagreement troll: two self-consistent pairs, the criterion does not select);
-T4(ii) (a frequency predictor: two-box per round, one-box per block, and the auction
-cycles at finite horizons); T8 (Agent Simulates Predictor reduces to lease publicity);
-T10 (rewards decided by logic: a blind class stays below `9/10`, a market-reading class
-reaches above `99/100`).
+## 4. The substantive-advance diagnostics
 
-## 5. Decisions requiring research judgment before a construction round
+D1 untested optimism (Garrabrant's obstacle 1 with a logic-determined option and a low
+forecast on unselected decisions); D2 the tentative troll as a criterion refinement with
+its cost quantified; D3 Agent Simulates Predictor under bounded simulation, no channel;
+D4 per-round counterfactual mugging under the original access, paying with density 1
+while BRIA recovery holds on the cross-round-free subclass.  Each with its success
+condition and why existing guarantees do not deliver it (`PROBLEM_STATEMENT.md` §6).
 
-1. Who sets the block schedule, and whether bidders may request horizons (T6, T7).
-2. Lease publicity: which of the selection, the estimate, the winning index, or a bounded
-   simulation of the agent predictors may read (T3(d), T4, T7, T8).
-3. Whether a private random source is a menu option, and which randomness notion the
-   random-reward clause uses (T5).
-4. Whether one-shot verdicts are wanted from a synthesis at all, or left to S2.
+## 5. Requirements weakened, rejected, or unresolved
 
-Each is in `DECISIONS.md`, *Awaiting the author*, with what it turns on.
+- **Weakened.**  BRIA recovery no longer requires published claims (witness estimates);
+  compatibility demoted from core-derived to one of two interaction forms, its
+  established content W1 only; T10 demoted from criterion-level to a theorem target.
+- **Rejected.**  G2(a); regret against all legitimate policies; the derivability of R4
+  strong; the reduction of ASP to publicity; "exactly compatibility versus commitment".
+- **Unresolved, with the missing object named.**  Weighted no-overestimation (needed
+  for gap 1); the sound market-reading bidder for the selected option (gap 4, D1); the
+  runtime-separation theorem for G4(a); the self-entered contract (duration
+  allocation); hindsight scoring (a rollout evaluator); the observation-relative
+  inductor (item 91); the exact class `H`.
 
-## 6. Deviations from the dispatch
+## 6. Decisions requiring research judgment before a construction round
 
-- The dispatch asked for the location of the section to be "appropriate" and offered
-  moving continuation BRIA; the round created a top-level line and did not move it, for
-  the reasons in §1.
-- The dispatch's requirement list treats "LI recovery" as recovery on a passive
-  restriction; the round makes the active form the core and the passive form the
-  fallback, because the interaction requirement consumes the active form.
-- The literature audit relied on fetching the sources; one remembered attribution (of
-  asymptotic decision theory) did not check out and `AUDIT.md` says so; the post's own
-  credits are recorded instead.
-- A maintainer ruling taken in the same conversation retired the name lint and moved
-  the naming rule to `AGENTS.md`; it is a separate commit on this branch and is
-  recorded in `DECISIONS.md` (2026-09-29).  It is not part of the dispatch.
+1. The scored unit and who sets it; whether a self-entered contract is wanted.
+2. Publicity of the selection and of any estimate (T3(d)'s cost; gap 3's need).
+3. The commitment source a candidate is held to (G6).
+4. Whether a private random source is a menu option.
+5. Whether one-shot verdicts are wanted at all.
 
-## 7. What is not shown
+Each is in `DECISIONS.md`, *Awaiting the author*, with what it turns on (the first four
+were queued by the first pass; the third is folded into the first pass's schedule
+entry and the publicity entry by the second).
 
-- Every "criterion" verdict in `TEST_SUITE.md` is an asymptotic statement about the
-  criterion; the fixtures check finite prefixes on the paper's auction and on fixed
-  agents, and are `test-supported` illustrations, not proofs.  The prefix conditions
-  checked are the paper's own (cumulative overestimation bounded by the allowance
-  through the round; records; rejection counts).
-- R4's derivation is a proof sketch with its hypotheses named (deferral of settlement,
-  `P`-generable weightings, `P`-generable test and rejection sets, the
-  observation-relative inductor); it is not a theorem of record and is filed as item 105.
-- T10's environment assumption — a truth sequence unpredictable with vanishing error by
-  any `O(g)`-computable function of the history — is asserted by a diagonalization
-  sketch; the fixture instantiates three blind predictors.
-- Proposition P1 is derived at the criterion level from R2(c), R3, R4; its fixture
-  checks the coverage failure on a prefix for one agent, and the block resolution on
-  the auction.  The claim that the paying-tails subsequence is `P`-generable is argued,
-  not proved.
-- Nothing about rates; nothing about the one-shot register; nothing registered.
+## 7. Deviations from the dispatch
 
-## 8. Outstanding maintainer actions
+- The section is a top-level line; continuation BRIA is cross-linked, not moved.
+- The second pass edited the first pass's unlanded ledger entries and priority items in
+  place (they had not reached `main`), rather than appending superseding entries; the
+  history is the pull request's commits.
+- One remembered attribution (asymptotic decision theory) did not check out;
+  `AUDIT.md` says so.
+- A maintainer ruling in the same session retired the name lint; separate commit,
+  recorded in `DECISIONS.md`.
 
-1. Rule on the four *Awaiting the author* entries of 2026-09-29 (schedule authority,
-   lease publicity, randomization, the scope of register (iii)), or leave them queued
-   until a construction round needs them.
+## 8. What is not shown
+
+- Every quantified statement (P1′, the fixed-schedule lemma, W1) is a paper-level
+  derivation with named hypotheses; the fixtures check fixed bidders and fixed agents
+  on prefixes and are `test-supported` illustrations.  Passing fixtures prove nothing
+  asymptotic.
+- P1′'s hypothesis — the heads reward e.c.-trackable — is what the argument uses and
+  is not removable by the fixed bidders exhibited; the general case is open.
+- W1 assumes G2(c) relative to the stream (item 91), a published post-selection
+  forecast, and settlement within a computable deferral; it is not a theorem of record.
+- T10's two halves are stated, not proved; the diagonal construction is a sketch.
+- Nothing about rates; nothing in register (iii); nothing registered.
+
+## 9. What the second pass changed
+
+Retracted P2 as a BRIA; added the heads-tracker regression and the fixed-schedule
+attacker (`test_cm`, `test_newcomb`); replaced P1 by P1′ with the direct argument;
+rewrote the requirements as G1–G7 with witness estimates and the three commitment
+sources; separated the specialization; audited R4 into the five gaps, W1, and three
+separated statements; rewrote T4(ii), T6, T8, T10, T11 with access models against
+primary sources and the channel/oracle discipline; added D1–D4 and the two levels;
+corrected the checklist's "theorem or countermodel"; updated the verdict, the ledgers,
+the items and the pull request.
+
+## 10. Outstanding maintainer actions
+
+1. Rule on the *Awaiting the author* entries of 2026-09-29, or leave them queued until
+   a construction round needs them.
 2. Merge, or hold, the pull request; the merge is reserved as a note on it.
-3. At the next naming audit, settle the provisional names listed in `PROBLEM_STATEMENT.md`
-   (*minimum credible synthesis*, *market-relative hypothesis class*, *belief–decision
-   compatibility*, *scoring granularity*, *lease publicity*, *realized-feedback
-   register*).
+3. At the next naming audit, settle the provisional names listed in
+   `PROBLEM_STATEMENT.md`.
