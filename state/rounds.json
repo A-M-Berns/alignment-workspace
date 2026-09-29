@@ -1716,6 +1716,22 @@
       "registered_classes": [],
       "prompt": "prompts/2026-09-26-after-compromise/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-09-29-li-bria-synthesis-spec",
+      "date": "2026-09-29",
+      "project": "decision-theory",
+      "path": "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec",
+      "verdict": "LI-BRIA-SYNTHESIS-DESTINATION-SPECIFIED-MILESTONES-ENDPOINT-AND-IDEAL-EXTENSION-SEPARATED-THE-ENDPOINT-IS-UPDATEFUL-AND-REQUIRES-ACTIVE-LI-INTEGRATION-BY-MARKET-INFORMED-PERFORMANCE-AND-BY-EXCLUDING-A-SPECIFIED-BELIEF-ACTION-FAILURE-PLUS-ONE-ADVANCE-BY-A-DIAGNOSTIC-MEETING-A-QUALIFICATION-STANDARD-BRIA-RECOVERY-CARRIES-FOUR-DECLARED-DOMAINS-AND-THE-UPDATELESS-RECOVERY-DOMAIN-IS-OPEN-P1-PRIME-IS-A-BOUNDARY-RESULT-AT-ITS-PROVED-STRENGTH-THE-FIXED-SCHEDULE-OBSTRUCTION-IS-CONDITIONAL-THE-COMPATIBILITY-IMPLICATION-IS-UNRESOLVED-AND-THE-BELIEF-DISAGREEMENT-TROLL-IS-PROVISIONAL — a candidate is a successful outcome if it establishes computable existence with named comparison classes, logical induction on the active trajectory (passive recovery being a weaker supporting milestone, not an alternative), bounded-inductive-rationality recovery on a declared recovery domain with witness estimates that need not be public, and coverage as accountability with menu safety named; proves that market information improves decision performance under explicit computational accounting, states the compatibility relation at least in its established whole-sequence one-sided form, and proves that its integrated belief–decision process excludes a precisely specified failure mode of that coupling; passes the recovery and integration rows of the suite under their assumptions; and demonstrates one advance on a recognized obstruction by a diagnostic with complete semantics, a quantified success condition, a justified relationship to the obstruction, matched assumptions, and an account of what existing guarantees fail to establish — one theorem may discharge both the failure-mode result and the advance, and an information-transfer theorem alone is not an advance; updatelessness is an ideal extension whose recovery domain is not defined; the belief-disagreement troll is one proposed diagnostic and is provisional because the semantics of the forecast its troll reads is undefined, its two configurations are unchecked against the milestones, and a favourable report changes the environment; at unit granularity every BRIA covering the efficient class pays on a density-zero set of counterfactual-mugging rounds whenever the heads reward is efficiently trackable; an agent taking an option only on a fixed schedule with estimate below one on infinitely many off-schedule rounds is not a BRIA; the earlier derivation of strong compatibility fails and no countermodel to the implication exists; and a supplied channel, contract, oracle or menu restriction is a change of environment and never progress on the problem without it.",
+      "verdict_source": "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/README.md",
+      "depends_on": [
+        "2026-09-08-continuation-bria",
+        "2026-09-06-decision-theory-bill"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-29-li-bria-synthesis-spec/PROMPT.md",
+      "claim_changes": []
     }
   ]
 }
