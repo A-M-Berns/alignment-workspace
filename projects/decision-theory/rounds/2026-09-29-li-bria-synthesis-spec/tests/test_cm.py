@@ -70,9 +70,20 @@ class PerRoundBRIAExcludesPaying(unittest.TestCase):
 
 
 class FixedSchedules(unittest.TestCase):
-    """An agent testing an option only on a fixed schedule is never a BRIA: the
-    attacker promises 1 for that option off the schedule and 0 for the agent's option
-    on it, is never matched, and outpromises forever with record 0."""
+    """The conditional fixed-schedule obstruction: an agent that takes an option only
+    on a fixed schedule, and whose estimate is below 1 on infinitely many off-schedule
+    rounds, is not a BRIA — the attacker promises 1 for that option off the schedule
+    and 0 for the agent's option on it, is never matched, and outpromises there with
+    record 0.  The condition on the estimate is needed: see `test_estimate_one_everywhere`."""
+
+    def test_estimate_one_everywhere_is_not_attacked(self):
+        """Warning example against the unconditional claim: every option pays 1 and the
+        agent estimates 1; the attacker never outpromises, and the agent is fine."""
+        rounds = [(t, cm.PAY if cm.tails(t) else cm.NOOP, Q(1), Q(1)) for t in range(1, T + 1)]
+        attacker = cm.fixed_schedule_attacker(cm.sparse, off_option=cm.REFUSE, on_option=cm.PAY)
+        rejections, rec, tests = cm.coverage_against(rounds, attacker)
+        self.assertEqual(rejections, 0)
+        self.assertEqual(cm.overestimation(rounds), Q(0))
 
     def test_refusing_agent_fails_against_the_payer(self):
         """`(pay, 1)` on tails outpromises the always-refuser on every tails round and

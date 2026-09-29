@@ -132,6 +132,18 @@ commit.
   adversarial-predictor problems belong to the synthesis at all, and whether "mental
   randomization" should be modelled as predictable.
 
+- **The recovery domain of the updateless extension.**  An updateless candidate cannot
+  be a BRIA at unit level on the environments P1′ covers, so its BRIA-recovery
+  obligation needs a domain on which the local and policy-level demands coincide.  The
+  round rejects two candidates with witnesses — "rewards independent of the agent's
+  choices" (too small) and "rewards a function of the history and the current choice"
+  (too large: per-round counterfactual mugging with a frequency predictor is in it and
+  P1′ forces refusal there while paying is policy-optimal) — and defines none.
+  *Turns on:* what property of the reward process, stated without reference to the
+  candidate, makes myopic optimality and policy optimality agree; until it exists no
+  updateless candidate can be certified as having recovered BRIA where it should
+  (`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §2, M3 domain 4).
+
 - **Whether one-shot verdicts are wanted from a synthesis.**  Every guarantee of the
   minimum is an asymptotic average; the suite marks one-shot rows invisible rather than
   scoring them by a proxy, and the counterfactual-dependence register is the stronger
@@ -5218,20 +5230,26 @@ new line, which rewrites every pinned pointer for no change in what either line 
 and a subproject under deference, which would file the synthesis as a corrigibility
 consumer when it is a foundation both lines consume.
 
-### 2026-09-29 — the minimum credible synthesis is the target of the line's construction rounds; the counterfactual register is outside it
+### 2026-09-29 — the line's destination is the acceptance statement: an updateful endpoint with integration and one matched advance, and updatelessness as the ideal extension
 
-**Agent-decided, reversible** (the LI/BRIA specification round).  The target a candidate
-synthesis is checked against is `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §4: existence with named
-comparison classes, the LI criterion on the active trajectory relative to the stream, the
-weighted BRIA criterion over the market-reading class at a non-dominant system schedule,
-one proved interaction result — a market-informed decision guarantee or
-belief–decision compatibility in its strong form (item 105) —, coverage as the
-accountability clause with menu safety named, and the suite's criterion-level rows.
-One-shot verdicts, logical counterfactuals, cross-block commitment, policy regret's
-`SHIFT` and `SLACK`, exploration safety beyond the gate and randomization against
-adversarial predictors are stronger targets S1–S5, not conditions of the minimum.
+**Agent-decided, reversible** (the LI/BRIA specification round, third pass, on the
+maintainer's stated position).  The target a candidate is checked against is
+`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §0: the supporting milestones (computable existence with
+named classes; logical induction on the active trajectory; BRIA recovery on a declared
+recovery domain with witness estimates that need not be public; coverage as
+accountability with menu safety named), the integration obligation (market information
+provably improves decision performance under explicit accounting, and decision
+accountability provably excludes the belief–action self-confirmation of the
+belief-disagreement troll, with the compatibility relation stated at least in its
+established one-sided form), the recovery and integration rows of the suite, and one
+advance on a recognized obstruction under a matched environment.  The endpoint may be
+updateful; updatelessness is an ideal extension whose recovery domain is an open
+specification question (queued in *Awaiting the author*).  Architecture is not specified; a modular
+implementation qualifies; the continuation-BRIA block contract is one route.  A
+candidate with the milestones and the performance result alone is an integration
+theorem, not the endpoint.
 *Rejected alternative:* a single unified criterion from which every benchmark verdict
-follows, which the round found either vacuous (satisfied by a logical inductor and a
-BRIA side by side) or false (per-round coverage of the full efficient class with cross-round commitment,
-Proposition P1′, which uses no compatibility requirement); and folding the one-shot register into the minimum, for which no
-candidate in the audit has a theorem.
+follows, found vacuous (satisfied by a logical inductor and a BRIA side by side) or false
+(unit-level coverage of the full class with cross-unit commitment, P1′); requiring
+updatelessness for success; and treating belief–decision compatibility as the whole of
+integration, which the third pass separates into three achievements.

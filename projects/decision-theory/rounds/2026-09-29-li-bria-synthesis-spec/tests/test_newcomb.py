@@ -44,7 +44,8 @@ class FrequencyPredictorPerRound(unittest.TestCase):
     def test_two_boxing_agent_with_a_fixed_schedule_is_not_a_bria(self):
         """The off-schedule attacker: promise 1 for one-boxing off the sparse schedule,
         promise 0 for two-boxing on it; never matched, record 0, outpromises on every
-        off-schedule round.  Fixed test schedules never cover the full class."""
+        off-schedule round because the agent's estimate there is 1/1000 < 1.  The
+        obstruction is conditional on that estimate being below 1."""
         rounds = newcomb.frequency_agent(2048, newcomb.TWO)
         rejections, rec, tests = newcomb.coverage_of_off_schedule_attacker(rounds, newcomb.TWO)
         self.assertEqual(tests, 0)
