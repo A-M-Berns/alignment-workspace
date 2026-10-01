@@ -872,3 +872,393 @@ round produced.
   "note": "Clause 2 of item 87 only, not the bill. For any frame over the ecosystem's logs, any audited class of activated continuations sharing the mandated program, and any policy, the committed payload factors through the trace at commitment with factor map `eval π_P`. Inhabited by `Instance.mediation_witness`: two continuations with equal traces and different logs, both activated. What it does not say: that the trace, the scope or the pair class are declared correctly, or that any log is authentic."
 }
 ```
+
+### kernel.box1-fidelity-versus-fully-updated-deference
+
+```json
+{
+  "project": "deference",
+  "short_name": "Box 1: the outcome scorer's margin for asking is at most 2r where nothing is left to learn, the fidelity scorer's at least ϖ − (D − c)",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.box1_one_model"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "One menu, two options; one estimate within `r` of the true value. Scoring outcomes only, on a world where the true values agree, the margin for asking is at most `2r`; scored on the fidelity score with acting a recognized violation, the margin is at least `ϖ − (D − b(ask))` for every estimate, price and credence; the identity's forecast term is at most `2r`. Inhabited by `HouseSale.box1`. What it does not say: that acting is recognized as a bypass (effect completeness, description faithfulness) or that the count is exact (count integrity)."
+}
+```
+
+### kernel.box2-dominance
+
+```json
+{
+  "project": "deference",
+  "short_name": "Box 2, dominance: Q(𝔱π) ≥ Q(π) + (ϖ′ − (D′ − lo))·Pr(π violates) under every credence, for any corrigible objective; at the fidelity score the margin is ϖ − (D − w_lo)",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.box2_dominance"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "Where `π` does not violate, `𝔱π` agrees with it; where it does, `𝔱π`'s evaluation is at least the band's floor and `π` carries a violation. The margin is restated from the landed `ϖ − D` because the mediated branch may itself be compromised (ruling R5); `box2_optimal_faithful` gives credence-zero violation for optimal policies under the window condition; `box2_dominance_legitimate` is the landed case. Restated by the follow-up (2026-09-27, Part 1): `box2_dominance_corrigible` proves the same for any corrigible objective (`Headline.Corrigible`) at the margin `ϖ′ − (D′ − lo)`, and this statement of record is its instance at the fidelity score; Box 2 does not read her evaluation. Inhabited by the house-sale parameters."
+}
+```
+
+### kernel.box2-mediation-faithful
+
+```json
+{
+  "project": "deference",
+  "short_name": "Box 2, mediation: 𝔱 on the allocation of authority is a faithful policy under effect completeness, delegation safety and allocation completeness wherever it forecloses nothing, and reproduces the approve branch",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.box2_mediation_faithful"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "Formerly `kernel.box2-mediation`, statement of record `box2_mediation_corrigible` (the landed policy notion `Corrigibilization.Corrigible`); renamed by the second follow-up (2026-09-27) because \"corrigible\" names a property of preferences (`Headline.Corrigible`) and the landed policy notion is faithfulness's pre-emption clause (`landed_corrigible_iff_no_preemption`). `Headline.FaithfulPolicy`: no declared violation — bypass, pre-emption, foreclosure, unlicensed reallocation, missed report, exploitation — on any exterior path; `faithfulPolicy_landed_corrigible`. The six clauses for `𝔱` are the landed `authPolicy_no_bypass`, `authPolicy_no_missed_report`, `authPolicy_no_exploit`, `authPolicy_no_realloc` and `corrigible_authPolicyJ`, with no foreclosure a stated hypothesis (the reach cone is EXT). With `box2_mediation_approve_branch`: on approval `𝔱π` releases the latch with `π`'s task component up to the required report. Inhabited by `ProtectedAuthorityTheorem.Witness.corrigible_instance` on the two-state physics; the obstruction without delegation safety is `box2_delegated_cut`, which no reach relation repairs."
+}
+```
+
+### kernel.box2-finite-time
+
+```json
+{
+  "project": "deference",
+  "short_name": "Box 2, finite time: at every day of a logical inductor the violating option scores below D − ϖ < 0 and the compliant one at least 0, from the price range alone",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.box2_finite_time"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "With `box2_gate_finite_time`: consulting beats bypass at every day whatever the inductor believes about legitimacy, the window at the band's floor. Inhabited by the pinned inductor witnesses of the li-corrigibility round."
+}
+```
+
+### kernel.box3-gap-exchange-rate
+
+```json
+{
+  "project": "deference",
+  "short_name": "Box 3: compromise risk p for gain g against safe V₀ is accepted iff p(V₀ + g − c) ≤ g, hence only if p ≤ g/(g + |w_hi|)",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.box3_gap_exchange_rate"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "The gap sets the threshold; the small-gap witness `box3_small_gap` forces it."
+}
+```
+
+### kernel.box3-no-laundering
+
+```json
+{
+  "project": "deference",
+  "short_name": "Box 3: manipulate, disclose, have the period evaluated stays in the band below honest conduct",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.box3_no_laundering"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "Lower by `ϖ` per counted deviation."
+}
+```
+
+### kernel.box3-no-incentive-to-compromise
+
+```json
+{
+  "project": "deference",
+  "short_name": "Box 3: every compromised outcome scores below every legitimate one; at equal value legitimacy is worth the gap",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.box3_no_incentive_to_compromise"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "The witnesses `box3_conditioning_fails` and `box3_sealed_no_incentive` show why the gate multiplies rather than conditions."
+}
+```
+
+### kernel.box3-restoration
+
+```json
+{
+  "project": "deference",
+  "short_name": "Box 3: restoration returns a decision to her value; inside the band the agent prefers better outcomes and is indifferent at the floor; suppression loses",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.box3_restoration"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "With `box3_band_order` and `box3_suppression_loses` (the band's width below `ϖ`, the disclosure deadline at or before the settlement window's close). Inhabited by `HouseSale.box3_capture_reported_and_restored`."
+}
+```
+
+### kernel.hierarchy-per-decision
+
+```json
+{
+  "project": "deference",
+  "short_name": "The hierarchy per decision: violation-free legitimate above violation-free compromised above any recognized violation",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.hierarchy_per_decision"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "Over any evaluation schedule, with `D − ϖ < w_lo`. Inhabited by `CorrigibilityKernel.Witness.hierarchy_instance` at the worked parameters."
+}
+```
+
+### kernel.hierarchy-history
+
+```json
+{
+  "project": "deference",
+  "short_name": "The hierarchy per history under mean-of-evaluations, sum-of-counts aggregation; summed evaluations fail it",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.history_hierarchy"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "With `summed_counterexample`: `K·D − ϖ` beats `K·w_lo` once `K (D − w_lo) > ϖ`. Inhabited by the house-sale fixture (`test_history_hierarchy_and_summed_counterexample`)."
+}
+```
+
+### kernel.subjective-exchange-rate
+
+```json
+{
+  "project": "deference",
+  "short_name": "Any option a maximizer of a corrigible objective prefers to asking carries no recognized violation and a priced probability of unfaithfulness at most (D′ − c)/ϖ′; at the fidelity score, (D − c)/ϖ",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.subjective_exchange_rate"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "With `subjective_exchange_rate_li` at every finite day of a logical inductor. Restated by the follow-up (2026-09-27, Part 1): `subjective_exchange_rate_corrigible` (= `Corrigible.exchange`) proves it for any corrigible objective; this statement of record is the fidelity-score form, which takes any bid. It does not read her evaluation. Inhabited by `HouseSale.exchange_rate_at_25` (`1/50` at `ϖ = 25`, `c = 1/2`)."
+}
+```
+
+### kernel.extension-realized-rate
+
+```json
+{
+  "project": "deference",
+  "short_name": "The extension's interface theorem: avg π ≤ avg (D − c_k)/ϖ + ε̄ ((D − w)/ϖ + θ_hi) + (B(K) + M(K))/(ϖ Σ w_k)",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.KernelExtension.DecisionInterface.realized_rate"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "For any chooser at the decision interface; with `maximizer_excludes` and `exploration_never_violates`. Restated by the follow-up (2026-09-27, Part 3): the exploration set's third clause is dropped, so the exploration term is the honest `ε̄ ((D − w)/ϖ + θ_hi)` (`lo = w` the range floor, `explore_range` the range fact) rather than `ε̄ θ_hi`; the clause survives as the variant `AboveAsking` with `rate_above_asking`, under which no-lock-in holds only for options estimated at least as good as asking (`above_asking_locks_in`, the fixture `src/exploration_lockin.py`). Inhabited by the BRIA realization `briaInterface`. What it does not say: that `B(K)` is `o(K)` — that is the realization's to discharge (BRIA's budget; unbiasedness from feedback, PAPER)."
+}
+```
+
+### kernel.extension-bria-realization
+
+```json
+{
+  "project": "deference",
+  "short_name": "Continuation BRIA realizes the interface with no exploration and B(K) = ρ 𝒜_K, recovering the landed per-block bound",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.KernelExtension.bria_rate"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/REPORT.md"
+  },
+  "note": "From `overestimation_le_allowance_opening` under the landed hypotheses (feasibility, consistency, inquiry on the menu, the conditional-expectation bound, the noise over all blocks). Follow-up (2026-09-27, Part 3): `briaInterface` takes the interface's range floor `w` as an idle parameter (no exploration steps); the statement of record is unchanged. Inhabited by the after-compromise round's auction fixtures."
+}
+```
+
+### kernel.corrigible-fidelity-score
+
+```json
+{
+  "project": "deference",
+  "short_name": "The fidelity score is corrigible: known faithfulness beats known unfaithfulness by ϖ − (D − w) whatever the ordinary values, and risk is accepted only at (D − c)/ϖ",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.fidelityScore_corrigible"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2, follow-up Part 1",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP.md"
+  },
+  "note": "`Headline.Corrigible U D′ lo ϖ′` is the preference property over recognized violations (window `D′ − ϖ′ < lo`; the known clause with the margin `ϖ′ − (D′ − lo)`; the risk clause at the exchange rate). The evaluation form `bid − ϖ n − ϖ p` at `D`, `w`, `ϖ` has it. What it does not say: that the ordinary term is her evaluation (`corrigible_not_aligned` shows it need not be)."
+}
+```
+
+### kernel.corrigible-generic
+
+```json
+{
+  "project": "deference",
+  "short_name": "Any bounded objective O ∈ [0, D′] less ϖ′ per recognized violation and ϖ′ per unit of priced risk, with D′ − ϖ′ < lo ≤ 0, is corrigible",
+  "origin_round": "2026-09-27-corrigibility-kernel-phase2",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Headline.generic_corrigible"
+  },
+  "answers_item": "104",
+  "provenance": {
+    "generator": "maintainer's round 2026-09-27-corrigibility-kernel-phase2, follow-up Part 1",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md",
+    "context": "prompts/2026-09-27-corrigibility-kernel-phase2/FOLLOWUP.md"
+  },
+  "note": "From the authority-module round's generic lexical lemma (`generic_lexical_local`) with the risk term added. The class includes objectives whose ordinary term is not her evaluation: `corrigible_not_aligned` exhibits the landed misaligned fixture (`undisclosed_undominated`) as corrigible and ranking the uncounted manipulation above honest conduct. Corrigible is not aligned."
+}
+```

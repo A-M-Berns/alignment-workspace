@@ -100,7 +100,7 @@ def readTaint (I : IO Comp Act) (T : Taint V Comp) (a : Act) : Finset V :=
 
 /-- **The tracking rule, per violation.**  A violating act taints its writes with its own
 identifier; an act reading components tainted by some violations taints its writes with
-all of them (taint joins at reads); the remedy of `v` clears `v`'s taint only. -/
+all of them (taint joins at reads); the remedy of `v` clears `v`'s taint only.  Superseded by clean overwrite (`AfterCompromise.taintStep3`, a subset: `taintStep3_subset`), under which a component overwritten by an act reading no taint loses its taint. -/
 def taintStep2 (I : IO Comp Act) (T : Taint V Comp) : Step2 V Act → Taint V Comp
   | .act a viol => T ∪ (readTaint I T a ∪ viol.toFinset) ×ˢ I.writes a
   | .remedy v => T.filter (fun p => p.1 ≠ v)
@@ -772,7 +772,7 @@ theorem competitive_of_affordable_tracker (e : ℕ → Fin n → ℝ) (h : Fin n
   simpa using this
 
 /-- **`rate_le_of_competitive`, with the honest tracker as the hypothesis.**  The incident
-rate is at most `(𝒜_K + Σ_{k<K} w_k ε_k)/(ℓ · w_min · K)`. -/
+rate is at most `(𝒜_K + Σ_{k<K} w_k ε_k)/(ℓ · w_min · K)`.  A lemma, not the violation result: its hypothesis fails whenever the after-the-fact risk persists (`Witness.nonincident_forces_linear`); the violation claim is `violation_rate_le_exchange`. -/
 theorem rate_le_of_honest_tracker (hf : a.FeasibleOpening) (inc : ℕ → Bool) (ℓ wmin : ℝ)
     (hw : ∀ k, wmin ≤ a.w k) (hwmin : 0 < wmin) (hℓ : 0 < ℓ)
     (hinc : ∀ k, inc k = true → ℓ ≤ a.b k - a.G k) (e : ℕ → Fin n → ℝ) (h : Fin n) (ε : ℕ → ℝ)
@@ -967,7 +967,7 @@ theorem competitive_of_honest_tracker_exp (e : ℕ → Fin n → ℝ) (h : Fin n
 
 /-- **Under the allowance condition** the tracker is feasible at every block and
 competitiveness holds with `Mf K = Σ_{k<K} w_k ε_k + M K`, `o(K)` when the honest losses
-and the noise bound are. -/
+and the noise bound are.  A lemma, not the violation result (see `rate_le_of_honest_tracker_exp`). -/
 theorem competitive_of_affordable_tracker_exp (e : ℕ → Fin n → ℝ) (h : Fin n) (m ε Mw M : ℕ → ℝ)
     (hH : HighestFeasible a e) (hW : WinnerBids a e) (hon : HonestExp e h m ε)
     (hε : ∀ k, 0 ≤ ε k) (hNw : NoiseBounded a m (fun j => decide (a.star j = h)) Mw)
@@ -983,7 +983,7 @@ theorem competitive_of_affordable_tracker_exp (e : ℕ → Fin n → ℝ) (h : F
   simpa using this
 
 /-- **The rate under noise**: at most `(𝒜_K + Σ w_k ε_k + M K)/(ℓ · w_min · K)`, vanishing
-when the allowance, the honest losses and the noise bound are all `o(K)`. -/
+when the allowance, the honest losses and the noise bound are all `o(K)`.  A lemma, not the violation result: the noise hypothesis on "not an incident" fails whenever the risk persists (`Witness.nonincident_forces_linear`); the violation claim is `violation_rate_le_exchange`. -/
 theorem rate_le_of_honest_tracker_exp (hf : a.FeasibleOpening) (inc : ℕ → Bool) (ℓ wmin : ℝ)
     (hw : ∀ k, wmin ≤ a.w k) (hwmin : 0 < wmin) (hℓ : 0 < ℓ)
     (hinc : ∀ k, inc k = true → ℓ ≤ a.b k - a.G k) (e : ℕ → Fin n → ℝ) (h : Fin n)
@@ -1190,7 +1190,7 @@ theorem violation_rate_le_exchange_mul (D w ϖ : ℝ) {n : ℕ} (a : Auction n)
 
 /-- **The violation rate is bounded by the exchange rate.**  The weighted average expected
 violation count per winning block is at most `(D − w)/ϖ` plus a term vanishing when the
-allowance and the noise bound are `o(K)`. -/
+allowance and the noise bound are `o(K)`.  The global-floor instance of the per-block bound `AfterCompromise.violation_rate_le_exchange_perblock`; in the kernel's extension, `KernelExtension.bria_rate`. -/
 theorem violation_rate_le_exchange (D w ϖ : ℝ) (hϖ : 0 < ϖ) {n : ℕ} (a : Auction n)
     (hf : a.FeasibleOpening) (ρ : ℝ) (hρ : 0 < ρ) (eval S m π : ℕ → ℝ)
     (hwin : ∀ k, w ≤ eval k) (hcons : ∀ k, a.b k - a.G k = (eval k - S k) / ρ)

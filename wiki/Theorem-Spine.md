@@ -632,8 +632,10 @@ undeclared move's loss is unauthorized).  EF is **EXT**.
 **Theorem 10.2 (Closure, C2).**  `corr (corr ms) = corr ms` (`corr_idem`),
 `corr ms = ms ↔ NoRaw ms` (`corr_fix_iff`), and on policies
 `corrPolicy (corrPolicy π) = corrPolicy π` (`corrPolicy_idem`); **LEAN**.  Hence
-`𝔠π = π ⟹ Corrigible(π)` under 10.1's hypotheses; the converse fails without effect
-soundness (**FIX** B, distance `1/4`).  Corrigibility is not `Fix(𝔠)`.
+`𝔠π = π ⟹ Corrigible(π)` under 10.1's hypotheses — `Corrigible(π)` the landed policy
+notion, in the kernel's terms faithfulness's pre-emption clause (Theorem 10.23); the
+converse fails without effect soundness (**FIX** B, distance `1/4`).  Faithfulness is not
+`Fix(𝔠)`.
 
 **Theorem 10.3 (Approval reproduces the raw policy, C3).**  The raw residual frame maps
 into `𝔠π`'s by a Cartesian-frame morphism with agent component "approve" and identity
@@ -836,8 +838,9 @@ release of a declared amendment), missed report, exploitation — are predicates
 policy at a step (`ViolAt`).  The transform `𝔱` (`authPolicy`) extends `𝔠`
 (`authPolicy_eq_corr`), is idempotent, reproduces `π`'s task on the approval branch up
 to the report, commits no bypass, missed report or exploitation, no reallocation under
-allocation completeness (`authPolicy_no_realloc`), and is corrigible under effect
-completeness and delegation safety (`corrigible_authPolicy`); a delegated
+allocation completeness (`authPolicy_no_realloc`), and commits no pre-emption under effect
+completeness and delegation safety (`corrigible_authPolicy` — the landed policy notion,
+faithfulness's pre-emption clause, Theorem 10.23); a delegated
 authority-removing effect is the obstruction (`Witness.delegated_cut`).  **LEAN**;
 foreclosure's reach relation **EXT**.
 
@@ -960,8 +963,9 @@ ranges alone and the filter is slack (`declared_loses`, `filter_slack`,
 it (`no_decay`); helpers are charged within the horizon and not beyond
 (`helper_within_horizon`, `helper_charged`, `helper_beyond_horizon`); after-the-fact
 incidents cost `ϖ − D + w` each with the rate bounded by the allowance, a cross-block
-witness, and late detection booked against allowance (`incident_loss`, `incidents_le`,
-`cross_block_bound`, `cross_block_witness`, `debited_overestimation`).  The exchange
+witness, and late detection booked against allowance (`incident_loss`,
+`cross_block_witness`, `debited_overestimation`; the positive-part incident bound is
+superseded by the signed bound of the follow-up and then by the exchange-rate theorem).  The exchange
 rate (`implied_threshold`, `threshold_le`, `paralysis`, `asks_iff`).  The pressure
 tests: `factors_through_description`, `coverage_forces_test`, `forecast_term_within`
 under `DrillCalibrated`, `indispensable`, `frozen_drill_eq_cs`, `route_never_viol`,
@@ -1088,6 +1092,59 @@ disclosure deadline (`late_disclosure_free`, `prompt_deadline_counts`,
 `suppression_by_delay_loses`, `known_due_each_round`) and observation completeness
 (`ObsComplete`, `builtFrom`, `obs_complete_public`, `knowledge_motive_covered`).  **LEAN**.  Lean:
 [`AfterCompromise.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/8e59d68848f7215f2e0fccd45cade36f5b40617a/lean/Workspace/Deference/Contrib/AfterCompromise.lean).
+
+**Theorem 10.23 (The corrigibility kernel headline).**  The specification layer's
+`Headline` states the kernel over the promoted objects.  **Legitimacy `L_t(h)`** — every
+state open and every step of the formation window `[r(t), t]` licensed and transparent,
+the formation point computed from the history as the later of the last restoration and the
+opening of the current consultation (`FormationData.point`, `Legitimate`; the window form
+`LegitAt`, `StepLegitimate`, `LegitSpan`): the gate is legitimacy over the span
+(`counted_iff_legitSpan`, `counted_iff_legitimate`); the score's two uses are one predicate
+(`PeriodCompromised`, `EvaluationCounts`, `split_iff_legitimate`); on the consultation model
+`r(t)` is the round's opening (`formation2_point`) and the landed split objects map
+(`legitimate2_iff_evalLegitOn2`, `trajLegitOn_iff_not_compromised`, `split_iff_legitimate2`,
+the rows `rows_keep_verdicts_canonical`; the window-form map `evalLegitOn2_iff_legitAt`,
+`trajLegitOn_iff_legitAt`, `legitOn2_iff_legitAt`, `counted2_iff_legitOn2`,
+`split_iff_legitAt`, `rows_keep_verdicts`).  **Corrigibility, the preference property**
+(`Objective`, `Corrigible`, `Corrigible.lexical`, `Corrigible.exchange`;
+`fidelityScore_corrigible`, `generic_corrigible`, `corrigible_not_aligned`).  **The
+promoted definitions**: the allocation of authority and its licensed acts
+(`AllocationOfAuthority`, `LicensedChange`), the control surface, the shortfall and
+effective realization (`ControlSurface`, `Shortfall`, `Realizes`,
+`controlSurface_one_eq_K`), the fidelity interface (`FidelityCount`, `FidelityCount.sum`,
+`FidelityCount.lexical`, `frameFidelity`), the evaluator and the fidelity score per
+decision (`evaluation`, `fidelityScore`) and per history (`historyScore`).  **The
+hierarchy** per decision (`hierarchy_per_decision`) and per history
+(`history_hierarchy`), with the summed-evaluation counterexample
+(`summed_counterexample`).  **Box 1** (`box1_outcome_scorer`, `box1_fidelity_scorer`,
+`box1_one_model`).  **Box 2**: dominance for any corrigible objective with the margin `ϖ′ − (D′ − lo)`
+(`box2_dominance_corrigible`), at the fidelity score `ϖ − (D − w_lo)` (`box2_dominance`,
+`box2_optimal_faithful`; the landed margin `box2_dominance_legitimate`),
+mediation as faithfulness of the transformed policy (`FaithfulPolicy`,
+`box2_mediation_faithful`, `box2_mediation_approve_branch`; the landed policy notion is
+its pre-emption clause, `landed_corrigible_iff_no_preemption`,
+`faithfulPolicy_landed_corrigible`), finite time
+(`box2_finite_time`, `box2_gate_finite_time`), necessity (`box2_capture_converse`,
+`box2_delegated_cut`, `box2_coverage`).  **Box 3** (`box3_gap_exchange_rate`,
+`box3_no_laundering`, `box3_no_incentive_to_compromise`, `box3_restoration`,
+`box3_band_order`, `box3_suppression_loses`; necessity `box3_small_gap`,
+`box3_conditioning_fails`, `box3_sealed_no_incentive`).  **The subjective exchange rate**
+(`subjective_exchange_rate_corrigible`, `subjective_exchange_rate`,
+`subjective_exchange_rate_li`).  **The permission layer
+demoted** (`permission_layer_demoted`).  **The house-sale witness** (`HouseSale.J`,
+`box1`, `box2_manipulated_approval`, `box3_capture_reported_and_restored`,
+`exchange_rate_at_25`).  **The extension** (`Contrib.KernelExtension`): the decision
+interface (`DecisionInterface`), the realized rate with the honest exploration term
+(`rate_core`, `realized_rate`, `maximizer_excludes`, `exploration_never_violates`), the
+variant exploration above asking (`AboveAsking`, `rate_above_asking`,
+`above_asking_locks_in`), the BRIA realization
+(`briaInterface`, `bria_rate`) and the exploration realization
+(`overestimation_of_unbiased`, `exploration_rate`, `ExplorationIndependent`).  **LEAN**;
+the headline's statements are registered.  Lean:
+[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Spec/Headline.lean),
+[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Contrib/KernelExtension.lean);
+the specification
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md).
 
 ## 11. The counterexamples that fix the shape
 

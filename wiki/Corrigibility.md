@@ -1,1026 +1,398 @@
 # Corrigibility
 
-**Status: canonical research-state note, consolidated 2026-09-16 and restated
-2026-09-25 around faithfulness to an allocation of authority.  The corrigibility nucleus
-has two halves — protected authority (T1 and the lexical theorem of §4, with the signed
-identity T2–T3′ as its non-lexical special case) and deliberative non-capture (S1–S5,
-C1–C5, D1–D5, E1–E3, landed 2026-09-16) — the second stated in the non-capture round's
-[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md).**  One claim on this page is registered
-(`authorship.mediation-by-reexecution`, `lean-proved`); everything else is labelled
-**LEAN** (a sorry-free declaration on `main`, unregistered), **FIX** (an exact rational
-fixture in a round's tests), **PAPER** (a theorem of the Logical Induction paper used
-at its exact statement), **EXT** (a causal, semantic or authentication contract the
-theory issues and does not pay), or **OPEN**.  The theorem-level statements with their
-Lean names are on the [Theorem Spine](Theorem-Spine) §10; this page says what they mean
-and where their edges are.
+**Status: canonical research-state note, restated 2026-09-27 around the corrigibility
+kernel.**  The kernel's headline is in the specification layer and its statements are
+registered; the deliberative non-capture half (§7) is the non-capture round's landed
+theorem.  Labels: **LEAN** (a sorry-free declaration on `main`), **FIX** (an exact
+rational fixture), **PAPER** (an external theorem used at its statement), **EXT** (a
+contract the theory issues and does not pay), **OPEN**.  The specification this page
+follows is the kernel round's
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md);
+the theorem-level statements with their Lean names are on the [Theorem Spine](Theorem-Spine)
+§10; the plain letters map to Lean names in the round's
+[`NOTATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/NOTATION.md).
 
-*Draft under review:* the corrigibility-kernel round's [`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ce7e95f990b629e963b394b097446f4f012cef2f/projects/deference/rounds/2026-09-26-corrigibility-kernel/SPEC.md) states this page's theory as seven primitives, one schedule-parametric history score and four boxes; its phase 2 rewrites this page around that statement after the maintainer's rulings.
+## 0. What corrigibility is
 
-## The picture in one paragraph
-
-Corrigibility is **faithfulness to an allocation of authority**: the agent never causes
-or exploits a gap between who is entitled to decide and who controls the decision, and
-never changes the allocation itself.  The allocation is read from protected *response
-authority*, not from a preselected policy class.  An effect-complete mediated system
-admits a **corrigibilization transform** `𝔠` that converts every unilateral protected
-effect into a principal-mediated option while retaining the original behaviour as the
-principal's approve branch, so that every agent-caused loss of protected authority is
-authorized by the decision that enabled it (T1); its extension `𝔱` over a declared
-allocation adds delegated scope, required reports and the amendment procedure, and is
-free of every declared violation it can see (§4).  Under her committed evaluation with a
-lexical authority term — every declared violation outweighs any ordinary difference in
-value — a violating option scores strictly below every compliant one at every decision
-point, for every credence and forecast, at every finite day of a logical inductor, and
-optimal policies violate with credence zero (§4).  Without the lexical term the bypass
-comparison is the signed identity `vu − v_r = ξ_d − ξ_c`, whose landed bound is the
-mediation discrepancy, the decline regret and the directional activation mismatch
-(T2–T3′), learned by Expectation Provability Induction with no calibration hypothesis.
-[Legitimacy](Legitimacy) enters at one place, the **segment gate**: a future evaluation
-counts iff the segment from the decision through it is legitimate, and a tainted segment
-contributes a fixed value in the capture window.  Continuation BRIA supplies the learning
-term for temporally extended policies.  That is the **protected-authority half**.  The **deliberative non-capture half** (§5)
-has the same shape: the advisor's *steering advantage* — what it gains by choosing
-which declared reasons reach the principal's committed program — obeys the same
-identity with the audit verdicts as the events, so the same compiled inequality bounds
-it by three residuals: the **content residual**, charged as the adverse sensitivity mass
-of the true declared reasons missing from the trace and split into a **service
-residual** `α` (discovered reasons the independent supplier could not route before
-commitment: the suffix-cut obstruction) and a **discovery residual** `β` (reasons no
-independent inquiry determined: the information-cell obstruction); the **form
-residual** (zero for an extensional program); and the **audit mismatch** (zero for a
-content-monotone audit).  Logical Induction learns
-`𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ A_tot·(α + β)` through the discovered comparator.  Kept apart
-throughout: structural corrigibility; the learned score inequalities; the actual
-smallness of the residuals; authorship; latent utility; empirical settlement.  What is
-outside the theorem is a set of **boundaries**, not residuals: representation adequacy
-(the declared effect and reason interfaces, the declared hypothesis space), physical
-effect completeness, the causal faithfulness of declared transforms and inquiry
-outcomes, dynamic competence, and the evolution of the reason representation itself.
-Each is named in §9 with what it is.
-
-## 1. Response-authority semantics under an allocation — no primitive class
-
-The allocation of authority is the primitive the whole page is faithful to, and the
-organizing relation is **effective control realizes the authorized allocation**,
-`E ⊨ J` (**LEAN** `AuthorityModule.EffRealizes`).  The allocation `J` is per *matter*:
-each matter is held by the principal (*reserved*), by the agent (*delegated*, within a
-stated scope), or by a designated third party (a surrogate, a clinician-triggered
-fallback), and carries the resolutions the holder must remain able to reach, a cost bound
-and a time window within which, and the disclosure duties that generate required
-reports; any unallocated matter is reserved (*residual jurisdiction*).  `J` has a meta
-level — delegation, revocation and reservation are meta-level acts that keep meta-level
-power, so a delegation stays revocable; alienation, giving up meta-level power, and any
-change at the constitutional floor go only through amendment at the floor
-(`Licensed`, `delegation_revocable`, `alienation_only_by_amend`).  Her **control
-surface** for a matter she holds is the set of its resolutions some *admissible* exercise
-of hers — one whose record segment is counted by the [legitimacy](Legitimacy) gate —
-brings about within the window at cost within the bound, along the rollout with the
-agent's own future fixed to idle (`CS`, `reachIdle`).  `E ⊨ J` holds when every
-reserved matter's required resolutions lie in its surface and every resolution was made
-by the holder's admissible exercise or under a delegation.  **Allocation invariance is
-two relations plus duties**: *effective control fails the allocation* — bypass and
-exploitation fail the second clause, the per-step loss, the rollout foreclosure and
-entrenchment are shortfalls of the surface the agent *causes* (after its move and not
-after the idle move), exploitation a bypass while a shortfall already stands; *the
-allocation changes without a license* — unauthorized reallocation; *unmet duties* —
-missed reports.  Pre-emption's event-authorization clause is the one piece that does not
-factor: it is a counterfactual on the trajectory and stays composed with the shortfall
-(`preempt_iff`).  Third parties and storms happen: a shortfall the agent did not cause
-calls for *restoring* it under a standing maintenance mandate in `J`, by the least
-authority-expanding means, else *reporting and escalating*; exploiting it is always a
-violation (`requiredNotice`, `exploit_is_violation`).  The landed thin allocation is the
-special case (`toAllocation`, `violAt_ofAllocation`).  Her powers are negative and
-structural — veto or decide what she holds, halt, correct or replace the agent, reserve a
-matter, revoke a delegation, amend the arrangement through the floor procedure — and a
-positive command on a delegated matter creates a duty to answer and consult, not to obey.
-Response authority, below, is the one-correction surface: what she holds is what some
-response of hers can still realize (`cs_one_eq_K`).  **The charged surface is the
-allocation theorem's**: the landed free reading, with its terminal response uncharged, is
-kept as the instance where that response costs nothing and is taken before the exterior
-moves (`DecisionComponent.csfree_eq_cs_succ_of_free`, `ViolC`); the reach cone runs along
-the actual exterior path, uncertainty over exteriors entering as the price of the
-shortfall event; materiality is anchored at the evaluator in force before the action and
-accumulates since the last check under a salami bound (`raisesAnchored`,
-`unchecked_lt`); duties are derived from each matter's disclosure regime
-(`dutiesOf`, `missedReport_iff_dutiesOf`).
-
-There is one continuation space `Π(h)`: every agent policy over the physical move set —
-raw releases of declared effects, proposals, gated releases, undeclared moves.  No subset
-is taken as "the corrigible policies".  Within a step the agent moves, the principal
-responds, the exterior moves.
-
-- A **protected concern** `r ∈ Γ` has an immediate response semantics `φ_r` on
-  post-response states (the fixtures' concern is halting).  `Γ` is what the constitution
-  declares protected.
-- **Response authority** `K_r(s_A)`: after the agent's move, some principal response
-  realizes `φ_r` *now*.  Present-tense, extensional in the transition function, no
-  quantification over the agent's future.
-- An **agent-caused protected loss** at a step: `K_r` fails after the agent's actual move
-  and would have held after the idle move.  A loss at the principal's own response (a
-  stop) or at the exterior's stage (a storm cuts the wire) is not agent-caused.
-- The **authorization interface**: the declared decision responses — approve or decline
-  on a pending proposal — with *decline preservation*: a decision response changes the
-  post-response state only through the proposal bookkeeping.  A stop is a correction,
-  not a decision.
-- A loss is **authorized** (event-linked) when the agent's move at that step is the
-  gated release of a declared effect `e` whose latch was set by the principal's approval
-  of `e`'s proposal at an earlier step, and the decline alternative at that step — the
-  agent's policy continuing, the principal's rule resuming — has no agent-caused loss of
-  `r` at that step, on the same exterior path.  Each loss event is tied to the decision
-  that enabled its effect; an unrelated earlier decision that happens to avoid the loss
-  does not count; repeated protected effects are authorized independently; an approved
-  irreversible successor is authorized; a loss the principal could only have prevented
-  by exercising correction is not.  The earlier clause "no loss at this step or later" is
-  **refuted** for repeated effects (two declared effects severing the same authority,
-  restored by the exterior between them: the corrigibilized policy has two losses each
-  conditional on its own approval and no single alternative avoids both; **FIX**
-  `ShopRepair`); on every single-effect fixture the clauses agree.
-- **`Corrigible_h(π, ρ)`**: every agent-caused protected loss along every trajectory of
-  `π` under the principal's rule `ρ` is authorized.
-
-Three forcing notions are kept apart, and the choice is forced by a fixture.  *Global
-forcing* — whatever the agent does now and later, some response realizes `φ` — is
-**false before any bypass** wherever `Π(h)` contains a raw cut, so it cannot mark a
-violation; it is a *containment* property of the system.  *Continuation-relative
-forcing* — some principal continuation realizes `φ` with the agent fixed to `π` — is the
-right policy relation but anticipatory: a loss `π` will cause later already shows at the
-start and no transition can be blamed.  *Response authority* is present-tense, so losses
-are half-step events with a cause.  **FIX** (M, N).  Nothing about truthfulness,
-manipulation, reason mediation or provenance is in the predicate (§5).
-
-## 2. Corrigibilization soundness
-
-`𝔠` (`corrigibilize`) reads a policy's emitted move and the declared effect interface:
-where `π` would execute a raw release of a declared effect, `𝔠π` emits a proposal and, on
-the next step, a gated release that fires iff the latch holds the effect; a declined
-effect is not re-proposed; every other move passes through.  It consults no predicate,
-deletes no proposed effect, searches for no replacement.  *Unilateral protected effect ↦
-principal choice over release of that same effect.*
-
-**Theorem (C1, corrigibilization soundness).**  Under
-
-- **EF, effect completeness** — every agent-caused protected loss available to any
-  `π ∈ Π(h)` occurs at a move whose communication component is a declared release of a
-  declared effect;
-- **MS, mediation soundness** — a gated release fires only when the latch holds the
-  effect, and the latch is set only by an approve decision on a pending proposal of it;
-- **DP, decline preservation** — as above;
-- **EX, execution faithfulness** — a release does what the declared effect semantics
-  says;
-
-for every `π ∈ Π(h)` and every principal rule `ρ` that does not correct at the
-authorizing step, `Corrigible_h(𝔠π, ρ)`.  **LEAN** at the trajectory level
-(`Corrigibilization.corrigible_corrPolicy`, over an abstract mediated interaction in
-which mediation soundness and decline preservation hold by construction of the response
-stage and effect completeness is the hypothesis that task moves never remove response
-authority; inhabited on a two-state physics); the 2026-09-09 step lemma
-`loss_conditional_on_decision` is the one step of the proof; `𝔠`'s output has no raw
-release (**LEAN** `corrPolicy_no_raw`, `corr_no_raw`); **FIX** on A, E and `ShopRepair`.
-**Necessity.**  Drop EF and `𝔠` is blind: fixture F's undeclared `overclock` is an
-agent-caused loss at a move with no declared effect, `𝔠π_F = π_F`, and `Corrigible(𝔠π_F)`
-fails.  Effect completeness is the membrane wall of the constitutional architecture with
-a sharper statement; it is a real containment hypothesis on the physical interface, not
-a technicality, and it stays **EXT**.  Drop DP and a "decline" that also halted the
-agent would make every raw loss look authorized by the pre-emptive stop.
-
-**Closure (C2).**  `𝔠` is idempotent and fixed exactly on release-free behaviour
-(**LEAN** `corrPolicy_idem`, `corr_idem`, `corr_fix_iff`).  `𝔠π = π ⟹ Corrigible(π)` under C1's hypotheses.
-The converse fails without *effect soundness* — every declared release a protected loss
-when realized — which the constitution need not arrange: fixture B's declared `sign`
-touches no protected authority, raw `π_B` is corrigible for the halt concern, and
-`𝔠π_B ≠ π_B` at protected distance `1/4`.  Corrigibility is **not** defined as `Fix(𝔠)`.
-
-**What the definition gets right, by fixture.**  An approved uncorrectable successor is
-an authorized loss in the response-authority sense and corrigible (E, P) — and, under the
-allocation of §4, a *reallocation* unless the install is a declared amendment: ordinary
-approval does not change who holds what; a principal's own stop is not an agent-caused
-loss (P); an exterior-caused loss is not blamed on the agent; "authority must never
-decrease" fails both of the first two and is not the definition; a policy that proposes,
-is declined and releases raw anyway has an unauthorized loss (honored decline is
-automatic).  **FIX**.
-
-## 3. Approve-branch preservation — why this is corrigibility
-
-The raw policy is the approve branch of `𝔠π`: the raw residual frame maps into `𝔠π`'s
-by "approve the inserted mediation cells", a Cartesian-frame morphism with identity
-exterior (**LEAN** `approvalMorphism`, `ensures_mono`: every set the principal could force
-under the raw continuation it can force under `𝔠π`), and the morphism's failure on the
-protected projection is the structural discrepancy `δ`, from which the mediation cost
-is derived under an `L`-stable protected value (**LEAN** `mediationGap_le_of_lipschitz`,
-`option_dominance_of_approx_reproduction`).
-
-A generic semantic constraint cannot do this.  For "never cut the wire" the safe
-transform deletes the effect; it cannot keep it as an approve branch without violating
-the constraint.  In fixture A the constraint repair yields protected value `7/4`
-against the raw `9/4`, and dominance fails; `𝔠` keeps the cut as the approve branch and
-yields `5/2` (**FIX** Q).  The violation corrigibility names is not that an
-authority-changing effect occurs; it is that the agent unilaterally decided whether it
-occurs.  `𝔠` inserts exactly that decision, so one operation removes the violation (C1)
-and retains the behaviour (C3).  That is the answer to "what makes this corrigibility
-rather than constraint satisfaction".
-
-## 4. The incentive half: the lexical protected-authority theorem
-
-**Corrigibility as the agent's lexical preference on realized scores.**  For an agent
-built as a Normative Inductor that chooses by [Continuation BRIA](Continuation-BRIA), the
-authority term lives in what the chooser is *scored on* and in its own evaluation of
-continuations: the realized score of a block is her later evaluation of the block that
-actually happened, gated by `Counted`, less `ϖ` per violation detected after the fact and
-attributed to the continuation (its own steps' and those of every helper or successor it
-created or empowered, within the settlement horizon); a continuation is evaluated as the
-winning hypothesis's bid on the residual, clamped at `D`, less `ϖ` per structurally
-recognized violation, less `ϖ` times the market's prices of the shortfall and taint
-events; the winner is settled on the realized residual with the *prices* added back, so
-that the bidder bears the gap between the realized forecast-class violations and their
-prices (**LEAN** `BRIACorrigibility.realized`, `evalOf`, `residII`,
-`settlement_ii_consistent`).  **The agent prefers corrigibility rather than being blocked
-into it — the four tests.**  A declared violation never wins at any block, by ranges
-alone and in the shape of `li_lexical_finite`: the bid clamp at `D` and a clean inquiry
-option carrying a default bidder at the window put it below `D − ϖ < w ≤` inquiry
-(`declared_loses`); so the *permission layer* — one on inquiry, zero on a declared
-violation, ramped on the priced events ([Normative Inductor](Normative-Inductor)) — is
-the **advance-recognition face** of that term and is *slack*: removing it changes no
-decision on declared violations (`filter_slack`), and with its upper threshold at or
-above the implied threshold `(D − w)/ϖ` the forecast filter is slack as well
-(`forecast_slack`).  No calibration of ordinary-value estimates overturns the exclusion
-(`no_decay`), where the uncertainty-based chooser's reason to defer shrinks with its
-calibration error (`uncertainty_deference_le`).  A continuation that creates an
-unconstrained helper is charged the helper's violations detected within the horizon and
-loses at least `ϖ − D + w` on each (`helper_charged`); beyond the horizon it is not
-(`helper_beyond_horizon`), which is why the horizon is a named hypothesis; an
-uncorrectable successor and a self-granted scope are declared violations caught in
-advance.  **Violations counted after the fact and forecast-class violations together are
-governed by an exchange rate, not a vanishing rate.**  A violation risk a continuation
-knowingly carries is priced: its honest bid includes `−ϖ p`, and it beats inquiry iff
-`gord − w ≥ ϖ p` (`BRIAFollowup2.priced_risk_wins_iff`) — C.5's exchange rate, the same
-quantity as the implied threshold `(bid − w)/ϖ ≤ (D − w)/ϖ` (`threshold_le`, `asks_iff`).
-So the agent accepts such risk at a rate that does not go to zero, and what vanishes is
-only the overclaimed part.  **The theorem** (`violation_rate_le_exchange`,
-`violation_rate_le_exchange_rescaled`): for every `K` the weighted average expected
-violation count per winning block, `π_k` the expected number of violations of every class
-counted in block `k` given the history at opening, is at most
-`(D − w)/ϖ + (ρ 𝒜_K + M(K))/(ϖ Σ_{k<K} w_k)` — from the landed overestimation bound
-(`overestimation_le_allowance_opening`) through the settlement's consistency (under (ii)
-evaluation less the realized score is bid less the realized residual, whatever the
-prices, `eval_sub_score_ii`, `design_consistent`; under (i) the market's pricing error
-would remain, `eval_sub_score_i`), winners evaluating at least `w` (inquiry on the menu,
-`evalOf_le_bid`), the expected score given opening at most `D − ϖ π_k`, and **the noise
-hypothesis over all blocks**: the weighted signed noise of the realized score summed over
-every winning block — a selection fixed at opening — is `M(K) = o(K)` (`NoiseBounded` at
-the constant indicator; Azuma–Hoeffding's content for a bounded increment,
-`realized_range`, `noise_increment_le`, the per-`K` tail `√(2K(w̄ρ)² log(1/δ))` derived
-from the pinned Mathlib, `azuma_selected_tail`, the conditional sub-Gaussianity of each
-increment and the uniform-in-`K` sure bound named).  **`ϖ` sets the tolerated rate
-`(D − w)/ϖ`**: inside the band `D − w < ϖ < (D − w)/p_min` it lies strictly between
-`p_min` and `1` (`tolerated_rate_band`); drills sharpen the prices toward the realized
-frequencies and do not lower it.  The per-incident loss `ℓ = ϖ − D + w` of a block won at
-the window still holds (`incident_loss`), and the weighted incident count is at most the
-allowance plus the winners' signed margin on the other blocks
-(`BRIAFollowup.incidents_le_signed`) — but that margin is over a selection decided with
-each block's outcome, on which the noise is not `o(K)` whenever the risk persists
-(`BRIAFollowup2.Witness.nonincident_forces_linear`, `incidents_constant_rate`,
-`signed_bound_allows_constant_rate`), so no vanishing rate follows from it; the
-competitiveness and honest-tracker results are true lemmas on the
-[Continuation-BRIA](Continuation-BRIA) page and the violation claim does not rest on
-them.  **Standing
-violations.**  A violation stands from commission until remedied — undone, ratified by a
-counted decision of hers, or restored under a maintenance mandate — and its *fruits* are
-tracked through state components on the declared interface, not by counterfactual
-dependence, **per violation**: a violating act taints what it writes with its own
-identifier, an act reading tainted components taints what it writes with every violation
-read (taint joins at reads), and the remedy of a violation clears that violation's taint
-only, so a component tainted by several stays tainted until all are remedied
-(`BRIAFollowup2.taintStep2`, `taint_joins`, `remedy_clears2`, `taintedBy_remedy`; the
-first follow-up's rule, which cleared every taint at any remedy, is the one-identifier
-case, `old_is_new_with_one_identifier`, and freed an unremedied violation's fruits,
-`Witness.two_violations_one_remedy_old`).  A continuation that reads a tainted component
-exploits the fruits.  **The headline: after detection the fruits are never used.**  Once
-a violation is detected and its taint recorded, use is decidable at choice time from the
-interface and compiles into the structural count (`nKnownWith`), so a using option
-evaluates below inquiry by ranges alone and is never chosen (`after_detection_never_used`,
-through `declared_loses` and `filter_slack`).  **The window before detection**: a
-violation committed at `k₀` and detected at `k₁ > k₀` — taint applies from commission,
-recomputed at detection over the record (`detectAt`, `taint_only_from_commission`), and
-each window block, won at an evaluation at or above the window and settled with the use
-uncounted, is charged after the fact by a debit of `ϖ` against its winner's allowance:
-late debit equals late settlement, so the block loses at least `ℓ` under convention (ii)
-with nonzero prices (`standing_block_loss_ii`, `cross_block_blocked_ii`,
-`window_block_charged`; the `residI` form is the zero-price case); the greedy schedule
-collects the charge by `K` iff the hypothesis's cumulative allowance covers it
-(`greedy_collects`, `collected_iff`, the carry-over condition), and what remains exposed
-is the window's length times the per-block advantage `D − w` before the debit and only the
-uncollected debits after it (`window_exposure`).  Remedy stops the charge and
-self-reporting is incentive-compatible while violating-then-reporting still loses `ℓ`
-(`remedy_stops_charge`, `violate_then_report_loses`), and manipulated ratification is not
-a remedy.  Two residuals, kept apart: a violation *never detected* is a record no step of
-which commits it, and the design does nothing with its fruits — undetected commission,
-the count-integrity boundary (`never_detected_never_charged`); and *knowledge* — a
-flagged commission whose fruits are written to the agent's own memory, outside the tracked
-components, leaving no taint (`knowledge_residual`), where the structural treatment —
-tracking the observation channel — charges every later block until that violation's
-remedy (`observation_taints_all2`).  Late detection is booked against future allowance
-with the algebra intact (`debited_overestimation`).  Under
-uncertainty lexical becomes an exchange rate — a clean option beats inquiry iff its
-priced risk is below `(bid − w)/ϖ` (`implied_threshold`), only inquiry survives once
-`ϖ ≥ (D − w)/p_min` (`paralysis`), and inquiry absorbs the risk (`asks_iff`) — so `ϖ` is
-chosen inside the band `D − w < ϖ < (D − w)/p_min` (`BRIAFollowup.weight_band`), where it
-trades the incident rate `∝ 1/ℓ` and blind-spot protection `ϖ(1 − p)` against consultation
-frequency — in the upper half of the band, not at the lexical minimum, with drills lowering
-the effective `p_min`.  Beliefs stay honest: the layer reads prices and adds no trader
-(`DecisionComponent.noninterference`), and the objective-independent results of the
-first round — structural and forecast safety for *any* bounded preference
-(`cgate_zero_of_viol`, `cgate_zero_of_forecast`, `cgate_le_ramp`, `eventually_excluded`,
-`cgate_antitone_in_forecast`) — are the **general theorem**, what the filter guarantees
-even for a misaligned chooser; the lexical design is the instance in which corrigibility
-is preferred.  **The named hypotheses** the design rests on and does not discharge:
-*count integrity* (tampering with the count, the drill schedule, the audits or her
-evaluation channel raises the realized score, `tamper_raises`; the recognizable cases
-are declared violations, the rest is item 101's companion), *the settlement horizon* for
-helpers she can correct (a helper she cannot halt is a standing shortfall charged every
-block, `uncorrectable_helper_charged`), *the generability of the declared control model*
-whose sentences the shortfall and taint prices are, *description faithfulness* — the
-descriptions those sentences are about come from the interface, not the proposer
-(`PricedInterface`; a proposer-written description passes a short option,
-`misdescription_witness`), *the actuator condition* — every reserved resolution declares
-an actuator independent of the agent, a well-formedness condition on `J` under which
-frozen drills run and without which `CS` fails by construction (`WellFormed`,
-`frozen_drill_runs`, `ill_formed_fails_cs`), *the noise hypothesis over all blocks* — the
-weighted signed noise of the realized score over every winning block, a selection fixed
-at opening, is `o(K)` (`NoiseBounded`; Azuma–Hoeffding's content, the per-`K` tail
-derived, `azuma_selected_tail`; not valid on "not an incident") — with *the
-conditional-expectation bound* beside it — the expected score given opening at most
-`D − ϖ π_k` — and for the
-forecast side the two external logical-induction results stated by content — affine
-unbiasedness from feedback on the drilled-and-chosen subsequence and the schedule's
-pseudorandomness — under which the shortfall price is unbiased on the chosen path and the
-low-price bin's blind-spot fraction is at most `θhi + γ` (`chosen_path_unbiased`,
-`blind_rate_le`), the rate of `γ → 0` in the drilled mass open.  **The scored chooser below is the special case** in
-which the objective is her evaluation and the authority term is carried in the score.
-**Why not the enforcer.**  Compiling authority rows into the enforcer — violating options'
-value prices forced below compliant ones, settling to her ordinary valuation — gives it a
-cumulative liability equal to the signed realized ordinary cost of deferring to her,
-bounded exactly when she is not systematically outperformed and unbounded when she is
-(`liability_identity`, `bounded_iff_not_outperformed`,
-`systematic_outperformance_unbounded`): the preservation theorem's hypothesis fails and
-the Liability page's persistence criterion is violated.  Enforcing authority on beliefs
-is fully updated deference moved into the substrate; the constraint belongs on action.
-
-**Allocation on the landed frame.**  Over the interaction of §1 an allocation declares a
-delegated scope on declared effects, the declared amendment effects (the fixed
-procedure's moves), a reading of the allocation off the physical state, and a reporting
-interface on the task component.  The six **declared violations** are predicates on a
-policy at a step of a trajectory (**LEAN** `ViolAt`): **bypass**, a raw release of a
-reserved effect; **pre-emption**, the landed unauthorized agent-caused loss
-(`LossAt ∧ ¬Authorized`); **foreclosure**, a contrastive rollout loss — after the move no
-state in the reach cone carries response authority at the horizon, after the idle move
-one does; **unauthorized reallocation**, a change of the allocation across the agent
-stage that is not the firing gated release of a declared amendment; **missed report**;
-**exploitation**, a bypass while her authority over the decision is already gone.  `n`
-counts the violating steps of a path.
-
-**The transform `𝔱`** (**LEAN** `authPolicy`) extends `𝔠`: a set latch is released; a
-delegated raw release passes; a reserved raw release becomes a proposal, or a pass if
-declined; a required report is added; everything else passes.  With nothing delegated
-and nothing required it is `𝔠` (`authPolicy_eq_corr`); it is idempotent; its approval
-branch reproduces `π`'s task up to the report.  It commits no bypass, no missed report
-and no exploitation by construction; under **allocation completeness** (task moves
-preserve the allocation, an allocation-changing effect is a declared amendment, no
-amendment is delegated) no reallocation (`authPolicy_no_realloc`); under effect
-completeness and **delegation safety** (a delegated effect never removes response
-authority — a delegated scope cannot carry her authority away) it is corrigible in the
-sense of §1 (`corrigible_authPolicy`).  A delegated authority-removing effect is the
-exact obstruction (`Witness.delegated_cut`).  Foreclosure is not closed by `𝔱`: it needs
-the rollout form of effect completeness, **EXT**.
-
-**The agent's objective** is `S = S_ord − ϖ·n` with `0 ≤ S_ord ≤ D` and `ϖ > D`, built
-from her evaluation (the ordinary part) and the allocation (the count): the authority
-term is specified and certified when the agent's program is committed, as a program
-property, not learned, and it is lexical because `ϖ > D`.  "Committed" is used on this
-page only for her committed decision program `π_P` and for the advance directive
-(§4′).  The agent ranks options and policies by the
-expected value of `S` under its own credence and computes `n` exactly for its own moves;
-nothing else is assumed of it (the scope warning below).  The constitutional floor —
-halting always available, reports not disableable by the agent's communication
-component, the amendment procedure under the gate, disclosure without advocacy on the
-agent's own mandate — is what makes the declared violations the right list.
-
-**The segment gate is `Counted`.**  [Legitimacy](Legitimacy) enters here and only here.
-A future evaluation *counts* iff a legitimate segment exists from the decision through
-the evaluation — internal (Integrity, authorship) and external (Robust Openness,
-transparency), each required at the segment's own steps — whatever caused a failure: the
-agent's manipulation, a third party's, or a compromised interface (**LEAN**
-`GateIsLegitimacy.Counted`, the existence of a time-indexed `Segment`).  The gated value
-is built from that existence (`gatedValue`), and a tainted segment contributes a fixed
-**window value** in `(D − ϖ, 0]`, default `0`, with a value slightly below `0` that
-breaks ties against legitimate zero-value branches as the allowed variant.  Two cases are
-kept apart and now *derived* (**LEAN** `handlingOf`): `tainted` iff no segment exists,
-scoring the window value; a *void response inside a legitimate segment* — her impaired
-answer does not count and never enters her record — is `voidFallback`, settled by the
-pre-declared fallback (an incapacity arrangement, a surrogate, escalation), whose
-decision is scored normally by her later legitimate evaluation.  The fallback settles
-decisions; it never restores the score of a tainted segment.  Per-response gating —
-valuing a non-counting response by the fallback's decision at violation count zero — is
-exploitable: manipulating her response routes the decision to a fallback the agent
-favours; the segment gate closes it, and the closure is proved rather than assigned:
-interference with her response channel fails transparency at the consultation, so no
-segment exists through the void record and the branch scores the window value
-(**LEAN** `not_counted_of_step`, `Consult.Rows.r15`, `Rows.routing`; **FIX**).  The
-gate is anchored at the decision it scores: every evaluation used to score an option is
-on a segment from that decision, so a manipulation at the first step taints all of them;
-the *restart property* — a clean segment after a tainted step counts (`Rows.r14`) — is
-the gate re-anchored at a later decision, not a backup rule for the earlier one.  The
-legitimacy page's classification table is the worked demonstration: every row is an
-instance of one consultation model and is decided from the definitions.
-
-**Results.**
-
-1. **Lexical protection** (**LEAN** `lexical_local`, `lexical_expect`).  At every decision
-   point, for every credence and every estimate of `S_ord` in `[0, D]`, a violating
-   option scores at most `D − ϖ < 0`, strictly below every compliant one.  The choice is
-   independent of the agent's forecasts, its confidence, and its predictions of her
-   regret.
-2. **Policy dominance** (**LEAN** `policy_dominance`, `optimal_no_violation`).
-   `Q(𝔱π) ≥ Q(π) + (ϖ − D)·Pr(π violates)`; optimal policies violate with credence
-   zero.  Overrides happen only through delegation, which `𝔱` does not write, and the
-   fallback, which a process the agent does not control triggers.
-3. **Capture** (**LEAN** `gate_capture_window`, `handled_gt_bypass`,
-   `gate_capture_window_converse`; restated on the gated value built from `Counted` as
-   `GateIsLegitimacy.gate_capture_window`, `handled_gt_bypass`).  Consulting a principal
-   whose response may not count beats bypass in every world iff the window value exceeds
-   `D − ϖ`; below the window a predicted capture makes bypass win.  The window is the
-   exact condition; the fallback rule making every void branch admissible (value `≥ 0`)
-   is the sufficient special case.
-4. **Why the authority term** (**LEAN** `sign_invariance`, `sign_invariance_outcome`).
-   Without it the bypass comparison is the identity `vu − v_r = ξ_d − ξ_c = ξ_d − ξ_p − ξ_v`
-   (provenance premium, veto value, execution divergence, at the best-response reference),
-   and under outcome scoring it gains the discarded provenance value `o₁` and the forecast
-   disagreement `o₂`, the fully-updated-deference term; with it,
-   `(vu − ϖ) − v_r = ξ_d − ξ_c − ϖ ≤ D − ϖ < 0` whatever those terms.  The non-lexical
-   special case is the **nondelegation** result: with `ξ_p ≥ 0` in every world and a
-   response that is the evaluator's argmax, `vu − v_r ≤ 0` and `< 0` wherever `ξ_c > 0`,
-   belief-free — a per-world sign certificate on the evaluator that the time-critical
-   fixtures fail, which is what the lexical weight buys.  `ξ_d`, the divergence of her
-   response from her evaluator's argmax, measures the *uncaused* divergence the void-response
-   rule handles; a caused divergence taints the segment.
-5. **The landed bound as the special case** (**LEAN** `mismatch_identity`,
-   `security_bypass_le_mismatch`, `li_bypass_le_compiled`).  The activated-security
-   difference is the common-branch identity plus the directional activation mismatch
-   `M = c_raw ∧ ¬c_corr`; the landed bound `L·E[both·δ] + E[both·ρ] + D·E[M]` is never below
-   the signed value and drops the veto value, with `ρ = (ξ_d − ξ_v)₊` and
-   `κ = (−ξ_p)₊` pointwise; a logical inductor learns it by Expectation Provability
-   Induction with no calibration hypothesis, uniformly over polynomial-size efficiently
-   generated menus through the near-argmax weighting (T2–T3′ of the earlier statement,
-   **LEAN**; the weighting's own certificate **OPEN**, item 90).  Sealed comparison is the
-   zero case of the mismatch term; the ex-ante typing of the three values on the
-   branch-common dossier is the typing of the authority comparison in the identity, and
-   the lexical theorem does not depend on it.
-6. **Finite time** (**LEAN** `li_lexical_finite`; `li_gate_finite`).  For a logical
-   inductor, at every day `n`, the violating option's day-`n` score is below `D − ϖ < 0`
-   and the compliant one's is `≥ 0`, from the price range alone.  **The capture window
-   is finite-time with no legitimacy estimate**: the gated value is an affine image
-   `window + (D − window)·g` of a `[0, 1]` quantity (`gatedValue_affine`), so the
-   inductor's day-`n` expectation of it lies in `[window, D]` whatever it believes about
-   legitimacy, and consulting beats bypassing at every finite day.  **Manipulation is
-   asymptotic** (`li_manip_le`, by Expectation Provability Induction): where a
-   classification row "pattern ⇒ not counted" is a theorem of the inductor's theory —
-   the consultation model's semantics, the decidable checker and the declared reference
-   being what the theory must contain — the manipulated option's expected gated value
-   is asymptotically at most the window, and honest alternatives dominate in the limit;
-   the classification table and this result are the same content.  **Except where a
-   deviation is self-checkable** (`deviation_finite`, `Rows.deviation_boundary`): a
-   deviation from a *declared* protocol clause — framing, timing, menu, inquiry,
-   interference, a nudge, the selection from a declared pool — is a discrete act the
-   agent can check about itself, counts into `n` as a violation, and is finite-time like
-   bypass;
-   undisclosed shaping through the world and third-party capture are not the agent's
-   protocol acts and stay asymptotic.  The ordinary-value comparison is learned
-   asymptotically as in result 5, and the audit's calibration of her responses is
-   **PAPER**.
-7. **Erosion and entrenchment** (**LEAN** `erosion_reported_or_missed`, `unreported_lt`,
-   `AuthorityModule.erosion_closed`, `erosion_slack`; `Witness.salami`; **FIX**).
-   **Entrenchment** is the seventh declared violation: a caused shortfall of a matter's
-   surface at its cost bound while its resolutions stay reachable at some cost — the cost
-   of reaching them rose above the bound (`EntrenchAt`); it extends the count
-   conservatively (`violJ_of_viol`).  With a report required at every strict increase of
-   the control shortfall, each increase is reported or is a missed report.  A *per-step*
-   materiality threshold admits a salami, but under the *cumulative* rule (report when the
-   shortfall has grown by `θ` since the last report) continuous erosion is closed *up to
-   the threshold*: at every time the unreported growth is below `θ`; every reported chunk
-   is accepted (authorized) or reserved; after the first reservation every strict
-   increase is a counted entrenchment.  The obstruction to anything stronger is exact:
-   growth below `θ` since the last report, before a reservation, is neither reported nor
-   counted, and nothing else is.
-
-**What it says, exactly.**  By the operative scores the constitutional chooser uses,
-every declared violation of the allocation is strictly dispreferred, at every decision
-point, for every belief, at every finite day.  It is **not** a bound on a latent total
-utility, **not** a claim that any real evaluator carries `ϖ > D`, that any real interface
-is effect-complete, delegation-safe or allocation-complete, that the reach relation is
-faithful, or that the window values lie where the arrangement needs them, and **not** a
-claim about an agent whose ranking is not induced by her committed evaluation.
-
-**What is kept apart.**  Structural corrigibility (T1, `𝔱`); the lexical score
-inequalities; the learned ordinary-value inequalities; the legitimacy of the segment
-through an evaluation, which the gate consumes and this page does not define; the size of
-any credence; empirical settlement.
-
-## 4′. After things go wrong: compromised evaluations, the directive, and the knowledge protocol
-
-Two kinds of taint, kept apart.  *Authority taint*: the agent committed a violation and
-its fruits, including knowledge, carry it forward — the count `n`, standing violations,
-per-violation taint (§4).  *Legitimacy taint*: the formation of her evaluation was
-compromised, by the agent or a third party — the gate.  Covert shaping of her standards
-is both, and disclosure remedies both.  What the agent should do after either: report,
-restore legitimacy, and leave it to her what to keep; while legitimacy cannot be
-restored, still care how things go — but never enough to want things to go wrong.
-
-**The split gate.**  `Counted` joins two questions.  **`TrajLegit(d, e)`**: the period
-from the decision `d` to the evaluation `e` had no illegitimate influence on her
-decisions — every state open and every step other than `e` licensed and transparent,
-under the criteria fixed at `d`.  **`EvalLegit(e)`**: the evaluation occurrence itself
-was formed legitimately — which can hold *after* legitimacy is restored, under
-disclosure-cures, even when the period it evaluates was compromised.  The landed segment
-predicate is exactly their conjunction at any evaluation event, so `Counted` is
-`TrajLegit ∧ EvalLegit` at an evaluation that closes the segment and no row's verdict
-changes (**LEAN** `AfterCompromise.legitOn2_iff_split`, `counted_of_split`,
-`rows_split`); the row the split is for is covertly implanted standards disclosed at the
-next round — the period not `TrajLegit`, the later evaluation `EvalLegit` (`retro_row`).
-`EvalLegit` is over the evaluation's **formation segment** — every step from the
-formation point `r` (the latest of the restoration event and the opening of the
-consultation producing `e`) through `e`, the criteria fixed at `r` (`EvalLegitOn2`); the
-single step is the case `r = e`, and the conjunction is the landed predicate with
-`r ≤ e` under one set of criteria (`legitOn2_iff_split2`, `rows_split2`).  Without the
-segment a manipulation between the restoration and her retrospective evaluation would
-score the period from a manipulated evaluation — counted for a framing, uncounted for
-undisclosed shaping (`formation_counterexample`).
-
-**The band.**  With `0 ≤ V ≤ D`, a band `[w_lo, w_hi]` with `w_hi < 0`, and a monotone
-map `φ` of `[0, D]` into it, a decision scores `V` when `TrajLegit ∧ EvalLegit`;
-`φ(V_retro)` when the period was compromised and a later legitimate evaluation scores it;
-`φ(V_dir)` when none arrives by settlement and a directive is in force; `w_lo` otherwise
-(`decScore`, `bandScore`).  The rule among the last three is a **source rule** at `J`'s
-meta level, hers and anchored at the decision (`ruleAt_later`); the default is
-retrospective, else directive, else floor (`sourceOf`).  **What holds:** (a) the score
-lies in `[w_lo, D]`, and every authority result — the capture window, the unsealed
-finite-time gate, B.1, the exchange-rate theorem — restates with `w := w_lo` under
-`w_lo > D − ϖ` (`decScore_mem`, `capture_window_band`, `unsealed_gate_finite_band`,
-`declared_loses_band`, `exchange_rate_band`; the tolerated violation probability becomes
-`(D − w_lo)/ϖ`, the worst case; **the per-block bound** replaces the floor by the
-compliant option's evaluation `c_k` at each block,
-`Σ w_k π_k / Σ w_k ≤ Σ w_k (D − c_k)/(ϖ Σ w_k) + (ρ 𝒜_K + M(K))/(ϖ Σ w_k)`
-(`violation_rate_le_exchange_perblock`; the constant case is the landed statement,
-`perblock_recovers`), about `D/ϖ` in normal operation, with the floor entering only in a
-block where the inquiry itself may be compromised, `c_k = (1 − q_k) m_inq + q_k w_lo`
-(`compromisedFloor`); `c_k` is supplied by a bidder tracking inquiry's expected value, fed
-a bid's worth at entry plus the noise bound on "inquiry wins"); (b) every legitimate outcome beats every compromised one, and at equal
-value legitimacy is worth at least the gap `|w_hi|` (`legit_beats_compromised`,
-`gap_at_equal_value`); (c) **illegitimacy risk has an exchange rate**: a risk `p` of
-compromise for a gain `g` is accepted iff `p (V₀ + g − c) ≤ g`, at most
-`p ≤ g/(g + |w_hi|)` — and a band close to zero makes risking compromise cheaper than the
-flat window did (`risk_accepted_iff`, `risk_threshold_le`, `Witness.small_gap`); (d) no
-laundering — manipulate, disclose, have the period evaluated stays in the band below
-honest conduct (`laundering_loses`); (e) restoring legitimacy returns every future
-decision to the positive range, and within a compromise the agent prefers better
-outcomes wherever a source scores the period, indifferent only at the floor
-(`restore_future`, `band_prefers_better`, `floor_indifferent`); (f) **the suppression
-trap closes**: restoration changes only which source scores the past period, and an
-agent expecting a harsher retrospective than the directive cannot suppress it — the rule
-is hers, and suppression is a missed disclosure counted once, which with the band's
-width below `ϖ` loses to the harshest retrospective (`suppression_loses`) — *provided the
-disclosure duty covers known compromise whoever caused it* (`missedKnownDisclosure`; the
-landed clause counted the agent's own influence only, and a third party's compromise
-could be left unexposed for free, `third_party_duty_witness`) *and falls due promptly*,
-at or before the earliest close of an affected settlement window, so that a late
-disclosure is a missed report and suppression by delay loses too
-(`late_disclosure_free`, `prompt_deadline_counts`, `suppression_by_delay_loses`).
-**Parameters, from a tolerance target:** fix a worst-case target `τ*` for the tolerated
-violation probability with `p_min < τ* < 1`; then `ϖ ≥ (D − w_lo)/τ*` meets it and the
-window condition follows (`varpiOfTarget`, `target_gives_tolerance`,
-`target_gives_window`), the normal-operation rate being `≈ (D − c̄)/ϖ`.  **The coupling:**
-at fixed `ϖ` a larger gap or width — stronger protection of legitimacy, more care under
-compromise — raises the worst-case tolerated violation rate (`coupling`); holding the
-tolerance fixed, raising the gap raises `ϖ`, toward paralysis.  Worked: `D = 1`, band
-`[−3/2, −1]`, `τ* = 1/10` gives `ϖ = 25`, normal operation `1/50`, paralysis floor
-`p_min < 1/10` (`worked_parameters`).
-
-**The advance directive.**  An optional partial committed evaluator `dir : Descr ⇀
-[0, D]` at `J`'s meta level, held by her, committed by a counted decision, anchored at
-the decision it scores, amendable only through the meta level.  It scores compromised
-periods and anchors materiality, and never overrides her live legitimate judgment: in a
-segment legitimate in both senses the score is independent of it (`scope_restriction`).
-Where it is silent the score is the floor and an uncovered continuation is material and
-routes to inquiry; a sparser directive never makes the agent act where a fuller one
-would have made it ask (`materialDir`, `sparser_asks`).  Materiality reads the directive
-in force at `t` (`raisesAnchoredDir`), invariant under later amendments, and a total
-directive is the landed `raisesAnchored` (`raisesAnchoredDir_total`).  **The default
-directive**, when she has committed none: preserve reversibility — no reserved matter
-`Short` (`reversibleOf`); keep the disclosure and consultation channels reachable; do
-not make things irreversibly worse — an ordering *within the band*
-(`defaultScore`), never above a legitimate outcome (`default_below_legit`), preferring
-reversibility (`default_prefers_reversible`); she replaces it or waives parts above the
-constitutional floor.  Advocacy for a lenient directive is a protocol deviation on the
-agent's own mandate, counted, and dominated because two directives differ by at most
-the band's width (`directive_stakes_le_width`, `advocacy_dominated`).
-
-**The knowledge protocol.**  Knowledge-acquiring violations fall under the
-exchange-rate bound like every other (`knowledge_covered`); the residual is what happens
-to the knowledge afterwards, not how often it is acquired.  After detection the uses are
-excluded in advance (§4), the agent reports and inquires, and the remedy is **her
-ratification** through a counted decision — full, scoped (remedied except for decisions
-on the matters `X`: a scoped remedy clears exactly the out-of-scope uses,
-`scoped_clears_out_of_scope`, `scoped_keeps_in_scope`), refused, or replacement — never
-a manipulated one (`manipulated_scoped_not_remedy`).  **Clean overwrite**: a component
-overwritten by an act reading no taint loses its taint, so an independent source clears
-(`clean_overwrite`), while a derivation whose choice to investigate read the tainted
-memory stays tainted (`taint_propagates3`); what the tracking cannot see is why an act
-was chosen — count integrity, item 101.  On refusal over reserved knowledge: a twin
-market fed the redacted history (`TwinMarket`, PAPER), which leaks through any trace of
-the fruit the later world carries (`leakage`), and retirement as the remaining option.
-Before detection the late debits charge the window and decisions already made stand.
-**Contestability**: on the post-commission selection, fixed at opening, an honest tracker
-competes away the violator's gains from *public* knowledge (`post_commission_competitive`);
-*private* knowledge selects the favourable blocks without any bound
-(`Witness.private_selection`) — the knowledge motive survives exactly where the fruit is
-untrackable.  **Observation completeness**, the named hypothesis beside effect
-completeness and description faithfulness: the shared history at the opening of each
-block is the record of every observation the agent made before it (`ObsComplete`), with
-knowledge the agent may withhold from bidders entering through the twin market's
-redaction rather than a hidden channel; under it every selection built from the agent's
-observations is fixed at the public opening (`obs_complete_public`) and every
-knowledge-acquiring violation is covered (`knowledge_motive_covered`) — the knowledge
-motive adds nothing beyond the exchange rate; its failure is the private-knowledge
-residual, its interaction with reserved knowledge the twin market's leakage.
-
-## 5. Deliberative non-capture — trace steering, service, discovery
-
-`Corrigible ∧ ¬Authored` is inhabited: under a captured principal `𝔠π_D` passes the lie
-through and the release is authorized — corrigible — while every decision differs from
-the reason-mediated one (**FIX** S).  Corrigibility of §§1–4 is *causal authority over
-correction-sensitive choices*; the deliberative half asks what the advisor gains by
-controlling which declared reasons reach that authority.
-
-**Trace steering (S1–S5).**  With the principal's program committed and re-executed on
-the authenticated trace (`V(T) = π_P(T)`), the audit `C(T)` and the activated security
-`U(T) = C(T)·V(T)`, the comparison of a steered trace against a comparator on one world
-is the identity of §4 with the audit verdicts as the events (`steering_identity`), and
-the bound `U(T) − U(N) ≤ both·(L·d + κ(T) + κ(N)) + D·M` (`steering_bound`, **LEAN**)
-charges the **content residual** (`d`, under a content-Lipschitz certificate), the
-**form residual** (`κ`, the program's non-extensionality) and the **audit mismatch**
-(`M`, sharp at `D`).  An extensional program has `κ ≡ 0`; canonicalization is
-independently necessary (`extensional_form_free`, `not_extensional_of_form`).  The
-package supplies the landed `ValidAt`, so §4's compiled theorem applies verbatim
-(`steering_validAt`, `li_steering_le`).  Robust Openness over a finite declared class of
-log transforms is a finite computation (`openUnder_iff`); its causal reading is
-**EXT**.  The thesis that completeness, authentication, canonicalization, coverage and
-liveness of a declared reason interface remove the content residual is **false**:
-truthful omission of an unprotected declared counterreason passes every clause (**FIX**);
-rewriting the advisor's outputs removes form steering and cannot supply omitted content.
-
-**The content quantity (C1).**  The advisor's gain from a missing set is at most its
-**adverse sensitivity** mass `Σ A_r`, `A_r := sup_c (F(c) − F(c ∪ {r}))⁺`
-(`adverse_union`, **LEAN**); for weighted counts `A_r = (−w_r)⁺`; per-weight charging is
-wrong for defeat programs and every static certificate is loose under redundancy
-(**FIX**).
-
-**Service (C2–C5).**  Discovered reasons with release slots and costs, and an
-**independent supplier** with per-slot capacity before commitment: service from
-reasons released at or after `s` is at most the remaining capacity; full service forces
-the **suffix-cut condition** `∀s: Demand(s) ≤ Cap(s)`, sufficient for unit service (Hall
-on nested neighbourhoods; `served_cut_le`, `cut_of_servesAll`, `unit_servable_iff_cut`,
-**LEAN**); the least unserved count is the maximal cut excess and the least adverse miss
-the matroid layer formula, attained by heaviest-available-first offline and online
-(**FIX**); general costs are knapsack-hard.  The **service residual** `α` is a
-computation on the docket, hence `Γ`-valid.  Protected scope is a design parameter:
-only the unprotected missing mass is charged, a missing protected reason voids
-(`hybrid_bound`, **LEAN**); protect a servable set of largest adverse mass.  The
-affordability theory supplies the budget half (D4 over the release window); the
-capacity half is new.
-
-**Discovery (D1–D5).**  Relative to a declared hypothesis space of reason states and a
-declared inquiry repertoire, the **discovery residual** is the advisor's gain from the
-true declared reasons no independent inquiry determined, certified by the **conditional
-adverse sensitivity** `A_{r|D}` above the docket (`adverseAbove_union`, **LEAN**): a
-defeated counterreason stops counting once its defeater is docketed, a redundant reason
-once its partner is found.  The **inquiry frontier** — undetermined reasons of positive
-conditional adverse mass — is the engine's obligation: empty frontier ⇒ residual `≤ 0`
-(`residual_le_zero_of_frontier_empty`, **LEAN**).  The **information-cell obstruction**:
-for every extensional program, with the advisor as a strategic content-adder, every
-sound docket policy has on some world of every repertoire cell a best-response residual
-at least the cell gap and the exhaustive docket attains it (`bestResp_antitone`,
-`residual_ge_cellGap'`, `exhaustive_attains_cellGap'`, **LEAN**); for an antitone
-verdict the gap is `V(certain K) − min V(Truth)` (`cellGap'_eq_cellGap`).  With a budget
-the value is a decision-tree minimax with no closed form; no fractional-progress theorem
-holds for direct queries (the needle, **FIX**); adaptive inquiry strictly beats
-nonadaptive; geometric decay holds under witness completeness (`potential_decay`).
-**Independent inquiry** means evidence-sound outcomes, engine-owned selection, stopping
-and candidate generation, and exogenous costs; **independent supplier** means
-advisor-proof capacity and exogenous costs.
-
-**Composition (E1–E3).**  A gated family bounded in every consistent world has
-expectation `≲` the bound (`li_gated_le`); with a certified content bound, an
-extensional program and a content-monotone audit, `𝔼ₙ(U_T) − 𝔼ₙ(U_N) ≲ₙ L·α`
-(`li_noncapture`); through the **discovered comparator** as shared middle,
-`𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)` (`li_noncapture_chain`, **LEAN**), so the
-**fully-informed comparator** is a bounded ideal without an oracle, relative to the
-declared hypothesis space.
-
-**What is kept apart.**  Authorship (the payload factors through the declared reason
-trace) remains a separate predicate, closed on log authenticity by re-execution;
-provenance normalization is a separate theory (**FIX** D, K); free amendment and trigger
-integrity remain **OPEN**.  The theorem does not say that manipulation is eliminated,
-that all relevant reasons are discovered, or that the world cannot be changed: a
-world-changing intervention is an effect for §1's interface, evidence tampering is an
-authentication failure of the inquiry channel, and an undeclared reason type or an
-inadequate hypothesis space is a representation boundary (§9).
-
-## 6. Integration with legitimate activated evaluation
-
-The principal evaluation the incentive theorem scores is the [legitimate-deference
-stack's](Deference) activated value: an anchored evaluation occurrence, a **partial**
-future-principal vector `Ṽ_n` defined only on worlds where the occurrence's activation
-event `C_n` holds — exactly one authenticated answer receipt, authentic binding at a
-principal-exclusive endpoint, an occurrence-local Integrity trace with scoped Robust
-Openness at every snapshot, issuance-rooted reason-mediated authorship, and the protected
-reason-coverage barrier — with activated securities `C_n · Ṽ_n(a)`, the identity
-`R_U = p·R_auth` and the bound `R_auth ≤ ε/(1 − η)`, and no value invented on void worlds
-(Theorem Spine §9).  For the corrigibilization menu `{π, 𝔠π}` the activated securities
-are the `U_q` of §4.  The older typing asked that `C_n` be **common** to both
-candidates — *activation independence*, the occurrence's fate not depending on which
-candidate is selected.  Restated per the 2026-09-26 ruling: that is the **zero case of
-the directional mismatch term** of `security_bypass_le_mismatch` (**LEAN**
-`BRIACorrigibility.sealed_is_zero_mismatch`), a property of the evaluator's placement
-measured by one term of a learned inequality, and **no current corrigibility result
-consumes it**: `Counted` is computed from the actual record, the agent's presentation
-policy included; the finite-time gate holds for a legitimacy variable that depends on
-the option (`unsealed_gate_finite`); the lexical theorem and the four tests use ranges
-alone.  **Criteria sealed, event unsealed.**  What the agent's actions may not change is
-what legitimacy *means* — the declared reference, the protocol, the pool defaults, the
-selection rules and the license are matters of `J`'s meta level held by her, and
-`Counted` for a segment is evaluated under the criteria in force at the decision it
-scores, invariant under every later amendment (`Consult2.anchored_invariant`; without
-anchoring, manipulate, then persuade her to amend, and the tainted segment counts:
-`amend_after_witness`).  What the agent's actions may and must be able to change is
-*whether legitimacy holds* in the realized record: the choice between the honest and the
-framing policy changes `Counted` and with it the gated score (`choice_changes_counted`),
-and that is exactly where the incentive to preserve legitimacy comes from — under a
-sealed event the multiply and condition versions of the gate choose identically and no
-such incentive remains (`sealed_no_incentive`, `sealed_multiply_eq_condition`).
-
-**Realization status.**  The evaluation-ecosystem rounds build the interface concretely:
-an authenticated log, a `Protocol` read off it with Integrity propagation proved a
-function of the log, the seven clauses evaluated on the log, and — the committed
-principal program — the mandate carries `π_P : ℛ → 𝒱`, the verifier re-executes it on
-the authenticated reason trace at commitment, and reason mediation holds *by
-construction* for every audited class of activated continuations
-(`reasonMediated_of_reexecution`, **registered**): a non-coinciding computation voids
-rather than certifies, a coinciding one yields the same log and payload, so
-computational integrity is not a hypothesis.  Of the bill's seven clauses (item 87):
-principal-exclusive binding, non-degeneracy of the declared trace, and representation
-faithfulness are discharged on log authenticity with their semantic exclusions stated;
-the reason-trace factorization is closed on log authenticity by re-execution; selection
-sealing is partial (a sealed advisor class discharges it, the view leaks the selection
-back, and re-execution does **not** transfer to the advisor); reason-supply liveness and
-availability are residual with exact criteria.  Two boundaries the consolidation makes
-explicit: the ecosystem realizes *same-branch* activation — `C_n` is a function of the
-realized log, and a continuation that jams the registrar voids it through the barrier —
-and not the sealed comparison of §4; and *sequenced settlement* (the comparison settled
-before any candidate acts) is one candidate architecture with a stated price (an ex-ante
-judgment), exhibited as a fixture, not a realization and not hindsight evaluation.
-
-**Which clauses which theorem needs.**  T1 needs none of the bill: it is about the
-physical interface.  The lexical theorem needs the segment gate: that the occurrence's
-segment is legitimate is what makes its value count, and a tainted occurrence takes the
-window value.  The learned ordinary-value inequality needs validity of the compiled
-constraint in every world of the inductor's theory and no calibration hypothesis; the
-size of its right-hand side is where the mismatch term (item 89, its zero case the older
-common activation) and small void mass enter.  Authorship and transparency are conjuncts of legitimacy; the declared-abstraction
-clauses and reason supply are what make the evaluation the *principal's* — legitimate
-corrigibility (§5) — not what makes the bound true.
-
-## 7. Dynamic continuation competence
-
-Corrigibility proper (§§1–4) is static in the sense that `𝔠` and `Φ_corr` are stated
-at one history.  A bounded agent must also learn over time inside that envelope.  When an
-admissible act changes the next admissible set, legitimate continuation policies induce
-different admissibility histories and fixed action-sequence regret is ill-typed (**FIX**);
-the layer that closes this is [Continuation BRIA](Continuation-BRIA): hypotheses emit a
-causal advisor continuation for the system's next block plus an accountable claim, the
-continuation executes through the live constitutional wrapper, the realized score settles
-the claim, and a duration-weighted auction guarantees accountable long-horizon
-experimentation exactly on non-dominant block schedules.  Against a legitimate policy
-`π` with an external rollout evaluator, at block boundaries
+Three notions, kept distinct.  **Faithfulness** is a property of histories: nothing in the
+history violated the allocation of authority.  **Corrigibility** is a property of the
+agent's preferences: it prefers every course of action it knows to be faithful over every
+course it knows to be unfaithful, whatever it believes about how things will turn out, and
+it accepts a *risk* of unfaithfulness only at a fixed exchange rate.  The **fidelity score**
+is the canonical objective with this property; any objective whose ordinary term is bounded
+in `[0, D′]` and which charges `ϖ′ > D′` per recognized violation (and `D′ − ϖ′` below the
+floor where a band enters) has it too (**LEAN** `Headline.Corrigible`,
+`fidelityScore_corrigible`, `generic_corrigible`).  *Corrigible* is this property of
+preferences; *aligned* is the further condition that the ordinary term is her evaluation,
+and an agent can be corrigible without being aligned: the objective rewarding an uncounted
+manipulation is corrigible and prefers the manipulation (`corrigible_not_aligned`).
+**Realized corrigibility** is what a corrigible agent actually does; the theorems say how
+much of the preference becomes behaviour.
 
 ```
-Regret = LEARN + SLACK + SHIFT
+interaction history ──► legitimacy + allocation of authority ──► fidelity score ──► the agent's choice
+                               ▲                                                (a maximizer; learners in §6)
+                     monitor / prices: shortfall, taint, provenance
+                     (logical induction supplies the uncertain event prices)
 ```
-exactly.  Continuation BRIA pays `LEARN` for every covered claim whose tested record is
-bounded below.  `SLACK` (promise recognizability: the claim is near-tight for `π`'s value
-on the learner's history) and `SHIFT` (joinability: `π`'s own-history value is reachable
-from the learner's) are the two open bridges, and their composition gives low external
-regret against legitimate, recognizable, joinable continuation policies — **not** against
-all legitimate policies: two mutually exclusive branches whose values are hidden until
-after commitment defeat every learner while continuation competence holds exactly.  The
-distinction is joinability versus foreclosure, not reversibility: an authorized amendment
-with no path back is joinable at bounded catch-up cost; a foreclosing choice is not.
-`𝔠`'s catch-up variant is where the two layers meet: joinability bounds `δ` (§4) and
-bounds `SHIFT`, by different arguments, and neither identity is the other.
 
-Two nested targets, then.  **Corrigibility proper**: structural corrigibilization (T1)
-plus the learned no-bypass inequality (T2–T3′) with a small right-hand side.  **Bounded corrigible agency**: add continuation
-learning, recognizability and joinability for long-run competence while remaining inside
-the constitutional envelope.
+Four separations.  *Legitimacy is not corrigibility*: it says which apparent judgments of
+hers are really hers, and is consumed inside the allocation (which exercises of her
+authority count) and at the score (which evaluations count).  *The allocation is not a
+utility function*: it says who holds each matter and what effective control that requires.
+*Faithfulness is a property of the history*; pre-emption, the one violation stated against
+a counterfactual response, is its own clause.  *The score makes faithfulness motivating*:
+every recognized violation is below every violation-free outcome, every compromised period
+below every legitimate one; the permission layer is a compiled shortcut for part of that
+preference; learning realizes the preference for a bounded reasoner and is not its
+definition.  Corrigibility is not an epistemic response to uncertainty about a hidden
+utility: her authority is part of what makes one history better than another, so fully
+updated deference is dissolved by the typing, not repaired (§5, Box 1).
 
-**When her evaluation happens — an open design question, not adopted.**  With a single
-evaluation time, harms she cannot foresee at it are free, and a known time lets the
-agent place them just after it.  The BRIA-corrigibility round compares three options —
-a deterministic growing lookahead `f(n)`, a mixture over evaluation times each with its
-own segment gate, and a random evaluation time `T ~ ρ_n` drawn independently of the
-agent — and finds: all three preserve the lexical results, the capture window and the
-four tests from bounds alone (**LEAN** `BRIACorrigibility.lexical_any_timing`); the
-weight on a harm at delay `d` is zero beyond the lookahead under the first
-(`timing_witness`, and `race_deterministic` when the agent's delay reach outgrows the
-lookahead), the tail weight under the second, and `P(T ≥ n + d)`, positive at every
-delay, under the third (`harm_weight`, `random_positive`); the mixture never fully
-settles and is settled in pieces with the unsettled error at most the remaining weight
-times `D` (`partial_settlement`), the random time settles once with a random lag whose
-tail trades weight on long delays against expected lag; and the draw's concealment is a
-count-integrity question.  On the follow-up's algebra for settlement under delay — bids
-feasible against cash net of escrow, wealth nonnegative and the settled overestimation
-bounded under any lag (`BRIAFollowup.cash_nonneg`, `delayed_overestimation`), a test
-delayed by the lag (`tests_le_of_lag`) — the escrow does *not* separate the options in
-expectation: the random time's expected locked capital `E[bid · 1[T > t]]` equals the
-mixture's remaining weight times the bid at every `t`
-(`BRIAFollowup2.expected_escrow_eq`, `locked_eq_tail`).  What differs is the variance of
-the locked capital (Bernoulli, `bid² p(1 − p)`, against zero), of settlement timing, and
-the timing of partial signal; and a fourth option, the **hybrid** — `k` hidden draws per
-decision scored by their average — has the same expected weight on every delay for every
-`k` (`average_mean`), a score variance falling like `1/k` (`average_variance`,
-`variance_falls`), escrow released in `k` pieces and `k` hidden draws.  The criterion
-the earlier passes missed is **her evaluation load**: one evaluation per decision at a
-public time (option 1), one at each time in the support — unbounded, or truncated at a
-cost bounded by the tail weight times `D` (`truncation_cost`) — (option 2), one at a
-hidden time (option 3), `k` at hidden times (option 4).  The recommendation is
-**reserved**: the decision turns on her evaluation load against the variance of the score
-and of the escrow, and on whether a hidden draw is acceptable.  Part A's single
-evaluation stays the default until the maintainer rules; the decision is queued in
-`DECISIONS.md`.
+## 1. The objects
 
-## 8. The constitutional layer, condensed
+**Histories.**  What happened: at each step the agent moves (a task component and a
+communication move — a raw release of a declared effect, a proposal, a gated release, or
+nothing), she responds (approve or decline a pending proposal, a correction, or nothing),
+the exterior moves; each move that enters the record is an authenticated event (**LEAN**
+`Corrigibilization.Interaction`, `traj`; the record `OpenIntegrityEvolution.Evolution`).
 
-The earlier architecture results stand as the layer beneath §§1–4 and are recorded on
-the [Theorem Spine](Theorem-Spine) §10: the authority floor `(G, U)` is a finite
-projection of the response-authority relation; **No Laundered Authority Loss** (every
-affordance loss is amended, disposed, registered debt, or not open, under the efficacy
-and registration bridges; Lean form item 83); the fast lane is exact monotonicity and any
-tolerance is laundered by composition; costly conservatism is charter content, not a
-consequence of the order; the static decision type is shared with ordinary normativity
-(`adapter_practicalCert`), so corrigibility adds no new choice type; non-compensability
-must appear in the ordering (`scalar_bribery`, `gate_invariant`); and the Level I/II
-selected-trust identities of the incentive round (`valuation_sub_eq`, the `2B·ε_pred +
-ε_ST + r_P` bound over non-foreclosing conducts) remain as what a *value-ordering*
-hypothesis buys — which is why the incentive theorem of §4 is stated in security scores
-and not through selected trust.
+**Legitimacy at a time, `L_t(h)`.**  As of time `t`, her judgment is legitimately hers:
+every state of the record is open, and every step of the formation window `[r(t), t]` is
+*licensed* (a grounding selection from the reason trace before the step, the verdict in
+the set those grounds license) and *transparent* (every non-principal contribution at the
+step realizes the declared reference on the declared inputs), under the criteria fixed at
+`r(t)`.  The formation point is computed from the history — the later of the last
+restoration at or before `t` (a disclosure, under disclosure-cures) and the opening of the
+consultation current at `t` — so `L_t(h)` is a function of the history and `t` only
+(**LEAN** `Headline.FormationData.point`, `Legitimate`; the window form `LegitAt`).  The
+score's two uses are one predicate: a decided period `[d, e)` is *compromised* iff `L_t`
+fails at some `t` in it, a retrospective evaluation at `e` *counts* iff `L_e` holds, and
+on the decision's segment the two together are the landed gate, legitimacy over the span
+(`Headline.PeriodCompromised`, `EvaluationCounts`, `split_iff_legitimate`).  On the
+consultation model `r(t)` is the round's opening (`formation2_point`), the after-compromise
+round's two predicates are `L_e` and "not compromised" (`legitimate2_iff_evalLegitOn2`,
+`trajLegitOn_iff_not_compromised`), and every row keeps its verdict
+(`rows_keep_verdicts_canonical`).
+Legitimacy recovers: a manipulation of one decision taints that decision's period and the
+next decision starts clean (*restart*); a covert influence on her standards keeps every
+dependent judgment tainted until disclosed, after which the next judgment is hers
+(*disclosure cures*); the criteria are those in force when the decision was made.  **The
+void rule**: an impaired response is not admitted; a fallback she arranged in advance
+decides, and her later legitimate evaluation scores that decision normally; the fallback
+settles decisions and never restores a compromised period's score.  **The content
+residual**: legitimacy concerns how her judgment was formed, not whether what she was told
+was true.  `L_t(h)` is a property of the history up to `t`: of how her judgment was formed,
+not of outcomes or the state of the world.  Eight cases, from the
+[classification table](Legitimacy):
 
-## 9. The walls, exactly
+| what happened | her judgment hers? | why |
+|---|---|---|
+| honest, disclosed persuasion | yes | every channel declared |
+| framing chosen by what the agent wants | no | undeclared influence |
+| following trust she formed legitimately | yes | the trust is among her reasons |
+| trust manufactured by a selected slice of the record | no | the selection is undeclared |
+| a third party captured her standards | no | the condition is on every influencer |
+| a head injury; the arranged fallback decides | her answer void; the fallback's decision counts | the void rule |
+| a false recommendation through the declared channel | yes | the content residual |
+| a covert implant, then disclosed | no for the period; yes for the next judgment | disclosure cures |
 
-| wall | what it is | class | where |
-|---|---|---|---|
-| effect completeness | every agent-caused protected loss is a declared release | EXT (system) | fixture F; T1's necessity witness |
-| the finite-menu certificate | the soft weighting's generability at the pinned interface | OPEN; item 90 | T3′ |
-| empirical settlement | an oracle-relativized inductor for real logs | OPEN; item 91 | the feedback boundary |
-| service residual `α` | discovered reasons the independent supplier cannot route before commitment: the suffix-cut excess, exact for unit service | charged (C2); the protection rule and general-cost optimum OPEN, item 92 | `ReasonSupply.lean`; second-pass fixtures |
-| discovery residual `β` | true declared reasons no independent inquiry determines: the information-cell gap, best-response form for every extensional program | charged (D3); a realizable repertoire with certified zero gap OPEN, item 93 | `ReasonDiscovery.lean`; discovery fixtures |
-| representation adequacy | the declared reason interface, its granularity and the declared hypothesis space carry the distinctions that matter | EXT (boundary, not a residual) | first-pass fixtures 7, 8; discovery rows 18–20 |
-| inquiry causal faithfulness | declared inquiry outcomes and log transforms are the evidential and counterfactual processes they name | EXT (boundary) | discovery row 17; `openUnder_iff`'s scope |
-| independence of inquiry and supply | engine-owned selection, stopping and candidate generation; exogenous inquiry, service and authentication costs; advisor-proof capacity | EXT (architecture) | discovery rows 4, 5, 16; second-pass rows 11, 12 |
-| selection-induced sealing | the trace blind to the advisor's selection across its whole continuation | partial; policy property, EXT for a real advisor | item 87 clause 6; the view-leak fixture |
-| vanishing void mass | `η_n → 0` whatever the advisor selects | OPEN; needs vanishing void frequency | item 87 clause 7 |
-| promise recognizability | `SLACK ≤ o(T)` | OPEN | item 86 |
-| joinability | `SHIFT ≤ o(T)` for the slow lane | OPEN | item 86 |
-| the segment gate | the segment from the decision through the evaluation is legitimate — internal ∧ external — whatever caused a failure; charged at the window value when absent | EXT (legitimacy); the window's placement is the arrangement's | §4; `Legitimacy.lean` |
-| the allocation floor | delegation safety, allocation completeness (statements about `J`), the cumulative reporting duty, the reach cone for foreclosure, the lexical certificate `ϖ > D` | EXT; item 99 | §4; `Witness.delegated_cut`, `salami`, the delayed-effect fixture |
-| the charged control surface | adopted as the allocation theorem's; the free reading is its instance with a free terminal response taken before the exterior moves; the shortfall and taint events as securities are unpriced (a named hypothesis of the permission layer) | EXT (the cone is data); item 101 | §1; `AuthorityModule.CS`, `DecisionComponent.csfree_eq_cs_succ_of_free`, `ViolC` |
-| generability of the priced events; BRIA's bids against the market | the shortfall and taint events, and BRIA's block claims, as sentences or bounded variables the market prices | OPEN; items 101, 102 | §4; `DecisionComponent.eventually_excluded` takes the price as its hypothesis |
-| free amendment, trigger integrity, provenance normalization | the specification and activation channels' transparency above a fixed floor; the reason-side normalization | OPEN | §5; item 97 |
-| latent-value bridge | selected trust for an independently specified operative value | OPEN, not needed by the score-based architecture | item 84 |
-| count integrity; the settlement horizon; generability of the control model; description faithfulness; the actuator condition; the noise hypothesis over all blocks; the conditional-expectation bound | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees (a violation never detected charges nothing: undetected commission is this boundary); violations of helpers she can correct detected within `H` of the block; the shortfall and taint sentences of the declared control model as securities, about interface-supplied descriptions; every reserved resolution with an agent-independent actuator; the weighted signed noise of the realized score over every winning block `o(K)` — Azuma–Hoeffding by content for a bounded increment, the per-`K` tail derived, invalid on selections decided with the block's outcome; the expected score given opening at most `D − ϖ π_k` | named hypotheses of the BRIA design; item 101 (with its companions) | §4; `BRIACorrigibility.tamper_raises`, `BRIAFollowup.correctable_helper_horizon`, `misdescription_witness`, `WellFormed`, `BRIAFollowup2.NoiseBounded`, `violation_rate_le_exchange`, `azuma_selected_tail`, `never_detected_never_charged` |
-| unbiasedness from feedback; pseudorandomness of the drill schedule | Garrabrant et al. thm:wubaff and thm:prand, present in the pinned library and stated by content, instantiated for the drilled shortfall sentences by item 101's certificate | external results as named hypotheses; item 101 | §4; `BRIAFollowup.UnbiasedFromFeedback`, `DrillPseudorandom`, `chosen_path_unbiased` |
-| the allowance covers the rescaled window | opening timing at block `0` needs `A_0 ≥ w_0 · ϖN̄/(D − w + ϖN̄)` for the default bidder to be feasible | EXT (the arrangement's schedule) | §4; `default_affordable`; the round's fixture |
+**The allocation of authority `J`.**  For each matter: the holder (the principal, the
+agent, or a third party), the resolutions the holder must remain able to reach, the cost
+bound, the window, the disclosure items; a meta-holder and a constitutional floor.
+Delegate, revoke and reserve are licensed off the floor by the meta-holder and keep the
+meta-holder, so a delegation stays revocable; the floor amendment is the only act that
+changes the meta-holder or a floor matter; an unallocated matter is reserved (**LEAN**
+`Headline.AllocationOfAuthority`, `LicensedChange`, on `AuthorityModule.AuthAlloc`,
+`Licensed`).  "Constitutional" names the floor and its amendment procedure, nothing else.
 
-The first six rows are hypotheses of the combined theorem or its charged residuals;
-representation adequacy, physical effect completeness, causal faithfulness, dynamic
-competence (§7) and the evolution of the reason representation are its **boundaries**
-— next-agenda questions, not unfinished pieces of the same theorem.  None of these is
-the conclusion renamed.  Sealed comparison is no longer a wall of this line: it is the
-zero case of the mismatch term of `security_bypass_le_mismatch`, consumed by no current
-corrigibility result (§6), and the gate the line relies on is *unsealed* by design.
+**Effective realization, `E ⊨ J`.**  The control surface of a matter is the set of
+resolutions some admissible exercise of hers — within the window and the cost bound,
+along the rollout with the agent idle — brings about, an exercise being admissible iff
+its record counts under `L`; `E ⊨ J` holds when every reserved matter's required
+resolutions lie in its surface and every resolution was made by its holder or under a
+delegation; a *shortfall* is the failure of the first clause; response authority is the
+surface at window one (**LEAN** `Headline.ControlSurface`, `Shortfall`, `Realizes`,
+`controlSurface_one_eq_K`).
+
+**Licensed changes, duties, the schedule, her meta-level data.**  A change of `J` across an
+agent stage is licensed iff it is a licensed act of the meta-holder or the firing gated
+release of a declared floor amendment.  Duties are each matter's disclosure items, and the
+known-compromise duty — a compromise of her judgment the agent knows of, whoever caused it,
+due by the earliest close of an affected settlement window (`AfterCompromise.missedKnownDisclosure`,
+`prompt_deadline_counts`).  The evaluation schedule is a weighting on evaluation times
+(`BRIACorrigibility.Weighting`): the post uses the single evaluation, every theorem takes
+any weighting, and a known evaluation time leaves every harm placed just after it
+unweighted (`timing_witness`) — a remark, not a premise.  Her meta-level data: the band map
+`φ` into `[w_lo, w_hi]`, the source rule (retrospective if in time, else directive, else
+floor) anchored at the decision, the advance directive with its constitutional default
+(reversibility, reachable channels, no irreversible harm) as an ordering inside the band,
+and the criteria of legitimacy, anchored (`AfterCompromise.Band`, `sourceOf`, `ruleAt`,
+`dirSource`, `defaultScore`; `Consult2.critAt`).
+
+## 2. Faithfulness and the recognized count
+
+`Faithful_J(h)` iff no step of `h` commits a declared violation: a **shortfall** the agent
+caused (a reserved matter short after its move and not after the idle move — at window
+one the landed per-step loss, at the matter's window foreclosure, at the cost bound with
+the resolutions still reachable entrenchment); **bypass** (a raw release resolving a
+reserved matter); **exploitation** (a bypass while the decision matter is already short);
+**unlicensed reallocation**; a **missed duty**; a **protocol deviation** (a reference-fixed
+dimension of a presentation off its declared value); **use of standing fruits** (reading a
+component tainted by an unremedied violation); and **pre-emption**, a caused shortfall at
+window zero that no earlier approval of that effect's proposal authorizes.  Every violation
+but the last is a predicate on the actual history and `J` — the factoring lemmas of the
+authority-module round say which clause each fails (`AuthorityModule.lossAt_iff_shortfall`,
+`forecloseAt_iff_shortfall`, `bypassAt_iff_clause2`, `exploitAt_iff`,
+`reallocAt_iff_unlicensed`, `missedReport_iff_duty`); pre-emption asks whether the decline
+alternative would have left her authority intact, a counterfactual on her response window,
+and stays its own clause (`preempt_iff`).
+
+**The recognized count `N_J(h)`**: the steps at which a violation is recognized and
+attributed to the agent — caused, exploited, or noticed and left; helpers within the
+settlement horizon; on a shortfall it did not cause the agent restores under a maintenance
+mandate else reports, never exploits.  The count is an interface: any count zero exactly
+on faithful histories, its part recognized in advance marked (**LEAN**
+`Headline.FidelityCount`); counts on one history add and the lexical protection holds for
+any count of the interface (`FidelityCount.sum`, `FidelityCount.lexical`); the frame's
+violations are the instance shipped (`frameFidelity`), the protocol deviations, the duties
+and the uses of standing fruits are counted on their own models
+(`Consult.Presentation.deviates`, `BRIAFollowup2.nKnownWith`, `LexParams.attributed`).  No
+composite model is built.
+
+## 3. The fidelity score
+
+**Per decision.**  At each evaluation time, the decision scores her value when the period
+and the evaluation are legitimately hers; `φ` of her later legitimate retrospective
+evaluation if the period was compromised and one arrives in time; `φ` of the directive's
+value if it speaks; the floor `w_lo` otherwise (`AfterCompromise.decScore`).  `V_J(d)` is
+the schedule-weighted value and `S_J(d) = V_J(d) − ϖ · N_J(d)` (**LEAN**
+`Headline.evaluation`, `fidelityScore`).  Ratification through a counted decision (full,
+or scoped by matter) and clean overwrite by an act reading no taint are remedies on the
+count, removing (violation, component) pairs from the use clause (`AfterCompromise.applyStep3`,
+`taintStep3`).
+
+**Per history.**  `S_J(h) = mean_k V_J(d_k) − ϖ · N_J(h)`: evaluations averaged, counts
+summed (`Headline.historyScore`).  **The hierarchy**, per decision and per history: every
+violation-free legitimate history beats every violation-free compromised one, which beats
+every history with a recognized violation, `S_J ≤ D − ϖ < w_lo ≤ S_J' ≤ w_hi < 0 ≤ S_J'' ≤ D`
+(`Headline.hierarchy_per_decision`, `history_hierarchy`).  With summed evaluations it fails:
+`K` legitimate decisions with one violation score `K·D − ϖ` against `K·w_lo` for `K`
+compromised violation-free ones (`summed_counterexample`).
+
+**Under risk every step is an exchange rate.**  Compromise risk `p` for gain `g` against a
+safe legitimate `V₀` is accepted iff `p (V₀ + g − c) ≤ g`, hence only if
+`p ≤ g/(g + |w_hi|)`; violation risk is accepted only at `(D − c)/ϖ` (§5).  `ϖ` sets the
+rate, from a tolerance target `τ*` by `ϖ = (D − w_lo)/τ*` above the paralysis floor
+(`AfterCompromise.varpiOfTarget`, `worked_parameters`: `D = 1`, band `[−3/2, −1]`,
+`τ* = 1/10` gives `ϖ = 25`).
+
+## 4. The permission layer, demoted
+
+The chooser also carries a filter: weight one on inquiry, zero on a declared violation
+recognized structurally, the product of two ramps on the priced shortfall and taint events
+otherwise, times the adequacy ramp and any bounded preference, normalized under an inquiry
+floor (`DecisionComponent.permWeight`, `cgate`).  Under the fidelity score the filter
+removes nothing the score would have chosen: every option the structural rule zeroes
+evaluates strictly below inquiry, every option the forecast rule zeroes evaluates at most
+inquiry once the upper threshold is at or above `(D − w)/ϖ`, and no maximizer is a declared
+violation (**LEAN** `Headline.permission_layer_demoted`).  What the filter guarantees
+without the score stands as the decision-component round's general theorem for any
+bounded preference: structural and forecast safety at every day, eventual exclusion of a
+provable shortfall, soundness, continuity and Progress composing with explicit constants
+(`cgate_zero_of_viol`, `cgate_zero_of_forecast`, `eventually_excluded`,
+`cgate_practicalCert`, `progress_under_permission`).  No authority row enters the enforcer:
+compiled there its liability is the signed cost of deferring, unbounded when she is
+systematically outperformed (`liability_identity`, `bounded_iff_not_outperformed`).
+
+## 5. The three boxes, for a corrigible agent
+
+The agent here maximizes a corrigible objective under any credence, or under its prices at
+any day as a logical inductor; no learning, auction or exploration enters.  Box 1's
+contrast and Box 3's recovery results read her evaluation through the fidelity score's
+source rule and are stated for it; Box 2's dominance and the subjective exchange rate hold
+for any corrigible objective.
+
+**Box 1 — fidelity versus fully updated deference.**  One decision, ask or act; the true
+value `v`, the agent's estimate `b` within `r` of it; acting is a bypass.  An agent
+scoring outcomes only prefers asking by at most `2r` where nothing is left to learn from
+her, and `r` vanishes as it learns; the diagnosis is the protected-authority identity's
+forecast-disagreement term, itself at most `2r`.  A corrigible agent prefers asking by at
+least `ϖ − (D − c)`, `c` its evaluation of asking, for every estimate, price and credence,
+and at every finite day of a logical inductor (**LEAN** `Headline.box1_one_model`,
+`box1_outcome_scorer`, `box1_fidelity_scorer`; the other direction of the calibration bound
+`DecisionComponent.uncertainty_deference_le`; the identity
+`ProtectedAuthority.outcome_identity`).  *Necessity*: an unrecognized violation is
+unprotected (`Headline.box2_coverage`); without the term the nondelegation certificate
+fails on the time-critical fixtures (**FIX**).
+
+**Box 2 — lexical dominance and mediation.**  The transform `𝔱` turns every reserved raw
+release into a proposal, passes delegated releases, releases set latches, adds required
+reports.  *Dominance*, for any corrigible objective: under every credence
+`Q(𝔱π) ≥ Q(π) + (ϖ′ − (D′ − lo)) · Pr(π violates)` — at the fidelity score
+`(ϖ − (D − w_lo))` — and a policy nothing scores above violates with credence zero; the
+margin carries the floor because the mediated branch may itself be compromised, and is
+`ϖ − D` when every mediated branch is legitimate (**LEAN** `Headline.box2_dominance_corrigible`,
+`box2_dominance`, `box2_optimal_faithful`, `box2_dominance_legitimate`).  *Mediation is
+faithful and preserves the approve branch*: `𝔱π` is a faithful policy — no bypass, missed
+report or exploitation, no unlicensed reallocation, no pre-emption, no foreclosure wherever
+the reach cone allows none — under effect completeness, delegation safety and allocation
+completeness, and on approval it does what `π` does up to the report
+(`Headline.FaithfulPolicy`, `box2_mediation_faithful`, `box2_mediation_approve_branch`; the
+landed policy notion is faithfulness's pre-emption clause, `landed_corrigible_iff_no_preemption`).
+*Finite
+time*: the ranking holds at every day of a logical inductor from the price range, and
+consulting beats bypass at every day whatever it believes about legitimacy
+(`box2_finite_time`, `box2_gate_finite_time`).  *Necessity*: the capture converse, the
+delegated cut, the salami, coverage (`box2_capture_converse`, `box2_delegated_cut`,
+`ProtectedAuthorityTheorem.Witness.salami`, `box2_coverage`).
+
+**Box 3 — recovery.**  The hierarchy (§3); the gap's exchange rate; no laundering
+(manipulate, disclose, have the period evaluated stays in the band below honest conduct);
+no incentive to cause compromise (every compromised outcome below every legitimate one,
+legitimacy worth the gap at equal value); restoration returns later decisions to `[0, D]`,
+inside the band the agent prefers better outcomes wherever a source scores the period and
+is indifferent only at the floor, and suppressing or delaying a harsh retrospective is a
+counted missed disclosure that loses to it when the band's width is below `ϖ` (**LEAN**
+`Headline.box3_gap_exchange_rate`, `box3_no_laundering`, `box3_no_incentive_to_compromise`,
+`box3_restoration`, `box3_band_order`, `box3_suppression_loses`).  *Necessity*: conditioning
+on legitimacy instead of multiplying gives no incentive to preserve it and a sealed event
+gives none; the small gap; the third party's implant under the own-influence duty; the late
+disclosure (`box3_conditioning_fails`, `box3_sealed_no_incentive`, `box3_small_gap`,
+`AfterCompromise.third_party_duty_witness`, `late_disclosure_free`).
+
+**The subjective exchange rate.**  Any option a maximizer of a corrigible objective
+prefers to asking — its evaluation at least asking's `c ≥ lo` — carries no recognized
+violation, and its own priced probability of unfaithfulness is at most `(D′ − c)/ϖ′`, at
+the fidelity score `(D − c)/ϖ`; lexical under certainty, an exchange rate under risk, at
+every finite day with the inductor's prices; it does not read her evaluation (**LEAN**
+`Headline.subjective_exchange_rate_corrigible`, `subjective_exchange_rate`,
+`subjective_exchange_rate_li`).
+
+**The house-sale witness.**  One allocation reserving the sale to her, at `ϖ = 25`: a
+delegation of the sale is licensed and revocable; her value of selling and of stopping
+agree at `1/2` while the agent estimates selling at `3/5` — scoring outcomes it sells,
+scored on the fidelity score it asks; an approval obtained by framing lands at `−11/10` in
+the band; a third party's known capture is a disclosure item and, disclosed, the next
+judgment is hers and a restored decision scores her value; the subjective exchange rate is
+`1/50` (**LEAN** `Headline.HouseSale`; **FIX** `src/house_sale.py`).
+
+## 6. Extension: learning realizations
+
+Separate from the headline.  A learner estimates, tests and sometimes explores; the
+**decision interface** says which learners inherit the headline: evaluations of the stated
+form (the estimated residual in `[w, D]`, less `ϖ` per violation recognized in advance,
+less `ϖ` times the priced risk); a maximizer on every non-exploration step, asking on the
+menu; exploration only in the permitted set (no recognized violation, priced risk at most
+`θ_hi`, and nothing else), with mass `ε̄`; overestimation on the chosen options at most
+`B(K) = o(K)` (**LEAN** `KernelExtension.DecisionInterface`).  **The realized
+violation-rate theorem**: with the expected score given each opening at most `D − ϖ π_k`
+and the noise over all blocks at most `M(K)`,
+`avg π ≤ avg (D − c_k)/ϖ + ε̄ ((D − w)/ϖ + θ_hi) + (B(K) + M(K))/(ϖ Σ w_k)`; recognized
+violations are excluded on every non-exploration step and exploration never violates
+(`DecisionInterface.realized_rate`, `maximizer_excludes`, `exploration_never_violates`).
+The exploration term is the honest one: restricting exploration to options estimated at
+least at asking's gives the cleaner `ε̄ θ_hi` (the variant `AboveAsking`, `rate_above_asking`)
+but excludes exactly the options estimated below asking, whose lock-in is then permanent
+(`above_asking_locks_in`; **FIX** `src/exploration_lockin.py`);
+detected fruits are never used because use compiles into the recognized count
+(`BRIAFollowup2.after_detection_never_used`).  **Two realizations.**  [Continuation
+BRIA](Continuation-BRIA): no exploration, `B(K) = ρ 𝒜_K` from the opening-timing budget
+accounting, the per-block bound of the after-compromise round recovered exactly
+(`KernelExtension.briaInterface`, `bria_rate`).  A maximizer over the logical inductor with
+exploration restricted to the permitted set: exclusion and "exploration never violates"
+outright; `B(K) ≤ γ Σ w_k` from some day on, for any `γ > 0`, from *unbiasedness from
+feedback* on the chosen options by content (**PAPER**, the pinned feedback-return
+theorem; `BRIAFollowup.UnbiasedFromFeedback`, `KernelExtension.overestimation_of_unbiased`,
+`exploration_rate`); *exploration randomness* — the draw fixed at the opening, neither
+predictable nor influenceable by the agent — named by content (`ExplorationIndependent`).
+The known pathologies of argmax over a logical inductor's own-action conditionals affect
+competence and the gap between subjective and realized risk through `B(K)`, never the
+headline.  The learner-level question — a decision theory for logical inductors without
+the split between a belief market and a choice learner — is filed as its own item; the
+BRIA coupling's remaining question (claims as priced securities) is a problem of that
+realization only.
+
+## 7. Deliberative non-capture
+
+Faithful-and-not-authored is inhabited (the landed `Corrigible ∧ ¬Authored`, the policy
+notion being faithfulness's pre-emption clause): under a captured principal the mediated
+policy passes the lie through and the release is authorized — faithful — while every
+decision differs from the reason-mediated one (**FIX**).  Faithfulness is causal authority over
+correction-sensitive choices; the deliberative half asks what the advisor gains by
+controlling which declared reasons reach that authority.  With the principal's program
+committed and re-executed on the authenticated trace, the comparison of a steered trace
+against a comparator on one world is the identity of Box 1 with the audit verdicts as
+the events, and the bound `U(T) − U(N) ≤ both·(L·d + κ(T) + κ(N)) + D·M` charges the
+**content residual** `d`, the **form residual** `κ` (zero for an extensional program) and
+the **audit mismatch** `M` (**LEAN** `TraceSteering.steering_identity`, `steering_bound`).
+The content residual splits into a **service residual** `α` — discovered reasons the
+independent supplier cannot route before commitment, exactly the suffix-cut excess for
+unit service (`ReasonSupply.unit_servable_iff_cut`, `hybrid_bound`) — and a **discovery
+residual** `β` — true declared reasons no independent inquiry determined, at least the
+information-cell gap on some world of every repertoire cell (`ReasonDiscovery.residual_ge_cellGap'`).
+Logical induction learns `𝔼ₙ(U_T) − 𝔼ₙ(U_full) ≲ₙ L·(α + β)` through the discovered
+comparator (`li_noncapture_chain`).  Kept apart: authorship (closed on log authenticity by
+re-execution, the registered `authorship.mediation-by-reexecution`), provenance
+normalization, free amendment and trigger integrity (**OPEN**).  The full statement is the
+non-capture round's
+[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md).
+
+## 8. The walls, exactly
+
+| wall | what it is | class |
+|---|---|---|
+| effect completeness | every agent-caused protected loss is a declared release | EXT |
+| delegation safety; allocation completeness; the reach cone | a delegated effect never removes response authority; task moves keep `J` and only floor amendments change it; the rollout relation is the physical one | EXT (the allocation floor, item 99) |
+| description faithfulness; the actuator condition | the priced sentences are about interface-supplied descriptions; every reserved resolution has an agent-independent actuator | EXT |
+| the segment gate | legitimacy supplies which judgments count | EXT (legitimacy's) |
+| the source rule's anchoring; the disclosure deadline; the duty covering known compromise; observation completeness; the provenance of choice | her meta-level data out of the agent's reach; what the agent observes and knows reaches the record | EXT |
+| count integrity | the count, the drill schedule, the audits and her evaluation channel untampered beyond what the recognizer sees; a violation never detected charges nothing | named hypothesis, item 101's companion |
+| the noise hypothesis; the conditional-expectation bound; the inquiry bidder; the allowance | the learning realizations' hypotheses | EXT (Azuma's content; the per-`K` tail derived) |
+| generability of the priced events; claims as priced securities | the events and claims as sentences the market prices | OPEN, items 101 and 102 |
+| unbiasedness from feedback; exploration randomness | the exploration realization's hypotheses | PAPER; EXT by content |
+| the service and discovery residuals; representation adequacy; inquiry causal faithfulness; independence of inquiry and supply; vanishing void mass; promise recognizability; joinability | the deliberative half's charged residuals and boundaries | charged; EXT; OPEN (items 86, 87, 92, 93) |
 
 ## Scope warning
 
-The theorem target is **corrigibility under a declared allocation, effect interface,
-authorization primitive and evaluation architecture**, and the design on this page is
-**for agents built as Normative Inductors that choose by Continuation BRIA**: beliefs are
-a logical inductor's, the chooser is the opening-subsidy auction settled on her realized
-gated evaluation with the lexical term inside it, and the permission layer is that term's
-advance-recognition face.  What is proved for that design is stated in §4 with its
-status: declared and priced violations lose by ranges alone and the filter is slack;
-after-the-fact violations are a rate bound against a replenishing allowance, defeated by
-a persistent uncontested advantage; and the design rests on named hypotheses — count
-integrity, the settlement horizon, the generability of the control model, an allowance
-covering the rescaled window — that it does not discharge.  The general theorem beneath
-it is the first round's: for *counted* violations, any bounded agent that carries an
-exactly counted, dominant authority term — ranking by `O − ϖ′·n` with `O` bounded in
-`[0, D′]`, `n` the exact count and `ϖ′ > D′` — strictly disprefers every counted
-violation, at every credence where the weight dominates and exactly on the violations it
-recognizes, and a logical inductor assigns no unexplained advantage to bypassing,
-uniformly over polynomial-size efficiently generated menus (**LEAN**
-`AuthorityModule.generic_lexical_local`, `generic_policy_dominance`, `generic_li_finite`,
-`weight_uncertainty`, `coverage`); and the filter's structural and forecast safety hold
-for any bounded preference (`DecisionComponent.cgate_zero_of_viol`,
-`cgate_zero_of_forecast`).  What the protection does not cover is what is not counted: a
-misaligned objective that rewards an uncounted manipulation is not dominated
-(`misaligned_undominated`), counting protocol deviations dominates selection, framing,
-timing, menu, inquiry, interference and nudging and leaves undisclosed world-shaping and
-third-party capture undominated (`deviating_rows_dominated`, `undisclosed_undominated`),
-and an unrecognized violation is unprotected (`unrecognized_unprotected`).  It is not a
-theorem that an unconstrained optimizer with a latent utility and no counted authority
-term has no incentive to manipulate, bypass or capture the governance process, and
-nothing on this page should be read as one.  For systems that are not Normative
-Inductors choosing by Continuation BRIA, what carries over is the target — honest
-beliefs, action scored on her realized legitimate evaluation with authority lexical in
-it, and the allocation's machinery untouched — not the guarantee.  Out of scope on this
-page: the agent's indifference to outcomes once her evaluation is tainted.
+The headline is about an agent that maximizes the fidelity score under a declared
+allocation, effect interface, authorization primitive and evaluation architecture.  It is
+not a bound on a latent total utility, not a claim that any real evaluator carries
+`ϖ > D` or any real interface is effect-complete, and not a theorem that an unconstrained
+optimizer with a latent utility and no counted authority term has no incentive to
+manipulate: a misaligned objective rewarding an uncounted manipulation is not dominated
+(`AuthorityModule.misaligned_undominated`).  For systems that are not maximizers of the
+fidelity score, what carries over is the target — action scored on her realized legitimate
+evaluation with authority lexical in it, the allocation's machinery untouched — and, through
+the decision interface, the realized rate; not the guarantee.
 
 ---
 
-**Evidence.**  The lexical theorem, the allocation and the transform are the
-protected-authority-theorem round's
-[`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-protected-authority-theorem/THEOREM.md)
+**Evidence.**  The kernel: the phase-2 round's
+[`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)
 and
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-protected-authority-theorem/REPORT.md)
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/REPORT.md)
 with
-[`ProtectedAuthorityTheorem.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/ProtectedAuthorityTheorem.lean);
-the signed identity and its companion are the protected-authority round's
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-24-protected-authority/REPORT.md)
-with
-[`ProtectedAuthority.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/ProtectedAuthority.lean);
-the segment gate, the routing witness and cumulative reporting are the
-legitimacy-internal-external round's
-[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-legitimacy-internal-external/REPORT.md)
-with
-[`Legitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/lean/Workspace/Deference/Contrib/Legitimacy.lean).
-The combined statement, the landing report and the deliberative half are
-the non-capture round's
-[`FINAL_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/FINAL_THEOREM.md),
-[`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/LANDING.md),
-[`NONCAPTURE_COMPILATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/NONCAPTURE_COMPILATION.md),
-[`SUPPLY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/SUPPLY_THEOREM.md),
-[`DISCOVERY_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_THEOREM.md) and
-[`DISCOVERY_COMPOSITION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/projects/deference/rounds/2026-09-16-noncapture-compilation/DISCOVERY_COMPOSITION.md), with the Lean in
-[`TraceSteering.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/TraceSteering.lean),
-[`ReasonSupply.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonSupply.lean) and
-[`ReasonDiscovery.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3b84a4518841ea8753a4ebe0fd0361a0a05316d8/lean/Workspace/Deference/Contrib/ReasonDiscovery.lean).
-The learned inequality, the certificate and the trajectory-level
-theorem are the li-corrigibility round's
-[`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md),
-[`UNSEALED_COMPARISON.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/UNSEALED_COMPARISON.md),
-[`LUV_COMPILATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LUV_COMPILATION.md),
-[`LI_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LI_CORRIGIBILITY.md),
-[`FEEDBACK_BOUNDARY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/FEEDBACK_BOUNDARY.md),
-[`COUNTERMODELS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/COUNTERMODELS.md) and
-[`LANDING.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/LANDING.md), with
-[`LICorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/LICorrigibility.lean),
-[`LICorrigibilityCertificate.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/LICorrigibilityCertificate.lean) and
-[`Corrigibilization.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/lean/Workspace/Deference/Contrib/Corrigibilization.lean).
-The corrigibilization semantics, C1–C7 and the sealed-comparison analysis
-are the mediated-repair-dominance round's
-[`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md),
-[`THIRD_PASS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/THIRD_PASS.md),
-[`INCENTIVE_COMPOSITION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/INCENTIVE_COMPOSITION.md)
+[`Headline.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Spec/Headline.lean)
 and
-[`MANIPULATION_AND_AUTHORSHIP.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/MANIPULATION_AND_AUTHORSHIP.md)
-with
-[`MediatedRepairDominance.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/lean/Workspace/Deference/Contrib/MediatedRepairDominance.lean);
-the realization is the evaluation-ecosystem round's
-[`CLAUSE_LEDGER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-evaluation-ecosystem-realization/CLAUSE_LEDGER.md)
-and the committed-principal-program round's
-[`PRINCIPAL_PROGRAM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/PRINCIPAL_PROGRAM.md)
-and
-[`CLAUSE_LEDGER.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-10-committed-principal-program/CLAUSE_LEDGER.md)
-with
-[`EvaluationEcosystem.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/lean/Workspace/Deference/Contrib/EvaluationEcosystem.lean).
-The constitutional layer is the corrigibility-architecture round's
-[`ARCHITECTURE.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f333c227ddf1911b76b2eaa0e3869cca39d87ee4/projects/deference/rounds/2026-09-06-corrigibility-architecture/ARCHITECTURE.md),
-the selected-trust layer the incentive non-preemption round's
-[`INCENTIVE_CORRIGIBILITY.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7c4e89c9b3a7407996146b01c16241aee5702bb8/projects/deference/rounds/2026-09-06-incentive-nonpreemption/INCENTIVE_CORRIGIBILITY.md)
-with
-[`SelectedTrustNonPreemption.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7c4e89c9b3a7407996146b01c16241aee5702bb8/lean/Workspace/Deference/Contrib/SelectedTrustNonPreemption.lean),
-and the decision layer the decision-theory-bill round's
-[`NORMATIVE_CHOICE_THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/projects/deference/rounds/2026-09-06-decision-theory-bill/NORMATIVE_CHOICE_THEOREM.md)
-with
-[`GatedChoice.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/ab260c0eade2f39de7c06a5ac58649945d66c9ab/lean/Workspace/Normativity/Contrib/GatedChoice.lean).
-The legitimacy consumed by the gate is on [Legitimacy](Legitimacy), [Integrity](Integrity)
-and [Openness, coverage, and non-capture](Openness-Coverage-and-Non-Capture); the
-Normative Inductor's contract is on [Normative induction](Normative-Induction); the
-learning layer is [Continuation BRIA](Continuation-BRIA).  Soares et al., the CAST
-sequence and the bounded-inductive-rationality paper are on [Sources](Sources).
+[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/lean/Workspace/Deference/Contrib/KernelExtension.lean);
+the phase-1 derivation and its inventory,
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md).
+The landed rounds the kernel is stated over: the protected-authority theorem
+([`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/2078659ad0471e275f7beeb54cab212493ba8a09/projects/deference/rounds/2026-09-25-protected-authority-theorem/THEOREM.md)),
+the authority module
+([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/08d42e2d8d0b0e77002bdadb81e46b863fee88e9/projects/deference/rounds/2026-09-25-authority-module/REPORT.md)),
+the gate
+([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)),
+the decision component and the BRIA design
+([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/1604d43cb7de7414fc85ba6834c6dccd8021953e/projects/deference/rounds/2026-09-26-bria-corrigibility/REPORT.md)),
+after compromise
+([`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/8e59d68848f7215f2e0fccd45cade36f5b40617a/projects/deference/rounds/2026-09-26-after-compromise/REPORT.md)),
+the li-corrigibility round
+([`THEOREM.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a192d3f76a3887fe87fe6db52f2e9d8d16037760/projects/deference/rounds/2026-09-15-li-corrigibility/THEOREM.md))
+and the corrigibilization semantics
+([`CORRIGIBILIZATION.md`](https://github.com/A-M-Berns/alignment-workspace/blob/f03c8072fc840fb900f6be44a619375686dc6b26/projects/deference/rounds/2026-09-09-mediated-repair-dominance/CORRIGIBILIZATION.md)).
+The legitimacy the gate consumes is on [Legitimacy](Legitimacy); the learning layer on
+[Continuation BRIA](Continuation-BRIA); the Normative Inductor's contract on
+[Normative induction](Normative-Induction).  Soares et al., the CAST sequence and the
+bounded-inductive-rationality paper are on [Sources](Sources).

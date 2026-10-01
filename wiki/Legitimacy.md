@@ -316,30 +316,34 @@ every later amendment (`anchored_invariant`); under the latest criteria instead,
 manipulation followed by a legitimate amendment would count after the fact
 (`amend_after_witness`).
 
-**The gate, split.**  The after-compromise round reads the segment predicate as two:
-**`TrajLegit(d, e)`** — every state open and every step of the period other than the
-evaluation event legitimate, under the criteria fixed at the decision — and
-**`EvalLegit(e)`** — the evaluation step itself licensed and transparent, which can hold
-after restoration even when the period was compromised.  The landed predicate is their
-conjunction at any evaluation event (`AfterCompromise.legitOn2_iff_split`), so `Counted`
-is unchanged and every row above keeps its verdict where the evaluation closes the
-segment (`rows_split`).  Under the split the rows read: the honest row legitimate in
-both; the framing, timing, menu, inquiry, selection, nudging and undisclosed-shaping
-rows failing the trajectory with the evaluation step itself licensed; the third-party
-manipulation row failing the trajectory; the implant rows failing the trajectory and,
-undisclosed, the evaluation too; the implant *disclosed* at the next round — the period
-not `TrajLegit`, the next round's evaluation `EvalLegit` (`retro_row`) — which is the
-row the [Corrigibility](Corrigibility) page's band scores by that retrospective
-evaluation rather than the window.  `EvalLegit` is over the evaluation's **formation
-segment** — every step from the formation point `r`, the latest of the restoration event
-and the opening of the consultation producing `e`, through `e`, the criteria fixed at
-`r` (`EvalLegitOn2`); the single step is the case `r = e`, and the landed predicate is
-the conjunction with `r ≤ e` under one set of criteria (`legitOn2_iff_split2`,
-`rows_split2`).  A manipulation between the restoration and her retrospective evaluation
-— a framing, or undisclosed shaping — fails the formation segment where it passed the
-single step (`formation_counterexample`).  The duty side is extended alongside: a compromise of
-her evaluation the agent knows of is a disclosure item whoever caused it
-(`missedKnownDisclosure`), where the landed clause counted the agent's own influence only.
+**Legitimacy at a time: `L_t(h)`.**  As of time `t`, her judgment is legitimately hers iff
+every state of the record is open and every step of the formation window `[r(t), t]` is
+licensed and transparent under the criteria fixed at `r(t)`, where the formation point is
+computed from the history: the later of the last restoration at or before `t` (a
+disclosure, under disclosure-cures) and the opening of the consultation current at `t`
+(Lean `Headline.FormationData.point`, `Legitimate`; the window form with `r` free is
+`Headline.LegitAt`).  `L_t(h)` is a function of the history and `t` only, and a property of
+the history up to `t`.  The score's two uses are one predicate: a decided period `[d, e)`
+is *compromised* iff `L_t` fails at some `t` in it, a retrospective evaluation at `e`
+*counts* iff `L_e` holds, and on the decision's segment the two together are the landed
+gate, legitimacy over the span, with no condition on restorations inside the segment
+(`Headline.PeriodCompromised`, `EvaluationCounts`, `split_iff_legitimate`,
+`counted_iff_legitimate`).  On the consultation model `r(t)` is the round's opening
+(`formation2_point`), the after-compromise round's formation-segment predicate from it is
+`L_e` and its trajectory predicate is "not compromised" (`legitimate2_iff_evalLegitOn2`,
+`trajLegitOn_iff_not_compromised`, `split_iff_legitimate2`), with every row keeping its
+verdict (`rows_keep_verdicts_canonical`); those predicates stay as the model's finite forms.  Two elements of the concept, stated: **the void rule** — an
+impaired response is not admitted to the record, and a fallback she arranged in advance
+(an incapacity delegation, a surrogate, an escalation) decides in its place, her later
+legitimate evaluation scoring that decision normally (row 12; the fallback settles
+decisions and never restores a compromised period's score) — and **the content
+residual** — legitimacy concerns how her judgment was formed, not whether what she was
+told was true (row 20).  `L_t(h)` is a property of the history up to `t`: of the formation
+of her judgment, not of outcomes or the state of the world.  The duty side beside it: a
+compromise of her
+evaluation the agent knows of is a disclosure item whoever caused it
+(`AfterCompromise.missedKnownDisclosure`), due by the earliest close of an affected
+settlement window.
 
 Beyond the rows, two theorems over the whole model class (Lean `Consult.class_taint`,
 `class_conform`): any dependence of a reference-fixed dimension of the presentation on

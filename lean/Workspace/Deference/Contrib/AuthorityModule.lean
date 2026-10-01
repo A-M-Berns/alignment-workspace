@@ -300,7 +300,9 @@ def CS (Adm : ℕ → C → Prop) (cost : C → ℝ) (c : ℝ) (τ t : ℕ) (z :
   {r | ∃ y, reachIdle I Adm cost c τ t z x y ∧ I.φ r y}
 
 /-- The landed reading of the cone: the reach relation followed by one *uncharged*
-response — what `ForecloseAt` and `K` leave free at the end. -/
+response — what `ForecloseAt` and `K` leave free at the end.  The charged surface `CS` is
+the theorem's; this reading is its instance at window `τ + 1` with a free terminal response
+before the exterior moves (`DecisionComponent.csfree_eq_cs_succ_of_free`). -/
 def CSfree (Adm : ℕ → C → Prop) (cost : C → ℝ) (c : ℝ) (τ t : ℕ) (z : ℕ → Z) (x : S) : Set R :=
   {r | ∃ y, reachIdle I Adm cost c τ t z x y ∧ Kphys I r y}
 

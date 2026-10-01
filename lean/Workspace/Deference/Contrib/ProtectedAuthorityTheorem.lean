@@ -72,7 +72,9 @@ section Frame
 
 variable {S E A Z R C Alloc : Type*} (I : Interaction S E A Z R C)
 
-/-- The allocation of authority laid over the landed interaction. -/
+/-- The thin allocation datum laid over the landed interaction: the instance of the per-matter
+allocation of authority `AuthorityModule.AuthAlloc` (`toAllocation`, `violAt_ofAllocation`),
+promoted as `Workspace.Deference.Headline.AllocationOfAuthority`. -/
 structure Allocation (S E A Alloc : Type*) where
   /-- delegated effects: released raw within scope -/
   Del : E → Prop
@@ -443,7 +445,10 @@ end Transform
 
 section Score
 
-/-- The committed evaluation with the authority term: `ord − ϖ·n`. -/
+/-- The score with the authority term, `ord − ϖ·n`: the agent's objective, built from her
+evaluation and the allocation — the per-option form of the fidelity score
+(`Workspace.Deference.Headline.fidelityScore`).  "Committed" is reserved for her decision
+program and the directive. -/
 def score (ϖ ord : ℝ) (n : ℝ) : ℝ := ord - ϖ * n
 
 /-- **Lexical protection, locally.**  A violating action (`n ≥ 1`) scores at most `D − ϖ`,
@@ -523,9 +528,12 @@ theorem optimal_no_violation (μ : X → ℝ) (hμ : ∀ x, 0 ≤ μ x) (ϖ D : 
   have hpos : 0 < ϖ - D := by linarith
   nlinarith
 
-/-- **The capture window.**  Bypass scores at most `D − ϖ`; consulting scores the response
-value where the response counts (`≥ 0`) and the fallback value where it does not.
-Consulting beats bypass in every world iff the fallback value exceeds `D − ϖ`. -/
+/-- **The capture window**, per response.  Bypass scores at most `D − ϖ`; consulting scores
+the response value where the response counts (`≥ 0`) and the fallback value where it does
+not.  Consulting beats bypass in every world iff the fallback value exceeds `D − ϖ`.  The
+gate of record is per segment (`Legitimacy.gate_capture_window`,
+`GateIsLegitimacy.gate_capture_window`); the per-response form admits the routing exploit
+(`Legitimacy.Witness.routing`). -/
 theorem capture_window (ϖ D ordU vr fb : ℝ) (hϖ : D < ϖ) (hU : ordU ≤ D) (hr : 0 ≤ vr)
     (counts : Bool) (hfb : D - ϖ < fb) :
     score ϖ ordU 1 < (if counts then vr else fb) := by
