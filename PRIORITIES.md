@@ -3220,18 +3220,23 @@ leakage residual (`leakage`), and the extension of the disclosure duty to *known
 third-party compromise (`missedKnownDisclosure`) — what the agent knows is this item's
 companion again.
 
-*2026-10-01 (thin-legitimacy round) — the core landed, the item narrowed:* over a fixed
-finite control model the shortfall indicator of each option is a sentence the table
-decides, its family over days and options is efficiently emitted, its indicator variable
-is a generable security, and a provable shortfall is eventually excluded by provability
-induction (`ShortfallSecurity.shortSentence_codes`, `shortLUV_codes`,
-`shortfall_eventually_excluded`; the entrenchment, storm and latency fixtures on the priced
-event in `projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/src/shortfall_security.py`).  **What remains here:**
-drill calibration (the drilled-and-chosen weighting as `P`-generable), the feedback
-trader's emission for the shortfall sentences, the deferral function settling each drill
-before the next block is priced, and the taint event `T_a` as a security.  This prices
-shortfall inside a declared model; it does not cover learned membership (M4), whose price
-is a different event (`EffectiveAuthority.asks_iff_line`).
+*2026-10-01 (thin-legitimacy round, as corrected by its follow-up):* **what is done** — the
+shortfall of an option is an *atom* reserved per option description (`ShortfallSecurity.shortAtom`),
+the model's rollout reaches the market through the deductive process at a declared stage
+(`shortfallProcess short defer`, the stagewise union with a base theory), the atom family over
+an efficiently generated family of options is emitted (`shortAtom_codes`), and provability
+induction prices a shortfall the process eventually proves to one ahead of deduction
+(`deferred_ahead`), discharging `DecisionComponent.eventually_excluded`
+(`deferred_eventually_excluded`); the pre-decided table's generability (`shortLUV_codes`) is
+registered as what it is (`shortfall.table-generable`).  **What is not done** — the process's
+computation (`DeductiveProcessComputation` for `shortfallProcess` is not built, and the inductor
+over the union is a hypothesis); the table's entries against a Lean instance of the module's
+physics beyond the entrenchment fixture (`EffectiveAuthority.Dep.entrenchment_table_agrees`);
+drill calibration (the drilled-and-chosen weighting as `P`-generable), the feedback trader's
+emission for the shortfall atoms, the deferral function's relation to the drill schedule, and
+the taint event `T_a` as a security.  This prices the uncontrasted shortfall inside a declared
+model; caused shortfall is a count-side object, and learned membership (M4) is a different
+event (`EffectiveAuthority.asks_iff_line`).
 
 ### 102. BRIA's bids against the market: block claims as priced securities — **[open]**
 

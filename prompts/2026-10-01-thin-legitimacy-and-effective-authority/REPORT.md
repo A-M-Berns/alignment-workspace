@@ -23,3 +23,14 @@ shortfall indicator over a fixed finite control model is a generable security ev
 excluded.  The post's theorem is one Lean statement.  Deviations: new items start at 107,
 not 105; the ask-list deviation is a self-checkable clause not wired into `Counted`; the
 approximate form is for deterministic records.
+
+**Follow-up (2026-10-01, `FOLLOWUP.md`, relayed verbatim; executor Claude Fable 5.1,
+Anthropic).**  Recorded in the round's `REPORT.md`, final section: the 35 registrations
+audited name against content; four comparative witnesses re-pointed at statements over the
+kernel's evaluation and the attention model; the shortfall as an atom decided through the
+deductive process at a deferred stage and priced ahead of deduction, the pre-decided table's
+claims superseded; the ask list as a dimension of the presentation, every landed row kept,
+two rows added, the post's hypotheses carrying the protocol; revocation as an entry of the
+allocation on a dependency model with the module's own predicates, the crossing a
+reportable event; the covert-blocking finding corrected to the silence characterization; an
+exploration witness that explores.

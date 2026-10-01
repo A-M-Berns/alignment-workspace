@@ -1857,7 +1857,18 @@
         "transparent.posterior-weight-eq",
         "legitimacy.payload-of-view",
         "transparent.blind-payload",
-        "kernel.extension-exploration-realization"
+        "kernel.extension-exploration-realization",
+        "shortfall.table-generable",
+        "shortfall.atom-generable",
+        "shortfall.deferred-ahead",
+        "shortfall.deferred-eventually-excluded",
+        "asklist.rows-keep-verdicts-counted",
+        "asklist.rows-keep-verdicts-tainted",
+        "asklist.volume-by-want-tainted",
+        "asklist.order-by-want-tainted",
+        "asklist.offprotocol-deviation-finite",
+        "post.flood-below-asking",
+        "thin.covert-blocking-correct-iff"
       ]
     }
   ]
