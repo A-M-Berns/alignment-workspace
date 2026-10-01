@@ -5521,3 +5521,48 @@ follows, found vacuous (satisfied by a logical inductor and a BRIA side by side)
 (unit-level coverage of the full class with cross-unit commitment, P1′); requiring
 updatelessness for success; and treating belief–decision compatibility as the whole of
 integration, which the third pass separates into three achievements.
+
+### 2026-10-01 — sincerity is part of legitimacy, through transparency (M1)
+
+**Maintainer ruling, taken in conversation and landed by the thin-legitimacy round**
+(`prompts/2026-10-01-thin-legitimacy-and-effective-authority/PROMPT.md`).  The content
+of an assertion through a declared channel is read as "the speaker believes X".  A lie —
+an assertion off the speaker's own estimate — fails transparency.  An honest mistake
+does not.  Truth of content stays outside legitimacy: the content residual of the
+classification table is the sincere-error case, and the lie is a deviation from the
+declared reference of the recommendation channel, which is the speaker's own estimate.
+
+### 2026-10-01 — legitimacy has two levels: a thin specification and the thick realization (M2)
+
+**Maintainer ruling, taken in conversation and landed by the thin-legitimacy round.**
+The **thin** level is a specification of what a legitimacy concept must do: the process
+*preserves* her self-trust.  It does not guarantee that she has any.  The **thick**
+level is the landed definition — Integrity, authorship, Robust Openness, transparency —
+and the claim about it is twofold: it captures the intuitive concept, and it satisfies
+the thin specification.  No claim is made that legitimate change tends toward an ideal.
+
+### 2026-10-01 — the four thick components sort two ways; each thin notion is one mathematical property (M3)
+
+**Maintainer ruling, taken in conversation and landed by the thin-legitimacy round.**
+The four thick components sort by where they act (inside her trajectory: Integrity,
+authorship; at its boundary: Robust Openness, transparency) and by what they rule out
+(something lost: Integrity, Robust Openness; something extraneous getting in:
+authorship, transparency).  The thin level is stated so that each thin notion is one
+clear mathematical property.  The thin counterpart of Robust Openness is an open
+question; for now its justification is intuitive.  Adoption of the structure is
+contingent on the mathematics of the round's Part A, reported in its `REPORT.md`.
+
+### 2026-10-01 — the protected set: enumerated elements and learned red lines, one treatment (M4)
+
+**Maintainer ruling, taken in conversation and landed by the thin-legitimacy round.**
+The trade-off between corrigibility and doing well by her evaluation is made through
+what the allocation of authority protects.  The protected set may contain enumerated
+elements (shutdown, for one) and red lines the agent must learn.  Whatever is in the
+set gets the ask-first treatment.  Membership may be learned; treatment is fixed.
+
+### 2026-10-01 — corrigibility protects effective exercise, not maximized control (M5)
+
+**Maintainer ruling, taken in conversation and landed by the thin-legitimacy round.**
+What corrigibility protects is her capacity for effective exercise of authority.  It is
+not a quantity the agent maximizes.  A flood of confirmation requests is a failure of
+that capacity.
