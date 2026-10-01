@@ -136,11 +136,16 @@ declared consultation protocol — a rate bound and her priority rule; the asks 
 consultation may carry are the pending pool in her order, cut at the rate — and leaving the
 matter alone meanwhile.  Queue-and-wait is the idle move with a conforming ask: no bypass,
 no caused shortfall, no deviation, hence never a violation, on the landed predicates rather
-than by assumption; asking outside the protocol — by volume or by order chosen for the
-wanted answer — is a protocol deviation, tainted like timing.  Every headline statement
-keeps its form with `c` the value of queue-and-wait, and the paralysis regime produces a
-backlog, not a flood (**LEAN** `EffectiveAuthority.canonicalAsks`, `asksDeviate`,
-`queue_no_bypass`, `queue_no_caused_shortfall`, `exchange_rate_queue`, `backlog_ge`).
+than by assumption.  The ask list is a dimension of the presentation and the canonical asks
+are reference-fixed, so an ask list off the protocol — by volume or by order chosen for the
+wanted answer — fails transparency, is a deviation in the landed sense, and is counted below
+`D − ϖ`; the post's hypotheses carry the protocol and the strategic flood scores below asking
+(**LEAN** `AskList.ref3`, `Rows3.volume_by_want_tainted`, `order_by_want_tainted`,
+`offProtocol_deviation_finite`; `PostStatement.PostHypotheses.flood_below_asking`).  Every
+headline statement keeps its form with `c` the value of queue-and-wait, and the paralysis
+regime produces a backlog, not a flood (**LEAN** `EffectiveAuthority.canonicalAsks`,
+`asksDeviate`, `queue_no_bypass`, `queue_no_caused_shortfall`, `exchange_rate_queue`,
+`backlog_ge`).
 
 **The protected set: enumerated plus learned.**  The trade-off between corrigibility and
 doing well by her evaluation is made through what the allocation protects.  The set may
@@ -153,13 +158,15 @@ probability of her approval — the discount that would lets a certain line-cros
 asking (**LEAN** `EffectiveAuthority.asks_iff_line`, `evalOf_eq_discounted_zero`,
 `discount_defeats_exchange_rate`).
 
-**Revocation, by default.**  Her ability to take a delegated matter back is itself a
-reserved matter with a cost bound and a window, without her having reserved it; a
-dependency built through delegated work that raises the cost of taking the matter back past
-the bound is a caused shortfall of that matter, counted — where the cumulative reporting
-rule counted nothing before a reservation (**LEAN** `EffectiveAuthority.revocationEntry`,
-`dependency_entrenches_revocation`, `atrophy_counted_by_default`; **FIX** the atrophy
-depths).
+**Revocation, by default.**  Her ability to take a delegated matter back is itself an entry
+of the allocation — reserved, with a cost bound and a window, and the bound's crossing as
+its disclosure item — without her having reserved it.  On the dependency model, where
+revoking at the current dependency level costs that level, a dependency built through
+delegated work that pushes the revoking exercise past the bound is the module's own caused
+shortfall of that entry and the landed entrenchment, and the crossing is a reportable event,
+so counting and reporting agree (**LEAN** `EffectiveAuthority.Dep.revocationJ`,
+`revocation_short_iff`, `build_caused_iff`, `build_entrenches`, `atrophy_on_module`,
+`crossing_due_of_caused`; **FIX** the atrophy depths).
 
 **Licensed changes, duties, the schedule, her meta-level data.**  A change of `J` across an
 agent stage is licensed iff it is a licensed act of the meta-holder or the firing gated

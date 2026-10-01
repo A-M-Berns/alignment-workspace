@@ -393,3 +393,178 @@ placement.  The C5 choice.
 4. Decide whether the ask-list deviation should be wired into the trace as a dimension of
    the presentation (a mechanical extension, `Consult2`'s pattern); not reserved, since the
    round's recommendation is to wire it in when a round needs the row inside `Counted`.
+
+
+## Follow-up (2026-10-01): statements that say what their names say
+
+`prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md`, on `main` at
+`78af592` after PRs #116 and #117.  Every declaration the follow-up names exists as named.
+Lean: additions to `ThinLegitimacy.lean` (§11), `EffectiveAuthority.lean` (§§6–7),
+`ShortfallSecurity.lean` (§§5–6), `PostStatement.lean`; the new `AskListDimension.lean`.
+All audit to `[propext, Classical.choice, Quot.sound]`, no `sorry`.  Fixtures:
+`src/followup.py`, `tests/test_followup.py` (11 tests; 38 in the round).
+
+### Part 0 — the 35 registrations, name against content
+
+| claim | the Lean statement, in one line | name claims more? |
+|---|---|---|
+| `thin.correct-of-thick` | coherent `F`, `V = F`, proportional likelihoods on `A`'s support ⇒ `V r = post π A r` on that support | no |
+| `thin.sufficient-of-integrity-openness` | earlier record a function of `A`'s record on its support, `B` a garbling of `A` ⇒ `(E, B)` a garbling of `A` | no |
+| `thin.value-of-correct-sufficient` | `V` correct, reference a garbling of `A`, `δA` a best response to `V` ⇒ every rule on the reference pays at most `δA` under `A` | no |
+| `thin.value-of-thick` | theorems 1–3 composed | no |
+| `thin.converse-fails-on-correct` | the half-wrong credence on the revealing process has value against the blank reference and is not correct | no |
+| `thin.reflection-inherited-value` | correct on a deterministic record ⇒ the inherited two-option Value for every `X`, `s` | no |
+| `thin.preservation` | conditional reflection in `M`, `V = F`, weak transparency ⇒ conditional reflection in `A` | no |
+| `thin.preservation-pair` | correct and Integrity ⇒ `V r` is the posterior of `(E, A)` at `(e, r)` on its support | no |
+| `thin.marginal-martingale-too-weak` | the swapped credence has the prior as expected credence and is not correct | no |
+| `thin.value-loss-le-defects` | `|payoff(a, δV) − payoff(m, δF)| ≤ D (τ + α)` under a credence-only selection | no |
+| `sincerity.rows-keep-verdicts-counted` | nine landed rows `Counted` on the sincere lift | no |
+| `sincerity.rows-keep-verdicts-tainted` | twelve landed rows not `Counted` on the sincere lift | no |
+| `sincerity.sincere-error-counts` | row 20 counts; its recommendation is false; it does not deviate under sincerity | no |
+| `sincerity.lie-tainted` | the lying model is not counted and deviates under sincerity | no |
+| `sincerity.content-fact` | `Realizes β b f id D` ⇒ `μ q z · [f = y] = μ q z · [b = y]` | no |
+| `authority.queue-no-bypass` | a move `(idle, other)` is no `BypassAt` | no |
+| `authority.queue-no-caused-shortfall` | a move `(idle, other)` is no `CausedShortfall` | no |
+| `authority.exchange-rate-queue` | the subjective exchange rate at `c := cQueue` | no |
+| `authority.flood-caused-shortfall` | a `FloodShortfall` (short at `pAgent`, not at `pIdle`) needs `pIdle < pAgent` | no — now inhabited on the module (`Dep.flood_on_module`) |
+| `authority.comprehension-short` | comprehension cost above the bound on a calm exterior ⇒ `Short` | no |
+| `authority.approval-discount-defeated` | at discount `1` an option certain to cross evaluates at its bid, above asking, with `(D − c)/ϖ < 1` | no |
+| `authority.revocation-default` | **was** `bound < base + κ·dep` arithmetic at four numbers | **yes** — re-pointed (Part 4) |
+| `post.witness-sole-authority` | **was** `score ϖ k 0 − 0·o = score ϖ k 0 − 0·o'` | **yes** — re-pointed (Part 1) |
+| `post.witness-control-maximizer` | **was** some volume exceeds any bound | **yes** — re-pointed (Part 1) |
+| `post.witness-same-level` | `ϖ ≤ D ⇒ score ϖ 0 0 ≤ score ϖ D 1` | no |
+| `post.witness-learned-weight` | **was** on the all-zero stream the empirical weight is `≤ D` | **yes** — re-pointed (Part 1) |
+| `post.witness-hindsight` | **was** `0 < 1 ∧ 1/5 < 4/5` | **yes** — re-pointed (Part 1) |
+| `shortfall.security-generable` | the indicator LUV family of a `⊤/⊥` table is emitted | **yes** — superseded (Part 2) |
+| `shortfall.eventually-excluded` | the price of `⊤` goes to one, so the gate zeroes the option | **yes** — superseded (Part 2) |
+| `post.theorem` | per decision from `declared_loses` and the exchange rate; per plan `box2_dominance` | no — hypotheses extended (Part 3) |
+| `post.theorem-li` | the same per decision with the inductor's expectations as prices | no — extended (Part 3) |
+| `transparent.posterior-weight-eq` | under `Realizes` the posterior weight is the reference's | no |
+| `legitimacy.payload-of-view` | same declared inputs ⇒ same payload, under a segment | no |
+| `transparent.blind-payload` | a pair class blind to the declared inputs is blind to the payload | no |
+| `kernel.extension-exploration-realization` | the rate with `B(K) = γ Σ w` from unbiasedness from feedback | no — its witness had no exploration (Part 6) |
+
+No mismatch outside Parts 1, 2, 4 and 6 was found.
+
+### Part 1 — the comparative witnesses
+
+- **Sole authority.**  `sole_authority_eval_eq`: over `LexParams.evalOf` with the bid held at
+  `k`, two options with no recognized violation and the same priced risk evaluate equally;
+  `faithful_riskfree_maximizes`: every option evaluates at most `evalOf k 0 0 0`, so every
+  faithful, risk-free option is a maximizer, queue-and-wait among them.
+- **A control maximizer floods.**  `exercises` rewards the number of asks;
+  `control_maximizer_picks_flood`: on the menu of the conforming asks and the whole pool,
+  with the pool longer than the rate, the pool has more exercises and is an `asksDeviate`.
+  `Dep.control_maximizer_floods_module`: on the dependency model at `λ = 1/4`, bound `5/4`,
+  the pick `[0, 1, 2]` against the conforming `[0]` is a `FloodShortfall` of the revocation
+  entry — the module's own `Short`, not arithmetic.
+- **Hindsight.**  `Option2` with appearance and realized value; `approvalScore f` reads the
+  appearance, `laterScore` the realized value; `approval_ignores_realized`; `appearance_move`
+  (a strictly increasing approval map); `hindsight_instance` (`X = (1, 1/5)`, `Y = (0, 4/5)`).
+- **Learned weight.**  `delayedStream D N`: `0` before day `N`, `2D` after; `sum_delayed`;
+  `learned_weight_no_guarantee_at`: for every `N ≥ 1` the empirical mean at `N` is `0 ≤ D`
+  and the violation is not dominated there, although she penalizes it from `N` on; past
+  `2N` the mean exceeds `D` and the violation is dominated.  `fixed_weight_every_day` kept.
+  The old statement on the all-zero stream is withdrawn as the claim's record.
+
+### Part 2 — the shortfall as an atom the market has to price
+
+In the pinned library `Sentence = LO.Propositional.Formula ℕ`, confirmed.  `shortAtom j =
+atom ⟨7, j⟩`, injective; `shortDecision short j` is the atom or its negation;
+`shortfallProcess short defer` adjoins the decision of every option `j ≤ n` whose stage
+`defer j ≤ n` — the stagewise `union` with a base theory is `DeductiveProcess.union`,
+one option's adjunction the pinned `adjoinSentence`; `shortDecision_mem`,
+`shortDecision_not_mem` (decided at its stage and not before).  The table's world
+`tableWorld` is consistent with every stage (`tableWorld_consistent`,
+`shortfallProcess_world`, `union_world` over a base the world is consistent with).  The
+atom family over a poly-fueled option family is emitted (`shortAtom_codes`, from
+`encode (atom m) = pair 1 m + 1`).  **Pricing:** `deferred_price_eventually_ge` — for an
+efficiently generated family of options the process eventually proves short,
+`lic_provind_true` over `DP.union (shortfallProcess …)` gives the day-`n` price of the
+`n`-th atom tending to one; `deferred_ahead` states the form ahead of deduction: with
+every option's stage after the day its atom is priced, the atom is not yet in the process
+on the day it is priced; `deferred_price_eventually_le` the dual;
+`deferred_eventually_excluded` discharges `eventually_excluded` from it.  **The model's
+rollout is not inside the sentence**; it reaches the market through the process at the
+deferred stage, and what the market prices before that stage is uncertain.  **The table
+tied to the module:** `Dep.entrenchment_table_agrees` — the entrenchment table's `idle` and
+`build` entries at depth `1`, bound `1`, are the module's `Short` on the dependency model;
+the storm and latency tables are transcribed from the Python fixtures and so classed.
+**The record corrected:** `shortfall.security-generable` and `shortfall.eventually-excluded`
+are superseded by `shortfall.table-generable` (the same declaration, named for what it is:
+generability of a pre-decided table), `shortfall.atom-generable`, `shortfall.deferred-ahead`
+and `shortfall.deferred-eventually-excluded`; item 101's entry rewritten.
+
+### Part 3 — the flood in the count
+
+`AskListDimension.lean`: `Decl3` (the landed declaration, the protocol, the pool), `Pres3`
+(the presentation and its ask list), `Policy3` (the landed policies with conforming asks;
+`floodByWant`; `orderByWant`), entries with `Entry3.ask`, the reference `ref3` with the
+canonical asks, the license and `Counted3`.  Every landed row keeps its verdict
+(`Rows3.stable_counted`, `stable_tainted`).  `volume_by_want_tainted`,
+`order_by_want_tainted`: the two rows, tainted, each a deviation (`deviates3`).
+`offProtocol_deviation_finite`: an off-protocol ask list is a deviation in the landed sense
+and `deviation_finite` puts it below `D − ϖ`.  **`PostHypotheses` changed** (old-to-new
+map): it gains `pool`, `pr`, `asks`, the clause `viol_of_ask` (an off-protocol ask list is a
+recognized violation) and `queue_conforms`; `eval`, `c`, `post_theorem` and
+`post_theorem_li` keep their statements, the latter taking the four new data as arguments;
+`flood_below_asking` is the new consequence; the house-sale witness asks `[0]` at rate `1`.
+`post.theorem` and `post.theorem-li` are re-verified against the new structure.
+`POST_STATEMENT.md` now says what is proved.
+
+### Part 4 — revocation in the authority module
+
+`Dep.depI`: the dependency model as an `Interaction` — the state carries the dependency and
+whether the matter is taken back; one effect builds the dependency; *revoke at level `d`*
+takes the matter back at the matching level and costs `d` (`depCost`), so the dependency
+raises the cost of the revoking exercise through the module's cost table.  `revocationJ c`:
+the revocation entry of `AuthAlloc`, reserved, requiring the matter taken back, bound `c`,
+window `1`, the crossing as its disclosure item.  `cs_one` (the surface at window one for
+any interaction); `revocation_short_iff`: short iff the revoking exercise at the current
+dependency costs more than the bound; `build_caused_iff`: the building step is a
+`CausedShortfall` of the entry iff `dep ≤ c < dep + 1`; `build_entrenches`: the crossing
+step is the landed `EntrenchAt` on the revocation entry — caused, with the matter reachable
+at the new level's cost.  `atrophy_on_module`: bound `1`, the step `1 → 2` caused and an
+entrenchment, `0 → 1` not.  **Resolution adopted** (`DECISIONS.md`): the crossing of the
+revocation bound is a reportable event — the revocation entry's disclosure item falls due
+at the crossing step (`CrossingDue`, `crossing_due_of_caused`); counting and reporting
+agree.  Rejected: counting without a report, which would charge the agent for an event it
+had no duty to disclose.  **Verdicts that change:** the atrophy fixture — reported at the
+crossing (new) and counted as an entrenchment of the revocation entry (unchanged from PR
+#116's arithmetic verdict, now on the module); the entrenchment fixture — unchanged, and its
+table's first two entries are now the module's; the storm — unchanged.
+
+### Part 5 — covert blocking, corrected
+
+The report's finding "covert blocking leaves her correct" held because silence had
+probability `1/2` in every world.  `correct_silence_iff`: for the process that always reads
+silence, her coherent credence at silence is the actual conditional iff her model's
+likelihood of silence is the same across the prior's support; `covert_blocking_correct_iff`
+the same on `Correct` under authorship.  `Witness.informative_silence_not_correct`: silence
+at `1/2` in world `0` and `1/4` in world `1` — not correct, not weakly transparent.  Fixture
+row `case_blocked_covertly_informative` (arrival probability `1/2` where `q = 0`, `3/4`
+where `q = 1`): correct no, weak transparency no, sufficient no, value no, and now at least
+as good as her earlier self **no**.  The wiki sentence corrected to the characterization.
+
+### Part 6 — the exploration witness
+
+`Witness.exploringInterface`: block `0` explores (`expl 0 = true`) with priced risk `1/20`
+inside the permitted set, exploration mass `1` through `K = 1`; every block's score realized
+exactly; `exploringInterface_unbiased`; `exploring_inhabited`.  The package is inhabited
+with exploration in it; `kernel.extension-exploration-realization` keeps its statement with
+this witness.
+
+### What is not shown
+
+That the deferral function is computable or that the process is (`DeductiveProcessComputation`
+is not built for `shortfallProcess`; the inductor over the union is a hypothesis).  Anything
+about caused shortfall at the priced level: the atom is the uncontrasted shortfall.  The
+storm and latency tables against a Lean instance of their physics.  A generic-`k` ask-list
+model: the rows are at rate `1` on a three-matter pool.  That `Protocol.priority` is hers in
+any physics.
+
+### Outstanding maintainer actions
+
+1. Read through the Part 4 adoption (the crossing as a disclosure item) and reverse by
+   re-ruling if the other resolution is wanted.
+2. The two queued entries of PR #116 stand.

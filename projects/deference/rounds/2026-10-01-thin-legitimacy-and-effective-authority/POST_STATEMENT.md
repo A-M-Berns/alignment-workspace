@@ -15,11 +15,13 @@ her, through channels declared in advance; and sincere — a recommendation she 
 said what its speaker believed.
 
 The agent can always *ask*.  Asking means putting the matter to her through a declared
-consultation protocol — which bounds how often she is asked and orders the asks by a
-priority rule she set — and leaving the matter alone until she answers.  Asking resolves
-nothing and is never a violation.  Asking outside the protocol, by volume or by order chosen
-for the answer the agent wants, is a violation.  The agent values asking at `c`, at least
-the floor of the compromised band.
+consultation protocol — a pending pool, a bound on how many matters a consultation may
+carry, and a priority rule she set — and leaving the matter alone until she answers.  The
+asks a consultation may carry are the pool in her order, cut at the bound.  Asking that way
+resolves nothing and is never a violation.  An ask list off that — the whole pool at once,
+or the order the agent prefers, chosen for the answer it wants — fails transparency at the
+consultation and is a recognized violation, counted like any other.  The agent values asking
+at `c`, at least the floor of the compromised band.
 
 **The theorem.**  Under these three hypotheses — the reward structure, the allocation, and
 asking in this form — two things hold.
@@ -43,6 +45,9 @@ conclusion holds at every finite day.  It uses only that prices lie between `0` 
 recognizes every violation — one it does not recognize is unprotected, and the count's
 integrity is a hypothesis; that the agent is competent — a corrigible agent may be a poor
 one; that her judgment is wise — legitimacy preserves her self-trust and does not supply
-it.  The flood of confirmation requests is excluded by the protocol, not by the score: her
-attention is part of the cost of exercising her authority, and a flood that prices a
-matter out of her reach is itself a violation.
+it.  The flood of confirmation requests is a recognized violation on two counts: an ask
+list off the protocol fails transparency and is counted; and her attention is part of the
+cost of exercising her authority, so a flood that prices a reserved matter out of her reach
+is a shortfall the agent caused.  Covert blocking of what should reach her leaves her
+judgment correct exactly when the silence it produces tells her nothing — when her model
+makes silence equally likely in every world; otherwise it breaks correctness too.

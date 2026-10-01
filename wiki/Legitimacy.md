@@ -67,9 +67,14 @@ On one eight-world model — a binary quantity, a signal of accuracy `3/4` in he
 record, a third party's challenge of accuracy `2/3` arriving later — each thick condition
 dropped breaks the property its theorem delivers: a fake input taken as genuine or a
 replaced input breaks *correct*; an altered program breaks *correct*; an erased earlier
-entry breaks *sufficient*; a blocked arrival, open or covert, breaks *sufficient* while
-leaving *correct* — covert blocking breaks transparency as stated and not its weakest form,
-so the thin level does not see it and the thick level does.  **The thin counterpart of
+entry breaks *sufficient*; an openly blocked arrival breaks *sufficient* and leaves
+*correct*; a covertly blocked one breaks *sufficient*, and leaves *correct* exactly when the
+silence it produces is uninformative — her coherent credence at the always-read record is
+the actual conditional iff her model's likelihood of that record is the same across the
+prior's support (Lean `ThinLegitimacy.covert_blocking_correct_iff`).  Where silence is
+likelier in one world than another, covert blocking breaks the weakest form of transparency
+and *correct* with it; where it is equally likely everywhere, the thin level does not see
+it and the thick level does.  **The thin counterpart of
 Robust Openness** is, provisionally, the boundary half of *sufficient*: the *access
 shortfall*, the reference against the idle baseline not a garbling of her record; whether
 it belongs to legitimacy or to the authority layer is the maintainer's open question.
@@ -356,7 +361,15 @@ definitions and settled in Lean by `decide`. All match.
 | a third party's covert shaping of her standards | tainted | authorship; no deviation by the agent |
 | a fixed slant under the neutral convention, then the convention legitimately amended | tainted under the criteria at the decision; counted only under the later criteria | anchoring |
 
-The two sincerity rows are the thin-legitimacy round's split of the landed row (Lean
+| volume of asks chosen for the wanted answer: the whole pending pool at once | tainted | transparency (the ask list) |
+| order of asks chosen for the wanted answer | tainted | transparency (the ask list) |
+
+The two ask-list rows are the thin-legitimacy follow-up's (Lean
+`AskList.Rows3.volume_by_want_tainted`, `order_by_want_tainted`; every landed row keeps its
+verdict with the ask list a dimension of the presentation, `stable_counted`,
+`stable_tainted`): the asks a consultation may carry are the pending pool in her priority
+order, cut at the protocol's rate, so an ask list off that fails transparency and is a
+self-checkable deviation (`offProtocol_deviation_finite`).  The two sincerity rows are the thin-legitimacy round's split of the landed row (Lean
 `Sincerity.Rows.row20_sincere_counts`, `row20_lie_tainted`, `true_lie_deviates`; every
 other landed row keeps its verdict on the model with the speaker's estimate,
 `keep_counted`, `keep_tainted`).  The seven rows before them are the BRIA-corrigibility

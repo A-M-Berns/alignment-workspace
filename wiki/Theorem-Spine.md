@@ -1183,10 +1183,39 @@ authority* (`Contrib.EffectiveAuthority`): the protocol (`Protocol`, `canonicalA
 `budget_conflict`); learned membership (`asks_iff_line`, `discounted`,
 `evalOf_eq_discounted_zero`, `discount_defeats_exchange_rate`, **registered**); revocation
 (`revocationEntry`, `revokeCost`, `RevocationShort`, `dependency_entrenches_revocation`,
-`RevocationCaused`, `atrophy_counted_by_default`, **registered**); the comparative witnesses
-(`sole_authority_indifferent`, `control_maximizer_floods`, `same_level_fails`,
-`learned_weight_no_guarantee`, `fixed_weight_every_day`, `hindsight_vs_approval`,
-**registered**).  *The shortfall security* (`Contrib.ShortfallSecurity`): `ControlModel`,
+`RevocationCaused`, `atrophy_counted_by_default`; arithmetic, superseded on the module
+below); the comparative witnesses as statements over the kernel's evaluation and the
+attention model (`sole_authority_eval_eq`, `faithful_riskfree_maximizes`,
+`control_maximizer_picks_flood`, `same_level_fails`, `Option2`, `approvalScore`,
+`laterScore`, `approval_ignores_realized`, `appearance_move`, `hindsight_instance`,
+`delayedStream`, `sum_delayed`, `learned_weight_no_guarantee_at`, `fixed_weight_every_day`,
+**registered**; the arithmetic forms `sole_authority_indifferent`,
+`control_maximizer_floods`, `learned_weight_no_guarantee`, `hindsight_vs_approval` stay
+unregistered).  *Revocation in the authority module* (`EffectiveAuthority.Dep`): the
+dependency model `depI` with *revoke at level `d`* at cost `d` (`depCost`), the revocation
+entry `revocationJ`, the surface at window one for any interaction (`cs_one`),
+`revocation_short_iff`, `build_caused_iff`, `build_entrenches` (the crossing is the landed
+`EntrenchAt`), `atrophy_on_module` (**registered**), the crossing as the entry's disclosure
+item (`CrossingDue`, `crossing_due_of_caused`), the flood on the module (`flood_on_module`,
+`control_maximizer_floods_module`, **registered**), the entrenchment table tied to the module
+(`entrenchment_table_agrees`).  *The ask list as a dimension of the presentation*
+(`Contrib.AskList`): `Decl3`, `Pres3`, `Policy3`, `Entry3`, `ref3`, `licensed3`,
+`Counted3`, `deviates3`; every landed row keeps its verdict (`Rows3.stable_counted`,
+`stable_tainted`, **registered**); the rows `volume_by_want_tainted`,
+`order_by_want_tainted` (**registered**); `offProtocol_deviation_finite` (**registered**).
+*The shortfall as an atom* (`ShortfallSecurity` §5): `shortAtom`, `shortDecision`,
+`shortfallProcess` (adjoining each option's decision at its deferred stage;
+`shortDecision_mem`, `shortDecision_not_mem`), `tableWorld`, `tableWorld_consistent`,
+`shortfallProcess_world`, `union_world`, `shortAtom_codes` (**registered**),
+`deferred_price_eventually_ge`, `deferred_ahead` (**registered**),
+`deferred_price_eventually_le`, `deferred_eventually_excluded` (**registered**); the
+pre-decided table's `shortLUV_codes` is registered as such (`shortfall.table-generable`)
+and its `shortfall_eventually_excluded` superseded.  *Covert blocking*
+(`ThinLegitimacy` §11): `constKernel`, `correct_silence_iff`, `covert_blocking_correct_iff`
+(**registered**), `Witness.informative_silence_not_correct`.  *The exploration witness that
+explores* (`PostStatement.Witness.exploringInterface`, `exploringInterface_unbiased`,
+`exploring_inhabited`).  Lean of the follow-up:
+[`AskListDimension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/354b5deedb6503c97c89bf0ea4b88ef528244573/lean/Workspace/Deference/Contrib/AskListDimension.lean).  *The shortfall security* (`Contrib.ShortfallSecurity`): `ControlModel`,
 `shortSentenceOf`, `shortLUVOf`, `optionAt`, `shortSentence_codes`, `shortLUV_codes`
 (**registered**), `shortSentence_const_codes`, `short_price_eventually_ge`,
 `notShort_price_eventually_le`, `shortfall_eventually_excluded` (**registered**);

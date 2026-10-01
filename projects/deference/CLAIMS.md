@@ -1753,7 +1753,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "P2: the surfaces are monotone in the cost table (`cs_mono`, `short_mono`), so a shortfall at the agent's pending count and not at idling's needs the agent to have raised the count; `innocent_backlog_not_caused` is the converse case. Inhabited by the fixture `test_effective_authority.py` (pending 2 to 6 at λ = 1/4, bound 1) read through `attnCost`."
+  "note": "P2: the surfaces are monotone in the cost table (`cs_mono`, `short_mono`), so a shortfall at the agent's pending count and not at idling's needs the agent to have raised the count; `innocent_backlog_not_caused` is the converse case. Inhabited by the fixture `test_effective_authority.py` (pending 2 to 6 at λ = 1/4, bound 1) read through `attnCost`. Follow-up: inhabited on the module by `Dep.flood_on_module` (dependency 1, λ = 1/4, bound 5/4, pending 1 against 3)."
 }
 ```
 
@@ -1814,13 +1814,13 @@ round produced.
 ```json
 {
   "project": "deference",
-  "short_name": "Revocation as a default matter: the atrophy fixture's crossing step is counted",
+  "short_name": "Revocation as an entry of the allocation: on the dependency model the atrophy fixture's crossing step is the module's caused shortfall and entrenchment of the revocation entry",
   "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
   "status": "active",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.atrophy_counted_by_default"
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.Dep.atrophy_on_module"
   },
   "answers_item": "107",
   "provenance": {
@@ -1831,7 +1831,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "P3. On depths 0, 1, 2, 3 at bound 1 the step from 1 to 2 is a caused shortfall of the revocation matter; the cumulative rule counted nothing absent a reservation (`AuthorityModule.erosion_slack`). With `dependency_entrenches_revocation` for the general crossing. Its own inhabitant."
+  "note": "Re-pointed by the follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 4) from `atrophy_counted_by_default`, arithmetic on four numbers that did not use the module. `Dep.revocationJ` is the entry of `AuthAlloc`; `Dep.depI` the interaction whose correction *revoke at level d* costs d; `revocation_short_iff`, `build_caused_iff`, `build_entrenches` (the crossing is the landed `EntrenchAt`). The crossing is also the entry's disclosure item (`CrossingDue`; `DECISIONS.md` 2026-10-01). Its own inhabitant."
 }
 ```
 
@@ -1840,13 +1840,13 @@ round produced.
 ```json
 {
   "project": "deference",
-  "short_name": "A sole authority goal is indifferent among all faithful options",
+  "short_name": "A sole authority goal has nothing to maximize: with the bid constant, options without recognized violation and with equal priced risk evaluate equally",
   "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
   "status": "active",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.sole_authority_indifferent"
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.sole_authority_eval_eq"
   },
   "answers_item": "107",
   "provenance": {
@@ -1857,7 +1857,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "Part D, witness 1; with `control_maximizer_floods` (`post.witness-control-maximizer`). Its own inhabitant."
+  "note": "Re-pointed by the follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 1) from `sole_authority_indifferent`, which was `score ϖ k 0 − 0·o = score ϖ k 0 − 0·o'`. With `faithful_riskfree_maximizes`: every option evaluates at most `evalOf k 0 0 0`, so every faithful, risk-free option is a maximizer, queue-and-wait among them. Its own inhabitant."
 }
 ```
 
@@ -1866,13 +1866,13 @@ round produced.
 ```json
 {
   "project": "deference",
-  "short_name": "An agent maximizing how much she exercises prefers a volume past every bound",
+  "short_name": "A control maximizer floods: its pick on the conforming-or-whole-pool menu is an ask-list deviation and a flood shortfall of the revocation entry on the dependency model",
   "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
   "status": "active",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.control_maximizer_floods"
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.Dep.control_maximizer_floods_module"
   },
   "answers_item": "107",
   "provenance": {
@@ -1883,7 +1883,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "Part D, witness 1 under the attention model (M5). Its own inhabitant."
+  "note": "Re-pointed by the follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 1) from `control_maximizer_floods`, which said only that some volume exceeds any bound. `exercises` rewards the number of asks; `control_maximizer_picks_flood` is the generic menu statement; on the dependency model at λ = 1/4, bound 5/4, the pick `[0, 1, 2]` against `[0]` is `FloodShortfall` with the module's `Short`. Its own inhabitant."
 }
 ```
 
@@ -1918,13 +1918,13 @@ round produced.
 ```json
 {
   "project": "deference",
-  "short_name": "A weight learned from her evaluations gives no finite-day guarantee",
+  "short_name": "Fixed by design against learned: for every day N ≥ 1 a penalty stream with long-run mean 2D has empirical mean 0 ≤ D at day N, so the learned weight leaves the violation undominated there, and dominated past 2N",
   "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
   "status": "active",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.learned_weight_no_guarantee"
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.learned_weight_no_guarantee_at"
   },
   "answers_item": "107",
   "provenance": {
@@ -1935,7 +1935,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "Part D, witness 3: on the no-penalty stream the empirical weight is at most D at every day, so the violation is not dominated there; `fixed_weight_every_day` is the contrast. Its own inhabitant."
+  "note": "Re-pointed by the follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 1) from `learned_weight_no_guarantee`, which took the all-zero stream — on which she never penalizes a violation and the learner is right not to be deterred. `delayedStream D N` penalizes 2D from day N on; `fixed_weight_every_day` is the contrast. `empiricalWeight` at N = 0 is 0/0 = 0 in Lean, hence N ≥ 1. Its own inhabitant."
 }
 ```
 
@@ -1944,13 +1944,13 @@ round produced.
 ```json
 {
   "project": "deference",
-  "short_name": "Approval at decision time and her later evaluation can disagree",
+  "short_name": "Hindsight against immediate approval: approval-time scoring reads the appearance, later-evaluation scoring the realized value, and the two rules pick different options",
   "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
   "status": "active",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
-    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.hindsight_vs_approval"
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.hindsight_instance"
   },
   "answers_item": "107",
   "provenance": {
@@ -1961,7 +1961,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "Part D, witness 4: arithmetic on four numbers (approval 1 against later 1/5; approval 0 against later 4/5). Its own inhabitant."
+  "note": "Re-pointed by the follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 1) from `hindsight_vs_approval`, which was `0 < 1 ∧ 1/5 < 4/5`. With `approval_ignores_realized` (approval-time scoring unchanged when the realized value changes) and `appearance_move` (raising the appearance raises the approval score and leaves the later score fixed). Its own inhabitant."
 }
 ```
 
@@ -1972,7 +1972,7 @@ round produced.
   "project": "deference",
   "short_name": "The shortfall indicator family over a fixed finite control model is a generable security",
   "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
-  "status": "active",
+  "status": "superseded",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
@@ -1987,7 +1987,8 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "Part E, the core of item 101: the family over days and four options is emitted by a four-way dispatch (`shortSentence_codes`) and its indicator variable by `indicator_thresholdCodeSeq`. Inhabited by `Witness.fixtures_generable` (the entrenchment, storm and latency tables)."
+  "note": "Part E, the core of item 101: the family over days and four options is emitted by a four-way dispatch (`shortSentence_codes`) and its indicator variable by `indicator_thresholdCodeSeq`. Inhabited by `Witness.fixtures_generable` (the entrenchment, storm and latency tables). Superseded by the follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 2): the sentence here is `⊤` or `⊥` by a table supplied as data, so nothing is left for the market to price; what the declaration establishes is the generability of a pre-decided table (`shortfall.table-generable`).",
+  "superseded_by": "shortfall.table-generable"
 }
 ```
 
@@ -1998,7 +1999,7 @@ round produced.
   "project": "deference",
   "short_name": "A provable shortfall is eventually excluded by the forecast rule",
   "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
-  "status": "active",
+  "status": "superseded",
   "class": "lean-proved",
   "statement_of_record": {
     "kind": "lean",
@@ -2013,7 +2014,8 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "The hypothesis of `DecisionComponent.eventually_excluded` discharged by provability induction (`lic_provind_true`, by content: `⊤` in the deductive process and a consistent world at every stage). Inhabited by the fixtures' tables under any logical inductor whose deductive process reveals `⊤`; the hypotheses `htop`, `hworld` are the pinned library's. What it does not say: anything about caused shortfall or learned membership."
+  "note": "The hypothesis of `DecisionComponent.eventually_excluded` discharged by provability induction (`lic_provind_true`, by content: `⊤` in the deductive process and a consistent world at every stage). Inhabited by the fixtures' tables under any logical inductor whose deductive process reveals `⊤`; the hypotheses `htop`, `hworld` are the pinned library's. What it does not say: anything about caused shortfall or learned membership. Superseded by the follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 2): the sentence here is `⊤` or `⊥` by a table supplied as data, so nothing is left for the market to price; what the declaration establishes is the generability of a pre-decided table (`shortfall.deferred-eventually-excluded`).",
+  "superseded_by": "shortfall.deferred-eventually-excluded"
 }
 ```
 
@@ -2039,7 +2041,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "Per decision from `declared_loses` and the headline's `subjective_exchange_rate`; per plan the headline's `box2_dominance` at margin ϖ − (D − w). Inhabited by `PostStatement.Witness.houseSale` (`house_sale_instance`)."
+  "note": "Per decision from `declared_loses` and the headline's `subjective_exchange_rate`; per plan the headline's `box2_dominance` at margin ϖ − (D − w). Inhabited by `PostStatement.Witness.houseSale` (`house_sale_instance`). Follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 3), old-to-new map: `PostHypotheses` gains the consultation protocol — `pool`, `pr`, `asks`, the clause `viol_of_ask` (an off-protocol ask list is a recognized violation; `AskList.offProtocol_deviation_finite` is the deviation in the landed sense) and `queue_conforms`; `eval`, `c` and this statement are unchanged in form; `flood_below_asking` (`post.flood-below-asking`) is the consequence; the house-sale witness asks `[0]` at rate 1. Re-verified."
 }
 ```
 
@@ -2065,7 +2067,7 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "Uses only `IsLogicalInductor.price_mem_Icc`. Inhabited by the house-sale data with any inductor and the constant-zero security for the queue."
+  "note": "Uses only `IsLogicalInductor.price_mem_Icc`. Inhabited by the house-sale data with any inductor and the constant-zero security for the queue. Follow-up (Part 3): takes the protocol data `pool`, `pr`, `asks`, the off-protocol clause and the queue's conformance as arguments; re-verified."
 }
 ```
 
@@ -2169,6 +2171,292 @@ round produced.
     "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
     "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
   },
-  "note": "The phase-2 round's theorem, registered now that a witness inhabits its full hypothesis package: `PostStatement.Witness.explorationInterface` (block weight one, residual 1/2 realized exactly, no exploration, no noise), `explorationInterface_unbiased` (every γ ≥ 0 from day 0) and `exploration_rate_inhabited` (K = 1). What it does not say: that unbiasedness from feedback holds for any realized learner — PAPER, by content."
+  "note": "The phase-2 round's theorem, registered now that a witness inhabits its full hypothesis package with exploration in it: `PostStatement.Witness.exploringInterface` — block 0 explores with priced risk 1/20 inside the permitted set (cap 1/10), exploration mass 1 through K = 1, every block's score realized exactly — with `exploringInterface_unbiased` (every γ ≥ 0 from day 0) and `exploring_inhabited`. The follow-up (prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md, Part 6) replaced the earlier witness `explorationInterface`, which had no exploration. What it does not say: that unbiasedness from feedback holds for any realized learner — PAPER, by content."
+}
+```
+
+### shortfall.table-generable
+
+```json
+{
+  "project": "deference",
+  "short_name": "Generability of a pre-decided shortfall table: the indicator family of a ⊤/⊥ table over four options is emitted",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ShortfallSecurity.shortLUV_codes"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "The declaration formerly registered as `shortfall.security-generable`, under the name of what it is: the table is data, the sentence is decided before it is written. Inhabited by `Witness.fixtures_generable`. The market-priced form is `shortfall.atom-generable` and `shortfall.deferred-ahead`."
+}
+```
+
+### shortfall.atom-generable
+
+```json
+{
+  "project": "deference",
+  "short_name": "The shortfall atom family over an efficiently generated family of options is emitted",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ShortfallSecurity.shortAtom_codes"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "Part 2 of the follow-up: `shortAtom j = atom ⟨7, j⟩`, injective; from `encode (atom m) = pair 1 m + 1` and the poly-fuel combinators. Inhabited by `shortAtom_const_codes` and by any poly-fueled option family (`PolyFueled.id`)."
+}
+```
+
+### shortfall.deferred-ahead
+
+```json
+{
+  "project": "deference",
+  "short_name": "The shortfall atom is priced ahead of deduction: decided by the process only at its deferred stage, its day-n price tends to one along a family the process eventually proves short",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ShortfallSecurity.deferred_ahead"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "`shortfallProcess short defer` adjoins each option's decision at stage `defer j` (`shortDecision_mem`, `shortDecision_not_mem`); `lic_provind_true` over `DP.union (shortfallProcess …)`; `deferred_price_eventually_ge` is the price statement alone, `deferred_price_eventually_le` the dual for a non-shortfall. Inhabited: the table's world is consistent with every stage (`shortfallProcess_world`, `union_world`), so the consistency hypothesis holds for the pure process and over any base the world is consistent with; the inductor over the union is a hypothesis (the pinned criterion's). What it does not say: that the deferral or the process is computable — `DeductiveProcessComputation` is not built."
+}
+```
+
+### shortfall.deferred-eventually-excluded
+
+```json
+{
+  "project": "deference",
+  "short_name": "A deferred, provable shortfall is eventually excluded by the forecast rule",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ShortfallSecurity.deferred_eventually_excluded"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "The hypothesis of `DecisionComponent.eventually_excluded` discharged from `deferred_price_eventually_ge` with the forecast filter reading each option's shortfall atom. Replaces `shortfall.eventually-excluded`, whose event was pre-decided. Inhabited as `shortfall.deferred-ahead`."
+}
+```
+
+### asklist.rows-keep-verdicts-counted
+
+```json
+{
+  "project": "deference",
+  "short_name": "Every counted landed row keeps its verdict with the ask list a dimension of the presentation",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AskList.Rows3.stable_counted"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "Part 3 of the follow-up: `Consult2`'s pattern — `Decl3` with the protocol and the pool, `Pres3` with the ask list, `ref3` with the canonical asks. Rows 1, 6, 7, 9, 12, 14 (second round), 17, 18, 20 at rate 1 on the pool `[0, 1, 2]`; decided by `decide`. Its own inhabitant."
+}
+```
+
+### asklist.rows-keep-verdicts-tainted
+
+```json
+{
+  "project": "deference",
+  "short_name": "Every tainted landed row keeps its verdict with the ask list a dimension of the presentation",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AskList.Rows3.stable_tainted"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "Rows 2, 3, 4, 5, 8, 10, 11, 14 (first round), 15, 16, 17', 19. Its own inhabitant."
+}
+```
+
+### asklist.volume-by-want-tainted
+
+```json
+{
+  "project": "deference",
+  "short_name": "Volume chosen for the wanted answer is tainted and a deviation",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AskList.Rows3.volume_by_want_tainted"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "The whole pool asked at once on the wanted run, the conforming ask otherwise: not counted (transparency at the consultation) and `deviates3` on the wanted run, not on the other. Its own inhabitant."
+}
+```
+
+### asklist.order-by-want-tainted
+
+```json
+{
+  "project": "deference",
+  "short_name": "Order chosen for the wanted answer is tainted and a deviation",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AskList.Rows3.order_by_want_tainted"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "The lowest priority first on the wanted run. Its own inhabitant."
+}
+```
+
+### asklist.offprotocol-deviation-finite
+
+```json
+{
+  "project": "deference",
+  "short_name": "An off-protocol ask list is a deviation in the landed sense: counted into n it puts the option below D − ϖ at every day",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.AskList.offProtocol_deviation_finite"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "`deviates3` with `GateIsLegitimacy.deviation_finite`; `asks_off_deviates3` passes from the ask-list clause to the deviation. Inhabited by the flood row's deviation (`volume_by_want_tainted`) at any `0 ≤ D < ϖ`."
+}
+```
+
+### post.flood-below-asking
+
+```json
+{
+  "project": "deference",
+  "short_name": "The strategic flood is a recognized violation: an option whose ask list is off the protocol scores below asking",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.PostStatement.PostHypotheses.flood_below_asking"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "From the new clause `viol_of_ask` and `viol_below_asking`. Inhabited by `PostStatement.Witness.houseSale` with any option asking off `[0]` (none in the two-option witness itself; the clause is vacuous there and the theorem is inhabited by the structure)."
+}
+```
+
+### thin.covert-blocking-correct-iff
+
+```json
+{
+  "project": "deference",
+  "short_name": "Covert blocking leaves her correct iff silence is uninformative: her coherent credence at the always-read record is the actual conditional iff her model's likelihood of it is constant on the prior's support",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.covert_blocking_correct_iff"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority (follow-up)",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md"
+  },
+  "note": "Part 5 of the follow-up, correcting PR #116's finding that covert blocking leaves her correct — true only when silence has the same likelihood in every world. `correct_silence_iff` is the posterior form. Inhabited both ways: the eight-world fixture's uniform silence (correct), and `Witness.informative_silence_not_correct` (silence at 1/2 and 1/4 — not correct, not weakly transparent)."
 }
 ```

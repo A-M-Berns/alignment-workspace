@@ -5680,3 +5680,17 @@ content residual; `Rows.row20_sincere_counts`); the lie is the added row, tainte
 (`keep_counted`, `keep_tainted`).
 *Rejected alternative:* reading the landed row as the lie, which would change a landed
 verdict.
+
+### 2026-10-01 — the crossing of the revocation bound is a reportable event: the revocation entry's disclosure item (follow-up, Part 4)
+
+**Agent-decided, reversible** (the thin-legitimacy round's follow-up,
+`prompts/2026-10-01-thin-legitimacy-and-effective-authority/FOLLOWUP.md`).  Revocation is an entry of the allocation of authority
+(`EffectiveAuthority.Dep.revocationJ`): reserved, requiring the matter taken back, a cost
+bound, a window, and the bound's crossing as its disclosure item.  On the dependency model
+the step that pushes the revoking exercise past the bound is the module's caused shortfall
+and the landed entrenchment of that entry (`build_caused_iff`, `build_entrenches`), and the
+disclosure item falls due at the same step (`CrossingDue`, `crossing_due_of_caused`), so
+counting and reporting agree: the agent is charged for an event it was required to report.
+The cumulative reporting rule stays for erosion below the bound.
+*Rejected alternative:* counting the crossing without a report — the agent charged for an
+event it had no duty to disclose, which is what PR #116's arithmetic verdict amounted to.
