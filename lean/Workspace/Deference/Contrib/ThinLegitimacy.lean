@@ -876,7 +876,133 @@ theorem licensed_two_obstruction :
 
 end Witness
 
+/-! ## 11. Covert blocking: when silence is informative
+
+A process that always reads silence is *correct* at silence exactly when her model's
+likelihood of silence is the same across the prior's support.  The eight-world fixture had
+silence at probability one half in every world; with a challenge likelier in one world
+than another, silence is informative and covert blocking breaks both the weakest form of
+transparency and *correct*. -/
+
+section Silence
+
+variable {W Rec : Type*} [Fintype W] [Fintype Rec] [DecidableEq Rec]
+
+/-- The process that always reads one record. -/
+noncomputable def constKernel (r₀ : Rec) : Kernel W Rec := detKernel fun _ => r₀
+
+theorem mass_const (π : W → ℝ) (r₀ : Rec) : mass π (constKernel r₀) r₀ = ∑ w, π w := by
+  unfold mass constKernel detKernel
+  simp
+
+/-- **The silence characterization.**  Her coherent credence at silence is the actual
+conditional given silence iff her model's likelihood of silence is the same at every world
+of positive prior. -/
+theorem correct_silence_iff (π : W → ℝ) (hπ : ∀ w, 0 ≤ π w) (M : Kernel W Rec) (r₀ : Rec)
+    (hM : 0 < mass π M r₀) (hsum : 0 < ∑ w, π w) :
+    post π M r₀ = post π (constKernel r₀) r₀ ↔
+      ∀ w w', 0 < π w → 0 < π w' → M.k w r₀ = M.k w' r₀ := by
+  have hconst : ∀ w, post π (constKernel r₀) r₀ w = π w / ∑ v, π v := by
+    intro w
+    unfold post
+    rw [mass_const]
+    simp [constKernel, detKernel]
+  constructor
+  · intro h w w' hw hw'
+    have e := congrFun h w
+    have e' := congrFun h w'
+    rw [hconst] at e e'
+    unfold post at e e'
+    have hw1 : M.k w r₀ = mass π M r₀ / ∑ v, π v := by
+      field_simp at e ⊢
+      nlinarith [e]
+    have hw2 : M.k w' r₀ = mass π M r₀ / ∑ v, π v := by
+      field_simp at e' ⊢
+      nlinarith [e']
+    rw [hw1, hw2]
+  · intro h
+    funext w
+    rw [hconst]
+    unfold post
+    rcases (hπ w).lt_or_eq with hw | hw
+    · -- every world of positive prior shares the likelihood `s`; the mass is `s · Σπ`
+      have hmass : mass π M r₀ = M.k w r₀ * ∑ v, π v := by
+        unfold mass
+        rw [Finset.mul_sum]
+        refine Finset.sum_congr rfl fun v _ => ?_
+        rcases (hπ v).lt_or_eq with hv | hv
+        · rw [h v w hv hw]; ring
+        · rw [← hv]; ring
+      have hs : 0 < M.k w r₀ := by
+        rw [hmass] at hM
+        exact pos_of_mul_pos_left hM hsum.le
+      rw [hmass]
+      field_simp
+    · rw [← hw]; simp
+
+/-- **Covert blocking breaks *correct* iff silence is informative**: with authorship and
+coherence, the actual process always reading silence, her credence at silence is the truth
+iff the model's silence likelihood is constant on the support. -/
+theorem covert_blocking_correct_iff (π : W → ℝ) (hπ : ∀ w, 0 ≤ π w) (M : Kernel W Rec) (r₀ : Rec)
+    (F V : Credence W Rec) (hF : Coherent π M F) (hV : Authorship F V)
+    (hM : 0 < mass π M r₀) (hsum : 0 < ∑ w, π w) :
+    Correct π (constKernel r₀) V ↔ ∀ w w', 0 < π w → 0 < π w' → M.k w r₀ = M.k w' r₀ := by
+  rw [← correct_silence_iff π hπ M r₀ hM hsum]
+  constructor
+  · intro h
+    have := h r₀ (by rw [mass_const]; exact hsum)
+    rw [hV, hF r₀ hM] at this
+    exact this
+  · intro h r hr
+    have hr0 : r = r₀ := by
+      by_contra hne
+      have : mass π (constKernel r₀) r = 0 := by
+        unfold mass constKernel detKernel
+        simp [Ne.symm hne]
+      linarith
+    subst hr0
+    rw [hV, hF r hM, h]
+
+namespace Witness
+
+/-- **Informative silence.**  Two worlds, uniform prior; under her model the challenge is
+blocked (silence) with probability `1/2` in world `0` and `1/4` in world `1`, so silence is
+evidence for world `0`; the agent blocks every challenge.  Her coherent credence at silence
+is not the truth, and the weak form of transparency fails. -/
+noncomputable def silentModel : Kernel (Fin 2) (Fin 3) where
+  k := ![![1 / 4, 1 / 4, 1 / 2], ![1 / 4, 1 / 2, 1 / 4]]
+  nonneg w r := by fin_cases w <;> fin_cases r <;> norm_num
+  sum_one w := by fin_cases w <;> norm_num [Fin.sum_univ_three]
+
+noncomputable def alwaysSilent : Kernel (Fin 2) (Fin 3) := constKernel 2
+
+theorem informative_silence_not_correct :
+    ¬ Correct π₂ alwaysSilent (fun r => post π₂ silentModel r) ∧
+      ¬ WeakTransparent π₂ alwaysSilent silentModel := by
+  constructor
+  · intro h
+    have hm : 0 < mass π₂ alwaysSilent 2 := by
+      norm_num [mass, alwaysSilent, constKernel, detKernel, π₂, Fin.sum_univ_two]
+    have := congrFun (h 2 hm) 0
+    norm_num [post, mass, alwaysSilent, constKernel, detKernel, silentModel, π₂,
+      Fin.sum_univ_two] at this
+  · intro h
+    obtain ⟨c, -, hc⟩ := h 2 (by
+      norm_num [mass, alwaysSilent, constKernel, detKernel, π₂, Fin.sum_univ_two])
+    have h0 := hc 0
+    have h1 := hc 1
+    norm_num [alwaysSilent, constKernel, detKernel, silentModel] at h0 h1
+    linarith
+
+end Witness
+
+end Silence
+
 end Workspace.Deference.Contrib.ThinLegitimacy
+
+#print axioms Workspace.Deference.Contrib.ThinLegitimacy.correct_silence_iff
+#print axioms Workspace.Deference.Contrib.ThinLegitimacy.covert_blocking_correct_iff
+#print axioms Workspace.Deference.Contrib.ThinLegitimacy.Witness.informative_silence_not_correct
 
 #print axioms Workspace.Deference.Contrib.ThinLegitimacy.correct_of_coherent_authorship_transparent
 #print axioms Workspace.Deference.Contrib.ThinLegitimacy.sufficient_of_integrity_openness

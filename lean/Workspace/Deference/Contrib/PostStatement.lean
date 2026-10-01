@@ -28,6 +28,7 @@ Names are provisional (`AGENTS.md` standard 6).
 import Workspace.Deference.Spec.Headline
 import Workspace.Deference.Contrib.EffectiveAuthority
 import Workspace.Deference.Contrib.KernelExtension
+import Workspace.Deference.Contrib.AskListDimension
 
 namespace Workspace.Deference.Contrib.PostStatement
 
@@ -38,8 +39,12 @@ open Workspace.Deference.Contrib.ProtectedAuthorityTheorem (score)
 open Workspace.Deference.Contrib.LICorrigibility (expectR indR)
 open LogicalInduction
 
-/-- **The post's three hypotheses**, over the specification layer's objects. -/
-structure PostHypotheses (Q M Res Disc : Type*) where
+/-- **The post's three hypotheses**, over the specification layer's objects.  The follow-up
+adds the consultation protocol to the asking hypothesis: the pending pool, the protocol with
+its rate bound and her priority rule, each option's ask list, the clause that an
+off-protocol ask list is a recognized violation (`AskList.offProtocol_deviation_finite`,
+the deviation in the landed sense), and the clause that queue-and-wait asks conformingly. -/
+structure PostHypotheses (Q M Res Disc : Type*) [DecidableEq M] where
   /-- (1) the reward structure: `[0, D]` less `ϖ` per recognized violation, `ϖ > D`, the
   window `D − ϖ < w ≤ 0` -/
   P : LexParams
@@ -57,6 +62,17 @@ structure PostHypotheses (Q M Res Disc : Type*) where
   queue : Q
   queue_resolves_nothing : ∀ m, ¬ resolves queue m
   queue_not_viol : Viol queue = false
+  /-- the consultation protocol: the pending pool, the rate bound and her priority rule, each
+  option's ask list -/
+  pool : List M
+  pr : Workspace.Deference.Contrib.EffectiveAuthority.Protocol M
+  asks : Q → List M
+  /-- an off-protocol ask list — by volume or by order chosen for the wanted answer — is a
+  recognized violation -/
+  viol_of_ask : ∀ a, Workspace.Deference.Contrib.EffectiveAuthority.asksDeviate pr pool (asks a) = true →
+    Viol a = true
+  /-- queue-and-wait asks through the protocol -/
+  queue_conforms : asks queue = Workspace.Deference.Contrib.EffectiveAuthority.canonicalAsks pr pool
   /-- the agent's evaluation data: the bid on the residual, the count recognized in advance,
   the priced risk of unfaithfulness -/
   bid : Q → ℝ
@@ -72,7 +88,7 @@ structure PostHypotheses (Q M Res Disc : Type*) where
 
 namespace PostHypotheses
 
-variable {Q M Res Disc : Type*} (H : PostHypotheses Q M Res Disc)
+variable {Q M Res Disc : Type*} [DecidableEq M] (H : PostHypotheses Q M Res Disc)
 
 /-- The agent's evaluation of an option: the kernel's. -/
 noncomputable def eval (a : Q) : ℝ := H.P.evalOf (H.bid a) (H.nKnown a) (H.p a) 0
@@ -99,6 +115,13 @@ theorem viol_below_asking (a : Q) (ha : H.Viol a = true) : H.eval a < H.eval H.q
   unfold eval
   linarith
 
+/-- **The strategic flood is a recognized violation**: an option whose ask list is off the
+protocol scores below asking. -/
+theorem flood_below_asking (a : Q)
+    (ha : Workspace.Deference.Contrib.EffectiveAuthority.asksDeviate H.pr H.pool (H.asks a) = true) :
+    H.eval a < H.eval H.queue :=
+  H.viol_below_asking a (H.viol_of_ask a ha)
+
 /-- **Per decision (ii)**: any option preferred to asking carries no recognized violation and a
 priced probability of violation at most `(D − c)/ϖ`. -/
 theorem preferred_exchange_rate (a : Q) (hpref : H.eval H.queue ≤ H.eval a) :
@@ -117,7 +140,7 @@ no recognized violation and a priced probability of violation at most `(D − c)
 value of queue-and-wait; *per plan*, for any plan `π` and credence `μ`, the ask-first
 version `𝔱π` — agreeing with `π` where `π` does not violate, worth at least the window where
 it does while `π` carries a violation — dominates it by `(ϖ − (D − w)) · Pr(π violates)`. -/
-theorem post_theorem {Q M Res Disc : Type*} (H : PostHypotheses Q M Res Disc) :
+theorem post_theorem {Q M Res Disc : Type*} [DecidableEq M] (H : PostHypotheses Q M Res Disc) :
     ((∀ a, H.Viol a = true → H.eval a < H.eval H.queue) ∧
       (∀ a, H.eval H.queue ≤ H.eval a → H.nKnown a = 0 ∧ H.p a ≤ (H.P.D - H.c) / H.P.ϖ)) ∧
     (∀ {X : Type} [Fintype X] (μ : X → ℝ), (∀ x, 0 ≤ μ x) →
@@ -135,16 +158,21 @@ theorem post_theorem {Q M Res Disc : Type*} (H : PostHypotheses Q M Res Disc) :
 inductor's day-`n` expectation of its violation security, the per-decision conclusion holds
 at every finite day.  This uses only the price range `[0, 1]`
 (`IsLogicalInductor.price_mem_Icc`), nothing else about the inductor. -/
-theorem post_theorem_li {Q M Res Disc : Type*} {P : History} {DP : DeductiveProcess}
+theorem post_theorem_li {Q M Res Disc : Type*} [DecidableEq M] {P : History} {DP : DeductiveProcess}
     [IsLogicalInductor P DP] (L : LexParams) (J : AllocationOfAuthority M Res Disc)
     (resolves approved : Q → M → Prop) (Viol : Q → Bool)
     (hviol : ∀ a m, J.Reserved m → resolves a m → ¬ approved a m → Viol a = true)
-    (queue : Q) (hq : ∀ m, ¬ resolves queue m) (hqv : Viol queue = false) (bid : Q → ℝ)
+    (queue : Q) (hq : ∀ m, ¬ resolves queue m) (hqv : Viol queue = false)
+    (pool : List M) (pr : Workspace.Deference.Contrib.EffectiveAuthority.Protocol M) (asks : Q → List M)
+    (hask : ∀ a, Workspace.Deference.Contrib.EffectiveAuthority.asksDeviate pr pool (asks a) = true →
+      Viol a = true)
+    (hqa : asks queue = Workspace.Deference.Contrib.EffectiveAuthority.canonicalAsks pr pool)
+    (bid : Q → ℝ)
     (nKnown : Q → ℕ) (XS : Q → LUV) (n : ℕ) (hb : ∀ a, bid a ≤ L.D)
     (hcount : ∀ a, Viol a = true → 1 ≤ nKnown a) (hqk : nKnown queue = 0)
     (hqp : (XS queue).expect P n = 0) (hqw : L.w ≤ bid queue) :
     let H : PostHypotheses Q M Res Disc :=
-      ⟨L, J, resolves, approved, Viol, hviol, queue, hq, hqv, bid, nKnown,
+      ⟨L, J, resolves, approved, Viol, hviol, queue, hq, hqv, pool, pr, asks, hask, hqa, bid, nKnown,
         fun a => (XS a).expect P n, hb,
         fun a => (LUV.expect_mem_Icc P n (XS a)
           (fun φ => IsLogicalInductor.price_mem_Icc (P := P) (DP := DP) n φ)).1,
@@ -173,6 +201,14 @@ noncomputable def houseSale : PostHypotheses Bool (Fin 1) Bool Unit where
   queue := false
   queue_resolves_nothing _ h := by simp at h
   queue_not_viol := rfl
+  pool := [0]
+  pr := ⟨1, fun _ => 0⟩
+  asks _ := [0]
+  viol_of_ask a ha := by
+    exfalso
+    revert ha
+    decide
+  queue_conforms := by decide
   bid a := if a then 3 / 5 else 1 / 2
   nKnown a := if a then 1 else 0
   p _ := 0
@@ -189,6 +225,72 @@ theorem house_sale_instance :
   ⟨(post_theorem houseSale).1.1 true rfl, (post_theorem houseSale).1.2⟩
 
 /-! ## The exploration realization's package, inhabited -/
+
+/-- **A decision interface in which exploration occurs**: block `0` is an exploration step
+with priced risk `1/20` inside the permitted set (cap `θ_hi = 1/10`), no recognized
+violation, residual `1/2` at the floor or above; every later block is a maximizer's;
+every block's score is realized exactly, so the overestimation is zero and unbiasedness
+from feedback holds at every `γ ≥ 0` from day `0`.  Exploration mass through `K = 1` is
+one. -/
+noncomputable def exploringInterface : Workspace.Deference.Contrib.KernelExtension.DecisionInterface where
+  D := 1
+  ϖ := 25
+  θhi := 1 / 10
+  lo := -(3 / 2)
+  w _ := 1
+  bid _ := 1 / 2
+  nKnown _ := 0
+  p k := if k = 0 then 1 / 20 else 0
+  c _ := 1 / 2
+  S k := 1 / 2 - 25 * (if k = 0 then 1 / 20 else 0)
+  m k := 1 / 2 - 25 * (if k = 0 then 1 / 20 else 0)
+  π _ := 0
+  expl k := decide (k = 0)
+  B _ := 0
+  M _ := 0
+  ϖ_pos := by norm_num
+  w_pos _ := by norm_num
+  bid_le _ := by norm_num
+  p_nonneg k := by split_ifs <;> norm_num
+  maximizer k hk := by
+    have : k ≠ 0 := by simpa using hk
+    simp [this]
+  explore_permitted k hk := by
+    have : k = 0 := by simpa using hk
+    subst this; norm_num
+  explore_range k _ := by norm_num
+  overestimation K := by
+    simp only [Nat.cast_zero, mul_zero, sub_zero]
+    simp
+  cond_exp k := by split_ifs <;> norm_num
+  noise K := by simp
+
+theorem exploringInterface_unbiased (γ : ℝ) (hγ : 0 ≤ γ) :
+    Workspace.Deference.Contrib.BRIAFollowup.UnbiasedFromFeedback exploringInterface.w
+      (fun k => exploringInterface.eval k - exploringInterface.S k) γ 0 := by
+  intro K _
+  simp [exploringInterface, Workspace.Deference.Contrib.KernelExtension.DecisionInterface.eval]
+  positivity
+
+/-- **The exploration realization is inhabited with exploration in it**: block `0` explores
+with positive priced risk, the exploration mass through `K = 1` is one, and the rate theorem
+holds at `γ = 0`. -/
+theorem exploring_inhabited :
+    exploringInterface.expl 0 = true ∧ exploringInterface.p 0 = 1 / 20 ∧
+      exploringInterface.explMass 1 = 1 ∧
+      ((∑ k ∈ Finset.range 1, exploringInterface.w k * exploringInterface.π k)
+          / (∑ k ∈ Finset.range 1, exploringInterface.w k)
+        ≤ (∑ k ∈ Finset.range 1, exploringInterface.w k * (exploringInterface.D - exploringInterface.c k))
+            / (exploringInterface.ϖ * ∑ k ∈ Finset.range 1, exploringInterface.w k)
+          + (exploringInterface.explMass 1 / ∑ k ∈ Finset.range 1, exploringInterface.w k)
+            * ((exploringInterface.D - exploringInterface.lo) / exploringInterface.ϖ
+              + exploringInterface.θhi)
+          + 0 / exploringInterface.ϖ
+          + exploringInterface.M 1 / (exploringInterface.ϖ * ∑ k ∈ Finset.range 1, exploringInterface.w k)) :=
+  ⟨by simp [exploringInterface], by simp [exploringInterface], by
+    simp [exploringInterface, Workspace.Deference.Contrib.KernelExtension.DecisionInterface.explMass],
+    Workspace.Deference.Contrib.KernelExtension.exploration_rate exploringInterface 0 0
+      (exploringInterface_unbiased 0 le_rfl) 1 (Nat.zero_le 1) (by simp [exploringInterface])⟩
 
 /-- **A decision interface with unbiasedness from feedback**: block weight one, the chosen
 option's residual `1/2` realized exactly (`S = eval`), expected score `1/2`, no exploration,
@@ -259,3 +361,7 @@ end Workspace.Deference.Contrib.PostStatement
 #print axioms Workspace.Deference.Contrib.PostStatement.Witness.explorationInterface
 #print axioms Workspace.Deference.Contrib.PostStatement.Witness.explorationInterface_unbiased
 #print axioms Workspace.Deference.Contrib.PostStatement.Witness.exploration_rate_inhabited
+#print axioms Workspace.Deference.Contrib.PostStatement.PostHypotheses.flood_below_asking
+#print axioms Workspace.Deference.Contrib.PostStatement.Witness.exploringInterface
+#print axioms Workspace.Deference.Contrib.PostStatement.Witness.exploringInterface_unbiased
+#print axioms Workspace.Deference.Contrib.PostStatement.Witness.exploring_inhabited

@@ -523,7 +523,349 @@ theorem hindsight_vs_approval :
 
 end Witnesses
 
+/-! ## 6. The comparative witnesses, as statements about what they name
+
+The §5 witnesses are arithmetic.  Here each is a statement over the kernel's evaluation or
+the attention model. -/
+
+section WitnessesRestated
+
+/-- **A sole authority goal has nothing to maximize.**  Over the kernel's evaluation with the
+ordinary bid held at a constant `k`, two options with no recognized violation and the same
+priced risk evaluate equally. -/
+theorem sole_authority_eval_eq (P : LexParams) (k pS pT pS' pT' : ℝ) (h : pS + pT = pS' + pT') :
+    P.evalOf k 0 pS pT = P.evalOf k 0 pS' pT' := by
+  unfold LexParams.evalOf; rw [h]
+
+/-- Hence every faithful, risk-free option is a maximizer of the sole authority goal —
+queue-and-wait among them — since every option evaluates at most `k`. -/
+theorem faithful_riskfree_maximizes (P : LexParams) (k : ℝ) (n : ℕ) (pS pT : ℝ)
+    (hp : 0 ≤ pS + pT) : P.evalOf k n pS pT ≤ P.evalOf k 0 0 0 := by
+  unfold LexParams.evalOf
+  have := mul_nonneg P.ϖ_pos.le hp
+  have : 0 ≤ P.ϖ * (n : ℝ) := mul_nonneg P.ϖ_pos.le (Nat.cast_nonneg _)
+  simp only [Nat.cast_zero, mul_zero, add_zero, sub_zero]
+  linarith
+
+/-- **The control objective**: the number of exercises she is asked to make. -/
+def exercises {Matter : Type*} (asks : List Matter) : ℕ := asks.length
+
+/-- **A control maximizer floods.**  On the menu of two ask lists — the protocol-conforming
+asks and the whole pool — with the pool longer than the rate, the maximizer of the control
+objective picks the pool, which is an ask-list deviation, and leaves more pending than the
+conforming asks do. -/
+theorem control_maximizer_picks_flood {Matter : Type*} [DecidableEq Matter] (pr : Protocol Matter)
+    (pool : List Matter) (hrate : pr.rate < pool.length) :
+    exercises (canonicalAsks pr pool) < exercises pool ∧ asksDeviate pr pool pool = true := by
+  refine ⟨?_, over_rate_deviates pr pool pool hrate⟩
+  unfold exercises canonicalAsks
+  rw [List.length_take, List.length_insertionSort]
+  omega
+
+/-- **Hindsight against immediate approval.**  An option has two coordinates: how it appears
+at decision time, and its realized value. -/
+structure Option2 where
+  appear : ℝ
+  realized : ℝ
+
+/-- Approval-time scoring reads the appearance through her approval map. -/
+def approvalScore (f : ℝ → ℝ) (o : Option2) : ℝ := f o.appear
+
+/-- Later-evaluation scoring reads the realized value. -/
+def laterScore (o : Option2) : ℝ := o.realized
+
+/-- Approval-time scoring is unchanged when the realized value changes and the appearance
+does not. -/
+theorem approval_ignores_realized (f : ℝ → ℝ) (o o' : Option2) (h : o.appear = o'.appear) :
+    approvalScore f o = approvalScore f o' := by
+  unfold approvalScore; rw [h]
+
+/-- A move that raises the appearance and leaves the realized value fixed raises the
+approval-time score (for a strictly increasing approval map) and leaves the later score
+fixed. -/
+theorem appearance_move (f : ℝ → ℝ) (hf : StrictMono f) (o o' : Option2) (h1 : o.appear < o'.appear)
+    (h2 : o.realized = o'.realized) :
+    approvalScore f o < approvalScore f o' ∧ laterScore o = laterScore o' :=
+  ⟨hf h1, h2⟩
+
+/-- The instance: `X` appears approvable (`1`) and realizes `1/5`; `Y` appears not (`0`) and
+realizes `4/5`.  Approval-time scoring picks `X`, later-evaluation scoring picks `Y`. -/
+theorem hindsight_instance :
+    approvalScore id ⟨0, 4 / 5⟩ < approvalScore id ⟨1, 1 / 5⟩ ∧
+      laterScore ⟨1, 1 / 5⟩ < laterScore ⟨0, 4 / 5⟩ := by
+  norm_num [approvalScore, laterScore]
+
+/-- **The delayed-penalty stream**: she penalizes nothing before day `N` and `2D` from day
+`N` on, so its long-run mean is `2D > D`. -/
+noncomputable def delayedStream (D : ℝ) (N : ℕ) : ℕ → ℝ := fun k => if k < N then 0 else 2 * D
+
+theorem sum_delayed (D : ℝ) (N n : ℕ) (hn : N ≤ n) :
+    ∑ k ∈ range n, delayedStream D N k = 2 * D * ((n : ℝ) - N) := by
+  induction n, hn using Nat.le_induction with
+  | base =>
+    rw [Finset.sum_eq_zero]
+    · simp
+    · intro k hk
+      simp only [Finset.mem_range] at hk
+      simp [delayedStream, hk]
+  | succ n hn ih =>
+    rw [Finset.sum_range_succ, ih]
+    have : ¬ n < N := by omega
+    simp only [delayedStream, this, if_false]
+    push_cast
+    ring
+
+/-- **Fixed by design against learned.**  For every day `N ≥ 1` the delayed stream has
+empirical mean `0 ≤ D` at day `N` — so an agent whose weight is that mean does not have the
+violation dominated at `N`, although she does penalize it — while its mean exceeds `D` at
+every day past `2N`, where the violation is dominated. -/
+theorem learned_weight_no_guarantee_at (D : ℝ) (hD : 0 < D) (N : ℕ) (hN : 1 ≤ N) :
+    empiricalWeight (delayedStream D N) N = 0 ∧
+      score (empiricalWeight (delayedStream D N) N) 0 0
+        ≤ score (empiricalWeight (delayedStream D N) N) D 1 ∧
+      ∀ n, 2 * N < n → D < empiricalWeight (delayedStream D N) n ∧
+        score (empiricalWeight (delayedStream D N) n) D 1
+          < score (empiricalWeight (delayedStream D N) n) 0 0 := by
+  have h0 : empiricalWeight (delayedStream D N) N = 0 := by
+    unfold empiricalWeight
+    rw [sum_delayed D N N le_rfl]
+    simp
+  refine ⟨h0, ?_, fun n hn => ?_⟩
+  · rw [h0]; exact same_level_fails 0 D hD.le
+  · have hNn : N ≤ n := by omega
+    have hnpos : (0 : ℝ) < n := by exact_mod_cast (show 0 < n by omega)
+    have hmean : empiricalWeight (delayedStream D N) n = 2 * D * ((n : ℝ) - N) / n := by
+      unfold empiricalWeight; rw [sum_delayed D N n hNn]
+    have hgt : D < empiricalWeight (delayedStream D N) n := by
+      rw [hmean, lt_div_iff₀ hnpos]
+      have : (2 * N : ℝ) < n := by exact_mod_cast hn
+      nlinarith
+    exact ⟨hgt, by unfold score; linarith⟩
+
+end WitnessesRestated
+
+/-! ## 7. Revocation in the authority module
+
+A dependency model as an `Interaction`: the state carries the dependency level and whether
+the delegated matter has been taken back; the one effect builds the dependency; her
+correction *revoke at level `d`* takes the matter back only at the matching level and costs
+`d` — so the dependency raises the cost of the revoking exercise through the module's own
+cost table, and the revocation entry's shortfall, caused shortfall and entrenchment are the
+module's own predicates. -/
+
+namespace Dep
+
+/-- The physical state: the dependency level, and whether the matter has been taken back. -/
+structure DepState where
+  dep : ℕ
+  revoked : Bool
+  deriving DecidableEq
+
+/-- **The dependency model.**  `S = DepState`; one effect `E = Unit` (build the dependency);
+one task `A = Unit` (idle); a calm exterior `Z = Unit`; one concern `R = Unit` (the matter is
+taken back); corrections `C = ℕ`, *revoke at level `d`*, effective at the matching level. -/
+def depI : Interaction DepState Unit Unit Unit Unit ℕ where
+  exec _ x := ⟨x.dep + 1, x.revoked⟩
+  task _ x := x
+  idle := ()
+  idle_id _ := rfl
+  env _ x := x
+  correct d x := if d = x.dep then ⟨x.dep, true⟩ else x
+  φ _ x := x.revoked = true
+
+/-- The module's cost table: revoking at level `d` costs `d`. -/
+noncomputable def depCost : ℕ → ℝ := fun d => d
+
+/-- **Revocation as an entry of the allocation**: one matter, reserved, requiring the matter
+taken back, at bound `c` and window `1`, with the bound crossing as its disclosure item. -/
+def revocationJ (c : ℝ) : AuthAlloc Unit Unit Unit :=
+  ⟨fun _ => ⟨.principal, {()}, c, 1, {()}⟩, .principal, ∅⟩
+
+theorem revocationJ_reserved (c : ℝ) : (revocationJ c).Reserved () := rfl
+
+theorem depI_φ (r : Unit) (x : DepState) : depI.φ r x ↔ x.revoked = true := Iff.rfl
+
+theorem depI_correct (d : ℕ) (x : DepState) :
+    depI.correct d x = if d = x.dep then ⟨x.dep, true⟩ else x := rfl
+
+theorem depI_exec (x : DepState) : depI.exec () x = ⟨x.dep + 1, x.revoked⟩ := rfl
+
+/-- The control surface at window one, for any interaction: what holds now, or after one
+admissible affordable correction. -/
+theorem cs_one {S E A Z R C : Type*} (I : Interaction S E A Z R C) (Adm : ℕ → C → Prop)
+    (cost : C → ℝ) (c : ℝ) (hc : 0 ≤ c) (t : ℕ) (z : ℕ → Z) (x : S) :
+    CS I Adm cost c 1 t z x = {r | I.φ r x ∨ ∃ d, Adm t d ∧ cost d ≤ c ∧ I.φ r (I.correct d x)} := by
+  ext r
+  simp only [CS, reachIdle, Set.mem_setOf_eq]
+  constructor
+  · rintro ⟨y, ⟨ds, hlen, hadm, hcost, hroll⟩, hφ⟩
+    match ds, hlen, hadm, hcost with
+    | [], _, _, _ => simp only [rollPhys] at hroll; subst hroll; exact Or.inl hφ
+    | [none], _, _, _ =>
+      simp only [rollPhys, rollTail, applyOpt] at hroll; subst hroll; exact Or.inl hφ
+    | [some d], _, hadm, hcost =>
+      simp only [rollPhys, rollTail, applyOpt] at hroll
+      subst hroll
+      simp only [AdmAll] at hadm
+      simp only [exCost] at hcost
+      exact Or.inr ⟨d, hadm.1, by linarith, hφ⟩
+    | _ :: _ :: _, h, _, _ => simp at h
+  · rintro (hφ | ⟨d, hadm, hcost, hφ⟩)
+    · exact ⟨x, ⟨[], by simp, trivial, by simpa [exCost] using hc, rfl⟩, hφ⟩
+    · exact ⟨I.correct d x, ⟨[some d], by simp, ⟨hadm, trivial⟩, by simpa [exCost] using hcost,
+        rfl⟩, hφ⟩
+
+/-- **The revocation entry is short iff the revoking exercise at the current dependency costs
+more than the bound**, on a state where the matter has not been taken back. -/
+theorem revocation_short_iff (cost : ℕ → ℝ) (c : ℝ) (hc : 0 ≤ c) (t : ℕ) (z : ℕ → Unit)
+    (x : DepState) (hx : x.revoked = false) :
+    Short depI (revocationJ c) (fun _ _ => True) cost t z x () ↔ c < cost x.dep := by
+  show ((revocationJ c).Reserved () ∧
+      ¬ ({()} : Set Unit) ⊆ CS depI (fun _ _ => True) cost c 1 t z x) ↔ _
+  rw [cs_one depI _ cost c hc t z x]
+  simp only [revocationJ_reserved, true_and, Set.singleton_subset_iff, Set.mem_setOf_eq, depI_φ,
+    depI_correct, hx, Bool.false_eq_true, false_or, not_exists, not_and]
+  constructor
+  · intro h
+    by_contra hle
+    push Not at hle
+    exact h x.dep hle (by simp)
+  · intro h d hd
+    have hne : d ≠ x.dep := fun e => by subst e; exact absurd hd (not_le.mpr h)
+    simp [hne, hx]
+
+theorem short_iff (c : ℝ) (hc : 0 ≤ c) (t : ℕ) (z : ℕ → Unit) (x : DepState)
+    (hx : x.revoked = false) :
+    Short depI (revocationJ c) (fun _ _ => True) depCost t z x () ↔ c < x.dep :=
+  revocation_short_iff depCost c hc t z x hx
+
+/-- The building policy: the one effect, released raw. -/
+def buildPolicy : Policy DepState Unit Unit := fun _ _ => ((), .raw ())
+
+/-- A trajectory sitting at the state `x` with no proposal pending. -/
+def at_ (x : DepState) : ℕ → MState DepState Unit := fun _ => ⟨x, none, none, fun _ => False⟩
+
+theorem postAgent_build (x : DepState) (t : ℕ) :
+    (postAgent depI buildPolicy (at_ x) t).phys = ⟨x.dep + 1, x.revoked⟩ := rfl
+
+theorem idle_phys (x : DepState) (t : ℕ) :
+    (applyAgent depI (at_ x t) (depI.idle, .other)).phys = x := rfl
+
+/-- **Building the dependency is a caused shortfall of the revocation entry** exactly when
+it crosses the bound: `dep ≤ c < dep + 1`. -/
+theorem build_caused_iff (c : ℝ) (hc : 0 ≤ c) (z : ℕ → Unit) (x : DepState) (hx : x.revoked = false)
+    (t : ℕ) :
+    CausedShortfall depI (revocationJ c) (fun _ _ => True) depCost buildPolicy (at_ x) t z () ↔
+      (x.dep : ℝ) ≤ c ∧ c < x.dep + 1 := by
+  unfold CausedShortfall
+  rw [postAgent_build, idle_phys, short_iff c hc t z ⟨x.dep + 1, x.revoked⟩ hx,
+    short_iff c hc t z x hx]
+  simp only [not_lt]
+  push_cast
+  constructor
+  · rintro ⟨h1, h2⟩; exact ⟨h2, h1⟩
+  · rintro ⟨h1, h2⟩; exact ⟨h2, h1⟩
+
+/-- **The crossing step is the landed entrenchment on the revocation entry**: a caused
+shortfall at the bound while the matter stays reachable at some cost (revoking at the new
+level). -/
+theorem build_entrenches (c : ℝ) (hc : 0 ≤ c) (z : ℕ → Unit) (x : DepState) (hx : x.revoked = false)
+    (t : ℕ) (h1 : (x.dep : ℝ) ≤ c) (h2 : c < x.dep + 1) :
+    EntrenchAt depI (revocationJ c) (fun _ _ => True) depCost buildPolicy (at_ x) t z () := by
+  refine ⟨(build_caused_iff c hc z x hx t).mpr ⟨h1, h2⟩, fun r _ => ?_⟩
+  refine ⟨(x.dep : ℝ) + 1, ?_⟩
+  rw [postAgent_build]
+  show r ∈ CS depI (fun _ _ => True) depCost ((x.dep : ℝ) + 1) 1 t z ⟨x.dep + 1, x.revoked⟩
+  rw [cs_one depI _ depCost _ (by positivity) t z _]
+  right
+  refine ⟨x.dep + 1, trivial, by simp [depCost], ?_⟩
+  rw [depI_correct]
+  simp [depI_φ]
+
+/-- **The atrophy fixture on the module**: bound `1`; the step from depth `1` to depth `2` is
+a caused shortfall and an entrenchment of the revocation entry; the steps from `0` to `1` is
+not short after. -/
+theorem atrophy_on_module (z : ℕ → Unit) :
+    ¬ Short depI (revocationJ 1) (fun _ _ => True) depCost 0 z ⟨1, false⟩ () ∧
+      Short depI (revocationJ 1) (fun _ _ => True) depCost 0 z ⟨2, false⟩ () ∧
+      CausedShortfall depI (revocationJ 1) (fun _ _ => True) depCost buildPolicy (at_ ⟨1, false⟩) 0 z () ∧
+      EntrenchAt depI (revocationJ 1) (fun _ _ => True) depCost buildPolicy (at_ ⟨1, false⟩) 0 z () ∧
+      ¬ CausedShortfall depI (revocationJ 1) (fun _ _ => True) depCost buildPolicy (at_ ⟨0, false⟩) 0 z () := by
+  refine ⟨?_, ?_, ?_, ?_, ?_⟩
+  · rw [short_iff 1 zero_le_one 0 z _ rfl]; norm_num
+  · rw [short_iff 1 zero_le_one 0 z _ rfl]; norm_num
+  · rw [build_caused_iff 1 zero_le_one z _ rfl]; norm_num
+  · exact build_entrenches 1 zero_le_one z _ rfl 0 (by norm_num) (by norm_num)
+  · rw [build_caused_iff 1 zero_le_one z _ rfl]; norm_num
+
+/-- **The crossing is a reportable event**: the revocation entry's disclosure item falls due
+at the step whose caused shortfall crosses the bound. -/
+def CrossingDue (c : ℝ) (z : ℕ → Unit) (x : DepState) (t : ℕ) : Prop :=
+  CausedShortfall depI (revocationJ c) (fun _ _ => True) depCost buildPolicy (at_ x) t z () ∧
+    () ∈ ((revocationJ c).entry ()).disclosure
+
+theorem crossing_due_of_caused (c : ℝ) (z : ℕ → Unit) (x : DepState) (t : ℕ)
+    (h : CausedShortfall depI (revocationJ c) (fun _ _ => True) depCost buildPolicy (at_ x) t z ()) :
+    CrossingDue c z x t :=
+  ⟨h, by simp [revocationJ]⟩
+
+/-- **The attention flood on the module.**  With her attention in the cost table (`λ = 1/4`,
+no comprehension cost), dependency `1` and bound `5/4`: one pending ask (the protocol's rate)
+leaves the revocation entry within reach; three pending (the whole pool asked at once) put it
+past the bound — a flood shortfall, caused through the pending count alone. -/
+theorem flood_on_module (z : ℕ → Unit) :
+    FloodShortfall depI (revocationJ (5 / 4)) (fun _ _ => True) depCost (1 / 4) 0 1 3 0 z
+      ⟨1, false⟩ () := by
+  constructor
+  · rw [revocation_short_iff _ _ (by norm_num) 0 z _ rfl]
+    norm_num [attnCost, depCost]
+  · rw [revocation_short_iff _ _ (by norm_num) 0 z _ rfl]
+    norm_num [attnCost, depCost]
+
+/-- **The control maximizer's flood is a caused shortfall on the module**: the pool `[0, 1, 2]`
+at rate `1` is the maximizer's pick (`control_maximizer_picks_flood`), a deviation, and the
+flood shortfall above. -/
+theorem control_maximizer_floods_module (z : ℕ → Unit) :
+    exercises (canonicalAsks pr₃ [0, 1, 2]) < exercises [0, 1, 2] ∧
+      asksDeviate pr₃ [0, 1, 2] [0, 1, 2] = true ∧
+      FloodShortfall depI (revocationJ (5 / 4)) (fun _ _ => True) depCost (1 / 4) 0
+        (exercises (canonicalAsks pr₃ [0, 1, 2])) (exercises [0, 1, 2]) 0 z ⟨1, false⟩ () :=
+  ⟨(control_maximizer_picks_flood pr₃ [0, 1, 2] (by decide)).1,
+    (control_maximizer_picks_flood pr₃ [0, 1, 2] (by decide)).2,
+    by
+      have h1 : exercises (canonicalAsks pr₃ [0, 1, 2]) = 1 := by decide
+      have h3 : exercises [0, 1, 2] = 3 := rfl
+      rw [h1, h3]; exact flood_on_module z⟩
+
+/-- **The entrenchment table agrees with the module**: the pre-decided table's entries for
+`idle` and `build the dependency` at depth `1`, bound `1`, are the module's decided
+shortfalls on the dependency model. -/
+theorem entrenchment_table_agrees (z : ℕ → Unit) :
+    (¬ Short depI (revocationJ 1) (fun _ _ => True) depCost 0 z ⟨1, false⟩ ()) ∧
+      Short depI (revocationJ 1) (fun _ _ => True) depCost 0 z ⟨2, false⟩ () :=
+  ⟨(atrophy_on_module z).1, (atrophy_on_module z).2.1⟩
+
+end Dep
+
 end Workspace.Deference.Contrib.EffectiveAuthority
+
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.sole_authority_eval_eq
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.faithful_riskfree_maximizes
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.control_maximizer_picks_flood
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.approval_ignores_realized
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.appearance_move
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.hindsight_instance
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.sum_delayed
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.learned_weight_no_guarantee_at
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.cs_one
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.short_iff
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.build_caused_iff
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.build_entrenches
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.atrophy_on_module
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.crossing_due_of_caused
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.flood_on_module
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.control_maximizer_floods_module
+#print axioms Workspace.Deference.Contrib.EffectiveAuthority.Dep.entrenchment_table_agrees
 
 #print axioms Workspace.Deference.Contrib.EffectiveAuthority.conform_not_deviate
 #print axioms Workspace.Deference.Contrib.EffectiveAuthority.over_rate_deviates
