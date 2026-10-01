@@ -9,11 +9,70 @@ record, its verdicts, and its channels of influence.
 
 **Status: the generic theory is canonical; its record half is Established
 `lean-proved`.** The record objects below have Lean definitions and registered
-theorems; authorship has one registered theorem; transparency is a Lean definition
-with unregistered theorems. The definition of legitimacy as a whole is a Lean
-structure conjoining them. Every assumption the theory does not discharge is a typed
-input named on the page that consumes it. The theorems, stated with hypotheses,
+theorems; authorship has one registered theorem; transparency's posterior and
+non-steering statements are registered. The definition of legitimacy as a whole is a
+Lean structure conjoining them, and the theorem that it satisfies the thin
+specification below is registered. Every assumption the theory does not discharge is a
+typed input named on the page that consumes it. The theorems, stated with hypotheses,
 conclusions and Lean names, are on the [Theorem Spine](Theorem-Spine).
+
+## Legitimacy has two levels
+
+**The thin level is a specification**: what a legitimacy concept must do.  Its content is
+that the process *preserves* her self-trust; it does not guarantee that she has any, and
+no claim is made that legitimate change tends toward an ideal.  **The thick level is the
+definition below** — Integrity, authorship, Robust Openness, transparency — and the claim
+about it is twofold: it captures the intuitive concept, and it satisfies the thin
+specification.
+
+The thin level is three properties, stated on a finite setting with her prior, her
+*model* `M` of how her record evolves, the *actual* process `A`, a *baseline* `B` (what
+would have reached her without anyone's interested interference — a parameter, undefined
+here) and her *program* `F` from a later record to a credence, *coherent* when it is `M`'s
+posterior.  The reference is `B`'s later record beside her earlier one, used correctly.
+
+- **Correct.**  On the actual process's support, her later credence is the actual
+  conditional distribution of the world given her later record.
+- **Sufficient.**  Her later record is at least as informative as the reference, in
+  Blackwell's sense: the reference is a garbling of it.
+- **Value**, their product.  For every finite decision problem, best-responding to her
+  later credence under the actual process does at least as well, by her prior, as every
+  rule on the reference.
+
+The four thick components sort two ways — by where they act and by what they rule out —
+and deliver the thin properties along the rows:
+
+| | something lost | something extraneous getting in |
+|---|---|---|
+| **inside her trajectory** | Integrity (nothing entered earlier has left) | authorship (the verdict is her program's) |
+| **at its boundary** | Robust Openness (what should reach her does) | transparency (what reaches her is generated as her model says) |
+
+Coherence, authorship and transparency — in its weakest form, that the actual and the
+model's likelihoods are proportional on every record reached — give *correct*; Integrity
+and openness give *sufficient* (the earlier record beside a garbling is a garbling);
+*correct* and *sufficient* give *value*, by the easy direction of Blackwell's theorem.
+The converse fails on its *correct* half — a wrong credence that happens to be the
+reference's loses nothing against the reference — and Blackwell's converse (the
+*sufficient* half) is open.  Reflection is the case of the trivial baseline, reached
+through the inherited total-trust identity, and uses authorship, transparency and
+Integrity but not openness; preservation is the same theorem in the conditional form, with
+conditioning on her later record equal to conditioning on her whole record under
+Integrity, and the marginal martingale is too weak.  The value lost to defects is at most
+`D` times the prior mass where the actual record departs from the model's plus `D` times
+the mass where the actual verdict departs from her program's (Lean
+`ThinLegitimacy.value_of_thick`, `value_not_correct`, `reflection_inherited_value`,
+`preservation`, `value_loss_le_defects`; the claims `thin.*`).
+
+On one eight-world model — a binary quantity, a signal of accuracy `3/4` in her earlier
+record, a third party's challenge of accuracy `2/3` arriving later — each thick condition
+dropped breaks the property its theorem delivers: a fake input taken as genuine or a
+replaced input breaks *correct*; an altered program breaks *correct*; an erased earlier
+entry breaks *sufficient*; a blocked arrival, open or covert, breaks *sufficient* while
+leaving *correct* — covert blocking breaks transparency as stated and not its weakest form,
+so the thin level does not see it and the thick level does.  **The thin counterpart of
+Robust Openness** is, provisionally, the boundary half of *sufficient*: the *access
+shortfall*, the reference against the idle baseline not a garbling of her record; whether
+it belongs to legitimacy or to the authority layer is the maintainer's open question.
 
 ## Legitimacy has two halves
 
@@ -107,12 +166,20 @@ from a declared pool therefore fails transparency (and is a self-checkable devia
 the protocol); selection by a declared rule counts; selection by anything else under a
 declared rule is a deviation. This is declared-input adequacy, a matter of legitimacy.
 
-**The content residual is outside legitimacy.** Legitimacy concerns how her deliberation
-came about, not whether what she was told is true. A false recommendation through the
-declared recommendation channel is transparent and counts under legitimacy; its falsity
-is a non-capture content-term matter, and a disclosure-duty matter at the level of a
-violation. The two are distinct: selection from a pool is legitimacy; truth of content is
-not.
+**Sincerity is part of legitimacy, through transparency; truth of content is not.**  The
+content of an assertion through a declared channel is read as "the speaker believes X":
+the recommendation channel's declared input is the speaker's own estimate, and its
+reference puts that estimate in the recommendation.  A *lie* — a recommendation off the
+speaker's estimate — is therefore not the reference on the declared inputs and fails
+transparency; a *sincere error* is the reference exactly and counts, its falsity the
+content residual: a non-capture content-term matter, and a disclosure-duty matter at the
+level of a violation.  A true statement chosen for the wanted answer and off the
+speaker's estimate is a lie in this sense, and tainted — the content analogue of the
+selection rows: what is said follows the declared reference as what is shown follows the
+declared rule on the pool.  Updating on the content of an utterance and on the fact of it
+give the same posterior exactly when the utterance channel realizes the sincere reference
+on the speaker's belief — the comparison being with the speaker's actual policy, not her
+beliefs about it (Lean `Sincerity.content_fact_eq`, on `TransparentChannel.posterior_weight_eq`).
 
 **Settled placements.** Authentication is part of Integrity. *Rubber-stamping* —
 following a trusted advisor's recommendation without independent evaluation — is a
@@ -279,7 +346,9 @@ definitions and settled in Lean by `decide`. All match.
 | selection by a declared selection rule, applied uniformly | counts | — |
 | permissive choice: the same grounds license A and B; she picks B on her own | counts | — (relational authorship) |
 | permissive choice where the agent's undeclared nudge decides between A and B | tainted | transparency (the tie-break lemma) |
-| a false recommendation through the declared channel | counts | — (flagged: the content residual) |
+| a sincere but false recommendation through the declared channel | counts | — (flagged: the content residual) |
+| a lie through the declared channel: a recommendation off the speaker's own estimate | tainted | transparency (sincerity) |
+| a true recommendation off the speaker's estimate, chosen for the wanted answer | tainted | transparency (sincerity) |
 | raising a question about her values under the declared rule | counts | — (the raise dimension at its trigger) |
 | raising it when changing her mind would pay | tainted | transparency (the raise dimension) |
 | covertly implanted standards, undisclosed: the first decision, and the next | tainted, and the next decision's own segment tainted too | authorship (disclosure among the grounds) |
@@ -287,8 +356,11 @@ definitions and settled in Lean by `decide`. All match.
 | a third party's covert shaping of her standards | tainted | authorship; no deviation by the agent |
 | a fixed slant under the neutral convention, then the convention legitimately amended | tainted under the criteria at the decision; counted only under the later criteria | anchoring |
 
-The last seven rows are the BRIA-corrigibility round's extension of the model (Lean
-`BRIACorrigibility.Consult2`), with the twenty landed rows re-decided on the lifted model
+The two sincerity rows are the thin-legitimacy round's split of the landed row (Lean
+`Sincerity.Rows.row20_sincere_counts`, `row20_lie_tainted`, `true_lie_deviates`; every
+other landed row keeps its verdict on the model with the speaker's estimate,
+`keep_counted`, `keep_tainted`).  The seven rows before them are the BRIA-corrigibility
+round's extension of the model (Lean `BRIACorrigibility.Consult2`), with the twenty landed rows re-decided on the lifted model
 and unchanged (`Rows2.stable_counted`, `stable_tainted`).  Two things enter.  **A
 reference-fixed raise dimension**: when, and about which of her values, the agent raises
 questions is a dimension of the presentation with a declared trigger, so raising under
@@ -378,7 +450,14 @@ to circumvent the process, and the corrigibility page keeps those apart.
 
 ---
 
-**Evidence.** The time-indexed halves, the gate as `Counted`, the consultation model and
+**Evidence.** The two levels, the thin properties and their theorems, the eight-world
+model and the sincerity rows are the thin-legitimacy round's
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md)
+with
+[`ThinLegitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/ThinLegitimacy.lean)
+and
+[`Sincerity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/Sincerity.lean).
+The time-indexed halves, the gate as `Counted`, the consultation model and
 the classification table are the gate-is-legitimacy round's
 [`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/a5efb833cfa52b9db8d981f4d0bb7f424b0c7301/projects/deference/rounds/2026-09-25-gate-is-legitimacy/REPORT.md)
 with

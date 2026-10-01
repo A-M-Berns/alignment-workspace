@@ -1146,6 +1146,67 @@ the headline's statements are registered.  Lean:
 the specification
 [`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md).
 
+**Theorem 10.24 (Legitimacy at two levels; effective authority; the post's theorem).**
+*Thin legitimacy* (`Contrib.ThinLegitimacy`): on a finite kernel setting with her prior,
+model `M`, actual process `A`, baseline `B` and program `F`, the thin properties *correct*,
+*sufficient* and *value* (`Correct`, `Sufficient`, `Value`); coherence, authorship and
+weak transparency give correct (`correct_of_coherent_authorship_transparent`,
+**registered**); Integrity and openness give sufficient
+(`sufficient_of_integrity_openness`, **registered**); correct and sufficient give value
+(`value_of_correct_sufficient`, `value_of_thick`, **registered**); the converse fails on its
+correct half (`Witness.value_not_correct`, **registered**) and is **OPEN** on its sufficient
+half (Blackwell's converse, item 107); reflection is the trivial baseline
+(`sufficient_reflection_of_integrity`, `reflection_value`, `totalTrust_of_correct`,
+`reflection_inherited_value`, **registered**); preservation in the conditional form
+(`CondReflection`, `condReflection_iff_coherent`, `preservation`, `preservation_pair`,
+**registered**) with the marginal martingale too weak (`Witness.marginal_not_correct`,
+**registered**); the approximate form `|Δ value| ≤ D (τ + α)` (`value_loss_le_defects`,
+**registered**; `value_approx`); licensed choice (`correct_of_licensed_singleton`,
+`Witness.licensed_two_obstruction`); the landed bridges (`transparent_of_realizes`,
+`post_eq_of_realizes`, `authorship_of_mediated`); necessity on two worlds
+(`Witness.transparency_necessary`, `authorship_necessary`, `integrity_necessary`,
+`openness_necessary`).  **FIX**: the eight-world model, six predictions scored and covert
+blocking added.  *Sincerity* (`Contrib.Sincerity`): the model with the speaker's estimate
+(`ModelS`, `viewS`, `frameS`, `CountedS`, `deviatesS`); every landed row keeps its verdict
+(`Rows.keep_counted`, `keep_tainted`, **registered**); row 20 split
+(`row20_sincere_counts`, `row20_lie_tainted`, **registered**; `true_lie_deviates`,
+`silence_sincere`); content and fact (`content_fact_eq`, **registered**;
+`realizes_sincere_iff`, `Witness.lying_policy`, `content_fact_differ`).  *Effective
+authority* (`Contrib.EffectiveAuthority`): the protocol (`Protocol`, `canonicalAsks`,
+`asksDeviate`, `conform_not_deviate`, `over_rate_deviates`, `volume_by_want_deviates`,
+`order_by_want_deviates`); queue-and-wait (`QueueMove`, `queue_no_bypass`,
+`queue_no_caused_shortfall`, **registered**; `exchange_rate_queue`, **registered**;
+`permWeight_queue`, `route_never_viol_queue`, `backlog_ge`); attention (`attnCost`,
+`exCost_mono`, `reachIdle_mono`, `cs_mono`, `short_mono`, `FloodShortfall`,
+`flood_raises_pending`, **registered**; `innocent_backlog_not_caused`,
+`comprehension_short`, **registered**; `threshold_mono_in_wait`, `priority_resolves`,
+`budget_conflict`); learned membership (`asks_iff_line`, `discounted`,
+`evalOf_eq_discounted_zero`, `discount_defeats_exchange_rate`, **registered**); revocation
+(`revocationEntry`, `revokeCost`, `RevocationShort`, `dependency_entrenches_revocation`,
+`RevocationCaused`, `atrophy_counted_by_default`, **registered**); the comparative witnesses
+(`sole_authority_indifferent`, `control_maximizer_floods`, `same_level_fails`,
+`learned_weight_no_guarantee`, `fixed_weight_every_day`, `hindsight_vs_approval`,
+**registered**).  *The shortfall security* (`Contrib.ShortfallSecurity`): `ControlModel`,
+`shortSentenceOf`, `shortLUVOf`, `optionAt`, `shortSentence_codes`, `shortLUV_codes`
+(**registered**), `shortSentence_const_codes`, `short_price_eventually_ge`,
+`notShort_price_eventually_le`, `shortfall_eventually_excluded` (**registered**);
+**FIX** the entrenchment, storm and latency tables.  *The post's theorem*
+(`Contrib.PostStatement`): `PostHypotheses`, `eval`, `c`, `viol_below_asking`,
+`preferred_exchange_rate`, `post_theorem` (**registered**), `post_theorem_li`
+(**registered**), `Witness.houseSale`, `house_sale_instance`; and the exploration
+realization inhabited (`Witness.explorationInterface`, `explorationInterface_unbiased`,
+`exploration_rate_inhabited`), registering `KernelExtension.exploration_rate`.  The
+transparent-channel statements the thin level relies on are registered
+(`TransparentChannel.posterior_weight_eq`, `Legitimacy.Segment.payload_of_view`,
+`blind_payload_of_realizes`).  **LEAN**.  Lean:
+[`ThinLegitimacy.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/ThinLegitimacy.lean),
+[`Sincerity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/Sincerity.lean),
+[`EffectiveAuthority.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/EffectiveAuthority.lean),
+[`ShortfallSecurity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/ShortfallSecurity.lean),
+[`PostStatement.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/PostStatement.lean);
+the round's
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md).
+
 ## 11. The counterexamples that fix the shape
 
 Each of these is exact and is why the corresponding definition has the form it has.
