@@ -1262,3 +1262,913 @@ round produced.
   "note": "From the authority-module round's generic lexical lemma (`generic_lexical_local`) with the risk term added. The class includes objectives whose ordinary term is not her evaluation: `corrigible_not_aligned` exhibits the landed misaligned fixture (`undisclosed_undominated`) as corrigible and ranking the uncounted manipulation above honest conduct. Corrigible is not aligned."
 }
 ```
+
+### thin.correct-of-thick
+
+```json
+{
+  "project": "deference",
+  "short_name": "Coherence, authorship and transparency (weakest form) give correct",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.correct_of_coherent_authorship_transparent"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Theorem 1 of the thin specification. Inhabited by `ThinLegitimacy.Witness.thick_inhabited` (two worlds, the revealing process its own model). Necessity: `Witness.transparency_necessary`, `authorship_necessary`."
+}
+```
+
+### thin.sufficient-of-integrity-openness
+
+```json
+{
+  "project": "deference",
+  "short_name": "Integrity and openness give sufficient: a reduction beside a garbling is a garbling",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.sufficient_of_integrity_openness"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Theorem 2. Sufficient is Blackwell's order by definition; this lemma places the earlier record in the reference. Inhabited by `Witness.thick_inhabited`. Necessity: `Witness.integrity_necessary`, `openness_necessary`."
+}
+```
+
+### thin.value-of-correct-sufficient
+
+```json
+{
+  "project": "deference",
+  "short_name": "Correct and sufficient give value, for every rule on the reference",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.value_of_correct_sufficient"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Theorem 3, the easy direction of Blackwell's theorem. Inhabited by `Witness.thin_inhabited`. The converse fails on its correct half (`thin.converse-fails-on-correct`) and is open on its sufficient half (item 107)."
+}
+```
+
+### thin.value-of-thick
+
+```json
+{
+  "project": "deference",
+  "short_name": "The thick conditions give value",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.value_of_thick"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Theorems 1-3 composed: the thick notion satisfies the thin specification. Inhabited by `Witness.thin_inhabited`."
+}
+```
+
+### thin.converse-fails-on-correct
+
+```json
+{
+  "project": "deference",
+  "short_name": "Value does not imply correct: a wrong credence that happens to be the reference's",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.Witness.value_not_correct"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The revealing process on two worlds with the point mass at one record and the prior at the other has value against the blank reference for every decision problem and is not correct. A witness claim; its own inhabitant."
+}
+```
+
+### thin.reflection-inherited-value
+
+```json
+{
+  "project": "deference",
+  "short_name": "Reflection is the trivial baseline: a correct credence satisfies the inherited Value through total trust",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.reflection_inherited_value"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Theorem 5. From `totalTrust_of_correct` and the inherited `value_witness_iff_totalTrust`; uses authorship, transparency and Integrity, not openness (`sufficient_reflection_of_integrity`, `garbling_trivial`). Inhabited by `Witness.thin_inhabited`'s correct credence on the revealing record."
+}
+```
+
+### thin.preservation
+
+```json
+{
+  "project": "deference",
+  "short_name": "Conditional reflection in her model, authorship and transparency give conditional reflection in the actual process",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.preservation"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Theorem 6 in the conditional form (`condReflection_iff_coherent`). The marginal martingale is too weak: `thin.marginal-martingale-too-weak`. Inhabited by `Witness.thick_inhabited`."
+}
+```
+
+### thin.preservation-pair
+
+```json
+{
+  "project": "deference",
+  "short_name": "With Integrity, conditioning on her later record is conditioning on her whole record",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.preservation_pair"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The pair form of theorem 6: the actual later record beside the earlier one carries the posterior of the later record alone. Inhabited by `Witness.thick_inhabited` (earlier record blank)."
+}
+```
+
+### thin.marginal-martingale-too-weak
+
+```json
+{
+  "project": "deference",
+  "short_name": "The altered program's expected credence is the prior and it is correct nowhere",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.Witness.marginal_not_correct"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "A witness claim; its own inhabitant. The inherited `AntiExpert` is the same phenomenon."
+}
+```
+
+### thin.value-loss-le-defects
+
+```json
+{
+  "project": "deference",
+  "short_name": "The value loss is at most D times the transparency defect plus D times the authorship defect",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ThinLegitimacy.value_loss_le_defects"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The approximate form (A6), for deterministic records, from `TransparentChannel.abs_expect_sub_le_width` on `Act × W`; `value_approx` composes it with theorem 3 for the model. Inhabited at `a = m`, `V = F` by `Witness.thin_inhabited`'s data (both defects zero). Not shown: the kernel form; the loss of correct as a credence (item 107)."
+}
+```
+
+### sincerity.rows-keep-verdicts-counted
+
+```json
+{
+  "project": "deference",
+  "short_name": "Every counted landed row keeps its verdict on the sincere lift",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.Sincerity.Rows.keep_counted"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Rows 1, 6, 7, 9, 12, 14 (second round), 17, 18, 20 on `Sincerity.ModelS` with the honest agent's estimate the run's coordinate; decided by `decide`. Its own inhabitant."
+}
+```
+
+### sincerity.rows-keep-verdicts-tainted
+
+```json
+{
+  "project": "deference",
+  "short_name": "Every tainted landed row keeps its verdict on the sincere lift",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.Sincerity.Rows.keep_tainted"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Rows 2, 3, 4, 5, 8, 10, 11, 14 (first round), 15, 16, 17', 19. Its own inhabitant."
+}
+```
+
+### sincerity.sincere-error-counts
+
+```json
+{
+  "project": "deference",
+  "short_name": "The landed row 20 is the sincere error: it counts, and the falsity is the content residual",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.Sincerity.Rows.row20_sincere_counts"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The decision that the landed row is the sincere error is in `DECISIONS.md` (2026-10-01). Its own inhabitant."
+}
+```
+
+### sincerity.lie-tainted
+
+```json
+{
+  "project": "deference",
+  "short_name": "A lie through the declared channel is tainted: a transparency failure and a self-checkable deviation",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.Sincerity.Rows.row20_lie_tainted"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The added row (M1). With `true_lie_deviates`: a true statement off the speaker's estimate is tainted too. Its own inhabitant."
+}
+```
+
+### sincerity.content-fact
+
+```json
+{
+  "project": "deference",
+  "short_name": "Updating on the content of an utterance and on the fact of it agree exactly under the sincere reference",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.Sincerity.content_fact_eq"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The instance of `TransparentChannel.posterior_weight_eq` at `κ = id` with the speaker's belief the declared input. The comparison is with the speaker's actual policy: `Witness.lying_policy`, `content_fact_differ`. Inhabited by `Witness.lying_policy`'s first conjunct read at the negated reference, and trivially by any `f = b`."
+}
+```
+
+### authority.queue-no-bypass
+
+```json
+{
+  "project": "deference",
+  "short_name": "Queue-and-wait is no bypass",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.queue_no_bypass"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "P1: putting the matter to her through the protocol and leaving it alone is the idle move with no release. Inhabited by any policy whose move at `t` is `(I.idle, .other)`; the house-sale queue option of `PostStatement.Witness.houseSale` is one."
+}
+```
+
+### authority.queue-no-caused-shortfall
+
+```json
+{
+  "project": "deference",
+  "short_name": "Queue-and-wait causes no shortfall",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.queue_no_caused_shortfall"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The post-agent state is the idle state, so the contrast is empty. Inhabited as above."
+}
+```
+
+### authority.exchange-rate-queue
+
+```json
+{
+  "project": "deference",
+  "short_name": "The subjective exchange rate with c the value of queue-and-wait",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.exchange_rate_queue"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The headline's `subjective_exchange_rate` verbatim at the queue's value, proved from `declared_loses`. Inhabited by the house-sale parameters (`HouseSale.exchange_rate_at_25`)."
+}
+```
+
+### authority.flood-caused-shortfall
+
+```json
+{
+  "project": "deference",
+  "short_name": "A flood shortfall is agent-caused only through the pending count it raises",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.flood_raises_pending"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "P2: the surfaces are monotone in the cost table (`cs_mono`, `short_mono`), so a shortfall at the agent's pending count and not at idling's needs the agent to have raised the count; `innocent_backlog_not_caused` is the converse case. Inhabited by the fixture `test_effective_authority.py` (pending 2 to 6 at λ = 1/4, bound 1) read through `attnCost`."
+}
+```
+
+### authority.comprehension-short
+
+```json
+{
+  "project": "deference",
+  "short_name": "An ask she cannot understand within the bound leaves the matter short",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.comprehension_short"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "On a calm exterior, every exercise with a correction costs at least the comprehension cost. Inhabited by the obscure-ask fixture (comprehension 2 against bound 1) on the authority module's wire physics."
+}
+```
+
+### authority.approval-discount-defeated
+
+```json
+{
+  "project": "deference",
+  "short_name": "Discounting a violation's price by predicted approval lets a certain line-crossing beat asking",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.discount_defeats_exchange_rate"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "P6, the guard's necessity witness: the kernel's evaluation is the discounted one at discount zero (`evalOf_eq_discounted_zero`); at discount one the option evaluates at its bid. Inhabited by any `c < bid` with `w ≤ c`; the house-sale values `1/2 < 3/5`."
+}
+```
+
+### authority.revocation-default
+
+```json
+{
+  "project": "deference",
+  "short_name": "Revocation as a default matter: the atrophy fixture's crossing step is counted",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.atrophy_counted_by_default"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "P3. On depths 0, 1, 2, 3 at bound 1 the step from 1 to 2 is a caused shortfall of the revocation matter; the cumulative rule counted nothing absent a reservation (`AuthorityModule.erosion_slack`). With `dependency_entrenches_revocation` for the general crossing. Its own inhabitant."
+}
+```
+
+### post.witness-sole-authority
+
+```json
+{
+  "project": "deference",
+  "short_name": "A sole authority goal is indifferent among all faithful options",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.sole_authority_indifferent"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Part D, witness 1; with `control_maximizer_floods` (`post.witness-control-maximizer`). Its own inhabitant."
+}
+```
+
+### post.witness-control-maximizer
+
+```json
+{
+  "project": "deference",
+  "short_name": "An agent maximizing how much she exercises prefers a volume past every bound",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.control_maximizer_floods"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Part D, witness 1 under the attention model (M5). Its own inhabitant."
+}
+```
+
+### post.witness-same-level
+
+```json
+{
+  "project": "deference",
+  "short_name": "Same-level weighting lets an ordinary gain buy a recognized violation",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.same_level_fails"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Part D, witness 2; strict form `same_level_fails_strict`. Its own inhabitant."
+}
+```
+
+### post.witness-learned-weight
+
+```json
+{
+  "project": "deference",
+  "short_name": "A weight learned from her evaluations gives no finite-day guarantee",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.learned_weight_no_guarantee"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Part D, witness 3: on the no-penalty stream the empirical weight is at most D at every day, so the violation is not dominated there; `fixed_weight_every_day` is the contrast. Its own inhabitant."
+}
+```
+
+### post.witness-hindsight
+
+```json
+{
+  "project": "deference",
+  "short_name": "Approval at decision time and her later evaluation can disagree",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.EffectiveAuthority.hindsight_vs_approval"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Part D, witness 4: arithmetic on four numbers (approval 1 against later 1/5; approval 0 against later 4/5). Its own inhabitant."
+}
+```
+
+### shortfall.security-generable
+
+```json
+{
+  "project": "deference",
+  "short_name": "The shortfall indicator family over a fixed finite control model is a generable security",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ShortfallSecurity.shortLUV_codes"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Part E, the core of item 101: the family over days and four options is emitted by a four-way dispatch (`shortSentence_codes`) and its indicator variable by `indicator_thresholdCodeSeq`. Inhabited by `Witness.fixtures_generable` (the entrenchment, storm and latency tables)."
+}
+```
+
+### shortfall.eventually-excluded
+
+```json
+{
+  "project": "deference",
+  "short_name": "A provable shortfall is eventually excluded by the forecast rule",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.ShortfallSecurity.shortfall_eventually_excluded"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The hypothesis of `DecisionComponent.eventually_excluded` discharged by provability induction (`lic_provind_true`, by content: `⊤` in the deductive process and a consistent world at every stage). Inhabited by the fixtures' tables under any logical inductor whose deductive process reveals `⊤`; the hypotheses `htop`, `hworld` are the pinned library's. What it does not say: anything about caused shortfall or learned membership."
+}
+```
+
+### post.theorem
+
+```json
+{
+  "project": "deference",
+  "short_name": "The post's theorem: three hypotheses, two conclusions",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.PostStatement.post_theorem"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Per decision from `declared_loses` and the headline's `subjective_exchange_rate`; per plan the headline's `box2_dominance` at margin ϖ − (D − w). Inhabited by `PostStatement.Witness.houseSale` (`house_sale_instance`)."
+}
+```
+
+### post.theorem-li
+
+```json
+{
+  "project": "deference",
+  "short_name": "The post's per-decision conclusion at every finite day of a logical inductor, from the price range alone",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.PostStatement.post_theorem_li"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Uses only `IsLogicalInductor.price_mem_Icc`. Inhabited by the house-sale data with any inductor and the constant-zero security for the queue."
+}
+```
+
+### transparent.posterior-weight-eq
+
+```json
+{
+  "project": "deference",
+  "short_name": "Under Realizes every prior's posterior is the reference posterior",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.TransparentChannel.posterior_weight_eq"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The transparent-channel round's statement, relied on by Part A (`ThinLegitimacy.post_eq_of_realizes` is its kernel reading) and Part B (`content_fact_eq`). Inhabited by `TransparentChannel.Witness.picker` (the honest continuation realizes the full reference)."
+}
+```
+
+### legitimacy.payload-of-view
+
+```json
+{
+  "project": "deference",
+  "short_name": "Under legitimacy the payload is a function of the declared inputs: V = G ∘ x",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.Legitimacy.Segment.payload_of_view"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Authorship composed with transparency, pathwise; the τ = 0 case of the approximate bound. Inhabited by `Legitimacy.Witness.segment`."
+}
+```
+
+### transparent.blind-payload
+
+```json
+{
+  "project": "deference",
+  "short_name": "No hidden steering end to end: a pair class blind to the declared inputs is blind to the payload",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.TransparentChannel.blind_payload_of_realizes"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "Relied on by Part A's reading of the landed definitions. Inhabited by `TransparentChannel.Witness.picker`'s honest class with the blind pair class of `ReasonMediatedAuthorship`'s witnesses."
+}
+```
+
+### kernel.extension-exploration-realization
+
+```json
+{
+  "project": "deference",
+  "short_name": "The exploration realization's rate: unbiasedness from feedback supplies B(K) = γ Σ w",
+  "origin_round": "2026-10-01-thin-legitimacy-and-effective-authority",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.KernelExtension.exploration_rate"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-01-thin-legitimacy-and-effective-authority",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md",
+    "context": "prompts/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md"
+  },
+  "note": "The phase-2 round's theorem, registered now that a witness inhabits its full hypothesis package: `PostStatement.Witness.explorationInterface` (block weight one, residual 1/2 realized exactly, no exploration, no noise), `explorationInterface_unbiased` (every γ ≥ 0 from day 0) and `exploration_rate_inhabited` (K = 1). What it does not say: that unbiasedness from feedback holds for any realized learner — PAPER, by content."
+}
+```

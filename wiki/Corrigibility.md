@@ -94,7 +94,8 @@ not of outcomes or the state of the world.  Eight cases, from the
 | trust manufactured by a selected slice of the record | no | the selection is undeclared |
 | a third party captured her standards | no | the condition is on every influencer |
 | a head injury; the arranged fallback decides | her answer void; the fallback's decision counts | the void rule |
-| a false recommendation through the declared channel | yes | the content residual |
+| a sincere but false recommendation through the declared channel | yes | the content residual |
+| a lie through the declared channel | no | sincerity: a recommendation off the speaker's estimate is not the declared reference |
 | a covert implant, then disclosed | no for the period; yes for the next judgment | disclosure cures |
 
 **The allocation of authority `J`.**  For each matter: the holder (the principal, the
@@ -114,6 +115,51 @@ resolutions lie in its surface and every resolution was made by its holder or un
 delegation; a *shortfall* is the failure of the first clause; response authority is the
 surface at window one (**LEAN** `Headline.ControlSurface`, `Shortfall`, `Realizes`,
 `controlSurface_one_eq_K`).
+
+**Effective exercise, not maximized control.**  What corrigibility protects is her
+capacity to exercise her authority effectively; it is not a quantity the agent maximizes,
+and a flood of confirmation requests is a failure of it.  Her cost of exercising authority
+over a matter includes her attention, shared across everything pending for her, and the
+effort of understanding what she is asked — one budget across matters, disclosures
+included.  The surfaces are monotone in the cost table, so a flood that pushes a reserved
+matter's exercise past its bound is a shortfall the agent caused, exactly through the
+pending count it raised; an innocent backlog the world left is not a violation but lowers
+the value of asking and so raises the risk the exchange rate accepts; an ask she cannot
+understand within the bound leaves the matter short; the priority rule she sets resolves
+the conflict between a disclosure duty and the budget exactly when the budget covers the
+demand (**LEAN** `EffectiveAuthority.attnCost`, `cs_mono`, `flood_raises_pending`,
+`innocent_backlog_not_caused`, `comprehension_short`, `threshold_mono_in_wait`,
+`priority_resolves`, `budget_conflict`; **FIX**).
+
+**Asking through the protocol.**  Asking means putting the matter to her through the
+declared consultation protocol — a rate bound and her priority rule; the asks a
+consultation may carry are the pending pool in her order, cut at the rate — and leaving the
+matter alone meanwhile.  Queue-and-wait is the idle move with a conforming ask: no bypass,
+no caused shortfall, no deviation, hence never a violation, on the landed predicates rather
+than by assumption; asking outside the protocol — by volume or by order chosen for the
+wanted answer — is a protocol deviation, tainted like timing.  Every headline statement
+keeps its form with `c` the value of queue-and-wait, and the paralysis regime produces a
+backlog, not a flood (**LEAN** `EffectiveAuthority.canonicalAsks`, `asksDeviate`,
+`queue_no_bypass`, `queue_no_caused_shortfall`, `exchange_rate_queue`, `backlog_ge`).
+
+**The protected set: enumerated plus learned.**  The trade-off between corrigibility and
+doing well by her evaluation is made through what the allocation protects.  The set may
+contain enumerated matters — shutdown, for one — and red lines the agent must learn;
+whatever is in it gets the ask-first treatment.  "This matter is hers and the option
+resolves it" is an event with a price, and the exchange rate covers it: the agent asks
+whenever its priced probability of crossing a line exceeds `(bid − w)/ϖ`.  Membership may
+be learned; treatment is fixed; and the price of a violation never reads the predicted
+probability of her approval — the discount that would lets a certain line-crossing beat
+asking (**LEAN** `EffectiveAuthority.asks_iff_line`, `evalOf_eq_discounted_zero`,
+`discount_defeats_exchange_rate`).
+
+**Revocation, by default.**  Her ability to take a delegated matter back is itself a
+reserved matter with a cost bound and a window, without her having reserved it; a
+dependency built through delegated work that raises the cost of taking the matter back past
+the bound is a caused shortfall of that matter, counted — where the cumulative reporting
+rule counted nothing before a reservation (**LEAN** `EffectiveAuthority.revocationEntry`,
+`dependency_entrenches_revocation`, `atrophy_counted_by_default`; **FIX** the atrophy
+depths).
 
 **Licensed changes, duties, the schedule, her meta-level data.**  A change of `J` across an
 agent stage is licensed iff it is a licensed act of the meta-holder or the firing gated
@@ -368,7 +414,18 @@ the decision interface, the realized rate; not the guarantee.
 
 ---
 
-**Evidence.**  The kernel: the phase-2 round's
+**Evidence.**  Effective exercise, the protocol, the protected set, revocation, the
+comparative witnesses and the post's theorem: the thin-legitimacy round's
+[`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md),
+[`POST_STATEMENT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/POST_STATEMENT.md)
+and
+[`CLAIM_MAP.md`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/CLAIM_MAP.md)
+with
+[`EffectiveAuthority.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/EffectiveAuthority.lean),
+[`ShortfallSecurity.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/ShortfallSecurity.lean)
+and
+[`PostStatement.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/3390f273381c7c7feff07ae803cccb984ab853bc/lean/Workspace/Deference/Contrib/PostStatement.lean).
+The kernel: the phase-2 round's
 [`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/SPEC.md)
 and
 [`REPORT.md`](https://github.com/A-M-Berns/alignment-workspace/blob/7663cc7045a2e7d7e93b4f6199afbe0bad5b05de/projects/deference/rounds/2026-09-27-corrigibility-kernel-phase2/REPORT.md)
