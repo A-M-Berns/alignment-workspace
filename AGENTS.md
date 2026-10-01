@@ -460,6 +460,24 @@ a registry `superseded-by` link or an errata entry, which carries current
 epistemic content about which statement governs now. A label or a passage whose
 only function is memorialising a change goes.
 
+**Why the rule, from both sides.** A reference to a discarded idea either stays
+oblique — a passing mention only an insider can resolve, confusing exactly where
+an important point rests on it — or gets spelled out, which spends the reader's
+time on something that was dropped and may not even be coherent. Describing the
+current thing as a thing in itself avoids both costs. The writer most prone to
+the error is a round with its whole context loaded — prompt, files, reasoning —
+which leaves echoes of that context in what it hands over. Reread as a reader
+who has none of it.
+
+**Epistemic status is current content.** A label that tracks a statement's
+standing — refuted, superseded, open, conjectured — with the refutation or the
+successor beside it, says what is known now, and it stays. A refuted claim is
+kept, not deleted, because it may be revived. When a structure is being
+deliberately re-examined, long-refuted entries may be cleaned up, since restoring
+one is cheap; that cleanup is never urgent and never eager. What the rule
+forbids even here is the statement narrating its own past: it says what the
+claim is and what its status is, not what it used to be.
+
 Completed round records under `prompts/` are history and keep whatever names were
 true when they were written; so does git history. Neither is a living document.
 
