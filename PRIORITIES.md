@@ -3220,6 +3220,19 @@ leakage residual (`leakage`), and the extension of the disclosure duty to *known
 third-party compromise (`missedKnownDisclosure`) — what the agent knows is this item's
 companion again.
 
+*2026-10-01 (thin-legitimacy round) — the core landed, the item narrowed:* over a fixed
+finite control model the shortfall indicator of each option is a sentence the table
+decides, its family over days and options is efficiently emitted, its indicator variable
+is a generable security, and a provable shortfall is eventually excluded by provability
+induction (`ShortfallSecurity.shortSentence_codes`, `shortLUV_codes`,
+`shortfall_eventually_excluded`; the entrenchment, storm and latency fixtures on the priced
+event in `projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/src/shortfall_security.py`).  **What remains here:**
+drill calibration (the drilled-and-chosen weighting as `P`-generable), the feedback
+trader's emission for the shortfall sentences, the deferral function settling each drill
+before the next block is priced, and the taint event `T_a` as a security.  This prices
+shortfall inside a declared model; it does not cover learned membership (M4), whose price
+is a different event (`EffectiveAuthority.asks_iff_line`).
+
 ### 102. BRIA's bids against the market: block claims as priced securities — **[open]**
 
 <!-- workspace-priority: project=deference; dispatchable=yes -->
@@ -3409,6 +3422,102 @@ learning layer if the construction realizes the coupling of item 102.
 *A solution ships:* the construction against the acceptance statement, or a proof that
 some obligation is unsatisfiable by any computable agent, which reopens the
 specification.
+
+### 107. The post's backing: thin legitimacy, effective authority, and the post's theorem — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The thin-legitimacy round (`projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/`) puts behind the post
+"Corrigible Normative Learning" the theorems its informal claims rely on: the thin
+specification of legitimacy (*correct*, *sufficient*, *value*) and the thick conditions'
+satisfying it; sincerity through transparency; asking through the declared protocol;
+attention in the cost of exercise; learned membership's guard; revocation by default; the
+comparative witnesses; the shortfall security; the post's theorem as one statement.  The
+registrations in `projects/deference/CLAIMS.md` (`thin.*`, `sincerity.*`, `authority.*`,
+`shortfall.*`, `post.*`, and the transparent-channel statements they rely on) answer this
+item.  **What it leaves open, for later rounds against this item:** Blackwell's converse —
+value for every finite decision problem under a correct credence implies the reference is a
+garbling of the later record (a separating-hyperplane argument; the round refuted the
+converse's *correct* half and did not mechanize this half); the loss of *correct* as a
+credence bounded by the pathwise transparency defect, and the kernel form of the
+approximate bound (`ThinLegitimacy.value_loss_le_defects` is for deterministic records);
+wiring the ask-list deviation into the record's `Counted` as a dimension of the
+presentation (`Consult2`'s pattern); the generic-`k` dispatch of the shortfall family.
+
+*Deliverable shape:* registered claims against the round's declarations (this round);
+later, any of the open pieces as Lean declarations with witnesses.
+*Acceptance check:* `python3 -m checkers.run` green on the registry; Lean audits clean.
+*Context:* the round's `REPORT.md`, `POST_STATEMENT.md` and `CLAIM_MAP.md`; items 104
+and 101.
+*Consumed by:* the post; any round extending the headline or the thin level.
+*A solution ships:* the registrations, and later the open pieces or their obstructions.
+
+### 108. The thin specification for evaluations, where no outside fact plays the world's role — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+Part A of the thin-legitimacy round states *correct*, *sufficient* and *value* over a
+finite set of worlds with her prior: the credence is about a fact, and *correct* compares
+it with the actual conditional.  Her evaluations — what the fidelity score reads — have no
+outside fact to be correct about.  Wanted: the same two-level structure for evaluations:
+what the thin properties become when the object of her later judgment is a valuation rather
+than a credence (candidates: *correct* as agreement with the valuation her program yields
+on the actual record; *sufficient* unchanged; *value* as a decision-theoretic statement
+about acting on the valuation), and the theorem that the thick conditions deliver them.
+
+*Deliverable shape:* Lean in a contribution namespace, in the style of
+`ThinLegitimacy.lean`; an exact fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean.
+*Context:* `projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md` Part A; the fidelity
+score's evaluator (`Headline.evaluation`); the after-compromise band.
+*Consumed by:* the round that restates the segment gate's "counts" on the thin level, so
+that the post's "illegitimate futures count as bad" has a thin-level reading.
+*A solution ships:* the three properties for evaluations with the satisfaction theorem, or
+the obstruction.
+
+### 109. Preservation for a logical-inductor principal — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+`ThinLegitimacy.preservation` is finite and exact: conditional reflection in her model,
+authorship and transparency give conditional reflection in the actual process.  A
+logical-inductor principal's self-trust is asymptotic — the inherited
+`value_iff_totalTrust_asymptotic` and the pinned self-trust results — and her program is
+not a posterior.  Wanted: the preservation theorem in the asymptotic form: with the
+inductor's conditional self-trust as the hypothesis on her model and transparency as the
+actual record generated as the model says, the actual process satisfies the same self-trust
+in the limit; and which of the finite theorem's hypotheses survive (coherence becomes a
+property of the inductor; authorship and transparency stay).
+
+*Deliverable shape:* Lean over the pinned `LogicalInduction` API with the self-trust
+results entered by content as named hypotheses.
+*Acceptance check:* Lean audits clean; the inherited asymptotic row cited.
+*Context:* `projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md` Part A (theorems 5, 6);
+`InheritedAlgebra.lean` §`value_iff_totalTrust_asymptotic`; the pinned `SelfTrust.lean`.
+*Consumed by:* the post's statement for an inductor principal, and the LI-corrigibility
+line's event-linked authorization.
+*A solution ships:* the asymptotic preservation theorem, or the obstruction.
+
+### 110. A definition of the baseline `B` — **[open]**
+
+<!-- workspace-priority: project=deference; dispatchable=yes -->
+
+The baseline — what would have reached her without anyone's interested interference — is
+a parameter of the thin-legitimacy round throughout; *sufficient*, *value* and the access
+shortfall (P5) are all stated against it.  Wanted: a definition.  The candidate the
+authority module suggests is the idle-agent rollout (`AuthorityModule.rollPhys` with the
+agent idle) read as a process on her record; the open question is what "anyone's"
+interference means for third parties, whose arrivals the baseline must contain (the
+challenge of the eight-world model) while their manipulations it must not.
+
+*Deliverable shape:* the definition, with the eight-world model's seven cases re-derived
+from it rather than declared; Lean where it admits it.
+*Acceptance check:* `python3 tests/run.py` green on the re-derived cases.
+*Context:* `projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md` Part A and the reserved
+placement of Robust Openness in `DECISIONS.md`.
+*Consumed by:* the round that lands the access shortfall in whichever layer the maintainer
+places it.
+*A solution ships:* the definition and the re-derivation, or the obstruction.
 
 ## Workspace friction
 

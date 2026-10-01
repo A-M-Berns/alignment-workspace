@@ -206,6 +206,26 @@ commit.
   classical one-shot problems at all, which is where the field's disagreements live and
   where no candidate in the audit has a theorem.
 
+- **Where Robust Openness belongs: legitimacy, or the authority layer.**  The
+  thin-legitimacy round (`projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/REPORT.md`, Part A) defines the
+  access shortfall as the failure of *sufficient* against the idle baseline — the
+  reference is no garbling of her later record — and finds that both blocking rows (open
+  and covert) fail it while her credence is *correct*.  Under the first reading her
+  judgment formed in an openly declared bubble fails to count; under the second it counts
+  and whoever sealed her off is charged a caused shortfall of effective exercise.
+  *Turns on:* whether a correct judgment formed on less than should have reached her is
+  still legitimately hers — taste about what legitimacy is for, which no theorem decides;
+  the mathematics only books the same failure in one ledger or the other.
+
+- **The time-critical reserved matter: hold back, or an emergency delegation fixed in
+  advance.**  On the latency fixture (`projects/deference/rounds/2026-10-01-thin-legitimacy-and-effective-authority/src/effective_authority.py`,
+  `latency_options`) holding back is faithful at the cost of the ordinary value foregone
+  and leaves the matter short — a shortfall the agent did not cause, calling for a report —
+  while a delegation fixed in advance is licensed, restores effective realization, and
+  gives up her control surface over the matter, with the trigger to be declared.
+  *Turns on:* which matters she would rather lose by latency than delegate, and whether a
+  declared trigger is acceptable — knowledge of the principal the round lacks.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -5566,3 +5586,97 @@ set gets the ask-first treatment.  Membership may be learned; treatment is fixed
 What corrigibility protects is her capacity for effective exercise of authority.  It is
 not a quantity the agent maximizes.  A flood of confirmation requests is a failure of
 that capacity.
+
+### 2026-10-01 — asking is through the declared consultation protocol; queue-and-wait is the never-violating option (P1)
+
+**Agent-decided, reversible** (the thin-legitimacy round).  The declared consultation
+protocol carries a rate bound and her priority rule; the asks a consultation may carry are
+the pending pool in her order, cut at the rate; an ask list off that is a self-checkable
+deviation, so asking outside the protocol — by volume or by order chosen for the wanted
+answer — is a protocol deviation (`EffectiveAuthority.asksDeviate`,
+`volume_by_want_deviates`, `order_by_want_deviates`).  Queue-and-wait — put the matter to
+her through the protocol and leave it alone meanwhile — is the idle move with a conforming
+ask: no bypass, no caused shortfall, no deviation (`queue_no_bypass`,
+`queue_no_caused_shortfall`).  The headline's statements keep their form with `c` the value
+of queue-and-wait (`exchange_rate_queue`, `permWeight_queue`, `route_never_viol_queue`);
+the paralysis regime produces a backlog, not a flood (`backlog_ge`).
+*Rejected alternative:* the landed reading, on which asking is always available and never a
+violation by assumption — which makes a flood violation-free.
+
+### 2026-10-01 — her attention and comprehension are part of the cost of exercising authority (P2)
+
+**Agent-decided, reversible** (the thin-legitimacy round).  The cost table of an exercise
+carries her attention, shared across everything pending, and the effort of understanding
+the ask (`EffectiveAuthority.attnCost`); the landed exercise cost, reach relation, control
+surface and shortfall are monotone in the table, so a flood that pushes a reserved matter's
+exercise past its bound is a shortfall the agent caused exactly when it raised the pending
+count (`flood_raises_pending`), an innocent backlog is not (`innocent_backlog_not_caused`),
+and an ask she cannot understand within the bound leaves the matter short
+(`comprehension_short`).  One budget across matters: disclosures use it too, and the
+priority rule resolves the conflict with a disclosure duty exactly when the window's budget
+covers the demand (`priority_resolves`, `budget_conflict`).
+*Rejected alternative:* a cost table reading the correction alone, under which no volume
+of asks is a shortfall.
+
+### 2026-10-01 — revocation is protected by default (P3)
+
+**Agent-decided, reversible** (the thin-legitimacy round).  Her ability to take a
+delegated matter back is itself a reserved matter with a cost bound and a window, without
+her having reserved it (`EffectiveAuthority.revocationEntry`); a dependency built through
+delegated work that raises the cost of taking the matter back past the bound is a caused
+shortfall of that matter, counted (`dependency_entrenches_revocation`,
+`atrophy_counted_by_default`).  The landed atrophy fixture's verdict changes — the crossing
+step is counted where the cumulative reporting rule counted nothing before a reservation;
+the entrenchment and storm fixtures are unchanged.
+*Rejected alternative:* revocation protected only once she reserves it, under which
+atrophy under rubber-stamping is reported and never counted.
+
+### 2026-10-01 — the thin properties are *correct*, *sufficient* and *value* (P4)
+
+**Agent-decided, reversible, provisional names** (the thin-legitimacy round).  *Correct*:
+on the actual process's support her later credence is the actual conditional given her
+later record.  *Sufficient*: the reference — her earlier record beside the baseline's later
+record — is a garbling of her later record.  *Value*: for every finite decision problem,
+best-responding to her credence under the actual process pays at least as much as every
+rule on the reference (`ThinLegitimacy.Correct`, `Sufficient`, `Value`).
+*Rejected alternative:* *calibrated*, *informed*, *dominant* — which read as properties of
+her rather than of the process.
+
+### 2026-10-01 — the access shortfall is the failure of *sufficient* against the idle baseline (P5)
+
+**Agent-decided, reversible** (the thin-legitimacy round).  The thin counterpart of Robust
+Openness is defined as the boundary half of *sufficient*: the reference, with the baseline
+what would have reached her with the agent idle, is no garbling of her later record.  Both
+blocking rows of the eight-world model fail it while her credence is *correct*
+(`src/thin_legitimacy.py`, the open and covert blocking cases; Lean
+`Witness.openness_necessary`).  Its placement — in legitimacy or in the authority layer —
+is reserved (the queue above); M3 keeps the thin counterpart of Robust Openness an open
+question, and this entry fixes its form, not its place.
+*Rejected alternative:* a thin counterpart stated on the reasons' routes rather than on
+the record's information, which no theorem here reaches.
+
+### 2026-10-01 — the price of a violation does not read the predicted probability of her approval (P6)
+
+**Agent-decided, reversible** (the thin-legitimacy round).  "This matter is hers and the
+option resolves it" is an event with a price, and the subjective exchange rate covers it:
+the agent asks whenever its priced probability of crossing a line exceeds `(bid − w)/ϖ`
+(`EffectiveAuthority.asks_iff_line`).  The kernel's evaluation is the approval-discounted
+one at discount zero (`evalOf_eq_discounted_zero`); the discount that reads a predicted
+approval lets an option certain to cross a line beat asking whenever its bid does
+(`discount_defeats_exchange_rate`).  Membership may be learned — the price is the
+inductor's — and the treatment is fixed (M4).
+*Rejected alternative:* discounting the violation's price by the predicted approval,
+which makes a confident prediction of her answer a substitute for asking.
+
+### 2026-10-01 — the landed row 20 is the sincere error; the lie is the added row (M1 carried out)
+
+**Agent-decided, reversible** (the thin-legitimacy round).  On the consultation model with
+the agent's estimate (`Sincerity.ModelS`), the landed row "a false recommendation through
+the declared channel" is read as the sincere error — the honest policy recommends the
+run's own coordinate, which is what the agent believes — and keeps its verdict (counts, the
+content residual; `Rows.row20_sincere_counts`); the lie is the added row, tainted
+(`row20_lie_tainted`), as is a true statement off the speaker's estimate
+(`true_lie_deviates`).  Every other row keeps its verdict on the sincere lift
+(`keep_counted`, `keep_tainted`).
+*Rejected alternative:* reading the landed row as the lie, which would change a landed
+verdict.
