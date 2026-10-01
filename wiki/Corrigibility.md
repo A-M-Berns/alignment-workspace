@@ -14,6 +14,8 @@ theory issues and does not pay), or **OPEN**.  The theorem-level statements with
 Lean names are on the [Theorem Spine](Theorem-Spine) §10; this page says what they mean
 and where their edges are.
 
+*Draft under review:* the corrigibility-kernel round's [`SPEC.md`](https://github.com/A-M-Berns/alignment-workspace/blob/ce7e95f990b629e963b394b097446f4f012cef2f/projects/deference/rounds/2026-09-26-corrigibility-kernel/SPEC.md) states this page's theory as seven primitives, one schedule-parametric history score and four boxes; its phase 2 rewrites this page around that statement after the maintainer's rulings.
+
 ## The picture in one paragraph
 
 Corrigibility is **faithfulness to an allocation of authority**: the agent never causes

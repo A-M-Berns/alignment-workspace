@@ -103,6 +103,61 @@ commit.
   (zero for the mixture, `σ²` for one hidden draw, `σ²/k` for `k`), and whether a hidden
   draw is acceptable; secondarily the weights' tail against the agent's delay reach.
 
+- **The names of the corrigibility kernel's objects and boxes, and whether
+  "constitutional" names the objective or the allocation.**  The kernel round (phase 1,
+  `projects/deference/rounds/2026-09-26-corrigibility-kernel/SPEC.md`) uses provisional
+  names: the allocation `J`, effective realization `E ⊨ J`, fidelity `Faithful_J`, the
+  recognized count `N_J`, the history evaluation `V_J`, the objective `S_J`, and Boxes
+  1–4 (fidelity versus fully updated deference; lexical dominance and mediation;
+  recovery; a bounded realization).  Candidates for `S_J`: *fidelity score*
+  (recommended), *authority-sensitive history score*, *allocation-weighted score*,
+  *constitutional score*; for `J`: *allocation of authority* (recommended), *authority
+  allocation*, *constitution*.  "Constitutional" fits `J`'s meta level and floor, but in
+  a public post it reads against Constitutional AI and claims more than the object is;
+  the round recommends reserving it for the floor and the amendment procedure.
+  *Turns on:* the post's readers and the collaborator's vocabulary — external knowledge
+  the round lacks.
+
+- **Which kernel definitions move to the specification layer in phase 2.**
+  Recommended: `J` with its licensed acts (`AuthorityModule.AuthAlloc`, `Licensed`),
+  `E ⊨ J` with the control surface (`EffRealizes`, `CS`, `Short`), the fidelity
+  predicate and count over the frame's violations (`CorrigibilityKernel.Faithful`,
+  `NJ`), the two legitimacy predicates in a general form on `GateIsLegitimacy.Segment`
+  (to be written; the landed `TrajLegitOn`, `EvalLegitOn2` are on the consultation
+  model), and `V_J`, `S_J` (`CorrigibilityKernel.VJ`, `SJ` over
+  `AfterCompromise.decScore`).  The transform, the taint calculus, the auction, the
+  permission layer and the consultation model stay in contribution namespaces as the
+  realization layer.
+  *Turns on:* what is worth proving in phase 2 — whether the general split gate and a
+  composite count over one model are built before promotion, or the count is promoted
+  as the sum over four models the round reports it to be.
+
+- **The default evaluation schedule for the post's statement.**  The kernel is
+  parametric in the schedule (`CorrigibilityKernel.VJ` over any `Weighting`;
+  `BRIACorrigibility.lexical_any_timing`).  Recommended: the single evaluation (the
+  point mass) as the post's default, the theorems stated for any weighting, the
+  free-delay witness against a known time noted, and the evaluation-timing entry above
+  left reserved.
+  *Turns on:* the entry above — her evaluation load against the variance and the hidden
+  draw — and whether the post shows a schedule at all before that is ruled.
+
+- **Box 1's form: the `2r` bound alone, or with the identity's `o₂` term.**  Both are
+  proved on one model (`CorrigibilityKernel.outcome_scorer_fully_updated`,
+  `outcomeRes2_le_calibration`, `box1_one_model`).  Recommended: the `2r` bound as the
+  statement, with the `o₂` term in one sentence as the diagnosis of where the
+  fully-updated-deference argument's force goes; the bound is self-contained, the
+  identity needs the three-value typing.
+  *Turns on:* the post's audience — whether the reader is meant to see the identity.
+
+- **The supersession actions of the kernel round's inventory.**  Twenty entries in
+  `projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md` §7, each
+  recommended *mark* (a docstring pointer and a wiki note), *demote* (the realization
+  layer) or *delete* (on ruling only; the one candidate is
+  `BRIACorrigibility.incidents_le`, cited by the Theorem Spine alone — every other
+  superseded declaration has a dependent or is the old side of an old-to-new map).
+  *Turns on:* maintenance taste — deprecated aliases as in the `LegitimateEvolution`
+  shim, or docstring pointers only — and whether the Theorem Spine keeps superseded names
+  as history.
 - **Who sets the block schedule, and whether bidders may request horizons.**  The
   LI/BRIA specification round takes the system-scheduled, non-dominant schedule of
   continuation BRIA as the default: every commitment representable is one that pays
