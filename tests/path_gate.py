@@ -42,6 +42,8 @@ SPEC_PATHS = (
     "projects/deference/note-dump-2026-08-11/**",
     "projects/deference/dose-response-note-dump-2026-07-02/**",
     "projects/deference/references-citations-2026-08-11/**",
+    "projects/deference/corrigibility-note-dump-2026-10-01/**",
+    "projects/decision-theory/decision-problems-note-dump-2026-10-01/**",
     "lean/lakefile.toml", "lean/lean-toolchain", "lean/lake-manifest.json",
     "lean/Workspace.lean",
     "lean/Workspace/Smoke.lean",
