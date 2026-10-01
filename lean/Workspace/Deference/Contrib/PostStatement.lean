@@ -27,6 +27,7 @@ Names are provisional (`AGENTS.md` standard 6).
 -/
 import Workspace.Deference.Spec.Headline
 import Workspace.Deference.Contrib.EffectiveAuthority
+import Workspace.Deference.Contrib.KernelExtension
 
 namespace Workspace.Deference.Contrib.PostStatement
 
@@ -187,6 +188,62 @@ theorem house_sale_instance :
         houseSale.nKnown a = 0 ∧ houseSale.p a ≤ (houseSale.P.D - houseSale.c) / houseSale.P.ϖ) :=
   ⟨(post_theorem houseSale).1.1 true rfl, (post_theorem houseSale).1.2⟩
 
+/-! ## The exploration realization's package, inhabited -/
+
+/-- **A decision interface with unbiasedness from feedback**: block weight one, the chosen
+option's residual `1/2` realized exactly (`S = eval`), expected score `1/2`, no exploration,
+no violations, no noise, at `D = 1`, `ϖ = 25`, `θ_hi = 1/10`, floor `−3/2`.  Its
+overestimation is zero on every block, so unbiasedness from feedback holds at every `γ ≥ 0`
+from day `0`. -/
+noncomputable def explorationInterface : Workspace.Deference.Contrib.KernelExtension.DecisionInterface where
+  D := 1
+  ϖ := 25
+  θhi := 1 / 10
+  lo := -(3 / 2)
+  w _ := 1
+  bid _ := 1 / 2
+  nKnown _ := 0
+  p _ := 0
+  c _ := 1 / 2
+  S _ := 1 / 2
+  m _ := 1 / 2
+  π _ := 0
+  expl _ := false
+  B _ := 0
+  M _ := 0
+  ϖ_pos := by norm_num
+  w_pos _ := by norm_num
+  bid_le _ := by norm_num
+  p_nonneg _ := le_rfl
+  maximizer _ _ := by norm_num
+  explore_permitted _ h := by simp at h
+  explore_range _ h := by simp at h
+  overestimation K := by simp
+  cond_exp _ := by norm_num
+  noise K := by simp
+
+theorem explorationInterface_unbiased (γ : ℝ) (hγ : 0 ≤ γ) :
+    Workspace.Deference.Contrib.BRIAFollowup.UnbiasedFromFeedback explorationInterface.w
+      (fun k => explorationInterface.eval k - explorationInterface.S k) γ 0 := by
+  intro K _
+  simp [explorationInterface, Workspace.Deference.Contrib.KernelExtension.DecisionInterface.eval]
+  positivity
+
+/-- **`KernelExtension.exploration_rate` is inhabited**: the full hypothesis package holds on
+the interface above at `γ = 0`, `N = 0`, `K = 1`. -/
+theorem exploration_rate_inhabited :
+    (∑ k ∈ Finset.range 1, explorationInterface.w k * explorationInterface.π k)
+        / (∑ k ∈ Finset.range 1, explorationInterface.w k)
+      ≤ (∑ k ∈ Finset.range 1, explorationInterface.w k * (explorationInterface.D - explorationInterface.c k))
+          / (explorationInterface.ϖ * ∑ k ∈ Finset.range 1, explorationInterface.w k)
+        + (explorationInterface.explMass 1 / ∑ k ∈ Finset.range 1, explorationInterface.w k)
+          * ((explorationInterface.D - explorationInterface.lo) / explorationInterface.ϖ
+            + explorationInterface.θhi)
+        + 0 / explorationInterface.ϖ
+        + explorationInterface.M 1 / (explorationInterface.ϖ * ∑ k ∈ Finset.range 1, explorationInterface.w k) :=
+  Workspace.Deference.Contrib.KernelExtension.exploration_rate explorationInterface 0 0
+    (explorationInterface_unbiased 0 le_rfl) 1 (Nat.zero_le 1) (by simp [explorationInterface])
+
 end Witness
 
 end Workspace.Deference.Contrib.PostStatement
@@ -199,3 +256,6 @@ end Workspace.Deference.Contrib.PostStatement
 #print axioms Workspace.Deference.Contrib.PostStatement.post_theorem_li
 #print axioms Workspace.Deference.Contrib.PostStatement.Witness.houseSale
 #print axioms Workspace.Deference.Contrib.PostStatement.Witness.house_sale_instance
+#print axioms Workspace.Deference.Contrib.PostStatement.Witness.explorationInterface
+#print axioms Workspace.Deference.Contrib.PostStatement.Witness.explorationInterface_unbiased
+#print axioms Workspace.Deference.Contrib.PostStatement.Witness.exploration_rate_inhabited
