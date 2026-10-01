@@ -5,8 +5,8 @@
 conditions and names the jobs holding it. A conditional permission nothing reads
 is the failure this repository has already paid for once: the residue sweep
 reported clean while `README.md`'s third line violated a standing decision in
-plain sight, which is why the naming rule became `tests/name_lint.py`. This is
-the same move for the same reason.
+plain sight, which is why a standing rule gets a reader wherever one can be
+written. This is the same move for the same reason.
 
 **The enumeration lives in `AGENTS.md`**, not here, and is read from the
 `write-scope` markers in that section — so the list a reader sees and the list

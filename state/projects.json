@@ -31,6 +31,14 @@
       "entry_points": ["projects/deference/README.md", "projects/deference/notes/LI_NATIVE_DEFERENCE.md", "projects/deference/notes/FINITE_MODEL_SKELETON.md"]
     },
     {
+      "id": "decision-theory",
+      "name": "Decision theory",
+      "path": "projects/decision-theory",
+      "status": "active",
+      "parent": null,
+      "entry_points": ["projects/decision-theory/README.md", "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md", "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/TEST_SUITE.md", "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/AUDIT.md"]
+    },
+    {
       "id": "leverage",
       "name": "Leverage",
       "path": null,

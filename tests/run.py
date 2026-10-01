@@ -3,8 +3,8 @@
 
 Each project owns a self-contained runner; this one discovers and runs them, and
 reports a per-project verdict. It adds the repo-level checks the projects cannot
-do for themselves: every gate's null-input self-test, gate coverage, the name
-lint, contributor-checker hygiene, conservativity, and the Lean sorry-free gate.
+do for themselves: every gate's null-input self-test, gate coverage,
+contributor-checker hygiene, conservativity, and the Lean sorry-free gate.
 
 Lean compilation itself is not run here — it needs a toolchain and a warm cache,
 and it is the one check with a wall time measured in minutes. Run
@@ -45,7 +45,7 @@ def run_projects() -> list[tuple[str, bool]]:
 # Every gate ships a case proving it fails on its null input — see AGENTS.md.
 # Running them here as well as in CI means a local run cannot report green off a
 # gate that has quietly stopped matching anything.
-GATE_SELF_TESTS = ("path_gate", "dco", "attribution", "name_lint",
+GATE_SELF_TESTS = ("path_gate", "dco", "attribution",
                    "contrib_hygiene", "conservativity", "audit_axioms",
                    "workflow_scope", "lean_scope", "round_records",
                    "dead_pointers", "untracked_pointers")
@@ -122,7 +122,6 @@ def lean_build() -> bool:
 if __name__ == "__main__":
     coverage()
     self_tests()
-    subprocess.run([sys.executable, "tests/name_lint.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/contrib_hygiene.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/conservativity.py"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "tests/workflow_scope.py"], cwd=ROOT, check=True)

@@ -45,7 +45,6 @@ passes.
 
 ```sh
 python3 tests/run.py                              # python: every project's tests
-python3 tests/name_lint.py                        # python: no personal names in prose
 python3 -m checkers.run --self-test               # checkers: the harness's own tests
 python3 -m checkers.run                           # checkers: every registered claim
 python3 tests/contrib_hygiene.py                  # checkers: contributed checkers

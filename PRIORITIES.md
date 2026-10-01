@@ -3343,6 +3343,72 @@ later, any of the four open pieces as Lean declarations with witnesses.
 `REPORT.md` §6 (what did not compress).
 *Consumed by:* the post; any round extending the headline.
 *A solution ships:* the registrations, and later the open pieces or their obstructions.
+### 105. Belief–decision compatibility: W1 as a theorem of record, and the unresolved implication — **[substantial]**
+
+<!-- workspace-priority: project=decision-theory; dispatchable=yes -->
+
+`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §5 states the compatibility relation in two forms.  The
+**established** form W1: under LI recovery relative to the observation stream (M2(c),
+item 91), a post-selection forecast `F⁺_k` of the selected option's realized score
+published as a market state after the selection is in the stream, and settlement within
+a computable deferral, `limsup (1/K) Σ_{k≤K} (e_k − F⁺_k) ≤ 0` — from no overestimation
+and `thm:wubaff` on the trivial weighting.  The **strong** form: the same on every
+`P`-generable weighting.  The first pass's derivation of the strong form from M2(c) and
+M3 is invalid (the subsequence gap; the cumulative-loss gap, repaired by `ε`-shifted
+bidders; the access gap — a weighting must be computable at forecast time, so a
+selection-based weighting serves post-selection forecasts and serves pre-selection
+forecasts only where the selection is predictable from the market state, and publicity
+of the selection does not make an internal test set recognizable; the semantic gap — a
+forecast for an unselected option settles against nothing), and **no countermodel to
+the implication exists**: its status is unresolved.  Two deliverables.  (i) W1 as a
+statement of record with its hypotheses exact and its witness (the paper's auction over
+a logical inductor on a finite environment).  (ii) The implication settled: a proof
+under added hypotheses (weighted no-overestimation; a sound market-reading bidder for
+the selected option on a recognizable test set), or a countermodel — the
+belief-disagreement environment A1 of §7 is the candidate for one.
+
+*Deliverable shape:* paper-level theorems with named hypotheses and witnesses; Lean for
+the algebraic core where the pinned formalization admits it; or the countermodel with
+its fixture.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean if any.
+*Context:* the round's `PROBLEM_STATEMENT.md` §3, §5, §7 (A1); `TEST_SUITE.md` T11; the
+cross-subsidy and heads-tracker fixtures in `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/tests/test_cm.py`; items 91, 102.
+*Consumed by:* item 106; item 102 (a bid checked against prices is the strong form's
+lower half stated on priced claims).
+*A solution ships:* W1 of record and the implication's status, either way.
+
+### 106. A candidate LI/BRIA synthesis against the acceptance statement — **[open]**
+
+<!-- workspace-priority: project=decision-theory; dispatchable=yes -->
+
+Construct a computable agent and check it against `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §0 and
+its checklist §9: the supporting milestones M1–M4 with the four recovery domains of M3
+declared and the commitment source of M5 named; the integration obligation of §3 — the
+five exhibits, I1 proved on a stated environment class with explicit computational
+accounting (the four steps of T10), I3 proved on the belief-disagreement environment
+a failure mode specified to §7's qualification standard (A1 is the proposed, provisional
+instance), I2 at least as W1 (item 105); the recovery and integration rows of `TEST_SUITE.md`
+passed under their assumptions and the construction-level rows reported, each with its
+access model, scored unit and any supplied channel, contract, oracle or menu
+restriction stated against the primary source; and the advance — by a diagnostic
+meeting the qualification standard of §7 (A1 is a proposed, provisional instance), one
+theorem being allowed to discharge both I3 and the advance.  Updatelessness (A2) is an extension,
+and a candidate claiming it declares its recovery domain and states that the domain
+question of M3 is open.  The continuation-BRIA specialization is one admissible shape.
+A candidate meeting the milestones and I1 alone is an integration theorem, reported as
+such and not as the endpoint.
+
+*Deliverable shape:* the construction with its existence proof; the checklist, item by
+item, with what is proved, what is fixture-supported, and what is not shown; the suite's
+rows scored with exact fixtures.
+*Acceptance check:* `python3 tests/run.py` green; Lean audits clean if any.
+*Context:* the round's three documents; `wiki/Continuation-BRIA.md` for the
+specialization; items 86, 91, 102, 105.
+*Consumed by:* the decision-theory line's first registered claims; the deference line's
+learning layer if the construction realizes the coupling of item 102.
+*A solution ships:* the construction against the acceptance statement, or a proof that
+some obligation is unsatisfiable by any computable agent, which reopens the
+specification.
 
 ## Workspace friction
 
@@ -3422,10 +3488,10 @@ rather than an error and which every gate here passed. The maintainer ruled that
 ignore rule does not need a gate behind it; the gitlink check the entry also
 proposed is not built.
 
-### F6 — The name lint cannot see a citation
+### F6 — The name lint cannot see a citation — *closed*
 <!-- workspace-priority: project=none; dispatchable=no -->
 
-`tests/name_lint.py` matches maintainer surnames anywhere in tracked prose
+<!--historical-->`tests/name_lint.py`<!--/historical--> matches maintainer surnames anywhere in tracked prose
 outside `prompts/`, the consolidated trees and `DECISIONS.md`. It cannot
 distinguish naming the program after a person — the failure it exists to prevent
 — from citing a third party's published work in a bibliography. A maintainer of
@@ -3447,6 +3513,11 @@ has already passed, so it was not taken by the round that hit it.
 is exempt from the lint as a single allowed file (`ALLOWED_FILES`), pinned in the
 lint's self-test. Citations elsewhere in tracked prose still need the backtick form;
 the citation-context matching rule above remains the general fix and is not taken.
+
+*2026-09-29, closed by maintainer ruling (`DECISIONS.md`, 2026-09-29):* the lint is
+retired and the rule it approximated is stated in `AGENTS.md` — people are named by
+role, and an author is cited by name.  Kept for the lesson: a lint on surnames cannot
+express a distinction that is about the capacity in which a person is named.
 
 ### F7 — A round cannot record a dependency on an unindexed research checkpoint
 

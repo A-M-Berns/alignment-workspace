@@ -47,10 +47,7 @@ reclassified on exactly this test in the September 2026 cleanup, and one entry m
 as a result.
 
 Citations were checked against search results at the date of this note where a
-link is given. Where a remembered label did not check out, that is said. One
-author surname appears in backticks: it collides with the name lint, which
-cannot distinguish a bibliographic citation from naming the program after a
-person. The friction is filed in `PRIORITIES.md`.
+link is given. Where a remembered label did not check out, that is said.
 
 **Three grades of citation appear here, and the difference matters for paper
 writing.** A full entry with title, venue and year, marked *citation verified*, has

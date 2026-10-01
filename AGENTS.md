@@ -241,6 +241,13 @@ claim under test. Roadmap prose, narrative framing, and philosophical positionin
 beyond that local context do not belong in repository deliverables. A padded but
 glossed contribution remains a legitimate rejection under the slop discipline.
 
+**People are named by role.** A maintainer acting as a maintainer is *the
+maintainer* — or *a maintainer* — in every repository
+document and on the wiki: a ruling, a dispatch, a hold or a review is attributed
+to the role, and no document reads as a record of what one person said to
+another. A maintainer's published work is cited like anyone else's, by author
+name. Not gated; a review matter.
+
 ---
 
 ## Slop discipline
@@ -791,7 +798,7 @@ which are required.
 | contributed checkers are stdlib-only and documented | `checkers` — `tests/contrib_hygiene.py` |
 | DCO sign-off | `dco` — `tests/dco.py`; that an assertion was made, not that it is true |
 | model attribution, in the pull-request body and in each commit's trailer where the body names a model | `dco` — `tests/attribution.py`; presence and non-emptiness only |
-| no personal names in prose | `python` — `tests/name_lint.py`, `wiki/` included |
+| people are named by role, not by name, except as cited authors | **not gated** — review |
 | the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
 | volatile quantities in the wiki are declared and match machine state | `checkers` — `checkers/wiki_state_bindings.py` |
 | CI write scope is enumerated and conditioned; no stored secrets | `python` — `tests/workflow_scope.py` |

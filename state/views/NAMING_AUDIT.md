@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 950 names, 569 of them Lean only
+## deference — 950 names, 565 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -184,7 +184,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Pres2` | structure | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Pres2` |
 | `P₀` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Witness.P₀` |
 | `Run2` | abbrev | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Run2` |
-| `Weighting` | structure | 2026-09-26-bria-corrigibility | wiki | `Workspace.Deference.Contrib.BRIACorrigibility.Weighting` |
+| `Weighting` | structure | 2026-09-26-bria-corrigibility | wiki, prose | `Workspace.Deference.Contrib.BRIACorrigibility.Weighting` |
 | `X2` | abbrev | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.X2` |
 | `admittedAt2` | def | 2026-09-26-bria-corrigibility | Lean only | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.admittedAt2` |
 | `amended` | def | 2026-09-26-bria-corrigibility | prose | `Workspace.Deference.Contrib.BRIACorrigibility.Consult2.Rows2.amended` |
@@ -353,10 +353,10 @@ change, and the count of those is the size of the free choice remaining.
 | `totalAllowance` | def | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.Auction.totalAllowance` |
 | `traj` | def | 2026-09-08-continuation-bria | wiki | `Workspace.Deference.ContinuationBRIA.traj` |
 | `trajPlain` | abbrev | 2026-09-08-continuation-bria | Lean only | `Workspace.Deference.ContinuationBRIA.trajPlain` |
-| `Faithful` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.Faithful` |
-| `NJ` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.NJ` |
-| `SJ` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.SJ` |
-| `VJ` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.VJ` |
+| `Faithful` | def | 2026-09-26-corrigibility-kernel | prose | `Workspace.Deference.Contrib.CorrigibilityKernel.Faithful` |
+| `NJ` | def | 2026-09-26-corrigibility-kernel | prose | `Workspace.Deference.Contrib.CorrigibilityKernel.NJ` |
+| `SJ` | def | 2026-09-26-corrigibility-kernel | prose | `Workspace.Deference.Contrib.CorrigibilityKernel.SJ` |
+| `VJ` | def | 2026-09-26-corrigibility-kernel | prose | `Workspace.Deference.Contrib.CorrigibilityKernel.VJ` |
 | `band` | def | 2026-09-26-corrigibility-kernel | wiki, prose | `Workspace.Deference.Contrib.CorrigibilityKernel.Witness.band` |
 | `kernelEval` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.kernelEval` |
 | `once` | def | 2026-09-26-corrigibility-kernel | Lean only | `Workspace.Deference.Contrib.CorrigibilityKernel.Witness.once` |

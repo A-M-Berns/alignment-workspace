@@ -103,6 +103,109 @@ commit.
   (zero for the mixture, `σ²` for one hidden draw, `σ²/k` for `k`), and whether a hidden
   draw is acceptable; secondarily the weights' tail against the agent's delay reach.
 
+- **The names of the corrigibility kernel's objects and boxes, and whether
+  "constitutional" names the objective or the allocation.**  The kernel round (phase 1,
+  `projects/deference/rounds/2026-09-26-corrigibility-kernel/SPEC.md`) uses provisional
+  names: the allocation `J`, effective realization `E ⊨ J`, fidelity `Faithful_J`, the
+  recognized count `N_J`, the history evaluation `V_J`, the objective `S_J`, and Boxes
+  1–4 (fidelity versus fully updated deference; lexical dominance and mediation;
+  recovery; a bounded realization).  Candidates for `S_J`: *fidelity score*
+  (recommended), *authority-sensitive history score*, *allocation-weighted score*,
+  *constitutional score*; for `J`: *allocation of authority* (recommended), *authority
+  allocation*, *constitution*.  "Constitutional" fits `J`'s meta level and floor, but in
+  a public post it reads against Constitutional AI and claims more than the object is;
+  the round recommends reserving it for the floor and the amendment procedure.
+  *Turns on:* the post's readers and the collaborator's vocabulary — external knowledge
+  the round lacks.
+
+- **Which kernel definitions move to the specification layer in phase 2.**
+  Recommended: `J` with its licensed acts (`AuthorityModule.AuthAlloc`, `Licensed`),
+  `E ⊨ J` with the control surface (`EffRealizes`, `CS`, `Short`), the fidelity
+  predicate and count over the frame's violations (`CorrigibilityKernel.Faithful`,
+  `NJ`), the two legitimacy predicates in a general form on `GateIsLegitimacy.Segment`
+  (to be written; the landed `TrajLegitOn`, `EvalLegitOn2` are on the consultation
+  model), and `V_J`, `S_J` (`CorrigibilityKernel.VJ`, `SJ` over
+  `AfterCompromise.decScore`).  The transform, the taint calculus, the auction, the
+  permission layer and the consultation model stay in contribution namespaces as the
+  realization layer.
+  *Turns on:* what is worth proving in phase 2 — whether the general split gate and a
+  composite count over one model are built before promotion, or the count is promoted
+  as the sum over four models the round reports it to be.
+
+- **The default evaluation schedule for the post's statement.**  The kernel is
+  parametric in the schedule (`CorrigibilityKernel.VJ` over any `Weighting`;
+  `BRIACorrigibility.lexical_any_timing`).  Recommended: the single evaluation (the
+  point mass) as the post's default, the theorems stated for any weighting, the
+  free-delay witness against a known time noted, and the evaluation-timing entry above
+  left reserved.
+  *Turns on:* the entry above — her evaluation load against the variance and the hidden
+  draw — and whether the post shows a schedule at all before that is ruled.
+
+- **Box 1's form: the `2r` bound alone, or with the identity's `o₂` term.**  Both are
+  proved on one model (`CorrigibilityKernel.outcome_scorer_fully_updated`,
+  `outcomeRes2_le_calibration`, `box1_one_model`).  Recommended: the `2r` bound as the
+  statement, with the `o₂` term in one sentence as the diagnosis of where the
+  fully-updated-deference argument's force goes; the bound is self-contained, the
+  identity needs the three-value typing.
+  *Turns on:* the post's audience — whether the reader is meant to see the identity.
+
+- **The supersession actions of the kernel round's inventory.**  Twenty entries in
+  `projects/deference/rounds/2026-09-26-corrigibility-kernel/REPORT.md` §7, each
+  recommended *mark* (a docstring pointer and a wiki note), *demote* (the realization
+  layer) or *delete* (on ruling only; the one candidate is
+  `BRIACorrigibility.incidents_le`, cited by the Theorem Spine alone — every other
+  superseded declaration has a dependent or is the old side of an old-to-new map).
+  *Turns on:* maintenance taste — deprecated aliases as in the `LegitimateEvolution`
+  shim, or docstring pointers only — and whether the Theorem Spine keeps superseded names
+  as history.
+- **Who sets the block schedule, and whether bidders may request horizons.**  The
+  LI/BRIA specification round takes the system-scheduled, non-dominant schedule of
+  continuation BRIA as the default: every commitment representable is one that pays
+  within a block the system opened.  *Turns on:* whether the program wants agents that
+  choose how long to commit — bidder-chosen horizons and an allocation rule for duration
+  (`wiki/Continuation-BRIA.md` §9) — which no round has a shape for, and which decides
+  the verdicts of `projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/TEST_SUITE.md` T6 and T7.
+
+- **Lease publicity: what predictors and other agents may read.**  The realized register
+  treats the agent's published outputs — the selection and the estimate — as public
+  state; the winning index and a bounded simulation of the agent are further options.
+  The round's default is selection and estimate public; publicity of the
+  selection is also what any feedback theorem about the agent's tests needs
+  (`PROBLEM_STATEMENT.md` §5, gap 3), and the commitment source a candidate is held to
+  — external execution contract, self-entered contract, or self-stability (G6) —
+  is declared with it.  *Turns on:* the design cost
+  the tentative troll exhibits (T3(d): a public estimate lets a predictor punish
+  tentative tests, and the paper's auction is then stuck while the criterion is met)
+  against the modelling cost of hiding an output the criterion is stated on; and what
+  a paper's readers will accept as "the predictor can see the agent".
+
+- **Whether a private random source is a menu option, and which randomness notion the
+  random-reward clause uses.**  The paper's Theorem 4 uses bounded vMWC randomness
+  relative to the class; the criterion itself does not require a random source
+  (Theorem 5 uses one in its construction).  The round's default: no random option in
+  the minimum, T5 scored with and without it.  *Turns on:* taste about whether
+  adversarial-predictor problems belong to the synthesis at all, and whether "mental
+  randomization" should be modelled as predictable.
+
+- **The recovery domain of the updateless extension.**  An updateless candidate cannot
+  be a BRIA at unit level on the environments P1′ covers, so its BRIA-recovery
+  obligation needs a domain on which the local and policy-level demands coincide.  The
+  round rejects two candidates with witnesses — "rewards independent of the agent's
+  choices" (too small) and "rewards a function of the history and the current choice"
+  (too large: per-round counterfactual mugging with a frequency predictor is in it and
+  P1′ forces refusal there while paying is policy-optimal) — and defines none.
+  *Turns on:* what property of the reward process, stated without reference to the
+  candidate, makes myopic optimality and policy optimality agree; until it exists no
+  updateless candidate can be certified as having recovered BRIA where it should
+  (`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §2, M3 domain 4).
+
+- **Whether one-shot verdicts are wanted from a synthesis.**  Every guarantee of the
+  minimum is an asymptotic average; the suite marks one-shot rows invisible rather than
+  scoring them by a proxy, and the counterfactual-dependence register is the stronger
+  target S2.  *Turns on:* whether the program's decision-theory line aims at the
+  classical one-shot problems at all, which is where the field's disagreements live and
+  where no candidate in the audit has a theorem.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -590,7 +693,7 @@ from the account).
 ### 2026-09-07 — the bibliography is exempt from the name lint
 
 **Maintainer ruling, taken in conversation and landed by the decision-theory-bill
-round.** `wiki/Sources.md` is added to `tests/name_lint.py`'s `ALLOWED_FILES`: a
+round.** `wiki/Sources.md` is added to <!--historical-->`tests/name_lint.py`<!--/historical-->'s `ALLOWED_FILES`: a
 bibliography names the authors of the works it cites, and a maintainer is also an
 external author the program cites (friction F6). The allowance is one file, pinned in
 the lint's self-test; every other wiki page stays in scope, and citations in other
@@ -2359,7 +2462,7 @@ the same thing.
 
 ### 2026-08-25 — a citation may be written in backticks where the name lint would otherwise refuse it
 
-**agent-decided, reversible.** `tests/name_lint.py` cannot distinguish naming
+**agent-decided, reversible.** <!--historical-->`tests/name_lint.py`<!--/historical--> cannot distinguish naming
 the program after a person from citing a third party's published work, and a
 maintainer of this repository is also an external author the normativity line
 needs to cite. `projects/normativity/notes/PRIOR_ART.md` ships with the one
@@ -3540,7 +3643,7 @@ true. `unrecorded` is a correct answer; a guess is not.
 against the standing names-off posture. Rewritten as a description of what the
 program is. **The program is not named**, and naming it is reserved.
 
-`tests/name_lint.py` scans tracked Markdown outside `prompts/` and `frozen/` for
+<!--historical-->`tests/name_lint.py`<!--/historical--> scans tracked Markdown outside `prompts/` and `frozen/` for
 maintainers' personal names, exempting this ledger and anything inside backticks.
 It exists because the licensing round's residue sweep reported clean while that
 README line sat in plain sight: the sweep searched for change-memorial phrasing
@@ -5361,3 +5464,60 @@ source of the post's formal section: the record of corrections lives in the roun
 `REPORT.md` and here, not in the specification's body.
 *Rejected alternative:* keeping "corrigible" for the mediated policy as a legacy term —
 registration would have frozen the conflation R1 removed.
+### 2026-09-29 — people are named by role: the name lint is retired and the rule moves to `AGENTS.md`
+
+**Maintainer ruling, taken in conversation and landed by the decision-theory
+specification round.**  `AGENTS.md` now states the rule directly, under *Registers and
+interpretation*: a maintainer acting as one is *the maintainer* in repository prose and
+on the wiki, and a maintainer's published work is cited by author name like anyone
+else's.  The lint that matched maintainer surnames in tracked prose
+(<!--historical-->`tests/name_lint.py`<!--/historical-->) is removed with its CI steps
+and its `tests/run.py` wiring; the pointers to it in this ledger and in `PROVENANCE.md`
+are historical spans; friction F6 closes with it.  The rule is a review matter.
+*Rejected alternative:* a lint with a narrowed name list, which still fired on citations
+of a maintainer's published work and cannot express the distinction the rule draws — the
+role in the repository against the author in the literature.
+
+### 2026-09-29 — the decision-theory line is a top-level project, and continuation BRIA stays in the deference line
+
+**Agent-decided, reversible** (the LI/BRIA specification round).  `projects/decision-theory/`
+is a line beside normativity and deference, registered in `state/projects.json`, holding
+the specification of what a synthesis of logical induction and bounded inductive
+rationality must satisfy and, later, the constructions judged against it.  Continuation
+BRIA remains at `projects/deference/rounds/2026-09-08-continuation-bria/` with its
+canonical statement on the wiki and its Lean under `Deference/Contrib`: it is
+corrigibility's learning layer, consumes the deference gate, and is cited by pinned path
+from the wiki, `state/rounds.json`, this ledger and the priority items.  The new line
+consumes its block contract and weighted criterion and cross-links it.
+*Rejected alternative:* moving the continuation-BRIA round and its Lean module into the
+new line, which rewrites every pinned pointer for no change in what either line proves;
+and a subproject under deference, which would file the synthesis as a corrigibility
+consumer when it is a foundation both lines consume.
+
+### 2026-09-29 — the line's destination is the acceptance statement: an updateful endpoint with integration and one matched advance, and updatelessness as the ideal extension
+
+**Agent-decided, reversible** (the LI/BRIA specification round, third pass, on the
+maintainer's stated position).  The target a candidate is checked against is
+`projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md` §0: the supporting milestones (computable existence with
+named classes; logical induction on the active trajectory; BRIA recovery on a declared
+recovery domain with witness estimates that need not be public; coverage as
+accountability with menu safety named), the integration obligation (market information
+provably improves decision performance under explicit accounting, the compatibility
+relation stated at least in its established one-sided form, and a formal result that
+the integrated process excludes a precisely specified failure mode of the
+belief–decision coupling), the recovery and integration rows of the suite, and one
+advance on a recognized obstruction by a diagnostic meeting the round's qualification
+standard — the belief-disagreement troll is one proposed, provisional instance, and one
+theorem may discharge both the failure-mode result and the advance.  Logical induction
+is required on the active trajectory; passive recovery is a weaker supporting
+milestone.  The endpoint may be
+updateful; updatelessness is an ideal extension whose recovery domain is an open
+specification question (queued in *Awaiting the author*).  Architecture is not specified; a modular
+implementation qualifies; the continuation-BRIA block contract is one route.  A
+candidate with the milestones and the performance result alone is an integration
+theorem, not the endpoint.
+*Rejected alternative:* a single unified criterion from which every benchmark verdict
+follows, found vacuous (satisfied by a logical inductor and a BRIA side by side) or false
+(unit-level coverage of the full class with cross-unit commitment, P1′); requiring
+updatelessness for success; and treating belief–decision compatibility as the whole of
+integration, which the third pass separates into three achievements.
