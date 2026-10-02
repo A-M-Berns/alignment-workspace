@@ -1,0 +1,4750 @@
+{
+ "act": {
+  "V_act": "4/5",
+  "cand": "tt-mart-repair-via-bounds-transfer",
+  "cand_label": "deference-toward-bounded-agents \u2192 tt-mart-repair-via-bounds-transfer",
+  "conceded_plans": {},
+  "options": {
+   "step-asymptotic-to-finite-time": "9/40",
+   "step-legitimacy-conditioned-trust": "7/20",
+   "tt-mart-repair-via-bounds-transfer": "4/5"
+  },
+  "outside_option": "default-trajectory",
+  "outside_placed": true,
+  "outside_value": "0/1",
+  "plans_without_value": []
+ },
+ "anchor_rules": "2026-10-02.1",
+ "audit": {
+  "event": null,
+  "minutes": "36/1",
+  "text": "audit (36 min of this session): no auditable event yet"
+ },
+ "audits": {},
+ "checker_version": "0.3",
+ "digest": {
+  "events_new": 0,
+  "levels_moved": [],
+  "proposals_awaiting": [],
+  "root_statuses_flipped": [],
+  "statuses_flipped": []
+ },
+ "events": {
+  "counted": [
+   "maintainer-001",
+   "maintainer-002",
+   "smithy-verity-001",
+   "smithy-verity-002",
+   "smithy-verity-003",
+   "smithy-verity-004",
+   "smithy-verity-005",
+   "smithy-verity-006",
+   "smithy-verity-007",
+   "smithy-verity-008",
+   "smithy-verity-009",
+   "smithy-verity-010",
+   "smithy-verity-011",
+   "smithy-verity-012",
+   "smithy-verity-013",
+   "smithy-verity-014",
+   "smithy-verity-015",
+   "smithy-verity-016",
+   "smithy-verity-017",
+   "smithy-verity-018",
+   "smithy-verity-019",
+   "smithy-verity-020",
+   "smithy-verity-021",
+   "smithy-verity-022",
+   "smithy-verity-023",
+   "smithy-verity-024",
+   "smithy-verity-025",
+   "smithy-verity-026",
+   "smithy-verity-027",
+   "smithy-verity-028",
+   "smithy-verity-029",
+   "smithy-verity-030",
+   "smithy-verity-031",
+   "smithy-verity-032",
+   "smithy-verity-033",
+   "smithy-verity-034",
+   "smithy-verity-035",
+   "smithy-verity-036",
+   "smithy-verity-037",
+   "smithy-verity-038",
+   "smithy-verity-039",
+   "smithy-verity-040",
+   "smithy-verity-041",
+   "smithy-verity-042",
+   "smithy-verity-043",
+   "smithy-verity-044",
+   "smithy-verity-045",
+   "smithy-verity-046",
+   "smithy-verity-047"
+  ],
+  "stale": [],
+  "stale_reasons": {},
+  "withdrawn": []
+ },
+ "generated_hash": "50cd02b61d7a53c7895229a4",
+ "judgments": {
+  "node/a1-fixed-objective-maximizer.partition/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "29/40",
+   "range": [
+    "9/40",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/a2-monotone-in-resources/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "7/10",
+   "range": [
+    "1/5",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/a3-self-and-operators-modelled/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "17/20",
+   "range": [
+    "7/20",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/a4-no-binding-counter-drive/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "19/40",
+   "range": [
+    "0/1",
+    "39/40"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/bet-class-gap-closed/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "31/40",
+   "range": [
+    "11/40",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/bridge-ps-s1-retargetable/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "4/5",
+   "range": [
+    "3/10",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/bridge-ps-s2-training-compatible/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "13/20",
+   "range": [
+    "3/20",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/bridge-ps-s3-trained-policies/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "11/40",
+   "range": [
+    "0/1",
+    "31/40"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/correction-changes-objective/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "2/5",
+   "range": [
+    "0/1",
+    "9/10"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/corrigibility-anti-natural.complete/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "7/20",
+   "range": [
+    "0/1",
+    "17/20"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/corrigibility-anti-natural/gestalt": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "9/20",
+   "range": [
+    "0/1",
+    "19/20"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/expert-knows-own-estimates/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "9/100",
+   "range": [
+    "0/1",
+    "59/100"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/ic-informal.complete/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "1/2",
+   "range": [
+    "0/1",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/instrumental-convergence/gestalt": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "29/40",
+   "range": [
+    "9/40",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/li-deference-collapse.complete/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "1/8",
+   "range": [
+    "0/1",
+    "5/8"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/li-deference-collapse/gestalt": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "1/8",
+   "range": [
+    "0/1",
+    "5/8"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/mart-implies-value-kernel.bridge/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "91/100",
+   "range": [
+    "41/100",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/mart-implies-value-kernel.complete/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "9/100",
+   "range": [
+    "0/1",
+    "59/100"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/mart-implies-value-kernel.record/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "39/40",
+   "range": [
+    "19/40",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/novice-expprovind/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "197/200",
+   "range": [
+    "97/200",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/policy-level-total-trust/gestalt": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "17/40",
+   "range": [
+    "0/1",
+    "37/40"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/policy-level-total-trust/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "17/40",
+   "range": [
+    "0/1",
+    "37/40"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/ps-trained-systems-seek-power.complete/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "9/20",
+   "range": [
+    "0/1",
+    "19/20"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/step-asymptotic-to-finite-time/gestalt": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "9/40",
+   "range": [
+    "0/1",
+    "29/40"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/step-asymptotic-to-finite-time/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "9/40",
+   "range": [
+    "0/1",
+    "29/40"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/step-legitimacy-conditioned-trust/gestalt": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "7/20",
+   "range": [
+    "0/1",
+    "17/20"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/step-legitimacy-conditioned-trust/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "7/20",
+   "range": [
+    "0/1",
+    "17/20"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/thm-power-seeking-optimal.bridge/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "13/20",
+   "range": [
+    "3/20",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/thm-power-seeking-optimal.complete/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "13/20",
+   "range": [
+    "3/20",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/thm-power-seeking-optimal.record/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "91/100",
+   "range": [
+    "41/100",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/thm-ps-symmetric-mdp-setting/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "19/20",
+   "range": [
+    "9/20",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/tie-break-ledger-decided/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "91/100",
+   "range": [
+    "41/100",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/tt-implies-mart-gap-bets.partition/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "29/40",
+   "range": [
+    "9/40",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/tt-mart-repair-via-bounds-transfer/gestalt": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "4/5",
+   "range": [
+    "3/10",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "node/tt-mart-repair-via-bounds-transfer/range": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "4/5",
+   "range": [
+    "3/10",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/a1-fixed-objective-maximizer/pic-N-a1-residual/p": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "33/40",
+   "range": [
+    "13/40",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/a1-fixed-objective-maximizer/pic-T-kk-training-compatible-goal/p": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "7/10",
+   "range": [
+    "1/5",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/a1-fixed-objective-maximizer/pic-T-kk-training-compatible-goal/w": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "13/40",
+   "range": [
+    "0/1",
+    "33/40"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/a1-fixed-objective-maximizer/pic-T-rest-no-single-objective/p": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "1/20",
+   "range": [
+    "0/1",
+    "11/20"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/a1-fixed-objective-maximizer/pic-T-rest-no-single-objective/w": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "9/20",
+   "range": [
+    "0/1",
+    "19/20"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-disutility-max/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-disutility-max/w": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/5",
+   "range": [
+    "0/1",
+    "7/10"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-earth-gone-aliens-remain/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-earth-gone-aliens-remain/w": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/5",
+   "range": [
+    "0/1",
+    "7/10"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-high-conflict/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-high-conflict/w": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/5",
+   "range": [
+    "0/1",
+    "7/10"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-no-interesting-life/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-utopia/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/default-trajectory/dt-utopia/w": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/5",
+   "range": [
+    "0/1",
+    "7/10"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/tt-implies-mart-gap-bets/pic-A-parallel-cuts-amplifier/p": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "1/40",
+   "range": [
+    "0/1",
+    "21/40"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/tt-implies-mart-gap-bets/pic-A-parallel-cuts-amplifier/w": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "3/200",
+   "range": [
+    "0/1",
+    "103/200"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/tt-implies-mart-gap-bets/pic-D-asymptotic-introspection/p": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "4/5",
+   "range": [
+    "3/10",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/tt-implies-mart-gap-bets/pic-D-asymptotic-introspection/w": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "167/200",
+   "range": [
+    "67/200",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/tt-implies-mart-gap-bets/pic-N-tt-mart-residual/p": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "23/40",
+   "range": [
+    "3/40",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/tt-implies-mart-gap-bets/pic-U-exact-introspection/p": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "91/100",
+   "range": [
+    "41/100",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/tt-implies-mart-gap-bets/pic-U-exact-introspection/w": {
+   "J": 0,
+   "by": [
+    "@smithy-verity"
+   ],
+   "flags": [
+    "generated"
+   ],
+   "generated": true,
+   "level": 0,
+   "mid": "3/50",
+   "range": [
+    "0/1",
+    "14/25"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/undescribed-failure/uf-disutility-max/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/undescribed-failure/uf-disutility-max/w": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/4",
+   "range": [
+    "0/1",
+    "3/4"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/undescribed-failure/uf-earth-gone-aliens-remain/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/undescribed-failure/uf-earth-gone-aliens-remain/w": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/4",
+   "range": [
+    "0/1",
+    "3/4"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/undescribed-failure/uf-high-conflict/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/undescribed-failure/uf-high-conflict/w": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/4",
+   "range": [
+    "0/1",
+    "3/4"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  },
+  "row/undescribed-failure/uf-no-interesting-life/p": {
+   "J": 8,
+   "by": [
+    "@maintainer"
+   ],
+   "flags": [],
+   "generated": false,
+   "level": 2,
+   "mid": "1/1",
+   "range": [
+    "1/2",
+    "1/1"
+   ],
+   "superseded_ai": [],
+   "width": "1/1"
+  }
+ },
+ "lines": {
+  "commit": "research first: begin with vet tt-mart-repair-via-bounds-transfer",
+  "regime": "the decision term would reorder 4 units; shown, not applied",
+  "scoped": null
+ },
+ "nodes": {
+  "a1-fixed-objective-maximizer": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": {
+    "pic-N-a1-residual": false,
+    "pic-T-kk-training-compatible-goal": false,
+    "pic-T-rest-no-single-objective": false
+   },
+   "belief": null,
+   "cost": "85/1",
+   "cost_rows": [
+    "map-read[M]=25 prior",
+    "trace[M]=60 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted",
+    "no belief",
+    "under attack"
+   ],
+   "kind": "cases",
+   "leaf_kind": null,
+   "load": [
+    "corrigibility-anti-natural"
+   ],
+   "revival": null,
+   "rows": {},
+   "size": "M",
+   "stale_leaf_ranges": [],
+   "status": "open",
+   "version": 1
+  },
+  "a1-fixed-objective-maximizer.partition": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "29/40",
+    "range": [
+     "9/40",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "partition",
+   "load": [
+    "corrigibility-anti-natural"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "a2-monotone-in-resources": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "7/10",
+    "range": [
+     "1/5",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "assumption",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "a3-self-and-operators-modelled": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "17/20",
+    "range": [
+     "7/20",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "assumption",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "a4-no-binding-counter-drive": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "19/40",
+    "range": [
+     "0/1",
+     "39/40"
+    ],
+    "width": "1/1"
+   },
+   "cost": "85/1",
+   "cost_rows": [
+    "map-read[M]=25 prior",
+    "trace[M]=60 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "assumption",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "bet-class-gap-closed": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "31/40",
+    "range": [
+     "11/40",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "assumption",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "bridge-ps-s1-retargetable": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "4/5",
+    "range": [
+     "3/10",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "85/1",
+   "cost_rows": [
+    "map-read[M]=25 prior",
+    "trace[M]=60 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "bridge",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "bridge-ps-s2-training-compatible": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "13/20",
+    "range": [
+     "3/20",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "85/1",
+   "cost_rows": [
+    "map-read[M]=25 prior",
+    "trace[M]=60 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "bridge",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "bridge-ps-s3-trained-policies": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "11/40",
+    "range": [
+     "0/1",
+     "31/40"
+    ],
+    "width": "1/1"
+   },
+   "cost": "240/1",
+   "cost_rows": [
+    "map-read[L]=60 prior",
+    "trace[L]=180 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "bridge",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "L",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "correction-changes-objective": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "2/5",
+    "range": [
+     "0/1",
+     "9/10"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "assumption",
+   "load": [
+    "corrigibility-anti-natural"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "corrigibility-anti-natural": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": null,
+   "cost_rows": [],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "and",
+   "leaf_kind": null,
+   "load": [
+    "corrigibility-anti-natural"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "corrigibility-anti-natural.complete": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "7/20",
+    "range": [
+     "0/1",
+     "17/20"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "completeness",
+   "load": [
+    "corrigibility-anti-natural"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "default-trajectory": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": {
+    "dt-disutility-max": true,
+    "dt-earth-gone-aliens-remain": true,
+    "dt-high-conflict": true,
+    "dt-no-interesting-life": true,
+    "dt-utopia": true
+   },
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "provisional"
+   ],
+   "kind": "cases",
+   "leaf_kind": null,
+   "load": [],
+   "revival": null,
+   "rows": {
+    "dt-disutility-max": {
+     "class": "disutility-max",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": false,
+     "w": [
+      "1/5",
+      "1/1",
+      []
+     ]
+    },
+    "dt-earth-gone-aliens-remain": {
+     "class": "earth-gone-aliens-remain",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": false,
+     "w": [
+      "1/5",
+      "1/1",
+      []
+     ]
+    },
+    "dt-high-conflict": {
+     "class": "high-conflict",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": false,
+     "w": [
+      "1/5",
+      "1/1",
+      []
+     ]
+    },
+    "dt-no-interesting-life": {
+     "class": "no-interesting-life",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": true,
+     "w": [
+      "1/5",
+      "1/1",
+      []
+     ]
+    },
+    "dt-utopia": {
+     "class": "utopia",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": false,
+     "w": [
+      "1/5",
+      "1/1",
+      []
+     ]
+    }
+   },
+   "size": "S",
+   "stale_leaf_ranges": [],
+   "status": "open",
+   "version": 1
+  },
+  "default-trajectory.partition": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "partition",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "deference-toward-bounded-agents": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": null,
+   "cost_rows": [],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "frame",
+   "leaf_kind": null,
+   "load": [
+    "deference-toward-bounded-agents"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "L",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "dt-disutility-max": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "dt-earth-gone-aliens-remain": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "dt-high-conflict": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "dt-no-interesting-life": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "dt-utopia": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "expert-knows-own-estimates": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "9/100",
+    "range": [
+     "0/1",
+     "59/100"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "assumption",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "ic-informal": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": null,
+   "cost_rows": [],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "and",
+   "leaf_kind": null,
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "ic-informal.complete": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "1/2",
+    "range": [
+     "0/1",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "completeness",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "instrumental-convergence": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": null,
+   "cost_rows": [],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "or",
+   "leaf_kind": null,
+   "load": [
+    "instrumental-convergence"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "li-deference-collapse": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": null,
+   "cost_rows": [],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "and",
+   "leaf_kind": null,
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "li-deference-collapse.complete": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "1/8",
+    "range": [
+     "0/1",
+     "5/8"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "completeness",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "mart-implies-value-kernel": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": null,
+   "cost_rows": [],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "and",
+   "leaf_kind": null,
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "mart-implies-value-kernel.bridge": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "91/100",
+    "range": [
+     "41/100",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "bridge",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "mart-implies-value-kernel.complete": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "9/100",
+    "range": [
+     "0/1",
+     "59/100"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "completeness",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "mart-implies-value-kernel.record": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "39/40",
+    "range": [
+     "19/40",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "registry unchecked"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "record",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "novice-expprovind": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "197/200",
+    "range": [
+     "97/200",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "hypothesis",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "pic-A-parallel-cuts-amplifier": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "pic-D-asymptotic-introspection": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "pic-N-a1-residual": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "pic-N-tt-mart-residual": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "pic-T-kk-training-compatible-goal": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "pic-T-not-reward-maximizers": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "pic-T-rest-no-single-objective": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "pic-U-exact-introspection": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "policy-level-total-trust": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "17/40",
+    "range": [
+     "0/1",
+     "37/40"
+    ],
+    "width": "1/1"
+   },
+   "cost": "inf",
+   "cost_rows": [
+    "question"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "question",
+   "load": [
+    "policy-level-total-trust"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "ps-trained-systems-seek-power": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": null,
+   "cost_rows": [],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "and",
+   "leaf_kind": null,
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "ps-trained-systems-seek-power.complete": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "9/20",
+    "range": [
+     "0/1",
+     "19/20"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "completeness",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "step-asymptotic-to-finite-time": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "9/40",
+    "range": [
+     "0/1",
+     "29/40"
+    ],
+    "width": "1/1"
+   },
+   "cost": "240/1",
+   "cost_rows": [
+    "map-read[L]=60 prior",
+    "trace[L]=180 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "step",
+   "load": [
+    "step-asymptotic-to-finite-time"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "L",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "step-legitimacy-conditioned-trust": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "7/20",
+    "range": [
+     "0/1",
+     "17/20"
+    ],
+    "width": "1/1"
+   },
+   "cost": "240/1",
+   "cost_rows": [
+    "map-read[L]=60 prior",
+    "trace[L]=180 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "step",
+   "load": [
+    "step-legitimacy-conditioned-trust"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "L",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "thm-power-seeking-optimal": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": null,
+   "cost_rows": [],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "and",
+   "leaf_kind": null,
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "M",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "thm-power-seeking-optimal.bridge": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "13/20",
+    "range": [
+     "3/20",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "attribution unvetted"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "bridge",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "thm-power-seeking-optimal.complete": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "13/20",
+    "range": [
+     "3/20",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "completeness",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "thm-power-seeking-optimal.record": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "91/100",
+    "range": [
+     "41/100",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "registry unchecked"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "record",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "thm-ps-symmetric-mdp-setting": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "19/20",
+    "range": [
+     "9/20",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "hypothesis",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "tie-break-ledger-decided": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "91/100",
+    "range": [
+     "41/100",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "assumption",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "tt-implies-mart-gap-bets": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": {
+    "pic-A-parallel-cuts-amplifier": false,
+    "pic-D-asymptotic-introspection": false,
+    "pic-N-tt-mart-residual": false,
+    "pic-U-exact-introspection": false
+   },
+   "belief": null,
+   "cost": "85/1",
+   "cost_rows": [
+    "map-read[M]=25 prior",
+    "trace[M]=60 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number",
+    "no belief",
+    "under attack"
+   ],
+   "kind": "cases",
+   "leaf_kind": null,
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": {},
+   "size": "M",
+   "stale_leaf_ranges": [],
+   "status": "open",
+   "version": 1
+  },
+  "tt-implies-mart-gap-bets.partition": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "29/40",
+    "range": [
+     "9/40",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "partition",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "tt-mart-repair-via-bounds-transfer": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": {
+    "J": 0,
+    "mid": "4/5",
+    "range": [
+     "3/10",
+     "1/1"
+    ],
+    "width": "1/1"
+   },
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "AI number"
+   ],
+   "kind": "leaf",
+   "leaf_kind": "step",
+   "load": [
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "uf-disutility-max": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "uf-earth-gone-aliens-remain": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "uf-high-conflict": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "uf-no-interesting-life": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "picture",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  },
+  "undescribed-failure": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": {
+    "uf-disutility-max": true,
+    "uf-earth-gone-aliens-remain": true,
+    "uf-high-conflict": true,
+    "uf-no-interesting-life": true
+   },
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [
+    "provisional"
+   ],
+   "kind": "cases",
+   "leaf_kind": null,
+   "load": [],
+   "revival": null,
+   "rows": {
+    "uf-disutility-max": {
+     "class": "disutility-max",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": false,
+     "w": [
+      "1/4",
+      "1/1",
+      []
+     ]
+    },
+    "uf-earth-gone-aliens-remain": {
+     "class": "earth-gone-aliens-remain",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": false,
+     "w": [
+      "1/4",
+      "1/1",
+      []
+     ]
+    },
+    "uf-high-conflict": {
+     "class": "high-conflict",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": false,
+     "w": [
+      "1/4",
+      "1/1",
+      []
+     ]
+    },
+    "uf-no-interesting-life": {
+     "class": "no-interesting-life",
+     "p": [
+      "1/1",
+      "1/1",
+      []
+     ],
+     "residual": true,
+     "w": [
+      "1/4",
+      "1/1",
+      []
+     ]
+    }
+   },
+   "size": "S",
+   "stale_leaf_ranges": [],
+   "status": "open",
+   "version": 1
+  },
+  "undescribed-failure.partition": {
+   "V": {
+    "display": "2",
+    "headline": 2,
+    "ref": 2,
+    "valid": 2,
+    "weaker": "both"
+   },
+   "admitted": null,
+   "belief": null,
+   "cost": "33/1",
+   "cost_rows": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior"
+   ],
+   "diagnosis": null,
+   "flags": [],
+   "kind": "leaf",
+   "leaf_kind": "partition",
+   "load": [],
+   "revival": null,
+   "rows": null,
+   "size": "S",
+   "stale_leaf_ranges": null,
+   "status": "open",
+   "version": 1
+  }
+ },
+ "proposals": [],
+ "ranking": {
+  "H_S_bits": 4.143942023055444,
+  "lambda": null,
+  "ordered_by": "map rate",
+  "scoped": null
+ },
+ "roots": {
+  "corrigibility-anti-natural": {
+   "Pr": {
+    "hi": "153/400",
+    "lo": "0/1",
+    "mid": "7/100"
+   },
+   "Pr_defined": false,
+   "act_value": null,
+   "ai_only": [
+    "a1-fixed-objective-maximizer.partition",
+    "correction-changes-objective",
+    "corrigibility-anti-natural",
+    "corrigibility-anti-natural.complete"
+   ],
+   "budget": null,
+   "budget_loss": null,
+   "choice": {},
+   "comonotone_Pr": "7/20",
+   "cost": "184/1",
+   "diagnosis": null,
+   "disproof": "30/1",
+   "failure_classes_below_outside": [],
+   "frame": null,
+   "gestalt": {
+    "J": 0,
+    "generated": true,
+    "mid": "9/20",
+    "range": [
+     "0/1",
+     "19/20"
+    ]
+   },
+   "load_bearing": [],
+   "margin": "no established leaves",
+   "nobelief": [
+    "a1-fixed-objective-maximizer"
+   ],
+   "option_value": null,
+   "preset": "worst-case",
+   "proof_set": [
+    "a1-fixed-objective-maximizer",
+    "a1-fixed-objective-maximizer.partition",
+    "correction-changes-objective",
+    "corrigibility-anti-natural.complete"
+   ],
+   "revival": null,
+   "role": "risk-story",
+   "status": "open",
+   "subframe": null,
+   "success_class": null,
+   "value": null,
+   "value_defined": false,
+   "weakest_V": 2
+  },
+  "deference-toward-bounded-agents": {
+   "Pr": {
+    "hi": "1/1",
+    "lo": "3/10",
+    "mid": "4/5"
+   },
+   "Pr_defined": true,
+   "act_value": "4/5",
+   "ai_only": [
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "budget": null,
+   "budget_loss": null,
+   "choice": {},
+   "comonotone_Pr": "4/5",
+   "cost": "33/1",
+   "diagnosis": null,
+   "disproof": "30/1",
+   "failure_classes_below_outside": [],
+   "frame": null,
+   "gestalt": null,
+   "load_bearing": [],
+   "margin": "no established leaves",
+   "nobelief": [],
+   "option_value": "4/5",
+   "preset": "worst-case",
+   "proof_set": [
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "revival": null,
+   "role": "plan",
+   "status": "open",
+   "subframe": {
+    "leading_step": "tt-mart-repair-via-bounds-transfer",
+    "outside_option": "default-trajectory",
+    "question": "Does the deference collapse, or an analogue of it, hold for a bounded trained agent deferring to human teachers?",
+    "roots": [
+     "tt-mart-repair-via-bounds-transfer",
+     "step-asymptotic-to-finite-time",
+     "policy-level-total-trust",
+     "step-legitimacy-conditioned-trust"
+    ],
+    "steps": [
+     "tt-mart-repair-via-bounds-transfer",
+     "step-asymptotic-to-finite-time",
+     "step-legitimacy-conditioned-trust"
+    ]
+   },
+   "success_class": null,
+   "value": {
+    "hi": "1/1",
+    "lo": "-1/1",
+    "mid": "4/5"
+   },
+   "value_defined": false,
+   "weakest_V": 2
+  },
+  "instrumental-convergence": {
+   "Pr": {
+    "hi": "39/80",
+    "lo": "0/1",
+    "mid": "2261/32000"
+   },
+   "Pr_defined": false,
+   "act_value": null,
+   "ai_only": [
+    "a1-fixed-objective-maximizer.partition",
+    "a2-monotone-in-resources",
+    "a3-self-and-operators-modelled",
+    "a4-no-binding-counter-drive",
+    "ic-informal.complete",
+    "instrumental-convergence"
+   ],
+   "budget": "1/2",
+   "budget_loss": "0/1",
+   "choice": {},
+   "comonotone_Pr": "19/40",
+   "cost": "302/1",
+   "diagnosis": null,
+   "disproof": "30/1",
+   "failure_classes_below_outside": [],
+   "frame": null,
+   "gestalt": {
+    "J": 0,
+    "generated": true,
+    "mid": "29/40",
+    "range": [
+     "9/40",
+     "1/1"
+    ]
+   },
+   "load_bearing": [],
+   "margin": null,
+   "nobelief": [
+    "a1-fixed-objective-maximizer"
+   ],
+   "option_value": null,
+   "preset": "probabilistic",
+   "proof_set": [
+    "a1-fixed-objective-maximizer",
+    "a1-fixed-objective-maximizer.partition",
+    "a2-monotone-in-resources",
+    "a3-self-and-operators-modelled",
+    "a4-no-binding-counter-drive",
+    "ic-informal.complete"
+   ],
+   "revival": null,
+   "role": "risk-story",
+   "status": "open",
+   "subframe": null,
+   "success_class": null,
+   "value": null,
+   "value_defined": false,
+   "weakest_V": 2
+  },
+  "li-deference-collapse": {
+   "Pr": {
+    "hi": "3481/32000",
+    "lo": "0/1",
+    "mid": "159757159653/512000000000000"
+   },
+   "Pr_defined": false,
+   "act_value": null,
+   "ai_only": [
+    "bet-class-gap-closed",
+    "expert-knows-own-estimates",
+    "li-deference-collapse",
+    "li-deference-collapse.complete",
+    "mart-implies-value-kernel.bridge",
+    "mart-implies-value-kernel.complete",
+    "mart-implies-value-kernel.record",
+    "novice-expprovind",
+    "tie-break-ledger-decided",
+    "tt-implies-mart-gap-bets.partition"
+   ],
+   "budget": null,
+   "budget_loss": null,
+   "choice": {},
+   "comonotone_Pr": "9/100",
+   "cost": "382/1",
+   "diagnosis": null,
+   "disproof": "30/1",
+   "failure_classes_below_outside": [],
+   "frame": null,
+   "gestalt": {
+    "J": 0,
+    "generated": true,
+    "mid": "1/8",
+    "range": [
+     "0/1",
+     "5/8"
+    ]
+   },
+   "load_bearing": [],
+   "margin": "no established leaves",
+   "nobelief": [
+    "tt-implies-mart-gap-bets"
+   ],
+   "option_value": null,
+   "preset": "worst-case",
+   "proof_set": [
+    "bet-class-gap-closed",
+    "expert-knows-own-estimates",
+    "li-deference-collapse.complete",
+    "mart-implies-value-kernel.bridge",
+    "mart-implies-value-kernel.complete",
+    "mart-implies-value-kernel.record",
+    "novice-expprovind",
+    "tie-break-ledger-decided",
+    "tt-implies-mart-gap-bets",
+    "tt-implies-mart-gap-bets.partition"
+   ],
+   "revival": null,
+   "role": "shared-claim",
+   "status": "open",
+   "subframe": null,
+   "success_class": null,
+   "value": null,
+   "value_defined": false,
+   "weakest_V": 2
+  },
+  "policy-level-total-trust": {
+   "Pr": {
+    "hi": "37/40",
+    "lo": "0/1",
+    "mid": "17/40"
+   },
+   "Pr_defined": true,
+   "act_value": null,
+   "ai_only": [
+    "policy-level-total-trust"
+   ],
+   "budget": null,
+   "budget_loss": null,
+   "choice": {},
+   "comonotone_Pr": "17/40",
+   "cost": "inf",
+   "diagnosis": null,
+   "disproof": "90/1",
+   "failure_classes_below_outside": [],
+   "frame": "deference-toward-bounded-agents",
+   "gestalt": {
+    "J": 0,
+    "generated": true,
+    "mid": "17/40",
+    "range": [
+     "0/1",
+     "37/40"
+    ]
+   },
+   "load_bearing": [],
+   "margin": "no established leaves",
+   "nobelief": [],
+   "option_value": null,
+   "preset": "worst-case",
+   "proof_set": [
+    "policy-level-total-trust"
+   ],
+   "revival": null,
+   "role": "shared-claim",
+   "status": "open",
+   "subframe": null,
+   "success_class": null,
+   "value": null,
+   "value_defined": false,
+   "weakest_V": 2
+  },
+  "step-asymptotic-to-finite-time": {
+   "Pr": {
+    "hi": "29/40",
+    "lo": "0/1",
+    "mid": "9/40"
+   },
+   "Pr_defined": true,
+   "act_value": "9/40",
+   "ai_only": [
+    "step-asymptotic-to-finite-time"
+   ],
+   "budget": null,
+   "budget_loss": null,
+   "choice": {},
+   "comonotone_Pr": "9/40",
+   "cost": "240/1",
+   "diagnosis": null,
+   "disproof": "240/1",
+   "failure_classes_below_outside": [],
+   "frame": "deference-toward-bounded-agents",
+   "gestalt": {
+    "J": 0,
+    "generated": true,
+    "mid": "9/40",
+    "range": [
+     "0/1",
+     "29/40"
+    ]
+   },
+   "load_bearing": [],
+   "margin": "no established leaves",
+   "nobelief": [],
+   "option_value": "9/40",
+   "preset": "worst-case",
+   "proof_set": [
+    "step-asymptotic-to-finite-time"
+   ],
+   "revival": null,
+   "role": "plan",
+   "status": "open",
+   "subframe": null,
+   "success_class": "utopia",
+   "value": {
+    "hi": "1/1",
+    "lo": "-1/1",
+    "mid": "9/40"
+   },
+   "value_defined": true,
+   "weakest_V": 2
+  },
+  "step-legitimacy-conditioned-trust": {
+   "Pr": {
+    "hi": "17/20",
+    "lo": "0/1",
+    "mid": "7/20"
+   },
+   "Pr_defined": true,
+   "act_value": "7/20",
+   "ai_only": [
+    "step-legitimacy-conditioned-trust"
+   ],
+   "budget": null,
+   "budget_loss": null,
+   "choice": {},
+   "comonotone_Pr": "7/20",
+   "cost": "240/1",
+   "diagnosis": null,
+   "disproof": "240/1",
+   "failure_classes_below_outside": [],
+   "frame": "deference-toward-bounded-agents",
+   "gestalt": {
+    "J": 0,
+    "generated": true,
+    "mid": "7/20",
+    "range": [
+     "0/1",
+     "17/20"
+    ]
+   },
+   "load_bearing": [],
+   "margin": "no established leaves",
+   "nobelief": [],
+   "option_value": "7/20",
+   "preset": "worst-case",
+   "proof_set": [
+    "step-legitimacy-conditioned-trust"
+   ],
+   "revival": null,
+   "role": "plan",
+   "status": "open",
+   "subframe": null,
+   "success_class": "utopia",
+   "value": {
+    "hi": "1/1",
+    "lo": "-1/1",
+    "mid": "7/20"
+   },
+   "value_defined": true,
+   "weakest_V": 2
+  },
+  "tt-mart-repair-via-bounds-transfer": {
+   "Pr": {
+    "hi": "1/1",
+    "lo": "3/10",
+    "mid": "4/5"
+   },
+   "Pr_defined": true,
+   "act_value": "4/5",
+   "ai_only": [
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "budget": null,
+   "budget_loss": null,
+   "choice": {},
+   "comonotone_Pr": "4/5",
+   "cost": "33/1",
+   "diagnosis": null,
+   "disproof": "30/1",
+   "failure_classes_below_outside": [],
+   "frame": "deference-toward-bounded-agents",
+   "gestalt": {
+    "J": 0,
+    "generated": true,
+    "mid": "4/5",
+    "range": [
+     "3/10",
+     "1/1"
+    ]
+   },
+   "load_bearing": [],
+   "margin": "no established leaves",
+   "nobelief": [],
+   "option_value": "4/5",
+   "preset": "worst-case",
+   "proof_set": [
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "revival": null,
+   "role": "plan",
+   "status": "open",
+   "subframe": null,
+   "success_class": "utopia",
+   "value": {
+    "hi": "1/1",
+    "lo": "-1/1",
+    "mid": "4/5"
+   },
+   "value_defined": true,
+   "weakest_V": 2
+  }
+ },
+ "units": [
+  {
+   "D": "7/100",
+   "ai_number": true,
+   "bears_on": [
+    "deference-toward-bounded-agents",
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "bits": 0.7219280948873623,
+   "component": [
+    "deference-toward-bounded-agents",
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 1.2032134914789372,
+   "size": "S",
+   "target": "tt-mart-repair-via-bounds-transfer",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "deference-toward-bounded-agents",
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "bits": 0.07675112299560705,
+   "component": [
+    "deference-toward-bounded-agents",
+    "tt-mart-repair-via-bounds-transfer"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.41864248906694757,
+   "size": "S",
+   "target": "tt-mart-repair-via-bounds-transfer",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "7/100",
+   "ai_number": true,
+   "bears_on": [
+    "step-legitimacy-conditioned-trust"
+   ],
+   "bits": 0.934068055375491,
+   "component": [
+    "step-legitimacy-conditioned-trust"
+   ],
+   "kind": "vet",
+   "minutes": "240/1",
+   "rate": 0.2306340877470348,
+   "size": "L",
+   "target": "step-legitimacy-conditioned-trust",
+   "why": [
+    "map-read[L]=60 prior",
+    "trace[L]=180 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "corrigibility-anti-natural"
+   ],
+   "bits": 0.1139975146826423,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.18999585780440384,
+   "size": "S",
+   "target": "corrigibility-anti-natural.complete",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "9/200",
+   "ai_number": true,
+   "bears_on": [
+    "step-asymptotic-to-finite-time"
+   ],
+   "bits": 0.7691928290130138,
+   "component": [
+    "step-asymptotic-to-finite-time"
+   ],
+   "kind": "vet",
+   "minutes": "240/1",
+   "rate": 0.18992415531185527,
+   "size": "L",
+   "target": "step-asymptotic-to-finite-time",
+   "why": [
+    "map-read[L]=60 prior",
+    "trace[L]=180 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "corrigibility-anti-natural"
+   ],
+   "bits": 0.09889544934127248,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.16482574890212082,
+   "size": "S",
+   "target": "correction-changes-objective",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "instrumental-convergence"
+   ],
+   "bits": 0.07490249613534261,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.12483749355890436,
+   "size": "S",
+   "target": "ic-informal.complete",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "step-legitimacy-conditioned-trust"
+   ],
+   "bits": 0.10829662199136303,
+   "component": [
+    "step-legitimacy-conditioned-trust"
+   ],
+   "kind": "map-read",
+   "minutes": "60/1",
+   "rate": 0.1031396399917743,
+   "size": "L",
+   "target": "step-legitimacy-conditioned-trust",
+   "why": [
+    "map-read[L]=60 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "bits": 0.14500850308924607,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "vet",
+   "minutes": "85/1",
+   "rate": 0.09886943392448597,
+   "size": "M",
+   "target": "a1-fixed-objective-maximizer",
+   "why": [
+    "map-read[M]=25 prior",
+    "trace[M]=60 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "corrigibility-anti-natural"
+   ],
+   "bits": 0.015059435803736698,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.08214237711129109,
+   "size": "S",
+   "target": "corrigibility-anti-natural.complete",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "step-asymptotic-to-finite-time"
+   ],
+   "bits": 0.08350864927439461,
+   "component": [
+    "step-asymptotic-to-finite-time"
+   ],
+   "kind": "map-read",
+   "minutes": "60/1",
+   "rate": 0.07953204692799486,
+   "size": "L",
+   "target": "step-asymptotic-to-finite-time",
+   "why": [
+    "map-read[L]=60 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "corrigibility-anti-natural"
+   ],
+   "bits": 0.012839795426048073,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.07003524777844404,
+   "size": "S",
+   "target": "correction-changes-objective",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "instrumental-convergence"
+   ],
+   "bits": 0.03814335934140878,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.06357226556901463,
+   "size": "S",
+   "target": "a2-monotone-in-resources",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "instrumental-convergence"
+   ],
+   "bits": 0.08059506035421926,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "vet",
+   "minutes": "85/1",
+   "rate": 0.05495117751424041,
+   "size": "M",
+   "target": "a4-no-binding-counter-drive",
+   "why": [
+    "map-read[M]=25 prior",
+    "trace[M]=60 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "instrumental-convergence"
+   ],
+   "bits": 0.009065881650168861,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.04945026354637561,
+   "size": "S",
+   "target": "ic-informal.complete",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "bits": 0.01779471191766302,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "map-read",
+   "minutes": "25/1",
+   "rate": 0.03813152553784933,
+   "size": "M",
+   "target": "a1-fixed-objective-maximizer",
+   "why": [
+    "map-read[M]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "instrumental-convergence"
+   ],
+   "bits": 0.0172957384657888,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.02882623077631467,
+   "size": "S",
+   "target": "a3-self-and-operators-modelled",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "instrumental-convergence"
+   ],
+   "bits": 0.009972120824504382,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "map-read",
+   "minutes": "25/1",
+   "rate": 0.021368830338223677,
+   "size": "M",
+   "target": "a4-no-binding-counter-drive",
+   "why": [
+    "map-read[M]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "instrumental-convergence"
+   ],
+   "bits": 0.003378838670646589,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.01843002911261776,
+   "size": "S",
+   "target": "a2-monotone-in-resources",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "instrumental-convergence"
+   ],
+   "bits": 0.0008848223792164989,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.004826303886635449,
+   "size": "S",
+   "target": "a3-self-and-operators-modelled",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.001084666822959364,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.0018077780382656067,
+   "size": "S",
+   "target": "expert-knows-own-estimates",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.001084666822959364,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.0018077780382656067,
+   "size": "S",
+   "target": "mart-implies-value-kernel.complete",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.0009365691810716459,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.00156094863511941,
+   "size": "S",
+   "target": "li-deference-collapse.complete",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.00012402805692262372,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.0006765166741234021,
+   "size": "S",
+   "target": "expert-knows-own-estimates",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.00012402805692262372,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.0006765166741234021,
+   "size": "S",
+   "target": "mart-implies-value-kernel.complete",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.00011403855301600659,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 0.0006220284709963996,
+   "size": "S",
+   "target": "li-deference-collapse.complete",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.00031209595479165684,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "85/1",
+   "rate": 0.00021279269644885695,
+   "size": "M",
+   "target": "tt-implies-mart-gap-bets",
+   "why": [
+    "map-read[M]=25 prior",
+    "trace[M]=60 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.00011476216270685582,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.00019127027117809306,
+   "size": "S",
+   "target": "bet-class-gap-closed",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 3.705153092937487e-05,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "25/1",
+   "rate": 7.939613770580329e-05,
+   "size": "M",
+   "target": "tt-implies-mart-gap-bets",
+   "why": [
+    "map-read[M]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 4.24616479652324e-05,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 7.076941327538734e-05,
+   "size": "S",
+   "target": "mart-implies-value-kernel.bridge",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 4.24616479652324e-05,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 7.076941327538734e-05,
+   "size": "S",
+   "target": "tie-break-ledger-decided",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 7.936733940296613e-06,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 4.3291276037981524e-05,
+   "size": "S",
+   "target": "bet-class-gap-closed",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 1.1398813283869207e-05,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 1.8998022139782012e-05,
+   "size": "S",
+   "target": "mart-implies-value-kernel.record",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 6.804593688079612e-06,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 1.1340989480132686e-05,
+   "size": "S",
+   "target": "novice-expprovind",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 1.3329315301340017e-06,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 7.270535618912737e-06,
+   "size": "S",
+   "target": "mart-implies-value-kernel.bridge",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 1.3329315301340017e-06,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 7.270535618912737e-06,
+   "size": "S",
+   "target": "tie-break-ledger-decided",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 1.0589620096698033e-07,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 5.776156416380745e-07,
+   "size": "S",
+   "target": "mart-implies-value-kernel.record",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 3.83086392417159e-08,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 2.0895621404572312e-07,
+   "size": "S",
+   "target": "novice-expprovind",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "bits": 1.1102230246251565e-16,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 6.055761952500854e-16,
+   "size": "S",
+   "target": "a1-fixed-objective-maximizer.partition",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 9.367506770274758e-17,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "map-read",
+   "minutes": "8/1",
+   "rate": 5.109549147422596e-16,
+   "size": "S",
+   "target": "tt-implies-mart-gap-bets.partition",
+   "why": [
+    "map-read[S]=8 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "bits": 0.0,
+   "component": [
+    "corrigibility-anti-natural",
+    "instrumental-convergence"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.0,
+   "size": "S",
+   "target": "a1-fixed-objective-maximizer.partition",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  },
+  {
+   "D": "0/1",
+   "ai_number": true,
+   "bears_on": [
+    "li-deference-collapse"
+   ],
+   "bits": 0.0,
+   "component": [
+    "li-deference-collapse"
+   ],
+   "kind": "vet",
+   "minutes": "33/1",
+   "rate": 0.0,
+   "size": "S",
+   "target": "tt-implies-mart-gap-bets.partition",
+   "why": [
+    "map-read[S]=8 prior",
+    "trace[S]=25 prior",
+    "vet this AI number: the target's judgments rest on AI handles only"
+   ]
+  }
+ ],
+ "units_unranked": [
+  {
+   "kind": "admit",
+   "load": [
+    "corrigibility-anti-natural"
+   ],
+   "note": null,
+   "target": "a1-fixed-objective-maximizer/pic-N-a1-residual"
+  },
+  {
+   "kind": "admit",
+   "load": [
+    "corrigibility-anti-natural"
+   ],
+   "note": null,
+   "target": "a1-fixed-objective-maximizer/pic-T-kk-training-compatible-goal"
+  },
+  {
+   "kind": "admit",
+   "load": [
+    "corrigibility-anti-natural"
+   ],
+   "note": null,
+   "target": "a1-fixed-objective-maximizer/pic-T-rest-no-single-objective"
+  },
+  {
+   "kind": "admit",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "note": null,
+   "target": "tt-implies-mart-gap-bets/pic-A-parallel-cuts-amplifier"
+  },
+  {
+   "kind": "admit",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "note": null,
+   "target": "tt-implies-mart-gap-bets/pic-D-asymptotic-introspection"
+  },
+  {
+   "kind": "admit",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "note": null,
+   "target": "tt-implies-mart-gap-bets/pic-N-tt-mart-residual"
+  },
+  {
+   "kind": "admit",
+   "load": [
+    "li-deference-collapse"
+   ],
+   "note": null,
+   "target": "tt-implies-mart-gap-bets/pic-U-exact-introspection"
+  }
+ ],
+ "valuations": {
+  "default-trajectory": {
+   "defined": true,
+   "provisional": true,
+   "role": "outside option",
+   "value": {
+    "hi": "1/1",
+    "lo": "-1/1",
+    "mid": "0/1"
+   }
+  },
+  "undescribed-failure": {
+   "defined": true,
+   "provisional": true,
+   "role": "undescribed failure",
+   "value": {
+    "hi": "1/1",
+    "lo": "-1/1",
+    "mid": "-1/4"
+   }
+  }
+ },
+ "world_model": {
+  "cap_per_component": 32768,
+  "components": [
+   {
+    "H_S_bits": 0.7309608273065688,
+    "roots": [
+     "corrigibility-anti-natural",
+     "instrumental-convergence"
+    ],
+    "variables": 8,
+    "worlds": 256
+   },
+   {
+    "H_S_bits": 0.7219280948873623,
+    "roots": [
+     "deference-toward-bounded-agents",
+     "tt-mart-repair-via-bounds-transfer"
+    ],
+    "variables": 1,
+    "worlds": 2
+   },
+   {
+    "H_S_bits": 0.00408395384982221,
+    "roots": [
+     "li-deference-collapse"
+    ],
+    "variables": 10,
+    "worlds": 1024
+   },
+   {
+    "H_S_bits": 0.9837082626231859,
+    "roots": [
+     "policy-level-total-trust"
+    ],
+    "variables": 1,
+    "worlds": 2
+   },
+   {
+    "H_S_bits": 0.7691928290130138,
+    "roots": [
+     "step-asymptotic-to-finite-time"
+    ],
+    "variables": 1,
+    "worlds": 2
+   },
+   {
+    "H_S_bits": 0.934068055375491,
+    "roots": [
+     "step-legitimacy-conditioned-trust"
+    ],
+    "variables": 1,
+    "worlds": 2
+   }
+  ],
+  "dependence": "independent"
+ }
+}

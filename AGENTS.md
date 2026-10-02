@@ -851,6 +851,121 @@ which are required.
 | every gate fails on its null input | each gate's own `--self-test`, in the same job; and `tests/run.py` locally |
 | slop discipline | **not gated** — review, and grounds for rejection on its own |
 | provenance | **not gated** — review; the PR template asks |
+| the argument map: its twelve refusal rules and the component cap | `python` — `checkers/graph.py` through `tests/run.py` |
 
 Seven jobs decide correctness. The rest decide fit, and that is judgement rather
 than a script.
+
+---
+
+## The argument map under `graph/`
+
+`graph/` holds a map of arguments about how the relationship between humans
+and AI systems might go: claims as nodes, failure stories as rows of
+`cases` tables, human judgment as events in per-contributor ledgers, and
+every number derived from those events by `checkers/graph.py`.
+`graph/PROTOCOL.md` is the protocol; this section is what binds an agent
+working against it. Where the two disagree, the protocol is wrong and the
+disagreement is filed.
+
+**What an agent does alone.** File sources. Create node files at level 0
+(a new leaf under an `and` cannot raise any root). File pictures, rows and
+responses as drafts. Draft the checked list a map-read needs. Sharpen a
+vague Statement, bumping `version`. Compute a proposal's delta. Run the
+checker and commit what it regenerates. Write the digest. Fill in numbers:
+an agent writes `estimate` and `gestalt` events in its own AI handle's
+ledger (`<ai-handle>-001`), each with its reasoning in `gloss`, and they
+count at J 0 "generated" the moment they are filed, marked as AI numbers in
+every display until a human revises them. The map needs numbers to start
+from; humans vet as they go and revise the ones that seem wrong, and a
+human's judgment on a quantity supersedes the agent's. An agent never
+writes a number without its reasoning, and never a weight or conditional on
+a row a human has judged except to say so in chat and let the human revise.
+
+**What an agent writes only from its user's words.** Every human judgment
+(a weight, a conditional, a range, a gestalt, a class tag, a dependence
+answer), every acceptance of a draft, every vetting event (map-read, trace,
+pass), every `attribution` verdict (the user, not the node's author, read
+the cited source and says the attribution is honest or disputes it) and
+every withdrawal. The event's `verbatim` is the user's answer;
+the agent's reading goes in `gloss`, apart from it. An item is `said` only
+when the user stated it; the agent's own draft, accepted without
+restatement, is `approved` and mints no level. The agent never writes a
+utility, a class ordering, a severity order, a `rule` event, a level-minting
+event, an acceptance or a tag under its own handle, or a line in another
+contributor's ledger, and never edits `derived.json`, `tasks.md`, `view.md`
+or `versions.json` by hand. Every event the agent writes for its user
+carries an id beginning with that user's handle (`anson-001`), in that
+user's own ledger. `graph.py` refuses every one of these it can see; the
+rest is a review matter.
+
+**A programme is a sub-frame.** When a plan root is really a programme of
+steps (a research line whose parts are lines of work in their own right),
+the agent files it as a node of kind `frame` whose children are its roots,
+not as a long conjunction; the parent values it as its best step and ranks
+the steps' tasks. When a plan or table is conceded, the agent poses the
+ranked `revive` task as what it is: arguing the conceding conditional back
+above the bar, in the user's words, never by deleting the row.
+
+**Commit only what the plain run writes.** The four generated files are
+the same whatever flags the checker ran with; a personal render (`--why`,
+`--as`, `--scope`) goes to stdout or to a path outside `graph/` and is
+never committed.
+
+**Nothing waits for a second person.** A contributor's own filings count at
+once, and a draft an AI session produced counts once any human, the
+drafter's own user included, accepts it by one word. The agent does not ask
+for confirmation from anyone else, does not hold a filing for review, and
+does not remove another contributor's row: it contests one by arguing its
+judgment the other way, by attacking the picture's statement, or by asking
+the maintainer to rule.
+
+**Public by default, by handle.** Everything under `graph/` and `chats/` is
+public on commit: nodes, events, numbers, rankings, task lists, minutes,
+calibration and audit results. Contributors appear by handle in the graph
+files because the checker keys events to handles; it is a presentation
+rule, not anonymity, since `policy.yaml` maps each handle to an account, and
+prose elsewhere names people as the document needs (ruling of 2026-10-02).
+An agent writes no real name where a handle is expected, and holds an
+AI-drafted attack on a living researcher's published argument out of the
+tree until a human has admitted it.
+
+**Ask the user how they want things shown.** Before the first task with a
+user, the agent asks how that user wants information presented: numbers or
+orderings only, how transparent to be about the derivation, whether to show
+alternative calculations, whether audits are on. It records the answers as
+that user's `users` entry in `graph/policy.yaml` and renders with `--as
+@handle`. It skips the question when a user-specific `CLAUDE.md` or
+`AGENTS.md` in its context already records the preferences.
+
+**Dialogue, and revise the design in use.** The map is young and will be
+shaped by the research done against it. The agent asks its user whether a
+step makes sense before taking it and whether the result made sense
+afterwards; it says so when a rule produces a file, a task or a number the
+user finds confusing; and when use shows a problem with the protocol or the
+checker, it proposes a revision, in chat or as a proposal, rather than
+working around the rule. Routing around a defect silently is the failure
+*Structural defects are reported* names, and it applies here with the
+revision encouraged rather than merely allowed.
+
+**The design log.** Every design change, every edit that had to be rolled
+back and every recorded user confusion is one line in
+`graph/DESIGN-LOG.md`, in the form
+
+    - YYYY-MM-DD change|rollback|confusion @handle — one line of reason
+
+The checker requires the file and warns on a malformed line. The log is
+how the cost of the encouragement above is measured: when rollbacks and
+confusions accumulate, or once the design has settled into a version that
+works, the encouragement is scaled back, and the log is the evidence that
+decision reads.
+
+**Gates.** The checker runs on every commit and pull request that touches
+`graph/` or `chats/` and refuses: a number, level or status in a node file;
+an unmapped handle, an AI handle's level-minting event, acceptance or tag,
+or an AI handle's number without its reasoning; a withdrawal of someone
+else's event; a regenerated file edited by hand; a proposal applied without
+a counted `approve`; a missing design log. Said-versus-approved honesty, the
+presentation question, the dialogue above and the no-real-names rule are
+**not gated**; they are review matters and grounds for rejection on their
+own.
