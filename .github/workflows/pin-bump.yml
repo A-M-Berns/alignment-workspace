@@ -1,0 +1,179 @@
+name: pin-bump
+
+# Monthly trial of moving the Formalized-Agent-Foundations pin to that repository's
+# `main`. The trial builds the bumped tree and audits it at `contents: read`; if it
+# is green, a separate job verifies the bumped files *as data* and pushes them to the
+# branch `bot/pin-bump`, where a maintainer opens the pull request. This workflow never
+# opens a pull request and never touches `main`. It fixes nothing: red ends in an
+# issue naming the failing step.
+#
+# Never on pull_request: `pin-bump-publish` holds write scope, and AGENTS.md's
+# Security section (conditions 1–5, and the `write-scope` enumeration) is where that
+# grant is justified. A scheduled run executes on the default branch by construction;
+# a manual dispatch may name any ref, so the write-scoped job is guarded to `main`.
+on:
+  schedule:
+    - cron: "23 6 8 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pin-bump
+  cancel-in-progress: false
+
+env:
+  FAF: A-M-Berns/Formalized-Agent-Foundations
+
+jobs:
+  pin-trial:
+    name: pin-trial
+    runs-on: ubuntu-latest
+    # Longer than the `lean` job's 25-minute budget on purpose: the trial builds the
+    # dependency cold. The budget is the step timeout below, a specification-layer
+    # value (DECISIONS.md, 2026-10-02).
+    timeout-minutes: 170
+    permissions:
+      contents: read
+    outputs:
+      status: ${{ steps.resolve.outputs.status }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pure API: where is FAF `main`, and does lean/lakefile.toml already pin it?
+      # If so the month's work is done and the run is green with nothing to publish.
+      - name: Resolve FAF main and rewrite the pin
+        id: resolve
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p trial
+          head=$(gh api "repos/$FAF/commits/main" --jq .sha)
+          old=$(sed -n 's/^rev = "\([0-9a-f]\{40\}\)"$/\1/p' lean/lakefile.toml)
+          test -n "$head" && test -n "$old"
+          printf '%s\n' "$old" > trial/old
+          printf '%s\n' "$head" > trial/head
+          if [ "$old" = "$head" ]; then
+            echo "unchanged" > trial/status
+            echo "status=unchanged" >> "$GITHUB_OUTPUT"
+            echo "lean/lakefile.toml already pins FAF main ($head); nothing to do."
+            exit 0
+          fi
+          echo "bump" > trial/status
+          echo "status=bump" >> "$GITHUB_OUTPUT"
+          sed -i "s/^rev = \"$old\"$/rev = \"$head\"/" lean/lakefile.toml
+          grep -q "^rev = \"$head\"$" lean/lakefile.toml
+          gh api "repos/$FAF/contents/lean-toolchain?ref=$head" --jq .content | base64 -d > lean/lean-toolchain
+          cp lean/lean-toolchain trial/toolchain
+          echo "bumping $old -> $head; toolchain $(cat lean/lean-toolchain)"
+
+      - name: Install elan
+        if: steps.resolve.outputs.status == 'bump'
+        run: |
+          curl -sSfL https://github.com/leanprover/elan/releases/latest/download/elan-x86_64-unknown-linux-gnu.tar.gz \
+            | tar xz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      # Warm from whatever `.lake` the `lean` job last saved; the exact key is saved
+      # below only once the bumped tree is green.
+      - name: Restore .lake
+        if: steps.resolve.outputs.status == 'bump'
+        uses: actions/cache/restore@v4
+        with:
+          path: lean/.lake
+          restore-keys: lake-${{ runner.os }}-
+          key: lake-${{ runner.os }}-trial-${{ github.run_id }}
+
+      - name: lake update agentFoundations
+        if: steps.resolve.outputs.status == 'bump'
+        working-directory: lean
+        run: lake update agentFoundations
+
+      - name: Mathlib oleans
+        if: steps.resolve.outputs.status == 'bump'
+        working-directory: lean
+        run: lake exe cache get
+
+      - name: Build, within the trial's time budget
+        if: steps.resolve.outputs.status == 'bump'
+        working-directory: lean
+        timeout-minutes: 150
+        run: |
+          start=$(date +%s)
+          lake build
+          echo $(( $(date +%s) - start )) > ../trial/build_seconds
+          echo "build wall time: $(cat ../trial/build_seconds)s"
+
+      - name: Axiom audit
+        if: steps.resolve.outputs.status == 'bump'
+        working-directory: lean
+        run: |
+          python3 ../tests/audit_axioms.py --self-test
+          python3 ../tests/audit_axioms.py
+
+      # The key the `lean` job will compute for the bumped files, so the pull request
+      # a maintainer opens from `bot/pin-bump` starts warm.
+      - name: Save .lake under the lean job's key for the bumped files
+        if: steps.resolve.outputs.status == 'bump'
+        uses: actions/cache/save@v4
+        with:
+          path: lean/.lake
+          key: lake-${{ runner.os }}-${{ hashFiles('lean/lake-manifest.json', 'lean/lean-toolchain') }}
+
+      - name: Upload the bumped lean/ files
+        if: ${{ !cancelled() && steps.resolve.outputs.status == 'bump' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pin-bump-files
+          path: |
+            lean/lakefile.toml
+            lean/lake-manifest.json
+            lean/lean-toolchain
+          if-no-files-found: error
+
+      - name: Upload the trial record
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pin-bump-trial
+          path: trial/
+          if-no-files-found: ignore
+
+  # The write-scoped job. Enumerated in AGENTS.md's Security section; installs no
+  # Lean toolchain and executes nothing from `lean/` or from a dependency — it reads
+  # the artifacts as data, verifies them against FAF's own files at the resolved rev,
+  # and either force-pushes `bot/pin-bump` and files "pin bump ready" or files "pin
+  # bump blocked". The run token only. Guarded to `main` because workflow_dispatch may
+  # name any ref.
+  pin-bump-publish:
+    name: pin-bump-publish
+    needs: pin-trial
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: pin-bump-trial
+          path: trial
+        continue-on-error: true
+
+      - uses: actions/download-artifact@v4
+        if: needs.pin-trial.outputs.status == 'bump'
+        with:
+          name: pin-bump-files
+          path: files
+        continue-on-error: true
+
+      - name: Verify as data, then publish the branch or the blocker
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/pin_bump_publish.py --trial-result "${{ needs.pin-trial.result }}"

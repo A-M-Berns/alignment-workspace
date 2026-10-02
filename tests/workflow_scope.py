@@ -16,11 +16,15 @@ visible.
 
 What is checked, against the four conditions:
 
-1. *`push` to a protected branch, never `pull_request`.* A workflow with a
-   write-granting job must trigger on `push`, must restrict it to a branch this
-   repository protects, and must not list `pull_request` or
+1. *`push` to a protected branch, `schedule`, or `workflow_dispatch` guarded
+   to `main`; never `pull_request`.* A workflow with a write-granting job must
+   trigger on at least one of those three, must not list `pull_request` or
    `pull_request_target` — which would put the scope within reach of anything a
-   contributor submits.
+   contributor submits — and, per trigger it does list: a `push` must be
+   restricted to a branch this repository protects, and a `workflow_dispatch`
+   (which may name any ref) requires the write-granting job itself to carry an
+   `if:` guard on a protected branch. A `schedule` runs on the default branch
+   by construction and needs nothing further.
 2. *Publishes rather than adjudicates.* Checked in the one form a script can
    see: a write-granting job's context is not in the required-check list, so
    nothing merges on its verdict. **That no registry or protected setting is
@@ -63,6 +67,17 @@ PROTECTED_BRANCHES = ("main",)
 ALLOWED_SECRET = "GITHUB_TOKEN"
 
 FORBIDDEN_TRIGGERS = ("pull_request", "pull_request_target")
+
+# Triggers a write-granting job may sit behind. `push` must be restricted to a
+# protected branch; `workflow_dispatch` must be guarded on the job (GUARD below);
+# `schedule` runs on the default branch by construction.
+PERMITTED_TRIGGERS = ("push", "schedule", "workflow_dispatch")
+
+# A job-level `if:` that pins the job to a branch — the only form read here, so
+# the guard a reviewer sees is the guard the gate enforces.
+GUARD = re.compile(
+    r"github\.ref\s*==\s*['\"]refs/heads/([A-Za-z0-9_./-]+)['\"]"
+    r"|github\.ref_name\s*==\s*['\"]([A-Za-z0-9_./-]+)['\"]")
 
 MARKER = re.compile(
     r"<!--\s*write-scope:\s*job=([A-Za-z0-9_.-]+);\s*workflow=(\S+?)\s*-->")
@@ -146,14 +161,21 @@ def parse(text: str) -> dict:
         elif key == "jobs":
             depth = indent_of(body[0]) if body else 2
             for job, _, job_body in entries(body, depth):
-                record = {"name": job, "write": False}
+                record = {"name": job, "write": False, "guard": ""}
                 for field, field_inline, field_body in entries(job_body, depth + 2):
                     if field == "name" and field_inline:
                         record["name"] = field_inline
                     elif field == "permissions":
                         record["write"] = grants_write(field_inline, field_body)
+                    elif field == "if":
+                        record["guard"] = " ".join([field_inline] + [l.strip() for l in field_body])
                 parsed["jobs"][job] = record
     return parsed
+
+
+def guarded_branches(condition: str) -> list[str]:
+    """Branches a job-level `if:` pins the job to, in the one form read here."""
+    return [a or b for a, b in GUARD.findall(condition)]
 
 
 def enumerated(text: str) -> set[tuple[str, str]]:
@@ -192,18 +214,33 @@ def problems(files: dict[str, str], agents: str, protection: str) -> list[str]:
                 found.append(f"{path}: job {job!r} grants write scope in a workflow "
                              f"triggered by {sorted(set(parsed['triggers']) & set(FORBIDDEN_TRIGGERS))} — "
                              "reachable by what a contributor submits")
-            if "push" not in parsed["triggers"]:
+            if not set(parsed["triggers"]) & set(PERMITTED_TRIGGERS):
                 found.append(f"{path}: job {job!r} grants write scope in a workflow "
-                             "that does not trigger on `push`")
-            elif parsed["push_branches"] is None:
-                found.append(f"{path}: job {job!r} grants write scope on an "
-                             "unrestricted `push` trigger; restrict it to a "
-                             f"protected branch {list(PROTECTED_BRANCHES)}")
-            else:
-                loose = [b for b in parsed["push_branches"] if b not in PROTECTED_BRANCHES]
-                if loose:
-                    found.append(f"{path}: job {job!r} grants write scope on push to "
-                                 f"unprotected branch(es) {loose}")
+                             "that triggers on none of `push` to a protected branch, "
+                             "`schedule`, or `workflow_dispatch` guarded to `main`")
+            if "push" in parsed["triggers"]:
+                if parsed["push_branches"] is None:
+                    found.append(f"{path}: job {job!r} grants write scope on an "
+                                 "unrestricted `push` trigger; restrict it to a "
+                                 f"protected branch {list(PROTECTED_BRANCHES)}")
+                else:
+                    loose = [b for b in parsed["push_branches"] if b not in PROTECTED_BRANCHES]
+                    if loose:
+                        found.append(f"{path}: job {job!r} grants write scope on push to "
+                                     f"unprotected branch(es) {loose}")
+            if "workflow_dispatch" in parsed["triggers"]:
+                guards = guarded_branches(record["guard"])
+                if not guards:
+                    found.append(f"{path}: job {job!r} grants write scope in a workflow "
+                                 "with `workflow_dispatch`, and carries no `if:` guard "
+                                 "pinning it to a protected branch; a manual dispatch "
+                                 "may name any ref")
+                else:
+                    loose = [b for b in guards if b not in PROTECTED_BRANCHES]
+                    if loose:
+                        found.append(f"{path}: job {job!r} grants write scope under "
+                                     "`workflow_dispatch` with its `if:` guard naming "
+                                     f"unprotected branch(es) {loose}")
             if record["name"] in required:
                 found.append(f"{path}: job {job!r} grants write scope and its context "
                              f"{record['name']!r} is a required check — a write-scoped "
@@ -267,6 +304,32 @@ jobs:
          over(good.replace("branches: [main]", "branches: [scratch]")), 1),
         ("a write grant on an unrestricted push is caught",
          over(good.replace("  push:\n    branches: [main]", "  push:")), 1),
+        # The amended condition 1: a schedule needs nothing further; a dispatch
+        # needs the job guarded to a protected branch, in the one form read here.
+        ("a write grant on a schedule passes",
+         over(good.replace("on:\n  push:\n    branches: [main]",
+                           "on:\n  schedule:\n    - cron: '0 0 1 * *'")), 0),
+        ("a write grant on workflow_dispatch with the job guarded to main passes",
+         over(good.replace("on:\n  push:\n    branches: [main]", "on:\n  workflow_dispatch:")
+                  .replace("    permissions:\n      contents: write",
+                           "    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}\n"
+                           "    permissions:\n      contents: write")), 0),
+        ("a schedule beside an unguarded workflow_dispatch is caught",
+         over(good.replace("on:\n  push:\n    branches: [main]",
+                           "on:\n  schedule:\n    - cron: '0 0 1 * *'\n  workflow_dispatch:")), 1),
+        ("a write grant on an unguarded workflow_dispatch is caught",
+         over(good.replace("on:\n  push:\n    branches: [main]", "on:\n  workflow_dispatch:")), 1),
+        ("a workflow_dispatch guard naming an unprotected branch is caught",
+         over(good.replace("on:\n  push:\n    branches: [main]", "on:\n  workflow_dispatch:")
+                  .replace("    permissions:\n      contents: write",
+                           "    if: github.ref == 'refs/heads/scratch'\n"
+                           "    permissions:\n      contents: write")), 1),
+        ("a guard on a different job does not cover the write-granting one",
+         over(good.replace("on:\n  push:\n    branches: [main]", "on:\n  workflow_dispatch:")
+                  .replace("jobs:\n", "jobs:\n  trial:\n    if: github.ref == 'refs/heads/main'\n"
+                                       "    steps: []\n")), 1),
+        ("a workflow with no permitted trigger at all is caught",
+         over(good.replace("on:\n  push:\n    branches: [main]", "on:\n  release:")), 1),
         ("a workflow-level write default is caught",
          over(good.replace("permissions:\n  contents: read",
                            "permissions:\n  contents: write")), 1),
@@ -335,9 +398,10 @@ def run(files: dict[str, str], agents: str, protection: str,
         for f in found:
             say(f"  - {f}")
         say("\n  AGENTS.md, Security: no credential is stored, and a job holds "
-            "write scope only on a push-only trigger to a protected branch, "
-            "publishing rather than adjudicating, on the run token, granted on "
-            "the job. The jobs holding it are named in that section.")
+            "write scope only behind `push` to a protected branch, `schedule`, or "
+            "`workflow_dispatch` with the job guarded to `main` — never "
+            "`pull_request` — publishing rather than adjudicating, on the run "
+            "token, granted on the job. The jobs holding it are named in that section.")
         return 1
     if not quiet:
         print(f"WORKFLOW SCOPE: clean over {len(files)} workflow(s); "

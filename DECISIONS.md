@@ -5713,6 +5713,59 @@ carry the new text.  Earlier documents written under the old rule are not rewrit
 distinction it needs (which sentences are rulings) is the one a reader cannot make
 from the prose, and with several contributors the role no longer identifies anyone.
 
+### 2026-10-02 — write scope behind a schedule: Security condition 1 amended, a fifth condition added, `pin-bump-publish` enumerated
+
+**Maintainer ruling, stated in conversation by the author; landed by this dispatch
+as its first act.**  Two changes to `AGENTS.md` *Security*.  Condition 1 on a
+write-scoped job now reads: it triggers on `push` to a protected branch, on
+`schedule`, or on `workflow_dispatch` with the job guarded to `main`; never on
+`pull_request`.  A scheduled run executes on the default branch by construction, so
+it is as far from contributor reach as a push to `main`; a manual dispatch may name
+any ref, which is why the guard sits on the job and `tests/workflow_scope.py` reads
+it there (in the one form it reads: a job-level `if:` comparing `github.ref` or
+`github.ref_name` to a protected branch).  A fifth condition is added: a
+write-scoped job runs no build and executes nothing from the proof layer or from a
+dependency; it handles files as data.  The gate enforces the amended condition 1 and
+its self-test pins each new direction (a schedule passes, a guarded dispatch passes,
+an unguarded or wrongly guarded dispatch fails, a guard on a *different* job does not
+count); condition 5 is a review matter read against the step list, like the second
+half of condition 2.
+
+The occasion is `.github/workflows/pin-bump.yml`: a monthly trial (the 8th, and on
+dispatch) of moving `lean/lakefile.toml` to the head of Formalized-Agent-Foundations
+`main`.  `pin-trial` runs at `contents: read` — rewrites the rev, copies that
+repository's `lean-toolchain`, runs `lake update agentFoundations`, `lake exe cache
+get`, `lake build` and `tests/audit_axioms.py`, records the build wall time, uploads
+the three bumped `lean/` files, and on success saves `.lake` under the key the `lean`
+job will compute for them.  `pin-bump-publish` (contents and issues write, enumerated
+with a `write-scope` marker, guarded to `main`, no toolchain) verifies the artifact
+as data — the lakefile differs from `main` only in the rev line, the rev is the head
+of that repository's `main` as the job itself resolves it, the toolchain equals the
+dependency's at that rev, every manifest entry matches the dependency's own manifest
+at that rev — then force-pushes one signed-off commit to the branch `bot/pin-bump`
+and opens or updates the issue *pin bump ready*; a red trial or a failed verification
+pushes nothing and opens or updates *pin bump blocked*.  The logic is
+`.github/pin_bump_publish.py`.  The workflow never opens a pull request and never
+touches `main`; the maintainer opens the pull request from the branch, and that
+opening is the review that means reading.  `.github/branch-protection.json` and
+`tests/path_gate.py` are unchanged: no required check is added, and the pin files
+were already specification paths.
+
+**Budget.**  The trial's build runs under its own `timeout-minutes: 150` (job
+timeout 170), deliberately above the `lean` job's 25 minutes because the trial builds
+the dependency cold.  That is a specification-layer value under *the trust chain* item
+7, recorded here; the `lean` job's budget does not move.
+
+*Rejected alternatives:* (a) letting the workflow open the pull request — that needs
+`pull-requests: write` and makes a bot the author of a specification-layer change
+whose review must mean reading; the branch-plus-issue shape keeps the maintainer's
+act where the constitution puts it.  (b) Letting the write-scoped job re-run the
+build or the axiom audit to "double-check" before pushing — that is exactly what
+condition 5 forbids: the token would be in the hands of whatever `lake` elaborates.
+(c) Reading the job guard in every expression form GitHub accepts — the gate reads
+one form on purpose, so a guard a reviewer cannot recognise at sight is a finding
+rather than a pass.
+
 ### 2026-10-02 — the argument map lands: `graph/`, `checkers/graph.py`, the `graph/` section of `AGENTS.md`
 
 **Maintainer ruling, stated in conversation.**  The argument map designed with

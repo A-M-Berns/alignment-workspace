@@ -761,23 +761,35 @@ non-maintainer, and no single class says that. The fields are defined once, in
   and no result is worth the exception. A merge performed by GitHub against the
   required-check list grants this repository nothing.
 
-  A job may hold write scope only when **all four** hold, and the reason each is
+  A job may hold write scope only when **all five** hold, and the reason each is
   load-bearing is that dropping it puts the scope back within reach of something
   a contributor can influence:
 
-  1. It triggers on `push` to a protected branch and **never** on
-     `pull_request`, so nothing a contributor submits executes inside it.
+  1. It triggers on `push` to a protected branch, on `schedule`, or on
+     `workflow_dispatch` with the job guarded to `main`, and **never** on
+     `pull_request`, so nothing a contributor submits executes inside it. A
+     scheduled run executes on the default branch by construction; a manual
+     dispatch may name any ref, which is why the guard is on the job.
   2. It **publishes rather than adjudicates**: no required check, registry,
      protected setting or claim class is downstream of what it writes.
   3. The scope is the run token, so there is nothing to leak past the run.
   4. The grant is written on the job, not as the workflow default, so a second
      job added to that file does not inherit it.
+  5. It **runs no build and executes nothing from the proof layer or from a
+     dependency**; it handles files as data. A job that elaborates Lean, runs
+     `lake`, or imports contributed Python has handed its token to whatever that
+     code does, and no verification is worth that — the adjudicating job runs at
+     read scope and the publishing job reads its artifacts.
 
   **The jobs holding write scope are named here**, and a job absent from this
   list holding it is a defect:
 
   <!-- write-scope: job=wiki-sync; workflow=.github/workflows/wiki-sync.yml -->
   - `wiki-sync`, which force-pushes `wiki/` to the hosted wiki.
+  <!-- write-scope: job=pin-bump-publish; workflow=.github/workflows/pin-bump.yml -->
+  - `pin-bump-publish`, which force-pushes a verified pin bump to the branch
+    `bot/pin-bump` and opens or updates the issue reporting it. It never opens a
+    pull request and never touches `main`; the maintainer opens the pull request.
 
   `tests/workflow_scope.py` reads that list from this section and enforces
   conditions 1, 3 and 4 over every workflow, along with both of the
@@ -785,7 +797,9 @@ non-maintainer, and no single class says that. The fields are defined once, in
   entry naming a job no workflow defines. **Condition 2 is checked only in the
   form a script can see**: that a write-granting job's context is not a required
   check, so nothing merges on its verdict. That no registry or protected setting
-  is downstream of what it writes stays a review matter.
+  is downstream of what it writes stays a review matter, and so does condition
+  5: whether a job's steps build or execute dependency code is read at review,
+  against the step list.
 - Contributed code executes only in sandboxed CI runners, without network access
   where the runner supports it. The checker harness itself never fetches
   anything.
