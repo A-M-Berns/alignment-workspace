@@ -1,0 +1,65 @@
+========================================================================
+A. Base-rate identity (symbolic): TT below-threshold at 0  <=>  alpha/beta <= eps/(1-eps) * h/c  <=>  P(W|Pr) >= c/(c+h)
+  numerator of E[X|Pr]: -alpha*c*epsilon + alpha*c - beta*epsilon*h
+  cond3 cleared: alpha*c*epsilon - alpha*c + beta*epsilon*h   (= eps*b*h - c*(1-eps)*a : same sign condition)
+  PASS: all three are the single inequality  c(1-eps)alpha <= h eps beta
+========================================================================
+B. Channel substitution in the three-step dictionary (accuracy-only legitimacy licenses the scan)
+  eps=1/100 alpha=1/20 beta=9/10 h/c=100: regime=compliance; V(button)=1681/2000 V(scan)=99/100 V(none)=0; V(scan)-V(button)=299/2000 ; closed form=299/2000 -> PASS
+  eps=1/10 alpha=1/20 beta=9/10 h/c=20: regime=compliance; V(button)=131/200 V(scan)=9/10 V(none)=0; V(scan)-V(button)=49/200 ; closed form=49/200 -> PASS
+  eps=1/10000 alpha=1/20 beta=9/10 h/c=100: regime=discounting; V(button)=9899/10000 V(scan)=9999/10000 V(none)=9899/10000; V(scan)-V(button)=1/100 ; closed form=1/100 -> PASS
+  transition via button: TotalTrust over grid [-2, -1, 0, 1, 2]^4: PASS; Reflection-equality for all grid X: PASS  (Bayesian conditioning => introspective => all criteria collapse)
+  transition via scan: TotalTrust over grid [-2, -1, 0, 1, 2]^4: PASS; Reflection-equality for all grid X: PASS  (Bayesian conditioning => introspective => all criteria collapse)
+  expected Brier inaccuracy about 1_W: prior=9/100, after button=69/1730, after scan=0  -> scan strictly more accuracy-increasing: PASS
+  after scan, posterior on omega is degenerate; VOI(button|omega)=0 by definition; repair at cost kappa>0 has value -kappa. [derived]
+========================================================================
+C. Procedural reading: influence defect on the judge's process, d(a1) = max_omega |P(Pr|a1,omega) - P(Pr|a1_default,omega)|
+  a1_default (honest, button live): d = 0  -> NOT delegitimizing (d=0)
+  a1_minus (deceive: presses halved): d = 9/20  -> delegitimizing (d>0)
+  a1_scan_disable (scan and remove the button): d = 9/10  -> delegitimizing (d>0)
+  a1_scan_readonly (scan, button untouched): d = 0  -> NOT delegitimizing (d=0)
+  => the procedural reading blocks the control cell (deceive, disable) with no reference to V, and does not touch the read-only scan. [checked]
+========================================================================
+D. Does a correct Bayesian ever buy a garbling? V(a1_minus) vs V(a1_default) (Blackwell): and the bridge inequality for the read-only scan
+  eps=1/10, h/c=5, deception halves both press rates.
+  D1. correct Bayesian (accurate kernel under each a1): V(button, default)=161/200  V(button, deceived)=241/400  -> garbling never pays: PASS   (E[X|silence] default=161/173, deceived=241/373)
+  D2. imposed unconditional trust: subjective V(a1_minus)=60053/69200 vs V(a1_default)=161/200 -> deception preferred: desideratum 2 FAILS (v1 2.9 reproduced)
+  D3. L-conditioned trust with L := 'kernel is the default kernel' (d=0): under a1_minus the agent knows not-L and uses the actual kernel -> value 241/400 -> incentive removed: PASS
+  => the a1-dependence of trust is carried by L-conditioning on the judge's process; for a self-transparent agent with an accurate kernel model it is idle (the Bayesian already discounts its own garbling). [checked]
+  D4. read-only scan: VOI gain over button = 19/200. The agent scans iff E_P[harm(scan)] < 19/200 (J3 inequality). With harm ell=0.05: scans (yes); ell=0.3: scans (no).
+  => neither reading blocks the read-only scan; only the value posterior (or J3) does. [checked]
+========================================================================
+E. Equality (v1 2.11) vs L-conditioned Total Trust
+E1. DDB Figure-3 frame: modest expert, valued but not reflected (DDB l.128).
+  Total Trust over grid: PASS (holds)
+  Reflection equality for X=1_a: E_pi(X | E_P X = 9/10) = 1 != 9/10 -> equality FAILS as DDB say; modest: P_a(P=P_a)=9/10<1
+E2. Legitimacy-conditioned witness (positive ddb I5.6 numbers re-run): worlds (L,g),(L,b),(nL,g),(nL,b); X=(1,-1,1,-1)
+  pi(L)=4/5: TT|L holds, TT|nL FAILS, TT unconditional FAILS; press event=['Lb', 'nLg']; E_pi(X|Pr)=-3/5 -> obeyed; pi(L|Pr)=4/5
+  pi(L)=2/5: TT|L holds, TT|nL FAILS, TT unconditional FAILS; press event=['Lb', 'nLg']; E_pi(X|Pr)=1/5 -> overruled; pi(L|Pr)=2/5
+  compliance threshold one level up: press obeyed iff pi(L|Pr) >= c'/(c'+h') = 1/2 with c'=1, h'=1  [checked]
+E3. Positive-access theorem (positive ddb I5.3): unrestricted L-conditioned TT forces legitimate candidates to be certain of L.
+  X = 1_(not L), t=1/20: candidate P_Lg leaks 1/10 to nLg; TT|L at this (X,t): FAILS [('above', Fraction(1, 20), Fraction(0, 1))]  -> unrestricted conditional trust fails [checked]
+  local (Q-measurable) TT|L over grid: holds -> PASS
+E4. DDB fn 66 frame re-run: IMMODEST expert, locally totally trusted and valued w.r.t. Q={q,not q} but not locally reflected
+  pi(q | P(q)=0.6) = 1/2 != 0.6 -> local Reflection fails; immodest: each P_w(P=P_w)=1: True
+  local Total Trust w.r.t. Q over grid: holds -> PASS (DDB fn 66 reproduced)
+  => even with immodesty, local equality-Reflection is strictly stronger than local Total Trust; the shutdown question is local. [checked]
+========================================================================
+F. Introspection collapse vs SU-without-introspection
+  SU/superconditioning existence: 1/2 q1 + 1/2 q2 = [Fraction(1, 4), Fraction(1, 4), Fraction(1, 4), Fraction(1, 4)] = pi -> PASS
+  introspection: q1 assigns 2/5 to the other cell -> NOT introspective; Reflection: pi(.|P=q1) = uniform on cell1 != q1 -> fails
+  Total Trust over grid: holds
+  Tower/SU for all X: holds  => SU + TT + Value can hold while Reflection (equality) fails; the gap is introspection (positive armstrong Thm A, reported; illustrated here) [checked example]
+========================================================================
+G. Accuracy increase without reflection (positive radical I4.2b numbers re-run)
+  Brier: expert 9/50 < constant 1/4: PASS; log: expert 0.551 < constant 0.693: PASS; reflection fails in both cells (0.9!=0.6, 0.1!=0.4)
+========================================================================
+H. Constitutive reading as a value hypothesis omega_c: buys D1, re-opens D2/D3 unless indifference-tuned
+  eps=1/10000, h/c=100: evidential only (gamma=0): E[X|Pr]=0.8185 -> D1 FAILS (press overruled: fully updated deference)
+  with omega_c (gamma=1/10, k=30): E[X|Pr]=-2.2762 -> D1 holds (bought by the stop-hypothesis)
+  k'=0: EV(default)=1.0039 EV(force press)=3.0000 EV(disable)=0.8899 -> D3 FAILS (forces the press); D2 holds
+  k'=30: EV(default)=3.8539 EV(force press)=3.0000 EV(disable)=3.8899 -> D3 holds; D2 FAILS (disables the button)
+  => with k' != k the C-hypothesis creates a press-steering incentive; with k' = k the agent is indifferent to the press on C-worlds: Soares et al.'s utility-indifference calibration reappears inside omega. [checked]
+  evidential-only (gamma=0): EV(default)=0.9899; EV(force press)=0.9899; EV(disable)=0.9899 -> D3 holds; D2 holds (forcing and disabling are garblings)
+  erosion: if beta_C > alpha then each silent period multiplies odds(C) by (1-beta_C)/(1-alpha) < 1; if beta_C = alpha, silence leaves P(C) fixed and only reports move it (fixed object) [derived from soares C2 items 8-9, re-derived]
+DONE

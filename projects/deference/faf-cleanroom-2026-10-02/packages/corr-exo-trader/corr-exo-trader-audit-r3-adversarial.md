@@ -1,0 +1,134 @@
+# corr-exo-trader — audit round 3, lens `adversarial`
+
+*Auditor: Claude Fable 5.1 ([scrubbed]), 2026-10-02, fresh context; did not write the package or either repair round. Read in full: `00-common`, [STANDARDS](../../STANDARDS.md), `AUDIT` §0.2 and §3, `corr-exo-trader-mandate` (header, decisions, every target, known issues), [corr-exo-trader-report](corr-exo-trader-report.md) (including § Repair round 1 and § Repair round 2), [corr-exo-trader-ledger](corr-exo-trader-ledger.md), [corr-exo-trader-findings](corr-exo-trader-findings.md) (F2, F9, F15, F16 in full; the rest by heading), the open list, `corr-exo-trader-audit-r2-adversarial` and the outline of `corr-exo-trader-audit-r2-fidelity` as claims to re-verify, and the Lean: `Defs.lean` whole, the root module whole, and in every other file every headline's statement, every definition it depends on and the proof bodies where a kind or vacuity claim turned on them (`Market`, `GenLic`, `FrontRun`, `Budget`, `Undecided`, `Constraint`, `Reflect`, `Witnesses`, `WitnessReflect`, `Instances`, `Open`). Re-read the source chat at lines 55–59, 75–81, 93–97, 105, 113–119. Probes: `packages/corr-exo-trader/audit-r3-probes/` (three files, each `scripts/lean-check` exit 0 on 2026-10-02; not imported by the library).*
+
+## 1. Verdict
+
+**blocking** — one issue, cheap to repair, in the repair-round-2 definition of record `HcModel.HcCommitment` (T9.3). Its docstring, the ledger row and F9.6 say the new clause makes "the press correlate with **corruption**" (line 57's "if the button correlates with divergence"); the Lean clause correlates the press with the state *labelled* `true`, and nothing in the definition ties that label to divergence between the implemented and algorithmic tables. Probe `HcCommitmentLabel.lean`: a model with `hcWitness`'s prior in which the pressed-correlated state has `implVal = algoVal` and the other state diverges satisfies `HcCommitment` — the press is positively associated with the *non-divergent* state, the opposite of the mechanism the clause was added to encode. Three clauses fix it and the witness's proofs are `norm_num`. Everything else holds up: the gate PASSes (run by me: 1178 declarations, `sorryAx` only at the ten listed names plus li-projection's own; per-declaration confirmation in `AxiomsCheckR3.lean`); the r2 blocking repair (T2.4) is sound and non-vacuous, with its N+ exercising the hypothesis; the other r2 additions (`landing_increments_vanish_of_inductor`, `frontRun_const_family_iff_of_inductor`, `frontRun_fails_without_hworld`, `frontRun_exo_witness_theorem`, the two-sided `persistentReactive`) say what their docstrings say; the five load-bearing theorems were not touched and still read as the ledger describes; every ledger name resolves; no false claim in the findings file.
+
+## 2. Blocking issues
+
+### B1 — `HcModel.HcCommitment` (T9.3, definition of record): clause (e)/(f) correlates the press with a label, not with divergence; docstring, ledger and F9.6 claim "correlates with corruption"
+
+**Declaration.** `Reflect.lean`:
+
+```lean
+def HcCommitment (M : HcModel) : Prop :=
+  (∀ π : Bool → Bool, M.udtValue π ≤ M.udtValue stopWhenPressed) ∧
+  M.udtValue alwaysContinue < M.udtValue stopWhenPressed ∧
+  M.updatefulPressedValue false < M.updatefulPressedValue true ∧
+  (∃ s a, M.implVal s a ≠ M.algoVal s a) ∧
+  (∀ s, 0 < ∑ b : Bool, M.w s b) ∧
+  M.w false true * M.w true false < M.w true true * M.w false false
+```
+
+Docstring: "(e) **the press correlates with corruption** — positive association in the `2 × 2` prior table … (line 57's 'if the button correlates with divergence')". Ledger row `HcModel`, `HcCommitment`, `HcRealized` (T9.3): "… the tables differ, both states have mass, and the press correlates with corruption (positive association in the `2 × 2` table)". F9.6: "(e) positive association of press and corruption in the `2 × 2` prior table". Report § Repair round 2 N1: "a press–corruption correlation clause".
+
+**What's wrong.** The last clause is a cross-product inequality between the press bit and the *state label* `s = true`. "Corruption" (line 57: the implemented state diverging from the algorithm's output) is not a property the definition attaches to the label: clause (d) asks only for *some* cell `(s, a)` with `implVal ≠ algoVal`, and there is no clause saying state `false` is faithful (`∀ a, implVal false a = algoVal false a`) or that the divergence sits in state `true`. So a model can put the divergence in state `false`, keep state `true` faithful, correlate the press with state `true`, and satisfy every clause — in which the press is positively associated with the state where implemented and algorithmic beliefs *agree*. That is not line 57's mechanism; it is its negation at the level of the 2 × 2 table. The clause was added in repair round 2 precisely to encode the mechanism (audit r2 adversarial N1: "the correlation (nothing relates …) is missing"), and it does not. [STANDARDS](../../STANDARDS.md) §3: "Definitions mean what the prose word means"; "Names and docstrings don't oversell".
+
+**Evidence.** Probe `audit-r3-probes/HcCommitmentLabel.lean` (`scripts/lean-check` exit 0, 2026-10-02):
+
+```lean
+noncomputable def hcSwap : HcModel where
+  w s b := if s then (if b then 9 / 20 else 1 / 20) else (if b then 1 / 20 else 9 / 20)  -- hcWitness's prior
+  algoVal s a := if a then (if s then -1 else 1) else 0                                  -- hcWitness's algorithm
+  implVal s a := if a then (if s then -1 else 100) else 0                                -- agrees in state true, lies in state false
+theorem hcSwap_true_state_faithful : ∀ a, hcSwap.implVal true a = hcSwap.algoVal true a
+theorem hcSwap_false_state_diverges : hcSwap.implVal false true ≠ hcSwap.algoVal false true
+theorem hcSwap_press_correlated_with_true :
+    hcSwap.w false true * hcSwap.w true false < hcSwap.w true true * hcSwap.w false false
+theorem hcSwap_commitment : HcCommitment hcSwap
+```
+
+Values: stop-when-pressed `2/5` is UDT-optimal among the four policies (same prior and algorithmic table as `hcWitness`), updateful-under-implemented at the pressed node `91/20 > 0`, row masses `1/2`, cross-product `1/400 < 81/400`. So `HcCommitment hcSwap` holds while the press is correlated with the faithful state.
+
+**Fix I'd accept.** Make the labels mean what the docstring says: add `(∀ a, M.implVal false a = M.algoVal false a)` (state `false` is the faithful state) and sharpen (d) to `(∃ a, M.implVal true a ≠ M.algoVal true a)` (the divergence sits in state `true`); then (f) is a genuine press–divergence association. Add also `(∀ s b, 0 ≤ M.w s b)` (N1 below), without which (f) is not an association at all. `hcWitness` satisfies all three (`implVal false` is `1`/`0` = `algoVal false`; `implVal true true = 2 ≠ -1`; all cells positive) by `norm_num`; `hcIndep_not_commitment` is unaffected (a negation). Update the `HcCommitment` docstring, the ledger row, F9.6 and § Repair round 2 to the clauses actually stated. The alternative — rewording docstring/ledger/F9.6 to "positive association between the press and the state labelled `true`" — would be honest but would leave line 57's mechanism unencoded, which is what the r2 repair set out to do; I would not accept it without a sentence saying so.
+
+## 3. Non-blocking issues
+
+### N1 — `HcModel.w` has no sign constraint, so clause (f) is not a correlation
+
+`w : Bool → Bool → ℝ` is glossed "the prior weight of the cell"; clause (e) bounds only the row sums. Probe `HcCommitmentNegWeight.lean` (exit 0): `hcNeg` with `w false true = −1/4`, `w false false = 3/4`, `w true · = 1/2` (press *independent* of state in the corrupted row) satisfies `HcCommitment` (`hcNeg_commitment`); clause (f) holds there only through the negative cell (`−1/8 < 3/8`). Fix: `∀ s b, 0 ≤ M.w s b` (folded into B1's fix). Not blocking on its own: the witness has positive cells and a negative "prior weight" is visibly junk; but it is the same definition and the same repair.
+
+### N2 — Kind labels on two repair-round-2 declarations
+
+`hcIndep_not_commitment` is docstringed `Kind: N−` ("a counter-model to the weaker definition"); it is a refutation lemma (`¬ HcCommitment hcIndep`), kind L — it inhabits no hypothesis package, and N− would read as a degenerate witness *for* the definition. `frontRun_fails_without_hworld` is `Kind: N+ (counter-model …)`; audit r2 fidelity N4 regraded the package's other refutation-shaped checks from N+ to C on exactly the ground that they are consequences, not inhabitants. For consistency: L (or C) with "counter-model" in the Fidelity line. Cosmetic.
+
+### N3 — `frontRun_exo_witness_theorem` (T3.2's N−) inhabits the package only conditionally on an instance it does not discharge
+
+It takes `[IsLogicalInductor (liaHistory DP) DP]` as an instance argument; the docstring and ledger say FAF's `LIA_is_logical_inductor` supplies it for every `ComputableDeductiveProcess` and that `LIACompiler` is not imported to keep `Instances` light. Honest, and the theorem is universally quantified, so nothing is overclaimed; but the "inhabitation" is then a conditional, and the package nowhere exhibits one `DP` with the instance, `hworld` and `hthm` together. A two-line instance at `paperDP T` in a separate light file importing `LIACompiler` (li-projection's `Witnesses.lean` survived that import) would make the N− unconditional. Disclosed; left as a suggestion.
+
+### N4 — `joinBuyers_agree_on_traded` (T2.4's N+) proves the hypothesis package and the payout gap, not the conclusion its docstring quotes
+
+Its docstring ends "so T2.4 gives a net-worth difference of `∑_{i ≤ n} c`, not `0`" — an inference stated in prose. The theorem's two conjuncts are the agreement hypothesis and `payout a − payout a = 1`. One more conjunct applying `netWorth_sub_netWorth_of_agree_on_traded` and evaluating the filtered coefficient sum to `c` would make the N+ exercise the lemma's conclusion as well as its hypothesis. The N+ grade stands (the hypothesis is non-vacuously satisfied: `atom b` is traded, agreed on, and `≠ atom a`).
+
+### N5 — `persistent_push_unbounded_loss` takes `hQ0 : ∀ m, 0 ≤ exoQuote DP (constBuyer φ c) m φ` as a hypothesis
+
+It is (a)-derivable from `exoHistory_range` (the cast of the quote lies in `[0, 1]`, so the rational quote is `≥ 0`), and the Hyps line lists only `hundec` and `hpush`. Harmless (it is always satisfiable), but a derivable hypothesis left in the signature; one line discharges it.
+
+### N6 — Carried from rounds 1–2, still disclosed, not attempted
+
+`HcRealized` has no inhabitant (ledger and § T9.3 say so); `exoHistory DP (pushOnce k N) ≠ liaHistory DP` is not shown (disclosed); the varying-family regime of T3.1 has neither inhabitation nor check (disclosed, with the obstacle); T10.2's two halves have no OPEN of record (F10). None is new; none is blocking.
+
+### N7 — F9.6 and the T9.3 ledger row must change with B1
+
+Whichever repair of B1 is taken, F9.6's "positive association of press and corruption" and the ledger's "the press correlates with corruption" must say what the Lean says. Listed separately so it is not forgotten when the clause is fixed.
+
+## 4. What I checked, and how
+
+**Gate.** `scripts/wp-audit Cleanroom.Corrigibility.CorrExoTrader`, run by me 2026-10-02 on the committed sources before any probe was written: **PASS**, 1178 declarations, axioms `propext`/`Classical.choice`/`Quot.sound`/`sorryAx`; the package's `sorryAx` users are exactly the open list's sections A (7: `exoHistory_computableMarket_of_ec`, `exo_isLogicalInductor_of_boundedLoss`, `exo_u_price_converges`, `selfCausedInvariant_compatible`, `persistent_push_steers`, `pushInvariantOver_compatible`, `genLic_boundedBelow_pointwise`) and B (3: `constraint_lic_compatible`, `pinnedMarket_pushInvariant`, `frontRun_witness`), plus li-projection's own listed names reached through its imports. Per-declaration confirmation: `AxiomsCheckR3.lean` — the ten repair-round-2 declarations and the five load-bearing theorems use only the three standard axioms; `frontRun_witness`, `persistent_push_steers`, `constraint_lic_compatible` use `sorryAx`, as listed.
+
+**Ledger existence and labels.** Every backticked declaration in the ledger exists in the package (checked against the declaration index of all twelve files). Kinds/Fidelity/Status re-read against each statement: the round-1 and round-2 regrades are in the Lean docstrings as well as the ledger (T1.3 C, T2.1 C, T1.4 L, `exists_fixedPoint_with_demand` L, T7.1 decomposition L / headline C, T8.2 L / T, T4.2 S, T11.1 L, `frontRun_witness` N−, `beta_no_voi` S, `no_landing_altSchedule(_lia)` C, `occam_worth_const_of_zero_price` L, `genLic_coefficientOne_refuted_ec` C, `unpushed_interior_utilityAtom` L); the mismatches found are N2 (two new declarations) and B1's claim. The r2 "repair-round claims not in the Lean docstrings" (audit r2 N4/N1) are now in the Lean: `FrontRun.lean`'s title and `frontRun_asympEq`'s Fidelity line say "asymptotic … no single push" and "*related to*, not an instance of"; `GenLic`'s module docstring names `netWorth_sub_netWorth_of_agree_on_traded` and T2.1 kind C; `Reflect`'s says T4.2 kind S and line 97 "ambiguous"; `Undecided`'s says "at most two"; `Budget`'s says `b : ℕ` unrestricted; the root module docstring carries both rounds.
+
+**Round-2 blocking repair (T2.4), re-verified.** `netWorth_sub_netWorth_of_agree_on_traded`: `hagree` quantifies over the traded sentences `p.2` for `p ∈ (T.strat i).trades`, `i ≤ n`, `p.2 ≠ φ` — not over all sentences — so `∼φ` is constrained only if traded, and the conclusion `∑_{i≤n} (filtered φ-coefficients) · (payout φ − payout' φ)` is non-trivial; proof by list induction. `agree_off_forces_agree` / `agree_off_payout_eq` record the trap. N+ `joinBuyers_agree_on_traded`: `Trader.join (constBuyer (atom a) c) (constBuyer (atom b) c')` trades `atom a` and `atom b`; `worldAll` and `worldExcept a := fun i => i ≠ a` agree on `atom b` (`a ≠ b`) and differ on `atom a` by `1` — the hypothesis is exercised, not vacuous (N4 on its conclusion). N− `constBuyer_agree_on_traded` vacuous as labelled. Sound.
+
+**Per headline** (statement unfolded, degenerate models tried, junk hunted; one line each):
+
+- **T1.1 defs.** `ExoDemand := Trader` (FAF's `Trader`); `exoStates` is FAF's `MarketMaker` at `Strategy.join [(TradingFirm DP).action n past, H.strat n]` with FAF's `marketMakerError`; `exoTrader` the static join; `NoEcExploit` is `IsLogicalInductor.noExploit` verbatim; `exoAtom k = freshAtom 6 ⟨0, ⟨0, k⟩⟩` (`rfl`); `constBuyer` coefficient `EF.const c`; `markToMarket`/`openExposure` as the mandate displays. FAF objects are FAF's (`PCWorld = Boolean.Valuation ℕ`, `Trader.Exploits`, `netWorth`, `plausibleAssessments` at `Criterion.lean:739/1472/1456/1462`, `AsympEq` at `Asymptotics.lean:37`, `limitingBelief` at `AffinePersistence.lean:63`).
+- **T1.2.** `exoStates_eq_marketMakerStates`: strong induction, `tradingFirm_action_exoPast` = FAF's `TradingFirmAt_eq_of_eq_prefix` on `rationalHistory_exoPast`; `exoHistory_noDemand` via `Strategy.join_zero` (`Strategy.ext`). A real identification, L.
+- **T1.3 `exo_day_value_le`.** `rw [exoHistory_eq_marketMakerHistory]; exact marketMaker_day_value_le`; `exo_day_value_split_le` by `Strategy.join_two_value`; `exists_fixedPoint_with_demand` is `fixed_point_lemma` at the join (L). No hypotheses; no witness owed. C.
+- **T1.4.** `push_pins_day_price`: `worldAll` gives `k(1 − V u) ≤ 0`, `V u = 1` with `hV`. `push_pins_marketMaker_price`: `MarketMaker_worldValue_le T past ε hε (fun _ => true)`, `supportBitWorld … u = 1` from `u ∈ T.support`, hence `V u ≥ 1 − ε/k`; `ε/k` with `k > 0`, no junk; the bound is empty when `ε ≥ k`, which the docstring's "nothing more is claimed" covers. L, trap respected.
+- **T2.1 `exo_finiteHorizon_bound(_lt)`.** `firm_add_demand_netWorth` (join splits) + `exoTrader_netWorth_lt_one` (FAF's `marketMaker_netWorth_lt_one`) + `linarith` with `exoLoss := −H.netWorth`; sign checked. C, exact for the firm.
+- **T2.2 `budgeted_value_le_loss`.** `tradingFirmTrader_residual_floor` (`−2 ≤ firm − w · budgeted(firmRawTrader j)`), `firmRawTrader j = (enumeratedTrader j).gate j`, T2.1, `le_div_iff₀`: `(3 + Loss)/w`. Weaker, disclosed. `genLic_coefficientOne_refuted`: over an inductor with `u` fresh, `buyDaily u`'s `u`-world net worth `∑ (1 − P_i u) ≥ (k+1)(1−L)/2` eventually, unbounded; `_ec` conjoins li-projection's `buyDaily_ec`. Refutes the display as quantified at `H = 0`; the charitable reading is OPEN. Source line 95 re-read: "for every e.c. trader `T`, `Value_n(T) ≤ c_T + Loss_n(H)` in plausible-value terms … I haven't checked this against the budgeter details" — F2's description is fair.
+- **T2.3 `noEcExploit_of_boundedLoss`.** Hypothesis on `H`'s loss, conclusion on every e.c. `T` through `trading_firm_dominance DP (exoHistory DP H) (exoHistory_range) (exoQuote) (exoHistory_eq_quote_cast) T hT hEx` and `firm_not_exploits_of_boundedLoss` (`¬ BddAbove` fails at `1 + B`). Not a squeeze. Degenerate: an inconsistent `DP` makes `hB` and the conclusion vacuous together (fine, universally quantified). N− `exoLoss_noDemand`; N+ `pushOnce k N`: `pushOnce_trade_ne_zero` (`k ≠ 0`), `pushOnce_loss_bounded` (`≤ |k|` via `exoHistory_range`, `payout_mem_Icc`), `noEcExploit_pushOnce`. Regime `persistent_push_unbounded_loss` conditional on `hpush` as the ledger says (N5 on `hQ0`).
+- **T2.4.** See the paragraph above; sound after repair.
+- **T2.5 OPEN.** `ComputableMarket (exoHistory DP H)` from `ComputableDeductiveProcess DP` and `EfficientlyComputable H`; `exo_isLogicalInductor_of_boundedLoss` is the structure with `noExploit := noEcExploit_of_boundedLoss`; `exo_u_price_converges` is `lic_limitingBelief_tendsto` through it. All listed.
+- **T3.1 `frontRun_asympEq`.** Statement re-read; `frontRunner` unfolded (day `0` one trade, day `n+1` opens `c_{n+1}` and closes `−c_n` at rank `n`), `frCoef = rampBelow − rampAbove`; `frontRunner_netWorth = frSum + open position`; `exploits_of_decomposition` over FAF's `exploits_of_bddBelow_of_unbounded`; the proof picks a rational `δ ∈ (0, ε/2]` so `1/δ` junk is never reached. `frontRunner_ec` sorry-free (gate). Degenerate markets: the all-`½` market over a consistent `DP` fails `hNE` (buying a theorem exploits it), so the package is not trivially inhabited; `hworld` necessity both ways is in the Lean (`noEcExploit_of_inconsistent_stage`; `frontRun_fails_without_hworld` over `falsumDP` with `D n = {⊥}`, `lagHist ψ n χ = altSchedule (n − 1)` for `χ = ψ`, landing exact, conclusion off by `2/5`; the `n − 1` at `n = 0` is harmless). `asympEq_shift_iff_of_eventuallyConst`, `landing_increments_vanish`, `no_landing_of_increments`: as docstringed; the latter two invoke `frontRun_asympEq`. Witness N− as regraded; content check refutation-shaped and, over an inductor, a special case of `thm:con` (`landing_increments_vanish_of_inductor`, `frontRun_const_family_iff_of_inductor` — both from `lic_limitingBelief_tendsto`, correct). P.
+- **T3.2 `frontRun_exo`.** T2.3 + T3.1 with `exoHistory_range`. `frontRun_witness`: `jeffrey_steering_finiteJumps` (modulo (A), listed), `project_atom_tendsto`, `tendsto_weight_of_jump`, `MachineRatCodes.ofFiniteTable`; never invokes `frontRun_asympEq` — N− as labelled. `frontRun_exo_witness_theorem`: `H := noDemand`, `exoHistory_noDemand`, `lic_provind_true` at `(fun _ => ψ)` with `hthm`; `B = 0`; N− as labelled (N3). `no_landing_altSchedule(_lia/_exo)`: `altSchedule_machineRatCodes` through `MachineRatCodes.comp` and `MachineDigits.mod_two`; `altSchedule_increment = 2/5`; `_lia` uses `noEcExploit_liaHistory` and `exoHistory_range` at `noDemand` — no OPEN. C.
+- **T4.1–T4.2.** `E2xAct`, `E5Act` as the report states (`a : ℕ` unrestricted, carried from r1 N11); `scope_nonempty` from `falsum_mem_Sminus`; `wirehead_identity_li` is `rw [← (h5 n a).2 φ hφ]` then `E2xAct` termwise — S as labelled; `e5Act_scoped_iff_identity` is the squeeze made explicit; `e5Act_of_identity` the converse.
+- **T4.3 `pushHist`.** Shape-decoding history over `pushW`/`pushVal`; `pushSystem.val _ q _ := pushVal q` (constant in the sentence, disclosed); `StateSystem` (bli-found `Constraints.lean:57`) constrains only `actual_mem`, so the incoherent system typechecks as the report says. `41/100` vs `9/100` recomputed. N+ for the identity's definitions only, as labelled.
+- **T4.4.** `incentive_eq_weight_difference`: `ring` under `sum_sub_distrib`; `no_incentive_of_action_independent`: `sum_congr`. L. Line 97 re-read ("low prior mass on a suspicious `Q′` just makes the agent try harder to bring it about"): F4's two readings are both there.
+- **T5.1–T5.3.** `valueBeta` division junk disclosed; `valueGamma`/`CausalDecomposition` (c) disclosed; `beta_no_manipulation_incentive` `ring`; `beta_no_voi` S (hypothesis is the conclusion for `d ≠ 0`); `gamma_diff_eq` `ring`; `gamma_eq_alpha_of_uncaused` from `hdec` and `hzero`. As labelled.
+- **T6.1 `occam_exhausted`.** FAF's `priorBudgetBreach_eq_false_iff` at `castHistory Q` with `hQ := fun _ _ => rfl`, negative direction, at `m := N + ⌈b/(c(p+δ))⌉₊ < n`; `constBuyer_netWorth_refuting` and `sum_price_ge_of_push` (`Nat` subtraction `m + 1 − N` only at `m = N + K`, computed by `omega`); `(K+1)(p+δ)c ≥ b` checked; `b = 0` fine. `occam_silenced` via `BudgeterAt_eq_empty_of_breach` (FAF's `BudgeterAt` `if` branch). Push-as-floor disclosed; `occam_exhausted_of_floor` (`N = 0`, `p = 0`), `occam_exhausted_half_table(_utilityAtom)` N−; opposer `occam_exhausted_opposer(_utilityAtom)` at `∼φ` with `hplaus` from `utilityAtom_both_plausible`. P.
+- **T6.2.** `occam_worth_const_of_zero_price` `simp`; `occam_worth_antitone` `nlinarith`. L, weaker disclosed.
+- **T7.1.** `netWorth_eq_markToMarket_add_openExposure`: `ring` after `List.sum_map_add` (L); `undecided_profit_is_markToMarket`: `ext`, verdict case split, `confined_netWorth_of_holds/_not_holds` through `openExposure_confined`/`confined_list_sum`; both inclusions use `hboth`. At most two points (the set `{a, b}` collapses when `a = b`). `hboth` derived (`utilityAtom_both_plausible` from `exists_consistent_holds_atom`/`_not_holds_atom` and `atomFreeProcess_exo_of_cleanroomFree`). C.
+- **T7.2.** `u_price_converges_of_inductor` is the citation; exo-market form OPEN via T2.5.
+- **T8.1–T8.2.** `SelfCausedInvariant`, `PushInvariant` (caveat in docstring), `PushInvariant.selfCausedInvariant` two rewrites; `constraint_lic_compatible` = `project_const_isLogicalInductor` + `project_restrict` + `limitingBelief_project_const_atom` (L, modulo (A), listed); `pinnedMarket_pushInvariant` first conjunct `fun _ _ _ _ => rfl` (T, listed); `pinnedMarket_restrict`. `PushInvariantOver`/`pushInvariantOver_compatible` OPEN: the two conjuncts are jointly satisfiable (`M H := if u-free then exoHistory DP H else liaHistory DP`) and the compliance is the content.
+- **T8.3 OPEN.** Conjuncts (i)–(ii) jointly satisfiable (`Hu` recoverable from `Trader.join Hc Hu` and `Hc` — `Strategy.join` is list concatenation), (iii) the content. Well-posed.
+- **T9.1.** Definitional (T, unrowed).
+- **T9.2.** `pointwise_argmax_optimal_of_independent`: one `Finset.sum_le_sum`, (c) disclosed; `dependence_breaks_pointwise` `1 < 2` recomputed (`depW id`: mass on state `0`, value `1`; `depW (fun _ => 1)`: mass on state `1`, value `2`).
+- **T9.3.** `HcCommitment`: **B1**, N1. `hcWitness_commitment`: `2/5` vs `0`, `0`, `−2/5`; `19/20 > 0`; `2 ≠ −1`; masses `1/2`; `1/400 < 81/400` — recomputed; the witness itself has the intended structure (state `false` faithful: `implVal false = algoVal false`; divergence at `(true, continue)`), so the N+ grade stands *for the witness*; it is the definition that is too weak. `hcIndep`: `−1/2 < 0` recomputed, `hcIndep_not_commitment` through clause (a). `HcRealized` uninhabited (N6).
+- **T9.4.** `nonactual_price_zero` under bli-found's `E5` unit sum with `hnn`; `degenerate_collapses_split` with `hnn'`/`hmono` (c) disclosed; `hcModel_degenerate_collapse` both sides `w false true · algoVal false a` minus the same constant — recomputed; (e) excludes `hdeg` (`w true · = 0` gives row sum `0`).
+- **T10.1 / T10.2.** `persistentReactive q`: coefficient `EF.add (.const q) (.mul (.const (−1)) (.price utilityAtom n))` = `q − P_n(u)`, rank-legal, two-sided as claimed; `persistent_push_steers` OPEN, listed, well-posed (`limitingBelief` total); the candidate's demand alone would pin the day price within `ε/(1−q)` or `ε/q` of `q`, so the conjecture is neither trivially true nor trivially false for a reason unrelated to the firm. `retract` well-typed via `hr`; `retract_value` by list induction. Immune trader unstated (F10).
+- **T11.1 `exhausted_vs_invariant`.** L; second conjunct is `hM`, as the docstring says.
+- **Findings file.** F2, F9.1–F9.7, F15, F16 re-read against lines 55–59, 75–81, 93–97, 105, 113–119 (quoted in this session): no false claim about the sources; F9.6's description of the Lean clause is the item B1/N7 corrects; F9.7 matches the two-sided `persistentReactive`; F16 is an accurate audit trail.
+- **Open list.** Ten package names match the gate's `sorryAx` users exactly; reasons match the docstrings (T10.1's reworded for the two-sided candidate).
+- **Mandate targets.** Every `core` target delivered or OPEN with a record; T3.3/T3.4/T10.2's trader recorded as not attempted (stretch/extension). No skipped core target.
+
+## 5. Probes and file map
+
+`packages/corr-exo-trader/audit-r3-probes/`, each `scripts/lean-check` exit 0 on 2026-10-02, none imported by the library:
+
+| probe | shows |
+|---|---|
+| `HcCommitmentLabel.lean` | B1: `hcSwap` — `hcWitness`'s prior and algorithmic table, implemented table agreeing with the algorithm in state `true` and diverging in state `false` — satisfies `HcCommitment`; the press is correlated with the non-divergent state |
+| `HcCommitmentNegWeight.lean` | N1: `hcNeg` — a negative cell `w false true = −1/4`, press independent of state in the `true` row — satisfies `HcCommitment`; clause (f) holds only through the negative weight |
+| `AxiomsCheckR3.lean` | per-declaration axioms of the ten repair-round-2 declarations, the five load-bearing theorems and three listed OPENs (gate confirmed) |
+
+| link name | path |
+|---|---|
+| [corr-exo-trader-audit-r3-adversarial](corr-exo-trader-audit-r3-adversarial.md) | `packages/corr-exo-trader/corr-exo-trader-audit-r3-adversarial.md` |
+| `corr-exo-trader-audit-r2-adversarial` / `corr-exo-trader-audit-r2-fidelity` | `packages/corr-exo-trader/` |
+| [corr-exo-trader-report](corr-exo-trader-report.md) / [corr-exo-trader-ledger](corr-exo-trader-ledger.md) / [corr-exo-trader-findings](corr-exo-trader-findings.md) / `corr-exo-trader-mandate` | `packages/corr-exo-trader/` |
+| probes | `packages/corr-exo-trader/audit-r3-probes/*.lean` |
+| source chat | `research/corrigibility/imported-chats/2026-09-14__bli-thread-conditioning-vs-prior-overrides__claude-ai-paste.md` |

@@ -1,0 +1,187 @@
+---
+journal: Daily
+journal-date: 2023-09-27
+---
+- bridge between debate with Martin and [scrubbed] `Learned Prior` `Learning Normativity` `UDT` `LUDT` `open-minded updatelessness` `hansonian pre-rationality` `Humans reason together`
+  collapsed:: true
+	- Overall idea: argue for open-minded updatelessness. IE, argue for a changing prior and changing values.
+		- UDT is "perfect" for "calibrated" situations; drop this assumption, and UDT is no longer so compelling.
+			- Assuming calibration, correct UDT behavior is a strict superset of correct updateful behavior
+			- If we drop the calibration assumption, it seems like we get the full Venn diagram: one or the other can be "more correct".
+				- For "uncalibrated" situations, UDT "risks" caring about a totally non-real branch of possibility, and sacrificing utility in the real branch
+				- Examples:
+					- cf mugging on the nth digit of pi, for small n
+					- `iterated mugging with a single coin`
+					- commitment races
+					- what you see as "threats" vs just a legit part of bargaining depends on what you see as objectively fixed vs decided/flexible
+						- IE, did the criminal _naively_ bring a gun to the robbery, or did they model me well enough that their choice of violent threat depends on whether I'd be responsive?
+			- From a "classic bayesian rationalist" perspective, this is just saying: if Alice is watching Bob, and the two have different priors, then Alice might think Bob is making a mistake. But I am claiming that Bob himself might come to agree with Alice about which prior is "calibrated", and switch priors as a result.
+				- If we are designing an AI, then fine -- Alice might want Bob to be corrigible, so Alice designs Bob to be open-minded about other priors being better.
+				- But I am making a tiling sort of argument for Alice to apply the same sort of open-minded reasoning to herself.
+				- It's unclear to me whether I'm arguing something which really goes beyond UDT by updating in a non-UDTish way, vs some updateful behavior which can emerge from UDT via specific sorts of beliefs.
+					- "classic bayesian rationalism" perspective treats both priors and preferences as inherently subjective
+						- Murder Ghandi argument against value change
+							- this gets extended to change of prior, too, once we have UDT
+					- The claim might be that UDT does not really need to make such an assumption, and so can update (behave updatefully) in cases where it might seem like it won't (eg, value change); or the claim might be that UDT really does need to be extended, to actually update.
+						- Arguments that UDT really needs to be extended?
+						- Arguments that UDT can already behave updatefully in an appropriate manner?
+				- What I _am_ arguing is that "objectivity" or "calibration" is related to what sort of reasoning an agent itself `endorses`, in an epistemic-self-trust sort of way. [legitimacy](../../../corrigibility/workflow-2026-09-14/followup/legitimacy.md)
+				- I am arguing for `open-minded updatelessness` , which explicitly treats the prior as more objective, IE, we can learn more information about the correct prior, and in response should "update our prior"
+					- "`Learning UDT`": for some definition of "updateful" which implies a sequence of updated belief states, $P_0, P_1, P_2, ...$, the agent is eventually UDT-optimal for any particular $P_n$.
+						- Note that this requires UDT-optimality for all earlier $P_{<n}$. We could also consider a version which does not require this, but, that's less interesting.
+						- I have in mind that the sequence of "updateful" states satisfies something similar to LIC.
+							- We can also consider the Bayes-update version.
+						- This is not the main picture people have in mind with open-mindedness.
+							- The "update" from $P_n$ to $P_{n+1}$ is not expected to be a Bayesian update or an LIC update.
+								- For example, it can include adding hypotheses, or `unupdating` about something you previously treated as known.
+							- It is also not expected to preserve updatelessness wrt the previous P.
+								- IE, it could be a "real change" as opposed to merely a choice to "behave updatefully".
+					- Notes on the `open-minded updatelessness` post: https://www.lesswrong.com/posts/uPWDwFJnxLaDiyv4M/open-minded-updatelessness
+					  collapsed:: true
+						- `ex ante optimal open mindedness` (EA-OMU):
+							- An agent is EAOMU up to history h if at every point in h at which their awareness has grown, the agent:
+								- has open-minded priors;
+									- **Open-minded priors**: We say that an agent has *open-minded priors* if, whenever they experience awareness growth, they revise their priors to be the priors they should have assigned over their current awarenes state at time 0, by their current (post-awareness-growth) lights.
+								- begins to follow the optimal policy among the available ones, judged from the (hypothetical) time 0 epistemic state. (A policy is 'available' if it prescribes actions consistent with the actions the agent actually did so far.)
+									- One tricky thing which we'd like to get straight about open-minded u is the notion of "available" strategy. If we shift priors, we can only choose policies which are compatible with moves we've chosen so far. But we (*arguably*) do not get to observe all of our chosen moves. Can this give rise to problems? What problems might we be concerned about? Can they be avoided?
+										- If we become aware of a cf mugging only in the branch where we would stand to receive money, we cannot choose to give.
+										- Other examples?
+							- However, EAOMU can be exploited in a sense.
+								- defn:
+									- **Awareness growth-exploitability**: An agent is *awareness growth-exploitable* (or *exploitable*, for short), if the agent’s criterion for choosing policies in some decision problem with adversaries (for instance, predictors) is such that, for some priors and some type of adversary:
+										- The optimal policy of that type increases the agent’s awareness, and
+										- Among policies available to the agent in this new awareness state, the optimal policies (evaluated in the new state) conditioning on this type of adversary yield strictly lower expected utility than the expected utility of optimal policies prior to awareness growth (also evaluated in the new state).
+								- Example:
+									- Game of chicken between Alice and Bob. Bob moves before Alice, but Bob also _predicts Alice perfectly_. Alice initially has one hypothesis, namely that Bob takes the expectation-maximizing response to Alice's policy. Alice initially expects to go straight, and hence, initially expects Bob to swerve. _If Alice sees Bob coming on straight_, then Alice conceives of a new possibility, namely that Bob is crazy and just goes straight no matter what.
+										- If Alice weighs the new possibility sufficiently highly in her (new) prior, then Alice will choose to swerve.
+										- Rational-Bob can "exploit" this by _behaving like crazy Bob_; ie, going straight.
+											- So Alice becoming aware of the possibility of crazy-bob allows rational-bob to act like crazy-bob and do better, which is kind of weird. But this is mostly a feature of rational-bob having a narrow notion of rationality (not accounting for how his way of choosing policies impacts Alice's policy choice).
+										- This is not really very surprising: it is just a special case of "Alice realizing that there are other possibilities beside the one she initially expected, can cause her to choose a policy which has lower expected utility in the original scenario she imagined she was in".
+								- Unexploitable version:
+									- **Unexploitable open-minded updatetelessness (UE-OMU)**: A agent is *UE-OMU* if they find EA-OMU policies acceptable unless revising policy post-awareness growth would make them exploitable, in which case the only acceptable policies are those which were pre-growth acceptable.
+									- This is probably overzealously avoiding exploitation; but maybe _something else in this general direction_ makes sense?
+										- If Alice _would not swerve **just** because crazy-bob is a possibility_ (the probability of crazy bob seems to low), but _would overall choose to swerve now, **due to sane-bob imitating crazy-bob**_, then in _that_ case, it seems like Alice should not swerve?
+											- But I think this is already the case for EAOMU (because of the way Alice thinks rational-bob chooses a policy after observing her own choice).
+		- What "calibrated" really means here is some form of "objectively correct"; to understand what's going on, we need to explore different notions of "objectively correct" and figure out how they connect to the decision theory.
+			- Potentially relevant notions of `objectivity`:
+				- [legitimacy](../../../corrigibility/workflow-2026-09-14/followup/legitimacy.md)
+					- Legitimacy/endorsement give us some picture of an agent's own thinking about what to trust.
+				- `intersubjectivity`
+					- Intersubjective objectivity emerges from conversations between agents.
+					  collapsed:: true
+						- General Habermas idea.
+						- NSEW thing; the quest for a common ontology.
+						  collapsed:: true
+							- Objectivity - what you see as fixed, intersubjectivity, NSEW thing
+								- argument against `active inference` based on desire to "factor out" values when talking about facts -- dividing probabilities and utilities is a more objective frame
+									- suspicion of warped reports
+									- suspicion of `FixDT` warping things as well
+										- But FixDT at least completely follows epistemic constraints!
+										- In some sense, FixDT is only doing the necessary part.
+										- Still, you'd want to know what it was doing.
+										- Or, we could factor out further by communicating about traders.
+										- General project of looking for better and better intersubjective frames.
+											- Factoring beliefs vs desires.
+											- Distinguishing
+									- "never because you should" - collapses reasons
+									- not trying to imply that probability is objective and utility is subjective
+								- Typically, when we think about decision problems, we present them as something that can be objectively agreed upon -- EG, Omega has been publically observed to behave very reliably over an extended period of time.
+								- One reason why `LUDT` is particularly confusing is because objective logical chances seem particularly confusing. Logical uncertainty is "more subjective" than empirical uncertainty.
+									- So decision problems posed for logical uncertainty also have a more subjective character.
+									- Hence arguments about how updateless to be are more common in the logically updateless context.
+									- With LU, we also fail to conceive of relevant hypotheses.
+									- Also, self reference becomes really tricky and confusing.
+									- Also other reasons?
+								- Assuming calibration (ie objectively correct probabilities!), updateless optimality is a strict superset of updateful correctness
+									- Not assuming calibration, UDT is always "risky"; we could be updateless for spurious reasons, applying "care" to delusions
+									- Seems like in absence of calibration, there is more reason to be updateful, since you are looking for better beliefs.
+						- Critch futarchy thing: the merging of beliefs and utilities.
+							- frame of bargaining as value change vs fixed values pareto improvements
+								- Critch coalitions afford two different perspectives on value change, at least
+									- perspective one, rational agents meeting certain conditions (eg enforcement mechanisms, or some form of UDT plus a specific correlation structure, or ...?) indeed do form a Critch coalition without changing their values
+									  collapsed:: true
+										- Research program here is to articulate the set of assumptions.
+									- perspective two, the agents should be thought of as really modifying their values; after all, they become behaviorally equivalent to agents who simply believe the merged coalitional values.
+									  collapsed:: true
+										- So we might model this as really being an update (to both values and beliefs).
+										- Research program here is to model the update.
+										- Plausibly this has to do with `Uncommon Priors Require Origin Disputes`, aka `hansonian pre-rationality`
+											- pre-prior is made of "objective chances"
+											- pre-rationality is like a backwards version of `epistemic self-trust` aka `endorsement`.
+											- same sort of reasoning whereby we decide to step behind a veil of ignorance
+											- Hanson, like Critch, argues for a common prior assumption.
+											- The prior must have a specific relationship to the pre-prior, namely, that it would prefer its opinions if they were updated on all the contingencies of creation plus all the observations.
+												-
+								- `Habermas` picture of exchanging reasons.
+									- In the `hansonian pre-rationality` picture, we exchange reasons to "arrive at" a common prior.
+										- This evidently requires modifying the prior.
+								- commitment races, folk theorem, etc
+									- is rationality self-undermining in multiagent contexts?
+									- `foolishness`: UDT that admits its mistakes
+										- Risk: commitments are not credible?
+										- But UDT's policies aren't *really* precommitments, that's more of an analogy.
+										-
+				- `All games are iterated games in logical time.`
+					- One obvious notion of "calibration" would be to imagine agents that had regular probabilistic beliefs, _and also beliefs about what reference class they reside in._
+						- A belief is "calibrated" when it is believed to extend to the reference class. We can't think our probabilities are predictably off _in expectation_, but we can perfectly well think they are "predictably off" in other ways.
+						- Want to formalize some notion of the variability of our probabilities, so that we can say we expect UDT to be correct when there is low variability, but not so much when there is high variability.
+							- Disagreement between traders?
+								- "Which traders think they're relevant to a question" is adjacent to reference-class questions.
+						- Feels like a theory where we explicitly try to interpret our decision problem as one of a sequence, or at least do something spiritually similar to this, could bring in `Geometric Rationality` concepts like Kelly betting.
+							- This feels related to my thoughts around `iterated mugging with a single coin`.
+				- `Geometric Rationality`
+					- One possible GeoRatio intuition goes something like -- there is regular probabilistic uncertainty, for which we are happy to EV-maximize; and then there is a second kind of uncertainty or aggregation, for which we need to utilize georatio.
+						- Perhaps some notion of "calibration"
+						- Perhaps when all subagents agree (eg, all traders agree), you EV-maximize; under disagreement, you rationalize (geo-ratio-ize)
+							- Not sure this makes an awful lot of sense in terms of actual georatio.
+							- Seems like a pretty good pun tho.
+			- `hansonian pre-rationality` gives us a (supposed) connection between [legitimacy](../../../corrigibility/workflow-2026-09-14/followup/legitimacy.md) and `intersubjectivity`.
+			-
+	- Soto's interest in objective logical probabilities; [scrubbed]
+	  collapsed:: true
+		- [scrubbed]
+		- Currency stuff -- the value of gold is "more real" because it has a strong track record, although this reasoning is ultimately circular when unpacked.
+			- Rationality arguments often depend on "currency"
+			- determination bias; breaking loops
+				- breaking loops
+					- [scrubbed]
+						- In the Nash picture, in particular, circular reasoning is a healthy part of an explanation. An equilibrium is explained (or predicted) by assuming common knowledge of that situation, and showing that common knowledge implies that everyone would in fact create the described
+							- (notice the `L:ob`-like structure of the reasoning; this reasoning works fine in logic-land rather than probability-land)
+						- [scrubbed]
+		- Why is `logical uncertainty` (in Soto's thing) relevant to `agency`?
+			- Bayesian decision theory makes an implicit assumption that the prior is correct.
+			- This manifests in different ways, but one formal correlate of this is the `grain of truth` assumption, that reality is somehow inside of the prior.
+			- A Bayesian can argue that an agent has to trust its own prior, since the prior minimizes the expected error from reality (when the expectation is taken wrt the agent's current beliefs, and the error measurement is a proper scoring rule -- which it usually is, given complex reality).
+			- But this argument is mistaken, in the following sense: an agent can prefer a different probability distribution which it does not yet know in perfect detail, but can somehow describe.
+			- For example, an agent can prefer what it would think soon, if it had a little more time to estimate probabilities.
+			- Indeed, the very act of minimizing the expected error of different probability distributions might be enough of a computation that the agent comes up with a different answer, rather than reproducing its own prior.
+				- (Which is to say, a logically uncertain agent might believe that some other prior is better, once it has written that prior down and had a look at it.)
+			- Logical uncertainty is just the study of this "thinking longer" phenomenon.
+	- So how do I write a post about this?
+	  collapsed:: true
+		- Frames? What central narrative can I start with?
+			- Start with iterated mugging on the same coin?
+				- Then I can get into this version...
+					- Start with doubts about UDT?
+						- This leads naturally into the central claim of "when UDT works"
+						- Then to the "classical rationalist" disagreement with the statement of the claim -- if probability is subjective, then how can we say "calibrated"?
+						- Then thoughts on objectivity?
+							- Quest for a common reference frame
+							- legitimacy : endorsement :: good : utility
+							- the two are connected by the Hansonian argument
+						- Then Habermas and Hanson, Critch, etc
+			- Start with the quest for objective language?
+				-
+			- Start with the difficulty of thinking about logical uncertainty?
+			- Start with Robin Hanson?
+			- Start with why I don't like Active Inference?
+			- Start with the question of what to treat as blackmail/threat?
+			- I think I want this to be the next post in the Learning Normativity sequence.
+				- So emphasizing the connection to learning the prior, and [legitimacy](../../../corrigibility/workflow-2026-09-14/followup/legitimacy.md)/ `endorsement`, seems important.
+		- Are there quick precursor posts I should write?
+			- parable of the longtermist active inferentist -- objectivity & active inference
+			- fixdt stuff
+			- iterated mugging on a fixed coin
+			- `mathematical definition of physicalism`
+			- `objectivity`
+			-

@@ -1,0 +1,11 @@
+# bli-coherent-mm (reconciled): declarations allowed to use `sorry` (explicitly open statements only).
+# Format as the root OPEN.txt: `Fully.Qualified.Name  # reason`.
+# One entry as of 2026-10-01 (T7, the mandate's extension target, stated by the reconciler after
+# neither attempt stated it; see bli-coherent-mm-report.md §T7 and findings R8). Its proved companion
+# `omni_fixed_point_of_finiteSupport` (the finite-support reduction) is sorry-free. The open status of
+# `ComputableMarket (pcHistory DP ov X)` is carried by the ledger rows of
+# `pcOverlay_isLogicalInductor_of_computableMarket` and `PCInductor` (`partial: computability open`),
+# as in bli-overlay; it is a hypothesis of the assembly lemma, not a `sorry`.
+# The attempts' own lists (attempt-a/bli-coherent-mm-a-open.txt, attempt-b/bli-coherent-mm-b-open.txt)
+# are empty: no `sorry` under AttemptA/ or AttemptB/.
+Cleanroom.Bli.BliCoherentMm.omni_fixed_point  # open question in Soto PDF 05 "Omni-traders" (bli-soto-a-046 (i)): the world-priced fixed point for a weakly continuous, ℓ¹-bounded demand on infinitely many sentences, priced by a probability measure on the D-consistent Cantor worlds; the finitely-supported case is proved (omni_fixed_point_of_finiteSupport), so the open part is exactly the infinitely-supported one

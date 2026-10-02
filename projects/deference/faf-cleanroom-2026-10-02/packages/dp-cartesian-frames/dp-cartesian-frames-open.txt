@@ -1,0 +1,1 @@
+# dp-cartesian-frames — deliberately open statements (format as the root OPEN.txt). None as of 2026-10-01 (repair round 3; unchanged since 2026-09-30): every stated headline is proved; targets not attempted are recorded in the report, not stated open.

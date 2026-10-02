@@ -1,0 +1,5 @@
+# bli-witness-lia: deliberately open statements (format as the root OPEN.txt).
+# Empty: this package states nothing new with `sorry`. The two OPEN rows of bli-exact-base that bound the §2.6 check
+# (Segment.linked_segment_day_exists — whether a segment day is pinned before H; Skel.segmentBli_isLogicalInductor — the
+# skeleton BLI's own criterion) are cited in docstrings, the T3 table and the ledger, never imported as facts and never
+# restated here (mandate § 3.4). Nothing in T1–T5 depends on an OPEN row.

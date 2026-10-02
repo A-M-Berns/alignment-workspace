@@ -1,0 +1,4 @@
+'Cleanroom.Corrigibility.CorrLegitGeneral.mH_totalTrust_mA' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.mA_mH_exactly_one_missing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

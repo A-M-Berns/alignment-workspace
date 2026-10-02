@@ -1,0 +1,2 @@
+# corr-trajectory: deliberately open statements (format as the root OPEN.txt).
+# `Fully.Qualified.Name  # reason (what is open, where it is discussed)`

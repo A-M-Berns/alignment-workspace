@@ -1,0 +1,10 @@
+# legit-neg-dynamic: deliberately open statements (format as the root OPEN.txt).
+# None as of 2026-09-30: every target of the mandate that is stated in Lean is proved without `sorry`;
+# the extension (the crossing lemma and the family threshold σ̂ = 7/9) is derived, not left open.
+# The optional OPEN of 065 (j) (a general identification theorem over policy-dependent problems with
+# arbitrary information at legitimate terminals) was NOT stated: "information at legitimate terminals"
+# has no precise hypothesis in the finite model (see the report, target 5); recorded in the findings.
+# Repair round 1 (2026-09-30): still nothing open; the finite `onPath`-information form of 065 (j) is now
+# proved as `TwoStage.anger_identification_failure` (kind L, disclosed as a variant), not stated open.
+# Declarations allowed to use `sorry`: explicitly open statements only.
+# One per line: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.

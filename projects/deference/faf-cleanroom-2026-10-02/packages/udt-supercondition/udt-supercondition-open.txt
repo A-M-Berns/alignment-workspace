@@ -1,0 +1,2 @@
+# udt-supercondition: deliberately open statements (format as the root OPEN.txt).
+Cleanroom.Udt.UdtSupercondition.geometricUpdate_klDiv_open  # T18 measure-level form over Mathlib's InformationTheory.klDiv, stated on a finite carrier ([Fintype Ω]; the mandate's target was countable Ω): identifying llr Q.toMeasure P.toMeasure with x ↦ log (Q x / P x) pointwise on a discrete carrier (rnDeriv is characterized only a.e. via the Lebesgue decomposition); the finite form geometricUpdate_eq_iff is proved and carries the content. Discussed in udt-supercondition-report.md, T18.

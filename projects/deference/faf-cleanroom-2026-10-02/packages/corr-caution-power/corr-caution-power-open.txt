@@ -1,0 +1,5 @@
+# corr-caution-power: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Every declaration in Cleanroom/Corrigibility/CorrCautionPower/ is proved; nothing uses sorry.
+# Items recorded as open in prose (no Lean statement): the SLLN limit `μ_t → 1` under labelled
+# feedback (T6(b′)); the delegative-IRL regret conjecture (T8(b), 2-089); (d3)'s "only if"
+# direction (Composition, 2-088). See corr-caution-power-report.md.

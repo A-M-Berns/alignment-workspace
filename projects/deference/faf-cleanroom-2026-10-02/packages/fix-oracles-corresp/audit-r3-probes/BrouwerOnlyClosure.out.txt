@@ -1,0 +1,112 @@
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_brouwer
+  closure size (non-library expanded): 1809
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_clampStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.clampStep]
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_polynomial_brouwer
+  closure size (non-library expanded): 1819
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_clampStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.clampStep]
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_isMixedNashEq_brouwer
+  closure size (non-library expanded): 1908
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_isMixedNashEq_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_clampStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.clampStep]
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_via_gameR_brouwer
+  closure size (non-library expanded): 1999
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_isMixedNashEq_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_clampStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.clampStep]
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflectiveOn_brouwer
+  closure size (non-library expanded): 1817
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_clampStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.clampStep]
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflectiveOn_via_gameR_brouwer
+  closure size (non-library expanded): 2013
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_isMixedNashEq_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_clampStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.clampStep]
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_isMixedNashEq_nashMap
+  closure size (non-library expanded): 1901
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: []
+  Nash-map constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_isMixedNashEq_nashMap, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_nashStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.nashStep]
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_via_gameR_nashMap
+  closure size (non-library expanded): 1995
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: []
+  Nash-map constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_isMixedNashEq_nashMap, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_nashStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.nashStep]
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_mp_brouwer
+  closure size (non-library expanded): 1815
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective_brouwer, Cleanroom.Fixpoint.FixOraclesCorresp.reflective_of_clampStep_eq, Cleanroom.Fixpoint.FixOraclesCorresp.clampStep]
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_correlatedFixedPoint
+  closure size (non-library expanded): 279
+  names containing 'akutani': []
+  Cleanroom.Found.FixKakutani.* present: []
+  Kakutani-route headlines present: []
+  clamp-step constants present: []
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: false
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective
+  closure size (non-library expanded): 2017
+  names containing 'akutani': [Cleanroom.Found.FixKakutani.HasClosedGraphOn, Cleanroom.Found.FixKakutani.kakutani_pi_Icc, Cleanroom.Found.FixKakutani.kakutani_findim, Cleanroom.Found.FixKakutani.kakutani_euclidean, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_4, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_1, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_3, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_2, Cleanroom.Found.FixKakutani.HasClosedGraphOn.exists_delta_subset_thickening, Cleanroom.Found.FixKakutani.restrictTo_of_mem, Cleanroom.Found.FixKakutani.restrictTo, Cleanroom.Found.FixKakutani.HasClosedGraphOn.upperHemicontinuousOn, Cleanroom.Found.FixKakutani.HasClosedGraphOn.mem_of_tendsto, Cleanroom.Found.FixKakutani.restrictTo_subset, Cleanroom.Found.FixKakutani.upperHemicontinuousWithinAt_iff_restrictTo, Cleanroom.Found.FixKakutani.restrictTo_of_not_mem, Cleanroom.Found.FixKakutani.HasClosedGraphOn.isClosed_apply, Cleanroom.Found.FixKakutani.exists_approx_selection, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_4, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_3, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_2, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_1, Cleanroom.Found.FixKakutani.kakutani_findim._simp_1_1]
+  Cleanroom.Found.FixKakutani.* present: [Cleanroom.Found.FixKakutani.HasClosedGraphOn, Cleanroom.Found.FixKakutani.kakutani_pi_Icc, Cleanroom.Found.FixKakutani.kakutani_findim, Cleanroom.Found.FixKakutani.kakutani_euclidean, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_4, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_1, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_3, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_2, Cleanroom.Found.FixKakutani.HasClosedGraphOn.exists_delta_subset_thickening, Cleanroom.Found.FixKakutani.restrictTo_of_mem, Cleanroom.Found.FixKakutani.restrictTo, Cleanroom.Found.FixKakutani.HasClosedGraphOn.upperHemicontinuousOn, Cleanroom.Found.FixKakutani.HasClosedGraphOn.mem_of_tendsto, Cleanroom.Found.FixKakutani.restrictTo_subset, Cleanroom.Found.FixKakutani.upperHemicontinuousWithinAt_iff_restrictTo, Cleanroom.Found.FixKakutani.restrictTo_of_not_mem, Cleanroom.Found.FixKakutani.HasClosedGraphOn.isClosed_apply, Cleanroom.Found.FixKakutani.exists_approx_selection, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_4, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_3, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_2, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_1, Cleanroom.Found.FixKakutani.kakutani_findim._simp_1_1]
+  Kakutani-route headlines present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective, Cleanroom.Fixpoint.FixOraclesCorresp.oracleCorr_hasClosedGraphOn]
+  clamp-step constants present: []
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+== Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflectiveOn_via_gameR
+  closure size (non-library expanded): 2205
+  names containing 'akutani': [Cleanroom.Found.FixKakutani.HasClosedGraphOn, Cleanroom.Found.FixKakutani.kakutani_pi_Icc, Cleanroom.Found.FixKakutani.kakutani_findim, Cleanroom.Found.FixKakutani.kakutani_euclidean, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_4, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_1, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_3, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_2, Cleanroom.Found.FixKakutani.HasClosedGraphOn.exists_delta_subset_thickening, Cleanroom.Found.FixKakutani.restrictTo_of_mem, Cleanroom.Found.FixKakutani.restrictTo, Cleanroom.Found.FixKakutani.HasClosedGraphOn.upperHemicontinuousOn, Cleanroom.Found.FixKakutani.HasClosedGraphOn.mem_of_tendsto, Cleanroom.Found.FixKakutani.restrictTo_subset, Cleanroom.Found.FixKakutani.upperHemicontinuousWithinAt_iff_restrictTo, Cleanroom.Found.FixKakutani.restrictTo_of_not_mem, Cleanroom.Found.FixKakutani.HasClosedGraphOn.isClosed_apply, Cleanroom.Found.FixKakutani.exists_approx_selection, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_4, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_3, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_2, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_1, Cleanroom.Found.FixKakutani.kakutani_findim._simp_1_1]
+  Cleanroom.Found.FixKakutani.* present: [Cleanroom.Found.FixKakutani.HasClosedGraphOn, Cleanroom.Found.FixKakutani.kakutani_pi_Icc, Cleanroom.Found.FixKakutani.kakutani_findim, Cleanroom.Found.FixKakutani.kakutani_euclidean, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_4, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_1, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_3, Cleanroom.Found.FixKakutani.mem_of_hasClosedGraphOn_of_tendsto_approx._simp_1_2, Cleanroom.Found.FixKakutani.HasClosedGraphOn.exists_delta_subset_thickening, Cleanroom.Found.FixKakutani.restrictTo_of_mem, Cleanroom.Found.FixKakutani.restrictTo, Cleanroom.Found.FixKakutani.HasClosedGraphOn.upperHemicontinuousOn, Cleanroom.Found.FixKakutani.HasClosedGraphOn.mem_of_tendsto, Cleanroom.Found.FixKakutani.restrictTo_subset, Cleanroom.Found.FixKakutani.upperHemicontinuousWithinAt_iff_restrictTo, Cleanroom.Found.FixKakutani.restrictTo_of_not_mem, Cleanroom.Found.FixKakutani.HasClosedGraphOn.isClosed_apply, Cleanroom.Found.FixKakutani.exists_approx_selection, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_4, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_3, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_2, Cleanroom.Found.FixKakutani.exists_approx_selection._simp_1_1, Cleanroom.Found.FixKakutani.kakutani_findim._simp_1_1]
+  Kakutani-route headlines present: [Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflectiveOn_via_gameR, Cleanroom.Fixpoint.FixOraclesCorresp.exists_isMixedNashEq, Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflective, Cleanroom.Fixpoint.FixOraclesCorresp.oracleCorr_hasClosedGraphOn]
+  clamp-step constants present: []
+  Nash-map constants present: []
+  FAF brouwer_fixed_point present: true
+@Cleanroom.Fixpoint.FixOraclesCorresp.ReflectiveOn : {I : Type u_1} →
+  Finset I → (I → (I → ℝ) → ℝ) → (I → ℝ) → (I → ℝ) → Prop
+@Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflectiveOn : ∀ {I : Type u_1} [DecidableEq I] (R : Finset I)
+  (ev : I → (I → ℝ) → ℝ),
+  (∀ i ∈ R, ContinuousOn (ev i) (Cleanroom.Fixpoint.FixOraclesCorresp.cube I)) →
+    ∀ (p : I → ℝ) {x₀ : I → ℝ},
+      x₀ ∈ Cleanroom.Fixpoint.FixOraclesCorresp.cube I →
+        ∃ x ∈ Cleanroom.Fixpoint.FixOraclesCorresp.cube I,
+          (∀ i ∉ R, x i = x₀ i) ∧ Cleanroom.Fixpoint.FixOraclesCorresp.ReflectiveOn R ev p x
+@Cleanroom.Fixpoint.FixOraclesCorresp.exists_reflectiveOn_brouwer : ∀ {I : Type u_1} [DecidableEq I] (R : Finset I)
+  (ev : I → (I → ℝ) → ℝ),
+  (∀ i ∈ R, ContinuousOn (ev i) (Cleanroom.Fixpoint.FixOraclesCorresp.cube I)) →
+    ∀ (p : I → ℝ) {x₀ : I → ℝ},
+      x₀ ∈ Cleanroom.Fixpoint.FixOraclesCorresp.cube I →
+        ∃ x ∈ Cleanroom.Fixpoint.FixOraclesCorresp.cube I,
+          (∀ i ∉ R, x i = x₀ i) ∧ Cleanroom.Fixpoint.FixOraclesCorresp.ReflectiveOn R ev p x

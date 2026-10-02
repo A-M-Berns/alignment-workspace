@@ -1,0 +1,4 @@
+# Declarations allowed to use `sorry`: explicitly open statements only (package dp-two-lesions).
+# One per line: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.
+# The gate (scripts/audit.sh) fails on any sorry not listed here, and on stale entries.
+# (empty: no open statements in this package as of 2026-10-01)

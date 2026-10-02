@@ -1,0 +1,2 @@
+# udt-policy-calc: deliberately open statements (format as the root OPEN.txt).
+# None as of 2026-09-30: every target statement in Cleanroom.Udt.UdtPolicyCalc is proved.

@@ -1,0 +1,4 @@
+# corr-channel-voi: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Every core target T1–T14 and the extension E1 is proved; nothing uses sorry.
+# S2 (the successor menu) and S3 (the third time index) were not formalized; they are recorded
+# in corr-channel-voi-report.md §Stretch as not attempted, not as open Lean statements.

@@ -1,0 +1,43 @@
+=== LiarIntervalMixture.lean (run 1) ===
+run/wp/bli-exactness/audit-r3-probes/LiarIntervalMixture.lean:92:0: warning: automatically included section variable(s) unused in theorem `Cleanroom.Bli.BliExactness.AuditR3.mixture_cell_mass`:
+  [𝗣𝗔⁻ ⪯ T]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [𝗣𝗔⁻ ⪯ T] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+run/wp/bli-exactness/audit-r3-probes/LiarIntervalMixture.lean:156:30: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  liaHistory (paperDP ?T) ?m ?φ
+in the target expression
+  |(fun n => liaHistory (paperDP T) n (liar T ((lo + hi) / 2) n)) (max N (n + 1)) -
+        (fun x => ↑((lo + hi) / 2)) (max N (n + 1))| <
+    ↑((hi - lo) / 2)
+
+T : LO.FirstOrder.ArithmeticTheory
+inst✝² : LO.FirstOrder.Theory.Δ₁ T
+inst✝¹ : 𝗜𝚺₁ ⪯ T
+inst✝ : LO.Entailment.Consistent T
+lo hi : ℚ
+hlt : lo < hi
+hlo : 0 ≤ lo
+hhi : hi < 1
+n : ℕ
+hp₀ : 0 < (lo + hi) / 2
+hp₁ : (lo + hi) / 2 < 1
+h :
+  Tendsto (fun n => (fun n => liaHistory (paperDP T) n (liar T ((lo + hi) / 2) n)) n - (fun x => ↑((lo + hi) / 2)) n)
+    atTop (𝓝 0)
+hε : 0 < ↑((hi - lo) / 2)
+N : ℕ
+hN :
+  ∀ n ≥ N,
+    dist ((fun n => liaHistory (paperDP T) n (liar T ((lo + hi) / 2) n)) n - (fun x => ↑((lo + hi) / 2)) n) 0 <
+      ↑((hi - lo) / 2)
+hd :
+  |(fun n => liaHistory (paperDP T) n (liar T ((lo + hi) / 2) n)) (max N (n + 1)) -
+        (fun x => ↑((lo + hi) / 2)) (max N (n + 1))| <
+    ↑((hi - lo) / 2)
+⊢ lo < paperQuote T (max N (n + 1)) (Encodable.encode (liar T ((lo + hi) / 2) (max N (n + 1)))) ∧
+    paperQuote T (max N (n + 1)) (Encodable.encode (liar T ((lo + hi) / 2) (max N (n + 1)))) < hi
+exit=1
+=== LiarIntervalMixture.lean (run 2: dsimp before rw; omit unused instance) ===
+exit=0

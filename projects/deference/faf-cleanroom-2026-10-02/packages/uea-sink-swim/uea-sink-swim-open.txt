@@ -1,0 +1,2 @@
+# Open statements of uea-sink-swim (same format as the root OPEN.txt):
+# `Fully.Qualified.Name  # reason`. Empty means no open statements.

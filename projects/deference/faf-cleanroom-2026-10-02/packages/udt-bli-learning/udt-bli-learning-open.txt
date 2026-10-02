@@ -1,0 +1,6 @@
+# udt-bli-learning: declarations allowed to use `sorry` (explicitly open statements only).
+# Format as the root OPEN.txt: `Fully.Qualified.Name  # reason`.
+# (empty since repair round 2, 2026-10-02) The one former entry, `eventually_updateful_exact` (T9's
+# exact asymptotic clause), was refuted: it is now the proposition `ExactAsymptoticClause` in
+# EpsCorr.lean with `EpsCorrWitness.not_exactAsymptoticClause` proving its negation. See
+# udt-bli-learning-report.md T9 and `## Repair round 2`.

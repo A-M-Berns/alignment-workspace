@@ -1,0 +1,10 @@
+# bli-overlay (reconciled): declarations allowed to use `sorry` (explicitly open statements only).
+# Format as the root OPEN.txt: `Fully.Qualified.Name  # reason`.
+# Empty as of 2026-09-30: no `sorry` anywhere under Cleanroom/Bli/BliOverlay/ (reconciled
+# modules, attempt A, attempt B). The one open target, T6/L6(b) (instantiating the compiler
+# boundary `OverlayBoundedEvaluatorCompiler`), is not stated as a Lean sorry because its honest
+# statement needs a definition of "the overlay is computable on encoded finite data" that no
+# customer has fixed; the ledger rows of `overlay_isLogicalInductor_of_computableMarket` and
+# `OverlayBoundedEvaluatorCompiler.toComputableMarket` carry it as `partial: computability open`.
+# The attempts' own lists (attempt-a/bli-overlay-a-open.txt, attempt-b/bli-overlay-b-open.txt)
+# are likewise empty.

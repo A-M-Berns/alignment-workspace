@@ -1,0 +1,40 @@
+---
+journal: Daily
+journal-date: 2023-09-13
+---
+- Immediate concerns to raise with Soto? `UDT` `LUDT` `tiling agents`
+  collapsed:: true
+	- My tiling concern wrt Soto's forced-update prior suggests that there's a problem w the tiling argument so far, or a problem w the forced-update prior.
+		- Well, Martin admits that he only gets the weak property, which in some sense doesn't tile.
+		- Martin also separately decided that our foundations are broken anyway; see ((650343b1-ce36-4f4d-9325-f5995461bfc2)).
+		- But do I expect that this is ultimately going to be a problem?
+			- Maybe we can talk about the degree of update-eagerness of a prior, and talk about the limit as this goes to max, while admitting that anything following LIC will have some degree of non-dogmatism about updatefulness, and therefore won't be completely updateful wrt every possible tree.
+			- Or, more nuanced, for any "speed of update" we wish ho discuss, we have a degree of trust in that. So we can talk about priors which approach perfect enforcement of the learning desideratum (eventually acting like any Q_n) without approaching perfect updatefulness (acting like Q_n at the node Q_n is observed).
+				- f-updatefulness: behaving as if we use Q_f(n) at time n.
+			- The result we're looking for is something like: for each environment, there is some epsilon such that if the agent's belief in acausal correlations is below epsilon, and the environment doesn't systematically introduce such correlations, then the performance of UDT will eventually be optimal in that environment.
+	- The 'impossibility result' ideas didn't make a lot of sense to me.
+		- In particular the attempted def of "learning".
+		- Seems like the real underlying idea is limiting average reward (vs expected utility).
+		- Maybe this should be reformulated as a version of Vanessa's thing, where any given agent must have bounded utility and therefore something like temporal discounting, but to examine learning we consider the limit, because any particular discounting rate may rationally block learning on a specific problem.
+			- This gets augmented with driving endorsement of f-updatefulness
+	- my idea for evil logical coins
+	- universal learning questions
+	- Other notes from the Soto call:
+		- A lot of thoughts on the 'boundaries' stuff.
+			- Martin seemed to think that there were a lot of possibilities but all of them failed for a small set of common reasons. My intuition is more like, there are a lot of possibilities and there's some degree of convergence to similar conclusions in each (a conclusion which has some good news and some bad news).
+			- That is: Martin seems to think there's no good solution to the boundaries problem; I seem to think that there are several OK ways of thinking about it, all of which have some flaws, but most of which provide evidence in favor of a common way of thinking.
+			- I wish I could provide a more thorough summary, though.
+		- My concerns for losing LIC. Hopes for preserving LIC.
+		- Analogy to no-traps.
+		- Analogy to Vanessa's framework where we consider the limit of no temporal discounting.
+		- Full list of assumptions that we know of?
+		- Thoughts on realism about logical probabilities.
+		- Acting updateless due to iterated problems despite 'actually being updateful' due to using a frame for decision problems where we think of Omega as only having access to the actions we actually perform.
+		- `UDT Terminology Problems`
+			- It seems very tempting recently to use "update", "updateful", "updateless", "updatelessness", etc in ambiguous ways.
+				- Updating as change; updating as change conforming to LIC; updating as Bayesian updating.
+					- An epistemic state which is "updateful" in any of the above senses; EG, "UDT looks at the updateful expectations for various branches and weighs them by their prior probability".
+					- Actually updating, IE updating as part of one's decision procedure. "The agent is updateful."
+					- Behaving in a way compatible with updating; EG what UDT does when it doesn't believe in any acausal correlations. "The agent behaves updatefully."
+					- Actually being updateless as one's decision procedure vs behaving in a way compatible with UDT (eg, as a result of reputational concerns in an iterated game)
+				- Martin was using "argmaxing" in a way that felt very dangerous to me as well. Literally it just means taking the max value of some EV calculation. Martin seemed to use it to imply logical omniscience and perhaps other things.

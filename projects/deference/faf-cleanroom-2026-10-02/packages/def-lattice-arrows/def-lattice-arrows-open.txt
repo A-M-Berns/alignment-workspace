@@ -1,0 +1,3 @@
+# def-lattice-arrows: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Nothing under Cleanroom/Deference/DefLatticeArrows/ uses sorry. The mandate expected the T13 one-way-pair
+# statement to be listed open; it is proved (OneWay.lean, quotesAvailable_of_marketComputation; findings F6).

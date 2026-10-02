@@ -1,0 +1,2 @@
+# corr-indifference: deliberately open statements (root OPEN.txt format).
+# None so far (2026-09-30): every stated theorem in the package is proved.

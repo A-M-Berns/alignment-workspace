@@ -1,0 +1,3 @@
+# Declarations allowed to use `sorry`: explicitly open statements only (package dp-dutch-book).
+# One per line: `Fully.Qualified.Name  # reason`.
+Cleanroom.Decision.DpDutchBook.implementable_of_almostFair_open  # T13(d), P06-11′'s ⇐ direction in its almost-fair case: at an F3′-structural point of an almost-fair tree the point is implementable under 6′ (the live act independent of every structurally pre-query event on O_d-runs). Route: AlmostFair.leafLaw_eq_leafLaw' reduces it to the Definition-6 identity, which needs the F3′ recording lemma relativized to X ∩ O_d with the nodes deciding X negatively handled separately — not done. The general "path-irrelevant nesting" clause is not defined here (report §T13).

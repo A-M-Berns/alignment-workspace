@@ -1,0 +1,3 @@
+# lit-shutdown-prefs: deliberately open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# Repair round 1 (2026-09-30): one open statement, direction unknown (audit round 1, adversarial B1 fix (iv)).
+Cleanroom.Lit.LitShutdownPrefs.PostConsistency.posl_ilpacs_nontrivial_model_open  # whether any asymmetric relation with a strict preference satisfies POSL ∧ ILPACS (Thornley 2025 §6–§7); known: inconsistent with expected-sum-total single-length preferences (posl_ilpacs_inconsistent), the empty relation is the only exhibited model; stated in the existence direction, direction unknown; see lit-shutdown-prefs-report.md § Repair round 1 and PostConsistency.lean

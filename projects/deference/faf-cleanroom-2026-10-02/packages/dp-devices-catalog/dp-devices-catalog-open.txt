@@ -1,0 +1,3 @@
+# dp-devices-catalog: deliberately open statements (format as the root OPEN.txt).
+# One per line: `Fully.Qualified.Name  # reason`.
+# Empty so far.

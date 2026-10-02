@@ -1,0 +1,2 @@
+# Declarations allowed to use `sorry`: explicitly open statements only (package dp-smoking-lesion).
+# One per line: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.

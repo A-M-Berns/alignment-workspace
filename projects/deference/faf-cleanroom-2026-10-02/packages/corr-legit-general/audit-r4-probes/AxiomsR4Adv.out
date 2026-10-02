@@ -1,0 +1,72 @@
+'Cleanroom.Corrigibility.CorrLegitGeneral.localTotalTrust_imp_weakLocalValue_refuted' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.localTotalTrust_imp_localValue_hdet_refuted' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.weakLocalValue_open_statement_false' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.F7_totalTrustWrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.F7_not_weakValuesWrt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.F7_not_valuesWrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.F7_hdet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.S7_recommended_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.scores7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.localTotalTrust_imp_weakLocalValue_refuted_fullSupport' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.F7F_totalTrustWrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.F7F_not_weakValuesWrt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.F7F_rows_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.localTotalTrust_imp_localValue_refuted' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.totalTrust_imp_weakValuesWrt_id' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.weakValuesWrt_questionOf_of_simpleTrustOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.valuesWrt_questionOf_of_simpleTrustOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.fn50_single_score_not_local_tt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.fn50_not_totalTrustWrt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.fn50_brier_q' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.mA_mH_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.mA_mH'_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.mutual_totalTrust_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.mutual_totalTrust_of_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.rv3_visible_witness' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.rv3_not_legitReflectsWrt_ae' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.legitReflectsWrt_unsat_of_visible' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.legitReflectsWrt_unsat_of_visible_ae' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.compose_global' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.twoState_press_covariance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.s6_headline' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Cleanroom.Corrigibility.CorrLegitGeneral.valuesWrt_questionOf_core' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

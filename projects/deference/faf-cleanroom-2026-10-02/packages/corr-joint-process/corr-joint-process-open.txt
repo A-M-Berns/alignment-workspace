@@ -1,0 +1,2 @@
+# corr-joint-process: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Every core target T1-T14 and the stretch targets T15(a)(b), T16(a)(b), T17 (blind and inclusion), T18, T19, T21 are proved; nothing uses sorry.

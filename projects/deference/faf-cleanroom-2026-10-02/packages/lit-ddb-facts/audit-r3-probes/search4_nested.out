@@ -1,0 +1,6 @@
+evidence maps: 50625; factive+transitive: 355; of which nested: 243, non-nested: 112
+priors: 15; deferrers (full support): 49
+(a) nested frames: (E, mu, pi) triples 178605; Simple Trust pi holds on 45021; Trust pi and not Value pi: 0   [53s]
+(b) factive+transitive NON-nested frames: (E, mu) pairs 1680; with Value mu (= Total Trust mu): 0   [0s]
+(c) all maps x 2 priors: Value mu holds on 486 pairs; of which NOT (nested and factive and transitive): 0   [13s]
+DONE rc=0

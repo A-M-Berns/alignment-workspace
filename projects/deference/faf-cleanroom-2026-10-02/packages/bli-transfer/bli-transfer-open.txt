@@ -1,0 +1,4 @@
+# bli-transfer (reconciled): open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None as of 2026-09-30: no sorry anywhere in Cleanroom/Bli/BliTransfer/ (main modules, AttemptA/, AttemptB/).
+# T4 (Route A) is an attempt record in bli-transfer-findings.md, never an OPEN row (plan §0.3).
+# The attempts' own lists (attempt-a/bli-transfer-a-open.txt, bli-transfer-B-open.txt) are empty too.

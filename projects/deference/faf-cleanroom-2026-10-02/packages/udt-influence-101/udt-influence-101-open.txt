@@ -1,0 +1,2 @@
+# udt-influence-101: deliberately open statements (format as the root OPEN.txt).
+Cleanroom.Udt.UdtInfluence101.ProfileModel.A5_ofDist_general  # the probability half (IP clause) of Post 8's literal A5 in the profile model without the one-sensitive-step condition: true by the product rule on affine factors, not formalized; the OneEps route covers the instance of record (report T7); Post 8's IEo display is not stated

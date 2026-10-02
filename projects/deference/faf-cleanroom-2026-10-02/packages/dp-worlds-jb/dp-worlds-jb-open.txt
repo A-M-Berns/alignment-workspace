@@ -1,0 +1,6 @@
+# dp-worlds-jb: deliberately open statements (format as the root OPEN.txt).
+# None as of 2026-09-30 (after repair round 1): every core target is proved; the stretch targets
+# S1 (Stone space), S3 (multigrain fixed point) were not attempted and have no Lean statement.
+# Agenda items without a Lean statement (report, findings 11): an uncountable N+ witness for
+# no_world_of_halving (the Lebesgue measure algebra, the interval algebra on [0,1), or the clopen
+# algebra of 2^ℝ with the fair-coin measure).

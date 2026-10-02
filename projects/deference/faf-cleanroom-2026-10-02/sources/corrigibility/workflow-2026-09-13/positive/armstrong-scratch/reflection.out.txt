@@ -1,0 +1,15 @@
+== T1: Bayesian refinement rho_j = P(.|F) ==
+ [Bayesian refinement] SU(all X): True | introspection: True | GR: True
+== T2: twisted estimator q_c=(1-l)P(.|c)+l P, l=1/3 ==
+ [twisted] SU(all X): True | introspection: False | GR: False | GR witness A=(1,) P(A|rho=q)=1/6 q(A)=23/180
+ q_c(c) = 23/30 (introspection needs 1)
+== T3(a): existence given weights and candidates ==
+ mixture weights = P(cells): [Fraction(3, 10), Fraction(1, 4), Fraction(9, 20)] | omega-marginal of J equals P: True
+ GR holds for J: True
+ violating weights (1/3,1/3,1/3): omega-marginal equals P: False | e.g. marg(1)= 1/18 P(1)= 1/20
+== T3(b): perfect-recall tree, Omega={1,2,3,4} ==
+ GR 0->1: True | GR 0->2: True | GR 1->2: True
+ P(.| label_1 = {1,2}) == rho1 on cell: True
+== T4: VOI positive while SU exact ==
+ E_i X = 1/20 | E_i E_j X = 1/20
+ VOI = E_i[max(E_j X,0)] - max(E_i X,0) = 7/20

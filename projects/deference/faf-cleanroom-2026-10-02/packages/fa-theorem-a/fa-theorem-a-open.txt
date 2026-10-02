@@ -1,0 +1,7 @@
+# fa-theorem-a: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Every declaration of Cleanroom.Fa.FaTheoremA is sorry-free (gate run recorded in fa-theorem-a-report.md).
+# The package's open questions are recorded in prose in fa-theorem-a-findings.md (F7: OP16's H-side
+# no-surprise inclusion, conjectured; F14: root-fa-025's converse; F15: W1's non-degeneracy; F16: an
+# instance where a non-trivial generable day-set matters for Lemma P — the day-set itself is exhibited,
+# evenDays_pgenerable, repair round 1) rather than as sorry'd statements, because each needs a definition
+# or a construction before a precise Lean statement can be written without guessing the author's intent.
