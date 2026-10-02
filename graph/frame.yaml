@@ -1,0 +1,23 @@
+# Frame of the argument map. Starting graph, 2026-10-02: two clusters, four roots; no judgment logged yet.
+question: How does the relationship between humans and AI systems go, and what can we do about it?
+classes:                      # ruling 25, placed by the maintainer as provisional; utility null = the whole scale
+  - {id: disutility-max, utility: -1, severity: 1, placed_by: "@maintainer", provisional: true}
+  - {id: high-conflict, utility: -0.5, severity: 2, placed_by: "@maintainer", provisional: true}
+  - {id: no-interesting-life, utility: 0, severity: 3, placed_by: "@maintainer", provisional: true}
+  - {id: earth-gone-aliens-remain, utility: 0.5, severity: 4, placed_by: "@maintainer", provisional: true}
+  - {id: utopia, utility: 1, severity: 5, placed_by: "@maintainer", provisional: true}
+outside_option: default-trajectory         # a valuation node: the default trajectory (committing to no plan), ruling 27/32
+undescribed_failure: undescribed-failure    # a valuation node: where a failure nobody has described lands (every residual row)
+valuations: [default-trajectory, undescribed-failure]   # cases nodes read as distributions over the classes above
+bar: 0.5
+establishment_level: 8
+commit_level: 6
+window_minutes: 360
+commitment: [{minutes: 12000, mass: 1, forced_by: placeholder}]
+audit_share: 0.1
+dependence: independent
+roots:
+  - {id: li-deference-collapse, role: shared-claim, preset: worst-case}
+  - {id: deference-toward-bounded-agents, role: plan, preset: worst-case}   # a programme: a frame node over its steps
+  - {id: instrumental-convergence, role: risk-story, preset: probabilistic, budget: 0.5}
+  - {id: corrigibility-anti-natural, role: risk-story, preset: worst-case}

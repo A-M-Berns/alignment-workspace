@@ -1,0 +1,425 @@
+{
+ "generated_hash": "c4740f3785ba8be7f4532c91",
+ "nodes": {
+  "a1-fixed-objective-maximizer": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the system selects actions by their predicted consequences for a single objective that is fixed across the episode",
+    "version": 1
+   }
+  ],
+  "a1-fixed-objective-maximizer.partition": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the pictures under a1 fixed objective maximizer a trained policy with a learned goal from the training compatible set a trained policy with no single objective and the residual are exclusive and exhaustive",
+    "version": 1
+   }
+  ],
+  "a2-monotone-in-resources": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the objectives attainment is monotone in resources and in the systems continued operation",
+    "version": 1
+   }
+  ],
+  "a3-self-and-operators-modelled": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the systems model of the world includes itself and its operators as causal factors",
+    "version": 1
+   }
+  ],
+  "a4-no-binding-counter-drive": [
+   {
+    "date": "2026-10-02",
+    "normalized": "no explicit counter drive is installed or an installed one fails to bind at high capability",
+    "version": 1
+   }
+  ],
+  "bet-class-gap-closed": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the class of bets over which the novices total trust is quantified contains for each member z the gap bet z e z and its negation",
+    "version": 1
+   }
+  ],
+  "bridge-ps-s1-retargetable": [
+   {
+    "date": "2026-10-02",
+    "normalized": "power seeking tendencies survive the relaxation from optimal policies to retargetable decision functions retargetability is sufficient to cause power seeking tendencies for a range of decision making procedures",
+    "version": 1
+   }
+  ],
+  "bridge-ps-s2-training-compatible": [
+   {
+    "date": "2026-10-02",
+    "normalized": "power seeking incentives survive the relaxation from a symmetry invariant reward distribution to the training compatible goal set an agent that learns a goal from that set is likely to avoid shutdown in a new situation under the papers simplifying assumptions",
+    "version": 1
+   }
+  ],
+  "bridge-ps-s3-trained-policies": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the power seeking tendency of retargetable policies over a training compatible goal set survives the relaxation from that goal set to the policies produced by the training procedures actually used",
+    "version": 1
+   }
+  ],
+  "correction-changes-objective": [
+   {
+    "date": "2026-10-02",
+    "normalized": "an operators correction of the agent changes the agents objective rather than its information",
+    "version": 1
+   }
+  ],
+  "corrigibility-anti-natural": [
+   {
+    "date": "2026-10-02",
+    "normalized": "almost all rational agents are instrumentally motivated to preserve their preferences and hence to resist attempts to modify them",
+    "version": 1
+   }
+  ],
+  "corrigibility-anti-natural.complete": [
+   {
+    "date": "2026-10-02",
+    "normalized": "no premise beyond the two listed is needed for a rational agent to be instrumentally motivated to preserve its preferences",
+    "version": 1
+   }
+  ],
+  "default-trajectory": [
+   {
+    "date": "2026-10-02",
+    "normalized": "default trajectory ai development with no additional safety work beyond what the developing organizations do on their own lands in one of the named outcome classes of the frame",
+    "version": 1
+   }
+  ],
+  "default-trajectory.partition": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the five pictures under default trajectory one per named outcome class are exclusive and exhaustive",
+    "version": 1
+   }
+  ],
+  "deference-toward-bounded-agents": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the deference collapse or its analogue holds for a bounded trained agent deferring to human teachers with finite time rather than asymptotic guarantees with the experts self knowledge only approximate for a policy rather than an estimator run through argmax and with trust conditioned on the legitimacy of the teaching channel",
+    "version": 1
+   }
+  ],
+  "deference-toward-bounded-agents.complete": [
+   {
+    "date": "2026-10-02",
+    "normalized": "no step beyond the four listed finite time guarantees approximate self knowledge a policy level trust notion and legitimacy conditioned trust is needed to carry the collapse to a bounded trained agent",
+    "version": 1
+   }
+  ],
+  "dt-disutility-max": [
+   {
+    "date": "2026-10-02",
+    "normalized": "under default trajectory ai development the future is run by a disutility maximizer",
+    "version": 1
+   }
+  ],
+  "dt-earth-gone-aliens-remain": [
+   {
+    "date": "2026-10-02",
+    "normalized": "under default trajectory ai development every descendant of earth is eliminated and interesting aliens remain",
+    "version": 1
+   }
+  ],
+  "dt-high-conflict": [
+   {
+    "date": "2026-10-02",
+    "normalized": "under default trajectory ai development the future is a high conflict one full of suffering",
+    "version": 1
+   }
+  ],
+  "dt-no-interesting-life": [
+   {
+    "date": "2026-10-02",
+    "normalized": "under default trajectory ai development all interesting life in the reachable universe is eliminated",
+    "version": 1
+   }
+  ],
+  "dt-utopia": [
+   {
+    "date": "2026-10-02",
+    "normalized": "under default trajectory ai development the future is a utopia to within physical constraints",
+    "version": 1
+   }
+  ],
+  "expert-knows-own-estimates": [
+   {
+    "date": "2026-10-02",
+    "normalized": "for every formula that case splits on the experts own published estimates the experts estimate of the formula equals the value obtained by resolving the case split with those estimates",
+    "version": 1
+   }
+  ],
+  "ic-informal": [
+   {
+    "date": "2026-10-02",
+    "normalized": "a system that selects actions by predicted consequences for a fixed objective whose objective gains from resources and continued operation and which models itself and its operators pursues resource acquisition and self preservation unless a counter drive binds",
+    "version": 1
+   }
+  ],
+  "ic-informal.complete": [
+   {
+    "date": "2026-10-02",
+    "normalized": "no premise beyond the four listed is needed for a system satisfying them to pursue resource acquisition and self preservation",
+    "version": 1
+   }
+  ],
+  "instrumental-convergence": [
+   {
+    "date": "2026-10-02",
+    "normalized": "several instrumental values are convergent their attainment would increase the chances of the agents goal being realized for a wide range of final goals and situations so they are likely to be pursued by many intelligent agents",
+    "version": 1
+   }
+  ],
+  "li-deference-collapse": [
+   {
+    "date": "2026-10-02",
+    "normalized": "for a novice logical inductor and an inductor expert whose day n estimates are published decided facts total trust of the novice in the expert over the gap closed class of expert referencing bets implies mart the tower on that class and mart on that class implies value argmax deference on menus drawn from it",
+    "version": 1
+   }
+  ],
+  "li-deference-collapse.complete": [
+   {
+    "date": "2026-10-02",
+    "normalized": "no premise beyond the two arrows the experts knowledge of its own estimates and the gap closure of the bet class is needed for total trust to imply mart and mart to imply value on the gap closed class",
+    "version": 1
+   }
+  ],
+  "mart-implies-value-kernel": [
+   {
+    "date": "2026-10-02",
+    "normalized": "for every efficiently describable sequence of finite menus and every fixed index i the novice asymptotically weakly prefers following the expert to committing to any fixed option e h_n \u015d_n _n e h_n o i_n which is value of the novice toward the expert",
+    "version": 1
+   }
+  ],
+  "mart-implies-value-kernel.bridge": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the three real sequence hypotheses of the declaration are the pages three named steps hum_s is the tower on the followed strategy composed with the f1 carry hmon is expectation provability induction applied to m_n m i_n and hcee is the tower on the fixed option so asymple eoi es is the value inequality",
+    "version": 1
+   }
+  ],
+  "mart-implies-value-kernel.complete": [
+   {
+    "date": "2026-10-02",
+    "normalized": "no premise beyond the kernel checked composition its bridge and the four listed discharging claims is needed for value to hold on menus drawn from the gap closed class",
+    "version": 1
+   }
+  ],
+  "mart-implies-value-kernel.record": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the declaration deferenceargmax value_argmax_asymptotic es em emi eoi \u2115 \u211d hum_s approx es em hmon asymple emi em hcee approx eoi emi asymple eoi es is accepted by the lean kernel",
+    "version": 1
+   }
+  ],
+  "novice-expprovind": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the novices expectations satisfy expectation provability induction theorem 4 8 10 of the logical induction paper a bounded identity or inequality between efficiently describable logically uncertain variables that is provable in \u03b3 is carried through e h_n asymptotically",
+    "version": 1
+   }
+  ],
+  "pic-A-parallel-cuts-amplifier": [
+   {
+    "date": "2026-10-02",
+    "normalized": "total trust is granted only over parallel threshold cuts of single bets rather than over a gap closed class and the amplifier expert with estimate map g e 1 2c e c c 0 on the uniform measure model satisfies every such cut while mart fails",
+    "version": 1
+   }
+  ],
+  "pic-D-asymptotic-introspection": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the expert is a logical inductor whose knowledge of its own estimates is only asymptotic so step 1 of the written proof which asserts \u03b3 e d 0 is unavailable and the theorems conclusion rests on transferring the experts asymptotic bounds e a_n d_n _n 0 to the novice",
+    "version": 1
+   }
+  ],
+  "pic-N-a1-residual": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the system is not a trained policy of the kind the other pictures describe an explicit planner an optimal policy of a decision process or a system of a kind not yet described",
+    "version": 1
+   }
+  ],
+  "pic-N-tt-mart-residual": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the setting is neither of the two introspection readings nor the parallel cut domain some other feature of the expert or of the bet class such as the diagonalization of step 3 or the threshold range rescaling is where the written argument fails",
+    "version": 1
+   }
+  ],
+  "pic-T-kk-training-compatible-goal": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the system is a trained policy that is not a reward maximizer but has learned some goal in the training compatible goal set the set of goals consistent with the training rewards and acts for that goal in new situations",
+    "version": 1
+   }
+  ],
+  "pic-T-not-reward-maximizers": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the system is a policy produced by reinforcement learning and such policies are not reward maximizers the trained networks behaviour is shaped by reward without the network selecting actions for predicted reward",
+    "version": 1
+   }
+  ],
+  "pic-T-rest-no-single-objective": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the system is a trained policy that is neither a reward maximizer nor the holder of any single learned goal its behaviour decomposes into context dependent heuristics with no objective fixed across the episode",
+    "version": 1
+   }
+  ],
+  "pic-U-exact-introspection": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the experts expectations are exact and provably linear on observables so that \u03b3 proves e d e z e e z 0 for every gap bet d this is the surrogate reading of the setting and the written proofs step 1 holds in it",
+    "version": 1
+   }
+  ],
+  "policy-level-total-trust": [
+   {
+    "date": "2026-10-02",
+    "normalized": "what is the policy level analogue of total trust for an ai trained to act and trusted directly rather than an estimator run through an argmax rule and does the bounds transfer and self endorsement factorization exist without a selection to condition on",
+    "version": 1
+   }
+  ],
+  "ps-trained-systems-seek-power": [
+   {
+    "date": "2026-10-02",
+    "normalized": "policies produced by the training procedures actually used tend to seek power in the sense of the power seeking theorems they keep options available and when optimizing average reward navigate toward larger sets of potential terminal states",
+    "version": 1
+   }
+  ],
+  "ps-trained-systems-seek-power.complete": [
+   {
+    "date": "2026-10-02",
+    "normalized": "no step beyond the toy theorem and the three listed relaxations is needed to carry the power seeking conclusion to the policies the training procedures produce",
+    "version": 1
+   }
+  ],
+  "step-asymptotic-to-finite-time": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the deference collapse or its analogue survives replacing the asymptotic relations _n and _n by finite time bounds that hold before any malign hypothesis in the inductor can act",
+    "version": 1
+   }
+  ],
+  "step-legitimacy-conditioned-trust": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the trust principle holds under the additional condition that the teaching channel is legitimate and not otherwise and the agents beliefs about which modifications are legitimate are accurate enough at the relevant capability for the conditioned principle to be the right target",
+    "version": 1
+   }
+  ],
+  "thm-power-seeking-optimal": [
+   {
+    "date": "2026-10-02",
+    "normalized": "for most reward functions under a distribution invariant under the environmental symmetry in a finite fully observable markov decision process it is optimal to seek power by keeping a range of options available and when maximizing average reward by navigating toward larger sets of potential terminal states",
+    "version": 1
+   }
+  ],
+  "thm-power-seeking-optimal.bridge": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the theorems conclusion that average optimal policies tend toward larger sets of recurrent state distributions is what the informal thesis calls seeking power keeping options open and staying alive",
+    "version": 1
+   }
+  ],
+  "thm-power-seeking-optimal.complete": [
+   {
+    "date": "2026-10-02",
+    "normalized": "no premise beyond the proved theorem its bridge and its stated setting is needed for the informal reading of the theorem to hold",
+    "version": 1
+   }
+  ],
+  "thm-power-seeking-optimal.record": [
+   {
+    "date": "2026-10-02",
+    "normalized": "theorem 6 13 of turner et al 2021 average optimal policies tend to end up in larger sets of recurrent state distributions is proved in the paper when a set of recurrent state distributions contains a copy of another via an environmental symmetry and the stated containment conditions hold most reward functions make it average optimal to end up in the larger set",
+    "version": 1
+   }
+  ],
+  "thm-ps-symmetric-mdp-setting": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the agent is an optimal policy for a reward function drawn from a distribution invariant under the environmental symmetry in a finite fully observable markov decision process",
+    "version": 1
+   }
+  ],
+  "tie-break-ledger-decided": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the rule selecting among equal maximal menu options is computable from the published estimates and the ledger so the followed strategy is an efficiently describable logically uncertain variable whose value the experts estimate places at the maximum",
+    "version": 1
+   }
+  ],
+  "tt-implies-mart-gap-bets": [
+   {
+    "date": "2026-10-02",
+    "normalized": "for an observable coherent introspective expert and a bet class d closed under the gap construction z z e z and under negation total trust of the novice in the expert over d implies mart on d for every z in d e h_n z _n e h_n e z",
+    "version": 1
+   }
+  ],
+  "tt-implies-mart-gap-bets.partition": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the pictures under tt implies mart gap bets the exact introspection reading the asymptotic introspection reading the parallel cut domain and the residual are exclusive and exhaustive",
+    "version": 1
+   }
+  ],
+  "tt-mart-repair-via-bounds-transfer": [
+   {
+    "date": "2026-10-02",
+    "normalized": "with the experts own linearity of expectation and asymptotic introspection e a_n d_n 0 and so e a_n d_n _n 0 lemma 1 of the total trust implies value page applied twice at threshold 0 transfers both bounds to the novice giving e h_n d_n _n 0 so the gap bet theorems conclusion holds for an inductor expert without provable introspection and without the diagonalization step",
+    "version": 1
+   }
+  ],
+  "uf-disutility-max": [
+   {
+    "date": "2026-10-02",
+    "normalized": "a failure of a plan that no filed story describes leaves a future in which the future is run by a disutility maximizer",
+    "version": 1
+   }
+  ],
+  "uf-earth-gone-aliens-remain": [
+   {
+    "date": "2026-10-02",
+    "normalized": "a failure of a plan that no filed story describes leaves a future in which every descendant of earth is eliminated and interesting aliens remain",
+    "version": 1
+   }
+  ],
+  "uf-high-conflict": [
+   {
+    "date": "2026-10-02",
+    "normalized": "a failure of a plan that no filed story describes leaves a future in which the future is a high conflict one full of suffering",
+    "version": 1
+   }
+  ],
+  "uf-no-interesting-life": [
+   {
+    "date": "2026-10-02",
+    "normalized": "a failure of a plan that no filed story describes leaves a future in which all interesting life in the reachable universe is eliminated",
+    "version": 1
+   }
+  ],
+  "undescribed-failure": [
+   {
+    "date": "2026-10-02",
+    "normalized": "a failure of a plan that no filed story describes lands in one of the named outcome classes below utopia",
+    "version": 1
+   }
+  ],
+  "undescribed-failure.partition": [
+   {
+    "date": "2026-10-02",
+    "normalized": "the four pictures under undescribed failure one per named outcome class below utopia are exclusive and exhaustive",
+    "version": 1
+   }
+  ]
+ }
+}

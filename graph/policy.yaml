@@ -1,0 +1,21 @@
+# Parameters that are not frame settings. Rate rows are priors until refit from logged minutes.
+anchor_rules: "2026-10-02.1"
+floor_table: {0: 1, 6: 0.5, 8: 0.3, 10: 0.2, 12: 0.12, 14: 0.08, 16: 0.05, 18: 0.03, 20: 0}
+rate_table:
+  map-read: {S: 8, M: 25, L: 60, prior: true}
+  trace:    {S: 25, M: 60, L: 180, prior: true}
+  estimate: {S: 2, M: 5, L: 10, prior: true}
+  gestalt:  {S: 2, M: 2, L: 2, prior: true}
+  admit:    {S: 5, M: 10, L: 20, prior: true}
+  attack:   {S: 30, M: 90, L: 240, prior: true}
+  revive:   {S: 30, M: 90, L: 240, prior: true}
+task_overhead_minutes: 3
+read_error: 0.3
+evaluative_words: [good, bad, safe, dangerous, promising, works, succeeds, should, might, probably]
+reask_days: 90
+time_tested_years: 3
+maintainer: "@maintainer"
+handles:
+  "@maintainer": {kind: human, github: "A-M-Berns"}
+  "@smithy-verity": {kind: ai, model: "Claude Fable 5.1 (Anthropic)"}
+users: {}                      # ruling 26: presentation preferences per user; none asked yet
