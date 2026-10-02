@@ -241,12 +241,16 @@ claim under test. Roadmap prose, narrative framing, and philosophical positionin
 beyond that local context do not belong in repository deliverables. A padded but
 glossed contribution remains a legitimate rejection under the slop discipline.
 
-**People are named by role.** A maintainer acting as a maintainer is *the
-maintainer* — or *a maintainer* — in every repository
-document and on the wiki: a ruling, a dispatch, a hold or a review is attributed
-to the role, and no document reads as a record of what one person said to
-another. A maintainer's published work is cited like anyone else's, by author
-name. Not gated; a review matter.
+**People are named as the document needs** (ruling of 2026-10-02, replacing
+the people-by-role rule). A ruling, a dispatch, a hold or a review names the
+maintainer or contributor who made it where that carries information, and uses
+the role — *the maintainer*, *a contributor* — where it does not. The earlier
+rule answered a different problem: an agent repeating one maintainer's name
+through a document until it read as a record of that person rather than of the
+work. That stays out — a name appears where it informs, not as a refrain — and
+so does the one surviving names-off posture: the program itself carries no
+one's name (ruling of 2026-08-11). Published work is cited by author name as
+always. Not gated; a review matter.
 
 ---
 
@@ -816,7 +820,7 @@ which are required.
 | contributed checkers are stdlib-only and documented | `checkers` — `tests/contrib_hygiene.py` |
 | DCO sign-off | `dco` — `tests/dco.py`; that an assertion was made, not that it is true |
 | model attribution, in the pull-request body and in each commit's trailer where the body names a model | `dco` — `tests/attribution.py`; presence and non-emptiness only |
-| people are named by role, not by name, except as cited authors | **not gated** — review |
+| people named where it informs, never as a refrain; the program itself unnamed | **not gated** — review |
 | the wiki's links resolve, and its links into this repository are commit-pinned | `checkers` — `checkers/wiki_links.py` |
 | volatile quantities in the wiki are declared and match machine state | `checkers` — `checkers/wiki_state_bindings.py` |
 | CI write scope is enumerated and conditioned; no stored secrets | `python` — `tests/workflow_scope.py` |

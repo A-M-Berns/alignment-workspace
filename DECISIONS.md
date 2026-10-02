@@ -5694,3 +5694,21 @@ counting and reporting agree: the agent is charged for an event it was required 
 The cumulative reporting rule stays for erosion below the bound.
 *Rejected alternative:* counting the crossing without a report — the agent charged for an
 event it had no duty to disclose, which is what PR #116's arithmetic verdict amounted to.
+
+### 2026-10-02 — people are named as the document needs: the people-by-role rule is replaced
+
+**Maintainer ruling, stated in conversation by the author, with the co-maintainer's
+reasoning.**  The rule of 2026-09-29 that a maintainer is *the maintainer* in every
+repository document is replaced: documents name the maintainer or contributor who
+ruled, dispatched, held or reviewed where that carries information, and use the role
+where it does not.  The co-maintainer explained the rule's origin — an early agent
+"would just overuse my name in a nearly unsettling way", so he told it to stop — and
+that it "doesn't make sense now with more contributors"; the author agreed and asked
+for the change.  What survives is the thing the old rule was reaching for: a name
+appears where it informs and never as a refrain, and the program itself carries no
+one's name (ruling of 2026-08-11).  Cited authors are unchanged.  Still a review
+matter, not a gate; `AGENTS.md` *Registers and interpretation* and the gate table
+carry the new text.  Earlier documents written under the old rule are not rewritten.
+*Rejected alternative:* keeping the role rule and exempting rulings only — the
+distinction it needs (which sentences are rulings) is the one a reader cannot make
+from the prose, and with several contributors the role no longer identifies anyone.
