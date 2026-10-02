@@ -696,7 +696,7 @@ change, and the count of those is the size of the free choice remaining.
 | `evVoid` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.evVoid` |
 | `evalAt` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.evalAt` |
 | `followUntrusted` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Rows.followUntrusted` |
-| `frame` | def | 2026-09-25-gate-is-legitimacy | note | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.frame` |
+| `frame` | def | 2026-09-25-gate-is-legitimacy | note, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.frame` |
 | `gatedValue` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.gatedValue` |
 | `handlingOf` | def | 2026-09-25-gate-is-legitimacy | prose | `Workspace.Deference.Contrib.GateIsLegitimacy.handlingOf` |
 | `initial` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.initial` |
@@ -789,7 +789,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Handling` | inductive | 2026-09-25-legitimacy-internal-external | wiki | `Workspace.Deference.Contrib.Legitimacy.Handling` |
 | `Internal` | structure | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Internal` |
 | `Segment` | structure | 2026-09-25-legitimacy-internal-external | wiki, prose | `Workspace.Deference.Contrib.Legitimacy.Segment` |
-| `frame` | def | 2026-09-25-legitimacy-internal-external | note | `Workspace.Deference.Contrib.Legitimacy.Witness.frame` |
+| `frame` | def | 2026-09-25-legitimacy-internal-external | note, prose | `Workspace.Deference.Contrib.Legitimacy.Witness.frame` |
 | `gateValue` | def | 2026-09-25-legitimacy-internal-external | wiki | `Workspace.Deference.Contrib.Legitimacy.gateValue` |
 | `handledValue` | def | 2026-09-25-legitimacy-internal-external | Lean only | `Workspace.Deference.Contrib.Legitimacy.handledValue` |
 | `lastReport` | def | 2026-09-25-legitimacy-internal-external | Lean only | `Workspace.Deference.Contrib.Legitimacy.lastReport` |

@@ -245,6 +245,10 @@ of thing this file exists to make visible.
 | `2026-09-27-corrigibility-kernel-phase2` | the maintainer, relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-09-27 |
 | `2026-09-29-li-bria-synthesis-spec` | the maintainer | Claude Fable 5.1 (Anthropic) | 2026-09-29 |
 | `2026-10-01-thin-legitimacy-and-effective-authority` | Claude Fable 5.1 (Anthropic), from a conversation with the maintainer; relayed verbatim | Claude Fable 5.1 (Anthropic) | 2026-10-01 |
+| `graph/**`, `chats/.gitkeep` | Claude Fable 5.1 (Anthropic), the 2026-10-02 graph-prototype round; the starting graph's numbers by the AI handle `@smithy-verity` under the maintainer's ruling | `ci-only` | 2026-10-02 | `prompts/2026-10-02-graph-prototype/` |
+| `checkers/graph.py`, `checkers/tests/**` | Claude Fable 5.1 (Anthropic), the same round | `ci-only` | 2026-10-02 | `prompts/2026-10-02-graph-prototype/` |
+| `prompts/2026-10-02-graph-prototype/**` | Claude Fable 5.1 (Anthropic); `PROMPT.md` is the round's mandates verbatim | `ci-only` | 2026-10-02 | `prompts/2026-10-02-graph-prototype/` |
+| `AGENTS.md` (the `graph/` section) | Claude Fable 5.1 (Anthropic), the same round; adopted by the maintainer's ruling of 2026-10-02 in `DECISIONS.md` | `ci-only` | 2026-10-02 | `prompts/2026-10-02-graph-prototype/` |
 
 Rounds predating this repository's provenance discipline — the consolidation and
 completing passes now frozen under `projects/normativity/consolidation-aug9/` — have

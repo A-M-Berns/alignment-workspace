@@ -66,6 +66,8 @@ def self_tests() -> None:
                    cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.wiki_links", "--self-test"],
                    cwd=ROOT, check=True)
+    subprocess.run([sys.executable, "-m", "checkers.graph", "--self-test"],
+                   cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.wiki_state_bindings",
                     "--self-test"], cwd=ROOT, check=True)
 
@@ -137,6 +139,12 @@ if __name__ == "__main__":
     subprocess.run([sys.executable, "-m", "checkers.wiki_links"], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-m", "checkers.wiki_state_bindings"],
                    cwd=ROOT, check=True)
+    # The argument map: the plain derivation must pass on the committed tree
+    # (writing nothing), and the checker's unit tests must pass.
+    subprocess.run([sys.executable, "-m", "checkers.graph", "--root", ".", "--dry-run"],
+                   cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+    subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", "checkers/tests",
+                    "-t", "."], cwd=ROOT, check=True)
     print(f"LEAN SORRY GATE: clean over {lean_sorry_gate()} files")
     print(f"LEAN AXIOM DISCIPLINE: every file carries `#print axioms`")
     print("PROJECTS:")

@@ -5712,3 +5712,32 @@ carry the new text.  Earlier documents written under the old rule are not rewrit
 *Rejected alternative:* keeping the role rule and exempting rulings only — the
 distinction it needs (which sentences are rulings) is the one a reader cannot make
 from the prose, and with several contributors the role no longer identifies anyone.
+
+### 2026-10-02 — the argument map lands: `graph/`, `checkers/graph.py`, the `graph/` section of `AGENTS.md`
+
+**Maintainer ruling, stated in conversation.**  The argument map designed with
+Claude over 2026-09-30 to 2026-10-02 enters the repository: a top-level `graph/` tree
+(the protocol, the frame, nodes, per-contributor event ledgers and the generated
+views), the checker `checkers/graph.py` wired into `tests/run.py`, and a `graph/`
+section appended to `AGENTS.md` that binds agents working against it.  The
+maintainer's words: the public landing "sounds fine"; and, on the design, build the
+known-better version rather than a placeholder, drop the illustrative handles, and
+"fill in numbers on the graph with AI to start, and humans can vet as we go …
+humans should just revise the numbers when they seem wrong."  Accordingly the
+starting graph carries numbers written by an AI handle, marked as such everywhere
+they appear, at the bottom anchor of the judgment ladder; a human judgment on the
+same quantity supersedes them.  The outside option (the default trajectory of AI
+development with no additional safety work) and the value of failures nobody has
+described are `cases` nodes with the maintainer's equal weights over the placed
+outcome classes, attackable like any node.  **The ranking is advisory**: it orders
+tasks and names a leading plan, and nothing in the repository acts on it without a
+person.  Its design is expected to change in use: the `graph/` section of
+`AGENTS.md` directs agents to ask users whether the system makes sense and to
+revise it, every change and rollback is logged in `graph/DESIGN-LOG.md`, and the
+log is the record by which that malleability will be judged and, if it does harm,
+scaled back.  Nothing in `graph/` is a registered claim; the map cites registered
+claims and does not replace them.  `graph/PROTOCOL.md`, `graph/README.md`,
+`graph/frame.yaml` and `graph/policy.yaml` are specification layer; nodes, events,
+the design log and the generated files are open to any contributor.
+*Rejected alternative:* a per-line placement under `projects/` — the map spans
+every line, and its frame question is the repository's.

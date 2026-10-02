@@ -30,7 +30,10 @@ SPEC_PATHS = (
     "wiki/**",
     "LICENSE", "LICENSE.*",
     ".github/**", ".gitattributes", ".gitignore",
-    "checkers/*.py", "checkers/README.md",
+    "checkers/*.py", "checkers/README.md", "checkers/tests/**",
+    # The argument map's protocol and frame are specification; its nodes,
+    # events, design log and generated files are open (see AGENTS.md).
+    "graph/PROTOCOL.md", "graph/README.md", "graph/frame.yaml", "graph/policy.yaml",
     "tests/**",
     "prompts/**",
     # Consolidated trees. Ordinary content, but not contributors' to edit:

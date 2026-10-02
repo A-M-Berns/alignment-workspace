@@ -90,6 +90,9 @@ tests/        the repo-level runner and the gate scripts
 checkers/     the house checker harness — the judge for computational claims
 state/        the structured current state, and generated views of it
 wiki/         the source of the human-facing register; the hosted wiki mirrors it
+graph/        the argument map: claims, failure stories, judgments and the
+              ranking of what to work on next (`graph/README.md`)
+chats/        chat transcripts the map's events cite, committed once
 ```
 
 `AGENTS.md` binding standards · `RESEARCH_STATE.md` lab status ·
