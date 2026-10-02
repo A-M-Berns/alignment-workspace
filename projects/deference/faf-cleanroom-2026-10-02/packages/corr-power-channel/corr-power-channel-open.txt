@@ -1,0 +1,5 @@
+# corr-power-channel: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None as of repair round 2 (2026-10-01): every declaration in Cleanroom/Corrigibility/CorrPowerChannel/
+# is proved; nothing uses sorry. The separable structural-gap theorem that round 1's audits found
+# open in prose (B1) is proved in Separable.lean; round 2 added no open statement. Remaining
+# prose-open items (no Lean statement) are listed in the report §Not done and the findings F-16.

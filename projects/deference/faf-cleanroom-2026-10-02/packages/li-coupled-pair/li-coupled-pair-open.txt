@@ -1,0 +1,24 @@
+# li-coupled-pair (reconciled): declarations allowed to use `sorry` (explicitly open statements only).
+# Format as the root OPEN.txt: `Fully.Qualified.Name  # reason`. Written 2026-10-01 by the reconciler;
+# statements re-pinned in repair round 1 (2026-10-01, audit r1 fidelity N2: each OPEN row now pins
+# every datum of its witness, so no degenerate discharge can satisfy it).
+# Two OPEN statements, each listed twice: angle A's declaration (A/Open.lean, where the `sorry` is)
+# and the package-namespace pointer (TwoWay.lean, `:= A.…`, which therefore rests on the same sorry).
+# Both wait on ONE FAF API request: make `liaPrefixFromStagesAtFuel_prim`
+# (`.lake/packages/agentFoundations/LogicalInduction/Construction/LIACompiler.lean:3665`, currently
+# `private`; its statement is exactly `UniformLIAEvaluator` in `Primrec` form) public, so that
+# `Cleanroom.Li.LiCoupledPair.uniform_of_primrec` discharges `UniformLIAEvaluator`, and with it the
+# proved conditional forms `twoWayPair_exists_of_uniform` / `sealedSystem_exists_of_uniform` close
+# both rows in one line. STANDARDS §1 asks for a private FAF lemma to be re-proved here; the mandate
+# waived that for this one (4,041-line compiler) and graded it (b) — flagged in the report.
+# Angle A's own list is kept as evidence at attempt-a/li-coupled-pair-A-open.txt (outside the gate's glob,
+# which reads run/wp/*/*-open.txt one level deep); angle B had no sorry and no list until repair round 2
+# added the third statement below (B/Scheduled.lean), which rests on nothing and is rested on by nothing.
+# Repair round 2 (2026-10-01, audit r2 adversarial N1) also added to both sealed statements the conjunct
+# `S.sib = fun N => liaHistory (siblingProcess S.base S.a S.e N)` (the siblings are FAF's LIA on each
+# frozen process), so the carrier's `Y_eq` reads `Y n = sib n (F n) (contract n)` at the witness.
+Cleanroom.Li.LiCoupledPair.A.twoWayPair_exists  # T5.2: the two-way pair over paperDP IΣ₁ unconditionally, the witness's data pinned (both bases paperDP IΣ₁, quotedA = witnessQuoted, next-day publication, XH = cleanX, f = succDeferral, σ = payoutSchedule, payout after the lookahead); conditional form twoWayPair_exists_of_uniform proved; the only missing input is UniformLIAEvaluator (FAF private lemma, API request); see li-coupled-pair-report.md T5
+Cleanroom.Li.LiCoupledPair.twoWayPair_exists  # T5.2, the package-namespace name of the row above (TwoWay.lean, `:= A.twoWayPair_exists`); every two-way row in the run cites this name; same reason
+Cleanroom.Li.LiCoupledPair.A.sealedSystem_exists  # T4.3: the sealed-sibling system over paperDP IΣ₁ unconditionally, the witness's data pinned (same-day publication, horizon succDeferral, settlement payoutSchedule — findings F11 — and quoted = witnessQuoted, contract = witnessQuoted 0); conditional form sealedSystem_exists_of_uniform proved through paperSealedSystem_of_uniform; the only missing input is UniformLIAEvaluator (FAF private lemma, API request); see li-coupled-pair-report.md T4
+Cleanroom.Li.LiCoupledPair.sealedSystem_exists  # T4.3, the package-namespace name of the row above (TwoWay.lean, `:= A.sealedSystem_exists`); same reason
+Cleanroom.Li.LiCoupledPair.B.exists_fuelDominated  # repair round 2 (audit r2 adversarial B1): does the repaired FuelDominated (fuel = the route's clock at the scheduled position) have any instance — a polarity program c₁ computing gateVal a that halts within clock (max ((e j).e n) p) on every literal's payload p? Unknown either way: the program must run Mathlib's rational decode (a coprimality test) and a comparison inside quadratic evaln fuel on the value of p; the pre-repair form (fuel ≤ max ((e j).e n) p) is refuted outright (not_fuelDominated_le), and the schedule cannot help beyond finitely many codes per day (payloadClocked_of_fuelDominated_above). Rested on by nothing; ledgerSeq_codes_of_dominated / B.conditioningRoute_inductor_of_dominated read `partial: FuelDominated (c); no instance known` until this closes; see li-coupled-pair-report.md § Repair round 2

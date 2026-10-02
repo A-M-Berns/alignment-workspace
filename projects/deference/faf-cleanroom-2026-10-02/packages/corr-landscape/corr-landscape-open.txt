@@ -1,0 +1,3 @@
+# corr-landscape: deliberately open statements (format as the root OPEN.txt).
+# `Fully.Qualified.Name  # reason (what is open, where it is discussed)`
+Cleanroom.Corrigibility.CorrLandscape.Horizon.phiW_supermartStep  # E2(i), general horizon: the step inequality of Φ = (1−η)^{−t}(d_t − ρ†) on prodLaw T ν with the prefix filtration at t < T; the one-step contraction is BasinToy.phi_step and the two-round case is proved (TwoRound.phi_isSupermart); what is missing is the prefix-atom factorization of the product law's conditional sum (infrastructure, not a conjecture); see corr-landscape-findings.md F-21 and Horizon.lean

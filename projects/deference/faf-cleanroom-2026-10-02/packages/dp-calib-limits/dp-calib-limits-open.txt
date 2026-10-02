@@ -1,0 +1,6 @@
+# Declarations allowed to use `sorry`: explicitly open statements only (package dp-calib-limits).
+# One per line: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.
+# The gate (scripts/wp-audit) fails on any sorry not listed here, and on stale entries.
+# (Empty since repair round 1: T2(d)'s two-action single-point ray-independence, listed here in
+# the first round as twoAct_single_point_ray_independent_open, is proved as
+# twoAct_single_point_ray_independent in SinglePoint.lean.)

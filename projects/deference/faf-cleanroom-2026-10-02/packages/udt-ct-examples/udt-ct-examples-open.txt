@@ -1,0 +1,33 @@
+# udt-ct-examples: deliberately open statements (format as the root OPEN.txt: `Fully.Qualified.Name  # reason`).
+# Revised in repair round 1 (2026-09-30) and repair round 2 (2026-10-01). No declaration of Cleanroom.Udt.UdtCtExamples uses `sorry`.
+# Repair round 2 built two of the carriers listed here — `MemI` (`MemoryInternal.lean`: DD and CA both fail on the paper's
+# picture, the CA failure at the report coordinate) and `CB-hidden` (`CoordButtonsHidden.lean`, `CBh`: clause (2) fails under
+# `W5` at the F-2(a) atom, holds under `W10`) — so those entries are closed; `CB-rooms`, T3(d)(i), T5(d), T7(c) and T8(094) remain.
+# T7(e) (`PolicyFairCT`, `EffScreens`, `screening_display`) and the `CB` half of T7(c) (`Proper`,
+# `CB.proper_iff`, `CB.roomProper`, `CB.improper_udtRuleAt5`) were proved in `Screening.lean` and are no
+# longer open (audit r1 N9/N10). The items below are existence claims over decision structures (a
+# witness to build), awkward as a single `sorry` statement; each is recorded with the statement it would
+# take, in the shape the package's witnesses use.
+#
+# CB-rooms (F-3): Coordinated Buttons with room-dependent chosen policies `(k_red, k_green)` (48 worlds)
+#        and a symmetric `7 : 1` coupling of the copy to the agent's own policy at the other room; statement:
+#        with `p = P(k_green = $5)` independent of `k_red`, `$5` is the strict `UdtRuleAt` argmax at red iff
+#        `p > 13/18` (the corrected examples-revisited mechanism, respecting functional identity); reason:
+#        arithmetic by hand (the audit's), carrier over the mandate's 32-world budget.
+# T3(d)(i) (extension): a Third-Button structure with room-dependent messages (`Ô = (m_red, m_green)`,
+#        `FactorsAsFam R`), the realized recommendation `r' = (red ↦ $10, green ↦ $20)`, and
+#        `StableR r' ∧ Stable r' ∧ InternallyDriven ∧ FactorsAsFam R`, hence `adviceFollowing_R` at both
+#        rooms; reason: budget — the carrier needs ≥ 4 message values × ≥ 2 room policies × 3 instances
+#        × 2–3 copy actions (≥ 48–72 worlds) and a design in which the deviating events are non-empty
+#        (else stability holds by junk, the F8 caveat of udt-comm-trust); TB.lean has the ingredients.
+# T5(d)  (stretch): transparent Newcomb as an AbstractDS with instances = TObs, Ω = TPolicy × Bool, the coin
+#        in D_E, and `score = Transparent.ctScore μ ε o a`; reason: not attempted (T5(a) stays the
+#        identification of record; the mandate expects `IB_fac` to fail because the box contents are a
+#        function of the predictor's reading of Π*).
+# T7(c)  (stretch, the half not degenerate on CB): on a carrier whose instances' actions have one meaning
+#        and whose chosen-policy family is room-dependent, `∃ ω, UdtRuleAt-everywhere ω ∧ ¬ Proper S ω`
+#        under asymmetric weights and `∀ ω, UdtRuleAt-everywhere ω → Proper S ω` under symmetric ones;
+#        reason: `CB` cannot express it (F-10); the CB-rooms carrier above would.
+# T8(094) (stretch witness): a non-DD structure where `E[U ∣ Ô, Ǒ, Π̈] ≠ E[U ∣ Π̈]` without `(Ô, Ǒ) ⊑ D_{I,B}`;
+#        the proved half (with measurability, from `decomposition_of_measurable`) is not restated here —
+#        it is `udt-comm-trust`'s `decomposition_of_measurable` applied to the `(Ô, Ǒ, Π̈)`-atom (report T8).

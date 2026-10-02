@@ -1,0 +1,73 @@
+---
+journal: Daily
+journal-date: 2026-02-19
+---
+- `huttegger` `BLI` `reflection principle` `radical probabilism`
+	- This month, I've been trying to focus on preparing for the Agent Foundations conference in Pittsburgh. I started out wanting to work on something connected to `UDT`, specifically responding to `Daniel Herrmann` (https://philosophy.unc.edu/people/daniel-herrmann/) since I felt a response to his udt-skepticism was overdue. I worked on that some, scraping together a pile of ideas I wanted to combine in my next attempt at a nice tiling theorem. However, I spent last week working on a different idea that occurred to me recently, trying to make a formal model that says something about a trade-off between the generality of your feedback (output-only vs more general, `evidence partition assumption`) vs the generality of your learning. `Learning Normativity` Although I still find that direction interesting, I was not able to come up with something in one week, so I pivoted back to UDT.
+		- Context on what I was trying to do with UDT earlier in the month:
+			- I did an AI-powered experiment in the UDT representation theorem folder in [scrubbed], which has a lot of AI slop but is the only place I've captured some of the important intuitions.
+			- [scrubbed]
+			- [scrubbed]
+			- [scrubbed]
+			- I think some relevant ideas are also discussed in my logseq notes in relation to `unbounded embedded agency`. A UDT version of that theorem (for `UDT 1.0`, trust that it is `UDT 1.1`-optimal implies UDT1.1-optimality in fact) seems quite relevant to what I want to be doing, though it isn't obviously the _most_ directly relevant theorem to prove.
+		- Context on my week of thinking about the other idea:
+			- [scrubbed]
+			- [scrubbed]
+		- On Tuesday, I started this Claude chat, trying to think about how I want to represent UDT this time:
+			- [scrubbed]
+			- Other relevant chats:
+				- [scrubbed]
+				- [scrubbed]
+				- [scrubbed]
+				- [scrubbed]
+			- My attempt to write up the thing myself, started after 5pm on feb 19th:
+				- # Terminological & Notational Conventions
+					- Working with probability spaces and random variables, I'll be adopting a pointless style of presentation. However, I won't totally banish the point-set. Where possible, I'll use related symbols for related objects, like so:
+						- $P$ some set of interest
+						- $p$ an element of $P$
+						- $\overline P$ the canonical or most situationally relevant sigma-algebra used for interpreting P as a measurable space. It is a set of subsets of $P$, closed under compliment, countable unions, and countable intersections.
+						- $\overline p$ an event in $\overline P$
+						- $\hat P$ the measurable space $(P, \overline P)$.
+						- $\bold P$ the canonical or most situationally relevant probability distribution over $\hat P$
+						- $\bold{\hat P}$, the measure space, is all these wrapped together: $(P, \overline P, \bold P)$
+					- A random variable on $\hat P$ valued in $\hat Q$ is a sigma-algebra homomorphism from $\hat P$ to $\hat Q$; these will be denoted with bold lowercase letters:
+						- The morphism $\bold{\hat q}: \hat P \to \hat Q$ is implemented by a function $\bold q: \overline Q \to \overline P$ which preserves bot, compliments, and countable joins.
+							- $\bold q(\overline q)$ yields an element $\overline p$, and we shall not be overloading the function so that $\bold {\hat q}(p)$ yields $p$; this operation isn't always well-defined given the way we define random variables here.
+								- The random variable doesn't always correspond to a function on the underlying sets because the underlying set may be more coarse-grained than the sigma-algebra can express.
+							- However, $\bold {\hat q} : \hat P \to \hat Q$ is the direction of the morphism, conceptually; mapping events backwards is like mapping points forwards.
+							- Note that for $\hat{\bold b} : \hat A \to \hat B$ and $\hat{\bold c} : \hat B \to \hat C$, the random variable given by chaining the morphisms $\hat{\bold c} \circ \hat{\bold b} : \hat A \to \hat C$ is implemented by $\bold b \circ \bold c : \overline C \to \overline A$.
+						- Given a random variable $\bold q: \overline Q \to \overline P$, its **image** $\bold q (\overline Q) = \{\bold q (\overline q) : \overline q \in \overline Q\}$ is a sub-sigma-algebra of $\overline P$.
+						- Given a random variable $q$ on $P$ and a measure $\bold P$, the pushforward $\bold q _* \bold P$ is the measure on $\hat Q$ defined by $(\bold q_* \bold P)(\overline q) = \bold P\big(\bold q(\overline q)\big)$. This is like $\bold P$'s opinion about which element $q \in Q$ obtains. When the meaning is clear, we can write $\bold P(\overline q)$ as an abbreviation of $\bold P\big(\bold q(\overline q)\big)$
+							- $q$ is **probability-preserving** when $\bold P(\overline q) = \bold Q(\overline q)$.
+						- ## Random Variables as Elements
+						  The point of treating a sigma-algebra homomorphism $\bold q$ as a random variable is to treat it like a stochastic element $q$ in $Q$. For example:
+							- A set function $f: Q \to R$ can be applied to form a new random variable $f(\bold q)$.
+							- $(\bold q, \bold r)$ is the random variable of type $\hat P \to \hat{Q} \times \hat{R}$ implemented by mapping elements $(q,r) \in Q \times R$ to $\bold q(q) \cap \bold r(r)$.
+							-
+					- $\hat P$ is a (strict) subspace (or coarsening) of $\hat Q$, and $\hat Q$ its superspace (or refinement), iff $\overline P$ is a sub-algebra of $\overline Q$; that is, there exists a $\bold p$. Typically, a distinguished $\bold p$ tells us how to canonically interpret $\overline p$ as $\overline q$. If $\bold p$ is also probability-preserving, then $\bold{\hat P}$ is also a coarsening of $\bold{\hat Q}$, and $\bold{\hat{Q}}$ its refinement.
+				- # Superconditioning with Mismatched Ontologies
+					- Consider an agent's belief at an earlier time $P$ and later $P'$. This change in belief need not come from a Bayesian update; it can be a totally arbitrary shift. However, our goal is to analyze it as a Bayesian update in a superspace of $\hat P$.
+						- This seems very sensible since a probability space is always an interpretation we are layering over an agent; to understand something as an agent is (arguably) to interpret it as having beliefs (and goals); probabilities are simply the most popular way to formalize this.
+					- A **Conditioning Model** for $(\bold{\hat P}, \bold{\hat P'})$ is a tuple $(\bold{\hat L}, \bold p, \bold p', \overline l)$ satisfying:
+						- $\bold p: \overline P \to \overline L$ is probability-preserving with respect to $L$; this tells us how to interpret $\hat P$ as a subspace of $\hat L$, and makes $\bold{\hat L}$ a refinement of $\bold{\hat P}$.
+						- $\bold p' : \overline P' \to \overline L$ is probability-preserving with respect to $\bold L'$, defined as:
+							- $\bold L'(\overline l') = \bold L(\overline l' | \overline l)$
+								- $=\frac{\bold L(\overline l \cap \overline l')}{\bold L(\overline l)}$
+						- IE, $\bold P'$ matches the results of updating $\bold P$ on $\overline l_1$, in so far as we can make the statement meaningful by looking at their common information.
+					- **Theorem** (diaconis-zabell for mismatched ontologies): A conditioning model for $(\bold{\hat P}, \bold{\hat P}')$ always exists.
+						- **Proof**: Consider $\bold{\hat L} = \bold{\hat P} \times \bold{\hat P}'$, with $\overline l = \top$.
+					- The above theorem shows that diaconis-zabell becomes trivial if we allow for ontology shifting with no constraint. This makes intuitive sense: if my ontology tomorrow is unfathomable from today's perspective, then there's nothing I can say about it. However, more generally, we expect some things about our future selves to be fathomable. Therefore, let's try to capture more structure relating $\hat{\bold P}$ and $\hat{\bold P}'$.
+					- ## Common Information
+						- Given two random variables in $\hat P$, namely $\bold q$ and $\bold r$, their **Gács-Körner common information** is $\overline Q \wedge_{\bold q, \bold r} \overline R = \bold q(\overline Q) \cap \bold r(\overline R)$. This may be trivial (algebra is just top and bot) even if the two variables have positive mutual information, if they're only probabilistically connected (each pairing has some probability). The common information consists only of events which you could read off from either variable.
+						- **common information structure** for $(\hat P, \hat P')$ is a triple $(\hat C, \bold c, \bold c')$ where $\bold c : \hat P \to \hat C$ (interpreting C events in P), and similarly for $\bold c'$ and $P'$. Think of $\hat C$ as the concepts shared between $\hat P$ and $\hat P'$.
+							- Write $\bold C = c_* \bold P$ and $C' = \bold c'_* \bold P'$ for the induced measures. Note that these are not required to agree; the distributions are allowed to have different _opinions_ on shared _topics_.
+						- Given a common information structure, a conditioning model **respects common information** iff:
+							- $\bold c \circ \bold p = \bold c' \circ \bold p'$
+							- That is: events $\overline c$ can be mapped from $\hat C$ to $\hat L$ by applying $\bold c$ to translate $\overline c$ to $\overline p$, and then applying $\bold p$ to translate the result to $\overline l$; or, the same with $\bold p'$ and $\bold c'$. Both pathways produce the same result.
+							- Write $\bold c_L = \bold c \circ \bold p = \bold c' \circ \bold p'$ for the resulting random variable.
+						- For $(\hat{\bold L}, \bold p, \bold p', \overline l)$ that respects common information,
+							- Since $\bold p_* \bold L = \bold P$ and $\bold c \circ \bold p = \bold c_L$:
+								- $(\bold c_L)_* \bold L = \bold c_* \bold P = \bold C$
+							- Analogously,
+								- $(\bold c_L)_* \bold L' = \bold c'_* \bold P' = \bold C'$
+							-

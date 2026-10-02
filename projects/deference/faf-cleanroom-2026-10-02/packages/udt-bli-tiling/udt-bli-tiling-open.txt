@@ -1,0 +1,2 @@
+# udt-bli-tiling: declarations allowed to use `sorry` (explicitly open statements only).
+# Format as the root OPEN.txt: `Fully.Qualified.Name  # reason`.

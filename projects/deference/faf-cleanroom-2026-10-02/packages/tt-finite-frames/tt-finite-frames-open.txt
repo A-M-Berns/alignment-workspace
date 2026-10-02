@@ -1,0 +1,5 @@
+# tt-finite-frames — open statements (same format as the root OPEN.txt: `Fully.Qualified.Name  # reason`).
+# None filed. T6 (decidability of finite Total Trust) has no honest Prop-level statement in this
+# package's vocabulary (a `sorry`ed `Decidable` instance would be a fake, see the report); G8(a)
+# (continuous payoffs on uncountable frames) is outside the finite vocabulary and is recorded in
+# the report as an open question of the source, not as a Lean statement.

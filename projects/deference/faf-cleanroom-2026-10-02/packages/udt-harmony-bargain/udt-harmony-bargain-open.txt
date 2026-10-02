@@ -1,0 +1,2 @@
+# udt-harmony-bargain: deliberately open statements (format as OPEN.txt).
+# (none yet)

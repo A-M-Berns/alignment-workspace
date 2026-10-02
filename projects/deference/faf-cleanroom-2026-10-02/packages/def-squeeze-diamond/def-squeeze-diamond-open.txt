@@ -1,0 +1,7 @@
+# def-squeeze-diamond: declarations allowed to use `sorry` (explicitly open statements only).
+# One per line: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.
+# None. The mandate's three permitted OPENs did not arise: `reindexLUV_codes` is FAF's
+# `LUV.MachineThresholdCodeSeq.reindex`; `deferredLiar_exists` is `deferredLiarOfDiagonal`
+# (FAF's diagonal over the deferred market presentation); the ledger product (target 8,
+# stretch) was not attempted. What is not done is stated as disclosed clauses, never as sorry:
+# see `def-squeeze-diamond-report.md` §State of the package.

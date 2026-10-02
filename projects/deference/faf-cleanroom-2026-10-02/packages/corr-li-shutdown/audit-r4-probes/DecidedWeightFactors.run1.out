@@ -1,0 +1,151 @@
+Thu Oct  1 19:55:13 EDT 2026
+[lean-slot] all 3 slots busy or memory low; waiting (0s)
+[lean-slot] all 3 slots busy or memory low; waiting (60s)
+[lean-slot] all 3 slots busy or memory low; waiting (120s)
+[lean-slot] all 3 slots busy or memory low; waiting (180s)
+[lean-slot] all 3 slots busy or memory low; waiting (240s)
+[lean-slot] all 3 slots busy or memory low; waiting (300s)
+[lean-slot] all 3 slots busy or memory low; waiting (360s)
+[lean-slot] all 3 slots busy or memory low; waiting (420s)
+[lean-slot] all 3 slots busy or memory low; waiting (480s)
+[lean-slot] all 3 slots busy or memory low; waiting (540s)
+[lean-slot] all 3 slots busy or memory low; waiting (600s)
+[lean-slot] all 3 slots busy or memory low; waiting (660s)
+[lean-slot] all 3 slots busy or memory low; waiting (720s)
+[lean-slot] all 3 slots busy or memory low; waiting (780s)
+[lean-slot] all 3 slots busy or memory low; waiting (840s)
+[lean-slot] all 3 slots busy or memory low; waiting (900s)
+[lean-slot] all 3 slots busy or memory low; waiting (960s)
+[lean-slot] all 3 slots busy or memory low; waiting (1020s)
+[lean-slot] all 3 slots busy or memory low; waiting (1080s)
+[lean-slot] all 3 slots busy or memory low; waiting (1140s)
+[lean-slot] all 3 slots busy or memory low; waiting (1200s)
+[lean-slot] all 3 slots busy or memory low; waiting (1260s)
+[lean-slot] all 3 slots busy or memory low; waiting (1320s)
+[lean-slot] all 3 slots busy or memory low; waiting (1380s)
+[lean-slot] all 3 slots busy or memory low; waiting (1440s)
+[lean-slot] all 3 slots busy or memory low; waiting (1500s)
+[lean-slot] all 3 slots busy or memory low; waiting (1560s)
+[lean-slot] all 3 slots busy or memory low; waiting (1620s)
+[lean-slot] all 3 slots busy or memory low; waiting (1680s)
+[lean-slot] all 3 slots busy or memory low; waiting (1740s)
+[lean-slot] all 3 slots busy or memory low; waiting (1800s)
+[lean-slot] all 3 slots busy or memory low; waiting (1860s)
+[lean-slot] all 3 slots busy or memory low; waiting (1920s)
+[lean-slot] all 3 slots busy or memory low; waiting (1980s)
+[lean-slot] all 3 slots busy or memory low; waiting (2040s)
+[lean-slot] all 3 slots busy or memory low; waiting (2100s)
+[lean-slot] all 3 slots busy or memory low; waiting (2160s)
+[lean-slot] all 3 slots busy or memory low; waiting (2220s)
+[lean-slot] all 3 slots busy or memory low; waiting (2280s)
+[lean-slot] all 3 slots busy or memory low; waiting (2340s)
+[lean-slot] all 3 slots busy or memory low; waiting (2400s)
+[lean-slot] all 3 slots busy or memory low; waiting (2460s)
+[lean-slot] all 3 slots busy or memory low; waiting (2520s)
+[lean-slot] all 3 slots busy or memory low; waiting (2580s)
+[lean-slot] all 3 slots busy or memory low; waiting (2640s)
+[lean-slot] all 3 slots busy or memory low; waiting (2700s)
+[lean-slot] all 3 slots busy or memory low; waiting (2760s)
+[lean-slot] all 3 slots busy or memory low; waiting (2820s)
+[lean-slot] all 3 slots busy or memory low; waiting (2880s)
+[lean-slot] all 3 slots busy or memory low; waiting (2940s)
+[lean-slot] all 3 slots busy or memory low; waiting (3000s)
+[lean-slot] all 3 slots busy or memory low; waiting (3060s)
+[lean-slot] all 3 slots busy or memory low; waiting (3120s)
+[lean-slot] all 3 slots busy or memory low; waiting (3180s)
+[lean-slot] acquired slot 0 after 3210s
+run/wp/corr-li-shutdown/audit-r4-probes/DecidedWeightFactors.lean:72:32: warning: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  simp only [List.mem_cons, L̵i̵s̵t̵.̵m̵e̵m̵_̵s̵i̵n̵g̵l̵e̵t̵o̵n̵,̵ ̵List.not_mem_nil, or_false] at hp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-li-shutdown/audit-r4-probes/DecidedWeightFactors.lean:77:32: warning: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  simp only [List.mem_cons, L̵i̵s̵t̵.̵m̵e̵m̵_̵s̵i̵n̵g̵l̵e̵t̵o̵n̵,̵ ̵List.not_mem_nil, or_false] at hp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-li-shutdown/audit-r4-probes/DecidedWeightFactors.lean:87:0: warning: automatically included section variable(s) unused in theorem `Cleanroom.Corrigibility.CorrLiShutdown.AuditR4.probe_currentWeight_mesh_valuesAt`:
+  [Consistent T]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Consistent T] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+run/wp/corr-li-shutdown/audit-r4-probes/DecidedWeightFactors.lean:156:22: error: Ambiguous term
+  sub_zero
+Possible interpretations:
+  _root_.sub_zero : ∀ (a : ?m.504), a - 0 = a
+  
+  Arithmetic.sub_zero : ∀ (a : ?m.504), a - 0 = a
+run/wp/corr-li-shutdown/audit-r4-probes/DecidedWeightFactors.lean:183:20: error: Ambiguous term
+  sub_zero
+Possible interpretations:
+  _root_.sub_zero : ∀ (a : ?m.814), a - 0 = a
+  
+  Arithmetic.sub_zero : ∀ (a : ?m.814), a - 0 = a
+run/wp/corr-li-shutdown/audit-r4-probes/DecidedWeightFactors.lean:102:72: error: unsolved goals
+T : ArithmeticTheory
+inst✝² : Theory.Δ₁ T
+inst✝¹ : 𝗣𝗔⁻ ⪯ T
+inst✝ : Consistent T
+X : ℕ → LUV
+hX : LUV.MachineThresholdCodeSeq X
+hval : Valued (paperDP T) X
+w : ℕ → ℚ
+hmem : ∀ (n : ℕ), 0 ≤ w n ∧ w n ≤ 1
+hw : PGenerableRat (liaHistory (paperDP T)) w
+this : IsLogicalInductor (liaHistory (paperDP T)) (paperDP T)
+a : ℕ → EF
+ha : GeneratedRatFeature (liaHistory (paperDP T)) w a
+haW : PGenerableWeighting a
+Z : ℕ → LUV := meshProductLUV (paperCurrentWeightQuoteCode T w hw hmem) X
+hZdef : Z = meshProductLUV (paperCurrentWeightQuoteCode T w hw hmem) X
+hZ : LUV.MachineThresholdCodeSeq Z
+S : LUVCombinationSyntax (probeComb a X Z)
+hbdd : ∀ (n : ℕ), (probeComb a X Z n).l1Norm (liaHistory (paperDP T)) ≤ 2
+hmesh :
+  ∀ (n : ℕ) (v : PCWorld),
+    v.ConsistentWithTheory (paperDP T) →
+      ∀ (x : ℝ), v.ValuesAt (X n) x → ∃ z, v.ValuesAt (Z n) z ∧ |z - x * ↑(w n)| ≤ 1 / (↑n + 1)
+hwv : LUVCombination.WorldValued (probeComb a X Z) (paperDP T)
+hvalue :
+  ∀ (n : ℕ) (v : PCWorld),
+    v.ConsistentWithTheory (paperDP T) →
+      ∀ (ν : LUV → ℝ),
+        LUVCombination.ValuesAt v (probeComb a X Z n) ν →
+          |(probeComb a X Z n).value (liaHistory (paperDP T)) ν| ≤ 1 / (↑n + 1)
+hworld : ∀ (n : ℕ), ∃ v, v.ConsistentWith ((paperDP T).D n)
+hsmall : ∀ ε > 0, ∀ᶠ (n : ℕ) in atTop, 1 / (↑n + 1) ≤ ε
+hle : ∀ ε > 0, (fun n => (probeComb a X Z n).expect (liaHistory (paperDP T)) n) ≲ₙ fun x => ε
+hge : ∀ ε > 0, (fun n => (probeComb a X Z n).expect (liaHistory (paperDP T)) n) ≳ₙ fun x => -ε
+ε : ℝ
+hε : ε > 0
+h1 :
+  ∀ᶠ (n : ℕ) in atTop, (fun n => (probeComb a X Z n).expect (liaHistory (paperDP T)) n) n ≤ (fun x => ε / 4) n + ε / 4
+h2 :
+  ∀ᶠ (n : ℕ) in atTop,
+    (fun x => -(ε / 4)) n ≤ (fun n => (probeComb a X Z n).expect (liaHistory (paperDP T)) n) n + ε / 4
+n : ℕ
+hn1 : ↑(w n) * LUV.expect (liaHistory (paperDP T)) n (X n) - LUV.expect (liaHistory (paperDP T)) n (Z n) ≤ ε / 4 + ε / 4
+hn2 :
+  -(ε / 4) ≤ ↑(w n) * LUV.expect (liaHistory (paperDP T)) n (X n) - LUV.expect (liaHistory (paperDP T)) n (Z n) + ε / 4
+⊢ |LUV.expect (liaHistory (paperDP T)) n (Z n) - ↑(w n) * LUV.expect (liaHistory (paperDP T)) n (X n) - 0| < ε
+run/wp/corr-li-shutdown/audit-r4-probes/DecidedWeightFactors.lean:131:30: warning: This simp argument is unused:
+  List.mem_singleton
+
+Hint: Omit it from the simp argument list.
+  simp only [List.mem_cons, L̵i̵s̵t̵.̵m̵e̵m̵_̵s̵i̵n̵g̵l̵e̵t̵o̵n̵,̵ ̵List.not_mem_nil, or_false] at hp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'Cleanroom.Corrigibility.CorrLiShutdown.AuditR4.probe_currentWeight_mesh_valuesAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Cleanroom.Corrigibility.CorrLiShutdown.AuditR4.probe_decidedWeight_factors' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+exit=1
+Thu Oct  1 20:49:12 EDT 2026

@@ -1,0 +1,2 @@
+# legit-neg-static: deliberately open statements (format as the root OPEN.txt).
+# None as of 2026-09-29: every target of the mandate is proved or refuted without `sorry`.

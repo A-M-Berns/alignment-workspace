@@ -1,0 +1,3 @@
+Cleanroom.Uea.UeaColeShadow.Model.theoremC_log_open  # Theorem C, ln⁺ form (sequential-self-game §4.1 Steps 5–7): horizon form proved as theoremC; the path-telescoping/log estimate not organised by the depth induction
+Cleanroom.Uea.UeaColeShadow.Model.pure_exists_open  # pure plain fixed points for every model (note §4.5 CONJECTURE ~0.6, search evidence only; T = 2 proved in PureT2)
+Cleanroom.Uea.UeaColeShadow.Model.pure_floored_exists_open  # pure floored fixed points for every model (the floored half of the same CONJECTURE; T = 2 proved in PureT2)

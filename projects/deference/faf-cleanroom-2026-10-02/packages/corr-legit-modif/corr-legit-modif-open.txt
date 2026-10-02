@@ -1,0 +1,2 @@
+# corr-legit-modif — open statements (same format as the root OPEN.txt).
+# `Fully.Qualified.Name  # reason`. Empty so far.

@@ -1,0 +1,7 @@
+# legit-neg-pricing: deliberately open statements (format as the root OPEN.txt).
+# None as of 2026-09-30: every target of the mandate that is stated in Lean is proved without `sorry`.
+# The mandate's optional OPEN (existence of a `MixedRatifiable` credence for every finite problem,
+# a Nash-type statement) was NOT stated: it is `fix-kakutani` territory and the mandate says not
+# to attempt it; recording it here as a comment keeps the gate's open list exact.
+# Declarations allowed to use `sorry`: explicitly open statements only.
+# One per line: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.

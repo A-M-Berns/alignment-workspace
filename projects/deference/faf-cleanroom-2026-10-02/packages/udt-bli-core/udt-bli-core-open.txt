@@ -1,0 +1,2 @@
+# udt-bli-core: declarations allowed to use `sorry` (explicitly open statements only).
+# One per line: `Fully.Qualified.Name  # reason`.

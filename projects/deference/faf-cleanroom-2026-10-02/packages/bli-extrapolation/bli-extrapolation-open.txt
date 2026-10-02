@@ -1,0 +1,5 @@
+# bli-extrapolation: declarations allowed to use `sorry` (explicitly open statements only).
+# Format as the root OPEN.txt: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.
+# Empty since repair round 1 (2026-09-30): the two round-1 OPEN rows (`digitSentence_holds_iff`,
+# `values_eq_of_digits`, both Dyadic.lean) are proved. See the report §6 and §Repair round 1.
+# Repair round 2 (2026-09-30) added no open statement: 4c(ii) and 5d are proved (Decay.lean, Product.lean).

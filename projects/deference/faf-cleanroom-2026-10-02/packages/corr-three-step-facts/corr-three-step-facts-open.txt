@@ -1,0 +1,2 @@
+# corr-three-step-facts: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+Cleanroom.Corrigibility.CorrThreeStepFacts.hullCondition_of_defers  # necessity of the hull condition for question-relative deference (mm open problem 6): needs Farkas' lemma for a finitely generated cone in `Q → ℝ` (Mathlib has `ProperCone.hyperplane_separation'` for closed cones and `PointedCone.DualFG` for H-cones, not Minkowski–Weyl); the cone argument is in the docstring; see corr-three-step-facts-report "Repair round 1" and F-6

@@ -1,0 +1,6 @@
+# udt-endorse-policy: deliberately open statements (format as the root OPEN.txt).
+# None as of 2026-09-30: every target statement in Cleanroom.Udt.UdtEndorsePolicy is proved.
+# The stretch questions left in prose (report §Stretch and open) — T3(e)'s
+# ExpectationEndorsedAll ⟺ calibration-up-to-kernel-coarsening, T6(e)'s strict-argmax
+# acyclicity for the control form, T2(c)'s proper-scoring-rule form, T11(b)'s Lawvere
+# obstruction — have no Lean statement in the package and so no entry here.

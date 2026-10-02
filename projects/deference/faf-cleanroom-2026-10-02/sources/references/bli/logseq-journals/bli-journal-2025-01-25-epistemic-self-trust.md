@@ -1,0 +1,65 @@
+---
+journal: Daily
+journal-date: 2025-01-25
+---
+- `epistemic self-trust` `Sam's Bayesian Logical Induction`
+	- A little philosophy: observing the beliefs is the only plausible alternative, once we've discarded the `evidence partition assumption`.
+	- I want to review some portions of the `logical induction` paper.
+		- Section 4.12, Self-Trust:
+			- I want to make notes on all the important notation here so that I can read it straight through without needing to flip back to sections where notation was defined.
+				- $f$ a deferral function
+					- A function $f: \mathbb{N}^+$ is called a ***deferral function*** if
+						- $f(n)>n$ for all $n$
+						- $f(n)$ can be computed in time poly in f(n).
+					- "f defers n to f(n)"
+				- $\overline \phi$ an e.c. sequence of sentences
+				- $\overline \delta$ an e.c. sequence of rational numbers
+				- page 14, 15
+					- Let $\mathcal{L}$ be a language of propositional logic, and $\mathcal{S}$ be the set of all sentences in $\mathcal{L}$.
+					- A ***valuation*** is any function $\mathbb{V}: \mathcal{S} \to [0,1]$.
+						- $\mathbb{V}(\phi)$ is the value of $\phi$ according to $\mathbb{V}$.
+						- A valuation is called rational if its image is in $\mathbb{Q}$.
+					- A ***pricing*** $\mathbb{P}: \mathcal{S}\to \mathbb{Q}\cap[0,1]$ is any computable rational valuation. If $\mathbb{P}(\phi)=p$ we say that the price of a $\phi$-share according to $\mathbb{P}$ is $p$, where the intended interpretation is that a $\phi$-share is worth \$1 if $\phi$ is true.
+					- A ***market*** $\overline{\mathbb{P}}=(\mathbb{P}_1, \mathbb{P}_2, ...)$ is a computable sequence of pricings $\mathbb{P}_i : \mathcal{S}\to \mathbb{Q}\cap[0,1]$.
+					- A ***belief state*** $\mathbb{P}: \mathcal{S}\to\mathbb{Q}\cap [0,1]$ is a computable rational valuation with finite support, where $\mathbb{P}(\phi)$ is interpreted as the probability of $\phi$ (which is 0 for all but finitely many $\phi$).
+					- Definition 3.1.5 (Computable Belief Sequence). A computable belief sequence
+					  $\overline{\mathbb{P}}=(\mathbb{P}_1, \mathbb{P}_2, ...)$ is a computable sequence of belief states, interpreted as a reasoner’s explicit beliefs about logic as they are refined over time.
+				- $\overline p$ is a $\overline {\mathbb{P}}$-generable sequence of rational probabilities
+					- A sequence of rational numbers $\overline q$ is generable from $\overline{\mathbb{P}}$ if there exists an e.c. $\mathcal{EF}$-progression $\overline {q^\dagger}$ such that $q_n^\dagger \overline{\mathbb{P}})=q_n$ for all n.
+						- $\mathcal{EF}$-progression?
+							- page 17
+							- A valuation feature $\alpha : [0,1]^{\mathcal{S} \times \mathbb{N}^+} \to \mathbb{R}$ is a continuous function from valuation sequences to real numbers suth that $\alpha(\overline{\mathbb{V}})$ depends only on the initial sequence $\mathbb{V}_{\leq n} for some $n \in \mathbb{N}^+$ called the rank of the feature, $\text{rank}(\alpha)$. For any $m \geq n$, we define $\alpha (\mathbb{V}_{\leq m}) in the natural way. We will often deal with features that have ranges in $[0,1]$; we call these $[0,1]$-features.
+								- We write $\mathcal{F}$ for the set of all features, $\mathcal{F}_n$ for the set of valuation features of rank $\leq n$, and define an $\mathcal{F}$-progression $\overline \alpha$ to be a sequence of features such that $\alpha_n \in \mathcal{F}_n$.
+							- Definition 3.4.2 (Price Feature). For each $\phi \in \mathcal{S}$ and $n \in \mathbb{N}^+$, we define a price feature $\phi^{*n} \in \mathcal{F}_n$ by the formula
+								- $\phi^{*n} (\overline{\mathbb{V}}) := \mathbb{V}_n(\phi)$
+								- We call these “price features” because they will almost always be applied to a market $\overline{\mathbb{P}}$, in which case $\phi^{*n}$ gives the price $\mathbb{P}_n(\phi)$ of $\phi$ on day $n$ as a function of $\overline{\mathbb{P}}$.
+							- Definition 3.4.3 (Expressible Feature). An expressible feature $\xi \in \mathcal{F}$ is a valuation feature expressible by an algebraic expression built from price features $\phi^{*n} for each $n\in\mathbb{N}^+$ and $\phi\in\mathcal{S}$, rational numbers, addition, multiplication, max, and "safe reciprocation" $max(1,-)^{-1}$. See appendix A.2 for more details and examples.
+								- We write $\mathcal{EF}$ for the set of all expressible features, $\mathcal{EF}_n$ for the set of expressible features of rank ≤ n, and define an $\mathcal{EF}$-progression to be a sequence $\overline\xi$ such that $\xi_n \in \mathcal{EF}_n$.
+								- For those familiar with abstract algebra, note that for each n, $\mathcal{EF}_n$ is a commutative ring. We will write $2-\phi^{*6}$ for the function $\overline{\mathbb{V}} \mapsto 2-\phi^{*6}(\overline{\mathbb{V}})$ and so on, in the usual way.
+								- For example, the feature $$\xi := max(o, \phi^{6*}-\psi^{*7})$$ checks whether the value of $\phi$ on day 6 is higher than the value of $\psi$ on day 7. If so, it returns the difference; if not, 0. If $\xi$ is applied to market $\overline{\mathbb{P}}$, and $\mathbb{P}_6(\phi)=0.5$ and $\mathbb{P}_7(\psi)=0.2$, then $\xi(\overline{\mathbb{P}})=0.3$. Observe that $rank(\xi)=7$, and $\xi$ is continuous.
+				- $\mathbb{E}_n$
+					- page 40
+					- Expectations of LUVs could be defined according to the limit of the obvious discrete sums over intervals, but this can sum to more than 1 in cases where the LI hasn't yet proven that the LUV takes on a unique value (ie, in worlds where the formula is satisfied by multiple values). This is inconvenient for the purpose of representing expectations of LUVs as LUVs themselves, since LUVs have been restricted to [0,1].
+					- Instead, the idea is to take a hint from cumulative distribution functions. For any valuation (ie set of prices) $\mathbb{V}$, with precision $k$:
+						- $$\mathbb{E}^{\mathbb{V}}_k (X) := \sum_{i=0}^{k-1} \mathbb{V}(``\underline{X} > \underline{i} / \underline{k}")$$
+						- It is often useful to consider the limit of $\mathbb{E}_k^{\mathbb{P}_n}$ where both k and n approach infinity; the LI paper makes the fairly arbitrary choice to focus on k=n in such cases:
+							- $$\mathbb{E}_n := \mathbb{E}_n^{\mathbb{P}_n}$$
+				- mathbb 1
+					- page 40
+					- This is just a LUV that's 1 if the given statement is true and 0 if false.
+				- $\text{Ind}_\delta$
+					- page 28
+						- $\text{Ind}_\delta(x>y) := \begin{cases} 0 \text{ if } x \leq y \\ \frac{x-y}{\delta} \text{ if } y < x \leq y+\delta \\ 1 \text{ if } y+\delta<x \end{cases}$
+						- $\text{Ind}_\delta(x<y)$ is defined similarly, and
+							- $\text{Ind}_\delta(a<x<b) := \text{min}\big(\text{Ind}_\delta(a<x), \text{Ind}_\delta(x<b)\big)$
+						- Note that these indicators have no false positives.
+				- underline all over the place
+					- This is just the same thing as my quasi-quotes.
+			- I want to get clear on the final theorem, Theorem 4.12.4 (Self-Trust), making notes on stronger and weaker versions of the property.
+				- **Theorem 4.12.4** (Self-Trust). Let $f$ be a deferral function, $\overline\phi$ be an e.c. sequence of positive rational numbers, and $\overline p$ be a $\overline{\mathbb{P}}$-generable sequence of rational numbers. Then:
+					- $$\mathbb{E}_n\Big(``\underline{1(\phi_n)} \cdot \underline{\text{Ind}_{\delta_n}}\big(\underline{\mathbb{P}_{f(n)}}(\underline{\phi_n})>\underline{p_n}\big)"\Big)\gtrapprox_n p_n \cdot \mathbb{E}_n \Big(``\underline{\text{Ind}_{\delta_n}} \big(\underline{\mathbb{P}_{f(n)}}(\underline{\phi_n})>\underline{p_n}\big)"\Big)$$
+					-
+			- I want to relate back to BLI. Can we make a variant of LI which enforces a stronger version of this property from the beginning, instead of learning the property asymptotically?
+		- Looking for some details of the proof that LIA satisfies LIC
+			- Looking for the super-trader and checking the idea that we can prove LIC by checking just one powerful trader.
+			- Looking for the details on how the weird definition of exploitation can be argued impossible.

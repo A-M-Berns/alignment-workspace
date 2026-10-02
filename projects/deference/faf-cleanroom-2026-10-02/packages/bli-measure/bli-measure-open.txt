@@ -1,0 +1,27 @@
+# bli-measure: declarations allowed to use `sorry` (explicitly open statements only).
+# Format as the root OPEN.txt: `Fully.Qualified.Name  # reason`.
+# Target 7 (mandate: "stretch → OPEN with obstructions"): B3 of record as a logical inductor. The
+# obstructions are named separately in Lic.lean (ObstructionBaseComputable — open upstream in
+# bli-coherent-mm, never discharged here; ObstructionB3Computable — B3 is noncomputable as defined:
+# ComputableMarket is undetermined from the definition, no computable presentation, finding F5;
+# ObstructionE1x — exact small agreement with the base only on the state-free part of smallSet n and
+# only on the denominator mesh, refuted on past state atoms on every mesh (Refuted.lean,
+# paper_obstructionE1x_refuted, repair round 1); (iii) EF-expressibility not attempted, the
+# obstruction recorded in prose only). The paper-process instance rests on the general open statement and is listed too.
+Cleanroom.Bli.BliMeasure.pcB3_isLogicalInductor_open  # target 7: IsLogicalInductor for B3 over the coherent recursion of record and its state-learning process bliDP; obstructions (i) ComputableMarket (pcHistory DP ov smallSet) open upstream (bli-coherent-mm F4), (i′) b3History uses Classical.choose twice (remainderRound, faceAverage) so ComputableMarket (b3History …) is not established and not refuted — the definition gives no computable presentation (findings F5), (ii) exact small agreement with the base holds only on the state-free part of smallSet n and only on the noncomputable denominator mesh, and is refuted on past state atoms on every mesh (paper_obstructionE1x_refuted), (iii) no EF-expressible re-pricing for the face kernel (not attempted; the obstruction is faceGen's existential filter and the chosen witnesses); see bli-measure-report.md §Target 7
+Cleanroom.Bli.BliMeasure.paperB3_isLogicalInductor_open  # target 7 over paperDP 𝗜𝚺₁: instance of pcB3_isLogicalInductor_open (rests on it; same obstructions)
+# Target 9 (mandate: "stretch; OPEN, statement only"): the coherent-introspective inductor of
+# bli-program-construction §3.11 (the OPEN strengthening of §3.5's coherent market maker), stated
+# over this package's objects (Introspective.lean); not attempted.
+# Repair round 1: the summand is 𝐏_n(⌜𝑸_m = q⌝) (not bli-found's superbelief, which is the
+# day-(n+1) atom whatever day q codes), and φ ranges within the day-m atom bound.
+# Repair round 2 (audit r2 adversarial B1, fidelity N2 (b)): the quote atoms are pinned — fresh
+# atoms of record (introQuote, bli-found's allocator, family 9) decided by an adjoined process
+# DP' ⊇ DP that carries exactly the base's own true quote literals, each eventually
+# (IntroQuoteProcess); the base is run over and inexploitable over DP'. Round 1's semantic clause
+# (which ⊤/⊥ satisfied) is now a theorem of that shape (IntroQuoteProcess.holds_introQuote_iff).
+Cleanroom.Bli.BliMeasure.coherentIntrospective_open  # target 9: for a base process with consistent stages mentioning no state or quote atom, an adjoined quote process DP' ⊇ DP (IntroQuoteProcess: exactly the base's own true quote literals introQuoteLit, each eventually), a coherent base over DP' inexploitable by every e.c. trader over DP', and a mesh, such that the base's day-n price of its own quote atom introQuote m φ lo hi (n < m, φ within the day-m bound) is B3's day-n mass ∑_q 𝐏_n(⌜𝑸_m = q⌝) over the day-m candidates whose value of φ lies in (lo, hi]; not attempted (route note: Soto's fixed-point obstruction, bli-soto-a-058 (ii), needs ctsInd); see bli-measure-report.md §Target 9
+# Target 6 (mandate: "stretch; C + N− + OPEN"): Conjecture 2 repaired (Norm.lean). (a) and (b) are
+# proved; (c) was stated OPEN through round 2 and is proved in repair round 2's push
+# (NormLimit.lean, normSum_tendsto_one — the row normSum_tendsto_one_open is retired); (d) is OPEN.
+Cleanroom.Bli.BliMeasure.normWeights_noExploit_open  # target 6 (d): no e.c. trader exploits (FAF's Exploits, the program's object of record) the sentence market induced by the normalized world measure, with an atom bound covering the day's small sentences (hB) and the day's stage (hBD, repair round 2 — audit r2 adversarial N3; over an arbitrary B, e.g. constant, the statement is argued false — audit r1 adversarial N11); bli-soto-a-2-002 (a) asks it of the repaired PC-criterion, whose relation to FAF's is 2-002 (iii)'s open question

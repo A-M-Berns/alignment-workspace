@@ -1,0 +1,4 @@
+# Declarations allowed to use `sorry`: explicitly open statements only (package dp-calibration).
+# One per line: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.
+# The gate (scripts/wp-audit) fails on any sorry not listed here, and on stale entries.
+Cleanroom.Decision.DpCalibration.testSeq_exists_open  # T16(d), DY-3: existence of a test-sequence tremble-EDT-consistent procedure on every finite tree with pruned chance over ℝ, with Definition 18's escape clause in D2At (repair round 1: the pre-repair statement lacked the clause and was refutable, findings F16); route is Kakutani per ε (the argmax correspondence is UHC with nonempty convex values — nonempty precisely because of the escape clause) plus compactness along a subsequence; dp-dutch-book discharges it once fix-kakutani lands (Devices.lean docstring, report §T16)

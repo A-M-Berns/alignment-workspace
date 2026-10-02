@@ -1,0 +1,17 @@
+control (eps=0, modest allowed): worst slack -0.0699 over 504 feasible LPs
+immodest, full support (eps=0.01): worst slack -2.510776 over 1278 feasible LPs
+types:
+ [[0.     0.0368 0.9632]
+ [0.     0.4364 0.5636]
+ [0.     0.6564 0.3436]]
+menu:
+ [[-0.0266  1.6854 -0.7132]
+ [ 0.9945 -0.9852  1.4426]
+ [ 0.3999  1.0498  0.3897]]
+j: 0
+masses m[t,c]:
+ [[0.   0.95 0.01]
+ [0.   0.01 0.01]
+ [0.   0.01 0.01]]
+cell marginal: [0.   0.97 0.03]
+EXIT 0

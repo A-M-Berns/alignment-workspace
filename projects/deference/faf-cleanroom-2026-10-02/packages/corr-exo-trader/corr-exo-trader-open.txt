@@ -1,0 +1,13 @@
+# corr-exo-trader: deliberately open statements (format as the root OPEN.txt).
+# Section A: this package's own OPEN statements (sorry in Open.lean).
+Cleanroom.Corrigibility.CorrExoTrader.exoHistory_computableMarket_of_ec  # T2.5: ComputableMarket certificate for the exo-market with an e.c. demand — FAF's LIACompiler route re-run with the demand as one more summand of the day action (a compiler project); corr-exo-trader-report T2.5
+Cleanroom.Corrigibility.CorrExoTrader.exo_isLogicalInductor_of_boundedLoss  # rests on T2.5 (IsLogicalInductor for the exo-market = T2.3 + the OPEN certificate + a computable process)
+Cleanroom.Corrigibility.CorrExoTrader.exo_u_price_converges  # T7.2 over the exo-market; rests on T2.5 through the class
+Cleanroom.Corrigibility.CorrExoTrader.selfCausedInvariant_compatible  # T8.3: the partial (self-caused) constraint over the exo-market needs a market that filters one component of the demand on the u-fragment only — neither FAF's market maker nor Lemma A; the naive splice may be exploitable (findings F8)
+Cleanroom.Corrigibility.CorrExoTrader.persistent_push_steers  # T10.1: the two-sided persistent reactive push (trade q − P_n(u) daily; two-sided since repair r2, audit r2 fidelity N3 — the one-sided candidate switched off above q) steers the exo-market's limiting belief on u to its target — requires controlling the fixed point against the firm's budget-capped opposition (corr-core-042's precise target, at one specific candidate)
+Cleanroom.Corrigibility.CorrExoTrader.pushInvariantOver_compatible  # repair r1 (B2): the full-invariance constraint *over the exo-market* (demand-blind on the u-fragment and equal to the exo-market off u) with NoEcExploit at every bounded-loss demand — the splice may be exploitable through mixed sentences (findings F8); corr-exo-trader-report § Repair round 1
+Cleanroom.Corrigibility.CorrExoTrader.genLic_boundedBelow_pointwise  # repair r1 (N5): the charitable reading of line 95's display — coefficient one on Loss for e.c. traders with bounded downside; the budgeted route (T2.2) gives only 1/w; possibly false; findings F2
+# Section B: statements resting on li-projection's OPEN (A) (mirrorStreamRewriter / affineComboRewriter) through Lemma A.
+Cleanroom.Corrigibility.CorrExoTrader.constraint_lic_compatible  # T8.2: rests on li-projection's OPEN (A) through project_const_isLogicalInductor
+Cleanroom.Corrigibility.CorrExoTrader.pinnedMarket_pushInvariant  # T8.2: rests on li-projection's OPEN (A) through project_const_isLogicalInductor
+Cleanroom.Corrigibility.CorrExoTrader.frontRun_witness  # T3.2 witness (N− since repair r1, audit B1): the NoEcExploit conjunct rests on li-projection's OPEN (A) through jeffrey_steering_finiteJumps

@@ -1,0 +1,5 @@
+# udt-paper-tiling: deliberately open statements (format as the root OPEN.txt).
+# One per line: `Fully.Qualified.Name  # reason`.
+# None as of repair round 1 (2026-10-01): the round-1 entry
+# Cleanroom.Udt.UdtPaperTiling.PaperStructure.elimSeq_eq_effCausal (order-independence of
+# iterated elim) is now proved (ElimOrder.lean, `ElimInv`/`elimInv_foldl`).

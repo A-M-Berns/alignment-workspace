@@ -1,0 +1,40 @@
+types (rational):
+  t0: ['0', '0', '1']
+  t1: ['0', '109/200', '91/200']
+  t2: ['37/200', '113/200', '1/4']
+  t3: ['21/100', '9/50', '61/100']
+  t4: ['61/201', '13/67', '101/201']
+  t5: ['41/100', '57/200', '61/200']
+  t6: ['97/100', '3/100', '0']
+  t7: ['1', '0', '0']
+rank of [p_t, 1]: 3 (3 needed for the pair-line system to be complete)
+margin 0.01: LP infeasible or tie/unused option
+margin 0.005: LP infeasible or tie/unused option
+margin 0.002: LP infeasible or tie/unused option
+margin 0.001: LP infeasible or tie/unused option
+margin 0.0005: LP infeasible or tie/unused option
+margin 0.0002: LP infeasible or tie/unused option
+margin 0.0: float optimum -0.008334
+  MD 100: pair-system exact TT False (min -153/20000), pattern True, slack None
+  MD 1000: pair-system exact TT False (min -12651/20000000), pattern True, slack None
+  MD 10000: pair-system exact TT False (min -181/4444000), pattern True, slack None
+  MD 100000: pair-system exact TT True (min 0), pattern True, slack -13869/1666700
+CERTIFIED (margin 0.0, mass grid 1/100000): exact pair-system TT ok, immodest full-support pattern ok, slack -13869/1666700 = -0.008321
+independent exact grid check: directions {-4..4}^3, all attained thresholds +-eps: 16659 checks, worst 0
+menu x_o:
+  o0: ['-19/20', '9/100', '11/50']
+  o1: ['41/100', '21/100', '-117/100']
+  o2: ['21/100', '-48/25', '77/50']
+best option per type: [2, 0, 0, 2, 2, 2, 1, 1]  j = 1
+masses m[t,c]:
+  t0: ['0', '0', '3415/50001']
+  t1: ['0', '1189/33334', '500/50001']
+  t2: ['1089/16667', '5463/33334', '500/50001']
+  t3: ['500/50001', '500/50001', '1402/50001']
+  t4: ['1489/100002', '1553/50001', '500/50001']
+  t5: ['179/16667', '6775/100002', '337/33334']
+  t6: ['500/50001', '500/50001', '0']
+  t7: ['43423/100002', '0', '0']
+worlds with positive mass: 18 ; cell marginal: ['27260/50001', '31837/100002', '13645/100002']
+written /home/smithy/inner-sandbox/research/faf-cleanroom/run/wp/corr-legit-general/audit-r4-probes/rec_immodest_seed0_certificate.json
+EXIT 0

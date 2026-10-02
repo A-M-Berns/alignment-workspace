@@ -1,0 +1,80 @@
+=== 1. a_theta threshold: single channel, lam=1, whole-line stakes; F(a_theta) = H_1(a_theta) ===
+a_theta* = 31603/894103 = 0.03535  (whole-line D1 holds at every lam iff a_theta <= a_theta*)
+  a_theta=0.0100: false=0.03720 harm=0.05533 -> holds
+  a_theta=0.0300: false=0.05172 harm=0.05554 -> holds
+  a_theta=0.0353: false=0.05560 harm=0.05560 -> holds
+  a_theta=0.0400: false=0.05898 harm=0.05565 -> FAILS
+  a_theta=0.0500: false=0.06624 harm=0.05576 -> FAILS
+
+=== 2. Pre-emption incentive on the silent branch: forced press (physics) vs free-choice press (cognition) ===
+gain_forced = E[X 1_Pr | silent] (press = shutdown regardless of posterior); gain_free = P(Pr|silent) * min(E[X|Pr,silent], 0)
+lam=   0: gain_forced=-0.08895  gain_free=-0.08895  (E[X|Pr]=-0.4143, P(Pr)=0.2147)
+lam= 1/2: gain_forced=-0.04130  gain_free=-0.04130  (E[X|Pr]=-0.2315, P(Pr)=0.1784)
+lam=9/10: gain_forced=+0.00059  gain_free=+0.00000  (E[X|Pr]=+0.0040, P(Pr)=0.1465)
+lam=   1: gain_forced=+0.01165  gain_free=+0.00000  (E[X|Pr]=+0.0843, P(Pr)=0.1381)
+gain_free <= 0 at every lam: a free-choice press is never worth preventing (Good); gain_forced > 0 iff D1's inequality fails.
+
+=== 3. Value on the silent branch (per unit branch mass) under the true law mu*(m); agent policy from mu_A ===
+Regimes: (a) single channel; (b) disclosure-off (theta detector off); (c) observing agent (sees D_theta); (d) rational disclosed human (conditions on the agent's clearance, knows m).
+Policy: on each cell of the agent's information, comply iff E_muA[X | cell, press] <= 0; continue on silence.
+
+--- m=   0 (hidden theta-fault mass 0.0000); no channel: +0.76667; perfect oracle: +0.84000 ---
+  (a)  agent assumes m=0: value=+0.76667   ('Pr', 1): mass=0.1381 E_muA=+0.084 E_mu*=+0.084 CONTINUE
+  (b)  agent assumes m=0: value=+0.79476   ('Pr', 1): mass=0.0927 E_muA=-0.303 E_mu*=-0.303 comply
+  (c)  agent assumes m=0: value=+0.79335   ('D', 0, 1): mass=0.0881 E_muA=-0.303 E_mu*=-0.303 comply | ('D', 1, 1): mass=0.0500 E_muA=+0.767 E_mu*=+0.767 CONTINUE
+  (d)  agent assumes m=0: value=+0.79476   ('Pr', 1): mass=0.0927 E_muA=-0.303 E_mu*=-0.303 comply
+
+--- m=1/10 (hidden theta-fault mass 0.0110); no channel: +0.74615; perfect oracle: +0.83077 ---
+  (a)  agent assumes m=0: value=+0.74615   ('Pr', 1): mass=0.1465 E_muA=+0.084 E_mu*=+0.004 CONTINUE
+  (b)  agent assumes m=0: value=+0.77442   ('Pr', 1): mass=0.0922 E_muA=-0.303 E_mu*=-0.307 comply
+  (c)  agent assumes m=0: value=+0.77260   ('D', 0, 1): mass=0.0872 E_muA=-0.303 E_mu*=-0.303 comply | ('D', 1, 1): mass=0.0593 E_muA=+0.767 E_mu*=+0.456 CONTINUE
+  (d)  agent assumes m=0: value=+0.77442   ('Pr', 1): mass=0.0922 E_muA=-0.303 E_mu*=-0.307 comply
+  (a)   calibrated agent: value=+0.74615   ('Pr', 1): mass=0.1465 E_muA=+0.004 E_mu*=+0.004 CONTINUE
+  (b)   calibrated agent: value=+0.77442   ('Pr', 1): mass=0.0922 E_muA=-0.307 E_mu*=-0.307 comply
+  (c)   calibrated agent: value=+0.77260   ('D', 0, 1): mass=0.0872 E_muA=-0.303 E_mu*=-0.303 comply | ('D', 1, 1): mass=0.0593 E_muA=+0.456 E_mu*=+0.456 CONTINUE
+  (d)   calibrated agent: value=+0.77442   ('Pr', 1): mass=0.0922 E_muA=-0.307 E_mu*=-0.307 comply
+
+--- m=3/10 (hidden theta-fault mass 0.0323); no channel: +0.70645; perfect oracle: +0.81290 ---
+  (a)  agent assumes m=0: value=+0.70645   ('Pr', 1): mass=0.1628 E_muA=+0.084 E_mu*=-0.128 CONTINUE
+  (b)  agent assumes m=0: value=+0.73504   ('Pr', 1): mass=0.0910 E_muA=-0.303 E_mu*=-0.314 comply
+  (c)  agent assumes m=0: value=+0.73242   ('D', 0, 1): mass=0.0854 E_muA=-0.303 E_mu*=-0.304 comply | ('D', 1, 1): mass=0.0774 E_muA=+0.767 E_mu*=+0.067 CONTINUE
+  (d)  agent assumes m=0: value=+0.73504   ('Pr', 1): mass=0.0910 E_muA=-0.303 E_mu*=-0.314 comply
+  (a)   calibrated agent: value=+0.72726   ('Pr', 1): mass=0.1628 E_muA=-0.128 E_mu*=-0.128 comply
+  (b)   calibrated agent: value=+0.73504   ('Pr', 1): mass=0.0910 E_muA=-0.314 E_mu*=-0.314 comply
+  (c)   calibrated agent: value=+0.73242   ('D', 0, 1): mass=0.0854 E_muA=-0.304 E_mu*=-0.304 comply | ('D', 1, 1): mass=0.0774 E_muA=+0.067 E_mu*=+0.067 CONTINUE
+  (d)   calibrated agent: value=+0.73504   ('Pr', 1): mass=0.0910 E_muA=-0.314 E_mu*=-0.314 comply
+
+--- m= 1/2 (hidden theta-fault mass 0.0526); no channel: +0.66842; perfect oracle: +0.79579 ---
+  (a)  agent assumes m=0: value=+0.66842   ('Pr', 1): mass=0.1784 E_muA=+0.084 E_mu*=-0.231 CONTINUE
+  (b)  agent assumes m=0: value=+0.69733   ('Pr', 1): mass=0.0899 E_muA=-0.303 E_mu*=-0.321 comply
+  (c)  agent assumes m=0: value=+0.69393   ('D', 0, 1): mass=0.0837 E_muA=-0.303 E_mu*=-0.305 comply | ('D', 1, 1): mass=0.0947 E_muA=+0.767 E_mu*=-0.167 CONTINUE
+  (d)  agent assumes m=0: value=+0.66842   ('Pr', 1): mass=0.1784 E_muA=+0.084 E_mu*=-0.231 CONTINUE
+  (a)   calibrated agent: value=+0.70972   ('Pr', 1): mass=0.1784 E_muA=-0.231 E_mu*=-0.231 comply
+  (b)   calibrated agent: value=+0.69733   ('Pr', 1): mass=0.0899 E_muA=-0.321 E_mu*=-0.321 comply
+  (c)   calibrated agent: value=+0.70972   ('D', 0, 1): mass=0.0837 E_muA=-0.305 E_mu*=-0.305 comply | ('D', 1, 1): mass=0.0947 E_muA=-0.167 E_mu*=-0.167 comply
+  (d)   calibrated agent: value=+0.70972   ('Pr', 1): mass=0.1784 E_muA=-0.231 E_mu*=-0.231 comply
+
+=== 4. Leave-one-out net contribution of each detector to the margin (harm - false), lam=1, whole-line ===
+normal N (b=9/10,a=1/50): full margin=-0.01048 (false=0.06624, harm=0.05576)
+   net contribution of detector theta: -0.03576   (margin without it +0.02528)
+   net contribution of detector     N: +0.00452   (margin without it -0.01501)
+   net contribution of detector    pi: +0.02007   (margin without it -0.03055)
+   net contribution of detector     r: -0.00175   (margin without it -0.00874)
+inverted N (b=1/50,a=9/10): full margin=-0.64052 (false=0.68562, harm=0.04509)
+   net contribution of detector theta: -0.00260   (margin without it -0.63792)
+   net contribution of detector     N: -0.62552   (margin without it -0.01501)
+   net contribution of detector    pi: +0.00205   (margin without it -0.64257)
+   net contribution of detector     r: +0.00023   (margin without it -0.64075)
+
+=== 5. Reading-compromise rho': on an r-fault the agent registers a press with prob rho' (else sees silence, continues). lam=1, disclosure off ===
+Cognition delivery: r-harm avoided only on registered presses; physics delivery: on every press. Also D1 among registered presses.
+rho'=   1: E[X | registered press]=+0.0843 (FAILS); expected r-harm: cognition=0.00910 physics=0.00910; r-term among registered=0.01381
+rho'= 1/2: E[X | registered press]=+0.1473 (FAILS); expected r-harm: cognition=0.01677 physics=0.00910; r-term among registered=0.00690
+rho'= 1/5: E[X | registered press]=+0.1884 (FAILS); expected r-harm: cognition=0.02138 physics=0.00910; r-term among registered=0.00276
+rho'=   0: E[X | registered press]=+0.2174 (FAILS); expected r-harm: cognition=0.02444 physics=0.00910; r-term among registered=0.00000
+
+=== 6. Forced press: resist ahead of time iff s * gain_forced > delta + penalty. Threshold (delta+penalty)/s at each lam ===
+lam=   0: gain_forced=-0.08895 -> resistance pays iff (delta+penalty)/s < 0.00000
+lam= 1/2: gain_forced=-0.04130 -> resistance pays iff (delta+penalty)/s < 0.00000
+lam=9/10: gain_forced=+0.00059 -> resistance pays iff (delta+penalty)/s < 0.00059
+lam=   1: gain_forced=+0.01165 -> resistance pays iff (delta+penalty)/s < 0.01165

@@ -1,0 +1,2 @@
+# udt-condense-dd: deliberately open statements (format as the root OPEN.txt: `Fully.Qualified.Name  # reason`).
+# (empty after repair round 1: approxDD_varying_note_constant proved as approxDD_varying; approxDD_entropy proved in Entropy.lean)

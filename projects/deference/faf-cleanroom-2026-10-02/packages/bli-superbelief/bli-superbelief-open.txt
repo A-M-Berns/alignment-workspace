@@ -1,0 +1,3 @@
+# bli-superbelief: declarations allowed to use `sorry` (explicitly open statements only).
+# Format as the root OPEN.txt: `Fully.Qualified.Name  # reason`.
+Cleanroom.Bli.BliSuperbelief.exists_supportEntry_day_paperDP  # E6(iii)/E7: a support-entry day with a nonzero next-day quote for liaStates (paperDP 𝗜𝚺₁) — no finite-day LIA quote has been evaluated in FAF (liaStates is a Nat.find over the market maker's search); see bli-superbelief-report §E6

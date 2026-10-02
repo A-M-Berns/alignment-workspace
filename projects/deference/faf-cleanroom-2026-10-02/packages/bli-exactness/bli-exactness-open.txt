@@ -1,0 +1,29 @@
+# bli-exactness — open statements (format as the root OPEN.txt: `Fully.Qualified.Name  # reason`).
+# As of 2026-10-02 (after repair round 2) this package has NO Lean declaration using `sorry`: every
+# Lean statement is proved. The items the mandate anticipated as OPEN, and the one repair round 2
+# added, are disposed of as follows (see run/wp/bli-exactness/bli-exactness-report.md § Open):
+#  - X1 (d3) "a ℙ-state atom restores the liar for B1": PROVED conditional, carried as the explicit
+#    hypothesis `hQ : ComputableMarket (bliHistory Q 𝓜 sk c)` (`Cleanroom.Bli.BliExactness.
+#    bli_liar_restoration`, `bli_never_exact_on_own_liar`); no sorry. It is the SAME-DAY (X2-shaped)
+#    liar about ℙ's own price; the cell-reflection form of X1 (b) about ℙ_m is not stated. `hQ` is
+#    implied by bli-assemble's L2 row at dyadicMesh/tentSkeleton/writeOutCoding once its two OPEN
+#    obligations (`bliOv_computableTable`, the SpliceCertificate) land; for other parameters no
+#    package states it.
+#  - X5 (v) "does FAF's inductor project to a repaired PC-LI, and conversely" (bli-soto-a-2-002
+#    (a)–(b)): OPEN in prose only — not stated in Lean, because two definitions it needs are
+#    missing and non-trivial: the normalized world projection of a non-coherent history (Soto's
+#    Conjecture 2 normalization; `u ↦ P n (worldConj u)` does not sum to 1 for the LIA) and the
+#    bundle translation of a FAF `Trader` (its coefficients `EF.denote` are real-valued, while
+#    PC strategies are rational fixed vectors — a disclosed variant of Soto's price-dependent
+#    strategies). The precise mathematical statement is in the report.
+#  - X7-LI (the LI form of the accuracy gap over `liaHistory`): not attempted (`stretch`); the
+#    exact finite form is proved (`accuracy_gap`). Diagnosis of the LI-form route in the report.
+#  - A COHERENT inhabitant of the interval-form self-trust predicate over every sentence (added in
+#    repair round 2, audit r2 adversarial B2 (iii) / fidelity B1 (i)): is there a finite mixture of
+#    completed-theory worlds of `paperDP T` satisfying `ExactSelfTrustXInterval (quoteAt T) cells P`
+#    with a cell of positive mass? OPEN in prose only. The MIDPOINT analogue is refuted for every
+#    such history and every cell of midpoint ≠ 1 (`Cleanroom.Bli.BliExactness.coherentTop_forces_zero`,
+#    proved). Expected answer at `quoteAt T` with a family covering (0, 1]: no (a world mixture must
+#    put P_n(φ) in the cell of 𝑸_m(φ) for every φ, and the paper market's day-m prices are not
+#    coherent); the refutation needs a day-m incoherence of the LIA that FAF does not provide. Not
+#    stated in Lean because the natural statement is an existential believed false.

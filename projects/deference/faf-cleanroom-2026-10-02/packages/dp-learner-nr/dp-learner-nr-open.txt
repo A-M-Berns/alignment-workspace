@@ -1,0 +1,9 @@
+# dp-learner-nr: deliberately open statements (format as the root OPEN.txt).
+# One per line: `Fully.Qualified.Name  # reason (what is open, where it is discussed)`.
+# The gate (scripts/wp-audit) fails on any sorry not listed here, and on stale entries.
+# Core targets 1–11 carry no open statement (2026-10-01). Of the stretch targets, 14 was stated
+# OPEN in the first session (cell_mean_converges_open) and PROVED at repair round 1 the same day as
+# Cleanroom.Decision.DpLearnerNr.cell_mean_converges (Estimator.lean: strong_law_ae on the
+# Nat.nth subsequence), so this list is empty. 16(c) (the post's LI statements over FAF) and 18
+# (E2, the growing-bound Löb) were not stated in Lean — their exact statements are recorded in
+# prose in dp-learner-nr-report.md and dp-learner-nr-findings.md.

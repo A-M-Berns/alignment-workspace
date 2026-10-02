@@ -1,0 +1,3 @@
+control (eps=0, modest allowed): worst slack -0.0576 over 540 feasible LPs
+immodest, full support (eps=0.01): worst slack 0.000000 over 852 feasible LPs
+EXIT 0

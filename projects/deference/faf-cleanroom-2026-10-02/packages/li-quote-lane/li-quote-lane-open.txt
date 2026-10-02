@@ -1,0 +1,3 @@
+# li-quote-lane: declarations allowed to use `sorry` (explicitly open statements only).
+# One per line: `Fully.Qualified.Name  # reason`.
+Cleanroom.Found.LiQuoteLane.readability_fails_without_generability  # conjectured refutation of the (a)-only L4 (mandate T3.1): needs a [0,1]-table with a decidable lower cut, non-convergent (a convergent table is priced at its values with no hypothesis: readability_ofTendsto), pseudorandom against FAF's e.c. traders (route-sparse-schedule §5.3 "the market may sit at ½ forever"); a time-hierarchy construction, out of scope; see li-quote-lane-findings F2

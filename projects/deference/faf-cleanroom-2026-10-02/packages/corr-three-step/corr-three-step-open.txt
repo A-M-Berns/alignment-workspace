@@ -1,0 +1,2 @@
+# corr-three-step: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Every target T1-T14 is proved; nothing uses sorry.

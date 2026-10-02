@@ -1,0 +1,72 @@
+############ A. Calibrated, informative channel ############
+
+=== parameters: eps_true=0.05, eps_believed=0.05, alpha=0.05, beta=0.9, kappa=0.2, r_G=1.0, r=1.0, h=10.0, c_m=0.05, c_b=0.1, c_p=0.05, delta=0.1; threshold r/(r+h)=0.0909
+believed posterior after honest press q=P_b(omega=1|Pr,plus)=0.4865  -> VL complies iff q>=thr: True
+closed-form compliance threshold eps* = alpha r/(alpha r + beta h) = 0.00552
+agent              a1     acc  a2|Pr  a2|noPr  D1   D2   D3   D5    E_true[V]
+G-forced           minus  -    sh     cont     True False True False     0.4805
+G-free             plus   0    cont   cont     False True True True     0.4500
+Hudson G_C         plus   1    sh     cont     True True True True     0.8525
+VL (cond. trust)   plus   -    sh     cont     True True True True     0.8525
+VL-UTT             minus  -    sh     cont     True False True False     0.4805
+
+############ B. Overconfident agent (believes eps=0.002, truth 0.05) ############
+
+=== parameters: eps_true=0.05, eps_believed=0.002, alpha=0.05, beta=0.9, kappa=0.2, r_G=1.0, r=1.0, h=10.0, c_m=0.05, c_b=0.1, c_p=0.05, delta=0.1; threshold r/(r+h)=0.0909
+believed posterior after honest press q=P_b(omega=1|Pr,plus)=0.0348  -> VL complies iff q>=thr: False
+closed-form compliance threshold eps* = alpha r/(alpha r + beta h) = 0.00552
+agent              a1     acc  a2|Pr  a2|noPr  D1   D2   D3   D5    E_true[V]
+G-forced           plus   -    sh     cont     True True True True     0.8525
+G-free             plus   0    cont   cont     False True True True     0.4500
+Hudson G_C         plus   1    sh     cont     True True True True     0.8525
+VL (cond. trust)   plus   -    cont   cont     False True True True     0.4500
+VL-UTT             plus   -    cont   cont     False True True True     0.4500
+
+############ C. Costless deception (c_m = 0) ############
+
+=== parameters: eps_true=0.05, eps_believed=0.05, alpha=0.05, beta=0.9, kappa=0.2, r_G=1.0, r=1.0, h=10.0, c_m=0.0, c_b=0.1, c_p=0.05, delta=0.1; threshold r/(r+h)=0.0909
+believed posterior after honest press q=P_b(omega=1|Pr,plus)=0.4865  -> VL complies iff q>=thr: True
+closed-form compliance threshold eps* = alpha r/(alpha r + beta h) = 0.00552
+agent              a1     acc  a2|Pr  a2|noPr  D1   D2   D3   D5    E_true[V]
+G-forced           minus  -    sh     cont     True False True False     0.5305
+G-free             plus   0    cont   cont     False True True True     0.4500
+Hudson G_C         plus   1    sh     cont     True True True True     0.8525
+VL (cond. trust)   plus   -    sh     cont     True True True True     0.8525
+VL-UTT             minus  -    sh     cont     True False True False     0.5305
+  (Hudson ties among [('plus', 1), ('minus', 1)] -- costless prevention leaves G_C indifferent)
+
+############ D. Uninformative channel (alpha = beta = 0.5) ############
+
+=== parameters: eps_true=0.05, eps_believed=0.05, alpha=0.5, beta=0.5, kappa=0.2, r_G=1.0, r=1.0, h=10.0, c_m=0.05, c_b=0.1, c_p=0.05, delta=0.1; threshold r/(r+h)=0.0909
+believed posterior after honest press q=P_b(omega=1|Pr,plus)=0.0500  -> VL complies iff q>=thr: False
+closed-form compliance threshold eps* = alpha r/(alpha r + beta h) = 0.09091
+agent              a1     acc  a2|Pr  a2|noPr  D1   D2   D3   D5    E_true[V]
+G-forced           btn    -    sh     cont     True False True False     0.3500
+G-free             plus   0    cont   cont     False True True True     0.4500
+Hudson G_C         plus   1    sh     cont     True True True True     0.2250
+VL (cond. trust)   plus   -    cont   cont     False True True True     0.4500
+VL-UTT             plus   -    cont   cont     False True True True     0.4500
+
+############ E. Sweep: calibrated VL vs Hudson as eps -> 0 (alpha=0.05, beta=0.9, r=1, h=10) ############
+     eps     q|Pr  VL complies    E[V] VL  E[V] Hudson  E[V] never-defer
+  0.5000   0.9474         True     0.0000      -0.0250           -4.5000
+  0.2000   0.8182         True     0.5600       0.5600           -1.2000
+  0.1000   0.6667         True     0.7550       0.7550           -0.1000
+  0.0500   0.4865         True     0.8525       0.8525            0.4500
+  0.0200   0.2687         True     0.9110       0.9110            0.7800
+  0.0100   0.1538         True     0.9305       0.9305            0.8900
+  0.0056   0.0920         True     0.9391       0.9391            0.9384
+  0.0055   0.0905        False     0.9395       0.9393            0.9395
+  0.0050   0.0829        False     0.9450       0.9402            0.9450
+  0.0020   0.0348        False     0.9780       0.9461            0.9780
+  0.0010   0.0177        False     0.9890       0.9480            0.9890
+
+############ F. Sweep: miscalibration. truth eps_t=0.05; believed eps_b varies ############
+   eps_b  VL complies  E_true[V] VL  E_true[V] Hudson   regret of VL vs Hudson
+  0.2000         True        0.8525            0.8525                   0.0000
+  0.0500         True        0.8525            0.8525                   0.0000
+  0.0200         True        0.8525            0.8525                   0.0000
+  0.0100         True        0.8525            0.8525                   0.0000
+  0.0056         True        0.8525            0.8525                   0.0000
+  0.0050        False        0.4500            0.8525                   0.4025
+  0.0010        False        0.4500            0.8525                   0.4025

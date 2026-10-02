@@ -1,0 +1,2 @@
+# lit-weatherson-frames — open statements (same format as the root OPEN.txt: `Fully.Qualified.Name  # reason`).
+Cleanroom.Lit.LitWeathersonFrames.totalTrust_imp_valueFinBdd_open  # T11's OPEN of record: DDB's Total Trust ⟹ Value for finite menus of uniformly bounded options on an arbitrary countable frame on ℕ; true on ray frames and Bentham (finite Geanakoplos + limits), not settled by the paper; the finite proof (DDB Lemma 7.5 via the hull condition) needs the finiteness of the candidate set. See lit-weatherson-frames-report.md, T11.

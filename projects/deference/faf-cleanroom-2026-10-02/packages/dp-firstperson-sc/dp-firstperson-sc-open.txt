@@ -1,0 +1,12 @@
+# dp-firstperson-sc — deliberately open statements (format as the root OPEN.txt).
+# No Lean declaration of this package uses `sorry` (round 0, continuation 1, continuation 2, repair round 1, 2026-10-01, and repair round 2, 2026-10-02; gate PASS, 5752 declarations after continuation 2, 5818 after repair round 1 including its push `WitnessesStage`, 5831 after repair round 2 including its push, the stamped-shadow lemmas).
+#
+# T12 (dp-cf-2-018 / FP-26, the logical-induction residue) is OPEN and *statement-only*, not
+# stated in Lean (mandate T12; `udt-supercondition`'s XL-stretch precedent): an LI stage-indexed
+# conditioning model would take as prior a designated stage's pricing on sentences modulo D_t
+# and as translation the deductive quotient π_{t₀,t'}; it is not a `CondModel` of the package's
+# finite objects, and importing `LogicalInduction` here is forbidden (plan §0.5). Reason it is
+# open: deductive updates are not conditionings — the quotient obstruction (AN-22′,
+# `Stages.lean` stage instance; general lemma `udt-supercondition`'s `compatible_range_subset`)
+# recurs at every stage, and Def 2 clauses 1–2 fail at finite stages. Ledger status:
+# `open (not stated in Lean)`. See `dp-firstperson-sc-report.md` §T12.

@@ -1,0 +1,7 @@
+# corr-general-object: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Nothing in the package uses sorry (unchanged by repair rounds 1 and 2, 2026-09-30/10-01).
+# Not written as Lean statements, hence not listable here: T19(c)'s Blackwell clause (see the
+# report's "Repair round 1" for the numeric check and the findings' F-22), T20 (stretch), and
+# 046's conjecture (T15(c)), which is *reduced* to the shared-action-law hypothesis by
+# `Faking.posterior_eq_prior_of_same_law` and stays ill-posed until "observation model" and
+# "probe" are fixed (inventory corr-wf14b-046's own flag; findings F-20).

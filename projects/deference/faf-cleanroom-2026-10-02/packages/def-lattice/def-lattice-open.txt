@@ -1,0 +1,3 @@
+# def-lattice: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Nothing under Cleanroom/Found/DefLattice/ uses sorry; every target T1-T8 is done.
+# Repair round 1 (2026-09-30) added no open statement and removed the two BoundedSequence side conditions.

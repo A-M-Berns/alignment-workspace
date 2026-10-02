@@ -1,0 +1,28 @@
+# udt-comm-trust: deliberately open statements (format as the root OPEN.txt: `Fully.Qualified.Name  # reason`).
+# As of repair round 1 (2026-09-30) no declaration of Cleanroom.Udt.UdtCommTrust uses `sorry`. The
+# open items below are recorded in prose with the statement each would take; none has a `sorry`-bearing
+# Lean statement for the gate to track (audit r1 asked for that form; the two entropy items need
+# Shannon imports that were not attempted, and the two witness items are existence claims over
+# structures, awkward as single `sorry` statements). Resolved in repair round 1: T4(b) (Construct.lean),
+# T14(b) (`AbstractDS.udtRule_of_const`), the T13(c) witness (`Det`, N−; per-world N+ on `W2`).
+#
+# T2(c)  (stretch, Entropy.lean not written): over FAF's ShannonInformation on the Fintype measure of μ,
+#        IsSubvariable (Y, V) X → (H[V] = H[X | Y] ↔ IsSubvariable (X, Y) V ∧ IndepLaw μ V Y);
+#        reason: the FinDist → Measure bridge and the PFR-heavy imports were not attempted.
+# T5(d)  (stretch, Entropy.lean not written): DecisionDetermined clause (2) ↔ I[E : D_{I,B} | Π̈ ; μ] = 0
+#        via ShannonInformation.condMutualInfo_eq_zero; reason: as T2(c).
+# T13(d) Faithful failure witness: a ConcreteDS with mass evFollowsR = 1, Stable r for every realized r,
+#        and ¬ StableR r (or AF-Π's conclusion failing) without Faithful — a silent recommendation at ö₁
+#        whose external action happens to equal the recommended one; reason: not attempted (budget in
+#        both sessions; the repair round spent its budget on the blocking issues).
+# T14(a) (stretch): W2_ε with the common policy run with probability 1 − ε; the repaired Self-Trust
+#        conclusion up to an explicit O(ε) constant; reason: not attempted.
+# T15(a) (stretch): the constant-R half is proved (Fairness.lean, repair round 1). Open: the eight-world
+#        refutation of the fairness conjunction for a two-valued R (DD ∧ HasCA ∧ Stable ∧ UdtRule with
+#        P(Π̈ = R) = 1/2); reason: budget. The eight-world design's "Stable r strict
+#        via junk on the deviating event" is consistent with `stableR_nonempty`/`stable_nonempty` but is
+#        unverified; do not cite it before checking.
+# T11(c)+ a three-external-action variant of W2m on which the argmax set is a proper subset containing a
+#        minimally modifying action (audit r1, B2): the existing W2m inhabits the hypothesis package (N+)
+#        but every action ties, so it does not exercise the IsArgmax conjunct of selfTrust_repaired's
+#        conclusion (N−). Design constraint recorded in the report; reason: budget.

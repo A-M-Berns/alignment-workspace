@@ -1,0 +1,6 @@
+# corr-scim-cid: open statements (root OPEN.txt format: `Fully.Qualified.Name  # reason`).
+# None. Nothing in Cleanroom/Corrigibility/CorrScimCid uses sorry. Targets not built are listed in
+# the report (stretch T11–T16, the extension, the mandate's lemma (iii) which is not needed), not as
+# sorried statements. The FAF bridge (Bridge.lean) is proved and instantiated on Fig1Fin. Repair
+# round 1 built T3(c) (RocksDiamonds), T8(b) (Fig1Link), T9(f) (TwoLatent), the LB1 witness
+# (CpdWitness).

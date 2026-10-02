@@ -1,0 +1,85 @@
+
+*Intake note (2026-10-02): the author's notes below on Scott Garrabrant's and Benja Fallenstein's proposals are partial recollections and do not represent those proposals accurately; their actual proposals were specific and technical. "BLI" throughout this bundle means Eisenstat's construction.*
+
+---
+journal: Daily
+journal-date: 2023-08-02
+---
+- `LUDT` `logical updatelessness`
+	- Two versions to consider:
+		- `Sam's Bayesian Logical Induction`
+			- Basically a picture of a Bayesian who completely trusts a logical inductor.
+			- Pro: it's easy to imagine Omega spoofing beliefs for this one; Omega can directly look at what the agent does for an alternate observation.
+				- But, this isn't actually how we want to set up Omega. It seems better for Omega to run a logical inductor (slow enough to not reach firm conclusions about the relevant hypothetical conditions, EG, digits of $\pi$), and look at conditional expectations. This is hard to fool systematically in the long-term.
+			- Con: maybe too credulous of alternate observations.
+				- Conditioning on an observation should intuitively account for the possibility of that observation being spoofed. BLI just believes whatever.
+				- But how should we think about 'what's probable given specific observations'?
+					- Anthropically?
+					- We don't have a good source of feedback. Trader responses will be based on how the market actually corrects itself over time. I don't know of a way to train the market to correct beliefs injected by Omega, for example.
+					  id:: 64cab70f-4eae-4c80-87b7-fdf921d79d2d
+						- Really, LI seems under-constrained: it is only ever trained on true FP. It can think any old thing about improbable states (so long as it doesn't allow them to be FP).
+					- On the other hand, we just have to be subjectively valid. Perhaps the better question is: what does UDT _want_ itself to believe? What conditions need to apply in order for things to tile? Even if this turns out to be the essential difficulty, we get a sharper impossibility result by focusing on precisely what's needed for DT.
+						- Well, actually, the "distribution on future observations" can also be thought of as a _distribution on future ways-the-world-is_.
+							- That is: in the Sam BLI, the marginal distribution projecting expectations on future observations to the current market space _is just_ the current market beliefs about the world. So we can think of the distribution over future beliefs as somewhat like a distribution over ways-the-world-is, instead.
+							- So the LI is axiomatically trusted, and the consequences of actions within a branch are the consequences _if the world **is** that way_.
+								- Consequences of being spoofed have their rightful place in _other_ branches; EG, if we see that the digit of $\pi$ is such that we should give Omega $10, then the _reason_ why it's good to give Omega $10 is for the consequence in the other branch, where we receive $100.
+								  id:: 64cbe248-ade0-4069-bd0e-a8f22d3d8a2d
+									- The alternate way of thinking about it, encouraged by anthropic thinking, is that if we see the $10 world, it might be because we're being spoofed within Omega's head, so expectations include the chance of $100 in 'this' branch. This alternative seems challenging to set up (because we violate LIC), and if we could do this, there would be no need for UDT.
+							- But is this 'subjectively valid'? Is this the exact way we _should_ think about these things, in order to act out the preferred policy?
+								-
+				- Can I show definitively that it's bad to be so credulous of observations?
+					- Well, we can still assign probability zero or very low to specific observations, in which case all of the consequences come from cross-branch correlations and branch reweighing. So we're not _exactly_ credulous.
+					- So, that's not the crux of the issue. The difference between the two options comes out when non-fixed-point possibilities are _probable_ in the prior.
+						- This can only happen when the prior lacks knowledge of relevant features of fixed-point beliefs; it will learn over time to rule out anything which is easily seen to be a non-fixed-point.
+							- However, finding fixed points is highly complex, so (conjecturally) there will always be non-fixed-points which are given significant probability.
+						-
+			- Pro: more corrigible?
+				- Expects to believe whatever feedback it expects to get.
+			- Con: might not respect what small beliefs would think about the conditional expectations given specific later beliefs?
+				- Sam's BLI criteria might not reflect small beliefs in this sense.
+				- But aren't small beliefs of this sort Dutch-bookable?
+					- Even for really improbable future beliefs?
+		- `Scott-Benja Bayesian Logical Induction`
+			- A Bayesian whose response to seeing prices is _the market response_ -- only fixed-points are completely trusted.
+			- Pro: may be more capable of taking advantage of Omega if Omega's sim is of poor quality. Seemingly thinks more sensibly about the actual meaning of improbable observations.
+				- On the other hand, `these beliefs don't have good feedback`)).
+				- `We can take advantage of poor-quality Omega by thinking about consequences of policy points for other branches`)), including branches where the actual agent dies but the mathematical logical inductor sticks around within pure math.
+				-
+			- Con: maybe makes it harder to think about how a savvy Omega will fool us.
+				- We think we will adjust observed beliefs to be more plausible; but, Omega will obviously prevent us from doing so, when simulating our counterfactual behavior.
+				- If we know we can calculate digits of pi, then ... hm ....
+					- Doesn't this imply that we need to know our digits of pi already, because our distribution over future _beliefs_ is just our distribution over _what we would believe given future observations_, and we know the digits of pi regardless of future observations?
+						- hmmmm
+						- I guess I must have some concept wrong about how these constructions would even work.
+							- Probably traders should not know their own future trading strategies?
+								- Instead, they should only be able to guess them.
+	- Reconsidering what we basically want:
+		- basic ingredients of UDT
+			- branch probabilities are reasonable
+				- small beliefs about future market states marginalize large ones
+			- updateful ('within-branch') predictions are reasonable
+				- conditioning on observations
+				- conditioning on actions (policy points)
+				-
+			- cross-branch correlations are reasonable
+				- consequences of actions within other branches
+			- updates to branch probabilities are reasonable
+				- branch probabilities conditioned on actions
+		- Tiling argument
+			- Rough outline:
+				- Suppose some policy looked better than UDT.
+				- Due to fairness assumption, its actions must look better.
+				- Due to no-coordination-problems, its actions must look better in individual cases.
+				- But UDT picks whichever action looks best in individual cases. QED.
+		- Convergence argument
+			- Similar to tiling argument.
+		- UDT learning argument
+			- coarse-grained updating
+				- reducing to fully updateful reasoning when appropriate
+				- reducing to n-back updateful reasoning when appropriate
+			- fine-grained updating
+			-
+		- counterfactual mugging
+		- xor/transparent problems
+		- agent simulates predictor
+		-
