@@ -73,7 +73,7 @@ theorem marketMaker_day_value_le_cube (Tr : Trader) (n : ℕ)
     (w : Sentence → ℝ) (hw : ∀ φ, 0 ≤ w φ ∧ w φ ≤ 1) :
     (Tr.strat n).value (marketMakerHistory Tr) w ≤ (marketMakerError n : ℝ) := by
   classical
-  set past := marketMakerPast Tr (marketMakerStates Tr) n with hpast
+  set past := marketMakerPast (marketMakerStates Tr) n with hpast
   set Hc := Function.update (beliefHistory past) n
     (marketMakerStates Tr n).toValuation with hHc
   have hbit : ∀ b : ↥(Tr.strat n).support → Bool,

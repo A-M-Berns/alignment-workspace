@@ -513,7 +513,8 @@ theorem li_combination_le {P : History} {DP : DeductiveProcess} [IsLogicalInduct
     (fun n => (As n).expect P n) ≲ₙ fun _ => 0 := by
   have hP : ∀ n φ, 0 ≤ P n φ ∧ P n φ ≤ 1 :=
     fun n φ => IsLogicalInductor.price_mem_Icc (P := P) (DP := DP) n φ
-  have hcoh := LUVCombination.BoundedSequence.expcoh h ops hvalued hcode b hb hshare hworld
+  have hcoh := LUVCombination.BoundedSequence.expcoh h ops hvalued
+    (fun n q hq => (hcode n q hq).toBig.toMachine) b hb hshare hworld
   have hhigh_le : ∀ n, LUVCombination.completedHigh As P DP n ≤ 0 := by
     intro n
     apply Real.sSup_le _ le_rfl
@@ -521,7 +522,7 @@ theorem li_combination_le {P : History} {DP : DeductiveProcess} [IsLogicalInduct
     exact hle n v hv ν hν
   have hhigh_ge : ∀ n, -K ≤ LUVCombination.completedHigh As P DP n := by
     intro n
-    obtain ⟨v, hv⟩ := exists_consistentWithTheory DP hworld
+    obtain ⟨v, hv⟩ := DP.exists_consistentWithTheory hworld
     obtain ⟨ν, hν⟩ := hvalued n v hv
     have hmem : (As n).value P ν ∈ LUVCombination.completedValues DP (As n) P :=
       ⟨v, ν, hv, hν, rfl⟩

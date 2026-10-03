@@ -7,7 +7,7 @@ defaultTargets = ["Workspace"]
 [[require]]
 name = "agentFoundations"
 git = "https://github.com/A-M-Berns/Formalized-Agent-Foundations.git"
-rev = "c0d885bfb2f84054ada18c65acec672e04d6d380"
+rev = "84ca4ae3e486ad0904f9da8589948dc7fc7f0632"
 
 [[lean_lib]]
 name = "Workspace"

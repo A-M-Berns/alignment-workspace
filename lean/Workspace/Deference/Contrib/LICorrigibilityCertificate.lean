@@ -41,7 +41,7 @@ serialization needs a variable-width fold the pinned splice suite exposes only f
 concatenation, not for `max`/reciprocal chains; that is the residual named in the round's
 `LUV_COMPILATION.md`.  Names are provisional (`AGENTS.md` standard 6).
 -/
-import LogicalInduction.Construction.Witnesses.LUVSyntax
+import LogicalInduction.Construction.LUV.Syntax
 import Workspace.Deference.Contrib.LICorrigibility
 
 namespace Workspace.Deference.Contrib.LICorrigibility
@@ -275,11 +275,11 @@ noncomputable def MediatedPair.syntaxOf (p : ℕ → MediatedPair)
   termCount := fun _ => 5
   coefficient := fun z => coefOf (p z.unpair.1) z.unpair.2
   luv := fun z => luvOf (p z.unpair.1) z.unpair.2
-  termCount_poly := ⟨_, PolyFueled.const 5⟩
+  termCount_poly := UnaryRuler.const 5
   const_poly := by
-    simpa [MediatedPair.B] using RpnSpliceStream.serialize_const (0 : ℚ)
-  coefficient_poly := coefOf_spliceStream p hlam
-  threshold_poly := luvOf_thresholdCodeSeq p hU hC hδ hρ hM
+    simpa [MediatedPair.B] using MachineSpliceStream.serialize_const (0 : ℚ)
+  coefficient_poly := (BigSpliceStream.ofRpnSpliceStream (coefOf_spliceStream p hlam)).toMachine
+  threshold_poly := (luvOf_thresholdCodeSeq p hU hC hδ hρ hM).toBig.toMachine
   terms_eq := fun n => by
     rw [B_terms_eq]
     simp [Nat.unpair_pair]

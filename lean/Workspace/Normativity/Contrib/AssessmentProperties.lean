@@ -97,7 +97,7 @@ theorem lic_affirmed_tendsto_one (L : Assessment) (P : History)
     by_contra h
     rw [not_eventually] at h
     simp only [not_lt] at h
-    exact hLIC (buyDaily φ) (EfficientlyComputable.ofTokenEmitter (buyDaily_ec φ))
+    exact hLIC (buyDaily φ) (PolyFueledTrader.ofTokenEmitter (buyDaily_ec φ)).toEfficientlyComputable
       (buyDaily_exploits_freq L P φ ε hε haff hP1 h hlive)
   obtain ⟨N, hN⟩ := eventually_atTop.mp hev
   refine ⟨N, fun n hn => ?_⟩
@@ -163,7 +163,7 @@ theorem lic_refuted_tendsto_zero (L : Assessment) (P : History)
     by_contra h
     rw [not_eventually] at h
     simp only [not_lt] at h
-    exact hLIC (sellDaily φ) (EfficientlyComputable.ofTokenEmitter (sellDaily_ec φ))
+    exact hLIC (sellDaily φ) (PolyFueledTrader.ofTokenEmitter (sellDaily_ec φ)).toEfficientlyComputable
       (sellDaily_exploits_freq L P φ ε hε href hP0 h hlive)
   obtain ⟨N, hN⟩ := eventually_atTop.mp hev
   refine ⟨N, fun n hn => ?_⟩
