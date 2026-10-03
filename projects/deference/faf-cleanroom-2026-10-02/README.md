@@ -52,6 +52,7 @@ discloses it as not landed.
   the kernel checks, so they cannot change what a statement means, but the run's
   standards forbid custom syntax).
 - **Kernel replay** (`leanchecker`, in dependency-ordered batches, run on the working tree): at intake **818 of 1,675 modules replayed, all passed, 0 failed**; the 115 package-root modules, which declare nothing of their own, are covered by their submodules' replays. The replay continues; its final count will be appended to this file.
+  **Final (2026-10-02 22:16 EDT): all 1,675 modules that declare anything replayed and passed, 0 failed.**
 - **Audits:** 106 work packages; **83 passed** both final adversarial audits
   (statement fidelity; attempted breakage), **23 ended flagged** with blocking
   issues still open after their last round — 11 about the shape of a Lean
