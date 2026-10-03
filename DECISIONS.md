@@ -5794,3 +5794,51 @@ claims and does not replace them.  `graph/PROTOCOL.md`, `graph/README.md`,
 the design log and the generated files are open to any contributor.
 *Rejected alternative:* a per-line placement under `projects/` — the map spans
 every line, and its frame question is the repository's.
+
+### 2026-10-02 — the Formalized-Agent-Foundations pin moves to that repository's current `main`; the workspace is reconciled to its consolidated LogicalInduction surface
+
+**Maintainer-dispatched, on the first `pin-bump` trial's blocker (issue #123).**  The pin
+had sat at `c0d885bf` since before the dependency's LogicalInduction consolidation, 311
+commits behind; the trial failed at `lake build`.  The pin now names the head of that
+repository's `main` after its pull request #16 (the exact rev is `lean/lakefile.toml`);
+`lean-toolchain` is unchanged at `v4.31.0`, and `lean/lake-manifest.json` gains the
+dependency's two newer requires (`complexitylib`, `EconCSLib`) transitively.  Trust-chain
+item 2 moves; items 1 and 3 do not.
+
+What changed in the dependency, and how the workspace absorbed it.  Five imported modules
+moved: `Construction.Witnesses.LUVSyntax` → `Construction.LUV.Syntax`,
+`Construction.Witnesses.BitPrefixSyntax` → `Construction.NonDogmatism.BitPrefix`,
+`Framework.RpnEmission` → `Framework.Emission.RpnEmission`, and `Properties.Basic` and
+`Properties.Hysteresis` folded into `Properties.Coherence`.  The dependency's
+provability-induction and expectation theorems (`lic_provind_true`/`_false`,
+`lic_expectation_provind_eq`, `LUVCombination.BoundedSequence.expcoh`) now take the
+machine-metered classes `MachineSentenceCodes` / `MachineThresholdCodes` in place of the
+value-metered `Rpn…` classes, and `lic_provind` takes the semantic premise
+`∀ n v, v.ConsistentWithTheory DP → v.Holds (φ n)` in place of `∀ n, ∃ k, φ n ∈ DP.D k`.
+**No workspace statement of record changed**: every workspace theorem keeps its `Rpn…`
+hypotheses and its stage-membership premises, and each call site bridges through the
+dependency's own conversions (`RpnSentenceCodes.toMachine`, `RpnThresholdCodes.toBig.toMachine`,
+`PCWorld.ConsistentWithTheory.holds_of_mem_stage`).  The generability certificate
+`MediatedPair.syntaxOf` is rebuilt against the new `LUVCombinationSyntax` fields
+(`UnaryRuler` term count, `MachineSpliceStream` emissions) by the same bridges.  Five
+further one-line adaptations: `exists_consistentWithTheory` is now
+`DeductiveProcess.exists_consistentWithTheory`; `EfficientlyComputable.ofTokenEmitter` is
+`PolyFueledTrader.ofTokenEmitter … |>.toEfficientlyComputable`;
+`EfficientlyComputable.ofSingleTradeBlocks` is `…Big` with a `MachineTokenStream` premise;
+`marketMakerPast` dropped its unused trader argument; `budgetScaleFeature_denote_le_one`
+dropped its unused cast hypothesis.  Eleven files under `lean/Workspace/*/Contrib/`.
+
+**The one change upstream.**  The dependency's consolidation had dropped the public
+`*_primrec` aliases its LIACompiler introduced for "a construction that prices the Trading
+Firm together with a further trader" — this workspace's enforced compiler
+(`lean/Workspace/Normativity/Contrib/EnforcedCompiler.lean`,
+`lean/Workspace/Normativity/Contrib/ProjectionPrimrec.lean`).  Re-deriving them here would
+have meant reproducing the dependency's private compiler internals.  They are restored
+upstream instead, additively (that repository's pull request #16), which is why the pin
+waits on that merge.  *Rejected alternative:* a workspace-side shim re-proving the eleven
+certificates — five of them are one-liners over now-public lemmas, but the other six reach
+private lemmas, and a consumer that re-derives a dependency's compiler has stopped being a
+consumer.
+
+Verified locally: full `lake build` and `tests/audit_axioms.py` over the rebuilt tree; the
+`lean` job repeats both.

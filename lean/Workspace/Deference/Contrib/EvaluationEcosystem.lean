@@ -1133,7 +1133,8 @@ theorem availability_of_provind (P : History) (DP : DeductiveProcess) [IsLogical
     (φ : ℕ → Sentence) (hφ : RpnSentenceCodes φ) (hthm : ∀ n, ∃ k, φ n ∈ DP.D k)
     (hworld : ∀ n, ∃ v : PCWorld, v.ConsistentWith (DP.D n)) :
     ConvergesTo (fun n => 1 - P n (φ n)) 0 := by
-  have h := lic_provind_true P DP φ hφ hthm hworld
+  have h := lic_provind_true P DP φ hφ.toMachine
+    (fun n v hv => hv.holds_of_mem_stage (hthm n)) hworld
   unfold AsympEq at h
   have hneg := h.neg
   simp only [neg_zero] at hneg

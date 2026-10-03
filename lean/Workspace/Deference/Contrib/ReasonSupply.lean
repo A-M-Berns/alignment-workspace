@@ -345,7 +345,7 @@ theorem expect_constLUV {P : History} {DP : DeductiveProcess} [IsLogicalInductor
     · positivity
     · rw [div_le_one (by exact_mod_cast hb)]
       exact_mod_cast hab
-  exact lic_expectation_provind_eq P DP _ (constLUV_thresholdCodes a b hb) hworld _
+  exact lic_expectation_provind_eq P DP _ (constLUV_thresholdCodes a b hb).toBig.toMachine hworld _
     (Filter.Eventually.of_forall (fun n v _ => by
       simpa using (constLUV_valuesAt v _ hq).expectApprox_near n.succ_pos))
 

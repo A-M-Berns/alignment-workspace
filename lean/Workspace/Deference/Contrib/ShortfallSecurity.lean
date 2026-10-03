@@ -37,7 +37,7 @@ inside the declared model only.  Names are provisional (`AGENTS.md` standard 6).
 import Workspace.Deference.Contrib.LICorrigibilityCertificate
 import Workspace.Deference.Contrib.DecisionComponent
 import LogicalInduction.Properties.Conditioning
-import LogicalInduction.Properties.Basic
+import LogicalInduction.Properties.Coherence
 
 namespace Workspace.Deference.Contrib.ShortfallSecurity
 
@@ -127,7 +127,8 @@ theorem short_price_eventually_ge {k : ℕ} (cm : ControlModel k) (j : Fin k)
     ∃ N, ∀ n, N ≤ n → θ ≤ P n (shortSentenceOf cm j) := by
   have hφ : shortSentenceOf cm j = top := by simp [shortSentenceOf, hs]
   have h := lic_provind_true P DP (fun _ => shortSentenceOf cm j)
-    (RpnSentenceCodes.const _) (fun _ => by rw [hφ]; exact htop) hworld
+    (RpnSentenceCodes.const _).toMachine
+    (fun _ v hv => by rw [hφ]; exact hv.holds_of_mem_stage htop) hworld
   have hev : ∀ᶠ n in atTop, |P n (shortSentenceOf cm j) - 1| < 1 - θ := by
     have := (Metric.tendsto_atTop.mp h) (1 - θ) (by linarith)
     obtain ⟨N, hN⟩ := this
@@ -147,7 +148,8 @@ theorem notShort_price_eventually_le {k : ℕ} (cm : ControlModel k) (j : Fin k)
     ∃ N, ∀ n, N ≤ n → P n (shortSentenceOf cm j) ≤ θ := by
   have hφ : shortSentenceOf cm j = bot := by simp [shortSentenceOf, hs]
   have h := lic_provind_false P DP (fun _ => shortSentenceOf cm j)
-    (RpnSentenceCodes.const _) (fun _ => by rw [hφ]; exact hneg) hworld
+    (RpnSentenceCodes.const _).toMachine
+    (fun _ v hv => by rw [hφ]; exact hv.holds_of_mem_stage hneg) hworld
   have hev : ∀ᶠ n in atTop, |P n (shortSentenceOf cm j) - 0| < θ := by
     have := (Metric.tendsto_atTop.mp h) θ hθ
     obtain ⟨N, hN⟩ := this
@@ -348,7 +350,7 @@ theorem deferred_price_eventually_ge
       (le_max_right _ _)
     rwa [shortDecision, if_pos (hshort n)] at this
   have h := lic_provind_true P (DP.union (shortfallProcess short defer)) (fun n => shortAtom (a n))
-    (shortAtom_codes a ha) hthm hworld
+    (shortAtom_codes a ha).toMachine (fun n v hv => hv.holds_of_mem_stage (hthm n)) hworld
   have hev : ∀ᶠ n in atTop, |P n (shortAtom (a n)) - 1| < 1 - θ := by
     obtain ⟨N, hN⟩ := (Metric.tendsto_atTop.mp h) (1 - θ) (by linarith)
     refine eventually_atTop.mpr ⟨N, fun n hn => ?_⟩
@@ -385,7 +387,7 @@ theorem deferred_price_eventually_le
       (le_max_right _ _)
     rwa [shortDecision, if_neg (by simp [hshort n])] at this
   have h := lic_provind_false P (DP.union (shortfallProcess short defer)) (fun n => shortAtom (a n))
-    (shortAtom_codes a ha) hdis hworld
+    (shortAtom_codes a ha).toMachine (fun n v hv => hv.holds_of_mem_stage (hdis n)) hworld
   have hev : ∀ᶠ n in atTop, |P n (shortAtom (a n)) - 0| < θ := by
     obtain ⟨N, hN⟩ := (Metric.tendsto_atTop.mp h) θ hθ
     refine eventually_atTop.mpr ⟨N, fun n hn => ?_⟩

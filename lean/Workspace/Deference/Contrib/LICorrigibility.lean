@@ -470,7 +470,7 @@ theorem completedHigh_ge {P : History} {DP : DeductiveProcess} (p : ℕ → Medi
     (hworld : ∀ n, ∃ v : PCWorld, v.ConsistentWith (DP.D n))
     (b : ℚ) (hshare : ∀ n, ((p n).B).shareNorm P ≤ (b : ℝ)) (n : ℕ) :
     -(3 + (b : ℝ)) ≤ LUVCombination.completedHigh (fun n => (p n).B) P DP n := by
-  obtain ⟨v, hv⟩ := exists_consistentWithTheory DP hworld
+  obtain ⟨v, hv⟩ := DP.exists_consistentWithTheory hworld
   have h := hvalid n v hv
   have hlam : |((p n).lam : ℝ)| ≤ b := by
     have hs := hshare n
@@ -513,7 +513,7 @@ theorem li_constraint_le {P : History} {DP : DeductiveProcess} [IsLogicalInducto
   have hP : ∀ n φ, 0 ≤ P n φ ∧ P n φ ≤ 1 :=
     fun n φ => IsLogicalInductor.price_mem_Icc (P := P) (DP := DP) n φ
   have hcoh := LUVCombination.BoundedSequence.expcoh h ops (worldValued_of_valid p hvalid)
-    hcode b hb hshare hworld
+    (fun n q hq => (hcode n q hq).toBig.toMachine) b hb hshare hworld
   have hhigh : limsup (LUVCombination.completedHigh (fun n => (p n).B) P DP) atTop ≤ 0 := by
     apply limsup_le_of_le
     · exact (isBoundedUnder_of ⟨-(3 + (b : ℝ)),

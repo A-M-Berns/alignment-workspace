@@ -856,8 +856,7 @@ theorem budgetScaleFeature_ofDeductiveProcess_denote (DP : DeductiveProcess)
       exact hle
   · -- the source's infimum is below every clause of the generalized list
     apply listMin_denote_ge
-    · exact LogicalInduction.budgetScaleFeature_denote_le_one DP Tr b P Q
-        (fun day φ => hQ day φ) n
+    · exact LogicalInduction.budgetScaleFeature_denote_le_one DP Tr b P Q n
     · intro e he
       obtain ⟨v, hv, hval⟩ := mem_budgetScaleFeature_list (ofDeductiveProcess DP) Tr b
         P Q n (fun day _ φ => hQ day φ) he

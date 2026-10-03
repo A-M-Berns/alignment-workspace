@@ -1134,7 +1134,7 @@ change, and the count of those is the size of the free choice remaining.
 | `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
 | `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
-## normativity — 713 names, 523 of them Lean only
+## normativity — 713 names, 522 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1805,7 +1805,7 @@ change, and the count of those is the size of the free choice remaining.
 | `coefEFof` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionPrimrec.coefEFof` |
 | `groupEFof` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionPrimrec.groupEFof` |
 | `repEFof` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectionPrimrec.repEFof` |
-| `Holds` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectorGenerator.Holds` |
+| `Holds` | def | unrecorded | prose | `Workspace.Normativity.Contrib.ProjectorGenerator.Holds` |
 | `cOf` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectorGenerator.cOf` |
 | `candidatePairs` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectorGenerator.candidatePairs` |
 | `coeffFn` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ProjectorGenerator.coeffFn` |

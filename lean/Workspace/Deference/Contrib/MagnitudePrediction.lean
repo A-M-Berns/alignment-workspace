@@ -66,9 +66,9 @@ theorem in this file is hypothesis-complete and ships a witness.
 -/
 import LogicalInduction.Framework.Criterion
 import LogicalInduction.Framework.Asymptotics
-import LogicalInduction.Framework.RpnEmission
+import LogicalInduction.Framework.Emission.RpnEmission
 import LogicalInduction.Construction.LIACompiler
-import LogicalInduction.Construction.Witnesses.BitPrefixSyntax
+import LogicalInduction.Construction.NonDogmatism.BitPrefix
 import Mathlib.Algebra.BigOperators.Fin
 
 namespace Workspace.Deference.Contrib.MagnitudePrediction
@@ -214,9 +214,8 @@ Logical Induction Criterion.  The coefficient is the price-free constant `1`; al
 content is the sentence stream. -/
 theorem unitTrader_ec (φ : ℕ → Sentence) (hφ : RpnSentenceCodes φ) :
     EfficientlyComputable (unitTrader φ) :=
-  EfficientlyComputable.ofSingleTradeBlocks _ (fun _ => .const 1) φ
-    (PolySegStream.ofTokenStream (PolyTokenStream.serialize_const 1))
-    (fun _ => trivial) hφ (fun _ => rfl)
+  EfficientlyComputable.ofSingleTradeBlocksBig _ (fun _ => .const 1) φ
+    (MachineTokenStream.const _) (fun _ => trivial) hφ.toMachine (fun _ => rfl)
 
 /-- **The signed error sum is literally a trader's net worth.** No approximation, no
 remainder term. -/

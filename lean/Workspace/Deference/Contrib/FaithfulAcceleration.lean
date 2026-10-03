@@ -45,7 +45,7 @@ Against the pinned Formalized-Agent-Foundations dependency the trader *is* model
   prices). FAF's calibration development is single-market, so there is no endpoint to
   instantiate it from.
 * `hworld` — each deductive stage admits a propositionally consistent world. FAF's
-  `DeductiveProcess` does not carry this as a field; FAF's own `oscillation_exploitable_hyst`
+  `DeductiveProcess` does not carry this as a field; FAF's own `oscillation_exploitable`
   states it the same way.
 
 Because `EfficientlyComputable` is not discharged, `weight_not_divergent` ships **without**
@@ -59,7 +59,7 @@ general lookahead `f`. See this round's `REPORT.md` §4: with general `f` the op
 remainder is bounded by the number of simultaneously open round trips, which is `1` exactly
 when `f n = n + 1`.
 -/
-import LogicalInduction.Properties.Hysteresis
+import LogicalInduction.Properties.Coherence
 import Mathlib.Topology.Order.LiminfLimsup
 
 namespace Workspace.Deference.Contrib.FaithfulAcceleration
