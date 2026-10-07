@@ -97,3 +97,43 @@ exist in that form at intake. Recompute it that way and you learn whether the
 tree has moved since it arrived. Nothing enforces that it has not: this is a
 receipt, not a gate. The protection that remains is that this path is
 specification layer in `tests/path_gate.py`.
+
+## Refresh, 2026-10-07
+
+The note, its LaTeX source and PDF, and the fixture were replaced by the
+author's working versions of 2026-10-07, after the discussions of 2026-10-01 to
+2026-10-07 and a Lean check of the note (published beside this tree as
+[`faf-cleanroom-2026-10-07-corr-value-change/`](../faf-cleanroom-2026-10-07-corr-value-change/README.md)).
+Nothing else in this tree changed. The intake receipt above is left as it was;
+the tree hash after the refresh is below.
+
+What changed in the note, in its own terms: §1 was rebuilt as an evidential
+Kolmogorov setup in which a decision is a finite partition and the utility swap
+is an event, the decomposition of the value of changing is derived in full and
+refined into an information term and a payment term, which define the
+instrumental and the intrinsic route; §2.6 (reflection conditional on
+legitimacy, worked) and §2.7 (trust without the outcome events) were added;
+§3.4 was restated; Appendix B (the causal, Savage-style version) was added; the
+sixteen findings of the Lean check were folded in (its
+[findings file](../faf-cleanroom-2026-10-07-corr-value-change/packages/corr-value-change/corr-value-change-findings.md)
+lists them). The fixture asserts the new numbers (the decomposition, the
+information/payment split, the conditional-reflection thresholds, the modest
+teacher). The citations were checked against Crossref on 2026-10-01 — titles,
+venues, years, pages; what each is cited *for* was not re-read.
+
+The intake deltas were applied again, in the same way: the author's name became
+*the author* and the register tag AUTHOR in the Markdown, while the PDF's byline
+names the author; wikilinks became the same Markdown links as at intake, plus
+links to the new Lean tree; local identifiers (a machine name in the byline, the
+paths in the file map and in the pointer to the findings) were removed; the PDF
+was rebuilt from the edited LaTeX. The 2026-10-02 ruling on names leaves
+documents written under the earlier rule as they are, and this refresh keeps the
+convention the tree already has.
+
+| | |
+|---|---|
+| refreshed | 2026-10-07 |
+| files replaced | 4 (`value-change-as-epistemic-update.md`, `.tex`, `.pdf`, `fixtures/value_change_journey.py`) |
+| tree sha256 after refresh | `50152bd009f942fea9b59ce43b936046726fd3f45eb3149e24908664e30b5239` — sha256 over LF-joined lines `<sha256(file)>␣␣<relative path>`, sorted by path in the C locale, `ORIGIN.md` and bytecode excluded. On the tree exactly as committed at intake this recipe gives `88842bb9a42004eb571aeff39310bf7a43eb9084c1c6754c8b986c1f09f6cdee`, not the value above, so the intake receipt's recipe differed in a detail it did not record; from this refresh on, the recipe is the one stated here |
+| files | 12 (plus ORIGIN.md) |
+| refresh by | Claude Fable 5.1 (Anthropic), in a maintainer-directed session |

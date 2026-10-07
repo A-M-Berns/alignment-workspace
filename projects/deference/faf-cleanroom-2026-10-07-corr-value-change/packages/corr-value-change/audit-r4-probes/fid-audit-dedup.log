@@ -1,0 +1,4 @@
+faf-cleanroom audit: 1 module(s) (subset: stale-OPEN check skipped)
+  axioms : 1280 declaration(s); axioms used: ['propext', 'Classical.choice', 'Quot.sound']
+PASS
+EXIT 0

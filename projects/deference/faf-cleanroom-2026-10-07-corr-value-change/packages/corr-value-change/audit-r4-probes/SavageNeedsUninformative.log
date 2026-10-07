@@ -1,0 +1,67 @@
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:27:20: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  simp [̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵b̵o̵o̵l̵,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵o̵p̵t̵i̵o̵n̵,̵[̲F̲i̲n̲t̲y̲p̲e̲.̲s̲u̲m̲_̲o̲p̲t̲i̲o̲n̲,̲ Fintype.sum_unique]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:27:58: warning: This simp argument is unused:
+  Fintype.sum_unique
+
+Hint: Omit it from the simp argument list.
+  simp [Fintype.sum_bool, Fintype.sum_option,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵u̵n̵i̵q̵u̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:34:21: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵b̵o̵o̵l̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:35:30: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵b̵o̵o̵l̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:40:70: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  simp [infoPM, ProductModel.qK, ProductModel.qCtot, ProductModel.qC, F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵b̵o̵o̵l̵,̵Fintype.sum_unique] at this
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:41:4: warning: This simp argument is unused:
+  Fintype.sum_unique
+
+Hint: Omit it from the simp argument list.
+  simp [infoPM, ProductModel.qK, ProductModel.qCtot, ProductModel.qC, Fintype.sum_bool,̵
+  ̵ ̵ ̵ ̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵u̵n̵i̵q̵u̵e̵] at this
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:45:51: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  simp [ProductModel.vKf, infoPM, ProductModel.qK,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵b̵o̵o̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:49:4: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  simp [Savage.vK, ProductModel.toSavage, Prob.integral, infoPM, Fintype.sum_prod_type,
+      Fintype.sum_b̵o̵o̵l̵,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵um̵_̵u̵nique]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/SavageNeedsUninformative.lean:49:22: warning: This simp argument is unused:
+  Fintype.sum_unique
+
+Hint: Omit it from the simp argument list.
+  simp [Savage.vK, ProductModel.toSavage, Prob.integral, infoPM, Fintype.sum_prod_type,
+      Fintype.sum_bool,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵u̵n̵i̵q̵u̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+exit=0

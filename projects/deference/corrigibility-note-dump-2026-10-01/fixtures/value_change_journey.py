@@ -4,7 +4,7 @@
 Every number quoted in the note's worked example is computed here with exact
 fractions and asserted. Run:  python3 value_change_journey.py
 
-Setup (the two-step modification problem, section 2.5 of the note):
+Setup (the two-step modification problem, section 4.5 of the note):
   value hypotheses  theta in {A, B}, prior 1/2 each
   acts              a1, a2, a3 with u_A = (1, 0, s), u_B = (0, 1, s)
   source            emits i in {A, B} with P(i = theta) = r_true
@@ -123,17 +123,18 @@ def jeffrey_bolker(P, s):
     }
 
 
-def representation_error(P, s, r_inst, coin=False, act="a1"):
+def representation_error(P, s, r_inst, coin=False, act="a1", pill=False):
     """E over (theta, i) of (installed utility - u_theta(act))^2, the mean-square
     distance of the installed representation from the values. With coin=True the
     agent's joint is the independent one (signal uninformative) but Q_i is still
-    installed; with r_inst=None the current utility Ubar (no modification)."""
+    installed; with pill=True the state (r_inst, 1-r_inst) is installed regardless
+    of i; with r_inst=None the current utility Ubar (no modification)."""
     total = F(0)
     for theta, i in P:
         if r_inst is None:
             rep = sum(F(1, 2) * u(t, act, s) for t in THETAS)
         else:
-            Q = installed(i, r_inst)
+            Q = installed("A" if pill else i, r_inst)
             rep = sum(Q[t] * u(t, act, s) for t in THETAS)
         p = (F(1, 4) if coin else P[(theta, i)])
         total += p * (rep - u(theta, act, s)) ** 2
@@ -156,8 +157,25 @@ def decomposition(vK, branches):
     return A, B, C
 
 
+def info_payment(vK, branches):
+    """Section 1.4 refinement: (B)+(C) = (I) information + (Pi) payment.
+
+    branches: list of (p_j, v_j, w_j, a_j) where w_j is the informed keep-value
+    E[U(F, K, a) | C_j] (old utility, change-outcome's information, not changed).
+    Requires sum_j p_j w_j(a^K) == v_K(a^K) (uninformative step-1 choice).
+    """
+    aK = max(ACTS, key=lambda a: vK[a])
+    assert sum(p * wj[aK] for p, vj, wj, aj in branches) == vK[aK]
+    I = Pi = F(0)
+    for p, vj, wj, aj in branches:
+        ahat = max(ACTS, key=lambda a: vj[a]); atil = max(ACTS, key=lambda a: wj[a])
+        I += p * (wj[atil] - wj[aK])
+        Pi += p * (vj[ahat] - wj[atil])
+    return I, Pi
+
+
 def total_trust_example():
-    """The modest-source example from the 2026-09-29 chat (section 6.6).
+    """The modest-source example from the 2026-09-29 chat (section 3.6).
 
     Two worlds, P = (0.3, 0.7); the source's opinion is Q_1 = (0.9, 0.1) in
     world 1 and Q_2 = (0.1, 0.9) in world 2. Checks: Total Trust holds on a
@@ -254,13 +272,55 @@ def main():
     assert paid == (F(-1, 10), F(0), F(1, 5)) and sum(paid) == F(1, 10)
     assert underpaid == (F(-1, 10), F(0), F(1, 20)) and sum(underpaid) == F(-1, 20)
 
+    # (11) information vs payment: (B)+(C) == (I)+(Pi) in every case
+    def ABC_IPi(brs):
+        A, B, C = decomposition(vK, [(p, vj, aj) for p, vj, wj, aj in brs])
+        I, Pi = info_payment(vK, brs)
+        assert B + C == I + Pi, (B, C, I, Pi)
+        return (A, B, C, I, Pi)
+    t_ipi = ABC_IPi([(F(1, 2), vj("A"), vj("A"), "a1"), (F(1, 2), vj("B"), vj("B"), "a2")])   # teacher: U ignores c
+    assert t_ipi[3:] == (F(3, 10), F(0))
+    bonus = dict(vK); bonus["a1"] += F(3, 10)                                                  # act-dependent payment, nothing revealed
+    b_ipi = ABC_IPi([(F(1), bonus, dict(vK), "a1")])
+    assert b_ipi == (F(0), F(1, 5), F(0), F(0), F(1, 5))
+    u_ipi = ABC_IPi([(F(1), shifted(F(1, 5)), dict(vK), "a1")])                                # uniform payment
+    assert u_ipi == (F(-1, 10), F(0), F(1, 5), F(0), F(1, 5))
+
+    # (12) reflection conditional on legitimacy (section 2.6): teacher with
+    #      probability lam = P(L), coin otherwise; installed state is the L-conditional
+    #      (0.9, 0.1) regardless; hedged alternative installs P(theta | i).
+    for lam in [F(0), F(1, 4), F(1, 2), F(1)]:
+        own = F(9, 10) * lam + F(1, 2) * (1 - lam)          # P(theta = i | i)
+        unhedged_accept = own                                 # modified agent picks a_i (0.9 > s); valued at own
+        assert unhedged_accept == F(1, 2) + F(2, 5) * lam
+        hedged_accept = max(s, own)                           # modified agent picks a_i iff own >= s, else a_3
+        assert hedged_accept >= s                             # never worse than declining
+        assert (unhedged_accept > s) == (lam > F(1, 4))       # base-rate threshold
+    assert F(1, 4) / (1 - F(1, 4)) == (s - F(1, 2)) / (F(9, 10) - s)   # lam/(1-lam) = loss/gain at threshold
+
+    # (13) section 2.7: the modest teacher. P(theta=A) = 3/10; when theta=A the
+    #      source installs (9/10, 1/10), when theta=B it installs (1/10, 9/10).
+    #      Act-value reflection fails, no faithful superconditioning exists (the
+    #      martingale fails, see total_trust_example), yet accept beats decline.
+    pA = F(3, 10)
+    decline_m = max(sum(p * u(t, a, s) for p, t in ((pA, "A"), (1 - pA, "B"))) for a in ACTS)
+    assert decline_m == F(7, 10)
+    accept_m = F(0)
+    for p, theta, Q in ((pA, "A", installed("A", F(9, 10))), (1 - pA, "B", installed("B", F(9, 10)))):
+        a_star = max(ACTS, key=lambda a: sum(Q[t] * u(t, a, s) for t in THETAS))
+        accept_m += p * u(theta, a_star, s)                    # true value: theta is known given the install
+        a_hat = max(ACTS, key=lambda a: u(theta, a, s))          # informed old-U choice
+        assert a_star == a_hat                                   # (A) = 0
+        assert u(theta, a_star, s) != sum(Q[t] * u(t, a_star, s) for t in THETAS)   # E0[U_a | V] = 1 != V_a = 9/10
+    assert accept_m == F(1)
+
     # (9) representation accuracy: mean-square distance of the utility the agent
     #     acts on from the value random variable u_theta, act a1
     P9 = joint(F(9, 10), s)
     err_now = representation_error(P9, s, None)
     err_teacher = representation_error(P9, s, F(9, 10))
     err_coin = representation_error(P9, s, F(9, 10), coin=True)
-    err_pill = representation_error(joint(F(1, 2), s), s, F(9, 10))
+    err_pill = representation_error(joint(F(9, 10), s), s, F(9, 10), pill=True)   # (9/10, 1/10) installed regardless of i
     assert (err_now, err_teacher, err_coin, err_pill) == (F(1, 4), F(9, 100), F(41, 100), F(41, 100))
     # Pythagoras under reflection: err_now = E[(Ubar - Ubar^(i))^2] + err_teacher
     gap = sum(F(1, 2) * (F(1, 2) - v) ** 2 for v in (F(9, 10), F(1, 10)))
@@ -275,6 +335,7 @@ def main():
     print("\nTotal-Trust example: E[Q(1)] =", m, "(P(1) = 3/10); hull weight on Q_1 =", lam)
     print("\nsection 1.4 decomposition (A, B, C): teacher", teacher, "| pill", pill, "| coin", coin,
           "| paid 0.2", paid, "| paid 0.05", underpaid)
+    print("\n(A,B,C,I,Pi): teacher", t_ipi, "| act-bonus", b_ipi, "| uniform-paid", u_ipi)
     print("\nrepresentation error for a1 (mean square to u_theta): now", err_now,
           "| teacher", err_teacher, "| coin", err_coin, "| pill", err_pill)
     print("\nall assertions passed")
