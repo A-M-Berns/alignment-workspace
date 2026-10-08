@@ -1,0 +1,2 @@
+# corr-value-change — open statements (same format as the root OPEN.txt).
+# `Fully.Qualified.Name  # reason`. Empty: no sorry in the package.

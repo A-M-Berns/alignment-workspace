@@ -48,6 +48,7 @@ SPEC_PATHS = (
     "projects/deference/corrigibility-note-dump-2026-10-01/**",
     "projects/decision-theory/decision-problems-note-dump-2026-10-01/**",
     "projects/deference/faf-cleanroom-2026-10-02/**",
+    "projects/deference/faf-cleanroom-2026-10-07-corr-value-change/**",
     "lean/lakefile.toml", "lean/lean-toolchain", "lean/lake-manifest.json",
     "lean/Workspace.lean",
     "lean/Workspace/Smoke.lean",

@@ -1,0 +1,71 @@
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:33:33: warning: This simp argument is unused:
+  Fintype.sum_unique
+
+Hint: Omit it from the simp argument list.
+  simp [Fintype.sum_prod_type, F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵u̵n̵i̵q̵u̵e̵,̵ ̵Fin.sum_univ_three, Fintype.sum_bool]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:33:73: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  simp [Fintype.sum_prod_type, Fintype.sum_unique, Fin.sum_univ_three,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵b̵o̵o̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:31:41: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:31:41: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:43:45: warning: This simp argument is unused:
+  Fintype.sum_unique
+
+Hint: Omit it from the simp argument list.
+  simp [Fintype.sum_prod_type, F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵u̵n̵i̵q̵u̵e̵,̵ ̵Fin.sum_univ_three]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:41:41: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:41:41: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:43:85: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:49:61: warning: This simp argument is unused:
+  Fintype.sum_unique
+
+Hint: Omit it from the simp argument list.
+  simp [Joint.π, c4Joint, Fintype.sum_prod_type, F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵u̵n̵i̵q̵u̵e̵,̵ ̵Fin.sum_univ_three]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:49:101: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:74:74: warning: This simp argument is unused:
+  Fintype.sum_prod_type
+
+Hint: Omit it from the simp argument list.
+  simp [msErr, installedEffU, Ubar, Pω, Pωi, c4Joint, c4Installed, c4U, F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵p̵r̵o̵d̵_̵t̵y̵p̵e̵,̵Fintype.sum_unique,
+        Fin.sum_univ_three, Fintype.sum_bool]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:75:6: warning: This simp argument is unused:
+  Fintype.sum_unique
+
+Hint: Omit it from the simp argument list.
+  simp [msErr, installedEffU, Ubar, Pω, Pωi, c4Joint, c4Installed, c4U, Fintype.sum_prod_type,
+        Fint̵y̵p̵e̵.sum_uniq̵u̵e̵,̵ ̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v_three, Fintype.sum_bool]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+run/wp/corr-value-change/audit-r4-probes/Claim4EqualityNotIndependence.lean:75:46: warning: This simp argument is unused:
+  Fintype.sum_bool
+
+Hint: Omit it from the simp argument list.
+  simp [msErr, installedEffU, Ubar, Pω, Pωi, c4Joint, c4Installed, c4U, Fintype.sum_prod_type,
+        Fintype.sum_unique, Fin.sum_univ_three,̵ ̵F̵i̵n̵t̵y̵p̵e̵.̵s̵u̵m̵_̵b̵o̵o̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+exit=0
