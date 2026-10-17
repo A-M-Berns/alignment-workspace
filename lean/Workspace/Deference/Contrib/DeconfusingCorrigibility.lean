@@ -336,18 +336,18 @@ alternative `a*`; the post's authority-respecting hypothesis is not needed for i
 needed for `theorem2c_tau`). -/
 theorem theorem2c (a astar : A) (hv : D.v a > (1 - D.U astar) / D.lam) :
     D.U astar > D.U a := by
-  have hλ := D.toParams.lam_pos
+  have hlam := D.toParams.lam_pos
   have h1 := D.U_le a
-  have h' : 1 - D.U astar < D.v a * D.lam := (div_lt_iff₀ hλ).mp hv
+  have h' : 1 - D.U astar < D.v a * D.lam := (div_lt_iff₀ hlam).mp hv
   linarith
 
 /-- **Theorem 2(c), the threshold is at most `τ`**: `(1 − U a*)/λ ≤ τ`. -/
 theorem theorem2c_tau (astar : A) (hstar : D.Respects astar) :
     (1 - D.U astar) / D.lam ≤ D.τ := by
-  have hλ := D.toParams.lam_pos
+  have hlam := D.toParams.lam_pos
   have h := D.neg_δ_le_U astar hstar
   unfold Params.τ
-  exact div_le_div_same_denom (by linarith) hλ.le
+  exact div_le_div_same_denom (by linarith) hlam.le
 
 end Decision
 
@@ -391,6 +391,7 @@ theorem mul_const {y : ℕ → ℝ} (hy : LimsupLE y 0) {C : ℝ} (hC : 0 ≤ C)
     rw [zero_add] at h ⊢
     exact (le_div_iff₀ hC').mp h
   · refine ⟨0, fun K _ => ?_⟩
+    show y K * C ≤ 0 + γ
     rw [← hC', mul_zero, zero_add]
     exact hγ.le
 
@@ -480,29 +481,29 @@ theorem limsup_of_unbiased (huff : Q.UnbiasedFromFeedback) : LimsupLE (Q.excess 
 theorem limsup_excess_div (huff : Q.UnbiasedFromFeedback) :
     LimsupLE (fun K => Q.excess Q.a K / Q.lam) 0 := by
   intro γ hγ
-  have hλ := Q.toParams.lam_pos
-  obtain ⟨N₀, hN₀⟩ := huff (Q.lam * γ) (mul_pos hλ hγ)
+  have hlam := Q.toParams.lam_pos
+  obtain ⟨N₀, hN₀⟩ := huff (Q.lam * γ) (mul_pos hlam hγ)
   refine ⟨N₀, fun K hK => ?_⟩
-  rw [zero_add, div_le_iff₀ hλ]
+  rw [zero_add, div_le_iff₀ hlam]
   linarith [hN₀ K hK]
 
 /-- Pointwise: `N_k − t_k ≤ (U_k a_k* − S_k)/λ`, from `V_k ≤ 1`. -/
 theorem N_sub_t_le (k : ℕ) : (Q.N k : ℝ) - Q.t k ≤ (Q.U k (Q.astar k) - Q.S k) / Q.lam := by
-  have hλ := Q.toParams.lam_pos
+  have hlam := Q.toParams.lam_pos
   have hne := Q.toParams.lam_ne
   have ht : Q.t k * Q.lam = 1 - Q.U k (Q.astar k) := by
     unfold t
     field_simp
   have hV := Q.V_le_one k
-  rw [le_div_iff₀ hλ]
+  rw [le_div_iff₀ hlam]
   unfold S
   linarith
 
 /-- Each tolerance is at most `τ`, from `U_k a_k* ≥ −δ`. -/
 theorem t_le_τ (k : ℕ) : Q.t k ≤ Q.τ := by
-  have hλ := Q.toParams.lam_pos
+  have hlam := Q.toParams.lam_pos
   unfold t Params.τ
-  exact div_le_div_same_denom (by linarith [(Q.astar_range k).1]) hλ.le
+  exact div_le_div_same_denom (by linarith [(Q.astar_range k).1]) hlam.le
 
 /-- The average tolerance is at most `τ`. -/
 theorem T_le_τ (K : ℕ) : Q.T K ≤ Q.τ := by
@@ -519,11 +520,11 @@ theorem T_le_τ (K : ℕ) : Q.T K ≤ Q.τ := by
 /-- Under maximization, `R_K − T_K ≤ ((1/K) Σ_{k<K} (U_k a_k − S_k)) / λ`. -/
 theorem rate_le_excess (hmax : Q.Maximizes) (K : ℕ) :
     Q.R K - Q.T K ≤ Q.excess Q.a K / Q.lam := by
-  have hλ := Q.toParams.lam_pos
+  have hlam := Q.toParams.lam_pos
   have hpt : ∀ k, (Q.N k : ℝ) - Q.t k ≤ (Q.U k (Q.a k) - Q.S k) / Q.lam := by
     intro k
     exact (Q.N_sub_t_le k).trans
-      (div_le_div_same_denom (by linarith [hmax k _ (Q.astar_avail k)]) hλ.le)
+      (div_le_div_same_denom (by linarith [hmax k _ (Q.astar_avail k)]) hlam.le)
   have hsum := Finset.sum_le_sum fun k (_ : k ∈ range K) => hpt k
   have e1 : Q.R K - Q.T K = (∑ k ∈ range K, ((Q.N k : ℝ) - Q.t k)) / (K : ℝ) := by
     unfold R T
@@ -595,7 +596,7 @@ noncomputable def ε (K : ℕ) : ℝ := (((range K).filter fun k => X.E k = true
 theorem N_sub_t_le_expl (k : ℕ) :
     (X.N k : ℝ) - X.t k
       ≤ (X.U k (X.a k) - X.S k) / X.lam + (X.τ + X.θ) * (if X.E k = true then 1 else 0) := by
-  have hλ := X.toParams.lam_pos
+  have hlam := X.toParams.lam_pos
   have hne := X.toParams.lam_ne
   have h0 := X.toSequential.N_sub_t_le k
   by_cases hE : X.E k = true
@@ -610,12 +611,12 @@ theorem N_sub_t_le_expl (k : ℕ) :
       rw [add_div, mul_comm X.lam, mul_div_assoc, div_self hne, mul_one]
     calc (X.N k : ℝ) - X.t k ≤ (X.U k (X.astar k) - X.S k) / X.lam := h0
       _ ≤ ((X.U k (X.a k) - X.S k) + X.lam * (X.τ + X.θ)) / X.lam :=
-          div_le_div_same_denom hgap hλ.le
+          div_le_div_same_denom hgap hlam.le
       _ = _ := e
   · have hE' : X.E k = false := by simpa using hE
     rw [if_neg hE, mul_zero, add_zero]
     exact h0.trans
-      (div_le_div_same_denom (by linarith [X.maximizes_off k hE' _ (X.astar_avail k)]) hλ.le)
+      (div_le_div_same_denom (by linarith [X.maximizes_off k hE' _ (X.astar_avail k)]) hlam.le)
 
 /-- Pointwise: for an available `a'_k`,
 `U_k a'_k − S_k ≤ (U_k a_k − S_k) + λ (τ + θ) · 1{k ∈ E}`. -/
