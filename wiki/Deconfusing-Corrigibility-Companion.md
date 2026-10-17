@@ -2,12 +2,12 @@
 
 The formal content of the post "Deconfusing Corrigibility" — the sections *Definitions*
 through *Learning with logical induction* — is one Lean file in this repository:
-[`DeconfusingCorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean), namespace
+[`DeconfusingCorrigibility.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean), namespace
 `Workspace.Deference.Contrib.DeconfusingCorrigibility`. Every table below lists a post item,
 its statement in the post's notation, the Lean declaration that states and proves it, and a
 link to that declaration's source line. Every declaration is kernel-checked, sorry-free, and
 audits to `[propext, Classical.choice, Quot.sound]`; each theorem is registered in
-[`projects/deference/CLAIMS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/projects/deference/CLAIMS.md) with class `lean-proved` under the identifier
+[`projects/deference/CLAIMS.md`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/projects/deference/CLAIMS.md) with class `lean-proved` under the identifier
 given in its row. Each theorem's hypothesis package is inhabited by a concrete instance in
 the file's `Witness` namespace (last table). Unqualified Lean names below are relative to
 the file's namespace.
@@ -51,12 +51,12 @@ hypotheses being stated where the post has more, except one added hypothesis:
 
 | post | statement | Lean | source |
 |---|---|---|---|
-| parameters | `δ > 0`; a weight `λ > 1 + δ` | `Params` (fields `δ`, `lam`, `δ_pos`, `lam_gt`) | [`Params`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L78) |
-| histories, legitimacy | a type `H`; `Legit : H → Prop`, an abstract input; nothing assumed about its content beyond the bounds on `V` | `Scoring H`, field `Legit` | [`Scoring`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L115) |
-| violation count | `N : H → ℕ` | `Scoring.N` | [`N`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L119) |
-| evaluation | `V : H → ℝ`; `Legit h → 0 ≤ V h ≤ 1`; `¬Legit h → −δ ≤ V h < 0` | `Scoring.V`, `Scoring.V_legit`, `Scoring.V_illegit` | [`V_legit`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L122), [`V_illegit`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L123) |
-| score | `S h = V h − λ N h` | `Scoring.S` | [`S`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L130) |
-| `τ` | `τ = (1 + δ)/λ` | `Params.τ` | [`τ`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L91) |
+| parameters | `δ > 0`; a weight `λ > 1 + δ` | `Params` (fields `δ`, `lam`, `δ_pos`, `lam_gt`) | [`Params`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L78) |
+| histories, legitimacy | a type `H`; `Legit : H → Prop`, an abstract input; nothing assumed about its content beyond the bounds on `V` | `Scoring H`, field `Legit` | [`Scoring`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L115) |
+| violation count | `N : H → ℕ` | `Scoring.N` | [`N`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L119) |
+| evaluation | `V : H → ℝ`; `Legit h → 0 ≤ V h ≤ 1`; `¬Legit h → −δ ≤ V h < 0` | `Scoring.V`, `Scoring.V_legit`, `Scoring.V_illegit` | [`V_legit`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L122), [`V_illegit`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L123) |
+| score | `S h = V h − λ N h` | `Scoring.S` | [`S`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L130) |
+| `τ` | `τ = (1 + δ)/λ` | `Params.τ` | [`τ`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L91) |
 
 ## Theorem 1 (three ranges)
 
@@ -65,22 +65,22 @@ For every `h : H`. Registered as `deconfusing.theorem1`, statement of record
 
 | post | statement | Lean | source |
 |---|---|---|---|
-| first range | `N h ≥ 1 → S h ≤ 1 − λ` | `Scoring.theorem1_violated` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L160) |
-| the gap | `1 − λ < −δ` | `Scoring.theorem1_gap` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L167) |
-| second range | `N h = 0 ∧ ¬Legit h → −δ ≤ S h ∧ S h < 0` | `Scoring.theorem1_illegitimate` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L170) |
-| third range | `N h = 0 ∧ Legit h → 0 ≤ S h ∧ S h ≤ 1` | `Scoring.theorem1_legitimate` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L176) |
-| Theorem 1 | the conjunction of the four, for every `h` | `Scoring.theorem1` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L184) |
+| first range | `N h ≥ 1 → S h ≤ 1 − λ` | `Scoring.theorem1_violated` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L160) |
+| the gap | `1 − λ < −δ` | `Scoring.theorem1_gap` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L167) |
+| second range | `N h = 0 ∧ ¬Legit h → −δ ≤ S h ∧ S h < 0` | `Scoring.theorem1_illegitimate` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L170) |
+| third range | `N h = 0 ∧ Legit h → 0 ≤ S h ∧ S h ≤ 1` | `Scoring.theorem1_legitimate` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L176) |
+| Theorem 1 | the conjunction of the four, for every `h` | `Scoring.theorem1` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L184) |
 
 ## Single-decision setting
 
 | post | statement | Lean | source |
 |---|---|---|---|
-| states, credence | a finite `Ω`; `μ : Ω → ℝ` with `μ ≥ 0`, `Σ_ω μ ω = 1` | `Decision H Ω A`, fields `μ`, `μ_nonneg`, `μ_sum` | [`Decision`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L242) |
-| continuation histories | `h a ω` | `Decision.hist` | [`hist`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L248) |
-| `U a` | `U a = E_μ[S(h a ·)]` | `Decision.U` | [`U`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L255) |
-| `v a` | `v a = P_μ[N(h a ·) ≥ 1]` | `Decision.v` | [`v`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L258) |
-| authority-respecting alternative | `∀ ω, N(h a* ω) = 0` | `Decision.Respects a*` | [`Respects`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L261) |
-| asking cost | `κ = E_μ[(S(h a ·) − S(h a* ·)) · 1{N(h a ·) = 0}]` | `Decision.κ a a*` | [`κ`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L264) |
+| states, credence | a finite `Ω`; `μ : Ω → ℝ` with `μ ≥ 0`, `Σ_ω μ ω = 1` | `Decision H Ω A`, fields `μ`, `μ_nonneg`, `μ_sum` | [`Decision`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L242) |
+| continuation histories | `h a ω` | `Decision.hist` | [`hist`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L248) |
+| `U a` | `U a = E_μ[S(h a ·)]` | `Decision.U` | [`U`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L255) |
+| `v a` | `v a = P_μ[N(h a ·) ≥ 1]` | `Decision.v` | [`v`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L258) |
+| authority-respecting alternative | `∀ ω, N(h a* ω) = 0` | `Decision.Respects a*` | [`Respects`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L261) |
+| asking cost | `κ = E_μ[(S(h a ·) − S(h a* ·)) · 1{N(h a ·) = 0}]` | `Decision.κ a a*` | [`κ`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L264) |
 
 ## Theorem 2
 
@@ -89,12 +89,12 @@ where the row says so.
 
 | post | statement | Lean | source | registered as |
 |---|---|---|---|---|
-| 2(a) | `v a = 1 → U a* − U a ≥ λ − (1 + δ)`, with `hstar` | `Decision.theorem2a` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L296) | `deconfusing.theorem2a` |
-| 2(a), margin | `λ − (1 + δ) > 0` | `Decision.theorem2a_pos` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L304) | (with 2(a)) |
-| 2(b) | `U a* − U a ≥ (λ − (1 + δ)) · v a − κ`, with `hstar` | `Decision.theorem2b` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L307) | `deconfusing.theorem2b` |
-| 2(b), hence | `v a > κ/(λ − (1 + δ)) → U a* > U a`, with `hstar` | `Decision.theorem2b_strict` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L327) | `deconfusing.theorem2b-strict` |
-| 2(c) | `v a > (1 − U a*)/λ → U a* > U a`, for any `a*` (see *Notation*) | `Decision.theorem2c` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L337) | `deconfusing.theorem2c` |
-| 2(c), threshold | `(1 − U a*)/λ ≤ τ`, with `hstar` | `Decision.theorem2c_tau` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L345) | `deconfusing.theorem2c-tau` |
+| 2(a) | `v a = 1 → U a* − U a ≥ λ − (1 + δ)`, with `hstar` | `Decision.theorem2a` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L296) | `deconfusing.theorem2a` |
+| 2(a), margin | `λ − (1 + δ) > 0` | `Decision.theorem2a_pos` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L304) | (with 2(a)) |
+| 2(b) | `U a* − U a ≥ (λ − (1 + δ)) · v a − κ`, with `hstar` | `Decision.theorem2b` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L307) | `deconfusing.theorem2b` |
+| 2(b), hence | `v a > κ/(λ − (1 + δ)) → U a* > U a`, with `hstar` | `Decision.theorem2b_strict` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L327) | `deconfusing.theorem2b-strict` |
+| 2(c) | `v a > (1 − U a*)/λ → U a* > U a`, for any `a*` (see *Notation*) | `Decision.theorem2c` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L337) | `deconfusing.theorem2c` |
+| 2(c), threshold | `(1 − U a*)/λ ≤ τ`, with `hstar` | `Decision.theorem2c_tau` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L345) | `deconfusing.theorem2c-tau` |
 
 The pointwise facts behind Theorem 2 are `Decision.S_le_one_sub`
 (`S(h a ω) ≤ 1 − λ · 1{N(h a ω) ≥ 1}`), `Decision.U_le` (`U a ≤ 1 − λ v a`) and
@@ -106,26 +106,26 @@ credence.
 
 | post | statement | Lean | source |
 |---|---|---|---|
-| decisions, realized data | `k : ℕ`; `V_k ≤ 1`; `N_k : ℕ` | `Sequential A`, fields `V`, `N`, `V_le_one` | [`Sequential`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L403) |
-| realized score | `S_k = V_k − λ N_k` | `Sequential.S` | [`S`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L425) |
-| estimates, choice, availability | `U_k : A → ℝ`; `a_k`; "`a'` available at `k`" | fields `U`, `a`, `avail` | [`U`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L412) |
-| authority-respecting alternative | `a_k*` available at each `k`, with `−δ ≤ U_k a_k* ≤ 1` (a hypothesis) | fields `astar`, `astar_avail`, `astar_range` | [`astar_range`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L418) |
-| tolerance | `t_k = (1 − U_k a_k*)/λ` | `Sequential.t` | [`t`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L428) |
-| realized rate | `R_K = (1/K) Σ_{k<K} N_k` | `Sequential.R` | [`R`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L431) |
-| average tolerance | `T_K = (1/K) Σ_{k<K} t_k` | `Sequential.T` | [`T`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L434) |
-| maximization | `∀ k, ∀ a'` available at `k`, `U_k a' ≤ U_k a_k` | `Sequential.Maximizes` | [`Maximizes`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L443) |
-| Unbiasedness From Feedback | `∀ γ > 0, ∃ N₀, ∀ K ≥ N₀, (1/K) Σ_{k<K} (U_k a_k − S_k) ≤ γ` | `Sequential.UnbiasedFromFeedback` | [`UnbiasedFromFeedback`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L450) |
-| `limsup ≤` | the eventual form | `LimsupLE` | [`LimsupLE`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L358) |
+| decisions, realized data | `k : ℕ`; `V_k ≤ 1`; `N_k : ℕ` | `Sequential A`, fields `V`, `N`, `V_le_one` | [`Sequential`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L404) |
+| realized score | `S_k = V_k − λ N_k` | `Sequential.S` | [`S`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L426) |
+| estimates, choice, availability | `U_k : A → ℝ`; `a_k`; "`a'` available at `k`" | fields `U`, `a`, `avail` | [`U`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L413) |
+| authority-respecting alternative | `a_k*` available at each `k`, with `−δ ≤ U_k a_k* ≤ 1` (a hypothesis) | fields `astar`, `astar_avail`, `astar_range` | [`astar_range`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L419) |
+| tolerance | `t_k = (1 − U_k a_k*)/λ` | `Sequential.t` | [`t`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L429) |
+| realized rate | `R_K = (1/K) Σ_{k<K} N_k` | `Sequential.R` | [`R`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L432) |
+| average tolerance | `T_K = (1/K) Σ_{k<K} t_k` | `Sequential.T` | [`T`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L435) |
+| maximization | `∀ k, ∀ a'` available at `k`, `U_k a' ≤ U_k a_k` | `Sequential.Maximizes` | [`Maximizes`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L444) |
+| Unbiasedness From Feedback | `∀ γ > 0, ∃ N₀, ∀ K ≥ N₀, (1/K) Σ_{k<K} (U_k a_k − S_k) ≤ γ` | `Sequential.UnbiasedFromFeedback` | [`UnbiasedFromFeedback`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L451) |
+| `limsup ≤` | the eventual form | `LimsupLE` | [`LimsupLE`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L358) |
 
 Unbiasedness From Feedback is a hypothesis of Theorem 3 and the Corollary, named and
 assumed; it is not derived in this file. The post derives it from Theorem 4.8.16 of the
 Logical Induction paper. In this workspace that theorem is pinned as `thm:wubexp` /
 `LogicalInduction.lic_not_frequently_positive_feedback_return` in the def-lattice ledger,
-[`def-lattice-report.md`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/projects/deference/faf-cleanroom-2026-10-02/packages/def-lattice/def-lattice-report.md), row 4.8.16; the derivation for the score
+[`def-lattice-report.md`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/projects/deference/faf-cleanroom-2026-10-02/packages/def-lattice/def-lattice-report.md), row 4.8.16; the derivation for the score
 sequence is `PRIORITIES.md` item 111. The workspace's weighted, absolute-value form of the
 same fact, `BRIAFollowup.UnbiasedFromFeedback`, at the uniform weighting and for every
 `γ > 0`, implies the post's form:
-[`Sequential.unbiased_of_weighted`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L456).
+[`Sequential.unbiased_of_weighted`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L457).
 
 ## Theorem 3
 
@@ -133,9 +133,9 @@ Hypotheses: `Q : Sequential A`; `hmax : Q.Maximizes`; `huff : Q.UnbiasedFromFeed
 
 | post | statement | Lean | source | registered as |
 |---|---|---|---|---|
-| 3(a) Authority | `limsup_K (R_K − T_K) ≤ 0` | `Sequential.theorem3a` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L549) | `deconfusing.theorem3a` |
-| 3(a), in particular | `limsup_K R_K ≤ τ` | `Sequential.theorem3a_rate` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L554) | `deconfusing.theorem3a-rate` |
-| 3(b) Best Interests | for any `a'_k` with `a'_k` available at `k`: `limsup_K (1/K) Σ_{k<K} (U_k a'_k − S_k) ≤ 0` | `Sequential.theorem3b` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L563) | `deconfusing.theorem3b` |
+| 3(a) Authority | `limsup_K (R_K − T_K) ≤ 0` | `Sequential.theorem3a` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L550) | `deconfusing.theorem3a` |
+| 3(a), in particular | `limsup_K R_K ≤ τ` | `Sequential.theorem3a_rate` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L555) | `deconfusing.theorem3a-rate` |
+| 3(b) Best Interests | for any `a'_k` with `a'_k` available at `k`: `limsup_K (1/K) Σ_{k<K} (U_k a'_k − S_k) ≤ 0` | `Sequential.theorem3b` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L564) | `deconfusing.theorem3b` |
 
 The pointwise step is `Sequential.N_sub_t_le`: `N_k − t_k ≤ (U_k a_k* − S_k)/λ`, from
 `V_k ≤ 1`; maximization turns `U_k a_k*` into `U_k a_k` (`Sequential.rate_le_excess`), and
@@ -152,11 +152,11 @@ expectation; here it is the hypothesis directly.
 
 | post | statement | Lean | source | registered as |
 |---|---|---|---|---|
-| hypotheses | as above | `Exploration` | [`Exploration`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L576) | — |
-| `ε_K` | `|E ∩ {0,…,K−1}| / K` | `Exploration.ε` | [`ε`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L592) | — |
-| (a) | `limsup_K (R_K − T_K − ε_K (τ + θ)) ≤ 0` | `Exploration.corollary_a` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L668) | `deconfusing.corollary-a` |
-| (b) | for any available `a'_k`: `limsup_K ((1/K) Σ_{k<K} (U_k a'_k − S_k) − ε_K λ (τ + θ)) ≤ 0` | `Exploration.corollary_b` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L675) | `deconfusing.corollary-b` |
-| specialization | if `ε_K → 0`: `limsup_K (R_K − T_K) ≤ 0`, `limsup_K R_K ≤ τ`, and `limsup_K (1/K) Σ_{k<K} (U_k a'_k − S_k) ≤ 0` for every available `a'` | `Exploration.corollary_limit` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L684) | `deconfusing.corollary-limit` |
+| hypotheses | as above | `Exploration` | [`Exploration`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L577) | — |
+| `ε_K` | `|E ∩ {0,…,K−1}| / K` | `Exploration.ε` | [`ε`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L593) | — |
+| (a) | `limsup_K (R_K − T_K − ε_K (τ + θ)) ≤ 0` | `Exploration.corollary_a` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L669) | `deconfusing.corollary-a` |
+| (b) | for any available `a'_k`: `limsup_K ((1/K) Σ_{k<K} (U_k a'_k − S_k) − ε_K λ (τ + θ)) ≤ 0` | `Exploration.corollary_b` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L676) | `deconfusing.corollary-b` |
+| specialization | if `ε_K → 0`: `limsup_K (R_K − T_K) ≤ 0`, `limsup_K R_K ≤ τ`, and `limsup_K (1/K) Σ_{k<K} (U_k a'_k − S_k) ≤ 0` for every available `a'` | `Exploration.corollary_limit` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L685) | `deconfusing.corollary-limit` |
 
 The pointwise steps are `Exploration.N_sub_t_le_expl` and `Exploration.excess_pt`; on an
 exploration step the gap `U_k a_k* − U_k a_k ≤ 1 + δ + λ θ = λ (τ + θ)` is what the
@@ -169,10 +169,10 @@ theorem's conclusion is stated on that instance.
 
 | theorem | instance | package inhabited by | conclusion on the instance | source |
 |---|---|---|---|---|
-| Theorem 1 | `Witness.scoring`: histories `Bool × ℕ` (a legitimacy flag and a count), `δ = 1`, `λ = 3`, `V = 1/2` on legitimate and `−1/2` on illegitimate histories | one history in each range | `Witness.theorem1_instance` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L727) |
-| Theorem 2 | `Witness.decision`: a fair coin on `Bool`; actions `respecting` (never violates), `risky` (violates on `true`), `violating` (always) | `Witness.theorem2a_package`, `theorem2b_package`, `theorem2c_package` (`v risky = 1/2`, `v violating = 1`, `U respecting = 1/2`, `κ risky respecting = 0`) | `Witness.theorem2_instance`, `Witness.theorem2b_instance` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L749) |
-| Theorem 3 | `Witness.sequential`: every action available, estimates `1/2` everywhere equal to the realized scores, no violations, `a_k* = false` on every menu | `Witness.sequential_maximizes`, `Witness.sequential_unbiased` | `Witness.theorem3_instance` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L834) |
-| Corollary | `Witness.exploration`: the same sequence with `E = {0}`, `θ = 1/10` | `Witness.exploration_explores` (`0 ∈ E`), `Witness.exploration_unbiased`, `Witness.exploration_ε_limsup` (`ε_K ≤ 1/K → 0`) | `Witness.corollary_instance` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L889) |
+| Theorem 1 | `Witness.scoring`: histories `Bool × ℕ` (a legitimacy flag and a count), `δ = 1`, `λ = 3`, `V = 1/2` on legitimate and `−1/2` on illegitimate histories | one history in each range | `Witness.theorem1_instance` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L728) |
+| Theorem 2 | `Witness.decision`: a fair coin on `Bool`; actions `respecting` (never violates), `risky` (violates on `true`), `violating` (always) | `Witness.theorem2a_package`, `theorem2b_package`, `theorem2c_package` (`v risky = 1/2`, `v violating = 1`, `U respecting = 1/2`, `κ risky respecting = 0`) | `Witness.theorem2_instance`, `Witness.theorem2b_instance` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L794) |
+| Theorem 3 | `Witness.sequential`: every action available, estimates `1/2` everywhere equal to the realized scores, no violations, `a_k* = false` on every menu | `Witness.sequential_maximizes`, `Witness.sequential_unbiased` | `Witness.theorem3_instance` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L835) |
+| Corollary | `Witness.exploration`: the same sequence with `E = {0}`, `θ = 1/10` | `Witness.exploration_explores` (`0 ∈ E`), `Witness.exploration_unbiased`, `Witness.exploration_ε_limsup` (`ε_K ≤ 1/K → 0`) | `Witness.corollary_instance` | [source](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/DeconfusingCorrigibility.lean#L890) |
 
 ## Verifying
 
@@ -183,7 +183,7 @@ against `[propext, Classical.choice, Quot.sound]`. The registrations are checked
 
 ## Relation to the earlier statements in this repository
 
-[`PostStatement.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/PostStatement.lean) (round 2026-10-01) states an earlier post's
+[`PostStatement.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/PostStatement.lean) (round 2026-10-01) states an earlier post's
 theorem over the kernel's objects. Its `LexParams` carries `ϖ`, `D`, `w`: `ϖ` is the
 per-violation weight, the post's `λ`; the ordinary term lies in `[0, D]`, where the post's
 `V` lies in `[−δ, 1]` with the illegitimate floor `−δ`, so `D ↔ 1` and `w ↔ −δ` (the
@@ -195,7 +195,7 @@ single `U` does not. Under this dictionary `Headline.subjective_exchange_rate`'s
 `λ − (1 + δ)`. These are correspondences of form; no equivalence is proved, and neither
 statement is derived from the other here.
 
-[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/78a9b6359b98f018a39fe449c7353aa9aadc868d/lean/Workspace/Deference/Contrib/KernelExtension.lean) proves `realized_rate` and
+[`KernelExtension.lean`](https://github.com/A-M-Berns/alignment-workspace/blob/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/lean/Workspace/Deference/Contrib/KernelExtension.lean) proves `realized_rate` and
 `exploration_rate`: a finite-`K` bound on the `w`-weighted average of the *expected*
 violation count `π_k`, with explicit overestimation and noise terms `B(K)`, `M(K)`, whose
 exploration term is `ε̄ · ((D − lo)/ϖ + θ_hi)`. Theorem 3(a) and Corollary (a) here are
@@ -208,5 +208,5 @@ not the `realized_rate` result. The one proved link is `Sequential.unbiased_of_w
 the weighted unbiasedness predicate that `exploration_rate` consumes, at uniform weighting,
 implies the hypothesis the theorems here consume.
 
-Round: [`prompts/2026-10-17-post-companion-formalization/`](https://github.com/A-M-Berns/alignment-workspace/tree/78a9b6359b98f018a39fe449c7353aa9aadc868d/prompts/2026-10-17-post-companion-formalization). Names are
+Round: [`prompts/2026-10-17-post-companion-formalization/`](https://github.com/A-M-Berns/alignment-workspace/tree/eb3556e4038d3c15568fcd206c4e80ad74a47ba9/prompts/2026-10-17-post-companion-formalization). Names are
 provisional.

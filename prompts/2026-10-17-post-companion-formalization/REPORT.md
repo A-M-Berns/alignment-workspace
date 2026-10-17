@@ -71,7 +71,74 @@ nothing from `LogicalInduction`.
 
 ## Verification
 
-VERIFICATION_PLACEHOLDER
+Run on 2026-10-17 in a second session (Claude Fable 5.1, Anthropic, in Claude Code) on the
+maintainer's machine, on the round branch; the first session's file did not elaborate (see
+*Proof repairs* below). Toolchain `leanprover/lean4:v4.31.0`; Mathlib at the manifest's
+revision `fabf563a`, reused from a sibling checkout's cache rather than fetched with
+`lake exe cache get` (same revision, same toolchain); `agentFoundations` cloned at the pinned
+`307119d0` and built.
+
+**Proof repairs, statements unchanged.** Sixteen hypothesis names written `hλ` were two
+tokens to Lean (`h` followed by the reserved word `λ`), which produced `unsolved goals` and
+`unexpected token 'λ'` at every use; renamed `hlam`. In `LimsupLE.mul_const`, the `C = 0`
+branch's `rw [mul_zero]` did not see through the beta-redex `(fun K => y K * 0) K`; a `show`
+line reduces the goal first. The diff is seventeen lines, all inside proofs; no signature,
+hypothesis, or conclusion changed. Committed as `eb3556e4038d3c15568fcd206c4e80ad74a47ba9`,
+the commit the companion page's links are pinned to.
+
+**`lake build`** from `lean/` (through the machine's serialized build wrapper, which only
+sets `LEAN_NUM_THREADS`):
+
+```
+ℹ [3775/3775] Built Workspace.Deference.Contrib.DeconfusingCorrigibility (15s)
+Build completed successfully (3775 jobs).
+```
+
+and the full library afterwards: `Build completed successfully (4086 jobs).` The new file
+elaborates with no warnings (`lake env lean` on it alone: exit 0, 65 `#print axioms`
+results, nothing else printed).
+
+**`python3 ../tests/audit_axioms.py`** from `lean/`:
+
+```
+AXIOM AUDIT: 2436 results across 99 files, all within ['Classical.choice', 'Quot.sound', 'propext']
+```
+
+65 of the 2436 results are this file's; the other 2371, across the other 98 files, are the
+pre-existing declarations. Their `#print axioms` output is unchanged: no pre-existing Lean
+source differs from `origin/main` (the diff of `lean/` against it is this file and the
+Contrib `PROVENANCE.md` row), the dependency manifest is unchanged, and the audit
+re-elaborates each file from source, so each pre-existing file's output is the same function
+of the same input. No separate baseline run on `origin/main` was made in this session.
+
+**`python3 tests/run.py`** at the root: exit 0 —
+
+```
+LEAN SORRY GATE: clean over 99 files
+LEAN AXIOM DISCIPLINE: every file carries `#print axioms`
+UNTRACKED POINTERS: clean — 313 round-record path(s) and 872 resolving citation(s) are in the repository, not merely on this disk
+WORKSPACE STATE: valid — 5 projects, 157 modern claims, 1 foundations, 180 foundation claims, 119 rounds, 52 terms, 120 priorities, 10 interface objects
+WIKI LINKS: clean over 31 page(s) (links resolve; repository links are commit-pinned)
+WIKI STATE BINDINGS: clean over 33 page(s); 3 binding(s) verified against the state emission
+GATE COVERAGE: 11 gate scripts, all invoked (5 self-test only — no local form)
+LEAN BUILD SKIPPED: set WORKSPACE_LEAN=1 to run `lake build`
+```
+
+One local caveat: the untracked-pointers gate fails on a working tree that carries a
+`lean/.lake` build directory, because `DECISIONS.md` cites that path and the gate requires
+every cited path that exists on disk to be tracked. The run above was made with that
+directory set aside; CI never has one. `python3 -m checkers.run`: exit 0, 52 entries in the
+deference registry, the twelve `deconfusing.*` entries adjudicated by the Lean gate.
+`python3 -m checkers.wiki_links`: clean over 31 pages after the re-render.
+`python3 -m checkers.workspace_state --write-handoff` then `--check`: clean.
+
+**The companion page's links.** Every link into the repository on
+`wiki/Deconfusing-Corrigibility-Companion.md` is pinned to `eb3556e4`, and each of the 47
+source links to the Lean file points at the line of the declaration named in its row,
+recomputed from the committed file (the `show` line moved everything after line 358 down by
+one). One link changed target: the Theorem 2 row of the witness table now points at the
+conclusion declaration `Witness.theorem2_instance`, as the other three witness rows already
+did, where it had pointed at the instance `Witness.decision`.
 
 ## Deviations and corrections to the prompt
 
