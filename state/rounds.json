@@ -1881,6 +1881,36 @@
       "registered_classes": [],
       "prompt": "prompts/2026-10-02-graph-prototype/PROMPT.md",
       "claim_changes": []
+    },
+    {
+      "id": "2026-10-17-post-companion-formalization",
+      "date": "2026-10-17",
+      "project": "deference",
+      "path": "prompts/2026-10-17-post-companion-formalization",
+      "verdict": "THE-POSTS-FORMAL-CONTENT-AS-ONE-LEAN-FILE-WITH-A-COMPANION-PAGE — Theorem 1, Theorem 2(a)(b)(c), Theorem 3(a)(b) and the Corollary (Exploration) with its ε_K → 0 specialization stated in the post's notation and proved, every hypothesis package inhabited; Unbiasedness From Feedback a named hypothesis, not derived; limsup in the eventual form; Corollary (b) needs the estimate bound U_k a' ≤ 1, added as a hypothesis and declared",
+      "verdict_source": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+      "depends_on": [
+        "2026-09-15-li-corrigibility"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+      "claim_changes": [
+        "deconfusing.theorem1",
+        "deconfusing.theorem2a",
+        "deconfusing.theorem2b",
+        "deconfusing.theorem2b-strict",
+        "deconfusing.theorem2c",
+        "deconfusing.theorem2c-tau",
+        "deconfusing.theorem3a",
+        "deconfusing.theorem3a-rate",
+        "deconfusing.theorem3b",
+        "deconfusing.corollary-a",
+        "deconfusing.corollary-b",
+        "deconfusing.corollary-limit"
+      ]
     }
   ]
 }

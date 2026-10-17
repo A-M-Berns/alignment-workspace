@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1116 names, 624 of them Lean only
+## deference — 1152 names, 622 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -36,6 +36,9 @@ change, and the count of those is the size of the free choice remaining.
 | `comprehension_short` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki, prose | `Workspace.Deference.Contrib.EffectiveAuthority.comprehension_short` |
 | `content_fact_eq` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.Sincerity.content_fact_eq` |
 | `control_maximizer_floods_module` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.EffectiveAuthority.Dep.control_maximizer_floods_module` |
+| `corollary_a` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration.corollary_a` |
+| `corollary_b` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration.corollary_b` |
+| `corollary_limit` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration.corollary_limit` |
 | `correct_of_coherent_authorship_transparent` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.correct_of_coherent_authorship_transparent` |
 | `covert_blocking_correct_iff` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.covert_blocking_correct_iff` |
 | `defect_bound` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.CertificateBounds.defect_bound` |
@@ -102,6 +105,15 @@ change, and the count of those is the size of the free choice remaining.
 | `staticView_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note | `Workspace.Deference.Contrib.StaticViewFactorization.staticView_eq` |
 | `subjective_exchange_rate` | theorem | 2026-09-27-corrigibility-kernel-phase2 | registry, wiki, prose | `Workspace.Deference.Headline.subjective_exchange_rate` |
 | `sufficient_of_integrity_openness` | theorem | 2026-10-01-thin-legitimacy-and-effective-authority | registry, wiki | `Workspace.Deference.Contrib.ThinLegitimacy.sufficient_of_integrity_openness` |
+| `theorem1` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Scoring.theorem1` |
+| `theorem2a` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2a` |
+| `theorem2b` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2b` |
+| `theorem2b_strict` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2b_strict` |
+| `theorem2c` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2c` |
+| `theorem2c_tau` | theorem | 2026-10-17-post-companion-formalization | registry, wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2c_tau` |
+| `theorem3a` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3a` |
+| `theorem3a_rate` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3a_rate` |
+| `theorem3b` | theorem | 2026-10-17-post-companion-formalization | registry, wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3b` |
 | `unitTrader_netWorth_eq` | theorem | 2026-08-11-phase-ii-prediction | registry, note | `Workspace.Deference.Contrib.MagnitudePrediction.unitTrader_netWorth_eq` |
 | `unpredictability_separates` | theorem | 2026-08-11-phase-ii-promotion | registry | `Workspace.Deference.Contrib.SubstitutionSeparation.unpredictability_separates` |
 | `value_eq_of_price_realization_eq` | theorem | 2026-08-11-stage-v-li-native | registry, note, prose | `Workspace.Deference.Contrib.StaticViewFactorization.value_eq_of_price_realization_eq` |
@@ -120,7 +132,7 @@ change, and the count of those is the size of the free choice remaining.
 | `c₂` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.PerAction.c₂` |
 | `expect` | def | 2026-09-07-authority-activated-value | note | `Workspace.Deference.Contrib.ActivatedValue.expect` |
 | `followed` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.followed` |
-| `ind` | def | 2026-09-07-authority-activated-value | Lean only | `Workspace.Deference.Contrib.ActivatedValue.ind` |
+| `ind` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.ind` |
 | `mass` | def | 2026-09-07-authority-activated-value | wiki | `Workspace.Deference.Contrib.ActivatedValue.mass` |
 | `Band` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Band` |
 | `BandMap` | structure | 2026-09-26-after-compromise | wiki, prose | `Workspace.Deference.Contrib.AfterCompromise.Band.BandMap` |
@@ -478,6 +490,30 @@ change, and the count of those is the size of the free choice remaining.
 | `pramp` | def | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.pramp` |
 | `raisesAnchored` | def | 2026-09-25-decision-component | wiki, prose | `Workspace.Deference.Contrib.DecisionComponent.raisesAnchored` |
 | `rampMass` | def | 2026-09-25-decision-component | Lean only | `Workspace.Deference.Contrib.DecisionComponent.rampMass` |
+| `Act` | inductive | 2026-10-17-post-companion-formalization | Lean only | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Witness.Act` |
+| `Decision` | structure | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision` |
+| `Exploration` | structure | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration` |
+| `LimsupLE` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.LimsupLE` |
+| `Maximizes` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.Maximizes` |
+| `Params` | structure | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Params` |
+| `R` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.R` |
+| `Respects` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.Respects` |
+| `S` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Scoring.S` |
+| `S` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.S` |
+| `Scoring` | structure | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Scoring` |
+| `Sequential` | structure | 2026-10-17-post-companion-formalization | wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential` |
+| `T` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.T` |
+| `U` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.U` |
+| `UnbiasedFromFeedback` | def | 2026-10-17-post-companion-formalization | wiki, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.UnbiasedFromFeedback` |
+| `decision` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Witness.decision` |
+| `excess` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.excess` |
+| `exploration` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Witness.exploration` |
+| `hist` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Witness.hist` |
+| `ind` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.ind` |
+| `scoring` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Witness.scoring` |
+| `sequential` | def | 2026-10-17-post-companion-formalization | wiki | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Witness.sequential` |
+| `t` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.t` |
+| `v` | def | 2026-10-17-post-companion-formalization | wiki, note, prose | `Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.v` |
 | `EX` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.E1.EX` |
 | `GradeTrust` | def | 2026-08-11-phase-ii-promotion | Lean only | `Workspace.Deference.Contrib.DelegationBridge.GradeTrust` |
 | `J` | def | 2026-08-11-phase-ii-promotion | wiki, note, prose | `Workspace.Deference.Contrib.DelegationBridge.E1.J` |
@@ -767,7 +803,7 @@ change, and the count of those is the size of the free choice remaining.
 | `both` | def | 2026-09-15-li-corrigibility | wiki, note, prose | `Workspace.Deference.Contrib.LICorrigibility.Witness.both` |
 | `canonicalValue` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.canonicalValue` |
 | `constLUV` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.constLUV` |
-| `expectR` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.expectR` |
+| `expectR` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.LICorrigibility.expectR` |
 | `gate` | def | 2026-09-15-li-corrigibility | wiki, prose | `Workspace.Deference.Contrib.LICorrigibility.gate` |
 | `indR` | def | 2026-09-15-li-corrigibility | Lean only | `Workspace.Deference.Contrib.LICorrigibility.indR` |
 | `indicator` | def | 2026-09-15-li-corrigibility | wiki | `Workspace.Deference.Contrib.LICorrigibility.indicator` |
@@ -817,7 +853,7 @@ change, and the count of those is the size of the free choice remaining.
 | `declGap` | def | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.declGap` |
 | `declRegret` | def | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.declRegret` |
 | `expect` | abbrev | 2026-09-09-mediated-repair-dominance | note | `Workspace.Deference.Contrib.MediatedRepairDominance.expect` |
-| `ind` | abbrev | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.ind` |
+| `ind` | abbrev | 2026-09-09-mediated-repair-dominance | wiki | `Workspace.Deference.Contrib.MediatedRepairDominance.ind` |
 | `liftVal` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.liftVal` |
 | `rawVal` | def | 2026-09-09-mediated-repair-dominance | Lean only | `Workspace.Deference.Contrib.MediatedRepairDominance.rawVal` |
 | `Completion` | def | 2026-09-07-reason-mediated-authorship | Lean only | `Workspace.Deference.Contrib.ActivatedValue.Completion` |
@@ -1065,7 +1101,7 @@ change, and the count of those is the size of the free choice remaining.
 | `mass` | def | 2026-10-01-thin-legitimacy-and-effective-authority | wiki | `Workspace.Deference.Contrib.ThinLegitimacy.mass` |
 | `payoff` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.ThinLegitimacy.payoff` |
 | `pointMass` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.ThinLegitimacy.Witness.pointMass` |
-| `post` | def | 2026-10-01-thin-legitimacy-and-effective-authority | prose | `Workspace.Deference.Contrib.ThinLegitimacy.post` |
+| `post` | def | 2026-10-01-thin-legitimacy-and-effective-authority | wiki, prose | `Workspace.Deference.Contrib.ThinLegitimacy.post` |
 | `priorCredence` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.ThinLegitimacy.Witness.priorCredence` |
 | `refKernel` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.ThinLegitimacy.refKernel` |
 | `reveal` | def | 2026-10-01-thin-legitimacy-and-effective-authority | Lean only | `Workspace.Deference.Contrib.ThinLegitimacy.Witness.reveal` |
@@ -1395,7 +1431,7 @@ change, and the count of those is the size of the free choice remaining.
 | `feasible` | def | unrecorded | prose | `Workspace.Normativity.Contrib.FourierMotzkin.feasible` |
 | `lastCoeff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.lastCoeff` |
 | `of` | def | unrecorded | wiki, note, prose | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.of` |
-| `strict` | abbrev | unrecorded | note | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.strict` |
+| `strict` | abbrev | unrecorded | wiki, note | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.strict` |
 | `wClosed` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wClosed` |
 | `wEqUnsat` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wEqUnsat` |
 | `wFeasible` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.wFeasible` |
