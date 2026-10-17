@@ -2460,3 +2460,327 @@ round produced.
   "note": "Part 5 of the follow-up, correcting PR #116's finding that covert blocking leaves her correct — true only when silence has the same likelihood in every world. `correct_silence_iff` is the posterior form. Inhabited both ways: the eight-world fixture's uniform silence (correct), and `Witness.informative_silence_not_correct` (silence at 1/2 and 1/4 — not correct, not weakly transparent)."
 }
 ```
+
+### deconfusing.theorem1
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 1 (three ranges): a violated history scores at most 1 − λ < −δ; a violation-free illegitimate history scores in [−δ, 0); a violation-free legitimate history scores in [0, 1]",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Scoring.theorem1"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "Inhabited by `Witness.theorem1_instance` on `Witness.scoring` (δ = 1, λ = 3): one history in each range."
+}
+```
+
+### deconfusing.theorem2a
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 2(a): if v a = 1 then U a* − U a ≥ λ − (1 + δ), and λ − (1 + δ) > 0",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2a"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "The positivity clause is `Decision.theorem2a_pos`. Inhabited by `Witness.theorem2a_package` on `Witness.decision` (the always-violating action against the respecting one); the conclusion on the instance is `Witness.theorem2_instance`."
+}
+```
+
+### deconfusing.theorem2b
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 2(b): U a* − U a ≥ (λ − (1 + δ)) · v a − κ",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2b"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "Inhabited by `Witness.respects` on `Witness.decision`."
+}
+```
+
+### deconfusing.theorem2b-strict
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 2(b), the consequence: U a* > U a whenever v a > κ/(λ − (1 + δ))",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2b_strict"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "Inhabited by `Witness.theorem2b_package` (v = 1/2 > 0 = κ/(λ − (1 + δ))); the conclusion on the instance is `Witness.theorem2b_instance`."
+}
+```
+
+### deconfusing.theorem2c
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 2(c): v a > (1 − U a*)/λ forces U a* > U a",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2c"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "Stated for any alternative a*; the post's authority-respecting hypothesis is not used by this clause. Inhabited by `Witness.theorem2c_package` (v = 1/2 > 1/6); the conclusion on the instance is `Witness.theorem2_instance`."
+}
+```
+
+### deconfusing.theorem2c-tau
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 2(c), the threshold: (1 − U a*)/λ ≤ τ for an authority-respecting a*",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Decision.theorem2c_tau"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "Inhabited by `Witness.respects` on `Witness.decision`."
+}
+```
+
+### deconfusing.theorem3a
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 3(a), Authority: under maximization and Unbiasedness From Feedback, limsup_K (R_K − T_K) ≤ 0",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3a"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "Unbiasedness From Feedback is the named hypothesis `Sequential.UnbiasedFromFeedback`, assumed rather than derived (PRIORITIES item 111). limsup in the eventual form `LimsupLE`. Inhabited by `Witness.theorem3_instance` on `Witness.sequential` (estimates equal to realized scores)."
+}
+```
+
+### deconfusing.theorem3a-rate
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 3(a), in particular: limsup_K R_K ≤ τ",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3a_rate"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "From `theorem3a` and `T_le_τ`. Inhabited by `Witness.theorem3_instance`."
+}
+```
+
+### deconfusing.theorem3b
+
+```json
+{
+  "project": "deference",
+  "short_name": "Theorem 3(b), Best Interests: for any available sequence a'_k, limsup_K (1/K) Σ_{k<K} (U_k a'_k − S_k) ≤ 0",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Sequential.theorem3b"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "Inhabited by `Witness.theorem3_instance`."
+}
+```
+
+### deconfusing.corollary-a
+
+```json
+{
+  "project": "deference",
+  "short_name": "Corollary (Exploration) (a): limsup_K (R_K − T_K − ε_K (τ + θ)) ≤ 0",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration.corollary_a"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "The exploration-step hypothesis U_k a_k ≥ −δ − λ θ stands in for the post's linearity argument. Inhabited by `Witness.corollary_instance` on `Witness.exploration` (exploring at k = 0)."
+}
+```
+
+### deconfusing.corollary-b
+
+```json
+{
+  "project": "deference",
+  "short_name": "Corollary (Exploration) (b): for any available a'_k, limsup_K ((1/K) Σ_{k<K} (U_k a'_k − S_k) − ε_K λ (τ + θ)) ≤ 0",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration.corollary_b"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "Uses the estimate bound U_k a' ≤ 1 on available options (`Exploration.U_le_one`), a hypothesis the prompt did not list; see the round's report. Inhabited by `Witness.corollary_instance`."
+}
+```
+
+### deconfusing.corollary-limit
+
+```json
+{
+  "project": "deference",
+  "short_name": "Corollary (Exploration), the specialization: if ε_K → 0, both conclusions of Theorem 3 hold unchanged",
+  "origin_round": "2026-10-17-post-companion-formalization",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Deference.Contrib.DeconfusingCorrigibility.Exploration.corollary_limit"
+  },
+  "answers_item": "107",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-17-post-companion-formalization",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "prompts/2026-10-17-post-companion-formalization/REPORT.md",
+    "context": "prompts/2026-10-17-post-companion-formalization/PROMPT.md",
+    "companion": "wiki/Deconfusing-Corrigibility-Companion.md"
+  },
+  "note": "ε_K → 0 in the eventual form `LimsupLE X.ε 0`. Inhabited by `Witness.corollary_instance` (`Witness.exploration_ε_limsup`)."
+}
+```
