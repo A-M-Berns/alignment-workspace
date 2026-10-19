@@ -236,6 +236,18 @@ commit.
   express — a security assessed on nothing — or the two forms are one object seen from
   the row side and the account side.
 
+- **What a warrant's security settles against (M2 of the warrant-enforcement-semantics
+  round).**  The round ran deductive, evaluation and pegged settlement as a fork on one
+  fixture and found the fork collapses in the account: the three are one assessment process
+  with three live-set schedules, and the odds bankroll `3 · max_j c_j/(1 − c_j)` is the same
+  under all three while a slack world is live (`WarrantEntitlement.liability_of_odds`,
+  `Fixture.liability`, `Fixture.liability_disagree`).  The one unaffordable case is a
+  per-row defeat followed by a refutation (the orphan pin, item 112), under no particular
+  semantics.  *Turns on:* whether a pegged reading the pinned substrate cannot express — a
+  security assessed on nothing — is wanted, and whether a linear strength row that
+  contraposes under settlement is acceptable or the warrant's form changes (item 113);
+  taste about what a reason's security is, which no theorem here decides.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -5876,3 +5888,47 @@ architecture (`lean/Workspace/Normativity/Contrib/NormativeInductionInterface.le
 force layer (`projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md`).  The round
 discharges a hypothesis those objects already name — `liability` in
 `Evaluation.conditional_normative_inductor` — and adds nothing to their signatures.
+
+### 2026-10-20 — the licence is three-level with verdicts as values, enforcement's conclusion is a defect bound with the account beside it, the record of a run is its own object, and a warrant's defeat condition belongs to the occurrence
+
+**agent-decided, reversible** (the warrant-enforcement-semantics round,
+`projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/`).  Four adoptions
+from the dispatch's proposals, where the mathematics supported them.
+
+**P1 adopted — the three-level licence.**  `Admissible` (the region contains the verdict),
+`Supported` (a certificate whose positively weighted rows are cited **by occurrence** into
+the live bundle brackets the verdict with attained endpoints), `Licensed` (supported on the
+record's grounds, and the issuing event authorized); `Licensed → Supported → Admissible`
+proved, both converses refuted, in `WarrantEntitlement.lean`.  A verdict is a *value* for a
+coordinate, which is what A4's "two verdicts inside the interval" needs and what makes
+`Supported → Admissible` a theorem by rational convexity.  *Rejected alternative:* verdicts
+as bounds (the warrant's output form), under which `Supported → Admissible` is the
+certificate's soundness alone and A4 has no two verdicts to select between; and citation by
+row value (`Bundle.Allowed`), under which the stale certificate of A3 passes.
+
+**P2 adopted — the conclusion of enforcement is a defect bound.**  Conformance stays the
+force layer's `Σ_j β_j g_j² ≤ ε + C`, hence `g_j ≤ δ`, never `P_t ∈ K_t`; this round adds
+the account beside it, `−3ρ ≤ netWorth` at every live world.  *Rejected alternative:*
+stating entitlement as membership of the price in the region, which the force interface
+already withdrew.
+
+**P3 adopted — the record is an additional object.**  `MarketRun → Record` (`trace`) carries
+grounds with provenance, certificate events, docket transitions and the enforcer's position,
+and not prices; it is neither injective nor constant in the run and decides `Licensed`.
+*Rejected alternative:* the price history as the record, under which the docket is invisible
+and `Licensed` undecidable.
+
+**P4 adopted — names, provisional:** *settlement semantics*, *bankroll schedule*,
+*entitlement*; and the round's own *odds bankroll*, *slack world*, *orphan pin*.
+
+**The defeat condition is occurrence-level.**  A warrant's rows share one defeat condition:
+undercutting its applicability claim withdraws its strength row too.  The mathematics: with
+per-row ports, a defeated applicability row leaves the strength row an orphan that a later
+refutation of the consequent turns into a pin on the antecedent, inside a nonempty region
+with no slack world, where no bankroll exists (`Fixture.orphan_region_nonempty`,
+`orphan_no_slack`, the harmonic buyer of the round's `src/`).  The compiler rule realizing
+this is item 112; until it lands, `Grounds.region` consumes ports only and the round's
+fixture is the standing counterexample.  *Rejected alternative:* per-row ports as on the
+seed-statics branch, with the orphan accepted as the warrant's content — a defeasible
+warrant does not contrapose, and the market would pay without bound for a conclusion the
+warrant never drew.

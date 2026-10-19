@@ -843,7 +843,7 @@ that skips docketing leaves a visible coverage debt rather than passing.
 *Consumed by:* the round that closes the response-learning loop, which needs a
 `Due` its learner can be answerable to.
 
-### 56. A citation discipline for `Licensed`, and its transport — **[substantial]**
+### 56. A citation discipline for `Licensed`, and its transport — **[substantial]** — *narrowed 2026-10-20: the discipline is stated and the chain proved in `lean/Workspace/Normativity/Contrib/WarrantEntitlement.lean` — a certificate's positively weighted rows are cited by occurrence identity into the live bundle (`VerdictCert.CitesLive`), `Licensed → Supported → Admissible` (`licence_chain`), both converses refuted (`Countermodel.admissible_not_supported`, `supported_not_licensed`), registered `warrant.*`; what remains is the transport statement and the laundering suite, filed as item 115, and the operative defeat set, item 112*
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
 The reason state narrows the internal-answerability kernel's `Licensed` blocker to
@@ -3564,6 +3564,112 @@ rests on the hypothesis; any round deriving the exploration bound `U_k a_k ≥ �
 from linearity of the inductor's expectation.
 *A solution ships:* the derivation, or the obstruction — in particular whether the
 support clause (PE2) can be discharged for the score family.
+
+### 112. Occurrence-level defeat: the orphan pin — **[substantial]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The warrant-enforcement-semantics round (`projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/`)
+finds that with per-row docket ports a warrant whose applicability port has been defeated
+leaves its strength row behind, and a later refutation of the consequent turns that row into
+a **pin** on its antecedent — `P(X∧A∧Y) ≥ c_S P(X∧A)` with `X∧A∧Y` pinned to `0` reads
+`P(X∧A) ≤ 0` — inside a nonempty region with no slack live world
+(`WarrantEntitlement.Fixture.orphan_region_nonempty`, `orphan_no_slack`). The odds bankroll
+has no witness there and an efficiently computable buyer drives the enforcer below every
+bound on a convergent budget (`src/fixture.py::harmonic_buyer_run`). With the applicability
+row live the same refutation empties the region and force is withheld
+(`Fixture.disagree_region_empty`): the per-row defeat removed the chain's guard.
+
+Wanted: a compiler rule consuming `Occurrence.cites` and `Occurrence.defeaters` so that
+undercutting an applicability claim withdraws every row conditioned on it, and the theorem
+that under it a refutation of any link of a chain warrant either empties the region or
+withdraws the chain — no orphan pins.
+
+*Deliverable shape:* the rule as a `def` on `Grounds` replacing `Grounds.region`'s
+port-only filter, the no-orphan theorem on the fixture and in general for chains, and the
+fixture of this round re-run under it.
+*Acceptance check:* `lake build` and the axiom audit green; the round's `tests/run.py`
+extended with the rule and green.
+*Context:* `.../2026-10-20-warrant-enforcement-semantics/SETTLEMENT_FORK.md` (iv),
+`COUNTERMODELS.md` §3, `LICENCE_CHAIN.md` A1.
+
+### 113. Settlement defeat for strength rows: a linear row contraposes — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+A strength row `P(X∧A∧Y) ≥ c_S P(X∧A)` is a linear constraint and so contraposes: once its
+consequent is settled false it forces its antecedent to `0`. A defeasible warrant does not
+contrapose — "if `X∧A` then probably `Y`" says nothing about `X∧A` when `Y` turns out false
+— so the row says more than the warrant did, and the round's item 112 fixture shows the
+market paying for the difference without bound. Two repairs are candidates: a **settlement
+defeat** condition (a strength row leaves the region when its consequent settles, since an
+inference rule has nothing to say once its conclusion is known), or a non-linear form.
+The first is cheap and interacts with `defeat_widens` and `IsForcedInterval.mono`
+(settlement would no longer shrink the region monotonically); the second reopens the
+compiler.
+
+*Deliverable shape:* the chosen condition as a `Form`-level rule, the monotonicity
+statement it keeps or loses, and the fixture's liability under it.
+*Acceptance check:* Lean green; the round's harmonic-buyer exhibit no longer applies.
+*Context:* `.../2026-10-20-warrant-enforcement-semantics/SETTLEMENT_FORK.md` (iv);
+`WarrantEntitlement.Form.strength_sat_iff`; item 112.
+
+### 114. The pinned-region divergence against the pinned market maker — **[substantial]** — *item 40 narrowed*
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The odds bankroll (`WarrantEntitlement.netWorth_ge_neg_odds`) is the sufficient half: a
+live slack world dominating every live deficit at the odds gives `−3ρ`. The round's converse
+is `test-supported` only: against a nonempty region with no slack live world and a live
+deficit world, a harmonic buyer drives the enforcer's assessed net worth to `−∞` under a
+one-coordinate market maker that zeroes the aggregate. Wanted: the same against the
+dependency's `MarketMaker` — that for such a region there is an efficiently computable
+trader under which `(realizedEnforcer L E).netWorth (history L E) v n` is unbounded below
+at a live `v`. That is item 40's necessity direction restricted to pinned regions, and the
+one place the round found it true.
+
+*Deliverable shape:* `derived` or better: a Lean statement over `history L E` with the
+trader exhibited, or the obstruction in the maker's fixed point.
+*Acceptance check:* Lean green; the statement's hypotheses inhabited by the round's fixture.
+*Context:* `.../2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md` §3;
+`src/fixture.py::harmonic_buyer_run`; item 40.
+
+### 115. Transport of `Licensed` across record transitions — **[substantial]** — *the remainder of item 56*
+
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+With the citation discipline in place (`WarrantEntitlement.Supported`, `Licensed`), the
+transport statement item 56 asks for is: a licence whose cited occurrences survive a record
+transition — no cited port defeated, the issuing event still authorized, the settlement
+extended compatibly — is a licence after it, and a licence whose cited occurrence is
+defeated is not (the round's A3 is the one-step case). Wanted: the transition relation on
+`RecordState`, the transport theorem, and the laundering suite of the transition round run
+against the discipline with a named failure code for a certificate citing less than it
+requires.
+
+*Deliverable shape:* `lean-proved` transport; `test-supported` suite.
+*Acceptance check:* Lean green; a certificate citing by value (`Bundle.Allowed`) is refused
+with a named code.
+*Context:* `.../2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md`; item 56.
+
+### 116. The record as reason trace: what it mediates, the defect, and the port's duplicate — **[entry]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Three things Part C of the warrant-enforcement-semantics round made visible and did not
+pursue. (a) The record mediates the docket and the enforcer's position and not the price
+(`WarrantEntitlement.RecordFixture.docket_mediated`, `price_not_mediated`); the public
+defect `d_s` of P2 is price-derived and so not in the record either — decide whether the
+record carries the defect, and whether transparency over a market run is stated on the
+record or on the run. (b) The inductor-as-principal question: whether `Licensed`'s
+"authorized event" for a certificate issued by the market's own enforcer is a record fact or
+the market's. (c) Housekeeping: Part 0 ported the seed statics' declarations into
+`WarrantEntitlement.lean`; when PR #102 (`round/2026-09-16-seed-statics`) lands they exist
+twice, and one copy must be removed with the other's names retargeted.
+
+*Deliverable shape:* (a) and (b) as filed positions with fixtures; (c) a deletion.
+*Acceptance check:* Lean green after (c).
+*Context:* `.../2026-10-20-warrant-enforcement-semantics/RECORD.md`.
 
 ## Workspace friction
 

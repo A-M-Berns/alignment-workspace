@@ -1447,3 +1447,138 @@ declarations resolve through deprecated aliases for one release):
   "note": "The quadratic bound typed on `Evaluation (O : ObligationState)`: the practical/uptake certificate at the realized market gives the three-term bound. Inhabited by `Witness.uptake` and `Witness.bound` at the Integrity witness state. The two conditional Normative Inductor theorems consuming it are not registered: the general one's Logical-Induction hypotheses are uninhabited, and the deductive one's joint package has no single witness."
 }
 ```
+
+### The warrant licence chain
+
+The citation discipline for `Licensed` and its two countermodels, round
+`2026-10-20-warrant-enforcement-semantics`, against item 56.
+
+### warrant.licence-chain
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Licensed → Supported → Admissible",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.licence_chain"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "A licensed verdict is supported on the record's grounds and admissible in their region; supported-to-admissible is by rational convexity of the bundle's region (region_convex), not a projection."
+}
+```
+
+### warrant.supported-admissible
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Supported → Admissible",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.supported_admissible"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "A verdict bracketed by two cited bound certificates with attained endpoints is attained in the region."
+}
+```
+
+### warrant.admissible-not-supported
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Admissible does not imply Supported",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.admissible_not_supported"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "Two occurrences with the same row; defeating one leaves the region unchanged, refuses the certificate citing it, and admits a certificate citing the survivor. The countermodel to any licence depending only on the region."
+}
+```
+
+### warrant.supported-not-licensed
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Supported does not imply Licensed",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.supported_not_licensed"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "Two verdicts inside a forced interval of positive width, both supported by one cited certificate; licensed on the record that authorizes the selecting event and not on the one that does not."
+}
+```
+
+### warrant.selection-not-transparent
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the unauthorized selection fails transparency",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.selection_not_transparent"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "An instance of GateIsLegitimacy.tiebreak_transparency: two continuations with the same declared inputs and different advisor contributions at the selection event fail TransparentAt for every reference."
+}
+```
