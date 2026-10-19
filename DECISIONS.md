@@ -226,6 +226,16 @@ commit.
   *Turns on:* which matters she would rather lose by latency than delegate, and whether a
   declared trigger is acceptable — knowledge of the principal the round lacks.
 
+- **Confirm, amend or strike M1 — that normative content enters the market as
+  obligations (credal constraints on priced sentences) and as values (securities traded
+  directly).**  Landed 2026-10-20 from the 2026-08-23 conversation so the
+  warrant-enforcement-semantics round could cite it; the round's Part B finds that in the
+  market's own accounting the two forms coincide for a never-settled sentence (a
+  constraint on a priced sentence is a standing position in that security).
+  *Turns on:* whether the maintainer intends a distinction the pinned substrate cannot
+  express — a security assessed on nothing — or the two forms are one object seen from
+  the row side and the account side.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -5842,3 +5852,27 @@ consumer.
 
 Verified locally: full `lake build` and `tests/audit_axioms.py` over the rebuilt tree; the
 `lean` job repeats both.
+
+### 2026-10-20 — the warrant-enforcement-semantics round lands its three dispatch rulings: two forms of normative content (M1, landed subject to confirmation), the settlement-semantics fork unruled and run as a fork (M2), and legitimacy, the Normative Inductor and the force layer consumed rather than revised (M3)
+
+**Landed as the round's first commit, per the queue rule above** (`prompts/2026-10-20-warrant-enforcement-semantics/PROMPT.md`).
+
+**M1 — two forms.** Normative content enters the market in two forms: *obligations* as
+credal constraints on priced sentences, and *values* as securities traded directly.
+Stated by the maintainer in conversation on 2026-08-23 and not previously in this file.
+The dispatch marks it *confirm, amend, or strike*; it is landed here so that the round may
+cite it, and its confirmation is queued under *Awaiting the author*.  If struck, the
+round's own report says which of its readings survives (Part B, semantics (iii)).
+
+**M2 — the fork is unruled.** What a warrant's security settles against — deductive
+settlement, a later legitimate evaluation, or nothing — is not ruled.  The round runs the
+three readings as a fork on one exact fixture and reports; the maintainer rules on the
+result.  The round's finding and the decision it leaves are queued under *Awaiting the
+author* when the round closes.
+
+**M3 — consumed, not revised.** Nothing in the round redefines legitimacy
+(`wiki/Legitimacy.md` and the 2026-09-25 entries above), the Normative Inductor
+architecture (`lean/Workspace/Normativity/Contrib/NormativeInductionInterface.lean`), or the
+force layer (`projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md`).  The round
+discharges a hypothesis those objects already name — `liability` in
+`Evaluation.conditional_normative_inductor` — and adds nothing to their signatures.
