@@ -114,8 +114,53 @@ displayed inadequate excess; `Excludes` and `Margins` are certificate conditions
 `κ·defectOf`; `defectOf_le`: at most `massCap·tol`; `practicalCert`. `AdapterProtocol.uptake`
 derives `PracticalUptake`.
 
-**The theorem.** `warrant_inductor` — signature and interpretation in `THEOREM_STORY.md` §D;
-`warrant_inductor_of_slack` is the one-slack-world form. Its assumptions, sorted:
+**The theorem.** `warrant_inductor`, as stated in `WarrantInductor.lean`; the plain-language
+reading is `THEOREM_STORY.md` §D, and `warrant_inductor_of_slack` is the one-slack-world form.
+
+```lean
+theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
+    {O : ObligationState S anchor} {Q : Type} [Fintype Q] [DecidableEq Q]
+    (N : ℕ → NormState d) (F : FragmentMap d) (wit : ℕ → Fin d → ℚ) (tol : ℕ → ℚ)
+    (htol : ∀ n, 0 < tol n)
+    (adm : ∀ n, Admission O (N n).grounds) (hwf : ∀ n, (N n).grounds.WellFormed)
+    (DP : DeductiveProcess) (process : DeductiveProcessComputation DP)
+    (hE : EffectiveEnforcerComputation (schedule N F wit tol htol).enforcer)
+    (B : ℝ)
+    (hliab : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) →
+      -B ≤ (realizedEnforcer DP ((schedule N F wit tol htol).enforcer.adaptive DP)).netWorth
+        ((schedule N F wit tol htol).market DP) v n)
+    (A : AdapterProtocol O d Q)
+    (hcheck : ∀ s ∈ A.services, checkCompiled (N s).bundle (wit s) = true)
+    (hex : ∀ s ∈ A.services, (A.prob s).Excludes (N s).bundle)
+    (hmar : ∀ s ∈ A.services, (A.prob s).Margins (N s).bundle (tol s))
+    (hεad : ∀ s ∈ A.services, 0 ≤ A.εad s) (hD : 0 ≤ A.D)
+    (hadequate : ∀ r, ∀ s ∈ A.services, ∀ q ∈ (A.prob s).A, A.lam r s q ≤ A.εad s)
+    (hbound : ∀ r s q, A.lam r s q ≤ A.D)
+    (hlam : ∀ s ∈ A.services, 0 ≤ A.lamS s) (hlampos : 0 < ∑ s ∈ A.services, A.lamS s)
+    (hbudget : ∀ s ∈ A.services, A.lamS s * (((A.prob s).massCap * tol s : ℚ) : ℝ) ^ 2 ≤ A.ρ s)
+    (hΓ : 0 ≤ A.Γ)
+    (hamp : ∀ s ∈ A.services, ∑ e ∈ O.boundary.exposed, A.T e s * (A.D * (A.prob s).κ) ≤
+      A.Γ * (A.lamS s / ∑ t ∈ A.services, A.lamS t)) :
+    IsLogicalInductor ((schedule N F wit tol htol).market DP) DP ∧
+    (∀ n, checkCompiled (N n).bundle (wit n) = true →
+      ∀ c ∈ (N n).bundle, excess c.row ((schedule N F wit tol htol).priceVec DP n) ≤ tol n) ∧
+    (∀ n, ∀ c ∈ (schedule N F wit tol htol).bundle n,
+      (∃ o ∈ (N n).survivors, c.cites = Cite.sub o.id ∧ (adm n).origin o ∈ O.boundary.exposed ∧
+        ∀ j, o.cites = .occurrence j → ∃! o', o' ∈ (N n).survivors ∧ o'.id = j) ∨
+      (∃ it ∈ (N n).seed.liveStr (N n).docket, c.cites = Cite.str it.id) ∨
+      ∃ i, c.cites = Cite.settled i) ∧
+    (∀ s ∈ A.services,
+      massOff ((A.prob s).gate fun j => (schedule N F wit tol htol).market DP s (F.ι j))
+          (A.prob s).A ≤
+        (A.prob s).κ * (A.evaluation F.ι).defect s ((schedule N F wit tol htol).market DP) ∧
+      (A.evaluation F.ι).defect s ((schedule N F wit tol htol).market DP) ≤
+        (((A.prob s).massCap * tol s : ℚ) : ℝ)) ∧
+    (A.evaluation F.ι).progress ((schedule N F wit tol htol).market DP) ≤
+      (A.evaluation F.ι).modulus + (A.evaluation F.ι).error +
+        A.D * (A.evaluation F.ι).residual
+```
+
+Its assumptions, sorted:
 
 | kind | hypothesis | status |
 |---|---|---|
