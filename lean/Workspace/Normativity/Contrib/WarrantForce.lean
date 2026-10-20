@@ -559,17 +559,16 @@ namespace WarrantSchedule
 variable (W : WarrantSchedule d) (DP : DeductiveProcess)
 
 /-- **A supported verdict's bracket holds at the displayed price**, widened by the
-certificates' masses times the tolerance: for a verdict `Supported` on grounds whose settled
-bundle is the day's compiled bundle, the displayed price of the coordinate lies in
+certificates' masses times the tolerance: for a verdict supported on the day's compiled
+bundle, the displayed price of the coordinate lies in
 `[−lo.value − lo.mass · tol, hi.value + hi.mass · tol]`.  Semantic entitlement (the licence)
 and operative force (the enforcer) meet here. -/
 theorem bracket_at_market (n : ℕ) (y : Fin d → ℚ) (hy : (W.bundle n).Region y)
-    {G : Grounds d} {st : DocketState} {F : Settlement d} (hB : W.bundle n = G.settledBundle st F)
-    {m m' : ℕ} {φ : Fin d} {v : ℚ} {c : VerdictCert d m m' φ} (hsupp : Supported G st F φ v c) :
+    {m m' : ℕ} {φ : Fin d} {v : ℚ} {c : VerdictCert d m m' φ}
+    (hsupp : SupportedOn (W.bundle n) φ v c) :
     -c.lo.value - c.lo.mass * W.tol n ≤ W.priceVec DP n φ ∧
       W.priceVec DP n φ ≤ c.hi.value + c.hi.mass * W.tol n := by
   obtain ⟨⟨hlo, hhi⟩, -⟩ := hsupp
-  rw [← hB] at hlo hhi
   constructor
   · have := c.lo.transport (W.priceVec DP n) (W.tol n) fun i hi =>
       W.excess_le_tol_of_admitted DP n y hy (hlo i hi)
