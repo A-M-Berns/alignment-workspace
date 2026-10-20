@@ -59,6 +59,7 @@ Every structure has a nonvacuity witness in `Witness`.  Names are provisional
 -/
 import Workspace.Normativity.Contrib.NormativeInductionInterface
 import Workspace.Normativity.Contrib.SeedStatics
+import Workspace.Normativity.Contrib.OddsBankroll
 import Workspace.Deference.Contrib.GateIsLegitimacy
 import Workspace.Deference.Contrib.ReasonMediatedAuthorship
 
@@ -67,6 +68,8 @@ namespace Workspace.Normativity.Contrib.WarrantEntitlement
 open Workspace.Normativity.Contrib.NormativeInductorComposition
 open Workspace.Normativity.Contrib.SeedStatics
 open Finset
+
+export Workspace.Normativity.Contrib.OddsBankroll (rowGap rowUnits rowUnits_nonneg)
 
 variable {d : ℕ}
 
@@ -1068,6 +1071,7 @@ open Workspace.Normativity.Contrib.AssessmentProcess
 open Workspace.Normativity.Contrib.EnforcementPreservation
 open Workspace.Normativity.Contrib.EnforcementStrategy
 open Workspace.Normativity.Contrib.TraderizedEnforcement
+open Workspace.Normativity.Contrib.OddsBankroll
 
 /-- **The warrant enforcer**: the force layer's compiled position on the date's
 presentation.  It reads no price history beyond what its features read, so prefix
@@ -1079,77 +1083,6 @@ def warrantEnforcer (sched : ℕ → Presentation) : AdaptiveTrader where
 lemma realizedEnforcer_strat (L : Assessment) (sched : ℕ → Presentation) (n : ℕ) :
     (realizedEnforcer L (warrantEnforcer sched)).strat n = enforcementStrategy (sched n) n :=
   rfl
-
-/-- **The signed row gap** at a world: positive is a surplus (the world clears the row),
-negative is a deficit (the row excludes the world). -/
-noncomputable def rowGap (coords : Finset Sentence) (r : Row) (v : PCWorld) : ℚ :=
-  pair coords r.coeff (ratPayout v) - r.rhs
-
-/-- The units the enforcer holds on a row at a price: intensity times violation. -/
-def rowUnits (pres : Presentation) (i : Fin pres.rows.length) (p : Sentence → ℚ) : ℚ :=
-  pres.intensities i * pres.rowViolation i p
-
-lemma rowUnits_nonneg (pres : Presentation) (i : Fin pres.rows.length) (p : Sentence → ℚ) :
-    0 ≤ rowUnits pres i p :=
-  mul_nonneg (pres.rowAt i).intensity_nonneg (violation_nonneg _ _ _ _)
-
-/-- **The day's value, resolved**: the units-weighted signed gaps plus the
-intensity-weighted squared violations. -/
-theorem day_value_eq (L : Assessment) (sched : ℕ → Presentation) (n : ℕ) (v : PCWorld) :
-    ((realizedEnforcer L (warrantEnforcer sched)).strat n).value
-        (history L (warrantEnforcer sched)) v.payout =
-      (((∑ i, rowUnits (sched n) i (quote L (warrantEnforcer sched) n) *
-            rowGap (sched n).coords ((sched n).rowAt i) v) +
-          ∑ i, (sched n).intensities i *
-            (sched n).rowViolation i (quote L (warrantEnforcer sched) n) ^ 2 : ℚ) : ℝ) := by
-  rw [realizedEnforcer_strat]
-  have hpay : (fun φ => ((ratPayout v φ : ℚ) : ℝ)) = v.payout := by
-    funext φ; exact (payout_eq_ratPayout v φ).symm
-  have hval := value_enforcementStrategy (sched n) n (history L (warrantEnforcer sched))
-    (quote L (warrantEnforcer sched)) (history_eq_quote_cast L _) (ratPayout v)
-  rw [hpay] at hval
-  rw [hval]
-  congr 1
-  rw [Presentation.compiledPosition, pair_position, ← Finset.sum_add_distrib]
-  refine Finset.sum_congr rfl fun i _ => ?_
-  rw [pair_sub]
-  have hgap := violation_mul_gap (sched n).coords ((sched n).normals i) ((sched n).rhss i)
-    (quote L (warrantEnforcer sched) n)
-  simp only [rowUnits, rowGap, Presentation.rowViolation, Presentation.normals,
-    Presentation.rhss] at hgap ⊢
-  linear_combination ((sched n).intensities i) * hgap
-
-/-- At a world, the day's value is at least the units-weighted signed gap. -/
-theorem day_value_ge (L : Assessment) (sched : ℕ → Presentation) (n : ℕ) (v : PCWorld) :
-    ((∑ i, rowUnits (sched n) i (quote L (warrantEnforcer sched) n) *
-        rowGap (sched n).coords ((sched n).rowAt i) v : ℚ) : ℝ) ≤
-      ((realizedEnforcer L (warrantEnforcer sched)).strat n).value
-        (history L (warrantEnforcer sched)) v.payout := by
-  rw [day_value_eq]
-  have : 0 ≤ ∑ i, (sched n).intensities i *
-      (sched n).rowViolation i (quote L (warrantEnforcer sched) n) ^ 2 :=
-    Finset.sum_nonneg fun i _ => mul_nonneg ((sched n).rowAt i).intensity_nonneg (sq_nonneg _)
-  exact_mod_cast le_add_of_nonneg_right this
-
-/-- The units-weighted signed gap of one date at a world. -/
-noncomputable def dayGap (L : Assessment) (sched : ℕ → Presentation) (v : PCWorld) (t : ℕ) : ℚ :=
-  ∑ i, rowUnits (sched t) i (quote L (warrantEnforcer sched) t) *
-    rowGap (sched t).coords ((sched t).rowAt i) v
-
-/-- The slack mass through date `n`: the units-weighted surplus at the witness world. -/
-noncomputable def slackMass (L : Assessment) (sched : ℕ → Presentation) (v' : PCWorld) (n : ℕ) :
-    ℚ :=
-  ∑ t ∈ Finset.range (n + 1), dayGap L sched v' t
-
-/-- The witness world's net worth dominates the slack mass. -/
-theorem slackMass_le_netWorth (L : Assessment) (sched : ℕ → Presentation) (v' : PCWorld)
-    (n : ℕ) :
-    ((slackMass L sched v' n : ℚ) : ℝ) ≤
-      (realizedEnforcer L (warrantEnforcer sched)).netWorth (history L (warrantEnforcer sched))
-        v' n := by
-  unfold slackMass Trader.netWorth
-  rw [Rat.cast_sum]
-  exact Finset.sum_le_sum fun t _ => day_value_ge L sched t v'
 
 /-- **The market's capital bounds the enforcer's assessed gain**: the market maker's
 constant `1` plus the trading firm's floor `2`, at every live world. -/
@@ -1166,50 +1099,52 @@ theorem enforcer_netWorth_lt_three (L : Assessment) (E : AdaptiveTrader) (n : �
   have hsplit := realizedAggregate_netWorth L E n (history L E) v
   linarith
 
+/-- **The assessment market's account** for the warrant enforcer: the general affordability
+interface of `OddsBankroll`, with the market maker's constant `1` plus the trading firm's
+floor `2` as its capital. -/
+noncomputable def assessmentAccount (L : Assessment) (sched : ℕ → Presentation) : Account where
+  P := history L (warrantEnforcer sched)
+  Q := quote L (warrantEnforcer sched)
+  hQ := history_eq_quote_cast L _
+  Live := L.Live
+  enf := realizedEnforcer L (warrantEnforcer sched)
+  pres := sched
+  strat_eq := fun _ => rfl
+  cap := 3
+  netWorth_lt_cap := fun n v hv => enforcer_netWorth_lt_three L (warrantEnforcer sched) n v hv
+
+/-- **The day's value, resolved**: the units-weighted signed gaps plus the
+intensity-weighted squared violations. -/
+theorem day_value_eq (L : Assessment) (sched : ℕ → Presentation) (n : ℕ) (v : PCWorld) :
+    ((realizedEnforcer L (warrantEnforcer sched)).strat n).value
+        (history L (warrantEnforcer sched)) v.payout =
+      (((∑ i, rowUnits (sched n) i (quote L (warrantEnforcer sched) n) *
+            rowGap (sched n).coords ((sched n).rowAt i) v) +
+          ∑ i, (sched n).intensities i *
+            (sched n).rowViolation i (quote L (warrantEnforcer sched) n) ^ 2 : ℚ) : ℝ) :=
+  (assessmentAccount L sched).day_value_eq n v
+
+/-- At a world, the day's value is at least the units-weighted signed gap. -/
+theorem day_value_ge (L : Assessment) (sched : ℕ → Presentation) (n : ℕ) (v : PCWorld) :
+    ((∑ i, rowUnits (sched n) i (quote L (warrantEnforcer sched) n) *
+        rowGap (sched n).coords ((sched n).rowAt i) v : ℚ) : ℝ) ≤
+      ((realizedEnforcer L (warrantEnforcer sched)).strat n).value
+        (history L (warrantEnforcer sched)) v.payout :=
+  (assessmentAccount L sched).day_value_ge n v
+
 /-- **The odds bankroll.**  If at date `n` a live world `v'` clears every enforced row of
 every date `t ≤ n` with a surplus dominating, by the factor `ρ`, the deficit of the live
 world `w` on that row, then the enforcer's assessed net worth at `w` is at least `−3ρ`.
-Intensity, tolerance, the number of rows and the number of dates do not appear. -/
+Intensity, tolerance, the number of rows and the number of dates do not appear.  The
+instance of `OddsBankroll.Account.netWorth_ge_neg_odds` at the assessment account. -/
 theorem netWorth_ge_neg_odds (L : Assessment) (sched : ℕ → Presentation) (ρ : ℚ)
     (hρ : 0 ≤ ρ) (n : ℕ) (v' : PCWorld) (hv' : L.Live n v') (w : PCWorld)
     (hgap : ∀ t ≤ n, ∀ r ∈ (sched t).rows,
       -(rowGap (sched t).coords r w) ≤ ρ * rowGap (sched t).coords r v') :
     -(3 * (ρ : ℝ)) ≤
       (realizedEnforcer L (warrantEnforcer sched)).netWorth (history L (warrantEnforcer sched))
-        w n := by
-  have hS : ((slackMass L sched v' n : ℚ) : ℝ) < 3 :=
-    lt_of_le_of_lt (slackMass_le_netWorth L sched v' n)
-      (enforcer_netWorth_lt_three L (warrantEnforcer sched) n v' hv')
-  -- each date: the deficit side is dominated by `ρ` times the surplus side
-  have hday : ∀ t ≤ n, -((ρ : ℝ) * ((dayGap L sched v' t : ℚ) : ℝ)) ≤
-      ((realizedEnforcer L (warrantEnforcer sched)).strat t).value
-        (history L (warrantEnforcer sched)) w.payout := by
-    intro t htn
-    refine le_trans ?_ (day_value_ge L sched t w)
-    have hq : -(ρ * dayGap L sched v' t) ≤ dayGap L sched w t := by
-      unfold dayGap
-      rw [Finset.mul_sum, ← Finset.sum_neg_distrib]
-      refine Finset.sum_le_sum fun i _ => ?_
-      have hu := rowUnits_nonneg (sched t) i (quote L (warrantEnforcer sched) t)
-      have hg := hgap t htn ((sched t).rowAt i) (List.get_mem _ _)
-      nlinarith
-    have hq' : ((-(ρ * dayGap L sched v' t) : ℚ) : ℝ) ≤ ((dayGap L sched w t : ℚ) : ℝ) := by
-      exact_mod_cast hq
-    push_cast at hq'
-    exact hq'
-  have hsum : ∑ t ∈ Finset.range (n + 1), -((ρ : ℝ) * ((dayGap L sched v' t : ℚ) : ℝ)) =
-      -((ρ : ℝ) * ((slackMass L sched v' n : ℚ) : ℝ)) := by
-    unfold slackMass
-    rw [Rat.cast_sum, Finset.mul_sum, Finset.sum_neg_distrib]
-  have hw : -((ρ : ℝ) * ((slackMass L sched v' n : ℚ) : ℝ)) ≤
-      (realizedEnforcer L (warrantEnforcer sched)).netWorth
-        (history L (warrantEnforcer sched)) w n := by
-    unfold Trader.netWorth
-    rw [← hsum]
-    exact Finset.sum_le_sum fun t ht => hday t (Nat.lt_succ_iff.mp (Finset.mem_range.mp ht))
-  have hρS : (ρ : ℝ) * ((slackMass L sched v' n : ℚ) : ℝ) ≤ (ρ : ℝ) * 3 :=
-    mul_le_mul_of_nonneg_left hS.le (by exact_mod_cast hρ)
-  linarith
+        w n :=
+  (assessmentAccount L sched).netWorth_ge_neg_odds ρ hρ n v' hv' w hgap
 
 /-- **Liability discharged by the odds bankroll**: a slack witness at every date gives the
 `liability` hypothesis of `conditional_normative_inductor` with `B = 3ρ`. -/
@@ -1220,10 +1155,8 @@ theorem liability_of_odds (L : Assessment) (sched : ℕ → Presentation) (ρ : 
     ∀ n (v : PCWorld), L.Live n v →
       -(3 * (ρ : ℝ)) ≤
         (realizedEnforcer L (warrantEnforcer sched)).netWorth
-          (history L (warrantEnforcer sched)) v n := by
-  intro n v hv
-  obtain ⟨v', hv', hgap⟩ := hslack n
-  exact netWorth_ge_neg_odds L sched ρ hρ n v' hv' v (hgap v hv)
+          (history L (warrantEnforcer sched)) v n :=
+  (assessmentAccount L sched).liability_of_odds ρ hρ hslack
 
 open Workspace.Normativity.Contrib.NormativeInductionInterface in
 open Workspace.Normativity.Contrib.OccurrenceIntegrity (Protocol) in
@@ -1251,38 +1184,22 @@ case's `B = 0`, recovered as `ρ = 0`. -/
 theorem netWorth_nonneg_of_inclusive (L : Assessment) (sched : ℕ → Presentation) (n : ℕ)
     (w : PCWorld) (hw : ∀ t ≤ n, ∀ r ∈ (sched t).rows, 0 ≤ rowGap (sched t).coords r w) :
     0 ≤ (realizedEnforcer L (warrantEnforcer sched)).netWorth
-      (history L (warrantEnforcer sched)) w n := by
-  unfold Trader.netWorth
-  refine Finset.sum_nonneg fun t ht => ?_
-  have htn : t ≤ n := Nat.lt_succ_iff.mp (Finset.mem_range.mp ht)
-  refine le_trans ?_ (day_value_ge L sched t w)
-  have : 0 ≤ ∑ i, rowUnits (sched t) i (quote L (warrantEnforcer sched) t) *
-      rowGap (sched t).coords ((sched t).rowAt i) w :=
-    Finset.sum_nonneg fun i _ => mul_nonneg (rowUnits_nonneg _ _ _)
-      (hw t htn _ (List.get_mem _ _))
-  exact_mod_cast this
+      (history L (warrantEnforcer sched)) w n :=
+  (assessmentAccount L sched).netWorth_nonneg_of_inclusive n w hw
 
 /-- A date with no rows trades nothing. -/
 theorem day_value_eq_zero_of_rows_nil (L : Assessment) (sched : ℕ → Presentation) (t : ℕ)
     (h : (sched t).rows = []) (v : PCWorld) :
     ((realizedEnforcer L (warrantEnforcer sched)).strat t).value
-      (history L (warrantEnforcer sched)) v.payout = 0 := by
-  rw [day_value_eq]
-  have hempty : IsEmpty (Fin (sched t).rows.length) := by
-    rw [h]; exact Fin.isEmpty'
-  simp
+      (history L (warrantEnforcer sched)) v.payout = 0 :=
+  (assessmentAccount L sched).day_value_eq_zero_of_rows_nil t h v
 
 /-- **Frozen tail**: a trader that trades nothing after date `m` has at every later date the
 net worth it had at `m`. -/
 theorem netWorth_eq_of_tail_zero (Tr : Trader) (P : History) (v : PCWorld) {m n : ℕ}
     (hmn : m ≤ n) (hz : ∀ t, m < t → (Tr.strat t).value P v.payout = 0) :
-    Tr.netWorth P v n = Tr.netWorth P v m := by
-  obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hmn
-  induction k with
-  | zero => rfl
-  | succ k ih =>
-      rw [Nat.add_succ, Trader.netWorth, Finset.sum_range_succ, ← Trader.netWorth,
-        ih (by omega), hz _ (by omega), add_zero]
+    Tr.netWorth P v n = Tr.netWorth P v m :=
+  OddsBankroll.netWorth_eq_of_tail_zero Tr P v hmn hz
 
 /-- `ofDeductiveProcess` is globally nested. -/
 theorem ofDeductiveProcess_nested (DP : DeductiveProcess) {m n : ℕ} (h : m ≤ n) (v : PCWorld)
@@ -2024,29 +1941,16 @@ open Workspace.Normativity.Contrib.AssessmentProcess
 open Workspace.Normativity.Contrib.EnforcementPreservation
 open Workspace.Normativity.Contrib.EnforcementStrategy
 open Workspace.Normativity.Contrib.TraderizedEnforcement
-
-/-- One date's domination: deficits at `w` dominated by `ρ` times the surpluses at `v'`. -/
-theorem dayGap_dominated (L : Assessment) (sched : ℕ → Presentation) (ρ : ℚ) (t : ℕ)
-    (w v' : PCWorld)
-    (hgap : ∀ r ∈ (sched t).rows, -(rowGap (sched t).coords r w) ≤ ρ * rowGap (sched t).coords r v') :
-    -(ρ * dayGap L sched v' t) ≤ dayGap L sched w t := by
-  unfold dayGap
-  rw [Finset.mul_sum, ← Finset.sum_neg_distrib]
-  refine Finset.sum_le_sum fun i _ => ?_
-  have hu := rowUnits_nonneg (sched t) i (quote L (warrantEnforcer sched) t)
-  have hg := hgap ((sched t).rowAt i) (List.get_mem _ _)
-  nlinarith
-
-/-- The slack mass through `n` is the sum of the day gaps over `range (n + 1)`. -/
-lemma slackMass_eq (L : Assessment) (sched : ℕ → Presentation) (v : PCWorld) (n : ℕ) :
-    slackMass L sched v n = ∑ t ∈ Finset.range (n + 1), dayGap L sched v t := rfl
+open Workspace.Normativity.Contrib.OddsBankroll
 
 /-- **The odds bankroll across one reopening.**  Before date `m` a live world `v₀` dominates
 every enforced row at the odds (for the bounded world `w` and for the later witness `v'`);
 from `m` on a live world `v'` dominates the rows then enforced.  The enforcer's assessed
 net worth at `w` is at least `−3ρ(2 + ρ)`: the pre-reopening bankroll `3ρ`, plus `ρ`
 times the post-reopening slack mass, which the market's capital bounds by `3` plus the
-reopened mass `3ρ`.  The "same `3ρ`" is **not** recovered; the reopened mass is paid for. -/
+reopened mass `3ρ`.  The "same `3ρ`" is **not** recovered; the reopened mass is paid for.
+The instance of `OddsBankroll.Account.netWorth_ge_neg_odds_reopened` at the assessment
+account. -/
 theorem netWorth_ge_neg_odds_reopened (L : Assessment) (sched : ℕ → Presentation) (ρ : ℚ)
     (hρ : 0 ≤ ρ) {m n : ℕ} (hm : 0 < m) (hmn : m ≤ n)
     (v₀ : PCWorld) (hv₀ : L.Live (m - 1) v₀) (v' : PCWorld) (hv' : L.Live n v') (w : PCWorld)
@@ -2058,68 +1962,9 @@ theorem netWorth_ge_neg_odds_reopened (L : Assessment) (sched : ℕ → Presenta
       -(rowGap (sched t).coords r w) ≤ ρ * rowGap (sched t).coords r v') :
     -(3 * (ρ : ℝ) * (2 + ρ)) ≤
       (realizedEnforcer L (warrantEnforcer sched)).netWorth (history L (warrantEnforcer sched))
-        w n := by
-  set E := warrantEnforcer sched
-  set P := history L E
-  have hm1 : m - 1 + 1 = m := Nat.sub_add_cancel hm
-  -- the prefix through `m − 1`, bounded by the pre-reopening bankroll
-  have hpre : -(3 * (ρ : ℝ)) ≤ (realizedEnforcer L E).netWorth P w (m - 1) :=
-    netWorth_ge_neg_odds L sched ρ hρ (m - 1) v₀ hv₀ w
-      (fun t ht r hr => hdom₀w t (by omega) r hr)
-  -- the slack mass of `v₀` through `m − 1` is under the capital
-  have hS₀ : ((slackMass L sched v₀ (m - 1) : ℚ) : ℝ) < 3 :=
-    lt_of_le_of_lt (slackMass_le_netWorth L sched v₀ (m - 1))
-      (enforcer_netWorth_lt_three L E (m - 1) v₀ hv₀)
-  -- the slack mass of `v'` through `m − 1` is bounded below by the reopened mass
-  have hSv'pre : -(ρ * slackMass L sched v₀ (m - 1)) ≤ slackMass L sched v' (m - 1) := by
-    rw [slackMass_eq, slackMass_eq, Finset.mul_sum, ← Finset.sum_neg_distrib]
-    refine Finset.sum_le_sum fun t ht => ?_
-    have htm : t < m := by have := Finset.mem_range.mp ht; omega
-    exact dayGap_dominated L sched ρ t v' v₀ (hdom₀v' t htm)
-  -- the slack mass of `v'` through `n` is under the capital
-  have hSv' : ((slackMass L sched v' n : ℚ) : ℝ) < 3 :=
-    lt_of_le_of_lt (slackMass_le_netWorth L sched v' n) (enforcer_netWorth_lt_three L E n v' hv')
-  -- the tail of the slack mass of `v'`
-  have htail_eq : ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t =
-      slackMass L sched v' n - slackMass L sched v' (m - 1) := by
-    rw [slackMass_eq, slackMass_eq, hm1]
-    exact Finset.sum_Ico_eq_sub _ (by omega)
-  -- the tail of the net worth at `w`
-  have hworth : (realizedEnforcer L E).netWorth P w n =
-      (realizedEnforcer L E).netWorth P w (m - 1) +
-        ∑ t ∈ Finset.Ico m (n + 1), ((realizedEnforcer L E).strat t).value P w.payout := by
-    unfold Trader.netWorth
-    rw [hm1, Finset.sum_range_add_sum_Ico _ (by omega)]
-  have htailw : ((-(ρ * ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t) : ℚ) : ℝ) ≤
-      ∑ t ∈ Finset.Ico m (n + 1), ((realizedEnforcer L E).strat t).value P w.payout := by
-    have hq : ∀ t ∈ Finset.Ico m (n + 1),
-        ((-(ρ * dayGap L sched v' t) : ℚ) : ℝ) ≤
-          ((realizedEnforcer L E).strat t).value P w.payout := by
-      intro t ht
-      have hbd := Finset.mem_Ico.mp ht
-      refine le_trans ?_ (day_value_ge L sched t w)
-      exact_mod_cast dayGap_dominated L sched ρ t w v' (hdom' t hbd.1 (by omega))
-    calc ((-(ρ * ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t) : ℚ) : ℝ)
-        = ∑ t ∈ Finset.Ico m (n + 1), ((-(ρ * dayGap L sched v' t) : ℚ) : ℝ) := by
-          rw [Finset.mul_sum, ← Finset.sum_neg_distrib]
-          push_cast
-          rfl
-      _ ≤ _ := Finset.sum_le_sum hq
-  -- assemble in ℚ then cast
-  have hbound : -(ρ * ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t) ≥ -(ρ * (3 + 3 * ρ)) := by
-    rw [htail_eq]
-    have h1 : slackMass L sched v' n - slackMass L sched v' (m - 1) ≤ 3 + 3 * ρ := by
-      have a : (slackMass L sched v' n : ℚ) < 3 := by exact_mod_cast hSv'
-      have b : (slackMass L sched v₀ (m - 1) : ℚ) < 3 := by exact_mod_cast hS₀
-      nlinarith
-    nlinarith
-  have hcast : ((-(ρ * (3 + 3 * ρ)) : ℚ) : ℝ) ≤
-      ((-(ρ * ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t) : ℚ) : ℝ) := by
-    exact_mod_cast hbound
-  rw [hworth]
-  have : ((-(ρ * (3 + 3 * ρ)) : ℚ) : ℝ) = -((ρ : ℝ) * (3 + 3 * ρ)) := by push_cast; ring
-  rw [this] at hcast
-  nlinarith [hpre, hcast, htailw]
+        w n :=
+  (assessmentAccount L sched).netWorth_ge_neg_odds_reopened ρ hρ hm hmn v₀ hv₀ v' hv' w
+    hdom₀w hdom₀v' hdom'
 
 end ReopenedBankroll
 
@@ -2522,15 +2367,10 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.selection_not_transparent
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.warrantEnforcer
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.realizedEnforcer_strat
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.rowGap
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.rowUnits
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.rowUnits_nonneg
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.enforcer_netWorth_lt_three
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.assessmentAccount
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.day_value_eq
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.day_value_ge
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.dayGap
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.slackMass
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.slackMass_le_netWorth
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.enforcer_netWorth_lt_three
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.netWorth_ge_neg_odds
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.liability_of_odds
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.warrant_normative_inductor
@@ -2663,8 +2503,6 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.pinConsequent
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.empty_le_pinConsequent
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.settled_not_anti
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.dayGap_dominated
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.slackMass_eq
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.netWorth_ge_neg_odds_reopened
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.settlementAt
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.docketAt
