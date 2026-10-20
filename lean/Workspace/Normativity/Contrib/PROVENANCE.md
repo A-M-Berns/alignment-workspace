@@ -172,3 +172,5 @@ witness with the unit budget and non-starvation, and an inhabitant of the issue-
 specification. The §1–3 proofs are unchanged.
 
 `OpenIntegrityEvolution.lean` (2026-09-25, `prompts/2026-09-25-legitimacy-internal-external/`, executor Claude Fable 5.1, Anthropic; prompt author the maintainer; `ci-only`) carries the declarations formerly in `LegitimateEvolution.lean` under the renamed objects; `LegitimateEvolution.lean` is the deprecated-alias shim of the same round.
+
+`WarrantInductorRebuttal.lean` (2026-10-23, `prompts/2026-10-23-normative-inductor-consolidation/`, executor Claude Fable 5.1, Anthropic; prompt author the maintainer; `ci-only`) is Scenario B — the strength rebutted while active, the same decision question before and after. The same round revised `WarrantInductor.lean` (`Origin`, `Entitlement`, the compile `Outcome`, `compileAt` on `CompileResult`, `AdapterProtocol.restrict`, the theorem's hypotheses `ent`, `res`, `henf`) and `WarrantInductorWitness.lean` (`entitlement` on `state₀`, `answered_not_entitled`, `undercut_summary`, `progress_le`).

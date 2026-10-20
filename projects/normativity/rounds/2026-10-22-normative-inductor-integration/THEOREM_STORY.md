@@ -1,5 +1,11 @@
 # The warrant Normative Inductor
 
+*Superseded on 2026-10-23 by
+`../2026-10-23-normative-inductor-consolidation/THEOREM_STORY.md`: admission became
+entitlement (§B), the compile returns a typed outcome (§C), the example became two scenarios
+(§E), and the projection and rowwise enforcers are stated as two realizations of one interface
+(§G). The text below is the integration round's account as written.*
+
 A mathematical account of one construction, written to be read without the repository.
 Every named object is a Lean declaration under `lean/Workspace/Normativity/Contrib/`.
 

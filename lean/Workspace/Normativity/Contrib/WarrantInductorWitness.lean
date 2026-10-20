@@ -30,9 +30,20 @@ deductive market of the compiled schedule at tolerance `1/400`.
   at most `1/100` at date `9` (`gate_bounds`), it is not constant in the prices
   (`gate_nonconstant`), and after the revision the region no longer excludes refraining
   (`exclusion_lapses`).
+* **Entitlement** (`entitlement`): the first warrant's occurrences realize the first exposed
+  obligation of the accounted state `state₀`, the `Z` warrant the second; both accounts are live
+  (`account_live`).  In `state₁`, where the first obligation is answered, no entitlement traces
+  an occurrence to it (`answered_not_entitled`).  The protocol's admission predicate and the
+  `Expresses` relation are the trivial ones: the fixture does not exercise them.
 * **The theorem** (`inductor`): `warrant_inductor` at the fixture — Logical Induction over the
-  deductive process, rowwise conformance at every date, provenance of every enforced row, the
-  adapter's inadequate-mass bound, and the Progress bound at the declared protocol.
+  deductive process, rowwise conformance at every date (every date is enforced: `enforced`),
+  provenance of every enforced row to an entitled survivor, a structural row or a pin, the
+  adapter's inadequate-mass bound, and the Progress bound at the declared protocol — `≤ 37/100`
+  in numbers (`progress_le`), against the trivial `1`.
+* **Scenario A, the undercut** (`undercut_summary`): the applicability and the strength leave;
+  the region loses `P(X∧A) ≥ 3/4` and `P(X∧A∧Y) ≥ 1/2` and keeps `P(Z) ≥ 3/4`; the certified
+  guidance on the principal matter is lost and nothing replaces it.  The companion scenario —
+  the strength rebutted while still active — is `WarrantInductorRebuttal`.
 * **The licence at the market** (`bracket`): the supported verdict `P(X∧A∧Y) = 1/2` at date `4`
   brackets the displayed price within `5/3 · 1/400` below and `1/400` above.
 
@@ -59,8 +70,10 @@ open Workspace.Normativity.Contrib.EnforcedComputation
 open Workspace.Normativity.Contrib.GatedChoice
 open Workspace.Normativity.Contrib.NormativeInductionInterface
 open Workspace.Normativity.Contrib.OpenIntegrityEvolution (ObligationState)
-open Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness (state₁ wAnchor)
-open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness (finish protocol)
+open Workspace.Normativity.Contrib.OpenIntegrityEvolution.Witness (state₀ state₁ wAnchor)
+open Workspace.Normativity.Contrib.OccurrenceIntegrity (Initial)
+open Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness (start finish initial protocol
+  first_answered)
 open Workspace.Normativity.Contrib.AssessmentProcess (ratPayout allTrue)
 open Workspace.Normativity.Contrib.EndToEndWitness.Run (n₁ n₀ nE cP cA cS settlementAt docketAt
   occP occA occS outcome_occP outcome_occA outcome_occS mem_docketAt_iff Zs ι5 coordList5
@@ -189,13 +202,19 @@ def tol : ℕ → ℚ := fun _ => 1/400
 
 lemma tol_pos (n : ℕ) : 0 < tol n := by norm_num [tol]
 
+/-- The compiler's result at every date: the witness. -/
+def res (n : ℕ) : CompileResult (Cite 5) 5 := .compiled (wit n)
+
 /-- **The schedule**: the compiled bundle of every date at tolerance `1/400`. -/
-def W : WarrantSchedule 5 := schedule N F5 wit tol tol_pos
+def W : WarrantSchedule 5 := schedule N F5 res tol tol_pos
 
 /-- The deductive process: `X` at `n₁`, `¬Y` at `n_E`. -/
 def DP : DeductiveProcess := dp n₁ nE false
 
-theorem bundle_eq (n : ℕ) : W.bundle n = (N n).bundle := compileAt_eq_of_check (check n)
+/-- **Every date is enforced**: the outcome is never idle or withheld. -/
+theorem enforced (n : ℕ) : Enforced (N n) (res n) := enforced_of_check (check n)
+
+theorem bundle_eq (n : ℕ) : W.bundle n = (N n).bundle := enforced n
 
 /-- Two dates in one phase have one state. -/
 lemma N_eq_of_phase {n k : ℕ} (h1 : n₁ ≤ n ↔ n₁ ≤ k) (h0 : n₀ ≤ n ↔ n₀ ≤ k)
@@ -410,12 +429,37 @@ theorem liability : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) →
     have : (-(72 : ℝ)) ≤ -(3 * ((4 : ℚ) : ℝ) * (2 + ((4 : ℚ) : ℝ))) := by norm_num
     exact this.trans h
 
-/-! ## 4. Admission and well-formedness -/
+/-! ## 4. Entitlement and well-formedness -/
 
-/-- The admission: the first warrant's occurrences realize the first exposed obligation, the
-`Z` warrant the second. -/
-def admission (n : ℕ) : Admission state₁ (N n).grounds :=
-  ⟨fun o => if o.id = 4 then 1 else 0, fun _ _ => by simp [state₁, finish]⟩
+/-- In the accounted state `state₀` — two obligations exposed on their own ports, nothing yet
+answered — every account is live. -/
+theorem account_live (e : Fin 2) (h : e ∈ state₀.boundary.exposed) :
+    OccurrenceIntegrity.Fate.live ∈ (state₀.account e h).fates := by
+  simp [state₀, Initial.state, Initial.accounted, initial, OccurrenceIntegrity.Program.fates]
+
+/-- **The entitlement**: the first warrant's occurrences realize the first exposed obligation,
+the `Z` warrant the second; the trivial protocol admits everything and the `Expresses` relation
+is total — the two inputs the fixture does not exercise — and both accounts are live. -/
+def entitlement (n : ℕ) : Entitlement state₀ (N n).grounds (fun _ _ => True) where
+  origin o := if o.id = 4 then 1 else 0
+  origin_exposed _ _ := by simp [state₀, Initial.state, start]
+  admitted _ _ := trivial
+  live _ _ := account_live _ _
+  faithful _ _ := trivial
+
+/-- **An answered obligation entitles nothing.**  In `state₁` the first obligation is answered;
+no entitlement of these grounds, under any `Expresses` relation, may trace an occurrence to it. -/
+theorem answered_not_entitled (Expresses : Unit → Form 5 → Prop)
+    (E : Entitlement state₁ grounds Expresses) (o : Occurrence 5) (ho : o ∈ grounds) :
+    E.origin o ≠ 0 := by
+  intro h
+  have hlive := E.live o ho
+  have hf : ∀ (e : Fin 2) (he : e ∈ state₁.boundary.exposed), e = 0 →
+      (state₁.account e he).fates = {OccurrenceIntegrity.Fate.answered} := by
+    rintro e he rfl
+    exact first_answered
+  rw [hf _ _ h] at hlive
+  simp at hlive
 
 theorem wellFormed (n : ℕ) : (N n).grounds.WellFormed := by
   refine ⟨by simp [grounds] <;> decide, ?_⟩
@@ -669,7 +713,7 @@ theorem κ₂ : P₂.κ = 4 := by
 transported to the first with mass `1/2`, the second to the second with mass `1/4`; losses
 `1/10` on the adequate response and `1` on the other; intensities `1`, budgets at the
 certificates' masses, amplification `12`. -/
-noncomputable def protocol : AdapterProtocol state₁ 5 (Fin 2) where
+noncomputable def protocol : AdapterProtocol state₀ 5 (Fin 2) where
   services := {4, 9}
   μ := fun _ => 1/2
   μ_prob := by
@@ -694,11 +738,10 @@ noncomputable def protocol : AdapterProtocol state₁ 5 (Fin 2) where
 liability hypothesis remain: both are discharged above. -/
 theorem inductor :
     IsLogicalInductor (W.market DP) DP ∧
-    (∀ n, checkCompiled (N n).bundle (wit n) = true →
+    (∀ n, Enforced (N n) (res n) →
       ∀ c ∈ (N n).bundle, excess c.row (W.priceVec DP n) ≤ tol n) ∧
     (∀ n, ∀ c ∈ W.bundle n,
-      (∃ o ∈ (N n).survivors, c.cites = Cite.sub o.id ∧
-        (admission n).origin o ∈ state₁.boundary.exposed ∧
+      (∃ o ∈ (N n).survivors, c.cites = Cite.sub o.id ∧ (entitlement n).Entitled o ∧
         ∀ j, o.cites = .occurrence j → ∃! o', o' ∈ (N n).survivors ∧ o'.id = j) ∨
       (∃ it ∈ (N n).seed.liveStr (N n).docket, c.cites = Cite.str it.id) ∨
       ∃ i, c.cites = Cite.settled i) ∧
@@ -710,9 +753,9 @@ theorem inductor :
     (protocol.evaluation F5.ι).progress (W.market DP) ≤
       (protocol.evaluation F5.ι).modulus + (protocol.evaluation F5.ι).error +
         protocol.D * (protocol.evaluation F5.ι).residual := by
-  refine warrant_inductor N F5 wit tol tol_pos admission wellFormed DP process computation 72
+  refine warrant_inductor N F5 res tol tol_pos entitlement wellFormed DP process computation 72
     liability protocol ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_
-  · intro s _; exact check s
+  · intro s _; exact enforced s
   · intro s hs
     simp only [protocol, Finset.mem_insert, Finset.mem_singleton] at hs
     rcases hs with rfl | rfl
@@ -740,8 +783,8 @@ theorem inductor :
   · intro s hs
     simp only [protocol, Finset.mem_insert, Finset.mem_singleton] at hs
     rcases hs with rfl | rfl
-    · simp [protocol, κ₁, state₁, finish, Fin.sum_univ_two]; norm_num
-    · simp [protocol, κ₂, state₁, finish, Fin.sum_univ_two]; norm_num
+    · simp [protocol, κ₁, state₀, Initial.state, start, Fin.sum_univ_two]; norm_num
+    · simp [protocol, κ₂, state₀, Initial.state, start, Fin.sum_univ_two]; norm_num
 
 /-! ## 8. The run, in numbers -/
 
@@ -802,6 +845,70 @@ theorem exclusion_lapses :
     simp [InCube, Fin.forall_fin_succ, cP, cA, cS, cZ, n₁, n₀, nE, Fixture2.X, Fixture2.XA,
       Fixture2.XAY, Fixture2.Y, Fixture2.Z]
     norm_num
+
+/-! ## 8′. Scenario A, summarized: what the undercut loses and what survives -/
+
+/-- **The undercut at date `n₀`.**  The applicability and the strength leave the survivors; the
+premise and the `Z` warrant stay.  The region loses the lower bounds `P(X∧A) ≥ 3/4` and
+`P(X∧A∧Y) ≥ 1/2` it carried at date `4` — at date `5` it admits the point pricing both at `0` —
+and keeps `P(Z) ≥ 3/4` at every date.  With `exclusion_lapses`: the certified guidance on the
+principal matter is lost, nothing replaces it, and the independent warrant's guidance is
+untouched. -/
+theorem undercut_summary :
+    (N 4).survivors = [occP, occA, occS, occZ] ∧ (N 5).survivors = [occP, occZ] ∧
+    (∀ x, (N 4).region x → 3/4 ≤ x XA ∧ 1/2 ≤ x XAY) ∧
+    (N 5).region ![1, 0, 0, 0, 3/4] ∧
+    (∀ n x, (N n).region x → 3/4 ≤ x Z) := by
+  have h3 : n₁ = 3 := rfl; have h5 : n₀ = 5 := rfl
+  refine ⟨by rw [survivors_eq]; simp [h5], by rw [survivors_eq]; simp [h5], fun x hx => ?_, ?_,
+    fun n x hx => ?_⟩
+  · rw [region_iff] at hx
+    obtain ⟨-, h1, -, -, hA, hS, -, -, -, -⟩ := hx
+    have h1' := h1 (by omega)
+    have hA' := hA (by omega)
+    have hS' := hS (by omega)
+    rw [h1'] at hA'
+    unfold cA at hA'; unfold cS at hS'
+    constructor <;> linarith
+  · rw [region_iff]
+    simp [InCube, Fin.forall_fin_succ, cP, cA, cS, cZ, n₁, n₀, nE, Fixture2.X, Fixture2.XA,
+      Fixture2.XAY, Fixture2.Y, Fixture2.Z]
+    norm_num
+  · rw [region_iff] at hx
+    exact hx.2.2.2.2.2.2.1
+
+/-! ## 8″. The Progress bound, in numbers -/
+
+/-- At the fixture the three terms are `Γ √(Σρ/Σλ) ≤ 12/339`, `Σ T ε = 3/40` and
+`D · residual = 1/4`, so `progress ≤ 37/100` against the trivial bound `D = 1`.  The adequate
+response costs `1/10` and the gate realizes it with mass at least `24/25` at date `4` and
+`99/100` at date `9` (`gate_bounds`); the unserved quarter of the evaluation mass is the
+largest term. -/
+theorem progress_le : (protocol.evaluation F5.ι).progress (W.market DP) ≤ 37/100 := by
+  obtain ⟨-, -, -, -, h⟩ := inductor
+  have hρ : ∑ s ∈ protocol.services, protocol.ρ s = 1/90000 + 1/160000 := by
+    simp [protocol]
+  have hl : ∑ s ∈ protocol.services, protocol.lamS s = 2 := by
+    norm_num [protocol]
+  have hmod : (protocol.evaluation F5.ι).modulus ≤ 12/339 := by
+    show protocol.Γ * Real.sqrt ((∑ s ∈ protocol.services, protocol.ρ s) /
+      ∑ s ∈ protocol.services, protocol.lamS s) ≤ 12/339
+    rw [hρ, hl]
+    have hs : Real.sqrt ((1/90000 + 1/160000) / 2) ≤ 1/339 := by
+      rw [Real.sqrt_le_left (by norm_num)]; norm_num
+    have hΓ : protocol.Γ = 12 := rfl
+    rw [hΓ]; linarith
+  have herr : (protocol.evaluation F5.ι).error = 3/40 := by
+    simp [Evaluation.error, AdapterProtocol.evaluation, protocol, state₀, Initial.state, start,
+      Fin.sum_univ_two]
+    norm_num
+  have hres : (protocol.evaluation F5.ι).residual = 1/4 := by
+    simp [Evaluation.residual, AdapterProtocol.evaluation, protocol, state₀, Initial.state, start,
+      Fin.sum_univ_two]
+    norm_num
+  have hD : protocol.D = 1 := rfl
+  rw [herr, hres, hD] at h
+  linarith
 
 /-! ## 9. The licence at the market -/
 
@@ -930,7 +1037,13 @@ theorem bracket :
 #print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.dom_wAY
 #print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.dom_bundle
 #print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.liability
-#print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.admission
+#print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.res
+#print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.enforced
+#print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.account_live
+#print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.entitlement
+#print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.answered_not_entitled
+#print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.undercut_summary
+#print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.progress_le
 #print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.wellFormed
 #print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.eXAY
 #print axioms Workspace.Normativity.Contrib.WarrantInductorWitness.eXA_XAY

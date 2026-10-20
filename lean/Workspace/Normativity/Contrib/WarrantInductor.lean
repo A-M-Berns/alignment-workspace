@@ -12,14 +12,19 @@ One construction, read in four views, run on one market, and scored by one evalu
    price-space region (`region`), the cited bundle a licence checks (`Supported`, `Licensed`),
    the input of the forced-interval elimination (`interval`) and the rows the enforcer holds
    (`WarrantForce.bundlePres`) are all read off this one bundle.
-2. **Admission** (`Admission`): a typed link from the accounted obligation state to the
-   grounds — every admitted occurrence realizes an exposed obligation.  It is a declared
-   semantic input; nothing here derives legitimacy.  **Well-formedness**
-   (`Grounds.WellFormed`): identities are unique and citations resolve, so a survivor's
-   citation names exactly one survivor.
-3. **Compilation with withholding** (`compileAt`, `schedule`): a date's bundle is enforced
-   when the supplied witness checks into its region (`checkCompiled`), and no row is
-   enforced otherwise.  Force is never derived from an unchecked constraint set.
+2. **Provenance and entitlement** (`Origin`, `Entitlement`): every occurrence of the grounds
+   names the exposed obligation occurrence it realizes; it is *entitled* when that obligation
+   is admitted by the protocol at the boundary's history, its account is still live, and the
+   form expresses the obligation's anchor under a declared relation.  A typed semantic input;
+   nothing here derives that the obligation was legitimately incurred.  Verdict licensing
+   (`NormState.Licensed`) is a different authority and is not consumed by the enforcer.
+   **Well-formedness** (`Grounds.WellFormed`): identities are unique and citations resolve,
+   so a survivor's citation names exactly one survivor.
+3. **Compilation with its outcome** (`outcome`, `compileAt`, `schedule`): a date is *idle*
+   (no rows), *enforced* (the compiler's witness checks into the region, every row held) or
+   *withheld* (rows present, no checked witness; the compile result — a Farkas conflict, an
+   unchecked witness, or nothing — carried for accounting).  The obligations present are the
+   state's bundle whatever the outcome; a withheld date trades nothing.
 4. **The adapter** (`Problem`, `gate`): a finite menu scored by affine functionals of the
    displayed prices, run through the soft gate of `GatedChoice`.  The declared adequate set
    `A` and the per-response losses are the adequacy semantics; what connects them to the
@@ -59,7 +64,7 @@ open Workspace.Normativity.Contrib.EnforcedComputation
 open Workspace.Normativity.Contrib.GatedChoice
 open Workspace.Normativity.Contrib.PracticalCertificate (anchoredLoss adequate_set_route)
 open Workspace.Normativity.Contrib.NormativeInductionInterface
-open Workspace.Normativity.Contrib.OccurrenceIntegrity (Protocol)
+open Workspace.Normativity.Contrib.OccurrenceIntegrity (Protocol Fate Program)
 open Workspace.Normativity.Contrib.OpenIntegrityEvolution (ObligationState)
 open Workspace.Normativity.Contrib.AssessmentProcess (ratPayout)
 open Finset
@@ -181,16 +186,64 @@ theorem licensed_iff (h : N.structural = []) {m m' : ℕ} {φ : Fin d} {v : ℚ}
 
 end NormState
 
-/-! ## 2. Admission and well-formedness -/
+/-! ## 2. Provenance, entitlement and well-formedness
 
-/-- **Admission**: every occurrence of the grounds realizes an exposed occurrence of the
-accounted obligation state.  A typed semantic input: the legitimacy of the admission is the
-obligation state's, and nothing here derives it. -/
-structure Admission {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
+Four roles, kept apart.  **Provenance** (`Origin`): which accounted obligation occurrence a
+warrant occurrence realizes.  **Entitlement** (`Entitlement`): what admits the occurrence's
+constraint to the market — its originating obligation is admitted by the protocol at the
+boundary's history, that obligation's account is still live, and the form expresses the
+obligation's anchored requirement under a declared relation.  **Verdict licensing**
+(`NormState.Licensed`): what authorizes a certificate-backed selection of a verdict — a
+supported certificate and an event the record authorizes; the enforcer consumes no licence
+and a licence introduces no constraint.  **Operative enforcement** (`compileAt`): what makes an
+entitled constraint act on the market — survival under the docket and the settlement, and a
+compiled bundle.  The theorem joining the second and the fourth is `warrant_inductor`'s
+provenance conclusion: every enforced substantive row is an entitled survivor's. -/
+
+/-- **Origin** (historical provenance): every occurrence of the grounds names the exposed
+obligation occurrence it realizes.  Provenance only: where a warrant came from, not that it may
+be enforced. -/
+structure Origin {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
     (O : ObligationState S anchor) (G : Grounds d) where
   /-- The exposed obligation occurrence a warrant occurrence realizes. -/
   origin : Occurrence d → Occ
   origin_exposed : ∀ o ∈ G, origin o ∈ O.boundary.exposed
+
+/-- **Entitlement**: the typed admission condition under which an occurrence of the grounds may
+participate in the market, over a declared relation `Expresses r f` — *the form `f` expresses
+the anchored requirement `r`* — whose truth is the application's.  Three conditions are read
+off the accounted state: the originating obligation is exposed, it is admitted by the protocol
+at the boundary's history (`Protocol.Admitted`), and its account still carries a live leaf
+(`Fate.live`) — an obligation already answered or closed entitles no standing constraint.  The
+fourth is faithfulness under `Expresses`.  Nothing here derives that the obligation was
+legitimately incurred; that is the obligation state's, through the Integrity segment that
+produced it. -/
+structure Entitlement {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
+    (O : ObligationState S anchor) (G : Grounds d) (Expresses : Req → Form d → Prop)
+    extends Origin O G where
+  admitted : ∀ o ∈ G, S.Admitted O.boundary.history (origin o) (anchor (origin o))
+  live : ∀ o (h : o ∈ G),
+    OccurrenceIntegrity.Fate.live ∈ (O.account (origin o) (origin_exposed o h)).fates
+  faithful : ∀ o ∈ G, Expresses (anchor (origin o)) o.form
+
+namespace Entitlement
+
+variable {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
+  {O : ObligationState S anchor} {G : Grounds d} {Expresses : Req → Form d → Prop}
+  (E : Entitlement O G Expresses)
+
+/-- **An entitled occurrence**: its origin is exposed, admitted and live, and its form
+expresses the origin's anchor. -/
+def Entitled (o : Occurrence d) : Prop :=
+  ∃ h : E.origin o ∈ O.boundary.exposed,
+    S.Admitted O.boundary.history (E.origin o) (anchor (E.origin o)) ∧
+    OccurrenceIntegrity.Fate.live ∈ (O.account (E.origin o) h).fates ∧
+    Expresses (anchor (E.origin o)) o.form
+
+theorem entitled {o : Occurrence d} (ho : o ∈ G) : E.Entitled o :=
+  ⟨E.origin_exposed o ho, E.admitted o ho, E.live o ho, E.faithful o ho⟩
+
+end Entitlement
 
 /-- **Well-formed grounds**: identities are unique and every citation resolves. -/
 def _root_.Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.WellFormed
@@ -213,26 +266,164 @@ theorem _root_.Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.WellForm
   refine ⟨o', ⟨ho', hid⟩, fun o'' ⟨ho'', hid''⟩ => ?_⟩
   exact h.id_inj (survivors_subset G st F ho'') (survivors_subset G st F ho') (hid''.trans hid.symm)
 
-/-! ## 3. Compilation with withholding -/
+/-! ## 3. Compilation, with its outcome
 
-/-- **The compiled bundle of a date**: the state's bundle when the supplied witness checks
-into its region, the empty bundle — force withheld — otherwise. -/
-def compileAt (N : NormState d) (w : Fin d → ℚ) : Bundle (Cite d) d :=
-  if checkCompiled N.bundle w then N.bundle else []
+A date's compile result is the compiler's (`CompileResult`: a witness, a Farkas conflict
+certificate, or nothing).  Its **outcome** separates three cases the enforced rows alone do
+not: `idle` — the state has no rows; `enforced` — the witness checks into the region and every
+row is held; `withheld` — rows are present and no checked witness was supplied, with the
+compile result carried for accounting.  The outcome has no field that drops, renames or
+reweights an occurrence: the obligations present are the state's bundle in every case
+(`outcome_obligations`), the survivors and the accounted state are untouched, and a withheld
+date trades nothing (`WarrantSchedule.day_value_eq_zero_of_bundle_nil`).  A valid conflict
+certificate refutes the region (`conflict_region_empty`), which separates *infeasible* from
+*unchecked* (`withheld_of_not_check`) and from *no result* (`unknown_withheld`). -/
+
+/-- The outcome of compiling a date. -/
+inductive Outcome (d : ℕ) where
+  | idle
+  | enforced (B : Bundle (Cite d) d)
+  | withheld (B : Bundle (Cite d) d) (res : CompileResult (Cite d) d)
+
+namespace Outcome
+
+/-- The rows the enforcer holds. -/
+def rows : Outcome d → Bundle (Cite d) d
+  | idle => []
+  | enforced B => B
+  | withheld _ _ => []
+
+/-- The rows that were present, held or not. -/
+def obligations : Outcome d → Bundle (Cite d) d
+  | idle => []
+  | enforced B => B
+  | withheld B _ => B
+
+end Outcome
+
+/-- **The outcome of a date**: idle when the state has no rows; enforced when the compiler's
+witness checks into the region; withheld otherwise, carrying the compile result. -/
+def outcome (N : NormState d) (res : CompileResult (Cite d) d) : Outcome d :=
+  if N.bundle = [] then .idle else
+  match res with
+  | .compiled w => if checkCompiled N.bundle w then .enforced N.bundle else .withheld N.bundle res
+  | .conflict m c => .withheld N.bundle (.conflict m c)
+  | .unknown => .withheld N.bundle .unknown
+
+/-- **The compiled bundle of a date**: the rows the outcome holds. -/
+def compileAt (N : NormState d) (res : CompileResult (Cite d) d) : Bundle (Cite d) d :=
+  (outcome N res).rows
+
+/-- **Conservation.**  Whatever the compiler returns, the obligations present are the state's
+bundle: withholding force extinguishes nothing. -/
+theorem outcome_obligations (N : NormState d) (res : CompileResult (Cite d) d) :
+    (outcome N res).obligations = N.bundle := by
+  unfold outcome
+  split_ifs with h0
+  · simp [Outcome.obligations, h0]
+  · cases res with
+    | compiled w => dsimp only; split_ifs <;> rfl
+    | conflict m c => rfl
+    | unknown => rfl
+
+/-- The compiled bundle is the state's bundle or nothing. -/
+theorem compileAt_eq_or (N : NormState d) (res : CompileResult (Cite d) d) :
+    compileAt N res = N.bundle ∨ compileAt N res = [] := by
+  unfold compileAt outcome
+  split_ifs with h0
+  · exact Or.inr rfl
+  · cases res with
+    | compiled w => dsimp only; split_ifs <;> simp [Outcome.rows]
+    | conflict m c => exact Or.inr rfl
+    | unknown => exact Or.inr rfl
+
+theorem mem_compileAt_sub {N : NormState d} {res : CompileResult (Cite d) d}
+    {c : CitedRow (Cite d) d} (hc : c ∈ compileAt N res) : c ∈ N.bundle := by
+  rcases compileAt_eq_or N res with h | h
+  · rwa [h] at hc
+  · rw [h] at hc; simp at hc
+
+/-- **Enforced**: every row of the state's bundle is held (vacuously when there are none). -/
+def Enforced (N : NormState d) (res : CompileResult (Cite d) d) : Prop :=
+  compileAt N res = N.bundle
+
+/-- **Transparency, idle:** the outcome is idle exactly when the state has no rows. -/
+theorem outcome_idle_iff (N : NormState d) (res : CompileResult (Cite d) d) :
+    outcome N res = .idle ↔ N.bundle = [] := by
+  unfold outcome
+  split_ifs with h0
+  · simp [h0]
+  · simp only [h0, iff_false]
+    cases res with
+    | compiled w => dsimp only; split_ifs <;> simp
+    | conflict m c => simp
+    | unknown => simp
 
 theorem compileAt_eq_of_check {N : NormState d} {w : Fin d → ℚ}
-    (h : checkCompiled N.bundle w = true) : compileAt N w = N.bundle := by
-  simp [compileAt, h]
+    (h : checkCompiled N.bundle w = true) : compileAt N (.compiled w) = N.bundle := by
+  unfold compileAt outcome
+  split_ifs with h0
+  · simp [Outcome.rows, h0]
+  · simp [Outcome.rows, h]
 
-theorem compileAt_eq_nil {N : NormState d} {w : Fin d → ℚ}
-    (h : ¬ checkCompiled N.bundle w = true) : compileAt N w = [] := by
-  simp [compileAt, h]
+theorem enforced_of_check {N : NormState d} {w : Fin d → ℚ}
+    (h : checkCompiled N.bundle w = true) : Enforced N (.compiled w) :=
+  compileAt_eq_of_check h
 
-/-- A checked witness is a point of the compiled bundle's region. -/
-theorem region_compileAt {N : NormState d} {w : Fin d → ℚ}
-    (h : checkCompiled N.bundle w = true) : (compileAt N w).Region w := by
-  rw [compileAt_eq_of_check h]
-  exact (checkCompiled_iff _ _).1 h
+/-- **Transparency, unchecked:** a supplied witness outside the region withholds force; the
+system may or may not be feasible. -/
+theorem withheld_of_not_check {N : NormState d} {w : Fin d → ℚ} (h0 : N.bundle ≠ [])
+    (h : ¬ checkCompiled N.bundle w = true) :
+    outcome N (.compiled w) = .withheld N.bundle (.compiled w) := by
+  simp [outcome, h0, h]
+
+/-- **Transparency, conflict:** a conflict certificate withholds force. -/
+theorem conflict_withheld {N : NormState d} (h0 : N.bundle ≠ []) {m : ℕ} (cert : FarkasCert d m) :
+    outcome N (.conflict m cert) = .withheld N.bundle (.conflict m cert) := by
+  simp [outcome, h0]
+
+/-- **Transparency, infeasible:** a conflict certificate over the bundle's allowed rows
+refutes the region — the withheld system has no admissible price vector at all. -/
+theorem conflict_region_empty {N : NormState d} {m : ℕ} {cert : FarkasCert d m}
+    (hv : ∀ i, N.bundle.Allowed (cert.row i)) : ¬ ∃ x, N.bundle.Region x :=
+  conflict_sound N.bundle cert hv
+
+/-- **Transparency, no result:** `unknown` withholds force and says nothing about the
+region. -/
+theorem unknown_withheld {N : NormState d} (h0 : N.bundle ≠ []) :
+    outcome N .unknown = .withheld N.bundle .unknown := by
+  simp [outcome, h0]
+
+theorem compileAt_eq_nil_of_not_enforced {N : NormState d} {res : CompileResult (Cite d) d}
+    (h : ¬ Enforced N res) : compileAt N res = [] := by
+  rcases compileAt_eq_or N res with h' | h'
+  · exact absurd h' h
+  · exact h'
+
+/-- Enforcement is a checked witness, or nothing to enforce. -/
+theorem enforced_iff (N : NormState d) (res : CompileResult (Cite d) d) :
+    Enforced N res ↔ N.bundle = [] ∨ ∃ w, res = .compiled w ∧ checkCompiled N.bundle w = true := by
+  unfold Enforced compileAt outcome
+  split_ifs with h0
+  · simp [Outcome.rows, h0]
+  · simp only [h0, false_or]
+    cases res with
+    | compiled w =>
+      dsimp only
+      split_ifs with hw
+      · simp [Outcome.rows, hw]
+      · simp [Outcome.rows, hw, Ne.symm h0]
+    | conflict m c => simp [Outcome.rows, Ne.symm h0]
+    | unknown => simp [Outcome.rows, Ne.symm h0]
+
+/-- An enforced date's compiled bundle has a region point. -/
+theorem region_of_enforced {N : NormState d} {res : CompileResult (Cite d) d}
+    (h : Enforced N res) : ∃ y, (compileAt N res).Region y := by
+  rcases (enforced_iff N res).1 h with h0 | ⟨w, rfl, hw⟩
+  · refine ⟨fun _ => 0, fun i => ⟨le_rfl, zero_le_one⟩, fun c hc => ?_⟩
+    rw [h, h0] at hc
+    simp at hc
+  · exact ⟨w, by rw [compileAt_eq_of_check hw]; exact (checkCompiled_iff _ _).1 hw⟩
 
 /-- **A fragment map**: the priced sentences of the coordinates, listed once each. -/
 structure FragmentMap (d : ℕ) where
@@ -242,33 +433,42 @@ structure FragmentMap (d : ℕ) where
   nodup : coords.Nodup
   mem : ∀ j, ι j ∈ coords
 
-/-- **The schedule of a state process**: the compiled bundle of each date, with the
-requested tolerances. -/
-def schedule (N : ℕ → NormState d) (F : FragmentMap d) (wit : ℕ → Fin d → ℚ) (tol : ℕ → ℚ)
-    (htol : ∀ n, 0 < tol n) : WarrantSchedule d :=
-  ⟨F.ι, F.inj, F.coords, F.nodup, F.mem, fun n => compileAt (N n) (wit n), tol, htol⟩
+/-- **The schedule of a state process**: the compiled bundle of each date from the compiler's
+results, with the requested tolerances. -/
+def schedule (N : ℕ → NormState d) (F : FragmentMap d) (res : ℕ → CompileResult (Cite d) d)
+    (tol : ℕ → ℚ) (htol : ∀ n, 0 < tol n) : WarrantSchedule d :=
+  ⟨F.ι, F.inj, F.coords, F.nodup, F.mem, fun n => compileAt (N n) (res n), tol, htol⟩
 
-@[simp] lemma schedule_bundle (N : ℕ → NormState d) (F : FragmentMap d) (wit : ℕ → Fin d → ℚ)
-    (tol : ℕ → ℚ) (htol : ∀ n, 0 < tol n) (n : ℕ) :
-    (schedule N F wit tol htol).bundle n = compileAt (N n) (wit n) := rfl
+@[simp] lemma schedule_bundle (N : ℕ → NormState d) (F : FragmentMap d)
+    (res : ℕ → CompileResult (Cite d) d) (tol : ℕ → ℚ) (htol : ∀ n, 0 < tol n) (n : ℕ) :
+    (schedule N F res tol htol).bundle n = compileAt (N n) (res n) := rfl
 
-@[simp] lemma schedule_ι (N : ℕ → NormState d) (F : FragmentMap d) (wit : ℕ → Fin d → ℚ)
-    (tol : ℕ → ℚ) (htol : ∀ n, 0 < tol n) : (schedule N F wit tol htol).ι = F.ι := rfl
+@[simp] lemma schedule_ι (N : ℕ → NormState d) (F : FragmentMap d)
+    (res : ℕ → CompileResult (Cite d) d) (tol : ℕ → ℚ) (htol : ∀ n, 0 < tol n) :
+    (schedule N F res tol htol).ι = F.ι := rfl
 
-@[simp] lemma schedule_tol (N : ℕ → NormState d) (F : FragmentMap d) (wit : ℕ → Fin d → ℚ)
-    (tol : ℕ → ℚ) (htol : ∀ n, 0 < tol n) : (schedule N F wit tol htol).tol = tol := rfl
+@[simp] lemma schedule_tol (N : ℕ → NormState d) (F : FragmentMap d)
+    (res : ℕ → CompileResult (Cite d) d) (tol : ℕ → ℚ) (htol : ∀ n, 0 < tol n) :
+    (schedule N F res tol htol).tol = tol := rfl
 
 /-- **Provenance of force**: every row the compiled schedule enforces is a survivor's row
 under its citation, a live structural row, or a pin. -/
-theorem mem_compileAt {N : NormState d} {w : Fin d → ℚ} {c : CitedRow (Cite d) d}
-    (hc : c ∈ compileAt N w) :
+theorem mem_compileAt {N : NormState d} {res : CompileResult (Cite d) d} {c : CitedRow (Cite d) d}
+    (hc : c ∈ compileAt N res) :
     (∃ o ∈ N.survivors, c = ⟨Cite.sub o.id, specialize N.settlement o.form.row⟩) ∨
     (∃ it ∈ N.seed.liveStr N.docket, c = ⟨Cite.str it.id, specialize N.settlement it.row⟩) ∨
-    (∃ i, ∃ r ∈ N.settlement.pinRowsAt i, c = ⟨Cite.settled i, r⟩) := by
-  unfold compileAt at hc
-  split_ifs at hc with h
-  · exact (N.mem_bundle_iff c).1 hc
-  · simp at hc
+    (∃ i, ∃ r ∈ N.settlement.pinRowsAt i, c = ⟨Cite.settled i, r⟩) :=
+  (N.mem_bundle_iff c).1 (mem_compileAt_sub hc)
+
+/-- **Preservation under withholding.**  A date whose compiled bundle is empty — idle or
+withheld — trades nothing: the enforcer's day value is zero at every world, so the account's
+net worth, and with it the liability bound, is unchanged across it. -/
+theorem _root_.Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.day_value_eq_zero_of_bundle_nil
+    (W : WarrantSchedule d) (DP : DeductiveProcess) {n : ℕ} (h : W.bundle n = []) (v : PCWorld) :
+    ((realizedEnforcer DP (W.enforcer.adaptive DP)).strat n).value (W.market DP) v.payout = 0 :=
+  (W.account DP).day_value_eq_zero_of_rows_nil n (by
+    show (W.realizedPres DP n).rows = []
+    simp [WarrantSchedule.realizedPres, WarrantSchedule.presAt, h]) v
 
 /-! ## 4. The adapter: a finite menu scored by certified functionals -/
 
@@ -579,6 +779,32 @@ theorem uptake (W : WarrantSchedule d) (DP : DeductiveProcess)
   Γ_nonneg := hΓ
   amplification := hamp
 
+/-- **Restriction to the served dates**: the same protocol with its services cut to `served`.
+A service whose date is not enforced, or whose certificates are not supplied, is removed from the
+services; its transport mass is not lost but falls into the residual, where the Progress bound
+charges it at the worst loss `D` (`residual_restrict`). -/
+def restrict (served : Finset ℕ) : AdapterProtocol O d Q :=
+  { A with
+    services := A.services ∩ served
+    T_nonneg := fun e he s hs => A.T_nonneg e he s (Finset.mem_of_mem_inter_left hs)
+    T_row := fun e he =>
+      le_trans (Finset.sum_le_sum_of_subset_of_nonneg Finset.inter_subset_left
+        fun s hs _ => A.T_nonneg e he s hs) (A.T_row e he) }
+
+/-- **Accounting for the unserved.**  The restricted evaluation's residual is the full
+evaluation's plus the transport mass of the dropped services. -/
+theorem residual_restrict (served : Finset ℕ) (ι : Fin d → Sentence) :
+    ((A.restrict served).evaluation ι).residual =
+      (A.evaluation ι).residual +
+        ∑ e ∈ O.boundary.exposed, ∑ s ∈ A.services \ served, A.T e s := by
+  simp only [Evaluation.residual, evaluation, restrict]
+  have h : ∀ e, ∑ s ∈ A.services, A.T e s =
+      ∑ s ∈ A.services ∩ served, A.T e s + ∑ s ∈ A.services \ served, A.T e s := fun e => by
+    rw [← Finset.sum_sdiff (Finset.inter_subset_left (s₁ := A.services) (s₂ := served)),
+      Finset.sdiff_inter_self_left, add_comm]
+  simp only [h, Finset.sum_add_distrib]
+  ring
+
 end AdapterProtocol
 
 /-! ## 6. The consolidated theorem -/
@@ -586,40 +812,49 @@ end AdapterProtocol
 open EnforcedCompiler in
 /-- **The warrant Normative Inductor.**
 
-Given a process of normative states `N`, a fragment map, feasibility witnesses and
-tolerances; an admission of every date's grounds into the accounted obligation state and
+Given a process of normative states `N` — externally supplied and unconstrained across
+dates: the theorem is pointwise in `n` and derives nothing about how one state follows
+another — a fragment map, the compiler's results and tolerances; an entitlement of every
+date's grounds in the accounted obligation state over a declared `Expresses` relation, and
 well-formed grounds; a computable deductive process and an effective enforcer (the two
 computability inputs); a bound `B` on the enforcer's assessed liability (affordability); and
-an adapter protocol whose service dates carry checked witnesses, certified exclusion and
+an adapter protocol whose service dates are enforced and carry certified exclusion and
 margins, the adequacy semantics and the declared constants — then on the augmented
 deductive market of the compiled schedule:
 
-1. the market is a logical inductor over the deductive process;
-2. at every checked date every row of the state's bundle has excess at most the tolerance at
-   the displayed price, and every enforced row is a survivor's row — whose occurrence
-   realizes an exposed obligation — a structural row, or a pin;
+1. the market is a logical inductor over the deductive process — whatever the compile
+   outcomes, since a withheld date trades nothing;
+2. at every *enforced* date every row of the state's bundle has excess at most the tolerance
+   at the displayed price (a withheld date carries no conformance claim), and every enforced
+   substantive row is an entitled survivor's row whose citation names exactly one survivor,
+   every other enforced row a structural row or a pin;
 3. at every service date the adapter's mass on inadequate responses is at most `κ` times the
    public defect, which is at most the certificates' mass times the tolerance;
 4. the Progress bound holds, its `PracticalUptake` derived from 2 and 3.
 
-The semantic inputs are the admission, the adequacy losses and the declared constants; the
+The semantic inputs are the entitlement (with `Expresses`), the adequate sets, the adequacy
+losses and the declared constants: `Excludes` and `Margins` are checkable facts about the
+bundle's rows, and their normative meaning enters only through `A`, `A₁` and `lam`.  The
 computability inputs are `process` and `hE`, the latter discharged for finite-phase
 schedules by `WarrantSchedule.computation`; the affordability input is `hliab`, discharged
 by `WarrantSchedule.liability` (one slack world) or `WarrantSchedule.liability_reopened`
-(one reopening). -/
+(one reopening), and independent of the computability inputs.  Conclusion 2's provenance
+half is soundness of the compile — nothing enters the market that the entitlement and the
+survivor rule did not admit — and not a new inequality. -/
 theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
-    {O : ObligationState S anchor} {Q : Type} [Fintype Q] [DecidableEq Q]
-    (N : ℕ → NormState d) (F : FragmentMap d) (wit : ℕ → Fin d → ℚ) (tol : ℕ → ℚ)
-    (htol : ∀ n, 0 < tol n)
-    (adm : ∀ n, Admission O (N n).grounds) (hwf : ∀ n, (N n).grounds.WellFormed)
+    {O : ObligationState S anchor} {Expresses : Req → Form d → Prop} {Q : Type} [Fintype Q]
+    [DecidableEq Q]
+    (N : ℕ → NormState d) (F : FragmentMap d) (res : ℕ → CompileResult (Cite d) d)
+    (tol : ℕ → ℚ) (htol : ∀ n, 0 < tol n)
+    (ent : ∀ n, Entitlement O (N n).grounds Expresses) (hwf : ∀ n, (N n).grounds.WellFormed)
     (DP : DeductiveProcess) (process : DeductiveProcessComputation DP)
-    (hE : EffectiveEnforcerComputation (schedule N F wit tol htol).enforcer)
+    (hE : EffectiveEnforcerComputation (schedule N F res tol htol).enforcer)
     (B : ℝ)
     (hliab : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) →
-      -B ≤ (realizedEnforcer DP ((schedule N F wit tol htol).enforcer.adaptive DP)).netWorth
-        ((schedule N F wit tol htol).market DP) v n)
+      -B ≤ (realizedEnforcer DP ((schedule N F res tol htol).enforcer.adaptive DP)).netWorth
+        ((schedule N F res tol htol).market DP) v n)
     (A : AdapterProtocol O d Q)
-    (hcheck : ∀ s ∈ A.services, checkCompiled (N s).bundle (wit s) = true)
+    (henf : ∀ s ∈ A.services, Enforced (N s) (res s))
     (hex : ∀ s ∈ A.services, (A.prob s).Excludes (N s).bundle)
     (hmar : ∀ s ∈ A.services, (A.prob s).Margins (N s).bundle (tol s))
     (hεad : ∀ s ∈ A.services, 0 ≤ A.εad s) (hD : 0 ≤ A.D)
@@ -630,28 +865,27 @@ theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ 
     (hΓ : 0 ≤ A.Γ)
     (hamp : ∀ s ∈ A.services, ∑ e ∈ O.boundary.exposed, A.T e s * (A.D * (A.prob s).κ) ≤
       A.Γ * (A.lamS s / ∑ t ∈ A.services, A.lamS t)) :
-    IsLogicalInductor ((schedule N F wit tol htol).market DP) DP ∧
-    (∀ n, checkCompiled (N n).bundle (wit n) = true →
-      ∀ c ∈ (N n).bundle, excess c.row ((schedule N F wit tol htol).priceVec DP n) ≤ tol n) ∧
-    (∀ n, ∀ c ∈ (schedule N F wit tol htol).bundle n,
-      (∃ o ∈ (N n).survivors, c.cites = Cite.sub o.id ∧ (adm n).origin o ∈ O.boundary.exposed ∧
+    IsLogicalInductor ((schedule N F res tol htol).market DP) DP ∧
+    (∀ n, Enforced (N n) (res n) →
+      ∀ c ∈ (N n).bundle, excess c.row ((schedule N F res tol htol).priceVec DP n) ≤ tol n) ∧
+    (∀ n, ∀ c ∈ (schedule N F res tol htol).bundle n,
+      (∃ o ∈ (N n).survivors, c.cites = Cite.sub o.id ∧ (ent n).Entitled o ∧
         ∀ j, o.cites = .occurrence j → ∃! o', o' ∈ (N n).survivors ∧ o'.id = j) ∨
       (∃ it ∈ (N n).seed.liveStr (N n).docket, c.cites = Cite.str it.id) ∨
       ∃ i, c.cites = Cite.settled i) ∧
     (∀ s ∈ A.services,
-      massOff ((A.prob s).gate fun j => (schedule N F wit tol htol).market DP s (F.ι j))
+      massOff ((A.prob s).gate fun j => (schedule N F res tol htol).market DP s (F.ι j))
           (A.prob s).A ≤
-        (A.prob s).κ * (A.evaluation F.ι).defect s ((schedule N F wit tol htol).market DP) ∧
-      (A.evaluation F.ι).defect s ((schedule N F wit tol htol).market DP) ≤
+        (A.prob s).κ * (A.evaluation F.ι).defect s ((schedule N F res tol htol).market DP) ∧
+      (A.evaluation F.ι).defect s ((schedule N F res tol htol).market DP) ≤
         (((A.prob s).massCap * tol s : ℚ) : ℝ)) ∧
-    (A.evaluation F.ι).progress ((schedule N F wit tol htol).market DP) ≤
+    (A.evaluation F.ι).progress ((schedule N F res tol htol).market DP) ≤
       (A.evaluation F.ι).modulus + (A.evaluation F.ι).error +
         A.D * (A.evaluation F.ι).residual := by
-  set W := schedule N F wit tol htol with hW
-  have hbundle : ∀ s ∈ A.services, W.bundle s = (N s).bundle := fun s hs =>
-    compileAt_eq_of_check (hcheck s hs)
+  set W := schedule N F res tol htol with hW
+  have hbundle : ∀ s ∈ A.services, W.bundle s = (N s).bundle := fun s hs => henf s hs
   have hyW : ∀ s ∈ A.services, ∃ y, (W.bundle s).Region y := fun s hs =>
-    ⟨wit s, region_compileAt (hcheck s hs)⟩
+    region_of_enforced (henf s hs)
   have hexW : ∀ s ∈ A.services, (A.prob s).Excludes (W.bundle s) := fun s hs => by
     rw [hbundle s hs]; exact hex s hs
   have hmarW : ∀ s ∈ A.services, (A.prob s).Margins (W.bundle s) (W.tol s) := fun s hs => by
@@ -659,15 +893,15 @@ theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ 
   refine ⟨?_, ?_, ?_, ?_, ?_⟩
   · -- 1. preservation
     exact W.isLogicalInductor DP process hE B hliab
-  · -- 2. conformance at checked dates
+  · -- 2. conformance at enforced dates
     intro n hn c hc
-    have hy : (W.bundle n).Region (wit n) := region_compileAt hn
-    have hc' : c ∈ W.bundle n := by rw [hW, schedule_bundle, compileAt_eq_of_check hn]; exact hc
-    exact W.excess_le_tol DP n (wit n) hy hc'
+    obtain ⟨y, hy⟩ := region_of_enforced hn
+    have hc' : c ∈ W.bundle n := by rw [hW, schedule_bundle, hn]; exact hc
+    exact W.excess_le_tol DP n y hy hc'
   · -- 2'. provenance of force
     intro n c hc
     rcases mem_compileAt hc with ⟨o, ho, rfl⟩ | ⟨it, hit, rfl⟩ | ⟨i, r, -, rfl⟩
-    · refine Or.inl ⟨o, ho, rfl, (adm n).origin_exposed o (survivors_subset _ _ _ ho), ?_⟩
+    · refine Or.inl ⟨o, ho, rfl, (ent n).entitled (survivors_subset _ _ _ ho), ?_⟩
       intro j hj
       exact (hwf n).cited_unique (N n).docket (N n).settlement ho hj
     · exact Or.inr (Or.inl ⟨it, hit, rfl⟩)
@@ -699,20 +933,41 @@ theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ 
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.Licensed
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.licence_chain
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.licensed_iff
-#print axioms Workspace.Normativity.Contrib.WarrantInductor.Admission
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.Origin
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.Entitlement
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.Entitlement.Entitled
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.Entitlement.entitled
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.WellFormed
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.WellFormed.id_inj
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.WellFormed.cited_unique
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.Outcome
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.Outcome.rows
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.Outcome.obligations
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.outcome
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.compileAt
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.outcome_obligations
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.compileAt_eq_or
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.mem_compileAt_sub
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.Enforced
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.outcome_idle_iff
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.compileAt_eq_of_check
-#print axioms Workspace.Normativity.Contrib.WarrantInductor.compileAt_eq_nil
-#print axioms Workspace.Normativity.Contrib.WarrantInductor.region_compileAt
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.enforced_of_check
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.withheld_of_not_check
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.conflict_withheld
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.conflict_region_empty
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.unknown_withheld
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.compileAt_eq_nil_of_not_enforced
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.enforced_iff
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.region_of_enforced
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.FragmentMap
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.schedule
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.schedule_bundle
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.schedule_ι
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.schedule_tol
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.mem_compileAt
+#print axioms Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.day_value_eq_zero_of_bundle_nil
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.AdapterProtocol.restrict
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.AdapterProtocol.residual_restrict
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.CitedFunctional
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.CitedFunctional.CitesLive
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.Problem

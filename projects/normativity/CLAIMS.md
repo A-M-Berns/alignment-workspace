@@ -1921,7 +1921,7 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
     "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
     "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
   },
-  "note": "On the augmented deductive market of the compiled schedule of a normative state process: Logical Induction over the deductive process from a liability bound and the enforcer's effectiveness; rowwise conformance at every checked date and the provenance of every enforced row; the gate's inadequate mass at most κ times the public defect, itself at most the certificates' mass times the tolerance; and the Progress bound with PracticalUptake derived. Admission, the adequacy losses and the declared constants are the semantic inputs."
+  "note": "On the augmented deductive market of the compiled schedule of a normative state process: Logical Induction over the deductive process from a liability bound and the enforcer's effectiveness; rowwise conformance at every enforced date and the provenance of every held row to an entitled survivor, a structural row or a pin; the gate's inadequate mass at most κ times the public defect, itself at most the certificates' mass times the tolerance; and the Progress bound with PracticalUptake derived. The entitlement (with its Expresses relation), the adequate sets, the adequacy losses and the declared constants are the semantic inputs; the compiler's results are the compile inputs, and a withheld date carries no conformance claim. Since 2026-10-23 the hypotheses are ent (Entitlement), res (CompileResult) and henf (Enforced) in place of adm, wit and hcheck."
 }
 ```
 
@@ -1947,6 +1947,58 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
     "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
     "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
   },
-  "note": "warrant_inductor at the five-sentence fixture: the deductive process and the enforcer are computable (process, computation), the bankroll across the rebuttal is −72 (liability); the gate puts mass at most 1/25 on refraining before the undercut and 1/100 on the surviving warrant after the rebuttal (gate_bounds)."
+  "note": "warrant_inductor at the five-sentence fixture, Scenario A (the undercut): the deductive process and the enforcer are computable (process, computation), the bankroll across the rebuttal is −72 (liability); the gate puts mass at most 1/25 on refraining before the undercut and 1/100 on the surviving warrant after the rebuttal (gate_bounds); Progress ≤ 37/100 (progress_le). Since 2026-10-23 the entitlement is on state₀ with both accounts live and every date's compile outcome is enforced."
+}
+```
+
+### inductor.rebuttal-run
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the warrant Normative Inductor, run on the rebuttal of a still-active strength (Scenario B)",
+  "origin_round": "2026-10-23-normative-inductor-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductorRebuttal.inductor"
+  },
+  "answers_item": "35",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-23-normative-inductor-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/THEOREM_STORY.md"
+  },
+  "note": "warrant_inductor at the same fixture with a quiet docket: the strength is operative until its consequent is refuted at date 8 and leaves by rebuttal (operative_before, withdrawn); every date is enforced; the bankroll is −72 (liability) with the applicability row among those the post-refutation slack world dominates. The same question (act on the conclusion or refrain) is posed at dates 4 and 9: the region flips (region_flips), no Excludes or Margins certificate exists at date 9 (no_certificate_after), and the gate's mass on acting goes from at least 24/25 to 0 at the realized market (same_question); the dropped service's mass 1/4 is in the residual (residual_restricted)."
+}
+```
+
+### inductor.contraposition-blocked
+
+```json
+{
+  "project": "normativity",
+  "short_name": "rebuttal withdraws the strength row that, kept, would have made the compiled system infeasible",
+  "origin_round": "2026-10-23-normative-inductor-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductorRebuttal.contraposition_blocked"
+  },
+  "answers_item": "113",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-23-normative-inductor-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/THEOREM_STORY.md"
+  },
+  "note": "At date 9 of Scenario B the specialized strength row reads 2/3·P(X∧A) ≤ 0 while the enforced applicability row with X settled true forces P(X∧A) ≥ 3/4 (antecedent_open): the date-9 bundle with the strength row appended has empty region. Rebuttal by settlement removes the row, so the antecedent's credence stays where the applicability puts it rather than being suppressed by contraposition."
 }
 ```

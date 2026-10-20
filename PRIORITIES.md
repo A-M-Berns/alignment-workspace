@@ -406,7 +406,7 @@ item. The present candidate is a distortion term comparing local fixed-loss
 evaluation with full replay, potentially requiring `B_T(g) = o(T)`, but no
 accepted sufficient statement yet supplies an executable completion criterion.
 
-### 35. End-to-end module pipeline round — **[maintainer-specified-later]** — *first instance landed 2026-10-21: `EndToEndWitness.Run.witness` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md`), one fixture, every stage; not registered; the next instance's needs are in that round's `LANDING.md`* — *second instance landed 2026-10-22: `WarrantInductorWitness.inductor`, `warrant_inductor` at a fixture with computability and liability discharged; the general theorem `WarrantInductor.warrant_inductor` registered `inductor.warrant-inductor`*
+### 35. End-to-end module pipeline round — **[maintainer-specified-later]** — *first instance landed 2026-10-21: `EndToEndWitness.Run.witness` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md`), one fixture, every stage; not registered; the next instance's needs are in that round's `LANDING.md`* — *second instance landed 2026-10-22: `WarrantInductorWitness.inductor`, `warrant_inductor` at a fixture with computability and liability discharged; the general theorem `WarrantInductor.warrant_inductor` registered `inductor.warrant-inductor`* — *third instance landed 2026-10-23: `WarrantInductorRebuttal.inductor`, the strength rebutted while active with the same decision question before and after, registered `inductor.rebuttal-run`; the theorem's admission is now an `Entitlement` and its compile a typed `Outcome`*
 <!-- workspace-priority: project=normativity; dispatchable=no -->
 
 ---
@@ -3906,21 +3906,25 @@ an undercutter is itself defeasible.
 *Context:* `DECISIONS.md` 2026-10-22; `WarrantEntitlement.liveGiven`.
 *Consumed by:* fixtures with undercutting defeaters that are themselves warrants.
 
-### 128. Admission from the accounted state — **[open]**
+### 128. Admission from the accounted state — **[open]** — *narrowed 2026-10-23: `WarrantInductor.Entitlement` reads three conditions off the accounted state — the origin exposed, `Protocol.Admitted` at the boundary's history, a live leaf in the origin's account — and takes a declared `Expresses : Req → Form → Prop`; `warrant_inductor` enforces only entitled survivors; `WarrantInductorWitness.answered_not_entitled` shows an answered obligation entitles nothing. What remains is below.*
 
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
-`WarrantInductor.Admission O G` types the link from the accounted obligation state to the
-grounds: a map from occurrences to exposed obligation occurrences. It does not say what in
-the account *licenses* adding a warrant occurrence to the grounds, nor relate the record's
-authorized events to the Integrity account's receipts. Wanted: the condition on
-`ObligationState` (or on an open Integrity segment) under which an occurrence may be admitted,
-the construction of `Admission` from it, and the relation between the record's `authorized`
-set and the account — so that "legitimate admission" is derived rather than typed.
+`WarrantInductor.Entitlement O G Expresses` types the admission of a warrant occurrence to the
+market as four conditions on its origin in the accounted obligation state. Two of them are the
+protocol's and the application's and are not derived: `Protocol.Admitted`, which the fixture's
+trivial protocol makes `True`, and `Expresses`, which the fixture makes total. Wanted: (a) a
+nontrivial protocol whose `Admitted` and `Expresses` carry content, with an entitlement at it
+— the first fixture in which entitlement can fail for a reason other than a dead account; (b)
+the relation between the record's `authorized` set (verdict licensing) and the account's
+receipts, which the construction keeps apart and does not relate; (c) whether entitlement
+should follow an open Integrity segment rather than one accounted state, so that a warrant's
+standing is a property of the evolution that incurred its obligation.
 
-*Deliverable shape:* `lean-proved` construction of `Admission` from a stated condition; the
-condition filed as a definition with a fixture.
-*Acceptance check:* the Lean audit clean; `WarrantInductorWitness.admission` recovered.
+*Deliverable shape:* `lean-proved`; the protocol and its entitlement as a fixture; a theorem
+relating `authorized` to the account, or a stated reason none should exist.
+*Acceptance check:* the Lean audit clean; `WarrantInductorWitness.entitlement` and
+`answered_not_entitled` recovered.
 *Context:* `.../2026-10-22-normative-inductor-integration/HANDOFFS.md` (the first arrow);
 `OpenIntegrityEvolution.ObligationState`; `wiki/Legitimacy.md`.
 *Consumed by:* the legitimacy ↔ warrant handoff; item 115.

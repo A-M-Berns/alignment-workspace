@@ -394,7 +394,7 @@ The two conclusions are logically independent: legitimacy does not give low erro
 error does not give legitimacy.  The Logical-Induction realization is one route to the
 uptake side, not part of the spine.
 
-**Theorem 7.3 (The odds bankroll; warrant round).**  Let the enforcer hold, at each date, the
+**Theorem 7.4 (The odds bankroll; warrant round).**  Let the enforcer hold, at each date, the
 compiled position of a presentation, and let a live world `v'` clear every enforced row of every
 date `t ≤ n` with a surplus dominating every live world's deficit on that row by `ρ`.  Then the
 enforcer's assessed net worth at every live world at date `n` is at least `−3ρ`, the market
@@ -406,7 +406,7 @@ witness changes and the bound is `−3ρ(2 + ρ)` (`netWorth_ge_neg_odds_reopene
 `Fixture.liability_rebutted` **registered** `rebuttal.liability-rebutted`); the smaller
 constant is refuted by an exact exhibit (**FIX**, item 123).
 
-**Theorem 7.4 (Rebuttal by settlement).**  `settleForm` keeps exactly the specialized rows of
+**Theorem 7.5 (Rebuttal by settlement).**  `settleForm` keeps exactly the specialized rows of
 forms none of whose premise, antecedent or consequent coordinate is pinned false
 (`WarrantEntitlement.settleForm_eq_some_iff`; **registered** `rebuttal.settleform-sound`), and
 the rows it removes force the antecedent to zero (`strength_contraposes`).  Under it the
@@ -414,6 +414,38 @@ settled region shrinks when no form leaves (`settledRegion_anti_of_survivors_eq`
 a reopening, both regions lie inside the kept rows' pre-step region (`reopening_bound`).  The
 seed's statics and the convergence profile are on [Seed Theory](Seed-Theory); the first
 end-to-end run is `EndToEndWitness.Run.witness` (**LEAN**, unregistered, item 35).
+
+**Theorem 7.6 (The warrant Normative Inductor; consolidated).**  Let `N` be a process of
+normative states — grounds of typed warrant occurrences, a docket, a settlement, structural
+rows — with survivors the grounded fixed point (not undercut, kept by settlement, citing a
+survivor) and bundle the survivors' specialized rows, the live structural rows and the pins.
+Suppose every date's grounds are *entitled* in an accounted obligation state (each occurrence
+realizes an exposed obligation that the protocol admits, whose account is live, and whose
+anchor its form expresses under a declared relation) and well formed; the deductive process is
+computable and the rowwise enforcer at the calibrated intensity `(ε_n + A_n)/tol_n²` is
+effective; a liability bound holds; and an adapter protocol's service dates are *enforced*
+(the compiler's witness checks into the region) and carry certified exclusion and margins with
+declared adequacy semantics and constants.  Then the augmented deductive market is a Logical
+Inductor; at every enforced date every row of the bundle has excess at most `tol_n` at the
+displayed price and every held substantive row is an entitled survivor's; the gate's
+inadequate mass is at most `κ` times the displayed inadequate excess, itself at most the
+certificates' mass times the tolerance; and the Progress bound holds with `PracticalUptake`
+derived.  `WarrantInductor.warrant_inductor` (**registered** `inductor.warrant-inductor`);
+conformance `WarrantForce.WarrantSchedule.excess_le_tol` (**registered**
+`inductor.conformance`), transport `bracket_at_market` (**registered**
+`inductor.certificate-transport`), the survivor rule `mem_survivors` (**registered**
+`inductor.grounded-survivors`).  Pointwise in the date; conformance is per row, not the
+distance of Theorem 7.2's projection realization (item 125); a withheld date trades nothing
+and keeps its obligations (`WarrantInductor.outcome_obligations`).  Two runs discharge
+computability and liability at a five-sentence fixture with bankroll `−72`: the undercut of an
+applicability (`WarrantInductorWitness.inductor`, **registered** `inductor.witness`; Progress
+`≤ 37/100`) and the rebuttal of a still-active strength with the same decision question before
+and after (`WarrantInductorRebuttal.inductor`, **registered** `inductor.rebuttal-run`): the
+region flips, no certificate for the former guarantee exists afterwards
+(`no_certificate_after`), the kept row would have made the system infeasible
+(`contraposition_blocked`, **registered** `inductor.contraposition-blocked`), and the gate's
+mass on the formerly recommended response goes from at least `24/25` to `0` at the realized
+market (`same_question`).
 
 ## 8. Fixed-era service and affordability (Layer I)
 

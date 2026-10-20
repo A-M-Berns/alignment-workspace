@@ -8,14 +8,20 @@ substrate with the Progress bound are Lean-proved and deliberately *not* registe
 the general one's Logical-Induction hypotheses are not inhabited, and the deductive
 one has no single witness for its joint package. The name is provisional.
 
-**Status, 2026-10-22.** A consolidated theorem on one market is registered
-(`inductor.warrant-inductor`, `WarrantInductor.warrant_inductor`): the rowwise warrant enforcer
-of the compiled normative state on the augmented deductive market is a logical inductor, every
-enforced row conforms at the displayed price within the tolerance, a certificate's multiplier
-mass carries that conformance to the bounds a licence certifies, and a soft-gate adapter on
-certified scores yields `PracticalCert` and the Progress bound with `PracticalUptake` derived.
-Its run (`inductor.witness`) discharges computability and liability. Conformance there is per
-row, not the distance to the region described below (`PRIORITIES.md` item 125).
+**Status, 2026-10-23.** A consolidated conditional theorem on one market is registered
+(`inductor.warrant-inductor`, `WarrantInductor.warrant_inductor`): for a process of normative
+states whose grounds are *entitled* in an accounted obligation state, the rowwise warrant
+enforcer of each date's compiled bundle on the augmented deductive market is a logical
+inductor; at every enforced date every row conforms at the displayed price within the
+tolerance and every held substantive row is an entitled survivor's; a certificate's multiplier
+mass carries that conformance to the bounds a licence or an adapter reads; and a soft-gate
+adapter on certified scores yields `PracticalCert` and the Progress bound with
+`PracticalUptake` derived. Two runs discharge computability and liability: the undercut of an
+applicability (`inductor.witness`) and the rebuttal of a still-active strength, with the same
+decision question posed before and after (`inductor.rebuttal-run`). The page below describes
+the Inductor as an *interface* with two realizations — the projection enforcer, whose
+guarantee is a distance to the region, and the rowwise enforcer, whose guarantee is per row —
+and says which guarantee each theorem proves.
 
 The Normative Inductor is the concrete candidate for a bounded reasoner that realizes
 [normative induction](Normative-Induction): a Logical Inductor made to answer to
@@ -23,14 +29,17 @@ legitimately incurred obligations without ceasing to be a Logical Inductor.
 
 ## The architecture
 
-    NI = MarketMaker( TradingFirm^L + JointProjectionEnforcer[ Compile(O_P) ] )
+    NI = MarketMaker( TradingFirm^L + Enforcer[ Compile(Entitled(O_P)) ] )
          + DecisionAdapter
 
 The ordinary trading firm over the language `L` is the substrate and is left alone.
 One additional trader — the enforcer — is added to the aggregate the market maker
 prices against, with bounded liability. The decision adapter *consumes* the market
 state; it is not another trader and does not feed back into prices. Enforcement is
-additive, which is why every theorem about the underlying inductor survives.
+additive, which is why every theorem about the underlying inductor survives. The
+enforcer is one of two realizations of one interface — the projection enforcer or the
+rowwise warrant enforcer, below — and the compiler receives only the constraints the
+accounted state *entitles*.
 
 **Authority is in what the chooser is scored on, not in beliefs.**  The competence
 layer is the lexical [Continuation BRIA](Continuation-BRIA) auction: a block's realized
@@ -69,18 +78,53 @@ schema, with a sound Farkas conflict certificate); completeness within a declare
 class; convex representability of the obligation language; joint feasibility; and
 affordable enforceability. Only the first is landed.
 
-## Enforcement and the public defect
+## Entitlement, not licence
 
-The enforcer is Euclidean projection of displayed prices onto `K_s`, scaled by a
-prospective multiplier `λ_s`. Euclidean projection is the *implementation*. The
-public interface is the sup-distance and the bare multiplier:
+Which constraints may enter the compiler is a separate authority from which verdicts may be
+announced. A warrant occurrence is **entitled** (`WarrantInductor.Entitlement`) when the
+accounted obligation occurrence it realizes is exposed, admitted by the protocol at the
+boundary's history, still *live* in its account — an obligation already answered or closed
+entitles no standing constraint — and when the occurrence's form expresses that obligation's
+anchored requirement under a declared relation. The protocol's admission predicate and the
+expression relation are typed inputs; the liveness condition is read off the account. A
+**verdict licence** (`NormState.Licensed`) is a certificate supported on the compiled bundle
+together with an authorized record event; the enforcer consumes no licence, and a licence
+introduces no constraint. The consolidated theorem's provenance conclusion joins the two sides
+that matter: every substantive row the enforcer holds is an entitled survivor's.
+
+## The interface: a public defect and certified bounds
+
+What the Progress bound ([Normative induction](Normative-Induction)) consumes from an
+enforcer is implementation-independent: a nonnegative public **defect** `d_s` per service, a
+**certified bound** on each response-relevant functional at the displayed price in terms of
+`d_s` (which the adequate-set route reduces to a coupling of the adapter's inadequate mass to
+`d_s`), the work relation `λ_s d_s² ≤ ρ_s`, and amplification. Two realizations supply it, on
+the same deductive market, and neither is retired.
+
+**The projection realization** (`NormativeInductorComposition`, `ProjectionForce`). The
+enforcer is Euclidean projection of displayed prices onto `K_s`, scaled by a prospective
+multiplier `λ_s`; the defect is the sup-distance and the multiplier is bare,
 
     d_s = dist_∞(b_s, K_s),        a_s = λ_s ,
 
-chosen because they are invariant under enforcement-null coordinate padding, which
-the dimension-normalized alternative was not. The work relation is an inequality,
-`λ_s d_s² ≤ λ_s ‖b_s − proj(b_s)‖² ≤ ρ_s`, so the kernel-checked Euclidean work bound
-controls the public uptake certificate without the two being equal.
+chosen because they are invariant under enforcement-null coordinate padding. The work relation
+is `λ_s d_s² ≤ λ_s ‖b_s − proj(b_s)‖² ≤ ρ_s`, so the kernel-checked Euclidean work bound
+controls the uptake certificate without the two being equal; conformance is a distance
+(`dist2 (market n) (target n) ≤ tol`). It needs a vertex representation of `K_s`.
+
+**The rowwise realization** (`WarrantForce`, `WarrantInductor`). The enforcer holds each row
+of the compiled bundle at the calibrated intensity `(ε_n + A_n)/tol_n²`; its guarantee is per
+row, `excess ≤ tol_n` at the realized market, discharged from the market maker's and the
+aggregate's contracts; **certificate transport** — a certificate's multiplier mass is the
+Lipschitz constant — carries it to any functional with a certificate on the bundle; the defect
+is the displayed inadequate excess `Σ_{q∉A} (score_q − τ)⁺`, bounded by the certificates'
+mass times the tolerance. It needs only the rows and a feasibility witness.
+
+Neither guarantee implies the other without a constant: from rowwise excesses the distance to
+the region is bounded by a Hoffman constant of the row system, not computed here
+(`PRIORITIES.md` item 125); from a distance, a row's excess is bounded by its norm times the
+distance. A reader comparing a projection theorem with a warrant theorem is comparing the two
+realizations' guarantees, not two statements of one.
 
 ## Admissibility is not value
 
@@ -119,6 +163,29 @@ a scheduler's affordability produces.
 Reading either signature says exactly why the realization is conditional: the
 compiler, the scheduler, the practical semantics and the market's computability are
 how a realization *produces* the named hypotheses, and none is produced here.
+
+**The warrant realization, consolidated** (`WarrantInductor.warrant_inductor`; registered
+`inductor.warrant-inductor`). For an externally supplied process of normative states — the
+theorem is pointwise in the date — whose grounds are entitled and well formed, the compiler's
+results and tolerances, a computable deductive process, an effective enforcer and a liability
+bound, and an adapter protocol whose service dates are enforced and carry certified exclusion
+and margins with declared adequacy semantics and constants: the augmented deductive market is
+a logical inductor; at every *enforced* date every row has excess at most the tolerance and
+every held substantive row is an entitled survivor's; the adapter's inadequate mass is at most
+`κ` times the displayed inadequate excess, itself at most the certificates' mass times the
+tolerance; and the Progress bound holds with its uptake derived. A withheld date — rows present,
+no checked witness — trades nothing, keeps its obligations, and carries no conformance claim;
+a dropped service's transport mass moves into the residual. Two claims are kept apart. *The
+warrants constrain the prices*: conformance, from an enforced outcome and the liability bound,
+with Logical Induction preserved. *The warrants produce warranted guidance about the adapter*:
+the adapter conclusion and Progress, which additionally need the declared adequate set, the
+anchored losses and the certificates tying the set to the bundle. Neither says the warrants
+are correct. The two runs (`inductor.witness`, `inductor.rebuttal-run`) exhibit an undercut
+and a rebuttal; in the second the same decision question is posed before and after the
+revision, its region flips, no certificate for the former guarantee exists afterwards, and the
+gate's mass on the formerly recommended response goes from at least `24/25` to `0` at the
+realized market — following the pinned price of the refuted conclusion, not a revised adequacy
+judgment, which the mathematics does not make.
 
 ## The adapter is not the Inductor
 

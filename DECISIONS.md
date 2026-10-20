@@ -268,6 +268,15 @@ commit.
   that was later refuted — taste about what rebuttal settles for whom, which the mathematics
   only prices.
 
+- **Whether a warrant's entitlement ends with its obligation's account.**  The consolidation
+  round's `WarrantInductor.Entitlement` requires the originating obligation's account to carry
+  a live leaf: an obligation already answered or closed entitles no standing constraint
+  (`WarrantInductorWitness.answered_not_entitled`).  The alternative — a warrant incurred by an
+  obligation outlives its discharge until the docket retires it — keeps the constraint in force
+  after the debt is paid.  *Turns on:* what a reason's standing is once the obligation that
+  incurred it is resolved — taste about whether discharge retires the warrant or only the
+  debt, which the account records and the mathematics does not decide.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -6109,3 +6118,49 @@ of nothing the market displays.
 **Workspace repair, contained.**  `PRIORITIES.md` carried two `## Workspace friction`
 headings, the first introduced on 2026-10-21 when items 121–123 were filed under it; the
 duplicate is removed and the items precede the friction section.
+
+### 2026-10-23 — admission is provenance plus entitlement read off the account, verdict licensing is a separate authority, the compile returns a typed outcome that conserves its obligations, the Normative Inductor is one interface with two retained realizations, and the names
+
+**agent-decided, reversible** (the consolidation round,
+`projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/`).
+
+**Entitlement.**  `WarrantInductor.Admission` is split into `Origin` (provenance: the exposed
+obligation occurrence a warrant realizes) and `Entitlement O G Expresses` (the origin exposed,
+admitted by `Protocol.Admitted` at the boundary's history, its account carrying a live leaf,
+and the form expressing the origin's anchor under the declared relation).  The theorem's
+provenance conclusion says every enforced substantive row is an entitled survivor's.  Verdict
+licensing (`Licensed`) is not a prerequisite of enforcement: a licence to select a verdict is
+not authority to introduce a constraint, and the dispatch asked that the two not be conflated.
+*Rejected alternatives:* keeping `Admission` under its name with provenance as its only
+content — a label for an arbitrary origin map; and requiring a verdict licence for every
+enforced row, for which no substantive reason was found.  The liveness condition is queued
+above (*Awaiting the author*).
+
+**The compile outcome.**  `compileAt` takes the compiler's `CompileResult` and its `outcome` is
+`idle`, `enforced` or `withheld` with the result carried; the obligations present are the
+state's bundle in every case (`outcome_obligations`); a withheld date trades nothing; a valid
+conflict certificate refutes the region (`conflict_region_empty`); a dropped service's transport
+mass moves to the residual (`AdapterProtocol.residual_restrict`).  *Rejected alternative:* a
+second conflict theory for warrants — the composition module's `CompileResult` and
+`farkas_sound` are reused as the dispatch asked.
+
+**One interface, two realizations.**  The projection enforcer (distance defect) and the rowwise
+enforcer (per-row tolerance, certificate-mass transport, displayed inadequate excess) are two
+realizations of one interface — a public defect and certified bounds on the response-relevant
+functionals, consumed by `Evaluation.progress_bound` through `PracticalUptake` — and both are
+retained.  *Rejected alternative:* retiring the projection realization; no mathematical reason
+exists (item 125 is the missing constant between the two guarantees).
+
+**Scenario B's reading.**  The gate's reversal at date 9 is reported as following the pinned
+price of the refuted conclusion under the unchanged adequate set, with the adequacy question
+after the refutation left open.  *Rejected alternative:* re-declaring the adequate set at date
+9 to make refraining adequate — the dispatch's "do not force a behavioral reversal by changing
+the declared adequate set".
+
+**Theorem numbering, contained.**  `wiki/Theorem-Spine.md` carried two Theorems 7.3; the odds
+bankroll is 7.4, rebuttal by settlement 7.5, the consolidated theorem 7.6.  No page cited the
+duplicated numbers.
+
+**Names, provisional:** *origin*, *entitlement*, *entitled*, *expresses*, *compile outcome*,
+*idle*, *enforced*, *withheld*, *obligations present*, *served protocol*, *Scenario A*,
+*Scenario B*, *same question*.
