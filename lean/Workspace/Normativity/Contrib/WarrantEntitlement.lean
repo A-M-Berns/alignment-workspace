@@ -1,54 +1,58 @@
 /-
-# Warrant entitlement: the licence chain, the settlement fork, and the record
+# Warrant entitlement: the licence chain, the grounded survivors, the settlement fork, and the record
 
-Round `projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/`.
+Rounds `projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/` (Parts A–C),
+`2026-10-21-rebuttal-and-end-to-end/` (rebuttal by settlement) and
+`2026-10-22-normative-inductor-integration/` (the grounded survivors and the canonical bundle).
 
-Four parts.
+1. **The typed warrant and the survivors.**  A warrant occurrence (`Occurrence`) is a
+   `Form` with an identity, the applicability claim it cites, a source and a defeat set.
+   `settleOutcome` applies the rulings on settlement: a form whose consequent is pinned
+   false is *rebutted*, whose antecedent is pinned false is *vacuous*, a premise on a
+   pinned-false sentence is *retired*.  **The survivors** (`Grounds.survivors`) are the
+   occurrences that are not undercut by the docket, kept by the settlement, and cite a
+   survivor — the least fixed point of `activeStep` (`activeIds_fixed`, `mem_survivors`),
+   antitone in the settlement and in the docket (`survivors_anti`,
+   `survivors_anti_docket`).  Their specialized rows together with the settlement's pins
+   are **the settled bundle** (`Grounds.settledBundle`), whose region is
+   `Grounds.settledRegion`; the licence, the elimination, the enforcer and the record all
+   read it.  `Grounds.region` is the region of every undefeated-port row regardless of
+   settlement outcome, the comparison object of the countermodels
+   (`Fixture.orphan_region_nonempty`, `Fixture2.old_rule_empty`, `EndToEndWitness.Run.old_rule_pins`).
 
-0. **The seed statics, ported.**  The declarations this round consumes from the unmerged
-   branch `round/2026-09-16-seed-statics` (`SeedStatics.lean`), against current `main`:
-   `Settlement`, `specialize`, the three leverage `Form`s and `Form.row`, `SubItem`,
-   `StrItem`, `Seed`, `DocketState`, the forced bundle and region
-   (`forcedBundle`, `forcedRegion`, `forcedRegion_iff`), monotonicity under settlement and
-   its failure under defeat (`forcedRegion_anti`, `defeat_widens`), forced intervals
-   (`IsForcedInterval`), and bound certificates (`BoundCert`, `lowerCert_bound`,
-   `upperCert_bound`).  Nothing from the branch's elimination, confinement,
-   seed-independence or stabilization sections is ported.
+2. **The licence chain (Part A).**  A verdict is a value for a coordinate.  `Admissible`:
+   the settled region contains a point with that value.  `Supported`: a `VerdictCert` — two
+   `BoundCert`s whose positive-multiplier rows are cited **by occurrence** into the settled
+   bundle, plus the two attained endpoints — brackets the verdict.  `Licensed`: `Supported`
+   on the record's grounds, and the issuing event is one the record authorizes.
+   `licensed_supported`, `supported_admissible` (through rational convexity of
+   `Bundle.Region`, `region_convex`).  The two converses fail:
+   `Countermodel.admissible_not_supported` (a stale citation after defeat of one of two
+   duplicating occurrences; the region is unchanged) and
+   `Countermodel.supported_not_licensed` (an unauthorized selection inside a forced
+   interval of positive width, an instance of `GateIsLegitimacy.tiebreak_transparency`:
+   `Countermodel.selection_not_transparent`).
 
-1. **The licence chain (Part A).**  A warrant occurrence (`Occurrence`) is a `Form` with an
-   identity, the applicability claim it cites, a source and a defeat set.  A verdict is a
-   value for a coordinate.  `Admissible`: the forced region of the live grounds contains a
-   point with that value.  `Supported`: a `VerdictCert` — two `BoundCert`s whose
-   positive-multiplier rows are cited **by occurrence** into the live bundle, plus the two
-   attained endpoints — brackets the verdict.  `Licensed`: `Supported` on the record's
-   grounds, and the issuing event is one the record authorizes.  `licensed_supported`,
-   `supported_admissible` (through rational convexity of `Bundle.Region`,
-   `region_convex`).  The two converses fail: `Countermodel.admissible_not_supported`
-   (a stale citation after defeat of one of two duplicating occurrences; the region is
-   unchanged) and `Countermodel.supported_not_licensed` (an unauthorized selection
-   inside a forced interval of positive width, an instance of
-   `GateIsLegitimacy.tiebreak_transparency`: `Countermodel.selection_not_transparent`).
-
-2. **The settlement fork (Part B).**  The enforcer is the force layer's compiled position
+3. **The settlement fork (Part B).**  The enforcer is the force layer's compiled position
    on a date-indexed presentation (`warrantEnforcer`).  **The odds bankroll**
    (`netWorth_ge_neg_odds`): if at date `n` some live world clears every enforced row of
    every date `t ≤ n` with a surplus dominating every live world's deficit on that row by
    the factor `ρ`, then the enforcer's assessed net worth at every live world is at least
    `−3ρ` — the market maker's constant `1` plus the trading firm's floor `2`, times the
-   odds.  Intensity, tolerance and the number of dates do not appear.  Composed with the
-   conditional Normative Inductor theorem as `warrant_normative_inductor`, whose
-   `liability` hypothesis is discharged by the construction.  The fixture `Fixture`:
-   four sentences `X, X∧A, X∧A∧Y, Y`, one warrant with strengths `c_P, c_A, c_S ∈ (0,1)`,
-   `X` settled at `n₁`, the applicability port defeated at `n₀`, `Y` settled by a declared
-   evaluation at `n_E`; the bankroll is `3·max_j c_j/(1−c_j)` under every settlement
-   semantics (`Fixture.liability`, `Fixture.liability_disagree`), and after the defeat
-   of the applicability port a refutation of `Y` leaves a **nonempty region with no
-   slack world** (`Fixture.orphan_region_nonempty`, `Fixture.orphan_no_slack`), the
-   obstruction the round's `src/` exhibits a trader against.
+   odds.  Across one reopening, `−3ρ(2 + ρ)` (`netWorth_ge_neg_odds_reopened`).  Composed
+   with the conditional Normative Inductor theorem as `warrant_normative_inductor`.  The
+   fixture `Fixture`: four sentences `X, X∧A, X∧A∧Y, Y`, one warrant with strengths
+   `c_P, c_A, c_S ∈ (0,1)`, `X` settled at `n₁`, the applicability port defeated at `n₀`,
+   `Y` settled by a declared evaluation at `n_E`.  Under `Grounds.region` the refutation
+   leaves an orphan pin in a nonempty region with no slack world
+   (`Fixture.orphan_region_nonempty`, `Fixture.orphan_no_slack`); under the survivors the
+   strength row leaves with the applicability it cites (`Fixture.survivors_eq`) and the
+   bankroll holds across the rebuttal (`Fixture.liability_rebutted`).
 
-3. **The record (Part C).**  `MarketRun`, `Record`, `trace`.  Prices are not in the
-   record; the enforcer's position is.  `trace_not_injOn` and `trace_not_const` on the
-   fixture, and `Licensed` is decidable from the record (`instance : Decidable`).
+4. **The record (Part C).**  `MarketRun`, `Record`, `trace`.  Prices are not in the
+   record; the enforcer's position on the settled bundle is.  `trace_not_injOn` and
+   `trace_not_const` on the fixture, and `Licensed` is decidable from the record
+   (`instance : Decidable`).
 
 Every structure has a nonvacuity witness in `Witness`.  Names are provisional
 (`AGENTS.md` standard 6).
@@ -127,8 +131,9 @@ inductive Source where
   deriving DecidableEq
 
 /-- **A warrant occurrence** (A1): a leverage form with an identity, the applicability
-claim it cites, its source, and its defeat set — the occurrences which, if live, undercut
-it.  Its docket port is its identity. -/
+claim it cites, its source, and its defeat set — the ports whose defeat on the docket also
+undercuts it, so that one warrant's forms share one defeat condition.  Its own docket port
+is its identity. -/
 structure Occurrence (d : ℕ) where
   id : ℕ
   form : Form d
@@ -198,10 +203,473 @@ theorem Grounds.mem_bundle_iff (G : Grounds d) (st : DocketState) (F : Settlemen
     · exact Or.inl ⟨o.toSub, ⟨⟨o, ho, rfl⟩, hport⟩, rfl⟩
     · exact Or.inr ⟨i, r, hr, rfl⟩
 
-/-- **Admissible** (P1): the region compiled from the grounds contains the verdict — some
+/-! ## Part A — revision: settlement outcomes and the grounded survivors
+
+The rulings M1–M3 of `prompts/2026-10-21-rebuttal-and-end-to-end/PROMPT.md` as a function on
+the typed occurrence: a form whose consequent coordinate is pinned false is **rebutted**,
+whose antecedent coordinate is pinned false is **vacuous**, a premise whose sentence is
+pinned false is **retired**; in every case the row leaves.  The occurrences that stay are
+the **survivors**: not undercut by the docket, kept by the settlement, and citing a
+survivor — the grounded rule.  The settled region is the region of the survivors'
+specialized rows; monotonicity under settlement is restated for it. -/
+
+section Rebuttal
+
+/-- The outcome of settling a form. -/
+inductive Outcome where
+  | kept
+  | rebutted
+  | vacuous
+  | retired
+  deriving DecidableEq
+
+/-- The settlement pins coordinate `i` false. -/
+def pinsFalse (F : Settlement d) (i : Fin d) : Bool := F.val i == some false
+
+lemma pinsFalse_iff (F : Settlement d) (i : Fin d) : pinsFalse F i = true ↔ F.val i = some false := by
+  simp [pinsFalse]
+
+/-- **`settleOutcome`** (M1, M2): vacuity is checked before rebuttal — a form that never
+applied is not rebutted. -/
+def settleOutcome (F : Settlement d) : Form d → Outcome
+  | .premise X _ => if pinsFalse F X then .retired else .kept
+  | .applicability X XA _ =>
+      if pinsFalse F X then .vacuous else if pinsFalse F XA then .rebutted else .kept
+  | .strength XA XAY _ =>
+      if pinsFalse F XA then .vacuous else if pinsFalse F XAY then .rebutted else .kept
+
+/-- **`settleForm`** (P1): the rows an occurrence contributes under a settlement — its
+specialized row when kept, nothing otherwise. -/
+def settleForm (F : Settlement d) (o : Occurrence d) : Option (List (Row d)) :=
+  if settleOutcome F o.form = .kept then some [specialize F o.form.row] else none
+
+/-- The degenerate shapes: a premise on a false sentence, or a conditional form with a
+false antecedent or a false consequent. -/
+def Degenerate (F : Settlement d) : Form d → Prop
+  | .premise X _ => pinsFalse F X = true
+  | .applicability X XA _ => pinsFalse F X = true ∨ pinsFalse F XA = true
+  | .strength XA XAY _ => pinsFalse F XA = true ∨ pinsFalse F XAY = true
+
+instance (F : Settlement d) (f : Form d) : Decidable (Degenerate F f) := by
+  cases f <;> unfold Degenerate <;> infer_instance
+
+lemma settleOutcome_eq_kept_iff (F : Settlement d) (f : Form d) :
+    settleOutcome F f = .kept ↔ ¬ Degenerate F f := by
+  cases f <;> simp [settleOutcome, Degenerate] <;> split_ifs <;> simp_all
+
+/-- **`settleForm` keeps exactly the specialized rows of non-degenerate forms** (P1). -/
+theorem settleForm_eq_some_iff (F : Settlement d) (o : Occurrence d) (rows : List (Row d)) :
+    settleForm F o = some rows ↔ rows = [specialize F o.form.row] ∧ ¬ Degenerate F o.form := by
+  unfold settleForm
+  rw [← settleOutcome_eq_kept_iff]
+  split_ifs with h <;> simp [h, eq_comm]
+
+theorem settleForm_eq_none_iff (F : Settlement d) (o : Occurrence d) :
+    settleForm F o = none ↔ Degenerate F o.form := by
+  unfold settleForm
+  by_cases h : settleOutcome F o.form = .kept
+  · simp [h, (settleOutcome_eq_kept_iff F o.form).1 h]
+  · simp only [h, if_false, true_iff]
+    by_contra hd
+    exact h ((settleOutcome_eq_kept_iff F o.form).2 hd)
+
+/-- **M3, no discount.**  A kept form's row is the specialization of the form with its own
+strength; `settleForm` never rewrites a strength. -/
+theorem settleForm_strength (F : Settlement d) (o : Occurrence d) (rows : List (Row d))
+    (h : settleForm F o = some rows) : rows = [specialize F o.form.row] :=
+  ((settleForm_eq_some_iff F o rows).1 h).1
+
+/-- **The contraposing shape.**  A strength row whose consequent is pinned false forces the
+antecedent to zero at every pinned point: the row says "¬Y, so not X∧A". -/
+theorem strength_contraposes (F : Settlement d) (XA XAY : Fin d) (c : ℚ) (hc : 0 < c)
+    (hpin : F.val XAY = some false) (x : Fin d → ℚ) (hx : F.Pinned x)
+    (hsat : (specialize F (Form.strength XA XAY c).row).Sat x) : x XA ≤ 0 := by
+  rw [specialize_sat_iff F _ hx, Form.strength_sat_iff] at hsat
+  have h0 : x XAY = 0 := by simpa [truth] using hx XAY false hpin
+  rw [h0] at hsat
+  nlinarith
+
+/-- The same for an applicability row whose consequent is pinned false. -/
+theorem applicability_contraposes (F : Settlement d) (X XA : Fin d) (c : ℚ) (hc : 0 < c)
+    (hpin : F.val XA = some false) (x : Fin d → ℚ) (hx : F.Pinned x)
+    (hsat : (specialize F (Form.applicability X XA c).row).Sat x) : x X ≤ 0 := by
+  rw [specialize_sat_iff F _ hx, Form.applicability_sat_iff] at hsat
+  have h0 : x XA = 0 := by simpa [truth] using hx XA false hpin
+  rw [h0] at hsat
+  nlinarith
+
+/-- **Rebuttal removes exactly the contraposing rows**: a strength form is rebutted (and
+not vacuous) iff its consequent is pinned false while its antecedent is not. -/
+theorem settleOutcome_rebutted_iff (F : Settlement d) (XA XAY : Fin d) (c : ℚ) :
+    settleOutcome F (.strength XA XAY c) = .rebutted ↔
+      F.val XAY = some false ∧ ¬ F.val XA = some false := by
+  simp only [settleOutcome]
+  have h1 := pinsFalse_iff F XA
+  have h2 := pinsFalse_iff F XAY
+  split_ifs with ha hb <;> simp_all
+
+/-! ### The survivors: the grounded rule
+
+An occurrence is **active** when the docket does not undercut it — neither its own port nor
+a port of its defeat set is defeated — its form is kept by `settleOutcome`, and the
+applicability occurrence it cites is itself active.  The active identities are the least
+fixed point of the step operator `activeStep`, reached from `∅` in `G.length` steps
+(`activeIds_fixed`).  Retirement, vacuity, rebuttal and undercut propagate along citation
+chains of every length with no closure requirement on the settlement; an occurrence whose
+citation resolves to nothing, or whose citations run in a cycle, is inactive. -/
+
+/-- The docket **undercuts** `o`: its own port, or a port of its defeat set, is defeated. -/
+def undercut (st : DocketState) (o : Occurrence d) : Prop :=
+  o.id ∈ st.defeated ∨ ∃ j ∈ o.defeaters, j ∈ st.defeated
+
+instance (st : DocketState) (o : Occurrence d) : Decidable (undercut st o) := by
+  unfold undercut; infer_instance
+
+/-- The applicability claim `a` is grounded in the identity set `S`. -/
+def citesIn (S : Finset ℕ) : Applicability d → Prop
+  | .occurrence j => j ∈ S
+  | .settled _ => True
+  | .none => True
+
+instance (S : Finset ℕ) (a : Applicability d) : Decidable (citesIn S a) := by
+  cases a <;> unfold citesIn <;> infer_instance
+
+lemma citesIn_iff (S : Finset ℕ) (a : Applicability d) :
+    citesIn S a ↔ ∀ j, a = .occurrence j → j ∈ S := by
+  cases a <;> simp [citesIn]
+
+lemma citesIn_mono {S S' : Finset ℕ} (h : S ⊆ S') {a : Applicability d} (ha : citesIn S a) :
+    citesIn S' a := by
+  cases a <;> simp only [citesIn] at ha ⊢
+  exact h ha
+
+/-- `o` is **live given** the identity set `S`: not undercut, kept, and citing into `S`. -/
+def liveGiven (st : DocketState) (F : Settlement d) (S : Finset ℕ) (o : Occurrence d) : Prop :=
+  ¬ undercut st o ∧ settleOutcome F o.form = .kept ∧ citesIn S o.cites
+
+instance (st : DocketState) (F : Settlement d) (S : Finset ℕ) (o : Occurrence d) :
+    Decidable (liveGiven st F S o) := by
+  unfold liveGiven; infer_instance
+
+lemma liveGiven_mono {st : DocketState} {F : Settlement d} {S S' : Finset ℕ} (h : S ⊆ S')
+    {o : Occurrence d} (ho : liveGiven st F S o) : liveGiven st F S' o :=
+  ⟨ho.1, ho.2.1, citesIn_mono h ho.2.2⟩
+
+/-- One step of the grounded operator: the identities of the occurrences live given `S`. -/
+def activeStep (G : Grounds d) (st : DocketState) (F : Settlement d) (S : Finset ℕ) : Finset ℕ :=
+  ((G.filter fun o => liveGiven st F S o).map Occurrence.id).toFinset
+
+/-- **The active identities**: the least fixed point of `activeStep`, reached in `G.length`
+steps from `∅`. -/
+def Grounds.activeIds (G : Grounds d) (st : DocketState) (F : Settlement d) : Finset ℕ :=
+  (activeStep G st F)^[G.length] ∅
+
+/-- **The survivors**: the occurrences live given the active identities. -/
+def Grounds.survivors (G : Grounds d) (st : DocketState) (F : Settlement d) : Grounds d :=
+  G.filter fun o => liveGiven st F (G.activeIds st F) o
+
+section Grounded
+
+variable (G : Grounds d) (st : DocketState) (F : Settlement d)
+
+lemma mem_activeStep {S : Finset ℕ} {j : ℕ} :
+    j ∈ activeStep G st F S ↔ ∃ o ∈ G, liveGiven st F S o ∧ o.id = j := by
+  simp [activeStep, List.mem_filter, and_assoc]
+
+lemma activeStep_mono {S S' : Finset ℕ} (h : S ⊆ S') :
+    activeStep G st F S ⊆ activeStep G st F S' := by
+  intro j hj
+  rw [mem_activeStep] at hj ⊢
+  obtain ⟨o, ho, hl, rfl⟩ := hj
+  exact ⟨o, ho, liveGiven_mono h hl, rfl⟩
+
+lemma activeStep_subset (S : Finset ℕ) :
+    activeStep G st F S ⊆ (G.map Occurrence.id).toFinset := by
+  intro j hj
+  rw [mem_activeStep] at hj
+  obtain ⟨o, ho, -, rfl⟩ := hj
+  simp only [List.mem_toFinset, List.mem_map]
+  exact ⟨o, ho, rfl⟩
+
+lemma iter_chain : ∀ k, (activeStep G st F)^[k] ∅ ⊆ (activeStep G st F)^[k + 1] ∅
+  | 0 => Finset.empty_subset _
+  | k + 1 => by
+      rw [Function.iterate_succ_apply', Function.iterate_succ_apply']
+      exact activeStep_mono G st F (iter_chain k)
+
+lemma iter_fixed_of_eq {k : ℕ}
+    (h : (activeStep G st F)^[k + 1] ∅ = (activeStep G st F)^[k] ∅) :
+    ∀ i, (activeStep G st F)^[k + i] ∅ = (activeStep G st F)^[k] ∅ := by
+  intro i
+  induction i with
+  | zero => rfl
+  | succ i ih =>
+      show (activeStep G st F)^[(k + i) + 1] ∅ = _
+      rw [Function.iterate_succ_apply', ih]
+      exact (Function.iterate_succ_apply' _ _ _).symm.trans h
+
+lemma card_iter : ∀ k, (∀ i < k, (activeStep G st F)^[i + 1] ∅ ≠ (activeStep G st F)^[i] ∅) →
+    k ≤ ((activeStep G st F)^[k] ∅).card
+  | 0, _ => Nat.zero_le _
+  | k + 1, h => by
+      have ih := card_iter k fun i hi => h i (Nat.lt_succ_of_lt hi)
+      have hne := h k (Nat.lt_succ_self k)
+      have hlt : ((activeStep G st F)^[k] ∅).card < ((activeStep G st F)^[k + 1] ∅).card :=
+        Finset.card_lt_card
+          (Finset.ssubset_iff_subset_ne.2 ⟨iter_chain G st F k, fun e => hne e.symm⟩)
+      omega
+
+/-- **The active identities are a fixed point of the step.** -/
+theorem activeIds_fixed : activeStep G st F (G.activeIds st F) = G.activeIds st F := by
+  unfold Grounds.activeIds
+  rw [show activeStep G st F ((activeStep G st F)^[G.length] ∅) =
+      (activeStep G st F)^[G.length + 1] ∅ from (Function.iterate_succ_apply' _ _ _).symm]
+  by_cases h : ∃ i < G.length, (activeStep G st F)^[i + 1] ∅ = (activeStep G st F)^[i] ∅
+  · obtain ⟨i, hi, he⟩ := h
+    have h1 := iter_fixed_of_eq G st F he (G.length - i)
+    have h2 := iter_fixed_of_eq G st F he (G.length + 1 - i)
+    rw [show i + (G.length - i) = G.length by omega] at h1
+    rw [show i + (G.length + 1 - i) = G.length + 1 by omega] at h2
+    rw [h1, h2]
+  · push Not at h
+    have hcard := card_iter G st F G.length h
+    refine (Finset.eq_of_subset_of_card_le (iter_chain G st F G.length) ?_).symm
+    calc ((activeStep G st F)^[G.length + 1] ∅).card
+        ≤ (G.map Occurrence.id).toFinset.card := by
+          rw [Function.iterate_succ_apply']
+          exact Finset.card_le_card (activeStep_subset G st F _)
+      _ ≤ G.length := by
+          refine (List.toFinset_card_le _).trans ?_
+          rw [List.length_map]
+      _ ≤ _ := hcard
+
+theorem mem_activeIds {j : ℕ} :
+    j ∈ G.activeIds st F ↔ ∃ o ∈ G.survivors st F, o.id = j := by
+  conv_lhs => rw [← activeIds_fixed G st F]
+  rw [mem_activeStep]
+  simp [Grounds.survivors, List.mem_filter, and_assoc]
+
+/-- **Membership in the survivors**: in the grounds, not undercut, kept, and citing a
+survivor. -/
+theorem mem_survivors {o : Occurrence d} :
+    o ∈ G.survivors st F ↔
+      o ∈ G ∧ ¬ undercut st o ∧ settleOutcome F o.form = .kept ∧
+        ∀ j, o.cites = .occurrence j → ∃ o' ∈ G.survivors st F, o'.id = j := by
+  constructor
+  · intro h
+    have h' := h
+    simp only [Grounds.survivors, List.mem_filter, decide_eq_true_eq, liveGiven,
+      citesIn_iff] at h'
+    obtain ⟨hG, hu, hk, hc⟩ := h'
+    exact ⟨hG, hu, hk, fun j hj => (mem_activeIds G st F).1 (hc j hj)⟩
+  · rintro ⟨hG, hu, hk, hc⟩
+    simp only [Grounds.survivors, List.mem_filter, decide_eq_true_eq, liveGiven, citesIn_iff]
+    exact ⟨hG, hu, hk, fun j hj => (mem_activeIds G st F).2 (hc j hj)⟩
+
+lemma survivors_subset {o : Occurrence d} (ho : o ∈ G.survivors st F) : o ∈ G :=
+  ((mem_survivors G st F).1 ho).1
+
+lemma survivors_not_defeated {o : Occurrence d} (ho : o ∈ G.survivors st F) :
+    o.id ∉ st.defeated :=
+  fun h => ((mem_survivors G st F).1 ho).2.1 (Or.inl h)
+
+lemma survivors_kept {o : Occurrence d} (ho : o ∈ G.survivors st F) :
+    settleOutcome F o.form = .kept :=
+  ((mem_survivors G st F).1 ho).2.2.1
+
+/-- Unfolding the iterate at a known length, for computing the active identities of a
+concrete list of grounds. -/
+lemma activeIds_of_length (k : ℕ) (hk : G.length = k) :
+    G.activeIds st F = (activeStep G st F)^[k] ∅ := by
+  rw [Grounds.activeIds, hk]
+
+end Grounded
+
+lemma iterate_two {α : Type*} (f : α → α) (x : α) : f^[2] x = f (f x) := rfl
+lemma iterate_three {α : Type*} (f : α → α) (x : α) : f^[3] x = f (f (f x)) := rfl
+lemma iterate_four {α : Type*} (f : α → α) (x : α) : f^[4] x = f (f (f (f x))) := rfl
+
+/-- The settled bundle: the survivors' specialized rows, cited by occurrence, and the pins. -/
+def Grounds.settledBundle (G : Grounds d) (st : DocketState) (F : Settlement d) :
+    Bundle (Cite d) d :=
+  ((G.survivors st F).map fun o => ⟨Cite.sub o.id, specialize F o.form.row⟩) ++ pinCited F
+
+/-- **The settled region**: the region the surviving rows force. -/
+def Grounds.settledRegion (G : Grounds d) (st : DocketState) (F : Settlement d)
+    (x : Fin d → ℚ) : Prop :=
+  (G.settledBundle st F).Region x
+
+instance (G : Grounds d) (st : DocketState) (F : Settlement d) (x : Fin d → ℚ) :
+    Decidable (G.settledRegion st F x) := by unfold Grounds.settledRegion; infer_instance
+
+/-- The region of an explicit occurrence list under a settlement, on the unspecialized rows. -/
+def regionOn (L : Grounds d) (F : Settlement d) (x : Fin d → ℚ) : Prop :=
+  InCube x ∧ F.Pinned x ∧ ∀ o ∈ L, o.form.row.Sat x
+
+/-- **The settled region, by occurrence.** -/
+theorem Grounds.settledRegion_iff (G : Grounds d) (st : DocketState) (F : Settlement d)
+    (x : Fin d → ℚ) :
+    G.settledRegion st F x ↔ regionOn (G.survivors st F) F x := by
+  unfold Grounds.settledRegion Grounds.settledBundle Bundle.Region regionOn
+  simp only [List.mem_append, List.mem_map]
+  constructor
+  · rintro ⟨hc, hrows⟩
+    have hpin : F.Pinned x := (pinCited_sat_iff F x).1 fun c hc => hrows c (Or.inr hc)
+    refine ⟨hc, hpin, fun o ho => ?_⟩
+    exact (specialize_sat_iff F _ hpin).1 (hrows _ (Or.inl ⟨o, ho, rfl⟩))
+  · rintro ⟨hc, hpin, h⟩
+    refine ⟨hc, ?_⟩
+    rintro c (⟨o, ho, rfl⟩ | hc')
+    · exact (specialize_sat_iff F _ hpin).2 (h o ho)
+    · exact (pinCited_sat_iff F x).2 hpin c hc'
+
+/-- **Membership in the settled bundle**: a survivor's specialized row under its citation,
+or a pin row under its coordinate. -/
+theorem mem_settledBundle_iff (G : Grounds d) (st : DocketState) (F : Settlement d)
+    (c : CitedRow (Cite d) d) :
+    c ∈ G.settledBundle st F ↔
+      (∃ o ∈ G.survivors st F, c = ⟨Cite.sub o.id, specialize F o.form.row⟩) ∨
+      (∃ i, ∃ r ∈ F.pinRowsAt i, c = ⟨Cite.settled i, r⟩) := by
+  unfold Grounds.settledBundle
+  simp only [List.mem_append, List.mem_map, pinCited, List.mem_flatMap, List.mem_finRange,
+    true_and]
+  constructor
+  · rintro (⟨o, ho, rfl⟩ | ⟨i, r, hr, rfl⟩)
+    · exact Or.inl ⟨o, ho, rfl⟩
+    · exact Or.inr ⟨i, r, hr, rfl⟩
+  · rintro (⟨o, ho, rfl⟩ | ⟨i, r, hr, rfl⟩)
+    · exact Or.inl ⟨o, ho, rfl⟩
+    · exact Or.inr ⟨i, r, hr, rfl⟩
+
+/-- **The settled region contains the port-only region**: the survivors are among the
+undefeated-port occurrences. -/
+theorem region_subset_settledRegion (G : Grounds d) (st : DocketState) (F : Settlement d)
+    (x : Fin d → ℚ) (hx : G.region st F x) : G.settledRegion st F x := by
+  rw [Grounds.region_iff] at hx
+  rw [Grounds.settledRegion_iff]
+  obtain ⟨hc, hp, h⟩ := hx
+  exact ⟨hc, hp, fun o ho => h o (survivors_subset G st F ho) (survivors_not_defeated G st F ho)⟩
+
+/-! ### Monotonicity restated (A4) -/
+
+lemma pinsFalse_mono {F F' : Settlement d} (h : F.le F') {i : Fin d}
+    (hi : pinsFalse F i = true) : pinsFalse F' i = true := by
+  rw [pinsFalse_iff] at hi ⊢
+  exact h i false hi
+
+/-- A kept form stays kept backwards: what is kept under more settlement was kept under less. -/
+lemma kept_of_le {F F' : Settlement d} (h : F.le F') {f : Form d}
+    (hk : settleOutcome F' f = .kept) : settleOutcome F f = .kept := by
+  rw [settleOutcome_eq_kept_iff] at hk ⊢
+  intro hd
+  apply hk
+  cases f <;> simp only [Degenerate] at hd ⊢
+  · exact pinsFalse_mono h hd
+  · rcases hd with hd | hd
+    · exact Or.inl (pinsFalse_mono h hd)
+    · exact Or.inr (pinsFalse_mono h hd)
+  · rcases hd with hd | hd
+    · exact Or.inl (pinsFalse_mono h hd)
+    · exact Or.inr (pinsFalse_mono h hd)
+
+lemma activeStep_anti_settlement (G : Grounds d) (st : DocketState) {F F' : Settlement d}
+    (h : F.le F') {S S' : Finset ℕ} (hS : S' ⊆ S) :
+    activeStep G st F' S' ⊆ activeStep G st F S := by
+  intro j hj
+  rw [mem_activeStep] at hj ⊢
+  obtain ⟨o, ho, ⟨hu, hk, hc⟩, rfl⟩ := hj
+  exact ⟨o, ho, ⟨hu, kept_of_le h hk, citesIn_mono hS hc⟩, rfl⟩
+
+lemma activeIds_anti_settlement (G : Grounds d) (st : DocketState) {F F' : Settlement d}
+    (h : F.le F') : G.activeIds st F' ⊆ G.activeIds st F := by
+  unfold Grounds.activeIds
+  generalize G.length = k
+  induction k with
+  | zero => exact Finset.Subset.refl _
+  | succ k ih =>
+      rw [Function.iterate_succ_apply', Function.iterate_succ_apply']
+      exact activeStep_anti_settlement G st h ih
+
+/-- **Survivors only leave under more settlement.** -/
+theorem survivors_anti (G : Grounds d) (st : DocketState) {F F' : Settlement d} (h : F.le F')
+    {o : Occurrence d} (ho : o ∈ G.survivors st F') : o ∈ G.survivors st F := by
+  simp only [Grounds.survivors, List.mem_filter, decide_eq_true_eq, liveGiven] at ho ⊢
+  obtain ⟨hG, hu, hk, hc⟩ := ho
+  exact ⟨hG, hu, kept_of_le h hk, citesIn_mono (activeIds_anti_settlement G st h) hc⟩
+
+lemma undercut_mono {st st' : DocketState} (h : st.defeated ⊆ st'.defeated) {o : Occurrence d}
+    (hu : undercut st o) : undercut st' o := by
+  rcases hu with hu | ⟨j, hj, hd⟩
+  · exact Or.inl (h hu)
+  · exact Or.inr ⟨j, hj, h hd⟩
+
+lemma activeStep_anti_docket (G : Grounds d) (F : Settlement d) {st st' : DocketState}
+    (h : st.defeated ⊆ st'.defeated) {S S' : Finset ℕ} (hS : S' ⊆ S) :
+    activeStep G st' F S' ⊆ activeStep G st F S := by
+  intro j hj
+  rw [mem_activeStep] at hj ⊢
+  obtain ⟨o, ho, ⟨hu, hk, hc⟩, rfl⟩ := hj
+  exact ⟨o, ho, ⟨fun hu' => hu (undercut_mono h hu'), hk, citesIn_mono hS hc⟩, rfl⟩
+
+lemma activeIds_anti_docket (G : Grounds d) (F : Settlement d) {st st' : DocketState}
+    (h : st.defeated ⊆ st'.defeated) : G.activeIds st' F ⊆ G.activeIds st F := by
+  unfold Grounds.activeIds
+  generalize G.length = k
+  induction k with
+  | zero => exact Finset.Subset.refl _
+  | succ k ih =>
+      rw [Function.iterate_succ_apply', Function.iterate_succ_apply']
+      exact activeStep_anti_docket G F h ih
+
+/-- **Survivors only leave under more defeat.** -/
+theorem survivors_anti_docket (G : Grounds d) (F : Settlement d) {st st' : DocketState}
+    (h : st.defeated ⊆ st'.defeated) {o : Occurrence d} (ho : o ∈ G.survivors st' F) :
+    o ∈ G.survivors st F := by
+  simp only [Grounds.survivors, List.mem_filter, decide_eq_true_eq, liveGiven] at ho ⊢
+  obtain ⟨hG, hu, hk, hc⟩ := ho
+  exact ⟨hG, fun hu' => hu (undercut_mono h hu'), hk,
+    citesIn_mono (activeIds_anti_docket G F h) hc⟩
+
+/-- **A4(a): no reopening, nested as before.**  When the survivors are unchanged by a
+settlement step, the settled region shrinks. -/
+theorem settledRegion_anti_of_survivors_eq (G : Grounds d) (st : DocketState)
+    {F F' : Settlement d} (h : F.le F') (hs : G.survivors st F' = G.survivors st F)
+    {x : Fin d → ℚ} (hx : G.settledRegion st F' x) : G.settledRegion st F x := by
+  rw [Grounds.settledRegion_iff] at hx ⊢
+  obtain ⟨hc, hp, hr⟩ := hx
+  exact ⟨hc, hp.mono h, by rw [← hs]; exact hr⟩
+
+/-- **A4(b): a reopening step is bounded by the kept rows' pre-step region.**  The settled
+region after the step, and the settled region before it, both lie inside the region the
+*surviving* rows forced at the pre-step settlement. -/
+theorem settledRegion_subset_kept (G : Grounds d) (st : DocketState) {F F' : Settlement d}
+    (h : F.le F') (x : Fin d → ℚ) :
+    (G.settledRegion st F' x → regionOn (G.survivors st F') F x) ∧
+    (G.settledRegion st F x → regionOn (G.survivors st F') F x) := by
+  constructor
+  · intro hx
+    rw [Grounds.settledRegion_iff] at hx
+    exact ⟨hx.1, hx.2.1.mono h, hx.2.2⟩
+  · intro hx
+    rw [Grounds.settledRegion_iff] at hx
+    exact ⟨hx.1, hx.2.1, fun o ho => hx.2.2 o (survivors_anti G st h ho)⟩
+
+/-- **The exact widening bound.**  Any bounds valid on the kept rows' pre-step region are
+valid on the settled region before and after the step: the interval can widen by at most
+what the removed rows had been forcing. -/
+theorem reopening_bound (G : Grounds d) (st : DocketState) {F F' : Settlement d} (h : F.le F')
+    (φ : Fin d) (lo hi : ℚ)
+    (hK : ∀ x, regionOn (G.survivors st F') F x → lo ≤ x φ ∧ x φ ≤ hi) :
+    (∀ x, G.settledRegion st F' x → lo ≤ x φ ∧ x φ ≤ hi) ∧
+    (∀ x, G.settledRegion st F x → lo ≤ x φ ∧ x φ ≤ hi) :=
+  ⟨fun x hx => hK x ((settledRegion_subset_kept G st h x).1 hx),
+    fun x hx => hK x ((settledRegion_subset_kept G st h x).2 hx)⟩
+
+end Rebuttal
+/-- **Admissible** (P1): the settled region of the grounds contains the verdict — some
 region point gives `φ` the value `v`. -/
 def Admissible (G : Grounds d) (st : DocketState) (F : Settlement d) (φ : Fin d) (v : ℚ) :
-    Prop := ∃ x, G.region st F x ∧ x φ = v
+    Prop := ∃ x, G.settledRegion st F x ∧ x φ = v
 
 /-- **A verdict certificate**: a lower and an upper bound certificate, each row cited by
 occurrence (or a pin, or a cube face), and the two endpoints with the region points that
@@ -244,7 +712,7 @@ theorem RowAdmitted.allowed {Q : Type*} {B : Bundle Q d} {q : Q} {r : Row d}
   · exact Or.inr (Or.inl h)
   · exact Or.inr (Or.inr h)
 
-/-- **Every positively weighted row names a live occurrence** (or a pin or a face). -/
+/-- **Every positively weighted row names a survivor** (or a pin or a face). -/
 def CitesLive (c : VerdictCert d m m' φ) (B : Bundle (Cite d) d) : Prop :=
   (∀ i, 0 < c.lo.mult i → RowAdmitted B (c.loCite i) (c.lo.row i)) ∧
   (∀ i, 0 < c.hi.mult i → RowAdmitted B (c.hiCite i) (c.hi.row i))
@@ -254,14 +722,15 @@ instance (c : VerdictCert d m m' φ) (B : Bundle (Cite d) d) : Decidable (c.Cite
 
 end VerdictCert
 
-/-- **Supported** (P1): the certificate's positively weighted rows are cited into the live
-bundle, its endpoints bracket the verdict, and both endpoints are attained in the region. -/
+/-- **Supported** (P1): the certificate's positively weighted rows are cited into the settled
+bundle — a survivor's row under that occurrence's citation, a pin, or a cube face — its
+endpoints bracket the verdict, and both endpoints are attained in the settled region. -/
 def Supported {m m' : ℕ} (G : Grounds d) (st : DocketState) (F : Settlement d) (φ : Fin d)
     (v : ℚ) (c : VerdictCert d m m' φ) : Prop :=
-  c.CitesLive (G.bundle st F) ∧
+  c.CitesLive (G.settledBundle st F) ∧
   -c.lo.value ≤ v ∧ v ≤ c.hi.value ∧
-  (G.region st F c.loPoint ∧ c.loPoint φ = -c.lo.value) ∧
-  (G.region st F c.hiPoint ∧ c.hiPoint φ = c.hi.value)
+  (G.settledRegion st F c.loPoint ∧ c.loPoint φ = -c.lo.value) ∧
+  (G.settledRegion st F c.hiPoint ∧ c.hiPoint φ = c.hi.value)
 
 instance {m m' : ℕ} (G : Grounds d) (st : DocketState) (F : Settlement d) (φ : Fin d) (v : ℚ)
     (c : VerdictCert d m m' φ) : Decidable (Supported G st F φ v c) := by
@@ -275,8 +744,8 @@ structure RecordState (d : ℕ) where
   settlement : Settlement d
   authorized : Finset ℕ
 
-/-- **Licensed** (P1): supported on the record's live grounds, and the event that issued
-and selected the certificate is one the record authorizes. -/
+/-- **Licensed** (P1): supported on the record's survivors, and the event that issued and
+selected the certificate is one the record authorizes. -/
 def Licensed {m m' : ℕ} (R : RecordState d) (φ : Fin d) (v : ℚ) (c : VerdictCert d m m' φ)
     (event : ℕ) : Prop :=
   Supported R.grounds R.docket R.settlement φ v c ∧ event ∈ R.authorized
@@ -295,7 +764,7 @@ theorem supported_admissible {m m' : ℕ} {G : Grounds d} {st : DocketState} {F 
     {φ : Fin d} {v : ℚ} {c : VerdictCert d m m' φ} (h : Supported G st F φ v c) :
     Admissible G st F φ v := by
   obtain ⟨_, hlo, hhi, ⟨hloR, hloφ⟩, ⟨hhiR, hhiφ⟩⟩ := h
-  exact region_attains_between (B := G.bundle st F) hloR hhiR (by rw [hloφ]; exact hlo)
+  exact region_attains_between (B := G.settledBundle st F) hloR hhiR (by rw [hloφ]; exact hlo)
     (by rw [hhiφ]; exact hhi)
 
 /-- **The chain.** -/
@@ -305,11 +774,12 @@ theorem licence_chain {m m' : ℕ} {R : RecordState d} {φ : Fin d} {v : ℚ}
       Admissible R.grounds R.docket R.settlement φ v :=
   ⟨licensed_supported h, supported_admissible (licensed_supported h)⟩
 
-/-- A supported verdict's certified endpoints are valid bounds on the region: the
+/-- A supported verdict's certified endpoints are valid bounds on the settled region: the
 certificate is not only cited but sound. -/
 theorem Supported.valid {m m' : ℕ} {G : Grounds d} {st : DocketState} {F : Settlement d}
     {φ : Fin d} {v : ℚ} {c : VerdictCert d m m' φ} (h : Supported G st F φ v c) :
-    (∀ x, G.region st F x → -c.lo.value ≤ x φ) ∧ (∀ x, G.region st F x → x φ ≤ c.hi.value) := by
+    (∀ x, G.settledRegion st F x → -c.lo.value ≤ x φ) ∧
+    (∀ x, G.settledRegion st F x → x φ ≤ c.hi.value) := by
   obtain ⟨⟨hlo, hhi⟩, _⟩ := h
   constructor
   · intro x hx
@@ -318,12 +788,6 @@ theorem Supported.valid {m m' : ℕ} {G : Grounds d} {st : DocketState} {F : Set
   · intro x hx
     have := c.hi.sound_of_pos x fun i hi => allowed_sat (hhi i hi).allowed hx
     linarith
-
-
-
-
-
-
 
 /-! ## Part A — the two countermodels -/
 
@@ -352,32 +816,55 @@ lemma premRow_sat_iff (x : Fin 1 → ℚ) : premRow.Sat x ↔ (1/2 : ℚ) ≤ x 
   rw [premRow, specialize_sat_iff F _ (Settlement.empty_pinned x)]
   exact Form.premise_sat_iff 0 (1/2) x
 
-/-- **The region is unchanged by the defeat**: `r₂` supplies the same row. -/
-theorem region_unchanged (x : Fin 1 → ℚ) :
-    G.region DocketState.quiet F x ↔ G.region stDefeat F x := by
-  unfold Grounds.region
-  rw [forcedRegion_iff, forcedRegion_iff]
-  simp [G, Grounds.seed, Seed.liveSub, Seed.liveStr, DocketState.quiet, stDefeat, r₁, r₂,
-    Occurrence.toSub]
+/-- The survivors on the quiet docket: both occurrences. -/
+lemma survivors_quiet : G.survivors DocketState.quiet F = [r₁, r₂] := by
+  unfold Grounds.survivors
+  rw [activeIds_of_length G _ _ 2 rfl, iterate_two]
+  simp [activeStep, liveGiven, undercut, citesIn, settleOutcome, pinsFalse, G, r₁, r₂, F,
+    Settlement.empty, DocketState.quiet]
 
-/-- Both regions are the interval `[1/2, 1]` on `φ`. -/
+/-- The survivors after the defeat of `r₁`: `r₂` alone. -/
+lemma survivors_defeat : G.survivors stDefeat F = [r₂] := by
+  unfold Grounds.survivors
+  rw [activeIds_of_length G _ _ 2 rfl, iterate_two]
+  simp [activeStep, liveGiven, undercut, citesIn, settleOutcome, pinsFalse, G, r₁, r₂, F,
+    Settlement.empty, stDefeat]
+
+/-- **The settled region is unchanged by the defeat**: `r₂` supplies the same row. -/
+theorem region_unchanged (x : Fin 1 → ℚ) :
+    G.settledRegion DocketState.quiet F x ↔ G.settledRegion stDefeat F x := by
+  rw [Grounds.settledRegion_iff, Grounds.settledRegion_iff, survivors_quiet, survivors_defeat]
+  simp [regionOn, r₁, r₂]
+
+/-- Both settled regions are the interval `[1/2, 1]` on `φ`. -/
 theorem region_iff (x : Fin 1 → ℚ) :
-    G.region DocketState.quiet F x ↔ (1/2 : ℚ) ≤ x 0 ∧ x 0 ≤ 1 := by
-  rw [Grounds.region_iff]
+    G.settledRegion DocketState.quiet F x ↔ (1/2 : ℚ) ≤ x 0 ∧ x 0 ≤ 1 := by
+  rw [Grounds.settledRegion_iff, survivors_quiet]
   have hr₁ : r₁.form.row.Sat x ↔ (1/2 : ℚ) ≤ x 0 := Form.premise_sat_iff 0 (1/2) x
   have hr₂ : r₂.form.row.Sat x ↔ (1/2 : ℚ) ≤ x 0 := Form.premise_sat_iff 0 (1/2) x
   constructor
   · rintro ⟨hc, -, h⟩
-    exact ⟨hr₁.1 (h r₁ (by simp [G]) (by simp [DocketState.quiet])), (hc 0).2⟩
+    exact ⟨hr₁.1 (h r₁ (by simp)), (hc 0).2⟩
   · rintro ⟨hlo, hhi⟩
     refine ⟨fun i => ?_, Settlement.empty_pinned x, ?_⟩
     · have : i = 0 := Subsingleton.elim i 0
       subst this; constructor <;> linarith
-    · intro o ho _
-      simp only [G, List.mem_cons, List.not_mem_nil, or_false] at ho
+    · intro o ho
+      simp only [List.mem_cons, List.not_mem_nil, or_false] at ho
       rcases ho with rfl | rfl
       · exact hr₁.2 hlo
       · exact hr₂.2 hlo
+
+/-- A point of the interval is in the port-only region of the quiet docket. -/
+lemma mem_region_port (x : Fin 1 → ℚ) (hlo : (1/2 : ℚ) ≤ x 0) (hhi : x 0 ≤ 1) :
+    G.region DocketState.quiet F x := by
+  rw [Grounds.region_iff]
+  refine ⟨fun i => ?_, Settlement.empty_pinned x, ?_⟩
+  · have : i = 0 := Subsingleton.elim i 0
+    subst this; exact ⟨by linarith, hhi⟩
+  · intro o ho _
+    simp only [G, List.mem_cons, List.not_mem_nil, or_false] at ho
+    rcases ho with rfl | rfl <;> exact (Form.premise_sat_iff 0 (1/2) x).2 hlo
 
 /-- The lower-bound certificate: multiplier `1` on the premise row. -/
 def loCert : BoundCert 1 1 φ (-1) where
@@ -415,10 +902,10 @@ def cert (k : ℕ) : VerdictCert 1 1 1 φ where
   loPoint := fun _ => 1/2
   hiPoint := fun _ => 1
 
-lemma loPoint_mem : G.region DocketState.quiet F (fun _ => 1/2) := by
+lemma loPoint_mem : G.settledRegion DocketState.quiet F (fun _ => 1/2) := by
   rw [region_iff]; norm_num
 
-lemma hiPoint_mem : G.region DocketState.quiet F (fun _ => 1) := by
+lemma hiPoint_mem : G.settledRegion DocketState.quiet F (fun _ => 1) := by
   rw [region_iff]; norm_num
 
 lemma premRow_b : premRow.b = -(1/2 : ℚ) := by
@@ -442,23 +929,21 @@ lemma premRow_ne_cubeLower (i : Fin 1) : premRow ≠ cubeLower i := by
   rw [premRow_b] at this
   norm_num [cubeLower] at this
 
-/-- The bundle on the quiet docket: both citations of the premise row, no pins. -/
-lemma bundle_quiet :
-    G.bundle DocketState.quiet F = [⟨Cite.sub 1, premRow⟩, ⟨Cite.sub 2, premRow⟩] := by
-  simp [Grounds.bundle, forcedBundle, G, Grounds.seed, Seed.liveSub, Seed.liveStr,
-    DocketState.quiet, r₁, r₂, Occurrence.toSub, pinCited, F, Settlement.empty,
-    Settlement.pinRowsAt, premRow]
+/-- The settled bundle on the quiet docket: both citations of the premise row, no pins. -/
+lemma settledBundle_quiet :
+    G.settledBundle DocketState.quiet F = [⟨Cite.sub 1, premRow⟩, ⟨Cite.sub 2, premRow⟩] := by
+  rw [Grounds.settledBundle, survivors_quiet]
+  simp [r₁, r₂, pinCited, F, Settlement.empty, Settlement.pinRowsAt, premRow]
 
-/-- The bundle after the defeat: only `r₂`'s citation survives. -/
-lemma bundle_defeat : G.bundle stDefeat F = [⟨Cite.sub 2, premRow⟩] := by
-  simp [Grounds.bundle, forcedBundle, G, Grounds.seed, Seed.liveSub, Seed.liveStr,
-    stDefeat, r₁, r₂, Occurrence.toSub, pinCited, F, Settlement.empty,
-    Settlement.pinRowsAt, premRow]
+/-- The settled bundle after the defeat: only `r₂`'s citation survives. -/
+lemma settledBundle_defeat : G.settledBundle stDefeat F = [⟨Cite.sub 2, premRow⟩] := by
+  rw [Grounds.settledBundle, survivors_defeat]
+  simp [r₂, pinCited, F, Settlement.empty, Settlement.pinRowsAt, premRow]
 
 lemma cited_quiet (k : ℕ) (hk : k = 1 ∨ k = 2) :
-    (cert k).CitesLive (G.bundle DocketState.quiet F) := by
+    (cert k).CitesLive (G.settledBundle DocketState.quiet F) := by
   refine ⟨fun _ _ => Or.inl ?_, fun _ _ => Or.inr (Or.inl ⟨0, rfl⟩)⟩
-  rw [bundle_quiet]
+  rw [settledBundle_quiet]
   rcases hk with rfl | rfl <;> simp [cert, loCert]
 
 /-- **Supported on the quiet docket**, citing either occurrence, for any verdict in the
@@ -477,7 +962,7 @@ citation, and the row is no cube face. -/
 theorem stale_not_supported (v : ℚ) : ¬ Supported G stDefeat F φ v (cert 1) := by
   rintro ⟨⟨hlo, -⟩, -⟩
   have h := hlo 0 (by simp [cert, loCert])
-  rw [bundle_defeat] at h
+  rw [settledBundle_defeat] at h
   rcases h with h | ⟨i, hi⟩ | ⟨i, hi⟩
   · simp [cert, loCert] at h
   · exact premRow_ne_cubeUpper i (by simpa [cert, loCert] using hi)
@@ -487,7 +972,7 @@ theorem stale_not_supported (v : ℚ) : ¬ Supported G stDefeat F φ v (cert 1) 
 theorem fresh_supported (v : ℚ) (hlo : (1/2 : ℚ) ≤ v) (hhi : v ≤ 1) :
     Supported G stDefeat F φ v (cert 2) := by
   refine ⟨⟨fun _ _ => Or.inl ?_, fun _ _ => Or.inr (Or.inl ⟨0, rfl⟩)⟩, ?_, ?_, ⟨?_, ?_⟩, ⟨?_, ?_⟩⟩
-  · rw [bundle_defeat]; simp [cert, loCert]
+  · rw [settledBundle_defeat]; simp [cert, loCert]
   · simp [cert, loCert_value]; linarith
   · simpa [cert, hiCert_value] using hhi
   · exact (region_unchanged _).1 loPoint_mem
@@ -506,8 +991,10 @@ theorem admissible_not_supported :
 
 /-- The forced interval of the countermodel is `[1/2, 1]`, with positive width. -/
 theorem forcedInterval : IsForcedInterval G.seed [] DocketState.quiet F φ (1/2) 1 :=
-  ⟨fun x hx => ((region_iff x).1 hx).1, fun x hx => ((region_iff x).1 hx).2,
-    ⟨fun _ => 1/2, loPoint_mem, rfl⟩, ⟨fun _ => 1, hiPoint_mem, rfl⟩⟩
+  ⟨fun x hx => ((region_iff x).1 (region_subset_settledRegion G _ F x hx)).1,
+    fun x hx => ((region_iff x).1 (region_subset_settledRegion G _ F x hx)).2,
+    ⟨fun _ => 1/2, mem_region_port _ le_rfl (by norm_num), rfl⟩,
+    ⟨fun _ => 1, mem_region_port _ (by norm_num) le_rfl, rfl⟩⟩
 
 /-! ### A4: two supported verdicts, one unauthorized selection -/
 
@@ -1259,7 +1746,7 @@ structure RecordEntry (d : ℕ) where
 /-- **The record**: one entry per date. -/
 abbrev Record (d : ℕ) := ℕ → RecordEntry d
 
-/-- The enforcer's position on the live bundle at a price, at a uniform intensity: the
+/-- The enforcer's position on the settled bundle at a price, at a uniform intensity: the
 force algebra's position formula `Σ_rows β · violation · normal` on the bundle's rows read
 as `⟨−a, ·⟩ ≥ −b`, summed along the bundle. -/
 def positionOf (B : Bundle (Cite d) d) (β : ℚ) (p : Fin d → ℚ) : Fin d → ℚ := fun k =>
@@ -1282,7 +1769,7 @@ theorem positionOf_eq_position (B : Bundle (Cite d) d) (β : ℚ) (p : Fin d →
 def trace (run : MarketRun d) (β : ℚ) : Record d := fun n =>
   { state := ⟨run.grounds n, run.docket n, run.settlement n, run.authorized n⟩
     certs := run.certs n
-    position := positionOf ((run.grounds n).bundle (run.docket n) (run.settlement n)) β
+    position := positionOf ((run.grounds n).settledBundle (run.docket n) (run.settlement n)) β
       (run.prices n) }
 
 /-- **`Licensed` is decidable from the record alone.** -/
@@ -1318,8 +1805,8 @@ def defeatRun : MarketRun 1 where
 
 /-- A price at or above the row leaves the position at zero. -/
 lemma positionOf_base_eq_zero (β : ℚ) (p : ℚ) (hp : (1/2 : ℚ) ≤ p) :
-    positionOf (Countermodel.G.bundle DocketState.quiet Countermodel.F) β (fun _ => p) = 0 := by
-  rw [Countermodel.bundle_quiet]
+    positionOf (Countermodel.G.settledBundle DocketState.quiet Countermodel.F) β (fun _ => p) = 0 := by
+  rw [Countermodel.settledBundle_quiet]
   funext k
   have hviol : violation Finset.univ (fun j => -Countermodel.premRow.a j)
       (-Countermodel.premRow.b) (fun _ => p) = 0 := by
@@ -1472,9 +1959,9 @@ theorem fixture_liability :
 /-- `MarketRun`, `Record`, `RecordEntry`: the Part C fixture, with a nonzero position when
 the price violates the row — the record does carry the position. -/
 theorem position_nonzero :
-    positionOf (Countermodel.G.bundle DocketState.quiet Countermodel.F) 1 (fun _ => 0) 0 =
+    positionOf (Countermodel.G.settledBundle DocketState.quiet Countermodel.F) 1 (fun _ => 0) 0 =
       1 := by
-  rw [Countermodel.bundle_quiet]
+  rw [Countermodel.settledBundle_quiet]
   simp only [positionOf, List.map_cons, List.map_nil, List.sum_cons, List.sum_nil]
   unfold violation pair
   rw [Countermodel.premRow_b, Countermodel.premRow_a]
@@ -1482,267 +1969,6 @@ theorem position_nonzero :
 
 end Witness
 
-/-! ## Part A (round 2026-10-21) — rebuttal by settlement
-
-The rulings M1–M3 of `prompts/2026-10-21-rebuttal-and-end-to-end/PROMPT.md` as a function on
-the typed occurrence: a form whose consequent coordinate is pinned false is **rebutted**,
-whose antecedent coordinate is pinned false is **vacuous**, a premise whose sentence is
-pinned false is **retired**; in every case the row leaves.  Retirement reaches the
-occurrences that cite the retired one.  The settled region is the region of the surviving
-occurrences' specialized rows; monotonicity under settlement is restated for it. -/
-
-section Rebuttal
-
-/-- The outcome of settling a form. -/
-inductive Outcome where
-  | kept
-  | rebutted
-  | vacuous
-  | retired
-  deriving DecidableEq
-
-/-- The settlement pins coordinate `i` false. -/
-def pinsFalse (F : Settlement d) (i : Fin d) : Bool := F.val i == some false
-
-lemma pinsFalse_iff (F : Settlement d) (i : Fin d) : pinsFalse F i = true ↔ F.val i = some false := by
-  simp [pinsFalse]
-
-/-- **`settleOutcome`** (M1, M2): vacuity is checked before rebuttal — a form that never
-applied is not rebutted. -/
-def settleOutcome (F : Settlement d) : Form d → Outcome
-  | .premise X _ => if pinsFalse F X then .retired else .kept
-  | .applicability X XA _ =>
-      if pinsFalse F X then .vacuous else if pinsFalse F XA then .rebutted else .kept
-  | .strength XA XAY _ =>
-      if pinsFalse F XA then .vacuous else if pinsFalse F XAY then .rebutted else .kept
-
-/-- **`settleForm`** (P1): the rows an occurrence contributes under a settlement — its
-specialized row when kept, nothing otherwise. -/
-def settleForm (F : Settlement d) (o : Occurrence d) : Option (List (Row d)) :=
-  if settleOutcome F o.form = .kept then some [specialize F o.form.row] else none
-
-/-- The degenerate shapes: a premise on a false sentence, or a conditional form with a
-false antecedent or a false consequent. -/
-def Degenerate (F : Settlement d) : Form d → Prop
-  | .premise X _ => pinsFalse F X = true
-  | .applicability X XA _ => pinsFalse F X = true ∨ pinsFalse F XA = true
-  | .strength XA XAY _ => pinsFalse F XA = true ∨ pinsFalse F XAY = true
-
-instance (F : Settlement d) (f : Form d) : Decidable (Degenerate F f) := by
-  cases f <;> unfold Degenerate <;> infer_instance
-
-lemma settleOutcome_eq_kept_iff (F : Settlement d) (f : Form d) :
-    settleOutcome F f = .kept ↔ ¬ Degenerate F f := by
-  cases f <;> simp [settleOutcome, Degenerate] <;> split_ifs <;> simp_all
-
-/-- **`settleForm` keeps exactly the specialized rows of non-degenerate forms** (P1). -/
-theorem settleForm_eq_some_iff (F : Settlement d) (o : Occurrence d) (rows : List (Row d)) :
-    settleForm F o = some rows ↔ rows = [specialize F o.form.row] ∧ ¬ Degenerate F o.form := by
-  unfold settleForm
-  rw [← settleOutcome_eq_kept_iff]
-  split_ifs with h <;> simp [h, eq_comm]
-
-theorem settleForm_eq_none_iff (F : Settlement d) (o : Occurrence d) :
-    settleForm F o = none ↔ Degenerate F o.form := by
-  unfold settleForm
-  by_cases h : settleOutcome F o.form = .kept
-  · simp [h, (settleOutcome_eq_kept_iff F o.form).1 h]
-  · simp only [h, if_false, true_iff]
-    by_contra hd
-    exact h ((settleOutcome_eq_kept_iff F o.form).2 hd)
-
-/-- **M3, no discount.**  A kept form's row is the specialization of the form with its own
-strength; `settleForm` never rewrites a strength. -/
-theorem settleForm_strength (F : Settlement d) (o : Occurrence d) (rows : List (Row d))
-    (h : settleForm F o = some rows) : rows = [specialize F o.form.row] :=
-  ((settleForm_eq_some_iff F o rows).1 h).1
-
-/-- **The contraposing shape.**  A strength row whose consequent is pinned false forces the
-antecedent to zero at every pinned point: the row says "¬Y, so not X∧A". -/
-theorem strength_contraposes (F : Settlement d) (XA XAY : Fin d) (c : ℚ) (hc : 0 < c)
-    (hpin : F.val XAY = some false) (x : Fin d → ℚ) (hx : F.Pinned x)
-    (hsat : (specialize F (Form.strength XA XAY c).row).Sat x) : x XA ≤ 0 := by
-  rw [specialize_sat_iff F _ hx, Form.strength_sat_iff] at hsat
-  have h0 : x XAY = 0 := by simpa [truth] using hx XAY false hpin
-  rw [h0] at hsat
-  nlinarith
-
-/-- The same for an applicability row whose consequent is pinned false. -/
-theorem applicability_contraposes (F : Settlement d) (X XA : Fin d) (c : ℚ) (hc : 0 < c)
-    (hpin : F.val XA = some false) (x : Fin d → ℚ) (hx : F.Pinned x)
-    (hsat : (specialize F (Form.applicability X XA c).row).Sat x) : x X ≤ 0 := by
-  rw [specialize_sat_iff F _ hx, Form.applicability_sat_iff] at hsat
-  have h0 : x XA = 0 := by simpa [truth] using hx XA false hpin
-  rw [h0] at hsat
-  nlinarith
-
-/-- **Rebuttal removes exactly the contraposing rows**: a strength form is rebutted (and
-not vacuous) iff its consequent is pinned false while its antecedent is not. -/
-theorem settleOutcome_rebutted_iff (F : Settlement d) (XA XAY : Fin d) (c : ℚ) :
-    settleOutcome F (.strength XA XAY c) = .rebutted ↔
-      F.val XAY = some false ∧ ¬ F.val XA = some false := by
-  simp only [settleOutcome]
-  have h1 := pinsFalse_iff F XA
-  have h2 := pinsFalse_iff F XAY
-  split_ifs with ha hb <;> simp_all
-
-/-! ### Grounds under settlement -/
-
-/-- The occurrences retired by the settlement: premises on pinned-false sentences. -/
-def retiredIds (G : Grounds d) (F : Settlement d) : Finset ℕ :=
-  ((G.filter fun o => settleOutcome F o.form = .retired).map Occurrence.id).toFinset
-
-/-- An occurrence cites a retired occurrence. -/
-def citesRetired (G : Grounds d) (F : Settlement d) (o : Occurrence d) : Bool :=
-  match o.cites with
-  | .occurrence j => decide (j ∈ retiredIds G F)
-  | _ => false
-
-/-- **The survivors**: not defeated by the docket, kept by `settleForm`, and not citing a
-retired occurrence (M2: a retired premise takes every row of its warrant with it). -/
-def Grounds.survivors (G : Grounds d) (st : DocketState) (F : Settlement d) : Grounds d :=
-  G.filter fun o =>
-    o.id ∉ st.defeated ∧ settleOutcome F o.form = .kept ∧ citesRetired G F o = false
-
-/-- The settled bundle: the survivors' specialized rows, cited by occurrence, and the pins. -/
-def Grounds.settledBundle (G : Grounds d) (st : DocketState) (F : Settlement d) :
-    Bundle (Cite d) d :=
-  ((G.survivors st F).map fun o => ⟨Cite.sub o.id, specialize F o.form.row⟩) ++ pinCited F
-
-/-- **The settled region**: the region the surviving rows force. -/
-def Grounds.settledRegion (G : Grounds d) (st : DocketState) (F : Settlement d)
-    (x : Fin d → ℚ) : Prop :=
-  (G.settledBundle st F).Region x
-
-instance (G : Grounds d) (st : DocketState) (F : Settlement d) (x : Fin d → ℚ) :
-    Decidable (G.settledRegion st F x) := by unfold Grounds.settledRegion; infer_instance
-
-/-- The region of an explicit occurrence list under a settlement, on the unspecialized rows. -/
-def regionOn (L : Grounds d) (F : Settlement d) (x : Fin d → ℚ) : Prop :=
-  InCube x ∧ F.Pinned x ∧ ∀ o ∈ L, o.form.row.Sat x
-
-/-- **The settled region, by occurrence.** -/
-theorem Grounds.settledRegion_iff (G : Grounds d) (st : DocketState) (F : Settlement d)
-    (x : Fin d → ℚ) :
-    G.settledRegion st F x ↔ regionOn (G.survivors st F) F x := by
-  unfold Grounds.settledRegion Grounds.settledBundle Bundle.Region regionOn
-  simp only [List.mem_append, List.mem_map]
-  constructor
-  · rintro ⟨hc, hrows⟩
-    have hpin : F.Pinned x := (pinCited_sat_iff F x).1 fun c hc => hrows c (Or.inr hc)
-    refine ⟨hc, hpin, fun o ho => ?_⟩
-    exact (specialize_sat_iff F _ hpin).1 (hrows _ (Or.inl ⟨o, ho, rfl⟩))
-  · rintro ⟨hc, hpin, h⟩
-    refine ⟨hc, ?_⟩
-    rintro c (⟨o, ho, rfl⟩ | hc')
-    · exact (specialize_sat_iff F _ hpin).2 (h o ho)
-    · exact (pinCited_sat_iff F x).2 hpin c hc'
-
-lemma mem_survivors {G : Grounds d} {st : DocketState} {F : Settlement d} {o : Occurrence d} :
-    o ∈ G.survivors st F ↔
-      o ∈ G ∧ o.id ∉ st.defeated ∧ settleOutcome F o.form = .kept ∧ citesRetired G F o = false := by
-  simp [Grounds.survivors]
-
-/-- **The settled region contains the port-only region**: settling forms only removes rows. -/
-theorem region_subset_settledRegion (G : Grounds d) (st : DocketState) (F : Settlement d)
-    (x : Fin d → ℚ) (hx : G.region st F x) : G.settledRegion st F x := by
-  rw [Grounds.region_iff] at hx
-  rw [Grounds.settledRegion_iff]
-  obtain ⟨hc, hp, h⟩ := hx
-  refine ⟨hc, hp, fun o ho => ?_⟩
-  obtain ⟨hoG, hid, -, -⟩ := mem_survivors.1 ho
-  exact h o hoG hid
-
-/-! ### Monotonicity restated (A4) -/
-
-lemma pinsFalse_mono {F F' : Settlement d} (h : F.le F') {i : Fin d}
-    (hi : pinsFalse F i = true) : pinsFalse F' i = true := by
-  rw [pinsFalse_iff] at hi ⊢
-  exact h i false hi
-
-/-- A kept form stays kept backwards: what is kept under more settlement was kept under less. -/
-lemma kept_of_le {F F' : Settlement d} (h : F.le F') {f : Form d}
-    (hk : settleOutcome F' f = .kept) : settleOutcome F f = .kept := by
-  rw [settleOutcome_eq_kept_iff] at hk ⊢
-  intro hd
-  apply hk
-  cases f <;> simp only [Degenerate] at hd ⊢
-  · exact pinsFalse_mono h hd
-  · rcases hd with hd | hd
-    · exact Or.inl (pinsFalse_mono h hd)
-    · exact Or.inr (pinsFalse_mono h hd)
-  · rcases hd with hd | hd
-    · exact Or.inl (pinsFalse_mono h hd)
-    · exact Or.inr (pinsFalse_mono h hd)
-
-lemma retired_of_le {F F' : Settlement d} (h : F.le F') {f : Form d}
-    (hr : settleOutcome F f = .retired) : settleOutcome F' f = .retired := by
-  cases f with
-  | premise X c =>
-      simp only [settleOutcome] at hr ⊢
-      split_ifs at hr with h1 <;> simp_all [pinsFalse_mono h h1]
-  | applicability X XA c => simp only [settleOutcome] at hr; split_ifs at hr <;> simp_all
-  | strength XA XAY c => simp only [settleOutcome] at hr; split_ifs at hr <;> simp_all
-
-lemma retiredIds_mono (G : Grounds d) {F F' : Settlement d} (h : F.le F') :
-    retiredIds G F ⊆ retiredIds G F' := by
-  intro j hj
-  simp only [retiredIds, List.mem_toFinset, List.mem_map, List.mem_filter,
-    decide_eq_true_eq] at hj ⊢
-  obtain ⟨o, ⟨ho, hr⟩, rfl⟩ := hj
-  exact ⟨o, ⟨ho, retired_of_le h hr⟩, rfl⟩
-
-/-- **Survivors only leave under more settlement.** -/
-theorem survivors_anti (G : Grounds d) (st : DocketState) {F F' : Settlement d} (h : F.le F')
-    {o : Occurrence d} (ho : o ∈ G.survivors st F') : o ∈ G.survivors st F := by
-  rw [mem_survivors] at ho ⊢
-  obtain ⟨hoG, hid, hk, hc⟩ := ho
-  refine ⟨hoG, hid, kept_of_le h hk, ?_⟩
-  unfold citesRetired at hc ⊢
-  cases hcite : o.cites with
-  | occurrence j =>
-      rw [hcite] at hc
-      simp only [decide_eq_false_iff_not] at hc ⊢
-      exact fun hj => hc (retiredIds_mono G h hj)
-  | settled i => rfl
-  | none => rfl
-
-/-- **A4(a): no reopening, nested as before.**  When the survivors are unchanged by a
-settlement step, the settled region shrinks. -/
-theorem settledRegion_anti_of_survivors_eq (G : Grounds d) (st : DocketState)
-    {F F' : Settlement d} (h : F.le F') (hs : G.survivors st F' = G.survivors st F)
-    {x : Fin d → ℚ} (hx : G.settledRegion st F' x) : G.settledRegion st F x := by
-  rw [Grounds.settledRegion_iff] at hx ⊢
-  obtain ⟨hc, hp, hr⟩ := hx
-  exact ⟨hc, hp.mono h, by rw [← hs]; exact hr⟩
-
-/-- **A4(b): a reopening step is bounded by the kept rows' pre-step region.**  The settled
-region after the step, and the settled region before it, both lie inside the region the
-*surviving* rows forced at the pre-step settlement. -/
-theorem settledRegion_subset_kept (G : Grounds d) (st : DocketState) {F F' : Settlement d}
-    (h : F.le F') (x : Fin d → ℚ) :
-    (G.settledRegion st F' x → regionOn (G.survivors st F') F x) ∧
-    (G.settledRegion st F x → regionOn (G.survivors st F') F x) := by
-  constructor
-  · intro hx
-    rw [Grounds.settledRegion_iff] at hx
-    exact ⟨hx.1, hx.2.1.mono h, hx.2.2⟩
-  · intro hx
-    rw [Grounds.settledRegion_iff] at hx
-    exact ⟨hx.1, hx.2.1, fun o ho => hx.2.2 o (survivors_anti G st h ho)⟩
-
-/-- **The exact widening bound.**  Any bounds valid on the kept rows' pre-step region are
-valid on the settled region before and after the step: the interval can widen by at most
-what the removed rows had been forcing. -/
-theorem reopening_bound (G : Grounds d) (st : DocketState) {F F' : Settlement d} (h : F.le F')
-    (φ : Fin d) (lo hi : ℚ)
-    (hK : ∀ x, regionOn (G.survivors st F') F x → lo ≤ x φ ∧ x φ ≤ hi) :
-    (∀ x, G.settledRegion st F' x → lo ≤ x φ ∧ x φ ≤ hi) ∧
-    (∀ x, G.settledRegion st F x → lo ≤ x φ ∧ x φ ≤ hi) :=
-  ⟨fun x hx => hK x ((settledRegion_subset_kept G st h x).1 hx),
-    fun x hx => hK x ((settledRegion_subset_kept G st h x).2 hx)⟩
-
-end Rebuttal
 
 /-! ### The countermodel to settlement-antitonicity of the settled region -/
 
@@ -1779,9 +2005,9 @@ theorem settled_not_anti :
     obtain ⟨-, -, h⟩ := hx
     have hmem : applOcc ∈ Grounds.survivors [applOcc] DocketState.quiet (Settlement.empty 2) := by
       rw [mem_survivors]
-      refine ⟨by simp, by simp [DocketState.quiet], ?_, ?_⟩
+      refine ⟨by simp, by simp [undercut, DocketState.quiet], ?_, ?_⟩
       · simp [settleOutcome, pinsFalse, applOcc, Settlement.empty]
-      · simp [citesRetired, applOcc]
+      · simp [applOcc]
     have := h applOcc hmem
     simp only [applOcc] at this
     rw [Form.applicability_sat_iff] at this
@@ -1933,49 +2159,38 @@ theorem settleOutcome_appl (c : Strengths) (n₁ nE n : ℕ) :
 @[simp] lemma occP_id (c : Strengths) : (occP c).id = 1 := rfl
 @[simp] lemma occA_id (c : Strengths) : (occA c).id = 2 := rfl
 @[simp] lemma occS_id (c : Strengths) : (occS c).id = 3 := rfl
-
-lemma retiredIds_eq (c : Strengths) (n₁ nE n : ℕ) :
-    retiredIds (grounds c) (settlementAt n₁ nE n) = ∅ := by
-  have hP := settleOutcome_premise c n₁ nE n
-  have hA := settleOutcome_appl c n₁ nE n
-  have hS := settleOutcome_strength c n₁ nE n
-  show (([occP c, occA c, occS c].filter fun o =>
-    settleOutcome (settlementAt n₁ nE n) o.form = .retired).map Occurrence.id).toFinset = ∅
-  simp only [List.filter_cons, List.filter_nil, decide_eq_true_eq, hP, hA, hS]
-  split_ifs <;> simp_all
-
-lemma citesRetired_eq_false (c : Strengths) (n₁ nE n : ℕ) (o : Occurrence 4) :
-    citesRetired (grounds c) (settlementAt n₁ nE n) o = false := by
-  unfold citesRetired
-  rw [retiredIds_eq]
-  cases o.cites <;> simp
+@[simp] lemma occP_cites (c : Strengths) : (occP c).cites = .none := rfl
+@[simp] lemma occA_cites (c : Strengths) : (occA c).cites = .occurrence 1 := rfl
+@[simp] lemma occS_cites (c : Strengths) : (occS c).cites = .occurrence 2 := rfl
+@[simp] lemma occP_defeaters (c : Strengths) : (occP c).defeaters = ∅ := rfl
+@[simp] lemma occA_defeaters (c : Strengths) : (occA c).defeaters = ∅ := rfl
+@[simp] lemma occS_defeaters (c : Strengths) : (occS c).defeaters = {2} := rfl
 
 lemma mem_docketAt_iff (n₀ n j : ℕ) : j ∈ (docketAt n₀ n).defeated ↔ n₀ ≤ n ∧ j = 2 := by
   simp only [docketAt]
   split_ifs with h <;> simp [h]
 
 /-- **The survivors, date by date**: the premise always, the applicability before `n₀`, the
-strength before `nE` — by `settleForm`, not by declaration. -/
+strength while the applicability it cites is live and `Y` is not refuted — by the grounded
+rule, not by declaration. -/
 theorem survivors_eq (c : Strengths) (n₀ n₁ nE n : ℕ) :
     (grounds c).survivors (docketAt n₀ n) (settlementAt n₁ nE n) =
-      occP c :: ((if n < n₀ then [occA c] else []) ++ (if n < nE then [occS c] else [])) := by
-  have hc := citesRetired_eq_false c n₁ nE n
+      occP c :: ((if n < n₀ then [occA c] else []) ++
+        (if n < n₀ ∧ n < nE then [occS c] else [])) := by
   have hP := settleOutcome_premise c n₁ nE n
   have hA := settleOutcome_appl c n₁ nE n
   have hS := settleOutcome_strength c n₁ nE n
-  show ([occP c, occA c, occS c].filter fun o => decide (o.id ∉ (docketAt n₀ n).defeated ∧
-      settleOutcome (settlementAt n₁ nE n) o.form = .kept ∧
-      citesRetired (grounds c) (settlementAt n₁ nE n) o = false)) = _
-  simp only [List.filter_cons, List.filter_nil, decide_eq_true_eq, hc, hP, hA, hS, occP_id,
-    occA_id, occS_id, mem_docketAt_iff]
+  unfold Grounds.survivors
+  rw [activeIds_of_length _ _ _ 3 rfl, iterate_three]
   by_cases h0 : n < n₀ <;> by_cases hE : n < nE <;>
-    simp [h0, hE, not_lt.mpr, show ¬ n₀ ≤ n ↔ n < n₀ from not_le,
-      show ¬ nE ≤ n ↔ n < nE from not_le]
+    simp [activeStep, liveGiven, undercut, citesIn, grounds, hP, hA, hS, mem_docketAt_iff,
+      h0, hE, show ¬ n₀ ≤ n ↔ n < n₀ from not_le, show ¬ nE ≤ n ↔ n < nE from not_le]
 
 /-- The force rows at date `n` under the rule. -/
 def rowsRebutted (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (n₀ nE n : ℕ) : List Row :=
   premiseRow c β hβ ::
-    ((if n < n₀ then [applRow c β hβ] else []) ++ (if n < nE then [strengthRow c β hβ] else []))
+    ((if n < n₀ then [applRow c β hβ] else []) ++
+      (if n < n₀ ∧ n < nE then [strengthRow c β hβ] else []))
 
 /-- The force schedule under the rule. -/
 def schedRebutted (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (n₀ nE : ℕ) : ℕ → Presentation :=
@@ -1992,14 +2207,14 @@ theorem schedRebutted_eq_survivors (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (
   by_cases h0 : n < n₀ <;> by_cases hE : n < nE <;>
     simp [h0, hE, premiseRow, applRow, strengthRow, occP, occA, occS]
 
-/-- **No row on `X∧A` after `nE`**: the strength row is gone, and the applicability row too
-once its port is defeated — the harmonic buyer has nothing to buy against. -/
+/-- **No strength row after `nE`**, and no row on `X∧A` at all once the applicability port is
+defeated — the harmonic buyer has nothing to buy against. -/
 theorem no_strength_after (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (n₀ nE n : ℕ) (hn : nE ≤ n) :
     strengthRow c β hβ ∉ (schedRebutted c β hβ n₀ nE n).rows ∧
     (n₀ ≤ n → (schedRebutted c β hβ n₀ nE n).rows = [premiseRow c β hβ]) := by
   have hE : ¬ n < nE := not_lt.mpr hn
   constructor
-  · simp only [schedRebutted, pres_rows, rowsRebutted, hE, if_false, List.append_nil,
+  · simp only [schedRebutted, pres_rows, rowsRebutted, hE, and_false, if_false, List.append_nil,
       List.mem_cons, List.mem_ite_nil_right, List.mem_singleton, List.not_mem_nil, or_false]
     rintro (h | ⟨-, h⟩)
     · have := congrArg Row.rhs h
@@ -2021,7 +2236,7 @@ theorem rebutted_region_nonempty (c : Strengths) (n₀ n₁ nE n : ℕ) (hn₁ :
   · intro i b hi
     fin_cases i <;> simp_all [settlementAt, truth, hn₁, hnE]
   · intro o ho
-    simp only [hE, if_false, List.append_nil, List.mem_cons, List.mem_ite_nil_right,
+    simp only [hE, and_false, if_false, List.append_nil, List.mem_cons, List.mem_ite_nil_right,
       List.mem_singleton, List.not_mem_nil, or_false] at ho
     rcases ho with rfl | ⟨-, rfl⟩
     · simp only [occP]; rw [Form.premise_sat_iff]; simp; exact c.P_lt.le
@@ -2139,11 +2354,27 @@ theorem old_rule_empty (cP cA cS cZ : ℚ) (hP : 0 < cP) :
   rw [Form.premise_sat_iff, h0] at hp
   linarith
 
-/-- The survivors of the refutation: only the warrant on `Z`. -/
+@[simp] lemma occP_id (cP : ℚ) : (occP cP).id = 1 := rfl
+@[simp] lemma occA_id (cA : ℚ) : (occA cA).id = 2 := rfl
+@[simp] lemma occS_id (cS : ℚ) : (occS cS).id = 3 := rfl
+@[simp] lemma occZ_id (cZ : ℚ) : (occZ cZ).id = 4 := rfl
+@[simp] lemma occP_cites (cP : ℚ) : (occP cP).cites = .none := rfl
+@[simp] lemma occA_cites (cA : ℚ) : (occA cA).cites = .occurrence 1 := rfl
+@[simp] lemma occS_cites (cS : ℚ) : (occS cS).cites = .occurrence 2 := rfl
+@[simp] lemma occZ_cites (cZ : ℚ) : (occZ cZ).cites = .none := rfl
+@[simp] lemma occP_defeaters (cP : ℚ) : (occP cP).defeaters = ∅ := rfl
+@[simp] lemma occA_defeaters (cA : ℚ) : (occA cA).defeaters = ∅ := rfl
+@[simp] lemma occS_defeaters (cS : ℚ) : (occS cS).defeaters = {2} := rfl
+@[simp] lemma occZ_defeaters (cZ : ℚ) : (occZ cZ).defeaters = ∅ := rfl
+
+/-- The survivors of the refutation: only the warrant on `Z` — the premise retires, and the
+applicability and strength that cite into it leave with it. -/
 theorem survivors_refuteX (cP cA cS cZ : ℚ) :
     (grounds cP cA cS cZ).survivors DocketState.quiet refuteX = [occZ cZ] := by
-  simp [Grounds.survivors, grounds, settleOutcome, pinsFalse, citesRetired, retiredIds,
-    occP, occA, occS, occZ, refuteX, DocketState.quiet]
+  unfold Grounds.survivors
+  rw [activeIds_of_length _ _ _ 4 rfl, iterate_four]
+  simp [activeStep, liveGiven, undercut, citesIn, grounds, settleOutcome, pinsFalse, occP,
+    occA, occS, occZ, refuteX, DocketState.quiet]
 
 /-- **Under the rule, the region is the one the other warrant forces**: nonempty, and `Z`
 still bounded below by `c_Z`. -/
@@ -2182,6 +2413,62 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.region
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.region_iff
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.mem_bundle_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Outcome
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Degenerate
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome_eq_kept_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_some_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_none_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_strength
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.strength_contraposes
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.applicability_contraposes
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome_rebutted_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.undercut
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.citesIn
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.citesIn_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.citesIn_mono
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.liveGiven
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.liveGiven_mono
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeStep
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.activeIds
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.survivors
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.mem_activeStep
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeStep_mono
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeStep_subset
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.iter_chain
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.iter_fixed_of_eq
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.card_iter
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeIds_fixed
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.mem_activeIds
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.mem_survivors
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.survivors_subset
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.survivors_not_defeated
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.survivors_kept
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeIds_of_length
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.iterate_two
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.iterate_three
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.iterate_four
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledBundle
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledRegion
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.regionOn
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledRegion_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.mem_settledBundle_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.region_subset_settledRegion
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse_mono
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.kept_of_le
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeStep_anti_settlement
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeIds_anti_settlement
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.survivors_anti
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.undercut_mono
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeStep_anti_docket
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.activeIds_anti_docket
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.survivors_anti_docket
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledRegion_anti_of_survivors_eq
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledRegion_subset_kept
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.reopening_bound
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Admissible
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert.RowAdmitted
@@ -2202,8 +2489,11 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.stDefeat
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.premRow
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.premRow_sat_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.survivors_quiet
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.survivors_defeat
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.region_unchanged
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.region_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.mem_region_port
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.loCert
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.hiCert
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.loCert_value
@@ -2215,8 +2505,8 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.premRow_a
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.premRow_ne_cubeUpper
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.premRow_ne_cubeLower
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.bundle_quiet
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.bundle_defeat
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.settledBundle_quiet
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.settledBundle_defeat
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.cited_quiet
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.supported_quiet
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.stale_not_supported
@@ -2369,36 +2659,6 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Witness.sched_rows_length
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Witness.fixture_liability
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Witness.position_nonzero
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Outcome
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Degenerate
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome_eq_kept_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_some_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_none_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_strength
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.strength_contraposes
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.applicability_contraposes
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome_rebutted_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.retiredIds
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.citesRetired
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.survivors
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledBundle
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledRegion
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.regionOn
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledRegion_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.mem_survivors
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.region_subset_settledRegion
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse_mono
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.kept_of_le
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.retired_of_le
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.retiredIds_mono
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.survivors_anti
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledRegion_anti_of_survivors_eq
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledRegion_subset_kept
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.reopening_bound
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.applOcc
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.pinConsequent
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.empty_le_pinConsequent
@@ -2414,8 +2674,12 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occP_id
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occA_id
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occS_id
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.retiredIds_eq
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.citesRetired_eq_false
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occP_cites
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occA_cites
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occS_cites
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occP_defeaters
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occA_defeaters
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occS_defeaters
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.mem_docketAt_iff
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.survivors_eq
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.rowsRebutted
@@ -2439,6 +2703,18 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.grounds
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.refuteX
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.old_rule_empty
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occP_id
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occA_id
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occS_id
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occZ_id
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occP_cites
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occA_cites
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occS_cites
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occZ_cites
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occP_defeaters
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occA_defeaters
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occS_defeaters
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occZ_defeaters
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.survivors_refuteX
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.retired_region
 
