@@ -1537,6 +1537,40 @@
       "claim_changes": []
     },
     {
+      "id": "2026-09-16-seed-statics",
+      "date": "2026-09-16",
+      "project": "normativity.seed",
+      "path": "projects/normativity/seed/rounds/2026-09-16-seed-statics",
+      "verdict": "FORCED-REGIONS-COMPUTE-ON-THE-EXISTING-COMPILER-CONFINEMENT-IS-A-HULL-BOUND-SEED-INDEPENDENCE-FAILS-UNDER-ITEM-HUMILITY-AND-HOLDS-UNDER-STRICT-HUMILITY — the seed is a typed object with three layers and two separate withdrawal channels, its forced region on a settled fragment is Bundle.Region of a computable bundle decided by the unchanged checkCompiled, its forced intervals are computed by the existing Fourier–Motzkin elimination with correctness and attainment proved and no LP optimum assumed, and intervals nest under settlement and widen under defeat; confinement holds as the width of the hull of the two forced intervals and is false as the length of their union, the common region being the merged seed's region; the landed defeat calculus is a trace discipline that fixes the live docket and conserves load but computes no extension, so under exhaustive exchange the live warrant set is a function of the trace and the grounded extension is a hypothesis one may impose, not a theorem; seed-independence on the point-forced fragment is refuted for humility read item-wise — two strengths of one half pin a coordinate — and proved when substantive endorsements are strict, since a point forced by a closed convex layer cut by an open layer is forced by the closed layer alone, so a humble seed narrows or breaks and never pins; strength selection is order-dependent and only reopening under a canonical joint rule removes it, which bears on the past-self-burn ruling and is filed; the forced intervals are eventually constant on a finite discovery class, oscillate forever on an infinite one, and converge when reopenings are summable; the moral fixture forces dominance at strength 2c − 1 and impartiality to at least one half, forces no additive aggregation, leaves interpersonal comparability as an open axis, and breaks on three population axioms with an exact Farkas certificate and a four-row minimal infeasible subset; the legal fixture instantiates the interface, separates amendment from defeat, and cannot express standing, court hierarchy, or a locked selection, which binding precedent needs; and the fused criterion is stated exactly and obstructed where the adapter cannot write prices and the enforcer's position is not quantified over, so limit behaviour is construction-relative.",
+      "verdict_source": "projects/normativity/seed/rounds/2026-09-16-seed-statics/README.md",
+      "depends_on": [
+        "2026-09-05-ni-gap-audit",
+        "2026-09-03-defeat-landing-horty-standing",
+        "2026-09-02-unified-grounds-answerable-defeat"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-16-seed-statics/PROMPT.md",
+      "claim_changes": []
+    },
+    {
+      "id": "2026-09-17-convergence-measure",
+      "date": "2026-09-17",
+      "project": "normativity.seed",
+      "path": "projects/normativity/seed/rounds/2026-09-17-convergence-measure",
+      "verdict": "CONVERGENCE-IS-A-PROFILE-HULL-FALLS-UNDER-EVERY-NARROWING-DISCORD-IS-CERTIFIED-AND-REMOVED-ONLY-BY-DEFEAT-OR-REFUTATION-AND-HIDDEN-DISCORD-ESCAPES-THE-FRAGMENT — the convergence profile (Hull, Ovl, Disc) is defined on interval data over a declared fragment with declared positive weights and Lean-stated with its inequalities, of which the dispatch's Disc = 0 → Ovl > 0 is false on touching intervals while Disc = 0 is exactly \"no declared coordinate in discord\" under positive weights; fragment dilution, coordinate splitting, discord hiding and weight capture all succeed against a naive reading and are blocked by the unpinned normalization, pull-back through the transport rule, the product order on hull and discord, and declared weights respectively, while hidden discord — a merged bundle infeasible with every common interval nonempty, two reasoners or three with no pairwise incompatibility — is blocked by nothing and is certified only by the merged Farkas certificate; hull and overlap mass are nonincreasing and discord persists under every nesting, so settlement, shared narrowing and private narrowing lower the hull and never remove discord, private narrowing creates discord, and sharing the private warrant either leaves the discord or refutes the receiver, discord being removed only by defeat or by giving up a named item; hull mass converges under summable reopenings of the hull endpoints and oscillates without them; under exhaustive sharing read as equal live sets the discord set is eventually constant and every persistent discord is a certified incompatibility between substantive items, with the merged-bundle limit the dispatch stated corrected to one direction; discord is pairwise by Helly in dimension one and merged feasibility is not; hull mass for two reasoners is the sum of their unforced masses minus the overlap plus the discord gap; a lock is width or certified discord and stops no convergence; overlapping consensus — identical intervals on disjoint dockets — is exhibited and breaks under one one-sided defeater; the moral aggregation disagreement ends as discord with a certificate naming exactly the prioritarian and sum items; and Logical Induction's two-inductor guarantee, cited by declaration, is agreement on what settles and nothing on what does not, where this round's property lives.",
+      "verdict_source": "projects/normativity/seed/rounds/2026-09-17-convergence-measure/README.md",
+      "depends_on": [
+        "2026-09-16-seed-statics",
+        "2026-09-05-ni-gap-audit",
+        "2026-09-03-defeat-landing-horty-standing"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [],
+      "prompt": "prompts/2026-09-17-convergence-measure/PROMPT.md",
+      "claim_changes": []
+    },
+    {
       "id": "2026-09-24-transparent-channel",
       "date": "2026-09-24",
       "project": "deference",
@@ -1934,6 +1968,37 @@
         "warrant.admissible-not-supported",
         "warrant.supported-not-licensed",
         "warrant.selection-not-transparent"
+      ]
+    },
+    {
+      "id": "2026-10-21-rebuttal-and-end-to-end",
+      "date": "2026-10-21",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end",
+      "verdict": "REBUTTAL-BY-SETTLEMENT-LANDS-THE-ORPHAN-CANNOT-FORM-THE-BANKROLL-ACROSS-ONE-REOPENING-IS-THREE-RHO-TIMES-TWO-PLUS-RHO-NOT-THREE-RHO-THE-SEED-STATICS-AND-THE-INTERVAL-DATA-LAYER-ARE-ON-MAIN-AND-THE-FIRST-END-TO-END-RUN-REACHES-THE-REBUTTAL-WITH-EVERY-STAGE-HOLDING — the rulings M1–M3 are one decidable function on the typed occurrence, settleForm, which keeps exactly the specialized rows of forms whose premise, antecedent and consequent are not pinned false, and the rows it removes are exactly the contraposing ones; under it the warrant round's orphan pin cannot form, the strength row leaves at the refutation, a slack world survives, and the enforcer's assessed net worth is at least −3ρ(2 + ρ) at every live world — the pre-reopening bankroll 3ρ plus ρ times a post-reopening slack mass the market's capital bounds by 3 + 3ρ; the dispatch's \"the same 3ρ\" is refuted by an exact two-phase exhibit in which a counterparty's gains on the rebutted row cushion its budget and the enforcer loses 24 > 12 on the fixture; retiring a refuted premise leaves the other warrant enforced where the port-only rule emptied the joint region; IsForcedInterval.mono stays true of the unspecialized-row region and fails for the settled region, replaced by nesting without reopening and an exact widening bound through the kept rows' pre-step region, attained with widening 0 on the fixture; one SeedStatics.lean (sections 1–6, 8, 10) and ConvergenceMeasure.lean (sections 1–4) are on main, the two branch rounds landed verbatim under the new seed subproject and their items re-filed as 117–120; and the end-to-end witness runs entry, licence, elimination, settlement, undercut, rebuttal and the record in sequence on one fixture, with every stage a theorem and the elimination's output pinned by its own correctness theorem where the kernel cannot run it.",
+      "verdict_source": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/README.md",
+      "depends_on": [
+        "2026-10-20-warrant-enforcement-semantics",
+        "2026-09-16-seed-statics",
+        "2026-09-17-convergence-measure",
+        "2026-08-16-traderized-enforcement",
+        "2026-09-07-final-pressure-pass"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-10-21-rebuttal-and-end-to-end/PROMPT.md",
+      "claim_changes": [
+        "rebuttal.settleform-sound",
+        "rebuttal.liability-rebutted",
+        "seed.forced-interval-spec",
+        "seed.forced-interval-bounds",
+        "seed.independence-strict",
+        "seed.eventually-const",
+        "convergence.hull-mass-anti",
+        "convergence.discord-persists",
+        "convergence.discord-pairwise"
       ]
     }
   ]

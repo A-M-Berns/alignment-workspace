@@ -406,7 +406,7 @@ item. The present candidate is a distortion term comparing local fixed-loss
 evaluation with full replay, potentially requiring `B_T(g) = o(T)`, but no
 accepted sufficient statement yet supplies an executable completion criterion.
 
-### 35. End-to-end module pipeline round — **[maintainer-specified-later]**
+### 35. End-to-end module pipeline round — **[maintainer-specified-later]** — *first instance landed 2026-10-21: `EndToEndWitness.Run.witness` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md`), one fixture, every stage; not registered; the next instance's needs are in that round's `LANDING.md`*
 <!-- workspace-priority: project=normativity; dispatchable=no -->
 
 ---
@@ -425,7 +425,7 @@ are marked answered on filing: a kernel-checked headline registers against a fil
 item, and the item is where *what is worth proving* was decided, so it is filed with
 the answer rather than before it.
 
-### 39. Does normative statics produce a credal constraint, or only a price demand? — **[open]**
+### 39. Does normative statics produce a credal constraint, or only a price demand? — **[open]** — *narrowed 2026-10-21: the geometric half is registered (`seed.forced-interval-spec`, `seed.forced-interval-bounds`); the liability half is the warrant round's odds bankroll and this round's reopened bankroll; the answer *weak* stands*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The traderized-force interface consumes a price-space region and gives it
@@ -3565,7 +3565,7 @@ from linearity of the inductor's expectation.
 *A solution ships:* the derivation, or the obstruction — in particular whether the
 support clause (PE2) can be discharged for the score family.
 
-### 112. Occurrence-level defeat: the orphan pin — **[substantial]**
+### 112. Occurrence-level defeat: the orphan pin — **[substantial]** — *narrowed 2026-10-21: under `settleForm` (`DECISIONS.md` M1–M2) the orphan cannot form — `WarrantEntitlement.Fixture.no_strength_after`, `rebutted_region_nonempty`; what remains is transitive retirement along `cites` without the settlement's closure, item 121*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -3593,7 +3593,7 @@ extended with the rule and green.
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/SETTLEMENT_FORK.md` (iv),
 `COUNTERMODELS.md` §3, `LICENCE_CHAIN.md` A1.
 
-### 113. Settlement defeat for strength rows: a linear row contraposes — **[open]**
+### 113. Settlement defeat for strength rows: a linear row contraposes — **[open]** — *answered 2026-10-21 by the rule `settleForm` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`): rebuttal, vacuity, retirement; registered `rebuttal.settleform-sound`, `rebuttal.liability-rebutted`; the monotonicity it loses is restated as `settledRegion_anti_of_survivors_eq` and `reopening_bound`; what remains is the sharp bankroll across a reopening, item 123*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -3670,6 +3670,174 @@ twice, and one copy must be removed with the other's names retargeted.
 *Deliverable shape:* (a) and (b) as filed positions with fixtures; (c) a deletion.
 *Acceptance check:* Lean green after (c).
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/RECORD.md`.
+
+### 117. The selection lock: a canonical joint rule for warrant strengths, and a selection the docket may seal — **[open]**
+
+<!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
+
+*Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 93; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
+
+The seed-statics round (`projects/normativity/seed/rounds/2026-09-16-seed-statics/`)
+shows that strength selection among candidate bounds is order-dependent — the same seed
+and warrant set end in the disjoint forced intervals `[9/10, 19/20]` and `[3/10, 1/2]`
+under the two arrival orders — and that reopening a selection against the whole docket
+does not remove it, because both outcomes are maximal joint selections; only reopening
+under a fixed canonical rule on joint selections does.  The legal fixture wants the
+opposite: *stare decisis* is a selection that must not be reopened, and the docket state
+has no object for a sealed selection.  Define the canonical joint rule; define a lock the
+docket state can carry; state when a locked selection is a past-self charge (the
+2026-08-08 burn ruling, as the dispatch states it) and when it is recomputed state.
+
+*Deliverable shape:* the rule and the lock as definitions on `DocketState`, an
+order-independence theorem for the rule, and the two fixtures (moral: no lock; legal:
+locked precedent) run through one model.
+*Acceptance check:* `python3 tests/run.py` green; the Lean audits clean.
+
+*Context:* `STABILIZATION.md` §4 and `FIXTURES.md` §4 of the round; the queued
+*Awaiting the author* entry on re-selection and the burn ruling.
+*Consumed by:* any dynamics claim of the form "start from `S`, end in `L`"; the legal
+reading of the seed type.
+*A solution ships:* the rule, the lock, the theorem, and the fixtures.
+
+### 118. Rational attainment and certificate completeness for the computed forced interval — **[open]**
+
+<!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
+
+*Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-16-seed-statics`, where it was item 94; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-16-seed-statics/`.*
+
+`SeedStatics.forcedInterval_spec` proves the computed endpoints valid and attained at
+*real* points, because `FourierMotzkin` states satisfaction over `ℝ`; attainment at a
+rational point — the fact that a rational system feasible over `ℝ` is feasible over `ℚ`
+— is not in the repository, so the rational predicate `IsForcedInterval` is not
+inhabited by the computed pair.  Separately, `BoundCert.sound` gives soundness of
+endpoint certificates and nothing gives tightness (LP duality).  Either transfer the
+elimination's completeness direction to `ℚ` or give the vertex argument, and prove that
+every valid bound is certified.  This is the duality half of item 79's completeness.
+
+*Deliverable shape:* `IsForcedInterval S W st F φ lo hi` inhabited by
+`forcedInterval`, and `∀ c, LowerBound … c → ∃ cert, −cert.value ≥ c` (or the
+statement that fails, with its witness).
+*Acceptance check:* the Lean audits clean.
+
+*Context:* `STATICS.md` §§2, 5 of the seed-statics round; `FourierMotzkin.lean`'s
+header on why satisfaction lives in `ℝ`.
+*Consumed by:* item 79; any registration of `forcedInterval_spec`.
+*A solution ships:* the two theorems.
+
+### 119. Hidden discord: a region-level convergence measure — **[open]**
+
+<!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
+
+*Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-17-convergence-measure`, where it was item 95; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-17-convergence-measure/`.*
+
+The convergence-measure round (`projects/normativity/seed/rounds/2026-09-17-convergence-measure/`)
+shows that the coordinate-wise profile `(Hull, Ovl, Disc)` on a declared fragment can
+report `Disc = 0` while the merged bundle is infeasible — two humble reasoners holding
+`y ≥ (9/10)x, x ≥ (9/10)y` and `x ≥ 4/5, y ≤ 3/10`, and three reasoners pairwise
+compatible and jointly not (`hidden_discord`).  Helly in dimension one makes coordinate
+discord pairwise (`discord_iff_pair`); nothing makes merged feasibility so.  No
+declaration of fragment or weights blocks this.  Define a region-level component of the
+profile — a merged-feasibility mass, or a relational discord over declared *pairs* of
+sentences, or the affine dimension of the merged region — that sees relational
+incompatibility, prove its monotonicity under nesting, and give its certificate.
+
+*Deliverable shape:* the definition on `IntervalData` or on regions, the analogue of
+`discord_persists`, and the two hidden-discord fixtures scored positive by it.
+*Acceptance check:* `python3 tests/run.py` green; the Lean audits clean.
+
+*Context:* `MANY.md` §2 and `GAMEABILITY.md` (what is not blocked) of the round.
+*Consumed by:* any use of `Disc = 0` as "the reasoners could jointly hold their bundles".
+*A solution ships:* the component, its monotonicity theorem, and the fixtures.
+
+### 120. Exhaustive sharing on trace-constitutive dockets: what exchange equalizes live sets — **[open]**
+
+<!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
+
+*Re-filed 2026-10-21 by the rebuttal-and-end-to-end round from branch `round/2026-09-17-convergence-measure`, where it was item 96; content unchanged; the branch round is landed under `projects/normativity/seed/rounds/2026-09-17-convergence-measure/`.*
+
+H3 of the convergence-measure round holds under *exhaustive sharing* read as "the
+reasoners' live substantive-and-warrant row sets eventually coincide".  Sharing every
+warrant does not give this: a warrant defeated on one docket and live on another is a
+one-sided defeater (the `consensus` fixture), and the landed defeat calculus fixes the
+live docket per trace.  Say which exchange protocol — sharing warrants *and* their
+disposals, a shared docket, or a synchronization event — makes live sets coincide on
+`DefeatTrace`, state it on the existing docket types, and prove H3's eventual constancy
+against it in Lean (the round composes it from `eventually_const_of_finite` in prose).
+
+*Deliverable shape:* the protocol as a predicate on a family of traces, the theorem that
+it equalizes `liveSub ++ W`, and H3 stated and proved on `IntervalData` from it.
+*Acceptance check:* the Lean audits clean.
+
+*Context:* `DYNAMICS.md` §3 of the round; the seed round's `CONFINEMENT.md` §2 (the
+calculus computes no extension).
+*Consumed by:* any claim that persistent discord is never an artifact of order.
+*A solution ships:* the predicate and the two theorems.
+
+## Workspace friction
+
+**Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
+round that hits friction with the workspace itself to file it here rather than
+route around it, because a defect worked around silently is one the next round
+pays for again. Entries are reports, not work orders; one graduates by becoming a
+numbered item or by being ruled on in `DECISIONS.md`. **Cite an entry by its
+title, not its number** — the list is renumbered as entries leave it, so numbers
+are positions rather than identifiers.
+
+### 121. Transitive retirement, and the closure a settlement must carry — **[entry]**
+
+<!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
+
+The rule `settleForm` (`lean/Workspace/Normativity/Contrib/WarrantEntitlement.lean`,
+`Grounds.survivors`) retires a premise whose sentence is pinned false and removes, one step
+along `cites`, the occurrences that cite it; conditional forms further down a chain leave
+only when the settlement's closure pins their antecedent false. The round's fixtures carry
+their closure (`X` false pins `X∧A`, `X∧A∧Y` false) and the rule reaches the whole warrant;
+without closure a chain of three keeps its last link
+(`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/tests/test_rebuttal.py::test_retirement_needs_closure`). Wanted: either the transitive
+closure of citation as the retirement rule (a terminating recursion on the finite grounds,
+with `survivors_anti` re-proved), or the closure requirement on settlements as a stated
+hypothesis of the statics, with the theorem that a propositionally closed settlement makes
+the one-step rule complete.
+
+*Deliverable shape:* the chosen rule as a `def`, the re-proved monotonicity lemmas, and the
+chain-of-three fixture under it.
+*Acceptance check:* Lean green; the round's `tests/run.py` extended and green.
+*Context:* `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A1; `DECISIONS.md` 2026-10-21 (M2).
+
+### 122. The transport's negated-form drop — **[entry]**
+
+<!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
+
+The seed-statics branch's `transport_seed` (its `src/seed.py`, cited by the convergence
+round's `REPORT.md` §3 of *What is not shown*) carries every form as a plain `Form` and drops
+the negated forms its own fixtures use; the Lean `transport`/`transport_sat_iff` (branch §9)
+is exact on rows but was not landed (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md`). A known defect, filed and not
+fixed by the landing round. Wanted: transport of negated forms in the fixture code, the Lean
+§9 landed with it, and the convergence round's pull-back fixtures re-run.
+
+*Deliverable shape:* the fix, the landed section, green fixtures.
+*Acceptance check:* `python3 tests/run.py` green in both seed rounds; Lean green.
+*Context:* `projects/normativity/seed/rounds/2026-09-17-convergence-measure/REPORT.md`;
+`projects/normativity/seed/rounds/2026-09-16-seed-statics/src/seed.py`.
+
+### 123. The sharp bankroll across a reopening, and the cushion exploit against the pinned market maker — **[substantial]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+Across one reopening the proved bankroll is `−3ρ(2 + ρ)`
+(`WarrantEntitlement.netWorth_ge_neg_odds_reopened`, `Fixture.liability_rebutted`); the
+dispatch's `3ρ` is refuted by an exact two-phase exhibit (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/src/exhibit.py::cushion_exhibit`,
+`24 > 12` on the fixture) in which a counterparty's gains on the rebutted row cushion its
+later selling, and the per-row accounting gives `odds_A(3 + 3·odds_S) = 27`. Three gaps: the
+exhibit runs a one-coordinate maker, not the pinned `MarketMaker` (as item 114); the sharp
+constant between `24` and `72` is not determined; and whether a settlement-time accounting of
+the reopened mass (charging the counterparty's gain on a rebutted row at the rebuttal, as the
+rule charges the enforcer) restores `3ρ` is a design question for the maintainer, queued.
+
+*Deliverable shape:* the exploit against `history L E` with the trader exhibited, or the
+obstruction; the sharp constant for one reopening; the accounting variant if adopted.
+*Acceptance check:* Lean green; the exhibit's numbers recomputed by the fixture.
+*Context:* `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A2; items 114, 40.
 
 ## Workspace friction
 

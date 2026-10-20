@@ -15,6 +15,25 @@
 
 **Depends on** `2026-08-16-traderized-enforcement` (the force algebra and the enforcement-preservation composition), `2026-09-07-final-pressure-pass` (the conditional Normative Inductor theorem), and the unmerged `round/2026-09-16-seed-statics` as a *source* (Part 0; not a base, not merged).
 
+## Superseded by the rebuttal round (2026-10-21)
+
+The round `2026-10-21-rebuttal-and-end-to-end` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/`, shipped in the same pull request)
+lands the maintainer's repair of this round's one refutation and supersedes three readings
+below, which are left in place as this round made them:
+
+- **`Fixture.disagree_region_empty`** is true of the *port-only* region and is no longer the
+  operative statement: under rebuttal by settlement (`settleForm`) the strength row leaves at
+  `n_E`, the region is nonempty (`Fixture.rebutted_region_nonempty`) and force is not
+  withheld; `Fixture.liability_disagree` describes a superseded schedule (`schedWithheld`).
+- **"The premise row guards the chain"** (B(ii), (iv); `COUNTERMODELS.md` §3) is retracted
+  as a design reading: the guard also emptied the joint region on unrelated warrants when the
+  premise was refuted (`Fixture2.old_rule_empty`); under M2 a refuted premise retires its
+  occurrence and the other warrants stay enforced (`Fixture2.retired_region`).
+- **The orphan pin** (`orphan_region_nonempty`, `orphan_no_slack`, `harmonic_buyer_run`) is
+  kept as the countermodel to the *port-only* rule; under `settleForm` it cannot form
+  (`Fixture.no_strength_after`).  The bankroll across the rebuttal is `3ρ(2 + ρ)`, not `3ρ`
+  (`REBUTTAL.md` A2 of that round).
+
 ## The finding in one paragraph
 
 A warrant with strengths strictly inside `(0, 1)` excludes live worlds as *points* of its region — that is what makes it normative rather than logical — and the enforcer that holds it is exposed at exactly those worlds. The round's result is that this exposure is bounded by the **odds** of the warrant, not by its intensity, its tolerance or how long it is held: the enforcer's assessed net worth at any live world is at least `−(1 + 2) · ρ`, where `1` is the market maker's constant, `2` the trading firm's budget floor, and `ρ` dominates, row by row, every live world's deficit by some live world's surplus (`netWorth_ge_neg_odds`). For the fixture's three rows the least such `ρ` is `max_j c_j/(1 − c_j)`, the largest odds the warrant states. The argument follows one world across dates (the item-40 shape), where the force interface's own certificate `Σ_t (ε_t + C_t) D_t/δ_t` maximizes date by date; that is why the one is a constant and the other a sum. The three settlement semantics of the dispatch are three live-set schedules of one assessment process, and the bankroll is the same under all three as long as a slack world is live. When the slack world dies, two things can happen: the region empties and force is withheld (the premise row guards the chain), or — after the applicability port has been defeated — the region stays nonempty with no slack world, the strength row contraposes, and an efficiently computable buyer drives the enforcer's net worth to `−∞` on a convergent budget. That last case is the round's one refutation, and it is a fact about per-row defeat and linear strength rows, not about any settlement semantics.

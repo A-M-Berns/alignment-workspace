@@ -87,6 +87,14 @@ every live world at every date, for every `n₀, n₁`. Settling `X` kills the p
 deficit worlds and changes nothing in the bound. If deduction later proves `X∧A∧Y`, the
 rows become world-inclusive and the enforcer's account from then on only gains.
 
+> **Superseded 2026-10-21.** The readings of (ii) and (iv) below that rest on the region
+> *emptying* at a disagreeing evaluation (`disagree_region_empty`, "force is withheld") and on
+> the premise row guarding the chain are superseded by rebuttal by settlement
+> (`DECISIONS.md`, 2026-10-21, M1–M3): the strength row is rebutted and leaves, the region
+> stays nonempty, and the bankroll across the rebuttal is `3ρ(2 + ρ)`. See
+> `../2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md`. The orphan pin of (iv) stands as the
+> countermodel to the port-only rule.
+
 ## (ii) Evaluation settlement
 
 `Y` is settled at `n_E` by a declared evaluation `e`; in `Fixture.stage` the evaluation's

@@ -30,7 +30,12 @@ verdict, two continuations with the same declared inputs and different contribut
 `TransparentAt` for every reference `κ` (`selection_not_transparent`, an application of
 `GateIsLegitimacy.tiebreak_transparency`).
 
-## 3. The orphan pin — the one unaffordable case
+## 3. The orphan pin — the one unaffordable case *(under the port-only rule)*
+
+> **Superseded 2026-10-21.** Under rebuttal by settlement the strength row leaves at the
+> refutation and this obstruction cannot form (`Fixture.no_strength_after`); it is kept as the
+> countermodel to the port-only rule. The closing sentence of this section, "the premise row
+> guards the chain", is retracted: see `../2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A3.
 
 State: `X` settled true, applicability port `2` defeated, `Y` refuted (`settledDisagree`
 pins `X = 1`, `X∧A∧Y = 0`, `Y = 0`). Live rows: premise `P(X) ≥ c_P` and strength

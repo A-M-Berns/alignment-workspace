@@ -26,6 +26,7 @@
   - [Liability and Affordability](Liability-and-Affordability)
   - [Serviceability](Serviceability)
   - [Normative Record and Inquiry](Normative-Record-and-Inquiry)
+  - [Seed Theory](Seed-Theory)
 
 **Deference**
 

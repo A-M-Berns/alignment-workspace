@@ -257,6 +257,17 @@ commit.
   *Turns on:* whether the conversational rulings are what the maintainer meant, and
   whether a re-selection burns — taste about the trace discipline the round lacks.
 
+- **The bankroll across a reopening: accept `3ρ(2 + ρ)`, or tighten the rule.**  Under
+  rebuttal by settlement the proved bankroll across one reopening is `3ρ(2 + ρ)`
+  (`WarrantEntitlement.netWorth_ge_neg_odds_reopened`); the dispatch's `3ρ` is refuted by an
+  exact exhibit (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/src/exhibit.py::cushion_exhibit`, `24 > 12`): a counterparty's gains
+  on the rebutted row cushion its later selling, because the trading firm's floor is on
+  cumulative worth at live worlds.  A settlement-time accounting of the reopened mass would
+  restore `3ρ` at the cost of charging a counterparty at the rebuttal (item 123).
+  *Turns on:* whether the market should charge a trader for having bet against a conclusion
+  that was later refuted — taste about what rebuttal settles for whom, which the mathematics
+  only prices.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -6001,3 +6012,48 @@ no lock, selection there being order-dependent (`STABILIZATION.md` §4 of the se
 round) — is noted and not answered by the ruling.
 
 *Confirmation queued under Awaiting the author.*
+
+### 2026-10-21 — the rule is a specialization step on the form, vacuity before rebuttal, retirement one step along citation under a closed settlement, the reopening account, and the names
+
+**agent-decided, reversible** (the rebuttal-and-end-to-end round, `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/`).  Adoptions from
+the dispatch's proposals and the details the rulings left open.
+
+**P1 adopted — `settleForm` on the form.**  `settleForm : Settlement → Occurrence → Option
+(List Row)` returns the specialized row of a kept form and nothing for a rebutted, vacuous or
+retired one; `settleForm_eq_some_iff` says it keeps exactly the specialized rows of forms
+none of whose premise, antecedent or consequent coordinate is pinned false, and
+`strength_contraposes` says what the removed rows would have forced.  *Rejected alternative:*
+a rule on the specialized row — the row does not know which coordinate is the consequent,
+and a syntactic test for the contraposing shape would misfire on a row whose antecedent is
+pinned by a different sentence.
+
+**Vacuity before rebuttal.**  A form whose antecedent and consequent are both pinned false is
+*vacuous*, not *rebutted*: a form that never applied is not refuted.  The row leaves either
+way.  *Rejected alternative:* rebuttal first, which would count a case that did not arise as a
+refutation of the warrant.
+
+**Retirement one step along `cites`, under closure.**  A retired premise removes the
+occurrences whose `cites` names it; forms further down a chain leave through the
+settlement's closure (their antecedent pinned false).  The round's settlements carry their
+closure.  *Rejected alternative:* the transitive closure of citation inside the rule — a
+recursion on the grounds that the round did not need and item 121 asks for, against the
+alternative of stating closure as a hypothesis of the statics.
+
+**P2 adopted — the reopening account.**  The reopening of a settlement step is the set of
+occurrences that survived before it and not after (`survivors_anti` makes it well defined);
+hull mass is nonincreasing between reopenings (`ConvergenceMeasure.hullMass_anti` on the
+survivors' intervals) and the total reopened mass is what `SeedStatics.tendsto_of_summable_drops`
+consumes.  On the end-to-end fixture the sequence is `1/2, 5/12, 5/6, 1/2` with one settlement
+reopening (the strength row at `n_E`, which widens nothing) and one defeat (the undercut,
+which widens `X∧A` by `3/4`).  *Rejected alternative:* counting the undercut as a reopening —
+it is the docket's, not settlement's, and `defeat_widens` already names it.
+
+**P3 adopted — names, provisional:** *rebutted*, *vacuous*, *retired*; *reopening*;
+*end-to-end witness*; and the round's *survivors*, *settled region*, *reopened mass*, *cushion
+exhibit*.
+
+**The seed subproject.**  `projects/normativity/seed/` is a subproject `normativity.seed` of
+`state/projects.json`, holding the two landed branch rounds and the future seed rounds;
+the seed-statics round's outstanding action 3 (keep under `seed/` or move under
+`legitimacy/`) is thereby taken as *keep*.  *Rejected alternative:* `legitimacy/` — the seed
+is the compiler's left input, not a legitimacy predicate.

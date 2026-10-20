@@ -1582,3 +1582,241 @@ The citation discipline for `Licensed` and its two countermodels, round
   "note": "An instance of GateIsLegitimacy.tiebreak_transparency: two continuations with the same declared inputs and different advisor contributions at the selection event fail TransparentAt for every reference."
 }
 ```
+
+### Rebuttal by settlement and the seed statics
+
+Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, against items 113, 39, 117 and 119.
+
+### rebuttal.settleform-sound
+
+```json
+{
+  "project": "normativity",
+  "short_name": "settleForm keeps exactly the specialized rows of non-degenerate forms",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_some_iff"
+  },
+  "answers_item": "113",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md"
+  },
+  "note": "The rule of M1-M2 as a function on the form; a form whose premise, antecedent or consequent coordinate is pinned false contributes no row, every other form contributes its specialized row with its own strength. The removed rows are the contraposing ones (strength_contraposes)."
+}
+```
+
+### rebuttal.liability-rebutted
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the fixture's bankroll across the rebuttal",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.liability_rebutted"
+  },
+  "answers_item": "113",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md"
+  },
+  "note": "Under the rule, with Y refuted at nE and the applicability port defeated at n0, the enforcer's assessed net worth is at least -3 rho (2 + rho) at every live world at every date, through netWorth_ge_neg_odds_reopened; the dispatch's 3 rho is refuted by the round's cushion exhibit (test-supported)."
+}
+```
+
+### seed.forced-interval-spec
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the computed forced interval is valid and attained over the reals",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.SeedStatics.forcedInterval_spec"
+  },
+  "answers_item": "39",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-16-seed-statics/STATICS.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "Fourier-Motzkin elimination of every coordinate but phi computes endpoints that bound P(phi) over the real forced region and are attained there. Rational attainment is item 118."
+}
+```
+
+### seed.forced-interval-bounds
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the computed endpoints are valid rational bounds",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.SeedStatics.forcedInterval_bounds"
+  },
+  "answers_item": "39",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-16-seed-statics/STATICS.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "LowerBound and UpperBound on the rational forced region for the elimination's endpoints, when the real region is nonempty."
+}
+```
+
+### seed.independence-strict
+
+```json
+{
+  "project": "normativity",
+  "short_name": "seed-independence under strict humility",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.SeedStatics.seed_independence_strict"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-16-seed-statics/CRITERION.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "A point forced by a closed convex layer cut by an open layer is forced by the closed layer alone; two reasoners sharing the closed layer with strict substantive rows pin the same coordinate to the same value. Refuted for item-level humility by c3_refuted."
+}
+```
+
+### seed.eventually-const
+
+```json
+{
+  "project": "normativity",
+  "short_name": "conditional stabilization on a finite discovery class",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.SeedStatics.eventually_const_of_finite"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-16-seed-statics/STABILIZATION.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "Along a chain with a monotone raised subset of a finite class and monotone settlement, any quantity computed from the two is eventually constant."
+}
+```
+
+### convergence.hull-mass-anti
+
+```json
+{
+  "project": "normativity",
+  "short_name": "hull mass is nonincreasing under nesting",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ConvergenceMeasure.hullMass_anti"
+  },
+  "answers_item": "119",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-17-convergence-measure/DYNAMICS.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "Settlement, shared narrowing and private narrowing lower the hull mass under nonnegative weights."
+}
+```
+
+### convergence.discord-persists
+
+```json
+{
+  "project": "normativity",
+  "short_name": "discord persists under nesting",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ConvergenceMeasure.discord_persists"
+  },
+  "answers_item": "119",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-17-convergence-measure/DYNAMICS.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "Once the common interval is empty no narrowing restores it; only reopening can."
+}
+```
+
+### convergence.discord-pairwise
+
+```json
+{
+  "project": "normativity",
+  "short_name": "discord is pairwise (Helly in dimension one)",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ConvergenceMeasure.discord_iff_pair"
+  },
+  "answers_item": "119",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-17-convergence-measure/MANY.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "The common interval is empty iff some pair of reasoners has disjoint intervals; merged infeasibility is not pairwise, which is item 119."
+}
+```

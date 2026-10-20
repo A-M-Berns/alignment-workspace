@@ -13,7 +13,7 @@ diff; `wiki` means it has reached the human register; `note` a living note;
 `prose` `PRIORITIES.md` or `DECISIONS.md`. `Lean only` is the cheapest to
 change, and the count of those is the size of the free choice remaining.
 
-## deference — 1152 names, 622 of them Lean only
+## deference — 1152 names, 620 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -243,7 +243,7 @@ change, and the count of those is the size of the free choice remaining.
 | `exCost` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.exCost` |
 | `ofAllocation` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.ofAllocation` |
 | `ofPartial` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.ofPartial` |
-| `raises` | def | 2026-09-25-authority-module | prose | `Workspace.Deference.Contrib.AuthorityModule.raises` |
+| `raises` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.raises` |
 | `rawEvent` | def | 2026-09-25-authority-module | Lean only | `Workspace.Deference.Contrib.AuthorityModule.rawEvent` |
 | `reachIdle` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.reachIdle` |
 | `requiredNotice` | def | 2026-09-25-authority-module | wiki, prose | `Workspace.Deference.Contrib.AuthorityModule.requiredNotice` |
@@ -637,7 +637,7 @@ change, and the count of those is the size of the free choice remaining.
 | `sem` | def | 2026-09-09-evaluation-ecosystem-realization | wiki | `Workspace.Deference.Contrib.EvaluationEcosystem.sem` |
 | `semPinned` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.semPinned` |
 | `sessionOpen` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.sessionOpen` |
-| `settled` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.settled` |
+| `settled` | def | 2026-09-09-evaluation-ecosystem-realization | wiki | `Workspace.Deference.Contrib.EvaluationEcosystem.settled` |
 | `silentOf` | def | 2026-09-09-evaluation-ecosystem-realization | Lean only | `Workspace.Deference.Contrib.EvaluationEcosystem.silentOf` |
 | `state` | def | 2026-09-09-evaluation-ecosystem-realization | wiki, note, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.Instance.state` |
 | `step` | def | 2026-09-09-evaluation-ecosystem-realization | wiki, prose | `Workspace.Deference.Contrib.EvaluationEcosystem.step` |
@@ -701,7 +701,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Resp.isFallback` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Resp.isFallback` |
 | `Resp.isForged` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Resp.isForged` |
 | `Resp.isValid` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Resp.isValid` |
-| `Run` | abbrev | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Run` |
+| `Run` | abbrev | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.Run` |
 | `Segment` | structure | 2026-09-25-gate-is-legitimacy | wiki, prose | `Workspace.Deference.Contrib.GateIsLegitimacy.Segment` |
 | `SelRule` | inductive | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.SelRule` |
 | `SelRule.apply` | def | 2026-09-25-gate-is-legitimacy | Lean only | `Workspace.Deference.Contrib.GateIsLegitimacy.Consult.SelRule.apply` |
@@ -1170,7 +1170,7 @@ change, and the count of those is the size of the free choice remaining.
 | `point` | def | unrecorded | wiki, note, prose | `Workspace.Deference.Headline.FormationData.point` |
 | `restoration2` | def | unrecorded | Lean only | `Workspace.Deference.Headline.restoration2` |
 
-## normativity — 830 names, 594 of them Lean only
+## normativity — 953 names, 673 of them Lean only
 
 | name | kind | round | propagates | declaration |
 |---|---|---|---|---|
@@ -1189,6 +1189,8 @@ change, and the count of those is the size of the free choice remaining.
 | `counterfactual_open_not_actual` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.NonCapture.Witness.counterfactual_open_not_actual` |
 | `deductiveRegion_eq_convexHull` | theorem | 2026-08-19-deductive-region | registry | `Workspace.Normativity.Contrib.DeductiveRegion.deductiveRegion_eq_convexHull` |
 | `deductive_end_to_end` | theorem | 2026-08-18-projection-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEffective.deductive_end_to_end` |
+| `discord_iff_pair` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.ConvergenceMeasure.discord_iff_pair` |
+| `discord_persists` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.ConvergenceMeasure.discord_persists` |
 | `distinct_fates` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.distinct_fates` |
 | `distinct_fates` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Witness.distinct_fates` |
 | `edge_headline_separation` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki, prose | `Workspace.Normativity.Contrib.NormativeInductorComposition.edge_headline_separation` |
@@ -1202,13 +1204,18 @@ change, and the count of those is the size of the free choice remaining.
 | `enforcement_netWorth_nonneg` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.enforcement_netWorth_nonneg` |
 | `evaluate_subst` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.evaluate_subst` |
 | `evaluate_subst` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.evaluate_subst` |
+| `eventually_const_of_finite` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.eventually_const_of_finite` |
 | `exists_budgetedTrader_exploits` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.AssessmentProcess.exists_budgetedTrader_exploits` |
 | `exists_maxMin_representation` | theorem | 2026-08-18-maxmin-representation | registry | `Workspace.Normativity.Contrib.MaxMinRepresentation.exists_maxMin_representation` |
 | `faf_asympEq_refl` | theorem | 2026-08-10-repo-scaffolding | registry | `Workspace.Smoke.faf_asympEq_refl` |
+| `forcedInterval_bounds` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki | `Workspace.Normativity.Contrib.SeedStatics.forcedInterval_bounds` |
+| `forcedInterval_spec` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.forcedInterval_spec` |
 | `gap_le_of_mixture` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.CoherenceModulus.gap_le_of_mixture` |
 | `gap_le_of_net_cover` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.CoherenceModulus.gap_le_of_net_cover` |
+| `hullMass_anti` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullMass_anti` |
 | `isLogicalInductor_of_computableMarket` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.isLogicalInductor_of_computableMarket` |
 | `isPiecewiseAffineOn_maxMin` | theorem | 2026-08-18-maxmin-representation | registry | `Workspace.Normativity.Contrib.MaxMinRepresentation.isPiecewiseAffineOn_maxMin` |
+| `liability_rebutted` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.liability_rebutted` |
 | `licence_chain` | theorem | 2026-10-20-warrant-enforcement-semantics | registry, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.licence_chain` |
 | `marketValueRat_enforcementStrategy` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.EnforcementStrategy.marketValueRat_enforcementStrategy` |
 | `no_efficient_trader_exploits` | theorem | 2026-08-16-traderized-enforcement | registry, wiki, note | `Workspace.Normativity.Contrib.AssessmentFirm.no_efficient_trader_exploits` |
@@ -1219,7 +1226,9 @@ change, and the count of those is the size of the free choice remaining.
 | `propagate_toSegment` | theorem | 2026-09-07-final-pressure-pass | registry, wiki | `Workspace.Normativity.Contrib.LegitimateEvolution.Evolution.propagate_toSegment` |
 | `robustOpenActual_of_persistence` | theorem | 2026-09-07-final-pressure-pass | registry, wiki, prose | `Workspace.Normativity.Contrib.NonCapture.Scenario.robustOpenActual_of_persistence` |
 | `rowViolation_le_of_intensity_ge` | theorem | 2026-08-16-traderized-enforcement | registry, note | `Workspace.Normativity.Contrib.EnforcementStrategy.rowViolation_le_of_intensity_ge` |
+| `seed_independence_strict` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki | `Workspace.Normativity.Contrib.SeedStatics.seed_independence_strict` |
 | `selection_not_transparent` | theorem | 2026-10-20-warrant-enforcement-semantics | registry | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.selection_not_transparent` |
+| `settleForm_eq_some_iff` | theorem | 2026-10-21-rebuttal-and-end-to-end | registry, wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_some_iff` |
 | `supported_admissible` | theorem | 2026-10-20-warrant-enforcement-semantics | registry | `Workspace.Normativity.Contrib.WarrantEntitlement.supported_admissible` |
 | `supported_not_licensed` | theorem | 2026-10-20-warrant-enforcement-semantics | registry, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.supported_not_licensed` |
 | `terminals_subst` | theorem | 2026-09-06-mathematical-consolidation | registry, wiki, prose | `Workspace.Normativity.Contrib.OccurrenceIntegrity.Program.terminals_subst` |
@@ -1238,7 +1247,7 @@ change, and the count of those is the size of the free choice remaining.
 | `firmTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.firmTrader` |
 | `history` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.AssessmentFirm.history` |
 | `quote` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentFirm.quote` |
-| `states` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.AssessmentFirm.states` |
+| `states` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.AssessmentFirm.states` |
 | `tradingFirmTrader` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.AssessmentFirm.tradingFirmTrader` |
 | `Assessment` | structure | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentProcess.Assessment` |
 | `BudgeterAt` | def | 2026-08-16-traderized-enforcement | note | `Workspace.Normativity.Contrib.AssessmentProcess.BudgeterAt` |
@@ -1306,6 +1315,25 @@ change, and the count of those is the size of the free choice remaining.
 | `target` | def | unrecorded | wiki, note | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.target` |
 | `targetAt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.targetAt` |
 | `vertexData` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.ConstraintSchedule.RationalConstraintSchedule.vertexData` |
+| `Discord` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.Discord` |
+| `IntervalData` | abbrev | 2026-09-17-convergence-measure | wiki, prose | `Workspace.Normativity.Contrib.ConvergenceMeasure.IntervalData` |
+| `Nested` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.Nested` |
+| `Valid` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.Valid` |
+| `Weights` | structure | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.Weights` |
+| `blockedHull` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.blockedHull` |
+| `commonHi` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.commonHi` |
+| `commonLo` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.commonLo` |
+| `commonWidth` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.commonWidth` |
+| `discordMass` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.discordMass` |
+| `hullHi` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullHi` |
+| `hullLo` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullLo` |
+| `hullMass` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullMass` |
+| `hullSum` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullSum` |
+| `hullWidth` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.hullWidth` |
+| `naiveHull` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.naiveHull` |
+| `overlapMass` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.overlapMass` |
+| `touching` | def | 2026-09-17-convergence-measure | wiki | `Workspace.Normativity.Contrib.ConvergenceMeasure.touching` |
+| `unpinned` | def | 2026-09-17-convergence-measure | Lean only | `Workspace.Normativity.Contrib.ConvergenceMeasure.unpinned` |
 | `deductivePolytopeEff` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductivePolytopeEff` |
 | `deductiveProjectionSchedule` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductiveProjectionSchedule` |
 | `deductiveReps` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.DeductiveEffective.deductiveReps` |
@@ -1316,7 +1344,7 @@ change, and the count of those is the size of the free choice remaining.
 | `realizedAggregate` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedAggregate` |
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | prose | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedEnforcer` |
 | `realizedFirm` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.realizedFirm` |
-| `states` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.DeductiveEnforcement.states` |
+| `states` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.DeductiveEnforcement.states` |
 | `witnessEnforcer` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.witnessEnforcer` |
 | `witnessPres` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.witnessPres` |
 | `witnessProcess` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.DeductiveEnforcement.witnessProcess` |
@@ -1386,6 +1414,49 @@ change, and the count of those is the size of the free choice remaining.
 | `unitRow` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.EffectiveRepresentation.unitRow` |
 | `vtxOf` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.EffectiveRepresentation.vtxOf` |
 | `zeroBlock` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.EffectiveRepresentation.zeroBlock` |
+| `I` | def | 2026-10-21-rebuttal-and-end-to-end | prose | `Workspace.Normativity.Contrib.EndToEndWitness.Run.I` |
+| `L5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.L5` |
+| `W` | def | 2026-10-21-rebuttal-and-end-to-end | wiki, note, prose | `Workspace.Normativity.Contrib.EndToEndWitness.Run.W` |
+| `Zs` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.Zs` |
+| `applRow5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.applRow5` |
+| `cA` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.cA` |
+| `cP` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.cP` |
+| `cS` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.cS` |
+| `cZ` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.cZ` |
+| `certXAY` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.certXAY` |
+| `certXAY_lo` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.certXAY_lo` |
+| `certZ` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.certZ` |
+| `certZ_lo` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.certZ_lo` |
+| `cert_hi` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.cert_hi` |
+| `clearing` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.clearing` |
+| `coh` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.coh` |
+| `coordList5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.coordList5` |
+| `docketAt` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.docketAt` |
+| `firstWarrantAt` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.firstWarrantAt` |
+| `grounds` | def | 2026-10-21-rebuttal-and-end-to-end | wiki, prose | `Workspace.Normativity.Contrib.EndToEndWitness.Run.grounds` |
+| `intervalAt` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.intervalAt` |
+| `nE` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.nE` |
+| `n₀` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.n₀` |
+| `n₁` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.n₁` |
+| `occA` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.occA` |
+| `occP` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.occP` |
+| `occS` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.occS` |
+| `occZ` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.occZ` |
+| `pinnedAt` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.pinnedAt` |
+| `premiseRow5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.premiseRow5` |
+| `pres5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.pres5` |
+| `ptZ` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.ptZ` |
+| `recordAt` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.recordAt` |
+| `rows5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.rows5` |
+| `run` | def | 2026-10-21-rebuttal-and-end-to-end | wiki, prose | `Workspace.Normativity.Contrib.EndToEndWitness.Run.run` |
+| `runNoDefeat` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.runNoDefeat` |
+| `sched5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.sched5` |
+| `seedAt` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.seedAt` |
+| `seedC1` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.seedC1` |
+| `settlementAt` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.settlementAt` |
+| `strengthRow5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.strengthRow5` |
+| `w` | def | 2026-10-21-rebuttal-and-end-to-end | wiki, prose | `Workspace.Normativity.Contrib.EndToEndWitness.Run.w` |
+| `zRow5` | def | 2026-10-21-rebuttal-and-end-to-end | Lean only | `Workspace.Normativity.Contrib.EndToEndWitness.Run.zRow5` |
 | `EffectiveEnforcerComputation` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.EnforcedCompiler.EffectiveEnforcerComputation` |
 | `compiler` | def | unrecorded | wiki, prose | `Workspace.Normativity.Contrib.EnforcedCompiler.compiler` |
 | `enfPrefixFromTradeListsAtFuel` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.EnforcedCompiler.enfPrefixFromTradeListsAtFuel` |
@@ -1406,7 +1477,7 @@ change, and the count of those is the size of the free choice remaining.
 | `realizedAggregate` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedAggregate` |
 | `realizedEnforcer` | def | 2026-08-16-traderized-enforcement | prose | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedEnforcer` |
 | `realizedFirm` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementPreservation.realizedFirm` |
-| `states` | def | 2026-08-16-traderized-enforcement | wiki, note | `Workspace.Normativity.Contrib.EnforcementPreservation.states` |
+| `states` | def | 2026-08-16-traderized-enforcement | wiki, note, prose | `Workspace.Normativity.Contrib.EnforcementPreservation.states` |
 | `Presentation` | structure | 2026-08-16-traderized-enforcement | wiki | `Workspace.Normativity.Contrib.EnforcementStrategy.Presentation` |
 | `Row` | structure | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.Row` |
 | `coefficientFeature` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.EnforcementStrategy.coefficientFeature` |
@@ -1429,7 +1500,7 @@ change, and the count of those is the size of the free choice remaining.
 | `coeffs` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.coeffs` |
 | `combine` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.combine` |
 | `comboCoeffs` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.comboCoeffs` |
-| `const` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.const` |
+| `const` | abbrev | unrecorded | wiki | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.const` |
 | `elim` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.elim` |
 | `elimStep` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.FourierMotzkin.elimStep` |
 | `eval` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.FourierMotzkin.LinCon.eval` |
@@ -1553,7 +1624,7 @@ change, and the count of those is the size of the free choice remaining.
 | `nonvacuityS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.nonvacuityS` |
 | `offAdequateS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.offAdequateS` |
 | `replacedS` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.replacedS` |
-| `st` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NonCapture.Witness.st` |
+| `st` | def | unrecorded | prose | `Workspace.Normativity.Contrib.NonCapture.Witness.st` |
 | `AQ` | inductive | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.Fixtures.AQ` |
 | `AnchorStanding` | def | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.AnchorStanding` |
 | `Answerable` | structure | 2026-08-29-normative-continuity-concordance | Lean only | `Workspace.Normativity.Contrib.NormativeContinuity.DefeatTrace.Answerable` |
@@ -1649,7 +1720,7 @@ change, and the count of those is the size of the free choice remaining.
 | `CompiledDay` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CompiledDay` |
 | `CompiledSchedule` | abbrev | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CompiledSchedule` |
 | `CompiledSchedule.toSchedule` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.CompiledSchedule.toSchedule` |
-| `FarkasCert` | structure | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.FarkasCert` |
+| `FarkasCert` | structure | unrecorded | wiki | `Workspace.Normativity.Contrib.NormativeInductorComposition.FarkasCert` |
 | `Fate` | inductive | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Fate` |
 | `HasStatus` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.HasStatus` |
 | `InCube` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.InCube` |
@@ -1664,7 +1735,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Workload` | structure | unrecorded | prose | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload` |
 | `chainCert` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.chainCert` |
 | `cheapest` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.Workload.cheapest` |
-| `checkCompiled` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.checkCompiled` |
+| `checkCompiled` | def | unrecorded | wiki | `Workspace.Normativity.Contrib.NormativeInductorComposition.checkCompiled` |
 | `cubeLower` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.cubeLower` |
 | `cubeUpper` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.cubeUpper` |
 | `exportObligations` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.NormativeInductorComposition.exportObligations` |
@@ -1888,86 +1959,135 @@ change, and the count of those is the size of the free choice remaining.
 | `proj` | def | unrecorded | wiki | `RationalPolytope.proj` |
 | `toPt` | def | unrecorded | Lean only | `Workspace.Normativity.Contrib.RationalPolytope.toPt` |
 | `vertexSet` | def | unrecorded | Lean only | `RationalPolytope.vertexSet` |
-| `deficit` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.deficit` |
+| `BoundCert` | structure | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.BoundCert` |
+| `BoundCert.value` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.BoundCert.value` |
+| `Cite` | inductive | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Cite` |
+| `Constitutive` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Constitutive` |
+| `DocketState` | structure | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.SeedStatics.DocketState` |
+| `DocketState.quiet` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.DocketState.quiet` |
+| `Form` | inductive | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.SeedStatics.Form` |
+| `IsForcedInterval` | structure | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.IsForcedInterval` |
+| `LowerBound` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.SeedStatics.LowerBound` |
+| `MinimalInfeasible` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.MinimalInfeasible` |
+| `NonStrict` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.NonStrict` |
+| `Pinned` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.Pinned` |
+| `Pins` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Pins` |
+| `Refuted` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Refuted` |
+| `Seed` | structure | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.Seed` |
+| `Seed.HumbleItems` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.Seed.HumbleItems` |
+| `Seed.liveStr` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.liveStr` |
+| `Seed.liveSub` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.liveSub` |
+| `Settlement` | structure | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.Settlement` |
+| `Settlement.PinnedR` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.PinnedR` |
+| `StrItem` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.StrItem` |
+| `StrKind` | inductive | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.StrKind` |
+| `StrictSatR` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.StrictSatR` |
+| `SubItem` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.SubItem` |
+| `SureLoss` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.SureLoss` |
+| `UpperBound` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.UpperBound` |
+| `c` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.SeedStatics.Form.c` |
+| `c0` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.c0` |
+| `cubeRows` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.cubeRows` |
+| `empty` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.empty` |
+| `emptySeed` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.emptySeed` |
+| `forcedBundle` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.forcedBundle` |
+| `forcedInterval` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.forcedInterval` |
+| `forcedRegion` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.forcedRegion` |
+| `forcedRegionR` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.forcedRegionR` |
+| `hi1` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.hi1` |
+| `le` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.le` |
+| `leverage` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.leverage` |
+| `lo1` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.lo1` |
+| `lowerList` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.lowerList` |
+| `negCoherence` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.negCoherence` |
+| `of` | class | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.SeedStatics.of` |
+| `pinCited` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.pinCited` |
+| `pinRows` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.pinRows` |
+| `pinRowsAt` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.pinRowsAt` |
+| `pos` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.pos` |
+| `project` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.project` |
+| `row` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.SeedStatics.Form.row` |
+| `sandwichSeed` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.sandwichSeed` |
+| `settledTerm` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.settledTerm` |
+| `specialize` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.specialize` |
+| `system` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.system` |
+| `toLinCon` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.toLinCon` |
+| `truth` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.truth` |
+| `upperList` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.upperList` |
+| `widenSeed` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.widenSeed` |
+| `deficit` | def | 2026-08-16-traderized-enforcement | wiki | `Workspace.Normativity.Contrib.TraderizedEnforcement.deficit` |
 | `pair` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.pair` |
 | `position` | def | 2026-08-16-traderized-enforcement | Lean only | `Workspace.Normativity.Contrib.TraderizedEnforcement.position` |
 | `violation` | def | 2026-08-16-traderized-enforcement | wiki, prose | `Workspace.Normativity.Contrib.TraderizedEnforcement.violation` |
 | `A` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.A` |
 | `Admissible` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Admissible` |
 | `Applicability` | inductive | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Applicability` |
-| `BoundCert` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.BoundCert` |
-| `BoundCert.value` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.BoundCert.value` |
-| `Cite` | inductive | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Cite` |
 | `CitesLive` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert.CitesLive` |
-| `Constitutive` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Constitutive` |
-| `DocketState` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.DocketState` |
-| `DocketState.quiet` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.DocketState.quiet` |
+| `Degenerate` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Degenerate` |
 | `F` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.F` |
-| `Form` | inductive | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Form` |
 | `G` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.G` |
 | `Grounds` | abbrev | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Grounds` |
 | `Grounds.bundle` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.bundle` |
 | `Grounds.region` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.region` |
 | `Grounds.seed` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.seed` |
-| `IsForcedInterval` | structure | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.IsForcedInterval` |
+| `Grounds.settledBundle` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledBundle` |
+| `Grounds.settledRegion` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledRegion` |
+| `Grounds.survivors` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.survivors` |
 | `L` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.L` |
 | `Licensed` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Licensed` |
-| `LowerBound` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.LowerBound` |
 | `MarketRun` | structure | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.MarketRun` |
 | `Occurrence` | structure | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Occurrence` |
 | `Occurrence.toSub` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Occurrence.toSub` |
+| `Outcome` | inductive | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Outcome` |
 | `Party` | inductive | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.Party` |
-| `Pinned` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.Pinned` |
 | `Record` | abbrev | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Record` |
 | `RecordEntry` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.RecordEntry` |
 | `RecordState` | structure | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.RecordState` |
 | `RowAdmitted` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert.RowAdmitted` |
-| `Seed` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Seed` |
-| `Seed.liveStr` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Seed.liveStr` |
-| `Seed.liveSub` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Seed.liveSub` |
-| `Settlement` | structure | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Settlement` |
 | `Source` | inductive | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Source` |
-| `StrItem` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.StrItem` |
-| `StrKind` | inductive | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.StrKind` |
 | `Strengths` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.Strengths` |
-| `SubItem` | structure | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.SubItem` |
 | `Supported` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Supported` |
-| `UpperBound` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.UpperBound` |
 | `VerdictCert` | structure | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert` |
 | `X` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.X` |
-| `XA` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.XA` |
-| `XAY` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.XAY` |
+| `X` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.X` |
+| `XA` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.XA` |
+| `XA` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.XA` |
+| `XAY` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.XAY` |
+| `XAY` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.XAY` |
 | `Y` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.Y` |
+| `Y` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.Y` |
+| `Z` | abbrev | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.Z` |
+| `applOcc` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.applOcc` |
 | `applRow` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.applRow` |
 | `baseRun` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.RecordFixture.baseRun` |
-| `c` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Form.c` |
-| `cert` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.cert` |
+| `cert` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.cert` |
+| `citesRetired` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.citesRetired` |
 | `constitutive` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.constitutive` |
 | `coordList` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.coordList` |
 | `dayGap` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.dayGap` |
 | `decideLicensed` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.decideLicensed` |
 | `defeatRun` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.RecordFixture.defeatRun` |
 | `docket` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.docket` |
+| `docketAt` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.docketAt` |
 | `docketDefeatA` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.docketDefeatA` |
 | `dp` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.dp` |
-| `empty` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.empty` |
-| `forcedBundle` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.forcedBundle` |
-| `forcedRegion` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.forcedRegion` |
 | `frame` | def | 2026-10-20-warrant-enforcement-semantics | note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.frame` |
 | `grounds` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.grounds` |
+| `grounds` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.grounds` |
 | `hiCert` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.hiCert` |
 | `interface` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.interface` |
-| `le` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.le` |
 | `loCert` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.loCert` |
 | `negY` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.negY` |
 | `occA` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occA` |
+| `occA` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occA` |
 | `occP` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occP` |
+| `occP` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occP` |
 | `occS` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occS` |
+| `occS` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occS` |
+| `occZ` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occZ` |
 | `odds` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.odds` |
-| `of` | class | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.of` |
-| `pinCited` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.pinCited` |
-| `pinRows` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.pinRows` |
-| `pinRowsAt` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.pinRowsAt` |
+| `pinConsequent` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.pinConsequent` |
+| `pinsFalse` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse` |
 | `positionOf` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.positionOf` |
 | `premRow` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.premRow` |
 | `premiseRow` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.premiseRow` |
@@ -1975,33 +2095,36 @@ change, and the count of those is the size of the free choice remaining.
 | `recordAuth` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.recordAuth` |
 | `recordNoAuth` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.recordNoAuth` |
 | `recordState` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.recordState` |
-| `row` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Form.row` |
+| `refuteX` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.refuteX` |
+| `regionOn` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.regionOn` |
+| `retiredIds` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.retiredIds` |
 | `rowGap` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.rowGap` |
 | `rowUnits` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.rowUnits` |
 | `rowsAt` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.rowsAt` |
+| `rowsRebutted` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.rowsRebutted` |
 | `runs` | def | 2026-10-20-warrant-enforcement-semantics | note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.RecordFixture.runs` |
 | `r₁` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.r₁` |
 | `r₂` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.r₂` |
 | `schedLive` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.schedLive` |
+| `schedRebutted` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.schedRebutted` |
 | `schedWithheld` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.schedWithheld` |
-| `seed` | def | 2026-10-20-warrant-enforcement-semantics | prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.seed` |
+| `seed` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.seed` |
 | `seg` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.seg` |
+| `settleForm` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.settleForm` |
+| `settleOutcome` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome` |
 | `settledDisagree` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.settledDisagree` |
-| `settledTerm` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.settledTerm` |
 | `settlement` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.settlement` |
+| `settlementAt` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.settlementAt` |
 | `slackMass` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.slackMass` |
-| `specialize` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.specialize` |
 | `stDefeat` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.stDefeat` |
 | `stage` | def | 2026-10-20-warrant-enforcement-semantics | wiki, note, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.stage` |
 | `strItem` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.strItem` |
 | `strengthRow` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.strengthRow` |
 | `strengths` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.strengths` |
 | `subItem` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.subItem` |
-| `toForceRow` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.toForceRow` |
+| `toForceRow` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.toForceRow` |
 | `trace` | def | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.WarrantEntitlement.trace` |
-| `truth` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.truth` |
 | `verdictCert` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Witness.verdictCert` |
 | `wAY` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.wAY` |
 | `warrantEnforcer` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.warrantEnforcer` |
-| `widenSeed` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.WarrantEntitlement.widenSeed` |
 

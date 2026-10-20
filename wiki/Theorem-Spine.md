@@ -394,6 +394,27 @@ The two conclusions are logically independent: legitimacy does not give low erro
 error does not give legitimacy.  The Logical-Induction realization is one route to the
 uptake side, not part of the spine.
 
+**Theorem 7.3 (The odds bankroll; warrant round).**  Let the enforcer hold, at each date, the
+compiled position of a presentation, and let a live world `v'` clear every enforced row of every
+date `t ≤ n` with a surplus dominating every live world's deficit on that row by `ρ`.  Then the
+enforcer's assessed net worth at every live world at date `n` is at least `−3ρ`, the market
+maker's constant plus the trading firm's floor times the odds; intensity, tolerance and
+horizon do not appear.  `WarrantEntitlement.netWorth_ge_neg_odds`, `liability_of_odds`,
+`warrant_normative_inductor` (**LEAN**; the chain lemmas of the same round are **registered**
+`warrant.*`).  Across one *reopening* — a settlement step that removes rows — the slack
+witness changes and the bound is `−3ρ(2 + ρ)` (`netWorth_ge_neg_odds_reopened`;
+`Fixture.liability_rebutted` **registered** `rebuttal.liability-rebutted`); the smaller
+constant is refuted by an exact exhibit (**FIX**, item 123).
+
+**Theorem 7.4 (Rebuttal by settlement).**  `settleForm` keeps exactly the specialized rows of
+forms none of whose premise, antecedent or consequent coordinate is pinned false
+(`WarrantEntitlement.settleForm_eq_some_iff`; **registered** `rebuttal.settleform-sound`), and
+the rows it removes force the antecedent to zero (`strength_contraposes`).  Under it the
+settled region shrinks when no form leaves (`settledRegion_anti_of_survivors_eq`) and, across
+a reopening, both regions lie inside the kept rows' pre-step region (`reopening_bound`).  The
+seed's statics and the convergence profile are on [Seed Theory](Seed-Theory); the first
+end-to-end run is `EndToEndWitness.Run.witness` (**LEAN**, unregistered, item 35).
+
 ## 8. Fixed-era service and affordability (Layer I)
 
 Every result in this section is **paper-derived** with exact fixtures, from the
