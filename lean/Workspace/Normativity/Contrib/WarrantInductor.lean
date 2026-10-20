@@ -115,6 +115,27 @@ theorem region_iff (x : Fin d → ℚ) :
   rw [forcedRegion_iff, seed_liveSub]
   simp [seed, Occurrence.toSub]
 
+/-- **Membership in the canonical bundle**: a survivor's specialized row under its citation, a
+live structural row's specialized row under its identity, or a pin row. -/
+theorem mem_bundle_iff (c : CitedRow (Cite d) d) :
+    c ∈ N.bundle ↔
+      (∃ o ∈ N.survivors, c = ⟨Cite.sub o.id, specialize N.settlement o.form.row⟩) ∨
+      (∃ it ∈ N.seed.liveStr N.docket, c = ⟨Cite.str it.id, specialize N.settlement it.row⟩) ∨
+      (∃ i, ∃ r ∈ N.settlement.pinRowsAt i, c = ⟨Cite.settled i, r⟩) := by
+  unfold bundle forcedBundle
+  rw [N.seed_liveSub]
+  simp only [List.append_nil, List.mem_append, List.mem_map, pinCited, List.mem_flatMap,
+    List.mem_finRange, true_and, seed, Occurrence.toSub]
+  constructor
+  · rintro ((⟨it, ⟨o, ho, rfl⟩, rfl⟩ | ⟨it, hit, rfl⟩) | ⟨i, r, hr, rfl⟩)
+    · exact Or.inl ⟨o, ho, rfl⟩
+    · exact Or.inr (Or.inl ⟨it, hit, rfl⟩)
+    · exact Or.inr (Or.inr ⟨i, r, hr, rfl⟩)
+  · rintro (⟨o, ho, rfl⟩ | ⟨it, hit, rfl⟩ | ⟨i, r, hr, rfl⟩)
+    · exact Or.inl (Or.inl ⟨⟨o.form, o.id⟩, ⟨o, ho, rfl⟩, rfl⟩)
+    · exact Or.inl (Or.inr ⟨it, hit, rfl⟩)
+    · exact Or.inr ⟨i, r, hr, rfl⟩
+
 /-- Without structural rows the canonical bundle is the settled bundle of the grounds. -/
 theorem bundle_eq_settledBundle (h : N.structural = []) :
     N.bundle = N.grounds.settledBundle N.docket N.settlement := by
@@ -246,14 +267,7 @@ theorem mem_compileAt {N : NormState d} {w : Fin d → ℚ} {c : CitedRow (Cite 
     (∃ i, ∃ r ∈ N.settlement.pinRowsAt i, c = ⟨Cite.settled i, r⟩) := by
   unfold compileAt at hc
   split_ifs at hc with h
-  · unfold NormState.bundle forcedBundle at hc
-    rw [N.seed_liveSub] at hc
-    simp only [List.append_nil, List.mem_append, List.mem_map, pinCited, List.mem_flatMap,
-      List.mem_finRange, true_and, NormState.seed, Occurrence.toSub] at hc
-    rcases hc with (⟨it, ⟨o, ho, rfl⟩, rfl⟩ | ⟨it, hit, rfl⟩) | ⟨i, r, hr, rfl⟩
-    · exact Or.inl ⟨o, ho, rfl⟩
-    · exact Or.inr (Or.inl ⟨it, hit, rfl⟩)
-    · exact Or.inr (Or.inr ⟨i, r, hr, rfl⟩)
+  · exact (N.mem_bundle_iff c).1 hc
   · simp at hc
 
 /-! ## 4. The adapter: a finite menu scored by certified functionals -/
@@ -575,10 +589,10 @@ open EnforcedCompiler in
 Given a process of normative states `N`, a fragment map, feasibility witnesses and
 tolerances; an admission of every date's grounds into the accounted obligation state and
 well-formed grounds; a computable deductive process and an effective enforcer (the two
-computability inputs); a slack plausible world at every date dominating the compiled rows at
-the odds `ρ` (affordability); and an adapter protocol whose service dates carry checked
-witnesses, certified exclusion and margins, the adequacy semantics and the declared
-constants — then on the augmented deductive market of the compiled schedule:
+computability inputs); a bound `B` on the enforcer's assessed liability (affordability); and
+an adapter protocol whose service dates carry checked witnesses, certified exclusion and
+margins, the adequacy semantics and the declared constants — then on the augmented
+deductive market of the compiled schedule:
 
 1. the market is a logical inductor over the deductive process;
 2. at every checked date every row of the state's bundle has excess at most the tolerance at
@@ -589,7 +603,10 @@ constants — then on the augmented deductive market of the compiled schedule:
 4. the Progress bound holds, its `PracticalUptake` derived from 2 and 3.
 
 The semantic inputs are the admission, the adequacy losses and the declared constants; the
-computability inputs are `process` and `hE`. -/
+computability inputs are `process` and `hE`, the latter discharged for finite-phase
+schedules by `WarrantSchedule.computation`; the affordability input is `hliab`, discharged
+by `WarrantSchedule.liability` (one slack world) or `WarrantSchedule.liability_reopened`
+(one reopening). -/
 theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ → Req}
     {O : ObligationState S anchor} {Q : Type} [Fintype Q] [DecidableEq Q]
     (N : ℕ → NormState d) (F : FragmentMap d) (wit : ℕ → Fin d → ℚ) (tol : ℕ → ℚ)
@@ -597,10 +614,10 @@ theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ 
     (adm : ∀ n, Admission O (N n).grounds) (hwf : ∀ n, (N n).grounds.WellFormed)
     (DP : DeductiveProcess) (process : DeductiveProcessComputation DP)
     (hE : EffectiveEnforcerComputation (schedule N F wit tol htol).enforcer)
-    (ρ : ℚ) (hρ : 0 ≤ ρ)
-    (hslack : ∀ n, ∃ v' : PCWorld, v'.ConsistentWith (DP.D n) ∧
-      ∀ w : PCWorld, w.ConsistentWith (DP.D n) → ∀ t ≤ n, ∀ c ∈ compileAt (N t) (wit t),
-        -(seedGap F.ι c.row w) ≤ ρ * seedGap F.ι c.row v')
+    (B : ℝ)
+    (hliab : ∀ n (v : PCWorld), v.ConsistentWith (DP.D n) →
+      -B ≤ (realizedEnforcer DP ((schedule N F wit tol htol).enforcer.adaptive DP)).netWorth
+        ((schedule N F wit tol htol).market DP) v n)
     (A : AdapterProtocol O d Q)
     (hcheck : ∀ s ∈ A.services, checkCompiled (N s).bundle (wit s) = true)
     (hex : ∀ s ∈ A.services, (A.prob s).Excludes (N s).bundle)
@@ -641,7 +658,7 @@ theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ 
     rw [hbundle s hs]; exact hmar s hs
   refine ⟨?_, ?_, ?_, ?_, ?_⟩
   · -- 1. preservation
-    exact W.isLogicalInductor DP process hE (3 * (ρ : ℝ)) (W.liability DP ρ hρ hslack)
+    exact W.isLogicalInductor DP process hE B hliab
   · -- 2. conformance at checked dates
     intro n hn c hc
     have hy : (W.bundle n).Region (wit n) := region_compileAt hn
@@ -674,6 +691,7 @@ theorem warrant_inductor {Occ Req : Type*} {S : Protocol Occ Req} {anchor : Occ 
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.interval
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.seed_liveSub
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.region_iff
+#print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.mem_bundle_iff
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.bundle_eq_settledBundle
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.region_iff_settledRegion
 #print axioms Workspace.Normativity.Contrib.WarrantInductor.NormState.interval_spec

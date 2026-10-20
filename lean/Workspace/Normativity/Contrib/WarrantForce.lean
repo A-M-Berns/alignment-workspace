@@ -39,6 +39,7 @@ Names are provisional (`AGENTS.md` standard 6).
 import Workspace.Normativity.Contrib.WarrantEntitlement
 import Workspace.Normativity.Contrib.EnforcedCompiler
 import Workspace.Normativity.Contrib.ProjectionCalibrated
+import Workspace.Normativity.Contrib.ProjectionPrimrec
 
 namespace Workspace.Normativity.Contrib.WarrantForce
 
@@ -124,6 +125,38 @@ def excess (r : Row d) (p : Fin d → ℚ) : ℚ := ∑ j, r.a j * p j - r.b
 
 lemma excess_nonpos_of_sat {r : Row d} {p : Fin d → ℚ} (h : r.Sat p) : excess r p ≤ 0 := by
   unfold excess Row.Sat at *; linarith
+
+/-- At a world the settlement pins, the specialized row's gap is the row's gap. -/
+theorem seedGap_specialize (ι : Fin d → Sentence) (F : Settlement d) (r : Row d) (v : PCWorld)
+    (hv : F.Pinned fun j => ratPayout v (ι j)) :
+    seedGap ι (specialize F r) v = seedGap ι r v := by
+  unfold seedGap specialize
+  simp only
+  have key : ∀ j, r.a j * ratPayout v (ι j) =
+      (if (F.val j).isSome then 0 else r.a j) * ratPayout v (ι j) + settledTerm F r j := by
+    intro j
+    unfold settledTerm
+    cases h : F.val j with
+    | none => simp
+    | some b => simp [hv j b h]
+  rw [show (∑ j, r.a j * ratPayout v (ι j)) =
+      ∑ j, ((if (F.val j).isSome then 0 else r.a j) * ratPayout v (ι j) + settledTerm F r j) from
+      Finset.sum_congr rfl (fun j _ => key j), Finset.sum_add_distrib]
+  ring
+
+/-- At a world the settlement pins, a pin row's gap is zero. -/
+theorem seedGap_pinRow (ι : Fin d → Sentence) (F : Settlement d) {i : Fin d} {r : Row d}
+    (hr : r ∈ F.pinRowsAt i) (v : PCWorld) (hv : F.Pinned fun j => ratPayout v (ι j)) :
+    seedGap ι r v = 0 := by
+  unfold Settlement.pinRowsAt at hr
+  cases h : F.val i with
+  | none => simp [h] at hr
+  | some b =>
+      simp only [h, Option.elim, List.mem_cons, List.mem_singleton, List.not_mem_nil,
+        or_false] at hr
+      have hp := hv i b h
+      rcases hr with rfl | rfl <;>
+        simp [seedGap, ite_mul, neg_mul, one_mul, zero_mul, Finset.sum_ite_eq', hp]
 
 /-! ## 2. The schedule and the enforcer -/
 
@@ -555,7 +588,125 @@ theorem functional_at_market (n : ℕ) (y : Fin d → ℚ) (hy : (W.bundle n).Re
 
 end WarrantSchedule
 
-/-! ## 4. Nonvacuity
+/-! ## 4. The enforcer is effective data
+
+`EnforcedCompiler` discharges the augmented market's computability from one hypothesis: the
+enforcer's trade map is primitive recursive in the date, the stage and the ordinary trade
+list.  For the warrant enforcer the trade map is a fixed syntax tree in the date `n` and the
+intensity `κ` once the day's bundle is fixed (`tradesOf`), and a schedule whose bundle runs
+through finitely many phases (`stepBundle`) has a primitive recursive trade map
+(`WarrantSchedule.computation`).  Everything here is plumbing. -/
+
+section Primrec
+
+open Workspace.Normativity.Contrib.ProjectionPrimrec
+
+/-- The warrant enforcer's day-`n` trades on a bundle at intensity `κ`, as a term in `n` and
+`κ` with the bundle, the fragment and the coordinates fixed. -/
+def tradesOf (ι : Fin d → Sentence) (coords : List Sentence) (B : Bundle (Cite d) d) (n : ℕ)
+    (κ : ℚ) : List (EF × Sentence) :=
+  coords.map fun φ =>
+    (ROIBudget.sumFeatures (B.map fun c =>
+      EF.mul (EF.const (κ * ∑ j, if ι j = φ then -c.row.a j else 0))
+        (EF.max (EF.const 0) (EF.add (EF.const (-c.row.b))
+          (EF.neg (ROIBudget.sumFeatures (coords.map fun ψ =>
+            EF.mul (EF.const (∑ j, if ι j = ψ then -c.row.a j else 0)) (EF.price ψ n))))))), φ)
+
+lemma ofFn_get_map {α β : Type*} (l : List α) (g : α → β) :
+    (List.ofFn fun i : Fin l.length => g (l.get i)) = l.map g := by
+  apply List.ext_get
+  · simp
+  · intro i h1 h2
+    simp
+
+/-- The term is the enforcement strategy's trade list. -/
+theorem tradesOf_eq (ι : Fin d → Sentence) (coords : List Sentence) (hnodup : coords.Nodup)
+    (B : Bundle (Cite d) d) (κ : ℚ) (hκ : 0 ≤ κ) (n : ℕ) :
+    tradesOf ι coords B n κ = (enforcementStrategy (bundlePres ι coords hnodup B κ hκ) n).trades := by
+  unfold tradesOf enforcementStrategy coefficientFeature
+  simp only [bundlePres_coordList]
+  refine List.map_congr_left fun φ _ => ?_
+  congr 2
+  change List.map _ B =
+    List.ofFn fun i : Fin (bundlePres ι coords hnodup B κ hκ).rows.length =>
+      (fun r : Row => EF.mul (EF.const (r.intensity * r.coeff φ))
+        (violationFeature (bundlePres ι coords hnodup B κ hκ) r n))
+        ((bundlePres ι coords hnodup B κ hκ).rows.get i)
+  refine Eq.trans ?_ (ofFn_get_map (bundlePres ι coords hnodup B κ hκ).rows
+    (fun r : Row => EF.mul (EF.const (r.intensity * r.coeff φ))
+      (violationFeature (bundlePres ι coords hnodup B κ hκ) r n))).symm
+  rw [bundlePres_rows, List.map_map]
+  refine List.map_congr_left fun c _ => ?_
+  simp only [Function.comp, violationFeature, priceCombo, bundlePres_coordList, toForceRow]
+
+lemma primrec_map_const {α β γ : Type*} [Primcodable β] [Primcodable γ] (l : List α)
+    (f : β → α → γ) (hf : ∀ a ∈ l, Primrec fun x => f x a) :
+    Primrec fun x => l.map (f x) := by
+  induction l with
+  | nil => exact (Primrec.const []).of_eq fun _ => rfl
+  | cons a l ih =>
+      have h := Primrec.list_cons.comp (hf a (List.mem_cons_self ..))
+        (ih fun b hb => hf b (List.mem_cons_of_mem a hb))
+      exact h.of_eq fun x => rfl
+
+/-- The day's trades are primitive recursive in the date and the intensity, for a fixed
+bundle. -/
+theorem tradesOf_primrec (ι : Fin d → Sentence) (coords : List Sentence) (B : Bundle (Cite d) d) :
+    Primrec fun p : ℕ × ℚ => tradesOf ι coords B p.1 p.2 := by
+  unfold tradesOf
+  refine primrec_map_const coords _ fun φ _ => ?_
+  refine Primrec.pair ?_ (Primrec.const φ)
+  refine sumFeatures_primrec.comp ?_
+  refine primrec_map_const B _ fun c _ => ?_
+  refine efMul_primrec.comp ?_ ?_
+  · exact efConst_primrec.comp (ratMul_prim.comp Primrec.snd (Primrec.const _))
+  · refine efMax_primrec.comp (Primrec.const _) ?_
+    refine efAdd_primrec.comp (Primrec.const _) ?_
+    refine efNeg_primrec.comp (sumFeatures_primrec.comp ?_)
+    refine primrec_map_const coords _ fun ψ _ => ?_
+    exact efMul_primrec.comp (Primrec.const _) (efPrice_primrec.comp (Primrec.const ψ) Primrec.fst)
+
+/-- A bundle schedule through finitely many phases: `B` before the first threshold, the next
+bundle before the next, and the default from the last threshold on. -/
+def stepBundle (dflt : Bundle (Cite d) d) : List (ℕ × Bundle (Cite d) d) → ℕ → Bundle (Cite d) d
+  | [], _ => dflt
+  | (k, B) :: rest, n => if n < k then B else stepBundle dflt rest n
+
+theorem tradesOf_stepBundle_primrec (ι : Fin d → Sentence) (coords : List Sentence)
+    (dflt : Bundle (Cite d) d) (phases : List (ℕ × Bundle (Cite d) d)) :
+    Primrec fun p : ℕ × ℚ => tradesOf ι coords (stepBundle dflt phases p.1) p.1 p.2 := by
+  induction phases with
+  | nil => exact tradesOf_primrec ι coords dflt
+  | cons kB rest ih =>
+      obtain ⟨k, B⟩ := kB
+      have hcond : PrimrecPred fun p : ℕ × ℚ => p.1 < k :=
+        Primrec.nat_lt.comp Primrec.fst (Primrec.const k)
+      have h := Primrec.ite hcond (tradesOf_primrec ι coords B) ih
+      exact h.of_eq fun p => by
+        simp only [stepBundle]
+        split_ifs <;> rfl
+
+/-- **The warrant enforcer is effective data** when its bundle schedule runs through finitely
+many phases and its tolerance schedule is primitive recursive. -/
+theorem WarrantSchedule.computation (W : WarrantSchedule d) (dflt : Bundle (Cite d) d)
+    (phases : List (ℕ × Bundle (Cite d) d)) (hb : ∀ n, W.bundle n = stepBundle dflt phases n)
+    (htol : Primrec W.tol) : EnforcedCompiler.EffectiveEnforcerComputation W.enforcer := by
+  refine ⟨?_⟩
+  have hn : Primrec fun z : (ℕ × Finset Sentence) × List (EF × Sentence) => z.1.1 :=
+    Primrec.fst.comp Primrec.fst
+  have hκ : Primrec fun z : (ℕ × Finset Sentence) × List (EF × Sentence) => W.κ z.1.1 z.2 := by
+    have := calibratedIntensity_primrec.comp
+      ((hn.pair (tradeListAbsBound_primrec.comp Primrec.snd)).pair (htol.comp hn))
+    exact this.of_eq fun z => rfl
+  have h := (tradesOf_stepBundle_primrec W.ι W.coords dflt phases).comp (hn.pair hκ)
+  refine h.of_eq fun z => ?_
+  show tradesOf W.ι W.coords (stepBundle dflt phases z.1.1) z.1.1 (W.κ z.1.1 z.2) =
+    (enforcementStrategy (W.presAt z.1.1 z.2) z.1.1).trades
+  rw [WarrantSchedule.presAt, ← hb, tradesOf_eq]
+
+end Primrec
+
+/-! ## 5. Nonvacuity
 
 A one-coordinate schedule with the empty bundle at every date: its enforcer trades nothing,
 its account's net worth is `0`, and the transport theorem is inhabited by the cube face. -/
@@ -607,6 +758,8 @@ end Witness
 #print axioms Workspace.Normativity.Contrib.WarrantForce.rowGap_toForceRow
 #print axioms Workspace.Normativity.Contrib.WarrantForce.excess
 #print axioms Workspace.Normativity.Contrib.WarrantForce.excess_nonpos_of_sat
+#print axioms Workspace.Normativity.Contrib.WarrantForce.seedGap_specialize
+#print axioms Workspace.Normativity.Contrib.WarrantForce.seedGap_pinRow
 #print axioms Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule
 #print axioms Workspace.Normativity.Contrib.WarrantForce.tradeListAbsBound_nonneg
 #print axioms Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.κ
@@ -648,6 +801,14 @@ end Witness
 #print axioms Workspace.Normativity.Contrib.SeedStatics.BoundCert.transport
 #print axioms Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.bracket_at_market
 #print axioms Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.functional_at_market
+#print axioms Workspace.Normativity.Contrib.WarrantForce.tradesOf
+#print axioms Workspace.Normativity.Contrib.WarrantForce.ofFn_get_map
+#print axioms Workspace.Normativity.Contrib.WarrantForce.tradesOf_eq
+#print axioms Workspace.Normativity.Contrib.WarrantForce.primrec_map_const
+#print axioms Workspace.Normativity.Contrib.WarrantForce.tradesOf_primrec
+#print axioms Workspace.Normativity.Contrib.WarrantForce.stepBundle
+#print axioms Workspace.Normativity.Contrib.WarrantForce.tradesOf_stepBundle_primrec
+#print axioms Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.computation
 #print axioms Workspace.Normativity.Contrib.WarrantForce.Witness.ι
 #print axioms Workspace.Normativity.Contrib.WarrantForce.Witness.schedule
 #print axioms Workspace.Normativity.Contrib.WarrantForce.Witness.day_value_zero
