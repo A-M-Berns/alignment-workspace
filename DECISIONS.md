@@ -248,6 +248,15 @@ commit.
   contraposes under settlement is acceptable or the warrant's form changes (item 113);
   taste about what a reason's security is, which no theorem here decides.
 
+- **Confirm or strike the 2026-08-08 and 2026-08-09 rulings landed on 2026-10-21 (M5 of
+  the rebuttal-and-end-to-end dispatch).**  Past-self charges burn; seam ordering "reasons
+  constraining → revising reasons → both"; strength selection is locked selection.  They
+  were landed from the seed-statics round's citation of its dispatch, not from this file,
+  and the past-self-burn question for re-selection under a canonical joint rule (the
+  seed-statics round's outstanding action 1) is still open.
+  *Turns on:* whether the conversational rulings are what the maintainer meant, and
+  whether a re-selection burns — taste about the trace discipline the round lacks.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -5932,3 +5941,63 @@ fixture is the standing counterexample.  *Rejected alternative:* per-row ports a
 seed-statics branch, with the orphan accepted as the warrant's content — a defeasible
 warrant does not contrapose, and the market would pay without bound for a conclusion the
 warrant never drew.
+
+### 2026-10-21 — rebuttal by settlement: a form whose consequent is pinned false is rebutted, whose antecedent is pinned false is vacuous, whose premise is pinned false retires its occurrence; rebuttal does not discount applicability; interval monotonicity is traded for a reopening account; the seed statics become one file
+
+**Maintainer rulings, landed as the first commit of the rebuttal-and-end-to-end round**
+(`prompts/2026-10-21-rebuttal-and-end-to-end/PROMPT.md`; the round ships in pull request
+#129 together with the warrant-enforcement-semantics round).
+
+**M1 — rebuttal by settlement.**  A `strength` or `applicability` form whose consequent
+coordinate is pinned false by settlement is *rebutted*: its row leaves the region.  The
+warrant said "X∧A makes Y likely"; it does not say "¬Y, so not X∧A".  A linear row that
+contraposes says more than the warrant did, and the market pays for the difference (the
+orphan pin of `WarrantEntitlement.Fixture.orphan_region_nonempty`, item 112).
+
+**M2 — vacuity and retirement.**  A `strength` or `applicability` form whose antecedent
+coordinate is pinned false is *vacuous* and leaves.  A `premise` form whose sentence is
+pinned false *retires its occurrence*: every row of that occurrence leaves.  A refuted
+premise is a case that did not arise, not an inconsistency; it must not empty the joint
+region and withhold force on unrelated warrants.
+
+**M3 — no discount on applicability.**  A rebuttal does not lower the applicability
+claim.  Undercut attacks `A_ρ(n)`; rebuttal attacks the conclusion; they stay distinct.
+This closes the gap left since the August defeat exposition, where rebuttal had no
+mechanism in the statics.
+
+**M4 — monotonicity is traded for reopening.**  Under M1–M2 settlement can widen a forced
+interval.  That is accepted: a rebuttal is a *reopening* in the sense of the convergence
+round (summable reopenings converge), and the global monotonicity of
+`IsForcedInterval.mono` is replaced by monotonicity on the coordinates settlement pins plus
+a reopening account.
+
+**M6 — one copy.**  The seed declarations ported into `WarrantEntitlement.lean` by the
+warrant-enforcement-semantics round and the branch's `SeedStatics.lean` become one file,
+`lean/Workspace/Normativity/Contrib/SeedStatics.lean`, on `main`;
+`WarrantEntitlement.lean` imports it.  Pull requests #102 and #103 are superseded by the
+round's Part B and are not merged; the maintainer closes them with a pointer.
+
+### 2026-10-21 — the 2026-08-08 and 2026-08-09 rulings landed from the seed-statics round's citation, subject to confirmation (M5)
+
+**Landed as instructed by M5 of the same dispatch, marked for the maintainer to confirm or
+strike.**  These rulings were taken in conversation, cited by the seed-statics round
+(`projects/normativity/seed/rounds/2026-09-16-seed-statics/REPORT.md`, friction F9) from
+its dispatch, and had no dated entry here.
+
+**2026-08-08 (1) — past-self charges burn.**  A mechanically filed past-self charge burns:
+it is consumed on filing and does not carry as recomputed state.  The seed-statics round's
+outstanding question — whether a re-selection of a warrant strength under a canonical joint
+rule is such a charge (burns, so hysteresis stands without an external challenger) or
+recomputed state (does not burn) — is not decided by this entry and stays queued below.
+
+**2026-08-08 (6) — seam ordering.**  The seams run "reasons constraining → revising reasons
+→ both": constraint by reasons is prior to revision of reasons, and the joint case is
+taken after both.
+
+**2026-08-09 — strength selection is locked selection.**  A warrant's strength is
+learnable by selection among nearby live candidate bounds, and a selection once taken is
+locked rather than recomputed; the moral reading's objection — that the moral fixture wants
+no lock, selection there being order-dependent (`STABILIZATION.md` §4 of the seed-statics
+round) — is noted and not answered by the ruling.
+
+*Confirmation queued under Awaiting the author.*
