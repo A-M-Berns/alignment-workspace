@@ -669,10 +669,13 @@ theorem reopening_bound (G : Grounds d) (st : DocketState) {F F' : Settlement d}
     fun x hx => hK x ((settledRegion_subset_kept G st h x).2 hx)⟩
 
 end Rebuttal
-/-- **Admissible** (P1): the settled region of the grounds contains the verdict — some
-region point gives `φ` the value `v`. -/
+/-- **Admissible on a bundle**: the bundle's region contains the verdict — some region point
+gives `φ` the value `v`. -/
+def AdmissibleOn (B : Bundle (Cite d) d) (φ : Fin d) (v : ℚ) : Prop := ∃ x, B.Region x ∧ x φ = v
+
+/-- **Admissible** (P1): the settled region of the grounds contains the verdict. -/
 def Admissible (G : Grounds d) (st : DocketState) (F : Settlement d) (φ : Fin d) (v : ℚ) :
-    Prop := ∃ x, G.settledRegion st F x ∧ x φ = v
+    Prop := AdmissibleOn (G.settledBundle st F) φ v
 
 /-- **A verdict certificate**: a lower and an upper bound certificate, each row cited by
 occurrence (or a pin, or a cube face), and the two endpoints with the region points that
@@ -725,15 +728,25 @@ instance (c : VerdictCert d m m' φ) (B : Bundle (Cite d) d) : Decidable (c.Cite
 
 end VerdictCert
 
-/-- **Supported** (P1): the certificate's positively weighted rows are cited into the settled
-bundle — a survivor's row under that occurrence's citation, a pin, or a cube face — its
-endpoints bracket the verdict, and both endpoints are attained in the settled region. -/
+/-- **Supported on a bundle**: the certificate's positively weighted rows are cited into the
+bundle, its endpoints bracket the verdict, and both endpoints are attained in the bundle's
+region. -/
+def SupportedOn {m m' : ℕ} (B : Bundle (Cite d) d) (φ : Fin d) (v : ℚ)
+    (c : VerdictCert d m m' φ) : Prop :=
+  c.CitesLive B ∧
+  -c.lo.value ≤ v ∧ v ≤ c.hi.value ∧
+  (B.Region c.loPoint ∧ c.loPoint φ = -c.lo.value) ∧
+  (B.Region c.hiPoint ∧ c.hiPoint φ = c.hi.value)
+
+instance {m m' : ℕ} (B : Bundle (Cite d) d) (φ : Fin d) (v : ℚ) (c : VerdictCert d m m' φ) :
+    Decidable (SupportedOn B φ v c) := by
+  unfold SupportedOn; infer_instance
+
+/-- **Supported** (P1): supported on the settled bundle — a survivor's row under that
+occurrence's citation, a pin, or a cube face. -/
 def Supported {m m' : ℕ} (G : Grounds d) (st : DocketState) (F : Settlement d) (φ : Fin d)
     (v : ℚ) (c : VerdictCert d m m' φ) : Prop :=
-  c.CitesLive (G.settledBundle st F) ∧
-  -c.lo.value ≤ v ∧ v ≤ c.hi.value ∧
-  (G.settledRegion st F c.loPoint ∧ c.loPoint φ = -c.lo.value) ∧
-  (G.settledRegion st F c.hiPoint ∧ c.hiPoint φ = c.hi.value)
+  SupportedOn (G.settledBundle st F) φ v c
 
 instance {m m' : ℕ} (G : Grounds d) (st : DocketState) (F : Settlement d) (φ : Fin d) (v : ℚ)
     (c : VerdictCert d m m' φ) : Decidable (Supported G st F φ v c) := by
@@ -762,13 +775,18 @@ theorem licensed_supported {m m' : ℕ} {R : RecordState d} {φ : Fin d} {v : �
     {c : VerdictCert d m m' φ} {event : ℕ} (h : Licensed R φ v c event) :
     Supported R.grounds R.docket R.settlement φ v c := h.1
 
+/-- **Supported → Admissible on any bundle**, by rational convexity. -/
+theorem supportedOn_admissibleOn {m m' : ℕ} {B : Bundle (Cite d) d} {φ : Fin d} {v : ℚ}
+    {c : VerdictCert d m m' φ} (h : SupportedOn B φ v c) : AdmissibleOn B φ v := by
+  obtain ⟨_, hlo, hhi, ⟨hloR, hloφ⟩, ⟨hhiR, hhiφ⟩⟩ := h
+  exact region_attains_between (B := B) hloR hhiR (by rw [hloφ]; exact hlo)
+    (by rw [hhiφ]; exact hhi)
+
 /-- **Supported → Admissible**, by rational convexity. -/
 theorem supported_admissible {m m' : ℕ} {G : Grounds d} {st : DocketState} {F : Settlement d}
     {φ : Fin d} {v : ℚ} {c : VerdictCert d m m' φ} (h : Supported G st F φ v c) :
-    Admissible G st F φ v := by
-  obtain ⟨_, hlo, hhi, ⟨hloR, hloφ⟩, ⟨hhiR, hhiφ⟩⟩ := h
-  exact region_attains_between (B := G.settledBundle st F) hloR hhiR (by rw [hloφ]; exact hlo)
-    (by rw [hhiφ]; exact hhi)
+    Admissible G st F φ v :=
+  supportedOn_admissibleOn h
 
 /-- **The chain.** -/
 theorem licence_chain {m m' : ℕ} {R : RecordState d} {φ : Fin d} {v : ℚ}
@@ -777,12 +795,11 @@ theorem licence_chain {m m' : ℕ} {R : RecordState d} {φ : Fin d} {v : ℚ}
       Admissible R.grounds R.docket R.settlement φ v :=
   ⟨licensed_supported h, supported_admissible (licensed_supported h)⟩
 
-/-- A supported verdict's certified endpoints are valid bounds on the settled region: the
-certificate is not only cited but sound. -/
-theorem Supported.valid {m m' : ℕ} {G : Grounds d} {st : DocketState} {F : Settlement d}
-    {φ : Fin d} {v : ℚ} {c : VerdictCert d m m' φ} (h : Supported G st F φ v c) :
-    (∀ x, G.settledRegion st F x → -c.lo.value ≤ x φ) ∧
-    (∀ x, G.settledRegion st F x → x φ ≤ c.hi.value) := by
+/-- A verdict supported on a bundle has certified endpoints that are valid bounds on the
+bundle's region: the certificate is not only cited but sound. -/
+theorem SupportedOn.valid {m m' : ℕ} {B : Bundle (Cite d) d} {φ : Fin d} {v : ℚ}
+    {c : VerdictCert d m m' φ} (h : SupportedOn B φ v c) :
+    (∀ x, B.Region x → -c.lo.value ≤ x φ) ∧ (∀ x, B.Region x → x φ ≤ c.hi.value) := by
   obtain ⟨⟨hlo, hhi⟩, _⟩ := h
   constructor
   · intro x hx
@@ -791,6 +808,13 @@ theorem Supported.valid {m m' : ℕ} {G : Grounds d} {st : DocketState} {F : Set
   · intro x hx
     have := c.hi.sound_of_pos x fun i hi => allowed_sat (hhi i hi).allowed hx
     linarith
+
+/-- A supported verdict's certified endpoints are valid bounds on the settled region. -/
+theorem Supported.valid {m m' : ℕ} {G : Grounds d} {st : DocketState} {F : Settlement d}
+    {φ : Fin d} {v : ℚ} {c : VerdictCert d m m' φ} (h : Supported G st F φ v c) :
+    (∀ x, G.settledRegion st F x → -c.lo.value ≤ x φ) ∧
+    (∀ x, G.settledRegion st F x → x φ ≤ c.hi.value) :=
+  SupportedOn.valid h
 
 /-! ## Part A — the two countermodels -/
 
@@ -2314,17 +2338,21 @@ end Fixture2
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledRegion_anti_of_survivors_eq
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledRegion_subset_kept
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.reopening_bound
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.AdmissibleOn
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Admissible
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert.RowAdmitted
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert.RowAdmitted.allowed
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert.CitesLive
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.SupportedOn
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Supported
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.RecordState
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Licensed
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.licensed_supported
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.supportedOn_admissibleOn
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.supported_admissible
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.licence_chain
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.SupportedOn.valid
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Supported.valid
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.φ
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.r₁
