@@ -54,426 +54,17 @@ Every structure has a nonvacuity witness in `Witness`.  Names are provisional
 (`AGENTS.md` standard 6).
 -/
 import Workspace.Normativity.Contrib.NormativeInductionInterface
+import Workspace.Normativity.Contrib.SeedStatics
 import Workspace.Deference.Contrib.GateIsLegitimacy
 import Workspace.Deference.Contrib.ReasonMediatedAuthorship
 
 namespace Workspace.Normativity.Contrib.WarrantEntitlement
 
 open Workspace.Normativity.Contrib.NormativeInductorComposition
+open Workspace.Normativity.Contrib.SeedStatics
 open Finset
 
 variable {d : ℕ}
-
-/-! ## Part 0 — the seed statics, ported -/
-
-/-- The rational truth value of a settled coordinate. -/
-def truth (b : Bool) : ℚ := if b then 1 else 0
-
-/-- A **settled fragment** over `d` coordinates: the settled ones carry a truth value. -/
-structure Settlement (d : ℕ) where
-  val : Fin d → Option Bool
-
-namespace Settlement
-
-/-- A price vector agrees with the settlement on every settled coordinate. -/
-def Pinned (F : Settlement d) (x : Fin d → ℚ) : Prop :=
-  ∀ i b, F.val i = some b → x i = truth b
-
-/-- `F ⊆ F'` with compatible valuations. -/
-def le (F F' : Settlement d) : Prop := ∀ i b, F.val i = some b → F'.val i = some b
-
-/-- The empty settlement. -/
-def empty (d : ℕ) : Settlement d := ⟨fun _ => none⟩
-
-theorem empty_pinned (x : Fin d → ℚ) : (empty d).Pinned x := by
-  intro i b h; simp [empty] at h
-
-theorem le_refl (F : Settlement d) : F.le F := fun _ _ h => h
-
-theorem Pinned.mono {F F' : Settlement d} (h : F.le F') {x : Fin d → ℚ} (hx : F'.Pinned x) :
-    F.Pinned x := fun i b hi => hx i b (h i b hi)
-
-/-- The two pin rows of a settled coordinate: `x i ≤ v` and `-x i ≤ -v`. -/
-def pinRowsAt (F : Settlement d) (i : Fin d) : List (Row d) :=
-  (F.val i).elim [] fun b =>
-    [⟨fun j => if j = i then 1 else 0, truth b⟩, ⟨fun j => if j = i then -1 else 0, -truth b⟩]
-
-/-- All pin rows. -/
-def pinRows (F : Settlement d) : List (Row d) := (List.finRange d).flatMap F.pinRowsAt
-
-lemma pinRowsAt_sat_iff (F : Settlement d) (i : Fin d) (x : Fin d → ℚ) :
-    (∀ r ∈ F.pinRowsAt i, r.Sat x) ↔ ∀ b, F.val i = some b → x i = truth b := by
-  unfold pinRowsAt
-  cases h : F.val i with
-  | none => simp
-  | some b =>
-    simp only [Option.elim, List.mem_cons, List.not_mem_nil, or_false,
-      forall_eq_or_imp, forall_eq, Option.some.injEq, forall_eq']
-    unfold Row.Sat
-    simp only [ite_mul, one_mul, neg_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ,
-      if_true]
-    constructor
-    · rintro ⟨h1, h2⟩; linarith
-    · intro h; constructor <;> linarith
-
-theorem pinRows_sat_iff (F : Settlement d) (x : Fin d → ℚ) :
-    (∀ r ∈ F.pinRows, r.Sat x) ↔ F.Pinned x := by
-  unfold pinRows Pinned
-  simp only [List.mem_flatMap, List.mem_finRange, true_and]
-  constructor
-  · intro h i b hi
-    exact (pinRowsAt_sat_iff F i x).1 (fun r hr => h r ⟨i, hr⟩) b hi
-  · rintro h r ⟨i, hr⟩
-    exact (pinRowsAt_sat_iff F i x).2 (h i) r hr
-
-end Settlement
-
-/-- The settled contribution of coordinate `i` to a row's left-hand side. -/
-def settledTerm (F : Settlement d) (r : Row d) (i : Fin d) : ℚ :=
-  (F.val i).elim 0 fun b => r.a i * truth b
-
-/-- **Specialization**: settled coordinates are substituted; the row becomes a row over
-the unsettled coordinates (zero coefficient elsewhere) with an adjusted constant. -/
-def specialize (F : Settlement d) (r : Row d) : Row d :=
-  ⟨fun i => if (F.val i).isSome then 0 else r.a i, r.b - ∑ i, settledTerm F r i⟩
-
-/-- On the pinned slice, the specialized row says exactly what the original row says. -/
-theorem specialize_sat_iff (F : Settlement d) (r : Row d) {x : Fin d → ℚ} (hx : F.Pinned x) :
-    (specialize F r).Sat x ↔ r.Sat x := by
-  unfold Row.Sat specialize
-  have key : ∀ i, r.a i * x i =
-      (if (F.val i).isSome then 0 else r.a i) * x i + settledTerm F r i := by
-    intro i
-    unfold settledTerm
-    cases h : F.val i with
-    | none => simp
-    | some b => simp [hx i b h]
-  simp only
-  rw [show (∑ i, r.a i * x i) =
-      ∑ i, ((if (F.val i).isSome then 0 else r.a i) * x i + settledTerm F r i) from
-      Finset.sum_congr rfl (fun i _ => key i), Finset.sum_add_distrib]
-  constructor <;> intro h <;> linarith
-
-/-- The three leverage forms of an endorsement, each carrying its strength `c`:
-`premise X c` is `P(X) ≥ c`; `applicability X XA c` is `P(X∧A) ≥ c·P(X)`;
-`strength XA XAY c` is `P(X∧A∧Y) ≥ c·P(X∧A)`. -/
-inductive Form (d : ℕ) where
-  | premise (X : Fin d) (c : ℚ)
-  | applicability (X XA : Fin d) (c : ℚ)
-  | strength (XA XAY : Fin d) (c : ℚ)
-  deriving DecidableEq
-
-namespace Form
-
-/-- The strength of a form. -/
-def c : Form d → ℚ
-  | premise _ c => c
-  | applicability _ _ c => c
-  | strength _ _ c => c
-
-/-- The row `a · x ≤ b` an endorsement compiles to. -/
-def row : Form d → Row d
-  | premise X c => ⟨fun j => if j = X then -1 else 0, -c⟩
-  | applicability X XA c => ⟨fun j => (if j = X then c else 0) + (if j = XA then -1 else 0), 0⟩
-  | strength XA XAY c => ⟨fun j => (if j = XA then c else 0) + (if j = XAY then -1 else 0), 0⟩
-
-theorem premise_sat_iff (X : Fin d) (c : ℚ) (x : Fin d → ℚ) :
-    (premise X c).row.Sat x ↔ c ≤ x X := by
-  unfold row Row.Sat
-  simp only [ite_mul, neg_mul, one_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
-  constructor <;> intro h <;> linarith
-
-theorem applicability_sat_iff (X XA : Fin d) (c : ℚ) (x : Fin d → ℚ) :
-    (applicability X XA c).row.Sat x ↔ c * x X ≤ x XA := by
-  unfold row Row.Sat
-  simp only [add_mul, Finset.sum_add_distrib, ite_mul, neg_mul, one_mul, zero_mul,
-    Finset.sum_ite_eq', Finset.mem_univ, if_true]
-  constructor <;> intro h <;> linarith
-
-theorem strength_sat_iff (XA XAY : Fin d) (c : ℚ) (x : Fin d → ℚ) :
-    (strength XA XAY c).row.Sat x ↔ c * x XA ≤ x XAY := by
-  unfold row Row.Sat
-  simp only [add_mul, Finset.sum_add_distrib, ite_mul, neg_mul, one_mul, zero_mul,
-    Finset.sum_ite_eq', Finset.mem_univ, if_true]
-  constructor <;> intro h <;> linarith
-
-end Form
-
-/-- A **substantive item**: a leverage form with a docket port.  Defeasible: a defeater
-landing on the port removes it from the live bundle. -/
-structure SubItem (d : ℕ) where
-  form : Form d
-  port : ℕ
-  deriving DecidableEq
-
-/-- The kinds a structural row may declare. -/
-inductive StrKind where
-  | dominance
-  | impartiality
-  | coherence
-  deriving DecidableEq
-
-/-- A **structural item**: a raw row of strength one with a kind and a surface id.
-Not defeasible by the docket; withdrawn only by a surface-change occurrence. -/
-structure StrItem (d : ℕ) where
-  row : Row d
-  kind : StrKind
-  id : ℕ
-
-/-- The **constitutive layer** as declared data: the standing set and the protected
-class of coordinates. -/
-structure Constitutive (d : ℕ) (A : Type*) where
-  standing : Finset A
-  protectedClass : Finset (Fin d)
-
-/-- A **seed**. -/
-structure Seed (d : ℕ) (A : Type*) where
-  sub : List (SubItem d)
-  str : List (StrItem d)
-  con : Constitutive d A
-
-/-- The **docket state**: ports with a landed defeater, and structural ids withdrawn by
-a surface-change occurrence. -/
-structure DocketState where
-  defeated : Finset ℕ
-  withdrawn : Finset ℕ
-  deriving DecidableEq
-
-/-- The quiet docket. -/
-def DocketState.quiet : DocketState := ⟨∅, ∅⟩
-
-/-- Live substantive items: port not defeated. -/
-def Seed.liveSub {A : Type*} (S : Seed d A) (st : DocketState) : List (SubItem d) :=
-  S.sub.filter fun it => it.port ∉ st.defeated
-
-/-- Live structural items: id not withdrawn. -/
-def Seed.liveStr {A : Type*} (S : Seed d A) (st : DocketState) : List (StrItem d) :=
-  S.str.filter fun it => it.id ∉ st.withdrawn
-
-/-- What a row of the forced bundle cites. -/
-inductive Cite (d : ℕ) where
-  | sub (port : ℕ)
-  | str (id : ℕ)
-  | settled (i : Fin d)
-  deriving DecidableEq
-
-/-- The pin rows, cited. -/
-def pinCited (F : Settlement d) : Bundle (Cite d) d :=
-  (List.finRange d).flatMap fun i => (F.pinRowsAt i).map fun r => ⟨Cite.settled i, r⟩
-
-/-- **The forced bundle** of a seed, a live warrant set `W`, a docket state and a
-settlement: every live specialized endorsement, plus the pin rows. -/
-def forcedBundle {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) : Bundle (Cite d) d :=
-  ((S.liveSub st ++ W).map fun it => ⟨Cite.sub it.port, specialize F it.form.row⟩) ++
-  ((S.liveStr st).map fun it => ⟨Cite.str it.id, specialize F it.row⟩) ++
-  pinCited F
-
-/-- **The forced region** `K(S ∪ W, F)`, at rational points. -/
-def forcedRegion {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) (x : Fin d → ℚ) : Prop :=
-  (forcedBundle S W st F).Region x
-
-instance {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) (x : Fin d → ℚ) : Decidable (forcedRegion S W st F x) := by
-  unfold forcedRegion; infer_instance
-
-/-- `checkCompiled` decides membership in the forced region. -/
-theorem forcedRegion_iff_check {A : Type*} (S : Seed d A) (W : List (SubItem d))
-    (st : DocketState) (F : Settlement d) (x : Fin d → ℚ) :
-    forcedRegion S W st F x ↔ checkCompiled (forcedBundle S W st F) x = true :=
-  (checkCompiled_iff _ _).symm
-
-lemma pinCited_sat_iff (F : Settlement d) (x : Fin d → ℚ) :
-    (∀ c ∈ pinCited F, c.row.Sat x) ↔ F.Pinned x := by
-  rw [← Settlement.pinRows_sat_iff]
-  unfold pinCited Settlement.pinRows
-  simp only [List.mem_flatMap, List.mem_finRange, true_and, List.mem_map]
-  constructor
-  · rintro h r ⟨i, hr⟩
-    exact h ⟨Cite.settled i, r⟩ ⟨i, r, hr, rfl⟩
-  · rintro h c ⟨i, r, hr, rfl⟩
-    exact h r ⟨i, hr⟩
-
-/-- **The forced region, read on the unspecialized rows.** -/
-theorem forcedRegion_iff {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) (x : Fin d → ℚ) :
-    forcedRegion S W st F x ↔
-      InCube x ∧ F.Pinned x ∧
-      (∀ it ∈ S.liveSub st ++ W, it.form.row.Sat x) ∧
-      (∀ it ∈ S.liveStr st, it.row.Sat x) := by
-  unfold forcedRegion Bundle.Region forcedBundle
-  simp only [List.mem_append, List.mem_map]
-  constructor
-  · rintro ⟨hcube, hrows⟩
-    have hpin : F.Pinned x := (pinCited_sat_iff F x).1 fun c hc => hrows c (Or.inr hc)
-    refine ⟨hcube, hpin, ?_, ?_⟩
-    · intro it hit
-      have := hrows ⟨Cite.sub it.port, specialize F it.form.row⟩ (Or.inl (Or.inl ⟨it, hit, rfl⟩))
-      exact (specialize_sat_iff F _ hpin).1 this
-    · intro it hit
-      have := hrows ⟨Cite.str it.id, specialize F it.row⟩ (Or.inl (Or.inr ⟨it, hit, rfl⟩))
-      exact (specialize_sat_iff F _ hpin).1 this
-  · rintro ⟨hcube, hpin, hsub, hstr⟩
-    refine ⟨hcube, ?_⟩
-    rintro c ((⟨it, hit, rfl⟩ | ⟨it, hit, rfl⟩) | hc)
-    · exact (specialize_sat_iff F _ hpin).2 (hsub it hit)
-    · exact (specialize_sat_iff F _ hpin).2 (hstr it hit)
-    · exact (pinCited_sat_iff F x).2 hpin c hc
-
-/-- **Monotonicity under settlement.**  More settlement, smaller region. -/
-theorem forcedRegion_anti {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    {F F' : Settlement d} (h : F.le F') {x : Fin d → ℚ} (hx : forcedRegion S W st F' x) :
-    forcedRegion S W st F x := by
-  rw [forcedRegion_iff] at hx ⊢
-  exact ⟨hx.1, hx.2.1.mono h, hx.2.2.1, hx.2.2.2⟩
-
-/-- `c` is a valid lower bound on `P(φ)` over the forced region. -/
-def LowerBound {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) (φ : Fin d) (c : ℚ) : Prop :=
-  ∀ x, forcedRegion S W st F x → c ≤ x φ
-
-/-- `c` is a valid upper bound on `P(φ)` over the forced region. -/
-def UpperBound {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) (φ : Fin d) (c : ℚ) : Prop :=
-  ∀ x, forcedRegion S W st F x → x φ ≤ c
-
-/-- **The forced interval** `[lo, hi]` of `φ`: valid bounds, both attained. -/
-structure IsForcedInterval {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) (φ : Fin d) (lo hi : ℚ) : Prop where
-  lower : LowerBound S W st F φ lo
-  upper : UpperBound S W st F φ hi
-  lo_mem : ∃ x, forcedRegion S W st F x ∧ x φ = lo
-  hi_mem : ∃ x, forcedRegion S W st F x ∧ x φ = hi
-
-namespace IsForcedInterval
-
-variable {A : Type*} {S : Seed d A} {W : List (SubItem d)} {st : DocketState} {F : Settlement d}
-  {φ : Fin d}
-
-theorem le {lo hi : ℚ} (I : IsForcedInterval S W st F φ lo hi) : lo ≤ hi := by
-  obtain ⟨x, hx, rfl⟩ := I.lo_mem
-  exact I.upper x hx
-
-theorem unique {lo hi lo' hi' : ℚ} (I : IsForcedInterval S W st F φ lo hi)
-    (I' : IsForcedInterval S W st F φ lo' hi') : lo = lo' ∧ hi = hi' := by
-  obtain ⟨x, hx, rfl⟩ := I.lo_mem
-  obtain ⟨x', hx', rfl⟩ := I'.lo_mem
-  obtain ⟨y, hy, rfl⟩ := I.hi_mem
-  obtain ⟨y', hy', rfl⟩ := I'.hi_mem
-  exact ⟨le_antisymm (I.lower x' hx') (I'.lower x hx),
-    le_antisymm (I'.upper y hy) (I.upper y' hy')⟩
-
-/-- **Monotonicity of forced intervals under settlement**: `I_φ(S, F') ⊆ I_φ(S, F)`. -/
-theorem mono {F' : Settlement d} (h : F.le F') {lo hi lo' hi' : ℚ}
-    (I : IsForcedInterval S W st F φ lo hi) (I' : IsForcedInterval S W st F' φ lo' hi') :
-    lo ≤ lo' ∧ hi' ≤ hi := by
-  obtain ⟨x, hx, rfl⟩ := I'.lo_mem
-  obtain ⟨y, hy, rfl⟩ := I'.hi_mem
-  exact ⟨I.lower x (forcedRegion_anti S W st h hx), I.upper y (forcedRegion_anti S W st h hy)⟩
-
-end IsForcedInterval
-
-/-- Defeat widening witness: one substantive item `P(0) ≥ 1/2` on one coordinate. -/
-def widenSeed : Seed 1 Unit :=
-  ⟨[⟨Form.premise 0 (1/2), 0⟩], [], ⟨∅, ∅⟩⟩
-
-/-- **Defeat widens.**  With the quiet docket `1/2` is a valid lower bound; once port `0`
-is defeated the point `0` lies in the region, so no positive lower bound is valid. -/
-theorem defeat_widens :
-    LowerBound widenSeed [] DocketState.quiet (Settlement.empty 1) 0 (1/2) ∧
-    ¬ LowerBound widenSeed [] ⟨{0}, ∅⟩ (Settlement.empty 1) 0 (1/2) := by
-  constructor
-  · intro x hx
-    rw [forcedRegion_iff] at hx
-    have := hx.2.2.1 ⟨Form.premise 0 (1/2), 0⟩ (by simp [widenSeed, Seed.liveSub, DocketState.quiet])
-    exact (Form.premise_sat_iff _ _ _).1 this
-  · intro h
-    have hx : forcedRegion widenSeed [] ⟨{0}, ∅⟩ (Settlement.empty 1) (fun _ => 0) := by
-      rw [forcedRegion_iff]
-      refine ⟨fun _ => by norm_num, Settlement.empty_pinned _, ?_, ?_⟩
-      · intro it hit; simp [widenSeed, Seed.liveSub] at hit
-      · intro it hit; simp [widenSeed, Seed.liveStr] at hit
-    have := h _ hx
-    norm_num at this
-
-/-- A row allowed against a bundle is satisfied by every point of the bundle's region. -/
-theorem allowed_sat {Q : Type*} {B : Bundle Q d} {r : Row d} (h : B.Allowed r) {x : Fin d → ℚ}
-    (hx : B.Region x) : r.Sat x := by
-  rcases h with ⟨cr, hcr, hrow⟩ | ⟨j, hj⟩ | ⟨j, hj⟩
-  · rw [← hrow]; exact hx.2 cr hcr
-  · rw [hj]; exact cubeUpper_sat hx.1 j
-  · rw [hj]; exact cubeLower_sat hx.1 j
-
-/-- **A bound certificate**: nonnegative multipliers on rows whose weighted coefficient sum
-is `s · e_φ`.  With `s = -1` it certifies a lower bound, with `s = 1` an upper bound. -/
-structure BoundCert (d m : ℕ) (φ : Fin d) (s : ℚ) where
-  mult : Fin m → ℚ
-  row : Fin m → Row d
-  mult_nonneg : ∀ i, 0 ≤ mult i
-  coeff_sum : ∀ j, ∑ i, mult i * (row i).a j = if j = φ then s else 0
-
-/-- The value a bound certificate certifies. -/
-def BoundCert.value {m : ℕ} {φ : Fin d} {s : ℚ} (c : BoundCert d m φ s) : ℚ :=
-  ∑ i, c.mult i * (c.row i).b
-
-/-- **Soundness**, needing the rows only where the multiplier is positive: at any point
-satisfying the positively weighted rows, `s · x φ ≤ value`. -/
-theorem BoundCert.sound_of_pos {m : ℕ} {φ : Fin d} {s : ℚ} (c : BoundCert d m φ s)
-    (x : Fin d → ℚ) (hx : ∀ i, 0 < c.mult i → (c.row i).Sat x) : s * x φ ≤ c.value := by
-  have h1 : ∑ i, c.mult i * ∑ j, (c.row i).a j * x j ≤ ∑ i, c.mult i * (c.row i).b := by
-    apply Finset.sum_le_sum
-    intro i _
-    rcases (c.mult_nonneg i).lt_or_eq with hpos | hzero
-    · exact mul_le_mul_of_nonneg_left (hx i hpos) hpos.le
-    · rw [← hzero]; simp
-  have h2 : ∑ i, c.mult i * ∑ j, (c.row i).a j * x j = s * x φ := by
-    calc ∑ i, c.mult i * ∑ j, (c.row i).a j * x j
-        = ∑ i, ∑ j, c.mult i * (c.row i).a j * x j := by
-          apply Finset.sum_congr rfl
-          intro i _
-          rw [Finset.mul_sum]
-          apply Finset.sum_congr rfl
-          intro j _
-          ring
-      _ = ∑ j, ∑ i, c.mult i * (c.row i).a j * x j := Finset.sum_comm
-      _ = ∑ j, (∑ i, c.mult i * (c.row i).a j) * x j := by
-          apply Finset.sum_congr rfl
-          intro j _
-          rw [Finset.sum_mul]
-      _ = ∑ j, (if j = φ then s else 0) * x j := by
-          apply Finset.sum_congr rfl
-          intro j _
-          rw [c.coeff_sum j]
-      _ = s * x φ := by
-          simp only [ite_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
-  unfold BoundCert.value
-  linarith
-
-/-- **Soundness** at any point satisfying every weighted row. -/
-theorem BoundCert.sound {m : ℕ} {φ : Fin d} {s : ℚ} (c : BoundCert d m φ s) (x : Fin d → ℚ)
-    (hx : ∀ i, (c.row i).Sat x) : s * x φ ≤ c.value :=
-  c.sound_of_pos x fun i _ => hx i
-
-/-- A lower-bound certificate over the forced bundle's allowed rows certifies a valid
-lower bound `-value` on `P(φ)`. -/
-theorem lowerCert_bound {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) (φ : Fin d) {m : ℕ} (c : BoundCert d m φ (-1))
-    (hallowed : ∀ i, (forcedBundle S W st F).Allowed (c.row i)) :
-    LowerBound S W st F φ (-c.value) := by
-  intro x hx
-  have := c.sound x fun i => allowed_sat (hallowed i) hx
-  linarith
-
-/-- An upper-bound certificate over the forced bundle's allowed rows certifies a valid
-upper bound `value` on `P(φ)`. -/
-theorem upperCert_bound {A : Type*} (S : Seed d A) (W : List (SubItem d)) (st : DocketState)
-    (F : Settlement d) (φ : Fin d) {m : ℕ} (c : BoundCert d m φ 1)
-    (hallowed : ∀ i, (forcedBundle S W st F).Allowed (c.row i)) :
-    UpperBound S W st F φ c.value := by
-  intro x hx
-  have := c.sound x fun i => allowed_sat (hallowed i) hx
-  linarith
 
 /-! ## Rational convexity of a bundle's region
 
@@ -585,10 +176,6 @@ theorem Grounds.region_iff (G : Grounds d) (st : DocketState) (F : Settlement d)
     refine ⟨hc, hp, ?_⟩
     rintro it ⟨⟨o, ho, rfl⟩, hport⟩
     exact h o ho hport
-
-/-- The empty settlement has no pin rows. -/
-@[simp] theorem Settlement.empty_pinRowsAt (i : Fin d) : (Settlement.empty d).pinRowsAt i = [] :=
-  rfl
 
 /-- **Membership in the live bundle, by occurrence**: a cited row is a live occurrence's
 specialized row under that occurrence's citation, or a pin row under its coordinate. -/
@@ -1895,61 +1482,692 @@ theorem position_nonzero :
 
 end Witness
 
+/-! ## Part A (round 2026-10-21) — rebuttal by settlement
+
+The rulings M1–M3 of `prompts/2026-10-21-rebuttal-and-end-to-end/PROMPT.md` as a function on
+the typed occurrence: a form whose consequent coordinate is pinned false is **rebutted**,
+whose antecedent coordinate is pinned false is **vacuous**, a premise whose sentence is
+pinned false is **retired**; in every case the row leaves.  Retirement reaches the
+occurrences that cite the retired one.  The settled region is the region of the surviving
+occurrences' specialized rows; monotonicity under settlement is restated for it. -/
+
+section Rebuttal
+
+/-- The outcome of settling a form. -/
+inductive Outcome where
+  | kept
+  | rebutted
+  | vacuous
+  | retired
+  deriving DecidableEq
+
+/-- The settlement pins coordinate `i` false. -/
+def pinsFalse (F : Settlement d) (i : Fin d) : Bool := F.val i == some false
+
+lemma pinsFalse_iff (F : Settlement d) (i : Fin d) : pinsFalse F i = true ↔ F.val i = some false := by
+  simp [pinsFalse]
+
+/-- **`settleOutcome`** (M1, M2): vacuity is checked before rebuttal — a form that never
+applied is not rebutted. -/
+def settleOutcome (F : Settlement d) : Form d → Outcome
+  | .premise X _ => if pinsFalse F X then .retired else .kept
+  | .applicability X XA _ =>
+      if pinsFalse F X then .vacuous else if pinsFalse F XA then .rebutted else .kept
+  | .strength XA XAY _ =>
+      if pinsFalse F XA then .vacuous else if pinsFalse F XAY then .rebutted else .kept
+
+/-- **`settleForm`** (P1): the rows an occurrence contributes under a settlement — its
+specialized row when kept, nothing otherwise. -/
+def settleForm (F : Settlement d) (o : Occurrence d) : Option (List (Row d)) :=
+  if settleOutcome F o.form = .kept then some [specialize F o.form.row] else none
+
+/-- The degenerate shapes: a premise on a false sentence, or a conditional form with a
+false antecedent or a false consequent. -/
+def Degenerate (F : Settlement d) : Form d → Prop
+  | .premise X _ => pinsFalse F X = true
+  | .applicability X XA _ => pinsFalse F X = true ∨ pinsFalse F XA = true
+  | .strength XA XAY _ => pinsFalse F XA = true ∨ pinsFalse F XAY = true
+
+instance (F : Settlement d) (f : Form d) : Decidable (Degenerate F f) := by
+  cases f <;> unfold Degenerate <;> infer_instance
+
+lemma settleOutcome_eq_kept_iff (F : Settlement d) (f : Form d) :
+    settleOutcome F f = .kept ↔ ¬ Degenerate F f := by
+  cases f <;> simp [settleOutcome, Degenerate] <;> split_ifs <;> simp_all
+
+/-- **`settleForm` keeps exactly the specialized rows of non-degenerate forms** (P1). -/
+theorem settleForm_eq_some_iff (F : Settlement d) (o : Occurrence d) (rows : List (Row d)) :
+    settleForm F o = some rows ↔ rows = [specialize F o.form.row] ∧ ¬ Degenerate F o.form := by
+  unfold settleForm
+  rw [← settleOutcome_eq_kept_iff]
+  split_ifs with h <;> simp [h, eq_comm]
+
+theorem settleForm_eq_none_iff (F : Settlement d) (o : Occurrence d) :
+    settleForm F o = none ↔ Degenerate F o.form := by
+  unfold settleForm
+  by_cases h : settleOutcome F o.form = .kept
+  · simp [h, (settleOutcome_eq_kept_iff F o.form).1 h]
+  · simp only [h, if_false, true_iff]
+    by_contra hd
+    exact h ((settleOutcome_eq_kept_iff F o.form).2 hd)
+
+/-- **M3, no discount.**  A kept form's row is the specialization of the form with its own
+strength; `settleForm` never rewrites a strength. -/
+theorem settleForm_strength (F : Settlement d) (o : Occurrence d) (rows : List (Row d))
+    (h : settleForm F o = some rows) : rows = [specialize F o.form.row] :=
+  ((settleForm_eq_some_iff F o rows).1 h).1
+
+/-- **The contraposing shape.**  A strength row whose consequent is pinned false forces the
+antecedent to zero at every pinned point: the row says "¬Y, so not X∧A". -/
+theorem strength_contraposes (F : Settlement d) (XA XAY : Fin d) (c : ℚ) (hc : 0 < c)
+    (hpin : F.val XAY = some false) (x : Fin d → ℚ) (hx : F.Pinned x)
+    (hsat : (specialize F (Form.strength XA XAY c).row).Sat x) : x XA ≤ 0 := by
+  rw [specialize_sat_iff F _ hx, Form.strength_sat_iff] at hsat
+  have h0 : x XAY = 0 := by simpa [truth] using hx XAY false hpin
+  rw [h0] at hsat
+  nlinarith
+
+/-- The same for an applicability row whose consequent is pinned false. -/
+theorem applicability_contraposes (F : Settlement d) (X XA : Fin d) (c : ℚ) (hc : 0 < c)
+    (hpin : F.val XA = some false) (x : Fin d → ℚ) (hx : F.Pinned x)
+    (hsat : (specialize F (Form.applicability X XA c).row).Sat x) : x X ≤ 0 := by
+  rw [specialize_sat_iff F _ hx, Form.applicability_sat_iff] at hsat
+  have h0 : x XA = 0 := by simpa [truth] using hx XA false hpin
+  rw [h0] at hsat
+  nlinarith
+
+/-- **Rebuttal removes exactly the contraposing rows**: a strength form is rebutted (and
+not vacuous) iff its consequent is pinned false while its antecedent is not. -/
+theorem settleOutcome_rebutted_iff (F : Settlement d) (XA XAY : Fin d) (c : ℚ) :
+    settleOutcome F (.strength XA XAY c) = .rebutted ↔
+      F.val XAY = some false ∧ ¬ F.val XA = some false := by
+  simp only [settleOutcome]
+  have h1 := pinsFalse_iff F XA
+  have h2 := pinsFalse_iff F XAY
+  split_ifs with ha hb <;> simp_all
+
+/-! ### Grounds under settlement -/
+
+/-- The occurrences retired by the settlement: premises on pinned-false sentences. -/
+def retiredIds (G : Grounds d) (F : Settlement d) : Finset ℕ :=
+  ((G.filter fun o => settleOutcome F o.form = .retired).map Occurrence.id).toFinset
+
+/-- An occurrence cites a retired occurrence. -/
+def citesRetired (G : Grounds d) (F : Settlement d) (o : Occurrence d) : Bool :=
+  match o.cites with
+  | .occurrence j => decide (j ∈ retiredIds G F)
+  | _ => false
+
+/-- **The survivors**: not defeated by the docket, kept by `settleForm`, and not citing a
+retired occurrence (M2: a retired premise takes every row of its warrant with it). -/
+def Grounds.survivors (G : Grounds d) (st : DocketState) (F : Settlement d) : Grounds d :=
+  G.filter fun o =>
+    o.id ∉ st.defeated ∧ settleOutcome F o.form = .kept ∧ citesRetired G F o = false
+
+/-- The settled bundle: the survivors' specialized rows, cited by occurrence, and the pins. -/
+def Grounds.settledBundle (G : Grounds d) (st : DocketState) (F : Settlement d) :
+    Bundle (Cite d) d :=
+  ((G.survivors st F).map fun o => ⟨Cite.sub o.id, specialize F o.form.row⟩) ++ pinCited F
+
+/-- **The settled region**: the region the surviving rows force. -/
+def Grounds.settledRegion (G : Grounds d) (st : DocketState) (F : Settlement d)
+    (x : Fin d → ℚ) : Prop :=
+  (G.settledBundle st F).Region x
+
+instance (G : Grounds d) (st : DocketState) (F : Settlement d) (x : Fin d → ℚ) :
+    Decidable (G.settledRegion st F x) := by unfold Grounds.settledRegion; infer_instance
+
+/-- The region of an explicit occurrence list under a settlement, on the unspecialized rows. -/
+def regionOn (L : Grounds d) (F : Settlement d) (x : Fin d → ℚ) : Prop :=
+  InCube x ∧ F.Pinned x ∧ ∀ o ∈ L, o.form.row.Sat x
+
+/-- **The settled region, by occurrence.** -/
+theorem Grounds.settledRegion_iff (G : Grounds d) (st : DocketState) (F : Settlement d)
+    (x : Fin d → ℚ) :
+    G.settledRegion st F x ↔ regionOn (G.survivors st F) F x := by
+  unfold Grounds.settledRegion Grounds.settledBundle Bundle.Region regionOn
+  simp only [List.mem_append, List.mem_map]
+  constructor
+  · rintro ⟨hc, hrows⟩
+    have hpin : F.Pinned x := (pinCited_sat_iff F x).1 fun c hc => hrows c (Or.inr hc)
+    refine ⟨hc, hpin, fun o ho => ?_⟩
+    exact (specialize_sat_iff F _ hpin).1 (hrows _ (Or.inl ⟨o, ho, rfl⟩))
+  · rintro ⟨hc, hpin, h⟩
+    refine ⟨hc, ?_⟩
+    rintro c (⟨o, ho, rfl⟩ | hc')
+    · exact (specialize_sat_iff F _ hpin).2 (h o ho)
+    · exact (pinCited_sat_iff F x).2 hpin c hc'
+
+lemma mem_survivors {G : Grounds d} {st : DocketState} {F : Settlement d} {o : Occurrence d} :
+    o ∈ G.survivors st F ↔
+      o ∈ G ∧ o.id ∉ st.defeated ∧ settleOutcome F o.form = .kept ∧ citesRetired G F o = false := by
+  simp [Grounds.survivors]
+
+/-- **The settled region contains the port-only region**: settling forms only removes rows. -/
+theorem region_subset_settledRegion (G : Grounds d) (st : DocketState) (F : Settlement d)
+    (x : Fin d → ℚ) (hx : G.region st F x) : G.settledRegion st F x := by
+  rw [Grounds.region_iff] at hx
+  rw [Grounds.settledRegion_iff]
+  obtain ⟨hc, hp, h⟩ := hx
+  refine ⟨hc, hp, fun o ho => ?_⟩
+  obtain ⟨hoG, hid, -, -⟩ := mem_survivors.1 ho
+  exact h o hoG hid
+
+/-! ### Monotonicity restated (A4) -/
+
+lemma pinsFalse_mono {F F' : Settlement d} (h : F.le F') {i : Fin d}
+    (hi : pinsFalse F i = true) : pinsFalse F' i = true := by
+  rw [pinsFalse_iff] at hi ⊢
+  exact h i false hi
+
+/-- A kept form stays kept backwards: what is kept under more settlement was kept under less. -/
+lemma kept_of_le {F F' : Settlement d} (h : F.le F') {f : Form d}
+    (hk : settleOutcome F' f = .kept) : settleOutcome F f = .kept := by
+  rw [settleOutcome_eq_kept_iff] at hk ⊢
+  intro hd
+  apply hk
+  cases f <;> simp only [Degenerate] at hd ⊢
+  · exact pinsFalse_mono h hd
+  · rcases hd with hd | hd
+    · exact Or.inl (pinsFalse_mono h hd)
+    · exact Or.inr (pinsFalse_mono h hd)
+  · rcases hd with hd | hd
+    · exact Or.inl (pinsFalse_mono h hd)
+    · exact Or.inr (pinsFalse_mono h hd)
+
+lemma retired_of_le {F F' : Settlement d} (h : F.le F') {f : Form d}
+    (hr : settleOutcome F f = .retired) : settleOutcome F' f = .retired := by
+  cases f with
+  | premise X c =>
+      simp only [settleOutcome] at hr ⊢
+      split_ifs at hr with h1 <;> simp_all [pinsFalse_mono h h1]
+  | applicability X XA c => simp only [settleOutcome] at hr; split_ifs at hr <;> simp_all
+  | strength XA XAY c => simp only [settleOutcome] at hr; split_ifs at hr <;> simp_all
+
+lemma retiredIds_mono (G : Grounds d) {F F' : Settlement d} (h : F.le F') :
+    retiredIds G F ⊆ retiredIds G F' := by
+  intro j hj
+  simp only [retiredIds, List.mem_toFinset, List.mem_map, List.mem_filter,
+    decide_eq_true_eq] at hj ⊢
+  obtain ⟨o, ⟨ho, hr⟩, rfl⟩ := hj
+  exact ⟨o, ⟨ho, retired_of_le h hr⟩, rfl⟩
+
+/-- **Survivors only leave under more settlement.** -/
+theorem survivors_anti (G : Grounds d) (st : DocketState) {F F' : Settlement d} (h : F.le F')
+    {o : Occurrence d} (ho : o ∈ G.survivors st F') : o ∈ G.survivors st F := by
+  rw [mem_survivors] at ho ⊢
+  obtain ⟨hoG, hid, hk, hc⟩ := ho
+  refine ⟨hoG, hid, kept_of_le h hk, ?_⟩
+  unfold citesRetired at hc ⊢
+  cases hcite : o.cites with
+  | occurrence j =>
+      rw [hcite] at hc
+      simp only [decide_eq_false_iff_not] at hc ⊢
+      exact fun hj => hc (retiredIds_mono G h hj)
+  | settled i => rfl
+  | none => rfl
+
+/-- **A4(a): no reopening, nested as before.**  When the survivors are unchanged by a
+settlement step, the settled region shrinks. -/
+theorem settledRegion_anti_of_survivors_eq (G : Grounds d) (st : DocketState)
+    {F F' : Settlement d} (h : F.le F') (hs : G.survivors st F' = G.survivors st F)
+    {x : Fin d → ℚ} (hx : G.settledRegion st F' x) : G.settledRegion st F x := by
+  rw [Grounds.settledRegion_iff] at hx ⊢
+  obtain ⟨hc, hp, hr⟩ := hx
+  exact ⟨hc, hp.mono h, by rw [← hs]; exact hr⟩
+
+/-- **A4(b): a reopening step is bounded by the kept rows' pre-step region.**  The settled
+region after the step, and the settled region before it, both lie inside the region the
+*surviving* rows forced at the pre-step settlement. -/
+theorem settledRegion_subset_kept (G : Grounds d) (st : DocketState) {F F' : Settlement d}
+    (h : F.le F') (x : Fin d → ℚ) :
+    (G.settledRegion st F' x → regionOn (G.survivors st F') F x) ∧
+    (G.settledRegion st F x → regionOn (G.survivors st F') F x) := by
+  constructor
+  · intro hx
+    rw [Grounds.settledRegion_iff] at hx
+    exact ⟨hx.1, hx.2.1.mono h, hx.2.2⟩
+  · intro hx
+    rw [Grounds.settledRegion_iff] at hx
+    exact ⟨hx.1, hx.2.1, fun o ho => hx.2.2 o (survivors_anti G st h ho)⟩
+
+/-- **The exact widening bound.**  Any bounds valid on the kept rows' pre-step region are
+valid on the settled region before and after the step: the interval can widen by at most
+what the removed rows had been forcing. -/
+theorem reopening_bound (G : Grounds d) (st : DocketState) {F F' : Settlement d} (h : F.le F')
+    (φ : Fin d) (lo hi : ℚ)
+    (hK : ∀ x, regionOn (G.survivors st F') F x → lo ≤ x φ ∧ x φ ≤ hi) :
+    (∀ x, G.settledRegion st F' x → lo ≤ x φ ∧ x φ ≤ hi) ∧
+    (∀ x, G.settledRegion st F x → lo ≤ x φ ∧ x φ ≤ hi) :=
+  ⟨fun x hx => hK x ((settledRegion_subset_kept G st h x).1 hx),
+    fun x hx => hK x ((settledRegion_subset_kept G st h x).2 hx)⟩
+
+end Rebuttal
+
+/-! ### The countermodel to settlement-antitonicity of the settled region -/
+
+namespace Countermodel
+
+/-- One applicability form `P(1) ≥ (1/2) P(0)` on two coordinates. -/
+def applOcc : Occurrence 2 := ⟨1, Form.applicability 0 1 (1/2), .none, .party 1, ∅⟩
+
+/-- The settlement pinning the consequent false. -/
+def pinConsequent : Settlement 2 := ⟨![none, some false]⟩
+
+lemma empty_le_pinConsequent : (Settlement.empty 2).le pinConsequent := by
+  intro i b h; simp [Settlement.empty] at h
+
+/-- **`IsForcedInterval.mono`'s shape fails for the settled region.**  The point `(1, 0)`
+is in the settled region after the consequent is pinned false (the row was rebutted) and
+not before (the row `x₁ ≥ x₀/2` excludes it): more settlement, larger region. -/
+theorem settled_not_anti :
+    Grounds.settledRegion [applOcc] DocketState.quiet pinConsequent ![1, 0] ∧
+    ¬ Grounds.settledRegion [applOcc] DocketState.quiet (Settlement.empty 2) ![1, 0] := by
+  constructor
+  · rw [Grounds.settledRegion_iff]
+    refine ⟨fun i => by fin_cases i <;> norm_num, ?_, ?_⟩
+    · intro i b hi
+      fin_cases i <;> simp_all [pinConsequent, truth]
+    · intro o ho
+      rw [mem_survivors] at ho
+      obtain ⟨hoG, -, hk, -⟩ := ho
+      simp only [List.mem_singleton] at hoG
+      subst hoG
+      simp [settleOutcome, pinsFalse, applOcc, pinConsequent] at hk
+  · intro hx
+    rw [Grounds.settledRegion_iff] at hx
+    obtain ⟨-, -, h⟩ := hx
+    have hmem : applOcc ∈ Grounds.survivors [applOcc] DocketState.quiet (Settlement.empty 2) := by
+      rw [mem_survivors]
+      refine ⟨by simp, by simp [DocketState.quiet], ?_, ?_⟩
+      · simp [settleOutcome, pinsFalse, applOcc, Settlement.empty]
+      · simp [citesRetired, applOcc]
+    have := h applOcc hmem
+    simp only [applOcc] at this
+    rw [Form.applicability_sat_iff] at this
+    norm_num at this
+
+end Countermodel
+
+/-! ## Part A — the bankroll across a reopening -/
+
+section ReopenedBankroll
+
+open LogicalInduction
+open Workspace.Normativity.Contrib.AssessmentProcess
+open Workspace.Normativity.Contrib.EnforcementPreservation
+open Workspace.Normativity.Contrib.EnforcementStrategy
+open Workspace.Normativity.Contrib.TraderizedEnforcement
+
+/-- One date's domination: deficits at `w` dominated by `ρ` times the surpluses at `v'`. -/
+theorem dayGap_dominated (L : Assessment) (sched : ℕ → Presentation) (ρ : ℚ) (t : ℕ)
+    (w v' : PCWorld)
+    (hgap : ∀ r ∈ (sched t).rows, -(rowGap (sched t).coords r w) ≤ ρ * rowGap (sched t).coords r v') :
+    -(ρ * dayGap L sched v' t) ≤ dayGap L sched w t := by
+  unfold dayGap
+  rw [Finset.mul_sum, ← Finset.sum_neg_distrib]
+  refine Finset.sum_le_sum fun i _ => ?_
+  have hu := rowUnits_nonneg (sched t) i (quote L (warrantEnforcer sched) t)
+  have hg := hgap ((sched t).rowAt i) (List.get_mem _ _)
+  nlinarith
+
+/-- The slack mass through `n` is the sum of the day gaps over `range (n + 1)`. -/
+lemma slackMass_eq (L : Assessment) (sched : ℕ → Presentation) (v : PCWorld) (n : ℕ) :
+    slackMass L sched v n = ∑ t ∈ Finset.range (n + 1), dayGap L sched v t := rfl
+
+/-- **The odds bankroll across one reopening.**  Before date `m` a live world `v₀` dominates
+every enforced row at the odds (for the bounded world `w` and for the later witness `v'`);
+from `m` on a live world `v'` dominates the rows then enforced.  The enforcer's assessed
+net worth at `w` is at least `−3ρ(2 + ρ)`: the pre-reopening bankroll `3ρ`, plus `ρ`
+times the post-reopening slack mass, which the market's capital bounds by `3` plus the
+reopened mass `3ρ`.  The "same `3ρ`" is **not** recovered; the reopened mass is paid for. -/
+theorem netWorth_ge_neg_odds_reopened (L : Assessment) (sched : ℕ → Presentation) (ρ : ℚ)
+    (hρ : 0 ≤ ρ) {m n : ℕ} (hm : 0 < m) (hmn : m ≤ n)
+    (v₀ : PCWorld) (hv₀ : L.Live (m - 1) v₀) (v' : PCWorld) (hv' : L.Live n v') (w : PCWorld)
+    (hdom₀w : ∀ t < m, ∀ r ∈ (sched t).rows,
+      -(rowGap (sched t).coords r w) ≤ ρ * rowGap (sched t).coords r v₀)
+    (hdom₀v' : ∀ t < m, ∀ r ∈ (sched t).rows,
+      -(rowGap (sched t).coords r v') ≤ ρ * rowGap (sched t).coords r v₀)
+    (hdom' : ∀ t, m ≤ t → t ≤ n → ∀ r ∈ (sched t).rows,
+      -(rowGap (sched t).coords r w) ≤ ρ * rowGap (sched t).coords r v') :
+    -(3 * (ρ : ℝ) * (2 + ρ)) ≤
+      (realizedEnforcer L (warrantEnforcer sched)).netWorth (history L (warrantEnforcer sched))
+        w n := by
+  set E := warrantEnforcer sched
+  set P := history L E
+  have hm1 : m - 1 + 1 = m := Nat.sub_add_cancel hm
+  -- the prefix through `m − 1`, bounded by the pre-reopening bankroll
+  have hpre : -(3 * (ρ : ℝ)) ≤ (realizedEnforcer L E).netWorth P w (m - 1) :=
+    netWorth_ge_neg_odds L sched ρ hρ (m - 1) v₀ hv₀ w
+      (fun t ht r hr => hdom₀w t (by omega) r hr)
+  -- the slack mass of `v₀` through `m − 1` is under the capital
+  have hS₀ : ((slackMass L sched v₀ (m - 1) : ℚ) : ℝ) < 3 :=
+    lt_of_le_of_lt (slackMass_le_netWorth L sched v₀ (m - 1))
+      (enforcer_netWorth_lt_three L E (m - 1) v₀ hv₀)
+  -- the slack mass of `v'` through `m − 1` is bounded below by the reopened mass
+  have hSv'pre : -(ρ * slackMass L sched v₀ (m - 1)) ≤ slackMass L sched v' (m - 1) := by
+    rw [slackMass_eq, slackMass_eq, Finset.mul_sum, ← Finset.sum_neg_distrib]
+    refine Finset.sum_le_sum fun t ht => ?_
+    have htm : t < m := by have := Finset.mem_range.mp ht; omega
+    exact dayGap_dominated L sched ρ t v' v₀ (hdom₀v' t htm)
+  -- the slack mass of `v'` through `n` is under the capital
+  have hSv' : ((slackMass L sched v' n : ℚ) : ℝ) < 3 :=
+    lt_of_le_of_lt (slackMass_le_netWorth L sched v' n) (enforcer_netWorth_lt_three L E n v' hv')
+  -- the tail of the slack mass of `v'`
+  have htail_eq : ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t =
+      slackMass L sched v' n - slackMass L sched v' (m - 1) := by
+    rw [slackMass_eq, slackMass_eq, hm1]
+    exact Finset.sum_Ico_eq_sub _ (by omega)
+  -- the tail of the net worth at `w`
+  have hworth : (realizedEnforcer L E).netWorth P w n =
+      (realizedEnforcer L E).netWorth P w (m - 1) +
+        ∑ t ∈ Finset.Ico m (n + 1), ((realizedEnforcer L E).strat t).value P w.payout := by
+    unfold Trader.netWorth
+    rw [hm1, Finset.sum_range_add_sum_Ico _ (by omega)]
+  have htailw : ((-(ρ * ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t) : ℚ) : ℝ) ≤
+      ∑ t ∈ Finset.Ico m (n + 1), ((realizedEnforcer L E).strat t).value P w.payout := by
+    have hq : ∀ t ∈ Finset.Ico m (n + 1),
+        ((-(ρ * dayGap L sched v' t) : ℚ) : ℝ) ≤
+          ((realizedEnforcer L E).strat t).value P w.payout := by
+      intro t ht
+      have hbd := Finset.mem_Ico.mp ht
+      refine le_trans ?_ (day_value_ge L sched t w)
+      exact_mod_cast dayGap_dominated L sched ρ t w v' (hdom' t hbd.1 (by omega))
+    calc ((-(ρ * ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t) : ℚ) : ℝ)
+        = ∑ t ∈ Finset.Ico m (n + 1), ((-(ρ * dayGap L sched v' t) : ℚ) : ℝ) := by
+          rw [Finset.mul_sum, ← Finset.sum_neg_distrib]
+          push_cast
+          rfl
+      _ ≤ _ := Finset.sum_le_sum hq
+  -- assemble in ℚ then cast
+  have hbound : -(ρ * ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t) ≥ -(ρ * (3 + 3 * ρ)) := by
+    rw [htail_eq]
+    have h1 : slackMass L sched v' n - slackMass L sched v' (m - 1) ≤ 3 + 3 * ρ := by
+      have a : (slackMass L sched v' n : ℚ) < 3 := by exact_mod_cast hSv'
+      have b : (slackMass L sched v₀ (m - 1) : ℚ) < 3 := by exact_mod_cast hS₀
+      nlinarith
+    nlinarith
+  have hcast : ((-(ρ * (3 + 3 * ρ)) : ℚ) : ℝ) ≤
+      ((-(ρ * ∑ t ∈ Finset.Ico m (n + 1), dayGap L sched v' t) : ℚ) : ℝ) := by
+    exact_mod_cast hbound
+  rw [hworth]
+  have : ((-(ρ * (3 + 3 * ρ)) : ℚ) : ℝ) = -((ρ : ℝ) * (3 + 3 * ρ)) := by push_cast; ring
+  rw [this] at hcast
+  nlinarith [hpre, hcast, htailw]
+
+end ReopenedBankroll
+
+/-! ## Part A — the fixture under the rule -/
+
+namespace Fixture
+
+open LogicalInduction
+open Workspace.Normativity.Contrib.AssessmentProcess
+open Workspace.Normativity.Contrib.EnforcementPreservation
+open Workspace.Normativity.Contrib.EnforcementStrategy
+open Workspace.Normativity.Contrib.TraderizedEnforcement
+
+/-- The settlement at date `n`: `X` from `n₁`, and from `nE` the refutation of `Y` with its
+closure `X∧A∧Y` false. -/
+def settlementAt (n₁ nE n : ℕ) : Settlement 4 :=
+  ⟨![if n₁ ≤ n then some true else none, none,
+     if nE ≤ n then some false else none, if nE ≤ n then some false else none]⟩
+
+/-- The docket at date `n`: the applicability port `2` defeated from `n₀`. -/
+def docketAt (n₀ n : ℕ) : DocketState := ⟨if n₀ ≤ n then {2} else ∅, ∅⟩
+
+/-- **The strength occurrence is rebutted at `nE`**, and before it every form is kept. -/
+theorem settleOutcome_strength (c : Strengths) (n₁ nE n : ℕ) :
+    settleOutcome (settlementAt n₁ nE n) (occS c).form =
+      (if nE ≤ n then Outcome.rebutted else Outcome.kept) := by
+  simp [settleOutcome, pinsFalse, settlementAt, occS]
+
+theorem settleOutcome_premise (c : Strengths) (n₁ nE n : ℕ) :
+    settleOutcome (settlementAt n₁ nE n) (occP c).form = .kept := by
+  simp [settleOutcome, pinsFalse, settlementAt, occP]
+
+theorem settleOutcome_appl (c : Strengths) (n₁ nE n : ℕ) :
+    settleOutcome (settlementAt n₁ nE n) (occA c).form = .kept := by
+  simp [settleOutcome, pinsFalse, settlementAt, occA]
+
+@[simp] lemma occP_id (c : Strengths) : (occP c).id = 1 := rfl
+@[simp] lemma occA_id (c : Strengths) : (occA c).id = 2 := rfl
+@[simp] lemma occS_id (c : Strengths) : (occS c).id = 3 := rfl
+
+lemma retiredIds_eq (c : Strengths) (n₁ nE n : ℕ) :
+    retiredIds (grounds c) (settlementAt n₁ nE n) = ∅ := by
+  have hP := settleOutcome_premise c n₁ nE n
+  have hA := settleOutcome_appl c n₁ nE n
+  have hS := settleOutcome_strength c n₁ nE n
+  show (([occP c, occA c, occS c].filter fun o =>
+    settleOutcome (settlementAt n₁ nE n) o.form = .retired).map Occurrence.id).toFinset = ∅
+  simp only [List.filter_cons, List.filter_nil, decide_eq_true_eq, hP, hA, hS]
+  split_ifs <;> simp_all
+
+lemma citesRetired_eq_false (c : Strengths) (n₁ nE n : ℕ) (o : Occurrence 4) :
+    citesRetired (grounds c) (settlementAt n₁ nE n) o = false := by
+  unfold citesRetired
+  rw [retiredIds_eq]
+  cases o.cites <;> simp
+
+lemma mem_docketAt_iff (n₀ n j : ℕ) : j ∈ (docketAt n₀ n).defeated ↔ n₀ ≤ n ∧ j = 2 := by
+  simp only [docketAt]
+  split_ifs with h <;> simp [h]
+
+/-- **The survivors, date by date**: the premise always, the applicability before `n₀`, the
+strength before `nE` — by `settleForm`, not by declaration. -/
+theorem survivors_eq (c : Strengths) (n₀ n₁ nE n : ℕ) :
+    (grounds c).survivors (docketAt n₀ n) (settlementAt n₁ nE n) =
+      occP c :: ((if n < n₀ then [occA c] else []) ++ (if n < nE then [occS c] else [])) := by
+  have hc := citesRetired_eq_false c n₁ nE n
+  have hP := settleOutcome_premise c n₁ nE n
+  have hA := settleOutcome_appl c n₁ nE n
+  have hS := settleOutcome_strength c n₁ nE n
+  show ([occP c, occA c, occS c].filter fun o => decide (o.id ∉ (docketAt n₀ n).defeated ∧
+      settleOutcome (settlementAt n₁ nE n) o.form = .kept ∧
+      citesRetired (grounds c) (settlementAt n₁ nE n) o = false)) = _
+  simp only [List.filter_cons, List.filter_nil, decide_eq_true_eq, hc, hP, hA, hS, occP_id,
+    occA_id, occS_id, mem_docketAt_iff]
+  by_cases h0 : n < n₀ <;> by_cases hE : n < nE <;>
+    simp [h0, hE, not_lt.mpr, show ¬ n₀ ≤ n ↔ n < n₀ from not_le,
+      show ¬ nE ≤ n ↔ n < nE from not_le]
+
+/-- The force rows at date `n` under the rule. -/
+def rowsRebutted (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (n₀ nE n : ℕ) : List Row :=
+  premiseRow c β hβ ::
+    ((if n < n₀ then [applRow c β hβ] else []) ++ (if n < nE then [strengthRow c β hβ] else []))
+
+/-- The force schedule under the rule. -/
+def schedRebutted (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (n₀ nE : ℕ) : ℕ → Presentation :=
+  fun n => pres (rowsRebutted c β hβ n₀ nE n)
+
+/-- **The force schedule is the survivors through the bridge**: the enforcer holds exactly the
+rows `settleForm` keeps. -/
+theorem schedRebutted_eq_survivors (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (n₀ n₁ nE n : ℕ) :
+    (schedRebutted c β hβ n₀ nE n).rows =
+      ((grounds c).survivors (docketAt n₀ n) (settlementAt n₁ nE n)).map
+        fun o => toForceRow ι β hβ o.form.row := by
+  rw [survivors_eq]
+  simp only [schedRebutted, pres_rows, rowsRebutted, List.map_cons, List.map_append]
+  by_cases h0 : n < n₀ <;> by_cases hE : n < nE <;>
+    simp [h0, hE, premiseRow, applRow, strengthRow, occP, occA, occS]
+
+/-- **No row on `X∧A` after `nE`**: the strength row is gone, and the applicability row too
+once its port is defeated — the harmonic buyer has nothing to buy against. -/
+theorem no_strength_after (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (n₀ nE n : ℕ) (hn : nE ≤ n) :
+    strengthRow c β hβ ∉ (schedRebutted c β hβ n₀ nE n).rows ∧
+    (n₀ ≤ n → (schedRebutted c β hβ n₀ nE n).rows = [premiseRow c β hβ]) := by
+  have hE : ¬ n < nE := not_lt.mpr hn
+  constructor
+  · simp only [schedRebutted, pres_rows, rowsRebutted, hE, if_false, List.append_nil,
+      List.mem_cons, List.mem_ite_nil_right, List.mem_singleton, List.not_mem_nil, or_false]
+    rintro (h | ⟨-, h⟩)
+    · have := congrArg Row.rhs h
+      simp [strengthRow, premiseRow, toForceRow, Form.row] at this
+      linarith [c.P_pos]
+    · have := congrArg (fun r : Row => r.coeff XAY) h
+      simp [strengthRow, applRow, toForceRow, Form.row, Fin.sum_univ_four] at this
+  · intro h0
+    simp [schedRebutted, rowsRebutted, hE, not_lt.mpr h0]
+
+/-- **The region after the rebuttal is nonempty**: `(1, c_A, 0, 0)` with every row live but
+the strength row, which is gone. -/
+theorem rebutted_region_nonempty (c : Strengths) (n₀ n₁ nE n : ℕ) (hn₁ : n₁ ≤ n)
+    (hnE : nE ≤ n) :
+    (grounds c).settledRegion (docketAt n₀ n) (settlementAt n₁ nE n) ![1, c.A, 0, 0] := by
+  rw [Grounds.settledRegion_iff, survivors_eq]
+  have hE : ¬ n < nE := not_lt.mpr hnE
+  refine ⟨fun i => by fin_cases i <;> simp <;> constructor <;> linarith [c.A_pos, c.A_lt], ?_, ?_⟩
+  · intro i b hi
+    fin_cases i <;> simp_all [settlementAt, truth, hn₁, hnE]
+  · intro o ho
+    simp only [hE, if_false, List.append_nil, List.mem_cons, List.mem_ite_nil_right,
+      List.mem_singleton, List.not_mem_nil, or_false] at ho
+    rcases ho with rfl | ⟨-, rfl⟩
+    · simp only [occP]; rw [Form.premise_sat_iff]; simp; exact c.P_lt.le
+    · simp only [occA]; rw [Form.applicability_sat_iff]; simp
+
+/-- Domination at the slack world `X, A` true, `Y` false, on the rows live after the
+rebuttal. -/
+theorem gap_dominated_wAY (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (r : Row)
+    (hr : r = premiseRow c β hβ ∨ r = applRow c β hβ) (w : PCWorld) :
+    -(rowGap (pres []).coords r w) ≤ ρ c * rowGap (pres []).coords r wAY := by
+  have hρ := ρ_nonneg c
+  have hP := P_le c
+  have hA := A_le c
+  have hX := wAY_X
+  have hA' := wAY_A
+  rcases hr with rfl | rfl
+  · rw [gap_premise, gap_premise, ratPayout_X, ratPayout_X]
+    by_cases hwX : w.Holds X <;> simp [hwX, hX] <;> nlinarith [c.P_pos, c.P_lt]
+  · rw [gap_appl, gap_appl, ratPayout_XA, ratPayout_X, ratPayout_XA, ratPayout_X]
+    by_cases hwX : w.Holds X <;> by_cases hwA : w.Holds A <;>
+      simp [hwX, hwA, hX, hA'] <;> nlinarith [c.A_pos, c.A_lt]
+
+lemma mem_rowsRebutted {c : Strengths} {β : ℚ} {hβ : 0 ≤ β} {n₀ nE n : ℕ} {r : Row}
+    (h : r ∈ rowsRebutted c β hβ n₀ nE n) :
+    r = premiseRow c β hβ ∨ r = applRow c β hβ ∨ (n < nE ∧ r = strengthRow c β hβ) := by
+  unfold rowsRebutted at h
+  by_cases h0 : n < n₀ <;> by_cases hE : n < nE <;> simp [h0, hE] at h <;> tauto
+
+/-- `wAY` is live once `Y` is refuted (and `X` settled true or not). -/
+lemma wAY_live (n₁ nE n : ℕ) : (L n₁ nE false).Live n wAY := by
+  rw [live_iff]
+  exact ⟨fun _ => wAY_X, fun _ => by simpa [holds_negY] using wAY_notY⟩
+
+/-- **A2, `Fixture.liability_rebutted`.**  Under the rule, with `Y` refuted at `nE` and the
+applicability port defeated at `n₀`, the enforcer's assessed net worth is at least
+`−3ρ(2 + ρ)` at every live world at every date: `3ρ` before the rebuttal (the all-true world
+is the slack world), and across it the reopened bankroll with the slack world `X, A` true,
+`Y` false.  The dispatch's "the same `3ρ`" is not what the construction gives; see the
+round's `REBUTTAL.md` for the exhibit that it cannot. -/
+theorem liability_rebutted (c : Strengths) (β : ℚ) (hβ : 0 ≤ β) (n₀ n₁ nE : ℕ)
+    (hnE : 0 < nE) :
+    ∀ n (v : PCWorld), (L n₁ nE false).Live n v →
+      -(3 * (ρ c : ℝ) * (2 + ρ c)) ≤
+        (realizedEnforcer (L n₁ nE false) (warrantEnforcer (schedRebutted c β hβ n₀ nE))).netWorth
+          (history (L n₁ nE false) (warrantEnforcer (schedRebutted c β hβ n₀ nE))) v n := by
+  intro n v hv
+  have hρ := ρ_nonneg c
+  have hrows : ∀ t, ∀ r ∈ (schedRebutted c β hβ n₀ nE t).rows,
+      r = premiseRow c β hβ ∨ r = applRow c β hβ ∨ (t < nE ∧ r = strengthRow c β hβ) :=
+    fun t r hr => mem_rowsRebutted hr
+  -- all rows at dates `< nE` are dominated at the all-true world
+  have hpre : ∀ (w : PCWorld) t, t < nE → ∀ r ∈ (schedRebutted c β hβ n₀ nE t).rows,
+      -(rowGap (schedRebutted c β hβ n₀ nE t).coords r w) ≤
+        ρ c * rowGap (schedRebutted c β hβ n₀ nE t).coords r allTrue := by
+    intro w t _ r hr
+    rcases hrows t r hr with h | h | ⟨-, h⟩
+    · exact gap_dominated c β hβ r (Or.inl h) w
+    · exact gap_dominated c β hβ r (Or.inr (Or.inl h)) w
+    · exact gap_dominated c β hβ r (Or.inr (Or.inr h)) w
+  -- rows at dates `≥ nE` are dominated at `wAY`
+  have hpost : ∀ (w : PCWorld) t, nE ≤ t → ∀ r ∈ (schedRebutted c β hβ n₀ nE t).rows,
+      -(rowGap (schedRebutted c β hβ n₀ nE t).coords r w) ≤
+        ρ c * rowGap (schedRebutted c β hβ n₀ nE t).coords r wAY := by
+    intro w t ht r hr
+    rcases hrows t r hr with h | h | ⟨hlt, -⟩
+    · exact gap_dominated_wAY c β hβ r (Or.inl h) w
+    · exact gap_dominated_wAY c β hβ r (Or.inr h) w
+    · omega
+  by_cases hn : n < nE
+  · have h3 := netWorth_ge_neg_odds (L n₁ nE false) (schedRebutted c β hβ n₀ nE) (ρ c) hρ n allTrue
+      (allTrue_live_before n₁ nE false n hn) v (fun t ht r hr => hpre v t (by omega) r hr)
+    have : -(3 * (ρ c : ℝ) * (2 + ρ c)) ≤ -(3 * (ρ c : ℝ)) := by
+      have hρr : (0 : ℝ) ≤ ρ c := by exact_mod_cast hρ
+      nlinarith
+    linarith
+  · exact netWorth_ge_neg_odds_reopened (L n₁ nE false) (schedRebutted c β hβ n₀ nE) (ρ c) hρ hnE
+      (not_lt.mp hn) allTrue (allTrue_live_before n₁ nE false (nE - 1) (by omega)) wAY
+      (wAY_live n₁ nE n) v (fun t ht r hr => hpre v t ht r hr)
+      (fun t ht r hr => hpre wAY t ht r hr) (fun t ht _ r hr => hpost v t ht r hr)
+
+end Fixture
+
+/-! ## Part A — A3: the premise guard retired -/
+
+namespace Fixture2
+
+/-- Five coordinates: `X, X∧A, X∧A∧Y, Y, Z`. -/
+abbrev X : Fin 5 := 0
+abbrev XA : Fin 5 := 1
+abbrev XAY : Fin 5 := 2
+abbrev Y : Fin 5 := 3
+abbrev Z : Fin 5 := 4
+
+/-- The first warrant's three occurrences and the second warrant on `Z`. -/
+def occP (cP : ℚ) : Occurrence 5 := ⟨1, Form.premise X cP, .none, .party 1, ∅⟩
+def occA (cA : ℚ) : Occurrence 5 := ⟨2, Form.applicability X XA cA, .occurrence 1, .party 1, ∅⟩
+def occS (cS : ℚ) : Occurrence 5 := ⟨3, Form.strength XA XAY cS, .occurrence 2, .party 1, {2}⟩
+def occZ (cZ : ℚ) : Occurrence 5 := ⟨4, Form.premise Z cZ, .none, .party 2, ∅⟩
+
+def grounds (cP cA cS cZ : ℚ) : Grounds 5 := [occP cP, occA cA, occS cS, occZ cZ]
+
+/-- The settlement refuting `X`, with the closure `X∧A`, `X∧A∧Y` false. -/
+def refuteX : Settlement 5 := ⟨![some false, some false, some false, none, none]⟩
+
+/-- **Under the port-only rule, refuting the premise empties the joint region**: the premise
+row `P(X) ≥ c_P > 0` meets the pin `P(X) = 0`, and the warrant on `Z` is withheld with it. -/
+theorem old_rule_empty (cP cA cS cZ : ℚ) (hP : 0 < cP) :
+    ¬ ∃ x, (grounds cP cA cS cZ).region DocketState.quiet refuteX x := by
+  rintro ⟨x, hx⟩
+  rw [Grounds.region_iff] at hx
+  obtain ⟨-, hpin, h⟩ := hx
+  have h0 : x X = 0 := by simpa [truth] using hpin X false rfl
+  have hp := h (occP cP) (by simp [grounds]) (by simp [DocketState.quiet])
+  simp only [occP] at hp
+  rw [Form.premise_sat_iff, h0] at hp
+  linarith
+
+/-- The survivors of the refutation: only the warrant on `Z`. -/
+theorem survivors_refuteX (cP cA cS cZ : ℚ) :
+    (grounds cP cA cS cZ).survivors DocketState.quiet refuteX = [occZ cZ] := by
+  simp [Grounds.survivors, grounds, settleOutcome, pinsFalse, citesRetired, retiredIds,
+    occP, occA, occS, occZ, refuteX, DocketState.quiet]
+
+/-- **Under the rule, the region is the one the other warrant forces**: nonempty, and `Z`
+still bounded below by `c_Z`. -/
+theorem retired_region (cP cA cS cZ : ℚ) (hZ0 : 0 ≤ cZ) (hZ1 : cZ ≤ 1) :
+    (grounds cP cA cS cZ).settledRegion DocketState.quiet refuteX ![0, 0, 0, 0, cZ] ∧
+    ∀ x, (grounds cP cA cS cZ).settledRegion DocketState.quiet refuteX x → cZ ≤ x Z := by
+  constructor
+  · rw [Grounds.settledRegion_iff, survivors_refuteX]
+    refine ⟨fun i => by fin_cases i <;> simp [hZ0, hZ1], ?_, ?_⟩
+    · intro i b hi; fin_cases i <;> simp_all [refuteX, truth]
+    · intro o ho
+      simp only [List.mem_singleton] at ho
+      subst ho
+      simp only [occZ]; rw [Form.premise_sat_iff]; simp
+  · intro x hx
+    rw [Grounds.settledRegion_iff, survivors_refuteX] at hx
+    have := hx.2.2 (occZ cZ) (by simp)
+    simp only [occZ] at this
+    exact (Form.premise_sat_iff _ _ _).1 this
+
+end Fixture2
+
 /-! ## Axiom audit -/
 
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.truth
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.Pinned
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.le
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.empty
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.empty_pinned
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.le_refl
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.Pinned.mono
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.pinRowsAt
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.pinRows
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.pinRowsAt_sat_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.pinRows_sat_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledTerm
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.specialize
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.specialize_sat_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Form
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Form.c
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Form.row
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Form.premise_sat_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Form.applicability_sat_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Form.strength_sat_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.SubItem
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.StrKind
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.StrItem
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Constitutive
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Seed
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.DocketState
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.DocketState.quiet
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Seed.liveSub
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Seed.liveStr
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Cite
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinCited
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.forcedBundle
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.forcedRegion
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.forcedRegion_iff_check
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinCited_sat_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.forcedRegion_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.forcedRegion_anti
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.LowerBound
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.UpperBound
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.IsForcedInterval
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.IsForcedInterval.le
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.IsForcedInterval.unique
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.IsForcedInterval.mono
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.widenSeed
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.defeat_widens
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.allowed_sat
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.BoundCert
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.BoundCert.value
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.BoundCert.sound_of_pos
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.BoundCert.sound
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.lowerCert_bound
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.upperCert_bound
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.seg
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Row.sat_seg
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.region_convex
@@ -1963,7 +2181,6 @@ end Witness
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.bundle
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.region
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.region_iff
-#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Settlement.empty_pinRowsAt
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.mem_bundle_iff
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Admissible
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.VerdictCert
@@ -2152,5 +2369,77 @@ end Witness
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Witness.sched_rows_length
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Witness.fixture_liability
 #print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Witness.position_nonzero
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Outcome
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Degenerate
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome_eq_kept_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_some_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_none_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_strength
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.strength_contraposes
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.applicability_contraposes
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settleOutcome_rebutted_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.retiredIds
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.citesRetired
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.survivors
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledBundle
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledRegion
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.regionOn
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Grounds.settledRegion_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.mem_survivors
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.region_subset_settledRegion
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.pinsFalse_mono
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.kept_of_le
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.retired_of_le
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.retiredIds_mono
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.survivors_anti
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledRegion_anti_of_survivors_eq
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.settledRegion_subset_kept
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.reopening_bound
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.applOcc
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.pinConsequent
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.empty_le_pinConsequent
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.settled_not_anti
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.dayGap_dominated
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.slackMass_eq
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.netWorth_ge_neg_odds_reopened
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.settlementAt
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.docketAt
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.settleOutcome_strength
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.settleOutcome_premise
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.settleOutcome_appl
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occP_id
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occA_id
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.occS_id
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.retiredIds_eq
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.citesRetired_eq_false
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.mem_docketAt_iff
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.survivors_eq
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.rowsRebutted
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.schedRebutted
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.schedRebutted_eq_survivors
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.no_strength_after
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.rebutted_region_nonempty
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.gap_dominated_wAY
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.mem_rowsRebutted
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.wAY_live
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.liability_rebutted
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.X
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.XA
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.XAY
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.Y
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.Z
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occP
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occA
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occS
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.occZ
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.grounds
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.refuteX
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.old_rule_empty
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.survivors_refuteX
+#print axioms Workspace.Normativity.Contrib.WarrantEntitlement.Fixture2.retired_region
 
 end Workspace.Normativity.Contrib.WarrantEntitlement
