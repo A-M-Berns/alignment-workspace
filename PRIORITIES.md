@@ -406,7 +406,7 @@ item. The present candidate is a distortion term comparing local fixed-loss
 evaluation with full replay, potentially requiring `B_T(g) = o(T)`, but no
 accepted sufficient statement yet supplies an executable completion criterion.
 
-### 35. End-to-end module pipeline round — **[maintainer-specified-later]** — *first instance landed 2026-10-21: `EndToEndWitness.Run.witness` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md`), one fixture, every stage; not registered; the next instance's needs are in that round's `LANDING.md`*
+### 35. End-to-end module pipeline round — **[maintainer-specified-later]** — *first instance landed 2026-10-21: `EndToEndWitness.Run.witness` (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md`), one fixture, every stage; not registered; the next instance's needs are in that round's `LANDING.md`* — *second instance landed 2026-10-22: `WarrantInductorWitness.inductor`, `warrant_inductor` at a fixture with computability and liability discharged; the general theorem `WarrantInductor.warrant_inductor` registered `inductor.warrant-inductor`*
 <!-- workspace-priority: project=normativity; dispatchable=no -->
 
 ---
@@ -425,7 +425,7 @@ are marked answered on filing: a kernel-checked headline registers against a fil
 item, and the item is where *what is worth proving* was decided, so it is filed with
 the answer rather than before it.
 
-### 39. Does normative statics produce a credal constraint, or only a price demand? — **[open]** — *narrowed 2026-10-21: the geometric half is registered (`seed.forced-interval-spec`, `seed.forced-interval-bounds`); the liability half is the warrant round's odds bankroll and this round's reopened bankroll; the answer *weak* stands*
+### 39. Does normative statics produce a credal constraint, or only a price demand? — **[open]** — *narrowed 2026-10-21: the geometric half is registered (`seed.forced-interval-spec`, `seed.forced-interval-bounds`); the liability half is the warrant round's odds bankroll and this round's reopened bankroll; the answer *weak* stands* — *narrowed 2026-10-22: rowwise conformance at the realized deductive market registered (`inductor.conformance`); the credal constraint is per row, item 125*
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
 The traderized-force interface consumes a price-space region and gives it
@@ -3565,7 +3565,7 @@ from linearity of the inductor's expectation.
 *A solution ships:* the derivation, or the obstruction — in particular whether the
 support clause (PE2) can be discharged for the score family.
 
-### 112. Occurrence-level defeat: the orphan pin — **[substantial]** — *narrowed 2026-10-21: under `settleForm` (`DECISIONS.md` M1–M2) the orphan cannot form — `WarrantEntitlement.Fixture.no_strength_after`, `rebutted_region_nonempty`; what remains is transitive retirement along `cites` without the settlement's closure, item 121*
+### 112. Occurrence-level defeat: the orphan pin — **[substantial]** — *narrowed 2026-10-21: under `settleForm` (`DECISIONS.md` M1–M2) the orphan cannot form — `WarrantEntitlement.Fixture.no_strength_after`, `rebutted_region_nonempty`; what remains is transitive retirement along `cites` without the settlement's closure, item 121* — *answered 2026-10-22 by the grounded rule (`WarrantEntitlement.mem_survivors`, registered `inductor.grounded-survivors`): undercutting an applicability withdraws every row that cites it, at the undercut*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -3634,7 +3634,7 @@ trader exhibited, or the obstruction in the maker's fixed point.
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md` §3;
 `src/fixture.py::harmonic_buyer_run`; item 40.
 
-### 115. Transport of `Licensed` across record transitions — **[substantial]** — *the remainder of item 56*
+### 115. Transport of `Licensed` across record transitions — **[substantial]** — *the remainder of item 56* — *narrowed 2026-10-22: `Supported` and `Licensed` read the settled bundle (`SupportedOn`), so a certificate citing an undercut or rebutted occurrence is refused; transport across record transitions remains*
 
 <!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
 
@@ -3652,7 +3652,7 @@ requires.
 with a named code.
 *Context:* `.../2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md`; item 56.
 
-### 116. The record as reason trace: what it mediates, the defect, and the port's duplicate — **[entry]**
+### 116. The record as reason trace: what it mediates, the defect, and the port's duplicate — **[entry]** — *narrowed 2026-10-22: (c) closed on 2026-10-21 (one `SeedStatics.lean`); (a) and (b) remain*
 
 <!-- workspace-priority: project=normativity; dispatchable=yes -->
 
@@ -3699,7 +3699,7 @@ locked precedent) run through one model.
 reading of the seed type.
 *A solution ships:* the rule, the lock, the theorem, and the fixtures.
 
-### 118. Rational attainment and certificate completeness for the computed forced interval — **[open]**
+### 118. Rational attainment and certificate completeness for the computed forced interval — **[open]** — *narrowed 2026-10-22: completeness is also what decides whether an adapter's `Excludes`/`Margins` certificates exist whenever the region excludes or marks (`WarrantInductor.Problem`)*
 
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
@@ -3773,17 +3773,7 @@ calculus computes no extension).
 *Consumed by:* any claim that persistent discord is never an artifact of order.
 *A solution ships:* the predicate and the two theorems.
 
-## Workspace friction
-
-**Where the structure gets in the way of the work.** `AGENTS.md` §14 obliges a
-round that hits friction with the workspace itself to file it here rather than
-route around it, because a defect worked around silently is one the next round
-pays for again. Entries are reports, not work orders; one graduates by becoming a
-numbered item or by being ruled on in `DECISIONS.md`. **Cite an entry by its
-title, not its number** — the list is renumbered as entries leave it, so numbers
-are positions rather than identifiers.
-
-### 121. Transitive retirement, and the closure a settlement must carry — **[entry]**
+### 121. Transitive retirement, and the closure a settlement must carry — **[entry]** — *answered 2026-10-22: the grounded rule propagates retirement, vacuity, rebuttal and undercut along citation chains of every length without a closure on the settlement (`mem_survivors`)*
 
 <!-- workspace-priority: project=normativity.seed; dispatchable=yes -->
 
@@ -3838,6 +3828,102 @@ rule charges the enforcer) restores `3ρ` is a design question for the maintaine
 obstruction; the sharp constant for one reopening; the accounting variant if adopted.
 *Acceptance check:* Lean green; the exhibit's numbers recomputed by the fixture.
 *Context:* `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md` A2; items 114, 40.
+
+### 124. Certified bounds at the displayed price: the licence–force bridge — **[open]** — *answered on filing, 2026-10-22: `WarrantForce.WarrantSchedule.bracket_at_market`, registered `inductor.certificate-transport`*
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+A licence certifies a bracket on a coordinate by rows of the compiled bundle; the enforcer
+holds those rows at a tolerance. What does the licence entitle one to say about the
+*displayed* price? Answer: a certificate's multiplier sum is the Lipschitz constant of its
+bound in the rows' excesses (`WarrantForce.FunctionalCert.le_of_excess`), so a verdict
+supported on the day's bundle has its bracket at the displayed price widened by
+`mass · tol` on each side (`bracket_at_market`), and any functional certificate cited into
+the bundle holds there within `mass · tol` (`functional_at_market`). This is the only
+conversion from the force layer's rowwise guarantee to a coordinate bound that the
+repository has; it is what the adapter reads.
+
+*Deliverable shape:* `lean-proved`, landed.
+*Acceptance check:* the Lean audit clean.
+*Context:* `projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md` §C.
+
+### 125. Distance-to-region conformance for the rowwise enforcer — **[substantial]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+The rowwise enforcer's guarantee is per row: every excess at most `tol`
+(`WarrantForce.WarrantSchedule.excess_le_tol`). The projection enforcer's is a distance:
+`dist2 (market n) (target n) ≤ tol` (`EffectiveRepresentation.end_to_end_of_constraints_effective`),
+and the Normative-Inductor page states conformance in that form. Neither implies the other
+without a constant: from rowwise excesses the distance to the region is bounded by a Hoffman
+constant of the row system, which depends on the bundle and is not computed anywhere. Wanted:
+either the Hoffman bound for compiled bundles (a function of the rows, computable from the
+state, so that a distance defect can be declared from rowwise conformance), or a theorem that
+the displayed-excess defect of `WarrantInductor.Problem.defectOf` is the right public defect
+for every adapter the program will use — and then the two enforcer architectures share one
+interface, or one is retired.
+
+*Deliverable shape:* `lean-proved` either way; if the Hoffman route, the constant as a `def`
+on `Bundle` with its bound.
+*Acceptance check:* the Lean audit clean; the witness's bundles re-run.
+*Context:* `.../2026-10-22-normative-inductor-integration/HANDOFFS.md` (the conformance arrow);
+`ProjectionForce.dist2`.
+*Consumed by:* any unification of the projection and rowwise enforcers; the wiki's conformance
+statement.
+
+### 126. The bankroll across repeated reopenings — **[substantial]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+`OddsBankroll.Account.netWorth_ge_neg_odds_reopened` gives `−cap·ρ(2 + ρ)` across one
+reopening from a slack world before and one after. A run with `k` rebuttals needs `k + 1`
+slack worlds and a bound; iterating the one-step argument suggests `−cap·ρ·(2 + ρ)^k` or
+better, and nothing is proved. Wanted: the `k`-reopening bankroll on the abstract account, and
+whether a settlement-time accounting of the reopened mass (item 123) makes it linear in `k`.
+
+*Deliverable shape:* `lean-proved` on `OddsBankroll.Account`.
+*Acceptance check:* the Lean audit clean; the one-reopening theorem recovered as `k = 1`.
+*Context:* `lean/Workspace/Normativity/Contrib/OddsBankroll.lean`; item 123.
+*Consumed by:* any run with more than one rebuttal; the asymptotic corollary of
+`.../THEOREM_STORY.md` §F beyond one revision.
+
+### 127. Defeaters as undercutting occurrences: the grounded extension with attacks — **[open]**
+
+<!-- workspace-priority: project=normativity; dispatchable=yes -->
+
+`Occurrence.defeaters` is read as the ports whose defeat also undercuts the occurrence
+(`WarrantEntitlement.undercut`), which makes a warrant's forms share one defeat condition and
+makes the survivors the least fixed point of a monotone step. The argumentation-theoretic
+reading — a defeater is an *occurrence* that undercuts when it is itself active — makes the
+step non-monotone and the right notion the grounded extension of Dung's characteristic
+function (defended iff every active attacker is attacked by the set). Wanted: the attack
+reading as a second rule on `Grounds`, its grounded extension as a fixed point, the theorem
+that the two rules agree when no defeater is an occurrence of the grounds, and a fixture where
+an undercutter is itself defeasible.
+
+*Deliverable shape:* `lean-proved`; the agreement theorem.
+*Acceptance check:* the Lean audit clean; `WarrantInductorWitness.survivors_eq` unchanged.
+*Context:* `DECISIONS.md` 2026-10-22; `WarrantEntitlement.liveGiven`.
+*Consumed by:* fixtures with undercutting defeaters that are themselves warrants.
+
+### 128. Admission from the accounted state — **[open]**
+
+<!-- workspace-priority: project=normativity.legitimacy; dispatchable=yes -->
+
+`WarrantInductor.Admission O G` types the link from the accounted obligation state to the
+grounds: a map from occurrences to exposed obligation occurrences. It does not say what in
+the account *licenses* adding a warrant occurrence to the grounds, nor relate the record's
+authorized events to the Integrity account's receipts. Wanted: the condition on
+`ObligationState` (or on an open Integrity segment) under which an occurrence may be admitted,
+the construction of `Admission` from it, and the relation between the record's `authorized`
+set and the account — so that "legitimate admission" is derived rather than typed.
+
+*Deliverable shape:* `lean-proved` construction of `Admission` from a stated condition; the
+condition filed as a definition with a fixture.
+*Acceptance check:* the Lean audit clean; `WarrantInductorWitness.admission` recovered.
+*Context:* `.../2026-10-22-normative-inductor-integration/HANDOFFS.md` (the first arrow);
+`OpenIntegrityEvolution.ObligationState`; `wiki/Legitimacy.md`.
+*Consumed by:* the legitimacy ↔ warrant handoff; item 115.
 
 ## Workspace friction
 

@@ -16,6 +16,8 @@
 | `ConvergenceMeasure.lean` | sections 1–4 of the branch file, `prompts/2026-09-17-convergence-measure/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer), landed by `prompts/2026-10-21-rebuttal-and-end-to-end/` | `ci-only` | 2026-10-21 | `prompts/2026-10-21-rebuttal-and-end-to-end/` | — |
 | `WarrantEntitlement.lean` (Part A — rebuttal by settlement; Part 0 moved to `SeedStatics.lean`) | `prompts/2026-10-21-rebuttal-and-end-to-end/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-10-21 | `prompts/2026-10-21-rebuttal-and-end-to-end/` | — |
 | `EndToEndWitness.lean` | `prompts/2026-10-21-rebuttal-and-end-to-end/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-10-21 | `prompts/2026-10-21-rebuttal-and-end-to-end/` | — |
+| `OddsBankroll.lean`, `WarrantForce.lean`, `WarrantInductor.lean`, `WarrantInductorWitness.lean` | `prompts/2026-10-22-normative-inductor-integration/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-10-22 | `prompts/2026-10-22-normative-inductor-integration/` | — |
+| `WarrantEntitlement.lean` (the grounded survivors, `SupportedOn`, the account instance), `EndToEndWitness.lean` (under the grounded rule) | `prompts/2026-10-22-normative-inductor-integration/` (executor: Claude Fable 5.1, Anthropic; prompt author: the maintainer) | `ci-only` | 2026-10-22 | `prompts/2026-10-22-normative-inductor-integration/` | — |
 
 `MaxMinRepresentation.lean` proves Ovchinnikov's max–min representation theorem
 (Beiträge zur Algebra und Geometrie 43 (2002) 297–302, Theorem 4.1) for a piecewise

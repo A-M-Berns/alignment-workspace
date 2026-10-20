@@ -1,5 +1,7 @@
 # Part C — the end-to-end witness (item 35)
 
+> **Superseded in part, 2026-10-22.** The survivor rule is now the grounded fixed point of `WarrantEntitlement.activeStep` (`mem_survivors`): the strength occurrence leaves at the undercut of the applicability it cites (`n₀`), not at the refutation of `Y` (`n_E`); retirement propagates along citation chains without a closure on the settlement. Where this document says the strength row is enforced through `[n₀, n_E)`, the Lean now says otherwise; the intervals and the bankroll constants are unchanged. See `../2026-10-22-normative-inductor-integration/REPORT.md`, *Repairs*.
+
 Lean: `Workspace.Normativity.Contrib.EndToEndWitness` (`lean/Workspace/Normativity/Contrib/EndToEndWitness.lean`,
 121 declarations audited). Exact rationals: `src/rebuttal.py::run_table`, `tests/test_rebuttal.py`.
 

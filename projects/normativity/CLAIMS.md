@@ -1820,3 +1820,133 @@ Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, ag
   "note": "The common interval is empty iff some pair of reasoners has disjoint intervals; merged infeasibility is not pairwise, which is item 119."
 }
 ```
+
+### inductor.grounded-survivors
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the survivors are the grounded fixed point",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.mem_survivors"
+  },
+  "answers_item": "112",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "An occurrence survives iff it is in the grounds, not undercut (own port or a defeater port), kept by settleOutcome, and cites a survivor; the survivors are the least fixed point of activeStep, so undercut, retirement, vacuity and rebuttal propagate along citation chains of every length with no closure on the settlement."
+}
+```
+
+### inductor.conformance
+
+```json
+{
+  "project": "normativity",
+  "short_name": "rowwise conformance at the realized deductive market",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.excess_le_tol"
+  },
+  "answers_item": "39",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "With a rational cube point in the day's compiled bundle's region, every row of the bundle has excess at most the tolerance at the displayed price of the augmented deductive market; the slack and volume terms are the real market maker's contract and the ordinary aggregate's syntactic bound, and the calibrated intensity buys the tolerance. Rowwise, not distance to the region (item 125)."
+}
+```
+
+### inductor.certificate-transport
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a supported verdict's bracket holds at the displayed price within mass times tolerance",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.bracket_at_market"
+  },
+  "answers_item": "124",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "A certificate's multiplier sum is the Lipschitz constant of its bound in the rows' excesses (FunctionalCert.le_of_excess); for a verdict supported on the day's bundle the displayed price lies in the certified bracket widened by mass times the tolerance on each side."
+}
+```
+
+### inductor.warrant-inductor
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the warrant Normative Inductor: LI, conformance, provenance, adapter, Progress on one market",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductor.warrant_inductor"
+  },
+  "answers_item": "35",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "On the augmented deductive market of the compiled schedule of a normative state process: Logical Induction over the deductive process from a liability bound and the enforcer's effectiveness; rowwise conformance at every checked date and the provenance of every enforced row; the gate's inadequate mass at most κ times the public defect, itself at most the certificates' mass times the tolerance; and the Progress bound with PracticalUptake derived. Admission, the adequacy losses and the declared constants are the semantic inputs."
+}
+```
+
+### inductor.witness
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the warrant Normative Inductor, run with computability and liability discharged",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductorWitness.inductor"
+  },
+  "answers_item": "35",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "warrant_inductor at the five-sentence fixture: the deductive process and the enforcer are computable (process, computation), the bankroll across the rebuttal is −72 (liability); the gate puts mass at most 1/25 on refraining before the undercut and 1/100 on the surviving warrant after the rebuttal (gate_bounds)."
+}
+```

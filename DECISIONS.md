@@ -6057,3 +6057,55 @@ exhibit*.
 the seed-statics round's outstanding action 3 (keep under `seed/` or move under
 `legitimacy/`) is thereby taken as *keep*.  *Rejected alternative:* `legitimacy/` — the seed
 is the compiler's left input, not a legitimacy predicate.
+
+### 2026-10-22 — the survivors are the grounded fixed point, defeaters are shared defeat ports, the warrant enforcer runs on the deductive market, the licence reads the compiled bundle, coherence is declared structure, the public defect is the displayed excess, and the names
+
+**agent-decided, reversible** (the normative-inductor-integration round,
+`projects/normativity/rounds/2026-10-22-normative-inductor-integration/`).
+
+**The grounded rule.**  `Grounds.survivors` is the set of occurrences live given the least
+fixed point of `activeStep`: not undercut by the docket, kept by `settleOutcome`, citing a
+survivor (`mem_survivors`, `activeIds_fixed`).  Undercut, retirement, vacuity and rebuttal
+propagate along citation chains of every length; no closure requirement on the settlement.
+*Rejected alternative:* the 2026-10-21 entry's one-step retirement under a closed settlement,
+under which the fixture's strength occurrence survived the undercut of the applicability it
+cites until the later refutation (the dispatch's observation, confirmed); and the closure
+requirement as a stated hypothesis of the statics.
+
+**`defeaters` are shared defeat ports.**  An occurrence is undercut when its own port or a
+port of its defeat set is defeated (`undercut`), the reading of the 2026-10-20 entry ("a
+warrant's forms share one defeat condition") and of the fixtures.  *Rejected alternative:*
+defeaters as undercutting occurrences that defeat when themselves active — the step is then
+non-monotone and the survivors the grounded extension with attacks; filed as item 127.
+
+**The deductive market is the realization.**  The warrant enforcer runs as an
+`EffectiveEnforcer` on `DeductiveEnforcement.history DP`, where the force layer's
+computability and conformance theorems live; the assessment market of the warrant round is an
+instance of the same `OddsBankroll.Account`, kept.  *Rejected alternative:* relating the two
+firms (`AssessmentFirm.TradingFirm (ofDeductiveProcess DP)` and `LogicalInduction.TradingFirm DP`)
+by a bridge lemma — none exists, and the strategies differ syntactically.
+
+**The licence reads the compiled bundle.**  `SupportedOn` a bundle; the record's `Supported`
+is on the settled bundle, the state's on its canonical bundle with the structural rows.
+*Rejected alternative:* keeping `Supported` on the port-only bundle beside an enforcer that
+holds the settled rows — two semantics for one warrant.
+
+**Coherence as declared structure.**  The coherence relations of the fixture are `StrItem`s of
+the normative state, enforced and cited like any structural row.  *Rejected alternative:*
+compiling logical relations from the fragment automatically — no device for it exists in the
+repository and the dispatch allowed either.
+
+**The public defect is the displayed inadequate excess.**  `Problem.defectOf` sums, over the
+inadequate responses, the positive part of the displayed score over the threshold; the work
+budget is set against the certificates' mass times the tolerance, which bounds it at the
+realized market.  *Rejected alternative:* a constant defect equal to that bound — a function
+of nothing the market displays.
+
+**Names, provisional:** *grounded rule*, *active identities*, *undercut*, *live given*,
+*normative state*, *canonical bundle*, *withholding compile*, *enforcement account*,
+*capital*, *warrant schedule*, *calibrated warrant enforcer*, *functional certificate*,
+*mass*, *transport*, *excludes*, *margins*, *adapter protocol*, *warrant Normative Inductor*.
+
+**Workspace repair, contained.**  `PRIORITIES.md` carried two `## Workspace friction`
+headings, the first introduced on 2026-10-21 when items 121–123 were filed under it; the
+duplicate is removed and the items precede the friction section.

@@ -2000,6 +2000,36 @@
         "convergence.discord-persists",
         "convergence.discord-pairwise"
       ]
+    },
+    {
+      "id": "2026-10-22-normative-inductor-integration",
+      "date": "2026-10-22",
+      "project": "normativity",
+      "path": "projects/normativity/rounds/2026-10-22-normative-inductor-integration",
+      "verdict": "ONE-WARRANT-NORMATIVE-INDUCTOR-ON-THE-DEDUCTIVE-MARKET-WITH-THE-GROUNDED-SURVIVOR-RULE-ROWWISE-CONFORMANCE-AT-THE-REALIZED-MARKET-CERTIFICATE-TRANSPORT-AND-A-DERIVED-PRACTICAL-CERTIFICATE-RUN-ONCE-WITH-COMPUTABILITY-AND-LIABILITY-DISCHARGED — the survivors of the grounds are the least fixed point of the grounded step (not undercut, kept, citing a survivor), under which the fixture's strength occurrence leaves at the undercut and not at the later refutation; one canonical bundle is read as the joint region, the licence, the elimination's input and the enforcer's rows; the rowwise warrant enforcer runs as effective data on the deductive market at the calibrated intensity, where its market is a logical inductor from a liability bound and its effectiveness, every enforced row conforms within the tolerance at the displayed price by the real market-maker contract, and a certificate's multiplier mass transports that conformance to the bounds a licence certifies and an adapter reads; the soft gate on certified scores yields PracticalCert and the Progress bound with PracticalUptake derived; the consolidated theorem warrant_inductor has three connected conclusions on one market, and its run at a five-sentence fixture carries no computability and no liability hypothesis, with the gate's inadequate mass at most 1/25 before the undercut and 1/100 on the surviving warrant after the rebuttal.",
+      "verdict_source": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/README.md",
+      "depends_on": [
+        "2026-10-21-rebuttal-and-end-to-end",
+        "2026-10-20-warrant-enforcement-semantics",
+        "2026-09-06-mathematical-consolidation",
+        "2026-09-05-practical-certificate",
+        "2026-09-06-decision-theory-bill",
+        "2026-08-16-traderized-enforcement",
+        "2026-08-18-projection-enforcement",
+        "2026-09-07-final-pressure-pass"
+      ],
+      "depends_on_source": "report",
+      "registered_classes": [
+        "lean-proved"
+      ],
+      "prompt": "prompts/2026-10-22-normative-inductor-integration/PROMPT.md",
+      "claim_changes": [
+        "inductor.grounded-survivors",
+        "inductor.conformance",
+        "inductor.certificate-transport",
+        "inductor.warrant-inductor",
+        "inductor.witness"
+      ]
     }
   ]
 }

@@ -28,6 +28,10 @@ ports only; `defeaters` and `cites` are carried as provenance and not consumed b
 compiler. That is the branch's model (per-row ports) and it is what produces the orphan pin
 of `COUNTERMODELS.md` §3. Item 112 is the compiler rule that consumes them.
 
+> **2026-10-22.** The rule landed: `Grounds.survivors` consumes `cites` and `defeaters`
+> (`WarrantEntitlement.mem_survivors`), and `Supported` reads the settled bundle rather than
+> `Grounds.bundle`. `Grounds.region` is kept as the comparison object of the countermodels.
+
 ## A2. The chain
 
 A verdict is a value `v : ℚ` for a coordinate `φ`.

@@ -8,6 +8,15 @@ substrate with the Progress bound are Lean-proved and deliberately *not* registe
 the general one's Logical-Induction hypotheses are not inhabited, and the deductive
 one has no single witness for its joint package. The name is provisional.
 
+**Status, 2026-10-22.** A consolidated theorem on one market is registered
+(`inductor.warrant-inductor`, `WarrantInductor.warrant_inductor`): the rowwise warrant enforcer
+of the compiled normative state on the augmented deductive market is a logical inductor, every
+enforced row conforms at the displayed price within the tolerance, a certificate's multiplier
+mass carries that conformance to the bounds a licence certifies, and a soft-gate adapter on
+certified scores yields `PracticalCert` and the Progress bound with `PracticalUptake` derived.
+Its run (`inductor.witness`) discharges computability and liability. Conformance there is per
+row, not the distance to the region described below (`PRIORITIES.md` item 125).
+
 The Normative Inductor is the concrete candidate for a bounded reasoner that realizes
 [normative induction](Normative-Induction): a Logical Inductor made to answer to
 legitimately incurred obligations without ceasing to be a Logical Inductor.

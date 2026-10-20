@@ -1,5 +1,7 @@
 # Part A — rebuttal by settlement: the rule, and what it changes
 
+> **Superseded in part, 2026-10-22.** The survivor rule is now the grounded fixed point of `WarrantEntitlement.activeStep` (`mem_survivors`): the strength occurrence leaves at the undercut of the applicability it cites (`n₀`), not at the refutation of `Y` (`n_E`); retirement propagates along citation chains without a closure on the settlement. Where this document says the strength row is enforced through `[n₀, n_E)`, the Lean now says otherwise; the intervals and the bankroll constants are unchanged. See `../2026-10-22-normative-inductor-integration/REPORT.md`, *Repairs*.
+
 Lean: `Workspace.Normativity.Contrib.WarrantEntitlement`, sections *Part A (round 2026-10-21)*
 and the `Fixture`/`Fixture2` namespaces (`lean/Workspace/Normativity/Contrib/WarrantEntitlement.lean`).
 Exact rationals: `src/rebuttal.py`, `src/exhibit.py`, run by `tests/run.py`.
