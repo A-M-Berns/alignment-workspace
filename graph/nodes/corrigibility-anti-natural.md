@@ -18,5 +18,10 @@ almost all such agents are instrumentally motivated to preserve their
 preferences, and hence to resist attempts to modify them".
 
 ## Notes
-Entered to carry load on the shared assumption; the published critiques of
-this root are not filed in the fixture.
+Carries load on the shared assumption. The published critiques are filed as
+pictures under its two assumption leaves: the type critiques (Grace, Shah,
+Thornley) under a1-fixed-objective-maximizer and the author's thesis, the
+i-flat reading and Hudson's goal register under correction-changes-objective.
+Its improvement claim is shutdown-button-toy.improvable, filed in the
+corrigibility-landscape frame, since the toy the sentence rests on is the
+two-step shutdown model.

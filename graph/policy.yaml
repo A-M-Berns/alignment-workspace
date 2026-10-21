@@ -9,8 +9,27 @@ rate_table:
   admit:    {S: 5, M: 10, L: 20, prior: true}
   attack:   {S: 30, M: 90, L: 240, prior: true}
   revive:   {S: 30, M: 90, L: 240, prior: true}
+  reread:   {S: 4, M: 10, L: 20, prior: true}      # a map-read of a node a human read at an older version (B6); prior until refit
+  improve:  {S: 60, M: 180, L: 480, prior: true}    # B9: relax, reformalise, take a direction, or critique and redraft
+  do:       {S: 45, M: 240, L: 960, prior: true}    # B9: the work of a task leaf or actioned claim (S under an hour, M under a day)
+  spell-out: {S: 8, M: 25, L: 60, prior: true}     # B9: read an agent's draft of sub-goals and tasks (also prices connect)
 task_overhead_minutes: 3
 read_error: 0.3
+promise_exponent: 1            # B8: weight w_g = stake · promise^e (Default 1: mostly promising first)
+stake_floor: 0.25              # B8: the stake of a goal no plan or want contains (Default, a low-priority want)
+others_wants_weight: 0.5       # B8: under --as @h, another owner's want counts at this times its priority (Default)
+verdict_c: 0.2                 # B8: verdict model, p̂ = 1/2 + (1 − c·floor(level))(p − 1/2), inside the ranking only; prior until refit
+verdict_record_floor: 0.15     # B8: the floor a registry-confirmed record is shrunk by; prior until refit
+improve_error: 0.3             # B9: an improve unit's observation error (Default = read_error: the output is a draft)
+do_error: 0.3                  # B9: a do unit's observation error (Default = read_error)
+structure_suspect_odds: 4      # B9: derived and gestalt odds this far apart flag "structure suspect"
+gestalt_mix: 0.5               # B9: a re-examine unit's prior, mixing the shrunk derived and gestalt readings
+ai_conjunct_threshold: 3       # B9: a goal multiplying this many AI-only conjuncts gets its gestalt line first
+path_max: 8                    # B10: a printed path keeps at most this many nodes (the first four and the last three beyond it)
+also_for_share: 0.2            # B10: a goal with this share of a unit's weighted bits prints as "also for"
+tasks_shown: 40                # B10: tasks.md prints this many ranked and unranked units; derived.json carries all
+suspicion_weight: 0.5          # fix stage: a structure-suspect goal's weight is stake · (promise + this) (suspect material is vetted too; Default, below promise's usual size)
+registries: [projects/deference/CLAIMS.md, projects/normativity/CLAIMS.md]   # claims registries every derivation reads (records reach level 4 through them)
 evaluative_words: [good, bad, safe, dangerous, promising, works, succeeds, should, might, probably]
 reask_days: 90
 time_tested_years: 3
@@ -18,4 +37,5 @@ maintainer: "@maintainer"
 handles:
   "@maintainer": {kind: human, github: "A-M-Berns"}
   "@smithy-verity": {kind: ai, model: "Claude Fable 5.1 (Anthropic)"}
+  "@smithy-verity-opus55": {kind: ai, model: "Claude Opus 5.5 (Anthropic)"}
 users: {}                      # ruling 26: presentation preferences per user; none asked yet

@@ -24,5 +24,4 @@ asymptotic calculus; the tower steps, expprovind, the market, and the traders
 are unmodeled."
 
 ## Notes
-Stated by the formalizer on the page; the original author of the informal
-claim has not confirmed the reading.
+Stated by the formalizer on the page, not by the informal claim's author.

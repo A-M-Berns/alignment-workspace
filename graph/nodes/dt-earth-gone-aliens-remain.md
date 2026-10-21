@@ -11,5 +11,5 @@ version: 1
 Under default-trajectory AI development every descendant of Earth is eliminated and interesting aliens remain.
 
 ## Source
-The frame's outcome class `earth-gone-aliens-remain`: elimination of all descendants of Earth with interesting aliens left (utility 0.5), placed by the maintainer on
-2026-10-01 as provisional.
+The frame's outcome class `earth-gone-aliens-remain`: elimination of all descendants of Earth with interesting aliens left (utility 0.5), placed by the maintainer as provisional
+(graph/frame.yaml).
