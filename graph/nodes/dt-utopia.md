@@ -11,5 +11,5 @@ version: 1
 Under default-trajectory AI development the future is a utopia to within physical constraints.
 
 ## Source
-The frame's outcome class `utopia`: utopia to within physical constraints (utility 1), placed by the maintainer on
-2026-10-01 as provisional.
+The frame's outcome class `utopia`: utopia to within physical constraints (utility 1), placed by the maintainer as provisional
+(graph/frame.yaml).

@@ -6,6 +6,7 @@ attribution: reconstructed
 author: "@smithy-verity"
 size: S
 size_reason: "two passages, one page each"
+superseded_by: expert-knows-own-estimates-asymptotically
 version: 1
 ---
 ## Statement

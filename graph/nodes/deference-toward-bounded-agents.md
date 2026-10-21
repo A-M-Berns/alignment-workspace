@@ -3,8 +3,9 @@ id: deference-toward-bounded-agents
 kind: frame
 children: [tt-mart-repair-via-bounds-transfer, step-asymptotic-to-finite-time, policy-level-total-trust, step-legitimacy-conditioned-trust]
 question: "Does the deference collapse, or an analogue of it, hold for a bounded trained agent deferring to human teachers?"
+owner: "@maintainer"
 roots:
-  - {id: tt-mart-repair-via-bounds-transfer, role: plan, preset: worst-case, success_class: utopia}
+  - {id: tt-mart-repair-via-bounds-transfer, role: shared-claim, preset: worst-case}
   - {id: step-asymptotic-to-finite-time, role: plan, preset: worst-case, success_class: utopia}
   - {id: policy-level-total-trust, role: shared-claim, preset: worst-case}
   - {id: step-legitimacy-conditioned-trust, role: plan, preset: worst-case, success_class: utopia}
@@ -34,24 +35,24 @@ four steps is the filing session's reconstruction of those sources, not a list
 the maintainer wrote.
 
 ## Notes
-A programme, filed as a sub-frame: a frame node whose children are its own
-roots, the four steps. Three steps are plan roots of the sub-frame (the
-approximate-introspection repair, the finite-time step and the legitimacy
-step), each a line of work valued on its own; the policy-level question is a
-shared claim of the sub-frame, a proposition the other steps will need and
-nobody has yet argued for. The parent frame values this programme as its best
-non-conceded step's value, or as the outside option once every step is
-conceded; the steps' tasks rank in the parent's list. Within the sub-frame the
-classes, the outside option and the undescribed-failure valuation are the top
-frame's.
+A programme, filed as a sub-frame of the line updateful-trust-li: a frame node
+whose children are its own roots. The finite-time step and the legitimacy step
+are plan roots, each a line of work valued on its own; the policy-level
+question and the approximate-introspection repair are shared claims of the
+sub-frame. The repair is a literal claim the programme builds on rather than a
+course of action, so it is a shared claim, and it is the evidence parent of
+the asymptotic-introspection row of tt-implies-mart-gap-bets.
 
-The programme builds on the toy result li-deference-collapse, a shared claim
-of the top frame: the repair step argues the asymptotic-introspection picture
-of its first arrow back above the bar, and the finite-time and legitimacy
-steps relax its setting. The two are kept as separate roots so that each shows
-its own standing; a step's statement names the toy result where it rests on
-it.
+The programme asks a second improvement question beside
+li-deference-collapse.improvable, toward a different reality: a bounded
+trained agent deferring to human teachers. A frame carries no improves field,
+so the relation is recorded here: the finite-time step and the policy-level
+question each condition on the deck's scoped chain read as an implication
+(deck-collapse-statement@valid), the statement of the collapse the maintainer
+presents.
+
+The legitimacy step's file belongs to the legitimacy programme's branch; it
+stays a root of this sub-frame.
 
 Each plan step's success class is the frame's top class, the convention this
-graph uses for plan roots; whether a research programme paying off is the
-same event as that class is a question for the maintainer.
+graph uses for plan roots (accepted there as an approximation).

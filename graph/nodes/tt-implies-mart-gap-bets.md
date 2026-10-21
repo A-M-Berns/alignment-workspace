@@ -4,7 +4,7 @@ kind: cases
 children: [tt-implies-mart-gap-bets.partition, pic-U-exact-introspection, pic-D-asymptotic-introspection, pic-A-parallel-cuts-amplifier, pic-N-tt-mart-residual]
 rows:
   - {picture: pic-U-exact-introspection, class: null, observable: never}
-  - {picture: pic-D-asymptotic-introspection, class: null, observable: never}
+  - {picture: pic-D-asymptotic-introspection, class: null, observable: never, given: tt-mart-repair-via-bounds-transfer}
   - {picture: pic-A-parallel-cuts-amplifier, class: null, observable: never}
   - {picture: pic-N-tt-mart-residual, class: undescribed-failure, observable: never, residual: true}
 author: "@smithy-verity"
@@ -32,9 +32,13 @@ projects/deference/note-dump-2026-08-11/wiki/deference-notions.md, Status:
 The pictures are readings of the theorem's setting: the surrogate expert with
 exact, provably linear expectations; the inductor expert with asymptotic
 introspection; Total Trust granted only over parallel cuts of single bets; and
-a residual. The page's own pending-rewrite note is the story behind the second
-picture, and the repair it sketches is the node
-tt-mart-repair-via-bounds-transfer.
+a residual.
 
-The two independent verifications the status line reports were wiki-level AI
-passes; they mint no level here, and no human has traced the proof.
+The asymptotic-introspection row conditions on the repair
+tt-mart-repair-via-bounds-transfer (a conditional table): its
+conditional splits into the probability of the conclusion if the repair holds
+and if it fails, so tracing the repair moves this row without a new picture.
+
+The two independent verifications the page's status line reports were
+wiki-level AI passes; they mint no level here, and no human has traced the
+proof.
