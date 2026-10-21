@@ -25,4 +25,4 @@ in a new situation, we prove that the agent is likely to avoid shutdown."
 The published reply, filed by a contributor as a refinement of the
 trained-policy picture: in this part of it the claim holds for a learned goal,
 and the power-seeking conclusion follows by the paper's theorem. The paper
-predates the post it is filed against; the post was written with it in view.
+predates the post it is filed against.

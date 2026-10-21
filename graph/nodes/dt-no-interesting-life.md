@@ -11,5 +11,5 @@ version: 1
 Under default-trajectory AI development all interesting life in the reachable universe is eliminated.
 
 ## Source
-The frame's outcome class `no-interesting-life`: elimination of all interesting life in the reachable universe (utility 0), placed by the maintainer on
-2026-10-01 as provisional.
+The frame's outcome class `no-interesting-life`: elimination of all interesting life in the reachable universe (utility 0), placed by the maintainer as provisional
+(graph/frame.yaml).

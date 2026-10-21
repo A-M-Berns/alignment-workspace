@@ -2,6 +2,9 @@
 id: step-asymptotic-to-finite-time
 kind: leaf
 leaf_kind: step
+given: deck-collapse-statement@valid
+action: "Catalogue the carries the collapse uses (expectation provability induction, the tower, the fold) and record for each whether FAF's proof yields an explicit day bound, in a note."
+who: agent
 author: "@smithy-verity"
 size: L
 size_reason: rate statements for the paper's carries do not exist and would have to be found
@@ -23,4 +26,10 @@ process before that point."
 ## Notes
 What the toy assumes that reality does not: unbounded days. What the
 relaxation requires: rate statements for the expectation-provability-induction
-carries, which the logical induction paper does not give.
+carries, which the logical induction paper does not give. Its evidence parent
+is the deck's scoped chain read as an implication, the asymptotic statement
+whose rates are sought.
+
+The action catalogues which carries the collapse uses and whether FAF's proofs
+of them yield explicit day bounds, which decides whether the step is blocked by
+the paper's proofs or only by rates not yet extracted from them.

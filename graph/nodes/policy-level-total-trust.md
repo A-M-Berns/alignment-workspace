@@ -2,6 +2,9 @@
 id: policy-level-total-trust
 kind: leaf
 leaf_kind: question
+given: deck-collapse-statement@valid
+action: "Write a page on policy-level trust: a policy as a sequence of actions the novice observes, trust in the policy as Value over the menus it induces, and where the selection to condition on disappears, ending in a precise question or a reason none can be stated."
+who: agent
 author: "@smithy-verity"
 size: M
 size_reason: one research-direction section and the decision-theory pages it names
@@ -26,6 +29,10 @@ not known whether this is doable".
 A question: Value is instrumental and no decision rule is optimal across
 embedded environments, so any argmax-shaped statement inherits a decision
 theory; the shape of a statement that does not is unknown. A shared claim of
-the bounded-agent programme's sub-frame: while it stands as a question it has
-infinite cost to establish and no ranked unit, and the steps that need it can
-only be broken or narrowed.
+the bounded-agent programme, and the target of the policy-level route of the
+collapse's improvement claim.
+
+Its evidence parent is the deck's scoped chain read as an implication: that
+chain is the bounds-transfer and self-endorsement factorization for argmax
+choice, whose policy-level analogue the question asks for. The action is a
+one-page statement attempt.

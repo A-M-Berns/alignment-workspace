@@ -851,7 +851,7 @@ which are required.
 | every gate fails on its null input | each gate's own `--self-test`, in the same job; and `tests/run.py` locally |
 | slop discipline | **not gated** — review, and grounds for rejection on its own |
 | provenance | **not gated** — review; the PR template asks |
-| the argument map: its twelve refusal rules and the component cap | `python` — `checkers/graph.py` through `tests/run.py` |
+| the argument map: its refusal rules and the per-formula cutset cap | `python` — `checkers/graph.py` through `tests/run.py` |
 
 Seven jobs decide correctness. The rest decide fit, and that is judgement rather
 than a script.
@@ -869,48 +869,99 @@ working against it. Where the two disagree, the protocol is wrong and the
 disagreement is filed.
 
 **What an agent does alone.** File sources. Create node files at level 0
-(a new leaf under an `and` cannot raise any root). File pictures, rows and
-responses as drafts. Draft the checked list a map-read needs. Sharpen a
-vague Statement, bumping `version`. Compute a proposal's delta. Run the
-checker and commit what it regenerates. Write the digest. Fill in numbers:
-an agent writes `estimate` and `gestalt` events in its own AI handle's
-ledger (`<ai-handle>-001`), each with its reasoning in `gloss`, and they
-count at J 0 "generated" the moment they are filed, marked as AI numbers in
-every display until a human revises them. The map needs numbers to start
-from; humans vet as they go and revise the ones that seem wrong, and a
-human's judgment on a quantity supersedes the agent's. An agent never
-writes a number without its reasoning, and never a weight or conditional on
-a row a human has judged except to say so in chat and let the human revise.
+(a new leaf under an `and` cannot raise any root): claims, frames for
+lines and programmes, improvement claims with their routes and residual
+route, task leaves and actioned claims from the repository's own activity
+(claims registries, `PRIORITIES.md`, rounds, recent commits), `work`
+pointers, `given` edges and refinements. File pictures, rows and
+responses as drafts. Draft the checked list a map-read needs, the
+sub-goals and tasks a `spell-out` asks for, and the edges a `connect`
+offers. Sharpen a vague Statement, bumping `version`. Compute a proposal's
+delta. Run the checker and commit what it regenerates. Write the digest.
+Fill in numbers: an agent writes `estimate` and `gestalt` events in its own
+AI handle's ledger (`<ai-handle>-001`), each with its reasoning in `gloss`,
+on leaves, rows, both sides of a conditional table and any goal of the
+ranking except a want (no AI number goes on a want, its rows or its
+fields), and they count at J 0 "generated" the moment they are filed,
+marked as AI numbers in every display until a human revises them. The map
+needs numbers to start from; humans vet as they go and revise the ones
+that seem wrong, and a human's judgment on a quantity supersedes the
+agent's. An agent never writes a number without its reasoning, and never a
+weight or conditional on a row a human has judged except to say so in chat
+and let the human revise. A task leaf's number is its feasibility if
+attempted, never a forecast that anyone will attempt it, and a task hangs
+under its goal as a route or as evidence, not as a conjunct, unless the
+goal's Statement names the deliverable.
+
+**What a gloss rests on.** An AI number's reasoning rests on the claim's
+content and on sources a public reader can open. A person's confidence,
+doubt, progress, reading or feelings is no evidence about a claim and never
+appears in a gloss; where a number leaned on one, re-estimate from the
+content and say why. No AI number or sentence forecasts a named person's
+actions (that someone will write, finish, read, endorse or reply), and none
+says what a person has or has not read, done, drafted, started or settled
+(PROTOCOL §5).
 
 **What an agent writes only from its user's words.** Every human judgment
 (a weight, a conditional, a range, a gestalt, a class tag, a dependence
 answer), every acceptance of a draft, every vetting event (map-read, trace,
 pass), every `attribution` verdict (the user, not the node's author, read
-the cited source and says the attribution is honest or disputes it) and
-every withdrawal. The event's `verbatim` is the user's answer;
-the agent's reading goes in `gloss`, apart from it. An item is `said` only
-when the user stated it; the agent's own draft, accepted without
-restatement, is `approved` and mints no level. The agent never writes a
-utility, a class ordering, a severity order, a `rule` event, a level-minting
-event, an acceptance or a tag under its own handle, or a line in another
-contributor's ledger, and never edits `derived.json`, `tasks.md`, `view.md`
-or `versions.json` by hand. Every event the agent writes for its user
-carries an id beginning with that user's handle (`anson-001`), in that
-user's own ledger. `graph.py` refuses every one of these it can see; the
-rest is a review matter.
+the cited source and says the attribution is honest or disputes it), every
+withdrawal, every `revise` (the user revised a node's Statement by hand),
+every `priority` word on a want, and every want: a want is filed under its
+user's handle as owner, from what the user said in the session or, with
+`filed_from: quote`, from words the user wrote in a public document, and it
+sits under a line only when those words name the line. The event's
+`verbatim` is the user's answer; the agent's reading goes in `gloss`, apart
+from it. An item is `said` only when the user stated it; the agent's own
+draft, accepted without restatement, is `approved` and mints no level. The
+agent never writes a utility, a class ordering, a severity order, a `rule`
+event, a level-minting event, a priority word, an acceptance or a tag under
+its own handle, or a line in another contributor's ledger, and never edits
+`derived.json`, `tasks.md`, `view.md` or `versions.json` by hand. Every
+event the agent writes for its user carries an id beginning with that
+user's handle (`anson-001`), in that user's own ledger. `graph.py` refuses
+every one of these it can see; the rest is a review matter.
 
-**A programme is a sub-frame.** When a plan root is really a programme of
+**Goals are frames and wants.** The frame tree is the goal hierarchy: the
+top frame's broad question, under it the maintainer's research aim as a
+plan that is itself a frame, under that its lines, programmes and steps as
+nested frames, each with the human `owner` whose question it poses, down to
+the concrete work as task leaves. When a plan root is really a programme of
 steps (a research line whose parts are lines of work in their own right),
 the agent files it as a node of kind `frame` whose children are its roots,
 not as a long conjunction; the parent values it as its best step and ranks
-the steps' tasks. When a plan or table is conceded, the agent poses the
-ranked `revive` task as what it is: arguing the conceding conditional back
-above the bar, in the user's words, never by deleting the row.
+the steps' tasks; a frame whose roots nobody has spelled out yet is filed
+with `roots: []`, and the list asks for the spelling-out. A user's want is
+a claim with `want: true` under their handle, a root of role `want`,
+connected to nothing until the user or anyone connects it; the agent files
+it where the user's words place it and otherwise at the top frame, and asks
+for the user's one-word priority. A want's Statement says what is wanted,
+in research terms, never a forecast about a person; a want carries its
+owner's priority and no AI estimate or gestalt, and the map shows no
+probability for it. Beside every toy result the agent files its improvement
+claim ("X can be improved until it reflects R well.") with the routes the
+repository's activity suggests, each conditioned on the toy's validity
+(`given: X@valid`), never on the toy as a conjunct. A single sentence drawn
+from a position statement is filed as part of the argument it bears on (a
+conjunct, a picture, or a `given` parent of the plan or claim it supports),
+not as a bare shared-claim root: a one-leaf shared claim is no goal of the
+ranking, and one that nothing reads is listed only as a `connect` item. A
+kernel-checked result is filed as a formal result (record, bridge,
+completeness), so that a claims registry can confirm the record and the
+human task is the bridge. An AI-read `and` over more than four conjuncts
+that rest on AI numbers alone carries an AI gestalt, so that the product of
+unread guesses never stands as the goal's only number. When a plan or table
+is conceded, the agent poses the ranked `revive` task as what it is:
+arguing the conceding conditional back above the bar, in the user's words,
+never by deleting the row.
 
 **Commit only what the plain run writes.** The four generated files are
 the same whatever flags the checker ran with; a personal render (`--why`,
-`--as`, `--scope`) goes to stdout or to a path outside `graph/` and is
-never committed.
+`--as`, `--scope`, an extra `--registry`) goes to stdout or to a path
+outside `graph/` and is never committed. The claims registries the
+derivation reads are listed in `policy.yaml` (`registries`), not passed as
+flags.
 
 **Nothing waits for a second person.** A contributor's own filings count at
 once, and a draft an AI session produced counts once any human, the
@@ -929,6 +980,23 @@ prose elsewhere names people as the document needs (ruling of 2026-10-02).
 An agent writes no real name where a handle is expected, and holds an
 AI-drafted attack on a living researcher's published argument out of the
 tree until a human has admitted it.
+
+**Cite only what a public reader can open.** A Source, gloss, reason,
+`work` pointer, task `files` or `action` cites published papers, public
+posts, and files and history of this repository, nothing else. Private
+material (notes, journals, chats, correspondence, calls, recordings,
+review comments, unpublished drafts) may shape the map, deciding what is
+filed and what comes first, but is never cited, quoted, paraphrased or
+dated, and no placeholder stands in for it ("correspondence, private", a
+path outside the repository). Where a private source was doing work, rest
+the claim on public grounds or state the weaker claim those support.
+Report nothing anyone said, planned or holds privately: another person's
+views enter only through their public words, and an attribution bridge
+rests on the person's public words or is stated as the formal claim
+alone. Do not file nodes whose subject is a private interaction (a message
+to send, a meeting, a recording, a consent request, a question pending
+with someone). The maintainer's design rulings are cited by number, their
+content stated as rules, never quoted (PROTOCOL §7).
 
 **Ask the user how they want things shown.** Before the first task with a
 user, the agent asks how that user wants information presented: numbers or
@@ -962,10 +1030,14 @@ decision reads.
 
 **Gates.** The checker runs on every commit and pull request that touches
 `graph/` or `chats/` and refuses: a number, level or status in a node file;
-an unmapped handle, an AI handle's level-minting event, acceptance or tag,
-or an AI handle's number without its reasoning; a withdrawal of someone
-else's event; a regenerated file edited by hand; a proposal applied without
-a counted `approve`; a missing design log. Said-versus-approved honesty, the
-presentation question, the dialogue above and the no-real-names rule are
-**not gated**; they are review matters and grounds for rejection on their
-own.
+an unmapped handle, an AI handle's level-minting event, acceptance, tag,
+`revise` or `priority`, an AI handle's number without its reasoning, or an
+AI handle's number on a want; a priority word by anyone but the want's
+owner; a withdrawal of someone else's event; a regenerated file edited by
+hand; a proposal applied without a counted `approve`; a frame without a
+human owner; a node attached to nothing; a formula whose cutset exceeds the
+cap; a missing design log. Said-versus-approved honesty, the presentation
+question, the dialogue above, the placement of a quoted want, the
+attachment of a task as route or evidence, and the no-real-names rule are
+**not gated**, and private citations only warn; they are review matters and
+grounds for rejection on their own.

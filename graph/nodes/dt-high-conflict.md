@@ -11,5 +11,5 @@ version: 1
 Under default-trajectory AI development the future is a high-conflict one full of suffering.
 
 ## Source
-The frame's outcome class `high-conflict`: a high-conflict future full of suffering (utility -0.5), placed by the maintainer on
-2026-10-01 as provisional.
+The frame's outcome class `high-conflict`: a high-conflict future full of suffering (utility -0.5), placed by the maintainer as provisional
+(graph/frame.yaml).

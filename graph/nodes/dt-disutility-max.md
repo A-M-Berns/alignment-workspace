@@ -11,5 +11,5 @@ version: 1
 Under default-trajectory AI development the future is run by a disutility maximizer.
 
 ## Source
-The frame's outcome class `disutility-max`: disutility maximizers (utility -1), placed by the maintainer on
-2026-10-01 as provisional.
+The frame's outcome class `disutility-max`: disutility maximizers (utility -1), placed by the maintainer as provisional
+(graph/frame.yaml).
