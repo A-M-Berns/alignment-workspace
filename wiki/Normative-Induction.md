@@ -82,7 +82,13 @@ gets the bound.
 ## The decision interface
 
 **Status: the static interface is Lean-proved and unregistered; the margin is a typed
-input with two routes; the dynamic case is open.**  What the bound above asks of decision
+input with two routes; the dynamic case is open.  One realization now derives the whole
+uptake package rather than assuming it: the rowwise warrant realization of the
+[Normative Inductor](Normative-Inductor) (`inductor.warrant-inductor`) produces the defect
+as the displayed inadequate excess, the practical certificate from certified exclusion and
+margins at the realized market through the soft gate, and the work relation from the
+certificates' mass times the tolerance; its adequacy semantics — the adequate set and the
+anchored losses — stay typed inputs, as this page says they must.**  What the bound above asks of decision
 theory is the practical certificate on each supported edge, and the adequate-set route
 factors that into a semantic half — adequate responses cost at most `ε_ad`, every
 response at most `D` — and one decision-theoretic half: the realized response

@@ -20,7 +20,22 @@
       "path": "projects/normativity/legitimacy",
       "status": "active",
       "parent": "normativity",
-      "entry_points": ["projects/normativity/legitimacy/README.md", "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/TWO_ARC_INTERFACE.md"]
+      "entry_points": [
+        "projects/normativity/legitimacy/README.md",
+        "projects/normativity/legitimacy/rounds/2026-08-13-relational-scorekeeping-bridge/TWO_ARC_INTERFACE.md"
+      ]
+    },
+    {
+      "id": "normativity.seed",
+      "name": "Seed theory",
+      "path": "projects/normativity/seed",
+      "status": "active",
+      "parent": "normativity",
+      "entry_points": [
+        "projects/normativity/seed/README.md",
+        "projects/normativity/seed/rounds/2026-09-16-seed-statics/README.md",
+        "projects/normativity/seed/rounds/2026-09-17-convergence-measure/README.md"
+      ]
     },
     {
       "id": "deference",
@@ -28,7 +43,11 @@
       "path": "projects/deference",
       "status": "active",
       "parent": null,
-      "entry_points": ["projects/deference/README.md", "projects/deference/notes/LI_NATIVE_DEFERENCE.md", "projects/deference/notes/FINITE_MODEL_SKELETON.md"]
+      "entry_points": [
+        "projects/deference/README.md",
+        "projects/deference/notes/LI_NATIVE_DEFERENCE.md",
+        "projects/deference/notes/FINITE_MODEL_SKELETON.md"
+      ]
     },
     {
       "id": "decision-theory",
@@ -36,7 +55,12 @@
       "path": "projects/decision-theory",
       "status": "active",
       "parent": null,
-      "entry_points": ["projects/decision-theory/README.md", "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md", "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/TEST_SUITE.md", "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/AUDIT.md"]
+      "entry_points": [
+        "projects/decision-theory/README.md",
+        "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/PROBLEM_STATEMENT.md",
+        "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/TEST_SUITE.md",
+        "projects/decision-theory/rounds/2026-09-29-li-bria-synthesis-spec/AUDIT.md"
+      ]
     },
     {
       "id": "leverage",

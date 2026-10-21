@@ -48,7 +48,7 @@ coverage for the relevant burdens to recur.
 > for deduction — the original criterion together with finite-date coherence, from
 > a compiled market that assumes nothing about the deductive process beyond the
 > pinned source's own certificate. The
-> <!--state:workspace:counts.registered_claims_by_project.normativity-->43<!--/state-->
+> <!--state:workspace:counts.registered_claims_by_project.normativity-->64<!--/state-->
 > entries in this line's registry each name a Lean declaration and the priority
 > item it answers.
 
@@ -66,6 +66,16 @@ object for liabilities stated across vocabulary change is also absent. What the
 registered results establish is force, not legitimacy: the map from a normative record
 to a region a market can be made to respect is specified by the
 [Normative Inductor](Normative-Inductor)'s compiler contract and not yet proved.
+
+## The seed, and rebuttal by settlement
+
+The left input of the compiler now has a page of its own: [Seed Theory](Seed-Theory). A
+seed's forced region and intervals are computed on the force layer's own compiler, settlement
+nests them and defeat widens them, and since the rebuttal round a form whose consequent is
+settled false is **rebutted** rather than contraposed — the repair to the orphan pin the
+[warrant round](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/REPORT.md)
+exhibited. The first end-to-end run of the pipeline on one fixture is the
+[witness](https://github.com/A-M-Berns/alignment-workspace/blob/2f6e5e5ca9bf96fdb6dd5d467e0c3fff558c36b3/projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/WITNESS.md).
 
 ## A current research direction: operative force
 

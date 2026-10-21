@@ -226,6 +226,57 @@ commit.
   *Turns on:* which matters she would rather lose by latency than delegate, and whether a
   declared trigger is acceptable — knowledge of the principal the round lacks.
 
+- **Confirm, amend or strike M1 — that normative content enters the market as
+  obligations (credal constraints on priced sentences) and as values (securities traded
+  directly).**  Landed 2026-10-20 from the 2026-08-23 conversation so the
+  warrant-enforcement-semantics round could cite it; the round's Part B finds that in the
+  market's own accounting the two forms coincide for a never-settled sentence (a
+  constraint on a priced sentence is a standing position in that security).
+  *Turns on:* whether the maintainer intends a distinction the pinned substrate cannot
+  express — a security assessed on nothing — or the two forms are one object seen from
+  the row side and the account side.
+
+- **What a warrant's security settles against (M2 of the warrant-enforcement-semantics
+  round).**  The round ran deductive, evaluation and pegged settlement as a fork on one
+  fixture and found the fork collapses in the account: the three are one assessment process
+  with three live-set schedules, and the odds bankroll `3 · max_j c_j/(1 − c_j)` is the same
+  under all three while a slack world is live (`WarrantEntitlement.liability_of_odds`,
+  `Fixture.liability`, `Fixture.liability_disagree`).  The one unaffordable case is a
+  per-row defeat followed by a refutation (the orphan pin, item 112), under no particular
+  semantics.  *Turns on:* whether a pegged reading the pinned substrate cannot express — a
+  security assessed on nothing — is wanted, and whether a linear strength row that
+  contraposes under settlement is acceptable or the warrant's form changes (item 113);
+  taste about what a reason's security is, which no theorem here decides.
+
+- **Confirm or strike the 2026-08-08 and 2026-08-09 rulings landed on 2026-10-21 (M5 of
+  the rebuttal-and-end-to-end dispatch).**  Past-self charges burn; seam ordering "reasons
+  constraining → revising reasons → both"; strength selection is locked selection.  They
+  were landed from the seed-statics round's citation of its dispatch, not from this file,
+  and the past-self-burn question for re-selection under a canonical joint rule (the
+  seed-statics round's outstanding action 1) is still open.
+  *Turns on:* whether the conversational rulings are what the maintainer meant, and
+  whether a re-selection burns — taste about the trace discipline the round lacks.
+
+- **The bankroll across a reopening: accept `3ρ(2 + ρ)`, or tighten the rule.**  Under
+  rebuttal by settlement the proved bankroll across one reopening is `3ρ(2 + ρ)`
+  (`WarrantEntitlement.netWorth_ge_neg_odds_reopened`); the dispatch's `3ρ` is refuted by an
+  exact exhibit (`projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/src/exhibit.py::cushion_exhibit`, `24 > 12`): a counterparty's gains
+  on the rebutted row cushion its later selling, because the trading firm's floor is on
+  cumulative worth at live worlds.  A settlement-time accounting of the reopened mass would
+  restore `3ρ` at the cost of charging a counterparty at the rebuttal (item 123).
+  *Turns on:* whether the market should charge a trader for having bet against a conclusion
+  that was later refuted — taste about what rebuttal settles for whom, which the mathematics
+  only prices.
+
+- **Whether a warrant's entitlement ends with its obligation's account.**  The consolidation
+  round's `WarrantInductor.Entitlement` requires the originating obligation's account to carry
+  a live leaf: an obligation already answered or closed entitles no standing constraint
+  (`WarrantInductorWitness.answered_not_entitled`).  The alternative — a warrant incurred by an
+  obligation outlives its discharge until the docket retires it — keeps the constraint in force
+  after the debt is paid.  *Turns on:* what a reason's standing is once the obligation that
+  incurred it is resolved — taste about whether discharge retires the warrant or only the
+  debt, which the account records and the mathematics does not decide.
+
 ## Settled
 
 ### 2026-09-15 — the corrigibility program is consolidated as one research state: corrigibility from response authority, corrigibilization with its dominance bound, legitimate activated evaluation as its principal value, and continuation BRIA as its learning layer
@@ -5842,3 +5893,274 @@ consumer.
 
 Verified locally: full `lake build` and `tests/audit_axioms.py` over the rebuilt tree; the
 `lean` job repeats both.
+
+### 2026-10-20 — the warrant-enforcement-semantics round lands its three dispatch rulings: two forms of normative content (M1, landed subject to confirmation), the settlement-semantics fork unruled and run as a fork (M2), and legitimacy, the Normative Inductor and the force layer consumed rather than revised (M3)
+
+**Landed as the round's first commit, per the queue rule above** (`prompts/2026-10-20-warrant-enforcement-semantics/PROMPT.md`).
+
+**M1 — two forms.** Normative content enters the market in two forms: *obligations* as
+credal constraints on priced sentences, and *values* as securities traded directly.
+Stated by the maintainer in conversation on 2026-08-23 and not previously in this file.
+The dispatch marks it *confirm, amend, or strike*; it is landed here so that the round may
+cite it, and its confirmation is queued under *Awaiting the author*.  If struck, the
+round's own report says which of its readings survives (Part B, semantics (iii)).
+
+**M2 — the fork is unruled.** What a warrant's security settles against — deductive
+settlement, a later legitimate evaluation, or nothing — is not ruled.  The round runs the
+three readings as a fork on one exact fixture and reports; the maintainer rules on the
+result.  The round's finding and the decision it leaves are queued under *Awaiting the
+author* when the round closes.
+
+**M3 — consumed, not revised.** Nothing in the round redefines legitimacy
+(`wiki/Legitimacy.md` and the 2026-09-25 entries above), the Normative Inductor
+architecture (`lean/Workspace/Normativity/Contrib/NormativeInductionInterface.lean`), or the
+force layer (`projects/normativity/notes/TRADERIZED_FORCE_INTERFACE.md`).  The round
+discharges a hypothesis those objects already name — `liability` in
+`Evaluation.conditional_normative_inductor` — and adds nothing to their signatures.
+
+### 2026-10-20 — the licence is three-level with verdicts as values, enforcement's conclusion is a defect bound with the account beside it, the record of a run is its own object, and a warrant's defeat condition belongs to the occurrence
+
+**agent-decided, reversible** (the warrant-enforcement-semantics round,
+`projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/`).  Four adoptions
+from the dispatch's proposals, where the mathematics supported them.
+
+**P1 adopted — the three-level licence.**  `Admissible` (the region contains the verdict),
+`Supported` (a certificate whose positively weighted rows are cited **by occurrence** into
+the live bundle brackets the verdict with attained endpoints), `Licensed` (supported on the
+record's grounds, and the issuing event authorized); `Licensed → Supported → Admissible`
+proved, both converses refuted, in `WarrantEntitlement.lean`.  A verdict is a *value* for a
+coordinate, which is what A4's "two verdicts inside the interval" needs and what makes
+`Supported → Admissible` a theorem by rational convexity.  *Rejected alternative:* verdicts
+as bounds (the warrant's output form), under which `Supported → Admissible` is the
+certificate's soundness alone and A4 has no two verdicts to select between; and citation by
+row value (`Bundle.Allowed`), under which the stale certificate of A3 passes.
+
+**P2 adopted — the conclusion of enforcement is a defect bound.**  Conformance stays the
+force layer's `Σ_j β_j g_j² ≤ ε + C`, hence `g_j ≤ δ`, never `P_t ∈ K_t`; this round adds
+the account beside it, `−3ρ ≤ netWorth` at every live world.  *Rejected alternative:*
+stating entitlement as membership of the price in the region, which the force interface
+already withdrew.
+
+**P3 adopted — the record is an additional object.**  `MarketRun → Record` (`trace`) carries
+grounds with provenance, certificate events, docket transitions and the enforcer's position,
+and not prices; it is neither injective nor constant in the run and decides `Licensed`.
+*Rejected alternative:* the price history as the record, under which the docket is invisible
+and `Licensed` undecidable.
+
+**P4 adopted — names, provisional:** *settlement semantics*, *bankroll schedule*,
+*entitlement*; and the round's own *odds bankroll*, *slack world*, *orphan pin*.
+
+**The defeat condition is occurrence-level.**  A warrant's rows share one defeat condition:
+undercutting its applicability claim withdraws its strength row too.  The mathematics: with
+per-row ports, a defeated applicability row leaves the strength row an orphan that a later
+refutation of the consequent turns into a pin on the antecedent, inside a nonempty region
+with no slack world, where no bankroll exists (`Fixture.orphan_region_nonempty`,
+`orphan_no_slack`, the harmonic buyer of the round's `src/`).  The compiler rule realizing
+this is item 112; until it lands, `Grounds.region` consumes ports only and the round's
+fixture is the standing counterexample.  *Rejected alternative:* per-row ports as on the
+seed-statics branch, with the orphan accepted as the warrant's content — a defeasible
+warrant does not contrapose, and the market would pay without bound for a conclusion the
+warrant never drew.
+
+### 2026-10-21 — rebuttal by settlement: a form whose consequent is pinned false is rebutted, whose antecedent is pinned false is vacuous, whose premise is pinned false retires its occurrence; rebuttal does not discount applicability; interval monotonicity is traded for a reopening account; the seed statics become one file
+
+**Maintainer rulings, landed as the first commit of the rebuttal-and-end-to-end round**
+(`prompts/2026-10-21-rebuttal-and-end-to-end/PROMPT.md`; the round ships in pull request
+#129 together with the warrant-enforcement-semantics round).
+
+**M1 — rebuttal by settlement.**  A `strength` or `applicability` form whose consequent
+coordinate is pinned false by settlement is *rebutted*: its row leaves the region.  The
+warrant said "X∧A makes Y likely"; it does not say "¬Y, so not X∧A".  A linear row that
+contraposes says more than the warrant did, and the market pays for the difference (the
+orphan pin of `WarrantEntitlement.Fixture.orphan_region_nonempty`, item 112).
+
+**M2 — vacuity and retirement.**  A `strength` or `applicability` form whose antecedent
+coordinate is pinned false is *vacuous* and leaves.  A `premise` form whose sentence is
+pinned false *retires its occurrence*: every row of that occurrence leaves.  A refuted
+premise is a case that did not arise, not an inconsistency; it must not empty the joint
+region and withhold force on unrelated warrants.
+
+**M3 — no discount on applicability.**  A rebuttal does not lower the applicability
+claim.  Undercut attacks `A_ρ(n)`; rebuttal attacks the conclusion; they stay distinct.
+This closes the gap left since the August defeat exposition, where rebuttal had no
+mechanism in the statics.
+
+**M4 — monotonicity is traded for reopening.**  Under M1–M2 settlement can widen a forced
+interval.  That is accepted: a rebuttal is a *reopening* in the sense of the convergence
+round (summable reopenings converge), and the global monotonicity of
+`IsForcedInterval.mono` is replaced by monotonicity on the coordinates settlement pins plus
+a reopening account.
+
+**M6 — one copy.**  The seed declarations ported into `WarrantEntitlement.lean` by the
+warrant-enforcement-semantics round and the branch's `SeedStatics.lean` become one file,
+`lean/Workspace/Normativity/Contrib/SeedStatics.lean`, on `main`;
+`WarrantEntitlement.lean` imports it.  Pull requests #102 and #103 are superseded by the
+round's Part B and are not merged; the maintainer closes them with a pointer.
+
+### 2026-10-21 — the 2026-08-08 and 2026-08-09 rulings landed from the seed-statics round's citation, subject to confirmation (M5)
+
+**Landed as instructed by M5 of the same dispatch, marked for the maintainer to confirm or
+strike.**  These rulings were taken in conversation, cited by the seed-statics round
+(`projects/normativity/seed/rounds/2026-09-16-seed-statics/REPORT.md`, friction F9) from
+its dispatch, and had no dated entry here.
+
+**2026-08-08 (1) — past-self charges burn.**  A mechanically filed past-self charge burns:
+it is consumed on filing and does not carry as recomputed state.  The seed-statics round's
+outstanding question — whether a re-selection of a warrant strength under a canonical joint
+rule is such a charge (burns, so hysteresis stands without an external challenger) or
+recomputed state (does not burn) — is not decided by this entry and stays queued below.
+
+**2026-08-08 (6) — seam ordering.**  The seams run "reasons constraining → revising reasons
+→ both": constraint by reasons is prior to revision of reasons, and the joint case is
+taken after both.
+
+**2026-08-09 — strength selection is locked selection.**  A warrant's strength is
+learnable by selection among nearby live candidate bounds, and a selection once taken is
+locked rather than recomputed; the moral reading's objection — that the moral fixture wants
+no lock, selection there being order-dependent (`STABILIZATION.md` §4 of the seed-statics
+round) — is noted and not answered by the ruling.
+
+*Confirmation queued under Awaiting the author.*
+
+### 2026-10-21 — the rule is a specialization step on the form, vacuity before rebuttal, retirement one step along citation under a closed settlement, the reopening account, and the names
+
+**agent-decided, reversible** (the rebuttal-and-end-to-end round, `projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/`).  Adoptions from
+the dispatch's proposals and the details the rulings left open.
+
+**P1 adopted — `settleForm` on the form.**  `settleForm : Settlement → Occurrence → Option
+(List Row)` returns the specialized row of a kept form and nothing for a rebutted, vacuous or
+retired one; `settleForm_eq_some_iff` says it keeps exactly the specialized rows of forms
+none of whose premise, antecedent or consequent coordinate is pinned false, and
+`strength_contraposes` says what the removed rows would have forced.  *Rejected alternative:*
+a rule on the specialized row — the row does not know which coordinate is the consequent,
+and a syntactic test for the contraposing shape would misfire on a row whose antecedent is
+pinned by a different sentence.
+
+**Vacuity before rebuttal.**  A form whose antecedent and consequent are both pinned false is
+*vacuous*, not *rebutted*: a form that never applied is not refuted.  The row leaves either
+way.  *Rejected alternative:* rebuttal first, which would count a case that did not arise as a
+refutation of the warrant.
+
+**Retirement one step along `cites`, under closure.**  A retired premise removes the
+occurrences whose `cites` names it; forms further down a chain leave through the
+settlement's closure (their antecedent pinned false).  The round's settlements carry their
+closure.  *Rejected alternative:* the transitive closure of citation inside the rule — a
+recursion on the grounds that the round did not need and item 121 asks for, against the
+alternative of stating closure as a hypothesis of the statics.
+
+**P2 adopted — the reopening account.**  The reopening of a settlement step is the set of
+occurrences that survived before it and not after (`survivors_anti` makes it well defined);
+hull mass is nonincreasing between reopenings (`ConvergenceMeasure.hullMass_anti` on the
+survivors' intervals) and the total reopened mass is what `SeedStatics.tendsto_of_summable_drops`
+consumes.  On the end-to-end fixture the sequence is `1/2, 5/12, 5/6, 1/2` with one settlement
+reopening (the strength row at `n_E`, which widens nothing) and one defeat (the undercut,
+which widens `X∧A` by `3/4`).  *Rejected alternative:* counting the undercut as a reopening —
+it is the docket's, not settlement's, and `defeat_widens` already names it.
+
+**P3 adopted — names, provisional:** *rebutted*, *vacuous*, *retired*; *reopening*;
+*end-to-end witness*; and the round's *survivors*, *settled region*, *reopened mass*, *cushion
+exhibit*.
+
+**The seed subproject.**  `projects/normativity/seed/` is a subproject `normativity.seed` of
+`state/projects.json`, holding the two landed branch rounds and the future seed rounds;
+the seed-statics round's outstanding action 3 (keep under `seed/` or move under
+`legitimacy/`) is thereby taken as *keep*.  *Rejected alternative:* `legitimacy/` — the seed
+is the compiler's left input, not a legitimacy predicate.
+
+### 2026-10-22 — the survivors are the grounded fixed point, defeaters are shared defeat ports, the warrant enforcer runs on the deductive market, the licence reads the compiled bundle, coherence is declared structure, the public defect is the displayed excess, and the names
+
+**agent-decided, reversible** (the normative-inductor-integration round,
+`projects/normativity/rounds/2026-10-22-normative-inductor-integration/`).
+
+**The grounded rule.**  `Grounds.survivors` is the set of occurrences live given the least
+fixed point of `activeStep`: not undercut by the docket, kept by `settleOutcome`, citing a
+survivor (`mem_survivors`, `activeIds_fixed`).  Undercut, retirement, vacuity and rebuttal
+propagate along citation chains of every length; no closure requirement on the settlement.
+*Rejected alternative:* the 2026-10-21 entry's one-step retirement under a closed settlement,
+under which the fixture's strength occurrence survived the undercut of the applicability it
+cites until the later refutation (the dispatch's observation, confirmed); and the closure
+requirement as a stated hypothesis of the statics.
+
+**`defeaters` are shared defeat ports.**  An occurrence is undercut when its own port or a
+port of its defeat set is defeated (`undercut`), the reading of the 2026-10-20 entry ("a
+warrant's forms share one defeat condition") and of the fixtures.  *Rejected alternative:*
+defeaters as undercutting occurrences that defeat when themselves active — the step is then
+non-monotone and the survivors the grounded extension with attacks; filed as item 127.
+
+**The deductive market is the realization.**  The warrant enforcer runs as an
+`EffectiveEnforcer` on `DeductiveEnforcement.history DP`, where the force layer's
+computability and conformance theorems live; the assessment market of the warrant round is an
+instance of the same `OddsBankroll.Account`, kept.  *Rejected alternative:* relating the two
+firms (`AssessmentFirm.TradingFirm (ofDeductiveProcess DP)` and `LogicalInduction.TradingFirm DP`)
+by a bridge lemma — none exists, and the strategies differ syntactically.
+
+**The licence reads the compiled bundle.**  `SupportedOn` a bundle; the record's `Supported`
+is on the settled bundle, the state's on its canonical bundle with the structural rows.
+*Rejected alternative:* keeping `Supported` on the port-only bundle beside an enforcer that
+holds the settled rows — two semantics for one warrant.
+
+**Coherence as declared structure.**  The coherence relations of the fixture are `StrItem`s of
+the normative state, enforced and cited like any structural row.  *Rejected alternative:*
+compiling logical relations from the fragment automatically — no device for it exists in the
+repository and the dispatch allowed either.
+
+**The public defect is the displayed inadequate excess.**  `Problem.defectOf` sums, over the
+inadequate responses, the positive part of the displayed score over the threshold; the work
+budget is set against the certificates' mass times the tolerance, which bounds it at the
+realized market.  *Rejected alternative:* a constant defect equal to that bound — a function
+of nothing the market displays.
+
+**Names, provisional:** *grounded rule*, *active identities*, *undercut*, *live given*,
+*normative state*, *canonical bundle*, *withholding compile*, *enforcement account*,
+*capital*, *warrant schedule*, *calibrated warrant enforcer*, *functional certificate*,
+*mass*, *transport*, *excludes*, *margins*, *adapter protocol*, *warrant Normative Inductor*.
+
+**Workspace repair, contained.**  `PRIORITIES.md` carried two `## Workspace friction`
+headings, the first introduced on 2026-10-21 when items 121–123 were filed under it; the
+duplicate is removed and the items precede the friction section.
+
+### 2026-10-23 — admission is provenance plus entitlement read off the account, verdict licensing is a separate authority, the compile returns a typed outcome that conserves its obligations, the Normative Inductor is one interface with two retained realizations, and the names
+
+**agent-decided, reversible** (the consolidation round,
+`projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/`).
+
+**Entitlement.**  `WarrantInductor.Admission` is split into `Origin` (provenance: the exposed
+obligation occurrence a warrant realizes) and `Entitlement O G Expresses` (the origin exposed,
+admitted by `Protocol.Admitted` at the boundary's history, its account carrying a live leaf,
+and the form expressing the origin's anchor under the declared relation).  The theorem's
+provenance conclusion says every enforced substantive row is an entitled survivor's.  Verdict
+licensing (`Licensed`) is not a prerequisite of enforcement: a licence to select a verdict is
+not authority to introduce a constraint, and the dispatch asked that the two not be conflated.
+*Rejected alternatives:* keeping `Admission` under its name with provenance as its only
+content — a label for an arbitrary origin map; and requiring a verdict licence for every
+enforced row, for which no substantive reason was found.  The liveness condition is queued
+above (*Awaiting the author*).
+
+**The compile outcome.**  `compileAt` takes the compiler's `CompileResult` and its `outcome` is
+`idle`, `enforced` or `withheld` with the result carried; the obligations present are the
+state's bundle in every case (`outcome_obligations`); a withheld date trades nothing; a valid
+conflict certificate refutes the region (`conflict_region_empty`); a dropped service's transport
+mass moves to the residual (`AdapterProtocol.residual_restrict`).  *Rejected alternative:* a
+second conflict theory for warrants — the composition module's `CompileResult` and
+`farkas_sound` are reused as the dispatch asked.
+
+**One interface, two realizations.**  The projection enforcer (distance defect) and the rowwise
+enforcer (per-row tolerance, certificate-mass transport, displayed inadequate excess) are two
+realizations of one interface — a public defect and certified bounds on the response-relevant
+functionals, consumed by `Evaluation.progress_bound` through `PracticalUptake` — and both are
+retained.  *Rejected alternative:* retiring the projection realization; no mathematical reason
+exists (item 125 is the missing constant between the two guarantees).
+
+**Scenario B's reading.**  The gate's reversal at date 9 is reported as following the pinned
+price of the refuted conclusion under the unchanged adequate set, with the adequacy question
+after the refutation left open.  *Rejected alternative:* re-declaring the adequate set at date
+9 to make refraining adequate — the dispatch's "do not force a behavioral reversal by changing
+the declared adequate set".
+
+**Theorem numbering, contained.**  `wiki/Theorem-Spine.md` carried two Theorems 7.3; the odds
+bankroll is 7.4, rebuttal by settlement 7.5, the consolidated theorem 7.6.  No page cited the
+duplicated numbers.
+
+**Names, provisional:** *origin*, *entitlement*, *entitled*, *expresses*, *compile outcome*,
+*idle*, *enforced*, *withheld*, *obligations present*, *served protocol*, *Scenario A*,
+*Scenario B*, *same question*.

@@ -1447,3 +1447,558 @@ declarations resolve through deprecated aliases for one release):
   "note": "The quadratic bound typed on `Evaluation (O : ObligationState)`: the practical/uptake certificate at the realized market gives the three-term bound. Inhabited by `Witness.uptake` and `Witness.bound` at the Integrity witness state. The two conditional Normative Inductor theorems consuming it are not registered: the general one's Logical-Induction hypotheses are uninhabited, and the deductive one's joint package has no single witness."
 }
 ```
+
+### The warrant licence chain
+
+The citation discipline for `Licensed` and its two countermodels, round
+`2026-10-20-warrant-enforcement-semantics`, against item 56.
+
+### warrant.licence-chain
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Licensed → Supported → Admissible",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.licence_chain"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "A licensed verdict is supported on the record's grounds and admissible in their region; supported-to-admissible is by rational convexity of the bundle's region (region_convex), not a projection."
+}
+```
+
+### warrant.supported-admissible
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Supported → Admissible",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.supported_admissible"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "A verdict bracketed by two cited bound certificates with attained endpoints is attained in the region."
+}
+```
+
+### warrant.admissible-not-supported
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Admissible does not imply Supported",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.admissible_not_supported"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "Two occurrences with the same row; defeating one leaves the region unchanged, refuses the certificate citing it, and admits a certificate citing the survivor. The countermodel to any licence depending only on the region."
+}
+```
+
+### warrant.supported-not-licensed
+
+```json
+{
+  "project": "normativity",
+  "short_name": "Supported does not imply Licensed",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.supported_not_licensed"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "Two verdicts inside a forced interval of positive width, both supported by one cited certificate; licensed on the record that authorizes the selecting event and not on the one that does not."
+}
+```
+
+### warrant.selection-not-transparent
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the unauthorized selection fails transparency",
+  "origin_round": "2026-10-20-warrant-enforcement-semantics",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.Countermodel.selection_not_transparent"
+  },
+  "answers_item": "56",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-20-warrant-enforcement-semantics",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/LICENCE_CHAIN.md",
+    "context": "projects/normativity/rounds/2026-10-20-warrant-enforcement-semantics/COUNTERMODELS.md"
+  },
+  "note": "An instance of GateIsLegitimacy.tiebreak_transparency: two continuations with the same declared inputs and different advisor contributions at the selection event fail TransparentAt for every reference."
+}
+```
+
+### Rebuttal by settlement and the seed statics
+
+Round `2026-10-21-rebuttal-and-end-to-end`; the dispatch's registration list, against items 113, 39, 117 and 119.
+
+### rebuttal.settleform-sound
+
+```json
+{
+  "project": "normativity",
+  "short_name": "settleForm keeps exactly the specialized rows of non-degenerate forms",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.settleForm_eq_some_iff"
+  },
+  "answers_item": "113",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md"
+  },
+  "note": "The rule of M1-M2 as a function on the form; a form whose premise, antecedent or consequent coordinate is pinned false contributes no row, every other form contributes its specialized row with its own strength. The removed rows are the contraposing ones (strength_contraposes)."
+}
+```
+
+### rebuttal.liability-rebutted
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the fixture's bankroll across the rebuttal",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.Fixture.liability_rebutted"
+  },
+  "answers_item": "113",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/REBUTTAL.md"
+  },
+  "note": "Under the rule, with Y refuted at nE and the applicability port defeated at n0, the enforcer's assessed net worth is at least -3 rho (2 + rho) at every live world at every date, through netWorth_ge_neg_odds_reopened; the dispatch's 3 rho is refuted by the round's cushion exhibit (test-supported)."
+}
+```
+
+### seed.forced-interval-spec
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the computed forced interval is valid and attained over the reals",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.SeedStatics.forcedInterval_spec"
+  },
+  "answers_item": "39",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-16-seed-statics/STATICS.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "Fourier-Motzkin elimination of every coordinate but phi computes endpoints that bound P(phi) over the real forced region and are attained there. Rational attainment is item 118."
+}
+```
+
+### seed.forced-interval-bounds
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the computed endpoints are valid rational bounds",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.SeedStatics.forcedInterval_bounds"
+  },
+  "answers_item": "39",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-16-seed-statics/STATICS.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "LowerBound and UpperBound on the rational forced region for the elimination's endpoints, when the real region is nonempty."
+}
+```
+
+### seed.independence-strict
+
+```json
+{
+  "project": "normativity",
+  "short_name": "seed-independence under strict humility",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.SeedStatics.seed_independence_strict"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-16-seed-statics/CRITERION.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "A point forced by a closed convex layer cut by an open layer is forced by the closed layer alone; two reasoners sharing the closed layer with strict substantive rows pin the same coordinate to the same value. Refuted for item-level humility by c3_refuted."
+}
+```
+
+### seed.eventually-const
+
+```json
+{
+  "project": "normativity",
+  "short_name": "conditional stabilization on a finite discovery class",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.SeedStatics.eventually_const_of_finite"
+  },
+  "answers_item": "117",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-16-seed-statics/STABILIZATION.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "Along a chain with a monotone raised subset of a finite class and monotone settlement, any quantity computed from the two is eventually constant."
+}
+```
+
+### convergence.hull-mass-anti
+
+```json
+{
+  "project": "normativity",
+  "short_name": "hull mass is nonincreasing under nesting",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ConvergenceMeasure.hullMass_anti"
+  },
+  "answers_item": "119",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-17-convergence-measure/DYNAMICS.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "Settlement, shared narrowing and private narrowing lower the hull mass under nonnegative weights."
+}
+```
+
+### convergence.discord-persists
+
+```json
+{
+  "project": "normativity",
+  "short_name": "discord persists under nesting",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ConvergenceMeasure.discord_persists"
+  },
+  "answers_item": "119",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-17-convergence-measure/DYNAMICS.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "Once the common interval is empty no narrowing restores it; only reopening can."
+}
+```
+
+### convergence.discord-pairwise
+
+```json
+{
+  "project": "normativity",
+  "short_name": "discord is pairwise (Helly in dimension one)",
+  "origin_round": "2026-10-21-rebuttal-and-end-to-end",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.ConvergenceMeasure.discord_iff_pair"
+  },
+  "answers_item": "119",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-21-rebuttal-and-end-to-end",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/seed/rounds/2026-09-17-convergence-measure/MANY.md",
+    "context": "projects/normativity/rounds/2026-10-21-rebuttal-and-end-to-end/LANDING.md"
+  },
+  "note": "The common interval is empty iff some pair of reasoners has disjoint intervals; merged infeasibility is not pairwise, which is item 119."
+}
+```
+
+### inductor.grounded-survivors
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the survivors are the grounded fixed point",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantEntitlement.mem_survivors"
+  },
+  "answers_item": "112",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "An occurrence survives iff it is in the grounds, not undercut (own port or a defeater port), kept by settleOutcome, and cites a survivor; the survivors are the least fixed point of activeStep, so undercut, retirement, vacuity and rebuttal propagate along citation chains of every length with no closure on the settlement."
+}
+```
+
+### inductor.conformance
+
+```json
+{
+  "project": "normativity",
+  "short_name": "rowwise conformance at the realized deductive market",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.excess_le_tol"
+  },
+  "answers_item": "39",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "With a rational cube point in the day's compiled bundle's region, every row of the bundle has excess at most the tolerance at the displayed price of the augmented deductive market; the slack and volume terms are the real market maker's contract and the ordinary aggregate's syntactic bound, and the calibrated intensity buys the tolerance. Rowwise, not distance to the region (item 125)."
+}
+```
+
+### inductor.certificate-transport
+
+```json
+{
+  "project": "normativity",
+  "short_name": "a supported verdict's bracket holds at the displayed price within mass times tolerance",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantForce.WarrantSchedule.bracket_at_market"
+  },
+  "answers_item": "124",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "A certificate's multiplier sum is the Lipschitz constant of its bound in the rows' excesses (FunctionalCert.le_of_excess); for a verdict supported on the day's bundle the displayed price lies in the certified bracket widened by mass times the tolerance on each side."
+}
+```
+
+### inductor.warrant-inductor
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the warrant Normative Inductor: LI, conformance, provenance, adapter, Progress on one market",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductor.warrant_inductor"
+  },
+  "answers_item": "35",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "On the augmented deductive market of the compiled schedule of a normative state process: Logical Induction over the deductive process from a liability bound and the enforcer's effectiveness; rowwise conformance at every enforced date and the provenance of every held row to an entitled survivor, a structural row or a pin; the gate's inadequate mass at most κ times the public defect, itself at most the certificates' mass times the tolerance; and the Progress bound with PracticalUptake derived. The entitlement (with its Expresses relation), the adequate sets, the adequacy losses and the declared constants are the semantic inputs; the compiler's results are the compile inputs, and a withheld date carries no conformance claim. Since 2026-10-23 the hypotheses are ent (Entitlement), res (CompileResult) and henf (Enforced) in place of adm, wit and hcheck."
+}
+```
+
+### inductor.witness
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the warrant Normative Inductor, run with computability and liability discharged",
+  "origin_round": "2026-10-22-normative-inductor-integration",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductorWitness.inductor"
+  },
+  "answers_item": "35",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-22-normative-inductor-integration",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/THEOREM_STORY.md",
+    "context": "projects/normativity/rounds/2026-10-22-normative-inductor-integration/HANDOFFS.md"
+  },
+  "note": "warrant_inductor at the five-sentence fixture, Scenario A (the undercut): the deductive process and the enforcer are computable (process, computation), the bankroll across the rebuttal is −72 (liability); the gate puts mass at most 1/25 on refraining before the undercut and 1/100 on the surviving warrant after the rebuttal (gate_bounds); Progress ≤ 37/100 (progress_le). Since 2026-10-23 the entitlement is on state₀ with both accounts live and every date's compile outcome is enforced."
+}
+```
+
+### inductor.rebuttal-run
+
+```json
+{
+  "project": "normativity",
+  "short_name": "the warrant Normative Inductor, run on the rebuttal of a still-active strength (Scenario B)",
+  "origin_round": "2026-10-23-normative-inductor-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductorRebuttal.inductor"
+  },
+  "answers_item": "35",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-23-normative-inductor-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/THEOREM_STORY.md"
+  },
+  "note": "warrant_inductor at the same fixture with a quiet docket: the strength is operative until its consequent is refuted at date 8 and leaves by rebuttal (operative_before, withdrawn); every date is enforced; the bankroll is −72 (liability) with the applicability row among those the post-refutation slack world dominates. The same question (act on the conclusion or refrain) is posed at dates 4 and 9: the region flips (region_flips), no Excludes or Margins certificate exists at date 9 (no_certificate_after), and the gate's mass on acting goes from at least 24/25 to 0 at the realized market (same_question); the dropped service's mass 1/4 is in the residual (residual_restricted)."
+}
+```
+
+### inductor.contraposition-blocked
+
+```json
+{
+  "project": "normativity",
+  "short_name": "rebuttal withdraws the strength row that, kept, would have made the compiled system infeasible",
+  "origin_round": "2026-10-23-normative-inductor-consolidation",
+  "status": "active",
+  "class": "lean-proved",
+  "statement_of_record": {
+    "kind": "lean",
+    "declaration": "Workspace.Normativity.Contrib.WarrantInductorRebuttal.contraposition_blocked"
+  },
+  "answers_item": "113",
+  "provenance": {
+    "generator": "maintainer's round 2026-10-23-normative-inductor-consolidation",
+    "review_status": "ci-only"
+  },
+  "docs": {
+    "verification": "projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/THEOREM.md",
+    "context": "projects/normativity/rounds/2026-10-23-normative-inductor-consolidation/THEOREM_STORY.md"
+  },
+  "note": "At date 9 of Scenario B the specialized strength row reads 2/3·P(X∧A) ≤ 0 while the enforced applicability row with X settled true forces P(X∧A) ≥ 3/4 (antecedent_open): the date-9 bundle with the strength row appended has empty region. Rebuttal by settlement removes the row, so the antecedent's credence stays where the applicability puts it rather than being suppressed by contraposition."
+}
+```

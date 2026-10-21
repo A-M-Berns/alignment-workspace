@@ -1,0 +1,12 @@
+# Rebuttal by settlement, the seed landing, and the first end-to-end run
+
+Verdict: REBUTTAL-BY-SETTLEMENT-LANDS-THE-ORPHAN-CANNOT-FORM-THE-BANKROLL-ACROSS-ONE-REOPENING-IS-THREE-RHO-TIMES-TWO-PLUS-RHO-NOT-THREE-RHO-THE-SEED-STATICS-AND-THE-INTERVAL-DATA-LAYER-ARE-ON-MAIN-AND-THE-FIRST-END-TO-END-RUN-REACHES-THE-REBUTTAL-WITH-EVERY-STAGE-HOLDING — the rulings M1–M3 are one decidable function on the typed occurrence, `settleForm`, which keeps exactly the specialized rows of forms whose premise, antecedent and consequent are not pinned false, and the rows it removes are exactly the contraposing ones; under it the warrant round's orphan pin cannot form, the strength row leaves at the refutation, a slack world survives, and the enforcer's assessed net worth is at least `−3ρ(2 + ρ)` at every live world — the pre-reopening bankroll `3ρ` plus `ρ` times a post-reopening slack mass the market's capital bounds by `3 + 3ρ`; the dispatch's "the same `3ρ`" is refuted by an exact two-phase exhibit in which a counterparty's gains on the rebutted row cushion its budget and the enforcer loses `24 > 12` on the fixture; retiring a refuted premise leaves the other warrant enforced where the port-only rule emptied the joint region; `IsForcedInterval.mono` stays true of the unspecialized-row region and fails for the settled region, replaced by nesting without reopening and an exact widening bound through the kept rows' pre-step region, attained with widening `0` on the fixture; one `SeedStatics.lean` (sections 1–6, 8, 10) and `ConvergenceMeasure.lean` (sections 1–4) are on `main`, the two branch rounds landed verbatim under the new seed subproject and their items re-filed as 117–120; and the end-to-end witness runs entry, licence, elimination, settlement, undercut, rebuttal and the record in sequence on one fixture, with every stage a theorem and the elimination's output pinned by its own correctness theorem where the kernel cannot run it.
+
+Read `REPORT.md` first. The parts: `REBUTTAL.md` (Part A), `LANDING.md` (Part B, with the
+ported/not-ported tables and the item renumbering map), `WITNESS.md` (Part C, the run as a
+dated table). Lean: `lean/Workspace/Normativity/Contrib/SeedStatics.lean`,
+`ConvergenceMeasure.lean`, `WarrantEntitlement.lean` (Part A), `EndToEndWitness.lean` (Part C).
+Exact rationals under `src/`, run by `tests/run.py`. Wiki: `wiki/Seed-Theory.md`.
+
+Dispatch: `prompts/2026-10-21-rebuttal-and-end-to-end/PROMPT.md`. Shipped in pull request
+#129 together with the warrant-enforcement-semantics round, at the maintainer's instruction.
