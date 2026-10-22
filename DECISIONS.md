@@ -6119,6 +6119,63 @@ of nothing the market displays.
 headings, the first introduced on 2026-10-21 when items 121–123 were filed under it; the
 duplicate is removed and the items precede the friction section.
 
+### 2026-10-22 — the map is the canonical index of the program: two maintainer handles, one plan with seven lines, programmes drafted from the wiki, the map as the foundational layer, multi-owner frames, `PRIORITIES.md` as a render, decision anchors, and the structure-only index (M1–M8)
+
+**Maintainer rulings, taken by one maintainer in conversation; the second maintainer's
+confirmation is outstanding** (landed as the map-as-canonical round's second commit,
+`prompts/2026-10-22-map-as-canonical/PROMPT.md`, per the queue rule above). The round's
+proposal document is `graph/MAP-AS-CANONICAL.md`.
+
+**M1. Handles.** The human handle `@maintainer` is renamed `@anson` (its ledger, its event
+ids `maintainer-001`/`-002` → `anson-001`/`-002`, every reference); `@abram` →
+`abramdemski`, `kind: human`, is added. The `maintainer` key of `graph/policy.yaml` is a
+list of human handles, and every place the checker or the protocol assumed one maintainer
+is applied co-maintainer where contained and reserved otherwise (the round's report lists
+each).
+
+**M2. One program, not two plans.** The top frame's question stays as it is. Under it there
+is one plan, `the-program` (the widened `trust-modelling`; its question provisional, below),
+owned by both maintainers, whose roots are the lines, each a sub-frame: `normativity`
+(`@anson`), `legitimacy` (`@anson`, `@abram`), `deference-and-trust` (`@abram`),
+`decision-theory` (`@abram`), `stance-and-level` (`@abram`; cruxes about where to work, not a
+line of work), `abstraction-arc` (`@abram`) and `enabling-work` (both, extended with the map
+and the site). `updateful-trust-li` is split and retired: its deference roots go to
+`deference-and-trust`; `legitimacy-reasons-programme` and `normativity-line` go under
+`legitimacy` and `normativity`; a root two lines read is filed once and listed as a root of
+each frame that reads it.
+
+**M3. Normativity's and legitimacy's programmes are drafted from the wiki** (`Normativity`,
+`Normative-Inductor`, `Seed-Theory`, `Theorem-Spine`, `Roadmap`; `Legitimacy`, `Integrity`,
+`Openness-Coverage-and-Non-Capture`, `Corrigibility`), the existing nodes and the formal
+results attached beneath them; every root so filed is marked *owner has not confirmed* and
+listed for a maintainer sitting.
+
+**M4. The map is the foundational layer, and it is allowed to move.** A priority item, a
+registered claim, a decision and a narrative page each have exactly one node or one
+attachment in the map; the human-facing files that duplicate them become renders of the map
+or attachments to it. The protocol changes through its own mechanism where the program
+outgrows it; content is not bent to fit.
+
+**M5. Frames may have several owners**: `owner` accepts a list of human handles (the form
+chosen over a second key). A want keeps exactly one owner.
+
+**M6. `PRIORITIES.md` is a generated render of the item nodes**, which are specification
+layer (`tests/path_gate.py` and `.github/CODEOWNERS` cover `graph/nodes/item-*.md`). The hand
+ordering is carried as transcribed data on each node and the render preserves it. Demand
+gating is unchanged.
+
+**M7. `DECISIONS.md` stays the maintainers' prose record** and the highest-precedence
+source. Each entry gains a stable anchor and a machine-readable `touches` line; the map
+links to entries through the `work` pointer kind `decision`; no ruling is reworded and no
+`rule` event is written.
+
+**M8. The structure-only index** graph/index.json is emitted by the checker on the plain
+run and committed like `derived.json`; its schema is in the proposal document.
+
+*Rejected alternative (M2):* two plans under the top frame, one per maintainer — the top
+frame's question is one program's. *Rejected alternative (M7):* migrating rulings into
+`rule` events — an agent writes no line in a maintainer's ledger.
+
 ### 2026-10-23 — admission is provenance plus entitlement read off the account, verdict licensing is a separate authority, the compile returns a typed outcome that conserves its obligations, the Normative Inductor is one interface with two retained realizations, and the names
 
 **agent-decided, reversible** (the consolidation round,

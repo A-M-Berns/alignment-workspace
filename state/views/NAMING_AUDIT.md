@@ -1987,7 +1987,7 @@ change, and the count of those is the size of the free choice remaining.
 | `Pinned` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Settlement.Pinned` |
 | `Pins` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Pins` |
 | `Refuted` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Refuted` |
-| `Seed` | structure | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.Seed` |
+| `Seed` | structure | 2026-10-20-warrant-enforcement-semantics | wiki, prose | `Workspace.Normativity.Contrib.SeedStatics.Seed` |
 | `Seed.HumbleItems` | def | 2026-10-20-warrant-enforcement-semantics | wiki | `Workspace.Normativity.Contrib.SeedStatics.Seed.HumbleItems` |
 | `Seed.liveStr` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.liveStr` |
 | `Seed.liveSub` | def | 2026-10-20-warrant-enforcement-semantics | Lean only | `Workspace.Normativity.Contrib.SeedStatics.Seed.liveSub` |
