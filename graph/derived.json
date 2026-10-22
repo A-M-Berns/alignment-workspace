@@ -80,34 +80,20 @@
  "anchor_rules": "2026-10-02.1",
  "audit": {
   "by": "@maintainer",
-  "event": "maintainer-002",
+  "event": "maintainer-001",
   "minutes": "36/1",
-  "text": "audit (36 min of this session): re-perform estimate maintainer-002 by @maintainer on {\"row\": [\"undescribed-failure\", \"uf-earth-gone-aliens-remain\"], \"field\": \"p\"}; cross-audit preferred"
+  "text": "audit (36 min of this session): re-perform estimate maintainer-001 by @maintainer on {\"row\": [\"default-trajectory\", \"dt-high-conflict\"], \"field\": \"p\"}; cross-audit preferred"
  },
  "audits": {},
  "checker_version": "0.4",
  "digest": {
-  "events_new": 2362,
+  "events_new": 0,
   "levels_moved": [],
   "proposals_awaiting": [],
   "revisions": [],
   "root_statuses_flipped": [],
   "statuses_flipped": [],
-  "wants_new": [
-   "want-address-anti-naturality",
-   "want-basin-of-attraction-formalized",
-   "want-corrigibility-theorems-via-legitimacy",
-   "want-figure-out-legitimacy",
-   "want-formal-model-of-dynamics",
-   "want-intentional-stance-math",
-   "want-legitimacy-anti-meme-post",
-   "want-legitimacy-corrigibility-theorems",
-   "want-legitimacy-meets-syntax",
-   "want-methodology-note",
-   "want-sigma-algebra-changes",
-   "want-truth-through-literature-dialogue",
-   "want-uea-review"
-  ]
+  "wants_new": []
  },
  "events": {
   "counted": [
@@ -2532,7 +2518,7 @@
   },
   "withdrawn": []
  },
- "generated_hash": "bd91797ee8363cc8b1ecc068",
+ "generated_hash": "6d7b61db4bd66c89427cd7b4",
  "goal_order": [
   [
    "trust-modelling",
@@ -240942,48 +240928,48 @@
     "step-legitimacy-conditioned-trust",
     "void-branch-deterrence-floor--corrigibility-risk"
    ],
-   "bits": 0.12398374545808163,
+   "bits": 0.12398374545808175,
    "for": [
     {
      "bits": 0.12380441684235088,
      "goal": "void-branch-deterrence-floor--corrigibility-risk",
-     "share": 0.9994477739078987,
+     "share": 0.999447773907898,
      "wbits": 0.03751273830323232
     },
     {
      "bits": 0.00016379723270587565,
      "goal": "legit-objective-proposals",
-     "share": 0.00045822332987447713,
+     "share": 0.0004582233298744768,
      "wbits": 1.7198709434116945e-05
     },
     {
      "bits": 9.792774009143024e-06,
      "goal": "step-legitimacy-conditioned-trust",
-     "share": 4.9572482816211245e-05,
+     "share": 4.957248281621121e-05,
      "wbits": 1.8606270617371745e-06
     },
     {
      "bits": 2.3040023062748105e-06,
      "goal": "legit-rule-learning-model",
-     "share": 1.8047272569026572e-05,
+     "share": 1.804727256902656e-05,
      "wbits": 6.773766780447942e-07
     },
     {
      "bits": 2.3040023062748105e-06,
      "goal": "route-t3-second-decision",
-     "share": 1.8047272569026572e-05,
+     "share": 1.804727256902656e-05,
      "wbits": 6.773766780447942e-07
     },
     {
-     "bits": 9.938315308488654e-07,
+     "bits": 9.938315309598877e-07,
      "goal": "legit-objective-li-reading",
-     "share": 6.513721951376568e-06,
-     "wbits": 2.444825565888209e-07
+     "share": 6.51372195210422e-06,
+     "wbits": 2.444825566161324e-07
     },
     {
      "bits": 1.3677287233337942e-07,
      "goal": "legit-weighted-objective-improvable",
-     "share": 1.8220123212493748e-06,
+     "share": 1.8220123212493733e-06,
      "wbits": 6.838643616668971e-08
     }
    ],
@@ -241022,7 +241008,7 @@
    ],
    "path_line": "top \u2192 trust-modelling \u2192 updateful-trust-li \u2192 corrigibility-landscape \u2192 legitimacy-weighted-deference \u2192 void-branch-deterrence-floor--corrigibility-risk \u2192 void-branch-deterrence-floor.setting",
    "rank": 279,
-   "rate": 0.06255577543679502,
+   "rate": 0.06255577543679508,
    "section": "main",
    "signals": [
     "vet this AI number",
@@ -241030,7 +241016,7 @@
    ],
    "size": "S",
    "target": "void-branch-deterrence-floor.setting",
-   "wbits": 0.037533465262077015,
+   "wbits": 0.03753346526207704,
    "why": [
     "map-read[S]=8 prior",
     "trace[S]=25 prior",
@@ -245486,24 +245472,24 @@
     "oq-manipulation-theorem",
     "trace-nonrecoverability"
    ],
-   "bits": 0.0942386085583643,
+   "bits": 0.09423860855836419,
    "for": [
     {
      "bits": 0.08074690024411024,
      "goal": "trace-nonrecoverability",
-     "share": 0.939191286637536,
+     "share": 0.9391912866375366,
      "wbits": 0.026646477080556383
     },
     {
-     "bits": 0.013418205711827502,
+     "bits": 0.013418205711827391,
      "goal": "oq-manipulation-theorem",
-     "share": 0.0605366899587236,
-     "wbits": 0.0017175303311139202
+     "share": 0.06053668995872313,
+     "wbits": 0.0017175303311139061
     },
     {
      "bits": 7.350260242655615e-05,
      "goal": "local-rules-certify-legitimacy",
-     "share": 0.000272023403740324,
+     "share": 0.00027202340374032414,
      "wbits": 7.717773254788397e-06
     }
    ],
@@ -245538,7 +245524,7 @@
    ],
    "path_line": "top \u2192 trust-modelling \u2192 updateful-trust-li \u2192 legitimacy-reasons-programme \u2192 trace-nonrecoverability \u2192 trace-nonrecoverability.complete",
    "rank": 347,
-   "rate": 0.04728620864154182,
+   "rate": 0.047286208641541795,
    "section": "main",
    "signals": [
     "vet this AI number",
@@ -245546,7 +245532,7 @@
    ],
    "size": "S",
    "target": "trace-nonrecoverability.complete",
-   "wbits": 0.028371725184925093,
+   "wbits": 0.028371725184925076,
    "why": [
     "map-read[S]=8 prior",
     "trace[S]=25 prior",
@@ -255924,13 +255910,13 @@
    "bears_on": [
     "generalized-lic"
    ],
-   "bits": 0.11726883451983705,
+   "bits": 0.11726883451983716,
    "for": [
     {
-     "bits": 0.11726883451983705,
+     "bits": 0.11726883451983716,
      "goal": "generalized-lic",
      "share": 1.0,
-     "wbits": 0.036353338701149485
+     "wbits": 0.03635333870114952
     }
    ],
    "kind": "re-examine",
@@ -255965,7 +255951,7 @@
    ],
    "path_line": "top \u2192 trust-modelling \u2192 updateful-trust-li \u2192 corrigibility-landscape \u2192 bli-corrigibility-thesis \u2192 generalized-lic",
    "rank": 507,
-   "rate": 0.03462222733442808,
+   "rate": 0.034622227334428116,
    "section": "main",
    "signals": [
     "structure suspect: derived 0.52 against gestalt 0.80",
@@ -255974,7 +255960,7 @@
    ],
    "size": "M",
    "target": "generalized-lic",
-   "wbits": 0.036353338701149485,
+   "wbits": 0.03635333870114952,
    "why": [
     "trace[M]=60 prior",
     "re-examine: read the analysis as a whole and say whether it holds, or file the structure that reconciles the derived number with the gestalt",
@@ -259553,13 +259539,13 @@
    "bears_on": [
     "condensation-scores-explained"
    ],
-   "bits": 0.11734083508046422,
+   "bits": 0.11734083508046433,
    "for": [
     {
-     "bits": 0.11734083508046422,
+     "bits": 0.11734083508046433,
      "goal": "condensation-scores-explained",
      "share": 1.0,
-     "wbits": 0.03332479716285184
+     "wbits": 0.03332479716285187
     }
    ],
    "kind": "re-examine",
@@ -259590,7 +259576,7 @@
    ],
    "path_line": "top \u2192 trust-modelling \u2192 abstraction-arc \u2192 stage4-condensation-dynamics \u2192 condensation-scores-explained",
    "rank": 564,
-   "rate": 0.031737902059858894,
+   "rate": 0.03173790205985892,
    "section": "main",
    "signals": [
     "vet this AI number",
@@ -259598,7 +259584,7 @@
    ],
    "size": "M",
    "target": "condensation-scores-explained",
-   "wbits": 0.03332479716285184,
+   "wbits": 0.03332479716285187,
    "why": [
     "trace[M]=60 prior",
     "re-examine: read the analysis as a whole and say whether it holds, or file the structure that reconciles the derived number with the gestalt",
@@ -265469,66 +265455,66 @@
     "updateful-when-appropriate",
     "updateful-when-appropriate-li"
    ],
-   "bits": 0.028773740383746915,
+   "bits": 0.028773740383747026,
    "for": [
     {
      "bits": 0.025278353721124636,
      "goal": "updateful-when-appropriate",
-     "share": 0.9026032429459904,
+     "share": 0.9026032429459878,
      "wbits": 0.004423711901196811
     },
     {
-     "bits": 0.002620410732062428,
+     "bits": 0.002620410732062539,
      "goal": "updateful-when-appropriate-li",
-     "share": 0.06683276616550614,
-     "wbits": 0.0003275513415078035
+     "share": 0.06683276616550878,
+     "wbits": 0.0003275513415078174
     },
     {
      "bits": 0.0007985415560506359,
      "goal": "computational-updatelessness-direct",
-     "share": 0.026069191275261555,
+     "share": 0.026069191275261482,
      "wbits": 0.00012776664896810175
     },
     {
      "bits": 2.1128063514175288e-05,
      "goal": "route-scoped-faith",
-     "share": 0.0012501661795769733,
+     "share": 0.0012501661795769699,
      "wbits": 6.127138419110833e-06
     },
     {
      "bits": 1.3524051073576793e-05,
      "goal": "route-measure-valued-state",
-     "share": 0.0007450417680767778,
+     "share": 0.0007450417680767757,
      "wbits": 3.651493789865734e-06
     },
     {
      "bits": 1.0693646677606417e-05,
      "goal": "route-interval-resolution",
-     "share": 0.0007200287286520391,
+     "share": 0.0007200287286520371,
      "wbits": 3.528903403610117e-06
     },
     {
      "bits": 1.3639830558020982e-05,
      "goal": "route-linkage-choice",
-     "share": 0.0006957593289231147,
+     "share": 0.0006957593289231127,
      "wbits": 3.4099576395052456e-06
     },
     {
      "bits": 1.3939145944164011e-05,
      "goal": "route-support-small-set",
-     "share": 0.0006541450440816649,
+     "share": 0.0006541450440816631,
      "wbits": 3.206003567157723e-06
     },
     {
      "bits": 3.5096367415610175e-06,
      "goal": "bli-picture-improvable",
-     "share": 0.00042965856392750254,
+     "share": 0.0004296585639275013,
      "wbits": 2.1057820449366104e-06
     },
     {
      "bits": 1.1102230246251565e-16,
      "goal": "bli-picture-improvable.residual",
-     "share": 3.850961753754953e-15,
+     "share": 3.850961753754943e-15,
      "wbits": 1.887379141862766e-17
     }
    ],
@@ -265559,7 +265545,7 @@
    ],
    "path_line": "top \u2192 trust-modelling \u2192 updateless-dt-programme \u2192 updateful-when-appropriate \u2192 updateful-when-appropriate.bridge",
    "rank": 658,
-   "rate": 0.026733050021110483,
+   "rate": 0.02673305002111056,
    "section": "main",
    "signals": [
     "attribution unvetted",
@@ -265568,7 +265554,7 @@
    ],
    "size": "S",
    "target": "updateful-when-appropriate.bridge",
-   "wbits": 0.0049010591705369215,
+   "wbits": 0.004901059170536935,
    "why": [
     "map-read[S]=8 prior",
     "vet this AI number: the target's judgments rest on AI handles only"
@@ -333463,49 +333449,49 @@
     "udt-rep-improvable",
     "udt-representation-theorem"
    ],
-   "bits": 0.00017956448716510698,
+   "bits": 0.00017956448716488493,
    "for": [
     {
      "bits": 0.0001623526300962297,
      "goal": "udt-representation-theorem",
-     "share": 0.8578198919742702,
+     "share": 0.8578198919747495,
      "wbits": 3.409405232020824e-05
     },
     {
      "bits": 5.950805985310836e-06,
      "goal": "route-approximate-dd",
-     "share": 0.052403624386964665,
+     "share": 0.05240362438699394,
      "wbits": 2.0827820948587926e-06
     },
     {
      "bits": 2.65885402178645e-06,
      "goal": "udt-rep-improvable",
-     "share": 0.036124824297634237,
+     "share": 0.036124824297654415,
      "wbits": 1.435781171764683e-06
     },
     {
      "bits": 4.155989731025045e-06,
      "goal": "route-minimality-premise",
-     "share": 0.02614158789802304,
+     "share": 0.026141587898037645,
      "wbits": 1.0389974327562612e-06
     },
     {
      "bits": 4.155989731025045e-06,
      "goal": "route-off-support-predictor",
-     "share": 0.02614158789802304,
+     "share": 0.026141587898037645,
      "wbits": 1.0389974327562612e-06
     },
     {
      "bits": 2.8187355183284524e-07,
      "goal": "udt-rep-improvable.residual",
-     "share": 0.0013474895893106872,
+     "share": 0.00134748958931144,
      "wbits": 5.3555974848240596e-08
     },
     {
-     "bits": 8.344047897068663e-09,
+     "bits": 8.344047675024058e-09,
      "goal": "agency-via-endorsement-route",
-     "share": 2.0993955774066398e-05,
-     "wbits": 8.344047897068663e-10
+     "share": 2.0993955215405086e-05,
+     "wbits": 8.344047675024058e-10
     }
    ],
    "kind": "map-read",
@@ -333543,7 +333529,7 @@
    ],
    "path_line": "top \u2192 trust-modelling \u2192 updateless-dt-programme \u2192 udt-representation-theorem \u2192 \u2026 \u2192 approximate-decision-determination \u2192 approximate-decision-determination.record",
    "rank": 1509,
-   "rate": 0.00021679091362899377,
+   "rate": 0.00021679091362887263,
    "section": "main",
    "signals": [
     "vet this AI number",
@@ -333551,7 +333537,7 @@
    ],
    "size": "S",
    "target": "approximate-decision-determination.record",
-   "wbits": 3.974500083198219e-05,
+   "wbits": 3.974500083195998e-05,
    "why": [
     "map-read[S]=8 prior",
     "vet this AI number: the target's judgments rest on AI handles only"
@@ -349296,13 +349282,13 @@
    "bears_on": [
     "legit-intersubjectivity-pre-rationality"
    ],
-   "bits": 0.0006070936171711505,
+   "bits": 0.0006070936171713726,
    "for": [
     {
-     "bits": 0.0006070936171711505,
+     "bits": 0.0006070936171713726,
      "goal": "legit-intersubjectivity-pre-rationality",
      "share": 1.0,
-     "wbits": 7.22441404433669e-05
+     "wbits": 7.224414044339333e-05
     }
    ],
    "kind": "do",
@@ -349336,7 +349322,7 @@
    ],
    "path_line": "top \u2192 trust-modelling \u2192 updateful-trust-li \u2192 legitimacy-reasons-programme \u2192 legit-intersubjectivity-pre-rationality \u21e2 task-habermas-reading",
    "rank": 1638,
-   "rate": 4.501192550988592e-06,
+   "rate": 4.501192550990239e-06,
    "section": "main",
    "signals": [
     "vet this AI number",
@@ -349345,7 +349331,7 @@
    "size": "L",
    "target": "task-habermas-reading",
    "text": "Verify the 2026-07-05 chat's claims about Habermas (the move away from consensus truth in Truth and Justification; discourse ethics) against the texts, and write a note connecting reason exchange to the common-prior picture.",
-   "wbits": 7.22441404433669e-05,
+   "wbits": 7.224414044339333e-05,
    "who": "either",
    "why": [
     "do[L]=960 prior",

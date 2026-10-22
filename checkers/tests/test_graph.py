@@ -2270,7 +2270,8 @@ class Scale(Base):
         code, out, err = run(root, "--dry-run")
         elapsed = time.perf_counter() - t0
         self.assertEqual(code, 0, err)
-        rss_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+        # ru_maxrss is kilobytes on Linux and bytes on macOS; the bound is in megabytes either way
+        rss_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / (1024 * 1024 if sys.platform == "darwin" else 1024)
         D = json.loads(out)
         big = [c for c in D["inference"]["largest"] if c["phi"] == "big"]
         self.assertEqual(big[0]["assignments"], 1 << 12, D["inference"]["largest"])

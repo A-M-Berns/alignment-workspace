@@ -120,7 +120,8 @@ PROPOSAL_KINDS = {"merge", "split", "retarget", "sharpen", "new-root", "edge", "
 PROPOSAL_STATUS = {"proposed", "approved", "applied", "withdrawn"}
 GENERATED = ("derived.json", "versions.json", "tasks.md", "view.md")
 LAYOUT_FILES = {"frame.yaml", "policy.yaml", "derived.json", "versions.json", "tasks.md",
-                "view.md", "PROTOCOL.md", "README.md", "DESIGN-LOG.md"}
+                "view.md", "PROTOCOL.md", "README.md", "DESIGN-LOG.md",
+                "MAP-AS-CANONICAL.md", "SURVEY.md", "index.json"}   # the 2026-10-22 round's two documents and its structure-only index
 STALE_TABLE = "leaf became a table"
 
 

@@ -1,0 +1,240 @@
+# The map as the canonical index of the program
+
+*Proposal document of the 2026-10-22 map-as-canonical round (provisional name;
+`prompts/2026-10-22-map-as-canonical/`). It states what the round turns the map
+into, what it leaves alone, and what it reserves. Every choice marked
+**agent-decided** is reversible by a maintainer ruling; the reserved list is at
+the end and in `DECISIONS.md`, *Awaiting the author*.*
+
+The map under `graph/` is the one index of the research program: both
+maintainers' agendas as owned plans under the top frame, every registered claim
+as a formal result, every priority item as a leaf, every maintainer decision
+reachable from the nodes it touched, every narrative page attached to the frame
+it narrates, every round pointed at from the nodes it produced. The
+human-facing files that duplicated those objects become renders of the map or
+attachments to it. A website can be generated from the structure alone; it is
+not built here.
+
+Two principles govern every part. **Structure and numbers are decoupled**: the
+frame tree, the `and`/`or` support, the records, bridges, hypotheses, `cases`
+tables, wants and task leaves are the structure; the judgment ladder, the
+probabilities, the utilities and the ranking are a lens on it. This round
+changes structure and touches no number. **Where the protocol cannot represent
+something, the gap is filed**, as a proposal or a reserved line, and the
+content is not bent to fit.
+
+## 1. The ontology mapping
+
+| surface | holds | becomes |
+|---|---|---|
+| `graph/frame.yaml` | the top question, its owner, classes, valuations, four roots | unchanged in question and classes; `owner` may be a list; gains `narrative: wiki/Home.md`; the plan root `trust-modelling` is widened into `the-program` |
+| `graph/nodes/<id>.md` | one node per claim, frame, table, leaf | unchanged in kind; frames gain `narrative` and may have several owners; a node may be a root of several frames (shared roots) |
+| `graph/events/<handle>.jsonl` | one ledger per contributor | the only human ledger is renamed from `maintainer` to `anson`; a second human handle `@abram` is mapped and has no ledger until it writes an event |
+| `graph/policy.yaml` | parameters, handles, registries | `maintainer` is a list of human handles; `handles` maps `@anson` and `@abram` |
+| `projects/*/CLAIMS.md` (two registries, 178 entries) | registered claims with a statement of record | each entry has exactly one formal result in the map: an `and` whose id is the registry id, of a `record` leaf (statement of record = the declaration), one hypothesis leaf per hypothesis read from the Lean signature, one `bridge` with `attribution`, one completeness leaf; the registry stays the statement of record and the map cites it |
+| the 82 landed `record` leaves whose declarations are not registry entries | clean-room and package declarations | kept as they are (they cap at level 2, *not in a claims registry*); the gap is filed in §7 |
+| `PRIORITIES.md`, numbered items | work orders | one node per item, id `item-<n>` (`item-q<n>` for *Where ingenuity is the bottleneck*, `item-f<n>` for *Workspace friction*), a `task` leaf for a work order and a `question` leaf for an ingenuity entry; the item's fields (number, title, difficulty tag, project, dispatchable, deliverable shape, acceptance check, context, status, position, section) on the node; the item's body verbatim in a `## Item` section of the node file |
+| `PRIORITIES.md`, the file | the maintainers' ordered list | **a render** of the item nodes in the transcribed order, written by `checkers/priorities_render.py` on the plain checker run from `state/priorities_sections.md` (the standing preamble and each section's intro) and the item nodes; `tests/run.py` gates that the committed file equals the render |
+| `DECISIONS.md` | the maintainers' prose rulings | stays the highest-precedence prose record; each entry gains one machine line (an anchor and a `touches` list); the map points at entries through the `work` pointer kind `decision`; no ruling is reworded and no event is written |
+| `wiki/*.md` | narrative pages | attached to frames and nodes through the `narrative` field; claims, items and rounds named in prose carry a resolvable reference (`checkers/wiki_refs.py`) |
+| `state/rounds.json` (125 rounds) | the round index | every round is pointed at by `work: {kind: round}` from the nodes it produced, or listed in the report as unpointed |
+| `state/foundations.json` | the August 9 foundation | one node (`normativity-aug9-foundation`) whose `work` pointer of kind `foundation` names the foundation's id; its 180 claims are not filed |
+| `README.md`, `wiki/Home.md` | prose status claims | bound to the state where a binding form exists, corrected where it does not |
+| `graph/index.json` | — | **new, generated**: the structure-only emission the checker writes on the plain run (§6) |
+| `graph/SURVEY.md`, this document | — | new hand-written documents under `graph/` |
+
+What stays hand-written and specification layer: `AGENTS.md`, `CONTRIBUTING.md`,
+`README.md`, `RESEARCH_STATE.md`, `PROVENANCE.md`, `DECISIONS.md`, the registries,
+the wiki, `graph/PROTOCOL.md`, `graph/README.md`, `graph/frame.yaml`,
+`graph/policy.yaml`, and now `state/priorities_sections.md` and the item nodes
+`graph/nodes/item-*.md` (`tests/path_gate.py` and `.github/CODEOWNERS` both list them).
+
+## 2. Structure and numbers
+
+The structure is what this round files; it is what a site renders, what a
+pointer resolves against, and what the registries, the item list and the ledger
+join to. The numbers (levels, judgments, probabilities, values, the ranking)
+are derived from the ledgers by the checker and are a lens on the structure:
+they say how far each piece has been checked and what to read next. Once the
+structure is canonical the ranking's job is unchanged and narrower: it orders
+the vetting and research of a map that is now complete as an index, so a unit's
+path runs through the program's real lines and a goal's stake reads from the
+agenda both maintainers own. Nothing in this round writes an `estimate`,
+`gestalt`, judgment, acceptance or `priority`, and the lens is not recomputed
+by hand anywhere.
+
+## 3. Governance of contribution
+
+- **Per-contributor ledgers, owned by their handle.** `graph/events/<handle>.jsonl`
+  is written only from that person's words; `.github/CODEOWNERS` carries one
+  line per human ledger, naming the handle's GitHub account, so a pull request
+  touching a ledger is reviewed by its owner. (This round adds the line for
+  `anson`; a line for `abram` is added with the first event in that ledger.)
+- **Wants under a per-handle path the proof layer covers.** A want node is
+  `graph/nodes/want-<slug>.md` with its `owner`; it is proof layer, as every
+  node is, and the only facts about it a checker enforces are form: the owner
+  is a mapped human, the id begins `want-`, it is a root of exactly one frame,
+  and only the owner writes its `priority`.
+- **The checker is the only gate on either.** Rule 5 refuses an event in the
+  wrong ledger, an id without the ledger's prefix, a priority by anyone but the
+  owner; nothing else adjudicates a ledger line.
+
+What this does and does not change about the two-layer trust model
+(`AGENTS.md`, *The two layers*): it creates no middle tier. A contributor's own
+ledger is self-attribution checked for form, not trust: the events in it mint
+levels on nodes only as the protocol's anchors say (a level of 10 and above
+needs a second human), they are public under the handle, and nothing a
+verdict depends on reads them. The specification layer stays maintainer-owned;
+the item nodes join it because `PRIORITIES.md` is now their render.
+
+## 4. The three contribution verbs (event schemas for a later round)
+
+Not implemented here; stated so that a later round builds them against one
+design.
+
+- **challenge** — against a `record`, a `hypothesis` or a `bridge`: a failure
+  story with sources. Event fields: `kind: challenge`, `target: {node}`,
+  `story` (the failure in the challenger's words), `sources` (public
+  citations), `proposes: {row: <picture id>}` or `proposes: {attack: bridge}`.
+  It becomes a proposed `cases` row under the target (the agent drafts the
+  picture leaf and the partition bump) or a proposed attack on the bridge (a
+  row under the bridge once it is a table). A challenge is an event in the
+  challenger's ledger; the row it proposes is a draft until admitted.
+- **want** — already in the protocol (`want: true`, `owner`, `filed_from`,
+  the `priority` event).
+- **bridge judgment** — a human says whether the formal statement means what
+  the informal claim says, naming what they checked. Where the human is not the
+  node's author this is the existing `attribution` event (`verdict: vouched |
+  disputed`, `ref`). Where the author judges their own bridge, or the judgment
+  is on a hypothesis's `discharge` tag rather than the attribution, a new kind
+  `bridge-judgment` with `verdict: holds | fails`, `checked` (said items) and
+  `ref`, minting no level, is the proposal; it clears no flag and is shown
+  beside the bridge.
+
+## 5. Standing rules for a challenge
+
+In the program's own vocabulary: a round that cites a challenge is a *response*
+and nothing more; it answers nothing by citing. A challenge is *answered* by a
+checker act (a verified counterexample landed, or a kernel-checked refutation
+registered, either of which the checker can see) or by a maintainer act (a
+`rule` event naming the challenge). A challenge is *disposed* by a maintainer
+act that names a successor (the challenge is carried to another node, the way
+a disposal carries an obligation to a successor under the Defeat Principle).
+Nothing else extinguishes a challenge: not a new version of the target, not a
+response round, not the passage of time.
+
+## 6. What the website renders from the index
+
+`graph/index.json` (schema in §6.1) is the contract. Page kinds, keyed by id:
+
+- **frame** (`the-program`, each line, each programme): question, owners,
+  narrative, roots with roles, the frame chain above it.
+- **formal result** (the registry id): the `and`, its record (declaration,
+  registry class and status read from the registry), its hypotheses with their
+  `discharge`, its bridge with `attribution`, the decisions touching it, the
+  round that produced it.
+- **item** (`item-<n>`): the fields, the body, the goal it hangs under, the
+  decisions and rounds pointing at it.
+- **decision** (the anchor): date, title, status (settled or open), the nodes
+  that point at it.
+- **round** (the round id): its path, the nodes that point at it.
+- **narrative** (the wiki page): the frames and nodes it narrates.
+
+Three views: the frame tree (the goal hierarchy from the top frame down to the
+task leaves), the support of one node (its `children`, `given` parents, rows and
+the nodes that read it), and the feed of changes (the human events in every
+ledger, by date, with the nodes they target). The rule for every page: an
+AI-drafted structure (author an AI handle, no human event on it) renders
+visibly lighter than anything a human event has touched; the index carries the
+author handle and the human events, which is enough to decide it.
+
+### 6.1 Schema of `graph/index.json`
+
+Written on the plain run beside the four committed files, hashed like them
+(`generated_hash`), identical whatever flags the run was given, with no derived
+number, level, status or rank.
+
+```
+{
+  "schema": "graph-index/1",
+  "generated": "<ISO date>",
+  "generated_hash": "<sha over the rest>",
+  "frame": {"question", "owners": [handles], "narrative", "classes": [ids],
+            "valuations": [ids], "outside_option", "undescribed_failure",
+            "roots": [{"id", "role"}]},
+  "handles": {"@h": {"kind": "human" | "ai", "github" | "model"}},
+  "nodes": {"<id>": {
+      "kind", "leaf_kind", "author", "size", "version",
+      "statement", "source", "notes", "narrative",
+      "children": [ids], "rows": [{"picture", "class", "given", "residual"}],
+      "given", "work": [{"kind", "ref"}],
+      "fields": {every other frontmatter key as written},
+      "frame": {"question", "owners", "roots": [{"id", "role"}]}   // frames only
+      "in_frames": [frame ids the node is a root of]
+  }},
+  "items": {"<item>": "<node id>"},
+  "decisions": [{"anchor", "date", "title", "status", "touches": [{"kind", "ref"}],
+                 "pointed_by": [node ids]}],
+  "rounds": [{"id", "path", "pointed_by": [node ids]}],
+  "narratives": {"wiki/<Page>.md": [node ids, or "top"]},
+  "events": [every event line of every human ledger, as written]
+}
+```
+
+Every id is the id a URL carries: node ids, registry ids (formal results),
+`item-<n>`, decision anchors, round ids and wiki paths.
+
+## 7. Choices beyond the rulings, and the reserved list
+
+Each **agent-decided** choice is reversible; the rejected alternative is named.
+
+- **Formal-result ids are the registry ids.** `inductor.conformance` is the
+  `and`; its leaves are `inductor.conformance.record`, `.bridge`, `.complete`,
+  `.setting` and `.h<k>`. *Rejected:* a prefixed id (`claim-…`), which would
+  make the registry join a translation rather than an identity.
+- **Hypothesis leaves are read from the Lean signature by script.** One
+  `.setting` leaf (`discharge: definitional`) for the declaration's data binders
+  and one leaf per explicit proposition binder, tagged `open` unless the registry
+  note settles it; the bridge carries `attribution: formalizer-stated` and its
+  Statement is the registry's own reading. *Rejected:* filing the 174 results
+  without hypotheses, which the protocol's *Formal results* paragraph does not
+  allow.
+- **Item node ids are `item-<n>`**, the 36 existing nodes that stood for one
+  item each being renamed into the scheme, so that one glob covers the item
+  files in the path gate. *Rejected:* keeping the descriptive ids and listing
+  36 paths in `tests/path_gate.py`.
+- **An item's body is kept verbatim** in a `## Item` section of its node, and
+  the render regenerates the heading and the metadata line from the fields.
+  *Rejected:* re-typing the bodies as Statements, which would reword the
+  maintainers' work orders.
+- **Items hang under their section's programme** through one `or` per section
+  (a docket of routes) where no finer goal was identified; the report lists
+  those as *goal not identified*. *Rejected:* conjunct attachment, which the
+  protocol forbids for tasks.
+- **Decision anchors** are `<date>--<slug>` for settled entries and
+  `open--<slug>` for queued ones, written as an HTML comment on the line after
+  the heading (settled) or as the bullet's last line (queued), with `touches`
+  extracted from the entry's explicit mentions of items, registry ids and node
+  ids. *Rejected:* heading ids, which the hosted renderers show.
+- **Round pointers** use the round's `path` from `state/rounds.json`; the
+  checker resolves a `round` ref as a directory or as a round id or path.
+- **A `foundation` work pointer kind** (ref an id in `state/foundations.json`)
+  is the smallest extension that lets the foundation node point at its ledger.
+- **A node may be a root of several frames** when it is neither a frame nor a
+  want and every entry names the same role; the first frame in the frame tree's
+  order is its home for paths. *Rejected:* duplicating the node per frame.
+- **`owner` accepts a list** on frames (the form chosen over a second key
+  `owners`), and `maintainer` accepts a list in `policy.yaml`.
+- **`wiki/ORIGIN.md`, `Sources.md`, `_Sidebar.md`, `Prior-Art.md`,
+  `CONVENTIONS.md`, `Glossary.md`, `Relation-to-the-Field.md`** are legitimately
+  unattached: receipt, bibliography, navigation, conventions, a glossary and a
+  field map narrate no one node.
+- **The top frame keeps its single owner `@anson`**, since M2 says the top
+  frame stays as it is and lists owners for `the-program` and its lines only.
+
+**Reserved to the maintainers** (also in `DECISIONS.md`, *Awaiting the author*):
+the wording of `the-program`'s question and of every line frame's; the roots
+marked *owner has not confirmed*; which of the foundation's 180 claims are
+lifted into the map; the priority words on every want; the second maintainer's
+confirmation of M1–M8; whether the 82 clean-room records should have a registry
+of their own; whether the top frame's owner is one maintainer or both.
