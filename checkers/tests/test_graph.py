@@ -1600,6 +1600,29 @@ class Goals(Base):
         self.assertEqual(D["spell_out"]["count"], 0)
         self.assertIn("spelled, nothing yet a goal", (self.root / "graph" / "view.md").read_text())
 
+    def test_unconfirmed_want_weighs_nothing(self):
+        # ruling G4 (2026-10-23): a want filed from its owner's quoted words weighs 0 until the owner gives a word; the word then
+        # gives its weight; a want the owner filed in a session (no filed_from) keeps the Default medium
+        self.tree(tweak=g._with_want)
+        self.edit("graph/" + g._want_root()[0], *g._want_root()[1:])
+        D = self.derived()
+        self.assertEqual(Q(D["nodes"]["want-x"]["want"]["weight"]), Q(0))
+        self.assertIn("owner has not confirmed", D["nodes"]["want-x"]["flags"])
+        self.assertEqual(Q(next(gl for gl in D["goals"] if gl["id"] == "want-x")["stake"]), Q(0))                     # listed as a goal, at no weight
+        self.assertTrue(any(u["kind"] == "priority" and u["target"] == "want-x" and u["note"].startswith("confirm or disown") for u in D["units_unranked"]))
+        self.append("graph/events/h1.jsonl", g._priority("@h1", "want-x", "low", 1) + "\n")
+        D = self.derived()
+        self.assertEqual(Q(D["nodes"]["want-x"]["want"]["weight"]), Q(1, 4))
+        self.assertEqual(Q(next(gl for gl in D["goals"] if gl["id"] == "want-x")["stake"]), Q(1, 4))
+        self.assertNotIn("owner has not confirmed", D["nodes"]["want-x"]["flags"])
+        # the owner's own filing keeps the Default
+        self.tree(tweak=g._with_want)
+        self.edit("graph/" + g._want_root()[0], *g._want_root()[1:])
+        self.edit("graph/nodes/want-x.md", "filed_from: quote\n", "")
+        D = self.derived()
+        self.assertEqual(Q(D["nodes"]["want-x"]["want"]["weight"]), Q(1, 2))
+        self.assertTrue(D["nodes"]["want-x"]["want"]["confirmed"])
+
     def test_want_leaf_root(self):
         # with no number on it at all, the want derives, ranks by its owner's word and gets its spell-out unit
         self.tree(tweak=g._with_want)
@@ -1619,9 +1642,9 @@ class Goals(Base):
         self.assertNotIn("want-x", D["act"]["options"])
         self.assertIn("owner has not confirmed", D["nodes"]["want-x"]["flags"])
         W = D["nodes"]["want-x"]["want"]
-        self.assertEqual((W["owner"], W["priority"], Q(W["weight"]), W["confirmed"], W["attachment"]), ("@h1", None, Q(1, 2), False, []))
+        self.assertEqual((W["owner"], W["priority"], Q(W["weight"]), W["confirmed"], W["attachment"]), ("@h1", None, Q(0), False, []))   # G4: quoted, unconfirmed
         view = (self.root / "graph" / "view.md").read_text()
-        self.assertIn("a want of @h1; priority unset (reads as medium); owner has not confirmed; attachment: unattached", view)
+        self.assertIn("a want of @h1; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: unattached", view)
         # the owner's word: confirmed, weight set; `none` disowns at weight 0; an external event establishes the want
         self.append("graph/events/h1.jsonl", g._priority("@h1", "want-x", "high", 1) + "\n")
         D = self.derived()
@@ -1816,6 +1839,7 @@ class Objective(Base):
         # (f) --as @h weighs h's wants in full and another owner's at half; the committed files stay pooled
         self.tree(tweak=g._with_want)
         self.edit("graph/" + g._want_root()[0], *g._want_root()[1:])
+        self.append("graph/events/h1.jsonl", g._priority("@h1", "want-x", "medium", 1) + "\n")   # confirmed: a quoted want unconfirmed weighs 0 (G4)
         self.derived()
         self.derived()                                  # a second plain run: the digest now has a like-for-like previous
         snap = {n: (self.root / "graph" / n).read_text() for n in g.GENERATED}

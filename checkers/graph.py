@@ -100,7 +100,7 @@ NO_CHECK_LEAVES = {"question", "route", "improvement", "task", "want"}
 EXACT_KINDS = {"vet", "trace", "revive"}                                            # units observing with error 0 (--window-dp)
 RESEARCH_KINDS = {"improve", "do", "re-examine", "spell-out", "connect", "revive"}   # gathered in tasks.md's research section
 ROLES = {"plan", "risk-story", "shared-claim", "want"}
-PRIORITY_WORDS = {"high": Q(1), "medium": Q(1, 2), "low": Q(1, 4), "none": Q(0)}   # a want's weight; unset reads as medium
+PRIORITY_WORDS = {"high": Q(1), "medium": Q(1, 2), "low": Q(1, 4), "none": Q(0)}   # a want's weight; unset reads as medium for a want its owner filed, 0 for a quoted want until the owner confirms (G4, 2026-10-23)
 WHO = {"human", "agent", "either"}
 ACTION_LEAVES = {"task", "question", "step", "hypothesis", "route", "improvement"}   # leaves that may carry action and who
 WORK_KINDS = {"priorities", "open", "round", "private", "decision", "foundation"}   # decision: a DECISIONS.md anchor; foundation: an id of state/foundations.json
@@ -1778,7 +1778,8 @@ def judgments(C):
 
 
 def priorities(C):
-    """Each want's priority word: the latest `priority` event by its owner; unset reads as medium (1/2)."""
+    """Each want's priority word: the latest `priority` event by its owner; unset reads as medium (1/2) on a want the owner filed
+    and as 0 on a want filed from the owner's quoted words (ruling G4, 2026-10-23: an unconfirmed want weighs nothing)."""
     t = C.t
     C.priority = {}
     for x, n in t.nodes.items():
@@ -1793,7 +1794,12 @@ def priorities(C):
 
 
 def priority_value(C, x):
-    return PRIORITY_WORDS.get(C.priority.get(x) or "medium")
+    """A want's weight in the ranking: its owner's word; unset, medium for a want the owner filed in a session and 0 for one
+    filed from the owner's quoted words until the owner gives a word (ruling G4, 2026-10-23); `none` disowns at 0."""
+    word = C.priority.get(x)
+    if word is None and C.t.nodes[x].get("filed_from") == "quote":
+        return Q(0)
+    return PRIORITY_WORDS.get(word or "medium")
 
 
 def structural_paths(C):
@@ -2872,7 +2878,7 @@ def goal_info(C, D, scope, as_handle=None):
             if as_handle and t.nodes[g].get("owner") != as_handle:
                 v, rule[g] = others * v, f"another owner's want at {others} × priority"
             else:
-                rule[g] = f"want: priority {C.priority.get(g) or 'unset (medium)'}"
+                rule[g] = f"want: priority {C.priority.get(g) or ('unset (quoted, owner has not confirmed: 0)' if t.nodes[g].get('filed_from') == 'quote' else 'unset (medium)')}"
             stake[g] = v
     rest = [g for g in info if info[g]["kind"] not in ("plan", "want")]
     for g in rest:
@@ -3916,7 +3922,7 @@ def unranked_units(C, D, load):
     for x, n in t.nodes.items():
         if n.get("want") is True and C.priority.get(x) is None:
             clos = GI[x]["closure"] if x in GI else {x}
-            note = ("confirm or disown: say high, medium, low or none (filed from your quoted words; unset reads as medium)"
+            note = ("confirm or disown: say high, medium, low or none (filed from your quoted words; unconfirmed, it weighs nothing in the ranking)"
                     if n.get("filed_from") == "quote" else "say high, medium, low or none; unset reads as medium")
             note += f"; source: {first_words(n.get('_source') or '', 30)}"
             item(1, "priority", x, x, note, -sum(iw(y) for y in clos), owner=n.get("owner"))
@@ -4283,7 +4289,7 @@ def render_tasks(t, D, pf, today):
         if u["kind"] == "priority-group":
             ws = grouped[u["owner"]]
             return (f"- priority — {len(ws)} want{'s' if len(ws) != 1 else ''} of {u['owner']} await a priority word (high, medium, low or "
-                    f"none; unset reads as medium), first {', '.join(w['target'] for w in ws[:3])}; `--as {u['owner']}` lists each with its source")
+                    f"none; unset reads as medium on a want you filed, as nothing on one quoted from your words), first {', '.join(w['target'] for w in ws[:3])}; `--as {u['owner']}` lists each with its source")
         k = len(u.get("informs") or [])
         return (f"- {u['kind']} {u['target']} — informs {k} goal{'s' if k != 1 else ''}" + (f"; {u['note']}" if u.get("note") else "")
                 + (f" — under {u['under']}" if u.get("under") else ""))
@@ -4445,7 +4451,7 @@ def render_view(t, D, pf, today):
         N = D["nodes"][r]
         if N.get("want"):
             W = N["want"]
-            L.append(f"- a want of {W['owner']}; priority {W['priority'] or 'unset (reads as medium)'}"
+            L.append(f"- a want of {W['owner']}; priority {W['priority'] or ('unset (owner has not confirmed: weight 0)' if not W['confirmed'] else 'unset (reads as medium)')}"
                      + ("; owner has not confirmed" if not W["confirmed"] else "")
                      + f"; attachment: {'; '.join(W['attachment']) or 'unattached'}")
             mine = [u for u in D["units"] if u["target"] == r or r in u.get("bears_on", [])]
@@ -5317,6 +5323,24 @@ def self_test():
                       Q(u["D"]) > 0 for u in D["units"] if u["kind"] == "vet" and u["target"] == "cases-x") and all(
                       Q(u["D"]) == 0 for u in D["units"] if u["target"] != "cases-x")),
                   ("generated files round-trip", run_quiet(["--root", str(d / "syn"), "--today", "2026-10-02"])[0] == 0)]
+        # ruling G4 (2026-10-23): a quoted want with no word weighs zero; with a word, the word; a want its owner filed, medium
+        def want_weight(name, **kw):
+            synthetic_tree(d / name, tweak=kw.pop("tweak", _with_want), **kw)
+            rel, old, new = _want_root()
+            f = d / name / "graph" / rel
+            f.write_text(f.read_text().replace(old, new, 1))
+            c, _, e = run_quiet(["--root", str(d / name), "--today", "2026-10-02"])
+            if c != 0:
+                return e
+            return json.loads((d / name / "graph" / "derived.json").read_text())["nodes"]["want-x"]["want"]["weight"]
+
+        def _owner_filed(nodes):
+            _with_want(nodes)
+            k, s, extra, st = nodes["want-x"]
+            nodes["want-x"] = (k, s, {a: b for a, b in extra.items() if a != "filed_from"}, st)
+        checks += [("a quoted want with no priority word weighs zero (G4)", want_weight("want-quoted") == "0/1"),
+                   ("a quoted want with the word low weighs 1/4", want_weight("want-worded", extra={"h1": [_priority("@h1", "want-x", "low", 1)]}) == "1/4"),
+                   ("a want its owner filed with no word weighs medium", want_weight("want-owner", tweak=_owner_filed) == "1/2")]
         for name, good in checks:
             ok &= bool(good)
             print(f"  {'PASS' if good else 'FAIL'}  synthetic: {name}")

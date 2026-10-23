@@ -429,27 +429,27 @@ Owner @anson, @abram; holds 82 node(s)
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ legit-gated-trust-li (given)
-- its units: spell-out want-figure-out-legitimacy, vet legit-ddb-transfer.bridge, vet legit-anchor-of-L, vet legit-ddb-transfer.complete, vet legit-ddb-transfer.record
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ legit-gated-trust-li (given)
+- its units: vet legit-anchor-of-L, vet legit-ddb-transfer.bridge, vet legit-ddb-transfer.complete, vet legit-ddb-transfer.record, map-read legit-anchor-of-L
 - informs 1 goal
-- best next unit: spell-out want-figure-out-legitimacy
+- best next unit: vet legit-anchor-of-L
 #### want-corrigibility-theorems-via-legitimacy
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ corrigibility-faithful-plus-legit-on-self (given)
-- its units: spell-out want-corrigibility-theorems-via-legitimacy, connect want-corrigibility-theorems-via-legitimacy, vet corrigibility-faithful-plus-legit-on-self, map-read corrigibility-faithful-plus-legit-on-self, do corrigibility-faithful-plus-legit-on-self
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ corrigibility-faithful-plus-legit-on-self (given)
+- its units: vet corrigibility-faithful-plus-legit-on-self, map-read corrigibility-faithful-plus-legit-on-self, do corrigibility-faithful-plus-legit-on-self, spell-out want-corrigibility-theorems-via-legitimacy, connect want-corrigibility-theorems-via-legitimacy
 - informs 1 goal
-- best next unit: spell-out want-corrigibility-theorems-via-legitimacy
+- best next unit: vet corrigibility-faithful-plus-legit-on-self
 #### want-legitimacy-anti-meme-post
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - rests on AI numbers (no human judgment yet): task-anti-meme-post-draft
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: → task-anti-meme-post-draft
-- its units: connect want-legitimacy-anti-meme-post, do task-anti-meme-post-draft
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: → task-anti-meme-post-draft
+- its units: do task-anti-meme-post-draft, connect want-legitimacy-anti-meme-post
 - informs 1 goal
-- best next unit: connect want-legitimacy-anti-meme-post
+- best next unit: do task-anti-meme-post-draft
 
 ### Held
 Nodes this frame is about that are no goals of the ranking (held, not roots): listed with their kinds, no status or value here.
@@ -895,10 +895,10 @@ Owner @anson
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ basin-formal-object@valid (given)
-- its units: spell-out want-basin-of-attraction-formalized, vet basin-formal-object.bridge, vet basin-formal-object.complete, map-read basin-formal-object.bridge, vet basin-formal-object.record
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ basin-formal-object@valid (given)
+- its units: vet basin-formal-object.bridge, vet basin-formal-object.complete, map-read basin-formal-object.bridge, vet basin-formal-object.record, map-read basin-formal-object.complete
 - informs 1 goal
-- best next unit: spell-out want-basin-of-attraction-formalized
+- best next unit: vet basin-formal-object.bridge
 
 ## Sub-frame value-change-base-layer (in corrigibility-landscape): Does the representation of value change as belief change hold, and how far does it carry toward systems corrected through training?
 Owner @anson
@@ -954,10 +954,10 @@ Owner @anson
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @anson; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ vc-route-outside-support (given)
-- its units: spell-out want-sigma-algebra-changes, vet value-change-is-belief-change, do vc-route-outside-support, map-read value-change-is-belief-change, improve value-change-is-belief-change
+- a want of @anson; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ vc-route-outside-support (given)
+- its units: vet value-change-is-belief-change, map-read value-change-is-belief-change, do vc-route-outside-support, improve value-change-is-belief-change, spell-out want-sigma-algebra-changes
 - informs 1 goal
-- best next unit: spell-out want-sigma-algebra-changes
+- best next unit: vet value-change-is-belief-change
 
 ## Sub-frame anti-naturality-review (in corrigibility-landscape): Which published anti-naturality arguments survive for an agent whose utility on the correction algebra depends on the corrections, and what notion of corrigibility survives the walk?
 Owner @anson
@@ -1069,18 +1069,18 @@ Owner @anson
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @anson; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ anti-naturality-arguments-as-stated (given)
-- its units: spell-out want-address-anti-naturality, re-examine anti-naturality-arguments-as-stated, vet arg-nearest-unblocked, vet arg-utility-change, vet arg-turner-vnm-incoherence
+- a want of @anson; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ anti-naturality-arguments-as-stated (given)
+- its units: re-examine anti-naturality-arguments-as-stated, vet arg-nearest-unblocked, vet arg-utility-change, vet arg-turner-vnm-incoherence, map-read arg-nearest-unblocked
 - informs 1 goal
-- best next unit: spell-out want-address-anti-naturality
+- best next unit: re-examine anti-naturality-arguments-as-stated
 #### want-truth-through-literature-dialogue
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @anson; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ anti-naturality-walk (given)
-- its units: spell-out want-truth-through-literature-dialogue, vet anti-naturality-walk, map-read anti-naturality-walk, do anti-naturality-walk
+- a want of @anson; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ anti-naturality-walk (given)
+- its units: vet anti-naturality-walk, map-read anti-naturality-walk, do anti-naturality-walk, spell-out want-truth-through-literature-dialogue
 - informs 1 goal
-- best next unit: spell-out want-truth-through-literature-dialogue
+- best next unit: vet anti-naturality-walk
 
 ## Sub-frame legitimacy-detection (in corrigibility-landscape): What anchors legitimacy, and can an agent's beliefs about which modifications are legitimate be made accurate enough at high capability?
 Owner @anson
@@ -1206,10 +1206,10 @@ Owner @anson
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ legitimacy-conditioned-reflection@valid (given)
-- its units: spell-out want-legitimacy-corrigibility-theorems, vet legitimacy-conditioned-reflection.bridge, vet legitimacy-conditioned-reflection.complete, vet legitimacy-conditioned-reflection.record, map-read legitimacy-conditioned-reflection.bridge
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ legitimacy-conditioned-reflection@valid (given)
+- its units: vet legitimacy-conditioned-reflection.bridge, vet legitimacy-conditioned-reflection.complete, vet legitimacy-conditioned-reflection.record, map-read legitimacy-conditioned-reflection.bridge, map-read legitimacy-conditioned-reflection.complete
 - informs 1 goal
-- best next unit: spell-out want-legitimacy-corrigibility-theorems
+- best next unit: vet legitimacy-conditioned-reflection.bridge
 
 ## Sub-frame dynamic-conditions-for-going-well (in corrigibility-landscape): Which conditions on the joint agent-and-oversight trajectory bring it to an outcome that counts as going well, and in which model are they established?
 Owner @anson
@@ -1300,10 +1300,10 @@ Owner @anson
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @anson; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ joint-process-model (given)
-- its units: spell-out want-formal-model-of-dynamics, re-examine joint-process-model, do oversight-law-of-motion, do trajectory-layer-bridge, do approval-directed-mapping
+- a want of @anson; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ joint-process-model (given)
+- its units: re-examine joint-process-model, do oversight-law-of-motion, do trajectory-layer-bridge, do approval-directed-mapping, do entrenching-agent
 - informs 1 goal
-- best next unit: spell-out want-formal-model-of-dynamics
+- best next unit: re-examine joint-process-model
 
 ## Sub-frame correction-through-the-channel (in corrigibility-landscape): What is corrigibility toward a modification that arrives through physics and cannot be refused in the moment, and what does the general modification object say about it?
 Owner @anson
@@ -2019,10 +2019,10 @@ Owner @anson, @abram
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ legitimacy-as-local-rules (given)
-- its units: spell-out want-legitimacy-meets-syntax, re-examine legitimacy-as-local-rules, do task-harmony-theorem, do task-gli-hosts-informality, do task-syntactic-legitimacy-soundness
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ legitimacy-as-local-rules (given)
+- its units: re-examine legitimacy-as-local-rules, do task-harmony-theorem, do task-gli-hosts-informality, do task-syntactic-legitimacy-soundness, spell-out want-legitimacy-meets-syntax
 - informs 1 goal
-- best next unit: spell-out want-legitimacy-meets-syntax
+- best next unit: re-examine legitimacy-as-local-rules
 
 ## Sub-frame deference-and-trust (in the-program): Which research on trust between a human inductor and an AI inductor, at the logical-induction level, reaches a formal account of trust that guides AI safety engineering work?
 Owner @abram; holds 38 node(s)
@@ -3182,18 +3182,18 @@ Owner @abram
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ uea-review-writeup (given)
-- its units: spell-out want-uea-review, connect want-uea-review, do uea-review-writeup
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ uea-review-writeup (given)
+- its units: do uea-review-writeup, spell-out want-uea-review, connect want-uea-review
 - informs 1 goal
-- best next unit: spell-out want-uea-review
+- best next unit: do uea-review-writeup
 #### want-methodology-note
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ factor-methodology-note (given)
-- its units: spell-out want-methodology-note, connect want-methodology-note, do factor-methodology-note
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ factor-methodology-note (given)
+- its units: do factor-methodology-note, spell-out want-methodology-note, connect want-methodology-note
 - informs 1 goal
-- best next unit: spell-out want-methodology-note
+- best next unit: do factor-methodology-note
 
 ## Sub-frame level-above-quantifiable (in stance-and-level): Which work at the level of probability frames and Jeffrey–Bolker models advances a formal theory of trust that guides AI safety engineering work?
 Owner @abram
@@ -3345,10 +3345,10 @@ Owner @abram
 - preset worst-case; status **open**; weakest proof-set leaf at V 2
 - safety margin: no established leaves
 - load-bearing shared leaves: none
-- a want of @abram; priority unset (reads as medium); owner has not confirmed; attachment: ⇢ intentional-stance-characterized (given)
-- its units: spell-out want-intentional-stance-math, do intentional-stance-characterized, do agency-types-catalogue
+- a want of @abram; priority unset (owner has not confirmed: weight 0); owner has not confirmed; attachment: ⇢ intentional-stance-characterized (given)
+- its units: do intentional-stance-characterized, do agency-types-catalogue, spell-out want-intentional-stance-math
 - informs 1 goal
-- best next unit: spell-out want-intentional-stance-math
+- best next unit: do intentional-stance-characterized
 
 ## Sub-frame stage4-condensation-dynamics (in abstraction-arc): Which notions of function and isomorphism, which role for the observables, and which dynamics of theories carry the same concept between agents and across ontological shifts?
 Owner @abram
@@ -7039,4 +7039,4 @@ The outside option and the undescribed failure, each a cases node over the outco
 | wirehead-iff-finite.record | leaf/record | 2 (both) | AI number, not in a claims registry | open | 0 | 1 |
 | wirehead-iff-finite.setting | leaf/hypothesis | 2 (both) | AI number | open | 0 | 1 |
 | worlds-and-points-companion | leaf/question | 2 (both) | AI number | open | 0 | 8 |
-<!-- generated_hash: f17eecc04b869008e34b433c -->
+<!-- generated_hash: d7ec0813246c3e5d19da66a1 -->

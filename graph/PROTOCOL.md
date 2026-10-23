@@ -264,13 +264,17 @@ id begins `want-`. It is a root of exactly one frame, role `want`, with no
 decision; it has a status under the worst-case rule (§4) and no displayed
 probability, and it is a *goal* of the ranking (§6), weighted by its
 owner's *priority word*, one of `high`, `medium`, `low`, `none` (1, 1/2,
-1/4, 0; unset reads as `medium`), given as a `priority` event (§5) that
+1/4, 0; unset reads as `medium` on a want its owner filed, and as 0 on a want
+filed from the owner's quoted words until the owner gives a word, ruling G4 of
+2026-10-23), given as a `priority` event (§5) that
 only the owner writes; `none` disowns it. A want may be connected to
 nothing: the ranking's `connect` unit then proposes edges and a frame to
 move it to, and the owner, or anyone, confirms one or says to leave it
 unattached. A want an agent filed from its owner's quoted words carries
-`filed_from: quote` and shows *owner has not confirmed* until the owner's
-first priority word; such a want sits under a line only when the quoted
+`filed_from: quote`, shows *owner has not confirmed* until the owner's
+first priority word and weighs nothing in the ranking until then (it is
+listed, and the pooled list asks for the word; ruling G4, 2026-10-23); such a
+want sits under a line only when the quoted
 words name that line, otherwise at the top frame. Another owner's wants
 count in a personal render at `others_wants_weight` times their priority.
 **Decided** that contributors own wants, which need not be
@@ -1161,7 +1165,8 @@ no leaf unit does. A programme's steps are units in the parent frame's list
 like any root's elements. The *unranked block*, in this order, each line
 naming the goals it informs and the goal it sits under: a `priority` line
 for every want whose owner has given no word ("say high, medium, low or
-none; unset reads as medium", or "confirm or disown" for a quoted want,
+none; unset reads as medium", or "confirm or disown" for a quoted want, which
+weighs nothing until the word comes (ruling G4),
 each with the first words of the want's Source; the pooled file prints
 one line per owner, "N wants of @h await a priority word", and `--as @h`
 lists h's wants one by one),
@@ -1511,10 +1516,11 @@ commit; a handle is created by a pull request adding its line to
   with `want: true` and a human owner, a root of role `want`: a state of
   affairs its owner wants to see, carrying its owner's priority and no AI
   number; the owner's `high`, `medium`, `low` or `none` (1, 1/2, 1/4, 0;
-  unset reads as medium) given as a `priority` event; the flag on a want
-  filed from its owner's quoted words (`filed_from: quote`) until the first
-  priority word; a want with no children, no given edge and no goal
-  containing it.
+  unset reads as medium on a want the owner filed, as 0 on a quoted one)
+  given as a `priority` event; the flag on a want filed from its owner's
+  quoted words (`filed_from: quote`) until the first priority word, during
+  which the want weighs nothing (ruling G4, 2026-10-23); a want with no
+  children, no given edge and no goal containing it.
 - **Task leaf, action, who, actioned claim, feasibility.** A leaf whose
   Statement says a deliverable exists with its stated property; the one
   imperative sentence of work to do; `human`, `agent` or `either`; an open

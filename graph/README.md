@@ -40,8 +40,9 @@ sit one plan and a set of risk stories:
 - Wants, inside the lines, each a state of affairs its owner wants,
   stated in research terms and weighted by the owner's priority word,
   never by an AI number. A want an agent filed from the
-  owner's public writing (`filed_from: quote`) reads as medium and says
-  *owner has not confirmed* until the owner gives the word.
+  owner's public writing (`filed_from: quote`) weighs nothing and says
+  *owner has not confirmed* until the owner gives the word (ruling G4,
+  2026-10-23).
 - Beside most toy results, an improvement claim ("X can be improved until
   it reflects R well") with its routes, the research the map asks for.
 
